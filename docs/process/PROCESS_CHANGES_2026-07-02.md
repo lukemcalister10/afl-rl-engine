@@ -81,6 +81,17 @@ VERIFIED→BAKED transition — always scoped to the current head; auditor share
 context with the instances it checks. WIP cap: TWO live tracks maximum; everything
 else queues behind, not beside.
 
+### 11. Effort rule — original + amendment (registered per DIRECTIVE 6, 2026-07-02)
+ORIGINAL RULE (as practiced in the supervisor↔build directive protocol; its verbatim
+text was NOT previously registered in-repo — this section is the registration; the
+supervisor corrects the original's wording here if it differs): every directive
+carries an EFFORT line naming the level (medium / high / xhigh) with a rationale tied
+to the work's hardest step.
+AMENDMENT (verbatim, DIRECTIVE 6): every effort recommendation includes one sentence
+answering "why is this not one level lower?"; medium = floor, no downward line; high
+names the step that degrades at medium; xhigh names the derivation that needs it;
+specificity test — no namable step → drop a level.
+
 ## EXPLICITLY UNCHANGED
 Verbatim relay (fidelity is the audit trail; the state stamp fixes its weakness).
 Nothing-bakes-without-Luke's-go. Player reads as ground truth. Per-turn notepads and
