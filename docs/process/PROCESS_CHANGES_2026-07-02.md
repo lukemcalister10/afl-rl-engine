@@ -91,6 +91,10 @@ AMENDMENT (verbatim, DIRECTIVE 6): every effort recommendation includes one sent
 answering "why is this not one level lower?"; medium = floor, no downward line; high
 names the step that degrades at medium; xhigh names the derivation that needs it;
 specificity test — no namable step → drop a level.
+BASE RULE (verbatim, registered per DIRECTIVE 7, 2026-07-02 — the operating baseline the
+original registration and the D6 amendment sit on): high default · xhigh with
+justification · max with explicit sign-off · every directive carries level + wall-clock
+band + walk-away note.
 
 ## EXPLICITLY UNCHANGED
 Verbatim relay (fidelity is the audit trail; the state stamp fixes its weakness).

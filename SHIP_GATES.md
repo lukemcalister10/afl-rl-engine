@@ -20,8 +20,15 @@
 
 A1.  Willem Duursma > Zeke Uwland.
 A2.  Josh Ward below genuine producers: Ward < Paul Curtis AND Ward < Josh Weddle.
-A3.  [DC] Connor Rozee: thin current season must not halve him — 2026 value >= 80%
+A3.  [DC] Connor Rozee: thin current season must not halve him — 2026 value >= 75%
      of 2025.
+     [AMENDED 02/07/2026 (Luke, in writing, D7 directive; verbatim in CHANGELOG):
+      threshold 0.80 -> 0.75, DATA-CAUSED — Rozee is out for the remainder of 2026
+      (LTI register Section B, register-confirmed); Luke: "Happy to adjust Rozee
+      to 75%". KNIFE-EDGE NOTE: the bar deliberately sits at reality's edge — the
+      same design as A10/Curnow: the gate should fail the moment the engine
+      over-punishes a thin season, not comfortably before. Evaluated PRE-LTI-layer
+      (Luke, D4) unchanged.]
 A4.  Harley Reid uncratered — Reid remains TOP 40 on the board by value.
 A5.  Improvers not slashed: Jack Ginnivan > 1600, Jake Bowey > 2100,
      Nick Blakey > 2600.
@@ -72,11 +79,21 @@ B1. Cohort growth law — REDEFINED by Luke (in writing, confirmed, 02/07/2026 D
 B2. GATE-1: leakage ~0 (IS vs WF, tree-matched) + clean good/bust separation.
 B3. Walk-forward book gates pass at the ship head.
 B4. JS parity: Python and board JS byte-agree on the shipped board.
-B5. No-crater guard: no first-year/unproven player value cratered (founding rule).
-    [Year-schedule floors by years-in-system, ND entrants only (Luke, signed
-     02/07/2026): generating rule floor ≈ 0.9 × smoothed clean p5 (ND-only) —
-     RE-BASE at the PVC stage when the draftval denominator re-levels, by
-     re-running the generating rule (sibling of A5's SCAR-floor note; this
+B5. AMENDED 02/07/2026 (Luke-ruled, in writing — text prepared D6, committed D7;
+    verbatim ruling in CHANGELOG): B5 as a pass/fail ALARM is RETIRED. The signed
+    year-schedule floor becomes a PRICING FEATURE at the ev() boundary:
+    ev_final(p) = max(ev(p), floor_yrs(p) × draftval(p)), NATIONAL-DRAFT entrants
+    only (MSD/SSP, delisted, retired and pickless players are never floored),
+    floor_yrs = .45/.35/.28/.21/.13/.09 for yrs 1-6 and FLAT .05 for yrs 7+
+    (TAIL VARIANT A — as signed; Luke's D7 ruling). The FLOOR-SAVES TABLE
+    (player · club · yrs-in-system · raw ev · floor · saved-to · lift · register
+    status) prints on EVERY gates-board run — the saves-list is the new alarm
+    surface: a list that grows unexpectedly is the signal the old gate used to
+    fire on; mispricings stay VISIBLE, never silently clamped. The pure-lower-bound
+    property (0 lowered, 0 non-ND moved) is re-verified on every board run.
+    [Generating rule retained for the schedule: floor ≈ 0.9 × smoothed clean p5
+     (ND-only) — RE-BASE at the PVC stage when the draftval denominator re-levels,
+     by re-running the generating rule (sibling of A5's SCAR-floor note; this
      in-file reminder Luke-approved in writing 02/07/2026).]
 B6. No hard lines: value continuous across the games ramp (no step at the 6-game
     seam) AND monotone in evidence — more games at the same scoring rate is never

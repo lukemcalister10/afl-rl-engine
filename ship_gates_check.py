@@ -34,6 +34,16 @@
 #     AVERAGE of indexed cohort value at each year-depth (rise from yr1 to a peak in yrs 4-6; <5% pre-peak
 #     dips of the average tolerated). Per-cohort curves UNGATED by design but printed as a pipe table on
 #     every gates-board run. The old per-cohort rise backstop is RETIRED — obituary in CHANGELOG (D5).
+#   A3 AMENDED 02/07/2026 (Luke, in writing, D7): threshold 0.80 -> 0.75, DATA-CAUSED — Rozee out for the
+#     remainder of 2026 (LTI register Section B); Luke verbatim: "Happy to adjust Rozee to 75%". The bar
+#     deliberately sits at reality's edge (same design as A10/Curnow).
+#   A2 UNCHANGED at 0.90 by ruling (Luke, D7): ships red at the v2 config (Curtis 0.822 measured at
+#     candidate-minus-cB); Luke verbatim: "we can look at Curtis down the line".
+#   B5 AMENDED 02/07/2026 (Luke-ruled; text prepared D6, committed D7): retired as a pass/fail ALARM;
+#     replaced by the floor-as-pricing-feature at the ev() boundary (flat .05 yrs-7+ tail, VARIANT A as
+#     signed) + the MANDATORY FLOOR-SAVES table printed on every board run (the new alarm surface) + the
+#     pure-lower-bound re-verify (0 lowered, 0 non-ND moved). At heads that do not carry the floor feature
+#     (canonical pre-v2), the line reports the legacy offender count INFORMATIONALLY — never FAIL.
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RA = '/home/claude/rl_workspace/rl_after'
@@ -88,16 +98,20 @@ def cmp_gate(gid, dc, pairs, fmt):        # pairs: list of (label, lhs, rhs) req
 cmp_gate('A1', False, [('Duursma>Uwland', 'Willem Duursma', 'Zeke Uwland')], '{}: {:.0f} vs {:.0f}')
 # A2 AMENDED (Luke, in writing, 02/07/2026 — verbatim reason logged in CHANGELOG per the SHIP_GATES amendment
 # process): Curtis leg re-scripted from Ward < Curtis to Curtis >= 0.90 x Ward; Weddle leg + A9 unchanged.
+# A2 UNCHANGED at 0.90 by ruling (Luke, D7 02/07): ships red at the v2 config (Curtis/Ward 0.822 measured);
+# Luke verbatim: "we can look at Curtis down the line".
 try:
     _cu, _wa, _we = E('Paul Curtis'), E('Josh Ward'), E('Joshua Weddle')
     _ok = (_cu >= 0.90 * _wa) and (_we > _wa)
     gate('A2', False, 'PASS' if _ok else 'FAIL',
-         f'Curtis>=0.90xWard: {_cu:.0f} vs {0.90*_wa:.0f} (Ward={_wa:.0f}, ratio={_cu/max(_wa,1e-9):.3f}) [AMENDED 02/07/2026]; Weddle>Ward: {_we:.0f} vs {_wa:.0f}')
+         f'Curtis>=0.90xWard: {_cu:.0f} vs {0.90*_wa:.0f} (Ward={_wa:.0f}, ratio={_cu/max(_wa,1e-9):.3f}) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: {_we:.0f} vs {_wa:.0f}')
 except LookupError as ex:
     gate('A2', False, 'ERROR', str(ex))
 # A3 ANNOTATED (Luke 02/07, D4): evaluated PRE-LTI-layer. A10 AMENDED (Luke, in writing, 02/07, D4):
 # 0.70 -> 0.50, DATA-CAUSED (13g of 2026 banked), PROVISIONAL — review at season-complete; CHANGELOG logged.
-for gid, nm, frac, note in [('A3', 'Connor Rozee', 0.80, ' [evaluated PRE-LTI-layer — Luke 02/07]'),
+# A3 AMENDED (Luke, in writing, D7 02/07): 0.80 -> 0.75, DATA-CAUSED (Rozee out for the remainder of 2026,
+# register-confirmed); "Happy to adjust Rozee to 75%". Knife-edge by design (same as A10/Curnow).
+for gid, nm, frac, note in [('A3', 'Connor Rozee', 0.75, ' [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]'),
                             ('A10', 'Charlie Curnow', 0.50, ' [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]')]:
     try:
         v26, v25 = E(nm, 2026), E(nm, 2025)
@@ -286,35 +300,93 @@ try:
              f'regenerated rl_app_data.json md5={m_new} vs shipped {m_ship} (byte-agree gate; export exit={r.returncode})')
 except Exception as ex:
     gate('B4', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-# B5 — no-crater guard, YEAR-SCHEDULE floors (Luke, SIGNED in writing 02/07/2026, D4 — supersedes the 0.25x
-# provisional proxy). Floors by years-in-system (2026 - draft year), yrs 1-7+: .45/.35/.28/.21/.13/.09/.05.
-# POPULATION: NATIONAL-DRAFT entrants only — post PRESENT_ID_OVERRIDES type=='ND' (MSD/SSP/RD/IRE/UNR/PDx
-# excluded; the overrides re-type re-entries like Perez to their present SSP/MSD identity); delisted/retired
-# excluded (Luke 02/07 listed-only convention unchanged: inactive value=0, stays in backtest denominators).
-# GENERATING RULE (the re-derivation formula at re-base): floor ~= 0.9 x smoothed clean p5 (ND-only) of
-# value/draftval by years-in-system (empirical clean p5 smoothed .50/.42/.31/.23/.15/.10/<=.07 — D3 G3-CLEAN).
-# RE-BASE AT PVC: draftval = PVC[effpk] re-levels at the PVC stage -> re-derive the floors from the generating
-# rule then (reminder also written into SHIP_GATES.md B5, beside A5's sibling SCAR-floor note; Luke approved).
-B5_FLOORS = {1: 0.45, 2: 0.35, 3: 0.28, 4: 0.21, 5: 0.13, 6: 0.09}   # yrs 7+ -> tail
+# B5 — AMENDED 02/07/2026 (Luke-ruled, in writing; text prepared D6, committed D7; verbatim in CHANGELOG):
+# retired as a pass/fail ALARM. The signed year-schedule floor is now a PRICING FEATURE at the ev() boundary
+# (wired in the v2 candidate engine: ev = max(ev_prefloor, floor_yrs x draftval), ND entrants only, FLAT .05
+# yrs-7+ tail — VARIANT A as signed). This block does, on every board run:
+#   (1) FLOOR-SAVES TABLE (player · club · yrs-in-system · raw ev · floor · saved-to · lift · register
+#       status) — the new alarm surface: a list that grows unexpectedly is the old gate's signal; mispricings
+#       stay VISIBLE, never silently clamped.
+#   (2) PURE-LOWER-BOUND RE-VERIFY: 0 lowered, 0 non-ND moved (full non-retired population).
+# At a head WITHOUT the floor feature (canonical pre-v2), the legacy offender count prints INFORMATIONALLY.
+# Status is FEATURE / FEATURE-ABSENT — never FAIL (the alarm is retired). GENERATING RULE + RE-BASE-AT-PVC
+# reminder unchanged in SHIP_GATES.md (floor ~= 0.9 x smoothed clean p5 ND-only; re-derive at the PVC stage).
+B5_FLOORS = {1: 0.45, 2: 0.35, 3: 0.28, 4: 0.21, 5: 0.13, 6: 0.09}   # yrs 7+ -> tail (VARIANT A, as signed)
 B5_TAIL = 0.05
+B5_TABLE = None
+def _b5_scope(p):
+    return not (p.get('_retired') or p.get('_pickless') or delisted(p) or p.get('type') != 'ND') \
+        and (2026 - int(p.get('year') or 0)) >= 1
 try:
-    off = []
-    for p in MA.data:
-        if p.get('_retired') or p.get('_pickless') or delisted(p) or p.get('type') != 'ND':
-            continue
-        yis = 2026 - int(p.get('year') or 0)
-        if yis < 1:
-            continue
-        v = EV.get(id(p))
-        if v is None:
-            continue
-        dv = draftval(p)
-        fl = B5_FLOORS.get(yis, B5_TAIL)
-        if v < fl * dv:
-            off.append((p['player'], yis, v, fl * dv, fl))
-    gate('B5', False, 'PASS' if not off else 'FAIL',
-         f'{len(off)} ND-entrant LISTED players below the signed year-schedule floor (yrs1-7+ .45/.35/.28/.21/.13/.09/.05 x draftval; Luke 02/07 D4); worst: ' +
-         ('; '.join(f'{n}(yr{y})={v:.0f}<{f_:.0f}({fl:.2f}x)' for n, y, v, f_, fl in sorted(off, key=lambda t: t[2] / max(t[3], 1e-9))[:4]) if off else 'none'))
+    ev_pre = G.get('ev_prefloor')
+    if ev_pre is not None:
+        # register status column (LTI register — same parse as the D6 annotated table)
+        import re as _re
+        _reg = {}
+        try:
+            _rtxt = open(os.path.join(ROOT, 'LTI_REGISTER_2026-07-02.md')).read()
+            _secA = _rtxt.split('## SECTION A')[1].split('## SECTION B')[0]
+            for _m in _re.finditer(r'^\| ([^|]+) \| ([^|]+) \|', _secA, _re.M):
+                if _m.group(1).strip() != 'player':
+                    _reg[_m.group(1).strip()] = f'LTI ({_m.group(2).strip()})'
+            _secB = _rtxt.split('## SECTION B')[1].split('---')[0]
+            for _nm in _re.findall(r"[A-Z][\w'\-\.]+(?: [A-Z][\w'\-\.]+)+", _secB.replace('**', '')):
+                _reg.setdefault(_nm, 'OUT-2026')
+        except Exception:
+            pass
+        PRE = {}
+        with contextlib.redirect_stdout(io.StringIO()):
+            for p in MA.data:
+                if p.get('_retired'):
+                    continue
+                try:
+                    PRE[id(p)] = float(ev_pre(p, 2026))
+                except Exception:
+                    PRE[id(p)] = None
+        lowered = [p['player'] for p in MA.data if not p.get('_retired')
+                   and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
+                   and EV[id(p)] < PRE[id(p)] - 1e-9]
+        nonnd_moved = [p['player'] for p in MA.data if not p.get('_retired') and not _b5_scope(p)
+                       and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
+                       and abs(EV[id(p)] - PRE[id(p)]) > 1e-9]
+        saves = []
+        for p in MA.data:
+            if p.get('_retired') or not _b5_scope(p):
+                continue
+            v0, v1 = PRE.get(id(p)), EV.get(id(p))
+            if v0 is None or v1 is None or v1 <= v0 + 1e-9:
+                continue
+            yis = 2026 - int(p.get('year') or 0)
+            fl = B5_FLOORS.get(yis, B5_TAIL) * draftval(p)
+            saves.append((p['player'], p.get('_club') or '—', yis, v0, fl, v1, v1 - v0,
+                          _reg.get(p['player'], 'clear')))
+        saves.sort(key=lambda r: -r[6])
+        _t = ['| player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |',
+              '|---|---|---|---|---|---|---|---|']
+        for nm, cl, yis, v0, fl, v1, lift, rg in saves:
+            _t.append(f'| {nm} | {cl} | {yis} | {v0:.0f} | {fl:.1f} | {v1:.0f} | +{lift:.0f} | {rg} |')
+        B5_TABLE = '\n'.join(_t)
+        NOTES.append(f'B5 FLOOR-SAVES table (n={len(saves)}, aggregate lift={sum(r[6] for r in saves):+.0f} — '
+                     'printed every gates-board run, the new alarm surface):\n' + B5_TABLE)
+        ok_bound = not lowered and not nonnd_moved
+        gate('B5', False, 'FEATURE' if ok_bound else 'FAIL',
+             f'floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): {len(saves)} saves, '
+             f'aggregate lift {sum(r[6] for r in saves):+.0f}; pure lower bound: lowered={len(lowered)} (bar 0), '
+             f'non-ND moved={len(nonnd_moved)} (bar 0); saves table printed below (the new alarm surface)')
+    else:
+        off = []
+        for p in MA.data:
+            if not _b5_scope(p):
+                continue
+            v = EV.get(id(p))
+            if v is None:
+                continue
+            fl = B5_FLOORS.get(2026 - int(p.get('year') or 0), B5_TAIL)
+            if v < fl * draftval(p):
+                off.append(p['player'])
+        gate('B5', False, 'FEATURE-ABSENT',
+             f'floor feature not wired at this head (v2 candidate carries it); legacy offender count = '
+             f'{len(off)} (INFORMATIONAL — the alarm is retired, Luke-ruled 02/07 D7)')
 except Exception as ex:
     gate('B5', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # B6 — games-ramp continuity, RE-SCRIPTED (Luke 02/07, turns 09-10): the gate tests the WHOLE 0->6 ramp.
@@ -325,9 +397,12 @@ except Exception as ex:
 # AND cumulative rise by 3g >= 25% of T (anti-flat-start). Prior "seam 10%/3x" shorthand superseded.
 try:
     def ramp_p(gm):
+        # top-level 'games' carried per the M3 wiring-time note (D4 backtest, m3_design §1): the age pin
+        # activates _dev_advance's roll, which reads p['games'] — real store rows all carry it; the synth
+        # must too. Byte-inert at heads without the M3 pin (the roll never activates there).
         return {'player': 'b6-synth', 'pos': GRPPOS.get('MID'), 'pick': 10.0, 'year': 2025, 'dob': '2006-03-01',
                 'type': 'ND', 'scoring': ([{'year': 2026, 'games': gm, 'avg': 85.0}] if gm > 0 else []),
-                '_pos_now': None, '_fut': []}
+                'games': gm, '_pos_now': None, '_fut': []}
     with contextlib.redirect_stdout(io.StringIO()):
         vals = [float(ev(ramp_p(gm), 2026)) for gm in range(0, 15)]
     steps = [vals[i + 1] - vals[i] for i in range(len(vals) - 1)]
@@ -363,6 +438,8 @@ lines.append(summary)
 print('\n'.join(lines))
 if B1_TABLE:      # Luke's ruling (02/07/2026 D5): the per-cohort table prints on EVERY gates-board run
     print('\nB1 per-cohort curves (UNGATED — Luke eyeball channel):\n' + B1_TABLE)
+if B5_TABLE:      # Luke's ruling (02/07/2026, committed D7): the FLOOR-SAVES table prints on EVERY board run
+    print('\nB5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):\n' + B5_TABLE)
 rep = os.path.join(ROOT, 'session_2026-07-02', f'ship_gates_report_{HEAD}.md')
 os.makedirs(os.path.dirname(rep), exist_ok=True)
 with open(rep, 'w') as f:

@@ -11,7 +11,12 @@ owns the mediocrity-concentrated half (ρ=+0.71 — Luke's shocking-draft read c
 d=8/9/10/11+ vs flat .05 — numbers only, decision pending Luke). LTI register CONTENT committed (32 LTI + 11 out-for-2026).
 See `session_2026-07-02/d5_ask2_perterm_decomposition.md` + `directive5_notes.md`._
 
-## 1. M1 + refined-v7 — STATE: WIRED (bake candidate, D4 02/07), NOT BAKED
+## 1. M1 + refined-v7 — STATE: WIRED (BAKE CANDIDATE v2, D7 02/07), NOT BAKED
+D7 SUPERSEDES the candidate identity below: **BAKE CANDIDATE v2 = engine `4a134d05` / cp `5ac8b162`** (branch
+`claude/d7-bake-candidate-v2`, assembly `c16b970`) — M1 + v7-asc with **v7-cB DELETED per Luke's ruling** (deleted not
+disabled; obituary in BOARD_LAYERS_OBITUARY.md ENGINE-TERM DELETIONS; the cB param text below is HISTORICAL) + M2 + M3 +
+the B5 pricing floor (variant A flat tail). The D4 candidate `fb39d88a` is SUPERSEDED. v2 board 11P/5F/1FEATURE
+(`ship_gates_report_4a134d05.md`); v2 holds for the cold audit + Luke's explicit bake word per BAKE_CHECKLIST.
 D4: transplanted verbatim into `_merged_recover.py` ON THE CANDIDATE BRANCH (commit `0806d90`); read-pass endorsed per the
 D4 directive; full candidate verification run (board 11P/6F; A5/A9 flip green; Maric 1409→1178, Langdon 593→575 — the
 canonical restore-verify pins move at candidate by design). OPEN + ENGINE-CAUSED (D4 control): B1 per-cohort backstop
@@ -26,7 +31,12 @@ reads from that doc.
 Pre-D4 text (params + provenance) follows:
 Bake gate = **Luke's read-pass on a fixed named panel** (per BAKE_CHECKLIST.md, to be written first). Params: M1 `TOL_M1=5, G_ADQ=12, WIN=2, S_M1=0.46`; refined-v7 `cB=0.47·clip((e−1)/3,0,1)`, `e=Σmin(games_s/17,1)`, `aSc=interp(age,[20,22,24,27],[1.00,0.76,0.58,0.40])`, tail wt 0.10. Currently applied only in the matrix builder (`engine/rl_after/s4_matrix_M1v7.py`), NOT in `_merged_recover.py`. **Resume/bake:** write BAKE_CHECKLIST.md → cold audit at head → Luke read-pass → wire M1 branch + refined `cB` into `_merged_recover.py` → full re-verify (md5s, 10-panel, Maric/Langdon, book, JS-parity) → `doc_lint` → tarball. Both systemic flags resolved (KEY_FWD over-compression = speculative ceiling; Graham cohort = trust-the-level). NOTE: M1+v7 nudges the already-underpriced Rozee 2026 down ~8% (2679→2460) — flag at read-pass. DIRECTIVE-2 (02/07): read-pass pack produced (`session_2026-07-02/readpass_pack_M1v7_8aed420a.md`, 2025 basis, 2026 column excluded); in scratch the prototype flips A9 (Ginnivan 1677 > Ward 1253) and the Weddle leg of A2 and clears the A5 floors, but Curtis (1087) stays below Ward (1253) — the Ward-pattern reds are NOT fully explained by the un-baked prototype (H-WARD falsified as sole cause).
 
-## 2. Current-season (2026) drop — STATE: M2 WIRED (bake candidate, D4 02/07) + M3 sibling DERIVED (D4); acceptance ceiling QUANTIFIED
+## 2. Current-season (2026) drop — STATE: M2 + M3 WIRED (BAKE CANDIDATE v2, D7 02/07); A3 red by 0.019 at the amended bar
+D7: M3 WIRED first-class at v2 (pin plumbing + value-space blend in `_merged_recover.py`; RL_M3_FE=1 kill-switch;
+byte-exact inert 0/807 vs a physically-stripped build; on-pace collateral 0/288). A3 RE-REGISTERED at Luke's amended
+0.75 bar — measured **0.7307** at v2 (M3 owns +0.072 of it; fE=1 gives 0.6591) → **still red, by 0.019**; the supervisor's
+0.74–0.78 estimate was optimistic. NEW FLAG: M3 lifts Tsatas 979→1140 (g26=0 → s=1 full blend), above Luke's preferred
+1083 — A8 still passes at 2.12x; the lift fades to 979 as the season completes (fE→1). Luke's read requested.
 D4: M2-exposure wired in `conditional_prior._exposure` on the candidate (Luke's written go; f=0.545, kill-switch RL_EXPO_F;
 byte-exact at f=1 re-verified; A3 0.642→0.658 on the candidate base). M3 (proportional tenure/age — the sibling lever Luke
 queued) DERIVED, NOT wired: design + backtest `session_2026-07-02/m3_design_proportional_tenure.md` — zero on-pace collateral,
@@ -80,6 +90,15 @@ Curtis's lowness is NOT the calendar artifact (decay/exposure share +0.5%; scope
 holds him down (M1-only lifts him to 1441; v7-only cuts him to 977); post-overlay he sits 66% of his pick-age-matched producer
 line (Ward 77%). **Resume:** per-term v7 ablation (cB-only vs asc-only) across Curtis + the matched five + a GEN_FWD-vs-MID
 replacement/pole check. Amended A2 (Curtis >= 0.90×Ward, Luke 02/07) stays red until that isolation runs.
+
+## 12. Staleness-cap recency term — STATE: DERIVED (D7 02/07), awaiting Luke's endorsement; NOT in v2
+The D6 Gothard finding's real fix. Exemption DERIVED structural (gap=0: the sole qualifying season IS the season being
+evaluated — zero invented constants; a gap=1 quality threshold was checked and REJECTED at finest resolution, no dominant
+break). Measured at head+fix scratch `a9e1c14b`: Gothard 317→**1790** exact; 7/807 movers, all in-population; gates incl.
+new-B1 hold (B1 rises to 169.2). Form-B gap=1 extension priced for Luke (Busslinger 481→636, Cleary 154→775; support
+WEAK). Design: `session_2026-07-02/d7_ask4_staleness_recency_fix.md`; prototype `engine/prototypes/staleness_recency_fix.py`.
+Joins a later candidate ONLY on Luke's endorsement. Known limits flagged: forward-year views re-cap at the year click;
+sub-6-game current breakouts wait for game 6.
 
 ## PARK / PVC-stage cluster (create SHIP_GATES.md before curve work — PROCESS_CHANGES §3)
 1.19× (w9), SITOUT tail re-derivation (w5), no-games tail derivation — all point at the pick-value-curve stage. The stopping rule (SHIP_GATES.md, ~15-20 named relativities Luke stakes his league record on + cohort-growth + book + JS-parity gates) must exist BEFORE curve work begins.
