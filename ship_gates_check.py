@@ -5,8 +5,19 @@
 # SCRIPTING NOTES honoured: EXACT full-name matching (no substrings; ambiguity -> ERROR, never a silent pick);
 # line-ball = +/-20%; A13/A14 staged PENDING until the PVC stage; A6 kernel-smoothed pick-matching with the thin
 # RUC slice pooled deliberately (yrs 1-3 together); [DC] tags carried into output for failure triage.
-# DECLARED thresholds pending supervisor/Luke ratification: B2 leakage tol 5.0 %-pts; B5 floor 0.25x draftval;
-# B6 seam tol 10% AND 3x median step; B1 per-cohort rule = rise (peak>yr1) per cohort + POOLED peak in yrs 4-6.
+# THRESHOLD REGISTER (updated 2026-07-02, DIRECTIVE 2, Luke's rulings turns 09-10):
+#   A6 kernel bw 0.6 on log-pick — RATIFIED (via Luke's delegation to supervisor, 02/07/2026).
+#   B1 rule — RE-SCRIPTED per Luke: PASS = pooled cohort value rises from draft to a peak by yr4-5 (yr6
+#     acceptable); interim pre-peak dips <5% tolerated (year 2 explicitly named); level need NOT hold in yr6.
+#   B6 rule — RE-SCRIPTED per Luke: gate tests the WHOLE 0->6 ramp (<=5g players were dumped into the sit-out
+#     stream, so 0g and 5g got identical treatment; flat-then-step IS the violation); value must progress
+#     smoothly from the 0-game anchor to the 6-game production value. Monotone-in-evidence clause UNCHANGED.
+#     Smoothness thresholds below are DECLARED pending ratification. Prior "seam 10%/3x" shorthand superseded.
+#   B5 floor 0.25x draftval — PROVISIONAL this run (year-schedule crater-floor PROPOSAL with Luke to sign:
+#     session_2026-07-02/directive2_notes.md). POPULATION CONVENTION (Luke, verbatim intent): ACTIVE/LISTED
+#     players only; once inactive, value = 0; in backtests inactive players REMAIN in denominators while
+#     contributing 0 to numerators for that year.
+#   B2 leakage tol 5.0 %-pts — PROVISIONAL pending the noise-floor spread (Directive 2 Task E; supervisor sets).
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RA = '/home/claude/rl_workspace/rl_after'
@@ -24,7 +35,7 @@ G = {}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], G)
 ev, MA, cp = G['ev'], G['MA'], G['cp']
-GRPPOS, draftval = G['GRPPOS'], G['draftval']
+GRPPOS, draftval, delisted = G['GRPPOS'], G['draftval'], G['delisted']
 
 # SHIP_GATES shorthand -> exact store ID (pinned; EXACT-name discipline, never substring)
 ALIAS = {'Josh Weddle': 'Joshua Weddle', 'Dan Annable': 'Daniel Annable'}
@@ -111,7 +122,7 @@ if len(rucs) >= 3 and len(mids) >= 10:
     med_ruc = float(np.median([v for _, v in rucs]))
     med_mid = float(np.median([ksm(x) for x, _ in rucs]))
     gate('A6', False, 'PASS' if med_ruc <= med_mid else 'FAIL',
-         f'yr1-3 RUC median={med_ruc:.0f} (n={len(rucs)}, pooled — thin slice) vs pick-matched MID kernel median={med_mid:.0f} (n={len(mids)}, bw=0.6 log-pick)')
+         f'yr1-3 RUC median={med_ruc:.0f} (n={len(rucs)}, pooled — thin slice) vs pick-matched MID kernel median={med_mid:.0f} (n={len(mids)}, bw=0.6 log-pick, RATIFIED 02/07)')
 else:
     gate('A6', False, 'ERROR', f'thin cohorts: RUC n={len(rucs)} MID n={len(mids)}')
 # A7 — position poles hold
@@ -150,6 +161,9 @@ except LookupError as ex:
 gate('A15', False, 'STRUCK', 'Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1')
 # ---------- SECTION B ----------
 # B1 — cohort growth law from the walk-forward matrix (SUM-RATIO, yr1=100, busts=0; cohorts 2004-2020, incurve only)
+# RE-SCRIPTED (Luke 02/07, turns 09-10): PASS = POOLED value rises from draft to a peak by yr4-5 (yr6 acceptable);
+# interim pre-peak dips <5% are tolerated (year 2 explicitly named); the level need NOT still hold in yr6.
+# Per-cohort rise-to-yr4-6-above-yr1 kept as the backstop condition (17/17 at re-script).
 try:
     mpath = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_nogames.json'))
     mat = json.load(open(mpath))
@@ -173,9 +187,10 @@ try:
     pooled = {N: 100.0 * sum(S.get((C, N), 0.0) for C in set(c for c, _ in S)) /
                  max(sum(S.get((C, 1), 0.0) for C in set(c for c, _ in S)), 1e-9) for N in range(1, 8)}
     ppk = max(pooled, key=pooled.get)
-    ok = all(rises) and ppk in (4, 5, 6)
+    path_ok = all(pooled[N + 1] >= 0.95 * pooled[N] for N in range(1, ppk) if N + 1 in pooled)
+    ok = all(rises) and ppk in (4, 5, 6) and pooled[ppk] > 100.0 and path_ok
     gate('B1', False, 'PASS' if ok else 'FAIL',
-         f'pooled peak N={ppk} R(peak)={pooled[ppk]:.0f} (need 4-6 & >100); cohorts rising to yr4-6 above yr1: {sum(rises)}/{len(rises)}; matrix={os.path.basename(mpath)}')
+         f'pooled peak N={ppk} R(peak)={pooled[ppk]:.0f} (need peak by yr4-5, yr6 acceptable, >100; pre-peak dips <5% tolerated, path_ok={path_ok}; no yr6-hold required — Luke 02/07); cohorts rising to yr4-6 above yr1: {sum(rises)}/{len(rises)}; matrix={os.path.basename(mpath)}')
     NOTES.append('B1 per-cohort table:\n' + '\n'.join(tbl))
 except Exception as ex:
     gate('B1', False, 'ERROR', f'{type(ex).__name__}: {ex}')
@@ -228,11 +243,14 @@ try:
              f'regenerated rl_app_data.json md5={m_new} vs shipped {m_ship} (byte-agree gate; export exit={r.returncode})')
 except Exception as ex:
     gate('B4', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-# B5 — no-crater guard (DECLARED proxy): drafted 2024/2025, picked, active -> ev >= 0.25 x draftval
+# B5 — no-crater guard (0.25x floor = DECLARED proxy, PROVISIONAL this run; year-schedule replacement PROPOSED
+# in session_2026-07-02/directive2_notes.md — Luke signs). POPULATION CONVENTION (Luke 02/07, verbatim intent):
+# ACTIVE/LISTED players only; once inactive, value = 0, and in backtests inactive players REMAIN in denominators
+# while contributing 0 to numerators for that year.
 try:
     off = []
     for p in MA.data:
-        if p.get('_retired') or p.get('_pickless') or int(p.get('year') or 0) not in (2024, 2025):
+        if p.get('_retired') or p.get('_pickless') or delisted(p) or int(p.get('year') or 0) not in (2024, 2025):
             continue
         v = EV.get(id(p))
         if v is None:
@@ -241,24 +259,33 @@ try:
         if v < 0.25 * dv:
             off.append((p['player'], v, dv))
     gate('B5', False, 'PASS' if not off else 'FAIL',
-         f'{len(off)} yr1-2 picked players below 0.25x draftval (DECLARED floor); worst: ' +
+         f'{len(off)} yr1-2 LISTED picked players below 0.25x draftval (floor PROVISIONAL; listed-only per Luke 02/07); worst: ' +
          ('; '.join(f'{n}={v:.0f}/dv{d:.0f}' for n, v, d in sorted(off, key=lambda t: t[1] / t[2])[:3]) if off else 'none'))
 except Exception as ex:
     gate('B5', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-# B6 — games-ramp continuity: synthetic 2025-draft MID, avg 85, games 1..14 in 2026; monotone + no 6g seam step
+# B6 — games-ramp continuity, RE-SCRIPTED (Luke 02/07, turns 09-10): the gate tests the WHOLE 0->6 ramp.
+# <=5g players were dumped into the sit-out stream, so 0g and 5g got identical treatment; flat-then-step IS the
+# violation. Value must progress smoothly from the 0-game anchor (empty scoring -> sit-out dv*retain path) to the
+# 6-game production value. Monotone-in-evidence clause UNCHANGED (covers the 9->10g dip separately).
+# DECLARED smoothness thresholds pending ratification: no single 0->6 step > 50% of the total 0->6 rise T,
+# AND cumulative rise by 3g >= 25% of T (anti-flat-start). Prior "seam 10%/3x" shorthand superseded.
 try:
     def ramp_p(gm):
         return {'player': 'b6-synth', 'pos': GRPPOS.get('MID'), 'pick': 10.0, 'year': 2025, 'dob': '2006-03-01',
-                'type': 'ND', 'scoring': [{'year': 2026, 'games': gm, 'avg': 85.0}], '_pos_now': None, '_fut': []}
+                'type': 'ND', 'scoring': ([{'year': 2026, 'games': gm, 'avg': 85.0}] if gm > 0 else []),
+                '_pos_now': None, '_fut': []}
     with contextlib.redirect_stdout(io.StringIO()):
-        vals = [float(ev(ramp_p(gm), 2026)) for gm in range(1, 15)]
+        vals = [float(ev(ramp_p(gm), 2026)) for gm in range(0, 15)]
     steps = [vals[i + 1] - vals[i] for i in range(len(vals) - 1)]
-    dips = [(i + 1, s) for i, s in enumerate(steps) if s < -1.0]
-    seam = vals[5] - vals[4]                      # games 5 -> 6
-    med = float(np.median([abs(s) for s in steps if abs(s) > 0])) or 1.0
-    seam_bad = abs(seam) > 0.10 * max(vals[4], 1.0) and abs(seam) > 3.0 * med
-    gate('B6', False, 'PASS' if not dips and not seam_bad else 'FAIL',
-         f'ramp(1..14g)={[round(v) for v in vals]}; dips(more games worth less)={dips or "none"}; seam 5->6g step={seam:+.0f} (tol: <=10% & <=3x median step {med:.0f})')
+    dips = [(i, s) for i, s in enumerate(steps) if s < -1.0]          # label = start game of the step
+    T = vals[6] - vals[0]
+    big = [(i, round(s)) for i, s in enumerate(steps[:6]) if s > 0.50 * max(T, 1.0)]
+    rise3 = vals[3] - vals[0]
+    smooth_bad = (T <= 0) or big or (rise3 < 0.25 * T)
+    gate('B6', False, 'PASS' if not dips and not smooth_bad else 'FAIL',
+         f'ramp(0..14g)={[round(v) for v in vals]}; dips(more games worth less)={dips or "none"}; '
+         f'0->6 rise T={T:+.0f}; 0->6 steps>50%T={big or "none"}; rise by 3g={rise3:+.0f} (need >={0.25*T:.0f}) '
+         f'[whole-ramp re-spec, DECLARED thresholds]')
 except Exception as ex:
     gate('B6', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # ---------- SECTION C ----------

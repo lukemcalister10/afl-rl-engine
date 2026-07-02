@@ -7,7 +7,7 @@ A3   [DC] FAIL     Connor Rozee: 2026=2679 2025=3874 ratio=0.69 (need >=0.80)
           triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
 A4        PASS     Harley Reid board rank=32 ev=3523 (need TOP 40)
 A5        FAIL     Jack Ginnivan=1578 (floor 1600); Jake Bowey=2585 (floor 2100); Nick Blakey=3053 (floor 2600) [SCAR floors — RE-BASE if PVC re-levels]
-A6        PASS     yr1-3 RUC median=314 (n=13, pooled — thin slice) vs pick-matched MID kernel median=502 (n=66, bw=0.6 log-pick)
+A6        PASS     yr1-3 RUC median=314 (n=13, pooled — thin slice) vs pick-matched MID kernel median=502 (n=66, bw=0.6 log-pick, RATIFIED 02/07)
 A7        PASS     Ryan Maric: fut-dominant=MID(60%) gfut=MID (need MID/MID); Ed Langdon: fut-dominant=GDEF(70%) gfut=GEN_DEF (need GDEF/GEN_DEF)
 A8   [DC] PASS     Berry=3473 vs 2x Tsatas=2166 (Tsatas=1083)
 A9        FAIL     Ginnivan>Ward: 1578 vs 1782
@@ -19,15 +19,15 @@ A12  [DC] FAIL     Travaglia>Moraes: 601 vs 876; Smillie>Retschko: 896 vs 730
 A13       PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3035 lineball=True; Levi Ashcroft=3271 lineball=True
 A14       PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1704: Trent Rivers=1725 lineball=True; Zach Reid=1680 lineball=True; Jase Burgoyne=2191 lineball=False
 A15       STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
-B1        PASS     pooled peak N=4 R(peak)=160 (need 4-6 & >100); cohorts rising to yr4-6 above yr1: 17/17; matrix=s4_matrix_nogames.json
+B1        PASS     pooled peak N=4 R(peak)=160 (need peak by yr4-5, yr6 acceptable, >100; pre-peak dips <5% tolerated, path_ok=True; no yr6-hold required — Luke 02/07); cohorts rising to yr4-6 above yr1: 17/17; matrix=s4_matrix_nogames.json
 B2        PASS     median |IS-WF| leakage=0.0 %-pts (DECLARED tol 5.0); GOOD>BUST separation: GEN_DEF 52/1, GEN_FWD 44/1, KEY_DEF 60/1, KEY_FWD 64/1, MID 52/0
 B3        PENDING  book-gate set not yet enumerated as scripted checks — definition proposal in report; book headline shape covered by B1
 B4        FAIL     regenerated rl_app_data.json md5=1898ead7 vs shipped b8f9e998 (byte-agree gate; export exit=0)
-B5        FAIL     9 yr1-2 picked players below 0.25x draftval (DECLARED floor); worst: Jack Watkins=18/dv308; Flynn Perez=39/dv308; Zac Banch=45/dv308
-B6        FAIL     ramp(1..14g)=[745, 745, 745, 745, 745, 3263, 3352, 3357, 3538, 3318, 3464, 3531, 3583, 3578]; dips(more games worth less)=[(9, -220.0), (13, -5.0)]; seam 5->6g step=+2518 (tol: <=10% & <=3x median step 89)
+B5        FAIL     9 yr1-2 LISTED picked players below 0.25x draftval (floor PROVISIONAL; listed-only per Luke 02/07); worst: Jack Watkins=18/dv308; Flynn Perez=39/dv308; Zac Banch=45/dv308
+B6        FAIL     ramp(0..14g)=[745, 745, 745, 745, 745, 745, 3263, 3352, 3357, 3538, 3318, 3464, 3531, 3583, 3578]; dips(more games worth less)=[(9, -220.0), (13, -5.0)]; 0->6 rise T=+2518; 0->6 steps>50%T=[(5, 2518)]; rise by 3g=+0 (need >=630) [whole-ramp re-spec, DECLARED thresholds]
 C1        PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
-VERDICT: FAIL=9  PASS=8  PENDING=5  STRUCK=1  (106s)
+VERDICT: FAIL=9  PASS=8  PENDING=5  STRUCK=1  (104s)
 ```
 
 ## Supporting detail
