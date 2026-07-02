@@ -28,3 +28,14 @@ Also deleted: `verify_anchors.py` (anchor-drift checker for the deleted `redesig
 - **(i)** Replacement-level netting lives in **BOTH paths, applied exactly once per path, never stacked**: engine `price6()` lowers `MA.REPL` by `rd.REPL_DROP` around `dp.v_at_peak` (save/restore); the board's `redesign_value` did the identical save/restore via `_price_repl`. The two paths were parallel alternatives, not composed — **double application = ZERO**. (The engine also uses a hardcoded `REPL−3` bar inside `_lvl_eff_infer`'s upside-fade target — a feature target, not value netting; noted for completeness.)
 - **(ii)** `TR.production_value` consumed **no `ev()` anywhere** — it priced independently through `rval`/`redesign_value` (D3 already proved `_merged_recover` off the export dependency graph; re-verified at the delete).
 - **3b consequence:** netting was NOT board-only → **no promotion needed, nothing to HOLD** — the delete proceeded directly.
+
+---
+
+# ENGINE-TERM DELETIONS (same record discipline; these are engine terms, not board layers)
+_2026-07-02 · D7 ASK 1 · Luke's ruling: v7-cB **deleted, not disabled** — earn-back only as a re-derived engine feature._
+
+| # | term | plain description | measured magnitude (D5 ASK-2 term table, verbatim) | recorded rationale | deleted from | resurrection ref |
+|---|---|---|---|---|---|---|
+| E1 | v7-cB (upper-quantile band compression) | `cB = 0.47·clip((effs−1)/3, 0, 1)` squeezed the band's q90/q95 (bb[3]/bb[4]) toward the median for players with effective-season count ≥1 — the more career a player had banked, the harder his upside quantiles were compressed, regardless of how good he was | A2 Curtis/Ward 0.875→0.822 when off (cB squeezed **Curtis −195/−14.4%, Ward −324/−19.6%**); new-B1 avg peak 147.6→156.6 when off; B5 offenders 82→76 when off; 2020-cohort d4-6 markdown **−8.0%, spread top-quartile −6.8% / middle −15.1% / bottom-half −8.8%** | INDISCRIMINATE markdown: Spearman(value, Δ%) = **−0.024 (p=0.87)** — zero correlation with quality (v7-asc, kept, is mediocrity-concentrated at ρ=+0.706); the **Curtis squeezer** (the A2 red gate's motion was cB, not Ward-side truth); artifact-shaped, not signal-shaped | `_v7` in `engine/rl_after/_merged_recover.py` (BAKE CANDIDATE v2 lineage): cB factor + `_effs` feed (no other consumer) + `GCAP` constant — deletion commit **`c16b970`** (branch `claude/d7-bake-candidate-v2`) | `git show 0806d90:engine/rl_after/_merged_recover.py` (the D4 candidate — the last commit carrying full cB code); D5 decomposition: `session_2026-07-02/d5_ask2_term_table.md` |
+
+Earn-back condition (standing rule): a band-compression term returns only as an engine feature with a demonstrated quality signal (the concentration test v7-asc passes and cB failed), never as a blanket squeeze.

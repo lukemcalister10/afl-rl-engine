@@ -397,9 +397,12 @@ except Exception as ex:
 # AND cumulative rise by 3g >= 25% of T (anti-flat-start). Prior "seam 10%/3x" shorthand superseded.
 try:
     def ramp_p(gm):
+        # top-level 'games' carried per the M3 wiring-time note (D4 backtest, m3_design §1): the age pin
+        # activates _dev_advance's roll, which reads p['games'] — real store rows all carry it; the synth
+        # must too. Byte-inert at heads without the M3 pin (the roll never activates there).
         return {'player': 'b6-synth', 'pos': GRPPOS.get('MID'), 'pick': 10.0, 'year': 2025, 'dob': '2006-03-01',
                 'type': 'ND', 'scoring': ([{'year': 2026, 'games': gm, 'avg': 85.0}] if gm > 0 else []),
-                '_pos_now': None, '_fut': []}
+                'games': gm, '_pos_now': None, '_fut': []}
     with contextlib.redirect_stdout(io.StringIO()):
         vals = [float(ev(ramp_p(gm), 2026)) for gm in range(0, 15)]
     steps = [vals[i + 1] - vals[i] for i in range(len(vals) - 1)]
