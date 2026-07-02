@@ -62,7 +62,7 @@ _Head `8aed420a` store `644d1254` — 51 offenders under the signed year-schedul
 
 ## 3b — CANDIDATE DELTA: the 31 players who JOIN at the candidate (82−51; leavers: 0)
 _Attribution: a joiner is attributed to the term(s) whose individual OFF-toggle rescues them (they leave the offender set when that one term is turned off). "joint" = no single term rescues._
-| player | club | yrs-in-system | entrant type | current value | draft-day value | ratio | floor breached | margin  pushed under by |
+| player | club | yrs-in-system | entrant type | current value | draft-day value | ratio | floor breached | margin | pushed under by |
 |---|---|---|---|---|---|---|---|---|---|
 | Angus Anderson | Collingwood | 1 | ND | 48 | 309 | 0.155 | 0.45x = 139 | -91 | v7-asc |
 | Latrelle Pickett | Melbourne | 1 | ND | 570 | 1269 | 0.449 | 0.45x = 571 | -1 | v7-asc |

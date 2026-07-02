@@ -45,7 +45,7 @@ L.append(f'## 3b — CANDIDATE DELTA: the {len(join)} players who JOIN at the ca
          f'({M["candidate"]["b5_count"]}−{M["head"]["b5_count"]}; leavers: {len(leave)})')
 L.append('_Attribution: a joiner is attributed to the term(s) whose individual OFF-toggle rescues them '
          '(they leave the offender set when that one term is turned off). "joint" = no single term rescues._')
-L.append(hd[:-1] + ' pushed under by |')
+L.append(hd + ' pushed under by |')
 L.append(sep + '---|')
 attr_count = {}
 for r in join:
