@@ -15,7 +15,7 @@ Then HOLD for the supervisor's directive.
 ### Five-state workstream vocabulary — the words "closed" and "done" are BANNED
 `PROPOSED → DERIVED → WIRED → VERIFIED → BAKED`. Every backlog line / CHANGELOG entry / handover claim carries exactly one state. **VERIFIED requires naming the cold-reproduction artifact (script + number).** BAKED requires Luke's explicit go. ("M1+v7 bake-ready" = VERIFIED on the proven slice, NOT baked.)
 ### Fixed build-return template — ≤30 lines (supervisor bounces nonconforming returns)
-state header (head / store / tarball id) · PASS/FAIL with reproduced numbers · what did NOT move · artifacts by filename+md5 (never inlined) · hypotheses with status · next action.
+state header (head / store / tarball id) · PASS/FAIL with reproduced numbers · what did NOT move · artifacts by filename+md5 (never inlined) · hypotheses with status · next action · **IN PLAIN TERMS footer** (standing, Luke 02/07/2026: one sentence under that header — what a league manager should take from the turn).
 ### Context-budget rules (chats die from watching themselves work)
 - **Verify by SCRIPT, never by inspection** (`verify_restore.sh`). Inspection costs ~50-100× for the same assurance.
 - **Never print what can be grepped:** no full tar listings, no directory trees, no whole-file engine views. The manifest is a file to query.
