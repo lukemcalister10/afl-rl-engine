@@ -13,8 +13,25 @@ expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PIC
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
 val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']
 
-# WIRE-IN (cont.25): overwrite p['_v'] with the consolidated redesign (soft floor + ruck tax + per-group REPL) before export.
-import wire_redesign; wire_redesign.wire(players); wire_redesign.wire(g['back_extra'])
+# ONE PRICE (D4, Luke's ruling 02/07/2026, in writing): the board renders engine ev() — _merged_recover
+# is the single valuation source. The cont.25/27 wire overwrite (TR.production_value router + layers) is
+# DELETED; see BOARD_LAYERS_OBITUARY.md. VIEW RE-PLUMB (3e): the forward/backward season view asks the
+# engine the as-of-year question — vM2/vM1/v/vP1/vP2 = ev(p, 2024/2025/2026/2027/2028); the view owns no
+# math. CAVEAT (spec'd, held): retired back-rows — delisted() is 2026-hardcoded in the frozen head, so
+# their as-of-year back-values need the Y-aware delisted() (candidate-branch item); flat engine-2026 until.
+import io as _io, contextlib as _ctx
+_ens = {}
+with _ctx.redirect_stdout(_io.StringIO()):
+    exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], _ens)
+_ev = _ens['ev']
+with _ctx.redirect_stdout(_io.StringIO()):
+    for _p in players:
+        _p['_v'] = _ev(_p, 2026)
+        _p['_vM2'], _p['_vM1'], _p['_vP1'], _p['_vP2'] = _ev(_p, 2024), _ev(_p, 2025), _ev(_p, 2027), _ev(_p, 2028)
+        _p['_cvx'] = 1.0
+    for _p in g['back_extra']:
+        _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _ev(_p, 2026)
+        _p['_cvx'] = 1.0
 
 def player_rec(p):
     grp=bnow(p); gf=gfut(p); fb=futblend(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)
