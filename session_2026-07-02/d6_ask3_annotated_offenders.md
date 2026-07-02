@@ -62,7 +62,7 @@ _Head `8aed420a` 51 offenders / candidate `fb39d88a` 82 (31 joiners, 0 leavers �
 | Rhys Stanley | St Kilda | 18 | 12 | 425 | 0.028 | 0.05x = 21 | -9 | clear | — | 1 |
 
 ## CANDIDATE 31 JOINERS (82−51; 0 leavers) — with the D5 per-term attribution carried over
-| player | club | yrs | ev | draftval | ratio | floor | margin | REGISTER | LUKE'S READ | 2026 games  pushed under by (D5) |
+| player | club | yrs | ev | draftval | ratio | floor | margin | REGISTER | LUKE'S READ | 2026 games | pushed under by (D5) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Angus Anderson | Collingwood | 1 | 48 | 309 | 0.155 | 0.45x = 139 | -91 | clear | — | 8 | v7-asc |
 | Latrelle Pickett | Melbourne | 1 | 570 | 1269 | 0.449 | 0.45x = 571 | -1 | clear | — | 12 | v7-asc |

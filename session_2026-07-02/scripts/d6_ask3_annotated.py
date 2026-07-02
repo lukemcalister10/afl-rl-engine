@@ -77,7 +77,7 @@ for r in tail:
     L.append(fmt(r))
 L.append('')
 L.append(f'## CANDIDATE 31 JOINERS (82−51; 0 leavers) — with the D5 per-term attribution carried over')
-L.append(hd[:-1] + ' pushed under by (D5) |')
+L.append(hd + ' pushed under by (D5) |')
 L.append(sep + '---|')
 for r in join:
     L.append(fmt(r) + f" {attr.get(r['player'], '—')} |")
