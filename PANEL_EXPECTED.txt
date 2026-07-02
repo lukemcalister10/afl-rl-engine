@@ -1,0 +1,14 @@
+FIXED PANEL — verified on engine 8aed420a + reconciled pre_stage0 store, ENV per run_panel.sh.
+A cold reload MUST reproduce every EV exactly. If any mismatch -> the tarball or ENV is wrong.
+
+player                pos       pk  ns    EV   note
+Nick Daicos           MID        4   5  7059  proven star
+Marcus Bontempelli    MID        4  13  3101  proven
+Harry Sheezel         MID        3   4  7287  proven young (drafted GEN_FWD -> plays MID; switcher)
+Max Gawn              RUC       33  14  2126  proven ruck
+Harley Reid           MID        1   3  3523  first-year value, pk1 (NOT cratered)
+Josh Ward             MID        7   5  1782  moderate pedigree (the "Ward" case)
+Darcy Moore           KEY_DEF    8  11   177  decliner the shed fired on (possible OVER-shed; open thread)
+Taylor Goad           RUC       20   0   545  sat-out ruck -> no-games anchor (dv*retain)
+Josh Smillie          MID        7   0   896  sat-out mid -> no-games anchor
+Will Green            RUC       16   0   741  sat-out ruck -> no-games anchor

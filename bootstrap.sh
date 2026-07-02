@@ -1,0 +1,38 @@
+#!/bin/bash
+# ============================================================================
+# COMPLETE COLD-START BOOTSTRAP — AFL RL engine, snapshot md5 8aed420a
+# Recreates the exact layout the engine's absolute paths expect. OFFLINE-SAFE
+# (unidecode is VENDORED, no pip/network needed). Idempotent.
+# ============================================================================
+set -e
+HERE=$(cd "$(dirname "$0")" && pwd)
+mkdir -p /home/claude/rl_workspace /home/claude/rl_build /home/claude/rl_vendor
+
+# 1. engine + support modules + harness + pipeline + data files
+cp -rf "$HERE/engine/rl_after"          /home/claude/rl_workspace/
+cp -rf "$HERE/engine/forward_valuation" /home/claude/rl_workspace/
+
+# 2. absolute-path data deps
+cp -f "$HERE/data/cm_400.pkl"                /home/claude/cm_400.pkl
+cp -f "$HERE/data/rl_build/rl_app_data.json" /home/claude/rl_build/rl_app_data.json
+
+# 3. VENDORED unidecode (offline; no pip). Placed on PYTHONPATH via run_panel/ENV.
+cp -rf "$HERE/vendor/unidecode" /home/claude/rl_vendor/unidecode
+
+# 4. the rl_after symlink par_redesign.py inserts on sys.path
+ln -sfn /home/claude/rl_workspace/rl_after /home/claude/rl_after
+
+# 5. AUTHORITATIVE STORE = reconciled pre_stage0 -> live rl_model_data.json
+cp -f /home/claude/rl_workspace/rl_after/rl_model_data.json.pre_stage0 \
+      /home/claude/rl_workspace/rl_after/rl_model_data.json
+
+M=$(md5sum /home/claude/rl_workspace/rl_after/_merged_recover.py | cut -c1-8)
+C=$(md5sum /home/claude/cm_400.pkl | cut -c1-8)
+U=$(python3 -c "import sys; sys.path.insert(0,'/home/claude/rl_vendor'); import unidecode; print('OK')" 2>/dev/null || echo FAIL)
+echo "bootstrap OK"
+echo "  engine md5     : $M   (expect 8aed420a)"
+echo "  cm_400 md5     : $C   (expect 34faa865)"
+echo "  unidecode      : $U   (vendored, offline)"
+echo "  store          : rl_model_data.json = reconciled pre_stage0 (authoritative)"
+echo "  ENV (with vendor): PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor"
+echo "  next: bash $HERE/run_panel.sh"
