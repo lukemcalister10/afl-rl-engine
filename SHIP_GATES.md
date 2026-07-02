@@ -58,7 +58,17 @@ N1. Mid-career (years 3-5) Parish valuation — decider: the matched same-player
 N2. The years-4-6 peak LEVEL — not a gate until the matched cut runs.
 
 ## SECTION B — STRUCTURAL GATES
-B1. Cohort growth law: per-cohort aggregate value rises from draft to its yr4-6 peak.
+B1. Cohort growth law — REDEFINED by Luke (in writing, confirmed, 02/07/2026 D5;
+    amendment logged in CHANGELOG; supersedes the per-cohort form and the pooled
+    re-script): at each years-in-system depth d, the SIMPLE (UNWEIGHTED) MEAN of
+    indexed cohort value (yr1 = 100) across all cohorts observed at depth d must
+    rise from year 1 to a peak occurring in years 4-6; pre-peak dips of the
+    AVERAGE tolerated under 5% (tolerance carried from old B1 — now applies to
+    the average only). Individual cohorts are UNGATED by design (Luke: "not all
+    draft cohorts are equal; 2020 is a shocking draft — it should lose value")
+    but the per-cohort curve table MUST be printed as a pipe table on every
+    gates-board run (Luke's eyeball channel — visibility without a gate). The
+    old per-cohort rise backstop is RETIRED — obituary in CHANGELOG (D5).
 B2. GATE-1: leakage ~0 (IS vs WF, tree-matched) + clean good/bust separation.
 B3. Walk-forward book gates pass at the ship head.
 B4. JS parity: Python and board JS byte-agree on the shipped board.
