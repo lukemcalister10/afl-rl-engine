@@ -30,6 +30,10 @@
 #     the future LTI overlay must not be the thing that passes it).
 #   B5 YEAR-SCHEDULE SIGNED 02/07/2026 (Luke, in writing, D4): floors by years-in-system replace the 0.25x
 #     proxy — see the B5 block for constants, population, and the generating rule.
+#   B1 REDEFINED 02/07/2026 (Luke, in writing, confirmed, D5): the gate tests the CROSS-COHORT UNWEIGHTED
+#     AVERAGE of indexed cohort value at each year-depth (rise from yr1 to a peak in yrs 4-6; <5% pre-peak
+#     dips of the average tolerated). Per-cohort curves UNGATED by design but printed as a pipe table on
+#     every gates-board run. The old per-cohort rise backstop is RETIRED — obituary in CHANGELOG (D5).
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RA = '/home/claude/rl_workspace/rl_after'
@@ -187,10 +191,16 @@ except LookupError as ex:
     gate('A13', False, 'ERROR', str(ex)); gate('A14', False, 'ERROR', str(ex))
 gate('A15', False, 'STRUCK', 'Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1')
 # ---------- SECTION B ----------
-# B1 — cohort growth law from the walk-forward matrix (SUM-RATIO, yr1=100, busts=0; cohorts 2004-2020, incurve only)
-# RE-SCRIPTED (Luke 02/07, turns 09-10): PASS = POOLED value rises from draft to a peak by yr4-5 (yr6 acceptable);
-# interim pre-peak dips <5% are tolerated (year 2 explicitly named); the level need NOT still hold in yr6.
-# Per-cohort rise-to-yr4-6-above-yr1 kept as the backstop condition (17/17 at re-script).
+# B1 — cohort growth law from the walk-forward matrix (per-cohort SUM indexed yr1=100, busts=0; cohorts
+# 2004-2020, incurve only). REBUILT (Luke's REDEFINITION, in writing, confirmed 02/07/2026, D5 — supersedes
+# BOTH the pooled-rise re-script AND the per-cohort backstop): at each years-in-system depth d the SIMPLE
+# (UNWEIGHTED) MEAN of indexed cohort value across all cohorts OBSERVED at depth d must rise from year 1 to
+# a peak occurring in years 4-6; pre-peak dips of the AVERAGE tolerated under 5% (tolerance carried from old
+# B1 — now applies to the average ONLY). Individual cohorts are UNGATED by design (Luke: "not all draft
+# cohorts are equal; 2020 is a shocking draft — it should lose value") but the per-cohort table IS PRINTED
+# as a pipe table on every gates-board run (Luke's eyeball channel — visibility without a gate). The retired
+# per-cohort backstop's obituary lives in CHANGELOG (D5).
+B1_TABLE = None
 try:
     mpath = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_nogames.json'))
     mat = json.load(open(mpath))
@@ -204,21 +214,27 @@ try:
             if N > 7:
                 break
             S[(C, N)] = S.get((C, N), 0.0) + float(v['Vpath'][i] or 0.0)
-    rises, peaks, tbl = [], [], []
-    for C in sorted({c for c, _ in S}):
-        R = {N: 100.0 * S[(C, N)] / max(S[(C, 1)], 1e-9) for N in range(1, 8) if (C, N) in S}
-        pkN = max(R, key=R.get)
-        rises.append(max(R.get(N, 0) for N in (4, 5, 6)) > 100.0)
-        peaks.append(pkN)
-        tbl.append(f'  cohort {C}: peakN={pkN} R={{{", ".join(f"{N}:{R[N]:.0f}" for N in sorted(R))}}}')
-    pooled = {N: 100.0 * sum(S.get((C, N), 0.0) for C in set(c for c, _ in S)) /
-                 max(sum(S.get((C, 1), 0.0) for C in set(c for c, _ in S)), 1e-9) for N in range(1, 8)}
-    ppk = max(pooled, key=pooled.get)
-    path_ok = all(pooled[N + 1] >= 0.95 * pooled[N] for N in range(1, ppk) if N + 1 in pooled)
-    ok = all(rises) and ppk in (4, 5, 6) and pooled[ppk] > 100.0 and path_ok
+    cohorts = sorted({c for c, _ in S})
+    R = {C: {N: 100.0 * S[(C, N)] / max(S[(C, 1)], 1e-9) for N in range(1, 8) if (C, N) in S} for C in cohorts}
+    AVG = {N: float(np.mean([R[C][N] for C in cohorts if N in R[C]]))
+           for N in range(1, 8) if any(N in R[C] for C in cohorts)}
+    ppk = max(AVG, key=AVG.get)
+    path_ok = all(AVG[N + 1] >= 0.95 * AVG[N] for N in range(1, ppk) if N + 1 in AVG)
+    ok = ppk in (4, 5, 6) and AVG[ppk] > 100.0 and path_ok
     gate('B1', False, 'PASS' if ok else 'FAIL',
-         f'pooled peak N={ppk} R(peak)={pooled[ppk]:.0f} (need peak by yr4-5, yr6 acceptable, >100; pre-peak dips <5% tolerated, path_ok={path_ok}; no yr6-hold required — Luke 02/07); cohorts rising to yr4-6 above yr1: {sum(rises)}/{len(rises)}; matrix={os.path.basename(mpath)}')
-    NOTES.append('B1 per-cohort table:\n' + '\n'.join(tbl))
+         f'cross-cohort AVERAGE peak N={ppk} AVG(peak)={AVG[ppk]:.0f} (need peak in yrs 4-6, >100; pre-peak dips '
+         f'of the AVERAGE <5% tolerated, path_ok={path_ok}; per-cohort UNGATED, table printed every run — Luke '
+         'redefinition 02/07 D5); avg row: ' + ' '.join(f'{N}:{AVG[N]:.0f}' for N in sorted(AVG)) +
+         f'; cohorts n={len(cohorts)}; matrix={os.path.basename(mpath)}')
+    _t = ['| cohort | peakN | ' + ' | '.join(f'd{N}' for N in range(1, 8)) + ' |',
+          '|---|---|' + '---|' * 7]
+    for C in cohorts:
+        pk = max(R[C], key=R[C].get)
+        _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
+    _t.append(f'| **AVG (the gated row)** | **{ppk}** | ' +
+              ' | '.join((f'**{AVG[N]:.0f}**' if N in AVG else '—') for N in range(1, 8)) + ' |')
+    B1_TABLE = '\n'.join(_t)
+    NOTES.append('B1 per-cohort curves (UNGATED — printed every gates-board run, Luke eyeball channel):\n' + B1_TABLE)
 except Exception as ex:
     gate('B1', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # B2 — GATE-1 leakage + separation, parsed from the harness output (_gate1_wf.py run this session)
@@ -345,6 +361,8 @@ for gid, dc, st, det in RES:
 summary = 'VERDICT: ' + '  '.join(f'{k}={v}' for k, v in sorted(cnt.items())) + f'  ({time.time()-t0:.0f}s)'
 lines.append(summary)
 print('\n'.join(lines))
+if B1_TABLE:      # Luke's ruling (02/07/2026 D5): the per-cohort table prints on EVERY gates-board run
+    print('\nB1 per-cohort curves (UNGATED — Luke eyeball channel):\n' + B1_TABLE)
 rep = os.path.join(ROOT, 'session_2026-07-02', f'ship_gates_report_{HEAD}.md')
 os.makedirs(os.path.dirname(rep), exist_ok=True)
 with open(rep, 'w') as f:

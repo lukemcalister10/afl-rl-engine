@@ -3,6 +3,13 @@ _Head `8aed420a`. Five-state vocab (PROPOSED→DERIVED→WIRED→VERIFIED→BAKE
 _D4 (02/07 pm): BAKE CANDIDATE exists — branch `claude/d4-bake-candidate-m2-m1v7` (engine `fb39d88a`, M1+v7 + M2 wired,
 board 11P/6F) — holds for the external cold audit + Luke's bake word. Canonical head untouched. See §1/§2 updates below,
 `session_2026-07-02/directive4_notes.md`, and `BOARD_LAYERS_OBITUARY.md` (ONE-price executed, workstream 10)._
+_D5 (02/07 late): B1 REDEFINED by Luke (cross-cohort AVERAGE law; per-cohort UNGATED but printed every board run) — the D4
+B1 bake-blocker DISSOLVES (new-B1 PASS at head/candidate/control). M1+v7 decomposed PER TERM: M1 owns the whole A3 −0.034;
+v7-cB owns the Curtis squeeze AND an indiscriminate half of the 2020 markdown (ρ≈0, producers hit like mediocrity); v7-asc
+owns the mediocrity-concentrated half (ρ=+0.71 — Luke's shocking-draft read confirmed on concentration) plus the B5 blowout
+(implicated in 27 of the 31 candidate joiners). Yr8+ tail floors derived from the generating rule (.011/.012/.021/.012 for
+d=8/9/10/11+ vs flat .05 — numbers only, decision pending Luke). LTI register CONTENT committed (32 LTI + 11 out-for-2026).
+See `session_2026-07-02/d5_ask2_perterm_decomposition.md` + `directive5_notes.md`._
 
 ## 1. M1 + refined-v7 — STATE: WIRED (bake candidate, D4 02/07), NOT BAKED
 D4: transplanted verbatim into `_merged_recover.py` ON THE CANDIDATE BRANCH (commit `0806d90`); read-pass endorsed per the
@@ -11,6 +18,11 @@ canonical restore-verify pins move at candidate by design). OPEN + ENGINE-CAUSED
 16/17 on the candidate-rebuilt book — cohort 2020 yrs4-6 R=97/98/95 vs 109/110/110 on the same-builder canonical control
 → the M1+v7 wiring breaks the 2020 cohort's growth-law backstop; live bake-blocker for the cold audit + Luke's read.
 Also priced: the overlay costs A3 ~0.05 (see §2) — the A2/A5/A9 repairs vs A3/B1 damage is now Luke's explicit tradeoff.
+D5 SUPERSEDES the B1 line above: Luke REDEFINED B1 (cross-cohort average; per-cohort ungated) → the 2020 backstop failure
+NO LONGER BLOCKS (new-B1 PASS at the candidate, avg peak N=4 at 147.6). The overlay tradeoff is now priced PER TERM
+(`d5_ask2_perterm_decomposition.md`): M1 = Curtis +184 / A3 −0.034 / 2020 +3.9%; v7-cB = Curtis −195, Ward −324,
+2020 −8.0% INDISCRIMINATE (ρ≈0); v7-asc = 2020 −7.9% mediocrity-concentrated (ρ=+0.71), B5 +29. Luke's overlay ruling
+reads from that doc.
 Pre-D4 text (params + provenance) follows:
 Bake gate = **Luke's read-pass on a fixed named panel** (per BAKE_CHECKLIST.md, to be written first). Params: M1 `TOL_M1=5, G_ADQ=12, WIN=2, S_M1=0.46`; refined-v7 `cB=0.47·clip((e−1)/3,0,1)`, `e=Σmin(games_s/17,1)`, `aSc=interp(age,[20,22,24,27],[1.00,0.76,0.58,0.40])`, tail wt 0.10. Currently applied only in the matrix builder (`engine/rl_after/s4_matrix_M1v7.py`), NOT in `_merged_recover.py`. **Resume/bake:** write BAKE_CHECKLIST.md → cold audit at head → Luke read-pass → wire M1 branch + refined `cB` into `_merged_recover.py` → full re-verify (md5s, 10-panel, Maric/Langdon, book, JS-parity) → `doc_lint` → tarball. Both systemic flags resolved (KEY_FWD over-compression = speculative ceiling; Graham cohort = trust-the-level). NOTE: M1+v7 nudges the already-underpriced Rozee 2026 down ~8% (2679→2460) — flag at read-pass. DIRECTIVE-2 (02/07): read-pass pack produced (`session_2026-07-02/readpass_pack_M1v7_8aed420a.md`, 2025 basis, 2026 column excluded); in scratch the prototype flips A9 (Ginnivan 1677 > Ward 1253) and the Weddle leg of A2 and clears the A5 floors, but Curtis (1087) stays below Ward (1253) — the Ward-pattern reds are NOT fully explained by the un-baked prototype (H-WARD falsified as sole cause).
 

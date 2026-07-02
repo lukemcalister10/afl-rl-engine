@@ -18,7 +18,7 @@ A12  [DC] FAIL     Travaglia>Moraes: 601 vs 876; Smillie>Retschko: 896 vs 730
 A13       PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3035 lineball=True; Levi Ashcroft=3271 lineball=True
 A14       PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1704: Trent Rivers=1725 lineball=True; Zach Reid=1680 lineball=True; Jase Burgoyne=2191 lineball=False
 A15       STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
-B1        PASS     pooled peak N=4 R(peak)=160 (need peak by yr4-5, yr6 acceptable, >100; pre-peak dips <5% tolerated, path_ok=True; no yr6-hold required — Luke 02/07); cohorts rising to yr4-6 above yr1: 17/17; matrix=s4_matrix_nogames.json
+B1        PASS     cross-cohort AVERAGE peak N=4 AVG(peak)=161 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed every run — Luke redefinition 02/07 D5); avg row: 1:100 2:132 3:146 4:161 5:158 6:148 7:131; cohorts n=17; matrix=s4_matrix_nogames.json
 B2        PASS     median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 52/1, GEN_FWD 44/1, KEY_DEF 60/1, KEY_FWD 64/1, MID 52/0
 B3        PENDING  book-gate set not yet enumerated as scripted checks — definition proposal in report; book headline shape covered by B1
 B4        FAIL     regenerated rl_app_data.json md5=1898ead7 vs shipped b8f9e998 (byte-agree gate; export exit=0)
@@ -26,29 +26,32 @@ B5        FAIL     51 ND-entrant LISTED players below the signed year-schedule f
 B6        FAIL     ramp(0..14g)=[745, 745, 745, 745, 745, 745, 3263, 3352, 3357, 3538, 3318, 3464, 3531, 3583, 3578]; dips(more games worth less)=[(9, -220.0), (13, -5.0)]; 0->6 rise T=+2518; 0->6 steps>50%T=[(5, 2518)]; rise by 3g=+0 (need >=630) [whole-ramp re-spec, DECLARED thresholds]
 C1        PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
-VERDICT: FAIL=8  PASS=9  PENDING=5  STRUCK=1  (93s)
+VERDICT: FAIL=8  PASS=9  PENDING=5  STRUCK=1  (109s)
 ```
 
 ## Supporting detail
 
-B1 per-cohort table:
-  cohort 2004: peakN=5 R={1:100, 2:139, 3:168, 4:175, 5:190, 6:168, 7:146}
-  cohort 2005: peakN=4 R={1:100, 2:145, 3:148, 4:203, 5:185, 6:179, 7:157}
-  cohort 2006: peakN=5 R={1:100, 2:142, 3:159, 4:178, 5:180, 6:172, 7:148}
-  cohort 2007: peakN=5 R={1:100, 2:133, 3:128, 4:140, 5:166, 6:155, 7:135}
-  cohort 2008: peakN=4 R={1:100, 2:134, 3:181, 4:197, 5:177, 6:158, 7:139}
-  cohort 2009: peakN=2 R={1:100, 2:122, 3:111, 4:114, 5:117, 6:104, 7:91}
-  cohort 2010: peakN=4 R={1:100, 2:143, 3:160, 4:178, 5:169, 6:153, 7:130}
-  cohort 2011: peakN=4 R={1:100, 2:136, 3:167, 4:192, 5:187, 6:174, 7:142}
-  cohort 2012: peakN=4 R={1:100, 2:123, 3:136, 4:140, 5:135, 6:128, 7:106}
-  cohort 2013: peakN=5 R={1:100, 2:137, 3:159, 4:192, 5:193, 6:167, 7:129}
-  cohort 2014: peakN=4 R={1:100, 2:134, 3:156, 4:169, 5:156, 6:150, 7:145}
-  cohort 2015: peakN=4 R={1:100, 2:126, 3:131, 4:136, 5:135, 6:134, 7:123}
-  cohort 2016: peakN=4 R={1:100, 2:138, 3:157, 4:183, 5:174, 6:175, 7:152}
-  cohort 2017: peakN=3 R={1:100, 2:119, 3:125, 4:115, 5:109, 6:105, 7:98}
-  cohort 2018: peakN=4 R={1:100, 2:126, 3:134, 4:144, 5:139, 6:128, 7:118}
-  cohort 2019: peakN=5 R={1:100, 2:132, 3:148, 4:162, 5:170, 6:151, 7:135}
-  cohort 2020: peakN=3 R={1:100, 2:112, 3:118, 4:109, 5:110, 6:110}
+B1 per-cohort curves (UNGATED — printed every gates-board run, Luke eyeball channel):
+| cohort | peakN | d1 | d2 | d3 | d4 | d5 | d6 | d7 |
+|---|---|---|---|---|---|---|---|---|
+| 2004 | 5 | 100 | 139 | 168 | 175 | 190 | 168 | 146 |
+| 2005 | 4 | 100 | 145 | 148 | 203 | 185 | 179 | 157 |
+| 2006 | 5 | 100 | 142 | 159 | 178 | 180 | 172 | 148 |
+| 2007 | 5 | 100 | 133 | 128 | 140 | 166 | 155 | 135 |
+| 2008 | 4 | 100 | 134 | 181 | 197 | 177 | 158 | 139 |
+| 2009 | 2 | 100 | 122 | 111 | 114 | 117 | 104 | 91 |
+| 2010 | 4 | 100 | 143 | 160 | 178 | 169 | 153 | 130 |
+| 2011 | 4 | 100 | 136 | 167 | 192 | 187 | 174 | 142 |
+| 2012 | 4 | 100 | 123 | 136 | 140 | 135 | 128 | 106 |
+| 2013 | 5 | 100 | 137 | 159 | 192 | 193 | 167 | 129 |
+| 2014 | 4 | 100 | 134 | 156 | 169 | 156 | 150 | 145 |
+| 2015 | 4 | 100 | 126 | 131 | 136 | 135 | 134 | 123 |
+| 2016 | 4 | 100 | 138 | 157 | 183 | 174 | 175 | 152 |
+| 2017 | 3 | 100 | 119 | 125 | 115 | 109 | 105 | 98 |
+| 2018 | 4 | 100 | 126 | 134 | 144 | 139 | 128 | 118 |
+| 2019 | 5 | 100 | 132 | 148 | 162 | 170 | 151 | 135 |
+| 2020 | 3 | 100 | 112 | 118 | 109 | 110 | 110 | — |
+| **AVG (the gated row)** | **4** | **100** | **132** | **146** | **161** | **158** | **148** | **131** |
 
 ## Board top-50 (A4 context)
   1. Luke Jackson             RUC         7731
