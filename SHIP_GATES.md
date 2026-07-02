@@ -1,6 +1,6 @@
 # SHIP_GATES.md — AFL SuperCoach RL engine — FROZEN ACCEPTANCE SUITE
-### Status: READY TO FREEZE (02/07/2026) — all decisions resolved by Luke; becomes
-### FROZEN on his word, then committed to the repo.
+### Status: FROZEN (02/07/2026) — all decisions resolved by Luke; the commit of
+### this file to the repo WAS the freeze act (Luke, 02/07/2026).
 ### Rule: when every gate passes, the engine SHIPS and gets used for real trades.
 ### Post-freeze the list does not grow — new reads go to V_NEXT.md unless they
 ### demonstrate an existing gate is broken. Every line becomes a scripted PASS/FAIL
