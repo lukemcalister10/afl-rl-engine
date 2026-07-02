@@ -12,7 +12,7 @@ STALE    = re.compile(r'\b(LATEST|pending|not yet|TODO)\b')
 ALLOW    = re.compile(r'(not yet created|pending luke|decision pending)', re.I)
 CURCLAIM = re.compile(r'(current|latest|head)', re.I)
 LIVE    = ["START_HERE.md", "CHECKPOINT_MANIFEST.md", "REQUIRED_INPUTS.md",
-           "docs/UNRESOLVED.md", "docs/KICKOFF_PROMPT.md", "SHIP_GATES.md"]
+           "docs/UNRESOLVED.md", "docs/KICKOFF_PROMPT.md", "SHIP_GATES.md", "BAKE_CHECKLIST.md"]
 HISTORY = ["PROVENANCE_2026-07-01.md", "docs/archive/HANDOVER_historical.md"]
 # NOTE: docs/CHANGELOG.md is the lineage record (its job is to list historical candidate hashes) -> exempt by design.
 fails, warns = [], []
