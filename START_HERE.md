@@ -44,3 +44,10 @@ See `docs/UNRESOLVED.md` (every workstream + five-state + exact resume). Headlin
 
 ## 6. PROCESS
 `docs/process/` holds four docs; PROCESS_CHANGES, CONTEXT_BUDGET_RULES and BUILD_AGENT_FEEDBACK are BINDING and folded into `docs/KICKOFF_PROMPT.md`; SUPERVISOR_AGENT_FEEDBACK rides along for the record.
+
+### PERMANENT SESSION RULES (registered 02/07/2026, Directive 3 STEP 0 — binding on every session)
+1. **End every session with a PR** — title = the directive name, body = the return. Fallback if PR creation is unavailable: return's last line = `MERGE NEEDED:` + the compare URL.
+2. **Every return ends with one sentence under IN PLAIN TERMS.**
+3. **Every LUKE-FACING read file** (packs, offender tables, proposals) uses GitHub-rendering pipe tables AND is duplicated into the PR description body.
+4. **Engine evaluations run SEQUENTIALLY on default boxes** (the D2 3-way-parallel false start cost ~30 min).
+5. **Every session posts a revised duration estimate at start** (once tasks are sized) and **flags mid-session if the estimate blows out by more than double.** Bands, not commitments.
