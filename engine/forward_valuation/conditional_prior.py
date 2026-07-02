@@ -42,10 +42,30 @@ def _season_rows(p,Y):
     return [(x['year'],x['games'],x['avg']) for x in p['scoring']
             if x['games']>0 and (debutyr(p)-1) < x['year'] <= Y]
 def _swt(yr,Y): return RECENCY_DECAY ** max(0, Y-yr)
+# ---- M2-EXPOSURE (BAKE CANDIDATE, D4 02/07/2026 — Luke's written go; NOT baked until Luke's bake word) ----
+# While season EXPO_INPROG_Y is IN PROGRESS, the prior-season decay clock advances at the durable-player pace
+# f instead of a full click, scoped by evidence replacement s = clip(1 - g_Y/EXPO_DEN, 0, 1): players with
+# >= EXPO_DEN current-season games are untouched BY CONSTRUCTION (s=0). Byte-exact at f=1 and on all completed
+# seasons: the in-progress exponent max(0,Y-yr-1) + 1 - s*(1-f) collapses to max(0,Y-yr) when s=0 or f=1.
+# f is DERIVED PER EVALUATION DATE (durable-player elapsed pace): median on-pace g26 = 12.0 / 22 -> 0.545 at
+# the 2026-07-02 store cut (band 0.52-0.68; A3 flat across the band). EXPO_DEN = 11 (the on-pace floor) is the
+# zero-collateral denominator (0/288 on-pace movers >2%, max 0.00% — D3 ASK3, session_2026-07-02/scripts/
+# d3_ask3_final.py). Derivation: session_2026-07-02/dropfix_design_M2exposure.md. RL_EXPO_F=1 = kill-switch.
+EXPO_INPROG_Y=int(os.environ.get('RL_EXPO_INPROG_Y','2026'))  # the season in progress at the store cut
+EXPO_F=float(os.environ.get('RL_EXPO_F','0.545'))             # durable-player pace; 1.0 -> lever off (byte-exact)
+EXPO_DEN=11.0                                                 # evidence-replacement denominator (on-pace floor)
 def _exposure(p,Y):
     """Recency-weighted reliable game-count = the UNCERTAINTY signal (replaces raw cumulative games). Smooth: phases in
-    from game 1; old games decay, so a long gap (e.g. Conway) reads as ~no recent exposure rather than '6 career games'."""
-    return float(sum(g*_swt(yr,Y) for yr,g,_ in _season_rows(p,Y)))
+    from game 1; old games decay, so a long gap (e.g. Conway) reads as ~no recent exposure rather than '6 career games'.
+    M2: in-progress season -> prorated decay clock (block comment above); completed seasons byte-exact."""
+    rows=_season_rows(p,Y)
+    if Y==EXPO_INPROG_Y and EXPO_F<1.0:
+        gy=sum(g for yr,g,_ in rows if yr==Y)
+        s=min(1.0,max(0.0,1.0-gy/EXPO_DEN))
+        if s>0.0:
+            ex=1.0-s*(1.0-EXPO_F)
+            return float(sum(g*(1.0 if yr==Y else RECENCY_DECAY**(max(0,Y-yr-1)+ex)) for yr,g,_ in rows))
+    return float(sum(g*_swt(yr,Y) for yr,g,_ in rows))
 def _lvl_wt(p,Y):
     """Demonstrated level weighted by games-in-season x recency. Smooth (no >=6g threshold -> kills the game-6 value cliff);
     a partial first season (MSD) contributes PARTIALLY not at face value; recent form dominates older seasons."""

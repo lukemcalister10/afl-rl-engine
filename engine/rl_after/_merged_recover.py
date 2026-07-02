@@ -1,5 +1,5 @@
 """WIRE (1) delist->~0 (2) staleness floor all-stalled (3) isotonic pick guard INTO the engine. Prove on named players."""
-import io,contextlib,copy,numpy as np
+import os,io,contextlib,copy,numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
 with contextlib.redirect_stdout(io.StringIO()):
@@ -127,7 +127,85 @@ def iso_corr(pos,pk): xs,fs=ISO[pos]; return float(np.interp(min(pk,70),xs,fs))
 for _pp in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
         for _T in range(1,7): par_pole(_pp,_pk,_T)
-cp._lvl_eff=_lvl_eff_infer; cp._feat=_feat_infer   # STEP1 rebind INFERENCE feature path (q97m + ISO + POLE above used ORIGINAL features)
+# ==== M1 + v7-asc (BAKE CANDIDATE v2, D7 02/07/2026 — Luke-ruled config; NOT baked until Luke's bake word) ====
+# M1 transplanted VERBATIM from the verified matrix-builder prototype (s4_matrix_M1v7.py; read-pass pack
+# session_2026-07-02/readpass_pack_M1v7_8aed420a.md). M1 refines ONLY the up-branch of the level core:
+# a proven player earns S_M1 of a current-over-recency gap when the gap >= TOL_M1 AND a recent season
+# (within WIN yrs, >= G_ADQ games) sits above the recency level; the down-branch (DOWN_TOL shed) and the
+# thin-career par-prior blend are byte-identical to _lvl_eff_core. v7 age-scales the q97 tail (asc) —
+# REAL store players only: the ISO/pole tables above are frozen on ORIGINAL features/bands, and gate
+# synths (B6 ramp) keep the original band.
+# v7-cB DELETED 02/07/2026 (Luke-ruled, D7 — deleted, not disabled): the upper-quantile band compression
+# cB = 0.47*clip((effs-1)/3,0,1) on bb[3]/bb[4] is GONE, with its _effs feed (no other consumer).
+# Rationale: indiscriminate markdown (2020-cohort Spearman(value,delta) = -0.024, p=0.87 — no quality
+# signal), the Curtis squeezer (Curtis -195/-14.4%, Ward -324/-19.6% — D5 term table). Obituary:
+# BOARD_LAYERS_OBITUARY.md (ENGINE-TERM DELETIONS). Resurrection ref:
+#   git show 0806d90:engine/rl_after/_merged_recover.py   (the D4 candidate, the last commit carrying cB)
+TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
+def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+def _coreM1(p,Y):
+    Lo=cp._lvl_eff_orig(p,Y); n=_nqual(p,Y)
+    if n==0: return Lo
+    Lc=_lvlcurr(p,Y)
+    if n>=PROVEN_N:
+        if Lc>=Lo: return (Lo+S_M1*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
+        drop=Lo-Lc
+        if drop<=DOWN_TOL: return Lo
+        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult(cp._age_asof(p,Y))
+    c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
+def _inferM1(p,Y):
+    L0=_coreM1(p,Y); eo=_eo(p,Y)
+    if eo<=0: return L0
+    avs=[x['avg'] for x in p['scoring'] if x.get('games',0)>=6 and (cp.debutyr(p)-1)<x['year']<=Y]
+    if not avs: return L0
+    bar=MA.REPL.get(MA.gfut(p),0.0)-3.0; N=Y-cp.debutyr(p)+1
+    return (1-eo)*L0+eo*min(L0,max(_upS(max(avs)-bar,N),_lvlcurr(p,Y)))
+def _v7(bb,p,Y):
+    bb=list(bb); m=bb[2]; a=cp._age_asof(p,Y)
+    asc=float(np.interp(a,[20,22,24,27],[1.0,0.76,0.58,0.40]))
+    bb[5]=m+asc*(bb[5]-m); return bb
+_REAL=set(id(p) for p in MA.data)
+_b6_pre_v7=b6
+def b6(p,Y=2026):
+    bb=_b6_pre_v7(p,Y)
+    if id(p) in _REAL:
+        try: return _v7(bb,p,Y)
+        except Exception: return bb
+    return bb
+cp._lvl_eff=_inferM1; cp._feat=_feat_infer   # M1 level bind (was _lvl_eff_infer) + STEP1 inference feature path (q97m + ISO + POLE above used ORIGINAL features)
+# ==== M3 CLOCK-PIN PLUMBING (BAKE CANDIDATE v2, D7 02/07/2026 — design: session_2026-07-02/
+# m3_design_proportional_tenure.md; the D4 backtest's monkeypatch hook inventory made first-class).
+# While _M3PIN is on (ONLY inside _ev_m3's pinned evaluation of the in-progress season), the age/tenure
+# CLOCK surfaces read as Y-1: cp._age_asof -1yr · MA.age -1yr · PR.tenure -1yr (floor 1) · _eo's
+# years-since-draft N-1 (data window untouched) · _feat's explicit ten term re-based to Y-1. Evidence
+# windows, era adjust, nseas/nqual and the M2-prorated exposure clock ALL stay at Y — the pin moves the
+# CLOCKS only (using plain ev(p,Y-1) would re-prorate the decay channel M2 already prorates). With the
+# pin OFF every wrapper is an identity passthrough — byte-exact by construction (verified in the D7 cut).
+_M3PIN={'on':False}
+M3_INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))      # the season in progress at the store cut
+_m3_age_asof0=cp._age_asof; _m3_age0=MA.age; _m3_ten0=PR.tenure; _m3_eo0=_eo; _m3_feat0=cp._feat
+def _m3_age_asof(p,Y):
+    a=_m3_age_asof0(p,Y)
+    return (a-1) if (_M3PIN['on'] and Y==M3_INPROG_Y) else a
+def _m3_age(p):
+    a=_m3_age0(p)
+    return (a-1) if (_M3PIN['on'] and a is not None) else a
+def _m3_ten(p,Y):
+    t=_m3_ten0(p,Y)
+    return max(1,t-1) if (_M3PIN['on'] and Y==M3_INPROG_Y) else t
+def _eo(p,Y):                                                 # pin-aware rebind; _inferM1/_lvl_eff_infer read this global
+    if not (_M3PIN['on'] and Y==M3_INPROG_Y): return _m3_eo0(p,Y)
+    d=cp.debutyr(p); N=Y-d+1-1                                # N-1: the clock; data window stays at Y
+    yrw=float(np.clip((N-2)/4.0,0.0,1.0))
+    gm=sum(x.get('games',0) for x in p['scoring'] if (d-1)<x['year']<=Y)
+    exp=float(np.clip(gm/(14.0*max(N-1,1)),0.0,1.0))
+    return yrw*exp
+def _m3_feat(p,Y):                                            # _feat's ten term uses raw Y-arithmetic, pin it explicitly
+    f=list(_m3_feat0(p,Y))
+    if _M3PIN['on'] and Y==M3_INPROG_Y:
+        f[8]=eff_ten(p,Y, max(0,(Y-1)-(cp.debutyr(p)-1)))     # index 8 = ten (6 one-hots + logep, exposure, ten, lvl, age)
+    return f
+cp._age_asof=_m3_age_asof; MA.age=_m3_age; PR.tenure=_m3_ten; cp._feat=_m3_feat
 # ===== helpers for delist + staleness =====
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
@@ -164,6 +242,53 @@ def ev(p,Y=2026):
         frac=0.45*max(0.3,1-0.08*(el-onset))*(1.5 if keyruc else 1.0)
         e=min(e, dv*frac)
     return round(e)
+# ==== M3 PROPORTIONAL-TENURE/AGE BLEND (BAKE CANDIDATE v2, D7 02/07/2026 — design + backtest:
+# session_2026-07-02/m3_design_proportional_tenure.md; NOT baked until Luke's bake word) ====
+# Mid-season the age/tenure clocks advance a FULL year while the season is only fE elapsed. M3 evaluates
+# the in-progress season as a VALUE-SPACE interpolation between the full-click evaluation and the
+# clock-pinned evaluation (the _M3PIN plumbing above):  v = w*ev_click + (1-w)*ev_pin,
+# w = 1 - s*(1-fE), s = clip(1 - g_Y/11, 0, 1) (M2's evidence-replacement scope, same denominator).
+# On-pace players (g_Y >= 11) have s=0 -> untouched BY CONSTRUCTION. Completed seasons (Y != the
+# in-progress season) are untouched by construction. fE = SEASON_PROG = 0.58 at this cut, recomputed per
+# evaluation date (fE -> 1 as the season completes). RL_M3_FE=1 = kill-switch (byte-exact inert).
+# RE-REGISTERED ACCEPTANCE at this config (D7): A3 >= 0.75 (Luke's amended bar) with ZERO on-pace
+# collateral >2% and B-gates holding.
+M3_FE=float(os.environ.get('RL_M3_FE','0.58'))                # elapsed-season fraction; 1.0 -> lever off
+M3_DEN=11.0                                                   # M2's evidence-replacement denominator (on-pace floor)
+_ev_click=ev                                                  # the full-click evaluation (M1+asc + M2 + caps)
+def _m3_s(p,Y):
+    gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
+    return float(np.clip(1.0-gy/M3_DEN,0.0,1.0))
+def _ev_m3(p,Y=2026):
+    v=_ev_click(p,Y)
+    if Y!=M3_INPROG_Y or M3_FE>=1.0 or delisted(p): return v  # delisted: both evals identical (no clock read) — skip the double eval
+    s=_m3_s(p,Y)
+    if s<=0.0: return v                                       # on-pace: untouched by construction
+    w=1.0-s*(1.0-M3_FE)
+    _M3PIN['on']=True
+    try: vpin=_ev_click(p,Y)
+    finally: _M3PIN['on']=False
+    return round(w*v+(1.0-w)*vpin)
+# ==== PRICING FLOOR (BAKE CANDIDATE v2, D7 02/07/2026 — Luke's ruling, B5 amendment: the crater floor
+# becomes a PRICING FEATURE; prototype engine/prototypes/floor_pricing_clamp.py 66fbf0f6, D6) ====
+#   ev(p,Y) = max(ev_prefloor(p,Y), floor_yrs(Y - draft year) * draftval(p))
+# Scope: REAL store players (id in _REAL — gate synths keep the raw engine, same guard as the v7 overlay),
+# NATIONAL-DRAFT entrants only; MSD/SSP (type!='ND'), delisted, retired and pickless players are NEVER
+# floored (byte-exact passthrough). Pure lower bound: any player at/above floor is untouched byte-exact
+# by construction (max()). TAIL VARIANT A — FLAT .05 yrs 7+ (as signed; Luke's D7 ruling). The FLOOR-SAVES
+# table prints on every gates-board run (ship_gates_check.py B5 block) — mispricings stay VISIBLE.
+FLOOR_YRS={1:0.45,2:0.35,3:0.28,4:0.21,5:0.13,6:0.09}         # yrs 1-6 (signed schedule)
+FLOOR_TAIL=0.05                                               # yrs 7+ FLAT (VARIANT A, as signed)
+def floor_frac(yis): return FLOOR_YRS.get(yis,FLOOR_TAIL)
+ev_prefloor=_ev_m3                                            # harnesses read this for the saves table / lower-bound re-verify
+def ev(p,Y=2026):
+    v=ev_prefloor(p,Y)
+    if id(p) not in _REAL or p.get('type')!='ND' or p.get('_retired') or p.get('_pickless') or delisted(p):
+        return v                                              # out of scope: byte-exact passthrough
+    yis=Y-int(p.get('year') or 0)
+    if yis<1: return v
+    fl=floor_frac(yis)*draftval(p)
+    return v if v>=fl else round(fl)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
