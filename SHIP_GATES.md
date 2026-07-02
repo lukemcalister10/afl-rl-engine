@@ -63,6 +63,11 @@ B2. GATE-1: leakage ~0 (IS vs WF, tree-matched) + clean good/bust separation.
 B3. Walk-forward book gates pass at the ship head.
 B4. JS parity: Python and board JS byte-agree on the shipped board.
 B5. No-crater guard: no first-year/unproven player value cratered (founding rule).
+    [Year-schedule floors by years-in-system, ND entrants only (Luke, signed
+     02/07/2026): generating rule floor ≈ 0.9 × smoothed clean p5 (ND-only) —
+     RE-BASE at the PVC stage when the draftval denominator re-levels, by
+     re-running the generating rule (sibling of A5's SCAR-floor note; this
+     in-file reminder Luke-approved in writing 02/07/2026).]
 B6. No hard lines: value continuous across the games ramp (no step at the 6-game
     seam) AND monotone in evidence — more games at the same scoring rate is never
     worth less.

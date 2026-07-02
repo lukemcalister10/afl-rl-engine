@@ -1,10 +1,27 @@
 # UNRESOLVED — in-flight workstreams — cut 2026-07-02
 _Head `8aed420a`. Five-state vocab (PROPOSED→DERIVED→WIRED→VERIFIED→BAKED). Nothing baked past `e0ac9c377d1e`._
+_D4 (02/07 pm): BAKE CANDIDATE exists — branch `claude/d4-bake-candidate-m2-m1v7` (engine `fb39d88a`, M1+v7 + M2 wired,
+board 11P/6F) — holds for the external cold audit + Luke's bake word. Canonical head untouched. See §1/§2 updates below,
+`session_2026-07-02/directive4_notes.md`, and `BOARD_LAYERS_OBITUARY.md` (ONE-price executed, workstream 10)._
 
-## 1. M1 + refined-v7 — STATE: VERIFIED (proven slice), NOT BAKED
+## 1. M1 + refined-v7 — STATE: WIRED (bake candidate, D4 02/07), NOT BAKED
+D4: transplanted verbatim into `_merged_recover.py` ON THE CANDIDATE BRANCH (commit `0806d90`); read-pass endorsed per the
+D4 directive; full candidate verification run (board 11P/6F; A5/A9 flip green; Maric 1409→1178, Langdon 593→575 — the
+canonical restore-verify pins move at candidate by design). OPEN + ENGINE-CAUSED (D4 control): B1 per-cohort backstop
+16/17 on the candidate-rebuilt book — cohort 2020 yrs4-6 R=97/98/95 vs 109/110/110 on the same-builder canonical control
+→ the M1+v7 wiring breaks the 2020 cohort's growth-law backstop; live bake-blocker for the cold audit + Luke's read.
+Also priced: the overlay costs A3 ~0.05 (see §2) — the A2/A5/A9 repairs vs A3/B1 damage is now Luke's explicit tradeoff.
+Pre-D4 text (params + provenance) follows:
 Bake gate = **Luke's read-pass on a fixed named panel** (per BAKE_CHECKLIST.md, to be written first). Params: M1 `TOL_M1=5, G_ADQ=12, WIN=2, S_M1=0.46`; refined-v7 `cB=0.47·clip((e−1)/3,0,1)`, `e=Σmin(games_s/17,1)`, `aSc=interp(age,[20,22,24,27],[1.00,0.76,0.58,0.40])`, tail wt 0.10. Currently applied only in the matrix builder (`engine/rl_after/s4_matrix_M1v7.py`), NOT in `_merged_recover.py`. **Resume/bake:** write BAKE_CHECKLIST.md → cold audit at head → Luke read-pass → wire M1 branch + refined `cB` into `_merged_recover.py` → full re-verify (md5s, 10-panel, Maric/Langdon, book, JS-parity) → `doc_lint` → tarball. Both systemic flags resolved (KEY_FWD over-compression = speculative ceiling; Graham cohort = trust-the-level). NOTE: M1+v7 nudges the already-underpriced Rozee 2026 down ~8% (2679→2460) — flag at read-pass. DIRECTIVE-2 (02/07): read-pass pack produced (`session_2026-07-02/readpass_pack_M1v7_8aed420a.md`, 2025 basis, 2026 column excluded); in scratch the prototype flips A9 (Ginnivan 1677 > Ward 1253) and the Weddle leg of A2 and clears the A5 floors, but Curtis (1087) stays below Ward (1253) — the Ward-pattern reds are NOT fully explained by the un-baked prototype (H-WARD falsified as sole cause).
 
-## 2. Current-season (2026) drop — STATE: fix DERIVED (M2-exposure, D3 02/07); acceptance shortfall QUANTIFIED; pending Luke's read
+## 2. Current-season (2026) drop — STATE: M2 WIRED (bake candidate, D4 02/07) + M3 sibling DERIVED (D4); acceptance ceiling QUANTIFIED
+D4: M2-exposure wired in `conditional_prior._exposure` on the candidate (Luke's written go; f=0.545, kill-switch RL_EXPO_F;
+byte-exact at f=1 re-verified; A3 0.642→0.658 on the candidate base). M3 (proportional tenure/age — the sibling lever Luke
+queued) DERIVED, NOT wired: design + backtest `session_2026-07-02/m3_design_proportional_tenure.md` — zero on-pace collateral,
+B-gates hold, Rozee +10.7%, but A3 reaches only 0.728 @fE=0.58 (full-pin ceiling 0.863) → **pre-registered A3 ≥0.80 NOT
+reachable via the clock channels; the residual is (a) the M1+v7 overlay's own −0.05 on the A3 base (Rozee −8% v7 flag) and
+(b) Rozee's thin-2026 level channel.** Luke reads M3 + rules on the A3-vs-overlay tension. A10 resolved separately: amended
+0.70→0.50 (data-caused, provisional) — PASS 0.55 at candidate. Pre-D4 text (mechanism pin — still valid) follows:
 DIRECTIVE-3: split bundle shows channel a is AGE/TENURE-dominated (young −40.1% age/ten vs −12.9% decay/exp; old −26.1% vs −0.6%).
 Derived lever (prorated exposure clock, f=0.545, evidence-replacement scope s=clip(1−g_Y/11,0,1)) passes every safety bar — ZERO
 on-pace collateral (0/288 >2%), byte-exact at f=1 + historically, B-gates hold — but reaches only A3 0.706 (need 0.80) and cannot
@@ -34,7 +51,12 @@ Corrected summary metric = pooled ΣV(yrN)/ΣV(yr1)×100, SUM-RATIO, Yr1=100%, o
 ## 9. The 1.19× uniform sit-out lift — STATE: PARKED (DECISION pending, spans rotations)
 Only moves the indexed-peak denominator, not the absolute peak → a bandaid on the peak. Belongs at the PVC stage. Log in DECISIONS.md with default + expiry when created.
 
-## 10. ONE-price ruling (board vs engine) — STATE: EVIDENCE TABLED (D3 02/07); Luke rules
+## 10. ONE-price ruling (board vs engine) — STATE: EXECUTED (D4 02/07; Luke ruled delete-not-disable, in writing)
+D4: board valuation path DELETED (commit `f2bb22b`); `rl_export.py` renders engine `ev()` (named-row parity byte-exact);
+`BOARD_LAYERS_OBITUARY.md` carries per-layer magnitude/rationale/resurrection refs; view re-plumbed to as-of-year engine
+values (retired back-rows flat until the Y-aware `delisted()` lands — a candidate-branch item). REMAINING: the actual re-cut of Luke's
+trading board file waits for the bake decision (ONE new board total); B4 stays red vs the orphaned `b8f9e998` until then.
+Pre-D4 evidence text follows:
 Gates price `_merged_recover.ev()`; the traded board prices `TR.production_value` (a different function). Dual-path ruler:
 A4/A9/A11 flip PASS↔FAIL between paths; board −7.6% total, median player |Δ| 24.9%, 57% differ >20%, Spearman 0.90. Live board
 `b8f9e998` = orphaned pre-2026-06-21 export-code artifact (PVC[1]=3883 pre-anchor; 785 players; no git state reproduces it —
