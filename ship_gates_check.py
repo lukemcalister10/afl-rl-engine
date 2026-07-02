@@ -17,7 +17,9 @@
 #     session_2026-07-02/directive2_notes.md). POPULATION CONVENTION (Luke, verbatim intent): ACTIVE/LISTED
 #     players only; once inactive, value = 0; in backtests inactive players REMAIN in denominators while
 #     contributing 0 to numerators for that year.
-#   B2 leakage tol 5.0 %-pts — PROVISIONAL pending the noise-floor spread (Directive 2 Task E; supervisor sets).
+#   B2 leakage tol 0.5 %-pts — SET 02/07/2026 (supervisor ruling under Luke's delegation; measured N=5 spread
+#     = 0.00 %-pts, so any gap >=0.5 is signal; rationale in CHANGELOG). Supersedes the provisional 5.0.
+#   A2 AMENDED 02/07/2026 (Luke, in writing): Curtis leg = Curtis >= 0.90 x Ward (verbatim reason in CHANGELOG).
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RA = '/home/claude/rl_workspace/rl_after'
@@ -70,7 +72,15 @@ def cmp_gate(gid, dc, pairs, fmt):        # pairs: list of (label, lhs, rhs) req
 
 # ---------- SECTION A ----------
 cmp_gate('A1', False, [('Duursma>Uwland', 'Willem Duursma', 'Zeke Uwland')], '{}: {:.0f} vs {:.0f}')
-cmp_gate('A2', False, [('Curtis>Ward', 'Paul Curtis', 'Josh Ward'), ('Weddle>Ward', 'Josh Weddle', 'Josh Ward')], '{}: {:.0f} vs {:.0f}')
+# A2 AMENDED (Luke, in writing, 02/07/2026 — verbatim reason logged in CHANGELOG per the SHIP_GATES amendment
+# process): Curtis leg re-scripted from Ward < Curtis to Curtis >= 0.90 x Ward; Weddle leg + A9 unchanged.
+try:
+    _cu, _wa, _we = E('Paul Curtis'), E('Josh Ward'), E('Joshua Weddle')
+    _ok = (_cu >= 0.90 * _wa) and (_we > _wa)
+    gate('A2', False, 'PASS' if _ok else 'FAIL',
+         f'Curtis>=0.90xWard: {_cu:.0f} vs {0.90*_wa:.0f} (Ward={_wa:.0f}, ratio={_cu/max(_wa,1e-9):.3f}) [AMENDED 02/07/2026]; Weddle>Ward: {_we:.0f} vs {_wa:.0f}')
+except LookupError as ex:
+    gate('A2', False, 'ERROR', str(ex))
 for gid, nm, frac in [('A3', 'Connor Rozee', 0.80), ('A10', 'Charlie Curnow', 0.70)]:
     try:
         v26, v25 = E(nm, 2026), E(nm, 2025)
@@ -215,9 +225,9 @@ try:
         seps = {pos: (np.median(rows[(pos, 'GOOD')]['WF']), np.median(rows[(pos, 'BUST')]['WF']))
                 for pos in {p for p, _ in rows} if (pos, 'GOOD') in rows and (pos, 'BUST') in rows}
         sep_ok = all(g_ > b_ for g_, b_ in seps.values()) and bool(seps)
-        ok = sep_ok and leak <= 5.0
+        ok = sep_ok and leak <= 0.5
         gate('B2', False, 'PASS' if ok else 'FAIL',
-             f'median |IS-WF| leakage={leak:.1f} %-pts (DECLARED tol 5.0); GOOD>BUST separation: ' +
+             f'median |IS-WF| leakage={leak:.1f} %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: ' +
              ', '.join(f'{p} {g_:.0f}/{b_:.0f}' for p, (g_, b_) in sorted(seps.items())))
 except Exception as ex:
     gate('B2', False, 'ERROR', f'{type(ex).__name__}: {ex}')

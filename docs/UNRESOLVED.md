@@ -4,7 +4,13 @@ _Head `8aed420a`. Five-state vocab (PROPOSED→DERIVED→WIRED→VERIFIED→BAKE
 ## 1. M1 + refined-v7 — STATE: VERIFIED (proven slice), NOT BAKED
 Bake gate = **Luke's read-pass on a fixed named panel** (per BAKE_CHECKLIST.md, to be written first). Params: M1 `TOL_M1=5, G_ADQ=12, WIN=2, S_M1=0.46`; refined-v7 `cB=0.47·clip((e−1)/3,0,1)`, `e=Σmin(games_s/17,1)`, `aSc=interp(age,[20,22,24,27],[1.00,0.76,0.58,0.40])`, tail wt 0.10. Currently applied only in the matrix builder (`engine/rl_after/s4_matrix_M1v7.py`), NOT in `_merged_recover.py`. **Resume/bake:** write BAKE_CHECKLIST.md → cold audit at head → Luke read-pass → wire M1 branch + refined `cB` into `_merged_recover.py` → full re-verify (md5s, 10-panel, Maric/Langdon, book, JS-parity) → `doc_lint` → tarball. Both systemic flags resolved (KEY_FWD over-compression = speculative ceiling; Graham cohort = trust-the-level). NOTE: M1+v7 nudges the already-underpriced Rozee 2026 down ~8% (2679→2460) — flag at read-pass. DIRECTIVE-2 (02/07): read-pass pack produced (`session_2026-07-02/readpass_pack_M1v7_8aed420a.md`, 2025 basis, 2026 column excluded); in scratch the prototype flips A9 (Ginnivan 1677 > Ward 1253) and the Weddle leg of A2 and clears the A5 floors, but Curtis (1087) stays below Ward (1253) — the Ward-pattern reds are NOT fully explained by the un-baked prototype (H-WARD falsified as sole cause).
 
-## 2. Current-season (2026) drop — STATE: mechanism PINNED (VERIFIED by decomposition); fix REWORK pending Luke's read
+## 2. Current-season (2026) drop — STATE: fix DERIVED (M2-exposure, D3 02/07); acceptance shortfall QUANTIFIED; pending Luke's read
+DIRECTIVE-3: split bundle shows channel a is AGE/TENURE-dominated (young −40.1% age/ten vs −12.9% decay/exp; old −26.1% vs −0.6%).
+Derived lever (prorated exposure clock, f=0.545, evidence-replacement scope s=clip(1−g_Y/11,0,1)) passes every safety bar — ZERO
+on-pace collateral (0/288 >2%), byte-exact at f=1 + historically, B-gates hold — but reaches only A3 0.706 (need 0.80) and cannot
+touch A10 (Curnow 13g on-pace → DATA-CAUSED candidate under [DC] triage). Design doc (Luke reads before wiring):
+`session_2026-07-02/dropfix_design_M2exposure.md`. Decisions: (a) wire M2-exposure as-is; (b) rule on the age/tenure sibling lever
+(same calendar asymmetry, engine-wide meaning change); (c) A10 uphold-or-amend. Pre-D3 text follows (mechanism pin — still valid):
 Driver = the **exposure-feature / recency-decay channel** (prior season decays to 0.72 while the in-progress season is ~60% elapsed + thin → `_exposure` feature drops → forward model lowers value). Cohort-VARYING (young −48% ≫ old −26%; INVERTED vs aging). NOT `_lvl_wt`, NOT the reliability-shrink multiplier, NOT aging. Two prior diagnoses FALSIFIED (reliability-shrink; correct-aging). Full: `session_2026-07-01/BUILD_report_2026-07-01_mechanism-pinned-rozee.md`. **Resume:** Luke's read on whether the exposure/decay loss is fully artifact vs partly correct; if a fix, act on the `_exposure` decay clock for the in-progress season only, scoped to younger/low-exposure players, kept OUT of `_lvl_wt`. DIRECTIVE-2 (02/07): decomposition re-run at head reproduced the pinned numbers exactly (Rozee −827/−368; d_level +5/+1/+5%); the `_lvl_wt` thin-below-par hypothesis (H1) is again FALSIFIED.
 
 ## 3. Decay-proration prototype (Phase-2) — STATE: PROPOSED, NON-VIABLE as specified, REWORK needed
@@ -27,6 +33,19 @@ Corrected summary metric = pooled ΣV(yrN)/ΣV(yr1)×100, SUM-RATIO, Yr1=100%, o
 
 ## 9. The 1.19× uniform sit-out lift — STATE: PARKED (DECISION pending, spans rotations)
 Only moves the indexed-peak denominator, not the absolute peak → a bandaid on the peak. Belongs at the PVC stage. Log in DECISIONS.md with default + expiry when created.
+
+## 10. ONE-price ruling (board vs engine) — STATE: EVIDENCE TABLED (D3 02/07); Luke rules
+Gates price `_merged_recover.ev()`; the traded board prices `TR.production_value` (a different function). Dual-path ruler:
+A4/A9/A11 flip PASS↔FAIL between paths; board −7.6% total, median player |Δ| 24.9%, 57% differ >20%, Spearman 0.90. Live board
+`b8f9e998` = orphaned pre-2026-06-21 export-code artifact (PVC[1]=3883 pre-anchor; 785 players; no git state reproduces it —
+D3 ASK 4). Pack: `session_2026-07-02/board_layers_pack_D3.md`. **Resume:** Luke's ruling (his presumption on record: ONE price —
+at-rest board == engine; layers promoted-or-deleted), then re-ship the board from the ruled path.
+
+## 11. A2 residual (Curtis vs Ward, amended gate) — STATE: drop-contamination FALSIFIED (D3); next isolation PROPOSED
+Curtis's lowness is NOT the calendar artifact (decay/exposure share +0.5%; scoped fix moves him 0.0%). The v7 band compression
+holds him down (M1-only lifts him to 1441; v7-only cuts him to 977); post-overlay he sits 66% of his pick-age-matched producer
+line (Ward 77%). **Resume:** per-term v7 ablation (cB-only vs asc-only) across Curtis + the matched five + a GEN_FWD-vs-MID
+replacement/pole check. Amended A2 (Curtis >= 0.90×Ward, Luke 02/07) stays red until that isolation runs.
 
 ## PARK / PVC-stage cluster (create SHIP_GATES.md before curve work — PROCESS_CHANGES §3)
 1.19× (w9), SITOUT tail re-derivation (w5), no-games tail derivation — all point at the pick-value-curve stage. The stopping rule (SHIP_GATES.md, ~15-20 named relativities Luke stakes his league record on + cohort-growth + book + JS-parity gates) must exist BEFORE curve work begins.
