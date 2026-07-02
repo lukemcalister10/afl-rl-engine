@@ -2,7 +2,7 @@
 ```
 === SHIP GATES BOARD — head 8aed420a store 644d1254 — suite 764a0d91 — 2026-07-02 ===
 A1        PASS     Duursma>Uwland: 4179 vs 1781
-A2        FAIL     Curtis>Ward: 1162 vs 1782; Weddle>Ward: 1628 vs 1782
+A2        FAIL     Curtis>=0.90xWard: 1162 vs 1604 (Ward=1782, ratio=0.652) [AMENDED 02/07/2026]; Weddle>Ward: 1628 vs 1782
 A3   [DC] FAIL     Connor Rozee: 2026=2679 2025=3874 ratio=0.69 (need >=0.80)
           triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
 A4        PASS     Harley Reid board rank=32 ev=3523 (need TOP 40)
@@ -20,14 +20,14 @@ A13       PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George W
 A14       PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1704: Trent Rivers=1725 lineball=True; Zach Reid=1680 lineball=True; Jase Burgoyne=2191 lineball=False
 A15       STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
 B1        PASS     pooled peak N=4 R(peak)=160 (need peak by yr4-5, yr6 acceptable, >100; pre-peak dips <5% tolerated, path_ok=True; no yr6-hold required — Luke 02/07); cohorts rising to yr4-6 above yr1: 17/17; matrix=s4_matrix_nogames.json
-B2        PASS     median |IS-WF| leakage=0.0 %-pts (DECLARED tol 5.0); GOOD>BUST separation: GEN_DEF 52/1, GEN_FWD 44/1, KEY_DEF 60/1, KEY_FWD 64/1, MID 52/0
+B2        PASS     median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 52/1, GEN_FWD 44/1, KEY_DEF 60/1, KEY_FWD 64/1, MID 52/0
 B3        PENDING  book-gate set not yet enumerated as scripted checks — definition proposal in report; book headline shape covered by B1
 B4        FAIL     regenerated rl_app_data.json md5=1898ead7 vs shipped b8f9e998 (byte-agree gate; export exit=0)
 B5        FAIL     9 yr1-2 LISTED picked players below 0.25x draftval (floor PROVISIONAL; listed-only per Luke 02/07); worst: Jack Watkins=18/dv308; Flynn Perez=39/dv308; Zac Banch=45/dv308
 B6        FAIL     ramp(0..14g)=[745, 745, 745, 745, 745, 745, 3263, 3352, 3357, 3538, 3318, 3464, 3531, 3583, 3578]; dips(more games worth less)=[(9, -220.0), (13, -5.0)]; 0->6 rise T=+2518; 0->6 steps>50%T=[(5, 2518)]; rise by 3g=+0 (need >=630) [whole-ramp re-spec, DECLARED thresholds]
 C1        PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
-VERDICT: FAIL=9  PASS=8  PENDING=5  STRUCK=1  (104s)
+VERDICT: FAIL=9  PASS=8  PENDING=5  STRUCK=1  (102s)
 ```
 
 ## Supporting detail
