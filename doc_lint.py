@@ -8,6 +8,8 @@ ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__f
 SUPERSEDED = ["8c6d5582", "55e3c3a9", "7147b824"]      # lineage candidates: never label current/LATEST/head
 BANNED   = re.compile(r'\b(closed|done)\b', re.I)       # five-state vocab bans these as status words
 STALE    = re.compile(r'\b(LATEST|pending|not yet|TODO)\b')
+# Warn allowlist: legitimate gap/gate statements, not stale status (tuned 2026-07-02).
+ALLOW    = re.compile(r'(not yet created|pending luke|decision pending)', re.I)
 CURCLAIM = re.compile(r'(current|latest|head)', re.I)
 LIVE    = ["START_HERE.md", "CHECKPOINT_MANIFEST.md", "REQUIRED_INPUTS.md",
            "docs/UNRESOLVED.md", "docs/KICKOFF_PROMPT.md"]
@@ -27,7 +29,7 @@ def scan(rel, live):
         if live and not exempt:
             if BANNED.search(ln) and "ban" not in low:
                 fails.append(f"{rel}:{i}: banned status word (use five-state): {ln.strip()[:84]}")
-            if STALE.search(ln):
+            if STALE.search(ln) and not ALLOW.search(low):
                 warns.append(f"{rel}:{i}: stale status word: {ln.strip()[:72]}")
 for rel in LIVE:
     scan(rel, True)
