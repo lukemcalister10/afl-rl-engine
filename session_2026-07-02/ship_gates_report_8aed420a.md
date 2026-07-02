@@ -3,16 +3,15 @@
 === SHIP GATES BOARD — head 8aed420a store 644d1254 — suite 764a0d91 — 2026-07-02 ===
 A1        PASS     Duursma>Uwland: 4179 vs 1781
 A2        FAIL     Curtis>=0.90xWard: 1162 vs 1604 (Ward=1782, ratio=0.652) [AMENDED 02/07/2026]; Weddle>Ward: 1628 vs 1782
-A3   [DC] FAIL     Connor Rozee: 2026=2679 2025=3874 ratio=0.69 (need >=0.80)
+A3   [DC] FAIL     Connor Rozee: 2026=2679 2025=3874 ratio=0.69 (need >=0.80) [evaluated PRE-LTI-layer — Luke 02/07]
           triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
 A4        PASS     Harley Reid board rank=32 ev=3523 (need TOP 40)
 A5        FAIL     Jack Ginnivan=1578 (floor 1600); Jake Bowey=2585 (floor 2100); Nick Blakey=3053 (floor 2600) [SCAR floors — RE-BASE if PVC re-levels]
 A6        PASS     yr1-3 RUC median=314 (n=13, pooled — thin slice) vs pick-matched MID kernel median=502 (n=66, bw=0.6 log-pick, RATIFIED 02/07)
 A7        PASS     Ryan Maric: fut-dominant=MID(60%) gfut=MID (need MID/MID); Ed Langdon: fut-dominant=GDEF(70%) gfut=GEN_DEF (need GDEF/GEN_DEF)
-A8   [DC] PASS     Berry=3473 vs 2x Tsatas=2166 (Tsatas=1083)
+A8   [DC] PASS     Berry=3473 Tsatas=1083 ratio=3.21x (need >=2.00x) [display de-ambiguated D4 02/07]
 A9        FAIL     Ginnivan>Ward: 1578 vs 1782
-A10  [DC] FAIL     Charlie Curnow: 2026=944 2025=1849 ratio=0.51 (need >=0.70)
-          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A10  [DC] PASS     Charlie Curnow: 2026=944 2025=1849 ratio=0.51 (need >=0.50) [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]
 A11  [DC] PASS     Farrow>Patterson: 1641 vs 982; Cumming>Annable: 2002 vs 936
 A12  [DC] FAIL     Travaglia>Moraes: 601 vs 876; Smillie>Retschko: 896 vs 730
           triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
@@ -23,11 +22,11 @@ B1        PASS     pooled peak N=4 R(peak)=160 (need peak by yr4-5, yr6 acceptab
 B2        PASS     median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 52/1, GEN_FWD 44/1, KEY_DEF 60/1, KEY_FWD 64/1, MID 52/0
 B3        PENDING  book-gate set not yet enumerated as scripted checks — definition proposal in report; book headline shape covered by B1
 B4        FAIL     regenerated rl_app_data.json md5=1898ead7 vs shipped b8f9e998 (byte-agree gate; export exit=0)
-B5        FAIL     9 yr1-2 LISTED picked players below 0.25x draftval (floor PROVISIONAL; listed-only per Luke 02/07); worst: Jack Watkins=18/dv308; Flynn Perez=39/dv308; Zac Banch=45/dv308
+B5        FAIL     51 ND-entrant LISTED players below the signed year-schedule floor (yrs1-7+ .45/.35/.28/.21/.13/.09/.05 x draftval; Luke 02/07 D4); worst: Nicholas Holman(yr13)=0<20(0.05x); Steele Sidebottom(yr18)=3<69(0.05x); Daniel Butler(yr12)=1<15(0.05x); Jed Bews(yr15)=1<15(0.05x)
 B6        FAIL     ramp(0..14g)=[745, 745, 745, 745, 745, 745, 3263, 3352, 3357, 3538, 3318, 3464, 3531, 3583, 3578]; dips(more games worth less)=[(9, -220.0), (13, -5.0)]; 0->6 rise T=+2518; 0->6 steps>50%T=[(5, 2518)]; rise by 3g=+0 (need >=630) [whole-ramp re-spec, DECLARED thresholds]
 C1        PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
-VERDICT: FAIL=9  PASS=8  PENDING=5  STRUCK=1  (102s)
+VERDICT: FAIL=8  PASS=9  PENDING=5  STRUCK=1  (93s)
 ```
 
 ## Supporting detail

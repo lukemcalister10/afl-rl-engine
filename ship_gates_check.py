@@ -20,6 +20,16 @@
 #   B2 leakage tol 0.5 %-pts — SET 02/07/2026 (supervisor ruling under Luke's delegation; measured N=5 spread
 #     = 0.00 %-pts, so any gap >=0.5 is signal; rationale in CHANGELOG). Supersedes the provisional 5.0.
 #   A2 AMENDED 02/07/2026 (Luke, in writing): Curtis leg = Curtis >= 0.90 x Ward (verbatim reason in CHANGELOG).
+#   D4 AUDIT 02/07/2026 (full gate-line audit vs frozen 764a0d91 + logged amendments — session_2026-07-02/
+#     d4_instrument_audit.md): A8 expression confirmed the literal 2x test (Berry=3473, Tsatas=1083 — both
+#     reported passes GENUINE); defect was DISPLAY AMBIGUITY ("vs 2x Tsatas=2166" read as raw Tsatas) —
+#     detail string de-ambiguated + comparison > -> >= per frozen "at least 2x". No missing-2x, no tolerance leak.
+#   A10 AMENDED 02/07/2026 (Luke, in writing, D4): threshold 0.70 -> 0.50, DATA-CAUSED (Curnow has banked 13
+#     games of 2026 — his level is 2026 form, not an engine artifact), PROVISIONAL + review at season-complete.
+#   A3 ANNOTATED 02/07/2026 (Luke, D4): evaluated PRE-LTI-layer (the pre-LTI engine ratio is what A3 tests;
+#     the future LTI overlay must not be the thing that passes it).
+#   B5 YEAR-SCHEDULE SIGNED 02/07/2026 (Luke, in writing, D4): floors by years-in-system replace the 0.25x
+#     proxy — see the B5 block for constants, population, and the generating rule.
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RA = '/home/claude/rl_workspace/rl_after'
@@ -81,11 +91,14 @@ try:
          f'Curtis>=0.90xWard: {_cu:.0f} vs {0.90*_wa:.0f} (Ward={_wa:.0f}, ratio={_cu/max(_wa,1e-9):.3f}) [AMENDED 02/07/2026]; Weddle>Ward: {_we:.0f} vs {_wa:.0f}')
 except LookupError as ex:
     gate('A2', False, 'ERROR', str(ex))
-for gid, nm, frac in [('A3', 'Connor Rozee', 0.80), ('A10', 'Charlie Curnow', 0.70)]:
+# A3 ANNOTATED (Luke 02/07, D4): evaluated PRE-LTI-layer. A10 AMENDED (Luke, in writing, 02/07, D4):
+# 0.70 -> 0.50, DATA-CAUSED (13g of 2026 banked), PROVISIONAL — review at season-complete; CHANGELOG logged.
+for gid, nm, frac, note in [('A3', 'Connor Rozee', 0.80, ' [evaluated PRE-LTI-layer — Luke 02/07]'),
+                            ('A10', 'Charlie Curnow', 0.50, ' [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]')]:
     try:
         v26, v25 = E(nm, 2026), E(nm, 2025)
         r = v26 / max(v25, 1e-9)
-        gate(gid, True, 'PASS' if r >= frac else 'FAIL', f'{nm}: 2026={v26:.0f} 2025={v25:.0f} ratio={r:.2f} (need >={frac:.2f})')
+        gate(gid, True, 'PASS' if r >= frac else 'FAIL', f'{nm}: 2026={v26:.0f} 2025={v25:.0f} ratio={r:.2f} (need >={frac:.2f}){note}')
     except LookupError as ex:
         gate(gid, True, 'ERROR', str(ex))
 # EV sweep (non-retired) for A4/A6/B5 + board context
@@ -149,9 +162,13 @@ try:
     gate('A7', False, 'PASS' if ok else 'FAIL', '; '.join(det))
 except LookupError as ex:
     gate('A7', False, 'ERROR', str(ex))
+# A8 AUDITED D4 02/07 (Luke's arithmetic catch): expression was and is the literal 2x test; the old detail
+# string "Berry=N vs 2x Tsatas=M" invited reading M as raw Tsatas (M was 2xTsatas). De-ambiguated to raw
+# values + explicit ratio; comparison > -> >= per the frozen wording "by at least 2x".
 try:
     b, t = E('Sam Berry'), E('Elijah Tsatas')
-    gate('A8', True, 'PASS' if b > 2 * t else 'FAIL', f'Berry={b:.0f} vs 2x Tsatas={2*t:.0f} (Tsatas={t:.0f})')
+    gate('A8', True, 'PASS' if b >= 2 * t else 'FAIL',
+         f'Berry={b:.0f} Tsatas={t:.0f} ratio={b/max(t,1e-9):.2f}x (need >=2.00x) [display de-ambiguated D4 02/07]')
 except LookupError as ex:
     gate('A8', True, 'ERROR', str(ex))
 cmp_gate('A9', False, [('Ginnivan>Ward', 'Jack Ginnivan', 'Josh Ward')], '{}: {:.0f} vs {:.0f}')
@@ -253,24 +270,35 @@ try:
              f'regenerated rl_app_data.json md5={m_new} vs shipped {m_ship} (byte-agree gate; export exit={r.returncode})')
 except Exception as ex:
     gate('B4', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-# B5 — no-crater guard (0.25x floor = DECLARED proxy, PROVISIONAL this run; year-schedule replacement PROPOSED
-# in session_2026-07-02/directive2_notes.md — Luke signs). POPULATION CONVENTION (Luke 02/07, verbatim intent):
-# ACTIVE/LISTED players only; once inactive, value = 0, and in backtests inactive players REMAIN in denominators
-# while contributing 0 to numerators for that year.
+# B5 — no-crater guard, YEAR-SCHEDULE floors (Luke, SIGNED in writing 02/07/2026, D4 — supersedes the 0.25x
+# provisional proxy). Floors by years-in-system (2026 - draft year), yrs 1-7+: .45/.35/.28/.21/.13/.09/.05.
+# POPULATION: NATIONAL-DRAFT entrants only — post PRESENT_ID_OVERRIDES type=='ND' (MSD/SSP/RD/IRE/UNR/PDx
+# excluded; the overrides re-type re-entries like Perez to their present SSP/MSD identity); delisted/retired
+# excluded (Luke 02/07 listed-only convention unchanged: inactive value=0, stays in backtest denominators).
+# GENERATING RULE (the re-derivation formula at re-base): floor ~= 0.9 x smoothed clean p5 (ND-only) of
+# value/draftval by years-in-system (empirical clean p5 smoothed .50/.42/.31/.23/.15/.10/<=.07 — D3 G3-CLEAN).
+# RE-BASE AT PVC: draftval = PVC[effpk] re-levels at the PVC stage -> re-derive the floors from the generating
+# rule then (reminder also written into SHIP_GATES.md B5, beside A5's sibling SCAR-floor note; Luke approved).
+B5_FLOORS = {1: 0.45, 2: 0.35, 3: 0.28, 4: 0.21, 5: 0.13, 6: 0.09}   # yrs 7+ -> tail
+B5_TAIL = 0.05
 try:
     off = []
     for p in MA.data:
-        if p.get('_retired') or p.get('_pickless') or delisted(p) or int(p.get('year') or 0) not in (2024, 2025):
+        if p.get('_retired') or p.get('_pickless') or delisted(p) or p.get('type') != 'ND':
+            continue
+        yis = 2026 - int(p.get('year') or 0)
+        if yis < 1:
             continue
         v = EV.get(id(p))
         if v is None:
             continue
         dv = draftval(p)
-        if v < 0.25 * dv:
-            off.append((p['player'], v, dv))
+        fl = B5_FLOORS.get(yis, B5_TAIL)
+        if v < fl * dv:
+            off.append((p['player'], yis, v, fl * dv, fl))
     gate('B5', False, 'PASS' if not off else 'FAIL',
-         f'{len(off)} yr1-2 LISTED picked players below 0.25x draftval (floor PROVISIONAL; listed-only per Luke 02/07); worst: ' +
-         ('; '.join(f'{n}={v:.0f}/dv{d:.0f}' for n, v, d in sorted(off, key=lambda t: t[1] / t[2])[:3]) if off else 'none'))
+         f'{len(off)} ND-entrant LISTED players below the signed year-schedule floor (yrs1-7+ .45/.35/.28/.21/.13/.09/.05 x draftval; Luke 02/07 D4); worst: ' +
+         ('; '.join(f'{n}(yr{y})={v:.0f}<{f_:.0f}({fl:.2f}x)' for n, y, v, f_, fl in sorted(off, key=lambda t: t[2] / max(t[3], 1e-9))[:4]) if off else 'none'))
 except Exception as ex:
     gate('B5', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # B6 — games-ramp continuity, RE-SCRIPTED (Luke 02/07, turns 09-10): the gate tests the WHOLE 0->6 ramp.
