@@ -31,7 +31,7 @@ sm=wb.create_sheet('Summary')
 sm['A1']=f'AFL RL — WALK-FORWARD cohort value BOOK (engine md5 {TAG}, dials + shed + GENTLER upside + NO-GAMES sit-out anchor, 34 positions reconciled to stage0) — FOR EYEBALL before the pick-curve build';sm['A1'].font=TITLE
 sm['A2']='V = walk-forward engine value per season (as-of end of that season, only up-to-then data). P = era-adj production. Anchor = end of Year 1 (gold). Current = 0 for retired (worthless keeper), not the delisted floor.'
 sm['A3']='CURVE = ND+RD only, 2004-2024 (continuous pick order). 2003 & 2025 = reference-only (excluded). MSD/SSP/PostDraft = STANDALONE pooled (Pooled sheet). See "Cohort Trajectories" for each cohort\'s value season-by-season.'
-sm['A4']='POSITIONS reconciled to stage0 (the 34 pre_stage0 discrepancies fixed — Holmes/Sheezel/Rozee/Perryman/etc now authoritative). Pos = DRAFTED pedigree group; switchers show drafted\u2192current. SIT-OUT ANCHOR: still-listed players with 0 seasons of \u22656 games through a year are valued at position-scaled retention \u00d7 their OWN draftval (RUC/KPP gentle, nonKPP steep; plateau yr1-2 then decline). CAVEAT: anchor LEVELS are deferred-to-PVC placeholders and currently over-discount sat-out Yr1 ~16% below the empirical Yr2-realised target, so the Measure-1 peak reads ~158% (absolute peak unchanged; baseline dropped). Nothing baked.'
+sm['A4']='POSITIONS reconciled to stage0 (34 pre_stage0 discrepancies fixed). Pos = DRAFTED pedigree group; switchers show drafted\u2192current. GAMES-RAMP SIT-OUT TREATMENT (D10, supersedes the flat retain\u00d7draftval anchor at v2.1+ heads): never-qualified still-listed players hold their LIVE start value (pick+position band price) through pre-season, decay along the measured still-listed retention curve, and earn a measured games-credit blend toward the live production path; all games bars prorate to season progress. Derivation: session_2026-07-03/d10_ask2_derivation.md. Nothing baked.'
 sm.append([]);sm.append(['Cohort','#ND+RD','#pooled','Yr1 anchor SUM','current SUM (real)','in curve?'])
 for c in range(1,7): sm.cell(6,c).font=H; sm.cell(6,c).fill=GREY
 for C in cohorts:
@@ -50,7 +50,7 @@ def traj_sheet(sheetname,wlo,whi,row_cohorts):
     ct['A1']=f'COHORT VALUE TRAJECTORIES — {wlo}-{whi} VIEW — each cohort (ND+RD) summed season-by-season since draft. Scan DOWN to compare cohorts, ACROSS to read one cohort build/peak/fade.';ct['A1'].font=TITLE
     ct['A2']='TABLE 1 = MEASURE 1: each year\'s summed V as % of the cohort\'s OWN end-of-Year-1 total. Denominator = FULL COHORT\'s Yr1 value, FIXED across all years (busts INCLUDED forever — they just contribute 0 to the numerator once gone). NO survivor bias, NO PVC.'
     ct['A3']=f'Yr1 = 100% by construction. Later years = value vs the cohort\'s own start -> reads SHAPE (build/peak/fade), NOT cross-cohort quality. Current = 0 for retired. OVERALL row = mean over the {wlo}-{whi} curve cohorts. 2003 & 2025 = reference-only (pink).'
-    ct['A4']='MEASURE 2 (cross-cohort quality, vs the UNIVERSAL PVC) is READY TO ADD once the curve exists. TABLE 2 below = absolute summed V (SCAR), reference.'
+    ct['A4']='MEASURE 2 (cross-cohort quality, vs the UNIVERSAL PVC pick-sum ruler) = the "Measure-2 vs pick sum" sheet (D10 ASK 6b, permanent, display-only). TABLE 2 below = absolute summed V (SCAR), reference.'
     curve_cohorts=[C for C in cohorts if wlo<=C<=whi]
     def traj_block(startrow,measure1):
         hdr=['Cohort','#ND+RD','inCurve']+[f'Yr{k}' for k in range(1,GMAX+1)]+['Current']
@@ -152,7 +152,39 @@ for x in R:
         fw.append([x['player'],x['pos'],x['type'],('Y' if x['type'] in INCURVE else 'N'),x['pick'],x['year'],i+1,
                    round(v) if num(v) else None,('Y' if i==0 else ''),p,x['cur_disp'],('Y' if x.get('retired_now') else '')])
 fw.freeze_panes='A2'
-order=['Summary','Cohort Trajectories','Trajectories 2015-2024']+[str(C) for C in cohorts if any(x['type'] in INCURVE for x in bycoh[C])]+['Pooled','FLAT']
+# ================= MEASURE-2 — cohort quality vs the PICK-SUM ruler (D10 ASK 6b 03/07/2026, Luke-directed, PERMANENT, display-only) =================
+# Measure-1 (trajectory sheets) reads SHAPE vs the cohort's OWN Yr1 (always 100 at Yr1). Measure-2 reads
+# QUALITY: summed cohort value as % of what the cohort's picks cost on the universal PVC ruler (draftval
+# field = live MA.PVC at effective pick). Closes the 107%-vs-80.6% confusion class (DIAG-B ASK 3).
+m2=wb.create_sheet('Measure-2 vs pick sum')
+m2['A1']=f'MEASURE-2 — cohort summed value as % of the cohort PICK-VALUE SUM (universal PVC ruler) — engine {TAG}';m2['A1'].font=TITLE
+m2['A2']='Denominator = SUM of draft-day pick values (live PVC at effective pick, pickless excluded) — FIXED per cohort. >100% = the cohort is worth more than its picks cost; comparable ACROSS cohorts (unlike Measure-1). Display-only; no gate reads this sheet.'
+_hdr=['Cohort','#ND+RD','pick-value SUM']+[f'Yr{k} %' for k in range(1,GMAX+1)]+['Current %']
+for j,h in enumerate(_hdr): c=m2.cell(4,1+j); c.value=h; c.font=H; c.fill=BLUE
+_m2rows={}
+for C in cohorts:
+    ic=[x for x in bycoh[C] if x['type'] in INCURVE]
+    pv=sum(x['draftval'] or 0 for x in ic)
+    if pv<=0: continue
+    vals=[]
+    for k in range(GMAX):
+        tot=[x['Vpath'][k] for x in ic if len(x['Vpath'])>k and num(x['Vpath'][k])]
+        vals.append(round(100.0*sum(tot)/pv,1) if tot else None)
+    curp=round(100.0*sum(x['cur_disp'] or 0 for x in ic)/pv,1)
+    _m2rows[C]=vals
+    m2.append([C,len(ic),round(pv)]+vals+[curp])
+    if C in REFONLY:
+        for c in range(1,len(_hdr)+1): m2.cell(m2.max_row,c).fill=REFF
+_cc=[C for C in cohorts if 2004<=C<=2024]
+_ov=['OVERALL 2004-2024','','']
+for k in range(GMAX):
+    _v=[_m2rows[C][k] for C in _cc if C in _m2rows and _m2rows[C][k] is not None]
+    _ov.append(round(sum(_v)/len(_v),1) if _v else None)
+_ov.append(None)
+m2.append(_ov)
+for c in range(1,len(_hdr)+1): m2.cell(m2.max_row,c).font=H; m2.cell(m2.max_row,c).fill=ANCH
+m2.column_dimensions['A'].width=16; m2.column_dimensions['C'].width=14
+order=['Summary','Cohort Trajectories','Trajectories 2015-2024','Measure-2 vs pick sum']+[str(C) for C in cohorts if any(x['type'] in INCURVE for x in bycoh[C])]+['Pooled','FLAT']
 wb._sheets.sort(key=lambda s: order.index(s.title) if s.title in order else 999)
 out=os.environ.get('S4_BOOK','AFL_RL_WALKFORWARD_book.xlsx'); wb.save(out)
 print('saved',out,'sheets',len(wb.worksheets))
