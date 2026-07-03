@@ -359,7 +359,10 @@ def _ev_m3(p,Y=2026):
     return round(w*v+(1.0-w)*vpin)
 # ==== PRICING FLOOR (BAKE CANDIDATE v2, D7 02/07/2026 — Luke's ruling, B5 amendment: the crater floor
 # becomes a PRICING FEATURE; prototype engine/prototypes/floor_pricing_clamp.py 66fbf0f6, D6) ====
-#   ev(p,Y) = max(ev_prefloor(p,Y), floor_yrs(Y - draft year) * draftval(p))
+# D12 03/07/2026 (Luke ruling R8): floor basis RE-ANCHORED old-PVC draftval -> live V0 start value.
+# Schedule (FLOOR_YRS) values UNCHANGED — only the denominator moves onto the same ruler as every other
+# penalty path (D10 re-anchored those; the floor was the declared dv-basis holdout). Obituary E3.
+#   ev(p,Y) = max(ev_prefloor(p,Y), floor_yrs(Y - draft year) * v0_start(p))
 # Scope: REAL store players (id in _REAL — gate synths keep the raw engine, same guard as the v7 overlay),
 # NATIONAL-DRAFT entrants only; MSD/SSP (type!='ND'), delisted, retired and pickless players are NEVER
 # floored (byte-exact passthrough). Pure lower bound: any player at/above floor is untouched byte-exact
@@ -375,7 +378,7 @@ def ev(p,Y=2026):
         return v                                              # out of scope: byte-exact passthrough
     yis=Y-int(p.get('year') or 0)
     if yis<1: return v
-    fl=floor_frac(yis)*draftval(p)
+    fl=floor_frac(yis)*v0_start(p)     # D12: RE-ANCHORED draftval -> live V0 (schedule unchanged; Luke R8)
     return v if v>=fl else round(fl)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None

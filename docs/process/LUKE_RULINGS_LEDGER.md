@@ -89,3 +89,14 @@ R6/12/18/24 = .125/.354/.650/1.0; halfway .354 in the stated 33-40% band; 100% a
 green at v2.2. Wired at CANDIDATE v2.2 (engine 05d38c65 after ASK1). REVISIT HOOK: a PVC-era derivation
 may replace the t^1.5 SHAPE from partial-season snapshots (recorded open, not a block).
 Status: ACTIVE (candidate v2.2; scoped re-audit before any bake).
+
+**R8 · 2026-07-03 · B5 floor basis re-anchored draftval -> V0 (schedule unchanged)**
+Luke verbatim: "DV floor should be now aligned with v0. Yes, some issues with rucks, but we can refine
+them before baking or wiring."
+Consequence: the B5 pricing-floor denominator moves from old-PVC draftval to the live V0 start value
+(ev() floor line: floor_frac(yis)*draftval -> *v0_start); the signed schedule FLOOR_YRS .45/.35/.28/.21/
+.13/.09 + .05 tail is UNCHANGED (only the denominator re-anchored, joining every other penalty path D10
+re-anchored). Floor-saves 58 (+2117) -> 52 (+1330); Patterson floor 884->511 no longer binds (EV 849).
+RUC floors PROVISIONAL — the ruck V0 is Luke-ruled hot (h-ruc-startvalue-hot); its nerf lands NEXT
+directive before any bake. Obituary E3. Wired at CANDIDATE v2.2 (engine af1fc6aa).
+Status: ACTIVE (candidate v2.2; RUC floors provisional pending ruck-V0 nerf; scoped re-audit before bake).
