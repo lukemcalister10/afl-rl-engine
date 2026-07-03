@@ -264,9 +264,28 @@ def nseas_pro(p,Y=2026):                                      # D10: qualificati
 #   POSITION BASIS preserved end-to-end: V0 and e_full both carry the band's position adjustment;
 #     classes RUC/KPP/nonKPP for R_SIT only, with the RUC retention SHAPE pooled with KPP (thin bimodal
 #     slice, n=270 cells) scaled to RUC's own measured d1-2 level x1.065 — DECLARED pooling.
-R_SIT={'nonKPP':[0.429,0.404,0.410,0.432,0.437,0.424],
-       'KPP':   [0.468,0.380,0.325,0.278,0.253,0.266],
-       'RUC':   [0.674,0.547,0.503,0.472,0.435,0.435]}
+# D13 ASK3 03/07/2026 — R_SIT (depth-only, per class, RUC-shape-pooled-with-KPP) is SUPERSEDED by the
+# continuous log-pick x depth surface R_SURF below (obituary E4: BOARD_LAYERS_OBITUARY.md). The old table
+# VIOLATED Luke's signed law (nonKPP rose d3->d5 .410->.437; KPP rose d5->d6 .253->.266 — a sitter gained
+# value by sitting). Resurrection ref: git show af1fc6aa's _merged_recover.py. Old table (for the record):
+#   R_SIT={'nonKPP':[.429,.404,.410,.432,.437,.424],'KPP':[.468,.380,.325,.278,.253,.266],'RUC':[.674,.547,.503,.472,.435,.435]}
+# ===== RETENTION SURFACE (D13 ASK3) — re-derived at finest supported resolution =====
+# R(cls, log-pick, depth) = kernel-smoothed sit-out realization r=O/V0 (winsor 2.0, Gaussian bw grown until
+# eff-n>=35) / same-depth all-draftee daEV norm (per class; strips survivor selection, rises 0.44->1.11 w/
+# depth), clip[.05,1], then ISOTONIC NON-INCREASING IN DEPTH at every pick (Luke's signed law: a sitter never
+# gains value). R1: daEV(V0) denominator KEPT (position-blind dv WIDENED the KPP gap 0.065->0.079 -> numerator-
+# driven, not pole-inflated: KPP V0/dv=0.90). R2: FIRES all classes (pick maxdev 0.13-0.21 > 0.05 ribbon) ->
+# PICK-CONDITIONED. Derivation: session_2026-07-03/d13/d13_ask3_retention.md; scripts d13_derive.py.
+# Knots = DIAGNOSTIC evaluation picks of the smooth surface (never derivation bins). Interp over log-pick + tau
+# preserves depth-monotonicity (convex comb of non-increasing vectors). Deep KPP d4-6 pooled (thin, DECLARED).
+R_SURF={'nonKPP':{5:[0.547,0.446,0.446,0.446,0.446,0.314], 15:[0.707,0.479,0.479,0.479,0.479,0.307], 30:[0.649,0.436,0.422,0.414,0.414,0.303], 50:[0.549,0.388,0.345,0.239,0.164,0.164]},
+        'KPP':{5:[0.660,0.487,0.387,0.194,0.183,0.183], 15:[0.694,0.427,0.273,0.136,0.136,0.136], 30:[0.632,0.383,0.286,0.180,0.172,0.172], 50:[0.642,0.407,0.351,0.334,0.334,0.329]},
+        'RUC':{5:[1.000,0.715,0.670,0.562,0.535,0.467], 15:[0.851,0.597,0.597,0.520,0.520,0.468], 30:[0.830,0.616,0.616,0.607,0.540,0.469], 50:[0.781,0.594,0.594,0.594,0.541,0.470]}}
+_RS_KNOTS=[5,15,30,50]; _RS_LOGK=[np.log(k) for k in _RS_KNOTS]
+def _R_surf(cls,pick,tau):                                   # interp over log-pick (knots) then over tau (0->1, depths 1..6, flat 6+)
+    kn=R_SURF[cls]; lp=np.log(min(max(pick,1),90))
+    dv=[float(np.interp(lp,_RS_LOGK,[kn[k][i] for k in _RS_KNOTS])) for i in range(6)]
+    return float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+dv))
 LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
 def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD','KEY_DEF') else 'nonKPP')
 # ==== ASK1 (D13 03/07/2026): RUC PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
@@ -327,7 +346,7 @@ def v0_start(p):                                             # LIVE START VALUE 
     return v if g is None else min(v,g)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
-    R=float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+R_SIT[_sitout_cls(MA.gfut(p))]))
+    R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
     return (1.0-lam)*R*v0_start(p)+lam*e_full
