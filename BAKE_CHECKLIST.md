@@ -2,6 +2,21 @@
 _Created 2026-07-02 under DIRECTIVE 1. A bake moves the BAKED marker; nothing bakes without Luke's explicit go.
 Steps run IN ORDER; any step failing stops the ritual (subject to the SHIP_GATES failure-triage rule for [DC] gates)._
 
+## §REPORTING — THE THREE REPORTING RULES (Luke's word: BINDING, D10 03/07/2026 — bind ALL sessions, not just bakes)
+1. **THREE COLUMNS.** Every gates/board output reports THREE COLUMNS: CONTROL (canonical) · PREVIOUS
+   (the last verified candidate) · CURRENT (the state being measured), with deltas explicit. The
+   CONTROL/PREVIOUS pointers live in `data/report_states.json` (snapshots in `data/gates_snapshots/`,
+   pinned matrices in `data/`); update the pointers when the candidate line advances — never delete
+   the old snapshots.
+2. **LOUD STATE LABEL.** Every board/report carries a LOUD state label (CONTROL / CANDIDATE vX @ hash /
+   PROTOTYPE-name) in its header; **no unlabelled player value anywhere Luke-facing.** An unregistered
+   head prints `PROTOTYPE/UNREGISTERED @ <md5> — NOT AN ENDORSED STATE`.
+3. **BINDING ON EVERY FUTURE SESSION.** These rules are permanent process (wired in
+   `ship_gates_check.py` + the book renderer); a session that emits a Luke-facing value without state
+   label + three columns has violated a Luke ruling. Origin: Luke's D10 directive, 2026-07-03 —
+   confirmed cross-state confusion (DIAG-A: three engines' boards read as one timeline) is the failure
+   class these rules close.
+
 ## 0. SCOPE PIN
 - [ ] Name the exact candidate: engine head md5-8, store md5-8, band md5-8, branch/commit. The ritual applies to
       that byte-identity only — any file change after step 1 restarts the ritual.

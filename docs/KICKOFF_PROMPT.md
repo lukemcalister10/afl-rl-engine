@@ -11,6 +11,11 @@ You are BUILD: run code, hold the engine + tarballs (source of truth for code fa
 4. **Migrate any remaining doc statuses to the five-state vocabulary** (below) if you find stragglers.
 Then HOLD for the supervisor's directive.
 
+## THE THREE REPORTING RULES (Luke's word: BINDING on every session — D10 03/07/2026; full text BAKE_CHECKLIST.md §REPORTING)
+1. Every gates/board output reports THREE COLUMNS: CONTROL (canonical) · PREVIOUS (last verified candidate) · CURRENT, deltas explicit (pointers: `data/report_states.json`).
+2. Every board/report carries a LOUD state label (CONTROL / CANDIDATE vX @ hash / PROTOTYPE-name) in its header; no unlabelled player value anywhere Luke-facing.
+3. These rules bind ALL future sessions (wired in `ship_gates_check.py` + the book renderer); emitting a Luke-facing value without them violates a Luke ruling.
+
 ## BINDING PROCESS RULES (folded from docs/process/ — these are binding on you)
 ### Five-state workstream vocabulary — the words "closed" and "done" are BANNED
 `PROPOSED → DERIVED → WIRED → VERIFIED → BAKED`. Every backlog line / CHANGELOG entry / handover claim carries exactly one state. **VERIFIED requires naming the cold-reproduction artifact (script + number).** BAKED requires Luke's explicit go. ("M1+v7 bake-ready" = VERIFIED on the proven slice, NOT baked.)

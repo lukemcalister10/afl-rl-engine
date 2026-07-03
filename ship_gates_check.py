@@ -56,6 +56,20 @@ import numpy as np
 SKIP = set(os.environ.get('SGC_SKIP', '').upper().split(',')) - {''}
 HEAD = hashlib.md5(open('_merged_recover.py', 'rb').read()).hexdigest()[:8]
 STORE = hashlib.md5(open('rl_model_data.json', 'rb').read()).hexdigest()[:8]
+# ---- BINDING REPORTING RULES (Luke's word, D10 03/07/2026 — see BAKE_CHECKLIST.md §REPORTING) ----
+# 5a: every gates/board output reports THREE COLUMNS — CONTROL / PREVIOUS / CURRENT, deltas explicit.
+# 5b: every board/report carries a LOUD state label; no unlabelled player value anywhere Luke-facing.
+try:
+    _REG = json.load(open(os.path.join(ROOT, 'data', 'report_states.json')))
+except Exception:
+    _REG = {'states': {}}
+STATE_LABEL = _REG.get('states', {}).get(HEAD, f'PROTOTYPE/UNREGISTERED @ {HEAD} — NOT AN ENDORSED STATE')
+def _load_snap(key):
+    try:
+        return json.load(open(os.path.join(ROOT, _REG[key]['gates'])))
+    except Exception:
+        return {'head': '????????', 'gates': {}}
+SNAP_CTL, SNAP_PREV = _load_snap('control'), _load_snap('previous')
 t0 = time.time()
 G = {}
 with contextlib.redirect_stdout(io.StringIO()):
@@ -426,30 +440,60 @@ order = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A1
          'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'C1', 'C2']
 RES.sort(key=lambda r: order.index(r[0]))
 cnt = {}
-lines = [f'=== SHIP GATES BOARD — head {HEAD} store {STORE} — suite 764a0d91 — {time.strftime("%Y-%m-%d")} ===']
+lines = [f'=== STATE: {STATE_LABEL} ===',
+         f'=== SHIP GATES BOARD — head {HEAD} store {STORE} — suite 764a0d91 — {time.strftime("%Y-%m-%d")} ===',
+         f'=== THREE-COLUMN RULE (Luke, binding D10): CONTROL={SNAP_CTL.get("head")} · PREVIOUS={SNAP_PREV.get("head")} · CURRENT={HEAD} ===']
 for gid, dc, st, det in RES:
     cnt[st] = cnt.get(st, 0) + 1
     tag = ' [DC]' if dc else ''
-    lines.append(f'{gid:4s}{tag:5s} {st:8s} {det}')
+    c_st = SNAP_CTL['gates'].get(gid, {}).get('status', '—')
+    p_st = SNAP_PREV['gates'].get(gid, {}).get('status', '—')
+    delta = '' if (c_st == p_st == st) else '  <- MOVED'
+    lines.append(f'{gid:4s}{tag:5s} {c_st:8s}| {p_st:8s}| {st:8s} {det}{delta}')
     if dc and st == 'FAIL':
         lines.append(f'{"":9s} triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)')
+lines.append(f'{"":9s} columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)')
 summary = 'VERDICT: ' + '  '.join(f'{k}={v}' for k, v in sorted(cnt.items())) + f'  ({time.time()-t0:.0f}s)'
 lines.append(summary)
 print('\n'.join(lines))
+# persist this run as a snapshot (future runs' PREVIOUS/CONTROL columns read these)
+try:
+    os.makedirs(os.path.join(ROOT, 'data', 'gates_snapshots'), exist_ok=True)
+    json.dump({'head': HEAD, 'store': STORE,
+               'gates': {gid: {'dc': dc, 'status': st, 'detail': det[:200]} for gid, dc, st, det in RES}},
+              open(os.path.join(ROOT, 'data', 'gates_snapshots', f'gates_{HEAD}.json'), 'w'), indent=1)
+except Exception:
+    pass
 if B1_TABLE:      # Luke's ruling (02/07/2026 D5): the per-cohort table prints on EVERY gates-board run
     print('\nB1 per-cohort curves (UNGATED — Luke eyeball channel):\n' + B1_TABLE)
 if B5_TABLE:      # Luke's ruling (02/07/2026, committed D7): the FLOOR-SAVES table prints on EVERY board run
     print('\nB5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):\n' + B5_TABLE)
-rep = os.path.join(ROOT, 'session_2026-07-02', f'ship_gates_report_{HEAD}.md')
+rep = os.path.join(ROOT, os.environ.get('SGC_REPORT_DIR', 'session_2026-07-02'), f'ship_gates_report_{HEAD}.md')
 os.makedirs(os.path.dirname(rep), exist_ok=True)
+def _matcur(key):
+    out = {}
+    try:
+        for r in json.load(open(os.path.join(ROOT, _REG[key]['matrix']))).values():
+            out[f"{r['player']}|{r['year']}|{r['pick']}"] = r.get('cur')
+    except Exception:
+        pass
+    return out
+_MC, _MP = _matcur('control'), _matcur('previous')
 with open(rep, 'w') as f:
-    f.write('# ship_gates_check report — head ' + HEAD + ' store ' + STORE + '\n```\n' + '\n'.join(lines) + '\n```\n')
+    f.write(f'# ship_gates_check report — STATE: {STATE_LABEL} — head {HEAD} store {STORE}\n')
+    f.write('_Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._\n')
+    f.write('```\n' + '\n'.join(lines) + '\n```\n')
     f.write('\n## Supporting detail\n')
     for n in NOTES:
         f.write('\n' + n + '\n')
-    f.write('\n## Board top-50 (A4 context)\n')
+    f.write(f'\n## Board top-50 (A4 context) — CONTROL {SNAP_CTL.get("head")} · PREVIOUS {SNAP_PREV.get("head")} · CURRENT {HEAD}\n')
+    f.write('| # | player | pos | CONTROL | PREVIOUS | CURRENT | D vs ctl | D vs prev |\n|---|---|---|---|---|---|---|---|\n')
     for i, (v, p) in enumerate(board[:50], 1):
-        f.write(f'{i:3d}. {p["player"]:24s} {MA.gfut(p):8s} {v:7.0f}\n')
+        k = f"{p['player']}|{p.get('year')}|{p.get('pick')}"
+        c, q = _MC.get(k), _MP.get(k)
+        dc_ = f'{v-c:+.0f}' if isinstance(c, (int, float)) else '—'
+        dq = f'{v-q:+.0f}' if isinstance(q, (int, float)) else '—'
+        f.write(f'| {i} | {p["player"]} | {MA.gfut(p)} | {c if c is not None else "—"} | {q if q is not None else "—"} | {v:.0f} | {dc_} | {dq} |\n')
     f.write('\n## C1/C2 DEFINITION PROPOSAL (for supervisor ruling)\n'
             'Rebuild the walk-forward book (s4 matrix protocol, as-of values, only <=T data) twice more:\n'
             '(a) NAIVE BASELINE: last-2-season era-adjusted avg -> value via simple age curve + position multipliers;\n'

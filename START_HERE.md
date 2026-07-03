@@ -6,6 +6,7 @@ _Cut 2026-07-02. Head `8aed420a` (candidate). Nothing baked past `e0ac9c377d1e`.
 2. **Provision:** `bash setup_env.sh` (pinned venv — see §2; then `export PATH="$HOME/rl_venv312/bin:$PATH"`) and `bash bootstrap.sh` (recreates the absolute `/home/claude/...` layout the engine hardcodes — `verify_restore.sh` FAILs on a clean tree without it). **Claude Code web sessions run BOTH automatically** via the SessionStart hook (`.claude/hooks/session-start.sh`, registered in `.claude/settings.json`) — the pinned venv is already first on PATH there.
 3. **Verify by SCRIPT:** `bash verify_restore.sh` — reports PASS/FAIL with actual values (md5 axes + Maric/Langdon + harness presence + 10-panel tail). Never verify by inspection.
 4. **Read `docs/KICKOFF_PROMPT.md`** (binding process rules + your first tasks — note the path: it lives under `docs/`, NOT repo root), then `docs/UNRESOLVED.md` (the live queue), then HOLD for directive.
+5. **THE THREE REPORTING RULES (Luke's word, BINDING, D10 03/07/2026):** (1) every gates/board output = THREE COLUMNS — CONTROL · PREVIOUS · CURRENT, deltas explicit (`data/report_states.json`); (2) every board/report carries a LOUD state label — no unlabelled player value anywhere Luke-facing; (3) binding on ALL sessions. Full text: `BAKE_CHECKLIST.md` §REPORTING.
 
 ## 1. IDENTITY / MD5 AXES (all verified this cut)
 - code→head: `engine/rl_after/_merged_recover.py` = **`8aed420a`**
