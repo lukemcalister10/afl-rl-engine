@@ -15,14 +15,18 @@ with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], G)
 ENG = hashlib.md5(open('_merged_recover.py', 'rb').read()).hexdigest()[:8]
 MA, cp = G['MA'], G['cp']
-ev, v0_start, nseas_pro, delisted = G['ev'], G['v0_start'], G['nseas_pro'], G['delisted']
-_sitout_cls, ev_prefloor, floor_frac = G['_sitout_cls'], G['ev_prefloor'], G['floor_frac']
-_REAL = G['_REAL']
+ev, delisted = G['ev'], G['delisted']
+_REAL = G.get('_REAL') or set(id(p) for p in MA.data)  # canonical: all store players are real (no synths in MA.data)
+nseas_pro = G.get('nseas_pro') or G['nseas']  # canonical predates the prorated qualifier -> unprorated nseas
+_sitout_cls = G.get('_sitout_cls') or (lambda pos: 'RUC' if pos == 'RUC' else ('KPP' if pos in ('KEY_FWD', 'KEY_DEF') else 'nonKPP'))
+v0_start = G.get('v0_start')                  # canonical 8aed420a predates v0_start (old flat sit-out anchor)
+ev_prefloor = G.get('ev_prefloor'); floor_frac = G.get('floor_frac')
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def gY(p, Y): return sum(x['games'] for x in p['scoring'] if x['year'] == Y)
 def E(p):
     with contextlib.redirect_stdout(io.StringIO()): return ev(p)
 def V0(p):
+    if v0_start is None: return -1.0
     with contextlib.redirect_stdout(io.StringIO()): return v0_start(p)
 
 # panel
@@ -62,16 +66,18 @@ sitout_rows = [dict(key=f"{p['player']}|{p.get('year')}|{p.get('pick')}", player
 sit_agg = sum(r['board'] for r in sitout_rows)
 coh_agg = sum(E(p) for p in coh2025)
 
-# floor-saves
-fsaves = 0; fsaves_ruc = 0
-with contextlib.redirect_stdout(io.StringIO()):
-    for p in MA.data:
-        if id(p) not in _REAL or p.get('type') != 'ND' or p.get('_retired') or p.get('_pickless') or delisted(p): continue
-        yis = 2026 - int(p.get('year') or 0)
-        if yis < 1: continue
-        if ev_prefloor(p) < floor_frac(yis)*v0_start(p):
-            fsaves += 1
-            if MA.gfut(p) == 'RUC': fsaves_ruc += 1
+# floor-saves (only where the floor + v0_start exist, i.e. v2.x)
+fsaves = -1; fsaves_ruc = -1
+if ev_prefloor is not None and floor_frac is not None and v0_start is not None:
+    fsaves = 0; fsaves_ruc = 0
+    with contextlib.redirect_stdout(io.StringIO()):
+        for p in MA.data:
+            if id(p) not in _REAL or p.get('type') != 'ND' or p.get('_retired') or p.get('_pickless') or delisted(p): continue
+            yis = 2026 - int(p.get('year') or 0)
+            if yis < 1: continue
+            if ev_prefloor(p) < floor_frac(yis)*v0_start(p):
+                fsaves += 1
+                if MA.gfut(p) == 'RUC': fsaves_ruc += 1
 
 out = dict(label=LABEL, engine=ENG, panel=panel, anchors=anchors,
            n_sitout=len(sitouts), sitout_agg=sit_agg, sitout_rows=sitout_rows,
