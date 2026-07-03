@@ -22,15 +22,18 @@
 
 **Aggregates (three-column):**
 
+> **[D12 ASK 3 / audit R-a correction]** The AUTHORITATIVE 2025-cohort figures are the pinned walk-forward **matrix** numbers (incurve n=64) — the book and board read the matrix, so it is the source of truth. The earlier headline `37,103 / 43,703` was the **n=58 store scratch census** and is superseded. RULE (now stated in the doc): where a store-census number and a pinned-matrix number disagree, the **pinned matrix is authoritative**. The store-census sub-aggregate rows are kept, labelled non-authoritative, because their per-family decomposition is internally consistent on the n=58 census.
+
 | aggregate | CONTROL | PREVIOUS v2 | CURRENT v2.1 | Δ vs v2 |
 |---|---|---|---|---|
-| 2025 cohort (incurve, active, n=58) | 37,901 | 37,103 | **43,703** | **+6,600** |
-| under-seam (never-qualified, 1–5 g26; n=31) | — | 10,689 | **16,048** | **+5,359** |
-| zero-game sit-outs (n=77) | — | — | — | +198 net |
-| whole old sit-out family (old-ns==0, n=108) | — | 33,733 | **39,290** | **+5,557** |
+| **2025 cohort — pinned matrix (incurve n=64, AUTHORITATIVE)** | **37,901** | **37,875** | **43,967** | **+6,092** |
+| 2025 cohort — store scratch census (active n=58, non-authoritative) | 37,901 | 37,103 | 43,703 | +6,600 |
+| under-seam (never-qualified, 1–5 g26; n=31, census) | — | 10,689 | **16,048** | **+5,359** |
+| zero-game sit-outs (n=77, census) | — | — | — | +198 net |
+| whole old sit-out family (old-ns==0, n=108, census) | — | 33,733 | **39,290** | **+5,557** |
 
-DIAG-B's what-if said ≈ +3,871 (CF6, full-season-equivalent games, M3 off). Actual **+6,600**: same direction, larger — CF6 never modelled the λ evidence-credit blend for 1–5-game players (the biggest channel: +5,359 on 31 players), the V0 re-anchor, or the prorated POLE/LEVEL ramps for played rookies. DIAG-A's "54 players ≈ +4,096" maps to my census as the 31 active under-seam (+5,359) plus zero-game/depth-2+ family members (whole family +5,557 across 108).
+DIAG-B's what-if said ≈ +3,871 (CF6, full-season-equivalent games, M3 off). Actual matrix Δ **+6,092** (census +6,600): same direction, larger — CF6 never modelled the λ evidence-credit blend for 1–5-game players (the biggest channel: +5,359 on 31 players), the V0 re-anchor, or the prorated POLE/LEVEL ramps for played rookies. DIAG-A's "54 players ≈ +4,096" maps to my census as the 31 active under-seam (+5,359) plus zero-game/depth-2+ family members (whole family +5,557 across 108).
 
 **Directional acceptance — no player's value drops for playing more or scoring more:** proven structurally (λ monotone in games; e_full monotone in output — spot checks: B6 ramp avg-85 monotone 0..14; avg-40 seam ramp monotone post-smoothing; g=2 output ramp avg 30→100 strictly rising — ASK-2 file §3). Players who FELL vs v2 (X.Taylor −28, Leake 407→278, McCabe 507→380, Cootee −25, …) fell because the derived treatment prices their profile below the old flat placeholder — not because they played/scored more; each is ≥floor and position-consistent.
 
-**Position preservation (Dean/Robey-style on penalised players):** same-pick (12) zero-evidence synths at v2.1 price MID 1019 / KEY_DEF 1053 / GEN_DEF 1019 / RUC 1235 through the sit-out treatment (V0 identical 1524 pre-season, class retention differs) — the position basis survives the penalty end-to-end; nothing collapses to a flat PVC fraction.
+**Position preservation (Dean/Robey-style on penalised players):** same-pick (12) zero-evidence synths at v2.1 price differently by position through the sit-out treatment — the position basis survives the penalty end-to-end; nothing collapses to a flat PVC fraction. **[D12 ASK 3 / audit R-b correction]** the earlier claim "V0 identical 1524 pre-season" is WRONG: **V0 DIFFERS by position** — that difference IS the mechanism preserving position. Cold-audit verified per-position V0 at pick 12: MID **1458** / KEY_DEF **883** / GEN_DEF **863** / RUC **1085** (and class retention differs on top). The conclusion (position preserved, no flat-fraction collapse) stands; only the "identical 1524" support number was a scratch error.
