@@ -48,3 +48,29 @@ Status: ACTIVE (anchor).
 - A10 bar 0.70→0.50 (data-caused, provisional) — CHANGELOG 2026-07-02 D4 STEP 1.
 - Gothard calibration "probably fine, a touch rich, happy to leave it" (~1790, no shaving) — CHANGELOG 2026-07-02 D6/D7 (ASK 4).
 - Effort rule + downward-justification amendment — docs/process/PROCESS_CHANGES_2026-07-02.md §11.
+
+## D10 rulings (2026-07-03, relayed via DIRECTIVE 10 — GAMES-RAMP REWORK)
+
+**R5 · 2026-07-03 · The games-ramp design statement (BINDING SPEC — the old-PVC sit-out anchor is retired)**
+Luke verbatim: "B6 - fix first. But I do not accept the 'half of draft value' as that is derived from
+the old PVC, which I believe is a relic and retired. So it makes no sense. All players are being given
+a value 'the moment they are drafted' that they hold over the pre-season before their first season
+starts, and then it starts responding to matches throughout the season. [...] what is happening
+currently is that Annable and Cumming are being drafted, assigned a value based on their draft pick
+and position, and then when matches start and Annable does not play, his rating is flipping back to
+50% of the old, historical PVC." · "we should not be punishing players like Patterson for not playing
+a full season when the full season has not concluded. And we should not be considering players like
+Annable a full 'no sit' when he has played 1 game, that penalty should smooth in between games 0-6."
+Consequence: the flat SITOUT_RETAIN×draftval anchor DELETED (obituary E2); every penalty path
+re-anchored to the LIVE start value V0 (pick+position); smoothed, season-prorated, scoring-aware
+games-ramp treatment derived from historical outcomes and wired at CANDIDATE v2.1 (engine e15bafa9);
+B6 taken to green. The Luke-signed B5 floor stays dv-based (declared exception, pricing feature).
+Status: ACTIVE (candidate v2.1; cold audit before any bake).
+
+**R6 · 2026-07-03 · The three reporting rules (BINDING, permanent)**
+Luke's word (relayed as BINDING, D10 ASK 5): (1) every gates/board output reports THREE COLUMNS —
+CONTROL · PREVIOUS · CURRENT, deltas explicit; (2) every board/report carries a LOUD state label; no
+unlabelled player value anywhere Luke-facing; (3) the rules bind all future sessions.
+Consequence: wired in ship_gates_check.py + the book renderer + BAKE_CHECKLIST.md §REPORTING +
+KICKOFF_PROMPT.md + START_HERE.md; state registry data/report_states.json; snapshots data/gates_snapshots/.
+Status: ACTIVE (permanent process).
