@@ -432,12 +432,28 @@ try:
 except Exception as ex:
     gate('B6', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # ---------- SECTION C ----------
+# ---------- D14 BY-CONSTRUCTION LAWS (Luke's amended V0 board law + owner override O1) ----------
+# Wired PERMANENT gates (D14 1c/2a), board path: (D14a) same pos×draft-age×recorded-pick ⇒ IDENTICAL V0*
+# across draft years (Luke's amended law); (D14b) within-cell V0 inversions = 0 roster-wide (the D13 pick-
+# order guard TRANSFORM converted to this ASSERTION — obituary E5); (D14c) KPP retention floor O1 preserves
+# depth monotonicity (max of two isotonic-non-increasing curves). Only present on a D14+ engine (board path).
+try:
+    _a = G['_v0_curve_assert']()
+    gate('D14a', False, 'PASS' if _a['cross_draft_maxdisp'] < 1e-6 else 'FAIL',
+         f"same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion={_a['cross_draft_maxdisp']:.4f} SCAR (Luke's amended law; board path)")
+    gate('D14b', False, 'PASS' if _a['within_cell_inversions'] == 0 else 'FAIL',
+         f"within (pos×draft-age×draft-year) V0 inversions under V0* = {_a['within_cell_inversions']} roster-wide (D13 guard-transform → assertion; obituary E5)")
+    gate('D14c', False, 'PASS' if _a['kpp_depth_monotone'] else 'FAIL',
+         f"KPP retention floor O1 depth-monotone = {_a['kpp_depth_monotone']} (max of isotonic-non-increasing KPP/nonKPP; comparator nonKPP-only)")
+except Exception as ex:
+    gate('D14a', False, 'PENDING', f'D14 laws absent (pre-D14 engine): {type(ex).__name__}')
+
 gate('C1', False, 'PENDING', 'naive-baseline book not yet built — definition proposal in report (needs its own directive)')
 gate('C2', False, 'PENDING', 'V1-pick-model book not yet built — definition proposal in report (needs its own directive)')
 
 # ---------- BOARD + REPORT ----------
 order = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15',
-         'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'C1', 'C2']
+         'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'D14a', 'D14b', 'D14c', 'C1', 'C2']
 RES.sort(key=lambda r: order.index(r[0]))
 cnt = {}
 lines = [f'=== STATE: {STATE_LABEL} ===',
