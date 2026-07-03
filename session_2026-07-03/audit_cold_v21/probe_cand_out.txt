@@ -1,0 +1,60 @@
+== ENV/CONST ==  SEASON_FE=0.58  M3_FE=0.58  R_SIT.nonKPP=[0.429, 0.404, 0.41, 0.432, 0.437, 0.424]  LAM_SIT=[0.0, 0.16, 0.493, 0.547, 0.547, 0.816, 1.0]
+
+== PANEL @ candidate c8051893 ==
+  Nick Daicos            cand=7069   control_exp=7059   <-- MOVED
+  Marcus Bontempelli     cand=3109   control_exp=3101   <-- MOVED
+  Harry Sheezel          cand=7207   control_exp=7287   <-- MOVED
+  Max Gawn               cand=2137   control_exp=2126   <-- MOVED
+  Harley Reid            cand=3565   control_exp=3523   <-- MOVED
+  Josh Ward              cand=1653   control_exp=1782   <-- MOVED
+  Darcy Moore            cand=201    control_exp=177    <-- MOVED
+  Taylor Goad            cand=846    control_exp=545    <-- MOVED
+  Josh Smillie           cand=773    control_exp=896    <-- MOVED
+  Will Green             cand=545    control_exp=741    <-- MOVED
+  PANEL cand-vs-control-expected: 0/10 identical
+
+== V0 (live start value) + ev @ v2.1 ==
+  Harry Dean        |2025|pk3   pos=KEY_DEF  g26=11  prod=56.6   PVC=2248  V0=1237   ev=1840   ns_pro=1 dlst=False
+  Sullivan Robey    |2025|pk9   pos=MID      g26=10  prod=58.8   PVC=1603  V0=1882   ev=2255   ns_pro=1 dlst=False
+  Daniel Annable    |2025|pk6   pos=MID      g26=1   prod=40.0   PVC=1873  V0=1859   ev=1326   ns_pro=0 dlst=False
+  Sam Cumming       |2025|pk7   pos=MID      g26=7   prod=61.3   PVC=1793  V0=1864   ev=1948   ns_pro=1 dlst=False
+  Dylan Patterson   |2025|pk5   pos=GEN_DEF  g26=0   prod=None   PVC=1965  V0=1136   ev=884    ns_pro=0 dlst=False
+  Jacob Farrow      |2025|pk10  pos=GEN_DEF  g26=12  prod=71.0   PVC=1490  V0=860    ev=1644   ns_pro=1 dlst=False
+  Xavier Taylor     |2025|pk11  pos=GEN_DEF  g26=2   prod=42.0   PVC=1380  V0=860    ev=662    ns_pro=0 dlst=False
+  Oskar Taylor      |2025|pk15  pos=GEN_DEF  g26=0   prod=None   PVC=1074  V0=856    ev=572    ns_pro=0 dlst=False
+  Louis Emmett      |2025|pk27  pos=RUC      g26=5   prod=32.8   PVC=609   V0=1536   ev=1338   ns_pro=1 dlst=False
+  Jack Ison         |2025|pk47  pos=GEN_FWD  g26=4   prod=53.2   PVC=425   V0=416    ev=538    ns_pro=1 dlst=False
+  Cooper Lord       |2024|pk9   pos=MID      g26=3   prod=76.7   PVC=308   V0=420    ev=414    ns_pro=1 dlst=False
+  Tobie Travaglia   |2024|pk8   pos=GEN_DEF  g26=0   prod=None   PVC=1704  V0=841    ev=712    ns_pro=1 dlst=False
+  Angus Clarke      |2024|pk39  pos=GEN_DEF  g26=0   prod=None   PVC=532   V0=513    ev=675    ns_pro=1 dlst=False
+
+== A4 PATTERSON TRAJECTORY (name|2025|pk5) ==
+  debutyr=2026  fE(_fEy)=0.5800  tau=0.5800  class=nonKPP
+  V0=1135.7  R(tau)=0.6688  lam=0.0000 (g26=0)  e_full=1201.4
+  sitout anchor = (1-lam)*R*V0 + lam*e_full = 759.6
+  B5 floor: yis=1  floor_frac=0.450  draftval=1965  floor=884.2
+  ev_prefloor=760  FINAL ev=884
+  PRORATED? tau uses fE=0.5800 not 1.0 -> decay accrued only 58.0% of season1
+
+== A3b/B6 RAMP: first-evidence MID pk10 @avg85, games 0..14 ==
+  ramp(0..14)=[1019, 1397, 1730, 2464, 3103, 3190, 3238, 3291, 3305, 3314, 3367, 3435, 3523, 3563, 3592]
+  steps=[378, 333, 734, 639, 87, 48, 53, 14, 9, 53, 68, 88, 40, 29]
+  dips(<0)=[]  T(0->6)=2219  max|step|first6=734 (cap50%T=1109)  rise-by-3g=1445 (need25%T=554)
+  low-rate avg40 ramp(0..8)=[1019, 1192, 1233, 1294, 1344, 1359, 1412, 1465, 1490] dips=[]
+
+== A3b OUTPUT-MONOTONE at fixed g=2, MID pk10, avg 20..110 ==
+  avg20..110 -> [1084, 1162, 1233, 1316, 1322, 1413, 1595, 1841, 2075, 2344]  strictly-rising=True
+
+== A3d POSITION PRESERVATION: same-pick(12) zero-evidence sit-out synths ==
+  MID      V0=1458  ev(sit-out,0g)=975
+  KEY_DEF  V0=883  ev(sit-out,0g)=610
+  GEN_DEF  V0=863  ev(sit-out,0g)=577
+  RUC      V0=1085  ev(sit-out,0g)=880
+
+== A3a PRE-SEASON HOLD: ev(p, debutyr-1)==V0 for a not-yet-started synth ==
+  debutyr=2027  V0=1891.61  ev(debutyr-1=2026)=1892.00  equal=True
+
+== A7 2025 COHORT TOTAL (live @ v2.1) ==
+  n(active 2025, board grp, not delisted, picked)=80  sum ev=48542
+  under-seam (ns_pro==0, 1<=g26<=5) n=10 sum=6189
+  zero-game sit-outs (ns_pro==0,g26==0) n=38 sum=12641
