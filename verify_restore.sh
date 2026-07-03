@@ -28,6 +28,20 @@ chk "Langdon ev(2026)" "$(echo "$PF"|cut -d' ' -f2)" "593"
 for h in _gate1_wf.py _gate1_picksplit.py s4_matrix_M1v7.py s4_render_M1v7.py; do
   if [ -f "$RA/$h" ]; then echo "PASS  harness present: $h"; pass=$((pass+1)); else echo "FAIL  harness MISSING: $h"; fail=$((fail+1)); fi
 done
+# PAIR-GUARD (D8 ASK 3iii — closes the D7 mixed-pair instrument caveat): the engine's cp/PR chain loads
+# through wire_redesign.py's HARDCODED _FV=/home/claude/rl_workspace/forward_valuation — NOT this tree —
+# so the named-player axes above ran repo-engine x WORKSPACE-forward_valuation. Make a mixed pair LOUD:
+WFV="/home/claude/rl_workspace/forward_valuation"
+if [ -d "$WFV" ] && [ -d "$ROOT/engine/forward_valuation" ]; then
+  pgfail=0
+  for f in "$ROOT/engine/forward_valuation"/*.py; do
+    b=$(basename "$f")
+    [ "$(md5sum "$f"|cut -c1-8)" = "$(md5sum "$WFV/$b" 2>/dev/null|cut -c1-8)" ] || { pgfail=1; echo "      pair-guard MISMATCH: $b (repo tree != workspace _FV target)"; }
+  done
+  chk "cp-pair guard (repo fv == workspace fv, all .py)" "$pgfail" "0"
+else
+  echo "NOTE  cp-pair guard skipped: $WFV absent — imports fail loudly rather than mix (root fix = parameterize _FV, candidate-branch item)"
+fi
 if [ -f "$ROOT/run_panel.sh" ]; then echo "--- run_panel.sh tail (10-panel; confirm 10/10) ---"; (cd "$ROOT" && bash run_panel.sh 2>&1 | grep -v Warning | tail -4); fi
 echo "===================================="
 echo "VERDICT: $pass PASS / $fail FAIL  =>  $([ "$fail" = 0 ] && echo RESTORE-VERIFY PASS || echo RESTORE-VERIFY FAIL)"
