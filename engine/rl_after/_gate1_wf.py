@@ -6,6 +6,7 @@ os.environ['RL_PRIOR_TREES']='150'
 ns={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
+ns['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD (leakage) path — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
 MA=ns['MA']; cp=ns['cp']; PR=ns['PR']; REF=ns['REF']; era=ns['era']
 def setmodels(cm,q97):
     ns['cm']=cm; ns['q97m']=q97   # swap the trained/leaky part; pole(_POLE) + ISO stay in-sample structural priors

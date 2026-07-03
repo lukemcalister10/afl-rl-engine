@@ -130,3 +130,30 @@ R1: daEV(V0) denominator kept (KPP severity numerator-driven, not pole-inflated)
 (fires all classes). Sit-out family +2,861; early-career KPP penalty relieved; residual deep-KPP harshness
 is data-derived (honesty clause — further softening is Luke's signed override). Obituary E4. Wired at v2.3.
 Status: ACTIVE (candidate v2.3; deep-KPP residual flagged for Luke's owner call; scoped re-audit before bake).
+
+**R12 · 2026-07-03 · V0 BOARD CURVE — Luke's AMENDED LAW (supersedes the D13 spot-guard on the board)**
+Luke verbatim: "For the backtesting this is not a rule and doesn't make sense to be, but for the current
+values that end up in the engine/on the board, we can't have a situation where one player who was a mid at
+pick 8 has a higher starting v0 than another in the same boat. It's illogical."
+Consequence: on the BOARD PATH, every real-ND start anchor V0 := V0*(position, draft-age, recorded pick) — a
+derived continuous kernel/local regression of the current roster's CAPPED V0s (ruck cap FIRST) over log
+recorded pick, pooled ACROSS draft years, isotonic non-increasing in pick. Same pos×draft-age×pick ⇒ IDENTICAL
+V0* across draft years (cross-draft dispersion 507→0, gate D14a); within-cell inversions 0 (gate D14b). Cells:
+age≤18 per position (finest, eff-n≥35); mature≥19 pooled per position (R1, non-RUC pooled across position —
+age-dominated & position-washed; RUC separate). Mature stays differentiated by age (non-increasing in draft-age).
+BACKTEST EXEMPT (Luke, verbatim above): the D13 guard is retained off-board so the walk-forward book reproduces
+(maxΔ=0). D13 guard-transform → assertion (obituary E5). Moves: 831 up / 740 down; R2 >35% movers=91 (63 mature,
+board-ev impact ≤ a few points — production-driven). Wired at CANDIDATE v2.4.
+Status: ACTIVE (candidate v2.4; scoped re-audit before bake).
+
+**R13 · 2026-07-03 · KPP SIT-OUT RETENTION FLOOR — SIGNED OWNER OVERRIDE O1 (nonKPP comparator)**
+Luke verbatim: "if their yearly value is lower than another position, it gets brought up to that level. So if
+it's higher, fine, but if it's lower, it's carried so it can never be the lowest ... whether it's logical or
+not I can't see KPPs losing value for sitting at a faster rate than non KPPs." Clarified same day: "I meant KPP
+sitting penalty by year. Non KPP only. Across each year it applies."
+Consequence: wired KPP retention surface := pointwise MAX(KPP-derived, nonKPP-derived) at every (log-pick, depth),
+comparator nonKPP ONLY (RUC excluded — own capped machinery, supervisor spec stated to Luke pre-fire), BOARD PATH
+only. Depth monotonicity re-asserted (gate D14c). Binds predominantly d3+ (and d1+ for mid-picks 15–30 where raw
+KPP retention sat just below nonKPP — the exact "losing value faster" case). OWNER-SET where it binds, data-derived
+elsewhere — registered docs/process/OWNER_OVERRIDES.md O1. Wired at CANDIDATE v2.4.
+Status: ACTIVE (candidate v2.4; owner-set override O1; scoped re-audit before bake).

@@ -282,9 +282,23 @@ R_SURF={'nonKPP':{5:[0.547,0.446,0.446,0.446,0.446,0.314], 15:[0.707,0.479,0.479
         'KPP':{5:[0.660,0.487,0.387,0.194,0.183,0.183], 15:[0.694,0.427,0.273,0.136,0.136,0.136], 30:[0.632,0.383,0.286,0.180,0.172,0.172], 50:[0.642,0.407,0.351,0.334,0.334,0.329]},
         'RUC':{5:[1.000,0.715,0.670,0.562,0.535,0.467], 15:[0.851,0.597,0.597,0.520,0.520,0.468], 30:[0.830,0.616,0.616,0.607,0.540,0.469], 50:[0.781,0.594,0.594,0.594,0.541,0.470]}}
 _RS_KNOTS=[5,15,30,50]; _RS_LOGK=[np.log(k) for k in _RS_KNOTS]
+# _BOARD_PATH: True on the live board render (present/forward valuation). The BACKTEST/WALK-FORWARD harnesses
+# set g['_BOARD_PATH']=False after exec so Luke's D14 board-only laws (KPP retention floor O1 below; V0 curve
+# further down) DO NOT touch the historical book (Luke's backtest exemption -> the walk-forward book reproduces).
+_BOARD_PATH=True
+def _dv_surf(cls,lp):                                        # depth vector (6) for a class at a given log-pick
+    kn=R_SURF[cls]; return [float(np.interp(lp,_RS_LOGK,[kn[k][i] for k in _RS_KNOTS])) for i in range(6)]
 def _R_surf(cls,pick,tau):                                   # interp over log-pick (knots) then over tau (0->1, depths 1..6, flat 6+)
-    kn=R_SURF[cls]; lp=np.log(min(max(pick,1),90))
-    dv=[float(np.interp(lp,_RS_LOGK,[kn[k][i] for k in _RS_KNOTS])) for i in range(6)]
+    lp=np.log(min(max(pick,1),90)); dv=_dv_surf(cls,lp)
+    # ==== D14 ASK2 (03/07/2026) — KPP RETENTION FLOOR (SIGNED OWNER OVERRIDE O1, Luke verbatim: "if it's lower,
+    # it's carried so it can never be the lowest ... I can't see KPPs losing value for sitting at a faster rate
+    # than non KPPs"). Wired KPP sit-out retention surface := pointwise MAX(KPP, nonKPP) at every (log-pick,depth).
+    # Comparator = nonKPP ONLY (RUC EXCLUDED — own capped machinery; supervisor spec, stated to Luke pre-fire).
+    # BOARD PATH ONLY (O1 scope). max() of two isotonic-non-increasing-in-depth vectors is non-increasing (re-
+    # verified numerically in _v0_curve_assert). OWNER-SET where the floor binds, data-derived elsewhere. Governance:
+    # docs/process/OWNER_OVERRIDES.md O1; obituary/registration BOARD_LAYERS_OBITUARY.md.
+    if _BOARD_PATH and cls=='KPP':
+        dvn=_dv_surf('nonKPP',lp); dv=[max(a,b) for a,b in zip(dv,dvn)]
     return float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+dv))
 LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
 def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD','KEY_DEF') else 'nonKPP')
@@ -322,13 +336,13 @@ def _v0_raw(p):                                              # ASK1: uncapped V0
     k=_v0key(p)
     if k not in _V0C: _V0C[k]=_ruc_prior_cap(p,_v0_uncapped(p))
     return _V0C[k]
-# ==== ASK2 (D13 03/07/2026): V0 PICK-ORDER GUARD (Luke's law, verbatim intent): "v0 for the same age and
-# position cannot be higher for a lower pick in the same draft. mature age players rightfully will be
-# calculated differently." WITHIN (position x draft-age x draft-year) cells, V0 is strictly NON-INCREASING in
-# RECORDED pick — a worse pick (higher number) cannot start above a better one. Downward-only projection
-# (minimal: only violators pulled to the running min of better picks in-cell; nobody lifted). Mature-age /
-# differing-age pairs sit in SEPARATE draft-age cells -> exempt BY CONSTRUCTION. Scope: REAL national-draft
-# players (recorded==effective, verified 0/1571 divergences; RD/MSD/SSP pick-equivalents out of scope).
+# ==== D13 ASK2 V0 PICK-ORDER GUARD — now RETAINED FOR THE BACKTEST/WALK-FORWARD PATH ONLY. On the BOARD PATH it
+# is SUPERSEDED by the D14 V0 curve below (obituary E5; Luke's amended law). Luke's backtest exemption (D14,
+# verbatim: "For the backtesting this is not a rule and doesn't make sense to be") means the historical book must
+# be UNCHANGED; the v2.3 walk-forward book was built on these guard values, so keeping the guard on the backtest
+# path reproduces that book byte-for-byte (maxΔ=0). [D13 spec, for the record:] WITHIN (position x draft-age x
+# draft-year) cells V0 is NON-INCREASING in RECORDED pick; downward-only projection to the in-cell running min;
+# mature-age/differing-age pairs sit in SEPARATE cells (exempt by construction); scope REAL ND (recorded==effective).
 _V0GUARD={}
 def _v0_cell(p): return (MA.gfut(p), int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1)))), p.get('year'))
 def _build_v0_guard():
@@ -341,9 +355,108 @@ def _build_v0_guard():
         for q in sorted(ps,key=lambda z:z.get('pick')):            # ascending pick (best -> worst)
             run=min(run,_v0_raw(q)); _V0GUARD[_v0key(q)]=run        # non-increasing downward cap over pick
 _build_v0_guard()
-def v0_start(p):                                             # LIVE START VALUE = ASK1 cap -> ASK2 pick-order guard
-    v=_v0_raw(p); g=_V0GUARD.get(_v0key(p))
-    return v if g is None else min(v,g)
+# ==== D14 ASK1 (03/07/2026): V0 BOARD CURVE — Luke's AMENDED LAW (verbatim): "for the current values that end up
+# in the engine/on the board, we can't have a situation where one player who was a mid at pick 8 has a higher
+# starting v0 than another in the same boat. It's illogical." => same POSITION x DRAFT-AGE x RECORDED-PICK gives
+# the SAME starting V0 across draft years, on the board. Derivation (fitted on the CURRENT roster's CAPPED V0s —
+# the ASK1 ruck cap applies FIRST, i.e. we fit _v0_raw = cap(_v0_uncapped); then the curve): a CONTINUOUS
+# kernel/local regression of capped V0 over log RECORDED pick, POOLED ACROSS DRAFT YEARS, projected ISOTONIC
+# NON-INCREASING in pick. Pick bands are diagnostic slices only, never derivation bins (binding statistics rule).
+# CELLS at the finest resolution the sample supports (census in session_2026-07-03/d14):
+#   TIER 1 — age<=18 per position (6 cells; 1408/1571 players): adaptive Gaussian bandwidth grown until local
+#     eff-n>=35 at every pick, then isotonic. RUC is its OWN age18 curve (fitted on capped V0s).
+#   TIER 2 — mature (draft-age>=19; 163 players): every exact (pos x age) cell is eff-n<35 even at max bandwidth
+#     -> R1 pooling. Mature V0 is age-dominated and position-washed in-sample (position spread << age spread), so
+#     the 5 non-RUC positions POOL into one age-resolved surface V0*(age,log-pick) [DECLARED]; RUC mature keeps
+#     its own (thin) cell. Fit is 2D-kernel over (draft-age, log-pick), then isotonic-non-increasing in pick AND
+#     non-increasing in draft-age (older draftee never starts above a younger one, same pick) — so mature entrants
+#     stay LAWFULLY DIFFERENTIATED from age-18 and by age. eff-n growth/shortfalls recorded in _V0CURVE_META (R1).
+# APPLY on the BOARD PATH: every current-roster real-ND start anchor V0 := V0*(pos, draft-age, recorded pick),
+# feeding every present/forward consumer (sit-out retention, staleness/stalled/mediocre caps, the B5 floor, the
+# delist scrap). The BACKTEST path is untouched (guard, above). By-construction gates in _v0_curve_assert().
+_BOARD_PATH  # (declared above, before _R_surf)
+_V0CURVE={}; _V0CURVE_META={}; _V0_GRIDPK=list(range(1,91)); _V0_LGRID=np.log(_V0_GRIDPK)
+def _ageR(p): return int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1))))
+def _iso_dec(y): return list(map(float,IsotonicRegression(increasing=False,out_of_bounds='clip').fit(_V0_LGRID,y).predict(_V0_LGRID)))
+def _fit_pick_curve(pts,effn_min=35.0,h0=0.18,hmax=2.2):     # adaptive-bandwidth NW over log-pick -> isotonic non-increasing
+    lx=np.array([a for a,_ in pts]); vy=np.array([b for _,b in pts]); grid=[]; meta_e=[]; meta_hmax=0
+    for lg in _V0_LGRID:
+        h=h0
+        while True:
+            w=np.exp(-0.5*((lx-lg)/h)**2); sw=w.sum(); effn=(sw*sw)/float(np.sum(w*w)) if sw>0 else 0.0
+            if effn>=effn_min or h>=hmax: break
+            h*=1.15
+        if h>=hmax: meta_hmax+=1
+        grid.append(float(np.dot(w,vy)/sw) if sw>0 else float(vy.mean())); meta_e.append(effn)
+    return _iso_dec(grid), dict(n=len(pts),min_effn=float(min(meta_e)),grid_at_hmax=meta_hmax)
+def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  # 2D (draft-age,log-pick) kernel; age-resolved surface
+    aa=np.array([a for a,_,_ in pts]); lx=np.array([l for _,l,_ in pts]); vy=np.array([v for _,_,v in pts])
+    ages=list(range(19,31)); surf={}; mine=1e9; hmaxhit=0
+    for ag in ages:
+        row=[]
+        for lg in _V0_LGRID:
+            ha,hp=ha0,hp0
+            while True:
+                w=np.exp(-0.5*((aa-ag)/ha)**2)*np.exp(-0.5*((lx-lg)/hp)**2); sw=w.sum()
+                effn=(sw*sw)/float(np.sum(w*w)) if sw>0 else 0.0
+                if effn>=effn_min or (ha>=hamax and hp>=hpmax): break
+                if ha<hamax: ha*=1.2
+                else: hp*=1.15
+            if ha>=hamax and hp>=hpmax: hmaxhit+=1
+            row.append(float(np.dot(w,vy)/sw) if sw>0 else float(vy.mean())); mine=min(mine,effn)
+        surf[ag]=_iso_dec(row)                                # pick-isotonic per age
+    for i in range(len(_V0_GRIDPK)):                          # then non-increasing in draft-age at each pick
+        run=1e18
+        for ag in ages: run=min(run,surf[ag][i]); surf[ag][i]=run
+    _V0CURVE_META[label]=dict(n=len(pts),min_effn=float(mine),grid_at_hmax=hmaxhit,ages=ages)
+    return surf
+def _build_v0_curve():
+    POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
+    real=[p for p in MA.data if id(p) in _REAL and p.get('type')=='ND' and p.get('pick') is not None]
+    for pos in POS:
+        pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
+        grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
+    matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
+    matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
+    surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
+    _V0CURVE_META['_c18']=c18; _V0CURVE_META['_surfN']=surfN; _V0CURVE_META['_surfR']=surfR
+    def star(pos,ag,pick):
+        lp=np.log(min(max(pick,1),90))
+        if ag<=18: return float(np.interp(lp,_V0_LGRID,c18[pos]))
+        surf=surfR if pos=='RUC' else surfN; return float(np.interp(lp,_V0_LGRID,surf[min(max(ag,19),30)]))
+    _V0CURVE_META['_star']=star
+    for p in real: _V0CURVE[_v0key(p)]=star(MA.gfut(p),_ageR(p),p.get('pick'))
+_build_v0_curve()
+def v0_start(p):                                             # BOARD -> D14 V0 curve (Luke's amended law); BACKTEST -> D13 guard (Luke's exemption)
+    v=_v0_raw(p)                                             # ASK1 ruck cap applied FIRST (cap -> curve/guard order)
+    if _BOARD_PATH:
+        c=_V0CURVE.get(_v0key(p)); return c if c is not None else v
+    g=_V0GUARD.get(_v0key(p)); return v if g is None else min(v,g)
+def _v0_curve_assert():                                      # BY-CONSTRUCTION GATES (D14 1c): wired, return dict of results
+    star=_V0CURVE_META['_star']; ages=_V0CURVE_META['mature_nonRUC']['ages']
+    # (i) same (pos,ageR,pick) -> identical V0* across draft years (function of pos,ageR,pick only) — check dispersion
+    from collections import defaultdict
+    grp=defaultdict(list)
+    for p in MA.data:
+        if id(p) in _REAL and p.get('type')=='ND' and p.get('pick') is not None:
+            grp[(MA.gfut(p),_ageR(p),p.get('pick'))].append(v0_start(p))
+    maxdisp=max((max(v)-min(v) for v in grp.values()),default=0.0)
+    # (ii) within (pos,ageR,year) cell inversions under V0*
+    byc=defaultdict(list); inv=0
+    for p in MA.data:
+        if id(p) in _REAL and p.get('type')=='ND' and p.get('pick') is not None:
+            byc[(MA.gfut(p),_ageR(p),p.get('year'))].append(p)
+    for _c,ps in byc.items():
+        ps=sorted(ps,key=lambda z:z.get('pick'))
+        for i in range(len(ps)):
+            for j in range(i+1,len(ps)):
+                if ps[j].get('pick')>ps[i].get('pick') and v0_start(ps[j])>v0_start(ps[i])+1e-6: inv+=1
+    # (iii) depth-monotonicity of the KPP-floored retention surface (max of non-increasing curves)
+    dmono=True
+    for pk in [3,8,15,30,50,80]:
+        dv=[ _R_surf('KPP',pk,t) for t in range(1,7) ]
+        if any(dv[k+1]>dv[k]+1e-9 for k in range(5)): dmono=False
+    return dict(cross_draft_maxdisp=maxdisp, within_cell_inversions=inv, kpp_depth_monotone=dmono)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)

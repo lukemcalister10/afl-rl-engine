@@ -2,6 +2,7 @@ import os
 import io,contextlib,json,collections,numpy as np
 g={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+g['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD path — Luke's exemption. Board-only laws (V0 curve, KPP floor) OFF here so the historical book reproduces (maxΔ=0 vs v2.3).
 MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
 INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
 def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_double_count') and not p.get('_phantom') and not p.get('_pvc_exclude')

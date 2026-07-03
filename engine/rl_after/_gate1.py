@@ -3,6 +3,7 @@ Early-career-value proof: value should be ~flat across tenure (a yr1 winner ~ a 
 import io,contextlib,numpy as np
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0])
+_BOARD_PATH=False   # D14: in-sample/walk-forward gate — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
 era={}
 for Y in range(2009,2026):
     a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
