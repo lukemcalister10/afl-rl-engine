@@ -100,3 +100,33 @@ re-anchored). Floor-saves 58 (+2117) -> 52 (+1330); Patterson floor 884->511 no 
 RUC floors PROVISIONAL — the ruck V0 is Luke-ruled hot (h-ruc-startvalue-hot); its nerf lands NEXT
 directive before any bake. Obituary E3. Wired at CANDIDATE v2.2 (engine af1fc6aa).
 Status: ACTIVE (candidate v2.2; RUC floors provisional pending ruck-V0 nerf; scoped re-audit before bake).
+
+## D13 rulings (2026-07-03, relayed via DIRECTIVE 13 — RUCK CAP + V0 PICK-ORDER + RETENTION RE-DERIVE)
+
+**R9 · 2026-07-03 · RUC prior cap at the 1.73 class median (parameterised dial)**
+Luke verbatim: "I'd be inclined to just cap ruck prior at the 1.73 median. But that's just a thought."
+Consequence: `RUC_PRIOR_CAP` (env `RL_RUC_PRIOR_CAP`, default **1.73** = the ND-ruck class median V0/PVC,
+measured 1.7274) caps the RUC band prior as a max V0/PVC ratio at the raw_ev/band level — flows into V0, the
+sit-out blend, the B5 floor and the prior-dominated production leg; proven-ruck production byte-exact. This
+RESOLVES the R8 ⚠PROVISIONAL RUC floor and the `h-ruc-startvalue-hot` register item (the ruck-V0 nerf R8
+deferred to "next directive"). Dial is Luke's to move at the board view — at 1.73, Emmett = 1054 (above his
+stated 650–800; that range sits at ~1.1–1.3). Wired at CANDIDATE v2.3.
+Status: ACTIVE (candidate v2.3; dial default 1.73, Luke may re-set; scoped re-audit before bake).
+
+**R10 · 2026-07-03 · V0 pick-order law (isotonic non-increasing in pick within age/pos/year cells)**
+Luke verbatim: "v0 for the same age and position cannot be higher for a lower pick in the same draft. I
+understand mature age players rightfully will be calculated differently."
+Consequence: within (position × draft-age × draft-year) cells, V0 is non-increasing in recorded pick
+(downward-only guard, built at load time). Mature-age players in separate draft-age cells → exempt by
+construction. Roster inversion scan 449 → 0. Wired at CANDIDATE v2.3.
+Status: ACTIVE (candidate v2.3; scoped re-audit before bake).
+
+**R11 · 2026-07-03 · sit-out penalty re-derived (retention surface), Luke's standing objection**
+Luke verbatim: "I'm still not happy with the sit out penalty and think it is excessive especially for KPP
+players." + "A player should never gain value by sitting out and doing nothing."
+Consequence: the depth-only R_SIT table (which violated the no-gain law — nonKPP rose d3→d5, KPP rose d5→d6)
+is superseded by a continuous log-pick × depth surface R_SURF, isotonic non-increasing in depth, per class.
+R1: daEV(V0) denominator kept (KPP severity numerator-driven, not pole-inflated). R2: pick-conditioned
+(fires all classes). Sit-out family +2,861; early-career KPP penalty relieved; residual deep-KPP harshness
+is data-derived (honesty clause — further softening is Luke's signed override). Obituary E4. Wired at v2.3.
+Status: ACTIVE (candidate v2.3; deep-KPP residual flagged for Luke's owner call; scoped re-audit before bake).
