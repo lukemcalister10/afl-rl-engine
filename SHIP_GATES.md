@@ -16,6 +16,24 @@
 ### - [DC] = DATA-CONDITIONAL gate (rests on current-season / thin-evidence facts as
 ###   of 02/07/2026); on failure, run the failure triage below FIRST.
 
+### GATE STATUS VOCABULARY (registered D14 03/07/2026 — carried query ASK 3a; the scoreboard
+### emitted these words with no governance definition before now):
+### - PASS / FAIL — the gate's scripted assertion holds / does not hold.
+### - PENDING — the gate cannot yet be evaluated (its input stage, e.g. the PVC, is not built).
+###   Not a red; not counted against shipping.
+### - NOT-RUN — the gate needs a prerequisite harness run this session that has not happened yet
+###   (e.g. B2 needs _gate1_wf.py). Re-run the prerequisite; not a verdict.
+### - STRUCK — the gate was deliberately removed by Luke (A15). Not counted.
+### - FEATURE — the gate is NO LONGER a pass/fail alarm: it was AMENDED into a PRICING FEATURE by
+###   Luke. Exactly ONE gate carries this status: **B5** (the signed year-schedule floor). Luke's
+###   D7 ruling retired B5-as-alarm and made the floor a pricing feature at the ev() boundary; the
+###   FLOOR-SAVES TABLE (printed every gates-board run) is the NEW alarm surface — a saves-list that
+###   grows unexpectedly is the signal the old red used to fire on. FEATURE does NOT mask a red: the
+###   signal is not suppressed, it is relocated to a visible, printed list (mispricings stay VISIBLE,
+###   never silently clamped), and the pure-lower-bound property (0 lowered, 0 non-ND moved) is
+###   re-verified every run. If the saves-list ever needs a hard bound again, B5 returns to pass/fail
+###   by Luke's ruling; until then FEATURE = "wired, visible, owner-ruled non-blocking."
+
 ## SECTION A — LUKE'S NAMED CALLS (all confirmed)
 
 A1.  Willem Duursma > Zeke Uwland.
@@ -98,6 +116,17 @@ B5. AMENDED 02/07/2026 (Luke-ruled, in writing — text prepared D6, committed D
 B6. No hard lines: value continuous across the games ramp (no step at the 6-game
     seam) AND monotone in evidence — more games at the same scoring rate is never
     worth less.
+
+### D14 BY-CONSTRUCTION LAWS (Luke-authorized amendment, in writing, 03/07/2026 D14;
+### verbatim rulings in CHANGELOG + docs/process/LUKE_RULINGS_LEDGER.md R12/R13; scripted
+### PASS/FAIL in ship_gates_check.py, printed green every gates-board run). BOARD PATH only;
+### the backtest/walk-forward machinery is exempt by Luke's ruling.
+D14a. V0 same-boat law (Luke's amended law): same position × draft-age × recorded pick ⇒
+      IDENTICAL starting V0* across draft years (max cross-draft dispersion = 0).
+D14b. V0 order law: 0 within-cell (position × draft-age × draft-year) inversions under V0*
+      (the D13 spot-guard TRANSFORM converted to this ASSERTION; obituary E5).
+D14c. KPP retention floor (Owner Override O1, docs/process/OWNER_OVERRIDES.md): the KPP
+      sit-out retention surface = max(KPP, nonKPP) is depth-monotone (never gains by sitting).
 
 ## SECTION C — BASELINE GATE (complexity must earn its keep)
 C1. Ship head beats the NAIVE BASELINE (last-2-season avg + simple age curve +
