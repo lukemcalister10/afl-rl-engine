@@ -1,6 +1,6 @@
 # D10 ASK 6a — TRAVAGLIA COMPARISON DECOMPOSITION (diagnosis only — NOTHING wired; Luke rules on the finding)
 
-**STATES: CONTROL `8aed420a` · PREVIOUS v2 `4a134d05` · CURRENT v2.1 `e15bafa9`. All three resolved by ID (name|cohort|pick). Book-Yr1 = pinned matrix anchor column; board-Current = matrix `cur` (CONTROL/v2) and the live candidate eval (CURRENT).**
+**STATES: CONTROL `8aed420a` · PREVIOUS v2 `4a134d05` · CURRENT v2.1 `c8051893`. All three resolved by ID (name|cohort|pick). Book-Yr1 = pinned matrix anchor column; board-Current = matrix `cur` (CONTROL/v2) and the live candidate eval (CURRENT).**
 
 ## Finals, three-column (book-Yr1 → board-Current)
 

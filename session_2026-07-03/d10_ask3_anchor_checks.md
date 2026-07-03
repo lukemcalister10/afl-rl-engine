@@ -1,6 +1,6 @@
 # D10 ASK 3 — ANCHOR CHECKS (three-column, state-labelled)
 
-**STATES: CONTROL = canonical `8aed420a` (pinned matrix `data/s4_matrix_control_8aed420a.json`) · PREVIOUS = CANDIDATE v2 `4a134d05` (pinned matrix `data/s4_matrix_v2_4a134d05.json`) · CURRENT = CANDIDATE v2.1 games-ramp `e15bafa9` (this branch; scratch deploy p6 + official gates run in the ASK-4 file). Nothing baked.**
+**STATES: CONTROL = canonical `8aed420a` (pinned matrix `data/s4_matrix_control_8aed420a.json`) · PREVIOUS = CANDIDATE v2 `4a134d05` (pinned matrix `data/s4_matrix_v2_4a134d05.json`) · CURRENT = CANDIDATE v2.1 games-ramp `c8051893` (this branch; scratch deploy p6 + official gates run in the ASK-4 file). Nothing baked.**
 
 | player (ID key: name\|cohort\|pick) | g26 | prod | CONTROL | PREVIOUS v2 | CURRENT v2.1 | Δ vs v2 | note |
 |---|---|---|---|---|---|---|---|

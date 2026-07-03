@@ -1,6 +1,6 @@
 # D10 ASK 2 — the GAMES-RAMP sit-out treatment: derivation + wiring (CANDIDATE v2.1)
 
-**STATE: CANDIDATE v2.1 (games-ramp) — engine `e15bafa9` / cp `7c3652da`, branch `claude/games-ramp-engine-change-qt7824`. CONTROL = canonical `8aed420a` · PREVIOUS = candidate v2 `4a134d05`. Nothing baked; cold audit next.**
+**STATE: CANDIDATE v2.1 (games-ramp) — engine `c8051893` / cp `7c3652da`, branch `claude/games-ramp-engine-change-qt7824`. CONTROL = canonical `8aed420a` · PREVIOUS = candidate v2 `4a134d05`. Nothing baked; cold audit next.**
 
 ## 0. What was replaced
 

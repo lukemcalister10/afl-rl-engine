@@ -70,8 +70,11 @@ Jeffrey 1773 > Ginnivan; year-8 > year-1 wrong. Overvalued list: Jeffrey/Powell/
 ## 8. Walk-forward book reissue — STATE: WIRED + VERIFIED (regenerates)
 Corrected summary metric = pooled ΣV(yrN)/ΣV(yr1)×100, SUM-RATIO, Yr1=100%, opp-matched, busts=0. `s4_render_no2003.py` variant excludes 2003 + adds a 2015-24 secondary line. Current books in `session_2026-07-01/`.
 
-## 9. The 1.19× uniform sit-out lift — STATE: PARKED (DECISION pending, spans rotations)
-Only moves the indexed-peak denominator, not the absolute peak → a bandaid on the peak. Belongs at the PVC stage. Log in DECISIONS.md with default + expiry when created.
+## 9. The 1.19× uniform sit-out lift — STATE: OVERTAKEN (D10 03/07 — the flat sit-out anchor it would have lifted is DELETED)
+The games-ramp treatment (CANDIDATE v2.1 `c8051893`, derivation session_2026-07-03/d10_ask2_derivation.md) replaced the retain×draftval anchor entirely; a uniform lift on a deleted rule has nothing to lift. Obituary E2 in BOARD_LAYERS_OBITUARY.md.
+
+## 9b. RUC start-value hotness (h-ruc-startvalue-hot) — STATE: OPEN (flagged D10; PVC-stage item)
+The zero-evidence band prices RUCs ~2.5× their PVC pick value (Emmett V0=1536 vs PVC[27]=609 — ASK-1 table); D10's V0 anchoring makes this VISIBLE in sit-out prices (Emmett 518→1338, eyeball flag). Nothing in D10 sets RUC levels; if Luke reads Emmett rich, the lever is the RUC zero-evidence prior at the PVC step, not the games ramp.
 
 ## 10. ONE-price ruling (board vs engine) — STATE: EXECUTED (D4 02/07; Luke ruled delete-not-disable, in writing)
 D4: board valuation path DELETED (commit `f2bb22b`); `rl_export.py` renders engine `ev()` (named-row parity byte-exact);

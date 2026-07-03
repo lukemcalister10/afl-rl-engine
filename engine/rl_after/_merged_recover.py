@@ -267,9 +267,21 @@ R_SIT={'nonKPP':[0.429,0.404,0.410,0.432,0.437,0.424],
 LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
 def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD','KEY_DEF') else 'nonKPP')
 _V0C={}
+_V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
+                              # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
+                              # live engine this is an identity (same objects); in fold-swapping harnesses the
+                              # zero-evidence start value stays fold-stable instead of reading prior-training
+                              # variance as phantom leakage at T0/T1 cells.
 def v0_start(p):                                              # LIVE START VALUE (cached; zero-evidence draft-time price; Y-invariant)
-    k=id(p)
-    if k not in _V0C: _V0C[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+    # cache key = STABLE CONTENT, not id(p): harnesses that deepcopy players (gate1 truncations)
+    # recycle memory addresses, so an id-keyed cache serves stale V0s across folds (measured as
+    # phantom T0 leakage). V0's inputs are all draft-time content — same content, same V0.
+    k=(p.get('player'),p.get('year'),p.get('pick'),p.get('type'),p.get('dob'),MA.gfut(p),MA.effpk(p))
+    if k not in _V0C:
+        global cm,q97m
+        _c,_q=cm,q97m; cm,q97m=_V0_CM,_V0_Q97
+        try: _V0C[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+        finally: cm,q97m=_c,_q
     return _V0C[k]
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+(fe if Y>=cp.debutyr(p) else 0.0)   # prorated elapsed opportunity since draft
