@@ -11,7 +11,7 @@ is deterministic, cache==retrain byte-for-byte). _merged_recover.py imports this
 reaches rd/cp/dp through W.TR (the tail_restore namespace spine).
 """
 import io, contextlib, importlib.util, os, pickle
-_FV = '/home/claude/rl_workspace/forward_valuation'
+_FV = os.environ.get('RL_FV', '/home/claude/rl_workspace/forward_valuation')   # D10: parameterized (D8 mixed-pair root cause); default byte-identical
 def _ld(n, p):
     s = importlib.util.spec_from_file_location(n, p); m = importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m); return m

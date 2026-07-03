@@ -75,10 +75,16 @@ def _age_asof(p,Y):
     a=MA.age(p)
     return float(a-(MA.AGE_REF-Y)) if a is not None else 18.0+max(0,Y-(debutyr(p)-1))
 LEVEL_RAMP=float(os.environ.get('RL_LEVEL_RAMP','14'))   # recency-wtd games for the level to count FULLY (dial)
+_SFE=float(os.environ.get('RL_M3_FE','0.58'))            # D10 03/07/2026: season-progress proration (R14/24 convention, same dial as M3)
+def _playable_fse(p,Y):                                  # full-season-equivalent games playable since debut
+    return SEASON*(max(0,Y-debutyr(p))+((_SFE if Y==EXPO_INPROG_Y else 1.0) if Y>=debutyr(p) else 0.0))
 def _lvl_eff(p,Y):
     """Reliability-shrunk level: the weighted level scaled by how much recent evidence backs it. A 5-game stint reads as a
-    fraction of its face value (kills tiny-sample over-read e.g. Conway's 5g@80); phases in smoothly to full by ~a season."""
-    return _lvl_wt(p,Y)*min(1.0, _exposure(p,Y)/LEVEL_RAMP)
+    fraction of its face value (kills tiny-sample over-read e.g. Conway's 5g@80); phases in smoothly to full by ~a season.
+    D10: the trust bar cannot exceed the games actually PLAYABLE (yr-1 mid-season 14 -> 14*fE=8.2); completed seasons and
+    every training row are byte-identical (playable >= SEASON there)."""
+    ramp=LEVEL_RAMP*min(1.0, _playable_fse(p,Y)/SEASON)
+    return _lvl_wt(p,Y)*min(1.0, _exposure(p,Y)/max(ramp,1e-9))
 
 def _feat(p,Y):
     oh=[0.0]*len(GROUPS); oh[GIDX[MA.gfut(p)]]=1.0

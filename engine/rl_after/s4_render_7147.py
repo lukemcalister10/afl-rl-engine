@@ -5,6 +5,13 @@ from openpyxl.styles import Font,PatternFill,Alignment
 from openpyxl.utils import get_column_letter
 rec=json.load(open(os.environ.get('S4_MATRIX','s4_matrix.json'))); R=list(rec.values())
 TAG=os.environ.get('S4_TAG','8aed420a')   # engine identity shown in sheet titles (display-only)
+# D10 REPORTING RULE 2 (Luke, binding): LOUD state label on every Luke-facing report header.
+try:
+    _sreg=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..','data','report_states.json'))).get('states',{})
+except Exception:
+    _sreg={}
+STATE=os.environ.get('S4_STATE', _sreg.get(TAG, 'PROTOTYPE/UNREGISTERED @ '+TAG+' — NOT AN ENDORSED STATE'))
+TAG=TAG+' — STATE: '+STATE
 INCURVE={'ND','RD'}; POOLED=['MSD','SSP','PDA','PDN','IRE','UNR','PDS']
 TYPEFULL={'ND':'National','RD':'Rookie','MSD':'Mid-Season','SSP':'SSP','PDA':'PD-Academy','PDN':'PD-NextGen','IRE':'PD-Ireland','UNR':'PD-Unreg','PDS':'PD-Schol'}
 for r in R:

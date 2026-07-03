@@ -15,7 +15,7 @@ def _L(n,p):
     s=importlib.util.spec_from_file_location(n,p); m=importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m)
     return m
-_FV='/home/claude/rl_workspace/forward_valuation'
+_FV=os.environ.get('RL_FV','/home/claude/rl_workspace/forward_valuation')   # D10: parameterized (D8 mixed-pair root cause); default byte-identical
 rd=_L('rd',os.path.join(_FV,'dist_redesign.py')); cp=rd.cp; dp=rd.dp; MA=cp.MA
 pb=_L('pb',os.path.join(_FV,'par_build.py')); F=pb.fit()
 with contextlib.redirect_stdout(io.StringIO()): import compute

@@ -24,6 +24,16 @@ for r in MA.data:
     if g and g not in GRPPOS: GRPPOS[g]=r['pos']
 # ===== STEP1 #1-FAMILY FIX (inference-only; band pickle + q97m above trained on ORIGINAL features -> Delta=0 for proven-flat) =====
 PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec spec) -> scalar 4 + c=n/4 retained; see CHANGELOG 2026-06-30
+# ==== GAMES-RAMP PRORATION (D10 03/07/2026 — Luke's design statement, verbatim in the directive):
+# every games bar (6/10/14/22) prorates to season progress for the IN-PROGRESS season — a player is
+# judged only against games that were playable (R14/24 -> fE=0.58 at this cut; RL_M3_FE = the M2/M3
+# season-progress convention, one dial). Completed seasons are byte-identical (fE=1). G_ADQ (12, M1
+# proven-player recent-adequacy window) deliberately NOT prorated — outside the 6/10/14/22 enumeration.
+SEASON_FE=float(os.environ.get('RL_M3_FE','0.58'))
+INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
+def _fEy(Y): return SEASON_FE if Y==INPROG_Y else 1.0
+def _playable(p,Y):                                           # full-season-equivalent games playable since debut
+    return cp.SEASON*(max(0,Y-cp.debutyr(p))+(_fEy(Y) if Y>=cp.debutyr(p) else 0.0))
 # STEP-3 CALIBRATION WIRED 2026-06-30 (candidate): per-group LDECAY + FLAT_TOL (KEY / GEN / MID+RUC)
 def _ldg(pos): return 'KEY' if pos in ('KEY_FWD','KEY_DEF') else ('GEN' if pos in ('GEN_FWD','GEN_DEF') else 'MR')
 LDECAY_G={'KEY':0.40,'GEN':0.35,'MR':0.225}; FLAT_TOL_G={'KEY':10.3,'GEN':12.0,'MR':14.0}
@@ -35,6 +45,13 @@ def _agemult(a): return float(np.clip(np.interp(a,_AGEMULT_X,_AGEMULT_Y),0.53,0.
 DOWN_TOL=3.0   # down-side hold band (data: recovery~0 beyond ~3); ASYMMETRIC vs up-side FLAT_TOL (10-14)
 cp._lvl_eff_orig=cp._lvl_eff
 def _nqual(p,Y): return sum(1 for x in p['scoring'] if x['games']>=10 and x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+# D10 SCOPE NOTE (declared): the 10-bar prorates for the FIRST qualifying season only (delivered
+# fractionally + smoothly via the f1 credit in _coreM1 below — the games-ramp/rookie family, the
+# directive's evidence base, DIAG-B CF4). A board-wide prorated 10-bar was measured this session and
+# REJECTED: it discontinuously re-prices Luke-ruled anchors outside the games-ramp channel (Tsatas
+# accept-and-track 1140 -> 2080 breaking A8; O'Driscoll -525, Cadman -253 via mid-season proven flips).
+# Extending the proration to multi-season nqual increments needs a Luke ruling; the pre-existing
+# full-10-bar step for those players stands (known seam class, h-M3-blend-seam-noise register).
 def _lvlcurr(p,Y):                                            # steeper-recency CURRENT level (trend-aware; ==career avg for a flat player)
     ld=LDECAY_G[_ldg(MA.gfut(p))]                             # STEP-3 per-group recency decay
     rows=[(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y]
@@ -112,7 +129,7 @@ def raw_ev(p,Y=2026):
     po,par=par_pole(pos,pk,T); a=MA.age(p)
     wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
     tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))          # pole-fade by DEVELOPMENTAL tenure
-    expgate=1.0 if _nqual(p,Y)>=PROVEN_N else min(1.0, cp._exposure(p,Y)/POLE_RAMP)   # STEP1: gate lift on exposure for THIN careers only (Cook->0; proven untouched)
+    expgate=1.0 if _nqual(p,Y)>=PROVEN_N else min(1.0, cp._exposure(p,Y)/max(1e-9,POLE_RAMP*min(1.0,_playable(p,Y)/cp.SEASON)))   # STEP1 gate, D10: 22-bar can't exceed playable games (yr-1 mid-season 22->12.8)
     w=wage*tfade*expgate
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
     return pr+w*recover(perf,par)*max(0.0,po-pr)
@@ -145,7 +162,17 @@ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
 def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
 def _coreM1(p,Y):
     Lo=cp._lvl_eff_orig(p,Y); n=_nqual(p,Y)
-    if n==0: return Lo
+    if n==0:
+        # D10: the first qualifying season FORMING in progress earns fractional credit (kills the hard
+        # n 0->1 level flip). SCOPE (declared): FIRST-EVIDENCE players only — all evidence is the
+        # in-progress season. Multi-year n==0 careers (e.g. Tsatas: 4 list-years, no 10-game season)
+        # keep the exposure-shrunk Lo path: injecting the 75%-par-prior n=1 asymptote mid-career was
+        # measured this session at +940 on the Luke-ruled Tsatas anchor (A8 break) and REJECTED.
+        if Y!=INPROG_Y or any(x['games']>0 and x['year']<Y and (cp.debutyr(p)-1)<x['year'] for x in p['scoring']): return Lo
+        gy=sum(x['games'] for x in p['scoring'] if x['year']==Y and (cp.debutyr(p)-1)<x['year'])
+        f1=min(1.0, gy/max(1e-9,10.0*SEASON_FE))
+        if f1<=0.0: return Lo
+        return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
     Lc=_lvlcurr(p,Y)
     if n>=PROVEN_N:
         if Lc>=Lo: return (Lo+S_M1*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
@@ -210,37 +237,83 @@ cp._age_asof=_m3_age_asof; MA.age=_m3_age; PR.tenure=_m3_ten; cp._feat=_m3_feat
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
 def bestlvl(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]]
+    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
     return max(s) if s else 0.0
-def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)
-# ===== NO-GAMES / SIT-OUT ANCHOR (position-scaled retention, DRAFTVAL basis) =====
-# Still-listed players who have played 0 seasons of >=6 games through Y ("sat out") are valued at a
-# position-scaled fraction of their OWN draft value. Surface = daEV WQ6, still-listed-at-N, busts=0,
-# re-expressed on the DRAFTVAL ruler (the resolved basis: normal-value/pole inverts pick order; draftval
-# preserves it). Shape = plateau (survived the yr1-2 cull) then decline to a non-zero floor by ~yr6.
-# CURVE-ONLY: discounts the sat-out player's OWN draftval; injects/implies NO pick-premium, and the
-# isotonic pick guard is unneeded here (dv*retain is already monotone in pick). Delisted busts already
-# returned at the delist gate; played players (ns>=1) fall through to the existing branches. Levels are
-# the deferred-to-PVC shape placeholders (final calibration at the pick-curve step).
-SITOUT_RETAIN={'RUC':[0.85,0.85,0.74,0.62,0.51,0.40],'KPP':[0.70,0.70,0.60,0.50,0.40,0.30],'nonKPP':[0.50,0.50,0.42,0.35,0.28,0.20]}
+def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)   # unprorated career counter (harness/diagnostic callers)
+def nseas_pro(p,Y=2026):                                      # D10: qualification judged against PLAYABLE games (6-bar -> 6*fE for the in-progress season)
+    return sum(1 for x in p['scoring'] if x['year']<=Y and x['games']>=6.0*(_fEy(Y) if x['year']==Y else 1.0))
+# ===== GAMES-RAMP SIT-OUT TREATMENT (D10 03/07/2026) — the retired-PVC anchor is PURGED =====
+# Replaces the flat SITOUT_RETAIN x draftval anchor (obituary: BOARD_LAYERS_OBITUARY.md; derivation:
+# session_2026-07-03/d10_ask2_derivation.md — harvest 2,465 complete-window still-listed cells 2004-2021,
+# kernel eff-n>=35, busts=0).
+#   V0(p) = raw_ev(p, draft year) x iso — the engine's LIVE zero-evidence pick+position start value
+#     (Dean-below / Robey-above property). HELD through pre-season: tau=0 -> R=1, no penalty before a
+#     season starts (Luke 2a).
+#   R_SIT = retention of V0 for still-listed non-playing draftees, measured RELATIVE to the same-depth
+#     all-draftee norm (the locked daEV-convention "0.76 form"), knots at end-of-season depths 1..6,
+#     LINEAR within-season accrual (the decay itself prorates to season progress — Luke 2c), flat tail 6+.
+#   LAM_SIT = measured evidence-credit blend toward the LIVE production path e_full (isotonic in games;
+#     STRUCTURAL endpoints lam(0)=0, lam(prorated bar)=1 -> value CONTINUOUS at graduation: no cliff,
+#     no game-6 jackpot — Luke 2b). Games read AT PACE (g/fE) against the prorated bar.
+#   SCORING-AWARE through e_full: the production path prices actual output (Annable's 1g@40 is
+#     information — Luke 2d). A lambda-side quality term was tested and NOT supported at finest
+#     resolution (partial tau +0.04, non-monotone across q bins, n=364) — DECLARED, not wired.
+#   POSITION BASIS preserved end-to-end: V0 and e_full both carry the band's position adjustment;
+#     classes RUC/KPP/nonKPP for R_SIT only, with the RUC retention SHAPE pooled with KPP (thin bimodal
+#     slice, n=270 cells) scaled to RUC's own measured d1-2 level x1.065 — DECLARED pooling.
+R_SIT={'nonKPP':[0.429,0.404,0.410,0.432,0.437,0.424],
+       'KPP':   [0.468,0.380,0.325,0.278,0.253,0.266],
+       'RUC':   [0.674,0.547,0.503,0.472,0.435,0.435]}
+LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
 def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD','KEY_DEF') else 'nonKPP')
+_V0C={}
+def v0_start(p):                                              # LIVE START VALUE (cached; zero-evidence draft-time price; Y-invariant)
+    k=id(p)
+    if k not in _V0C: _V0C[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+    return _V0C[k]
+def sitout_ev(p,Y,e_full):
+    fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+(fe if Y>=cp.debutyr(p) else 0.0)   # prorated elapsed opportunity since draft
+    R=float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+R_SIT[_sitout_cls(MA.gfut(p))]))
+    gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
+    lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
+    return (1.0-lam)*R*v0_start(p)+lam*e_full
+def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
+    return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
+def _prod_path(p,Y):
+    """Production price e_full = raw_ev x iso. For the FIRST-EVIDENCE family, a 3-point moving average
+    on the GAMES axis (+/-1 game at the player's own scoring rate) — DECLARED smoothing: the band prior
+    is a stepwise (GBR) surface whose exposure-axis steps (measured +957 in one game on the B6 synth)
+    and the designed M3 pin-fade otherwise leave the evidence ramp non-monotone (B6 law: more games at
+    the same rate never worth less). Centered, unit-mass, level-preserving; nobody outside the family
+    is touched."""
+    e=raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+    if not _first_evidence(p,Y): return e
+    row=[x for x in p['scoring'] if x['year']==Y and x['games']>0]
+    if not row: return e
+    r=row[0]; g0=r['games']; out=[]
+    try:
+        for gg in (max(g0-1,1),g0,g0+1):
+            if gg==g0: out.append(e); continue
+            r['games']=gg
+            out.append(raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p)))
+    finally: r['games']=g0
+    return float(np.mean(out))
 # ===== WIRED ev =====
 def ev(p,Y=2026):
-    # (1) delist -> near-zero (no future keeper value)
-    if delisted(p): return round(0.02*draftval(p))
-    e=raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))           # (3) isotonic guard
-    # (2) staleness floor: stalled non-producer (<=1 season games) after elapsed tenure -> ~1/4 draft, tenure-declining; KEY/RUC gentler+later
-    pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas(p,Y); dv=draftval(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
-    if ns==0:                                                 # SIT-OUT (never played >=6g through Y, still listed): position-scaled retention anchor from Yr1 (replaces inflated pole + old staleness crush)
-        N=min(max(el,1),6)
-        return round(dv*SITOUT_RETAIN[_sitout_cls(pos)][N-1])
-    keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = 2 if ns==0 else (4 if keyruc else 3)   # STEP1: never-produced decays from yr2
+    # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
+    if delisted(p): return round(0.02*v0_start(p))
+    e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
+    # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
+    pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
+    if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
+        return round(sitout_ev(p,Y,e))
+    keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = (4 if keyruc else 3)
     if el>=onset and ns<=1:                                   # stalled: essentially no production after the window
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
-        e=min(e, dv*frac)
+        e=min(e, v0*frac)
     elif el>=onset+2 and pr<0.55:                             # mediocre-for-years (played but never near par) -> decays too
         frac=0.45*max(0.3,1-0.08*(el-onset))*(1.5 if keyruc else 1.0)
-        e=min(e, dv*frac)
+        e=min(e, v0*frac)
     return round(e)
 # ==== M3 PROPORTIONAL-TENURE/AGE BLEND (BAKE CANDIDATE v2, D7 02/07/2026 — design + backtest:
 # session_2026-07-02/m3_design_proportional_tenure.md; NOT baked until Luke's bake word) ====
