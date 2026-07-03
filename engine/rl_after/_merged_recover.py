@@ -269,23 +269,41 @@ R_SIT={'nonKPP':[0.429,0.404,0.410,0.432,0.437,0.424],
        'RUC':   [0.674,0.547,0.503,0.472,0.435,0.435]}
 LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
 def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD','KEY_DEF') else 'nonKPP')
-_V0C={}
+# ==== ASK1 (D13 03/07/2026): RUC PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
+# dial RL_RUC_PRIOR_CAP; DEFAULT 1.73 = the class's own ND-ruck median V0/PVC (Luke's inclination, D13 ASK1:
+# "I'd be inclined to just cap ruck prior at the 1.73 median"). Sits at the raw_ev/band level (for RUC wage=0
+# so raw_ev==the band price) so it flows into V0, the sit-out blend, the floor and the prior-dominated
+# production path — NOT a display-stage V0 clamp (D12: Emmett's board value is blend-fed by the prior). Scope:
+# REAL rucks only (synth ISO/POLE tables untouched). The pure prior V0 is capped unconditionally (min binds
+# only when hot, V0/PVC>cap). The PRODUCTION leg is capped only in the PRIOR-DOMINATED regime — C*PVC < e_full
+# <= V0_uncapped: hot prior AND production has NOT grown beyond the start value; any ruck who has demonstrated
+# production above his (uncapped) start value (Sweet 2011, McAndrew 992, Xerri 5755, Grundy, Gawn, Marshall)
+# is byte-exact. Derivation/ladder: session_2026-07-03/d13/d13_ask1_ruck_cap.md.
+RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.73'))
+def _ruc_prior_cap(p,v):                                      # cap a RUC band-fed value at RUC_PRIOR_CAP x PVC (real rucks)
+    return min(v, RUC_PRIOR_CAP*draftval(p)) if (id(p) in _REAL and MA.gfut(p)=='RUC') else v
+_V0C={}; _V0U={}
 _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
                               # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
                               # live engine this is an identity (same objects); in fold-swapping harnesses the
                               # zero-evidence start value stays fold-stable instead of reading prior-training
                               # variance as phantom leakage at T0/T1 cells.
-def v0_start(p):                                              # LIVE START VALUE (cached; zero-evidence draft-time price; Y-invariant)
-    # cache key = STABLE CONTENT, not id(p): harnesses that deepcopy players (gate1 truncations)
-    # recycle memory addresses, so an id-keyed cache serves stale V0s across folds (measured as
-    # phantom T0 leakage). V0's inputs are all draft-time content — same content, same V0.
-    k=(p.get('player'),p.get('year'),p.get('pick'),p.get('type'),p.get('dob'),MA.gfut(p),MA.effpk(p))
-    if k not in _V0C:
+def _v0key(p): return (p.get('player'),p.get('year'),p.get('pick'),p.get('type'),p.get('dob'),MA.gfut(p),MA.effpk(p))
+def _v0_uncapped(p):                                          # zero-evidence band start value — NO ruc cap, NO guard (RUC gate + guard-build use this)
+    # cache key = STABLE CONTENT, not id(p): harnesses that deepcopy players (gate1 truncations) recycle
+    # memory addresses; V0's inputs are all draft-time content -> same content, same V0.
+    k=_v0key(p)
+    if k not in _V0U:
         global cm,q97m
         _c,_q=cm,q97m; cm,q97m=_V0_CM,_V0_Q97
-        try: _V0C[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
         finally: cm,q97m=_c,_q
+    return _V0U[k]
+def _v0_raw(p):                                              # ASK1: uncapped V0 -> RUC prior cap (still pre-ASK2-guard)
+    k=_v0key(p)
+    if k not in _V0C: _V0C[k]=_ruc_prior_cap(p,_v0_uncapped(p))
     return _V0C[k]
+def v0_start(p): return _v0_raw(p)                          # LIVE START VALUE (ASK2 rebinds this to add the pick-order guard)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+R_SIT[_sitout_cls(MA.gfut(p))]))
@@ -318,6 +336,10 @@ def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
+    if id(p) in _REAL and MA.gfut(p)=='RUC':                  # ASK1: cap PRIOR-DOMINATED ruck production leg only
+        _cpv=RUC_PRIOR_CAP*draftval(p); _v0u=_v0_uncapped(p)  #   bind iff C*PVC < e <= V0_uncapped (hot prior, no demonstrated growth);
+        if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=C*PVC (already low) -> byte-exact
+
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
     pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
