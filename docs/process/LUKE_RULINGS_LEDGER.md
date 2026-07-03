@@ -39,6 +39,14 @@ an ANCHOR for the graded derivation (strong-evidence upper anchor: strong curren
 release), no longer an open question.
 Status: ACTIVE (anchor).
 
+**R5 · 2026-07-03 · MATURE-AGE POOLING RATIFIED**
+Luke verbatim: "I imagine the gain of a positional curve for mature age players is not worth the cost to
+do it. A real luxury."
+Consequence: the owner ratifies the D14 cross-position pooling of mature (draft-age ≥19) non-RUC
+entrants into one V0 curve. Scope: v2.4 V0 curve cell structure. The cold-audit evidence test (B2,
+evidence-only) reports any residual position signal as a v3 refinement NOTE, not a block.
+Status: ACTIVE (ratified).
+
 ## Pre-D8 rulings (pointer-only backfill — verbatim lives in the cited CHANGELOG entries)
 - Growth law redefined (cross-cohort AVERAGE, per-cohort ungated) — CHANGELOG 2026-07-02 D5 STEP 1.
 - Overlay keep M1 + v7-asc, DELETE v7-cB — CHANGELOG 2026-07-02 D7 (ASK 1).
