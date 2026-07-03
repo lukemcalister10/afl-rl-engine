@@ -6,10 +6,10 @@
   "gates": "data/gates_snapshots/gates_8aed420a.json"
  },
  "previous": {
-  "md5": "4a134d05",
-  "label": "CANDIDATE v2 (PREVIOUS)",
-  "matrix": "data/s4_matrix_v2_4a134d05.json",
-  "gates": "data/gates_snapshots/gates_4a134d05.json"
+  "md5": "c8051893",
+  "label": "CANDIDATE v2.1 games-ramp (PREVIOUS)",
+  "matrix": "data/s4_matrix_v21_c8051893.json",
+  "gates": "data/gates_snapshots/gates_c8051893.json"
  },
  "states": {
   "8aed420a": "CONTROL (canonical)",
@@ -19,6 +19,7 @@
   "a9e1c14b": "PROTOTYPE head+FormA (D7)",
   "c8051893": "CANDIDATE v2.1 games-ramp (CURRENT, this directive)",
   "e15bafa9": "CANDIDATE v2.1 transient intra-session heads (superseded; values byte-identical to c8051893)",
-  "db599058": "CANDIDATE v2.1 transient intra-session heads (superseded; values byte-identical to c8051893)"
+  "db599058": "CANDIDATE v2.1 transient intra-session heads (superseded; values byte-identical to c8051893)",
+  "af1fc6aa": "CANDIDATE v2.2 concave-ramp + V0-floor (CURRENT, D12)"
  }
 }
