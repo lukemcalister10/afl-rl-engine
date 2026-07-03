@@ -1,9 +1,9 @@
-# ship_gates_check report — STATE: CANDIDATE v2.1 games-ramp (CURRENT, this directive) — head db599058 store 644d1254
+# ship_gates_check report — STATE: CANDIDATE v2.1 games-ramp (CURRENT, this directive) — head c8051893 store 644d1254
 _Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._
 ```
 === STATE: CANDIDATE v2.1 games-ramp (CURRENT, this directive) ===
-=== SHIP GATES BOARD — head db599058 store 644d1254 — suite 764a0d91 — 2026-07-03 ===
-=== THREE-COLUMN RULE (Luke, binding D10): CONTROL=8aed420a · PREVIOUS=4a134d05 · CURRENT=db599058 ===
+=== SHIP GATES BOARD — head c8051893 store 644d1254 — suite 764a0d91 — 2026-07-03 ===
+=== THREE-COLUMN RULE (Luke, binding D10): CONTROL=8aed420a · PREVIOUS=4a134d05 · CURRENT=c8051893 ===
 A1        PASS    | PASS    | PASS     Duursma>Uwland: 4160 vs 1976
 A2        FAIL    | FAIL    | FAIL     Curtis>=0.90xWard: 1358 vs 1488 (Ward=1653, ratio=0.822) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: 1572 vs 1653
 A3   [DC] FAIL    | FAIL    | FAIL     Connor Rozee: 2026=2917 2025=3992 ratio=0.73 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]
@@ -21,8 +21,8 @@ A12  [DC] FAIL    | FAIL    | FAIL     Travaglia>Moraes: 712 vs 887; Smillie>Ret
 A13       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3033 lineball=True; Levi Ashcroft=3270 lineball=True
 A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1704: Trent Rivers=1713 lineball=True; Zach Reid=1613 lineball=True; Jase Burgoyne=2092 lineball=False
 A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
-B1        PASS    | PASS    | PASS     cross-cohort AVERAGE peak N=4 AVG(peak)=151 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed every run — Luke redefinition 02/07 D5); avg row: 1:100 2:129 3:140 4:151 5:148 6:140 7:123; cohorts n=17; matrix=s4_matrix_v21_db599058.json
-B2        PASS    | PASS    | FAIL     median |IS-WF| leakage=1.0 %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 57/2, GEN_FWD 50/2, KEY_DEF 56/2, KEY_FWD 72/2, MID 50/1  <- MOVED
+B1        PASS    | PASS    | PASS     cross-cohort AVERAGE peak N=4 AVG(peak)=151 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed every run — Luke redefinition 02/07 D5); avg row: 1:100 2:129 3:140 4:151 5:148 6:140 7:123; cohorts n=17; matrix=s4_matrix_v21_c8051893.json
+B2        PASS    | PASS    | PASS     median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 46/1, GEN_FWD 43/1, KEY_DEF 55/1, KEY_FWD 62/1, MID 50/0
 B3        PENDING | PENDING | PENDING  book-gate set not yet enumerated as scripted checks — definition proposal in report; book headline shape covered by B1
 B4        FAIL    | FAIL    | FAIL     regenerated rl_app_data.json md5=6f30a7c6 vs shipped b8f9e998 (byte-agree gate; export exit=0)
 B5        FAIL    | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 58 saves, aggregate lift +2117; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new alarm surface)  <- MOVED
@@ -30,7 +30,7 @@ B6        FAIL    | FAIL    | PASS     ramp(0..14g)=[1019, 1397, 1730, 2464, 310
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: FAIL=5  FEATURE=1  PASS=11  PENDING=5  STRUCK=1  (127s)
+VERDICT: FAIL=4  FEATURE=1  PASS=12  PENDING=5  STRUCK=1  (125s)
 ```
 
 ## Supporting detail
@@ -119,7 +119,7 @@ B5 FLOOR-SAVES table (n=58, aggregate lift=+2117 — printed every gates-board r
 | Oskar Baker | Melbourne | 9 | 18 | 20.6 | 21 | +3 | clear |
 | Finlay Macrae | Collingwood | 6 | 65 | 66.2 | 66 | +1 | clear |
 
-## Board top-50 (A4 context) — CONTROL 8aed420a · PREVIOUS 4a134d05 · CURRENT db599058
+## Board top-50 (A4 context) — CONTROL 8aed420a · PREVIOUS 4a134d05 · CURRENT c8051893
 | # | player | pos | CONTROL | PREVIOUS | CURRENT | D vs ctl | D vs prev |
 |---|---|---|---|---|---|---|---|
 | 1 | Harry Sheezel | MID | 7287 | 7207 | 7207 | -80 | +0 |

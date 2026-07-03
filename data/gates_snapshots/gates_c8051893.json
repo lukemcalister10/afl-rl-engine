@@ -1,5 +1,5 @@
 {
- "head": "db599058",
+ "head": "c8051893",
  "store": "644d1254",
  "gates": {
   "A1": {
@@ -84,8 +84,8 @@
   },
   "B2": {
    "dc": false,
-   "status": "FAIL",
-   "detail": "median |IS-WF| leakage=1.0 %-pts (tol 0.5, SET 02/07/2026 \u2014 N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 57/2, GEN_FWD 50/2, KEY_DEF 56/2, KEY_FWD 72/2, MID 50/1"
+   "status": "PASS",
+   "detail": "median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 \u2014 N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 46/1, GEN_FWD 43/1, KEY_DEF 55/1, KEY_FWD 62/1, MID 50/0"
   },
   "B3": {
    "dc": false,
