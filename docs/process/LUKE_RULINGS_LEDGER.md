@@ -74,3 +74,18 @@ unlabelled player value anywhere Luke-facing; (3) the rules bind all future sess
 Consequence: wired in ship_gates_check.py + the book renderer + BAKE_CHECKLIST.md §REPORTING +
 KICKOFF_PROMPT.md + START_HERE.md; state registry data/report_states.json; snapshots data/gates_snapshots/.
 Status: ACTIVE (permanent process).
+
+## D12 rulings (2026-07-03, relayed via DIRECTIVE 12 — CONCAVE RAMP + FLOOR RE-ANCHOR)
+
+**R7 · 2026-07-03 · Concave penalty ramp (Luke-signed OPTION A — SUPERSEDES the D10 linear form)**
+Luke verbatim: "I'm not sure that the proration should be strictly linear... especially when it comes
+as a penalty, it should be slightly more generous as the sample is smaller... it will be 100% after 24
+games, as it should... something like 33-40% at half way." · Ruling: OPTION A — penalty fraction =
+(season progress)^1.5.
+Consequence: the sit-out retention's within-season proration goes linear -> concave (sitout_ev tau term
+fe -> fe**1.5), PENALTY PATH ONLY; the reward-side M1 G_ADQ gate (its harder-than-linear proration is BY
+DESIGN and conforms to this same principle) is left untouched, verified by diff. Penalty fraction printed
+R6/12/18/24 = .125/.354/.650/1.0; halfway .354 in the stated 33-40% band; 100% at R24. B6 seam re-proven
+green at v2.2. Wired at CANDIDATE v2.2 (engine 05d38c65 after ASK1). REVISIT HOOK: a PVC-era derivation
+may replace the t^1.5 SHAPE from partial-season snapshots (recorded open, not a block).
+Status: ACTIVE (candidate v2.2; scoped re-audit before any bake).

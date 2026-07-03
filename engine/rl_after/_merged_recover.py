@@ -251,7 +251,10 @@ def nseas_pro(p,Y=2026):                                      # D10: qualificati
 #     season starts (Luke 2a).
 #   R_SIT = retention of V0 for still-listed non-playing draftees, measured RELATIVE to the same-depth
 #     all-draftee norm (the locked daEV-convention "0.76 form"), knots at end-of-season depths 1..6,
-#     LINEAR within-season accrual (the decay itself prorates to season progress — Luke 2c), flat tail 6+.
+#     CONCAVE within-season accrual (the penalty prorates to season progress via tau'=(R/24)^1.5 —
+#     Luke-signed OPTION A, D12 03/07/2026; SUPERSEDES the D10 linear form — Luke 2c-revised: a penalty
+#     "should be slightly more generous as the sample is smaller"; 100% at R24/24, ~35% at halfway),
+#     flat tail 6+.
 #   LAM_SIT = measured evidence-credit blend toward the LIVE production path e_full (isotonic in games;
 #     STRUCTURAL endpoints lam(0)=0, lam(prorated bar)=1 -> value CONTINUOUS at graduation: no cliff,
 #     no game-6 jackpot — Luke 2b). Games read AT PACE (g/fE) against the prorated bar.
@@ -284,7 +287,7 @@ def v0_start(p):                                              # LIVE START VALUE
         finally: cm,q97m=_c,_q
     return _V0C[k]
 def sitout_ev(p,Y,e_full):
-    fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+(fe if Y>=cp.debutyr(p) else 0.0)   # prorated elapsed opportunity since draft
+    fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+R_SIT[_sitout_cls(MA.gfut(p))]))
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
