@@ -303,7 +303,28 @@ def _v0_raw(p):                                              # ASK1: uncapped V0
     k=_v0key(p)
     if k not in _V0C: _V0C[k]=_ruc_prior_cap(p,_v0_uncapped(p))
     return _V0C[k]
-def v0_start(p): return _v0_raw(p)                          # LIVE START VALUE (ASK2 rebinds this to add the pick-order guard)
+# ==== ASK2 (D13 03/07/2026): V0 PICK-ORDER GUARD (Luke's law, verbatim intent): "v0 for the same age and
+# position cannot be higher for a lower pick in the same draft. mature age players rightfully will be
+# calculated differently." WITHIN (position x draft-age x draft-year) cells, V0 is strictly NON-INCREASING in
+# RECORDED pick — a worse pick (higher number) cannot start above a better one. Downward-only projection
+# (minimal: only violators pulled to the running min of better picks in-cell; nobody lifted). Mature-age /
+# differing-age pairs sit in SEPARATE draft-age cells -> exempt BY CONSTRUCTION. Scope: REAL national-draft
+# players (recorded==effective, verified 0/1571 divergences; RD/MSD/SSP pick-equivalents out of scope).
+_V0GUARD={}
+def _v0_cell(p): return (MA.gfut(p), int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1)))), p.get('year'))
+def _build_v0_guard():
+    cells={}
+    for p in MA.data:
+        if id(p) not in _REAL or p.get('type')!='ND' or p.get('pick') is None: continue
+        cells.setdefault(_v0_cell(p),[]).append(p)
+    for _cell,ps in cells.items():
+        run=float('inf')
+        for q in sorted(ps,key=lambda z:z.get('pick')):            # ascending pick (best -> worst)
+            run=min(run,_v0_raw(q)); _V0GUARD[_v0key(q)]=run        # non-increasing downward cap over pick
+_build_v0_guard()
+def v0_start(p):                                             # LIVE START VALUE = ASK1 cap -> ASK2 pick-order guard
+    v=_v0_raw(p); g=_V0GUARD.get(_v0key(p))
+    return v if g is None else min(v,g)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+R_SIT[_sitout_cls(MA.gfut(p))]))
