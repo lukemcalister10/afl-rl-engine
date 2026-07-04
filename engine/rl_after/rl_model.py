@@ -260,7 +260,7 @@ def latest_avg(p):
     sl=sorted([r for r in p['scoring'] if r['games']>=4],key=lambda r:r['year']); return sl[-1]['avg'] if sl else None
 def best2(p):
     d=debut(p); s=sorted([r['avg'] for r in p['scoring'] if r['games']>=7 and r['year']>=d],reverse=True)[:2]; return float(np.mean(s)) if s else 0
-REPL={'MID':80.1,'GEN_DEF':78.3,'RUC':78.5,'KEY_DEF':68.4,'GEN_FWD':70.9,'KEY_FWD':67.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, GDEF/MID 50/50 @4.16/5.20, KDEF@2.0, GFWD@4.0, KFWD@2.0, RUC@1.64
+REPL={'MID':80.1,'GEN_DEF':78.3,'RUC':78.5,'KEY_DEF':68.4,'GEN_FWD':70.9,'KEY_FWD':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, GDEF/MID 50/50 @4.16/5.20, KDEF@2.0, GFWD@4.0, KFWD@2.0, RUC@1.64  [BAKE 2026-07-04: KEY_FWD REPL-1, 67.8->66.8, owner dial]
 DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
 def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
 KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','0.85'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)

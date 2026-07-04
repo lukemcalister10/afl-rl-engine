@@ -312,7 +312,7 @@ def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD
 # <= V0_uncapped: hot prior AND production has NOT grown beyond the start value; any ruck who has demonstrated
 # production above his (uncapped) start value (Sweet 2011, McAndrew 992, Xerri 5755, Grundy, Gawn, Marshall)
 # is byte-exact. Derivation/ladder: session_2026-07-03/d13/d13_ask1_ruck_cap.md.
-RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.73'))
+RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default 1.73->1.4 (owner ruck-cap dial, v2.4 bake 2026-07-04; env override preserved)
 def _ruc_prior_cap(p,v):                                      # cap a RUC band-fed value at RUC_PRIOR_CAP x PVC (real rucks)
     return min(v, RUC_PRIOR_CAP*draftval(p)) if (id(p) in _REAL and MA.gfut(p)=='RUC') else v
 _V0C={}; _V0U={}
