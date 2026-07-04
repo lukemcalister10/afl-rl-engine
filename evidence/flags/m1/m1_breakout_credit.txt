@@ -1,0 +1,96 @@
+============================================================================================
+FLAG (a) M1 BREAKOUT-CREDITING  —  [BAKED c47cb43d]  main 389ac39
+engine constants: PROVEN_N=4  TOL_M1=5.0  S_M1(credit)=0.46  G_ADQ=12  WIN=2
+M1 up-branch credited level = Lo + 0.46*(Lc-Lo);  gap = credited + withheld (SUM-TO-TOTAL)
+identity = ID(key)·pick·cohort(debutyr).  never surname alone (4 Picketts in store).
+============================================================================================
+M1 up-branch HITS: 46   (SUSTAINED 34, SPIKE 12)
+total WITHHELD level (0.54*gap summed): 214.7 pts   |   total $ to restore full credit: $15484
+SUSTAINED-and-under-credited: 34 players, $10604 withheld (full-credit minus baked)
+
+ID·pick·cohort                                 age  pos      Lo      Lc    gap   cred  with |  base  zero  full | class(nyr/asc)
+--------------------------------------------------------------------------------------------------------------------------------------------
+sam-berry              pick29   cohort2021      24  MID   76.91   92.34  15.44   7.10  8.34 |  2402  2062  3299 | SPIKE (1/3)
+jake-bowey             pick22   cohort2021      24 GEN_DEF   80.84   90.11   9.27   4.27  5.01 |  2945  2568  3789 | SPIKE (1/2)
+luke-jackson           pick3    cohort2020      25  RUC  102.09  116.95  14.86   6.84  8.03 |  6943  6437  7673 | SUSTAINED (2/3)
+kysaiah-pickett        pick12   cohort2020      25 GEN_FWD   80.87   93.28  12.40   5.71  6.70 |  3007  2849  3718 | SUSTAINED (2/5)
+nick-blakey            pick10   cohort2019      26 GEN_DEF   91.72   99.76   8.04   3.70  4.34 |  3261  2951  3916 | SUSTAINED (3/1)
+josh-treacy            pick5    cohort2021      24 KEY_FWD   80.64   89.96   9.32   4.29  5.03 |  5292  5035  5920 | SPIKE (1/2)
+max-holmes             pick21   cohort2021      24  MID  100.24  113.23  12.99   5.98  7.02 |  5456  5027  6033 | SUSTAINED (3/6)
+darcy-wilmot           pick16   cohort2022      23 GEN_DEF   84.32   89.63   5.31   2.44  2.87 |  3744  3504  4293 | SUSTAINED (2/4)
+connor-macdonald       pick26   cohort2022      23 GEN_FWD   71.75   76.79   5.04   2.32  2.72 |  2295  1956  2805 | SPIKE (1/2)
+finn-callaghan         pick3    cohort2022      23  MID   93.21  101.97   8.75   4.03  4.73 |  4913  4370  5419 | SUSTAINED (2/1)
+lachlan-ash            pick4    cohort2020      25 GEN_DEF   91.43  102.69  11.26   5.18  6.08 |  4626  3774  5126 | SUSTAINED (2/1)
+jack-ginnivan          pick9    cohort2021      24 GEN_FWD   71.35   77.99   6.64   3.05  3.59 |  1786  1486  2233 | SUSTAINED (3/4)
+jack-ross              pick43   cohort2019      26  MID   77.70   91.08  13.38   6.16  7.23 |  2160  2132  2564 | SUSTAINED (2/5)
+cameron-mackenzie      pick7    cohort2023      22  MID   65.34   73.14   7.79   3.59  4.21 |  1476  1209  1877 | SPIKE (1/3)
+paul-curtis            pick35   cohort2022      23 GEN_FWD   65.66   72.12   6.46   2.97  3.49 |  1347  1070  1744 | SUSTAINED (2/1)
+justin-mcinerney       pick44   cohort2019      26  MID   81.08   89.90   8.81   4.05  4.76 |  1933  1818  2313 | SUSTAINED (2/5)
+ed-richards            pick16   cohort2018      27  MID   95.63  107.09  11.45   5.27  6.19 |  2623  2399  2997 | SUSTAINED (3/1)
+nasiah-wanganeen-milera pick11   cohort2022     23  MID   99.38  108.10   8.72   4.01  4.71 |  5914  5669  6286 | SUSTAINED (2/4)
+tom-sparrow            pick27   cohort2019      26  MID   66.72   76.58   9.87   4.54  5.33 |   469   388   817 | SPIKE (1/2)
+tanner-bruhn           pick12   cohort2021      24  MID   68.90   76.41   7.50   3.45  4.05 |  1023   795  1366 | SUSTAINED (2/5)
+luke-davies-uniacke    pick4    cohort2018      27  MID  102.08  107.31   5.23   2.41  2.83 |  2929  2893  3270 | SPIKE (1/2)
+connor-idun            pick61   cohort2019      26 GEN_DEF   81.79   86.98   5.19   2.39  2.80 |  2003  1800  2329 | SUSTAINED (3/2)
+marcus-windhager       pick47   cohort2022      23  MID   72.02   77.61   5.59   2.57  3.02 |  1620  1315  1938 | SUSTAINED (2/1)
+tom-mccartin           pick33   cohort2018      27 KEY_DEF   68.53   74.55   6.02   2.77  3.25 |  1462  1340  1773 | SPIKE (1/2)
+josh-battle            pick39   cohort2017      28 KEY_DEF   77.64   82.93   5.29   2.43  2.86 |  2045  1912  2348 | SUSTAINED (3/2)
+james-peatling         pick8    cohort2021      26  MID   73.75   83.62   9.87   4.54  5.33 |  1219   881  1519 | SUSTAINED (2/4)
+zac-bailey             pick15   cohort2018      27 GEN_FWD   82.52   89.90   7.39   3.40  3.99 |  2239  2171  2519 | SUSTAINED (2/3)
+bailey-smith           pick7    cohort2019      26  MID  105.96  120.25  14.29   6.57  7.72 |  4735  4121  5014 | SUSTAINED (2/3)
+callum-wilkie          pick2    cohort2019      30 KEY_DEF   91.18   97.36   6.18   2.84  3.34 |  2867  2770  3136 | SUSTAINED (4/3)
+kade-chandler          pick11   cohort2019      26 GEN_FWD   69.13   76.20   7.06   3.25  3.81 |  1024   968  1281 | SUSTAINED (2/4)
+kane-farrell           pick51   cohort2018      27 GEN_DEF   81.05   86.91   5.86   2.69  3.16 |  1434  1255  1676 | SUSTAINED (3/5)
+jake-waterman          pick76   cohort2017      28 KEY_FWD   70.77   76.19   5.42   2.49  2.93 |  1406  1266  1606 | SUSTAINED (2/1)
+jaxon-prior            pick59   cohort2020      25 GEN_DEF   63.41   70.00   6.59   3.03  3.56 |   293   163   492 | SUSTAINED (2/4)
+john-noble             pick12   cohort2019      29 GEN_DEF   87.97   99.21  11.23   5.17  6.07 |  2275  2190  2473 | SUSTAINED (2/3)
+dylan-stephens         pick5    cohort2020      25  MID   62.16   71.70   9.54   4.39  5.15 |   344   228   539 | SPIKE (1/3)
+jordan-dawson          pick55   cohort2016      29  MID  107.89  113.62   5.73   2.64  3.09 |  2752  2707  2937 | SPIKE (1/2)
+jason-horne-francis    pick1    cohort2022      23  MID   89.79   95.28   5.50   2.53  2.97 |  4166  3946  4333 | SUSTAINED (3/2)
+will-setterfield       pick5    cohort2017      28  MID   85.02   97.46  12.44   5.72  6.72 |  1468  1439  1627 | SPIKE (1/2)
+jack-sinclair          pick1    cohort2015      31 GEN_DEF  105.93  112.07   6.14   2.82  3.31 |  2609  2623  2717 | SUSTAINED (3/4)
+zak-butters            pick12   cohort2019      26  MID  111.24  121.04   9.79   4.50  5.29 |  5184  4921  5273 | SUSTAINED (4/6)
+wayne-milera           pick11   cohort2016      29 GEN_DEF   83.06   92.07   9.02   4.15  4.87 |  1643  1633  1704 | SPIKE (1/4)
+isaac-heeney           pick4    cohort2015      30  MID  105.38  118.72  13.34   6.14  7.20 |  3301  3301  3354 | SUSTAINED (3/2)
+toby-bedford           pick75   cohort2019      26 GEN_FWD   59.91   65.17   5.26   2.42  2.84 |   236   233   276 | SUSTAINED (3/4)
+beau-mccreery          pick46   cohort2021      25 GEN_FWD   57.50   62.70   5.20   2.39  2.81 |   206   192   237 | SUSTAINED (2/4)
+tristan-xerri          pick71   cohort2018      27  RUC  112.09  123.14  11.06   5.09  5.97 |  5710  5433  5710 | SUSTAINED (2/3)
+brodie-grundy          pick22   cohort2013      32  RUC  115.37  125.40  10.02   4.61  5.41 |  3317  3292  3317 | SUSTAINED (2/4)
+
+SUM-TO-TOTAL GUARD (level, per player: credited + withheld == gap):
+  checked 46 players; mismatches: 0  -> PASS
+
+============================================================================================
+PICKETT EXEMPLAR — NAME-COLLISION GUARD (4 Picketts; disambiguate by ID+cohort)
+============================================================================================
+  Jarrod Pickett     | ID=jarrod-pickett     | pick 5   | cohort 2015 | pos MID      | age 30
+  Marlion Pickett    | ID=marlion-pickett    | pick 11  | cohort 2019 | pos GEN_FWD  | age 35
+  Kysaiah Pickett    | ID=kysaiah-pickett    | pick 12  | cohort 2020 | pos GEN_FWD  | age 25
+  Latrelle Pickett   | ID=latrelle-pickett   | pick 12  | cohort 2026 | pos GEN_FWD  | age 21
+
+EXEMPLAR = kysaiah-pickett (pick 12, cohort 2020, GEN_FWD, age 25)
+  adequate (>=12g) season path:
+     2020: 14g  avg 47.7  
+     2021: 25g  avg 65.9  
+     2022: 23g  avg 63.0  
+     2023: 23g  avg 69.2  
+     2024: 21g  avg 73.4  
+     2025: 20g  avg 91.5  (> career Lo)
+     2026: 14g  avg 100.6  (> career Lo)
+  classify: SUSTAINED   nyr_above=2 consecutive adequate seasons > Lo, terminal asc_run=5
+
+  LEVEL decomposition [BAKED c47cb43d]:
+     Lo (career, recency-wtd)      = 80.87
+     Lc (steep-recency current)    = 93.28
+     gap = Lc - Lo                 = 12.40
+     credited  = 0.46 * gap        = 5.71   -> M1 level = 86.58
+     withheld  = 0.54 * gap        = 6.70   (NOT credited)
+     GUARD: credited + withheld    = 12.40  == gap 12.40  -> PASS
+
+  DOLLAR decomposition (actual re-priced ev; nonlinear via band/asc/floor):
+     ev @ S_M1=0.00 (no credit,  =Lo)   = $2849
+     ev @ S_M1=0.46 (BAKED)             = $3007
+     ev @ S_M1=1.00 (full credit, =Lc)  = $3718
+     M1 currently ADDS over Lo          = $158   (base - zero)
+     WITHHELD from full credit          = $711   (full - base)
+     GUARD (dollar): add + withheld     = $869  == (full - zero) $869  -> PASS
