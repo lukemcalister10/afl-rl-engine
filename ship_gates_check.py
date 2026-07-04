@@ -292,7 +292,36 @@ try:
              ', '.join(f'{p} {g_:.0f}/{b_:.0f}' for p, (g_, b_) in sorted(seps.items())))
 except Exception as ex:
     gate('B2', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-gate('B3', False, 'PENDING', 'book-gate set not yet enumerated as scripted checks — definition proposal in report; book headline shape covered by B1')
+# B3 — walk-forward book FREEZE-STAMP (wired at the v2.4 bake 2026-07-04). The book (s4 matrix) is
+# id(p)-keyed (str(id(p)) memory addresses -> raw bytes non-deterministic), so the seal hashes the
+# STABLE-keyed content (player,type,year,pick), NOT raw bytes. Compares the current matrix's stable-key
+# sha256 to the baked baseline data/book_stable_seal.json. Raw-file sha will differ every regen BY DESIGN.
+try:
+    _seal_path = os.path.join(ROOT, 'data', 'book_stable_seal.json')
+    _mpath_b3 = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_nogames.json'))
+    if 'B3' in SKIP:
+        gate('B3', False, 'NOT-RUN', 'SGC_SKIP=B3')
+    elif not os.path.exists(_seal_path):
+        gate('B3', False, 'NOT-RUN', f'no book seal baseline at {os.path.relpath(_seal_path, ROOT)} — run the freeze-stamp to seal the baked book')
+    else:
+        def _b3_stable_sha(path):
+            _d = json.load(open(path)); _by = {}
+            for _idk, _rec in _d.items():
+                _by[(_rec.get('player'), _rec.get('type'), _rec.get('year'), _rec.get('pick'))] = _rec
+            _h = hashlib.sha256()
+            for _k in sorted(_by.keys(), key=lambda t: json.dumps(t, sort_keys=True)):
+                _h.update(json.dumps(_k, sort_keys=True).encode())
+                _h.update(json.dumps(_by[_k], sort_keys=True, separators=(',', ':')).encode())
+            return _h.hexdigest(), len(_by)
+        _seal = json.load(open(_seal_path))
+        _cur_sha, _cur_n = _b3_stable_sha(_mpath_b3)
+        _ok3 = (_cur_sha == _seal.get('stable_sha256'))
+        gate('B3', False, 'PASS' if _ok3 else 'FAIL',
+             f"book stable-key seal {'MATCHES' if _ok3 else 'DIFFERS FROM'} baseline: current={_cur_sha[:16]}.. ({_cur_n} players) "
+             f"vs baseline={str(_seal.get('stable_sha256'))[:16]}.. ({_seal.get('n_players')} players, sealed head {_seal.get('head_md5')}); "
+             f"matrix={os.path.basename(_mpath_b3)} [raw-file sha is id(p)-keyed / non-deterministic by design]")
+except Exception as ex:
+    gate('B3', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # B4 — board parity: regenerate rl_app_data.json (subprocess: one-engine-load rule) and byte-compare to shipped
 try:
     if 'B4' in SKIP:
@@ -518,4 +547,14 @@ with open(rep, 'w') as f:
             'leakage-matched); (2) rank correlation of as-of value vs realized fwd best-3 production (real_mat);\n'
             '(3) cohort growth-law shape error vs the realized production curve. Each becomes C1x/C2x scripted lines.\n')
 print(f'report: {rep}  md5={hashlib.md5(open(rep,"rb").read()).hexdigest()[:8]}')
-sys.exit(1 if any(st in ('FAIL', 'ERROR') for _, _, st, _ in RES) else 0)
+# LOUD anti-leakage guard (folded at the v2.4 bake 2026-07-04): B2 (GATE-1 leakage) is MANDATORY. A
+# NOT-RUN B2 (missing /home/claude/gate1_out.txt or SGC_SKIP=B2) must NOT pass silently — it counts as a
+# FAILURE for the exit code. SCOPED to B2 only: other NOT-RUN/PENDING gates (A13/A14 PVC-staged, B4 skip)
+# keep their semantics. This is the silent-anti-leakage-failure the bake calls out — now it fails loud.
+_b2st = [st for gid, _, st, _ in RES if gid == 'B2']
+_b2_notrun = bool(_b2st) and _b2st[0] == 'NOT-RUN'
+if _b2_notrun:
+    print('\n!! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN) — the MANDATORY leakage gate cannot be '
+          'skipped silently; run _gate1_wf.py first (writes /home/claude/gate1_out.txt). Treated as FAILURE.')
+_hard_fail = any(st in ('FAIL', 'ERROR') for _, _, st, _ in RES) or _b2_notrun
+sys.exit(1 if _hard_fail else 0)

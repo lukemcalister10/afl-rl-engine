@@ -1,0 +1,9 @@
+{
+  "_comment": "Walk-forward book freeze-stamp (v2.4 bake 2026-07-04). The book (s4 matrix) is id(p)-keyed, so raw-file sha256 is non-deterministic across regenerations BY DESIGN; identity is sealed on the STABLE keys (player,type,year,pick), canonicalised. Regeneration-invariance proven at bake time: two fresh builds gave different raw shas but this identical stable-key sha. ship_gates_check.py B3 compares the current S4_MATRIX stable-key sha to this baseline.",
+  "generator": "engine/rl_after/s4_matrix_M1v7.py",
+  "head_md5": "c47cb43d",
+  "n_players": 2649,
+  "stable_sha256": "5e138c6fb45ca930c834f61fa677e85f8910914f31b019cb6741564a90fc7c25",
+  "sealed_by": "v2.4 bake (ruck cap 1.4 + KEY_FWD REPL-1)",
+  "sealed_date": "2026-07-04"
+}
