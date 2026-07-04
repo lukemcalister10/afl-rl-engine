@@ -11,7 +11,7 @@ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').
 MA=g['MA'];ev=g['ev'];nseas=g['nseas']
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
-PANEL=[('Nick Daicos',7059),('Marcus Bontempelli',3101),('Harry Sheezel',7287),('Max Gawn',2126),('Harley Reid',3523),('Josh Ward',1782),('Darcy Moore',177),('Taylor Goad',545),('Josh Smillie',896),('Will Green',741)]
+PANEL=[('Nick Daicos',7013),('Marcus Bontempelli',3085),('Harry Sheezel',7150),('Max Gawn',2120),('Harley Reid',3537),('Josh Ward',1640),('Darcy Moore',199),('Taylor Goad',757),('Josh Smillie',995),('Will Green',541)]
 ok=True; print("%-22s%8s%8s"%('player','EV','EXPECT'))
 for nm,exp in PANEL:
     p=find(nm); v=ev(p) if p else None; m='' if v==exp else '  <-- MISMATCH'; ok=ok and v==exp

@@ -5,7 +5,7 @@
 # HISTORY docs (changelog/provenance/archived handover): past-tense narration is legitimate -> hash-claim check ONLY.
 import os, re, sys
 ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
-SUPERSEDED = ["8c6d5582", "55e3c3a9", "7147b824"]      # lineage candidates: never label current/LATEST/head
+SUPERSEDED = ["8c6d5582", "55e3c3a9", "7147b824", "7c199a1f"]  # lineage candidates: never label current/LATEST/head. (7c199a1f=v2.4 pre-dial, superseded by baked c47cb43d. 8aed420a=prior working head, pervasive in past-tense history, so its retirement is tracked via the CHANGELOG lineage banner, not this staleness trigger.)
 BANNED   = re.compile(r'\b(closed|done)\b', re.I)       # five-state vocab bans these as status words
 STALE    = re.compile(r'\b(LATEST|pending|not yet|TODO)\b')
 # Warn allowlist: legitimate gap/gate statements, not stale status (tuned 2026-07-02).

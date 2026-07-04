@@ -1,6 +1,8 @@
-> RECONCILIATION BANNER (2026-07-01): the CURRENT verified working engine md5 is 8aed420a (canonical frozen = e0ac9c37, nothing baked past it). Any md5 referenced below (e.g. 7147b824, e0ac9c) reflects an earlier turn — see START_HERE.md at the tarball root for authoritative current state, store, ENV, and open threads.
+# !!! BAKED v2.4 — 2026-07-04. CURRENT = c47cb43d (head `_merged_recover.py`: ruck-cap default 1.73->1.4 + KEY_FWD REPL 67.8->66.8; REPL edit in rl_model.py = ce4468d6; store 644d1254; band 34faa865). FIRST bake past the frozen e0ac9c37. Lineage: e0ac9c37(frozen) -> 8aed420a(prior working) -> c47cb43d(BAKED v2.4). Owner bake word 2026-07-04: "I give the bake word for v2.4 with ruck cap 1.4 and REPL -1". Rollback anchor: prebake-v2.4-anchor @ 6035ce1. All md5 8aed420a / 7c199a1f references below are SUPERSEDED history.
 
-# !!! CURRENT = 8aed420a (no-games sit-out anchor + 34-position reconcile, built on 7147b824). Lineage: e0ac9c37(canonical,frozen) -> 8c6d5582(dials) -> 55e3c3a9(shed) -> 7147b824(upside) -> 8aed420a(no-games, CURRENT WORKING). Nothing baked past e0ac9c37. See START_HERE.md + PROVENANCE_2026-07-01.md. The "7147b824 ... LATEST" note below is SUPERSEDED (kept as history).
+> RECONCILIATION BANNER (2026-07-01, HISTORY): the then-working engine md5 was 8aed420a (SUPERSEDED by baked c47cb43d 2026-07-04). Any md5 referenced below reflects an earlier turn — see START_HERE.md for authoritative state.
+
+# !!! (HISTORY) prior working engine 8aed420a (no-games sit-out anchor + 34-position reconcile, built on 7147b824). Lineage: e0ac9c37(canonical,frozen) -> 8c6d5582(dials) -> 55e3c3a9(shed) -> 7147b824(upside) -> 8aed420a(no-games) -> c47cb43d(BAKED v2.4). See START_HERE.md + PROVENANCE_2026-07-01.md.
 # !!! 2026-07-01 AUDIT CLOSE (engine CODE md5 UNCHANGED 8aed420a — data + harness only, nothing baked):
 #   (1) GATE-1 formally RE-RUN at head 8aed420a via _gate1_wf.py (leakage-guarded IS-vs-WF) + _gate1_picksplit.py
 #       (both now in the tarball, previously missing) — PASSES: leakage~0 (IS~=WF <=3pts, tree-matched @150),
