@@ -1,0 +1,137 @@
+========================================================================================================
+FLAG (c) RUCK DERIVATION  —  [BAKED c47cb43d]  main 389ac39   RUC_PRIOR_CAP=1.40 x PVC
+real rucks (gfut=='RUC'): 218   |  identity = ID.pick.cohort ; never surname alone
+========================================================================================================
+
+PART 1 — CAP-1.4 BINDING SET  (cap = 1.4 x PVC ; V0 leg binds iff V0_uncapped>cap ;
+         production leg binds iff cap < e_prod <= V0_uncapped)
+  ALL rucks: BINDS 187 / IDLE 31 of 218.   ACTIVE rucks (not delisted, ev>=250): 50.
+  Non-active tail: 168 (mostly retired/vets); 112 of them are clamped onto the SAME PVC-floor cell
+  (PVC=308, V0_unc=479, cap=431) — a talent-blind pile the thin ruck slice collapses to. Table = ACTIVE only:
+  ID.pick.cohort                           effpk     PVC  1.4PVC   V0_unc V0/PVC  bind     ev
+  ------------------------------------------------------------------------------------------------
+  luke-jackson       pick3   cohort2020 age25     3    2249    3149     2059   0.92          6943
+  tristan-xerri      pick71  cohort2018 age27    71     308     431      479   1.55  V0      5710
+  brodie-grundy      pick22  cohort2013 age32    22     646     904     1247   1.93  V0      3317
+  timothy-english    pick19  cohort2017 age29    19     794    1112     1368   1.72  V0      2884
+  bailey-williams-wc pick35  cohort2019 age26    35     572     801     1078   1.89  V0      2372
+  kieren-briggs      pick34  cohort2019 age27    34     585     819     1220   2.08  V0      2135
+  max-gawn           pick33  cohort2010 age35    33     597     836     1221   2.05  V0      2120
+  jordon-sweet       pick16  cohort2019 age28    94     308     431      747   2.42  V0      1995
+  toby-nankervis     pick35  cohort2014 age32    35     572     801     1164   2.03  V0      1807
+  tom-de-koning      pick30  cohort2018 age27    30     603     844     1210   2.01  V0      1669
+  ned-moyle          pick5   cohort2021 age24    59     308     431      491   1.59  V0      1576
+  nick-madden        pickFT  cohort2023 age22    94     308     431      479   1.55  V0      1421
+  rowan-marshall     pick9   cohort2017 age31    85     308     431     1068   3.47  V0      1391
+  darcy-cameron      pick48  cohort2017 age31    48     412     577      711   1.73  V0      1374
+  mitchell-edwards   pick32  cohort2024 age21    32     599     839     1219   2.04  V0      1317
+  sam-draper         pick1   cohort2017 age28    77     308     431      568   1.84  V0      1215
+  lachlan-mcandrew   pick12  cohort2025 age27    94     308     431      387   1.26           984
+  dante-visentini    pick56  cohort2022 age23    56     321     449      661   2.06  V0       921
+  lloyd-meek         pick68  cohort2018 age28    68     308     431      714   2.32  V0       876
+  louis-emmett       pick27  cohort2026 age19    27     609     853     1559   2.56  V0P      853
+  sean-darcy         pick38  cohort2017 age28    38     543     760      927   1.71  V0P      823
+  nick-bryan         pick38  cohort2020 age25    38     543     760      927   1.71  V0       760
+  taylor-goad        pick20  cohort2024 age21    20     735    1029     1208   1.64  V0P      757
+  matthew-flynn      pick41  cohort2016 age29    41     512     717      793   1.55  V0       699
+  reilly-o-brien     pick8   cohort2015 age31    84     308     431      722   2.34  V0P      613
+  lachlan-smith      pick47  cohort2024 age21    47     424     594      649   1.53  V0       613
+  samson-ryan        pick42  cohort2021 age26    42     499     699      855   1.71  V0       565
+  will-green         pick16  cohort2024 age21    16    1002    1403     1037   1.03           541
+  harry-barnett      pick23  cohort2023 age22    23     617     864     1239   2.01  V0P      505
+  marc-pittonet      pick50  cohort2015 age30    50     389     545      576   1.48  V0       502
+  toby-conway        pick24  cohort2022 age23    24     615     861     1223   1.99  V0       468
+  peter-ladhams      pick8   cohort2017 age28    84     308     431      479   1.55  V0       456
+  max-knobel         pick42  cohort2023 age22    42     499     699      759   1.52  V0P      401
+  jacob-molier       pick52  cohort2025 age20    52     369     517      568   1.54  V0       393
+  patrick-carr       pickFT  cohort2026 age21    94     308     431      747   2.42  V0P      389
+  caleb-may          pick9   cohort2026 age21    59     308     431      636   2.07  V0P      389
+  max-mapley         pick18  cohort2026 age21    59     308     431      636   2.07  V0P      389
+  flynn-riley        pick4   cohort2026 age22    59     308     431      538   1.75  V0       389
+  alex-van-wyk       pick14  cohort2026 age22    59     308     431      538   1.75  V0       389
+  alex-dodson        pick53  cohort2025 age20    53     359     503      592   1.65  V0       387
+  logan-smith        pick71  cohort2025 age20    71     308     431      479   1.55  V0       371
+  jarrod-witts       pick81  cohort2012 age34    81     308     431      722   2.34  V0       370
+  ned-reeves         pickFT  cohort2019 age28    94     308     431      747   2.42  V0       365
+  oliver-hayes-brown pickFT  cohort2024 age26    94     308     431      549   1.78  V0       315
+  aiden-riddle       pick3   cohort2025 age21    74     308     431      722   2.34  V0P      301
+  joe-pike           pick11  cohort2025 age21    82     308     431      722   2.34  V0P      301
+  jaime-uhr-henry    pickFT  cohort2025 age23    94     308     431      702   2.28  V0P      301
+  liam-reidy         pick5   cohort2023 age26    63     308     431      392   1.27           257
+  iliro-smit         pick10  cohort2024 age21    59     308     431      491   1.59  V0       256
+  vigo-visentini     pick6   cohort2024 age21    70     308     431      479   1.55  V0       256
+  ACTIVE binding split: BINDS 46 / IDLE 4   (V0=V0-prior leg, P=production leg)
+
+========================================================================================================
+PART 2 — THIN-CELL TOP-OF-RUCK PLATEAU
+========================================================================================================
+Every hot-prior ruck (V0_uncapped > 1.4xPVC) is clamped to EXACTLY 1.4xPVC at the V0 leg, so the
+top of the ruck board collapses onto the PVC ladder (a pick-ordered plateau, NOT a talent-ordered one):
+  ID.pick.cohort                               pick   V0_unc  ->V0_cap   1.4xPVC
+  ----------------------------------------------------------------------------------
+  louis-emmett       pick27  cohort2026 age19     27     1559       853       853  <= clamped to cap
+  timothy-english    pick19  cohort2017 age29     19     1368      1112      1112  <= clamped to cap
+  brodie-grundy      pick22  cohort2013 age32     22     1247       904       904  <= clamped to cap
+  harry-barnett      pick23  cohort2023 age22     23     1239       864       864  <= clamped to cap
+  toby-conway        pick24  cohort2022 age23     24     1223       861       861  <= clamped to cap
+  max-gawn           pick33  cohort2010 age35     33     1221       836       836  <= clamped to cap
+  kieren-briggs      pick34  cohort2019 age27     34     1220       819       819  <= clamped to cap
+  mitchell-edwards   pick32  cohort2024 age21     32     1219       839       839  <= clamped to cap
+  brent-renouf       pick25  cohort2007 age38     25     1219       858       858  <= clamped to cap
+  trent-west         pick31  cohort2006 age39     31     1218       841       841  <= clamped to cap
+  tom-de-koning      pick30  cohort2018 age27     30     1210       844       844  <= clamped to cap
+  taylor-goad        pick20  cohort2024 age21     20     1208      1029      1029  <= clamped to cap
+  cameron-wood       pick20  cohort2005 age40     20     1208      1029      1029  <= clamped to cap
+  toby-nankervis     pick35  cohort2014 age32     35     1164       801       801  <= clamped to cap
+
+THINNESS: 218 rucks over 76 distinct effective-pick cells; V0/PVC ratios span 0.18..3.47 (median 1.55).
+The cap (1.4) sits just above the class median V0/PVC — so the plateau is thin-cell driven: with few
+rucks per pick, one hot prior sets a cell and the cap is the only thing preventing a talent-blind blowout.
+
+========================================================================================================
+PART 3 — SIT-OUT / PENALTY DECOMPOSITION  (SUM-TO-TOTAL)  —  does it ride legacy PVC?
+========================================================================================================
+
+----------------------------------------------------------------------------------------------------
+  will-green         pick16  cohort2024 age21  |  ns_pro=0  |  listed pos RUC  gfut RUC
+     PVC(draftval)=1002  1.4xPVC(cap)=1403  V0_uncapped=1037  v0_start=904  e_prod=936
+     CLICK = sitout_ev (ns==0):  tau=2.44 R_RUC=0.599 gy=0 lam=0.000
+        (1-lam)*R*v0_start + lam*e_full = 541.5 + 0.0 = 541.5  == click 541  [sub-sum PASS]
+     PIPELINE (SUM-TO-TOTAL):  e_prod 936.5  ->click 541  ->M3 541  ->floor/ev 541
+        Delta cap+staleness = -395.5   Delta M3 = +0   Delta floor = +0
+        GUARD: e_prod + dCap+stale + dM3 + dFloor = 541.0 == ev 541 -> PASS
+     RIDES LEGACY PVC?  no   (v0_start = D14 V0-curve (pick-anchored, below cap))
+
+----------------------------------------------------------------------------------------------------
+  samson-ryan        pick42  cohort2021 age26  |  ns_pro=2  |  listed pos RUC  gfut RUC
+     PVC(draftval)=499  1.4xPVC(cap)=699  V0_uncapped=855  v0_start=544  e_prod=506
+     CLICK path = proven (ns>=1): el=6  prod-cap idle (cap<e<=V0u)
+     PIPELINE (SUM-TO-TOTAL):  e_prod 506.3  ->click 506  ->M3 565  ->floor/ev 565
+        Delta cap+staleness = -0.3   Delta M3 = +59   Delta floor = +0
+        GUARD: e_prod + dCap+stale + dM3 + dFloor = 565.0 == ev 565 -> PASS
+     RIDES LEGACY PVC?  no   (click = e_prod (cap idle))
+
+----------------------------------------------------------------------------------------------------
+  sean-darcy         pick38  cohort2017 age28  |  ns_pro=10  |  listed pos RUC  gfut RUC
+     PVC(draftval)=543  1.4xPVC(cap)=760  V0_uncapped=927  v0_start=708  e_prod=923
+     CLICK path = proven (ns>=1): el=10  prod-cap BINDS -> click pinned at 1.4xPVC=760 (cap<e<=V0u)
+     PIPELINE (SUM-TO-TOTAL):  e_prod 922.6  ->click 760  ->M3 823  ->floor/ev 823
+        Delta cap+staleness = -162.6   Delta M3 = +63   Delta floor = +0
+        GUARD: e_prod + dCap+stale + dM3 + dFloor = 823.0 == ev 823 -> PASS
+     RIDES LEGACY PVC?  YES   (click = 1.4xPVC (legacy PVC ladder x1.4))
+
+----------------------------------------------------------------------------------------------------
+  reilly-o-brien     pick8   cohort2015 age31  |  ns_pro=7  |  listed pos RUC  gfut RUC
+     PVC(draftval)=308  1.4xPVC(cap)=431  V0_uncapped=722  v0_start=431  e_prod=688
+     CLICK path = proven (ns>=1): el=12  prod-cap BINDS -> click pinned at 1.4xPVC=431 (cap<e<=V0u)
+     PIPELINE (SUM-TO-TOTAL):  e_prod 688.1  ->click 431  ->M3 613  ->floor/ev 613
+        Delta cap+staleness = -257.1   Delta M3 = +182   Delta floor = +0
+        GUARD: e_prod + dCap+stale + dM3 + dFloor = 613.0 == ev 613 -> PASS
+     RIDES LEGACY PVC?  YES   (click = 1.4xPVC (legacy PVC ladder x1.4))
+
+========================================================================================================
+PVC-RIDE VERDICT (per player): will-green=no; samson-ryan=no; sean-darcy=YES; reilly-o-brien=YES
+  -> the production-leg 1.4xPVC cap BINDS for the proven still-scoring rucks (sean-darcy, reilly-o-brien):
+     their board value is pinned to the LEGACY PVC ladder x1.4 x retention, NOT to demonstrated output.
+     will-green (pure sit-out) & samson-ryan (thin proven) ride the D14 V0-curve (below cap) instead.
+========================================================================================================
