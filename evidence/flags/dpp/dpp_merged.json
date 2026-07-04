@@ -1,0 +1,1285 @@
+{
+  "young_cutoff": 24,
+  "n_young": 49,
+  "n_fwd_young": 30,
+  "n_lifted": 5,
+  "sum_prem_fut_lift": 1210,
+  "sum_prem_2nd_young": 573,
+  "sum_baked_optgap_young": 5953,
+  "rows": [
+    {
+      "key": "tom-powell",
+      "pick": 13,
+      "cohort": 2021,
+      "age": 24.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1389,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1621,
+      "gap_opt": 232,
+      "at": {
+        "GEN_FWD": 1621,
+        "MID": 1269
+      },
+      "v_dual": 1170,
+      "v_bare": 490,
+      "prem_fut": 680,
+      "prem_2nd": -264,
+      "gf_bare": "MID"
+    },
+    {
+      "key": "jai-serong",
+      "pick": 53,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 88,
+      "opt_best": "MID",
+      "opt_ev": 98,
+      "gap_opt": 10,
+      "at": {
+        "GEN_DEF": 88,
+        "MID": 98
+      },
+      "v_dual": 377,
+      "v_bare": 102,
+      "prem_fut": 275,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_DEF"
+    },
+    {
+      "key": "luke-trainor",
+      "pick": 21,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.5,
+        "GEN_DEF": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1256,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1372,
+      "gap_opt": 116,
+      "at": {
+        "KEY_DEF": 1372,
+        "GEN_DEF": 899
+      },
+      "v_dual": 689,
+      "v_bare": 546,
+      "prem_fut": 143,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "anthony-caminiti",
+      "pick": null,
+      "cohort": 2023,
+      "age": 23.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.5,
+        "KEY_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 634,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 679,
+      "gap_opt": 45,
+      "at": {
+        "KEY_FWD": 679,
+        "KEY_DEF": 502
+      },
+      "v_dual": 1144,
+      "v_bare": 1048,
+      "prem_fut": 96,
+      "prem_2nd": -103,
+      "gf_bare": "KEY_DEF"
+    },
+    {
+      "key": "tanner-bruhn",
+      "pick": 12,
+      "cohort": 2021,
+      "age": 24.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1023,
+      "opt_best": "MID",
+      "opt_ev": 1000,
+      "gap_opt": -23,
+      "at": {
+        "MID": 1000,
+        "GEN_DEF": 840
+      },
+      "v_dual": 201,
+      "v_bare": 185,
+      "prem_fut": 16,
+      "prem_2nd": 16,
+      "gf_bare": "MID"
+    },
+    {
+      "key": "zeke-uwland",
+      "pick": 2,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1961,
+      "opt_best": "MID",
+      "opt_ev": 2411,
+      "gap_opt": 450,
+      "at": {
+        "GEN_DEF": 1993,
+        "MID": 2411
+      },
+      "v_dual": 3274,
+      "v_bare": 3274,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "cooper-duff-tytler",
+      "pick": 4,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "RUC": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1436,
+      "opt_best": "RUC",
+      "opt_ev": 1609,
+      "gap_opt": 173,
+      "at": {
+        "KEY_FWD": 1553,
+        "RUC": 1609
+      },
+      "v_dual": 2086,
+      "v_bare": 2086,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_FWD"
+    },
+    {
+      "key": "louis-emmett",
+      "pick": 27,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.5,
+        "KEY_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 853,
+      "opt_best": "RUC",
+      "opt_ev": 853,
+      "gap_opt": 0,
+      "at": {
+        "RUC": 853,
+        "KEY_FWD": 724
+      },
+      "v_dual": 609,
+      "v_bare": 609,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "RUC"
+    },
+    {
+      "key": "jack-dalton",
+      "pick": 34,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 397,
+      "opt_best": "MID",
+      "opt_ev": 531,
+      "gap_opt": 134,
+      "at": {
+        "GEN_FWD": 468,
+        "MID": 531
+      },
+      "v_dual": 576,
+      "v_bare": 576,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "MID"
+    },
+    {
+      "key": "tom-blamires",
+      "pick": null,
+      "cohort": 2026,
+      "age": 24.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 69,
+      "opt_best": "MID",
+      "opt_ev": 75,
+      "gap_opt": 6,
+      "at": {
+        "GEN_DEF": 73,
+        "MID": 75
+      },
+      "v_dual": 225,
+      "v_bare": 225,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "xavier-bamert",
+      "pick": 5,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 231,
+      "opt_best": "MID",
+      "opt_ev": 388,
+      "gap_opt": 157,
+      "at": {
+        "GEN_FWD": 275,
+        "MID": 388
+      },
+      "v_dual": 315,
+      "v_bare": 315,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "MID"
+    },
+    {
+      "key": "tobie-travaglia",
+      "pick": 8,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 706,
+      "opt_best": "MID",
+      "opt_ev": 1396,
+      "gap_opt": 690,
+      "at": {
+        "GEN_DEF": 718,
+        "MID": 1396
+      },
+      "v_dual": 1633,
+      "v_bare": 1633,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "alix-tauru",
+      "pick": 10,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.8,
+        "KEY_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1527,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1509,
+      "gap_opt": -18,
+      "at": {
+        "KEY_DEF": 1509,
+        "KEY_FWD": 1218
+      },
+      "v_dual": 1582,
+      "v_bare": 1582,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_DEF"
+    },
+    {
+      "key": "xavier-lindsay",
+      "pick": 11,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1249,
+      "opt_best": "MID",
+      "opt_ev": 2207,
+      "gap_opt": 958,
+      "at": {
+        "GEN_DEF": 1328,
+        "MID": 2207
+      },
+      "v_dual": 1392,
+      "v_bare": 1392,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "taj-hotton",
+      "pick": 12,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1082,
+      "opt_best": "MID",
+      "opt_ev": 1356,
+      "gap_opt": 274,
+      "at": {
+        "GEN_FWD": 1329,
+        "MID": 1356
+      },
+      "v_dual": 1269,
+      "v_bare": 1269,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "bo-allan",
+      "pick": 16,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1027,
+      "opt_best": "MID",
+      "opt_ev": 1371,
+      "gap_opt": 344,
+      "at": {
+        "GEN_DEF": 1056,
+        "MID": 1371
+      },
+      "v_dual": 736,
+      "v_bare": 736,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "cody-angove",
+      "pick": 24,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 363,
+      "opt_best": "MID",
+      "opt_ev": 546,
+      "gap_opt": 183,
+      "at": {
+        "GEN_FWD": 363,
+        "MID": 546
+      },
+      "v_dual": 534,
+      "v_bare": 534,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "angus-clarke",
+      "pick": 39,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 669,
+      "opt_best": "MID",
+      "opt_ev": 858,
+      "gap_opt": 189,
+      "at": {
+        "GEN_DEF": 682,
+        "MID": 858
+      },
+      "v_dual": 355,
+      "v_bare": 355,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "ty-gallop",
+      "pick": 42,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "KEY_DEF": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 990,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1168,
+      "gap_opt": 178,
+      "at": {
+        "KEY_FWD": 1007,
+        "KEY_DEF": 1168
+      },
+      "v_dual": 464,
+      "v_bare": 464,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_FWD"
+    },
+    {
+      "key": "alex-dodson",
+      "pick": 53,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.9,
+        "KEY_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 387,
+      "opt_best": "RUC",
+      "opt_ev": 387,
+      "gap_opt": 0,
+      "at": {
+        "RUC": 387,
+        "KEY_FWD": 193
+      },
+      "v_dual": 322,
+      "v_bare": 322,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_FWD"
+    },
+    {
+      "key": "noah-howes",
+      "pick": 15,
+      "cohort": 2025,
+      "age": 21.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.5,
+        "KEY_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 213,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 284,
+      "gap_opt": 71,
+      "at": {
+        "KEY_FWD": 213,
+        "KEY_DEF": 284
+      },
+      "v_dual": 285,
+      "v_bare": 285,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_FWD"
+    },
+    {
+      "key": "william-mccabe",
+      "pick": 19,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_DEF": 0.3,
+        "KEY_FWD": 0.7
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 454,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 464,
+      "gap_opt": 10,
+      "at": {
+        "KEY_DEF": 413,
+        "KEY_FWD": 464
+      },
+      "v_dual": 677,
+      "v_bare": 677,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_DEF"
+    },
+    {
+      "key": "lance-collard",
+      "pick": 28,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "GEN_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 235,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 307,
+      "gap_opt": 72,
+      "at": {
+        "GEN_FWD": 271,
+        "GEN_DEF": 307
+      },
+      "v_dual": 274,
+      "v_bare": 274,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "toby-murray",
+      "pick": 7,
+      "cohort": 2024,
+      "age": 23.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "RUC": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 167,
+      "opt_best": "RUC",
+      "opt_ev": 471,
+      "gap_opt": 304,
+      "at": {
+        "KEY_FWD": 187,
+        "RUC": 471
+      },
+      "v_dual": 96,
+      "v_bare": 96,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_FWD"
+    },
+    {
+      "key": "oliver-hollands",
+      "pick": 11,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1401,
+      "opt_best": "MID",
+      "opt_ev": 2100,
+      "gap_opt": 699,
+      "at": {
+        "GEN_DEF": 1450,
+        "MID": 2100
+      },
+      "v_dual": 929,
+      "v_bare": 929,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "hudson-o-keeffe",
+      "pick": null,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "RUC": 0.3,
+        "KEY_FWD": 0.7
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 298,
+      "opt_best": "RUC",
+      "opt_ev": 647,
+      "gap_opt": 349,
+      "at": {
+        "RUC": 647,
+        "KEY_FWD": 360
+      },
+      "v_dual": 127,
+      "v_bare": 127,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "KEY_FWD"
+    },
+    {
+      "key": "ryan-maric",
+      "pick": 1,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.6,
+        "GEN_DEF": 0.4
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1396,
+      "opt_best": "MID",
+      "opt_ev": 1335,
+      "gap_opt": -61,
+      "at": {
+        "MID": 1335,
+        "GEN_DEF": 1105
+      },
+      "v_dual": 178,
+      "v_bare": 178,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "MID"
+    },
+    {
+      "key": "dante-visentini",
+      "pick": 56,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.7,
+        "KEY_FWD": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 921,
+      "opt_best": "RUC",
+      "opt_ev": 505,
+      "gap_opt": -416,
+      "at": {
+        "RUC": 505,
+        "KEY_FWD": 334
+      },
+      "v_dual": 73,
+      "v_bare": 73,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "RUC"
+    },
+    {
+      "key": "jai-culley",
+      "pick": 1,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 437,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 264,
+      "gap_opt": -173,
+      "at": {
+        "MID": 258,
+        "GEN_FWD": 264
+      },
+      "v_dual": 50,
+      "v_bare": 50,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "MID"
+    },
+    {
+      "key": "brayden-cook",
+      "pick": 26,
+      "cohort": 2021,
+      "age": 24.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1125,
+      "opt_best": "MID",
+      "opt_ev": 1028,
+      "gap_opt": -97,
+      "at": {
+        "MID": 1028,
+        "GEN_FWD": 821
+      },
+      "v_dual": 258,
+      "v_bare": 258,
+      "prem_fut": 0,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "jaspa-fletcher",
+      "pick": 12,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1875,
+      "opt_best": "MID",
+      "opt_ev": 2115,
+      "gap_opt": 240,
+      "at": {
+        "GEN_DEF": 1916,
+        "MID": 2115
+      },
+      "v_dual": 917,
+      "v_bare": 943,
+      "prem_fut": -26,
+      "prem_2nd": -26,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "tom-gross",
+      "pick": 46,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 675,
+      "opt_best": "MID",
+      "opt_ev": 529,
+      "gap_opt": -146,
+      "at": {
+        "MID": 529,
+        "GEN_FWD": 324
+      },
+      "v_dual": 247,
+      "v_bare": 336,
+      "prem_fut": -89,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "marcus-windhager",
+      "pick": 47,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1620,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 1591,
+      "gap_opt": -29,
+      "at": {
+        "MID": 1587,
+        "GEN_DEF": 1591
+      },
+      "v_dual": 264,
+      "v_bare": 354,
+      "prem_fut": -90,
+      "prem_2nd": 19,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "jase-burgoyne",
+      "pick": 60,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 2075,
+      "opt_best": "MID",
+      "opt_ev": 2196,
+      "gap_opt": 121,
+      "at": {
+        "GEN_DEF": 2185,
+        "MID": 2196
+      },
+      "v_dual": 886,
+      "v_bare": 980,
+      "prem_fut": -94,
+      "prem_2nd": -94,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "archie-roberts",
+      "pick": 54,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 4560,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 4684,
+      "gap_opt": 124,
+      "at": {
+        "GEN_DEF": 4684,
+        "MID": 4340
+      },
+      "v_dual": 4319,
+      "v_bare": 4455,
+      "prem_fut": -136,
+      "prem_2nd": -136,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "koltyn-tholstrup",
+      "pick": 13,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_FWD": 0.3,
+        "GEN_DEF": 0.7
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1512,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1890,
+      "gap_opt": 378,
+      "at": {
+        "GEN_FWD": 1890,
+        "GEN_DEF": 1355
+      },
+      "v_dual": 935,
+      "v_bare": 1082,
+      "prem_fut": -147,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "ned-long",
+      "pick": 4,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1416,
+      "opt_best": "MID",
+      "opt_ev": 1317,
+      "gap_opt": -99,
+      "at": {
+        "MID": 1317,
+        "GEN_FWD": 1247
+      },
+      "v_dual": 456,
+      "v_bare": 627,
+      "prem_fut": -171,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "cooper-hynes",
+      "pick": 20,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.6,
+        "GEN_FWD": 0.4
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1269,
+      "opt_best": "MID",
+      "opt_ev": 1128,
+      "gap_opt": -141,
+      "at": {
+        "MID": 1128,
+        "GEN_FWD": 771
+      },
+      "v_dual": 517,
+      "v_bare": 713,
+      "prem_fut": -196,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "jhye-clark",
+      "pick": 8,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 882,
+      "opt_best": "MID",
+      "opt_ev": 703,
+      "gap_opt": -179,
+      "at": {
+        "MID": 703,
+        "GEN_FWD": 445
+      },
+      "v_dual": 414,
+      "v_bare": 627,
+      "prem_fut": -213,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "caleb-windsor",
+      "pick": 7,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.7,
+        "GEN_DEF": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1690,
+      "opt_best": "MID",
+      "opt_ev": 1658,
+      "gap_opt": -32,
+      "at": {
+        "MID": 1658,
+        "GEN_DEF": 1104
+      },
+      "v_dual": 953,
+      "v_bare": 1387,
+      "prem_fut": -434,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "nasiah-wanganeen-milera",
+      "pick": 11,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.7,
+        "GEN_DEF": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 5914,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 6025,
+      "gap_opt": 111,
+      "at": {
+        "MID": 5846,
+        "GEN_DEF": 6025
+      },
+      "v_dual": 4409,
+      "v_bare": 4849,
+      "prem_fut": -440,
+      "prem_2nd": 69,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "samuel-grlj",
+      "pick": 8,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 2241,
+      "opt_best": "MID",
+      "opt_ev": 2202,
+      "gap_opt": -39,
+      "at": {
+        "MID": 2202,
+        "GEN_DEF": 1312
+      },
+      "v_dual": 1534,
+      "v_bare": 2212,
+      "prem_fut": -678,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "sullivan-robey",
+      "pick": 9,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.75,
+        "GEN_FWD": 0.25
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2237,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1984,
+      "gap_opt": -253,
+      "at": {
+        "MID": 1978,
+        "GEN_FWD": 1984
+      },
+      "v_dual": 1361,
+      "v_bare": 2082,
+      "prem_fut": -721,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "colby-mckercher",
+      "pick": 2,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_DEF": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 3783,
+      "opt_best": "MID",
+      "opt_ev": 3675,
+      "gap_opt": -108,
+      "at": {
+        "MID": 3675,
+        "GEN_DEF": 3551
+      },
+      "v_dual": 2116,
+      "v_bare": 2973,
+      "prem_fut": -857,
+      "prem_2nd": 125,
+      "gf_bare": "GEN_DEF"
+    },
+    {
+      "key": "jake-soligo",
+      "pick": 36,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.85,
+        "GEN_FWD": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2503,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 3198,
+      "gap_opt": 695,
+      "at": {
+        "MID": 2357,
+        "GEN_FWD": 3198
+      },
+      "v_dual": 883,
+      "v_bare": 1785,
+      "prem_fut": -902,
+      "prem_2nd": 115,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "mattaes-phillipou",
+      "pick": 10,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.6,
+        "GEN_FWD": 0.4
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1446,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1231,
+      "gap_opt": -215,
+      "at": {
+        "MID": 1170,
+        "GEN_FWD": 1231
+      },
+      "v_dual": 1613,
+      "v_bare": 2529,
+      "prem_fut": -916,
+      "prem_2nd": 481,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "sam-lalor",
+      "pick": 1,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.75,
+        "GEN_FWD": 0.25
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 3674,
+      "opt_best": "MID",
+      "opt_ev": 3447,
+      "gap_opt": -227,
+      "at": {
+        "MID": 3447,
+        "GEN_FWD": 3394
+      },
+      "v_dual": 2926,
+      "v_bare": 3850,
+      "prem_fut": -924,
+      "prem_2nd": 0,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "jason-horne-francis",
+      "pick": 1,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 4166,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 4897,
+      "gap_opt": 731,
+      "at": {
+        "MID": 3936,
+        "GEN_FWD": 4897
+      },
+      "v_dual": 3795,
+      "v_bare": 4873,
+      "prem_fut": -1078,
+      "prem_2nd": 239,
+      "gf_bare": "GEN_FWD"
+    },
+    {
+      "key": "joel-freijah",
+      "pick": 45,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.9,
+        "GEN_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2672,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 2837,
+      "gap_opt": 165,
+      "at": {
+        "MID": 2564,
+        "GEN_FWD": 2837
+      },
+      "v_dual": 1941,
+      "v_bare": 3407,
+      "prem_fut": -1466,
+      "prem_2nd": 132,
+      "gf_bare": "GEN_FWD"
+    }
+  ]
+}

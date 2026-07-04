@@ -1,0 +1,1988 @@
+{
+  "state": "BAKED c47cb43d",
+  "repl": {
+    "MID": 80.1,
+    "GEN_DEF": 78.3,
+    "RUC": 78.5,
+    "KEY_DEF": 68.4,
+    "GEN_FWD": 70.9,
+    "KEY_FWD": 66.8
+  },
+  "n": 94,
+  "rows": {
+    "zeke-uwland": {
+      "key": "zeke-uwland",
+      "pick": 2,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1961,
+      "opt_best": "MID",
+      "opt_ev": 2411,
+      "gap_opt": 450,
+      "at": {
+        "GEN_DEF": 1993,
+        "MID": 2411
+      }
+    },
+    "cooper-duff-tytler": {
+      "key": "cooper-duff-tytler",
+      "pick": 4,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "RUC": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1436,
+      "opt_best": "RUC",
+      "opt_ev": 1609,
+      "gap_opt": 173,
+      "at": {
+        "KEY_FWD": 1553,
+        "RUC": 1609
+      }
+    },
+    "samuel-grlj": {
+      "key": "samuel-grlj",
+      "pick": 8,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 2241,
+      "opt_best": "MID",
+      "opt_ev": 2202,
+      "gap_opt": -39,
+      "at": {
+        "MID": 2202,
+        "GEN_DEF": 1312
+      }
+    },
+    "sullivan-robey": {
+      "key": "sullivan-robey",
+      "pick": 9,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.75,
+        "GEN_FWD": 0.25
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2237,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1984,
+      "gap_opt": -253,
+      "at": {
+        "MID": 1978,
+        "GEN_FWD": 1984
+      }
+    },
+    "louis-emmett": {
+      "key": "louis-emmett",
+      "pick": 27,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.5,
+        "KEY_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 853,
+      "opt_best": "RUC",
+      "opt_ev": 853,
+      "gap_opt": 0,
+      "at": {
+        "RUC": 853,
+        "KEY_FWD": 724
+      }
+    },
+    "jack-dalton": {
+      "key": "jack-dalton",
+      "pick": 34,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 397,
+      "opt_best": "MID",
+      "opt_ev": 531,
+      "gap_opt": 134,
+      "at": {
+        "GEN_FWD": 468,
+        "MID": 531
+      }
+    },
+    "jack-watkins": {
+      "key": "jack-watkins",
+      "pick": 3,
+      "cohort": 2026,
+      "age": 26.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 8,
+      "opt_best": "MID",
+      "opt_ev": 5,
+      "gap_opt": -3,
+      "at": {
+        "MID": 5,
+        "GEN_FWD": 1
+      }
+    },
+    "tom-blamires": {
+      "key": "tom-blamires",
+      "pick": null,
+      "cohort": 2026,
+      "age": 24.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 69,
+      "opt_best": "MID",
+      "opt_ev": 75,
+      "gap_opt": 6,
+      "at": {
+        "GEN_DEF": 73,
+        "MID": 75
+      }
+    },
+    "xavier-bamert": {
+      "key": "xavier-bamert",
+      "pick": 5,
+      "cohort": 2026,
+      "age": 19.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 231,
+      "opt_best": "MID",
+      "opt_ev": 388,
+      "gap_opt": 157,
+      "at": {
+        "GEN_FWD": 275,
+        "MID": 388
+      }
+    },
+    "sam-lalor": {
+      "key": "sam-lalor",
+      "pick": 1,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.75,
+        "GEN_FWD": 0.25
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 3674,
+      "opt_best": "MID",
+      "opt_ev": 3447,
+      "gap_opt": -227,
+      "at": {
+        "MID": 3447,
+        "GEN_FWD": 3394
+      }
+    },
+    "tobie-travaglia": {
+      "key": "tobie-travaglia",
+      "pick": 8,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 706,
+      "opt_best": "MID",
+      "opt_ev": 1396,
+      "gap_opt": 690,
+      "at": {
+        "GEN_DEF": 718,
+        "MID": 1396
+      }
+    },
+    "alix-tauru": {
+      "key": "alix-tauru",
+      "pick": 10,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.8,
+        "KEY_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1527,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1509,
+      "gap_opt": -18,
+      "at": {
+        "KEY_DEF": 1509,
+        "KEY_FWD": 1218
+      }
+    },
+    "xavier-lindsay": {
+      "key": "xavier-lindsay",
+      "pick": 11,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1249,
+      "opt_best": "MID",
+      "opt_ev": 2207,
+      "gap_opt": 958,
+      "at": {
+        "GEN_DEF": 1328,
+        "MID": 2207
+      }
+    },
+    "taj-hotton": {
+      "key": "taj-hotton",
+      "pick": 12,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1082,
+      "opt_best": "MID",
+      "opt_ev": 1356,
+      "gap_opt": 274,
+      "at": {
+        "GEN_FWD": 1329,
+        "MID": 1356
+      }
+    },
+    "bo-allan": {
+      "key": "bo-allan",
+      "pick": 16,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1027,
+      "opt_best": "MID",
+      "opt_ev": 1371,
+      "gap_opt": 344,
+      "at": {
+        "GEN_DEF": 1056,
+        "MID": 1371
+      }
+    },
+    "cooper-hynes": {
+      "key": "cooper-hynes",
+      "pick": 20,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.6,
+        "GEN_FWD": 0.4
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1269,
+      "opt_best": "MID",
+      "opt_ev": 1128,
+      "gap_opt": -141,
+      "at": {
+        "MID": 1128,
+        "GEN_FWD": 771
+      }
+    },
+    "luke-trainor": {
+      "key": "luke-trainor",
+      "pick": 21,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.5,
+        "GEN_DEF": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1256,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1372,
+      "gap_opt": 116,
+      "at": {
+        "KEY_DEF": 1372,
+        "GEN_DEF": 899
+      }
+    },
+    "cody-angove": {
+      "key": "cody-angove",
+      "pick": 24,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 363,
+      "opt_best": "MID",
+      "opt_ev": 546,
+      "gap_opt": 183,
+      "at": {
+        "GEN_FWD": 363,
+        "MID": 546
+      }
+    },
+    "angus-clarke": {
+      "key": "angus-clarke",
+      "pick": 39,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 669,
+      "opt_best": "MID",
+      "opt_ev": 858,
+      "gap_opt": 189,
+      "at": {
+        "GEN_DEF": 682,
+        "MID": 858
+      }
+    },
+    "ty-gallop": {
+      "key": "ty-gallop",
+      "pick": 42,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "KEY_DEF": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 990,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1168,
+      "gap_opt": 178,
+      "at": {
+        "KEY_FWD": 1007,
+        "KEY_DEF": 1168
+      }
+    },
+    "tom-gross": {
+      "key": "tom-gross",
+      "pick": 46,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 675,
+      "opt_best": "MID",
+      "opt_ev": 529,
+      "gap_opt": -146,
+      "at": {
+        "MID": 529,
+        "GEN_FWD": 324
+      }
+    },
+    "alex-dodson": {
+      "key": "alex-dodson",
+      "pick": 53,
+      "cohort": 2025,
+      "age": 20.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.9,
+        "KEY_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 387,
+      "opt_best": "RUC",
+      "opt_ev": 387,
+      "gap_opt": 0,
+      "at": {
+        "RUC": 387,
+        "KEY_FWD": 193
+      }
+    },
+    "lachlan-blakiston": {
+      "key": "lachlan-blakiston",
+      "pick": 13,
+      "cohort": 2025,
+      "age": 28.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.7,
+        "RUC": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 22,
+      "opt_best": "RUC",
+      "opt_ev": 171,
+      "gap_opt": 149,
+      "at": {
+        "KEY_DEF": 25,
+        "RUC": 171
+      }
+    },
+    "noah-howes": {
+      "key": "noah-howes",
+      "pick": 15,
+      "cohort": 2025,
+      "age": 21.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.5,
+        "KEY_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 213,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 284,
+      "gap_opt": 71,
+      "at": {
+        "KEY_FWD": 213,
+        "KEY_DEF": 284
+      }
+    },
+    "colby-mckercher": {
+      "key": "colby-mckercher",
+      "pick": 2,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_DEF": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 3783,
+      "opt_best": "MID",
+      "opt_ev": 3675,
+      "gap_opt": -108,
+      "at": {
+        "MID": 3675,
+        "GEN_DEF": 3551
+      }
+    },
+    "caleb-windsor": {
+      "key": "caleb-windsor",
+      "pick": 7,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.7,
+        "GEN_DEF": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1690,
+      "opt_best": "MID",
+      "opt_ev": 1658,
+      "gap_opt": -32,
+      "at": {
+        "MID": 1658,
+        "GEN_DEF": 1104
+      }
+    },
+    "koltyn-tholstrup": {
+      "key": "koltyn-tholstrup",
+      "pick": 13,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_FWD": 0.3,
+        "GEN_DEF": 0.7
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1512,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1890,
+      "gap_opt": 378,
+      "at": {
+        "GEN_FWD": 1890,
+        "GEN_DEF": 1355
+      }
+    },
+    "william-mccabe": {
+      "key": "william-mccabe",
+      "pick": 19,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_DEF": 0.3,
+        "KEY_FWD": 0.7
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 454,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 464,
+      "gap_opt": 10,
+      "at": {
+        "KEY_DEF": 413,
+        "KEY_FWD": 464
+      }
+    },
+    "lance-collard": {
+      "key": "lance-collard",
+      "pick": 28,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "GEN_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 235,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 307,
+      "gap_opt": 72,
+      "at": {
+        "GEN_FWD": 271,
+        "GEN_DEF": 307
+      }
+    },
+    "joel-freijah": {
+      "key": "joel-freijah",
+      "pick": 45,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.9,
+        "GEN_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2672,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 2837,
+      "gap_opt": 165,
+      "at": {
+        "MID": 2564,
+        "GEN_FWD": 2837
+      }
+    },
+    "archie-roberts": {
+      "key": "archie-roberts",
+      "pick": 54,
+      "cohort": 2024,
+      "age": 21.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 4560,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 4684,
+      "gap_opt": 124,
+      "at": {
+        "GEN_DEF": 4684,
+        "MID": 4340
+      }
+    },
+    "toby-murray": {
+      "key": "toby-murray",
+      "pick": 7,
+      "cohort": 2024,
+      "age": 23.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "RUC": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 167,
+      "opt_best": "RUC",
+      "opt_ev": 471,
+      "gap_opt": 304,
+      "at": {
+        "KEY_FWD": 187,
+        "RUC": 471
+      }
+    },
+    "jhye-clark": {
+      "key": "jhye-clark",
+      "pick": 8,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 882,
+      "opt_best": "MID",
+      "opt_ev": 703,
+      "gap_opt": -179,
+      "at": {
+        "MID": 703,
+        "GEN_FWD": 445
+      }
+    },
+    "mattaes-phillipou": {
+      "key": "mattaes-phillipou",
+      "pick": 10,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.6,
+        "GEN_FWD": 0.4
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1446,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1231,
+      "gap_opt": -215,
+      "at": {
+        "MID": 1170,
+        "GEN_FWD": 1231
+      }
+    },
+    "oliver-hollands": {
+      "key": "oliver-hollands",
+      "pick": 11,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1401,
+      "opt_best": "MID",
+      "opt_ev": 2100,
+      "gap_opt": 699,
+      "at": {
+        "GEN_DEF": 1450,
+        "MID": 2100
+      }
+    },
+    "jaspa-fletcher": {
+      "key": "jaspa-fletcher",
+      "pick": 12,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1875,
+      "opt_best": "MID",
+      "opt_ev": 2115,
+      "gap_opt": 240,
+      "at": {
+        "GEN_DEF": 1916,
+        "MID": 2115
+      }
+    },
+    "anthony-caminiti": {
+      "key": "anthony-caminiti",
+      "pick": null,
+      "cohort": 2023,
+      "age": 23.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.5,
+        "KEY_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 634,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 679,
+      "gap_opt": 45,
+      "at": {
+        "KEY_FWD": 679,
+        "KEY_DEF": 502
+      }
+    },
+    "hudson-o-keeffe": {
+      "key": "hudson-o-keeffe",
+      "pick": null,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "RUC": 0.3,
+        "KEY_FWD": 0.7
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 298,
+      "opt_best": "RUC",
+      "opt_ev": 647,
+      "gap_opt": 349,
+      "at": {
+        "RUC": 647,
+        "KEY_FWD": 360
+      }
+    },
+    "ryan-maric": {
+      "key": "ryan-maric",
+      "pick": 1,
+      "cohort": 2023,
+      "age": 22.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.6,
+        "GEN_DEF": 0.4
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1396,
+      "opt_best": "MID",
+      "opt_ev": 1335,
+      "gap_opt": -61,
+      "at": {
+        "MID": 1335,
+        "GEN_DEF": 1105
+      }
+    },
+    "jason-horne-francis": {
+      "key": "jason-horne-francis",
+      "pick": 1,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 4166,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 4897,
+      "gap_opt": 731,
+      "at": {
+        "MID": 3936,
+        "GEN_FWD": 4897
+      }
+    },
+    "nasiah-wanganeen-milera": {
+      "key": "nasiah-wanganeen-milera",
+      "pick": 11,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.7,
+        "GEN_DEF": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 5914,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 6025,
+      "gap_opt": 111,
+      "at": {
+        "MID": 5846,
+        "GEN_DEF": 6025
+      }
+    },
+    "jake-soligo": {
+      "key": "jake-soligo",
+      "pick": 36,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.85,
+        "GEN_FWD": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2503,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 3198,
+      "gap_opt": 695,
+      "at": {
+        "MID": 2357,
+        "GEN_FWD": 3198
+      }
+    },
+    "marcus-windhager": {
+      "key": "marcus-windhager",
+      "pick": 47,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1620,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 1591,
+      "gap_opt": -29,
+      "at": {
+        "MID": 1587,
+        "GEN_DEF": 1591
+      }
+    },
+    "jai-serong": {
+      "key": "jai-serong",
+      "pick": 53,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 88,
+      "opt_best": "MID",
+      "opt_ev": 98,
+      "gap_opt": 10,
+      "at": {
+        "GEN_DEF": 88,
+        "MID": 98
+      }
+    },
+    "dante-visentini": {
+      "key": "dante-visentini",
+      "pick": 56,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.7,
+        "KEY_FWD": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 921,
+      "opt_best": "RUC",
+      "opt_ev": 505,
+      "gap_opt": -416,
+      "at": {
+        "RUC": 505,
+        "KEY_FWD": 334
+      }
+    },
+    "jase-burgoyne": {
+      "key": "jase-burgoyne",
+      "pick": 60,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 2075,
+      "opt_best": "MID",
+      "opt_ev": 2196,
+      "gap_opt": 121,
+      "at": {
+        "GEN_DEF": 2185,
+        "MID": 2196
+      }
+    },
+    "ned-long": {
+      "key": "ned-long",
+      "pick": 4,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1416,
+      "opt_best": "MID",
+      "opt_ev": 1317,
+      "gap_opt": -99,
+      "at": {
+        "MID": 1317,
+        "GEN_FWD": 1247
+      }
+    },
+    "jai-culley": {
+      "key": "jai-culley",
+      "pick": 1,
+      "cohort": 2022,
+      "age": 23.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 437,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 264,
+      "gap_opt": -173,
+      "at": {
+        "MID": 258,
+        "GEN_FWD": 264
+      }
+    },
+    "tanner-bruhn": {
+      "key": "tanner-bruhn",
+      "pick": 12,
+      "cohort": 2021,
+      "age": 24.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1023,
+      "opt_best": "MID",
+      "opt_ev": 1000,
+      "gap_opt": -23,
+      "at": {
+        "MID": 1000,
+        "GEN_DEF": 840
+      }
+    },
+    "tom-powell": {
+      "key": "tom-powell",
+      "pick": 13,
+      "cohort": 2021,
+      "age": 24.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1389,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1621,
+      "gap_opt": 232,
+      "at": {
+        "GEN_FWD": 1621,
+        "MID": 1269
+      }
+    },
+    "brayden-cook": {
+      "key": "brayden-cook",
+      "pick": 26,
+      "cohort": 2021,
+      "age": 24.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1125,
+      "opt_best": "MID",
+      "opt_ev": 1028,
+      "gap_opt": -97,
+      "at": {
+        "MID": 1028,
+        "GEN_FWD": 821
+      }
+    },
+    "sam-durham": {
+      "key": "sam-durham",
+      "pick": 9,
+      "cohort": 2021,
+      "age": 25.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.85,
+        "GEN_FWD": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1996,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 2240,
+      "gap_opt": 244,
+      "at": {
+        "MID": 1895,
+        "GEN_FWD": 2240
+      }
+    },
+    "luke-jackson": {
+      "key": "luke-jackson",
+      "pick": 3,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.9,
+        "KEY_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 6943,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 7394,
+      "gap_opt": 451,
+      "at": {
+        "RUC": 6803,
+        "KEY_FWD": 7394
+      }
+    },
+    "hayden-young": {
+      "key": "hayden-young",
+      "pick": 7,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.75,
+        "GEN_FWD": 0.25
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2846,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 2635,
+      "gap_opt": -211,
+      "at": {
+        "MID": 2617,
+        "GEN_FWD": 2635
+      }
+    },
+    "sam-flanders": {
+      "key": "sam-flanders",
+      "pick": 11,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.9,
+        "GEN_DEF": 0.1
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 2291,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 2546,
+      "gap_opt": 255,
+      "at": {
+        "MID": 2275,
+        "GEN_DEF": 2546
+      }
+    },
+    "brodie-kemp": {
+      "key": "brodie-kemp",
+      "pick": 17,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.8,
+        "KEY_DEF": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 789,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 815,
+      "gap_opt": 26,
+      "at": {
+        "KEY_FWD": 815,
+        "KEY_DEF": 681
+      }
+    },
+    "sam-de-koning": {
+      "key": "sam-de-koning",
+      "pick": 19,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.9,
+        "RUC": 0.1
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 954,
+      "opt_best": "RUC",
+      "opt_ev": 1408,
+      "gap_opt": 454,
+      "at": {
+        "KEY_DEF": 1015,
+        "RUC": 1408
+      }
+    },
+    "josh-worrell": {
+      "key": "josh-worrell",
+      "pick": 28,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.75,
+        "KEY_DEF": 0.25
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 3210,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 4494,
+      "gap_opt": 1284,
+      "at": {
+        "GEN_DEF": 2941,
+        "KEY_DEF": 4494
+      }
+    },
+    "trent-rivers": {
+      "key": "trent-rivers",
+      "pick": 32,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1700,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 1736,
+      "gap_opt": 36,
+      "at": {
+        "GEN_DEF": 1736,
+        "MID": 1532
+      }
+    },
+    "chad-warner": {
+      "key": "chad-warner",
+      "pick": 39,
+      "cohort": 2020,
+      "age": 25.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.9,
+        "GEN_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 3123,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 3368,
+      "gap_opt": 245,
+      "at": {
+        "MID": 3037,
+        "GEN_FWD": 3368
+      }
+    },
+    "jack-lukosius": {
+      "key": "jack-lukosius",
+      "pick": 2,
+      "cohort": 2019,
+      "age": 26.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.75,
+        "GEN_FWD": 0.25
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1621,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 1696,
+      "gap_opt": 75,
+      "at": {
+        "KEY_FWD": 1696,
+        "GEN_FWD": 1108
+      }
+    },
+    "bailey-williams-wc": {
+      "key": "bailey-williams-wc",
+      "pick": 35,
+      "cohort": 2019,
+      "age": 26.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.9,
+        "KEY_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2372,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 2409,
+      "gap_opt": 37,
+      "at": {
+        "RUC": 2306,
+        "KEY_FWD": 2409
+      }
+    },
+    "jack-ross": {
+      "key": "jack-ross",
+      "pick": 43,
+      "cohort": 2019,
+      "age": 26.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.95,
+        "GEN_FWD": 0.05
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 2160,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 2385,
+      "gap_opt": 225,
+      "at": {
+        "MID": 2151,
+        "GEN_FWD": 2385
+      }
+    },
+    "buku-khamis": {
+      "key": "buku-khamis",
+      "pick": null,
+      "cohort": 2019,
+      "age": 26.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.5,
+        "KEY_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 88,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 124,
+      "gap_opt": 36,
+      "at": {
+        "KEY_DEF": 73,
+        "KEY_FWD": 124
+      }
+    },
+    "callum-coleman-jones": {
+      "key": "callum-coleman-jones",
+      "pick": 20,
+      "cohort": 2018,
+      "age": 27.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.5,
+        "RUC": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 36,
+      "opt_best": "RUC",
+      "opt_ev": 411,
+      "gap_opt": 375,
+      "at": {
+        "KEY_FWD": 38,
+        "RUC": 411
+      }
+    },
+    "noah-balta": {
+      "key": "noah-balta",
+      "pick": 25,
+      "cohort": 2018,
+      "age": 27.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.5,
+        "KEY_DEF": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 394,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 430,
+      "gap_opt": 36,
+      "at": {
+        "KEY_FWD": 430,
+        "KEY_DEF": 278
+      }
+    },
+    "harrison-petty": {
+      "key": "harrison-petty",
+      "pick": 37,
+      "cohort": 2018,
+      "age": 27.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.5,
+        "KEY_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 198,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 215,
+      "gap_opt": 17,
+      "at": {
+        "KEY_DEF": 171,
+        "KEY_FWD": 215
+      }
+    },
+    "liam-baker": {
+      "key": "liam-baker",
+      "pick": 16,
+      "cohort": 2018,
+      "age": 28.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 786,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 634,
+      "gap_opt": -152,
+      "at": {
+        "GEN_DEF": 622,
+        "GEN_FWD": 634
+      }
+    },
+    "andrew-mcgrath": {
+      "key": "andrew-mcgrath",
+      "pick": 1,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1079,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 1093,
+      "gap_opt": 14,
+      "at": {
+        "GEN_DEF": 1093,
+        "MID": 826
+      }
+    },
+    "jack-scrimshaw": {
+      "key": "jack-scrimshaw",
+      "pick": 7,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "KEY_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 98,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 367,
+      "gap_opt": 269,
+      "at": {
+        "GEN_DEF": 87,
+        "KEY_DEF": 367
+      }
+    },
+    "oliver-florent": {
+      "key": "oliver-florent",
+      "pick": 11,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "MID": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 739,
+      "opt_best": "MID",
+      "opt_ev": 817,
+      "gap_opt": 78,
+      "at": {
+        "GEN_DEF": 741,
+        "MID": 817
+      }
+    },
+    "jy-simpkin": {
+      "key": "jy-simpkin",
+      "pick": 12,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "MID",
+      "egroups": {
+        "GEN_FWD": 0.4,
+        "MID": 0.6
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1250,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1446,
+      "gap_opt": 196,
+      "at": {
+        "GEN_FWD": 1446,
+        "MID": 1166
+      }
+    },
+    "todd-marshall": {
+      "key": "todd-marshall",
+      "pick": 16,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.65,
+        "KEY_DEF": 0.35
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 174,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 181,
+      "gap_opt": 7,
+      "at": {
+        "KEY_FWD": 181,
+        "KEY_DEF": 156
+      }
+    },
+    "jordan-ridley": {
+      "key": "jordan-ridley",
+      "pick": 22,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "KEY_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1023,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 1363,
+      "gap_opt": 340,
+      "at": {
+        "GEN_DEF": 1019,
+        "KEY_DEF": 1363
+      }
+    },
+    "jack-graham": {
+      "key": "jack-graham",
+      "pick": 53,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.8,
+        "GEN_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 373,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 540,
+      "gap_opt": 167,
+      "at": {
+        "MID": 306,
+        "GEN_FWD": 540
+      }
+    },
+    "josh-daicos": {
+      "key": "josh-daicos",
+      "pick": 57,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.9,
+        "MID": 0.1
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1779,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 1790,
+      "gap_opt": 11,
+      "at": {
+        "GEN_DEF": 1790,
+        "MID": 1518
+      }
+    },
+    "sam-draper": {
+      "key": "sam-draper",
+      "pick": 1,
+      "cohort": 2017,
+      "age": 28.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.8,
+        "KEY_FWD": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1215,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 1417,
+      "gap_opt": 202,
+      "at": {
+        "RUC": 1117,
+        "KEY_FWD": 1417
+      }
+    },
+    "rowan-marshall": {
+      "key": "rowan-marshall",
+      "pick": 9,
+      "cohort": 2017,
+      "age": 31.0,
+      "gfut": "RUC",
+      "egroups": {
+        "RUC": 0.5,
+        "KEY_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1391,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 1515,
+      "gap_opt": 124,
+      "at": {
+        "RUC": 1391,
+        "KEY_FWD": 1515
+      }
+    },
+    "callum-mills": {
+      "key": "callum-mills",
+      "pick": 3,
+      "cohort": 2016,
+      "age": 29.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.9,
+        "MID": 0.1
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 1695,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 1702,
+      "gap_opt": 7,
+      "at": {
+        "GEN_DEF": 1702,
+        "MID": 1609
+      }
+    },
+    "tom-doedee": {
+      "key": "tom-doedee",
+      "pick": 17,
+      "cohort": 2016,
+      "age": 29.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "KEY_DEF": 0.2,
+        "GEN_DEF": 0.8
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 410,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 410,
+      "gap_opt": 0,
+      "at": {
+        "KEY_DEF": 406,
+        "GEN_DEF": 410
+      }
+    },
+    "blake-hardwick": {
+      "key": "blake-hardwick",
+      "pick": 44,
+      "cohort": 2016,
+      "age": 29.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.7,
+        "GEN_FWD": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 447,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 457,
+      "gap_opt": 10,
+      "at": {
+        "GEN_DEF": 386,
+        "GEN_FWD": 457
+      }
+    },
+    "christian-petracca": {
+      "key": "christian-petracca",
+      "pick": 2,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.7,
+        "GEN_FWD": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 3033,
+      "opt_best": "MID",
+      "opt_ev": 3033,
+      "gap_opt": 0,
+      "at": {
+        "MID": 3033,
+        "GEN_FWD": 2924
+      }
+    },
+    "isaac-heeney": {
+      "key": "isaac-heeney",
+      "pick": 4,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.9,
+        "GEN_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 3301,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 3436,
+      "gap_opt": 135,
+      "at": {
+        "MID": 3301,
+        "GEN_FWD": 3436
+      }
+    },
+    "jordan-de-goey": {
+      "key": "jordan-de-goey",
+      "pick": 6,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1587,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1587,
+      "gap_opt": 0,
+      "at": {
+        "GEN_FWD": 1587,
+        "MID": 1506
+      }
+    },
+    "peter-wright": {
+      "key": "peter-wright",
+      "pick": 10,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.85,
+        "RUC": 0.15
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1644,
+      "opt_best": "RUC",
+      "opt_ev": 2139,
+      "gap_opt": 495,
+      "at": {
+        "KEY_FWD": 1668,
+        "RUC": 2139
+      }
+    },
+    "kyle-langford": {
+      "key": "kyle-langford",
+      "pick": 18,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "KEY_FWD",
+      "egroups": {
+        "KEY_FWD": 0.7,
+        "GEN_FWD": 0.3
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 591,
+      "opt_best": "KEY_FWD",
+      "opt_ev": 601,
+      "gap_opt": 10,
+      "at": {
+        "KEY_FWD": 601,
+        "GEN_FWD": 589
+      }
+    },
+    "touk-miller": {
+      "key": "touk-miller",
+      "pick": 29,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 1890,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 1997,
+      "gap_opt": 107,
+      "at": {
+        "MID": 1890,
+        "GEN_FWD": 1997
+      }
+    },
+    "ed-langdon": {
+      "key": "ed-langdon",
+      "pick": 54,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.7,
+        "MID": 0.3
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 570,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 570,
+      "gap_opt": 0,
+      "at": {
+        "GEN_DEF": 570,
+        "MID": 560
+      }
+    },
+    "conor-mckenna": {
+      "key": "conor-mckenna",
+      "pick": null,
+      "cohort": 2015,
+      "age": 30.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.8,
+        "GEN_DEF": 0.2
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 12,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 12,
+      "gap_opt": 0,
+      "at": {
+        "GEN_FWD": 12,
+        "GEN_DEF": 12
+      }
+    },
+    "marcus-bontempelli": {
+      "key": "marcus-bontempelli",
+      "pick": 4,
+      "cohort": 2014,
+      "age": 31.0,
+      "gfut": "MID",
+      "egroups": {
+        "MID": 0.9,
+        "GEN_FWD": 0.1
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 3085,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 3267,
+      "gap_opt": 182,
+      "at": {
+        "MID": 3085,
+        "GEN_FWD": 3267
+      }
+    },
+    "zachary-williams": {
+      "key": "zachary-williams",
+      "pick": null,
+      "cohort": 2013,
+      "age": 32.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.5,
+        "GEN_FWD": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 465,
+      "opt_best": "GEN_FWD",
+      "opt_ev": 480,
+      "gap_opt": 15,
+      "at": {
+        "GEN_DEF": 465,
+        "GEN_FWD": 480
+      }
+    },
+    "stephen-coniglio": {
+      "key": "stephen-coniglio",
+      "pick": 3,
+      "cohort": 2012,
+      "age": 33.0,
+      "gfut": "GEN_FWD",
+      "egroups": {
+        "GEN_FWD": 0.5,
+        "MID": 0.5
+      },
+      "fwd_elig": true,
+      "delist": false,
+      "cur": 194,
+      "opt_best": "MID",
+      "opt_ev": 203,
+      "gap_opt": 9,
+      "at": {
+        "GEN_FWD": 194,
+        "MID": 203
+      }
+    },
+    "ryan-lester": {
+      "key": "ryan-lester",
+      "pick": 36,
+      "cohort": 2011,
+      "age": 34.0,
+      "gfut": "KEY_DEF",
+      "egroups": {
+        "KEY_DEF": 0.6,
+        "GEN_DEF": 0.4
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 339,
+      "opt_best": "GEN_DEF",
+      "opt_ev": 343,
+      "gap_opt": 4,
+      "at": {
+        "KEY_DEF": 339,
+        "GEN_DEF": 343
+      }
+    },
+    "jeremy-howe": {
+      "key": "jeremy-howe",
+      "pick": 42,
+      "cohort": 2011,
+      "age": 36.0,
+      "gfut": "GEN_DEF",
+      "egroups": {
+        "GEN_DEF": 0.8,
+        "KEY_DEF": 0.2
+      },
+      "fwd_elig": false,
+      "delist": false,
+      "cur": 286,
+      "opt_best": "KEY_DEF",
+      "opt_ev": 295,
+      "gap_opt": 9,
+      "at": {
+        "GEN_DEF": 286,
+        "KEY_DEF": 295
+      }
+    }
+  }
+}

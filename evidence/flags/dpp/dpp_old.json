@@ -1,0 +1,946 @@
+{
+  "state": "OLD rl_model pre-merge",
+  "n": 94,
+  "rows": {
+    "luke-jackson": {
+      "v_dual": 6510,
+      "gfut_old": "RUC",
+      "v_bare": 6370,
+      "prem_fut": 140,
+      "gf_bare": "RUC",
+      "v_solo": 6370,
+      "prem_2nd": 140,
+      "gfut_held": true
+    },
+    "archie-roberts": {
+      "v_dual": 4319,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 4455,
+      "prem_fut": -136,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 4455,
+      "prem_2nd": -136,
+      "gfut_held": true
+    },
+    "nasiah-wanganeen-milera": {
+      "v_dual": 4409,
+      "gfut_old": "MID",
+      "v_bare": 4849,
+      "prem_fut": -440,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 4340,
+      "prem_2nd": 69,
+      "gfut_held": true
+    },
+    "jason-horne-francis": {
+      "v_dual": 3795,
+      "gfut_old": "MID",
+      "v_bare": 4873,
+      "prem_fut": -1078,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 3556,
+      "prem_2nd": 239,
+      "gfut_held": true
+    },
+    "zeke-uwland": {
+      "v_dual": 3274,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 3274,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 3274,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "isaac-heeney": {
+      "v_dual": 3130,
+      "gfut_old": "MID",
+      "v_bare": 3130,
+      "prem_fut": 0,
+      "gf_bare": "MID",
+      "v_solo": 3130,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "sam-lalor": {
+      "v_dual": 2926,
+      "gfut_old": "MID",
+      "v_bare": 3850,
+      "prem_fut": -924,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 2926,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "marcus-bontempelli": {
+      "v_dual": 2909,
+      "gfut_old": "MID",
+      "v_bare": 2909,
+      "prem_fut": 0,
+      "gf_bare": "MID",
+      "v_solo": 2909,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "christian-petracca": {
+      "v_dual": 2834,
+      "gfut_old": "MID",
+      "v_bare": 2834,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 2834,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "josh-worrell": {
+      "v_dual": 2565,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 2138,
+      "prem_fut": 427,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 2268,
+      "prem_2nd": 297,
+      "gfut_held": true
+    },
+    "bailey-j-williams": {
+      "v_dual": 2552,
+      "gfut_old": "RUC",
+      "v_bare": 3938,
+      "prem_fut": -1386,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 2410,
+      "prem_2nd": 142,
+      "gfut_held": true
+    },
+    "colby-mckercher": {
+      "v_dual": 2116,
+      "gfut_old": "MID",
+      "v_bare": 2973,
+      "prem_fut": -857,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 1991,
+      "prem_2nd": 125,
+      "gfut_held": true
+    },
+    "cooper-duff-tytler": {
+      "v_dual": 2086,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 2086,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 2086,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "joel-freijah": {
+      "v_dual": 1941,
+      "gfut_old": "MID",
+      "v_bare": 3407,
+      "prem_fut": -1466,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1809,
+      "prem_2nd": 132,
+      "gfut_held": true
+    },
+    "chad-warner": {
+      "v_dual": 2003,
+      "gfut_old": "MID",
+      "v_bare": 2890,
+      "prem_fut": -887,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1913,
+      "prem_2nd": 90,
+      "gfut_held": true
+    },
+    "jack-ross": {
+      "v_dual": 1956,
+      "gfut_old": "MID",
+      "v_bare": 2599,
+      "prem_fut": -643,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1956,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "touk-miller": {
+      "v_dual": 1857,
+      "gfut_old": "MID",
+      "v_bare": 1857,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1857,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "sam-flanders": {
+      "v_dual": 1717,
+      "gfut_old": "MID",
+      "v_bare": 1698,
+      "prem_fut": 19,
+      "gf_bare": "MID",
+      "v_solo": 1698,
+      "prem_2nd": 19,
+      "gfut_held": true
+    },
+    "tobie-travaglia": {
+      "v_dual": 1633,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 1633,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 1633,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "mattaes-phillipou": {
+      "v_dual": 1613,
+      "gfut_old": "MID",
+      "v_bare": 2529,
+      "prem_fut": -916,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1132,
+      "prem_2nd": 481,
+      "gfut_held": true
+    },
+    "alix-tauru": {
+      "v_dual": 1582,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 1582,
+      "prem_fut": 0,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 1582,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "samuel-grlj": {
+      "v_dual": 1534,
+      "gfut_old": "MID",
+      "v_bare": 2212,
+      "prem_fut": -678,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 1534,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jack-lukosius": {
+      "v_dual": 1412,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 1522,
+      "prem_fut": -110,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 1522,
+      "prem_2nd": -110,
+      "gfut_held": true
+    },
+    "peter-wright": {
+      "v_dual": 1416,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 1416,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 1416,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "xavier-lindsay": {
+      "v_dual": 1392,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 1392,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 1392,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "callum-mills": {
+      "v_dual": 1374,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 1374,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 1374,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "sullivan-robey": {
+      "v_dual": 1361,
+      "gfut_old": "MID",
+      "v_bare": 2082,
+      "prem_fut": -721,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1361,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "rowan-marshall": {
+      "v_dual": 1347,
+      "gfut_old": "RUC",
+      "v_bare": 1483,
+      "prem_fut": -136,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 1347,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "taj-hotton": {
+      "v_dual": 1269,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 1269,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1269,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jordan-de-goey": {
+      "v_dual": 1253,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 1253,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1253,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "josh-daicos": {
+      "v_dual": 1228,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 1228,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 1228,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "hayden-young": {
+      "v_dual": 1216,
+      "gfut_old": "MID",
+      "v_bare": 979,
+      "prem_fut": 237,
+      "gf_bare": "MID",
+      "v_solo": 979,
+      "prem_2nd": 237,
+      "gfut_held": true
+    },
+    "tom-powell": {
+      "v_dual": 1170,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 490,
+      "prem_fut": 680,
+      "gf_bare": "MID",
+      "v_solo": 1434,
+      "prem_2nd": -264,
+      "gfut_held": true
+    },
+    "sam-durham": {
+      "v_dual": 1105,
+      "gfut_old": "MID",
+      "v_bare": 1663,
+      "prem_fut": -558,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 1105,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "anthony-caminiti": {
+      "v_dual": 1144,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 1048,
+      "prem_fut": 96,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 1247,
+      "prem_2nd": -103,
+      "gfut_held": true
+    },
+    "jase-burgoyne": {
+      "v_dual": 886,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 980,
+      "prem_fut": -94,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 980,
+      "prem_2nd": -94,
+      "gfut_held": true
+    },
+    "jake-soligo": {
+      "v_dual": 883,
+      "gfut_old": "MID",
+      "v_bare": 1785,
+      "prem_fut": -902,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 768,
+      "prem_2nd": 115,
+      "gfut_held": true
+    },
+    "caleb-windsor": {
+      "v_dual": 953,
+      "gfut_old": "MID",
+      "v_bare": 1387,
+      "prem_fut": -434,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 953,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "koltyn-tholstrup": {
+      "v_dual": 935,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 1082,
+      "prem_fut": -147,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 935,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "trent-rivers": {
+      "v_dual": 912,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 945,
+      "prem_fut": -33,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 945,
+      "prem_2nd": -33,
+      "gfut_held": true
+    },
+    "jaspa-fletcher": {
+      "v_dual": 917,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 943,
+      "prem_fut": -26,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 943,
+      "prem_2nd": -26,
+      "gfut_held": true
+    },
+    "oliver-hollands": {
+      "v_dual": 929,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 929,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 929,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jy-simpkin": {
+      "v_dual": 900,
+      "gfut_old": "MID",
+      "v_bare": 972,
+      "prem_fut": -72,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 900,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "sam-draper": {
+      "v_dual": 769,
+      "gfut_old": "RUC",
+      "v_bare": 769,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 769,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "bo-allan": {
+      "v_dual": 736,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 736,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 736,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jordan-ridley": {
+      "v_dual": 720,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 720,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 720,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "luke-trainor": {
+      "v_dual": 689,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 546,
+      "prem_fut": 143,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 689,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "william-mccabe": {
+      "v_dual": 677,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 677,
+      "prem_fut": 0,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 677,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "lachlan-blakiston": {
+      "v_dual": 651,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 775,
+      "prem_fut": -124,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 775,
+      "prem_2nd": -124,
+      "gfut_held": true
+    },
+    "louis-emmett": {
+      "v_dual": 609,
+      "gfut_old": "RUC",
+      "v_bare": 609,
+      "prem_fut": 0,
+      "gf_bare": "RUC",
+      "v_solo": 609,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "andrew-mcgrath": {
+      "v_dual": 595,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 595,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 595,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jack-dalton": {
+      "v_dual": 576,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 576,
+      "prem_fut": 0,
+      "gf_bare": "MID",
+      "v_solo": 576,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "ned-long": {
+      "v_dual": 456,
+      "gfut_old": "MID",
+      "v_bare": 627,
+      "prem_fut": -171,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 456,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "oliver-florent": {
+      "v_dual": 557,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 557,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 557,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "cody-angove": {
+      "v_dual": 534,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 534,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 534,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "cooper-hynes": {
+      "v_dual": 517,
+      "gfut_old": "MID",
+      "v_bare": 713,
+      "prem_fut": -196,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 517,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "ty-gallop": {
+      "v_dual": 464,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 464,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 464,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jai-serong": {
+      "v_dual": 377,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 102,
+      "prem_fut": 275,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 377,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jhye-clark": {
+      "v_dual": 414,
+      "gfut_old": "MID",
+      "v_bare": 627,
+      "prem_fut": -213,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 414,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "kyle-langford": {
+      "v_dual": 380,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 380,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 380,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "sam-de-koning": {
+      "v_dual": 335,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 356,
+      "prem_fut": -21,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 356,
+      "prem_2nd": -21,
+      "gfut_held": true
+    },
+    "ed-langdon": {
+      "v_dual": 364,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 364,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 364,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "angus-clarke": {
+      "v_dual": 355,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 355,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 355,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "marcus-windhager": {
+      "v_dual": 264,
+      "gfut_old": "MID",
+      "v_bare": 354,
+      "prem_fut": -90,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 245,
+      "prem_2nd": 19,
+      "gfut_held": true
+    },
+    "alex-dodson": {
+      "v_dual": 322,
+      "gfut_old": "RUC",
+      "v_bare": 322,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 322,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "brayden-cook": {
+      "v_dual": 258,
+      "gfut_old": "MID",
+      "v_bare": 258,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 258,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "brodie-kemp": {
+      "v_dual": 280,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 291,
+      "prem_fut": -11,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 291,
+      "prem_2nd": -11,
+      "gfut_held": true
+    },
+    "xavier-bamert": {
+      "v_dual": 315,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 315,
+      "prem_fut": 0,
+      "gf_bare": "MID",
+      "v_solo": 315,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "zachary-williams": {
+      "v_dual": 300,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 300,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 300,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "noah-howes": {
+      "v_dual": 285,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 285,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 285,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "liam-baker": {
+      "v_dual": 262,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 253,
+      "prem_fut": 9,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 253,
+      "prem_2nd": 9,
+      "gfut_held": true
+    },
+    "lance-collard": {
+      "v_dual": 274,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 274,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 274,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "tanner-bruhn": {
+      "v_dual": 201,
+      "gfut_old": "MID",
+      "v_bare": 185,
+      "prem_fut": 16,
+      "gf_bare": "MID",
+      "v_solo": 185,
+      "prem_2nd": 16,
+      "gfut_held": true
+    },
+    "tom-gross": {
+      "v_dual": 247,
+      "gfut_old": "MID",
+      "v_bare": 336,
+      "prem_fut": -89,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 247,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "tom-blamires": {
+      "v_dual": 225,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 225,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 225,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "blake-hardwick": {
+      "v_dual": 206,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 178,
+      "prem_fut": 28,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 178,
+      "prem_2nd": 28,
+      "gfut_held": true
+    },
+    "ryan-lester": {
+      "v_dual": 193,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 193,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 193,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jeremy-howe": {
+      "v_dual": 190,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 190,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 190,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "ryan-maric": {
+      "v_dual": 178,
+      "gfut_old": "MID",
+      "v_bare": 178,
+      "prem_fut": 0,
+      "gf_bare": "MID",
+      "v_solo": 178,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "tom-doedee": {
+      "v_dual": 178,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 178,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 178,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jack-watkins": {
+      "v_dual": 173,
+      "gfut_old": "MID",
+      "v_bare": 230,
+      "prem_fut": -57,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 173,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "hudson-o-keeffe": {
+      "v_dual": 127,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 127,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 127,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "stephen-coniglio": {
+      "v_dual": 109,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 109,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 109,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "toby-murray": {
+      "v_dual": 96,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 96,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 96,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "noah-balta": {
+      "v_dual": 73,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 73,
+      "prem_fut": 0,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 73,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "dante-visentini": {
+      "v_dual": 73,
+      "gfut_old": "RUC",
+      "v_bare": 73,
+      "prem_fut": 0,
+      "gf_bare": "RUC",
+      "v_solo": 73,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jai-culley": {
+      "v_dual": 50,
+      "gfut_old": "MID",
+      "v_bare": 50,
+      "prem_fut": 0,
+      "gf_bare": "MID",
+      "v_solo": 50,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jack-graham": {
+      "v_dual": 50,
+      "gfut_old": "MID",
+      "v_bare": 44,
+      "prem_fut": 6,
+      "gf_bare": "MID",
+      "v_solo": 44,
+      "prem_2nd": 6,
+      "gfut_held": true
+    },
+    "harrison-petty": {
+      "v_dual": 42,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 44,
+      "prem_fut": -2,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 34,
+      "prem_2nd": 8,
+      "gfut_held": true
+    },
+    "todd-marshall": {
+      "v_dual": 46,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 46,
+      "prem_fut": 0,
+      "gf_bare": "KEY_FWD",
+      "v_solo": 46,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "jack-scrimshaw": {
+      "v_dual": 32,
+      "gfut_old": "GEN_DEF",
+      "v_bare": 32,
+      "prem_fut": 0,
+      "gf_bare": "GEN_DEF",
+      "v_solo": 32,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "buku-khamis": {
+      "v_dual": 9,
+      "gfut_old": "KEY_DEF",
+      "v_bare": 6,
+      "prem_fut": 3,
+      "gf_bare": "KEY_DEF",
+      "v_solo": 6,
+      "prem_2nd": 3,
+      "gfut_held": true
+    },
+    "conor-mckenna": {
+      "v_dual": 5,
+      "gfut_old": "GEN_FWD",
+      "v_bare": 5,
+      "prem_fut": 0,
+      "gf_bare": "GEN_FWD",
+      "v_solo": 5,
+      "prem_2nd": 0,
+      "gfut_held": true
+    },
+    "callum-coleman-jones": {
+      "v_dual": 2,
+      "gfut_old": "KEY_FWD",
+      "v_bare": 0,
+      "prem_fut": 2,
+      "gf_bare": "RUC",
+      "v_solo": 4,
+      "prem_2nd": -2,
+      "gfut_held": true
+    }
+  }
+}

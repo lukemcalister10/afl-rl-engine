@@ -1,0 +1,80 @@
+======================================================================================================================
+FLAG (b) DPP FORWARD-ELIGIBILITY  —  young dual-position players (age<=24)
+BAKED  cur$/opt$/dOPT = current(gfut, max-weight) -> optionality(best eligible)  [BAKED c47cb43d]
+OLD    prem_fut = value(_fut) - value(bare listed pos)   [reads dual/FUTURE role vs listed]  <- Serong anchor
+OLD    prem_2nd = value(_fut) - value([[max-wt,100]])    [SECOND-position blend only, gfut held]
+       both OLD cols are [OLD rl_model pre-merge] scale; NEVER subtracted vs baked cols. id = ID.pick.cohort.
+baked REPL bars: {'MID': 80.1, 'GEN_DEF': 78.3, 'RUC': 78.5, 'KEY_DEF': 68.4, 'GEN_FWD': 70.9, 'KEY_FWD': 66.8}
+======================================================================================================================
+ID(key)                  pick cohort  FWD  age |   cur$    opt$   dOPT |   dual$  premFUT  prem2nd
+----------------------------------------------------------------------------------------------------------------------
+tom-powell                 13   2021  FWD   24 |   1389    1621   +232 |    1170     +680     -264
+jai-serong                 53   2022   -    23 |     88      98    +10 |     377     +275       +0
+luke-trainor               21   2025   -    20 |   1256    1372   +116 |     689     +143       +0
+anthony-caminiti           FT   2023  FWD   23 |    634     679    +45 |    1144      +96     -103
+tanner-bruhn               12   2021   -    24 |   1023    1000    -23 |     201      +16      +16
+zeke-uwland                 2   2026   -    19 |   1961    2411   +450 |    3274       +0       +0
+cooper-duff-tytler          4   2026  FWD   19 |   1436    1609   +173 |    2086       +0       +0
+louis-emmett               27   2026  FWD   19 |    853     853     +0 |     609       +0       +0
+jack-dalton                34   2026  FWD   19 |    397     531   +134 |     576       +0       +0
+tom-blamires               FT   2026   -    24 |     69      75     +6 |     225       +0       +0
+xavier-bamert               5   2026  FWD   19 |    231     388   +157 |     315       +0       +0
+tobie-travaglia             8   2025   -    20 |    706    1396   +690 |    1633       +0       +0
+alix-tauru                 10   2025  FWD   20 |   1527    1509    -18 |    1582       +0       +0
+xavier-lindsay             11   2025   -    20 |   1249    2207   +958 |    1392       +0       +0
+taj-hotton                 12   2025  FWD   20 |   1082    1356   +274 |    1269       +0       +0
+bo-allan                   16   2025   -    20 |   1027    1371   +344 |     736       +0       +0
+cody-angove                24   2025  FWD   20 |    363     546   +183 |     534       +0       +0
+angus-clarke               39   2025   -    20 |    669     858   +189 |     355       +0       +0
+ty-gallop                  42   2025  FWD   20 |    990    1168   +178 |     464       +0       +0
+alex-dodson                53   2025  FWD   20 |    387     387     +0 |     322       +0       +0
+noah-howes                 15   2025  FWD   21 |    213     284    +71 |     285       +0       +0
+william-mccabe             19   2024  FWD   21 |    454     464    +10 |     677       +0       +0
+lance-collard              28   2024  FWD   21 |    235     307    +72 |     274       +0       +0
+toby-murray                 7   2024  FWD   23 |    167     471   +304 |      96       +0       +0
+oliver-hollands            11   2023   -    22 |   1401    2100   +699 |     929       +0       +0
+hudson-o-keeffe            FT   2023  FWD   22 |    298     647   +349 |     127       +0       +0
+ryan-maric                  1   2023   -    22 |   1396    1335    -61 |     178       +0       +0
+dante-visentini            56   2022  FWD   23 |    921     505   -416 |      73       +0       +0
+jai-culley                  1   2022  FWD   23 |    437     264   -173 |      50       +0       +0
+brayden-cook               26   2021  FWD   24 |   1125    1028    -97 |     258       +0       +0
+jaspa-fletcher             12   2023   -    22 |   1875    2115   +240 |     917      -26      -26
+tom-gross                  46   2025  FWD   20 |    675     529   -146 |     247      -89       +0
+marcus-windhager           47   2022   -    23 |   1620    1591    -29 |     264      -90      +19
+jase-burgoyne              60   2022   -    23 |   2075    2196   +121 |     886      -94      -94
+archie-roberts             54   2024   -    21 |   4560    4684   +124 |    4319     -136     -136
+koltyn-tholstrup           13   2024  FWD   21 |   1512    1890   +378 |     935     -147       +0
+ned-long                    4   2022  FWD   23 |   1416    1317    -99 |     456     -171       +0
+cooper-hynes               20   2025  FWD   20 |   1269    1128   -141 |     517     -196       +0
+jhye-clark                  8   2023  FWD   22 |    882     703   -179 |     414     -213       +0
+caleb-windsor               7   2024   -    21 |   1690    1658    -32 |     953     -434       +0
+nasiah-wanganeen-milera    11   2022   -    23 |   5914    6025   +111 |    4409     -440      +69
+samuel-grlj                 8   2026   -    19 |   2241    2202    -39 |    1534     -678       +0
+sullivan-robey              9   2026  FWD   19 |   2237    1984   -253 |    1361     -721       +0
+colby-mckercher             2   2024   -    21 |   3783    3675   -108 |    2116     -857     +125
+jake-soligo                36   2022  FWD   23 |   2503    3198   +695 |     883     -902     +115
+mattaes-phillipou          10   2023  FWD   22 |   1446    1231   -215 |    1613     -916     +481
+sam-lalor                   1   2025  FWD   20 |   3674    3447   -227 |    2926     -924       +0
+jason-horne-francis         1   2022  FWD   23 |   4166    4897   +731 |    3795    -1078     +239
+joel-freijah               45   2024  FWD   21 |   2672    2837   +165 |    1941    -1466     +132
+
+YOUNG DPPs (age<=24): 49   of which forward-eligible: 30
+OLD dual/future-role LIFT (prem_fut>0): 5 players, Sigma=+$1210   [value the bake's max-weight-only pricing omits]
+OLD second-position blend (prem_2nd) net across young: +573   (near-zero for genuine ties like Serong)
+BAKED optionality gap (dOPT) net across young: +5953   (the only forward-eligibility signal the bake expresses)
+
+================================================================================================================
+SERONG ANCHOR — name-collision guard (2 Serongs; only ONE is a young DPP)
+================================================================================================================
+  jai-serong     | pick 53  | cohort 2022 | age 23 | elig GEN_DEF:50%/MID:50% | gfut(max-wt) GEN_DEF
+     BAKED [c47cb43d]:  current $88 (as GEN_DEF)  ->  optionality best $98 (as MID)  =  gap +$10
+     OLD [rl_model]:    value(dual)=$377  |  value(bare listed pos KEY_DEF)=$102  ->  prem_fut +$275
+                        value([[max-wt,100]])=$377 (gfut held) -> prem_2nd +$0
+  caleb-serong: not a DPP (len(_fut)<=1) — excluded by construction
+
+  ANCHOR RECONCILIATION: task cites Serong ~+$320 raw.  jai-serong (pick 53, cohort 2022, listed KEY_DEF,
+  _fut=GDEF/MID) carries an OLD-engine dual/future-role LIFT of +$275: value(dual)=$377 vs value(bare
+  listed KEY_DEF)=$102. His stored _vpt=377 == value(dual). The SECOND-position blend (prem_2nd=+$0)
+  is ~zero — the lift is the engine reading his dual/forward role off the bare key-defender tag, not a
+  blend. The BAKE DROPPED this: futblend + dual-premium are gone (gfut is the sole _fut reader), so the
+  baked engine credits Serong only +$10 (optionality). ~$265 of forward/dual-eligibility value is now unpriced.
