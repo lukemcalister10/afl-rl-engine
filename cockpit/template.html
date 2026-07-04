@@ -1,0 +1,509 @@
+<!--
+  RL VALUE COCKPIT — viewing layer (board + player detail)
+  This file is a TEMPLATE. build_cockpit.py injects the board data at the two
+  placeholders below and writes the self-contained cockpit.html. If the data
+  placeholder is left as null (opening template.html directly), the app falls
+  back to fetching the DATA_SOURCE at runtime for live-dev use.
+  DATA CONTRACT: see cockpit/DATA_CONTRACT.md.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RL Value Cockpit</title>
+<style>
+:root{
+  /* --- instrument palette: graphite ink, amber controls, phosphor-cyan data --- */
+  --ink:#0e1217; --ink-2:#131922; --panel:#161d27; --panel-2:#1b2431;
+  --rule:#232e3d; --rule-soft:#1c2531;
+  --text:#e7edf4; --dim:#93a1b3; --faint:#5d6b7d;
+  --amber:#e9b949;        /* THE interactive accent — user controls only */
+  --amber-soft:rgba(233,185,73,.16);
+  --phos:#4fc3d4;         /* data magnitude — the value rail glows this */
+  --phos-soft:rgba(79,195,212,.14);
+  --pos-mid:#7aa2f7; --pos-gdef:#5eba9e; --pos-kdef:#56c1d6;
+  --pos-gfwd:#d99a5b; --pos-kfwd:#e0808a; --pos-ruc:#b088e8;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","Cascadia Code",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --row-h:34px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--ink); color:var(--text); font-family:var(--sans);
+  font-size:14px; line-height:1.4; -webkit-font-smoothing:antialiased;
+  /* faint fixed instrument grid — static, no motion */
+  background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);
+  background-size:64px 64px; background-position:-1px -1px; background-attachment:fixed;
+}
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+button{font-family:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--amber); outline-offset:2px; border-radius:3px}
+
+/* ---------- shell ---------- */
+.app{max-width:1240px; margin:0 auto; padding:0 18px 80px}
+header.masthead{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  padding:26px 2px 16px; border-bottom:1px solid var(--rule);
+}
+.brand{font-weight:800; letter-spacing:-.02em; font-size:20px}
+.brand .glow{color:var(--phos)}
+.eyebrow{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint)}
+.masthead .spacer{flex:1}
+.readout{font-family:var(--mono); font-size:11px; color:var(--dim); text-align:right; line-height:1.5}
+.readout b{color:var(--text); font-weight:700}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+  position:sticky; top:0; z-index:20; background:rgba(14,18,23,.86);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--rule);
+  padding:12px 2px; display:flex; flex-direction:column; gap:10px;
+}
+.tb-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.search{position:relative; flex:1; min-width:200px}
+.search input{
+  width:100%; background:var(--ink-2); border:1px solid var(--rule); border-radius:7px;
+  color:var(--text); font-family:var(--mono); font-size:13px; padding:9px 34px 9px 12px;
+}
+.search input::placeholder{color:var(--faint)}
+.search .hint{position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  font-family:var(--mono); font-size:11px; color:var(--faint); border:1px solid var(--rule);
+  border-radius:4px; padding:1px 5px; pointer-events:none}
+.sortsel{
+  background:var(--ink-2); border:1px solid var(--rule); border-radius:7px; color:var(--text);
+  font-family:var(--mono); font-size:12px; padding:9px 10px;
+}
+.seg{display:inline-flex; border:1px solid var(--rule); border-radius:7px; overflow:hidden}
+.seg button{background:var(--ink-2); border:0; padding:9px 12px; font-family:var(--mono); font-size:12px; color:var(--dim)}
+.seg button[aria-pressed="true"]{background:var(--amber-soft); color:var(--amber)}
+.seg button+button{border-left:1px solid var(--rule)}
+
+.chips{display:flex; gap:7px; flex-wrap:wrap; align-items:center}
+.chip{
+  display:inline-flex; align-items:center; gap:6px; background:var(--ink-2);
+  border:1px solid var(--rule); border-radius:999px; padding:6px 11px 6px 9px;
+  font-size:12px; color:var(--dim);
+}
+.chip .dot{width:9px; height:9px; border-radius:50%; background:var(--c,#888); flex:none}
+.chip[aria-pressed="true"]{border-color:color-mix(in srgb,var(--c) 60%,var(--rule)); color:var(--text); background:color-mix(in srgb,var(--c) 12%,var(--ink-2))}
+.chip.all{padding-left:11px}
+.chip.all .dot{display:none}
+.count{font-family:var(--mono); font-size:11.5px; color:var(--faint); margin-left:auto}
+
+/* ---------- table ---------- */
+.board{width:100%; overflow-x:auto; border:1px solid var(--rule); border-radius:10px; margin-top:12px; background:var(--panel)}
+table{width:100%; border-collapse:collapse; min-width:640px}
+thead th{
+  position:sticky; top:0; z-index:5; background:var(--panel-2);
+  font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--dim);
+  font-weight:600; text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule);
+  white-space:nowrap; user-select:none;
+}
+thead th.sortable{cursor:pointer}
+thead th.sortable:hover{color:var(--text)}
+thead th .arrow{color:var(--amber); font-size:9px; margin-left:4px}
+th.r,td.r{text-align:right}
+th.c,td.c{text-align:center}
+tbody tr{border-bottom:1px solid var(--rule-soft); cursor:pointer; height:var(--row-h)}
+tbody tr:last-child{border-bottom:0}
+tbody tr:hover{background:var(--panel-2)}
+tbody tr[aria-selected="true"]{background:color-mix(in srgb,var(--amber) 9%,var(--panel))}
+tbody tr[aria-selected="true"] td:first-child{box-shadow:inset 3px 0 0 var(--amber)}
+tbody td{padding:0 12px; white-space:nowrap; font-size:13px}
+td.rank{font-family:var(--mono); color:var(--faint); font-size:12px; width:52px}
+td.name{font-weight:600; max-width:220px; overflow:hidden; text-overflow:ellipsis}
+td.name .sub{color:var(--faint); font-weight:400; font-size:11px; font-family:var(--mono); margin-left:8px}
+.poschip{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11.5px; color:var(--dim)}
+.poschip .dot{width:8px; height:8px; border-radius:50%; background:var(--c,#888)}
+.reclass{color:var(--amber); font-size:10px; margin-left:4px}
+
+/* value rail — the signature device */
+td.value{width:210px; padding:0}
+.rail{position:relative; height:var(--row-h); display:flex; align-items:center; justify-content:flex-end; padding:0 12px}
+.rail .fill{position:absolute; left:0; top:5px; bottom:5px; width:var(--w,0%);
+  background:linear-gradient(90deg,var(--phos-soft),color-mix(in srgb,var(--phos) 42%,transparent));
+  border-right:2px solid var(--phos); border-radius:0 2px 2px 0; min-width:2px}
+.rail .fig{position:relative; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:700; font-size:13px; z-index:1}
+td.pick,td.yr{font-family:var(--mono); color:var(--dim); font-size:12px}
+
+/* ---------- detail drawer ---------- */
+.scrim{position:fixed; inset:0; background:rgba(6,9,13,.55); opacity:0; pointer-events:none; transition:opacity .18s; z-index:30}
+.scrim.open{opacity:1; pointer-events:auto}
+.drawer{
+  position:fixed; top:0; right:0; height:100%; width:min(430px,100%);
+  background:var(--panel); border-left:1px solid var(--rule); z-index:40;
+  transform:translateX(100%); transition:transform .22s ease; overflow-y:auto;
+  box-shadow:-24px 0 60px rgba(0,0,0,.4);
+}
+.drawer.open{transform:translateX(0)}
+.dr-head{position:sticky; top:0; background:var(--panel-2); border-bottom:1px solid var(--rule); padding:18px 20px 16px; z-index:2}
+.dr-close{position:absolute; top:14px; right:14px; background:var(--ink-2); border:1px solid var(--rule); border-radius:7px; width:32px; height:32px; font-size:16px; color:var(--dim); display:grid; place-items:center}
+.dr-name{font-size:20px; font-weight:800; letter-spacing:-.02em; padding-right:40px}
+.dr-id{font-family:var(--mono); font-size:11px; color:var(--faint); margin-top:4px}
+.dr-body{padding:18px 20px 40px}
+.idgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px 16px; margin-bottom:6px}
+.idcell .k{font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--faint)}
+.idcell .v{font-family:var(--mono); font-size:13px; margin-top:2px}
+.idcell .v.big{font-size:17px; font-weight:700; color:var(--phos)}
+.section-label{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--dim); margin:26px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--rule-soft); display:flex; justify-content:space-between; align-items:baseline}
+.section-label .meta{color:var(--faint); font-family:var(--mono); letter-spacing:0; text-transform:none; font-size:11px}
+.chart{background:var(--ink-2); border:1px solid var(--rule-soft); border-radius:8px; padding:10px 8px 4px}
+.chart svg{display:block; width:100%; height:auto}
+.chart .empty{color:var(--faint); font-family:var(--mono); font-size:12px; text-align:center; padding:22px 8px}
+.reserved{border:1px dashed var(--rule); border-radius:8px; padding:18px 16px; color:var(--faint); background:repeating-linear-gradient(135deg,transparent,transparent 9px,var(--rule-soft) 9px,var(--rule-soft) 10px)}
+.reserved .rtitle{color:var(--dim); font-size:12px; font-weight:600; margin-bottom:6px}
+.reserved .rbody{font-size:12px; line-height:1.5}
+
+.empty-board{padding:48px 16px; text-align:center; color:var(--faint); font-family:var(--mono); font-size:13px}
+footer{margin-top:22px; color:var(--faint); font-size:11px; font-family:var(--mono); text-align:center; line-height:1.7}
+
+@media (max-width:760px){
+  .app{padding:0 12px 60px}
+  .readout{display:none}
+  td.value{width:130px}
+  .drawer{width:100%}
+  .idgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .narrow-hide{display:none}
+  table{min-width:0}
+  td.name{max-width:130px}
+}
+@media (prefers-reduced-motion:reduce){
+  .drawer,.scrim{transition:none}
+}
+</style>
+
+<div class="app">
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Real-Draft Value Engine</div>
+      <div class="brand">Value <span class="glow">Cockpit</span></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="readout" id="readout"></div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tb-row">
+      <div class="search">
+        <input id="search" type="search" placeholder="Search player or club…" autocomplete="off" aria-label="Search players">
+        <span class="hint">/</span>
+      </div>
+      <select class="sortsel" id="sort" aria-label="Sort order">
+        <option value="v.desc">Value ▾ (high→low)</option>
+        <option value="v.asc">Value ▴ (low→high)</option>
+        <option value="n.asc">Name A→Z</option>
+        <option value="yr.desc">Draft year (newest)</option>
+        <option value="yr.asc">Draft year (oldest)</option>
+      </select>
+      <div class="seg" role="group" aria-label="Value rail scale">
+        <button id="scaleLin" aria-pressed="true">Linear</button>
+        <button id="scaleLog" aria-pressed="false">Log</button>
+      </div>
+    </div>
+    <div class="tb-row">
+      <div class="chips" id="posChips" role="group" aria-label="Filter by position"></div>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <div class="board">
+    <table>
+      <thead>
+        <tr>
+          <th class="r">#</th>
+          <th class="sortable" data-sort="n">Player</th>
+          <th>Pos</th>
+          <th class="r sortable" data-sort="v">Value</th>
+          <th class="r narrow-hide">Pick</th>
+          <th class="r sortable narrow-hide" data-sort="yr">Draft</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty-board" id="emptyBoard" hidden>No players match the current filters.</div>
+  </div>
+
+  <footer id="footer"></footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Player detail"></aside>
+
+<script>
+/* ================================================================
+   DATA SOURCE — injected at build time by build_cockpit.py.
+   Left null => live-dev fallback fetch of the DATA_SOURCE file.
+   ================================================================ */
+const COCKPIT_DATA = /*__DATA__*/ null;
+const BUILD_META   = /*__META__*/ {baseYear:2026, dataSource:"data/rl_build/rl_app_data.json", generated:"(dev)", counts:{}};
+const DEV_FETCH_URL = "../data/rl_build/rl_app_data.json";
+
+const POS = [
+  {k:"MID",     label:"Midfield", c:"var(--pos-mid)"},
+  {k:"GEN_DEF", label:"Gen Def",  c:"var(--pos-gdef)"},
+  {k:"KEY_DEF", label:"Key Def",  c:"var(--pos-kdef)"},
+  {k:"GEN_FWD", label:"Gen Fwd",  c:"var(--pos-gfwd)"},
+  {k:"KEY_FWD", label:"Key Fwd",  c:"var(--pos-kfwd)"},
+  {k:"RUC",     label:"Ruck",     c:"var(--pos-ruc)"},
+];
+const POSMAP = Object.fromEntries(POS.map(p=>[p.k,p]));
+const POSLABEL = {MID:"MID",GEN_DEF:"GEN·DEF",KEY_DEF:"KEY·DEF",GEN_FWD:"GEN·FWD",KEY_FWD:"KEY·FWD",RUC:"RUC"};
+
+let PLAYERS=[], MAXV=1, state={q:"",sort:"v.desc",pos:new Set(),scale:"lin",selected:null};
+
+/* ---------- boot ---------- */
+(async function boot(){
+  let raw = COCKPIT_DATA;
+  if(!raw){
+    try{ const r=await fetch(DEV_FETCH_URL); raw=normaliseRaw(await r.json()); }
+    catch(e){ document.getElementById("rows").innerHTML =
+      '<tr><td colspan="6" class="empty-board">No data. Run build_cockpit.py, or serve from repo root for live-dev fetch.</td></tr>'; return; }
+  }
+  PLAYERS = raw.players; MAXV = Math.max(1, ...PLAYERS.map(p=>p.v||0));
+  PLAYERS.forEach((p,i)=>{ p._i=i; });
+  // stable global value rank
+  [...PLAYERS].sort((a,b)=>(b.v||0)-(a.v||0)).forEach((p,i)=>p._rank=i+1);
+  buildChips(); wire(); renderMeta(); render();
+})();
+
+/* build_cockpit already emits the compact viewer model; this only runs in the
+   dev-fetch path where the raw stable app-data file is loaded directly. It
+   mirrors the transform in build_cockpit.py (kept deliberately in sync). */
+function normaliseRaw(d){
+  const BY = d.BASE_YEAR||2026, years=[BY-2,BY-1,BY,BY+1,BY+2];
+  const map = r=>{
+    const grp = r.pos || r.grp;              // prefer richer contract if present
+    const cpos = r.cpos || r.grp;
+    const fut = (r.fut||[]).map(x=>[x[0],x[1]]);
+    return {
+      k:r.key, n:r.name, pos:grp, cpos:cpos, fut,
+      pk:(r.pk===undefined?r.pick:r.pk), yr:(r.yr===undefined?r.year:r.yr),
+      cat:r.cat, ty:r.ty||r.type, club:r.club, draft:r.draft,
+      v:(r.cur!==undefined?r.cur:r.v),
+      vpath:(r.Vpath||[r.vM2,r.vM1,r.v,r.vP1,r.vP2]),
+      years:(r.yrs||years),
+      ppath:(r.Ppath ? r.Ppath.map((a,i)=>[i+1,a]) : (r.track||[]).map(t=>[t.s,t.a])),
+      g:r.g, cg:r.cg, age:r.age, bk:!!r.bk, src:r._src||"active"
+    };
+  };
+  const players=[...(d.active||[]).map(r=>({...r,_src:"active"})),
+                 ...(d.back||[]).map(r=>({...r,_src:"back"}))].map(map);
+  return {players, meta:{baseYear:BY, years}};
+}
+
+/* ---------- controls ---------- */
+function buildChips(){
+  const wrap=document.getElementById("posChips");
+  const all=document.createElement("button");
+  all.className="chip all"; all.id="chipAll"; all.setAttribute("aria-pressed","true");
+  all.textContent="All positions";
+  all.onclick=()=>{ state.pos.clear(); syncChips(); render(); };
+  wrap.appendChild(all);
+  POS.forEach(p=>{
+    const b=document.createElement("button");
+    b.className="chip"; b.style.setProperty("--c",p.c); b.setAttribute("aria-pressed","false");
+    b.dataset.pos=p.k;
+    b.innerHTML=`<span class="dot"></span>${p.label}`;
+    b.onclick=()=>{ state.pos.has(p.k)?state.pos.delete(p.k):state.pos.add(p.k); syncChips(); render(); };
+    wrap.appendChild(b);
+  });
+}
+function syncChips(){
+  document.getElementById("chipAll").setAttribute("aria-pressed", state.pos.size===0);
+  document.querySelectorAll("#posChips .chip[data-pos]").forEach(b=>
+    b.setAttribute("aria-pressed", state.pos.has(b.dataset.pos)));
+}
+function wire(){
+  const s=document.getElementById("search");
+  s.addEventListener("input",()=>{ state.q=s.value.trim().toLowerCase(); render(); });
+  document.getElementById("sort").addEventListener("change",e=>{ state.sort=e.target.value; render(); });
+  document.querySelectorAll("thead th.sortable").forEach(th=>{
+    th.addEventListener("click",()=>{
+      const col=th.dataset.sort;
+      const cur=state.sort.split(".");
+      let dir = (cur[0]===col && cur[1]==="desc")?"asc":(col==="n"?"asc":(col==="v"?"desc":"desc"));
+      if(cur[0]===col) dir = cur[1]==="desc"?"asc":"desc";
+      state.sort=`${col}.${dir}`;
+      document.getElementById("sort").value=state.sort;
+      render();
+    });
+  });
+  const setScale=v=>{ state.scale=v;
+    document.getElementById("scaleLin").setAttribute("aria-pressed", v==="lin");
+    document.getElementById("scaleLog").setAttribute("aria-pressed", v==="log"); render(); };
+  document.getElementById("scaleLin").onclick=()=>setScale("lin");
+  document.getElementById("scaleLog").onclick=()=>setScale("log");
+  document.getElementById("scrim").onclick=closeDrawer;
+  document.addEventListener("keydown",e=>{
+    if(e.key==="/" && document.activeElement!==s){ e.preventDefault(); s.focus(); s.select(); }
+    if(e.key==="Escape") closeDrawer();
+  });
+}
+function renderMeta(){
+  const m=BUILD_META, c=m.counts||{};
+  document.getElementById("readout").innerHTML =
+    `<b>${PLAYERS.length}</b> players · base year <b>${m.baseYear}</b><br>`+
+    `source <b>${(m.dataSource||"").split("/").pop()}</b> · built ${m.generated}`;
+  document.getElementById("footer").innerHTML =
+    `DATA_SOURCE · ${m.dataSource} &nbsp;•&nbsp; identity = key + pick + cohort (never surname) &nbsp;•&nbsp; viewing layer — round-by-round history reserved for the weekly loop`;
+}
+
+/* ---------- filter + sort ---------- */
+function view(){
+  let rows=PLAYERS;
+  if(state.pos.size) rows=rows.filter(p=>state.pos.has(p.pos));
+  if(state.q){ const q=state.q;
+    rows=rows.filter(p=>(p.n||"").toLowerCase().includes(q)||(p.club||"").toLowerCase().includes(q)); }
+  const [col,dir]=state.sort.split("."); const s=dir==="asc"?1:-1;
+  rows=[...rows].sort((a,b)=>{
+    if(col==="n") return s*(a.n||"").localeCompare(b.n||"");
+    if(col==="yr"){ const d=(a.yr||0)-(b.yr||0); return d?s*d:(b.v||0)-(a.v||0); }
+    return s*((a.v||0)-(b.v||0));
+  });
+  return rows;
+}
+function railW(v){
+  if(state.scale==="log") return (Math.log((v||0)+1)/Math.log(MAXV+1))*100;
+  return ((v||0)/MAXV)*100;
+}
+function fmt(n){ return n==null?"—":Math.round(n).toLocaleString("en-US"); }
+
+/* ---------- board render ---------- */
+function render(){
+  const rows=view(); const tb=document.getElementById("rows");
+  document.getElementById("count").textContent=`${rows.length} shown`;
+  document.getElementById("emptyBoard").hidden = rows.length>0;
+  const out=rows.map(p=>{
+    const pm=POSMAP[p.pos]||{c:"#888"};
+    const topFut=(p.fut&&p.fut.length)?p.fut.slice().sort((a,b)=>b[1]-a[1])[0][0]:null;
+    const reclass=(topFut&&topFut!==p.pos)?`<span class="reclass" title="projecting ${POSLABEL[topFut]||topFut}">→${POSLABEL[topFut]||topFut}</span>`:"";
+    const retired=p.src==="back"?`<span class="sub">retired</span>`:"";
+    const pick=p.pk==null?"—":p.pk;
+    return `<tr tabindex="0" data-k="${p.k}" aria-selected="${state.selected===p.k}">
+      <td class="rank r">${p._rank}</td>
+      <td class="name">${esc(p.n)}${retired}</td>
+      <td><span class="poschip"><span class="dot" style="background:${pm.c}"></span>${POSLABEL[p.pos]||p.pos||"—"}${reclass}</span></td>
+      <td class="value"><div class="rail"><div class="fill" style="width:${railW(p.v).toFixed(2)}%"></div><span class="fig">${fmt(p.v)}</span></div></td>
+      <td class="pick r narrow-hide">${pick}</td>
+      <td class="yr r narrow-hide">${p.yr??"—"}</td>
+    </tr>`;
+  }).join("");
+  tb.innerHTML=out;
+  tb.querySelectorAll("tr").forEach(tr=>{
+    tr.addEventListener("click",()=>openDrawer(tr.dataset.k));
+    tr.addEventListener("keydown",e=>{
+      if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openDrawer(tr.dataset.k); }
+      if(e.key==="ArrowDown"&&tr.nextElementSibling){ e.preventDefault(); tr.nextElementSibling.focus(); }
+      if(e.key==="ArrowUp"&&tr.previousElementSibling){ e.preventDefault(); tr.previousElementSibling.focus(); }
+    });
+  });
+}
+
+/* ---------- detail drawer ---------- */
+function openDrawer(k){
+  const p=PLAYERS.find(x=>x.k===k); if(!p) return;
+  state.selected=k;
+  document.querySelectorAll("#rows tr").forEach(tr=>tr.setAttribute("aria-selected", tr.dataset.k===k));
+  const pm=POSMAP[p.pos]||{c:"#888",label:p.pos};
+  const topFut=(p.fut&&p.fut.length)?p.fut.slice().sort((a,b)=>b[1]-a[1])[0][0]:null;
+  const reclass=(topFut&&topFut!==p.pos)
+    ? `<span class="reclass" style="font-size:12px">now ${POSLABEL[p.pos]} · projecting ${POSLABEL[topFut]}</span>` : "";
+  const catTxt=p.cat&&p.cat!=="None"?p.cat:"—";
+  const idcell=(k,v,big)=>`<div class="idcell"><div class="k">${k}</div><div class="v ${big?"big":""}">${v}</div></div>`;
+
+  const dr=document.getElementById("drawer");
+  dr.innerHTML=`
+    <div class="dr-head">
+      <button class="dr-close" aria-label="Close detail" onclick="closeDrawer()">✕</button>
+      <div class="dr-name">${esc(p.n)}</div>
+      <div class="dr-id"><span class="poschip"><span class="dot" style="background:${pm.c}"></span>${POSLABEL[p.pos]||p.pos}</span> · ${p.club||"—"} · ${p.k}</div>
+    </div>
+    <div class="dr-body">
+      <div class="idgrid">
+        ${idcell("Current value", fmt(p.v)+"<span style='color:var(--faint);font-size:11px'> · #"+p._rank+"</span>", true)}
+        ${idcell("Position", (POSLABEL[p.pos]||p.pos)+" "+reclass)}
+        ${idcell("Draft pick", p.pk==null?"—":("#"+p.pk))}
+        ${idcell("Draft year", p.yr??"—")}
+        ${idcell("Category", catTxt)}
+        ${idcell("Type / channel", (p.ty||"—")+(p.draft&&p.draft!=="None"?" · "+p.draft:""))}
+        ${idcell("Games (career)", (p.g??"—")+(p.cg&&p.cg!==p.g?" · "+p.cg+" incl. pre":""))}
+        ${idcell("Age", p.age??"—")}
+      </div>
+
+      <div class="section-label">Value trajectory <span class="meta">value by year</span></div>
+      <div class="chart">${lineChart(p.years, p.vpath, BUILD_META.baseYear)}</div>
+
+      <div class="section-label">Points trajectory <span class="meta">score by career season</span></div>
+      <div class="chart">${barChart(p.ppath)}</div>
+
+      <div class="section-label">Round-by-round rating history <span class="meta">reserved</span></div>
+      <div class="reserved">
+        <div class="rtitle">Wired in the weekly-loop phase</div>
+        <div class="rbody">Once the model stabilises, the weekly loop will feed a per-player,
+        per-round value series here — a live sparkline of how ${firstName(p.n)}'s price moved
+        week to week. Space is held; nothing is rendered yet. See DATA_CONTRACT.md.</div>
+      </div>
+    </div>`;
+  dr.classList.add("open"); dr.setAttribute("aria-hidden","false");
+  document.getElementById("scrim").classList.add("open");
+  dr.querySelector(".dr-close").focus();
+}
+function closeDrawer(){
+  const dr=document.getElementById("drawer");
+  dr.classList.remove("open"); dr.setAttribute("aria-hidden","true");
+  document.getElementById("scrim").classList.remove("open");
+  if(state.selected){
+    const tr=document.querySelector(`#rows tr[data-k="${cssq(state.selected)}"]`);
+    state.selected=null;
+    document.querySelectorAll('#rows tr[aria-selected="true"]').forEach(t=>t.setAttribute("aria-selected","false"));
+    if(tr) tr.focus();
+  }
+}
+
+/* ---------- charts (inline SVG, no libraries) ---------- */
+function lineChart(years, vals, baseYear){
+  const pts = (years||[]).map((y,i)=>[y, vals&&vals[i]!=null?vals[i]:null]).filter(p=>p[1]!=null);
+  if(!pts.length) return `<div class="empty">No value path.</div>`;
+  const W=380,H=132,padL=44,padR=12,padT=14,padB=24;
+  const xs=pts.map(p=>p[0]), ys=pts.map(p=>p[1]);
+  const xmin=Math.min(...xs), xmax=Math.max(...xs);
+  const ymax=Math.max(...ys,1), ymin=Math.min(...ys,0);
+  const X=x=> xmax===xmin?padL+(W-padL-padR)/2 : padL+((x-xmin)/(xmax-xmin))*(W-padL-padR);
+  const Y=y=> ymax===ymin?H-padB-(H-padT-padB)/2 : H-padB-((y-ymin)/(ymax-ymin))*(H-padT-padB);
+  const line=pts.map((p,i)=>`${i?"L":"M"}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join(" ");
+  const area=`${line} L${X(pts[pts.length-1][0]).toFixed(1)},${H-padB} L${X(pts[0][0]).toFixed(1)},${H-padB} Z`;
+  const gy=[ymin,(ymin+ymax)/2,ymax];
+  const grid=gy.map(g=>`<line x1="${padL}" y1="${Y(g).toFixed(1)}" x2="${W-padR}" y2="${Y(g).toFixed(1)}" stroke="var(--rule-soft)"/>`
+    +`<text x="${padL-6}" y="${(Y(g)+3).toFixed(1)}" text-anchor="end" class="axl">${fmt(g)}</text>`).join("");
+  const dots=pts.map(p=>{ const cur=p[0]===baseYear;
+    return `<circle cx="${X(p[0]).toFixed(1)}" cy="${Y(p[1]).toFixed(1)}" r="${cur?4:2.6}" fill="${cur?"var(--amber)":"var(--phos)"}" stroke="var(--ink-2)" stroke-width="1.5"/>`; }).join("");
+  const xlab=pts.map(p=>`<text x="${X(p[0]).toFixed(1)}" y="${H-8}" text-anchor="middle" class="axl ${p[0]===baseYear?"cur":""}">${p[0]}</text>`).join("");
+  return svg(W,H,`${grid}<path d="${area}" fill="var(--phos-soft)"/><path d="${line}" fill="none" stroke="var(--phos)" stroke-width="2"/>${dots}${xlab}`)
+    + (pts.length===1?`<div class="empty" style="padding:6px 0 2px">Single-year estimate.</div>`:"");
+}
+function barChart(pp){
+  const pts=(pp||[]).filter(p=>p[1]!=null);
+  if(!pts.length) return `<div class="empty">No games recorded yet.</div>`;
+  const W=380,H=132,padL=44,padR=12,padT=14,padB=24;
+  const ymax=Math.max(...pts.map(p=>p[1]),1);
+  const n=pts.length, bw=(W-padL-padR)/n*0.62, gap=(W-padL-padR)/n;
+  const Y=y=>H-padB-(y/ymax)*(H-padT-padB);
+  const gy=[0,ymax/2,ymax];
+  const grid=gy.map(g=>`<line x1="${padL}" y1="${Y(g).toFixed(1)}" x2="${W-padR}" y2="${Y(g).toFixed(1)}" stroke="var(--rule-soft)"/>`
+    +`<text x="${padL-6}" y="${(Y(g)+3).toFixed(1)}" text-anchor="end" class="axl">${Math.round(g)}</text>`).join("");
+  const bars=pts.map((p,i)=>{ const x=padL+gap*i+(gap-bw)/2, y=Y(p[1]);
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${(H-padB-y).toFixed(1)}" rx="1.5" fill="var(--phos)" opacity="0.82"/>`
+      +`<text x="${(x+bw/2).toFixed(1)}" y="${H-8}" text-anchor="middle" class="axl">S${p[0]}</text>`; }).join("");
+  return svg(W,H,`${grid}${bars}`);
+}
+function svg(W,H,inner){
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="chart">
+    <style>.axl{fill:var(--faint);font-family:var(--mono);font-size:9.5px}.axl.cur{fill:var(--amber)}</style>${inner}</svg>`;
+}
+
+/* ---------- utils ---------- */
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function cssq(s){ return String(s).replace(/["\\]/g,"\\$&"); }
+function firstName(n){ return (n||"the player").split(" ")[0]; }
+</script>
