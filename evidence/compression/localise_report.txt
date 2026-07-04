@@ -1,0 +1,43 @@
+==============================================================================
+[BAKED c47cb43d]  LOCALISATION — aggregate spread vs local rank-fidelity
+==============================================================================
+
+(1) AGGREGATE: engine value spread vs REALISED spread (settled 2008-2016 ND,
+    every drafted player incl. busts at ~0 — survivorship-aware).
+    realised peakP   p50=   70.1 p90=  102.9 p99=  130.4 | p90/50=1.47 p99/50=1.86 p99/90=1.27
+    engine peakV     p50=  934.0 p90= 4068.8 p99= 6560.0 | p90/50=4.36 p99/50=7.02 p99/90=1.61
+    realised/engine spread ratio: p99/50 0.26  p99/90 0.79   (<1 => engine spreads MORE)
+    spearman(peakP, peakV) = 0.882  (aggregate RANK agreement strong)
+    => the value SCALE is not globally compressed; it is if anything EXPANDED
+       vs realised outcomes (convex transform: pick prior + keeper economics).
+
+(2) LOCAL: does value rank SAME-STAGE peers by current production?
+    established live (nseas>=4). spearman(recentP,cur) within age band:
+    age  0- 4yr  n=119  spearman=0.78  retention(cur/peakV) p10-p90 = 0.26-1.00
+    age  5- 7yr  n=132  spearman=0.77  retention(cur/peakV) p10-p90 = 0.05-1.00
+    age  8-10yr  n=128  spearman=0.82  retention(cur/peakV) p10-p90 = 0.03-0.70
+    age 11-20yr  n=104  spearman=0.75  retention(cur/peakV) p10-p90 = 0.02-0.49
+
+(3) AGING-ELITE LOCUS (age 11-15, recentP>=100) — the Petracca/Bont regime:
+    player                 age recentP   cur  peakV  retention
+    Brodie Grundy           13   131.0  3250   7668   0.42
+    Marcus Bontempelli      12   129.4  3085   6830   0.45
+    Isaac Heeney            11   120.6  3301   4998   0.66
+    Jack Sinclair           11   116.5  2595   3121   0.83
+    Zachary Merrett         12   113.2  2480   6260   0.40
+    Thomas Liberatore       15   112.2  1607   5793   0.28
+    Lachie Whitfield        13   112.0  1924   4615   0.42
+    Lachie Neale            14   108.9  1634   5352   0.31
+    Dayne Zorko             14   108.8   994   3757   0.26
+    Christian Petracca      11   107.4  3033   5055   0.60
+    Toby Nankervis          12   107.3  1747   3576   0.49
+    George Hewett           12   107.1  1322   2233   0.59
+    Touk Miller             11   105.1  1890   5150   0.37
+    Bailey Dale             11   104.3  1742   2686   0.65
+    Rory Laird              14   100.1   913   4262   0.21
+    n=15  spearman(recentP,cur)=0.71
+    production spread 100-131 = 1.31x  |  value spread 913-3301 = 3.62x
+    -> retention (cur/peakV) swings 0.2-0.8 and is NOT production-aligned:
+       the top-2 producers (Grundy 131 / Bont 129) retain only ~0.42-0.45,
+       while lower producers (Sinclair 117 @0.83, Dale 104 @0.65) retain more.
+       The decay scrambles the production order -> LOCAL compression among veterans.

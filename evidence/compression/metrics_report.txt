@@ -1,0 +1,113 @@
+==============================================================================
+[BAKED c47cb43d]  COMPRESSION / SPREAD QUANTIFICATION
+source: data/s4_matrix_baked_c47cb43d.json   players=2649   engine md5=c47cb43d
+POPULATION: LIVE keeper board = retired_now==False   n=794
+  cpos: {'MID': 190, 'GEN_DEF': 175, 'KEY_DEF': 92, 'KEY_FWD': 99, 'GEN_FWD': 184, 'RUC': 54}
+==============================================================================
+
+### A. DISTRIBUTION SHAPE — value V=cur  (overall + per current-position)
+col: n  p10  p50  p90  p99  max | p90/p50 p99/p50 p99/p90 | topdec/nextdec top10%share gini cv
+OVERALL    794     35    368    2092    5058    7076 |  5.68  13.73   2.42 |  2.07  0.426 0.607 1.325
+MID        190     49    806    3449    5842    7076 |  4.28   7.25   1.69 |  1.61  0.344 0.549 1.066
+RUC         54    235    548    2074    6204    6818 |  3.78  11.31   2.99 |  2.24  0.423  0.53 1.249
+KEY_FWD     99     51    378    1508    3987    5156 |  3.99  10.55   2.64 |  1.99  0.386 0.558  1.22
+GEN_FWD    184     28    224    1244    2847    3764 |  5.55  12.71   2.29 |  2.19  0.457 0.607 1.387
+KEY_DEF     92     35    256    1518    2828    3315 |  5.94  11.07   1.86 |  1.84  0.441 0.603 1.294
+GEN_DEF    175     32    355    1686    3736    4483 |  4.75  10.52   2.22 |  1.78  0.394 0.586 1.221
+
+  read: p99/p90 is the TOP-END separation ratio (elite vs merely-good).
+  topdec/nextdec ~1.x means the top decile is barely above the next decile = clustering.
+
+### A2. Same, but age-neutral engine valuation peakV=max(Vpath)
+  (isolates STRUCTURAL compression from current-snapshot age-decay)
+OVERALL    794    202    986    4193    6748    7801 |  4.25   6.85   1.61 |  1.68  0.347
+MID        190    294   1965    5623    7350    7801 |  2.86   3.74   1.31 |  1.23  0.257
+RUC         54    246    874    5611    7217    7668 |  6.42   8.26   1.29 |  1.79  0.408
+KEY_FWD     99    211   1075    3259    5382    5510 |  3.03   5.01   1.65 |  1.73  0.338
+GEN_FWD    184    166    522    2614    5441    5679 |  5.01  10.43   2.08 |  1.68  0.362
+KEY_DEF     92    233    942    2838    4597    4881 |  3.01   4.88   1.62 |  1.61  0.331
+GEN_DEF    175    206    867    3417    4994    5644 |  3.94   5.76   1.46 |  1.52  0.316
+
+### B. VALUE<->PRODUCTION TRANSFER  (realised reference, survivorship-aware)
+  population: LIVE players with >=3 real seasons (established); realised R=recentP,
+  engine V=cur. Both INCLUDE fringe low-producers (no survivors-only cut).
+  n=548   R(recentP) p50=68 p90=99 p99=122
+  bin  R_med   V_med   (elasticity dlnV/dlnR vs previous bin)
+    1    25.3      144
+    2    41.1      182  elast=0.49  <-- <1 compresses
+    3    51.3      174  elast=-0.20  <-- <1 compresses
+    4    58.8      101  elast=-3.99  <-- <1 compresses
+    5    65.4      195  elast=6.16
+    6    70.7      347  elast=7.33
+    7    76.5      760  elast=10.04
+    8    82.3      996  elast=3.69
+    9    92.5     1393  elast=2.85
+   10   108.0     2704  elast=4.28
+  TOP-region elasticity (top 2 bins)  = 3.57
+  MID-region elasticity (bins 5-7)    = 7.84
+  -> if TOP << MID, compression is LOCALISED at the elite top end.
+
+  compression index = value-gap / realised-gap  (per region, LIVE est. players)
+   p99 vs p50 (elite vs median)      : valuex12.34 / realisedx1.81 = 6.82
+   p90 vs p50 (good vs median)       : valuex5.92 / realisedx1.46 = 4.06
+   p75 vs p50 (upper-mid vs median)  : valuex3.06 / realisedx1.22 = 2.52
+
+### C. ELITE SEPARATION — actual $ gaps (identity-level)
+  -- Petracca vs Bontempelli (owner flag) --
+   Bontempelli  cur=3085  recentP=129.36  peakV=6830  (pick4, 2013)
+   Petracca     cur=3033  recentP=107.41  peakV=5055  (pick2, 2014)
+   VALUE gap cur: $+52  (+1.7%)   while Bont out-produces Petracca recentP 129 vs 107 (+20%)
+   -> production says Bont clearly ahead; cur has them ~tied = top-end compression.
+
+  -- elite KEY_FWD cluster vs next tier --
+   Josh Treacy          cur= 5156  recentP= 93.74  peakV= 5156  (pick66, 2020, nseas=6)
+   Sam Darcy            cur= 3963  recentP= 92.09  peakV= 5231  (pick2, 2021, nseas=5)
+   Riley Thilthorpe     cur= 3347  recentP= 89.23  peakV= 5223  (pick2, 2020, nseas=6)
+   Cooper Duff-Tytler   cur= 1436  recentP=  49.5  peakV= 1436  (pick4, 2025, nseas=1)
+   Jonty Faull          cur= 1134  recentP= 38.86  peakV= 1134  (pick14, 2024, nseas=2)
+   within-cluster spread (cur): 3347..5156  = $1809 (1.54x)
+   cluster-vs-next-tier gap: min elite 3347 vs top next-tier 1436 = $1911 (2.33x)
+   NOTE state: Duff-Tytler nseas=1, Faull nseas=2 -> next-tier values are PROJECTION-anchored, not realised.
+
+  -- top-of-board clustering: gaps among the top 8 by cur --
+   MID: Sheezel:7076 Daicos:6769 Wanganeen-Milera:5727 Holmes:5195 Butters:5072 Gulden:5057 Callaghan:4697 Smith:4603
+      #1->#2 gap $307  |  #2..#8 spread $2166 across 6 places  (avg step $361)
+   KEY_FWD: Treacy:5156 Darcy:3963 Thilthorpe:3347 Morris:2850 Cadman:2770 Neale:2189 Owens:1835 Wright:1599
+      #1->#2 gap $1193  |  #2..#8 spread $2364 across 6 places  (avg step $394)
+
+### D. TAIL STEEPNESS — implied value pick 1 vs pick 60
+  fresh ND draftees (2023-2026, <=1 season, value=anchor=pick-curve): n=61
+   pick~ 1: implied anchor ~  2325   (n=4, picks [1, 2, 3, 4])
+   pick~ 2: implied anchor ~  2040   (n=5, picks [1, 2, 3, 4, 5])
+   pick~ 3: implied anchor ~  1952   (n=6, picks [1, 2, 3, 4, 5, 6])
+   pick~ 5: implied anchor ~  1678   (n=7, picks [2, 3, 4, 5, 6, 7, 8])
+   pick~10: implied anchor ~  1518   (n=7, picks [7, 8, 9, 10, 11, 12, 13])
+   pick~20: implied anchor ~   810   (n=7, picks [17, 18, 19, 20, 21, 22, 23])
+   pick~30: implied anchor ~   584   (n=7, picks [27, 28, 29, 30, 31, 32, 33])
+   pick~40: implied anchor ~   376   (n=7, picks [37, 38, 39, 40, 41, 42, 43])
+   pick~50: implied anchor ~   356   (n=8, picks [47, 48, 49, 50, 51, 52, 53])
+   pick~60: implied anchor ~   143   (n=3, picks [57, 58, 60])
+  draftval(PVC) pick1 sample: [3000]
+  implied pick~1 anchor 3019  vs pick~60 anchor 185  = 16.3x  (tail ratio)
+
+### E. REALISED SETTLED-COHORT SEPARATION (survivorship-aware)
+  cohorts drafted 2008-2016 (careers essentially complete). Include EVERY ND
+  drafted player, busts at ~0 (NOT survivors-only). realised R=careerP.
+  n=647   busts (careerP<50): 116  (18%)
+  REALISED careerP : p50=374 p90=1015 p99=1457 | p90/p50=2.72 p99/p50=3.9 p99/p90=1.44 gini=0.486
+  ENGINE peakV     : p50=934 p90=4069 p99=6560 | p90/p50=4.36 p99/p50=7.02 p99/p90=1.61 gini=0.54
+  -> realised-vs-engine spread ratio:  p99/p50 3.9/7.02=0.56   p99/p90 1.44/1.61=0.89
+  (>1 = players separated MORE in reality than the engine values them => engine under-separates)
+
+### F. UNIFORM vs LOCALISED VERDICT
+  compression index (value-gap/realised-gap) by POSITION, elite region p99/p50:
+   MID      : n=135  value p90/p50=3.58  realised p90/p50=1.36  index=2.63
+   RUC      : n= 36  value p90/p50=3.08  realised p90/p50=1.44  index=2.14
+   KEY_FWD  : n= 69  value p90/p50=4.20  realised p90/p50=1.28  index=3.27
+   GEN_FWD  : n=112  value p90/p50=7.60  realised p90/p50=1.36  index=5.57
+   KEY_DEF  : n= 68  value p90/p50=5.72  realised p90/p50=1.30  index=4.39
+   GEN_DEF  : n=128  value p90/p50=4.99  realised p90/p50=1.35  index=3.70
+  most-compressed position: RUC (index 2.14)
+
+  region summary (LIVE established, from B): top-end elasticity vs mid-region elasticity
+  -> see Section B TOP vs MID elasticity; Section A p99/p90 top-end ratios per position.
