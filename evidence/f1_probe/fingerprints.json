@@ -1,0 +1,26 @@
+{
+  "louis": {
+    "gated": 853,
+    "export": 1361,
+    "shipped": 1361
+  },
+  "petracca": {
+    "gated": 3033,
+    "export": 3033,
+    "shipped": 3033,
+    "ship_gf": "MID",
+    "ship_grp": "GEN_FWD",
+    "ship_fut": [
+      [
+        "MID",
+        0.7
+      ],
+      [
+        "GEN_FWD",
+        0.3
+      ]
+    ]
+  },
+  "export_in_real": 0,
+  "export_total": 805
+}
