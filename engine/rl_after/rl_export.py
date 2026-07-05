@@ -4,6 +4,9 @@ if os.environ.get('PYTHONHASHSEED') != '0':   # determinism: pin hash seed so se
 import json, numpy as np, math
 from collections import defaultdict
 import io as _io, contextlib as _ctx
+import single_source as _SS
+_SS.assert_startup()            # GUARDS 3 + 3b (lookalike tripwire + engine-opens) before the board is built
+_SS.lock_tier2()               # stamp + read-only-lock the frozen train-time caches (peak model + pvc_snapshot)
 # ==== ONE ENGINE INSTANCE (F1 FIX 2026-07-05, Luke one-source rewire) ====================================
 # BEFORE: rl_export exec'd rl_model.py into its OWN namespace for the display fields, while _merged_recover
 # imported a SEPARATE rl_model as MA for the values -- TWO live instances whose player objects differed by
@@ -275,7 +278,9 @@ if _parity_fail:
                      + "\n  ".join("%s: board=%s engine=%s"%(k,b,gg) for k,b,gg in _parity_fail[:25]))
 print('PARITY GATE PASS: all %d active board values == engine gated ev() (matched by key, eps=%s)'%(len(active),_PARITY_EPS))
 
+_SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)
-print('exported active=%d cohort=%d | mechanisms=%d categories analysed'%(len(active),len(coh),len(MECH)))
+_srcmd5=_SS.stamp_derived('rl_app_data.json',tier=1)        # GUARD 1: stamp with source md5 + set read-only (generator is the only writer)
+print('exported active=%d cohort=%d | mechanisms=%d categories analysed | board stamped src=%s (read-only)'%(len(active),len(coh),len(MECH),_srcmd5[:8]))
 print('CAT_BY_RANGE Academy:',{k:(v['mean_over'] if v else None) for k,v in CAT_BY_RANGE['Academy'].items()})
 print('CAT_BY_RANGE Open   :',{k:(v['mean_over'] if v else None) for k,v in CAT_BY_RANGE['Open'].items()})

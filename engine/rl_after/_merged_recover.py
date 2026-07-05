@@ -116,7 +116,7 @@ def price6(p,bb,Y=2026):
         with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*np.dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
-def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_fut':[]}
+def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
 _POLE={}
 def par_pole(pos,pk,T):
     k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)))

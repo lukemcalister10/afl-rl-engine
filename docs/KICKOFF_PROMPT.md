@@ -1,5 +1,15 @@
 # KICKOFF — AFL SuperCoach RL engine — FRESH BUILD CHAT (new model)
-_Cut 2026-07-02; **BAKED v2.4 2026-07-04**. Head `c47cb43d` (BAKED: ruck cap 1.4 + KEY_FWD REPL-1; was 8aed420a). BAKED marker now moved past e0ac9c37 — see docs/CHANGELOG.md. Read START_HERE.md first, then this. This file lives at `docs/KICKOFF_PROMPT.md` (NOT repo root)._
+
+> ## ⛔ TOP BLOCK — READ FIRST: THE SINGLE-SOURCE INVARIANT ⛔
+> There is **exactly one writable source of truth**: `engine/rl_after/rl_model_data.json`. Every other
+> data file is **DERIVED** — written only by its generator, stamped with the source md5, and read-only.
+> **Never** patch a player fact anywhere but the store; **never** hand-edit a board/book/cache. Four
+> permanent guards **FAIL the build** if you do (lookalike tripwire, source-hash assertion, read-only
+> stamping, and a correction-sticks canary). This is the rule that killed the "Kako class" (a real season
+> that lived only in a book-local patch, never in the store). **Full text + the four guards:
+> [`SINGLE_SOURCE_INVARIANT.md`](../SINGLE_SOURCE_INVARIANT.md) (repo root).** It outranks everything below.
+
+_Cut 2026-07-02; **BAKED v2.4 2026-07-04**. Head `c47cb43d` (BAKED: ruck cap 1.4 + KEY_FWD REPL-1; was 8aed420a). BAKED marker now moved past e0ac9c37 — see docs/CHANGELOG.md. Read START_HERE.md first, then this. This file lives at `docs/KICKOFF_PROMPT.md` (NOT repo root). DPP-strip candidate 2026-07-05: store is now the single source with drafted/present/future position columns — see SINGLE_SOURCE_INVARIANT.md._
 
 ## ROLE + LOOP
 You are BUILD: run code, hold the engine + tarballs (source of truth for code facts). SUPERVISOR drafts prompts Luke relays verbatim. **Luke holds final authority + all tarballs; his player reads = GROUND TRUTH.** Nothing bakes without Luke's explicit go. Per turn: send Luke a notepad (present_files) with the turn's full response text; doc updates are sent the same turn. Verbatim relay is the audit trail — unchanged.

@@ -1,5 +1,10 @@
 import os
 import io,contextlib,json,collections,numpy as np
+import single_source as _SS
+# GUARDS 3 + 3b always; GUARD 2 asserts the board stamp == current source md5 (the book is about to be
+# parity-checked against the board -- both MUST derive from the same store). Skipped only if the board is
+# routed elsewhere (RL_APP_DATA) for a standalone book build.
+_SS.assert_startup(consume=['rl_app_data.json'] if os.environ.get('RL_APP_DATA','rl_app_data.json')=='rl_app_data.json' and os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)),'rl_app_data.json')) else [])
 g={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 g['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD path — Luke's exemption. Board-only laws (V0 curve, KPP floor) OFF here so the historical book reproduces (maxΔ=0 vs v2.3).
@@ -76,8 +81,14 @@ for p in players:
                     year=C,cat=p.get('_cat'),draftval=round(MA.PVC[min(MA.effpk(p),70)]) if not p.get('_pickless') else None,
                     yrs=yrs,Vpath=Vpath,Ppath=Ppath,cur=ASOF.get((id(p),2026)),anchor=anchor,old_anchor=old_anchor,
                     sat_out_yr1=sat,retired_now=rn,incurve=(p.get('type') in INCURVE))
-json.dump({str(k):v for k,v in rec.items()}, open(os.environ.get('S4_MATRIX','s4_matrix.json'),'w'))
-print(f"matrix saved (CALENDAR-indexed): {len(rec)} players",flush=True)
+_book_out=os.environ.get('S4_MATRIX','s4_matrix.json')
+if _book_out=='s4_matrix.json': _SS.prepare_write('s4_matrix.json')   # clear read-only from a prior guarded build
+json.dump({str(k):v for k,v in rec.items()}, open(_book_out,'w'))
+if _book_out=='s4_matrix.json':
+    _bsrc=_SS.stamp_derived('s4_matrix.json',tier=1)                   # GUARD 1: stamp book with source md5 + read-only
+    print(f"matrix saved (CALENDAR-indexed): {len(rec)} players | book stamped src={_bsrc[:8]} (read-only)",flush=True)
+else:
+    print(f"matrix saved (CALENDAR-indexed): {len(rec)} players -> {_book_out}",flush=True)
 # ==== BOOK<->ENGINE(BOARD) VALUE-PARITY GATE (F2 regression tripwire, 2026-07-05) =======================
 # Every book present-value (`cur`, the 2026 board-path column) MUST equal the board's gated value for that
 # player -- the board is built by rl_export in a SEPARATE process/instance, so this cross-checks that the book

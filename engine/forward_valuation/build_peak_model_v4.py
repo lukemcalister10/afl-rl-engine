@@ -64,6 +64,28 @@ for pos in ['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']:
 spec=[p for p in allp if MA.effpk(p)>20 and 2006<=MA.debut(p)<=2016 and sum(x['games'] for x in p['scoring'] if x['year']<=MA.debut(p)+2)>=20 and best([x for x in p['scoring']],3)]
 print('Kondogiannis bias: %+.1f'%np.mean([(best([x for x in p['scoring']],3))-m.predict([feats(p,MA.debut(p)+2)])[0] for p in spec]))
 pickle.dump({'model':m,'fnames':['logPVC','effpk','pos','best2','best1','recent_gw','last_avg','last_g','games','nss','maxg','early','slope','yrs_since_best','age','T','bust_prior']},open('/home/claude/rl_workspace/forward_valuation/peak_model_v4.pkl','wb'))
+# CO-EMIT the TRAIN-TIME PVC snapshot (Phase-4 disposition, DPP-strip build). The logPVC feature above is
+# np.log(MA.PVC[ep]); inference (rl_model._v4_init) must read the SAME PVC as a FROZEN feature to break the
+# SCALE<->PVC<->peak_est bootstrap cycle. pvc_snapshot.json is therefore a DERIVED artifact of THIS build, not a
+# hand-checked-in file -- the model and its train-time PVC are now co-generated so they can never drift apart
+# (the report's flagged "next hidden-copy risk"). Emitted read-only + provenance-stamped by the build.
+import os as _os, stat as _st, shutil as _sh
+_snap={str(k):float(MA.PVC[k]) for k in range(1,100)}
+_snap_path='/home/claude/rl_workspace/rl_after/pvc_snapshot.json'
+_pkl_src='/home/claude/rl_workspace/forward_valuation/peak_model_v4.pkl'
+_pkl_dst='/home/claude/rl_workspace/rl_after/peak_model_v4.pkl'
+try: _os.chmod(_snap_path, _st.S_IWUSR|_st.S_IRUSR|_st.S_IRGRP|_st.S_IROTH)
+except Exception: pass
+json.dump(_snap, open(_snap_path,'w'))
+try: _sh.copyfile(_pkl_src,_pkl_dst)   # place the pkl where rl_model actually reads it (co-located tier-2 caches)
+except Exception: pass
+try:
+    import single_source as _SS   # /home/claude/rl_after on sys.path (line 2) -> tier-2 frozen stamp + read-only
+    _SS.stamp_tier2_frozen('pvc_snapshot.json'); _SS.stamp_tier2_frozen('peak_model_v4.pkl')
+    print('co-emitted + tier-2-stamped pvc_snapshot.json (train-time PVC) + peak_model_v4.pkl (read-only)')
+except Exception as _e:
+    _os.chmod(_snap_path, _st.S_IRUSR|_st.S_IRGRP|_st.S_IROTH)
+    print('co-emitted pvc_snapshot.json (train-time PVC, read-only) — %d picks (stamp skipped: %s)'%(len(_snap),_e))
 # ===== WIRE-CHECK: do proven guns recover now the current year counts? =====
 MA.BASE_REF=2026; MA.AGE_REF=2026; orig=MA.peak_est
 def pev4(p):

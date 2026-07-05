@@ -2,18 +2,22 @@ import json, numpy as np, math, re
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode
 data=json.load(open('rl_model_data.json')); P=json.load(open('params.json')); PMD=json.load(open('rl_passmark.json'))
-# --- POSITION MODEL (collapsed 2026-07-05, one-source rewire): the store now carries THREE clean columns.
+# --- POSITION MODEL (DPP STRIP 2026-07-05, final consolidation): the DPP weighted-blend is DELETED. The store
+#   now carries THREE clean SINGLE-VALUED columns (no probabilistic legs anywhere):
 #   drafted_position : career/draft position -> drives the cohort curves (the engine's internal p['pos'])
-#   present_position : the player's CURRENT position -> drives his own present valuation (p['_pos_now'])
-#   raw_multipos     : settled-future multi-position blend [[POS,wt],...] for DPP (p['_fut']; RETAINED, not wiped)
-# The old proliferation (pos/_pos_now/_fut, plus derived bnow/gf/gfut/grp/fut) collapses to these. This
-# value-neutral adapter reconstitutes the engine's established working keys at the store boundary; the
-# valuation prices on gfut (= raw_multipos), so present_position moves are display-only when a blend exists.
+#   present_position : the player's CURRENT position -> the YEAR-0 leg of his own valuation (p['_pos_now'])
+#   future_position  : the player's SETTLED FUTURE position -> the YEARS-1+ leg + curve/peak/runway (p['_futpos'])
+# Pricing reads present_position for the year-0 REPL bar (bnow) and future_position for the years-1+ REPL bar
+# and the peak/curve (gfut). In THIS build future_position == present_position for every player, so bnow==gfut
+# and every player resolves as a single position -- but the SEAM is live: a later transition model can populate
+# future_position where it should differ from present, with no schema change and no code change. The old
+# raw_multipos blend (futblend weights, gfut multi-leg, _fut list) is GONE; each dual is collapsed to its
+# primary (present/dominant) leg. See evidence/dpp_strip/ for the full re-pricing.
 for _p in data:
     _p['pos']=_p['drafted_position']
     _pp=_p.get('present_position')
     _p['_pos_now']=_pp if (_pp and _pp!=_p['pos']) else None
-    _p['_fut']=_p.get('raw_multipos') or []
+    _p['_futpos']=_p.get('future_position') or _pp    # single settled-future position (fallback to present)
 # --- MSD/IRE credit machinery SCRUBBED 2026-07-05 (Luke directive, one-source rewire) ------------
 # The v3.3.1 MSD mid-season debut standardisation (MSD_Y1_MULT=1.5x debut-year game boost, folded into
 # the career total) is DELETED, together with the four credit/bust phantom rows and the _double_count /
@@ -33,18 +37,12 @@ GRP={'MID':'MID','RUC':'RUC','GFWD':'GEN_FWD','KFWD':'KEY_FWD','GDEF':'GEN_DEF',
 # A player's CAREER/draft position (p['pos']) drives his contribution to the cohort curves.
 # An optional p['_pos_now'] is his CURRENT position and drives only his own active valuation
 # (e.g. Dangerfield: drafted+developed a MID -> feeds the MID pool; plays FWD now -> valued as a forward).
-def bnow(p): return GRP.get(p.get('_pos_now')) or GRP[p['pos']]
-def gfut(p):                                  # settled FUTURE position (max-weight) -> drives curve/peak/runway
-    f=p.get('_fut')
-    if not f: return bnow(p)
-    best=max(f,key=lambda x:x[1])[0]
-    return GRP.get(best) or bnow(p)
-def futblend(p):                              # years-1+ REPL blend (normalised); year-0 uses bnow (present) separately
-    f=p.get('_fut')
-    if not f: return [(bnow(p),1.0)]
-    out=[(GRP.get(pos),wt) for pos,wt in f if GRP.get(pos)]
-    s=sum(w for _,w in out)
-    return [(gg,w/s) for gg,w in out] if s>0 else [(bnow(p),1.0)]
+def bnow(p): return GRP.get(p.get('_pos_now')) or GRP[p['pos']]     # PRESENT position -> year-0 REPL bar
+def gfut(p):                                  # SETTLED FUTURE position (single) -> drives curve/peak/runway + years-1+ REPL
+    fp=p.get('_futpos')
+    if fp: return GRP.get(fp) or bnow(p)
+    return bnow(p)                            # no future_position (e.g. gate synths) -> present position
+def futblend(p): return [(gfut(p),1.0)]       # DPP STRIP: years-1+ leg is a SINGLE position (future_position), no blend
 # Real-life entry mechanisms. National draft ('ND') is the pick scale. Rookie ('RD') extends it.
 # The rest entered with NO national slot -> their _eff (pick-equivalent) is derived empirically AFTER the PVC is built.
 PICKLESS={'SSP','MSD','IRE','UNR','PDA','PDN','PDS'}
@@ -231,9 +229,8 @@ def level_demo(p):                     # demonstrated form at BASE_REF (the true
     _cfloor=min(lg,18)/(min(lg,18)+_pmass) if (min(lg,18)+_pmass)>0 else 0.0
     if growth>=0:                                            # improving: trust the rise but temper (don't fully chase a partial-season jump)
         conf=base*(1.0+growth/40.0); cap=SPIKE_CAP.get(GRP[p['pos']],0.83)
-        for _ps,_wt in (p.get('_fut') or []):                # dual->favourable: a genuine dual's eligible position lifts the cap (Serong KDEF/MID -> 0.83)
-            _gg=GRP.get(_ps)
-            if _gg and _wt>=45: cap=max(cap,SPIKE_CAP.get(_gg,0.83))
+        _gg=gfut(p)                                          # DPP STRIP: settled-future eligibility lifts the spike cap (was the dual-leg lift; Serong KDEF now-MID -> 0.83)
+        if _gg: cap=max(cap,SPIKE_CAP.get(_gg,0.83))
         conf=max(conf,_cfloor)                               # recency-floor (binds only when the recent season is under-trusted vs the prior)
     elif old:                                                # older decline: likely real -> trust recent
         agef=clamp((a_-pa_)/6.0,0.0,1.0); conf=base*(0.60+0.60*agef); cap=0.92
@@ -360,7 +357,7 @@ def _v4_init():
         import pickle as _pk
         _V4MODEL=_pk.load(open('peak_model_v4.pkl','rb'))['model']
         _BUSTPT=json.load(open('bust_prior_table.json'))
-        _V4PVC=json.load(open('pvc_snapshot.json'))   # snapshot of train-time PVC (breaks the SCALE<->PVC bootstrap cycle; deterministic so == live PVC at standard env)
+        _V4PVC=json.load(open('pvc_snapshot.json'))   # peak-model's TRAIN-TIME PVC feature (logPVC), FROZEN by design to break the SCALE<->PVC<->peak_est bootstrap cycle. This is NOT the live PVC and must NOT track it: build_peak_model_v4.py trained the pickle on THIS PVC (see its co-emit of pvc_snapshot.json); feeding the live (post-bake) PVC here would be train/serve skew. Pinned + stamped read-only (Phase-4 disposition, DPP-strip build); regenerated only by the peak-model build.
 def _v4_bp(po,pk): return _BUSTPT[po][str(min(max(int(round(pk)),1),70))]
 def _v4_best(ss,n):
     a=sorted([x['avg'] for x in ss if x['games']>=6],reverse=True)[:n]; return float(np.mean(a)) if a else None
