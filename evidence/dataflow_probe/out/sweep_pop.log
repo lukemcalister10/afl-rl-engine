@@ -1,0 +1,16 @@
+=== SWEEP: board v vs TRUE engine ev (single-namespace) ===
+compared              : 804
+divergent (|d|>0.5)   : 536 (67% of 804)
+median board-vs-eng %%: 12.57 %
+mean   board-vs-eng %%: 32.72 %
+rucks diverging       : 47 e.g. [('luke-jackson', 6943, 6978), ('tristan-xerri', 5710, 5749), ('brodie-grundy', 3317, 3339), ('bailey-williams-wc', 2372, 2499), ('kieren-briggs', 2135, 2244)]
+
+=== POPULATION ===
+board active rows     : 805
+engine store total    : 2656
+engine GRP-eligible    : 2656
+store _retired=True   : 1849
+retired appearing on board: 0 | with non-zero v: 0 []
+  toby-conway    store _retired=False games=6 board_v=468
+  max-king-syd   store _retired=False games=0 board_v=347
+  louis-emmett   store _retired=False games=5 board_v=1361
