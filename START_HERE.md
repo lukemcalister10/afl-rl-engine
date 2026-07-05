@@ -1,5 +1,5 @@
 # START_HERE — AFL SuperCoach RL keeper engine — authoritative first-read
-_Cut 2026-07-02; **BAKED v2.4 2026-07-04**. Head `c47cb43d` (BAKED: ruck cap 1.4 + KEY_FWD REPL-1; store `644d1254` · band `34faa865` · rl_model.py `ce4468d6`). Lineage: e0ac9c37 → 8aed420a → **c47cb43d (BAKED)**. See docs/CHANGELOG.md; rollback anchor `prebake-v2.4-anchor`._
+_**BAKED v2.5 2026-07-05** (DPP strip final consolidation + owner-authorised A7 frozen-gate amendment). Head `efea88e5` (store `e1b4d8bf` · band `34faa865` · rl_model.py `121a45d0` = three single-valued position columns drafted/present/future; board `7d1eeef8`; book stable-seal `5799a9ce` / 2649 players). Lineage: e0ac9c37 → 8aed420a → c47cb43d (BAKED v2.4) → **efea88e5 (BAKED v2.5)**. See docs/CHANGELOG.md; rollback anchor `prebake-v2.5-anchor`._
 
 ## 0. FOUR-STEP RESUME
 1. **Restore** into a clean dir (`tar xzf rl_complete_8aed420a_*.tar.gz`).
@@ -9,8 +9,8 @@ _Cut 2026-07-02; **BAKED v2.4 2026-07-04**. Head `c47cb43d` (BAKED: ruck cap 1.4
 5. **THE THREE REPORTING RULES (Luke's word, BINDING, D10 03/07/2026):** (1) every gates/board output = THREE COLUMNS — CONTROL · PREVIOUS · CURRENT, deltas explicit (`data/report_states.json`); (2) every board/report carries a LOUD state label — no unlabelled player value anywhere Luke-facing; (3) binding on ALL sessions. Full text: `BAKE_CHECKLIST.md` §REPORTING.
 
 ## 1. IDENTITY / MD5 AXES (all verified this cut)
-- code→head: `engine/rl_after/_merged_recover.py` = **`c47cb43d`** (BAKED v2.4; ruck-cap default 1.4; was 8aed420a) · REPL dial in `rl_model.py` = **`ce4468d6`**
-- data→store: `engine/rl_after/rl_model_data.json` = **`73d23a8e`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; was `644d1254`)
+- code→head: `engine/rl_after/_merged_recover.py` = **`efea88e5`** (BAKED v2.5 DPP strip; was c47cb43d) · position model in `rl_model.py` = **`121a45d0`** (drafted/present/future single-valued columns; the raw_multipos blend is DELETED)
+- data→store: `engine/rl_after/rl_model_data.json` = **`e1b4d8bf`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; three position columns + Kako fix + off-by-one folded; was `73d23a8e`)
 - band: `data/cm_400.pkl` = **`34faa865`**
 - file→bundle: see CHECKPOINT_MANIFEST.md (recorded at cut).
 - **BAKED = nothing past `e0ac9c377d1e`.** Lineage in `docs/CHANGELOG.md`.

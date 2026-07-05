@@ -235,7 +235,7 @@ gate('A15', False, 'STRUCK', 'Luke 02/07/2026 — convexity dimension seeded as 
 # per-cohort backstop's obituary lives in CHANGELOG (D5).
 B1_TABLE = None
 try:
-    mpath = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_baked_c47cb43d.json'))  # BAKED walk-forward matrix (v2.4 dialed)
+    mpath = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_baked_efea88e5.json'))  # BAKED walk-forward matrix (v2.5 DPP-strip, store e1b4d8bf)
     mat = json.load(open(mpath))
     S = {}
     for v in mat.values():
@@ -303,7 +303,7 @@ except Exception as ex:
 # sha256 to the baked baseline data/book_stable_seal.json. Raw-file sha will differ every regen BY DESIGN.
 try:
     _seal_path = os.path.join(ROOT, 'data', 'book_stable_seal.json')
-    _mpath_b3 = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_baked_c47cb43d.json'))  # BAKED walk-forward matrix (v2.4 dialed)
+    _mpath_b3 = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_baked_efea88e5.json'))  # BAKED walk-forward matrix (v2.5 DPP-strip, store e1b4d8bf)
     if 'B3' in SKIP:
         gate('B3', False, 'NOT-RUN', 'SGC_SKIP=B3')
     elif not os.path.exists(_seal_path):
