@@ -61,9 +61,12 @@ ship_gates_check.py -> every CURRENT-column verdict identical to the committed b
 one_source_selftest -> GUARD 5 PASS after re-seed.
 ```
 
-## Frozen-gate flag (A7 precedent)
+## Frozen-gate flag (A7 precedent) — OWNER RULING RECORDED
 `ship_gates_check.py` is the FROZEN acceptance suite (ref `764a0d91`). The change is a **pre-flight
 addition only** — no gate assertion, threshold, or value is touched; on the pinned store the board is
 byte-identical. It changes behaviour **only** in the previously-broken case (a stale boot now HALTs
-instead of emitting ghost values). Per the A7 precedent, this touch of a frozen gate is **flagged for
-owner sign-off** rather than self-amended.
+instead of emitting ghost values). It was flagged for owner sign-off per the A7 precedent.
+
+**Owner ruling 2026-07-05 (Luke, in writing, verbatim):** "the Guard 5 pre-flight is a safety addition,
+not a frozen-gate amendment; apply and keep it." Disposition: the frozen suite `764a0d91` is **unamended**;
+Guard 5 stays. No further sign-off outstanding.

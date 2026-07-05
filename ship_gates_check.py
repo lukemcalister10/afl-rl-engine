@@ -53,8 +53,10 @@ RA = '/home/claude/rl_workspace/rl_after'
 # passes them silently — this closes that hole by asserting RA's store+head == data/expected_boot.json ==
 # the repo checkout, and HALTS otherwise. This is a pre-flight ADDITION only: no gate's assertion, threshold,
 # or value is touched; on the correct store the board is byte-identical to before. (Stale-boot hardening
-# 2026-07-05; flagged for owner sign-off per the A7 frozen-gate precedent — it does not alter gate behaviour
-# on the pinned store, it only refuses to run on any other.)
+# 2026-07-05.) OWNER RULING 2026-07-05 (Luke, in writing): "the Guard 5 pre-flight is a safety addition,
+# not a frozen-gate amendment; apply and keep it." — recorded per the A7 precedent; the frozen suite 764a0d91
+# is unamended. This pre-flight does not alter gate behaviour on the pinned store; it only refuses to run on
+# any other store.
 sys.path.insert(0, ROOT)
 import boot_guard as _bg
 _bg.assert_boot('ship_gates_check', store_path=os.path.join(RA, 'rl_model_data.json'),
