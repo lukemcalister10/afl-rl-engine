@@ -9,10 +9,13 @@ export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_
 export PYTHONPATH="$RA:$ROOT/engine/forward_valuation:$ROOT/vendor:${RL_VENDOR:-/home/claude/rl_vendor}"
 pass=0; fail=0
 chk(){ if [ "$2" = "$3" ]; then echo "PASS  $1 = $2"; pass=$((pass+1)); else echo "FAIL  $1 = $2  (expected $3)"; fail=$((fail+1)); fi; }
-chk "head  _merged_recover.py" "$(md5sum "$RA/_merged_recover.py"|cut -c1-8)" "efea88e5"
-chk "store rl_model_data.json" "$(md5sum "$RA/rl_model_data.json"|cut -c1-8)" "e1b4d8bf"
-chk "rl_model.py (DPP strip)"  "$(md5sum "$RA/rl_model.py"|cut -c1-8)" "121a45d0"   # v2.5: DPP strip (drafted/present/future single-valued cols) lives here
-chk "band  cm_400.pkl"         "$(md5sum "$ROOT/data/cm_400.pkl"|cut -c1-8)" "34faa865"
+# Expected md5s come from the ONE pinned manifest (data/expected_boot.json) — no per-bake hex duplicated here.
+_exp(){ python3 -c "import json,sys; print(json.load(open('$ROOT/data/expected_boot.json'))[sys.argv[1]][:8])" "$1"; }
+E_HEAD=$(_exp engine_head); E_STORE=$(_exp store); E_RLM=$(_exp rl_model); E_BAND=$(_exp band)
+chk "head  _merged_recover.py" "$(md5sum "$RA/_merged_recover.py"|cut -c1-8)" "$E_HEAD"
+chk "store rl_model_data.json" "$(md5sum "$RA/rl_model_data.json"|cut -c1-8)" "$E_STORE"
+chk "rl_model.py (DPP strip)"  "$(md5sum "$RA/rl_model.py"|cut -c1-8)" "$E_RLM"   # v2.5: DPP strip (drafted/present/future single-valued cols) lives here
+chk "band  cm_400.pkl"         "$(md5sum "$ROOT/data/cm_400.pkl"|cut -c1-8)" "$E_BAND"
 cd "$RA"
 PF=$(python3 - <<'PY' 2>/dev/null
 import io,contextlib

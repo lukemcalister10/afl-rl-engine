@@ -47,6 +47,18 @@
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RA = '/home/claude/rl_workspace/rl_after'
+# GUARD 5 (boot-store) — PRE-FLIGHT, before the engine loads. The frozen acceptance suite must never run
+# against a store the caller has not verified is the checked-out, pinned one. The four data guards validate
+# whichever dir they are imported from (RA here, the workspace), so a stale-but-self-consistent workspace
+# passes them silently — this closes that hole by asserting RA's store+head == data/expected_boot.json ==
+# the repo checkout, and HALTS otherwise. This is a pre-flight ADDITION only: no gate's assertion, threshold,
+# or value is touched; on the correct store the board is byte-identical to before. (Stale-boot hardening
+# 2026-07-05; flagged for owner sign-off per the A7 frozen-gate precedent — it does not alter gate behaviour
+# on the pinned store, it only refuses to run on any other.)
+sys.path.insert(0, ROOT)
+import boot_guard as _bg
+_bg.assert_boot('ship_gates_check', store_path=os.path.join(RA, 'rl_model_data.json'),
+                engine_head_path=os.path.join(RA, '_merged_recover.py'))
 os.environ.update(PYTHONHASHSEED='0', RL_GAMMA='0.85', RL_PICK1='3000', RL_RUCK_TAX='0.25',
                   RL_RECENCY_DECAY='0.72', RL_PRIOR_TREES='400', PAR_RAMPS='22')
 sys.path[:0] = [RA, '/home/claude/rl_workspace/forward_valuation', os.path.join(ROOT, 'vendor')]

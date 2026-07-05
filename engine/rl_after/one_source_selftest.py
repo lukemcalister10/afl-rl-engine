@@ -31,6 +31,27 @@ def check(cond, msg):
 HERE=os.path.dirname(os.path.abspath(__file__))
 def hp(*p): return os.path.join(HERE,*p)
 
+print("=== GUARD 5: BOOT-STORE (this dir's store == the checked-out, pinned store) ===")
+# The four guards above validate whichever dir this file is imported from (HERE) against ITSELF — so a
+# stale-but-self-consistent workspace passes them. GUARD 5 anchors on the CHECKOUT: it asserts HERE's store
+# and engine head equal data/expected_boot.json in the repo. Fails the self-test (build) on a stale boot.
+_repo=None
+for _c in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR'),
+           os.path.abspath(os.path.join(HERE,'..','..'))):
+    if _c and os.path.exists(os.path.join(_c,'boot_guard.py')): _repo=_c; break
+if _repo:
+    if _repo not in sys.path: sys.path.insert(0,_repo)
+    import boot_guard as _BG
+    try:
+        _BG.assert_boot('one_source_selftest', store_path=hp('rl_model_data.json'),
+                        engine_head_path=hp('_merged_recover.py'), halt=False)
+        check(True, "GUARD 5: boot-store — this dir's store+head == pinned checkout store")
+    except AssertionError as _e:
+        _det=[l.strip() for l in str(_e).splitlines() if l.strip() and set(l.strip())!={'='} and 'HALTED' not in l]
+        check(False, "GUARD 5: boot-store FAILED — %s"%(' '.join(_det) if _det else "boot-store mismatch"))
+else:
+    check(False, "GUARD 5: cannot locate the checkout (set RL_REPO/CLAUDE_PROJECT_DIR) to verify the boot store")
+
 print("=== GUARD 3: SINGLE SOURCE (lookalike tripwire + engine opens) ===")
 _g3=[]
 SS.assert_single_source(lambda c,m: _g3.append(m) if not c else None)

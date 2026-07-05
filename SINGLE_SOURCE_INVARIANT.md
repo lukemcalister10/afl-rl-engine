@@ -26,7 +26,7 @@ peak model and the exact PVC it was trained on; they are co-generated so they ca
 they are **not** re-asserted against the current store each build (rebuilding them is a modelling action).
 They may not be hand-edited (read-only + lookalike tripwire).
 
-## The four guards (`single_source.py`; each FAILS the build)
+## The five guards (`single_source.py` + `boot_guard.py`; each FAILS the build)
 1. **One writable source; derived read-only + source-md5-stamped.** The generator is the only writer:
    after it writes a derived file it stamps `<file>.srcmd5` with the source md5 and `chmod`s the file to
    `0o444`. Hand-editing a board/book is therefore impossible without tripping the stamp.
@@ -41,6 +41,28 @@ They may not be hand-edited (read-only + lookalike tripwire).
    a **full rebuild**, and asserts the edit survives all the way to **board + book**. If any generator
    re-injects / overrides / ignores the store (the Kako mechanism), the sentinel does not move and the
    build **FAILS**. Source + derived artifacts are restored byte-for-byte afterwards.
+5. **Boot-store assertion** (`boot_guard.py`; stale-boot hardening 2026-07-05). Guards 1–4 protect the data
+   *model* but validate whichever **directory** they are imported from — so a stale-but-self-consistent
+   workspace copy (`/home/claude/rl_workspace/rl_after`) passes them silently. Guard 5 closes that hole: on
+   ENTRY, every gate / panel / bake / self-test asserts that the store it is about to read equals **both**
+   the pinned expected (`data/expected_boot.json`) **and** the checked-out repo store, and **HALTS** (non-zero,
+   never warns) with a loud message otherwise. This is the manual three-assertion check (engine head / store /
+   band) we ran by hand all session, made automatic and permanent. `data/expected_boot.json` is the ONE place
+   the expected md5s live — `verify_restore.sh`, `bootstrap.sh`, `run_panel.sh`, `ship_gates_check.py`, and
+   `one_source_selftest.py` all read it instead of carrying their own per-bake hex.
+
+## Why the workspace stays (re-seeded + hash-asserted, not deleted)
+`/home/claude/rl_workspace/rl_after` is **persistent staging**, not a lookalike: the engine's hardcoded
+absolute imports (`par_redesign.py` → `/home/claude/rl_after`, `wire_redesign.py` `_FV`, etc.) resolve there,
+and the single-source build **writes** the board/book/`.srcmd5` stamps into it — isolating those writes from
+the git checkout is deliberate. So it is genuinely needed. The stale-boot fix is therefore the one the
+invariant prescribes for a needed staging dir: `bootstrap.sh` **re-seeds** it from the checked-out source
+(`cp -rf engine/rl_after → workspace`) and hard-asserts the seed == the pin (Guard 5), and every consumer
+re-asserts workspace == checkout == pin before it reads. A build that boots on the wrong store now HALTs on
+line one — it does not run five confused turns later. Obituary for the old failure: all session, builds booted
+on the baked-v2.4 store `644d1254` sitting in the workspace while the real candidate `e1b4d8bf` lived in the
+checked-out `engine/rl_after/` — hours of ghost premises the four data guards could not catch. Guard 5 is that
+gap, closed.
 
 ## Rules for every future seat
 - **Never** patch a player fact anywhere but `rl_model_data.json`. If the board or book needs different
