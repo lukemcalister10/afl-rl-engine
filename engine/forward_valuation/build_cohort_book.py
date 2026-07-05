@@ -16,7 +16,7 @@ from openpyxl.utils import get_column_letter
 NOW=2026
 COHorts=list(range(2009,2026))                      # 2009..2025
 def drafted(C):                                     # cohort members: drafted year C, real group, real pick, not a credit phantom
-    out=[p for p in MA.data if p.get('year')==C and not p.get('_double_count') and MA.GRP.get(p['pos'])]
+    out=[p for p in MA.data if p.get('year')==C and MA.GRP.get(p['pos'])]
     # collapse duplicate-key (traded-club) rows to one, prefer fuller history
     best={}
     for p in out:

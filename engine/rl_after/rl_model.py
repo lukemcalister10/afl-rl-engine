@@ -2,23 +2,24 @@ import json, numpy as np, math, re
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode
 data=json.load(open('rl_model_data.json')); P=json.load(open('params.json')); PMD=json.load(open('rl_passmark.json'))
-# --- v3.3.1: MSD mid-season debut standardisation -------------------------------
-# A mid-season draftee plays a structural HALF-season in their draft year (debut=year for MSD).
-# Scale that one season's games x1.5 (FLOORED, avg unchanged) AND fold the increment into the
-# career total so EVERY downstream gate reads the standardised count consistently -- backward
-# (pkbest/peakval/PVC) and forward (level_demo/peak_est/_dev_advance/survival/_cov). Runs at load,
-# BEFORE recall consolidation. Phantoms excluded (synthetic; preserves double-count/bust calibration).
-MSD_Y1_MULT = 1.5   # multiply mid-season debut-year games by this, FLOOR; 1.0 = off
-if MSD_Y1_MULT and MSD_Y1_MULT != 1.0:
-    for _p in data:
-        if _p.get('type') != 'MSD' or _p.get('_phantom'): continue
-        _y = _p['year']
-        for _r in _p['scoring']:
-            if _r['year'] == _y and _r.get('games', 0) > 0:
-                _new = math.floor(_r['games'] * MSD_Y1_MULT); _add = _new - _r['games']
-                _r['games'] = _new; _p['games'] = _p.get('games', 0) + _add
-                break
-# -------------------------------------------------------------------------------
+# --- POSITION MODEL (collapsed 2026-07-05, one-source rewire): the store now carries THREE clean columns.
+#   drafted_position : career/draft position -> drives the cohort curves (the engine's internal p['pos'])
+#   present_position : the player's CURRENT position -> drives his own present valuation (p['_pos_now'])
+#   raw_multipos     : settled-future multi-position blend [[POS,wt],...] for DPP (p['_fut']; RETAINED, not wiped)
+# The old proliferation (pos/_pos_now/_fut, plus derived bnow/gf/gfut/grp/fut) collapses to these. This
+# value-neutral adapter reconstitutes the engine's established working keys at the store boundary; the
+# valuation prices on gfut (= raw_multipos), so present_position moves are display-only when a blend exists.
+for _p in data:
+    _p['pos']=_p['drafted_position']
+    _pp=_p.get('present_position')
+    _p['_pos_now']=_pp if (_pp and _pp!=_p['pos']) else None
+    _p['_fut']=_p.get('raw_multipos') or []
+# --- MSD/IRE credit machinery SCRUBBED 2026-07-05 (Luke directive, one-source rewire) ------------
+# The v3.3.1 MSD mid-season debut standardisation (MSD_Y1_MULT=1.5x debut-year game boost, folded into
+# the career total) is DELETED, together with the four credit/bust phantom rows and the _double_count /
+# _phantom apparatus. Real mid-season draftees are now priced from their raw recorded games -- no boost,
+# no labelled replacement. See evidence/f1f2_rewire/ for the before/after decomposition.
+# ------------------------------------------------------------------------------------------------
 PEAK=P['PEAK']; PEAK_AGE=P['PEAK_AGE']; pm_pos=PMD['pm_pos']; pm_band={int(k):v for k,v in PMD['pm_band'].items()}; BANDS=PMD['bands']; NB=len(BANDS)
 AGE_CURVE={g:{int(a):f for a,f in c.items()} for g,c in P.get('AGE_CURVE',{}).items()}   # per-position empirical age curve (Phase-2 dev projection only; present value() untouched)
 def _smooth_tail(c):                                   # enforce monotonic non-increasing post-peak + >=1%/yr continued decline (kills thin-tail plateaus/blips, e.g. RUC holding flat at 35)
@@ -416,7 +417,6 @@ for p in data:
         q=dict(p); q['_unplayed']=True; extra.append(q)
 def active(p):
     if p['pos'] not in GRP or p.get('_retired'): return False
-    if p.get('_double_count'): return False                       # credit phantoms (Keane/McAndrew IRE/MSD) boost their pools BACKWARD only; the real SSP record is the FORWARD entry (Luke cont.12)
     if p.get('_last_listed') is not None and p['_last_listed']<2026: return False  # delisted before 2026 -> off Now (recalled onto back-boards)
     if p.get('_unplayed') or p.get('_force_active'): return True
     played=any(r['games']>=1 for r in p['scoring'])
@@ -731,7 +731,6 @@ print('PICK-EQUIVALENTS:',{ _MECH_NAME.get(k,k):v for k,v in sorted(PICKEQ.items
 # P personalises bust risk: a not-yet-established player's pedigree track + production are weighted by P(establish).
 # Built on REAL types (runs BEFORE the present-identity overrides below, exactly as compute.py did). ====
 pgrid.build(data, GRP, debut)           # build the establishment surface from THIS engine's data (no rl_model import inside pgrid)
-MSD_S1_MULT=2.0                         # MSD debut season is ~half-length -> double its games to be full-season-comparable
 def entry_age(p): return (debut(p)-1)-by(p)
 _PB=[(1,3),(4,6),(7,9),(10,13),(14,18),(19,24),(25,31),(32,39),(40,48),(49,58),(59,99)]
 _cohP=[p for p in data if p.get('_grp') in('ND','RD') and debut(p)<=2019 and p['pos'] in GRP]
@@ -770,10 +769,7 @@ for _t in ['MSD','SSP','IRE','UNR','PDA','PDN','PDS']:
 def P_estab(p):
     if established(p): return 1.0
     g3=grp3(p); Y=2026-debut(p)+1; d=debut(p)            # CLOCK FIX: Y = season ordinal (1=debut season)
-    def _gm(r):
-        _g=r['games']
-        if p['type']=='MSD' and r['year']==d and r['year']<2026: _g=_g*MSD_S1_MULT
-        return _g
+    def _gm(r): return r['games']   # MSD debut-season game boost SCRUBBED 2026-07-05 (was x2.0 half-season standardisation)
     Gn=sum(_gm(r) for r in p['scoring'] if d<=r['year']<2026)+(sum(r['games'] for r in p['scoring'] if r['year']==2026)/SEASON_PROG)
     base=pgrid.Praw(g3,Y,Gn)*pgrid.mat_mult(entry_age(p),Gn)         # smoothed surface x mature-entry discount
     prior=_pathpr[p['type']] if p['type'] in _pathpr else pick_prior(p)
@@ -793,7 +789,6 @@ PRESENT_ID_OVERRIDES={
     "Mark Keane":     ('SSP', 2022),   # 2022 SSP window
 }
 for _p in data:
-    if _p.get('_phantom'): continue                  # never reset a credit phantom -> keep its pool identity; real record only
     _o=PRESENT_ID_OVERRIDES.get(_p.get('player'))
     if _o: _p['type'],_p['year']=_o; _p['_grp']=_o[0]; _p['_eff']=PICKEQ[_o[0]]
 

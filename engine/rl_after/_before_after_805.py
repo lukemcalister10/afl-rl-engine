@@ -5,7 +5,7 @@ MA=g['MA']; cp=g['cp']; ev=g['ev']; delisted=g['delisted']; b6o=g['b6']
 _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; PROVEN_N=g['PROVEN_N']; DOWN_TOL=g['DOWN_TOL']
 _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']
 # ---- the 805: current-listed universe ----
-def in805(p): return MA.GRP.get(p.get('pos')) and not p.get('_double_count') and not p.get('_phantom') and not delisted(p)
+def in805(p): return MA.GRP.get(p.get('pos')) and not delisted(p)
 players=[p for p in MA.data if in805(p)]
 print("population:",len(players))
 MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()

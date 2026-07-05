@@ -24,7 +24,7 @@ wb=Workbook(); wb.remove(wb.active)
 
 # ================= SUMMARY: cohort VALUE indexed to Yr1 anchor = 100% (opportunity-matched) =================
 sm=wb.create_sheet('Summary')
-sm['A1']='AFL RL — WALK-FORWARD cohort book — M1 + refined-v7 PROTOTYPE (NOT a baked head; engine 8aed420a, store pre_stage0). Nothing baked.'; sm['A1'].font=TITLE
+sm['A1']='AFL RL — WALK-FORWARD cohort book — M1 + refined-v7 PROTOTYPE (NOT a baked head; one-source candidate store (F1/F2 rewire)). Nothing baked.'; sm['A1'].font=TITLE
 sm['A2']='SUMMARY metric = cohort VALUE indexed to the year-1 anchor = 100% (SUM-RATIO, not mean-of-ratios). For each career-year N: Sum(value at N) / Sum(value at Yr1) x 100. Walk-forward value as-of end of each season (only <=T data; M1+v7 applied).'
 sm['A3']='BUSTS = ZERO (no survivor bias): a player who retires stays in the Yr1 denominator but contributes 0 to later years. OPPORTUNITY-MATCHED: each career-year N pools ONLY cohorts old enough to have reached year N (debut+N <= 2026); immature cohorts are excluded from BOTH numerator and denominator for that column (otherwise their Yr1 would deflate later years).'
 sm['A4']='HEADLINE = pooled over the opportunity-matched cohorts; the "#cohorts (reached Yr N)" row shows how many contribute to each year (shrinks with N). Each cohort row = its own Sum(value at N)/Sum(value at Yr1), blank once it has not yet reached year N. Pool = ND+RD 2004-2024; 2003 & 2025 reference-only (pink). Current% = current value as % of Yr1; Current V = absolute current-value sum (retired=0).'

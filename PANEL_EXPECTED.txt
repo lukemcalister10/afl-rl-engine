@@ -1,14 +1,15 @@
-FIXED PANEL — verified on engine c47cb43d (BAKED v2.4: ruck cap 1.4 + KEY_FWD REPL-1) + reconciled pre_stage0 store, ENV per run_panel.sh.
-A cold reload MUST reproduce every EV exactly. If any mismatch -> the tarball or ENV is wrong.
+FIXED PANEL — CANDIDATE (F1/F2 one-source rewire, 2026-07-05). Supersedes the pre-scrub v2.4 baked panel.
+A cold reload of THIS candidate MUST reproduce every EV exactly. Values shifted from the baked baseline by the
+phantom scrub (era/PVC ripple + MSD/IRE pick_equiv) and the Kako single-source data fix; F1 makes the board == engine.
 
-player                pos       pk  ns    EV   note
-Nick Daicos           MID        4   5  7013  proven star
-Marcus Bontempelli    MID        4  13  3085  proven
-Harry Sheezel         MID        3   4  7150  proven young (drafted GEN_FWD -> plays MID; switcher)
-Max Gawn              RUC       33  14  2120  proven ruck
-Harley Reid           MID        1   3  3537  first-year value, pk1 (NOT cratered)
-Josh Ward             MID        7   5  1640  moderate pedigree (the "Ward" case)
-Darcy Moore           KEY_DEF    8  11   199  decliner the shed fired on (possible OVER-shed; open thread)
-Taylor Goad           RUC       20   0   757  sat-out ruck -> no-games anchor (dv*retain)
-Josh Smillie          MID        7   0   995  sat-out mid -> no-games anchor
-Will Green            RUC       16   0   541  sat-out ruck -> no-games anchor
+player                pos       pk  ns     EV   note
+Nick Daicos           MID        4   5   7002   proven star
+Marcus Bontempelli    MID        4  13   3080   proven
+Harry Sheezel         MID        3   4   7163   proven young (drafted GEN_FWD -> plays MID; switcher)
+Max Gawn              RUC       33  14   2120   proven ruck
+Harley Reid           MID        1   3   3553   first-year value, pk1 (NOT cratered)
+Josh Ward             MID        7   5   1634   moderate pedigree (the "Ward" case; book == board now)
+Darcy Moore           KEY_DEF    8  11    200   decliner the shed fired on
+Taylor Goad           RUC       20   0    761   sat-out ruck -> no-games anchor
+Josh Smillie          MID        7   0    993   sat-out mid -> no-games anchor
+Will Green            RUC       16   0    539   sat-out ruck -> no-games anchor

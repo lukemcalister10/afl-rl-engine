@@ -6,7 +6,7 @@ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingRegressor
 MA.P_HOOK=None; MA.PROD_GATE='off'
-allp=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+allp=[p for p in MA.data if MA.GRP.get(p['pos'])]
 POSI={'MID':0,'GEN_DEF':1,'GEN_FWD':2,'KEY_DEF':3,'KEY_FWD':4,'RUC':5}
 DOB=json.load(open('/home/claude/rl_workspace/forward_valuation/dob_corrected.json')); PT=json.load(open('/home/claude/rl_workspace/forward_valuation/bust_prior_table.json'))
 SEASON=22  # reference full home-and-away

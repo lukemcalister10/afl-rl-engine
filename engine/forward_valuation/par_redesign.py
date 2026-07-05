@@ -57,7 +57,7 @@ def tenure(p,Y): return max(1,Y-draftyr(p))
 
 # ---------- Fork C: base-rate play-rate per position x tenure (all rostered, incl 0-game) ----------
 def _build_base_rate():
-    pool=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p.get('pos'))
+    pool=[p for p in MA.data if MA.GRP.get(p.get('pos'))
           and (p.get('pick') or p.get('_ft')) and 2003<=draftyr(p)<=2018]
     by=collections.defaultdict(list)
     for p in pool:

@@ -36,7 +36,7 @@ def season_row(p, Y):
 
 # ---- 1. gather on-park observations: (pos, logpick, tenure, lvl, games) -------------------
 def gather():
-    pool = [p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p.get('pos'))
+    pool = [p for p in MA.data if MA.GRP.get(p.get('pos'))
             and (p.get('pick') or p.get('_ft')) and DRAFT_LO <= draftyr(p) <= DRAFT_HI]
     # raw rows first (need base_play_rate before applying the gate)
     raw = []  # (pos, pick, ten, Y, games, p)

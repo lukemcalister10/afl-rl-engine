@@ -10,7 +10,7 @@ for Y in range(2009,2026):
     a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
     if a: era[Y]=float(np.mean(a))
 REF=float(np.mean(list(era.values())))
-pool=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
 X,yy=[],[]
 for p in pool:
     if cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')): continue
@@ -191,11 +191,18 @@ def _v7(bb,p,Y):
     bb=list(bb); m=bb[2]; a=cp._age_asof(p,Y)
     asc=float(np.interp(a,[20,22,24,27],[1.0,0.76,0.58,0.40]))
     bb[5]=m+asc*(bb[5]-m); return bb
-_REAL=set(id(p) for p in MA.data)
+# STABLE-KEY REAL-membership (F1 fix 2026-07-05, Luke one-source rewire). The _REAL gate decides which players
+# receive the engine's real-store layers (RUC prior cap :317/:492, v7 age-taper :198, B5 floor :552). It is now
+# keyed on the STABLE player key, NOT id(p) -- so the layers fire regardless of which module instance or object
+# copy is priced. (The shipped-board bug: rl_export exec'd a 2nd rl_model instance, so id(p) matched 0/805 and
+# every real-store layer was silently dropped, over-pricing ~2/3 of the board.) Synths (no 'key') never match;
+# copies carrying the same key resolve as real by construction. Keys verified non-null + unique across MA.data.
+_REAL=set(p['key'] for p in MA.data)
+def _isreal(p): return p.get('key') in _REAL
 _b6_pre_v7=b6
 def b6(p,Y=2026):
     bb=_b6_pre_v7(p,Y)
-    if id(p) in _REAL:
+    if _isreal(p):
         try: return _v7(bb,p,Y)
         except Exception: return bb
     return bb
@@ -314,7 +321,7 @@ def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD
 # is byte-exact. Derivation/ladder: session_2026-07-03/d13/d13_ask1_ruck_cap.md.
 RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default 1.73->1.4 (owner ruck-cap dial, v2.4 bake 2026-07-04; env override preserved)
 def _ruc_prior_cap(p,v):                                      # cap a RUC band-fed value at RUC_PRIOR_CAP x PVC (real rucks)
-    return min(v, RUC_PRIOR_CAP*draftval(p)) if (id(p) in _REAL and MA.gfut(p)=='RUC') else v
+    return min(v, RUC_PRIOR_CAP*draftval(p)) if (_isreal(p) and MA.gfut(p)=='RUC') else v
 _V0C={}; _V0U={}
 _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
                               # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
@@ -348,7 +355,7 @@ def _v0_cell(p): return (MA.gfut(p), int(round(cp._age_asof(p, p.get('year') or 
 def _build_v0_guard():
     cells={}
     for p in MA.data:
-        if id(p) not in _REAL or p.get('type')!='ND' or p.get('pick') is None: continue
+        if not _isreal(p) or p.get('type')!='ND' or p.get('pick') is None: continue
         cells.setdefault(_v0_cell(p),[]).append(p)
     for _cell,ps in cells.items():
         run=float('inf')
@@ -412,7 +419,7 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
     return surf
 def _build_v0_curve():
     POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
-    real=[p for p in MA.data if id(p) in _REAL and p.get('type')=='ND' and p.get('pick') is not None]
+    real=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None]
     for pos in POS:
         pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
         grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
@@ -438,13 +445,13 @@ def _v0_curve_assert():                                      # BY-CONSTRUCTION G
     from collections import defaultdict
     grp=defaultdict(list)
     for p in MA.data:
-        if id(p) in _REAL and p.get('type')=='ND' and p.get('pick') is not None:
+        if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None:
             grp[(MA.gfut(p),_ageR(p),p.get('pick'))].append(v0_start(p))
     maxdisp=max((max(v)-min(v) for v in grp.values()),default=0.0)
     # (ii) within (pos,ageR,year) cell inversions under V0*
     byc=defaultdict(list); inv=0
     for p in MA.data:
-        if id(p) in _REAL and p.get('type')=='ND' and p.get('pick') is not None:
+        if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None:
             byc[(MA.gfut(p),_ageR(p),p.get('year'))].append(p)
     for _c,ps in byc.items():
         ps=sorted(ps,key=lambda z:z.get('pick'))
@@ -489,7 +496,7 @@ def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
-    if id(p) in _REAL and MA.gfut(p)=='RUC':                  # ASK1: cap PRIOR-DOMINATED ruck production leg only
+    if _isreal(p) and MA.gfut(p)=='RUC':                  # ASK1: cap PRIOR-DOMINATED ruck production leg only
         _cpv=RUC_PRIOR_CAP*draftval(p); _v0u=_v0_uncapped(p)  #   bind iff C*PVC < e <= V0_uncapped (hot prior, no demonstrated growth);
         if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=C*PVC (already low) -> byte-exact
 
@@ -549,7 +556,7 @@ def floor_frac(yis): return FLOOR_YRS.get(yis,FLOOR_TAIL)
 ev_prefloor=_ev_m3                                            # harnesses read this for the saves table / lower-bound re-verify
 def ev(p,Y=2026):
     v=ev_prefloor(p,Y)
-    if id(p) not in _REAL or p.get('type')!='ND' or p.get('_retired') or p.get('_pickless') or delisted(p):
+    if not _isreal(p) or p.get('type')!='ND' or p.get('_retired') or p.get('_pickless') or delisted(p):
         return v                                              # out of scope: byte-exact passthrough
     yis=Y-int(p.get('year') or 0)
     if yis<1: return v

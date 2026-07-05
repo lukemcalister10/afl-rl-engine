@@ -5,58 +5,28 @@ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').
 g['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD path — Luke's exemption. Board-only laws (V0 curve, KPP floor) OFF here so the historical book reproduces (maxΔ=0 vs v2.3).
 MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
 INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
-def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_double_count') and not p.get('_phantom') and not p.get('_pvc_exclude')
+def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
 players=[p for p in MA.data if eligible(p)]
 best={}
 for p in players:
     k=(p.get('key') or MA.slug(p['player']), p.get('type'), p.get('year'))  # +year: keep same-name-different-cohort pairs distinct
     if k not in best or len(p['scoring'])>len(best[k]['scoring']): best[k]=p
 players=list(best.values())
-# ISOLATED DATA FIX (Isaac Kako, ND pk13 2024): his real 2025 debut (23g, 55.1 — 2024 Rising Star) is missing
-# from the source DB, leaving him mis-read as sat-out 2025. Fold it in so his calendar Yr1 anchors on a PLAYED
-# debut, not the no-games pole. Luke confirmed this is isolated to Kako (known missing-data case), not systemic.
-for _p in players:
-    if 'kako' in _p['player'].lower() and _p.get('year')==2024:
-        if not any(r['year']==2025 for r in _p['scoring']):
-            _p['scoring']=sorted(_p['scoring']+[{'year':2025,'avg':55.1,'games':23}], key=lambda r:r['year'])
-        print(f"[Kako patch] scoring now {[(r['year'],r['games'],r['avg']) for r in _p['scoring']]}",flush=True)
+# ISOLATED DATA FIX (Isaac Kako, ND pk13 2024): his real 2025 debut (23g, 55.1 — 2024 Rising Star) was missing
+# from the source DB. As of the one-source rewire (2026-07-05) it is FOLDED INTO THE STORE (single source of
+# truth), so both the board and this book read it directly -- the former book-local patch is DELETED. Luke
+# confirmed this is isolated to Kako (known missing-data case), not systemic.
 print(f"eligible players: {len(players)}",flush=True)
-# ==== M1 + refined-v7 FIX injected (PROTOTYPE; nothing baked) ====
-cp=g['cp']; b6_orig=g['b6']; _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; PROVEN_N=g['PROVEN_N']
-DOWN_TOL=g['DOWN_TOL']; _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']
-TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46; GCAP=17.0
-def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
-def _coreM1(p,Y):
-    Lo=cp._lvl_eff_orig(p,Y); n=_nqual(p,Y)
-    if n==0: return Lo
-    Lc=_lvlcurr(p,Y)
-    if n>=PROVEN_N:
-        if Lc>=Lo: return (Lo+S_M1*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
-        drop=Lo-Lc
-        if drop<=DOWN_TOL: return Lo
-        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult(cp._age_asof(p,Y))
-    c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
-def _inferM1(p,Y):
-    L0=_coreM1(p,Y); eo=_eo(p,Y)
-    if eo<=0: return L0
-    avs=[x['avg'] for x in p['scoring'] if x.get('games',0)>=6 and (cp.debutyr(p)-1)<x['year']<=Y]
-    if not avs: return L0
-    bar=MA.REPL.get(MA.gfut(p),0.0)-3.0; N=Y-cp.debutyr(p)+1
-    return (1-eo)*L0+eo*min(L0,max(_upS(max(avs)-bar,N),_lvlcurr(p,Y)))
-def _effs(p,Y): return sum(min(x['games']/GCAP,1.0) for x in p['scoring'] if x['games']>=6 and (cp.debutyr(p)-1)<x['year']<=Y)
-def _v7(bb,p,Y):
-    bb=list(bb); m=bb[2]; a=cp._age_asof(p,Y); cB=0.47*float(np.clip((_effs(p,Y)-1)/3,0,1))
-    asc=float(np.interp(a,[20,22,24,27],[1.0,0.76,0.58,0.40]))
-    bb[3]=m+(1-cB)*(bb[3]-m); bb[4]=m+(1-cB)*(bb[4]-m); bb[5]=m+asc*(bb[5]-m); return bb
-_REAL=set(id(p) for p in players)
-def _b6fix(p,Y=2026):
-    bb=b6_orig(p,Y)
-    if id(p) in _REAL:
-        try: return _v7(bb,p,Y)
-        except Exception: return bb
-    return bb
-cp._lvl_eff=_inferM1; g['b6']=_b6fix
-print("[FIX] M1 + refined-v7 injected (level bind + band wrap, real players only); nothing baked",flush=True)
+# ==== F2 FIX 2026-07-05 (Luke one-source rewire): the stale double-fade harness is DELETED ================
+# BEFORE: this generator re-injected its OWN _coreM1/_inferM1/_v7/_b6fix on top of the live engine. That copy
+# (1) RESURRECTED the deleted upper-quantile compression cB=0.47*clip((effs-1)/3,0,1) on bb[3]/bb[4] -- gone
+# from the engine since 02/07/2026 (_merged_recover v7-cB DELETED) -- and (2) wrapped the engine's ALREADY
+# v7-wrapped b6 with _v7 AGAIN, so the age-taper `asc` was applied TWICE. Net: the book UNDER-priced the same
+# players the board over-priced (Josh Ward engine 1640 -> book 1233, -24.8%). F2.
+# AFTER: nothing is re-injected. The walk-forward book is built from the LIVE gated engine ev() -- the single
+# valuation source -- so every book cell equals the engine's gated value by construction. A parity check at the
+# end asserts book(current-year) == engine gated ev() for every player, matched by stable key, or the build FAILS.
+print("[F2 FIX] double-fade harness removed; book built from live gated engine ev()",flush=True)
 # WALK-FORWARD as-of value matrix (UNCHANGED — values are correct; only the indexing was wrong)
 ASOF={}
 for Y in range(2003,2027):
@@ -68,6 +38,7 @@ for Y in range(2003,2027):
         eff_last = LL if LL is not None else (lastscore if RET else None)
         p['_retired']=False; p['_last_listed']= eff_last if (eff_last is not None and eff_last < Y) else None
     MA.BASE_REF=Y; MA.AGE_REF=Y; MA._pe_clear()
+    g['_BOARD_PATH']=(Y==2026)   # F2 parity: the PRESENT-year column uses the BOARD path (V0 curve + KPP floor ON) so `cur` == the board (engine gated); 2003-2025 keep Luke's D14 backtest exemption (board-only laws OFF -> the historical walk-forward book reproduces)
     for p in players:
         if (p.get('year') or 9999)>Y: continue
         try:
@@ -101,12 +72,34 @@ for p in players:
     old_anchor=ASOF.get((id(p),fp)) if fp else None       # buggy first-PLAYED anchor (for bias comparison)
     sat=(C+1 not in played) and bool(played)
     if sat and p.get('type') in INCURVE and 2004<=C<=2024: nsat+=1
-    rec[id(p)]=dict(player=p['player'],pos=(MA.GRP.get(p.get('pos')) or MA.gfut(p)),cpos=MA.gfut(p),sw=bool(MA.GRP.get(p.get('pos')) and MA.GRP.get(p.get('pos'))!=MA.gfut(p)),type=p.get('type'),pick=MA.effpk(p),pickless=bool(p.get('_pickless')),
+    rec[id(p)]=dict(player=p['player'],key=p.get('key'),pos=(MA.GRP.get(p.get('pos')) or MA.gfut(p)),cpos=MA.gfut(p),sw=bool(MA.GRP.get(p.get('pos')) and MA.GRP.get(p.get('pos'))!=MA.gfut(p)),type=p.get('type'),pick=MA.effpk(p),pickless=bool(p.get('_pickless')),
                     year=C,cat=p.get('_cat'),draftval=round(MA.PVC[min(MA.effpk(p),70)]) if not p.get('_pickless') else None,
                     yrs=yrs,Vpath=Vpath,Ppath=Ppath,cur=ASOF.get((id(p),2026)),anchor=anchor,old_anchor=old_anchor,
                     sat_out_yr1=sat,retired_now=rn,incurve=(p.get('type') in INCURVE))
 json.dump({str(k):v for k,v in rec.items()}, open(os.environ.get('S4_MATRIX','s4_matrix.json'),'w'))
 print(f"matrix saved (CALENDAR-indexed): {len(rec)} players",flush=True)
+# ==== BOOK<->ENGINE(BOARD) VALUE-PARITY GATE (F2 regression tripwire, 2026-07-05) =======================
+# Every book present-value (`cur`, the 2026 board-path column) MUST equal the board's gated value for that
+# player -- the board is built by rl_export in a SEPARATE process/instance, so this cross-checks that the book
+# has NOT re-introduced any stale valuation override (the deleted cB / double-v7 double-fade harness). Matched
+# by stable key. If any active board player diverges, the build FAILS loudly. The board file must exist (build
+# order: rl_export.py then s4_matrix_M1v7.py); if absent the gate is skipped with a loud warning.
+_board_path=os.environ.get('RL_APP_DATA','rl_app_data.json')
+if os.path.exists(_board_path):
+    _bd={r['key']:r['v'] for r in json.load(open(_board_path)).get('active',[])}
+    _bookcur={v['key']:v['cur'] for v in rec.values() if v.get('key')}
+    # board players legitimately ABSENT from the cohort book: _pvc_exclude records are excluded by eligible()
+    # above (they never join the pick-value cohort). They are still valid board players -- just outside this
+    # walk-forward book -- so absence is NOTED, not a parity failure. A VALUE mismatch on a shared player IS a
+    # failure (that is the double-fade / stale-override signature).
+    _absent=sorted(_k for _k in _bd if _k not in _bookcur)
+    _pf=[(_k,_bookcur[_k],_bd[_k]) for _k in _bd if _k in _bookcur and _bookcur[_k]!=_bd[_k]]
+    if _pf:
+        raise SystemExit("BOOK<->BOARD PARITY GATE FAILED: %d present-value mismatches (book `cur` != board gated ev):\n  "%len(_pf)
+                         + "\n  ".join("%s: book_cur=%s board=%s"%(k,c,b) for k,c,b in _pf[:25]))
+    print(f"BOOK PARITY GATE PASS: all {len(_bd)-len(_absent)} shared board players' present value == book `cur`; {len(_absent)} board players outside the cohort book (_pvc_exclude): {_absent}",flush=True)
+else:
+    print(f"WARN: {_board_path} not found -> BOOK<->BOARD parity gate SKIPPED (build the board first: rl_export.py)",flush=True)
 # ---- mapping-only proof: a played value is identical old vs new (just a different slot) ----
 camp=[v for v in rec.values() if 'seth campbell' in v['player'].lower()][0]
 print(f"\nMAPPING-ONLY PROOF — Seth Campbell: yrs={camp['yrs']} Vpath={[round(x) if x else None for x in camp['Vpath']]}")

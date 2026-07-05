@@ -10,7 +10,7 @@ _Cut 2026-07-02; **BAKED v2.4 2026-07-04**. Head `c47cb43d` (BAKED: ruck cap 1.4
 
 ## 1. IDENTITY / MD5 AXES (all verified this cut)
 - code→head: `engine/rl_after/_merged_recover.py` = **`c47cb43d`** (BAKED v2.4; ruck-cap default 1.4; was 8aed420a) · REPL dial in `rl_model.py` = **`ce4468d6`**
-- data→store: `engine/rl_after/rl_model_data.json` (=`.pre_stage0`) = **`644d1254`**
+- data→store: `engine/rl_after/rl_model_data.json` = **`73d23a8e`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; was `644d1254`)
 - band: `data/cm_400.pkl` = **`34faa865`**
 - file→bundle: see CHECKPOINT_MANIFEST.md (recorded at cut).
 - **BAKED = nothing past `e0ac9c377d1e`.** Lineage in `docs/CHANGELOG.md`.
@@ -27,7 +27,7 @@ PYTHONPATH=<tree>/engine/rl_after:<tree>/engine/forward_valuation:<tree>/vendor
 
 ## 3. FILE MAP (query, don't display — no full trees)
 - Engine: `engine/rl_after/_merged_recover.py` (head); base modules `engine/forward_valuation/` (`conditional_prior.py` holds the cont.25 recency machinery — `_swt`, `_exposure`, `_lvl_wt`, `_lvl_eff`, `LEVEL_RAMP=14`; `_swt(yr,Y)=0.72^max(0,Y-yr)`).
-- Data: `data/cm_400.pkl` (band), `engine/rl_after/rl_model_data.json` (+`.pre_stage0`), `data/s4_matrix_nogames.json`, `data/traj_out_*.json`.
+- Data: `data/cm_400.pkl` (band), `engine/rl_after/rl_model_data.json` (single source), `data/s4_matrix_nogames.json`, `data/traj_out_*.json`.
 - Book/harnesses: `engine/rl_after/s4_matrix_M1v7.py`(+.json), `s4_render_M1v7.py`, `s4_render_no2003.py`, `_gate1_wf.py`, `_gate1_picksplit.py`. Board/parity: `rl_build_html.py`, `rl_export.py`, `rl_model.py`.
 - Session artifacts: `session_2026-07-01/` (reports, notepads, `scripts/` analysis, `decay_proration_overlay.py`).
 - Docs: `docs/CHANGELOG.md`, `docs/HANDOVER.md`, `docs/KICKOFF_PROMPT.md`, `docs/UNRESOLVED.md`, `PROVENANCE_2026-07-01.md`, `REQUIRED_INPUTS.md`, `CHECKPOINT_MANIFEST.md`; `docs/process/` (four binding/record process docs).

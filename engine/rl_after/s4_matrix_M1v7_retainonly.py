@@ -4,7 +4,7 @@ g={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
 INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
-def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_double_count') and not p.get('_phantom') and not p.get('_pvc_exclude')
+def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
 players=[p for p in MA.data if eligible(p)]
 best={}
 for p in players:

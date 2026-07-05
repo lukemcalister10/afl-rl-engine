@@ -94,7 +94,7 @@ def _feat(p,Y):
 def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
     """Train quantile models on RESOLVED careers (debut<=resolved_cut). One row per (player, as-of-year Y) from draft year
     (games 0) through their last season; target = resolved forward best-3 from Y."""
-    if pool is None: pool=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+    if pool is None: pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
     X,y=[],[]
     for p in pool:
         if debutyr(p)>resolved_cut: continue                # resolved only
@@ -119,7 +119,7 @@ def cond_prior_band(p, models, Y=None):
 if __name__=='__main__':
     models,n=build_cond_prior()
     print(f'trained conditional prior on {n} resolved (player,year) rows')
-    allp=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+    allp=[p for p in MA.data if MA.GRP.get(p['pos'])]
     def debut(p): return debutyr(p)
     def cb3(p):
         a=sorted([x['avg'] for x in p['scoring'] if x['games']>=6],reverse=True)[:3]

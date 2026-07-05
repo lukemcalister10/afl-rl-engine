@@ -266,7 +266,7 @@ def dist_value(p,models,prior,META,k_shrink=None,scale=None,lens='bal'):
 
 # ======================= build (the live 2026 model) =======================
 def build():
-    pool=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+    pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
     X,y,META,W=build_training(pool)
     models=fit_models(X,y,W); prior=build_prior(pool)
     return models,prior,META

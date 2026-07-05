@@ -24,7 +24,7 @@ def trunc(p,T):
 def real_mat(p):
     s=sorted([a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]
     return float(np.mean(s)) if s else 0.0
-full=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+full=[p for p in MA.data if MA.GRP.get(p['pos'])]
 allpool=[p for p in full if cp.debutyr(p)<=2021 and (p.get('pick') or p.get('_ft'))]
 with contextlib.redirect_stdout(io.StringIO()): is_cm,_=cp.build_cond_prior(cap=2026,resolved_cut=2021); is_q97=build_q97(allpool)
 print("in-sample @150 built")

@@ -22,17 +22,18 @@ cp -rf "$HERE/vendor/unidecode" /home/claude/rl_vendor/unidecode
 # 4. the rl_after symlink par_redesign.py inserts on sys.path
 ln -sfn /home/claude/rl_workspace/rl_after /home/claude/rl_after
 
-# 5. AUTHORITATIVE STORE = reconciled pre_stage0 -> live rl_model_data.json
-cp -f /home/claude/rl_workspace/rl_after/rl_model_data.json.pre_stage0 \
-      /home/claude/rl_workspace/rl_after/rl_model_data.json
+# 5. AUTHORITATIVE STORE = the ONE source of truth engine/rl_after/rl_model_data.json, copied verbatim in step 1.
+#    (One-source rewire 2026-07-05: the .pre_stage0 / .stage0 lookalikes are DELETED; the store is no longer
+#    reconstituted from a backup here -- it stands alone. Nothing to do in this step.)
 
 M=$(md5sum /home/claude/rl_workspace/rl_after/_merged_recover.py | cut -c1-8)
 C=$(md5sum /home/claude/cm_400.pkl | cut -c1-8)
+S=$(md5sum /home/claude/rl_workspace/rl_after/rl_model_data.json | cut -c1-8)
 U=$(python3 -c "import sys; sys.path.insert(0,'/home/claude/rl_vendor'); import unidecode; print('OK')" 2>/dev/null || echo FAIL)
 echo "bootstrap OK"
-echo "  engine md5     : $M   (expect 8aed420a)"
+echo "  engine md5     : $M   (candidate: F1/F2 one-source rewire)"
 echo "  cm_400 md5     : $C   (expect 34faa865)"
+echo "  store md5      : $S   (single source; no .pre_stage0/.stage0 lookalikes)"
 echo "  unidecode      : $U   (vendored, offline)"
-echo "  store          : rl_model_data.json = reconciled pre_stage0 (authoritative)"
 echo "  ENV (with vendor): PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor"
 echo "  next: bash $HERE/run_panel.sh"

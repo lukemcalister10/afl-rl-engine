@@ -17,7 +17,7 @@ def trunc(p,T):
     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]; return q,d0+T
 def real_mat(p):
     s=sorted([a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]; return float(np.mean(s)) if s else 0.0
-full=[p for p in MA.data if not p.get('_double_count') and MA.GRP.get(p['pos'])]
+full=[p for p in MA.data if MA.GRP.get(p['pos'])]
 TEN=[0,1,2,3,4,5]; agg={}
 for D in range(2014,2019):
     coh=[p for p in full if p.get('type')=='ND' and p.get('pick') and p['year']==D and p.get('scoring')]

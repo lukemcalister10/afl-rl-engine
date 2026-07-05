@@ -32,7 +32,7 @@ shar=round(_pv(f('Sharman'),0)); print('  engine Sharman proj_value(0) = %d  (~3
 print('  board: %d active players' % len(MA.players))
 cov={q:0 for q in cp.Q}; n=0
 for p in MA.data:
-    if p.get('_double_count') or not MA.GRP.get(p['pos']) or cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')): continue
+    if not MA.GRP.get(p['pos']) or cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')): continue
     d0=cp.debutyr(p)-1; last=max([x['year'] for x in p['scoring']]+[d0])
     for Y in range(d0,min(last,2021)+1):
         t=cp.fwd_best3_from(p,Y,2026); band=cp.cond_prior_band(p,cm,Y); n+=1
