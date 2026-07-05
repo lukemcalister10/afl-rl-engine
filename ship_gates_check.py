@@ -180,17 +180,22 @@ if len(rucs) >= 3 and len(mids) >= 10:
          f'yr1-3 RUC median={med_ruc:.0f} (n={len(rucs)}, pooled — thin slice) vs pick-matched MID kernel median={med_mid:.0f} (n={len(mids)}, bw=0.6 log-pick, RATIFIED 02/07)')
 else:
     gate('A6', False, 'ERROR', f'thin cohorts: RUC n={len(rucs)} MID n={len(mids)}')
-# A7 — position poles hold
+# A7 — position poles hold. AMENDED 2026-07-05 (Luke, owner-authorised in writing): the 2026-07-05 DPP strip
+# (final consolidation) DELETED the multi-position _fut weighted-blend from engine + store (0/2652 records carry
+# _fut). A7's protected-pole read is re-pointed from the stripped p.get('_fut')-dominant label to the live single
+# settled-future position p.get('future_position') (the source gfut() prices the years-1+ leg from). CHANNEL SWAP
+# ONLY — same protected players, same pass condition (fine future_position == dom AND gfut(p) == grp), tolerance
+# UNCHANGED; A7 still tests "did a protected position pole silently revert?" against the CURRENT data model.
+# See CHANGELOG 2026-07-05 (frozen-suite amendment) + SHIP_GATES.md A7.
 try:
     ok, det = True, []
     for nm, dom, grp in [('Ryan Maric', 'MID', 'MID'), ('Ed Langdon', 'GDEF', 'GEN_DEF')]:
         p, err = byname(nm)
         if err: raise LookupError(err)
-        fut = sorted(p.get('_fut') or [], key=lambda t: -t[1])
-        lab = fut[0][0] if fut else None
+        lab = p.get('future_position')            # AMENDED 2026-07-05: was sorted(p['_fut'])-dominant; _fut blend stripped by the DPP consolidation
         g_ = MA.gfut(p)
         ok &= (lab == dom and g_ == grp)
-        det.append(f'{nm}: fut-dominant={lab}({fut[0][1] if fut else 0:.0f}%) gfut={g_} (need {dom}/{grp})')
+        det.append(f'{nm}: future_position={lab} gfut={g_} (need {dom}/{grp}) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]')
     gate('A7', False, 'PASS' if ok else 'FAIL', '; '.join(det))
 except LookupError as ex:
     gate('A7', False, 'ERROR', str(ex))
