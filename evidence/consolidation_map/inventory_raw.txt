@@ -1,0 +1,117 @@
+==================================================================
+STEP 0 — GROUND TRUTH
+==================================================================
+git HEAD short          = 6c28b59  (expect 389ac39)
+store md5(8)            = 644d1254  (expect 644d1254)  [rl_model_data.json = pre_stage0]
+board md5(8)            = eb5d6716  [data/rl_build/rl_app_data.json = the app board]
+baked matrix (filename) = data/s4_matrix_baked_c47cb43d.json  [engine md5 c47cb43d]
+store byte-size        = 1,201,231
+store records          = 2656
+==================================================================
+TASK 3/4 — STORE FIELD PRESENCE (source flags)
+==================================================================
+  player          present in  2656 / 2656
+  pick            present in  2656 / 2656
+  year            present in  2656 / 2656
+  type            present in  2656 / 2656
+  pos             present in  2656 / 2656
+  key             present in  2656 / 2656
+  games           present in  2656 / 2656
+  scoring         present in  2656 / 2656
+  _has26          present in  2656 / 2656
+  _retired        present in  2656 / 2656
+  _by             present in  2656 / 2656
+  _cat            present in  2656 / 2656
+  _draft          present in  2656 / 2656
+  _club           present in  2656 / 2656
+  _pickless       present in  2656 / 2656
+  _bd             present in   846 / 2656
+  _fut            present in   750 / 2656
+  _pos_now        present in   131 / 2656
+  _force_active   present in    63 / 2656
+  _last_listed    present in    13 / 2656
+  _phantom        present in     4 / 2656
+  _pvc_exclude    present in     3 / 2656
+  _double_count   present in     2 / 2656
+==================================================================
+TASK 3 — CREDIT / SPECIAL-CASE RECORDS (the confusing candidates)
+==================================================================
+  Dylan Shiel                        key=dylan-shiel                type=ND   _pvc_exclude
+  Jeremy Cameron                     key=jeremy-cameron             type=ND   _pvc_exclude
+  Adam Treloar                       key=adam-treloar               type=ND   _pvc_exclude
+  Phantom (2019 ND #35 bust)         key=phantom-2019nd35           type=ND   _phantom
+  Phantom (2022 MSD #11 bust)        key=phantom-2022msd11          type=MSD  _phantom
+  Mark Keane (IRE credit)            key=mark-keane-ire-credit      type=IRE  _phantom+_double_count
+  Lachlan McAndrew (MSD credit)      key=lachlan-mcandrew-msd-credit type=MSD  _phantom+_double_count
+==================================================================
+TASK 3 — CATEGORICAL DISTRIBUTIONS (draft type / category / channel)
+==================================================================
+  [type]
+      ND                               1572
+      RD                               693
+      MSD                              109
+      IRE                              59
+      UNR                              59
+      PDA                              51
+      SSP                              49
+      PDN                              43
+      PDS                              21
+  [_cat]
+      None                             2483
+      Academy                          68
+      Father-Son                       61
+      Next Gen                         24
+      Academy - Unmatched              18
+      Priority (West Coast)            1
+      Compensation (Campbell Brown)    1
+  [_draft]
+      National                         1386
+      Rookie                           557
+      None                             325
+      Mid-Season                       109
+      Post-Draft - Unregistered        59
+      Post-Draft - Ireland             56
+      Post-Draft - Academy             50
+      SSP                              49
+      Post-Draft - Next Gen            43
+      Post-Draft - Scholarship         21
+      Post Draft - Academy             1
+==================================================================
+TASK 3 — CREDIT MAGNITUDES ON THE BOARD (PICKEQ / MECH)
+==================================================================
+  PICKEQ (pathway -> pedigree pick-equivalent applied as _eff):
+      MSD   -> pick_equiv 59
+      IRE   -> pick_equiv 94
+      PDA   -> pick_equiv 94
+      PDN   -> pick_equiv 94
+      PDS   -> pick_equiv 94
+      SSP   -> pick_equiv 94
+      UNR   -> pick_equiv 94
+  MECH pathway pools:
+      Mid-Season             n= 47 played= 20 hit= 42.6% pooled=  3 pick_equiv=59
+      Post-draft Scholarship n= 21 played=  4 hit= 19.0% pooled=  1 pick_equiv=94
+      SSP / pre-season supp. n= 24 played= 13 hit= 54.2% pooled=  2 pick_equiv=94
+      Post-draft Academy     n= 38 played= 10 hit= 26.3% pooled=  2 pick_equiv=94
+      Ireland                n= 50 played= 15 hit= 30.0% pooled=  2 pick_equiv=94
+      Unregistered           n= 46 played= 13 hit= 28.3% pooled=  2 pick_equiv=94
+      Post-draft Next-Gen    n= 24 played=  4 hit= 16.7% pooled=  1 pick_equiv=94
+  active board (805) by draft type: {'ND': 590, 'RD': 66, 'PDA': 15, 'MSD': 63, 'SSP': 28, 'PDN': 16, 'IRE': 14, 'UNR': 13}
+==================================================================
+TASK 4 — POSITION FIELDS & COLLAPSE MAP
+==================================================================
+  SOURCE (rl_model_data.json):
+    pos       drafted position   7 codes: {'MID': 730, 'GDEF': 418, 'KDEF': 281, 'KFWD': 307, 'GFWD': 562, 'RUC': 221, 'DEF': 137}
+    _pos_now  present override  set in 131 records
+    _fut      raw multi-pos     set in 716 records
+  ENGINE map GRP (rl_model.py:31): MID->MID RUC->RUC GFWD->GEN_FWD KFWD->KEY_FWD GDEF->GEN_DEF DEF->GEN_DEF KDEF->KEY_DEF
+  ENGINE derived:
+    bnow(p)   = GRP(_pos_now or pos)   -> PRESENT valuation group  (own active value)
+    gfut(p)   = GRP(max-weight _fut)   -> FUTURE settled group     (curve/peak/runway)
+    futblend  = normalised _fut blend  -> years-1+ replacement mix
+    pm_pos    = 'band|group' key       -> peak-multiplier curve (params/rl_passmark)
+  BOARD app record (rl_app_data active): grp=bnow  gf=gfut  fut=futblend   (no raw pos/_pos_now)
+  BOOK s4_matrix record: pos=GRP(pos)  cpos=gfut  sw=(pos!=gfut) switch flag  (xlsx book only)
+
+  COLLAPSE TARGET: two fields ->
+    present_position = _pos_now or pos   (source: 131 overrides; board grp/bnow)
+    drafted_position = pos               (source; board grp uses present, book pos uses drafted)
