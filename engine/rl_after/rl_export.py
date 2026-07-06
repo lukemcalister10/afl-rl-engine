@@ -30,7 +30,7 @@ los_decay=g['los_decay']; clamp=g['clamp']; hist=g['hist']; pkbest=g['pkbest']; 
 PVC=g['PVC']; SCALE=g['SCALE']; debut=g['debut']; data=g['data']; BANDS=g['BANDS']; NB=len(BANDS)
 expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PICKEQ=g['PICKEQ']; MECH_STATS=g['MECH_STATS']
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
-val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']
+val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']
 
 # ONE PRICE (D4, Luke's ruling 02/07/2026): the board renders engine ev() -- _merged_recover is the single
 # valuation source. The forward/backward season view asks the engine the as-of-year question:
@@ -46,14 +46,14 @@ with _ctx.redirect_stdout(_io.StringIO()):
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
 
 def player_rec(p):
-    grp=bnow(p); gf=gfut(p); fb=futblend(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)
+    grp=bnow(p); gf=gfut(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)  # gf==gfut(p) still feeds track_delta below; the trivial gf/fut EXPORT columns are dropped (DPP dead-code strip)
     g['STBL']=False; pn=peak_est(p); g['STBL']=True; ps=peak_est(p); g['STBL']=False
     dlt,_=track_delta(gf,ep,srel(p)); surv=survival(b,dlt if dlt is not None else 0,p['games'])
     cg=sum(r['games'] for r in p['scoring']); sr=srel(p)
     track=[{'s':s,'a':round(sr[s][0],2)} for s in sorted(sr) if s<=10]
     has26=any(r['year']==2026 and r['games']>=3 for r in p['scoring'])
     mech=p['type'] if p['type'] in PICKEQ else None
-    return {'name':p['player'],'key':p['key'],'grp':grp,'gf':gf,'fut':[[gg,round(w,4)] for gg,w in fb],'age':age(p),'ln':(round(ln,6) if ln is not None else None),'h26':bool(has26),
+    return {'name':p['player'],'key':p['key'],'grp':grp,'age':age(p),'ln':(round(ln,6) if ln is not None else None),'h26':bool(has26),
             'lns':(round(lns,6) if lns is not None else None),'pn':round(pn,6),'ps':round(ps,6),'ep':ep,'band':b,
             'surv':1.0,'pedDecay':round(max(0.0,1-(seasons(p)-1)/4.5),6),'losd':round(los_decay(p),6),
             'g':p['games'],'cg':cg,'yr':p['year'],'pk':p['pick'],'ty':p['type'],'unpl':bool(p.get('_unplayed')),

@@ -251,7 +251,7 @@ def v_at_peak(p,L,lens='bal'):
     """Value p AS IF forward-peak = L, through the production chain at the player's REAL age.
     Proven players: == value() at L=peak_est (production-dominated). Old players: declines (real age past peak)."""
     g=MA.gfut(p); g0=MA.bnow(p); cur=MA.level_now(p)
-    prod=MA.val(MA.proj_from_peak(g,L,MA.age(p),cur,lens,g0=g0,fut=MA.futblend(p),pre_hc=p.get('_b2hc',0.0)))
+    prod=MA.val(MA.proj_from_peak(g,L,MA.age(p),cur,lens,g0=g0,pre_hc=p.get('_b2hc',0.0)))  # g==MA.gfut(p) single settled-future position; proj_from_peak's fut default [(g,1.0)] reproduces the old MA.futblend(p)
     return max(prod,MA.prod_floor(p,lens))
 
 # ======================= dist_value =======================

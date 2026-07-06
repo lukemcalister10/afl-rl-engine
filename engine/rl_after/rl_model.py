@@ -42,7 +42,6 @@ def gfut(p):                                  # SETTLED FUTURE position (single)
     fp=p.get('_futpos')
     if fp: return GRP.get(fp) or bnow(p)
     return bnow(p)                            # no future_position (e.g. gate synths) -> present position
-def futblend(p): return [(gfut(p),1.0)]       # DPP STRIP: years-1+ leg is a SINGLE position (future_position), no blend
 # Real-life entry mechanisms. National draft ('ND') is the pick scale. Rookie ('RD') extends it.
 # The rest entered with NO national slot -> their _eff (pick-equivalent) is derived empirically AFTER the PVC is built.
 PICKLESS={'SSP','MSD','IRE','UNR','PDA','PDN','PDS'}
@@ -405,7 +404,7 @@ def peak_est(p):                       # cont.20: learned v4 forward-projection 
     return pe
 def player_raw(p,lens='bal'):
     g0 = bnow(p) if AGE_REF==BASE_REF else gfut(p)   # A2 (PARKED 4): on forward boards (AGE_REF>BASE_REF) the year-0 present has rolled to the future position, so its replacement bar uses gfut, not the present bucket
-    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_b2hc',0.0))
+    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,pre_hc=p.get('_b2hc',0.0))  # years-1+ leg is the single settled-future position gfut(p); proj_from_peak's fut default [(g,1.0)] reproduces it
 def pa(g): return PEAK_AGE[g]
 # unplayed prospects: recent national/rookie draftees not yet debuted (valued on pedigree alone, like the old engine)
 extra=[]
