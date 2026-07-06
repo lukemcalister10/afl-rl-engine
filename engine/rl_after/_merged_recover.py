@@ -43,6 +43,32 @@ LDECAY_G={'KEY':0.40,'GEN':0.35,'MR':0.225}; FLAT_TOL_G={'KEY':10.3,'GEN':12.0,'
 _AGEMULT_X=[20,22,25,28,30,32,34,37]; _AGEMULT_Y=[0.92,0.89,0.85,0.79,0.73,0.68,0.62,0.55]
 def _agemult(a): return float(np.clip(np.interp(a,_AGEMULT_X,_AGEMULT_Y),0.53,0.95)) if a is not None else 0.85
 DOWN_TOL=3.0   # down-side hold band (data: recovery~0 beyond ~3); ASYMMETRIC vs up-side FLAT_TOL (10-14)
+# FORM-CONDITIONED DECLINER SHED 2026-07-06 (candidate, folded from PR #45 verbatim at the W4 integration): the
+#   age-only _agemult over-sheds STILL-ELITE elders (measured: a former-Brownlow-level 33yo who dips >3 is
+#   multiplied 0.65 by age alone). DERIVED f(age, level) from realised forward output: r = washout-incl
+#   fwd-mean(Y+1..Y+3)/Lc over the established SHED population (nq>=PROVEN_N & Lo-Lc>DOWN_TOL, 2369
+#   player-seasons, debut..2024). Level axis = lcr = Lc - REPL[gfut] (production above positional replacement —
+#   separates a still-elite dip from a genuine fade; mean r rose 0.11 -> 0.90 across lcr, monotone). _agemult2 =
+#   _agemult(age) + UP-ONLY credit bump _fbump(age,lcr): bump = kernel-smoothed E[max(0, r - _agemult(age))]
+#   (2-D adaptive Gaussian bw grown to eff-n>=35 per node; all cells eff-n>=40 so the declared thin-cell
+#   shrink-to-1D-prior stayed inert), isotonic non-decreasing in lcr / non-increasing in age; positions POOLED
+#   (predecessor: position ~uniform; RUC thinnest — DECLARED).
+#   SINGLE-LEVER SAFETY: (i) lcr<=0 -> byte-exact _agemult (every below-replacement fader still falls; e.g.
+#   Coniglio/Adams/Blicavs Δ=0); (ii) up-only -> the curve never sheds MORE than the age baseline (no down-mover);
+#   (iii) reached ONLY on the shed down-branch, so every non-shed player is Δ=0 by construction.
+#   Kill-switch RL_FORMDECL=0 -> byte-exact to baked v2.5. Derivation: PR #45 / session_2026-07-06/.
+_FORMDECL=os.environ.get('RL_FORMDECL','1')!='0'
+_FB_AGE=[22.,25.,28.,30.,32.,34.,37.]; _FB_LCR=[0.,5.,15.,30.]   # runtime knots: 0-anchored (lcr<=0 hard-zeroed)
+_FB_Z=[[0.,0.1152,0.1239,0.1439],[0.,0.1152,0.1239,0.1439],[0.,0.0968,0.1192,0.1439],[0.,0.0704,0.0939,0.1439],
+       [0.,0.053,0.0802,0.1439],[0.,0.0414,0.0802,0.1369],[0.,0.0296,0.0802,0.1051]]   # up-only credit; fitted session_2026-07-06
+def _fbump(a,lcr):
+    a=float(np.clip(a,_FB_AGE[0],_FB_AGE[-1])); l=float(np.clip(lcr,0.0,_FB_LCR[-1]))
+    col=[float(np.interp(l,_FB_LCR,row)) for row in _FB_Z]       # per-age bump at this lcr, then interp over age
+    return float(np.interp(a,_FB_AGE,col))
+def _agemult2(a,lcr):                                            # form-conditioned decline multiplier (age x level-above-replacement)
+    base=_agemult(a)
+    if a is None or not _FORMDECL or lcr<=0.0: return base       # byte-exact age-only where inert / at-or-below replacement
+    return float(np.clip(base+_fbump(a,lcr),0.53,0.98))          # ceiling 0.95->0.98: a still-elite elder sheds only lightly
 cp._lvl_eff_orig=cp._lvl_eff
 def _nqual(p,Y): return sum(1 for x in p['scoring'] if x['games']>=10 and x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
 # D10 SCOPE NOTE (declared): the 10-bar prorates for the FIRST qualifying season only (delivered
@@ -71,7 +97,7 @@ def _lvl_eff_core(p,Y):
         drop=L_old-Lc
         if drop<=DOWN_TOL: return L_old                        # down-wobble (<=3): hold steady
         sw=float(np.clip((drop-DOWN_TOL)/5.0,0.0,1.0))        # smooth shed onset over drop 3->8 (no hard boundary)
-        Lsh=Lc*_agemult(cp._age_asof(p,Y))                    # DECLINER SHED: realised forward level (current, age-accelerated below)
+        Lsh=Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))  # DECLINER SHED: form-conditioned (dormant twin; superseded by _coreM1 via the _inferM1 bind — kept in lock-step for code honesty)
         return (1.0-sw)*L_old+sw*Lsh
     c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)           # career-thin (1..3 seasons) -> shrink current toward pedigree par
 # UPSIDE FADE 2026-06-30 (GENTLER, candidate): elapsed-opportunity-gated fade of the pedigree/upside credit toward the
@@ -178,7 +204,7 @@ def _coreM1(p,Y):
         if Lc>=Lo: return (Lo+S_M1*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
         drop=Lo-Lc
         if drop<=DOWN_TOL: return Lo
-        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult(cp._age_asof(p,Y))
+        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
     c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
 def _inferM1(p,Y):
     L0=_coreM1(p,Y); eo=_eo(p,Y)
@@ -190,6 +216,18 @@ def _inferM1(p,Y):
 def _v7(bb,p,Y):
     bb=list(bb); m=bb[2]; a=cp._age_asof(p,Y)
     asc=float(np.interp(a,[20,22,24,27],[1.0,0.76,0.58,0.40]))
+    # W4 (RL_V7FORM): FORM-CONDITIONED tail retention — the #45 HARD FLAG made a lever. v7 compressed the q97
+    # upside tail of EVERY demonstrated producer by AGE ALONE (flat 0.40 from 27; and it hit still-rising young
+    # high-ceilings hardest: Serong +111 > Cameron +27 when toggled off). A player whose DEMONSTRATED level sits
+    # clearly above his positional replacement (lcr) with at least one qualifying season keeps a share of his
+    # tail: asc' = asc + (1-asc)*phi, phi = clip((lcr-4)/26,0,1)*min(nq,2)/2*V7W. Unproven speculation (lcr<=4
+    # or nq==0) keeps the FULL age compression — the #43 audit measured young speculation correctly-to-OVER-
+    # priced, so the relax is demonstration-earned only. RL_V7FORM=0 -> byte-exact v2.5 taper.
+    if _W4V7 and asc<1.0:
+        _lcr=_lvlcurr(p,Y)-MA.REPL.get(MA.gfut(p),0.0); _nq=_nqual(p,Y)
+        if _lcr>4.0 and _nq>=1:
+            _phi=float(np.clip((_lcr-4.0)/26.0,0.0,1.0))*min(_nq,2)/2.0*V7_FORM_W
+            asc=asc+(1.0-asc)*_phi
     bb[5]=m+asc*(bb[5]-m); return bb
 # STABLE-KEY REAL-membership (F1 fix 2026-07-05, Luke one-source rewire). The _REAL gate decides which players
 # receive the engine's real-store layers (RUC prior cap :317/:492, v7 age-taper :198, B5 floor :552). It is now
@@ -240,6 +278,140 @@ def _m3_feat(p,Y):                                            # _feat's ten term
         f[8]=eff_ten(p,Y, max(0,(Y-1)-(cp.debutyr(p)-1)))     # index 8 = ten (6 one-hots + logep, exposure, ten, lvl, age)
     return f
 cp._age_asof=_m3_age_asof; MA.age=_m3_age; PR.tenure=_m3_ten; cp._feat=_m3_feat
+# ==== W4 INTEGRATION CORE (2026-07-06, candidate) — FORWARD-VALUATION (present-vs-future) RECALIBRATION ======
+# THE AXIS: every price integrates proj_from_peak's year-k contributions at weight 21/(1.15)^k over the forward
+# horizon. The owner's ground truth (rev116/ADDENDUM): that flat weighting treats a moderate producer's year-9
+# margin as being as certain as a proven elite's year-1 margin — so elite durable veterans are under-credited
+# for CERTAIN present above-replacement MARGIN (+captaincy +durability), young fliers are under-credited for
+# RUNWAY (the survivor reward is not priced forward into year 1), and the established mid-cohort is over-
+# weighted between them. RECALIBRATION = a FORM-CONDITIONED (never age-keyed) weight W(k) on the year-k term:
+#   PROVEN (nqual>=4):  W(k) = 1 + CRED·kpf_up·g(m)·dur·sh·c_near(k)  −  FADE·(1−g(m))·h_far(k)
+#   THIN-CAREER YOUNG:  W(k) = 1 + YCRED·thin·yage·c_yng(k)
+#   then ×(1 − OVPX·ovpx)   [deep-pick GEN_FWD 41-70 over-optimism compress — the ONE owner-agreed #43 flag;
+#                            MID 1-3 (2.09) deliberately NOT touched — stays FLAGGED for owner ruling]
+# with m = Lc − REPL[pos] (the same conditioning variable as the #45 shed), g(m)=clip((m−6)/22,0,1),
+# dur = games(Y−2..Y)/28 clipped, sh = 1−clip((Lo−Lc−3)/5,0,1) (decline gate, mirrors the shed switch),
+# c_near = interp(k,[0,2,5],[1,1,0]) (present-tense, runway-independent — a short-horizon elite benefits most;
+# captaincy rides inside every credited year via capt_prem), h_far = interp(k,[4,10],[0,1]) (the FUNDING leg:
+# a moderate-margin established player's years 5+ carry washout risk the flat discount never charged),
+# thin = 1−nqual/4, yage = clip((23−age)/2,0,1), c_yng = interp(k,[0,1,4,8],[.6,1,1,0]) (prices the survivor
+# reward forward into years 1-2 — governed by the ≤130% walk-forward cohort no-arbitrage bound, baked 125.2%).
+# WIRING: MA.proj_from_peak is rebound to the W(k) version; the per-player context is set by a raw_ev wrapper.
+# Synths carry no store key → context None → BYTE-EXACT delegation to the original (pole/ISO/gate/ruck-ceiling
+# tables untouched). The wrapper binds BEFORE the V0 guard/curve builds, so the young credit flows into V0 →
+# the year-1 anchors → the book's year-1 cohort (the no-arbitrage denominator). The V0 fit sees recalibrated
+# inputs but stays a function of (pos, draft-age, pick) — D14a/b/c laws hold by construction.
+# KILL-SWITCHES (per-lever attribution): RL_FWDRECAL (credit+fade) · RL_YOUNG · RL_OVPX · RL_KPFFIX ·
+# RL_V7FORM · RL_W4_RUC · RL_FORMDECL · RL_PVCFIT. ALL OFF ⇒ byte-exact baked v2.5.
+_W4FWD=os.environ.get('RL_FWDRECAL','1')!='0'
+_W4YNG=os.environ.get('RL_YOUNG','1')!='0'
+_W4OVP=os.environ.get('RL_OVPX','1')!='0'
+_W4KPF=os.environ.get('RL_KPFFIX','1')!='0'
+_W4V7=os.environ.get('RL_V7FORM','1')!='0'
+V7_FORM_W=float(os.environ.get('RL_V7_FORM_W','0.6'))     # demonstrated-producer tail retention share (v7 relax)
+W4_CRED=float(os.environ.get('RL_W4_CRED','0.17'))        # proven-elite present-margin certainty credit (calibrated: Bont>=+10% with margin, pool net ~redistribution-neutral)
+W4_KPFUP=float(os.environ.get('RL_W4_KPFUP','1.6'))       # KPF reward multiplier on the margin credit (low-REPL bar leverage)
+W4_FADE=float(os.environ.get('RL_W4_FADE','0.60'))        # moderate-margin established far-year fade (the funding leg; age-ramped 23->26 so young proven keep their prime years)
+W4_YCRED=float(os.environ.get('RL_W4_YCRED','0.13'))      # young runway / survivor-reward-forward credit
+W4_OVPX=float(os.environ.get('RL_W4_OVPX','1.0'))         # global scale on the deep-pick over-optimism compress (per-pos depths below)
+W4_OVPX_D={'GEN_FWD':0.12,'GEN_DEF':0.09,'MID':0.07}      # #43-measured deep-pick (41-70) coverage excess: 2.14 / 1.70 / 1.55 -> partial, data-earned compress; smooth in pick 38->46, thin-career only. MID 1-3 (2.09) NOT touched (owner-flagged).
+W4_KPFSH=float(os.environ.get('RL_W4_KPFSH','0.55'))      # established-KPF loose-residual retention (e' = eP + SH·(e−eP))
+_W4CTX={'on':None}
+def _w4_ctx(p,Y):
+    """Per-player form context for the recalibrated projection; None => byte-exact original path."""
+    if not (_W4FWD or _W4YNG or _W4OVP) or not _isreal(p): return None
+    pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
+    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
+    if n>=PROVEN_N:
+        Lc=_lvlcurr(p,Y); Lo=cp._lvl_eff_orig(p,Y)
+        m=Lc-MA.REPL.get(pos,0.0)
+        g3=sum(x.get('games',0) for x in p['scoring'] if Y-2<=x['year']<=Y)
+        ctx['gm']=float(np.clip((m-10.0)/20.0,0.0,1.0))   # credit ramp starts at m=10: "only the best-of-the-best clearly above replacement" (owner); the m 10-20 mid-band earns partial credit and carries most of the fade
+        ctx['dur']=float(np.clip(g3/28.0,0.0,1.0))
+        ctx['sh']=1.0-float(np.clip((Lo-Lc-DOWN_TOL)/5.0,0.0,1.0))
+        ctx['fadew']=float(np.clip(((a if a is not None else 25.0)-23.0)/3.0,0.0,1.0))  # fade age-ramp 23->26: a YOUNG proven player's far years are his PRIME (durable-young selection signal), not washout risk — the funding cohort is the established 25-30 mid
+    else:
+        ctx['thin']=float(np.clip(1.0-n/float(PROVEN_N),0.0,1.0))
+        # runway is POSITION-RELATIVE (a 23yo KPF is pre-peak development, peak age 27; a 23yo MID is at peak):
+        # full credit through PEAK_AGE-4, faded out by PEAK_AGE-1 — the forfeited-growth-year young gun (Darcy
+        # class) keeps his runway credit instead of being cut off by a flat age-23 line.
+        _pa=MA.PEAK_AGE.get(pos,25)
+        ctx['yage']=float(np.clip(((_pa-1.0)-(a if a is not None else 21.0))/3.0,0.0,1.0))
+        _d=W4_OVPX_D.get(pos)
+        if _d:
+            ctx['ovpx']=_d*float(np.interp(ctx['ep'],[38.,46.,99.],[0.,1.,1.]))
+    return ctx
+def _w4_W(k,ctx):
+    W=1.0
+    if ctx.get('n',0)>=PROVEN_N:
+        if _W4FWD:
+            up=W4_CRED*(W4_KPFUP if (_W4KPF and ctx['pos']=='KEY_FWD') else 1.0)
+            W+=up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
+            W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
+    elif _W4YNG:
+        W+=W4_YCRED*ctx.get('thin',0.0)*ctx.get('yage',0.0)*float(np.interp(k,[0.,1.,4.,8.],[.6,1.,1.,0.]))
+    if _W4OVP and ctx.get('ovpx',0.0)>0.0:
+        W*=(1.0-W4_OVPX*ctx['ovpx'])
+    return max(W,0.05)
+_proj_w4_0=MA.proj_from_peak
+def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
+    ctx=_W4CTX['on']
+    if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc)   # synths / lever-off: byte-exact original
+    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(a,pa); prod=0.0
+    if g0 is None: g0=g
+    if fut is None: fut=[(g,1.0)]
+    for k in range(18):
+        ag=a+k
+        if ag>38 or MA.frac(ag,pa)<0.42: break
+        lev=lp*MA.frac(ag,pa)
+        if ag<=pa: lev=max(lev,cl)
+        if k==0: lev=max(lev,cl)
+        if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
+        base=lev+MA.capt_prem(lev)
+        Wk=_w4_W(k,ctx)
+        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
+        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
+    if g in('KEY_FWD','KEY_DEF'): prod*=1.05
+    runway=MA.clamp((25-a)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
+    return prod
+MA.proj_from_peak=_proj_w4
+# The DEMONSTRATED-PRODUCTION FLOOR carries the same near-year certainty credit (proven branch only). Without
+# this the credit is invisible exactly where the elder's certain present lives: for a still-elite veteran the
+# lower band nodes resolve to max(proj, prod_floor) = the FLOOR, and an uncredited floor mutes the owner's
+# durability-buffer ("his high floor is low-risk value the runway discount over-penalises — credit the margin").
+# The floor is a <=3-year present-value, so h_far(k)=0 there by construction — the fade CANNOT reach it: a
+# moderate player's certain demonstrated present is never faded, only his speculative far years are.
+_prod_floor_w4_0=MA.prod_floor
+def _prod_floor_w4(p,lens='bal'):
+    ctx=_W4CTX['on']
+    if ctx is None or ctx.get('n',0)<PROVEN_N or not _W4FWD: return _prod_floor_w4_0(p,lens)
+    g=MA.bnow(p); a=MA.age(p); pa_=MA.PEAK_AGE[g]; cur=MA.level_now(p)
+    if cur is None: return 0
+    d=MA.LENS[lens]; H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
+    while k<H:
+        ag=a+k; wt=min(1.0,H-k)
+        lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
+        if k==0 and p.get('_b2hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_b2hc'])
+        prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
+    return MA.val(prod)
+MA.prod_floor=_prod_floor_w4
+_raw_ev_w4_0=raw_ev
+def raw_ev(p,Y=2026):                                        # W4: context-setting wrapper (real players only; synths delegate clean)
+    prev=_W4CTX['on']; _W4CTX['on']=_w4_ctx(p,Y)
+    try: return _raw_ev_w4_0(p,Y)
+    finally: _W4CTX['on']=prev
+_B6PIN={'L':None}                                            # W4 KPF: band pin — collapse the forward band to one level (production-implied EFV probe)
+_b6_pre_w4=b6
+def b6(p,Y=2026):
+    if _B6PIN['L'] is not None: return np.full(6,float(_B6PIN['L']))
+    return _b6_pre_w4(p,Y)
+def _kpf_prod_efv(p,Y):
+    """The engine's own price of the player's DEMONSTRATED level: band pinned at _lvl_eff (same W4 context, so
+    the margin credit survives — the compress removes only the band/prior excess above demonstrated output)."""
+    _B6PIN['L']=cp._lvl_eff(p,Y)
+    try:
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+    finally: _B6PIN['L']=None
 # ===== helpers for delist + staleness =====
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
@@ -320,8 +492,52 @@ def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD
 # production above his (uncapped) start value (Sweet 2011, McAndrew 992, Xerri 5755, Grundy, Gawn, Marshall)
 # is byte-exact. Derivation/ladder: session_2026-07-03/d13/d13_ask1_ruck_cap.md.
 RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default 1.73->1.4 (owner ruck-cap dial, v2.4 bake 2026-07-04; env override preserved)
-def _ruc_prior_cap(p,v):                                      # cap a RUC band-fed value at RUC_PRIOR_CAP x PVC (real rucks)
-    return min(v, RUC_PRIOR_CAP*draftval(p)) if (_isreal(p) and MA.gfut(p)=='RUC') else v
+# ==== W4 RUCK LEVER (folded from PR #44 verbatim + the owner-required SMOOTH YOUNG-RUCK HEADROOM) ============
+# PR #44 core: the old lever capped a real ruck's PRODUCTION leg at a flat multiple of draftval (PVC = draft-pick
+# capital), blending heterogeneous units. The swap: the production leg (ev() hook, prior-dominated regime) is
+# capped at a ceiling DERIVED off ruck production instead of pick capital:
+#   ceiling(p) = RUC_CEIL_HEAD * synthprice_RUC(bestlvl(p)) at the ruck-median slot RUC_CEIL_REFPK=72 — the
+#   engine's own pricing of a STANDARDIZED developing ruck at the player's era-normalized peak production.
+#   Pick-neutral, production-only, monotone non-decreasing. Thin-slice choice (declared): the ruck slice is
+#   POOLED onto one pick-neutral production->$ curve (empirical kernel over live raw_ev was REJECTED —
+#   age/tenure-contaminated, non-monotone, crushed thin prospects). NO-PRODUCTION FALLBACK: bestlvl==0 rucks
+#   keep the prior cap (RUC_PRIOR_CAP x PVC). V0 draft-prior/floor SCAFFOLD byte-identical (PR #44 scope).
+# W4 EXTENSION — YOUNG-RUCK HEADROOM as a SMOOTH function of pick x age (owner's wide-band objection to the
+# audit's hard pk1-20 cell; #43 measured the young-ruck convexity coverage 0.61-0.73 = the one genuinely
+# UNDER-priced young pocket, while RUC 21-40 is over (1.59) so the fade is OUT by pick ~30):
+#   _ruc_head_mult(p) = 1 + YRH * interp(pk,[1,4,18,30],[0.7,1,1,0]) * clip((25-age)/4,0,1)
+# applied to BOTH cap paths (production ceiling AND the no-production prior cap) so the fade has no cliff in
+# pick, age, or the production/no-production seam. YRH dial: RL_RUC_YRH (default 0.35); RL_W4_RUC=0 -> byte-
+# exact v2.5 ruck lever (1.4xPVC cap, no headroom).
+_W4RUC=os.environ.get('RL_W4_RUC','1')!='0'
+RUC_CEIL_HEAD=float(os.environ.get('RL_RUC_CEIL_HEAD','0.80'))  # headroom on the standardized production price for UNPROVEN exposure (PR #44 owner dial; lands Emmett in his stated 650-800)
+RUC_CEIL_REFPK=float(os.environ.get('RL_RUC_CEIL_REFPK','72'))  # ruck-median effpk = the pick-neutral "representative ruck slot"
+RUC_YRH=float(os.environ.get('RL_RUC_YRH','0.35'))              # young-ruck smooth headroom amplitude (W4; owner dial)
+_RUCCEIL={}; _RUCCEIL_META={}
+def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: era-adj peak avg -> ruck price
+    avs=list(np.linspace(15.0,150.0,46))
+    def _sp(a):
+        sp=synth(int(RUC_CEIL_REFPK),float(a),'RUC')
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_corr('RUC',MA.effpk(sp))
+    ys=[_sp(a) for a in avs]
+    for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
+    _RUCCEIL['grid']=(np.array(avs),np.array(ys))
+    _RUCCEIL_META.update(refpk=RUC_CEIL_REFPK,head=RUC_CEIL_HEAD,grid_lo=float(ys[0]),grid_hi=float(ys[-1]),n_avg=len(avs))
+def _ruc_head_core(pk,a):                                     # W4: SMOOTH young-ruck headroom (pick x age fade; no cliffs)
+    if not _W4RUC or RUC_YRH<=0.0: return 1.0
+    fpk=float(np.interp(float(min(pk,99)),[1.,4.,18.,30.],[0.7,1.0,1.0,0.0]))
+    fage=float(np.clip((25.0-(a if a is not None else 21.0))/4.0,0.0,1.0))
+    return 1.0+RUC_YRH*fpk*fage
+def _ruc_head_mult(p,Y=2026): return _ruc_head_core(MA.effpk(p),cp._age_asof(p,Y))   # PRODUCTION leg: as-of age (a 24yo producer keeps headroom; a 30yo does not)
+def _ruc_head_v0(p):                                          # V0/SCAFFOLD leg: DRAFT-TIME age (V0 is a draft-time anchor -> D14a same pos x draft-age x pick law preserved by construction)
+    return _ruc_head_core(MA.effpk(p), cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1)))
+def _ruc_ceiling(p,Y=2026):                                   # production-derived $ ceiling for a real ruck (bestlvl->$)
+    s=bestlvl(p,Y)
+    if s<=0: return RUC_PRIOR_CAP*draftval(p)*_ruc_head_v0(p)  # NO qualified production -> prior cap stands (x smooth young headroom, draft-age keyed like the scaffold it mirrors)
+    if 'grid' not in _RUCCEIL: _build_ruc_ceiling()
+    xg,yg=_RUCCEIL['grid']; return RUC_CEIL_HEAD*float(np.interp(s,xg,yg))*_ruc_head_mult(p,Y)
+def _ruc_prior_cap(p,v):                                      # V0 PRIOR SCAFFOLD cap — PR #44 kept this byte-identical; W4 DELIBERATELY extends it with the smooth young-pick headroom (the #43 under-priced pocket lives in the V0-anchored sit-out young rucks: Goad/Green class), draft-age keyed
+    return min(v, RUC_PRIOR_CAP*draftval(p)*_ruc_head_v0(p)) if (_isreal(p) and MA.gfut(p)=='RUC') else v
 _V0C={}; _V0U={}
 _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
                               # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
@@ -496,9 +712,21 @@ def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
-    if _isreal(p) and MA.gfut(p)=='RUC':                  # ASK1: cap PRIOR-DOMINATED ruck production leg only
-        _cpv=RUC_PRIOR_CAP*draftval(p); _v0u=_v0_uncapped(p)  #   bind iff C*PVC < e <= V0_uncapped (hot prior, no demonstrated growth);
-        if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=C*PVC (already low) -> byte-exact
+    if _isreal(p) and MA.gfut(p)=='RUC':                  # W4/PR#44: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling (RL_W4_RUC=0 -> v2.5 1.4xPVC cap)
+        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*draftval(p)); _v0u=_v0_uncapped(p)  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth);
+        if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=ceil (already low) -> byte-exact
+    # W4 KPF (RL_KPFFIX): compress the ESTABLISHED-KPF loose residual only — SETTLED #9 / PR #42 T1-shape.
+    # KPFs bunch near the lowest REPL bar (66.8) and the curve levers tiny production gaps into huge value gaps
+    # (CV spread-ratio 6.57 vs MID 4.17). For an established (nqual>=4, age>=24) KEY_FWD, any price ABOVE the
+    # engine's own price of his DEMONSTRATED level (eP, band pinned at _lvl_eff — same context, so the W4 margin
+    # credit survives inside eP) is band/prior looseness, not output: e' = eP + KPFSH·(e−eP). Young/speculative
+    # KPFs (nqual<4 or age<24) are NEVER touched — the Darcy/Duff-Tytler ceiling is protected by construction;
+    # the reward leg (above-REPL margin credit ×KPFUP) lives in _w4_W. No blunt group compression.
+    if _W4KPF and _isreal(p) and MA.gfut(p)=='KEY_FWD':
+        _nk=_nqual(p,Y); _ak=cp._age_asof(p,Y)
+        if _nk>=PROVEN_N and _ak is not None and _ak>=24.0:
+            _eP=_kpf_prod_efv(p,Y)
+            if e>_eP: e=_eP+W4_KPFSH*(e-_eP)
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
     pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
@@ -562,6 +790,28 @@ def ev(p,Y=2026):
     if yis<1: return v
     fl=floor_frac(yis)*v0_start(p)     # D12: RE-ANCHORED draftval -> live V0 (schedule unchanged; Luke R8)
     return v if v>=fl else round(fl)
+# ==== W4 PVC FIT (RL_PVCFIT, DOWNSTREAM) — per the re-stamped PVC Derivation Spec v1 (PR #41) ================
+# PVC(k) = end-of-calendar-year-1 as-of value of the TYPICAL player at pick k, FITTED FROM THE CANDIDATE
+# WALK-FORWARD BOOK anchors (2004-2024 ND pool) — so the curve reads the LIFTED young values and the LIVE ruck
+# values (nothing hardcoded), kernel-median over log-pick, parametric power top blended in by ~pick 12 (the
+# spec's loclin-at-pick-1), isotonic non-increasing, re-anchored to pick1 = RL_PICK1 (3000).
+# SCOPE (deliberate, declared): the fitted curve re-prices the PICK side (the board's trade currency) and
+# display/advisory consumers (A13/A14, book draftval column). PLAYER pricing does NOT read it back:
+# `draftval` — the RUC prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
+# PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
+# declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
+_W4PVC=os.environ.get('RL_PVCFIT','1')!='0'
+_PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
+def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
+import json as _w4json
+_PVCFIT_META={}
+if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
+    try:
+        _pf=_w4json.load(open('pvc_fit_candidate.json'))
+        MA.PVC={int(k):int(v) for k,v in _pf['curve'].items()}
+        _PVCFIT_META.update({k:_pf.get(k) for k in ('fitted_from','store_md5','n_anchors','window')})
+    except Exception as _e:
+        _PVCFIT_META['error']=repr(_e)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")

@@ -1,0 +1,15 @@
+eligible players: 2649
+[F2 FIX] double-fade harness removed; book built from live gated engine ev()
+matrix saved (CALENDAR-indexed): 2649 players -> /home/user/afl-rl-engine/session_2026-07-06/w4_integration/out/s4_matrix_prefit.json
+BOOK PARITY GATE PASS: all 803 shared board players' present value == book `cur`; 2 board players outside the cohort book (_pvc_exclude): ['adam-treloar', 'jeremy-cameron']
+
+MAPPING-ONLY PROOF — Seth Campbell: yrs=[2023, 2024, 2025, 2026] Vpath=[159, 393, 903, 1047]
+  new anchor (calendar Yr1 2023, no games)=159; the 465 first-played value now sits at its correct slot 2 (Yr2)
+
+CURVE-ANCHOR BIAS (2004-2024 ND+RD, n=2090):
+  sat out draft Yr1: 607 players (29% of curve pool)
+  over-valuation when anchored at first-played vs real Yr1: total=94300 SCAR, mean=+155, median=+43
+  whole-pool anchor sum: buggy=1263120 -> fixed=1185880  (6.1% lower overall)
+  picks 1-20: 78 sat-out, mean over-val +328 (40% of real Yr1)
+  picks 21-40: 131 sat-out, mean over-val +118 (27% of real Yr1)
+  picks 41-80: 271 sat-out, mean over-val +113 (45% of real Yr1)
