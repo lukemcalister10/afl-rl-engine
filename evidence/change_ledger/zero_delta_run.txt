@@ -1,0 +1,11 @@
+========================================================================
+CHANGE LEDGER   (descriptive -- what moved; not a score, not a gate)
+  before : data/rl_build/rl_app_data.json
+  after  : evidence/change_ledger/board_wave0a_built.json
+========================================================================
+
+HEADLINE: 0 of 805 players moved -- nothing changed in v/vM1/vM2/vP1/vP2; 2 dropped (fut, gf).
+
+No player value moved. This is a clean no-op on the board values.
+(Schema only: columns dropped fut, gf)
+========================================================================
