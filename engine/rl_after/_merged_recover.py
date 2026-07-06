@@ -43,6 +43,32 @@ LDECAY_G={'KEY':0.40,'GEN':0.35,'MR':0.225}; FLAT_TOL_G={'KEY':10.3,'GEN':12.0,'
 _AGEMULT_X=[20,22,25,28,30,32,34,37]; _AGEMULT_Y=[0.92,0.89,0.85,0.79,0.73,0.68,0.62,0.55]
 def _agemult(a): return float(np.clip(np.interp(a,_AGEMULT_X,_AGEMULT_Y),0.53,0.95)) if a is not None else 0.85
 DOWN_TOL=3.0   # down-side hold band (data: recovery~0 beyond ~3); ASYMMETRIC vs up-side FLAT_TOL (10-14)
+# FORM-CONDITIONED DECLINER SHED 2026-07-06 (candidate): the age-only _agemult over-sheds STILL-ELITE elders
+#   (measured: a former-Brownlow-level 33yo who dips >3 is multiplied 0.65 by age alone). DERIVED f(age, level)
+#   from realised forward output: r = washout-incl fwd-mean(Y+1..Y+3)/Lc over the established SHED population
+#   (nq>=PROVEN_N & Lo-Lc>DOWN_TOL, 2369 player-seasons, debut..2024). Level axis = lcr = Lc - REPL[gfut]
+#   (production above positional replacement — separates a still-elite dip from a genuine fade; mean r rose
+#   0.11 -> 0.90 across lcr, monotone). _agemult2 = _agemult(age) + UP-ONLY credit bump _fbump(age,lcr):
+#   bump = kernel-smoothed E[max(0, r - _agemult(age))] (2-D adaptive Gaussian bw grown to eff-n>=35 per node;
+#   all cells eff-n>=40 so the declared thin-cell shrink-to-1D-prior stayed inert), isotonic non-decreasing in
+#   lcr / non-increasing in age; positions POOLED (predecessor: position ~uniform; RUC thinnest — DECLARED).
+#   SINGLE-LEVER SAFETY: (i) lcr<=0 -> byte-exact _agemult (every below-replacement fader still falls; e.g.
+#   Coniglio/Adams/Blicavs Δ=0); (ii) up-only -> the curve never sheds MORE than the age baseline (no down-mover,
+#   respects the predecessor's price6-convexity over-shed caveat); (iii) reached ONLY on the shed down-branch, so
+#   every non-shed player (proven-flat stars, young, up-hold: Gawn/Cameron/Bontempelli) is Δ=0 by construction.
+#   Kill-switch RL_FORMDECL=0 -> byte-exact to baked v2.5. Derivation: session_2026-07-06/.
+_FORMDECL=os.environ.get('RL_FORMDECL','1')!='0'
+_FB_AGE=[22.,25.,28.,30.,32.,34.,37.]; _FB_LCR=[0.,5.,15.,30.]   # runtime knots: 0-anchored (lcr<=0 hard-zeroed)
+_FB_Z=[[0.,0.1152,0.1239,0.1439],[0.,0.1152,0.1239,0.1439],[0.,0.0968,0.1192,0.1439],[0.,0.0704,0.0939,0.1439],
+       [0.,0.053,0.0802,0.1439],[0.,0.0414,0.0802,0.1369],[0.,0.0296,0.0802,0.1051]]   # up-only credit; fitted session_2026-07-06
+def _fbump(a,lcr):
+    a=float(np.clip(a,_FB_AGE[0],_FB_AGE[-1])); l=float(np.clip(lcr,0.0,_FB_LCR[-1]))
+    col=[float(np.interp(l,_FB_LCR,row)) for row in _FB_Z]       # per-age bump at this lcr, then interp over age
+    return float(np.interp(a,_FB_AGE,col))
+def _agemult2(a,lcr):                                            # form-conditioned decline multiplier (age x level-above-replacement)
+    base=_agemult(a)
+    if a is None or not _FORMDECL or lcr<=0.0: return base       # byte-exact age-only where inert / at-or-below replacement
+    return float(np.clip(base+_fbump(a,lcr),0.53,0.98))          # ceiling 0.95->0.98: a still-elite elder sheds only lightly
 cp._lvl_eff_orig=cp._lvl_eff
 def _nqual(p,Y): return sum(1 for x in p['scoring'] if x['games']>=10 and x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
 # D10 SCOPE NOTE (declared): the 10-bar prorates for the FIRST qualifying season only (delivered
@@ -71,7 +97,7 @@ def _lvl_eff_core(p,Y):
         drop=L_old-Lc
         if drop<=DOWN_TOL: return L_old                        # down-wobble (<=3): hold steady
         sw=float(np.clip((drop-DOWN_TOL)/5.0,0.0,1.0))        # smooth shed onset over drop 3->8 (no hard boundary)
-        Lsh=Lc*_agemult(cp._age_asof(p,Y))                    # DECLINER SHED: realised forward level (current, age-accelerated below)
+        Lsh=Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))  # DECLINER SHED: form-conditioned (dormant twin; superseded by _coreM1 via the :~230 _inferM1 bind — kept in lock-step for code honesty)
         return (1.0-sw)*L_old+sw*Lsh
     c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)           # career-thin (1..3 seasons) -> shrink current toward pedigree par
 # UPSIDE FADE 2026-06-30 (GENTLER, candidate): elapsed-opportunity-gated fade of the pedigree/upside credit toward the
@@ -178,7 +204,7 @@ def _coreM1(p,Y):
         if Lc>=Lo: return (Lo+S_M1*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
         drop=Lo-Lc
         if drop<=DOWN_TOL: return Lo
-        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult(cp._age_asof(p,Y))
+        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
     c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
 def _inferM1(p,Y):
     L0=_coreM1(p,Y); eo=_eo(p,Y)

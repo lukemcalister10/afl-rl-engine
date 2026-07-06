@@ -38,7 +38,7 @@ RL_REPO="$HERE" python3 "$HERE/boot_guard.py" bootstrap \
   /home/claude/rl_workspace/rl_after/_merged_recover.py \
   /home/claude/cm_400.pkl || { echo "bootstrap FAILED: seeded workspace does not match the pinned store (see above)"; exit 1; }
 echo "bootstrap OK"
-echo "  engine md5     : $M   (candidate: F1/F2 one-source rewire)"
+echo "  engine md5     : $M   (candidate: form-conditioned aging decline, 2026-07-06)"
 echo "  cm_400 md5     : $C   (expect 34faa865)"
 echo "  store md5      : $S   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)"
 echo "  unidecode      : $U   (vendored, offline)"
