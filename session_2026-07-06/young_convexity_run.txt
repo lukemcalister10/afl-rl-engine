@@ -1,0 +1,86 @@
+========================================================================
+STEP 2 — CURRENT ENGINE PREMIUM BY BAND (segmented proven vs unproven)
+========================================================================
+  <=21   ALL              n=230 totEV=183816 | _cvx prem(vw)=+3.20% [def 177,excl 53,cap 5] | fwd-band E[v]/v(mean)-1 (vw)=1319.7% totgap=  93536
+  <=21   unproven(nq<4)   n=229 totEV=183286 | _cvx prem(vw)=+3.25% [def 176,excl 53,cap 5] | fwd-band E[v]/v(mean)-1 (vw)=1322.7% totgap=  93329
+  <=21   proven(nq>=4)    n=  1 totEV=   530 | _cvx prem(vw)=+0.00% [def 1,excl 0,cap 0] | fwd-band E[v]/v(mean)-1 (vw)= 323.1% totgap=    207
+  22-24  ALL              n=200 totEV=181861 | _cvx prem(vw)=+4.17% [def 198,excl 2,cap 18] | fwd-band E[v]/v(mean)-1 (vw)= 246.4% totgap=  34262
+  22-24  unproven(nq<4)   n=154 totEV= 81626 | _cvx prem(vw)=+5.61% [def 152,excl 2,cap 16] | fwd-band E[v]/v(mean)-1 (vw)= 534.6% totgap=  25849
+  22-24  proven(nq>=4)    n= 46 totEV=100235 | _cvx prem(vw)=+3.29% [def 46,excl 0,cap 2] | fwd-band E[v]/v(mean)-1 (vw)=  24.9% totgap=   8413
+  25-26  ALL              n=108 totEV=109972 | _cvx prem(vw)=+1.81% [def 102,excl 6,cap 11] | fwd-band E[v]/v(mean)-1 (vw)=  60.2% totgap=  10036
+  25-26  unproven(nq<4)   n= 46 totEV= 12762 | _cvx prem(vw)=+3.03% [def 41,excl 5,cap 5] | fwd-band E[v]/v(mean)-1 (vw)= 383.6% totgap=   2550
+  25-26  proven(nq>=4)    n= 62 totEV= 97210 | _cvx prem(vw)=+1.67% [def 61,excl 1,cap 6] | fwd-band E[v]/v(mean)-1 (vw)=  20.3% totgap=   7486
+  27+    ALL              n=267 totEV=184676 | _cvx prem(vw)=+0.56% [def 262,excl 5,cap 1] | fwd-band E[v]/v(mean)-1 (vw)=  14.6% totgap=   9564
+  27+    unproven(nq<4)   n= 27 totEV=  7620 | _cvx prem(vw)=+0.66% [def 27,excl 0,cap 1] | fwd-band E[v]/v(mean)-1 (vw)=  52.1% totgap=    887
+  27+    proven(nq>=4)    n=240 totEV=177056 | _cvx prem(vw)=+0.56% [def 235,excl 5,cap 0] | fwd-band E[v]/v(mean)-1 (vw)=  13.0% totgap=   8677
+
+========================================================================
+STEP 3 — DRAFT-STATE MATCHED: engine band vs empirical forward outcomes
+========================================================================
+resolved pool 1194  (engine draft-band vs empirical, both via zero-evidence draft ref; gaps in SCAR)
+  cohort            nE bust  empμ  engμ | impl_gap  eng_gap   short |  impl_E   eng_E curN curEV
+  GEN_DEF 1-3       26 0.00    81    90 |      572      825    -252 |     863    1836    4   4292 (pooled)
+  GEN_DEF 11-20     31 0.00    81    76 |      431      607    -175 |     717     701   31  25344 (exact)
+  GEN_DEF 21-40     62 0.13    59    70 |      315      465    -150 |     316     485   25  18474 (exact)
+  GEN_DEF 4-10      22 0.00    77    76 |      390      528    -138 |     507     614    9  11979 (exact)
+  GEN_DEF 41-70    131 0.26    48    67 |      261      443    -182 |     261     452   42  22139 (exact)
+  GEN_FWD 1-3       20 0.00    82    85 |      527      700    -173 |    1619    2188    4   3100 (pooled)
+  GEN_FWD 11-20     30 0.00    71    70 |      707      767     -60 |     904     902   23  20020 (exact)
+  GEN_FWD 21-40     69 0.06    59    64 |      347      465    -118 |     355     499   31  13790 (exact)
+  GEN_FWD 4-10      50 0.00    76    75 |      733      730      +3 |    1190    1132   21  16616 (pooled)
+  GEN_FWD 41-70    121 0.17    48    61 |      230      492    -262 |     230     506   54  15243 (exact)
+  KEY_DEF 1-3       29 0.00    73    75 |      391      666    -275 |     738    1158    3   2144 (pooled)
+  KEY_DEF 11-20     73 0.10    60    70 |      425      559    -134 |     444     748    9   5190 (pooled)
+  KEY_DEF 21-40     45 0.16    53    66 |      278      473    -194 |     281     554   13   7354 (exact)
+  KEY_DEF 4-10      29 0.00    73    70 |      391      462     -71 |     738     673    7   9925 (pooled)
+  KEY_DEF 41-70     58 0.12    56    63 |      407      435     -28 |     413     474   17   6137 (exact)
+  KEY_FWD 1-3       28 0.00    73    73 |      597      701    -105 |    1056    1160    7  14443 (pooled)
+  KEY_FWD 11-20     25 0.08    60    68 |      490      548     -58 |     515     742   12   7531 (exact)
+  KEY_FWD 21-40     35 0.14    53    66 |      424      524    -100 |     428     636   16  15553 (exact)
+  KEY_FWD 4-10      53 0.04    67    69 |      656      525    +131 |     800     763   14  17556 (pooled)
+  KEY_FWD 41-70     55 0.36    38    57 |      257      371    -114 |     257     382   20   7768 (exact)
+  MID 1-3           27 0.00    99    93 |      553     1157    -604 |    2364    2276   23  59414 (exact)
+  MID 11-20         54 0.04    78    79 |     1093      909    +184 |    1190    1029   23  29422 (exact)
+  MID 21-40        103 0.09    65    72 |      645      628     +16 |     648     650   30  31319 (exact)
+  MID 4-10          50 0.00    91    86 |     1063     1055      +8 |    1934    1557   36  67020 (exact)
+  MID 41-70        122 0.23    50    67 |      350      542    -192 |     350     548   32  19329 (exact)
+  RUC 1-3           35 0.00    81   100 |     1025      750    +275 |    1258    2490    2   7104 (pooled)
+  RUC 11-20         32 0.00    79    78 |      974      626    +348 |    1114     752    5   2338 (pooled)
+  RUC 21-40         66 0.11    67    84 |      714     1136    -422 |     721    1493    6   5663 (pooled)
+  RUC 4-10          35 0.00    81    85 |     1025      625    +401 |    1258    1030    7   3284 (pooled)
+  RUC 41-70         38 0.18    60    72 |      442      570    -128 |     443     593   12   6158 (exact)
+
+========================================================================
+STEP 4 — net shortfall direction (draft-state), value-weighted by current cohort EV
+========================================================================
+  <=21       value-weighted shortfall (implied-engine, draft-state) = -141 SCAR/player-equiv  (EVw=183816)
+  22-24      value-weighted shortfall (implied-engine, draft-state) = -117 SCAR/player-equiv  (EVw=181861)
+  25-26      value-weighted shortfall (implied-engine, draft-state) = -109 SCAR/player-equiv  (EVw=109972)
+  ALL-young  value-weighted shortfall (implied-engine, draft-state) = -124 SCAR/player-equiv  (EVw=475649)
+
+========================================================================
+STEP 5 — FLAGS (|engine-implied| large; FOR OWNER RULING, not applied)
+========================================================================
+UNDER-priced (implied > engine; candidate RAISE):
+  RUC      pk4-10   short=+401 SCAR (+39% of eng) bust=0.0 curN=7 curEV=3284
+  RUC      pk11-20  short=+348 SCAR (+46% of eng) bust=0.0 curN=5 curEV=2338
+  MID      pk11-20  short=+184 SCAR (+18% of eng) bust=0.037 curN=23 curEV=29422
+  KEY_FWD  pk4-10   short=+131 SCAR (+17% of eng) bust=0.038 curN=14 curEV=17556
+OVER-priced (engine > implied; FLAG for owner ruling, NOT applied):
+  MID      pk1-3    short=-604 SCAR (-26% of eng) bust=0.0 curN=23 curEV=59414
+  RUC      pk21-40  short=-422 SCAR (-28% of eng) bust=0.106 curN=6 curEV=5663
+  KEY_DEF  pk1-3    short=-275 SCAR (-24% of eng) bust=0.0 curN=3 curEV=2144
+  GEN_FWD  pk41-70  short=-262 SCAR (-52% of eng) bust=0.174 curN=54 curEV=15243
+  KEY_DEF  pk21-40  short=-194 SCAR (-35% of eng) bust=0.156 curN=13 curEV=7354
+  MID      pk41-70  short=-192 SCAR (-35% of eng) bust=0.23 curN=32 curEV=19329
+  GEN_DEF  pk41-70  short=-182 SCAR (-40% of eng) bust=0.26 curN=42 curEV=22139
+  GEN_DEF  pk11-20  short=-176 SCAR (-25% of eng) bust=0.0 curN=31 curEV=25344
+  GEN_DEF  pk21-40  short=-150 SCAR (-31% of eng) bust=0.129 curN=25 curEV=18474
+  GEN_DEF  pk4-10   short=-138 SCAR (-22% of eng) bust=0.0 curN=9 curEV=11979
+  KEY_DEF  pk11-20  short=-134 SCAR (-18% of eng) bust=0.096 curN=9 curEV=5190
+  RUC      pk41-70  short=-128 SCAR (-22% of eng) bust=0.184 curN=12 curEV=6158
+  GEN_FWD  pk21-40  short=-118 SCAR (-24% of eng) bust=0.058 curN=31 curEV=13790
+  KEY_FWD  pk41-70  short=-114 SCAR (-30% of eng) bust=0.364 curN=20 curEV=7768
+  KEY_FWD  pk21-40  short=-100 SCAR (-16% of eng) bust=0.143 curN=16 curEV=15553
+
+JSON -> audit_out2.json
