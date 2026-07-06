@@ -1,0 +1,1119 @@
+{
+ "_FIXTURE": "synthetic dev data \u2014 NOT the board",
+ "BASE_YEAR": 2026,
+ "active": [
+  {
+   "key": "syn-longname-wakefield",
+   "name": "Test Player Longname-Wakefield-Cholmondeley-Featherstonehaugh",
+   "grp": "MID",
+   "v": 8200,
+   "vM2": 7800,
+   "vM1": 8050,
+   "vP1": 8420,
+   "vP2": 8700,
+   "pk": 3,
+   "yr": 2019,
+   "cat": "Academy",
+   "ty": "ND",
+   "club": "Placeholder Bay",
+   "draft": "ND",
+   "age": 25,
+   "g": 110,
+   "cg": 110,
+   "bk": false,
+   "fut": [
+    [
+     "MID",
+     0.9
+    ],
+    [
+     "GEN_FWD",
+     0.1
+    ]
+   ],
+   "track": [
+    {
+     "s": 1,
+     "a": 41
+    },
+    {
+     "s": 2,
+     "a": 51
+    },
+    {
+     "s": 3,
+     "a": 57
+    },
+    {
+     "s": 4,
+     "a": 59
+    },
+    {
+     "s": 5,
+     "a": 73
+    },
+    {
+     "s": 6,
+     "a": 84
+    }
+   ]
+  },
+  {
+   "key": "syn-sam-berry-a",
+   "name": "Sam Berry",
+   "grp": "MID",
+   "v": 5400,
+   "vM2": 5000,
+   "vM1": 5250,
+   "vP1": 5620,
+   "vP2": 5900,
+   "pk": 32,
+   "yr": 2020,
+   "cat": null,
+   "ty": "ND",
+   "club": "Mock Rovers",
+   "draft": "ND",
+   "age": 24,
+   "g": 70,
+   "cg": 70,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 44
+    },
+    {
+     "s": 2,
+     "a": 54
+    },
+    {
+     "s": 3,
+     "a": 61
+    },
+    {
+     "s": 4,
+     "a": 62
+    },
+    {
+     "s": 5,
+     "a": 77
+    },
+    {
+     "s": 6,
+     "a": 80
+    }
+   ]
+  },
+  {
+   "key": "syn-sam-berry-b",
+   "name": "Sam Berry",
+   "grp": "GEN_FWD",
+   "v": 3100,
+   "vM2": 2700,
+   "vM1": 2950,
+   "vP1": 3320,
+   "vP2": 3600,
+   "pk": 58,
+   "yr": 2022,
+   "cat": null,
+   "ty": "ND",
+   "club": "Dummy Dockers",
+   "draft": "ND",
+   "age": 21,
+   "g": 28,
+   "cg": 28,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 45
+    },
+    {
+     "s": 2,
+     "a": 44
+    },
+    {
+     "s": 3,
+     "a": 60
+    },
+    {
+     "s": 4,
+     "a": 60
+    },
+    {
+     "s": 5,
+     "a": 71
+    },
+    {
+     "s": 6,
+     "a": 84
+    }
+   ]
+  },
+  {
+   "key": "syn-pickett-a",
+   "name": "Charlie Pickett",
+   "grp": "GEN_FWD",
+   "v": 6600,
+   "vM2": 6200,
+   "vM1": 6450,
+   "vP1": 6820,
+   "vP2": 7100,
+   "pk": 12,
+   "yr": 2018,
+   "cat": null,
+   "ty": "ND",
+   "club": "Synthetic City",
+   "draft": "ND",
+   "age": 26,
+   "g": 120,
+   "cg": 120,
+   "bk": false,
+   "fut": [
+    [
+     "GEN_FWD",
+     0.7
+    ],
+    [
+     "MID",
+     0.3
+    ]
+   ],
+   "track": [
+    {
+     "s": 1,
+     "a": 38
+    },
+    {
+     "s": 2,
+     "a": 45
+    },
+    {
+     "s": 3,
+     "a": 56
+    },
+    {
+     "s": 4,
+     "a": 63
+    },
+    {
+     "s": 5,
+     "a": 72
+    },
+    {
+     "s": 6,
+     "a": 83
+    }
+   ]
+  },
+  {
+   "key": "syn-pickett-b",
+   "name": "Charlie Pickett",
+   "grp": "KEY_DEF",
+   "v": 4200,
+   "vM2": 3800,
+   "vM1": 4050,
+   "vP1": 4420,
+   "vP2": 4700,
+   "pk": 44,
+   "yr": 2023,
+   "cat": null,
+   "ty": "ND",
+   "club": "Sample Saints",
+   "draft": "ND",
+   "age": 20,
+   "g": 15,
+   "cg": 15,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 39
+    },
+    {
+     "s": 2,
+     "a": 48
+    },
+    {
+     "s": 3,
+     "a": 57
+    },
+    {
+     "s": 4,
+     "a": 59
+    },
+    {
+     "s": 5,
+     "a": 68
+    },
+    {
+     "s": 6,
+     "a": 83
+    }
+   ]
+  },
+  {
+   "key": "syn-king-a",
+   "name": "Max King",
+   "grp": "KEY_FWD",
+   "v": 7100,
+   "vM2": 6700,
+   "vM1": 6950,
+   "vP1": 7320,
+   "vP2": 7600,
+   "pk": 4,
+   "yr": 2019,
+   "cat": null,
+   "ty": "ND",
+   "club": "Testford",
+   "draft": "ND",
+   "age": 25,
+   "g": 95,
+   "cg": 95,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 35
+    },
+    {
+     "s": 2,
+     "a": 53
+    },
+    {
+     "s": 3,
+     "a": 50
+    },
+    {
+     "s": 4,
+     "a": 67
+    },
+    {
+     "s": 5,
+     "a": 69
+    },
+    {
+     "s": 6,
+     "a": 74
+    }
+   ]
+  },
+  {
+   "key": "syn-king-b",
+   "name": "Max King",
+   "grp": "KEY_DEF",
+   "v": 6900,
+   "vM2": 6500,
+   "vM1": 6750,
+   "vP1": 7120,
+   "vP2": 7400,
+   "pk": 6,
+   "yr": 2019,
+   "cat": null,
+   "ty": "ND",
+   "club": "Fixture United",
+   "draft": "ND",
+   "age": 25,
+   "g": 97,
+   "cg": 97,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 43
+    },
+    {
+     "s": 2,
+     "a": 43
+    },
+    {
+     "s": 3,
+     "a": 57
+    },
+    {
+     "s": 4,
+     "a": 65
+    },
+    {
+     "s": 5,
+     "a": 71
+    },
+    {
+     "s": 6,
+     "a": 76
+    }
+   ]
+  },
+  {
+   "key": "syn-zero",
+   "name": "Zero Valuen",
+   "grp": "GEN_DEF",
+   "v": 0,
+   "vM2": 0,
+   "vM1": 0,
+   "vP1": 0,
+   "vP2": 0,
+   "pk": 71,
+   "yr": 2024,
+   "cat": null,
+   "ty": "ND",
+   "club": "Stub Swifts",
+   "draft": "ND",
+   "age": 19,
+   "g": 2,
+   "cg": 2,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 46
+    },
+    {
+     "s": 2,
+     "a": 53
+    },
+    {
+     "s": 3,
+     "a": 60
+    },
+    {
+     "s": 4,
+     "a": 61
+    },
+    {
+     "s": 5,
+     "a": 72
+    },
+    {
+     "s": 6,
+     "a": 85
+    }
+   ]
+  },
+  {
+   "key": "syn-extreme-high",
+   "name": "Ceiling Maxwell",
+   "grp": "MID",
+   "v": 999999,
+   "vM2": 820000,
+   "vM1": 910000,
+   "vP1": 990000,
+   "vP2": 960000,
+   "pk": 1,
+   "yr": 2015,
+   "cat": null,
+   "ty": "ND",
+   "club": "Synthetic City",
+   "draft": "ND",
+   "age": 29,
+   "g": 210,
+   "cg": 210,
+   "bk": false,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "track": [
+    {
+     "s": 1,
+     "a": 37
+    },
+    {
+     "s": 2,
+     "a": 50
+    },
+    {
+     "s": 3,
+     "a": 59
+    },
+    {
+     "s": 4,
+     "a": 62
+    },
+    {
+     "s": 5,
+     "a": 70
+    },
+    {
+     "s": 6,
+     "a": 82
+    }
+   ]
+  },
+  {
+   "key": "syn-negative",
+   "name": "Underwater Sub-Zero",
+   "grp": "RUC",
+   "v": -500,
+   "vM2": -200,
+   "vM1": -350,
+   "vP1": -420,
+   "vP2": -300,
+   "pk": null,
+   "yr": 2025,
+   "cat": null,
+   "ty": "ND",
+   "club": "Mock Rovers",
+   "draft": "ND",
+   "age": 18,
+   "g": 0,
+   "cg": 0,
+   "bk": false,
+   "fut": [],
+   "track": []
+  },
+  {
+   "key": "syn-nulls",
+   "name": "Missing Fields-Jones",
+   "grp": "GEN_FWD",
+   "v": 2500,
+   "vM2": 2100,
+   "vM1": 2350,
+   "vP1": 2720,
+   "vP2": 3000,
+   "pk": null,
+   "yr": 2021,
+   "cat": null,
+   "ty": "SSP",
+   "club": "Placeholder Bay",
+   "draft": "None",
+   "age": null,
+   "g": null,
+   "cg": null,
+   "bk": false,
+   "fut": [],
+   "track": []
+  },
+  {
+   "key": "syn-singlepos",
+   "name": "Solo Position-Smith",
+   "grp": "KEY_DEF",
+   "v": 4800,
+   "vM2": 4400,
+   "vM1": 4650,
+   "vP1": 5020,
+   "vP2": 5300,
+   "pk": 22,
+   "yr": 2020,
+   "cat": null,
+   "ty": "ND",
+   "club": "Dummy Dockers",
+   "draft": "ND",
+   "age": 24,
+   "g": 80,
+   "cg": 80,
+   "bk": false,
+   "fut": [
+    [
+     "KEY_DEF",
+     1.0
+    ]
+   ],
+   "track": [
+    {
+     "s": 1,
+     "a": 43
+    },
+    {
+     "s": 2,
+     "a": 47
+    },
+    {
+     "s": 3,
+     "a": 52
+    },
+    {
+     "s": 4,
+     "a": 68
+    },
+    {
+     "s": 5,
+     "a": 72
+    },
+    {
+     "s": 6,
+     "a": 76
+    }
+   ]
+  },
+  {
+   "key": "syn-dormant-fut",
+   "name": "Dormant Gf-Taylor",
+   "grp": "GEN_DEF",
+   "v": 3900,
+   "vM2": 3500,
+   "vM1": 3750,
+   "vP1": 4120,
+   "vP2": 4400,
+   "pk": 40,
+   "yr": 2021,
+   "cat": null,
+   "ty": "ND",
+   "club": "Sample Saints",
+   "draft": "ND",
+   "age": 23,
+   "g": 55,
+   "cg": 55,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 36
+    },
+    {
+     "s": 2,
+     "a": 48
+    },
+    {
+     "s": 3,
+     "a": 56
+    },
+    {
+     "s": 4,
+     "a": 58
+    },
+    {
+     "s": 5,
+     "a": 77
+    },
+    {
+     "s": 6,
+     "a": 80
+    }
+   ],
+   "gf": [
+    [
+     "MID",
+     0.5
+    ],
+    [
+     "GEN_DEF",
+     0.5
+    ]
+   ]
+  },
+  {
+   "key": "syn-reclass",
+   "name": "Reclass Mover-Brown",
+   "grp": "GEN_DEF",
+   "v": 5200,
+   "vM2": 4800,
+   "vM1": 5050,
+   "vP1": 5420,
+   "vP2": 5700,
+   "pk": 18,
+   "yr": 2021,
+   "cat": null,
+   "ty": "ND",
+   "club": "Testford",
+   "draft": "ND",
+   "age": 22,
+   "g": 48,
+   "cg": 48,
+   "bk": false,
+   "fut": [
+    [
+     "MID",
+     0.75
+    ],
+    [
+     "GEN_DEF",
+     0.25
+    ]
+   ],
+   "track": [
+    {
+     "s": 1,
+     "a": 34
+    },
+    {
+     "s": 2,
+     "a": 51
+    },
+    {
+     "s": 3,
+     "a": 50
+    },
+    {
+     "s": 4,
+     "a": 65
+    },
+    {
+     "s": 5,
+     "a": 78
+    },
+    {
+     "s": 6,
+     "a": 84
+    }
+   ]
+  },
+  {
+   "key": "syn-tie-0",
+   "name": "Tie Alpha-One",
+   "grp": "MID",
+   "v": 5000,
+   "vM2": 4600,
+   "vM1": 4850,
+   "vP1": 5220,
+   "vP2": 5500,
+   "pk": 50,
+   "yr": 2022,
+   "cat": null,
+   "ty": "ND",
+   "club": "Fixture United",
+   "draft": "ND",
+   "age": 23,
+   "g": 40,
+   "cg": 40,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 42
+    },
+    {
+     "s": 2,
+     "a": 43
+    },
+    {
+     "s": 3,
+     "a": 50
+    },
+    {
+     "s": 4,
+     "a": 63
+    },
+    {
+     "s": 5,
+     "a": 68
+    },
+    {
+     "s": 6,
+     "a": 82
+    }
+   ]
+  },
+  {
+   "key": "syn-tie-1",
+   "name": "Tie Bravo-Two",
+   "grp": "MID",
+   "v": 5000,
+   "vM2": 4600,
+   "vM1": 4850,
+   "vP1": 5220,
+   "vP2": 5500,
+   "pk": 51,
+   "yr": 2022,
+   "cat": null,
+   "ty": "ND",
+   "club": "Fixture United",
+   "draft": "ND",
+   "age": 23,
+   "g": 40,
+   "cg": 40,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 39
+    },
+    {
+     "s": 2,
+     "a": 43
+    },
+    {
+     "s": 3,
+     "a": 58
+    },
+    {
+     "s": 4,
+     "a": 70
+    },
+    {
+     "s": 5,
+     "a": 78
+    },
+    {
+     "s": 6,
+     "a": 86
+    }
+   ]
+  },
+  {
+   "key": "syn-tie-2",
+   "name": "Tie Charlie-Three",
+   "grp": "MID",
+   "v": 5000,
+   "vM2": 4600,
+   "vM1": 4850,
+   "vP1": 5220,
+   "vP2": 5500,
+   "pk": 52,
+   "yr": 2022,
+   "cat": null,
+   "ty": "ND",
+   "club": "Fixture United",
+   "draft": "ND",
+   "age": 23,
+   "g": 40,
+   "cg": 40,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 34
+    },
+    {
+     "s": 2,
+     "a": 44
+    },
+    {
+     "s": 3,
+     "a": 61
+    },
+    {
+     "s": 4,
+     "a": 65
+    },
+    {
+     "s": 5,
+     "a": 73
+    },
+    {
+     "s": 6,
+     "a": 81
+    }
+   ]
+  },
+  {
+   "key": "syn-tie-3",
+   "name": "Tie Delta-Four",
+   "grp": "MID",
+   "v": 5000,
+   "vM2": 4600,
+   "vM1": 4850,
+   "vP1": 5220,
+   "vP2": 5500,
+   "pk": 53,
+   "yr": 2022,
+   "cat": null,
+   "ty": "ND",
+   "club": "Fixture United",
+   "draft": "ND",
+   "age": 23,
+   "g": 40,
+   "cg": 40,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 46
+    },
+    {
+     "s": 2,
+     "a": 42
+    },
+    {
+     "s": 3,
+     "a": 54
+    },
+    {
+     "s": 4,
+     "a": 64
+    },
+    {
+     "s": 5,
+     "a": 77
+    },
+    {
+     "s": 6,
+     "a": 83
+    }
+   ]
+  },
+  {
+   "key": "syn-tie-4",
+   "name": "Tie Echo-Five",
+   "grp": "MID",
+   "v": 5000,
+   "vM2": 4600,
+   "vM1": 4850,
+   "vP1": 5220,
+   "vP2": 5500,
+   "pk": 54,
+   "yr": 2022,
+   "cat": null,
+   "ty": "ND",
+   "club": "Fixture United",
+   "draft": "ND",
+   "age": 23,
+   "g": 40,
+   "cg": 40,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 42
+    },
+    {
+     "s": 2,
+     "a": 44
+    },
+    {
+     "s": 3,
+     "a": 61
+    },
+    {
+     "s": 4,
+     "a": 58
+    },
+    {
+     "s": 5,
+     "a": 71
+    },
+    {
+     "s": 6,
+     "a": 81
+    }
+   ]
+  },
+  {
+   "key": "syn-partial-path",
+   "name": "Partial Path-White",
+   "grp": "GEN_FWD",
+   "v": 4400,
+   "vM2": null,
+   "vM1": null,
+   "vP1": 4700,
+   "vP2": 5100,
+   "pk": 27,
+   "yr": 2023,
+   "cat": null,
+   "ty": "ND",
+   "club": "Stub Swifts",
+   "draft": "ND",
+   "age": 20,
+   "g": 18,
+   "cg": 18,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 38
+    },
+    {
+     "s": 2,
+     "a": 47
+    },
+    {
+     "s": 3,
+     "a": 52
+    },
+    {
+     "s": 4,
+     "a": 62
+    },
+    {
+     "s": 5,
+     "a": 75
+    },
+    {
+     "s": 6,
+     "a": 75
+    }
+   ]
+  },
+  {
+   "key": "syn-ord-1",
+   "name": "Ordinary Player-Adams",
+   "grp": "MID",
+   "v": 6100,
+   "vM2": 5700,
+   "vM1": 5950,
+   "vP1": 6320,
+   "vP2": 6600,
+   "pk": 9,
+   "yr": 2019,
+   "cat": null,
+   "ty": "ND",
+   "club": "Mock Rovers",
+   "draft": "ND",
+   "age": 25,
+   "g": 100,
+   "cg": 100,
+   "bk": false,
+   "fut": [
+    [
+     "MID",
+     0.8
+    ],
+    [
+     "GEN_DEF",
+     0.2
+    ]
+   ],
+   "track": [
+    {
+     "s": 1,
+     "a": 44
+    },
+    {
+     "s": 2,
+     "a": 46
+    },
+    {
+     "s": 3,
+     "a": 62
+    },
+    {
+     "s": 4,
+     "a": 62
+    },
+    {
+     "s": 5,
+     "a": 78
+    },
+    {
+     "s": 6,
+     "a": 84
+    }
+   ]
+  },
+  {
+   "key": "syn-ord-2",
+   "name": "Ordinary Player-Baker",
+   "grp": "KEY_FWD",
+   "v": 5700,
+   "vM2": 5300,
+   "vM1": 5550,
+   "vP1": 5920,
+   "vP2": 6200,
+   "pk": 15,
+   "yr": 2020,
+   "cat": null,
+   "ty": "ND",
+   "club": "Sample Saints",
+   "draft": "ND",
+   "age": 24,
+   "g": 85,
+   "cg": 85,
+   "bk": false,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 40
+    },
+    {
+     "s": 2,
+     "a": 52
+    },
+    {
+     "s": 3,
+     "a": 57
+    },
+    {
+     "s": 4,
+     "a": 63
+    },
+    {
+     "s": 5,
+     "a": 76
+    },
+    {
+     "s": 6,
+     "a": 77
+    }
+   ]
+  }
+ ],
+ "back": [
+  {
+   "key": "syn-back-flat",
+   "name": "Recalled Retiree-Green",
+   "grp": "RUC",
+   "v": 3600,
+   "vM2": 3600,
+   "vM1": 3600,
+   "vP1": 3600,
+   "vP2": 3600,
+   "pk": 8,
+   "yr": 2008,
+   "cat": null,
+   "ty": "ND",
+   "club": "Synthetic City",
+   "draft": "ND",
+   "age": 38,
+   "g": 250,
+   "cg": 250,
+   "bk": true,
+   "fut": [],
+   "track": [
+    {
+     "s": 1,
+     "a": 36
+    },
+    {
+     "s": 2,
+     "a": 50
+    },
+    {
+     "s": 3,
+     "a": 62
+    },
+    {
+     "s": 4,
+     "a": 69
+    },
+    {
+     "s": 5,
+     "a": 72
+    },
+    {
+     "s": 6,
+     "a": 83
+    },
+    {
+     "s": 7,
+     "a": 82
+    },
+    {
+     "s": 8,
+     "a": 98
+    },
+    {
+     "s": 9,
+     "a": 101
+    },
+    {
+     "s": 10,
+     "a": 108
+    },
+    {
+     "s": 11,
+     "a": 116
+    },
+    {
+     "s": 12,
+     "a": 134
+    }
+   ]
+  }
+ ]
+}

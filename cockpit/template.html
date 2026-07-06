@@ -1,9 +1,16 @@
 <!--
-  RL VALUE COCKPIT — viewing layer (board + player detail)
-  This file is a TEMPLATE. build_cockpit.py injects the board data at the two
-  placeholders below and writes the self-contained cockpit.html. If the data
-  placeholder is left as null (opening template.html directly), the app falls
-  back to fetching the DATA_SOURCE at runtime for live-dev use.
+  RL VALUE COCKPIT — viewing layer (board + player detail). PURE VIEW: it
+  DISPLAYS values and computes NO price (only presentational math: rank, rail %,
+  chart coordinates). None of the board app's price chain is present here.
+
+  This file is a TEMPLATE. build_cockpit.py injects ONE seam object (DATA_SEAM)
+  at the single placeholder below and writes the self-contained cockpit.html.
+  DATA_SEAM.mode is the only place the data source is chosen:
+    dev  -> load the synthetic fixture (no source-stamp expected)
+    real -> load the real board; it MUST carry a valid `.srcmd5` source-stamp,
+            else the ring-fence rejects it (contamination guard).
+  If DATA_SEAM.data is left null (opening template.html directly), the app
+  fetches DATA_SEAM.url at runtime for live-dev use.
   DATA CONTRACT: see cockpit/DATA_CONTRACT.md.
 -->
 <meta charset="utf-8">
@@ -90,8 +97,15 @@ header.masthead{
 .count{font-family:var(--mono); font-size:11.5px; color:var(--faint); margin-left:auto}
 
 /* ---------- table ---------- */
-.board{width:100%; overflow-x:auto; border:1px solid var(--rule); border-radius:10px; margin-top:12px; background:var(--panel)}
+/* .board is its OWN scroll viewport (fixed height) so the virtualiser can
+   window rows against scrollTop — the large-N fixture scrolls smoothly. */
+.board{width:100%; overflow:auto; border:1px solid var(--rule); border-radius:10px; margin-top:12px; background:var(--panel);
+  max-height:calc(100vh - 210px); min-height:200px; overscroll-behavior:contain}
 table{width:100%; border-collapse:collapse; min-width:640px}
+/* virtualiser spacer rows — height stands in for the off-screen rows */
+tr.vspace{height:0; padding:0; border:0; cursor:default}
+tr.vspace:hover{background:transparent}
+tr.vspace td{padding:0; border:0}
 thead th{
   position:sticky; top:0; z-index:5; background:var(--panel-2);
   font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--dim);
@@ -154,6 +168,18 @@ td.pick,td.yr{font-family:var(--mono); color:var(--dim); font-size:12px}
 .reserved .rbody{font-size:12px; line-height:1.5}
 
 .empty-board{padding:48px 16px; text-align:center; color:var(--faint); font-family:var(--mono); font-size:13px}
+
+/* ring-fence rejection panel — shown when real-mode gets an unstamped source */
+.reject{margin-top:12px; border:1px solid var(--pos-kfwd); border-radius:10px; background:var(--panel);
+  padding:26px 22px; font-family:var(--mono)}
+.reject h2{margin:0 0 8px; font-size:15px; color:var(--pos-kfwd); letter-spacing:.02em}
+.reject p{margin:6px 0; font-size:12.5px; color:var(--dim); line-height:1.6}
+.reject code{background:var(--ink-2); border:1px solid var(--rule); border-radius:4px; padding:1px 5px; color:var(--text)}
+/* mode badge in the readout — makes dev/real visible at a glance */
+.modebadge{display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  padding:2px 7px; border-radius:5px; border:1px solid var(--rule); margin-left:8px}
+.modebadge.dev{color:var(--phos); border-color:color-mix(in srgb,var(--phos) 45%,var(--rule)); background:var(--phos-soft)}
+.modebadge.real{color:var(--amber); border-color:color-mix(in srgb,var(--amber) 45%,var(--rule)); background:var(--amber-soft)}
 footer{margin-top:22px; color:var(--faint); font-size:11px; font-family:var(--mono); text-align:center; line-height:1.7}
 
 @media (max-width:760px){
@@ -207,7 +233,9 @@ footer{margin-top:22px; color:var(--faint); font-size:11px; font-family:var(--mo
     </div>
   </div>
 
-  <div class="board">
+  <div class="reject" id="reject" hidden></div>
+
+  <div class="board" id="board">
     <table>
       <thead>
         <tr>
@@ -231,13 +259,22 @@ footer{margin-top:22px; color:var(--faint); font-size:11px; font-family:var(--mo
 <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Player detail"></aside>
 
 <script>
-/* ================================================================
-   DATA SOURCE — injected at build time by build_cockpit.py.
-   Left null => live-dev fallback fetch of the DATA_SOURCE file.
-   ================================================================ */
-const COCKPIT_DATA = /*__DATA__*/ null;
-const BUILD_META   = /*__META__*/ {baseYear:2026, dataSource:"data/rl_build/rl_app_data.json", generated:"(dev)", counts:{}};
-const DEV_FETCH_URL = "../data/rl_build/rl_app_data.json";
+/* ============================================================================
+   THE DATA SEAM — the ONE place the data source is chosen.
+   Injected at build time by build_cockpit.py at the SEAM placeholder below.
+     mode "dev"  -> load the synthetic fixture (no source-stamp expected)
+     mode "real" -> load the real board; it MUST carry a valid `.srcmd5`
+                    source-stamp, else the ring-fence rejects it.
+   `data` is the inlined payload for a self-contained file; when null the app
+   fetches `url` at runtime (live-dev). This object is the whole seam — there is
+   no other DATA_SOURCE / COCKPIT_DATA / DEV_FETCH_URL. See DATA_CONTRACT.md.
+   ========================================================================== */
+const DATA_SEAM = /*__SEAM__*/ {
+  mode: "dev",
+  data: null,
+  url:  "fixtures/fixture.json",
+  meta: {baseYear:2026, source:"fixtures/fixture.json", generated:"(dev)", counts:{}}
+};
 
 const POS = [
   {k:"MID",     label:"Midfield", c:"var(--pos-mid)"},
@@ -250,30 +287,82 @@ const POS = [
 const POSMAP = Object.fromEntries(POS.map(p=>[p.k,p]));
 const POSLABEL = {MID:"MID",GEN_DEF:"GEN·DEF",KEY_DEF:"KEY·DEF",GEN_FWD:"GEN·FWD",KEY_FWD:"KEY·FWD",RUC:"RUC"};
 
-let PLAYERS=[], MAXV=1, state={q:"",sort:"v.desc",pos:new Set(),scale:"lin",selected:null};
+let PLAYERS=[], MAXV=1, BYEAR=2026, DUP=new Set();
+let state={q:"",sort:"v.desc",pos:new Set(),scale:"lin",selected:null,rows:[],focusIdx:-1};
+
+/* ---------- virtualiser knobs ---------- */
+const OVERSCAN=8;
+let ROWH=35, THEADH=0, calibrated=false, rafPending=false;
 
 /* ---------- boot ---------- */
 (async function boot(){
-  let raw = COCKPIT_DATA;
+  const seam = DATA_SEAM;
+  let raw = seam.data;
   if(!raw){
-    try{ const r=await fetch(DEV_FETCH_URL); raw=normaliseRaw(await r.json()); }
+    try{ const r=await fetch(seam.url); raw=await r.json(); }
     catch(e){ document.getElementById("rows").innerHTML =
-      '<tr><td colspan="6" class="empty-board">No data. Run build_cockpit.py, or serve from repo root for live-dev fetch.</td></tr>'; return; }
+      '<tr><td colspan="6" class="empty-board">No data. Run build_cockpit.py, or serve from cockpit/ so DATA_SEAM.url is fetchable.</td></tr>'; return; }
   }
-  PLAYERS = raw.players; MAXV = Math.max(1, ...PLAYERS.map(p=>p.v||0));
+  /* --- ring-fence gate: real-mode requires a valid source-stamp --- */
+  const gate = checkStamp(raw, seam.mode);
+  if(!gate.ok){ renderRejection(gate, seam); return; }
+
+  const norm = normaliseRaw(raw);
+  PLAYERS = norm.players; BYEAR = norm.meta.baseYear;
+  MAXV = Math.max(1, ...PLAYERS.map(p=>p.v||0));
   PLAYERS.forEach((p,i)=>{ p._i=i; });
-  // stable global value rank
+  // stable global value rank (presentational only)
   [...PLAYERS].sort((a,b)=>(b.v||0)-(a.v||0)).forEach((p,i)=>p._rank=i+1);
-  buildChips(); wire(); renderMeta(); render();
+  // duplicate display-names -> show id subline so collisions stay distinct
+  const nc={}; PLAYERS.forEach(p=>{ nc[p.n]=(nc[p.n]||0)+1; });
+  DUP = new Set(Object.keys(nc).filter(n=>nc[n]>1));
+
+  buildChips(); wire(); renderMeta(gate); recompute(true);
 })();
 
-/* build_cockpit already emits the compact viewer model; this only runs in the
-   dev-fetch path where the raw stable app-data file is loaded directly. It
-   mirrors the transform in build_cockpit.py (kept deliberately in sync). */
+/* ---------- ring-fence: source-stamp check ----------
+   THE contamination guard. Real-mode asserts the loaded board carries a valid
+   `.srcmd5` source-stamp (lowercase hex md5, short-8 or full-32 form, matching
+   the repo's md5 convention). Dev-mode loads the fixture with no stamp. */
+function checkStamp(raw, mode){
+  if(mode==="real"){
+    const stamp = raw ? raw[".srcmd5"] : null;
+    if(stamp==null)
+      return {ok:false, reason:"no <code>.srcmd5</code> source-stamp is present"};
+    if(!/^[0-9a-f]{8}([0-9a-f]{24})?$/.test(String(stamp)))
+      return {ok:false, reason:`<code>.srcmd5</code> value <code>${esc(String(stamp))}</code> is not a valid md5 stamp`};
+    return {ok:true, note:`source-stamp ${stamp} verified`, stamp:String(stamp)};
+  }
+  // dev-mode
+  const fx = raw ? raw["_FIXTURE"] : null;
+  return {ok:true, note: fx?`fixture loaded — ${fx}`:"dev source loaded", fixture:!!fx};
+}
+function renderRejection(gate, seam){
+  const tb=document.querySelector(".toolbar"); if(tb) tb.style.display="none";
+  const board=document.getElementById("board"); if(board) board.hidden=true;
+  const r=document.getElementById("reject"); r.hidden=false;
+  r.innerHTML =
+    `<h2>■ Source rejected — real-mode ring-fence</h2>`+
+    `<p>The viewer is in <code>real</code> mode, which requires the loaded board to carry a valid `+
+    `<code>.srcmd5</code> source-stamp. This source failed the check:</p>`+
+    `<p style="color:var(--pos-kfwd)">✗ ${gate.reason}.</p>`+
+    `<p>Nothing is rendered. This is the contamination guard working as designed — an unstamped or `+
+    `synthetic source cannot be shown as if it were the sealed board.</p>`+
+    `<p style="color:var(--faint)">Source: <code>${esc(seam.url||"(inlined)")}</code> &nbsp;·&nbsp; `+
+    `switch <code>DATA_SEAM.mode</code> to <code>dev</code> to load the fixture, or stamp the board `+
+    `(companion published-stamp job).</p>`;
+  const rd=document.getElementById("readout"); if(rd) rd.innerHTML=`<span class="modebadge real">real · rejected</span>`;
+  const ft=document.getElementById("footer"); if(ft) ft.innerHTML=
+    `real-mode ring-fence active &nbsp;•&nbsp; unstamped source rejected &nbsp;•&nbsp; see DATA_CONTRACT.md`;
+}
+
+/* Map the raw board schema -> compact viewer contract. Mirrors the transform in
+   build_cockpit.py (kept deliberately in sync). Tolerant: prefers the richer
+   baked-matrix keys (pos/cpos/cur/Vpath/Ppath/yrs) if a future re-bake adds them. */
 function normaliseRaw(d){
   const BY = d.BASE_YEAR||2026, years=[BY-2,BY-1,BY,BY+1,BY+2];
-  const map = r=>{
-    const grp = r.pos || r.grp;              // prefer richer contract if present
+  const map = (r,src)=>{
+    const grp = r.pos || r.grp;              // current position group
     const cpos = r.cpos || r.grp;
     const fut = (r.fut||[]).map(x=>[x[0],x[1]]);
     return {
@@ -284,11 +373,11 @@ function normaliseRaw(d){
       vpath:(r.Vpath||[r.vM2,r.vM1,r.v,r.vP1,r.vP2]),
       years:(r.yrs||years),
       ppath:(r.Ppath ? r.Ppath.map((a,i)=>[i+1,a]) : (r.track||[]).map(t=>[t.s,t.a])),
-      g:r.g, cg:r.cg, age:r.age, bk:!!r.bk, src:r._src||"active"
+      g:r.g, cg:r.cg, age:r.age, bk:!!r.bk, src:src
     };
   };
-  const players=[...(d.active||[]).map(r=>({...r,_src:"active"})),
-                 ...(d.back||[]).map(r=>({...r,_src:"back"}))].map(map);
+  const players=[...(d.active||[]).map(r=>map(r,"active")),
+                 ...(d.back||[]).map(r=>map(r,"back"))];
   return {players, meta:{baseYear:BY, years}};
 }
 
@@ -298,14 +387,14 @@ function buildChips(){
   const all=document.createElement("button");
   all.className="chip all"; all.id="chipAll"; all.setAttribute("aria-pressed","true");
   all.textContent="All positions";
-  all.onclick=()=>{ state.pos.clear(); syncChips(); render(); };
+  all.onclick=()=>{ state.pos.clear(); syncChips(); recompute(true); };
   wrap.appendChild(all);
   POS.forEach(p=>{
     const b=document.createElement("button");
     b.className="chip"; b.style.setProperty("--c",p.c); b.setAttribute("aria-pressed","false");
     b.dataset.pos=p.k;
     b.innerHTML=`<span class="dot"></span>${p.label}`;
-    b.onclick=()=>{ state.pos.has(p.k)?state.pos.delete(p.k):state.pos.add(p.k); syncChips(); render(); };
+    b.onclick=()=>{ state.pos.has(p.k)?state.pos.delete(p.k):state.pos.add(p.k); syncChips(); recompute(true); };
     wrap.appendChild(b);
   });
 }
@@ -316,37 +405,60 @@ function syncChips(){
 }
 function wire(){
   const s=document.getElementById("search");
-  s.addEventListener("input",()=>{ state.q=s.value.trim().toLowerCase(); render(); });
-  document.getElementById("sort").addEventListener("change",e=>{ state.sort=e.target.value; render(); });
+  s.addEventListener("input",()=>{ state.q=s.value.trim().toLowerCase(); recompute(true); });
+  document.getElementById("sort").addEventListener("change",e=>{ state.sort=e.target.value; recompute(true); });
   document.querySelectorAll("thead th.sortable").forEach(th=>{
     th.addEventListener("click",()=>{
       const col=th.dataset.sort;
       const cur=state.sort.split(".");
-      let dir = (cur[0]===col && cur[1]==="desc")?"asc":(col==="n"?"asc":(col==="v"?"desc":"desc"));
+      let dir = col==="n"?"asc":"desc";
       if(cur[0]===col) dir = cur[1]==="desc"?"asc":"desc";
       state.sort=`${col}.${dir}`;
       document.getElementById("sort").value=state.sort;
-      render();
+      recompute(true);
     });
   });
   const setScale=v=>{ state.scale=v;
     document.getElementById("scaleLin").setAttribute("aria-pressed", v==="lin");
-    document.getElementById("scaleLog").setAttribute("aria-pressed", v==="log"); render(); };
+    document.getElementById("scaleLog").setAttribute("aria-pressed", v==="log"); renderWindow(); };
   document.getElementById("scaleLin").onclick=()=>setScale("lin");
   document.getElementById("scaleLog").onclick=()=>setScale("log");
   document.getElementById("scrim").onclick=closeDrawer;
+
+  // virtualiser: re-window on scroll (rAF-throttled) and on resize
+  const board=document.getElementById("board");
+  board.addEventListener("scroll",()=>{ if(rafPending) return; rafPending=true;
+    requestAnimationFrame(()=>{ rafPending=false; renderWindow(); }); });
+  window.addEventListener("resize",()=>renderWindow());
+
+  // one delegated click handler for the whole (virtualised) body
+  document.getElementById("rows").addEventListener("click",e=>{
+    const tr=e.target.closest("tr[data-k]"); if(!tr) return;
+    state.focusIdx=+tr.dataset.i; openDrawer(tr.dataset.k);
+  });
+
   document.addEventListener("keydown",e=>{
-    if(e.key==="/" && document.activeElement!==s){ e.preventDefault(); s.focus(); s.select(); }
-    if(e.key==="Escape") closeDrawer();
+    if(e.key==="/" && document.activeElement!==s){ e.preventDefault(); s.focus(); s.select(); return; }
+    if(e.key==="Escape"){ closeDrawer(); return; }
+    const a=document.activeElement;
+    const tr=(a&&a.closest)?a.closest("#rows tr[data-k]"):null;
+    if(!tr) return;
+    if(e.key==="ArrowDown"){ e.preventDefault(); setFocus(+tr.dataset.i+1); }
+    else if(e.key==="ArrowUp"){ e.preventDefault(); setFocus(+tr.dataset.i-1); }
+    else if(e.key==="Enter"||e.key===" "){ e.preventDefault(); state.focusIdx=+tr.dataset.i; openDrawer(tr.dataset.k); }
   });
 }
-function renderMeta(){
-  const m=BUILD_META, c=m.counts||{};
+function renderMeta(gate){
+  const m=DATA_SEAM.meta||{}, mode=DATA_SEAM.mode;
+  const badge=`<span class="modebadge ${mode}">${mode}${mode==="dev"?" · fixture":" · stamped"}</span>`;
   document.getElementById("readout").innerHTML =
-    `<b>${PLAYERS.length}</b> players · base year <b>${m.baseYear}</b><br>`+
-    `source <b>${(m.dataSource||"").split("/").pop()}</b> · built ${m.generated}`;
+    `<b>${PLAYERS.length}</b> players · base year <b>${m.baseYear||BYEAR}</b> ${badge}<br>`+
+    `source <b>${esc((m.source||DATA_SEAM.url||"").split("/").pop())}</b> · built ${esc(m.generated||"(dev)")}`;
+  const note = mode==="dev" ? "DEV-MODE · synthetic fixture · no source-stamp required"
+                            : "REAL-MODE · source-stamp verified";
   document.getElementById("footer").innerHTML =
-    `DATA_SOURCE · ${m.dataSource} &nbsp;•&nbsp; identity = key + pick + cohort (never surname) &nbsp;•&nbsp; viewing layer — round-by-round history reserved for the weekly loop`;
+    `${esc(note)} &nbsp;•&nbsp; single data seam = <code style="font-family:var(--mono)">DATA_SEAM.mode</code> `+
+    `&nbsp;•&nbsp; identity = key + pick + cohort (never surname) &nbsp;•&nbsp; pure view — no price computed`;
 }
 
 /* ---------- filter + sort ---------- */
@@ -357,82 +469,131 @@ function view(){
     rows=rows.filter(p=>(p.n||"").toLowerCase().includes(q)||(p.club||"").toLowerCase().includes(q)); }
   const [col,dir]=state.sort.split("."); const s=dir==="asc"?1:-1;
   rows=[...rows].sort((a,b)=>{
-    if(col==="n") return s*(a.n||"").localeCompare(b.n||"");
-    if(col==="yr"){ const d=(a.yr||0)-(b.yr||0); return d?s*d:(b.v||0)-(a.v||0); }
-    return s*((a.v||0)-(b.v||0));
+    let d;
+    if(col==="n") d=(a.n||"").localeCompare(b.n||"");
+    else if(col==="yr") d=(a.yr||0)-(b.yr||0);
+    else d=(a.v||0)-(b.v||0);
+    if(d) return s*d;
+    // deterministic, direction-independent tiebreak so ties are stable-sorted
+    const dv=(b.v||0)-(a.v||0); if(dv) return dv;
+    const dn=(a.n||"").localeCompare(b.n||""); if(dn) return dn;
+    return a._i-b._i;
   });
   return rows;
 }
 function railW(v){
-  if(state.scale==="log") return (Math.log((v||0)+1)/Math.log(MAXV+1))*100;
-  return ((v||0)/MAXV)*100;
+  let w;
+  if(state.scale==="log"){ const vv=Math.max(0,v||0); w=(Math.log(vv+1)/Math.log(Math.max(MAXV,1)+1))*100; }
+  else w=((v||0)/MAXV)*100;
+  return Math.max(0, Math.min(100, w));   // clamp: negatives -> 0, over-max -> 100
 }
 function fmt(n){ return n==null?"—":Math.round(n).toLocaleString("en-US"); }
 
-/* ---------- board render ---------- */
-function render(){
-  const rows=view(); const tb=document.getElementById("rows");
-  document.getElementById("count").textContent=`${rows.length} shown`;
-  document.getElementById("emptyBoard").hidden = rows.length>0;
-  const out=rows.map(p=>{
-    const pm=POSMAP[p.pos]||{c:"#888"};
-    const topFut=(p.fut&&p.fut.length)?p.fut.slice().sort((a,b)=>b[1]-a[1])[0][0]:null;
-    const reclass=(topFut&&topFut!==p.pos)?`<span class="reclass" title="projecting ${POSLABEL[topFut]||topFut}">→${POSLABEL[topFut]||topFut}</span>`:"";
-    const retired=p.src==="back"?`<span class="sub">retired</span>`:"";
-    const pick=p.pk==null?"—":p.pk;
-    return `<tr tabindex="0" data-k="${p.k}" aria-selected="${state.selected===p.k}">
-      <td class="rank r">${p._rank}</td>
-      <td class="name">${esc(p.n)}${retired}</td>
-      <td><span class="poschip"><span class="dot" style="background:${pm.c}"></span>${POSLABEL[p.pos]||p.pos||"—"}${reclass}</span></td>
-      <td class="value"><div class="rail"><div class="fill" style="width:${railW(p.v).toFixed(2)}%"></div><span class="fig">${fmt(p.v)}</span></div></td>
-      <td class="pick r narrow-hide">${pick}</td>
-      <td class="yr r narrow-hide">${p.yr??"—"}</td>
-    </tr>`;
-  }).join("");
-  tb.innerHTML=out;
-  tb.querySelectorAll("tr").forEach(tr=>{
-    tr.addEventListener("click",()=>openDrawer(tr.dataset.k));
-    tr.addEventListener("keydown",e=>{
-      if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openDrawer(tr.dataset.k); }
-      if(e.key==="ArrowDown"&&tr.nextElementSibling){ e.preventDefault(); tr.nextElementSibling.focus(); }
-      if(e.key==="ArrowUp"&&tr.previousElementSibling){ e.preventDefault(); tr.previousElementSibling.focus(); }
-    });
-  });
+/* ---------- virtualised board render ---------- */
+function recompute(resetScroll){
+  state.rows=view();
+  const board=document.getElementById("board");
+  if(resetScroll){ board.scrollTop=0; state.focusIdx = state.rows.length?0:-1; }
+  document.getElementById("count").textContent=`${state.rows.length} shown`;
+  document.getElementById("emptyBoard").hidden = state.rows.length>0;
+  renderWindow();
+}
+function rowHTML(p,i){
+  const pm=POSMAP[p.pos]||{c:"#888"};
+  const topFut=(p.fut&&p.fut.length)?p.fut.slice().sort((a,b)=>b[1]-a[1])[0][0]:null;
+  const reclass=(topFut&&topFut!==p.pos)?`<span class="reclass" title="projecting ${POSLABEL[topFut]||topFut}">→${POSLABEL[topFut]||topFut}</span>`:"";
+  // distinguish same-display-name collisions by their stable id; flag retired
+  const subs=[];
+  if(DUP.has(p.n)) subs.push(esc(p.k));
+  if(p.src==="back") subs.push("retired");
+  const sub=subs.length?`<span class="sub">${subs.join(" · ")}</span>`:"";
+  const pick=p.pk==null?"—":p.pk;
+  return `<tr tabindex="0" data-k="${esc(p.k)}" data-i="${i}" aria-selected="${state.selected===p.k}">`+
+      `<td class="rank r">${p._rank}</td>`+
+      `<td class="name" title="${esc(p.n)}">${esc(p.n)}${sub}</td>`+
+      `<td><span class="poschip"><span class="dot" style="background:${pm.c}"></span>${POSLABEL[p.pos]||p.pos||"—"}${reclass}</span></td>`+
+      `<td class="value"><div class="rail"><div class="fill" style="width:${railW(p.v).toFixed(2)}%"></div><span class="fig">${fmt(p.v)}</span></div></td>`+
+      `<td class="pick r narrow-hide">${pick}</td>`+
+      `<td class="yr r narrow-hide">${p.yr==null?"—":p.yr}</td>`+
+    `</tr>`;
+}
+function renderWindow(){
+  const board=document.getElementById("board");
+  const tb=document.getElementById("rows");
+  const N=state.rows.length;
+  const thead=board.querySelector("thead");
+  THEADH = thead ? thead.offsetHeight : 0;
+  const clientH = board.clientHeight || 480;
+  const relTop = board.scrollTop - THEADH;
+  const relBot = board.scrollTop + clientH - THEADH;
+  let start = Math.max(0, Math.floor(relTop/ROWH) - OVERSCAN);
+  let end   = Math.min(N, Math.ceil(relBot/ROWH) + OVERSCAN);
+  if(end<start) end=start;
+  // if a board row currently holds focus, rebuilding innerHTML would drop it —
+  // remember so we can restore keyboard focus to the same logical row.
+  const hadFocus = tb.contains(document.activeElement);
+  const topH=start*ROWH, botH=(N-end)*ROWH;
+  let html = topH>0 ? `<tr class="vspace" style="height:${topH}px"><td colspan="6"></td></tr>` : "";
+  for(let i=start;i<end;i++) html+=rowHTML(state.rows[i], i);
+  html += botH>0 ? `<tr class="vspace" style="height:${botH}px"><td colspan="6"></td></tr>` : "";
+  tb.innerHTML=html;
+  if(!calibrated) calibrate();
+  if(hadFocus && state.focusIdx>=start && state.focusIdx<end){
+    const el=tb.querySelector(`tr[data-i="${state.focusIdx}"]`); if(el) el.focus();
+  }
+}
+function calibrate(){
+  const rs=document.querySelectorAll("#rows tr[data-k]");
+  if(rs.length>=2){
+    const pitch=rs[1].offsetTop-rs[0].offsetTop;
+    calibrated=true;
+    if(pitch>0 && Math.abs(pitch-ROWH)>0.5){ ROWH=pitch; renderWindow(); }
+  }
+}
+function setFocus(idx){
+  const N=state.rows.length; if(!N) return;
+  idx=Math.max(0, Math.min(N-1, idx)); state.focusIdx=idx;
+  const board=document.getElementById("board");
+  const clientH=board.clientHeight;
+  const rowContentY = THEADH + idx*ROWH;                 // row top in scroll-content coords
+  if(rowContentY < board.scrollTop + THEADH) board.scrollTop = idx*ROWH;               // under sticky header
+  else if(rowContentY + ROWH > board.scrollTop + clientH) board.scrollTop = rowContentY + ROWH - clientH;
+  renderWindow();
+  const el=document.querySelector(`#rows tr[data-i="${idx}"]`); if(el) el.focus();
 }
 
 /* ---------- detail drawer ---------- */
 function openDrawer(k){
   const p=PLAYERS.find(x=>x.k===k); if(!p) return;
-  state.selected=k;
-  document.querySelectorAll("#rows tr").forEach(tr=>tr.setAttribute("aria-selected", tr.dataset.k===k));
+  state.selected=k; renderWindow();
   const pm=POSMAP[p.pos]||{c:"#888",label:p.pos};
   const topFut=(p.fut&&p.fut.length)?p.fut.slice().sort((a,b)=>b[1]-a[1])[0][0]:null;
   const reclass=(topFut&&topFut!==p.pos)
     ? `<span class="reclass" style="font-size:12px">now ${POSLABEL[p.pos]} · projecting ${POSLABEL[topFut]}</span>` : "";
   const catTxt=p.cat&&p.cat!=="None"?p.cat:"—";
-  const idcell=(k,v,big)=>`<div class="idcell"><div class="k">${k}</div><div class="v ${big?"big":""}">${v}</div></div>`;
+  const idcell=(kk,v,big)=>`<div class="idcell"><div class="k">${kk}</div><div class="v ${big?"big":""}">${v}</div></div>`;
 
   const dr=document.getElementById("drawer");
   dr.innerHTML=`
     <div class="dr-head">
       <button class="dr-close" aria-label="Close detail" onclick="closeDrawer()">✕</button>
       <div class="dr-name">${esc(p.n)}</div>
-      <div class="dr-id"><span class="poschip"><span class="dot" style="background:${pm.c}"></span>${POSLABEL[p.pos]||p.pos}</span> · ${p.club||"—"} · ${p.k}</div>
+      <div class="dr-id"><span class="poschip"><span class="dot" style="background:${pm.c}"></span>${POSLABEL[p.pos]||p.pos}</span> · ${esc(p.club||"—")} · ${esc(p.k)}</div>
     </div>
     <div class="dr-body">
       <div class="idgrid">
         ${idcell("Current value", fmt(p.v)+"<span style='color:var(--faint);font-size:11px'> · #"+p._rank+"</span>", true)}
-        ${idcell("Position", (POSLABEL[p.pos]||p.pos)+" "+reclass)}
+        ${idcell("Position", (POSLABEL[p.pos]||p.pos||"—")+" "+reclass)}
         ${idcell("Draft pick", p.pk==null?"—":("#"+p.pk))}
-        ${idcell("Draft year", p.yr??"—")}
-        ${idcell("Category", catTxt)}
-        ${idcell("Type / channel", (p.ty||"—")+(p.draft&&p.draft!=="None"?" · "+p.draft:""))}
-        ${idcell("Games (career)", (p.g??"—")+(p.cg&&p.cg!==p.g?" · "+p.cg+" incl. pre":""))}
-        ${idcell("Age", p.age??"—")}
+        ${idcell("Draft year", p.yr==null?"—":p.yr)}
+        ${idcell("Category", esc(catTxt))}
+        ${idcell("Type / channel", esc((p.ty||"—")+(p.draft&&p.draft!=="None"?" · "+p.draft:"")))}
+        ${idcell("Games (career)", (p.g==null?"—":p.g)+(p.cg&&p.cg!==p.g?" · "+p.cg+" incl. pre":""))}
+        ${idcell("Age", p.age==null?"—":p.age)}
       </div>
 
       <div class="section-label">Value trajectory <span class="meta">value by year</span></div>
-      <div class="chart">${lineChart(p.years, p.vpath, BUILD_META.baseYear)}</div>
+      <div class="chart">${lineChart(p.years, p.vpath, BYEAR)}</div>
 
       <div class="section-label">Points trajectory <span class="meta">score by career season</span></div>
       <div class="chart">${barChart(p.ppath)}</div>
@@ -441,7 +602,7 @@ function openDrawer(k){
       <div class="reserved">
         <div class="rtitle">Wired in the weekly-loop phase</div>
         <div class="rbody">Once the model stabilises, the weekly loop will feed a per-player,
-        per-round value series here — a live sparkline of how ${firstName(p.n)}'s price moved
+        per-round value series here — a live sparkline of how ${esc(firstName(p.n))}'s price moved
         week to week. Space is held; nothing is rendered yet. See DATA_CONTRACT.md.</div>
       </div>
     </div>`;
@@ -453,15 +614,15 @@ function closeDrawer(){
   const dr=document.getElementById("drawer");
   dr.classList.remove("open"); dr.setAttribute("aria-hidden","true");
   document.getElementById("scrim").classList.remove("open");
-  if(state.selected){
-    const tr=document.querySelector(`#rows tr[data-k="${cssq(state.selected)}"]`);
-    state.selected=null;
-    document.querySelectorAll('#rows tr[aria-selected="true"]').forEach(t=>t.setAttribute("aria-selected","false"));
+  const sel=state.selected; state.selected=null;
+  if(sel!=null){
+    renderWindow();
+    const tr=document.querySelector(`#rows tr[data-k="${cssq(sel)}"]`);
     if(tr) tr.focus();
   }
 }
 
-/* ---------- charts (inline SVG, no libraries) ---------- */
+/* ---------- charts (inline SVG, no libraries — presentational math only) ---------- */
 function lineChart(years, vals, baseYear){
   const pts = (years||[]).map((y,i)=>[y, vals&&vals[i]!=null?vals[i]:null]).filter(p=>p[1]!=null);
   if(!pts.length) return `<div class="empty">No value path.</div>`;

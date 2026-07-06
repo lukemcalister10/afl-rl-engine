@@ -2,125 +2,126 @@
 """
 build_cockpit.py — bake the self-contained RL Value Cockpit.
 
-Reads the STABLE board app-data file (the same file the existing HTML build
-consumes), slims it to the viewer model, and injects it into template.html to
-produce a single self-contained cockpit.html.
+Injects ONE seam object (DATA_SEAM) into template.html and writes a single
+self-contained cockpit HTML. The seam's `mode` is the only place the data
+source is chosen:
 
-Why this file exists: the deliverable is a self-contained HTML daily-driver, so
-the board data is inlined rather than fetched. To keep "a re-bake auto-updates
-the cockpit with no code change", the ONLY thing that ever changes is the data
-under DATA_SOURCE below — re-run this one command after a re-bake and the
-cockpit refreshes. DATA_SOURCE is the single, clearly-marked seam.
+  dev  (default)  -> the SYNTHETIC fixture (cockpit/fixtures/fixture.json).
+                     No source-stamp required; loads and renders.
+  real            -> the real board (data/rl_build/rl_app_data.json). The viewer
+                     REQUIRES a valid `.srcmd5` source-stamp and REJECTS a source
+                     without one. The published board currently ships unstamped,
+                     so real-mode has nothing valid to load yet (expected — the
+                     companion published-stamp job makes real data pass).
 
-READ-ONLY on the engine + data. Writes only cockpit/cockpit.html.
+READ-ONLY on the engine + data. Writes only the chosen cockpit HTML output.
+This job (fixture-only) defaults to dev so the shipped cockpit.html is a working
+demo carrying NO real data.
+
+Usage:
+  python3 cockpit/build_cockpit.py                 # dev, fixture.json  -> cockpit.html
+  python3 cockpit/build_cockpit.py --large         # dev, fixture_large.json (perf)
+  python3 cockpit/build_cockpit.py --mode real     # real, board (rejects until stamped)
+  python3 cockpit/build_cockpit.py --source PATH --out FILE --mode {dev,real}
 """
-import json, os, datetime
+import argparse, json, os, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # ============================================================================
-# DATA_SOURCE — the ONE seam. A stable, unversioned filename so an overhaul
-# re-bake (rl_export.py rewrites this path in place) auto-updates the cockpit
-# with no code change here. Chosen over data/s4_matrix_baked_<md5>.json because
-# that filename is version-stamped (breaks on re-bake) and keyed by unstable
-# python id(); rl_app_data.json is what the existing HTML output already reads
-# and carries a stable per-player `key`. See DATA_CONTRACT.md.
+# THE DATA SEAM — the ONE seam. In real-mode this points at a stable,
+# unversioned board filename so an overhaul re-bake (rl_export.py rewrites this
+# path in place) auto-updates the cockpit with no code change. In dev-mode it
+# points at the synthetic fixture. See DATA_CONTRACT.md.
 # ============================================================================
-DATA_SOURCE = "data/rl_build/rl_app_data.json"
+REAL_SOURCE = "data/rl_build/rl_app_data.json"          # real board (real-mode)
+FIXTURE      = "fixtures/fixture.json"                    # synthetic (dev-mode)
+FIXTURE_LARGE = "fixtures/fixture_large.json"            # synthetic large-N
 
 TEMPLATE = os.path.join(HERE, "template.html")
-OUT      = os.path.join(HERE, "cockpit.html")
 
-
-def to_viewer_model(d):
-    """Map the stable app-data schema -> compact viewer contract.
-
-    Tolerant by design: if a record already carries the richer baked-matrix
-    contract (pos/cpos/cur/Vpath/Ppath/yrs), those are preferred so a future
-    re-bake that enriches the stable file wires in with no change here.
-    """
-    BY = d.get("BASE_YEAR", 2026)
-    years = [BY - 2, BY - 1, BY, BY + 1, BY + 2]
-
-    def m(r, src):
-        grp  = r.get("pos",  r.get("grp"))      # current position group
-        cpos = r.get("cpos", r.get("grp"))
-        fut  = [[x[0], x[1]] for x in (r.get("fut") or [])]
-        vpath = r.get("Vpath")
-        if vpath is None:
-            vpath = [r.get("vM2"), r.get("vM1"), r.get("v"),
-                     r.get("vP1"), r.get("vP2")]
-        if "Ppath" in r:
-            ppath = [[i + 1, a] for i, a in enumerate(r["Ppath"])]
-        else:
-            ppath = [[t["s"], t["a"]] for t in (r.get("track") or [])]
-        return {
-            "k":   r.get("key"),
-            "n":   r.get("name"),
-            "pos": grp,
-            "cpos": cpos,
-            "fut": fut,
-            "pk":  r.get("pk",   r.get("pick")),
-            "yr":  r.get("yr",   r.get("year")),
-            "cat": r.get("cat"),
-            "ty":  r.get("ty",   r.get("type")),
-            "club": r.get("club"),
-            "draft": r.get("draft"),
-            "v":   r.get("cur", r.get("v")),
-            "vpath": vpath,
-            "years": r.get("yrs", years),
-            "ppath": ppath,
-            "g":   r.get("g"),
-            "cg":  r.get("cg"),
-            "age": r.get("age"),
-            "bk":  bool(r.get("bk")),
-            "src": src,
-        }
-
-    players = ([m(r, "active") for r in d.get("active", [])] +
-               [m(r, "back")   for r in d.get("back", [])])
-    return players, BY, years
+# The exact seam placeholder default in template.html (must match verbatim so the
+# injection replaces it). Keep in sync with template.html's DATA_SEAM literal.
+SEAM_DEFAULT = ('/*__SEAM__*/ {\n'
+                '  mode: "dev",\n'
+                '  data: null,\n'
+                '  url:  "fixtures/fixture.json",\n'
+                '  meta: {baseYear:2026, source:"fixtures/fixture.json", generated:"(dev)", counts:{}}\n'
+                '}')
 
 
 def main():
-    src_path = os.path.join(ROOT, DATA_SOURCE)
+    ap = argparse.ArgumentParser(description="Bake the self-contained RL Value Cockpit.")
+    ap.add_argument("--mode", choices=["dev", "real"], default="dev",
+                    help="dev = synthetic fixture (default); real = the real board (needs a valid .srcmd5).")
+    ap.add_argument("--large", action="store_true",
+                    help="dev-mode: use the ~850-row large-N fixture (performance).")
+    ap.add_argument("--source", default=None,
+                    help="Override the source path (relative to repo root).")
+    ap.add_argument("--out", default=None,
+                    help="Override the output HTML path (default cockpit.html).")
+    args = ap.parse_args()
+
+    if args.mode == "real":
+        # real board lives under repo root; the app would fetch it via ../<path>
+        source = args.source or REAL_SOURCE
+        src_path = os.path.join(ROOT, source)
+        url = "../" + source
+        source_label = source
+    else:
+        # fixtures live under cockpit/, so paths are relative to this dir
+        source = args.source or (FIXTURE_LARGE if args.large else FIXTURE)
+        src_path = os.path.join(HERE, source)
+        url = source
+        source_label = "cockpit/" + source
+
+    out = args.out or os.path.join(HERE, "cockpit.html")
+
     with open(src_path) as f:
-        d = json.load(f)
+        raw = json.load(f)
 
-    players, base_year, years = to_viewer_model(d)
+    base_year = raw.get("BASE_YEAR", 2026)
+    counts = {"active": len(raw.get("active", [])), "back": len(raw.get("back", []))}
 
-    counts = {"active": len(d.get("active", [])), "back": len(d.get("back", []))}
     meta = {
         "baseYear": base_year,
-        "years": years,
-        "dataSource": DATA_SOURCE,
+        "source": source_label,
         "generated": datetime.date.today().isoformat(),
         "counts": counts,
+        "mode": args.mode,
+    }
+
+    # The whole raw payload is inlined as `data` so the file is self-contained
+    # (opens with no server). The viewer's stamp-check + normaliser run on it at
+    # boot — one code path for both dev and real.
+    seam = {
+        "mode": args.mode,
+        "data": raw,
+        "url": url,
+        "meta": meta,
     }
 
     tpl = open(TEMPLATE).read()
-    data_json = json.dumps({"players": players}, separators=(",", ":"))
-    meta_json = json.dumps(meta, separators=(",", ":"))
+    assert SEAM_DEFAULT in tpl, "SEAM placeholder not found in template.html (drifted from build_cockpit.py)"
 
-    html = (tpl
-            .replace("/*__DATA__*/ null", "/*__DATA__*/ " + data_json)
-            .replace("/*__META__*/ {baseYear:2026, dataSource:\"data/rl_build/rl_app_data.json\", generated:\"(dev)\", counts:{}}",
-                     "/*__META__*/ " + meta_json))
+    seam_json = "/*__SEAM__*/ " + json.dumps(seam, separators=(",", ":"))
+    html = tpl.replace(SEAM_DEFAULT, seam_json, 1)
 
-    # sanity: both seams must have been filled
-    assert "/*__DATA__*/ null" not in html, "DATA seam not injected"
-    assert "generated:\"(dev)\"" not in html, "META seam not injected"
+    # sanity: the seam must have been filled exactly once, no default left behind
+    assert '/*__SEAM__*/ {\n  mode: "dev"' not in html, "SEAM default still present"
+    assert html.count("/*__SEAM__*/") == 1, "seam marker count wrong after inject"
 
-    # prepend the doctype/html wrapper the template omits (it is a fragment)
-    doc = "<!DOCTYPE html><html lang=\"en\">\n" + html + "\n</html>\n"
-    with open(OUT, "w") as f:
+    doc = '<!DOCTYPE html><html lang="en">\n' + html + "\n</html>\n"
+    with open(out, "w") as f:
         f.write(doc)
 
-    print(f"cockpit built: {OUT}")
-    print(f"  source      : {DATA_SOURCE}")
-    print(f"  players     : {len(players)}  (active {counts['active']} + back {counts['back']})")
+    print(f"cockpit built: {out}")
+    print(f"  mode        : {args.mode}")
+    print(f"  source      : {source_label}")
+    print(f"  players     : {counts['active'] + counts['back']}  (active {counts['active']} + back {counts['back']})")
     print(f"  base year   : {base_year}")
+    print(f"  fixture      : {'yes (synthetic)' if args.mode == 'dev' else 'NO (real board)'}")
     print(f"  html bytes  : {len(doc):,}")
 
 

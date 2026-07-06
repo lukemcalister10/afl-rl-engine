@@ -1,24 +1,83 @@
 # Cockpit data contract
 
 The viewing layer under `cockpit/` is decoupled from the engine by a single
-seam. This file states (i) the `DATA_SOURCE` the viewer reads and how its
-schema maps to what the board shows, and (ii) exactly what the future weekly
-loop must produce to fill the reserved round-by-round rating section.
+seam. This file states (i) the `DATA_SEAM` the viewer reads, its dev/real modes,
+the source-stamp ring-fence, and how its schema maps to what the board shows;
+and (ii) exactly what the future weekly loop must produce to fill the reserved
+round-by-round rating section.
+
+**Pure view.** The viewer DISPLAYS values and computes NO price. None of the
+board app's price chain (`_engine_block_v23.js`) is ported. Only presentational
+math is present (rank, value-rail %, chart coordinates).
 
 ---
 
-## (i) DATA_SOURCE — what the viewer reads
+## (i) DATA_SEAM — the ONE place the data source is chosen
 
-```
-DATA_SOURCE = data/rl_build/rl_app_data.json
+There is a single seam object, `DATA_SEAM`, declared once in `template.html`
+(and injected by `build_cockpit.py`). It replaces the earlier
+`COCKPIT_DATA` / `BUILD_META` / `DEV_FETCH_URL` trio — there is now exactly one
+pointer:
+
+```js
+const DATA_SEAM = {
+  mode: "dev",                 // "dev" | "real" — THE toggle
+  data: {…} | null,            // inlined payload (self-contained); null => fetch url
+  url:  "fixtures/fixture.json",
+  meta: {…}
+};
 ```
 
-Declared once, in `cockpit/build_cockpit.py`. That is the only seam. A model
-overhaul re-bake that rewrites this file in place (as `rl_export.py` already
-does) auto-updates the cockpit — re-run `python3 cockpit/build_cockpit.py`,
+| mode | source | source-stamp | behaviour |
+|---|---|---|---|
+| `dev` (default) | synthetic fixture `cockpit/fixtures/fixture.json` (or `fixture_large.json`) | none expected | loads and renders |
+| `real` | real board `data/rl_build/rl_app_data.json` | **`.srcmd5` required** | loads only if the stamp is valid; otherwise **rejected** |
+
+Build:
+
+```bash
+python3 cockpit/build_cockpit.py                # dev, fixture      -> cockpit.html
+python3 cockpit/build_cockpit.py --large        # dev, large-N fixture (perf)
+python3 cockpit/build_cockpit.py --mode real    # real, board (rejects until stamped)
+```
+
+A model-overhaul re-bake that rewrites the real board in place (as
+`rl_export.py` already does) auto-updates real-mode — re-run the one command,
 no code change.
 
-### Why this file (not the baked matrix)
+### Ring-fence — the source-stamp check
+
+In **real-mode** the viewer asserts the loaded board carries a valid
+`.srcmd5` source-stamp: a lowercase-hex md5 in the repo's convention
+(short 8-char or full 32-char form, matching the `md5` values the bootstrap
+prints). Absent or malformed → the board is **rejected**, nothing is rendered,
+and a rejection panel explains why. In **dev-mode** the fixture loads with no
+stamp expected.
+
+This is the contamination guard. The synthetic fixture deliberately carries
+**no** `.srcmd5`, so it loads in dev-mode and is **rejected in real-mode** — that
+rejection is the ring-fence working. The published board currently ships
+unstamped, so real-mode has nothing valid to load yet; the companion
+published-stamp job adds the stamp so real data passes. (Verified both ways: a
+source with a valid `.srcmd5` is accepted in real-mode; the unstamped fixture is
+rejected.)
+
+### The synthetic fixture
+
+`cockpit/fixtures/` holds invented dev data — **not the board**. It mirrors the
+real board's *schema* (field names/types) but copies **no** real rows or values;
+every value is fabricated to exercise an edge case. Each file carries the marker
+`"_FIXTURE": "synthetic dev data — NOT the board"` and lives outside
+`data/rl_build/` and the source path, with a name that does not match
+`rl_model_data*.json`. Regenerate with `python3 cockpit/fixtures/make_fixture.py`.
+
+Edge cases covered: long names, same-display-name collisions distinguished by
+id (Sam Berry / Pickett / King style), zero / extreme / negative values, null &
+missing optional fields, value ties (stable-sort), single-position players, the
+dormant `fut`/`gf` fields, flat (retired/back) value paths, and a ~850-row
+large-N variant for virtualization.
+
+### Why the real board file (not the baked matrix), in real-mode
 
 | candidate | verdict |
 |---|---|
@@ -106,8 +165,10 @@ Requirements for apples-for-apples integrity:
 
 ### Wiring, when it lands
 
-- `build_cockpit.py` already emits a compact per-player model; add `rounds` to
-  the mapper (one line) and the loader carries it through untouched.
+- The client-side `normaliseRaw()` in `template.html` maps the raw board schema
+  to the compact viewer model; add `rounds` to that mapper (one line) and it
+  carries through untouched. (`build_cockpit.py` inlines the raw source, so no
+  change is needed there.)
 - The reserved `<div class="reserved">` in `template.html` is the drop-in point
   — replace its placeholder body with a sparkline built the same way as the
   existing `lineChart()` (inline SVG, no libraries), plotting `rounds[].v`
