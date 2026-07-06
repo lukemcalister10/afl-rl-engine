@@ -320,8 +320,50 @@ def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD
 # production above his (uncapped) start value (Sweet 2011, McAndrew 992, Xerri 5755, Grundy, Gawn, Marshall)
 # is byte-exact. Derivation/ladder: session_2026-07-03/d13/d13_ask1_ruck_cap.md.
 RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default 1.73->1.4 (owner ruck-cap dial, v2.4 bake 2026-07-04; env override preserved)
-def _ruc_prior_cap(p,v):                                      # cap a RUC band-fed value at RUC_PRIOR_CAP x PVC (real rucks)
+def _ruc_prior_cap(p,v):                                      # V0 PRIOR SCAFFOLD cap — the DRAFT-prior/floor path, UNCHANGED (see BATCH2 note below)
     return min(v, RUC_PRIOR_CAP*draftval(p)) if (_isreal(p) and MA.gfut(p)=='RUC') else v
+# ==== BATCH2 (2026-07-06): RUC PRODUCTION-DERIVED CEILING — replaces the 1.4xPVC cap ON THE PRODUCTION LEG.
+# THE PROBLEM the directive names: the old lever capped a real ruck's value at a flat multiple of draftval
+# (PVC = draft-pick capital), blending heterogeneous units (draft $ vs production $) under one dial. THE SWAP:
+# the PRODUCTION leg (ev() hook, prior-dominated regime) is now capped at a ceiling DERIVED off ruck production
+# instead of off pick capital.
+#   x  = bestlvl(p) — games-qualified, era-normalized PEAK season level (:246), a pure PRODUCTION unit.
+#   y  = the ENGINE'S OWN ruck pricing of a STANDARDIZED developing ruck (synth: 2 seasons @ that avg, :119)
+#        priced through raw_ev*iso_corr at a FIXED representative slot RUC_CEIL_REFPK. This isolates PRODUCTION:
+#        no per-player pick, and NO age/tenure/exposure noise (raw_ev of a LIVE ruck embeds age-fade and is
+#        non-monotone in production — measured; the synth strips it). Monotone non-decreasing by construction.
+#   ceiling(p) = RUC_CEIL_HEAD * y(bestlvl(p)).  RUC_CEIL_HEAD (env RL_RUC_CEIL_HEAD) = dimensionless HEADROOM
+#        over the standardized production price — a multiplier on a PRODUCTION $, never on pick capital.
+# THIN SLICE (declared): the whole ruck slice is POOLED onto ONE pick-neutral production->$ curve (rather than
+# a noisy per-player empirical fit); an empirical kernel over live raw_ev was rejected (age/tenure-contaminated,
+# non-monotone -> it crushed thin prospects). NO-PRODUCTION FALLBACK: a ruck with bestlvl==0 (no >=6-game
+# season) has no production to derive from, so the pre-existing prior cap (RUC_PRIOR_CAP x PVC) stands for him
+# -> every no-production ruck is BYTE-EXACT; only rucks with demonstrated production are re-priced.
+# SCOPE (declared, deliberate): the ceiling governs the PRODUCTION
+# LEG ONLY (ev() hook B). The V0 draft-prior/floor SCAFFOLD (_ruc_prior_cap above -> _v0_raw -> the pooled RUC
+# V0 curve :424/:427, the floor, the sit-out blend, the delist scrap) is left BYTE-IDENTICAL to v2.5. Reason:
+# re-basing V0 would refit the POOLED RUC V0 curve and move ~170 rucks — including bestlvl==0, no-game,
+# pickless rucks (e.g. Patrick Carr 389->671) whose value must NOT change off other rucks' production. Keeping
+# the scaffold fixed makes this the THIN, production-honest lever the directive asks for: only rucks whose
+# PRODUCTION is being re-priced move. (Re-basing the V0 prior off production is a larger, pooled-curve change =
+# a later integration step, NOT this single lever.) Derivation/ladder: session_2026-07-06/ruck_deriv/.
+RUC_CEIL_HEAD=float(os.environ.get('RL_RUC_CEIL_HEAD','0.80'))  # headroom on the standardized production price for UNPROVEN exposure; owner's eyeball dial (lands Emmett 724 in his stated 650-800)
+RUC_CEIL_REFPK=float(os.environ.get('RL_RUC_CEIL_REFPK','72'))  # ruck-median effpk = the pick-neutral "representative ruck slot" (declared; env-overridable)
+_RUCCEIL={}; _RUCCEIL_META={}
+def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: era-adj peak avg -> ruck price
+    avs=list(np.linspace(15.0,150.0,46))
+    def _sp(a):
+        sp=synth(int(RUC_CEIL_REFPK),float(a),'RUC')
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_corr('RUC',MA.effpk(sp))
+    ys=[_sp(a) for a in avs]
+    for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
+    _RUCCEIL['grid']=(np.array(avs),np.array(ys))
+    _RUCCEIL_META.update(refpk=RUC_CEIL_REFPK,head=RUC_CEIL_HEAD,grid_lo=float(ys[0]),grid_hi=float(ys[-1]),n_avg=len(avs))
+def _ruc_ceiling(p):                                          # production-derived $ ceiling for a real ruck (bestlvl->$)
+    s=bestlvl(p)
+    if s<=0: return RUC_PRIOR_CAP*draftval(p)                # NO qualified production -> nothing to derive from: the pre-existing prior cap stands (no-production rucks byte-exact)
+    if 'grid' not in _RUCCEIL: _build_ruc_ceiling()
+    xg,yg=_RUCCEIL['grid']; return RUC_CEIL_HEAD*float(np.interp(s,xg,yg))
 _V0C={}; _V0U={}
 _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
                               # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
@@ -496,9 +538,9 @@ def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
-    if _isreal(p) and MA.gfut(p)=='RUC':                  # ASK1: cap PRIOR-DOMINATED ruck production leg only
-        _cpv=RUC_PRIOR_CAP*draftval(p); _v0u=_v0_uncapped(p)  #   bind iff C*PVC < e <= V0_uncapped (hot prior, no demonstrated growth);
-        if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=C*PVC (already low) -> byte-exact
+    if _isreal(p) and MA.gfut(p)=='RUC':                  # BATCH2: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling
+        _cpv=_ruc_ceiling(p); _v0u=_v0_uncapped(p)           #   bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth);
+        if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=ceil (already low) -> byte-exact
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
     pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
