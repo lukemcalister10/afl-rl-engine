@@ -17,7 +17,7 @@ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').
 MA=g['MA'];ev=g['ev'];nseas=g['nseas']
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
-PANEL=[('Nick Daicos',7002),('Marcus Bontempelli',3084),('Harry Sheezel',7151),('Max Gawn',2112),('Harley Reid',3549),('Josh Ward',1650),('Darcy Moore',198),('Taylor Goad',723),('Josh Smillie',974),('Will Green',536)]   # BAKED v2.5 2026-07-05 (DPP strip, store e1b4d8bf); supersedes the v2.4 baked panel
+PANEL=[('Nick Daicos',7626),('Marcus Bontempelli',3524),('Harry Sheezel',7734),('Max Gawn',2413),('Harley Reid',3592),('Josh Ward',1650),('Darcy Moore',198),('Taylor Goad',801),('Josh Smillie',1015),('Will Green',563)]   # CANDIDATE W4 integration 2026-07-06 (multi-lever; store e1b4d8bf UNCHANGED) — NOT BAKED; movers vs the v2.5 baked panel ARE the W4 levers (baked was: Daicos 7002 Bont 3084 Sheezel 7151 Gawn 2112 Reid 3549 Ward 1650 Moore 198 Goad 723 Smillie 974 Green 536); ALL-LEVERS-OFF reproduces the baked panel byte-exact (RL_FWDRECAL=0 RL_YOUNG=0 RL_OVPX=0 RL_KPFFIX=0 RL_V7FORM=0 RL_W4_RUC=0 RL_FORMDECL=0 RL_PVCFIT=0 — verified this session)
 ok=True; print("%-22s%8s%8s"%('player','EV','EXPECT'))
 for nm,exp in PANEL:
     p=find(nm); v=ev(p) if p else None; m='' if v==exp else '  <-- MISMATCH'; ok=ok and v==exp

@@ -79,3 +79,17 @@ ALL-OFF ⇒ byte-exact v2.5 (verified).
 
 Redistribution, not injection: net board pool delta reported; FADE/OVPX/KPF-compress fund the credit legs; target
 |net| small vs baked.
+
+## MEASURED (calibration record, this session)
+- Dial iteration 1 (CRED .22 / g(m) from 6 / FADE .45 unramped / YCRED .10): pool **+4.02%** — too much injection;
+  fade hit young proven (Ginbey/Fletcher class); Bont +18.4%.
+- Dial iteration 2 (LOCKED: CRED .17 / g(m) ramp 10→30 / FADE .60 age-ramped 23→26 / YCRED .13 / OVPX per-pos
+  {GF .12, GD .09, MID .07} / KPFUP 1.6 / KPFSH .55 / V7W .6 / YRH .35): pool **+2.84%**
+  (30+ proven +6.9% · 25-29 proven +3.7% · young thin +1.5% · KPF −1.6%); anchors: Bont **+14.3%** (3524),
+  Gawn **2413** vs Briggs **2109** (+14.4% gap), Cameron **+9.5%**, Butters +11.0%/Holmes +10.6% held-rising,
+  Duursma +4.5%, faders 0/-0.2% (Coniglio +3.6pts = lifted V0 floor basis only).
+- Walk-forward book (pass 1): **no-arbitrage ratio 124.6%** (baked 125.2%; ≤130 HARD, guide 120-125) — year-1
+  aggregate +2.2% (survivor reward priced forward); **B1 PASS** peak N=4 AVG 142.1 (baked 143.2; −0.77% ≤ 2%
+  preservation bound); book↔board parity 803/803.
+- PVC fit (downstream, 1,448 anchors 2004-2024): steeper than v3.4 (pick 8 −32%, pick 45 −42%), monotone,
+  pick-1 anchored 3000 — see PVC_FIT_NOTE.md; picks-only by construction.
