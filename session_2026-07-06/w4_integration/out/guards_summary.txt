@@ -1,0 +1,24 @@
+GUARD SUITE — all evaluated on the RESULT (three-column: CONTROL=baked v2.5 | CURRENT=W4 candidate)
+
+1. Cohort no-arbitrage (walk-forward aggregate 2004-2020): 124.6% vs baked 125.2%  [HARD <=130, guide 120-125]  PASS
+   - year-1 aggregate RAISED +2.2% (957,116 -> 978,495): the survivor reward priced forward, year-1 not cut
+2. Monotone pick curve: fitted PVC non-increasing 1..99, two 1-pick interior plateaus (allowed); young-ruck
+   headroom smooth in pick AND age (no pk20/21 cliff)  PASS
+3. Never-crater first-year/unproven (B5): pricing-feature intact — 52 saves (baked 52; list did NOT grow),
+   pure lower bound clean (0 lowered, 0 non-ND moved); young thin cohort +1.5% (lifted, not cratered)  PASS
+4. Individual survivor peak (B1 yrs 4-6): B1 PASS peak N=4 AVG 142.1 (baked 143.2, -0.77% <= 2% bound);
+   Butters +11.0% / Holmes +10.6% (HELD, rising)  PASS
+5. Convexity/option-value premium: young thin <=22 +1.5% (premium held); v7 tail RELAXED for demonstrated
+   producers, kept for speculation; B6 games-ramp PASS (no dips, smooth 0->6)  PASS
+6. Five DATA guards + Guard 5 boot-store: PASS at every step (store e1b4d8bf never edited).
+   Panel 10/10 on re-stamped CANDIDATE values; ALL-LEVERS-OFF reproduces the baked panel byte-exact.
+   B3: candidate book sealed 264f2847 (2649 players, key set == baked); vs-baked-seal DIFFERS as expected
+   on a value-moving candidate (2,136 records carry moved as-of values - attributed).
+   B4 board parity: regenerated == committed ca5b3653 byte-agree, engine==board eps=0 (805/805).
+   B2 anti-leakage: median |IS-WF| = 0.0 %-pts (tol 0.5); GOOD>>BUST separation every position.
+   D14a/b/c V0 laws: PASS with the young-lifted V0 curve.
+   Ship-gates: FAIL=4 vs baked FAIL=3 - the moved red is B3-vs-baked-seal (expected); A2 (0.821, byte-identical),
+   A12 (same verdict) pre-existing owner-acknowledged reds; A3 (Rozee, data-caused knife-edge) 0.73 -> 0.71:
+   the production-gated credit gives his LTI-wiped 2026 less than his elite 2025 - flagged; the injury
+   re-measure (next phase) must run net of THIS aging side.
+7. Per-lever attribution: 8 kill-switches, leave-one-out deltas per player (table below)  DELIVERED
