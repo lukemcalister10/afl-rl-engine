@@ -9,7 +9,7 @@ with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 MA = g['MA']; ev = g['ev']; cp = g['cp']; _nqual = g['_nqual']; _lvlcurr = g['_lvlcurr']
 OUT = '/home/user/afl-rl-engine/session_2026-07-06/w4_integration/out'
-baked = {r['key']: r['v'] for r in json.load(open('/home/claude/rl_build/rl_app_data.json'))['active']}
+baked = {r['key']: r['v'] for r in json.load(open('/home/user/afl-rl-engine/session_2026-07-06/w4_integration/out/baked_board_full.json'))['active']}  # TRUE baked v2.5 board (git 00d82dd) — /home/claude/rl_build now holds the CANDIDATE (B4 basis)
 
 rows = []
 with contextlib.redirect_stdout(io.StringIO()):

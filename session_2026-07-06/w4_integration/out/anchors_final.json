@@ -1,0 +1,142 @@
+{
+ "Willem Duursma": {
+  "role": "young gun \u2014 runway credit",
+  "read": "year-1 cohort lifted under the no-arbitrage bound",
+  "baked": 4110,
+  "now": 4295,
+  "dpct": "+4.5%"
+ },
+ "Zak Butters": {
+  "role": "peak cohort (4-6) survivor",
+  "read": "HELD (not crushed) \u2014 margin credit, no fade (elite)",
+  "baked": 5174,
+  "now": 5745,
+  "dpct": "+11.0%"
+ },
+ "Max Holmes": {
+  "role": "peak cohort (4-6) survivor",
+  "read": "HELD (not crushed) \u2014 margin credit, no fade (elite)",
+  "baked": 5386,
+  "now": 5959,
+  "dpct": "+10.6%"
+ },
+ "Marcus Bontempelli": {
+  "role": "elite veteran (target >= +10%)",
+  "read": "120+ avg permanent captain, no decline \u2014 certainty credit on the present margin + captaincy",
+  "baked": 3084,
+  "now": 3524,
+  "dpct": "+14.3%"
+ },
+ "Max Gawn": {
+  "role": "elite veteran (must clear Briggs)",
+  "read": "+48 above REPL + captaincy; forward-years no longer level him with a low-80s ruck",
+  "baked": 2112,
+  "now": 2413,
+  "dpct": "+14.3%"
+ },
+ "Kieren Briggs": {
+  "role": "runway-pair reference",
+  "read": "low-80s barely above REPL \u2014 moderate far-years now carry washout risk",
+  "baked": 2145,
+  "now": 2109,
+  "dpct": "-1.7%"
+ },
+ "Jeremy Cameron": {
+  "role": "elite KPF (up)",
+  "read": "KPF above-REPL margin reward + v7 form relax",
+  "baked": 1143,
+  "now": 1252,
+  "dpct": "+9.5%"
+ },
+ "Sam Darcy": {
+  "role": "KPF young \u2014 owner read UNDERPRICED",
+  "read": "three-locus: young ceiling kept, KPF compress never touches him, LTI channels attributed",
+  "baked": 4144,
+  "now": 4330,
+  "dpct": "+4.5%"
+ },
+ "Stephen Coniglio": {
+  "role": "fader",
+  "read": "still at scrap level (small +\u0394 = lifted V0 floor basis only)",
+  "baked": 112,
+  "now": 116,
+  "dpct": "+3.6%"
+ },
+ "Taylor Adams": {
+  "role": "fader",
+  "read": "unchanged",
+  "baked": 72,
+  "now": 72,
+  "dpct": "+0.0%"
+ },
+ "Mark Blicavs": {
+  "role": "fader",
+  "read": "unchanged",
+  "baked": 9,
+  "now": 9,
+  "dpct": "+0.0%"
+ },
+ "Zach Guthrie": {
+  "role": "fader",
+  "read": "unchanged",
+  "baked": 465,
+  "now": 464,
+  "dpct": "-0.2%"
+ },
+ "Nick Daicos": {
+  "role": "panel/proven young elite",
+  "read": "margin credit (form-conditioned, age-blind)",
+  "baked": 7002,
+  "now": 7626,
+  "dpct": "+8.9%"
+ },
+ "Harry Sheezel": {
+  "role": "panel/proven young elite",
+  "read": "margin credit",
+  "baked": 7151,
+  "now": 7734,
+  "dpct": "+8.2%"
+ },
+ "Harley Reid": {
+  "role": "panel yr-3 pedigree",
+  "read": "small young credit",
+  "baked": 3549,
+  "now": 3592,
+  "dpct": "+1.2%"
+ },
+ "Taylor Goad": {
+  "role": "panel sat-out young ruck",
+  "read": "smooth young-ruck headroom (no pick cliff) + young credit",
+  "baked": 723,
+  "now": 801,
+  "dpct": "+10.8%"
+ },
+ "Will Green": {
+  "role": "panel sat-out young ruck",
+  "read": "smooth young-ruck headroom + young credit",
+  "baked": 536,
+  "now": 563,
+  "dpct": "+5.0%"
+ },
+ "Josh Smillie": {
+  "role": "panel sat-out mid",
+  "read": "young credit via V0",
+  "baked": 974,
+  "now": 1015,
+  "dpct": "+4.2%"
+ },
+ "Sam Walsh": {
+  "role": "#45 aging mover",
+  "read": "aging decline form-conditioned + margin credit",
+  "baked": 2261,
+  "now": 2756,
+  "dpct": "+21.9%"
+ },
+ "Louis Emmett": {
+  "role": "#44 ruck anchor",
+  "read": "production-honest ceiling (owner band 650-800) + young headroom",
+  "baked": 855,
+  "now": 788,
+  "dpct": "-7.8%"
+ }
+}
