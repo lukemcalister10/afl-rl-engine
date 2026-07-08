@@ -1,1 +1,2 @@
 boot-store guard (Guard 5) PASS  [run_matrix]  store e1b4d8bf == pinned e1b4d8bf (candidate-w4-L1c-rectification-2026-07-08 (on v2.5 store e1b4d8bf))
+/home/user/afl-rl-engine/session_2026-07-08/l1c_rectification/scripts/run_matrix.sh: line 13: 20726 Killed                  S4_MATRIX="$OUT" python3 s4_matrix_M1v7.py
