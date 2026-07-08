@@ -286,22 +286,24 @@ cp._age_asof=_m3_age_asof; MA.age=_m3_age; PR.tenure=_m3_ten; cp._feat=_m3_feat
 # RUNWAY (the survivor reward is not priced forward into year 1), and the established mid-cohort is over-
 # weighted between them. RECALIBRATION = a FORM-CONDITIONED (never age-keyed) weight W(k) on the year-k term:
 #   PROVEN (nqual>=4):  W(k) = 1 + CRED·kpf_up·g(m)·dur·sh·c_near(k)  −  FADE·(1−g(m))·h_far(k)
-#   THIN-CAREER YOUNG:  W(k) = 1 + YCRED·thin·yage·c_yng(k)
 #   then ×(1 − OVPX·ovpx)   [deep-pick GEN_FWD 41-70 over-optimism compress — the ONE owner-agreed #43 flag;
 #                            MID 1-3 (2.09) deliberately NOT touched — stays FLAGGED for owner ruling]
 # with m = Lc − REPL[pos] (the same conditioning variable as the #45 shed), g(m)=clip((m−6)/22,0,1),
 # dur = games(Y−2..Y)/28 clipped, sh = 1−clip((Lo−Lc−3)/5,0,1) (decline gate, mirrors the shed switch),
 # c_near = interp(k,[0,2,5],[1,1,0]) (present-tense, runway-independent — a short-horizon elite benefits most;
 # captaincy rides inside every credited year via capt_prem), h_far = interp(k,[4,10],[0,1]) (the FUNDING leg:
-# a moderate-margin established player's years 5+ carry washout risk the flat discount never charged),
-# thin = 1−nqual/4, yage = clip((23−age)/2,0,1), c_yng = interp(k,[0,1,4,8],[.6,1,1,0]) (prices the survivor
-# reward forward into years 1-2 — governed by the ≤130% walk-forward cohort no-arbitrage bound, baked 125.2%).
+# a moderate-margin established player's years 5+ carry washout risk the flat discount never charged).
+# THE YOUNG LEG (L1c, 2026-07-08 rectification): the original W4 runway leg W(k)=1+YCRED·thin·yage·c_yng(k)
+# is REPLACED (G-COHORT breach 142.4/140.8/131.7 vs hard 130, owner-upheld) by the EVIDENCE-CONDITIONED
+# EXPECTED-RERATING CREDIT — see the L1c block below the raw_ev wrapper. Same kill-switch (RL_YOUNG); the
+# two never stack (the old leg is deleted, not disabled).
 # WIRING: MA.proj_from_peak is rebound to the W(k) version; the per-player context is set by a raw_ev wrapper.
 # Synths carry no store key → context None → BYTE-EXACT delegation to the original (pole/ISO/gate/ruck-ceiling
 # tables untouched). The wrapper binds BEFORE the V0 guard/curve builds, so the young credit flows into V0 →
 # the year-1 anchors → the book's year-1 cohort (the no-arbitrage denominator). The V0 fit sees recalibrated
 # inputs but stays a function of (pos, draft-age, pick) — D14a/b/c laws hold by construction.
-# KILL-SWITCHES (per-lever attribution): RL_FWDRECAL (credit+fade) · RL_YOUNG · RL_OVPX · RL_KPFFIX ·
+# KILL-SWITCHES (per-lever attribution): RL_FWDRECAL (credit+fade) · RL_YOUNG (= the L1c evidence-conditioned
+# expected-rerating credit since 2026-07-08; dial RL_YCRED_W) · RL_OVPX · RL_KPFFIX ·
 # RL_V7FORM · RL_W4_RUC · RL_FORMDECL · RL_PVCFIT. ALL OFF ⇒ byte-exact baked v2.5.
 _W4FWD=os.environ.get('RL_FWDRECAL','1')!='0'
 _W4YNG=os.environ.get('RL_YOUNG','1')!='0'
@@ -312,14 +314,13 @@ V7_FORM_W=float(os.environ.get('RL_V7_FORM_W','0.6'))     # demonstrated-produce
 W4_CRED=float(os.environ.get('RL_W4_CRED','0.17'))        # proven-elite present-margin certainty credit (calibrated: Bont>=+10% with margin, pool net ~redistribution-neutral)
 W4_KPFUP=float(os.environ.get('RL_W4_KPFUP','1.6'))       # KPF reward multiplier on the margin credit (low-REPL bar leverage)
 W4_FADE=float(os.environ.get('RL_W4_FADE','0.60'))        # moderate-margin established far-year fade (the funding leg; age-ramped 23->26 so young proven keep their prime years)
-W4_YCRED=float(os.environ.get('RL_W4_YCRED','0.13'))      # young runway / survivor-reward-forward credit
 W4_OVPX=float(os.environ.get('RL_W4_OVPX','1.0'))         # global scale on the deep-pick over-optimism compress (per-pos depths below)
 W4_OVPX_D={'GEN_FWD':0.12,'GEN_DEF':0.09,'MID':0.07}      # #43-measured deep-pick (41-70) coverage excess: 2.14 / 1.70 / 1.55 -> partial, data-earned compress; smooth in pick 38->46, thin-career only. MID 1-3 (2.09) NOT touched (owner-flagged).
 W4_KPFSH=float(os.environ.get('RL_W4_KPFSH','0.55'))      # established-KPF loose-residual retention (e' = eP + SH·(e−eP))
 _W4CTX={'on':None}
 def _w4_ctx(p,Y):
     """Per-player form context for the recalibrated projection; None => byte-exact original path."""
-    if not (_W4FWD or _W4YNG or _W4OVP) or not _isreal(p): return None
+    if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
     ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
     if n>=PROVEN_N:
@@ -331,12 +332,8 @@ def _w4_ctx(p,Y):
         ctx['sh']=1.0-float(np.clip((Lo-Lc-DOWN_TOL)/5.0,0.0,1.0))
         ctx['fadew']=float(np.clip(((a if a is not None else 25.0)-23.0)/3.0,0.0,1.0))  # fade age-ramp 23->26: a YOUNG proven player's far years are his PRIME (durable-young selection signal), not washout risk — the funding cohort is the established 25-30 mid
     else:
-        ctx['thin']=float(np.clip(1.0-n/float(PROVEN_N),0.0,1.0))
-        # runway is POSITION-RELATIVE (a 23yo KPF is pre-peak development, peak age 27; a 23yo MID is at peak):
-        # full credit through PEAK_AGE-4, faded out by PEAK_AGE-1 — the forfeited-growth-year young gun (Darcy
-        # class) keeps his runway credit instead of being cut off by a flat age-23 line.
-        _pa=MA.PEAK_AGE.get(pos,25)
-        ctx['yage']=float(np.clip(((_pa-1.0)-(a if a is not None else 21.0))/3.0,0.0,1.0))
+        # (L1c: the thin/yage runway fields are GONE with the old young leg; this branch now only carries
+        # the deep-pick over-optimism compress coordinates)
         _d=W4_OVPX_D.get(pos)
         if _d:
             ctx['ovpx']=_d*float(np.interp(ctx['ep'],[38.,46.,99.],[0.,1.,1.]))
@@ -348,8 +345,8 @@ def _w4_W(k,ctx):
             up=W4_CRED*(W4_KPFUP if (_W4KPF and ctx['pos']=='KEY_FWD') else 1.0)
             W+=up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
             W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
-    elif _W4YNG:
-        W+=W4_YCRED*ctx.get('thin',0.0)*ctx.get('yage',0.0)*float(np.interp(k,[0.,1.,4.,8.],[.6,1.,1.,0.]))
+    # (L1c: the old `elif _W4YNG` runway leg was here — DELETED 2026-07-08, replaced by the evidence-
+    #  conditioned expected-rerating credit on raw_ev below; RL_YOUNG gates THAT, never both.)
     if _W4OVP and ctx.get('ovpx',0.0)>0.0:
         W*=(1.0-W4_OVPX*ctx['ovpx'])
     return max(W,0.05)
@@ -395,10 +392,70 @@ def _prod_floor_w4(p,lens='bal'):
         prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
+# ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================
+# WHY: G-COHORT (owner-worded, upheld 2026-07-08) breached on the W4 candidate — y4 142.4 / y5 140.8 /
+# y6 131.7 vs hard 130, den = y1 57,558.5. Diagnosis: the engine prices year-1 on DELIVERED EVIDENCE only;
+# the class's measured ride is +22% by y2 (top decile carrying most of it). Owner doctrine: no blanket lift —
+# identify and pay the measured mechanism. THE LEVER (L1c): per cell (position × log-pick KERNEL × played/sat,
+# pooling declared per rung in the committed census), the historical ONE-YEAR RE-RATING of the class at the
+# year-1 anchor, ATTRITION AND BUSTS INCLUDED, measured on the CREDIT-OFF walk-forward book (one-shot,
+# declared), is paid forward at fraction w = RL_YCRED_W (shipped default 0.7; owner rules w on sight):
+#     e' = e · (1 + w · max(R_cell, 0) · φ(g)),   φ(g) = (1 − g/G0)²  for g < G0 else 0
+# KEYED ON EVIDENCE QUANTITY g = career games as-of Y — NEVER career-year: full at ZERO evidence (V0, day 0 —
+# V0 IS raw_ev at debut−1 with g=0, so the credit flows into V0, the D14 V0 curve refit, the B5 floor basis,
+# the sit-out blend and the y1 anchors by construction), fading smoothly to zero by G0=46 games (the census
+# artifact: median cumulative games end-y3=37 / end-y4=54 for a normally developing player — ≈y3-4). C¹ at G0.
+# CONTINUITY (owner law, BINDING): no cliff anywhere on pick-PVC → V0 → end-y1 → y2/3/4 — the multiplier is
+# continuous in g (φ), in pick (kernel curve, log-pick interp), across the sat/played seam (s(g)=min(g/6,1)
+# blend — no first-game step), and carries NO career-year key. D14 V0 laws (a/b/c) hold by construction: the
+# V0 curve remains a function of (pos, draft-age, pick) fitted on credited inputs.
+# TRAILING / LEAK-FREE (auditor: assert THIS by code reading): the table is keyed by evaluation year —
+# _ycred_mult(p,Y) reads _YC_TAB[str(min(Y,TMAX))], and table_T was derived ONLY from classes C with
+# C+2 ≤ T (derive_ycred.py, committed) — the credit applied at year T uses data ≤ T. Years before the first
+# table (min 2 observable classes, 2007) earn ZERO credit — declared conservatism, leak-free.
+# CLIP R ≥ 0: fix direction = raise year-1, NEVER cut young/survivors/denominator members; measured-negative
+# stretches (GEN_FWD/played, RUC/sat — census tension report) are reported, not shipped as cuts.
+# SCOPE: real in-curve (ND/RD) picked store players — synths carry no key and delegate byte-exact; the RUC
+# prior cap (ASK1) still binds ABOVE the credited V0 where hot (declared: the cap is out-of-scope machinery;
+# capped rucks keep the cap — visible in the Goad/Green named-player rows of the owner w-table).
+# KILL-SWITCH: RL_YOUNG (existing family member, meaning re-pointed to L1c; the old runway leg is DELETED
+# above, never stacked). RL_YOUNG=0 ⇒ multiplier is EXACTLY 1.0 ⇒ byte-exact; ALL-OFF ⇒ byte-exact v2.5.
+# Table absent while RL_YOUNG=1 ⇒ HALT (halt-not-warn, guard-family behavior).
+_YC_W=float(os.environ.get('RL_YCRED_W','0.7'))               # owner dial: fraction of the measured re-rating paid forward
+_YC_TAB=None; _YC_LGRID=None; _YC_G0=46.0; _YC_TMIN=2007; _YC_TMAX=2026
+if _W4YNG:
+    import json as _ycjson
+    if not os.path.exists('ycred_table.json'):
+        raise SystemExit('L1c HALT: RL_YOUNG is ON but ycred_table.json is absent — re-seed the workspace '
+                         '(bootstrap.sh); the credit never silently no-ops.')
+    _yc=_ycjson.load(open('ycred_table.json'))
+    _YC_TAB=_yc['table']; _YC_G0=float(_yc['G0'])
+    _YC_LGRID=np.log(np.array(_yc['grid_picks'],dtype=float))
+    _YC_TMIN=min(int(t) for t in _YC_TAB); _YC_TMAX=max(int(t) for t in _YC_TAB)
+def _ycred_games(p,Y):                                        # EVIDENCE QUANTITY: career games as-of Y (same debut window as _nqual)
+    d0=cp.debutyr(p)-1
+    return float(sum(x.get('games',0) for x in p['scoring'] if d0<x['year']<=Y))
+def _ycred_mult(p,Y):
+    if not _W4YNG or _YC_TAB is None or not _isreal(p): return 1.0
+    if p.get('type') not in ('ND','RD') or p.get('_pickless'): return 1.0
+    pk=MA.effpk(p)
+    if not pk: return 1.0
+    g=_ycred_games(p,Y)
+    if g>=_YC_G0: return 1.0                                  # evidence complete: expectation fully replaced by delivery
+    T=int(Y)
+    if T<_YC_TMIN: return 1.0                                 # trailing: <2 observable classes -> no credit (leak-free)
+    row=_YC_TAB[str(min(T,_YC_TMAX))].get(MA.gfut(p))
+    if row is None: return 1.0
+    lp=float(np.log(min(max(pk,1),90)))
+    Rs=float(np.interp(lp,_YC_LGRID,row['1'])); Rp=float(np.interp(lp,_YC_LGRID,row['0']))
+    s=min(g/6.0,1.0)                                          # smooth sat->played blend over the first 6 games (no first-game cliff)
+    R=max((1.0-s)*Rs+s*Rp,0.0)                                # clip >= 0 (fix direction; tension reported in the census)
+    phi=(1.0-g/_YC_G0)**2                                     # full at zero evidence; C1 landing at G0
+    return 1.0+_YC_W*R*phi
 _raw_ev_w4_0=raw_ev
-def raw_ev(p,Y=2026):                                        # W4: context-setting wrapper (real players only; synths delegate clean)
+def raw_ev(p,Y=2026):                                        # W4: context-setting wrapper (real players only; synths delegate clean) + L1c credit
     prev=_W4CTX['on']; _W4CTX['on']=_w4_ctx(p,Y)
-    try: return _raw_ev_w4_0(p,Y)
+    try: return _raw_ev_w4_0(p,Y)*_ycred_mult(p,Y)           # L1c: ×1.0 exactly when RL_YOUNG=0 (byte-exact off-path)
     finally: _W4CTX['on']=prev
 _B6PIN={'L':None}                                            # W4 KPF: band pin — collapse the forward band to one level (production-implied EFV probe)
 _b6_pre_w4=b6
