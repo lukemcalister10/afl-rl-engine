@@ -1,0 +1,16 @@
+boot-store guard (Guard 5) PASS  [run_matrix]  store e1b4d8bf == pinned e1b4d8bf (candidate-w4-L1c-rectification-2026-07-08 (on v2.5 store e1b4d8bf))
+eligible players: 2649
+[F2 FIX] double-fade harness removed; book built from live gated engine ev()
+matrix saved (CALENDAR-indexed): 2649 players -> /home/user/afl-rl-engine/session_2026-07-08/l1c_rectification/out/s4_matrix_w05.json
+WARN: /nonexistent not found -> BOOK<->BOARD parity gate SKIPPED (build the board first: rl_export.py)
+
+MAPPING-ONLY PROOF — Seth Campbell: yrs=[2023, 2024, 2025, 2026] Vpath=[170, 383, 881, 1032]
+  new anchor (calendar Yr1 2023, no games)=170; the 465 first-played value now sits at its correct slot 2 (Yr2)
+
+CURVE-ANCHOR BIAS (2004-2024 ND+RD, n=2090):
+  sat out draft Yr1: 607 players (29% of curve pool)
+  over-valuation when anchored at first-played vs real Yr1: total=92686 SCAR, mean=+153, median=+52
+  whole-pool anchor sum: buggy=1311238 -> fixed=1237240  (5.6% lower overall)
+  picks 1-20: 78 sat-out, mean over-val +295 (36% of real Yr1)
+  picks 21-40: 131 sat-out, mean over-val +128 (28% of real Yr1)
+  picks 41-80: 271 sat-out, mean over-val +114 (42% of real Yr1)
