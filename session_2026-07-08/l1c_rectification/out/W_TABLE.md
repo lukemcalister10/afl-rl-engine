@@ -1,5 +1,5 @@
 # L1c OWNER W-TABLE — w = fraction of the measured cell re-rating paid forward (RL_YCRED_W)
-## 2026-07-08 · grid {0.5, 0.7, 0.85, 1.0} (owner-amended, matches the investigation simulation) · shipped default = 0.7 (NOT a ruling — the owner rules w on sight)
+## 2026-07-08 · grid {0.5, 0.7, 0.85, 1.0} (owner-amended, matches the investigation simulation) · OWNER RULED w=0.9 (2026-07-08, on this table) — engine default now 0.9; 0.7 was the pre-ruling default
 
 ## Per-year G-COHORT landing (conforming measure: class-year SUMS averaged across classes 2004-2020; EACH of y4/5/6 vs min(y1,y2); walk-forward book)
 | config | y1 figure | y2 figure | y4/den | y5/den | y6/den | verdict (hard <=130, guide 120-125) |
@@ -9,6 +9,7 @@
 | w=0.5 | 60,148.5 | 71,175.6 | 135.5% | 134.2% | 125.9% | BREACH (worst 135.5%) |
 | **w=0.7 (shipped)** | 61,974.8 | 72,444.5 | 131.9% | 130.5% | 122.3% | BREACH (worst 131.9%) |
 | w=0.85 | 63,360.6 | 73,374.2 | 129.4% | 127.7% | 119.7% | PASS (worst 129.4%) |
+| **w=0.9 (OWNER-RULED 2026-07-08)** | 63,821.9 | 73,690.6 | 128.6% | 126.9% | 118.8% | PASS (worst 128.6%) |
 | w=1.0 | 64,761.8 | 74,324.8 | 126.9% | 125.1% | 117.1% | PASS (worst 126.9%) |
 
 SIM-vs-BUILT NOTE (owner amendment asked this table to carry the simulated landings): the investigation 
@@ -41,3 +42,16 @@ as built, not re-tuned.
 
 ## A-DUUR direction
 - Duursma baked 4110 -> shipped w=0.7 4199 (+2.2%); credit-off 4110 -> w=0.7 4199 — direction UP: PASS
+
+## w=0.9 (OWNER-RULED) — named players (2026 board)
+| player | w=0.9 |
+|---|---|
+| Willem Duursma | 4225 |
+| Sam Lalor | 3400 |
+| Errol Gulden | 5715 |
+| Sam Darcy | 4168 |
+| Taylor Goad | 788 |
+| Dylan Patterson | 874 |
+| Riley Bice | 411 |
+
+DECLARED TENSION at w=0.9 (scales with w): the extreme-sat-cell evidence-axis dip is -10.4% top-to-trough on a pick-1 MID (games 4->7; was -7.6% at w=0.7); continuous, credit-off sweep monotone; pk7 ~-2.5%, pk5 none (out/gmono_v0_w09.json, out/evidence_sweeps.json).

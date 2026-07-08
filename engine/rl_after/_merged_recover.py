@@ -399,7 +399,7 @@ MA.prod_floor=_prod_floor_w4
 # identify and pay the measured mechanism. THE LEVER (L1c): per cell (position × log-pick KERNEL × played/sat,
 # pooling declared per rung in the committed census), the historical ONE-YEAR RE-RATING of the class at the
 # year-1 anchor, ATTRITION AND BUSTS INCLUDED, measured on the CREDIT-OFF walk-forward book (one-shot,
-# declared), is paid forward at fraction w = RL_YCRED_W (shipped default 0.7; owner rules w on sight):
+# declared), is paid forward at fraction w = RL_YCRED_W (OWNER-RULED w=0.9, 2026-07-08; pre-ruling default was 0.7):
 #     e' = e · (1 + w · max(R_cell, 0) · φ(g)),   φ(g) = (1 − g/G0)²  for g < G0 else 0
 # KEYED ON EVIDENCE QUANTITY g = career games as-of Y — NEVER career-year: full at ZERO evidence (V0, day 0 —
 # V0 IS raw_ev at debut−1 with g=0, so the credit flows into V0, the D14 V0 curve refit, the B5 floor basis,
@@ -421,7 +421,7 @@ MA.prod_floor=_prod_floor_w4
 # KILL-SWITCH: RL_YOUNG (existing family member, meaning re-pointed to L1c; the old runway leg is DELETED
 # above, never stacked). RL_YOUNG=0 ⇒ multiplier is EXACTLY 1.0 ⇒ byte-exact; ALL-OFF ⇒ byte-exact v2.5.
 # Table absent while RL_YOUNG=1 ⇒ HALT (halt-not-warn, guard-family behavior).
-_YC_W=float(os.environ.get('RL_YCRED_W','0.7'))               # owner dial: fraction of the measured re-rating paid forward
+_YC_W=float(os.environ.get('RL_YCRED_W','0.9'))               # owner dial: fraction of the measured re-rating paid forward — OWNER-RULED 0.9 (2026-07-08, on the W-TABLE; 0.7 was the pre-ruling shipped default)
 _YC_TAB=None; _YC_LGRID=None; _YC_G0=46.0; _YC_TMIN=2007; _YC_TMAX=2026
 if _W4YNG:
     import json as _ycjson

@@ -1,0 +1,11 @@
+{
+ "stable_sha256": "e3d025c948731106a120d3a7325df1a0f4509caac092594e9df651cd95f3e6c6",
+ "n_players": 2649,
+ "basis": "W4 integration candidate",
+ "vs_baked": {
+  "baked_sha": "5799a9ceae5ca3efc9787d6a780b3077292450ecda26f6abcc88589f070292c1",
+  "key_set_identical": true,
+  "records_value_moved": 2338,
+  "note": "B3 vs the baked seal DIFFERS BY DESIGN on a value-moving candidate; identical key set + attributed movers is the candidate-integrity check."
+ }
+}
