@@ -1,0 +1,86 @@
+{
+ "MID/played": {
+  "n": 251,
+  "A_book": 0.2267,
+  "A_real": 0.1115,
+  "rel_div": 1.034,
+  "flag": true
+ },
+ "MID/sat": {
+  "n": 247,
+  "A_book": 0.4007,
+  "A_real": 0.1261,
+  "rel_div": 2.177,
+  "flag": true
+ },
+ "GEN_FWD/played": {
+  "n": 201,
+  "A_book": 0.1146,
+  "A_real": 0.0928,
+  "rel_div": 0.236,
+  "flag": true
+ },
+ "GEN_FWD/sat": {
+  "n": 171,
+  "A_book": 0.3488,
+  "A_real": 0.1261,
+  "rel_div": 1.765,
+  "flag": true
+ },
+ "GEN_DEF/played": {
+  "n": 185,
+  "A_book": 0.1593,
+  "A_real": 0.0903,
+  "rel_div": 0.764,
+  "flag": true
+ },
+ "GEN_DEF/sat": {
+  "n": 203,
+  "A_book": 0.3113,
+  "A_real": 0.1261,
+  "rel_div": 1.467,
+  "flag": true
+ },
+ "KEY_FWD/played": {
+  "n": 84,
+  "A_book": 0.2874,
+  "A_real": 0.0913,
+  "rel_div": 2.148,
+  "flag": true
+ },
+ "KEY_FWD/sat": {
+  "n": 120,
+  "A_book": 0.2262,
+  "A_real": 0.1261,
+  "rel_div": 0.793,
+  "flag": true
+ },
+ "KEY_DEF/played": {
+  "n": 82,
+  "A_book": 0.2587,
+  "A_real": 0.0722,
+  "rel_div": 2.583,
+  "flag": true
+ },
+ "KEY_DEF/sat": {
+  "n": 111,
+  "A_book": 0.5938,
+  "A_real": 0.1261,
+  "rel_div": 3.707,
+  "flag": true
+ },
+ "RUC/played": {
+  "n": 37,
+  "A_book": 0.0582,
+  "A_real": 0.125,
+  "rel_div": 0.534,
+  "flag": true
+ },
+ "RUC/sat": {
+  "n": 92,
+  "A_book": 0.0713,
+  "A_real": 0.1261,
+  "rel_div": 0.435,
+  "flag": true
+ }
+}
