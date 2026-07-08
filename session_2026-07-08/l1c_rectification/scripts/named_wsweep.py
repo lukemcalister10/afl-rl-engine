@@ -1,4 +1,4 @@
-"""L1c TASK 4 (named-player half) — OWNER W-TABLE board rows: named players at w in {0.5,0.6,0.7,0.8},
+"""L1c TASK 4 (named-player half) — OWNER W-TABLE board rows: named players at w in {0.5,0.7,0.85,1.0} (owner-amended grid, matches the investigation simulation),
 against baked v2.5 and the W4-pre-L1c candidate. Fresh engine exec per w (the V0 curve refits on credited
 inputs, so a post-hoc dial poke would be inconsistent — full reload each time). Guard 5 on entry."""
 import io, contextlib, json, os, sys
@@ -22,7 +22,7 @@ baked = {r['key']: r['v'] for r in json.load(open(f'{HERE}/session_2026-07-06/w4
 pre = {r['key']: r['v'] for r in json.load(open(f'{HERE}/data/rl_build/rl_app_data.json'))['active']}
 
 rows = {nm: {'note': note} for nm, note in NAMES}
-for w in ('0.5', '0.6', '0.7', '0.8'):
+for w in ('0.5', '0.7', '0.85', '1.0'):
     os.environ['RL_YCRED_W'] = w
     g = {}
     with contextlib.redirect_stdout(io.StringIO()):
@@ -42,8 +42,8 @@ for nm in rows:
     rows[nm]['baked_v25'] = baked.get(k)
     rows[nm]['w4_preL1c'] = pre.get(k)
 json.dump(rows, open(f'{OUT}/named_wsweep.json', 'w'), indent=1)
-print(f"{'player':18s}{'baked':>7s}{'preL1c':>8s}{'w=0.5':>8s}{'w=0.6':>8s}{'w=0.7':>8s}{'w=0.8':>8s}   note")
+print(f"{'player':18s}{'baked':>7s}{'preL1c':>8s}{'w=0.5':>8s}{'w=0.7':>8s}{'w=0.85':>8s}{'w=1.0':>8s}   note")
 for nm, note in NAMES:
     r = rows[nm]
     print(f"{nm:18s}{str(r.get('baked_v25')):>7s}{str(r.get('w4_preL1c')):>8s}"
-          + ''.join(f"{str(r.get('w'+w)):>8s}" for w in ('0.5', '0.6', '0.7', '0.8')) + f"   {note}")
+          + ''.join(f"{str(r.get('w'+w)):>8s}" for w in ('0.5', '0.7', '0.85', '1.0')) + f"   {note}")
