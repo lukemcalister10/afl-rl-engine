@@ -291,6 +291,19 @@ if _parity_fail:
                      + "\n  ".join("%s: board=%s engine=%s"%(k,b,gg) for k,b,gg in _parity_fail[:25]))
 print('PARITY GATE PASS: all %d active board values == engine gated ev() (matched by key, eps=%s)'%(len(active),_PARITY_EPS))
 
+# ==== OWNER OVERRIDES — DISPLAY-ONLY, APPLIED LAST (2026-07-09, Brodie ×0.50 wiring) ======================
+# Applied AFTER the export<->engine parity gate (so it can never move a value a guard measures) and BEFORE
+# the board is written. owner_overrides.apply_to_board ONLY ADDS an `ov` block to a matched row — it never
+# touches `v`, so every guard / aggregate / book (F2) / board parity (B4) / JS parity, all of which read
+# `v` or the engine's gated ev(), is byte-identical with the override on vs off. The overrides come from the
+# repo-homed data/owner_overrides.json (owner adds a row, no code change). RL_NO_OWNER_OVERRIDES=1 skips it.
+import owner_overrides as _OV
+_ov_applied, _ov_warn = _OV.apply_to_board(active)
+for _w in _ov_warn:
+    print('OWNER-OVERRIDE WARNING:', _w)
+for _k, _f, _dv in _ov_applied:
+    print('OWNER OVERRIDE applied (display-only): %s ×%.2f -> displayed %d (engine v untouched)'%(_k,_f,_dv))
+
 _SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)
 _srcmd5=_SS.stamp_derived('rl_app_data.json',tier=1)        # GUARD 1: stamp with source md5 + set read-only (generator is the only writer)

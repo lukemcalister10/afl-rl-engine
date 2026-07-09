@@ -1,0 +1,12 @@
+{
+  "_doc": "OWNER OVERRIDES — owner-ruled, single-player DISPLAY adjustments. Applied LAST at the export/display layer as a final multiplier on the player's DISPLAYED board value. NEVER touches the engine value `v`, any cohort aggregate, the walk-forward book, G-COHORT inputs, or any guard/audit input — an override cannot move an aggregate or another player. Read-once by rl_export.py via owner_overrides.py. This is a repo-homed DATA INPUT, not a mechanism and not a predicate: each row is a named, visible, obituaried owner read. To add a future player, append a row (an owner ruling) — no code change. To remove, delete the row. Source of record: OWNER_OVERRIDES courier + DECISIONS v85 §20. Key convention: engine store key, verified at apply time (key-drift discipline, per the toby-briggs / jeremy-cameron precedents).",
+  "_marker": "The displayed value carries `ov.mark` so a board reader sees it is an OWNER OVERRIDE, not a model price.",
+  "overrides": [
+    {
+      "player_key": "will-brodie",
+      "factor": 0.5,
+      "note": "Brodie is mispriced and bad. Value halved.",
+      "provenance": "Owner read 2026-07-08; the 50% is acknowledged arbitrary and against the derive-the-mechanism doctrine, ruled worth it as a single-player display read (not a derived lever, not a predicate). DECISIONS v85 §20; OWNER_OVERRIDES courier."
+    }
+  ]
+}
