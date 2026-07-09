@@ -1,0 +1,31 @@
+{
+  "_doc": "COLLISION SENTRY — permanent, halt-not-warn named-pair identity assertions (DECISIONS §29, owner-ruled 2026-07-09). Data-driven and EXTENSIBLE: pairs are ADDED ONLY WHEN THEY BITE (no speculative list). one_source_selftest.py loads this file and, for every pair, asserts against the single store: (1) each member key exists EXACTLY ONCE, (2) every pinned field == the store's value (a bleed makes stk._by=2007 != pinned 2000 -> FAIL), (3) the `distinct_fields` still differ between the two members (defence-in-depth: a symmetric swap that dodges the pin still trips this). Any merge/swap/bleed FAILS the build. First (and only) entry: the two Max Kings — the pair that has cross-bled ~15 times; the 2007-born Sydney player was renamed 'Maxwell King' (`max-king-syd`) specifically to stop it, and stk's birth fields were later found borrowed from syd (the corruption this sentry now guards). Wired into the suite CI already runs (one_source_selftest.py).",
+  "version": "1.0",
+  "date": "2026-07-09",
+  "pairs": [
+    {
+      "note": "The two Max Kings (DECISIONS §29). Added because it BIT: max-king-stk borrowed max-king-syd's _by/_bd (2007-01-09) — corrected to the true St Kilda DOB 7 Jul 2000 this job.",
+      "a": {
+        "key": "max-king-stk",
+        "player": "Max King",
+        "_by": 2000,
+        "_bd": "2000-07-07",
+        "pick": 4,
+        "year": 2018,
+        "_club": "St Kilda",
+        "drafted_position": "KFWD"
+      },
+      "b": {
+        "key": "max-king-syd",
+        "player": "Maxwell King",
+        "_by": 2007,
+        "_bd": "2007-01-09",
+        "pick": 49,
+        "year": 2025,
+        "_club": "Sydney",
+        "drafted_position": "GFWD"
+      },
+      "distinct_fields": ["player", "_by", "_bd", "pick", "year", "_club"]
+    }
+  ]
+}

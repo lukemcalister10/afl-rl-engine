@@ -137,7 +137,40 @@ check(not _multi, "present/future positions are single-valued (no list legs); of
 _seam=[p['key'] for p in store if p.get('future_position')!=p.get('present_position')]
 check(not _seam, "future_position == present_position for every record this build; offenders=%s"%_seam[:5])
 
+print("=== COLLISION SENTRY: named-pair identity assertions (halt-not-warn; DECISIONS §29) ===")
+# Permanent, data-driven from collision_sentry.json (extensible; pairs ADDED ONLY WHEN THEY BITE). For every
+# pinned pair: both keys exist EXACTLY ONCE, every pinned field == the store's value (a bleed makes
+# e.g. max-king-stk._by=2007 != pinned 2000 -> FAIL), and the `distinct_fields` still DIFFER between the two
+# members (defence-in-depth vs a symmetric swap). Any merge/swap/bleed FAILS the build (FAIL -> sys.exit(1)).
+_by_key={}
+for _p in store: _by_key.setdefault(_p.get('key'),[]).append(_p)
+_sentry_path=hp('collision_sentry.json')
+if not os.path.exists(_sentry_path):
+    check(False, "collision_sentry.json present (the named-pair identity sentry file)")
+else:
+    _sentry=json.load(open(_sentry_path))
+    _pairs=_sentry.get('pairs',[])
+    check(len(_pairs)>=1, "collision sentry carries >=1 named pair (got %d)"%len(_pairs))
+    for _pr in _pairs:
+        _members={'a':_pr['a'],'b':_pr['b']}
+        for _side,_pin in _members.items():
+            _k=_pin['key']; _rows=_by_key.get(_k,[])
+            check(len(_rows)==1, "collision sentry: %s exists EXACTLY ONCE in the store (found %d)"%(_k,len(_rows)))
+            if len(_rows)==1:
+                _r=_rows[0]
+                for _f,_want in _pin.items():
+                    check(_r.get(_f)==_want,
+                          "collision sentry: %s.%s == %r (pinned) — got %r%s"%(_k,_f,_want,_r.get(_f),
+                          "  <-- IDENTITY BLEED/MERGE" if _r.get(_f)!=_want else ""))
+        # defence-in-depth: the two members must still DIFFER on every distinct_field (no cross-copy/swap)
+        _ra=_by_key.get(_pr['a']['key'],[None])[0]; _rb=_by_key.get(_pr['b']['key'],[None])[0]
+        if _ra and _rb:
+            for _f in _pr.get('distinct_fields',[]):
+                check(_ra.get(_f)!=_rb.get(_f),
+                      "collision sentry: %s.%s (%r) != %s.%s (%r) — must stay distinct (no cross-copy)"%(
+                      _pr['a']['key'],_f,_ra.get(_f),_pr['b']['key'],_f,_rb.get(_f)))
+
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
-      "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped."))
+      "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; collision sentry (King pair) clean."))
 print("  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)")
 sys.exit(1 if FAIL else 0)
