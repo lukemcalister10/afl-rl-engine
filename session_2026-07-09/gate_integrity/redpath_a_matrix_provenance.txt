@@ -1,0 +1,8 @@
+=== gate-integrity (a) candidate-matrix provenance red-path proof ===
+  PASS genuine candidate __meta__ accepted
+  PASS baked v2.5 matrix has NO __meta__ (comparator only)
+  PASS v2.5 matrix rejected as candidate (no __meta__)
+  PASS divergent-config matrix REJECTED
+  PASS stale-engine (efea88e5) matrix REJECTED
+
+RESULT: ALL PASS

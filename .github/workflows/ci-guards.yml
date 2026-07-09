@@ -11,6 +11,9 @@ name: CI Guards
 #     + boot_guard.py/data/expected_boot.json
 #   - panel 10/10                     via run_panel.sh
 #   - RULING-CONFIG (R3)              via ruling_config_check.py  (RL_PVCFIT=0 by default + export bake-guard)
+#   - CONFIG-MANIFEST (gate-integrity) via config_manifest.py check + RL_CONFIG_MODE=bake on the build step
+#     (model_config.json hash == pinned boot config; bake mode clears ambient / rejects unknown-or-divergent
+#     model overrides / loads the manifest — board+book byte-identical since manifest values == code defaults)
 
 on:
   push:
@@ -70,6 +73,11 @@ jobs:
         run: bash bootstrap.sh
 
       - name: Build board + book (inputs to the parity guards)
+        # RL_CONFIG_MODE=bake exercises the config manifest (gate-integrity e): rl_export/s4_matrix clear the
+        # ambient model env, reject unknown/divergent RL_*/PAR_* overrides, and load data/model_config.json —
+        # the values equal the code defaults, so the board/book are byte-identical to a plain build.
+        env:
+          RL_CONFIG_MODE: bake
         run: |
           set -euo pipefail
           cd /home/claude/rl_workspace/rl_after
@@ -93,3 +101,6 @@ jobs:
 
       - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"
         run: python3 ruling_config_check.py
+
+      - name: "CONFIG-MANIFEST integrity (gate-integrity e: model_config.json hash == pinned boot config)"
+        run: python3 config_manifest.py check

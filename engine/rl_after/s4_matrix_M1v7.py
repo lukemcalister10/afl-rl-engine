@@ -1,6 +1,10 @@
 import os
 import io,contextlib,json,collections,numpy as np
 import single_source as _SS
+try:                            # gate-integrity (e): config manifest. NO-OP unless RL_CONFIG_MODE=bake|gate.
+    import config_manifest as _CFG; _CFG.enforce()   # gate mode (matrix regen for B1/B3): clear ambient model env, reject unknown/divergent, load data/model_config.json BEFORE the engine reads the env.
+except ImportError:
+    _CFG = None
 # GUARDS 3 + 3b always; GUARD 2 asserts the board stamp == current source md5 (the book is about to be
 # parity-checked against the board -- both MUST derive from the same store). Skipped only if the board is
 # routed elsewhere (RL_APP_DATA) for a standalone book build.
@@ -83,7 +87,27 @@ for p in players:
                     sat_out_yr1=sat,retired_now=rn,incurve=(p.get('type') in INCURVE))
 _book_out=os.environ.get('S4_MATRIX','s4_matrix.json')
 if _book_out=='s4_matrix.json': _SS.prepare_write('s4_matrix.json')   # clear read-only from a prior guarded build
-json.dump({str(k):v for k,v in rec.items()}, open(_book_out,'w'))
+# gate-integrity (a): embed code/store/config identity so the B1/B3 gate runner can assert the regenerated
+# candidate matrix WAS produced by the candidate under test (a mismatch is a gate FAIL, not a warning). Thin
+# plumbing — reads the source md5s the engine just loaded from cwd; no valuation code touched. '__meta__' is
+# skipped by every matrix consumer (keys starting with '__').
+def _md5f(_p):
+    import hashlib as _h; _hh=_h.md5()
+    with open(_p,'rb') as _f:
+        for _c in iter(lambda:_f.read(1<<16),b''): _hh.update(_c)
+    return _hh.hexdigest()
+_matout={str(k):v for k,v in rec.items()}
+# __meta__ ONLY on a non-default (gate-regen) path: the DEFAULT s4_matrix.json stays byte-identical for the
+# existing consumers (F2 parity filters by 'key' — safe — but the s4_render_* tools iterate all values). The
+# B1/B3 gate runner regenerates to a custom S4_MATRIX path and reads this meta; consumers skip '__'-keys.
+if _book_out!='s4_matrix.json':
+    try:
+        import config_manifest as _CFGm; _cfg_h=_CFGm.manifest_hash()
+    except Exception:
+        _cfg_h=None
+    _matout['__meta__']={'kind':'walk_forward_cohort_book','engine_head_md5':_md5f('_merged_recover.py'),
+                         'store_md5':_md5f('rl_model_data.json'),'config_sha256':_cfg_h,'n_players':len(rec)}
+json.dump(_matout, open(_book_out,'w'))
 if _book_out=='s4_matrix.json':
     _bsrc=_SS.stamp_derived('s4_matrix.json',tier=1)                   # GUARD 1: stamp book with source md5 + read-only
     print(f"matrix saved (CALENDAR-indexed): {len(rec)} players | book stamped src={_bsrc[:8]} (read-only)",flush=True)

@@ -73,6 +73,22 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, h
         fails.append("checkout store %s != pinned store %s (data/expected_boot.json) — repo/pin out of sync"
                      % (_fmt(repo_md5), _fmt(exp.get('store'))))
 
+    # (0b) config integrity (gate-integrity 2026-07-09, the durable half of R3): the model-config manifest
+    #     hash must equal the pinned boot config. Makes Guard 5 a code+store+CONFIG check — a model-semantics
+    #     var can no longer drift into a bake unnoticed. Backward-compatible: skipped if either the manifest
+    #     (data/model_config.json) or the pinned 'config' field is absent.
+    exp_cfg = exp.get('config')
+    if exp_cfg is not None and os.path.exists(os.path.join(root, 'data', 'model_config.json')):
+        try:
+            import config_manifest as _cm
+            got_cfg = _cm.manifest_hash(root)
+        except Exception:
+            got_cfg = None
+        if got_cfg is not None and got_cfg != exp_cfg:
+            fails.append("model config hash %s != pinned boot config %s (data/expected_boot.json 'config') — "
+                         "the model configuration (data/model_config.json) and the pin are out of sync"
+                         % (_fmt(got_cfg), _fmt(exp_cfg)))
+
     def _chk(kind, path, pin, ref_md5):
         if path is None:
             return

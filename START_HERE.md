@@ -1,5 +1,5 @@
 # START_HERE — AFL SuperCoach RL keeper engine — authoritative first-read
-_**BAKED v2.5 2026-07-05** (DPP strip final consolidation + owner-authorised A7 frozen-gate amendment). Head `efea88e5` (store `e1b4d8bf` · band `34faa865` · rl_model.py `121a45d0` = three single-valued position columns drafted/present/future; board `7d1eeef8`; book stable-seal `5799a9ce` / 2649 players). Lineage: e0ac9c37 → 8aed420a → c47cb43d (BAKED v2.4) → **efea88e5 (BAKED v2.5)**. See docs/CHANGELOG.md; rollback anchor `prebake-v2.5-anchor`._
+_**BAKED v2.6 2026-07-09** (W4 + L1c + KPF-rebalance; RL_PVCFIT held out per owner ruling R3 — the frozen-v3.4 pick curve ships as the board's pick currency; on the v2.5 store). Head `4b08796c` (store `e1b4d8bf` · band `34faa865` · rl_model.py `121a45d0` = three single-valued position columns drafted/present/future; board `799b2290`; book stable-seal `5799a9ce` / 2649 players — the seal is STORE-keyed (player,type,year,pick), so it is unchanged from v2.5 by design). Lineage: e0ac9c37 → 8aed420a → c47cb43d (BAKED v2.4) → efea88e5 (BAKED v2.5) → **4b08796c (BAKED v2.6)**. See docs/CHANGELOG.md; rollback anchor `prebake-v2.5-anchor`._
 
 ## 0. FOUR-STEP RESUME
 1. **Restore** into a clean dir (`tar xzf rl_complete_8aed420a_*.tar.gz`).
@@ -9,11 +9,11 @@ _**BAKED v2.5 2026-07-05** (DPP strip final consolidation + owner-authorised A7 
 5. **THE THREE REPORTING RULES (Luke's word, BINDING, D10 03/07/2026):** (1) every gates/board output = THREE COLUMNS — CONTROL · PREVIOUS · CURRENT, deltas explicit (`data/report_states.json`); (2) every board/report carries a LOUD state label — no unlabelled player value anywhere Luke-facing; (3) binding on ALL sessions. Full text: `BAKE_CHECKLIST.md` §REPORTING.
 
 ## 1. IDENTITY / MD5 AXES (all verified this cut)
-- code→head: `engine/rl_after/_merged_recover.py` = **`efea88e5`** (BAKED v2.5 DPP strip; was c47cb43d) · position model in `rl_model.py` = **`121a45d0`** (drafted/present/future single-valued columns; the raw_multipos blend is DELETED)
+- code→head: `engine/rl_after/_merged_recover.py` = **`4b08796c`** (BAKED v2.6 = W4+L1c+KPF R3fix; was efea88e5 at v2.5) · position model in `rl_model.py` = **`121a45d0`** (drafted/present/future single-valued columns; the raw_multipos blend is DELETED; unchanged v2.5→v2.6)
 - data→store: `engine/rl_after/rl_model_data.json` = **`e1b4d8bf`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; three position columns + Kako fix + off-by-one folded; was `73d23a8e`)
 - band: `data/cm_400.pkl` = **`34faa865`**
 - file→bundle: see CHECKPOINT_MANIFEST.md (recorded at cut).
-- **BAKED = nothing past `e0ac9c377d1e`.** Lineage in `docs/CHANGELOG.md`.
+- **BAKED v2.6 = head `4b08796c` / board `799b2290`** (store `e1b4d8bf`, unchanged since v2.5). Frozen-canonical lineage root `e0ac9c377d1e`; full lineage in `docs/CHANGELOG.md`.
 
 ## 2. FULL ENV (every engine command)
 ```
