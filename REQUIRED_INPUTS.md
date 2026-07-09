@@ -5,6 +5,7 @@
 | This tarball (whole workspace + vendored deps) | the bundle itself | PRESENT | everything |
 | Engine head `_merged_recover.py` (c47cb43d, BAKED v2.4; was 8aed420a) | engine/rl_after/ | PRESENT (md5 verified) | all pricing |
 | Store `rl_model_data.json` (73d23a8e, SINGLE SOURCE) | engine/rl_after/ | PRESENT | all pricing |
+| **LTI register `LTI_REGISTER.md`** (652d83e8, owner-authored availability sidecar — R-REG=R2, Chapter-3 2026-07-09; pinned like the store, seeded to the workspace by bootstrap, asserted by Guard 5) | repo root | PRESENT (43/43 keys store-verified) | RL_AVAIL availability layer (Part 1 nerf + Part 2 return haircut) |
 | Band pickle `cm_400.pkl` (34faa865) | data/ | PRESENT | conditional prior |
 | GATE-1 + walk-forward harnesses | engine/rl_after/ (`_gate1_wf.py`, `_gate1_picksplit.py`, `s4_matrix_M1v7.py`, `s4_render_M1v7.py`) | PRESENT | book / gates |
 | Vendored dep — **unidecode ONLY** (nothing else is vendored) | vendor/ | PRESENT (offline-safe) | engine load (name normalisation) |

@@ -1,6 +1,6 @@
 {
  "head": "4b08796c",
- "store": "e1b4d8bf",
+ "store": "a2fbc9a0",
  "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6",
  "gates": {
   "A1": {
@@ -81,7 +81,7 @@
   "B1": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE (regenerated this run \u2014 engine 4b08796c store e1b4d8bf config d88404f07633): cross-cohort AVERAGE peak N=4 AVG(peak)=130 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
+   "detail": "CANDIDATE (regenerated this run \u2014 engine 4b08796c store a2fbc9a0 config d88404f07633): cross-cohort AVERAGE peak N=4 AVG(peak)=130 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
   },
   "B2": {
    "dc": false,
@@ -90,13 +90,13 @@
   },
   "B3": {
    "dc": false,
-   "status": "DIFFERS-BY-DESIGN",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 4b08796c store e1b4d8bf config d88404f07633): candidate head 4b08796c != sealed head efea88e5 \u2014 new version; the v2.6 book must be RE-SEALED a"
+   "status": "PASS",
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 4b08796c store a2fbc9a0 config d88404f07633): MATCHES the sealed baseline. current=ff6cf9d8c749bf53.. (2649 players) vs baseline=ff6cf9d8c749b"
   },
   "B4": {
    "dc": false,
    "status": "PASS",
-   "detail": "regenerated rl_app_data.json md5=799b2290 vs shipped 799b2290 (byte-agree gate; export exit=0)"
+   "detail": "regenerated rl_app_data.json md5=fd90472c vs shipped fd90472c (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,
