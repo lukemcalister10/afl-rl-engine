@@ -3,7 +3,7 @@
   "version": "1.0",
   "date": "2026-07-09",
   "baked_state": "BAKED v2.6 (engine 4b08796c / board 799b2290 / store e1b4d8bf)",
-  "config_sha256": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6",
+  "config_sha256": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b",
   "excluded_infrastructure_vars": {
     "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
     "RL_REPO": "checkout locator",
@@ -55,11 +55,13 @@
     "RL_RUC_CEIL_HEAD": "0.80",
     "RL_RUC_CEIL_REFPK": "72",
     "RL_RUC_YRH": "0.35",
-    "RL_PVCFIT": "0"
+    "RL_PVCFIT": "0",
+    "RL_LTI_CLOCK": "advance"
   },
   "var_notes": {
     "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
     "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
+    "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 \u00a736): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
     "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c"
   }
 }

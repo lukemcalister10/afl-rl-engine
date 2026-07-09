@@ -43,7 +43,7 @@ INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
 # _avail_hc==0 for every player ⇒ byte-exact to the layer-off board (register-only movement by construction).
 _AVAIL_ON=os.environ.get('RL_AVAIL','1')!='0'
 _LTI_RETURN_ON=os.environ.get('RL_LTI_RETURN','1')!='0'       # Part-2 return-haircut arm (separable lever, G-ATTR)
-_LTI_CLOCK=os.environ.get('RL_LTI_CLOCK','pause')             # fork-i L1c clock: pause (default) | advance (R-i table)
+_LTI_CLOCK=os.environ.get('RL_LTI_CLOCK','advance')          # fork-i L1c clock: advance (DEFAULT, owner-ruled R-i 2026-07-10, DECISIONS v90 §36) | pause (retired provisional). Pinned in data/model_config.json + asserted by ruling_config_check.py (a paused bake/gate fails loudly).
 _AVAIL_STATE={}                                               # key -> availability state (populated by the layer block below)
 _KPF_LD_FALLBACK=set()                                        # fork-v: register names whose LD fell back to count-against (report-only)
 def _fe_p_one(p):                                             # True iff this player's 2026 is priced as COMPLETE (out-for-remainder register name)
@@ -545,10 +545,12 @@ if _W4YNG:
 def _ycred_games(p,Y):                                        # EVIDENCE QUANTITY: career games as-of Y (same debut window as _nqual)
     d0=cp.debutyr(p)-1
     g=float(sum(x.get('games',0) for x in p['scoring'] if d0<x['year']<=Y))
-    # FORK-i (R-i, PROVISIONAL): the L1c clock keys on career GAMES, so an injured season adds ~0 -> the clock
-    # already IMPLICITLY PAUSES (RL_LTI_CLOCK=pause, DEFAULT). The ADVANCE alternative ages the clock by the
-    # expected (lost) games during LTI windows, fading the young credit as if he had played. Clean toggle: the
-    # owner confirms/flips on the R-i comparison table BEFORE any bake — a flip is this config change, no rebuild.
+    # FORK-i (R-i, RULED ADVANCE — owner 2026-07-10, DECISIONS v90 §36; supersedes the §33 provisional pause).
+    # The L1c clock keys on career GAMES, so an injured season adds ~0 and the clock would implicitly PAUSE
+    # (the retired RL_LTI_CLOCK=pause). ADVANCE (the DEFAULT now) ages the clock by the expected (lost) games
+    # during LTI windows, fading the young credit as if he had played — the owner viewed the pause-vs-advance
+    # named table (O'Farrell -206, Gibcus -17; Darcy/Motlop/Flanders past G0, Δ0) and ruled advance. The flip is
+    # this config default + the ruling-config assertion (ruling_config_check.py) that makes a paused bake fail.
     if _LTI_CLOCK=='advance' and _AVAIL_ON and Y>=2026:
         _st=_AVAIL_STATE.get(p.get('key'))
         if _st and _st.get('out'): g+=float(_st['L'])*float(cp.SEASON)
