@@ -42,6 +42,17 @@ Earn-back condition (standing rule): a band-compression term returns only as an 
 
 ---
 
+# ENGINE-TERM DELETION — Chapter-3 2026-07-09 · the `_b2hc` CURRENT-SEASON UNAVAILABILITY INFERENCE (R-B2HC=RETIRE)
+_Owner ruling R-B2HC (DECISIONS §33): **RETIRE — delete the `_b2hc` inference path, code and any store fields it owns, per SSI delete-don't-disable.** Sealed_by: DIRECTIVE_injury_build_v1 (this candidate). Its own docstring said "next build's return data supersedes it" — this is that build._
+
+| # | term | plain description | measured magnitude | recorded rationale | deleted from | resurrection ref |
+|---|---|---|---|---|---|---|
+| E6 | `_b2hc` (B2 current-season unavailability haircut) | a transient, age-banded, present-component-only INFERENCE: an established player (≥3 pre-2026 seasons, recent peak ≥90) with 0 games in 2026 and the season >1/3 done got an age-banded haircut on his k=0 present level (`<27` 8.8% · `27–29` 3.9% · `30+` 0). It GUESSED unavailability from the store's own 0-games signal. | On the baked-v2.6 store `a2fbc9a0`, **exactly 2 players carried `_b2hc>0`: `nicholas-martin` (0.088) and `tom-green` (0.088)** — BOTH register names. Off the retirement (register layer off) they move UP by the removed haircut; under RL_AVAIL they are re-priced by the register-driven `_avail_hc`. No non-register player carried `_b2hc>0`, so the strip moves only register names (non-mover parity holds). | SUPERSEDED by the curated LTI register (R-REG=R2): human ground truth beats inference, and a curated register + an inference stopgap firing on the SAME 0-games-2026 signal is a double-count. If a true LTI is missing, the fix is a register row, not a resurrected inference. `_b2hc` was a **runtime-only field (never in the store)** → **store md5 UNCHANGED `a2fbc9a0`, no re-seal.** | the inference block `rl_model.py` (formerly lines ~792–803: init + `_b2band` + the `SEASON_PROG>1/3` scan). The k=0 present-haircut PLUMBING is KEPT and re-pointed to the register-driven `_avail_hc` (`rl_model.py:328/408`, `_merged_recover._prod_floor_w4`, `_merged_recover._proj_w4`, `rl_export.py`, `distribution_pricing.py`). | `git show b303795:engine/rl_after/rl_model.py` (the last commit carrying the `_b2hc` inference — the #52 merge base of this candidate) |
+
+Earn-back condition: availability never returns as an inference. It is the owner's register (`LTI_REGISTER.md`) or nothing — the engine consumes the register and never re-diagnoses a row.
+
+---
+
 # ENGINE-TERM DELETION — D10 2026-07-03 · the FLAT 50% SIT-OUT ANCHOR (retired-PVC basis)
 
 | # | term | plain description | measured magnitude | recorded rationale | deleted from | resurrection ref |
