@@ -472,7 +472,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if ag<=pa: lev=max(lev,cl)
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # RL_AVAIL present haircut L_p (was _b2hc)
-        if k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (single k -> decays to 0 next season)
+        if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
         if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
