@@ -1,0 +1,112 @@
+<!doctype html>
+<!-- THEME 01 · COCKPIT — public trim · board. Design pitch; ALL FIGURES INVENTED — not the board.
+     Sanitised: values, ranks, movement only. No board/engine/store IDs, no guard states, no pins,
+     no override machinery, no debug affordances. Δ = vs previous round (published scheme, no toggle). -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cockpit · Board · public</title>
+<style>
+:root{
+  --ink:#0e1217; --ink-2:#131922; --panel:#161d27; --panel-2:#1b2431;
+  --rule:#232e3d; --rule-soft:#1c2531;
+  --text:#e7edf4; --dim:#93a1b3; --faint:#5d6b7d;
+  --phos:#4fc3d4; --phos-soft:rgba(79,195,212,.14);
+  --up:#5dd39e; --dn:#e0685e;
+  --pos-mid:#7aa2f7; --pos-kfwd:#e0808a; --pos-ruc:#b088e8;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --row-h:34px;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.4}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pitchbanner{background:rgba(79,195,212,.12);border-bottom:1px solid var(--phos);color:var(--phos);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:6px}
+.app{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:22px 2px 14px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.brand{font-weight:800;letter-spacing:-.02em;font-size:20px}.brand b{color:var(--phos)}
+.spacer{flex:1}
+.readout{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right;line-height:1.6}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 2px;border-bottom:1px solid var(--rule)}
+.search{flex:1;min-width:200px;background:var(--ink-2);border:1px solid var(--rule);border-radius:7px;
+  color:var(--faint);font-family:var(--mono);font-size:13px;padding:9px 12px}
+.board{border:1px solid var(--rule);border-radius:10px;margin-top:14px;background:var(--panel);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--panel-2);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
+  font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+th.r,td.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--rule-soft);height:var(--row-h)}
+tbody tr:hover{background:var(--panel-2)}
+td{padding:0 12px;white-space:nowrap;font-size:13px}
+td.rank{font-family:var(--mono);color:var(--faint);font-size:12px;width:44px}
+td.name{font-weight:600}
+.posdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:7px;vertical-align:1px}
+.poslbl{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+td.value{font-family:var(--mono);font-weight:700;font-size:13.5px;width:86px}
+td.railcol{width:150px;padding-right:16px}
+.track{position:relative;height:6px;background:var(--ink-2);border-radius:3px;overflow:hidden}
+.track i{position:absolute;left:0;top:0;bottom:0;width:var(--w);
+  background:linear-gradient(90deg,rgba(79,195,212,.35),var(--phos));border-radius:3px}
+td.delta{width:100px;font-family:var(--mono);font-size:12.5px}
+.d-up{color:var(--up)} .d-dn{color:var(--dn)} .d-flat{color:var(--faint)}
+footer{margin-top:18px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.7}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — illustration only</div>
+<div class="app">
+  <header>
+    <div>
+      <div class="eyebrow">Player Values</div>
+      <div class="brand">Value <b>Board</b></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="readout">Round 17 · 2026 · movement vs previous round · 1002 players</div>
+  </header>
+
+  <div class="toolbar"><div class="search">Search player or club…</div></div>
+
+  <div class="board"><table>
+    <thead><tr>
+      <th class="r">#</th><th>Player</th><th>Pos</th>
+      <th class="r">Value</th><th></th><th class="r">Δ round</th><th class="r">Rank move</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="rank r">1</td><td class="name">Marcus Bontempelli</td>
+        <td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">3 462</td><td class="railcol"><div class="track"><i style="--w:96%"></i></div></td>
+        <td class="delta r d-up">▲ +41</td><td class="delta r d-flat">· —</td></tr>
+      <tr><td class="rank r">2</td><td class="name">Nick Daicos</td>
+        <td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">3 310</td><td class="railcol"><div class="track"><i style="--w:92%"></i></div></td>
+        <td class="delta r d-up">▲ +18</td><td class="delta r d-flat">· —</td></tr>
+      <tr><td class="rank r">3</td><td class="name">Sam Darcy</td>
+        <td><span class="posdot" style="--c:var(--pos-kfwd)"></span><span class="poslbl">KEY·FWD</span></td>
+        <td class="value r num">3 178</td><td class="railcol"><div class="track"><i style="--w:88%"></i></div></td>
+        <td class="delta r d-up">▲ +96</td><td class="delta r d-up">▲ 2</td></tr>
+      <tr><td class="rank r">7</td><td class="name">Jeremy Cameron</td>
+        <td><span class="posdot" style="--c:var(--pos-kfwd)"></span><span class="poslbl">KEY·FWD</span></td>
+        <td class="value r num">2 894</td><td class="railcol"><div class="track"><i style="--w:79%"></i></div></td>
+        <td class="delta r d-up">▲ +64</td><td class="delta r d-up">▲ 1</td></tr>
+      <tr><td class="rank r">12</td><td class="name">Max Gawn</td>
+        <td><span class="posdot" style="--c:var(--pos-ruc)"></span><span class="poslbl">RUC</span></td>
+        <td class="value r num">2 610</td><td class="railcol"><div class="track"><i style="--w:71%"></i></div></td>
+        <td class="delta r d-up">▲ +52</td><td class="delta r d-up">▲ 3</td></tr>
+      <tr><td class="rank r">38</td><td class="name">Willem Duursma</td>
+        <td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">1 986</td><td class="railcol"><div class="track"><i style="--w:54%"></i></div></td>
+        <td class="delta r d-up">▲ +33</td><td class="delta r d-up">▲ 4</td></tr>
+      <tr><td class="rank r">61</td><td class="name">Kieren Briggs</td>
+        <td><span class="posdot" style="--c:var(--pos-ruc)"></span><span class="poslbl">RUC</span></td>
+        <td class="value r num">1 480</td><td class="railcol"><div class="track"><i style="--w:40%"></i></div></td>
+        <td class="delta r d-dn">▼ −21</td><td class="delta r d-dn">▼ 2</td></tr>
+      <tr><td class="rank r">104</td><td class="name">Callum Coleman-Jones</td>
+        <td><span class="posdot" style="--c:var(--pos-kfwd)"></span><span class="poslbl">KEY·FWD</span></td>
+        <td class="value r num">876</td><td class="railcol"><div class="track"><i style="--w:24%"></i></div></td>
+        <td class="delta r d-flat">· 0</td><td class="delta r d-flat">· —</td></tr>
+      <tr><td class="rank r">312</td><td class="name">Stephen Coniglio</td>
+        <td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">421</td><td class="railcol"><div class="track"><i style="--w:12%"></i></div></td>
+        <td class="delta r d-dn">▼ −9</td><td class="delta r d-dn">▼ 6</td></tr>
+    </tbody>
+  </table></div>
+
+  <footer>values · ranks · movement — movement always signed, never colour alone</footer>
+</div>

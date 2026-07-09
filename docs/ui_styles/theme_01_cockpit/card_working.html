@@ -1,0 +1,116 @@
+<!doctype html>
+<!-- THEME 01 · COCKPIT — working aid · player card. Design pitch; ALL FIGURES INVENTED — not the board.
+     The ruled grammar: NO ghost rail — the owner's ×0.50 rule is a LINE ITEM in the waterfall.
+     No slug in the default view (identity line uses name/club/position only). -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cockpit · Player card · working aid</title>
+<style>
+:root{
+  --ink:#0e1217; --ink-2:#131922; --panel:#161d27; --panel-2:#1b2431;
+  --rule:#232e3d; --rule-soft:#1c2531;
+  --text:#e7edf4; --dim:#93a1b3; --faint:#5d6b7d;
+  --amber:#e9b949; --amber-soft:rgba(233,185,73,.16);
+  --phos:#4fc3d4; --up:#5dd39e; --dn:#e0685e; --ok:#5dd39e;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.45}
+.pitchbanner{background:var(--amber-soft);border-bottom:1px solid var(--amber);color:var(--amber);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:6px}
+.card{max-width:580px;margin:26px auto 60px;background:var(--panel);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.head{background:var(--panel-2);border-bottom:1px solid var(--rule);padding:20px 22px 16px}
+.name{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.id{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:4px}
+.stamp{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:8px}
+.stamp b{color:var(--dim)}
+.badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  padding:1px 6px;border-radius:4px;border:1px solid var(--ok);color:var(--ok);margin-left:6px}
+.body{padding:18px 22px 34px}
+.idgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 16px}
+.k{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.v{font-family:var(--mono);font-size:13px;margin-top:2px}
+.v.big{font-size:19px;font-weight:700;color:var(--phos)}
+.ovr{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--amber);
+  border:1px solid var(--amber);border-radius:4px;padding:1px 5px;margin-left:8px;vertical-align:2px;cursor:help}
+.sec{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule-soft);display:flex;justify-content:space-between}
+.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-transform:none;font-size:11px}
+.wf{display:grid;grid-template-columns:1fr 190px 74px;gap:6px 12px;align-items:center;font-size:12.5px}
+.wf .lbl{color:var(--text)} .wf .lbl i{color:var(--faint);font-style:normal}
+.wf .lbl.rule{color:var(--amber)}
+.wf .track{position:relative;height:14px;background:var(--ink-2);border-radius:3px}
+.wf .bar{position:absolute;top:2px;bottom:2px;border-radius:2px}
+.wf .bar.up{left:50%;background:var(--up)} .wf .bar.dn{right:50%;background:var(--dn)}
+.wf .bar.rule{right:50%;background:transparent;border:1px solid var(--amber)}
+.wf .zero{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule)}
+.wf .fig{font-family:var(--mono);font-size:12px;text-align:right}
+.wf .fig.up{color:var(--up)} .wf .fig.dn{color:var(--dn)} .wf .fig.zero{color:var(--faint)} .wf .fig.rule{color:var(--amber)}
+.wf .rowline{grid-column:1/4;border-bottom:1px solid var(--rule-soft)}
+.wf .totals{font-family:var(--mono);font-size:12.5px;color:var(--dim)}
+.wf .totals b{color:var(--phos)}
+.foot-note{margin-top:10px;font-size:11.5px;color:var(--faint);line-height:1.5}
+.foot-note b{color:var(--dim)}
+.chart{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:8px;padding:12px 10px 6px}
+.chart svg{display:block;width:100%;height:auto}
+.reserved{border:1px dashed var(--rule);border-radius:8px;padding:16px;color:var(--faint);
+  background:repeating-linear-gradient(135deg,transparent,transparent 9px,var(--rule-soft) 9px,var(--rule-soft) 10px)}
+.reserved b{color:var(--dim);font-size:12px} .reserved p{margin:6px 0 0;font-size:12px}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — not the board · working aid</div>
+<div class="card">
+  <div class="head">
+    <div class="name">Callum Coleman-Jones<span class="ovr" title="Owner rule active — see the waterfall line item">×0.50 ROLE</span></div>
+    <div class="id">KEY·FWD · Melbourne · pick 20 · 2018 ND</div>
+    <div class="stamp">board <b>v2.6</b> · engine <b>4b08796c</b> · store <b>a2fbc9a0</b><span class="badge">guard 5 pass</span></div>
+  </div>
+  <div class="body">
+    <div class="idgrid">
+      <div><div class="k">Value</div><div class="v big">876</div></div>
+      <div><div class="k">Δ vs last bake</div><div class="v" style="color:var(--faint)">· 0</div></div>
+      <div><div class="k">Rank</div><div class="v">104 / 1002</div></div>
+    </div>
+
+    <div class="sec"><span>Why the price is what it is</span><span class="meta">v2.5 → v2.6 · per-lever</span></div>
+    <div class="wf">
+      <span class="totals">Started at</span><span></span><span class="totals" style="text-align:right"><b>1 748</b></span>
+      <span class="rowline"></span>
+      <span class="lbl">Recent scoring <i>(form / score relativity)</i></span>
+      <span class="track"><span class="zero"></span><span class="bar up" style="width:9%"></span></span>
+      <span class="fig up">+52</span>
+      <span class="lbl">Ruck minutes trend <i>(role time)</i></span>
+      <span class="track"><span class="zero"></span><span class="bar dn" style="width:7%"></span></span>
+      <span class="fig dn">−38</span>
+      <span class="lbl">Games missed <i>(availability layer)</i></span>
+      <span class="track"><span class="zero"></span></span>
+      <span class="fig zero">0 · absent</span>
+      <span class="lbl">Everything else <i>(unattributed — must be 0)</i></span>
+      <span class="track"><span class="zero"></span><span class="bar dn" style="width:2%"></span></span>
+      <span class="fig dn">−10</span>
+      <span class="lbl rule">Your rule: role reliability <i style="color:var(--amber);opacity:.7">(×0.50 — the Brodie rule)</i></span>
+      <span class="track"><span class="zero"></span><span class="bar rule" style="width:48%"></span></span>
+      <span class="fig rule">−876</span>
+      <span class="rowline"></span>
+      <span class="totals">Lands at</span><span></span><span class="totals" style="text-align:right"><b>876</b></span>
+    </div>
+    <div class="foot-note"><b>The override is a line item, not a ghost.</b> The amber hollow bar is your rule holding the
+      price down — value halved while playing out of ruck. Remove the rule and the waterfall, not the rail, shows the
+      headroom. Availability prints <b>absent</b>, never skipped. Unattributed turns alarm-red if it grows.</div>
+
+    <div class="sec"><span>Value by year</span><span class="meta">2024–2028 · engine 4b08796c</span></div>
+    <div class="chart">
+      <svg viewBox="0 0 460 120">
+        <polyline points="20,60 130,54 240,66 350,72 440,80" fill="none" stroke="#4fc3d4" stroke-width="2"/>
+        <circle cx="240" cy="66" r="4" fill="#e9b949"/>
+        <text x="240" y="54" fill="#e9b949" font-size="10" text-anchor="middle" font-family="monospace">2026</text>
+        <g fill="#5d6b7d" font-size="10" font-family="monospace" text-anchor="middle">
+          <text x="20" y="114">2024</text><text x="130" y="114">2025</text><text x="350" y="114">2027</text><text x="440" y="114">2028</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="sec"><span>Round-by-round rating</span><span class="meta">reserved</span></div>
+    <div class="reserved"><b>Wired in the weekly-loop phase.</b>
+      <p>History starts clean on the stable post-overhaul model; one model version per line, a seam marker where a re-bake splits a season.</p>
+    </div>
+  </div>
+</div>
