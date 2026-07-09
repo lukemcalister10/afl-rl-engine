@@ -31,9 +31,30 @@ PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec sp
 # proven-player recent-adequacy window) deliberately NOT prorated — outside the 6/10/14/22 enumeration.
 SEASON_FE=float(os.environ.get('RL_M3_FE','0.58'))
 INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
-def _fEy(Y): return SEASON_FE if Y==INPROG_Y else 1.0
+# ==== RL_AVAIL — LTI/AVAILABILITY LAYER (Chapter-3 2026-07-09; register-driven; touches register keys only) ==
+# Part 1 (current-season nerf, R-iv = season-state at the proration seam): for a register name out for the
+# remainder of 2026, his 2026 is COMPLETE at his real games — so his effective season fraction is 1.0 (NOT the
+# global SEASON_PROG). `_fEy(Y,p)` returns 1.0 for those names, which stops the /SEASON_PROG gross-up and makes
+# the τ' penalty, the 6/12-game qualification bars and the sit-out λ blend re-price on FINAL-games footing.
+# This is NOT a stacked multiplier — the one new present factor is the lost-production term _avail_hc = L_p
+# (set on the record below; feeds the k=0 present haircut the retired _b2hc used to feed). M2/M3 keep owning
+# clock proration (the falsified games-completion ruling is honoured: nobody's season is "completed" — Rozee
+# stays 2 games; we only stop grossing them up). RL_AVAIL=0 ⇒ _AVAIL_STATE empty ⇒ _fEy(Y,p)==_fEy(Y) and
+# _avail_hc==0 for every player ⇒ byte-exact to the layer-off board (register-only movement by construction).
+_AVAIL_ON=os.environ.get('RL_AVAIL','1')!='0'
+_LTI_RETURN_ON=os.environ.get('RL_LTI_RETURN','1')!='0'       # Part-2 return-haircut arm (separable lever, G-ATTR)
+_LTI_CLOCK=os.environ.get('RL_LTI_CLOCK','pause')             # fork-i L1c clock: pause (default) | advance (R-i table)
+_AVAIL_STATE={}                                               # key -> availability state (populated by the layer block below)
+_KPF_LD_FALLBACK=set()                                        # fork-v: register names whose LD fell back to count-against (report-only)
+def _fe_p_one(p):                                             # True iff this player's 2026 is priced as COMPLETE (out-for-remainder register name)
+    st=_AVAIL_STATE.get(p.get('key')) if p is not None else None
+    return bool(st and st.get('out'))
+def _fEy(Y,p=None):
+    if Y==INPROG_Y:
+        return 1.0 if _fe_p_one(p) else SEASON_FE
+    return 1.0
 def _playable(p,Y):                                           # full-season-equivalent games playable since debut
-    return cp.SEASON*(max(0,Y-cp.debutyr(p))+(_fEy(Y) if Y>=cp.debutyr(p) else 0.0))
+    return cp.SEASON*(max(0,Y-cp.debutyr(p))+(_fEy(Y,p) if Y>=cp.debutyr(p) else 0.0))
 # STEP-3 CALIBRATION WIRED 2026-06-30 (candidate): per-group LDECAY + FLAT_TOL (KEY / GEN / MID+RUC)
 def _ldg(pos): return 'KEY' if pos in ('KEY_FWD','KEY_DEF') else ('GEN' if pos in ('GEN_FWD','GEN_DEF') else 'MR')
 LDECAY_G={'KEY':0.40,'GEN':0.35,'MR':0.225}; FLAT_TOL_G={'KEY':10.3,'GEN':12.0,'MR':14.0}
@@ -358,16 +379,38 @@ def _kpf_LD(p,Y):
     career-ever top-2 let decade-old peaks hold a demonstration claim at 35 (first-cut Gunston/Walker/Darling
     +22-28%) — the owner's named producers all demonstrate WITHIN the window, and the windowed gap-recovery
     is the stronger measurement (E[r] 0.64 pooled / 0.78 ages 24-30 vs 0.43 unwindowed — derivation3 artifact).
-    None with <2 qualifying seasons (one-season wonders earn no demonstration claim). Leak-free: scoring ≤ Y."""
+    None with <2 qualifying seasons (one-season wonders earn no demonstration claim). Leak-free: scoring ≤ Y.
+    FORK-v (R-v = exclude-and-extend, cap +2): for a register out-name the injured 2026 season is a NUKED
+    season — excluded from the top-2 selection and the window extended back year-for-year (cap +2) so the KPF's
+    demonstrated level rests on his HEALTHY seasons, not the injury (A-DARCY's KPF-speculative locus can't be
+    clipped by the availability locus — enforced by construction). If <2 healthy seasons survive even the
+    extended window, FALL BACK to counting-against (original window) and REPORT (_KPF_LD_FALLBACK)."""
+    _nuke=set()
+    if _AVAIL_ON:
+        _st=_AVAIL_STATE.get(p.get('key'))
+        if _st and _st.get('out'): _nuke={2026}                # the injured current season (register-flagged)
+    _ext=min(2,len(_nuke)); _lo=Y-3-_ext                        # extend back year-for-year, capped +2
     ls=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
-               if Y-3<=y<=Y and gg>=12.0*(_fEy(Y) if y==Y else 1.0)),reverse=True)
-    return float(np.mean(ls[:2])) if len(ls)>=2 else None
+               if _lo<=y<=Y and y not in _nuke and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
+    if len(ls)>=2: return float(np.mean(ls[:2]))
+    if _nuke:                                                  # fork-v fallback: exclusion left <2 healthy seasons
+        _KPF_LD_FALLBACK.add(p.get('key'))
+        ls0=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+                    if Y-3<=y<=Y and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
+        return float(np.mean(ls0[:2])) if len(ls0)>=2 else None
+    return None
 _W4CTX={'on':None}
 def _w4_ctx(p,Y):
     """Per-player form context for the recalibrated projection; None => byte-exact original path."""
     if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
     ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
+    # Part-2 return haircut (RL_LTI_RETURN): apply the derived, net-of-aging return-season dip at the return
+    # season k = ret_year - BASE_REF (decays to zero the next season = single k). Section-A out-names only;
+    # young/speculative already ship h=0 (set on the record). SEPARABLE from Part 1 (own column lti_return_hc).
+    _rh=p.get('_lti_ret_hc',0.0)
+    if _LTI_RETURN_ON and _rh>0:
+        ctx['ret_hc']=float(_rh); ctx['ret_k']=int(p.get('_lti_ret_year',2027))-int(Y)   # k offset from THIS eval year (deterministic; not global BASE_REF)
     _kpf_reb=_W4KPF and pos=='KEY_FWD'                         # KPF REBALANCE T2 coordinates active
     _partial=False
     if _kpf_reb and 2<=n<PROVEN_N:                             # partial-proven KPF: top-tier sustained demonstration only
@@ -428,7 +471,8 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         lev=lp*MA.frac(ag,pa)
         if ag<=pa: lev=max(lev,cl)
         if k==0: lev=max(lev,cl)
-        if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
+        if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # RL_AVAIL present haircut L_p (was _b2hc)
+        if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
         if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
@@ -453,7 +497,7 @@ def _prod_floor_w4(p,lens='bal'):
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
-        if k==0 and p.get('_b2hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_b2hc'])
+        if k==0 and p.get('_avail_hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_avail_hc'])  # RL_AVAIL: register-driven present haircut (was _b2hc; R-B2HC retired)
         prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
@@ -500,7 +544,15 @@ if _W4YNG:
     _YC_TMIN=min(int(t) for t in _YC_TAB); _YC_TMAX=max(int(t) for t in _YC_TAB)
 def _ycred_games(p,Y):                                        # EVIDENCE QUANTITY: career games as-of Y (same debut window as _nqual)
     d0=cp.debutyr(p)-1
-    return float(sum(x.get('games',0) for x in p['scoring'] if d0<x['year']<=Y))
+    g=float(sum(x.get('games',0) for x in p['scoring'] if d0<x['year']<=Y))
+    # FORK-i (R-i, PROVISIONAL): the L1c clock keys on career GAMES, so an injured season adds ~0 -> the clock
+    # already IMPLICITLY PAUSES (RL_LTI_CLOCK=pause, DEFAULT). The ADVANCE alternative ages the clock by the
+    # expected (lost) games during LTI windows, fading the young credit as if he had played. Clean toggle: the
+    # owner confirms/flips on the R-i comparison table BEFORE any bake — a flip is this config change, no rebuild.
+    if _LTI_CLOCK=='advance' and _AVAIL_ON and Y>=2026:
+        _st=_AVAIL_STATE.get(p.get('key'))
+        if _st and _st.get('out'): g+=float(_st['L'])*float(cp.SEASON)
+    return g
 def _ycred_mult(p,Y):
     if not _W4YNG or _YC_TAB is None or not _isreal(p): return 1.0
     if p.get('type') not in ('ND','RD') or p.get('_pickless'): return 1.0
@@ -541,11 +593,11 @@ def _kpf_prod_efv(p,Y,L=None):
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
 def bestlvl(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
+    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
     return max(s) if s else 0.0
 def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)   # unprorated career counter (harness/diagnostic callers)
 def nseas_pro(p,Y=2026):                                      # D10: qualification judged against PLAYABLE games (6-bar -> 6*fE for the in-progress season)
-    return sum(1 for x in p['scoring'] if x['year']<=Y and x['games']>=6.0*(_fEy(Y) if x['year']==Y else 1.0))
+    return sum(1 for x in p['scoring'] if x['year']<=Y and x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0))
 # ===== GAMES-RAMP SIT-OUT TREATMENT (D10 03/07/2026) — the retired-PVC anchor is PURGED =====
 # Replaces the flat SITOUT_RETAIN x draftval anchor (obituary: BOARD_LAYERS_OBITUARY.md; derivation:
 # session_2026-07-03/d10_ask2_derivation.md — harvest 2,465 complete-window still-listed cells 2004-2021,
@@ -806,7 +858,7 @@ def _v0_curve_assert():                                      # BY-CONSTRUCTION G
         if any(dv[k+1]>dv[k]+1e-9 for k in range(5)): dmono=False
     return dict(cross_draft_maxdisp=maxdisp, within_cell_inversions=inv, kpp_depth_monotone=dmono)
 def sitout_ev(p,Y,e_full):
-    fe=_fEy(Y); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
+    fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
@@ -947,6 +999,75 @@ if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
         _PVCFIT_META['error']=repr(_e)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
+
+# ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
+# Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
+# layer touches ONLY register keys: every non-register record keeps _avail_hc==0 and _fEy(Y,p)==_fEy(Y), so
+# the board is byte-identical off the register set (non-mover parity by construction). RL_AVAIL=0 skips it.
+import lti_register as LTIREG
+_AVAIL_REPORT=[]; _AVAIL_MOVERS=[]
+if _AVAIL_ON:
+    _sbk={}
+    for _p in MA.data: _sbk.setdefault(_p.get('key'),[]).append(_p)
+    _skeys={_k:_v[0] for _k,_v in _sbk.items() if len(_v)==1}
+    try:
+        _st=LTIREG.build_state(_skeys, report=_AVAIL_REPORT)          # HALT on unknown key / bad schema
+    except ValueError as _e:
+        raise SystemExit("\n==== LTI REGISTER HALT ====\n"+str(_e))
+    assert LTIREG.G_FULL==cp.SEASON, "LTI G_FULL %s != engine season-games cp.SEASON %s (one constant, spec §3.1)"%(LTIREG.G_FULL,cp.SEASON)
+    _reg_recs={_p.get('key'):_p for _p in MA.data if _p.get('key') in _st}
+    # Part-2 return-haircut surface (derived, net-of-aging; young<27 ships ZERO). HALT if RL_LTI_RETURN is on
+    # but the derived table is absent (guard-family halt-not-warn).
+    _RET_TAB=None
+    if _LTI_RETURN_ON:
+        import json as _rjson
+        if not os.path.exists('lti_return_table.json'):
+            raise SystemExit("Part-2 HALT: RL_LTI_RETURN is ON but lti_return_table.json is absent — run "
+                             "derive_lti_return.py / re-seed the workspace.")
+        _RET_TAB=_rjson.load(open('lti_return_table.json'))
+    def _ret_hc_for(_p,_s):
+        """derived return-season haircut h for a Section-A out-name at his return age; young/speculative -> 0."""
+        if not (_LTI_RETURN_ON and _RET_TAB and _s['return_arm']): return 0.0
+        _a=cp._age_asof(_p,int(_s['ret_year']))                    # age AT the return season
+        if _a is None or _nqual(_p,2026)<PROVEN_N: return 0.0      # speculative exemption (nqual<4) — never touch young/speculative
+        _sf=_RET_TAB['age_surface']; _ks=sorted(int(k) for k in _sf)
+        _ai=int(round(_a)); _ai=min(max(_ai,_ks[0]),_ks[-1])
+        return float(_sf[str(_ai)])
+    # (1) layer-OFF baseline for attribution — _AVAIL_STATE empty, _avail_hc 0, no ret_hc
+    with contextlib.redirect_stdout(io.StringIO()):
+        _ev_off={_k:ev(_p,2026) for _k,_p in _reg_recs.items()}
+    # (2) Part 1 ON: season-state override (_AVAIL_STATE) + present haircut _avail_hc=L_p (ret_hc still 0)
+    _AVAIL_STATE.update(_st)
+    for _k,_p in _reg_recs.items():
+        _s=_st[_k]
+        _p['_avail_hc']=float(_s['L']) if _s['out'] else 0.0       # Part-1 present haircut (lost-production term)
+        _flags=[]
+        if _s['repeat']: _flags.append('repeat_lti')               # fork-ii on-sight flag (report-only)
+        if _s['section']=='B': _flags.append('sectionB_no_return_haircut')
+        _p['_lti_reg']={'section':_s['section'],'designations':_s['designations'],'out':_s['out'],
+                        'L':round(_s['L'],4),'return_arm':_s['return_arm'],'ret_year':_s['ret_year'],'flags':_flags}
+    with contextlib.redirect_stdout(io.StringIO()):
+        _ev_p1={_k:ev(_p,2026) for _k,_p in _reg_recs.items()}    # Part-1-only value
+    # (3) Part 2 ON: derived return-season haircut on Section-A out-names (own column; young ships 0)
+    for _k,_p in _reg_recs.items():
+        _s=_st[_k]; _h=_ret_hc_for(_p,_s)
+        _p['_lti_ret_hc']=_h; _p['_lti_return_hc']=round(_h,4); _p['_lti_ret_year']=int(_s['ret_year'])
+        if _h>0: _p['_lti_reg']['flags'].append('return_hc')
+        if _k in _KPF_LD_FALLBACK: _p['_lti_reg']['flags'].append('kpf_LD_fallback')   # fork-v report
+    # (4) full eval + SEPARABLE attribution: avail_nerf (Part 1) + lti_ret_delta (Part 2) — G-ATTR
+    with contextlib.redirect_stdout(io.StringIO()):
+        for _k,_p in _reg_recs.items():
+            _vfull=ev(_p,2026)
+            _p['_avail_nerf']=int(_ev_p1[_k]-_ev_off[_k])         # Part-1 delta
+            _p['_lti_ret_delta']=int(_vfull-_ev_p1[_k])           # Part-2 delta (return arm value)
+            _AVAIL_MOVERS.append((_k,_p.get('player'),_ev_off[_k],_ev_p1[_k],_vfull,
+                                  _p['_avail_nerf'],_p['_lti_ret_delta'],_p.get('_lti_return_hc',0.0)))
+    print("=== RL_AVAIL LAYER ON: %d register names (32 A + 11 B); RL_LTI_RETURN=%s; non-register byte-identical ==="%(len(_reg_recs),_LTI_RETURN_ON))
+    if _KPF_LD_FALLBACK:
+        print("    fork-v KPFFIX LD fell back to count-against (report-only): %s"%sorted(_KPF_LD_FALLBACK))
+    if _AVAIL_REPORT:
+        print("    register store-vs-designation anomalies (REPORT-ONLY, register governs, engine never re-diagnoses):")
+        for _a in _AVAIL_REPORT: print("      - "+_a)
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}

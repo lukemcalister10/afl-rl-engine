@@ -1,0 +1,2 @@
+NON-MOVER PARITY (RL_AVAIL on vs off): board keys=805  movers=39  register movers=39/43  NON-REGISTER movers=0
+PARITY PASS — non-register movers: []

@@ -1,5 +1,5 @@
 {
- "head": "4b08796c",
+ "head": "da56bccf",
  "store": "a2fbc9a0",
  "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6",
  "gates": {
@@ -16,7 +16,7 @@
   "A3": {
    "dc": true,
    "status": "FAIL",
-   "detail": "Connor Rozee: 2026=3019 2025=4235 ratio=0.71 (need >=0.75) [evaluated PRE-LTI-layer \u2014 Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]"
+   "detail": "Connor Rozee: 2026=2271 2025=4235 ratio=0.54 (need >=0.75) [evaluated PRE-LTI-layer \u2014 Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]"
   },
   "A4": {
    "dc": false,
@@ -31,7 +31,7 @@
   "A6": {
    "dc": false,
    "status": "PASS",
-   "detail": "yr1-3 RUC median=393 (n=13, pooled \u2014 thin slice) vs pick-matched MID kernel median=556 (n=67, bw=0.6 log-pick, RATIFIED 02/07)"
+   "detail": "yr1-3 RUC median=393 (n=13, pooled \u2014 thin slice) vs pick-matched MID kernel median=554 (n=67, bw=0.6 log-pick, RATIFIED 02/07)"
   },
   "A7": {
    "dc": false,
@@ -81,27 +81,27 @@
   "B1": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE (regenerated this run \u2014 engine 4b08796c store a2fbc9a0 config d88404f07633): cross-cohort AVERAGE peak N=4 AVG(peak)=130 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
+   "detail": "CANDIDATE (regenerated this run \u2014 engine da56bccf store a2fbc9a0 config d88404f07633): cross-cohort AVERAGE peak N=4 AVG(peak)=130 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
   },
   "B2": {
    "dc": false,
    "status": "PASS",
-   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.35, GEN_DEF|GOOD|T5:2.38, GEN_FW"
+   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.35, RUC|GOOD|T3:3.07, GEN_DEF|GO"
   },
   "B3": {
    "dc": false,
-   "status": "PASS",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 4b08796c store a2fbc9a0 config d88404f07633): MATCHES the sealed baseline. current=ff6cf9d8c749bf53.. (2649 players) vs baseline=ff6cf9d8c749b"
+   "status": "DIFFERS-BY-DESIGN",
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine da56bccf store a2fbc9a0 config d88404f07633): candidate head da56bccf != sealed head 4b08796c \u2014 new version; the v2.6 book must be RE-SEALED a"
   },
   "B4": {
    "dc": false,
    "status": "PASS",
-   "detail": "regenerated rl_app_data.json md5=fd90472c vs shipped fd90472c (byte-agree gate; export exit=0)"
+   "detail": "regenerated rl_app_data.json md5=d9728208 vs shipped d9728208 (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,
    "status": "FEATURE",
-   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 60 saves, aggregate lift +1922; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new al"
+   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 61 saves, aggregate lift +1948; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new al"
   },
   "B6": {
    "dc": false,

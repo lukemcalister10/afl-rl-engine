@@ -22,6 +22,12 @@ SOURCE_NAME   = 'rl_model_data.json'
 SOURCE_GLOB   = 'rl_model_data*.json'                       # the source pattern (guard 3 lookalike sweep)
 LOOKALIKE_PAT = ['rl_model_data.json.*', 'rl_model_data*.bak', 'rl_model_data*.pre_stage0',
                  'rl_model_data*.stage0', 'rl_model_data*~']
+# Chapter-3 (2026-07-09): the LTI register is a SECOND owner-authored input (R-REG=R2), pinned like the
+# store. SSI binds it too — one register file per datum (availability facts have one home, Luke's file).
+# Guard-3 analogue: exactly ONE LTI_REGISTER*.md in the source dir, no lookalike copies.
+REGISTER_NAME = 'LTI_REGISTER.md'
+REGISTER_GLOB = 'LTI_REGISTER*.md'
+REGISTER_LOOKALIKE_PAT = ['LTI_REGISTER*.bak', 'LTI_REGISTER*~', 'LTI_REGISTER*.md.*']
 TIER1_DERIVED = ['rl_app_data.json', 's4_matrix.json']     # board, book
 TIER2_DERIVED = ['peak_model_v4.pkl', 'pvc_snapshot.json']  # train-time caches
 # the ONLY files rl_model.py is permitted to open (source + classified authored inputs + frozen caches)
@@ -119,6 +125,17 @@ def assert_single_source(fail):
     for pat in LOOKALIKE_PAT:
         looks += [os.path.basename(p) for p in glob.glob(_hp(pat)) if not p.endswith('.srcmd5')]
     fail(not looks, "GUARD 3 (lookalike tripwire): source lookalikes present: %s" % sorted(set(looks)))
+    # Register (R-REG=R2) — the same discipline for the availability input: exactly one LTI_REGISTER*.md,
+    # no lookalike copies. Skipped only if the register is absent from this dir (backward-compatible with a
+    # dir that predates the register); Guard 5 (boot_guard) is what HALTs on an absent-but-pinned register.
+    reg = [os.path.basename(p) for p in glob.glob(_hp(REGISTER_GLOB)) if not p.endswith('.srcmd5')]
+    if reg:
+        fail(reg == [REGISTER_NAME],
+             "GUARD 3 (register tripwire): exactly one %s expected, found %s" % (REGISTER_GLOB, sorted(reg)))
+        rlooks = []
+        for pat in REGISTER_LOOKALIKE_PAT:
+            rlooks += [os.path.basename(p) for p in glob.glob(_hp(pat)) if not p.endswith('.srcmd5')]
+        fail(not rlooks, "GUARD 3 (register tripwire): register lookalikes present: %s" % sorted(set(rlooks)))
 
 def assert_stamps(fail, consume):
     """GUARD 2: SOURCE-HASH ASSERTION. Before a step CONSUMES a derived artifact, assert its stamp == the

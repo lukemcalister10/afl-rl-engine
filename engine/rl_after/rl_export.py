@@ -75,7 +75,11 @@ def player_rec(p):
             'surv':1.0,'pedDecay':round(max(0.0,1-(seasons(p)-1)/4.5),6),'losd':round(los_decay(p),6),
             'g':p['games'],'cg':cg,'yr':p['year'],'pk':p['pick'],'ty':p['type'],'unpl':bool(p.get('_unplayed')),
             'lnNull':level_now(p) is None,'track':track,'v':p['_v'],'bk':bool(p.get('_backonly')),
-            'vP1':p.get('_vP1'),'vP2':p.get('_vP2'),'vM1':p.get('_vM1'),'vM2':p.get('_vM2'),'cvx':p.get('_cvx',1.0),'b2hc':p.get('_b2hc',0.0),
+            'vP1':p.get('_vP1'),'vP2':p.get('_vP2'),'vM1':p.get('_vM1'),'vM2':p.get('_vM2'),'cvx':p.get('_cvx',1.0),
+            'avail_hc':p.get('_avail_hc',0.0),                       # RL_AVAIL present haircut L_p (register out-names; was b2hc)
+            'avail_nerf':p.get('_avail_nerf',0),                     # Part-1 attribution: ev(layer)-ev(no-layer) per player (G-ATTR)
+            'lti_return_hc':p.get('_lti_return_hc',0.0),             # Part-2 attribution: derived return-season haircut (own column, G-ATTR)
+            'lti_reg':p.get('_lti_reg'),                             # register disposition tag (section/designation/on-sight flags) or None
             'P':1.0,   # establishment prob, FROZEN (draft-cohort property, not the SuperCoach toggle); 1.0 = established/inert
             'pedOnly':bool(p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly'))),   # pure-pedigree no-P case (genuine pre-debut); in-window 0-game players are NOT pedOnly -> they get P
             'brodieBase':bool(seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and (level_now(p) is not None) and level_now(p)>=80),  # Brodie signal minus the RUC bit (JS applies RUC exemption live)
@@ -258,7 +262,11 @@ DEBUT_AGE={'ND':19,'RD':19,'SSP':19,'MSD':19,'PSD':19,'IRE':19,'UNR':19,'PDA':19
 _ndc=g['_NDC']; _medNDC=int(round(float(np.median(list(_ndc.values())))))
 TYPEOFF={'ND':0,'RD':_medNDC}   # rookie picks sit after the national draft on the projector's pick scale
 TILT={k:g[k] for k in ['TILT_REF','GAIN_UP','W_UP','UP_MAX','TILT_HI','GAIN_DN','W_DN','DN_MAX','TILT_LO','NBAD_REF','SUS_MIN']}
+try:
+    import lti_register as _LTIREG; _reg_md5=_LTIREG.file_md5()
+except Exception: _reg_md5=None
 out={'active':active,'back':back,'cohort':coh,
+     'lti_register_md5':_reg_md5,   # R-REG=R2: stamp the availability input's identity into the derived board
      'BASEPK_REG':{f'{k[0]}|{k[1]}':round(v,3) for k,v in g['BASEPK_REG'].items()},
      'POOL':{str(k):round(v,3) for k,v in g['POOL'].items()},
      'MIX':{str(b):{gg:round(w,4) for gg,w in g['MIX'][b].items()} for b in g['MIX']},

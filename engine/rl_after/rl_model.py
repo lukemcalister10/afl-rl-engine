@@ -325,7 +325,7 @@ def prod_floor(p,lens='bal'):
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))
-        if k==0 and p.get('_b2hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_b2hc'])
+        if k==0 and p.get('_avail_hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_avail_hc'])
         prod+=wt*posval(lev+capt_prem(lev)-REPL[g])*21/((1+d)**k); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
@@ -405,7 +405,7 @@ def peak_est(p):                       # cont.20: learned v4 forward-projection 
     return pe
 def player_raw(p,lens='bal'):
     g0 = bnow(p) if AGE_REF==BASE_REF else gfut(p)   # A2 (PARKED 4): on forward boards (AGE_REF>BASE_REF) the year-0 present has rolled to the future position, so its replacement bar uses gfut, not the present bucket
-    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_b2hc',0.0))
+    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_avail_hc',0.0))
 def pa(g): return PEAK_AGE[g]
 # unplayed prospects: recent national/rookie draftees not yet debuted (valued on pedigree alone, like the old engine)
 extra=[]
@@ -789,18 +789,21 @@ for _p in data:
     _o=PRESENT_ID_OVERRIDES.get(_p.get('player'))
     if _o: _p['type'],_p['year']=_o; _p['_grp']=_o[0]; _p['_eff']=PICKEQ[_o[0]]
 
-# B2: current-season unavailability haircut (present component, Now board only). Established player
-# (>=3 seasons, recent peak>=90) with 0 games in 2026 and season >1/3 done -> age-banded present haircut:
-# <27 8.8%, 27-29 3.9%, 30+ 0 (age curve already prices 30+ decline). Transient -> next build's return data supersedes it.
-for _p in data+extra: _p['_b2hc']=0.0
-def _b2band(_a): return 0.088 if _a<27 else (0.039 if _a<30 else 0.0)
-if SEASON_PROG>1.0/3.0:
-    for _p in players:
-        if _p.get('_unplayed') or _p.get('_retired'): continue
-        _pre=[r for r in _p['scoring'] if r['year']<2026]
-        if len(_pre)<3: continue
-        _g26=next((r['games'] for r in _p['scoring'] if r['year']==2026),0)
-        if _g26==0 and max(r['avg'] for r in _pre[-3:])>=90.0: _p['_b2hc']=_b2band(_age_at(_p,2026))
+# AVAILABILITY PRESENT HAIRCUT (present component, Now board only). The k=0 present-year level is scaled by
+# (1 - _avail_hc). The SOURCE of _avail_hc is the LTI REGISTER (Chapter-3 2026-07-09, RL_AVAIL layer set in
+# _merged_recover.py): _avail_hc = L_p = lost-season fraction for register out-for-remainder names. Here we
+# only INITIALISE the field to 0.0 (no haircut) for every player; the register layer sets it for its names.
+#
+# OBITUARY — `_b2hc` RETIRED (R-B2HC=RETIRE, DECISIONS §33; SSI delete-don't-disable). The old transient,
+# age-banded INFERENCE (established >=3 seasons, recent peak>=90, 0 games in 2026, season >1/3 done ->
+# <27:8.8% / 27-29:3.9% / 30+:0) is DELETED. Its own docstring said "next build's return data supersedes it"
+# — this is that build. A curated register + an inference stopgap firing on the same 0-games-2026 signal is a
+# double-count; the register beats inference (Luke's word over a heuristic). The k=0 haircut PLUMBING is kept
+# and re-pointed to the register-driven _avail_hc (proj_from_peak :328/:408, prod_floor, _proj_w4, rl_export,
+# distribution_pricing). `_b2hc` was a runtime-only field (never in the store) -> store md5 UNCHANGED, no
+# re-seal. Measured pre-strip: exactly {nicholas-martin, tom-green} carried _b2hc>0, BOTH register names, so
+# the strip moves only register names (non-mover parity holds). Full obituary: BOARD_LAYERS_OBITUARY.md.
+for _p in data+extra: _p['_avail_hc']=0.0
 _pe_clear()   # FIX (cont.22): SCALE@436 memoised peak_est while pickless players still held the placeholder _eff (pick-equivalent isn't applied until L726). Clearing here, after all attributes are finalised and before the board build, makes pickless players price on their real pick-equivalent instead of the stale placeholder (e.g. Sharman 1147->303).
 for p in players: p['_vpt']=value(p,'bal'); p['_v']=p['_vpt']   # _vpt = point value (GH integrand basis + JS live-recompute target); _v reset to convex below
 players.sort(key=lambda p:-p['_v'])
