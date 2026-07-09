@@ -1,0 +1,46 @@
+{
+ "version": "1",
+ "date": "2026-07-09",
+ "method": "net-of-aging (E_aged = store non-gap same-age cohort Y->Y+2 drift); adaptive-bw NW over return-age, eff-n>=35; classes POOLED (reported covariate, not split); young<27 shipped ZERO (A-DARCY doctrine \u2014 development/injury unidentifiable, Part 1 owns the growth-year cost); monotone-in-age; capped at 0.15.",
+ "store_note": "derived on store a2fbc9a0 (post King/Murphy fix). Historical windows carry no injury labels \u2014 the measured quantity prices ABSENCE, the treatment the register applies (\u00a74.1).",
+ "young_cut": 27,
+ "cap": 0.15,
+ "leakcut": 2024,
+ "n_gap_cases": 142,
+ "n_nongap": 4807,
+ "n_never_returned": 562,
+ "class_counts_gap": {
+  "nonKPP": 124,
+  "RUC": 18
+ },
+ "age_surface": {
+  "22": 0.0,
+  "23": 0.0,
+  "24": 0.0,
+  "25": 0.0,
+  "26": 0.0,
+  "27": 0.0355,
+  "28": 0.0427,
+  "29": 0.0586,
+  "30": 0.0771,
+  "31": 0.0778,
+  "32": 0.0872,
+  "33": 0.0909,
+  "34": 0.0909
+ },
+ "age_eff_n": {
+  "22": null,
+  "23": null,
+  "24": null,
+  "25": null,
+  "26": null,
+  "27": 71.5,
+  "28": 58.5,
+  "29": 44.0,
+  "30": 38.8,
+  "31": 42.9,
+  "32": 39.5,
+  "33": 37.4,
+  "34": 37.8
+ }
+}
