@@ -410,7 +410,7 @@ def _w4_ctx(p,Y):
     # young/speculative already ship h=0 (set on the record). SEPARABLE from Part 1 (own column lti_return_hc).
     _rh=p.get('_lti_ret_hc',0.0)
     if _LTI_RETURN_ON and _rh>0:
-        ctx['ret_hc']=float(_rh); ctx['ret_k']=int(p.get('_lti_ret_year',2027))-int(MA.BASE_REF)
+        ctx['ret_hc']=float(_rh); ctx['ret_k']=int(p.get('_lti_ret_year',2027))-int(Y)   # k offset from THIS eval year (deterministic; not global BASE_REF)
     _kpf_reb=_W4KPF and pos=='KEY_FWD'                         # KPF REBALANCE T2 coordinates active
     _partial=False
     if _kpf_reb and 2<=n<PROVEN_N:                             # partial-proven KPF: top-tier sustained demonstration only

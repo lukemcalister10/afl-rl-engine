@@ -262,7 +262,11 @@ DEBUT_AGE={'ND':19,'RD':19,'SSP':19,'MSD':19,'PSD':19,'IRE':19,'UNR':19,'PDA':19
 _ndc=g['_NDC']; _medNDC=int(round(float(np.median(list(_ndc.values())))))
 TYPEOFF={'ND':0,'RD':_medNDC}   # rookie picks sit after the national draft on the projector's pick scale
 TILT={k:g[k] for k in ['TILT_REF','GAIN_UP','W_UP','UP_MAX','TILT_HI','GAIN_DN','W_DN','DN_MAX','TILT_LO','NBAD_REF','SUS_MIN']}
+try:
+    import lti_register as _LTIREG; _reg_md5=_LTIREG.file_md5()
+except Exception: _reg_md5=None
 out={'active':active,'back':back,'cohort':coh,
+     'lti_register_md5':_reg_md5,   # R-REG=R2: stamp the availability input's identity into the derived board
      'BASEPK_REG':{f'{k[0]}|{k[1]}':round(v,3) for k,v in g['BASEPK_REG'].items()},
      'POOL':{str(k):round(v,3) for k,v in g['POOL'].items()},
      'MIX':{str(b):{gg:round(w,4) for gg,w in g['MIX'][b].items()} for b in g['MIX']},
