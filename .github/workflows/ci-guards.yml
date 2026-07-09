@@ -46,11 +46,14 @@ jobs:
         with:
           python-version: '3.12.3'
 
-      - name: Expose python3.12 (setup_env.sh discovers it by name)
+      - name: Ensure python3.12 on PATH (setup_env.sh discovers it by name)
         run: |
           set -euo pipefail
-          PYBIN="$(dirname "$(command -v python)")"
-          ln -sf "$PYBIN/python" "$PYBIN/python3.12"
+          # setup-python usually already provides python3.12; only symlink if it is genuinely missing.
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
           python3.12 --version
 
       - name: Create engine absolute-path root (/home/claude/...)
