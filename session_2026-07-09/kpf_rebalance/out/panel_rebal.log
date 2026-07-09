@@ -1,1 +1,14 @@
 boot-store guard (Guard 5) PASS  [run_panel]  store e1b4d8bf == pinned e1b4d8bf (candidate-w4-L1c-kpf-rebalance-2026-07-09 (on v2.5 store e1b4d8bf))
+player                      EV  EXPECT
+  Nick Daicos             7626    7626
+  Marcus Bontempelli      3524    3524
+  Harry Sheezel           7734    7734
+  Max Gawn                2413    2413
+  Harley Reid             3549    3549
+  Josh Ward               1650    1650
+  Darcy Moore              198     198
+  Taylor Goad              788     788
+  Josh Smillie            1250    1250
+  Will Green               575     575
+
+RESULT: PASS 10/10

@@ -13,9 +13,10 @@ import numpy as np
 HERE = '/home/user/afl-rl-engine'
 sys.path.insert(0, HERE)
 import boot_guard
-boot_guard.assert_boot('smoothness_kpf', store_path='/home/claude/rl_workspace/rl_after/rl_model_data.json')
+_DIR = os.environ.get('SMOOTH_DIR', '/home/claude/rl_workspace/rl_after')  # control runs point at an isolated old-engine copy (store identical, Guard 5 still asserted)
+boot_guard.assert_boot('smoothness_kpf', store_path=f'{_DIR}/rl_model_data.json')
 out = sys.argv[1]
-os.chdir('/home/claude/rl_workspace/rl_after')
+os.chdir(_DIR)
 g = {}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
