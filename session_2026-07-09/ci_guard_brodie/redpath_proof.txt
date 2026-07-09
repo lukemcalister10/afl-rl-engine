@@ -1,0 +1,55 @@
+RED-PATH PROOF — ruling_config_check.py fails on a wrong ruling-config state
+Captured 2026-07-09T05:49:44Z on branch claude/ci-guard-brodie-override-xow6zn
+
+### RED 1 — live env turns the held-out fit ON (RL_PVCFIT=1):
+=== RULING-CONFIG ASSERTION (R3: RL_PVCFIT=0 by default + export bake-guard active) ===
+    repo = /home/user/afl-rl-engine
+  PASS engine source present (/home/user/afl-rl-engine/engine/rl_after/_merged_recover.py)
+  PASS export source present (/home/user/afl-rl-engine/engine/rl_after/rl_export.py)
+  PASS engine reads RL_PVCFIT via os.environ.get('RL_PVCFIT', <default>) != '0' (R3 form)
+  PASS engine RL_PVCFIT default string == '0' (compliant-by-default); got '0'
+  FAIL live env RL_PVCFIT is unset or '0' (bake env does not enable the held-out fit); got '1'
+  PASS export R3 BAKE GUARD condition present (_W4PVC on + no RL_ALLOW_PVCFIT_BOARD -> refuse)
+  PASS export R3 BAKE GUARD raises SystemExit (halt-not-warn: a fitted board is unbakeable)
+  PASS export R3 BAKE GUARD sits BEFORE json.dump(rl_app_data.json) (guards the write)
+
+RULING-CONFIG FAILED: 1 check(s)
+  - live env RL_PVCFIT is unset or '0' (bake env does not enable the held-out fit); got '1'
+EXIT=1
+
+### RED 2 — engine default flipped to '1' (the exact pre-2026-07-09 R3-non-compliant default):
+=== RULING-CONFIG ASSERTION (R3: RL_PVCFIT=0 by default + export bake-guard active) ===
+    repo = /home/user/afl-rl-engine
+  PASS engine source present (/home/user/afl-rl-engine/engine/rl_after/_merged_recover.py)
+  PASS export source present (/home/user/afl-rl-engine/engine/rl_after/rl_export.py)
+  PASS engine reads RL_PVCFIT via os.environ.get('RL_PVCFIT', <default>) != '0' (R3 form)
+  FAIL engine RL_PVCFIT default string == '0' (compliant-by-default); got '1'
+  PASS live env RL_PVCFIT is unset or '0' (bake env does not enable the held-out fit); got None
+  PASS export R3 BAKE GUARD condition present (_W4PVC on + no RL_ALLOW_PVCFIT_BOARD -> refuse)
+  PASS export R3 BAKE GUARD raises SystemExit (halt-not-warn: a fitted board is unbakeable)
+  PASS export R3 BAKE GUARD sits BEFORE json.dump(rl_app_data.json) (guards the write)
+
+RULING-CONFIG FAILED: 1 check(s)
+  - engine RL_PVCFIT default string == '0' (compliant-by-default); got '1'
+EXIT=1
+
+### RED 3 — export R3 BAKE GUARD removed:
+=== RULING-CONFIG ASSERTION (R3: RL_PVCFIT=0 by default + export bake-guard active) ===
+    repo = /home/user/afl-rl-engine
+  PASS engine source present (/home/user/afl-rl-engine/engine/rl_after/_merged_recover.py)
+  PASS export source present (/home/user/afl-rl-engine/engine/rl_after/rl_export.py)
+  PASS engine reads RL_PVCFIT via os.environ.get('RL_PVCFIT', <default>) != '0' (R3 form)
+  PASS engine RL_PVCFIT default string == '0' (compliant-by-default); got '0'
+  PASS live env RL_PVCFIT is unset or '0' (bake env does not enable the held-out fit); got None
+  PASS export R3 BAKE GUARD condition present (_W4PVC on + no RL_ALLOW_PVCFIT_BOARD -> refuse)
+  FAIL export R3 BAKE GUARD raises SystemExit (halt-not-warn: a fitted board is unbakeable)
+  FAIL export R3 BAKE GUARD sits BEFORE json.dump(rl_app_data.json) (guards the write)
+
+RULING-CONFIG FAILED: 2 check(s)
+  - export R3 BAKE GUARD raises SystemExit (halt-not-warn: a fitted board is unbakeable)
+  - export R3 BAKE GUARD sits BEFORE json.dump(rl_app_data.json) (guards the write)
+EXIT=1
+
+### RESTORED — green again:
+RULING-CONFIG PASSED: RL_PVCFIT=0 by default (engine + env) and the R3 export bake-guard is present and active.
+EXIT=0
