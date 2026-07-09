@@ -5,7 +5,7 @@
 Change-one-thing in training: the only redefined feature is cp._lvl_eff = pure par-centred (no tilt -> stays in-distn).
 
 Run: cd /home/claude/rl_after && PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 \
-     RL_REPL_DROP=3 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=200 PAR_RAMPS=14 \
+     RL_REPL_DROP=3 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=200 PAR_RAMPS=22 \
      python3 ../forward_valuation/par_redesign.py
 """
 import sys,os,io,contextlib,copy,collections,numpy as np
@@ -24,7 +24,7 @@ SEASON_PROG=getattr(MA,'SEASON_PROG',0.58); CUR_ROUNDS=round(SEASON_PROG*22)
 GROUPS=['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']
 MULT={'MID':1.10,'GEN_DEF':1.04,'GEN_FWD':1.0,'KEY_DEF':1.0,'KEY_FWD':0.86,'RUC':1.0}
 
-RAMP        = float(os.environ.get('PAR_RAMPS','14').split(',')[0])  # confidence ramp (level feature only now)
+RAMP        = float(os.environ.get('PAR_RAMPS','22').split(',')[0])  # confidence ramp (level feature only now). DEFAULT 14->22 (2026-07-09 gate-integrity fix c): 22 is the official env (START_HERE §2; every gate/panel script exports PAR_RAMPS=22) and START_HERE calls 14 wrong. par_redesign is a STANDALONE mock (nothing wired into engine value()), so a clean-shell run now matches the official environment; the board/book path never reads PAR_RAMPS (the engine confidence ramp is RL_LEVEL_RAMP).
 BETA_MARGIN = 0.08    # cap sits this far below the lowest per-position par-production ratio
 # POSITION-SPECIFIC beta (cont.27): the floor must track PRODUCTION per position, not pedigree. Par defenders price
 # near the replacement cliff (real check: Quaynor/Chapman/Bergman ~370-720), so they need a much lower floor than
