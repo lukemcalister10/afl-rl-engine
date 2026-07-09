@@ -1,4 +1,6 @@
-boot-store guard (Guard 5) PASS  [ship_gates_check]  store e1b4d8bf == pinned e1b4d8bf (candidate-w4-L1c-kpf-rebalance-2026-07-09 (on v2.5 store e1b4d8bf))
+# ship_gates_check report — STATE: PROTOTYPE/UNREGISTERED @ 275aa2a5 — NOT AN ENDORSED STATE — head 275aa2a5 store e1b4d8bf
+_Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._
+```
 === STATE: PROTOTYPE/UNREGISTERED @ 275aa2a5 — NOT AN ENDORSED STATE ===
 === SHIP GATES BOARD — head 275aa2a5 store e1b4d8bf — suite 764a0d91 — 2026-07-09 ===
 === THREE-COLUMN RULE (Luke, binding D10): CONTROL=efea88e5 · PREVIOUS=c8051893 · CURRENT=275aa2a5 ===
@@ -32,8 +34,11 @@ C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — def
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
 VERDICT: ERROR=1  FAIL=3  FEATURE=1  NOT-RUN=1  PASS=15  PENDING=4  STRUCK=1  (3246s)
+```
 
-B1 per-cohort curves (UNGATED — Luke eyeball channel):
+## Supporting detail
+
+B1 per-cohort curves (UNGATED — printed every gates-board run, Luke eyeball channel):
 | cohort | peakN | d1 | d2 | d3 | d4 | d5 | d6 | d7 |
 |---|---|---|---|---|---|---|---|---|
 | 2004 | 5 | 100 | 128 | 156 | 159 | 170 | 151 | 133 |
@@ -55,7 +60,7 @@ B1 per-cohort curves (UNGATED — Luke eyeball channel):
 | 2020 | 3 | 100 | 111 | 112 | 102 | 105 | 104 | — |
 | **AVG (the gated row)** | **4** | **100** | **122** | **133** | **143** | **141** | **133** | **116** |
 
-B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):
+B5 FLOOR-SAVES table (n=60, aggregate lift=+1922 — printed every gates-board run, the new alarm surface):
 | player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |
 |---|---|---|---|---|---|---|---|
 | Paddy Dow | Carlton | 9 | 13 | 112.5 | 157 | +144 | clear |
@@ -118,6 +123,65 @@ B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silent
 | Nathan Broad | Richmond | 11 | 9 | 15.4 | 11 | +2 | clear |
 | Hunter Clark | St Kilda | 9 | 49 | 89.8 | 50 | +1 | clear |
 | Liam Ryan | West Coast | 9 | 27 | 30.6 | 28 | +1 | clear |
-report: /home/user/afl-rl-engine/session_2026-07-02/ship_gates_report_275aa2a5.md  md5=ea423a11
 
-!! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN) — the MANDATORY leakage gate cannot be skipped silently; run _gate1_wf.py first (writes /home/claude/gate1_out.txt). Treated as FAILURE.
+## Board top-50 (A4 context) — CONTROL efea88e5 · PREVIOUS c8051893 · CURRENT 275aa2a5
+| # | player | pos | CONTROL | PREVIOUS | CURRENT | D vs ctl | D vs prev |
+|---|---|---|---|---|---|---|---|
+| 1 | Harry Sheezel | MID | 7151 | 7207 | 7734 | +583 | +527 |
+| 2 | Nick Daicos | MID | 7002 | 7069 | 7626 | +624 | +557 |
+| 3 | Luke Jackson | RUC | 6803 | 6986 | 7411 | +608 | +425 |
+| 4 | Tristan Xerri | RUC | 5795 | 5755 | 6384 | +589 | +629 |
+| 5 | Nasiah Wanganeen-Milera | MID | 5794 | 5961 | 6270 | +476 | +309 |
+| 6 | Josh Treacy | KEY_FWD | — | — | 6055 | — | — |
+| 7 | Max Holmes | MID | 5386 | 5499 | 5959 | +573 | +460 |
+| 8 | Zak Butters | MID | 5174 | 5225 | 5745 | +571 | +520 |
+| 9 | Errol Gulden | MID | 5256 | 5299 | 5715 | +459 | +416 |
+| 10 | Bailey Smith | MID | 4715 | 4773 | 5282 | +567 | +509 |
+| 11 | Finn Callaghan | MID | 4904 | 4952 | 5183 | +279 | +231 |
+| 12 | Lachlan Ash | GEN_DEF | 4611 | 4663 | 4924 | +313 | +261 |
+| 13 | Will Ashcroft | MID | 4768 | 4823 | 4895 | +127 | +72 |
+| 14 | Tom Green | MID | 4424 | 4472 | 4885 | +461 | +413 |
+| 15 | Noah Anderson | MID | 4091 | 4131 | 4528 | +437 | +397 |
+| 16 | Caleb Serong | MID | 4170 | 4202 | 4490 | +320 | +288 |
+| 17 | Sam Darcy | KEY_FWD | 4144 | 3978 | 4470 | +326 | +492 |
+| 18 | Archie Roberts | GEN_DEF | 4668 | 4597 | 4327 | -341 | -270 |
+| 19 | Willem Duursma | MID | 4110 | 4160 | 4225 | +115 | +65 |
+| 20 | Jai Newcombe | MID | — | — | 4187 | — | — |
+| 21 | Matt Rowell | MID | 3752 | 3779 | 3984 | +232 | +205 |
+| 22 | Ryley Sanders | MID | 3926 | 4212 | 3930 | +4 | -282 |
+| 23 | Jason Horne-Francis | MID | 3702 | 4199 | 3802 | +100 | -397 |
+| 24 | Isaac Heeney | MID | 3301 | 3327 | 3772 | +471 | +445 |
+| 25 | Brodie Grundy | RUC | 3314 | 3344 | 3770 | +456 | +426 |
+| 26 | Darcy Wilmot | GEN_DEF | 3732 | 3774 | 3763 | +31 | -11 |
+| 27 | Murphy Reid | GEN_FWD | 3742 | 3843 | 3749 | +7 | -94 |
+| 28 | Riley Thilthorpe | KEY_FWD | 3702 | 3555 | 3641 | -61 | +86 |
+| 29 | Colby McKercher | MID | 3627 | 3814 | 3627 | +0 | -187 |
+| 30 | Harley Reid | MID | 3549 | 3565 | 3549 | +0 | -16 |
+| 31 | Nick Watson | GEN_FWD | 3538 | 3579 | 3539 | +1 | -40 |
+| 32 | Marcus Bontempelli | MID | 3084 | 3109 | 3524 | +440 | +415 |
+| 33 | Mac Andrew | KEY_DEF | 3504 | 3530 | 3508 | +4 | -22 |
+| 34 | Finn O'Sullivan | MID | 3427 | 3495 | 3451 | +24 | -44 |
+| 35 | Nick Blakey | GEN_DEF | 3266 | 3287 | 3431 | +165 | +144 |
+| 36 | Sam Lalor | MID | 3337 | 3703 | 3400 | +63 | -303 |
+| 37 | Kysaiah Pickett | GEN_FWD | 3076 | 3031 | 3329 | +253 | +298 |
+| 38 | Luke Davies-Uniacke | MID | 2930 | 2952 | 3274 | +344 | +322 |
+| 39 | Nicholas Martin | MID | — | — | 3266 | — | — |
+| 40 | Callum Wilkie | KEY_DEF | — | — | 3252 | — | — |
+| 41 | Timothy English | RUC | 2916 | 2907 | 3187 | +271 | +280 |
+| 42 | Jordan Dawson | MID | 2758 | 2774 | 3156 | +398 | +382 |
+| 43 | Jordan Clark | GEN_DEF | 3007 | 3031 | 3142 | +135 | +111 |
+| 44 | Bodhi Uwland | GEN_DEF | — | — | 3045 | — | — |
+| 45 | George Wardlaw | MID | 3035 | 3033 | 3035 | +0 | +2 |
+| 46 | Levi Ashcroft | MID | 3028 | 3270 | 3032 | +4 | -238 |
+| 47 | Jagga Smith | MID | 2822 | 3188 | 3031 | +209 | -157 |
+| 48 | Connor Rozee | MID | 2892 | 2917 | 3019 | +127 | +102 |
+| 49 | Logan Morris | KEY_FWD | 3018 | 2843 | 3018 | +0 | +175 |
+| 50 | Josh Worrell | GEN_DEF | 2937 | 3236 | 3016 | +79 | -220 |
+
+## C1/C2 DEFINITION PROPOSAL (for supervisor ruling)
+Rebuild the walk-forward book (s4 matrix protocol, as-of values, only <=T data) twice more:
+(a) NAIVE BASELINE: last-2-season era-adjusted avg -> value via simple age curve + position multipliers;
+(b) ORIGINAL V1 PICK MODEL: value = PVC(effective pick) with the V1 age/tenure profile.
+Headline metrics, engine must beat both on: (1) within-player GATE-1 protocol (WF good/bust separation,
+leakage-matched); (2) rank correlation of as-of value vs realized fwd best-3 production (real_mat);
+(3) cohort growth-law shape error vs the realized production curve. Each becomes C1x/C2x scripted lines.
