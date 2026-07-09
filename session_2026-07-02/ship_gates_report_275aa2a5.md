@@ -22,9 +22,9 @@ A13       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in P
 A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1167: Trent Rivers=1713 lineball=False; Zach Reid=1640 lineball=False; Jase Burgoyne=1975 lineball=False
 A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
 B1        PASS    | PASS    | PASS     cross-cohort AVERAGE peak N=4 AVG(peak)=143 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed every run — Luke redefinition 02/07 D5); avg row: 1:100 2:122 3:133 4:143 5:141 6:133 7:116; cohorts n=17; matrix=s4_matrix_baked_efea88e5.json
-B2        PASS    | PASS    | NOT-RUN  run _gate1_wf.py first (writes /home/claude/gate1_out.txt)  <- MOVED
+B2        PASS    | PASS    | PASS     median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 42/1, GEN_FWD 40/1, KEY_DEF 50/1, KEY_FWD 61/1, MID 50/1
 B3        PASS    | PENDING | PASS     book stable-key seal MATCHES baseline: current=5799a9ceae5ca3ef.. (2649 players) vs baseline=5799a9ceae5ca3ef.. (2649 players, sealed head efea88e5); matrix=s4_matrix_baked_efea88e5.json [raw-file sha is id(p)-keyed / non-deterministic by design]  <- MOVED
-B4        PASS    | FAIL    | ERROR    TimeoutExpired: Command '['/root/rl_venv312/bin/python3', 'rl_export.py']' timed out after 1800 seconds  <- MOVED
+B4        PASS    | FAIL    | PASS     regenerated rl_app_data.json md5=bcd81363 vs shipped bcd81363 (byte-agree gate; export exit=0)  <- MOVED
 B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 60 saves, aggregate lift +1922; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new alarm surface)
 B6        PASS    | PASS    | PASS     ramp(0..14g)=[1260, 1530, 1825, 2474, 3072, 3161, 3215, 3268, 3285, 3295, 3348, 3413, 3495, 3533, 3562]; dips(more games worth less)=none; 0->6 rise T=+1955; 0->6 steps>50%T=none; rise by 3g=+1214 (need >=489) [whole-ramp re-spec, DECLARED thresholds]
 D14a      PASS    | —       | PASS     same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion=0.0000 SCAR (Luke's amended law; board path)  <- MOVED
@@ -33,7 +33,7 @@ D14c      PASS    | —       | PASS     KPP retention floor O1 depth-monotone =
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: ERROR=1  FAIL=3  FEATURE=1  NOT-RUN=1  PASS=15  PENDING=4  STRUCK=1  (3246s)
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (254s)
 ```
 
 ## Supporting detail

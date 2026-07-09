@@ -84,8 +84,8 @@
   },
   "B2": {
    "dc": false,
-   "status": "NOT-RUN",
-   "detail": "run _gate1_wf.py first (writes /home/claude/gate1_out.txt)"
+   "status": "PASS",
+   "detail": "median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 \u2014 N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 42/1, GEN_FWD 40/1, KEY_DEF 50/1, KEY_FWD 61/1, MID 50/1"
   },
   "B3": {
    "dc": false,
@@ -94,8 +94,8 @@
   },
   "B4": {
    "dc": false,
-   "status": "ERROR",
-   "detail": "TimeoutExpired: Command '['/root/rl_venv312/bin/python3', 'rl_export.py']' timed out after 1800 seconds"
+   "status": "PASS",
+   "detail": "regenerated rl_app_data.json md5=bcd81363 vs shipped bcd81363 (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,
