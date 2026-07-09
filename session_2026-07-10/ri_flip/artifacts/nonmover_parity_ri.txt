@@ -1,0 +1,12 @@
+R-i BOARD PARITY (advance 805 vs merged-head pause d9728208):
+  value movers=9  register movers=9  NON-REGISTER movers=0  byte diffs=9  NON-REGISTER byte diffs=0
+  PARITY PASS — only R-i register names move; byte-identical elsewhere
+    Harry O'Farrell        pause=1016   advance=810    d=-206
+    Jonty Faull            pause=1238   advance=1166   d=-72
+    Matt Carroll           pause=961    advance=929    d=-32
+    Josh Gibcus            pause=294    advance=277    d=-17
+    Josh Sinn              pause=350    advance=340    d=-10
+    Darcy Jones            pause=1487   advance=1484   d=-3
+    Noah Long              pause=266    advance=264    d=-2
+    Toby Pink              pause=40     advance=39     d=-1
+    Ollie Lord             pause=161    advance=160    d=-1
