@@ -1,0 +1,95 @@
+name: CI Guards
+
+# Promoted from DECISIONS §16 ("CI guard workflow PROMOTED"). Runs the EXISTING single-source guard,
+# panel, and ruling-config entry points on every push and pull_request and FAILS (never warns) unless
+# ALL pass. This workflow is thin orchestration only — no guard logic is reimplemented here; each step
+# shells out to the same script the build/bake ritual runs, so CI and the bench assert the identical bar.
+#
+# Bar (all must pass, halt-not-warn):
+#   - the five single-source guards  (source-hash, lookalike tripwire, correction-sticks canary,
+#     derived read-only/stamp, boot-store) via one_source_selftest.py + guard_correction_canary.py
+#     + boot_guard.py/data/expected_boot.json
+#   - panel 10/10                     via run_panel.sh
+#   - RULING-CONFIG (R3)              via ruling_config_check.py  (RL_PVCFIT=0 by default + export bake-guard)
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-guards-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      # boot_guard / ruling_config anchor on the checkout via these
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      # the pinned panel/engine env (mirrors run_panel.sh; the engine drifts off-pin, so this is fixed)
+      PYTHONHASHSEED: "0"
+      RL_GAMMA: "0.85"
+      RL_PICK1: "3000"
+      RL_RUCK_TAX: "0.25"
+      RL_RECENCY_DECAY: "0.72"
+      RL_PRIOR_TREES: "400"
+      PAR_RAMPS: "22"
+      PYTHONPATH: /home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pin Python 3.12.3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Ensure python3.12 on PATH (setup_env.sh discovers it by name)
+        run: |
+          set -euo pipefail
+          # setup-python usually already provides python3.12; only symlink if it is genuinely missing.
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+          python3.12 --version
+
+      - name: Create engine absolute-path root (/home/claude/...)
+        # The engine hard-codes /home/claude/rl_workspace|rl_build|rl_vendor absolute paths.
+        run: sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+
+      - name: Provision pinned env (setup_env.sh)
+        run: |
+          set -euo pipefail
+          bash setup_env.sh
+          echo "$HOME/rl_venv312/bin" >> "$GITHUB_PATH"
+
+      - name: Bootstrap workspace (+ Guard 5 boot-store at boot)
+        run: bash bootstrap.sh
+
+      - name: Build board + book (inputs to the parity guards)
+        run: |
+          set -euo pipefail
+          cd /home/claude/rl_workspace/rl_after
+          python3 rl_export.py
+          python3 s4_matrix_M1v7.py
+
+      - name: Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)
+        run: |
+          set -euo pipefail
+          cd /home/claude/rl_workspace/rl_after
+          python3 one_source_selftest.py
+
+      - name: Guard 4 — correction-sticks canary
+        run: |
+          set -euo pipefail
+          cd /home/claude/rl_workspace/rl_after
+          python3 guard_correction_canary.py
+
+      - name: Panel 10/10 (run_panel.sh, + Guard 5 on entry)
+        run: bash run_panel.sh
+
+      - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"
+        run: python3 ruling_config_check.py
