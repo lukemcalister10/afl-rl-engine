@@ -1,0 +1,137 @@
+<!doctype html>
+<!-- THEME 02 · BROADSHEET — working aid · board. Design pitch; ALL FIGURES INVENTED — not the board.
+     The Saturday form guide: warm paper, serif display, hairline + double rules, print authority.
+     Value presentation REDESIGNED: large serif tabular figure with a thin ink underline-bar beneath
+     the figure cell (the print version of a rail). Override = a footnote dagger, resolved at the
+     foot of the table. No ghost rail. No slugs (debug toggle concept only). Δ default = vs bake. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Broadsheet · Board · working aid</title>
+<style>
+:root{
+  --paper:#f7f3ea; --card:#fbf8f1; --ink:#211e17; --dim:#6d6759; --faint:#9c9585;
+  --hair:#ddd5c3; --hair-2:#c9c0aa;
+  --brick:#8c2f22; --brick-soft:rgba(140,47,34,.08);
+  --up:#2e6b45; --dn:#a33c2e;
+  --serif:Georgia,"Times New Roman",Cambria,serif;
+  --sans:"Helvetica Neue",Arial,sans-serif;
+  --mono:"Courier New",ui-monospace,monospace;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:15px;line-height:1.5}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.pitchbanner{background:var(--brick-soft);border-bottom:1px solid var(--brick);color:var(--brick);
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:6px}
+.app{max-width:1080px;margin:0 auto;padding:0 24px 70px}
+header{padding:30px 0 12px;border-bottom:3px double var(--ink);display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.masthead h1{margin:0;font-size:34px;font-weight:700;letter-spacing:-.01em}
+.masthead .kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.spacer{flex:1}
+.stamp{font-family:var(--sans);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.7;letter-spacing:.04em}
+.stamp b{color:var(--ink);font-weight:600}
+.badge{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--brick);
+  color:var(--brick);padding:1px 6px;margin-left:6px}
+.badge.ok{border-color:var(--up);color:var(--up)}
+.dateline{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--hair-2);
+  font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.dateline .ctl{border:1px solid var(--hair-2);padding:4px 0;display:inline-flex;background:var(--card)}
+.dateline .ctl span{padding:2px 10px}
+.dateline .ctl span.on{background:var(--ink);color:var(--paper)}
+.dateline .ctl.dbg span.on{background:var(--hair);color:var(--dim)}
+table{width:100%;border-collapse:collapse;margin-top:16px;background:transparent}
+thead th{font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  font-weight:600;text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
+th.r,td.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--hair)}
+td{padding:9px 10px;white-space:nowrap}
+td.rank{font-size:13px;color:var(--faint);width:40px}
+td.name{font-weight:700;font-size:16px}
+td.pos{font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+td.read{font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;width:86px}
+.read .met{color:var(--brick)} .read .wait{color:var(--faint)}
+/* value: big serif figure over a thin ink underline-bar — the print rail */
+td.value{width:120px}
+.vfig{font-size:17px;font-weight:700;text-align:right}
+.vbar{height:3px;background:var(--hair);margin-top:3px;position:relative}
+.vbar i{position:absolute;left:auto;right:0;top:0;bottom:0;width:var(--w);background:var(--ink)}
+sup.dag{color:var(--brick);font-family:var(--serif);font-size:12px;margin-left:2px;cursor:help}
+td.delta{width:110px;font-size:14px}
+.d-up{color:var(--up)} .d-dn{color:var(--dn)} .d-flat{color:var(--faint)}
+td.pick,td.yr{font-size:13px;color:var(--dim);width:64px}
+.footnotes{margin-top:14px;padding-top:10px;border-top:1px solid var(--hair-2);font-size:13px;color:var(--dim);font-style:italic}
+.footnotes b{color:var(--brick);font-style:normal}
+footer{margin-top:22px;padding-top:10px;border-top:3px double var(--ink);font-family:var(--sans);
+  font-size:10.5px;letter-spacing:.08em;color:var(--dim);text-align:center;line-height:1.8}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — not the board · working aid</div>
+<div class="app">
+  <header>
+    <div class="masthead">
+      <div class="kicker">Real-Draft Value Engine · The Owner's Edition</div>
+      <h1>The Value Board</h1>
+    </div>
+    <div class="spacer"></div>
+    <div class="stamp">
+      board <b>v2.6</b> · engine <b>4b08796c</b> · store <b>a2fbc9a0</b> · board id <b>fd90472c</b><span class="badge">real</span><span class="badge ok">guard 5 pass</span><br>
+      movement against the last accepted bake · 1,002 players · baked 9 July 2026
+    </div>
+  </header>
+
+  <div class="dateline">
+    <span>Round 17 · 2026</span>
+    <span class="spacer"></span>
+    <span>Movement</span>
+    <span class="ctl"><span class="on">vs bake</span><span>vs round</span></span>
+    <span>Debug</span>
+    <span class="ctl dbg" title="Debug affordance (working aid only): print player slugs beside names when on. Off by default."><span class="on">slugs off</span><span>on</span></span>
+  </div>
+
+  <table>
+    <thead><tr>
+      <th class="r">No.</th><th>Player</th><th>Position</th><th>Your read</th>
+      <th class="r">Value</th><th class="r">Movement</th><th class="r">Pick</th><th class="r">Draft</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="rank r num">1</td><td class="name">Marcus Bontempelli</td><td class="pos">Midfield</td>
+        <td class="read"><span class="met">★ met</span></td>
+        <td class="value"><div class="vfig num">3,462</div><div class="vbar"><i style="--w:96%"></i></div></td>
+        <td class="delta r num d-up">▲ +378</td><td class="pick r num">4</td><td class="yr r num">2016</td></tr>
+      <tr><td class="rank r num">2</td><td class="name">Nick Daicos</td><td class="pos">Midfield</td>
+        <td class="read"></td>
+        <td class="value"><div class="vfig num">3,310</div><div class="vbar"><i style="--w:92%"></i></div></td>
+        <td class="delta r num d-up">▲ +102</td><td class="pick r num">4</td><td class="yr r num">2021</td></tr>
+      <tr><td class="rank r num">3</td><td class="name">Sam Darcy</td><td class="pos">Key Forward</td>
+        <td class="read"><span class="wait">★ pending</span></td>
+        <td class="value"><div class="vfig num">3,178</div><div class="vbar"><i style="--w:88%"></i></div></td>
+        <td class="delta r num d-up">▲ +431</td><td class="pick r num">2</td><td class="yr r num">2021</td></tr>
+      <tr><td class="rank r num">7</td><td class="name">Jeremy Cameron</td><td class="pos">Key Forward</td>
+        <td class="read"><span class="met">★ met</span></td>
+        <td class="value"><div class="vfig num">2,894</div><div class="vbar"><i style="--w:79%"></i></div></td>
+        <td class="delta r num d-up">▲ +402</td><td class="pick r num">1</td><td class="yr r num">2017</td></tr>
+      <tr><td class="rank r num">12</td><td class="name">Max Gawn</td><td class="pos">Ruck</td>
+        <td class="read"><span class="met">★ met</span></td>
+        <td class="value"><div class="vfig num">2,610</div><div class="vbar"><i style="--w:71%"></i></div></td>
+        <td class="delta r num d-up">▲ +498</td><td class="pick r num">34</td><td class="yr r num">2009</td></tr>
+      <tr><td class="rank r num">38</td><td class="name">Willem Duursma</td><td class="pos">Midfield</td>
+        <td class="read"><span class="wait">★ pending</span></td>
+        <td class="value"><div class="vfig num">1,986</div><div class="vbar"><i style="--w:54%"></i></div></td>
+        <td class="delta r num d-up">▲ +266</td><td class="pick r num">1</td><td class="yr r num">2025</td></tr>
+      <tr><td class="rank r num">61</td><td class="name">Kieren Briggs</td><td class="pos">Ruck</td>
+        <td class="read"></td>
+        <td class="value"><div class="vfig num">1,480</div><div class="vbar"><i style="--w:40%"></i></div></td>
+        <td class="delta r num d-dn">▼ −124</td><td class="pick r num">—</td><td class="yr r num">2018</td></tr>
+      <tr><td class="rank r num">104</td><td class="name">Callum Coleman-Jones<sup class="dag" title="Halved by your role-reliability rule (the Brodie rule) — see footnote">†</sup></td><td class="pos">Key Forward</td>
+        <td class="read"></td>
+        <td class="value"><div class="vfig num">876</div><div class="vbar"><i style="--w:24%"></i></div></td>
+        <td class="delta r num d-flat">— 0</td><td class="pick r num">20</td><td class="yr r num">2018</td></tr>
+      <tr><td class="rank r num">312</td><td class="name">Stephen Coniglio</td><td class="pos">Midfield</td>
+        <td class="read"><span class="met">★ met</span></td>
+        <td class="value"><div class="vfig num">421</div><div class="vbar"><i style="--w:12%"></i></div></td>
+        <td class="delta r num d-dn">▼ −58</td><td class="pick r num">2</td><td class="yr r num">2011</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footnotes"><b>†</b> Value halved by your role-reliability rule while playing out of ruck (the Brodie rule).
+    The full line item appears on the player's card; the figure printed is the post-rule truth.</div>
+
+  <footer>★ = your read (met / pending) · movement always carries its sign and arrow · the ink bar under each value is
+    the player's share of the top price</footer>
+</div>

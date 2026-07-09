@@ -1,0 +1,112 @@
+<!doctype html>
+<!-- THEME 02 · BROADSHEET — working aid · player card. Design pitch; ALL FIGURES INVENTED — not the
+     board. A newspaper profile column: the waterfall set as a print table, the owner's rule a
+     dagger-marked line item (no ghost rail). -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Broadsheet · Player card · working aid</title>
+<style>
+:root{
+  --paper:#f7f3ea; --card:#fbf8f1; --ink:#211e17; --dim:#6d6759; --faint:#9c9585;
+  --hair:#ddd5c3; --hair-2:#c9c0aa;
+  --brick:#8c2f22; --brick-soft:rgba(140,47,34,.08);
+  --up:#2e6b45; --dn:#a33c2e;
+  --serif:Georgia,"Times New Roman",Cambria,serif;
+  --sans:"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:15px;line-height:1.55}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.pitchbanner{background:var(--brick-soft);border-bottom:1px solid var(--brick);color:var(--brick);
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:6px}
+.card{max-width:600px;margin:30px auto 70px;padding:0 8px}
+.head{border-bottom:3px double var(--ink);padding-bottom:14px}
+.kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+h1{margin:6px 0 2px;font-size:32px;font-weight:700;letter-spacing:-.01em}
+.dek{font-style:italic;color:var(--dim);font-size:15px}
+.dek b{color:var(--brick);font-style:normal;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--brick);padding:1px 6px;vertical-align:2px;margin-left:6px}
+.stamp{font-family:var(--sans);font-size:10px;color:var(--faint);letter-spacing:.06em;margin-top:8px}
+.stamp b{color:var(--dim);font-weight:600}
+.statrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--hair-2)}
+.k{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.v{font-size:22px;font-weight:700;margin-top:3px}
+.v.dnc{color:var(--dn)} .v.flat{color:var(--faint)}
+h2{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+  margin:26px 0 4px;display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:6px}
+h2 .meta{color:var(--faint);letter-spacing:.04em;font-weight:400}
+table.wf{width:100%;border-collapse:collapse;font-size:14px}
+.wf td{padding:8px 6px;border-bottom:1px solid var(--hair)}
+.wf td.lbl i{color:var(--faint);font-style:italic}
+.wf td.fig{text-align:right;width:90px;font-weight:700}
+.wf .up{color:var(--up)} .wf .dn{color:var(--dn)} .wf .zero{color:var(--faint);font-weight:400}
+.wf td.bar{width:150px}
+.bt{position:relative;height:10px;background:transparent}
+.bt .z{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--hair-2)}
+.bt i{position:absolute;top:1px;bottom:1px}
+.bt i.up{left:50%;background:var(--up)} .bt i.dn{right:50%;background:var(--dn)}
+.bt i.rule{right:50%;background:transparent;border:1px solid var(--brick)}
+.wf tr.total td{border-bottom:0;border-top:2px solid var(--ink);font-size:16px;font-weight:700}
+.wf tr.rule td{background:var(--brick-soft)}
+.wf tr.rule .lbl{color:var(--brick)}
+.wf tr.rule .fig{color:var(--brick)}
+.footnote{font-size:13.5px;font-style:italic;color:var(--dim);margin-top:10px}
+.footnote b{color:var(--brick);font-style:normal}
+.chart{border:1px solid var(--hair-2);background:var(--card);padding:12px 10px 6px;margin-top:8px}
+.chart svg{display:block;width:100%;height:auto}
+.reserved{border:1px dashed var(--hair-2);padding:14px 16px;color:var(--faint);font-size:13.5px;font-style:italic;margin-top:8px}
+.reserved b{color:var(--dim);font-style:normal}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — not the board · working aid</div>
+<div class="card">
+  <div class="head">
+    <div class="kicker">Player Profile · The Owner's Edition</div>
+    <h1>Callum Coleman-Jones</h1>
+    <div class="dek">Key forward, Melbourne · pick 20, 2018 national draft<b title="Your role-reliability rule is holding this price — line item below">rule active †</b></div>
+    <div class="stamp">board <b>v2.6</b> · engine <b>4b08796c</b> · store <b>a2fbc9a0</b> · guard 5 pass · baked 9 July 2026</div>
+  </div>
+
+  <div class="statrow">
+    <div><div class="k">Value</div><div class="v num">876</div></div>
+    <div><div class="k">Since last bake</div><div class="v num flat">— 0</div></div>
+    <div><div class="k">Rank</div><div class="v num">104<span style="font-size:14px;color:var(--faint)"> / 1,002</span></div></div>
+  </div>
+
+  <h2><span>Why the price is what it is</span><span class="meta">v2.5 → v2.6, per lever</span></h2>
+  <table class="wf">
+    <tr><td class="lbl">Started at</td><td class="bar"></td><td class="fig num">1,748</td></tr>
+    <tr><td class="lbl">Recent scoring <i>(form, score relativity)</i></td>
+      <td class="bar"><div class="bt"><span class="z"></span><i class="up" style="width:9%"></i></div></td>
+      <td class="fig num up">+52</td></tr>
+    <tr><td class="lbl">Ruck minutes trend <i>(role time)</i></td>
+      <td class="bar"><div class="bt"><span class="z"></span><i class="dn" style="width:7%"></i></div></td>
+      <td class="fig num dn">−38</td></tr>
+    <tr><td class="lbl">Games missed <i>(availability layer)</i></td>
+      <td class="bar"><div class="bt"><span class="z"></span></div></td>
+      <td class="fig num zero">0 · absent</td></tr>
+    <tr><td class="lbl">Everything else <i>(unattributed — must be nil)</i></td>
+      <td class="bar"><div class="bt"><span class="z"></span><i class="dn" style="width:2%"></i></div></td>
+      <td class="fig num dn">−10</td></tr>
+    <tr class="rule"><td class="lbl">† Your rule: role reliability <i>(×0.50 — the Brodie rule)</i></td>
+      <td class="bar"><div class="bt"><span class="z"></span><i class="rule" style="width:48%"></i></div></td>
+      <td class="fig num">−876</td></tr>
+    <tr class="total"><td class="lbl">Lands at</td><td class="bar"></td><td class="fig num">876</td></tr>
+  </table>
+  <div class="footnote"><b>†</b> The rule is a line item, not a ghost: value halved while he plays out of ruck.
+    Lift the rule and this table — not the board's bar — shows the headroom. Availability prints
+    <i>absent</i>, never skipped; an unattributed remainder that grows prints in red and fails review.</div>
+
+  <h2><span>Value by year</span><span class="meta">2024–2028</span></h2>
+  <div class="chart">
+    <svg viewBox="0 0 460 120">
+      <polyline points="20,60 130,54 240,66 350,72 440,80" fill="none" stroke="#211e17" stroke-width="2"/>
+      <circle cx="240" cy="66" r="4" fill="#8c2f22"/>
+      <text x="240" y="54" fill="#8c2f22" font-size="10" text-anchor="middle" font-family="Helvetica,Arial">2026</text>
+      <g fill="#9c9585" font-size="10" font-family="Helvetica,Arial" text-anchor="middle">
+        <text x="20" y="114">2024</text><text x="130" y="114">2025</text><text x="350" y="114">2027</text><text x="440" y="114">2028</text>
+      </g>
+    </svg>
+  </div>
+
+  <h2><span>Round-by-round rating</span><span class="meta">reserved</span></h2>
+  <div class="reserved"><b>Set aside for the weekly loop.</b> History starts clean on the post-overhaul model;
+    one model version per line, a seam marked where a re-bake splits a season.</div>
+</div>
