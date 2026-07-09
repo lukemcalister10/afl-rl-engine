@@ -1,6 +1,10 @@
 import os
 import io,contextlib,json,collections,numpy as np
 import single_source as _SS
+try:                            # gate-integrity (e): config manifest. NO-OP unless RL_CONFIG_MODE=bake|gate.
+    import config_manifest as _CFG; _CFG.enforce()   # gate mode (matrix regen for B1/B3): clear ambient model env, reject unknown/divergent, load data/model_config.json BEFORE the engine reads the env.
+except ImportError:
+    _CFG = None
 # GUARDS 3 + 3b always; GUARD 2 asserts the board stamp == current source md5 (the book is about to be
 # parity-checked against the board -- both MUST derive from the same store). Skipped only if the board is
 # routed elsewhere (RL_APP_DATA) for a standalone book build.

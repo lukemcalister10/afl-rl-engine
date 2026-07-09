@@ -1,0 +1,8 @@
+=== gate-integrity (e) config-manifest red/green-path proof ===
+  PASS GREEN bake official env loads (exit 0)
+  PASS RED-1 divergent RL_YOUNG=0 halts (exit 1)
+  PASS RED-2 unknown RL_BOGUS=1 halts (exit 1)
+  PASS RED-3 R3 drift RL_PVCFIT=1 halts (exit 1)
+  PASS GREEN dev-shell no-op with RL_YOUNG=0 (exit 0)
+
+RESULT: ALL PASS

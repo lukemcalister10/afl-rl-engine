@@ -5,6 +5,10 @@ import json, numpy as np, math
 from collections import defaultdict
 import io as _io, contextlib as _ctx
 import single_source as _SS
+try:                            # gate-integrity (e): config manifest. NO-OP unless RL_CONFIG_MODE=bake|gate.
+    import config_manifest as _CFG; _CFG.enforce()   # bake mode: clear ambient model env, reject unknown/divergent overrides, load data/model_config.json BEFORE the engine reads the env. Dev-shell (no RL_CONFIG_MODE) is unchanged.
+except ImportError:
+    pass
 _SS.assert_startup()            # GUARDS 3 + 3b (lookalike tripwire + engine-opens) before the board is built
 _SS.lock_tier2()               # stamp + read-only-lock the frozen train-time caches (peak model + pvc_snapshot)
 # ==== ONE ENGINE INSTANCE (F1 FIX 2026-07-05, Luke one-source rewire) ====================================

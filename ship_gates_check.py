@@ -63,6 +63,13 @@ _bg.assert_boot('ship_gates_check', store_path=os.path.join(RA, 'rl_model_data.j
                 engine_head_path=os.path.join(RA, '_merged_recover.py'))
 os.environ.update(PYTHONHASHSEED='0', RL_GAMMA='0.85', RL_PICK1='3000', RL_RUCK_TAX='0.25',
                   RL_RECENCY_DECAY='0.72', RL_PRIOR_TREES='400', PAR_RAMPS='22')
+# GATE-INTEGRITY (e): the frozen suite is a GATE — pin the model configuration to the versioned manifest
+# (data/model_config.json) BEFORE the engine loads. enforce('gate') clears the ambient model env, REJECTS any
+# unknown/divergent RL_*/PAR_* override (the config-drift hole that let the held-out PVC fit ride into a board),
+# loads the manifest (values == code defaults ⇒ board/gates byte-identical), and returns the canonical config
+# hash stamped into the gate report so every verdict names WHICH config it certifies. Halts (not warns) on drift.
+import config_manifest as _CFG
+CONFIG_HASH = _CFG.enforce('gate')
 sys.path[:0] = [RA, '/home/claude/rl_workspace/forward_valuation', os.path.join(ROOT, 'vendor')]
 os.environ['PYTHONPATH'] = ':'.join(sys.path[:3])          # subprocesses (B4 export) need it too
 os.chdir(RA)
@@ -505,7 +512,8 @@ order = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A1
 RES.sort(key=lambda r: order.index(r[0]))
 cnt = {}
 lines = [f'=== STATE: {STATE_LABEL} ===',
-         f'=== SHIP GATES BOARD — head {HEAD} store {STORE} — suite 764a0d91 — {time.strftime("%Y-%m-%d")} ===',
+         f'=== SHIP GATES BOARD — head {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]} — suite 764a0d91 — {time.strftime("%Y-%m-%d")} ===',
+         f'=== CONFIG MANIFEST (gate mode): data/model_config.json hash {(CONFIG_HASH or "UNSET")[:16]} — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===',
          f'=== THREE-COLUMN RULE (Luke, binding D10): CONTROL={SNAP_CTL.get("head")} · PREVIOUS={SNAP_PREV.get("head")} · CURRENT={HEAD} ===']
 for gid, dc, st, det in RES:
     cnt[st] = cnt.get(st, 0) + 1
@@ -523,7 +531,7 @@ print('\n'.join(lines))
 # persist this run as a snapshot (future runs' PREVIOUS/CONTROL columns read these)
 try:
     os.makedirs(os.path.join(ROOT, 'data', 'gates_snapshots'), exist_ok=True)
-    json.dump({'head': HEAD, 'store': STORE,
+    json.dump({'head': HEAD, 'store': STORE, 'config': CONFIG_HASH,
                'gates': {gid: {'dc': dc, 'status': st, 'detail': det[:200]} for gid, dc, st, det in RES}},
               open(os.path.join(ROOT, 'data', 'gates_snapshots', f'gates_{HEAD}.json'), 'w'), indent=1)
 except Exception:
@@ -544,7 +552,7 @@ def _matcur(key):
     return out
 _MC, _MP = _matcur('control'), _matcur('previous')
 with open(rep, 'w') as f:
-    f.write(f'# ship_gates_check report — STATE: {STATE_LABEL} — head {HEAD} store {STORE}\n')
+    f.write(f'# ship_gates_check report — STATE: {STATE_LABEL} — head {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}\n')
     f.write('_Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._\n')
     f.write('```\n' + '\n'.join(lines) + '\n```\n')
     f.write('\n## Supporting detail\n')

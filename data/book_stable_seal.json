@@ -6,5 +6,6 @@
   "n_players": 2649,
   "stable_sha256": "5799a9ceae5ca3efc9787d6a780b3077292450ecda26f6abcc88589f070292c1",
   "sealed_by": "v2.5 bake (DPP strip final consolidation: two position fields, the 34, Kako fix, off-by-one, four single-source guards)",
-  "sealed_date": "2026-07-05"
+  "sealed_date": "2026-07-05",
+  "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6"
 }

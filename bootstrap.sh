@@ -11,6 +11,10 @@ mkdir -p /home/claude/rl_workspace /home/claude/rl_build /home/claude/rl_vendor
 # 1. engine + support modules + harness + pipeline + data files
 cp -rf "$HERE/engine/rl_after"          /home/claude/rl_workspace/
 cp -rf "$HERE/engine/forward_valuation" /home/claude/rl_workspace/
+# gate-integrity (e): the config manifest helper must be importable from the workspace cwd (rl_export.py /
+# s4_matrix_M1v7.py call config_manifest.enforce() — a no-op unless RL_CONFIG_MODE=bake|gate). It self-locates
+# the repo (RL_REPO / CLAUDE_PROJECT_DIR) for the manifest DATA file, so only the module is seeded here.
+cp -f "$HERE/config_manifest.py"        /home/claude/rl_workspace/rl_after/config_manifest.py
 
 # 2. absolute-path data deps
 cp -f "$HERE/data/cm_400.pkl"                /home/claude/cm_400.pkl
