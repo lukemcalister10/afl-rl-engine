@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- THEME 03 · MATCHDAY — public trim · player card. Design pitch; ALL FIGURES INVENTED — not the
+     board. Sanitised: value, rank, movement, trajectory. No IDs, no rule machinery, no internals. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matchday · Player card · public</title>
+<style>
+:root{
+  --pitch:#0a0c10; --card:#12151c; --edge:#232936;
+  --text:#f2f5f9; --dim:#8b95a6; --faint:#525c6d;
+  --volt:#c8f04a; --volt-soft:rgba(200,240,74,.12);
+  --up:#4ade80; --dn:#f0655e;
+  --cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
+  --sans:"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pitchbanner{background:var(--volt-soft);border-bottom:1px solid var(--volt);color:var(--volt);
+  font-family:var(--cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:center;padding:6px;font-weight:700}
+.card{max-width:600px;margin:26px auto 60px;background:var(--card);border:1px solid var(--edge);overflow:hidden}
+.head{padding:22px 24px 18px;border-bottom:1px solid var(--edge);border-left:6px solid var(--volt)}
+.name{font-family:var(--cond);font-weight:900;font-size:34px;letter-spacing:.02em;text-transform:uppercase;line-height:.95}
+.id{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.body{padding:20px 24px 34px}
+.statrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.v{font-family:var(--mono);font-weight:700;font-size:24px;margin-top:3px}
+.v.volt{color:var(--volt)} .v.flat{color:var(--faint);font-size:20px} .v.dnc{color:var(--dn);font-size:20px} .v small{font-size:13px;color:var(--faint)}
+h2{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text);
+  margin:28px 0 12px;display:flex;justify-content:space-between;border-bottom:2px solid var(--volt);padding-bottom:7px}
+h2 .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-transform:none;font-size:11px;font-weight:400}
+.chart{background:var(--pitch);border:1px solid var(--edge);padding:12px 10px 6px}
+.chart svg{display:block;width:100%;height:auto}
+footer{margin-top:18px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — illustration only</div>
+<div class="card">
+  <div class="head">
+    <div class="name">Callum Coleman-Jones</div>
+    <div class="id">Key Forward · Melbourne · Pick 20 · 2018 ND</div>
+  </div>
+  <div class="body">
+    <div class="statrow">
+      <div><div class="k">Value</div><div class="v volt">876</div></div>
+      <div><div class="k">Δ vs prev round</div><div class="v flat">— 0</div></div>
+      <div><div class="k">Rank</div><div class="v">104<small> / 1002</small></div></div>
+    </div>
+
+    <h2><span>Movement</span><span class="meta">round 17 · 2026</span></h2>
+    <div class="statrow">
+      <div><div class="k">This round</div><div class="v flat">— 0</div></div>
+      <div><div class="k">Last 4 rounds</div><div class="v dnc">▼ −34</div></div>
+      <div><div class="k">Rank move</div><div class="v flat">— steady</div></div>
+    </div>
+
+    <h2><span>Value by year</span><span class="meta">2024–2028</span></h2>
+    <div class="chart">
+      <svg viewBox="0 0 460 120">
+        <polyline points="20,60 130,54 240,66 350,72 440,80" fill="none" stroke="#c8f04a" stroke-width="2"/>
+        <circle cx="240" cy="66" r="4" fill="#f2f5f9"/>
+        <text x="240" y="54" fill="#8b95a6" font-size="10" text-anchor="middle" font-family="monospace">2026</text>
+        <g fill="#525c6d" font-size="10" font-family="monospace" text-anchor="middle">
+          <text x="20" y="114">2024</text><text x="130" y="114">2025</text><text x="350" y="114">2027</text><text x="440" y="114">2028</text>
+        </g>
+      </svg>
+    </div>
+
+    <footer>value · rank · movement — always signed, never colour alone</footer>
+  </div>
+</div>
