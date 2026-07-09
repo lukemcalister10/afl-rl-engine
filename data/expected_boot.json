@@ -1,11 +1,11 @@
 {
  "_doc": "PINNED BOOT IDENTITY \u2014 the single source of the expected md5s every gate/panel/bake/self-test asserts on entry (Guard 5, boot-store assertion). A build that boots on any other store HALTS on line one. Update ONLY at a bake, in the same commit that moves the store; verify_restore.sh, bootstrap.sh, run_panel.sh, ship_gates_check.py and one_source_selftest.py all read THIS file rather than carrying their own hardcoded hex. Origin: stale-boot hardening 2026-07-05 (workspace held baked-v2.4 644d1254 while the repo carried e1b4d8bf; the four data guards validate whichever dir they are imported from, so they never caught the wrong DIRECTORY).",
- "tag": "BAKED v2.6 2026-07-09 + STORE CORRECTION 2026-07-09 (King/Murphy birth years; store e1b4d8bf -> a2fbc9a0; DECISIONS §29-30; owner-ruled re-seal). w4-L1c-kpf-R3fix; RL_PVCFIT held out per owner ruling R3; frozen-v3.4 board regenerated at corrected store. Lineage: efea88e5 (v2.5) -> 4b08796c (v2.6; engine unchanged, store re-sealed)",
+ "tag": "BAKED v2.6 2026-07-09 + STORE CORRECTION 2026-07-09 (King/Murphy birth years; store e1b4d8bf -> a2fbc9a0; DECISIONS \u00a729-30; owner-ruled re-seal). w4-L1c-kpf-R3fix; RL_PVCFIT held out per owner ruling R3; frozen-v3.4 board regenerated at corrected store. Lineage: efea88e5 (v2.5) -> 4b08796c (v2.6; engine unchanged, store re-sealed)",
  "store": "a2fbc9a036e46a440f4a3c8c290b49cc",
  "engine_head": "4b08796c49cb7ba43dbe248f2206545d",
  "rl_model": "121a45d0f4f2f6d1c15fe01489ea4da3",
  "band": "34faa8659cc8f19794f5cb9584fa19b2",
  "panel": "PASS 10/10",
- "board": "799b2290",
+ "board": "fd90472c",
  "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6"
 }
