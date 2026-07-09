@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- THEME 04 · REGISTRY — working aid · board. Design pitch; ALL FIGURES INVENTED — not the board.
+     The Swiss ledger: white, grid-strict, one ink + one blue, numbers carry everything.
+     Value presentation REDESIGNED: figure + PERCENTILE column (numbers, not bars, tell magnitude);
+     a 1px hairline index bar is the only graphic. Override = bracketed registry annotation.
+     No ghost rail. No slugs (debug toggle concept only). Δ default = vs bake, with toggle. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registry · Board · working aid</title>
+<style>
+:root{
+  --bg:#ffffff; --ink:#111114; --dim:#5c5c66; --faint:#9a9aa4; --hair:#e3e3e8; --hair-2:#c9c9d2;
+  --blue:#1f4fd8; --blue-soft:rgba(31,79,216,.07);
+  --up:#1f4fd8; --dn:#b3401f;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Inter",sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px}
+.pitchbanner{border-bottom:1px solid var(--blue);color:var(--blue);background:var(--blue-soft);
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;text-align:center;padding:6px;font-weight:600}
+.app{max-width:1060px;margin:0 auto;padding:0 24px 80px}
+header{padding:34px 0 18px;border-bottom:2px solid var(--ink);display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+h1{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;font-weight:600}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:right;line-height:1.8}
+.stamp b{color:var(--ink);font-weight:600}
+.badge{display:inline-block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  border:1px solid var(--blue);color:var(--blue);padding:1px 6px;margin-left:6px}
+.controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--hair-2);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.ctl{display:inline-flex;border:1px solid var(--hair-2)}
+.ctl span{padding:4px 12px;color:var(--faint)}
+.ctl span.on{background:var(--ink);color:var(--bg)}
+.ctl.dbg span.on{background:var(--hair);color:var(--dim)}
+table{width:100%;border-collapse:collapse;margin-top:18px}
+thead th{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:600;
+  text-align:left;padding:8px 12px;border-bottom:2px solid var(--ink)}
+th.r,td.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--hair)}
+tbody tr:hover{background:var(--blue-soft)}
+td{padding:10px 12px;white-space:nowrap}
+td.rank{color:var(--faint);width:44px}
+td.name{font-weight:600;font-size:14.5px}
+.ann{font-size:11px;color:var(--blue);font-weight:600;margin-left:10px;letter-spacing:.04em;cursor:help}
+td.pos{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600}
+td.read{width:100px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.read .met{color:var(--blue)} .read .wait{color:var(--faint)}
+td.value{font-weight:600;width:90px;font-size:14px}
+td.pct{width:70px;color:var(--dim)}
+td.idx{width:120px}
+.ib{height:1px;background:var(--hair);position:relative}
+.ib i{position:absolute;left:0;top:-1px;height:3px;width:var(--w);background:var(--ink)}
+td.delta{width:100px}
+.d-up{color:var(--up)} .d-dn{color:var(--dn)} .d-flat{color:var(--faint)}
+td.pick,td.yr{color:var(--dim);width:56px}
+.legend{margin-top:16px;padding-top:12px;border-top:2px solid var(--ink);font-size:11px;color:var(--dim);
+  display:flex;gap:24px;flex-wrap:wrap;line-height:1.7}
+.legend b{color:var(--ink);font-weight:600}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — not the board · working aid</div>
+<div class="app">
+  <header>
+    <div>
+      <div class="kicker">Real-Draft Value Engine — Register of Player Values</div>
+      <h1>Value Register · Round 17, 2026</h1>
+    </div>
+    <div class="spacer"></div>
+    <div class="stamp">
+      board <b>v2.6</b> · engine <b>4b08796c</b> · store <b>a2fbc9a0</b> · board id <b>fd90472c</b><span class="badge">real</span><span class="badge">guard 5 pass</span><br>
+      Δ against the last accepted bake · 1 002 players · baked 2026-07-09
+    </div>
+  </header>
+
+  <div class="controls">
+    <span>Δ base</span>
+    <span class="ctl"><span class="on">bake</span><span>round</span></span>
+    <span>Debug</span>
+    <span class="ctl dbg" title="Debug affordance (working aid only): show player slugs when on. Off by default — no slugs in default views."><span class="on">slugs off</span><span>on</span></span>
+  </div>
+
+  <table>
+    <thead><tr>
+      <th class="r">Nº</th><th>Player</th><th>Position</th><th>Read</th>
+      <th class="r">Value</th><th class="r">Pctl</th><th>Index</th><th class="r">Δ bake</th><th class="r">Pick</th><th class="r">Draft</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="rank r num">1</td><td class="name">Marcus Bontempelli</td><td class="pos">Mid</td>
+        <td class="read"><span class="met">▪ met</span></td>
+        <td class="value r num">3 462</td><td class="pct r num">100.0</td><td class="idx"><div class="ib"><i style="--w:96%"></i></div></td>
+        <td class="delta r num d-up">+378 ▲</td><td class="pick r num">4</td><td class="yr r num">2016</td></tr>
+      <tr><td class="rank r num">2</td><td class="name">Nick Daicos</td><td class="pos">Mid</td>
+        <td class="read"></td>
+        <td class="value r num">3 310</td><td class="pct r num">99.9</td><td class="idx"><div class="ib"><i style="--w:92%"></i></div></td>
+        <td class="delta r num d-up">+102 ▲</td><td class="pick r num">4</td><td class="yr r num">2021</td></tr>
+      <tr><td class="rank r num">3</td><td class="name">Sam Darcy</td><td class="pos">Key Fwd</td>
+        <td class="read"><span class="wait">▪ pending</span></td>
+        <td class="value r num">3 178</td><td class="pct r num">99.8</td><td class="idx"><div class="ib"><i style="--w:88%"></i></div></td>
+        <td class="delta r num d-up">+431 ▲</td><td class="pick r num">2</td><td class="yr r num">2021</td></tr>
+      <tr><td class="rank r num">7</td><td class="name">Jeremy Cameron</td><td class="pos">Key Fwd</td>
+        <td class="read"><span class="met">▪ met</span></td>
+        <td class="value r num">2 894</td><td class="pct r num">99.4</td><td class="idx"><div class="ib"><i style="--w:79%"></i></div></td>
+        <td class="delta r num d-up">+402 ▲</td><td class="pick r num">1</td><td class="yr r num">2017</td></tr>
+      <tr><td class="rank r num">12</td><td class="name">Max Gawn</td><td class="pos">Ruck</td>
+        <td class="read"><span class="met">▪ met</span></td>
+        <td class="value r num">2 610</td><td class="pct r num">98.9</td><td class="idx"><div class="ib"><i style="--w:71%"></i></div></td>
+        <td class="delta r num d-up">+498 ▲</td><td class="pick r num">34</td><td class="yr r num">2009</td></tr>
+      <tr><td class="rank r num">38</td><td class="name">Willem Duursma</td><td class="pos">Mid</td>
+        <td class="read"><span class="wait">▪ pending</span></td>
+        <td class="value r num">1 986</td><td class="pct r num">96.3</td><td class="idx"><div class="ib"><i style="--w:54%"></i></div></td>
+        <td class="delta r num d-up">+266 ▲</td><td class="pick r num">1</td><td class="yr r num">2025</td></tr>
+      <tr><td class="rank r num">61</td><td class="name">Kieren Briggs</td><td class="pos">Ruck</td>
+        <td class="read"></td>
+        <td class="value r num">1 480</td><td class="pct r num">94.0</td><td class="idx"><div class="ib"><i style="--w:40%"></i></div></td>
+        <td class="delta r num d-dn">−124 ▼</td><td class="pick r num">—</td><td class="yr r num">2018</td></tr>
+      <tr><td class="rank r num">104</td><td class="name">Callum Coleman-Jones<span class="ann" title="Owner rule: role-reliability cut ×0.50 (the Brodie rule). Line item on the player card; the printed figure is the post-rule value.">[rule ×0.50]</span></td><td class="pos">Key Fwd</td>
+        <td class="read"></td>
+        <td class="value r num">876</td><td class="pct r num">89.6</td><td class="idx"><div class="ib"><i style="--w:24%"></i></div></td>
+        <td class="delta r num d-flat">0 ·</td><td class="pick r num">20</td><td class="yr r num">2018</td></tr>
+      <tr><td class="rank r num">312</td><td class="name">Stephen Coniglio</td><td class="pos">Mid</td>
+        <td class="read"><span class="met">▪ met</span></td>
+        <td class="value r num">421</td><td class="pct r num">68.9</td><td class="idx"><div class="ib"><i style="--w:12%"></i></div></td>
+        <td class="delta r num d-dn">−58 ▼</td><td class="pick r num">2</td><td class="yr r num">2011</td></tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <span><b>▪ read</b> — your acceptance anchors, met / pending</span>
+    <span><b>Pctl</b> — value percentile across the register; the number, not a bar, states magnitude</span>
+    <span><b>[rule]</b> — an owner rule holds the printed figure; the line item is on the card</span>
+    <span><b>Δ</b> — always signed and arrowed; colour is never the only signal</span>
+  </div>
+</div>

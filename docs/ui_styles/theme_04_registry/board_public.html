@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- THEME 04 · REGISTRY — public trim · board. Design pitch; ALL FIGURES INVENTED — not the board.
+     Sanitised: values, ranks, movement only. No IDs, no guard states, no reads, no rule
+     annotations, no debug affordances. Δ = vs previous round (published scheme). -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registry · Board · public</title>
+<style>
+:root{
+  --bg:#ffffff; --ink:#111114; --dim:#5c5c66; --faint:#9a9aa4; --hair:#e3e3e8; --hair-2:#c9c9d2;
+  --blue:#1f4fd8; --blue-soft:rgba(31,79,216,.07);
+  --up:#1f4fd8; --dn:#b3401f;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Inter",sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px}
+.pitchbanner{border-bottom:1px solid var(--blue);color:var(--blue);background:var(--blue-soft);
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;text-align:center;padding:6px;font-weight:600}
+.app{max-width:960px;margin:0 auto;padding:0 24px 80px}
+header{padding:34px 0 18px;border-bottom:2px solid var(--ink);display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+h1{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;font-weight:600}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:right;line-height:1.8}
+table{width:100%;border-collapse:collapse;margin-top:18px}
+thead th{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:600;
+  text-align:left;padding:8px 12px;border-bottom:2px solid var(--ink)}
+th.r,td.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--hair)}
+tbody tr:hover{background:var(--blue-soft)}
+td{padding:10px 12px;white-space:nowrap}
+td.rank{color:var(--faint);width:44px}
+td.name{font-weight:600;font-size:14.5px}
+td.pos{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600}
+td.value{font-weight:600;width:90px;font-size:14px}
+td.pct{width:70px;color:var(--dim)}
+td.idx{width:120px}
+.ib{height:1px;background:var(--hair);position:relative}
+.ib i{position:absolute;left:0;top:-1px;height:3px;width:var(--w);background:var(--ink)}
+td.delta{width:110px}
+.d-up{color:var(--up)} .d-dn{color:var(--dn)} .d-flat{color:var(--faint)}
+.legend{margin-top:16px;padding-top:12px;border-top:2px solid var(--ink);font-size:11px;color:var(--dim);
+  display:flex;gap:24px;flex-wrap:wrap;line-height:1.7}
+.legend b{color:var(--ink);font-weight:600}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — illustration only</div>
+<div class="app">
+  <header>
+    <div>
+      <div class="kicker">Register of Player Values — Published</div>
+      <h1>Value Register · Round 17, 2026</h1>
+    </div>
+    <div class="spacer"></div>
+    <div class="stamp">movement against the previous round<br>1 002 players</div>
+  </header>
+
+  <table>
+    <thead><tr>
+      <th class="r">Nº</th><th>Player</th><th>Position</th>
+      <th class="r">Value</th><th class="r">Pctl</th><th>Index</th><th class="r">Δ round</th><th class="r">Rank move</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="rank r num">1</td><td class="name">Marcus Bontempelli</td><td class="pos">Mid</td>
+        <td class="value r num">3 462</td><td class="pct r num">100.0</td><td class="idx"><div class="ib"><i style="--w:96%"></i></div></td>
+        <td class="delta r num d-up">+41 ▲</td><td class="delta r num d-flat">· 0</td></tr>
+      <tr><td class="rank r num">2</td><td class="name">Nick Daicos</td><td class="pos">Mid</td>
+        <td class="value r num">3 310</td><td class="pct r num">99.9</td><td class="idx"><div class="ib"><i style="--w:92%"></i></div></td>
+        <td class="delta r num d-up">+18 ▲</td><td class="delta r num d-flat">· 0</td></tr>
+      <tr><td class="rank r num">3</td><td class="name">Sam Darcy</td><td class="pos">Key Fwd</td>
+        <td class="value r num">3 178</td><td class="pct r num">99.8</td><td class="idx"><div class="ib"><i style="--w:88%"></i></div></td>
+        <td class="delta r num d-up">+96 ▲</td><td class="delta r num d-up">+2 ▲</td></tr>
+      <tr><td class="rank r num">7</td><td class="name">Jeremy Cameron</td><td class="pos">Key Fwd</td>
+        <td class="value r num">2 894</td><td class="pct r num">99.4</td><td class="idx"><div class="ib"><i style="--w:79%"></i></div></td>
+        <td class="delta r num d-up">+64 ▲</td><td class="delta r num d-up">+1 ▲</td></tr>
+      <tr><td class="rank r num">12</td><td class="name">Max Gawn</td><td class="pos">Ruck</td>
+        <td class="value r num">2 610</td><td class="pct r num">98.9</td><td class="idx"><div class="ib"><i style="--w:71%"></i></div></td>
+        <td class="delta r num d-up">+52 ▲</td><td class="delta r num d-up">+3 ▲</td></tr>
+      <tr><td class="rank r num">38</td><td class="name">Willem Duursma</td><td class="pos">Mid</td>
+        <td class="value r num">1 986</td><td class="pct r num">96.3</td><td class="idx"><div class="ib"><i style="--w:54%"></i></div></td>
+        <td class="delta r num d-up">+33 ▲</td><td class="delta r num d-up">+4 ▲</td></tr>
+      <tr><td class="rank r num">61</td><td class="name">Kieren Briggs</td><td class="pos">Ruck</td>
+        <td class="value r num">1 480</td><td class="pct r num">94.0</td><td class="idx"><div class="ib"><i style="--w:40%"></i></div></td>
+        <td class="delta r num d-dn">−21 ▼</td><td class="delta r num d-dn">−2 ▼</td></tr>
+      <tr><td class="rank r num">104</td><td class="name">Callum Coleman-Jones</td><td class="pos">Key Fwd</td>
+        <td class="value r num">876</td><td class="pct r num">89.6</td><td class="idx"><div class="ib"><i style="--w:24%"></i></div></td>
+        <td class="delta r num d-flat">0 ·</td><td class="delta r num d-flat">· 0</td></tr>
+      <tr><td class="rank r num">312</td><td class="name">Stephen Coniglio</td><td class="pos">Mid</td>
+        <td class="value r num">421</td><td class="pct r num">68.9</td><td class="idx"><div class="ib"><i style="--w:12%"></i></div></td>
+        <td class="delta r num d-dn">−9 ▼</td><td class="delta r num d-dn">−6 ▼</td></tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <span><b>Pctl</b> — value percentile across the register</span>
+    <span><b>Δ</b> — always signed and arrowed; colour is never the only signal</span>
+  </div>
+</div>
