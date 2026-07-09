@@ -1,0 +1,18 @@
+PART B EXCLUSION TEST — captured green run 2026-07-09T06:00:26Z
+branch claude/ci-guard-brodie-override-xow6zn  |  Brodie will-brodie v=1034 -> displayed 517
+
+=== PART B: owner override is display-only + excluded from all guards/aggregates ===
+  PASS ON board minus every `ov` block == OFF board, byte-for-byte (aggregates/curves/values untouched)
+  PASS same player set on vs off (no row added/removed)
+  PASS exactly Brodie's row carries the override (got ['will-brodie'])
+  PASS every engine value v identical on vs off; differing keys=[]
+  PASS OFF board: Brodie has NO ov block
+  PASS ON board: Brodie HAS an ov block
+  PASS Brodie engine v unchanged by the override (1034 == 1034)
+  PASS override factor == 0.50 (got 0.5)
+  PASS displayed value == round(v * factor) = 517 (got 517)
+  PASS displayed row carries a visible override MARKER (got 'OWNER OVERRIDE ×0.50')
+  PASS Brodie row differs from OFF by exactly {'ov'} (got {'ov'})
+  PASS every other Brodie field is identical on vs off
+
+PART B EXCLUSION TEST PASSED: guards/aggregates/values byte-identical on vs off; only Brodie's DISPLAYED row differs (+ov ×0.50 marked).
