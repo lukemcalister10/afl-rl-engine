@@ -1,6 +1,7 @@
 {
  "head": "4b08796c",
  "store": "e1b4d8bf",
+ "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6",
  "gates": {
   "A1": {
    "dc": false,
@@ -80,17 +81,17 @@
   "B1": {
    "dc": false,
    "status": "PASS",
-   "detail": "cross-cohort AVERAGE peak N=4 AVG(peak)=143 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed every run \u2014 Luke redefinition 02/07"
+   "detail": "CANDIDATE (regenerated this run \u2014 engine 4b08796c store e1b4d8bf config d88404f07633): cross-cohort AVERAGE peak N=4 AVG(peak)=130 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
   },
   "B2": {
    "dc": false,
    "status": "PASS",
-   "detail": "median |IS-WF| leakage=0.0 %-pts (tol 0.5, SET 02/07/2026 \u2014 N=5 spread 0.00); GOOD>BUST separation: GEN_DEF 42/1, GEN_FWD 40/1, KEY_DEF 50/1, KEY_FWD 61/1, MID 50/1"
+   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.35, GEN_DEF|GOOD|T5:2.38, GEN_FW"
   },
   "B3": {
    "dc": false,
-   "status": "PASS",
-   "detail": "book stable-key seal MATCHES baseline: current=5799a9ceae5ca3ef.. (2649 players) vs baseline=5799a9ceae5ca3ef.. (2649 players, sealed head efea88e5); matrix=s4_matrix_baked_efea88e5.json [raw-file sha"
+   "status": "DIFFERS-BY-DESIGN",
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 4b08796c store e1b4d8bf config d88404f07633): candidate head 4b08796c != sealed head efea88e5 \u2014 new version; the v2.6 book must be RE-SEALED a"
   },
   "B4": {
    "dc": false,

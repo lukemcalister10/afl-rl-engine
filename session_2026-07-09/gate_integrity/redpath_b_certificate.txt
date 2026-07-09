@@ -1,0 +1,10 @@
+=== gate-integrity (b) B2 certificate red-path proof ===
+  PASS genuine candidate certificate accepted
+  PASS handcrafted/stale cert (wrong engine hash) REJECTED
+  PASS cert with divergent config REJECTED
+  ---- rounding counterexample: WF.median=100.49 IS.median=99.51 ----
+  PASS full-precision gap measured = 0.98 (> tol 0.5 -> would FAIL)
+  PASS old integer-parse gap was masked to 0.0 (both round to 100)
+  demonstrates: the leakage the old text path masked (0.0) is now measured at full precision (0.98).
+
+RESULT: ALL PASS

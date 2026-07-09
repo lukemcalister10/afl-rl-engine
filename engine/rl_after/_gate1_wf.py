@@ -60,3 +60,39 @@ for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF']:
         isl=" ".join(f"{np.median(agg[(pos,'IS',tag)][T]):4.0f}" for T in TEN if T in agg.get((pos,'IS',tag),{}))
         print(f"  {pos:8s} {tag:4s} n={n:2d}  WF[{wf}]")
         print(f"  {'':8s} {'':4s}        IS[ {isl} ]  (gap IS-WF = leakage)")
+
+# ==== STRUCTURED CERTIFICATE (gate-integrity b, 2026-07-09) ====================================
+# The B2 gate no longer parses this human print (integer-rounded — a true 0.98 %-pt gap read as 0, and a
+# handcrafted four-line text file passed). Instead B2 INVOKES this producer and reads the JSON below:
+# UNROUNDED per-cell WF/IS observations + code/store/config identity, so B2 asserts the certificate was
+# produced by the candidate under test and computes the leakage gap at full precision. This is a
+# LEAVE-COHORT-OUT sensitivity construction (each 2014-2018 ND cohort held out of the trained part).
+import json as _json, hashlib as _hl
+def _md5(path):
+    h = _hl.md5()
+    with open(path, 'rb') as f:
+        for _c in iter(lambda: f.read(1 << 16), b''): h.update(_c)
+    return h.hexdigest()
+_cells = {}
+for (_pos, _which, _tag), _byT in agg.items():
+    for _T, _vals in _byT.items():
+        _cells.setdefault('%s|%s|T%d' % (_pos, _tag, _T), {})[_which] = {
+            'median': float(np.median(_vals)), 'n': len(_vals),
+            'obs': [float(x) for x in _vals]}          # UNROUNDED observations
+try:
+    import config_manifest as _cm; _cfg = _cm.manifest_hash()
+except Exception:
+    _cfg = None
+_cert = {
+    'kind': 'gate1_leave_cohort_out_sensitivity',
+    'engine_head_md5': _md5('_merged_recover.py'),
+    'store_md5': _md5('rl_model_data.json'),
+    'config_sha256': _cfg,
+    'trees': 150, 'tenures': TEN, 'cohorts_heldout': list(range(2014, 2019)),
+    'cells': _cells,
+}
+_out = os.environ.get('GATE1_JSON')
+if _out:
+    with open(_out, 'w') as f: _json.dump(_cert, f, indent=1)
+    print('gate1 certificate written: %s (engine %s store %s config %s)'
+          % (_out, _cert['engine_head_md5'][:8], _cert['store_md5'][:8], (_cfg or '-')[:8]))

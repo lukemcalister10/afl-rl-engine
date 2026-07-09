@@ -245,77 +245,145 @@ except LookupError as ex:
     gate('A13', False, 'ERROR', str(ex)); gate('A14', False, 'ERROR', str(ex))
 gate('A15', False, 'STRUCK', 'Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1')
 # ---------- SECTION B ----------
-# B1 — cohort growth law from the walk-forward matrix (per-cohort SUM indexed yr1=100, busts=0; cohorts
-# 2004-2020, incurve only). REBUILT (Luke's REDEFINITION, in writing, confirmed 02/07/2026, D5 — supersedes
-# BOTH the pooled-rise re-script AND the per-cohort backstop): at each years-in-system depth d the SIMPLE
-# (UNWEIGHTED) MEAN of indexed cohort value across all cohorts OBSERVED at depth d must rise from year 1 to
-# a peak occurring in years 4-6; pre-peak dips of the AVERAGE tolerated under 5% (tolerance carried from old
-# B1 — now applies to the average ONLY). Individual cohorts are UNGATED by design (Luke: "not all draft
-# cohorts are equal; 2020 is a shocking draft — it should lose value") but the per-cohort table IS PRINTED
-# as a pipe table on every gates-board run (Luke's eyeball channel — visibility without a gate). The retired
-# per-cohort backstop's obituary lives in CHANGELOG (D5).
+# CANDIDATE MATRIX REGENERATION (gate-integrity a, 2026-07-09) — B1/B3 must certify the CANDIDATE, not the
+# baked v2.5 matrix. Regenerate the candidate walk-forward book in a CLEAN subprocess (gate mode: config
+# pinned; ~3 min) and REQUIRE its embedded code/store/config hashes to equal the candidate under test — a
+# mismatch is a gate FAIL, not a warning. The baked v2.5 matrix is kept ONLY as an explicitly NAMED
+# regression comparator (never "current"); B3's seal is re-pointed to the candidate. The gate report states
+# WHICH artifact each verdict certifies.
+V25_COMPARATOR = os.path.join(ROOT, 'data', 's4_matrix_baked_efea88e5.json')   # v2.5 comparator — NAMED, never "current"
+CAND_MATRIX = None; CAND_MATRIX_ERR = None
+if not ('B1' in SKIP and 'B3' in SKIP):
+    try:
+        import tempfile as _tf
+        _mfd, CAND_MATRIX = _tf.mkstemp(prefix='s4_cand_', suffix='.json'); os.close(_mfd)
+        _menv = dict(os.environ, S4_MATRIX=CAND_MATRIX, RL_CONFIG_MODE='gate', RL_REPO=ROOT)
+        _mrun = subprocess.run([sys.executable, 's4_matrix_M1v7.py'], cwd=RA, env=_menv,
+                               capture_output=True, text=True, timeout=1800)
+        _meta = json.load(open(CAND_MATRIX)).get('__meta__', {}) if os.path.exists(CAND_MATRIX) else {}
+        _mok = bool(_meta) and _meta.get('engine_head_md5', '')[:8] == HEAD and _meta.get('store_md5', '')[:8] == STORE
+        if CONFIG_HASH is not None:
+            _mok = _mok and (_meta.get('config_sha256') == CONFIG_HASH)
+        if not _meta:
+            CAND_MATRIX_ERR = f'candidate matrix carries no __meta__ (exit={_mrun.returncode}; stderr tail: {_mrun.stderr[-300:]})'
+            CAND_MATRIX = None
+        elif not _mok:
+            CAND_MATRIX_ERR = ('candidate matrix hashes != candidate under test — engine %s=%s? store %s=%s? config %s=%s?'
+                               % (_meta.get('engine_head_md5', '?')[:8], HEAD, _meta.get('store_md5', '?')[:8], STORE,
+                                  (_meta.get('config_sha256') or '-')[:8], (CONFIG_HASH or '-')[:8]))
+            CAND_MATRIX = None
+    except Exception as _mex:
+        CAND_MATRIX_ERR = f'{type(_mex).__name__}: {_mex}'; CAND_MATRIX = None
+
+def _b1_rows(mpath):
+    """per-cohort indexed curves R + cross-cohort AVERAGE row from a matrix path (skips '__'-meta keys)."""
+    _m = json.load(open(mpath)); _S = {}
+    for _k, _v in _m.items():
+        if _k.startswith('__'):
+            continue
+        _C = int(_v['year'])
+        if not _v['incurve'] or not (2004 <= _C <= 2020):
+            continue
+        for _i, _yy in enumerate(_v['yrs']):
+            _N = _i + 1
+            if _N > 7:
+                break
+            _S[(_C, _N)] = _S.get((_C, _N), 0.0) + float(_v['Vpath'][_i] or 0.0)
+    _co = sorted({c for c, _ in _S})
+    _R = {C: {N: 100.0 * _S[(C, N)] / max(_S[(C, 1)], 1e-9) for N in range(1, 8) if (C, N) in _S} for C in _co}
+    _AVG = {N: float(np.mean([_R[C][N] for C in _co if N in _R[C]])) for N in range(1, 8) if any(N in _R[C] for C in _co)}
+    return _R, _AVG, _co
+
+# B1 — cohort growth law (Luke's REDEFINITION D5): at each depth d the SIMPLE MEAN of indexed cohort value
+# across cohorts observed at d must rise from yr1 to a peak in yrs 4-6; pre-peak dips of the AVERAGE <5%
+# tolerated. Per-cohort curves UNGATED but printed. Now computed on the CANDIDATE (regenerated this run).
 B1_TABLE = None
 try:
-    mpath = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_baked_efea88e5.json'))  # BAKED walk-forward matrix (v2.5 DPP-strip, store e1b4d8bf)
-    mat = json.load(open(mpath))
-    S = {}
-    for v in mat.values():
-        C = int(v['year'])
-        if not v['incurve'] or not (2004 <= C <= 2020):
-            continue
-        for i, _yy in enumerate(v['yrs']):
-            N = i + 1
-            if N > 7:
-                break
-            S[(C, N)] = S.get((C, N), 0.0) + float(v['Vpath'][i] or 0.0)
-    cohorts = sorted({c for c, _ in S})
-    R = {C: {N: 100.0 * S[(C, N)] / max(S[(C, 1)], 1e-9) for N in range(1, 8) if (C, N) in S} for C in cohorts}
-    AVG = {N: float(np.mean([R[C][N] for C in cohorts if N in R[C]]))
-           for N in range(1, 8) if any(N in R[C] for C in cohorts)}
-    ppk = max(AVG, key=AVG.get)
-    path_ok = all(AVG[N + 1] >= 0.95 * AVG[N] for N in range(1, ppk) if N + 1 in AVG)
-    ok = ppk in (4, 5, 6) and AVG[ppk] > 100.0 and path_ok
-    gate('B1', False, 'PASS' if ok else 'FAIL',
-         f'cross-cohort AVERAGE peak N={ppk} AVG(peak)={AVG[ppk]:.0f} (need peak in yrs 4-6, >100; pre-peak dips '
-         f'of the AVERAGE <5% tolerated, path_ok={path_ok}; per-cohort UNGATED, table printed every run — Luke '
-         'redefinition 02/07 D5); avg row: ' + ' '.join(f'{N}:{AVG[N]:.0f}' for N in sorted(AVG)) +
-         f'; cohorts n={len(cohorts)}; matrix={os.path.basename(mpath)}')
-    _t = ['| cohort | peakN | ' + ' | '.join(f'd{N}' for N in range(1, 8)) + ' |',
-          '|---|---|' + '---|' * 7]
-    for C in cohorts:
-        pk = max(R[C], key=R[C].get)
-        _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
-    _t.append(f'| **AVG (the gated row)** | **{ppk}** | ' +
-              ' | '.join((f'**{AVG[N]:.0f}**' if N in AVG else '—') for N in range(1, 8)) + ' |')
-    B1_TABLE = '\n'.join(_t)
-    NOTES.append('B1 per-cohort curves (UNGATED — printed every gates-board run, Luke eyeball channel):\n' + B1_TABLE)
+    if 'B1' in SKIP:
+        gate('B1', False, 'NOT-RUN', 'SGC_SKIP=B1')
+    elif CAND_MATRIX is None:
+        gate('B1', False, 'FAIL', f'candidate matrix unavailable — B1 cannot certify the candidate (the v2.5 comparator is NOT substituted): {CAND_MATRIX_ERR}')
+    else:
+        R, AVG, cohorts = _b1_rows(CAND_MATRIX)
+        ppk = max(AVG, key=AVG.get)
+        path_ok = all(AVG[N + 1] >= 0.95 * AVG[N] for N in range(1, ppk) if N + 1 in AVG)
+        ok = ppk in (4, 5, 6) and AVG[ppk] > 100.0 and path_ok
+        try:
+            _, AVGc, _ = _b1_rows(V25_COMPARATOR); comp = ' '.join(f'{N}:{AVGc[N]:.0f}' for N in sorted(AVGc))
+        except Exception:
+            comp = 'unavailable'
+        gate('B1', False, 'PASS' if ok else 'FAIL',
+             f'CANDIDATE (regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}): '
+             f'cross-cohort AVERAGE peak N={ppk} AVG(peak)={AVG[ppk]:.0f} (need peak in yrs 4-6, >100; pre-peak '
+             f'dips of the AVERAGE <5% tolerated, path_ok={path_ok}; per-cohort UNGATED, table printed — Luke D5); '
+             'avg row: ' + ' '.join(f'{N}:{AVG[N]:.0f}' for N in sorted(AVG)) +
+             f'; cohorts n={len(cohorts)} | v2.5 comparator avg row [NAMED, NOT certified]: {comp}')
+        _t = ['| cohort | peakN | ' + ' | '.join(f'd{N}' for N in range(1, 8)) + ' |',
+              '|---|---|' + '---|' * 7]
+        for C in cohorts:
+            pk = max(R[C], key=R[C].get)
+            _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
+        _t.append(f'| **AVG (the gated row — CANDIDATE)** | **{ppk}** | ' +
+                  ' | '.join((f'**{AVG[N]:.0f}**' if N in AVG else '—') for N in range(1, 8)) + ' |')
+        B1_TABLE = '\n'.join(_t)
+        NOTES.append('B1 per-cohort curves — CANDIDATE, regenerated this run (UNGATED — Luke eyeball channel):\n' + B1_TABLE)
 except Exception as ex:
     gate('B1', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-# B2 — GATE-1 leakage + separation, parsed from the harness output (_gate1_wf.py run this session)
+# B2 — GATE-1 leakage + separation. RE-WIRED (gate-integrity b, 2026-07-09): B2 INVOKES the producer
+# (_gate1_wf.py) itself and reads its STRUCTURED JSON certificate — UNROUNDED observations + code/store/config
+# hashes — instead of parsing an unauthenticated, integer-rounded text file at a fixed path (the old
+# /home/claude/gate1_out.txt: a true 0.98 %-pt gap parsed as 0, and a handcrafted four-line file passed).
+# B2 asserts the certificate's hashes == the candidate under test, then computes the leakage gap at FULL
+# precision (tol 0.5 UNCHANGED — a frozen-gate number, never amended here) and reports per-cell gaps beside
+# the pooled median. Labelled honestly as LEAVE-COHORT-OUT sensitivity (its true construction).
 try:
-    g1p = '/home/claude/gate1_out.txt'
-    if 'B2' in SKIP or not os.path.exists(g1p):
-        gate('B2', False, 'NOT-RUN', 'run _gate1_wf.py first (writes /home/claude/gate1_out.txt)')
+    if 'B2' in SKIP:
+        gate('B2', False, 'NOT-RUN', 'SGC_SKIP=B2')
     else:
-        import re
-        rows, cur = {}, None
-        for ln in open(g1p):
-            ls = ln.strip()
-            if ls.startswith(('MID', 'GEN_', 'KEY_')) and 'WF[' in ls:
-                pos, tag = ls.split()[0], ls.split()[1]
-                cur = (pos, tag)
-                rows[cur] = {'WF': [float(x) for x in re.findall(r'T\d+:\s*(-?\d+)', ls.split('WF[')[1])]}
-            elif ls.startswith('IS[') and cur:
-                rows[cur]['IS'] = [float(x) for x in ls[3:ls.index(']')].split()]
-        gaps = [abs(i - w) for r in rows.values() if 'IS' in r for w, i in zip(r['WF'], r['IS'])]
-        leak = float(np.median(gaps)) if gaps else float('nan')
-        seps = {pos: (np.median(rows[(pos, 'GOOD')]['WF']), np.median(rows[(pos, 'BUST')]['WF']))
-                for pos in {p for p, _ in rows} if (pos, 'GOOD') in rows and (pos, 'BUST') in rows}
-        sep_ok = all(g_ > b_ for g_, b_ in seps.values()) and bool(seps)
-        ok = sep_ok and leak <= 0.5
-        gate('B2', False, 'PASS' if ok else 'FAIL',
-             f'median |IS-WF| leakage={leak:.1f} %-pts (tol 0.5, SET 02/07/2026 — N=5 spread 0.00); GOOD>BUST separation: ' +
-             ', '.join(f'{p} {g_:.0f}/{b_:.0f}' for p, (g_, b_) in sorted(seps.items())))
+        import tempfile
+        _fd, _cert_path = tempfile.mkstemp(prefix='gate1_cert_', suffix='.json')
+        os.close(_fd); os.remove(_cert_path)                       # fresh path; the producer writes it this run
+        _env = dict(os.environ, GATE1_JSON=_cert_path, RL_REPO=ROOT)
+        _r = subprocess.run([sys.executable, '_gate1_wf.py'], cwd=RA, env=_env,
+                            capture_output=True, text=True, timeout=2400)
+        if not os.path.exists(_cert_path):
+            gate('B2', False, 'FAIL', f'producer _gate1_wf.py emitted no certificate (exit={_r.returncode}); stderr tail: {_r.stderr[-300:]}')
+        else:
+            _cert = json.load(open(_cert_path)); os.remove(_cert_path)
+            # (i) PROVENANCE: the certificate must be THIS candidate — code + store + config together.
+            _prov = [f'engine {_cert.get("engine_head_md5","?")[:8]}={HEAD}?',
+                     f'store {_cert.get("store_md5","?")[:8]}={STORE}?']
+            _ok_prov = (_cert.get('engine_head_md5', '')[:8] == HEAD and _cert.get('store_md5', '')[:8] == STORE)
+            if CONFIG_HASH is not None:
+                _ok_prov = _ok_prov and (_cert.get('config_sha256') == CONFIG_HASH)
+                _prov.append(f'config {(_cert.get("config_sha256") or "-")[:8]}={CONFIG_HASH[:8]}?')
+            if not _ok_prov:
+                gate('B2', False, 'FAIL', 'certificate provenance MISMATCH — not this candidate (handcrafted/stale cert rejected): ' + '; '.join(_prov))
+            else:
+                _cells = _cert.get('cells', {})
+                # (ii) FULL-PRECISION per-cell leakage gap = |WF.median - IS.median| (no integer rounding)
+                _percell = [(k, abs(_cells[k]['WF']['median'] - _cells[k]['IS']['median']))
+                            for k in sorted(_cells) if 'WF' in _cells[k] and 'IS' in _cells[k]]
+                leak = float(np.median([g for _, g in _percell])) if _percell else float('nan')
+                # (iii) GOOD>BUST separation per position (median over tenures of the WF cell medians)
+                _bypos = {}
+                for k in _cells:
+                    _pos, _tag, _T = k.split('|')
+                    if 'WF' in _cells[k]:
+                        _bypos.setdefault((_pos, _tag), []).append(_cells[k]['WF']['median'])
+                seps = {p: (float(np.median(_bypos[(p, 'GOOD')])), float(np.median(_bypos[(p, 'BUST')])))
+                        for p in {q for q, _ in _bypos} if (p, 'GOOD') in _bypos and (p, 'BUST') in _bypos}
+                sep_ok = bool(seps) and all(g_ > b_ for g_, b_ in seps.values())
+                ok = sep_ok and leak <= 0.5
+                _worst = sorted(_percell, key=lambda t: -t[1])[:4]
+                gate('B2', False, 'PASS' if ok else 'FAIL',
+                     f'leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage={leak:.3f} %-pts '
+                     f'(FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells ' +
+                     ', '.join(f'{k}:{g:.2f}' for k, g in _worst) + '; GOOD>BUST sep ' +
+                     ', '.join(f'{p} {g_:.1f}/{b_:.1f}' for p, (g_, b_) in sorted(seps.items())) +
+                     f' [cert engine {_cert["engine_head_md5"][:8]} store {_cert["store_md5"][:8]} config {(_cert.get("config_sha256") or "-")[:8]}]')
+except subprocess.TimeoutExpired:
+    gate('B2', False, 'FAIL', 'producer _gate1_wf.py timed out (2400s)')
 except Exception as ex:
     gate('B2', False, 'ERROR', f'{type(ex).__name__}: {ex}')
 # B3 — walk-forward book FREEZE-STAMP (wired at the v2.4 bake 2026-07-04). The book (s4 matrix) is
@@ -324,15 +392,19 @@ except Exception as ex:
 # sha256 to the baked baseline data/book_stable_seal.json. Raw-file sha will differ every regen BY DESIGN.
 try:
     _seal_path = os.path.join(ROOT, 'data', 'book_stable_seal.json')
-    _mpath_b3 = os.environ.get('S4_MATRIX', os.path.join(ROOT, 'data', 's4_matrix_baked_efea88e5.json'))  # BAKED walk-forward matrix (v2.5 DPP-strip, store e1b4d8bf)
+    _mpath_b3 = CAND_MATRIX     # gate-integrity (a): seal the CANDIDATE (regenerated this run), not the baked v2.5
     if 'B3' in SKIP:
         gate('B3', False, 'NOT-RUN', 'SGC_SKIP=B3')
     elif not os.path.exists(_seal_path):
         gate('B3', False, 'NOT-RUN', f'no book seal baseline at {os.path.relpath(_seal_path, ROOT)} — run the freeze-stamp to seal the baked book')
+    elif _mpath_b3 is None:
+        gate('B3', False, 'FAIL', f'candidate matrix unavailable — B3 cannot seal the candidate: {CAND_MATRIX_ERR}')
     else:
         def _b3_stable_sha(path):
             _d = json.load(open(path)); _by = {}
             for _idk, _rec in _d.items():
+                if _idk.startswith('__'):        # skip the gate-integrity __meta__ record (not a player row)
+                    continue
                 _by[(_rec.get('player'), _rec.get('type'), _rec.get('year'), _rec.get('pick'))] = _rec
             _h = hashlib.sha256()
             for _k in sorted(_by.keys(), key=lambda t: json.dumps(t, sort_keys=True)):
@@ -341,13 +413,30 @@ try:
             return _h.hexdigest(), len(_by)
         _seal = json.load(open(_seal_path))
         _cur_sha, _cur_n = _b3_stable_sha(_mpath_b3)
-        _ok3 = (_cur_sha == _seal.get('stable_sha256'))
-        gate('B3', False, 'PASS' if _ok3 else 'FAIL',
-             f"book stable-key seal {'MATCHES' if _ok3 else 'DIFFERS FROM'} baseline: current={_cur_sha[:16]}.. ({_cur_n} players) "
-             f"vs baseline={str(_seal.get('stable_sha256'))[:16]}.. ({_seal.get('n_players')} players, sealed head {_seal.get('head_md5')}); "
-             f"matrix={os.path.basename(_mpath_b3)} [raw-file sha is id(p)-keyed / non-deterministic by design]")
+        _sealed_head = str(_seal.get('head_md5', ''))[:8]
+        _match = (_cur_sha == _seal.get('stable_sha256'))
+        # The seal binds the stable-keyed FULL book content, so a value-moving candidate legitimately DIFFERS.
+        # Immutability is checked WITHIN a head: same sealed head + different content = a real violation (FAIL);
+        # a NEW head vs the sealed head = differs-by-design (the book must be RE-SEALED at the v2.6 bake — an
+        # owner-only bake action, flagged, NOT performed here). This is the (a) re-point: B3 now certifies the
+        # CANDIDATE and states which artifact it certifies, instead of silently sealing the v2.5 matrix.
+        if _match:
+            _st3, _verdict = 'PASS', 'MATCHES the sealed baseline'
+        elif _sealed_head != HEAD:
+            _st3, _verdict = 'DIFFERS-BY-DESIGN', ('candidate head %s != sealed head %s — new version; the v2.6 book '
+                                                   'must be RE-SEALED at the bake (owner action)' % (HEAD, _sealed_head))
+        else:
+            _st3, _verdict = 'FAIL', 'IMMUTABILITY VIOLATION: same sealed head %s but book content changed' % _sealed_head
+        gate('B3', False, _st3,
+             f"CANDIDATE book stable seal (regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or '-')[:12]}): "
+             f"{_verdict}. current={_cur_sha[:16]}.. ({_cur_n} players) vs baseline={str(_seal.get('stable_sha256'))[:16]}.. "
+             f"({_seal.get('n_players')} players, sealed head {_sealed_head}) [full stable-keyed content seal; "
+             f"raw-file sha is id(p)-keyed / non-deterministic by design]")
 except Exception as ex:
     gate('B3', False, 'ERROR', f'{type(ex).__name__}: {ex}')
+if CAND_MATRIX and os.path.exists(CAND_MATRIX):
+    try: os.remove(CAND_MATRIX)          # ephemeral gate artifact — not a committed data file (SSI-safe)
+    except OSError: pass
 # B4 — board parity: regenerate rl_app_data.json (subprocess: one-engine-load rule) and byte-compare to shipped
 try:
     if 'B4' in SKIP:
@@ -575,13 +664,13 @@ with open(rep, 'w') as f:
             '(3) cohort growth-law shape error vs the realized production curve. Each becomes C1x/C2x scripted lines.\n')
 print(f'report: {rep}  md5={hashlib.md5(open(rep,"rb").read()).hexdigest()[:8]}')
 # LOUD anti-leakage guard (folded at the v2.4 bake 2026-07-04): B2 (GATE-1 leakage) is MANDATORY. A
-# NOT-RUN B2 (missing /home/claude/gate1_out.txt or SGC_SKIP=B2) must NOT pass silently — it counts as a
-# FAILURE for the exit code. SCOPED to B2 only: other NOT-RUN/PENDING gates (A13/A14 PVC-staged, B4 skip)
-# keep their semantics. This is the silent-anti-leakage-failure the bake calls out — now it fails loud.
+# NOT-RUN B2 (SGC_SKIP=B2) must NOT pass silently — it counts as a FAILURE for the exit code. SCOPED to B2
+# only: other NOT-RUN/PENDING gates (A13/A14 PVC-staged, B4 skip) keep their semantics. (Gate-integrity b:
+# B2 now RUNS the producer itself, so a "producer not run" state no longer exists — only an explicit skip.)
 _b2st = [st for gid, _, st, _ in RES if gid == 'B2']
 _b2_notrun = bool(_b2st) and _b2st[0] == 'NOT-RUN'
 if _b2_notrun:
-    print('\n!! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN) — the MANDATORY leakage gate cannot be '
-          'skipped silently; run _gate1_wf.py first (writes /home/claude/gate1_out.txt). Treated as FAILURE.')
+    print('\n!! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN via SGC_SKIP=B2) — the MANDATORY '
+          'leakage gate cannot be skipped silently. Treated as FAILURE.')
 _hard_fail = any(st in ('FAIL', 'ERROR') for _, _, st, _ in RES) or _b2_notrun
 sys.exit(1 if _hard_fail else 0)
