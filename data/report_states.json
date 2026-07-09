@@ -22,6 +22,8 @@
   "db599058": "CANDIDATE v2.1 transient intra-session heads (superseded; values byte-identical to c8051893)",
   "af1fc6aa": "CANDIDATE v2.2 concave-ramp + V0-floor (CURRENT, D12)",
   "efea88e5": "BAKED v2.5 canonical (DPP strip final consolidation, store e1b4d8bf; A7 frozen-gate amendment; owner-authorised 2026-07-05)",
-  "375b11ef": "CANDIDATE W4 integration (multi-lever: fwd-recal + young + ruck#44+headroom + aging#45 + v7-form + KPF + deep-compress + PVC-fit; store e1b4d8bf)"
+  "375b11ef": "CANDIDATE W4 integration (multi-lever: fwd-recal + young + ruck#44+headroom + aging#45 + v7-form + KPF + deep-compress + PVC-fit; store e1b4d8bf)",
+  "275aa2a5": "CANDIDATE W4+L1c+KPF-rebalance (2026-07-09; board bcd81363 — PVC fit ON, R3-non-compliant; SUPERSEDED by 4b08796c)",
+  "4b08796c": "CANDIDATE W4+L1c+KPF R3fix (2026-07-09; RL_PVCFIT held out per R3; board 799b2290 frozen v3.4; store e1b4d8bf; CURRENT)"
  }
 }
