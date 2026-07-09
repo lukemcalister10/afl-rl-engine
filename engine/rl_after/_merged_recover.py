@@ -305,6 +305,10 @@ cp._age_asof=_m3_age_asof; MA.age=_m3_age; PR.tenure=_m3_ten; cp._feat=_m3_feat
 # KILL-SWITCHES (per-lever attribution): RL_FWDRECAL (credit+fade) · RL_YOUNG (= the L1c evidence-conditioned
 # expected-rerating credit since 2026-07-08; dial RL_YCRED_W) · RL_OVPX · RL_KPFFIX ·
 # RL_V7FORM · RL_W4_RUC · RL_FORMDECL · RL_PVCFIT. ALL OFF ⇒ byte-exact baked v2.5.
+# NOTE (2026-07-09, R3 remediation): every lever above DEFAULTS ON in the candidate EXCEPT RL_PVCFIT, which now
+# DEFAULTS OFF — owner ruling R3 holds the W4 PVC fit OUT of the bake (see the RL_PVCFIT block below + R3 BAKE
+# GUARD in rl_export.py). RL_PVCFIT only re-prices the pick side (board trade currency); it never touches player
+# values, so the "ALL OFF ⇒ byte-exact baked v2.5" invariant is unaffected by its default.
 _W4FWD=os.environ.get('RL_FWDRECAL','1')!='0'
 _W4YNG=os.environ.get('RL_YOUNG','1')!='0'
 _W4OVP=os.environ.get('RL_OVPX','1')!='0'
@@ -929,7 +933,7 @@ def ev(p,Y=2026):
 # `draftval` — the RUC prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
 # PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
 # declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
-_W4PVC=os.environ.get('RL_PVCFIT','1')!='0'
+_W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
 _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
 def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
 import json as _w4json

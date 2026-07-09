@@ -22,6 +22,19 @@ _ens = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], _ens)
 _ev = _ens['ev']; g = _ens['MA'].__dict__          # THE engine instance (rl_model imported as MA, valuation-wired)
+# ==== R3 BAKE GUARD (2026-07-09) — the PVC fit is HELD OUT of the baked board by owner ruling R3 ==========
+# The shipped board's pick currency (PVC / picks / intake*) MUST be the frozen v3.4 curve (_PVC0), never the
+# fitted candidate curve. RL_PVCFIT now defaults 0 (compliant-by-default); this guard makes a fitted board
+# UNBAKEABLE-WRONG: if the fit is active (_W4PVC True) the export HALTS rather than write an R3-non-compliant
+# board. An operator deliberately inspecting the fit sets RL_ALLOW_PVCFIT_BOARD=1 to write a clearly labelled
+# experimental board that is never used for a bake. Origin: the pre-2026-07-09 default '1' silently baked the
+# held-out fit into board bcd81363 (picks 3-60 down 18-42%); this guard + the flipped default close that hole.
+if _ens.get('_W4PVC') and os.environ.get('RL_ALLOW_PVCFIT_BOARD', '0') == '0':
+    raise SystemExit(
+        "R3 BAKE GUARD: RL_PVCFIT is ON (fitted PVC curve loaded) — writing rl_app_data.json would embed the "
+        "held-out fit into the board's pick currency, violating owner ruling R3 (RL_PVCFIT=0 at bake). "
+        "Refusing to write the board. Unset RL_PVCFIT (default 0) to bake the compliant frozen-v3.4 board, or "
+        "set RL_ALLOW_PVCFIT_BOARD=1 for an explicitly non-bakeable PVC-fit experiment.")
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # _merged_recover's load left MA's clock at a historical V0-build year; pin to the present before pulling AGE_REF / building display fields
 players=g['players']; GRP=g['GRP']; bnow=g['bnow']; effpk=g['effpk']; age=g['age']; level_now=g['level_now']
 level_stable=g['level_stable']; seasons=g['seasons']; srel=g['srel']; peak_est=g['peak_est']

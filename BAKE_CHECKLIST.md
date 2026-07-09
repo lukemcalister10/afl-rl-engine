@@ -38,6 +38,12 @@ Steps run IN ORDER; any step failing stops the ritual (subject to the SHIP_GATES
       [DC]-tagged gates get the triage question first by default.
 
 ## 4. BYTE-EXACT VALUES IN THE BAKE ENVIRONMENT
+- [ ] **SHIPPED LEVER CONFIG (R3, owner-ruled 2026-07-09):** `RL_PVCFIT=0` at bake — the W4 PVC fit is HELD OUT
+      (re-derivation queued). The engine default is now `0` (compliant-by-default) and `rl_export.py` carries the
+      R3 BAKE GUARD: it REFUSES to write `rl_app_data.json` if `RL_PVCFIT` is on (fitted pick curve loaded),
+      unless `RL_ALLOW_PVCFIT_BOARD=1` marks an explicitly non-bakeable experiment. A board baked with the fit on
+      (as `bcd81363` was, before this remediation) is R3-non-compliant — verify the shipped board embeds the
+      frozen v3.4 pick curve, never the fitted candidate curve. Assert the committed default is `0`; STOP if not.
 - [ ] `setup_env.sh` gate PASSes (pins: Python 3.12.3 · numpy 2.4.4 · scipy 1.17.1 · sklearn 1.8.0 · openpyxl 3.1.5).
 - [ ] Expected values reproduce byte-exact under the pins: Maric ev(2026)=1409, Langdon ev(2026)=593 (or the
       candidate's recorded successors), PANEL_EXPECTED 10/10. Off-pin numbers are not acceptance evidence.
