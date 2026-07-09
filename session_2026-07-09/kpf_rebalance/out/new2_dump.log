@@ -1,0 +1,2 @@
+boot-store guard (Guard 5) PASS  [board_dump]  store e1b4d8bf == pinned e1b4d8bf (candidate-w4-L1c-w0.9-owner-ruled-2026-07-08 (on v2.5 store e1b4d8bf))
+/home/user/afl-rl-engine/session_2026-07-09/kpf_rebalance/out/board_new2_ON.json: 805 rows

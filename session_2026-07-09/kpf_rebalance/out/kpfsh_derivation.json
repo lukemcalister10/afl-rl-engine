@@ -1,0 +1,2878 @@
+{
+ "n": 335,
+ "bins": [
+  {
+   "bin": "[-99,-8)",
+   "n": 26,
+   "mean_up": -35.25192307692308,
+   "mean_up_pos": 1.32,
+   "p_realize": 0.15384615384615385
+  },
+  {
+   "bin": "[-8,0)",
+   "n": 38,
+   "mean_up": -17.152105263157893,
+   "mean_up_pos": 4.160263157894737,
+   "p_realize": 0.5263157894736842
+  },
+  {
+   "bin": "[0,8)",
+   "n": 37,
+   "mean_up": -11.376486486486487,
+   "mean_up_pos": 4.579999999999999,
+   "p_realize": 0.5405405405405406
+  },
+  {
+   "bin": "[8,16)",
+   "n": 75,
+   "mean_up": -17.487066666666667,
+   "mean_up_pos": 4.256666666666667,
+   "p_realize": 0.5066666666666667
+  },
+  {
+   "bin": "[16,99)",
+   "n": 159,
+   "mean_up": -15.566603773584903,
+   "mean_up_pos": 4.213773584905661,
+   "p_realize": 0.4591194968553459
+  }
+ ],
+ "named_d": {
+  "jake-waterman": {
+   "d_top2": 5.11,
+   "n_hi_seasons": 5,
+   "top3": [
+    85.1,
+    58.7,
+    55.2
+   ]
+  },
+  "charlie-curnow": {
+   "d_top2": 24.63,
+   "n_hi_seasons": 6,
+   "top3": [
+    94.9,
+    88.0,
+    84.4
+   ]
+  },
+  "riley-thilthorpe": {
+   "d_top2": 14.49,
+   "n_hi_seasons": 3,
+   "top3": [
+    100.9,
+    61.6,
+    60.7
+   ]
+  },
+  "josh-treacy": {
+   "d_top2": 16.78,
+   "n_hi_seasons": 4,
+   "top3": [
+    86.2,
+    80.9,
+    57.7
+   ]
+  },
+  "sam-darcy": {
+   "d_top2": 23.04,
+   "n_hi_seasons": 2,
+   "top3": [
+    98.8,
+    80.9
+   ]
+  },
+  "jeremy-cameron": {
+   "d_top2": 25.06,
+   "n_hi_seasons": 14,
+   "top3": [
+    92.3,
+    91.4,
+    89.1
+   ]
+  },
+  "logan-mcdonald": {
+   "d_top2": -5.38,
+   "n_hi_seasons": 3,
+   "top3": [
+    62.6,
+    60.3,
+    51.3
+   ]
+  },
+  "mitch-georgiades": {
+   "d_top2": 6.46,
+   "n_hi_seasons": 4,
+   "top3": [
+    75.3,
+    71.2,
+    59.3
+   ]
+  },
+  "jack-lukosius": {
+   "d_top2": 13.02,
+   "n_hi_seasons": 6,
+   "top3": [
+    82.0,
+    77.6,
+    76.9
+   ]
+  },
+  "jack-gunston": {
+   "d_top2": 27.16,
+   "n_hi_seasons": 14,
+   "top3": [
+    95.1,
+    92.8,
+    91.0
+   ]
+  },
+  "aaron-naughton": {
+   "d_top2": 14.44,
+   "n_hi_seasons": 8,
+   "top3": [
+    82.7,
+    79.8,
+    76.7
+   ]
+  },
+  "harry-mckay": {
+   "d_top2": 20.96,
+   "n_hi_seasons": 8,
+   "top3": [
+    89.0,
+    86.6,
+    81.0
+   ]
+  },
+  "peter-wright": {
+   "d_top2": 14.98,
+   "n_hi_seasons": 7,
+   "top3": [
+    82.0,
+    81.5,
+    80.0
+   ]
+  },
+  "darcy-fogarty": {
+   "d_top2": 2.62,
+   "n_hi_seasons": 5,
+   "top3": [
+    69.5,
+    69.3,
+    69.1
+   ]
+  },
+  "ben-king": {
+   "d_top2": -3.15,
+   "n_hi_seasons": 6,
+   "top3": [
+    66.8,
+    60.5,
+    57.8
+   ]
+  },
+  "jack-whitlock": {
+   "d_top2": null,
+   "n_hi_seasons": 0,
+   "top3": []
+  },
+  "jed-walter": {
+   "d_top2": -25.35,
+   "n_hi_seasons": 2,
+   "top3": [
+    46.6,
+    36.3
+   ]
+  },
+  "ethan-read": {
+   "d_top2": null,
+   "n_hi_seasons": 1,
+   "top3": [
+    46.3
+   ]
+  }
+ },
+ "samples": [
+  {
+   "key": "brody-mihocek",
+   "Y": 2021,
+   "d": 0.41,
+   "Lc": 63.22,
+   "up": 4.18,
+   "realized": 1
+  },
+  {
+   "key": "brody-mihocek",
+   "Y": 2022,
+   "d": 0.41,
+   "Lc": 60.16,
+   "up": 7.24,
+   "realized": 1
+  },
+  {
+   "key": "todd-marshall",
+   "Y": 2022,
+   "d": 3.83,
+   "Lc": 71.54,
+   "up": -4.75,
+   "realized": 0
+  },
+  {
+   "key": "nick-larkey",
+   "Y": 2022,
+   "d": -6.59,
+   "Lc": 58.13,
+   "up": 15.55,
+   "realized": 1
+  },
+  {
+   "key": "jake-waterman",
+   "Y": 2022,
+   "d": -9.87,
+   "Lc": 54.85,
+   "up": 30.27,
+   "realized": 1
+  },
+  {
+   "key": "josh-schache",
+   "Y": 2021,
+   "d": -13.53,
+   "Lc": 52.83,
+   "up": -7.96,
+   "realized": 0
+  },
+  {
+   "key": "josh-schache",
+   "Y": 2022,
+   "d": -13.53,
+   "Lc": 47.75,
+   "up": -47.75,
+   "realized": 0
+  },
+  {
+   "key": "harry-mckay",
+   "Y": 2021,
+   "d": 5.12,
+   "Lc": 71.96,
+   "up": 14.6,
+   "realized": 1
+  },
+  {
+   "key": "harry-mckay",
+   "Y": 2022,
+   "d": 13.16,
+   "Lc": 76.56,
+   "up": 12.4,
+   "realized": 1
+  },
+  {
+   "key": "charlie-curnow",
+   "Y": 2022,
+   "d": 15.05,
+   "Lc": 83.08,
+   "up": 11.8,
+   "realized": 1
+  },
+  {
+   "key": "eric-hipwood",
+   "Y": 2021,
+   "d": -4.44,
+   "Lc": 59.4,
+   "up": 4.84,
+   "realized": 1
+  },
+  {
+   "key": "eric-hipwood",
+   "Y": 2022,
+   "d": -3.23,
+   "Lc": 59.28,
+   "up": 4.96,
+   "realized": 1
+  },
+  {
+   "key": "peter-wright",
+   "Y": 2021,
+   "d": 9.53,
+   "Lc": 78.49,
+   "up": 1.53,
+   "realized": 1
+  },
+  {
+   "key": "peter-wright",
+   "Y": 2022,
+   "d": 14.22,
+   "Lc": 78.36,
+   "up": 3.17,
+   "realized": 1
+  },
+  {
+   "key": "kyle-langford",
+   "Y": 2020,
+   "d": 11.45,
+   "Lc": 77.9,
+   "up": 10.54,
+   "realized": 1
+  },
+  {
+   "key": "kyle-langford",
+   "Y": 2021,
+   "d": 16.69,
+   "Lc": 83.37,
+   "up": -2.59,
+   "realized": 0
+  },
+  {
+   "key": "kyle-langford",
+   "Y": 2022,
+   "d": 16.69,
+   "Lc": 75.53,
+   "up": 5.25,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-finlayson",
+   "Y": 2021,
+   "d": 6.4,
+   "Lc": 69.03,
+   "up": 15.59,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-finlayson",
+   "Y": 2022,
+   "d": 13.92,
+   "Lc": 78.39,
+   "up": 3.42,
+   "realized": 1
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2019,
+   "d": -4.18,
+   "Lc": 64.27,
+   "up": -64.27,
+   "realized": 0
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2020,
+   "d": -4.18,
+   "Lc": 64.27,
+   "up": -64.27,
+   "realized": 0
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2021,
+   "d": -4.18,
+   "Lc": 64.27,
+   "up": -64.27,
+   "realized": 0
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2022,
+   "d": -4.18,
+   "Lc": 64.27,
+   "up": -64.27,
+   "realized": 0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2019,
+   "d": -14.03,
+   "Lc": 52.49,
+   "up": -52.49,
+   "realized": 0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2020,
+   "d": -14.03,
+   "Lc": 52.34,
+   "up": -52.34,
+   "realized": 0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2021,
+   "d": -14.03,
+   "Lc": 52.34,
+   "up": -52.34,
+   "realized": 0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2022,
+   "d": -14.03,
+   "Lc": 52.34,
+   "up": -52.34,
+   "realized": 0
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2019,
+   "d": -7.79,
+   "Lc": 56.89,
+   "up": 16.17,
+   "realized": 1
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2020,
+   "d": -7.79,
+   "Lc": 57.71,
+   "up": 15.35,
+   "realized": 1
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2021,
+   "d": -0.7,
+   "Lc": 66.13,
+   "up": 4.18,
+   "realized": 1
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2022,
+   "d": 4.89,
+   "Lc": 67.83,
+   "up": -1.16,
+   "realized": 0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2017,
+   "d": 7.15,
+   "Lc": 75.0,
+   "up": 6.18,
+   "realized": 1
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2018,
+   "d": 11.3,
+   "Lc": 79.95,
+   "up": -2.75,
+   "realized": 0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2019,
+   "d": 12.39,
+   "Lc": 79.68,
+   "up": -5.8,
+   "realized": 0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2020,
+   "d": 12.39,
+   "Lc": 67.73,
+   "up": 6.14,
+   "realized": 1
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2021,
+   "d": 12.39,
+   "Lc": 70.5,
+   "up": -8.1,
+   "realized": 0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2022,
+   "d": 12.39,
+   "Lc": 63.77,
+   "up": -1.37,
+   "realized": 0
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2018,
+   "d": 16.58,
+   "Lc": 86.35,
+   "up": -9.01,
+   "realized": 0
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2019,
+   "d": 16.58,
+   "Lc": 73.02,
+   "up": 13.03,
+   "realized": 1
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2020,
+   "d": 16.58,
+   "Lc": 66.56,
+   "up": 19.49,
+   "realized": 1
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2021,
+   "d": 16.58,
+   "Lc": 71.96,
+   "up": 24.53,
+   "realized": 1
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2022,
+   "d": 21.07,
+   "Lc": 81.06,
+   "up": 15.43,
+   "realized": 1
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2018,
+   "d": 9.04,
+   "Lc": 71.74,
+   "up": 5.9,
+   "realized": 1
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2019,
+   "d": 9.04,
+   "Lc": 68.73,
+   "up": 8.91,
+   "realized": 1
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2020,
+   "d": 9.04,
+   "Lc": 59.68,
+   "up": 26.21,
+   "realized": 1
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2021,
+   "d": 14.2,
+   "Lc": 74.03,
+   "up": 12.83,
+   "realized": 1
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2022,
+   "d": 14.2,
+   "Lc": 65.86,
+   "up": 21.01,
+   "realized": 1
+  },
+  {
+   "key": "james-stewart",
+   "Y": 2020,
+   "d": -9.51,
+   "Lc": 57.27,
+   "up": 3.67,
+   "realized": 1
+  },
+  {
+   "key": "james-stewart",
+   "Y": 2021,
+   "d": -4.67,
+   "Lc": 59.21,
+   "up": -9.95,
+   "realized": 0
+  },
+  {
+   "key": "james-stewart",
+   "Y": 2022,
+   "d": -4.67,
+   "Lc": 54.77,
+   "up": -54.77,
+   "realized": 0
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2019,
+   "d": -2.57,
+   "Lc": 65.54,
+   "up": -1.65,
+   "realized": 0
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2020,
+   "d": -2.57,
+   "Lc": 59.23,
+   "up": 5.21,
+   "realized": 1
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2021,
+   "d": -0.04,
+   "Lc": 61.48,
+   "up": 2.96,
+   "realized": 1
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2022,
+   "d": -0.04,
+   "Lc": 61.97,
+   "up": 2.47,
+   "realized": 1
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2018,
+   "d": 7.74,
+   "Lc": 73.43,
+   "up": 7.16,
+   "realized": 1
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2019,
+   "d": 10.39,
+   "Lc": 77.86,
+   "up": 2.74,
+   "realized": 1
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2020,
+   "d": 10.39,
+   "Lc": 74.04,
+   "up": 6.56,
+   "realized": 1
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2021,
+   "d": 12.54,
+   "Lc": 77.19,
+   "up": 0.28,
+   "realized": 1
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2022,
+   "d": 12.54,
+   "Lc": 76.33,
+   "up": -11.39,
+   "realized": 0
+  },
+  {
+   "key": "matthew-taberner",
+   "Y": 2021,
+   "d": 3.19,
+   "Lc": 69.39,
+   "up": -11.65,
+   "realized": 0
+  },
+  {
+   "key": "matthew-taberner",
+   "Y": 2022,
+   "d": 3.19,
+   "Lc": 62.09,
+   "up": -62.09,
+   "realized": 0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2018,
+   "d": 10.41,
+   "Lc": 75.99,
+   "up": -42.14,
+   "realized": 0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2019,
+   "d": 10.41,
+   "Lc": 75.99,
+   "up": -42.14,
+   "realized": 0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2020,
+   "d": 10.41,
+   "Lc": 51.66,
+   "up": -51.66,
+   "realized": 0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2021,
+   "d": 10.41,
+   "Lc": 51.66,
+   "up": -51.66,
+   "realized": 0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2022,
+   "d": 10.41,
+   "Lc": 51.66,
+   "up": -51.66,
+   "realized": 0
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2017,
+   "d": 12.1,
+   "Lc": 80.07,
+   "up": 8.3,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2018,
+   "d": 15.58,
+   "Lc": 81.37,
+   "up": 7.0,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2019,
+   "d": 19.57,
+   "Lc": 87.73,
+   "up": 4.56,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2020,
+   "d": 19.57,
+   "Lc": 79.36,
+   "up": 12.93,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2021,
+   "d": 19.57,
+   "Lc": 78.13,
+   "up": 14.15,
+   "realized": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2022,
+   "d": 23.53,
+   "Lc": 86.46,
+   "up": 4.97,
+   "realized": 1
+  },
+  {
+   "key": "sam-day",
+   "Y": 2016,
+   "d": -3.74,
+   "Lc": 63.35,
+   "up": 2.79,
+   "realized": 1
+  },
+  {
+   "key": "sam-day",
+   "Y": 2017,
+   "d": -3.74,
+   "Lc": 63.35,
+   "up": 2.79,
+   "realized": 1
+  },
+  {
+   "key": "sam-day",
+   "Y": 2018,
+   "d": -3.74,
+   "Lc": 57.86,
+   "up": 8.27,
+   "realized": 1
+  },
+  {
+   "key": "sam-day",
+   "Y": 2019,
+   "d": -3.74,
+   "Lc": 63.96,
+   "up": -6.19,
+   "realized": 0
+  },
+  {
+   "key": "sam-day",
+   "Y": 2020,
+   "d": -3.74,
+   "Lc": 57.9,
+   "up": -0.12,
+   "realized": 1
+  },
+  {
+   "key": "sam-day",
+   "Y": 2021,
+   "d": -3.74,
+   "Lc": 57.43,
+   "up": -57.43,
+   "realized": 0
+  },
+  {
+   "key": "sam-day",
+   "Y": 2022,
+   "d": -3.74,
+   "Lc": 55.89,
+   "up": -8.83,
+   "realized": 0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2016,
+   "d": 22.6,
+   "Lc": 90.28,
+   "up": -7.37,
+   "realized": 0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2017,
+   "d": 22.6,
+   "Lc": 87.28,
+   "up": -10.69,
+   "realized": 0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2018,
+   "d": 22.6,
+   "Lc": 83.44,
+   "up": -12.12,
+   "realized": 0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2019,
+   "d": 22.6,
+   "Lc": 75.04,
+   "up": 21.23,
+   "realized": 1
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2020,
+   "d": 22.6,
+   "Lc": 71.2,
+   "up": 25.07,
+   "realized": 1
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2021,
+   "d": 22.6,
+   "Lc": 70.46,
+   "up": 25.81,
+   "realized": 1
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2022,
+   "d": 26.88,
+   "Lc": 84.82,
+   "up": -26.72,
+   "realized": 0
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2015,
+   "d": 14.64,
+   "Lc": 70.81,
+   "up": 18.81,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2016,
+   "d": 14.64,
+   "Lc": 67.38,
+   "up": 22.24,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2017,
+   "d": 22.73,
+   "Lc": 83.96,
+   "up": 0.81,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2018,
+   "d": 22.73,
+   "Lc": 80.6,
+   "up": 8.15,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2019,
+   "d": 22.73,
+   "Lc": 74.19,
+   "up": 16.46,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2020,
+   "d": 22.73,
+   "Lc": 83.67,
+   "up": 6.98,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2021,
+   "d": 22.73,
+   "Lc": 86.04,
+   "up": 4.61,
+   "realized": 1
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2022,
+   "d": 23.34,
+   "Lc": 87.27,
+   "up": -2.5,
+   "realized": 0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2016,
+   "d": 11.11,
+   "Lc": 76.01,
+   "up": 9.95,
+   "realized": 1
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2017,
+   "d": 11.11,
+   "Lc": 73.32,
+   "up": 12.64,
+   "realized": 1
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2018,
+   "d": 15.57,
+   "Lc": 81.94,
+   "up": 0.21,
+   "realized": 1
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2019,
+   "d": 17.26,
+   "Lc": 83.61,
+   "up": -4.69,
+   "realized": 0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2020,
+   "d": 17.26,
+   "Lc": 82.9,
+   "up": -6.17,
+   "realized": 0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2021,
+   "d": 17.26,
+   "Lc": 78.17,
+   "up": -8.26,
+   "realized": 0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2022,
+   "d": 17.26,
+   "Lc": 72.33,
+   "up": -9.72,
+   "realized": 0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2015,
+   "d": 1.6,
+   "Lc": 69.47,
+   "up": 12.03,
+   "realized": 1
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2016,
+   "d": 8.3,
+   "Lc": 78.45,
+   "up": 0.49,
+   "realized": 1
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2017,
+   "d": 10.97,
+   "Lc": 77.01,
+   "up": 1.92,
+   "realized": 1
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2018,
+   "d": 13.42,
+   "Lc": 79.31,
+   "up": -12.88,
+   "realized": 0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2019,
+   "d": 13.42,
+   "Lc": 74.61,
+   "up": -74.61,
+   "realized": 0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2020,
+   "d": 13.42,
+   "Lc": 75.62,
+   "up": -75.62,
+   "realized": 0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2021,
+   "d": 13.42,
+   "Lc": 69.67,
+   "up": -69.67,
+   "realized": 0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2022,
+   "d": 13.42,
+   "Lc": 69.67,
+   "up": -69.67,
+   "realized": 0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2015,
+   "d": 1.52,
+   "Lc": 61.6,
+   "up": 7.86,
+   "realized": 1
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2016,
+   "d": 1.52,
+   "Lc": 61.6,
+   "up": 7.86,
+   "realized": 1
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2017,
+   "d": 1.87,
+   "Lc": 64.4,
+   "up": 5.06,
+   "realized": 1
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2018,
+   "d": 4.89,
+   "Lc": 69.14,
+   "up": -4.85,
+   "realized": 0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2019,
+   "d": 4.89,
+   "Lc": 67.73,
+   "up": -11.42,
+   "realized": 0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2020,
+   "d": 4.89,
+   "Lc": 59.84,
+   "up": -3.53,
+   "realized": 0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2021,
+   "d": 4.89,
+   "Lc": 51.29,
+   "up": 5.02,
+   "realized": 1
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2022,
+   "d": 4.89,
+   "Lc": 53.37,
+   "up": 11.85,
+   "realized": 1
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2015,
+   "d": 25.06,
+   "Lc": 93.01,
+   "up": -0.21,
+   "realized": 1
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2016,
+   "d": 25.27,
+   "Lc": 91.79,
+   "up": 1.02,
+   "realized": 1
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2017,
+   "d": 25.27,
+   "Lc": 88.65,
+   "up": 4.16,
+   "realized": 1
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2018,
+   "d": 27.16,
+   "Lc": 92.48,
+   "up": -14.23,
+   "realized": 0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2019,
+   "d": 27.16,
+   "Lc": 85.28,
+   "up": -7.03,
+   "realized": 0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2020,
+   "d": 27.16,
+   "Lc": 83.33,
+   "up": -10.25,
+   "realized": 0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2021,
+   "d": 27.16,
+   "Lc": 78.62,
+   "up": -5.55,
+   "realized": 0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2022,
+   "d": 27.16,
+   "Lc": 73.25,
+   "up": 17.77,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2015,
+   "d": -1.51,
+   "Lc": 66.62,
+   "up": 6.44,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2016,
+   "d": -1.51,
+   "Lc": 66.62,
+   "up": 9.61,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2017,
+   "d": 4.48,
+   "Lc": 73.35,
+   "up": 2.88,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2018,
+   "d": 4.48,
+   "Lc": 75.92,
+   "up": 5.09,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2019,
+   "d": 7.85,
+   "Lc": 78.04,
+   "up": 3.41,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2020,
+   "d": 7.85,
+   "Lc": 69.86,
+   "up": 11.59,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2021,
+   "d": 7.85,
+   "Lc": 75.13,
+   "up": 6.32,
+   "realized": 1
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2022,
+   "d": 12.04,
+   "Lc": 78.38,
+   "up": -78.38,
+   "realized": 0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2016,
+   "d": -3.45,
+   "Lc": 53.33,
+   "up": 18.82,
+   "realized": 1
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2017,
+   "d": -2.69,
+   "Lc": 61.69,
+   "up": 10.46,
+   "realized": 1
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2018,
+   "d": -2.69,
+   "Lc": 59.96,
+   "up": 12.19,
+   "realized": 1
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2019,
+   "d": 1.57,
+   "Lc": 69.7,
+   "up": -7.27,
+   "realized": 0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2020,
+   "d": 1.57,
+   "Lc": 66.98,
+   "up": -11.22,
+   "realized": 0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2021,
+   "d": 1.57,
+   "Lc": 57.82,
+   "up": -2.05,
+   "realized": 0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2022,
+   "d": 1.57,
+   "Lc": 51.87,
+   "up": 3.89,
+   "realized": 1
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2013,
+   "d": 19.68,
+   "Lc": 76.5,
+   "up": -8.35,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2014,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2015,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2016,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2017,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2018,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2019,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2020,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2021,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2022,
+   "d": 19.68,
+   "Lc": 71.98,
+   "up": -71.98,
+   "realized": 0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2017,
+   "d": -9.35,
+   "Lc": 56.17,
+   "up": -4.39,
+   "realized": 0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2018,
+   "d": -9.35,
+   "Lc": 54.72,
+   "up": -3.45,
+   "realized": 0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2019,
+   "d": -9.35,
+   "Lc": 53.25,
+   "up": -53.25,
+   "realized": 0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2020,
+   "d": -9.35,
+   "Lc": 53.25,
+   "up": -53.25,
+   "realized": 0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2021,
+   "d": -9.35,
+   "Lc": 47.22,
+   "up": -47.22,
+   "realized": 0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2022,
+   "d": -9.35,
+   "Lc": 47.22,
+   "up": -47.22,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2014,
+   "d": 10.74,
+   "Lc": 75.88,
+   "up": 0.9,
+   "realized": 1
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2015,
+   "d": 11.37,
+   "Lc": 77.12,
+   "up": -21.25,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2016,
+   "d": 11.37,
+   "Lc": 64.42,
+   "up": -12.49,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2017,
+   "d": 11.37,
+   "Lc": 60.43,
+   "up": -60.43,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2018,
+   "d": 11.37,
+   "Lc": 60.43,
+   "up": -60.43,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2019,
+   "d": 11.37,
+   "Lc": 60.43,
+   "up": -60.43,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2020,
+   "d": 11.37,
+   "Lc": 60.43,
+   "up": -60.43,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2021,
+   "d": 11.37,
+   "Lc": 60.43,
+   "up": -60.43,
+   "realized": 0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2022,
+   "d": 11.37,
+   "Lc": 60.43,
+   "up": -60.43,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2015,
+   "d": -0.23,
+   "Lc": 61.91,
+   "up": -9.23,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2016,
+   "d": -0.23,
+   "Lc": 57.22,
+   "up": -57.22,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2017,
+   "d": -0.23,
+   "Lc": 57.9,
+   "up": -57.9,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2018,
+   "d": -0.23,
+   "Lc": 57.9,
+   "up": -57.9,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2019,
+   "d": -0.23,
+   "Lc": 57.9,
+   "up": -57.9,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2020,
+   "d": -0.23,
+   "Lc": 57.9,
+   "up": -57.9,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2021,
+   "d": -0.23,
+   "Lc": 57.9,
+   "up": -57.9,
+   "realized": 0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2022,
+   "d": -0.23,
+   "Lc": 57.9,
+   "up": -57.9,
+   "realized": 0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2013,
+   "d": 8.2,
+   "Lc": 79.43,
+   "up": -4.46,
+   "realized": 0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2014,
+   "d": 11.03,
+   "Lc": 76.08,
+   "up": 0.71,
+   "realized": 1
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2015,
+   "d": 11.03,
+   "Lc": 71.06,
+   "up": 5.72,
+   "realized": 1
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2016,
+   "d": 12.36,
+   "Lc": 74.57,
+   "up": 2.22,
+   "realized": 1
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2017,
+   "d": 13.26,
+   "Lc": 77.31,
+   "up": -3.2,
+   "realized": 0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2018,
+   "d": 13.26,
+   "Lc": 76.82,
+   "up": 1.78,
+   "realized": 1
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2019,
+   "d": 13.26,
+   "Lc": 72.76,
+   "up": 5.84,
+   "realized": 1
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2020,
+   "d": 13.26,
+   "Lc": 74.61,
+   "up": 4.0,
+   "realized": 1
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2021,
+   "d": 14.17,
+   "Lc": 76.45,
+   "up": -76.45,
+   "realized": 0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2022,
+   "d": 14.17,
+   "Lc": 76.45,
+   "up": -76.45,
+   "realized": 0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2013,
+   "d": 13.59,
+   "Lc": 80.98,
+   "up": 0.48,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2014,
+   "d": 21.59,
+   "Lc": 80.34,
+   "up": 1.27,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2015,
+   "d": 22.95,
+   "Lc": 82.02,
+   "up": -0.41,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2016,
+   "d": 22.95,
+   "Lc": 82.23,
+   "up": -0.62,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2017,
+   "d": 23.03,
+   "Lc": 83.19,
+   "up": -17.81,
+   "realized": 0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2018,
+   "d": 23.03,
+   "Lc": 73.55,
+   "up": 14.32,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2019,
+   "d": 23.03,
+   "Lc": 69.47,
+   "up": 23.2,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2020,
+   "d": 23.03,
+   "Lc": 62.34,
+   "up": 30.33,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2021,
+   "d": 26.16,
+   "Lc": 76.87,
+   "up": 15.8,
+   "realized": 1
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2022,
+   "d": 28.55,
+   "Lc": 85.38,
+   "up": 6.08,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2012,
+   "d": 25.56,
+   "Lc": 87.42,
+   "up": 3.6,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2013,
+   "d": 25.56,
+   "Lc": 85.36,
+   "up": 5.67,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2014,
+   "d": 25.56,
+   "Lc": 84.23,
+   "up": 6.79,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2015,
+   "d": 25.69,
+   "Lc": 89.14,
+   "up": 1.15,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2016,
+   "d": 25.69,
+   "Lc": 87.23,
+   "up": 3.06,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2017,
+   "d": 25.69,
+   "Lc": 84.87,
+   "up": 5.41,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2018,
+   "d": 25.69,
+   "Lc": 89.5,
+   "up": -18.22,
+   "realized": 0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2019,
+   "d": 25.69,
+   "Lc": 80.24,
+   "up": -7.73,
+   "realized": 0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2020,
+   "d": 25.69,
+   "Lc": 68.63,
+   "up": 3.88,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2021,
+   "d": 25.69,
+   "Lc": 69.46,
+   "up": 3.05,
+   "realized": 1
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2022,
+   "d": 25.69,
+   "Lc": 70.35,
+   "up": -11.02,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2013,
+   "d": 8.7,
+   "Lc": 61.9,
+   "up": 3.71,
+   "realized": 1
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2014,
+   "d": 8.7,
+   "Lc": 64.98,
+   "up": -6.69,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2015,
+   "d": 8.7,
+   "Lc": 61.74,
+   "up": -10.87,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2016,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2017,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2018,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2019,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2020,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2021,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2022,
+   "d": 8.7,
+   "Lc": 58.12,
+   "up": -58.12,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2011,
+   "d": 13.53,
+   "Lc": 71.58,
+   "up": 13.36,
+   "realized": 1
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2012,
+   "d": 19.69,
+   "Lc": 79.93,
+   "up": 10.69,
+   "realized": 1
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2013,
+   "d": 19.69,
+   "Lc": 79.97,
+   "up": 10.66,
+   "realized": 1
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2014,
+   "d": 19.69,
+   "Lc": 78.21,
+   "up": 12.42,
+   "realized": 1
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2015,
+   "d": 22.53,
+   "Lc": 87.75,
+   "up": -6.49,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2016,
+   "d": 22.53,
+   "Lc": 85.06,
+   "up": -19.69,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2017,
+   "d": 22.53,
+   "Lc": 77.32,
+   "up": -77.32,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2018,
+   "d": 22.53,
+   "Lc": 77.32,
+   "up": -77.32,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2019,
+   "d": 22.53,
+   "Lc": 77.32,
+   "up": -77.32,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2020,
+   "d": 22.53,
+   "Lc": 77.32,
+   "up": -77.32,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2021,
+   "d": 22.53,
+   "Lc": 77.32,
+   "up": -77.32,
+   "realized": 0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2022,
+   "d": 22.53,
+   "Lc": 77.32,
+   "up": -77.32,
+   "realized": 0
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2012,
+   "d": 17.19,
+   "Lc": 85.7,
+   "up": 0.1,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2013,
+   "d": 17.19,
+   "Lc": 73.43,
+   "up": 12.37,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2014,
+   "d": 22.11,
+   "Lc": 82.11,
+   "up": -0.61,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2015,
+   "d": 22.11,
+   "Lc": 80.76,
+   "up": 17.91,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2016,
+   "d": 22.11,
+   "Lc": 82.35,
+   "up": 16.32,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2017,
+   "d": 22.11,
+   "Lc": 83.12,
+   "up": 19.02,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2018,
+   "d": 28.55,
+   "Lc": 93.65,
+   "up": 8.5,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2019,
+   "d": 28.55,
+   "Lc": 88.3,
+   "up": 13.85,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2020,
+   "d": 33.61,
+   "Lc": 98.84,
+   "up": -1.75,
+   "realized": 0
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2021,
+   "d": 33.61,
+   "Lc": 95.55,
+   "up": 1.54,
+   "realized": 1
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2022,
+   "d": 33.61,
+   "Lc": 95.21,
+   "up": -15.09,
+   "realized": 0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2010,
+   "d": 4.88,
+   "Lc": 70.92,
+   "up": 25.71,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2011,
+   "d": 12.95,
+   "Lc": 77.84,
+   "up": 18.79,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2012,
+   "d": 14.46,
+   "Lc": 79.53,
+   "up": 17.1,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2013,
+   "d": 22.55,
+   "Lc": 90.93,
+   "up": 2.39,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2014,
+   "d": 26.08,
+   "Lc": 90.75,
+   "up": 2.57,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2015,
+   "d": 28.18,
+   "Lc": 93.03,
+   "up": 5.86,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2016,
+   "d": 28.18,
+   "Lc": 88.41,
+   "up": 10.48,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2017,
+   "d": 28.18,
+   "Lc": 87.45,
+   "up": 11.44,
+   "realized": 1
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2018,
+   "d": 30.96,
+   "Lc": 95.61,
+   "up": -17.73,
+   "realized": 0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2019,
+   "d": 30.96,
+   "Lc": 86.77,
+   "up": -19.81,
+   "realized": 0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2020,
+   "d": 30.96,
+   "Lc": 78.93,
+   "up": -78.93,
+   "realized": 0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2021,
+   "d": 30.96,
+   "Lc": 78.93,
+   "up": -78.93,
+   "realized": 0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2022,
+   "d": 30.96,
+   "Lc": 78.93,
+   "up": -78.93,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2013,
+   "d": -3.25,
+   "Lc": 66.3,
+   "up": 5.91,
+   "realized": 1
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2014,
+   "d": -1.75,
+   "Lc": 63.1,
+   "up": 9.12,
+   "realized": 1
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2015,
+   "d": 1.49,
+   "Lc": 66.27,
+   "up": 5.94,
+   "realized": 1
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2016,
+   "d": 4.03,
+   "Lc": 70.68,
+   "up": -70.68,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2017,
+   "d": 4.03,
+   "Lc": 66.62,
+   "up": -66.62,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2018,
+   "d": 4.03,
+   "Lc": 66.62,
+   "up": -66.62,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2019,
+   "d": 4.03,
+   "Lc": 66.62,
+   "up": -66.62,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2020,
+   "d": 4.03,
+   "Lc": 66.62,
+   "up": -66.62,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2021,
+   "d": 4.03,
+   "Lc": 66.62,
+   "up": -66.62,
+   "realized": 0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2022,
+   "d": 4.03,
+   "Lc": 66.62,
+   "up": -66.62,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2010,
+   "d": 17.91,
+   "Lc": 78.03,
+   "up": 25.6,
+   "realized": 1
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2011,
+   "d": 17.91,
+   "Lc": 88.34,
+   "up": 15.29,
+   "realized": 1
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2012,
+   "d": 27.81,
+   "Lc": 98.58,
+   "up": -1.23,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2013,
+   "d": 33.69,
+   "Lc": 98.53,
+   "up": -3.61,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2014,
+   "d": 33.69,
+   "Lc": 96.9,
+   "up": -1.99,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2015,
+   "d": 33.69,
+   "Lc": 96.54,
+   "up": -12.28,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2016,
+   "d": 33.69,
+   "Lc": 96.54,
+   "up": -12.28,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2017,
+   "d": 33.69,
+   "Lc": 88.46,
+   "up": -6.7,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2018,
+   "d": 33.69,
+   "Lc": 85.38,
+   "up": -14.98,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2019,
+   "d": 33.69,
+   "Lc": 80.33,
+   "up": -80.33,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2020,
+   "d": 33.69,
+   "Lc": 80.33,
+   "up": -80.33,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2021,
+   "d": 33.69,
+   "Lc": 80.33,
+   "up": -80.33,
+   "realized": 0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2022,
+   "d": 33.69,
+   "Lc": 80.33,
+   "up": -80.33,
+   "realized": 0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2010,
+   "d": 41.38,
+   "Lc": 100.58,
+   "up": 14.84,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2011,
+   "d": 43.46,
+   "Lc": 106.78,
+   "up": 8.64,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2012,
+   "d": 46.49,
+   "Lc": 111.67,
+   "up": -13.43,
+   "realized": 0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2013,
+   "d": 46.49,
+   "Lc": 98.38,
+   "up": -0.14,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2014,
+   "d": 46.49,
+   "Lc": 99.31,
+   "up": -3.54,
+   "realized": 0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2015,
+   "d": 46.49,
+   "Lc": 92.26,
+   "up": 5.53,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2016,
+   "d": 46.49,
+   "Lc": 93.79,
+   "up": 4.0,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2017,
+   "d": 46.49,
+   "Lc": 96.58,
+   "up": 1.21,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2018,
+   "d": 46.49,
+   "Lc": 98.55,
+   "up": -12.04,
+   "realized": 0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2019,
+   "d": 46.49,
+   "Lc": 87.21,
+   "up": -0.7,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2020,
+   "d": 46.49,
+   "Lc": 87.21,
+   "up": -0.7,
+   "realized": 1
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2021,
+   "d": 46.49,
+   "Lc": 85.31,
+   "up": -5.9,
+   "realized": 0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2022,
+   "d": 46.49,
+   "Lc": 79.92,
+   "up": -21.61,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2011,
+   "d": -13.53,
+   "Lc": 53.06,
+   "up": -0.94,
+   "realized": 1
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2012,
+   "d": -13.53,
+   "Lc": 54.47,
+   "up": -2.35,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2013,
+   "d": -13.53,
+   "Lc": 51.74,
+   "up": 0.38,
+   "realized": 1
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2014,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2015,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2016,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2017,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2018,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2019,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2020,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2021,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2022,
+   "d": -13.53,
+   "Lc": 52.62,
+   "up": -52.62,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2010,
+   "d": 19.08,
+   "Lc": 84.28,
+   "up": 13.75,
+   "realized": 1
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2011,
+   "d": 28.35,
+   "Lc": 92.68,
+   "up": 1.41,
+   "realized": 1
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2012,
+   "d": 28.35,
+   "Lc": 85.86,
+   "up": 8.23,
+   "realized": 1
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2013,
+   "d": 29.25,
+   "Lc": 91.4,
+   "up": -20.1,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2014,
+   "d": 29.25,
+   "Lc": 80.34,
+   "up": -12.03,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2015,
+   "d": 29.25,
+   "Lc": 74.22,
+   "up": -7.0,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2016,
+   "d": 29.25,
+   "Lc": 69.58,
+   "up": -2.36,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2017,
+   "d": 29.25,
+   "Lc": 69.29,
+   "up": -69.29,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2018,
+   "d": 29.25,
+   "Lc": 69.29,
+   "up": -69.29,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2019,
+   "d": 29.25,
+   "Lc": 69.29,
+   "up": -69.29,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2020,
+   "d": 29.25,
+   "Lc": 69.29,
+   "up": -69.29,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2021,
+   "d": 29.25,
+   "Lc": 69.29,
+   "up": -69.29,
+   "realized": 0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2022,
+   "d": 29.25,
+   "Lc": 69.29,
+   "up": -69.29,
+   "realized": 0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2011,
+   "d": 13.33,
+   "Lc": 79.05,
+   "up": 9.9,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2012,
+   "d": 13.33,
+   "Lc": 70.94,
+   "up": 19.74,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2013,
+   "d": 21.22,
+   "Lc": 84.76,
+   "up": 10.92,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2014,
+   "d": 21.22,
+   "Lc": 81.24,
+   "up": 14.44,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2015,
+   "d": 23.01,
+   "Lc": 88.07,
+   "up": 7.61,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2016,
+   "d": 26.38,
+   "Lc": 94.04,
+   "up": -2.96,
+   "realized": 0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2017,
+   "d": 26.58,
+   "Lc": 93.75,
+   "up": -22.14,
+   "realized": 0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2018,
+   "d": 26.58,
+   "Lc": 84.19,
+   "up": -13.58,
+   "realized": 0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2019,
+   "d": 26.58,
+   "Lc": 68.97,
+   "up": 1.65,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2020,
+   "d": 26.58,
+   "Lc": 66.34,
+   "up": 4.28,
+   "realized": 1
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2021,
+   "d": 26.58,
+   "Lc": 68.17,
+   "up": -8.79,
+   "realized": 0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2022,
+   "d": 26.58,
+   "Lc": 62.5,
+   "up": -62.5,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2011,
+   "d": 21.54,
+   "Lc": 77.6,
+   "up": 6.45,
+   "realized": 1
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2012,
+   "d": 21.54,
+   "Lc": 80.76,
+   "up": -17.58,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2013,
+   "d": 21.54,
+   "Lc": 73.72,
+   "up": -10.54,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2014,
+   "d": 21.54,
+   "Lc": 73.72,
+   "up": -10.54,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2015,
+   "d": 21.54,
+   "Lc": 66.09,
+   "up": -66.09,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2016,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2017,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2018,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2019,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2020,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2021,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2022,
+   "d": 21.54,
+   "Lc": 58.53,
+   "up": -58.53,
+   "realized": 0
+  }
+ ]
+}

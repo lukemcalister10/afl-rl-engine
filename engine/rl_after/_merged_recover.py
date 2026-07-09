@@ -316,21 +316,79 @@ W4_KPFUP=float(os.environ.get('RL_W4_KPFUP','1.6'))       # KPF reward multiplie
 W4_FADE=float(os.environ.get('RL_W4_FADE','0.60'))        # moderate-margin established far-year fade (the funding leg; age-ramped 23->26 so young proven keep their prime years)
 W4_OVPX=float(os.environ.get('RL_W4_OVPX','1.0'))         # global scale on the deep-pick over-optimism compress (per-pos depths below)
 W4_OVPX_D={'GEN_FWD':0.12,'GEN_DEF':0.09,'MID':0.07}      # #43-measured deep-pick (41-70) coverage excess: 2.14 / 1.70 / 1.55 -> partial, data-earned compress; smooth in pick 38->46, thin-career only. MID 1-3 (2.09) NOT touched (owner-flagged).
-W4_KPFSH=float(os.environ.get('RL_W4_KPFSH','0.55'))      # established-KPF loose-residual retention (e' = eP + SH·(e−eP))
+W4_KPFSH=float(os.environ.get('RL_W4_KPFSH','0.55'))      # established-KPF LOOSE-residual retention (the slice ABOVE all demonstration since the 2026-07-09 rebalance; was the whole residual)
+# ==== KPF REBALANCE 2026-07-09 (pre-bake, owner-directed) — three KEY_FWD-scoped reshapes ==================
+# OWNER RULING (verbatim): "slightly reducing the valuation of speculative key forwards, and slightly raising
+# the valuation of production, especially the ones who are top tier scorers". Mechanisms, never per-player.
+# (T1) DEMONSTRATION-KEYED RETENTION: the KPFFIX compress no longer treats the whole above-eP residual as
+#   loose. The residual is SPLIT at eD = the engine's own price of the player's SUSTAINED DEMONSTRATED level
+#   LD (mean of top-2 high-games seasons, 12-bar, in-progress prorated 12·fE — the D10 bar convention;
+#   as-of-Y trailing, leak-free). The demonstrated-backed slice (eP..min(e,eD)) retains SH_DEM=0.70
+#   (measured: established-KPF gap-recovery E[r]=0.68 pooled ages 24-30, 0.73 in the 6-10pt gap bin —
+#   session_2026-07-09/kpf_rebalance/out/kpfsh_derivation2.json; the 30+ non-recovery is NOT charged here
+#   because eD already prices LD through the engine's age/horizon machinery — DECLARED double-count
+#   avoidance). The slice BEYOND all demonstration keeps the settled T1-shape 0.55 (measured loose:
+#   E[max(fwd−LD,0)]=2.06 vs 4.2-4.6 beyond current). Never touches young/speculative (gates unchanged).
+# (T2) TOP-TIER PRODUCTION REWARD (the concave regime, KEY_FWD cells): (i) the credit ramp for KEY_FWD keys
+#   on dm = max(m, LD−REPL) — sustained demonstrated margin, so a recency-dipped top-tier scorer is not
+#   zeroed — with the regime start/span rescaled by the measured KPF spread leverage (CV spread-ratio
+#   6.57/4.17 = 1.575, the SETTLED #9 measurement that motivated KPFFIX): 10/1.575=6.35, 20/1.575=12.70.
+#   (ii) a top-tier segment on the reward multiplier: kpfup(dm) = W4_KPFUP + KPFTOP·clip((dm−8)/16, 0, 1) —
+#   the regime stays concave (saturating), the plateau rises for genuine top-tier scorers (saturation ≈ the
+#   established-KPF 90th-pctile dm). (iii) PARTIAL-PROVEN KPF top-tier credit: a KEY_FWD with 2≤nqual<4 and
+#   top-tier SUSTAINED demonstration earns the same credit scaled c=n/PROVEN_N (the engine's standing
+#   partial-evidence convention), NO fade (F-YOUNG: the fade never reaches the young). One-season wonders
+#   (nqual<2 or <2 high-games seasons) earn nothing — demonstration-earned only.
+# (T3) SPECULATIVE TRIM: the L1c young credit's KEY_FWD cell intensity is scaled RL_YCRED_KPF=0.92 (slight,
+#   owner's word; denominator cost measured and reported in the build artifacts). Lives on the RL_YOUNG lever.
+# KILL-SWITCHES: T1+T2 ride RL_KPFFIX (=0 ⇒ legacy flat-0.55 compress shape? NO — =0 ⇒ NO compress and the
+#   legacy m-keyed ramp + flat KPFUP, byte-exact to the pre-rebalance KPFFIX-off path); T3 rides RL_YOUNG.
+#   ALL OFF ⇒ byte-exact baked v2.5 (re-verified this build).
+W4_KPFSH_DEM=float(os.environ.get('RL_W4_KPFSH_DEM','0.70'))  # demonstrated-backed residual slice retention (measured gap-recovery)
+W4_KPFTOP=float(os.environ.get('RL_W4_KPFTOP','0.4'))         # top-tier segment height on the KPF reward multiplier (calibrated to "slight" — the first-cut 0.8 moved elders +25-29%, over the owner's word)
+_KPF_M0=float(os.environ.get('RL_W4_KPFM0','8.0'))            # KPF credit-regime start (pool regime 10; the #9 spread leverage 1.575 bounds the rescale at 6.35 — 8.0 is the calibrated-slight point)
+_KPF_MS=float(os.environ.get('RL_W4_KPFMS','16.0'))           # KPF credit-regime span (pool 20; leverage bound 12.7; calibrated-slight 16)
+def _kpf_LD(p,Y):
+    """SUSTAINED RECENT demonstrated level as-of Y: mean of the top-2 high-games seasons WITHIN Y-3..Y
+    (12-bar; the in-progress season qualifies at 12·fE — D10 proration). RECENCY WINDOW (calibration 2):
+    career-ever top-2 let decade-old peaks hold a demonstration claim at 35 (first-cut Gunston/Walker/Darling
+    +22-28%) — the owner's named producers all demonstrate WITHIN the window, and the windowed gap-recovery
+    is the stronger measurement (E[r] 0.64 pooled / 0.78 ages 24-30 vs 0.43 unwindowed — derivation3 artifact).
+    None with <2 qualifying seasons (one-season wonders earn no demonstration claim). Leak-free: scoring ≤ Y."""
+    ls=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+               if Y-3<=y<=Y and gg>=12.0*(_fEy(Y) if y==Y else 1.0)),reverse=True)
+    return float(np.mean(ls[:2])) if len(ls)>=2 else None
 _W4CTX={'on':None}
 def _w4_ctx(p,Y):
     """Per-player form context for the recalibrated projection; None => byte-exact original path."""
     if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
     ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
-    if n>=PROVEN_N:
+    _kpf_reb=_W4KPF and pos=='KEY_FWD'                         # KPF REBALANCE T2 coordinates active
+    _partial=False
+    if _kpf_reb and 2<=n<PROVEN_N:                             # partial-proven KPF: top-tier sustained demonstration only
+        _LDp=_kpf_LD(p,Y)
+        if _LDp is not None:
+            _dmp=max(_lvlcurr(p,Y)-MA.REPL[pos],_LDp-MA.REPL[pos])
+            _partial=_dmp>_KPF_M0                              # below the regime start ⇒ byte-identical legacy thin path
+    if n>=PROVEN_N or _partial:
         Lc=_lvlcurr(p,Y); Lo=cp._lvl_eff_orig(p,Y)
         m=Lc-MA.REPL.get(pos,0.0)
         g3=sum(x.get('games',0) for x in p['scoring'] if Y-2<=x['year']<=Y)
-        ctx['gm']=float(np.clip((m-10.0)/20.0,0.0,1.0))   # credit ramp starts at m=10: "only the best-of-the-best clearly above replacement" (owner); the m 10-20 mid-band earns partial credit and carries most of the fade
+        if _kpf_reb:
+            _LD=_kpf_LD(p,Y); dm=max(m,(_LD-MA.REPL[pos]) if _LD is not None else m)
+            ctx['gm']=float(np.clip((dm-_KPF_M0)/_KPF_MS,0.0,1.0))   # sustained-demonstration ramp, KPF spread-rescaled regime
+            ctx['kt']=float(np.clip((dm-8.0)/16.0,0.0,1.0))          # top-tier segment coordinate
+            ctx['cw']=1.0 if n>=PROVEN_N else n/float(PROVEN_N)      # partial-evidence convention (c=n/4), credit only — fade stays proven-gated in _w4_W
+        else:
+            ctx['gm']=float(np.clip((m-10.0)/20.0,0.0,1.0))   # credit ramp starts at m=10: "only the best-of-the-best clearly above replacement" (owner); the m 10-20 mid-band earns partial credit and carries most of the fade
+            ctx['cw']=1.0
         ctx['dur']=float(np.clip(g3/28.0,0.0,1.0))
         ctx['sh']=1.0-float(np.clip((Lo-Lc-DOWN_TOL)/5.0,0.0,1.0))
         ctx['fadew']=float(np.clip(((a if a is not None else 25.0)-23.0)/3.0,0.0,1.0))  # fade age-ramp 23->26: a YOUNG proven player's far years are his PRIME (durable-young selection signal), not washout risk — the funding cohort is the established 25-30 mid
+        if _partial:                                          # a partial-proven KPF still carries his deep-pick coordinate (legacy else-branch behavior preserved)
+            _d=W4_OVPX_D.get(pos)
+            if _d: ctx['ovpx']=_d*float(np.interp(ctx['ep'],[38.,46.,99.],[0.,1.,1.]))
     else:
         # (L1c: the thin/yage runway fields are GONE with the old young leg; this branch now only carries
         # the deep-pick over-optimism compress coordinates)
@@ -340,11 +398,14 @@ def _w4_ctx(p,Y):
     return ctx
 def _w4_W(k,ctx):
     W=1.0
-    if ctx.get('n',0)>=PROVEN_N:
-        if _W4FWD:
-            up=W4_CRED*(W4_KPFUP if (_W4KPF and ctx['pos']=='KEY_FWD') else 1.0)
-            W+=up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
-            W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
+    if _W4FWD and ctx.get('cw',0.0)>0.0:
+            # KPF REBALANCE T2: kpfup(dm) = base + top-tier segment (KEY_FWD under RL_KPFFIX only); the
+            # credit scales by cw (1.0 proven; n/4 partial-proven KPF). The FADE stays PROVEN-gated — the
+            # funding leg never reaches a partial-proven young KPF (F-YOUNG).
+            up=W4_CRED*((W4_KPFUP+W4_KPFTOP*ctx.get('kt',0.0)) if (_W4KPF and ctx['pos']=='KEY_FWD') else 1.0)
+            W+=ctx['cw']*up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
+            if ctx.get('n',0)>=PROVEN_N:
+                W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
     # (L1c: the old `elif _W4YNG` runway leg was here — DELETED 2026-07-08, replaced by the evidence-
     #  conditioned expected-rerating credit on raw_ev below; RL_YOUNG gates THAT, never both.)
     if _W4OVP and ctx.get('ovpx',0.0)>0.0:
@@ -422,6 +483,7 @@ MA.prod_floor=_prod_floor_w4
 # above, never stacked). RL_YOUNG=0 ⇒ multiplier is EXACTLY 1.0 ⇒ byte-exact; ALL-OFF ⇒ byte-exact v2.5.
 # Table absent while RL_YOUNG=1 ⇒ HALT (halt-not-warn, guard-family behavior).
 _YC_W=float(os.environ.get('RL_YCRED_W','0.9'))               # owner dial: fraction of the measured re-rating paid forward — OWNER-RULED 0.9 (2026-07-08, on the W-TABLE; 0.7 was the pre-ruling shipped default)
+_YC_KPF=float(os.environ.get('RL_YCRED_KPF','0.92'))          # KPF REBALANCE T3 (2026-07-09): SLIGHT speculative-KPF trim — KEY_FWD cell intensity ×0.92 (owner's "slight"; F-YOUNG honored — no wipe; denominator cost measured in the build artifacts). Rides RL_YOUNG.
 _YC_TAB=None; _YC_LGRID=None; _YC_G0=46.0; _YC_TMIN=2007; _YC_TMAX=2026
 if _W4YNG:
     import json as _ycjson
@@ -450,6 +512,7 @@ def _ycred_mult(p,Y):
     Rs=float(np.interp(lp,_YC_LGRID,row['1'])); Rp=float(np.interp(lp,_YC_LGRID,row['0']))
     s=min(g/6.0,1.0)                                          # smooth sat->played blend over the first 6 games (no first-game cliff)
     R=max((1.0-s)*Rs+s*Rp,0.0)                                # clip >= 0 (fix direction; tension reported in the census)
+    if MA.gfut(p)=='KEY_FWD': R*=_YC_KPF                      # T3 KPF REBALANCE: slight KEY_FWD cell-intensity trim (continuous — a pure scale introduces no cliff on any axis)
     phi=(1.0-g/_YC_G0)**2                                     # full at zero evidence; C1 landing at G0
     return 1.0+_YC_W*R*phi
 _raw_ev_w4_0=raw_ev
@@ -462,10 +525,11 @@ _b6_pre_w4=b6
 def b6(p,Y=2026):
     if _B6PIN['L'] is not None: return np.full(6,float(_B6PIN['L']))
     return _b6_pre_w4(p,Y)
-def _kpf_prod_efv(p,Y):
+def _kpf_prod_efv(p,Y,L=None):
     """The engine's own price of the player's DEMONSTRATED level: band pinned at _lvl_eff (same W4 context, so
-    the margin credit survives — the compress removes only the band/prior excess above demonstrated output)."""
-    _B6PIN['L']=cp._lvl_eff(p,Y)
+    the margin credit survives — the compress removes only the band/prior excess above demonstrated output).
+    L pins an alternative demonstrated level (KPF REBALANCE T1: the SUSTAINED level LD prices the eD split)."""
+    _B6PIN['L']=cp._lvl_eff(p,Y) if L is None else float(L)
     try:
         with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
     finally: _B6PIN['L']=None
@@ -783,7 +847,15 @@ def ev(p,Y=2026):
         _nk=_nqual(p,Y); _ak=cp._age_asof(p,Y)
         if _nk>=PROVEN_N and _ak is not None and _ak>=24.0:
             _eP=_kpf_prod_efv(p,Y)
-            if e>_eP: e=_eP+W4_KPFSH*(e-_eP)
+            if e>_eP:
+                # KPF REBALANCE T1 (2026-07-09): the residual is SPLIT at eD = the engine's price of the
+                # SUSTAINED demonstrated level LD (top-2 high-games seasons). A KPF with sustained real
+                # production is not a loose residual: the demonstrated-backed slice retains SH_DEM=0.70
+                # (measured gap-recovery), only the slice beyond ALL demonstration keeps the settled 0.55.
+                # LD<=lvl_eff ⇒ eD=eP ⇒ byte-identical to the pre-rebalance take. Continuous everywhere.
+                _LD=_kpf_LD(p,Y); _le=cp._lvl_eff(p,Y)
+                _eD=_eP if (_LD is None or _LD<=_le) else min(max(_kpf_prod_efv(p,Y,L=_LD),_eP),e)
+                e=_eP+W4_KPFSH_DEM*(min(e,_eD)-_eP)+W4_KPFSH*(e-max(_eD,_eP))
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
     pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)

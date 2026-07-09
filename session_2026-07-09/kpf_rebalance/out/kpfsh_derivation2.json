@@ -1,0 +1,3145 @@
+{
+ "n": 335,
+ "n_gap": 222,
+ "E_r": 0.4257333854400898,
+ "median_r": 0.0,
+ "E_beyond": 2.06465671641791,
+ "named": {
+  "jake-waterman": {
+   "Lc": 76.2,
+   "LD": 82.2,
+   "m": 9.4,
+   "dm": 15.4,
+   "nq": 8
+  },
+  "charlie-curnow": {
+   "Lc": 73.1,
+   "LD": 91.4,
+   "m": 6.3,
+   "dm": 24.6,
+   "nq": 8
+  },
+  "riley-thilthorpe": {
+   "Lc": 82.9,
+   "LD": 87.4,
+   "m": 16.1,
+   "dm": 20.6,
+   "nq": 5
+  },
+  "josh-treacy": {
+   "Lc": 90.0,
+   "LD": 94.9,
+   "m": 23.2,
+   "dm": 28.1,
+   "nq": 5
+  },
+  "sam-darcy": {
+   "Lc": 86.1,
+   "LD": 89.8,
+   "m": 19.3,
+   "dm": 23.0,
+   "nq": 2
+  },
+  "jeremy-cameron": {
+   "Lc": 85.1,
+   "LD": 91.9,
+   "m": 18.3,
+   "dm": 25.1,
+   "nq": 15
+  },
+  "logan-mcdonald": {
+   "Lc": 64.5,
+   "LD": 64.5,
+   "m": -2.3,
+   "dm": -2.3,
+   "nq": 4
+  },
+  "mitch-georgiades": {
+   "Lc": 70.6,
+   "LD": 73.3,
+   "m": 3.8,
+   "dm": 6.5,
+   "nq": 5
+  },
+  "jack-lukosius": {
+   "Lc": 68.8,
+   "LD": 79.8,
+   "m": 2.0,
+   "dm": 13.0,
+   "nq": 6
+  },
+  "jack-gunston": {
+   "Lc": 81.1,
+   "LD": 94.0,
+   "m": 14.3,
+   "dm": 27.2,
+   "nq": 14
+  },
+  "aaron-naughton": {
+   "Lc": 74.0,
+   "LD": 81.2,
+   "m": 7.2,
+   "dm": 14.4,
+   "nq": 9
+  },
+  "harry-mckay": {
+   "Lc": 78.3,
+   "LD": 87.8,
+   "m": 11.5,
+   "dm": 21.0,
+   "nq": 9
+  },
+  "peter-wright": {
+   "Lc": 81.3,
+   "LD": 84.5,
+   "m": 14.5,
+   "dm": 17.7,
+   "nq": 9
+  },
+  "darcy-fogarty": {
+   "Lc": 61.5,
+   "LD": 69.4,
+   "m": -5.3,
+   "dm": 2.6,
+   "nq": 7
+  },
+  "ben-king": {
+   "Lc": 62.3,
+   "LD": 64.4,
+   "m": -4.5,
+   "dm": -2.4,
+   "nq": 7
+  },
+  "nick-larkey": {
+   "Lc": 68.2,
+   "LD": 72.3,
+   "m": 1.4,
+   "dm": 5.5,
+   "nq": 8
+  },
+  "mitchito-owens": {
+   "Lc": 67.8,
+   "LD": 75.3,
+   "m": 1.0,
+   "dm": 8.5,
+   "nq": 4
+  }
+ },
+ "samples": [
+  {
+   "key": "brody-mihocek",
+   "Y": 2021,
+   "Lc": 63.22,
+   "LD": 67.21,
+   "gap": 3.99,
+   "up": 4.18,
+   "beyond": 0.19
+  },
+  {
+   "key": "brody-mihocek",
+   "Y": 2022,
+   "Lc": 60.16,
+   "LD": 67.21,
+   "gap": 7.05,
+   "up": 7.24,
+   "beyond": 0.19
+  },
+  {
+   "key": "todd-marshall",
+   "Y": 2022,
+   "Lc": 71.54,
+   "LD": 70.63,
+   "gap": -0.91,
+   "up": -4.75,
+   "beyond": 0.0
+  },
+  {
+   "key": "nick-larkey",
+   "Y": 2022,
+   "Lc": 58.13,
+   "LD": 60.21,
+   "gap": 2.08,
+   "up": 15.55,
+   "beyond": 13.48
+  },
+  {
+   "key": "jake-waterman",
+   "Y": 2022,
+   "Lc": 54.85,
+   "LD": 56.93,
+   "gap": 2.07,
+   "up": 30.27,
+   "beyond": 28.2
+  },
+  {
+   "key": "josh-schache",
+   "Y": 2021,
+   "Lc": 52.83,
+   "LD": 53.27,
+   "gap": 0.45,
+   "up": -7.96,
+   "beyond": 0.0
+  },
+  {
+   "key": "josh-schache",
+   "Y": 2022,
+   "Lc": 47.75,
+   "LD": 53.27,
+   "gap": 5.52,
+   "up": -47.75,
+   "beyond": 0.0
+  },
+  {
+   "key": "harry-mckay",
+   "Y": 2021,
+   "Lc": 71.96,
+   "LD": 71.92,
+   "gap": -0.04,
+   "up": 14.6,
+   "beyond": 14.64
+  },
+  {
+   "key": "harry-mckay",
+   "Y": 2022,
+   "Lc": 76.56,
+   "LD": 79.96,
+   "gap": 3.4,
+   "up": 12.4,
+   "beyond": 9.0
+  },
+  {
+   "key": "charlie-curnow",
+   "Y": 2022,
+   "Lc": 83.08,
+   "LD": 81.85,
+   "gap": -1.23,
+   "up": 11.8,
+   "beyond": 13.02
+  },
+  {
+   "key": "eric-hipwood",
+   "Y": 2021,
+   "Lc": 59.4,
+   "LD": 62.36,
+   "gap": 2.97,
+   "up": 4.84,
+   "beyond": 1.88
+  },
+  {
+   "key": "eric-hipwood",
+   "Y": 2022,
+   "Lc": 59.28,
+   "LD": 63.57,
+   "gap": 4.29,
+   "up": 4.96,
+   "beyond": 0.66
+  },
+  {
+   "key": "peter-wright",
+   "Y": 2021,
+   "Lc": 78.49,
+   "LD": 76.33,
+   "gap": -2.16,
+   "up": 1.53,
+   "beyond": 3.69
+  },
+  {
+   "key": "peter-wright",
+   "Y": 2022,
+   "Lc": 78.36,
+   "LD": 81.02,
+   "gap": 2.66,
+   "up": 3.17,
+   "beyond": 0.5
+  },
+  {
+   "key": "kyle-langford",
+   "Y": 2020,
+   "Lc": 77.9,
+   "LD": 78.25,
+   "gap": 0.35,
+   "up": 10.54,
+   "beyond": 10.19
+  },
+  {
+   "key": "kyle-langford",
+   "Y": 2021,
+   "Lc": 83.37,
+   "LD": 83.49,
+   "gap": 0.12,
+   "up": -2.59,
+   "beyond": 0.0
+  },
+  {
+   "key": "kyle-langford",
+   "Y": 2022,
+   "Lc": 75.53,
+   "LD": 83.49,
+   "gap": 7.96,
+   "up": 5.25,
+   "beyond": 0.0
+  },
+  {
+   "key": "jeremy-finlayson",
+   "Y": 2021,
+   "Lc": 69.03,
+   "LD": 73.2,
+   "gap": 4.17,
+   "up": 15.59,
+   "beyond": 11.42
+  },
+  {
+   "key": "jeremy-finlayson",
+   "Y": 2022,
+   "Lc": 78.39,
+   "LD": 80.72,
+   "gap": 2.33,
+   "up": 3.42,
+   "beyond": 1.09
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2019,
+   "Lc": 64.27,
+   "LD": 62.62,
+   "gap": -1.65,
+   "up": -64.27,
+   "beyond": 0.0
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2020,
+   "Lc": 64.27,
+   "LD": 62.62,
+   "gap": -1.65,
+   "up": -64.27,
+   "beyond": 0.0
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2021,
+   "Lc": 64.27,
+   "LD": 62.62,
+   "gap": -1.65,
+   "up": -64.27,
+   "beyond": 0.0
+  },
+  {
+   "key": "thomas-boyd",
+   "Y": 2022,
+   "Lc": 64.27,
+   "LD": 62.62,
+   "gap": -1.65,
+   "up": -64.27,
+   "beyond": 0.0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2019,
+   "Lc": 52.49,
+   "LD": 52.77,
+   "gap": 0.28,
+   "up": -52.49,
+   "beyond": 0.0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2020,
+   "Lc": 52.34,
+   "LD": 52.77,
+   "gap": 0.43,
+   "up": -52.34,
+   "beyond": 0.0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2021,
+   "Lc": 52.34,
+   "LD": 52.77,
+   "gap": 0.43,
+   "up": -52.34,
+   "beyond": 0.0
+  },
+  {
+   "key": "cameron-mccarthy",
+   "Y": 2022,
+   "Lc": 52.34,
+   "LD": 52.77,
+   "gap": 0.43,
+   "up": -52.34,
+   "beyond": 0.0
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2019,
+   "Lc": 56.89,
+   "LD": 59.01,
+   "gap": 2.13,
+   "up": 16.17,
+   "beyond": 14.04
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2020,
+   "Lc": 57.71,
+   "LD": 59.01,
+   "gap": 1.31,
+   "up": 15.35,
+   "beyond": 14.04
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2021,
+   "Lc": 66.13,
+   "LD": 66.1,
+   "gap": -0.03,
+   "up": 4.18,
+   "beyond": 4.22
+  },
+  {
+   "key": "daniel-mcstay",
+   "Y": 2022,
+   "Lc": 67.83,
+   "LD": 71.69,
+   "gap": 3.86,
+   "up": -1.16,
+   "beyond": 0.0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2017,
+   "Lc": 75.0,
+   "LD": 73.95,
+   "gap": -1.05,
+   "up": 6.18,
+   "beyond": 7.23
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2018,
+   "Lc": 79.95,
+   "LD": 78.1,
+   "gap": -1.85,
+   "up": -2.75,
+   "beyond": 0.0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2019,
+   "Lc": 79.68,
+   "LD": 79.19,
+   "gap": -0.49,
+   "up": -5.8,
+   "beyond": 0.0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2020,
+   "Lc": 67.73,
+   "LD": 79.19,
+   "gap": 11.46,
+   "up": 6.14,
+   "beyond": 0.0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2021,
+   "Lc": 70.5,
+   "LD": 79.19,
+   "gap": 8.7,
+   "up": -8.1,
+   "beyond": 0.0
+  },
+  {
+   "key": "ben-brown",
+   "Y": 2022,
+   "Lc": 63.77,
+   "LD": 79.19,
+   "gap": 15.42,
+   "up": -1.37,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2018,
+   "Lc": 86.35,
+   "LD": 83.38,
+   "gap": -2.97,
+   "up": -9.01,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2019,
+   "Lc": 73.02,
+   "LD": 83.38,
+   "gap": 10.36,
+   "up": 13.03,
+   "beyond": 2.67
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2020,
+   "Lc": 66.56,
+   "LD": 83.38,
+   "gap": 16.82,
+   "up": 19.49,
+   "beyond": 2.67
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2021,
+   "Lc": 71.96,
+   "LD": 83.38,
+   "gap": 11.41,
+   "up": 24.53,
+   "beyond": 13.11
+  },
+  {
+   "key": "jesse-hogan",
+   "Y": 2022,
+   "Lc": 81.06,
+   "LD": 87.87,
+   "gap": 6.81,
+   "up": 15.43,
+   "beyond": 8.62
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2018,
+   "Lc": 71.74,
+   "LD": 75.84,
+   "gap": 4.1,
+   "up": 5.9,
+   "beyond": 1.81
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2019,
+   "Lc": 68.73,
+   "LD": 75.84,
+   "gap": 7.1,
+   "up": 8.91,
+   "beyond": 1.81
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2020,
+   "Lc": 59.68,
+   "LD": 75.84,
+   "gap": 16.16,
+   "up": 26.21,
+   "beyond": 10.05
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2021,
+   "Lc": 74.03,
+   "LD": 81.0,
+   "gap": 6.97,
+   "up": 12.83,
+   "beyond": 5.86
+  },
+  {
+   "key": "joe-daniher",
+   "Y": 2022,
+   "Lc": 65.86,
+   "LD": 81.0,
+   "gap": 15.15,
+   "up": 21.01,
+   "beyond": 5.86
+  },
+  {
+   "key": "james-stewart",
+   "Y": 2020,
+   "Lc": 57.27,
+   "LD": 57.29,
+   "gap": 0.02,
+   "up": 3.67,
+   "beyond": 3.65
+  },
+  {
+   "key": "james-stewart",
+   "Y": 2021,
+   "Lc": 59.21,
+   "LD": 62.13,
+   "gap": 2.92,
+   "up": -9.95,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-stewart",
+   "Y": 2022,
+   "Lc": 54.77,
+   "LD": 62.13,
+   "gap": 7.36,
+   "up": -54.77,
+   "beyond": 0.0
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2019,
+   "Lc": 65.54,
+   "LD": 64.23,
+   "gap": -1.3,
+   "up": -1.65,
+   "beyond": 0.0
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2020,
+   "Lc": 59.23,
+   "LD": 64.23,
+   "gap": 5.0,
+   "up": 5.21,
+   "beyond": 0.21
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2021,
+   "Lc": 61.48,
+   "LD": 66.76,
+   "gap": 5.28,
+   "up": 2.96,
+   "beyond": 0.0
+  },
+  {
+   "key": "tim-o-brien",
+   "Y": 2022,
+   "Lc": 61.97,
+   "LD": 66.76,
+   "gap": 4.78,
+   "up": 2.47,
+   "beyond": 0.0
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2018,
+   "Lc": 73.43,
+   "LD": 74.54,
+   "gap": 1.11,
+   "up": 7.16,
+   "beyond": 6.06
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2019,
+   "Lc": 77.86,
+   "LD": 77.19,
+   "gap": -0.67,
+   "up": 2.74,
+   "beyond": 3.4
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2020,
+   "Lc": 74.04,
+   "LD": 77.19,
+   "gap": 3.15,
+   "up": 6.56,
+   "beyond": 3.4
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2021,
+   "Lc": 77.19,
+   "LD": 79.34,
+   "gap": 2.15,
+   "up": 0.28,
+   "beyond": 0.0
+  },
+  {
+   "key": "tim-membrey",
+   "Y": 2022,
+   "Lc": 76.33,
+   "LD": 79.34,
+   "gap": 3.01,
+   "up": -11.39,
+   "beyond": 0.0
+  },
+  {
+   "key": "matthew-taberner",
+   "Y": 2021,
+   "Lc": 69.39,
+   "LD": 69.99,
+   "gap": 0.6,
+   "up": -11.65,
+   "beyond": 0.0
+  },
+  {
+   "key": "matthew-taberner",
+   "Y": 2022,
+   "Lc": 62.09,
+   "LD": 69.99,
+   "gap": 7.91,
+   "up": -62.09,
+   "beyond": 0.0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2018,
+   "Lc": 75.99,
+   "LD": 77.21,
+   "gap": 1.22,
+   "up": -42.14,
+   "beyond": 0.0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2019,
+   "Lc": 75.99,
+   "LD": 77.21,
+   "gap": 1.22,
+   "up": -42.14,
+   "beyond": 0.0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2020,
+   "Lc": 51.66,
+   "LD": 77.21,
+   "gap": 25.55,
+   "up": -51.66,
+   "beyond": 0.0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2021,
+   "Lc": 51.66,
+   "LD": 77.21,
+   "gap": 25.55,
+   "up": -51.66,
+   "beyond": 0.0
+  },
+  {
+   "key": "jonathon-patton",
+   "Y": 2022,
+   "Lc": 51.66,
+   "LD": 77.21,
+   "gap": 25.55,
+   "up": -51.66,
+   "beyond": 0.0
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2017,
+   "Lc": 80.07,
+   "LD": 78.9,
+   "gap": -1.17,
+   "up": 8.3,
+   "beyond": 9.47
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2018,
+   "Lc": 81.37,
+   "LD": 82.38,
+   "gap": 1.01,
+   "up": 7.0,
+   "beyond": 5.99
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2019,
+   "Lc": 87.73,
+   "LD": 86.37,
+   "gap": -1.36,
+   "up": 4.56,
+   "beyond": 5.92
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2020,
+   "Lc": 79.36,
+   "LD": 86.37,
+   "gap": 7.01,
+   "up": 12.93,
+   "beyond": 5.92
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2021,
+   "Lc": 78.13,
+   "LD": 86.37,
+   "gap": 8.24,
+   "up": 14.15,
+   "beyond": 5.92
+  },
+  {
+   "key": "jeremy-cameron",
+   "Y": 2022,
+   "Lc": 86.46,
+   "LD": 90.33,
+   "gap": 3.86,
+   "up": 4.97,
+   "beyond": 1.1
+  },
+  {
+   "key": "sam-day",
+   "Y": 2016,
+   "Lc": 63.35,
+   "LD": 63.06,
+   "gap": -0.28,
+   "up": 2.79,
+   "beyond": 3.07
+  },
+  {
+   "key": "sam-day",
+   "Y": 2017,
+   "Lc": 63.35,
+   "LD": 63.06,
+   "gap": -0.28,
+   "up": 2.79,
+   "beyond": 3.07
+  },
+  {
+   "key": "sam-day",
+   "Y": 2018,
+   "Lc": 57.86,
+   "LD": 63.06,
+   "gap": 5.2,
+   "up": 8.27,
+   "beyond": 3.07
+  },
+  {
+   "key": "sam-day",
+   "Y": 2019,
+   "Lc": 63.96,
+   "LD": 63.06,
+   "gap": -0.9,
+   "up": -6.19,
+   "beyond": 0.0
+  },
+  {
+   "key": "sam-day",
+   "Y": 2020,
+   "Lc": 57.9,
+   "LD": 63.06,
+   "gap": 5.17,
+   "up": -0.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "sam-day",
+   "Y": 2021,
+   "Lc": 57.43,
+   "LD": 63.06,
+   "gap": 5.63,
+   "up": -57.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "sam-day",
+   "Y": 2022,
+   "Lc": 55.89,
+   "LD": 63.06,
+   "gap": 7.17,
+   "up": -8.83,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2016,
+   "Lc": 90.28,
+   "LD": 89.4,
+   "gap": -0.87,
+   "up": -7.37,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2017,
+   "Lc": 87.28,
+   "LD": 89.4,
+   "gap": 2.12,
+   "up": -10.69,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2018,
+   "Lc": 83.44,
+   "LD": 89.4,
+   "gap": 5.96,
+   "up": -12.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2019,
+   "Lc": 75.04,
+   "LD": 89.4,
+   "gap": 14.37,
+   "up": 21.23,
+   "beyond": 6.87
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2020,
+   "Lc": 71.2,
+   "LD": 89.4,
+   "gap": 18.2,
+   "up": 25.07,
+   "beyond": 6.87
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2021,
+   "Lc": 70.46,
+   "LD": 89.4,
+   "gap": 18.94,
+   "up": 25.81,
+   "beyond": 6.87
+  },
+  {
+   "key": "tom-lynch-1",
+   "Y": 2022,
+   "Lc": 84.82,
+   "LD": 93.68,
+   "gap": 8.86,
+   "up": -26.72,
+   "beyond": 0.0
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2015,
+   "Lc": 70.81,
+   "LD": 81.44,
+   "gap": 10.63,
+   "up": 18.81,
+   "beyond": 8.18
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2016,
+   "Lc": 67.38,
+   "LD": 81.44,
+   "gap": 14.06,
+   "up": 22.24,
+   "beyond": 8.18
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2017,
+   "Lc": 83.96,
+   "LD": 89.53,
+   "gap": 5.57,
+   "up": 0.81,
+   "beyond": 0.0
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2018,
+   "Lc": 80.6,
+   "LD": 89.53,
+   "gap": 8.93,
+   "up": 8.15,
+   "beyond": 0.0
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2019,
+   "Lc": 74.19,
+   "LD": 89.53,
+   "gap": 15.34,
+   "up": 16.46,
+   "beyond": 1.12
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2020,
+   "Lc": 83.67,
+   "LD": 89.53,
+   "gap": 5.86,
+   "up": 6.98,
+   "beyond": 1.12
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2021,
+   "Lc": 86.04,
+   "LD": 89.53,
+   "gap": 3.5,
+   "up": 4.61,
+   "beyond": 1.12
+  },
+  {
+   "key": "charlie-dixon",
+   "Y": 2022,
+   "Lc": 87.27,
+   "LD": 90.14,
+   "gap": 2.87,
+   "up": -2.5,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2016,
+   "Lc": 76.01,
+   "LD": 77.91,
+   "gap": 1.89,
+   "up": 9.95,
+   "beyond": 8.06
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2017,
+   "Lc": 73.32,
+   "LD": 77.91,
+   "gap": 4.58,
+   "up": 12.64,
+   "beyond": 8.06
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2018,
+   "Lc": 81.94,
+   "LD": 82.37,
+   "gap": 0.43,
+   "up": 0.21,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2019,
+   "Lc": 83.61,
+   "LD": 84.06,
+   "gap": 0.45,
+   "up": -4.69,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2020,
+   "Lc": 82.9,
+   "LD": 84.06,
+   "gap": 1.16,
+   "up": -6.17,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2021,
+   "Lc": 78.17,
+   "LD": 84.06,
+   "gap": 5.89,
+   "up": -8.26,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-darling",
+   "Y": 2022,
+   "Lc": 72.33,
+   "LD": 84.06,
+   "gap": 11.73,
+   "up": -9.72,
+   "beyond": 0.0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2015,
+   "Lc": 69.47,
+   "LD": 68.4,
+   "gap": -1.07,
+   "up": 12.03,
+   "beyond": 13.1
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2016,
+   "Lc": 78.45,
+   "LD": 75.1,
+   "gap": -3.35,
+   "up": 0.49,
+   "beyond": 3.84
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2017,
+   "Lc": 77.01,
+   "LD": 77.77,
+   "gap": 0.76,
+   "up": 1.92,
+   "beyond": 1.17
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2018,
+   "Lc": 79.31,
+   "LD": 80.22,
+   "gap": 0.91,
+   "up": -12.88,
+   "beyond": 0.0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2019,
+   "Lc": 74.61,
+   "LD": 80.22,
+   "gap": 5.61,
+   "up": -74.61,
+   "beyond": 0.0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2020,
+   "Lc": 75.62,
+   "LD": 80.22,
+   "gap": 4.59,
+   "up": -75.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2021,
+   "Lc": 69.67,
+   "LD": 80.22,
+   "gap": 10.54,
+   "up": -69.67,
+   "beyond": 0.0
+  },
+  {
+   "key": "josh-jenkins",
+   "Y": 2022,
+   "Lc": 69.67,
+   "LD": 80.22,
+   "gap": 10.54,
+   "up": -69.67,
+   "beyond": 0.0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2015,
+   "Lc": 61.6,
+   "LD": 68.32,
+   "gap": 6.72,
+   "up": 7.86,
+   "beyond": 1.14
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2016,
+   "Lc": 61.6,
+   "LD": 68.32,
+   "gap": 6.72,
+   "up": 7.86,
+   "beyond": 1.14
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2017,
+   "Lc": 64.4,
+   "LD": 68.67,
+   "gap": 4.28,
+   "up": 5.06,
+   "beyond": 0.79
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2018,
+   "Lc": 69.14,
+   "LD": 71.69,
+   "gap": 2.55,
+   "up": -4.85,
+   "beyond": 0.0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2019,
+   "Lc": 67.73,
+   "LD": 71.69,
+   "gap": 3.96,
+   "up": -11.42,
+   "beyond": 0.0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2020,
+   "Lc": 59.84,
+   "LD": 71.69,
+   "gap": 11.85,
+   "up": -3.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2021,
+   "Lc": 51.29,
+   "LD": 71.69,
+   "gap": 20.4,
+   "up": 5.02,
+   "beyond": 0.0
+  },
+  {
+   "key": "jake-melksham",
+   "Y": 2022,
+   "Lc": 53.37,
+   "LD": 71.69,
+   "gap": 18.32,
+   "up": 11.85,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2015,
+   "Lc": 93.01,
+   "LD": 91.86,
+   "gap": -1.16,
+   "up": -0.21,
+   "beyond": 0.95
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2016,
+   "Lc": 91.79,
+   "LD": 92.07,
+   "gap": 0.28,
+   "up": 1.02,
+   "beyond": 0.74
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2017,
+   "Lc": 88.65,
+   "LD": 92.07,
+   "gap": 3.42,
+   "up": 4.16,
+   "beyond": 0.74
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2018,
+   "Lc": 92.48,
+   "LD": 93.96,
+   "gap": 1.48,
+   "up": -14.23,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2019,
+   "Lc": 85.28,
+   "LD": 93.96,
+   "gap": 8.68,
+   "up": -7.03,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2020,
+   "Lc": 83.33,
+   "LD": 93.96,
+   "gap": 10.63,
+   "up": -10.25,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2021,
+   "Lc": 78.62,
+   "LD": 93.96,
+   "gap": 15.34,
+   "up": -5.55,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-gunston",
+   "Y": 2022,
+   "Lc": 73.25,
+   "LD": 93.96,
+   "gap": 20.71,
+   "up": 17.77,
+   "beyond": 0.0
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2015,
+   "Lc": 66.62,
+   "LD": 65.29,
+   "gap": -1.33,
+   "up": 6.44,
+   "beyond": 7.77
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2016,
+   "Lc": 66.62,
+   "LD": 65.29,
+   "gap": -1.33,
+   "up": 9.61,
+   "beyond": 10.94
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2017,
+   "Lc": 73.35,
+   "LD": 71.28,
+   "gap": -2.08,
+   "up": 2.88,
+   "beyond": 4.96
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2018,
+   "Lc": 75.92,
+   "LD": 71.28,
+   "gap": -4.64,
+   "up": 5.09,
+   "beyond": 9.73
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2019,
+   "Lc": 78.04,
+   "LD": 74.65,
+   "gap": -3.39,
+   "up": 3.41,
+   "beyond": 6.8
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2020,
+   "Lc": 69.86,
+   "LD": 74.65,
+   "gap": 4.79,
+   "up": 11.59,
+   "beyond": 6.8
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2021,
+   "Lc": 75.13,
+   "LD": 74.65,
+   "gap": -0.48,
+   "up": 6.32,
+   "beyond": 6.8
+  },
+  {
+   "key": "sam-reid-syd",
+   "Y": 2022,
+   "Lc": 78.38,
+   "LD": 78.84,
+   "gap": 0.46,
+   "up": -78.38,
+   "beyond": 0.0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2016,
+   "Lc": 53.33,
+   "LD": 63.35,
+   "gap": 10.02,
+   "up": 18.82,
+   "beyond": 8.8
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2017,
+   "Lc": 61.69,
+   "LD": 64.11,
+   "gap": 2.41,
+   "up": 10.46,
+   "beyond": 8.05
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2018,
+   "Lc": 59.96,
+   "LD": 64.11,
+   "gap": 4.14,
+   "up": 12.19,
+   "beyond": 8.05
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2019,
+   "Lc": 69.7,
+   "LD": 68.37,
+   "gap": -1.33,
+   "up": -7.27,
+   "beyond": 0.0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2020,
+   "Lc": 66.98,
+   "LD": 68.37,
+   "gap": 1.39,
+   "up": -11.22,
+   "beyond": 0.0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2021,
+   "Lc": 57.82,
+   "LD": 68.37,
+   "gap": 10.55,
+   "up": -2.05,
+   "beyond": 0.0
+  },
+  {
+   "key": "levi-casboult",
+   "Y": 2022,
+   "Lc": 51.87,
+   "LD": 68.37,
+   "gap": 16.5,
+   "up": 3.89,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2013,
+   "Lc": 76.5,
+   "LD": 86.48,
+   "gap": 9.98,
+   "up": -8.35,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2014,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2015,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2016,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2017,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2018,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2019,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2020,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2021,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "james-podsiadly",
+   "Y": 2022,
+   "Lc": 71.98,
+   "LD": 86.48,
+   "gap": 14.5,
+   "up": -71.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2017,
+   "Lc": 56.17,
+   "LD": 57.45,
+   "gap": 1.28,
+   "up": -4.39,
+   "beyond": 0.0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2018,
+   "Lc": 54.72,
+   "LD": 57.45,
+   "gap": 2.73,
+   "up": -3.45,
+   "beyond": 0.0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2019,
+   "Lc": 53.25,
+   "LD": 57.45,
+   "gap": 4.2,
+   "up": -53.25,
+   "beyond": 0.0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2020,
+   "Lc": 53.25,
+   "LD": 57.45,
+   "gap": 4.2,
+   "up": -53.25,
+   "beyond": 0.0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2021,
+   "Lc": 47.22,
+   "LD": 57.45,
+   "gap": 10.23,
+   "up": -47.22,
+   "beyond": 0.0
+  },
+  {
+   "key": "patrick-ambrose",
+   "Y": 2022,
+   "Lc": 47.22,
+   "LD": 57.45,
+   "gap": 10.23,
+   "up": -47.22,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2014,
+   "Lc": 75.88,
+   "LD": 77.54,
+   "gap": 1.66,
+   "up": 0.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2015,
+   "Lc": 77.12,
+   "LD": 78.17,
+   "gap": 1.05,
+   "up": -21.25,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2016,
+   "Lc": 64.42,
+   "LD": 78.17,
+   "gap": 13.75,
+   "up": -12.49,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2017,
+   "Lc": 60.43,
+   "LD": 78.17,
+   "gap": 17.74,
+   "up": -60.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2018,
+   "Lc": 60.43,
+   "LD": 78.17,
+   "gap": 17.74,
+   "up": -60.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2019,
+   "Lc": 60.43,
+   "LD": 78.17,
+   "gap": 17.74,
+   "up": -60.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2020,
+   "Lc": 60.43,
+   "LD": 78.17,
+   "gap": 17.74,
+   "up": -60.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2021,
+   "Lc": 60.43,
+   "LD": 78.17,
+   "gap": 17.74,
+   "up": -60.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "tyrone-vickery",
+   "Y": 2022,
+   "Lc": 60.43,
+   "LD": 78.17,
+   "gap": 17.74,
+   "up": -60.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2015,
+   "Lc": 61.91,
+   "LD": 66.57,
+   "gap": 4.65,
+   "up": -9.23,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2016,
+   "Lc": 57.22,
+   "LD": 66.57,
+   "gap": 9.35,
+   "up": -57.22,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2017,
+   "Lc": 57.9,
+   "LD": 66.57,
+   "gap": 8.66,
+   "up": -57.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2018,
+   "Lc": 57.9,
+   "LD": 66.57,
+   "gap": 8.66,
+   "up": -57.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2019,
+   "Lc": 57.9,
+   "LD": 66.57,
+   "gap": 8.66,
+   "up": -57.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2020,
+   "Lc": 57.9,
+   "LD": 66.57,
+   "gap": 8.66,
+   "up": -57.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2021,
+   "Lc": 57.9,
+   "LD": 66.57,
+   "gap": 8.66,
+   "up": -57.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarrad-grant",
+   "Y": 2022,
+   "Lc": 57.9,
+   "LD": 66.57,
+   "gap": 8.66,
+   "up": -57.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2013,
+   "Lc": 79.43,
+   "LD": 75.0,
+   "gap": -4.43,
+   "up": -4.46,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2014,
+   "Lc": 76.08,
+   "LD": 77.83,
+   "gap": 1.75,
+   "up": 0.71,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2015,
+   "Lc": 71.06,
+   "LD": 77.83,
+   "gap": 6.77,
+   "up": 5.72,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2016,
+   "Lc": 74.57,
+   "LD": 79.16,
+   "gap": 4.59,
+   "up": 2.22,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2017,
+   "Lc": 77.31,
+   "LD": 80.06,
+   "gap": 2.75,
+   "up": -3.2,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2018,
+   "Lc": 76.82,
+   "LD": 80.06,
+   "gap": 3.24,
+   "up": 1.78,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2019,
+   "Lc": 72.76,
+   "LD": 80.06,
+   "gap": 7.31,
+   "up": 5.84,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2020,
+   "Lc": 74.61,
+   "LD": 80.06,
+   "gap": 5.46,
+   "up": 4.0,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2021,
+   "Lc": 76.45,
+   "LD": 80.97,
+   "gap": 4.52,
+   "up": -76.45,
+   "beyond": 0.0
+  },
+  {
+   "key": "lachlan-henderson",
+   "Y": 2022,
+   "Lc": 76.45,
+   "LD": 80.97,
+   "gap": 4.52,
+   "up": -76.45,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2013,
+   "Lc": 80.98,
+   "LD": 80.39,
+   "gap": -0.59,
+   "up": 0.48,
+   "beyond": 1.07
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2014,
+   "Lc": 80.34,
+   "LD": 88.39,
+   "gap": 8.05,
+   "up": 1.27,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2015,
+   "Lc": 82.02,
+   "LD": 89.75,
+   "gap": 7.73,
+   "up": -0.41,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2016,
+   "Lc": 82.23,
+   "LD": 89.75,
+   "gap": 7.52,
+   "up": -0.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2017,
+   "Lc": 83.19,
+   "LD": 89.83,
+   "gap": 6.64,
+   "up": -17.81,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2018,
+   "Lc": 73.55,
+   "LD": 89.83,
+   "gap": 16.28,
+   "up": 14.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2019,
+   "Lc": 69.47,
+   "LD": 89.83,
+   "gap": 20.36,
+   "up": 23.2,
+   "beyond": 2.83
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2020,
+   "Lc": 62.34,
+   "LD": 89.83,
+   "gap": 27.49,
+   "up": 30.33,
+   "beyond": 2.83
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2021,
+   "Lc": 76.87,
+   "LD": 92.96,
+   "gap": 16.09,
+   "up": 15.8,
+   "beyond": 0.0
+  },
+  {
+   "key": "taylor-walker",
+   "Y": 2022,
+   "Lc": 85.38,
+   "LD": 95.35,
+   "gap": 9.97,
+   "up": 6.08,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2012,
+   "Lc": 87.42,
+   "LD": 92.36,
+   "gap": 4.93,
+   "up": 3.6,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2013,
+   "Lc": 85.36,
+   "LD": 92.36,
+   "gap": 7.0,
+   "up": 5.67,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2014,
+   "Lc": 84.23,
+   "LD": 92.36,
+   "gap": 8.12,
+   "up": 6.79,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2015,
+   "Lc": 89.14,
+   "LD": 92.49,
+   "gap": 3.35,
+   "up": 1.15,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2016,
+   "Lc": 87.23,
+   "LD": 92.49,
+   "gap": 5.26,
+   "up": 3.06,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2017,
+   "Lc": 84.87,
+   "LD": 92.49,
+   "gap": 7.62,
+   "up": 5.41,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2018,
+   "Lc": 89.5,
+   "LD": 92.49,
+   "gap": 2.99,
+   "up": -18.22,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2019,
+   "Lc": 80.24,
+   "LD": 92.49,
+   "gap": 12.25,
+   "up": -7.73,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2020,
+   "Lc": 68.63,
+   "LD": 92.49,
+   "gap": 23.86,
+   "up": 3.88,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2021,
+   "Lc": 69.46,
+   "LD": 92.49,
+   "gap": 23.03,
+   "up": 3.05,
+   "beyond": 0.0
+  },
+  {
+   "key": "jack-riewoldt",
+   "Y": 2022,
+   "Lc": 70.35,
+   "LD": 92.49,
+   "gap": 22.14,
+   "up": -11.02,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2013,
+   "Lc": 61.9,
+   "LD": 75.5,
+   "gap": 13.6,
+   "up": 3.71,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2014,
+   "Lc": 64.98,
+   "LD": 75.5,
+   "gap": 10.52,
+   "up": -6.69,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2015,
+   "Lc": 61.74,
+   "LD": 75.5,
+   "gap": 13.76,
+   "up": -10.87,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2016,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2017,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2018,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2019,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2020,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2021,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "chris-dawes",
+   "Y": 2022,
+   "Lc": 58.12,
+   "LD": 75.5,
+   "gap": 17.38,
+   "up": -58.12,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2011,
+   "Lc": 71.58,
+   "LD": 80.33,
+   "gap": 8.75,
+   "up": 13.36,
+   "beyond": 4.61
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2012,
+   "Lc": 79.93,
+   "LD": 86.49,
+   "gap": 6.55,
+   "up": 10.69,
+   "beyond": 4.14
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2013,
+   "Lc": 79.97,
+   "LD": 86.49,
+   "gap": 6.52,
+   "up": 10.66,
+   "beyond": 4.14
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2014,
+   "Lc": 78.21,
+   "LD": 86.49,
+   "gap": 8.28,
+   "up": 12.42,
+   "beyond": 4.14
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2015,
+   "Lc": 87.75,
+   "LD": 89.33,
+   "gap": 1.58,
+   "up": -6.49,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2016,
+   "Lc": 85.06,
+   "LD": 89.33,
+   "gap": 4.27,
+   "up": -19.69,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2017,
+   "Lc": 77.32,
+   "LD": 89.33,
+   "gap": 12.01,
+   "up": -77.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2018,
+   "Lc": 77.32,
+   "LD": 89.33,
+   "gap": 12.01,
+   "up": -77.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2019,
+   "Lc": 77.32,
+   "LD": 89.33,
+   "gap": 12.01,
+   "up": -77.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2020,
+   "Lc": 77.32,
+   "LD": 89.33,
+   "gap": 12.01,
+   "up": -77.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2021,
+   "Lc": 77.32,
+   "LD": 89.33,
+   "gap": 12.01,
+   "up": -77.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "kurt-tippett",
+   "Y": 2022,
+   "Lc": 77.32,
+   "LD": 89.33,
+   "gap": 12.01,
+   "up": -77.32,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2012,
+   "Lc": 85.7,
+   "LD": 83.99,
+   "gap": -1.7,
+   "up": 0.1,
+   "beyond": 1.81
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2013,
+   "Lc": 73.43,
+   "LD": 83.99,
+   "gap": 10.56,
+   "up": 12.37,
+   "beyond": 1.81
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2014,
+   "Lc": 82.11,
+   "LD": 88.91,
+   "gap": 6.81,
+   "up": -0.61,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2015,
+   "Lc": 80.76,
+   "LD": 88.91,
+   "gap": 8.15,
+   "up": 17.91,
+   "beyond": 9.75
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2016,
+   "Lc": 82.35,
+   "LD": 88.91,
+   "gap": 6.56,
+   "up": 16.32,
+   "beyond": 9.75
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2017,
+   "Lc": 83.12,
+   "LD": 88.91,
+   "gap": 5.79,
+   "up": 19.02,
+   "beyond": 13.23
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2018,
+   "Lc": 93.65,
+   "LD": 95.35,
+   "gap": 1.7,
+   "up": 8.5,
+   "beyond": 6.8
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2019,
+   "Lc": 88.3,
+   "LD": 95.35,
+   "gap": 7.05,
+   "up": 13.85,
+   "beyond": 6.8
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2020,
+   "Lc": 98.84,
+   "LD": 100.41,
+   "gap": 1.57,
+   "up": -1.75,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2021,
+   "Lc": 95.55,
+   "LD": 100.41,
+   "gap": 4.86,
+   "up": 1.54,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-hawkins",
+   "Y": 2022,
+   "Lc": 95.21,
+   "LD": 100.41,
+   "gap": 5.19,
+   "up": -15.09,
+   "beyond": 0.0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2010,
+   "Lc": 70.92,
+   "LD": 71.68,
+   "gap": 0.76,
+   "up": 25.71,
+   "beyond": 24.95
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2011,
+   "Lc": 77.84,
+   "LD": 79.75,
+   "gap": 1.91,
+   "up": 18.79,
+   "beyond": 16.89
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2012,
+   "Lc": 79.53,
+   "LD": 81.26,
+   "gap": 1.72,
+   "up": 17.1,
+   "beyond": 15.38
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2013,
+   "Lc": 90.93,
+   "LD": 89.35,
+   "gap": -1.58,
+   "up": 2.39,
+   "beyond": 3.97
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2014,
+   "Lc": 90.75,
+   "LD": 92.88,
+   "gap": 2.14,
+   "up": 2.57,
+   "beyond": 0.43
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2015,
+   "Lc": 93.03,
+   "LD": 94.98,
+   "gap": 1.95,
+   "up": 5.86,
+   "beyond": 3.92
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2016,
+   "Lc": 88.41,
+   "LD": 94.98,
+   "gap": 6.56,
+   "up": 10.48,
+   "beyond": 3.92
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2017,
+   "Lc": 87.45,
+   "LD": 94.98,
+   "gap": 7.53,
+   "up": 11.44,
+   "beyond": 3.92
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2018,
+   "Lc": 95.61,
+   "LD": 97.76,
+   "gap": 2.15,
+   "up": -17.73,
+   "beyond": 0.0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2019,
+   "Lc": 86.77,
+   "LD": 97.76,
+   "gap": 10.99,
+   "up": -19.81,
+   "beyond": 0.0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2020,
+   "Lc": 78.93,
+   "LD": 97.76,
+   "gap": 18.83,
+   "up": -78.93,
+   "beyond": 0.0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2021,
+   "Lc": 78.93,
+   "LD": 97.76,
+   "gap": 18.83,
+   "up": -78.93,
+   "beyond": 0.0
+  },
+  {
+   "key": "justin-westhoff",
+   "Y": 2022,
+   "Lc": 78.93,
+   "LD": 97.76,
+   "gap": 18.83,
+   "up": -78.93,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2013,
+   "Lc": 66.3,
+   "LD": 63.55,
+   "gap": -2.75,
+   "up": 5.91,
+   "beyond": 8.66
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2014,
+   "Lc": 63.1,
+   "LD": 65.05,
+   "gap": 1.95,
+   "up": 9.12,
+   "beyond": 7.17
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2015,
+   "Lc": 66.27,
+   "LD": 68.29,
+   "gap": 2.02,
+   "up": 5.94,
+   "beyond": 3.92
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2016,
+   "Lc": 70.68,
+   "LD": 70.83,
+   "gap": 0.15,
+   "up": -70.68,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2017,
+   "Lc": 66.62,
+   "LD": 70.83,
+   "gap": 4.21,
+   "up": -66.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2018,
+   "Lc": 66.62,
+   "LD": 70.83,
+   "gap": 4.21,
+   "up": -66.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2019,
+   "Lc": 66.62,
+   "LD": 70.83,
+   "gap": 4.21,
+   "up": -66.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2020,
+   "Lc": 66.62,
+   "LD": 70.83,
+   "gap": 4.21,
+   "up": -66.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2021,
+   "Lc": 66.62,
+   "LD": 70.83,
+   "gap": 4.21,
+   "up": -66.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "jesse-white",
+   "Y": 2022,
+   "Lc": 66.62,
+   "LD": 70.83,
+   "gap": 4.21,
+   "up": -66.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2010,
+   "Lc": 78.03,
+   "LD": 84.71,
+   "gap": 6.69,
+   "up": 25.6,
+   "beyond": 18.91
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2011,
+   "Lc": 88.34,
+   "LD": 84.71,
+   "gap": -3.63,
+   "up": 15.29,
+   "beyond": 18.91
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2012,
+   "Lc": 98.58,
+   "LD": 94.61,
+   "gap": -3.96,
+   "up": -1.23,
+   "beyond": 2.73
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2013,
+   "Lc": 98.53,
+   "LD": 100.49,
+   "gap": 1.96,
+   "up": -3.61,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2014,
+   "Lc": 96.9,
+   "LD": 100.49,
+   "gap": 3.58,
+   "up": -1.99,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2015,
+   "Lc": 96.54,
+   "LD": 100.49,
+   "gap": 3.94,
+   "up": -12.28,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2016,
+   "Lc": 96.54,
+   "LD": 100.49,
+   "gap": 3.94,
+   "up": -12.28,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2017,
+   "Lc": 88.46,
+   "LD": 100.49,
+   "gap": 12.02,
+   "up": -6.7,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2018,
+   "Lc": 85.38,
+   "LD": 100.49,
+   "gap": 15.1,
+   "up": -14.98,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2019,
+   "Lc": 80.33,
+   "LD": 100.49,
+   "gap": 20.16,
+   "up": -80.33,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2020,
+   "Lc": 80.33,
+   "LD": 100.49,
+   "gap": 20.16,
+   "up": -80.33,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2021,
+   "Lc": 80.33,
+   "LD": 100.49,
+   "gap": 20.16,
+   "up": -80.33,
+   "beyond": 0.0
+  },
+  {
+   "key": "jarryd-roughead",
+   "Y": 2022,
+   "Lc": 80.33,
+   "LD": 100.49,
+   "gap": 20.16,
+   "up": -80.33,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2010,
+   "Lc": 100.58,
+   "LD": 108.18,
+   "gap": 7.6,
+   "up": 14.84,
+   "beyond": 7.24
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2011,
+   "Lc": 106.78,
+   "LD": 110.26,
+   "gap": 3.48,
+   "up": 8.64,
+   "beyond": 5.16
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2012,
+   "Lc": 111.67,
+   "LD": 113.29,
+   "gap": 1.62,
+   "up": -13.43,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2013,
+   "Lc": 98.38,
+   "LD": 113.29,
+   "gap": 14.91,
+   "up": -0.14,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2014,
+   "Lc": 99.31,
+   "LD": 113.29,
+   "gap": 13.99,
+   "up": -3.54,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2015,
+   "Lc": 92.26,
+   "LD": 113.29,
+   "gap": 21.03,
+   "up": 5.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2016,
+   "Lc": 93.79,
+   "LD": 113.29,
+   "gap": 19.51,
+   "up": 4.0,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2017,
+   "Lc": 96.58,
+   "LD": 113.29,
+   "gap": 16.71,
+   "up": 1.21,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2018,
+   "Lc": 98.55,
+   "LD": 113.29,
+   "gap": 14.75,
+   "up": -12.04,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2019,
+   "Lc": 87.21,
+   "LD": 113.29,
+   "gap": 26.09,
+   "up": -0.7,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2020,
+   "Lc": 87.21,
+   "LD": 113.29,
+   "gap": 26.09,
+   "up": -0.7,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2021,
+   "Lc": 85.31,
+   "LD": 113.29,
+   "gap": 27.99,
+   "up": -5.9,
+   "beyond": 0.0
+  },
+  {
+   "key": "lance-franklin",
+   "Y": 2022,
+   "Lc": 79.92,
+   "LD": 113.29,
+   "gap": 33.37,
+   "up": -21.61,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2011,
+   "Lc": 53.06,
+   "LD": 53.27,
+   "gap": 0.21,
+   "up": -0.94,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2012,
+   "Lc": 54.47,
+   "LD": 53.27,
+   "gap": -1.2,
+   "up": -2.35,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2013,
+   "Lc": 51.74,
+   "LD": 53.27,
+   "gap": 1.53,
+   "up": 0.38,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2014,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2015,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2016,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2017,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2018,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2019,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2020,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2021,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "tom-williams",
+   "Y": 2022,
+   "Lc": 52.62,
+   "LD": 53.27,
+   "gap": 0.65,
+   "up": -52.62,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2010,
+   "Lc": 84.28,
+   "LD": 85.88,
+   "gap": 1.61,
+   "up": 13.75,
+   "beyond": 12.14
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2011,
+   "Lc": 92.68,
+   "LD": 95.15,
+   "gap": 2.47,
+   "up": 1.41,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2012,
+   "Lc": 85.86,
+   "LD": 95.15,
+   "gap": 9.29,
+   "up": 8.23,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2013,
+   "Lc": 91.4,
+   "LD": 96.05,
+   "gap": 4.66,
+   "up": -20.1,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2014,
+   "Lc": 80.34,
+   "LD": 96.05,
+   "gap": 15.72,
+   "up": -12.03,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2015,
+   "Lc": 74.22,
+   "LD": 96.05,
+   "gap": 21.84,
+   "up": -7.0,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2016,
+   "Lc": 69.58,
+   "LD": 96.05,
+   "gap": 26.48,
+   "up": -2.36,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2017,
+   "Lc": 69.29,
+   "LD": 96.05,
+   "gap": 26.76,
+   "up": -69.29,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2018,
+   "Lc": 69.29,
+   "LD": 96.05,
+   "gap": 26.76,
+   "up": -69.29,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2019,
+   "Lc": 69.29,
+   "LD": 96.05,
+   "gap": 26.76,
+   "up": -69.29,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2020,
+   "Lc": 69.29,
+   "LD": 96.05,
+   "gap": 26.76,
+   "up": -69.29,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2021,
+   "Lc": 69.29,
+   "LD": 96.05,
+   "gap": 26.76,
+   "up": -69.29,
+   "beyond": 0.0
+  },
+  {
+   "key": "travis-cloke",
+   "Y": 2022,
+   "Lc": 69.29,
+   "LD": 96.05,
+   "gap": 26.76,
+   "up": -69.29,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2011,
+   "Lc": 79.05,
+   "LD": 80.13,
+   "gap": 1.08,
+   "up": 9.9,
+   "beyond": 8.82
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2012,
+   "Lc": 70.94,
+   "LD": 80.13,
+   "gap": 9.19,
+   "up": 19.74,
+   "beyond": 10.55
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2013,
+   "Lc": 84.76,
+   "LD": 88.02,
+   "gap": 3.26,
+   "up": 10.92,
+   "beyond": 7.67
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2014,
+   "Lc": 81.24,
+   "LD": 88.02,
+   "gap": 6.78,
+   "up": 14.44,
+   "beyond": 7.67
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2015,
+   "Lc": 88.07,
+   "LD": 89.81,
+   "gap": 1.74,
+   "up": 7.61,
+   "beyond": 5.87
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2016,
+   "Lc": 94.04,
+   "LD": 93.18,
+   "gap": -0.86,
+   "up": -2.96,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2017,
+   "Lc": 93.75,
+   "LD": 93.38,
+   "gap": -0.36,
+   "up": -22.14,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2018,
+   "Lc": 84.19,
+   "LD": 93.38,
+   "gap": 9.19,
+   "up": -13.58,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2019,
+   "Lc": 68.97,
+   "LD": 93.38,
+   "gap": 24.42,
+   "up": 1.65,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2020,
+   "Lc": 66.34,
+   "LD": 93.38,
+   "gap": 27.05,
+   "up": 4.28,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2021,
+   "Lc": 68.17,
+   "LD": 93.38,
+   "gap": 25.22,
+   "up": -8.79,
+   "beyond": 0.0
+  },
+  {
+   "key": "joshua-kennedy",
+   "Y": 2022,
+   "Lc": 62.5,
+   "LD": 93.38,
+   "gap": 30.88,
+   "up": -62.5,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2011,
+   "Lc": 77.6,
+   "LD": 88.34,
+   "gap": 10.75,
+   "up": 6.45,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2012,
+   "Lc": 80.76,
+   "LD": 88.34,
+   "gap": 7.59,
+   "up": -17.58,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2013,
+   "Lc": 73.72,
+   "LD": 88.34,
+   "gap": 14.62,
+   "up": -10.54,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2014,
+   "Lc": 73.72,
+   "LD": 88.34,
+   "gap": 14.62,
+   "up": -10.54,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2015,
+   "Lc": 66.09,
+   "LD": 88.34,
+   "gap": 22.25,
+   "up": -66.09,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2016,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2017,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2018,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2019,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2020,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2021,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  },
+  {
+   "key": "mitch-clark",
+   "Y": 2022,
+   "Lc": 58.53,
+   "LD": 88.34,
+   "gap": 29.82,
+   "up": -58.53,
+   "beyond": 0.0
+  }
+ ]
+}
