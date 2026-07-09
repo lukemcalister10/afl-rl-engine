@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp (v2.5 bake 2026-07-05, DPP-strip final consolidation). The book (s4 matrix) is id(p)-keyed, so raw-file sha256 is non-deterministic across regenerations BY DESIGN; identity is sealed on the STABLE keys (player,type,year,pick), canonicalised. ship_gates_check.py B3 compares the current S4_MATRIX stable-key sha to this baseline.",
+  "_comment": "Walk-forward book freeze-stamp — RE-SEALED 2026-07-09 at the store correction (King/Murphy birth years; owner-ruled, DECISIONS v87 §30); original seal v2.5 bake 2026-07-05 (DPP-strip final consolidation). The book (s4 matrix) is id(p)-keyed, so raw-file sha256 is non-deterministic across regenerations BY DESIGN; identity is sealed on the STABLE keys (player,type,year,pick), canonicalised. ship_gates_check.py B3 compares the current S4_MATRIX stable-key sha to this baseline.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "efea88e5",
-  "store_md5": "e1b4d8bf",
+  "head_md5": "4b08796c",
+  "store_md5": "a2fbc9a0",
   "n_players": 2649,
-  "stable_sha256": "5799a9ceae5ca3efc9787d6a780b3077292450ecda26f6abcc88589f070292c1",
-  "sealed_by": "v2.5 bake (DPP strip final consolidation: two position fields, the 34, Kako fix, off-by-one, four single-source guards)",
-  "sealed_date": "2026-07-05",
+  "stable_sha256": "ff6cf9d8c749bf53896d3214dee8686ec0a992aba845a85a7d807c2dca95b29d",
+  "sealed_by": "store correction 2026-07-09 (King/Murphy birth years), owner-ruled re-seal (DECISIONS v87 \u00a730 \u2014 the seal should measure this version's book; re-sealed at POST-FIX values). Prior: v2.5 bake (DPP strip final consolidation: two position fields, the 34, Kako fix,",
+  "sealed_date": "2026-07-09",
   "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6"
 }
