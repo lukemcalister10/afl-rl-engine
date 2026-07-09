@@ -4,7 +4,7 @@
  "store": "a2fbc9a036e46a440f4a3c8c290b49cc",
  "register": "652d83e87780e415a01a2de6d8b3cc57",
  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
- "engine_head": "fd6df9f1139fd5127cca0d50e64102a6",
+ "engine_head": "90f9cd0f5d73d0c1ac313d9298e1abd9",
  "rl_model": "4cd7e37f69f5053d1c8882d9ea8f8bf7",
  "band": "34faa8659cc8f19794f5cb9584fa19b2",
  "panel": "PASS 10/10",

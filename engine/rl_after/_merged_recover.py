@@ -544,7 +544,15 @@ if _W4YNG:
     _YC_TMIN=min(int(t) for t in _YC_TAB); _YC_TMAX=max(int(t) for t in _YC_TAB)
 def _ycred_games(p,Y):                                        # EVIDENCE QUANTITY: career games as-of Y (same debut window as _nqual)
     d0=cp.debutyr(p)-1
-    return float(sum(x.get('games',0) for x in p['scoring'] if d0<x['year']<=Y))
+    g=float(sum(x.get('games',0) for x in p['scoring'] if d0<x['year']<=Y))
+    # FORK-i (R-i, PROVISIONAL): the L1c clock keys on career GAMES, so an injured season adds ~0 -> the clock
+    # already IMPLICITLY PAUSES (RL_LTI_CLOCK=pause, DEFAULT). The ADVANCE alternative ages the clock by the
+    # expected (lost) games during LTI windows, fading the young credit as if he had played. Clean toggle: the
+    # owner confirms/flips on the R-i comparison table BEFORE any bake — a flip is this config change, no rebuild.
+    if _LTI_CLOCK=='advance' and _AVAIL_ON and Y>=2026:
+        _st=_AVAIL_STATE.get(p.get('key'))
+        if _st and _st.get('out'): g+=float(_st['L'])*float(cp.SEASON)
+    return g
 def _ycred_mult(p,Y):
     if not _W4YNG or _YC_TAB is None or not _isreal(p): return 1.0
     if p.get('type') not in ('ND','RD') or p.get('_pickless'): return 1.0
