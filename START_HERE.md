@@ -1,5 +1,5 @@
 # START_HERE — AFL SuperCoach RL keeper engine — authoritative first-read
-_**BAKED v2.6 2026-07-09** (W4 + L1c + KPF-rebalance; RL_PVCFIT held out per owner ruling R3 — the frozen-v3.4 pick curve ships as the board's pick currency; on the v2.5 store). Head `4b08796c` (store `e1b4d8bf` · band `34faa865` · rl_model.py `121a45d0` = three single-valued position columns drafted/present/future; board `799b2290`; book stable-seal `5799a9ce` / 2649 players — the seal is STORE-keyed (player,type,year,pick), so it is unchanged from v2.5 by design). Lineage: e0ac9c37 → 8aed420a → c47cb43d (BAKED v2.4) → efea88e5 (BAKED v2.5) → **4b08796c (BAKED v2.6)**. See docs/CHANGELOG.md; rollback anchor `prebake-v2.5-anchor`._
+_**BAKED v2.7 2026-07-10** (Chapter-3 injury/availability + R-i=ADVANCE per owner ruling DECISIONS v90 §36 — RL_LTI_CLOCK code default = advance, manifest-pinned + ruling-config asserted; RL_PVCFIT still held out per owner ruling R3, the frozen-v3.4 pick curve ships as the board's pick currency). Head `7a07e369` (store `a2fbc9a0` · band `34faa865` · config `69ead79b` · rl_model.py `4cd7e37f`; board `e2c9bc51`; register `652d83e8`; book stable-seal `2a74c731` / 2649 players — STABLE-keyed (player,type,year,pick), re-sealed at this bake to match the blind audit). Lineage: e0ac9c37 → 8aed420a → c47cb43d (BAKED v2.4) → efea88e5 (BAKED v2.5) → 4b08796c (BAKED v2.6) → **7a07e369 (BAKED v2.7)**. See docs/CHANGELOG.md; rollback anchor `prebake-v2.5-anchor`._
 
 ## 0. FOUR-STEP RESUME
 1. **Restore** into a clean dir (`tar xzf rl_complete_8aed420a_*.tar.gz`).
@@ -9,11 +9,13 @@ _**BAKED v2.6 2026-07-09** (W4 + L1c + KPF-rebalance; RL_PVCFIT held out per own
 5. **THE THREE REPORTING RULES (Luke's word, BINDING, D10 03/07/2026):** (1) every gates/board output = THREE COLUMNS — CONTROL · PREVIOUS · CURRENT, deltas explicit (`data/report_states.json`); (2) every board/report carries a LOUD state label — no unlabelled player value anywhere Luke-facing; (3) binding on ALL sessions. Full text: `BAKE_CHECKLIST.md` §REPORTING.
 
 ## 1. IDENTITY / MD5 AXES (all verified this cut)
-- code→head: `engine/rl_after/_merged_recover.py` = **`4b08796c`** (BAKED v2.6 = W4+L1c+KPF R3fix; was efea88e5 at v2.5) · position model in `rl_model.py` = **`121a45d0`** (drafted/present/future single-valued columns; the raw_multipos blend is DELETED; unchanged v2.5→v2.6)
-- data→store: `engine/rl_after/rl_model_data.json` = **`e1b4d8bf`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; three position columns + Kako fix + off-by-one folded; was `73d23a8e`)
+- code→head: `engine/rl_after/_merged_recover.py` = **`7a07e369`** (BAKED v2.7 = Chapter-3 injury/availability + R-i=advance; was 4b08796c at v2.6) · position model in `rl_model.py` = **`4cd7e37f`** (drafted/present/future single-valued columns; the raw_multipos blend is DELETED; moved v2.6→v2.7 with the availability layer)
+- data→store: `engine/rl_after/rl_model_data.json` = **`a2fbc9a0`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; King/Murphy birth-year correction folded; was `e1b4d8bf` at v2.6)
+- register: `LTI_REGISTER.md` = **`652d83e8`** (R-REG=R2 pinned availability input; Guard 5 asserts it on entry)
+- config: `data/model_config.json` manifest hash = **`69ead79b`** (40 model vars pinned; bake/gate mode clears ambient + loads this)
 - band: `data/cm_400.pkl` = **`34faa865`**
 - file→bundle: see CHECKPOINT_MANIFEST.md (recorded at cut).
-- **BAKED v2.6 = head `4b08796c` / board `799b2290`** (store `e1b4d8bf`, unchanged since v2.5). Frozen-canonical lineage root `e0ac9c377d1e`; full lineage in `docs/CHANGELOG.md`.
+- **BAKED v2.7 = head `7a07e369` / board `e2c9bc51`** (store `a2fbc9a0`; band `34faa865`; config `69ead79b`; book stable-seal `2a74c731`). Frozen-canonical lineage root `e0ac9c377d1e`; full lineage in `docs/CHANGELOG.md`.
 
 ## 2. FULL ENV (every engine command)
 ```
