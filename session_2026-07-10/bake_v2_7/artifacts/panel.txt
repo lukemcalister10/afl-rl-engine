@@ -1,0 +1,14 @@
+boot-store guard (Guard 5) PASS  [run_panel]  store a2fbc9a0 == pinned a2fbc9a0 (CANDIDATE chapter-3 injury/availability build 2026-07-10 — R-i FLIPPED to ADVANCE (owner ruling, DECISIONS v90 §36): RL_LTI_CLOCK code default = advance, manifest-pinned + ruling-config asserted (a paused bake fails loudly). Store a2fbc9a0 UNCHANGED (no re-seal); register 652d83e8 pinned. Baked reference stays v2.6 head 4b08796c (START_HERE/tag). engine_head/rl_model/config track the candidate head so Guard 5 (workspace==checkout==pin) passes; owner bakes at his word.)
+player                      EV  EXPECT
+  Nick Daicos             7626    7626
+  Marcus Bontempelli      3524    3524
+  Harry Sheezel           7734    7734
+  Max Gawn                2413    2413
+  Harley Reid             3549    3549
+  Josh Ward               1650    1650
+  Darcy Moore              198     198
+  Taylor Goad              788     788
+  Josh Smillie            1250    1250
+  Will Green               575     575
+
+RESULT: PASS 10/10

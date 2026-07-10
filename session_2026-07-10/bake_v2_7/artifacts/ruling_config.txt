@@ -1,0 +1,17 @@
+=== RULING-CONFIG ASSERTION (R3: RL_PVCFIT=0 by default + export bake-guard active) ===
+    repo = /home/user/afl-rl-engine
+  PASS engine source present (/home/user/afl-rl-engine/engine/rl_after/_merged_recover.py)
+  PASS export source present (/home/user/afl-rl-engine/engine/rl_after/rl_export.py)
+  PASS engine reads RL_PVCFIT via os.environ.get('RL_PVCFIT', <default>) != '0' (R3 form)
+  PASS engine RL_PVCFIT default string == '0' (compliant-by-default); got '0'
+  PASS live env RL_PVCFIT is unset or '0' (bake env does not enable the held-out fit); got None
+  PASS export R3 BAKE GUARD condition present (_W4PVC on + no RL_ALLOW_PVCFIT_BOARD -> refuse)
+  PASS export R3 BAKE GUARD raises SystemExit (halt-not-warn: a fitted board is unbakeable)
+  PASS export R3 BAKE GUARD sits BEFORE json.dump(rl_app_data.json) (guards the write)
+--- R-i (RL_LTI_CLOCK=advance by default + manifest-pinned) ---
+  PASS engine reads RL_LTI_CLOCK via os.environ.get('RL_LTI_CLOCK', <default>) (R-i form)
+  PASS engine RL_LTI_CLOCK default string == 'advance' (owner-ruled R-i); got 'advance'
+  PASS live env RL_LTI_CLOCK is unset or 'advance' (bake env does not pause the L1c clock); got None
+  PASS config manifest (data/model_config.json) pins RL_LTI_CLOCK='advance' (rides artifact identity); got 'advance'
+
+RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).
