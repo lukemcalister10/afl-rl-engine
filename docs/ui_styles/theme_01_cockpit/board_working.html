@@ -1,0 +1,142 @@
+<!doctype html>
+<!-- THEME 01 · COCKPIT — working aid · board. Design pitch; ALL FIGURES INVENTED — not the board.
+     Opus instrument language faithfully extended. Value presentation REDESIGNED: figure and rail
+     are separate columns — the figure never floats over the bar. No ghost rail. No slugs (debug
+     toggle concept only). Δ default = vs last bake, with the ruled toggle. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cockpit · Board · working aid</title>
+<style>
+:root{
+  --ink:#0e1217; --ink-2:#131922; --panel:#161d27; --panel-2:#1b2431;
+  --rule:#232e3d; --rule-soft:#1c2531;
+  --text:#e7edf4; --dim:#93a1b3; --faint:#5d6b7d;
+  --amber:#e9b949; --amber-soft:rgba(233,185,73,.16);
+  --phos:#4fc3d4; --phos-soft:rgba(79,195,212,.14);
+  --up:#5dd39e; --dn:#e0685e; --ok:#5dd39e;
+  --pos-mid:#7aa2f7; --pos-kfwd:#e0808a; --pos-ruc:#b088e8;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --row-h:34px;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.4}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pitchbanner{background:var(--amber-soft);border-bottom:1px solid var(--amber);color:var(--amber);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:6px}
+.app{max-width:1180px;margin:0 auto;padding:0 18px 60px}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:22px 2px 14px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.brand{font-weight:800;letter-spacing:-.02em;font-size:20px}.brand b{color:var(--phos)}
+.spacer{flex:1}
+.readout{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right;line-height:1.6}
+.readout b{color:var(--text)}
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  padding:2px 7px;border-radius:5px;border:1px solid var(--amber);color:var(--amber);background:var(--amber-soft);margin-left:6px}
+.badge.ok{border-color:var(--ok);color:var(--ok);background:rgba(93,211,158,.12)}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 2px;border-bottom:1px solid var(--rule)}
+.search{flex:1;min-width:200px;background:var(--ink-2);border:1px solid var(--rule);border-radius:7px;
+  color:var(--faint);font-family:var(--mono);font-size:13px;padding:9px 12px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden;font-family:var(--mono);font-size:12px}
+.seg span{padding:8px 12px;color:var(--dim)}
+.seg span.on{background:var(--amber-soft);color:var(--amber)}
+.seg.dbg span.on{background:var(--ink-2);color:var(--faint)}
+.seglbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-right:-4px}
+.board{border:1px solid var(--rule);border-radius:10px;margin-top:14px;background:var(--panel);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--panel-2);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
+  font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+th.r,td.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--rule-soft);height:var(--row-h)}
+tbody tr:hover{background:var(--panel-2)}
+td{padding:0 12px;white-space:nowrap;font-size:13px}
+td.rank{font-family:var(--mono);color:var(--faint);font-size:12px;width:44px}
+td.name{font-weight:600}
+.posdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:7px;vertical-align:1px}
+.poslbl{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+td.pin{width:34px;text-align:center}
+.pinf{color:var(--amber);font-size:13px}
+.pinh{color:var(--amber);opacity:.55;font-size:13px}
+/* REDESIGNED value presentation: figure column, then a separate slim rail column.
+   The number never sits on the bar; the bar is a quiet instrument needle. */
+td.value{font-family:var(--mono);font-weight:700;font-size:13.5px;width:86px}
+td.railcol{width:150px;padding-right:16px}
+.track{position:relative;height:6px;background:var(--ink-2);border-radius:3px;overflow:hidden}
+.track i{position:absolute;left:0;top:0;bottom:0;width:var(--w);
+  background:linear-gradient(90deg,rgba(79,195,212,.35),var(--phos));border-radius:3px}
+.ovr{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--amber);
+  border:1px solid var(--amber);border-radius:4px;padding:1px 5px;margin-left:8px;vertical-align:1px;cursor:help}
+td.delta{width:92px;font-family:var(--mono);font-size:12.5px}
+.d-up{color:var(--up)} .d-dn{color:var(--dn)} .d-flat{color:var(--faint)}
+td.pick,td.yr{font-family:var(--mono);color:var(--dim);font-size:12px}
+footer{margin-top:18px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.7}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — not the board · working aid</div>
+<div class="app">
+  <header>
+    <div>
+      <div class="eyebrow">Real-Draft Value Engine</div>
+      <div class="brand">Value <b>Cockpit</b></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="readout">
+      board <b>v2.6</b> · engine <b>4b08796c</b> · store <b>a2fbc9a0</b> · board id <b>fd90472c</b><span class="badge">real</span><span class="badge ok">guard 5 pass</span><br>
+      Δ vs last accepted bake · 1002 players · baked 2026-07-09
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="search">Search player or club…&nbsp;&nbsp;/</div>
+    <span class="seglbl">Δ base</span>
+    <div class="seg"><span class="on">bake</span><span>round</span></div>
+    <span class="seglbl">debug</span>
+    <div class="seg dbg" title="Debug affordance (working aid only): shows player slugs beside names when on. Off by default — no slugs in default views."><span class="on">slugs off</span><span>on</span></div>
+  </div>
+
+  <div class="board"><table>
+    <thead><tr>
+      <th class="r">#</th><th></th><th>Player</th><th>Pos</th>
+      <th class="r">Value</th><th></th><th class="r">Δ bake</th><th class="r">Pick</th><th class="r">Draft</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="rank r">1</td><td class="pin"><span class="pinf" title="Your read: up ≥10% — met">★</span></td>
+        <td class="name">Marcus Bontempelli</td><td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">3 462</td><td class="railcol"><div class="track"><i style="--w:96%"></i></div></td>
+        <td class="delta r d-up">▲ +378</td><td class="pick r">4</td><td class="yr r">2016</td></tr>
+      <tr><td class="rank r">2</td><td class="pin"></td>
+        <td class="name">Nick Daicos</td><td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">3 310</td><td class="railcol"><div class="track"><i style="--w:92%"></i></div></td>
+        <td class="delta r d-up">▲ +102</td><td class="pick r">4</td><td class="yr r">2021</td></tr>
+      <tr><td class="rank r">3</td><td class="pin"><span class="pinh" title="Your read: lifts — direction met, magnitude yours on sight">★</span></td>
+        <td class="name">Sam Darcy</td><td><span class="posdot" style="--c:var(--pos-kfwd)"></span><span class="poslbl">KEY·FWD</span></td>
+        <td class="value r num">3 178</td><td class="railcol"><div class="track"><i style="--w:88%"></i></div></td>
+        <td class="delta r d-up">▲ +431</td><td class="pick r">2</td><td class="yr r">2021</td></tr>
+      <tr><td class="rank r">7</td><td class="pin"><span class="pinf" title="Your read: up — met (+16.1%)">★</span></td>
+        <td class="name">Jeremy Cameron</td><td><span class="posdot" style="--c:var(--pos-kfwd)"></span><span class="poslbl">KEY·FWD</span></td>
+        <td class="value r num">2 894</td><td class="railcol"><div class="track"><i style="--w:79%"></i></div></td>
+        <td class="delta r d-up">▲ +402</td><td class="pick r">1</td><td class="yr r">2017</td></tr>
+      <tr><td class="rank r">12</td><td class="pin"><span class="pinf" title="Your read: clearly above Kieren Briggs — met">★</span></td>
+        <td class="name">Max Gawn</td><td><span class="posdot" style="--c:var(--pos-ruc)"></span><span class="poslbl">RUC</span></td>
+        <td class="value r num">2 610</td><td class="railcol"><div class="track"><i style="--w:71%"></i></div></td>
+        <td class="delta r d-up">▲ +498</td><td class="pick r">34</td><td class="yr r">2009</td></tr>
+      <tr><td class="rank r">38</td><td class="pin"><span class="pinh" title="Your read: runway credit lands (year-1 cohort lift)">★</span></td>
+        <td class="name">Willem Duursma</td><td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">1 986</td><td class="railcol"><div class="track"><i style="--w:54%"></i></div></td>
+        <td class="delta r d-up">▲ +266</td><td class="pick r">1</td><td class="yr r">2025</td></tr>
+      <tr><td class="rank r">61</td><td class="pin"></td>
+        <td class="name">Kieren Briggs</td><td><span class="posdot" style="--c:var(--pos-ruc)"></span><span class="poslbl">RUC</span></td>
+        <td class="value r num">1 480</td><td class="railcol"><div class="track"><i style="--w:40%"></i></div></td>
+        <td class="delta r d-dn">▼ −124</td><td class="pick r">—</td><td class="yr r">2018</td></tr>
+      <tr><td class="rank r">104</td><td class="pin"></td>
+        <td class="name">Callum Coleman-Jones<span class="ovr" title="Owner rule: role-reliability cut ×0.50 (the Brodie rule). Post-rule value shown; the full line item is on the player card's waterfall.">×0.50 ROLE</span></td>
+        <td><span class="posdot" style="--c:var(--pos-kfwd)"></span><span class="poslbl">KEY·FWD</span></td>
+        <td class="value r num">876</td><td class="railcol"><div class="track"><i style="--w:24%"></i></div></td>
+        <td class="delta r d-flat">· 0</td><td class="pick r">20</td><td class="yr r">2018</td></tr>
+      <tr><td class="rank r">312</td><td class="pin"><span class="pinf" title="Your read: fades — met">★</span></td>
+        <td class="name">Stephen Coniglio</td><td><span class="posdot" style="--c:var(--pos-mid)"></span><span class="poslbl">MID</span></td>
+        <td class="value r num">421</td><td class="railcol"><div class="track"><i style="--w:12%"></i></div></td>
+        <td class="delta r d-dn">▼ −58</td><td class="pick r">2</td><td class="yr r">2011</td></tr>
+    </tbody>
+  </table></div>
+
+  <footer>amber = your touch (reads · rules · controls) · cyan = engine value · green/red = movement, always signed ·
+    override headroom lives on the card's waterfall — the rail never lies</footer>
+</div>
