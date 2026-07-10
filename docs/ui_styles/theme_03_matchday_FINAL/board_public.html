@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- THEME 03 · MATCHDAY — public trim · board. Design pitch; ALL FIGURES INVENTED — not the board.
+     Sanitised: values, ranks, movement only. No IDs, no guard states, no pins, no owner-rule chips,
+     no debug affordances. Δ = vs previous round (published scheme). -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matchday · Board · public</title>
+<style>
+:root{
+  --pitch:#0a0c10; --card:#12151c; --card-2:#181c25; --edge:#232936;
+  --text:#f2f5f9; --dim:#8b95a6; --faint:#525c6d;
+  --volt:#c8f04a; --volt-soft:rgba(200,240,74,.12);
+  --up:#4ade80; --dn:#f0655e;
+  --cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
+  --sans:"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.4}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pitchbanner{background:var(--volt-soft);border-bottom:1px solid var(--volt);color:var(--volt);
+  font-family:var(--cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:center;padding:6px;font-weight:700}
+.app{max-width:1040px;margin:0 auto;padding:0 18px 60px}
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:24px 0 16px}
+.brand{font-family:var(--cond);font-weight:900;font-size:34px;letter-spacing:.02em;text-transform:uppercase;line-height:.95}
+.brand b{color:var(--volt)}
+.brand .sub{display:block;font-size:11px;letter-spacing:.3em;color:var(--dim);font-weight:700;margin-top:4px}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.7}
+.strip{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--edge);
+  padding:10px 14px;border-left:4px solid var(--volt)}
+.strip .lbl{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.rows{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.row{display:grid;grid-template-columns:56px 1fr 90px 96px 130px 110px 110px;gap:12px;align-items:center;
+  background:var(--card);border:1px solid var(--edge);padding:10px 16px}
+.row:hover{background:var(--card-2)}
+.row .rank{font-family:var(--cond);font-weight:900;font-size:26px;color:var(--faint);text-align:right}
+.row .nm{font-family:var(--cond);font-weight:700;font-size:19px;letter-spacing:.02em;text-transform:uppercase;line-height:1.15}
+.row .pos{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
+.pow{display:flex;gap:3px}
+.pow i{width:10px;height:14px;background:var(--edge)}
+.pow i.f{background:var(--volt)}
+.pill{justify-self:end;font-family:var(--mono);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pill.up{background:rgba(74,222,128,.14);color:var(--up)}
+.pill.dn{background:rgba(240,101,94,.14);color:var(--dn)}
+.pill.flat{background:var(--edge);color:var(--faint)}
+footer{margin-top:20px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.8}
+@media(max-width:900px){.row{grid-template-columns:44px 1fr 90px 110px;}.pow,.row .pos{display:none}}
+</style>
+<div class="pitchbanner">Design pitch · invented figures — illustration only</div>
+<div class="app">
+  <header>
+    <div class="brand">Value<b>Board</b><span class="sub">Player Values</span></div>
+    <div class="spacer"></div>
+    <div class="stamp">Round 17 · 2026<br>movement vs previous round · 1,002 players</div>
+  </header>
+
+  <div class="strip"><span class="lbl">Round 17 · 2026 · published</span></div>
+
+  <div class="rows">
+    <div class="row"><span class="rank">1</span><span class="nm">Marcus Bontempelli</span><span class="pos">Mid</span>
+      <span class="val num">3,462</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>
+      <span class="pill up">▲ +41</span><span class="pill flat">— steady</span></div>
+    <div class="row"><span class="rank">2</span><span class="nm">Nick Daicos</span><span class="pos">Mid</span>
+      <span class="val num">3,310</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>
+      <span class="pill up">▲ +18</span><span class="pill flat">— steady</span></div>
+    <div class="row"><span class="rank">3</span><span class="nm">Sam Darcy</span><span class="pos">Key Fwd</span>
+      <span class="val num">3,178</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>
+      <span class="pill up">▲ +96</span><span class="pill up">▲ 2</span></div>
+    <div class="row"><span class="rank">7</span><span class="nm">Jeremy Cameron</span><span class="pos">Key Fwd</span>
+      <span class="val num">2,894</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>
+      <span class="pill up">▲ +64</span><span class="pill up">▲ 1</span></div>
+    <div class="row"><span class="rank">12</span><span class="nm">Max Gawn</span><span class="pos">Ruck</span>
+      <span class="val num">2,610</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>
+      <span class="pill up">▲ +52</span><span class="pill up">▲ 3</span></div>
+    <div class="row"><span class="rank">38</span><span class="nm">Willem Duursma</span><span class="pos">Mid</span>
+      <span class="val num">1,986</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="pill up">▲ +33</span><span class="pill up">▲ 4</span></div>
+    <div class="row"><span class="rank">61</span><span class="nm">Kieren Briggs</span><span class="pos">Ruck</span>
+      <span class="val num">1,480</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="pill dn">▼ −21</span><span class="pill dn">▼ 2</span></div>
+    <div class="row"><span class="rank">104</span><span class="nm">Callum Coleman-Jones</span><span class="pos">Key Fwd</span>
+      <span class="val num">876</span>
+      <span class="pow"><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="pill flat">— 0</span><span class="pill flat">— steady</span></div>
+    <div class="row"><span class="rank">312</span><span class="nm">Stephen Coniglio</span><span class="pos">Mid</span>
+      <span class="val num">421</span>
+      <span class="pow"><i class="f"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="pill dn">▼ −9</span><span class="pill dn">▼ 6</span></div>
+  </div>
+
+  <footer>blocks = share of the top price, one block a decile · movement pills always signed, never colour alone</footer>
+</div>
