@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp — RE-SEALED 2026-07-09 at the store correction (King/Murphy birth years; owner-ruled, DECISIONS v87 §30); original seal v2.5 bake 2026-07-05 (DPP-strip final consolidation). The book (s4 matrix) is id(p)-keyed, so raw-file sha256 is non-deterministic across regenerations BY DESIGN; identity is sealed on the STABLE keys (player,type,year,pick), canonicalised. ship_gates_check.py B3 compares the current S4_MATRIX stable-key sha to this baseline.",
+  "_comment": "Walk-forward book freeze-stamp — RE-SEALED 2026-07-10 at the v2.7 bake (Chapter-3 injury/availability + R-i=advance). The book (s4 matrix) is id(p)-keyed, so raw-file sha256 is non-deterministic across regenerations BY DESIGN; identity is sealed on the STABLE keys (player,type,year,pick), canonicalised. ship_gates_check.py B3 compares the current S4_MATRIX stable-key sha to this baseline. Re-sealed at the candidate head 7a07e369 (store a2fbc9a0 unchanged); the recomputed stable-sha matches the independent blind audit (2a74c731). Prior seal: store correction 2026-07-09 (King/Murphy) at head 4b08796c, stable-sha ff6cf9d8.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "4b08796c",
+  "head_md5": "7a07e369",
   "store_md5": "a2fbc9a0",
   "n_players": 2649,
-  "stable_sha256": "ff6cf9d8c749bf53896d3214dee8686ec0a992aba845a85a7d807c2dca95b29d",
-  "sealed_by": "store correction 2026-07-09 (King/Murphy birth years), owner-ruled re-seal (DECISIONS v87 \u00a730 \u2014 the seal should measure this version's book; re-sealed at POST-FIX values). Prior: v2.5 bake (DPP strip final consolidation: two position fields, the 34, Kako fix,",
-  "sealed_date": "2026-07-09",
-  "config": "d88404f076333cec017e3db5b2829024e4467e5d2e5bfa35a29861d6b4c591c6"
+  "stable_sha256": "2a74c731e9ce603ecfa29aefbb6e3756a3fd886bbaaca55e8eb03033812d2c66",
+  "sealed_by": "v2.7 bake, owner written word 2026-07-10, DECISIONS v90 §36 ladder (prescreen + 9/9 blind audit + owner viewing). Re-sealed at the recomputed book stable-sha (== the audit's 2a74c731); store a2fbc9a0 UNCHANGED; carries head 7a07e369 / store a2fbc9a0 / config 69ead79b. Prior: store correction 2026-07-09 (King/Murphy birth years) at head 4b08796c (stable-sha ff6cf9d8); original v2.5 bake 2026-07-05 (DPP strip final consolidation).",
+  "sealed_date": "2026-07-10",
+  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }
