@@ -2,7 +2,7 @@
 _Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._
 ```
 === STATE: PROTOTYPE/UNREGISTERED @ 7a07e369 — NOT AN ENDORSED STATE ===
-=== SHIP GATES BOARD — head 7a07e369 store a2fbc9a0 config 69ead79b944d — suite 764a0d91 — 2026-07-09 ===
+=== SHIP GATES BOARD — head 7a07e369 store a2fbc9a0 config 69ead79b944d — suite 764a0d91 — 2026-07-10 ===
 === CONFIG MANIFEST (gate mode): data/model_config.json hash 69ead79b944d291b — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===
 === THREE-COLUMN RULE (Luke, binding D10): CONTROL=efea88e5 · PREVIOUS=c8051893 · CURRENT=7a07e369 ===
 A1        PASS    | PASS    | PASS     Duursma>Uwland: 4225 vs 2119
@@ -24,7 +24,7 @@ A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in P
 A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
 B1        PASS    | PASS    | PASS     CANDIDATE (regenerated this run — engine 7a07e369 store a2fbc9a0 config 69ead79b944d): cross-cohort AVERAGE peak N=4 AVG(peak)=130 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed — Luke D5); avg row: 1:100 2:116 3:121 4:130 5:128 6:120 7:107; cohorts n=17 | v2.5 comparator avg row [NAMED, NOT certified]: 1:100 2:122 3:133 4:143 5:141 6:133 7:116
 B2        PASS    | PASS    | PASS     leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.35, RUC|GOOD|T3:3.07, GEN_DEF|GOOD|T5:2.38, GEN_FWD|GOOD|T5:2.37; GOOD>BUST sep GEN_DEF 41.5/0.8, GEN_FWD 39.6/0.6, KEY_DEF 49.4/1.1, KEY_FWD 61.2/0.6, MID 49.6/0.5, RUC 22.1/0.4 [cert engine 7a07e369 store a2fbc9a0 config 69ead79b]
-B3        PASS    | PENDING | DIFFERS-BY-DESIGN CANDIDATE book stable seal (regenerated this run — engine 7a07e369 store a2fbc9a0 config 69ead79b944d): candidate head 7a07e369 != sealed head 4b08796c — new version; the v2.6 book must be RE-SEALED at the bake (owner action). current=2a74c731e9ce603e.. (2649 players) vs baseline=ff6cf9d8c749bf53.. (2649 players, sealed head 4b08796c) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]  <- MOVED
+B3        PASS    | PENDING | PASS     CANDIDATE book stable seal (regenerated this run — engine 7a07e369 store a2fbc9a0 config 69ead79b944d): MATCHES the sealed baseline. current=2a74c731e9ce603e.. (2649 players) vs baseline=2a74c731e9ce603e.. (2649 players, sealed head 7a07e369) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]  <- MOVED
 B4        PASS    | FAIL    | PASS     regenerated rl_app_data.json md5=e2c9bc51 vs shipped e2c9bc51 (byte-agree gate; export exit=0)  <- MOVED
 B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 61 saves, aggregate lift +1952; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new alarm surface)
 B6        PASS    | PASS    | PASS     ramp(0..14g)=[1260, 1530, 1825, 2474, 3072, 3161, 3215, 3268, 3285, 3295, 3348, 3413, 3495, 3533, 3562]; dips(more games worth less)=none; 0->6 rise T=+1955; 0->6 steps>50%T=none; rise by 3g=+1214 (need >=489) [whole-ramp re-spec, DECLARED thresholds]
@@ -34,7 +34,7 @@ D14c      PASS    | —       | PASS     KPP retention floor O1 depth-monotone =
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: DIFFERS-BY-DESIGN=1  FAIL=3  FEATURE=1  PASS=16  PENDING=4  STRUCK=1  (397s)
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (591s)
 ```
 
 ## Supporting detail

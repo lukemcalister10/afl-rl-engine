@@ -90,8 +90,8 @@
   },
   "B3": {
    "dc": false,
-   "status": "DIFFERS-BY-DESIGN",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 7a07e369 store a2fbc9a0 config 69ead79b944d): candidate head 7a07e369 != sealed head 4b08796c \u2014 new version; the v2.6 book must be RE-SEALED a"
+   "status": "PASS",
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 7a07e369 store a2fbc9a0 config 69ead79b944d): MATCHES the sealed baseline. current=2a74c731e9ce603e.. (2649 players) vs baseline=2a74c731e9ce6"
   },
   "B4": {
    "dc": false,
