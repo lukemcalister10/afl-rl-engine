@@ -1,0 +1,26 @@
+### 1. fresh bootstrap (BAKE mode) — Guard 5 boot-store
+boot-store guard (Guard 5) PASS  [bootstrap]  store a2fbc9a0 == pinned a2fbc9a0 (BAKED v2.7 2026-07-10 — Chapter-3 injury/availability + R-i=ADVANCE (owner ruling, DECISIONS v90 §36; baked on the owner's written bake word 2026-07-10, after the supervisor prescreen + 9/9 blind audit + owner board/book viewing). RL_LTI_CLOCK code default = advance, manifest-pinned + ruling-config asserted (a paused bake fails loudly). Store a2fbc9a0 UNCHANGED; register 652d83e8 pinned; walk-forward book RE-SEALED at stable-sha 2a74c731 (== the blind audit). Lineage: … → 4b08796c (BAKED v2.6) → 7a07e369 (BAKED v2.7). Identities: engine 7a07e369 / board e2c9bc51 / store a2fbc9a0 / band 34faa865 / config 69ead79b / book-seal 2a74c731.)
+bootstrap OK
+  engine md5     : 7a07e369   (candidate: F1/F2 one-source rewire)
+  store md5      : a2fbc9a0   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+  register md5   : 652d83e8   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)
+### 2. config-manifest + ruling-config
+CONFIG-MANIFEST CHECK: PASS (hash 69ead79b944d; 40 vars; pin+stored consistent)
+RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).
+### 3. regenerate board (bake) — must be e2c9bc51
+board md5 = e2c9bc51  (expect e2c9bc51)
+### 4. regenerate book (bake) — stable-sha must be 2a74c731
+book stable-sha = 2a74c731e9ce603e (expect 2a74c731e9ce603e)  n=2649
+### 5. self-test
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)
+### 6. guard-4 canary (edits+restores store)
+GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
+store after canary = a2fbc9a0  (expect a2fbc9a0)
+### 7. ship_gates (final head; B3 must be PASS now)
+B3        PASS    | PENDING | PASS     CANDIDATE book stable seal (regenerated this run — engine 7a07e369 store a2fbc9a0 config 69ead79b944d): MATCHES the sealed baseline. current=2a74c731e9ce603e.. (2649 players) vs baseline=2a74c731e9ce603e.. (2649 players, sealed head 7a07e369) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]  <- MOVED
+B4        PASS    | FAIL    | PASS     regenerated rl_app_data.json md5=e2c9bc51 vs shipped e2c9bc51 (byte-agree gate; export exit=0)  <- MOVED
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (591s)
+### 8. panel
+RESULT: PASS 10/10
+### 9. shipped board (repo) md5 = e2c9bc51  (must be e2c9bc51, unchanged)
+FINAL_SUITE_DONE
