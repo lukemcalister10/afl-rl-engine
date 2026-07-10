@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- MOCKUP 03 — trade desk: players + picks in ONE SCAR currency; verdict line; reserved
+     draft-translator slot. Static illustration for DESIGN_DIRECTION.md §4.2.
+     ALL FIGURES INVENTED — not the board. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup 03 — Trade desk</title>
+<style>
+:root{
+  --ink:#0e1217; --ink-2:#131922; --panel:#161d27; --panel-2:#1b2431;
+  --rule:#232e3d; --rule-soft:#1c2531;
+  --text:#e7edf4; --dim:#93a1b3; --faint:#5d6b7d;
+  --amber:#e9b949; --amber-soft:rgba(233,185,73,.16);
+  --phos:#4fc3d4; --phos-soft:rgba(79,195,212,.14);
+  --up:#5dd39e; --dn:#e0685e;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.45}
+.mockbanner{background:var(--amber-soft);border:1px solid var(--amber);color:var(--amber);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:6px;border-radius:0 0 8px 8px}
+.app{max-width:980px;margin:0 auto;padding:0 18px 60px}
+header{display:flex;align-items:baseline;gap:14px;padding:22px 2px 14px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.02em}.brand b{color:var(--phos)}
+.spacer{flex:1}
+.readout{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right;line-height:1.6}
+.readout b{color:var(--text)}
+.desk{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.pane{background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.pane h2{margin:0;padding:12px 16px;background:var(--panel-2);border-bottom:1px solid var(--rule);
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.row{display:flex;align-items:center;gap:10px;padding:0 16px;height:38px;border-bottom:1px solid var(--rule-soft)}
+.row .nm{font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .nm i{color:var(--faint);font-style:normal;font-family:var(--mono);font-size:11px;margin-left:8px}
+.row .fig{font-family:var(--mono);font-weight:700;font-size:13px}
+/* picks are first-class rows in the same currency */
+.pickchip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--phos);
+  border:1px solid var(--phos);border-radius:4px;padding:1px 6px;opacity:.85}
+.railmini{position:relative;width:110px;height:8px;background:var(--ink-2);border-radius:2px;overflow:hidden}
+.railmini i{position:absolute;left:0;top:0;bottom:0;width:var(--w);
+  background:linear-gradient(90deg,var(--phos-soft),rgba(79,195,212,.5))}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--ink-2)}
+.total .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.total .fig{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--phos)}
+.addrow{padding:10px 16px;color:var(--faint);font-family:var(--mono);font-size:12px}
+.verdict{margin-top:16px;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:18px 20px}
+.verdict .gap{font-family:var(--mono);font-size:22px;font-weight:800;color:var(--dn)}
+.verdict .line{margin-top:6px;font-size:14px}
+.verdict .line b{color:var(--text)}
+.verdict .sub{margin-top:6px;font-size:12px;color:var(--faint)}
+.translator{margin-top:16px;border:1px dashed var(--rule);border-radius:10px;padding:16px 20px;color:var(--faint);
+  background:repeating-linear-gradient(135deg,transparent,transparent 9px,var(--rule-soft) 9px,var(--rule-soft) 10px)}
+.translator b{color:var(--dim);font-size:12px}.translator p{margin:6px 0 0;font-size:12px}
+@media(max-width:720px){.desk{grid-template-columns:1fr}}
+</style>
+<div class="mockbanner">Mockup · invented figures · not the board</div>
+<div class="app">
+  <header>
+    <div><div class="eyebrow">Real-Draft Value Engine</div><div class="brand">Trade <b>Desk</b></div></div>
+    <div class="spacer"></div>
+    <div class="readout">board <b>v2.6</b> · engine <b>4b08796c</b> · one currency: SCAR<br>pick prices from the pick-value curve (stamped artifact)</div>
+  </header>
+
+  <div class="desk">
+    <div class="pane">
+      <h2>You give</h2>
+      <div class="row"><span class="nm">Max Gawn<i>RUC · 34yo</i></span><span class="railmini"><i style="--w:71%"></i></span><span class="fig">2 610</span></div>
+      <div class="row"><span class="nm"><span class="pickchip">PICK 24</span><i>2026 ND</i></span><span class="railmini"><i style="--w:16%"></i></span><span class="fig">590</span></div>
+      <div class="addrow">+ add player or pick…</div>
+      <div class="total"><span class="k">Total out</span><span class="fig">3 200</span></div>
+    </div>
+    <div class="pane">
+      <h2>You get</h2>
+      <div class="row"><span class="nm">Kieren Briggs<i>RUC · 25yo</i></span><span class="railmini"><i style="--w:40%"></i></span><span class="fig">1 480</span></div>
+      <div class="row"><span class="nm"><span class="pickchip">PICK 5</span><i>2026 ND</i></span><span class="railmini"><i style="--w:41%"></i></span><span class="fig">1 506</span></div>
+      <div class="addrow">+ add player or pick…</div>
+      <div class="total"><span class="k">Total in</span><span class="fig">2 986</span></div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="gap">−214 SCAR</div>
+    <div class="line">You give up <b>214</b> — about a <b>late second-round pick</b> of value.</div>
+    <div class="sub">The model speaks; you overrule. Gawn carries your ★ read (clearly above Briggs) — the desk shows
+      the read pin whenever a pinned player is on the table.</div>
+  </div>
+
+  <div class="translator">
+    <b>Draft translator — arrives after its calibration gate.</b>
+    <p>Will sit here: paste a live-draft pick swap, get it restated in board currency. Designed in now, wired later; nothing fake rendered until the gate clears.</p>
+  </div>
+</div>

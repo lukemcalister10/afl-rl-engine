@@ -1,0 +1,114 @@
+<!doctype html>
+<!-- MOCKUP 04 — round-to-round change review: movers ranked by |Δ|, expandable to the SAME
+     attribution waterfall as the player card; version-stamped header. Fills at Phase 3 (weekly loop).
+     Static illustration for DESIGN_DIRECTION.md §4.3/§5. ALL FIGURES INVENTED — not the board. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup 04 — Round review</title>
+<style>
+:root{
+  --ink:#0e1217; --ink-2:#131922; --panel:#161d27; --panel-2:#1b2431;
+  --rule:#232e3d; --rule-soft:#1c2531;
+  --text:#e7edf4; --dim:#93a1b3; --faint:#5d6b7d;
+  --amber:#e9b949; --amber-soft:rgba(233,185,73,.16);
+  --phos:#4fc3d4; --phos-soft:rgba(79,195,212,.14);
+  --up:#5dd39e; --dn:#e0685e;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.45}
+.mockbanner{background:var(--amber-soft);border:1px solid var(--amber);color:var(--amber);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:6px;border-radius:0 0 8px 8px}
+.app{max-width:760px;margin:0 auto;padding:0 18px 60px}
+header{display:flex;align-items:baseline;gap:14px;padding:22px 2px 14px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.02em}.brand b{color:var(--phos)}
+.spacer{flex:1}
+.readout{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right;line-height:1.6}
+.readout b{color:var(--text)}
+.summary{display:flex;gap:24px;padding:14px 2px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px;color:var(--dim)}
+.summary b{color:var(--text);font-size:15px;display:block}
+.summary .up b{color:var(--up)} .summary .dn b{color:var(--dn)}
+.list{margin-top:14px;background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.mv{display:flex;align-items:center;gap:12px;padding:0 16px;height:40px;border-bottom:1px solid var(--rule-soft)}
+.mv .nm{font-weight:600;width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mv .nm i{color:var(--faint);font-style:normal;font-family:var(--mono);font-size:11px;margin-left:6px}
+.mv .why{flex:1;font-size:12px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* centered diverging Δ bar — same movement grammar everywhere */
+.dbar{position:relative;width:150px;height:12px;background:var(--ink-2);border-radius:3px;flex:none}
+.dbar .zero{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule)}
+.dbar i{position:absolute;top:2px;bottom:2px;border-radius:2px}
+.dbar i.up{left:50%;background:var(--up)} .dbar i.dn{right:50%;background:var(--dn)}
+.mv .fig{font-family:var(--mono);font-size:12.5px;width:66px;text-align:right}
+.mv .fig.up{color:var(--up)} .mv .fig.dn{color:var(--dn)}
+.pin{color:var(--amber)}
+/* expanded row = the player-card waterfall, verbatim grammar */
+.expand{background:var(--ink-2);border-bottom:1px solid var(--rule-soft);padding:14px 16px 16px}
+.wf{display:grid;grid-template-columns:1fr 190px 60px;gap:6px 12px;align-items:center;font-size:12.5px}
+.wf .lbl i{color:var(--faint);font-style:normal}
+.wf .track{position:relative;height:12px;background:var(--panel);border-radius:3px}
+.wf .zero{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule)}
+.wf .bar{position:absolute;top:2px;bottom:2px;border-radius:2px}
+.wf .bar.up{left:50%;background:var(--up)} .wf .bar.dn{right:50%;background:var(--dn)}
+.wf .fig{font-family:var(--mono);font-size:12px;text-align:right}
+.wf .fig.up{color:var(--up)} .wf .fig.dn{color:var(--dn)}
+.note{margin-top:10px;font-size:11.5px;color:var(--faint)}
+footer{margin-top:18px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.7}
+</style>
+<div class="mockbanner">Mockup · invented figures · not the board · fills at the weekly-loop phase</div>
+<div class="app">
+  <header>
+    <div><div class="eyebrow">Real-Draft Value Engine</div><div class="brand">Round <b>Review</b></div></div>
+    <div class="spacer"></div>
+    <div class="readout">Round <b>18 · 2026</b> vs Round 17<br>one model per series · engine <b>4b08796c</b></div>
+  </header>
+
+  <div class="summary">
+    <span class="up"><b>▲ 214</b>players up</span>
+    <span class="dn"><b>▼ 187</b>players down</span>
+    <span><b>601</b>unchanged / not graded</span>
+    <span><b>+0.4%</b>board total</span>
+  </div>
+
+  <div class="list">
+    <div class="mv">
+      <span class="nm">Willem Duursma<i>MID</i> <span class="pin" title="Your read: runway credit lands">★</span></span>
+      <span class="why">career-best 118 (score relativity up two rounds running)</span>
+      <span class="dbar"><span class="zero"></span><i class="up" style="width:46%"></i></span>
+      <span class="fig up">+96</span>
+    </div>
+    <div class="expand">
+      <div class="wf">
+        <span class="lbl">Recent scoring <i>(form / score relativity)</i></span>
+        <span class="track"><span class="zero"></span><span class="bar up" style="width:38%"></span></span>
+        <span class="fig up">+71</span>
+        <span class="lbl">Young upside <i>(runway credit)</i></span>
+        <span class="track"><span class="zero"></span><span class="bar up" style="width:15%"></span></span>
+        <span class="fig up">+28</span>
+        <span class="lbl">Games missed <i>(availability)</i></span>
+        <span class="track"><span class="zero"></span><span class="bar dn" style="width:2%"></span></span>
+        <span class="fig dn">−3</span>
+      </div>
+      <div class="note">Same waterfall grammar as the player card — one attribution language everywhere. Sum equals the Δ or the residual shows in alarm red.</div>
+    </div>
+    <div class="mv">
+      <span class="nm">Max Gawn<i>RUC</i> <span class="pin">★</span></span>
+      <span class="why">39 hitouts, 2 goals — form line up</span>
+      <span class="dbar"><span class="zero"></span><i class="up" style="width:31%"></i></span>
+      <span class="fig up">+64</span>
+    </div>
+    <div class="mv">
+      <span class="nm">Stephen Coniglio<i>MID</i> <span class="pin">★</span></span>
+      <span class="why">sub role second week running (decline lever folding)</span>
+      <span class="dbar"><span class="zero"></span><i class="dn" style="width:27%"></i></span>
+      <span class="fig dn">−52</span>
+    </div>
+    <div class="mv">
+      <span class="nm">Callum Coleman-Jones<i>KEY·FWD</i></span>
+      <span class="why">×0.50 role cut still on (out of ruck) — no change</span>
+      <span class="dbar"><span class="zero"></span></span>
+      <span class="fig" style="color:var(--faint)">· 0</span>
+    </div>
+  </div>
+
+  <footer>history starts clean post-overhaul · a re-bake mid-season starts a new series (seam marker, never mixed lines)</footer>
+</div>
