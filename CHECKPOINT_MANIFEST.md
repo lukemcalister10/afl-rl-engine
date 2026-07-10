@@ -1,7 +1,12 @@
-# CHECKPOINT_MANIFEST — rl_complete_8aed420a — FINAL cut 2026-07-02
-_This chat retired; fresh build chat (new model) takes over from this bundle._
+# CHECKPOINT_MANIFEST — rl_complete_8aed420a — restore-seed cut 2026-07-02
+_This chat retired; fresh build chat (new model) took over from this bundle._
 
-## Identity (all re-verified this cut by verify_restore.sh)
+## CURRENT BAKED STATE — **BAKED v2.7 2026-07-10** (marker advanced at the docs sweep; supersedes the v2.4 cut identity below)
+- head `7a07e369` · rl_model.py `4cd7e37f` · store `a2fbc9a0` · band `34faa865` · config `69ead79b` · board `e2c9bc51` · book stable-seal `2a74c731`
+- lineage: `c47cb43d` (v2.4) → `efea88e5` (v2.5) → `4b08796c` (v2.6) → **`7a07e369`** (v2.7). Authoritative identity + resume: `START_HERE.md`.
+- The **Identity** and **verify_restore.sh result** blocks below are the 2026-07-02 restore-SEED cut's record (the lineage root), preserved verbatim — NOT re-run at v2.7.
+
+## Identity — 2026-07-02 restore-seed cut (historical; re-verified that cut by verify_restore.sh)
 - head `engine/rl_after/_merged_recover.py` = **c47cb43d** (BAKED v2.4; was 8aed420a) · REPL dial `rl_model.py` = **ce4468d6** · store `rl_model_data.json` = **644d1254** · band `data/cm_400.pkl` = **34faa865**
 - bundle md5: see the transmittal verdict block (computed on the final tarball).
 - BAKED = nothing past `e0ac9c377d1e`. Diagnostic-only session preceded this cut (no head/store/band change).
