@@ -33,7 +33,12 @@
    slashed off ONE poor season; the DOWN-side mirror of the riser question: does one bad season in
    a large body of work mean-revert?). TRIGGER: v2.9 investigation — "down-move persistence /
    body-of-work inertia" (pairs with the age curve's machinery).
-8. HARVEY THOMAS — ANSWERED 07-11: store future_position = GEN_FWD; the future=MID information is
+8. TOBYN MURRAY (454) vs TAI HAYES (292) — owner pairwise read (07-11): same 2025 class, GFWD,
+   picks 40 vs 44, both 0 games; the ONLY other field difference is _by 2005 vs 2004 — one birth
+   year drives ~56%. FORK on the owner's word: "same age" ⇒ hayes joins the migration's named DOB
+   corrections (gap self-collapses) · "Hayes is older" ⇒ v2.9 measures the unplayed-age gradient
+   steepness (beside the participation-cliff machinery). AWAITING the word.
+9. HARVEY THOMAS — ANSWERED 07-11: store future_position = GEN_FWD; the future=MID information is
    NOT in the store — it lives in the OWNER-HELD positioning registers and arrives with the FLEX
    build (blends). Today he is priced purely as GEN_FWD (2456). The flex-spec's "future=MID seam
    must survive" note therefore depends on the owner's registers being couriered at flex fire time
