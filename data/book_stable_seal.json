@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-11 for the PICK-CONVENTION REMEDIATION candidate (branch claude/pick-convention-remediation-yidlbm). NOT a bake: no tag, no main merge. The book MOVED by design \u2014 the remediation REVERTED the 190 rookie renumbers (real-world) back to database-universe store ordinals and re-derived the chain table (2010 77->93); the kept (a) band-pool fix + (c) _draft fills / 8 PSD splits also move some (player,type,year,pick) stable keys. The seal is re-pointed to THIS remediated candidate so B3 can certify it. The BAKED/main seal (stable-sha 2a74c731, head 7a07e369, store a2fbc9a0) is UNTOUCHED upstream; an owner bake-time re-seal is still required before any promotion.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-11 for the CHAPTER-LEVER candidate (branch claude/chapter-lever-discount-sweep-amqpfx; base = pick-convention remediation c02499a3). NOT a bake: no tag, no main merge. The book MOVED by design \u2014 L1 (young-GDEF transition credit) strengthened the GEN_DEF rows of ycred_table.json (md5 daaf5e49) for trailing years 2011-2026; engine code UNTOUCHED (head 7a07e369). L2 measured NOT-SUPPORTED, nothing shipped. The BAKED/main seal (stable-sha 2a74c731, head 7a07e369, store a2fbc9a0) is UNTOUCHED upstream; an owner bake-time re-seal is still required before any promotion.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
   "head_md5": "7a07e369",
   "store_md5": "04f38dad",
   "n_players": 2649,
-  "stable_sha256": "e35744c70eb0baa4fd438cdd71a60026844db72220071740e6b3ba3b2beb9b2e",
-  "sealed_by": "REMEDIATION re-seal 2026-07-11 (pick-convention remediation; NOT a bake). Prior baked seal 2a74c731 (v2.7, 2026-07-10) preserved upstream on main.",
+  "stable_sha256": "a19b3cb8b0f7eb75cb4ea71b2324c228d7ed04a70da39dbb550013d4969f5e96",
+  "sealed_by": "CHAPTER-LEVER re-seal 2026-07-11 (L1 transition credit; NOT a bake). Prior candidate seal e35744c7 (pick remediation) superseded on this branch; baked seal 2a74c731 (v2.7) preserved on main.",
   "sealed_date": "2026-07-11",
   "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }

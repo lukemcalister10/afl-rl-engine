@@ -6,7 +6,7 @@
   "A1": {
    "dc": false,
    "status": "PASS",
-   "detail": "Duursma>Uwland: 4429 vs 2230"
+   "detail": "Duursma>Uwland: 4429 vs 2746"
   },
   "A2": {
    "dc": false,
@@ -56,12 +56,12 @@
   "A11": {
    "dc": true,
    "status": "PASS",
-   "detail": "Farrow>Patterson: 1750 vs 920; Cumming>Annable: 2186 vs 2020"
+   "detail": "Farrow>Patterson: 1750 vs 992; Cumming>Annable: 2186 vs 2020"
   },
   "A12": {
    "dc": true,
    "status": "FAIL",
-   "detail": "Travaglia>Moraes: 786 vs 1023; Smillie>Retschko: 1301 vs 838"
+   "detail": "Travaglia>Moraes: 792 vs 1023; Smillie>Retschko: 1301 vs 838"
   },
   "A13": {
    "dc": false,
@@ -86,22 +86,22 @@
   "B2": {
    "dc": false,
    "status": "PASS",
-   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.55, GEN_FWD|GOOD|T1:4.73, MID|GO"
+   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.47, GEN_FWD|GOOD|T1:5.44, MID|GO"
   },
   "B3": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 7a07e369 store 04f38dad config 69ead79b944d): MATCHES the sealed baseline. current=e35744c70eb0baa4.. (2649 players) vs baseline=e35744c70eb0b"
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 7a07e369 store 04f38dad config 69ead79b944d): MATCHES the sealed baseline. current=a19b3cb8b0f7eb75.. (2649 players) vs baseline=a19b3cb8b0f7e"
   },
   "B4": {
    "dc": false,
    "status": "PASS",
-   "detail": "regenerated rl_app_data.json md5=8f3675f3 vs shipped 8f3675f3 (byte-agree gate; export exit=0)"
+   "detail": "regenerated rl_app_data.json md5=9ecbe0fa vs shipped 9ecbe0fa (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,
    "status": "FEATURE",
-   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 62 saves, aggregate lift +2061; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new al"
+   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 63 saves, aggregate lift +2084; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new al"
   },
   "B6": {
    "dc": false,

@@ -1,0 +1,14 @@
+boot-store guard (Guard 5) PASS  [run_panel]  store 04f38dad == pinned 04f38dad (CANDIDATE chapter-lever build 2026-07-11 (branch claude/chapter-lever-discount-sweep-amqpfx; base = pick-convention remediation c02499a3, store UNCHANGED 04f38dad) — NOT BAKED, NOT tagged, NOT on main. L1 young-GDEF transition credit: ycred_table.json GEN_DEF rows strengthened (table md5 daaf5e49; engine code untouched, head 7a07e369) -> board re-pinned 8f3675f3 -> 9ecbe0fa; candidate book re-sealed a19b3cb8. L2 sustained-form weighting: measured NOT-SUPPORTED, nothing shipped. Baked lineage unchanged upstream (v2.7 = 8f8c00b).)
+player                      EV  EXPECT
+  Nick Daicos             8050    7626  <-- MISMATCH
+  Marcus Bontempelli      3721    3524  <-- MISMATCH
+  Harry Sheezel           8115    7734  <-- MISMATCH
+  Max Gawn                2538    2413  <-- MISMATCH
+  Harley Reid             3726    3549  <-- MISMATCH
+  Josh Ward               1746    1650  <-- MISMATCH
+  Darcy Moore              209     198  <-- MISMATCH
+  Taylor Goad              818     788  <-- MISMATCH
+  Josh Smillie            1301    1250  <-- MISMATCH
+  Will Green               588     575  <-- MISMATCH
+
+RESULT: FAIL

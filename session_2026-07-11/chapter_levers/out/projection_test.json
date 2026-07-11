@@ -1,0 +1,484 @@
+{
+ "doc": "ACCEPTANCE \u2014 THE PROJECTION TEST (owner's test, directive 2026-07-11): project the levered board\n6-7 years forward and report the future top-end positional mix. Young GDEFs vanishing = FAIL,\nregardless of guards.\n\nMETHOD (declared; read-only, board JSON + the engine's OWN exported aging lens \u2014 no engine load):\n  proj_H(p) = v_now * DELTAS[clip(age + H - PEAK_AGE[gf])] / DELTAS[clip(age - PEAK_AGE[gf])]\nusing the board's exported PEAK_AGE (per position) and DELTAS (years-from-peak value fractions,\n-8..+14 \u2014 the engine's own aging curve). Players projected past DELTAS[+14] or age 34+ are treated\nas RETIRED (excluded) \u2014 today's veterans age out of the projected top end exactly as the owner's\n\"project the DB forward\" framing implies. The projector deliberately does NOT re-inflate anyone's\nvalue beyond the board's own age curve: every position rides the same lens, so the POSITIONAL MIX of\nthe projected top end is an apples-to-apples read of what the board believes matures. Run on BOTH the\nbase candidate board (8f3675f3) and the LEVERED board (9ecbe0fa) \u2014 the delta shows what the L1\ntransition credit does to the projected defender top end.\nUsage: python3 projection_test.py <base_board.json> <levered_board.json>\n",
+ "H6/base/top20_mix": {
+  "MID": 13,
+  "RUC": 2,
+  "KEY_FWD": 2,
+  "GEN_DEF": 2,
+  "GEN_FWD": 1
+ },
+ "H6/base/top50_mix": {
+  "MID": 28,
+  "RUC": 2,
+  "KEY_FWD": 5,
+  "GEN_DEF": 7,
+  "GEN_FWD": 4,
+  "KEY_DEF": 4
+ },
+ "H6/base/gdef_in_top50": [
+  [
+   "archie-roberts",
+   6111,
+   27,
+   "young-now"
+  ],
+  [
+   "lachlan-ash",
+   4866,
+   31,
+   "estab-now"
+  ],
+  [
+   "darcy-wilmot",
+   4428,
+   29,
+   "estab-now"
+  ],
+  [
+   "bodhi-uwland",
+   3545,
+   29,
+   "estab-now"
+  ],
+  [
+   "zeke-uwland",
+   3489,
+   25,
+   "young-now"
+  ],
+  [
+   "nick-blakey",
+   3166,
+   32,
+   "estab-now"
+  ],
+  [
+   "jake-bowey",
+   3163,
+   30,
+   "estab-now"
+  ]
+ ],
+ "H6/levered/top20_mix": {
+  "MID": 13,
+  "RUC": 2,
+  "KEY_FWD": 2,
+  "GEN_DEF": 2,
+  "GEN_FWD": 1
+ },
+ "H6/levered/top50_mix": {
+  "MID": 28,
+  "RUC": 2,
+  "KEY_FWD": 5,
+  "GEN_DEF": 7,
+  "GEN_FWD": 4,
+  "KEY_DEF": 4
+ },
+ "H6/levered/gdef_in_top50": [
+  [
+   "archie-roberts",
+   6123,
+   27,
+   "young-now"
+  ],
+  [
+   "lachlan-ash",
+   4866,
+   31,
+   "estab-now"
+  ],
+  [
+   "darcy-wilmot",
+   4428,
+   29,
+   "estab-now"
+  ],
+  [
+   "zeke-uwland",
+   4296,
+   25,
+   "young-now"
+  ],
+  [
+   "bodhi-uwland",
+   3545,
+   29,
+   "estab-now"
+  ],
+  [
+   "nick-blakey",
+   3166,
+   32,
+   "estab-now"
+  ],
+  [
+   "jake-bowey",
+   3163,
+   30,
+   "estab-now"
+  ]
+ ],
+ "H6/levered/top20": [
+  [
+   "harry-sheezel",
+   "MID",
+   9059,
+   28
+  ],
+  [
+   "nick-daicos",
+   "MID",
+   8225,
+   29
+  ],
+  [
+   "luke-jackson",
+   "RUC",
+   7969,
+   31
+  ],
+  [
+   "josh-treacy",
+   "KEY_FWD",
+   7029,
+   30
+  ],
+  [
+   "nasiah-wanganeen-milera",
+   "MID",
+   6750,
+   29
+  ],
+  [
+   "willem-duursma",
+   "MID",
+   6513,
+   25
+  ],
+  [
+   "archie-roberts",
+   "GEN_DEF",
+   6123,
+   27
+  ],
+  [
+   "max-holmes",
+   "MID",
+   5881,
+   30
+  ],
+  [
+   "tristan-xerri",
+   "RUC",
+   5851,
+   33
+  ],
+  [
+   "will-ashcroft",
+   "MID",
+   5754,
+   28
+  ],
+  [
+   "errol-gulden",
+   "MID",
+   5613,
+   30
+  ],
+  [
+   "finn-callaghan",
+   "MID",
+   5560,
+   29
+  ],
+  [
+   "murphy-reid",
+   "GEN_FWD",
+   5288,
+   26
+  ],
+  [
+   "zak-butters",
+   "MID",
+   5141,
+   32
+  ],
+  [
+   "ryley-sanders",
+   "MID",
+   5058,
+   27
+  ],
+  [
+   "sam-darcy",
+   "KEY_FWD",
+   4916,
+   29
+  ],
+  [
+   "finn-o-sullivan",
+   "MID",
+   4874,
+   26
+  ],
+  [
+   "lachlan-ash",
+   "GEN_DEF",
+   4866,
+   31
+  ],
+  [
+   "sam-lalor",
+   "MID",
+   4781,
+   26
+  ],
+  [
+   "bailey-smith",
+   "MID",
+   4756,
+   32
+  ]
+ ],
+ "H7/base/top20_mix": {
+  "MID": 13,
+  "RUC": 1,
+  "KEY_FWD": 3,
+  "GEN_DEF": 2,
+  "GEN_FWD": 1
+ },
+ "H7/base/top50_mix": {
+  "MID": 28,
+  "RUC": 1,
+  "KEY_FWD": 6,
+  "GEN_DEF": 7,
+  "GEN_FWD": 4,
+  "KEY_DEF": 4
+ },
+ "H7/base/gdef_in_top50": [
+  [
+   "archie-roberts",
+   6050,
+   28,
+   "young-now"
+  ],
+  [
+   "lachlan-ash",
+   4706,
+   32,
+   "estab-now"
+  ],
+  [
+   "darcy-wilmot",
+   4336,
+   30,
+   "estab-now"
+  ],
+  [
+   "zeke-uwland",
+   3597,
+   26,
+   "young-now"
+  ],
+  [
+   "bodhi-uwland",
+   3471,
+   30,
+   "estab-now"
+  ],
+  [
+   "jake-bowey",
+   3062,
+   31,
+   "estab-now"
+  ],
+  [
+   "nick-blakey",
+   3022,
+   33,
+   "estab-now"
+  ]
+ ],
+ "H7/levered/top20_mix": {
+  "MID": 13,
+  "RUC": 1,
+  "KEY_FWD": 3,
+  "GEN_DEF": 2,
+  "GEN_FWD": 1
+ },
+ "H7/levered/top50_mix": {
+  "MID": 28,
+  "RUC": 1,
+  "KEY_FWD": 6,
+  "GEN_DEF": 7,
+  "GEN_FWD": 4,
+  "KEY_DEF": 4
+ },
+ "H7/levered/gdef_in_top50": [
+  [
+   "archie-roberts",
+   6061,
+   28,
+   "young-now"
+  ],
+  [
+   "lachlan-ash",
+   4706,
+   32,
+   "estab-now"
+  ],
+  [
+   "zeke-uwland",
+   4429,
+   26,
+   "young-now"
+  ],
+  [
+   "darcy-wilmot",
+   4336,
+   30,
+   "estab-now"
+  ],
+  [
+   "bodhi-uwland",
+   3471,
+   30,
+   "estab-now"
+  ],
+  [
+   "jake-bowey",
+   3062,
+   31,
+   "estab-now"
+  ],
+  [
+   "nick-blakey",
+   3022,
+   33,
+   "estab-now"
+  ]
+ ],
+ "H7/levered/top20": [
+  [
+   "harry-sheezel",
+   "MID",
+   8870,
+   29
+  ],
+  [
+   "nick-daicos",
+   "MID",
+   7962,
+   30
+  ],
+  [
+   "luke-jackson",
+   "RUC",
+   7714,
+   32
+  ],
+  [
+   "josh-treacy",
+   "KEY_FWD",
+   6883,
+   31
+  ],
+  [
+   "nasiah-wanganeen-milera",
+   "MID",
+   6534,
+   30
+  ],
+  [
+   "willem-duursma",
+   "MID",
+   6448,
+   26
+  ],
+  [
+   "archie-roberts",
+   "GEN_DEF",
+   6061,
+   28
+  ],
+  [
+   "max-holmes",
+   "MID",
+   5687,
+   31
+  ],
+  [
+   "will-ashcroft",
+   "MID",
+   5635,
+   29
+  ],
+  [
+   "errol-gulden",
+   "MID",
+   5428,
+   31
+  ],
+  [
+   "finn-callaghan",
+   "MID",
+   5383,
+   30
+  ],
+  [
+   "murphy-reid",
+   "GEN_FWD",
+   5235,
+   27
+  ],
+  [
+   "ryley-sanders",
+   "MID",
+   4955,
+   28
+  ],
+  [
+   "zak-butters",
+   "MID",
+   4835,
+   33
+  ],
+  [
+   "finn-o-sullivan",
+   "MID",
+   4825,
+   27
+  ],
+  [
+   "sam-darcy",
+   "KEY_FWD",
+   4816,
+   30
+  ],
+  [
+   "sam-lalor",
+   "MID",
+   4733,
+   27
+  ],
+  [
+   "lachlan-ash",
+   "GEN_DEF",
+   4706,
+   32
+  ],
+  [
+   "logan-morris",
+   "KEY_FWD",
+   4617,
+   28
+  ],
+  [
+   "colby-mckercher",
+   "MID",
+   4595,
+   28
+  ]
+ ],
+ "verdict": "PASS \u2014 young-now GDEFs present in the projected top-50 at both horizons: {6: ['archie-roberts', 'zeke-uwland'], 7: ['archie-roberts', 'zeke-uwland']}"
+}
