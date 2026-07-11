@@ -1,0 +1,21 @@
+# RETURN — PICK CORRECTIONS + RE-DENOMINATION (candidate build) · 2026-07-11
+Branch `claude/pick-corrections-redenomination-ywqmdi` · head **592a559** · **PR #59** · base verified: main a6a8aa9c, tag v2.7 8f8c00b · Guard 5 PASS throughout · baseline reproduced byte-exact before any change.
+**Per-task commit SHAs:** (a) f5086e8 · (b) 53ec21a · (c) fc28941 + 2480c93 (expand) · (f) 7b0cb0d · (d) 4af4681 · (e) 592a559 · PLAN b16dcbd.
+
+**MEASURED CURRENCY FACTOR = 1.0524** (global board SCALE ratio 4.68336/4.45; matches audit Q4). For the supervisor's registry re-denominations (A-BONT 3084, G-CONVEX floors): × 1.0524.
+
+**Store row changes (a2fbc9a0 → 1a969d95):** _draft fills 325 (186 National / 136 Rookie / 3 Ireland) · rookie renumbers 190 web-verified · PSD split 8 (3+5) · 2010-11 national-tail renumber 0 applied (42 rows flagged — blocked, see below) · rookie rows left flagged-unverifiable 495 (kept at stored ordinal, not guessed).
+
+**Gate suite (RL_REPO set):** PASS=17 · FEATURE=1 (B5 raise-only, 0 lowered) · STRUCK=1 (A15) · PENDING=4 (A13/A14 PVC-staged, C1/C2) · **FAIL=3 = exactly {A2, A3, A12}** (owner-ruled data-caused reds, unchanged). B4 board-parity PASS · B3 book-seal PASS (candidate re-seal; baked/main seal untouched).
+**Three narrowest margins:** G-COHORT y4 1.29 vs hard 1.30 (**1.0 pt**) · A10 Curnow 0.55 vs 0.50 (+0.05) · A8 Berry 2.13x vs 2.00x (+0.13x).
+**G-FLOOR dispensation:** only **1 dip of 1 SCAR** vs baked (Alex Dodson) — far inside the dispensed ≤45 rows / ≤5 SCAR; no other floor trip.
+**RUC relative drift:** established RUCs move less than the currency (Max Gawn 2413→2483 = +2.90%, ≈ −2.3% relative to +5.24%); RUC cohort median +5.33% vs non-RUC +5.52%. Flagged in the eyeball list.
+
+**SSI chaining-contract wording (DRAFT for the supervisor's pen — I did not edit the doc):**
+> Rookie/PSD `pick` = the OFFICIAL draft slot. PSD and Rookie CHAIN onto the national draft (PSD after national, rookie after PSD) via the authoritative per-year last national pick (`national_draft_last_pick.json`), never the ND row count: effective pick = last_national_pick[year] + slot. Deriving the offset from the row count is FORBIDDEN — correct only where the national sequence is gapless, silently wrong at 2010-11.
+
+**ENVIRONMENT CONSTRAINT (material):** this session's egress policy hard-blocks external hosts (403 CONNECT to wikipedia/draftguru/footywire; WebFetch unavailable). So (b) tail-year pick-by-pick confirmation and the (c) 2010-11 national-tail per-row renumber could NOT be web-verified here — both flagged for a web-enabled follow-up, not guessed. Rookie/PSD numbering used the WebSearch corroboration path, method-validated by exact reproduction of the committed Q5 set. The (b) table already carries the load-bearing 2010 offset fix (77).
+
+**TIME:** actual well over the 2-4h band (>2×) — flagged. Drivers: (1) the full 199-row rookie/PSD web-verification expansion (13→192 corrections) beyond the Q5 seed; (2) diagnosing a B4 board-parity red that proved to be a missing `RL_REPO` in my gate invocation (the owner-override display block was dropped in B4's subprocess) — not a board defect; (3) ~10-min serial regenerate+gate cycles run several times.
+
+**In plain terms (for the owner):** Your pick foundation is now corrected at the source and the board is re-denominated to match. The one engine line that was quietly deflating every player ~5% against pick currency is fixed, so players sit ~+5.24% and the pick assets are scaled up by the same 1.0524 so picks and players speak one currency — that's the factor your registry anchors (Bont's 3084, the convex floors) get multiplied by. The store is cleaner: every one of the 2003-05 mystery rows now has its draft type, ~200 rookie/pre-season picks carry their real numbers with sources, and the rest are flagged honestly rather than guessed. All your gates pass except the three reds you already ruled data-caused (Curtis, Rozee, Travaglia), the floor barely moved (one player, one point), and the rucks correctly lag the shift. Two truth-keeping jobs are owed to a session with web access: the 2010-11 national-tail row numbers and the last few hundred obscure rookie picks. Nothing is baked — this is a candidate PR for your eyeball and the derivation build.
