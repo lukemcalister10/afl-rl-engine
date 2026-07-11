@@ -88,12 +88,16 @@ def pkbest(p):
 # year's national-pick count. PICKLESS mechanisms (MSD/SSP/Ireland/Unregistered/post-draft) carry NO slot;
 # their _eff (pick-equivalent) is derived empirically from realised value AFTER the PVC exists (see below). ----
 from collections import Counter as _Cnt
-# PICK-CORRECTION (b) 2026-07-11: the chaining offset is now an AUTHORITATIVE per-year LAST-NATIONAL-PICK
-# table (source-stamped sidecar national_draft_last_pick.json), replacing the prior inference from the ND
-# row COUNT. Owner convention: rookie/PSD chain onto last_national_pick, not the row count. The count is
-# correct only where the store's national sequence is gapless (19/23 years); it is wrong at 2010 (real last
-# = 77, store max 93 inflated by folded-in expansion entrants) and undercounts 2011 (last 89 incl. passes).
-# Fallback to the row count for any year absent from the table (logged), so the engine never silently loses a year.
+# PICK-CORRECTION (b) 2026-07-11, RE-DERIVED under the OWNER DATA LAW (ii) 2026-07-11: the chaining offset is
+# an AUTHORITATIVE per-year LAST-NATIONAL-PICK table (source-stamped sidecar national_draft_last_pick.json),
+# replacing the prior inference from the ND row COUNT. Owner convention: rookie/PSD chain onto the database's
+# national END, not the row count. The table value is the store's own MAX National ordinal per year (the
+# DATABASE UNIVERSE end — owner data law: store ordinals are database-universe with redraft exclusions; the
+# real-world/AFL-official count is NOT the authority). The row COUNT equals the MAX only where the sequence is
+# gapless (21/23 years); at 2010/2011 gaps (excluded/redrafted players that never consume numbering) make
+# count<max, so COUNT would place rookie picks BELOW real national ordinals — MAX is the collision-free end
+# (2010=93, 2011=89). Fallback to the row count for any year absent from the table (logged), so the engine
+# never silently loses a year.
 _NDC_count=dict(_Cnt(p['year'] for p in data if p['type']=='ND'))
 try:
     _NDLAST={int(_k):_v for _k,_v in json.load(open('national_draft_last_pick.json'))['last_national_pick'].items()}

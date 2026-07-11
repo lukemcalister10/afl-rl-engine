@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-11 for the CANDIDATE pick-corrections+redenomination (branch claude/pick-corrections-redenomination-ywqmdi). NOT a bake: no tag, no main merge. The book MOVED by design \u2014 the (a) band-pool fix re-rates every player ~+5.24% and the (c) store corrections change some (player,type,year,pick) stable keys (13 rookie renumbers, 3 PSD splits, 325 _draft fills). The seal is re-pointed to THIS candidate so B3 can certify it. The BAKED/main seal (stable-sha 2a74c731, head 7a07e369, store a2fbc9a0) is UNTOUCHED upstream; an owner bake-time re-seal is still required before any promotion. Prior baked seal: v2.7 bake 2026-07-10.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-11 for the PICK-CONVENTION REMEDIATION candidate (branch claude/pick-convention-remediation-yidlbm). NOT a bake: no tag, no main merge. The book MOVED by design \u2014 the remediation REVERTED the 190 rookie renumbers (real-world) back to database-universe store ordinals and re-derived the chain table (2010 77->93); the kept (a) band-pool fix + (c) _draft fills / 8 PSD splits also move some (player,type,year,pick) stable keys. The seal is re-pointed to THIS remediated candidate so B3 can certify it. The BAKED/main seal (stable-sha 2a74c731, head 7a07e369, store a2fbc9a0) is UNTOUCHED upstream; an owner bake-time re-seal is still required before any promotion.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
   "head_md5": "7a07e369",
-  "store_md5": "1a969d95",
+  "store_md5": "04f38dad",
   "n_players": 2649,
-  "stable_sha256": "9ad89734f1edb60285dabcbe0da22592aae29be3f49658ba1acb5c6daff9a698",
-  "sealed_by": "CANDIDATE re-seal 2026-07-11 (pick-corrections build; NOT a bake). Prior baked seal 2a74c731 (v2.7, 2026-07-10) preserved upstream on main.",
+  "stable_sha256": "e35744c70eb0baa4fd438cdd71a60026844db72220071740e6b3ba3b2beb9b2e",
+  "sealed_by": "REMEDIATION re-seal 2026-07-11 (pick-convention remediation; NOT a bake). Prior baked seal 2a74c731 (v2.7, 2026-07-10) preserved upstream on main.",
   "sealed_date": "2026-07-11",
   "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }

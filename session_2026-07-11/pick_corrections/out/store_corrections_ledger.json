@@ -75,7 +75,8 @@
      "old": 42,
      "new": 58
     }
-   ]
+   ],
+   "REMEDIATION": "REVERTED 2026-07-11 (pick-convention remediation): these real-world renumbers violated the owner data law and were restored to the original store ordinals (byte-restore from pre-correction store a2fbc9a0). _pick_source stamps removed. treacy 7->5."
   },
   "c4_psd_split_verified": {
    "n": 3,
@@ -101,7 +102,8 @@
   },
   "c3_rookie_unverifiable": {
    "n": 495,
-   "reason": "after the full verification pass, these RD rows still lack a citable official pick (mostly obscure pre-2015 rows outside the substantial-career scope, plus a handful the sweep flagged as club-ordinal-only / expansion-zone). Kept at stored ordinal, NOT guessed. Near-$0 board impact (chained picks cap at KMAX=70).",
+   "status": "CLEARED",
+   "reason": "CLEARED 2026-07-11 under the owner data law: these rookie rows were never suspect. Their stored ordinals are database-universe numbers (redrafts excluded), which are AUTHORITATIVE and deliberately differ from AFL-official numbering. There was nothing to verify against an external source; the \"unverifiable\" framing was the mistaken real-world premise the remediation reverts. All rows kept at their stored (correct) database ordinal.",
    "rows": [
     {
      "key": "fred-rodriguez",
@@ -3078,7 +3080,9 @@
   "c2_national_tail_2010_11": {
    "n": 42,
    "applied": false,
-   "reason": "renumber requires authoritative official pick-by-pick data (which rows are real national picks 1..N vs folded-in concession/mini-draft entrants). Egress policy blocked that verification this build; NOT guessed. The (b) last-national-pick table already fixes the load-bearing 2010 chaining offset (93->77). 2011 evidence (pick 89 real) conflicts with the Q5 inflation hypothesis and is left for web-enabled reconciliation.",
+   "status": "CLEARED",
+   "reason": "CLEARED 2026-07-11 under the owner data law (re-judged against the database universe): these 42 ND 2010/2011 rows (pick>66) are legitimate database-universe national ordinals (unique per year, all type=National, real careers). The gaps below the max are excluded/redrafted players that never consume numbering. The database ND end = the store MAX (2010=93, 2011=89), used by the re-derived chain table. The correction build's 2010->77 override used the real-world selection count, which is NOT the authority; it is reverted.",
+   "within_convention_anomalies": "none (0 duplicate ordinals; all clear)",
    "rows": [
     {
      "key": "josh-tynan",
@@ -4406,7 +4410,8 @@
      "new": 28,
      "source": "bigfooty \"Rookie Pick 28 Geelong ... Nick Driscoll\""
     }
-   ]
+   ],
+   "REMEDIATION": "REVERTED 2026-07-11 (pick-convention remediation): these real-world renumbers violated the owner data law and were restored to the original store ordinals (byte-restore from pre-correction store a2fbc9a0). _pick_source stamps removed. treacy 7->5."
   },
   "c4_psd_split_verified_expanded": {
    "n": 5,
@@ -4444,5 +4449,19 @@
    ],
    "note": "5 further Pre-Season Draft rows found in the verification pass (incl. luke-nankervis 2021 \u2014 the reintroduced-PSD era proves PSD-folding is not confined to pre-2018). Chained after national before rookie via the rl_model.py PSD arm."
   }
+ },
+ "REMEDIATION": {
+  "date": "2026-07-11",
+  "build": "pick-convention remediation (candidate)",
+  "owner_data_law": "Store pick numbers are DATABASE-UNIVERSE ordinals, not AFL official numbering. \"Players previously listed are excluded when redrafted, and only their initial entry is recorded.\" One row per player at initial entry; redrafts never consume numbering; store ordinals deliberately differ from AFL-official numbering. The rookie draft chains onto the database's ND end. No build may \"correct\" store picks against external sources without an owner ruling.",
+  "items": {
+   "i_reverted_rookie_renumbers": 190,
+   "ii_chain_table": "RE-DERIVED from database (store MAX National ordinal); 2010 77->93, all else unchanged",
+   "iii_flags_cleared": {
+    "rookie_unverifiable": 495,
+    "national_tail_2010_11": 42
+   }
+  },
+  "kept_intact": "c1 _draft fills (325), c4 PSD splits (8, type/_draft/pick/_pick_source), (a) band-pool basis, (f) re-denomination"
  }
 }

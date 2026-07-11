@@ -1,7 +1,7 @@
 {
  "_doc": "(f) PICK RE-DENOMINATION \u2014 owner ruling 2026-07-11 ('scale picks with the currency'). The (a) band-pool fix re-rates every player ~+5.24% against the (3000-pinned) pick currency; this sidecar restates the SHIPPED pick assets in that same new currency = frozen v3.4 pick values x factor, so picks and players are quoted in one unit. pick-vs-pick ratios are byte-preserved (uniform scalar). Full unfreeze (re-fitting the pick curve on the corrected store) is explicitly OUT of scope \u2014 the curve SHAPE stays the frozen baked v3.4 ruler; only a uniform scalar applies. The supervisor re-denominates the registry anchors (A-BONT 3084, G-CONVEX floors) from the same factor.",
  "factor": 1.0524,
- "factor_provenance": "MEASURED (not assumed) from this build's regenerated board: median per-player new/baked value ratio = 1.0524; per-position medians GEN_DEF +5.25%, GEN_FWD/KEY_DEF/KEY_FWD/MID +5.24%, RUC cohort ~+3.5-3.75% mean (its own cap machinery \u2014 flagged, NOT the currency unit). Matches audit Q4 (V0*(pos,18,5) sim/ctl = 1.0524).",
+ "factor_provenance": "MEASURED (not assumed) from the regenerated board SCALE ratio (new 4.68336 / baked 4.45 = 1.052440 -> 1.0524). RE-CONFIRMED on the PICK-CONVENTION REMEDIATION board 2026-07-11 after reverting the 190 rookie renumbers + re-deriving the chain table (2010 77->93): SCALE-ratio factor = 1.052440 (delta +0.00004 vs the pre-remediation pin \u2014 UNCHANGED to 4dp; the caps crush rookie-pick effects, per the directive's expectation). Per-player median ratio 1.0503. Matches audit Q4 (V0*(pos,18,5) sim/ctl = 1.0524).",
  "frozen_v34_pvc_baked_v2_7": {
   "1": 3000,
   "2": 2501,

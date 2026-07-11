@@ -7,7 +7,7 @@ import json, statistics, sys, os
 
 REPO='/home/user/afl-rl-engine'
 OLD=json.load(open(os.path.join(REPO,'session_2026-07-11/pick_corrections/out/board_baked_v27.json')))
-NEW=json.load(open(sys.argv[1] if len(sys.argv)>1 else '/tmp/claude-0/-home-user-afl-rl-engine/f2070dfe-a1e4-5548-8c3c-ecc8ab9d2f64/scratchpad/board_final.json'))
+NEW=json.load(open(sys.argv[1] if len(sys.argv)>1 else '/tmp/claude-0/-home-user-afl-rl-engine/b8e67301-6ed7-5f3f-bd9a-8cf5cd7e3896/scratchpad/board_final.json'))
 OUT_MD=os.path.join(REPO,'session_2026-07-11/pick_corrections/EYEBALL_LIST.md')
 FACTOR=json.load(open(os.path.join(REPO,'engine/rl_after/pick_redenomination.json')))['factor']
 
@@ -16,9 +16,9 @@ SCALE_OLD=OLD.get('SCALE'); SCALE_NEW=NEW.get('SCALE')
 SCALE_RATIO=(SCALE_NEW/SCALE_OLD) if SCALE_OLD else None
 # three narrowest guard margins on the candidate (from the gate suite + the G-COHORT class-sum row).
 GUARD_MARGINS=[
- ("G-COHORT y4 (BINDING, class-year-sum vs hard 1.30)","1.29 vs 1.30 -> 1.0 pt (band-pool fix narrows it from ~1.2; B1 candidate avg-peak row y4=129 consistent)"),
+ ("G-COHORT y4 (BINDING, class-year-sum vs hard 1.30)","1.29 vs 1.30 -> 1.0 pt (B1 remediated avg-peak row y4=129; UNCHANGED by the remediation — rookie reverts + 2010 chain cap out)"),
  ("A10 Curnow decline (frozen suite, bar 0.50)","0.55 vs 0.50 -> +0.05 (narrowest PASSING anchor; PROVISIONAL, data-caused)"),
- ("A8 Berry >= 2x Tsatas (frozen suite)","2.13x vs 2.00x -> +0.13x"),
+ ("A8 Berry >= 2x Tsatas (frozen suite)","2.14x vs 2.00x -> +0.14x"),
 ]
 
 # ---- players ----
@@ -61,9 +61,12 @@ ruc_dp=[r['dpct'] for r in RUC if r['kind']=='player']
 nonruc_dp=[r['dpct'] for r in pl if r['pos']!='RUC']
 
 lines=[]
-lines.append('# OWNER EYEBALL LIST — pick-corrections + re-denomination candidate — 2026-07-11')
+lines.append('# OWNER EYEBALL LIST — pick-convention remediation candidate — 2026-07-11')
 lines.append('')
-lines.append('OLD = baked v2.7 board (e2c9bc51). NEW = candidate regenerated board. Every player AND every pick asset below.')
+lines.append('OLD = baked v2.7 board (SCALE 4.45). NEW = pick-convention remediation regenerated board (SCALE %.5f). '
+             'Remediation REVERTED the 190 rookie renumbers to database-universe store ordinals + re-derived the '
+             'chain table (2010 77->93); KEPT the (a) band-pool fix, (c) _draft fills + 8 PSD splits, (f) re-denomination. '
+             'Every player AND every pick asset below.'%SCALE_NEW)
 lines.append('')
 lines.append('## ONE-PAGE SUMMARY')
 lines.append('')

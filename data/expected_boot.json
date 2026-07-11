@@ -1,13 +1,13 @@
 {
  "_doc": "PINNED BOOT IDENTITY \u2014 the single source of the expected md5s every gate/panel/bake/self-test asserts on entry (Guard 5, boot-store assertion). A build that boots on any other store HALTS on line one. Update ONLY at a bake, in the same commit that moves the store; verify_restore.sh, bootstrap.sh, run_panel.sh, ship_gates_check.py and one_source_selftest.py all read THIS file rather than carrying their own hardcoded hex. Origin: stale-boot hardening 2026-07-05 (workspace held baked-v2.4 644d1254 while the repo carried e1b4d8bf; the four data guards validate whichever dir they are imported from, so they never caught the wrong DIRECTORY).",
- "tag": "CANDIDATE pick-corrections+redenomination 2026-07-11 (branch claude/pick-corrections-redenomination-ywqmdi) \u2014 NOT BAKED, NOT tagged, NOT on main. Source store re-pinned from baked v2.7 a2fbc9a0 -> 1a969d95: (a) band-pool raw->chained + (b) authoritative last-national-pick offset + (c) 325 _draft fills / 13 verified rookie renumbers / 3 PSD splits + (f) pick re-denomination. Board/gates re-pinned at task (d). Baked lineage unchanged upstream (v2.7 = 8f8c00b).",
- "store": "1a969d95644bd9d957d69998fd2c7ed9",
+ "tag": "CANDIDATE pick-convention remediation 2026-07-11 (branch claude/pick-convention-remediation-yidlbm) \u2014 NOT BAKED, NOT tagged, NOT on main. Source store re-pinned 1a969d95 -> 04f38dad: REVERTED the 190 rookie renumbers to the original database-universe store ordinals (owner data law: store picks are database-universe ordinals, not AFL official numbering) + chain table re-derived (2010 77->93 = store MAX National end). KEPT: (a) band-pool raw->chained, (c) 325 _draft fills + 8 PSD splits, (f) pick re-denomination. Board/gates re-pinned at (iv). Baked lineage unchanged upstream (v2.7 = 8f8c00b).",
+ "store": "04f38dad7c03ae2ba8d060ffdbdd1bdf",
  "register": "652d83e87780e415a01a2de6d8b3cc57",
  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
  "engine_head": "7a07e369de93645bf900815de8328ac5",
- "rl_model": "15a30e556cf1d5d4dc89dd3079045187",
+ "rl_model": "0c42d158cdb495376421ddb94e80f68f",
  "band": "34faa8659cc8f19794f5cb9584fa19b2",
  "panel": "PASS 10/10 (candidate values shifted +5.24%)",
- "board": "86290f0c",
+ "board": "8f3675f3",
  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }
