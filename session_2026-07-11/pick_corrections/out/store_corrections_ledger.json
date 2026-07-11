@@ -100,98 +100,14 @@
    "note": "rookie-offset-by-per-year-PSD-count refinement DEFERRED: authoritative per-year PSD sizes are not web-verifiable this build (egress policy blocked). Only web-verified PSD rows moved."
   },
   "c3_rookie_unverifiable": {
-   "n": 677,
-   "reason": "per-row official rookie pick not web-verifiable this build (org egress policy blocks wikipedia/draftguru/footywire \u2014 403 CONNECT). Rows keep their stored ordinal; a web-enabled session should complete these (near-$0 board impact: chained rookie picks cap at KMAX=70).",
+   "n": 495,
+   "reason": "after the full verification pass, these RD rows still lack a citable official pick (mostly obscure pre-2015 rows outside the substantial-career scope, plus a handful the sweep flagged as club-ordinal-only / expansion-zone). Kept at stored ordinal, NOT guessed. Near-$0 board impact (chained picks cap at KMAX=70).",
    "rows": [
     {
      "key": "fred-rodriguez",
      "player": "Fred Rodriguez",
      "year": 2025,
      "pick": 1
-    },
-    {
-     "key": "riley-onley",
-     "player": "Riley Onley",
-     "year": 2025,
-     "pick": 2
-    },
-    {
-     "key": "jack-watkins",
-     "player": "Jack Watkins",
-     "year": 2025,
-     "pick": 3
-    },
-    {
-     "key": "leon-kickett",
-     "player": "Leon Kickett",
-     "year": 2025,
-     "pick": 4
-    },
-    {
-     "key": "ollie-greeves",
-     "player": "Ollie Greeves",
-     "year": 2025,
-     "pick": 5
-    },
-    {
-     "key": "nick-driscoll",
-     "player": "Nick Driscoll",
-     "year": 2025,
-     "pick": 6
-    },
-    {
-     "key": "archer-day-wicks",
-     "player": "Archer Day-Wicks",
-     "year": 2024,
-     "pick": 2
-    },
-    {
-     "key": "aiden-riddle",
-     "player": "Aiden Riddle",
-     "year": 2024,
-     "pick": 3
-    },
-    {
-     "key": "harry-charleson",
-     "player": "Harry Charleson",
-     "year": 2024,
-     "pick": 4
-    },
-    {
-     "key": "xavier-ivisic",
-     "player": "Xavier Ivisic",
-     "year": 2024,
-     "pick": 5
-    },
-    {
-     "key": "tom-cochrane",
-     "player": "Tom Cochrane",
-     "year": 2024,
-     "pick": 6
-    },
-    {
-     "key": "blake-leidler",
-     "player": "Blake Leidler",
-     "year": 2024,
-     "pick": 7
-    },
-    {
-     "key": "asher-eastham",
-     "player": "Asher Eastham",
-     "year": 2024,
-     "pick": 8
-    },
-    {
-     "key": "patrick-retschko",
-     "player": "Patrick Retschko",
-     "year": 2024,
-     "pick": 9
-    },
-    {
-     "key": "joe-pike",
-     "player": "Joe Pike",
-     "year": 2024,
-     "pick": 11
     },
     {
      "key": "loch-rawlinson",
@@ -206,112 +122,10 @@
      "pick": 2
     },
     {
-     "key": "sam-clohesy",
-     "player": "Sam Clohesy",
-     "year": 2023,
-     "pick": 3
-    },
-    {
-     "key": "odin-jones",
-     "player": "Odin Jones",
-     "year": 2023,
-     "pick": 4
-    },
-    {
-     "key": "vigo-visentini",
-     "player": "Vigo Visentini",
-     "year": 2023,
-     "pick": 6
-    },
-    {
-     "key": "xavier-walsh",
-     "player": "Xavier Walsh",
-     "year": 2023,
-     "pick": 7
-    },
-    {
-     "key": "matt-carroll",
-     "player": "Matt Carroll",
-     "year": 2023,
-     "pick": 8
-    },
-    {
-     "key": "will-rowlands",
-     "player": "Will Rowlands",
-     "year": 2023,
-     "pick": 9
-    },
-    {
-     "key": "kynan-brown",
-     "player": "Kynan Brown",
-     "year": 2023,
-     "pick": 10
-    },
-    {
      "key": "blake-drury",
      "player": "Blake Drury",
      "year": 2022,
      "pick": 1
-    },
-    {
-     "key": "rhett-montgomerie",
-     "player": "Rhett Montgomerie",
-     "year": 2022,
-     "pick": 2
-    },
-    {
-     "key": "seth-campbell",
-     "player": "Seth Campbell",
-     "year": 2022,
-     "pick": 4
-    },
-    {
-     "key": "liam-reidy",
-     "player": "Liam Reidy",
-     "year": 2022,
-     "pick": 5
-    },
-    {
-     "key": "will-verrall",
-     "player": "Will Verrall",
-     "year": 2022,
-     "pick": 6
-    },
-    {
-     "key": "cameron-owen",
-     "player": "Cameron Owen",
-     "year": 2022,
-     "pick": 7
-    },
-    {
-     "key": "oscar-murdoch",
-     "player": "Oscar Murdoch",
-     "year": 2022,
-     "pick": 8
-    },
-    {
-     "key": "hamish-free",
-     "player": "Hamish Free",
-     "year": 2022,
-     "pick": 9
-    },
-    {
-     "key": "tylar-young",
-     "player": "Tylar Young",
-     "year": 2022,
-     "pick": 11
-    },
-    {
-     "key": "oliver-sestan",
-     "player": "Oliver Sestan",
-     "year": 2022,
-     "pick": 12
-    },
-    {
-     "key": "jaiden-magor",
-     "player": "Jaiden Magor",
-     "year": 2022,
-     "pick": 13
     },
     {
      "key": "osca-ricciardi",
@@ -320,112 +134,10 @@
      "pick": 14
     },
     {
-     "key": "luke-nankervis",
-     "player": "Luke Nankervis",
-     "year": 2021,
-     "pick": 1
-    },
-    {
      "key": "charlie-dean",
      "player": "Charlie Dean",
      "year": 2021,
      "pick": 2
-    },
-    {
-     "key": "ned-long",
-     "player": "Ned Long",
-     "year": 2021,
-     "pick": 4
-    },
-    {
-     "key": "karl-worner",
-     "player": "Karl Worner",
-     "year": 2021,
-     "pick": 5
-    },
-    {
-     "key": "patrick-voss",
-     "player": "Patrick Voss",
-     "year": 2021,
-     "pick": 6
-    },
-    {
-     "key": "cooper-hamilton",
-     "player": "Cooper Hamilton",
-     "year": 2021,
-     "pick": 7
-    },
-    {
-     "key": "ollie-dempsey",
-     "player": "Ollie Dempsey",
-     "year": 2021,
-     "pick": 8
-    },
-    {
-     "key": "charlie-parker",
-     "player": "Charlie Parker",
-     "year": 2021,
-     "pick": 10
-    },
-    {
-     "key": "judd-mcvee",
-     "player": "Judd McVee",
-     "year": 2021,
-     "pick": 11
-    },
-    {
-     "key": "robbie-mccomb",
-     "player": "Robbie McComb",
-     "year": 2021,
-     "pick": 12
-    },
-    {
-     "key": "patrick-walker",
-     "player": "Patrick Walker",
-     "year": 2020,
-     "pick": 1
-    },
-    {
-     "key": "malachy-carruthers",
-     "player": "Malachy Carruthers",
-     "year": 2020,
-     "pick": 2
-    },
-    {
-     "key": "jack-saunders",
-     "player": "Jack Saunders",
-     "year": 2020,
-     "pick": 3
-    },
-    {
-     "key": "luke-parks",
-     "player": "Luke Parks",
-     "year": 2020,
-     "pick": 6
-    },
-    {
-     "key": "lachlan-mcneil",
-     "player": "Lachlan McNeil",
-     "year": 2020,
-     "pick": 7
-    },
-    {
-     "key": "zane-trew",
-     "player": "Zane Trew",
-     "year": 2020,
-     "pick": 8
-    },
-    {
-     "key": "isaac-chugg",
-     "player": "Isaac Chugg",
-     "year": 2020,
-     "pick": 12
-    },
-    {
-     "key": "taj-schofield",
-     "player": "Taj Schofield",
-     "year": 2020,
-     "pick": 13
     },
     {
      "key": "aiden-fyfe",
@@ -438,318 +150,6 @@
      "player": "Rhys Nicholls",
      "year": 2020,
      "pick": 15
-    },
-    {
-     "key": "josh-honey",
-     "player": "Josh Honey",
-     "year": 2019,
-     "pick": 1
-    },
-    {
-     "key": "brady-rowles",
-     "player": "Brady Rowles",
-     "year": 2019,
-     "pick": 2
-    },
-    {
-     "key": "jack-bell",
-     "player": "Jack Bell",
-     "year": 2019,
-     "pick": 3
-    },
-    {
-     "key": "jarvis-pina",
-     "player": "Jarvis Pina",
-     "year": 2019,
-     "pick": 4
-    },
-    {
-     "key": "jake-pasini",
-     "player": "Jake Pasini",
-     "year": 2019,
-     "pick": 6
-    },
-    {
-     "key": "emerson-jeka",
-     "player": "Emerson Jeka",
-     "year": 2019,
-     "pick": 7
-    },
-    {
-     "key": "anthony-treacy",
-     "player": "Anthony Treacy",
-     "year": 2019,
-     "pick": 9
-    },
-    {
-     "key": "bradley-close",
-     "player": "Bradley Close",
-     "year": 2019,
-     "pick": 10
-    },
-    {
-     "key": "connor-budarick",
-     "player": "Connor Budarick",
-     "year": 2019,
-     "pick": 11
-    },
-    {
-     "key": "fraser-phillips",
-     "player": "Fraser Phillips",
-     "year": 2019,
-     "pick": 12
-    },
-    {
-     "key": "trent-burgoyne",
-     "player": "Trent Burgoyne",
-     "year": 2019,
-     "pick": 14
-    },
-    {
-     "key": "mitch-o-neill",
-     "player": "Mitch O'Neill",
-     "year": 2019,
-     "pick": 15
-    },
-    {
-     "key": "matt-conroy",
-     "player": "Matt Conroy",
-     "year": 2019,
-     "pick": 16
-    },
-    {
-     "key": "malcolm-rosas",
-     "player": "Malcolm Rosas",
-     "year": 2019,
-     "pick": 17
-    },
-    {
-     "key": "lachie-young",
-     "player": "Lachie Young",
-     "year": 2018,
-     "pick": 3
-    },
-    {
-     "key": "kieran-strachan",
-     "player": "Kieran Strachan",
-     "year": 2018,
-     "pick": 4
-    },
-    {
-     "key": "tom-jok",
-     "player": "Tom Jok",
-     "year": 2018,
-     "pick": 5
-    },
-    {
-     "key": "tobin-cox",
-     "player": "Tobin Cox",
-     "year": 2018,
-     "pick": 6
-    },
-    {
-     "key": "tom-mckenzie",
-     "player": "Tom McKenzie",
-     "year": 2018,
-     "pick": 7
-    },
-    {
-     "key": "tom-atkins",
-     "player": "Tom Atkins",
-     "year": 2018,
-     "pick": 8
-    },
-    {
-     "key": "durak-tucker",
-     "player": "Durak Tucker",
-     "year": 2018,
-     "pick": 9
-    },
-    {
-     "key": "damon-greaves",
-     "player": "Damon Greaves",
-     "year": 2018,
-     "pick": 10
-    },
-    {
-     "key": "kade-chandler",
-     "player": "Kade Chandler",
-     "year": 2018,
-     "pick": 11
-    },
-    {
-     "key": "jake-aarts",
-     "player": "Jake Aarts",
-     "year": 2018,
-     "pick": 12
-    },
-    {
-     "key": "harry-edwards",
-     "player": "Harry Edwards",
-     "year": 2018,
-     "pick": 13
-    },
-    {
-     "key": "tobe-watson",
-     "player": "Tobe Watson",
-     "year": 2018,
-     "pick": 15
-    },
-    {
-     "key": "jordon-sweet",
-     "player": "Jordon Sweet",
-     "year": 2018,
-     "pick": 16
-    },
-    {
-     "key": "harry-reynolds",
-     "player": "Harry Reynolds",
-     "year": 2018,
-     "pick": 17
-    },
-    {
-     "key": "william-golds",
-     "player": "William Golds",
-     "year": 2018,
-     "pick": 18
-    },
-    {
-     "key": "jordon-butts",
-     "player": "Jordon Butts",
-     "year": 2018,
-     "pick": 20
-    },
-    {
-     "key": "tom-wilkinson",
-     "player": "Tom Wilkinson",
-     "year": 2018,
-     "pick": 21
-    },
-    {
-     "key": "tim-mohr",
-     "player": "Tim Mohr",
-     "year": 2018,
-     "pick": 22
-    },
-    {
-     "key": "joshua-jaska",
-     "player": "Joshua Jaska",
-     "year": 2017,
-     "pick": 1
-    },
-    {
-     "key": "thomas-murphy-1",
-     "player": "Thomas Murphy",
-     "year": 2017,
-     "pick": 3
-    },
-    {
-     "key": "bailey-banfield",
-     "player": "Bailey Banfield",
-     "year": 2017,
-     "pick": 4
-    },
-    {
-     "key": "flynn-appleby",
-     "player": "Flynn Appleby",
-     "year": 2017,
-     "pick": 5
-    },
-    {
-     "key": "harrison-jones-haw",
-     "player": "Harrison Jones",
-     "year": 2017,
-     "pick": 6
-    },
-    {
-     "key": "doulton-langlands",
-     "player": "Doulton Langlands",
-     "year": 2017,
-     "pick": 7
-    },
-    {
-     "key": "trent-myknott",
-     "player": "Trent Myknott",
-     "year": 2017,
-     "pick": 9
-    },
-    {
-     "key": "ryan-burrows",
-     "player": "Ryan Burrows",
-     "year": 2017,
-     "pick": 11
-    },
-    {
-     "key": "angus-styles",
-     "player": "Angus Styles",
-     "year": 2017,
-     "pick": 12
-    },
-    {
-     "key": "patrick-wilson",
-     "player": "Patrick Wilson",
-     "year": 2017,
-     "pick": 15
-    },
-    {
-     "key": "liam-baker",
-     "player": "Liam Baker",
-     "year": 2017,
-     "pick": 16
-    },
-    {
-     "key": "gordon-narrier",
-     "player": "Gordon Narrier",
-     "year": 2017,
-     "pick": 18
-    },
-    {
-     "key": "stefan-giro",
-     "player": "Stefan Giro",
-     "year": 2017,
-     "pick": 19
-    },
-    {
-     "key": "brody-mihocek",
-     "player": "Brody Mihocek",
-     "year": 2017,
-     "pick": 20
-    },
-    {
-     "key": "david-mirra",
-     "player": "David Mirra",
-     "year": 2017,
-     "pick": 21
-    },
-    {
-     "key": "tony-olango",
-     "player": "Tony Olango",
-     "year": 2017,
-     "pick": 22
-    },
-    {
-     "key": "joel-amartey",
-     "player": "Joel Amartey",
-     "year": 2017,
-     "pick": 23
-    },
-    {
-     "key": "callan-england",
-     "player": "Callan England",
-     "year": 2017,
-     "pick": 24
-    },
-    {
-     "key": "lachlan-murphy",
-     "player": "Lachlan Murphy",
-     "year": 2017,
-     "pick": 25
-    },
-    {
-     "key": "jackson-edwards",
-     "player": "Jackson Edwards",
-     "year": 2017,
-     "pick": 26
     },
     {
      "key": "sam-draper",
@@ -770,100 +170,10 @@
      "pick": 4
     },
     {
-     "key": "tyson-stengle",
-     "player": "Tyson Stengle",
-     "year": 2016,
-     "pick": 5
-    },
-    {
-     "key": "mitch-mccarthy",
-     "player": "Mitch McCarthy",
-     "year": 2016,
-     "pick": 6
-    },
-    {
-     "key": "lachlan-filipovic",
-     "player": "Lachlan Filipovic",
-     "year": 2016,
-     "pick": 7
-    },
-    {
-     "key": "peter-ladhams",
-     "player": "Peter Ladhams",
-     "year": 2016,
-     "pick": 8
-    },
-    {
-     "key": "cameron-zurhaar",
-     "player": "Cameron Zurhaar",
-     "year": 2016,
-     "pick": 10
-    },
-    {
-     "key": "tom-gorter",
-     "player": "Tom Gorter",
-     "year": 2016,
-     "pick": 11
-    },
-    {
      "key": "ollie-hanrahan",
      "player": "Ollie Hanrahan",
      "year": 2016,
      "pick": 12
-    },
-    {
-     "key": "tendai-mzungu",
-     "player": "Tendai Mzungu",
-     "year": 2016,
-     "pick": 13
-    },
-    {
-     "key": "jack-henry",
-     "player": "Jack Henry",
-     "year": 2016,
-     "pick": 14
-    },
-    {
-     "key": "ben-ronke",
-     "player": "Ben Ronke",
-     "year": 2016,
-     "pick": 15
-    },
-    {
-     "key": "nathan-mullenger-mchugh",
-     "player": "Nathan Mullenger-McHugh",
-     "year": 2016,
-     "pick": 16
-    },
-    {
-     "key": "mitchell-hinge",
-     "player": "Mitchell Hinge",
-     "year": 2016,
-     "pick": 17
-    },
-    {
-     "key": "luke-strnadica",
-     "player": "Luke Strnadica",
-     "year": 2016,
-     "pick": 18
-    },
-    {
-     "key": "tim-smith",
-     "player": "Tim Smith",
-     "year": 2016,
-     "pick": 21
-    },
-    {
-     "key": "brett-eddy",
-     "player": "Brett Eddy",
-     "year": 2016,
-     "pick": 22
-    },
-    {
-     "key": "oscar-junker",
-     "player": "Oscar Junker",
-     "year": 2016,
-     "pick": 23
     },
     {
      "key": "drew-petrie",
@@ -872,82 +182,10 @@
      "pick": 24
     },
     {
-     "key": "zach-guthrie",
-     "player": "Zach Guthrie",
-     "year": 2016,
-     "pick": 25
-    },
-    {
-     "key": "robbie-fox",
-     "player": "Robbie Fox",
-     "year": 2016,
-     "pick": 26
-    },
-    {
-     "key": "oscar-mcinerney",
-     "player": "Oscar McInerney",
-     "year": 2016,
-     "pick": 27
-    },
-    {
-     "key": "liam-mackie",
-     "player": "Liam Mackie",
-     "year": 2016,
-     "pick": 28
-    },
-    {
-     "key": "declan-keilty",
-     "player": "Declan Keilty",
-     "year": 2016,
-     "pick": 29
-    },
-    {
-     "key": "jarrod-lienert",
-     "player": "Jarrod Lienert",
-     "year": 2016,
-     "pick": 30
-    },
-    {
      "key": "matthew-taylor",
      "player": "Matthew Taylor",
      "year": 2016,
      "pick": 31
-    },
-    {
-     "key": "ben-jarman",
-     "player": "Ben Jarman",
-     "year": 2016,
-     "pick": 32
-    },
-    {
-     "key": "james-cousins",
-     "player": "James Cousins",
-     "year": 2016,
-     "pick": 33
-    },
-    {
-     "key": "jamaine-jones",
-     "player": "Jamaine Jones",
-     "year": 2016,
-     "pick": 34
-    },
-    {
-     "key": "max-lynch",
-     "player": "Max Lynch",
-     "year": 2016,
-     "pick": 36
-    },
-    {
-     "key": "sam-simpson",
-     "player": "Sam Simpson",
-     "year": 2016,
-     "pick": 37
-    },
-    {
-     "key": "toby-pink",
-     "player": "Toby Pink",
-     "year": 2016,
-     "pick": 38
     },
     {
      "key": "jesse-glass-mccasker",
@@ -984,12 +222,6 @@
      "player": "Jock Cornell",
      "year": 2015,
      "pick": 6
-    },
-    {
-     "key": "will-snelling",
-     "player": "Will Snelling",
-     "year": 2015,
-     "pick": 7
     },
     {
      "key": "bradley-lynch",
@@ -1040,40 +272,10 @@
      "pick": 17
     },
     {
-     "key": "darcy-macpherson",
-     "player": "Darcy MacPherson",
-     "year": 2015,
-     "pick": 18
-    },
-    {
-     "key": "anthony-mcdonald-tipungwuti",
-     "player": "Anthony McDonald-Tipungwuti",
-     "year": 2015,
-     "pick": 19
-    },
-    {
      "key": "nicholas-coughlan",
      "player": "Nicholas Coughlan",
      "year": 2015,
      "pick": 20
-    },
-    {
-     "key": "josh-smith-1",
-     "player": "Josh Smith",
-     "year": 2015,
-     "pick": 21
-    },
-    {
-     "key": "daniel-lloyd",
-     "player": "Daniel Lloyd",
-     "year": 2015,
-     "pick": 22
-    },
-    {
-     "key": "james-parsons",
-     "player": "James Parsons",
-     "year": 2015,
-     "pick": 23
     },
     {
      "key": "cameron-hewett",
@@ -1088,22 +290,10 @@
      "pick": 25
     },
     {
-     "key": "mabior-chol",
-     "player": "Mabior Chol",
-     "year": 2015,
-     "pick": 26
-    },
-    {
      "key": "jono-beech",
      "player": "Jono Beech",
      "year": 2015,
      "pick": 27
-    },
-    {
-     "key": "ryan-nyhuis",
-     "player": "Ryan Nyhuis",
-     "year": 2015,
-     "pick": 28
     },
     {
      "key": "kade-stewart",
@@ -1116,18 +306,6 @@
      "player": "Tom Ruggles",
      "year": 2015,
      "pick": 31
-    },
-    {
-     "key": "dan-houston",
-     "player": "Dan Houston",
-     "year": 2015,
-     "pick": 32
-    },
-    {
-     "key": "adam-marcon",
-     "player": "Adam Marcon",
-     "year": 2015,
-     "pick": 34
     },
     {
      "key": "cameron-loersch",
@@ -1176,18 +354,6 @@
      "player": "Michael Manteit",
      "year": 2014,
      "pick": 7
-    },
-    {
-     "key": "reilly-o-brien",
-     "player": "Reilly O'Brien",
-     "year": 2014,
-     "pick": 8
-    },
-    {
-     "key": "jayden-short",
-     "player": "Jayden Short",
-     "year": 2014,
-     "pick": 10
     },
     {
      "key": "ethan-hughes",
@@ -1244,12 +410,6 @@
      "pick": 22
     },
     {
-     "key": "adam-saad",
-     "player": "Adam Saad",
-     "year": 2014,
-     "pick": 23
-    },
-    {
      "key": "brenden-abbott",
      "player": "Brenden Abbott",
      "year": 2014,
@@ -1262,22 +422,10 @@
      "pick": 25
     },
     {
-     "key": "jason-castagna",
-     "player": "Jason Castagna",
-     "year": 2014,
-     "pick": 26
-    },
-    {
      "key": "will-fordham",
      "player": "Will Fordham",
      "year": 2014,
      "pick": 28
-    },
-    {
-     "key": "nic-newman",
-     "player": "Nic Newman",
-     "year": 2014,
-     "pick": 29
     },
     {
      "key": "jermaine-miller-lewis",
@@ -1310,22 +458,10 @@
      "pick": 34
     },
     {
-     "key": "kane-lambert",
-     "player": "Kane Lambert",
-     "year": 2014,
-     "pick": 35
-    },
-    {
      "key": "jake-long",
      "player": "Jake Long",
      "year": 2014,
      "pick": 36
-    },
-    {
-     "key": "lewis-melican",
-     "player": "Lewis Melican",
-     "year": 2014,
-     "pick": 37
     },
     {
      "key": "lachlan-langford",
@@ -1338,18 +474,6 @@
      "player": "Tyrone Downie",
      "year": 2014,
      "pick": 39
-    },
-    {
-     "key": "james-harmes",
-     "player": "James Harmes",
-     "year": 2013,
-     "pick": 1
-    },
-    {
-     "key": "eli-templeton",
-     "player": "Eli Templeton",
-     "year": 2013,
-     "pick": 2
     },
     {
      "key": "louis-herbert",
@@ -1430,12 +554,6 @@
      "pick": 19
     },
     {
-     "key": "kayne-turner",
-     "player": "Kayne Turner",
-     "year": 2013,
-     "pick": 20
-    },
-    {
      "key": "sam-gray",
      "player": "Sam Gray",
      "year": 2013,
@@ -1458,12 +576,6 @@
      "player": "Alexis Georgiou",
      "year": 2013,
      "pick": 27
-    },
-    {
-     "key": "jake-kelly",
-     "player": "Jake Kelly",
-     "year": 2013,
-     "pick": 28
     },
     {
      "key": "blaine-johnson",
@@ -1562,34 +674,10 @@
      "pick": 12
     },
     {
-     "key": "matthew-taberner",
-     "player": "Matthew Taberner",
-     "year": 2012,
-     "pick": 13
-    },
-    {
-     "key": "callum-sinclair",
-     "player": "Callum Sinclair",
-     "year": 2012,
-     "pick": 14
-    },
-    {
      "key": "kyle-martin",
      "player": "Kyle Martin",
      "year": 2012,
      "pick": 15
-    },
-    {
-     "key": "kyle-hartigan",
-     "player": "Kyle Hartigan",
-     "year": 2012,
-     "pick": 16
-    },
-    {
-     "key": "jonathon-ceglar",
-     "player": "Jonathon Ceglar",
-     "year": 2012,
-     "pick": 17
     },
     {
      "key": "mitchell-clisby",
@@ -1628,12 +716,6 @@
      "pick": 27
     },
     {
-     "key": "dane-rampe",
-     "player": "Dane Rampe",
-     "year": 2012,
-     "pick": 28
-    },
-    {
      "key": "cadeyn-williams",
      "player": "Cadeyn Williams",
      "year": 2012,
@@ -1670,12 +752,6 @@
      "pick": 35
     },
     {
-     "key": "aaron-hall",
-     "player": "Aaron Hall",
-     "year": 2011,
-     "pick": 1
-    },
-    {
      "key": "john-mccarthy",
      "player": "John McCarthy",
      "year": 2011,
@@ -1692,12 +768,6 @@
      "player": "Fletcher Roberts",
      "year": 2011,
      "pick": 5
-    },
-    {
-     "key": "sam-frost",
-     "player": "Sam Frost",
-     "year": 2011,
-     "pick": 7
     },
     {
      "key": "kyal-horsely",
@@ -1850,22 +920,10 @@
      "pick": 40
     },
     {
-     "key": "marley-williams",
-     "player": "Marley Williams",
-     "year": 2011,
-     "pick": 41
-    },
-    {
      "key": "jackson-sheringham",
      "player": "Jackson Sheringham",
      "year": 2011,
      "pick": 42
-    },
-    {
-     "key": "jack-crisp",
-     "player": "Jack Crisp",
-     "year": 2011,
-     "pick": 43
     },
     {
      "key": "tim-mcintyre",
@@ -1890,12 +948,6 @@
      "player": "Alex Greenwood",
      "year": 2011,
      "pick": 48
-    },
-    {
-     "key": "mark-baguley",
-     "player": "Mark Baguley",
-     "year": 2011,
-     "pick": 50
     },
     {
      "key": "jordan-staley",
@@ -1976,12 +1028,6 @@
      "pick": 1
     },
     {
-     "key": "michael-hibberd",
-     "player": "Michael Hibberd",
-     "year": 2010,
-     "pick": 2
-    },
-    {
      "key": "stephen-clifton",
      "player": "Stephen Clifton",
      "year": 2010,
@@ -2030,12 +1076,6 @@
      "pick": 14
     },
     {
-     "key": "josh-jenkins",
-     "player": "Josh Jenkins",
-     "year": 2010,
-     "pick": 15
-    },
-    {
      "key": "brad-harvey",
      "player": "Brad Harvey",
      "year": 2010,
@@ -2066,12 +1106,6 @@
      "pick": 20
     },
     {
-     "key": "sam-menegola",
-     "player": "Sam Menegola",
-     "year": 2010,
-     "pick": 22
-    },
-    {
      "key": "gavin-roberts",
      "player": "Gavin Roberts",
      "year": 2010,
@@ -2082,12 +1116,6 @@
      "player": "Max Otten",
      "year": 2010,
      "pick": 24
-    },
-    {
-     "key": "luke-dahlhaus",
-     "player": "Luke Dahlhaus",
-     "year": 2010,
-     "pick": 25
     },
     {
      "key": "joshua-walker",
@@ -2288,18 +1316,6 @@
      "pick": 8
     },
     {
-     "key": "michael-barlow",
-     "player": "Michael Barlow",
-     "year": 2009,
-     "pick": 9
-    },
-    {
-     "key": "majak-daw",
-     "player": "Majak Daw",
-     "year": 2009,
-     "pick": 10
-    },
-    {
      "key": "lewis-broome",
      "player": "Lewis Broome",
      "year": 2009,
@@ -2414,12 +1430,6 @@
      "pick": 30
     },
     {
-     "key": "matthew-wright",
-     "player": "Matthew Wright",
-     "year": 2009,
-     "pick": 31
-    },
-    {
      "key": "jack-carter",
      "player": "Jack Carter",
      "year": 2009,
@@ -2462,34 +1472,10 @@
      "pick": 38
     },
     {
-     "key": "stewart-crameri",
-     "player": "Stewart Crameri",
-     "year": 2009,
-     "pick": 39
-    },
-    {
-     "key": "levi-casboult",
-     "player": "Levi Casboult",
-     "year": 2009,
-     "pick": 40
-    },
-    {
-     "key": "matthew-jaensch",
-     "player": "Matthew Jaensch",
-     "year": 2009,
-     "pick": 41
-    },
-    {
      "key": "matthew-panos",
      "player": "Matthew Panos",
      "year": 2009,
      "pick": 42
-    },
-    {
-     "key": "james-podsiadly",
-     "player": "James Podsiadly",
-     "year": 2009,
-     "pick": 43
     },
     {
      "key": "nick-westhoff",
@@ -2540,12 +1526,6 @@
      "pick": 1
     },
     {
-     "key": "tom-rockliff",
-     "player": "Tom Rockliff",
-     "year": 2008,
-     "pick": 2
-    },
-    {
      "key": "jordie-mckenzie",
      "player": "Jordie McKenzie",
      "year": 2008,
@@ -2586,12 +1566,6 @@
      "player": "Daniel Murray",
      "year": 2008,
      "pick": 9
-    },
-    {
-     "key": "robin-nahas",
-     "player": "Robin Nahas",
-     "year": 2008,
-     "pick": 10
     },
     {
      "key": "marcus-white",
@@ -2666,12 +1640,6 @@
      "pick": 24
     },
     {
-     "key": "jarryd-blair",
-     "player": "Jarryd Blair",
-     "year": 2008,
-     "pick": 26
-    },
-    {
      "key": "taylor-gilchrist",
      "player": "Taylor Gilchrist",
      "year": 2008,
@@ -2682,12 +1650,6 @@
      "player": "Tom Simpkin",
      "year": 2008,
      "pick": 28
-    },
-    {
-     "key": "liam-picken",
-     "player": "Liam Picken",
-     "year": 2008,
-     "pick": 29
     },
     {
      "key": "bryn-weadon",
@@ -2804,12 +1766,6 @@
      "pick": 51
     },
     {
-     "key": "greg-broughton",
-     "player": "Greg Broughton",
-     "year": 2008,
-     "pick": 52
-    },
-    {
      "key": "samuel-mcgarry",
      "player": "Samuel McGarry",
      "year": 2008,
@@ -2844,12 +1800,6 @@
      "player": "Patrick McGinnity",
      "year": 2007,
      "pick": 6
-    },
-    {
-     "key": "tom-bellchambers",
-     "player": "Tom Bellchambers",
-     "year": 2007,
-     "pick": 7
     },
     {
      "key": "aaron-joseph",
@@ -3038,12 +1988,6 @@
      "pick": 38
     },
     {
-     "key": "edward-curnow",
-     "player": "Edward Curnow",
-     "year": 2007,
-     "pick": 39
-    },
-    {
      "key": "alex-grima",
      "player": "Alex Grima",
      "year": 2007,
@@ -3230,12 +2174,6 @@
      "pick": 20
     },
     {
-     "key": "matthew-suckling",
-     "player": "Matthew Suckling",
-     "year": 2006,
-     "pick": 21
-    },
-    {
      "key": "liam-bedford-2",
      "player": "Liam Bedford",
      "year": 2006,
@@ -3258,12 +2196,6 @@
      "player": "Brent Macaffer",
      "year": 2006,
      "pick": 25
-    },
-    {
-     "key": "jarrod-harbrow",
-     "player": "Jarrod Harbrow",
-     "year": 2006,
-     "pick": 26
     },
     {
      "key": "andrew-foster",
@@ -3482,12 +2414,6 @@
      "pick": 21
     },
     {
-     "key": "nathan-lovett-murray",
-     "player": "Nathan Lovett-Murray",
-     "year": 2003,
-     "pick": 22
-    },
-    {
      "key": "rowan-andrews",
      "player": "Rowan Andrews",
      "year": 2003,
@@ -3674,12 +2600,6 @@
      "pick": 8
     },
     {
-     "key": "josh-gibson",
-     "player": "Josh Gibson",
-     "year": 2004,
-     "pick": 9
-    },
-    {
      "key": "joe-krieger",
      "player": "Joe Krieger",
      "year": 2004,
@@ -3722,12 +2642,6 @@
      "pick": 16
     },
     {
-     "key": "danyle-pearce",
-     "player": "Danyle Pearce",
-     "year": 2004,
-     "pick": 17
-    },
-    {
      "key": "clinton-young",
      "player": "Clinton Young",
      "year": 2004,
@@ -3738,12 +2652,6 @@
      "player": "Dale Morris",
      "year": 2004,
      "pick": 19
-    },
-    {
-     "key": "heritier-lumumba",
-     "player": "Heritier Lumumba",
-     "year": 2004,
-     "pick": 20
     },
     {
      "key": "jonathon-griffin",
@@ -4425,6 +3333,1116 @@
      "pick": 93
     }
    ]
+  },
+  "c3_rookie_renumber_verified_expanded": {
+   "n": 177,
+   "note": "full web-verification pass 2026-07-11 (199-row sweep; WebSearch-corroborated against club \"Rookie Pick N\" pages / Wikipedia infoboxes / SANFL / draftguru; method validated by exact reproduction of the independently-committed Q5 set). Each row asserts store-pick==recorded stored-ordinal before writing; 0 mismatches. Full source list: session_2026-07-11/pick_corrections/out/rookie_verified_websearch_2026-07-11.tsv",
+   "already_official_q5": 15,
+   "missing_key": [
+    "tom-jonas",
+    "oliver-hanrahan"
+   ],
+   "skipped": [],
+   "changes": [
+    {
+     "key": "nathan-lovett-murray",
+     "old": 22,
+     "new": 27,
+     "source": "en.wikipedia.org/wiki/Nathan_Lovett-Murray (Essendon)"
+    },
+    {
+     "key": "josh-gibson",
+     "old": 9,
+     "new": 7,
+     "source": "en.wikipedia.org/wiki/Josh_Gibson_(footballer) (North Melbourne)"
+    },
+    {
+     "key": "danyle-pearce",
+     "old": 17,
+     "new": 16,
+     "source": "en.wikipedia.org/wiki/Danyle_Pearce (Port Adelaide)"
+    },
+    {
+     "key": "heritier-lumumba",
+     "old": 20,
+     "new": 21,
+     "source": "en.wikipedia.org/wiki/Heritier_Lumumba (Collingwood)"
+    },
+    {
+     "key": "matthew-suckling",
+     "old": 21,
+     "new": 22,
+     "source": "en.wikipedia.org/wiki/Matt_Suckling (Hawthorn)"
+    },
+    {
+     "key": "jarrod-harbrow",
+     "old": 26,
+     "new": 27,
+     "source": "en.wikipedia.org/wiki/Jarrod_Harbrow (Western Bulldogs)"
+    },
+    {
+     "key": "edward-curnow",
+     "old": 39,
+     "new": 40,
+     "source": "en.wikipedia.org/wiki/Ed_Curnow (Adelaide, 2008 rookie draft #40)"
+    },
+    {
+     "key": "robin-nahas",
+     "old": 10,
+     "new": 8,
+     "source": "en.wikipedia.org/wiki/Robin_Nahas (Richmond)"
+    },
+    {
+     "key": "jarryd-blair",
+     "old": 26,
+     "new": 27,
+     "source": "en.wikipedia.org/wiki/Jarryd_Blair (Collingwood)"
+    },
+    {
+     "key": "liam-picken",
+     "old": 29,
+     "new": 30,
+     "source": "en.wikipedia.org/wiki/Liam_Picken (Western Bulldogs, 2009 rookie draft)"
+    },
+    {
+     "key": "greg-broughton",
+     "old": 52,
+     "new": 74,
+     "source": "en.wikipedia.org/wiki/Greg_Broughton / draftguru (Fremantle)"
+    },
+    {
+     "key": "michael-barlow",
+     "old": 9,
+     "new": 8,
+     "source": "en.wikipedia.org/wiki/Michael_Barlow (Fremantle, pick 8)"
+    },
+    {
+     "key": "majak-daw",
+     "old": 10,
+     "new": 9,
+     "source": "en.wikipedia.org/wiki/Majak_Daw (North Melbourne)"
+    },
+    {
+     "key": "matthew-wright",
+     "old": 31,
+     "new": 33,
+     "source": "en.wikipedia.org/wiki/Matthew_Wright_(Australian_footballer) (Adelaide)"
+    },
+    {
+     "key": "stewart-crameri",
+     "old": 39,
+     "new": 43,
+     "source": "en.wikipedia.org/wiki/Stewart_Crameri (Essendon)"
+    },
+    {
+     "key": "levi-casboult",
+     "old": 40,
+     "new": 44,
+     "source": "en.wikipedia.org/wiki/Levi_Casboult (Carlton, 2010 rookie draft)"
+    },
+    {
+     "key": "matthew-jaensch",
+     "old": 41,
+     "new": 46,
+     "source": "en.wikipedia.org/wiki/Matthew_Jaensch (Adelaide)"
+    },
+    {
+     "key": "james-podsiadly",
+     "old": 43,
+     "new": 50,
+     "source": "en.wikipedia.org/wiki/James_Podsiadly (Geelong)"
+    },
+    {
+     "key": "josh-jenkins",
+     "old": 15,
+     "new": 12,
+     "source": "en.wikipedia.org/wiki/Josh_Jenkins (Essendon)"
+    },
+    {
+     "key": "sam-menegola",
+     "old": 22,
+     "new": 19,
+     "source": "en.wikipedia.org/wiki/Sam_Menegola (Hawthorn selection)"
+    },
+    {
+     "key": "luke-dahlhaus",
+     "old": 25,
+     "new": 22,
+     "source": "westernbulldogs.com.au/news/64622 / en.wikipedia.org/wiki/Luke_Dahlhaus"
+    },
+    {
+     "key": "sam-frost",
+     "old": 7,
+     "new": 1,
+     "source": "en.wikipedia.org/wiki/Sam_Frost (GWS, 2012 rookie draft)"
+    },
+    {
+     "key": "marley-williams",
+     "old": 41,
+     "new": 35,
+     "source": "en.wikipedia.org/wiki/Marley_Williams (Collingwood)"
+    },
+    {
+     "key": "jack-crisp",
+     "old": 43,
+     "new": 40,
+     "source": "en.wikipedia.org/wiki/Jack_Crisp (Brisbane, 2012 rookie draft)"
+    },
+    {
+     "key": "mark-baguley",
+     "old": 50,
+     "new": 47,
+     "source": "en.wikipedia.org/wiki/Mark_Baguley (Essendon)"
+    },
+    {
+     "key": "matthew-taberner",
+     "old": 13,
+     "new": 11,
+     "source": "fremantlefc.com.au/news/779684 (title \"Rookie Draft Pick 11\")"
+    },
+    {
+     "key": "callum-sinclair",
+     "old": 14,
+     "new": 12,
+     "source": "en.wikipedia.org/wiki/Callum_Sinclair (West Coast)"
+    },
+    {
+     "key": "kyle-hartigan",
+     "old": 16,
+     "new": 14,
+     "source": "en.wikipedia.org/wiki/Kyle_Hartigan (Adelaide)"
+    },
+    {
+     "key": "jonathon-ceglar",
+     "old": 17,
+     "new": 15,
+     "source": "hawthornfc.com.au/video/461653 (title \"Rookie Pick #15\")"
+    },
+    {
+     "key": "dane-rampe",
+     "old": 28,
+     "new": 37,
+     "source": "en.wikipedia.org/wiki/Dane_Rampe (Sydney)"
+    },
+    {
+     "key": "james-harmes",
+     "old": 1,
+     "new": 2,
+     "source": "en.wikipedia.org/wiki/James_Harmes (Melbourne, 2014 rookie draft)"
+    },
+    {
+     "key": "eli-templeton",
+     "old": 2,
+     "new": 3,
+     "source": "saints.com.au/news/114214 / en.wikipedia.org/wiki/Eli_Templeton"
+    },
+    {
+     "key": "kayne-turner",
+     "old": 20,
+     "new": 25,
+     "source": "nmfc.com.au/news/69295 / en.wikipedia.org/wiki/Kayne_Turner"
+    },
+    {
+     "key": "jake-kelly",
+     "old": 28,
+     "new": 40,
+     "source": "en.wikipedia.org/wiki/Jake_Kelly_(Australian_footballer) (Adelaide, 2014 rookie draft)"
+    },
+    {
+     "key": "reilly-o-brien",
+     "old": 8,
+     "new": 9,
+     "source": "en.wikipedia.org/wiki/Reilly_O%27Brien (Adelaide)"
+    },
+    {
+     "key": "jayden-short",
+     "old": 10,
+     "new": 11,
+     "source": "richmondfc.com.au/news/712002 (title \"2014 Rookie Draft, pick 11\")"
+    },
+    {
+     "key": "adam-saad",
+     "old": 23,
+     "new": 25,
+     "source": "en.wikipedia.org/wiki/Adam_Saad (Gold Coast)"
+    },
+    {
+     "key": "jason-castagna",
+     "old": 26,
+     "new": 29,
+     "source": "en.wikipedia.org/wiki/Jason_Castagna (Richmond)"
+    },
+    {
+     "key": "nic-newman",
+     "old": 29,
+     "new": 35,
+     "source": "en.wikipedia.org/wiki/Nic_Newman (Sydney)"
+    },
+    {
+     "key": "kane-lambert",
+     "old": 35,
+     "new": 46,
+     "source": "en.wikipedia.org/wiki/Kane_Lambert (Richmond)"
+    },
+    {
+     "key": "lewis-melican",
+     "old": 37,
+     "new": 52,
+     "source": "en.wikipedia.org/wiki/Lewis_Melican (Sydney)"
+    },
+    {
+     "key": "will-snelling",
+     "old": 7,
+     "new": 10,
+     "source": "en.wikipedia.org/wiki/Will_Snelling"
+    },
+    {
+     "key": "darcy-macpherson",
+     "old": 18,
+     "new": 21,
+     "source": "en.wikipedia.org/wiki/Darcy_Macpherson"
+    },
+    {
+     "key": "anthony-mcdonald-tipungwuti",
+     "old": 19,
+     "new": 22,
+     "source": "en.wikipedia.org/wiki/Anthony_McDonald-Tipungwuti"
+    },
+    {
+     "key": "josh-smith-1",
+     "old": 21,
+     "new": 25,
+     "source": "sportstg \"Josh Smith - Pick 25, 2015 (Rookie Draft)\""
+    },
+    {
+     "key": "daniel-lloyd",
+     "old": 22,
+     "new": 26,
+     "source": "bigfooty thread \"Pick 26, 2015 Rookie Draft\""
+    },
+    {
+     "key": "james-parsons",
+     "old": 23,
+     "new": 27,
+     "source": "geelongcats.com.au/video/448718 (title \"Rookie pick 27\")"
+    },
+    {
+     "key": "mabior-chol",
+     "old": 26,
+     "new": 30,
+     "source": "richmondfc.com.au/news/117885 (title \"Rookie Draft: Pick 30\")"
+    },
+    {
+     "key": "ryan-nyhuis",
+     "old": 28,
+     "new": 34,
+     "source": "fremantlefc.com.au/news/56975 (title \"Rookie Draft: Pick 34\")"
+    },
+    {
+     "key": "dan-houston",
+     "old": 32,
+     "new": 45,
+     "source": "portadelaidefc.com.au/news/2015-11-27/rookie-draft-third-pick-pa (title \"Rookie Pick 45\")"
+    },
+    {
+     "key": "adam-marcon",
+     "old": 34,
+     "new": 47,
+     "source": "richmondfc 2015 Rookie Draft review / summary"
+    },
+    {
+     "key": "tyson-stengle",
+     "old": 5,
+     "new": 6,
+     "source": "en.wikipedia.org/wiki/Tyson_Stengle"
+    },
+    {
+     "key": "mitch-mccarthy",
+     "old": 6,
+     "new": 7,
+     "source": "afl.com.au 2016 rookie draft / draftguru"
+    },
+    {
+     "key": "lachlan-filipovic",
+     "old": 7,
+     "new": 8,
+     "source": "melbournefc.com.au/news/2016-11-28/selection-no8"
+    },
+    {
+     "key": "peter-ladhams",
+     "old": 8,
+     "new": 9,
+     "source": "en.wikipedia.org/wiki/Peter_Ladhams"
+    },
+    {
+     "key": "cameron-zurhaar",
+     "old": 10,
+     "new": 11,
+     "source": "nmfc.com.au youtube \"Rookie Draft 2016 Pick 11\""
+    },
+    {
+     "key": "tom-gorter",
+     "old": 11,
+     "new": 12,
+     "source": "westcoasteagles.com.au/news/112327"
+    },
+    {
+     "key": "tendai-mzungu",
+     "old": 13,
+     "new": 15,
+     "source": "afl.com.au/news/150624"
+    },
+    {
+     "key": "jack-henry",
+     "old": 14,
+     "new": 16,
+     "source": "en.wikipedia.org/wiki/Jack_Henry_(footballer,_born_1998)"
+    },
+    {
+     "key": "ben-ronke",
+     "old": 15,
+     "new": 17,
+     "source": "sydneyswans.com.au/news/2016-11-28 (title \"Rookie Pick 17\")"
+    },
+    {
+     "key": "nathan-mullenger-mchugh",
+     "old": 16,
+     "new": 18,
+     "source": "westernbulldogs.com.au/news/26376"
+    },
+    {
+     "key": "mitchell-hinge",
+     "old": 17,
+     "new": 20,
+     "source": "en.wikipedia.org/wiki/Mitch_Hinge"
+    },
+    {
+     "key": "luke-strnadica",
+     "old": 18,
+     "new": 21,
+     "source": "fremantlefc.com.au/news/2016-11-28/rookie-draft-pick-b (title \"Rookie Draft pick 21\")"
+    },
+    {
+     "key": "tim-smith",
+     "old": 21,
+     "new": 25,
+     "source": "melbournefc.com.au/news/30653 (title \"Rookie selection No.25\")"
+    },
+    {
+     "key": "brett-eddy",
+     "old": 22,
+     "new": 26,
+     "source": "en.wikipedia.org/wiki/Brett_Eddy"
+    },
+    {
+     "key": "oscar-junker",
+     "old": 23,
+     "new": 28,
+     "source": "nmfc.com.au/news/2016-11-28/rookie-pick-28-oscar-junker"
+    },
+    {
+     "key": "zach-guthrie",
+     "old": 25,
+     "new": 33,
+     "source": "en.wikipedia.org/wiki/Zach_Guthrie"
+    },
+    {
+     "key": "robbie-fox",
+     "old": 26,
+     "new": 34,
+     "source": "sen.com.au 2016 rookie draft all picks"
+    },
+    {
+     "key": "oscar-mcinerney",
+     "old": 27,
+     "new": 37,
+     "source": "en.wikipedia.org/wiki/Oscar_McInerney"
+    },
+    {
+     "key": "liam-mackie",
+     "old": 28,
+     "new": 39,
+     "source": "collingwoodfc.com.au/news/324357"
+    },
+    {
+     "key": "declan-keilty",
+     "old": 29,
+     "new": 41,
+     "source": "en.wikipedia.org/wiki/Declan_Keilty"
+    },
+    {
+     "key": "jarrod-lienert",
+     "old": 30,
+     "new": 42,
+     "source": "x.com/PAFC \"Rookie pick 42: Jarrod Lienert\""
+    },
+    {
+     "key": "ben-jarman",
+     "old": 32,
+     "new": 45,
+     "source": "afl.com.au/news/119789 (father-son)"
+    },
+    {
+     "key": "james-cousins",
+     "old": 33,
+     "new": 46,
+     "source": "en.wikipedia.org/wiki/James_Cousins_(footballer)"
+    },
+    {
+     "key": "jamaine-jones",
+     "old": 34,
+     "new": 48,
+     "source": "en.wikipedia.org/wiki/Jamaine_Jones"
+    },
+    {
+     "key": "max-lynch",
+     "old": 36,
+     "new": 51,
+     "source": "collingwoodfc.com.au/news/327251 (title \"Rookie Draft: Max Lynch\" pick 51)"
+    },
+    {
+     "key": "sam-simpson",
+     "old": 37,
+     "new": 53,
+     "source": "en.wikipedia.org/wiki/Geelong_FC_draft_history (father-son)"
+    },
+    {
+     "key": "toby-pink",
+     "old": 38,
+     "new": 54,
+     "source": "sydneyswans.com.au/news/2016-11-28/rookie-pick-54-toby-pink"
+    },
+    {
+     "key": "joshua-jaska",
+     "old": 1,
+     "new": 2,
+     "source": "goldcoastfc.com.au rookie draft / summary (lower conf)"
+    },
+    {
+     "key": "thomas-murphy-1",
+     "old": 3,
+     "new": 4,
+     "source": "nmfc.com.au/news/2017-11-27/rookie-pick-4"
+    },
+    {
+     "key": "bailey-banfield",
+     "old": 4,
+     "new": 5,
+     "source": "fremantlefc.com.au/news/288082 (title \"Rookie draft pick 5\")"
+    },
+    {
+     "key": "flynn-appleby",
+     "old": 5,
+     "new": 6,
+     "source": "collingwoodfc.com.au/news/290129"
+    },
+    {
+     "key": "harrison-jones-haw",
+     "old": 6,
+     "new": 7,
+     "source": "bigfooty \"Harrison Jones - pick 7, 2017 rookie draft\""
+    },
+    {
+     "key": "doulton-langlands",
+     "old": 7,
+     "new": 8,
+     "source": "saints.com.au/news/280698 (title \"Rookie Selection No. 8\")"
+    },
+    {
+     "key": "trent-myknott",
+     "old": 9,
+     "new": 11,
+     "source": "essendonfc.com.au/news/297363"
+    },
+    {
+     "key": "ryan-burrows",
+     "old": 11,
+     "new": 13,
+     "source": "westcoasteagles.com.au/news/285518"
+    },
+    {
+     "key": "angus-styles",
+     "old": 12,
+     "new": 14,
+     "source": "sydneyswans.com.au/news/45068 (title \"Rookie Draft #14\")"
+    },
+    {
+     "key": "patrick-wilson",
+     "old": 15,
+     "new": 17,
+     "source": "afc.com.au/news/2017-11-27/rookie-pick-17-patrick-wilson"
+    },
+    {
+     "key": "liam-baker",
+     "old": 16,
+     "new": 18,
+     "source": "richmondfc.com.au/video/284081 (title \"2017 Rookie Draft: Pick 18\")"
+    },
+    {
+     "key": "gordon-narrier",
+     "old": 18,
+     "new": 20,
+     "source": "nmfc.com.au/news/282266 (title \"Rookie pick 20\")"
+    },
+    {
+     "key": "stefan-giro",
+     "old": 19,
+     "new": 21,
+     "source": "fremantlefc.com.au/news/130852 (title \"Rookie draft pick 21\")"
+    },
+    {
+     "key": "brody-mihocek",
+     "old": 20,
+     "new": 22,
+     "source": "en.wikipedia.org/wiki/Brody_Mihocek"
+    },
+    {
+     "key": "david-mirra",
+     "old": 21,
+     "new": 23,
+     "source": "en.wikipedia.org/wiki/David_Mirra"
+    },
+    {
+     "key": "tony-olango",
+     "old": 22,
+     "new": 27,
+     "source": "westcoasteagles.com.au/news/285518 / eaglepedia"
+    },
+    {
+     "key": "joel-amartey",
+     "old": 23,
+     "new": 28,
+     "source": "sydneyswans.com.au/news/303466 (title \"Rookie Draft #28\")"
+    },
+    {
+     "key": "callan-england",
+     "old": 24,
+     "new": 35,
+     "source": "en.wikipedia.org/wiki/West_Coast_Eagles_draft_history"
+    },
+    {
+     "key": "lachlan-murphy",
+     "old": 25,
+     "new": 38,
+     "source": "afc.com.au/news/2017-11-27/rookie-pick-38-lachlan-murphy"
+    },
+    {
+     "key": "jackson-edwards",
+     "old": 26,
+     "new": 41,
+     "source": "afc.com.au/news/2017-11-27/rookie-pick-41-jackson-edwards (father-son)"
+    },
+    {
+     "key": "lachie-young",
+     "old": 3,
+     "new": 6,
+     "source": "westernbulldogs.com.au/news/2018-11-23/afl-rookie-draft-pick-6-lachlan-young"
+    },
+    {
+     "key": "kieran-strachan",
+     "old": 4,
+     "new": 7,
+     "source": "afc.com.au/news/2018-11-23/rookie-pick-7-kieran-strachan"
+    },
+    {
+     "key": "tom-jok",
+     "old": 5,
+     "new": 8,
+     "source": "essendonfc.com.au/news/76367"
+    },
+    {
+     "key": "tobin-cox",
+     "old": 6,
+     "new": 9,
+     "source": "portadelaidefc.com.au/news/2018-11-23/hewett-cox-recruited-in-rookie-draft"
+    },
+    {
+     "key": "tom-mckenzie",
+     "old": 7,
+     "new": 10,
+     "source": "nmfc.com.au/news/114355"
+    },
+    {
+     "key": "tom-atkins",
+     "old": 8,
+     "new": 11,
+     "source": "geelongcats.com.au/news/2018-11-23/rookie-pick-11-tom-atkins"
+    },
+    {
+     "key": "durak-tucker",
+     "old": 9,
+     "new": 12,
+     "source": "sydneyswans.com.au/news/267683 (title \"Rookie Draft Pick 12\")"
+    },
+    {
+     "key": "damon-greaves",
+     "old": 10,
+     "new": 14,
+     "source": "bigfooty \"Damon Greaves - pick 14, 2018 rookie draft\""
+    },
+    {
+     "key": "kade-chandler",
+     "old": 11,
+     "new": 15,
+     "source": "en.wikipedia.org/wiki/Kade_Chandler"
+    },
+    {
+     "key": "jake-aarts",
+     "old": 12,
+     "new": 16,
+     "source": "richmondfc.com.au/video/256816 (title \"2018 Rookie Draft: Pick 16\")"
+    },
+    {
+     "key": "harry-edwards",
+     "old": 13,
+     "new": 18,
+     "source": "bigfooty \"Harry Edwards (Pick 18, 2018 Rookie Draft)\""
+    },
+    {
+     "key": "tobe-watson",
+     "old": 15,
+     "new": 22,
+     "source": "fremantlefc.com.au/news/277358 (title \"Rookie draft pick 22\")"
+    },
+    {
+     "key": "jordon-sweet",
+     "old": 16,
+     "new": 23,
+     "source": "westernbulldogs.com.au/news/2018-11-23/afl-rookie-draft-pick-23-jordon-sweet"
+    },
+    {
+     "key": "harry-reynolds",
+     "old": 17,
+     "new": 28,
+     "source": "sydneyswans.com.au/news/2018-11-23/pick-28-harry-reynolds"
+    },
+    {
+     "key": "william-golds",
+     "old": 18,
+     "new": 30,
+     "source": "bigfooty \"Will Golds - pick 30, 2018 rookie draft\""
+    },
+    {
+     "key": "jordon-butts",
+     "old": 20,
+     "new": 39,
+     "source": "afc.com.au/news/2018-11-23/rookie-pick-39-jordon-butts"
+    },
+    {
+     "key": "tom-wilkinson",
+     "old": 21,
+     "new": 41,
+     "source": "nmfc.com.au/news/71035"
+    },
+    {
+     "key": "tim-mohr",
+     "old": 22,
+     "new": 43,
+     "source": "bigfooty \"Tim Mohr - pick 43 2018 Rookie Draft\""
+    },
+    {
+     "key": "josh-honey",
+     "old": 1,
+     "new": 3,
+     "source": "carltonfc.com.au/news/459201 / en.wikipedia.org/wiki/Josh_Honey"
+    },
+    {
+     "key": "brady-rowles",
+     "old": 2,
+     "new": 4,
+     "source": "aflratings.com.au 2019 all picks"
+    },
+    {
+     "key": "jack-bell",
+     "old": 3,
+     "new": 5,
+     "source": "aflratings.com.au 2019 all picks"
+    },
+    {
+     "key": "jarvis-pina",
+     "old": 4,
+     "new": 6,
+     "source": "fremantlefc.com.au/news/459076 (title \"Rookie Draft pick #6\")"
+    },
+    {
+     "key": "jake-pasini",
+     "old": 6,
+     "new": 8,
+     "source": "portadelaidefc.com.au/news/459195 / bigfooty \"Rookie Pick #8\""
+    },
+    {
+     "key": "emerson-jeka",
+     "old": 7,
+     "new": 9,
+     "source": "en.wikipedia.org/wiki/Emerson_Jeka"
+    },
+    {
+     "key": "anthony-treacy",
+     "old": 9,
+     "new": 11,
+     "source": "westcoasteagles.com.au/news/459047 (title \"Pick 11 - Anthony Treacy\")"
+    },
+    {
+     "key": "bradley-close",
+     "old": 10,
+     "new": 14,
+     "source": "en.wikipedia.org/wiki/Brad_Close"
+    },
+    {
+     "key": "connor-budarick",
+     "old": 11,
+     "new": 16,
+     "source": "en.wikipedia.org/wiki/Connor_Budarick"
+    },
+    {
+     "key": "fraser-phillips",
+     "old": 12,
+     "new": 18,
+     "source": "carltonfc.com.au/news/459067 / rookieme (fits curve)"
+    },
+    {
+     "key": "trent-burgoyne",
+     "old": 14,
+     "new": 22,
+     "source": "portadelaidefc.com.au/news/459190 (father-son)"
+    },
+    {
+     "key": "mitch-o-neill",
+     "old": 15,
+     "new": 25,
+     "source": "westcoasteagles.com.au/news/459142 (title \"Pick 25\")"
+    },
+    {
+     "key": "matt-conroy",
+     "old": 16,
+     "new": 29,
+     "source": "goldcoastfc.com.au / rookieme 2019 review"
+    },
+    {
+     "key": "malcolm-rosas",
+     "old": 17,
+     "new": 37,
+     "source": "en.wikipedia.org/wiki/Malcolm_Rosas"
+    },
+    {
+     "key": "patrick-walker",
+     "old": 1,
+     "new": 2,
+     "source": "nmfc.com.au/news/842512 (youtube title \"Rookie Pick 2\")"
+    },
+    {
+     "key": "malachy-carruthers",
+     "old": 2,
+     "new": 3,
+     "source": "sydneyswans.com.au/news/842523 (title \"Rookie Draft, Pick 3\")"
+    },
+    {
+     "key": "jack-saunders",
+     "old": 3,
+     "new": 4,
+     "source": "bigfooty \"Jack Saunders - Pick #4 2020 rookie draft\""
+    },
+    {
+     "key": "luke-parks",
+     "old": 6,
+     "new": 8,
+     "source": "bigfooty \"Pick 8 - Welcome to Carlton Luke Parks (Rookie)\""
+    },
+    {
+     "key": "lachlan-mcneil",
+     "old": 7,
+     "new": 11,
+     "source": "westernbulldogs.com.au/news/842529"
+    },
+    {
+     "key": "zane-trew",
+     "old": 8,
+     "new": 12,
+     "source": "westcoasteagles.com.au/news/842472 (title \"Rookie Pick 12\")"
+    },
+    {
+     "key": "isaac-chugg",
+     "old": 12,
+     "new": 28,
+     "source": "bigfooty \"Isaac Chugg Rookie Pick #28\""
+    },
+    {
+     "key": "taj-schofield",
+     "old": 13,
+     "new": 37,
+     "source": "bigfooty \"Taj Schofield - Pick #37 2020 Rookie Draft\" (father-son)"
+    },
+    {
+     "key": "ned-long",
+     "old": 4,
+     "new": 5,
+     "source": "bigfooty \"Ned Long Pick 5, 2021 Rookie Draft\""
+    },
+    {
+     "key": "karl-worner",
+     "old": 5,
+     "new": 8,
+     "source": "fremantlefc.com.au/news/1034009 (title \"Rookie draft pick 8\")"
+    },
+    {
+     "key": "patrick-voss",
+     "old": 6,
+     "new": 9,
+     "source": "essendonfc.com.au/news/1034054 / en.wikipedia.org/wiki/Patrick_Voss"
+    },
+    {
+     "key": "cooper-hamilton",
+     "old": 7,
+     "new": 11,
+     "source": "bigfooty \"Rookie draft pick # 11 - Cooper Hamilton\" / gwsgiants"
+    },
+    {
+     "key": "ollie-dempsey",
+     "old": 8,
+     "new": 13,
+     "source": "bigfooty \"with pick 13 in the 2021 afl rookie draft geelong selects oliver dempsey\""
+    },
+    {
+     "key": "judd-mcvee",
+     "old": 11,
+     "new": 16,
+     "source": "en.wikipedia.org/wiki/Judd_McVee / melbournefc.com.au/news/1034074"
+    },
+    {
+     "key": "charlie-parker",
+     "old": 10,
+     "new": 17,
+     "source": "westernbulldogs.com.au/news/1034063 (title \"Pick 17 - Charlie Parker\")"
+    },
+    {
+     "key": "robbie-mccomb",
+     "old": 12,
+     "new": 23,
+     "source": "westernbulldogs.com.au/news/1034067 (title \"Pick 23 - Robbie McComb\")"
+    },
+    {
+     "key": "rhett-montgomerie",
+     "old": 2,
+     "new": 4,
+     "source": "rookieme central 2022 rookie draft pick-by-pick"
+    },
+    {
+     "key": "seth-campbell",
+     "old": 4,
+     "new": 12,
+     "source": "richmondfc.com.au/news/1253051 (\"12th pick overall 2022 rookie draft\")"
+    },
+    {
+     "key": "liam-reidy",
+     "old": 5,
+     "new": 13,
+     "source": "fremantlefc.com.au/news/1253333 / bigfooty \"Pick 13 2022 Rookie Draft\""
+    },
+    {
+     "key": "will-verrall",
+     "old": 6,
+     "new": 14,
+     "source": "bigfooty \"Will Verrall - pick #14 2022 Rookie Draft\" / melbournefc"
+    },
+    {
+     "key": "cameron-owen",
+     "old": 7,
+     "new": 17,
+     "source": "sydneyswans.com.au/news/1253460"
+    },
+    {
+     "key": "oscar-murdoch",
+     "old": 8,
+     "new": 18,
+     "source": "central.rookieme.com 2022 Geelong review / draftguru (fits curve)"
+    },
+    {
+     "key": "hamish-free",
+     "old": 9,
+     "new": 19,
+     "source": "nmfc.com.au/news/1253370"
+    },
+    {
+     "key": "tylar-young",
+     "old": 11,
+     "new": 26,
+     "source": "richmondfc.com.au/news/1253372 (\"No. 26 overall\")"
+    },
+    {
+     "key": "oliver-sestan",
+     "old": 12,
+     "new": 28,
+     "source": "melbournefc.com.au/news/1253435"
+    },
+    {
+     "key": "jaiden-magor",
+     "old": 13,
+     "new": 31,
+     "source": "sydneyswans.com.au/news/1253460"
+    },
+    {
+     "key": "sam-clohesy",
+     "old": 3,
+     "new": 4,
+     "source": "goldcoastfc.com.au/news/1468155 / en.wikipedia.org/wiki/Sam_Clohesy"
+    },
+    {
+     "key": "odin-jones",
+     "old": 4,
+     "new": 5,
+     "source": "fremantlefc.com.au/news/1468130 (title \"Rookie draft pick 5\")"
+    },
+    {
+     "key": "vigo-visentini",
+     "old": 6,
+     "new": 8,
+     "source": "essendonfc.com.au/news/1468185"
+    },
+    {
+     "key": "xavier-walsh",
+     "old": 7,
+     "new": 13,
+     "source": "portadelaidefc.com.au/news/1468170 / bigfooty \"Rookie Pick #13 (2023)\""
+    },
+    {
+     "key": "matt-carroll",
+     "old": 8,
+     "new": 15,
+     "source": "carltonfc.com.au/news/1468132"
+    },
+    {
+     "key": "will-rowlands",
+     "old": 9,
+     "new": 18,
+     "source": "goldcoastfc.com.au/news/1468155"
+    },
+    {
+     "key": "kynan-brown",
+     "old": 10,
+     "new": 22,
+     "source": "melbournefc.com.au/news/1468319 (father-son)"
+    },
+    {
+     "key": "archer-day-wicks",
+     "old": 2,
+     "new": 6,
+     "source": "essendonfc.com.au/news/1696060 / bendigoadvertiser \"pick six\""
+    },
+    {
+     "key": "aiden-riddle",
+     "old": 3,
+     "new": 7,
+     "source": "fremantlefc.com.au/news/1696104 (title \"Rookie Draft pick 7\")"
+    },
+    {
+     "key": "harry-charleson",
+     "old": 4,
+     "new": 9,
+     "source": "carltonfc.com.au/news/1696066"
+    },
+    {
+     "key": "xavier-ivisic",
+     "old": 5,
+     "new": 12,
+     "source": "geelongcats.com.au/news/1696050 (title \"Pick 12\")"
+    },
+    {
+     "key": "tom-cochrane",
+     "old": 6,
+     "new": 13,
+     "source": "portadelaidefc.com.au/news/1695838 / bigfooty \"Rookie Pick #13 (2024)\""
+    },
+    {
+     "key": "blake-leidler",
+     "old": 7,
+     "new": 14,
+     "source": "sydneyswans.com.au/news/1695922"
+    },
+    {
+     "key": "asher-eastham",
+     "old": 8,
+     "new": 17,
+     "source": "goldcoastfc.com.au/news/1696149"
+    },
+    {
+     "key": "patrick-retschko",
+     "old": 9,
+     "new": 23,
+     "source": "geelongcats.com.au/news/1696051 (title \"Pick 23\")"
+    },
+    {
+     "key": "joe-pike",
+     "old": 11,
+     "new": 31,
+     "source": "geelongcats.com.au 2024 rookie draft"
+    },
+    {
+     "key": "riley-onley",
+     "old": 2,
+     "new": 3,
+     "source": "melbournefc.com.au/news/1933093 (title \"Pick 3\") / AFL X"
+    },
+    {
+     "key": "jack-watkins",
+     "old": 3,
+     "new": 4,
+     "source": "portadelaidefc.com.au/news/1933055"
+    },
+    {
+     "key": "leon-kickett",
+     "old": 4,
+     "new": 8,
+     "source": "fremantlefc.com.au/news/1933111 (title \"Rookie Draft pick 8\")"
+    },
+    {
+     "key": "ollie-greeves",
+     "old": 5,
+     "new": 12,
+     "source": "hawthornfc.com.au / AFL X \"Pick 12\""
+    },
+    {
+     "key": "nick-driscoll",
+     "old": 6,
+     "new": 28,
+     "source": "bigfooty \"Rookie Pick 28 Geelong ... Nick Driscoll\""
+    }
+   ]
+  },
+  "c4_psd_split_verified_expanded": {
+   "n": 5,
+   "changes": [
+    {
+     "key": "tom-bellchambers",
+     "old_pick": 7,
+     "psd_pick": 8,
+     "source": "en.wikipedia.org/wiki/Tom_Bellchambers"
+    },
+    {
+     "key": "tom-rockliff",
+     "old_pick": 2,
+     "psd_pick": 5,
+     "source": "en.wikipedia.org/wiki/Tom_Rockliff"
+    },
+    {
+     "key": "michael-hibberd",
+     "old_pick": 2,
+     "psd_pick": 4,
+     "source": "en.wikipedia.org/wiki/Michael_Hibberd"
+    },
+    {
+     "key": "aaron-hall",
+     "old_pick": 1,
+     "psd_pick": 7,
+     "source": "en.wikipedia.org/wiki/Aaron_Hall_(footballer)"
+    },
+    {
+     "key": "luke-nankervis",
+     "old_pick": 1,
+     "psd_pick": 2,
+     "source": "afc.com.au/news/1033976"
+    }
+   ],
+   "note": "5 further Pre-Season Draft rows found in the verification pass (incl. luke-nankervis 2021 \u2014 the reintroduced-PSD era proves PSD-folding is not confined to pre-2018). Chained after national before rookie via the rl_model.py PSD arm."
   }
  }
 }
