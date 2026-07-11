@@ -88,7 +88,21 @@ def pkbest(p):
 # year's national-pick count. PICKLESS mechanisms (MSD/SSP/Ireland/Unregistered/post-draft) carry NO slot;
 # their _eff (pick-equivalent) is derived empirically from realised value AFTER the PVC exists (see below). ----
 from collections import Counter as _Cnt
-_NDC=dict(_Cnt(p['year'] for p in data if p['type']=='ND'))   # national-draft size per year, from the data
+# PICK-CORRECTION (b) 2026-07-11: the chaining offset is now an AUTHORITATIVE per-year LAST-NATIONAL-PICK
+# table (source-stamped sidecar national_draft_last_pick.json), replacing the prior inference from the ND
+# row COUNT. Owner convention: rookie/PSD chain onto last_national_pick, not the row count. The count is
+# correct only where the store's national sequence is gapless (19/23 years); it is wrong at 2010 (real last
+# = 77, store max 93 inflated by folded-in expansion entrants) and undercounts 2011 (last 89 incl. passes).
+# Fallback to the row count for any year absent from the table (logged), so the engine never silently loses a year.
+_NDC_count=dict(_Cnt(p['year'] for p in data if p['type']=='ND'))
+try:
+    _NDLAST={int(_k):_v for _k,_v in json.load(open('national_draft_last_pick.json'))['last_national_pick'].items()}
+except Exception as _e:
+    _NDLAST={}; print('WARN: national_draft_last_pick.json unavailable (%r) — falling back to ND row-count offset'%_e)
+_NDC={}
+for _y in set(_NDC_count)|set(_NDLAST):
+    if _y in _NDLAST: _NDC[_y]=_NDLAST[_y]
+    else: _NDC[_y]=_NDC_count[_y]; print('WARN: year %s absent from last-national-pick table — using ND row count %d'%(_y,_NDC_count[_y]))
 for _p in data:
     _p['_eyr']=_p['year']
     if _p['type']=='ND':

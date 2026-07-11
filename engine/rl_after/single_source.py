@@ -32,7 +32,8 @@ TIER1_DERIVED = ['rl_app_data.json', 's4_matrix.json']     # board, book
 TIER2_DERIVED = ['peak_model_v4.pkl', 'pvc_snapshot.json']  # train-time caches
 # the ONLY files rl_model.py is permitted to open (source + classified authored inputs + frozen caches)
 ALLOWED_OPENS = {SOURCE_NAME, 'params.json', 'rl_passmark.json',
-                 'peak_model_v4.pkl', 'bust_prior_table.json', 'pvc_snapshot.json'}
+                 'peak_model_v4.pkl', 'bust_prior_table.json', 'pvc_snapshot.json',
+                 'national_draft_last_pick.json'}   # PICK-CORRECTION (b) 2026-07-11: authoritative chaining-offset sidecar (classified static input, like params.json)
 
 def _hp(*p): return os.path.join(HERE, *p)
 def _md5(path):
