@@ -45,6 +45,18 @@ level_stable=g['level_stable']; seasons=g['seasons']; srel=g['srel']; peak_est=g
 basepk_c=g['basepk_c']; bandof=g['bandof']; survival=g['survival']; track_delta=g['track_delta']
 los_decay=g['los_decay']; clamp=g['clamp']; hist=g['hist']; pkbest=g['pkbest']; PEAK_AGE=g['PEAK_AGE']
 PVC=g['PVC']; SCALE=g['SCALE']; debut=g['debut']; data=g['data']; BANDS=g['BANDS']; NB=len(BANDS)
+# ==== (f) PICK RE-DENOMINATION (owner ruling 2026-07-11, 'scale picks with the currency') ================
+# The band-pool fix (a) re-rated every player ~+5.24% against the 3000-pinned pick currency. Per the owner's
+# ruling, the SHIPPED pick assets are restated in that same new currency: PVC = frozen v3.4 baked ruler x the
+# MEASURED factor. Ratios byte-preserved (uniform scalar); the curve SHAPE stays frozen (full unfreeze is OUT
+# of scope — that is the PVC re-derivation job). ONLY the pick side of the board is re-denominated here; player
+# values are the live corrected-engine ev() and are untouched (they already carry the +5.24%). If the sidecar
+# is absent, the board ships the live engine PVC unchanged (no-op) — makes the step explicit + reversible.
+if os.path.exists('pick_redenomination.json'):
+    _rd=json.load(open('pick_redenomination.json')); _F=_rd['factor']
+    _frozen={int(k):v for k,v in _rd['frozen_v34_pvc_baked_v2_7'].items()}
+    PVC={k:int(round(_frozen[k]*_F)) for k in PVC if k in _frozen}
+    print('PICK RE-DENOMINATION: shipped PVC = frozen v3.4 x %.4f  (pick1 %d->%d)'%(_F,_frozen[1],PVC[1]))
 expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PICKEQ=g['PICKEQ']; MECH_STATS=g['MECH_STATS']
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
 val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']
