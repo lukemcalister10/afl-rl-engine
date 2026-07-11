@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v1 2026-07-11
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v2 2026-07-11 (board-view items added)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -16,6 +16,28 @@
    TRIGGER: board view (v2.8 ruling card).
 3. KYSAIAH READ — twice-contested (L2 + the age curve: at the 25.3 crossover). Owner holds/waives.
    TRIGGER: board view.
+4. RUCK-COHORT ORDERING (owner, board view 07-11): why lachlan-smith 693 / samson-ryan 636 /
+   max-knobel 402 (ND-pick young rucks: capital+runway) sit ABOVE oscar-steene 252 / ned-reeves 389
+   (SSP older rucks: pedestal 92, no capital, priced on thin bar-margins)? TENSION: the owner's
+   backup-ruck SCARCITY philosophy (insurance value) vs the bar-margin construction — AND the v2.9
+   SSP line (92→~51) + PVC option (b) would WIDEN this gap. TRIGGER: v2.9 batch, alongside the SSP
+   line, with the owner's scarcity rationale in hand.
+5. SUSPECTED PLACEHOLDER BIRTH YEARS (owner, 07-11): riley-onley · leon-kickett · fred-rodriguez ·
+   nick-driscoll — ALL _by 2000, all 0-game old rookie-pick rows (pattern = default year, not data).
+   TRIGGER: named validation rows in the ID-MIGRATION build (real DOBs import from
+   authoritative_universe.csv; migration must report these four's corrections explicitly).
+6. CAIDEN CLEARY "a bit high" (779) · JAMARRA UGLE-HAGAN "a bit low" (196 — former #1-pick KFWD,
+   70g, priced at scrap: likely the availability/absence machinery; decompose-first).
+   TRIGGER: v2.9 investigation list.
+7. LUKE RYAN "a bit high" (1698, 30yo GDEF) · DYLAN MOORE "a bit low" (1500 — 137-game body of work
+   slashed off ONE poor season; the DOWN-side mirror of the riser question: does one bad season in
+   a large body of work mean-revert?). TRIGGER: v2.9 investigation — "down-move persistence /
+   body-of-work inertia" (pairs with the age curve's machinery).
+8. HARVEY THOMAS — ANSWERED 07-11: store future_position = GEN_FWD; the future=MID information is
+   NOT in the store — it lives in the OWNER-HELD positioning registers and arrives with the FLEX
+   build (blends). Today he is priced purely as GEN_FWD (2456). The flex-spec's "future=MID seam
+   must survive" note therefore depends on the owner's registers being couriered at flex fire time
+   (already flagged).
 
 ## THE v2.8 BOARD-VIEW RULING CARD (one sitting, after the cold audit reconciles)
 L1 adoption · discount rate off the 15/14/13/12 sweep · Travaglia read · Kysaiah read · PVC letter
