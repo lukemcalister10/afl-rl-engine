@@ -117,7 +117,7 @@ def _rw(y):                                  # v2.1: equal weighting (recency sh
 BPK={}; POOL={}; MIX={}
 from collections import Counter
 for b in range(NB):
-    grp=[p for p in hist if bandof(p['pick'])==b]
+    grp=[p for p in hist if bandof(effpk(p))==b]   # PICK-CORRECTION (a) 2026-07-11: band pools on the CHAINED effective pick (owner convention), was raw p['pick']. Removes rookie-at-raw contamination (Q2: 657 RD rows, 320 at raw<=20) from the one raw-pick channel on the live board; before/after cited in the eyeball list.
     cc=Counter(GRP[p['pos']] for p in grp); MIX[b]={g:cc.get(g,0)/len(grp) for g in sorted(set(GRP.values()))}
     for g in sorted(set(GRP.values())):
         pw=[(pkbest(p),_rw(p['year'])) for p in grp if GRP[p['pos']]==g and pkbest(p) is not None]
