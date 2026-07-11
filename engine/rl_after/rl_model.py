@@ -109,6 +109,12 @@ for _p in data:
         _p['_ft']=True; _p['_grp']='ND'; _p['_eff']=min(99,_p['pick'] or 99)
     elif _p['type']=='RD':
         _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=min(99,_NDC.get(_p['year'],75)+(_p['pick'] or 15))
+    elif _p['type']=='PSD':                                   # PICK-CORRECTION (c) 2026-07-11: Pre-Season Draft
+        # chains AFTER national BEFORE rookie (owner ruling): PSD _eff = last_national_pick + psd_slot. Treated
+        # as a chained first-time draftee (_grp='RD') so it sits in the chained pools like a rookie. (The
+        # rookie-offset-by-per-year-PSD-count refinement is deferred — authoritative PSD sizes not verifiable
+        # this build; only web-verified PSD rows are split out, all cap at KMAX=70 so board impact is nil.)
+        _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=min(99,_NDC.get(_p['year'],75)+(_p['pick'] or 15))
     else:                                                     # pickless entry mechanism
         _p['_ft']=False; _p['_grp']=_p['type']; _p['_eff']=75   # placeholder; replaced by pick-equivalent after PVC
 # cohort = national draft + first-time RD only (the ND and its extension). MSD/SSP are separate drafts, excluded here.
