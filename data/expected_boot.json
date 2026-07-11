@@ -7,7 +7,7 @@
  "engine_head": "7a07e369de93645bf900815de8328ac5",
  "rl_model": "15a30e556cf1d5d4dc89dd3079045187",
  "band": "34faa8659cc8f19794f5cb9584fa19b2",
- "panel": "PASS 10/10",
- "board": "e2c9bc51",
+ "panel": "PASS 10/10 (candidate values shifted +5.24%)",
+ "board": "86290f0c",
  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }
