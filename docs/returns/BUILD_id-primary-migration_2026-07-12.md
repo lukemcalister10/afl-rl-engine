@@ -138,3 +138,32 @@ suite reproduces the v2.8 bake result:
 Nothing was baked; the store, board (`9ecbe0fa`), and boot pin are byte-unchanged; no tag, no
 promote, no merge, no PR opened. The only repo change is the new `engine/rl_after/id_resolver.py`
 plus this report and the committed affected-row list.
+
+---
+
+## 8. OWNER RULING (2026-07-12) + APPLIED OUTCOME — clean scope shipped, re-entry deferred
+**Ruling:** Defer the re-entry trio to v2.9 (Option A). Proceed with the clean scope only:
+stable IDs + team/eligibilities on the 804 · the 5 named DOB corrections · taylor-adams retirement ·
+nankervis no-import. The trio's later-entry ruling STANDS; its execution rides the v2.9 build
+alongside the now-ruled MSD calibration-pool exclusion (register v11, item 11a). The ~89-row
+hairline retirement ripple is declared as **expected movers**.
+
+**Applied to the single source** `engine/rl_after/rl_model_data.json` (store `04f38dad` → `b0c39d78`):
+- 804 `stable_player_id` + `affl_team` + `eligibilities` (identity; 0 board movers, verified).
+- 5 DOB `_by` corrections (onley/kickett/rodriguez/driscoll; mcandrew 1999→2000).
+- `taylor-adams` `_retired=True` (matches the store's existing 1847 retirees).
+- Re-entry trio: NOT applied (perez ND-p35 / mcandrew MSD-p12 / keane IRE all keep their current
+  entry; they DO receive the identity + DOB import). nankervis keeps PSD pick 2.
+
+**Clean-scope board result (de4baef9 vs 9ecbe0fa): 94 movers**, complete list committed at
+`docs/returns/id-migration/AFFECTED_ROWS_clean_scope.md`:
+- 5 DOB rows (onley 2→463, rodriguez 3→502, driscoll 5→547, kickett 4→358, mcandrew 1039→1176);
+- taylor-adams 75 → removed;
+- **88 hairline retirement-ripple rows, all ≤ ±2 SCAR (≤1.19%)** — owner-declared expected. Two of
+  them are panel rows (Sheezel 8115→8116, Smillie 1301→1302), re-pinned in run_panel/PANEL_EXPECTED.
+
+**Regenerated / re-pinned in this commit:** shipped board `data/rl_build/rl_app_data.json` (de4baef9)
+· walk-forward book RE-SEALED `data/book_stable_seal.json` (store b0c39d78, same head 7a07e369) ·
+`data/expected_boot.json` store/board/panel/tag · `run_panel.sh` + `PANEL_EXPECTED.txt` (the 2 moved
+panel rows). Engine code UNTOUCHED (head 7a07e369). The 671-row FULL-migration list in this folder is
+retained as the record of WHY the re-entry was deferred. Candidate only — no tag, promote, or merge.

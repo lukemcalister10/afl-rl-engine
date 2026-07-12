@@ -10,7 +10,14 @@ Historical/unmatched store rows: UNCHANGED (no synthetic ids).
 """
 import json, csv
 
-RE_ENTRY = {  # trio: §45 later-entry exception -> full entry-tuple switch onto pickless/SSP basis
+# RE-ENTRY TRIO — §45 later-entry exception. DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12;
+# register v11 item 11a, alongside the now-ruled MSD calibration-pool exclusion). Reason: applying it here
+# reprices 657 non-named players via the load-time calibration refit (mcandrew alone = 653), for ~zero
+# intended movement (perez 14->14). The ruling STANDS; its execution rides v2.9 where a board-wide move is
+# in scope. This build applies APPLY_REENTRY=False -> the trio keep their current (initial) entry; they DO
+# receive the identity + DOB import like every other matched row.
+APPLY_REENTRY = False
+RE_ENTRY = {
     'flynn-perez':     {'year': 2025, 'type': 'SSP', '_draft': 'SSP', '_pickless': True, 'pick': None},
     'lachlan-mcandrew':{'year': 2024, 'type': 'SSP', '_draft': 'SSP', '_pickless': True, 'pick': None},
     'mark-keane':      {'year': 2022, 'type': 'SSP', '_draft': 'SSP', '_pickless': True, 'pick': None},
@@ -55,11 +62,10 @@ def migrate(store, csv_rows):
         cbd = ev.get('birth_date')
         if cbd:  # skip empty-string csv dates (perez/keane have none)
             setf(r, '_bd', cbd, 'dob-day')
-        # 4. entry basis
-        if key in RE_ENTRY:
+        # 4. entry basis — re-entry trio DEFERRED to v2.9 (APPLY_REENTRY=False); nankervis NO-import by design
+        if APPLY_REENTRY and key in RE_ENTRY:
             for f, v in RE_ENTRY[key].items():
                 setf(r, f, v, 'entry-switch')
-        # nankervis: NO entry import (handled by not being in RE_ENTRY; csv pick/type ignored by design)
 
     # 5. taylor-adams retire (not in csv)
     for key in RETIRE:
@@ -73,7 +79,8 @@ if __name__ == '__main__':
     store = json.load(open(sys.argv[1]))
     csv_rows = load_csv(sys.argv[2])
     store, cl = migrate(store, csv_rows)
-    json.dump(store, open(sys.argv[3], 'w'), indent=1, ensure_ascii=False)
+    # SAME serialization as the source store (single-line default json.dump) so untouched rows stay byte-exact
+    json.dump(store, open(sys.argv[3], 'w'))
     # summary
     from collections import Counter
     print("changelog rows:", len(cl))
