@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v9 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 11 — calibration-pool architecture, owner-raised on the migration halt)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v10 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 11 DIRECTION RULED — MSD isolated like SSP; MSD-ordinal flattening owner-accepted)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -81,6 +81,20 @@
     stay in the training set with corrected features or leave (evidence-deletion question).
     TRIGGER: the v2.9 mechanism ruling — now ONE INTERLOCKED CLUSTER with the trio entry-switch,
     the SSP pedestal line, and ruck scarcity (items 1/4 + register v8 item 10a).
+    DIRECTION RULED (owner-worded 2026-07-12): "it's quite important that MSD is treated like SSP…
+    It's its own pool. ND players shouldn't learn from it or it from ND players in any way that
+    the SSP pool doesn't do for itself." TECHNICAL BASIS (supervisor, same day): MSD rows enter
+    the training pool with _eff = PICKEQ['MSD'] ≈ 60 — the IDENTICAL feature value as an ND
+    pick-60, but a differently-selected population; the model cannot separate them in feature
+    space, so MSD outcomes directly contaminate the ND pick-60 neighbourhood (and vice versa) —
+    the owner's isolation instinct has a concrete confound behind it. IMPLEMENTATION FORK for the
+    v2.9 ruling: (a) exclude MSD from the training pool — exact SSP parity, owner-leaning,
+    removes 107 of ~2371 training rows (its own board-wide refit; Tier-1, in-scope at v2.9) ·
+    (b) add entry-pathway as a model feature — keeps the 107 rows' evidence, lets the trees
+    separate the populations; partial isolation. Owner rules between (a)/(b) at v2.9 with the
+    cluster. ORDINAL NOTE (owner, same message): MSD ordinal flattening ACCEPTED ("happy for
+    that to be flattened") — the should-ordinal-carry-signal question is CLOSED unopened; do NOT
+    add it to the item-1 investigation.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
