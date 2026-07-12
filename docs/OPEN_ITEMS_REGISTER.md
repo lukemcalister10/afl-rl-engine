@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v28 2026-07-12 (THE v2.9 SLATE COMPLETE — all seven ruled; the ruling card is item 17)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v29 2026-07-12 (v2.9 BUILD IN FLIGHT — mid-job steer: L2+L3 evidence next; PIN = units law (3000 pre-scale ⇒ 3157 board-SCAR, ×1.0524); L5 later-entry = SSP/re-entry-year/pick-None; both supervisor interpretations pending owner ratify)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -211,6 +211,16 @@
       even when I don't like it").
     D7 POOL = (a) FULL EXCLUSION + MEMBERSHIP STABILITY AGREED (facts-based training list: entry
       door + debut window; edit tripwire; labels stay as modeling inputs everywhere).
+    IN-FLIGHT CLARIFICATIONS (supervisor interpretations of ruled law, 2026-07-12, owner-ratify
+    pending): (i) THE PIN IS A UNITS ASSERT, not a value choice — the owner's locked pick-1
+    anchor is 3000 in PRE-re-denomination units ⇒ 3157 in board SCAR (3000 × the ruled ×1.0524,
+    CONSTRAINTS v1.7 header: "picks scale with the currency"; the shipped v3.4 top == 3157.2
+    exactly); adopting at raw 3000 would be a silent 5% pick devaluation from a units mismatch.
+    (ii) L5 LATER-ENTRY RECORD = type SSP + re-entry year + pick None (SSP is pickless by
+    convention; the ruled exception says record the later entry, and a later SSP entry carries
+    no pick); original-entry facts remain in the identity evidence; training membership follows
+    the facts-based law (out on the debut-window leg — named). (iii) L6 STOP stands as directed;
+    (iv) candidate PR at the return, not mid-job.
     EXECUTION: the ONE COMBINED CANDIDATE per the 2026-07-12 synthesis (one refit · one cohort
     re-measure · one gate suite · per-lever attribution · emmett named · the trio entry-switch
     rides · the nonsense-review trigger armed). Full Tier-1 ladder → bake v2.9.
