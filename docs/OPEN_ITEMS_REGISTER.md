@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v25 2026-07-12 (NEW: PROVISION-NOW / INGEST-LAST owner ruling — weekly-score GO-LIVE is the FINAL step; the plumbing builds now. Stamp finding: barker/thredgold still null post-regen ⇒ consumer wiring, rides the export job)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v26 2026-07-12 (SLATE PART-RULED: D4 hold-for-scarcity · D5 dial 14 · D6 age (A) "trust the data" · D7 pool (a) full exclusion. D1 held for the owner curve view · D2 example issued · D3 law clarification issued · membership-stability word pending)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -178,6 +178,17 @@
     were designed at base 626c8378 — BEFORE items 11–14 ruled (MSD pool exclusion touches SPEC_4's
     ruck world and SPEC_1's calibration context) — the v2.9 build directive must apply the specs
     POST-item-11(a); supervisor synthesis reconciles after the ruling-pack return.
+
+16. THE v2.9 SLATE — PART-RULED (owner-worded 2026-07-12): D4 SSP = (ii) hold until the scarcity
+    leg lands in-chapter, then rule ("Happy to follow your judgement"; scarcity-empty ⇒ ~51) ·
+    D5 DIAL = 14 ("for now. Can always change later" — re-rulable at any bake) · D6 AGE = (A)
+    adopt gated on the cohort re-measure ("trust the data, even when I don't like it") · D7 POOL
+    = (a) FULL EXCLUSION confirmed (membership-stability wording awaiting his read of the
+    simplified explanation). HELD: D1 (owner questions answered + the 1–60 derived-vs-frozen
+    table couriered for his view before approval) · D2 (worked example issued) · D3 (law
+    clarification issued: the RECORDED law = V0 identity + the bounded y0→wk1→y1/2 chain; his
+    end-of-year-one memory maps to the chain clause / the discounted-expectation equivalence;
+    awaiting his confirm-or-reword).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
