@@ -1,0 +1,16 @@
+{
+ "dial": 0.13,
+ "adopt": false,
+ "named": {
+  "louis-emmett": 913,
+  "max-gawn": 2463,
+  "kieren-briggs": 2206,
+  "marcus-bontempelli": 3630,
+  "willem-duursma": 4646,
+  "dylan-patterson": 1086,
+  "kysaiah-pickett": 3471
+ },
+ "mean_age_le21": 933,
+ "mean_age_30plus": 743,
+ "board_sum": 733596
+}
