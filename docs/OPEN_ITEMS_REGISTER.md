@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v31 2026-07-12 (READS SEALED. Candidate checkpoint verified (L1/L4/L7 ✓, L2 premise REFUTED — dial 14 stands decoupled, safe ≥14; RUC_PRIOR_CAP lift = PROPOSED, rides the L6/scarcity ruling). Steer: L3 next)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v32 2026-07-12 (L3a ✓ butters holds −1.04%; L3b delta in hand (+2.3pt spend / dial adds ~2.4pt) — HARNESS RECONCILIATION = the continuation seat's first task (ad-hoc 137.8 vs audited ~128.6-128.8); continuation directive issued @ a00c782)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -254,10 +254,17 @@
     (e) L7 VERIFIED at checkpoint: re-quote table round-trips exactly (A-BONT 3084 · G-CONVEX
         180140/178224/107773 == the pre-scale v1.6 values · SCALE back to the baked-v2.7 4.45);
         the numéraire assert wired + unit-tested, dormant on today's board.
-    STEER: L3 next (s(age) wiring + the ONE walk-forward G-COHORT re-measure — the gate; watch
-    butters −1.0%). BUILD-BUDGET NOTE: the build flagged thin context — a mid-L3 stop at a
-    committed checkpoint triggers a CONTINUATION seat (fresh chat, directive pinned to the
-    branch head); the branch is the durable state.
+    L3 CHECKPOINT (a00c782, 8 commits): L3a s(age) VERIFIED (reproduces l7hinr to the number;
+    43 movers net +1670; BUTTERS 6060→5997 = −1.04%, inside the 2% G-PEAK tolerance — the
+    flagged margin HOLDS; anchors byte-identical). L3b: the DELTA is in hand (+2.3pt y4 spend;
+    dial-14 adds ~2.4pt; combined projection ≈128.5% holds — the one-candidate law vindicated
+    numerically) but the build correctly REFUSED to certify on its ad-hoc construction (baseline
+    137.8% vs the audited harness's ~128.6–128.8, the v2.6 bake-guard lineage) — a ~9pt
+    convention gap. CONTINUATION SEAT (directive issued, pinned @ a00c782): (1) reconcile the
+    harness to the audited s4_matrix walk-forward (basis by CODE READING per the G-COHORT law),
+    (2) run the ONE combined gate (L1+L4+L2+L3; L7 ratio-invariant), (3) wire the permanent
+    refit (all levers on disk; _PVC0 swap + V0/RUC rebuild; pins move in-commit; L7 LAST),
+    (4) author + run SPEC_1–4 on the post-L4 world; L6 STOP stands; PR at the return.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
