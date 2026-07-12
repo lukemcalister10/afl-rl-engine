@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v8 2026-07-12 (v2.8 BAKED; lanes open) (NEW: migration csv pre-flight clashes RULED — the four named rows below; UI letters ruled v7)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v9 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 11 — calibration-pool architecture, owner-raised on the migration halt)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -66,6 +66,21 @@
         amendment rides the next v1.7+ touch (fold, not a new decision).
     (d) LACHLAN-MCANDREW _by — owner-worded: "Mcandrew's birth year is 2000. The store is wrong."
         Fifth named DOB-correction row (joins onley/kickett/rodriguez/driscoll, item 5).
+
+11. CALIBRATION-POOL ARCHITECTURE (owner-raised 2026-07-12, on discovering the load-time global
+    fit during the migration halt): "The MSD players should absolutely have their own pool… or at
+    the very least should NOT be leaking into the ND valuations. Someone like McAndrew should have
+    no bearing on Emmett's value." SUPERVISOR FINDINGS (code + committed evidence, same day): the
+    pool is ONE GLOBAL quantile-GBM ceiling fit (_merged_recover.py:15-16), trained on everyone
+    with a pick who debuted ≤2021 — ND 1571 + RD 685 + MSD 107 + PSD 8, ALL positions together;
+    cross-type and cross-position leakage is total by construction. NOT a ruck thing: of the 77
+    ≥5% ripple rows from the mcandrew eviction test, only 2 are RUC (GFWD 21 · MID 17 · KFWD 14 ·
+    GDEF 13 · KDEF 10) — a GBM refit reshuffles globally. DESIGN FORK for the ruling: per-type
+    pools (MSD alone = 107 training rows — thin; PSD 8 = nothing) vs entry-type-as-feature vs
+    membership-stability rules; interacts with whether relabelled players (the re-entry trio)
+    stay in the training set with corrected features or leave (evidence-deletion question).
+    TRIGGER: the v2.9 mechanism ruling — now ONE INTERLOCKED CLUSTER with the trio entry-switch,
+    the SSP pedestal line, and ruck scarcity (items 1/4 + register v8 item 10a).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
