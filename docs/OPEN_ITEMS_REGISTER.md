@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v18 2026-07-12 (v2.8 BAKED; lanes open) (NEW: PVC-basis assert added to the v2.9 adoption — owner-raised via the par-relative question)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v19 2026-07-12 (v2.8 BAKED; lanes open) (NEW: JUH owner read — smooth-in-evidence, no cliffs off 3-game samples; _lvl_eff wrinkle named)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -33,7 +33,16 @@
    ADDED 07-12: lachlan-mcandrew joins as the FIFTH named DOB row (item 10d).
 6. CAIDEN CLEARY "a bit high" (779) · JAMARRA UGLE-HAGAN "a bit low" (196 — former #1-pick KFWD,
    70g, priced at scrap: likely the availability/absence machinery; decompose-first).
-   TRIGGER: v2.9 investigation list.
+   TRIGGER: v2.9 investigation list. OWNER READ ADDED (2026-07-12, on the SPEC_2 pilot): the
+   −860 / ~10× drop off a 3-game 26.0 cameo "is a little steep… a bigger sample at 26 would be
+   fair to drop him very low, maybe a drop like that should happen more smoothly. It's not a lot
+   of evidence to destroy value from." ⇒ acceptance shape for any remedy: value response SMOOTH
+   IN GAMES — no evidence cliffs (the G-MONO no-cliff philosophy extended from picks to
+   evidence). WRINKLE the decomposition must resolve: the engine's own reliability shrinkage
+   (_lvl_eff: "a 5-game stint reads as a fraction of its face value… phases in smoothly to full
+   by ~a season") CLAIMS to prevent exactly this — the v2.9 work must show which arm actually
+   moved him (absence-arm exit on the return event vs a level over-read the shrinkage failed to
+   damp), i.e. why returning-and-poor prices 5× below never-returning.
 7. LUKE RYAN "a bit high" (1698, 30yo GDEF) · DYLAN MOORE "a bit low" (1500 — 137-game body of work
    slashed off ONE poor season; the DOWN-side mirror of the riser question: does one bad season in
    a large body of work mean-revert?). TRIGGER: v2.9 investigation — "down-move persistence /
