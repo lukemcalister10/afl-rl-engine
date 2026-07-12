@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v20 2026-07-12 (v2.8 BAKED; lanes open) (trio EXECUTION DEFERRED to v2.9 — owner tap confirmed; migration resumed clean-scope)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v21 2026-07-12 (v2.8 BAKED; lanes open) (item 14 display state verified — ladder was already players-only; v2.9 scope = +1/+2 phantom entries)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -151,9 +151,15 @@
     that per item 12 belong on the +1 lens, not the current board. RESOLVED (owner-worded 2026-07-12): "The 2026 msd picks have
     already been used… The next draft is the ND after the season, those players will only be
     able to play in 2027. So the phantom entry for those picks should be in the +1 and 2 lens."
-    ⇒ the 30 assets ARE the next-EOY-ND picks — correctly ND-scaled (no mispricing) — and the
-    fix is PLACEMENT: phantom entries on the +1/+2 lenses only, off the current ladder; rides
-    v2.9 with item 12 (post-discount-ruling; +1/+2 values want the unwound discount).
+    ⇒ the 30 assets ARE the next-EOY-ND picks — correctly ND-scaled (no mispricing).
+    DISPLAY STATE VERIFIED (UI amendment return + supervisor code-read, 2026-07-12): the ladder
+    was ALREADY players-only — picks live in a separate top-level array rendered ONLY by the
+    trade desk; the current ladder never showed them (the supervisor's earlier "on the current
+    ladder" inference was WRONG and is corrected here). The amendment's filter is therefore a
+    NO-OP today and stands as a forward-safe guard (honestly disclosed by the build). v2.9 SCOPE
+    NARROWS TO: adding the phantom pick entries on the +1/+2 lenses at entering-class value
+    (currently absent from ALL lens ladders) + the export-side lens treatment; rides item 12
+    (post-discount-ruling).
     ASSUMPTION CONFIRMED (owner-worded 2026-07-12): "picks are tradeable for the trade desk but
     should not be on the current board for ranking players. That is just a player ranking. It
     enters the future lens to represent the player it will become." — current board = PLAYER
