@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v16 2026-07-12 (v2.8 BAKED; lanes open) (item 14 CLOSED — owner confirmed: board=player ranking, picks on the trade desk, phantom entries on +1/+2)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v17 2026-07-12 (v2.8 BAKED; lanes open) (NEW: PR #64 spec-wave findings folded — par-relative candidate on item 1 · JUH cliff · spec staleness note)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -11,7 +11,10 @@
    jai-newcombe is MSD pk2 — MSD pedestal replicated EXACTLY on delivered value (60→60), so any
    Newcombe overvaluation is NOT pathway-pedestal — production-side investigation item.
    TRIGGER: the v2.9 batch (SSP line rides the PVC adoption job; Newcombe decomposition rides the
-   same investigation).
+   same investigation). SPEC FILED (PR #64, SPEC_1, 2026-07-12; pilots report-only): pathway
+   label worth only −90 (pedestal result re-confirmed); LIVE MECHANISM CANDIDATE = par-relative
+   flattery (a low-expectation label OUT-prices a high one at identical output — pick-2-label <
+   pick-60-label on the same line); the testable question is the age discount's depth.
 2. TRAVAGLIA READ — WAIVED by the owner (2026-07-11, board view): accepts the measured chance.
 3. KYSAIAH READ — WAIVED by the owner (2026-07-11, board view): twice-measured as priced right.
 4. RUCK-COHORT ORDERING (owner, board view 07-11): why lachlan-smith 693 / samson-ryan 636 /
@@ -144,6 +147,15 @@
     enters the future lens to represent the player it will become." — current board = PLAYER
     ranking only · picks priced/tradeable on the trade desk · the +1/+2 phantom entry stands in
     for the future player.
+
+15. SPEC-WAVE ANNOTATIONS (PR #64 prescreened PASS 2026-07-12; pilots REPORT-ONLY until v2.9
+    measures): (a) JUH QUALIFICATION CLIFF (SPEC_2, B6-adjacent): store-verified 3-game 26.0
+    cameo costs −860 alone; 7 more games at that level would cut 1056→106 — playing MORE at a
+    low level craters value; must be examined at v2.9 before any JUH remedy ships. (b) SPEC_4
+    names A-GAWN's comparator kieren-briggs for re-verification. (c) STALENESS: all four specs
+    were designed at base 626c8378 — BEFORE items 11–14 ruled (MSD pool exclusion touches SPEC_4's
+    ruck world and SPEC_1's calibration context) — the v2.9 build directive must apply the specs
+    POST-item-11(a); supervisor synthesis reconciles after the ruling-pack return.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
