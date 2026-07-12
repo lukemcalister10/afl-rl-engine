@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v10 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 11 DIRECTION RULED — MSD isolated like SSP; MSD-ordinal flattening owner-accepted)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v11 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 11 RULED (a) — MSD out of the training pool at v2.9; football-nonsense review trigger)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -91,8 +91,16 @@
     v2.9 ruling: (a) exclude MSD from the training pool — exact SSP parity, owner-leaning,
     removes 107 of ~2371 training rows (its own board-wide refit; Tier-1, in-scope at v2.9) ·
     (b) add entry-pathway as a model feature — keeps the 107 rows' evidence, lets the trees
-    separate the populations; partial isolation. Owner rules between (a)/(b) at v2.9 with the
-    cluster. ORDINAL NOTE (owner, same message): MSD ordinal flattening ACCEPTED ("happy for
+    separate the populations; partial isolation. RULED (a) (owner-worded 2026-07-12: "let's go
+    with A and just note to review down the line if football nonsense comes out") — MSD excluded
+    from the training pool, exact SSP parity; EXECUTION at v2.9 with the quantified refit in
+    front of the owner; STANDING REVIEW TRIGGER: revisit toward (b) if the refit produces
+    football-nonsense moves to the owner's eye or hollows a ceiling region. Supervisor rec was
+    (a), reasons recorded (internal consistency · structural verifiability · small well-placed
+    sample cost). SEQUENCING NOTE for the v2.9 job: once (a) executes, mcandrew's MSD→SSP relabel
+    becomes POOL-NEUTRAL (MSD rows are out either way) — the deferred trio switch then costs only
+    perez's ~7-row exit; ONE board refit at v2.9 covers both changes instead of two refits across
+    chapters. ORDINAL NOTE (owner, same message): MSD ordinal flattening ACCEPTED ("happy for
     that to be flattened") — the should-ordinal-carry-signal question is CLOSED unopened; do NOT
     add it to the item-1 investigation.
 
