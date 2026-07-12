@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v17 2026-07-12 (v2.8 BAKED; lanes open) (NEW: PR #64 spec-wave findings folded — par-relative candidate on item 1 · JUH cliff · spec staleness note)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v18 2026-07-12 (v2.8 BAKED; lanes open) (NEW: PVC-basis assert added to the v2.9 adoption — owner-raised via the par-relative question)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -165,7 +165,11 @@ with the seam/G-Y0 table, the SSP line, the ruck-scarcity question, and the disc
 DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-verified. HYGIENE NOTE (register-kept): the lever build's return claimed panel 10/10 while its committed panel file read FAIL vs a stale orphan pin — claim-accuracy defect caught at the bake rung; the board itself was audit-proven byte-exact; pin re-pointed per checklist.
 
 ## THE v2.9 BATCH (one lever build + ONE bake; papers largely drafted)
-- PVC adoption per the owner's letter + the SEAM/G-Y0 IDENTITY TABLE (per pick band: composition-
+- PVC adoption per the owner's letter + the SEAM/G-Y0 IDENTITY TABLE + PVC-BASIS ASSERT
+  (owner-raised 2026-07-12 via the par-relative question): before adoption, assert BY CODE
+  READING that the derived curve's outcome measure is production-vs-replacement — never board
+  value, never par-relative (the retired pre-v3.4 builder carried a par-relative ×3 clamp;
+  v3.4's _nv_bwd is clean; the derived curve must be proven clean too) (per pick band: composition-
   weighted mean V0 vs PVC; deviations must net ~0; y0→wk1→y1/2 chain bounded) — owner judges
   smoothness; breach repair = raise young side, never cut survivors, never bend the derived curve.
 - G-Y0 guard ratification (candidate text drafted T75, owner's pen).
