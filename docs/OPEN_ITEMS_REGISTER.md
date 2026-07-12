@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v29 2026-07-12 (v2.9 BUILD IN FLIGHT — mid-job steer: L2+L3 evidence next; PIN = units law (3000 pre-scale ⇒ 3157 board-SCAR, ×1.0524); L5 later-entry = SSP/re-entry-year/pick-None; both supervisor interpretations pending owner ratify)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v30 2026-07-12 (RULED: RE-BASE — PICK 1 = 3000 IS THE NUMÉRAIRE, standing law. L7 re-base joins the v2.9 candidate; the v29 3157 interpretation SUPERSEDED by the quotation ruling; L5 fields ratified)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -211,8 +211,18 @@
       even when I don't like it").
     D7 POOL = (a) FULL EXCLUSION + MEMBERSHIP STABILITY AGREED (facts-based training list: entry
       door + debut window; edit tripwire; labels stay as modeling inputs everywhere).
-    IN-FLIGHT CLARIFICATIONS (supervisor interpretations of ruled law, 2026-07-12, owner-ratify
-    pending): (i) THE PIN IS A UNITS ASSERT, not a value choice — the owner's locked pick-1
+    THE NUMÉRAIRE LAW (owner-ruled 2026-07-12: "Rebase, 3000 is it."): PICK 1 = 3000 IS THE
+    NUMÉRAIRE. The v2.9 candidate gains L7 — THE RE-BASE, its FINAL step: one declared uniform
+    ÷1.0524 across every player value, pick value, anchor baseline and absolute-SCAR constant;
+    assert ALL ratios preserved (pre/post check) and adopted_curve[1] == 3000 exactly; commit the
+    constants re-quote table (A-BONT baseline back to the 3084 class · the G-CONVEX bands · every
+    absolute threshold; CONSTRAINTS v1.8 folds them at the seam). STANDING + MECHANICAL: a
+    NUMÉRAIRE ASSERT joins the export/bake checklist — any future board with pick-1 ≠ 3000 HALTS;
+    future scale drift re-bases the CURRENCY to the anchor, never the anchor to the drift.
+    SUPERSEDED: the v29 "adopt at 3157" reading — correct as units logic, replaced by the
+    quotation ruling (equivalent relative worlds; the owner picked the 3000 quotation).
+    RATIFIED CLARIFICATIONS (v29, now owner-covered): (i) never scale the pick top alone (the
+    units principle stands inside L7) — the owner's locked pick-1
     anchor is 3000 in PRE-re-denomination units ⇒ 3157 in board SCAR (3000 × the ruled ×1.0524,
     CONSTRAINTS v1.7 header: "picks scale with the currency"; the shipped v3.4 top == 3157.2
     exactly); adopting at raw 3000 would be a silent 5% pick devaluation from a units mismatch.
