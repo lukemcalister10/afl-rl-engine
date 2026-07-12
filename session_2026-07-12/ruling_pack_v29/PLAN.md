@@ -56,3 +56,13 @@ the two Opus lanes.
 ## TIME
 Band 2–3h confirmed at start. Feed reading + illustration ≈1.2h at this commit; paper + PR ≈1h
 projected — inside band.
+
+## ADDENDUM (supervisor-issued same day, after the paper's first push)
+Decision 7 added per the directive addendum: CALIBRATION-POOL ARCHITECTURE (register v10 @ main
+d382bc3f, item 11 — re-verified by ls-remote before acting). Fork (a)/(b) presented symmetric;
+option (a)'s board-wide refit ripple QUANTIFIED read-only on the pinned v2.8 workspace using the
+migration lane's isolation protocol (one change alone, in-memory, baseline parity 805/805
+asserted): 668/805 rows move, 47 ≥5%, emmett −29.8%, board +0.18%. Evidence committed:
+scripts/msd_pool_ripple_pass.py + out/msd_pool_ripple.json. Interlock cluster (trio
+entry-switch · SSP line · ruck scarcity · membership stability) presented as one; MSD-ordinal
+question carried as CLOSED, not reopened. Fence unchanged and held.

@@ -1,4 +1,4 @@
-# THE v2.9 RULING PACK — six decisions, one sitting · 2026-07-12
+# THE v2.9 RULING PACK — seven decisions, one sitting · 2026-07-12 (rev A: Decision 7 added per supervisor addendum, register v10)
 ### Prepared for the owner's v2.9 ruling session. Read-only synthesis: every number below is lifted
 ### from a committed, audited artifact (source named in place) or from the one read-only illustration
 ### computed for this paper (labeled, caveats attached). Nothing here is adopted, built, or shipped.
@@ -32,9 +32,15 @@ assembled. The interlocks, in one paragraph each:
   guard's ratio the adverse way; adopting the derived pick machinery and/or lowering the discount
   rate both widen its margin. Ruled together, one walk-forward re-measure on the combined
   candidate settles the gate — ruled apart, the re-measure has to be redone per change.
+- **The calibration pool (Decision 7) is the newest arrival and touches everything the model
+  learns from.** You have already ruled the DIRECTION — mid-season-draft players [MSD] isolated
+  like the no-pick pathway [SSP] — what remains is the implementation fork. Its measured ripple
+  runs through the same fragile corner as Decisions 1 and 5 (the young-ruck ceiling: emmett), it
+  is entangled with the re-entry trio's entry-switch and the SSP line (Decision 4), and its refit
+  should ride the same combined candidate as everything above — one gate suite, not two.
 
-**Suggested order in the sitting:** 1 (curve) → 5 (dial) → 3 (law) + 2 (its table) → 4 (SSP) →
-6 (age curve). The slate at the end takes six words.
+**Suggested order in the sitting:** 1 (curve) → 5 (dial) → 7 (pool fork, same candidate) →
+3 (law) + 2 (its table) → 4 (SSP) → 6 (age curve). The slate at the end takes seven words.
 
 ---
 
@@ -349,6 +355,83 @@ above and either is defensible on your priorities.
 
 ---
 
+## DECISION 7 — THE CALIBRATION POOL: who the model learns from [MSD isolation fork]
+
+**What you have already ruled (direction, register v10 — your words):** "it's quite important
+that MSD is treated like SSP… It's its own pool. ND players shouldn't learn from it or it from
+ND players in any way that the SSP pool doesn't do for itself." That direction is law; this
+decision is only the implementation fork.
+
+**The finding behind it (the supervisor's, on the migration halt):** the model's ceiling
+calibration is ONE global fit [a quantile-GBM trained at load time] on every pick-holding player
+who debuted by 2021 — national draft, rookie draft, mid-season draft, pre-season draft, all
+positions together. MSD rows enter it with an effective-pick value of ≈60 — **feature-identical
+to a national-draft pick 60, but a differently-selected population.** The model cannot tell them
+apart, so MSD outcomes directly shape the ND pick-60 neighbourhood and vice versa. Your isolation
+instinct has a concrete confound behind it. (Also on the record and CLOSED: you accepted MSD
+ordinal flattening — the should-MSD-ordinals-carry-signal question is not reopened here.)
+
+**Measured for this paper (read-only, the migration lane's isolation protocol — one change
+alone, in-memory, full board recompute, baseline parity 805/805 asserted first):** excluding MSD
+from the training pool on the current v2.8 tree moves **668 of 805 board rows** (a global-fit
+refit reshuffles everything, as the supervisor's mcandrew eviction test predicted), **47 of them
+≥5%**, board total +0.18%. The ≥5% movers are GEN_FWD-heavy (20) and near-empty in RUC (1) —
+the same "not a ruck thing" signature as the eviction test. And the one RUC exception is the
+headline: **louis-emmett −29.8% (1177 → 826)** — your motivating sentence was "someone like
+McAndrew should have no bearing on Emmett's value," and the measurement says the MSD rows'
+presence in the pool is currently propping emmett's ceiling up by ~+42% relative to the isolated
+fit. The leakage you suspected is real, large where it matters, and its sign on your named player
+may surprise: isolation does not protect emmett's number, it cuts it. (Which internal channel —
+the ceiling fit itself or the young-ruck cap reference it feeds — carries how much of that move
+is attribution work that rides the build; the same corner has now been flagged by three
+independent probes: the discount sweep's −20/−22% artifact, the PVC option-(b) cap movers, and
+this refit.)
+
+**The fork, symmetric:**
+- **(a) EXCLUDE MSD from the training pool** — exact SSP parity (one line of filter, the same
+  door SSP is kept out of). *Owner-leaning per your recorded wording.* For: it is literally your
+  sentence implemented; the ND neighbourhoods stop learning from MSD outcomes immediately; no new
+  model machinery. Against, stated honestly: MSD players themselves are then priced by a model
+  that never saw an MSD career — exactly as SSPs are priced today — which on the measurement
+  RAISES most MSD board rows (they stop dragging their own neighbourhood down; 49 of 63 active
+  MSD rows move, collectively +0.6%; biggest: mackinlay +22.9%, banch +22.2%, lewis +16.8%). "Its
+  own pool" in the full sense — MSD priced on MSD outcomes — is NOT what (a) delivers, and cannot
+  be: only **29 MSD players (114 player-season rows) actually train today** (the fit's
+  debut-by-2021 window cuts the store's 106 pick-holding MSDs down hard) — far too thin to fit
+  alone, which is why the fork is exclusion-vs-feature, not exclusion-vs-own-fit. NOTE on the
+  register's accounting: its "removes 107 of ~2371 training rows" counts store-wide pick-holders;
+  the measured trained pool today is 1,931 players (ND 1,255 · RD 640 · MSD 29 · PSD 7) — the
+  ruling is unchanged, the sizes are these.
+- **(b) ENTRY-PATHWAY AS A MODEL FEATURE** — keep the 107 store rows' developmental evidence,
+  add "how did he enter" as a feature and let the trees separate the populations. For: it is the
+  only branch where MSD evidence still informs MSD prices; it generalises (the same feature
+  carries RD/PSD if ever needed); no evidence deleted. Against: **partial isolation only** — trees
+  split where data supports a split, and with 29 trained MSD players the model may simply not
+  spend splits on the feature where cells are thin, leaving exactly the leakage you ruled
+  against; its ripple cannot be quantified read-only (the effect depends on fitted tree
+  structure — the build measures it); and it is machinery where (a) is a filter.
+
+**The cluster this rules with (one sitting, per the register):**
+- *The re-entry trio / membership stability:* measured fact — two SSP-typed rows (mcandrew pick
+  12, perez pick 35) carry live pick capital today and are kept out of the training pool ONLY by
+  the debut-window condition, not by the SSP-parity filter. The "does a relabelled player stay in
+  the training set" question is concrete, not hypothetical: when the migration records the trio's
+  later entries, their type/pick features change, and the pool ruling here decides whether such
+  rows train, with which features, or leave (the evidence-deletion question). A word on this
+  rides whichever fork you pick.
+- *The SSP pedestal (Decision 4):* same philosophy, other side of the ledger — Decision 7 rules
+  who TEACHES the model; Decision 4 rules what an SSP-pathway entrant's day-one price IS.
+- *Ruck scarcity (register item 4):* emmett/knobel sit in the corner every probe hits; the
+  scarcity investigation inherits whatever baseline this fork sets.
+- *Sequencing with Decision 1:* the refit ripples through whichever pick machinery is ruled —
+  under 1(b) the young-ruck cap (one of emmett's possible channels) is removed and the sizes
+  above re-measure on the derived-curve machinery. Rule 7 into the SAME combined candidate as 1
+  and 5: one refit, one gate suite, one owner view. Anchors are NOT byte-identical under this
+  refit (bontempelli −0.35%, gawn +0.67% — margins untouched in substance) — full Tier-1 gates
+  ride it either way, as the register already declares.
+
+---
+
 ## IMPLICATIONS (mandatory) — what each word invalidates downstream, with sizes
 
 **If 1(a) or 1(b) — the derived curve, any form:**
@@ -397,18 +480,34 @@ guard pressure is HIGHER than (A) — the gate re-measure is more, not less, nec
 the 22–24 riser under-payment (bowey/berry/macdonald/callaghan/wilmot, +8–12% each) is the
 accepted cost, on the record.
 
+**If 7(a) — MSD out of the pool:** 668 board rows re-fit (47 ≥5%); emmett −29.8% on the current
+tree lands on the eyeball pack beside his sweep sensitivity — his price becomes the batch's most
+moved name and his attribution (ceiling fit vs cap reference) is owed to you in the build; most
+MSD rows re-price UP (they are then priced on ND patterns — anyone consuming "MSD players are
+cheap" reads a different board); anchors move non-zero (bont −0.35%) so the full gate suite +
+your reads ride the candidate; the membership-stability word (trio rows in/out of the pool on
+relabel) becomes required, not optional. **If 7(b):** no evidence deleted, but the isolation you
+ruled is only as strong as the fitted trees choose to make it — the build owes you a measured
+leakage check (does the ND pick-60 neighbourhood still move when MSD rows are perturbed?), and
+the same membership-stability word is still required. Either fork: the refit rides the combined
+v2.9 candidate — a separate pool-only bake would double the gate/audit cost for no information.
+
 **Cross-decision, the one shared budget:** the cohort guard. 6(A) spends margin; 1(b) and lower
 5 both add margin (1.4 pts at 15% shipped → 8.6 pts at 12%; 1(b) widens further via the 24 y1
 ruck anchors). The combination 1(b) + 5(12%) + 6(A) is the maximal-headroom ordering; the
 combination 1(c) + 5(15%) + 6(A) runs the gate at its tightest (1.4 pts). One walk-forward
 re-measure on the combined ruled candidate settles it for whatever slate you pick.
 
-**What NO word here touches:** evidence-priced players (781 of 805 byte-identical under even the
-biggest slate); the v2.8 defender credit; the availability machinery; every named anchor; the
-board's ordering at the top. The batch is young-side and pick-side by construction — your
-raise-young-never-cut-survivors law is structurally satisfied by every option on this slate
-except where explicitly flagged (age-curve (A)'s old-riser downs, SSP's steene/reeves downs —
-both deliberate, neither survivor-year cuts).
+**What NO word here touches:** the v2.8 defender credit; the availability machinery; the board's
+ordering at the top. Decisions 1–6 also leave evidence-priced players (781 of 805) and every
+named anchor byte-identical; **Decision 7 is the exception** — a calibration refit moves most of
+the board a little (anchors included, margins intact on the measurement), which is why it is
+Tier-1 and rides the combined candidate's full gate suite. The batch remains young-side and
+pick-side in substance — your raise-young-never-cut-survivors law is structurally satisfied by
+every option on this slate except where explicitly flagged (age-curve (A)'s old-riser downs,
+SSP's steene/reeves downs, 7(a)'s emmett re-price — each deliberate and attributed, none a
+survivor-year cut... with emmett's the one to eyeball hardest: it is a 19-year-old's price
+falling on a calibration change, and you are owed its attribution before the bake word).
 
 ---
 
@@ -420,6 +519,9 @@ both deliberate, neither survivor-year cuts).
 4. **SSP LINE:** (i) adopt ~51 / (ii) hold for the scarcity result / (iii) keep 92 as owner artifact
 5. **FUTURES DIAL:** 15 / 14 / 13 / 12 (all guard-proven; if 1(c), stay ≥14)
 6. **AGE CURVE:** (A) adopt gated on the cohort re-measure ⭐ researcher's rec / (B) floored / (C) flat
+7. **CALIBRATION POOL** (direction already ruled — MSD isolated): (a) exclude from training —
+   exact SSP parity, *your wording's leaning* / (b) entry-pathway as a model feature — partial
+   isolation, evidence kept · plus one word on membership stability (do relabelled rows train?)
 
 ---
 
@@ -441,4 +543,10 @@ and it's ruled together with Decision 1 because one old piece of machinery break
 price at low rates and the full fix removes that machinery. Decision 6 is the breakout rule: a
 22-year-old's breakout mostly sticks, a 28-year-old's mostly doesn't, and the board currently
 pays both the same 46 cents on the dollar — adopt the slope, adopt only its generous half, or
-keep the flat rate. Six words and the batch is ruled.
+keep the flat rate. And Decision 7 is who the model is allowed to learn from: you've already
+ruled that mid-season-draft careers shouldn't be teaching the model what a national-draft pick
+is worth — the choice left is the clean cut (throw them out of the classroom, the way the no-pick
+kids already are) or the labeled desk (keep them, tagged, and trust the model to keep them
+separate). The measurement says the cut is real money: most of the board twitches, and the
+teenager you named as the player who should be immune — emmett — turns out to be the one the
+leakage was propping up by a third. Seven words and the batch is ruled.

@@ -1,0 +1,306 @@
+{
+ "protocol": "one change alone in-memory (MSD rows out of the q97m training pool), full board recompute, diff vs shipped 9ecbe0fa \u2014 the migration lane ISOLATION_RESULTS protocol",
+ "baseline_parity": "805/805 vs shipped board (asserted before any comparison)",
+ "trained_pool_players_by_type": {
+  "ND": 1255,
+  "RD": 640,
+  "MSD": 29,
+  "PSD": 7
+ },
+ "trained_pool_playerseason_rows_by_type": {
+  "ND": 10096,
+  "RD": 2910,
+  "MSD": 114,
+  "PSD": 105
+ },
+ "accounting_note": "register v10 cites 107 of ~2371 = store-wide pick/_ft holders (store MSD count 106 + trio nuance); the fit ALSO requires debut<=2021, so the trained pool today is 1931 players (MSD 29 / 114 player-season rows). Measured on the current tree.",
+ "ssp_filter_note": "two SSP-typed rows carry live pick capital today (lachlan-mcandrew pick 12, flynn-perez pick 35+_ft) \u2014 kept out of the pool only by the debut<=2021 window, not by the pick/_ft filter; the trio entry-switch/membership-stability question is therefore concrete, not hypothetical",
+ "active_movers_any": 668,
+ "active_movers_ge5pct": 47,
+ "ge5_by_type": {
+  "ND": 15,
+  "SSP": 2,
+  "MSD": 19,
+  "UNR": 3,
+  "PDA": 1,
+  "RD": 4,
+  "IRE": 3
+ },
+ "ge5_by_pos": {
+  "RUC": 1,
+  "GEN_FWD": 20,
+  "KEY_DEF": 6,
+  "KEY_FWD": 4,
+  "MID": 10,
+  "GEN_DEF": 6
+ },
+ "board_sum_active": [
+  721075,
+  722350
+ ],
+ "msd_rows_on_board": 63,
+ "msd_rows_moved": 49,
+ "msd_rows_sum": [
+  31439,
+  31621
+ ],
+ "top_movers": [
+  {
+   "key": "louis-emmett",
+   "from": 1177,
+   "to": 826,
+   "pct": -29.82,
+   "type": "ND",
+   "pos": "RUC"
+  },
+  {
+   "key": "jack-henderson",
+   "from": 4,
+   "to": 5,
+   "pct": 25.0,
+   "type": "SSP",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "ewan-mackinlay",
+   "from": 35,
+   "to": 43,
+   "pct": 22.86,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "zac-banch",
+   "from": 45,
+   "to": 55,
+   "pct": 22.22,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "oscar-berry",
+   "from": 108,
+   "to": 127,
+   "pct": 17.59,
+   "type": "UNR",
+   "pos": "KEY_DEF"
+  },
+  {
+   "key": "caleb-lewis",
+   "from": 119,
+   "to": 139,
+   "pct": 16.81,
+   "type": "MSD",
+   "pos": "KEY_FWD"
+  },
+  {
+   "key": "campbell-lake",
+   "from": 111,
+   "to": 129,
+   "pct": 16.22,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "will-mclachlan",
+   "from": 133,
+   "to": 154,
+   "pct": 15.79,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "max-beattie",
+   "from": 32,
+   "to": 37,
+   "pct": 15.62,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "robert-hansen",
+   "from": 161,
+   "to": 185,
+   "pct": 14.91,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "liam-puncher",
+   "from": 96,
+   "to": 109,
+   "pct": 13.54,
+   "type": "MSD",
+   "pos": "KEY_DEF"
+  },
+  {
+   "key": "flynn-young",
+   "from": 8,
+   "to": 9,
+   "pct": 12.5,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "tom-hanily",
+   "from": 137,
+   "to": 153,
+   "pct": 11.68,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "mark-blicavs",
+   "from": 9,
+   "to": 10,
+   "pct": 11.11,
+   "type": "UNR",
+   "pos": "MID"
+  },
+  {
+   "key": "lukas-cooke",
+   "from": 104,
+   "to": 115,
+   "pct": 10.58,
+   "type": "MSD",
+   "pos": "KEY_DEF"
+  },
+  {
+   "key": "josaia-delana",
+   "from": 243,
+   "to": 218,
+   "pct": -10.29,
+   "type": "PDA",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "ollie-greeves",
+   "from": 435,
+   "to": 477,
+   "pct": 9.66,
+   "type": "RD",
+   "pos": "MID"
+  },
+  {
+   "key": "toby-mcmullin",
+   "from": 197,
+   "to": 216,
+   "pct": 9.64,
+   "type": "ND",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "tyler-brockman",
+   "from": 53,
+   "to": 58,
+   "pct": 9.43,
+   "type": "ND",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "oliver-griffin",
+   "from": 234,
+   "to": 256,
+   "pct": 9.4,
+   "type": "MSD",
+   "pos": "GEN_FWD"
+  },
+  {
+   "key": "riley-garcia",
+   "from": 155,
+   "to": 169,
+   "pct": 9.03,
+   "type": "ND",
+   "pos": "MID"
+  },
+  {
+   "key": "liam-o-connell",
+   "from": 92,
+   "to": 100,
+   "pct": 8.7,
+   "type": "IRE",
+   "pos": "GEN_DEF"
+  },
+  {
+   "key": "xavier-bamert",
+   "from": 279,
+   "to": 303,
+   "pct": 8.6,
+   "type": "MSD",
+   "pos": "MID"
+  },
+  {
+   "key": "billy-cootee",
+   "from": 83,
+   "to": 90,
+   "pct": 8.43,
+   "type": "ND",
+   "pos": "MID"
+  },
+  {
+   "key": "kye-annand",
+   "from": 119,
+   "to": 129,
+   "pct": 8.4,
+   "type": "MSD",
+   "pos": "KEY_DEF"
+  }
+ ],
+ "named": {
+  "louis-emmett": {
+   "from": 1177,
+   "to": 826,
+   "pct": -29.82
+  },
+  "lachlan-mcandrew": {
+   "from": 1039,
+   "to": 1052,
+   "pct": 1.25
+  },
+  "jai-newcombe": {
+   "from": 4495,
+   "to": 4466,
+   "pct": -0.65
+  },
+  "marcus-bontempelli": {
+   "from": 3721,
+   "to": 3708,
+   "pct": -0.35
+  },
+  "max-gawn": {
+   "from": 2538,
+   "to": 2555,
+   "pct": 0.67
+  },
+  "kieren-briggs": {
+   "from": 2221,
+   "to": 2223,
+   "pct": 0.09
+  },
+  "oscar-steene": {
+   "from": 252,
+   "to": 252,
+   "pct": 0.0
+  },
+  "ned-reeves": {
+   "from": 389,
+   "to": 395,
+   "pct": 1.54
+  },
+  "nicholas-martin": {
+   "from": 2935,
+   "to": 2990,
+   "pct": 1.87
+  },
+  "max-knobel": {
+   "from": 402,
+   "to": 402,
+   "pct": 0.0
+  },
+  "zak-butters": {
+   "from": 6059,
+   "to": 6058,
+   "pct": -0.02
+  }
+ }
+}
