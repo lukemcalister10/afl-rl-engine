@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v24 2026-07-12 (MIGRATION MERGED #65 → main 3c65829e, store b0c39d78, board de4baef9, UI re-pinned — supervisor-verified; v2.8 tag unmoved) (wave complete v23)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v25 2026-07-12 (NEW: PROVISION-NOW / INGEST-LAST owner ruling — weekly-score GO-LIVE is the FINAL step; the plumbing builds now. Stamp finding: barker/thredgold still null post-regen ⇒ consumer wiring, rides the export job)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -203,7 +203,11 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
   June-28 Stage-2 OWNER GATE (trajectory-curve read) — and the OWNER-HELD eligibility/positioning
   registers, couriered at fire time).
 
-## COMPLETION PATH (order owner-ruled)
+## COMPLETION PATH (order owner-ruled; AMENDED 2026-07-12, owner-worded: "I want adding weekly
+scores to be the last thing we start doing, once the build is near perfect. But building
+provision for it can be now." ⇒ the INGESTION PROVISION build — parser, resolver wiring,
+round-storage, dry-run mode, switch OFF — may fire now; LIVE weekly ingestion is the FINAL
+switch, thrown after v2.9 lands and the reads are mostly landing.)
 v2.8 bake → ID-primary migration ✅ MERGED 2026-07-12 (#65 → main 3c65829e, two-parent merge,
 supervisor-verified: store b0c39d78 · board de4baef9 · boot pin moved · UI bundle re-pinned
 EXPECTED_BOARD de4baef9 · tag v2.8 unmoved · 94 declared movers · trio deferred v20 · resolver
@@ -230,9 +234,11 @@ mostly landing.
 - AGE-CURVE for risers: research DONE (s(age) linear 0.86@22→0@29); adoption gated per above.
 - JUNE "awaiting Luke" items (0.85 lock · mature-age verdicts · 805 eyeball): grade against the
   post-v2.4-2.7 record before surfacing; only survivors reach the owner.
-- lti_reg export stamp (barker/thredgold) + UI EXPORT FIELDS (vPrev · vRaw · levers — one-line
-  engine export additions; the built UI displays light up with no further UI work, per the #62
-  return): ride the NEXT export-touching job, bundled.
+- lti_reg export stamp (barker/thredgold) + UI EXPORT FIELDS (vPrev · vRaw · levers): ride the
+  NEXT export-touching job, bundled. VERIFIED 2026-07-12: the tags are STILL NULL on the
+  migration-regenerated board (de4baef9) even though both register rows exist — so the fix is
+  CONSUMER WIRING (likely the no-scoring-row skip on first-years), not a rebuild; a regen alone
+  does not close it.
 - EVIDENCE-BRANCH HOMING (~30 unmerged branches hold the record): one token filing job post-v2.8;
   THEN those branches sweep.
 - PR #60 disposition + prebake-v2.4-anchor keep/delete: at the v2.8 close.
