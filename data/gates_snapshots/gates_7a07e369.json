@@ -1,12 +1,12 @@
 {
  "head": "7a07e369",
- "store": "04f38dad",
+ "store": "b0c39d78",
  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b",
  "gates": {
   "A1": {
    "dc": false,
    "status": "PASS",
-   "detail": "Duursma>Uwland: 4429 vs 2746"
+   "detail": "Duursma>Uwland: 4430 vs 2746"
   },
   "A2": {
    "dc": false,
@@ -26,12 +26,12 @@
   "A5": {
    "dc": false,
    "status": "PASS",
-   "detail": "Jack Ginnivan=1844 (floor 1600); Jake Bowey=3096 (floor 2100); Nick Blakey=3598 (floor 2600) [SCAR floors \u2014 RE-BASE if PVC re-levels]"
+   "detail": "Jack Ginnivan=1844 (floor 1600); Jake Bowey=3097 (floor 2100); Nick Blakey=3598 (floor 2600) [SCAR floors \u2014 RE-BASE if PVC re-levels]"
   },
   "A6": {
    "dc": false,
    "status": "PASS",
-   "detail": "yr1-3 RUC median=392 (n=13, pooled \u2014 thin slice) vs pick-matched MID kernel median=579 (n=67, bw=0.6 log-pick, RATIFIED 02/07)"
+   "detail": "yr1-3 RUC median=392 (n=13, pooled \u2014 thin slice) vs pick-matched MID kernel median=615 (n=67, bw=0.6 log-pick, RATIFIED 02/07)"
   },
   "A7": {
    "dc": false,
@@ -56,17 +56,17 @@
   "A11": {
    "dc": true,
    "status": "PASS",
-   "detail": "Farrow>Patterson: 1750 vs 992; Cumming>Annable: 2186 vs 2020"
+   "detail": "Farrow>Patterson: 1750 vs 992; Cumming>Annable: 2186 vs 2021"
   },
   "A12": {
    "dc": true,
    "status": "FAIL",
-   "detail": "Travaglia>Moraes: 792 vs 1023; Smillie>Retschko: 1301 vs 838"
+   "detail": "Travaglia>Moraes: 791 vs 1023; Smillie>Retschko: 1302 vs 838"
   },
   "A13": {
    "dc": false,
    "status": "PENDING",
-   "detail": "PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3206 lineball=True; Levi Ashcroft=3193 lineball=True"
+   "detail": "PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3206 lineball=True; Levi Ashcroft=3194 lineball=True"
   },
   "A14": {
    "dc": false,
@@ -81,32 +81,32 @@
   "B1": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE (regenerated this run \u2014 engine 7a07e369 store 04f38dad config 69ead79b944d): cross-cohort AVERAGE peak N=4 AVG(peak)=129 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
+   "detail": "CANDIDATE (regenerated this run \u2014 engine 7a07e369 store b0c39d78 config 69ead79b944d): cross-cohort AVERAGE peak N=4 AVG(peak)=129 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
   },
   "B2": {
    "dc": false,
    "status": "PASS",
-   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.47, GEN_FWD|GOOD|T1:5.44, MID|GO"
+   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.45, GEN_FWD|GOOD|T1:5.45, MID|GO"
   },
   "B3": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 7a07e369 store 04f38dad config 69ead79b944d): MATCHES the sealed baseline. current=a19b3cb8b0f7eb75.. (2649 players) vs baseline=a19b3cb8b0f7e"
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 7a07e369 store b0c39d78 config 69ead79b944d): MATCHES the sealed baseline. current=e559eb6cafb5b79d.. (2649 players) vs baseline=e559eb6cafb5b"
   },
   "B4": {
    "dc": false,
    "status": "PASS",
-   "detail": "regenerated rl_app_data.json md5=9ecbe0fa vs shipped 9ecbe0fa (byte-agree gate; export exit=0)"
+   "detail": "regenerated rl_app_data.json md5=de4baef9 vs shipped de4baef9 (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,
    "status": "FEATURE",
-   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 63 saves, aggregate lift +2084; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new al"
+   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 63 saves, aggregate lift +2085; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new al"
   },
   "B6": {
    "dc": false,
    "status": "PASS",
-   "detail": "ramp(0..14g)=[1316, 1600, 1910, 2594, 3224, 3318, 3375, 3430, 3445, 3457, 3511, 3580, 3666, 3706, 3735]; dips(more games worth less)=none; 0->6 rise T=+2059; 0->6 steps>50%T=none; rise by 3g=+1278 (ne"
+   "detail": "ramp(0..14g)=[1316, 1600, 1910, 2594, 3225, 3319, 3375, 3430, 3445, 3457, 3512, 3580, 3666, 3706, 3736]; dips(more games worth less)=none; 0->6 rise T=+2059; 0->6 steps>50%T=none; rise by 3g=+1278 (ne"
   },
   "D14a": {
    "dc": false,

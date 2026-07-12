@@ -14,7 +14,7 @@ Checks:
   GUARD 3  single source: exactly one rl_model_data*.json, no lookalikes; engine opens only classified inputs
   GUARD 1  derived read-only + stamped: board + book are 0o444 and carry a .srcmd5 stamp
   GUARD 2  source-hash: each derived stamp == current source md5
-  (1) engine loads from the single store; derived active == 805, keys unique
+  (1) engine loads from the single store; derived active == 804 (was 805; taylor-adams retired 2026-07-12), keys unique
   (2) EXPORT PARITY (F1): board v == a freshly, independently recomputed engine gated ev(), key-for-key
   (3) BOOK PARITY  (F2): book cur == board v for every shared player
   (4) DATA GROUND TRUTH: Kako 2025 23@55.2 / 2026 6@55.0 ; Bontempelli 13-season track regenerated == source
@@ -73,13 +73,15 @@ for _name in SS.TIER1_DERIVED:
     check(SS.read_stamp(_name)==_sm, "GUARD 2: %s stamp == current source md5 %s"%(_name,_sm[:8]))
 print("       source md5 = %s"%_sm)
 
-print("=== (1) ENGINE LOADS from the single store; active == 805 ===")
+print("=== (1) ENGINE LOADS from the single store; active == 804 ===")
 g={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open(hp('_merged_recover.py')).read().split('print("=== AFTER')[0], g)
 MA=g['MA']; ev=g['ev']
 active_keys=[p['key'] for p in MA.players]
-check(len(active_keys)==805, "engine active players == 805 (got %d)"%len(active_keys))
+# 805 -> 804 at the ID-primary migration (owner-ruled 2026-07-12): taylor-adams marked _retired
+# (mid-season retirement) drops him from the live/active board. Count re-pinned like the panel/board seal.
+check(len(active_keys)==804, "engine active players == 804 (got %d)"%len(active_keys))
 check(len(set(active_keys))==len(active_keys), "active keys unique")
 
 print("=== (2) EXPORT PARITY (F1): board v == independently recomputed engine gated ev(), key-for-key ===")
