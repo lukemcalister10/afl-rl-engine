@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v2 2026-07-11 (board-view items added)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v4 2026-07-11 (rulings: 15% for v2.8 · travaglia + kysaiah waived · hayes ages confirmed)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -12,10 +12,8 @@
    Newcombe overvaluation is NOT pathway-pedestal — production-side investigation item.
    TRIGGER: the v2.9 batch (SSP line rides the PVC adoption job; Newcombe decomposition rides the
    same investigation).
-2. TRAVAGLIA READ — measured transition says fairly priced (A12 stays red); owner holds or waives.
-   TRIGGER: board view (v2.8 ruling card).
-3. KYSAIAH READ — twice-contested (L2 + the age curve: at the 25.3 crossover). Owner holds/waives.
-   TRIGGER: board view.
+2. TRAVAGLIA READ — WAIVED by the owner (2026-07-11, board view): accepts the measured chance.
+3. KYSAIAH READ — WAIVED by the owner (2026-07-11, board view): twice-measured as priced right.
 4. RUCK-COHORT ORDERING (owner, board view 07-11): why lachlan-smith 693 / samson-ryan 636 /
    max-knobel 402 (ND-pick young rucks: capital+runway) sit ABOVE oscar-steene 252 / ned-reeves 389
    (SSP older rucks: pedestal 92, no capital, priced on thin bar-margins)? TENSION: the owner's
@@ -40,7 +38,7 @@
    picks 40 vs 44, both 0 games; the ONLY other field difference is _by 2005 vs 2004 — one birth
    year drives ~56%. FORK on the owner's word: "same age" ⇒ hayes joins the migration's named DOB
    corrections (gap self-collapses) · "Hayes is older" ⇒ v2.9 measures the unplayed-age gradient
-   steepness (beside the participation-cliff machinery). AWAITING the word.
+   steepness (beside the participation-cliff machinery). RESOLVED 07-11: owner confirms Hayes 2004 / Murray 2005 — ages CORRECT, gap defensible; hayes off the DOB list; the unplayed-age gradient steepness stays a LOW-priority v2.9 measurable.
 9. HARVEY THOMAS — ANSWERED 07-11: store future_position = GEN_FWD; the future=MID information is
    NOT in the store — it lives in the OWNER-HELD positioning registers and arrives with the FLEX
    build (blends). Today he is priced purely as GEN_FWD (2456). The flex-spec's "future=MID seam
