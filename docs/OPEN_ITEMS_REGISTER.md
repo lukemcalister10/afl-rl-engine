@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v7 2026-07-12 (v2.8 BAKED; lanes open) (NEW: the four UI letters RULED — GHOST b · DELTA-BASE a→b at go-live · VERDICT b · THEME a)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v8 2026-07-12 (v2.8 BAKED; lanes open) (NEW: migration csv pre-flight clashes RULED — the four named rows below; UI letters ruled v7)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -27,6 +27,7 @@
    nick-driscoll — ALL _by 2000, all 0-game old rookie-pick rows (pattern = default year, not data).
    TRIGGER: named validation rows in the ID-MIGRATION build (real DOBs import from
    authoritative_universe.csv; migration must report these four's corrections explicitly).
+   ADDED 07-12: lachlan-mcandrew joins as the FIFTH named DOB row (item 10d).
 6. CAIDEN CLEARY "a bit high" (779) · JAMARRA UGLE-HAGAN "a bit low" (196 — former #1-pick KFWD,
    70g, priced at scrap: likely the availability/absence machinery; decompose-first).
    TRIGGER: v2.9 investigation list.
@@ -44,6 +45,27 @@
    build (blends). Today he is priced purely as GEN_FWD (2456). The flex-spec's "future=MID seam
    must survive" note therefore depends on the owner's registers being couriered at flex fire time
    (already flagged).
+
+10. MIGRATION NAMED ROWS — csv pre-flight clashes RULED (owner-worded 2026-07-12; csv verified
+    clean otherwise: 804 rows · zero dup IDs/keys/names · 100% key coverage vs store · picks match
+    store 803/804):
+    (a) RE-ENTRY TRIO EXCEPTION — flynn-perez · lachlan-mcandrew · mark-keane are "known
+        exceptions" to the §45 initial-entry law: record their LATER entry (SSP 2025/2024/2022).
+        SUPERVISOR VERIFICATION NOTE: the owner's supporting belief ("their pricing works off the
+        later entry too") is REFUTED by direct store reading — the store today carries perez ND
+        p35 / mcandrew MSD p12 (_pickless False, pick capital live) / keane IRE pickless; no
+        engine override exists. Switching to later-entry WILL move perez + mcandrew prices (onto
+        the pickless/SSP basis). Ruling stands (intent = later entry); the price moves ride the
+        migration's Tier-2 COMPLETE affected-row list for owner view before merge.
+    (b) LUKE-NANKERVIS — truth is PSD (csv's RD-1 was owner convenience logging; does NOT import);
+        store keeps PSD pick 2; valuation treatment = between the last ND pick and first RD pick
+        that season (already the §45 chaining law). Named no-import row.
+    (c) TAYLOR-ADAMS — retired mid-season (owner-worded); migration marks him non-live alike the
+        already-filtered mid-season retirees. A-FADE continues with the remaining three
+        (coniglio · blicavs · guthrie) — consistent-with the ruling; the CONSTRAINTS anchor-text
+        amendment rides the next v1.7+ touch (fold, not a new decision).
+    (d) LACHLAN-MCANDREW _by — owner-worded: "Mcandrew's birth year is 2000. The store is wrong."
+        Fifth named DOB-correction row (joins onley/kickett/rodriguez/driscoll, item 5).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
