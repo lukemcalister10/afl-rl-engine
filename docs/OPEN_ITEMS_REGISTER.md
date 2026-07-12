@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v26 2026-07-12 (SLATE PART-RULED: D4 hold-for-scarcity · D5 dial 14 · D6 age (A) "trust the data" · D7 pool (a) full exclusion. D1 held for the owner curve view · D2 example issued · D3 law clarification issued · membership-stability word pending)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v27 2026-07-12 (D3 RULED — law stands as recorded. D2 understanding CONFIRMED (composition-weighted). D1: derivation timing VERIFIED post-correction; steps = PAVA pooling + real top-5 concentration; pin = presentation-only; REC = (b) + declared smoothing finish. Awaiting D1 letter + membership word)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -184,11 +184,18 @@
     D5 DIAL = 14 ("for now. Can always change later" — re-rulable at any bake) · D6 AGE = (A)
     adopt gated on the cohort re-measure ("trust the data, even when I don't like it") · D7 POOL
     = (a) FULL EXCLUSION confirmed (membership-stability wording awaiting his read of the
-    simplified explanation). HELD: D1 (owner questions answered + the 1–60 derived-vs-frozen
-    table couriered for his view before approval) · D2 (worked example issued) · D3 (law
-    clarification issued: the RECORDED law = V0 identity + the bounded y0→wk1→y1/2 chain; his
-    end-of-year-one memory maps to the chain clause / the discounted-expectation equivalence;
-    awaiting his confirm-or-reword).
+    simplified explanation). D3 RULED (owner: "Happy to trust you" — the law stands as
+    recorded: V0 identity + bounded chain). D2 UNDERSTOOD (owner restated composition-weighting
+    exactly). D1 UPDATE (2026-07-12, on his table eyeball): (i) derivation timing VERIFIED —
+    base = v2.7 + candidate bc2929fe (the corrected candidate); METHOD builds its own chained
+    axis (RD/PSD onto the national end; _pvc_exclude slide-up) — the rookie contamination never
+    touched it; (ii) the STEPS he flagged = PAVA isotonic pooling (flat runs 6-9, 10-12) over a
+    kernel-smoothed adaptive-bandwidth fit + a GENUINE −26% 5→6 concentration in realized
+    outcomes; (iii) the pick-1 pin = PRESENTATION-ONLY uniform rescale to his locked 3000 anchor
+    (supervisor's earlier pin-release hypothesis CORRECTED); (iv) his cliff read engages G-MONO —
+    ADOPTION REC: (b) derived LEVELS + a DECLARED final smoothing pass over the isotonic steps
+    (monotone preserved, deviations declared). AWAITING: his D1 letter + the membership-stability
+    word ("agreed" = facts-based list + edit tripwire; labels stay as modeling inputs everywhere).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
