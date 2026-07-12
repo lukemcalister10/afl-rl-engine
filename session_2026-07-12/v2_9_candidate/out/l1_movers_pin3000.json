@@ -1,0 +1,356 @@
+{
+ "pin": 3000.0,
+ "parity_keys": 804,
+ "movers_n": 25,
+ "mover_pos_mix": {
+  "RUC": 24,
+  "KEY_DEF": 1
+ },
+ "board_sum_before": 723075,
+ "board_sum_after": 724370,
+ "board_delta_pct": 0.179,
+ "anchors": {
+  "marcus-bontempelli": {
+   "before": 3721,
+   "after": 3721,
+   "same": true
+  },
+  "max-gawn": {
+   "before": 2538,
+   "after": 2538,
+   "same": true
+  },
+  "kieren-briggs": {
+   "before": 2222,
+   "after": 2222,
+   "same": true
+  },
+  "jeremy-cameron": {
+   "before": 1526,
+   "after": 1526,
+   "same": true
+  },
+  "sam-darcy": {
+   "before": 4013,
+   "after": 4013,
+   "same": true
+  },
+  "zak-butters": {
+   "before": 6060,
+   "after": 6060,
+   "same": true
+  },
+  "max-holmes": {
+   "before": 6270,
+   "after": 6270,
+   "same": true
+  },
+  "louis-emmett": {
+   "before": 1178,
+   "after": 1178,
+   "same": true
+  }
+ },
+ "top_movers": [
+  {
+   "key": "max-knobel",
+   "player": "Max Knobel",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 42,
+   "games": 0,
+   "before": 402,
+   "after": 505,
+   "delta": 103,
+   "delta_pct": 25.6
+  },
+  {
+   "key": "harry-barnett",
+   "player": "Harry Barnett",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 23,
+   "games": 2,
+   "before": 544,
+   "after": 645,
+   "delta": 101,
+   "delta_pct": 18.6
+  },
+  {
+   "key": "toby-conway",
+   "player": "Toby Conway",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 24,
+   "games": 6,
+   "before": 479,
+   "after": 576,
+   "delta": 97,
+   "delta_pct": 20.3
+  },
+  {
+   "key": "jacob-molier",
+   "player": "Jacob Molier",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 52,
+   "games": 0,
+   "before": 392,
+   "after": 476,
+   "delta": 84,
+   "delta_pct": 21.4
+  },
+  {
+   "key": "alex-dodson",
+   "player": "Alex Dodson",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 53,
+   "games": 1,
+   "before": 386,
+   "after": 468,
+   "delta": 82,
+   "delta_pct": 21.2
+  },
+  {
+   "key": "will-green",
+   "player": "Will Green",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 16,
+   "games": 0,
+   "before": 588,
+   "after": 664,
+   "delta": 76,
+   "delta_pct": 12.9
+  },
+  {
+   "key": "logan-smith",
+   "player": "Logan Smith",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 71,
+   "games": 0,
+   "before": 369,
+   "after": 444,
+   "delta": 75,
+   "delta_pct": 20.3
+  },
+  {
+   "key": "flynn-riley",
+   "player": "Flynn Riley",
+   "pos": "RUC",
+   "type": "MSD",
+   "effpk": 60,
+   "games": 0,
+   "before": 381,
+   "after": 449,
+   "delta": 68,
+   "delta_pct": 17.8
+  },
+  {
+   "key": "caleb-may",
+   "player": "Caleb May",
+   "pos": "RUC",
+   "type": "MSD",
+   "effpk": 60,
+   "games": 0,
+   "before": 381,
+   "after": 449,
+   "delta": 68,
+   "delta_pct": 17.8
+  },
+  {
+   "key": "alex-van-wyk",
+   "player": "Alex Van Wyk",
+   "pos": "RUC",
+   "type": "MSD",
+   "effpk": 60,
+   "games": 0,
+   "before": 381,
+   "after": 449,
+   "delta": 68,
+   "delta_pct": 17.8
+  },
+  {
+   "key": "max-mapley",
+   "player": "Max Mapley",
+   "pos": "RUC",
+   "type": "MSD",
+   "effpk": 60,
+   "games": 0,
+   "before": 381,
+   "after": 449,
+   "delta": 68,
+   "delta_pct": 17.8
+  },
+  {
+   "key": "taylor-goad",
+   "player": "Taylor Goad",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 20,
+   "games": 1,
+   "before": 818,
+   "after": 874,
+   "delta": 56,
+   "delta_pct": 6.8
+  },
+  {
+   "key": "patrick-carr",
+   "player": "Patrick Carr",
+   "pos": "RUC",
+   "type": "UNR",
+   "effpk": 92,
+   "games": 0,
+   "before": 381,
+   "after": 434,
+   "delta": 53,
+   "delta_pct": 13.9
+  },
+  {
+   "key": "iliro-smit",
+   "player": "Iliro Smit",
+   "pos": "RUC",
+   "type": "MSD",
+   "effpk": 60,
+   "games": 0,
+   "before": 250,
+   "after": 293,
+   "delta": 43,
+   "delta_pct": 17.2
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "player": "Jaime Uhr-Henry",
+   "pos": "RUC",
+   "type": "UNR",
+   "effpk": 92,
+   "games": 0,
+   "before": 294,
+   "after": 335,
+   "delta": 41,
+   "delta_pct": 13.9
+  },
+  {
+   "key": "joe-pike",
+   "player": "Joe Pike",
+   "pos": "RUC",
+   "type": "RD",
+   "effpk": 82,
+   "games": 0,
+   "before": 294,
+   "after": 335,
+   "delta": 41,
+   "delta_pct": 13.9
+  },
+  {
+   "key": "aiden-riddle",
+   "player": "Aiden Riddle",
+   "pos": "RUC",
+   "type": "RD",
+   "effpk": 74,
+   "games": 0,
+   "before": 294,
+   "after": 335,
+   "delta": 41,
+   "delta_pct": 13.9
+  },
+  {
+   "key": "lachlan-smith",
+   "player": "Lachlan Smith",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 47,
+   "games": 2,
+   "before": 693,
+   "after": 731,
+   "delta": 38,
+   "delta_pct": 5.5
+  },
+  {
+   "key": "vigo-visentini",
+   "player": "Vigo Visentini",
+   "pos": "RUC",
+   "type": "RD",
+   "effpk": 70,
+   "games": 2,
+   "before": 250,
+   "after": 285,
+   "delta": 35,
+   "delta_pct": 14.0
+  },
+  {
+   "key": "max-heath",
+   "player": "Max Heath",
+   "pos": "RUC",
+   "type": "MSD",
+   "effpk": 60,
+   "games": 10,
+   "before": 138,
+   "after": 162,
+   "delta": 24,
+   "delta_pct": 17.4
+  },
+  {
+   "key": "oscar-steene",
+   "player": "Oscar Steene",
+   "pos": "RUC",
+   "type": "SSP",
+   "effpk": 92,
+   "games": 8,
+   "before": 252,
+   "after": 273,
+   "delta": 21,
+   "delta_pct": 8.3
+  },
+  {
+   "key": "rhys-stanley",
+   "player": "Rhys Stanley",
+   "pos": "RUC",
+   "type": "ND",
+   "effpk": 47,
+   "games": 230,
+   "before": 30,
+   "after": 37,
+   "delta": 7,
+   "delta_pct": 23.3
+  },
+  {
+   "key": "nick-madden",
+   "player": "Nick Madden",
+   "pos": "RUC",
+   "type": "PDA",
+   "effpk": 92,
+   "games": 6,
+   "before": 1521,
+   "after": 1526,
+   "delta": 5,
+   "delta_pct": 0.3
+  },
+  {
+   "key": "will-darcy",
+   "player": "Will Darcy",
+   "pos": "KEY_DEF",
+   "type": "ND",
+   "effpk": 58,
+   "games": 0,
+   "before": 560,
+   "after": 559,
+   "delta": -1,
+   "delta_pct": -0.2
+  },
+  {
+   "key": "liam-reidy",
+   "player": "Liam Reidy",
+   "pos": "RUC",
+   "type": "RD",
+   "effpk": 63,
+   "games": 6,
+   "before": 298,
+   "after": 299,
+   "delta": 1,
+   "delta_pct": 0.3
+  }
+ ]
+}
