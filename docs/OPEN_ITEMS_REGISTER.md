@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v21 2026-07-12 (v2.8 BAKED; lanes open) (item 14 display state verified — ladder was already players-only; v2.9 scope = +1/+2 phantom entries)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v22 2026-07-12 (v2.8 BAKED; UI ON MAIN — #62 merged 11f85fb9, supervisor-verified) (item 14 display state verified v21)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -201,7 +201,11 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
 
 ## COMPLETION PATH (order owner-ruled)
 v2.8 bake → ID-primary migration (authoritative_universe.csv; imports real DOBs; name→ID resolver at
-the score boundary) → UI (Matchday LOCK + DESIGN_DIRECTION + flex-spec display law + ±1/2-yr lens;
+the score boundary; clean scope IN FLIGHT, trio deferred v20) → UI ✅ MERGED 2026-07-12 (#62 →
+main 11f85fb9, merge commit, supervisor-verified: two parents fdc869e/7b9876d · branch commits
+preserved · merge fence = ui/** only 24 files · tag v2.8 unmoved; remaining UI-adjacent work =
+export fields at the next export job + the +1/+2 phantom entries at v2.9) → UI spec references
+kept for the record: (Matchday LOCK + DESIGN_DIRECTION + flex-spec display law + ±1/2-yr lens;
 THE FOUR LETTERS RULED — owner-worded 2026-07-12: Q-GHOST (b) post-override figure + tag only ·
 Q-DELTA-BASE toggle built, default (a) last-accepted-bake NOW, default flips to (b) previous-round
 AT GO-LIVE ("until we're finished and push it all live, then B"; default-flip reading is the
