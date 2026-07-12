@@ -88,12 +88,36 @@ def pkbest(p):
 # year's national-pick count. PICKLESS mechanisms (MSD/SSP/Ireland/Unregistered/post-draft) carry NO slot;
 # their _eff (pick-equivalent) is derived empirically from realised value AFTER the PVC exists (see below). ----
 from collections import Counter as _Cnt
-_NDC=dict(_Cnt(p['year'] for p in data if p['type']=='ND'))   # national-draft size per year, from the data
+# PICK-CORRECTION (b) 2026-07-11, RE-DERIVED under the OWNER DATA LAW (ii) 2026-07-11: the chaining offset is
+# an AUTHORITATIVE per-year LAST-NATIONAL-PICK table (source-stamped sidecar national_draft_last_pick.json),
+# replacing the prior inference from the ND row COUNT. Owner convention: rookie/PSD chain onto the database's
+# national END, not the row count. The table value is the store's own MAX National ordinal per year (the
+# DATABASE UNIVERSE end — owner data law: store ordinals are database-universe with redraft exclusions; the
+# real-world/AFL-official count is NOT the authority). The row COUNT equals the MAX only where the sequence is
+# gapless (21/23 years); at 2010/2011 gaps (excluded/redrafted players that never consume numbering) make
+# count<max, so COUNT would place rookie picks BELOW real national ordinals — MAX is the collision-free end
+# (2010=93, 2011=89). Fallback to the row count for any year absent from the table (logged), so the engine
+# never silently loses a year.
+_NDC_count=dict(_Cnt(p['year'] for p in data if p['type']=='ND'))
+try:
+    _NDLAST={int(_k):_v for _k,_v in json.load(open('national_draft_last_pick.json'))['last_national_pick'].items()}
+except Exception as _e:
+    _NDLAST={}; print('WARN: national_draft_last_pick.json unavailable (%r) — falling back to ND row-count offset'%_e)
+_NDC={}
+for _y in set(_NDC_count)|set(_NDLAST):
+    if _y in _NDLAST: _NDC[_y]=_NDLAST[_y]
+    else: _NDC[_y]=_NDC_count[_y]; print('WARN: year %s absent from last-national-pick table — using ND row count %d'%(_y,_NDC_count[_y]))
 for _p in data:
     _p['_eyr']=_p['year']
     if _p['type']=='ND':
         _p['_ft']=True; _p['_grp']='ND'; _p['_eff']=min(99,_p['pick'] or 99)
     elif _p['type']=='RD':
+        _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=min(99,_NDC.get(_p['year'],75)+(_p['pick'] or 15))
+    elif _p['type']=='PSD':                                   # PICK-CORRECTION (c) 2026-07-11: Pre-Season Draft
+        # chains AFTER national BEFORE rookie (owner ruling): PSD _eff = last_national_pick + psd_slot. Treated
+        # as a chained first-time draftee (_grp='RD') so it sits in the chained pools like a rookie. (The
+        # rookie-offset-by-per-year-PSD-count refinement is deferred — authoritative PSD sizes not verifiable
+        # this build; only web-verified PSD rows are split out, all cap at KMAX=70 so board impact is nil.)
         _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=min(99,_NDC.get(_p['year'],75)+(_p['pick'] or 15))
     else:                                                     # pickless entry mechanism
         _p['_ft']=False; _p['_grp']=_p['type']; _p['_eff']=75   # placeholder; replaced by pick-equivalent after PVC
@@ -117,7 +141,7 @@ def _rw(y):                                  # v2.1: equal weighting (recency sh
 BPK={}; POOL={}; MIX={}
 from collections import Counter
 for b in range(NB):
-    grp=[p for p in hist if bandof(p['pick'])==b]
+    grp=[p for p in hist if bandof(effpk(p))==b]   # PICK-CORRECTION (a) 2026-07-11: band pools on the CHAINED effective pick (owner convention), was raw p['pick']. Removes rookie-at-raw contamination (Q2: 657 RD rows, 320 at raw<=20) from the one raw-pick channel on the live board; before/after cited in the eyeball list.
     cc=Counter(GRP[p['pos']] for p in grp); MIX[b]={g:cc.get(g,0)/len(grp) for g in sorted(set(GRP.values()))}
     for g in sorted(set(GRP.values())):
         pw=[(pkbest(p),_rw(p['year'])) for p in grp if GRP[p['pos']]==g and pkbest(p) is not None]

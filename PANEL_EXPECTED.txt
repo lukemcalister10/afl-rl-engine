@@ -1,16 +1,26 @@
-FIXED PANEL — BAKED v2.5 (DPP strip final consolidation, 2026-07-05; engine efea88e5, store e1b4d8bf).
-Supersedes the pre-consolidation F1/F2-rewire panel (PR#34 head 73d23a8e) and the v2.4 baked panel. A cold
-reload of THIS baked state MUST reproduce every EV exactly (values verified against the recorded FINAL board,
-evidence/dpp_strip/board_three_column.csv). F1 makes the board == engine; ev() is the single price.
+FIXED PANEL — BAKED v2.8 (chapter-lever L1 young-GDEF transition credit + pick redenomination, 2026-07-12;
+engine 7a07e369, store 04f38dad, config 69ead79b944d, board 9ecbe0fa). RE-PINNED at the v2.8 bake to the
+reproduced candidate board: every EV below equals the ship_gates B4 board (md5 9ecbe0fa, byte-agree gate
+PASS) and reproduces deterministically across repeat run_panel.sh runs. A cold reload of THIS baked state
+MUST reproduce every EV exactly. Supersedes the pre-bake stamp, which carried an ORPHAN W4+L1c candidate
+(store e1b4d8bf, never baked) that the chapter-lever candidate left un-updated; that staleness is why the
+candidate's own panel_levered.txt read FAIL — closed here by re-pinning to the state being baked.
 
 player                pos       pk  ns     EV   note
-Nick Daicos           MID        4   5   7002   proven star
-Marcus Bontempelli    MID        4  13   3084   proven
-Harry Sheezel         MID        3   4   7151   proven young (drafted GEN_FWD -> plays MID; switcher)
-Max Gawn              RUC       33  14   2112   proven ruck
-Harley Reid           MID        1   3   3549   first-year value, pk1 (NOT cratered)
-Josh Ward             MID        7   5   1650   moderate pedigree (the "Ward" case; book == board now)
-Darcy Moore           KEY_DEF    8  11    198   decliner the shed fired on
-Taylor Goad           RUC       20   0    723   sat-out ruck -> no-games anchor
-Josh Smillie          MID        7   0    974   sat-out mid -> no-games anchor
-Will Green            RUC       16   0    536   sat-out ruck -> no-games anchor
+Nick Daicos           MID        4   5   8050   proven star
+Marcus Bontempelli    MID        4  13   3721   proven (== SWEEP 15% shipped)
+Harry Sheezel         MID        3   4   8115   proven young (drafted GEN_FWD -> plays MID; switcher)
+Max Gawn              RUC       33  14   2538   proven ruck (== SWEEP 15% shipped; A-GAWN clearly > Briggs 2221)
+Harley Reid           MID        1   3   3726   first-year value, pk1 (NOT cratered; board rank 30, A4 PASS)
+Josh Ward             MID        7   5   1746   moderate pedigree (the "Ward" case; book == board now)
+Darcy Moore           KEY_DEF    8  11    209   decliner the shed fired on
+Taylor Goad           RUC       20   0    818   sat-out ruck -> no-games anchor
+Josh Smillie          MID        7   0   1301   sat-out mid -> no-games anchor
+Will Green            RUC       16   0    588   sat-out ruck -> no-games anchor
+
+PROVENANCE OF THE LIFT vs v2.5 baked (Daicos 7002 Bont 3084 Sheezel 7151 Gawn 2112 Reid 3549 Ward 1650
+Moore 198 Goad 723 Smillie 974 Green 536): the pick redenomination (+5.24%, factor 1.052440) + the L1
+young-GDEF transition credit. L1 is GEN_DEF-only and does not touch any of these 10 named players; their
+movement is the redenomination plus each player's own engine path. ALL-LEVERS-OFF still reproduces the v2.5
+baked panel byte-exact (RL_FWDRECAL=0 RL_YOUNG=0 RL_OVPX=0 RL_KPFFIX=0 RL_V7FORM=0 RL_W4_RUC=0 RL_FORMDECL=0
+RL_PVCFIT=0).

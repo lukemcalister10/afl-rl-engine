@@ -1,0 +1,75 @@
+{
+ "_doc": "AUTHORITATIVE per-year LAST NATIONAL PICK (the database's own national END) \u2014 the chaining offset for the rookie/pre-season drafts. Owner data law 2026-07-11: store pick numbers are DATABASE-UNIVERSE ordinals; redrafted/recycled players are excluded from the numbering and never consume it. First rookie pick of year Y = last_national_pick[Y] + 1; PSD chains after national, before rookie. last_national_pick = the store's own MAX National ordinal for the year (the database's ND end).",
+ "_provenance_summary": "RE-DERIVED 2026-07-11 (PICK-CONVENTION REMEDIATION (ii)) from the store's own National rows, under the owner data law. For every year last_national_pick = the store MAX National ordinal. 21/23 years are gapless (count==max, unambiguous). 2010 and 2011 have gaps (max>count): the gaps are excluded players (never consume numbering) and do NOT lower the database's ND end. This REVERTS the correction build's 2010->77 override (which used the real-world selection count \u2014 NOT the authority under the owner's law): 2010 = store max 93; 2011 = store max 89. No external/AFL-official numbering is consulted; the DATABASE is the authority per the owner's ruling.",
+ "convention": "rookie_effective_pick = last_national_pick[year] + rookie_slot; psd_effective_pick = last_national_pick[year] + psd_slot (PSD chains after national, before rookie). last_national_pick = database-universe ND end = store MAX National ordinal.",
+ "basis": "store MAX National ordinal per year (database ND end); reconciled vs COUNT below.",
+ "last_national_pick": {
+  "2003": 61,
+  "2004": 63,
+  "2005": 62,
+  "2006": 77,
+  "2007": 64,
+  "2008": 76,
+  "2009": 68,
+  "2010": 93,
+  "2011": 89,
+  "2012": 69,
+  "2013": 61,
+  "2014": 76,
+  "2015": 67,
+  "2016": 76,
+  "2017": 75,
+  "2018": 78,
+  "2019": 65,
+  "2020": 61,
+  "2021": 64,
+  "2022": 58,
+  "2023": 64,
+  "2024": 71,
+  "2025": 58
+ },
+ "reconcile_max_vs_count": {
+  "2010": {
+   "max": 93,
+   "count": 77,
+   "chosen": 93,
+   "why": "gaps = excluded players (owner law); database ND end = MAX; COUNT would invert rookie chaining below real national ordinals."
+  },
+  "2011": {
+   "max": 89,
+   "count": 80,
+   "chosen": 89,
+   "why": "gaps = excluded players (owner law); database ND end = MAX; COUNT would invert rookie chaining below real national ordinals."
+  },
+  "_note": "only 2010/2011 differ (max>count); every other year is gapless (max==count). Chosen basis = MAX (database ND end) for ALL years, uniformly."
+ },
+ "per_year_provenance": {
+  "2003": "store gapless national sequence 1..61 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2004": "store gapless national sequence 1..63 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2005": "store gapless national sequence 1..62 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2006": "store gapless national sequence 1..77 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2007": "store gapless national sequence 1..64 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2008": "store gapless national sequence 1..76 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2009": "store gapless national sequence 1..68 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2010": "store national ordinals 1..93 with 16 gap(s) at [4, 13, 18, 21, 31, 32, 39, 51, 58, 59, 61, 68, 69, 81, 87, 92] (count=77). Under the owner data law the gaps are EXCLUDED (recycled/redraft/out-of-database) players that never consume numbering; the database's ND END is the MAX ordinal present = 93. (The correction build's real-world override is NOT the authority under the owner's law.)",
+  "2011": "store national ordinals 1..89 with 9 gap(s) at [12, 35, 39, 50, 55, 62, 67, 84, 87] (count=80). Under the owner data law the gaps are EXCLUDED (recycled/redraft/out-of-database) players that never consume numbering; the database's ND END is the MAX ordinal present = 89. (The correction build's real-world override is NOT the authority under the owner's law.)",
+  "2012": "store gapless national sequence 1..69 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2013": "store gapless national sequence 1..61 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2014": "store gapless national sequence 1..76 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2015": "store gapless national sequence 1..67 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2016": "store gapless national sequence 1..76 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2017": "store gapless national sequence 1..75 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2018": "store gapless national sequence 1..78 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2019": "store gapless national sequence 1..65 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2020": "store gapless national sequence 1..61 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2021": "store gapless national sequence 1..64 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2022": "store gapless national sequence 1..58 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2023": "store gapless national sequence 1..64 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2024": "store gapless national sequence 1..71 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree.",
+  "2025": "store gapless national sequence 1..58 (count==max==last pick; database universe internally consistent). max==count so the MAX and COUNT bases agree."
+ },
+ "sources": [
+  "engine store rl_model_data.json National (ND) sequences \u2014 the DATABASE UNIVERSE (owner data law 2026-07-11: the database, not AFL official numbering, is the authority).",
+  "Owner data law 2026-07-11 (supersedes the audit's Q5 reading): store ordinals are database-universe with redraft exclusions; real-world selection counts are NOT the authority."
+ ]
+}

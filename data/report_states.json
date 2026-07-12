@@ -1,15 +1,15 @@
 {
  "control": {
-  "md5": "efea88e5",
-  "label": "BAKED v2.5 canonical (DPP strip; store e1b4d8bf)",
-  "matrix": "data/s4_matrix_baked_efea88e5.json",
-  "gates": "data/gates_snapshots/gates_efea88e5.json"
+  "md5": "7a07e369",
+  "label": "BAKED v2.8 (chapter-lever L1 young-GDEF transition credit + pick redenomination; store 04f38dad, board 9ecbe0fa, config 69ead79b944d, book-seal a19b3cb8; discount 15%; reds {A2,A3,A12}; owner-ruled 2026-07-11, baked 2026-07-12). ENGINE HEAD 7a07e369 IS SHARED WITH v2.7 (L1 is data-only, engine code untouched) — disambiguate by store 04f38dad / board 9ecbe0fa; verify by regeneration, never by filename (DECISIONS v93 §43).",
+  "matrix": "data/s4_matrix_baked_7a07e369.json",
+  "gates": "data/gates_snapshots/gates_7a07e369.json"
  },
  "previous": {
-  "md5": "c8051893",
-  "label": "CANDIDATE v2.1 games-ramp (PREVIOUS)",
-  "matrix": "data/s4_matrix_v21_c8051893.json",
-  "gates": "data/gates_snapshots/gates_c8051893.json"
+  "md5": "efea88e5",
+  "label": "BAKED v2.5 canonical (DPP strip; store e1b4d8bf) — prior CONTROL, shifted to PREVIOUS at the v2.8 bake (2026-07-12). Newest prior state with committed matrix + gates artifacts; v2.7 shares engine 7a07e369 and left no distinct snapshot.",
+  "matrix": "data/s4_matrix_baked_efea88e5.json",
+  "gates": "data/gates_snapshots/gates_efea88e5.json"
  },
  "states": {
   "8aed420a": "CONTROL (canonical)",
@@ -17,13 +17,14 @@
   "efc15c6c": "PROTOTYPE head+gradedfix (D8, wired nowhere)",
   "fb39d88a": "CANDIDATE v1 (D4, superseded)",
   "a9e1c14b": "PROTOTYPE head+FormA (D7)",
-  "c8051893": "CANDIDATE v2.1 games-ramp (CURRENT, this directive)",
+  "c8051893": "CANDIDATE v2.1 games-ramp (superseded)",
   "e15bafa9": "CANDIDATE v2.1 transient intra-session heads (superseded; values byte-identical to c8051893)",
   "db599058": "CANDIDATE v2.1 transient intra-session heads (superseded; values byte-identical to c8051893)",
-  "af1fc6aa": "CANDIDATE v2.2 concave-ramp + V0-floor (CURRENT, D12)",
-  "efea88e5": "BAKED v2.5 canonical (DPP strip final consolidation, store e1b4d8bf; A7 frozen-gate amendment; owner-authorised 2026-07-05)",
+  "af1fc6aa": "CANDIDATE v2.2 concave-ramp + V0-floor (D12)",
+  "efea88e5": "BAKED v2.5 canonical (DPP strip final consolidation, store e1b4d8bf; A7 frozen-gate amendment; owner-authorised 2026-07-05) — PREVIOUS as of v2.8",
   "375b11ef": "CANDIDATE W4 integration (multi-lever: fwd-recal + young + ruck#44+headroom + aging#45 + v7-form + KPF + deep-compress + PVC-fit; store e1b4d8bf)",
   "275aa2a5": "CANDIDATE W4+L1c+KPF-rebalance (2026-07-09; board bcd81363 — PVC fit ON, R3-non-compliant; SUPERSEDED by 4b08796c)",
-  "4b08796c": "CANDIDATE W4+L1c+KPF R3fix (2026-07-09; RL_PVCFIT held out per R3; board 799b2290 frozen v3.4; store e1b4d8bf; CURRENT)"
+  "4b08796c": "CANDIDATE W4+L1c+KPF R3fix (2026-07-09; RL_PVCFIT held out per R3; board 799b2290 frozen v3.4; store e1b4d8bf)",
+  "7a07e369": "BAKED v2.8 (chapter-lever L1 young-GDEF transition credit + pick redenomination; store 04f38dad, board 9ecbe0fa, config 69ead79b944d, book-seal a19b3cb8; discount 15%; CONTROL as of 2026-07-12). Engine head SHARED with v2.7 — the store 04f38dad and board 9ecbe0fa are the disambiguators; verify by regeneration (DECISIONS v93 §43)."
  }
 }

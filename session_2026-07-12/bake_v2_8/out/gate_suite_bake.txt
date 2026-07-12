@@ -1,8 +1,7 @@
-# ship_gates_check report — STATE: PROTOTYPE/UNREGISTERED @ 7a07e369 — NOT AN ENDORSED STATE — head 7a07e369 store 04f38dad config 69ead79b944d
-_Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._
-```
+boot-store guard (Guard 5) PASS  [ship_gates_check]  store 04f38dad == pinned 04f38dad (CANDIDATE chapter-lever build 2026-07-11 (branch claude/chapter-lever-discount-sweep-amqpfx; base = pick-convention remediation c02499a3, store UNCHANGED 04f38dad) — NOT BAKED, NOT tagged, NOT on main. L1 young-GDEF transition credit: ycred_table.json GEN_DEF rows strengthened (table md5 daaf5e49; engine code untouched, head 7a07e369) -> board re-pinned 8f3675f3 -> 9ecbe0fa; candidate book re-sealed a19b3cb8. L2 sustained-form weighting: measured NOT-SUPPORTED, nothing shipped. Baked lineage unchanged upstream (v2.7 = 8f8c00b).)
+config manifest (gate mode) LOADED  hash 69ead79b944d  (40 model vars pinned; ambient cleared)
 === STATE: PROTOTYPE/UNREGISTERED @ 7a07e369 — NOT AN ENDORSED STATE ===
-=== SHIP GATES BOARD — head 7a07e369 store 04f38dad config 69ead79b944d — suite 764a0d91 — 2026-07-11 ===
+=== SHIP GATES BOARD — head 7a07e369 store 04f38dad config 69ead79b944d — suite 764a0d91 — 2026-07-12 ===
 === CONFIG MANIFEST (gate mode): data/model_config.json hash 69ead79b944d291b — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===
 === THREE-COLUMN RULE (Luke, binding D10): CONTROL=efea88e5 · PREVIOUS=c8051893 · CURRENT=7a07e369 ===
 A1        PASS    | PASS    | PASS     Duursma>Uwland: 4429 vs 2746
@@ -34,12 +33,9 @@ D14c      PASS    | —       | PASS     KPP retention floor O1 depth-monotone =
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (454s)
-```
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (450s)
 
-## Supporting detail
-
-B1 per-cohort curves — CANDIDATE, regenerated this run (UNGATED — Luke eyeball channel):
+B1 per-cohort curves (UNGATED — Luke eyeball channel):
 | cohort | peakN | d1 | d2 | d3 | d4 | d5 | d6 | d7 |
 |---|---|---|---|---|---|---|---|---|
 | 2004 | 5 | 100 | 127 | 164 | 165 | 175 | 151 | 138 |
@@ -61,7 +57,7 @@ B1 per-cohort curves — CANDIDATE, regenerated this run (UNGATED — Luke eyeba
 | 2020 | 2 | 100 | 102 | 99 | 90 | 95 | 92 | — |
 | **AVG (the gated row — CANDIDATE)** | **4** | **100** | **115** | **120** | **129** | **127** | **119** | **106** |
 
-B5 FLOOR-SAVES table (n=63, aggregate lift=+2084 — printed every gates-board run, the new alarm surface):
+B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):
 | player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |
 |---|---|---|---|---|---|---|---|
 | Paddy Dow | Carlton | 9 | 14 | 112.4 | 165 | +151 | clear |
@@ -127,65 +123,4 @@ B5 FLOOR-SAVES table (n=63, aggregate lift=+2084 — printed every gates-board r
 | Nathan Broad | Richmond | 11 | 9 | 15.1 | 12 | +3 | clear |
 | Hunter Clark | St Kilda | 9 | 53 | 89.8 | 55 | +2 | clear |
 | Liam Ryan | West Coast | 9 | 28 | 30.6 | 30 | +2 | clear |
-
-## Board top-50 (A4 context) — CONTROL efea88e5 · PREVIOUS c8051893 · CURRENT 7a07e369
-| # | player | pos | CONTROL | PREVIOUS | CURRENT | D vs ctl | D vs prev |
-|---|---|---|---|---|---|---|---|
-| 1 | Harry Sheezel | MID | 7151 | 7207 | 8115 | +964 | +908 |
-| 2 | Nick Daicos | MID | 7002 | 7069 | 8050 | +1048 | +981 |
-| 3 | Luke Jackson | RUC | 6803 | 6986 | 7799 | +996 | +813 |
-| 4 | Tristan Xerri | RUC | 5795 | 5755 | 6649 | +854 | +894 |
-| 5 | Nasiah Wanganeen-Milera | MID | 5794 | 5961 | 6606 | +812 | +645 |
-| 6 | Josh Treacy | KEY_FWD | — | — | 6297 | — | — |
-| 7 | Max Holmes | MID | 5386 | 5499 | 6269 | +883 | +770 |
-| 8 | Zak Butters | MID | 5174 | 5225 | 6059 | +885 | +834 |
-| 9 | Errol Gulden | MID | 5256 | 5299 | 5983 | +727 | +684 |
-| 10 | Bailey Smith | MID | 4715 | 4773 | 5605 | +890 | +832 |
-| 11 | Finn Callaghan | MID | 4904 | 4952 | 5442 | +538 | +490 |
-| 12 | Lachlan Ash | GEN_DEF | 4611 | 4663 | 5187 | +576 | +524 |
-| 13 | Will Ashcroft | MID | 4768 | 4823 | 5155 | +387 | +332 |
-| 14 | Noah Anderson | MID | 4091 | 4131 | 4765 | +674 | +634 |
-| 15 | Caleb Serong | MID | 4170 | 4202 | 4701 | +531 | +499 |
-| 16 | Archie Roberts | GEN_DEF | 4668 | 4597 | 4577 | -91 | -20 |
-| 17 | Jai Newcombe | MID | — | — | 4495 | — | — |
-| 18 | Willem Duursma | MID | 4110 | 4160 | 4429 | +319 | +269 |
-| 19 | Tom Green | MID | 4424 | 4472 | 4391 | -33 | -81 |
-| 20 | Matt Rowell | MID | 3752 | 3779 | 4185 | +433 | +406 |
-| 21 | Ryley Sanders | MID | 3926 | 4212 | 4129 | +203 | -83 |
-| 22 | Sam Darcy | KEY_FWD | 4144 | 3978 | 4013 | -131 | +35 |
-| 23 | Jason Horne-Francis | MID | 3702 | 4199 | 3996 | +294 | -203 |
-| 24 | Isaac Heeney | MID | 3301 | 3327 | 3981 | +680 | +654 |
-| 25 | Darcy Wilmot | GEN_DEF | 3732 | 3774 | 3967 | +235 | +193 |
-| 26 | Brodie Grundy | RUC | 3314 | 3344 | 3959 | +645 | +615 |
-| 27 | Murphy Reid | GEN_FWD | 3742 | 3843 | 3953 | +211 | +110 |
-| 28 | Colby McKercher | MID | 3627 | 3814 | 3829 | +202 | +15 |
-| 29 | Riley Thilthorpe | KEY_FWD | 3702 | 3555 | 3818 | +116 | +263 |
-| 30 | Harley Reid | MID | 3549 | 3565 | 3726 | +177 | +161 |
-| 31 | Marcus Bontempelli | MID | 3084 | 3109 | 3721 | +637 | +612 |
-| 32 | Nick Watson | GEN_FWD | 3538 | 3579 | 3720 | +182 | +141 |
-| 33 | Mac Andrew | KEY_DEF | 3504 | 3530 | 3691 | +187 | +161 |
-| 34 | Finn O'Sullivan | MID | 3427 | 3495 | 3643 | +216 | +148 |
-| 35 | Nick Blakey | GEN_DEF | 3266 | 3287 | 3598 | +332 | +311 |
-| 36 | Sam Lalor | MID | 3337 | 3703 | 3574 | +237 | -129 |
-| 37 | Kysaiah Pickett | GEN_FWD | 3076 | 3031 | 3496 | +420 | +465 |
-| 38 | Luke Davies-Uniacke | MID | 2930 | 2952 | 3459 | +529 | +507 |
-| 39 | Callum Wilkie | KEY_DEF | — | — | 3416 | — | — |
-| 40 | Timothy English | RUC | 2916 | 2907 | 3349 | +433 | +442 |
-| 41 | Jordan Dawson | MID | 2758 | 2774 | 3312 | +554 | +538 |
-| 42 | Jordan Clark | GEN_DEF | 3007 | 3031 | 3307 | +300 | +276 |
-| 43 | George Wardlaw | MID | 3035 | 3033 | 3206 | +171 | +173 |
-| 44 | Levi Ashcroft | MID | 3028 | 3270 | 3193 | +165 | -77 |
-| 45 | Jagga Smith | MID | 2822 | 3188 | 3192 | +370 | +4 |
-| 46 | Josh Worrell | GEN_DEF | 2937 | 3236 | 3180 | +243 | -56 |
-| 47 | Bodhi Uwland | GEN_DEF | — | — | 3176 | — | — |
-| 48 | Logan Morris | KEY_FWD | 3018 | 2843 | 3171 | +153 | +328 |
-| 49 | Jack Sinclair | GEN_DEF | — | — | 3140 | — | — |
-| 50 | Aaron Cadman | KEY_FWD | 2970 | 2818 | 3122 | +152 | +304 |
-
-## C1/C2 DEFINITION PROPOSAL (for supervisor ruling)
-Rebuild the walk-forward book (s4 matrix protocol, as-of values, only <=T data) twice more:
-(a) NAIVE BASELINE: last-2-season era-adjusted avg -> value via simple age curve + position multipliers;
-(b) ORIGINAL V1 PICK MODEL: value = PVC(effective pick) with the V1 age/tenure profile.
-Headline metrics, engine must beat both on: (1) within-player GATE-1 protocol (WF good/bust separation,
-leakage-matched); (2) rank correlation of as-of value vs realized fwd best-3 production (real_mat);
-(3) cohort growth-law shape error vs the realized production curve. Each becomes C1x/C2x scripted lines.
+report: /home/user/afl-rl-engine/session_2026-07-02/ship_gates_report_7a07e369.md  md5=efeeaa00
