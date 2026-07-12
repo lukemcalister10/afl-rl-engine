@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v27 2026-07-12 (D3 RULED — law stands as recorded. D2 understanding CONFIRMED (composition-weighted). D1: derivation timing VERIFIED post-correction; steps = PAVA pooling + real top-5 concentration; pin = presentation-only; REC = (b) + declared smoothing finish. Awaiting D1 letter + membership word)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v28 2026-07-12 (THE v2.9 SLATE COMPLETE — all seven ruled; the ruling card is item 17)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -196,6 +196,24 @@
     ADOPTION REC: (b) derived LEVELS + a DECLARED final smoothing pass over the isotonic steps
     (monotone preserved, deviations declared). AWAITING: his D1 letter + the membership-stability
     word ("agreed" = facts-based list + edit tripwire; labels stay as modeling inputs everywhere).
+
+17. THE v2.9 RULING CARD — COMPLETE (owner-worded 2026-07-12, across the sitting):
+    D1 PICK CURVE = (b) FULL ADOPTION of the derived levels + a DECLARED final smoothing pass
+      over the isotonic steps (monotone preserved, deviations declared) — "B with smoothing".
+    D2 SEAM TABLE = as specced, no added columns; composition-weighted identity confirmed in the
+      owner's own words.
+    D3 G-Y0 = ADVISORY at v2.9, binding at the following seam if clean (owner: "happy to trust
+      you"); the LAW's wording stands as recorded (V0 identity + bounded y0→wk1→y1/2 chain).
+    D4 SSP LINE = HOLD until the scarcity leg lands in-chapter, then the owner's word
+      (scarcity-empty ⇒ adopt ~51).
+    D5 DIAL = 14 ("for now. Can always change later").
+    D6 AGE CURVE = (A) adopt, GATED on the walk-forward G-COHORT re-measure ("trust the data,
+      even when I don't like it").
+    D7 POOL = (a) FULL EXCLUSION + MEMBERSHIP STABILITY AGREED (facts-based training list: entry
+      door + debut window; edit tripwire; labels stay as modeling inputs everywhere).
+    EXECUTION: the ONE COMBINED CANDIDATE per the 2026-07-12 synthesis (one refit · one cohort
+    re-measure · one gate suite · per-lever attribution · emmett named · the trio entry-switch
+    rides · the nonsense-review trigger armed). Full Tier-1 ladder → bake v2.9.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
