@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v23 2026-07-12 (v2.8 BAKED; UI ON MAIN) (FABLE WAVE COMPLETE — #63+#64 prescreened PASS; synthesis filed; item-11 counts corrected: MSD trains 29 players/114 rows)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v24 2026-07-12 (MIGRATION MERGED #65 → main 3c65829e, store b0c39d78, board de4baef9, UI re-pinned — supervisor-verified; v2.8 tag unmoved) (wave complete v23)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -204,8 +204,10 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
   registers, couriered at fire time).
 
 ## COMPLETION PATH (order owner-ruled)
-v2.8 bake → ID-primary migration (authoritative_universe.csv; imports real DOBs; name→ID resolver at
-the score boundary; clean scope IN FLIGHT, trio deferred v20) → UI ✅ MERGED 2026-07-12 (#62 →
+v2.8 bake → ID-primary migration ✅ MERGED 2026-07-12 (#65 → main 3c65829e, two-parent merge,
+supervisor-verified: store b0c39d78 · board de4baef9 · boot pin moved · UI bundle re-pinned
+EXPECTED_BOARD de4baef9 · tag v2.8 unmoved · 94 declared movers · trio deferred v20 · resolver
+engine/rl_after/id_resolver.py on main) → UI ✅ MERGED 2026-07-12 (#62 →
 main 11f85fb9, merge commit, supervisor-verified: two parents fdc869e/7b9876d · branch commits
 preserved · merge fence = ui/** only 24 files · tag v2.8 unmoved; remaining UI-adjacent work =
 export fields at the next export job + the +1/+2 phantom entries at v2.9) → UI spec references
