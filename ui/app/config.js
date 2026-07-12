@@ -3,8 +3,11 @@ window.MD = window.MD || {};
 
 MD.config = {
   /* Ring-fence: the UI refuses to render any board whose md5 head != this expected board id
-     (md5(rl_app_data.json) == the pinned board id; the UI analogue of Guard 5, fail-closed). */
-  EXPECTED_BOARD: "9ecbe0fa",
+     (md5(rl_app_data.json) == the pinned board id; the UI analogue of Guard 5, fail-closed).
+     Moved 9ecbe0fa -> de4baef9 at the ID-primary migration (2026-07-12): the UI board pin tracks
+     the shipped board, same as data/expected_boot.json 'board'; the refreshed board_view bundles
+     carry srcmd5 de4baef9 so the screens render the migrated values instead of fail-closing. */
+  EXPECTED_BOARD: "de4baef9",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
