@@ -21,7 +21,10 @@
    (SSP older rucks: pedestal 92, no capital, priced on thin bar-margins)? TENSION: the owner's
    backup-ruck SCARCITY philosophy (insurance value) vs the bar-margin construction — AND the v2.9
    SSP line (92→~51) + PVC option (b) would WIDEN this gap. TRIGGER: v2.9 batch, alongside the SSP
-   line, with the owner's scarcity rationale in hand.
+   line, with the owner's scarcity rationale in hand. ADDED 07-11: the sweep shows the prior-cap
+   MISBEHAVING under rate changes (louis-emmett -20/-22% at <=13% via the cap — artifact, not
+   football; option (b) removes the mechanism) => the DISCOUNT RATE ruling is SEQUENCED to v2.9
+   with (b); v2.8 bakes at 15% (supervisor rec, sweep-proven safe to 12 whenever taken).
 5. SUSPECTED PLACEHOLDER BIRTH YEARS (owner, 07-11): riley-onley · leon-kickett · fred-rodriguez ·
    nick-driscoll — ALL _by 2000, all 0-game old rookie-pick rows (pattern = default year, not data).
    TRIGGER: named validation rows in the ID-MIGRATION build (real DOBs import from
