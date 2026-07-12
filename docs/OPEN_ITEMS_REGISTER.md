@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v15 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 14 RESOLVED — assets are next-EOY-ND picks, placement fix to +1/+2 at v2.9)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v16 2026-07-12 (v2.8 BAKED; lanes open) (item 14 CLOSED — owner confirmed: board=player ranking, picks on the trade desk, phantom entries on +1/+2)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -139,9 +139,11 @@
     ⇒ the 30 assets ARE the next-EOY-ND picks — correctly ND-scaled (no mispricing) — and the
     fix is PLACEMENT: phantom entries on the +1/+2 lenses only, off the current ladder; rides
     v2.9 with item 12 (post-discount-ruling; +1/+2 values want the unwound discount).
-    SUPERVISOR ASSUMPTION FLAGGED for owner correction: the picks remain PRICED AND TRADEABLE
-    today (present value; the trade desk keeps them) — the ruling moves them off the current
-    LADDER display, it does not delete the assets.
+    ASSUMPTION CONFIRMED (owner-worded 2026-07-12): "picks are tradeable for the trade desk but
+    should not be on the current board for ranking players. That is just a player ranking. It
+    enters the future lens to represent the player it will become." — current board = PLAYER
+    ranking only · picks priced/tradeable on the trade desk · the +1/+2 phantom entry stands in
+    for the future player.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
