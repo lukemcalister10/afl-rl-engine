@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v13 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 12 — future-lens pick-asset lines + lens conservation, owner-worded; execute v2.9 post-discount-ruling)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v14 2026-07-12 (v2.8 BAKED; lanes open) (NEW: cycle-year data law recorded (item 13) · pick-asset identity question (item 14) · item 12 appearance rule corrected)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -104,11 +104,13 @@
     that to be flattened") — the should-ordinal-carry-signal question is CLOSED unopened; do NOT
     add it to the item-1 investigation.
 
-12. FUTURE-LENS PICK-ASSET LINES + LENS CONSERVATION (owner-worded 2026-07-12): each pick asset
-    is ONE line across every lens — discounted PVC pre-exercise, then the expected class
-    trajectory (year-0/1 value via the G-Y0/seam identity) post-conversion — and each future
-    lens carries the NEW pick classes existing in that year (e.g. the 2027-EOY and 2028-EOY
-    picks on the +1 board). PRINCIPLE (owner): "-2 through today through +2 lens should have
+12. FUTURE-LENS PICK-ASSET LINES + LENS CONSERVATION (owner-worded 2026-07-12; APPEARANCE RULE
+    CORRECTED same day on the owner's Duursma example): a pick line appears ONLY on the lens
+    years where its class is in the league but the players are not yet individually known —
+    e.g. 2026-EOY ND pick 1 appears on +1 and +2 ONLY, never the current lens; once a class is
+    drafted the actual players carry the value and the line retires (Duursma, 2025 pick 1,
+    appears first on the CURRENT lens as a player). The current lens shows the current cycle's
+    remaining unexercised picks. PRINCIPLE (owner): "-2 through today through +2 lens should have
     similar-ish total value on each board logically" — value converts (classes enter as picks,
     players fade out the bottom), it doesn't vanish; this is the year-0 continuity law rendered
     on screen and doubles as a lens-total quasi-conservation DIAGNOSTIC (caveats declared:
@@ -117,6 +119,22 @@
     discount ruling (lens values of unexercised picks are keyed off the dial being re-ruled);
     engine/export-side; UI-transparent (rows flow through like existing pick assets). Past-lens
     pick reconstruction deliberately OUT of scope unless the owner asks.
+
+13. CYCLE-YEAR / COHORT DATA LAW (owner-worded 2026-07-12; ENGINE-IMPLEMENTED but previously
+    UNRECORDED in the doc pack — recorded here, folds to the schema/CONSTRAINTS at next touch):
+    "The 2025 draft cycle goes from ND, RD/PSD, SSP, 2026 MSD" — one cohort = everyone first
+    eligible to play AFL in the same season, regardless of which calendar year their draft fell
+    in (duursma ND-2025 · blamires · artemis = one cohort). Engine implementation verified:
+    rl_model.py:60 _cycle_year (MSD = year−1) · :63 debut (only MSD debuts in its draft year;
+    ND/RD/SSP/PDA/PDN/PDS/IRE/UNR debut year+1).
+14. PICK-ASSET IDENTITY QUESTION (supervisor-found 2026-07-12 while verifying item 12/13; OWNER
+    WORD NEEDED): the board's 30 pick assets are GENERIC picks 1–30 valued off the NATIONAL PVC
+    curve, label year "rolls with the view" (rl_export.py:298) — the export does not know which
+    draft they belong to. Under the owner's cycle law the current cycle's only remaining picks
+    are the 2026 MSD picks — which the engine itself prices at a flat ~pick-60 equivalent — so
+    EITHER today's assets are MSD picks on the wrong (ND) scale, OR they are next-EOY-ND picks
+    that per item 12 belong on the +1 lens, not the current board. Owner rules which they
+    represent; the fix rides the v2.9 PVC/pick-unfreeze ruling (DECISIONS §46) either way.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
