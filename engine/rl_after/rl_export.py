@@ -57,6 +57,21 @@ if os.path.exists('pick_redenomination.json'):
     _frozen={int(k):v for k,v in _rd['frozen_v34_pvc_baked_v2_7'].items()}
     PVC={k:int(round(_frozen[k]*_F)) for k in PVC if k in _frozen}
     print('PICK RE-DENOMINATION: shipped PVC = frozen v3.4 x %.4f  (pick1 %d->%d)'%(_F,_frozen[1],PVC[1]))
+# ==== (g) NUMÉRAIRE ASSERT — STANDING LAW (owner ruling 2026-07-12, register v30 item 17) ================
+# "PICK 1 = 3000 IS THE NUMÉRAIRE." L7 re-bases the whole board ÷1.0524 to this anchor; thereafter any board
+# with pick-1 ≠ 3000 HALTS (future scale drift re-bases the CURRENCY to the anchor, never the anchor to the
+# drift). The guard is auto-active in the numéraire world: a legacy ×1.0524 redenomination (factor≠1.0) is
+# the PRE-L7 state and only warns (so the current candidate is not broken); once L7 neutralises the sidecar
+# (factor→1.0 / picks = the adopted curve at 3000) or RL_NUMERAIRE=1, the assert enforces 3000 and HALTS.
+_legacy_redenom = ('_F' in dir() and abs(_F-1.0)>1e-9)
+if _legacy_redenom and not os.environ.get('RL_NUMERAIRE'):
+    print('NUMÉRAIRE GUARD: legacy ×%.4f currency active (pick1=%d) — PRE-L7 board; guard dormant until re-base'%(_F,PVC[1]))
+else:
+    if PVC[1] != 3000:
+        raise SystemExit('NUMÉRAIRE HALT (register v30 item 17): shipped pick-1 = %d ≠ 3000. A numéraire '
+                         'board MUST anchor pick-1 to 3000 — re-base the CURRENCY to the anchor (L7 ÷ the '
+                         'scale drift), never the anchor to the drift. Refusing to write the board.'%PVC[1])
+    print('NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (standing law, register v30 item 17)')
 expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PICKEQ=g['PICKEQ']; MECH_STATS=g['MECH_STATS']
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
 val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']

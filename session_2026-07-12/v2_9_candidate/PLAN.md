@@ -5,6 +5,19 @@ PLAN — lever order + assert order"). HALT-not-warn throughout. One combined ca
 one cohort re-measure, one gate suite, per-lever attribution (G-ATTR). **Candidate only — nothing
 here tags, bakes, or merges; the full Tier-1 ladder sits above this job.**
 
+## v30 UPDATE (owner ruling 2026-07-12; base advanced f93de227 → main f35f016, register v30)
+- **PIN RESOLVED → L7 THE NUMÉRAIRE RE-BASE.** "PICK 1 = 3000 is the numéraire." Open-gate #1 (pin
+  3000 vs 3157) is RULED: the board re-bases via one uniform **÷1.0524** (players + picks + anchors +
+  absolute-SCAR constants) so pick-1 = 3000. **L7 is the refit's FINAL step.** Built + verified this
+  session (`L7_FINDINGS.md`, `scripts/l7_rebase.py`, `out/numeraire_requote_table.md`); standing
+  numéraire assert wired (`rl_export.py` (g) + `BAKE_CHECKLIST.md` §3). Per-lever attribution reports
+  in re-based units.
+- **L5 RULED:** later-entry record = **type SSP + re-entry year + pick None** (SSP is pickless; the
+  later entry carries no pick). Training membership follows the facts-based law, out on the
+  debut-window leg (named). The full pickless switch is the intent — completes the half-state I found.
+- **L6 STOP stands.** **Candidate PR at the RETURN, not mid-job** (v30 (iv)).
+- The four prior answers (D1(b)/D5=14/D6=A/D7=a) ratified.
+
 ## BASE VERIFICATION (done, first action)
 - Full-URL ls-remote `github.com/lukemcalister10/afl-rl-engine`:
   - `main = f93de227f63f9265d66f21206f5d11118ed11baa` ✓ (== directive assertion)
