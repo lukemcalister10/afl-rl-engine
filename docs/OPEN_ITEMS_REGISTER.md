@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v30 2026-07-12 (RULED: RE-BASE — PICK 1 = 3000 IS THE NUMÉRAIRE, standing law. L7 re-base joins the v2.9 candidate; the v29 3157 interpretation SUPERSEDED by the quotation ruling; L5 fields ratified)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v31 2026-07-12 (READS SEALED. Candidate checkpoint verified (L1/L4/L7 ✓, L2 premise REFUTED — dial 14 stands decoupled, safe ≥14; RUC_PRIOR_CAP lift = PROPOSED, rides the L6/scarcity ruling). Steer: L3 next)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -234,6 +234,30 @@
     EXECUTION: the ONE COMBINED CANDIDATE per the 2026-07-12 synthesis (one refit · one cohort
     re-measure · one gate suite · per-lever attribution · emmett named · the trio entry-switch
     rides · the nonsense-review trigger armed). Full Tier-1 ladder → bake v2.9.
+
+18. v2.9 MID-CHAPTER FINDINGS (checkpoint 9d7984f, supervisor-verified 2026-07-12):
+    (a) READS SEALED (owner word) — the board-view gate is armed; numbers keep routing through
+        the supervisor until the ladder's view rung.
+    (b) L2 DECOUPLED: the "L1(b) removes the prior-cap artifact" claim is REFUTED by the build's
+        own assert-order proof (emmett 913 at 0.13 with AND without adoption). DIAL 14 STANDS —
+        the banked sweep proves the artifact bites only at ≤13, so 14 is safe on its own merits;
+        the owner's "14 for now" was never premised solely on the rescue claim. CONSEQUENCE: any
+        FUTURE drop below 14 requires the cap dealt with first. RUC_PRIOR_CAP LIFT = a PROPOSED
+        mechanism (unruled; do not ship) riding the L6/scarcity ruling moment, where emmett's
+        corner is already the named case.
+    (c) TRIO HALF-APPLIED: the loaded engine already carries a partial trio override (SSP
+        pedigree, pick capital retained; perez ev=14) — the store-vs-engine gap the register
+        didn't see; RESOLVED by the ruled v30 fields (SSP · re-entry year · pick None); the L5
+        completion reconciles it.
+    (d) L1 REAL-ADOPTION PATH: RL_PVCFIT=1 moves nothing (draftval frozen); true adoption =
+        the _PVC0 swap + V0/RUC rebuild, riding the L4 refit per the one-candidate law.
+    (e) L7 VERIFIED at checkpoint: re-quote table round-trips exactly (A-BONT 3084 · G-CONVEX
+        180140/178224/107773 == the pre-scale v1.6 values · SCALE back to the baked-v2.7 4.45);
+        the numéraire assert wired + unit-tested, dormant on today's board.
+    STEER: L3 next (s(age) wiring + the ONE walk-forward G-COHORT re-measure — the gate; watch
+    butters −1.0%). BUILD-BUDGET NOTE: the build flagged thin context — a mid-L3 stop at a
+    committed checkpoint triggers a CONTINUATION seat (fresh chat, directive pinned to the
+    branch head); the branch is the durable state.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
