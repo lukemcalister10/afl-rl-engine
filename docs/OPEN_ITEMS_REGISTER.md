@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v11 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 11 RULED (a) — MSD out of the training pool at v2.9; football-nonsense review trigger)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v12 2026-07-12 (v2.8 BAKED; lanes open) (NEW: UI export fields parked onto the next export job; item 11 ruled (a) v11)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -145,7 +145,9 @@ mostly landing.
 - AGE-CURVE for risers: research DONE (s(age) linear 0.86@22→0@29); adoption gated per above.
 - JUNE "awaiting Luke" items (0.85 lock · mature-age verdicts · 805 eyeball): grade against the
   post-v2.4-2.7 record before surfacing; only survivors reach the owner.
-- lti_reg export stamp (barker/thredgold): rides the NEXT export-touching job.
+- lti_reg export stamp (barker/thredgold) + UI EXPORT FIELDS (vPrev · vRaw · levers — one-line
+  engine export additions; the built UI displays light up with no further UI work, per the #62
+  return): ride the NEXT export-touching job, bundled.
 - EVIDENCE-BRANCH HOMING (~30 unmerged branches hold the record): one token filing job post-v2.8;
   THEN those branches sweep.
 - PR #60 disposition + prebake-v2.4-anchor keep/delete: at the v2.8 close.
