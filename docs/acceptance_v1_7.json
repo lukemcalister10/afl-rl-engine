@@ -1,0 +1,226 @@
+{
+  "version": "1.7",
+  "date": "2026-07-12",
+  "authority": "CONSTRAINTS_v1.7.md (human-readable master; regenerate this file on any change there; status strings use underscores)",
+  "status_values": [
+    "BINDING",
+    "PENDING_OWNER",
+    "ADVISORY",
+    "OWNER_ON_SIGHT"
+  ],
+  "guards": [
+    {
+      "id": "G-COHORT",
+      "metric": "class_year_sum_averaged_across_classes",
+      "construction": "for each draft class: SUM of that class's players' values in career year Y; average those sums across sampled classes; one figure per career year",
+      "construction_provenance": "OWNER_WORDED_2026-07-08; re-confirmed in the owner's own words during the v4.1 remediation (WD-1 closed); UPHELD against the audited W4 breach same day",
+      "owner_rationale": "market no-arbitrage (owner 2026-07-08): if year 1-2 players were going to be worth 50% more 2-3 years later, one would simply hold them; younger-player value must rise to compensate",
+      "per_capita_reading": "OVERRULED_do_not_use (retired-supervisor carry; owner-overruled 2026-07-08)",
+      "years_tested": "each_of_year_4_5_6_individually",
+      "denominator": "min(year_1_figure, year_2_figure) \u2014 owner-picked from symmetric options 2026-07-08 (WD-1b closed; if year-2 drops below year-1, year-2 becomes the denominator)",
+      "book": "walk_forward_leak_free",
+      "fitted_board_reading_invalid": true,
+      "basis_assertion": "CODE READING ONLY \u2014 walk-forward property (model scoring cohort year T sees only data <= T) and class-sum construction asserted from the script's code; numeric fingerprint aid RETIRED 2026-07-08 (the old 139/111 signature equals the genuine walk-forward B1 row 138.9/111.0 \u2014 non-discriminating; do not resurrect)",
+      "bound_hard": 1.3,
+      "guide_band": [
+        1.2,
+        1.25
+      ],
+      "fix_direction": "raise_year1_aggregate_never_cut_young",
+      "remediation_doctrine": "owner-ruled 2026-07-08: NO blanket young multiplier to tick the box; investigate WHY younger players are under-valued relative to who they become 3-4 years later and rectify the identified mechanism; the retired 1.19x uniform sit-out lift stays retired",
+      "status": "BINDING"
+    },
+    {
+      "id": "G-MONO",
+      "metric": "pick_value_curve_monotonicity",
+      "requirements": [
+        "no_inversions",
+        "no_bin_cliffs",
+        "young_ruck_fade_smooth_no_pk20_21_step"
+      ],
+      "status": "BINDING"
+    },
+    {
+      "id": "G-FLOOR",
+      "alias": "B5",
+      "metric": "first_year_unproven_value_floor",
+      "rule": "never_crater",
+      "status": "BINDING",
+      "dispensations_2026_07_11": "two one-off owner waivers recorded: <=5 SCAR on <=45 rows; the NAMED-16 <=13 SCAR (list committed on the remediation branch). Gate unmoved."
+    },
+    {
+      "id": "G-PEAK",
+      "alias": "B1",
+      "metric": "individual_survivor_peak_years4_6",
+      "max_drop": 0.02,
+      "status": "BINDING"
+    },
+    {
+      "id": "G-CONVEX",
+      "metric": "young_convexity_premium",
+      "coverage_definition": "engine_gap / implied_gap per young cohort (engine option-value premium vs realized-outcome-implied premium); floor locks the under-priced pocket young RUC picks 4-10 at 0.61; metric prices SYNTHS - candidates delegating synths byte-exactly cannot move it",
+      "thresholds": {
+        "young_floor_band_aggregate_scar": {
+          "le21": 189579,
+          "22_24": 187563,
+          "25_26": 113420
+        },
+        "convexity_coverage_band": [
+          0.6,
+          1.6
+        ]
+      },
+      "thresholds_provenance": "supervisor_carried_from_rev117_supplement (WD-3); cold audit 2026-07-08 cross-checked PR #43 (claude/young-convexity-audit-bxevtd): VERBATIM MATCH, no discrepancy; x1.0524 re-denominated 2026-07-11 (picks scale with the currency, owner-ruled)",
+      "status": "ADVISORY",
+      "escalation": "remains ADVISORY until an EXPLICIT owner ruling makes it BINDING (owner-confirmed 2026-07-08; no automatic escalation). Scored as diagnostics at CA-5."
+    },
+    {
+      "id": "G-DATA",
+      "metric": "data_integrity_suite",
+      "components": [
+        "five_single_source_guards",
+        "panel_10_of_10",
+        "book_seal_B3",
+        "board_parity_nonmovers_B4"
+      ],
+      "behavior": "halt_not_warn",
+      "status": "BINDING"
+    },
+    {
+      "id": "G-ATTR",
+      "metric": "per_lever_attribution",
+      "scope": "multi_lever_builds",
+      "rule": "every_lever_delta_separable_else_fail",
+      "status": "BINDING"
+    },
+    {
+      "id": "G-Y0",
+      "metric": "year0_cohort_identity",
+      "construction": "weighted-mean position-conditioned V0 == derived PVC per pick band (deviations net zero); y0 pick-sum -> wk1 cohort sum -> y1/2 sums chain with bounded steps, walk-forward",
+      "fix_direction": "raise_young_side_never_cut_survivors_never_bend_derived_curve",
+      "first_measurement": "the v2.9 seam table",
+      "status": "PENDING_OWNER",
+      "provenance": "owner-worded 2026-07-11; ratification at the v2.9 ruling session"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "A-BONT",
+      "player_key": "marcus-bontempelli",
+      "baseline": 3246,
+      "direction": "up",
+      "min_delta_pct": 10.0,
+      "status": "BINDING",
+      "baseline_note": "x1.0524 re-denominated 2026-07-11 (pre-scale 3084)"
+    },
+    {
+      "id": "A-GAWN",
+      "player_key": "max-gawn",
+      "comparator_key": "kieren-briggs",
+      "comparator_note": "corrected 2026-07-08 from the drifted 'toby-briggs' (not a player - owner; origin unknown). v2.5 baseline ordering was INVERTED (Gawn 2112 < Briggs 2145, audit-verified)",
+      "rule": "clearly_above",
+      "status": "BINDING",
+      "magnitude": "OWNER_ON_SIGHT"
+    },
+    {
+      "id": "A-CAM",
+      "player_key": "jeremy-cameron",
+      "key_note": "corrected 2026-07-09 from the drifted charlie-cameron (owner: Charlie has never been an anchor; Jeremy verified in store; charlie-cameron is a distinct GEN_FWD untouched by anchor logic)",
+      "direction": "up",
+      "min_delta_pct": null,
+      "status": "OWNER_ON_SIGHT"
+    },
+    {
+      "id": "A-DARCY",
+      "player_key": "sam-darcy",
+      "direction": "up",
+      "attribution_required": [
+        "young_convexity_ceiling",
+        "kpf_speculative",
+        "availability_layer"
+      ],
+      "rule": "no_layer_clips_ceiling",
+      "status": "OWNER_ON_SIGHT",
+      "availability_note": "UPDATED v1.7: LTI/availability machinery EXISTS (v2.7-round injury build). v2.8 attribution: availability sole suppressor (avail_nerf -677, 2026 proration, lti_return_hc 0.0); cvx and KPF-spec absent; no ceiling clip; unwinds 2027."
+    },
+    {
+      "id": "A-DUUR",
+      "player_key": "willem-duursma",
+      "direction": "up_via_year1_cohort_lift",
+      "governed_by": "G-COHORT",
+      "status": "OWNER_ON_SIGHT"
+    },
+    {
+      "id": "A-PEAK",
+      "player_keys": [
+        "zak-butters",
+        "max-holmes"
+      ],
+      "rule": "held_not_crushed",
+      "governed_by": "G-PEAK",
+      "status": "BINDING"
+    },
+    {
+      "id": "A-FADE",
+      "player_keys": [
+        "stephen-coniglio",
+        "taylor-adams",
+        "mark-blicavs",
+        "zach-guthrie"
+      ],
+      "direction": "down",
+      "threshold": "direction_only, CLARIFIED (owner 2026-07-08): players already at the scrap floor satisfy FLAT (no further drop required); attributed floor-basis effects do not fail it; escalate ONLY if the decline lever is absent / failed to fold (numeric threshold closed as moot, OQ-E)",
+      "status": "BINDING"
+    },
+    {
+      "id": "A-PAIRS",
+      "pairs": [
+        [
+          "max-gawn",
+          "kieren-briggs"
+        ],
+        [
+          "young_gun_tbd",
+          "marcus-bontempelli"
+        ]
+      ],
+      "status": "OWNER_ON_SIGHT",
+      "note": "second pair PENDING - young_gun_tbd is unresolved; auditors skip it and report the skip"
+    }
+  ],
+  "flags": [
+    {
+      "id": "F-GENFWD",
+      "scope": "GEN_FWD_picks_41_70",
+      "prior_multiple": 2.14,
+      "rule": "may_compress_with_data"
+    },
+    {
+      "id": "F-MID13",
+      "scope": "MID_picks_1_3",
+      "prior_multiple": 2.09,
+      "rule": "owner_ruling_required_never_auto_cut",
+      "rationale": "thin_elite_cell + monotonicity_risk + year1_denominator_member_cutting_raises_G-COHORT_ratio"
+    },
+    {
+      "id": "F-YOUNG",
+      "scope": "high_pick_elite_young",
+      "rule": "cuts_need_data_and_owner_ruling_no_big_wipe",
+      "subordinate_to": [
+        "G-FLOOR",
+        "G-COHORT_denominator"
+      ]
+    }
+  ],
+  "flag_general_rule": "over-priced flags on YOUNG/year-1 cohorts are subordinate to G-FLOOR and the G-COHORT denominator; actionable over-priced flags live on the OLDER/lower-pick end",
+  "notes": [
+    "player_key values follow the engine's key convention (e.g. isaac-kako); a build must verify each key against the source store before asserting, and report any key mismatch rather than guessing. (The toby-briggs drift, caught by exactly this rule at the 2026-07-08 audit, is the standing example.)",
+    "Anchors with min_delta_pct null pass on direction only; magnitude is owner-ruled on sight (Q3 closed). Owner reads are challengeable per CORE MISSION; only the owner waives a read.",
+    "WD-1/WD-1b closed 2026-07-08 and re-confirmed in the owner's own words during the v4.1 remediation: class-sum construction (per-capita overruled); denominator = the LOWER of the year-1 and year-2 figures - the auditor reports both figures and tests against the minimum.",
+    "G-COHORT UPHELD 2026-07-08 against the audited W4 breach (y4 142.4 / y5 140.8 / y6 131.7 vs hard 130, den = y1); remediation doctrine in the guard entry; candidate status lives in HANDOVER.",
+    "Owner rulings 2026-07-08: R0 yes (G-CONVEX advisory) - R3 hold out CONFIRMED post-units-correction (RL_PVCFIT=0 at bake; re-derivation queued 'with a view to fixing it') - A-FADE clarified (flat-at-scrap satisfies) - WD-2/WD-3/WD-4 ratified - OQ-A/B/C/D ratified, OQ-E moot, OQ-F deferred.",
+    "The auditor ASSERTS the class-sum construction and the walk-forward property BY READING THE SCRIPT'S CODE - any other basis means the guard is measured-on-the-wrong-basis (equivalent to unmeasured). The numeric fingerprint aid is RETIRED (non-discriminating; see the guard entry).",
+    "Label map (2026-07-08 rename): W-1/W-1b/W-2/W-3/W-4 are now WD-1/WD-1b/WD-2/WD-3/WD-4; R-A..R-F are now OQ-A..OQ-F. Older couriered docs may carry the old labels.",
+    "v1.7 (2026-07-12, at the v2.8 tag): re-denominations x1.0524 folded (A-BONT 3246; G-CONVEX floors); A3 legend 75%; G-FLOOR dispensations recorded; replacement bars = OWNER ARTIFACTS with recorded rationale (registry Part 1b; the 07-11 derivation numbers rejected); G-Y0 PROPOSED; travaglia read WAIVED 07-11 (A12 red stands data-honest); kysaiah read WAIVED 07-11."
+  ]
+}
