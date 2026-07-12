@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v14 2026-07-12 (v2.8 BAKED; lanes open) (NEW: cycle-year data law recorded (item 13) · pick-asset identity question (item 14) · item 12 appearance rule corrected)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v15 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 14 RESOLVED — assets are next-EOY-ND picks, placement fix to +1/+2 at v2.9)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -133,8 +133,15 @@
     draft they belong to. Under the owner's cycle law the current cycle's only remaining picks
     are the 2026 MSD picks — which the engine itself prices at a flat ~pick-60 equivalent — so
     EITHER today's assets are MSD picks on the wrong (ND) scale, OR they are next-EOY-ND picks
-    that per item 12 belong on the +1 lens, not the current board. Owner rules which they
-    represent; the fix rides the v2.9 PVC/pick-unfreeze ruling (DECISIONS §46) either way.
+    that per item 12 belong on the +1 lens, not the current board. RESOLVED (owner-worded 2026-07-12): "The 2026 msd picks have
+    already been used… The next draft is the ND after the season, those players will only be
+    able to play in 2027. So the phantom entry for those picks should be in the +1 and 2 lens."
+    ⇒ the 30 assets ARE the next-EOY-ND picks — correctly ND-scaled (no mispricing) — and the
+    fix is PLACEMENT: phantom entries on the +1/+2 lenses only, off the current ladder; rides
+    v2.9 with item 12 (post-discount-ruling; +1/+2 values want the unwound discount).
+    SUPERVISOR ASSUMPTION FLAGGED for owner correction: the picks remain PRICED AND TRADEABLE
+    today (present value; the trade desk keeps them) — the ruling moves them off the current
+    LADDER display, it does not delete the assets.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
