@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ValueBoard · Matchday</title>
+<!-- MATCHDAY UI — implementation of docs/ui_styles/theme_03_matchday_FINAL/ (LOCK = visual law).
+     TIER 3 (never bakes; no value change). Pure view: reads the derived board READ-ONLY, computes no price.
+     Dark-only (Q-THEME a). Renders from file:// and when served. -->
+<link rel="stylesheet" href="styles/matchday.css">
+</head>
+<body>
+<div id="root"></div>
+
+<!-- generated, stamped, tiered board bundles (read-only; from ui/tools/extract_board_view.py) -->
+<script src="data/board_view_working.js"></script>
+<script src="data/board_view_public.js"></script>
+
+<!-- app -->
+<script src="app/config.js"></script>
+<script src="app/format.js"></script>
+<script src="app/seam.js"></script>
+<script src="app/board.js"></script>
+<script src="app/card.js"></script>
+<script src="app/trade.js"></script>
+<script src="app/review.js"></script>
+<script src="app/main.js"></script>
+</body>
+</html>

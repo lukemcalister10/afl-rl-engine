@@ -1,0 +1,184 @@
+/* ============================================================================
+   MATCHDAY — the visual law, implemented (docs/ui_styles/theme_03_matchday_FINAL/LOCK.md).
+   Q-THEME (a): dark-only. One look, tuned to the LOCK. No light variant.
+   Tokens lifted verbatim from the locked screens: near-black pitch, one volt accent,
+   condensed caps for names/labels, mono tabular figures.
+   ============================================================================ */
+:root{
+  --pitch:#0a0c10; --card:#12151c; --card-2:#181c25; --edge:#232936;
+  --text:#f2f5f9; --dim:#8b95a6; --faint:#525c6d;
+  --volt:#c8f04a; --volt-soft:rgba(200,240,74,.12);
+  --up:#4ade80; --dn:#f0655e;
+  --alarm:#f0655e; --alarm-soft:rgba(240,101,94,.12);
+  --cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
+  --sans:"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.4;
+  -webkit-font-smoothing:antialiased}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:var(--volt)}
+
+/* ---- pitch banner (the "invented figures" line becomes the live board stamp line) ---- */
+.pitchbanner{background:var(--volt-soft);border-bottom:1px solid var(--volt);color:var(--volt);
+  font-family:var(--cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:center;
+  padding:6px;font-weight:700}
+
+/* ---- app frame ---- */
+.app{max-width:1180px;margin:0 auto;padding:0 18px 72px}
+header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px 0 14px}
+.brand{font-family:var(--cond);font-weight:900;font-size:34px;letter-spacing:.02em;text-transform:uppercase;line-height:.95}
+.brand b{color:var(--volt)}
+.brand .sub{display:block;font-size:11px;letter-spacing:.3em;color:var(--dim);font-weight:700;margin-top:4px}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.7}
+.stamp b{color:var(--text)}
+.badge{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;padding:2px 8px;border:1px solid var(--volt);color:var(--volt);margin-left:6px}
+.badge.ok{border-color:var(--up);color:var(--up)}
+
+/* ---- tabs + tier switch ---- */
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:2px 0 6px}
+.tabs{display:inline-flex;border:1px solid var(--edge);overflow:hidden}
+.tabs button{background:transparent;border:0;color:var(--dim);font-family:var(--cond);font-weight:700;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;cursor:pointer}
+.tabs button:hover{color:var(--text)}
+.tabs button.on{background:var(--volt);color:#0a0c10}
+.tier{display:inline-flex;border:1px solid var(--edge);overflow:hidden;margin-left:auto}
+.tier button{background:transparent;border:0;color:var(--dim);font-family:var(--cond);font-weight:700;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
+.tier button.on{background:var(--card-2);color:var(--volt);box-shadow:inset 0 -2px 0 var(--volt)}
+
+/* ---- strip (round + toggles) ---- */
+.strip{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--edge);
+  padding:10px 14px;border-left:4px solid var(--volt);margin-top:12px}
+.strip .lbl{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.seg{display:inline-flex;border:1px solid var(--edge);overflow:hidden;font-family:var(--cond);font-weight:700;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.seg button{background:transparent;border:0;padding:6px 12px;color:var(--dim);cursor:pointer;font:inherit}
+.seg button.on{background:var(--volt);color:#0a0c10}
+.seg.dbg button.on{background:var(--edge);color:var(--dim)}
+.seg.lens button.on{background:var(--volt);color:#0a0c10}
+
+/* ---- board rows ---- */
+.rows{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
+  padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
+.row.working{grid-template-columns:52px 26px 1fr 82px 92px 130px 118px 92px}
+.row.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
+.row:hover{background:var(--card-2);border-color:#2c3446}
+.row .rank{font-family:var(--cond);font-weight:900;font-size:24px;color:var(--faint);text-align:right}
+.row .pin{text-align:center;font-size:15px}
+.pinf{color:var(--volt)} .pinh{color:var(--volt);opacity:.45}
+.row .nm{font-family:var(--cond);font-weight:700;font-size:19px;letter-spacing:.02em;text-transform:uppercase;
+  line-height:1.15;overflow-wrap:anywhere}
+.row .slug{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);font-weight:400}
+.tag{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);padding:2px 7px;margin-left:9px;
+  vertical-align:3px;cursor:help}
+.row .pos{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
+/* segmented power bar — ten blocks, a block a decile of the top price */
+.pow{display:flex;gap:3px}
+.pow i{width:10px;height:14px;background:var(--edge)}
+.pow i.f{background:var(--volt)}
+.pill{justify-self:end;font-family:var(--mono);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill.up{background:rgba(74,222,128,.14);color:var(--up)}
+.pill.dn{background:rgba(240,101,94,.14);color:var(--dn)}
+.pill.flat{background:var(--edge);color:var(--faint)}
+.pill.na{background:transparent;color:var(--faint);border:1px dashed var(--edge)}
+.row .meta{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right}
+
+/* ---- player card ---- */
+.card{max-width:640px;margin:20px auto 40px;background:var(--card);border:1px solid var(--edge);overflow:hidden}
+.card .head{padding:22px 24px 18px;border-bottom:1px solid var(--edge);border-left:6px solid var(--volt)}
+.card .name{font-family:var(--cond);font-weight:900;font-size:32px;letter-spacing:.02em;text-transform:uppercase;line-height:.98;overflow-wrap:anywhere}
+.card .id{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.card .cstamp{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:10px}
+.card .cstamp b{color:var(--dim)}
+.card .body{padding:20px 24px 34px}
+.statrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.v{font-family:var(--mono);font-weight:700;font-size:24px;margin-top:3px}
+.v.volt{color:var(--volt)} .v.flat{color:var(--faint);font-size:20px}
+.v.up{color:var(--up)} .v.dn{color:var(--dn)} .v small{font-size:13px;color:var(--faint)}
+h2.sec{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text);
+  margin:28px 0 12px;display:flex;justify-content:space-between;border-bottom:2px solid var(--volt);padding-bottom:7px;gap:12px}
+h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-transform:none;font-size:11px;font-weight:400}
+
+/* attribution waterfall */
+.wf{display:grid;grid-template-columns:1fr 170px 90px;gap:8px 14px;align-items:center;font-size:13px}
+.wf .lbl{font-weight:600} .wf .lbl i{color:var(--faint);font-style:normal;font-weight:400}
+.wf .lbl.rule{color:var(--volt)}
+.wf .track{position:relative;height:16px;background:var(--pitch);border:1px solid var(--edge)}
+.wf .zline{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--edge)}
+.wf .bar{position:absolute;top:2px;bottom:2px}
+.wf .bar.up{left:50%;background:var(--up)} .wf .bar.dn{right:50%;background:var(--dn)}
+.wf .bar.rule{right:50%;background:transparent;border:1px solid var(--volt)}
+.wf .bar.resid{left:50%;background:var(--alarm)}
+.wf .fig{font-family:var(--mono);font-weight:700;font-size:13px;text-align:right}
+.wf .fig.up{color:var(--up)} .wf .fig.dn{color:var(--dn)} .wf .fig.zero{color:var(--faint);font-weight:400}
+.wf .fig.rule{color:var(--volt)} .wf .fig.resid{color:var(--alarm)}
+.wf .totals{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.wf .totals b{font-family:var(--mono);color:var(--text);font-size:15px;letter-spacing:0}
+.wf .rowline{grid-column:1/4;border-bottom:1px solid var(--edge)}
+.note{margin-top:12px;font-size:12px;color:var(--dim);line-height:1.6}
+.note b{color:var(--volt)}
+.awaiting{margin-top:10px;padding:10px 12px;border:1px dashed var(--edge);color:var(--faint);font-size:12px;line-height:1.6}
+.awaiting b{color:var(--dim);font-family:var(--cond);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+/* charts / reserved */
+.chart{background:var(--pitch);border:1px solid var(--edge);padding:12px 10px 6px}
+.chart svg{display:block;width:100%;height:auto}
+.reserved{border:1px dashed var(--edge);padding:16px;color:var(--faint);font-size:12px;margin-top:8px}
+.reserved b{color:var(--dim);font-family:var(--cond);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---- trade desk ---- */
+.desk{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.pane{background:var(--card);border:1px solid var(--edge);overflow:hidden}
+.pane h3{margin:0;padding:11px 16px;background:var(--card-2);border-bottom:1px solid var(--edge);
+  font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.trow{display:flex;align-items:center;gap:10px;padding:0 16px;height:42px;border-bottom:1px solid var(--edge)}
+.trow .tnm{font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;flex:1;overflow-wrap:anywhere}
+.trow .tnm i{color:var(--faint);font-style:normal;font-family:var(--mono);font-size:11px;margin-left:8px;text-transform:none;letter-spacing:0}
+.trow .tfig{font-family:var(--mono);font-weight:700;font-size:14px}
+.trow .tpin{color:var(--volt)}
+.pickchip{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--volt);border:1px solid var(--volt);padding:1px 6px;margin-right:6px}
+.powmini{display:flex;gap:2px}.powmini i{width:7px;height:11px;background:var(--edge)}.powmini i.f{background:var(--volt)}
+.ttotal{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--card-2)}
+.ttotal .k{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.ttotal .tfig{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--volt)}
+.addrow{padding:9px 16px;color:var(--faint);font-family:var(--mono);font-size:12px}
+.addrow select{background:var(--pitch);color:var(--text);border:1px solid var(--edge);font:inherit;padding:4px 6px;margin-left:6px}
+.verdict{margin-top:16px;background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--volt);padding:18px 20px}
+.verdict .gap{font-family:var(--mono);font-size:24px;font-weight:800}
+.verdict .gap.up{color:var(--up)} .verdict .gap.dn{color:var(--dn)} .verdict .gap.flat{color:var(--faint)}
+.verdict .line{margin-top:8px;font-size:15px;line-height:1.5}
+.verdict .line b{color:var(--text)}
+.verdict .sub{margin-top:8px;font-size:12px;color:var(--faint);line-height:1.6}
+.translator{margin-top:16px;border:1px dashed var(--edge);padding:16px 20px;color:var(--faint)}
+.translator b{color:var(--dim);font-family:var(--cond);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.translator p{margin:6px 0 0;font-size:12px;line-height:1.6}
+
+/* ---- round review (reserved) ---- */
+.summary{display:flex;gap:26px;flex-wrap:wrap;padding:14px 2px;border-bottom:1px solid var(--edge);
+  font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:12px}
+.summary b{color:var(--faint);font-size:15px;display:block;font-family:var(--cond);letter-spacing:.04em}
+
+/* ---- fail-closed (ring-fence rejection) ---- */
+.failclosed{max-width:640px;margin:60px auto;border:1px solid var(--alarm);background:var(--alarm-soft);padding:28px 30px}
+.failclosed h1{font-family:var(--cond);font-weight:900;font-size:24px;letter-spacing:.06em;text-transform:uppercase;color:var(--alarm);margin:0 0 10px}
+.failclosed p{color:var(--text);font-size:13px;line-height:1.7}
+.failclosed .mono{font-family:var(--mono);font-size:12px;color:var(--dim)}
+
+footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.9}
+
+@media(max-width:920px){
+  .row.working{grid-template-columns:42px 22px 1fr 96px 118px}
+  .row.public{grid-template-columns:42px 1fr 96px 120px}
+  .row .pos,.row .meta,.pow{display:none}
+  .desk{grid-template-columns:1fr}
+}

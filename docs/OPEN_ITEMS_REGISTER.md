@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v8 2026-07-12 (v2.8 BAKED; lanes open) (NEW: migration csv pre-flight clashes RULED — the four named rows below; UI letters ruled v7)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v23 2026-07-12 (v2.8 BAKED; UI ON MAIN) (FABLE WAVE COMPLETE — #63+#64 prescreened PASS; synthesis filed; item-11 counts corrected: MSD trains 29 players/114 rows)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -11,7 +11,10 @@
    jai-newcombe is MSD pk2 — MSD pedestal replicated EXACTLY on delivered value (60→60), so any
    Newcombe overvaluation is NOT pathway-pedestal — production-side investigation item.
    TRIGGER: the v2.9 batch (SSP line rides the PVC adoption job; Newcombe decomposition rides the
-   same investigation).
+   same investigation). SPEC FILED (PR #64, SPEC_1, 2026-07-12; pilots report-only): pathway
+   label worth only −90 (pedestal result re-confirmed); LIVE MECHANISM CANDIDATE = par-relative
+   flattery (a low-expectation label OUT-prices a high one at identical output — pick-2-label <
+   pick-60-label on the same line); the testable question is the age discount's depth.
 2. TRAVAGLIA READ — WAIVED by the owner (2026-07-11, board view): accepts the measured chance.
 3. KYSAIAH READ — WAIVED by the owner (2026-07-11, board view): twice-measured as priced right.
 4. RUCK-COHORT ORDERING (owner, board view 07-11): why lachlan-smith 693 / samson-ryan 636 /
@@ -30,7 +33,16 @@
    ADDED 07-12: lachlan-mcandrew joins as the FIFTH named DOB row (item 10d).
 6. CAIDEN CLEARY "a bit high" (779) · JAMARRA UGLE-HAGAN "a bit low" (196 — former #1-pick KFWD,
    70g, priced at scrap: likely the availability/absence machinery; decompose-first).
-   TRIGGER: v2.9 investigation list.
+   TRIGGER: v2.9 investigation list. OWNER READ ADDED (2026-07-12, on the SPEC_2 pilot): the
+   −860 / ~10× drop off a 3-game 26.0 cameo "is a little steep… a bigger sample at 26 would be
+   fair to drop him very low, maybe a drop like that should happen more smoothly. It's not a lot
+   of evidence to destroy value from." ⇒ acceptance shape for any remedy: value response SMOOTH
+   IN GAMES — no evidence cliffs (the G-MONO no-cliff philosophy extended from picks to
+   evidence). WRINKLE the decomposition must resolve: the engine's own reliability shrinkage
+   (_lvl_eff: "a 5-game stint reads as a fraction of its face value… phases in smoothly to full
+   by ~a season") CLAIMS to prevent exactly this — the v2.9 work must show which arm actually
+   moved him (absence-arm exit on the return event vs a level over-read the shrinkage failed to
+   damp), i.e. why returning-and-poor prices 5× below never-returning.
 7. LUKE RYAN "a bit high" (1698, 30yo GDEF) · DYLAN MOORE "a bit low" (1500 — 137-game body of work
    slashed off ONE poor season; the DOWN-side mirror of the riser question: does one bad season in
    a large body of work mean-revert?). TRIGGER: v2.9 investigation — "down-move persistence /
@@ -55,8 +67,11 @@
         later entry too") is REFUTED by direct store reading — the store today carries perez ND
         p35 / mcandrew MSD p12 (_pickless False, pick capital live) / keane IRE pickless; no
         engine override exists. Switching to later-entry WILL move perez + mcandrew prices (onto
-        the pickless/SSP basis). Ruling stands (intent = later entry); the price moves ride the
-        migration's Tier-2 COMPLETE affected-row list for owner view before merge.
+        the pickless/SSP basis). Ruling stands (intent = later entry); EXECUTION DEFERRED
+        TO v2.9 (owner tap on the build's halt options, 2026-07-12, confirmed by the build's
+        owner-ruled clean-scope resumption 119c3e6) — rides the v2.9 build with the item-11(a)
+        pool exclusion (sequencing note, item 11: mcandrew's relabel is pool-neutral post-(a);
+        residual cost ≈ perez's ~7 rows).
     (b) LUKE-NANKERVIS — truth is PSD (csv's RD-1 was owner convenience logging; does NOT import);
         store keeps PSD pick 2; valuation treatment = between the last ND pick and first RD pick
         that season (already the §45 chaining law). Named no-import row.
@@ -67,6 +82,103 @@
     (d) LACHLAN-MCANDREW _by — owner-worded: "Mcandrew's birth year is 2000. The store is wrong."
         Fifth named DOB-correction row (joins onley/kickett/rodriguez/driscoll, item 5).
 
+11. CALIBRATION-POOL ARCHITECTURE (owner-raised 2026-07-12, on discovering the load-time global
+    fit during the migration halt): "The MSD players should absolutely have their own pool… or at
+    the very least should NOT be leaking into the ND valuations. Someone like McAndrew should have
+    no bearing on Emmett's value." SUPERVISOR FINDINGS (code + committed evidence, same day): the
+    pool is ONE GLOBAL quantile-GBM ceiling fit (_merged_recover.py:15-16), trained on everyone
+    with a pick who debuted ≤2021 — ND 1571 + RD 685 + MSD 107 + PSD 8, ALL positions together;
+    cross-type and cross-position leakage is total by construction. NOT a ruck thing: of the 77
+    ≥5% ripple rows from the mcandrew eviction test, only 2 are RUC (GFWD 21 · MID 17 · KFWD 14 ·
+    GDEF 13 · KDEF 10) — a GBM refit reshuffles globally. DESIGN FORK for the ruling: per-type
+    pools (MSD alone = 107 training rows — thin; PSD 8 = nothing) vs entry-type-as-feature vs
+    membership-stability rules; interacts with whether relabelled players (the re-entry trio)
+    stay in the training set with corrected features or leave (evidence-deletion question).
+    TRIGGER: the v2.9 mechanism ruling — now ONE INTERLOCKED CLUSTER with the trio entry-switch,
+    the SSP pedestal line, and ruck scarcity (items 1/4 + register v8 item 10a).
+    DIRECTION RULED (owner-worded 2026-07-12): "it's quite important that MSD is treated like SSP…
+    It's its own pool. ND players shouldn't learn from it or it from ND players in any way that
+    the SSP pool doesn't do for itself." TECHNICAL BASIS (supervisor, same day): MSD rows enter
+    the training pool with _eff = PICKEQ['MSD'] ≈ 60 — the IDENTICAL feature value as an ND
+    pick-60, but a differently-selected population; the model cannot separate them in feature
+    space, so MSD outcomes directly contaminate the ND pick-60 neighbourhood (and vice versa) —
+    the owner's isolation instinct has a concrete confound behind it. IMPLEMENTATION FORK for the
+    v2.9 ruling: (a) exclude MSD from the training pool — exact SSP parity, owner-leaning,
+    removes the MSD training slice — CORRECTED COUNT (PR #63 evidence, 2026-07-12): 29 players /
+    114 player-season rows actually train (the "107/~2371" was store-wide pick-holders, wrong
+    basis); measured exclusion effect on the current tree: 668 movers · 47 ≥5% · board +0.18% ·
+    emmett −29.8% (its own board-wide refit; Tier-1, rides the v2.9 COMBINED candidate per the
+    2026-07-12 synthesis) ·
+    (b) add entry-pathway as a model feature — keeps the 107 rows' evidence, lets the trees
+    separate the populations; partial isolation. RULED (a) (owner-worded 2026-07-12: "let's go
+    with A and just note to review down the line if football nonsense comes out") — MSD excluded
+    from the training pool, exact SSP parity; EXECUTION at v2.9 with the quantified refit in
+    front of the owner; STANDING REVIEW TRIGGER: revisit toward (b) if the refit produces
+    football-nonsense moves to the owner's eye or hollows a ceiling region. Supervisor rec was
+    (a), reasons recorded (internal consistency · structural verifiability · small well-placed
+    sample cost). SEQUENCING NOTE for the v2.9 job: once (a) executes, mcandrew's MSD→SSP relabel
+    becomes POOL-NEUTRAL (MSD rows are out either way) — the deferred trio switch then costs only
+    perez's ~7-row exit; ONE board refit at v2.9 covers both changes instead of two refits across
+    chapters. ORDINAL NOTE (owner, same message): MSD ordinal flattening ACCEPTED ("happy for
+    that to be flattened") — the should-ordinal-carry-signal question is CLOSED unopened; do NOT
+    add it to the item-1 investigation.
+
+12. FUTURE-LENS PICK-ASSET LINES + LENS CONSERVATION (owner-worded 2026-07-12; APPEARANCE RULE
+    CORRECTED same day on the owner's Duursma example): a pick line appears ONLY on the lens
+    years where its class is in the league but the players are not yet individually known —
+    e.g. 2026-EOY ND pick 1 appears on +1 and +2 ONLY, never the current lens; once a class is
+    drafted the actual players carry the value and the line retires (Duursma, 2025 pick 1,
+    appears first on the CURRENT lens as a player). The current lens shows the current cycle's
+    remaining unexercised picks. PRINCIPLE (owner): "-2 through today through +2 lens should have
+    similar-ish total value on each board logically" — value converts (classes enter as picks,
+    players fade out the bottom), it doesn't vanish; this is the year-0 continuity law rendered
+    on screen and doubles as a lens-total quasi-conservation DIAGNOSTIC (caveats declared:
+    discount on unexercised picks + scrap-floor leakage at retirements make future totals run
+    slightly under; small and explainable or itself a finding). EXECUTION: v2.9, AFTER the
+    discount ruling (lens values of unexercised picks are keyed off the dial being re-ruled);
+    engine/export-side; UI-transparent (rows flow through like existing pick assets). Past-lens
+    pick reconstruction deliberately OUT of scope unless the owner asks.
+
+13. CYCLE-YEAR / COHORT DATA LAW (owner-worded 2026-07-12; ENGINE-IMPLEMENTED but previously
+    UNRECORDED in the doc pack — recorded here, folds to the schema/CONSTRAINTS at next touch):
+    "The 2025 draft cycle goes from ND, RD/PSD, SSP, 2026 MSD" — one cohort = everyone first
+    eligible to play AFL in the same season, regardless of which calendar year their draft fell
+    in (duursma ND-2025 · blamires · artemis = one cohort). Engine implementation verified:
+    rl_model.py:60 _cycle_year (MSD = year−1) · :63 debut (only MSD debuts in its draft year;
+    ND/RD/SSP/PDA/PDN/PDS/IRE/UNR debut year+1).
+14. PICK-ASSET IDENTITY QUESTION (supervisor-found 2026-07-12 while verifying item 12/13; OWNER
+    WORD NEEDED): the board's 30 pick assets are GENERIC picks 1–30 valued off the NATIONAL PVC
+    curve, label year "rolls with the view" (rl_export.py:298) — the export does not know which
+    draft they belong to. Under the owner's cycle law the current cycle's only remaining picks
+    are the 2026 MSD picks — which the engine itself prices at a flat ~pick-60 equivalent — so
+    EITHER today's assets are MSD picks on the wrong (ND) scale, OR they are next-EOY-ND picks
+    that per item 12 belong on the +1 lens, not the current board. RESOLVED (owner-worded 2026-07-12): "The 2026 msd picks have
+    already been used… The next draft is the ND after the season, those players will only be
+    able to play in 2027. So the phantom entry for those picks should be in the +1 and 2 lens."
+    ⇒ the 30 assets ARE the next-EOY-ND picks — correctly ND-scaled (no mispricing).
+    DISPLAY STATE VERIFIED (UI amendment return + supervisor code-read, 2026-07-12): the ladder
+    was ALREADY players-only — picks live in a separate top-level array rendered ONLY by the
+    trade desk; the current ladder never showed them (the supervisor's earlier "on the current
+    ladder" inference was WRONG and is corrected here). The amendment's filter is therefore a
+    NO-OP today and stands as a forward-safe guard (honestly disclosed by the build). v2.9 SCOPE
+    NARROWS TO: adding the phantom pick entries on the +1/+2 lenses at entering-class value
+    (currently absent from ALL lens ladders) + the export-side lens treatment; rides item 12
+    (post-discount-ruling).
+    ASSUMPTION CONFIRMED (owner-worded 2026-07-12): "picks are tradeable for the trade desk but
+    should not be on the current board for ranking players. That is just a player ranking. It
+    enters the future lens to represent the player it will become." — current board = PLAYER
+    ranking only · picks priced/tradeable on the trade desk · the +1/+2 phantom entry stands in
+    for the future player.
+
+15. SPEC-WAVE ANNOTATIONS (PR #64 prescreened PASS 2026-07-12; pilots REPORT-ONLY until v2.9
+    measures): (a) JUH QUALIFICATION CLIFF (SPEC_2, B6-adjacent): store-verified 3-game 26.0
+    cameo costs −860 alone; 7 more games at that level would cut 1056→106 — playing MORE at a
+    low level craters value; must be examined at v2.9 before any JUH remedy ships. (b) SPEC_4
+    names A-GAWN's comparator kieren-briggs for re-verification. (c) STALENESS: all four specs
+    were designed at base 626c8378 — BEFORE items 11–14 ruled (MSD pool exclusion touches SPEC_4's
+    ruck world and SPEC_1's calibration context) — the v2.9 build directive must apply the specs
+    POST-item-11(a); supervisor synthesis reconciles after the ruling-pack return.
+
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
 discount 15% this bake (fresh decision at v2.9) · Travaglia WAIVED · Kysaiah WAIVED · PVC letter
@@ -75,7 +187,11 @@ with the seam/G-Y0 table, the SSP line, the ruck-scarcity question, and the disc
 DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-verified. HYGIENE NOTE (register-kept): the lever build's return claimed panel 10/10 while its committed panel file read FAIL vs a stale orphan pin — claim-accuracy defect caught at the bake rung; the board itself was audit-proven byte-exact; pin re-pointed per checklist.
 
 ## THE v2.9 BATCH (one lever build + ONE bake; papers largely drafted)
-- PVC adoption per the owner's letter + the SEAM/G-Y0 IDENTITY TABLE (per pick band: composition-
+- PVC adoption per the owner's letter + the SEAM/G-Y0 IDENTITY TABLE + PVC-BASIS ASSERT
+  (owner-raised 2026-07-12 via the par-relative question): before adoption, assert BY CODE
+  READING that the derived curve's outcome measure is production-vs-replacement — never board
+  value, never par-relative (the retired pre-v3.4 builder carried a par-relative ×3 clamp;
+  v3.4's _nv_bwd is clean; the derived curve must be proven clean too) (per pick band: composition-
   weighted mean V0 vs PVC; deviations must net ~0; y0→wk1→y1/2 chain bounded) — owner judges
   smoothness; breach repair = raise young side, never cut survivors, never bend the derived curve.
 - G-Y0 guard ratification (candidate text drafted T75, owner's pen).
@@ -89,7 +205,11 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
 
 ## COMPLETION PATH (order owner-ruled)
 v2.8 bake → ID-primary migration (authoritative_universe.csv; imports real DOBs; name→ID resolver at
-the score boundary) → UI (Matchday LOCK + DESIGN_DIRECTION + flex-spec display law + ±1/2-yr lens;
+the score boundary; clean scope IN FLIGHT, trio deferred v20) → UI ✅ MERGED 2026-07-12 (#62 →
+main 11f85fb9, merge commit, supervisor-verified: two parents fdc869e/7b9876d · branch commits
+preserved · merge fence = ui/** only 24 files · tag v2.8 unmoved; remaining UI-adjacent work =
+export fields at the next export job + the +1/+2 phantom entries at v2.9) → UI spec references
+kept for the record: (Matchday LOCK + DESIGN_DIRECTION + flex-spec display law + ±1/2-yr lens;
 THE FOUR LETTERS RULED — owner-worded 2026-07-12: Q-GHOST (b) post-override figure + tag only ·
 Q-DELTA-BASE toggle built, default (a) last-accepted-bake NOW, default flips to (b) previous-round
 AT GO-LIVE ("until we're finished and push it all live, then B"; default-flip reading is the
@@ -108,7 +228,9 @@ mostly landing.
 - AGE-CURVE for risers: research DONE (s(age) linear 0.86@22→0@29); adoption gated per above.
 - JUNE "awaiting Luke" items (0.85 lock · mature-age verdicts · 805 eyeball): grade against the
   post-v2.4-2.7 record before surfacing; only survivors reach the owner.
-- lti_reg export stamp (barker/thredgold): rides the NEXT export-touching job.
+- lti_reg export stamp (barker/thredgold) + UI EXPORT FIELDS (vPrev · vRaw · levers — one-line
+  engine export additions; the built UI displays light up with no further UI work, per the #62
+  return): ride the NEXT export-touching job, bundled.
 - EVIDENCE-BRANCH HOMING (~30 unmerged branches hold the record): one token filing job post-v2.8;
   THEN those branches sweep.
 - PR #60 disposition + prebake-v2.4-anchor keep/delete: at the v2.8 close.
