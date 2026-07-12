@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v4 2026-07-11 (rulings: 15% for v2.8 · travaglia + kysaiah waived · hayes ages confirmed)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v5 2026-07-11 (card complete) (rulings: 15% for v2.8 · travaglia + kysaiah waived · hayes ages confirmed)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -45,9 +45,12 @@
    must survive" note therefore depends on the owner's registers being couriered at flex fire time
    (already flagged).
 
-## THE v2.8 BOARD-VIEW RULING CARD (one sitting, after the cold audit reconciles)
-L1 adoption · discount rate off the 15/14/13/12 sweep · Travaglia read · Kysaiah read · PVC letter
-(a/b/c — supervisor rec (b), implemented in v2.9).
+## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
+L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
+discount 15% this bake (fresh decision at v2.9) · Travaglia WAIVED · Kysaiah WAIVED · PVC letter
+DEFERRED to the v2.9 ruling session (owner: other levers and considerations interlock — ruled there
+with the seam/G-Y0 table, the SSP line, the ruck-scarcity question, and the discount dial).
+AWAITING ONLY: the bake word + the owner's tag/promote.
 
 ## THE v2.9 BATCH (one lever build + ONE bake; papers largely drafted)
 - PVC adoption per the owner's letter + the SEAM/G-Y0 IDENTITY TABLE (per pick band: composition-
