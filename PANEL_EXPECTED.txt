@@ -1,21 +1,21 @@
-FIXED PANEL — BAKED v2.8 (chapter-lever L1 young-GDEF transition credit + pick redenomination, 2026-07-12;
-engine 7a07e369, store 04f38dad, config 69ead79b944d, board 9ecbe0fa). RE-PINNED at the v2.8 bake to the
-reproduced candidate board: every EV below equals the ship_gates B4 board (md5 9ecbe0fa, byte-agree gate
-PASS) and reproduces deterministically across repeat run_panel.sh runs. A cold reload of THIS baked state
-MUST reproduce every EV exactly. Supersedes the pre-bake stamp, which carried an ORPHAN W4+L1c candidate
-(store e1b4d8bf, never baked) that the chapter-lever candidate left un-updated; that staleness is why the
-candidate's own panel_levered.txt read FAIL — closed here by re-pinning to the state being baked.
+FIXED PANEL — ID-PRIMARY MIGRATION candidate (clean scope), 2026-07-12; engine 7a07e369, store b0c39d78,
+config 69ead79b944d, board de4baef9. NOT a bake promotion (no tag/main merge; owner word required). RE-PINNED
+from v2.8 (store 04f38dad, board 9ecbe0fa): Harry Sheezel 8115->8116 and Josh Smillie 1301->1302 each moved
++1 within the owner-declared taylor-adams retirement hairline ripple (<=+/-2 SCAR on 88 rows); the other
+eight are byte-unchanged. Every EV below equals the ship_gates B4 board (md5 de4baef9, byte-agree gate PASS)
+and reproduces deterministically across repeat run_panel.sh runs. A cold reload of THIS state MUST reproduce
+every EV exactly.
 
 player                pos       pk  ns     EV   note
 Nick Daicos           MID        4   5   8050   proven star
 Marcus Bontempelli    MID        4  13   3721   proven (== SWEEP 15% shipped)
-Harry Sheezel         MID        3   4   8115   proven young (drafted GEN_FWD -> plays MID; switcher)
+Harry Sheezel         MID        3   4   8116   proven young (drafted GEN_FWD -> plays MID; switcher; +1 in the adams-retire ripple)
 Max Gawn              RUC       33  14   2538   proven ruck (== SWEEP 15% shipped; A-GAWN clearly > Briggs 2221)
 Harley Reid           MID        1   3   3726   first-year value, pk1 (NOT cratered; board rank 30, A4 PASS)
 Josh Ward             MID        7   5   1746   moderate pedigree (the "Ward" case; book == board now)
 Darcy Moore           KEY_DEF    8  11    209   decliner the shed fired on
 Taylor Goad           RUC       20   0    818   sat-out ruck -> no-games anchor
-Josh Smillie          MID        7   0   1301   sat-out mid -> no-games anchor
+Josh Smillie          MID        7   0   1302   sat-out mid -> no-games anchor (+1 in the adams-retire ripple)
 Will Green            RUC       16   0    588   sat-out ruck -> no-games anchor
 
 PROVENANCE OF THE LIFT vs v2.5 baked (Daicos 7002 Bont 3084 Sheezel 7151 Gawn 2112 Reid 3549 Ward 1650

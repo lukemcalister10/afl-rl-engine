@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-11 for the CHAPTER-LEVER candidate (branch claude/chapter-lever-discount-sweep-amqpfx; base = pick-convention remediation c02499a3). NOT a bake: no tag, no main merge. The book MOVED by design \u2014 L1 (young-GDEF transition credit) strengthened the GEN_DEF rows of ycred_table.json (md5 daaf5e49) for trailing years 2011-2026; engine code UNTOUCHED (head 7a07e369). L2 measured NOT-SUPPORTED, nothing shipped. The BAKED/main seal (stable-sha 2a74c731, head 7a07e369, store a2fbc9a0) is UNTOUCHED upstream; an owner bake-time re-seal is still required before any promotion.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-12 for the ID-PRIMARY MIGRATION (clean scope) candidate (branch claude/id-primary-migration-v1a-cv1uzl). NOT a bake promotion: no tag, no main merge. The book MOVED by design \u2014 the store gained stable_player_id + affl_team + eligibilities (identity, inert), 5 named DOB corrections (onley/kickett/rodriguez/driscoll/mcandrew) re-age those rows in the walk-forward history, and taylor-adams was marked retired (non-live). Engine code UNTOUCHED (head 7a07e369). Re-entry trio DEFERRED to v2.9 (owner-ruled 2026-07-12). Prior CHAPTER-LEVER seal a19b3cb8 (store 04f38dad) superseded on this branch; baked/main seal 2a74c731 preserved upstream. Owner bake-time re-seal still required before any promotion.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
   "head_md5": "7a07e369",
-  "store_md5": "04f38dad",
+  "store_md5": "b0c39d78",
   "n_players": 2649,
-  "stable_sha256": "a19b3cb8b0f7eb75cb4ea71b2324c228d7ed04a70da39dbb550013d4969f5e96",
-  "sealed_by": "CHAPTER-LEVER re-seal 2026-07-11 (L1 transition credit; NOT a bake). Prior candidate seal e35744c7 (pick remediation) superseded on this branch; baked seal 2a74c731 (v2.7) preserved on main.",
-  "sealed_date": "2026-07-11",
+  "stable_sha256": "e559eb6cafb5b79d95ccc0c93f75ab92d67cba510d5573d65aa19e7f86e40b65",
+  "sealed_by": "ID-PRIMARY MIGRATION clean-scope re-seal 2026-07-12 (identity + 5 DOB + adams retire; re-entry deferred v2.9)",
+  "sealed_date": "2026-07-12",
   "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }

@@ -1,0 +1,101 @@
+# RAW MEASUREMENT EVIDENCE — ID-primary migration (board = rl_export.py {key:v}, vs v2.8 shipped 9ecbe0fa)
+
+## Isolation (each rule-class applied alone; identity=0 is the determinism control):
+[identity] movers=0
+[dob] movers=5
+    nick-driscoll            5 -> 547
+    fred-rodriguez           3 -> 502
+    riley-onley              2 -> 463
+    leon-kickett             4 -> 358
+    lachlan-mcandrew         1039 -> 1176
+[reentry] movers=657
+    jai-newcombe             4495 -> 4126
+    louis-emmett             1177 -> 872
+    harrison-coe             102 -> 272
+    massimo-d-ambrosio       1853 -> 1698
+    john-noble               2683 -> 2531
+    sam-durham               1615 -> 1500
+    caleb-lewis              119 -> 232
+    liam-puncher             96 -> 194
+    lukas-cooke              104 -> 202
+    tristan-xerri            6649 -> 6744
+    toby-murray              200 -> 294
+    max-hall                 1980 -> 1888
+[retire] movers=90
+    taylor-adams             75 -> None
+    thomas-sims              1114 -> 1116
+    josh-treacy              6297 -> 6299
+    jack-graham              319 -> 320
+    hayden-young             2777 -> 2778
+    jye-amiss                1260 -> 1261
+    peter-ladhams            477 -> 476
+    daniel-curtin            2243 -> 2244
+    jye-caldwell             1530 -> 1531
+    alex-neal-bullen         516 -> 515
+    john-noble               2683 -> 2684
+    jai-newcombe             4495 -> 4496
+[identity,dob] movers=5
+    nick-driscoll            5 -> 547
+    fred-rodriguez           3 -> 502
+    riley-onley              2 -> 463
+    leon-kickett             4 -> 358
+    lachlan-mcandrew         1039 -> 1176
+[identity,dob,reentry] movers=661
+    nick-driscoll            5 -> 571
+    fred-rodriguez           3 -> 522
+    riley-onley              2 -> 496
+    leon-kickett             4 -> 408
+    jai-newcombe             4495 -> 4126
+    louis-emmett             1177 -> 872
+    harrison-coe             102 -> 272
+    massimo-d-ambrosio       1853 -> 1698
+    john-noble               2683 -> 2531
+    lachlan-mcandrew         1039 -> 1191
+    sam-durham               1615 -> 1500
+    caleb-lewis              119 -> 232
+[identity,dob,reentry,retire] movers=671
+    nick-driscoll            5 -> 571
+    fred-rodriguez           3 -> 522
+    riley-onley              2 -> 496
+    leon-kickett             4 -> 408
+    jai-newcombe             4495 -> 4126
+    louis-emmett             1177 -> 872
+    harrison-coe             102 -> 272
+    massimo-d-ambrosio       1853 -> 1698
+    john-noble               2683 -> 2531
+    lachlan-mcandrew         1039 -> 1191
+    sam-durham               1615 -> 1500
+    caleb-lewis              119 -> 232
+DONE
+
+## Re-entry decomposition (which field / which player drives the ripple):
+[pickexit] movers=657
+    jai-newcombe           4495 -> 4126
+    louis-emmett           1177 -> 872
+    harrison-coe           102 -> 272
+    massimo-d-ambrosio     1853 -> 1698
+    john-noble             2683 -> 2531
+    sam-durham             1615 -> 1500
+[yearonly] movers=657
+    jai-newcombe           4495 -> 4126
+    louis-emmett           1177 -> 872
+    harrison-coe           102 -> 272
+    massimo-d-ambrosio     1853 -> 1698
+    john-noble             2683 -> 2531
+    sam-durham             1615 -> 1500
+[perezonly] movers=7
+    harry-barnett          544 -> 546
+    logan-smith            369 -> 370
+    will-green             588 -> 589
+    toby-conway            479 -> 480
+    taylor-goad            818 -> 819
+    alex-dodson            386 -> 387
+[mcandrewonly] movers=653
+    jai-newcombe           4495 -> 4126
+    louis-emmett           1177 -> 872
+    harrison-coe           102 -> 272
+    massimo-d-ambrosio     1853 -> 1698
+    john-noble             2683 -> 2531
+    sam-durham             1615 -> 1500
+[keaneonly] movers=0
+DONE_DECOMPOSE
