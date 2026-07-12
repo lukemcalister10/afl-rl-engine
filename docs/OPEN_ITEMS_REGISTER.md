@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v6 2026-07-12 (v2.8 BAKED; lanes open) (rulings: 15% for v2.8 · travaglia + kysaiah waived · hayes ages confirmed)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v7 2026-07-12 (v2.8 BAKED; lanes open) (NEW: the four UI letters RULED — GHOST b · DELTA-BASE a→b at go-live · VERDICT b · THEME a)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -68,7 +68,13 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
 ## COMPLETION PATH (order owner-ruled)
 v2.8 bake → ID-primary migration (authoritative_universe.csv; imports real DOBs; name→ID resolver at
 the score boundary) → UI (Matchday LOCK + DESIGN_DIRECTION + flex-spec display law + ±1/2-yr lens;
-FOUR OWNER LETTERS OPEN: Q-GHOST · Q-DELTA-BASE · Q-VERDICT · Q-THEME) → round-score ingestion
+THE FOUR LETTERS RULED — owner-worded 2026-07-12: Q-GHOST (b) post-override figure + tag only ·
+Q-DELTA-BASE toggle built, default (a) last-accepted-bake NOW, default flips to (b) previous-round
+AT GO-LIVE ("until we're finished and push it all live, then B"; default-flip reading is the
+supervisor's, owner may correct) · Q-VERDICT (b) plain-language verdict sentence, model speaks and
+owner overrules · Q-THEME (a) dark-only. RECORD NOTE: owner recalls answering three previously; no
+prior answer reached the register — these stand as the ruling of record. DECISIONS fold at its
+next bump) → round-score ingestion
 (names in, resolver, weekly) → the v2.9 batch → DONE-STATE: live, updating, viewable, on IDs, reads
 mostly landing.
 
