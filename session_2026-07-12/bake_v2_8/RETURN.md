@@ -55,13 +55,16 @@ The standing "Advance it" ruling executed here (DECISIONS v93 §43).
 ### 1. Tag v2.8 at the bake head (lightweight, matching v2.6/v2.7)
 ```
 git fetch origin claude/bake-v2-8-execution-5oyddf
-git tag v2.8 <bake-head-SHA>          # the head of claude/bake-v2-8-execution-5oyddf (this RETURN commit)
+git tag v2.8 origin/claude/bake-v2-8-execution-5oyddf     # tags the branch tip (baked state pinned in IDENTITIES.md)
 git push origin v2.8
 ```
 
 ### 2. Promote to main — MERGE, not fast-forward (the directive's "clean fast-forward" is NOT available)
-Main diverged from the bake lineage at `a6a8aa9c`: it carries your 7 docs-register commits
-(`OPEN_ITEMS_REGISTER.md` + the board-view ruling records) that the candidate branched *before*. A
+Main diverged from the bake lineage at `a6a8aa9c` and kept moving during the bake (latest `6e409fa`, a
+docs seam-pack: HANDOVER rev130, DECISIONS v94, CORE v2.3, MANIFEST v4.6): it carries 8 docs-only commits
+(`OPEN_ITEMS_REGISTER.md` + the board-view ruling records + the seam pack) that the candidate branched
+*before*. All are under `docs/`, none touched by the bake — re-verified conflict-free against the latest
+main via `git merge-tree`. A
 fast-forward is therefore impossible. A force-push would DESTROY those main commits — do not. The safe,
 **conflict-free** promote (verified via `git merge-tree`: result preserves `OPEN_ITEMS_REGISTER.md` AND
 carries the bake's board/matrix/report_states) is a merge commit, consistent with the repo's standing
