@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v19 2026-07-12 (v2.8 BAKED; lanes open) (NEW: JUH owner read — smooth-in-evidence, no cliffs off 3-game samples; _lvl_eff wrinkle named)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v20 2026-07-12 (v2.8 BAKED; lanes open) (trio EXECUTION DEFERRED to v2.9 — owner tap confirmed; migration resumed clean-scope)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -67,8 +67,11 @@
         later entry too") is REFUTED by direct store reading — the store today carries perez ND
         p35 / mcandrew MSD p12 (_pickless False, pick capital live) / keane IRE pickless; no
         engine override exists. Switching to later-entry WILL move perez + mcandrew prices (onto
-        the pickless/SSP basis). Ruling stands (intent = later entry); the price moves ride the
-        migration's Tier-2 COMPLETE affected-row list for owner view before merge.
+        the pickless/SSP basis). Ruling stands (intent = later entry); EXECUTION DEFERRED
+        TO v2.9 (owner tap on the build's halt options, 2026-07-12, confirmed by the build's
+        owner-ruled clean-scope resumption 119c3e6) — rides the v2.9 build with the item-11(a)
+        pool exclusion (sequencing note, item 11: mcandrew's relabel is pool-neutral post-(a);
+        residual cost ≈ perez's ~7 rows).
     (b) LUKE-NANKERVIS — truth is PSD (csv's RD-1 was owner convenience logging; does NOT import);
         store keeps PSD pick 2; valuation treatment = between the last ND pick and first RD pick
         that season (already the §45 chaining law). Named no-import row.
