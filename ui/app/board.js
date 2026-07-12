@@ -24,6 +24,12 @@ MD.board = (function () {
       }
     }
     pool = pool.filter(function (r) { return r.val !== null && r.val !== undefined; });
+    // Pick-asset filter (owner ruling, register v16 item 14): the current board is a player ranking.
+    // Exclude pick-asset rows on the current + backward lenses; picks stay at the +1/+2 lenses and on
+    // the trade desk. Display-only — the underlying board is untouched.
+    if (s.lens <= 2) {
+      pool = pool.filter(function (r) { return !MD.isPickAsset(r.p); });
+    }
     pool.sort(function (a, b) { return b.val - a.val; });
     pool.forEach(function (r, i) { r.rank = i + 1; });
     return pool;

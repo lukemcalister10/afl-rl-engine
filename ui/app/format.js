@@ -38,6 +38,17 @@ MD.fmt = {
   },
 };
 
+/* Pick-asset guard (owner ruling, register v16 item 14): the current board is a PLAYER RANKING.
+   A pick-asset row is a draft-pick line, not a player. Display-only test used to keep the current /
+   backward-lens ladders players-only; picks stay on the trade desk and at the +1/+2 lenses. */
+MD.isPickAsset = function (p) {
+  if (!p) return false;
+  if (p.asset === "pick" || p.kind === "pick" || p.isPick === true || p.posCode === "PICK") return true;
+  if (typeof p.key === "string" && /^pick[-_]?\d+/i.test(p.key)) return true;
+  if (typeof p.name === "string" && /^pick\s*\d+\b/i.test(p.name)) return true;
+  return false;
+};
+
 /* segmented power bar markup (ten blocks, N filled). */
 MD.powerBar = function (v, maxV, mini) {
   const n = MD.fmt.decile(v, maxV);

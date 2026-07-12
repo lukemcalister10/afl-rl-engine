@@ -24,7 +24,9 @@ fetch/CORS). Dark-only by ruling (**Q-THEME a**).
 - **Q-THEME (a)** — **dark-only.** One look, tuned to the LOCK.
 
 ## Views
-- **Board** (working / public) — anchor **pins** (the owner's acceptance reads; Gawn>Briggs is verified live
+- **Board** (working / public) — a **player ranking**: a display-only pick-asset filter (owner ruling,
+  register v16 item 14) keeps the current and backward lenses players-only; picks stay on the trade desk and
+  at the +1/+2 lenses. anchor **pins** (the owner's acceptance reads; Gawn>Briggs is verified live
   from the board), **`OWNER OVERRIDE` tags**, the **Δ-base toggle**, the **±1/2-yr board lens**, a **My reads**
   filter, a **debug/slugs** toggle, and the segmented ten-block power bar. Public tier is the sanitised trim.
 - **Player card** (working / public) — value/rank, the **“why the price is what it is” waterfall**, the
