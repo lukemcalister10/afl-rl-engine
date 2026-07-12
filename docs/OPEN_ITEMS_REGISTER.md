@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v12 2026-07-12 (v2.8 BAKED; lanes open) (NEW: UI export fields parked onto the next export job; item 11 ruled (a) v11)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v13 2026-07-12 (v2.8 BAKED; lanes open) (NEW: item 12 — future-lens pick-asset lines + lens conservation, owner-worded; execute v2.9 post-discount-ruling)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -103,6 +103,20 @@
     chapters. ORDINAL NOTE (owner, same message): MSD ordinal flattening ACCEPTED ("happy for
     that to be flattened") — the should-ordinal-carry-signal question is CLOSED unopened; do NOT
     add it to the item-1 investigation.
+
+12. FUTURE-LENS PICK-ASSET LINES + LENS CONSERVATION (owner-worded 2026-07-12): each pick asset
+    is ONE line across every lens — discounted PVC pre-exercise, then the expected class
+    trajectory (year-0/1 value via the G-Y0/seam identity) post-conversion — and each future
+    lens carries the NEW pick classes existing in that year (e.g. the 2027-EOY and 2028-EOY
+    picks on the +1 board). PRINCIPLE (owner): "-2 through today through +2 lens should have
+    similar-ish total value on each board logically" — value converts (classes enter as picks,
+    players fade out the bottom), it doesn't vanish; this is the year-0 continuity law rendered
+    on screen and doubles as a lens-total quasi-conservation DIAGNOSTIC (caveats declared:
+    discount on unexercised picks + scrap-floor leakage at retirements make future totals run
+    slightly under; small and explainable or itself a finding). EXECUTION: v2.9, AFTER the
+    discount ruling (lens values of unexercised picks are keyed off the dial being re-ruled);
+    engine/export-side; UI-transparent (rows flow through like existing pick assets). Past-lens
+    pick reconstruction deliberately OUT of scope unless the owner asks.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
