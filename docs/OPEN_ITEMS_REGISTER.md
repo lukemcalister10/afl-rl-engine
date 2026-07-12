@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v22 2026-07-12 (v2.8 BAKED; UI ON MAIN — #62 merged 11f85fb9, supervisor-verified) (item 14 display state verified v21)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v23 2026-07-12 (v2.8 BAKED; UI ON MAIN) (FABLE WAVE COMPLETE — #63+#64 prescreened PASS; synthesis filed; item-11 counts corrected: MSD trains 29 players/114 rows)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -104,7 +104,11 @@
     space, so MSD outcomes directly contaminate the ND pick-60 neighbourhood (and vice versa) —
     the owner's isolation instinct has a concrete confound behind it. IMPLEMENTATION FORK for the
     v2.9 ruling: (a) exclude MSD from the training pool — exact SSP parity, owner-leaning,
-    removes 107 of ~2371 training rows (its own board-wide refit; Tier-1, in-scope at v2.9) ·
+    removes the MSD training slice — CORRECTED COUNT (PR #63 evidence, 2026-07-12): 29 players /
+    114 player-season rows actually train (the "107/~2371" was store-wide pick-holders, wrong
+    basis); measured exclusion effect on the current tree: 668 movers · 47 ≥5% · board +0.18% ·
+    emmett −29.8% (its own board-wide refit; Tier-1, rides the v2.9 COMBINED candidate per the
+    2026-07-12 synthesis) ·
     (b) add entry-pathway as a model feature — keeps the 107 rows' evidence, lets the trees
     separate the populations; partial isolation. RULED (a) (owner-worded 2026-07-12: "let's go
     with A and just note to review down the line if football nonsense comes out") — MSD excluded
