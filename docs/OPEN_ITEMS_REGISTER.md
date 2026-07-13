@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v67 2026-07-13 (JOB A v2 ISSUED — the B1 code-conform directive AMENDED and re-based (item 40): seat-4's pre-staged version fixed the gate's BASIS but not the FAILURE MODE that produced item 38's false PASS. Owner's word: "Amend A". JOB B (shadow board) fires as written. Item 20 CLOSED; working head 9eab9f3+ / store 340a7a32 / board 3dc19fbb; tagged board of record still v2.9 (9f8ae76 / 81e48293 / b0c39d78). Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v68 2026-07-13 (LADDER RULED: **TIER-1-LITE** for Job A (owner, 2026-07-13) — supervisor prescreen + the two red-path proofs + his word; no cold audit, no board view. JOB B RE-ISSUED STANDALONE (item 41) with the TWO-BOARDS GUARD added: it works on the TAGGED board 81e48293, NOT on main's 3dc19fbb. Jobs A v2 and B are file-disjoint and may run in parallel. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1014,6 +1014,27 @@
     JOB B (THE SHADOW BOARD) fires AS WRITTEN — file-disjoint from Job A, read-only, may run in
     parallel. It pins the v2.9 TAG and reads the BAKED board 81e48293, which item 39 now makes
     unambiguous.
+
+41. **THE LADDER RULING + JOB B RE-ISSUED (2026-07-13, owner-ruled).**
+    **LADDER — owner's word: "Lite."** Job A v2 (the B1 code-conform + silent-gate fix) walks
+    **TIER-1-LITE**: supervisor prescreen against acceptance_v1.8.json + the TWO red-path proofs
+    (breach HALTs · SILENCE HALTs) + the owner's written word. **No cold audit. No board view** —
+    the rung is empty by construction: no player value moves. Recorded so a future seat does not
+    read a skipped cold audit as a skipped rung.
+    **JOB B — RE-ISSUED STANDALONE** (seat-4 wrote A and B in one file; only A was superseded, so B
+    needed its own pasteable copy). Substance UNCHANGED. **ONE GUARD ADDED, and it is not
+    cosmetic:** since seat-4 wrote it, THERE ARE NOW TWO BOARDS (item 39). A build that clones main
+    now reads board **3dc19fbb**; Job B's subject is the **BAKED** board **81e48293** at tag v2.9.
+    The directive now pins the TAG, asserts Guard 5 on store b0c39d78 / board 81e48293, and STOPS if
+    it finds itself reading 3dc19fbb. Every board md5 it reports must be NAMED against the board it
+    came from. Without that guard the shadow board could have been silently computed on the wrong
+    world — the exact class of error the freshness check and Guard 5 exist to catch.
+    Job B also now carries the July-8 binding figures (1.2601/1.2407/1.1521, den = y1 = 69,840.0) as
+    the reference for its gate PRE-READ, with the indexed row demanded ALONGSIDE it and labelled a
+    shape diagnostic, never the gate (register v52).
+    STATUS: both directives are in the OWNER'S HANDS, unfired. A = Tier-1-lite, ends in a candidate
+    PR. B = Tier 3, read-only, ends in a candidate PR carrying only new files. FILE-DISJOINT: they
+    may run in PARALLEL (concurrency rule satisfied — B writes nothing, A touches no store).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
