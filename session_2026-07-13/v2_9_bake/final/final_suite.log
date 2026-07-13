@@ -1,0 +1,37 @@
+### 1. fresh bootstrap (BAKE mode) — Guard 5 boot-store (asserts board pin 81e48293, full hash)
+boot-store guard (Guard 5) PASS  [bootstrap]  store b0c39d78 == pinned b0c39d78 (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only.)
+bootstrap OK
+  engine md5     : 2030e5df   (candidate: F1/F2 one-source rewire)
+  store md5      : b0c39d78   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+  register md5   : 652d83e8   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)
+### 2. config-manifest + ruling-config
+CONFIG-MANIFEST CHECK: PASS (hash 69ead79b944d; 40 vars; pin+stored consistent)
+RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).
+### 3a. build board (bake, override on) + book for the F1/F2 numéraire parity checks
+  board 81e48293 (expect 81e48293)
+### 3b. five SSI guards — one_source_selftest (guards 1-5 + F1/F2 numéraire parity)
+  PASS collision sentry: max-king-stk.year (2018) != max-king-syd.year (2025) — must stay distinct (no cross-copy)
+  PASS collision sentry: max-king-stk._club ('St Kilda') != max-king-syd._club ('Sydney') — must stay distinct (no cross-copy)
+
+SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; collision sentry (King pair) clean.
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)
+### 4. guard-4 correction canary (edits+restores store; must survive board AND book)
+  jason-horne-francis: book_cur=4182 board=3974
+
+store after canary = b0c39d78  (expect b0c39d78)
+### 5. OWNER-OVERRIDE EXCLUSION TEST (must stay GREEN — override OUT of guards/aggregates)
+  - ON board minus every `ov` block == OFF board, byte-for-byte (aggregates/curves/values untouched)
+  - every other Brodie field is identical on vs off
+### 6. THE THREE RED-PATH PROOFS (each must HALT)
+  RED (halts) OK : (a) missing owner_overrides.json -> HALT
+      -> OWNER-OVERRIDE HALT (bake mode): cannot resolve the checked-out repo to read data/owner_overrides.json (RL_REPO / CLAUDE_PROJECT_DIR unset and no ../.. fallback). A gated/baked board must NOT silently ship without the standing owner rulings — set RL_REPO to the checkout. (Dev-shell returns [] and skips.)
+  RED (halts) OK : (b) listed-unapplied override -> PRESENCE ASSERTION HALT
+      -> ["OWNER-OVERRIDE PRESENCE ASSERTION FAILED: 1 listed override(s) carry NO `ov` block on the exported board (key drift or silent drop): ['no-such-player-xyz']. Verify the store key(s) against the board and re-run — a gated/baked board MUST realize every standing owner ruling."]
+  RED (halts) OK : (c) wrong board pin -> boot_guard (Guard 5) HALT
+      -> ["  - checkout board 81e48293 != pinned board deadbeef (data/expected_boot.json 'board', full-hash compare) — the board and its pin are out of sync (re-generate + re-pin, or the pin drifted)"]
+
+VERDICT: ALL THREE RED PATHS PROVEN
+### 7. numéraire panel 10/10
+RESULT: PASS 10/10
+### 8. shipped board (repo) md5 = 81e48293  (must be 81e48293, unchanged)
+FINAL_SUITE_DONE
