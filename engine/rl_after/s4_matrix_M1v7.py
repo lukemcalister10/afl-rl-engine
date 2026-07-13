@@ -120,6 +120,11 @@ else:
 # by stable key. If any active board player diverges, the build FAILS loudly. The board file must exist (build
 # order: rl_export.py then s4_matrix_M1v7.py); if absent the gate is skipped with a loud warning.
 _board_path=os.environ.get('RL_APP_DATA','rl_app_data.json')
+# L7 NUMÉRAIRE (baked 2026-07-13): the board DISPLAYS round(ev/F) (engine ev()/book cur UNCHANGED — the
+# re-base is board-display only). So the F2 book<->board parity holds in the numéraire: board v ==
+# round(book cur / F). F is the certified 1.0524. (In ship_gates the matrix regen runs before any board
+# exists, so this gate is skipped there; it fires when the board is built first, e.g. the correction canary.)
+_F_num=json.load(open('pick_redenomination.json'))['factor'] if os.path.exists('pick_redenomination.json') else 1.0524
 if os.path.exists(_board_path):
     _bd={r['key']:r['v'] for r in json.load(open(_board_path)).get('active',[])}
     _bookcur={v['key']:v['cur'] for v in rec.values() if v.get('key')}
@@ -128,11 +133,11 @@ if os.path.exists(_board_path):
     # walk-forward book -- so absence is NOTED, not a parity failure. A VALUE mismatch on a shared player IS a
     # failure (that is the double-fade / stale-override signature).
     _absent=sorted(_k for _k in _bd if _k not in _bookcur)
-    _pf=[(_k,_bookcur[_k],_bd[_k]) for _k in _bd if _k in _bookcur and _bookcur[_k]!=_bd[_k]]
+    _pf=[(_k,_bookcur[_k],_bd[_k]) for _k in _bd if _k in _bookcur and int(round(_bookcur[_k]/_F_num))!=_bd[_k]]
     if _pf:
-        raise SystemExit("BOOK<->BOARD PARITY GATE FAILED: %d present-value mismatches (book `cur` != board gated ev):\n  "%len(_pf)
+        raise SystemExit("BOOK<->BOARD PARITY GATE FAILED: %d present-value mismatches (board v != round(book cur / %.4f), numéraire):\n  "%(len(_pf),_F_num)
                          + "\n  ".join("%s: book_cur=%s board=%s"%(k,c,b) for k,c,b in _pf[:25]))
-    print(f"BOOK PARITY GATE PASS: all {len(_bd)-len(_absent)} shared board players' present value == book `cur`; {len(_absent)} board players outside the cohort book (_pvc_exclude): {_absent}",flush=True)
+    print(f"BOOK PARITY GATE PASS: all {len(_bd)-len(_absent)} shared board players' present value == round(book cur / {_F_num:.4f}) [numéraire]; {len(_absent)} board players outside the cohort book (_pvc_exclude): {_absent}",flush=True)
 else:
     print(f"WARN: {_board_path} not found -> BOOK<->BOARD parity gate SKIPPED (build the board first: rl_export.py)",flush=True)
 # ---- mapping-only proof: a played value is identical old vs new (just a different slot) ----
