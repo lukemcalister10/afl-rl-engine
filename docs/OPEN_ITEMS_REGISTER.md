@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v45 2026-07-13 (EXPORT RETURN PRESCREENED PASS — zero EV movers supervisor-reproved row-by-row; lineage hops kq4dae@917e4c4 → export-display@0654897 (PR #68 = the candidate of record); barker/thredgold tags LIVE; S3/S4/S5 issued on the final head; the lens-discount question queued to the board-view sitting. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v46 2026-07-13 (THE LENS PROJECTION LAW ruled — owner picks (b) "clearly": the +1/+2 lens must show the model’s PROJECTED value at year N, expected production credited for gap years; build rides the flattery-fix chapter; the queued board-view lens letter CLOSES early. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -471,10 +471,17 @@
     designated push branch was rebuilt from 917e4c4 per the ruled option-1 (safety gate passed:
     all 12 discarded local commits reachable from origin/main; remote branch had been deleted, push
     created fresh — nothing overwritten).
-    **NEW OWNER LETTER (queued to the v2.9 BOARD-VIEW SITTING, not before): THE LENS DISCOUNT** —
-    the +1/+2 lens conservation diagnostic shows the forward spread wide of conservation
-    (+1 ≈ −21% · +2 ≈ −38%). Whether that forward discount is right is the owner's lens-philosophy
-    call, made looking at the board.
+    THE LENS DISCOUNT LETTER — **RULED EARLY (owner 2026-07-13, "B, clearly"): THE LENS
+    PROJECTION LAW.** The +1/+2 lens must show what the model PROJECTS the player to be valued at
+    one/two years from now — expected production credited for the gap years — NOT the current
+    frozen-record construction (rl_export.py L85: ev(player, 2027/2028) on a record with no
+    2027/2028 games; supervisor-measured age gradient vP1/v: ≤22 = 0.594 · 23–27 = 0.706 ·
+    28+ = 0.873 — runway burns, production never accrues; players-only spread −26.3%/−43.6%,
+    −21.0%/−38.3% after the 30 pick placeholders). BUILD RIDES THE FLATTERY-FIX CHAPTER as its
+    lens leg (same expectation blind spot, one mechanism family). INTERIM (until that build):
+    v2.9 ships with the current lens — treat it as a NO-IMPROVEMENT FLOOR view; **cross-age trades
+    must NOT be read off the +1/+2 lens** (young shown at 0.59, old at 0.87 — systematically
+    favours veterans). Rejected: cosmetic total-rebase (fakes conservation, hides runway burn).
     AUDIT STATE: S1/S2 pinned to 917e4c4 REMAIN VALID (value-identity between heads supervisor-
     proven above); S3/S4/S5 ISSUED on the final head 0654897 / board f2d6e3f5. Census pinned
     917e4c4 remains valid on the same identity.
