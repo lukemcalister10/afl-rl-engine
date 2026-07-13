@@ -50,14 +50,19 @@ print("    building board ON  (default) ...")
 on = build(True)
 
 # --- the ON board, with every `ov` block stripped, must be byte-identical to the OFF board ---------------
+# `ov` and `vRaw` are the override's DISPLAY block: `ov` is the overridden rail, `vRaw` is the pre-override
+# model figure (= engine v), stamped ONLY on overridden rows for the UI hover (§7.3; export-display field
+# added after this test). Neither is read by any guard/aggregate/book/parity (verified: UI-only). So the
+# exclusion invariant is "ON board minus {ov, vRaw} == OFF board, byte-for-byte".
 on_stripped = copy.deepcopy(on)
 overridden = []
 for row in on_stripped['active']:
     if 'ov' in row:
         overridden.append(row['key'])
         del row['ov']
+        row['vRaw'] = None   # reset the override's pre-override display figure to the un-overridden (OFF) value
 check(json.dumps(on_stripped, sort_keys=True) == json.dumps(off, sort_keys=True),
-      "ON board minus every `ov` block == OFF board, byte-for-byte (aggregates/curves/values untouched)")
+      "ON board minus every `ov`+`vRaw` override-display block == OFF board, byte-for-byte (aggregates/curves/values untouched)")
 
 # --- exactly the intended player(s) carry an override, and NOTHING else differs -------------------------
 off_keys = {r['key'] for r in off['active']}
@@ -85,11 +90,15 @@ if 'ov' in brod_on:
           "displayed value == round(v * factor) = %d (got %s)" % (int(round(brod_on['v'] * 0.5)), ov.get('dispv')))
     check(isinstance(ov.get('mark'), str) and 'OVERRIDE' in ov['mark'].upper(),
           "displayed row carries a visible override MARKER (got %r)" % ov.get('mark'))
-    # the difference between the two Brodie rows is EXACTLY the added ov key, nothing else
+    # the two Brodie rows differ by EXACTLY the added `ov` key + the `vRaw` display figure, nothing else
     diff_keys = set(brod_on) ^ set(brod_off)
-    check(diff_keys == {'ov'}, "Brodie row differs from OFF by exactly {'ov'} (got %s)" % diff_keys)
-    same = all(brod_on[k] == brod_off[k] for k in brod_off)
-    check(same, "every other Brodie field is identical on vs off")
+    check(diff_keys == {'ov'}, "Brodie row differs from OFF by exactly the added {'ov'} key (got %s)" % diff_keys)
+    check(brod_on.get('vRaw') == brod_on['v'],
+          "Brodie vRaw (pre-override display figure) == engine v %s — the override never moved v (got %s)"
+          % (brod_on['v'], brod_on.get('vRaw')))
+    check(brod_off.get('vRaw') is None, "OFF board: Brodie vRaw is None (stamped only when overridden)")
+    same = all(brod_on[k] == brod_off[k] for k in brod_off if k != 'vRaw')
+    check(same, "every other Brodie field (bar the `vRaw` override-display figure) is identical on vs off")
 
 print("\n" + ("PART B EXCLUSION TEST FAILED: %d check(s)\n  - " % len(FAIL) + "\n  - ".join(FAIL) if FAIL else
       "PART B EXCLUSION TEST PASSED: guards/aggregates/values byte-identical on vs off; only Brodie's DISPLAYED row differs (+ov ×0.50 marked)."))
