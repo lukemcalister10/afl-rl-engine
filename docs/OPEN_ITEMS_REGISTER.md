@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v48 2026-07-13 (THE FLATTERY CENSUS RECONCILED: PASS — 123 players carry +19,168 SCAR of par-relative flattery; top: daicos +845 · wanganeen-milera +753 · gulden +695 · green +614 · newcombe +560; board-wide carrier = the PAR-BAND BASE (98/123), iso a minority (25); gate pre-read: removal makes G-COHORT SAFER. Two fix-chapter design flags raised (G-PEAK collision · reference-frame). Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v49 2026-07-13 (SHARD S1 RECONCILED: PASS on every check — AND ITS "SURPRISE" IS REAL: the shipped board is missing the BRODIE OWNER OVERRIDE (silent no-op when the override file is not found); supervisor-confirmed on the FINAL board f2d6e3f5. ONE small pre-view fix job opened + hardening set. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -511,6 +511,42 @@
     engine/store/config stamps == manifest + the code-reading basis assertion + recompute ONLY
     the final aggregation from the committed matrix (cheap); reduced independence DISCLOSED in
     the reconciliation (the matrix file is the build's, stamp-verified).
+    **S1 (BOOT + INTEGRITY) — RECONCILED: PASS on its slice** (returned 2026-07-13, SHA 917e4c4
+    cited; fence held; honest process caveat disclosed and self-corrected — a killed Guard-4 run
+    was caught, the dirtied workspace store restored, the canary re-run detached to completion):
+    Guard 5 PASS · all five SSI guards PASS from fresh bootstrap (canary ward 1735→6273 survives
+    board AND book) · config manifest 69ead79b944d computed live, ambient clearing behaves to spec
+    (divergent → HALT · unknown RL_* → HALT · canonical → cleared/reloaded) · store md5 recomputed
+    == b0c39d78.
+    **⚠ S1 FINDING — THE BRODIE OVERRIDE IS MISSING FROM THE SHIPPED BOARD (REAL; supervisor-
+    confirmed on the FINAL board f2d6e3f5: will-brodie carries NO `ov` block; no ov anywhere on
+    the board; the repo's data/owner_overrides.json carries the ×0.50 ruling).** Root cause
+    (shard-reproduced byte-for-byte): owner_overrides.py resolves the override file via
+    RL_REPO / CLAUDE_PROJECT_DIR / a ../..-of-__file__ fallback; from the bootstrap workspace all
+    three miss, load_overrides() returns [] SILENTLY — no warning, no halt — and the export ships
+    override-less. Every shipped board this chapter was built in such a workspace ⇒ the omission
+    is uniform. NUANCE ON S3's B4: its "byte-agree" regen ran in the same workspace pattern —
+    two identical omissions agreeing; parity was true but blind to this field BY CONSTRUCTION
+    (all guards/parity read `v`; the override is display-only, engine v untouched, 0/804 differ).
+    CONTRIBUTING GAPS (shard-found): (a) expected_boot.json's "board" pin is DECORATIVE —
+    boot_guard.py never asserts it; (b) RL_NO_OWNER_OVERRIDES sits in INFRA_ALLOW, so gate/bake
+    mode neither rejects nor clears it; (c) boot_guard compares 8-char hash prefixes only;
+    (d) manifest names SINGLE_SOURCE_INVARIANT_v1.2.md, repo file is SINGLE_SOURCE_INVARIANT.md
+    (seam-fold note).
+    **DISPOSITION: ONE SMALL PRE-VIEW FIX JOB (directive issued this turn)** — the owner views
+    the board BEFORE the bake word, and the viewed board must carry his standing override; a
+    silent [] on a missing owner-ruling file is the halt-not-warn doctrine inverted. FIX SET:
+    (1) owner_overrides resolution HALTS (never []) when the file cannot be found in any
+    non-dev mode; (2) a PRESENCE ASSERTION — every key listed in owner_overrides.json must carry
+    its `ov` block on the exported board, else HALT (the correction-sticks pattern applied to
+    overrides); (3) boot_guard ASSERTS the board pin (no decorative pins); (4)
+    RL_NO_OWNER_OVERRIDES out of INFRA_ALLOW for gate/bake modes; (5) full-hash compares in
+    boot_guard; (6) regenerate + re-pin the board WITH the override + UI re-extract. HARD
+    ACCEPTANCE: the board diff vs f2d6e3f5 is EXACTLY one row one field (will-brodie gains `ov`,
+    displayed 538 with the OWNER OVERRIDE mark) · 0 `v` movers 804/198 · sum unchanged.
+    AUDIT VALIDITY: S3/S4/S5 slices read `v`/acceptance/book — unaffected; the reconciliation
+    carries the supervisor-verified single-field diff across the head move (same identity
+    pattern as S1/S2's basis).
     **AUDIT-SIZING RULE (S6, joins the v38 speed rules; owner-raised after S1/S2 strain):**
     incognito audit shards are sized to finish inside ONE tool-use window: long computes run
     nohup-background with completion markers and SPARSE polling (few tool calls); anything
