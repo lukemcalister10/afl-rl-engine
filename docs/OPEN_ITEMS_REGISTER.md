@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v56 2026-07-13 (**THE BAKE WORD IS GIVEN** — owner, in writing, after the board view: "Bake." The pre-staged directive fires at head 0654897 (verified unmoved at the word). ALSO RULED: the flattery fix = EVIDENCE-WEIGHTED PAR DECAY ("by the time a player is valued on production, it probably doesn’t make much sense to retain it"); shadow board = the fix chapter’s first artifact. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v60 2026-07-13 (Owner: the ten have DRAFT CLUB == CURRENT CLUB — recorded as ground truth (they are one-club players; the nulls are missing draft ROWS, not different clubs) ⇒ item 20 gains a draft-club backfill + a NON-INFERENCE fence. ITEM 20 HELD until v2.9 promotes (CONCURRENCY: one store-writer; the bake IS the writer in flight). Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -756,6 +756,62 @@
     census's ev_ref machinery, read-only). Acceptance test = the PROPOSED INVARIANT (same age +
     record ⇒ lower pick never strictly above higher) — formal ruling at the fix chapter's open.
     F1 (G-PEAK collision) and F2 (reference-frame) ride the fix directive as design constraints.
+
+31. THE BLANK ValueBoard — DIAGNOSED (owner report 2026-07-13): the Matchday UI FAIL-CLOSED,
+    working as designed, on a STALE PIN. app/config.js line 10 still carries EXPECTED_BOARD
+    "de4baef9" (the pre-candidate pin) while the re-extracted bundles carry board f2d6e3f5 —
+    mismatch ⇒ the UI refuses to render (its Guard-5 analogue). **THE EXPORT BUILD'S RETURN
+    CLAIMED "EXPECTED_BOARD re-pin" (job ⑤) — the artifact shows it was NOT performed.**
+    Claim-vs-artifact gap recorded; SUPERVISOR MISS OWNED: the prescreen verified the board,
+    bundles, and zero-movers but never opened config.js to check that one claimed line — a
+    report-only claim rode into PASS unverified (rule 1's exact failure mode, caught by the
+    owner's browser).
+    DISPOSITION: no interim fix needed (the owner's board view used the sitting view; the word
+    is given). The BAKE's step 7 re-extracts vs the numéraire board and re-pins — REAL work now,
+    flagged to the bake build. **THE BAKE-RETURN PRESCREEN CHECKLIST GAINS: open app/config.js
+    and assert EXPECTED_BOARD == the new board id (never accept the claim).** (HANDOVER rev134
+    §2 updated in the issued copy.)
+32. GPT ADVERSARIAL REVIEW — RECORD CORRECTED (owner 2026-07-13): one WAS run earlier in the
+    project (pre-seat-4 vintage; v57's "never run" was wrong). ANOTHER is queued NEAR THE END
+    (owner-run, owner-timed) — after the flattery fix lands is the natural slot; the board it
+    reviews should be the one the league will live on.
+
+33. THE TEN CLUB-LESS BOARD ROWS — OWNER-SUPPLIED + SUPERVISOR-VERIFIED (2026-07-13; owner
+    caught them on the sitting view). Owner's data: dayne-zorko Brisbane · scott-pendlebury
+    Collingwood · ben-murphy Brisbane · kobe-mcdonald St Kilda · patrick-carr Richmond ·
+    oscar-berry Melbourne · indy-cotton Adelaide · cillian-bourke Essendon · wil-parker
+    Collingwood · jamie-elliott Collingwood.
+    **VERIFICATION (supervisor, against the store + the authoritative CSV): ALL TEN ALREADY MATCH
+    the CSV's `legacy_afl_club` column, verbatim — owner's ten == the file's ten, zero
+    discrepancies.** So the board's blanks are NOT missing data: they are the never-run import
+    (item 20(b): afl_club has never been read into the store; the CSV carries it).
+    ROOT CAUSE (why exactly these ten): the board's displayed `club` reads the store's `_club` =
+    the DRAFT club, which is NULL for rows with `draft: None` — precisely these ten: pre-2011
+    veterans (zorko pk41 2011 · elliott pk42 2011 · pendlebury pk5 2005) and 2025 rookies with no
+    draft record (wil-parker 2023 · ben-murphy · kobe-mcdonald · indy-cotton · oscar-berry ·
+    patrick-carr · cillian-bourke). Everyone else displays a draft club — which, per item 20(d),
+    is ALSO the wrong field for a CURRENT-club display (houston shows Port, not Collingwood).
+    ⇒ **ITEM 20 FIXES ALL TEN WITH NO EXTRA WORK**: (b) imports afl_club from the CSV, (d)
+    repoints the export's shipped `club` to afl_club. The blanks fill and the ~30 movers correct
+    in the same job. NOTHING TO ADD to item 20; its acceptance gains one line: **assert ZERO
+    empty `club` values on the exported board** (these ten are the natural red-path test).
+    OWNER'S DATA IS GROUND TRUTH regardless: if any CSV row ever disagreed with his list, HIS
+    LIST WINS and the CSV row is corrected — recorded here so the item-20 build has the ruling
+    in hand rather than inferring.
+    **OWNER ADDITION (2026-07-13): "All of those have the same draft club as current club."** ⇒
+    these ten are ONE-CLUB players; the null `_club` is a MISSING DRAFT ROW, not a different
+    club. TWO CONSEQUENCES for item 20: (i) the ten also get their DRAFT club backfilled
+    (_draft_club := the same club) — the draft-club field stops being null for anyone, so
+    draft/pick analytics no longer silently drop three pre-2011 veterans and seven rookies;
+    (ii) STRICT FENCE (owner-artifact doctrine): this equality is OWNER-DECLARED FOR THESE TEN
+    ONLY. The build MUST NOT generalise it into a rule ("null draft club ⇒ copy current club")
+    — for any OTHER null-draft row it STOPS and asks. No inference; the ten are enumerated.
+    ⚠ TIMING (owner asked whether to fire item 20 during the bake): **NO — HELD until v2.9 is
+    tagged and promoted.** CORE's CONCURRENCY rule: at most one store/engine-WRITING build in
+    flight, and the bake IS that writer. Item 20 writes the store. Firing it now would (a) race
+    the bake's regen/re-seal, (b) base itself on a head about to move, (c) invalidate the bake's
+    own board/book proofs. Its trigger is unchanged and already in the directive: v2.9 tag +
+    main promotion verified by fresh ls-remote.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
