@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v44 2026-07-13 (Owner rules: gardiner → K-DEF · whitlock → K-DEF,K-FWD (ride item 20) · BAKE-AND-CARRY the flattery blessed ("now that we know what it is") · THE FLATTERY CENSUS opened — read-only 804-row label-ladder sweep, fires now, arms the board view + the fix chapter. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v45 2026-07-13 (EXPORT RETURN PRESCREENED PASS — zero EV movers supervisor-reproved row-by-row; lineage hops kq4dae@917e4c4 → export-display@0654897 (PR #68 = the candidate of record); barker/thredgold tags LIVE; S3/S4/S5 issued on the final head; the lens-discount question queued to the board-view sitting. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -457,6 +457,27 @@
     good"). The armed L4 pool-isolation trigger (1178→851, −27.8% net, L4 −29.9% alone) has the
     owner's word on DIRECTION; MAGNITUDE remains his at the board-view rung per the standing
     on-sight rule. Trigger disposition: half-closed (direction), board view closes it.
+
+23. EXPORT/DISPLAY BUNDLE — PRESCREENED PASS (2026-07-13; branch claude/v2-9-export-display-jkcd5e
+    @ 0654897, PR #68; base kq4dae@917e4c4 verified an ancestor; store b0c39d78 unchanged;
+    rl_model/_merged_recover byte-empty diff). SUPERVISOR-REPROVED INDEPENDENTLY (not the build's
+    proof): 0 EV movers across 804 active + 198 back incl. all lens years · sum 732725 identical ·
+    new fields exactly {vPrev, vRaw, levers} · board 8a66b4ba → f2d6e3f5. barker/thredgold lti_reg
+    POPULATED (full structures read off the new board; root cause = split objects, fixed by
+    stable-key resolve in rl_export.py). Emmett sidecar == certification to the dollar (vPrev 1178 ·
+    L4 −352 · L2 +25). lensPicks = +1/+2 ONLY (item-14 exclusion undisturbed). Fence findings
+    disclosed: availability-haircut suspicion REFUTED (inert, delta=0).
+    **LINEAGE: the candidate of record = export-display@0654897 (PR #68).** kq4dae untouched; the
+    designated push branch was rebuilt from 917e4c4 per the ruled option-1 (safety gate passed:
+    all 12 discarded local commits reachable from origin/main; remote branch had been deleted, push
+    created fresh — nothing overwritten).
+    **NEW OWNER LETTER (queued to the v2.9 BOARD-VIEW SITTING, not before): THE LENS DISCOUNT** —
+    the +1/+2 lens conservation diagnostic shows the forward spread wide of conservation
+    (+1 ≈ −21% · +2 ≈ −38%). Whether that forward discount is right is the owner's lens-philosophy
+    call, made looking at the board.
+    AUDIT STATE: S1/S2 pinned to 917e4c4 REMAIN VALID (value-identity between heads supervisor-
+    proven above); S3/S4/S5 ISSUED on the final head 0654897 / board f2d6e3f5. Census pinned
+    917e4c4 remains valid on the same identity.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
