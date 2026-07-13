@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v63 2026-07-13 (SEAT-5 HANDOVER READY. ⚠ THE PACK IS NOT FILED: repo docs/ still holds manifest v4.9 · HANDOVER rev133 · DECISIONS v96, and a STRAY build-authored CONSTRAINTS_v1_8.md (da5f7f3) that the supervisor did NOT write — seat 5’s FIRST doc act is the pack-filing build + superseding that file. Everything else is current. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v64 2026-07-13 (✅ THE PACK IS FILED — seat 5, supervisor token pen, docs/-only: manifest **v4.11** · HANDOVER **rev134** · DECISIONS **v97** · CONSTRAINTS **v1.8** + **acceptance_v1.8.json**; v4.9/rev133/v96/v1.7 + the never-filed v4.10 archived; the STRAY build-authored CONSTRAINTS_v1_8.md (da5f7f3) archived WITH ITS OBITUARY. v63's "PACK IS NOT FILED" warning is now CLOSED. v2.9 remains canonical (tag 9f8ae76 · board 81e48293 · store b0c39d78). NEXT: ITEM 20. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -865,6 +865,45 @@
     CONSTRAINTS v1.8 draft · JOB A B1 code-conform · JOB B shadow board · Law-2 register template
     v2 · manifest v4.10 · HANDOVER rev134 · DECISIONS v97. Only the FLATTERY-FIX DESIGN directive
     is deliberately unwritten (held for Fable).
+    ✅ **CLOSED by item 36 — THE PACK IS FILED (2026-07-13).**
+
+36. **THE PACK FILING — DONE (2026-07-13, supervisor seat 5, TOKEN PEN, docs/-only).** Owner ruled
+    OPTION A (file the corrected pointer card, not the spent one) and granted the pen in place of a
+    build chat. Base pinned and verified before the push: main 35cf174 · tag v2.9 9f8ae76.
+    SEAM VERIFICATION FIRST — the v1.8 DRAFT's two [VERIFY-AT-SEAM] marks were resolved by the
+    supervisor against the BAKED board (fresh checkout of tag v2.9; board md5 81e48293 and store
+    b0c39d78 both RECOMPUTED, not quoted):
+      · A-DARCY avail_nerf = **−664** exact (avail_hc 0.7273 · lti_return_hc 0.0 · v 3865)
+      · G-CONVEX band aggregates ≤21 **202,650** (floor 180,140, +22,510) · 22-24 **189,507**
+        (floor 178,224, +11,283) · 25-26 **113,695** (floor 107,773, +5,922) — ALL CLEAR
+      · spot: A-BONT v 3,482 vs rebased baseline 3,084 = **+12.91%** (≥ +10%, PASS)
+    On that evidence CONSTRAINTS v1.8 was lifted DRAFT → **OFFICIAL** and acceptance_v1.8.json
+    regenerated from it (8 guards · 8 anchors · 2 laws — LENS-PROJECTION + CYCLE; parses clean).
+    FILED to docs/: 00_MANIFEST_v4_11.md · HANDOVER_rev134_2026-07-13.md ·
+    DECISIONS_v97_2026-07-13.md · CONSTRAINTS_v1_8.md · acceptance_v1_8.json.
+    ARCHIVED (git mv, history preserved): v4.9 · rev133 · v96 · CONSTRAINTS_v1_7 · acceptance_v1_7
+    · 00_MANIFEST_v4_10 (supervisor-issued + owner-held, NEVER repo-filed, spent on arrival — its
+    bake-in-flight note, its "CONSTRAINTS stays v1.7" pointer and its register-v58 line were all
+    false by filing time; THIS is why option A was taken: a stale pointer card in the canonical
+    home is the exact failure the freshness check exists to catch).
+    THE STRAY, WITH ITS OBITUARY: docs/CONSTRAINTS_v1_8.md — authored by a BUILD (da5f7f3, the
+    v2.9 refit-cert job), a doctrine breach (builds never author docs, CORE) — was `git mv`'d to
+    docs/archive/CONSTRAINTS_v1_8_STRAY_build-authored_da5f7f3.md **before** the supervisor's v1.8
+    was placed at that path (ordering matters: the reverse would have eaten the new file), and the
+    obituary block prepended. WHAT WAS RIGHT: its numéraire re-quote table (folded verbatim into
+    v1.8). WHAT WAS WRONG: its "the frozen suite is authoritative" conform of G-COHORT — OVERRULED
+    by the owner's 2026-07-13 ruling (v52): the July-8 construction IS the gate and the frozen code
+    conforms to IT.
+    FIDELITY: the three supervisor-issued files were md5-asserted after placement and match byte
+    for byte what was sent to the owner (manifest e92b5456 · constraints 93803552 · acceptance
+    21bfa35e). HONEST CAVEAT (supervisor-declared): the owner's attachments were NOT on the seat's
+    disk — HANDOVER rev134 and DECISIONS v97 were reconstructed from the in-context copies he
+    couriered, so they carry NO md5 round-trip against his originals. Filed md5s for his check:
+    HANDOVER fb020b43 · DECISIONS e081c746. Any byte difference is a supervisor error, not a build
+    error, and is correctable by a one-line re-file.
+    FENCE HELD: docs/ ONLY. No engine, store, board, gate, suite, panel, artifact or session file
+    touched; nothing was run. v2.9 is canonical and untouched.
+    NEXT: **ITEM 20** (directive owner-held, LIVE).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
