@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v28 2026-07-12 (THE v2.9 SLATE COMPLETE — all seven ruled; the ruling card is item 17)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v33 2026-07-12 (PROVISION ✓ PRESCREENED PASS — PR #66, zero movers, apply welded OFF, 625/625 proof; retiree-ID wrinkle noted; merge word asked. v2.9 continuation in flight)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -211,9 +211,60 @@
       even when I don't like it").
     D7 POOL = (a) FULL EXCLUSION + MEMBERSHIP STABILITY AGREED (facts-based training list: entry
       door + debut window; edit tripwire; labels stay as modeling inputs everywhere).
+    THE NUMÉRAIRE LAW (owner-ruled 2026-07-12: "Rebase, 3000 is it."): PICK 1 = 3000 IS THE
+    NUMÉRAIRE. The v2.9 candidate gains L7 — THE RE-BASE, its FINAL step: one declared uniform
+    ÷1.0524 across every player value, pick value, anchor baseline and absolute-SCAR constant;
+    assert ALL ratios preserved (pre/post check) and adopted_curve[1] == 3000 exactly; commit the
+    constants re-quote table (A-BONT baseline back to the 3084 class · the G-CONVEX bands · every
+    absolute threshold; CONSTRAINTS v1.8 folds them at the seam). STANDING + MECHANICAL: a
+    NUMÉRAIRE ASSERT joins the export/bake checklist — any future board with pick-1 ≠ 3000 HALTS;
+    future scale drift re-bases the CURRENCY to the anchor, never the anchor to the drift.
+    SUPERSEDED: the v29 "adopt at 3157" reading — correct as units logic, replaced by the
+    quotation ruling (equivalent relative worlds; the owner picked the 3000 quotation).
+    RATIFIED CLARIFICATIONS (v29, now owner-covered): (i) never scale the pick top alone (the
+    units principle stands inside L7) — the owner's locked pick-1
+    anchor is 3000 in PRE-re-denomination units ⇒ 3157 in board SCAR (3000 × the ruled ×1.0524,
+    CONSTRAINTS v1.7 header: "picks scale with the currency"; the shipped v3.4 top == 3157.2
+    exactly); adopting at raw 3000 would be a silent 5% pick devaluation from a units mismatch.
+    (ii) L5 LATER-ENTRY RECORD = type SSP + re-entry year + pick None (SSP is pickless by
+    convention; the ruled exception says record the later entry, and a later SSP entry carries
+    no pick); original-entry facts remain in the identity evidence; training membership follows
+    the facts-based law (out on the debut-window leg — named). (iii) L6 STOP stands as directed;
+    (iv) candidate PR at the return, not mid-job.
     EXECUTION: the ONE COMBINED CANDIDATE per the 2026-07-12 synthesis (one refit · one cohort
     re-measure · one gate suite · per-lever attribution · emmett named · the trio entry-switch
     rides · the nonsense-review trigger armed). Full Tier-1 ladder → bake v2.9.
+
+18. v2.9 MID-CHAPTER FINDINGS (checkpoint 9d7984f, supervisor-verified 2026-07-12):
+    (a) READS SEALED (owner word) — the board-view gate is armed; numbers keep routing through
+        the supervisor until the ladder's view rung.
+    (b) L2 DECOUPLED: the "L1(b) removes the prior-cap artifact" claim is REFUTED by the build's
+        own assert-order proof (emmett 913 at 0.13 with AND without adoption). DIAL 14 STANDS —
+        the banked sweep proves the artifact bites only at ≤13, so 14 is safe on its own merits;
+        the owner's "14 for now" was never premised solely on the rescue claim. CONSEQUENCE: any
+        FUTURE drop below 14 requires the cap dealt with first. RUC_PRIOR_CAP LIFT = a PROPOSED
+        mechanism (unruled; do not ship) riding the L6/scarcity ruling moment, where emmett's
+        corner is already the named case.
+    (c) TRIO HALF-APPLIED: the loaded engine already carries a partial trio override (SSP
+        pedigree, pick capital retained; perez ev=14) — the store-vs-engine gap the register
+        didn't see; RESOLVED by the ruled v30 fields (SSP · re-entry year · pick None); the L5
+        completion reconciles it.
+    (d) L1 REAL-ADOPTION PATH: RL_PVCFIT=1 moves nothing (draftval frozen); true adoption =
+        the _PVC0 swap + V0/RUC rebuild, riding the L4 refit per the one-candidate law.
+    (e) L7 VERIFIED at checkpoint: re-quote table round-trips exactly (A-BONT 3084 · G-CONVEX
+        180140/178224/107773 == the pre-scale v1.6 values · SCALE back to the baked-v2.7 4.45);
+        the numéraire assert wired + unit-tested, dormant on today's board.
+    L3 CHECKPOINT (a00c782, 8 commits): L3a s(age) VERIFIED (reproduces l7hinr to the number;
+    43 movers net +1670; BUTTERS 6060→5997 = −1.04%, inside the 2% G-PEAK tolerance — the
+    flagged margin HOLDS; anchors byte-identical). L3b: the DELTA is in hand (+2.3pt y4 spend;
+    dial-14 adds ~2.4pt; combined projection ≈128.5% holds — the one-candidate law vindicated
+    numerically) but the build correctly REFUSED to certify on its ad-hoc construction (baseline
+    137.8% vs the audited harness's ~128.6–128.8, the v2.6 bake-guard lineage) — a ~9pt
+    convention gap. CONTINUATION SEAT (directive issued, pinned @ a00c782): (1) reconcile the
+    harness to the audited s4_matrix walk-forward (basis by CODE READING per the G-COHORT law),
+    (2) run the ONE combined gate (L1+L4+L2+L3; L7 ratio-invariant), (3) wire the permanent
+    refit (all levers on disk; _PVC0 swap + V0/RUC rebuild; pins move in-commit; L7 LAST),
+    (4) author + run SPEC_1–4 on the post-L4 world; L6 STOP stands; PR at the return.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
@@ -239,6 +290,14 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
   June-28 Stage-2 OWNER GATE (trajectory-curve read) — and the OWNER-HELD eligibility/positioning
   registers, couriered at fire time).
 
+## COMPLETION PATH — INGESTION PROVISION ✅ BUILT + PRESCREENED PASS (PR #66 @ e529aae,
+2026-07-12; supervisor-verified: 8 new files only · store/board byte-untouched · zero movers ·
+APPLY_DEFAULT=False + env unset (both halves of the switch OFF) · 625/625 byte-for-byte dry-run,
+0 exceptions · runbook committed). WRINKLE (disclosed + registered): the 1848 _retired store rows
+carry no stable ID, so a named retiree hits the exceptions layer as no_stable_id (still caught
+loudly); FUTURE ITEM (owner schedules): extend stable IDs to historical rows for label-accurate
+exceptions. Awaiting the owner's merge word (disjoint from the v2.9 candidate — safe to merge
+now).
 ## COMPLETION PATH (order owner-ruled; AMENDED 2026-07-12, owner-worded: "I want adding weekly
 scores to be the last thing we start doing, once the build is near perfect. But building
 provision for it can be now." ⇒ the INGESTION PROVISION build — parser, resolver wiring,
