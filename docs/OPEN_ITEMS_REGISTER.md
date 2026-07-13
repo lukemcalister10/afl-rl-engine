@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v39 2026-07-13 (L6 DENOMINATOR DEFECT — owner-caught: the "220-ruck market" counted 162 RETIRED rucks; corrected active-only cut recorded, hold-92 case STRENGTHENED; emmett L4 direction BLESSED by owner word, magnitude at board view. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v40 2026-07-13 (THE SSP WORD: 92 HOLDS — owner-ruled on the corrected active-only scarcity cut; the L6 STOP closes; the ~51 candidate line is REJECTED-for-now with the scarcity rationale recorded. Both follow-up directives pasted; SPEC + EXPORT builds in flight. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -375,6 +375,15 @@
     FIX PATH: SPEC_4 (the scarcity write-up in the SPEC directive) re-cuts on ACTIVE-ONLY, commits
     the corrected table, and records the original artifact's defect as an obituary note. The
     original L6 artifact stays as-committed (history), superseded by SPEC_4's corrected table.
+22a. THE SSP LINE — RULED: 92 HOLDS (owner word 2026-07-13, "92 is fine", given ON the corrected
+    active-only scarcity cut of item 21 — 55 active rucks, 14 startable <1/club, thin depth band).
+    The D4 hold ("rule when the scarcity leg lands") is DISCHARGED; the L6 STOP closes. The ~51
+    candidate (register item 16, the 92→~51 SSP pedestal line) is REJECTED-for-now — obituary:
+    its supporting leg ("backup bodies plentiful, 178 sub-400") was the denominator defect; on
+    corrected numbers scarcity supports the insurance premium, consistent with the owner's
+    Part-1b replacement-bar rationale (ruck scarcity taxes deliberate). Resurrection trigger:
+    a future active-only cut showing the depth band genuinely deep, or an owner philosophy word
+    against pickless insurance premiums. SPEC_4 writes to this ruling (not conditional branches).
 22. EMMETT NONSENSE-TRIGGER — DIRECTION BLESSED (owner word 2026-07-13: "Emmett dropping is
     good"). The armed L4 pool-isolation trigger (1178→851, −27.8% net, L4 −29.9% alone) has the
     owner's word on DIRECTION; MAGNITUDE remains his at the board-view rung per the standing
