@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v38 2026-07-13 (THE BUILD-SPEED RULES registered, owner-ruled ["happy to trust your judgement"]: hash-cached artifacts · one-job fences · parallel-analysis default · frozen-suite-only line — operative NOW in every directive; CORE fold at the seam. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v39 2026-07-13 (L6 DENOMINATOR DEFECT — owner-caught: the "220-ruck market" counted 162 RETIRED rucks; corrected active-only cut recorded, hold-92 case STRENGTHENED; emmett L4 direction BLESSED by owner word, magnitude at board view. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -359,6 +359,26 @@
     breaches CORE's one-store-writer concurrency rule. COST ACCEPTED: the v2.9 board bakes carrying
     Bramble's known-wrong row (one phantom game, avg 0.1 high — his value slightly overstated).
     TRIGGER: v2.9 tagged + promoted.
+
+21. L6 SCARCITY MEASUREMENT — DENOMINATOR DEFECT (OWNER-CAUGHT 2026-07-13, post-prescreen).
+    The committed L6 artifact (d32bf29, "220 rucks priced · 178 sub-400") counted RUC-typed rows
+    WITHOUT an active filter: the store carries 232 RUC-typed rows all-time — 70 active, 162
+    RETIRED. Supervisor-verified corrected cut, ACTIVE BOARD RUCKS ONLY (shipped board 8a66b4ba):
+    **n=55 · startable ≥1500 = 14 (unchanged, correct) · 800–1500 = 7 · 400–800 = 20 · <400 = 14
+    (NOT 178 — the plentiful-bodies tail was overwhelmingly retired players).**
+    RULING IMPACT: the drop-to-~51 case ("backup bodies plentiful") is GUTTED; the hold-92
+    insurance case STRENGTHENS (55 rucks / 18 clubs ≈ 3 per club; startable <1 per club; genuine
+    depth band thin). Supervisor recommendation FIRMED: HOLD 92. Owner's SSP word still pending.
+    PROCESS LEARNING (prescreen practice, adopted): claim-vs-artifact reconciliation is not enough
+    — headline COUNTS get sanity-checked against the universe (active vs all-time) before a ruling
+    card is put to the owner. Credit: owner eyeball ("there are not 220 ruck eligible players").
+    FIX PATH: SPEC_4 (the scarcity write-up in the SPEC directive) re-cuts on ACTIVE-ONLY, commits
+    the corrected table, and records the original artifact's defect as an obituary note. The
+    original L6 artifact stays as-committed (history), superseded by SPEC_4's corrected table.
+22. EMMETT NONSENSE-TRIGGER — DIRECTION BLESSED (owner word 2026-07-13: "Emmett dropping is
+    good"). The armed L4 pool-isolation trigger (1178→851, −27.8% net, L4 −29.9% alone) has the
+    owner's word on DIRECTION; MAGNITUDE remains his at the board-view rung per the standing
+    on-sight rule. Trigger disposition: half-closed (direction), board view closes it.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
