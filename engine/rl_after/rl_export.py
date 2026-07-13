@@ -182,9 +182,24 @@ def player_rec(p):
             'P':1.0,   # establishment prob, FROZEN (draft-cohort property, not the SuperCoach toggle); 1.0 = established/inert
             'pedOnly':bool(p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly'))),   # pure-pedigree no-P case (genuine pre-debut); in-window 0-game players are NOT pedOnly -> they get P
             'brodieBase':bool(seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and (level_now(p) is not None) and level_now(p)>=80),  # Brodie signal minus the RUC bit (JS applies RUC exemption live)
-            'cat':p.get('_cat'),'draft':p.get('_draft'),'club':p.get('_club'),'mech':mech}
+            'cat':p.get('_cat'),'draft':p.get('_draft'),'club':p.get('afl_club') or p.get('_draft_club'),'mech':mech}
+            # (d) shipped `club` = the CURRENT AFL club (afl_club, imported item 20b), with a _draft_club fall-back
+            # for retired back-catalogue rows that carry no current club (never in the active player-ranking the
+            # owner views). Active 804 all carry afl_club -> houston displays Collingwood, not Port Adelaide; the
+            # ten club-less rows fill. affl_team (the AFFL keeper side) is a SEPARATE field, untouched.
 active=[player_rec(p) for p in players]
 back=[player_rec(p) for p in g['back_extra']]   # board-history-only rows (retired players recalled for -1/-2)
+# ==== (d) ZERO-EMPTY-CLUB ACCEPTANCE (register v59, item 20/33) — HALT on any blank `club` on the board ====
+# After the afl_club import (b) + the club repoint (d), EVERY exported row must display a club: active rows
+# carry the current AFL club (afl_club); back rows fall back to their draft club. The ten formerly-blank
+# rows (zorko/pendlebury/ben-murphy/kobe-mcdonald/patrick-carr/oscar-berry/indy-cotton/cillian-bourke/
+# wil-parker/jamie-elliott) are the natural red-path test. A blank here means the import missed a row.
+_club_blank=[r['key'] for r in active+back if not r.get('club')]
+if _club_blank:
+    raise SystemExit('ZERO-EMPTY-CLUB HALT (register v59): %d exported rows have an empty `club`: %s'
+                     % (len(_club_blank), _club_blank[:25]))
+print('ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across %d exported rows (active %d + back %d)'
+      % (len(active)+len(back), len(active), len(back)))
 coh=[]
 for p in hist:
     grp=GRP[p['pos']]; ep=effpk(p); pk=pkbest(p); rec={'grp':grp,'ep':ep,'pkbest':(round(pk,6) if pk else None)}
@@ -246,7 +261,7 @@ CAT_BY_CLUB={}
 for cat in ['Father-Son','Academy','Next Gen']:
     cl=defaultdict(list)
     for p in matured:
-        if cat_of(p)==cat: cl[p['_club']].append(p)
+        if cat_of(p)==cat: cl[p['_draft_club']].append(p)   # (c) CAT_BY_CLUB groups by DRAFT club (producing club) — its correct input; field renamed _club->_draft_club (item 20c). Output identical.
     rows=[]
     for club,grp in cl.items():
         if len(grp)<2: continue

@@ -5,10 +5,11 @@ MD.config = {
   /* Ring-fence: the UI refuses to render any board whose md5 head != this expected board id
      (md5(rl_app_data.json) == the pinned board id; the UI analogue of Guard 5, fail-closed).
      Moved 9ecbe0fa -> de4baef9 (ID-primary migration 2026-07-12) -> 81e48293 (v2.9 BAKE 2026-07-13:
-     L7 numéraire re-base + adopted-curve repoint + Brodie owner override, board display-only). The UI
-     board pin tracks the shipped board, same as data/expected_boot.json 'board'; the refreshed
-     board_view bundles carry srcmd5 81e48293 so the screens render the numéraire board, not fail-close. */
-  EXPECTED_BOARD: "81e48293",
+     L7 numéraire re-base + adopted-curve repoint + Brodie owner override) -> 3dc19fbb (ITEM 20 store-
+     identity job 2026-07-13: afl_club import + club-display repoint + bramble +1; display-only board
+     move, engine ev() unchanged). The UI board pin tracks the shipped board, same as
+     data/expected_boot.json 'board'; the refreshed board_view bundles carry srcmd5 3dc19fbb. */
+  EXPECTED_BOARD: "3dc19fbb",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
