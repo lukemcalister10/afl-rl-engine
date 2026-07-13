@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v33 2026-07-12 (PROVISION ✓ PRESCREENED PASS — PR #66, zero movers, apply welded OFF, 625/625 proof; retiree-ID wrinkle noted; merge word asked. v2.9 continuation in flight)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v34 2026-07-12 (PROVISION MERGED + VERIFIED — lane closed. ONLY the v2.9 continuation remains in flight)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -296,8 +296,9 @@ APPLY_DEFAULT=False + env unset (both halves of the switch OFF) · 625/625 byte-
 0 exceptions · runbook committed). WRINKLE (disclosed + registered): the 1848 _retired store rows
 carry no stable ID, so a named retiree hits the exceptions layer as no_stable_id (still caught
 loudly); FUTURE ITEM (owner schedules): extend stable IDs to historical rows for label-accurate
-exceptions. Awaiting the owner's merge word (disjoint from the v2.9 candidate — safe to merge
-now).
+exceptions. MERGED 2026-07-12 (#66 → main 22dd592, two-parent merge, supervisor-verified: parents
+40f7a84/e529aae · fence = the 8 ingestion files only · tag v2.8 unmoved · switch still welded
+off). PROVISION LANE CLOSED; go-live = the final owner-worded step per the runbook.
 ## COMPLETION PATH (order owner-ruled; AMENDED 2026-07-12, owner-worded: "I want adding weekly
 scores to be the last thing we start doing, once the build is near perfect. But building
 provision for it can be now." ⇒ the INGESTION PROVISION build — parser, resolver wiring,
