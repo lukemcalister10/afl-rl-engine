@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v66 2026-07-13 (✅ **ITEM 20 MERGED AND CLOSED** — owner merged PR #69; main **9eab9f3** · store **340a7a32** · board **3dc19fbb** · 804 rows, sum 696,248 · 0 blank clubs · Guard-5 pin moved with it; **v2.9 (9f8ae76) remains an ancestor of main and the canonical TAGGED board** — item 20 is a store write, not a re-tag. INGESTION CLUB BLOCKER CLEARED. OPEN: item 38's gate-invocation fix (folds into the B1 code-conform job). NEXT CHAPTER: FLATTERY FIX — shadow board first; the DESIGN directive is HELD FOR FABLE. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v67 2026-07-13 (JOB A v2 ISSUED — the B1 code-conform directive AMENDED and re-based (item 40): seat-4's pre-staged version fixed the gate's BASIS but not the FAILURE MODE that produced item 38's false PASS. Owner's word: "Amend A". JOB B (shadow board) fires as written. Item 20 CLOSED; working head 9eab9f3+ / store 340a7a32 / board 3dc19fbb; tagged board of record still v2.9 (9f8ae76 / 81e48293 / b0c39d78). Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -976,6 +976,44 @@
     word already given) must ALSO (a) fix the §8 invocation so the gate cannot silently no-op, and
     (b) delete the stale "official" label from the indexed script. A no-op that prints nothing must
     HALT the suite, not pass it (halt-not-warn, G-DATA).
+
+40. **JOB A v2 — THE B1 CODE-CONFORM DIRECTIVE, AMENDED AND ISSUED (2026-07-13, supervisor seat 5;
+    owner's word: "Amend A"). SUPERSEDES seat-4's pre-staged JOB A, which was NEVER FIRED.**
+    WHY AMENDED — seat-4's version fixed the gate's BASIS (July-8 construction in, indexed reading
+    demoted to a shape diagnostic) but NOT the failure mode that actually occurred at item 20
+    (item 38): the gate CRASHED, printed nothing, its traceback was swallowed by a `| tail -8` pipe,
+    no exit code was checked, and the suite reported PASS. Seat-4's red-path proof proves a BREACH
+    halts; it never proves that SILENCE halts. Three amendments folded in:
+    · **A3 — THE NEW RED PATH: SILENCE HALTS.** The gate must be made to produce NO result (missing/
+      unreadable matrix, or a raised exception) and the SUITE must HALT and exit non-zero with the
+      gate's ID named. An absent result is a FAILURE, not a pass — G-DATA halt-not-warn applied to
+      the gate itself, not merely to its verdict. Every gate block in ship_gates_check.py: an
+      exception / missing input / None result is a RED, never a skip. SHIP_GATES.md carries the
+      standing invocation rule (never pipe a gate through tail/head without checking its exit code).
+    · **THE FENCE NOW INCLUDES THE BROKEN PART.** Seat-4's fence was ship_gates_check.py's B1 block
+      ONLY — but the defect lived in the CALLER. Once B1 computes the ruled construction,
+      `session_2026-07-13/v2_9_continuation/scripts/cohort_gate_official.py` is a SECOND, DRIFTING
+      COPY of the gate (precisely the lookalike the invariant forbids): DELETE IT, WITH AN OBITUARY
+      (its "official" label predated the owner's 13-July ruling; it computed the DEMOTED indexed
+      reading; it silently no-oped at item 20). Historical session logs/returns are OUT — the record
+      of what happened is not rewritten.
+    · **RE-BASED.** Seat-4 pinned "main at/after the v2.9 promotion" — stale. Base pinned to main
+      **d8acc80** (store 340a7a32 / board 3dc19fbb, Guard 5 asserted at bootstrap).
+    ACCEPTANCE (four, all hard): A1 the numbers — class sums y1 69,840.0 · y2 79,298.2 · y4 88,002.4
+    · y5 86,652.9 · y6 80,460.5 over 17 classes (2004-2020, incurve ND+RD), den = min(y1,y2) = y1,
+    ratios **1.2601 / 1.2407 / 1.1521** to 4dp. TWO INDEPENDENT PROVENANCES THAT AGREE: S2's cold
+    shard at store b0c39d78 and the SUPERVISOR's own measurement at store 340a7a32 (this session) —
+    unmoved, because item 20's only value change was one scrap-floor row. · A2 breach HALTs ·
+    **A3 silence HALTs** · A4 store/board byte-unchanged and the suite's reds still exactly
+    {A2,A3,A12}.
+    LADDER: gate change = Tier 1 by CORE, but NO player value moves, so the "owner views board+book"
+    rung is empty by construction. SUPERVISOR RECOMMENDATION TO THE OWNER: **Tier-1-lite** —
+    supervisor prescreen against acceptance_v1.8.json + the two red-path proofs + his written word;
+    no cold audit, no board view. **THE OWNER MAY STILL CALL A COLD AUDIT — the directive tells the
+    build to assume nothing.** Ends in a candidate PR; no merge, no tag.
+    JOB B (THE SHADOW BOARD) fires AS WRITTEN — file-disjoint from Job A, read-only, may run in
+    parallel. It pins the v2.9 TAG and reads the BAKED board 81e48293, which item 39 now makes
+    unambiguous.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
