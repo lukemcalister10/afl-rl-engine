@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v62 2026-07-13 (**v2.9 IS TAGGED, PROMOTED AND CANONICAL — the tag is verified at 9f8ae76 by fresh ls-remote and by checking out the tagged tree itself: board 81e48293 · store b0c39d78 · pick-1 3000 · brodie displays 511 · UI pin correct. THE CHAPTER IS CLOSED. ITEM 20 IS NOW LIVE — its trigger has fired.** Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v63 2026-07-13 (SEAT-5 HANDOVER READY. ⚠ THE PACK IS NOT FILED: repo docs/ still holds manifest v4.9 · HANDOVER rev133 · DECISIONS v96, and a STRAY build-authored CONSTRAINTS_v1_8.md (da5f7f3) that the supervisor did NOT write — seat 5’s FIRST doc act is the pack-filing build + superseding that file. Everything else is current. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -843,6 +843,28 @@
     → type v2.9 → target 9f8ae76 (main) → publish. Or any shell: `git tag v2.9 9f8ae76 && git
     push origin v2.9`. v2.8 (9bd0cfd) remains the prior tag; v2.9 becomes canonical ON THE TAG.
     ITEM 20's trigger = the tag landing (then its directive fires as the next chapter's first job).
+
+35. **SEAT-5 ONBOARDING — THE HONEST STATE OF THE PACK (seat-4 close-out, 2026-07-13).**
+    CURRENT (repo = truth): main 4234bf5+ · **v2.9 tag 9f8ae76 = the canonical board** ·
+    board 81e48293 · store b0c39d78 · THIS REGISTER (v63) is fully current and is the ONLY list.
+    ⚠ **THE PACK IS NOT FILED — the standing pack-filing build has NOT run this seam.** Repo
+    docs/ still holds: 00_MANIFEST_v4_9.md · HANDOVER_rev133 · DECISIONS_v96 · CONSTRAINTS_v1_7 +
+    acceptance_v1_7. The CURRENT versions (manifest v4.10 · HANDOVER rev134 · DECISIONS v97 ·
+    CONSTRAINTS v1.8-DRAFT) are SUPERVISOR-ISSUED AND OWNER-HELD — per CORE rule 8 the newest
+    supervisor-issued file GOVERNS between filings, but a new seat reading docs/ blind would read
+    stale state. **SEAT 5's FIRST DOC ACT: the pack-filing build** (owner couriers the four files).
+    ⚠ **STRAY FILE: docs/CONSTRAINTS_v1_8.md EXISTS IN THE REPO AND THE SUPERVISOR DID NOT AUTHOR
+    IT** — committed by the refit-cert BUILD (da5f7f3, v2.9 candidate wiring). It is a build's
+    two-point draft (numéraire re-quote table — CORRECT and reusable; plus a "PROPOSED conform"
+    of G-COHORT that says "the frozen suite is authoritative" — **now OVERRULED by the owner's
+    2026-07-13 ruling: the July-8 construction is the gate, the frozen code conforms to IT**).
+    Builds never author docs (CORE). DISPOSITION: seat 5 files the supervisor's CONSTRAINTS v1.8
+    OVER it (the owner-held draft already folds the re-quote table verbatim and carries the
+    correct B1 ruling), and the stray goes to docs/archive/ with an obituary line.
+    THE SHELF (owner-held, authored, unfired): ITEM-20 directive (LIVE — trigger fired) ·
+    CONSTRAINTS v1.8 draft · JOB A B1 code-conform · JOB B shadow board · Law-2 register template
+    v2 · manifest v4.10 · HANDOVER rev134 · DECISIONS v97. Only the FLATTERY-FIX DESIGN directive
+    is deliberately unwritten (held for Fable).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
