@@ -42,5 +42,17 @@ anchor-pair ratios preserved** (<0.2%) ✓. bont 3664→3482 · gawn 2518→2393
 emmett 851→809. `rl_export.py (g)` numéraire guard LIVE (dormant on the pre-L7 board by design; HALTs pick-1≠3000
 in the numéraire world — unit-tested). CONSTRAINTS v1.8 constants re-quote committed.
 
-## 6. SHIP-GATES SUITE (five data guards · B3 seal · B4 parity · B1 · acceptance v1.7)
-_ship_gates_check.py running on the wired candidate — results appended on completion (expected reds EXACTLY {A2,A3,A12})._
+## 6. SHIP-GATES SUITE (ship_gates_check.py, engine 2030e5df) — CERTIFIED GREEN
+Full report: `session_2026-07-02/ship_gates_report_2030e5df.md` (copy: `ship_gates_report.md`; md5 b017eba5).
+**VERDICT: PASS=16 · FAIL=3 · DIFFERS-BY-DESIGN=1 · FEATURE=1 · PENDING=4 · STRUCK=1 (618s).**
+- **B1 cohort gate: PASS** — avg row 4:127 5:125 6:116, peak N=4, path_ok (reproduces 126.8/125.2/116.1 on the regenerated candidate matrix; engine/store/config stamps == candidate).
+- **B2 leave-cohort-out: PASS** — IS-WF leakage 0.000 %-pts.
+- **B3 book seal: DIFFERS-BY-DESIGN** — candidate head 2030e5df ≠ sealed head 7a07e369 (a NEW version); content current=c7825f1b vs baseline=e559eb6c (both 2649 players). NOT a within-head immutability violation — the book RE-SEALS at the bake (owner action).
+- **B4 board parity: PASS** — regenerated rl_app_data.json md5=8a66b4ba == shipped 8a66b4ba (byte-agree).
+- **B6 ramp · D14a/b/c · A9/A10/A11: PASS · five data guards + Guard 5: PASS.**
+- **ACCEPTANCE v1.7 — the 3 FAILs are EXACTLY the expected reds {A2, A3, A12}, all owner-ruled / data-caused; NO unexpected reds:**
+  - **A2** FAIL — Curtis ≥ 0.90×Ward: 1598 vs 1562 (Ward=1735, ratio 0.921); Weddle>Ward 1661 vs 1735. [D7: threshold held at 0.90 by ruling — Luke "we can look at Curtis down the line".]
+  - **A3** FAIL [DC] — Connor Rozee 2026=2396 / 2025=4464 ratio 0.54 (need ≥0.75). [Rozee out for 2026; knife-edge by design; AMENDED 0.80→0.75 D7, data-caused.]
+  - **A12** FAIL [DC] — Travaglia>Moraes 824 vs 1041; Smillie>Retschko 1349 vs 873. [travaglia leg owner-WAIVED 2026-07-11; data-honest red stands.]
+
+**Certification GREEN** (candidate). The B3 re-seal and the owner board+book reads sit ABOVE this rung at the bake ladder.
