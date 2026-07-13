@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v53 2026-07-13 (THE BLEND TEMPLATE CORRECTED: the owner’s sum-to-100 instinct IS the ruled Law-2 schema (streams, DECISIONS §28/§34, R-5) — template v1 WITHDRAWN, v2 issued to the ruled schema; supervisor process miss owned. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v54 2026-07-13 (SHARD S5 RECONCILED: PASS — reds exactly {A2,A3,A12}, anchors hold; A-CAM points DOWN on the proxy → the sitting card; L7 SHARPENED: the shipped pick CURVE is still v3.4×F (98/99 picks) — the bake gains the ADOPTED-CURVE REPOINT step. lukas-cooke → K-DEF (owner). Awaiting S4 only. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -450,8 +450,10 @@
     (1) darcy-gardiner "G-DEF,K-FWD" (no K-DEF) · (2) matt-whitlock "G-DEF,G-FWD,K-DEF" (no K-FWD
     — his G-DEF drops as companion, leaving a cross-end G-FWD on a K-DEF player). Both survive
     normalization under the cross-end-kept rule; owner RULED 2026-07-13: **gardiner → K-DEF**
-    (both raw tags wrong) · **whitlock → K-DEF, K-FWD** (genuine key swingman). Corrections ride
-    item 20's import. ANOMALIES CLOSED.
+    (both raw tags wrong) · **whitlock → K-DEF, K-FWD** (genuine key swingman) · **lukas-cooke →
+    K-DEF** (owner 2026-07-13; supervisor-verified: the CSV's current column says G-DEF but its
+    OWN legacy_eligibilities column AND the store's engine class both already say K-DEF — the
+    owner's correction restores agreement). Corrections ride item 20's import. ANOMALIES CLOSED.
     POSITIONAL ARCHITECTURE (recorded): L1-CURRENT — normalized current eligibilities drive ONLY
     the current-season slot value; identity-only today (ev() does not read them); VALUE wiring
     lands in the flex build under the standing law (current tags never influence future/past
@@ -659,6 +661,37 @@
     point (where corrected values converge) is a DESIGN + OWNER-RULING choice — the census is the
     SIZING and the before-map, NOT the literal per-player delta of the fix.
     Board-view use: the discount list arms the owner's eye; his reads remain ground truth.
+
+26. SHARD S5 (ACCEPTANCE + NUMÉRAIRE) — RECONCILED: PASS (2026-07-13, SHA 0654897 == pinned;
+    fence held; boot chain fully asserted incl. cm_400 + register hashes; frozen suite re-run 523s).
+    ANCHORS: A-BONT +12.88% PASS · A-GAWN +13.7% PASS · A-DARCY PASS (attribution −664 vs v1.7's
+    recorded −677 — a v1.8 RE-QUOTE item, the refit moved it) · A-DUUR direction PASS (mechanism =
+    S2's slice, green there) · A-PEAK PASS (butters −1.22%, holmes +3.22%) · A-FADE trajectory
+    PASS with the KNOWN basis ambiguity (already the registered v1.8 "A-FADE three" fold item;
+    vPrev ticks reported, unresolved by design) · A-PAIRS 1 PASS, 2 SKIP (young_gun_tbd,
+    owner-deferred) · **A-CAM: JSON-SKIP (null bound), but on the only computable proxy
+    jeremy-cameron points DOWN (1509 vs vPrev 1526, −1.11%) against a direction-up anchor —
+    OWNER-ON-SIGHT → ADDED TO THE BOARD-VIEW SITTING CARD.**
+    SUITE: PASS=16 · reds EXACTLY {A2, A3, A12} — reproduces the certification. LEG CLARIFICATION
+    (S5 vs the certification's phrasing): A2's red leg is WEDDLE < WARD (1661 vs 1735); the CURTIS
+    leg PASSES at 0.921 ≥ 0.90 — the certification's annotation read as if Curtis failed; the red
+    set is identical, the phrasing corrected here. B4 PASS (regen == shipped f2d6e3f5).
+    **L7 — SHARPENED (bake-directive ADDITION, registered so it cannot be omitted):** the shipped
+    board is pre-L7 AS DESIGNED (item 23/S3), BUT S5 found more: `adopted_curve[1]=3000` is NOT on
+    the shipped board at all (session artifact only), and **the shipped pick CURVE is still the
+    frozen v3.4×F — differing from adopted×F at 98 of 99 picks (only pick 1 coincides at 3157 =
+    3000×1.0524)**. Players are priced off the ADOPTED curve (L1); the displayed pick-asset curve
+    is the OLD one — a display-layer inconsistency in the same family as the club field. ⇒ THE
+    BAKE'S L7 STEP GAINS: repoint the shipped pick curve to THE ADOPTED CURVE (assert == the
+    stamped pvc_curve artifact; pick-1 == 3000 post-rebase; monotone non-increasing) — so the
+    baked board prices players AND picks in one currency off one curve. S5's own rebase pre-check:
+    0 strict inversions across 1002 values, all 10 anchor ratios preserved (worst drift 0.00158
+    vs 0.002 tol). ALSO the A13/A14 "two currencies in one run" oddity (suite stands-in 3000 while
+    the board ships 3157) resolves at the same step. DOC-HONESTY NOTE: the certification's
+    "display pick-1 3157→3000 ✓" described the SESSION ARTIFACT, not the shipped board — recorded.
+    MARGINS (S5's three, merged to the sitting card): butters −1.22% vs 2.00% (0.78pp headroom) ·
+    A2-Curtis 0.921 vs 0.900 (36 SCAR) · L7 ratio drift 0.00158 vs 0.002 · runner-up A-BONT
+    +12.88% vs +10%.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
