@@ -49,13 +49,16 @@ The **±1/2-yr lens** is `[vM2, vM1, v, vP1, vP2] = ev @ 2024/2025/2026/2027/202
 backward boards are real re-values on truncated data, forward boards are projections. Backward lenses include
 the `back[]` retired players — the full historical field is 1,002.
 
-## Export-contract gaps (honest; nothing invented, no recomputation)
-The v2.8 export does not yet carry two `DESIGN_DIRECTION §7.3/§7.4` fields. Both displays are **fully built and
-wired**; where the field is absent the UI shows a clean “awaiting” state and **never a fabricated number**:
-- **`vPrev`** (per-player last-accepted-bake value) → the Δ-vs-bake column/toggle.
-- **`vRaw`** (pre-override figure) → the `OWNER OVERRIDE` hover.
-- **`levers:[{label,delta}]`** → the full per-lever attribution waterfall on the card.
-Each is a one-line engine-side export addition (OUT of this UI's fence). When they land, no UI change is needed.
+## Export-contract fields (§7.3 — LANDED at v2.9; nothing invented, no recomputation)
+The v2.9 export now carries the `DESIGN_DIRECTION §7.3` fields the displays were pre-wired for. Where a
+field is null the UI still shows a clean “awaiting” state and **never a fabricated number**:
+- **`vPrev`** (per-player last-accepted-bake value = all-off base) → the Δ-vs-bake column/toggle. **Shipping.**
+- **`vRaw`** (pre-override figure) → the `OWNER OVERRIDE` hover. Shipping; null while 0 overrides are active.
+- **`levers:{L1,L4,L2,L3,L5}`** (cumulative G-ATTR deltas, Σ == v−vPrev) → the per-lever attribution on the
+  card. **Shipping**, sourced from the certified stage boards.
+Also new at v2.9 (items 12/14): **`lensPicks`** (future-lens phantom pick lines on the +1/+2 lenses only)
+and **`lensConservation`** (report-only lens-total continuity diagnostic). Populated by the export/display
+job; the ladder still renders players only.
 
 ## Fence
 IN: `ui/**` only — all new, disjoint from engine/store/gates; reads derived artifacts read-only.

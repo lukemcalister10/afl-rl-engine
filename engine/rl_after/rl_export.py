@@ -89,6 +89,41 @@ with _ctx.redirect_stdout(_io.StringIO()):
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
 
+# ==== CONSUMER-WIRING FIX — lti_reg tag on first-year no-scoring-row register rows (2026-07-13) ==========
+# The RL_AVAIL layer stamps the register disposition `_lti_reg` on the MA.data records. For MOST register
+# names the board `players` object IS that same MA.data object, so the tag rides through. But for the two
+# first-year (no store scoring row) register rows — harley-barker, blake-thredgold — the board `players`
+# list holds a SEPARATE synthesized object than the one RL_AVAIL mutated, so `_lti_reg` never reaches the
+# board object and both tags exported NULL (verified STILL NULL after the migration/refit regens: a regen
+# alone does not close it — the fix is CONSUMER WIRING). Resolve the register-disposition tag by STABLE KEY
+# from the engine records here. DISPLAY-ONLY: this reads the register tag (a fact from LTI_REGISTER.md),
+# never `v` — every board value is the already-computed `_v` and is untouched (zero EV movers by
+# construction). The board-native availability ATTRIBUTION fields (avail_hc / avail_nerf / lti_return_hc)
+# are left as the board object's own values; for these two the shipped board applied no availability
+# haircut — a valuation-path matter OUTSIDE this export/display fence, returned as a finding, not fixed.
+_lti_reg_by_key = {p.get('key'): p.get('_lti_reg') for p in data if p.get('_lti_reg') is not None}
+
+def _lti_reg_of(p):   # board tag if present, else the engine record's tag resolved by stable key (never None-drops a live register row)
+    return p.get('_lti_reg') if p.get('_lti_reg') is not None else _lti_reg_by_key.get(p.get('key'))
+
+# ==== (h) EXPORT ATTRIBUTION SIDECAR — vPrev (last-accepted-bake value) + per-lever G-ATTR deltas =========
+# Certified per-player attribution, committed as engine/rl_after/export_attribution.json and seeded to cwd
+# by bootstrap exactly like pick_redenomination.json / lti_return_table.json. It is DERIVED FROM the
+# certified G-ATTR stage boards (base → +L1 → +L1+L4 → +L1+L4+L2 → +L1+L4+L2+L3 → FULL), reproduced to the
+# dollar by the committed gen_gattr_chain.sh — i.e. taken from the certified attribution, NOT a new method.
+#   vPrev[key]  = the player's value on the last-accepted-bake board = the all-levers-OFF pre-refit base
+#                 (de4baef9 lineage, sum 723075 — the board on main this refit replaces) -> Δ-vs-bake column.
+#   levers[key] = {L1,L4,L2,L3,L5} cumulative deltas that sum EXACTLY to v-vPrev -> the per-lever hover.
+# Absent -> both ship null (forward-safe; the UI renders "awaiting", never a fabricated Δ). DISPLAY-ONLY:
+# neither field feeds `v` (every board value is the already-computed engine ev; zero EV movers).
+_EXPORT_ATTR={}
+if os.path.exists('export_attribution.json'):
+    _EXPORT_ATTR=json.load(open('export_attribution.json'))
+    print('EXPORT ATTRIBUTION: loaded vPrev/levers for %d keys (base sum=%s, from certified stage boards)'
+          %(len(_EXPORT_ATTR.get('vPrev',{})), _EXPORT_ATTR.get('base_sum')))
+_vprev_by_key=_EXPORT_ATTR.get('vPrev',{})
+_levers_by_key=_EXPORT_ATTR.get('levers',{})
+
 def player_rec(p):
     grp=bnow(p); gf=gfut(p); fb=futblend(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)
     g['STBL']=False; pn=peak_est(p); g['STBL']=True; ps=peak_est(p); g['STBL']=False
@@ -106,7 +141,10 @@ def player_rec(p):
             'avail_hc':p.get('_avail_hc',0.0),                       # RL_AVAIL present haircut L_p (register out-names; was b2hc)
             'avail_nerf':p.get('_avail_nerf',0),                     # Part-1 attribution: ev(layer)-ev(no-layer) per player (G-ATTR)
             'lti_return_hc':p.get('_lti_return_hc',0.0),             # Part-2 attribution: derived return-season haircut (own column, G-ATTR)
-            'lti_reg':p.get('_lti_reg'),                             # register disposition tag (section/designation/on-sight flags) or None
+            'lti_reg':_lti_reg_of(p),                                # register disposition tag (section/designation/on-sight flags), resolved by key for first-year no-scoring-row rows; or None
+            'vPrev':_vprev_by_key.get(p['key']),                     # §7.3 last-accepted-bake value (all-off base) -> Δ-vs-bake column; None if the row is new since the bake
+            'vRaw':None,                                             # §7.3 pre-override model figure; stamped (=v) only for owner-overridden rows, post-application below
+            'levers':_levers_by_key.get(p['key']),                   # per-lever G-ATTR cumulative deltas {L1,L4,L2,L3,L5} (sum == v-vPrev); None if attribution sidecar absent
             'P':1.0,   # establishment prob, FROZEN (draft-cohort property, not the SuperCoach toggle); 1.0 = established/inert
             'pedOnly':bool(p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly'))),   # pure-pedigree no-P case (genuine pre-debut); in-window 0-game players are NOT pedOnly -> they get P
             'brodieBase':bool(seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and (level_now(p) is not None) and level_now(p)>=80),  # Brodie signal minus the RUC bit (JS applies RUC exemption live)
@@ -292,7 +330,45 @@ TILT={k:g[k] for k in ['TILT_REF','GAIN_UP','W_UP','UP_MAX','TILT_HI','GAIN_DN',
 try:
     import lti_register as _LTIREG; _reg_md5=_LTIREG.file_md5()
 except Exception: _reg_md5=None
+
+# ==== (i) FUTURE-LENS PHANTOM PICK ENTRIES (items 12+14, owner-worded 2026-07-12) =========================
+# The current cycle's remaining picks are the next-EOY National Draft class — a class already in the league
+# whose players are not yet individually known. Per the owner's appearance law those lines belong on the +1
+# and +2 lenses ONLY: "the phantom entry for those picks should be in the +1 and 2 lens" — NEVER on the
+# current / −1 / −2 player ladder (item-14: "current board = PLAYER ranking only"; that exclusion is already
+# live and is NOT disturbed here — these entries are a SEPARATE lens-scoped array the ladder never reads).
+# Once the class is drafted the actual players carry the value and the line retires (Duursma precedent).
+# Value = entering-class PVC FACE value (the board's official 15%/yr time-discount view stands; no unruled
+# future-pick discount is invented — item 12 defers that dial). labelYear rolls with the view. The picks are
+# ND-scaled off the shipped PVC exactly like the trade-desk `picks` array. DISPLAY-ONLY: no player `v` moves.
+_EOY_CLS='%d-EOY-ND'%2026            # the next National Draft class (drafted end of 2026; plays from 2027)
+lensPicks=[{'n':n,'v':PVC[n],'lens':off,'labelYear':2026+off,'cls':_EOY_CLS,'kind':'phantom_pick'}
+           for off in (1,2) for n in range(1,31)]   # +1 (2027) and +2 (2028) lenses only
+
+# ==== (j) LENS-CONSERVATION DIAGNOSTIC (item 12; REPORT-ONLY, NOT a gate) =================================
+# The owner's year-0 continuity law rendered as a check: "−2 through today through +2 lens should have
+# similar-ish total value on each board" — value CONVERTS (classes enter as phantom picks; players fade out
+# the bottom / retire), it does not vanish. Each lens' total = Σ players' as-of value shown on that lens
+# (active carry vM2/vM1/v/vP1/vP2; backward-only rows surface on the −1/−2 lenses) + Σ phantom picks on that
+# lens. Declared caveats (owner): unexercised-pick face value with no future-discount + scrap-floor leakage
+# at retirements make the future lenses run slightly under — small and explainable, or itself a finding.
+_LENS_FIELD=[('-2','vM2',-2),('-1','vM1',-1),('now','v',0),('+1','vP1',1),('+2','vP2',2)]
+lensConservation={}
+for _lbl,_fld,_off in _LENS_FIELD:
+    _psum=sum((r.get(_fld) or 0) for r in active)
+    _nb=0
+    if _off<0:                                        # backward-only recalled players appear on −1/−2
+        _psum+=sum((r.get(_fld) or r.get('v') or 0) for r in back); _nb=len(back)
+    _pk=sum(pp['v'] for pp in lensPicks if pp['lens']==_off)
+    lensConservation[_lbl]={'lensYear':2026+_off,'players':_psum,'picks':_pk,'total':_psum+_pk,
+                            'nPlayers':len(active)+_nb,'nPicks':sum(1 for pp in lensPicks if pp['lens']==_off)}
+_cons_now=lensConservation['now']['total'] or 1
+lensConservation['_meta']={'principle':'year-0 continuity: value converts, does not vanish (item 12)',
+    'report_only':True,'basis':'PVC face value on future picks; no future-discount dial (deferred, item 12)',
+    'spread_vs_now':{_l:round(100*(lensConservation[_l]['total']-_cons_now)/_cons_now,2) for _l,_,_ in _LENS_FIELD}}
+
 out={'active':active,'back':back,'cohort':coh,
+     'lensPicks':lensPicks,'lensConservation':lensConservation,   # items 12/14: future-lens phantom picks + conservation diagnostic (report-only)
      'lti_register_md5':_reg_md5,   # R-REG=R2: stamp the availability input's identity into the derived board
      'BASEPK_REG':{f'{k[0]}|{k[1]}':round(v,3) for k,v in g['BASEPK_REG'].items()},
      'POOL':{str(k):round(v,3) for k,v in g['POOL'].items()},
@@ -340,8 +416,11 @@ import owner_overrides as _OV
 _ov_applied, _ov_warn = _OV.apply_to_board(active)
 for _w in _ov_warn:
     print('OWNER-OVERRIDE WARNING:', _w)
+_ov_keys={_k for _k,_f,_dv in _ov_applied}
+for _r in active:
+    if _r['key'] in _ov_keys: _r['vRaw']=_r['v']   # §7.3 pre-override model figure = the engine value (v is never overridden); UI hover shows it vs the overridden rail
 for _k, _f, _dv in _ov_applied:
-    print('OWNER OVERRIDE applied (display-only): %s ×%.2f -> displayed %d (engine v untouched)'%(_k,_f,_dv))
+    print('OWNER OVERRIDE applied (display-only): %s ×%.2f -> displayed %d (engine v untouched; vRaw model figure stamped)'%(_k,_f,_dv))
 
 _SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)
