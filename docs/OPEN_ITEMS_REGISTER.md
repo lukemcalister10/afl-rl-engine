@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v58 2026-07-13 (UI FAIL-CLOSED EXPLAINED: app/config.js EXPECTED_BOARD still pins de4baef9 while the bundles carry f2d6e3f5 — the export build’s claimed re-pin was NOT performed (claim-vs-artifact gap; supervisor prescreen miss owned); the BAKE’s UI step does it for real + the prescreen checklist gains the pin check. GPT-review record corrected: one WAS run earlier; ANOTHER queued near the end. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v59 2026-07-13 (BAKE FIRED. OWNER-SUPPLIED AFL CLUBS for the 10 club-less board rows — SUPERVISOR-VERIFIED: all ten already sit CORRECT in the CSV’s legacy_afl_club column; the gap is the never-run import, not missing data ⇒ ITEM 20(b) ALREADY FIXES ALL TEN. Diagnosis: the ten are draft=None rows (pre-2011 vets + 2025 rookies) — the display club reads _club (DRAFT club), which is null for them. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -775,6 +775,29 @@
     project (pre-seat-4 vintage; v57's "never run" was wrong). ANOTHER is queued NEAR THE END
     (owner-run, owner-timed) — after the flattery fix lands is the natural slot; the board it
     reviews should be the one the league will live on.
+
+33. THE TEN CLUB-LESS BOARD ROWS — OWNER-SUPPLIED + SUPERVISOR-VERIFIED (2026-07-13; owner
+    caught them on the sitting view). Owner's data: dayne-zorko Brisbane · scott-pendlebury
+    Collingwood · ben-murphy Brisbane · kobe-mcdonald St Kilda · patrick-carr Richmond ·
+    oscar-berry Melbourne · indy-cotton Adelaide · cillian-bourke Essendon · wil-parker
+    Collingwood · jamie-elliott Collingwood.
+    **VERIFICATION (supervisor, against the store + the authoritative CSV): ALL TEN ALREADY MATCH
+    the CSV's `legacy_afl_club` column, verbatim — owner's ten == the file's ten, zero
+    discrepancies.** So the board's blanks are NOT missing data: they are the never-run import
+    (item 20(b): afl_club has never been read into the store; the CSV carries it).
+    ROOT CAUSE (why exactly these ten): the board's displayed `club` reads the store's `_club` =
+    the DRAFT club, which is NULL for rows with `draft: None` — precisely these ten: pre-2011
+    veterans (zorko pk41 2011 · elliott pk42 2011 · pendlebury pk5 2005) and 2025 rookies with no
+    draft record (wil-parker 2023 · ben-murphy · kobe-mcdonald · indy-cotton · oscar-berry ·
+    patrick-carr · cillian-bourke). Everyone else displays a draft club — which, per item 20(d),
+    is ALSO the wrong field for a CURRENT-club display (houston shows Port, not Collingwood).
+    ⇒ **ITEM 20 FIXES ALL TEN WITH NO EXTRA WORK**: (b) imports afl_club from the CSV, (d)
+    repoints the export's shipped `club` to afl_club. The blanks fill and the ~30 movers correct
+    in the same job. NOTHING TO ADD to item 20; its acceptance gains one line: **assert ZERO
+    empty `club` values on the exported board** (these ten are the natural red-path test).
+    OWNER'S DATA IS GROUND TRUTH regardless: if any CSV row ever disagreed with his list, HIS
+    LIST WINS and the CSV row is corrected — recorded here so the item-20 build has the ruling
+    in hand rather than inferring.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
