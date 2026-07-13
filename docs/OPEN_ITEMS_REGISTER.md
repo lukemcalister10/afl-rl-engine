@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v51 2026-07-13 (SHARD S2 RECONCILED: PASS ON BOTH CONSTRUCTIONS — the BINDING July-8 basis computed independently for the first time: 1.2601/1.2407/1.1521 vs hard 1.3, all PASS; walk-forward HOLDS line-cited. The B1 code-vs-JSON tension is now SUBSTANTIVE, sharpened for the v1.8 conform-or-bless. Awaiting S4 · S5 only. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v52 2026-07-13 (THE B1 CONFORMANCE RULED EARLY — owner: "July 8 is correct… no need to rescale each class to 100, that sounds silly." The frozen suite conforms to the July-8 construction at the seam/next chapter; the indexed rescale is DEMOTED. History answered honestly: the July-8 basis was first mechanically computed by shard S2 TODAY — green. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -531,6 +531,30 @@
     (implement avg-of-sums · min(y1,y2) · per-year ≤1.3 in the frozen suite; keep the shape test
     as a secondary diagnostic). NOT bake-blocking: the binding bar is measured and green by
     independent audit; the code-conform is a next-chapter/seam change.
+    **THE B1 CONFORMANCE — RULED EARLY (owner 2026-07-13, closing the v1.8 conform-or-bless):**
+    "July 8 is correct — it's literally just the aggregated numbers on the walk-forward book. The
+    average year-4 value. There's no need to rescale each class to 100. That sounds silly."
+    ⇒ THE JULY-8 CONSTRUCTION IS THE GATE: raw class-year sums off the walk-forward book, averaged
+    across classes; each of y4/y5/y6 vs min(y1,y2), hard ≤1.3. The yr1=100 indexed rescale is
+    REJECTED as the primary gate (supervisor rec, unruled: keep the shape test as a SECONDARY
+    diagnostic — it catches pre-peak-dip pathologies the ratio cannot; owner may strike it).
+    IMPLEMENTATION: the frozen-suite code-conform is a gate change — the owner's word is NOW GIVEN;
+    execution rides the SEAM / next chapter's first code job (not the bake: changing the frozen
+    suite mid-bake is the pressure condition governance exists to avoid). The acceptance JSON is
+    already correct and stays.
+    THE HISTORY, ANSWERED HONESTLY (owner asked "were the numbers ever calculated on my ruling?"):
+    within the verified record — NO until today. Every headline gate figure this chapter (the
+    137.8 reconciliation · the 128.6/127.1/119.0 audited baseline · the 126.8/125.2/116.1
+    candidate row) was the frozen code's INDEXED construction (the owner's own 02/07 wording).
+    The July-8 wording lived in CONSTRAINTS/acceptance and was asserted in prose; **shard S2's
+    independent computation TODAY is its first mechanical measurement — and it is GREEN
+    (1.2601/1.2407/1.1521 ≤ 1.3, den = y1 = 69,840, the min() exercised).** The verdicts were
+    never wrong; the quoted numbers were from the other recipe. The acceptance file's own trap
+    language ("measured on the wrong basis = unmeasured") existed for exactly this; the
+    independent shard is what finally tripped it.
+    BAKE IMPACT: NONE — the binding bar is measured green at this store/engine, and the L7 rebase
+    divides ALL values uniformly ⇒ class-sum RATIOS are mathematically invariant under it; the
+    gate result carries through the bake unchanged.
     S1/S2 status: IN FLIGHT, STRAINED — owner reports two tool-limit extensions and a possible
     freeze on S2 (advice given: do NOT refresh incognito — the chat state is unrecoverable; a
     frozen page with a background compute may still land). FALLBACK IF S2 DIES (pre-authorized
