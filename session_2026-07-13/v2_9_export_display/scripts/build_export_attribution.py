@@ -12,7 +12,7 @@ This is the CERTIFIED attribution, not a new computation: it asserts the committ
 """
 import json, os, sys
 
-OUT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # repo root
+OUT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # repo root (scripts→v2_9_export_display→session_2026-07-13→repo)
 STAGE_DIR = os.path.join(OUT_DIR, "session_2026-07-13", "v2_9_refit_cert", "out")
 DEST = os.path.join(OUT_DIR, "engine", "rl_after", "export_attribution.json")
 
