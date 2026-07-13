@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v35 2026-07-13 (THE COMBINED GATE PASSES — 126.8/125.2/116.1 vs hard 130, prescreened; 137.8 refuted as construction; final continuation directive issued (refit wiring + SPECs + export); SEAT-3 ROTATES on this push)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v36 2026-07-13 (ITEM 20 OPENED — THE STORE-IDENTITY JOB, parked to post-v2.9 by owner ruling: bramble game-count correction · AFL-club column import · the id_resolver club-semantics defect · _club → _draft_club rename · the CSV archive rule. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -284,6 +284,59 @@
     seat-4 prescreen of the final return → cold audit → owner board+book vs SEALED reads → bake
     word → tag v2.9.
 
+20. THE STORE-IDENTITY JOB — PARKED TO POST-v2.9 (owner-ruled 2026-07-13, Branch A; supervisor-found
+    2026-07-13 while answering an owner games-played question; all findings verified at main 13f7803,
+    store b0c39d78). ONE Tier-2 job, run as the FIRST job after v2.9 tags + promotes. Five parts:
+    (a) BRAMBLE GAME COUNT (owner ground truth 2026-07-13: "872 points through 14 games, avg 62.29").
+        Store carries 2026 = 15 games @ 62.4 — the ONLY row in the store exceeding the round-14
+        ceiling (1 of 626 with a 2026 row; next 68 sit on 14). FIX: 2026 games 15→14, avg 62.4→62.3
+        (store convention is 1dp; 872/14 = 62.2857 — owner may rule 62.29 + a field widening instead);
+        career `games` 91→90 (`games` is the exact SUM of the scoring rows — verified).
+        NOT A PHANTOM: lachlan-bramble is IN the authoritative universe (source_row 158, stable id
+        afl-player-v1-b98529f9eca3cbf471fd). Owner accepts the value move; expect a small ripple
+        (precedent: the 5 DOB corrections moved 94 rows, 88 of them hairline ≤2 SCAR).
+    (b) AFL-CLUB COLUMN — NEVER IMPORTED. The store has NO current-AFL-club field (full field
+        inventory taken). `_club` is the DRAFT club (proven across 8 movers: kelly=Geelong,
+        dawson=Sydney, martin=Gold Coast, c.cameron=Adelaide, j.cameron=GWS, keays=Brisbane,
+        houston=Port Adelaide, lukosius=Gold Coast). The owner's authoritative CSV
+        (docs/inputs/authoritative_universe_v2.csv) DOES carry the CURRENT club in column
+        `legacy_afl_club` (keays=Adelaide · houston=Collingwood · lukosius=Port Adelaide ·
+        j.cameron=Geelong; 804 rows, 18 distinct values, 0 blanks). The migration (119c3e6) imported
+        stable_player_id + affl_team + eligibilities ONLY and left this column on the floor — within
+        the owner's clean-scope ruling, but a gap. FIX: add `afl_club` from that column (identity
+        field, not read by ev() ⇒ 0 board movers, per the affl_team precedent). `affl_team` (the AFFL
+        keeper side) is KEPT UNCHANGED — owner: "Having AFFL team as well is good. I like that."
+        Owner's worked example: Dan Houston = AFFL St Kilda, AFL Collingwood (NOT Port Adelaide).
+    (c) `_club` → `_draft_club` RENAME, KEEP (owner-ruled 2026-07-13: "rename club to draft club and
+        keep. It might come in handy some time. Just don't want to cross wire it ever."). Draft club
+        has a legitimate consumer — rl_export.py CAT_BY_CLUB groups Father-Son / Academy / Next-Gen
+        by producing club, for which the DRAFT club is the correct input. The failure was the NAME,
+        not the data: two club fields carrying two different true facts. NOT a duplication.
+    (d) id_resolver CLUB-SEMANTICS DEFECT (supervisor-found; INGESTION LANE, blocking go-live).
+        engine/rl_after/id_resolver.py documents `affl_team` as "current club" and its `_club_match`
+        breaks feed collisions against it. affl_team is the AFFL KEEPER side, not the AFL club
+        (houston=St Kilda Saints · lukosius=Essendon Bombers · j.cameron=North Melbourne Kangaroos).
+        A feed row "D. Houston, Collingwood" would be matched against "St Kilda Saints" and MISS.
+        Nothing is broken today — the APPLY switch is welded OFF — but this sits inside the collision
+        sentry built to keep the two Max Kings apart. FIX: match on `afl_club`; same job, same fix as
+        (b). Also repoint the export's shipped `club` field at afl_club (display-layer, no value change).
+    (e) THE CSV ARCHIVE RULE (SSI; owner-raised 2026-07-13: "more worried about data sitting in two
+        places at once"). VERIFIED: NO code path in engine/ or scripts/ reads the CSV at runtime — it
+        is a one-shot hand-used import, so there is no live second source today. The residual risk is
+        HUMAN: a file named "authoritative" sitting in docs/inputs/ duplicating identity data the store
+        now carries, read as current after the store has moved (the .pre_stage0 disease in a new hat).
+        RULE: at import, stamp the CSV header — `IMPORTED AT <sha>, store <before> → <after>; NOT A
+        SOURCE — do not read as current` — and move it to docs/inputs/archive/. That makes it what SSI
+        permits: a stamped, read-only, disposable artifact. The store becomes the SOLE carrier of every
+        club, ID and eligibility. RECURRING PATH (clubs drift each trade period): owner supplies a
+        fresh universe CSV → ONE import job → stamped + archived. Never a standing second file that
+        "should" agree with the store.
+    WHY PARKED (owner-ruled Branch A): a store md5 change now HALTS the in-flight continuation on
+    Guard 5, VOIDS the prescreened combined gate (126.8/125.2/116.1, measured on b0c39d78), and
+    breaches CORE's one-store-writer concurrency rule. COST ACCEPTED: the v2.9 board bakes carrying
+    Bramble's known-wrong row (one phantom game, avg 0.1 high — his value slightly overstated).
+    TRIGGER: v2.9 tagged + promoted.
+
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
 discount 15% this bake (fresh decision at v2.9) · Travaglia WAIVED · Kysaiah WAIVED · PVC letter
@@ -358,6 +411,9 @@ mostly landing.
 - PR #60 disposition + prebake-v2.4-anchor keep/delete: at the v2.8 close.
 - SEAM PACK filing (CONSTRAINTS v1.7 · CORE v2.3 · DECISIONS v94 · HANDOVER rev130): at the v2.8
   seam, supervisor push.
+- THE STORE-IDENTITY JOB (item 20, all five parts): TRIGGER = v2.9 tagged + promoted. First job of
+  the next chapter; Tier 2 (complete affected-row list owner-viewed), auto-escalates to Tier 1 if a
+  guard goes red. Owner has PRE-ACCEPTED the Bramble value move.
 
 ## PROCESS RULES BORN THIS CHAPTER (fold into CORE v2.3 at the seam)
 Tiered ladder · one bake per chapter · ask-before-correcting owner artifacts · owner rationale
