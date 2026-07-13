@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v50 2026-07-13 (Owner rules the override fix FOLDS INTO THE BAKE (option a) — zero extra chats; he views the current board with ONE known display row (brodie unhalved, read 538); the baked board must prove the ov present. Bake + item-20 directives PRE-STAGED. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v51 2026-07-13 (SHARD S2 RECONCILED: PASS ON BOTH CONSTRUCTIONS — the BINDING July-8 basis computed independently for the first time: 1.2601/1.2407/1.1521 vs hard 1.3, all PASS; walk-forward HOLDS line-cited. The B1 code-vs-JSON tension is now SUBSTANTIVE, sharpened for the v1.8 conform-or-bless. Awaiting S4 · S5 only. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -504,6 +504,33 @@
     assert pick-1 == 3000 UNCONDITIONALLY on the baked board, and fold CONSTRAINTS v1.8's
     re-quoted constants at the seam.** (Certified: order + all 10 anchor ratios preserved under
     the rebase — uniform division.) Registered so the bake directive cannot omit it.
+    **S2 (THE BINDING GATE) — RECONCILED: PASS ON BOTH CONSTRUCTIONS** (returned 2026-07-13,
+    SHA 917e4c4 cited; Guard 5 first; matrix stamps engine/store/config == the candidate; process
+    disclosure: a first detached run died silently ~30s in — partial NOT reported, re-ran clean;
+    regen ≈3 min in gate mode, useful for S6 sizing).
+    (a) WALK-FORWARD: **HOLDS**, line-cited (s4_matrix_M1v7.py L41/44/46/48/49/54/57 — cohort
+    year T sees only data ≤ T; state restored). Book↔board parity 802 shared, PASS.
+    (b) CONSTRUCTION: **THE CODE DIVERGES FROM THE BINDING JSON — substantively, not wording**.
+    ship_gates B1 forms class-year sums (L291 ✓) but then renormalises each class to yr1=100 and
+    averages INDICES (mean-of-ratios, L293-294): AVG[1] ≡ 100 identically ⇒ **the owner's
+    min(y1,y2) denominator (WD-1b) is UNREPRESENTABLE in the frozen code**; and B1's gate is a
+    SHAPE test (peak∈4-6, peak>100, no pre-peak dip>5%) — **no 1.3 bound is tested anywhere; years
+    4/5/6 are not individually tested**. SHIP_GATES.md matches the code, not the JSON.
+    ⇒ The quoted headline "126.8/125.2/116.1" is the CODE's indexed row, not the binding
+    construction. THE BINDING (July-8, avg-of-raw-class-sums, min(y1,y2)) BASIS, computed by the
+    independent auditor on the frozen generator's matrix: y1 69,840.0 · y2 79,298.2 ⇒ den = y1 ·
+    **y4 1.2601 · y5 1.2407 · y6 1.1521 vs hard 1.3 — PASS / PASS / PASS.** Indexed cross-check
+    1.2676/1.2516/1.1609 — also passes. THE DIVERGENCE DOES NOT FLIP THE VERDICT.
+    MARGIN NOTE (OQ-B restated on the BINDING basis): y4 = 1.2601 sits ABOVE the 1.25 guide-band
+    top, under the 1.3 hard bound (precedent: v2.6 baked near-equivalently high). Advisory.
+    GOVERNANCE (sharpens the registered item-19 v1.8 fold; both constructions are OWNER-WORDED —
+    code = the 02/07 "cross-cohort AVERAGE law" redefinition (D5), JSON = the 08/07 class-sums
+    wording (WD-1/1b)): the newest owner ruling governs ⇒ THE JSON IS THE OPERATIVE BAR, and it is
+    now properly measured and GREEN. SUPERVISOR RECOMMENDATION for the v1.8 fold (owner rules at
+    the seam; a frozen-gate change moves only on his word): CONFORM THE CODE to the July-8 wording
+    (implement avg-of-sums · min(y1,y2) · per-year ≤1.3 in the frozen suite; keep the shape test
+    as a secondary diagnostic). NOT bake-blocking: the binding bar is measured and green by
+    independent audit; the code-conform is a next-chapter/seam change.
     S1/S2 status: IN FLIGHT, STRAINED — owner reports two tool-limit extensions and a possible
     freeze on S2 (advice given: do NOT refresh incognito — the chat state is unrecoverable; a
     frozen page with a background compute may still land). FALLBACK IF S2 DIES (pre-authorized
