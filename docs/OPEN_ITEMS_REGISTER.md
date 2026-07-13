@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v68 2026-07-13 (LADDER RULED: **TIER-1-LITE** for Job A (owner, 2026-07-13) — supervisor prescreen + the two red-path proofs + his word; no cold audit, no board view. JOB B RE-ISSUED STANDALONE (item 41) with the TWO-BOARDS GUARD added: it works on the TAGGED board 81e48293, NOT on main's 3dc19fbb. Jobs A v2 and B are file-disjoint and may run in parallel. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v69 2026-07-13 (**THE YOUNG GUN IS NAMED** — owner: harley-reid (key-verified) + ryley-sanders, both vs Bontempelli. CONSTRAINTS **v1.9** + acceptance v1.9 + manifest **v4.12** FILED. ⚠ **PAIR 3 (Sanders/Bont) FAILS ON THE CURRENT BOARD BY ~14% THE WRONG WAY** and is NOT a flattery problem — it is a BASE-CURVE problem, so it becomes an acceptance anchor of the PVC RE-DERIVATION chapter (item 44). Pair 2 (Reid/Bont) passes at +3.2%. Also: item 42 (the base-pin lesson). Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1035,6 +1035,51 @@
     STATUS: both directives are in the OWNER'S HANDS, unfired. A = Tier-1-lite, ends in a candidate
     PR. B = Tier 3, read-only, ends in a candidate PR carrying only new files. FILE-DISJOINT: they
     may run in PARALLEL (concurrency rule satisfied — B writes nothing, A touches no store).
+
+42. **THE BASE-PIN LESSON (2026-07-13, supervisor-caused, supervisor-owned).** The Job A v2 build
+    STOPPED at its base check: the directive pinned main = d8acc802, the remote read 87cc7bd. The
+    drifting commit was **the supervisor's own register push announcing that very job**. Verified at
+    the time: `git diff --name-only d8acc802..main` = docs/OPEN_ITEMS_REGISTER.md ONLY; store, board
+    and engine byte-identical; d8acc802 an ancestor. Ruled PROCEED, with the build asserting the
+    drift itself (ancestor + docs/-only + Guard 5) rather than being told to ignore it.
+    **THE FIX (standing, for every future directive):** a base pin must read **"main AT OR AFTER
+    <SHA>, and `git diff --name-only <SHA>..main` must be docs/-ONLY"** — NOT strict SHA equality.
+    Strict equality is right for a store/engine base; it is WRONG while the supervisor's docs pen is
+    live, because the pen's own bookkeeping trips it. (Tag-pinned jobs — e.g. Job B — are immune by
+    construction.)
+
+43. **A-PAIRS — THE YOUNG GUN, NAMED (2026-07-13, owner). CONSTRAINTS v1.9 FILED.**
+    Owner's words: *"Let's do Reid and Sanders. Both different players that offer a different kind of
+    comparison to Bont"* · *"Harley Reid, confirmed"* · *"I feel like Harley and Bont can be similar,
+    but interestingly I'd think Bont should be slightly above Sanders."*
+    **KEY-VERIFIED BEFORE FILING** (the store carries TEN 'Reid' rows — this is exactly how the
+    toby-briggs drift began): `harley-reid` = Harley Reid, MID, pk1, West Coast, b.2005 — **NOT**
+    `murphy-reid` (GEN_FWD, pk17, Fremantle). `ryley-sanders` = Ryley Sanders, MID, pk6, Western
+    Bulldogs, b.2005. `young_gun_tbd` is RETIRED.
+    MEASURED on the TAGGED board (v2.9 = 9f8ae76 / board 81e48293): bont **3,482** · harley-reid
+    **3,594 (+3.2%)** · ryley-sanders **3,960 (+13.7%)**.
+    · **PAIR 2 (Reid/Bont — PARITY): PASSES.** +3.2% — the knife-edge, exactly where the owner reads
+      it. It tests whether runway beats proven AT PARITY.
+    · **PAIR 3 (Sanders/Bont — bont above): FAILS, by ~14% the WRONG WAY.** The model prices a pk6
+      mid with 47 games materially ABOVE the best proven player in the competition. It tests whether
+      the young-side premium is over-cooked — and it broke on first contact.
+    AUDITOR INSTRUCTION CHANGED: the standing "skip pair 2 and report the skip" is RETIRED. Score
+    both; pair 3 is EXPECTED to fail until the pricing curve is re-derived; report, do not halt
+    (bands PENDING-OWNER). Bands supervisor-proposed (pair 2: |Δ| ≤ 10% · pair 3: bont ahead by
+    0–10%); the DIRECTION is owner-worded and stands regardless.
+
+44. **⚠ WHERE PAIR 3's GAP LIVES — AND WHERE IT DOES NOT (supervisor diagnosis, 2026-07-13).**
+    **IT IS NOT FLATTERY.** Census decomposition (@ d6c481f, quoted in the numéraire): ryley-sanders
+    = base **3,903** + iso 58 + **par_credit 0** (flat −21 ≈ nil) · marcus-bontempelli = base
+    **3,070** + **par_credit +439** + iso −28 (flat −29 ≈ nil). NEITHER player carries par-relative
+    flattery. **THE FLATTERY FIX WILL NOT CLOSE PAIR 3.** The gap is made by the **BASE CURVE** — the
+    pick-band price × growth on the young side — which places it in the **PVC RE-DERIVATION /
+    "pricing-curve formalisation"** chapter, adjacent to G-CONVEX's young premium and to G-Y0.
+    Pair 3 is hereby the natural ACCEPTANCE ANCHOR of that chapter.
+    **NO HAND EDIT.** Cutting Sanders to satisfy the read would be a predicate-based nerf wearing a
+    rule's clothes — forbidden by the owner's own remediation doctrine. Whether Sanders must fall
+    (~478–795 SCAR, landing ~3,165–3,482) or Bont must rise is exactly what the re-derivation has to
+    ANSWER, not assume. It is not the supervisor's to choose and it is not a build's to tune.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
