@@ -15,8 +15,12 @@ echo "### 2. config-manifest + ruling-config"
 cd "$WS"
 python3 "$REPO/config_manifest.py" check 2>&1 | tail -1
 python3 "$REPO/ruling_config_check.py" 2>&1 | tail -1
-echo "### 3. five SSI guards — one_source_selftest (guards 1-4 + lookalike/canary)"
-RL_REPO=$REPO python3 one_source_selftest.py 2>&1 | tail -3
+echo "### 3a. build board (bake, override on) + book for the F1/F2 numéraire parity checks"
+chmod +w rl_app_data.json rl_app_data.json.srcmd5 s4_matrix.json s4_matrix.json.srcmd5 2>/dev/null
+RL_REPO=$REPO RL_CONFIG_MODE=bake python3 rl_export.py >/dev/null 2>&1 && echo "  board $(md5sum rl_app_data.json|cut -c1-8) (expect 81e48293)"
+RL_REPO=$REPO RL_CONFIG_MODE=bake python3 s4_matrix_M1v7.py >/dev/null 2>&1 && echo "  book s4_matrix built"
+echo "### 3b. five SSI guards — one_source_selftest (guards 1-5 + F1/F2 numéraire parity)"
+RL_REPO=$REPO python3 one_source_selftest.py 2>&1 | tail -5
 echo "### 4. guard-4 correction canary (edits+restores store; must survive board AND book)"
 RL_REPO=$REPO python3 guard_correction_canary.py 2>&1 | tail -2
 echo "store after canary = $(md5sum rl_model_data.json | cut -c1-8)  (expect b0c39d78)"

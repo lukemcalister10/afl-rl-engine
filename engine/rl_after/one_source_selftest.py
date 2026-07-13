@@ -31,6 +31,12 @@ def check(cond, msg):
 HERE=os.path.dirname(os.path.abspath(__file__))
 def hp(*p): return os.path.join(HERE,*p)
 
+# L7 NUMÉRAIRE (baked 2026-07-13): the board DISPLAYS every player value as round(ev/F) (ev()/engine
+# UNCHANGED — display-only re-base). So the F1/F2 single-source parity invariants hold in the numéraire:
+# board v == round(engine ev / F) and board v == round(book cur / F). F is the certified 1.0524.
+_F = json.load(open(hp('pick_redenomination.json')))['factor'] if os.path.exists(hp('pick_redenomination.json')) else 1.0524
+def _num(x): return int(round(x / _F))
+
 print("=== GUARD 5: BOOT-STORE (this dir's store == the checked-out, pinned store) ===")
 # The four guards above validate whichever dir this file is imported from (HERE) against ITSELF — so a
 # stale-but-self-consistent workspace passes them. GUARD 5 anchors on the CHECKOUT: it asserts HERE's store
@@ -96,8 +102,8 @@ else:
         for p in MA.players:
             v=ev(p,2026); ev(p,2024); ev(p,2025); ev(p,2027); ev(p,2028)   # replicate the export's as-of sequence
             gated[p['key']]=v
-    mism=[(k,board[k],gated.get(k)) for k in board if board[k]!=gated.get(k)]
-    check(not mism, "every board v == engine gated ev (F1); mismatches=%d %s"%(len(mism),mism[:8]))
+    mism=[(k,board[k],gated.get(k)) for k in board if board[k]!=_num(gated.get(k))]
+    check(not mism, "every board v == round(engine gated ev / %.4f) — numéraire display (F1); mismatches=%d %s"%(_F,len(mism),mism[:8]))
 
 print("=== (3) BOOK PARITY (F2): book cur == board v for shared players ===")
 book_path=os.environ.get('S4_MATRIX','s4_matrix.json')
@@ -108,8 +114,8 @@ elif os.path.exists(board_path):
     board={r['key']:r['v'] for r in json.load(open(board_path))['active']}
     shared=[k for k in board if k in book]
     absent=[k for k in board if k not in book]
-    bmis=[(k,book[k],board[k]) for k in shared if book[k]!=board[k]]
-    check(not bmis, "every shared book cur == board v (F2); mismatches=%d %s"%(len(bmis),bmis[:8]))
+    bmis=[(k,book[k],board[k]) for k in shared if board[k]!=_num(book[k])]
+    check(not bmis, "every shared board v == round(book cur / %.4f) — numéraire display (F2); mismatches=%d %s"%(_F,len(bmis),bmis[:8]))
     print("       (%d board players outside the cohort book, _pvc_exclude: %s)"%(len(absent),sorted(absent)))
 
 print("=== (4) DATA GROUND TRUTH: Kako + Bontempelli regenerated from source ===")

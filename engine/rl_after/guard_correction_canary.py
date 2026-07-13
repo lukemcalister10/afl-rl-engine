@@ -104,8 +104,15 @@ def main():
               "edit SURVIVES to the BOARD: %s v %s -> %s (must rise)" % (SENTINEL_KEY, base_board, new_board))
         check(new_book is not None and new_book > base_book,
               "edit SURVIVES to the BOOK: %s cur %s -> %s (must rise)" % (SENTINEL_KEY, base_book, new_book))
-        # board==book parity must still hold on the edited sentinel (single-source coherence)
-        check(new_board == new_book, "edited sentinel board==book (%s vs %s)" % (new_board, new_book))
+        # board==book parity must still hold on the edited sentinel (single-source coherence). L7 NUMÉRAIRE
+        # (baked 2026-07-13): the board DISPLAYS round(ev/F) (engine ev() / book UNCHANGED, display-only
+        # re-base), so the coherence relation is board == round(book cur / F). F is the certified 1.0524.
+        import json as _json, os as _os
+        _pr = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'pick_redenomination.json')
+        _F = _json.load(open(_pr))['factor'] if _os.path.exists(_pr) else 1.0524
+        check(new_board == int(round(new_book / _F)),
+              "edited sentinel board == round(book/%.4f) — numéraire (%s vs round(%s/%.4f)=%s)"
+              % (_F, new_board, new_book, _F, int(round(new_book / _F))))
     finally:
         for path, b in baks.items(): _restore(path, b)
         _rebuild()   # restore clean derived artifacts from the restored store
