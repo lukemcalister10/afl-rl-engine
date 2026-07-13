@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v54 2026-07-13 (SHARD S5 RECONCILED: PASS — reds exactly {A2,A3,A12}, anchors hold; A-CAM points DOWN on the proxy → the sitting card; L7 SHARPENED: the shipped pick CURVE is still v3.4×F (98/99 picks) — the bake gains the ADOPTED-CURVE REPOINT step. lukas-cooke → K-DEF (owner). Awaiting S4 only. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v55 2026-07-13 (SHARD S4 RECONCILED: PASS — B2 0.000%-pts · B3 verify-the-story PROVEN (sealed head re-seeded, bit-identical) · G-ATTR closes to the dollar, 804/804 board==sidecar. **THE FIVE-SHARD AUDIT + CENSUS ARE COMPLETE: v2.9 AUDIT VERDICT = PASS, findings actioned.** THE BOARD-VIEW SITTING CARD is now the operative card. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -692,6 +692,50 @@
     MARGINS (S5's three, merged to the sitting card): butters −1.22% vs 2.00% (0.78pp headroom) ·
     A2-Curtis 0.921 vs 0.900 (36 SCAR) · L7 ratio drift 0.00158 vs 0.002 · runner-up A-BONT
     +12.88% vs +10%.
+
+27. SHARD S4 (BOOK + ATTRIBUTION) — RECONCILED: PASS (2026-07-13, SHA 0654897; fence held).
+    B2: producer-regenerated certificate, median |IS−WF| leakage 0.000 %-pts (tol 0.5), worst
+    cells RUC|GOOD|T5 4.54 · KEY_DEF|GOOD|T3 3.19, GOOD/BUST separation clean ×6. PASS.
+    B3 — THE STORY PROVEN, NOT ACCEPTED: the shard refused the auto-granted DIFFERS-BY-DESIGN,
+    re-seeded the SEALED head 7a07e369 (commit 18c352b) and regenerated the book with the same
+    store/config — **bit-identical to the committed seal (e559eb6c…, 2649 players)**. The sealed
+    content verifies at its own head; the difference is a true head-version change. The candidate
+    book (c7825f1b…, 2649) re-seals at the bake (directive step 5, already staged).
+    G-ATTR: closes to the dollar — 723,075 + 9,650 = 732,725; chain telescopes contiguously;
+    **804/804 rows board levers == sidecar == v − vPrev, zero mismatches**; three self-picked
+    spot names verified (sheezel 8116+60+28=8204 · goad 818+56+30+15=919 · bont 3721−44−13=3664).
+    TWO NOTES RECORDED (both benign, both now settled interpretation):
+    (a) **L5 IS INERT ON THIS BOARD** — default-ON, contributes exactly 0 to all 804 rows, no
+    chain stage. Reconciled as CORRECT-BY-DESIGN: L5 prices pickless entrants; the current board
+    has none active (the perez/mcandrew/keane re-entry is deferred). It goes live when a pickless
+    player enters; the certification's +0 is reproduced, not contradicted. One-line owner note,
+    no action.
+    (b) **G-ATTR "SEPARABLE" = PATH-ADDITIVE**, not interaction-free: the decomposition is
+    sequential along the fixed order L1→L4→L2→L3→L5; a different order would split the same
+    9,650 differently. Future seats must not read per-lever numbers as order-free. Interpretation
+    registered.
+    **28. THE v2.9 AUDIT OF RECORD — COMPLETE: VERDICT PASS, FINDINGS ACTIONED** (per v37's
+    five-shard design + the census; every shard fence held; every reconciliation supervisor-run):
+    S1 ✅ (guards; found the brodie omission → bake step 1) · S2 ✅ (walk-forward holds; the
+    binding July-8 bar independently computed GREEN 1.2601/1.2407/1.1521; B1 conformance ruled →
+    seam) · S3 ✅ (board byte-reproducible; stale prose → bake step 4) · S4 ✅ (book story proven;
+    attribution exact) · S5 ✅ (reds exactly {A2,A3,A12}; curve repoint → bake step 2; A-CAM →
+    the sitting) · CENSUS ✅ (123 / +19,168; the discount list). NOTHING BLOCKS THE BOARD VIEW.
+    THE BOARD-VIEW SITTING CARD (v2.9 — the operative card; the owner views the WORKING board
+    f2d6e3f5 + the book in CURRENT units, ×1.0524 world):
+    KNOWN-DISPLAY NOTES (read-around, all fixed at bake): brodie shows UNHALVED — read him at 538
+    · pick-1 shows 3157 (pre-rebase) · the displayed pick curve is the old v3.4×F (adopted lands
+    at bake) · bramble shows 15g/62.4 (item 20).
+    HIS EYE, IN ORDER: (1) the SEALED READS graded (ruck ordering · cleary/ugle-hagan · ryan/
+    moore · murray/hayes · the anchor players) · (2) THE CENSUS DISCOUNT LIST beside the board
+    (top: daicos +845 · NWM +753 · gulden +695 · green +614 · newcombe +560 · sheezel +559 —
+    flattery rides v2.9 KNOWN, fix next chapter) · (3) EMMETT at 851 — direction blessed,
+    MAGNITUDE is his ruling · (4) A-CAM eyeball — proxy points DOWN −1.11% vs direction-up ·
+    (5) G-Y0 seam table, advisory eyeball (V0 > PVC every band) · (6) MARGINS: butters 0.78pp ·
+    A2-curtis 36 SCAR · y4 1.2601 above the 1.25 guide (binding basis) · L7 drift headroom 21%.
+    HIS WORDS AT THE SITTING: the read grades · the emmett ruling · the A-CAM verdict · and —
+    if satisfied — THE BAKE WORD, which fires the pre-staged directive (supervisor fills the
+    final head).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
