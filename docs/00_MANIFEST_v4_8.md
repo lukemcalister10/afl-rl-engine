@@ -1,8 +1,24 @@
-# AFL RL ENGINE — PACK MANIFEST — v4.7 · 2026-07-13 · supersedes v4.6
-### STATUS: OFFICIAL. Canonical pack home = repo `docs/`. Project knowledge holds TIER-0 ONLY
-### (this manifest + CORE) — owner replaces those two on change; everything else is fetched from
-### the repo by each seat, fresh, SHA-cited. This manifest is a pointer card: NO operative
-### content; on conflict its text yields to the role documents. Changelog: archive/CHANGELOG.
+# AFL RL ENGINE — PACK MANIFEST — v4.8 · 2026-07-13 · supersedes v4.7
+### STATUS: OFFICIAL. Canonical pack home = repo `docs/` (truth). Project knowledge = THE SEAM
+### PACK (fast start) — owner-ruled 2026-07-13, superseding the Tier-0-only rule of v4.7. This
+### manifest is a pointer card: NO operative content; on conflict its text yields to the role
+### documents. Changelog: archive/CHANGELOG.
+
+## THE SEAM-PACK RULE (owner-ruled 2026-07-13)
+Rotation happens only at a SEAM, and at a seam the whole pack is rewritten — so the pack is
+freshest exactly when a new seat needs it. Project knowledge therefore carries the SEAM PACK,
+synced by the owner at each seam: **manifest · CORE · HANDOVER · DECISIONS · CONSTRAINTS +
+acceptance JSON** (+ SINGLE_SOURCE_INVARIANT, which rarely changes). An incoming seat reads
+those and is USEFUL IMMEDIATELY — no clone-and-read tax before it can think.
+REPO-ONLY (never parked in Project knowledge — too fast-moving, guaranteed stale):
+OPEN_ITEMS_REGISTER (the only list; moved 28× on 2026-07-12 alone) · verbatim returns · round
+docs · the LTI sidecar · schemas.
+THE FRESHNESS CHECK (mandatory, first act of every incoming seat — this is what makes the copies
+safe): run the FULL-URL `ls-remote`, fetch the register's header + the docs/ file list, and
+compare versions against the manifest just read. AGREE ⇒ proceed on the pre-loaded pack. DISAGREE
+⇒ the repo wins, fetch what drifted, and TELL THE OWNER what was stale (the pack sync was missed).
+A copy that is VERIFIED is a shortcut; a copy that is TRUSTED is the phantom-repo scare.
+BUILD SEATS: always fetch from the repo — never owner attachments (the standing directive line).
 
 ## PRECEDENCE (higher wins on conflict)
 1. The owner's word · 2. CONSTRAINTS + acceptance JSON · 3. CORE · 4. HANDOVER · 5. DECISIONS ·
