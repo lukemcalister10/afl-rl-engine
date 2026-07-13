@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v61 2026-07-13 (**THE v2.9 BAKE IS COMPLETE AND PROMOTED — supervisor-verified by fresh fetch: main == the bake head 9f8ae76, clean ff, board 81e48293, brodie renders 511 by the owner’s render word. ONE ACT REMAINS: the v2.9 TAG — the owner’s hand (target 9f8ae76); the proxy 403s tag pushes, which matches doctrine (only he pushes tags).** Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v62 2026-07-13 (**v2.9 IS TAGGED, PROMOTED AND CANONICAL — the tag is verified at 9f8ae76 by fresh ls-remote and by checking out the tagged tree itself: board 81e48293 · store b0c39d78 · pick-1 3000 · brodie displays 511 · UI pin correct. THE CHAPTER IS CLOSED. ITEM 20 IS NOW LIVE — its trigger has fired.** Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -830,7 +830,14 @@
     Proofs by name: prove_red_paths.py (3 HALTs) · reseal_book.py (c7825f1b, n=2649 — matches
     S4's independent prediction) · final/final_suite.log (all green) · ship_gates 4530eea4
     (B1–B6 green; reds exactly {A2,A3,A12}).
-    **⚠ THE ONE REMAINING ACT — THE TAG (owner's hand, and rightly so: CORE reserves tag pushes
+    **✅ TAGGED 2026-07-13 — VERIFIED. `refs/tags/v2.9` → 9f8ae76 (fresh ls-remote). The
+    supervisor CHECKED OUT THE TAGGED TREE ITSELF (not just the ref): board 81e48293 · store
+    b0c39d78 · 804 active · sum 696,247 · pick-1 == 3000 · brodie v 1022 displaying 511 ·
+    bontempelli 3482 · ui config EXPECTED_BOARD 81e48293. Main (991e19c) == the tag + docs-only
+    register pushes; the tag is an ancestor of main. **v2.9 IS THE CANONICAL BOARD.** v2.8
+    (9bd0cfd) is the prior tag; the tag ladder v2.6/2.7/2.8/2.9 is intact.
+    ITEM 20 IS NOW LIVE (its trigger — the tag — has fired); the directive is in the owner's hands.
+    HISTORICAL NOTE (kept):**  THE TAG WAS THE OWNER'S ACT (CORE reserves tag pushes, and rightly so: CORE reserves tag pushes
     to him; the proxy's 403 on refs/tags/* enforced the doctrine by accident).** Target commit
     **9f8ae76**. Easiest: GitHub → the repo → Releases → "Draft a new release" → "Choose a tag"
     → type v2.9 → target 9f8ae76 (main) → publish. Or any shell: `git tag v2.9 9f8ae76 && git
