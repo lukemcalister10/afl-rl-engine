@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v60 2026-07-13 (Owner: the ten have DRAFT CLUB == CURRENT CLUB — recorded as ground truth (they are one-club players; the nulls are missing draft ROWS, not different clubs) ⇒ item 20 gains a draft-club backfill + a NON-INFERENCE fence. ITEM 20 HELD until v2.9 promotes (CONCURRENCY: one store-writer; the bake IS the writer in flight). Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v61 2026-07-13 (**THE v2.9 BAKE IS COMPLETE AND PROMOTED — supervisor-verified by fresh fetch: main == the bake head 9f8ae76, clean ff, board 81e48293, brodie renders 511 by the owner’s render word. ONE ACT REMAINS: the v2.9 TAG — the owner’s hand (target 9f8ae76); the proxy 403s tag pushes, which matches doctrine (only he pushes tags).** Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -812,6 +812,30 @@
     the bake's regen/re-seal, (b) base itself on a head about to move, (c) invalidate the bake's
     own board/book proofs. Its trigger is unchanged and already in the directive: v2.9 tag +
     main promotion verified by fresh ls-remote.
+
+34. **THE v2.9 BAKE — COMPLETE, PROMOTED, SUPERVISOR-VERIFIED (2026-07-13).** Fresh-fetch
+    verification: remote main == the bake head **9f8ae76** (clean fast-forward 06c13be..9f8ae76;
+    old main an ancestor — no force; the register v57→v60 advance was merged into the bake head
+    pre-promote, v2.8's pattern, conflict-free) · board **81e48293** on main · store b0c39d78
+    frozen · engine ev() untouched. L-STOP prescreen was PASS on every rev134 §2 item, config-pin
+    check included (verified at 29c2ff5 after the supervisor's mid-bake catch, register v58's
+    lesson applied).
+    THE RENDER RULING (owner's word at the L-STOP, executed in-bake at 0467962): brodie DISPLAYS
+    511 wherever the board shows his value (rail, power bar, card) via MD.dispVal = ov?dispv:v;
+    ORDERING follows the display; MECHANICS stay on v (Δ-vs-bake, lens chart, trade desk
+    untouched; the public tier carries no ov — leak-proof fallback verified in ui/app/board.js).
+    Waterfall on the card: model 1022 → −511 → lands 511.
+    IN-BAKE DEFECT FIXES (both disclosed, both sound): B4's regen env carried RL_REPO (the S1
+    root cause fixed IN THE GATE) · six board==ev==book parity checks made numéraire-aware.
+    Proofs by name: prove_red_paths.py (3 HALTs) · reseal_book.py (c7825f1b, n=2649 — matches
+    S4's independent prediction) · final/final_suite.log (all green) · ship_gates 4530eea4
+    (B1–B6 green; reds exactly {A2,A3,A12}).
+    **⚠ THE ONE REMAINING ACT — THE TAG (owner's hand, and rightly so: CORE reserves tag pushes
+    to him; the proxy's 403 on refs/tags/* enforced the doctrine by accident).** Target commit
+    **9f8ae76**. Easiest: GitHub → the repo → Releases → "Draft a new release" → "Choose a tag"
+    → type v2.9 → target 9f8ae76 (main) → publish. Or any shell: `git tag v2.9 9f8ae76 && git
+    push origin v2.9`. v2.8 (9bd0cfd) remains the prior tag; v2.9 becomes canonical ON THE TAG.
+    ITEM 20's trigger = the tag landing (then its directive fires as the next chapter's first job).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
