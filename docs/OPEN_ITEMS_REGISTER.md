@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v36 2026-07-13 (ITEM 20 OPENED — THE STORE-IDENTITY JOB, parked to post-v2.9 by owner ruling: bramble game-count correction · AFL-club column import · the id_resolver club-semantics defect · _club → _draft_club rename · the CSV archive rule. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v37 2026-07-13 (TWO OWNER RULINGS: the v2.9 cold audit runs as FIVE CONCURRENT SHARDS — the audit of record; item 1 clarified — owner priority = the PAR-RELATIVE FLATTERY decomposition; the phantom-games test is a SEPARATE standing hypothesis, both stand. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -15,6 +15,17 @@
    label worth only −90 (pedestal result re-confirmed); LIVE MECHANISM CANDIDATE = par-relative
    flattery (a low-expectation label OUT-prices a high one at identical output — pick-2-label <
    pick-60-label on the same line); the testable question is the age discount's depth.
+   OWNER CLARIFICATION (2026-07-13, verbatim intent): the PAR-RELATIVE FLATTERY is THE question —
+   "the model measured his performance as exceeding his pole by lots, so boosted him because it
+   was pick 60. The specific thing I was told was that there was a chance he'd be valued lower if
+   he was a high pick. That's what I think we really need to understand." OWNER PRIORITY = the
+   full SPEC_1 decomposition (in the in-flight continuation, SPEC_1–4). DELIVERABLE the owner is
+   owed at the return: a direct answer — would Newcombe be valued lower as a high pick, YES/NO,
+   by how much, and which term does it (par construction · surprise credit · age-discount depth) —
+   presented at prescreen BEFORE the board view. THE PHANTOM-GAMES TEST (owner-authored 2026-07-08:
+   ~10 phantom games per missing age at age-reasonable scoring, scratch harness only, never store
+   rows) is a SEPARATE hypothesis (late-entry vs absence) — owner 2026-07-13: still makes sense to
+   do; it STANDS as its own queued test, not superseded by SPEC_1.
 2. TRAVAGLIA READ — WAIVED by the owner (2026-07-11, board view): accepts the measured chance.
 3. KYSAIAH READ — WAIVED by the owner (2026-07-11, board view): twice-measured as priced right.
 4. RUCK-COHORT ORDERING (owner, board view 07-11): why lachlan-smith 693 / samson-ryan 636 /
@@ -283,6 +294,18 @@
     certification + SPEC_1–4 + seam table + export bundle + the L6 STOP), then the ladder:
     seat-4 prescreen of the final return → cold audit → owner board+book vs SEALED reads → bake
     word → tag v2.9.
+    AUDIT OF RECORD RULED (owner, 2026-07-13): the v2.9 cold audit runs as FIVE CONCURRENT SHARDS,
+    each an incognito memory-free chat outside the Project, each seeded with the SAME integrity
+    manifest (addresses, never results) + only its slice: S1 boot+integrity (five SSI guards ·
+    store md5 · config manifest) · S2 THE BINDING GATE (walk-forward G-COHORT recompute + the
+    code-reading basis assertion; heavy, runs alone) · S3 board (recompute · B4 non-mover parity ·
+    panel 10/10) · S4 book+attribution (B3 seal · B2 leakage · G-ATTR table) · S5 acceptance
+    (anchors · A2/A3/A12 JSON asserts · L7 numéraire · three narrowest margins · G-CONVEX CA-5
+    diagnostics). ANY SHARD RED = FULL STOP. The supervisor reconciles all five returns against
+    the build's claims after they land (never seeds a shard with another's result). Independence
+    preserved: five memory-free seats. Rationale: single-chat audits crash on tool limits;
+    wall-clock collapses to the slowest shard. Shard directives authored by the supervisor at
+    prescreen-pass; the owner pastes five chats.
 
 20. THE STORE-IDENTITY JOB — PARKED TO POST-v2.9 (owner-ruled 2026-07-13, Branch A; supervisor-found
     2026-07-13 while answering an owner games-played question; all findings verified at main 13f7803,
