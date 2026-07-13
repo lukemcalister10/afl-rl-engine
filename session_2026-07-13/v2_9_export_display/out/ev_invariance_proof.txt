@@ -1,0 +1,31 @@
+== A. lti_reg consumer-wiring fix (barker/thredgold) ==
+  PASS harley-barker lti_reg populated  — lti_reg={'L': 1.0, 'designations': ['2026_preseason'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'} v=777
+  PASS blake-thredgold lti_reg populated  — lti_reg={'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'} v=577
+== B. export fields present + typed ==
+  PASS every active row carries vPrev key  — 0 missing
+  PASS every active row carries vRaw key
+  PASS every active row carries levers key  — 0 missing
+  PASS per-lever split closes (v - vPrev == Σlevers)  — 804 close, 0 broken
+  PASS vRaw null where no owner override (0 today)
+== C. phantom-pick lens entries (+1/+2 only) ==
+  PASS lensPicks present  — 60 entries
+  PASS appear on +1/+2 ONLY (never current/-1/-2)  — lenses=[1, 2]
+  PASS each lens carries the 30-pick class
+  PASS phantom pick value == shipped PVC face value  — PVC-scaled
+  PASS rolling labelYear (2027 on +1, 2028 on +2)
+== D. lens-conservation diagnostic (report-only) ==
+  PASS conservation covers -2..+2
+     lens -2   year 2024 | players=846900 picks=0 total=846900 (n=1002)
+     lens -1   year 2025 | players=801011 picks=0 total=801011 (n=1002)
+     lens now  year 2026 | players=732725 picks=0 total=732725 (n=804)
+     lens +1   year 2027 | players=539859 picks=38813 total=578672 (n=804)
+     lens +2   year 2028 | players=413346 picks=38813 total=452159 (n=804)
+     spread vs now: {'+1': -21.02, '+2': -38.29, '-1': 9.32, '-2': 15.58, 'now': 0.0}
+== E. HARD ACCEPTANCE — ZERO EV MOVERS vs certified 8a66b4ba ==
+  PASS n_active unchanged (804)  — 804 vs 804
+  PASS sum_v unchanged (732725)  — 732725 vs 732725
+  PASS active key set unchanged  — sym-diff 0
+  PASS ZERO EV movers on active (v + all lens years)  — 0 movers, e.g. []
+  PASS ZERO EV movers on back rows  — 0 movers
+
+RESULT: PASS — all acceptance + zero-EV-mover proof GREEN

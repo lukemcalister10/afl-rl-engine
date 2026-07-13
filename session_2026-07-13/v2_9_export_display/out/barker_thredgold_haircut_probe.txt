@@ -1,0 +1,2 @@
+harley-barker    board_obj(avail_hc=0.0)=777  MAdata(avail_hc=1.0)=777  haircut_delta=0
+blake-thredgold  board_obj(avail_hc=0.0)=577  MAdata(avail_hc=1.0)=577  haircut_delta=0
