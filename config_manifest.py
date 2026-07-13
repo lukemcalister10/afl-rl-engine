@@ -32,7 +32,11 @@ _PREFIX = re.compile(r'^(RL_|PAR_)')
 # Infrastructure / path / display / mode plumbing — NOT model semantics. Allowed ambient in bake/gate
 # mode and never part of the value hash. (CLAUDE_PROJECT_DIR / PYTHONHASHSEED are not RL_/PAR_-prefixed,
 # so they are never scanned; listed in the manifest doc for completeness.)
-INFRA_ALLOW = {'RL_REPO', 'RL_APP_DATA', 'RL_FV', 'RL_NO_OWNER_OVERRIDES',
+# NOTE (S1 fix, register item 24, 2026-07-13): RL_NO_OWNER_OVERRIDES is DELIBERATELY NOT here. In
+# gate/bake mode it must be REJECTED (halt), never silently allowed — the reject-scan below treats it as an
+# unknown model override, so a gate/bake cannot disable the standing owner rulings. Dev-shell (no
+# RL_CONFIG_MODE) is unaffected: the exclusion test still sets it to build the OFF board for comparison.
+INFRA_ALLOW = {'RL_REPO', 'RL_APP_DATA', 'RL_FV',
                'RL_ALLOW_PVCFIT_BOARD', 'RL_CONFIG_MODE', 'RL_VENV'}
 
 

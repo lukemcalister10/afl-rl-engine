@@ -15,12 +15,13 @@ import io,contextlib
 g={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 MA=g['MA'];ev=g['ev'];nseas=g['nseas']
+_F=1.0524   # L7 numéraire divisor (baked 2026-07-13): the panel shows round(ev/F) so the 10 named read in the numéraire (pick-1=3000), consistent with the shipped board.
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
-PANEL=[('Nick Daicos',8069),('Marcus Bontempelli',3664),('Harry Sheezel',8204),('Max Gawn',2518),('Harley Reid',3782),('Josh Ward',1735),('Darcy Moore',207),('Taylor Goad',919),('Josh Smillie',1349),('Will Green',689)]   # v2.9 REFIT candidate (engine 2030e5df store b0c39d78 config 69ead79b944d board 8a66b4ba); all six levers default-ON. RE-PINNED from the ID-migration base (board de4baef9): the 10 named move to the wired all-lever board — L1's _PVC0 swap + V0/RUC rebuild lifts the young sat-out rucks (Goad 818->919, Green 588->689, both +101, same mechanism as knobel 402->505), L2/L3/L4 ripple the rest (Bont 3721->3664, Gawn 2538->2518, Sheezel 8116->8204). == ship_gates B4 board 8a66b4ba (deterministic). ALL-GATES-OFF reproduces the base panel byte-exact: RL_PVCADOPT=0 RL_MSD_POOL_EXCL=0 RL_DIAL14=0 RL_AGE=0 RL_L5_PICKLESS=0 (+ the prior RL_FWDRECAL=0 RL_YOUNG=0 RL_OVPX=0 RL_KPFFIX=0 RL_V7FORM=0 RL_W4_RUC=0 RL_FORMDECL=0 RL_PVCFIT=0) -> n=804 sum=723075, Daicos 8050 Bont 3721 Gawn 2538. Candidate ONLY (no tag/main/bake).
-ok=True; print("%-22s%8s%8s"%('player','EV','EXPECT'))
+PANEL=[('Nick Daicos',7667),('Marcus Bontempelli',3482),('Harry Sheezel',7796),('Max Gawn',2393),('Harley Reid',3594),('Josh Ward',1649),('Darcy Moore',197),('Taylor Goad',873),('Josh Smillie',1282),('Will Green',655)]   # v2.9 BAKE — NUMÉRAIRE panel (engine 2030e5df store b0c39d78 config 69ead79b944d board 81e48293); all six levers default-ON. L7 baked: every value = round(ev/1.0524), re-basing the ×1.0524 candidate (raw Daicos 8069 Bont 3664 Sheezel 8204 Gawn 2518 Reid 3782 Ward 1735 Moore 207 Goad 919 Smillie 1349 Green 689) to the numéraire (pick-1=3000). Engine ev() UNCHANGED — the rebase is display-only; ratios/order preserved. == the shipped numéraire board (data/rl_build/rl_app_data.json md5 81e48293, ship_gates B4 byte-agree). Candidate at the L-STOP (no tag/main until owner word).
+ok=True; print("%-22s%8s%8s"%('player','EV(num)','EXPECT'))
 for nm,exp in PANEL:
-    p=find(nm); v=ev(p) if p else None; m='' if v==exp else '  <-- MISMATCH'; ok=ok and v==exp
+    p=find(nm); v=int(round(ev(p)/_F)) if p else None; m='' if v==exp else '  <-- MISMATCH'; ok=ok and v==exp
     print("  %-20s%8s%8d%s"%(nm[:20],v,exp,m))
 print("\nRESULT:", "PASS 10/10" if ok else "FAIL")
 PY

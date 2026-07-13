@@ -27,6 +27,13 @@ KEY-DRIFT DISCIPLINE
 import os, json
 
 
+def _gate_or_bake():
+    """True in the fenced gate/bake modes (RL_CONFIG_MODE). In these modes a missing/unresolvable owner-
+    override file HALTS instead of returning a silent [] — the halt-not-warn doctrine (S1 finding, register
+    item 24): a shipped/gated board must never silently drop a standing owner ruling."""
+    return os.environ.get('RL_CONFIG_MODE') in ('bake', 'gate')
+
+
 def _repo_root():
     """Locate the checked-out repo (never a workspace copy), like boot_guard."""
     for cand in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR'),
@@ -37,12 +44,24 @@ def _repo_root():
 
 
 def load_overrides(root=None):
-    """Return the list of override rows from the repo-homed file (read-once). [] if the file is absent."""
+    """Return the list of override rows from the repo-homed file (read-once). In gate/bake mode an
+    unresolvable root or an absent file HALTS (never a silent []); in dev-shell it returns [] as before."""
     root = root or _repo_root()
     if not root:
+        if _gate_or_bake():
+            raise SystemExit(
+                "OWNER-OVERRIDE HALT (%s mode): cannot resolve the checked-out repo to read "
+                "data/owner_overrides.json (RL_REPO / CLAUDE_PROJECT_DIR unset and no ../.. fallback). A "
+                "gated/baked board must NOT silently ship without the standing owner rulings — set RL_REPO to "
+                "the checkout. (Dev-shell returns [] and skips.)" % os.environ.get('RL_CONFIG_MODE'))
         return []
     path = os.path.join(root, 'data', 'owner_overrides.json')
     if not os.path.exists(path):
+        if _gate_or_bake():
+            raise SystemExit(
+                "OWNER-OVERRIDE HALT (%s mode): data/owner_overrides.json is ABSENT at %s — the standing "
+                "owner rulings are missing. Refusing to gate/bake a board that would silently drop them "
+                "(halt-not-warn; S1 finding, register item 24)." % (os.environ.get('RL_CONFIG_MODE'), path))
         return []
     with open(path) as f:
         doc = json.load(f)
@@ -87,3 +106,26 @@ def apply_to_board(active, root=None):
         }
         applied.append((key, factor, dispv))
     return applied, warnings
+
+
+def assert_presence(active, root=None):
+    """POST-EXPORT PRESENCE ASSERTION (S1 finding, register item 24): every player_key listed in
+    data/owner_overrides.json MUST carry its `ov` block on the exported board, key-verified vs the store.
+    In gate/bake mode a listed-but-unapplied override (key drift, or a silent drop) HALTS — the
+    correction-sticks pattern applied to overrides. Dev-shell only warns. Call AFTER apply_to_board."""
+    overrides = load_overrides(root)
+    by_key = {r.get('key'): r for r in active}
+    missing = []
+    for ov in overrides:
+        key = ov.get('player_key')
+        row = by_key.get(key)
+        if row is None or 'ov' not in row:
+            missing.append(key)
+    if missing:
+        msg = ("OWNER-OVERRIDE PRESENCE ASSERTION FAILED: %d listed override(s) carry NO `ov` block on the "
+               "exported board (key drift or silent drop): %s. Verify the store key(s) against the board and "
+               "re-run — a gated/baked board MUST realize every standing owner ruling." % (len(missing), missing))
+        if _gate_or_bake():
+            raise SystemExit(msg)
+        print("OWNER-OVERRIDE WARNING (dev-shell, non-halting):", msg)
+    return missing

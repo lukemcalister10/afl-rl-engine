@@ -51,6 +51,13 @@ def expected(root=None):
 def _fmt(m):    # pinned file may hold either full md5 or 8-char; compare on the common prefix
     return (m or '')[:8]
 
+def _cmp_on_pin_len(got, pin):
+    """Compare a computed md5 against a pin ON THE PINNED LENGTH (S1 fix, register item 24): a FULL 32-char
+    pin is enforced at full length; a legacy 8/12-char pin still matches on its prefix. This retires the
+    'decorative pin' hole for the board field without breaking the store/register/config short pins."""
+    got = got or ''; pin = pin or ''
+    return bool(pin) and got[:len(pin)] == pin
+
 def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, register_path=None, halt=True):
     """Assert the store (and optionally engine head / band / register) a script is about to READ matches the
     checked-out repo AND the pinned expected. HALT (SystemExit) on any mismatch. Returns True on pass.
@@ -100,6 +107,23 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
             fails.append("model config hash %s != pinned boot config %s (data/expected_boot.json 'config') — "
                          "the model configuration (data/model_config.json) and the pin are out of sync"
                          % (_fmt(got_cfg), _fmt(exp_cfg)))
+
+    # (0c) board checkout-integrity (S1 fix, register item 24): expected_boot's 'board' pin was DECORATIVE —
+    #      boot_guard never asserted it, so a board could drift from the pin unnoticed (the exact hole that let
+    #      the override-less board ship). Assert the checked-out board (data/rl_build/rl_app_data.json) equals
+    #      the pin, AT FULL HASH when the pin is full (the 8-char _fmt truncation is retired for this field).
+    #      Backward-compatible: skipped when the 'board' pin is absent.
+    exp_board = exp.get('board')
+    if exp_board is not None:
+        repo_board = os.path.join(root, 'data', 'rl_build', 'rl_app_data.json')
+        repo_board_md5 = _md5(repo_board) if os.path.exists(repo_board) else None
+        if repo_board_md5 is None:
+            fails.append("board pin present (%s) but data/rl_build/rl_app_data.json is ABSENT — cannot assert "
+                         "the board (re-generate + re-pin the board)" % _fmt(exp_board))
+        elif not _cmp_on_pin_len(repo_board_md5, exp_board):
+            fails.append("checkout board %s != pinned board %s (data/expected_boot.json 'board', full-hash "
+                         "compare) — the board and its pin are out of sync (re-generate + re-pin, or the pin "
+                         "drifted)" % (_fmt(repo_board_md5), _fmt(exp_board)))
 
     def _chk(kind, path, pin, ref_md5):
         if path is None:

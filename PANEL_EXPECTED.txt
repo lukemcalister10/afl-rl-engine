@@ -1,27 +1,28 @@
-FIXED PANEL — v2.9 REFIT candidate, 2026-07-13; engine 2030e5df, store b0c39d78, config 69ead79b944d,
-board 8a66b4ba. NOT a bake promotion (no tag/main merge; owner word required). RE-PINNED from the
-ID-migration base (engine 7a07e369, board de4baef9): the ten named move onto the all-lever wired board.
-Every EV below equals the ship_gates B4 board (md5 8a66b4ba, byte-agree gate PASS) and reproduces
-deterministically across repeat run_panel.sh runs. A cold reload of THIS state MUST reproduce every EV
-exactly. ALL-GATES-OFF (RL_PVCADOPT=0 RL_MSD_POOL_EXCL=0 RL_DIAL14=0 RL_AGE=0 RL_L5_PICKLESS=0) still
-reproduces the base panel byte-exact (Daicos 8050 Bont 3721 Gawn 2538 ...; n=804 sum=723075).
+FIXED PANEL — v2.9 BAKE (NUMÉRAIRE), 2026-07-13; engine 2030e5df, store b0c39d78, config 69ead79b944d,
+board 81e48293. Candidate at the L-STOP (no tag/main merge; owner word required). L7 NUMÉRAIRE RE-BASE
+BAKED: every displayed value = round(ev/1.0524), re-basing the ×1.0524 refit candidate to the numéraire
+(pick-1 = 3000; players and picks off the one adopted curve pvc_curve_L1b.json). The engine ev() is
+UNCHANGED — the rebase is display-only; all ratios/orderings preserved (0 relative movers, 10 rounding
+ties declared). Every EV below equals the shipped numéraire board (data/rl_build/rl_app_data.json md5
+81e48293, ship_gates B4 byte-agree) and reproduces deterministically. A cold reload of THIS state MUST
+reproduce every EV exactly (round(ev/1.0524)).
 
-player                pos       pk  ns     EV   note
-Nick Daicos           MID        4   5   8069   proven star (+19: L2/L3 ripple)
-Marcus Bontempelli    MID        4  13   3664   proven (-57: L2 dial-14 + L4 pool refit; == combined-gate anchor)
-Harry Sheezel         MID        3   4   8204   proven young (+88: L3 s(age) young-riser)
-Max Gawn              RUC       33  14   2518   proven ruck (-20: L2 -38 + L4 +18; A-GAWN clearly > Briggs 2215)
-Harley Reid           MID        1   3   3782   first-year value, pk1 (+56; NOT cratered; A4 PASS)
-Josh Ward             MID        7   5   1735   moderate pedigree (-11; the "Ward" case)
-Darcy Moore           KEY_DEF    8  11    207   decliner the shed fired on (-2)
-Taylor Goad           RUC       20   0    919   sat-out ruck (+101: L1 _PVC0/V0-RUC rebuild lifts young rucks)
-Josh Smillie          MID        7   0   1349   sat-out mid (+47: L1 / L3)
-Will Green            RUC       16   0    689   sat-out ruck (+101: L1 _PVC0/V0-RUC rebuild, the knobel 402->505 class)
+player                pos       pk  ns     EV   note (raw ×1.0524 value in brackets)
+Nick Daicos           MID        4   5   7667   proven star            (raw 8069)
+Marcus Bontempelli    MID        4  13   3482   proven; combined anchor (raw 3664)
+Harry Sheezel         MID        3   4   7796   proven young           (raw 8204)
+Max Gawn              RUC       33  14   2393   proven ruck            (raw 2518)
+Harley Reid           MID        1   3   3594   first-year value, pk1  (raw 3782)
+Josh Ward             MID        7   5   1649   moderate pedigree      (raw 1735)
+Darcy Moore           KEY_DEF    8  11    197   decliner the shed fired on (raw 207)
+Taylor Goad           RUC       20   0    873   sat-out ruck           (raw 919)
+Josh Smillie          MID        7   0   1282   sat-out mid            (raw 1349)
+Will Green            RUC       16   0    655   sat-out ruck           (raw 689)
 
-PROVENANCE OF THE MOVE vs the ID-migration base (Daicos 8050 Bont 3721 Sheezel 8116 Gawn 2538 Reid 3726
-Ward 1746 Moore 209 Goad 818 Smillie 1302 Green 588): the v2.9 refit's six levers — L1 _PVC0 ev-channel
-swap + V0/RUC rebuild · L4 MSD pool exclusion · L2 dial 14 · L3 s(age) · L5 trio pickless · L7 numéraire
-(at bake). The young sat-out rucks (Goad, Green) lift +101 each on L1's V0/RUC rebuild (the knobel class);
-Bont/Gawn ease on the dial + pool refit. The OFFICIAL cohort gate PASSES on this board (y4/y5/y6 =
-126.8/125.2/116.1 <= 130). Candidate ONLY; the L7 numéraire re-base (÷1.0524) is the bake's final step —
-the board here is the pre-L7 candidate (pick-1 = 3157).
+PROVENANCE: the ×1.0524 refit candidate (board f2d6e3f5, panel Daicos 8069 Bont 3664 Sheezel 8204 Gawn
+2518 Reid 3782 Ward 1735 Moore 207 Goad 919 Smillie 1349 Green 689) is re-based to the numéraire by the
+uniform L7 ÷1.0524 (owner: "Rebase, 3000 is it."). The shipped pick curve is repointed to the adopted
+pvc_curve_L1b.json (pick-1 = 3000, monotone), retiring the frozen v3.4×F display curve that diverged at
+98/99 picks (the "two currencies" oddity). Brodie's owner override displays at ×0.50 of his REBASED value
+(511, marked OWNER OVERRIDE; 511×1.0524 = 538, the owner's by-eye read on the pre-L7 board). The OFFICIAL
+cohort gate PASSES unchanged (ratios invariant under the uniform rebase: y4/y5/y6 = 126.8/125.2/116.1).

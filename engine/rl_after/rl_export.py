@@ -45,33 +45,34 @@ level_stable=g['level_stable']; seasons=g['seasons']; srel=g['srel']; peak_est=g
 basepk_c=g['basepk_c']; bandof=g['bandof']; survival=g['survival']; track_delta=g['track_delta']
 los_decay=g['los_decay']; clamp=g['clamp']; hist=g['hist']; pkbest=g['pkbest']; PEAK_AGE=g['PEAK_AGE']
 PVC=g['PVC']; SCALE=g['SCALE']; debut=g['debut']; data=g['data']; BANDS=g['BANDS']; NB=len(BANDS)
-# ==== (f) PICK RE-DENOMINATION (owner ruling 2026-07-11, 'scale picks with the currency') ================
-# The band-pool fix (a) re-rated every player ~+5.24% against the 3000-pinned pick currency. Per the owner's
-# ruling, the SHIPPED pick assets are restated in that same new currency: PVC = frozen v3.4 baked ruler x the
-# MEASURED factor. Ratios byte-preserved (uniform scalar); the curve SHAPE stays frozen (full unfreeze is OUT
-# of scope — that is the PVC re-derivation job). ONLY the pick side of the board is re-denominated here; player
-# values are the live corrected-engine ev() and are untouched (they already carry the +5.24%). If the sidecar
-# is absent, the board ships the live engine PVC unchanged (no-op) — makes the step explicit + reversible.
-if os.path.exists('pick_redenomination.json'):
-    _rd=json.load(open('pick_redenomination.json')); _F=_rd['factor']
-    _frozen={int(k):v for k,v in _rd['frozen_v34_pvc_baked_v2_7'].items()}
-    PVC={k:int(round(_frozen[k]*_F)) for k in PVC if k in _frozen}
-    print('PICK RE-DENOMINATION: shipped PVC = frozen v3.4 x %.4f  (pick1 %d->%d)'%(_F,_frozen[1],PVC[1]))
-# ==== (g) NUMÉRAIRE ASSERT — STANDING LAW (owner ruling 2026-07-12, register v30 item 17) ================
-# "PICK 1 = 3000 IS THE NUMÉRAIRE." L7 re-bases the whole board ÷1.0524 to this anchor; thereafter any board
-# with pick-1 ≠ 3000 HALTS (future scale drift re-bases the CURRENCY to the anchor, never the anchor to the
-# drift). The guard is auto-active in the numéraire world: a legacy ×1.0524 redenomination (factor≠1.0) is
-# the PRE-L7 state and only warns (so the current candidate is not broken); once L7 neutralises the sidecar
-# (factor→1.0 / picks = the adopted curve at 3000) or RL_NUMERAIRE=1, the assert enforces 3000 and HALTS.
-_legacy_redenom = ('_F' in dir() and abs(_F-1.0)>1e-9)
-if _legacy_redenom and not os.environ.get('RL_NUMERAIRE'):
-    print('NUMÉRAIRE GUARD: legacy ×%.4f currency active (pick1=%d) — PRE-L7 board; guard dormant until re-base'%(_F,PVC[1]))
-else:
-    if PVC[1] != 3000:
-        raise SystemExit('NUMÉRAIRE HALT (register v30 item 17): shipped pick-1 = %d ≠ 3000. A numéraire '
-                         'board MUST anchor pick-1 to 3000 — re-base the CURRENCY to the anchor (L7 ÷ the '
-                         'scale drift), never the anchor to the drift. Refusing to write the board.'%PVC[1])
-    print('NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (standing law, register v30 item 17)')
+# ==== (f) L7 NUMÉRAIRE — ADOPTED-CURVE REPOINT (register item 26 / S5; owner "Rebase, 3000 is it.") ======
+# The board ships in the NUMÉRAIRE (pick 1 = 3000). Two coupled DISPLAY-LAYER moves; the engine ev() is
+# untouched (store/engine/config frozen — this is a value-presentation re-base, not a valuation change):
+#   (1) PICK SIDE (here): the shipped pick curve BECOMES the adopted curve (engine/rl_after/pvc_curve_L1b.json
+#       — the same L1 ev-channel curve players are already priced off), replacing the frozen v3.4 × 1.0524
+#       display curve which diverged from adopted at 98/99 picks (the "two currencies" oddity A13/A14).
+#       adopted pick-1 == 3000 natively (pinned) — no rescale; monotone non-increasing (asserted).
+#   (2) PLAYER SIDE (at the ev-read, below): every displayed player value ÷ F, so players and picks live in
+#       ONE currency off ONE curve. F = the certified 1.0524 (pick_redenomination.json), retained here ONLY as
+#       the numéraire divisor; the old frozen-v3.4 × F redenomination is RETIRED (no legacy path remains).
+_NUM=json.load(open('pick_redenomination.json')); _F=_NUM['factor']
+_adopted_doc=json.load(open('pvc_curve_L1b.json'))
+_ADOPTED={int(k):int(v) for k,v in _adopted_doc['curve'].items()}
+assert _ADOPTED.get(1)==3000, 'L7 HALT: adopted_curve[1] != 3000 (pvc_curve_L1b.json)'
+_akeys=sorted(_ADOPTED)
+assert all(_ADOPTED[_akeys[i]]>=_ADOPTED[_akeys[i+1]] for i in range(len(_akeys)-1)), 'L7 HALT: adopted curve not monotone non-increasing'
+PVC={k:_ADOPTED[k] for k in PVC if k in _ADOPTED}                 # shipped PVC IS the adopted curve (the stamped pvc_curve artifact)
+print('L7 ADOPTED-CURVE REPOINT: shipped PVC = adopted pvc_curve_L1b.json (pick1=%d, %d picks, monotone, ÷F=%.4f on players)'%(PVC[1],len(PVC),_F))
+# ==== (g) NUMÉRAIRE ASSERT — UNCONDITIONAL STANDING LAW (register v30 item 17; L7 baked 2026-07-13) =======
+# "PICK 1 = 3000 IS THE NUMÉRAIRE." The dormant legacy (×1.0524, factor≠1.0) branch is RETIRED at the bake:
+# no pre-L7 path remains, so the assert is UNCONDITIONAL — a shipped board with pick-1 ≠ 3000 HALTS, always.
+# The pick curve is the adopted artifact (repointed in (f)); this re-asserts the numéraire anchor at write.
+# Future scale drift re-bases the CURRENCY to the anchor (L7 ÷ the drift), never the anchor to the drift.
+if PVC[1] != 3000:
+    raise SystemExit('NUMÉRAIRE HALT (register v30 item 17): shipped pick-1 = %d ≠ 3000. A numéraire board '
+                     'MUST anchor pick-1 to 3000 — re-base the CURRENCY to the anchor (L7 ÷ the scale drift), '
+                     'never the anchor to the drift. Refusing to write the board.'%PVC[1])
+print('NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)')
 expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PICKEQ=g['PICKEQ']; MECH_STATS=g['MECH_STATS']
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
 val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']
@@ -79,15 +80,45 @@ val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['fu
 # ONE PRICE (D4, Luke's ruling 02/07/2026): the board renders engine ev() -- _merged_recover is the single
 # valuation source. The forward/backward season view asks the engine the as-of-year question:
 # vM2/vM1/v/vP1/vP2 = ev(p, 2024/2025/2026/2027/2028); the view owns no math.
+# L7 NUMÉRAIRE (player side): the displayed player values are re-based to the numéraire by the uniform ÷F.
+# This divides ONLY the '_v*' display caches — engine ev() is untouched, and the display fns (peak_est/
+# level_now/track/...) read the engine objects, never these caches. _raw2026 keeps the pre-rebase 2026 ev
+# for the order/ratio verification (below) and the numéraire parity gate.
+_nb = lambda x: int(round(x / _F))
+_raw2026 = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     for _p in players:
-        _p['_v'] = _ev(_p, 2026)
-        _p['_vM2'], _p['_vM1'], _p['_vP1'], _p['_vP2'] = _ev(_p, 2024), _ev(_p, 2025), _ev(_p, 2027), _ev(_p, 2028)
+        _r = _ev(_p, 2026); _raw2026[_p['key']] = _r; _p['_v'] = _nb(_r)
+        _p['_vM2'], _p['_vM1'], _p['_vP1'], _p['_vP2'] = _nb(_ev(_p, 2024)), _nb(_ev(_p, 2025)), _nb(_ev(_p, 2027)), _nb(_ev(_p, 2028))
         _p['_cvx'] = 1.0
     for _p in g['back_extra']:
-        _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _ev(_p, 2026)
+        _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
+# ==== (g2) L7 RE-BASE VERIFICATION — order preserved + anchor-pair ratios (register v30, l7_rebase.py) =====
+# A uniform ÷F with round() is monotone (never a STRICT inversion) but can TIE two formerly-distinct values
+# (a rounding artifact, reported not failed). Assert: along the pre-rebase order (desc), the rebased values
+# are non-increasing (no strict inversion); and all 10 anchor-pair ratios match to <0.2%.
+_l7_order = [k for k, _ in sorted(_raw2026.items(), key=lambda kv: -kv[1])]
+_reb2026 = {_p['key']: _p['_v'] for _p in players}
+_l7_seq = [_reb2026[k] for k in _l7_order]
+_l7_order_ok = all(_l7_seq[i] >= _l7_seq[i + 1] for i in range(len(_l7_seq) - 1))
+_l7_ties = sum(1 for i in range(len(_l7_order) - 1)
+               if _raw2026[_l7_order[i]] > _raw2026[_l7_order[i + 1]] and _l7_seq[i] == _l7_seq[i + 1])
+_l7_anchors = ['marcus-bontempelli', 'max-gawn', 'kieren-briggs', 'sam-darcy', 'louis-emmett']
+_l7_rc = []
+for _i in range(len(_l7_anchors)):
+    for _j in range(_i + 1, len(_l7_anchors)):
+        _a, _b = _l7_anchors[_i], _l7_anchors[_j]
+        if _a in _raw2026 and _b in _reb2026 and _reb2026[_b]:
+            _rb = _raw2026[_a] / _raw2026[_b]; _ra = _reb2026[_a] / _reb2026[_b]
+            _l7_rc.append((f'{_a}/{_b}', round(_rb, 4), round(_ra, 4), abs(_rb - _ra) < 0.002))
+if not _l7_order_ok:
+    raise SystemExit('L7 HALT: uniform ÷%.4f STRICTLY inverted a pair (not a tie) — ratios NOT preserved.' % _F)
+if not all(x[3] for x in _l7_rc):
+    raise SystemExit('L7 HALT: anchor-pair ratio drift > 0.2%%: %s' % [x for x in _l7_rc if not x[3]])
+print('L7 NUMÉRAIRE RE-BASE ÷%.4f: order preserved (no strict inversion; %d rounding ties), %d/%d anchor ratios <0.2%%'
+      % (_F, _l7_ties, sum(1 for x in _l7_rc if x[3]), len(_l7_rc)))
 
 # ==== CONSUMER-WIRING FIX — lti_reg tag on first-year no-scoring-row register rows (2026-07-13) ==========
 # The RL_AVAIL layer stamps the register disposition `_lti_reg` on the MA.data records. For MOST register
@@ -383,7 +414,7 @@ out={'active':active,'back':back,'cohort':coh,
      'PICKEQ':PICKEQ,'MECH':MECH,'TYPEOFF':TYPEOFF,'CAT_BY_RANGE':CAT_BY_RANGE,'CAT_BY_CLUB':CAT_BY_CLUB,'RANGES':['%d-%d'%(lo,hi if hi<99 else 99) for lo,hi in RANGES],
      **TILT,'SCALE':round(SCALE,5),'PVC':{str(k):v for k,v in PVC.items()},
      'BASE_YEAR':2026,                                                  # board view N maps to draft year BASE_YEAR+N
-     'intake':105000,                                                  # Luke ground-truth: empirical entry+1 class value = avg(2024 -1 board 100964, gap-corrected 2023 -2 board 109545) ~ 105000. Supersedes the durable pick-sum (which under-counts vs the convex board value).
+     'intake':int(round(105000/_F)),                                   # Luke ground-truth entry+1 class value ~105000 (×1.0524 world); L7-rebased to the numéraire so it stays comparable with the (now-numéraire) pick-sum it supersedes. Supersedes the durable pick-sum (under-counts vs the convex board value).
      'intakePickSum':round(sum((PVC[k] if k in PVC else PVC[max(PVC)]) for k in range(1,61)) + 6*PVC.get(80,PVC[max(PVC)]) + 13*PVC.get(90,PVC[max(PVC)]) + 9*PVC.get(84,PVC[max(PVC)])),   # durable per-season pick-equiv replenishment (60 ND +6 RD +13 post-draft +9 SSP), ex-transient MSD — reference only
      'intakeFull':round(sum((PVC[k] if k in PVC else PVC[max(PVC)]) for k in range(1,61)) + 6*PVC.get(80,PVC[max(PVC)]) + 13*PVC.get(90,PVC[max(PVC)]) + 27*PVC.get(84,PVC[max(PVC)])),  # + transient MSD (9 SSP+18 MSD = 27 at pick-84 equiv)
      'picks':[{'n':n,'v':PVC[n]} for n in range(1,31)]}                 # Option-A replenishment: future-draft picks as board assets (value=PVC, label year rolls with the view)
@@ -398,7 +429,7 @@ _by_key={r['key']:r for r in active}
 _parity_fail=[]
 with _ctx.redirect_stdout(_io.StringIO()):
     for _p in players:
-        _bv=_by_key.get(_p['key'],{}).get('v'); _gv=_ev(_p,2026)
+        _bv=_by_key.get(_p['key'],{}).get('v'); _gv=int(round(_ev(_p,2026)/_F))   # numéraire: board v == round(engine ev / F)
         if _bv is None or abs(_bv-_gv)>_PARITY_EPS: _parity_fail.append((_p['key'],_bv,_gv))
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()
 if _parity_fail:
@@ -420,7 +451,11 @@ _ov_keys={_k for _k,_f,_dv in _ov_applied}
 for _r in active:
     if _r['key'] in _ov_keys: _r['vRaw']=_r['v']   # §7.3 pre-override model figure = the engine value (v is never overridden); UI hover shows it vs the overridden rail
 for _k, _f, _dv in _ov_applied:
-    print('OWNER OVERRIDE applied (display-only): %s ×%.2f -> displayed %d (engine v untouched; vRaw model figure stamped)'%(_k,_f,_dv))
+    print('OWNER OVERRIDE applied (display-only): %s ×%.2f -> displayed %d (of the REBASED value; engine v untouched; vRaw model figure stamped)'%(_k,_f,_dv))
+# POST-EXPORT PRESENCE ASSERTION (S1 finding, register item 24): every key in owner_overrides.json MUST
+# carry its `ov` block on the exported board — a listed-but-unapplied override (key drift / silent drop)
+# HALTS in gate/bake mode. Closes the hole where a silent [] shipped an override-less board.
+_OV.assert_presence(active)
 
 _SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)
