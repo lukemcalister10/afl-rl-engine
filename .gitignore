@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# transient/regenerable cert evidence (scripts committed; curated summaries tracked separately)
+session_2026-07-13/v2_9_refit_cert/out/
