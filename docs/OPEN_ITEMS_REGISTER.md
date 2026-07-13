@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v43 2026-07-13 (SPEC RETURN PRESCREENED PASS: the NEWCOMBE FLATTERY IS CONFIRMED — +582/+14.9% pk60-over-pk1 on the identical record, carriers = par-band base + iso_corr, NO decay (grows −547→+582), ladder non-monotone; fix = the next chapter’s headline lever, PROPOSED invariant pending the owner. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v44 2026-07-13 (Owner rules: gardiner → K-DEF · whitlock → K-DEF,K-FWD (ride item 20) · BAKE-AND-CARRY the flattery blessed ("now that we know what it is") · THE FLATTERY CENSUS opened — read-only 804-row label-ladder sweep, fires now, arms the board view + the fix chapter. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -38,6 +38,16 @@
    EVERY band (+19…+281, widest 21–30) — first measurement for the G-Y0 ratification.
    Evidence branch homing: the SPEC branch rides the evidence-homing sweep at the seam (no PR
    needed; docs-only measurement).
+   BAKE-AND-CARRY BLESSED (owner 2026-07-13): "I'm happy to bake and carry this in now that we
+   know what it is and how important it is to fix. Newcombe isn't going to be the only player
+   caught up in this." Disposition CONFIRMED at the owner's word; the flattery rides v2.9 known.
+   THE FLATTERY CENSUS (opened 2026-07-13, owner-directed background prep; read-only, pinned
+   917e4c4, parallel per S3): extend the committed SPEC_1 harness to ALL 804 active rows —
+   (a) per-player flattery component, sized + ranked (arms the owner's board view: the full
+   discount-by-eye list, not just newcombe); (b) the iso_corr map across the whole pick curve
+   (the trough/spike shape the fix must correct); (c) the G-COHORT pre-read (aggregate flattery
+   by cohort year ⇒ what removing it does to the gate, before the fix chapter starts). The census
+   is the fix's BEFORE; the fixed board is the AFTER — acceptance anchors for free.
    OWNER CLARIFICATION (2026-07-13, verbatim intent): the PAR-RELATIVE FLATTERY is THE question —
    "the model measured his performance as exceeding his pole by lots, so boosted him because it
    was pick 60. The specific thing I was told was that there was a chance he'd be valued lower if
@@ -421,8 +431,9 @@
     CROSS-END ANOMALIES — TWO FOUND, OWNER WORD PENDING (owner: "there should not be any"):
     (1) darcy-gardiner "G-DEF,K-FWD" (no K-DEF) · (2) matt-whitlock "G-DEF,G-FWD,K-DEF" (no K-FWD
     — his G-DEF drops as companion, leaving a cross-end G-FWD on a K-DEF player). Both survive
-    normalization under the cross-end-kept rule; owner rules REAL (tags stand) or supplies
-    corrected tags — the fix rides item 20's import.
+    normalization under the cross-end-kept rule; owner RULED 2026-07-13: **gardiner → K-DEF**
+    (both raw tags wrong) · **whitlock → K-DEF, K-FWD** (genuine key swingman). Corrections ride
+    item 20's import. ANOMALIES CLOSED.
     POSITIONAL ARCHITECTURE (recorded): L1-CURRENT — normalized current eligibilities drive ONLY
     the current-season slot value; identity-only today (ev() does not read them); VALUE wiring
     lands in the flex build under the standing law (current tags never influence future/past
