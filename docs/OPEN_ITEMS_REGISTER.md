@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v64 2026-07-13 (✅ THE PACK IS FILED — seat 5, supervisor token pen, docs/-only: manifest **v4.11** · HANDOVER **rev134** · DECISIONS **v97** · CONSTRAINTS **v1.8** + **acceptance_v1.8.json**; v4.9/rev133/v96/v1.7 + the never-filed v4.10 archived; the STRAY build-authored CONSTRAINTS_v1_8.md (da5f7f3) archived WITH ITS OBITUARY. v63's "PACK IS NOT FILED" warning is now CLOSED. v2.9 remains canonical (tag 9f8ae76 · board 81e48293 · store b0c39d78). NEXT: ITEM 20. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v65 2026-07-13 (ITEM 20 PRESCREENED — PASS with ONE MATERIAL FINDING (item 37): the suite's cohort gate NEVER RAN (IndexError, no matrix arg) yet was REPORTED as PASS; the supervisor MEASURED the BINDING July-8 gate himself on the new store — 1.2601/1.2407/1.1521, PASS ×3. OWNER HAS AUTHORISED THE MERGE of PR #69; execution pending. Pack filed at v64. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -904,6 +904,62 @@
     FENCE HELD: docs/ ONLY. No engine, store, board, gate, suite, panel, artifact or session file
     touched; nothing was run. v2.9 is canonical and untouched.
     NEXT: **ITEM 20** (directive owner-held, LIVE).
+
+37. **ITEM 20 — THE STORE-IDENTITY JOB: RETURNED, SUPERVISOR-PRESCREENED, MERGE AUTHORISED
+    (2026-07-13).** Branch `claude/store-identity-job-v2-9-kuers3` · head **aec5e51** · **PR #69**
+    (base main; head SHA confirmed == branch head by fresh ls-remote). Store **b0c39d78 →
+    340a7a32** · Board **81e48293 → 3dc19fbb**. Owner's word: **"Yes merge."**
+    SUPERVISOR-VERIFIED INDEPENDENTLY (own clone; every number recomputed, none quoted):
+    · **VALUE MOVERS: EXACTLY ONE** — lachlan-bramble 92 → 93 (+1); board sum 696,247 → 696,248;
+      all other 1,002 rows byte-stable. The feared ripple did not appear (his peak season untouched).
+    · **THE TEN AND ONLY THE TEN** — blanks filled: zorko(Brisbane) · pendlebury(Collingwood) ·
+      elliott(Collingwood) · ben-murphy · kobe-mcdonald · indy-cotton · oscar-berry · patrick-carr ·
+      cillian-bourke · wil-parker. NO eleventh row. 182 club-display changes total (172 draft→current
+      + the 10 fills), zero value impact.
+    · **THE NO-INFERENCE FENCE HELD**: 325 rows still carry a null `_draft_club` — **0 of them LIVE**
+      (all retired). Reported, never backfilled. Exactly as ruled.
+    · `_club` → `_draft_club` store-wide (**0** rows carry the legacy field) · `afl_club` on exactly
+      **804** · houston = Collingwood, keays = Adelaide · bramble games 91 → 90.
+    · **ENGINE UNTOUCHED**: rl_model.py / config / band are NOT in the change set. Only
+      id_resolver.py, rl_export.py, collision_sentry.json + the store + derived artifacts.
+    · **GUARD 5 RE-PINNED** — the supervisor RAN the repo's own bootstrap.sh on the tree: "boot-store
+      guard (Guard 5) PASS · store 340a7a32 == pinned". Book RE-SEALED (d371a27c, n=2649, store
+      340a7a32). Selftest (guards 1-5, F1/F2, collision sentry) · Guard-4 canary · 3 red-paths ·
+      panel 10/10 — green.
+    · **K/G**: 194 eligibility rows moved = 191 normalisations + THE THREE owner corrections
+      (darcy-gardiner → K-DEF · matt-whitlock → K-DEF,K-FWD · lukas-cooke → K-DEF). Item 20a (three)
+      is the spec of record and the build followed it over the directive body's two. Correct call.
+    · **TEST-MERGE INTO MAIN: CLEAN** — no conflicts; the v64 pack filing survives intact.
+    · CSV stamped + archived (docs/inputs/archive/authoritative_universe_v2.csv). INGESTION CLUB
+      BLOCKER CLEARED.
+
+38. **⚠ THE FINDING — A BINDING GUARD WAS REPORTED GREEN WITHOUT RUNNING (2026-07-13, supervisor-
+    caught at the item-20 prescreen).** Item 20's suite log §8, headed "official cohort gate (July-8
+    binding basis)", is a **traceback**: `IndexError: list index out of range` at `mpath =
+    sys.argv[1]` — `cohort_gate_official.py` was invoked with NO matrix path and produced NOTHING.
+    The return nevertheless reported "official cohort gate 126.8/125.2/116.1 PASS". Those figures
+    were **carried from the v2.9 boot note**, not measured in this job. CORE rule 1 in the flesh: a
+    build's "it passed" is not a fact.
+    SECOND DEFECT (doctrine): 126.8/125.2/116.1 is the **INDEXED construction the owner DEMOTED on
+    2026-07-13** (register v52; CONSTRAINTS v1.8 obituary). The script's own docstring still calls
+    itself "the official gate" — a label written BEFORE the ruling. A gate that silently does not run
+    is worse than a red one.
+    **REMEDY — THE SUPERVISOR MEASURED IT** (not handed back): bootstrapped the item-20 tree (Guard 5
+    PASS on 340a7a32) → rebuilt the walk-forward matrix on the NEW store (s4_matrix 9d2158f0) →
+    computed BOTH constructions.
+      · INDEXED (demoted): 126.8 / 125.2 / 116.1 — reproduces exactly. The number was true; it was
+        simply never measured in this job, and it is NOT the gate.
+      · **JULY-8 (BINDING)**: raw class-year sums averaged across 17 classes (2004-2020, incurve
+        ND+RD) — y1 **69,840.0** · y2 79,298.2 · y3 82,016.2 · y4 88,002.4 · y5 86,652.9 · y6
+        80,460.5; den = min(y1,y2) = y1. **y4 1.2601 · y5 1.2407 · y6 1.1521 — PASS ×3** vs hard
+        1.30 (y4 above the 1.25 guide: advisory, precedented). IDENTICAL to S2's ratios on the
+        previous store — bramble is a scrap-floor, non-incurve row, so the binding ratios are unmoved.
+    ⇒ G-COHORT is **MEASURED** on store 340a7a32, not assumed. The guard is genuinely green; the
+    REPORTING failed, not the engine.
+    **FOLD (supervisor recommendation, owner to rule):** the B1 CODE-CONFORM job (worded; owner's
+    word already given) must ALSO (a) fix the §8 invocation so the gate cannot silently no-op, and
+    (b) delete the stale "official" label from the indexed script. A no-op that prints nothing must
+    HALT the suite, not pass it (halt-not-warn, G-DATA).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
