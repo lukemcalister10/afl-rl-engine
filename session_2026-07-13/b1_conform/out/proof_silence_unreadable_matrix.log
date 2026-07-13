@@ -1,0 +1,117 @@
+boot-store guard (Guard 5) PASS  [ship_gates_check]  store 340a7a32 == pinned 340a7a32 (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+config manifest (gate mode) LOADED  hash 69ead79b944d  (40 model vars pinned; ambient cleared)
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
+=== SGC_B1_MATRIX SET -> candidate matrix INJECTED (/home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/s4_garbage_tlmi2z4b.json); this is a PROOF RUN, NOT a certification. B1 is stamped INJECTED and the suite EXITS NON-ZERO regardless of gate results. ===
+=== STATE: PROTOTYPE/UNREGISTERED @ 2030e5df — NOT AN ENDORSED STATE ===
+=== SHIP GATES BOARD — head 2030e5df store 340a7a32 config 69ead79b944d — suite 764a0d91 — 2026-07-13 ===
+=== CONFIG MANIFEST (gate mode): data/model_config.json hash 69ead79b944d291b — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===
+=== THREE-COLUMN RULE (Luke, binding D10): CONTROL=7a07e369 · PREVIOUS=efea88e5 · CURRENT=2030e5df ===
+A1        PASS    | PASS    | PASS     Duursma>Uwland: 4566 vs 2833
+A2        FAIL    | FAIL    | FAIL     Curtis>=0.90xWard: 1598 vs 1562 (Ward=1735, ratio=0.921) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: 1661 vs 1735
+A3   [DC] FAIL    | FAIL    | FAIL     Connor Rozee: 2026=2396 2025=4464 ratio=0.54 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]
+          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A4        PASS    | PASS    | PASS     Harley Reid board rank=30 ev=3782 (need TOP 40)
+A5        PASS    | PASS    | PASS     Jack Ginnivan=1941 (floor 1600); Jake Bowey=3388 (floor 2100); Nick Blakey=3504 (floor 2600) [SCAR floors — RE-BASE if PVC re-levels]
+A6        PASS    | PASS    | PASS     yr1-3 RUC median=484 (n=12, pooled — thin slice) vs pick-matched MID kernel median=639 (n=67, bw=0.6 log-pick, RATIFIED 02/07)
+A7        PASS    | PASS    | PASS     Ryan Maric: future_position=MID gfut=MID (need MID/MID) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]; Ed Langdon: future_position=GDEF gfut=GEN_DEF (need GDEF/GEN_DEF) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]
+A8   [DC] PASS    | PASS    | PASS     Berry=2874 Tsatas=1243 ratio=2.31x (need >=2.00x) [display de-ambiguated D4 02/07]
+A9        PASS    | PASS    | PASS     Ginnivan>Ward: 1941 vs 1735
+A10  [DC] PASS    | PASS    | PASS     Charlie Curnow: 2026=1249 2025=2257 ratio=0.55 (need >=0.50) [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]
+A11  [DC] PASS    | PASS    | PASS     Farrow>Patterson: 1822 vs 1029; Cumming>Annable: 2258 vs 2090
+A12  [DC] FAIL    | FAIL    | FAIL     Travaglia>Moraes: 824 vs 1041; Smillie>Retschko: 1349 vs 873
+          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A13       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3221 lineball=True; Levi Ashcroft=3259 lineball=True
+A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1706: Trent Rivers=1798 lineball=True; Zach Reid=1719 lineball=True; Jase Burgoyne=2098 lineball=False
+A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
+B1        PASS    | PASS    | HALT     candidate matrix unavailable — B1 produced NO result and HALTS rather than pass silently (the v2.5 comparator is NOT substituted): JSONDecodeError: Expecting value: line 1 column 1 (char 0)  <- MOVED
+B2        PASS    | PASS    | NOT-RUN  SGC_SKIP=B2  <- MOVED
+B3        PASS    | PASS    | NOT-RUN  SGC_SKIP=B3  <- MOVED
+B4        PASS    | PASS    | NOT-RUN  SGC_SKIP=B4  <- MOVED
+B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 63 saves, aggregate lift +2231; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new alarm surface)
+B6        PASS    | PASS    | PASS     ramp(0..14g)=[1353, 1643, 1956, 2649, 3289, 3389, 3447, 3505, 3525, 3539, 3601, 3674, 3765, 3806, 3836]; dips(more games worth less)=none; 0->6 rise T=+2094; 0->6 steps>50%T=none; rise by 3g=+1296 (need >=524) [whole-ramp re-spec, DECLARED thresholds]
+D14a      PASS    | PASS    | PASS     same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion=0.0000 SCAR (Luke's amended law; board path)
+D14b      PASS    | PASS    | PASS     within (pos×draft-age×draft-year) V0 inversions under V0* = 0 roster-wide (D13 guard-transform → assertion; obituary E5)
+D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = True (max of isotonic-non-increasing KPP/nonKPP; comparator nonKPP-only)
+C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
+C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
+          columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
+VERDICT: FAIL=3  FEATURE=1  HALT=1  NOT-RUN=3  PASS=13  PENDING=4  STRUCK=1  (84s)
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
+
+B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):
+| player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |
+|---|---|---|---|---|---|---|---|
+| Paddy Dow | — | 9 | 14 | 140.8 | 169 | +155 | clear |
+| Stephen Coniglio | — | 15 | 23 | 140.8 | 169 | +146 | clear |
+| Jaeger O'Meara | — | 15 | 63 | 150.0 | 192 | +129 | clear |
+| Chayce Jones | — | 8 | 10 | 85.4 | 115 | +105 | clear |
+| Steele Sidebottom | — | 18 | 3 | 81.2 | 103 | +100 | clear |
+| Oliver Wiltshire | — | 3 | 14 | 98.3 | 109 | +95 | clear |
+| Jacob Hopper | — | 11 | 43 | 87.0 | 126 | +83 | clear |
+| Luke Pedlar | — | 6 | 73 | 146.2 | 147 | +74 | clear |
+| Bailey Laurie | — | 6 | 22 | 87.8 | 77 | +55 | clear |
+| Billy Cootee | — | 1 | 39 | 305.6 | 92 | +53 | clear |
+| Jack Martin | — | 14 | 48 | 140.8 | 101 | +53 | clear |
+| Conor Stone | — | 6 | 36 | 114.1 | 88 | +52 | clear |
+| Callum Ah Chee | — | 11 | 40 | 87.0 | 89 | +49 | clear |
+| Phoenix Gothard | — | 3 | 390 | 443.2 | 437 | +47 | clear |
+| Liam Stocker | — | 8 | 2 | 58.6 | 43 | +41 | clear |
+| Jade Gresham | — | 11 | 14 | 60.1 | 54 | +40 | clear |
+| Nicholas Coffield | — | 9 | 17 | 87.0 | 55 | +38 | clear |
+| Jake Melksham | — | 17 | 15 | 82.9 | 53 | +38 | clear |
+| Finlay Macrae | — | 6 | 77 | 101.3 | 114 | +37 | clear |
+| Brandon Starcevich | — | 9 | 7 | 60.1 | 44 | +37 | clear |
+| Sam Butler | — | 5 | 75 | 126.8 | 111 | +36 | clear |
+| Oliver Henry | — | 6 | 61 | 108.2 | 97 | +36 | clear |
+| Charlie Spargo | — | 9 | 1 | 42.2 | 37 | +36 | clear |
+| Laitham Vandermeer | — | 8 | 2 | 37.2 | 34 | +32 | clear |
+| Xavier O'Halloran | — | 8 | 13 | 51.0 | 44 | +31 | clear |
+| Harvey Gallagher | — | 4 | 113 | 153.3 | 142 | +29 | clear |
+| Jamie Elliott | — | 15 | 6 | 34.0 | 34 | +28 | clear |
+| Jed Bews | — | 15 | 1 | 17.2 | 28 | +27 | clear |
+| Ryan Gardner | — | 11 | 9 | 18.3 | 35 | +26 | clear |
+| Darcy Gardiner | — | 13 | 22 | 51.0 | 48 | +26 | clear |
+| Rhys Stanley | — | 18 | 12 | 27.4 | 38 | +26 | clear |
+| Ben Long | — | 10 | 9 | 45.9 | 34 | +25 | clear |
+| Alex Pearce | — | 13 | 15 | 37.2 | 40 | +25 | clear |
+| Nicholas Holman | — | 13 | 0 | 24.8 | 25 | +25 | clear |
+| Joel Hamling | — | 15 | 14 | 31.5 | 38 | +24 | clear |
+| Matt Guelfi | — | 9 | 5 | 17.2 | 27 | +22 | clear |
+| Daniel Butler | — | 12 | 0 | 17.2 | 22 | +22 | clear |
+| Corey Durdin | — | 6 | 35 | 65.7 | 56 | +21 | clear |
+| Ben McKay | — | 11 | 28 | 53.7 | 49 | +21 | clear |
+| Liam Henry | — | 7 | 67 | 85.4 | 87 | +20 | clear |
+| Jacob Wehr | — | 6 | 3 | 31.6 | 22 | +19 | clear |
+| Mitch McGovern | — | 12 | 9 | 32.8 | 28 | +19 | clear |
+| Reef McInnes | — | 6 | 64 | 84.7 | 82 | +18 | clear |
+| Aidan Corr | — | 14 | 35 | 60.1 | 53 | +18 | clear |
+| Lachlan Weller | — | 12 | 69 | 67.8 | 85 | +16 | clear |
+| Harry Schoenberg | — | 7 | 43 | 47.1 | 58 | +15 | clear |
+| Sam Sturt | — | 8 | 43 | 60.8 | 57 | +14 | clear |
+| Oskar Baker | — | 9 | 19 | 26.0 | 33 | +14 | clear |
+| Finn Maginness | — | 7 | 24 | 42.2 | 37 | +13 | clear |
+| Noah Answerth | — | 8 | 20 | 19.6 | 33 | +13 | clear |
+| Bailey Scott | — | 8 | 23 | 24.8 | 35 | +12 | clear |
+| Tom Cole | — | 11 | 20 | 37.4 | 32 | +12 | clear |
+| Jamie Cripps | — | 16 | 25 | 41.1 | 37 | +12 | clear |
+| Jake Kolodjashnij | — | 13 | 28 | 35.0 | 39 | +11 | clear |
+| Kaleb Smith | — | 4 | 119 | 104.0 | 129 | +10 | clear |
+| Bailey Macdonald | — | 4 | 119 | 94.9 | 129 | +10 | clear |
+| Harry Morrison | — | 10 | 21 | 17.2 | 30 | +9 | clear |
+| James Jordon | — | 8 | 37 | 38.5 | 45 | +8 | clear |
+| Judson Clarke | — | 5 | 88 | 106.9 | 95 | +7 | clear |
+| James Tunstill | — | 5 | 95 | 91.0 | 100 | +5 | clear |
+| Hunter Clark | — | 9 | 52 | 87.0 | 57 | +5 | clear |
+| Liam Ryan | — | 9 | 28 | 45.0 | 31 | +3 | clear |
+| Nathan Broad | — | 11 | 9 | 17.2 | 12 | +3 | clear |
+report: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/ship_gates_report_2030e5df.md  md5=bba603d5
+
+!! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN via SGC_SKIP=B2) — the MANDATORY leakage gate cannot be skipped silently. Treated as FAILURE.
+
+!! SUITE HALT: gate(s) B1 produced a HALT (exception / missing input / breach / absent result — named RED, never a silent pass). Suite exits non-zero.
+
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
+!! INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION. SGC_B1_MATRIX was set, so the candidate matrix was caller-supplied, not regenerated. The suite EXITS NON-ZERO regardless of gate results; no injected run can yield a green, zero-exit certification.
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
+
+===STDERR===

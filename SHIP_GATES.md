@@ -33,6 +33,50 @@
 ###   never silently clamped), and the pure-lower-bound property (0 lowered, 0 non-ND moved) is
 ###   re-verified every run. If the saves-list ever needs a hard bound again, B5 returns to pass/fail
 ###   by Luke's ruling; until then FEATURE = "wired, visible, owner-ruled non-blocking."
+### - HALT — the gate could not produce a verdict, or produced a hard breach: a raised
+###   exception, a missing / unreadable input, a None / absent figure, or a bound breach.
+###   A HALT is a RED. It is NEVER a skip and NEVER a pass. (Registered 2026-07-13, item-38 fix.)
+
+### SUITE FAILURE SEMANTICS — AN ABSENT RESULT IS A FAILURE, NOT A PASS (registered
+### 2026-07-13; owner ruling behind item 38/40; G-DATA halt-not-warn applied to the gate itself).
+### Every gate block in ship_gates_check.py MUST produce a verdict or HALT. An exception, a
+### missing input, an unreadable matrix, or a None result is turned into a named HALT carrying the
+### gate's ID — it is caught, not swallowed. The suite EXITS NON-ZERO whenever any gate HALTs (or
+### FAILs / ERRORs), AND a SILENT-GATE COMPLETENESS NET asserts that every gate in the board order
+### produced a verdict at all — a gate that silently did not run (its block raised before recording
+### anything) is caught by name and HALTS the suite. A run in which a binding gate prints nothing and
+### the suite still reports PASS is the exact defect this closes (item 38: the cohort gate crashed
+### with IndexError, printed nothing behind a `| tail -8` pipe, no exit code was checked, and PASS
+### was reported anyway).
+### THE STANDING INVOCATION RULE (BINDING, all future suites inherit it): NEVER pipe a gate's or the
+### suite's output through `tail` / `head` (or any truncating filter) WITHOUT checking its exit code.
+### `python3 ship_gates_check.py | tail -8` swallows the traceback AND drops the exit status — the
+### item-38 signature. Correct forms: run without a pipe and read the whole log; or, if truncating,
+### capture the status first — `python3 ship_gates_check.py > log 2>&1; rc=$?; tail log; exit $rc`
+### (or `set -o pipefail` and test `${PIPESTATUS[0]}`). A green summary line is NOT a pass; the
+### non-zero exit code is the authority.
+### RED-PATH TEST SEAM (`SGC_B1_MATRIX`) — FOR RED-PATH PROOFS ONLY; A RUN USING IT IS **NOT A
+### CERTIFICATION** (fail-close, owner-ruled Option B, 2026-07-13). When set, B1 reads that matrix path
+### INSTEAD of regenerating one, so the item-38 red paths (a breaching matrix HALTs; a missing/unreadable
+### matrix HALTs) can be proven against the REAL suite and its REAL exit code. The seam exists SOLELY to
+### exercise those red paths — it can NEVER produce a green certification:
+###   • The board and the report are topped AND tailed with a loud banner:
+###     "INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION."
+###   • B1's verdict is stamped **INJECTED** (never a bare PASS) — in the board, the report, and
+###     data/gates_snapshots/ — even on a clean, valid, non-breaching injected matrix. A breach or a
+###     missing/garbage matrix still HALTs (HALT wins over INJECTED).
+###   • The suite EXITS NON-ZERO whenever the seam is set, regardless of gate results. There is NO path by
+###     which an injected run yields a green, zero-exit certification. (The meta/hash validation is
+###     unchanged and still runs — this is an ADDITIONAL fail-close on top of it, not a weakening.)
+### GATE/BAKE MODE HALTS IF THE SEAM IS SET: in a real bake or gate — signalled by `RL_CONFIG_MODE` set to
+### `bake`/`gate` in the ambient environment — `config_manifest.enforce()` treats ANY set `SGC_*` variable
+### as an unknown override and HALTS on line one (the same treatment `RL_*`/`PAR_*` overrides already get).
+### A bake that even smells of an injected gate input dies before the engine loads. The proofs run in
+### dev-shell mode (no ambient `RL_CONFIG_MODE`), so they still drive the suite — where B1 stamps INJECTED
+### and the non-zero exit does the fail-close. UNSET in production ⇒ B1 regenerates the candidate exactly
+### as before and the run is byte-identical to a seam-free run. Proofs live in
+### session_2026-07-13/b1_conform/scripts/ (prove_injection_cannot_certify.py, prove_bake_door_bolted.py,
+### prove_breach_halts.py, prove_silence_halts.py).
 
 ## SECTION A — LUKE'S NAMED CALLS (all confirmed)
 
@@ -83,17 +127,34 @@ N1. Mid-career (years 3-5) Parish valuation — decider: the matched same-player
 N2. The years-4-6 peak LEVEL — not a gate until the matched cut runs.
 
 ## SECTION B — STRUCTURAL GATES
-B1. Cohort growth law — REDEFINED by Luke (in writing, confirmed, 02/07/2026 D5;
-    amendment logged in CHANGELOG; supersedes the per-cohort form and the pooled
-    re-script): at each years-in-system depth d, the SIMPLE (UNWEIGHTED) MEAN of
-    indexed cohort value (yr1 = 100) across all cohorts observed at depth d must
-    rise from year 1 to a peak occurring in years 4-6; pre-peak dips of the
-    AVERAGE tolerated under 5% (tolerance carried from old B1 — now applies to
-    the average only). Individual cohorts are UNGATED by design (Luke: "not all
-    draft cohorts are equal; 2020 is a shocking draft — it should lose value")
-    but the per-cohort curve table MUST be printed as a pipe table on every
-    gates-board run (Luke's eyeball channel — visibility without a gate). The
-    old per-cohort rise backstop is RETIRED — obituary in CHANGELOG (D5).
+B1. Cohort growth law — CODE-CONFORMED to the JULY-8 CONSTRUCTION (owner-ruled
+    2026-07-13, register v52; CONSTRAINTS v1.8 G-COHORT; amendment logged in
+    CHANGELOG). THE GATE: population = incurve (type ∈ {ND,RD}) AND draft class
+    2004-2020. For each class, the RAW class-year SUM of Vpath at each career year
+    N (N=1 = end of calendar Yr1 = C+1). Average those raw sums UNWEIGHTED across
+    the classes observed at N — one figure per year. Denominator = min(y1, y2).
+    Test EACH of y4, y5, y6 INDIVIDUALLY against hard ≤ 1.30; a breach HALTS. The
+    guide band 1.20-1.25 is ADVISORY (the margin is reported, never gated). NO
+    per-class yr1=100 renormalisation, NO mean-of-ratios. First conformant
+    measurement (store 340a7a32, this code-conform job): y1 69,840.0 · y2
+    79,298.2 · y4 88,002.4 · y5 86,652.9 · y6 80,460.5 → 1.2601 / 1.2407 / 1.1521
+    — PASS ×3 (identical to S2's independent shard at store b0c39d78).
+    DEMOTED — THE INDEXED READING: the owner's 02/07 D5 form (per-class yr1=100
+    renormalisation + mean-of-ratios) is SUPERSEDED by his 08/07 wording and
+    13/07 confirmation ("no need to rescale… sounds silly"). It SURVIVES ONLY as
+    B1's secondary, NON-GATING SHAPE diagnostic (peak position + pre-peak dip),
+    structurally incapable of failing the build. Its historic headline
+    126.8/125.2/116.1 is the INDEXED row — it must NEVER be printed or quoted as
+    "the gate". The per-class curve table + the July-8 gated row + the demoted
+    indexed row all print on every gates-board run (visibility without a gate).
+    OBITUARY (retired 2026-07-13): session_2026-07-13/v2_9_continuation/scripts/
+    cohort_gate_official.py — a second, drifting copy of this gate (a lookalike the
+    single-source invariant forbids). Its "official" label predated the owner's
+    13-July ruling; it computed the DEMOTED indexed reading; and at the item-20 job
+    it was invoked with NO matrix path, raised IndexError, and silently no-oped
+    while the suite reported PASS (item 38). DELETED (CORE rule 7 — delete, don't
+    disable); full obituary in session_2026-07-13/b1_conform/. B1 in this frozen
+    suite is now the ONE cohort gate.
 B2. GATE-1: leakage ~0 (IS vs WF, tree-matched) + clean good/bust separation.
 B3. Walk-forward book gates pass at the ship head.
 B4. JS parity: Python and board JS byte-agree on the shipped board.
