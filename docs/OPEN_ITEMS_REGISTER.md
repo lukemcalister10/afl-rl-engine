@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v72 2026-07-13 (JOB A (PR #70) + JOB B (shadow board) PRESCREENED — both PASS. ⚠ **JOB A BLOCKER: the SGC_B1_MATRIX seam could green-light a fabricated matrix in a real bake (config_manifest only polices RL_/PAR_ prefixes) — OWNER RULED OPTION B: fail-close it** (item 49; JOB A2 issued). **THE CAPTAINCY CLIFF (item 50): the premium is evaluated at the POINT ESTIMATE of a player's projected peak — Sanders' peak projects to 105.2, MISSING the 107.4 line by 2.2, so he earns ZERO captain credit in EVERY year of his path.** Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v73 2026-07-13 (MEASUREMENT BUILD (PR #71) PRESCREENED — PASS. **THE G-COHORT FEAR IS RETIRED: the captaincy lever SELF-FUNDS (forward credit lifts y1 too, 69,840 -> 70,223), y4 tops out at 1.2651 vs the 1.30 bound.** **CAPTAINCY CANNOT FIX PAIR 3** (gap narrows 12.07% -> 8.06%, bont never passes sanders) — pair 3 is the BASE CURVE, confirming item 44. Owner: **investigate the option-value principle, do NOT rule it** (item 51) + **hygiene job AUTHORISED** (item 52). Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1249,6 +1249,60 @@
     can't price them like they will"* — which is the point-estimate treatment, implemented literally).
     **HELD FOR THE FIX CHAPTER'S DESIGN SEAT.** D4 of the measurement build must now ALSO report: the
     distribution of projected peaks around the line, and how many players sit within ±5 points of it.
+
+51. **THE MEASUREMENT BUILD — PRESCREENED, PASS (PR #71, head 9d30c5f, 2026-07-13).** Fence HELD
+    (nothing outside session_2026-07-13/measurement/). Supervisor re-read the committed artifacts.
+    · **D4 — THE G-COHORT FEAR IS RETIRED, AND THE REASON MATTERS.** The build asserted "no rung
+      breaches"; the supervisor read the class sums and found WHY: **the lever SELF-FUNDS.** At gain
+      1.00 the y1 sum RISES too (69,840.0 → **70,222.9**), because captain credit is FORWARD-LOOKING —
+      it already flows into the year-1 value of players projected to become elite. So numerator AND
+      denominator lift together: y4 1.2601 → **1.2651** (margin 0.0399 → 0.0349); no breach at any
+      rung, uncapped included. The supervisor's pre-flight warning (item 45) was worth raising and is
+      now CLOSED by measurement.
+    · **CAPTAINCY CANNOT FIX PAIR 3.** Gap −12.07% → **−8.06%** at gain 1.00; **bont NEVER passes
+      sanders at any rung.** Pair 3 is the BASE CURVE — item 44 CONFIRMED by an independent lever test.
+      The captaincy work is now cleanly DECOUPLED from pair 3.
+    · **THE OWNER'S SHAPE READ IS SUPPORTED BY THE RECORD:** realized order-statistic value is CONVEX
+      (rank1→2 = 5.31 pts vs rank5→6 = 1.09) while the live term prices it CONCAVELY.
+    · **D1 — DYLAN MOORE: THE EVIDENCE GOES AGAINST THE OWNER'S SUSPECTED MECHANISM.** The dip costs
+      778–959, but the missing body-of-work axis is REAL YET SMALL (**incremental R² +0.69%**) — it
+      buys a few points of buffer, not the whole penalty. His READ (priced too low) STANDS and is
+      ground truth until he waives it; but the CAUSE he suspected is not the size of the effect.
+      JUH: the −865 is a RECENCY SLOPE first (the 26.0 cameo dragging _lvlcurr), an nqual 3→4 cliff to
+      a hard 105 floor second. `_fbump`: small (+917 total, 34 players; walsh +418 the outlier).
+    · **D2 — G-Y0 SURVIVES THE RE-BASING:** on the baked board in the numéraire, comp-weighted V0 >
+      derived PVC in ALL 8 bands (+47…+286); the y0→y1→y2 chain holds. Ratification can proceed on
+      current numbers.
+    · **D3 — 48 DANGEROUS SITES / 15 FILES.** No gate runner sets `pipefail`. Worst: the literal
+      item-38 site; run_panel.sh:13; and **build_final_board.sh — it MASKS a failing export
+      (`| grep … || true`) AND THEN RE-PINS.** A BAKE script that can proceed on a broken export and
+      pin the result. → item 52.
+
+52. **OWNER RULINGS (2026-07-13).**
+    (a) **THE OPTION-VALUE PRINCIPLE: INVESTIGATE, DO NOT RULE.** Owner: *"I'm not sure we should rule
+    the principle, but we should investigate it?"* — so it is NOT doctrine and must not be cited as
+    such. His idea, verbatim: *"we can price the portion of their potential that says they will [become
+    Bont]. So Sanders may have a p90 of 114 — that p90 should get the captaincy effect! Just not the
+    parts that don't clear the bar."* THE OPTION-VALUE INVESTIGATION directive issued (READ-ONLY,
+    Tier 3). It must answer, and is explicitly permitted to answer NO:
+      · is the peak spread CALIBRATED (do realised peaks land in the predicted quantiles)? — if not,
+        that finding KILLS the idea and saves a build;
+      · the Jensen gap per player, GROSS and **NET OF THE PMAX young-convexity multiplier already
+        being paid** (`prod *= 1 + runway·elite·PMAX`) — double-counting is the thing that can
+        invalidate it;
+      · **every OTHER point-estimate threshold in the valuation** (the `elite` clamp is itself a cliff)
+        and how many players sit within ±5 points of each — i.e. is this a captaincy question or a
+        WHOLE-MODEL question;
+      · guard/anchor exposure — noting this treatment is expected to RAISE sanders and push **pair 3
+        FURTHER from the owner's own read.** Both can be true: the option pricing is too crude AND the
+        base curve too generous.
+    (b) **THE SUITE-HYGIENE JOB: AUTHORISED.** Directive issued. `pipefail` in every live runner ·
+    **UNMASK build_final_board.sh — a bake script must never pin a board it did not successfully
+    build** · all 48 sites triaged (unclassifiable ⇒ DANGEROUS by default) · gate CONSTRUCTIONS
+    untouched (failure PROPAGATION only) · historical session logs untouched. Acceptance A1 = the bake
+    script HALTs on a broken export, publishing and re-pinning NOTHING.
+    ⚠ **SEQUENCING: the hygiene job runs AFTER PR #70 merges** — it shares SHIP_GATES.md and
+    ship_gates_check.py's exit semantics with JOB A2. Two chats on the same files is how a fix gets lost.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
