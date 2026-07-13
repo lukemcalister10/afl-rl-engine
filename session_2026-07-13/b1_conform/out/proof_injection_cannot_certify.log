@@ -35,7 +35,7 @@ D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = T
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: FAIL=3  FEATURE=1  INJECTED=1  NOT-RUN=3  PASS=13  PENDING=4  STRUCK=1  (102s)
+VERDICT: FAIL=3  FEATURE=1  INJECTED=1  NOT-RUN=3  PASS=13  PENDING=4  STRUCK=1  (97s)
 ################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
 
 B1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):
@@ -127,7 +127,7 @@ B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silent
 | Hunter Clark | — | 9 | 52 | 87.0 | 57 | +5 | clear |
 | Liam Ryan | — | 9 | 28 | 45.0 | 31 | +3 | clear |
 | Nathan Broad | — | 11 | 9 | 17.2 | 12 | +3 | clear |
-report: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/ship_gates_report_2030e5df.md  md5=941cbfb9
+report: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/ship_gates_report_2030e5df.md  md5=84208a11
 
 !! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN via SGC_SKIP=B2) — the MANDATORY leakage gate cannot be skipped silently. Treated as FAILURE.
 

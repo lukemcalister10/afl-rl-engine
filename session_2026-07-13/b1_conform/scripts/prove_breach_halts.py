@@ -6,8 +6,9 @@ class-sum average exceeds 1.30 x den. Feeds the doctored matrix to the REAL ship
 the SGC_B1_MATRIX seam (B2/B3/B4 skipped for speed — they are irrelevant to this proof) and asserts:
   * B1's verdict is HALT and its detail names the BREACH,
   * the suite process exits NON-ZERO.
-A CONTROL run feeds the CLEAN (undoctored) matrix through the identical path and asserts B1 == PASS —
-so the ONLY thing that flips B1 to HALT is the breach, not the harness.
+A CONTROL run feeds the CLEAN (undoctored) matrix through the identical path and asserts B1 == INJECTED
+(non-breaching; the seam stamps INJECTED, never a bare PASS, per the Option-B fail-close 2026-07-13) — so
+the ONLY thing that flips B1 to HALT is the breach, not the harness.
 
 Usage: prove_breach_halts.py [clean_matrix.json]   (regenerates one if not supplied)
 Exits 0 iff the breach HALTs the suite and the control passes B1.
@@ -73,12 +74,14 @@ def main():
     print(f"  exit={rc_b}  B1: {b1_b.strip()[:200]}")
     print(f"  log: {log_b}")
 
-    ctrl_pass = ('PASS' in b1_c) and ('HALT' not in b1_c)
+    # FAIL-CLOSE (Option B, 2026-07-13): a clean INJECTED matrix is stamped INJECTED, never a bare PASS
+    # (the seam can no longer certify). The control still proves B1 did NOT breach — it is INJECTED, not HALT.
+    ctrl_pass = ('INJECTED' in b1_c) and ('HALT' not in b1_c)
     breach_halt = ('HALT' in b1_b) and ('BREACH' in b1_b.upper())
     suite_nonzero = rc_b != 0
     ok = ctrl_pass and breach_halt and suite_nonzero
     print("\n=== A2 RESULT ===")
-    print(f"  control B1 PASS on clean matrix ......... {ctrl_pass}")
+    print(f"  control B1 INJECTED (non-breach) on clean matrix ... {ctrl_pass}")
     print(f"  B1 HALT + BREACH on doctored matrix ..... {breach_halt}")
     print(f"  suite exits NON-ZERO on breach .......... {suite_nonzero} (exit={rc_b})")
     print("VERDICT:", "A2 PROVEN — a B1 breach HALTS the suite" if ok else "A2 FAILED")

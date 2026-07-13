@@ -1,5 +1,7 @@
 boot-store guard (Guard 5) PASS  [ship_gates_check]  store 340a7a32 == pinned 340a7a32 (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
 config manifest (gate mode) LOADED  hash 69ead79b944d  (40 model vars pinned; ambient cleared)
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
+=== SGC_B1_MATRIX SET -> candidate matrix INJECTED (/home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/s4_garbage_tlmi2z4b.json); this is a PROOF RUN, NOT a certification. B1 is stamped INJECTED and the suite EXITS NON-ZERO regardless of gate results. ===
 === STATE: PROTOTYPE/UNREGISTERED @ 2030e5df — NOT AN ENDORSED STATE ===
 === SHIP GATES BOARD — head 2030e5df store 340a7a32 config 69ead79b944d — suite 764a0d91 — 2026-07-13 ===
 === CONFIG MANIFEST (gate mode): data/model_config.json hash 69ead79b944d291b — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===
@@ -33,7 +35,8 @@ D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = T
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: FAIL=3  FEATURE=1  HALT=1  NOT-RUN=3  PASS=13  PENDING=4  STRUCK=1  (86s)
+VERDICT: FAIL=3  FEATURE=1  HALT=1  NOT-RUN=3  PASS=13  PENDING=4  STRUCK=1  (84s)
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
 
 B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):
 | player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |
@@ -101,10 +104,14 @@ B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silent
 | Hunter Clark | — | 9 | 52 | 87.0 | 57 | +5 | clear |
 | Liam Ryan | — | 9 | 28 | 45.0 | 31 | +3 | clear |
 | Nathan Broad | — | 11 | 9 | 17.2 | 12 | +3 | clear |
-report: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/ship_gates_report_2030e5df.md  md5=33180b72
+report: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/ship_gates_report_2030e5df.md  md5=bba603d5
 
 !! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN via SGC_SKIP=B2) — the MANDATORY leakage gate cannot be skipped silently. Treated as FAILURE.
 
 !! SUITE HALT: gate(s) B1 produced a HALT (exception / missing input / breach / absent result — named RED, never a silent pass). Suite exits non-zero.
+
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
+!! INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION. SGC_B1_MATRIX was set, so the candidate matrix was caller-supplied, not regenerated. The suite EXITS NON-ZERO regardless of gate results; no injected run can yield a green, zero-exit certification.
+################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################
 
 ===STDERR===

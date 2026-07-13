@@ -99,6 +99,25 @@ def enforce(mode=None, halt=True):
         elif v != cvars[k]:
             rejects.append("DIVERGENT model override %s=%r != manifest %r" % (k, v, cvars[k]))
 
+    # (1b) SGC_* GATE-SEAM scan (item-38 fail-close, owner-ruled Option B 2026-07-13). The ship_gates
+    #      red-path proof seam (SGC_B1_MATRIX points B1 at a caller-supplied matrix instead of regenerating
+    #      one; SGC_SKIP / SGC_REPORT_DIR are its siblings) is a PROOF input, never a certification/bake input.
+    #      SGC_* is neither RL_- nor PAR_-prefixed, so the scan above never saw it — the hole that let a
+    #      valid-meta doctored matrix ride into a BINDING gate. In a REAL bake/gate — signalled by
+    #      RL_CONFIG_MODE set in the AMBIENT environment (a bake orchestrator or an externally-driven gate) —
+    #      ANY set SGC_* var is an unknown override that HALTs: a bake that even smells of an injected gate
+    #      input dies on line one. KEYED ON THE AMBIENT RL_CONFIG_MODE, not the `mode` argument, ON PURPOSE:
+    #      ship_gates_check calls enforce('gate') programmatically with NO ambient RL_CONFIG_MODE, so a
+    #      dev-shell red-path proof still RUNS the suite (→ B1 stamped INJECTED, non-zero, non-certifying exit)
+    #      instead of dying here. See SHIP_GATES.md §RED-PATH TEST SEAM.
+    _env_mode = os.environ.get('RL_CONFIG_MODE')
+    if _env_mode in ('bake', 'gate'):
+        for k, v in list(os.environ.items()):
+            if k.startswith('SGC_'):
+                rejects.append("UNKNOWN gate-seam override %s=%r must not be set in a real %s run "
+                               "(RL_CONFIG_MODE=%s) — SGC_* are ship_gates red-path PROOF inputs, never a "
+                               "certification/bake input" % (k, v, _env_mode, _env_mode))
+
     # (2) checkout integrity — the manifest hash must equal the pinned boot identity, if stamped.
     pin = _boot_config_pin(root)
     if pin is not None and pin != chash:

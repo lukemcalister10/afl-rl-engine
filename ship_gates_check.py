@@ -259,6 +259,12 @@ CAND_MATRIX = None; CAND_MATRIX_ERR = None
 # production ⇒ the block regenerates exactly as before. The injected matrix is validated by the SAME meta/
 # hash checks below (no weakening): a valid-meta doctored matrix is honoured; a missing/garbage one HALTs B1.
 _B1_INJECT = os.environ.get('SGC_B1_MATRIX')
+# FAIL-CLOSE (item-38 fail-close, owner-ruled Option B 2026-07-13): if the seam is set this is a PROOF RUN,
+# never a certification. B1 is stamped INJECTED (never a bare PASS), a loud banner tops and tails the
+# report, and the suite exits NON-ZERO regardless of gate results. Everything below is guarded on
+# INJECT_RUN, so a normal run (seam UNSET) is byte-identical to before. See SHIP_GATES.md §RED-PATH TEST SEAM.
+INJECT_RUN = _B1_INJECT is not None
+INJECT_BANNER = '################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################'
 if not ('B1' in SKIP and 'B3' in SKIP):
     try:
         if _B1_INJECT is not None:
@@ -363,7 +369,11 @@ try:
         ok = not breaches
         def _guide(r):                                       # advisory band 1.20-1.25 — NEVER gates
             return 'in-guide' if 1.20 <= r <= 1.25 else ('above-guide' if r > 1.25 else 'below-guide')
-        gate('B1', False, 'PASS' if ok else 'HALT',
+        # FAIL-CLOSE: a clean, non-breaching INJECTED matrix is stamped INJECTED (never a bare PASS) — it is
+        # a proof, not a certification. A breach still HALTs (HALT wins). See SHIP_GATES.md §RED-PATH TEST SEAM.
+        _b1_status = ('INJECTED' if INJECT_RUN else 'PASS') if ok else 'HALT'
+        gate('B1', False, _b1_status,
+             ('[INJECTED MATRIX — NOT A CERTIFICATION; run exits non-zero] ' if INJECT_RUN else '') +
              f'JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of '
              f'Vpath averaged UNWEIGHTED across {len(cohorts)} classes 2004-2020 incurve ND+RD; CANDIDATE '
              f'regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}): '
@@ -683,6 +693,10 @@ lines = [f'=== STATE: {STATE_LABEL} ===',
          f'=== SHIP GATES BOARD — head {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]} — suite 764a0d91 — {time.strftime("%Y-%m-%d")} ===',
          f'=== CONFIG MANIFEST (gate mode): data/model_config.json hash {(CONFIG_HASH or "UNSET")[:16]} — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===',
          f'=== THREE-COLUMN RULE (Luke, binding D10): CONTROL={SNAP_CTL.get("head")} · PREVIOUS={SNAP_PREV.get("head")} · CURRENT={HEAD} ===']
+if INJECT_RUN:
+    lines.insert(0, INJECT_BANNER)
+    lines.insert(1, f'=== SGC_B1_MATRIX SET -> candidate matrix INJECTED ({_B1_INJECT}); this is a PROOF RUN, '
+                    'NOT a certification. B1 is stamped INJECTED and the suite EXITS NON-ZERO regardless of gate results. ===')
 for gid, dc, st, det in RES:
     cnt[st] = cnt.get(st, 0) + 1
     tag = ' [DC]' if dc else ''
@@ -695,13 +709,19 @@ for gid, dc, st, det in RES:
 lines.append(f'{"":9s} columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)')
 summary = 'VERDICT: ' + '  '.join(f'{k}={v}' for k, v in sorted(cnt.items())) + f'  ({time.time()-t0:.0f}s)'
 lines.append(summary)
+if INJECT_RUN:
+    lines.append(INJECT_BANNER)
 print('\n'.join(lines))
 # persist this run as a snapshot (future runs' PREVIOUS/CONTROL columns read these)
 try:
     os.makedirs(os.path.join(ROOT, 'data', 'gates_snapshots'), exist_ok=True)
-    json.dump({'head': HEAD, 'store': STORE, 'config': CONFIG_HASH,
-               'gates': {gid: {'dc': dc, 'status': st, 'detail': det[:200]} for gid, dc, st, det in RES}},
-              open(os.path.join(ROOT, 'data', 'gates_snapshots', f'gates_{HEAD}.json'), 'w'), indent=1)
+    _snap = {'head': HEAD, 'store': STORE, 'config': CONFIG_HASH,
+             'gates': {gid: {'dc': dc, 'status': st, 'detail': det[:200]} for gid, dc, st, det in RES}}
+    if INJECT_RUN:            # stamp the snapshot as a non-certifying proof run (B1 status is already INJECTED)
+        _snap['injected'] = True
+        _snap['injected_matrix'] = _B1_INJECT
+        _snap['NOT_A_CERTIFICATION'] = True
+    json.dump(_snap, open(os.path.join(ROOT, 'data', 'gates_snapshots', f'gates_{HEAD}.json'), 'w'), indent=1)
 except Exception:
     pass
 if B1_TABLE:      # the July-8 GATED row (bold) + the DEMOTED indexed SHAPE diagnostic print on every board run
@@ -721,6 +741,11 @@ def _matcur(key):
 _MC, _MP = _matcur('control'), _matcur('previous')
 with open(rep, 'w') as f:
     f.write(f'# ship_gates_check report — STATE: {STATE_LABEL} — head {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}\n')
+    if INJECT_RUN:            # TOP banner — loud, above everything
+        f.write(f'\n> ⛔ **INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION.** `SGC_B1_MATRIX` was set '
+                f'(`{_B1_INJECT}`), so the candidate matrix was supplied by the caller, not regenerated. '
+                'B1 is stamped **INJECTED** and the suite exits **non-zero**. No injected run can produce a '
+                'certification.\n')
     f.write('_Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._\n')
     f.write('```\n' + '\n'.join(lines) + '\n```\n')
     f.write('\n## Supporting detail\n')
@@ -741,6 +766,10 @@ with open(rep, 'w') as f:
             'Headline metrics, engine must beat both on: (1) within-player GATE-1 protocol (WF good/bust separation,\n'
             'leakage-matched); (2) rank correlation of as-of value vs realized fwd best-3 production (real_mat);\n'
             '(3) cohort growth-law shape error vs the realized production curve. Each becomes C1x/C2x scripted lines.\n')
+    if INJECT_RUN:            # BOTTOM banner — tail the report as loudly as it is topped
+        f.write('\n---\n> ⛔ **INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION.** The candidate matrix was '
+                'caller-supplied via `SGC_B1_MATRIX`; B1 is stamped **INJECTED** and this run exited '
+                '**non-zero**. A run using the seam is a red-path proof, never a certification.\n')
 print(f'report: {rep}  md5={hashlib.md5(open(rep,"rb").read()).hexdigest()[:8]}')
 # LOUD anti-leakage guard (folded at the v2.4 bake 2026-07-04): B2 (GATE-1 leakage) is MANDATORY. A
 # NOT-RUN B2 (SGC_SKIP=B2) must NOT pass silently — it counts as a FAILURE for the exit code. SCOPED to B2
@@ -768,5 +797,13 @@ _halts = [gid for gid, _, st, _ in RES if st == 'HALT']
 if _halts:
     print('\n!! SUITE HALT: gate(s) ' + ', '.join(_halts) + ' produced a HALT (exception / missing input / '
           'breach / absent result — named RED, never a silent pass). Suite exits non-zero.')
-_hard_fail = any(st in ('FAIL', 'ERROR', 'HALT') for _, _, st, _ in RES) or _b2_notrun or bool(_missing)
+# FAIL-CLOSE (item-38 fail-close, owner-ruled Option B 2026-07-13): an INJECTED run is a PROOF, never a
+# certification. It exits NON-ZERO regardless of gate results — there is NO path by which a caller-supplied
+# matrix yields a green, zero-exit certification, even when every gate passes on a clean, valid, non-breaching
+# injected matrix. See SHIP_GATES.md §RED-PATH TEST SEAM.
+if INJECT_RUN:
+    print('\n' + INJECT_BANNER + '\n!! INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION. SGC_B1_MATRIX was set, '
+          'so the candidate matrix was caller-supplied, not regenerated. The suite EXITS NON-ZERO regardless '
+          'of gate results; no injected run can yield a green, zero-exit certification.\n' + INJECT_BANNER)
+_hard_fail = any(st in ('FAIL', 'ERROR', 'HALT') for _, _, st, _ in RES) or _b2_notrun or bool(_missing) or INJECT_RUN
 sys.exit(1 if _hard_fail else 0)

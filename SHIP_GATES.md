@@ -55,11 +55,28 @@
 ### capture the status first — `python3 ship_gates_check.py > log 2>&1; rc=$?; tail log; exit $rc`
 ### (or `set -o pipefail` and test `${PIPESTATUS[0]}`). A green summary line is NOT a pass; the
 ### non-zero exit code is the authority.
-### RED-PATH TEST SEAM (`SGC_B1_MATRIX`): when set, B1 uses that matrix path INSTEAD of regenerating,
-### so the item-38 red paths (a breaching matrix HALTs; a missing/unreadable matrix HALTs) can be proven
-### against the REAL suite and its REAL exit code. It does NOT bypass the meta/hash validation — a
-### valid-meta doctored matrix is honoured, a missing/garbage one HALTs B1. UNSET in production ⇒ B1
-### regenerates the candidate exactly as before. Proofs live in session_2026-07-13/b1_conform/scripts/.
+### RED-PATH TEST SEAM (`SGC_B1_MATRIX`) — FOR RED-PATH PROOFS ONLY; A RUN USING IT IS **NOT A
+### CERTIFICATION** (fail-close, owner-ruled Option B, 2026-07-13). When set, B1 reads that matrix path
+### INSTEAD of regenerating one, so the item-38 red paths (a breaching matrix HALTs; a missing/unreadable
+### matrix HALTs) can be proven against the REAL suite and its REAL exit code. The seam exists SOLELY to
+### exercise those red paths — it can NEVER produce a green certification:
+###   • The board and the report are topped AND tailed with a loud banner:
+###     "INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION."
+###   • B1's verdict is stamped **INJECTED** (never a bare PASS) — in the board, the report, and
+###     data/gates_snapshots/ — even on a clean, valid, non-breaching injected matrix. A breach or a
+###     missing/garbage matrix still HALTs (HALT wins over INJECTED).
+###   • The suite EXITS NON-ZERO whenever the seam is set, regardless of gate results. There is NO path by
+###     which an injected run yields a green, zero-exit certification. (The meta/hash validation is
+###     unchanged and still runs — this is an ADDITIONAL fail-close on top of it, not a weakening.)
+### GATE/BAKE MODE HALTS IF THE SEAM IS SET: in a real bake or gate — signalled by `RL_CONFIG_MODE` set to
+### `bake`/`gate` in the ambient environment — `config_manifest.enforce()` treats ANY set `SGC_*` variable
+### as an unknown override and HALTS on line one (the same treatment `RL_*`/`PAR_*` overrides already get).
+### A bake that even smells of an injected gate input dies before the engine loads. The proofs run in
+### dev-shell mode (no ambient `RL_CONFIG_MODE`), so they still drive the suite — where B1 stamps INJECTED
+### and the non-zero exit does the fail-close. UNSET in production ⇒ B1 regenerates the candidate exactly
+### as before and the run is byte-identical to a seam-free run. Proofs live in
+### session_2026-07-13/b1_conform/scripts/ (prove_injection_cannot_certify.py, prove_bake_door_bolted.py,
+### prove_breach_halts.py, prove_silence_halts.py).
 
 ## SECTION A — LUKE'S NAMED CALLS (all confirmed)
 

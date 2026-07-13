@@ -34,7 +34,7 @@ D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = T
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (531s)
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (578s)
 ```
 
 ## Supporting detail
