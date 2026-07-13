@@ -112,7 +112,10 @@ for _i in range(len(_l7_anchors)):
         _a, _b = _l7_anchors[_i], _l7_anchors[_j]
         if _a in _raw2026 and _b in _reb2026 and _reb2026[_b]:
             _rb = _raw2026[_a] / _raw2026[_b]; _ra = _reb2026[_a] / _reb2026[_b]
-            _l7_rc.append((f'{_a}/{_b}', round(_rb, 4), round(_ra, 4), abs(_rb - _ra) < 0.002))
+            # RELATIVE <0.2% (the directive's tolerance): a uniform ÷F preserves ratios exactly; the residual
+            # is round() error, which is RELATIVE to the ratio. An absolute 0.002 is too tight for large
+            # anchor ratios (bont/emmett ~4.3) once the store is perturbed (e.g. the correction canary).
+            _l7_rc.append((f'{_a}/{_b}', round(_rb, 4), round(_ra, 4), abs(_rb - _ra) / _rb < 0.002))
 if not _l7_order_ok:
     raise SystemExit('L7 HALT: uniform ÷%.4f STRICTLY inverted a pair (not a tie) — ratios NOT preserved.' % _F)
 if not all(x[3] for x in _l7_rc):
