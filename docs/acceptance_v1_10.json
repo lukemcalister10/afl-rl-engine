@@ -1,0 +1,321 @@
+{
+  "version": "1.10",
+  "date": "2026-07-13",
+  "authority": "CONSTRAINTS_v1.10.md (human-readable master; regenerate this file on any change there; status strings use underscores)",
+  "regenerated_from": "CONSTRAINTS_v1.10.md \u2014 supervisor pen (seat 5); sole change from v1.9: the A-PAIRS bands are OWNER-RULED ('Bands okay')",
+  "numeraire": {
+    "law": "pick_1 == 3000 (owner: 'Rebase, 3000 is it.', register v30) \u2014 permanent",
+    "rebase_factor": 1.0524,
+    "note": "v1.8 quotes SCAR in the L7-rebased numeraire (v1.7 figures \u00f7 1.0524). Ratios and percentages are invariant under the uniform rebase. Replacement bars UNCHANGED (par space)."
+  },
+  "status_values": [
+    "BINDING",
+    "PENDING_OWNER",
+    "ADVISORY",
+    "OWNER_ON_SIGHT"
+  ],
+  "guards": [
+    {
+      "id": "G-COHORT",
+      "metric": "class_year_sum_averaged_across_classes",
+      "construction": "for each draft class: SUM of that class's players' values in career year Y; average those sums across sampled classes; one figure per career year",
+      "construction_provenance": "OWNER_WORDED_2026-07-08; re-confirmed during the v4.1 remediation (WD-1 closed); UPHELD against the audited W4 breach; B1 CONFORMANCE RULED 2026-07-13 (register v52) \u2014 the July-8 construction IS the gate and the frozen code conforms to IT",
+      "owner_rationale": "market no-arbitrage (owner 2026-07-08): if year 1-2 players were going to be worth 50% more 2-3 years later, one would simply hold them; younger-player value must rise to compensate",
+      "per_capita_reading": "OVERRULED_do_not_use (retired-supervisor carry; owner-overruled 2026-07-08)",
+      "indexed_reading": "DEMOTED_2026-07-13 (obituary in CONSTRAINTS v1.8): the frozen suite's per-class yr1=100 renormalisation + mean-of-ratios (the owner's own 02/07 wording, D5) is SUPERSEDED by his 08/07 wording and 13/07 confirmation. May survive ONLY as B1's secondary SHAPE diagnostic (peak position / dip), never as the bound. The historic headline 126.8/125.2/116.1 was the indexed row \u2014 do not quote it as the gated number.",
+      "code_conform_job": "PENDING \u2014 implements the July-8 construction in ship_gates; owner's word GIVEN; fires at the seam",
+      "years_tested": "each_of_year_4_5_6_individually",
+      "denominator": "min(year_1_figure, year_2_figure) \u2014 owner-picked from symmetric options 2026-07-08 (WD-1b closed)",
+      "book": "walk_forward_leak_free",
+      "fitted_board_reading_invalid": true,
+      "basis_assertion": "CODE READING ONLY \u2014 walk-forward property (model scoring cohort year T sees only data <= T) and class-sum construction asserted from the script's code; numeric fingerprint aid RETIRED 2026-07-08 (non-discriminating; do not resurrect)",
+      "bound_hard": 1.3,
+      "guide_band": [
+        1.2,
+        1.25
+      ],
+      "current_measurement": {
+        "source": "S2 shard, independent, 2026-07-13; store b0c39d78 / engine 2030e5df",
+        "year1_sum": 69840,
+        "year2_sum": 79298,
+        "denominator_used": "year_1",
+        "y4": 1.2601,
+        "y5": 1.2407,
+        "y6": 1.1521,
+        "result": "PASS_x3",
+        "note": "y4 above the 1.25 guide (advisory, precedented). Ratios invariant under the L7 uniform rebase."
+      },
+      "fix_direction": "raise_year1_aggregate_never_cut_young",
+      "remediation_doctrine": "owner-ruled 2026-07-08: NO blanket young multiplier to tick the box; investigate WHY younger players are under-valued relative to who they become 3-4 years later and rectify the identified mechanism; the retired 1.19x uniform sit-out lift stays retired",
+      "status": "BINDING"
+    },
+    {
+      "id": "G-MONO",
+      "metric": "pick_value_curve_monotonicity",
+      "requirements": [
+        "no_inversions",
+        "no_bin_cliffs",
+        "young_ruck_fade_smooth_no_pk20_21_step"
+      ],
+      "status": "BINDING"
+    },
+    {
+      "id": "G-FLOOR",
+      "alias": "B5",
+      "metric": "first_year_unproven_value_floor",
+      "rule": "never_crater",
+      "status": "BINDING",
+      "dispensations_2026_07_11": "two one-off owner waivers recorded: <=5 SCAR on <=45 rows; the NAMED-16 <=13 SCAR (list committed on the remediation branch). Gate unmoved. CLOSED HISTORICAL (v1.8) \u2014 quoted in pre-rebase units; do not re-quote forward."
+    },
+    {
+      "id": "G-PEAK",
+      "alias": "B1",
+      "metric": "individual_survivor_peak_years4_6",
+      "max_drop": 0.02,
+      "status": "BINDING"
+    },
+    {
+      "id": "G-CONVEX",
+      "metric": "young_convexity_premium",
+      "coverage_definition": "engine_gap / implied_gap per young cohort (engine option-value premium vs realized-outcome-implied premium); floor locks the under-priced pocket young RUC picks 4-10 at 0.61; metric prices SYNTHS - candidates delegating synths byte-exactly cannot move it",
+      "thresholds": {
+        "young_floor_band_aggregate_scar": {
+          "le21": 180140,
+          "22_24": 178224,
+          "25_26": 107773
+        },
+        "convexity_coverage_band": [
+          0.6,
+          1.6
+        ]
+      },
+      "thresholds_provenance": "supervisor_carried_from_rev117_supplement (WD-3); cold audit 2026-07-08 cross-checked PR #43: VERBATIM MATCH; x1.0524 re-denominated 2026-07-11; DIVIDED BACK by 1.0524 at the v1.8 numeraire fold (L7 rebase, owner-ruled)",
+      "seam_verification_2026_07_13": {
+        "verified_by": "supervisor seat 5, independently, against the BAKED board (tag v2.9 = 9f8ae76; board md5 81e48293 recomputed)",
+        "measured_band_aggregate_scar": {
+          "le21": 202650,
+          "22_24": 189507,
+          "25_26": 113695
+        },
+        "margins": {
+          "le21": 22510,
+          "22_24": 11283,
+          "25_26": 5922
+        },
+        "result": "ALL_FLOORS_CLEAR"
+      },
+      "status": "ADVISORY",
+      "escalation": "remains ADVISORY until an EXPLICIT owner ruling makes it BINDING (owner-confirmed 2026-07-08; no automatic escalation). Scored as diagnostics at CA-5."
+    },
+    {
+      "id": "G-DATA",
+      "metric": "data_integrity_suite",
+      "components": [
+        "five_single_source_guards",
+        "panel_10_of_10",
+        "book_seal_B3",
+        "board_parity_nonmovers_B4"
+      ],
+      "behavior": "halt_not_warn",
+      "numeraire_note": "the L7 display rebase moved the unit relation to board == round(ev / F); six parity checks were made numeraire-aware at the v2.9 bake (rl_export gate, run_panel, selftest F1/F2, canary, s4_matrix book<->board). The guards still catch mispricing; only the unit relation moved.",
+      "status": "BINDING"
+    },
+    {
+      "id": "G-ATTR",
+      "metric": "per_lever_attribution",
+      "scope": "multi_lever_builds",
+      "rule": "every_lever_delta_separable_else_fail",
+      "interpretation_note": "register v55: 'separable' == PATH-ADDITIVE along the declared lever order, not interaction-free; a different order splits the same total differently",
+      "status": "BINDING"
+    },
+    {
+      "id": "G-Y0",
+      "metric": "year0_cohort_identity",
+      "construction": "weighted-mean position-conditioned V0 == derived PVC per pick band (deviations net zero); y0 pick-sum -> wk1 cohort sum -> y1/2 sums chain with bounded steps, walk-forward",
+      "fix_direction": "raise_young_side_never_cut_survivors_never_bend_derived_curve",
+      "first_measurement": {
+        "date": "2026-07-13",
+        "source": "the v2.9 seam table",
+        "status": "ADVISORY_recorded_not_binding",
+        "result": "comp-weighted V0 > derived PVC in EVERY band (+19...+281, widest 21-30); the y0 -> wk1 -> y1 trough -> y2 recovery chain shape delivered"
+      },
+      "status": "PENDING_OWNER",
+      "provenance": "owner-worded 2026-07-11; ratification deferred to the PVC re-derivation chapter ('pricing curve formalisation')"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "A-BONT",
+      "player_key": "marcus-bontempelli",
+      "baseline": 3084,
+      "direction": "up",
+      "min_delta_pct": 10.0,
+      "status": "BINDING",
+      "baseline_note": "v1.8 NUMERAIRE fold: 3246 / 1.0524 = 3084 (round-trips 3084 x 1.0524 = 3246). v2.9 measured +12.88% (pre-rebase units); supervisor seam spot-check on the baked board: v = 3482 = +12.91% vs 3084 \u2014 PASS. Ratio invariant under rebase."
+    },
+    {
+      "id": "A-GAWN",
+      "player_key": "max-gawn",
+      "comparator_key": "kieren-briggs",
+      "comparator_note": "corrected 2026-07-08 from the drifted 'toby-briggs' (not a player - owner; origin unknown)",
+      "rule": "clearly_above",
+      "status": "BINDING",
+      "magnitude": "OWNER_ON_SIGHT"
+    },
+    {
+      "id": "A-CAM",
+      "player_key": "jeremy-cameron",
+      "key_note": "corrected 2026-07-09 from the drifted charlie-cameron (owner: Charlie has never been an anchor; Jeremy verified in store)",
+      "direction": "up",
+      "min_delta_pct": null,
+      "status": "OWNER_ON_SIGHT",
+      "v2_9_note": "2026-07-13: v2.9 proxy ticked -1.11% vs vPrev; OWNER VIEWED AND ACCEPTED at the sitting (register v56). Direction-up expectation stands for future boards."
+    },
+    {
+      "id": "A-DARCY",
+      "player_key": "sam-darcy",
+      "direction": "up",
+      "attribution_required": [
+        "young_convexity_ceiling",
+        "kpf_speculative",
+        "availability_layer"
+      ],
+      "rule": "no_layer_clips_ceiling",
+      "status": "OWNER_ON_SIGHT",
+      "availability_note": "v1.8 re-quote, VERIFIED AT SEAM (supervisor seat 5, 2026-07-13, against the BAKED board: tag v2.9 = 9f8ae76, board md5 81e48293 recomputed): avail_nerf = -664 (was -677 pre-rebase), avail_hc 0.7273, lti_return_hc 0.0, v 3865. Availability is the SOLE suppressor; convexity ceiling and KPF-speculative ABSENT; no layer clips his ceiling; unwinds 2027."
+    },
+    {
+      "id": "A-DUUR",
+      "player_key": "willem-duursma",
+      "direction": "up_via_year1_cohort_lift",
+      "governed_by": "G-COHORT",
+      "status": "OWNER_ON_SIGHT"
+    },
+    {
+      "id": "A-PEAK",
+      "player_keys": [
+        "zak-butters",
+        "max-holmes"
+      ],
+      "rule": "held_not_crushed",
+      "governed_by": "G-PEAK",
+      "status": "BINDING"
+    },
+    {
+      "id": "A-FADE",
+      "player_keys": [
+        "stephen-coniglio",
+        "taylor-adams",
+        "mark-blicavs",
+        "zach-guthrie"
+      ],
+      "direction": "down",
+      "basis": "MULTI-BAKE TRAJECTORY (the fader's path across boards), NOT the single-bake vPrev tick \u2014 supervisor-drafted from the owner's 2026-07-08 clarification, closing S5's reported ambiguity",
+      "basis_status": "PENDING_OWNER (wording only; the 2026-07-08 clarification itself is BINDING and unchanged)",
+      "threshold": "direction_only; players already at the scrap floor satisfy FLAT (no further drop required); attributed floor-basis effects do not fail it; escalate ONLY if the decline lever is absent / failed to fold (numeric threshold closed as moot, OQ-E)",
+      "status": "BINDING"
+    },
+    {
+      "id": "A-PAIRS",
+      "pairs": [
+        [
+          "max-gawn",
+          "kieren-briggs"
+        ],
+        [
+          "harley-reid",
+          "marcus-bontempelli"
+        ],
+        [
+          "ryley-sanders",
+          "marcus-bontempelli"
+        ]
+      ],
+      "status": "OWNER_ON_SIGHT",
+      "reads": {
+        "pair_2": {
+          "left": "harley-reid",
+          "right": "marcus-bontempelli",
+          "owner_read_verbatim": "I feel like Harley and Bont can be similar",
+          "direction": "PARITY",
+          "proposed_band_pct": 10.0,
+          "band_status": "OWNER_RULED_2026-07-13",
+          "measured_tagged_board_81e48293": {
+            "harley_reid": 3594,
+            "bontempelli": 3482,
+            "delta_pct": 3.2
+          },
+          "result": "PASS_consistent_with_the_read"
+        },
+        "pair_3": {
+          "left": "ryley-sanders",
+          "right": "marcus-bontempelli",
+          "owner_read_verbatim": "interestingly I'd think Bont should be slightly above Sanders",
+          "direction": "bontempelli_above_sanders",
+          "proposed_band_pct": [
+            0.0,
+            10.0
+          ],
+          "band_status": "OWNER_RULED_2026-07-13",
+          "measured_tagged_board_81e48293": {
+            "ryley_sanders": 3960,
+            "bontempelli": 3482,
+            "delta_pct": 13.7
+          },
+          "result": "FAILS_standing_failed_read \u2014 sanders sits 13.7% ABOVE bont; the read puts bont above him"
+        }
+      },
+      "key_verification": "store-verified before filing: harley-reid = Harley Reid, MID, pick 1, West Coast, b.2005 (NOT murphy-reid, GEN_FWD, pick 17 \u2014 the store carries TEN 'Reid' rows) \u00b7 ryley-sanders = Ryley Sanders, MID, pick 6, Western Bulldogs, b.2005",
+      "diagnosis": "THE GAP IS NOT FLATTERY. Census decomposition (numeraire): sanders = base 3903 + iso 58 + par_credit 0 (flat -21); bont = base 3070 + par_credit 439 + iso -28 (flat -29). Neither carries par-relative flattery, so THE FLATTERY FIX WILL NOT CLOSE PAIR 3. The gap is made by the BASE CURVE (pick-band price x growth on the young side) => it belongs to the PVC RE-DERIVATION / pricing-curve formalisation chapter (adjacent to G-CONVEX's young premium). NO HAND EDIT: cutting sanders to satisfy the read would be a predicate-based nerf wearing a rule's clothes (the owner's own remediation doctrine).",
+      "auditor_instruction": "SCORE BOTH PAIRS against the OWNER-RULED bands (pair 2: |delta| <= 10% \u00b7 pair 3: bont above sanders by 0-10%). Pair 3 is EXPECTED to fail until the pricing curve is re-derived \u2014 report and SCORE it; never report it as a skip. A-PAIRS is OWNER_ON_SIGHT, so a pair-3 failure is not by itself a bake blocker."
+    }
+  ],
+  "flags": [
+    {
+      "id": "F-GENFWD",
+      "scope": "GEN_FWD_picks_41_70",
+      "prior_multiple": 2.14,
+      "rule": "may_compress_with_data"
+    },
+    {
+      "id": "F-MID13",
+      "scope": "MID_picks_1_3",
+      "prior_multiple": 2.09,
+      "rule": "owner_ruling_required_never_auto_cut",
+      "rationale": "thin_elite_cell + monotonicity_risk + year1_denominator_member_cutting_raises_G-COHORT_ratio"
+    },
+    {
+      "id": "F-YOUNG",
+      "scope": "high_pick_elite_young",
+      "rule": "cuts_need_data_and_owner_ruling_no_big_wipe",
+      "subordinate_to": [
+        "G-FLOOR",
+        "G-COHORT_denominator"
+      ]
+    }
+  ],
+  "flag_general_rule": "over-priced flags on YOUNG/year-1 cohorts are subordinate to G-FLOOR and the G-COHORT denominator; actionable over-priced flags live on the OLDER/lower-pick end",
+  "laws": [
+    {
+      "id": "LENS-PROJECTION",
+      "text": "the +1/+2 lens must show PROJECTED value (expected production credited for gap years); interim lens = no-improvement floor, cross-age trades NOT read off it",
+      "provenance": "owner-ruled 2026-07-13, register v46; build rides the flattery-fix chapter",
+      "status": "BINDING"
+    },
+    {
+      "id": "CYCLE",
+      "text": "one bake per chapter; changes batch onto a candidate and walk ONE ladder; UI and ingestion never bake",
+      "provenance": "owner-driven, seat-3 round; full text CORE v2.4",
+      "status": "BINDING"
+    }
+  ],
+  "notes": [
+    "player_key values follow the engine's key convention; a build must verify each key against the source store before asserting, and report any key mismatch rather than guessing (the toby-briggs drift is the standing example).",
+    "Anchors with min_delta_pct null pass on direction only; magnitude is owner-ruled on sight (Q3 closed). Owner reads are challengeable per CORE MISSION; only the owner waives a read.",
+    "The auditor ASSERTS the class-sum construction and the walk-forward property BY READING THE SCRIPT'S CODE. Post code-conform, the ship_gates B1 implementation IS the July-8 construction.",
+    "v1.8 (2026-07-13, at the v2.9 tag): NUMERAIRE FOLD (L7 rebase, pick-1 == 3000) \u2014 A-BONT 3084, G-CONVEX floors re-quoted; B1 CONFORMANCE ruled (July-8 wins; indexed reading demoted to a shape diagnostic; code-conform job fires at the seam); A-DARCY -664 VERIFIED at seam; A-FADE basis drafted (multi-bake trajectory, PENDING-OWNER wording); G-Y0 first measurement recorded, still PENDING-OWNER; LENS PROJECTION LAW recorded; CYCLE LAW recorded.",
+    "STRAY-FILE OBITUARY: a build-authored docs/CONSTRAINTS_v1_8.md (commit da5f7f3, refit-cert build) predates this registry. Its numeraire re-quote table was correct (folded here); its 'the frozen suite is authoritative' conform of G-COHORT is OVERRULED by the owner's 2026-07-13 ruling. Builds never author docs (CORE); the stray is archived at this filing.",
+    "v1.9 (2026-07-13): A-PAIRS young_gun_tbd RETIRED \u2014 the owner named BOTH sides (harley-reid, ryley-sanders), key-verified against the store. Pair 2 (parity) PASSES at +3.2%; pair 3 FAILS by ~14% the wrong way and becomes a STANDING FAILED READ + an acceptance anchor of the PVC re-derivation chapter. Bands supervisor-proposed, PENDING_OWNER; the DIRECTION is owner-worded and stands. Guards and all other anchors carry verbatim from v1.8.",
+    "v1.10 (2026-07-13): the A-PAIRS bands are OWNER-RULED ('Bands okay'). Nothing else changed from v1.9."
+  ]
+}

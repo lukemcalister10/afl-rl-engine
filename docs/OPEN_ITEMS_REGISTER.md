@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v69 2026-07-13 (**THE YOUNG GUN IS NAMED** — owner: harley-reid (key-verified) + ryley-sanders, both vs Bontempelli. CONSTRAINTS **v1.9** + acceptance v1.9 + manifest **v4.12** FILED. ⚠ **PAIR 3 (Sanders/Bont) FAILS ON THE CURRENT BOARD BY ~14% THE WRONG WAY** and is NOT a flattery problem — it is a BASE-CURVE problem, so it becomes an acceptance anchor of the PVC RE-DERIVATION chapter (item 44). Pair 2 (Reid/Bont) passes at +3.2%. Also: item 42 (the base-pin lesson). Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v70 2026-07-13 (**A-PAIRS BANDS OWNER-RULED** ("Bands okay") → CONSTRAINTS **v1.10** + acceptance v1.10 + manifest **v4.13** filed. **NEW OWNER HYPOTHESIS — THE CAPTAINCY PREMIUM (item 45)**: the captain term is SATURATING (hard cap 18 pts) and damps the very difference-makers the owner says are unique; it is now DELIVERABLE 4 of the measurement build. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1065,8 +1065,8 @@
       the young-side premium is over-cooked — and it broke on first contact.
     AUDITOR INSTRUCTION CHANGED: the standing "skip pair 2 and report the skip" is RETIRED. Score
     both; pair 3 is EXPECTED to fail until the pricing curve is re-derived; report, do not halt
-    (bands PENDING-OWNER). Bands supervisor-proposed (pair 2: |Δ| ≤ 10% · pair 3: bont ahead by
-    0–10%); the DIRECTION is owner-worded and stands regardless.
+    (bands PENDING-OWNER). **BANDS OWNER-RULED 2026-07-13 ("Bands okay"): pair 2 |Δ| ≤ 10% · pair 3 bont ahead by 0-10%.**
+    Filed at CONSTRAINTS v1.10 + acceptance v1.10. Auditors now SCORE both pairs against the bands.
 
 44. **⚠ WHERE PAIR 3's GAP LIVES — AND WHERE IT DOES NOT (supervisor diagnosis, 2026-07-13).**
     **IT IS NOT FLATTERY.** Census decomposition (@ d6c481f, quoted in the numéraire): ryley-sanders
@@ -1080,6 +1080,45 @@
     rule's clothes — forbidden by the owner's own remediation doctrine. Whether Sanders must fall
     (~478–795 SCAR, landing ~3,165–3,482) or Bont must rise is exactly what the re-derivation has to
     ANSWER, not assume. It is not the supervisor's to choose and it is not a build's to tune.
+
+45. **THE CAPTAINCY PREMIUM — OWNER HYPOTHESIS RAISED (2026-07-13). NOW D4 OF THE MEASUREMENT BUILD.**
+    OWNER, VERBATIM: *"I feel like a solution to the Bont issue and maybe also some Gawn issues is to
+    really consider the captaincy premium and the convexity afforded to it. While we want young
+    players' possible convex outcomes to factor into their value, realistically we don't know which
+    players will become Bont or Gawn and can't price them like they will. But the value of a Bont or
+    Gawn is so much more unique than say, a Merrett or a Nankervis. Most old players are eh, but the
+    ones who are best in comp for scoring are difference makers. So reviewing the captain bonus and
+    maybe boosting it might be worth thinking about as a lever there."*
+    **SUPERVISOR VERIFICATION FROM THE CODE (same turn, before any build):**
+    · The LIVE term is `capt_prem(lev)` — rl_model.py L179-184, called at L339/L353/L543 and in
+      _merged_recover.py. It **SATURATES**: cb = 0.35·over^1.25 → prem = cb·18/(18+cb). **HARD
+      ASYMPTOTE 18 POINTS**, however good the player is.
+    · Only **19 of 655** players clear the line (ln > CAPT_THRESH 107.4) — a scarce good.
+    · Tagged board: **Gawn +7.71** (ln 126.0) · **Bontempelli +5.50** (119.5) · **Daicos +3.31**
+      (114.5) · **Sanders 0.00** (ln 91.0) · **Harley Reid 0.00** (86.1).
+    · **THE SATURATION, MEASURED:** best captain (Gawn, 126.0) vs 8th (Jackson, 117.8) = **8.2 pts of
+      raw scoring but only 2.91 pts of captain premium.** The curve damps the top EXACTLY where the
+      owner says the difference-makers live. **His read is supported by the code.**
+    · **DEAD TWIN FOUND:** `capt_bonus(level)` (L294-298) is defined and **NEVER CALLED** — and it is
+      the *non-saturating*, asymptotically LINEAR construction. Someone built the uncapped version and
+      never wired it. Dead-code-strip candidate; also evidence the shape was once contemplated.
+    **THE STRUCTURAL POINT (supervisor, for the measurement to test):** you captain exactly ONE player
+    a week — the premium is a **SLOT GOOD, not an additive good**; a second Bontempelli adds no
+    captain value. The true worth of an elite captain is therefore an **ORDER STATISTIC** (the gap to
+    the NEXT-best option), not a per-player additive bonus. Today's term adds a damped premium to all
+    19 independently. Whether the fix is a bigger gain, a higher cap, a convex tail, or a re-framing
+    against the next-best option is exactly what D4 must inform.
+    ⚠ **GUARD EXPOSURE — FLAGGED BEFORE THE FACT.** A captain boost lifts elite scorers, and elite
+    scorers sit in career years 4-6 as well as at 31. **G-COHORT has only 0.0399 of headroom**
+    (y4 = 1.2601 vs the hard 1.30 — about 3.2%). Every ladder rung in D4 must recompute y4/y5/y6 on
+    the JULY-8 BINDING construction and report the margin. **A lever that fixes a read by breaking a
+    BINDING guard is not a lever.** Direction on A-BONT (passes harder) and A-GAWN (Gawn's premium is
+    the largest; Briggs gets none → the gap widens) is favourable.
+    **NO HAND EDIT:** a magnitude picked to make pair 3 pass is a predicate nerf wearing a rule's
+    clothes. D4 is REPORT-ONLY; the design is the owner's to rule.
+    RELATION TO ITEM 44: this is a candidate mechanism for RAISING Bont rather than CUTTING Sanders —
+    which is the direction the owner's own remediation doctrine prefers. It does NOT replace the
+    PVC re-derivation; both may be true.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
