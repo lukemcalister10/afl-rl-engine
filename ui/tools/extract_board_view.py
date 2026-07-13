@@ -65,6 +65,11 @@ def main():
             # zero UI changes the day the export adds them. Never fabricated here.
             "vPrev": p.get("vPrev"),
             "vRaw": p.get("vRaw"),
+            # `ov` = the owner-override DISPLAY block {factor, dispv, mark, note, prov}, present only on an
+            # overridden row (v2.9 bake: Brodie ×0.50). Working-tier only (owner's aid); passed through
+            # verbatim so the UI can render the overridden rail (dispv) + the OWNER OVERRIDE mark. Never on
+            # the public bundle (row_public omits it). Absent on non-overridden rows.
+            "ov": p.get("ov"),
             # per-lever G-ATTR cumulative deltas {L1,L4,L2,L3,L5} (sum == v - vPrev). Working-tier only
             # (attribution is owner-facing); passed through verbatim, never fabricated here.
             "levers": p.get("levers"),

@@ -21,8 +21,8 @@ SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2
 GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
 store after canary = b0c39d78  (expect b0c39d78)
 ### 5. OWNER-OVERRIDE EXCLUSION TEST (must stay GREEN — override OUT of guards/aggregates)
-  - ON board minus every `ov` block == OFF board, byte-for-byte (aggregates/curves/values untouched)
-  - every other Brodie field is identical on vs off
+
+PART B EXCLUSION TEST PASSED: guards/aggregates/values byte-identical on vs off; only Brodie's DISPLAYED row differs (+ov ×0.50 marked).
 ### 6. THE THREE RED-PATH PROOFS (each must HALT)
   RED (halts) OK : (a) missing owner_overrides.json -> HALT
       -> OWNER-OVERRIDE HALT (bake mode): cannot resolve the checked-out repo to read data/owner_overrides.json (RL_REPO / CLAUDE_PROJECT_DIR unset and no ../.. fallback). A gated/baked board must NOT silently ship without the standing owner rulings — set RL_REPO to the checkout. (Dev-shell returns [] and skips.)
