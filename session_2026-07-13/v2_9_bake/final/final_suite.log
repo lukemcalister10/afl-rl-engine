@@ -9,6 +9,7 @@ CONFIG-MANIFEST CHECK: PASS (hash 69ead79b944d; 40 vars; pin+stored consistent)
 RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).
 ### 3a. build board (bake, override on) + book for the F1/F2 numéraire parity checks
   board 81e48293 (expect 81e48293)
+  book s4_matrix built
 ### 3b. five SSI guards — one_source_selftest (guards 1-5 + F1/F2 numéraire parity)
   PASS collision sentry: max-king-stk.year (2018) != max-king-syd.year (2025) — must stay distinct (no cross-copy)
   PASS collision sentry: max-king-stk._club ('St Kilda') != max-king-syd._club ('Sydney') — must stay distinct (no cross-copy)
@@ -16,8 +17,8 @@ RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; 
 SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; collision sentry (King pair) clean.
   (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)
 ### 4. guard-4 correction canary (edits+restores store; must survive board AND book)
-  jason-horne-francis: book_cur=4182 board=3974
 
+GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
 store after canary = b0c39d78  (expect b0c39d78)
 ### 5. OWNER-OVERRIDE EXCLUSION TEST (must stay GREEN — override OUT of guards/aggregates)
   - ON board minus every `ov` block == OFF board, byte-for-byte (aggregates/curves/values untouched)
