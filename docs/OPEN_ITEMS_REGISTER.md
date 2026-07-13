@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v40 2026-07-13 (THE SSP WORD: 92 HOLDS — owner-ruled on the corrected active-only scarcity cut; the L6 STOP closes; the ~51 candidate line is REJECTED-for-now with the scarcity rationale recorded. Both follow-up directives pasted; SPEC + EXPORT builds in flight. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v41 2026-07-13 (THE K/G COMPANION-TAG LAW ruled — same-end G tags are formalities, disregarded at import; rides item 20. Positional architecture recorded: current elig = this season only · future = the owner’s split register at flex fire · engine positional class stays separate. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -375,6 +375,29 @@
     FIX PATH: SPEC_4 (the scarcity write-up in the SPEC directive) re-cuts on ACTIVE-ONLY, commits
     the corrected table, and records the original artifact's defect as an obituary note. The
     original L6 artifact stays as-committed (history), superseded by SPEC_4's corrected table.
+20a. THE K/G COMPANION-TAG LAW (owner-ruled 2026-07-13; rides item 20's import). The universe
+    CSV's CURRENT eligibilities mechanically append the same-end G tag to key talls: K-DEF carries
+    G-DEF on 91/94 (97%) and K-FWD carries G-FWD on 112/121 (93%) — supervisor-measured on the
+    804. It is a formality (K talls can technically fill same-end G slots, very rarely do — owner)
+    and, untreated, would hand ~200 key talls a fake dual-eligibility and therefore a fake flex
+    bonus under the flex spec's R-3 floor. THE RULE (normalization at IMPORT): drop a G tag when
+    the SAME-END K tag is present (K-DEF ⇒ drop G-DEF · K-FWD ⇒ drop G-FWD). Consequences:
+    key swingmen (e.g. tauru G-DEF,K-DEF,K-FWD,G-FWD) normalize to {K-DEF,K-FWD}; CROSS-end tags
+    survive (G-DEF,K-FWD keeps both); ruck-talls (RUCK,G-FWD,K-FWD) → {RUCK,K-FWD}; no player
+    loses all tags. Raw strings stay recoverable in the stamped archived CSV (SSI — store carries
+    the normalized truth, one source, no second copy). Note in evidence: a handful of K's LACK the
+    companion (comben · t.marshall · r.marshall …) — the source is inconsistent about it, i.e. the
+    tag carries no signal.
+    POSITIONAL ARCHITECTURE (recorded): L1-CURRENT — normalized current eligibilities drive ONLY
+    the current-season slot value; identity-only today (ev() does not read them); VALUE wiring
+    lands in the flex build under the standing law (current tags never influence future/past
+    judgments). L2-FUTURE — the OWNER'S FUTURE POSITIONAL SPLIT REGISTER is the probability input
+    to flex Law 2 (probabilistic future eligibility; R-3 floor: dual ≥ single, never negative);
+    owner artifact — imported once, stamped, archived, rationale recorded. Owner offered it
+    2026-07-13: SEND NOW FOR FORMAT CHECK ONLY (supervisor verifies columns/keys vs the store);
+    contents re-confirmed current at flex fire (couriered fresh per the spec). L3 — the engine's
+    positional CLASS (present/future_position, comparison conditioning) is a SEPARATE concept from
+    slot eligibility and does not change under this law.
 22a. THE SSP LINE — RULED: 92 HOLDS (owner word 2026-07-13, "92 is fine", given ON the corrected
     active-only scarcity cut of item 21 — 55 active rucks, 14 startable <1/club, thin depth band).
     The D4 hold ("rule when the scarcity leg lands") is DISCHARGED; the L6 STOP closes. The ~51
