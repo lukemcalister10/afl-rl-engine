@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v74 2026-07-13 (⚠ **SUPERVISOR CORRECTION — ITEM 50 IS WRONG AND IS HEREBY CORRECTED** (item 53): the shipped board does NOT price captaincy at the point estimate — it INTEGRATES capt_prem over the b6 peak-outcome band (price6). The owner's p90 idea IS ALREADY IMPLEMENTED; net incremental of wiring it ≈ 0. The point-estimate cliff I reported lives only in the DORMANT rl_model ev() path. The real live coin-flips are **nqual>=4 (62 players) and the tenure gates**. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v75 2026-07-13 (⚠⚠ **THE MIGRATION SILENTLY REVERSED AN OWNER RULING** (item 55): the v2.0 brief records the owner REJECTING a saturating captain curve — **and the saturating curve is what the current engine SHIPS.** The ratified shape (capt_bonus = integral of P, slope capped at 1 by construction) survives in the code as DEAD CODE with its gain cut 1.0 -> 0.35. V-1 ANSWERED. Owner adds the missing piece: selection is POSITIVE (the 108 captains on the week he is projected 123) => the correct object is a CALL OPTION on beating your next-best captain. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1358,6 +1358,67 @@
     path**, not the module. A blunt deletion would take the engine with it.
     **BLOCKED ON: the owner's JUNE-28 STAGE-2 GATE RULING.** The strip cannot proceed without it. This
     entry is the argument for making it.
+
+55. **⚠⚠ THE CAPTAINCY REVERSAL — AN OWNER RULING WAS SILENTLY OVERTURNED BY THE MIGRATION
+    (2026-07-13). V-1 IS HEREBY ANSWERED.**
+    The owner couriered the v2.0 keeper-line CAPTAINCY BRIEF. Its §3 records TWO owner rejections:
+      (b) *"Claude proposed a SATURATING curve — bonus rises fast then flattens toward a ceiling…*
+          **OWNER RULING (REJECTED).** *You do not captain the FIELD's second-best; you captain YOUR OWN
+          second-best. The league's top averager beats your own next option almost every week, so the
+          very top must keep earning. Saturation was withdrawn."*
+      (c) an accelerating S-curve — REJECTED on an IMPOSSIBILITY argument: a captain bonus can never grow
+          faster than the underlying points, because captaincy only doubles points actually scored. Any
+          super-linear region is arithmetically impossible.
+    The SURVIVOR (ratified shape): `capt_bonus(level) = CAPT_GAIN · ∫[bar → level] P_capt(a) da`, whose
+    **marginal IS the probability** — so the slope-1 ceiling ("one point of average can add at most one
+    point") is STRUCTURAL, not clamped. Params: THRESH 108 · M 116 · W 5 · **GAIN 1.0**.
+    **WHAT THE CURRENT ENGINE ACTUALLY SHIPS (supervisor-verified in code, this seat):**
+    · LIVE: **`capt_prem(lev)` = cb·18/(18+cb), cb = 0.35·over^1.25 — A SATURATING CURVE WITH A HARD
+      18-POINT CAP. THIS IS THE SHAPE THE OWNER REJECTED.**
+    · DEAD: **`capt_bonus(level)` — the RATIFIED integral-of-P shape — is defined and NEVER CALLED, and
+      its gain was cut from 1.0 to 0.35 along the way.**
+    · Measured consequence: Gawn (126.0) earns only **+2.2** more captain credit than Bontempelli (119.5),
+      whom he out-averages by **6.5** — marginal slope **0.34 and FALLING** where the ratified shape would
+      ride just under 1.0. The owner's complaint was exactly right, and it is a REGRESSION, not a design.
+    **VERIFICATION ITEM V-1 (from the brief: "confirm what the CURRENT engine actually computes") IS
+    ANSWERED: the migration DROPPED the ratified shape and WIRED the rejected one.** Nobody noticed
+    because no gate compares the shipped curve to the ruled one.
+    ⚠ Captaincy is LOAD-BEARING on **A-BONT** (≥ +10%, rests partly on permanent captain optionality) and
+    **A-GAWN** (rests partly on Gawn's captaincy advantage outweighing runway). Under-sized captaincy
+    strains both; restoring it moves both FAVOURABLY.
+
+56. **THE CAPTAINCY CONSTRUCTION — THE OWNER SUPPLIES THE MISSING PIECE (2026-07-13).**
+    OWNER, VERBATIM: *"there are going to be weeks where a 108 ppg player is the best captain due to
+    matchups, and they are projected to score 123. While the 125 average guy is projected to score 115, so
+    doesn't get the armband. So a good captaincy formula probably factors in probability… But also
+    considers that when the 108 guy captains, even if it's only 1/12 weeks, he might score 12 above
+    captaincy replacement, not just his average."* Also: *"What matters is the perceived ability to USE a
+    player as a captain"* (consistent with W4 R5: capability, never designation). **No VC loophole in his
+    league** (owner-confirmed) — the payoff is the captain's score alone.
+    **SUPERVISOR SYNTHESIS — the correct object is a CALL OPTION ON THE WEEKLY MAX:**
+        capt_value(i) = E[ ( S_i − M )⁺ ]   where S_i = his PROJECTED score that week and
+                                            M = the projected score of your next-best captain option.
+    Because you only captain him when he beats your alternative, and the credit is the MARGIN by which he
+    beats it. This single construction delivers everything the brief and the owner have separately asked
+    for:
+    · **Its derivative with respect to his average is exactly P(S_i > M) = P(armband)** — i.e. the brief's
+      "marginal IS the probability" falls out as a THEOREM, not an assumption. The slope-1 impossibility
+      ceiling (ruling 3c) is preserved AUTOMATICALLY.
+    · **The brief's ∫P curve is the DETERMINISTIC SHADOW of this option** (it is what you get if weekly
+      scores had no forecastable spread). That is why the brief's shape is right and its MAGNITUDE — its
+      own #1 open item, "the slider felt dead", worth only ~11% of a 120-avg mid's seasonal value — is
+      TOO SMALL: **the missing magnitude IS the volatility premium the option prices and the ∫P ignores.**
+    · **It pays sub-bar players in the tail** — the owner's 108-projected-123 case — because the option is
+      in-the-money in matchup weeks. The brief's hard zero below the bar is wrong; the owner said so.
+    · **It rewards forecastable spikiness**, which is precisely "perceived ability to USE him as a captain".
+    ⚠ **THE DEPENDENCY, STATED PLAINLY:** the option needs the spread of the **FORECASTABLE** weekly
+    component (matchup / role / form) — NOT total weekly noise. Coaches choose on PROJECTIONS and receive
+    realised scores; with unbiased projections the option must be computed on the PROJECTION distribution.
+    **We do not hold weekly scores in the store.** That is exactly what **ROUND-SCORE INGESTION** delivers.
+    OWNER DECISION REQUIRED: (a) build the option machinery NOW with sigma as an explicit owner-visible
+    parameter + a sensitivity ladder, recalibrating when ingestion lands; or (b) wait for ingestion and do
+    it once on real weekly data. **Supervisor recommends (a) — because what is LIVE today is a shape the
+    owner REJECTED, and leaving a rejected shape shipping while we wait is the worse of the two errors.**
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
