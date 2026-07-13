@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v42 2026-07-13 (THE K/G COMPANION-TAG LAW ruled — same-end G tags are formalities, disregarded at import; rides item 20. Positional architecture recorded: current elig = this season only · future = the owner’s split register at flex fire · engine positional class stays separate. Exception record + ruck-DPP clarification + TWO cross-end anomalies (gardiner · whitlock) pending the owner word. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v43 2026-07-13 (SPEC RETURN PRESCREENED PASS: the NEWCOMBE FLATTERY IS CONFIRMED — +582/+14.9% pk60-over-pk1 on the identical record, carriers = par-band base + iso_corr, NO decay (grows −547→+582), ladder non-monotone; fix = the next chapter’s headline lever, PROPOSED invariant pending the owner. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -15,6 +15,29 @@
    label worth only −90 (pedestal result re-confirmed); LIVE MECHANISM CANDIDATE = par-relative
    flattery (a low-expectation label OUT-prices a high one at identical output — pick-2-label <
    pick-60-label on the same line); the testable question is the age discount's depth.
+   ANSWERED — SPEC_1 MEASURED, SUPERVISOR-PRESCREENED PASS (2026-07-13, branch
+   claude/v2-9-spec-measurement-6yu64r @ 4424e2b; basis pinned 917e4c4, harness verified == the
+   certified panel; fence held — 4 commits, specs-dir only, nothing existing edited).
+   **THE ANSWER: YES — as ND pick 1 newcombe prices 3911; as pick 60, 4493: the low pick is worth
+   +582 SCAR (+14.9%) MORE on the identical elite record.** CARRIERS (near-equal): the
+   pick-conditioned PAR (band base +290; par 96.2@pk1 vs 74.6@pk60) + the ISO_CORR surprise credit
+   (+298; ×1.071 at pk60). The pole/recover term is ~flat; THE AGE DISCOUNT IS NOT THE CARRIER
+   (age held constant). QUALIFIERS the data forced: (a) CONDITIONAL — fires only when delivered
+   output exceeds the low-pick par "by lots" (the owner's words); (b) NO DECAY — the label gap runs
+   −547 (1 season) → −178 (4 seasons) → +582 (full 115g): it INVERTS AND GROWS = the double-payment
+   confirmed; (c) BONUS DEFECT: the pick ladder is NON-MONOTONE (pk10 4426 > pk24 4259 < pk60 4493
+   — iso_corr troughs mid-round, spikes at the tail). Artifacts: SPEC_1_NEWCOMBE_FLATTERY.md +
+   out/measure_specs.json + scripts/measure_specs.py.
+   DISPOSITION (owner-facing): v2.9 BAKES WITH THE FLATTERY KNOWN (~+13% on newcombe's class —
+   owner discounts by eye at the board view); THE FIX = the next chapter's headline lever, built
+   per the remediation doctrine (identified-mechanism correction, no blanket patch). PROPOSED
+   INVARIANT (PENDING-OWNER, filed unruled by the build): same age + same delivered record ⇒ a
+   lower pick never prices strictly above a higher one. SPEC_2/3's walk-forward calibrations
+   (JUH cameo/nqual · ryan _fbump · moore body-of-work axis) are the flagged FOLLOW-ON lever legs,
+   queued with the same chapter. Seam table (ADVISORY, G-Y0 input): comp-weighted V0 > PVC in
+   EVERY band (+19…+281, widest 21–30) — first measurement for the G-Y0 ratification.
+   Evidence branch homing: the SPEC branch rides the evidence-homing sweep at the seam (no PR
+   needed; docs-only measurement).
    OWNER CLARIFICATION (2026-07-13, verbatim intent): the PAR-RELATIVE FLATTERY is THE question —
    "the model measured his performance as exceeding his pole by lots, so boosted him because it
    was pick 60. The specific thing I was told was that there was a chance he'd be valued lower if
