@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v57 2026-07-13 (SEAM DOCS ISSUED owner-held: HANDOVER rev134 (seat-4→seat-5, bake-in-flight aware, Fable-window plan) + DECISIONS v97. Loose-ends inventory closed: the "age curve on breakouts" = the adopted L3 (landed); the Bontempelli itch = A-PAIRS PAIR 2, young_gun_tbd — STILL OPEN, owner to name; dylan moore = SPEC_3’s queued leg; GPT review = authored, never run. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v58 2026-07-13 (UI FAIL-CLOSED EXPLAINED: app/config.js EXPECTED_BOARD still pins de4baef9 while the bundles carry f2d6e3f5 — the export build’s claimed re-pin was NOT performed (claim-vs-artifact gap; supervisor prescreen miss owned); the BAKE’s UI step does it for real + the prescreen checklist gains the pin check. GPT-review record corrected: one WAS run earlier; ANOTHER queued near the end. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -756,6 +756,25 @@
     census's ev_ref machinery, read-only). Acceptance test = the PROPOSED INVARIANT (same age +
     record ⇒ lower pick never strictly above higher) — formal ruling at the fix chapter's open.
     F1 (G-PEAK collision) and F2 (reference-frame) ride the fix directive as design constraints.
+
+31. THE BLANK ValueBoard — DIAGNOSED (owner report 2026-07-13): the Matchday UI FAIL-CLOSED,
+    working as designed, on a STALE PIN. app/config.js line 10 still carries EXPECTED_BOARD
+    "de4baef9" (the pre-candidate pin) while the re-extracted bundles carry board f2d6e3f5 —
+    mismatch ⇒ the UI refuses to render (its Guard-5 analogue). **THE EXPORT BUILD'S RETURN
+    CLAIMED "EXPECTED_BOARD re-pin" (job ⑤) — the artifact shows it was NOT performed.**
+    Claim-vs-artifact gap recorded; SUPERVISOR MISS OWNED: the prescreen verified the board,
+    bundles, and zero-movers but never opened config.js to check that one claimed line — a
+    report-only claim rode into PASS unverified (rule 1's exact failure mode, caught by the
+    owner's browser).
+    DISPOSITION: no interim fix needed (the owner's board view used the sitting view; the word
+    is given). The BAKE's step 7 re-extracts vs the numéraire board and re-pins — REAL work now,
+    flagged to the bake build. **THE BAKE-RETURN PRESCREEN CHECKLIST GAINS: open app/config.js
+    and assert EXPECTED_BOARD == the new board id (never accept the claim).** (HANDOVER rev134
+    §2 updated in the issued copy.)
+32. GPT ADVERSARIAL REVIEW — RECORD CORRECTED (owner 2026-07-13): one WAS run earlier in the
+    project (pre-seat-4 vintage; v57's "never run" was wrong). ANOTHER is queued NEAR THE END
+    (owner-run, owner-timed) — after the flattery fix lands is the natural slot; the board it
+    reviews should be the one the league will live on.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
