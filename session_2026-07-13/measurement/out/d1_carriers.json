@@ -1,0 +1,673 @@
+{
+ "board": "81e48293 (store b0c39d78, tagged v2.9)",
+ "D1a_JUH": {
+  "player": "Jamarra Ugle-Hagan",
+  "pos": "KEY_FWD",
+  "pick": 1,
+  "draft": 2020,
+  "nqual_today": 3,
+  "PROVEN_N": 4,
+  "scoring": [
+   [
+    2021,
+    5,
+    47.0
+   ],
+   [
+    2022,
+    17,
+    44.0
+   ],
+   [
+    2023,
+    23,
+    60.6
+   ],
+   [
+    2024,
+    22,
+    63.8
+   ],
+   [
+    2026,
+    3,
+    26.0
+   ]
+  ],
+  "board_actual": 187,
+  "board_cameo_removed": 1009,
+  "board_healthy2026": 794,
+  "cameo_cost_vs_removed": 822,
+  "cameo_cost_vs_healthy": 607,
+  "nqual_cliff_sweep": [
+   {
+    "games2026": 0,
+    "nqual": 3,
+    "board": 1009
+   },
+   {
+    "games2026": 2,
+    "nqual": 3,
+    "board": 483
+   },
+   {
+    "games2026": 3,
+    "nqual": 3,
+    "board": 187
+   },
+   {
+    "games2026": 5,
+    "nqual": 3,
+    "board": 184
+   },
+   {
+    "games2026": 7,
+    "nqual": 3,
+    "board": 142
+   },
+   {
+    "games2026": 9,
+    "nqual": 3,
+    "board": 119
+   },
+   {
+    "games2026": 10,
+    "nqual": 4,
+    "board": 105
+   },
+   {
+    "games2026": 11,
+    "nqual": 4,
+    "board": 105
+   },
+   {
+    "games2026": 14,
+    "nqual": 4,
+    "board": 105
+   },
+   {
+    "games2026": 18,
+    "nqual": 4,
+    "board": 105
+   },
+   {
+    "games2026": 22,
+    "nqual": 4,
+    "board": 105
+   }
+  ]
+ },
+ "D1b_fbump": {
+  "n_fired": 34,
+  "total_scar_moved": 917,
+  "ryan_carriers": [
+   {
+    "player": "Luke Ryan",
+    "pos": "GEN_DEF",
+    "age": 30.0,
+    "Lo": 100.9,
+    "Lc": 96.5,
+    "lcr": 18.2,
+    "bump": 0.1046,
+    "key": "luke-ryan",
+    "board_on": 1620,
+    "board_off": 1579,
+    "fbump_scar": 41
+   }
+  ],
+  "all_fired": [
+   {
+    "player": "Sam Walsh",
+    "pos": "MID",
+    "age": 26.0,
+    "Lo": 103.5,
+    "Lc": 98.5,
+    "lcr": 18.4,
+    "bump": 0.1273,
+    "key": "sam-walsh",
+    "board_on": 2739,
+    "board_off": 2321,
+    "fbump_scar": 418
+   },
+   {
+    "player": "Dan Houston",
+    "pos": "GEN_DEF",
+    "age": 29.0,
+    "Lo": 92.1,
+    "Lc": 87.7,
+    "lcr": 9.4,
+    "bump": 0.0936,
+    "key": "dan-houston",
+    "board_on": 1188,
+    "board_off": 1080,
+    "fbump_scar": 108
+   },
+   {
+    "player": "Charlie Curnow",
+    "pos": "KEY_FWD",
+    "age": 29.0,
+    "Lo": 77.7,
+    "Lc": 73.1,
+    "lcr": 6.3,
+    "bump": 0.0866,
+    "key": "charlie-curnow",
+    "board_on": 1187,
+    "board_off": 1121,
+    "fbump_scar": 66
+   },
+   {
+    "player": "Adam Cerra",
+    "pos": "MID",
+    "age": 27.0,
+    "Lo": 89.8,
+    "Lc": 84.6,
+    "lcr": 4.5,
+    "bump": 0.0922,
+    "key": "adam-cerra",
+    "board_on": 1135,
+    "board_off": 1077,
+    "fbump_scar": 58
+   },
+   {
+    "player": "Touk Miller",
+    "pos": "MID",
+    "age": 30.0,
+    "Lo": 103.4,
+    "Lc": 98.8,
+    "lcr": 18.7,
+    "bump": 0.1062,
+    "key": "touk-miller",
+    "board_on": 1417,
+    "board_off": 1373,
+    "fbump_scar": 44
+   },
+   {
+    "player": "Dylan Moore",
+    "pos": "GEN_FWD",
+    "age": 27.0,
+    "Lo": 86.3,
+    "Lc": 81.2,
+    "lcr": 10.3,
+    "bump": 0.1123,
+    "key": "dylan-moore",
+    "board_on": 1450,
+    "board_off": 1409,
+    "fbump_scar": 41
+   },
+   {
+    "player": "Hugh McCluggage",
+    "pos": "MID",
+    "age": 28.0,
+    "Lo": 100.5,
+    "Lc": 93.3,
+    "lcr": 13.2,
+    "bump": 0.1151,
+    "key": "hugh-mccluggage",
+    "board_on": 1627,
+    "board_off": 1586,
+    "fbump_scar": 41
+   },
+   {
+    "player": "Jordan Ridley",
+    "pos": "GEN_DEF",
+    "age": 28.0,
+    "Lo": 90.7,
+    "Lc": 83.4,
+    "lcr": 5.1,
+    "bump": 0.0971,
+    "key": "jordan-ridley",
+    "board_on": 1040,
+    "board_off": 999,
+    "fbump_scar": 41
+   },
+   {
+    "player": "Luke Ryan",
+    "pos": "GEN_DEF",
+    "age": 30.0,
+    "Lo": 100.9,
+    "Lc": 96.5,
+    "lcr": 18.2,
+    "bump": 0.1046,
+    "key": "luke-ryan",
+    "board_on": 1620,
+    "board_off": 1579,
+    "fbump_scar": 41
+   },
+   {
+    "player": "Andrew Brayshaw",
+    "pos": "MID",
+    "age": 27.0,
+    "Lo": 105.5,
+    "Lc": 101.5,
+    "lcr": 21.4,
+    "bump": 0.1307,
+    "key": "andrew-brayshaw",
+    "board_on": 2770,
+    "board_off": 2737,
+    "fbump_scar": 33
+   },
+   {
+    "player": "Kieren Briggs",
+    "pos": "RUC",
+    "age": 27.0,
+    "Lo": 88.0,
+    "Lc": 83.6,
+    "lcr": 5.1,
+    "bump": 0.1031,
+    "key": "kieren-briggs",
+    "board_on": 2105,
+    "board_off": 2090,
+    "fbump_scar": 15
+   },
+   {
+    "player": "Lloyd Meek",
+    "pos": "RUC",
+    "age": 28.0,
+    "Lo": 87.0,
+    "Lc": 79.1,
+    "lcr": 0.6,
+    "bump": 0.0125,
+    "key": "lloyd-meek",
+    "board_on": 895,
+    "board_off": 884,
+    "fbump_scar": 11
+   },
+   {
+    "player": "Thomas Stewart",
+    "pos": "GEN_DEF",
+    "age": 33.0,
+    "Lo": 97.6,
+    "Lc": 93.4,
+    "lcr": 15.1,
+    "bump": 0.0807,
+    "key": "thomas-stewart",
+    "board_on": 1013,
+    "board_off": 1013,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Rowan Marshall",
+    "pos": "RUC",
+    "age": 31.0,
+    "Lo": 100.9,
+    "Lc": 88.6,
+    "lcr": 10.1,
+    "bump": 0.0745,
+    "key": "rowan-marshall",
+    "board_on": 605,
+    "board_off": 605,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Darcy Parish",
+    "pos": "MID",
+    "age": 29.0,
+    "Lo": 97.2,
+    "Lc": 93.4,
+    "lcr": 13.3,
+    "bump": 0.1027,
+    "key": "darcy-parish",
+    "board_on": 1403,
+    "board_off": 1403,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Ben Keays",
+    "pos": "GEN_FWD",
+    "age": 29.0,
+    "Lo": 80.8,
+    "Lc": 74.4,
+    "lcr": 3.5,
+    "bump": 0.0584,
+    "key": "ben-keays",
+    "board_on": 306,
+    "board_off": 306,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Josh Dunkley",
+    "pos": "MID",
+    "age": 29.0,
+    "Lo": 105.0,
+    "Lc": 95.2,
+    "lcr": 15.1,
+    "bump": 0.1068,
+    "key": "josh-dunkley",
+    "board_on": 892,
+    "board_off": 892,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Kyle Langford",
+    "pos": "KEY_FWD",
+    "age": 30.0,
+    "Lo": 72.6,
+    "Lc": 69.5,
+    "lcr": 2.7,
+    "bump": 0.0382,
+    "key": "kyle-langford",
+    "board_on": 642,
+    "board_off": 642,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Jack Steele",
+    "pos": "MID",
+    "age": 31.0,
+    "Lo": 102.1,
+    "Lc": 98.4,
+    "lcr": 18.3,
+    "bump": 0.0995,
+    "key": "jack-steele",
+    "board_on": 1576,
+    "board_off": 1576,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Reilly O'Brien",
+    "pos": "RUC",
+    "age": 31.0,
+    "Lo": 94.1,
+    "Lc": 83.5,
+    "lcr": 5.0,
+    "bump": 0.0617,
+    "key": "reilly-o-brien",
+    "board_on": 774,
+    "board_off": 774,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Adam Saad",
+    "pos": "GEN_DEF",
+    "age": 32.0,
+    "Lo": 85.6,
+    "Lc": 81.5,
+    "lcr": 3.2,
+    "bump": 0.0342,
+    "key": "adam-saad",
+    "board_on": 633,
+    "board_off": 633,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Joshua Kelly",
+    "pos": "MID",
+    "age": 31.0,
+    "Lo": 99.2,
+    "Lc": 90.4,
+    "lcr": 10.3,
+    "bump": 0.0753,
+    "key": "joshua-kelly",
+    "board_on": 556,
+    "board_off": 556,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Patrick Cripps",
+    "pos": "MID",
+    "age": 31.0,
+    "Lo": 101.0,
+    "Lc": 97.1,
+    "lcr": 17.0,
+    "bump": 0.0948,
+    "key": "patrick-cripps",
+    "board_on": 1365,
+    "board_off": 1365,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Jesse Hogan",
+    "pos": "KEY_FWD",
+    "age": 32.0,
+    "Lo": 78.1,
+    "Lc": 72.0,
+    "lcr": 5.2,
+    "bump": 0.0537,
+    "key": "jesse-hogan",
+    "board_on": 379,
+    "board_off": 379,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Jackson Macrae",
+    "pos": "MID",
+    "age": 32.0,
+    "Lo": 97.5,
+    "Lc": 81.3,
+    "lcr": 1.2,
+    "bump": 0.0127,
+    "key": "jackson-macrae",
+    "board_on": 242,
+    "board_off": 242,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Oliver Wines",
+    "pos": "MID",
+    "age": 32.0,
+    "Lo": 93.5,
+    "Lc": 86.0,
+    "lcr": 5.9,
+    "bump": 0.0554,
+    "key": "oliver-wines",
+    "board_on": 479,
+    "board_off": 479,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Nick Vlastuin",
+    "pos": "GEN_DEF",
+    "age": 32.0,
+    "Lo": 86.4,
+    "Lc": 80.9,
+    "lcr": 2.6,
+    "bump": 0.028,
+    "key": "nick-vlastuin",
+    "board_on": 100,
+    "board_off": 100,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Elliot Yeo",
+    "pos": "MID",
+    "age": 33.0,
+    "Lo": 91.8,
+    "Lc": 87.3,
+    "lcr": 7.2,
+    "bump": 0.0544,
+    "key": "elliot-yeo",
+    "board_on": 537,
+    "board_off": 537,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Lachie Neale",
+    "pos": "MID",
+    "age": 33.0,
+    "Lo": 110.8,
+    "Lc": 107.2,
+    "lcr": 27.1,
+    "bump": 0.1286,
+    "key": "lachie-neale",
+    "board_on": 1816,
+    "board_off": 1816,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Jarrod Witts",
+    "pos": "RUC",
+    "age": 34.0,
+    "Lo": 98.5,
+    "Lc": 86.5,
+    "lcr": 8.0,
+    "bump": 0.053,
+    "key": "jarrod-witts",
+    "board_on": 378,
+    "board_off": 378,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Rory Laird",
+    "pos": "GEN_DEF",
+    "age": 33.0,
+    "Lo": 105.2,
+    "Lc": 97.4,
+    "lcr": 19.1,
+    "bump": 0.0967,
+    "key": "rory-laird",
+    "board_on": 916,
+    "board_off": 916,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Tom McDonald",
+    "pos": "KEY_DEF",
+    "age": 34.0,
+    "Lo": 74.2,
+    "Lc": 70.7,
+    "lcr": 2.3,
+    "bump": 0.019,
+    "key": "tom-mcdonald",
+    "board_on": 351,
+    "board_off": 351,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Patrick Dangerfield",
+    "pos": "GEN_FWD",
+    "age": 37.0,
+    "Lo": 87.6,
+    "Lc": 73.8,
+    "lcr": 2.9,
+    "bump": 0.0171,
+    "key": "patrick-dangerfield",
+    "board_on": 98,
+    "board_off": 98,
+    "fbump_scar": 0
+   },
+   {
+    "player": "Taylor Walker",
+    "pos": "KEY_FWD",
+    "age": 37.0,
+    "Lo": 73.4,
+    "Lc": 68.5,
+    "lcr": 1.7,
+    "bump": 0.0099,
+    "key": "taylor-walker",
+    "board_on": 227,
+    "board_off": 227,
+    "fbump_scar": 0
+   }
+  ],
+  "median_scar": 0,
+  "max_scar": 418
+ },
+ "D1c_moore": {
+  "player": "Dylan Moore",
+  "pos": "GEN_FWD",
+  "pick": 66,
+  "draft": 2017,
+  "scoring": [
+   [
+    2019,
+    7,
+    56.1
+   ],
+   [
+    2020,
+    3,
+    70.3
+   ],
+   [
+    2021,
+    20,
+    76.5
+   ],
+   [
+    2022,
+    22,
+    94.6
+   ],
+   [
+    2023,
+    23,
+    91.0
+   ],
+   [
+    2024,
+    25,
+    96.5
+   ],
+   [
+    2025,
+    26,
+    87.5
+   ],
+   [
+    2026,
+    12,
+    71.3
+   ]
+  ],
+  "board_actual": 1450,
+  "board_healthy2026": 2228,
+  "board_no2026": 2409,
+  "dip_penalty_vs_healthy": 778,
+  "dip_penalty_vs_no2026": 959,
+  "bow_axis": {
+   "n": 4787,
+   "partial_slope_next_per_bow": 0.1443,
+   "partial_corr": 0.1257,
+   "r2_recent_only": 0.5603,
+   "r2_recent_plus_bow": 0.5672,
+   "incremental_r2": 0.0069,
+   "smoothed_partial_dependence": [
+    {
+     "bow_resid_mid": -18.24,
+     "next_resid_mean": -1.99,
+     "n": 531
+    },
+    {
+     "bow_resid_mid": -9.67,
+     "next_resid_mean": -1.8,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": -5.7,
+     "next_resid_mean": -1.0,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": -2.69,
+     "next_resid_mean": -1.32,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": 0.23,
+     "next_resid_mean": 0.7,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": 2.85,
+     "next_resid_mean": 0.43,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": 5.83,
+     "next_resid_mean": 1.35,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": 9.68,
+     "next_resid_mean": 0.72,
+     "n": 532
+    },
+    {
+     "bow_resid_mid": 17.67,
+     "next_resid_mean": 2.92,
+     "n": 532
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "board": "81e48293 (store b0c39d78, tagged v2.9)",
+ "THRESH": 107.4,
+ "n_board_evaluated": 804,
+ "n_over_line": 19,
+ "over_line": [
+  {
+   "player": "Max Gawn",
+   "pos": "RUC",
+   "capt_level": 125.98,
+   "premium_pts": 7.714
+  },
+  {
+   "player": "Brodie Grundy",
+   "pos": "RUC",
+   "capt_level": 125.47,
+   "premium_pts": 7.561
+  },
+  {
+   "player": "Tristan Xerri",
+   "pos": "RUC",
+   "capt_level": 122.65,
+   "premium_pts": 6.649
+  },
+  {
+   "player": "Zak Butters",
+   "pos": "MID",
+   "capt_level": 120.85,
+   "premium_pts": 6.007
+  },
+  {
+   "player": "Isaac Heeney",
+   "pos": "MID",
+   "capt_level": 120.51,
+   "premium_pts": 5.881
+  },
+  {
+   "player": "Marcus Bontempelli",
+   "pos": "MID",
+   "capt_level": 119.52,
+   "premium_pts": 5.498
+  },
+  {
+   "player": "Bailey Smith",
+   "pos": "MID",
+   "capt_level": 119.49,
+   "premium_pts": 5.486
+  },
+  {
+   "player": "Luke Jackson",
+   "pos": "RUC",
+   "capt_level": 117.82,
+   "premium_pts": 4.802
+  },
+  {
+   "player": "Jordan Dawson",
+   "pos": "MID",
+   "capt_level": 114.56,
+   "premium_pts": 3.338
+  },
+  {
+   "player": "Harry Sheezel",
+   "pos": "MID",
+   "capt_level": 114.52,
+   "premium_pts": 3.322
+  },
+  {
+   "player": "Nick Daicos",
+   "pos": "MID",
+   "capt_level": 114.5,
+   "premium_pts": 3.308
+  },
+  {
+   "player": "Max Holmes",
+   "pos": "MID",
+   "capt_level": 114.46,
+   "premium_pts": 3.293
+  },
+  {
+   "player": "Jack Sinclair",
+   "pos": "GEN_DEF",
+   "capt_level": 112.18,
+   "premium_pts": 2.174
+  },
+  {
+   "player": "Zachary Merrett",
+   "pos": "MID",
+   "capt_level": 111.32,
+   "premium_pts": 1.742
+  },
+  {
+   "player": "Christian Petracca",
+   "pos": "MID",
+   "capt_level": 110.19,
+   "premium_pts": 1.178
+  },
+  {
+   "player": "Luke Davies-Uniacke",
+   "pos": "MID",
+   "capt_level": 110.0,
+   "premium_pts": 1.084
+  },
+  {
+   "player": "Tom Green",
+   "pos": "MID",
+   "capt_level": 109.85,
+   "premium_pts": 1.013
+  },
+  {
+   "player": "Noah Anderson",
+   "pos": "MID",
+   "capt_level": 107.85,
+   "premium_pts": 0.127
+  },
+  {
+   "player": "Lachie Neale",
+   "pos": "MID",
+   "capt_level": 107.73,
+   "premium_pts": 0.087
+  }
+ ],
+ "saturation": {
+  "best": "Max Gawn",
+  "best_lev": 125.98,
+  "best_prem": 7.714,
+  "eighth": "Luke Jackson",
+  "eighth_lev": 117.82,
+  "eighth_prem": 4.802,
+  "raw_scoring_gap": 8.16,
+  "premium_gap": 2.91
+ }
+}

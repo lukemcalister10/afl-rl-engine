@@ -1,0 +1,10155 @@
+{
+ "n_cells": 8116,
+ "sensitive": [
+  {
+   "key": "nicholas-naitanui",
+   "player": "Nicholas Naitanui",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 3811,
+   "capt_off": 1857,
+   "capt_scar": 1954
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 8978,
+   "capt_off": 8019,
+   "capt_scar": 959
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 7,
+   "year": 2019,
+   "default": 8245,
+   "capt_off": 7389,
+   "capt_scar": 856
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 5,
+   "year": 2020,
+   "default": 8624,
+   "capt_off": 7840,
+   "capt_scar": 784
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 8127,
+   "capt_off": 7384,
+   "capt_scar": 743
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 8024,
+   "capt_off": 7309,
+   "capt_scar": 715
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 8368,
+   "capt_off": 7676,
+   "capt_scar": 692
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 7352,
+   "capt_off": 6679,
+   "capt_scar": 673
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 7615,
+   "capt_off": 6980,
+   "capt_scar": 635
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 5,
+   "year": 2014,
+   "default": 7944,
+   "capt_off": 7312,
+   "capt_scar": 632
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 7240,
+   "capt_off": 6626,
+   "capt_scar": 614
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 7851,
+   "capt_off": 7240,
+   "capt_scar": 611
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 7875,
+   "capt_off": 7275,
+   "capt_scar": 600
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 7810,
+   "capt_off": 7228,
+   "capt_scar": 582
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 6,
+   "year": 2015,
+   "default": 7360,
+   "capt_off": 6789,
+   "capt_scar": 571
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 7737,
+   "capt_off": 7169,
+   "capt_scar": 568
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 8091,
+   "capt_off": 7532,
+   "capt_scar": 559
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 7307,
+   "capt_off": 6751,
+   "capt_scar": 556
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 8099,
+   "capt_off": 7553,
+   "capt_scar": 546
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 6964,
+   "capt_off": 6419,
+   "capt_scar": 545
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 7955,
+   "capt_off": 7431,
+   "capt_scar": 524
+  },
+  {
+   "key": "nicholas-naitanui",
+   "player": "Nicholas Naitanui",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 8395,
+   "capt_off": 7871,
+   "capt_scar": 524
+  },
+  {
+   "key": "tom-mitchell",
+   "player": "Tom Mitchell",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 6892,
+   "capt_off": 6375,
+   "capt_scar": 517
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 7,
+   "year": 2019,
+   "default": 6760,
+   "capt_off": 6249,
+   "capt_scar": 511
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 7166,
+   "capt_off": 6661,
+   "capt_scar": 505
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 6852,
+   "capt_off": 6354,
+   "capt_scar": 498
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 7785,
+   "capt_off": 7315,
+   "capt_scar": 470
+  },
+  {
+   "key": "tom-mitchell",
+   "player": "Tom Mitchell",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 6996,
+   "capt_off": 6526,
+   "capt_scar": 470
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 6885,
+   "capt_off": 6417,
+   "capt_scar": 468
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 6835,
+   "capt_off": 6397,
+   "capt_scar": 438
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 6463,
+   "capt_off": 6030,
+   "capt_scar": 433
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 7199,
+   "capt_off": 6771,
+   "capt_scar": 428
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 7453,
+   "capt_off": 7029,
+   "capt_scar": 424
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 3,
+   "year": 2021,
+   "default": 7483,
+   "capt_off": 7062,
+   "capt_scar": 421
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 7,
+   "year": 2013,
+   "default": 6297,
+   "capt_off": 5880,
+   "capt_scar": 417
+  },
+  {
+   "key": "josh-p-kennedy",
+   "player": "Josh Kennedy",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 6467,
+   "capt_off": 6060,
+   "capt_scar": 407
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 7009,
+   "capt_off": 6604,
+   "capt_scar": 405
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 6673,
+   "capt_off": 6272,
+   "capt_scar": 401
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 7271,
+   "capt_off": 6873,
+   "capt_scar": 398
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 6708,
+   "capt_off": 6313,
+   "capt_scar": 395
+  },
+  {
+   "key": "max-gawn",
+   "player": "Max Gawn",
+   "C": 2009,
+   "N": 7,
+   "year": 2016,
+   "default": 5648,
+   "capt_off": 5255,
+   "capt_scar": 393
+  },
+  {
+   "key": "thomas-liberatore",
+   "player": "Thomas Liberatore",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 7220,
+   "capt_off": 6828,
+   "capt_scar": 392
+  },
+  {
+   "key": "lachie-neale",
+   "player": "Lachie Neale",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 6747,
+   "capt_off": 6358,
+   "capt_scar": 389
+  },
+  {
+   "key": "max-holmes",
+   "player": "Max Holmes",
+   "C": 2020,
+   "N": 6,
+   "year": 2026,
+   "default": 6472,
+   "capt_off": 6084,
+   "capt_scar": 388
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 7382,
+   "capt_off": 6994,
+   "capt_scar": 388
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 6829,
+   "capt_off": 6442,
+   "capt_scar": 387
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 6717,
+   "capt_off": 6331,
+   "capt_scar": 386
+  },
+  {
+   "key": "rory-sloane",
+   "player": "Rory Sloane",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 6489,
+   "capt_off": 6106,
+   "capt_scar": 383
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 7,
+   "year": 2021,
+   "default": 5915,
+   "capt_off": 5534,
+   "capt_scar": 381
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 6586,
+   "capt_off": 6205,
+   "capt_scar": 381
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 6078,
+   "capt_off": 5701,
+   "capt_scar": 377
+  },
+  {
+   "key": "jack-steele",
+   "player": "Jack Steele",
+   "C": 2014,
+   "N": 7,
+   "year": 2021,
+   "default": 5935,
+   "capt_off": 5559,
+   "capt_scar": 376
+  },
+  {
+   "key": "sam-docherty",
+   "player": "Sam Docherty",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 7084,
+   "capt_off": 6720,
+   "capt_scar": 364
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 6441,
+   "capt_off": 6082,
+   "capt_scar": 359
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 6477,
+   "capt_off": 6118,
+   "capt_scar": 359
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 5839,
+   "capt_off": 5483,
+   "capt_scar": 356
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 6382,
+   "capt_off": 6031,
+   "capt_scar": 351
+  },
+  {
+   "key": "todd-goldstein",
+   "player": "Todd Goldstein",
+   "C": 2006,
+   "N": 7,
+   "year": 2013,
+   "default": 6613,
+   "capt_off": 6263,
+   "capt_scar": 350
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 6,
+   "year": 2023,
+   "default": 6168,
+   "capt_off": 5821,
+   "capt_scar": 347
+  },
+  {
+   "key": "errol-gulden",
+   "player": "Errol Gulden",
+   "C": 2020,
+   "N": 4,
+   "year": 2024,
+   "default": 7355,
+   "capt_off": 7009,
+   "capt_scar": 346
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 6783,
+   "capt_off": 6444,
+   "capt_scar": 339
+  },
+  {
+   "key": "lachie-neale",
+   "player": "Lachie Neale",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 6106,
+   "capt_off": 5770,
+   "capt_scar": 336
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 7611,
+   "capt_off": 7279,
+   "capt_scar": 332
+  },
+  {
+   "key": "max-holmes",
+   "player": "Max Holmes",
+   "C": 2020,
+   "N": 5,
+   "year": 2025,
+   "default": 6717,
+   "capt_off": 6387,
+   "capt_scar": 330
+  },
+  {
+   "key": "dion-prestia",
+   "player": "Dion Prestia",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 6990,
+   "capt_off": 6669,
+   "capt_scar": 321
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 7,
+   "year": 2016,
+   "default": 5798,
+   "capt_off": 5477,
+   "capt_scar": 321
+  },
+  {
+   "key": "thomas-liberatore",
+   "player": "Thomas Liberatore",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 6297,
+   "capt_off": 5983,
+   "capt_scar": 314
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 5,
+   "year": 2023,
+   "default": 6735,
+   "capt_off": 6427,
+   "capt_scar": 308
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 7038,
+   "capt_off": 6732,
+   "capt_scar": 306
+  },
+  {
+   "key": "patrick-dangerfield",
+   "player": "Patrick Dangerfield",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 6985,
+   "capt_off": 6679,
+   "capt_scar": 306
+  },
+  {
+   "key": "andrew-swallow",
+   "player": "Andrew Swallow",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 6127,
+   "capt_off": 5821,
+   "capt_scar": 306
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 5,
+   "year": 2022,
+   "default": 6696,
+   "capt_off": 6391,
+   "capt_scar": 305
+  },
+  {
+   "key": "michael-barlow",
+   "player": "Michael Barlow",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 4116,
+   "capt_off": 3813,
+   "capt_scar": 303
+  },
+  {
+   "key": "sam-flanders",
+   "player": "Sam Flanders",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 6169,
+   "capt_off": 5869,
+   "capt_scar": 300
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 5,
+   "year": 2017,
+   "default": 6451,
+   "capt_off": 6152,
+   "capt_scar": 299
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 6152,
+   "capt_off": 5858,
+   "capt_scar": 294
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 6547,
+   "capt_off": 6254,
+   "capt_scar": 293
+  },
+  {
+   "key": "nicholas-naitanui",
+   "player": "Nicholas Naitanui",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 6683,
+   "capt_off": 6390,
+   "capt_scar": 293
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 6793,
+   "capt_off": 6504,
+   "capt_scar": 289
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 6189,
+   "capt_off": 5901,
+   "capt_scar": 288
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 4,
+   "year": 2013,
+   "default": 6863,
+   "capt_off": 6575,
+   "capt_scar": 288
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 5954,
+   "capt_off": 5670,
+   "capt_scar": 284
+  },
+  {
+   "key": "lachie-neale",
+   "player": "Lachie Neale",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 5475,
+   "capt_off": 5191,
+   "capt_scar": 284
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 6584,
+   "capt_off": 6301,
+   "capt_scar": 283
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 7030,
+   "capt_off": 6748,
+   "capt_scar": 282
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 6607,
+   "capt_off": 6330,
+   "capt_scar": 277
+  },
+  {
+   "key": "rory-sloane",
+   "player": "Rory Sloane",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 6344,
+   "capt_off": 6068,
+   "capt_scar": 276
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 6,
+   "year": 2023,
+   "default": 6086,
+   "capt_off": 5814,
+   "capt_scar": 272
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 6335,
+   "capt_off": 6065,
+   "capt_scar": 270
+  },
+  {
+   "key": "luke-parker",
+   "player": "Luke Parker",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 6673,
+   "capt_off": 6406,
+   "capt_scar": 267
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 6995,
+   "capt_off": 6729,
+   "capt_scar": 266
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 4,
+   "year": 2021,
+   "default": 6765,
+   "capt_off": 6501,
+   "capt_scar": 264
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 5,
+   "year": 2017,
+   "default": 5734,
+   "capt_off": 5470,
+   "capt_scar": 264
+  },
+  {
+   "key": "jack-steele",
+   "player": "Jack Steele",
+   "C": 2014,
+   "N": 6,
+   "year": 2020,
+   "default": 5448,
+   "capt_off": 5185,
+   "capt_scar": 263
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 5,
+   "year": 2023,
+   "default": 6221,
+   "capt_off": 5961,
+   "capt_scar": 260
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 5399,
+   "capt_off": 5143,
+   "capt_scar": 256
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 5948,
+   "capt_off": 5694,
+   "capt_scar": 254
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 6603,
+   "capt_off": 6356,
+   "capt_scar": 247
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 6174,
+   "capt_off": 5932,
+   "capt_scar": 242
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 6162,
+   "capt_off": 5920,
+   "capt_scar": 242
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 6461,
+   "capt_off": 6219,
+   "capt_scar": 242
+  },
+  {
+   "key": "andrew-swallow",
+   "player": "Andrew Swallow",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 6074,
+   "capt_off": 5833,
+   "capt_scar": 241
+  },
+  {
+   "key": "errol-gulden",
+   "player": "Errol Gulden",
+   "C": 2020,
+   "N": 5,
+   "year": 2025,
+   "default": 6364,
+   "capt_off": 6124,
+   "capt_scar": 240
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 7055,
+   "capt_off": 6815,
+   "capt_scar": 240
+  },
+  {
+   "key": "errol-gulden",
+   "player": "Errol Gulden",
+   "C": 2020,
+   "N": 6,
+   "year": 2026,
+   "default": 6044,
+   "capt_off": 5808,
+   "capt_scar": 236
+  },
+  {
+   "key": "patrick-dangerfield",
+   "player": "Patrick Dangerfield",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 7157,
+   "capt_off": 6922,
+   "capt_scar": 235
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 6169,
+   "capt_off": 5936,
+   "capt_scar": 233
+  },
+  {
+   "key": "lachie-neale",
+   "player": "Lachie Neale",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 5958,
+   "capt_off": 5728,
+   "capt_scar": 230
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 4,
+   "year": 2009,
+   "default": 6220,
+   "capt_off": 5990,
+   "capt_scar": 230
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 6346,
+   "capt_off": 6117,
+   "capt_scar": 229
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 6281,
+   "capt_off": 6054,
+   "capt_scar": 227
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 6355,
+   "capt_off": 6130,
+   "capt_scar": 225
+  },
+  {
+   "key": "chad-warner",
+   "player": "Chad Warner",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 5950,
+   "capt_off": 5728,
+   "capt_scar": 222
+  },
+  {
+   "key": "bailey-smith",
+   "player": "Bailey Smith",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 5319,
+   "capt_off": 5098,
+   "capt_scar": 221
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 4,
+   "year": 2009,
+   "default": 6802,
+   "capt_off": 6581,
+   "capt_scar": 221
+  },
+  {
+   "key": "thomas-liberatore",
+   "player": "Thomas Liberatore",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 5927,
+   "capt_off": 5710,
+   "capt_scar": 217
+  },
+  {
+   "key": "andrew-swallow",
+   "player": "Andrew Swallow",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 5303,
+   "capt_off": 5086,
+   "capt_scar": 217
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 5,
+   "year": 2020,
+   "default": 6086,
+   "capt_off": 5874,
+   "capt_scar": 212
+  },
+  {
+   "key": "sam-docherty",
+   "player": "Sam Docherty",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 5707,
+   "capt_off": 5495,
+   "capt_scar": 212
+  },
+  {
+   "key": "dion-prestia",
+   "player": "Dion Prestia",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 5820,
+   "capt_off": 5610,
+   "capt_scar": 210
+  },
+  {
+   "key": "matt-priddis",
+   "player": "Matt Priddis",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 4828,
+   "capt_off": 4621,
+   "capt_scar": 207
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 5241,
+   "capt_off": 5036,
+   "capt_scar": 205
+  },
+  {
+   "key": "ben-mcevoy",
+   "player": "Ben McEvoy",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 7161,
+   "capt_off": 6957,
+   "capt_scar": 204
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 7,
+   "year": 2024,
+   "default": 5158,
+   "capt_off": 4957,
+   "capt_scar": 201
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 5769,
+   "capt_off": 5569,
+   "capt_scar": 200
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 5848,
+   "capt_off": 5648,
+   "capt_scar": 200
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 5937,
+   "capt_off": 5737,
+   "capt_scar": 200
+  },
+  {
+   "key": "patrick-dangerfield",
+   "player": "Patrick Dangerfield",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 5978,
+   "capt_off": 5779,
+   "capt_scar": 199
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 6221,
+   "capt_off": 6024,
+   "capt_scar": 197
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 6226,
+   "capt_off": 6030,
+   "capt_scar": 196
+  },
+  {
+   "key": "isaac-heeney",
+   "player": "Isaac Heeney",
+   "C": 2014,
+   "N": 4,
+   "year": 2018,
+   "default": 5640,
+   "capt_off": 5445,
+   "capt_scar": 195
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 4,
+   "year": 2016,
+   "default": 5043,
+   "capt_off": 4848,
+   "capt_scar": 195
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 6501,
+   "capt_off": 6307,
+   "capt_scar": 194
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 6164,
+   "capt_off": 5970,
+   "capt_scar": 194
+  },
+  {
+   "key": "christian-petracca",
+   "player": "Christian Petracca",
+   "C": 2014,
+   "N": 6,
+   "year": 2020,
+   "default": 5530,
+   "capt_off": 5340,
+   "capt_scar": 190
+  },
+  {
+   "key": "luke-parker",
+   "player": "Luke Parker",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 7002,
+   "capt_off": 6812,
+   "capt_scar": 190
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 6192,
+   "capt_off": 6003,
+   "capt_scar": 189
+  },
+  {
+   "key": "adam-cerra",
+   "player": "Adam Cerra",
+   "C": 2017,
+   "N": 6,
+   "year": 2023,
+   "default": 5418,
+   "capt_off": 5231,
+   "capt_scar": 187
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 6284,
+   "capt_off": 6100,
+   "capt_scar": 184
+  },
+  {
+   "key": "errol-gulden",
+   "player": "Errol Gulden",
+   "C": 2020,
+   "N": 3,
+   "year": 2023,
+   "default": 6547,
+   "capt_off": 6366,
+   "capt_scar": 181
+  },
+  {
+   "key": "daniel-hannebery",
+   "player": "Daniel Hannebery",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 5194,
+   "capt_off": 5013,
+   "capt_scar": 181
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 5296,
+   "capt_off": 5116,
+   "capt_scar": 180
+  },
+  {
+   "key": "todd-goldstein",
+   "player": "Todd Goldstein",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 5980,
+   "capt_off": 5803,
+   "capt_scar": 177
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 5628,
+   "capt_off": 5452,
+   "capt_scar": 176
+  },
+  {
+   "key": "christian-petracca",
+   "player": "Christian Petracca",
+   "C": 2014,
+   "N": 7,
+   "year": 2021,
+   "default": 5168,
+   "capt_off": 4995,
+   "capt_scar": 173
+  },
+  {
+   "key": "rowan-marshall",
+   "player": "Rowan Marshall",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 4800,
+   "capt_off": 4630,
+   "capt_scar": 170
+  },
+  {
+   "key": "luke-parker",
+   "player": "Luke Parker",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 6194,
+   "capt_off": 6029,
+   "capt_scar": 165
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 4329,
+   "capt_off": 4167,
+   "capt_scar": 162
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 5,
+   "year": 2017,
+   "default": 5625,
+   "capt_off": 5463,
+   "capt_scar": 162
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 5996,
+   "capt_off": 5837,
+   "capt_scar": 159
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 5102,
+   "capt_off": 4945,
+   "capt_scar": 157
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 4416,
+   "capt_off": 4260,
+   "capt_scar": 156
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 3,
+   "year": 2015,
+   "default": 5580,
+   "capt_off": 5424,
+   "capt_scar": 156
+  },
+  {
+   "key": "bryce-gibbs",
+   "player": "Bryce Gibbs",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 6219,
+   "capt_off": 6063,
+   "capt_scar": 156
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 4358,
+   "capt_off": 4203,
+   "capt_scar": 155
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 5,
+   "year": 2023,
+   "default": 6019,
+   "capt_off": 5864,
+   "capt_scar": 155
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 5904,
+   "capt_off": 5749,
+   "capt_scar": 155
+  },
+  {
+   "key": "luke-ryan",
+   "player": "Luke Ryan",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 5716,
+   "capt_off": 5562,
+   "capt_scar": 154
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 5035,
+   "capt_off": 4881,
+   "capt_scar": 154
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 3,
+   "year": 2015,
+   "default": 5539,
+   "capt_off": 5386,
+   "capt_scar": 153
+  },
+  {
+   "key": "rory-laird",
+   "player": "Rory Laird",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 5293,
+   "capt_off": 5141,
+   "capt_scar": 152
+  },
+  {
+   "key": "jack-trengove",
+   "player": "Jack Trengove",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 4313,
+   "capt_off": 4161,
+   "capt_scar": 152
+  },
+  {
+   "key": "nicholas-naitanui",
+   "player": "Nicholas Naitanui",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 5318,
+   "capt_off": 5166,
+   "capt_scar": 152
+  },
+  {
+   "key": "shane-mumford",
+   "player": "Shane Mumford",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 4859,
+   "capt_off": 4707,
+   "capt_scar": 152
+  },
+  {
+   "key": "matt-priddis",
+   "player": "Matt Priddis",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 4732,
+   "capt_off": 4582,
+   "capt_scar": 150
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 7,
+   "year": 2019,
+   "default": 5449,
+   "capt_off": 5301,
+   "capt_scar": 148
+  },
+  {
+   "key": "nicholas-naitanui",
+   "player": "Nicholas Naitanui",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 5348,
+   "capt_off": 5200,
+   "capt_scar": 148
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 5458,
+   "capt_off": 5311,
+   "capt_scar": 147
+  },
+  {
+   "key": "marcus-bontempelli",
+   "player": "Marcus Bontempelli",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 5615,
+   "capt_off": 5469,
+   "capt_scar": 146
+  },
+  {
+   "key": "lachlan-ash",
+   "player": "Lachlan Ash",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 5307,
+   "capt_off": 5162,
+   "capt_scar": 145
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 3985,
+   "capt_off": 3840,
+   "capt_scar": 145
+  },
+  {
+   "key": "isaac-heeney",
+   "player": "Isaac Heeney",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 5317,
+   "capt_off": 5172,
+   "capt_scar": 145
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 5229,
+   "capt_off": 5084,
+   "capt_scar": 145
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 4149,
+   "capt_off": 4005,
+   "capt_scar": 144
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 4,
+   "year": 2016,
+   "default": 5400,
+   "capt_off": 5256,
+   "capt_scar": 144
+  },
+  {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "C": 2012,
+   "N": 4,
+   "year": 2016,
+   "default": 5408,
+   "capt_off": 5264,
+   "capt_scar": 144
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 4,
+   "year": 2016,
+   "default": 5560,
+   "capt_off": 5417,
+   "capt_scar": 143
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 5876,
+   "capt_off": 5734,
+   "capt_scar": 142
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 6,
+   "year": 2020,
+   "default": 4691,
+   "capt_off": 4549,
+   "capt_scar": 142
+  },
+  {
+   "key": "sam-docherty",
+   "player": "Sam Docherty",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 6350,
+   "capt_off": 6208,
+   "capt_scar": 142
+  },
+  {
+   "key": "lance-franklin",
+   "player": "Lance Franklin",
+   "C": 2004,
+   "N": 7,
+   "year": 2011,
+   "default": 8527,
+   "capt_off": 8385,
+   "capt_scar": 142
+  },
+  {
+   "key": "tom-mitchell",
+   "player": "Tom Mitchell",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 5268,
+   "capt_off": 5127,
+   "capt_scar": 141
+  },
+  {
+   "key": "bryce-gibbs",
+   "player": "Bryce Gibbs",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 6064,
+   "capt_off": 5923,
+   "capt_scar": 141
+  },
+  {
+   "key": "max-holmes",
+   "player": "Max Holmes",
+   "C": 2020,
+   "N": 4,
+   "year": 2024,
+   "default": 5335,
+   "capt_off": 5195,
+   "capt_scar": 140
+  },
+  {
+   "key": "bailey-smith",
+   "player": "Bailey Smith",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 5465,
+   "capt_off": 5326,
+   "capt_scar": 139
+  },
+  {
+   "key": "tristan-xerri",
+   "player": "Tristan Xerri",
+   "C": 2017,
+   "N": 7,
+   "year": 2024,
+   "default": 4513,
+   "capt_off": 4375,
+   "capt_scar": 138
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 4269,
+   "capt_off": 4132,
+   "capt_scar": 137
+  },
+  {
+   "key": "isaac-heeney",
+   "player": "Isaac Heeney",
+   "C": 2014,
+   "N": 5,
+   "year": 2019,
+   "default": 4855,
+   "capt_off": 4719,
+   "capt_scar": 136
+  },
+  {
+   "key": "brandon-ellis",
+   "player": "Brandon Ellis",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 5385,
+   "capt_off": 5249,
+   "capt_scar": 136
+  },
+  {
+   "key": "lance-franklin",
+   "player": "Lance Franklin",
+   "C": 2004,
+   "N": 4,
+   "year": 2008,
+   "default": 10030,
+   "capt_off": 9894,
+   "capt_scar": 136
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 5,
+   "year": 2022,
+   "default": 4850,
+   "capt_off": 4715,
+   "capt_scar": 135
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 5401,
+   "capt_off": 5266,
+   "capt_scar": 135
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 4987,
+   "capt_off": 4852,
+   "capt_scar": 135
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 4846,
+   "capt_off": 4711,
+   "capt_scar": 135
+  },
+  {
+   "key": "josh-p-kennedy",
+   "player": "Josh Kennedy",
+   "C": 2006,
+   "N": 7,
+   "year": 2013,
+   "default": 4780,
+   "capt_off": 4645,
+   "capt_scar": 135
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 5447,
+   "capt_off": 5315,
+   "capt_scar": 132
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 5556,
+   "capt_off": 5424,
+   "capt_scar": 132
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 5223,
+   "capt_off": 5092,
+   "capt_scar": 131
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 4104,
+   "capt_off": 3974,
+   "capt_scar": 130
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 5175,
+   "capt_off": 5045,
+   "capt_scar": 130
+  },
+  {
+   "key": "jordan-dawson",
+   "player": "Jordan Dawson",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 4482,
+   "capt_off": 4352,
+   "capt_scar": 130
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 4979,
+   "capt_off": 4849,
+   "capt_scar": 130
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 5148,
+   "capt_off": 5019,
+   "capt_scar": 129
+  },
+  {
+   "key": "taylor-adams",
+   "player": "Taylor Adams",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 6809,
+   "capt_off": 6680,
+   "capt_scar": 129
+  },
+  {
+   "key": "kieren-jack",
+   "player": "Kieren Jack",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 4398,
+   "capt_off": 4269,
+   "capt_scar": 129
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 4920,
+   "capt_off": 4792,
+   "capt_scar": 128
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 5507,
+   "capt_off": 5380,
+   "capt_scar": 127
+  },
+  {
+   "key": "jack-trengove",
+   "player": "Jack Trengove",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 4629,
+   "capt_off": 4502,
+   "capt_scar": 127
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 7,
+   "year": 2016,
+   "default": 4932,
+   "capt_off": 4805,
+   "capt_scar": 127
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 5402,
+   "capt_off": 5276,
+   "capt_scar": 126
+  },
+  {
+   "key": "rory-sloane",
+   "player": "Rory Sloane",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 4978,
+   "capt_off": 4853,
+   "capt_scar": 125
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 4766,
+   "capt_off": 4641,
+   "capt_scar": 125
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 4049,
+   "capt_off": 3925,
+   "capt_scar": 124
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 6,
+   "year": 2015,
+   "default": 5149,
+   "capt_off": 5025,
+   "capt_scar": 124
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 4728,
+   "capt_off": 4605,
+   "capt_scar": 123
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 4,
+   "year": 2013,
+   "default": 5551,
+   "capt_off": 5430,
+   "capt_scar": 121
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 4372,
+   "capt_off": 4252,
+   "capt_scar": 120
+  },
+  {
+   "key": "chad-warner",
+   "player": "Chad Warner",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 4877,
+   "capt_off": 4757,
+   "capt_scar": 120
+  },
+  {
+   "key": "rowan-marshall",
+   "player": "Rowan Marshall",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 4389,
+   "capt_off": 4269,
+   "capt_scar": 120
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 4161,
+   "capt_off": 4041,
+   "capt_scar": 120
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 4498,
+   "capt_off": 4380,
+   "capt_scar": 118
+  },
+  {
+   "key": "luke-ryan",
+   "player": "Luke Ryan",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 4942,
+   "capt_off": 4825,
+   "capt_scar": 117
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 2691,
+   "capt_off": 2574,
+   "capt_scar": 117
+  },
+  {
+   "key": "clayton-oliver",
+   "player": "Clayton Oliver",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 3834,
+   "capt_off": 3718,
+   "capt_scar": 116
+  },
+  {
+   "key": "isaac-heeney",
+   "player": "Isaac Heeney",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 3799,
+   "capt_off": 3684,
+   "capt_scar": 115
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 4483,
+   "capt_off": 4368,
+   "capt_scar": 115
+  },
+  {
+   "key": "scott-selwood",
+   "player": "Scott Selwood",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4955,
+   "capt_off": 4840,
+   "capt_scar": 115
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 5107,
+   "capt_off": 4993,
+   "capt_scar": 114
+  },
+  {
+   "key": "rory-sloane",
+   "player": "Rory Sloane",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 4705,
+   "capt_off": 4591,
+   "capt_scar": 114
+  },
+  {
+   "key": "isaac-heeney",
+   "player": "Isaac Heeney",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 4033,
+   "capt_off": 3921,
+   "capt_scar": 112
+  },
+  {
+   "key": "todd-goldstein",
+   "player": "Todd Goldstein",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 4721,
+   "capt_off": 4609,
+   "capt_scar": 112
+  },
+  {
+   "key": "cale-morton",
+   "player": "Cale Morton",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 4033,
+   "capt_off": 3922,
+   "capt_scar": 111
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 5117,
+   "capt_off": 5006,
+   "capt_scar": 111
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 5256,
+   "capt_off": 5146,
+   "capt_scar": 110
+  },
+  {
+   "key": "jake-lloyd",
+   "player": "Jake Lloyd",
+   "C": 2012,
+   "N": 7,
+   "year": 2019,
+   "default": 4781,
+   "capt_off": 4672,
+   "capt_scar": 109
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 3662,
+   "capt_off": 3555,
+   "capt_scar": 107
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 2431,
+   "capt_off": 2324,
+   "capt_scar": 107
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 4908,
+   "capt_off": 4802,
+   "capt_scar": 106
+  },
+  {
+   "key": "jack-steven",
+   "player": "Jack Steven",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4536,
+   "capt_off": 4430,
+   "capt_scar": 106
+  },
+  {
+   "key": "rory-laird",
+   "player": "Rory Laird",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 5008,
+   "capt_off": 4903,
+   "capt_scar": 105
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 3605,
+   "capt_off": 3500,
+   "capt_scar": 105
+  },
+  {
+   "key": "jacob-hopper",
+   "player": "Jacob Hopper",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 4904,
+   "capt_off": 4800,
+   "capt_scar": 104
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 4513,
+   "capt_off": 4409,
+   "capt_scar": 104
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 3883,
+   "capt_off": 3780,
+   "capt_scar": 103
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 5158,
+   "capt_off": 5055,
+   "capt_scar": 103
+  },
+  {
+   "key": "dion-prestia",
+   "player": "Dion Prestia",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 5074,
+   "capt_off": 4971,
+   "capt_scar": 103
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 5115,
+   "capt_off": 5012,
+   "capt_scar": 103
+  },
+  {
+   "key": "ben-mcevoy",
+   "player": "Ben McEvoy",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 5772,
+   "capt_off": 5669,
+   "capt_scar": 103
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 4053,
+   "capt_off": 3950,
+   "capt_scar": 103
+  },
+  {
+   "key": "sam-jacobs",
+   "player": "Sam Jacobs",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 4468,
+   "capt_off": 4366,
+   "capt_scar": 102
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 4696,
+   "capt_off": 4595,
+   "capt_scar": 101
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 5186,
+   "capt_off": 5085,
+   "capt_scar": 101
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 4464,
+   "capt_off": 4364,
+   "capt_scar": 100
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 4767,
+   "capt_off": 4667,
+   "capt_scar": 100
+  },
+  {
+   "key": "lachlan-ash",
+   "player": "Lachlan Ash",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 5354,
+   "capt_off": 5255,
+   "capt_scar": 99
+  },
+  {
+   "key": "noah-anderson",
+   "player": "Noah Anderson",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 4762,
+   "capt_off": 4664,
+   "capt_scar": 98
+  },
+  {
+   "key": "jy-simpkin",
+   "player": "Jy Simpkin",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 4770,
+   "capt_off": 4672,
+   "capt_scar": 98
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 4700,
+   "capt_off": 4603,
+   "capt_scar": 97
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 5,
+   "year": 2009,
+   "default": 5444,
+   "capt_off": 5347,
+   "capt_scar": 97
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 5408,
+   "capt_off": 5312,
+   "capt_scar": 96
+  },
+  {
+   "key": "jordan-clark",
+   "player": "Jordan Clark",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 4970,
+   "capt_off": 4874,
+   "capt_scar": 96
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 3,
+   "year": 2020,
+   "default": 5180,
+   "capt_off": 5084,
+   "capt_scar": 96
+  },
+  {
+   "key": "cyril-rioli",
+   "player": "Cyril Rioli",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 6665,
+   "capt_off": 6569,
+   "capt_scar": 96
+  },
+  {
+   "key": "luke-shuey",
+   "player": "Luke Shuey",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 4765,
+   "capt_off": 4670,
+   "capt_scar": 95
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 4935,
+   "capt_off": 4840,
+   "capt_scar": 95
+  },
+  {
+   "key": "andrew-swallow",
+   "player": "Andrew Swallow",
+   "C": 2005,
+   "N": 4,
+   "year": 2009,
+   "default": 4387,
+   "capt_off": 4292,
+   "capt_scar": 95
+  },
+  {
+   "key": "joel-selwood",
+   "player": "Joel Selwood",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 4706,
+   "capt_off": 4612,
+   "capt_scar": 94
+  },
+  {
+   "key": "hayden-young",
+   "player": "Hayden Young",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 4805,
+   "capt_off": 4712,
+   "capt_scar": 93
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 3846,
+   "capt_off": 3753,
+   "capt_scar": 93
+  },
+  {
+   "key": "brodie-grundy",
+   "player": "Brodie Grundy",
+   "C": 2012,
+   "N": 3,
+   "year": 2015,
+   "default": 3546,
+   "capt_off": 3454,
+   "capt_scar": 92
+  },
+  {
+   "key": "mitchell-duncan",
+   "player": "Mitchell Duncan",
+   "C": 2009,
+   "N": 5,
+   "year": 2014,
+   "default": 4773,
+   "capt_off": 4681,
+   "capt_scar": 92
+  },
+  {
+   "key": "luke-dahlhaus",
+   "player": "Luke Dahlhaus",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 6754,
+   "capt_off": 6663,
+   "capt_scar": 91
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 7,
+   "year": 2024,
+   "default": 4751,
+   "capt_off": 4661,
+   "capt_scar": 90
+  },
+  {
+   "key": "cameron-guthrie",
+   "player": "Cameron Guthrie",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 4228,
+   "capt_off": 4138,
+   "capt_scar": 90
+  },
+  {
+   "key": "rhys-palmer",
+   "player": "Rhys Palmer",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 4256,
+   "capt_off": 4166,
+   "capt_scar": 90
+  },
+  {
+   "key": "scott-selwood",
+   "player": "Scott Selwood",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 4810,
+   "capt_off": 4720,
+   "capt_scar": 90
+  },
+  {
+   "key": "tom-de-koning",
+   "player": "Tom De Koning",
+   "C": 2017,
+   "N": 7,
+   "year": 2024,
+   "default": 3687,
+   "capt_off": 3598,
+   "capt_scar": 89
+  },
+  {
+   "key": "luke-parker",
+   "player": "Luke Parker",
+   "C": 2010,
+   "N": 7,
+   "year": 2017,
+   "default": 5028,
+   "capt_off": 4939,
+   "capt_scar": 89
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 5332,
+   "capt_off": 5243,
+   "capt_scar": 89
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 3327,
+   "capt_off": 3238,
+   "capt_scar": 89
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 5,
+   "year": 2014,
+   "default": 4995,
+   "capt_off": 4907,
+   "capt_scar": 88
+  },
+  {
+   "key": "matt-priddis",
+   "player": "Matt Priddis",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 4009,
+   "capt_off": 3921,
+   "capt_scar": 88
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 5619,
+   "capt_off": 5532,
+   "capt_scar": 87
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 3725,
+   "capt_off": 3638,
+   "capt_scar": 87
+  },
+  {
+   "key": "cyril-rioli",
+   "player": "Cyril Rioli",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 6372,
+   "capt_off": 6286,
+   "capt_scar": 86
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 3899,
+   "capt_off": 3813,
+   "capt_scar": 86
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 4255,
+   "capt_off": 4171,
+   "capt_scar": 84
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 4519,
+   "capt_off": 4436,
+   "capt_scar": 83
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 3,
+   "year": 2012,
+   "default": 4726,
+   "capt_off": 4643,
+   "capt_scar": 83
+  },
+  {
+   "key": "cale-morton",
+   "player": "Cale Morton",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 3227,
+   "capt_off": 3144,
+   "capt_scar": 83
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 3855,
+   "capt_off": 3772,
+   "capt_scar": 83
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 3625,
+   "capt_off": 3542,
+   "capt_scar": 83
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 4461,
+   "capt_off": 4379,
+   "capt_scar": 82
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 4668,
+   "capt_off": 4586,
+   "capt_scar": 82
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 4,
+   "year": 2018,
+   "default": 3985,
+   "capt_off": 3903,
+   "capt_scar": 82
+  },
+  {
+   "key": "david-swallow",
+   "player": "David Swallow",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 3980,
+   "capt_off": 3899,
+   "capt_scar": 81
+  },
+  {
+   "key": "dustin-martin",
+   "player": "Dustin Martin",
+   "C": 2009,
+   "N": 3,
+   "year": 2012,
+   "default": 4694,
+   "capt_off": 4613,
+   "capt_scar": 81
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 4305,
+   "capt_off": 4224,
+   "capt_scar": 81
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 4680,
+   "capt_off": 4600,
+   "capt_scar": 80
+  },
+  {
+   "key": "stephen-hill",
+   "player": "Stephen Hill",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 3488,
+   "capt_off": 3409,
+   "capt_scar": 79
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 4030,
+   "capt_off": 3951,
+   "capt_scar": 79
+  },
+  {
+   "key": "ryan-griffen",
+   "player": "Ryan Griffen",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 3573,
+   "capt_off": 3494,
+   "capt_scar": 79
+  },
+  {
+   "key": "angus-brayshaw",
+   "player": "Angus Brayshaw",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 3345,
+   "capt_off": 3267,
+   "capt_scar": 78
+  },
+  {
+   "key": "tom-scully",
+   "player": "Tom Scully",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 3807,
+   "capt_off": 3729,
+   "capt_scar": 78
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 3718,
+   "capt_off": 3640,
+   "capt_scar": 78
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 4,
+   "year": 2008,
+   "default": 5502,
+   "capt_off": 5424,
+   "capt_scar": 78
+  },
+  {
+   "key": "luke-ryan",
+   "player": "Luke Ryan",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 4457,
+   "capt_off": 4380,
+   "capt_scar": 77
+  },
+  {
+   "key": "david-swallow",
+   "player": "David Swallow",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 5442,
+   "capt_off": 5365,
+   "capt_scar": 77
+  },
+  {
+   "key": "bailey-smith",
+   "player": "Bailey Smith",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 4315,
+   "capt_off": 4239,
+   "capt_scar": 76
+  },
+  {
+   "key": "bailey-smith",
+   "player": "Bailey Smith",
+   "C": 2018,
+   "N": 3,
+   "year": 2021,
+   "default": 4551,
+   "capt_off": 4475,
+   "capt_scar": 76
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 3362,
+   "capt_off": 3286,
+   "capt_scar": 76
+  },
+  {
+   "key": "rowan-marshall",
+   "player": "Rowan Marshall",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 4142,
+   "capt_off": 4067,
+   "capt_scar": 75
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 3520,
+   "capt_off": 3445,
+   "capt_scar": 75
+  },
+  {
+   "key": "ben-cunnington",
+   "player": "Ben Cunnington",
+   "C": 2009,
+   "N": 4,
+   "year": 2013,
+   "default": 4661,
+   "capt_off": 4586,
+   "capt_scar": 75
+  },
+  {
+   "key": "shane-mumford",
+   "player": "Shane Mumford",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 3896,
+   "capt_off": 3821,
+   "capt_scar": 75
+  },
+  {
+   "key": "thomas-liberatore",
+   "player": "Thomas Liberatore",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 3653,
+   "capt_off": 3579,
+   "capt_scar": 74
+  },
+  {
+   "key": "max-gawn",
+   "player": "Max Gawn",
+   "C": 2009,
+   "N": 6,
+   "year": 2015,
+   "default": 3454,
+   "capt_off": 3380,
+   "capt_scar": 74
+  },
+  {
+   "key": "matthew-leuenberger",
+   "player": "Matthew Leuenberger",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 5099,
+   "capt_off": 5025,
+   "capt_scar": 74
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 7,
+   "year": 2013,
+   "default": 4326,
+   "capt_off": 4252,
+   "capt_scar": 74
+  },
+  {
+   "key": "christian-petracca",
+   "player": "Christian Petracca",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 3616,
+   "capt_off": 3543,
+   "capt_scar": 73
+  },
+  {
+   "key": "isaac-heeney",
+   "player": "Isaac Heeney",
+   "C": 2014,
+   "N": 6,
+   "year": 2020,
+   "default": 3936,
+   "capt_off": 3864,
+   "capt_scar": 72
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 3628,
+   "capt_off": 3556,
+   "capt_scar": 72
+  },
+  {
+   "key": "jordan-lewis",
+   "player": "Jordan Lewis",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 4475,
+   "capt_off": 4403,
+   "capt_scar": 72
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 4580,
+   "capt_off": 4509,
+   "capt_scar": 71
+  },
+  {
+   "key": "sebastian-ross",
+   "player": "Sebastian Ross",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 4196,
+   "capt_off": 4125,
+   "capt_scar": 71
+  },
+  {
+   "key": "stephen-hill",
+   "player": "Stephen Hill",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 3651,
+   "capt_off": 3580,
+   "capt_scar": 71
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 3902,
+   "capt_off": 3831,
+   "capt_scar": 71
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 5188,
+   "capt_off": 5118,
+   "capt_scar": 70
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 3861,
+   "capt_off": 3791,
+   "capt_scar": 70
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 3977,
+   "capt_off": 3907,
+   "capt_scar": 70
+  },
+  {
+   "key": "bailey-smith",
+   "player": "Bailey Smith",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 3238,
+   "capt_off": 3169,
+   "capt_scar": 69
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 3190,
+   "capt_off": 3121,
+   "capt_scar": 69
+  },
+  {
+   "key": "rory-laird",
+   "player": "Rory Laird",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 4832,
+   "capt_off": 4763,
+   "capt_scar": 69
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 4438,
+   "capt_off": 4369,
+   "capt_scar": 69
+  },
+  {
+   "key": "nicholas-naitanui",
+   "player": "Nicholas Naitanui",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 4709,
+   "capt_off": 4640,
+   "capt_scar": 69
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 4402,
+   "capt_off": 4333,
+   "capt_scar": 69
+  },
+  {
+   "key": "caleb-serong",
+   "player": "Caleb Serong",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 3750,
+   "capt_off": 3682,
+   "capt_scar": 68
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 4143,
+   "capt_off": 4075,
+   "capt_scar": 68
+  },
+  {
+   "key": "sam-petrevski-seton",
+   "player": "Sam Petrevski-Seton",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 3052,
+   "capt_off": 2985,
+   "capt_scar": 67
+  },
+  {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 3565,
+   "capt_off": 3498,
+   "capt_scar": 67
+  },
+  {
+   "key": "brandon-ellis",
+   "player": "Brandon Ellis",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 4417,
+   "capt_off": 4350,
+   "capt_scar": 67
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 4564,
+   "capt_off": 4498,
+   "capt_scar": 66
+  },
+  {
+   "key": "dyson-heppell",
+   "player": "Dyson Heppell",
+   "C": 2010,
+   "N": 7,
+   "year": 2017,
+   "default": 4010,
+   "capt_off": 3944,
+   "capt_scar": 66
+  },
+  {
+   "key": "anthony-morabito",
+   "player": "Anthony Morabito",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 2796,
+   "capt_off": 2730,
+   "capt_scar": 66
+  },
+  {
+   "key": "james-worpel",
+   "player": "James Worpel",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 3934,
+   "capt_off": 3869,
+   "capt_scar": 65
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 4635,
+   "capt_off": 4570,
+   "capt_scar": 65
+  },
+  {
+   "key": "ryan-bastinac",
+   "player": "Ryan Bastinac",
+   "C": 2009,
+   "N": 4,
+   "year": 2013,
+   "default": 4375,
+   "capt_off": 4310,
+   "capt_scar": 65
+  },
+  {
+   "key": "dayne-zorko",
+   "player": "Dayne Zorko",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 4282,
+   "capt_off": 4218,
+   "capt_scar": 64
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 3182,
+   "capt_off": 3119,
+   "capt_scar": 63
+  },
+  {
+   "key": "michael-barlow",
+   "player": "Michael Barlow",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 2859,
+   "capt_off": 2796,
+   "capt_scar": 63
+  },
+  {
+   "key": "chris-masten",
+   "player": "Chris Masten",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 3291,
+   "capt_off": 3228,
+   "capt_scar": 63
+  },
+  {
+   "key": "bryce-gibbs",
+   "player": "Bryce Gibbs",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 3541,
+   "capt_off": 3478,
+   "capt_scar": 63
+  },
+  {
+   "key": "adam-cerra",
+   "player": "Adam Cerra",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 2904,
+   "capt_off": 2842,
+   "capt_scar": 62
+  },
+  {
+   "key": "angus-brayshaw",
+   "player": "Angus Brayshaw",
+   "C": 2014,
+   "N": 4,
+   "year": 2018,
+   "default": 4406,
+   "capt_off": 4344,
+   "capt_scar": 62
+  },
+  {
+   "key": "ryan-griffen",
+   "player": "Ryan Griffen",
+   "C": 2004,
+   "N": 7,
+   "year": 2011,
+   "default": 4310,
+   "capt_off": 4248,
+   "capt_scar": 62
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 3285,
+   "capt_off": 3224,
+   "capt_scar": 61
+  },
+  {
+   "key": "adam-cerra",
+   "player": "Adam Cerra",
+   "C": 2017,
+   "N": 3,
+   "year": 2020,
+   "default": 3914,
+   "capt_off": 3853,
+   "capt_scar": 61
+  },
+  {
+   "key": "thomas-stewart",
+   "player": "Thomas Stewart",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 3217,
+   "capt_off": 3156,
+   "capt_scar": 61
+  },
+  {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "C": 2012,
+   "N": 5,
+   "year": 2017,
+   "default": 4305,
+   "capt_off": 4244,
+   "capt_scar": 61
+  },
+  {
+   "key": "dom-tyson",
+   "player": "Dom Tyson",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 3885,
+   "capt_off": 3824,
+   "capt_scar": 61
+  },
+  {
+   "key": "jack-ziebell",
+   "player": "Jack Ziebell",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 4173,
+   "capt_off": 4112,
+   "capt_scar": 61
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 3499,
+   "capt_off": 3439,
+   "capt_scar": 60
+  },
+  {
+   "key": "luke-ryan",
+   "player": "Luke Ryan",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 4368,
+   "capt_off": 4308,
+   "capt_scar": 60
+  },
+  {
+   "key": "jake-lloyd",
+   "player": "Jake Lloyd",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 4566,
+   "capt_off": 4506,
+   "capt_scar": 60
+  },
+  {
+   "key": "ben-cunnington",
+   "player": "Ben Cunnington",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 2846,
+   "capt_off": 2786,
+   "capt_scar": 60
+  },
+  {
+   "key": "ben-cunnington",
+   "player": "Ben Cunnington",
+   "C": 2009,
+   "N": 5,
+   "year": 2014,
+   "default": 4363,
+   "capt_off": 4303,
+   "capt_scar": 60
+  },
+  {
+   "key": "richard-tambling",
+   "player": "Richard Tambling",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 2532,
+   "capt_off": 2472,
+   "capt_scar": 60
+  },
+  {
+   "key": "lance-franklin",
+   "player": "Lance Franklin",
+   "C": 2004,
+   "N": 6,
+   "year": 2010,
+   "default": 8605,
+   "capt_off": 8545,
+   "capt_scar": 60
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 4271,
+   "capt_off": 4212,
+   "capt_scar": 59
+  },
+  {
+   "key": "daniel-hannebery",
+   "player": "Daniel Hannebery",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 4261,
+   "capt_off": 4202,
+   "capt_scar": 59
+  },
+  {
+   "key": "matthew-kreuzer",
+   "player": "Matthew Kreuzer",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 4131,
+   "capt_off": 4072,
+   "capt_scar": 59
+  },
+  {
+   "key": "andrew-brayshaw",
+   "player": "Andrew Brayshaw",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 3451,
+   "capt_off": 3393,
+   "capt_scar": 58
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 4986,
+   "capt_off": 4928,
+   "capt_scar": 58
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 5108,
+   "capt_off": 5051,
+   "capt_scar": 57
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 3610,
+   "capt_off": 3553,
+   "capt_scar": 57
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 3561,
+   "capt_off": 3504,
+   "capt_scar": 57
+  },
+  {
+   "key": "jacob-hopper",
+   "player": "Jacob Hopper",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 2941,
+   "capt_off": 2884,
+   "capt_scar": 57
+  },
+  {
+   "key": "lachlan-hunter",
+   "player": "Lachlan Hunter",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 4147,
+   "capt_off": 4090,
+   "capt_scar": 57
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 3666,
+   "capt_off": 3609,
+   "capt_scar": 57
+  },
+  {
+   "key": "elliot-yeo",
+   "player": "Elliot Yeo",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 4152,
+   "capt_off": 4095,
+   "capt_scar": 57
+  },
+  {
+   "key": "mitchell-wallis",
+   "player": "Mitchell Wallis",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 4133,
+   "capt_off": 4076,
+   "capt_scar": 57
+  },
+  {
+   "key": "bryce-gibbs",
+   "player": "Bryce Gibbs",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 5232,
+   "capt_off": 5175,
+   "capt_scar": 57
+  },
+  {
+   "key": "ryan-griffen",
+   "player": "Ryan Griffen",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 3409,
+   "capt_off": 3352,
+   "capt_scar": 57
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 3113,
+   "capt_off": 3057,
+   "capt_scar": 56
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 4431,
+   "capt_off": 4376,
+   "capt_scar": 55
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 3544,
+   "capt_off": 3489,
+   "capt_scar": 55
+  },
+  {
+   "key": "luke-shuey",
+   "player": "Luke Shuey",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 4134,
+   "capt_off": 4079,
+   "capt_scar": 55
+  },
+  {
+   "key": "sam-berry",
+   "player": "Sam Berry",
+   "C": 2020,
+   "N": 2,
+   "year": 2022,
+   "default": 2894,
+   "capt_off": 2840,
+   "capt_scar": 54
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 3491,
+   "capt_off": 3437,
+   "capt_scar": 54
+  },
+  {
+   "key": "matthew-kreuzer",
+   "player": "Matthew Kreuzer",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 4485,
+   "capt_off": 4431,
+   "capt_scar": 54
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 4015,
+   "capt_off": 3962,
+   "capt_scar": 53
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 3390,
+   "capt_off": 3337,
+   "capt_scar": 53
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 5,
+   "year": 2020,
+   "default": 5012,
+   "capt_off": 4959,
+   "capt_scar": 53
+  },
+  {
+   "key": "tom-mitchell",
+   "player": "Tom Mitchell",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 4360,
+   "capt_off": 4307,
+   "capt_scar": 53
+  },
+  {
+   "key": "matt-priddis",
+   "player": "Matt Priddis",
+   "C": 2005,
+   "N": 4,
+   "year": 2009,
+   "default": 3578,
+   "capt_off": 3525,
+   "capt_scar": 53
+  },
+  {
+   "key": "jordan-dawson",
+   "player": "Jordan Dawson",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 3346,
+   "capt_off": 3294,
+   "capt_scar": 52
+  },
+  {
+   "key": "sebastian-ross",
+   "player": "Sebastian Ross",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 4143,
+   "capt_off": 4091,
+   "capt_scar": 52
+  },
+  {
+   "key": "daniel-hannebery",
+   "player": "Daniel Hannebery",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 4160,
+   "capt_off": 4108,
+   "capt_scar": 52
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 4280,
+   "capt_off": 4229,
+   "capt_scar": 51
+  },
+  {
+   "key": "thomas-liberatore",
+   "player": "Thomas Liberatore",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 3015,
+   "capt_off": 2964,
+   "capt_scar": 51
+  },
+  {
+   "key": "cale-morton",
+   "player": "Cale Morton",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 3525,
+   "capt_off": 3474,
+   "capt_scar": 51
+  },
+  {
+   "key": "kieren-jack",
+   "player": "Kieren Jack",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 3631,
+   "capt_off": 3580,
+   "capt_scar": 51
+  },
+  {
+   "key": "chad-warner",
+   "player": "Chad Warner",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 4105,
+   "capt_off": 4055,
+   "capt_scar": 50
+  },
+  {
+   "key": "adam-cerra",
+   "player": "Adam Cerra",
+   "C": 2017,
+   "N": 5,
+   "year": 2022,
+   "default": 4171,
+   "capt_off": 4121,
+   "capt_scar": 50
+  },
+  {
+   "key": "jarrod-berry",
+   "player": "Jarrod Berry",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 4439,
+   "capt_off": 4389,
+   "capt_scar": 50
+  },
+  {
+   "key": "josh-p-kennedy",
+   "player": "Josh Kennedy",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 3873,
+   "capt_off": 3823,
+   "capt_scar": 50
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 5283,
+   "capt_off": 5234,
+   "capt_scar": 49
+  },
+  {
+   "key": "adam-cerra",
+   "player": "Adam Cerra",
+   "C": 2017,
+   "N": 4,
+   "year": 2021,
+   "default": 4045,
+   "capt_off": 3996,
+   "capt_scar": 49
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 2830,
+   "capt_off": 2781,
+   "capt_scar": 49
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 3940,
+   "capt_off": 3891,
+   "capt_scar": 49
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 3885,
+   "capt_off": 3836,
+   "capt_scar": 49
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 3450,
+   "capt_off": 3402,
+   "capt_scar": 48
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 3954,
+   "capt_off": 3906,
+   "capt_scar": 48
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 2950,
+   "capt_off": 2902,
+   "capt_scar": 48
+  },
+  {
+   "key": "shane-mumford",
+   "player": "Shane Mumford",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 3639,
+   "capt_off": 3591,
+   "capt_scar": 48
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 3439,
+   "capt_off": 3391,
+   "capt_scar": 48
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 3015,
+   "capt_off": 2968,
+   "capt_scar": 47
+  },
+  {
+   "key": "jacob-hopper",
+   "player": "Jacob Hopper",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 4125,
+   "capt_off": 4078,
+   "capt_scar": 47
+  },
+  {
+   "key": "caleb-daniel",
+   "player": "Caleb Daniel",
+   "C": 2014,
+   "N": 6,
+   "year": 2020,
+   "default": 4992,
+   "capt_off": 4945,
+   "capt_scar": 47
+  },
+  {
+   "key": "luke-shuey",
+   "player": "Luke Shuey",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 4496,
+   "capt_off": 4449,
+   "capt_scar": 47
+  },
+  {
+   "key": "dylan-stephens",
+   "player": "Dylan Stephens",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 2637,
+   "capt_off": 2592,
+   "capt_scar": 45
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 3766,
+   "capt_off": 3721,
+   "capt_scar": 45
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 3759,
+   "capt_off": 3714,
+   "capt_scar": 45
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4059,
+   "capt_off": 4014,
+   "capt_scar": 45
+  },
+  {
+   "key": "dayne-zorko",
+   "player": "Dayne Zorko",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 4214,
+   "capt_off": 4169,
+   "capt_scar": 45
+  },
+  {
+   "key": "jordan-lewis",
+   "player": "Jordan Lewis",
+   "C": 2004,
+   "N": 5,
+   "year": 2009,
+   "default": 4142,
+   "capt_off": 4097,
+   "capt_scar": 45
+  },
+  {
+   "key": "paddy-dow",
+   "player": "Paddy Dow",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 2889,
+   "capt_off": 2845,
+   "capt_scar": 44
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 2652,
+   "capt_off": 2608,
+   "capt_scar": 44
+  },
+  {
+   "key": "james-sicily",
+   "player": "James Sicily",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 4295,
+   "capt_off": 4251,
+   "capt_scar": 44
+  },
+  {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "C": 2012,
+   "N": 3,
+   "year": 2015,
+   "default": 3992,
+   "capt_off": 3948,
+   "capt_scar": 44
+  },
+  {
+   "key": "ben-mcevoy",
+   "player": "Ben McEvoy",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4955,
+   "capt_off": 4911,
+   "capt_scar": 44
+  },
+  {
+   "key": "chad-wingard",
+   "player": "Chad Wingard",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 6489,
+   "capt_off": 6446,
+   "capt_scar": 43
+  },
+  {
+   "key": "hamish-hartlett",
+   "player": "Hamish Hartlett",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 3588,
+   "capt_off": 3545,
+   "capt_scar": 43
+  },
+  {
+   "key": "bryce-gibbs",
+   "player": "Bryce Gibbs",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 4151,
+   "capt_off": 4108,
+   "capt_scar": 43
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 5593,
+   "capt_off": 5551,
+   "capt_scar": 42
+  },
+  {
+   "key": "hayden-young",
+   "player": "Hayden Young",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 4047,
+   "capt_off": 4005,
+   "capt_scar": 42
+  },
+  {
+   "key": "dion-prestia",
+   "player": "Dion Prestia",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 3940,
+   "capt_off": 3898,
+   "capt_scar": 42
+  },
+  {
+   "key": "stephen-hill",
+   "player": "Stephen Hill",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 3562,
+   "capt_off": 3520,
+   "capt_scar": 42
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 2677,
+   "capt_off": 2635,
+   "capt_scar": 42
+  },
+  {
+   "key": "bradley-ebert",
+   "player": "Brad Ebert",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4021,
+   "capt_off": 3979,
+   "capt_scar": 42
+  },
+  {
+   "key": "james-worpel",
+   "player": "James Worpel",
+   "C": 2017,
+   "N": 3,
+   "year": 2020,
+   "default": 3555,
+   "capt_off": 3514,
+   "capt_scar": 41
+  },
+  {
+   "key": "jack-steele",
+   "player": "Jack Steele",
+   "C": 2014,
+   "N": 4,
+   "year": 2018,
+   "default": 3804,
+   "capt_off": 3763,
+   "capt_scar": 41
+  },
+  {
+   "key": "jaeger-o-meara",
+   "player": "Jaeger O'Meara",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 4137,
+   "capt_off": 4096,
+   "capt_scar": 41
+  },
+  {
+   "key": "matthew-kreuzer",
+   "player": "Matthew Kreuzer",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 3566,
+   "capt_off": 3525,
+   "capt_scar": 41
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 3557,
+   "capt_off": 3517,
+   "capt_scar": 40
+  },
+  {
+   "key": "angus-brayshaw",
+   "player": "Angus Brayshaw",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 3041,
+   "capt_off": 3001,
+   "capt_scar": 40
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 3754,
+   "capt_off": 3714,
+   "capt_scar": 40
+  },
+  {
+   "key": "paddy-ryder",
+   "player": "Paddy Ryder",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 5078,
+   "capt_off": 5038,
+   "capt_scar": 40
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 2682,
+   "capt_off": 2643,
+   "capt_scar": 39
+  },
+  {
+   "key": "jack-steele",
+   "player": "Jack Steele",
+   "C": 2014,
+   "N": 5,
+   "year": 2019,
+   "default": 3724,
+   "capt_off": 3685,
+   "capt_scar": 39
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 2135,
+   "capt_off": 2096,
+   "capt_scar": 39
+  },
+  {
+   "key": "lachie-neale",
+   "player": "Lachie Neale",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 2893,
+   "capt_off": 2854,
+   "capt_scar": 39
+  },
+  {
+   "key": "david-zaharakis",
+   "player": "David Zaharakis",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 3748,
+   "capt_off": 3709,
+   "capt_scar": 39
+  },
+  {
+   "key": "nathan-jones",
+   "player": "Nathan Jones",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 2444,
+   "capt_off": 2405,
+   "capt_scar": 39
+  },
+  {
+   "key": "jordan-clark",
+   "player": "Jordan Clark",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 4725,
+   "capt_off": 4687,
+   "capt_scar": 38
+  },
+  {
+   "key": "lachlan-hunter",
+   "player": "Lachlan Hunter",
+   "C": 2012,
+   "N": 4,
+   "year": 2016,
+   "default": 3419,
+   "capt_off": 3381,
+   "capt_scar": 38
+  },
+  {
+   "key": "jaeger-o-meara",
+   "player": "Jaeger O'Meara",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 4719,
+   "capt_off": 4681,
+   "capt_scar": 38
+  },
+  {
+   "key": "jack-trengove",
+   "player": "Jack Trengove",
+   "C": 2009,
+   "N": 3,
+   "year": 2012,
+   "default": 3745,
+   "capt_off": 3707,
+   "capt_scar": 38
+  },
+  {
+   "key": "michael-barlow",
+   "player": "Michael Barlow",
+   "C": 2009,
+   "N": 5,
+   "year": 2014,
+   "default": 3601,
+   "capt_off": 3563,
+   "capt_scar": 38
+  },
+  {
+   "key": "dayne-beams",
+   "player": "Dayne Beams",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 2105,
+   "capt_off": 2067,
+   "capt_scar": 38
+  },
+  {
+   "key": "bradley-ebert",
+   "player": "Brad Ebert",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 4240,
+   "capt_off": 4202,
+   "capt_scar": 38
+  },
+  {
+   "key": "hugh-mccluggage",
+   "player": "Hugh McCluggage",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 2755,
+   "capt_off": 2718,
+   "capt_scar": 37
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 3674,
+   "capt_off": 3637,
+   "capt_scar": 37
+  },
+  {
+   "key": "brad-crouch",
+   "player": "Brad Crouch",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 3949,
+   "capt_off": 3912,
+   "capt_scar": 37
+  },
+  {
+   "key": "taylor-adams",
+   "player": "Taylor Adams",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 5218,
+   "capt_off": 5181,
+   "capt_scar": 37
+  },
+  {
+   "key": "dion-prestia",
+   "player": "Dion Prestia",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 2981,
+   "capt_off": 2944,
+   "capt_scar": 37
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 3396,
+   "capt_off": 3359,
+   "capt_scar": 37
+  },
+  {
+   "key": "luke-jackson",
+   "player": "Luke Jackson",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 2638,
+   "capt_off": 2602,
+   "capt_scar": 36
+  },
+  {
+   "key": "jackson-macrae",
+   "player": "Jackson Macrae",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 2683,
+   "capt_off": 2647,
+   "capt_scar": 36
+  },
+  {
+   "key": "dom-tyson",
+   "player": "Dom Tyson",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 2545,
+   "capt_off": 2509,
+   "capt_scar": 36
+  },
+  {
+   "key": "david-zaharakis",
+   "player": "David Zaharakis",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 3420,
+   "capt_off": 3384,
+   "capt_scar": 36
+  },
+  {
+   "key": "nathan-jones",
+   "player": "Nathan Jones",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 2933,
+   "capt_off": 2897,
+   "capt_scar": 36
+  },
+  {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 2957,
+   "capt_off": 2922,
+   "capt_scar": 35
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 4065,
+   "capt_off": 4030,
+   "capt_scar": 35
+  },
+  {
+   "key": "jy-simpkin",
+   "player": "Jy Simpkin",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 3900,
+   "capt_off": 3865,
+   "capt_scar": 35
+  },
+  {
+   "key": "jarrod-berry",
+   "player": "Jarrod Berry",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 3367,
+   "capt_off": 3332,
+   "capt_scar": 35
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 3339,
+   "capt_off": 3304,
+   "capt_scar": 35
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 3243,
+   "capt_off": 3208,
+   "capt_scar": 35
+  },
+  {
+   "key": "dayne-zorko",
+   "player": "Dayne Zorko",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 3981,
+   "capt_off": 3946,
+   "capt_scar": 35
+  },
+  {
+   "key": "scott-pendlebury",
+   "player": "Scott Pendlebury",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 2245,
+   "capt_off": 2210,
+   "capt_scar": 35
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 6,
+   "year": 2025,
+   "default": 3645,
+   "capt_off": 3611,
+   "capt_scar": 34
+  },
+  {
+   "key": "zak-butters",
+   "player": "Zak Butters",
+   "C": 2018,
+   "N": 3,
+   "year": 2021,
+   "default": 3159,
+   "capt_off": 3125,
+   "capt_scar": 34
+  },
+  {
+   "key": "adam-cerra",
+   "player": "Adam Cerra",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 2705,
+   "capt_off": 2671,
+   "capt_scar": 34
+  },
+  {
+   "key": "brad-crouch",
+   "player": "Brad Crouch",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 3559,
+   "capt_off": 3525,
+   "capt_scar": 34
+  },
+  {
+   "key": "dion-prestia",
+   "player": "Dion Prestia",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 2667,
+   "capt_off": 2633,
+   "capt_scar": 34
+  },
+  {
+   "key": "jordan-lewis",
+   "player": "Jordan Lewis",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 2524,
+   "capt_off": 2490,
+   "capt_scar": 34
+  },
+  {
+   "key": "christian-petracca",
+   "player": "Christian Petracca",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 3639,
+   "capt_off": 3606,
+   "capt_scar": 33
+  },
+  {
+   "key": "caleb-daniel",
+   "player": "Caleb Daniel",
+   "C": 2014,
+   "N": 5,
+   "year": 2019,
+   "default": 4661,
+   "capt_off": 4628,
+   "capt_scar": 33
+  },
+  {
+   "key": "brent-renouf",
+   "player": "Brent Renouf",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 1673,
+   "capt_off": 1640,
+   "capt_scar": 33
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 4461,
+   "capt_off": 4428,
+   "capt_scar": 33
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 6,
+   "year": 2010,
+   "default": 4608,
+   "capt_off": 4575,
+   "capt_scar": 33
+  },
+  {
+   "key": "stephen-coniglio",
+   "player": "Stephen Coniglio",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 3955,
+   "capt_off": 3923,
+   "capt_scar": 32
+  },
+  {
+   "key": "thomas-liberatore",
+   "player": "Thomas Liberatore",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 2208,
+   "capt_off": 2176,
+   "capt_scar": 32
+  },
+  {
+   "key": "rhys-palmer",
+   "player": "Rhys Palmer",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 3197,
+   "capt_off": 3165,
+   "capt_scar": 32
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 3,
+   "year": 2020,
+   "default": 3086,
+   "capt_off": 3055,
+   "capt_scar": 31
+  },
+  {
+   "key": "sebastian-ross",
+   "player": "Sebastian Ross",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 3660,
+   "capt_off": 3629,
+   "capt_scar": 31
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 3577,
+   "capt_off": 3546,
+   "capt_scar": 31
+  },
+  {
+   "key": "cyril-rioli",
+   "player": "Cyril Rioli",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4891,
+   "capt_off": 4860,
+   "capt_scar": 31
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 4020,
+   "capt_off": 3989,
+   "capt_scar": 31
+  },
+  {
+   "key": "sam-petrevski-seton",
+   "player": "Sam Petrevski-Seton",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 3216,
+   "capt_off": 3186,
+   "capt_scar": 30
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 3352,
+   "capt_off": 3322,
+   "capt_scar": 30
+  },
+  {
+   "key": "steele-sidebottom",
+   "player": "Steele Sidebottom",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 2698,
+   "capt_off": 2668,
+   "capt_scar": 30
+  },
+  {
+   "key": "luke-shuey",
+   "player": "Luke Shuey",
+   "C": 2008,
+   "N": 7,
+   "year": 2015,
+   "default": 3678,
+   "capt_off": 3648,
+   "capt_scar": 30
+  },
+  {
+   "key": "jordan-lewis",
+   "player": "Jordan Lewis",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 2771,
+   "capt_off": 2741,
+   "capt_scar": 30
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 4188,
+   "capt_off": 4159,
+   "capt_scar": 29
+  },
+  {
+   "key": "hayden-young",
+   "player": "Hayden Young",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 3552,
+   "capt_off": 3523,
+   "capt_scar": 29
+  },
+  {
+   "key": "jye-caldwell",
+   "player": "Jye Caldwell",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 3607,
+   "capt_off": 3578,
+   "capt_scar": 29
+  },
+  {
+   "key": "sam-petrevski-seton",
+   "player": "Sam Petrevski-Seton",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 2716,
+   "capt_off": 2687,
+   "capt_scar": 29
+  },
+  {
+   "key": "rowan-marshall",
+   "player": "Rowan Marshall",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 3314,
+   "capt_off": 3285,
+   "capt_scar": 29
+  },
+  {
+   "key": "max-gawn",
+   "player": "Max Gawn",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 1284,
+   "capt_off": 1255,
+   "capt_scar": 29
+  },
+  {
+   "key": "brent-renouf",
+   "player": "Brent Renouf",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 1504,
+   "capt_off": 1475,
+   "capt_scar": 29
+  },
+  {
+   "key": "jy-simpkin",
+   "player": "Jy Simpkin",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 3646,
+   "capt_off": 3618,
+   "capt_scar": 28
+  },
+  {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "C": 2012,
+   "N": 6,
+   "year": 2018,
+   "default": 3490,
+   "capt_off": 3462,
+   "capt_scar": 28
+  },
+  {
+   "key": "brad-crouch",
+   "player": "Brad Crouch",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 3597,
+   "capt_off": 3569,
+   "capt_scar": 28
+  },
+  {
+   "key": "ben-cunnington",
+   "player": "Ben Cunnington",
+   "C": 2009,
+   "N": 6,
+   "year": 2015,
+   "default": 3817,
+   "capt_off": 3789,
+   "capt_scar": 28
+  },
+  {
+   "key": "jackson-hately",
+   "player": "Jackson Hately",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 2220,
+   "capt_off": 2193,
+   "capt_scar": 27
+  },
+  {
+   "key": "andrew-mcgrath",
+   "player": "Andrew McGrath",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 3637,
+   "capt_off": 3610,
+   "capt_scar": 27
+  },
+  {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 2778,
+   "capt_off": 2751,
+   "capt_scar": 27
+  },
+  {
+   "key": "elliot-yeo",
+   "player": "Elliot Yeo",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 3532,
+   "capt_off": 3505,
+   "capt_scar": 27
+  },
+  {
+   "key": "jordan-gysberts",
+   "player": "Jordan Gysberts",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 2744,
+   "capt_off": 2717,
+   "capt_scar": 27
+  },
+  {
+   "key": "sam-jacobs",
+   "player": "Sam Jacobs",
+   "C": 2006,
+   "N": 7,
+   "year": 2013,
+   "default": 3273,
+   "capt_off": 3246,
+   "capt_scar": 27
+  },
+  {
+   "key": "xavier-duursma",
+   "player": "Xavier Duursma",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 2198,
+   "capt_off": 2172,
+   "capt_scar": 26
+  },
+  {
+   "key": "xavier-duursma",
+   "player": "Xavier Duursma",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 2378,
+   "capt_off": 2352,
+   "capt_scar": 26
+  },
+  {
+   "key": "jayden-short",
+   "player": "Jayden Short",
+   "C": 2014,
+   "N": 7,
+   "year": 2021,
+   "default": 3701,
+   "capt_off": 3675,
+   "capt_scar": 26
+  },
+  {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 2829,
+   "capt_off": 2803,
+   "capt_scar": 26
+  },
+  {
+   "key": "mitchell-wallis",
+   "player": "Mitchell Wallis",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 2769,
+   "capt_off": 2743,
+   "capt_scar": 26
+  },
+  {
+   "key": "bradley-ebert",
+   "player": "Brad Ebert",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 2242,
+   "capt_off": 2216,
+   "capt_scar": 26
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 2503,
+   "capt_off": 2477,
+   "capt_scar": 26
+  },
+  {
+   "key": "brent-renouf",
+   "player": "Brent Renouf",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 1836,
+   "capt_off": 1810,
+   "capt_scar": 26
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 7,
+   "year": 2011,
+   "default": 4123,
+   "capt_off": 4097,
+   "capt_scar": 26
+  },
+  {
+   "key": "chad-warner",
+   "player": "Chad Warner",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 3479,
+   "capt_off": 3454,
+   "capt_scar": 25
+  },
+  {
+   "key": "lochie-o-brien",
+   "player": "Lochie O'Brien",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 2345,
+   "capt_off": 2320,
+   "capt_scar": 25
+  },
+  {
+   "key": "tim-taranto",
+   "player": "Tim Taranto",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 3719,
+   "capt_off": 3694,
+   "capt_scar": 25
+  },
+  {
+   "key": "jack-bowes",
+   "player": "Jack Bowes",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 2240,
+   "capt_off": 2215,
+   "capt_scar": 25
+  },
+  {
+   "key": "jarrod-berry",
+   "player": "Jarrod Berry",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1883,
+   "capt_off": 1858,
+   "capt_scar": 25
+  },
+  {
+   "key": "luke-dunstan",
+   "player": "Luke Dunstan",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 2250,
+   "capt_off": 2225,
+   "capt_scar": 25
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 3138,
+   "capt_off": 3113,
+   "capt_scar": 25
+  },
+  {
+   "key": "zachary-merrett",
+   "player": "Zachary Merrett",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1753,
+   "capt_off": 1728,
+   "capt_scar": 25
+  },
+  {
+   "key": "nathan-hrovat",
+   "player": "Nathan Hrovat",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 1807,
+   "capt_off": 1782,
+   "capt_scar": 25
+  },
+  {
+   "key": "tom-mitchell",
+   "player": "Tom Mitchell",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 2713,
+   "capt_off": 2688,
+   "capt_scar": 25
+  },
+  {
+   "key": "josh-caddy",
+   "player": "Josh Caddy",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 2666,
+   "capt_off": 2641,
+   "capt_scar": 25
+  },
+  {
+   "key": "nathan-fyfe",
+   "player": "Nathan Fyfe",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 2196,
+   "capt_off": 2171,
+   "capt_scar": 25
+  },
+  {
+   "key": "shaun-grigg",
+   "player": "Shaun Grigg",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 3507,
+   "capt_off": 3482,
+   "capt_scar": 25
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 2631,
+   "capt_off": 2607,
+   "capt_scar": 24
+  },
+  {
+   "key": "james-rowbottom",
+   "player": "James Rowbottom",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 1626,
+   "capt_off": 1602,
+   "capt_scar": 24
+  },
+  {
+   "key": "tom-de-koning",
+   "player": "Tom De Koning",
+   "C": 2017,
+   "N": 4,
+   "year": 2021,
+   "default": 1827,
+   "capt_off": 1803,
+   "capt_scar": 24
+  },
+  {
+   "key": "jarrod-berry",
+   "player": "Jarrod Berry",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 2647,
+   "capt_off": 2623,
+   "capt_scar": 24
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 5,
+   "year": 2017,
+   "default": 4528,
+   "capt_off": 4504,
+   "capt_scar": 24
+  },
+  {
+   "key": "brandon-ellis",
+   "player": "Brandon Ellis",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 2386,
+   "capt_off": 2362,
+   "capt_scar": 24
+  },
+  {
+   "key": "brandon-ellis",
+   "player": "Brandon Ellis",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 3791,
+   "capt_off": 3767,
+   "capt_scar": 24
+  },
+  {
+   "key": "clay-smith",
+   "player": "Clay Smith",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 1488,
+   "capt_off": 1464,
+   "capt_scar": 24
+  },
+  {
+   "key": "jack-crisp",
+   "player": "Jack Crisp",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 2951,
+   "capt_off": 2927,
+   "capt_scar": 24
+  },
+  {
+   "key": "ryan-bastinac",
+   "player": "Ryan Bastinac",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 2019,
+   "capt_off": 1995,
+   "capt_scar": 24
+  },
+  {
+   "key": "lance-franklin",
+   "player": "Lance Franklin",
+   "C": 2004,
+   "N": 5,
+   "year": 2009,
+   "default": 7771,
+   "capt_off": 7747,
+   "capt_scar": 24
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 4200,
+   "capt_off": 4177,
+   "capt_scar": 23
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 3105,
+   "capt_off": 3082,
+   "capt_scar": 23
+  },
+  {
+   "key": "james-rowbottom",
+   "player": "James Rowbottom",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 2287,
+   "capt_off": 2264,
+   "capt_scar": 23
+  },
+  {
+   "key": "tom-de-koning",
+   "player": "Tom De Koning",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 1164,
+   "capt_off": 1141,
+   "capt_scar": 23
+  },
+  {
+   "key": "jack-bowes",
+   "player": "Jack Bowes",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 2558,
+   "capt_off": 2535,
+   "capt_scar": 23
+  },
+  {
+   "key": "brandan-parfitt",
+   "player": "Brandan Parfitt",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 2470,
+   "capt_off": 2447,
+   "capt_scar": 23
+  },
+  {
+   "key": "jacob-hopper",
+   "player": "Jacob Hopper",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 2508,
+   "capt_off": 2485,
+   "capt_scar": 23
+  },
+  {
+   "key": "jacob-hopper",
+   "player": "Jacob Hopper",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 2869,
+   "capt_off": 2846,
+   "capt_scar": 23
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 2061,
+   "capt_off": 2038,
+   "capt_scar": 23
+  },
+  {
+   "key": "christian-petracca",
+   "player": "Christian Petracca",
+   "C": 2014,
+   "N": 4,
+   "year": 2018,
+   "default": 3463,
+   "capt_off": 3440,
+   "capt_scar": 23
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 3684,
+   "capt_off": 3661,
+   "capt_scar": 23
+  },
+  {
+   "key": "mitchell-duncan",
+   "player": "Mitchell Duncan",
+   "C": 2009,
+   "N": 6,
+   "year": 2015,
+   "default": 3728,
+   "capt_off": 3705,
+   "capt_scar": 23
+  },
+  {
+   "key": "jack-ziebell",
+   "player": "Jack Ziebell",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 2438,
+   "capt_off": 2415,
+   "capt_scar": 23
+  },
+  {
+   "key": "matthew-deboer",
+   "player": "Matthew DeBoer",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 2651,
+   "capt_off": 2628,
+   "capt_scar": 23
+  },
+  {
+   "key": "matthew-kreuzer",
+   "player": "Matthew Kreuzer",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 4992,
+   "capt_off": 4969,
+   "capt_scar": 23
+  },
+  {
+   "key": "paddy-ryder",
+   "player": "Paddy Ryder",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 2675,
+   "capt_off": 2652,
+   "capt_scar": 23
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 2570,
+   "capt_off": 2548,
+   "capt_scar": 22
+  },
+  {
+   "key": "tom-de-koning",
+   "player": "Tom De Koning",
+   "C": 2017,
+   "N": 3,
+   "year": 2020,
+   "default": 1599,
+   "capt_off": 1577,
+   "capt_scar": 22
+  },
+  {
+   "key": "kade-kolodjashnij",
+   "player": "Kade Kolodjashnij",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 3788,
+   "capt_off": 3766,
+   "capt_scar": 22
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 2324,
+   "capt_off": 2302,
+   "capt_scar": 22
+  },
+  {
+   "key": "chris-masten",
+   "player": "Chris Masten",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 2573,
+   "capt_off": 2551,
+   "capt_scar": 22
+  },
+  {
+   "key": "matthew-leuenberger",
+   "player": "Matthew Leuenberger",
+   "C": 2006,
+   "N": 7,
+   "year": 2013,
+   "default": 3999,
+   "capt_off": 3977,
+   "capt_scar": 22
+  },
+  {
+   "key": "ed-richards",
+   "player": "Ed Richards",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 2006,
+   "capt_off": 1985,
+   "capt_scar": 21
+  },
+  {
+   "key": "jy-simpkin",
+   "player": "Jy Simpkin",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 2567,
+   "capt_off": 2546,
+   "capt_scar": 21
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 2487,
+   "capt_off": 2466,
+   "capt_scar": 21
+  },
+  {
+   "key": "dominic-sheed",
+   "player": "Dominic Sheed",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 2686,
+   "capt_off": 2665,
+   "capt_scar": 21
+  },
+  {
+   "key": "brandon-ellis",
+   "player": "Brandon Ellis",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 1448,
+   "capt_off": 1427,
+   "capt_scar": 21
+  },
+  {
+   "key": "harley-bennell",
+   "player": "Harley Bennell",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 5763,
+   "capt_off": 5742,
+   "capt_scar": 21
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 3979,
+   "capt_off": 3958,
+   "capt_scar": 21
+  },
+  {
+   "key": "errol-gulden",
+   "player": "Errol Gulden",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 2088,
+   "capt_off": 2068,
+   "capt_scar": 20
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 2036,
+   "capt_off": 2016,
+   "capt_scar": 20
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 3304,
+   "capt_off": 3284,
+   "capt_scar": 20
+  },
+  {
+   "key": "touk-miller",
+   "player": "Touk Miller",
+   "C": 2014,
+   "N": 5,
+   "year": 2019,
+   "default": 2994,
+   "capt_off": 2974,
+   "capt_scar": 20
+  },
+  {
+   "key": "jaeger-o-meara",
+   "player": "Jaeger O'Meara",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 4080,
+   "capt_off": 4060,
+   "capt_scar": 20
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 3494,
+   "capt_off": 3474,
+   "capt_scar": 20
+  },
+  {
+   "key": "anthony-morabito",
+   "player": "Anthony Morabito",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 2765,
+   "capt_off": 2745,
+   "capt_scar": 20
+  },
+  {
+   "key": "jack-ziebell",
+   "player": "Jack Ziebell",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 2863,
+   "capt_off": 2843,
+   "capt_scar": 20
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 3228,
+   "capt_off": 3208,
+   "capt_scar": 20
+  },
+  {
+   "key": "matthew-leuenberger",
+   "player": "Matthew Leuenberger",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 1721,
+   "capt_off": 1701,
+   "capt_scar": 20
+  },
+  {
+   "key": "travis-boak",
+   "player": "Travis Boak",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 3538,
+   "capt_off": 3518,
+   "capt_scar": 20
+  },
+  {
+   "key": "brett-deledio",
+   "player": "Brett Deledio",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 3698,
+   "capt_off": 3678,
+   "capt_scar": 20
+  },
+  {
+   "key": "max-holmes",
+   "player": "Max Holmes",
+   "C": 2020,
+   "N": 3,
+   "year": 2023,
+   "default": 2612,
+   "capt_off": 2593,
+   "capt_scar": 19
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 5,
+   "year": 2024,
+   "default": 3513,
+   "capt_off": 3494,
+   "capt_scar": 19
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "player": "Luke Davies-Uniacke",
+   "C": 2017,
+   "N": 4,
+   "year": 2021,
+   "default": 3162,
+   "capt_off": 3143,
+   "capt_scar": 19
+  },
+  {
+   "key": "will-setterfield",
+   "player": "Will Setterfield",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 2148,
+   "capt_off": 2129,
+   "capt_scar": 19
+  },
+  {
+   "key": "jack-bowes",
+   "player": "Jack Bowes",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 3121,
+   "capt_off": 3102,
+   "capt_scar": 19
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 2162,
+   "capt_off": 2143,
+   "capt_scar": 19
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "player": "Matthew Kennedy",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 2475,
+   "capt_off": 2456,
+   "capt_scar": 19
+  },
+  {
+   "key": "taylor-adams",
+   "player": "Taylor Adams",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 5435,
+   "capt_off": 5416,
+   "capt_scar": 19
+  },
+  {
+   "key": "harley-bennell",
+   "player": "Harley Bennell",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 5687,
+   "capt_off": 5668,
+   "capt_scar": 19
+  },
+  {
+   "key": "errol-gulden",
+   "player": "Errol Gulden",
+   "C": 2020,
+   "N": 2,
+   "year": 2022,
+   "default": 2913,
+   "capt_off": 2895,
+   "capt_scar": 18
+  },
+  {
+   "key": "james-rowbottom",
+   "player": "James Rowbottom",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 3215,
+   "capt_off": 3197,
+   "capt_scar": 18
+  },
+  {
+   "key": "tom-de-koning",
+   "player": "Tom De Koning",
+   "C": 2017,
+   "N": 5,
+   "year": 2022,
+   "default": 2051,
+   "capt_off": 2033,
+   "capt_scar": 18
+  },
+  {
+   "key": "jacob-hopper",
+   "player": "Jacob Hopper",
+   "C": 2015,
+   "N": 5,
+   "year": 2020,
+   "default": 3585,
+   "capt_off": 3567,
+   "capt_scar": 18
+  },
+  {
+   "key": "reilly-o-brien",
+   "player": "Reilly O'Brien",
+   "C": 2014,
+   "N": 6,
+   "year": 2020,
+   "default": 3636,
+   "capt_off": 3618,
+   "capt_scar": 18
+  },
+  {
+   "key": "luke-dunstan",
+   "player": "Luke Dunstan",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 3240,
+   "capt_off": 3222,
+   "capt_scar": 18
+  },
+  {
+   "key": "ben-cunnington",
+   "player": "Ben Cunnington",
+   "C": 2009,
+   "N": 3,
+   "year": 2012,
+   "default": 2927,
+   "capt_off": 2909,
+   "capt_scar": 18
+  },
+  {
+   "key": "michael-barlow",
+   "player": "Michael Barlow",
+   "C": 2009,
+   "N": 4,
+   "year": 2013,
+   "default": 2999,
+   "capt_off": 2981,
+   "capt_scar": 18
+  },
+  {
+   "key": "jack-ziebell",
+   "player": "Jack Ziebell",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 2370,
+   "capt_off": 2352,
+   "capt_scar": 18
+  },
+  {
+   "key": "zachary-clarke",
+   "player": "Zachary Clarke",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 1395,
+   "capt_off": 1377,
+   "capt_scar": 18
+  },
+  {
+   "key": "zachary-clarke",
+   "player": "Zachary Clarke",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 3771,
+   "capt_off": 3753,
+   "capt_scar": 18
+  },
+  {
+   "key": "matthew-kreuzer",
+   "player": "Matthew Kreuzer",
+   "C": 2007,
+   "N": 5,
+   "year": 2012,
+   "default": 4964,
+   "capt_off": 4946,
+   "capt_scar": 18
+  },
+  {
+   "key": "trent-cotchin",
+   "player": "Trent Cotchin",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 3301,
+   "capt_off": 3283,
+   "capt_scar": 18
+  },
+  {
+   "key": "bryce-gibbs",
+   "player": "Bryce Gibbs",
+   "C": 2006,
+   "N": 6,
+   "year": 2012,
+   "default": 4368,
+   "capt_off": 4350,
+   "capt_scar": 18
+  },
+  {
+   "key": "sam-jacobs",
+   "player": "Sam Jacobs",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 3138,
+   "capt_off": 3120,
+   "capt_scar": 18
+  },
+  {
+   "key": "sam-walsh",
+   "player": "Sam Walsh",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 4045,
+   "capt_off": 4028,
+   "capt_scar": 17
+  },
+  {
+   "key": "james-rowbottom",
+   "player": "James Rowbottom",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 3464,
+   "capt_off": 3447,
+   "capt_scar": 17
+  },
+  {
+   "key": "ben-keays",
+   "player": "Ben Keays",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 5155,
+   "capt_off": 5138,
+   "capt_scar": 17
+  },
+  {
+   "key": "billy-longer",
+   "player": "Billy Longer",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 1490,
+   "capt_off": 1473,
+   "capt_scar": 17
+  },
+  {
+   "key": "ryan-bastinac",
+   "player": "Ryan Bastinac",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 2149,
+   "capt_off": 2132,
+   "capt_scar": 17
+  },
+  {
+   "key": "daniel-hannebery",
+   "player": "Daniel Hannebery",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 3238,
+   "capt_off": 3221,
+   "capt_scar": 17
+  },
+  {
+   "key": "brandan-parfitt",
+   "player": "Brandan Parfitt",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1481,
+   "capt_off": 1465,
+   "capt_scar": 16
+  },
+  {
+   "key": "brandan-parfitt",
+   "player": "Brandan Parfitt",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 2631,
+   "capt_off": 2615,
+   "capt_scar": 16
+  },
+  {
+   "key": "brayden-fiorini",
+   "player": "Brayden Fiorini",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 3028,
+   "capt_off": 3012,
+   "capt_scar": 16
+  },
+  {
+   "key": "luke-dunstan",
+   "player": "Luke Dunstan",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 2272,
+   "capt_off": 2256,
+   "capt_scar": 16
+  },
+  {
+   "key": "ben-jacobs",
+   "player": "Ben Jacobs",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 1663,
+   "capt_off": 1647,
+   "capt_scar": 16
+  },
+  {
+   "key": "tom-swift",
+   "player": "Tom Swift",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 1567,
+   "capt_off": 1551,
+   "capt_scar": 16
+  },
+  {
+   "key": "jack-redden",
+   "player": "Jack Redden",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 1430,
+   "capt_off": 1414,
+   "capt_scar": 16
+  },
+  {
+   "key": "harry-schoenberg",
+   "player": "Harry Schoenberg",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 1489,
+   "capt_off": 1474,
+   "capt_scar": 15
+  },
+  {
+   "key": "brayden-fiorini",
+   "player": "Brayden Fiorini",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 1954,
+   "capt_off": 1939,
+   "capt_scar": 15
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1517,
+   "capt_off": 1502,
+   "capt_scar": 15
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 3472,
+   "capt_off": 3457,
+   "capt_scar": 15
+  },
+  {
+   "key": "jack-newnes",
+   "player": "Jack Newnes",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 3106,
+   "capt_off": 3091,
+   "capt_scar": 15
+  },
+  {
+   "key": "mitchell-wallis",
+   "player": "Mitchell Wallis",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 1443,
+   "capt_off": 1428,
+   "capt_scar": 15
+  },
+  {
+   "key": "koby-stevens",
+   "player": "Koby Stevens",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 1302,
+   "capt_off": 1287,
+   "capt_scar": 15
+  },
+  {
+   "key": "paddy-ryder",
+   "player": "Paddy Ryder",
+   "C": 2005,
+   "N": 4,
+   "year": 2009,
+   "default": 3683,
+   "capt_off": 3668,
+   "capt_scar": 15
+  },
+  {
+   "key": "paddy-ryder",
+   "player": "Paddy Ryder",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 4190,
+   "capt_off": 4175,
+   "capt_scar": 15
+  },
+  {
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "C": 2018,
+   "N": 3,
+   "year": 2021,
+   "default": 2901,
+   "capt_off": 2887,
+   "capt_scar": 14
+  },
+  {
+   "key": "caleb-daniel",
+   "player": "Caleb Daniel",
+   "C": 2014,
+   "N": 7,
+   "year": 2021,
+   "default": 3793,
+   "capt_off": 3779,
+   "capt_scar": 14
+  },
+  {
+   "key": "dom-tyson",
+   "player": "Dom Tyson",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 3256,
+   "capt_off": 3242,
+   "capt_scar": 14
+  },
+  {
+   "key": "harley-bennell",
+   "player": "Harley Bennell",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 5637,
+   "capt_off": 5623,
+   "capt_scar": 14
+  },
+  {
+   "key": "andrew-gaff",
+   "player": "Andrew Gaff",
+   "C": 2010,
+   "N": 7,
+   "year": 2017,
+   "default": 3154,
+   "capt_off": 3140,
+   "capt_scar": 14
+  },
+  {
+   "key": "david-zaharakis",
+   "player": "David Zaharakis",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 1933,
+   "capt_off": 1919,
+   "capt_scar": 14
+  },
+  {
+   "key": "zachary-clarke",
+   "player": "Zachary Clarke",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 2008,
+   "capt_off": 1994,
+   "capt_scar": 14
+  },
+  {
+   "key": "richard-tambling",
+   "player": "Richard Tambling",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 2762,
+   "capt_off": 2748,
+   "capt_scar": 14
+  },
+  {
+   "key": "harry-schoenberg",
+   "player": "Harry Schoenberg",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 1904,
+   "capt_off": 1891,
+   "capt_scar": 13
+  },
+  {
+   "key": "chayce-jones",
+   "player": "Chayce Jones",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 2079,
+   "capt_off": 2066,
+   "capt_scar": 13
+  },
+  {
+   "key": "james-worpel",
+   "player": "James Worpel",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 1305,
+   "capt_off": 1292,
+   "capt_scar": 13
+  },
+  {
+   "key": "brandan-parfitt",
+   "player": "Brandan Parfitt",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 3309,
+   "capt_off": 3296,
+   "capt_scar": 13
+  },
+  {
+   "key": "rhys-mathieson",
+   "player": "Rhys Mathieson",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 1551,
+   "capt_off": 1538,
+   "capt_scar": 13
+  },
+  {
+   "key": "james-sicily",
+   "player": "James Sicily",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 4036,
+   "capt_off": 4023,
+   "capt_scar": 13
+  },
+  {
+   "key": "nathan-hrovat",
+   "player": "Nathan Hrovat",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 1944,
+   "capt_off": 1931,
+   "capt_scar": 13
+  },
+  {
+   "key": "lachlan-hunter",
+   "player": "Lachlan Hunter",
+   "C": 2012,
+   "N": 7,
+   "year": 2019,
+   "default": 2992,
+   "capt_off": 2979,
+   "capt_scar": 13
+  },
+  {
+   "key": "billy-longer",
+   "player": "Billy Longer",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 1873,
+   "capt_off": 1860,
+   "capt_scar": 13
+  },
+  {
+   "key": "david-zaharakis",
+   "player": "David Zaharakis",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 1349,
+   "capt_off": 1336,
+   "capt_scar": 13
+  },
+  {
+   "key": "mitch-robinson",
+   "player": "Mitch Robinson",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 3231,
+   "capt_off": 3218,
+   "capt_scar": 13
+  },
+  {
+   "key": "todd-goldstein",
+   "player": "Todd Goldstein",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 1090,
+   "capt_off": 1077,
+   "capt_scar": 13
+  },
+  {
+   "key": "jordan-lewis",
+   "player": "Jordan Lewis",
+   "C": 2004,
+   "N": 4,
+   "year": 2008,
+   "default": 3123,
+   "capt_off": 3110,
+   "capt_scar": 13
+  },
+  {
+   "key": "nick-blakey",
+   "player": "Nick Blakey",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 3993,
+   "capt_off": 3981,
+   "capt_scar": 12
+  },
+  {
+   "key": "jye-caldwell",
+   "player": "Jye Caldwell",
+   "C": 2018,
+   "N": 7,
+   "year": 2025,
+   "default": 3106,
+   "capt_off": 3094,
+   "capt_scar": 12
+  },
+  {
+   "key": "will-setterfield",
+   "player": "Will Setterfield",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 2993,
+   "capt_off": 2981,
+   "capt_scar": 12
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 2162,
+   "capt_off": 2150,
+   "capt_scar": 12
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 3392,
+   "capt_off": 3380,
+   "capt_scar": 12
+  },
+  {
+   "key": "brad-crouch",
+   "player": "Brad Crouch",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 3426,
+   "capt_off": 3414,
+   "capt_scar": 12
+  },
+  {
+   "key": "lachie-neale",
+   "player": "Lachie Neale",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1633,
+   "capt_off": 1621,
+   "capt_scar": 12
+  },
+  {
+   "key": "josh-caddy",
+   "player": "Josh Caddy",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 3399,
+   "capt_off": 3387,
+   "capt_scar": 12
+  },
+  {
+   "key": "max-gawn",
+   "player": "Max Gawn",
+   "C": 2009,
+   "N": 5,
+   "year": 2014,
+   "default": 1829,
+   "capt_off": 1817,
+   "capt_scar": 12
+  },
+  {
+   "key": "jack-ziebell",
+   "player": "Jack Ziebell",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 3008,
+   "capt_off": 2996,
+   "capt_scar": 12
+  },
+  {
+   "key": "luke-shuey",
+   "player": "Luke Shuey",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 3050,
+   "capt_off": 3038,
+   "capt_scar": 12
+  },
+  {
+   "key": "rory-sloane",
+   "player": "Rory Sloane",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 2661,
+   "capt_off": 2649,
+   "capt_scar": 12
+  },
+  {
+   "key": "shane-mumford",
+   "player": "Shane Mumford",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 2953,
+   "capt_off": 2941,
+   "capt_scar": 12
+  },
+  {
+   "key": "jed-anderson",
+   "player": "Jed Anderson",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 1532,
+   "capt_off": 1521,
+   "capt_scar": 11
+  },
+  {
+   "key": "sam-berry",
+   "player": "Sam Berry",
+   "C": 2020,
+   "N": 6,
+   "year": 2026,
+   "default": 2874,
+   "capt_off": 2863,
+   "capt_scar": 11
+  },
+  {
+   "key": "matt-rowell",
+   "player": "Matt Rowell",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 3780,
+   "capt_off": 3769,
+   "capt_scar": 11
+  },
+  {
+   "key": "hayden-young",
+   "player": "Hayden Young",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 1997,
+   "capt_off": 1986,
+   "capt_scar": 11
+  },
+  {
+   "key": "hayden-young",
+   "player": "Hayden Young",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 2301,
+   "capt_off": 2290,
+   "capt_scar": 11
+  },
+  {
+   "key": "jye-caldwell",
+   "player": "Jye Caldwell",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 1776,
+   "capt_off": 1765,
+   "capt_scar": 11
+  },
+  {
+   "key": "will-brodie",
+   "player": "Will Brodie",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 3112,
+   "capt_off": 3101,
+   "capt_scar": 11
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 1683,
+   "capt_off": 1672,
+   "capt_scar": 11
+  },
+  {
+   "key": "brayden-fiorini",
+   "player": "Brayden Fiorini",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 1528,
+   "capt_off": 1517,
+   "capt_scar": 11
+  },
+  {
+   "key": "ben-keays",
+   "player": "Ben Keays",
+   "C": 2015,
+   "N": 6,
+   "year": 2021,
+   "default": 5385,
+   "capt_off": 5374,
+   "capt_scar": 11
+  },
+  {
+   "key": "rhys-mathieson",
+   "player": "Rhys Mathieson",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 2038,
+   "capt_off": 2027,
+   "capt_scar": 11
+  },
+  {
+   "key": "connor-blakely",
+   "player": "Connor Blakely",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 2969,
+   "capt_off": 2958,
+   "capt_scar": 11
+  },
+  {
+   "key": "reilly-o-brien",
+   "player": "Reilly O'Brien",
+   "C": 2014,
+   "N": 7,
+   "year": 2021,
+   "default": 3272,
+   "capt_off": 3261,
+   "capt_scar": 11
+  },
+  {
+   "key": "trent-dumont",
+   "player": "Trent Dumont",
+   "C": 2013,
+   "N": 7,
+   "year": 2020,
+   "default": 3107,
+   "capt_off": 3096,
+   "capt_scar": 11
+  },
+  {
+   "key": "jimmy-toumpas",
+   "player": "Jimmy Toumpas",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 2100,
+   "capt_off": 2089,
+   "capt_scar": 11
+  },
+  {
+   "key": "taylor-adams",
+   "player": "Taylor Adams",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 5507,
+   "capt_off": 5496,
+   "capt_scar": 11
+  },
+  {
+   "key": "jack-newnes",
+   "player": "Jack Newnes",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 3460,
+   "capt_off": 3449,
+   "capt_scar": 11
+  },
+  {
+   "key": "jarrod-witts",
+   "player": "Jarrod Witts",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 3167,
+   "capt_off": 3156,
+   "capt_scar": 11
+  },
+  {
+   "key": "liam-shiels",
+   "player": "Liam Shiels",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 2730,
+   "capt_off": 2719,
+   "capt_scar": 11
+  },
+  {
+   "key": "craig-bird",
+   "player": "Craig Bird",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 1210,
+   "capt_off": 1199,
+   "capt_scar": 11
+  },
+  {
+   "key": "richard-tambling",
+   "player": "Richard Tambling",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 2725,
+   "capt_off": 2714,
+   "capt_scar": 11
+  },
+  {
+   "key": "cameron-wood",
+   "player": "Cameron Wood",
+   "C": 2004,
+   "N": 4,
+   "year": 2008,
+   "default": 1811,
+   "capt_off": 1800,
+   "capt_scar": 11
+  },
+  {
+   "key": "nathan-van-berlo",
+   "player": "Nathan van Berlo",
+   "C": 2004,
+   "N": 4,
+   "year": 2008,
+   "default": 3082,
+   "capt_off": 3071,
+   "capt_scar": 11
+  },
+  {
+   "key": "paddy-ryder",
+   "player": "Paddy Ryder",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 2192,
+   "capt_off": 2181,
+   "capt_scar": 11
+  },
+  {
+   "key": "paddy-ryder",
+   "player": "Paddy Ryder",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 4150,
+   "capt_off": 4139,
+   "capt_scar": 11
+  },
+  {
+   "key": "dylan-stephens",
+   "player": "Dylan Stephens",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 2445,
+   "capt_off": 2435,
+   "capt_scar": 10
+  },
+  {
+   "key": "hayden-young",
+   "player": "Hayden Young",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 2749,
+   "capt_off": 2739,
+   "capt_scar": 10
+  },
+  {
+   "key": "bailey-williams-wc",
+   "player": "Bailey J. Williams",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 1047,
+   "capt_off": 1037,
+   "capt_scar": 10
+  },
+  {
+   "key": "jack-ross",
+   "player": "Jack Ross",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 1227,
+   "capt_off": 1217,
+   "capt_scar": 10
+  },
+  {
+   "key": "will-brodie",
+   "player": "Will Brodie",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1917,
+   "capt_off": 1907,
+   "capt_scar": 10
+  },
+  {
+   "key": "jack-graham",
+   "player": "Jack Graham",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1691,
+   "capt_off": 1681,
+   "capt_scar": 10
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "player": "Matthew Kennedy",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 1654,
+   "capt_off": 1644,
+   "capt_scar": 10
+  },
+  {
+   "key": "oliver-wines",
+   "player": "Oliver Wines",
+   "C": 2012,
+   "N": 7,
+   "year": 2019,
+   "default": 3009,
+   "capt_off": 2999,
+   "capt_scar": 10
+  },
+  {
+   "key": "david-swallow",
+   "player": "David Swallow",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 3691,
+   "capt_off": 3681,
+   "capt_scar": 10
+  },
+  {
+   "key": "josh-caddy",
+   "player": "Josh Caddy",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 1888,
+   "capt_off": 1878,
+   "capt_scar": 10
+  },
+  {
+   "key": "luke-dahlhaus",
+   "player": "Luke Dahlhaus",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 5000,
+   "capt_off": 4990,
+   "capt_scar": 10
+  },
+  {
+   "key": "jordan-gysberts",
+   "player": "Jordan Gysberts",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 1769,
+   "capt_off": 1759,
+   "capt_scar": 10
+  },
+  {
+   "key": "kane-lucas",
+   "player": "Kane Lucas",
+   "C": 2009,
+   "N": 1,
+   "year": 2010,
+   "default": 1804,
+   "capt_off": 1794,
+   "capt_scar": 10
+  },
+  {
+   "key": "stephen-hill",
+   "player": "Stephen Hill",
+   "C": 2008,
+   "N": 6,
+   "year": 2014,
+   "default": 3545,
+   "capt_off": 3535,
+   "capt_scar": 10
+  },
+  {
+   "key": "mitch-robinson",
+   "player": "Mitch Robinson",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 2884,
+   "capt_off": 2874,
+   "capt_scar": 10
+  },
+  {
+   "key": "david-armitage",
+   "player": "David Armitage",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 1468,
+   "capt_off": 1458,
+   "capt_scar": 10
+  },
+  {
+   "key": "todd-goldstein",
+   "player": "Todd Goldstein",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 1391,
+   "capt_off": 1381,
+   "capt_scar": 10
+  },
+  {
+   "key": "sam-gilbert",
+   "player": "Sam Gilbert",
+   "C": 2005,
+   "N": 5,
+   "year": 2010,
+   "default": 3839,
+   "capt_off": 3829,
+   "capt_scar": 10
+  },
+  {
+   "key": "andrew-swallow",
+   "player": "Andrew Swallow",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 1898,
+   "capt_off": 1888,
+   "capt_scar": 10
+  },
+  {
+   "key": "will-phillips",
+   "player": "Will Phillips",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 2269,
+   "capt_off": 2260,
+   "capt_scar": 9
+  },
+  {
+   "key": "sam-philp",
+   "player": "Sam Philp",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 1128,
+   "capt_off": 1119,
+   "capt_scar": 9
+  },
+  {
+   "key": "josh-worrell",
+   "player": "Josh Worrell",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 3168,
+   "capt_off": 3159,
+   "capt_scar": 9
+  },
+  {
+   "key": "chad-warner",
+   "player": "Chad Warner",
+   "C": 2019,
+   "N": 7,
+   "year": 2026,
+   "default": 2886,
+   "capt_off": 2877,
+   "capt_scar": 9
+  },
+  {
+   "key": "patrick-cripps",
+   "player": "Patrick Cripps",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1653,
+   "capt_off": 1644,
+   "capt_scar": 9
+  },
+  {
+   "key": "toby-nankervis",
+   "player": "Toby Nankervis",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 3896,
+   "capt_off": 3887,
+   "capt_scar": 9
+  },
+  {
+   "key": "dom-tyson",
+   "player": "Dom Tyson",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 3433,
+   "capt_off": 3424,
+   "capt_scar": 9
+  },
+  {
+   "key": "billy-longer",
+   "player": "Billy Longer",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1172,
+   "capt_off": 1163,
+   "capt_scar": 9
+  },
+  {
+   "key": "jared-polec",
+   "player": "Jared Polec",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 1799,
+   "capt_off": 1790,
+   "capt_scar": 9
+  },
+  {
+   "key": "jared-polec",
+   "player": "Jared Polec",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 2724,
+   "capt_off": 2715,
+   "capt_scar": 9
+  },
+  {
+   "key": "brodie-smith",
+   "player": "Brodie Smith",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 4148,
+   "capt_off": 4139,
+   "capt_scar": 9
+  },
+  {
+   "key": "scott-lycett",
+   "player": "Scott Lycett",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 970,
+   "capt_off": 961,
+   "capt_scar": 9
+  },
+  {
+   "key": "luke-shuey",
+   "player": "Luke Shuey",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 1644,
+   "capt_off": 1635,
+   "capt_scar": 9
+  },
+  {
+   "key": "daniel-hannebery",
+   "player": "Daniel Hannebery",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 2092,
+   "capt_off": 2083,
+   "capt_scar": 9
+  },
+  {
+   "key": "ben-mcevoy",
+   "player": "Ben McEvoy",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 1899,
+   "capt_off": 1890,
+   "capt_scar": 9
+  },
+  {
+   "key": "shane-valenti",
+   "player": "Shane Valenti",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 1108,
+   "capt_off": 1099,
+   "capt_scar": 9
+  },
+  {
+   "key": "marc-murphy",
+   "player": "Marc Murphy",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 3726,
+   "capt_off": 3717,
+   "capt_scar": 9
+  },
+  {
+   "key": "will-phillips",
+   "player": "Will Phillips",
+   "C": 2020,
+   "N": 3,
+   "year": 2023,
+   "default": 2904,
+   "capt_off": 2896,
+   "capt_scar": 8
+  },
+  {
+   "key": "tanner-bruhn",
+   "player": "Tanner Bruhn",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1947,
+   "capt_off": 1939,
+   "capt_scar": 8
+  },
+  {
+   "key": "tom-sparrow",
+   "player": "Tom Sparrow",
+   "C": 2018,
+   "N": 1,
+   "year": 2019,
+   "default": 987,
+   "capt_off": 979,
+   "capt_scar": 8
+  },
+  {
+   "key": "andrew-mcgrath",
+   "player": "Andrew McGrath",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 3035,
+   "capt_off": 3027,
+   "capt_scar": 8
+  },
+  {
+   "key": "timothy-english",
+   "player": "Timothy English",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1332,
+   "capt_off": 1324,
+   "capt_scar": 8
+  },
+  {
+   "key": "kieran-lovell",
+   "player": "Kieran Lovell",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 1110,
+   "capt_off": 1102,
+   "capt_scar": 8
+  },
+  {
+   "key": "david-cuningham",
+   "player": "David Cuningham",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 1077,
+   "capt_off": 1069,
+   "capt_scar": 8
+  },
+  {
+   "key": "dominic-sheed",
+   "player": "Dominic Sheed",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 2962,
+   "capt_off": 2954,
+   "capt_scar": 8
+  },
+  {
+   "key": "jonathan-o-rourke",
+   "player": "Jonathan O'Rourke",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 2369,
+   "capt_off": 2361,
+   "capt_scar": 8
+  },
+  {
+   "key": "jimmy-toumpas",
+   "player": "Jimmy Toumpas",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 2162,
+   "capt_off": 2154,
+   "capt_scar": 8
+  },
+  {
+   "key": "david-swallow",
+   "player": "David Swallow",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 3453,
+   "capt_off": 3445,
+   "capt_scar": 8
+  },
+  {
+   "key": "scott-lycett",
+   "player": "Scott Lycett",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 1313,
+   "capt_off": 1305,
+   "capt_scar": 8
+  },
+  {
+   "key": "ryan-bastinac",
+   "player": "Ryan Bastinac",
+   "C": 2009,
+   "N": 3,
+   "year": 2012,
+   "default": 2194,
+   "capt_off": 2186,
+   "capt_scar": 8
+  },
+  {
+   "key": "stephen-hill",
+   "player": "Stephen Hill",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 3101,
+   "capt_off": 3093,
+   "capt_scar": 8
+  },
+  {
+   "key": "tom-hislop",
+   "player": "Tom Hislop",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 1045,
+   "capt_off": 1037,
+   "capt_scar": 8
+  },
+  {
+   "key": "ryan-griffen",
+   "player": "Ryan Griffen",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 2738,
+   "capt_off": 2730,
+   "capt_scar": 8
+  },
+  {
+   "key": "brayden-cook",
+   "player": "Brayden Cook",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1065,
+   "capt_off": 1058,
+   "capt_scar": 7
+  },
+  {
+   "key": "nick-bryan",
+   "player": "Nick Bryan",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 1151,
+   "capt_off": 1144,
+   "capt_scar": 7
+  },
+  {
+   "key": "kieren-briggs",
+   "player": "Kieren Briggs",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 3696,
+   "capt_off": 3689,
+   "capt_scar": 7
+  },
+  {
+   "key": "jy-simpkin",
+   "player": "Jy Simpkin",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1985,
+   "capt_off": 1978,
+   "capt_scar": 7
+  },
+  {
+   "key": "connor-blakely",
+   "player": "Connor Blakely",
+   "C": 2014,
+   "N": 4,
+   "year": 2018,
+   "default": 2828,
+   "capt_off": 2821,
+   "capt_scar": 7
+  },
+  {
+   "key": "blake-acres",
+   "player": "Blake Acres",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1206,
+   "capt_off": 1199,
+   "capt_scar": 7
+  },
+  {
+   "key": "jesse-lonergan",
+   "player": "Jesse Lonergan",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 1216,
+   "capt_off": 1209,
+   "capt_scar": 7
+  },
+  {
+   "key": "dom-tyson",
+   "player": "Dom Tyson",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1908,
+   "capt_off": 1901,
+   "capt_scar": 7
+  },
+  {
+   "key": "jared-polec",
+   "player": "Jared Polec",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 2205,
+   "capt_off": 2198,
+   "capt_scar": 7
+  },
+  {
+   "key": "tom-scully",
+   "player": "Tom Scully",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 3660,
+   "capt_off": 3653,
+   "capt_scar": 7
+  },
+  {
+   "key": "tom-scully",
+   "player": "Tom Scully",
+   "C": 2009,
+   "N": 3,
+   "year": 2012,
+   "default": 3360,
+   "capt_off": 3353,
+   "capt_scar": 7
+  },
+  {
+   "key": "jack-trengove",
+   "player": "Jack Trengove",
+   "C": 2009,
+   "N": 4,
+   "year": 2013,
+   "default": 3132,
+   "capt_off": 3125,
+   "capt_scar": 7
+  },
+  {
+   "key": "daniel-rich",
+   "player": "Daniel Rich",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 4594,
+   "capt_off": 4587,
+   "capt_scar": 7
+  },
+  {
+   "key": "zachary-clarke",
+   "player": "Zachary Clarke",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 1004,
+   "capt_off": 997,
+   "capt_scar": 7
+  },
+  {
+   "key": "cyril-rioli",
+   "player": "Cyril Rioli",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 5157,
+   "capt_off": 5150,
+   "capt_scar": 7
+  },
+  {
+   "key": "matthew-lobbe",
+   "player": "Matthew Lobbe",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 4303,
+   "capt_off": 4296,
+   "capt_scar": 7
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 1740,
+   "capt_off": 1733,
+   "capt_scar": 7
+  },
+  {
+   "key": "shaun-grigg",
+   "player": "Shaun Grigg",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 1803,
+   "capt_off": 1796,
+   "capt_scar": 7
+  },
+  {
+   "key": "adam-thomson",
+   "player": "Adam Thomson",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 1251,
+   "capt_off": 1244,
+   "capt_scar": 7
+  },
+  {
+   "key": "robert-warnock",
+   "player": "Robert Warnock",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 1581,
+   "capt_off": 1574,
+   "capt_scar": 7
+  },
+  {
+   "key": "riley-thilthorpe",
+   "player": "Riley Thilthorpe",
+   "C": 2020,
+   "N": 5,
+   "year": 2025,
+   "default": 7000,
+   "capt_off": 6994,
+   "capt_scar": 6
+  },
+  {
+   "key": "max-holmes",
+   "player": "Max Holmes",
+   "C": 2020,
+   "N": 2,
+   "year": 2022,
+   "default": 1731,
+   "capt_off": 1725,
+   "capt_scar": 6
+  },
+  {
+   "key": "jake-bowey",
+   "player": "Jake Bowey",
+   "C": 2020,
+   "N": 6,
+   "year": 2026,
+   "default": 3388,
+   "capt_off": 3382,
+   "capt_scar": 6
+  },
+  {
+   "key": "sam-flanders",
+   "player": "Sam Flanders",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 1534,
+   "capt_off": 1528,
+   "capt_scar": 6
+  },
+  {
+   "key": "bailey-smith",
+   "player": "Bailey Smith",
+   "C": 2018,
+   "N": 5,
+   "year": 2023,
+   "default": 3336,
+   "capt_off": 3330,
+   "capt_scar": 6
+  },
+  {
+   "key": "nick-blakey",
+   "player": "Nick Blakey",
+   "C": 2018,
+   "N": 6,
+   "year": 2024,
+   "default": 3991,
+   "capt_off": 3985,
+   "capt_scar": 6
+  },
+  {
+   "key": "will-brodie",
+   "player": "Will Brodie",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 1994,
+   "capt_off": 1988,
+   "capt_scar": 6
+  },
+  {
+   "key": "jordan-ridley",
+   "player": "Jordan Ridley",
+   "C": 2016,
+   "N": 7,
+   "year": 2023,
+   "default": 3758,
+   "capt_off": 3752,
+   "capt_scar": 6
+  },
+  {
+   "key": "brayden-fiorini",
+   "player": "Brayden Fiorini",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 2055,
+   "capt_off": 2049,
+   "capt_scar": 6
+  },
+  {
+   "key": "james-harmes",
+   "player": "James Harmes",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 3591,
+   "capt_off": 3585,
+   "capt_scar": 6
+  },
+  {
+   "key": "nathan-vardy",
+   "player": "Nathan Vardy",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 1355,
+   "capt_off": 1349,
+   "capt_scar": 6
+  },
+  {
+   "key": "cyril-rioli",
+   "player": "Cyril Rioli",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 3747,
+   "capt_off": 3741,
+   "capt_scar": 6
+  },
+  {
+   "key": "shane-valenti",
+   "player": "Shane Valenti",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 1395,
+   "capt_off": 1389,
+   "capt_scar": 6
+  },
+  {
+   "key": "ryan-griffen",
+   "player": "Ryan Griffen",
+   "C": 2004,
+   "N": 5,
+   "year": 2009,
+   "default": 3278,
+   "capt_off": 3272,
+   "capt_scar": 6
+  },
+  {
+   "key": "ryan-griffen",
+   "player": "Ryan Griffen",
+   "C": 2004,
+   "N": 6,
+   "year": 2010,
+   "default": 3478,
+   "capt_off": 3472,
+   "capt_scar": 6
+  },
+  {
+   "key": "cameron-wood",
+   "player": "Cameron Wood",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 1169,
+   "capt_off": 1163,
+   "capt_scar": 6
+  },
+  {
+   "key": "tom-de-koning",
+   "player": "Tom De Koning",
+   "C": 2017,
+   "N": 6,
+   "year": 2023,
+   "default": 1943,
+   "capt_off": 1938,
+   "capt_scar": 5
+  },
+  {
+   "key": "andrew-mcgrath",
+   "player": "Andrew McGrath",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 4157,
+   "capt_off": 4152,
+   "capt_scar": 5
+  },
+  {
+   "key": "alex-witherden",
+   "player": "Alex Witherden",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 3969,
+   "capt_off": 3964,
+   "capt_scar": 5
+  },
+  {
+   "key": "sean-darcy",
+   "player": "Sean Darcy",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 2369,
+   "capt_off": 2364,
+   "capt_scar": 5
+  },
+  {
+   "key": "dan-houston",
+   "player": "Dan Houston",
+   "C": 2015,
+   "N": 7,
+   "year": 2022,
+   "default": 3498,
+   "capt_off": 3493,
+   "capt_scar": 5
+  },
+  {
+   "key": "angus-brayshaw",
+   "player": "Angus Brayshaw",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 2624,
+   "capt_off": 2619,
+   "capt_scar": 5
+  },
+  {
+   "key": "lachlan-weller",
+   "player": "Lachlan Weller",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 1440,
+   "capt_off": 1435,
+   "capt_scar": 5
+  },
+  {
+   "key": "dominic-sheed",
+   "player": "Dominic Sheed",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 3344,
+   "capt_off": 3339,
+   "capt_scar": 5
+  },
+  {
+   "key": "matt-crouch",
+   "player": "Matt Crouch",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 1570,
+   "capt_off": 1565,
+   "capt_scar": 5
+  },
+  {
+   "key": "billy-hartung",
+   "player": "Billy Hartung",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 1406,
+   "capt_off": 1401,
+   "capt_scar": 5
+  },
+  {
+   "key": "clay-smith",
+   "player": "Clay Smith",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1593,
+   "capt_off": 1588,
+   "capt_scar": 5
+  },
+  {
+   "key": "matthew-arnot",
+   "player": "Matthew Arnot",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 698,
+   "capt_off": 693,
+   "capt_scar": 5
+  },
+  {
+   "key": "jack-crisp",
+   "player": "Jack Crisp",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 2268,
+   "capt_off": 2263,
+   "capt_scar": 5
+  },
+  {
+   "key": "matthew-kreuzer",
+   "player": "Matthew Kreuzer",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 3488,
+   "capt_off": 3483,
+   "capt_scar": 5
+  },
+  {
+   "key": "scott-selwood",
+   "player": "Scott Selwood",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 1399,
+   "capt_off": 1394,
+   "capt_scar": 5
+  },
+  {
+   "key": "stefan-martin",
+   "player": "Stefan Martin",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 2896,
+   "capt_off": 2891,
+   "capt_scar": 5
+  },
+  {
+   "key": "shane-edwards",
+   "player": "Shane Edwards",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 1407,
+   "capt_off": 1402,
+   "capt_scar": 5
+  },
+  {
+   "key": "dean-polo",
+   "player": "Dean Polo",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 1489,
+   "capt_off": 1484,
+   "capt_scar": 5
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 3268,
+   "capt_off": 3263,
+   "capt_scar": 5
+  },
+  {
+   "key": "xavier-ellis",
+   "player": "Xavier Ellis",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 2818,
+   "capt_off": 2813,
+   "capt_scar": 5
+  },
+  {
+   "key": "robert-warnock",
+   "player": "Robert Warnock",
+   "C": 2005,
+   "N": 6,
+   "year": 2011,
+   "default": 2691,
+   "capt_off": 2686,
+   "capt_scar": 5
+  },
+  {
+   "key": "sam-flanders",
+   "player": "Sam Flanders",
+   "C": 2019,
+   "N": 4,
+   "year": 2023,
+   "default": 2711,
+   "capt_off": 2707,
+   "capt_scar": 4
+  },
+  {
+   "key": "thomson-dow",
+   "player": "Thomson Dow",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 1043,
+   "capt_off": 1039,
+   "capt_scar": 4
+  },
+  {
+   "key": "jeremy-sharp",
+   "player": "Jeremy Sharp",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 912,
+   "capt_off": 908,
+   "capt_scar": 4
+  },
+  {
+   "key": "charlie-constable",
+   "player": "Charlie Constable",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 2081,
+   "capt_off": 2077,
+   "capt_scar": 4
+  },
+  {
+   "key": "callum-mills",
+   "player": "Callum Mills",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 3042,
+   "capt_off": 3038,
+   "capt_scar": 4
+  },
+  {
+   "key": "josh-dunkley",
+   "player": "Josh Dunkley",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 1579,
+   "capt_off": 1575,
+   "capt_scar": 4
+  },
+  {
+   "key": "kade-stewart",
+   "player": "Kade Stewart",
+   "C": 2015,
+   "N": 1,
+   "year": 2016,
+   "default": 638,
+   "capt_off": 634,
+   "capt_scar": 4
+  },
+  {
+   "key": "dan-houston",
+   "player": "Dan Houston",
+   "C": 2015,
+   "N": 5,
+   "year": 2020,
+   "default": 3689,
+   "capt_off": 3685,
+   "capt_scar": 4
+  },
+  {
+   "key": "jack-steele",
+   "player": "Jack Steele",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 2622,
+   "capt_off": 2618,
+   "capt_scar": 4
+  },
+  {
+   "key": "dominic-sheed",
+   "player": "Dominic Sheed",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1731,
+   "capt_off": 1727,
+   "capt_scar": 4
+  },
+  {
+   "key": "zak-jones",
+   "player": "Zak Jones",
+   "C": 2013,
+   "N": 4,
+   "year": 2017,
+   "default": 2473,
+   "capt_off": 2469,
+   "capt_scar": 4
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 3,
+   "year": 2015,
+   "default": 3241,
+   "capt_off": 3237,
+   "capt_scar": 4
+  },
+  {
+   "key": "lachie-whitfield",
+   "player": "Lachie Whitfield",
+   "C": 2012,
+   "N": 4,
+   "year": 2016,
+   "default": 3448,
+   "capt_off": 3444,
+   "capt_scar": 4
+  },
+  {
+   "key": "jaeger-o-meara",
+   "player": "Jaeger O'Meara",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 3438,
+   "capt_off": 3434,
+   "capt_scar": 4
+  },
+  {
+   "key": "toby-greene",
+   "player": "Toby Greene",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 5808,
+   "capt_off": 5804,
+   "capt_scar": 4
+  },
+  {
+   "key": "harley-bennell",
+   "player": "Harley Bennell",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 5512,
+   "capt_off": 5508,
+   "capt_scar": 4
+  },
+  {
+   "key": "harley-bennell",
+   "player": "Harley Bennell",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 4644,
+   "capt_off": 4640,
+   "capt_scar": 4
+  },
+  {
+   "key": "cameron-guthrie",
+   "player": "Cameron Guthrie",
+   "C": 2010,
+   "N": 4,
+   "year": 2014,
+   "default": 2270,
+   "capt_off": 2266,
+   "capt_scar": 4
+  },
+  {
+   "key": "jack-gunston",
+   "player": "Jack Gunston",
+   "C": 2009,
+   "N": 6,
+   "year": 2015,
+   "default": 6467,
+   "capt_off": 6463,
+   "capt_scar": 4
+  },
+  {
+   "key": "daniel-rich",
+   "player": "Daniel Rich",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 3623,
+   "capt_off": 3619,
+   "capt_scar": 4
+  },
+  {
+   "key": "daniel-hannebery",
+   "player": "Daniel Hannebery",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 2511,
+   "capt_off": 2507,
+   "capt_scar": 4
+  },
+  {
+   "key": "jordie-mckenzie",
+   "player": "Jordie McKenzie",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 1963,
+   "capt_off": 1959,
+   "capt_scar": 4
+  },
+  {
+   "key": "chris-masten",
+   "player": "Chris Masten",
+   "C": 2007,
+   "N": 6,
+   "year": 2013,
+   "default": 3421,
+   "capt_off": 3417,
+   "capt_scar": 4
+  },
+  {
+   "key": "ben-mcevoy",
+   "player": "Ben McEvoy",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 4007,
+   "capt_off": 4003,
+   "capt_scar": 4
+  },
+  {
+   "key": "jack-grimes",
+   "player": "Jack Grimes",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 3910,
+   "capt_off": 3906,
+   "capt_scar": 4
+  },
+  {
+   "key": "scott-selwood",
+   "player": "Scott Selwood",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 1234,
+   "capt_off": 1230,
+   "capt_scar": 4
+  },
+  {
+   "key": "scott-selwood",
+   "player": "Scott Selwood",
+   "C": 2007,
+   "N": 4,
+   "year": 2011,
+   "default": 2553,
+   "capt_off": 2549,
+   "capt_scar": 4
+  },
+  {
+   "key": "dawson-simpson",
+   "player": "Dawson Simpson",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 964,
+   "capt_off": 960,
+   "capt_scar": 4
+  },
+  {
+   "key": "matthew-leuenberger",
+   "player": "Matthew Leuenberger",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 2147,
+   "capt_off": 2143,
+   "capt_scar": 4
+  },
+  {
+   "key": "albert-proud",
+   "player": "Albert Proud",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 842,
+   "capt_off": 838,
+   "capt_scar": 4
+  },
+  {
+   "key": "lance-franklin",
+   "player": "Lance Franklin",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 6268,
+   "capt_off": 6264,
+   "capt_scar": 4
+  },
+  {
+   "key": "nathan-van-berlo",
+   "player": "Nathan van Berlo",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 2239,
+   "capt_off": 2235,
+   "capt_scar": 4
+  },
+  {
+   "key": "grant-birchall",
+   "player": "Grant Birchall",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 3240,
+   "capt_off": 3236,
+   "capt_scar": 4
+  },
+  {
+   "key": "max-bailey",
+   "player": "Max Bailey",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 920,
+   "capt_off": 916,
+   "capt_scar": 4
+  },
+  {
+   "key": "alex-davies",
+   "player": "Alex Davies",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1007,
+   "capt_off": 1004,
+   "capt_scar": 3
+  },
+  {
+   "key": "sam-berry",
+   "player": "Sam Berry",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1332,
+   "capt_off": 1329,
+   "capt_scar": 3
+  },
+  {
+   "key": "lachlan-ash",
+   "player": "Lachlan Ash",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 2159,
+   "capt_off": 2156,
+   "capt_scar": 3
+  },
+  {
+   "key": "deven-robertson",
+   "player": "Deven Robertson",
+   "C": 2019,
+   "N": 1,
+   "year": 2020,
+   "default": 929,
+   "capt_off": 926,
+   "capt_scar": 3
+  },
+  {
+   "key": "jye-caldwell",
+   "player": "Jye Caldwell",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 2074,
+   "capt_off": 2071,
+   "capt_scar": 3
+  },
+  {
+   "key": "jackson-hately",
+   "player": "Jackson Hately",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 1774,
+   "capt_off": 1771,
+   "capt_scar": 3
+  },
+  {
+   "key": "xavier-duursma",
+   "player": "Xavier Duursma",
+   "C": 2018,
+   "N": 3,
+   "year": 2021,
+   "default": 1912,
+   "capt_off": 1909,
+   "capt_scar": 3
+  },
+  {
+   "key": "bailey-williams-wc",
+   "player": "Bailey J. Williams",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 1723,
+   "capt_off": 1720,
+   "capt_scar": 3
+  },
+  {
+   "key": "jack-bowes",
+   "player": "Jack Bowes",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 2444,
+   "capt_off": 2441,
+   "capt_scar": 3
+  },
+  {
+   "key": "jordan-gallucci",
+   "player": "Jordan Gallucci",
+   "C": 2016,
+   "N": 1,
+   "year": 2017,
+   "default": 1291,
+   "capt_off": 1288,
+   "capt_scar": 3
+  },
+  {
+   "key": "rowan-marshall",
+   "player": "Rowan Marshall",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 3436,
+   "capt_off": 3433,
+   "capt_scar": 3
+  },
+  {
+   "key": "darcy-parish",
+   "player": "Darcy Parish",
+   "C": 2015,
+   "N": 5,
+   "year": 2020,
+   "default": 3052,
+   "capt_off": 3049,
+   "capt_scar": 3
+  },
+  {
+   "key": "dan-houston",
+   "player": "Dan Houston",
+   "C": 2015,
+   "N": 4,
+   "year": 2019,
+   "default": 2864,
+   "capt_off": 2861,
+   "capt_scar": 3
+  },
+  {
+   "key": "jack-steele",
+   "player": "Jack Steele",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 1279,
+   "capt_off": 1276,
+   "capt_scar": 3
+  },
+  {
+   "key": "mitchell-white-1",
+   "player": "Mitchell White",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 622,
+   "capt_off": 619,
+   "capt_scar": 3
+  },
+  {
+   "key": "kade-kolodjashnij",
+   "player": "Kade Kolodjashnij",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 2223,
+   "capt_off": 2220,
+   "capt_scar": 3
+  },
+  {
+   "key": "darcy-lang",
+   "player": "Darcy Lang",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1293,
+   "capt_off": 1290,
+   "capt_scar": 3
+  },
+  {
+   "key": "luke-dunstan",
+   "player": "Luke Dunstan",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 2012,
+   "capt_off": 2009,
+   "capt_scar": 3
+  },
+  {
+   "key": "josh-simpson",
+   "player": "Josh Simpson",
+   "C": 2012,
+   "N": 1,
+   "year": 2013,
+   "default": 980,
+   "capt_off": 977,
+   "capt_scar": 3
+  },
+  {
+   "key": "billy-longer",
+   "player": "Billy Longer",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 1999,
+   "capt_off": 1996,
+   "capt_scar": 3
+  },
+  {
+   "key": "rory-laird",
+   "player": "Rory Laird",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 3019,
+   "capt_off": 3016,
+   "capt_scar": 3
+  },
+  {
+   "key": "mitchell-wallis",
+   "player": "Mitchell Wallis",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 2085,
+   "capt_off": 2082,
+   "capt_scar": 3
+  },
+  {
+   "key": "scott-lycett",
+   "player": "Scott Lycett",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 924,
+   "capt_off": 921,
+   "capt_scar": 3
+  },
+  {
+   "key": "luke-parker",
+   "player": "Luke Parker",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 2748,
+   "capt_off": 2745,
+   "capt_scar": 3
+  },
+  {
+   "key": "ben-cunnington",
+   "player": "Ben Cunnington",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 2457,
+   "capt_off": 2454,
+   "capt_scar": 3
+  },
+  {
+   "key": "daniel-rich",
+   "player": "Daniel Rich",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 3663,
+   "capt_off": 3660,
+   "capt_scar": 3
+  },
+  {
+   "key": "zachary-clarke",
+   "player": "Zachary Clarke",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 2319,
+   "capt_off": 2316,
+   "capt_scar": 3
+  },
+  {
+   "key": "matthew-deboer",
+   "player": "Matthew DeBoer",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 989,
+   "capt_off": 986,
+   "capt_scar": 3
+  },
+  {
+   "key": "clancee-pearce",
+   "player": "Clancee Pearce",
+   "C": 2008,
+   "N": 4,
+   "year": 2012,
+   "default": 2276,
+   "capt_off": 2273,
+   "capt_scar": 3
+  },
+  {
+   "key": "rhys-palmer",
+   "player": "Rhys Palmer",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 2497,
+   "capt_off": 2494,
+   "capt_scar": 3
+  },
+  {
+   "key": "ben-mcevoy",
+   "player": "Ben McEvoy",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 1472,
+   "capt_off": 1469,
+   "capt_scar": 3
+  },
+  {
+   "key": "bradley-ebert",
+   "player": "Brad Ebert",
+   "C": 2007,
+   "N": 7,
+   "year": 2014,
+   "default": 3103,
+   "capt_off": 3100,
+   "capt_scar": 3
+  },
+  {
+   "key": "shaun-hampson",
+   "player": "Shaun Hampson",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 995,
+   "capt_off": 992,
+   "capt_scar": 3
+  },
+  {
+   "key": "richard-tambling",
+   "player": "Richard Tambling",
+   "C": 2004,
+   "N": 5,
+   "year": 2009,
+   "default": 2998,
+   "capt_off": 2995,
+   "capt_scar": 3
+  },
+  {
+   "key": "xavier-ellis",
+   "player": "Xavier Ellis",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 2491,
+   "capt_off": 2488,
+   "capt_scar": 3
+  },
+  {
+   "key": "jarrad-oakley-nicholls",
+   "player": "Jarrad Oakley-Nicholls",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 1171,
+   "capt_off": 1168,
+   "capt_scar": 3
+  },
+  {
+   "key": "nathan-jones",
+   "player": "Nathan Jones",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 2222,
+   "capt_off": 2219,
+   "capt_scar": 3
+  },
+  {
+   "key": "nathan-jones",
+   "player": "Nathan Jones",
+   "C": 2005,
+   "N": 7,
+   "year": 2012,
+   "default": 2956,
+   "capt_off": 2953,
+   "capt_scar": 3
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "player": "Nathan O'Driscoll",
+   "C": 2020,
+   "N": 2,
+   "year": 2022,
+   "default": 1530,
+   "capt_off": 1528,
+   "capt_scar": 2
+  },
+  {
+   "key": "caleb-poulter",
+   "player": "Caleb Poulter",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1356,
+   "capt_off": 1354,
+   "capt_scar": 2
+  },
+  {
+   "key": "lachlan-ash",
+   "player": "Lachlan Ash",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 2347,
+   "capt_off": 2345,
+   "capt_scar": 2
+  },
+  {
+   "key": "sam-flanders",
+   "player": "Sam Flanders",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 2240,
+   "capt_off": 2238,
+   "capt_scar": 2
+  },
+  {
+   "key": "deven-robertson",
+   "player": "Deven Robertson",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 1398,
+   "capt_off": 1396,
+   "capt_scar": 2
+  },
+  {
+   "key": "nick-bryan",
+   "player": "Nick Bryan",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 716,
+   "capt_off": 714,
+   "capt_scar": 2
+  },
+  {
+   "key": "chayce-jones",
+   "player": "Chayce Jones",
+   "C": 2018,
+   "N": 2,
+   "year": 2020,
+   "default": 2152,
+   "capt_off": 2150,
+   "capt_scar": 2
+  },
+  {
+   "key": "jye-caldwell",
+   "player": "Jye Caldwell",
+   "C": 2018,
+   "N": 4,
+   "year": 2022,
+   "default": 2530,
+   "capt_off": 2528,
+   "capt_scar": 2
+  },
+  {
+   "key": "brayden-crossley",
+   "player": "Brayden Crossley",
+   "C": 2017,
+   "N": 1,
+   "year": 2018,
+   "default": 1138,
+   "capt_off": 1136,
+   "capt_scar": 2
+  },
+  {
+   "key": "jy-simpkin",
+   "player": "Jy Simpkin",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 2224,
+   "capt_off": 2222,
+   "capt_scar": 2
+  },
+  {
+   "key": "harry-perryman",
+   "player": "Harry Perryman",
+   "C": 2016,
+   "N": 6,
+   "year": 2022,
+   "default": 3723,
+   "capt_off": 3721,
+   "capt_scar": 2
+  },
+  {
+   "key": "jordan-gallucci",
+   "player": "Jordan Gallucci",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 1868,
+   "capt_off": 1866,
+   "capt_scar": 2
+  },
+  {
+   "key": "thomas-stewart",
+   "player": "Thomas Stewart",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 3382,
+   "capt_off": 3380,
+   "capt_scar": 2
+  },
+  {
+   "key": "jack-graham",
+   "player": "Jack Graham",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 1286,
+   "capt_off": 1284,
+   "capt_scar": 2
+  },
+  {
+   "key": "harry-morrison",
+   "player": "Harry Morrison",
+   "C": 2016,
+   "N": 2,
+   "year": 2018,
+   "default": 1098,
+   "capt_off": 1096,
+   "capt_scar": 2
+  },
+  {
+   "key": "christian-petracca",
+   "player": "Christian Petracca",
+   "C": 2014,
+   "N": 5,
+   "year": 2019,
+   "default": 2802,
+   "capt_off": 2800,
+   "capt_scar": 2
+  },
+  {
+   "key": "angus-brayshaw",
+   "player": "Angus Brayshaw",
+   "C": 2014,
+   "N": 5,
+   "year": 2019,
+   "default": 2966,
+   "capt_off": 2964,
+   "capt_scar": 2
+  },
+  {
+   "key": "corey-ellis",
+   "player": "Corey Ellis",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 1401,
+   "capt_off": 1399,
+   "capt_scar": 2
+  },
+  {
+   "key": "corey-ellis",
+   "player": "Corey Ellis",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 2157,
+   "capt_off": 2155,
+   "capt_scar": 2
+  },
+  {
+   "key": "caleb-daniel",
+   "player": "Caleb Daniel",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 1939,
+   "capt_off": 1937,
+   "capt_scar": 2
+  },
+  {
+   "key": "marc-pittonet",
+   "player": "Marc Pittonet",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 764,
+   "capt_off": 762,
+   "capt_scar": 2
+  },
+  {
+   "key": "mitchell-white-1",
+   "player": "Mitchell White",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 487,
+   "capt_off": 485,
+   "capt_scar": 2
+  },
+  {
+   "key": "luke-dunstan",
+   "player": "Luke Dunstan",
+   "C": 2013,
+   "N": 6,
+   "year": 2019,
+   "default": 3203,
+   "capt_off": 3201,
+   "capt_scar": 2
+  },
+  {
+   "key": "chad-wingard",
+   "player": "Chad Wingard",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 4484,
+   "capt_off": 4482,
+   "capt_scar": 2
+  },
+  {
+   "key": "tom-mitchell",
+   "player": "Tom Mitchell",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 2113,
+   "capt_off": 2111,
+   "capt_scar": 2
+  },
+  {
+   "key": "elliott-kavanagh",
+   "player": "Elliott Kavanagh",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 876,
+   "capt_off": 874,
+   "capt_scar": 2
+  },
+  {
+   "key": "alex-forster",
+   "player": "Alex Forster",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 734,
+   "capt_off": 732,
+   "capt_scar": 2
+  },
+  {
+   "key": "elliot-yeo",
+   "player": "Elliot Yeo",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 1152,
+   "capt_off": 1150,
+   "capt_scar": 2
+  },
+  {
+   "key": "mitchell-grigg",
+   "player": "Mitchell Grigg",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1552,
+   "capt_off": 1550,
+   "capt_scar": 2
+  },
+  {
+   "key": "jarrod-witts",
+   "player": "Jarrod Witts",
+   "C": 2011,
+   "N": 7,
+   "year": 2018,
+   "default": 2453,
+   "capt_off": 2451,
+   "capt_scar": 2
+  },
+  {
+   "key": "jackson-allen",
+   "player": "Jackson Allen",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 408,
+   "capt_off": 406,
+   "capt_scar": 2
+  },
+  {
+   "key": "jack-crisp",
+   "player": "Jack Crisp",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 2557,
+   "capt_off": 2555,
+   "capt_scar": 2
+  },
+  {
+   "key": "david-swallow",
+   "player": "David Swallow",
+   "C": 2010,
+   "N": 5,
+   "year": 2015,
+   "default": 3380,
+   "capt_off": 3378,
+   "capt_scar": 2
+  },
+  {
+   "key": "daniel-gorringe",
+   "player": "Daniel Gorringe",
+   "C": 2010,
+   "N": 3,
+   "year": 2013,
+   "default": 1207,
+   "capt_off": 1205,
+   "capt_scar": 2
+  },
+  {
+   "key": "cameron-guthrie",
+   "player": "Cameron Guthrie",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 972,
+   "capt_off": 970,
+   "capt_scar": 2
+  },
+  {
+   "key": "cameron-guthrie",
+   "player": "Cameron Guthrie",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 2446,
+   "capt_off": 2444,
+   "capt_scar": 2
+  },
+  {
+   "key": "kane-lucas",
+   "player": "Kane Lucas",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 1610,
+   "capt_off": 1608,
+   "capt_scar": 2
+  },
+  {
+   "key": "luke-tapscott",
+   "player": "Luke Tapscott",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 1502,
+   "capt_off": 1500,
+   "capt_scar": 2
+  },
+  {
+   "key": "rory-sloane",
+   "player": "Rory Sloane",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 1430,
+   "capt_off": 1428,
+   "capt_scar": 2
+  },
+  {
+   "key": "jordie-mckenzie",
+   "player": "Jordie McKenzie",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 1359,
+   "capt_off": 1357,
+   "capt_scar": 2
+  },
+  {
+   "key": "bradley-ebert",
+   "player": "Brad Ebert",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 2152,
+   "capt_off": 2150,
+   "capt_scar": 2
+  },
+  {
+   "key": "matthew-lobbe",
+   "player": "Matthew Lobbe",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 980,
+   "capt_off": 978,
+   "capt_scar": 2
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 3,
+   "year": 2010,
+   "default": 1702,
+   "capt_off": 1700,
+   "capt_scar": 2
+  },
+  {
+   "key": "brendan-whitecross",
+   "player": "Brendan Whitecross",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 1473,
+   "capt_off": 1471,
+   "capt_scar": 2
+  },
+  {
+   "key": "luke-pratt",
+   "player": "Luke Pratt",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 441,
+   "capt_off": 439,
+   "capt_scar": 2
+  },
+  {
+   "key": "david-armitage",
+   "player": "David Armitage",
+   "C": 2006,
+   "N": 2,
+   "year": 2008,
+   "default": 2252,
+   "capt_off": 2250,
+   "capt_scar": 2
+  },
+  {
+   "key": "brent-renouf",
+   "player": "Brent Renouf",
+   "C": 2006,
+   "N": 5,
+   "year": 2011,
+   "default": 1507,
+   "capt_off": 1505,
+   "capt_scar": 2
+  },
+  {
+   "key": "todd-goldstein",
+   "player": "Todd Goldstein",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 1776,
+   "capt_off": 1774,
+   "capt_scar": 2
+  },
+  {
+   "key": "danny-meyer",
+   "player": "Danny Meyer",
+   "C": 2004,
+   "N": 1,
+   "year": 2005,
+   "default": 1038,
+   "capt_off": 1036,
+   "capt_scar": 2
+  },
+  {
+   "key": "brad-moran",
+   "player": "Brad Moran",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 784,
+   "capt_off": 782,
+   "capt_scar": 2
+  },
+  {
+   "key": "clinton-young",
+   "player": "Clinton Young",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 1735,
+   "capt_off": 1733,
+   "capt_scar": 2
+  },
+  {
+   "key": "dale-thomas",
+   "player": "Dale Thomas",
+   "C": 2005,
+   "N": 4,
+   "year": 2009,
+   "default": 2980,
+   "capt_off": 2978,
+   "capt_scar": 2
+  },
+  {
+   "key": "richard-douglas",
+   "player": "Richard Douglas",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 1721,
+   "capt_off": 1719,
+   "capt_scar": 2
+  },
+  {
+   "key": "will-phillips",
+   "player": "Will Phillips",
+   "C": 2020,
+   "N": 2,
+   "year": 2022,
+   "default": 1914,
+   "capt_off": 1913,
+   "capt_scar": 1
+  },
+  {
+   "key": "finlay-macrae",
+   "player": "Finlay Macrae",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1089,
+   "capt_off": 1088,
+   "capt_scar": 1
+  },
+  {
+   "key": "max-holmes",
+   "player": "Max Holmes",
+   "C": 2020,
+   "N": 1,
+   "year": 2021,
+   "default": 1245,
+   "capt_off": 1244,
+   "capt_scar": 1
+  },
+  {
+   "key": "will-day",
+   "player": "Will Day",
+   "C": 2019,
+   "N": 3,
+   "year": 2022,
+   "default": 2023,
+   "capt_off": 2022,
+   "capt_scar": 1
+  },
+  {
+   "key": "jeremy-sharp",
+   "player": "Jeremy Sharp",
+   "C": 2019,
+   "N": 2,
+   "year": 2021,
+   "default": 1278,
+   "capt_off": 1277,
+   "capt_scar": 1
+  },
+  {
+   "key": "james-rowbottom",
+   "player": "James Rowbottom",
+   "C": 2018,
+   "N": 3,
+   "year": 2021,
+   "default": 1771,
+   "capt_off": 1770,
+   "capt_scar": 1
+  },
+  {
+   "key": "paddy-dow",
+   "player": "Paddy Dow",
+   "C": 2017,
+   "N": 2,
+   "year": 2019,
+   "default": 2564,
+   "capt_off": 2563,
+   "capt_scar": 1
+  },
+  {
+   "key": "tristan-xerri",
+   "player": "Tristan Xerri",
+   "C": 2017,
+   "N": 3,
+   "year": 2020,
+   "default": 644,
+   "capt_off": 643,
+   "capt_scar": 1
+  },
+  {
+   "key": "will-brodie",
+   "player": "Will Brodie",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 2093,
+   "capt_off": 2092,
+   "capt_scar": 1
+  },
+  {
+   "key": "jack-bowes",
+   "player": "Jack Bowes",
+   "C": 2016,
+   "N": 5,
+   "year": 2021,
+   "default": 2639,
+   "capt_off": 2638,
+   "capt_scar": 1
+  },
+  {
+   "key": "jack-graham",
+   "player": "Jack Graham",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 1428,
+   "capt_off": 1427,
+   "capt_scar": 1
+  },
+  {
+   "key": "jack-graham",
+   "player": "Jack Graham",
+   "C": 2016,
+   "N": 4,
+   "year": 2020,
+   "default": 2220,
+   "capt_off": 2219,
+   "capt_scar": 1
+  },
+  {
+   "key": "peter-ladhams",
+   "player": "Peter Ladhams",
+   "C": 2016,
+   "N": 3,
+   "year": 2019,
+   "default": 1066,
+   "capt_off": 1065,
+   "capt_scar": 1
+  },
+  {
+   "key": "ryan-burton",
+   "player": "Ryan Burton",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 2217,
+   "capt_off": 2216,
+   "capt_scar": 1
+  },
+  {
+   "key": "david-cuningham",
+   "player": "David Cuningham",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 1189,
+   "capt_off": 1188,
+   "capt_scar": 1
+  },
+  {
+   "key": "ryan-clarke",
+   "player": "Ryan Clarke",
+   "C": 2015,
+   "N": 2,
+   "year": 2017,
+   "default": 1445,
+   "capt_off": 1444,
+   "capt_scar": 1
+  },
+  {
+   "key": "tom-phillips",
+   "player": "Tom Phillips",
+   "C": 2015,
+   "N": 3,
+   "year": 2018,
+   "default": 2431,
+   "capt_off": 2430,
+   "capt_scar": 1
+  },
+  {
+   "key": "lachlan-weller",
+   "player": "Lachlan Weller",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 1873,
+   "capt_off": 1872,
+   "capt_scar": 1
+  },
+  {
+   "key": "lachlan-weller",
+   "player": "Lachlan Weller",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 1977,
+   "capt_off": 1976,
+   "capt_scar": 1
+  },
+  {
+   "key": "lukas-webb",
+   "player": "Lukas Webb",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 1152,
+   "capt_off": 1151,
+   "capt_scar": 1
+  },
+  {
+   "key": "connor-blakely",
+   "player": "Connor Blakely",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 1405,
+   "capt_off": 1404,
+   "capt_scar": 1
+  },
+  {
+   "key": "billy-stretch",
+   "player": "Billy Stretch",
+   "C": 2014,
+   "N": 1,
+   "year": 2015,
+   "default": 955,
+   "capt_off": 954,
+   "capt_scar": 1
+  },
+  {
+   "key": "billy-stretch",
+   "player": "Billy Stretch",
+   "C": 2014,
+   "N": 2,
+   "year": 2016,
+   "default": 1263,
+   "capt_off": 1262,
+   "capt_scar": 1
+  },
+  {
+   "key": "caleb-daniel",
+   "player": "Caleb Daniel",
+   "C": 2014,
+   "N": 3,
+   "year": 2017,
+   "default": 2294,
+   "capt_off": 2293,
+   "capt_scar": 1
+  },
+  {
+   "key": "zak-jones",
+   "player": "Zak Jones",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1293,
+   "capt_off": 1292,
+   "capt_scar": 1
+  },
+  {
+   "key": "zak-jones",
+   "player": "Zak Jones",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 1594,
+   "capt_off": 1593,
+   "capt_scar": 1
+  },
+  {
+   "key": "darcy-lang",
+   "player": "Darcy Lang",
+   "C": 2013,
+   "N": 2,
+   "year": 2015,
+   "default": 1840,
+   "capt_off": 1839,
+   "capt_scar": 1
+  },
+  {
+   "key": "blake-acres",
+   "player": "Blake Acres",
+   "C": 2013,
+   "N": 3,
+   "year": 2016,
+   "default": 1730,
+   "capt_off": 1729,
+   "capt_scar": 1
+  },
+  {
+   "key": "billy-hartung",
+   "player": "Billy Hartung",
+   "C": 2013,
+   "N": 1,
+   "year": 2014,
+   "default": 1056,
+   "capt_off": 1055,
+   "capt_scar": 1
+  },
+  {
+   "key": "james-sicily",
+   "player": "James Sicily",
+   "C": 2013,
+   "N": 5,
+   "year": 2018,
+   "default": 3811,
+   "capt_off": 3810,
+   "capt_scar": 1
+  },
+  {
+   "key": "timothy-broomhead",
+   "player": "Timothy Broomhead",
+   "C": 2012,
+   "N": 2,
+   "year": 2014,
+   "default": 1222,
+   "capt_off": 1221,
+   "capt_scar": 1
+  },
+  {
+   "key": "lachlan-hunter",
+   "player": "Lachlan Hunter",
+   "C": 2012,
+   "N": 5,
+   "year": 2017,
+   "default": 2774,
+   "capt_off": 2773,
+   "capt_scar": 1
+  },
+  {
+   "key": "brad-crouch",
+   "player": "Brad Crouch",
+   "C": 2011,
+   "N": 5,
+   "year": 2016,
+   "default": 2697,
+   "capt_off": 2696,
+   "capt_scar": 1
+  },
+  {
+   "key": "toby-greene",
+   "player": "Toby Greene",
+   "C": 2011,
+   "N": 6,
+   "year": 2017,
+   "default": 4488,
+   "capt_off": 4487,
+   "capt_scar": 1
+  },
+  {
+   "key": "sam-docherty",
+   "player": "Sam Docherty",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 2929,
+   "capt_off": 2928,
+   "capt_scar": 1
+  },
+  {
+   "key": "thomas-sheridan",
+   "player": "Thomas Sheridan",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1233,
+   "capt_off": 1232,
+   "capt_scar": 1
+  },
+  {
+   "key": "sam-kerridge",
+   "player": "Sam Kerridge",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1248,
+   "capt_off": 1247,
+   "capt_scar": 1
+  },
+  {
+   "key": "elliot-yeo",
+   "player": "Elliot Yeo",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1258,
+   "capt_off": 1257,
+   "capt_scar": 1
+  },
+  {
+   "key": "elliot-yeo",
+   "player": "Elliot Yeo",
+   "C": 2011,
+   "N": 4,
+   "year": 2015,
+   "default": 2266,
+   "capt_off": 2265,
+   "capt_scar": 1
+  },
+  {
+   "key": "jack-newnes",
+   "player": "Jack Newnes",
+   "C": 2011,
+   "N": 3,
+   "year": 2014,
+   "default": 1762,
+   "capt_off": 1761,
+   "capt_scar": 1
+  },
+  {
+   "key": "tom-downie",
+   "player": "Tom Downie",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 404,
+   "capt_off": 403,
+   "capt_scar": 1
+  },
+  {
+   "key": "jarrod-witts",
+   "player": "Jarrod Witts",
+   "C": 2011,
+   "N": 2,
+   "year": 2013,
+   "default": 1011,
+   "capt_off": 1010,
+   "capt_scar": 1
+  },
+  {
+   "key": "tom-campbell",
+   "player": "Tom Campbell",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 988,
+   "capt_off": 987,
+   "capt_scar": 1
+  },
+  {
+   "key": "frazer-dale",
+   "player": "Frazer Dale",
+   "C": 2011,
+   "N": 1,
+   "year": 2012,
+   "default": 578,
+   "capt_off": 577,
+   "capt_scar": 1
+  },
+  {
+   "key": "tom-lynch-1",
+   "player": "Tom Lynch",
+   "C": 2010,
+   "N": 6,
+   "year": 2016,
+   "default": 6174,
+   "capt_off": 6173,
+   "capt_scar": 1
+  },
+  {
+   "key": "brodie-smith",
+   "player": "Brodie Smith",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 1411,
+   "capt_off": 1410,
+   "capt_scar": 1
+  },
+  {
+   "key": "billie-smedts",
+   "player": "Billie Smedts",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 1372,
+   "capt_off": 1371,
+   "capt_scar": 1
+  },
+  {
+   "key": "ben-jacobs",
+   "player": "Ben Jacobs",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 1464,
+   "capt_off": 1463,
+   "capt_scar": 1
+  },
+  {
+   "key": "jayden-pitt",
+   "player": "Jayden Pitt",
+   "C": 2010,
+   "N": 1,
+   "year": 2011,
+   "default": 1162,
+   "capt_off": 1161,
+   "capt_scar": 1
+  },
+  {
+   "key": "cameron-guthrie",
+   "player": "Cameron Guthrie",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 1488,
+   "capt_off": 1487,
+   "capt_scar": 1
+  },
+  {
+   "key": "andrew-phillips-1",
+   "player": "Andrew Phillips",
+   "C": 2010,
+   "N": 2,
+   "year": 2012,
+   "default": 944,
+   "capt_off": 943,
+   "capt_scar": 1
+  },
+  {
+   "key": "mitchell-duncan",
+   "player": "Mitchell Duncan",
+   "C": 2009,
+   "N": 7,
+   "year": 2016,
+   "default": 2996,
+   "capt_off": 2995,
+   "capt_scar": 1
+  },
+  {
+   "key": "jack-fitzpatrick",
+   "player": "Jack Fitzpatrick",
+   "C": 2009,
+   "N": 2,
+   "year": 2011,
+   "default": 518,
+   "capt_off": 517,
+   "capt_scar": 1
+  },
+  {
+   "key": "stephen-hill",
+   "player": "Stephen Hill",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 2776,
+   "capt_off": 2775,
+   "capt_scar": 1
+  },
+  {
+   "key": "daniel-rich",
+   "player": "Daniel Rich",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 4092,
+   "capt_off": 4091,
+   "capt_scar": 1
+  },
+  {
+   "key": "ayce-cordy",
+   "player": "Ayce Cordy",
+   "C": 2008,
+   "N": 3,
+   "year": 2011,
+   "default": 1002,
+   "capt_off": 1001,
+   "capt_scar": 1
+  },
+  {
+   "key": "david-zaharakis",
+   "player": "David Zaharakis",
+   "C": 2008,
+   "N": 5,
+   "year": 2013,
+   "default": 2837,
+   "capt_off": 2836,
+   "capt_scar": 1
+  },
+  {
+   "key": "mitchell-banner",
+   "player": "Mitchell Banner",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 1064,
+   "capt_off": 1063,
+   "capt_scar": 1
+  },
+  {
+   "key": "andrew-browne-1",
+   "player": "Andrew Browne",
+   "C": 2008,
+   "N": 2,
+   "year": 2010,
+   "default": 574,
+   "capt_off": 573,
+   "capt_scar": 1
+  },
+  {
+   "key": "clancee-pearce",
+   "player": "Clancee Pearce",
+   "C": 2008,
+   "N": 1,
+   "year": 2009,
+   "default": 836,
+   "capt_off": 835,
+   "capt_scar": 1
+  },
+  {
+   "key": "patrick-dangerfield",
+   "player": "Patrick Dangerfield",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 1467,
+   "capt_off": 1466,
+   "capt_scar": 1
+  },
+  {
+   "key": "bradley-ebert",
+   "player": "Brad Ebert",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 2097,
+   "capt_off": 2096,
+   "capt_scar": 1
+  },
+  {
+   "key": "jack-grimes",
+   "player": "Jack Grimes",
+   "C": 2007,
+   "N": 2,
+   "year": 2009,
+   "default": 4472,
+   "capt_off": 4471,
+   "capt_scar": 1
+  },
+  {
+   "key": "callan-ward",
+   "player": "Callan Ward",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 1014,
+   "capt_off": 1013,
+   "capt_scar": 1
+  },
+  {
+   "key": "clayton-hinkley",
+   "player": "Clayton Hinkley",
+   "C": 2007,
+   "N": 1,
+   "year": 2008,
+   "default": 987,
+   "capt_off": 986,
+   "capt_scar": 1
+  },
+  {
+   "key": "shaun-grigg",
+   "player": "Shaun Grigg",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 1043,
+   "capt_off": 1042,
+   "capt_scar": 1
+  },
+  {
+   "key": "shaun-grigg",
+   "player": "Shaun Grigg",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 1731,
+   "capt_off": 1730,
+   "capt_scar": 1
+  },
+  {
+   "key": "brad-howard",
+   "player": "Brad Howard",
+   "C": 2006,
+   "N": 1,
+   "year": 2007,
+   "default": 812,
+   "capt_off": 811,
+   "capt_scar": 1
+  },
+  {
+   "key": "josh-p-kennedy",
+   "player": "Josh Kennedy",
+   "C": 2006,
+   "N": 4,
+   "year": 2010,
+   "default": 2264,
+   "capt_off": 2263,
+   "capt_scar": 1
+  },
+  {
+   "key": "sam-jacobs",
+   "player": "Sam Jacobs",
+   "C": 2006,
+   "N": 3,
+   "year": 2009,
+   "default": 746,
+   "capt_off": 745,
+   "capt_scar": 1
+  },
+  {
+   "key": "john-meesen",
+   "player": "John Meesen",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 1061,
+   "capt_off": 1060,
+   "capt_scar": 1
+  },
+  {
+   "key": "adam-thomson",
+   "player": "Adam Thomson",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 1895,
+   "capt_off": 1894,
+   "capt_scar": 1
+  },
+  {
+   "key": "cameron-wood",
+   "player": "Cameron Wood",
+   "C": 2004,
+   "N": 5,
+   "year": 2009,
+   "default": 1824,
+   "capt_off": 1823,
+   "capt_scar": 1
+  },
+  {
+   "key": "matt-rosa",
+   "player": "Matt Rosa",
+   "C": 2004,
+   "N": 3,
+   "year": 2007,
+   "default": 2271,
+   "capt_off": 2270,
+   "capt_scar": 1
+  },
+  {
+   "key": "ivan-maric",
+   "player": "Ivan Maric",
+   "C": 2004,
+   "N": 2,
+   "year": 2006,
+   "default": 994,
+   "capt_off": 993,
+   "capt_scar": 1
+  },
+  {
+   "key": "ivan-maric",
+   "player": "Ivan Maric",
+   "C": 2004,
+   "N": 4,
+   "year": 2008,
+   "default": 1993,
+   "capt_off": 1992,
+   "capt_scar": 1
+  },
+  {
+   "key": "grant-birchall",
+   "player": "Grant Birchall",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 2735,
+   "capt_off": 2734,
+   "capt_scar": 1
+  },
+  {
+   "key": "robert-warnock",
+   "player": "Robert Warnock",
+   "C": 2005,
+   "N": 3,
+   "year": 2008,
+   "default": 1392,
+   "capt_off": 1391,
+   "capt_scar": 1
+  },
+  {
+   "key": "andrew-swallow",
+   "player": "Andrew Swallow",
+   "C": 2005,
+   "N": 1,
+   "year": 2006,
+   "default": 916,
+   "capt_off": 915,
+   "capt_scar": 1
+  },
+  {
+   "key": "angus-graham",
+   "player": "Angus Graham",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 675,
+   "capt_off": 674,
+   "capt_scar": 1
+  },
+  {
+   "key": "cheynee-stiller",
+   "player": "Cheynee Stiller",
+   "C": 2005,
+   "N": 2,
+   "year": 2007,
+   "default": 2626,
+   "capt_off": 2625,
+   "capt_scar": 1
+  }
+ ]
+}

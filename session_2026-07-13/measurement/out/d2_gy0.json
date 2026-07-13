@@ -1,0 +1,147 @@
+{
+ "board": "81e48293 (store b0c39d78, tagged baked v2.9)",
+ "numeraire_F": 1.0524,
+ "v0_pick1_raw": 2830.6,
+ "v0_pick1_numeraire": 2689.7,
+ "PVC_pick1": 3000,
+ "seam_table": [
+  {
+   "band": "1-3",
+   "n": 69,
+   "posmix": {
+    "GEN_DEF": 5,
+    "GEN_FWD": 7,
+    "KEY_DEF": 2,
+    "KEY_FWD": 14,
+    "MID": 38,
+    "RUC": 3
+   },
+   "compwt_V0_numeraire": 2555.1,
+   "derived_PVC": 2454.7,
+   "deviation": 100.4,
+   "deviation_pct": 4.09
+  },
+  {
+   "band": "4-7",
+   "n": 91,
+   "posmix": {
+    "GEN_DEF": 14,
+    "GEN_FWD": 12,
+    "KEY_DEF": 8,
+    "KEY_FWD": 11,
+    "MID": 44,
+    "RUC": 2
+   },
+   "compwt_V0_numeraire": 2025.6,
+   "derived_PVC": 1832.8,
+   "deviation": 192.8,
+   "deviation_pct": 10.52
+  },
+  {
+   "band": "8-12",
+   "n": 114,
+   "posmix": {
+    "GEN_DEF": 24,
+    "GEN_FWD": 18,
+    "KEY_DEF": 11,
+    "KEY_FWD": 19,
+    "MID": 38,
+    "RUC": 4
+   },
+   "compwt_V0_numeraire": 1464.9,
+   "derived_PVC": 1418.2,
+   "deviation": 46.7,
+   "deviation_pct": 3.29
+  },
+  {
+   "band": "13-20",
+   "n": 182,
+   "posmix": {
+    "GEN_DEF": 38,
+    "GEN_FWD": 35,
+    "KEY_DEF": 18,
+    "KEY_FWD": 25,
+    "MID": 57,
+    "RUC": 9
+   },
+   "compwt_V0_numeraire": 1107.4,
+   "derived_PVC": 917.9,
+   "deviation": 189.4,
+   "deviation_pct": 20.63
+  },
+  {
+   "band": "21-27",
+   "n": 160,
+   "posmix": {
+    "GEN_DEF": 27,
+    "GEN_FWD": 40,
+    "KEY_DEF": 17,
+    "KEY_FWD": 17,
+    "MID": 54,
+    "RUC": 5
+   },
+   "compwt_V0_numeraire": 883.3,
+   "derived_PVC": 597.1,
+   "deviation": 286.2,
+   "deviation_pct": 47.93
+  },
+  {
+   "band": "28-35",
+   "n": 180,
+   "posmix": {
+    "GEN_DEF": 37,
+    "GEN_FWD": 34,
+    "KEY_DEF": 25,
+    "KEY_FWD": 25,
+    "MID": 50,
+    "RUC": 9
+   },
+   "compwt_V0_numeraire": 753.4,
+   "derived_PVC": 569.7,
+   "deviation": 183.7,
+   "deviation_pct": 32.24
+  },
+  {
+   "band": "36-48",
+   "n": 297,
+   "posmix": {
+    "GEN_DEF": 64,
+    "GEN_FWD": 76,
+    "KEY_DEF": 33,
+    "KEY_FWD": 27,
+    "MID": 76,
+    "RUC": 21
+   },
+   "compwt_V0_numeraire": 625.4,
+   "derived_PVC": 468.8,
+   "deviation": 156.7,
+   "deviation_pct": 33.42
+  },
+  {
+   "band": "49-99",
+   "n": 477,
+   "posmix": {
+    "GEN_DEF": 122,
+    "GEN_FWD": 114,
+    "KEY_DEF": 51,
+    "KEY_FWD": 55,
+    "MID": 102,
+    "RUC": 33
+   },
+   "compwt_V0_numeraire": 528.6,
+   "derived_PVC": 307.6,
+   "deviation": 221.0,
+   "deviation_pct": 71.83
+  }
+ ],
+ "all_bands_V0_gt_PVC": true,
+ "net_deviation": 1376.9,
+ "chain": {
+  "y0_V0_mean": 901.9,
+  "y1_mean": 631.3,
+  "y2_mean": 977.1,
+  "shape": "y0=902 -> y1=631 -> y2=977",
+  "y1_below_y0": true,
+  "y2_above_y1": true
+ }
+}
