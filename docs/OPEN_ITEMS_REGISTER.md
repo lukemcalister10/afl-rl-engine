@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v70 2026-07-13 (**A-PAIRS BANDS OWNER-RULED** ("Bands okay") → CONSTRAINTS **v1.10** + acceptance v1.10 + manifest **v4.13** filed. **NEW OWNER HYPOTHESIS — THE CAPTAINCY PREMIUM (item 45)**: the captain term is SATURATING (hard cap 18 pts) and damps the very difference-makers the owner says are unique; it is now DELIVERABLE 4 of the measurement build. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v71 2026-07-13 (**THE SEAM IS CLOSED** — CORE **v2.5** filed (speed rules S1-S6 · SILENCE IS A RED · the base-pin rule · the position taxonomy · Tier-1-lite · M1/F11 obituary) + SSI brought to **v1.2** in the repo + manifest **v4.14**. **OWNER CAPTAINCY READ REGISTERED (item 46): his implied credit gaps EQUAL the raw scoring gaps — a marginal slope of 1.00/pt at the top, vs the live curve's 0.34 and falling.** Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1119,6 +1119,66 @@
     RELATION TO ITEM 44: this is a candidate mechanism for RAISING Bont rather than CUTTING Sanders —
     which is the direction the owner's own remediation doctrine prefers. It does NOT replace the
     PVC re-derivation; both may be true.
+
+46. **THE CAPTAINCY READ — OWNER-WORDED, WITH NUMBERS (2026-07-13). CALIBRATION TARGET FOR D4.**
+    OWNER, VERBATIM: *"you captain one player a week, but it's not always the same player. Injuries
+    happen, different matchups happen. Having guys who can do the job is an asset."* · *"I would have
+    thought Gawn should be getting 6.5 points of credit more than Bontempelli is, who should be
+    getting 5 points of credit more than Daicos does. Closer to the replacement line I can see why the
+    benefit would be smaller with each point of course."*
+    **THE SUPERVISOR'S ARITHMETIC ON HIS READ — AND IT IS EXACT.** Scoring levels (tagged board):
+    gawn **126.0** · bont **119.5** · daicos **114.5**. RAW GAPS: gawn−bont = **6.5** ·
+    bont−daicos = **5.0**. **The owner's stated credit gaps ARE the raw scoring gaps, to the decimal.**
+    That is not a coincidence and it is not arbitrary: it is the DOUBLING RATE. If a player is going to
+    be captained, every extra point of his average counts TWICE — so his marginal CAPTAIN credit per
+    scoring point is exactly **1.00**. The owner has, in plain words, specified a marginal slope of 1.0
+    in the elite band, decaying to 0 at the replacement line.
+    **WHAT THE LIVE CURVE ACTUALLY DOES:** capt_prem gives gawn 7.72 · bont 5.49 · daicos 3.31 →
+    credit gaps of **2.23** and **2.18**; marginal slope near the top = **0.34 and FALLING** (the cap
+    at 18 pulls it toward zero). The model is a third of the owner's read at the top, and heading the
+    wrong way.
+    **THE SHAPE HE HAS DESCRIBED** (supervisor, for D4 to test — NOT to wire): prem(lev) =
+    ∫ P(captained | level) d(level), rising from 0 at the line to 1.0 in the elite band. This is
+    EXACTLY the shape of the DEAD TWIN `capt_bonus()` (defined, never called) — an integral of a
+    sigmoid, whose asymptotic slope is CAPT_GAIN. Today CAPT_GAIN = 0.35; the owner's read implies
+    ≈ 1.0, with P saturating EARLIER than the current sigmoid (CAPT_M 116 / CAPT_W 5) allows.
+    **AND HIS ROTATION ARGUMENT IS WHY P SATURATES EARLY** — it also corrects the supervisor's
+    "slot good / pure order statistic" framing, which was too narrow: because injuries and matchups
+    force you to rotate the armband, the top handful ALL get captained a meaningful share of the time,
+    so their marginal points are effectively doubled too. **Depth of captain-capable players is itself
+    an asset.** That is what makes P ≈ 1 across the elite band rather than only for the single best.
+    D4 MUST NOW: measure P(captained | level) off the record (does the top band really get the armband
+    often enough?) · fit the credit curve as ∫P · report the ladder in terms of the MARGINAL SLOPE at
+    the top (the owner's units), not just the level values · and report the G-COHORT margin at every
+    rung (only 0.0399 of headroom).
+    STATUS: OWNER READ — ground truth until he waives it (CORE MISSION). It is a CALIBRATION TARGET,
+    not a lever to be hand-tuned to hit.
+
+47. **THE SEAM — CLOSED (2026-07-13, supervisor pen).** CORE **v2.5** filed. Folds:
+    · **THE SPEED RULES S1–S6** get their own CORE section (S1 hash-cached artifacts · S2 one job per
+      chat · S3 parallel-analysis default · S4 frozen-suite-only measurement · S5 standing cert harness
+      · **S6 audit-sizing**), with the REFUSED LEVERS recorded.
+    · **SILENCE IS A RED** (CORE rule 1): a check that produces NO result has FAILED, not passed. Every
+      gate/guard/assertion produces a verdict or HALTs; harnesses propagate non-zero exits; never pipe a
+      check through tail/head without checking its exit code. Born of item 38.
+    · **THE BASE-PIN RULE** (CORE DIRECTIVES): pins read "main AT OR AFTER <SHA> + docs/-only diff",
+      never strict equality, while the docs pen is live. Born of item 42.
+    · **THE POSITION TAXONOMY** stated in CORE because a previous seat got it wrong and it DRIVES the
+      pricing: `drafted_position` → the cohort curves (VERIFIED in the tree: rl_model.py
+      `_p['pos']=_p['drafted_position']`) · `present_position` → the year-0 leg · `future_position` →
+      the years-1+ leg, curve, peak, runway. DPP blend stays DELETED.
+    · **TIER-1-LITE** recorded (gate change that moves no value: prescreen + red-path proofs + the
+      owner's word; the board-view rung is empty BY CONSTRUCTION — record why, so no seat later reads
+      it as a rung skipped).
+    · **M1 / F11 — OBITUARY.** Verified against the CURRENT tree: they exist in NO gate and NO code,
+      only in prose (ROADMAP v9, HANDOVER, archives). Doc ghosts. RETIRED — do not chase, do not
+      resurrect.
+    · **SINGLE_SOURCE_INVARIANT.md brought to v1.2 IN THE REPO** (its repo copy was BEHIND the seam
+      pack — a stale copy of the document that forbids stale copies). The filename stays UNVERSIONED by
+      design; the version lives in the header; a versioned duplicate would be a lookalike.
+    Manifest **v4.14** (Tier-0 → CORE v2.5). CORE v2.4 + manifest v4.13 archived.
+    ⚠ **OWNER ACTION: RE-SYNC PROJECT KNOWLEDGE** — the seam pack there is now several versions behind
+    (needs manifest v4.14 · CORE v2.5 · CONSTRAINTS v1.10 + acceptance v1.10 · SSI v1.2).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·

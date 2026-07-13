@@ -1,4 +1,9 @@
-# THE SINGLE-SOURCE INVARIANT — read this before touching data or code
+# THE SINGLE-SOURCE INVARIANT — v1.2 — read this before touching data or code
+### CHANGELOG v1.2 (2026-07-08): retired-doc pointer fixed — the discipline block referenced "the latest
+### KICKOFF §0"; KICKOFF is retired (merged into CORE). No rule changed. v1.1 changelog: archive/CHANGELOG.
+### FILE NOTE (filed to the repo 2026-07-13, at the v2.9 seam): this file's REPO copy was behind v1.2
+### until now. The filename carries NO version by design (a versioned duplicate would be a lookalike of
+### the very document that forbids lookalikes) — the VERSION lives in this header.
 ### Binding on every build and every supervisor. This is not guidance; it is the acceptance bar. If a change would violate it, STOP.
 
 ## THE ONE RULE (plain)
@@ -19,6 +24,7 @@ Why this exists: every failure in this project's history — the phantom-repo sc
 
 ## THE DISCIPLINE THAT MAKES THEM REAL
 - Each guard is wired to **STOP the build**, never to log a warning. A tripwire nobody reads is worse than nothing.
+- **SILENCE IS A RED (CORE v2.5, 2026-07-13).** A guard that produces no result — it crashed, its input was missing, its output was swallowed by a pipe — has FAILED, not passed. Every check produces a verdict or HALTs; every harness propagates a non-zero exit. (Why: a BINDING gate raised an exception behind a `| tail -8` and the suite reported PASS.)
 - The pipeline is **not "done" until all five pass** from a fresh bootstrap.
-- This block sits at the top of the kickoff every build and supervisor reads (KICKOFF v8 §0). It cannot be satisfied by intention — only by the guards going green.
+- CORE (THE INVARIANT) summarises this block for every seat; this file is the full spec — read it before any data or code work.
 - **Navigate by branch name + git SHA, never a store md5.** A store hash is a content check, not a place to stand. (Confusing the two cost real time on 2026-07-05.)
