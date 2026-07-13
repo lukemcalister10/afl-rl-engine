@@ -447,7 +447,13 @@ try:
         bak = prev + '.sgc_bak'
         if os.path.exists(prev):
             os.replace(prev, bak)
-        r = subprocess.run([sys.executable, 'rl_export.py'], cwd=RA, capture_output=True, text=True, timeout=1800)
+        # S1 fix (register item 24, 2026-07-13): pass RL_REPO + gate mode so the B4 regen resolves the repo-homed
+        # display inputs (data/owner_overrides.json) EXACTLY as the shipped board is built — the matrix subprocess
+        # already sets RL_REPO=ROOT (above). Without it the override file was unresolvable from the workspace and
+        # load_overrides() returned a SILENT [] (the S1 root cause): B4 then compared two override-LESS boards and
+        # passed BLIND to the override. With the override now ON the shipped board, B4 must build WITH it to agree.
+        _b4env = dict(os.environ, RL_REPO=ROOT, RL_CONFIG_MODE='gate')
+        r = subprocess.run([sys.executable, 'rl_export.py'], cwd=RA, env=_b4env, capture_output=True, text=True, timeout=1800)
         m_new = hashlib.md5(open(prev, 'rb').read()).hexdigest()[:8] if os.path.exists(prev) else 'MISSING'
         m_ship = hashlib.md5(open(shipped, 'rb').read()).hexdigest()[:8]
         if os.path.exists(prev):
