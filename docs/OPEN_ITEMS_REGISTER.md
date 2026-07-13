@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v71 2026-07-13 (**THE SEAM IS CLOSED** — CORE **v2.5** filed (speed rules S1-S6 · SILENCE IS A RED · the base-pin rule · the position taxonomy · Tier-1-lite · M1/F11 obituary) + SSI brought to **v1.2** in the repo + manifest **v4.14**. **OWNER CAPTAINCY READ REGISTERED (item 46): his implied credit gaps EQUAL the raw scoring gaps — a marginal slope of 1.00/pt at the top, vs the live curve's 0.34 and falling.** Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v72 2026-07-13 (JOB A (PR #70) + JOB B (shadow board) PRESCREENED — both PASS. ⚠ **JOB A BLOCKER: the SGC_B1_MATRIX seam could green-light a fabricated matrix in a real bake (config_manifest only polices RL_/PAR_ prefixes) — OWNER RULED OPTION B: fail-close it** (item 49; JOB A2 issued). **THE CAPTAINCY CLIFF (item 50): the premium is evaluated at the POINT ESTIMATE of a player's projected peak — Sanders' peak projects to 105.2, MISSING the 107.4 line by 2.2, so he earns ZERO captain credit in EVERY year of his path.** Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1179,6 +1179,76 @@
     Manifest **v4.14** (Tier-0 → CORE v2.5). CORE v2.4 + manifest v4.13 archived.
     ⚠ **OWNER ACTION: RE-SYNC PROJECT KNOWLEDGE** — the seam pack there is now several versions behind
     (needs manifest v4.14 · CORE v2.5 · CONSTRAINTS v1.10 + acceptance v1.10 · SSI v1.2).
+
+48. **JOB A + JOB B — SUPERVISOR PRESCREEN (2026-07-13). BOTH PASS.**
+    **JOB A** — branch `claude/b1-conform-silent-gate-pgm98w` · head **193250f** · **PR #70**.
+    Verified independently: B1 computes the JULY-8 construction and reproduces the supervisor's own
+    figures to the decimal (sums 69,840.0 / 79,298.2 / 88,002.4 / 86,652.9 / 80,460.5; den = y1;
+    **1.2601 / 1.2407 / 1.1521 PASS ×3**) · indexed reading demoted to a labelled non-gating SHAPE
+    diagnostic · `cohort_gate_official.py` **DELETED with an obituary** · breach-HALT and silence-HALT
+    proofs committed · suite reds exactly **{A2, A3, A12}** · store 340a7a32 / board 3dc19fbb
+    BYTE-IDENTICAL · SHIP_GATES.md carries the standing no-swallowed-pipe rule. Fence: one file outside
+    it — `data/gates_snapshots/gates_2030e5df.json` — which is the suite's OWN snapshot, rewritten by
+    running it (B1's detail string). Benign; noted, not a breach of intent.
+    **JOB B** — branch `claude/shadow-board-flattery-census-8p0rea` · head **0f43747**.
+    Fence HELD (nothing outside its session dir). Census reproduces d6c481f byte-identically.
+    SUPERVISOR RECOUNT off the committed JSON — the top-10 deflattered moves match EXACTLY: daicos
+    −859 · wanganeen-milera −761 · gulden −675 · t.green −604 · sheezel −548 · newcombe −526 ·
+    serong −492 · callaghan −476 · w.ashcroft −474 · butters −447. **93 rows move >2%** — recount
+    agrees with the reported F1 offender count.
+    **THE ONE GAP IS THE SUPERVISOR'S, NOT THE BUILD'S:** the directive asked for G-COHORT computed on
+    the DEFLATTERED view. That number cannot come from a board-space counterfactual — the gate reads
+    the walk-forward BOOK, so producing it means re-running the book under the fix, which IS the fix
+    build. The build DECLARED this instead of fabricating a figure. That is CORE rule 1 ("silence is a
+    red") working as intended. Its proxy stands: flattery concentrates in MATURE tenures (T4/T5/T6 =
+    2.45 / 3.85 / 3.36% of tenure value vs 0.23% at T1) ⇒ deflattering LOWERS y4/y5/y6 ⇒ **the cohort
+    gate gets SAFER.**
+
+49. **⚠ THE SEAM THAT COULD GREEN-LIGHT A LIE — OWNER RULED **OPTION B** (2026-07-13). JOB A2 ISSUED.**
+    Job A introduced `SGC_B1_MATRIX`: set it, and B1 reads a caller-supplied matrix INSTEAD of
+    regenerating one. The build flagged it. **The hole is bigger than it realised:**
+    `config_manifest.py`'s reject scan polices ONLY `RL_`- and `PAR_`-prefixed variables. `SGC_B1_MATRIX`
+    is NEITHER — so in a real gate/bake run it is **not cleared and not rejected**, and (the seam's own
+    documentation) *"a valid-meta doctored matrix is honoured."* **A frozen BINDING gate could be
+    pointed at a fabricated matrix and certify PASS.** We set out to fix a gate that could silently
+    FAIL; as it stood we would have shipped one that could be made to green-light a LIE — the same
+    disease, worse symptom.
+    **OWNER'S WORD: "Option b."** KEEP the seam (proofs that drive the REAL suite and its REAL exit code
+    are worth having) but make it **structurally incapable of certifying**: any run with the variable set
+    is stamped INJECTED, banners as NOT A CERTIFICATION, and **exits non-zero regardless of results** —
+    even on a clean, valid, non-breaching injected matrix; AND the config-manifest reject scan is
+    extended so ANY `SGC_*` variable HALTs a gate/bake run. Mechanism, not discipline.
+    JOB A2 directive issued (continues on the PR #70 branch; Tier-1-lite). **PR #70 DOES NOT MERGE until
+    A2 lands and is prescreened.**
+
+50. **THE CAPTAINCY CLIFF — the owner's question, and the answer changes the design (2026-07-13).**
+    OWNER ASKED: *"On Sanders — does he receive any future credit for potentially clearing the captain
+    bar in future?"*
+    **STRUCTURALLY, YES.** `capt_prem` is NOT applied to a player's current level — it is applied inside
+    the valuation loop **at each future season's PROJECTED level** (`rl_model.py`: `lev = lp·frac(age,
+    peak_age)` … `base = lev + capt_prem(lev)`), discounted. So forward captaincy credit EXISTS.
+    **BUT SANDERS GETS NONE — AND FOR A SHARPER REASON THAN THE SUPERVISOR FIRST GAVE.** (The earlier
+    claim "Sanders gains zero because he is below the line TODAY" was right by accident; CORRECTED.)
+    Projected PEAK levels vs the captaincy line (107.4): **ryley-sanders 105.2 — MISSES BY 2.2** ·
+    harley-reid 92.7 (misses by 14.7) · sheezel 113.3 · daicos 120.5 · bontempelli 118.2 · gawn 123.4.
+    The model projects that Sanders **never clears the bar in any year of his career**, so he earns
+    **zero captain credit in every year of his path**. He misses it by **2.2 points of projected peak**.
+    **THE STRUCTURAL DEFECT THIS EXPOSES:** the premium is evaluated at the **POINT ESTIMATE** of the
+    peak, not over its DISTRIBUTION. Because `capt_prem` is CONVEX near the line (identically zero
+    below it, rising above), **E[capt_prem(peak)] > capt_prem(E[peak])** — Jensen. A young player with
+    an uncertain peak has a real probability of becoming a captain-grade scorer and the model credits
+    him **nothing** for it. **This is precisely the convexity the owner has been circling** — and it
+    cuts BOTH ways for pair 3:
+      · Boost the premium, keep the point-estimate evaluation ⇒ Bont/Gawn/Daicos/Sheezel rise, Sanders
+        does NOT ⇒ **pair 3 CLOSES.**
+      · Boost the premium AND evaluate over the peak DISTRIBUTION (arguably more correct) ⇒ Sanders,
+        sitting 2.2 points under the bar, is exactly the marginal case and **may rise too ⇒ pair 3 may
+        NOT close**, and the young-convexity story gets STRONGER, not weaker.
+    Which of those is right is a DESIGN question with a real economic argument on each side, and it is
+    the owner's own stated position that bears on it (*"we don't know which players will become Bont and
+    can't price them like they will"* — which is the point-estimate treatment, implemented literally).
+    **HELD FOR THE FIX CHAPTER'S DESIGN SEAT.** D4 of the measurement build must now ALSO report: the
+    distribution of projected peaks around the line, and how many players sit within ±5 points of it.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
