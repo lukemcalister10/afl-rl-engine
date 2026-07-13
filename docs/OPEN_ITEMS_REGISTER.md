@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v49 2026-07-13 (SHARD S1 RECONCILED: PASS on every check — AND ITS "SURPRISE" IS REAL: the shipped board is missing the BRODIE OWNER OVERRIDE (silent no-op when the override file is not found); supervisor-confirmed on the FINAL board f2d6e3f5. ONE small pre-view fix job opened + hardening set. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v50 2026-07-13 (Owner rules the override fix FOLDS INTO THE BAKE (option a) — zero extra chats; he views the current board with ONE known display row (brodie unhalved, read 538); the baked board must prove the ov present. Bake + item-20 directives PRE-STAGED. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -533,7 +533,12 @@
     mode neither rejects nor clears it; (c) boot_guard compares 8-char hash prefixes only;
     (d) manifest names SINGLE_SOURCE_INVARIANT_v1.2.md, repo file is SINGLE_SOURCE_INVARIANT.md
     (seam-fold note).
-    **DISPOSITION: ONE SMALL PRE-VIEW FIX JOB (directive issued this turn)** — the owner views
+    **DISPOSITION — REVISED (owner-ruled 2026-07-13, option a): FOLD INTO THE BAKE BUILD, zero
+    extra chats.** The owner views the CURRENT board carrying ONE known display defect (brodie
+    shows unhalved — he reads him at 538 by eye, the Bramble pattern); the BAKE build carries the
+    full fix set below and its acceptance includes the one-row-one-field ov-present proof on the
+    baked board. The pre-view directive (issued turn 41) is WITHDRAWN unfired. Original
+    disposition text kept for the record: — the owner views
     the board BEFORE the bake word, and the viewed board must carry his standing override; a
     silent [] on a missing owner-ruling file is the halt-not-warn doctrine inverted. FIX SET:
     (1) owner_overrides resolution HALTS (never []) when the file cannot be found in any
