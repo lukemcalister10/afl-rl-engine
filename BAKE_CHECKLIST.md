@@ -36,6 +36,11 @@ Steps run IN ORDER; any step failing stops the ritual (subject to the SHIP_GATES
 - [ ] Any FAIL → failure triage per SHIP_GATES PROCESS before anything blocks: ENGINE-caused → blocks the bake;
       DATA-caused → escalate to Luke for uphold-or-amend (logged in CHANGELOG); AMBIGUOUS → decompose first.
       [DC]-tagged gates get the triage question first by default.
+- [ ] **NUMÉRAIRE ASSERT (STANDING LAW, owner-ruled 2026-07-12, register v30 item 17):** the shipped board's
+      pick-1 == **3000** (the numéraire). `rl_export.py` (g) enforces it: a numéraire board with pick-1 ≠ 3000
+      HALTS the write. Future scale drift re-bases the CURRENCY to the anchor (L7 ÷ the drift), never the anchor
+      to the drift. A legacy ×1.0524 board (pre-L7) is dormant-with-warning; once L7 is the refit's final step,
+      this assert is unconditional. STOP if a numéraire board reports pick-1 ≠ 3000.
 
 ## 4. BYTE-EXACT VALUES IN THE BAKE ENVIRONMENT
 - [ ] **SHIPPED LEVER CONFIG (R3, owner-ruled 2026-07-09):** `RL_PVCFIT=0` at bake — the W4 PVC fit is HELD OUT

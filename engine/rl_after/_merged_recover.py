@@ -12,10 +12,22 @@ for Y in range(2009,2026):
 REF=float(np.mean(list(era.values())))
 pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
 X,yy=[],[]
+_L4_MSD=os.environ.get('RL_MSD_POOL_EXCL','1')!='0'   # v2.9 L4: MSD training-pool exclusion (default ON; =0 ⇒ base byte-exact). Kill-switch; G-ATTR-separable.
 for p in pool:
-    if cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')): continue
+    if cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')) or (_L4_MSD and p.get('type')=='MSD'): continue
     d0=cp.debutyr(p)-1; last=max([x['year'] for x in p['scoring']]+[d0])
     for Y in range(d0,min(last,2026)+1): X.append(cp._feat(p,Y)); yy.append(cp.fwd_best3_from(p,Y,2026))
+# v2.9 L4 EDIT TRIPWIRE (membership stability — L4_AND_TRIO_FINDINGS; register item 17 D7). The re-entry trio
+# (Perez/McAndrew/Keane) is kept OUT of the calibration training pool by the DEBUT>2021 window, NOT by entry-type.
+# Any store edit (a DOB/debut correction re-admitting them, or a type relabel) that silently flips a named
+# load-bearing row's pool membership HALTS for a ruling — that is exactly the silent-re-admit hole.
+_L4_TRIP_NAMED={'Flynn Perez','Lachlan McAndrew','Mark Keane'}
+def _in_train_pool(p): return not (cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')) or (_L4_MSD and p.get('type')=='MSD'))
+for _tp in MA.data:
+    if _tp.get('player') in _L4_TRIP_NAMED and _in_train_pool(_tp):
+        raise SystemExit("L4 TRIPWIRE HALT (membership stability): %s re-admitted to the calibration training pool "
+                         "— a store edit flipped a named load-bearing leg (debut>2021 window / entry-type). Rule "
+                         "before shipping (L4_AND_TRIO_FINDINGS; register item 17 D7)."%_tp.get('player'))
 q97m=GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=200,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(np.array(X),np.array(yy))
 WQ6=np.array([0.18]*5+[0.10]); WQ6/=WQ6.sum(); RECX=[0.30,0.52,0.67,0.82,0.97,1.30]; RECY=[0.54,0.64,0.84,1.00,1.00,1.00]
 midpos=next(r['pos'] for r in MA.data if MA.GRP.get(r.get('pos'))=='MID'); GRPPOS={}
@@ -206,6 +218,13 @@ for _pp in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:   # STEP1: FRE
 # BOARD_LAYERS_OBITUARY.md (ENGINE-TERM DELETIONS). Resurrection ref:
 #   git show 0806d90:engine/rl_after/_merged_recover.py   (the D4 candidate, the last commit carrying cB)
 TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
+# v2.9 L3: s(age) breakout-persistence slope replaces the flat S_M1 in the proven-riser up-branch (gate RL_AGE,
+# default ON; RL_AGE=0 ⇒ flat 0.46 ⇒ base byte-exact). Curve = the l7hinr s(age) breakout persistence; clip to
+# [0,1]; a None as-of age falls back to the flat 0.46. Verified: butters 6060→5997 (−1.04%, inside G-PEAK 2%).
+_L3_AGE=os.environ.get('RL_AGE','1')!='0'
+_L3_AX=[20,21,22,23,24,25,26,27,28,29,30,31]
+_L3_AY=[0.915376,0.860795,0.789170,0.700837,0.599107,0.489589,0.377802,0.265858,0.150620,0.026915,0.0,0.0]
+def _S_AGE(a): return float(np.clip(np.interp(a,_L3_AX,_L3_AY),0.0,1.0)) if a is not None else 0.46
 def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
 def _coreM1(p,Y):
     Lo=cp._lvl_eff_orig(p,Y); n=_nqual(p,Y)
@@ -222,7 +241,7 @@ def _coreM1(p,Y):
         return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
     Lc=_lvlcurr(p,Y)
     if n>=PROVEN_N:
-        if Lc>=Lo: return (Lo+S_M1*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
+        if Lc>=Lo: return (Lo+(_S_AGE(cp._age_asof(p,Y)) if _L3_AGE else S_M1)*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
         drop=Lo-Lc
         if drop<=DOWN_TOL: return Lo
         sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
@@ -990,6 +1009,17 @@ def ev(p,Y=2026):
 _W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
 _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
 def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
+# ===== v2.9 L1(b): swap the ev-channel basis _PVC0 to the L1b smoothed derived curve (pin 3000) + rebuild the
+#       V0 guard / V0 curve / RUC ceiling grid — verbatim the l1_adopt_sim option-(b) recipe. Gate RL_PVCADOPT
+#       (default ON); RL_PVCADOPT=0 ⇒ block skipped ⇒ _PVC0 stays the frozen v3.4 ruler ⇒ base board byte-exact.
+#       Verified: board sum +0.179%, anchors byte-identical, knobel 402→505. Candidate ONLY (non-bakeable path).
+if os.environ.get('RL_PVCADOPT','1')!='0':
+    import json as _l1j
+    _L1CURVE={int(_k):int(_v) for _k,_v in _l1j.load(open('pvc_curve_L1b.json'))['curve'].items()}
+    _PVC0.clear(); _PVC0.update(_L1CURVE)
+    _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
+    _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
+    MA._pe_clear()
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):

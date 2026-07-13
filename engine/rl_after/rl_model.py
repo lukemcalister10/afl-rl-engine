@@ -1,4 +1,4 @@
-import json, numpy as np, math, re
+import json, numpy as np, math, re, os
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode
 data=json.load(open('rl_model_data.json')); P=json.load(open('params.json')); PMD=json.load(open('rl_passmark.json'))
@@ -298,7 +298,7 @@ def capt_bonus(level):
     return CAPT_GAIN*ss*h
 def pedmix(pk): return 0.50+0.32*math.exp(-(pk-1)/9.0)
 def clamp(x,a,b): return max(a,min(b,x))
-LENS={'now':0.34,'bal':0.15,'fut':0.05}
+LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
 LTILT=0.30; LTSPREAD=6.0           # lens = bounded (+/-30%) tilt around balanced, by age-vs-peak phase
 def lens_tilt(p,lens):
     if lens=='bal': return 1.0
@@ -809,9 +809,12 @@ PRESENT_ID_OVERRIDES={
     "Lachlan McAndrew":('SSP', 2024),  # 2024 SSP window
     "Mark Keane":     ('SSP', 2022),   # 2022 SSP window
 }
+_L5_PICKLESS=os.environ.get('RL_L5_PICKLESS','1')!='0'   # v2.9 L5: complete the SSP re-entry switch — SSP is pickless by convention (register item 17 ii). Default ON; RL_L5_PICKLESS=0 ⇒ retained pick capital ⇒ base.
 for _p in data:
     _o=PRESENT_ID_OVERRIDES.get(_p.get('player'))
-    if _o: _p['type'],_p['year']=_o; _p['_grp']=_o[0]; _p['_eff']=PICKEQ[_o[0]]
+    if _o:
+        _p['type'],_p['year']=_o; _p['_grp']=_o[0]; _p['_eff']=PICKEQ[_o[0]]
+        if _L5_PICKLESS and _o[0]=='SSP': _p['pick']=None; _p['_pickless']=True   # drop retained pick capital (Perez 35 / McAndrew 12; Keane already None). _eff=92 SSP pedestal UNTOUCHED (L6 STOP).
 
 # AVAILABILITY PRESENT HAIRCUT (present component, Now board only). The k=0 present-year level is scaled by
 # (1 - _avail_hc). The SOURCE of _avail_hc is the LTI REGISTER (Chapter-3 2026-07-09, RL_AVAIL layer set in

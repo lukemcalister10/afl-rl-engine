@@ -1,0 +1,62 @@
+{
+ "world_A_base": {
+  "0.15": {
+   "emmett": 1178,
+   "bsum": 723075,
+   "knobel": 402,
+   "gawn": 2538,
+   "bont": 3721
+  },
+  "0.14": {
+   "emmett": 1239,
+   "bsum": 736531,
+   "knobel": 402,
+   "gawn": 2544,
+   "bont": 3741
+  },
+  "0.13": {
+   "emmett": 1304,
+   "bsum": 750822,
+   "knobel": 402,
+   "gawn": 2550,
+   "bont": 3763
+  },
+  "0.12": {
+   "emmett": 1479,
+   "bsum": 766111,
+   "knobel": 402,
+   "gawn": 2556,
+   "bont": 3785
+  }
+ },
+ "world_B_L1adopt": {
+  "0.15": {
+   "emmett": 1178,
+   "bsum": 724370,
+   "knobel": 505,
+   "gawn": 2538,
+   "bont": 3721
+  },
+  "0.14": {
+   "emmett": 1239,
+   "bsum": 737826,
+   "knobel": 505,
+   "gawn": 2544,
+   "bont": 3741
+  },
+  "0.13": {
+   "emmett": 1304,
+   "bsum": 752119,
+   "knobel": 505,
+   "gawn": 2550,
+   "bont": 3763
+  },
+  "0.12": {
+   "emmett": 1479,
+   "bsum": 767406,
+   "knobel": 505,
+   "gawn": 2556,
+   "bont": 3785
+  }
+ }
+}

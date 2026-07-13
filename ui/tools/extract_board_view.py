@@ -65,6 +65,10 @@ def main():
             # zero UI changes the day the export adds them. Never fabricated here.
             "vPrev": p.get("vPrev"),
             "vRaw": p.get("vRaw"),
+            # per-lever G-ATTR cumulative deltas {L1,L4,L2,L3,L5} (sum == v - vPrev). Working-tier only
+            # (attribution is owner-facing); passed through verbatim, never fabricated here.
+            "levers": p.get("levers"),
+            "lti_reg": p.get("lti_reg"),
         }
 
     def row_public(p):
@@ -85,6 +89,11 @@ def main():
 
     picks = d.get("picks", [])
     pvc = d.get("PVC", {})
+    # items 12/14: future-lens phantom pick lines (+1/+2 lenses only) + the lens-conservation diagnostic.
+    # Working-tier only; passed through verbatim. The current/-1/-2 player ladder never reads these (the
+    # phantom picks stand in for the future player on the forward lenses; item-14 ladder exclusion holds).
+    lens_picks = d.get("lensPicks", [])
+    lens_conservation = d.get("lensConservation", {})
 
     working = {
         "stamp": {
@@ -107,6 +116,8 @@ def main():
         "back": back_rows,
         "picks": picks,
         "pvc": pvc,
+        "lensPicks": lens_picks,
+        "lensConservation": lens_conservation,
     }
 
     public = {
