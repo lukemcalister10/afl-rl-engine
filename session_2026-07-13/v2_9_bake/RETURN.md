@@ -34,6 +34,16 @@ The L7 numéraire re-base is a **display-layer** change — ev()/engine 2030e5df
 7. **UI RE-EXTRACT.** extract_board_view.py ring-fence PASS (srcmd5 == pinned board 81e48293); working + public
    bundles regenerated; structure unchanged (804/198/30); the four UI letters' rulings hold.
 
+## FLAGGED FINDING (UI render — owner call)
+The override DATA now reaches the UI working bundle (ov.dispv=511, mark), and ui/app/config.js
+EXPECTED_BOARD is re-pinned to 81e48293 (ring-fence PASS). BUT the UI RENDER still shows `p.v` (brodie
+1022, the model figure) on the board rail (board.js:86 r.val=p.v) + card "Lands at" — the "Owner override"
+tag appears but the halved 511 is not the displayed number, and card.js's override delta computes
+p.v−vRaw = 0 (rl_export keeps v=engine and puts the overridden figure in ov.dispv, vRaw=v). Honoring the
+override in the UI = render `p.ov ? p.ov.dispv : p.v` on the rail (and decide whether it touches the
+lens/Δ-vs-bake/power-bar) — an owner-facing display decision, flagged for the L-STOP rather than changed
+unbidden. Engine/board/guards are unaffected (override is display-only; v never moved).
+
 ## THE L-STOP
 Everything above is committed + pushed. Tag `v2.9` + main fast-forward + PR #68 are the OWNER'S in-chat
 word only. No tag, no main promote performed.
