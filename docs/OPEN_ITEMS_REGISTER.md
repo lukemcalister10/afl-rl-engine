@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v37 2026-07-13 (TWO OWNER RULINGS: the v2.9 cold audit runs as FIVE CONCURRENT SHARDS — the audit of record; item 1 clarified — owner priority = the PAR-RELATIVE FLATTERY decomposition; the phantom-games test is a SEPARATE standing hypothesis, both stand. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v38 2026-07-13 (THE BUILD-SPEED RULES registered, owner-ruled ["happy to trust your judgement"]: hash-cached artifacts · one-job fences · parallel-analysis default · frozen-suite-only line — operative NOW in every directive; CORE fold at the seam. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -443,3 +443,33 @@ Tiered ladder · one bake per chapter · ask-before-correcting owner artifacts �
 recorded beside hand-set dials · STOP-on-missing-feed boilerplate · research directives carry a
 mandatory IMPLICATIONS section · supervisor synthesis after each research wave · archaeology sweeps
 verify against the CURRENT tree · THIS REGISTER is the only list.
+
+## THE BUILD-SPEED RULES (owner-ruled 2026-07-13 on supervisor judgement; OPERATIVE NOW in every
+## directive the supervisor writes; fold into CORE at the seam. No quality trade: validation
+## coverage, gate breadth and artifact verification are untouched — refused levers recorded below.)
+S1. HASH-CACHED EXPENSIVE ARTIFACTS. Deterministic compute (gate matrices, walk-forward books,
+    boards) is stamped with the md5 of every input that determines it (store + engine code +
+    config). Any consumer FIRST asserts stamp == current inputs: match ⇒ reuse; mismatch ⇒
+    recompute and restamp. Same logic as SSI Guard 2 pointed at compute. A stale-stamp reuse is a
+    build defect. (Motivation: the 2026-07-13 matrix crash cost a full 20-min recompute of
+    unchanged inputs; under S1 it costs seconds.)
+S2. ONE JOB PER CHAT, FENCE-ENFORCED. Directives carry a fence sized so the chat finishes inside
+    its token budget with a clean RETURN — never a checkpoint apology. Mid-flight scope growth
+    goes to a NEW directive/chat, not appended. (Motivation: the 2026-07-13 continuation stacked
+    wiring + validation + certification, then was asked to absorb SPECs + export — token death
+    before the tail.)
+S3. PARALLEL-ANALYSIS DEFAULT. Read-only jobs (SPECs, investigations, audits, measurements) run
+    ALONGSIDE the single store/engine writer, never queued behind it (CORE concurrency already
+    permits this — S3 makes it the default, not the exception). The five-shard audit is this
+    principle; apply it everywhere.
+S4. FROZEN-SUITE-ONLY MEASUREMENT (boilerplate in every directive): gates and guards are measured
+    with the FROZEN repo suite only; ad-hoc constructions are FINDINGS to report, never verdicts
+    to act on. (Motivation: the 137.8 detour — an ad-hoc ND-only construction read as a gate
+    failure cost days before the frozen B1 suite reproduced the audited baseline to 0.0pt.)
+S5 (supporting). THE STANDING CERT HARNESS: certification tooling is committed and reused
+    (grown toward one-command certify), never rebuilt per chat. (Born 50deb56, the absolute-path
+    lesson.)
+REFUSED LEVERS (recorded so no future seat "optimises" into them): fewer validation passes ·
+trusting reported numbers · thinner gate coverage. Exhibit A: the v2.8 panel claim-accuracy
+defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the residual is honest compute
+(G-ATTR's per-lever separability requires the board passes it requires).
