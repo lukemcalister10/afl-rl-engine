@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v47 2026-07-13 (SHARD S3 RECONCILED: PASS — board byte-reproducible, panel 10/10 independently computed; two findings dispositioned (stale hash prose → bake refresh; pick-1=3157 = pre-L7 by design → THE BAKE APPLIES L7, unconditional 3000 assert). AUDIT-SIZING RULE added after S1/S2 strain. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v48 2026-07-13 (THE FLATTERY CENSUS RECONCILED: PASS — 123 players carry +19,168 SCAR of par-relative flattery; top: daicos +845 · wanganeen-milera +753 · gulden +695 · green +614 · newcombe +560; board-wide carrier = the PAR-BAND BASE (98/123), iso a minority (25); gate pre-read: removal makes G-COHORT SAFER. Two fix-chapter design flags raised (G-PEAK collision · reference-frame). Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -516,6 +516,39 @@
     nohup-background with completion markers and SPARSE polling (few tool calls); anything
     heavier than one background compute is either split further or verified-by-stamp instead of
     recomputed. Fold into CORE with the speed rules at the seam.
+
+25. THE FLATTERY CENSUS — RECONCILED: PASS (2026-07-13, branch claude/flattery-census-sweep-1phfzc
+    @ d6c481f; fence held — new files only under session_2026-07-13/flattery_census/; harness
+    validated to the dollar vs the certified panel AND reproduced SPEC_1's newcombe ladder exactly
+    before sweeping; supervisor recounted the committed per-player JSON: 123 / +19,168 / top-5 /
+    carrier split all reproduce).
+    HEADLINES (all 804 swept, 0 errors; flattery = base+iso deltas vs an ND-pk1 par-neutral ref):
+    **123 players positively flattered (≥25 SCAR or ≥2%), +19,168 SCAR total on the board.**
+    TOP 10 (the owner's board-view DISCOUNT LIST, full 25 in the committed report): daicos +845
+    (10.5%) · wanganeen-milera +753 · gulden +695 · green +614 · newcombe +560 (iso) · sheezel
+    +559 · serong +505 · ashcroft +505 · callaghan +491 · day +490. Class: mature out-producers
+    (mean age 25.7, ~102 games), 70/123 MIDs.
+    REFINEMENT of SPEC_1: board-wide the dominant carrier is the PAR-BAND BASE (98/123); iso_corr
+    carries a 25-player minority (newcombe among them) — his near-even split was newcombe-specific.
+    ISO MAP (the fix's target shape): flat 1.0 pk1–10 · jagged mid-round (spikes 24/35, troughs
+    40/55) · the pk60 spike 1.071 · flat ~0.956 tail from pk65.
+    HONEST CAVEAT (the census's own, supervisor-endorsed): 598 rows sit on the DEFLATION side —
+    thin-record players priced below a pk1 counterfactual. That is PICK CAPITAL working as
+    designed, not flattery; the net −278k is NOT a discountable figure. Only the +19,168 is.
+    G-COHORT PRE-READ (ESTIMATE, not a gate verdict): positive flattery concentrates in mature
+    tenures (T4/5/6 flattered counts 6/11/64) ⇒ removal moves y4/y5/y6 DOWN, denominator ≈ flat ⇒
+    **the growth gate gets SAFER under the fix.** Precise figure needs the frozen matrix (not run).
+    ⚠ FIX-CHAPTER DESIGN FLAGS (raised now so the fix directive carries them):
+    (F1) **G-PEAK COLLISION**: the most-flattered players ARE the protected survivor-peak class
+    (daicos/sheezel are PANEL rows; 10–14% implied moves vs G-PEAK's ≤2% and vs anchor
+    protections). The fix must either RE-CHANNEL value (re-price production into the base so
+    removing the double-payment is not a net cut of that size) or arrive with an EXPLICIT
+    owner-ruled gate treatment — frozen gates move only on the owner's word; the fix build never
+    self-amends one.
+    (F2) **REFERENCE-FRAME**: the census sizes flattery vs an ND-pk1 reference. The fix's landing
+    point (where corrected values converge) is a DESIGN + OWNER-RULING choice — the census is the
+    SIZING and the before-map, NOT the literal per-player delta of the fix.
+    Board-view use: the discount list arms the owner's eye; his reads remain ground truth.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
