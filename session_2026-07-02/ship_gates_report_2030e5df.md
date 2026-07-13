@@ -24,8 +24,8 @@ A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in P
 A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
 B1        PASS    | PASS    | PASS     CANDIDATE (regenerated this run — engine 2030e5df store b0c39d78 config 69ead79b944d): cross-cohort AVERAGE peak N=4 AVG(peak)=127 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerated, path_ok=True; per-cohort UNGATED, table printed — Luke D5); avg row: 1:100 2:114 3:118 4:127 5:125 6:116 7:102; cohorts n=17 | v2.5 comparator avg row [NAMED, NOT certified]: 1:100 2:122 3:133 4:143 5:141 6:133 7:116
 B2        PASS    | PASS    | PASS     leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:4.54, KEY_DEF|GOOD|T3:3.19, GEN_DEF|GOOD|T5:2.97, KEY_DEF|GOOD|T2:2.91; GOOD>BUST sep GEN_DEF 43.0/0.9, GEN_FWD 39.8/0.6, KEY_DEF 50.6/1.1, KEY_FWD 60.6/0.6, MID 50.6/0.5, RUC 26.1/0.3 [cert engine 2030e5df store b0c39d78 config 69ead79b]
-B3        PASS    | PASS    | DIFFERS-BY-DESIGN CANDIDATE book stable seal (regenerated this run — engine 2030e5df store b0c39d78 config 69ead79b944d): candidate head 2030e5df != sealed head 7a07e369 — new version; the v2.6 book must be RE-SEALED at the bake (owner action). current=c7825f1b3c1dc122.. (2649 players) vs baseline=e559eb6cafb5b79d.. (2649 players, sealed head 7a07e369) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]  <- MOVED
-B4        PASS    | PASS    | PASS     regenerated rl_app_data.json md5=8a66b4ba vs shipped 8a66b4ba (byte-agree gate; export exit=0)
+B3        PASS    | PASS    | PASS     CANDIDATE book stable seal (regenerated this run — engine 2030e5df store b0c39d78 config 69ead79b944d): MATCHES the sealed baseline. current=c7825f1b3c1dc122.. (2649 players) vs baseline=c7825f1b3c1dc122.. (2649 players, sealed head 2030e5df) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]
+B4        PASS    | PASS    | PASS     regenerated rl_app_data.json md5=81e48293 vs shipped 81e48293 (byte-agree gate; export exit=0)
 B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 63 saves, aggregate lift +2231; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new alarm surface)
 B6        PASS    | PASS    | PASS     ramp(0..14g)=[1353, 1643, 1956, 2649, 3289, 3389, 3447, 3505, 3525, 3539, 3601, 3674, 3765, 3806, 3836]; dips(more games worth less)=none; 0->6 rise T=+2094; 0->6 steps>50%T=none; rise by 3g=+1296 (need >=524) [whole-ramp re-spec, DECLARED thresholds]
 D14a      PASS    | PASS    | PASS     same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion=0.0000 SCAR (Luke's amended law; board path)
@@ -34,7 +34,7 @@ D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = T
 C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
 C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
           columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
-VERDICT: DIFFERS-BY-DESIGN=1  FAIL=3  FEATURE=1  PASS=16  PENDING=4  STRUCK=1  (618s)
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (622s)
 ```
 
 ## Supporting detail

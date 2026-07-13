@@ -90,13 +90,13 @@
   },
   "B3": {
    "dc": false,
-   "status": "DIFFERS-BY-DESIGN",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 2030e5df store b0c39d78 config 69ead79b944d): candidate head 2030e5df != sealed head 7a07e369 \u2014 new version; the v2.6 book must be RE-SEALED a"
+   "status": "PASS",
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 2030e5df store b0c39d78 config 69ead79b944d): MATCHES the sealed baseline. current=c7825f1b3c1dc122.. (2649 players) vs baseline=c7825f1b3c1dc"
   },
   "B4": {
    "dc": false,
    "status": "PASS",
-   "detail": "regenerated rl_app_data.json md5=8a66b4ba vs shipped 8a66b4ba (byte-agree gate; export exit=0)"
+   "detail": "regenerated rl_app_data.json md5=81e48293 vs shipped 81e48293 (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,
