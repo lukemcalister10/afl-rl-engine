@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v59 2026-07-13 (BAKE FIRED. OWNER-SUPPLIED AFL CLUBS for the 10 club-less board rows — SUPERVISOR-VERIFIED: all ten already sit CORRECT in the CSV’s legacy_afl_club column; the gap is the never-run import, not missing data ⇒ ITEM 20(b) ALREADY FIXES ALL TEN. Diagnosis: the ten are draft=None rows (pre-2011 vets + 2025 rookies) — the display club reads _club (DRAFT club), which is null for them. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v60 2026-07-13 (Owner: the ten have DRAFT CLUB == CURRENT CLUB — recorded as ground truth (they are one-club players; the nulls are missing draft ROWS, not different clubs) ⇒ item 20 gains a draft-club backfill + a NON-INFERENCE fence. ITEM 20 HELD until v2.9 promotes (CONCURRENCY: one store-writer; the bake IS the writer in flight). Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -798,6 +798,20 @@
     OWNER'S DATA IS GROUND TRUTH regardless: if any CSV row ever disagreed with his list, HIS
     LIST WINS and the CSV row is corrected — recorded here so the item-20 build has the ruling
     in hand rather than inferring.
+    **OWNER ADDITION (2026-07-13): "All of those have the same draft club as current club."** ⇒
+    these ten are ONE-CLUB players; the null `_club` is a MISSING DRAFT ROW, not a different
+    club. TWO CONSEQUENCES for item 20: (i) the ten also get their DRAFT club backfilled
+    (_draft_club := the same club) — the draft-club field stops being null for anyone, so
+    draft/pick analytics no longer silently drop three pre-2011 veterans and seven rookies;
+    (ii) STRICT FENCE (owner-artifact doctrine): this equality is OWNER-DECLARED FOR THESE TEN
+    ONLY. The build MUST NOT generalise it into a rule ("null draft club ⇒ copy current club")
+    — for any OTHER null-draft row it STOPS and asks. No inference; the ten are enumerated.
+    ⚠ TIMING (owner asked whether to fire item 20 during the bake): **NO — HELD until v2.9 is
+    tagged and promoted.** CORE's CONCURRENCY rule: at most one store/engine-WRITING build in
+    flight, and the bake IS that writer. Item 20 writes the store. Firing it now would (a) race
+    the bake's regen/re-seal, (b) base itself on a head about to move, (c) invalidate the bake's
+    own board/book proofs. Its trigger is unchanged and already in the directive: v2.9 tag +
+    main promotion verified by fresh ls-remote.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
