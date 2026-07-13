@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v34 2026-07-12 (PROVISION MERGED + VERIFIED — lane closed. ONLY the v2.9 continuation remains in flight)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v35 2026-07-13 (THE COMBINED GATE PASSES — 126.8/125.2/116.1 vs hard 130, prescreened; 137.8 refuted as construction; final continuation directive issued (refit wiring + SPECs + export); SEAT-3 ROTATES on this push)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -265,6 +265,24 @@
     (2) run the ONE combined gate (L1+L4+L2+L3; L7 ratio-invariant), (3) wire the permanent
     refit (all levers on disk; _PVC0 swap + V0/RUC rebuild; pins move in-commit; L7 LAST),
     (4) author + run SPEC_1–4 on the post-L4 world; L6 STOP stands; PR at the return.
+
+19. THE COMBINED GATE — PASS, PRESCREENED (continuation return @ kq4dae 5cb7f80, PR #67;
+    supervisor-verified 2026-07-13): reconciliation DONE — the 137.8 was the ad-hoc construction
+    (ND-only 2014–2020 raw-sum-average); the OFFICIAL frozen B1 gate (per-cohort yr1-indexed,
+    unweighted cross-cohort mean, ND+RD 2004–2020, denominator min(y1,y2)) reproduces the
+    audited baseline 128.6/127.1/119.0 to 0.0pt. COMBINED CANDIDATE (L1+L4+L2@14+L3):
+    y4 126.8 · y5 125.2 · y6 116.1 — PASS hard-130, margins 3.2/4.8/13.9; the package WIDENS the
+    base margin 1.8pt. THREE NARROWEST MARGINS (OQ-B): (1) y4 3.2pt to hard, above the 120–125
+    guide (precedent: v2.6 baked at 128.8); (2) butters −1.04% vs the 2% G-PEAK ceiling;
+    (3) DOC-vs-CODE WORDING TENSION — the frozen B1's per-cohort-indexed mean vs the CONSTRAINTS
+    prose's averaged-class-sums (the code cites an owner ruling "D5" from the v2.8 chapter; the
+    frozen suite is authoritative per the legend) — CONFORM THE PROSE OR BLESS THE DIFFERENCE
+    EXPLICITLY at the CONSTRAINTS v1.8 fold (incoming seat pulls the D5 verbatim). G-ATTR clean;
+    emmett = L4 −29.9% alone (nonsense trigger armed for the owner's view). L7 on the combined
+    board: adopted[1]=3000 ✓. NEXT: the final continuation (refit wiring + re-pins + full
+    certification + SPEC_1–4 + seam table + export bundle + the L6 STOP), then the ladder:
+    seat-4 prescreen of the final return → cold audit → owner board+book vs SEALED reads → bake
+    word → tag v2.9.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
