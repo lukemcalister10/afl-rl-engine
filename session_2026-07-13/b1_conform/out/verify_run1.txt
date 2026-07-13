@@ -1,0 +1,33 @@
+store md5 (loaded): 340a7a32   engine head md5: 2030e5df
+regenerating matrix (gate mode) ...
+matrix: /tmp/s4_verify_scv6a8s0.json
+matrix md5: 8e4e68179943435906a9c767e59b5832
+matrix __meta__: engine=2030e5df store=340a7a32 n_players=2649
+
+classes (2004-2020, incurve ND+RD): n=17 [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+class-year AVG-of-raw-sums per career year N:
+  y1 = 69840.0000
+  y2 = 79298.2353
+  y3 = 82016.1765
+  y4 = 88002.4118
+  y5 = 86652.9412
+  y6 = 80460.4706
+  y7 = 71285.8125
+
+denominator = min(y1,y2) = y1 = 69840.0000
+ratios vs hard <= 1.30 (guide 1.20-1.25):
+  y4: 1.2601  PASS  (guide margin: +0.0101 vs 1.25)
+  y5: 1.2407  PASS  (guide margin: -0.0093 vs 1.25)
+  y6: 1.1521  PASS  (guide margin: -0.0979 vs 1.25)
+
+A1 4dp check (sum, |expected|):
+  y1: got 69840.0 expect 69840.0  OK
+  y2: got 79298.2 expect 79298.2  OK
+  y4: got 88002.4 expect 88002.4  OK
+  y5: got 86652.9 expect 86652.9  OK
+  y6: got 80460.5 expect 80460.5  OK
+  y4 ratio: got 1.2601 expect 1.2601  OK
+  y5 ratio: got 1.2407 expect 1.2407  OK
+  y6 ratio: got 1.1521 expect 1.1521  OK
+
+VERDICT: ALL MATCH

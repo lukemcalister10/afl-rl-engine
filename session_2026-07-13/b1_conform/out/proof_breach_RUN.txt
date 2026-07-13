@@ -1,0 +1,16 @@
+regenerating a clean candidate matrix (gate mode) ...
+clean matrix: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/s4_clean_u8syl71b.json  md5=914f986a
+doctored a copy: 3x Vpath at N=4 for 1120 incurve 2004-2020 records -> /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/s4_breach_doctored.json
+
+--- CONTROL (clean matrix) ---
+  exit=1  B1: B1        PASS    | PASS    | PASS     JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED a
+  log: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/proof_breach_control.log
+--- BREACH (doctored matrix) ---
+  exit=1  B1: B1        PASS    | PASS    | HALT     JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD
+  log: /home/user/afl-rl-engine/session_2026-07-13/b1_conform/out/proof_breach_breach.log
+
+=== A2 RESULT ===
+  control B1 PASS on clean matrix ......... True
+  B1 HALT + BREACH on doctored matrix ..... True
+  suite exits NON-ZERO on breach .......... True (exit=1)
+VERDICT: A2 PROVEN — a B1 breach HALTS the suite

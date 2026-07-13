@@ -253,19 +253,31 @@ gate('A15', False, 'STRUCK', 'Luke 02/07/2026 — convexity dimension seeded as 
 # WHICH artifact each verdict certifies.
 V25_COMPARATOR = os.path.join(ROOT, 'data', 's4_matrix_baked_efea88e5.json')   # v2.5 comparator — NAMED, never "current"
 CAND_MATRIX = None; CAND_MATRIX_ERR = None
+# RED-PATH TEST SEAM (item-38 proofs; see SHIP_GATES.md §RED-PATH TEST SEAM). If SGC_B1_MATRIX is set, that
+# path is used as the candidate matrix INSTEAD of regenerating — so a proof can feed a doctored (breaching),
+# missing, or unreadable matrix and exercise B1's real HALT paths + the real suite exit code. UNSET in
+# production ⇒ the block regenerates exactly as before. The injected matrix is validated by the SAME meta/
+# hash checks below (no weakening): a valid-meta doctored matrix is honoured; a missing/garbage one HALTs B1.
+_B1_INJECT = os.environ.get('SGC_B1_MATRIX')
 if not ('B1' in SKIP and 'B3' in SKIP):
     try:
-        import tempfile as _tf
-        _mfd, CAND_MATRIX = _tf.mkstemp(prefix='s4_cand_', suffix='.json'); os.close(_mfd)
-        _menv = dict(os.environ, S4_MATRIX=CAND_MATRIX, RL_CONFIG_MODE='gate', RL_REPO=ROOT)
-        _mrun = subprocess.run([sys.executable, 's4_matrix_M1v7.py'], cwd=RA, env=_menv,
-                               capture_output=True, text=True, timeout=1800)
-        _meta = json.load(open(CAND_MATRIX)).get('__meta__', {}) if os.path.exists(CAND_MATRIX) else {}
+        if _B1_INJECT is not None:
+            CAND_MATRIX = _B1_INJECT; _mrun = None
+        else:
+            import tempfile as _tf
+            _mfd, CAND_MATRIX = _tf.mkstemp(prefix='s4_cand_', suffix='.json'); os.close(_mfd)
+            _menv = dict(os.environ, S4_MATRIX=CAND_MATRIX, RL_CONFIG_MODE='gate', RL_REPO=ROOT)
+            _mrun = subprocess.run([sys.executable, 's4_matrix_M1v7.py'], cwd=RA, env=_menv,
+                                   capture_output=True, text=True, timeout=1800)
+        _meta = json.load(open(CAND_MATRIX)).get('__meta__', {}) if (CAND_MATRIX and os.path.exists(CAND_MATRIX)) else {}
         _mok = bool(_meta) and _meta.get('engine_head_md5', '')[:8] == HEAD and _meta.get('store_md5', '')[:8] == STORE
         if CONFIG_HASH is not None:
             _mok = _mok and (_meta.get('config_sha256') == CONFIG_HASH)
         if not _meta:
-            CAND_MATRIX_ERR = f'candidate matrix carries no __meta__ (exit={_mrun.returncode}; stderr tail: {_mrun.stderr[-300:]})'
+            if _mrun is None:
+                CAND_MATRIX_ERR = f'candidate matrix missing/unreadable or carries no __meta__ (injected path: {_B1_INJECT})'
+            else:
+                CAND_MATRIX_ERR = f'candidate matrix carries no __meta__ (exit={_mrun.returncode}; stderr tail: {_mrun.stderr[-300:]})'
             CAND_MATRIX = None
         elif not _mok:
             CAND_MATRIX_ERR = ('candidate matrix hashes != candidate under test — engine %s=%s? store %s=%s? config %s=%s?'
@@ -275,8 +287,35 @@ if not ('B1' in SKIP and 'B3' in SKIP):
     except Exception as _mex:
         CAND_MATRIX_ERR = f'{type(_mex).__name__}: {_mex}'; CAND_MATRIX = None
 
+def _b1_july8(mpath):
+    """THE GATED construction (owner-ruled July-8, 2026-07-13; register v52; CONSTRAINTS v1.8 G-COHORT):
+    the UNWEIGHTED average, across the draft classes observed at each career year N, of that class's RAW
+    class-year SUM of Vpath at N. Population: incurve (type in {ND,RD}) AND draft class 2004-2020. N=1 ==
+    end of calendar Yr1 (=C+1). NO per-class yr1=100 renormalisation and NO mean-of-ratios — that indexed
+    reading is DEMOTED (see _b1_rows, kept only as a non-gating shape diagnostic). Skips '__'-meta keys.
+    Returns (SUM, classes): SUM[N] is the avg-of-raw-class-sums at year N; classes is the sorted class list."""
+    _m = json.load(open(mpath)); _S = {}
+    for _k, _v in _m.items():
+        if _k.startswith('__'):
+            continue
+        _C = int(_v['year'])
+        if not _v['incurve'] or not (2004 <= _C <= 2020):
+            continue
+        for _i in range(len(_v['yrs'])):
+            _N = _i + 1
+            if _N > 7:
+                break
+            _S[(_C, _N)] = _S.get((_C, _N), 0.0) + float(_v['Vpath'][_i] or 0.0)
+    _co = sorted({c for c, _ in _S})
+    _SUM = {N: float(np.mean([_S[(C, N)] for C in _co if (C, N) in _S]))
+            for N in range(1, 8) if any((C, N) in _S for C in _co)}
+    return _SUM, _co
+
 def _b1_rows(mpath):
-    """per-cohort indexed curves R + cross-cohort AVERAGE row from a matrix path (skips '__'-meta keys)."""
+    """DEMOTED INDEXED reading (2026-07-13) — kept ONLY as B1's non-gating SHAPE diagnostic, never the gate.
+    per-class indexed curves R (each class' own Yr1 = 100) + cross-class AVERAGE-of-indexed row (mean-of-
+    ratios). This is the owner's superseded 02/07 D5 wording; the historic headline 126.8/125.2/116.1 is
+    THIS row and must not be quoted as the gated number. Skips '__'-meta keys."""
     _m = json.load(open(mpath)); _S = {}
     for _k, _v in _m.items():
         if _k.startswith('__'):
@@ -294,41 +333,75 @@ def _b1_rows(mpath):
     _AVG = {N: float(np.mean([_R[C][N] for C in _co if N in _R[C]])) for N in range(1, 8) if any(N in _R[C] for C in _co)}
     return _R, _AVG, _co
 
-# B1 — cohort growth law (Luke's REDEFINITION D5): at each depth d the SIMPLE MEAN of indexed cohort value
-# across cohorts observed at d must rise from yr1 to a peak in yrs 4-6; pre-peak dips of the AVERAGE <5%
-# tolerated. Per-cohort curves UNGATED but printed. Now computed on the CANDIDATE (regenerated this run).
+# B1 — G-COHORT growth law. CODE-CONFORMED 2026-07-13 (owner-ruled, register v52; CONSTRAINTS v1.8): the
+# gate IS the JULY-8 CONSTRUCTION — for each draft class the RAW class-year SUM of Vpath at each career year
+# N (N=1 == end of calendar Yr1 = C+1), averaged UNWEIGHTED across the classes observed at N (population:
+# incurve type in {ND,RD} AND draft class 2004-2020). den = min(y1,y2). Each of y4/y5/y6 INDIVIDUALLY vs
+# hard <= 1.30; a breach HALTS. The 1.20-1.25 guide is ADVISORY (margin reported, never gates). NO per-class
+# yr1=100 renormalisation, NO mean-of-ratios — that INDEXED reading is DEMOTED to the non-gating SHAPE
+# diagnostic below (owner 08/07: "no need to rescale... sounds silly"; the historic headline 126.8/125.2/
+# 116.1 is the indexed row, NOT the gated number). SILENT-GATE RULE (item-38 fix): a missing/unreadable
+# matrix, a raised exception, or a None/absent figure is a HALT (RED) — never a skip, never a silent pass.
+# Computed on the CANDIDATE regenerated this run.
 B1_TABLE = None
 try:
     if 'B1' in SKIP:
-        gate('B1', False, 'NOT-RUN', 'SGC_SKIP=B1')
+        gate('B1', False, 'HALT', 'SGC_SKIP=B1 — B1 is a BINDING gate (G-COHORT) and MUST NOT be skipped '
+             'silently; an absent result is a FAILURE, not a pass (item-38 rule). Treated as HALT.')
     elif CAND_MATRIX is None:
-        gate('B1', False, 'FAIL', f'candidate matrix unavailable — B1 cannot certify the candidate (the v2.5 comparator is NOT substituted): {CAND_MATRIX_ERR}')
+        gate('B1', False, 'HALT', f'candidate matrix unavailable — B1 produced NO result and HALTS rather '
+             f'than pass silently (the v2.5 comparator is NOT substituted): {CAND_MATRIX_ERR}')
     else:
-        R, AVG, cohorts = _b1_rows(CAND_MATRIX)
-        ppk = max(AVG, key=AVG.get)
-        path_ok = all(AVG[N + 1] >= 0.95 * AVG[N] for N in range(1, ppk) if N + 1 in AVG)
-        ok = ppk in (4, 5, 6) and AVG[ppk] > 100.0 and path_ok
+        SUM, cohorts = _b1_july8(CAND_MATRIX)
+        for _rq in (1, 2, 4, 5, 6):
+            if SUM.get(_rq) is None:
+                raise ValueError(f'July-8 construction incomplete on this matrix — missing year-{_rq} '
+                                 f'class-sum (an absent figure HALTS, never passes)')
+        den = min(SUM[1], SUM[2]); den_src = 'y1' if SUM[1] <= SUM[2] else 'y2'
+        ratios = {N: SUM[N] / den for N in (4, 5, 6)}
+        breaches = [N for N in (4, 5, 6) if ratios[N] > 1.30]
+        ok = not breaches
+        def _guide(r):                                       # advisory band 1.20-1.25 — NEVER gates
+            return 'in-guide' if 1.20 <= r <= 1.25 else ('above-guide' if r > 1.25 else 'below-guide')
+        gate('B1', False, 'PASS' if ok else 'HALT',
+             f'JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of '
+             f'Vpath averaged UNWEIGHTED across {len(cohorts)} classes 2004-2020 incurve ND+RD; CANDIDATE '
+             f'regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}): '
+             + ' '.join(f'y{N}={SUM[N]:.1f}' for N in sorted(SUM)) +
+             f'; den=min(y1,y2)={den_src}={den:.1f}; ratios ' +
+             ' '.join(f'y{N}={ratios[N]:.4f}({_guide(ratios[N])})' for N in (4, 5, 6)) +
+             '; hard<=1.30 -> ' + ('PASS x3' if ok else f'BREACH at y{breaches} (HALT)') +
+             '; guide 1.20-1.25 ADVISORY (margin reported, never gates)')
+        # ---- SHAPE DIAGNOSTIC (DEMOTED indexed reading — NOT the gate; structurally cannot fail the build) --
+        # Computed in its own guarded block that NEVER calls gate() and NEVER affects the exit code. It reports
+        # the indexed shape (peak position + pre-peak dip) only. If it errors, it is silently downgraded to a
+        # note — a diagnostic must not be able to red or green the build.
         try:
-            _, AVGc, _ = _b1_rows(V25_COMPARATOR); comp = ' '.join(f'{N}:{AVGc[N]:.0f}' for N in sorted(AVGc))
-        except Exception:
-            comp = 'unavailable'
-        gate('B1', False, 'PASS' if ok else 'FAIL',
-             f'CANDIDATE (regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}): '
-             f'cross-cohort AVERAGE peak N={ppk} AVG(peak)={AVG[ppk]:.0f} (need peak in yrs 4-6, >100; pre-peak '
-             f'dips of the AVERAGE <5% tolerated, path_ok={path_ok}; per-cohort UNGATED, table printed — Luke D5); '
-             'avg row: ' + ' '.join(f'{N}:{AVG[N]:.0f}' for N in sorted(AVG)) +
-             f'; cohorts n={len(cohorts)} | v2.5 comparator avg row [NAMED, NOT certified]: {comp}')
-        _t = ['| cohort | peakN | ' + ' | '.join(f'd{N}' for N in range(1, 8)) + ' |',
-              '|---|---|' + '---|' * 7]
-        for C in cohorts:
-            pk = max(R[C], key=R[C].get)
-            _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
-        _t.append(f'| **AVG (the gated row — CANDIDATE)** | **{ppk}** | ' +
-                  ' | '.join((f'**{AVG[N]:.0f}**' if N in AVG else '—') for N in range(1, 8)) + ' |')
-        B1_TABLE = '\n'.join(_t)
-        NOTES.append('B1 per-cohort curves — CANDIDATE, regenerated this run (UNGATED — Luke eyeball channel):\n' + B1_TABLE)
+            R, AVG, _co = _b1_rows(CAND_MATRIX)
+            ppk = max(AVG, key=AVG.get)
+            predip = min((AVG[N] for N in range(1, ppk) if N in AVG), default=AVG.get(1))
+            _t = ['| class | peakN | ' + ' | '.join(f'd{N}' for N in range(1, 8)) + ' |',
+                  '|---|---|' + '---|' * 7]
+            for C in cohorts:
+                if C in R:
+                    pk = max(R[C], key=R[C].get)
+                    _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
+            _t.append(f'| _indexed AVG (SHAPE DIAGNOSTIC — DEMOTED 2026-07-13, NOT the gate)_ | _{ppk}_ | ' +
+                      ' | '.join((f'_{AVG[N]:.0f}_' if N in AVG else '—') for N in range(1, 8)) + ' |')
+            _t.append(f'| **July-8 raw-sum AVG (THE GATED ROW)** | **—** | ' +
+                      ' | '.join((f'**{SUM[N]:.0f}**' if N in SUM else '—') for N in range(1, 8)) + ' |')
+            B1_TABLE = '\n'.join(_t)
+            NOTES.append(
+                'B1 — THE GATE is the July-8 raw-class-sum construction (bold row); the indexed yr1=100 row is a '
+                'NON-GATING SHAPE diagnostic (peak position + pre-peak dip), DEMOTED 2026-07-13 — its historic '
+                f'headline 126.8/125.2/116.1 is NOT the gate.\n  SHAPE read (indexed, advisory): peak at yr{ppk}, '
+                f'pre-peak low {predip:.1f} (index yr1=100).\n' + B1_TABLE)
+        except Exception as _dex:
+            NOTES.append(f'B1 SHAPE diagnostic (indexed, non-gating) unavailable: {type(_dex).__name__}: {_dex} '
+                         '(diagnostic only — does NOT affect the B1 verdict or the build)')
 except Exception as ex:
-    gate('B1', False, 'ERROR', f'{type(ex).__name__}: {ex}')
+    gate('B1', False, 'HALT', f'B1 EXCEPTION — an errored/absent result is a FAILURE, never a pass '
+         f'(item-38 rule): {type(ex).__name__}: {ex}')
 # B2 — GATE-1 leakage + separation. RE-WIRED (gate-integrity b, 2026-07-09): B2 INVOKES the producer
 # (_gate1_wf.py) itself and reads its STRUCTURED JSON certificate — UNROUNDED observations + code/store/config
 # hashes — instead of parsing an unauthenticated, integer-rounded text file at a fixed path (the old
@@ -434,9 +507,9 @@ try:
              f"raw-file sha is id(p)-keyed / non-deterministic by design]")
 except Exception as ex:
     gate('B3', False, 'ERROR', f'{type(ex).__name__}: {ex}')
-if CAND_MATRIX and os.path.exists(CAND_MATRIX):
-    try: os.remove(CAND_MATRIX)          # ephemeral gate artifact — not a committed data file (SSI-safe)
-    except OSError: pass
+if CAND_MATRIX and _B1_INJECT is None and os.path.exists(CAND_MATRIX):
+    try: os.remove(CAND_MATRIX)          # ephemeral gate artifact — not a committed data file (SSI-safe).
+    except OSError: pass                 # NEVER delete a caller-injected matrix (SGC_B1_MATRIX): the caller owns it.
 # B4 — board parity: regenerate rl_app_data.json (subprocess: one-engine-load rule) and byte-compare to shipped
 try:
     if 'B4' in SKIP:
@@ -631,8 +704,8 @@ try:
               open(os.path.join(ROOT, 'data', 'gates_snapshots', f'gates_{HEAD}.json'), 'w'), indent=1)
 except Exception:
     pass
-if B1_TABLE:      # Luke's ruling (02/07/2026 D5): the per-cohort table prints on EVERY gates-board run
-    print('\nB1 per-cohort curves (UNGATED — Luke eyeball channel):\n' + B1_TABLE)
+if B1_TABLE:      # the July-8 GATED row (bold) + the DEMOTED indexed SHAPE diagnostic print on every board run
+    print('\nB1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):\n' + B1_TABLE)
 if B5_TABLE:      # Luke's ruling (02/07/2026, committed D7): the FLOOR-SAVES table prints on EVERY board run
     print('\nB5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):\n' + B5_TABLE)
 rep = os.path.join(ROOT, os.environ.get('SGC_REPORT_DIR', 'session_2026-07-02'), f'ship_gates_report_{HEAD}.md')
@@ -678,5 +751,22 @@ _b2_notrun = bool(_b2st) and _b2st[0] == 'NOT-RUN'
 if _b2_notrun:
     print('\n!! LOUD FAIL: B2 anti-leakage gate NOT EVALUATED (NOT-RUN via SGC_SKIP=B2) — the MANDATORY '
           'leakage gate cannot be skipped silently. Treated as FAILURE.')
-_hard_fail = any(st in ('FAIL', 'ERROR') for _, _, st, _ in RES) or _b2_notrun
+# ---- SILENT-GATE COMPLETENESS NET (item-38 fix, 2026-07-13). An ABSENT result is a FAILURE, not a pass.
+# Every gate in `order` MUST have produced a verdict; a gate whose block raised BEFORE appending (or whose
+# output a caller swallowed) leaves a hole here. That hole is caught, named, and HALTS the suite. This is the
+# structural guarantee that a gate can no longer pass by saying nothing — the exact item-38 defect (the cohort
+# gate crashed with IndexError, printed nothing behind a `| tail` pipe, and the suite reported PASS anyway).
+_have = {gid for gid, _, _, _ in RES}
+_missing = [g for g in order if g not in _have]
+if _missing:
+    print('\n!! SUITE HALT (silent-gate net): the following gate(s) produced NO verdict — an absent result '
+          'is a FAILURE, not a pass: ' + ', '.join(_missing) + '. Suite exits non-zero.')
+# A gate that turned an exception / missing input / breach / None into a named RED reports status HALT. Every
+# HALT (like FAIL/ERROR) is a hard failure for the exit code. See SHIP_GATES.md §INVOCATION RULE: a gate's
+# output must NEVER be piped through tail/head without checking its exit code.
+_halts = [gid for gid, _, st, _ in RES if st == 'HALT']
+if _halts:
+    print('\n!! SUITE HALT: gate(s) ' + ', '.join(_halts) + ' produced a HALT (exception / missing input / '
+          'breach / absent result — named RED, never a silent pass). Suite exits non-zero.')
+_hard_fail = any(st in ('FAIL', 'ERROR', 'HALT') for _, _, st, _ in RES) or _b2_notrun or bool(_missing)
 sys.exit(1 if _hard_fail else 0)
