@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v55 2026-07-13 (SHARD S4 RECONCILED: PASS — B2 0.000%-pts · B3 verify-the-story PROVEN (sealed head re-seeded, bit-identical) · G-ATTR closes to the dollar, 804/804 board==sidecar. **THE FIVE-SHARD AUDIT + CENSUS ARE COMPLETE: v2.9 AUDIT VERDICT = PASS, findings actioned.** THE BOARD-VIEW SITTING CARD is now the operative card. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v56 2026-07-13 (**THE BAKE WORD IS GIVEN** — owner, in writing, after the board view: "Bake." The pre-staged directive fires at head 0654897 (verified unmoved at the word). ALSO RULED: the flattery fix = EVIDENCE-WEIGHTED PAR DECAY ("by the time a player is valued on production, it probably doesn’t make much sense to retain it"); shadow board = the fix chapter’s first artifact. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -736,6 +736,26 @@
     HIS WORDS AT THE SITTING: the read grades · the emmett ruling · the A-CAM verdict · and —
     if satisfied — THE BAKE WORD, which fires the pre-staged directive (supervisor fills the
     final head).
+
+29. **THE v2.9 BOARD VIEW — CLOSED · THE BAKE WORD — GIVEN (owner, in writing, 2026-07-13).**
+    The owner viewed the working board (sitting view issued turn 54: v2.9 vs v2.8 per row, levers,
+    census column, the book's July-8 line) and the movers were walked lever-by-lever (callaghan
+    +394 = L3 age-curve +358 · wilmot +492 = L3 +455 · bontempelli −57 = L2 dial −44 + L4 −13 —
+    all tracing to his own rulings). Owner: "I'm happy enough with it," then, explicitly:
+    **"Bake."** Emmett at 851 and the A-CAM tick stand as viewed-and-accepted (offered for
+    flagging, not flagged). The sealed-reads grading is satisfied by the owner's statement.
+    HEAD AT THE WORD: export-display @ 0654897 — supervisor re-verified UNMOVED by fresh
+    ls-remote at the moment of the word; the bake directive is FILLED and issued this turn.
+    **30. THE FLATTERY FIX — DESIGN DIRECTION RULED (owner 2026-07-13): EVIDENCE-WEIGHTED PAR
+    DECAY.** Owner verbatim: "Yes, evidence weighted par decay makes sense. By the time a player
+    is valued on production, it probably doesn't make much sense to retain it." ⇒ The fix
+    chapter's design: the label bar's weight fades as delivered games accumulate (SPEC_1's
+    identified mechanism — the bar never decays — corrected at the mechanism, per the remediation
+    doctrine; no blanket subtraction). The iso trough/spike smoothing = its own leg. FIRST
+    ARTIFACT: THE SHADOW BOARD (the owner's two-versions idea — with/without flattery, off the
+    census's ev_ref machinery, read-only). Acceptance test = the PROPOSED INVARIANT (same age +
+    record ⇒ lower pick never strictly above higher) — formal ruling at the fix chapter's open.
+    F1 (G-PEAK collision) and F2 (reference-frame) ride the fix directive as design constraints.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
