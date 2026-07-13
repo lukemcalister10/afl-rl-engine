@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v52 2026-07-13 (THE B1 CONFORMANCE RULED EARLY — owner: "July 8 is correct… no need to rescale each class to 100, that sounds silly." The frozen suite conforms to the July-8 construction at the seam/next chapter; the indexed rescale is DEMOTED. History answered honestly: the July-8 basis was first mechanically computed by shard S2 TODAY — green. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v53 2026-07-13 (THE BLEND TEMPLATE CORRECTED: the owner’s sum-to-100 instinct IS the ruled Law-2 schema (streams, DECISIONS §28/§34, R-5) — template v1 WITHDRAWN, v2 issued to the ruled schema; supervisor process miss owned. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -393,6 +393,24 @@
     Bramble's known-wrong row (one phantom game, avg 0.1 high — his value slightly overstated).
     TRIGGER: v2.9 tagged + promoted.
 
+20b. THE FUTURE-POSITION REGISTER — TEMPLATE CORRECTED (2026-07-13). The v1 template (six
+    independent per-tag probability columns, rows summing past 100) is WITHDRAWN: the owner
+    challenged the >100 rows, and THE RULED LAW AGREES WITH HIM — flex spec v1.1 §1.2 (DECISIONS
+    §28/§34, his own rulings): one future position per player = a probability blend of STREAMS
+    (a pure stream + at most ONE dual primary/alternate stream, R-5), streams SUMMING TO 100; the
+    spec's own worked example is his: JHF = 75% pure-MID + 25% MID/G-FWD.
+    TEMPLATE v2 ISSUED to the ruled schema: primary (engine reference, read-only) · alternate
+    (at most one) · p_dual_stream % (one number; pure = 100 − it; untouched row = pure primary).
+    PRICING MEANING (spec §1.2.3, told to the owner): the player is NEVER revalued "as" the
+    alternate — peak/curve/runway/key premium/L1c all stay keyed to the PRIMARY; the dual stream
+    only swaps the FUTURE REPLACEMENT BAR for the LOWER of the pair (the MAX law within the
+    stream; e.g. MID 80.1 vs G-FWD 70.9 ⇒ a 25% dual chance = 25% × the capitalised value of
+    netting against 70.9 instead of 80.1), floored ≥0. It is NOT "p% of the MID-vs-GFWD valuation
+    difference" — that is positional-transition pricing, which §28 explicitly killed.
+    SUPERVISOR PROCESS MISS (owned, register-kept): the v1 template was authored from the seat's
+    head instead of the governing spec, which sat one fetch away; the v1 defence cited a memory
+    phrase over the ruled schema. RULE REAFFIRMED: owner-artifact formats are read off the ruled
+    spec BEFORE authoring, every time.
 21. L6 SCARCITY MEASUREMENT — DENOMINATOR DEFECT (OWNER-CAUGHT 2026-07-13, post-prescreen).
     The committed L6 artifact (d32bf29, "220 rucks priced · 178 sub-400") counted RUC-typed rows
     WITHOUT an active filter: the store carries 232 RUC-typed rows all-time — 70 active, 162
