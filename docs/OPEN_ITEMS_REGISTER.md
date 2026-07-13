@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v32 2026-07-12 (L3a ✓ butters holds −1.04%; L3b delta in hand (+2.3pt spend / dial adds ~2.4pt) — HARNESS RECONCILIATION = the continuation seat's first task (ad-hoc 137.8 vs audited ~128.6-128.8); continuation directive issued @ a00c782)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v33 2026-07-12 (PROVISION ✓ PRESCREENED PASS — PR #66, zero movers, apply welded OFF, 625/625 proof; retiree-ID wrinkle noted; merge word asked. v2.9 continuation in flight)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -290,6 +290,14 @@ DONE 2026-07-12: v2.8 TAGGED (9bd0cfd) + PROMOTED (main ea3c1b44), supervisor-ve
   June-28 Stage-2 OWNER GATE (trajectory-curve read) — and the OWNER-HELD eligibility/positioning
   registers, couriered at fire time).
 
+## COMPLETION PATH — INGESTION PROVISION ✅ BUILT + PRESCREENED PASS (PR #66 @ e529aae,
+2026-07-12; supervisor-verified: 8 new files only · store/board byte-untouched · zero movers ·
+APPLY_DEFAULT=False + env unset (both halves of the switch OFF) · 625/625 byte-for-byte dry-run,
+0 exceptions · runbook committed). WRINKLE (disclosed + registered): the 1848 _retired store rows
+carry no stable ID, so a named retiree hits the exceptions layer as no_stable_id (still caught
+loudly); FUTURE ITEM (owner schedules): extend stable IDs to historical rows for label-accurate
+exceptions. Awaiting the owner's merge word (disjoint from the v2.9 candidate — safe to merge
+now).
 ## COMPLETION PATH (order owner-ruled; AMENDED 2026-07-12, owner-worded: "I want adding weekly
 scores to be the last thing we start doing, once the build is near perfect. But building
 provision for it can be now." ⇒ the INGESTION PROVISION build — parser, resolver wiring,
