@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v41 2026-07-13 (THE K/G COMPANION-TAG LAW ruled — same-end G tags are formalities, disregarded at import; rides item 20. Positional architecture recorded: current elig = this season only · future = the owner’s split register at flex fire · engine positional class stays separate. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v42 2026-07-13 (THE K/G COMPANION-TAG LAW ruled — same-end G tags are formalities, disregarded at import; rides item 20. Positional architecture recorded: current elig = this season only · future = the owner’s split register at flex fire · engine positional class stays separate. Exception record + ruck-DPP clarification + TWO cross-end anomalies (gardiner · whitlock) pending the owner word. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -388,6 +388,18 @@
     the normalized truth, one source, no second copy). Note in evidence: a handful of K's LACK the
     companion (comben · t.marshall · r.marshall …) — the source is inconsistent about it, i.e. the
     tag carries no signal.
+    FULL EXCEPTION RECORD (owner-requested 2026-07-13, supervisor-measured): K-DEF without G-DEF =
+    comben (K-DEF) · puncher (K-DEF) · t.marshall (K-FWD,K-DEF — swingman, keeps both). K-FWD
+    without G-FWD = dodson · may · maley · owens (K-FWD only) · o'keeffe (K-FWD,RUCK) ·
+    r.marshall (RUCK,K-FWD) · t.marshall · l.young (G-DEF,K-FWD,K-DEF → normalizes {K-FWD,K-DEF})
+    · gardiner (below). RUCK DPP CLARIFIED (owner 2026-07-13): keep RUCK + the KEY, drop the gen —
+    the same-end rule already delivers this; measured ZERO rucks carrying a gen tag without its
+    same-end key (21 multi-tag rucks, all conform; blicavs RUCK,MID untouched).
+    CROSS-END ANOMALIES — TWO FOUND, OWNER WORD PENDING (owner: "there should not be any"):
+    (1) darcy-gardiner "G-DEF,K-FWD" (no K-DEF) · (2) matt-whitlock "G-DEF,G-FWD,K-DEF" (no K-FWD
+    — his G-DEF drops as companion, leaving a cross-end G-FWD on a K-DEF player). Both survive
+    normalization under the cross-end-kept rule; owner rules REAL (tags stand) or supplies
+    corrected tags — the fix rides item 20's import.
     POSITIONAL ARCHITECTURE (recorded): L1-CURRENT — normalized current eligibilities drive ONLY
     the current-season slot value; identity-only today (ev() does not read them); VALUE wiring
     lands in the flex build under the standing law (current tags never influence future/past
