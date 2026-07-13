@@ -1,0 +1,518 @@
+{
+ "board": "81e48293 (store b0c39d78, tagged v2.9)",
+ "numeraire_F": 1.0524,
+ "capt_params": {
+  "GAIN": 0.35,
+  "EXP": 1.25,
+  "CAP": 18.0,
+  "THRESH": 107.4
+ },
+ "curve_points": {
+  "107.4": 0.0,
+  "110": 1.086,
+  "112": 2.085,
+  "114.5": 3.31,
+  "117.8": 4.795,
+  "119.5": 5.49,
+  "122": 6.424,
+  "126.0": 7.721,
+  "130": 8.808,
+  "140": 10.842,
+  "200": 15.267,
+  "400": 17.266,
+  "1000": 17.812
+ },
+ "n_over_line": 12,
+ "over_line": [
+  {
+   "player": "Max Gawn",
+   "pos": "RUC",
+   "ln": 121.98,
+   "premium_pts": 6.418
+  },
+  {
+   "player": "Marcus Bontempelli",
+   "pos": "MID",
+   "ln": 121.83,
+   "premium_pts": 6.364
+  },
+  {
+   "player": "Brodie Grundy",
+   "pos": "RUC",
+   "ln": 115.37,
+   "premium_pts": 3.721
+  },
+  {
+   "player": "Tristan Xerri",
+   "pos": "RUC",
+   "ln": 115.02,
+   "premium_pts": 3.558
+  },
+  {
+   "player": "Zak Butters",
+   "pos": "MID",
+   "ln": 114.94,
+   "premium_pts": 3.52
+  },
+  {
+   "player": "Nick Daicos",
+   "pos": "MID",
+   "ln": 112.6,
+   "premium_pts": 2.383
+  },
+  {
+   "player": "Bailey Smith",
+   "pos": "MID",
+   "ln": 111.36,
+   "premium_pts": 1.763
+  },
+  {
+   "player": "Zachary Merrett",
+   "pos": "MID",
+   "ln": 110.72,
+   "premium_pts": 1.444
+  },
+  {
+   "player": "Harry Sheezel",
+   "pos": "MID",
+   "ln": 110.46,
+   "premium_pts": 1.312
+  },
+  {
+   "player": "Luke Jackson",
+   "pos": "RUC",
+   "ln": 109.37,
+   "premium_pts": 0.779
+  },
+  {
+   "player": "Jordan Dawson",
+   "pos": "MID",
+   "ln": 108.04,
+   "premium_pts": 0.199
+  },
+  {
+   "player": "Max Holmes",
+   "pos": "MID",
+   "ln": 108.02,
+   "premium_pts": 0.191
+  }
+ ],
+ "total_board_scar_moved": 6482,
+ "n_board_movers": 47,
+ "movers": [
+  {
+   "player": "Nick Daicos",
+   "pos": "MID",
+   "ln": 112.6,
+   "on": 7667,
+   "off": 7053,
+   "scar": 614
+  },
+  {
+   "player": "Luke Jackson",
+   "pos": "RUC",
+   "ln": 109.37,
+   "on": 7460,
+   "off": 6880,
+   "scar": 580
+  },
+  {
+   "player": "Harry Sheezel",
+   "pos": "MID",
+   "ln": 110.46,
+   "on": 7796,
+   "off": 7242,
+   "scar": 554
+  },
+  {
+   "player": "Tristan Xerri",
+   "pos": "RUC",
+   "ln": 115.02,
+   "on": 6251,
+   "off": 5740,
+   "scar": 511
+  },
+  {
+   "player": "Max Holmes",
+   "pos": "MID",
+   "ln": 108.02,
+   "on": 6150,
+   "off": 5781,
+   "scar": 369
+  },
+  {
+   "player": "Zak Butters",
+   "pos": "MID",
+   "ln": 114.94,
+   "on": 5688,
+   "off": 5333,
+   "scar": 355
+  },
+  {
+   "player": "Bailey Smith",
+   "pos": "MID",
+   "ln": 111.36,
+   "on": 5243,
+   "off": 4929,
+   "scar": 314
+  },
+  {
+   "player": "Isaac Heeney",
+   "pos": "MID",
+   "ln": 105.38,
+   "on": 3727,
+   "off": 3424,
+   "scar": 303
+  },
+  {
+   "player": "Nasiah Wanganeen-Milera",
+   "pos": "MID",
+   "ln": 105.49,
+   "on": 6348,
+   "off": 6054,
+   "scar": 294
+  },
+  {
+   "player": "Brodie Grundy",
+   "pos": "RUC",
+   "ln": 115.37,
+   "on": 3718,
+   "off": 3455,
+   "scar": 263
+  },
+  {
+   "player": "Max Gawn",
+   "pos": "RUC",
+   "ln": 121.98,
+   "on": 2393,
+   "off": 2147,
+   "scar": 246
+  },
+  {
+   "player": "Marcus Bontempelli",
+   "pos": "MID",
+   "ln": 121.83,
+   "on": 3482,
+   "off": 3251,
+   "scar": 231
+  },
+  {
+   "player": "Errol Gulden",
+   "pos": "MID",
+   "ln": 101.57,
+   "on": 5743,
+   "off": 5519,
+   "scar": 224
+  },
+  {
+   "player": "Finn Callaghan",
+   "pos": "MID",
+   "ln": 99.35,
+   "on": 5546,
+   "off": 5369,
+   "scar": 177
+  },
+  {
+   "player": "Tom Green",
+   "pos": "MID",
+   "ln": 104.86,
+   "on": 4196,
+   "off": 4048,
+   "scar": 148
+  },
+  {
+   "player": "Lachlan Ash",
+   "pos": "GEN_DEF",
+   "ln": 96.94,
+   "on": 5043,
+   "off": 4905,
+   "scar": 138
+  },
+  {
+   "player": "Jordan Dawson",
+   "pos": "MID",
+   "ln": 108.04,
+   "on": 3077,
+   "off": 2957,
+   "scar": 120
+  },
+  {
+   "player": "Caleb Serong",
+   "pos": "MID",
+   "ln": 104.26,
+   "on": 4493,
+   "off": 4376,
+   "scar": 117
+  },
+  {
+   "player": "Will Ashcroft",
+   "pos": "MID",
+   "ln": 95.63,
+   "on": 4940,
+   "off": 4837,
+   "scar": 103
+  },
+  {
+   "player": "Noah Anderson",
+   "pos": "MID",
+   "ln": 105.51,
+   "on": 4525,
+   "off": 4432,
+   "scar": 93
+  },
+  {
+   "player": "Willem Duursma",
+   "pos": "MID",
+   "ln": 79.62,
+   "on": 4339,
+   "off": 4260,
+   "scar": 79
+  },
+  {
+   "player": "Jai Newcombe",
+   "pos": "MID",
+   "ln": 97.12,
+   "on": 4242,
+   "off": 4174,
+   "scar": 68
+  },
+  {
+   "player": "Jack Sinclair",
+   "pos": "GEN_DEF",
+   "ln": 105.93,
+   "on": 3006,
+   "off": 2938,
+   "scar": 68
+  },
+  {
+   "player": "Zachary Merrett",
+   "pos": "MID",
+   "ln": 110.72,
+   "on": 2891,
+   "off": 2837,
+   "scar": 54
+  },
+  {
+   "player": "Nicholas Martin",
+   "pos": "MID",
+   "ln": 95.1,
+   "on": 2857,
+   "off": 2805,
+   "scar": 52
+  },
+  {
+   "player": "Ryley Sanders",
+   "pos": "MID",
+   "ln": 84.36,
+   "on": 3960,
+   "off": 3913,
+   "scar": 47
+  },
+  {
+   "player": "Colby McKercher",
+   "pos": "MID",
+   "ln": 80.03,
+   "on": 3672,
+   "off": 3635,
+   "scar": 37
+  },
+  {
+   "player": "Luke Davies-Uniacke",
+   "pos": "MID",
+   "ln": 103.47,
+   "on": 3256,
+   "off": 3221,
+   "scar": 35
+  },
+  {
+   "player": "Christian Petracca",
+   "pos": "MID",
+   "ln": 105.04,
+   "on": 2672,
+   "off": 2638,
+   "scar": 34
+  },
+  {
+   "player": "Sam Lalor",
+   "pos": "MID",
+   "ln": 79.91,
+   "on": 3483,
+   "off": 3455,
+   "scar": 28
+  },
+  {
+   "player": "Matt Rowell",
+   "pos": "MID",
+   "ln": 102.72,
+   "on": 3979,
+   "off": 3952,
+   "scar": 27
+  },
+  {
+   "player": "Thomas Liberatore",
+   "pos": "MID",
+   "ln": 106.36,
+   "on": 1843,
+   "off": 1817,
+   "scar": 26
+  },
+  {
+   "player": "George Wardlaw",
+   "pos": "MID",
+   "ln": 81.58,
+   "on": 3061,
+   "off": 3040,
+   "scar": 21
+  },
+  {
+   "player": "Darcy Wilmot",
+   "pos": "GEN_DEF",
+   "ln": 88.04,
+   "on": 4237,
+   "off": 4216,
+   "scar": 21
+  },
+  {
+   "player": "Will Day",
+   "pos": "MID",
+   "ln": 89.41,
+   "on": 2950,
+   "off": 2929,
+   "scar": 21
+  },
+  {
+   "player": "Jason Horne-Francis",
+   "pos": "MID",
+   "ln": 93.64,
+   "on": 3964,
+   "off": 3946,
+   "scar": 18
+  },
+  {
+   "player": "Archie Roberts",
+   "pos": "GEN_DEF",
+   "ln": 79.94,
+   "on": 4386,
+   "off": 4371,
+   "scar": 15
+  },
+  {
+   "player": "Timothy English",
+   "pos": "RUC",
+   "ln": 104.06,
+   "on": 3132,
+   "off": 3119,
+   "scar": 13
+  },
+  {
+   "player": "Harley Reid",
+   "pos": "MID",
+   "ln": 84.48,
+   "on": 3594,
+   "off": 3582,
+   "scar": 12
+  },
+  {
+   "player": "Sam Berry",
+   "pos": "MID",
+   "ln": 86.15,
+   "on": 2731,
+   "off": 2720,
+   "scar": 11
+  },
+  {
+   "player": "Hayden Young",
+   "pos": "MID",
+   "ln": 88.65,
+   "on": 2612,
+   "off": 2603,
+   "scar": 9
+  },
+  {
+   "player": "Josh Worrell",
+   "pos": "GEN_DEF",
+   "ln": 90.52,
+   "on": 3010,
+   "off": 3002,
+   "scar": 8
+  },
+  {
+   "player": "Chad Warner",
+   "pos": "MID",
+   "ln": 91.55,
+   "on": 2742,
+   "off": 2734,
+   "scar": 8
+  },
+  {
+   "player": "Connor Rozee",
+   "pos": "MID",
+   "ln": 95.98,
+   "on": 2277,
+   "off": 2271,
+   "scar": 6
+  },
+  {
+   "player": "Jake Bowey",
+   "pos": "GEN_DEF",
+   "ln": 86.39,
+   "on": 3219,
+   "off": 3214,
+   "scar": 5
+  },
+  {
+   "player": "Lachie Neale",
+   "pos": "MID",
+   "ln": 107.14,
+   "on": 1816,
+   "off": 1813,
+   "scar": 3
+  },
+  {
+   "player": "Nick Blakey",
+   "pos": "GEN_DEF",
+   "ln": 94.76,
+   "on": 3330,
+   "off": 3328,
+   "scar": 2
+  }
+ ],
+ "excluded_max_ln": 74.98,
+ "saturation": {
+  "best": "Max Gawn",
+  "best_ln": 121.98,
+  "best_prem": 6.418,
+  "eighth": "Zachary Merrett",
+  "eighth_ln": 110.72,
+  "eighth_prem": 1.444,
+  "raw_scoring_gap": 11.26,
+  "premium_gap": 4.97
+ },
+ "attribution": {
+  "Bontempelli": {
+   "board_on": 3482,
+   "ln": 121.83,
+   "premium_pts": 6.364,
+   "board_off": 3251,
+   "capt_scar": 231,
+   "pct_of_value": 6.63
+  },
+  "Gawn": {
+   "board_on": 2393,
+   "ln": 121.98,
+   "premium_pts": 6.418,
+   "board_off": 2147,
+   "capt_scar": 246,
+   "pct_of_value": 10.28
+  },
+  "Daicos": {
+   "board_on": 7667,
+   "ln": 112.6,
+   "premium_pts": 2.383,
+   "board_off": 7053,
+   "capt_scar": 614,
+   "pct_of_value": 8.01
+  }
+ },
+ "elapsed_s": 2.4
+}
