@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v73 2026-07-13 (MEASUREMENT BUILD (PR #71) PRESCREENED — PASS. **THE G-COHORT FEAR IS RETIRED: the captaincy lever SELF-FUNDS (forward credit lifts y1 too, 69,840 -> 70,223), y4 tops out at 1.2651 vs the 1.30 bound.** **CAPTAINCY CANNOT FIX PAIR 3** (gap narrows 12.07% -> 8.06%, bont never passes sanders) — pair 3 is the BASE CURVE, confirming item 44. Owner: **investigate the option-value principle, do NOT rule it** (item 51) + **hygiene job AUTHORISED** (item 52). Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v74 2026-07-13 (⚠ **SUPERVISOR CORRECTION — ITEM 50 IS WRONG AND IS HEREBY CORRECTED** (item 53): the shipped board does NOT price captaincy at the point estimate — it INTEGRATES capt_prem over the b6 peak-outcome band (price6). The owner's p90 idea IS ALREADY IMPLEMENTED; net incremental of wiring it ≈ 0. The point-estimate cliff I reported lives only in the DORMANT rl_model ev() path. The real live coin-flips are **nqual>=4 (62 players) and the tenure gates**. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1303,6 +1303,61 @@
     script HALTs on a broken export, publishing and re-pinning NOTHING.
     ⚠ **SEQUENCING: the hygiene job runs AFTER PR #70 merges** — it shares SHIP_GATES.md and
     ship_gates_check.py's exit semantics with JOB A2. Two chats on the same files is how a fix gets lost.
+
+53. **⚠ SUPERVISOR CORRECTION — ITEM 50 IS WRONG (2026-07-13). THE OPTION-VALUE INVESTIGATION CLOSED
+    THE IDEA BY FINDING IT ALREADY BUILT.**
+    **WHAT I REPORTED (item 50, and it is WRONG):** "capt_prem is evaluated at the POINT ESTIMATE of the
+    peak … ryley-sanders projects to 105.2, misses the 107.4 line by 2.2, and therefore earns ZERO
+    captain credit in every year of his path." I read `rl_model.py`'s ev() loop (`base = lev +
+    capt_prem(lev)`) and asserted it was the board's valuation. **It is not.**
+    **WHAT IS TRUE (verified by the supervisor in the code, not taken from the return):** the shipped
+    board's price comes from `_merged_recover.py` — rl_export wires ev() from THAT module ("the single
+    price", D4/Luke 02/07). Its production leg is `raw_ev → price6(p, b6(p))`, and
+    `price6 = SCALE_DIST · Σ WQ6 · v_at_peak(p, L)` over the peak-outcome band `bb = b6(p)` — with
+    `capt_prem` applied INSIDE `v_at_peak`, i.e. **at every peak level in the band, then weighted.**
+    **The board already computes E[capt_prem(peak)], not capt_prem(E[peak]).** The owner's p90 idea is
+    ALREADY the shipped behaviour. The cliff I described exists only in the **DORMANT rl_model ev()
+    path** that `_merged_recover` replaced — which is why overriding `peak_est` was a no-op.
+    **THE CLUE I HAD AND IGNORED:** the D4 captaincy ladder (item 51) showed sanders moving 3,960 →
+    4,018 as CAPT_GAIN rose. If he truly earned zero captain credit he could not have moved at all. I
+    saw it, rationalised it as a numéraire artifact, and did not chase it. That was the miss.
+    **MEASURED (option-value investigation, board of record v2.9 / 81e48293 / b0c39d78; panel 10/10
+    reproduced):**
+    · **CALIBRATED: YES.** Leave-cohort-out CV (n = 6,351): median crossing 48.8% · central-80%
+      coverage 74.5% · q90 87.2%. Mild SYMMETRIC under-dispersion — the upper tail is slightly thin, so
+      the board if anything UNDER-prices upside.
+    · **THE GAP IS ALREADY BOOKED: 2,524 SCAR gross.** **42 players whose POINT peak_est sits BELOW the
+      107.4 line are already paid captaincy from their band's upper tail** (1,348 SCAR). **ryley-sanders:
+      capt(point) = 0 but he already receives ~50 board points. harley-reid: 12.** Top-20 gainers are
+      exactly the young guns.
+    · **NET OF PMAX: ~unchanged (2,524 → 2,362)** — captaincy and the PMAX convexity multiplier are
+      near-ORTHOGONAL, not double-paying. My double-count warning was wrong too, and in the safe
+      direction.
+    · **NET OF WHAT THE BOARD ALREADY SHIPS, THE INCREMENTAL OF "WIRING THE IDEA" IS ≈ 0.**
+    · **THE REAL LIVE COIN-FLIPS ARE ELSEWHERE: `nqual >= 4` (62 players) and the TENURE GATES** — not
+      captaincy (60 bands straddle 107.4, i.e. it is integrated). This CONNECTS to D1's JUH finding (the
+      nqual 3→4 cliff to a hard 105 floor). **That is where the point-estimate-cliff problem actually
+      lives, and it is now the finding worth carrying into the fix chapters.**
+    · **PAIR 3 — TRIPLE-CONFIRMED AS THE BASE CURVE.** The only remaining captaincy-adjacent lever is
+      WIDENING the band; it raises sanders and pushes pair 3 **13.8% → 19.8% → 25.1%**, and it does NOT
+      self-fund. It makes the owner's own read WORSE.
+    **WHAT STILL STANDS FROM THE EARLIER WORK:** the live `capt_prem` SHAPE is still saturating (hard cap
+    18; marginal slope 0.34 and falling at the top) and the owner's shape read is still SUPPORTED by the
+    record (realized order-statistic value convex: rank1→2 = 5.31 vs rank5→6 = 1.09). G-COHORT still
+    self-funds under a captaincy boost. Those measurements are unaffected by this correction.
+
+54. **THE DORMANT-VALUATION HAZARD — EXHIBIT A FOR THE DEAD-CODE STRIP (2026-07-13).**
+    A dormant valuation path (`rl_model`'s ev() loop) still reads like the engine's price. It is
+    plausible, it is well-commented, it compiles, and **it is not what the board ships.** It misled the
+    SUPERVISOR into a wrong register entry (item 50), a wrong warning to the owner, and a directive for a
+    build that turned out to be measuring an idea the engine already implements. **"Delete, don't
+    disable" (CORE rule 7) exists precisely for this**, and this is the concrete cost: one wrong finding,
+    one wasted directive, and an owner told something untrue about his own model.
+    ⚠ **CAUTION FOR THE STRIP: `rl_model` is NOT dead** — `_merged_recover` imports it as MA and uses its
+    helpers (capt_prem, posval, REPL, age, gfut…). What is superseded is the **top-level ev()/value()
+    path**, not the module. A blunt deletion would take the engine with it.
+    **BLOCKED ON: the owner's JUNE-28 STAGE-2 GATE RULING.** The strip cannot proceed without it. This
+    entry is the argument for making it.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
