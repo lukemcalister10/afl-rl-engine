@@ -1,0 +1,28 @@
+{
+  "anomalies_total": 0,
+  "exceptions_total": 0,
+  "failed": 0,
+  "failures": [],
+  "passed": 625,
+  "proof_pass": true,
+  "sampled": 625,
+  "season_year": 2026,
+  "store_md5": "b0c39d78",
+  "worked_example": {
+    "byte_for_byte": true,
+    "feed_rounds": 12,
+    "key": "willem-duursma",
+    "player": "Willem Duursma",
+    "preview_batch_entry": {
+      "avg": 86.4,
+      "games": 12,
+      "year": 2026
+    },
+    "stable_player_id": "afl-player-v1-0eb1e4c909a009f45d6e",
+    "store_entry": {
+      "avg": 86.4,
+      "games": 12,
+      "year": 2026
+    }
+  }
+}
