@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v46 2026-07-13 (THE LENS PROJECTION LAW ruled — owner picks (b) "clearly": the +1/+2 lens must show the model’s PROJECTED value at year N, expected production credited for gap years; build rides the flattery-fix chapter; the queued board-view lens letter CLOSES early. Seat-4 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v47 2026-07-13 (SHARD S3 RECONCILED: PASS — board byte-reproducible, panel 10/10 independently computed; two findings dispositioned (stale hash prose → bake refresh; pick-1=3157 = pre-L7 by design → THE BAKE APPLIES L7, unconditional 3000 assert). AUDIT-SIZING RULE added after S1/S2 strain. Seat-4 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -485,6 +485,37 @@
     AUDIT STATE: S1/S2 pinned to 917e4c4 REMAIN VALID (value-identity between heads supervisor-
     proven above); S3/S4/S5 ISSUED on the final head 0654897 / board f2d6e3f5. Census pinned
     917e4c4 remains valid on the same identity.
+
+24. AUDIT SHARD RETURNS — RECONCILIATION LEDGER (supervisor-maintained; any red = full stop).
+    **S3 (THE BOARD) — RECONCILED: PASS** (returned 2026-07-13, SHA 0654897 cited): boot PASS ·
+    store b0c39d78 · B4 byte-agree (regenerated == shipped f2d6e3f5, full md5 match) · n 804/198 ·
+    sum 732,725 (+ back 2,879) · 0 movers · panel 10/10 COMPUTED (not pin-vs-pin), values ==
+    certification. Matches the supervisor's independent prescreen on every figure.
+    S3 FINDING A (dispositioned): STALE BOARD-HASH PROSE — expected_boot's prose, PANEL_EXPECTED's
+    header, run_panel.sh's comment, and gates_2030e5df.json's B4 detail still name 8a66b4ba; the
+    operative pin FIELD says f2d6e3f5 (correct). Value-harmless (shard verified the transition
+    itself: 0 movers). FIX: the BAKE build refreshes all identity prose/pins as part of its
+    re-pin step (bake-checklist item; not blocking).
+    S3 FINDING B (dispositioned): SHIPPED PICK-1 = 3157, numéraire guard DORMANT — **PRE-L7 BY
+    DESIGN** (BAKE_CHECKLIST L40-43: a legacy ×1.0524 board is dormant-with-warning; a NUMÉRAIRE
+    board with pick-1 ≠ 3000 HALTS). Supervisor-verified: the owner's sealed reads + the v1.7
+    anchors are in the ×1.0524 world (A-BONT 3246 vs board 3664), so THE BOARD VIEW HAPPENS IN
+    CURRENT UNITS — consistent. **THE BAKE BUILD MUST: run the L7 rebase (÷1.0524) as its step,
+    assert pick-1 == 3000 UNCONDITIONALLY on the baked board, and fold CONSTRAINTS v1.8's
+    re-quoted constants at the seam.** (Certified: order + all 10 anchor ratios preserved under
+    the rebase — uniform division.) Registered so the bake directive cannot omit it.
+    S1/S2 status: IN FLIGHT, STRAINED — owner reports two tool-limit extensions and a possible
+    freeze on S2 (advice given: do NOT refresh incognito — the chat state is unrecoverable; a
+    frozen page with a background compute may still land). FALLBACK IF S2 DIES (pre-authorized
+    shape, supervisor to issue on the owner's word): S2-SLIM — verify the COMMITTED matrix's
+    engine/store/config stamps == manifest + the code-reading basis assertion + recompute ONLY
+    the final aggregation from the committed matrix (cheap); reduced independence DISCLOSED in
+    the reconciliation (the matrix file is the build's, stamp-verified).
+    **AUDIT-SIZING RULE (S6, joins the v38 speed rules; owner-raised after S1/S2 strain):**
+    incognito audit shards are sized to finish inside ONE tool-use window: long computes run
+    nohup-background with completion markers and SPARSE polling (few tool calls); anything
+    heavier than one background compute is either split further or verified-by-stamp instead of
+    recomputed. Fold into CORE with the speed rules at the seam.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
