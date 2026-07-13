@@ -1,0 +1,56 @@
+### 1. fresh bootstrap — Guard 5 (asserts store 340a7a32, board 3dc19fbb)
+bootstrap OK
+  store md5      : 340a7a32   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+### 2. config-manifest + ruling-config
+CONFIG-MANIFEST CHECK: PASS (hash 69ead79b944d; 40 vars; pin+stored consistent)
+RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).
+### 3. build board (bake) + book (gate) for F1/F2 parity
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+exported active=804 cohort=1977 | mechanisms=7 categories analysed | board stamped src=340a7a32 (read-only)
+  board 3dc19fbb (expect 3dc19fbb)
+  book s4_matrix built
+### 4. one_source_selftest (guards 1-5 + F1/F2 + collision sentry)
+
+SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; collision sentry (King pair) clean.
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)
+### 5. guard-4 correction canary (edits+restores store; survives board AND book)
+
+GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
+  store after canary = 340a7a32  (expect 340a7a32)
+### 6. red-path proofs (each must HALT)
+  RED (halts) OK : (b) listed-unapplied override -> PRESENCE ASSERTION HALT
+      -> ["OWNER-OVERRIDE PRESENCE ASSERTION FAILED: 1 listed override(s) carry NO `ov` block on the exported board (key drift or silent drop): ['no-such-player-xyz']. Verify the store key(s) against the board and re-run — a gated/baked board MUST realize every standing owner ruling."]
+  RED (halts) OK : (c) wrong board pin -> boot_guard (Guard 5) HALT
+      -> ["  - checkout board 3dc19fbb != pinned board deadbeef (data/expected_boot.json 'board', full-hash compare) — the board and its pin are out of sync (re-generate + re-pin, or the pin drifted)"]
+
+VERDICT: ALL THREE RED PATHS PROVEN
+### 7. numéraire panel 10/10
+RESULT: PASS 10/10
+### 8. official cohort gate (July-8 binding basis)
+Traceback (most recent call last):
+  File "/home/user/afl-rl-engine/session_2026-07-13/v2_9_continuation/scripts/cohort_gate_official.py", line 69, in <module>
+    mpath = sys.argv[1]
+            ~~~~~~~~^^^
+IndexError: list index out of range
+### 9. ship_gates (frozen acceptance suite B1-B6 + anchors)
+| Sam Sturt | — | 8 | 43 | 60.8 | 57 | +14 | clear |
+| Oskar Baker | — | 9 | 19 | 26.0 | 33 | +14 | clear |
+| Finn Maginness | — | 7 | 24 | 42.2 | 37 | +13 | clear |
+| Noah Answerth | — | 8 | 20 | 19.6 | 33 | +13 | clear |
+| Bailey Scott | — | 8 | 23 | 24.8 | 35 | +12 | clear |
+| Tom Cole | — | 11 | 20 | 37.4 | 32 | +12 | clear |
+| Jamie Cripps | — | 16 | 25 | 41.1 | 37 | +12 | clear |
+| Jake Kolodjashnij | — | 13 | 28 | 35.0 | 39 | +11 | clear |
+| Kaleb Smith | — | 4 | 119 | 104.0 | 129 | +10 | clear |
+| Bailey Macdonald | — | 4 | 119 | 94.9 | 129 | +10 | clear |
+| Harry Morrison | — | 10 | 21 | 17.2 | 30 | +9 | clear |
+| James Jordon | — | 8 | 37 | 38.5 | 45 | +8 | clear |
+| Judson Clarke | — | 5 | 88 | 106.9 | 95 | +7 | clear |
+| James Tunstill | — | 5 | 95 | 91.0 | 100 | +5 | clear |
+| Hunter Clark | — | 9 | 52 | 87.0 | 57 | +5 | clear |
+| Liam Ryan | — | 9 | 28 | 45.0 | 31 | +3 | clear |
+| Nathan Broad | — | 11 | 9 | 17.2 | 12 | +3 | clear |
+report: /home/user/afl-rl-engine/session_2026-07-02/ship_gates_report_2030e5df.md  md5=a2f866b5
+### 10. shipped board (repo) md5 = 3dc19fbb  (expect 3dc19fbb)
+SUITE_DONE

@@ -12,7 +12,7 @@
         "_bd": "2000-07-07",
         "pick": 4,
         "year": 2018,
-        "_club": "St Kilda",
+        "_draft_club": "St Kilda",
         "drafted_position": "KFWD"
       },
       "b": {
@@ -22,10 +22,10 @@
         "_bd": "2007-01-09",
         "pick": 49,
         "year": 2025,
-        "_club": "Sydney",
+        "_draft_club": "Sydney",
         "drafted_position": "GFWD"
       },
-      "distinct_fields": ["player", "_by", "_bd", "pick", "year", "_club"]
+      "distinct_fields": ["player", "_by", "_bd", "pick", "year", "_draft_club"]
     }
   ]
 }

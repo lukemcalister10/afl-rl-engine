@@ -3,7 +3,9 @@
 The ID-primary migration attached `stable_player_id` (afl-player-v1-<20hex>) to
 every csv-matched row of the single store (engine/rl_after/rl_model_data.json).
 That id is the DURABLE identity. Weekly round scores arrive keyed by player NAME
-(and, where available, current club, `affl_team`); this module maps an incoming
+(and, where available, the current AFL club, `afl_club` — imported item 20b from the
+authoritative universe; NOT `affl_team`, which is the AFFL keeper side, a different fact:
+houston is AFL Collingwood but AFFL St Kilda Saints); this module maps an incoming
 (name[, club]) or a legacy_key onto the stable id WITHOUT collapsing distinct
 players who share a name — the two Max Kings (`max-king-stk` / `max-king-syd`)
 must never merge (collision sentry law, DECISIONS §29).
@@ -37,7 +39,7 @@ class Resolution:
         self.status = status
         self.stable_player_id = stable_player_id
         self.key = key
-        self.candidates = candidates or []      # list of (key, stable_player_id, affl_team) when AMBIGUOUS
+        self.candidates = candidates or []      # list of (key, stable_player_id, afl_club) when AMBIGUOUS
     def __repr__(self):
         return "Resolution(%s id=%s key=%s%s)" % (
             self.status, self.stable_player_id, self.key,
@@ -75,10 +77,12 @@ class IdResolver:
         if not keys:
             return Resolution(UNRESOLVED)
         cand = [(k, self._key_to_row[k].get('stable_player_id'),
-                 self._key_to_row[k].get('affl_team')) for k in keys]
+                 self._key_to_row[k].get('afl_club')) for k in keys]
         # club, when supplied, is a VETO — it must never let a wrong-club player through. This is the
         # safety property the two-Max-Kings collision demands: a Sydney-side score must not attach to
-        # the St Kilda player just because the names normalize alike.
+        # the St Kilda player just because the names normalize alike. The disambiguator is `afl_club`
+        # (the CURRENT AFL club a feed carries), NOT affl_team (item 20d — affl_team is the AFFL keeper
+        # side; matching a feed's "D. Houston, Collingwood" against "St Kilda Saints" would MISS).
         if club:
             cn = _norm(club)
             cand = [c for c in cand if _club_match(cn, c[2])]
@@ -105,13 +109,14 @@ class IdResolver:
         }
 
 
-def _club_match(norm_club, affl_team):
-    """True when the incoming (normalized) club and a row's affl_team refer to the same club.
-    affl_team carries the full name ('Hawthorn Hawks'); a feed may pass 'Hawthorn' or the full
-    string. Match on token containment either direction (no valuation content)."""
-    if not affl_team:
+def _club_match(norm_club, afl_club):
+    """True when the incoming (normalized) club and a row's afl_club (CURRENT AFL club, item 20d) refer
+    to the same club. afl_club carries the short name ('Collingwood', 'Port Adelaide'); a feed may pass
+    'Collingwood', 'Collingwood Magpies', or 'Pies'. Match on token containment either direction (no
+    valuation content). Repointed from affl_team (the AFFL keeper side) — the club-semantics defect fix."""
+    if not afl_club:
         return False
-    at = set(_norm(affl_team).split())
+    at = set(_norm(afl_club).split())
     ic = set(norm_club.split())
     return bool(ic) and (ic <= at or at <= ic or bool(ic & at))
 

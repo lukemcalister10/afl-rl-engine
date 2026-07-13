@@ -1,6 +1,6 @@
 {
  "head": "2030e5df",
- "store": "b0c39d78",
+ "store": "340a7a32",
  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b",
  "gates": {
   "A1": {
@@ -81,7 +81,7 @@
   "B1": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE (regenerated this run \u2014 engine 2030e5df store b0c39d78 config 69ead79b944d): cross-cohort AVERAGE peak N=4 AVG(peak)=127 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
+   "detail": "CANDIDATE (regenerated this run \u2014 engine 2030e5df store 340a7a32 config 69ead79b944d): cross-cohort AVERAGE peak N=4 AVG(peak)=127 (need peak in yrs 4-6, >100; pre-peak dips of the AVERAGE <5% tolerat"
   },
   "B2": {
    "dc": false,
@@ -91,12 +91,12 @@
   "B3": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 2030e5df store b0c39d78 config 69ead79b944d): MATCHES the sealed baseline. current=c7825f1b3c1dc122.. (2649 players) vs baseline=c7825f1b3c1dc"
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 2030e5df store 340a7a32 config 69ead79b944d): MATCHES the sealed baseline. current=d371a27c787a34c9.. (2649 players) vs baseline=d371a27c787a3"
   },
   "B4": {
    "dc": false,
    "status": "PASS",
-   "detail": "regenerated rl_app_data.json md5=81e48293 vs shipped 81e48293 (byte-agree gate; export exit=0)"
+   "detail": "regenerated rl_app_data.json md5=3dc19fbb vs shipped 3dc19fbb (byte-agree gate; export exit=0)"
   },
   "B5": {
    "dc": false,

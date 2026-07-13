@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-13 at the v2.9 BAKE for the refit candidate (engine 2030e5df, store b0c39d78). The L7 num\u00e9raire bake is DISPLAY-ONLY (board presentation \u00f71.0524 + adopted-curve repoint + Brodie override); the walk-forward book is engine-ev()-derived and UNCHANGED by it, so this re-seal simply advances the sealed head 7a07e369 -> 2030e5df (the refit engine that B3 previously flagged differs-by-design). Owner tag/main promote remain owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-13 at the ITEM 20 STORE-IDENTITY JOB (engine 2030e5df UNCHANGED, store b0c39d78 -> 340a7a32). Only bramble's 2026 games (15->14) feed ev(); the afl_club/eligibility/_draft_club edits are identity fields ev() never reads. The book is re-measured on THIS version's store per the owner ruling. Owner tag/main promote remain owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
   "head_md5": "2030e5df",
-  "store_md5": "b0c39d78",
+  "store_md5": "340a7a32",
   "n_players": 2649,
-  "stable_sha256": "c7825f1b3c1dc122e16e3a11c1cd530b29599551eea935c39bc908f6b19a4323",
-  "sealed_by": "v2.9 BAKE re-seal 2026-07-13 (refit engine 2030e5df; L7 display-only, book unchanged)",
+  "stable_sha256": "d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f",
+  "sealed_by": "ITEM 20 store-identity re-seal 2026-07-13 (engine 2030e5df; store 340a7a32)",
   "sealed_date": "2026-07-13",
   "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
 }
