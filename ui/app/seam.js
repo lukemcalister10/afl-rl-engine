@@ -34,6 +34,14 @@ MD.seam = (function () {
   };
 })();
 
+/* The DISPLAYED current value of a player (v2.9 bake, owner-ruled 2026-07-13): an owner override
+   substitutes the overridden display figure (ov.dispv) WHEREVER the board shows his value, and ordering
+   follows the display. MECHANICS stay on the engine value `v` (Δ-vs-bake, lens, attribution, all guards).
+   Non-overridden rows and the public tier (no `ov` by design) fall back to `v`. */
+MD.dispVal = function (p) {
+  return (p && p.ov && p.ov.dispv != null) ? p.ov.dispv : (p ? p.v : null);
+};
+
 /* shared UI state */
 MD.state = {
   view: "board",                       // board | card | trade | review

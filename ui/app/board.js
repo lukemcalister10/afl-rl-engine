@@ -11,10 +11,13 @@ MD.board = (function () {
     const nowLens = s.lens === 2;
     let pool;
     if (tier === "public") {
-      pool = (MD.seam.public.players || []).map(function (p) { return { p: p, val: p.v }; });
+      // public tier carries no `ov` (leak-proof), so MD.dispVal falls back to p.v here
+      pool = (MD.seam.public.players || []).map(function (p) { return { p: p, val: MD.dispVal(p) }; });
     } else {
       const w = MD.seam.working;
-      pool = (w.players || []).map(function (p) { return { p: p, val: nowLens ? p.v : p.lens[s.lens] }; });
+      // now-lens: displayed value = the override figure (ov.dispv) when overridden, else v; ordering follows
+      // this displayed value. Lens boards show the projected lens-year figure (the override is a now read).
+      pool = (w.players || []).map(function (p) { return { p: p, val: nowLens ? MD.dispVal(p) : p.lens[s.lens] }; });
       if (!nowLens && s.lens < 2) {
         // backward-board-only players surface at −1 / −2
         (w.back || []).forEach(function (p) {

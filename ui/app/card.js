@@ -54,9 +54,9 @@ MD.card = (function () {
           '<span class="rowline"></span>' : "") +
         '<span class="lbl rule">Your rule: owner override <i style="color:var(--volt);opacity:.7">(a rule holds this price, not the model curve)</i></span>' +
         '<span class="track"><span class="zline"></span><span class="bar rule" style="width:46%"></span></span>' +
-        '<span class="fig rule">' + (pre != null ? fmt.signed(p.v - pre) : "override") + "</span>" +
+        '<span class="fig rule">' + (pre != null ? fmt.signed(MD.dispVal(p) - pre) : "override") + "</span>" +
         '<span class="rowline"></span>' +
-        '<span class="totals">Lands at</span><span></span><span class="totals" style="text-align:right"><b>' + fmt.n(p.v) + "</b></span>" +
+        '<span class="totals">Lands at</span><span></span><span class="totals" style="text-align:right"><b>' + fmt.n(MD.dispVal(p)) + "</b></span>" +
         "</div>";
       html += '<div class="note"><b>The rule is a line item, not a ghost.</b> The hollow volt bar is your call ' +
         "holding the price — the post-override figure is shown; the model's own figure is one hover away on the tag, never on the rail.</div>";
@@ -92,7 +92,7 @@ MD.card = (function () {
           '</b><span class="badge">guard 5 pass</span></div>' +
       "</div><div class=\"body\">" +
         '<div class="statrow">' +
-          '<div><div class="k">Value</div><div class="v volt num">' + fmt.n(p.v) + "</div></div>" +
+          '<div><div class="k">Value</div><div class="v volt num">' + fmt.n(MD.dispVal(p)) + "</div></div>" +
           '<div><div class="k">Δ vs last bake</div><div class="v ' + dCls + ' num">' + dTxt + "</div></div>" +
           '<div><div class="k">Rank</div><div class="v num">' + (rank || "—") +
             '<small> / ' + fmt.n(st.nPlayers) + "</small></div></div>" +
@@ -121,7 +121,7 @@ MD.card = (function () {
         '<div class="id">' + fmt.esc(p.pos) + " · " + fmt.esc(p.club || "—") + "</div>" +
       "</div><div class=\"body\">" +
         '<div class="statrow">' +
-          '<div><div class="k">Value</div><div class="v volt num">' + fmt.n(p.v) + "</div></div>" +
+          '<div><div class="k">Value</div><div class="v volt num">' + fmt.n(MD.dispVal(p)) + "</div></div>" +
           '<div><div class="k">Δ vs prev round</div><div class="v flat num">— steady</div></div>' +
           '<div><div class="k">Rank</div><div class="v num">' + (rankOf(p.key) || "—") + "</div></div>" +
         "</div>" +
