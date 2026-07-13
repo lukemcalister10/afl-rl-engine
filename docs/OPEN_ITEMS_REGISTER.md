@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v65 2026-07-13 (ITEM 20 PRESCREENED — PASS with ONE MATERIAL FINDING (item 37): the suite's cohort gate NEVER RAN (IndexError, no matrix arg) yet was REPORTED as PASS; the supervisor MEASURED the BINDING July-8 gate himself on the new store — 1.2601/1.2407/1.1521, PASS ×3. OWNER HAS AUTHORISED THE MERGE of PR #69; execution pending. Pack filed at v64. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v66 2026-07-13 (✅ **ITEM 20 MERGED AND CLOSED** — owner merged PR #69; main **9eab9f3** · store **340a7a32** · board **3dc19fbb** · 804 rows, sum 696,248 · 0 blank clubs · Guard-5 pin moved with it; **v2.9 (9f8ae76) remains an ancestor of main and the canonical TAGGED board** — item 20 is a store write, not a re-tag. INGESTION CLUB BLOCKER CLEARED. OPEN: item 38's gate-invocation fix (folds into the B1 code-conform job). NEXT CHAPTER: FLATTERY FIX — shadow board first; the DESIGN directive is HELD FOR FABLE. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -932,6 +932,22 @@
     · **TEST-MERGE INTO MAIN: CLEAN** — no conflicts; the v64 pack filing survives intact.
     · CSV stamped + archived (docs/inputs/archive/authoritative_universe_v2.csv). INGESTION CLUB
       BLOCKER CLEARED.
+    ✅ **MERGED AND CLOSED (2026-07-13, the owner's own hand).** Merge commit **9eab9f3** ("Merge
+    pull request #69"). SUPERVISOR POST-MERGE VERIFICATION (fresh anonymous clone, everything
+    recomputed): main store = **340a7a32** · board = **3dc19fbb** · 804 active, sum **696,248** ·
+    bramble **93** · houston Collingwood · zorko Brisbane · **0 blank-club rows remain on the
+    board** · Guard-5 pin on main = store 340a7a32 / board 3dc19fbb (it moved WITH the store, as
+    required) · **v2.9 (9f8ae76) is STILL AN ANCESTOR of main** and remains the canonical TAGGED
+    board — item 20 was a store write for the next chapter, not a re-tag · the v64 pack filing is
+    intact. **ITEM 20: DONE.**
+
+39. **THE WORKING HEAD (post-item-20, 2026-07-13) — every seat and build that follows reads this.**
+    main **9eab9f3** · store **340a7a32** · board **3dc19fbb** · engine 2030e5df (UNCHANGED) · book
+    seal d371a27c (n=2649) · Guard-5 pin = store 340a7a32 / board 3dc19fbb.
+    THE TAGGED CANONICAL BOARD IS STILL **v2.9 = 9f8ae76** (board 81e48293 / store b0c39d78). The
+    two differ by exactly ONE SCAR (bramble 92→93) plus identity/display fields. Anything quoting a
+    board value must say WHICH of the two it read. The next bake re-tags; until then v2.9 is the
+    board of record and 9eab9f3 is the working head.
 
 38. **⚠ THE FINDING — A BINDING GUARD WAS REPORTED GREEN WITHOUT RUNNING (2026-07-13, supervisor-
     caught at the item-20 prescreen).** Item 20's suite log §8, headed "official cohort gate (July-8
