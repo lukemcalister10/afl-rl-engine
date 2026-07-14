@@ -99,7 +99,14 @@ jobs:
           python3 guard_correction_canary.py
 
       - name: Panel 10/10 (run_panel.sh, + Guard 5 on entry)
-        run: bash run_panel.sh
+        # E0 (ci-env-pin, 2026-07-14) — DIAGNOSTIC OUTPUT ONLY, changes no step logic and no verdict:
+        # print the md5 of the board THIS run built (rl_export.py output from the build step above) so
+        # CI's board identity is visible in the log. Printed BEFORE the panel so it appears even when the
+        # panel exits non-zero. Until now CI never printed the board md5 — the SSE-board claim was an
+        # inference from three player values, never a measured hash.
+        run: |
+          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (pinned board of record = 3dc19fbbf920958affe7c6a2be9697d2)"
+          bash run_panel.sh
 
       - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"
         run: python3 ruling_config_check.py
