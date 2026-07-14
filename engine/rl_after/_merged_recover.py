@@ -130,11 +130,23 @@ def _nqual(p,Y): return sum(1 for x in p['scoring'] if x['games']>=10 and x['yea
 # accept-and-track 1140 -> 2080 breaking A8; O'Driscoll -525, Cadman -253 via mid-season proven flips).
 # Extending the proration to multi-season nqual increments needs a Luke ruling; the pre-existing
 # full-10-bar step for those players stands (known seam class, h-M3-blend-seam-noise register).
+# ==== FIX 1 — SMOOTH SMALL-SAMPLE DAMPING (R99.1 TAKE, owner-ruled 2026-07-14) ====================
+# A season's WEIGHT in the recency-weighted current level becomes w(g)=g^2/(g+5.8) instead of g, so thin
+# evidence counts for little and a 1-game cameo can no longer drag a demonstrated level to a cliff.
+# w: 0->0 · 1->0.147 · 2->0.513 · 3->1.02 · 5->2.32 · 8->4.64 · 12->8.09 · 22->17.41. ONE curve, both
+# directions: it takes Ladhams (1 game @ 97) DOWN off an over-price and the cold-cameo crash (Jamarra) UP.
+# Env-gate RL_DAMP (default ON); RL_DAMP=0 => w=g => byte-exact base. Kill-switch, G-ATTR-separable.
+# Owner constraint (reported, only APPROXIMATELY met): w(1)~=w(0)~=0 — the 0->1 jump is cut 6.8x but
+# w(1)=0.147, NOT zero: the inversion is shrunk, not eliminated (census item 88). SMOOTH THE AVERAGES,
+# NOT THE PRICE (R99.4): this touches _lvlcurr only; the convex pricing curve is untouched.
+_DAMP=os.environ.get('RL_DAMP','1')!='0'
+_DAMP_K=float(os.environ.get('RL_DAMP_K','5.8'))
+def _wg(gm): return (gm*gm/(gm+_DAMP_K)) if _DAMP else float(gm)
 def _lvlcurr(p,Y):                                            # steeper-recency CURRENT level (trend-aware; ==career avg for a flat player)
     ld=LDECAY_G[_ldg(MA.gfut(p))]                             # STEP-3 per-group recency decay
     rows=[(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y]
-    tw=sum(gm*ld**max(0,Y-yr) for yr,gm,_ in rows)
-    return float(sum(gm*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
+    tw=sum(_wg(gm)*ld**max(0,Y-yr) for yr,gm,_ in rows)       # FIX 1: small-sample damping w(g)=g^2/(g+5.8) (RL_DAMP)
+    return float(sum(_wg(gm)*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
 def _par_prior(p,Y): return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6))
 def eff_ten(p,Y,base):                                        # developmental tenure off a CONTEXT base; proven keeps base exactly
     if _nqual(p,Y)>=PROVEN_N: return base                     # proven: original tenure (each call site passes its own base)
@@ -304,6 +316,74 @@ def b6(p,Y=2026):
         except Exception: return bb
     return bb
 cp._lvl_eff=_inferM1; cp._feat=_feat_infer   # M1 level bind (was _lvl_eff_infer) + STEP1 inference feature path (q97m + ISO + POLE above used ORIGINAL features)
+# ==== THE ABSENCE TERM (Option C, owner-ruled 2026-07-14) =========================================
+# A missed season carries a PREDICTIVE, MULTIPLICATIVE penalty on a returning player's PROJECTED LEVEL
+# (cp._lvl_eff = _inferM1, the number ev() consumes). It is NOT a phantom row (rejected — a phantom season
+# carries 6x the evidential weight of six real games and LIFTS collapsed players) and NOT a threshold
+# (R98.2 — the age curve is continuous). Magnitude = D2 R2's mean-reversion-adjusted FITTED age curve
+# (session_2026-07-14/d2_recut, out_r2.txt; CORE rule 7 — the smooth curve, not the 3-bin cut that produced
+# a FALSE prime-negative), expressed as a FRACTION of level (D2 R1: multiplicative is the point-estimate form;
+# the CI admits additive — not overclaimed; L_REF=75 = the measured mean pre-absence level).
+#   THE DOUBLE-CHARGE (the single most likely way to get this wrong): the recency decay ld^(Y-yr) ALREADY
+#   ages a returner's last good season an extra year (D2 R3: mean -1.7 lvl pts charged; the measured truth
+#   owed is -4.9 => the SHORTFALL is ~-3.2). We deliver ONLY the shortfall by netting the decay PER PLAYER —
+#   L_nogap = _inferM1(gap-filled copy) via D2 R3's shift_out_gap (REUSED) — and CAP at the multiplicative
+#   truth, never lifting: L_abs = min(L_base, L_nogap*(1 - frac)). So the NEW term never drives the total
+#   past the measured curve; where the decay already over-charges (Jamarra), the new term contributes 0.
+# Env-gate RL_ABSENCE (default ON); RL_ABSENCE=0 => byte-exact base. Kill-switch, G-ATTR-separable.
+_ABSENCE=os.environ.get('RL_ABSENCE','1')!='0'
+_ABS_L_REF=float(os.environ.get('RL_ABS_LREF','75.0'))       # D2 R1 mean pre-absence level (multiplicative base)
+_ABS_CAP=float(os.environ.get('RL_ABS_CAP','0.20'))          # safety cap on the fraction (extrapolation beyond age 34)
+_ABS_FADE_N=float(os.environ.get('RL_ABS_FADE_N','2.0'))     # ASSUMPTION (law 5, NOT measured): FULL penalty in the RETURN season; fades to 0 over this many SUBSEQUENT re-established (>=10g) seasons — NOT permanent. 2.0 chosen so a player who returns and plays two full seasons (e.g. Bailey Smith: out 2024, back 2025@116 & 2026@122) is no longer charged; flag for owner.
+_ABS_AGE=[18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34]
+# D2 R2 mean-reversion-adjusted fitted effect (level points). The positive entries <age~20 are the DECLARED
+# data-free kernel extrapolation (raw n~=0) and are clamped to 0 below — an absence is never a bonus.
+_ABS_EFF=[3.65,0.28,-2.51,-4.49,-5.55,-5.73,-5.25,-4.46,-3.71,-3.25,-3.25,-3.85,-5.14,-7.10,-9.39,-11.29,-11.88]
+def _abs_frac(age):
+    if age is None: return 0.0
+    a=float(np.clip(age,_ABS_AGE[0],_ABS_AGE[-1]))
+    eff=float(np.interp(a,_ABS_AGE,_ABS_EFF))                 # fitted level-point effect (negative = penalty)
+    return float(np.clip(max(0.0,-eff)/_ABS_L_REF,0.0,_ABS_CAP))
+def _abs_gap(p,Y):
+    """the MOST-RECENT mid-career calendar gap (a games==0 year after >=1 prior played season) whose
+    return year <= Y. Returns dict(age_pre,ret,last,npost) or None. Non-established players INCLUDED
+    (law-4 coverage — the curve is extrapolated below the established base, DECLARED). Multiple separate
+    absences are charged on the MOST RECENT return only, ONE penalty (law 5(a) assumption, DECLARED)."""
+    d0=cp.debutyr(p)
+    rows={x['year']:x['games'] for x in p['scoring'] if (d0-1)<x['year']}
+    yrs=[y for y,gmv in rows.items() if gmv>0]
+    if len(yrs)<2: return None
+    lo,hi=min(yrs),max(yrs); tl=[(y,rows.get(y,0)) for y in range(lo,hi+1)]
+    best=None; i=0
+    while i<len(tl):
+        if tl[i][1]!=0: i+=1; continue
+        prior=[yy for (yy,g2) in tl[:i] if g2>0]; j=i
+        while j<len(tl) and tl[j][1]==0: j+=1
+        if prior and j<len(tl):
+            ret=tl[j][0]
+            if ret<=Y:
+                last=prior[-1]; a=cp._age_asof(p,2026)
+                age_pre=(a-(2026-last)) if a is not None else None
+                npost=sum(1 for x in p['scoring'] if x['games']>=10 and x['year']>ret and (d0-1)<x['year']<=Y)
+                best=dict(age_pre=age_pre,ret=ret,last=last,npost=npost)   # keep LATEST qualifying gap
+        i=j
+    return best
+def _abs_shift(p,last,ret):                                   # D2 R3 shift_out_gap: slide pre-gap seasons forward so the record is contiguous (gap filled)
+    glen=ret-last-1                                           # shallow copy + rebuilt scoring (the level path never mutates q; cheaper than deepcopy in the walk-forward)
+    q=dict(p); q['scoring']=[({**x,'year':x['year']+glen} if x['year']<=last else x) for x in p['scoring']]
+    return q
+_lvl_eff_preabs=cp._lvl_eff                                   # = _inferM1 (the projected level WITHOUT the absence term)
+def _lvl_eff_abs(p,Y):
+    Lb=_lvl_eff_preabs(p,Y)
+    if not _ABSENCE or not _isreal(p): return Lb              # synths/lever-off: byte-exact (synths are gap-free anyway)
+    gi=_abs_gap(p,Y)
+    if gi is None or gi['age_pre'] is None: return Lb
+    fade=float(np.clip(1.0-gi['npost']/_ABS_FADE_N,0.0,1.0))  # full in the return season; 0 after _ABS_FADE_N re-established seasons
+    frac=_abs_frac(gi['age_pre'])*fade
+    if frac<=0.0: return Lb
+    Lng=_lvl_eff_preabs(_abs_shift(p,gi['last'],gi['ret']),Y) # counterfactual no-absence level (decay netted per player)
+    return min(Lb, Lng*(1.0-frac))                            # cap at multiplicative truth; NEVER lift
+cp._lvl_eff=_lvl_eff_abs
 # ==== M3 CLOCK-PIN PLUMBING (BAKE CANDIDATE v2, D7 02/07/2026 — design: session_2026-07-02/
 # m3_design_proportional_tenure.md; the D4 backtest's monkeypatch hook inventory made first-class).
 # While _M3PIN is on (ONLY inside _ev_m3's pinned evaluation of the in-progress season), the age/tenure
