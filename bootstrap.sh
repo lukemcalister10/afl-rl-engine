@@ -52,6 +52,11 @@ RL_REPO="$HERE" python3 "$HERE/boot_guard.py" bootstrap \
   /home/claude/rl_workspace/rl_after/_merged_recover.py \
   /home/claude/cm_400.pkl \
   /home/claude/rl_workspace/rl_after/LTI_REGISTER.md || { echo "bootstrap FAILED: seeded workspace does not match the pinned store/register (see above)"; exit 1; }
+# F1 (register item 91): ASSERT the workspace q97m the ENGINE will LOAD (/home/claude/q97m.pkl) == the pin —
+# do not merely echo it. boot_guard's (0e) loaded-path block also asserts this on entry; this is the visible,
+# fail-closed check in bootstrap's own verify block, matching the store/cm/register assertions in the call above.
+QPIN=$(python3 -c "import json,sys; sys.stdout.write(json.load(open('$HERE/data/expected_boot.json'))['q97m'][:8])")
+[ "$Q" = "$QPIN" ] || { echo "bootstrap FAILED: workspace q97m /home/claude/q97m.pkl md5 $Q != pinned $QPIN — the engine would LOAD an unverified pickle (F1)"; exit 1; }
 R=$(md5sum /home/claude/rl_workspace/rl_after/LTI_REGISTER.md | cut -c1-8)
 echo "bootstrap OK"
 echo "  engine md5     : $M   (candidate: F1/F2 one-source rewire)"

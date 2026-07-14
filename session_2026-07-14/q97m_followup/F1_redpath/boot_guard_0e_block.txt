@@ -1,0 +1,40 @@
+    # (0e) LOADED-PATH integrity (q97m/cm load-path hole, register item 91; owner-caught 2026-07-14): block (0d)
+    #      above asserts the REPO copy of each fitted artifact — but the ENGINE loads through its OWN precedence,
+    #      and the workspace copy (and an env var) WIN over the repo. _load_q97m() (_merged_recover.py) resolves
+    #      $RL_Q97M_PKL -> /home/claude/q97m.pkl -> <repo>/data/q97m.pkl; wire_redesign.build() loads
+    #      /home/claude/cm_<RL_PRIOR_TREES>.pkl. So (0d) can PASS while the engine loads a DIFFERENT pickle — an
+    #      env var could point the engine at ANY pickle on disk and the guard still passed (a guard that cannot
+    #      fail; the very stale-boot hole Guard 5 exists to close, re-opened on the just-frozen artifact). This
+    #      block resolves each artifact through the engine's EXACT precedence and asserts THE PATH THAT WILL
+    #      ACTUALLY BE LOADED == the pin. HALT names the resolved path AND the expected pin. Skipped per-field
+    #      when the pin is absent (backward-compatible).
+    def _resolve_q97m_load():                 # mirror _merged_recover._load_q97m precedence, byte-for-byte
+        for _c in (os.environ.get('RL_Q97M_PKL'), '/home/claude/q97m.pkl',
+                   os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '', 'data', 'q97m.pkl')):
+            if _c and os.path.exists(_c):
+                return _c
+        return None
+    def _resolve_cm_load():                    # mirror wire_redesign.build() cache precedence
+        _trees = os.environ.get('RL_PRIOR_TREES', '400')
+        _cache = '/home/claude/cm_%s.pkl' % _trees
+        return _cache if os.path.exists(_cache) else None
+    _LOADED = (('q97m', exp.get('q97m'), _resolve_q97m_load(),
+                '$RL_Q97M_PKL -> /home/claude/q97m.pkl -> <repo>/data/q97m.pkl',
+                'the engine would FIT q97m at build time (the exact defect the freeze removed)'),
+               ('band', exp.get('band'), _resolve_cm_load(),
+                '/home/claude/cm_%s.pkl (RL_PRIOR_TREES)' % os.environ.get('RL_PRIOR_TREES', '400'),
+                'the engine would RETRAIN a non-canonical cm forest (DYNAMIC_ARCH, not bit-stable)'))
+    for _fld, _pin, _lp, _prec, _elsemsg in _LOADED:
+        if _pin is None:
+            continue
+        if _lp is None:
+            fails.append("%s LOAD-PATH unresolved: the engine's precedence (%s) finds NO file on disk, so %s. "
+                         "Re-run bootstrap.sh to seed the workspace copy." % (_fld, _prec, _elsemsg))
+            continue
+        _lm = _md5(_lp)
+        if not _cmp_on_pin_len(_lm, _pin):
+            fails.append("%s LOAD-PATH MISMATCH: the engine will LOAD\n        %s\n        md5 %s  !=  pinned %s "
+                         "(data/expected_boot.json '%s', full-hash compare).\n        The engine's own precedence "
+                         "(%s) resolved to a file that is NOT the pinned frozen artifact — an env var or a stale "
+                         "workspace copy is shadowing the frozen source. Re-run bootstrap.sh (or unset the "
+                         "override); never boot on an unverified LOADED artifact." % (_fld, _lp, _fmt(_lm), _fmt(_pin), _fld, _prec))
