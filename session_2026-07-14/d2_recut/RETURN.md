@@ -1,6 +1,6 @@
 # D2 RE-CUT — RETURN
 
-- **branch** `claude/absence-value-forms-lpfm11` · **head** `<filled at commit>` · **PR** `<candidate, at return>`
+- **branch** `claude/absence-value-forms-lpfm11` · **measurement head** `a3b43a4d` (finalized one commit above) · **PR** #80 (draft candidate)
 - **board of record** `9f8ae76` (v2.9): store **`b0c39d78`** · board `81e48293` · engine `2030e5df`. Guard 5 PASS.
 - Prior D2 reproduced to the number (−3.42 SC; 14,698 controls; 109 absence players). Tier 3, read-only. **No lever proposed.**
 
