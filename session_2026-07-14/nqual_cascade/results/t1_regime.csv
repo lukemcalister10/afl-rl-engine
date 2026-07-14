@@ -1,0 +1,11 @@
+population,regime,pedigree_wt,count,mean_par,mean_lvlcurr,mean_lvl_ship,median_v,mean_v
+board,0,n/a(Lo),256,58.9,25.5,55.9,319,406
+board,1,0.75,85,63.5,54.0,59.4,611,891
+board,2,0.50,53,65.4,62.2,62.1,680,988
+board,3,0.25,62,69.1,66.2,65.9,775,1182
+board,PROVEN,0(vanished),348,71.7,76.6,73.1,559,1122
+full_pool,0,n/a(Lo),1318,67.5,18.9,66.4,11,87
+full_pool,1,0.75,255,68.4,52.7,62.4,14,306
+full_pool,2,0.50,153,68.7,56.5,60.6,15,350
+full_pool,3,0.25,137,69.9,60.4,61.6,23,542
+full_pool,PROVEN,0(vanished),789,71.9,69.4,60.3,26,505
