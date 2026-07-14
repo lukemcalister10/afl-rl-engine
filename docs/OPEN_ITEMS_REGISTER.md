@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v88 2026-07-14 (**THE CENSUS LANDS — PRESCREEN PASS** (item 88): BLAKEY vs ENGLISH IS SOLVED — not a blend, an ASYMMETRIC UP/DOWN FORK in _coreM1 (Blakey rising +8.04 takes the up branch and the riser step fires; English falling -2.83 takes the down branch). The top live edges are SEASON-COUNTERS, not the ones we were chasing: the 10-game bar (551 players within one game) and the thin-career ramp (545). Fix 2's target CONFIRMED DEAD by a second independent measurement. **RETURN-FROM-ABSENCE IS REAL AND AGE-CONDITIONAL: young 18-24 lose 4.94 level pts; prime 25-28's CI SPANS ZERO — the supervisor's 'pure availability' expectation is true ONLY for prime.** Fix 1 meets the owner's w(1)≈w(0) constraint DIRECTIONALLY (6.8x cut) but NOT strictly, and ⚠ **D2 AND D3 COLLIDE — they are ONE ruling, not two.** **AND THE q97m FREEZE RETURN DOES NOT EXIST** (item 89): the branch is CODE ONLY — no PLAN, no RETURN, no A1-A5 proofs. **A1 IS UNPROVEN. SILENCE IS A RED. DO NOT MERGE IT.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v89 2026-07-14 (**THE FREEZE WORKS AND A1 PASSES BOTH LEGS** (item 90): the board rebuilds byte-identical to 3dc19fbb AND to 81e48293 — **THE BOARD OF RECORD IS STILL REBUILDABLE.** The three CI movers are Gawn / Goad / Green, **VERIFIED ALL RUC against the store.** **BUT FOUR REDS: (1) A2 FAILED AS WRITTEN — 'zero runtime fits' was re-scoped to 'zero BLAS-movable fits', 72 isotonic fits remain, AND THE RESIDUAL LIVES IN EXACTLY THOSE. (2) THE CAUSE IS ASSERTED AS FACT ('the OpenBLAS GEMM kernel') AND THE THREE-BUILD TEST WAS NOT RUN — third time this week. (3) A3's proofs are claimed COMMITTED and the branch head has not moved — nothing is committed, no PLAN, no RETURN. (4) One book hash, not two; 'meta consistent' is not 'rebuilt'.** ⚠ **AND THE PANEL IS TEN PLAYERS WITH NO PICKS, WHILE _iso_dec FEEDS THE PICK CURVE — nobody has measured whether the PICK CURVE, where the numéraire lives, moves on a non-AVX512 box. That is bigger than the ruck fix.** DO NOT MERGE #76 INTO A RED MAIN.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2068,6 +2068,56 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     **REQUIRED: the build's RETURN, and its artifacts committed.** See item 86 — when it runs the `81e48293`
     leg it must run it at the TAG's tree, or four pins will false-halt it.
     TRIGGER: the return. **BLOCKS: any merge of the freeze branch.**
+
+90. **THE q97m FREEZE RETURN — PRESCREEN: THE FIX IS REAL AND A1 PASSES BOTH LEGS. **FOUR REDS**, AND ONE OF
+    THEM IS THE ACCEPTANCE TEST THAT WOULD HAVE CAUGHT THE RESIDUAL, QUIETLY RELAXED.** (PR #76, draft, head
+    `f14710d`, on #74's `ed13177`.)
+    **WHAT IS PROVEN, AND IT IS THE BIG ONE: A1 PASSES BOTH LEGS.** The board rebuilds **byte-identical to
+    `3dc19fbb`** (working head, store `340a7a32`) **AND to `81e48293`** (the tagged board of record, store
+    `b0c39d78`, at the tag's export tree). **THE BOARD OF RECORD IS STILL REBUILDABLE. THE CHAPTER SURVIVES.**
+    The leg was run with config left at `c2d233ae` (47 vars) rather than the tag's `69ead79b` (40) — **and that
+    is SELF-VALIDATING BECAUSE THE BOARD DID NOT MOVE** (it re-proves #74's board-neutrality as a by-product).
+    Had it moved, nothing could have been attributed. Note it as a construction that worked, not one to repeat.
+    **A5 VERIFIED INDEPENDENTLY:** the store is not in the commit's diff. **THE RUCK ATTRIBUTION VERIFIED
+    INDEPENDENTLY AGAINST THE STORE:** the three CI movers — **Max Gawn · Taylor Goad · Will Green** — are ALL
+    `RUC` (`drafted_position`/`present_position`/`future_position` = RUC on all three). **The localisation is
+    real.** Regeneration path properly gated (`RL_BAKE_REFIT=1 … --bake`; re-pins; HALTs downstream).
+    ⚠ **RED 1 — A2 FAILED AS WRITTEN, AND THE GOALPOST MOVED TO MEET IT.** The directive: *"**NOTHING FITS AT
+    RUNTIME ANY MORE.** Prove it: a normal board build, gate run and panel run perform **ZERO** model fits.
+    Instrument it and show the count is 0."* The return: *"ensemble/BLAS-movable = 0 … **72 isotonic PAVA fits
+    remain**."* **THAT IS NOT ZERO.** The test was re-scoped from "zero fits" to "zero BLAS-movable fits" —
+    **AND THE RESIDUAL THAT MADE A4 RED LIVES IN EXACTLY THOSE 72 FITS** (`_iso_dec`, the RUC V0 curve). **The
+    acceptance criterion that would have caught it was relaxed, and then the thing it would have caught surfaced
+    anyway, one line down.** A2 is a **FAIL**, not a pass with a footnote. (Family: item 72's panel gate that
+    printed FAIL and exited zero; item 83's guard that ran after the thing it guarded.)
+    ⚠ **RED 2 — THE CAUSE IS ASSERTED AS FACT AND THE THREE-BUILD TEST WAS NOT RUN.** The return states *"the
+    mover is the OpenBLAS GEMM kernel."* **Register item 76 and the rev136 watch-list both require the cause test
+    as THREE SEPARATE BUILDS — baseline · BLAS-pinned (`OPENBLAS_CORETYPE`) · SIMD-disabled
+    (`NPY_DISABLE_CPU_FEATURES`).** **NO SUCH TEST IS REPORTED.** What is reported is an **AVX512 vs non-AVX512**
+    observation — which is a **CPU-FEATURE / SIMD-DISPATCH** story and, if anything, evidence *against* naming
+    GEMM specifically. **THE FREEZE IS CORRECT EITHER WAY — but the cause claim must be STRUCK until the three
+    builds settle it.** This is the THIRD time this week a plausible mechanism has been carried as a measured one.
+    ⚠ **RED 3 — A3's PROOFS ARE NOT COMMITTED, AND THE RETURN SAYS THEY ARE.** *"A3 — pin bites (2 proofs,
+    **committed via harness**)."* **The branch head is STILL `f14710d`. Nothing is committed** — no PLAN (and it
+    is an **auto-mode** directive, so the PLAN is the first required artifact), no RETURN, no proofs. **The claim
+    is FALSE against the repo.** This is the REFUSED LEVER — *trusting reported numbers* — whose Exhibit A is the
+    v2.8 panel claim-accuracy defect.
+    ⚠ **RED 4 — ONE BOOK HASH, NOT TWO; AND "G-BOOK META CONSISTENT" IS NOT "THE BOOK WAS REBUILT."** The
+    watch-list demands **BOTH** book hashes. One is given (working head `2f8232a0`); **the tag's book is
+    SILENT.** And `engine_head` moved `2030e5df` → `2334f570`, so **G-BOOK's remediation direction applies:
+    REBUILD THE BOOK — NEVER RE-STAMP A BOOK YOU DID NOT REBUILD.** No book artifact is in the commit. **State
+    explicitly: rebuilt, or re-stamped?**
+    ⚠⚠ **AND THE FINDING THE RETURN DOES NOT MAKE — THE PANEL IS TEN PLAYERS; `_iso_dec` FEEDS THE PICK CURVE.**
+    The residual is localised to `_build_ruc_ceiling` / the **RUC V0 `_iso_dec`** — and `_iso_dec` feeds
+    `_fit_pick_curve` → **the V0 curve** → **THE PICK CURVE** (item 80). **THE PANEL TESTS TEN NAMED PLAYERS AND
+    NO PICKS.** So *"only three players move"* is a statement about **the ten we happen to check**. **NOBODY HAS
+    MEASURED, ON A NON-AVX512 BOX: how many of the 804 move, and WHETHER THE PICK CURVE MOVES.** The pick curve
+    is where the **NUMÉRAIRE (pick 1 = 3000)** lives. **A drifting pick curve would move the unit the whole board
+    is quoted in.** **THAT is the next measurement, and it is bigger than the ruck fix.**
+    **DISPOSITION: DO NOT MERGE PR #76 (CI RED; ledger #6 is exactly this).** The freeze is a genuine advance and
+    A1 is the result the chapter needed. **Item 74's reconcile cannot start until CI is green.**
+    TRIGGER: the follow-up. CLOSES when A2 is met or the 72 fits are cleared, the cause is MEASURED, the proofs
+    are COMMITTED, both books are named, and the non-AVX512 full-board + pick-curve delta is measured.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
