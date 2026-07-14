@@ -1,4 +1,8 @@
-# THE SINGLE-SOURCE INVARIANT — v1.2 — read this before touching data or code
+# THE SINGLE-SOURCE INVARIANT — v1.3 — read this before touching data or code
+### CHANGELOG v1.3 (2026-07-13, header corrected 2026-07-14): SILENCE IS A RED added to THE
+### DISCIPLINE THAT MAKES THEM REAL. A RULE WAS ADDED and the header was left at v1.2 in error —
+### which left two materially different documents both calling themselves v1.2. Corrected here.
+### The v1.2 line below stands as written and applies to v1.2 only.
 ### CHANGELOG v1.2 (2026-07-08): retired-doc pointer fixed — the discipline block referenced "the latest
 ### KICKOFF §0"; KICKOFF is retired (merged into CORE). No rule changed. v1.1 changelog: archive/CHANGELOG.
 ### FILE NOTE (filed to the repo 2026-07-13, at the v2.9 seam): this file's REPO copy was behind v1.2

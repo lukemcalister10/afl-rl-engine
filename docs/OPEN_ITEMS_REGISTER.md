@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v84 2026-07-14 (**SEAT 6 OPENS.** **THE HANDOVER ORDER IS INVERTED IN THE PACK** (item 83): R98.10's directional guard requires CHECK-THEN-FILE, and rev136 / manifest v4.16 / R98.10 itself all say FILE-THEN-CHECK — a guard that runs after the thing it guards cannot fire. Owner-ruled: FRESHNESS CHECK FIRST. **CORE v2.6 must encode the order.** **THE LETTER TO THE FABLE SEAT** (item 84) is a required, CUMULATIVE handover artifact and was omitted from DECISIONS v99 §2's attachment list; each seat appends its day. Seat 6 ran the check FIRST: PK ahead on every pack doc, behind on none — guard PASSED, pack FILED.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v85 2026-07-14 (**THE SSI LOOKALIKE IS CLOSED** (item 85): main carried v1.3's BODY — SILENCE IS A RED, a BINDING rule — under a v1.2 HEADER whose changelog said "No rule changed", inside the very document that forbids lookalikes. Filed v1.3 verbatim; header-only. **The pen crossed its docs/-only fence ONCE, by the owner's word, for EXACTLY ONE PATH — declared in item 85 so it is never read as precedent; the fence's purpose stands absolutely: the verifying seat never writes engine, store, board, gates or artifacts.** Fable: MOVE the SSI into docs/ and the exception stops existing. Items 83–84 carry: the inverted handover order (THREE docs) and the letter as a cumulative handover artifact.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1946,6 +1946,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     **DISPOSITION: the letter is NAMED as a required handover attachment** alongside the pack, HANDOVER and the
     in-flight directives. Any future handover to-do that enumerates attachments MUST name it.
     TRIGGER: every seat rotation. CLOSES: never — standing rule.
+
+85. **THE SSI LOOKALIKE IS CLOSED — AND THE PEN CROSSED ITS OWN FENCE ONCE, BY OWNER'S WORD, DECLARED HERE
+    SO IT IS NEVER READ AS PRECEDENT (owner-ruled 2026-07-14: "filing closes a live defect, so don't leave it").**
+    **THE DEFECT.** `SINGLE_SOURCE_INVARIANT.md` on main carried the **v1.3 BODY** — SILENCE IS A RED, a BINDING
+    rule, present in the text — under a **v1.2 HEADER whose changelog reads "No rule changed."** A binding rule
+    was added and the header never moved. **Two materially different documents both calling themselves v1.2 —
+    inside the one document whose entire purpose is to forbid lookalikes.** Live on main since 2026-07-13.
+    **CLOSED:** v1.3 filed VERBATIM from the screened pack. **Header-only change; the body was already correct**
+    (5 insertions, 1 deletion). The v1.3 header explicitly preserves the v1.2 changelog line and scopes it — "the
+    v1.2 line below stands as written and applies to v1.2 only" — so the false "No rule changed" no longer
+    describes the current file.
+    ⚠ **THE FENCE, AND WHY IT WAS CROSSED.** The file lives at the **REPO ROOT**, and CORE says the supervisor's
+    TOKEN PEN is **`docs/`-ONLY**. Seat 6 HALTED rather than self-authorize, and put it to the owner as two
+    symmetric options (PEN with a registered exception · BUILD). **THE OWNER RULED: close it in the filing.**
+    **THIS IS A ONE-OFF, AND ITS SCOPE IS EXACTLY ONE PATH: `SINGLE_SOURCE_INVARIANT.md`, a PACK DOC that sits at
+    the root for historical reasons only.** The fence's PURPOSE is untouched and restated: **the verifying seat
+    NEVER writes engine, store, board, gates or artifacts.** That remains absolute. A future seat may cite this
+    item for the SSI and for NOTHING ELSE. **"It's only a small file" is not a reason; the owner's word is.**
+    **STRUCTURAL FIX (for Fable, at the CORE v2.6 fold): MOVE THE SSI INTO `docs/` and the fence stops needing an
+    exception at all.** The filename must NOT gain a version — a versioned duplicate would be a lookalike of the
+    document that forbids lookalikes (CORE v2.5's own FILE NOTE). Move it; do not copy it.
+    TRIGGER: the CORE v2.6 fold. CLOSES when the SSI lives under `docs/`.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
