@@ -5,7 +5,7 @@
   "store_md5": "340a7a32",
   "n_players": 2649,
   "stable_sha256": "d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f",
-  "sealed_by": "ITEM 20 store-identity re-seal 2026-07-13 (engine 2030e5df; store 340a7a32)",
-  "sealed_date": "2026-07-13",
-  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
+  "sealed_by": "CONFIG-MANIFEST v2.9 COMPLETION re-seal 2026-07-14 (engine 2030e5df; store 340a7a32; config 69ead79b->c2d233ae). Book content UNCHANGED: stable_sha256 d371a27c byte-identical (the 7 newly-pinned model vars all == engine defaults, so the walk-forward book does not move); only the config stamp advances to cover the v2.9 levers per the BOOK-PARITY LAW.",
+  "sealed_date": "2026-07-14",
+  "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }

@@ -1,9 +1,9 @@
 {
-  "_doc": "MODEL CONFIG MANIFEST \u2014 the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json.",
+  "_doc": "MODEL CONFIG MANIFEST \u2014 the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
   "version": "1.0",
   "date": "2026-07-09",
-  "baked_state": "BAKED v2.7 (engine 7a07e369 / board e2c9bc51 / store a2fbc9a0)",
-  "config_sha256": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b",
+  "baked_state": "BAKED v2.9 (engine 2030e5df / board 3dc19fbb / store 340a7a32)",
+  "config_sha256": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b",
   "excluded_infrastructure_vars": {
     "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
     "RL_REPO": "checkout locator",
@@ -56,12 +56,27 @@
     "RL_RUC_CEIL_REFPK": "72",
     "RL_RUC_YRH": "0.35",
     "RL_PVCFIT": "0",
-    "RL_LTI_CLOCK": "advance"
+    "RL_LTI_CLOCK": "advance",
+    "RL_PVCADOPT": "1",
+    "RL_MSD_POOL_EXCL": "1",
+    "RL_DIAL14": "1",
+    "RL_AGE": "1",
+    "RL_L5_PICKLESS": "1",
+    "RL_AVAIL": "1",
+    "RL_LTI_RETURN": "1"
   },
   "var_notes": {
     "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
     "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
     "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 \u00a736): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
-    "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c"
+    "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c",
+    "_v2_9_levers": "RL_PVCADOPT / RL_MSD_POOL_EXCL / RL_DIAL14 / RL_AGE / RL_L5_PICKLESS are the v2.9 refit's five wired kill-switches (engine 7a07e369->2030e5df; REFIT_WIRING_PLAN_OF_RECORD L1/L4/L2/L3/L5). ALL default-ON ('1'); each =0 reverts its layer to base byte-exact (v2_9_refit_cert CERTIFICATION: all-OFF reproduces base). Pinned here at their default-ON value so config_sha256 covers the levers (BOOK-PARITY LAW: the config is part of the formula) and a lever flip moves the hash + is rejected as divergent in bake/gate mode. Manifest values == engine defaults, so pinning them changes NO board/book value (board 3dc19fbb / book d371a27c byte-identical).",
+    "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
+    "RL_MSD_POOL_EXCL": "v2.9 L4 MSD training-pool exclusion; default ON (engine _merged_recover.py:15).",
+    "RL_DIAL14": "v2.9 L2 LENS bal dial 14 (0.14 vs 0.15); default ON (engine rl_model.py:301).",
+    "RL_AGE": "v2.9 L3 s(age) breakout-persistence slope; default ON (engine _merged_recover.py:224).",
+    "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
+    "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) — model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
+    "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) — model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off."
   }
 }

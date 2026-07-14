@@ -4,7 +4,7 @@
   "_item20_note": "ITEM 20 STORE-IDENTITY JOB (2026-07-13, first job post-v2.9-tag): store b0c39d78 -> 340a7a32 (bramble 2026 15g@62.4->14g@62.3, career games 91->90; afl_club imported on the 804 from the archived CSV legacy_afl_club; _club renamed _draft_club store-wide + the enumerated ten draft-backfilled; eligibilities K/G-normalized (191) + 3 owner corrections gardiner/whitlock/cooke). Board 81e48293 -> 3dc19fbb: EXACTLY 1 v mover (bramble +1, numeraire 92->93; sum 696247->696248) + 182 club-DISPLAY corrections (172 draft->current + 10 filled; houston Port->Collingwood) + lensConservation +1; back 0 movers; CAT_BY_CLUB/CAT_BY_RANGE byte-identical; panel 10/10 unchanged. Engine ev()/config/band/rl_model UNCHANGED (identity fields; only bramble's games feed ev). id_resolver club-match repointed affl_team->afl_club; collision_sentry _club->_draft_club.",
   "band": "34faa8659cc8f19794f5cb9584fa19b2",
   "board": "3dc19fbbf920958affe7c6a2be9697d2",
-  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b",
+  "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b",
   "engine_head": "2030e5df7bdfcf2b9e801c3d2fe3b83b",
   "panel": "PASS 10/10 (v2.9 BAKE numéraire board 81e48293; the 10 named in the numéraire = round(ev/1.0524): Daicos 7667 Bont 3482 Sheezel 7796 Gawn 2393 Reid 3594 Ward 1649 Moore 197 Goad 873 Smillie 1282 Green 655; raw ×1.0524 values Daicos 8069 Bont 3664 ... unchanged in the engine; deterministic; == ship_gates B4 board)",
   "register": "652d83e87780e415a01a2de6d8b3cc57",

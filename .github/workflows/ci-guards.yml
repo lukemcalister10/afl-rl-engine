@@ -31,15 +31,17 @@ jobs:
       # boot_guard / ruling_config anchor on the checkout via these
       RL_REPO: ${{ github.workspace }}
       CLAUDE_PROJECT_DIR: ${{ github.workspace }}
-      # the pinned panel/engine env (mirrors run_panel.sh; the engine drifts off-pin, so this is fixed)
+      # determinism + engine import path — true infrastructure, never model semantics
       PYTHONHASHSEED: "0"
-      RL_GAMMA: "0.85"
-      RL_PICK1: "3000"
-      RL_RUCK_TAX: "0.25"
-      RL_RECENCY_DECAY: "0.72"
-      RL_PRIOR_TREES: "400"
-      PAR_RAMPS: "22"
       PYTHONPATH: /home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+      # CONFIG-MANIFEST v2.9 COMPLETION 2026-07-14: the model env is NO LONGER hand-copied here. The workflow
+      # runs under RL_CONFIG_MODE=gate, so every engine-loading step takes ALL model vars from the pinned
+      # manifest (data/model_config.json) — the single source of truth. The old six-var mirror of run_panel.sh
+      # (RL_GAMMA/RL_PICK1/RL_RUCK_TAX/RL_RECENCY_DECAY/RL_PRIOR_TREES/PAR_RAMPS) was a second, rotting copy of
+      # the manifest — a manifest that was itself two bakes stale — and is deleted. The build step below
+      # overrides to RL_CONFIG_MODE=bake (it is the board/book PRODUCER; bake and gate both clear-ambient +
+      # load the manifest). Manifest values == engine defaults, so board/book/panel stay byte-identical.
+      RL_CONFIG_MODE: gate
     steps:
       - name: Checkout
         uses: actions/checkout@v4
