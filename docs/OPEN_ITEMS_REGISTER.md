@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v75 2026-07-13 (⚠⚠ **THE MIGRATION SILENTLY REVERSED AN OWNER RULING** (item 55): the v2.0 brief records the owner REJECTING a saturating captain curve — **and the saturating curve is what the current engine SHIPS.** The ratified shape (capt_bonus = integral of P, slope capped at 1 by construction) survives in the code as DEAD CODE with its gain cut 1.0 -> 0.35. V-1 ANSWERED. Owner adds the missing piece: selection is POSITIVE (the 108 captains on the week he is projected 123) => the correct object is a CALL OPTION on beating your next-best captain. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v76 2026-07-13 (SUPERVISOR CORRECTION to item 55 — I over-claimed "a ruling was reversed"; the old ruling attached to an OLD ENGINE, so it is NOT a governance breach. What survives is the ARGUMENT (it is about the GAME, not the engine) — and the fact that **the CURRENT curve has never been owner-ratified at all.** Owner rejects the weekly-volatility path (no weekly scores; too complex) and rejects the team-specific option (it prices PRACTICAL value, not TRADE value). NEW PATH: fit the ladder-convex curve to the REALIZED order-statistic value we already measured. **nqual moves to THIS seat** (item 58). **THE ENFORCEMENT GAP** (item 59). Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1419,6 +1419,87 @@
     parameter + a sensitivity ladder, recalibrating when ingestion lands; or (b) wait for ingestion and do
     it once on real weekly data. **Supervisor recommends (a) — because what is LIVE today is a shape the
     owner REJECTED, and leaving a rejected shape shipping while we wait is the worse of the two errors.**
+
+57. **SUPERVISOR CORRECTION TO ITEM 55 + THE OWNER'S TWO REJECTIONS (2026-07-13).**
+    **MY OVER-CLAIM:** I called the captaincy shape "an owner ruling SILENTLY REVERSED by the migration."
+    **OWNER:** *"That curve dates from an old model, and when we restarted, a new curve was probably built.
+    So I'm not sure that has much to do with what we do today, but it is what we approved for an old
+    build."* **HE IS RIGHT AND I WAS OVER-DRAMATIC (twice today).** The v2.0 ruling attached to the v2.0
+    ENGINE; the migration built a new curve. That is NOT a governance breach.
+    **WHAT SURVIVES, AND IT IS STILL LOAD-BEARING:** (i) the ARGUMENT behind the old rejection is about the
+    GAME, not the engine — *"you do not captain the field's second-best, you captain YOUR OWN second-best,
+    so the very top must keep earning"* — and it applies to any engine; (ii) **the CURRENT curve
+    (`capt_prem`, saturating, hard 18-pt cap) has NEVER BEEN OWNER-RATIFIED AT ALL.** It is not a reversal.
+    It is an unratified curve that happens to have the property he rejected on the merits.
+    **OWNER REJECTION 1 — THE TEAM-SPECIFIC OPTION.** *"It's assessing PRACTICAL value not TRADE value…
+    if one team has the 3 best captains in the league, the third guy isn't captaining but still has huge
+    value to any other team where he'd be a captain."* CORRECT, and it kills my E[(S_i − M)⁺] as written:
+    M must be a **LEAGUE-STANDARD captaincy replacement** (the market's next-best, exactly as REPL is for
+    position), never the holder's own squad. An asset price cannot depend on who happens to own him.
+    **OWNER REJECTION 2 — THE VOLATILITY / SPIKINESS PATH.** *"I don't think we're going to get weekly
+    scores… spiky only works if you can reasonably predict that. I think it's too complicated to go down
+    that path."* ACCEPTED — the weekly-projection-variance construction is WITHDRAWN.
+    **THE OWNER'S OWN PATH, WHICH IS THE ONE WE TAKE:** *"the probability of captaining and the amount you
+    clear the captaincy bar by are LINKED, so by just convexly rewarding the ladder we are addressing the
+    former."* Exactly so. So: **credit(level) = ∫[bar → level] P(captain | a) da**, position-blind, keyed
+    to an absolute captaincy bar — the shape whose MARGINAL IS the probability, so the slope-1 ceiling
+    ("one point of average can add at most one point") is structural, never clamped.
+    **AND WE DO NOT NEED WEEKLY SCORES TO CALIBRATE IT.** We already MEASURED the realized order-statistic
+    value off the walk-forward record: **rank1→2 = 5.31 pts · rank5→6 = 1.09 pts** (register item 51). FIT
+    P's parameters so the curve REPRODUCES those realized gaps. Season averages + the measurement we
+    already hold. **That is the derivation, and its acceptance test is data we did not fit it to.**
+
+58. **nqual / JUH — MOVED TO THIS SEAT (owner challenge accepted, 2026-07-13).**
+    OWNER: *"Why should nqual be in the flattery chapter for Fable and not something we do here?"* **No good
+    reason. Conceded.** What Fable is genuinely held for is the FLATTERY DECAY's functional form plus F1
+    (the G-PEAK collision) and F2 (the reference frame) — those need design judgement. **nqual does not:
+    the owner has already ruled the principle.**
+    OWNER'S RULING, VERBATIM: *"A player who's had 4/5/6 seasons and 70 or so games shouldn't be volatile
+    enough to lose 10x his value over 3 games… Either he should have been worth less at 67 games, more at
+    70 games, or the transition between the two should be slower. These transitions should be smoother,
+    not aggressive."* He ACCEPTS the direction (production evidence must take over from the draft prior);
+    he rejects the CLIFF.
+    SUPERVISOR AGREES, and the reason is stronger than taste: **a step function in an asset price is a
+    discontinuity — two players three games apart are priced 10x differently on evidence that is
+    statistically indistinguishable.** Value must be CONTINUOUS and MONOTONE in evidence.
+    MEASURED (D1): JUH's −865 is a RECENCY SLOPE first (a 3-game, 26.0 cameo dragging `_lvlcurr`) and an
+    `nqual` 3→4 CLIFF to a hard 105 floor second. **62 players sit on that knife-edge.**
+    PLAN: build the smooth evidence-ramp HERE (Opus-safe: the principle is ruled, the measurement exists),
+    and **BATCH IT ONTO THE SAME CANDIDATE as the flattery decay** — one bake per chapter (CYCLE law). Both
+    are the same question: *how much do we believe his production yet?*
+
+59. **⚠ THE ENFORCEMENT GAP — the owner's question, answered straight (2026-07-13).**
+    OWNER: *"I thought there was a clear directive/rule for builds not to copy and duplicate anymore…
+    What is the point of writing rules that never get enforced? Why are chats/agents just disregarding
+    these rules?"*
+    **THE HONEST ANSWER: they are not disregarding it. NOTHING STOPS THEM.** Every rule in this project
+    that has HELD is wired to a mechanism that HALTS — the five SSI guards, Guard 5's boot assertion, the
+    acceptance JSON, the base-pin check. Every rule that has ROTTED lives only in prose. **SSI guard 3 (the
+    lookalike tripwire) polices exactly one thing: a second copy of the STORE. There has never been an
+    equivalent tripwire for CODE.** So "don't copy the runner" was doctrine with no detector, competing
+    for a build's attention against fifty other lines, while copying was the fastest path to a finished
+    job. It got copied.
+    **That is a SUPERVISOR failure, not an agent failure — mine included.** The seats have been writing
+    doctrine faster than they have been wiring guards. Speed rule **S5 already says it** ("the standing
+    cert harness: committed and reused, never rebuilt per chat") and was never enforced.
+    **THE FIX — the same medicine as guard 3, pointed at code:** (i) **ONE CANONICAL HARNESS**, called,
+    never copied; session dirs hold CONFIG (which gates to run), not their own runner. (ii) **A RUNNER
+    TRIPWIRE in the suite: it FAILS if an executable runner appears outside the canonical set**, with an
+    owner-visible allowlist so exceptions are RECORDED, never silent. (iii) The harness lint then becomes
+    trivial — one file to police. **Owner's word pending.**
+
+60. **THE "JUNE-28 STAGE-2 GATE" — WHAT IT ACTUALLY IS (supervisor traced it; owner asked).**
+    It is an **owner-VIEWING gate**, not a ruling he has to invent: read the HISTORICAL COHORT
+    VALUE-TRAJECTORY curve and rule on its shape before the dead-code strip / flex work proceeds.
+    Source: `docs/rationale/MEASUREMENT_cohort_trajectory_2026-06-28.md` — mean SCAR by career-year for
+    ND-with-pick cohorts 2014-2019 (n=437), survivorship-clean, point-in-time valued.
+    ⚠ **BUT IT WAS RUN ON THE PRE-STAGE-0 ENGINE — two generations dead** (the current engine is 2030e5df,
+    six levers, numéraire rebase). And its modern equivalent ALREADY EXISTS and is BINDING: **G-COHORT's
+    July-8 class-year trajectory + the G-Y0 y0→wk1→y1→y2 chain measure the same thing on the LIVE engine.**
+    **SUPERVISOR RECOMMENDATION: do NOT rule it.** It smells exactly like M1/F11 — a gate inherited from a
+    superseded line. Let the supervisor VERIFY SUBSUMPTION against G-COHORT + G-Y0, then either RETIRE it
+    with an obituary or re-run the trajectory on the CURRENT engine and put the curve in front of the
+    owner. **No owner action required until that check is done.**
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
