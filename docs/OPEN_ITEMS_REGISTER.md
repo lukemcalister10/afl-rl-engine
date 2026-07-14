@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v101 2026-07-15 · PEN: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v102 2026-07-15 · PEN: SSI MOVED (owner-worded) · PR #83 PRESCREENED · item 106 mechanism SUPERSEDED IN PLACE (items 113–114) · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2460,7 +2460,7 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     SENSITIVE to the kernel; it did NOT prove the kernel is what DIFFERS in CI"*). **The refusal was right. The
     register entry was not. A correct instinct does not launder a false fact.**
 
-106. **THE MECHANISM, AND WHY IT IS ONLY EIGHT PLAYERS — AND WHY FREEZING MORE MODELS WILL NOT FIX IT.**
+106. **⚠ MECHANISM SUPERSEDED IN PLACE (item 114, 2026-07-15): PR #83's bisect MEASURED the first divergent bit at `par_build.py:70` — the PAR table's BLAS `@` + `np.linalg.solve` — NOT the NW-smoother path named below (and not price6's np.dot; both are kernel-sensitive but wash out of the rounded board). The 8-ruck observation and the four-board table STAND; the mechanism story below does not. Retained as the record.** **THE MECHANISM, AND WHY IT IS ONLY EIGHT PLAYERS — AND WHY FREEZING MORE MODELS WILL NOT FIX IT.**
     The board's values are computed from **floating-point sums whose ORDER depends on the CPU** (BLAS-routed
     `np.dot` in the NW-smoother, feeding the 72 runtime isotonic fits) — **and are then ROUNDED to whole SCAR.**
     **8 of 804 players sit close enough to a rounding boundary that the noise tips them across.** The other 796
@@ -2651,6 +2651,47 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     - **R100.11 ⇒ PR #82 REQUIRES A REWORK** (the schedule fade → evidence fade) **before any bake.** The
       rework directive is drafted after both prescreens land; merge-line placement is an OWNER decision
       (options in DECISIONS v101 §2). One writer at a time throughout.
+
+113. **SSI MOVED root → `docs/` — OWNER-WORDED 2026-07-15 ("Agree on move SSI").** One `git mv`; content and
+    filename byte-unchanged; the version stays in the header (v1.3). **The one path outside docs/ in this
+    push, authorized in writing.** The standing fence exception (item 85's one-off) is closed PERMANENTLY —
+    the pen now maintains the SSI inside its own fence. CORE v2.7 + manifest v4.19 updated to match.
+
+114. **PR #83 — THE DETERMINISM FIX. PRESCREEN: PASS WITH NOTES (Fable seat, independent, from committed
+    artifacts).** branch `claude/board-hardware-independent-az0iz5` · head `a2a06c7` (live-fetched) · strict
+    descendant of #82's `e7d980eb` (merge-base proven) · **board md5 recomputed by the prescreening seat:
+    `800bf461` EXACT** · store untouched `340a7a32`.
+    - **THE MECHANISM IS NOW MEASURED, and it corrects TWO prior stories:** first divergent bit =
+      `par_build.py:70`, the PAR table's `np.linalg.solve` (BLAS `@` + LAPACK dgesv). Item 106's NW-smoother
+      story is SUPERSEDED IN PLACE. One boundary par cell was NUMERICALLY SINGULAR (relcond ≈ 2e-16) — the
+      board of record baked the native kernel's noise there; a naïve deterministic solve swung it −22, hence
+      the declared weighted-mean fallback that keeps the total move to 8 rucks × +1..+4 SCAR.
+    - **A2 — THE BLOCKER'S ONLY ACCEPTED PROOF — WAS DELIVERED AT `84fd13f`:** the AMD runner's CI printed
+      `BOARD_MD5(built this run) = 800bf461d5ec81d12da2e2426ff15c9c`, identical to the bake box. **First time
+      on record. ⚠ PENDING AT THE HEAD:** `a2a06c7` added a build-speed opt to `par_build.py` AFTER the proof,
+      and `par_build.py` is UNPINNED (self-declared in the expected_boot note) — its effect is visible ONLY via
+      the board md5, so **the head's own CI print is load-bearing, not a formality. No merge word until it
+      lands.**
+    - **TWO FENCE DEVIATIONS, BOTH JUSTIFIED AND DECLARED:** (1) `ci-guards.yml` — E0 PORTED (the branch's base
+      predates PR #81, so the print the directive assumed present did not exist); diagnostic-only, no verdict
+      logic. (2) `run_panel.sh` — panel pins re-pinned to `800bf461`; **this CAUGHT a real find: #82 moved
+      Harley Reid 3594→3587 and left the panel pin STALE (item-103 class), so the #82 candidate as committed
+      would fail run_panel.** #83 fixed and documented it.
+    - **THE SEAL RECONCILED:** `book_stable_seal.json` exists and was STALE (head_md5 2030e5df — item 103's
+      third decorative pin). #83 REBUILT the book and RE-SEALED (d371a27c → 7fcb92c2; head_md5 → 118f8ac6);
+      re-seal-on-rebuild matches the item-20 precedent — #82's "re-seal is a bake action" reading was the
+      outlier. The return's "d371a27c→" quote was the SEAL's prior content, not #82's book — resolved, no
+      defect.
+    - **UNITS NOTE:** the return quotes movers in RAW ev (english 3421/3424 ≈ 3251/3254 numéraire ÷1.0524) —
+      consistent with rev137's Fix-1 English figure; the prose mixed units without saying so.
+    - **RESIDUAL RISK SITES, recorded for any future CI red:** the out-of-fence `np.average` (did not surface)
+      and `_iso_dec` (item 103-adjacent note in acceptance JSON). **`par_build.py` UNPINNED = the FIFTH worked
+      case for the completeness architecture (item 67).**
+    - **CONSEQUENCE FOR ITEM-74:** leg 1 provisionally SETTLED via the FIX road (no tolerance ruling needed)
+      pending the head print; **leg 2's reconcile folds into the chapter ladder — hardware-independence makes
+      any machine the environment of record, so incognito cold audits are valid instruments again.**
+    - **MERGE-LINE RECOMMENDATION (owner decides):** `#81 → #82 → #83 → R100.11-rework`, rework based on #83's
+      surviving head; ONE candidate walks ONE full ladder; ONE bake.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
