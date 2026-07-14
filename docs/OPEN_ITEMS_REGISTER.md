@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v94 2026-07-14 (⚠⚠ **A1 IS PROVEN** (item 100): the tag's OWN expected_boot carries board=81e48293e4a47309567c47f392eda1fc and the build rebuilt EXACTLY that, at the tag's own tree, own config (69ead79b), no bypass — SUPERVISOR-VERIFIED against ground truth, not the return's word. **THE BOARD OF RECORD REBUILDS. THE PICK CURVE HOLDS — PICK 1 = 3000.** **Item 101: ITEM 76 CLOSED — the cause is MEASURED (BLAS kernel generation; SIMD refuted) and BOTH objections were right: BLAS is not inside the tree fitter, it is UPSTREAM in the np.dot sums that feed it.** ⚠⚠ **Item 102: THE SUPERVISOR WAS ONE MESSAGE FROM PINNING THE WRONG THING. P4 proved the board is SENSITIVE to the BLAS kernel; it did NOT prove the kernel is what DIFFERS IN CI. Nobody has EVER read CI's BLAS config, and CI does not print the board md5. THE UNTESTED ALTERNATIVE IS OPENBLAS_NUM_THREADS — thread count changes the SUMMATION ORDER of a dot product, identical signature, never once mentioned by any seat. READ THE ENVIRONMENT BEFORE PINNING.** **Item 103: the book seal's head_md5 is the THIRD decorative pin.** **Item 104: ITEM 74 HAS ALL BUT COLLAPSED — 8 rucks, +1..+4 SCAR, nothing flips.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v95 2026-07-14 (⚠⚠ **ITEM 101 IS WRONG AND IS REOPENED; ITEM 76 WAS CLOSED ON A FALSE MEASUREMENT** (item 105). FOUR ENVIRONMENTS, FOUR BOARDS: Intel-native SkylakeX = `3dc19fbb` · **Intel-FORCED-Haswell = `5546c120`** · **AMD runner (GitHub) = `62d23265`** · SSE = `935c2c29`. **Item 101's 'AVX2 Haswell == SkylakeX' IS FALSE** — P4's kernel test never took effect and the supervisor registered it as MEASURED FACT on the build's word (**seat-6 ledger #11, a CORE-rule-1 failure**). **CI's board is a THIRD hash — the 'CI builds the SSE board' claim was an inference from three player values and CI had never printed its md5.** VERDICT: **UNKNOWN — threading REFUTED, `OPENBLAS_CORETYPE` a NO-OP on the runner (it is already Haswell). THE BUILD PINNED NOTHING AND WAS RIGHT TO.** **Item 106: the board is sensitive to the PHYSICAL CHIP — Intel-Haswell and AMD-Haswell give different boards. NO ENV VAR CAN CLOSE IT. The values are float sums ROUNDED to whole SCAR; 8 of 804 sit on a rounding boundary. FREEZING MORE MODELS WILL NOT FIX IT — THE SUMS ARE THE SOURCE. The repair is a deterministic summation in place of the BLAS-routed np.dot.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2421,6 +2421,53 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       fall under it I will waive the anchor most likely. As long as it's there or thereabouts."*
     **⇒ THE RECONCILE IS A SHORT CHECKLIST, NOT A PROJECT.** **STILL GATED ON: CI GREEN** (item 102) **and A1 —
     which is now PROVEN (item 100).** **The bake blocker survives only as a formality.**
+
+105. **⚠⚠ ITEM 101 IS WRONG AND IS HEREBY REOPENED. ITEM 76 WAS CLOSED ON A FALSE MEASUREMENT — BY THE
+    SUPERVISOR, ON A BUILD'S REPORT, WITHOUT INDEPENDENT VERIFICATION. THIS IS A CORE-RULE-1 FAILURE AND IT
+    IS MINE.** (ci-env-pin return, branch `claude/ci-environment-measurement-names-zbqg78`, head `4de05f0a`,
+    PR #81 — supervisor-verified: SHA correct, strict descendant of `addef03`, **and it pinned NOTHING**.)
+    **THE MEASURED PICTURE — FOUR ENVIRONMENTS, FOUR BOARDS:**
+    | environment | OpenBLAS kernel | board |
+    |---|---|---|
+    | Intel Xeon, native (AVX512) | SkylakeX | **`3dc19fbb`** (board of record) |
+    | **Intel Xeon, FORCED Haswell** | Haswell | **`5546c120`** |
+    | **AMD EPYC (GitHub runner)** | Haswell | **`62d23265`** (what CI actually builds) |
+    | any box, forced SSE | Prescott | `935c2c29` |
+    **ITEM 101 CLAIMED "AVX2 Haswell == SkylakeX == AVX512-disabled ⇒ `3dc19fbb`". IT IS FALSE.** Forcing
+    Haswell on the pinned Intel box yields **`5546c120`**, NOT `3dc19fbb`. **P4's kernel test almost certainly
+    never took effect (silent coretype fallback) and NOBODY CHECKED — the supervisor least of all.**
+    **AND CI'S BOARD IS A THIRD HASH — `62d23265` — NEITHER `3dc19fbb` NOR THE INFERRED SSE BOARD `935c2c29`.**
+    **"CI builds the SSE board" was an INFERENCE FROM THREE PLAYER VALUES, carried as fact through two register
+    entries. CI HAD NEVER PRINTED ITS BOARD md5. It does now (E0, permanent, output-only).**
+    **⇒ THE VERDICT IS *UNKNOWN*, AND THE BUILD CORRECTLY PINNED NOTHING.**
+    - **THREADING IS REFUTED** — `OPENBLAS_NUM_THREADS=1` moves nothing, on either box.
+    - **`OPENBLAS_CORETYPE` IS A NO-OP ON THE RUNNER** — it ALREADY resolves Haswell. **Pinning it would have
+      been R99.2's "guard that cannot fail", EXACTLY. Run 3 proves it changes nothing.**
+    - **Intel-Haswell (`5546c120`) ≠ AMD-Haswell (`62d23265`): SAME KERNEL, DIFFERENT CPU VENDOR, DIFFERENT
+      BOARD. THE BOARD IS SENSITIVE TO THE PHYSICAL CHIP. NO ENVIRONMENT VARIABLE CAN CLOSE THAT.**
+    **⚠ SUPERVISOR CULPABILITY, STATED PLAINLY (seat-6 ledger #11):** the supervisor wrote item 101 as
+    *"the cause is MEASURED"* **on the build's word, with no provenance caveat and no independent re-run** —
+    the precise failure CORE rule 1 exists to prevent, committed while lecturing other seats about it.
+    **The ONE thing that saved us: the supervisor REFUSED TO ACT ON IT** (item 102 — *"P4 proved the board is
+    SENSITIVE to the kernel; it did NOT prove the kernel is what DIFFERS in CI"*). **The refusal was right. The
+    register entry was not. A correct instinct does not launder a false fact.**
+
+106. **THE MECHANISM, AND WHY IT IS ONLY EIGHT PLAYERS — AND WHY FREEZING MORE MODELS WILL NOT FIX IT.**
+    The board's values are computed from **floating-point sums whose ORDER depends on the CPU** (BLAS-routed
+    `np.dot` in the NW-smoother, feeding the 72 runtime isotonic fits) — **and are then ROUNDED to whole SCAR.**
+    **8 of 804 players sit close enough to a rounding boundary that the noise tips them across.** The other 796
+    round identically either way.
+    **⇒ IT IS NOT A BUG IN EIGHT RUCKS. IT IS FLOAT NOISE CROSSING A ROUNDING LINE, AND EIGHT MEN HAPPEN TO BE
+    STANDING ON IT.**
+    **⇒ THE q97m PATTERN (freeze-and-pickle) DOES NOT TRANSFER.** Freezing the FITS does not remove the `np.dot`
+    sums that FEED them and that feed the board directly. **THE SUMS ARE THE SOURCE.**
+    **THE REAL REPAIR: a deterministic summation** (pairwise/`fsum`-class, or an explicitly ordered reduction)
+    **in place of the BLAS-routed `np.dot` on the board's critical path.** Surgical. **It is the LAST thing
+    standing between this project and a clean, cross-machine-reproducible bake.**
+    **⚠ AND THE OPEN QUESTION FOR THE OWNER: must the board be reproducible on EVERY machine, or only on the
+    BAKE machine?** A1 is PROVEN *on the pinned box*. Every guard passes *on the pinned box*. **The ONLY thing
+    that fails is CI, which runs on different silicon.** If "reproducible on the bake hardware" is enough, the
+    bake can proceed and CI must be re-scoped. **If not, the sums must be fixed first. OWNER'S CALL.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
