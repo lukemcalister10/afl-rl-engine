@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v82 2026-07-14 (⚠⚠ **EVERY GUARD FIGURE IN THIS REGISTER IS CONSISTENT, NOT VERIFIED** (item 74): the cross-env drift is 0.35–1.8%/player and **G-COHORT's y4 margin is ~3%** — and the five-shard cold audit ran in INCOGNITO SANDBOXES, i.e. different machines from the bake. **RE-MEASURE AND RECONCILE EVERY GUARD ON THE FROZEN BUILD.** Item 75: **`cm_400.pkl` — the ONE pinned fitted artifact — CANNOT BE RE-DERIVED** (ingestion trigger). Item 76: the OpenBLAS cause is UNTESTED. Item 77: SHAKEDOWN found this on 07-02 and it was LOST. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v83 2026-07-14 (**PR #75 RULED: Fix 1 TAKE · Fix 2 REJECT · Fix 3 HOLD** (item 79). **`_iso_dec` — A SECOND RUNTIME FIT THAT D3 MISSED** (item 80): `_merged_recover.py:801`, feeds the PICK CURVE; if CI is still red after the q97m freeze it is NOT a failed freeze — look here. **R98.9 REWORDED** (item 81): screening expires when FABLE sits, not at this rotation. Seat-5 closeout; seat 6 (Opus) holds overnight.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1848,6 +1848,65 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     **AND A LATENT DEFECT:** `id()` is **reused after garbage collection.** A memory address as a dict key
     is a bug waiting for the first consumer that joins on it. Nothing does today. **Nothing should ever be
     allowed to.**
+
+79. **PR #75 — RULED (owner, 2026-07-14). All three dispositions recorded.**
+    **FIX 1 — TAKE.** Smooth small-sample damping in `_lvlcurr`. **+1,171 SCAR.** Jamarra's cliff
+    **−81% → −54%.** Kids untouched (bands 1–2: −100 / −3). Improvers clean. G-FLOOR improves.
+    **It is the ONLY one of the three that is the Jamarra fix.**
+    ⚠ **OWNER CONSTRAINT, UNVERIFIED:** *"there shouldn't be a huge difference between one game and zero
+    games."* **`w(1)` must ≈ `w(0)` ≈ 0.** **The engine today has it BACKWARDS — playing one bad game is
+    worse than not playing at all.** The census reports the curve at 0/1/2/3/5/8/12/22 games.
+    **FIX 2 — REJECT.** It names **DEAD CODE** (`_lvl_eff_core`'s `FLAT_TOL`); the live step is `_coreM1`'s
+    `TOL_M1 = 5.0`, **and neither Blakey nor English sits on it.** It moved **+4,675 SCAR** through players
+    nobody asked about and did **nothing** for the pair it was built for.
+    ⚠ **BLAKEY (+686) vs ENGLISH (−189) ON IDENTICAL INPUTS REMAINS UNEXPLAINED** — 165 vs 163 games,
+    weight 0.90 vs 0.89, both ~30 points above their pedigree. **A blend cannot produce opposite signs from
+    the same inputs.** The supervisor's explanation was wrong. **The discontinuity census must surface it.**
+    **FIX 3 — HOLD.** It does what the owner asked (the pedigree FADES instead of vanishing) **but it drags
+    Xerri −317** — the same failure that got λ rejected. **R98.5 STANDS; THIS CONSTRUCTION OF IT DOES NOT.**
+    **⇒ THE FLATTERY CHAPTER IS ALIVE.** A supervisor hypothesis that Fix 3 *was* the flattery fix, and that
+    the chapter might therefore not exist, is **REFUTED BY THE JOB'S OWN NUMBERS.** Registered so no seat
+    resurrects it.
+
+80. **⚠ `_iso_dec` — A SECOND RUNTIME FIT, AND D3 MISSED IT (owner-raised 2026-07-14).**
+    **`_merged_recover.py:801` — `IsotonicRegression(increasing=False, out_of_bounds='clip').fit(...)`.**
+    There are **exactly TWO `.fit()` calls in the live engine**: `q97m` (line 31) and this one. **The
+    determinism return's D3 was tasked with enumerating EVERY runtime-fitted component and named only
+    `q97m`.** The supervisor read that return, agreed, and wrote a directive on it.
+    `_iso_dec` is fitted at runtime on float-computed inputs from an adaptive-bandwidth smoother. Isotonic
+    is order-deterministic in itself — **but if an upstream sum shifts, its output shifts with it.** It feeds
+    `_fit_pick_curve` → the V0 curve → **THE PICK CURVE.** **Nobody has cleared it.**
+    **CONSEQUENCE FOR THE FREEZE'S ACCEPTANCE:** *"my pinned env reproduces the baked panel, so `q97m` is the
+    only environment-movable term"* is an **INFERENCE, NOT A MEASUREMENT.** Reproducing the baked panel proves
+    that box matches the bake box — **it proves nothing about other boxes.**
+    **⇒ THE FREEZE'S REAL ACCEPTANCE IS CI GOING GREEN, not "reproduces `81e48293` on the freeze box."**
+    **AND: IF CI IS STILL RED AFTER THE FREEZE, THAT IS NOT A FAILED FREEZE AND NOT A WRONG DIAGNOSIS.** It
+    means a **second environment-movable term**, and **`_iso_dec` is the first place to look.** Recorded now
+    so a correct fix is not read as a failure later.
+
+81. **R98.9 REWORDED — SCREENING EXPIRES WHEN *FABLE* SITS, NOT AT THIS ROTATION (owner-ruled 2026-07-14).**
+    R98.9 said the screening rule (R98.8) expires *"at the seat-5 → Fable handover."* **That handover is not
+    happening** — seat 5 rotates to **SEAT 6, another Opus.** The rule's rationale — *an Opus supervisor, in
+    a seat normally held by Fable, producing documents that need vetting* — **HAS NOT EXPIRED. ONLY THE SEAT
+    HAS.**
+    - **R98.8 carries to seat 6.** Pack docs need the owner's word.
+    - **The REGISTER PEN stays LIVE** — it is the durable log and the only crash insurance a seat has.
+    - **THE OWNER'S WORD IS GIVEN for seat 6's ACT 1**: filing the screened pack it is handed (R98.10).
+
+82. **THE SEAT-5 CORRECTION LEDGER CLOSES AT SIX — all caught by the owner.**
+    (1) claimed an owner ruling was "silently reversed" — it attached to an old engine · (2) claimed the gate
+    did not assert `config_sha256` — **it did**, and I "verified" it by **printing my own conclusion into a
+    script and reading it back** · (3) told the owner the nqual cliff was fixed — **the smooth path was λ's**,
+    the lever he had just rejected · (4) spent hours on the `PROVEN_N` cliff as Jamarra's mechanism — **his
+    nqual never crosses 4** · (5) **read A-PAIRS from the STALE Project-knowledge pack** and told the owner
+    the young gun was unnamed — he had named Harley Reid days earlier — **after spending the morning warning
+    him that pack was stale. ⚠ R98.10, the rule I wrote today, LEANS ENTIRELY ON THE FRESHNESS CHECK, AND THE
+    SEAT THAT WROTE IT BROKE IT WITHIN THE HOUR** · (6) **proposed merging a RED PR into a RED main**, framing
+    CI's failure as unrelated when `q97m` was plausibly the very cause.
+    **THE PATTERN, ALL SIX: THE CONVENIENT FRAMING OVER THE CORRECT ONE — reasoning from a plausible mechanism
+    instead of measuring the real one.** It is the same pattern the builds show (items 65, 76, 80).
+    **This is why every directive now leads with ATTRIBUTION BEFORE DESIGN, and why every multi-lever job must
+    ABLATE.** **A seat must hold its own returns to it — and the next seat must hold the handover to it.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
