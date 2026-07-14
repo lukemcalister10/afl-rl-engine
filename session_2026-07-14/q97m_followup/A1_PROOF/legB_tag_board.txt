@@ -1,0 +1,31 @@
+A1 LEG B — TAG BOARD OF RECORD (tag 9f8ae76 / v2.9) — 2026-07-14T11:20:30Z
+==================================================================
+Preparing worktree (detached HEAD 9f8ae76)
+HEAD is now at 9f8ae76 v2.9 bake: merge advanced main (register v57->v60) into the bake head before promote
+-- tag tree pins --
+  store: b0c39d78 board: 81e48293 engine_head: 2030e5df config: 69ead79b band: 34faa865
+  q97m pin present: False
+-- tag book seal --
+  head_md5: 2030e5df store: b0c39d78 stable_sha256: c7825f1b3c1dc122e16e3a11c1cd530b29599551eea935c39bc908f6b19a4323 n: 2649
+-- bootstrap the tag tree (seeds workspace with tag store/engine; Guard 5 = tag's own pins) --
+  tag bootstrap rc=0
+boot-store guard (Guard 5) PASS  [bootstrap]  store b0c39d78 == pinned b0c39d78 (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only.)
+  engine md5     : 2030e5df   (candidate: F1/F2 one-source rewire)
+  cm_400 md5     : 34faa865   (expect 34faa865)
+  store md5      : b0c39d78   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+-- BUILD tag board (rl_export, gate mode, tag config 69ead79b) --
+  rl_export exit=0
+  TAG BOARD md5     : 81e48293e4a47309567c47f392eda1fc
+  EXPECTED (tag pin): 81e48293... (board of record; store b0c39d78 tag 9f8ae76)
+-- BUILD tag book (s4_matrix, tag tree) --
+  s4_matrix exit=0
+  TAG BOOK meta engine: 2030e5df store: b0c39d78
+  TAG BOOK regenerated stable_sha256: c7825f1b3c1dc122e16e3a11c1cd530b29599551eea935c39bc908f6b19a4323 n: 2649
+  TAG BOOK committed  stable_sha256: c7825f1b3c1dc122e16e3a11c1cd530b29599551eea935c39bc908f6b19a4323 n: 2649
+  MATCH: True
+-- CLEANUP: remove tag worktree + restore my branch workspace --
+  my-branch bootstrap rc=0 (workspace restored to 340a7a32/2334f570)
+  engine md5     : 2334f570   (candidate: F1/F2 one-source rewire)
+  q97m md5       : cfdc7321   (expect cfdc7321 — FROZEN q97 ceiling; loaded, never fitted; Guard 5 asserted == pinned)
+  store md5      : 340a7a32   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+DONE_legB

@@ -1,0 +1,16 @@
+PHASE 1 — box: AVX512 native (OpenBLAS DYNAMIC_ARCH Haswell); native pin q97m=cfdc7321 board=3dc19fbb
+== P4: q97m FIT md5 under isolated CPU knobs ==
+q97m_fit  baseline_native                          : cfdc73216c099e5e8f1fda3968f31c00
+q97m_fit  BLAS-only  OPENBLAS_CORETYPE=Prescott    : d791a608bb6fa264877fff418fb09d8d
+q97m_fit  BLAS-only  OPENBLAS_CORETYPE=Nehalem     : d791a608bb6fa264877fff418fb09d8d
+q97m_fit  BLAS-only  OPENBLAS_CORETYPE=SkylakeX    : cfdc73216c099e5e8f1fda3968f31c00
+q97m_fit  SIMD-only  NPY_DISABLE=avx512            : cfdc73216c099e5e8f1fda3968f31c00
+q97m_fit  SIMD-only  NPY_DISABLE=avx512+avx2+fma   : cfdc73216c099e5e8f1fda3968f31c00
+q97m_fit  COMBINED   Prescott + NPYdisable avx512  : d791a608bb6fa264877fff418fb09d8d
+DONE_p4_q97m
+== P3/P4: BOARD md5 on FROZEN engine 2334f570 (q97m LOADED) — native pin 3dc19fbb ==
+board(frozen 2334f570)  baseline_native                               : 3dc19fbbf920958affe7c6a2be9697d2
+board(frozen 2334f570)  non-avx512  Prescott+NPYdisable avx512         : 935c2c297288dd699584d5857305f32d
+board(frozen 2334f570)  SSE-only    Prescott+NPYdisable avx512+avx2+fma : 935c2c297288dd699584d5857305f32d
+DONE_p3p4_board
+DONE_phase1
