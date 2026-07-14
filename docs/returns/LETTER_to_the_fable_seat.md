@@ -550,7 +550,8 @@ it nothing.**
 - **λ**, which Luke rejected weeks ago for dragging eight improvers. **It was never a bad lever that happened to
   hurt improvers. It was a third instance of a bias that was already there.**
 
-**Flattery is a symptom of this. It is not the disease.**
+***I* think flattery is a symptom of this rather than the disease. Luke declined to make that a ruling, and he
+was right to — see above. The five measurements are solid. The sentence you just read is my opinion.**
 
 ---
 
