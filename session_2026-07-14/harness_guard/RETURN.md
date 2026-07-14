@@ -1,7 +1,7 @@
 # RETURN — anti-copy rule made a GUARD (supervisor seat 5, owner-ruled 2026-07-13)
 
 - **branch**: `claude/anti-copy-guard-enforcement-bj9ivh` · base main @ `7e2e1ed` (PR #72 merge)
-- **head SHA**: filled at commit (see git log) · **PR**: candidate (do not merge, do not tag)
+- **head SHA**: `f2e3322` (this doc-update rides on top) · **PR**: #73 (draft candidate — do not merge, do not tag)
 - **canonical suite runner**: `ship_gates_check.py` — the ONE committed suite runner; a build CALLS it
   with config (`SGC_SKIP`/`SGC_REPORT_DIR`/`SGC_B1_MATRIX`/`SGC_HARNESS_ONLY`), never copies it.
 - **lookalike threshold (H1)**: `ov_can ≥ 0.50` AND `≥ 12` shared significant lines, where `ov_can` =
