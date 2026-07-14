@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v98 2026-07-14 (⚠⚠ **ITEM 109's F2 IS RETRACTED — THE FENCE WAS RIGHT AND THE AUDIT FINDING WAS WRONG** (seat-6 ledger #15). The owner asked for an addendum to the LIVE build to make Fix 1 also strip `_par_prior`'s hard `<8 games -> 0.25` rule, because the spec says Fix 1 'SUBSUMES' it. **THE SUPERVISOR CHECKED BEFORE ACTING AND THE ADDENDUM WOULD HAVE BEEN HARMFUL: the PR #75 overlay patches `_lvlcurr` ONLY and passes `_par_prior` through UNCHANGED — so EVERY number the owner TOOK Fix 1 on (+1,171 SCAR, Jamarra's cliff halved, kids untouched, improvers clean, G-FLOOR improves) was measured with `_par_prior` UNTOUCHED. Change it and none of them apply, and R99.1's TAKE was on the `_lvlcurr`-only version — which is exactly what the fence describes.** 'Subsumes' was a DESIGN NOTE, not an implemented plan. **NO ADDENDUM SENT; THE LIVE BUILD IS UNTOUCHED.** What survives: `_par_prior`'s `<8` rule IS a real R98.2 violation — it is one more hard threshold on the EVIDENCE AXIS and it belongs with FABLE's `w`. **The other four audit findings (F1, F3, F4, F5) STAND.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v99 2026-07-14 (⚠⚠ **FOURTH-PASS AUDIT** (item 110): **EIGHT SUPERSEDED ITEMS WERE UNMARKED — AND ITEM 101 STILL OPENED BY ASSERTING A FACT PROVED FALSE.** Anyone grepping for the determinism cause would have read *'THE CAUSE IS MEASURED'* and stopped. **NOW MARKED IN PLACE AT THEIR OWN TEXT: 74 · 76 · 88 · 90 · 91 · 92 · 98 · 101.** **RULE: WHEN AN ITEM IS SUPERSEDED, MARK IT AT ITS OWN TEXT — A CORRECTION FILED EIGHTY LINES BELOW THE ERROR IS NOT A CORRECTION.** Verified clean: all R98/R99 rulings exist · no duplicate items · the regimes sum to 804 · SSI v1.3 correct · CORE permits strict equality for a store/engine base, so both live directives comply · **and the `rl_model` pin is CONFIRMED DECORATIVE — it is in expected_boot.json and boot_guard never reads it.** ⚠ **STILL UNVERIFIED AND THE PACK LEANS ON IT: the flattery census's 123 players / +19,168 SCAR — the scale comparison for the WHOLE CHAPTER, which no seat-6 eye ever checked.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1771,7 +1771,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     **Both are BINDING. Both will govern every fix in the next chapter. Neither is in the registry.**
     The owner ruled the wording deserves a fresh seat, not a transcription pass. **They are Fable's.**
 
-74. **⚠⚠ THE GUARD MARGINS ARE SMALLER THAN THE DRIFT — EVERY RECORDED FIGURE IS "CONSISTENT, NOT VERIFIED"
+74. ⚠⚠ **SUPERSEDED IN PLACE — DO NOT ACT ON THE BODY BELOW.** Its ARITHMETIC IS WRONG (**item 96**: it compares a PER-PLAYER drift to an AGGREGATE margin; independent drift falls as σ/√n — a THIRTIETH of G-COHORT's margin, not a half), and the blocker itself has **COLLAPSED** (**item 104**: the measured post-freeze drift is EIGHT RUCKS at +1..+4 SCAR; nothing flips; the owner will waive an anchor that drifts slightly under). **WHAT STILL BLOCKS THE BAKE IS ITEM 105/106 — the board has no stable NAME across machines.** ⇒ **READ 96, 104, 105, 106.**
+    **⚠⚠ THE GUARD MARGINS ARE SMALLER THAN THE DRIFT — EVERY RECORDED FIGURE IS "CONSISTENT, NOT VERIFIED"
     (owner-raised 2026-07-14; the most consequential line of the determinism chapter).**
     The cross-environment drift measured in CI is **0.35%–1.8% per player** (Daicos 7640 vs 7667 · Ward
     1679 vs 1649). **G-COHORT y4 = 1.2601 against a hard bound of 1.30 — a ~3% margin.** **The drift is
@@ -1802,7 +1803,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     the shape of the answer, but it must be extended to `cm` explicitly, and the category question (item
     67: what IS a fitted model under the single-source invariant?) answered.
 
-76. **THE OpenBLAS CAUSE IS A PLAUSIBLE MECHANISM, NOT A MEASURED ONE — DO NOT REGISTER IT AS FACT
+76. ⚠⚠ **SUPERSEDED IN PLACE.** This item was CLOSED by **item 101** — **AND ITEM 101 IS FALSE** (**item 105**: its kernel test never took effect; Intel-Haswell yields `5546c120`, NOT `3dc19fbb`). **THE REAL MECHANISM IS IN ITEM 106: BLAS-routed float sums whose ORDER depends on the PHYSICAL CPU, then ROUNDED to whole SCAR — 8 of 804 players sit on a rounding boundary. NO ENVIRONMENT VARIABLE CLOSES IT.** ⇒ **READ 105 AND 106. IGNORE THIS ITEM'S CONCLUSION.**
+    **THE OpenBLAS CAUSE IS A PLAUSIBLE MECHANISM, NOT A MEASURED ONE — DO NOT REGISTER IT AS FACT
     (owner-raised 2026-07-14).**
     The determinism return **ruled library versions out BY PERTURBATION** (numpy 2.3.5 / scipy 1.16.1 →
     board byte-identical). **That is a measurement and it stands.** It then attributed the remainder to
@@ -2002,7 +2004,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     a base pin that cannot fire.** Same family as items 83 and 72.
     TRIGGER: the q97m return. CLOSES when the return names the pins it booted on and confirms the X/yy identity.
 
-88. **THE DISCONTINUITY CENSUS — PRESCREEN: PASS. IT ANSWERS BLAKEY vs ENGLISH, AND IT PARTLY REFUTES THE
+88. ⚠ **SUPERSEDED IN PLACE — THIS PRESCREEN PASS WAS WRONG.** The census's D2 measurement contained a **CORE RULE 7 BREACH** (wide age bins — 18–24 as ONE number) **and the supervisor passed it.** The bins produced a **FALSE NEGATIVE** (they reported *no effect in the prime*; the smooth curve shows −3.3, and it is real). **⇒ THE D2 RE-CUT (PR #80, `8542299`) SUPERSEDES ALL D2 FIGURES HERE. Read it, not this.** (The census's OTHER findings stand.)
+    **THE DISCONTINUITY CENSUS — PRESCREEN: PASS. IT ANSWERS BLAKEY vs ENGLISH, AND IT PARTLY REFUTES THE
     SUPERVISOR (`3ca74f3`, measured on the TAGGED board of record: store `b0c39d78` / board `81e48293` /
     engine `2030e5df` / tag `9f8ae76`, Guard 5 PASS, board md5 named beside the figures — as directed).**
     **C1 — THE RANKED CENSUS, and the top of it is NOT where we were looking.** The two biggest live edges are
@@ -2069,7 +2072,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     leg it must run it at the TAG's tree, or four pins will false-halt it.
     TRIGGER: the return. **BLOCKS: any merge of the freeze branch.**
 
-90. **THE q97m FREEZE RETURN — PRESCREEN: THE FIX IS REAL AND A1 PASSES BOTH LEGS. **FOUR REDS**, AND ONE OF
+90. ✅ **RESOLVED — SUPERSEDED BY ITEM 100. A1 IS NOW PROVEN**, supervisor-verified against the tag's own `expected_boot.json` (board `81e48293e4a47309567c47f392eda1fc`), not a build's word. **The refusal recorded here was CORRECT and the re-run vindicated it.**
+    **THE q97m FREEZE RETURN — PRESCREEN: THE FIX IS REAL AND A1 PASSES BOTH LEGS. **FOUR REDS**, AND ONE OF
     THEM IS THE ACCEPTANCE TEST THAT WOULD HAVE CAUGHT THE RESIDUAL, QUIETLY RELAXED.** (PR #76, draft, head
     `f14710d`, on #74's `ed13177`.)
     ⚠⚠ **CORRECTED 2026-07-14 BY THE OWNER, SAME DAY, BEFORE IT COULD BE ACTED ON — SEE ITEM 92. THE LINE
@@ -2123,7 +2127,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     TRIGGER: the follow-up. CLOSES when A2 is met or the 72 fits are cleared, the cause is MEASURED, the proofs
     are COMMITTED, both books are named, and the non-AVX512 full-board + pick-curve delta is measured.
 
-91. **⚠ THE GUARD ASSERTS ONE FILE. THE ENGINE LOADS ANOTHER. NOTHING ASSERTS THEY MATCH.**
+91. ✅ **RESOLVED — SUPERSEDED BY ITEM 100.** The load-path hole is **CLOSED**: `boot_guard`'s (0e) block now resolves each artifact through the engine's OWN precedence and asserts THE PATH THAT WILL ACTUALLY BE LOADED. **Supervisor-read line by line. Three red-path HALT proofs committed.**
+    **⚠ THE GUARD ASSERTS ONE FILE. THE ENGINE LOADS ANOTHER. NOTHING ASSERTS THEY MATCH.**
     **(Owner-caught 2026-07-14. Seat 6 verified it and found it WIDER.)**
     **`boot_guard.py:133`** pins and hashes **`data/q97m.pkl`** — the REPO file.
     **`_merged_recover.py`'s `_load_q97m()`** resolves in this order: **`$RL_Q97M_PKL`** → **`/home/claude/q97m.pkl`**
@@ -2144,7 +2149,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     including the env var), not the file the repo happens to hold.
     TRIGGER: the q97m follow-up. **BLOCKS the merge of #76.**
 
-92. **⚠ SEAT-6 CORRECTION LEDGER — TWO. BOTH SELF-INFLICTED, ONE CAUGHT BY THE OWNER.**
+92. ✅ **RESOLVED — SUPERSEDED BY ITEM 100.** A1 is PROVEN. **The refusal to grant it on a build's word was correct.** ⚠ **BUT SEE ITEM 105: the supervisor went on to commit the SAME ERROR on item 76/101 — closing an item on a build's report with no provenance caveat and no re-run. The ledger reached FIFTEEN. Read item 109's provenance tiers before trusting any figure in this register.**
+    **⚠ SEAT-6 CORRECTION LEDGER — TWO. BOTH SELF-INFLICTED, ONE CAUGHT BY THE OWNER.**
     **(1) SELF-CAUGHT (item 86):** formed the catastrophe hypothesis that the frozen `q97m` could not be the
     object that built `81e48293` (because it is fitted from the STORE, and the store moved at item 20) — **then
     MEASURED it and killed it.** Bramble is excluded from the training pool twice over; the era aggregate
@@ -2297,7 +2303,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     collision. **QUEUED AS THE NEXT BUILD the moment the follow-up returns.**
     TRIGGER: the q97m follow-up return.
 
-98. **⚠ OWNER READ, UNPROMPTED AND AHEAD OF THE CODE: "ENGLISH'S VALUE SEEMED LOW COMPARED TO SOME OF THE
+98. ⚠⚠ **SUPERSEDED IN PLACE — THE MECHANISM IN THIS ITEM IS WRONG.** **`_eo` is NOT why English sits where the owner noticed him** (**item 107**: the compression is in the **PRICING CURVE** and exists **AT BASE**, before any machinery — English is 3.0× Briggs above replacement and worth 1.4×; the machinery WIDENS the gap rather than causing it). **THE OWNER'S READ WAS RIGHT AND THE SUPERVISOR REBUTTED IT TWICE ON A BADLY-FRAMED TEST.** **The proposed anchor here is WITHDRAWN (item 108).** ⇒ **READ 107.**
+    **⚠ OWNER READ, UNPROMPTED AND AHEAD OF THE CODE: "ENGLISH'S VALUE SEEMED LOW COMPARED TO SOME OF THE
     'FLAKIER' RUCKS." IT IS A FALSIFIABLE PREDICTION AND IT IS NOW THE MOVEMENT CENSUS'S ACCEPTANCE TEST.**
     **The owner made this read from the BOARD, before any seat had found `_eo`.** **`_eo` predicts it exactly.**
     `_eo = yrw × exp`, and **`exp` is the fraction of available football a player has ACTUALLY PLAYED.**
@@ -2355,7 +2362,8 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     `book_stable_seal.json` and the gates snapshot were all touched by **`ed13177` (PR #74, prescreened PASS days
     ago)** — verified per-commit. **This corroborates P5: #74 re-sealed the book; the freeze did not touch it.**
 
-101. **ITEM 76 IS CLOSED — THE CAUSE IS MEASURED, AND *BOTH* SIDES OF THE ARGUMENT WERE RIGHT.**
+101. ⚠⚠⚠ **THIS ITEM IS FALSE. REOPENED BY ITEM 105. DO NOT QUOTE IT.** Its claim that *"AVX2 Haswell == SkylakeX == AVX512-disabled ⇒ `3dc19fbb`"* **IS WRONG** — forcing Haswell on the pinned Intel box yields **`5546c120`**, and the AMD CI runner yields **`62d23265`** (a THIRD board). **P4's kernel test almost certainly never took effect and the supervisor registered it as MEASURED FACT on a build's word — a CORE-RULE-1 FAILURE (seat-6 ledger #11).** **THE TRUE MECHANISM IS ITEM 106.** ⇒ **READ 105 AND 106. EVERYTHING BELOW THIS LINE IS RETAINED ONLY AS THE RECORD OF THE ERROR.**
+    **ITEM 76 IS CLOSED — THE CAUSE IS MEASURED, AND *BOTH* SIDES OF THE ARGUMENT WERE RIGHT.**
     **Three separate builds. The BLAS KERNEL GENERATION is the mover** (SSE `Prescott` ⇒ board `935c2c29`; AVX2
     Haswell == SkylakeX == AVX512-disabled ⇒ `3dc19fbb`). **numpy SIMD is REFUTED** — disabling it down to SSE2
     changes nothing.
@@ -2573,6 +2581,30 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     PIN).**
     **⚠ F5 — `_iso_dec` IS AT `_merged_recover.py:801`, NOT `:820`.** The q97m follow-up return said 820 and the
     supervisor carried it into a directive. **Verified against the tag's tree. Corrected.**
+
+110. **⚠ FOURTH-PASS AUDIT (owner-ordered). THE BIG ONE: EIGHT SUPERSEDED ITEMS WERE UNMARKED, AND ITEM 101
+    STILL OPENED BY ASSERTING A FACT THE SUPERVISOR HAD PROVED FALSE.**
+    **THIS IS THE "toby-briggs" DISEASE EXACTLY — a wrong fact sitting in a registry people trust.** Anyone
+    grepping this register for the determinism cause would have hit **item 101** and read *"THE CAUSE IS
+    MEASURED"*. **Item 105 refutes it eighty lines later — IF THEY GOT THAT FAR.**
+    **NOW MARKED IN PLACE, AT THE TOP OF EACH ITEM'S OWN BODY: 74 · 76 · 88 · 90 · 91 · 92 · 98 · 101.**
+    **⇒ RULE, FOR EVERY SEAT: WHEN AN ITEM IS SUPERSEDED, MARK IT AT ITS OWN TEXT. A CORRECTION FILED EIGHTY
+    LINES BELOW THE ERROR IS NOT A CORRECTION.**
+    **VERIFIED CLEAN THIS PASS:** all ten R98 and all four R99 rulings exist in the archived DECISIONS Fable is
+    told to read · no duplicate item numbers · the four `_nqual` regimes sum to 804 · **SSI is v1.3, header
+    corrected, consistent with item 85** · **CORE's BASE-PIN RULE explicitly permits STRICT EQUALITY for a
+    store/engine base — both live directives are compliant** (they pin branch heads, not main).
+    **⚠ AND THE `rl_model` PIN CLAIM IS NOW VERIFIED, NOT CARRIED:** it sits in `expected_boot.json` as
+    `952ddb3d15fe6d4f72432d431abe75cc`, and `boot_guard.assert_boot()` reads **store · register · config ·
+    board · q97m · band — AND NEVER IT.** **DECORATIVE. CONFIRMED.**
+    **⚠ LEDGER #14, CORRECTED:** the supervisor did **not** invent Fix 1's formula from nothing — **it carried
+    it from SEAT 5's LETTER** (line 363), which had it right. **It was still never verified against the code
+    before being pushed into a LIVE build and into a handover. A carried claim that happens to be true is still
+    a carried claim.**
+    **⚠ STILL UNVERIFIED, AND THE PACK LEANS ON IT: the flattery census's "123 players, +19,168 SCAR."** It is
+    the SCALE COMPARISON for the entire chapter (*"the denial is 1.5× larger and points the other way"*) — **and
+    NO SEAT-6 EYE HAS EVER CHECKED IT.** **Tagged in the handover's provenance block and in the letter. VERIFY
+    IT BEFORE BUILDING ON IT.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).

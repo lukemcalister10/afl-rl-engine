@@ -621,3 +621,30 @@ name for a fortnight without him ever writing it.
 **Read the register. Verify the repo. Believe the owner.**
 
 *— seat 6, 2026-07-14. Fourteen hours. Thirteen corrections. One good chapter.*
+
+---
+
+### POSTSCRIPT — a provenance note, added on a fourth pass at Luke's insistence.
+
+He made me audit this pack three times after I wrote it. Each pass found something. **The third found that I had
+written thirty build-reported figures into the handover as bare fact, with no tags — in a document whose own
+correction ledger is entirely about doing that.** So, for this letter:
+
+**Verified by me, against the builds' own committed data:** the +28,820 denial and its 71.7% · the `_eo` leg
+(−12,404) · Roberts (97.2 / 79.9 / 62.7, and it is **18.3%** of his value, not the 89% I first told Luke —
+that was his margin over replacement, and margin is not value) · English **3.0×** Briggs above replacement for
+**1.4×** the money · Ladhams' single game at 69% of his price · **and the `rl_model` pin, which I checked while
+writing this: it sits in `expected_boot.json` as `952ddb3d` and `boot_guard` reads `store`, `register`,
+`config`, `board`, `q97m` and `band` — never it. It is decorative. The claim above is true.**
+
+**NOT verified by me — and I lean on it above:** ***the flattery census's "123 players, +19,168 SCAR".*** I use it
+as the scale comparison for the whole chapter — *"the denial is 1.5× larger and points the other way"* — **and I
+never once checked it.** **If you build on that comparison, verify it first.**
+
+**And one honest correction to my own ledger.** I said I quoted Fix 1's formula from memory. **I didn't — I
+carried it from seat 5's letter, four hundred lines above this line.** It was right, and it is right (I have
+since read it in the code: `g²/(g+5.8)`, from `Var ≈ 690/g + 119`). **But a carried claim that happens to be
+true is still a carried claim, and I passed it into a live build without opening the file.** That is the
+fifteenth item on the ledger and it is the one I would most like you not to repeat.
+
+**Verify the register. Verify the repo. Believe the owner.**
