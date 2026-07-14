@@ -41,8 +41,11 @@ every register entry and A1 itself are stamped with it. **RULED (R100.7): bisect
 sums. If it is not localised, a declared tolerance is the answer — and that is an acceptable outcome.**
 
 ## WHAT CHANGED AT v4.17
-- **THE CHAPTER IS RENAMED — IT IS THE *IMPROVER* CHAPTER** (R100.1). **The engine believes bad news and
-  interrogates good news.** Three censuses landed and all three point the same way. **Flattery is a symptom.**
+- **THREE CENSUSES LANDED.** ⚠ **The supervisor proposed renaming the chapter (*"the engine believes bad news
+  and interrogates good news"*). THE OWNER DECLINED TO RATIFY IT — R100.1 IS *PROPOSED, NOT RULED*.**
+  *"Present the information, let Fable do with it what she wishes."* **The MEASUREMENTS are solid and are in
+  HANDOVER rev137. THE NAME AND THE STORY ARE A HYPOTHESIS — AND THE SUPERVISOR'S OWN FRAME DOES NOT COVER THE
+  PRICING FINDING (English/Briggs · Sanders/Bont). Read the evidence cold.**
 - **CONSTRAINTS → v1.12:** **L-SYMMETRY** and **L-SAGE-FADE** filed as named laws · **G-Y0 → ADVISORY** (the
   identity is sound; **the FIX DIRECTION is stale and points the wrong way**) · **A-FADE** basis approved,
   **provenance UNVERIFIED**.

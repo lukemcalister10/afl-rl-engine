@@ -513,11 +513,22 @@ kernel; it did not prove the kernel is what DIFFERS in CI"* — and so I refused
 
 ---
 
-## The chapter is not the one you were handed.
+## The chapter may not be the one you were handed. That is for you to decide, not me.
 
-You were queued the **flattery decay**. Three censuses landed overnight and they all point the other way.
+You were queued the **flattery decay**. Three censuses landed overnight and they point somewhere else.
 
-> ### **THE ENGINE BELIEVES BAD NEWS AND INTERROGATES GOOD NEWS.**
+**I wanted to give it a name — *"the engine believes bad news and interrogates good news"* — and I filed that
+as a ruling. Luke made me demote it, and then he declined to ratify it at all: *"Present the information, let
+Fable do with it what she wishes."* He is right to have done that, and here is why, in my own words:**
+
+> **My frame does not explain the best thing he found all night.** Timothy English is not an improver. He is a
+> **proven elite compressed against a marginal ruckman** — a *pricing* defect, not an evidence one. **A story
+> that cannot hold the strongest finding is a story I have talked myself into.**
+
+**So: the measurements below are solid and I have verified most of them myself. The story is mine and you owe
+it nothing.**
+
+> ### *(the supervisor's proposed frame, PENDING and unratified)* **THE ENGINE BELIEVES BAD NEWS AND INTERROGATES GOOD NEWS.**
 
 **It denies 71.7% of every improvement it measures — +28,820 SCAR.** The flattery census found +19,168 of
 *over*valuation. **The denial is one and a half times larger, and it points in the opposite direction.**
