@@ -11,8 +11,8 @@
 | **HANDOVER** | **rev136** | 0 | state + the action order — **addressed to SEAT 6** |
 | **DECISIONS** | **v99** | 0 | rulings + owner to-dos |
 | **OPEN_ITEMS_REGISTER** | **v83** | 1 | the durable finding log (repo-only; pen-maintained) |
-| **CONSTRAINTS** | **v1.11** | 1 | ONLY when judging a board |
-| **acceptance_v1.11.json** | **v1.11 (REGENERATED 2026-07-14)** | 1 | ONLY when judging a board — **assert the JSON, never the prose** |
+| **CONSTRAINTS** | **v1.12** | 1 | ONLY when judging a board |
+| **acceptance_v1.12.json** | **v1.12 (REGENERATED 2026-07-14)** | 1 | ONLY when judging a board — **assert the JSON, never the prose** |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | when touching the store or a derived artifact |
 | ROADMAP | v9 | 2 | on demand |
 | UNRESOLVED | — | 2 | on demand |
