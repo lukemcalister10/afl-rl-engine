@@ -1,0 +1,16 @@
+NAMED ANCHORS (v native -> SSE):
+  nick-daicos               7667 ->    7667  same
+  marcus-bontempelli        3482 ->    3482  same
+  harry-sheezel             7796 ->    7796  same
+  max-gawn                  2393 ->    2395  MOVED 2
+  harley-reid               3594 ->    3594  same
+  josh-ward                 1649 ->    1649  same
+  darcy-moore                197 ->     197  same
+  taylor-goad                873 ->     874  MOVED 1
+  josh-smillie              1282 ->    1282  same
+  will-green                 655 ->     658  MOVED 3
+
+BOARD SUM native=696248 SSE=696264 delta=16 (+0.0023%)
+movers=8 max_abs_delta=4 max_rel=0.458% mean_rel=0.1429%
+
+numeraire check: pick-1=3000 is the LOADED _PVC0 anchor (pvc_curve_L1b.json), env-invariant by construction.

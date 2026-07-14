@@ -3,3 +3,6 @@ __pycache__/
 
 # transient/regenerable cert evidence (scripts committed; curated summaries tracked separately)
 session_2026-07-13/v2_9_refit_cert/out/
+# q97m follow-up: large reproducible board JSONs (analysis + hashes are committed instead)
+session_2026-07-14/q97m_followup/P3_crossenv/board*.json
+session_2026-07-14/q97m_followup/A1_PROOF/legB_tag_board.json
