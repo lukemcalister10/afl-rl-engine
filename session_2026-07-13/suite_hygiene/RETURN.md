@@ -1,8 +1,8 @@
 # SUITE HYGIENE — RETURN (silent-failure class; proofs finished)
 
 - **branch**: `claude/suite-hygiene-silent-failures-f9wgwb`
-- **head SHA**: `__HEADSHA__` (proofs+logs+RETURN commit; PR head is the true tip)
-- **PR**: `__PRNUM__` (candidate — NOT merged, NOT tagged)
+- **head SHA**: `f4c3e8c` (proofs+logs+RETURN commit; a one-line stamp commit rides on top with PR/SHA)
+- **PR**: **#72** (candidate — NOT merged, NOT tagged) · https://github.com/lukemcalister10/afl-rl-engine/pull/72
 
 ## The four acceptance results (each with proof file · exit code · before→after)
 - **A1 — bake halts on a broken export** · `proofs/A1_bake_halts_on_broken_export.sh` · **exit 0 (PASS)**.
