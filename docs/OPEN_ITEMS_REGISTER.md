@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v79 2026-07-14 (⚠ **THE CLIFF FIX DOES NOT FIX THE CLIFF** (item 65): Jamarra Ugle-Hagan is 187 -> 187, not even a mover. The cliff is NOT a ramp — at `n >= PROVEN_N` the formula is THROWN AWAY and **the pedigree par VANISHES from it entirely.** The par-prior weight IS the flattery decay AND the nqual cliff — ONE line of code. Supervisor hypothesis on the +14,301 REFUTED by measurement (item 66). **"Stop describing the system, start measuring it" PARKED FOR FABLE** (item 67, owner-ruled). Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v80 2026-07-14 (⚠⚠ **THE SUPERVISOR WAS CHASING THE WRONG MECHANISM** (item 68): **JAMARRA'S nqual NEVER CROSSES 4.** The nqual cliff never fires for him. His 1,009 -> 187 is `_lvlcurr`: a 3-game 26.0 cameo carrying **35% of his level estimate** because KEY decay is 0.40/yr and he MISSED 2025 — so 3 games outweigh a 22-game season. `_lvlcurr` has NO small-sample damping; `_par_prior` three lines away HAS one. **THE OWNER CALLED THE CIRCLING BEFORE I DID.** New doctrine (item 69): **HARD MECHANISMS ARE THE DISEASE — every transition must be CONTINUOUS.** Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1644,6 +1644,62 @@
     RATE of drift, not its KIND. **And the supervisor seat is inside the failure mode, not outside it** —
     this seat twice over-claimed and once "verified" a fact by PRINTING ITS OWN CONCLUSION inside a script
     and reading it back as a result. The architecture must be robust to the supervisor too.
+
+68. **⚠⚠ ATTRIBUTION FAILURE — THE SUPERVISOR CHASED THE WRONG MECHANISM FOR HOURS (2026-07-14).**
+    **OWNER, calling it before the supervisor did:** *"I also am wondering if maybe we're just going
+    around in circles focusing on levers that weren't that problematic just because of a Jamarra issue,
+    when we're not actually fixing Jamarra."* **He was right.**
+    **THE FACT, verified in the store:** jamarra-ugle-hagan (pick 1, KEY_FWD) —
+    `2021: 5g @47.0 · 2022: 17g @44.0 · 2023: 23g @60.6 · 2024: 22g @63.8 · **2025: DID NOT PLAY** ·
+    2026: 3g @26.0`. Career games **67 → 70** is not a threshold crossing — **it is the 2026 cameo landing
+    in his record.** **His `nqual` is 3 BEFORE and 3 AFTER. IT NEVER CROSSES `PROVEN_N`.**
+    **THE nqual CLIFF NEVER FIRES FOR HIM. THE VANISHING PEDIGREE NEVER FIRES FOR HIM. NONE OF THE
+    LEVERS THE SUPERVISOR SPENT THE DAY ON ARE HIS MECHANISM.**
+    **HIS ACTUAL MECHANISM, MEASURED:** `_lvlcurr` weights each season by `games × ld^(years_ago)` with
+    **`LDECAY_G['KEY'] = 0.40`**. Because he **missed 2025**, his 22-game 2024 season is decayed TWICE
+    (0.40² = 0.16). Result: **three games at 26.0 carry ~35% of the total weight of his level estimate**,
+    and `_lvlcurr` collapses **61.2 → 48.8** (−12.4). He sits at the KEY_FWD replacement bar, so 12 points
+    of level is **1,009 → 187 of value.**
+    **AND THE FIX ALREADY EXISTS THREE LINES AWAY:** `_par_prior` damps thin seasons (`0.25 if games < 8`).
+    **`_lvlcurr` HAS NO SUCH DAMPING.** Apply it and the cameo drops to **12%** of the weight; his level
+    lands at **57.0** instead of 48.8.
+    **THE SUPERVISOR'S FAILURE, NAMED:** I inferred a mechanism from the CODE'S STRUCTURE (the PROVEN_N
+    branch) and never ATTRIBUTED the actual drop. I then wrote a directive to rebuild a function that is
+    not the one hurting him — the same failure I keep flagging in builds. **ATTRIBUTION BEFORE DESIGN.
+    ALWAYS.** The "evidence lever" directive is WITHDRAWN as scope creep.
+    (Items 65/66 stand as findings — the PROVEN_N switch and the tolerance step ARE real defects. They
+    are simply **not Jamarra's**.)
+
+69. **THE SMOOTHNESS LAW — OWNER-WORDED (2026-07-14). This is the unifying diagnosis of the whole week.**
+    OWNER: *"The flat tol issue to me is symptomatic of the problem we're always discovering — HARD
+    MECHANISMS, NOT SOFT/STAGED ONES. I understand the reasoning behind the tolerance step, but it
+    shouldn't be a hard binary either-side step, it should be a smooth transition."*
+    **THE LAW: A VALUATION MUST BE CONTINUOUS IN ITS INPUTS. No player's value may jump because a counter
+    ticked over.** A step function in an asset price is a discontinuity: two players a hair apart, on
+    evidence a statistician could not separate, priced multiples apart.
+    **EVERY DEFECT FOUND THIS WEEK IS AN INSTANCE OF IT:** the `nqual` seasons ramp (25% steps) · the
+    `n >= PROVEN_N` FORMULA SWITCH (the pedigree vanishing) · the `FLAT_TOL` TOLERANCE STEP (improve by
+    less than 10.3 and earn NOTHING; by more and earn EVERYTHING — **Blakey +686 vs English −189 on
+    identical inputs**) · the `< 8 games` damping rule (**itself a hard threshold**) · the captaincy cap
+    (now fixed) · the silent gates (a binary pass/fail that could not fail).
+    **This is the signature of the codebase, and it is now a design law: propose no threshold. Every
+    transition is a curve.**
+
+70. **ISSUED: DIRECTIVE — SMOOTH THE THREE HARD EDGES (supersedes the withdrawn evidence lever).**
+    ATTRIBUTION FIRST (decompose 1,009 → 187 term by term; if the supervisor's attribution is wrong, say
+    so in the first three lines). Then THREE surgical fixes, **each ABLATED and reported ALONE** (the last
+    build BUNDLED two levers and mis-attributed a smooth JUH path to the wrong one — the owner was told
+    the cliff was fixed when it was not):
+    **FIX 1** — smooth small-sample damping in `_lvlcurr`, curvature MEASURED from the record (**Jamarra**).
+    **FIX 2** — smooth the `FLAT_TOL` step over its own range (**Blakey vs English — they must move
+    together after this**).
+    **FIX 3** — extend the pedigree fade past four seasons, continuously (**the owner's 75 → 50 → 25 → 10
+    → 3 → 0**), so the prior FADES instead of VANISHING.
+    **EXPLICITLY FORBIDDEN:** changing the trust basis from seasons to games (it nerfed the kids: 60 of 76
+    first-season movers DOWN, net −3,593) · touching λ (owner-rejected) · redesigning `_lvl_eff_core`.
+    Acceptance: Jamarra's path smooth · the 1-season band is not the only negative one · Blakey and
+    English same sign · the improvers survive · **every guard on a REBUILT book** · and a full continuity
+    sweep naming any player who still steps.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
