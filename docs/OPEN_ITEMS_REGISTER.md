@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v92 2026-07-14 (**ITEM 74 IS RECALIBRATED — THE OWNER CHALLENGED ITS ARITHMETIC AND HE IS RIGHT ABOUT THE SUMS** (item 96): item 74's load-bearing sentence compares a PER-PLAYER drift to an AGGREGATE margin. G-COHORT is a SUM over a class averaged across classes, so independent drift falls as sigma/sqrt(n) — ~0.1% on the ratio against a 3.1% margin, a THIRTIETH not a HALF. **BUT THERE IS NO AVERAGING IN AN ANCHOR: A-BONT must clear 3392, measures 3482, headroom 90 SCAR = 2.6% — and a 1.8% drift on Bontempelli alone is 63 SCAR, 70% of the margin.** AND INDEPENDENCE IS UNTESTED: the three residual movers are Gawn/Goad/Green, ALL RUC — CLUSTERED drift does not cancel. **THE BLOCKER COLLAPSES TO: ONE full-board non-AVX512 delta (already commissioned as P3) from which every aggregate is recomputed analytically, PLUS ~8 single-player anchors. NOT 're-run everything'.** **Item 97: the two boot_guard holes are NOT a Fable job** — mechanical, Tier-1-lite, zero value moved; the supervisor conflated them with item 67's DESIGN question. Queued as the next build; blocked NOW only by concurrency, since F1 is editing the same two files.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v93 2026-07-14 (**OWNER READ, AHEAD OF THE CODE** (item 98): *"English's value seemed low compared to some of the 'flakier' rucks"* — made from the BOARD before any seat found `_eo`. **`_eo` predicts it exactly: it scales with the fraction of available football a player has ACTUALLY PLAYED, so the flaky rucks are PROTECTED BY THEIR FLAKINESS and English is PUNISHED BY HIS DURABILITY.** NOT YET MEASURED — the ruck path has its own machinery and the determinism residual lives there too; the census M5 must DECOMPOSE and return EXPLAINED / PARTLY / NOT. **Item 99: JAMARRA — 187 AND ~1,000 ARE BOTH WRONG, AND BOTH ARE DRIVEN BY THREE GAMES.** The same 3 games are worth ~800 SCAR depending on how they fell: the cameo is not punished for being SMALL, it is priced for being UNLUCKY — and nobody has looked at the upside. The owner's ruling-in-waiting (*'1000 is too high, 187 is too small'*) IS the D2 hypothesis from the other end: **the recency decay UNDER-CHARGES absence.** That is exactly what D2's R3 measures.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2296,6 +2296,44 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     editing `boot_guard.py` AND `bootstrap.sh` right now.** A second build on the same two files is a direct
     collision. **QUEUED AS THE NEXT BUILD the moment the follow-up returns.**
     TRIGGER: the q97m follow-up return.
+
+98. **⚠ OWNER READ, UNPROMPTED AND AHEAD OF THE CODE: "ENGLISH'S VALUE SEEMED LOW COMPARED TO SOME OF THE
+    'FLAKIER' RUCKS." IT IS A FALSIFIABLE PREDICTION AND IT IS NOW THE MOVEMENT CENSUS'S ACCEPTANCE TEST.**
+    **The owner made this read from the BOARD, before any seat had found `_eo`.** **`_eo` predicts it exactly.**
+    `_eo = yrw × exp`, and **`exp` is the fraction of available football a player has ACTUALLY PLAYED.**
+    - A **flaky** ruck: low `exp` ⇒ **low `eo`** ⇒ **LESS DRAG.**
+    - **Timothy English: 7 seasons, 163 games ⇒ `eo` ≈ 1.0 ⇒ MAXIMUM DRAG.**
+    **⇒ THE FLAKIER RUCKS ARE PROTECTED FROM `_eo` BY THEIR FLAKINESS. ENGLISH IS PUNISHED BY HIS DURABILITY.**
+    ⚠ **NOT YET MEASURED — AND THE SUPERVISOR IS EXPLICITLY REFUSING TO ATTRIBUTE IT.** The RUC path has its OWN
+    machinery (`_build_ruc_ceiling` · the young-ruck fade · G-CONVEX's ruck floor) **AND the determinism residual
+    ALSO lives in the ruck path** (items 90, 94) — **the three post-freeze CI movers are ALL RUC.** So more than
+    one thing may sit on English. **The census (M5) must DECOMPOSE and return a one-line verdict: EXPLAINED /
+    PARTLY / NOT EXPLAINED — and if not `_eo`, name what does.** **The supervisor has been wrong three times this
+    week by attributing a player to a plausible mechanism instead of measuring the real one. This is the fourth
+    opportunity and it is being handled differently ON PURPOSE.**
+    **CANDIDATE ACCEPTANCE ANCHOR (owner's call, NOT the supervisor's):** *"English should not sit below flakier
+    rucks of comparable output."* **An owner read that catches what a guard cannot. PROPOSED, PENDING-OWNER.**
+
+99. **JAMARRA: 187 AND ~1,000 ARE **BOTH** WRONG, AND FOR THE SAME REASON — BOTH ARE DRIVEN BY THREE GAMES.**
+    **THE ARITHMETIC (from the build's OWN decomposition — cameo weight share 35.4%, `_lvlcurr` 48.75, therefore
+    the rest of his record averages 61.2, which IS his pre-cameo level):** 3 games at **60.0** instead of 26.0 ⇒
+    `_lvlcurr = 0.354×60.0 + 0.646×61.2 = 60.8`. **He returns to ~61, and to roughly his pre-cameo value.**
+    **⇒ THE SAME THREE GAMES ARE WORTH ~800 SCAR DEPENDING ON HOW THEY WENT.**
+    **THE CAMEO IS NOT PUNISHED FOR BEING SMALL. IT IS PRICED FOR BEING UNLUCKY.** A 3-game sample carries no
+    information capable of supporting an 800-SCAR judgement — **and it cuts BOTH ways. NOBODY HAS LOOKED AT THE
+    UPSIDE** (census M4: who is being LIFTED by a thin hot sample — **flattery's missing half**).
+    **THE OWNER'S RULING-IN-WAITING (2026-07-14):** *"even if he returned and averaged 60 again, he probably
+    shouldn't be valued the same as he was at the end of 2024 — he's a couple of years older, hasn't improved, and
+    has the liability of having missed a year. So 1000 is too high. 187 is just too small."*
+    **THAT IS THE D2 HYPOTHESIS, ARRIVED AT FROM THE OTHER END.** The engine's ~1,000 **already** charges him for
+    age AND for the missed year (his 2024 is recency-decayed **twice**). **The owner is saying THAT IS NOT
+    ENOUGH — i.e. THE RECENCY DECAY UNDER-CHARGES ABSENCE. That is EXACTLY what R3 of the D2 re-cut measures.**
+    ⚠ **SUPERVISOR CAVEAT, DECLARED:** the `1009` is read as *his value at level 61.2 computed NOW* (age and the
+    double decay already applied). **The register's wording implies it; the supervisor has NOT verified it.** If
+    `1009` is instead a PRIOR-BOARD value, the age/decay charges are NOT in it and this reading changes. **The D2
+    re-cut must settle which. DO NOT CARRY THIS UNCHECKED.**
+    **THE UNIFYING STATEMENT: the three games should be a MINOR input to Jamarra's price. Today they are the
+    DOMINANT one. Fix 1, the phantom row, and a correctly-sized absence charge are THREE FIXES FOR ONE DISEASE.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
