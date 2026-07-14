@@ -231,3 +231,35 @@ C2. Ship head beats the ORIGINAL V1 pick model on the same metrics.
   a red gate is the definition of what a fix must achieve before shipping.
 - ENVIRONMENT: gates evaluated in the canonical build environment per the values
   policy (byte-exact within environment; see BAKE_CHECKLIST).
+
+## MODEL REGENERATION — FROZEN FITTED ARTIFACTS (owner ruling, 2026-07-14)
+Every FITTED artifact that determines the board is FROZEN: fitted once, pickled, stamped in
+`data/expected_boot.json`, asserted by Guard 5 (`boot_guard`) on entry, and LOADED — never fitted — by
+the engine at build/gate/panel time. This closes a cross-environment determinism hole: numpy's OpenBLAS is
+built DYNAMIC_ARCH (runtime CPU-kernel selection), so any fit is not bit-stable across GitHub's mixed-CPU
+fleet. A fit at import time therefore moved the board per runner (the CI red that passed as `pull_request`
+and failed as `push` on the SAME commit).
+
+The frozen, pinned fitted artifacts:
+- `data/q97m.pkl` — the q97 CEILING model (`band[5]`, `price6` weight 0.10). Regenerated ONLY by
+  `refit_q97m.py` at a bake.
+- `engine/rl_after/peak_model_v4.pkl` · `engine/rl_after/pvc_snapshot.json` (its FROZEN train-time PVC) ·
+  `engine/rl_after/bust_prior_table.json` — regenerated ONLY by `build_peak_model_v4.py` at a bake.
+- `data/cm_400.pkl` — the PAR-centred band forest (already frozen; `band` pin). The cache is
+  AUTHORITATIVE, NOT byte-reproducible by a fresh fit (a false "cache==retrain byte-for-byte" comment in
+  `wire_redesign.py` was corrected 2026-07-14; measured: fresh retrain `b271ed2e` ≠ committed `34faa865`).
+
+HOW a model is regenerated (q97m — the pattern for all of them):
+1. WHO / WHEN: at a controlled BAKE only, by the owner or the bake operator. The refit entry point is GATED
+   (`RL_BAKE_REFIT=1 python3 refit_q97m.py --bake`); an ordinary build/gate/panel run cannot trigger it, so a
+   silent refit — the exact defect being fixed — cannot happen. `python3 refit_q97m.py --verify` is the safe,
+   ungated self-test (fits in memory, writes nothing, reports whether this box reproduces the committed pin; a
+   divergence is EXPECTED on a different CPU/BLAS kernel and is precisely why the model is frozen).
+2. WHAT IT DOES: fits from the ENGINE'S OWN X/yy (the identical training pool the freeze used), writes
+   `data/q97m.pkl`, RE-PINS `expected_boot.json` `q97m`, and appends provenance to `data/q97m_refit_log.json`
+   (what, when, inputs, old md5 → new md5).
+3. WHAT MUST BE RE-RUN AFTER (this is not optional — the script HALTs you here): a refit moves the board, so in
+   the SAME commit you must (a) rebuild the board (`rl_export.py`) and re-pin `board`; (b) rebuild the
+   book/matrix (`s4_matrix_M1v7.py`) and re-seal if `n` changed; (c) re-run `ci-guards.yml` +
+   `ship_gates_check.py` to GREEN. Until board/book/gates are re-pinned and re-certified, Guard 5 stays RED by
+   construction (the `q97m` pin moved, the `board` pin did not) — that RED is the safeguard, not a nuisance.

@@ -1,5 +1,5 @@
 """WIRE (1) delist->~0 (2) staleness floor all-stalled (3) isotonic pick guard INTO the engine. Prove on named players."""
-import os,io,contextlib,copy,numpy as np
+import os,io,contextlib,copy,pickle,numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
 with contextlib.redirect_stdout(io.StringIO()):
@@ -28,7 +28,26 @@ for _tp in MA.data:
         raise SystemExit("L4 TRIPWIRE HALT (membership stability): %s re-admitted to the calibration training pool "
                          "— a store edit flipped a named load-bearing leg (debut>2021 window / entry-type). Rule "
                          "before shipping (L4_AND_TRIO_FINDINGS; register item 17 D7)."%_tp.get('player'))
-q97m=GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=200,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(np.array(X),np.array(yy))
+# q97m FROZEN 2026-07-14 (owner ruling — determinism fix). WAS: a GradientBoostingRegressor.fit(X,yy) RIGHT HERE,
+# on every board/gate/panel import, PINNED BY NOTHING. numpy's OpenBLAS is DYNAMIC_ARCH (it selects a CPU-specific
+# float kernel at runtime); GitHub runs a mixed-CPU fleet, so the SAME commit trained q97m slightly differently per
+# runner -> every player moved a little in both directions -> the cross-environment CI red (green as pull_request,
+# red as push, same SHA). q97 is band[5] (price6 weight 0.10). It now gets the treatment cm already gets: fitted
+# ONCE at a bake, pickled to data/q97m.pkl, stamped (data/expected_boot.json 'q97m'), asserted by boot_guard on
+# entry, and LOADED here — NEVER fitted at build time. The X/yy pool above is retained UNCHANGED so the ONE
+# committed refit entry point (refit_q97m.py) fits from the identical inputs this line used to; the running engine
+# no longer consumes X/yy. Regenerate ONLY via refit_q97m.py at a bake (it re-pins + HALTs downstream). A silent
+# refit is the exact defect being fixed: there is deliberately no fit path left here.
+def _load_q97m():
+    _cands=[os.environ.get('RL_Q97M_PKL'), '/home/claude/q97m.pkl',
+            os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '','data','q97m.pkl')]
+    for _c in _cands:
+        if _c and os.path.exists(_c):
+            with open(_c,'rb') as _fh: return pickle.load(_fh)
+    raise SystemExit("q97m FROZEN-LOAD HALT: no frozen q97m pickle found (looked at RL_Q97M_PKL, "
+                     "/home/claude/q97m.pkl, <repo>/data/q97m.pkl). Re-run bootstrap.sh to seed the workspace copy, "
+                     "or regenerate via refit_q97m.py at a bake. The engine NEVER fits q97m at build time.")
+q97m=_load_q97m()
 WQ6=np.array([0.18]*5+[0.10]); WQ6/=WQ6.sum(); RECX=[0.30,0.52,0.67,0.82,0.97,1.30]; RECY=[0.54,0.64,0.84,1.00,1.00,1.00]
 midpos=next(r['pos'] for r in MA.data if MA.GRP.get(r.get('pos'))=='MID'); GRPPOS={}
 for r in MA.data:

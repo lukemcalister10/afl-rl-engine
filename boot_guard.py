@@ -125,6 +125,30 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
                          "compare) — the board and its pin are out of sync (re-generate + re-pin, or the pin "
                          "drifted)" % (_fmt(repo_board_md5), _fmt(exp_board)))
 
+    # (0d) FITTED-ARTIFACT checkout-integrity (q97m FREEZE 2026-07-14, owner ruling): assert every FITTED artifact
+    #      that determines the board equals its pin, exactly as (0)/(0c) do for the store/board. These run
+    #      automatically on EVERY assert_boot entry (no caller need pass a path), so a wrong or missing frozen
+    #      artifact HALTS on line one for panel, gate, build and self-test alike. Backward-compatible: each field
+    #      is skipped when absent from the manifest. Full-hash compare (the pins are full 32-char md5s).
+    _FITTED = (('q97m',         os.path.join('data', 'q97m.pkl')),
+               ('peak_model',   os.path.join('engine', 'rl_after', 'peak_model_v4.pkl')),
+               ('pvc_snapshot', os.path.join('engine', 'rl_after', 'pvc_snapshot.json')),
+               ('bust_prior',   os.path.join('engine', 'rl_after', 'bust_prior_table.json')))
+    for _field, _rel in _FITTED:
+        _pin = exp.get(_field)
+        if _pin is None:
+            continue
+        _fp = os.path.join(root, _rel)
+        _fm = _md5(_fp) if os.path.exists(_fp) else None
+        if _fm is None:
+            fails.append("%s pin present (%s) but %s is ABSENT — cannot assert the frozen artifact (re-freeze + "
+                         "re-pin; for q97m run refit_q97m.py at a bake)" % (_field, _fmt(_pin), _rel))
+        elif not _cmp_on_pin_len(_fm, _pin):
+            fails.append("checkout %s %s != pinned %s (data/expected_boot.json '%s', full-hash compare) — the "
+                         "FROZEN artifact %s and its pin are out of sync (re-freeze + re-pin, or the pin drifted; "
+                         "the board's identity is made of this — never boot on an unverified fitted artifact)"
+                         % (_field, _fmt(_fm), _fmt(_pin), _field, _rel))
+
     def _chk(kind, path, pin, ref_md5):
         if path is None:
             return
