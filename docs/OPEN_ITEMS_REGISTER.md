@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v95 2026-07-14 (⚠⚠ **ITEM 101 IS WRONG AND IS REOPENED; ITEM 76 WAS CLOSED ON A FALSE MEASUREMENT** (item 105). FOUR ENVIRONMENTS, FOUR BOARDS: Intel-native SkylakeX = `3dc19fbb` · **Intel-FORCED-Haswell = `5546c120`** · **AMD runner (GitHub) = `62d23265`** · SSE = `935c2c29`. **Item 101's 'AVX2 Haswell == SkylakeX' IS FALSE** — P4's kernel test never took effect and the supervisor registered it as MEASURED FACT on the build's word (**seat-6 ledger #11, a CORE-rule-1 failure**). **CI's board is a THIRD hash — the 'CI builds the SSE board' claim was an inference from three player values and CI had never printed its md5.** VERDICT: **UNKNOWN — threading REFUTED, `OPENBLAS_CORETYPE` a NO-OP on the runner (it is already Haswell). THE BUILD PINNED NOTHING AND WAS RIGHT TO.** **Item 106: the board is sensitive to the PHYSICAL CHIP — Intel-Haswell and AMD-Haswell give different boards. NO ENV VAR CAN CLOSE IT. The values are float sums ROUNDED to whole SCAR; 8 of 804 sit on a rounding boundary. FREEZING MORE MODELS WILL NOT FIX IT — THE SUMS ARE THE SOURCE. The repair is a deterministic summation in place of the BLAS-routed np.dot.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v96 2026-07-14 (⚠⚠ **THE OWNER'S ENGLISH READ WAS RIGHT ALL ALONG AND THE SUPERVISOR REBUTTED IT TWICE ON A BADLY-FRAMED TEST** (item 107, seat-6 ledger #12). **IT IS NOT `_eo` — IT IS THE PRICING CURVE.** English is **3.0×** Briggs above the replacement bar and is worth **1.4×** as much — **AT BASE, before any machinery**; and the machinery WIDENS the gap rather than causing it (base 1.40× → board 1.49×). **IT IS THE SAME SHAPE AS A-PAIRS PAIR 3: the proven elite compressed, the speculative inflated. The owner caught the same defect twice, in two positions, without seeing the code. BOTH belong to the PVC RE-DERIVATION.** **Item 108: RULINGS — S_AGE MUST FADE TO A RESIDUAL, NOT VANISH AT 30 (Wilkie and Sinclair cleared BOTH evidence gates and got ZERO for their birthdays; nobody has ever tested whether the zero is real) · THE SYMMETRY LAW (risers get the same ramp and the same evidentiary bar as fallers) · G-Y0 stays ADVISORY · A-FADE basis APPROVED · pair 3 parked for Fable.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2468,6 +2468,63 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     BAKE machine?** A1 is PROVEN *on the pinned box*. Every guard passes *on the pinned box*. **The ONLY thing
     that fails is CI, which runs on different silicon.** If "reproducible on the bake hardware" is enough, the
     bake can proceed and CI must be re-scoped. **If not, the sums must be fixed first. OWNER'S CALL.**
+
+107. **⚠⚠ THE ENGLISH READ WAS RIGHT ALL ALONG AND THE SUPERVISOR REBUTTED IT TWICE ON A BADLY-FRAMED TEST.
+    IT IS NOT `_eo`. IT IS THE PRICING CURVE — AND IT IS THE SAME DEFECT AS A-PAIRS PAIR 3.** (Seat-6 ledger #12.)
+    **THE OWNER HELD THIS READ FOR FOUR HOURS:** *"English is materially better than guys like Briggs and Sweet
+    yet in their ballpark."* **The supervisor's M5 test asked "is any ruck priced ABOVE English on a LOWER
+    level?" — answered NO — and reported the read UNCONFIRMED. THAT WAS THE WRONG QUESTION.** The question is
+    whether the PREMIUM is proportionate.
+    **THE NUMBERS (board `3dc19fbb`, RUC replacement bar 78.5):**
+    | | margin over a replacement ruck | **BASE value** (pre-machinery) | board value |
+    |---|---|---|---|
+    | **Timothy English** (29) | **+28.4** | **3,723** | 3,132 |
+    | **Kieren Briggs** (27) | **+9.5** | **2,659** | 2,105 |
+    **⇒ ENGLISH IS 3.0× THE PLAYER ABOVE REPLACEMENT AND IS WORTH 1.4× AS MUCH — AT BASE, BEFORE `_eo`, BEFORE
+    THE DOWN-BRANCH, BEFORE ANY MOVEMENT MACHINERY TOUCHES EITHER OF THEM.**
+    **AND THE MACHINERY *WIDENS* THE GAP, IT DOES NOT CAUSE IT:** Briggs loses **20.8%** (down −355, agemult
+    −162, `_eo` −36); English loses **15.9%** (`_eo` −591). **Base ratio 1.40× → board ratio 1.49×.**
+    **⇒ `_eo` IS NOT THE COMPRESSOR. THE PRICE FUNCTION IS.**
+    ⚠⚠ **AND IT IS THE SAME SHAPE AS A-PAIRS PAIR 3:**
+    - **ryley-sanders (young, unproven) 3,960 vs marcus-bontempelli (proven elite) 3,482** — the owner's read
+      says Bont should be ABOVE. **STANDING FAILED READ.**
+    - **kieren-briggs (fading, marginal) 2,105 vs timothy-english (proven elite) 3,132** — the owner's read says
+      the gap should be WIDER.
+    **BOTH TIMES: THE PROVEN ELITE IS COMPRESSED AND THE SPECULATIVE IS INFLATED. THE OWNER'S EYE CAUGHT THE
+    SAME DEFECT TWICE, IN TWO DIFFERENT POSITIONS, WITHOUT SEEING THE CODE.**
+    **⇒ ENGLISH/BRIGGS BELONGS TO THE PVC RE-DERIVATION / PRICING-CURVE CHAPTER, WITH PAIR 3. NOT TO `_eo`.**
+    **R99.4 DOES NOT FORECLOSE IT** — that ruling was *"do not smooth the price AT THE REPLACEMENT BAR to fix a
+    LEVEL problem"* (Jamarra's convex cliff). **This is the OTHER END of the curve: the CONCAVITY at the top.**
+    ⚠ **SUPERVISOR CAUTION AGAINST ITS OWN FINDING:** some compression is LEGITIMATE — Briggs is 27 with ~8
+    years of runway and peaked at 105.2 in 2023; English is 29. **Whether 1.4× is too little for 3× the player
+    is a FOOTBALL judgement and it is exactly what the PVC re-derivation exists to settle. DO NOT PRE-JUDGE IT.
+    AND DO NOT HAND-EDIT EITHER PLAYER — that would be a predicate-based nerf wearing a rule's clothes.**
+
+108. **RULINGS, 2026-07-14 (owner, late session).**
+    - **R-SAGE-FADE (RULED): `S_AGE` MUST FADE TO A RESIDUAL, NOT VANISH AT 30.** Today `_S_AGE(a)` interpolates
+      0.915(20) → 0.490(25) → 0.151(28) → **0.000 from age 30, forever.** **Callum Wilkie (+406) and Jack
+      Sinclair (+143) CLEARED BOTH EVIDENCE GATES — ≥5.0 points AND a 12-game season above their old level — and
+      received EXACTLY ZERO, because of their birthdays.** **The gates and `S_AGE` ask the same question twice
+      ("is this improvement real?") and the age test OVERRIDES the evidence test completely.**
+      ⚠ **NOBODY HAS EVER TESTED WHETHER THE ZERO IS REAL.** Precedent: T5 measured the pedigree still carries a
+      significantly-positive **≈0.11** residual at n=4 (CI [0.04,0.17], **excludes zero**) — **the engine zeroes
+      it anyway.** **SAME DISEASE. MEASURE THE 30+ RESIDUAL; REPLACE THE ZERO WITH THE MEASURED FADE.**
+    - **R-SYMMETRY (RULED, TO BE FILED AS A NAMED LAW IN CONSTRAINTS):** *"Risers should have the same
+      smoothing/ramping. And you should have to have the same drop for the engine to think you're declining as a
+      rise for it to think you're rising."*
+      **TODAY: a RISE needs 5.0 points AND a 12-game season (`TOL_M1` + `_radq`). A DECLINE needs 3.0 points and
+      NO games test at all.** **Asymmetric on BOTH axes. RISERS FACE CLIFFS; FALLERS GET A RAMP.**
+    - **G-Y0: REMAINS ADVISORY** until the PVC re-derivation. **It is already breaching** (comp-weighted V0 >
+      derived PVC in EVERY band, +19…+281, widest at picks 21–30 — **the pick curve UNDERPRICES picks against
+      the players they produce**). **Binding it today would block the bake, and the fix is the PVC chapter, not a
+      guard.** **PENDING-OWNER is CLOSED; it is ADVISORY by ruling.**
+    - **A-FADE BASIS: APPROVED.** *"Multi-bake TRAJECTORY (the fader's path across boards), NOT the single-bake
+      vPrev tick."* **A fading player can tick UP one bake on noise while declining across two years; demanding a
+      tick-down every bake would fail the anchor on noise and teach us to ignore it.** **PENDING-OWNER CLOSED.**
+    - **A-PAIRS PAIR 3: PARKED FOR FABLE** (the PVC re-derivation chapter). **Item 107 joins it.**
+    - **THE ENGLISH ANCHOR (supervisor-proposed, item 98): WITHDRAWN BY THE SUPERVISOR.** It was framed on a
+      mechanism that does not explain him. **If an anchor is wanted here, the correct one is item 107's, and it
+      is the OWNER's to word.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
