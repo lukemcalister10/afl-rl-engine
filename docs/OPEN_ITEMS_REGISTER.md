@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v85 2026-07-14 (**THE SSI LOOKALIKE IS CLOSED** (item 85): main carried v1.3's BODY — SILENCE IS A RED, a BINDING rule — under a v1.2 HEADER whose changelog said "No rule changed", inside the very document that forbids lookalikes. Filed v1.3 verbatim; header-only. **The pen crossed its docs/-only fence ONCE, by the owner's word, for EXACTLY ONE PATH — declared in item 85 so it is never read as precedent; the fence's purpose stands absolutely: the verifying seat never writes engine, store, board, gates or artifacts.** Fable: MOVE the SSI into docs/ and the exception stops existing. Items 83–84 carry: the inverted handover order (THREE docs) and the letter as a cumulative handover artifact.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v86 2026-07-14 (**THE `81e48293` LEG IS A FOUR-PIN FALSE-ALARM TRAP** (item 86): the freeze branch is based on PR #74, not main, and pins store 340a7a32 / board 3dc19fbb / config c2d233ae / engine 2334f570 — the tagged board was built on b0c39d78 / 81e48293 / 69ead79b / 2030e5df, and boot_guard asserts ALL FOUR. A build reporting \"cannot reproduce the board of record\" from this branch is reporting GUARD ARITHMETIC, NOT A BOARD DEFECT. **AND the catastrophe hypothesis — that the frozen q97m cannot be the tag's object because the store moved — IS REFUTED: Bramble, the ONLY store delta, is excluded from q97m's training pool twice over, and the era aggregate excludes 2026. X/yy are identical; the leg should PASS.** Items 83-85 carry.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1968,6 +1968,39 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     exception at all.** The filename must NOT gain a version — a versioned duplicate would be a lookalike of the
     document that forbids lookalikes (CORE v2.5's own FILE NOTE). Move it; do not copy it.
     TRIGGER: the CORE v2.6 fold. CLOSES when the SSI lives under `docs/`.
+
+86. **⚠ THE `81e48293` LEG IS A FOUR-PIN FALSE-ALARM TRAP — AND THE CATASTROPHE HYPOTHESIS IS REFUTED BY
+    MEASUREMENT (owner-raised 2026-07-14; seat 6 verified, and had to correct itself in the doing).**
+    **THE OWNER'S WARNING, CONFIRMED AND WIDENED.** The freeze branch (`claude/freeze-q97m-determinism-5hitu3`,
+    head `f14710d`) is based on **`ed13177` (PR #74), NOT on main** — verified: `ed13177` IS an ancestor of the
+    freeze branch and `bce9f7b` is NOT. Its `data/expected_boot.json` pins **store `340a7a32` · board `3dc19fbb`
+    · config `c2d233ae` (47 vars) · engine_head `2334f570`**. **THE TAGGED BOARD OF RECORD `81e48293` WAS BUILT
+    ON store `b0c39d78`, config `69ead79b` (40 vars), engine `2030e5df`.** `boot_guard` asserts the store (Guard
+    5), the **config** (0b, L107) **and the board at FULL hash** (0c — the pin was DECORATIVE until the S1 audit
+    wired it, item 24). **SO A BUILD ATTEMPTING THE `81e48293` LEG FROM THIS BRANCH HALTS ON FOUR PINS, NOT ONE**
+    — and would report "cannot reproduce the board of record." **THAT REPORT WOULD BE GUARD ARITHMETIC, NOT A
+    BOARD DEFECT. CHECK WHICH PINS IT BOOTED ON BEFORE ESCALATING.**
+    **THE CORRECT CONSTRUCTION OF THE LEG:** build at the **TAG's own tree** (`9f8ae76` — its store, its config,
+    its engine, its `expected_boot` which pins board `81e48293`), with **ONLY** the `q97m` fit swapped for a LOAD
+    of the frozen pickle. Anything else is testing the wrong object.
+    **AND THE HYPOTHESIS THAT WOULD HAVE MADE THIS A CATASTROPHE IS FALSE — SEAT 6 FORMED IT AND THEN KILLED IT
+    ON THE EVIDENCE, WHICH IS THE POINT.** `q97m` is `GradientBoostingRegressor(...).fit(X, yy)` and **X/yy are
+    built from the STORE** (`_merged_recover.py:13-19`). The store MOVED at item 20 (`b0c39d78` -> `340a7a32`).
+    So the frozen pickle looked like it could not be the object that built the tag's board. **IT IS.** MEASURED:
+    the item-20 store delta is **Lachlan Bramble alone** (2026: 15g@62.4 -> 14g@62.3), and Bramble is **EXCLUDED
+    FROM q97m's TRAINING POOL ON TWO INDEPENDENT GROUNDS** — `pos` is `None`, so `MA.GRP.get(p['pos'])` is falsy
+    and he never enters `pool` (L13); and `pick`/`_ft` are both `None`, so L17's filter drops him anyway. **AND
+    the era/REF aggregate runs `range(2009,2026)` — it EXCLUDES 2026**, so his changed row cannot reach it either.
+    **=> X and yy are IDENTICAL across the store move => the frozen `q97m` (`cfdc7321`) IS, up to the machine, the
+    very object that produced `81e48293`. THE LEG IS MEANINGFUL AND IT SHOULD PASS.**
+    **PROVENANCE: CODE-READING + STORE DIFF, RE-RUNNABLE — NOT OWNER-SEEN, NOT BUILD-CONFIRMED.** The build must
+    CONFIRM it by hashing `X`/`yy` under both stores (one line). **Do not let this item become the next carried
+    claim.**
+    ⚠ **DIRECTIVE DEFECT, MINOR:** the freeze directive's BASE line reads *"main at or after `7989d21`; docs-only
+    drift expected"* — but the build is correctly based on **`ed13177`**, which is **not an ancestor of main**.
+    The directive and the job disagree; the job followed rev136. **A base pin that does not describe the base is
+    a base pin that cannot fire.** Same family as items 83 and 72.
+    TRIGGER: the q97m return. CLOSES when the return names the pins it booted on and confirms the X/yy identity.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
