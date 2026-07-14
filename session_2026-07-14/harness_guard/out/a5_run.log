@@ -1,0 +1,11 @@
+HEAD=2030e5df store=340a7a32 board=3dc19fbb suite_rc=1
+  [PASS] reds == {A2,A3,A12}  ['A12', 'A2', 'A3']
+  [FAIL] B1 PASS 1.2601/1.2407/1.1521  JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class
+  [PASS] panel 10/10  rc=0
+  [PASS] Guard 5 green  
+  [PASS] H1 PASS  PASS
+  [PASS] H2 PASS  PASS
+  [PASS] store 340a7a32 byte-identical  340a7a32
+  [PASS] board 3dc19fbb byte-identical  3dc19fbb
+
+A5 FAIL

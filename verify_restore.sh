@@ -46,7 +46,15 @@ if [ -d "$WFV" ] && [ -d "$ROOT/engine/forward_valuation" ]; then
 else
   echo "NOTE  cp-pair guard skipped: $WFV absent — imports fail loudly rather than mix (root fix = parameterize _FV, candidate-branch item)"
 fi
-if [ -f "$ROOT/run_panel.sh" ]; then echo "--- run_panel.sh tail (10-panel; confirm 10/10) ---"; (cd "$ROOT" && bash run_panel.sh 2>&1 | grep -v Warning | tail -4); fi
+if [ -f "$ROOT/run_panel.sh" ]; then
+  # SUITE HYGIENE 2026-07-14 (H2 masking-lint fix): the panel is a GATE, not decoration — capture its exit
+  # code and fold it into the tally. Previously `bash run_panel.sh | grep | tail` dropped the panel's status
+  # (a 10/10 that silently became 9/10 would not have failed restore-verify). Status FIRST, then truncate.
+  echo "--- run_panel.sh (10-panel; confirm 10/10) ---"
+  (cd "$ROOT" && bash run_panel.sh) > /tmp/_vr_panel.log 2>&1; prc=$?
+  grep -v Warning /tmp/_vr_panel.log | tail -4
+  chk "run_panel.sh 10-panel exit" "$prc" "0"
+fi
 echo "===================================="
 echo "VERDICT: $pass PASS / $fail FAIL  =>  $([ "$fail" = 0 ] && echo RESTORE-VERIFY PASS || echo RESTORE-VERIFY FAIL)"
 # SUITE HYGIENE 2026-07-13: the EXIT CODE is the authority, not the printed verdict string. This script

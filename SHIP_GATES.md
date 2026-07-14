@@ -210,6 +210,52 @@ C1. Ship head beats the NAIVE BASELINE (last-2-season avg + simple age curve +
 C2. Ship head beats the ORIGINAL V1 pick model on the same metrics.
     (If either fails: stop and re-scope before the PVC.)
 
+## SECTION H — HARNESS INTEGRITY (anti-copy GUARD, owner directive 2026-07-13; wired 2026-07-14)
+### WHY: the owner asked why rules that are never enforced keep getting disregarded. They are not
+### disregarded — NOTHING STOPPED THEM. Every rule that HELD is wired to a mechanism that HALTS (the five
+### SSI guards, Guard 5, the acceptance JSON, the base pin). Every rule that ROTTED lived only in prose.
+### SSI Guard 3 polices exactly one thing — a second copy of the STORE (`rl_model_data*.json`). There was
+### never an equivalent tripwire for CODE, so "don't copy the runner" was a sentence competing for attention
+### while copying was the fastest path to a finished job — and the `| tail -8` that hid a BINDING gate's
+### traceback (item 38) propagated by copy-paste. SECTION H makes it mechanical: Guard 3, pointed at code.
+###
+### THE ONE CANONICAL HARNESS. There is EXACTLY ONE committed suite runner: **`ship_gates_check.py`**. A
+### build CALLS it with configuration (`SGC_SKIP`, `SGC_REPORT_DIR`, the `SGC_B1_MATRIX` red-path proof seam,
+### `SGC_HARNESS_ONLY`) — it never writes its own. The other canonical runners are the pinned harness
+### (`run_panel.sh`, `verify_restore.sh`, `bootstrap.sh`, `setup_env.sh`, `boot_guard.py`,
+### `config_manifest.py`, `ruling_config_check.py`, `doc_lint.py`). The canonical set + the two allowlists
+### live in ONE owner-visible file: **`data/harness_manifest.json`**. Copying a runner is UNNECESSARY (they
+### already take config) and, from now on, DETECTABLE (H1).
+###
+H1. THE LOOKALIKE TRIPWIRE — SSI Guard 3, pointed at CODE. HALTS if any file OUTSIDE the canonical set
+    substantially duplicates a canonical runner. Metric = `ov_can` = (shared significant lines) / (the
+    canonical runner's significant lines); significant = non-blank, non-comment, ≥8 chars. **Threshold:
+    `ov_can ≥ 0.50` AND `shared ≥ 12` significant lines.** Justification: the tree-wide MAX `ov_can` today is
+    0.136 (coincidental env-export idioms vs the 22-line `run_panel.sh`), so 0.50 is a 3.7× margin — zero
+    false positives — while a genuine copy reproduces ≈1.0 and a copy edited up to ~50% still trips; the
+    `shared ≥ 12` floor stops a coincidental match against the small runners. Scans the WHOLE working tree
+    (including untracked files, so a not-yet-committed copy is caught) — the exact analogue of the store
+    lookalike tripwire: a second copy of the harness becomes a red the moment it is created, not chapters
+    later when it drifts (as `cohort_gate_official.py` did before it was deleted). Exceptions →
+    `data/harness_manifest.json` `H1_lookalike.allowlist` with a REASON (currently EMPTY).
+H2. THE MASKING LINT — behavioural, not structural. HALTS if a LIVE harness script (R1) invokes a
+    gate/guard/assertion but omits `set -o pipefail`; or (R2) pipes a gate-like command through `tail`/`head`
+    without capturing its exit code; or (R3) wraps a gate-like command in `|| true` / `|| :`. This is the
+    item-38 `| tail -8` signature (§SUITE FAILURE SEMANTICS) generalised from the ONE instance to the CLASS.
+    CALIBRATION: it does NOT fire on decorative `echo | head` summary lines (echo is not gate-like), and it
+    scopes to LIVE scripts only — repo-root `*.sh` + `.claude/hooks/*.sh` + any `*.sh` outside `session_*/`.
+    CLOSED SESSION DIRS ARE EXCLUDED BY RULE (they are the historical record, out of fence) and by
+    measurement (15 closed-session scripts carry the historical pattern vs 1 in the live tree — the one live
+    finding, `verify_restore.sh`'s masked panel display, was FIXED, not allowlisted). Exceptions →
+    `data/harness_manifest.json` `H2_masking.allowlist` with a REASON (currently EMPTY).
+### THE CONFIG STAMP (book-parity back door, owner-ruled 2026-07-13). The walk-forward book must be rebuilt
+### whenever the formula for current players changes — and much of this engine's formula lives in CONFIG
+### (`RL_GAMMA`, `PAR_RAMPS`, `RL_RECENCY_DECAY`, the levers), not code. The matrix `__meta__` carries
+### `engine_head_md5`, `store_md5` AND `config_sha256`; `ship_gates_check.py` (~L280) asserts ALL THREE
+### against the candidate under test — a config-only formula change on a STALE book now HALTs with the same
+### loud red the engine/store stamps get, instead of certifying a board the book does not describe. (The
+### `config_sha256` leg was wired via PR #66; SECTION H verifies it bites — acceptance A4.)
+
 ## PROCESS
 - FREEZE: on Luke's word; committed to the repo; build scripts every line into
   ship_gates_check.py, run at each candidate head and mandatorily at any bake.

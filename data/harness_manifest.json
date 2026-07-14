@@ -1,0 +1,33 @@
+{
+  "_doc": "THE CANONICAL HARNESS MANIFEST + ANTI-COPY ALLOWLIST (owner-visible; SHIP_GATES.md SECTION H). This is the code analogue of the SINGLE-SOURCE INVARIANT's Guard 3 (which polices a second copy of the STORE) pointed at CODE. ship_gates_check.py reads this file to run gate H1 (lookalike tripwire) and H2 (masking lint). The lists below are the ONLY sanctioned exceptions; every entry states a REASON. A silent exception is the disease; a recorded one is a decision. Added 2026-07-14, branch claude/anti-copy-guard-enforcement-bj9ivh.",
+
+  "canonical_runners": [
+    "ship_gates_check.py",
+    "run_panel.sh",
+    "verify_restore.sh",
+    "bootstrap.sh",
+    "setup_env.sh",
+    "boot_guard.py",
+    "config_manifest.py",
+    "ruling_config_check.py",
+    "doc_lint.py"
+  ],
+  "canonical_suite_runner": "ship_gates_check.py",
+  "_canonical_note": "There is EXACTLY ONE committed suite runner: ship_gates_check.py. A build CALLS it with configuration (SGC_SKIP, SGC_REPORT_DIR, SGC_B1_MATRIX proof seam, SGC_HARNESS_ONLY) — it never writes its own copy. The other runners are the pinned harness (bootstrap/panel/restore/config). Copying any of them is unnecessary (they already take config) AND, from now on, detectable (H1).",
+
+  "H1_lookalike": {
+    "_doc": "Gate H1 HALTs if a file OUTSIDE canonical_runners reproduces >= ov_can_threshold of a canonical runner's significant lines (significant = non-blank, non-comment, >=8 chars). ov_can = shared_significant_lines / canonical_runner_significant_lines. Scans the WHOLE working tree (incl. untracked) so a not-yet-committed copy is caught; prunes dirs_pruned; skips canonical_runners + the allowlist.",
+    "ov_can_threshold": 0.50,
+    "min_shared_lines": 12,
+    "_threshold_reason": "Tree-wide max ov_can today = 0.136 (coincidental env-export idioms vs the 22-line run_panel.sh). 0.50 is a 3.7x margin -> zero false positives, yet bites any copy edited up to ~50%. min_shared_lines=12 stops a coincidental match against the small runners (setup_env=15, run_panel=22 significant lines); a genuine copy of those shares all 15/22.",
+    "dirs_pruned": [".git", "__pycache__", "vendor", "backups", "node_modules", ".ipynb_checkpoints"],
+    "allowlist": []
+  },
+
+  "H2_masking": {
+    "_doc": "Gate H2 HALTs if a LIVE harness script masks a gate/guard/assertion: (R1) invokes a gate-like command but omits `set -o pipefail`; (R2) pipes a gate-like command through tail/head (or any filter) without capturing the exit code; (R3) wraps a gate-like command in `|| true` / `|| :`. gate-like = python3/bash/sh/./ invoking ship_gates|gate|guard|panel|matrix|_wf|rl_export|build_final|boot_guard|enforce|verify_restore|check.",
+    "scope_note": "LIVE scripts only: repo-root *.sh + .claude/hooks/*.sh + any *.sh outside session_*/ backups/ vendor/. CLOSED SESSION DIRS ARE EXCLUDED BY RULE (they are the historical record, out of fence) — and by measurement: 15 closed-session scripts carry the historical pattern vs 1 in the live tree. Decorative `echo|head` summary lines never match (echo is not gate-like).",
+    "scope_exclude_prefixes": ["session_", "backups/", "vendor/", ".git", "__pycache__"],
+    "allowlist": []
+  }
+}

@@ -1,0 +1,1 @@
+PASS  reds=['A12', 'A2', 'A3'] B1_ratios=1.2601/1.2407/1.1521 panel10=True guard5=True H1=PASS H2=PASS store=340a7a32 board=3dc19fbb suite_rc=1(expected: A2/A3/A12 red)

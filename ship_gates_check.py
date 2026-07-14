@@ -77,6 +77,118 @@ import numpy as np
 SKIP = set(os.environ.get('SGC_SKIP', '').upper().split(',')) - {''}
 HEAD = hashlib.md5(open('_merged_recover.py', 'rb').read()).hexdigest()[:8]
 STORE = hashlib.md5(open('rl_model_data.json', 'rb').read()).hexdigest()[:8]
+# ==== SECTION H — HARNESS INTEGRITY (anti-copy guard; SHIP_GATES.md SECTION H, 2026-07-14) ====
+# The code analogue of the SINGLE-SOURCE INVARIANT's Guard 3 (which polices a second copy of the STORE),
+# pointed at CODE. H1 = the LOOKALIKE TRIPWIRE: a file outside the canonical runner set that substantially
+# duplicates a canonical runner becomes a RED the moment it exists. H2 = the MASKING LINT: a LIVE harness
+# script that hides a gate's exit code (the item-38 `| tail -8` class) becomes a RED. Both are computed
+# HERE — before the engine loads — so a proof (SGC_HARNESS_ONLY=1) tests PROPAGATION cheaply, and a real
+# copy/mask HALTs the suite on line one instead of certifying. Config/thresholds/allowlist live in the ONE
+# owner-visible file data/harness_manifest.json. A crash in either check is itself a HALT (silence is a red).
+import re as _re
+def _sig_lines(path):
+    """Significant lines: non-blank, non-comment, >=8 chars — the copy-detection signature."""
+    out = set()
+    try:
+        with open(path, errors='replace') as fh:
+            for ln in fh:
+                s = ln.strip()
+                if s and not s.startswith('#') and len(s) >= 8:
+                    out.add(s)
+    except Exception:
+        pass
+    return out
+def _walk_scripts(root, pruned):
+    for dp, dns, fns in os.walk(root):
+        dns[:] = [d for d in dns if d not in pruned]
+        for fn in fns:
+            if fn.endswith('.py') or fn.endswith('.sh'):
+                yield os.path.relpath(os.path.join(dp, fn), root)
+def _h1_lookalike(root, man):
+    try:
+        cfg = man['H1_lookalike']
+        thr = float(cfg['ov_can_threshold']); minsh = int(cfg['min_shared_lines'])
+        pruned = set(cfg['dirs_pruned'])
+        allow = {a['file'] for a in cfg.get('allowlist', [])}
+        canon = man['canonical_runners']
+        csig = {c: _sig_lines(os.path.join(root, c)) for c in canon}
+        csig = {c: s for c, s in csig.items() if s}
+        viol = []
+        for rel in _walk_scripts(root, pruned):
+            if rel in canon or rel in allow:
+                continue
+            fs = _sig_lines(os.path.join(root, rel))
+            if not fs:
+                continue
+            for c, cs in csig.items():
+                shared = len(fs & cs); ovc = shared / len(cs)
+                if ovc >= thr and shared >= minsh:
+                    viol.append((rel, c, ovc, shared)); break
+        if viol:
+            return 'HALT', ('LOOKALIKE(S) of a canonical runner (single-source invariant, code side): '
+                + '; '.join(f'{r} duplicates {c} (ov_can={o:.2f}, {s} shared sig-lines)' for r, c, o, s in viol)
+                + f' — a build must CALL {man.get("canonical_suite_runner","the canonical runner")} with config,'
+                  ' never copy it. Delete the copy, or record it in data/harness_manifest.json H1_lookalike.allowlist with a reason.')
+        return 'PASS', (f'no code lookalike: 0 files outside the {len(csig)} canonical runners reproduce '
+                        f'>= {thr:.2f} of one (min {minsh} shared sig-lines). Tripwire = SSI Guard 3, pointed at code.')
+    except Exception as ex:
+        return 'HALT', f'H1 lookalike check errored (silence is a red): {type(ex).__name__}: {ex}'
+_GATELIKE = _re.compile(r'(^|[;&|(]|\bthen\b|\bdo\b|\$\()\s*(python3?|bash|sh|\./)\S*\s+\S*'
+                        r'(ship_gates|gate|guard|panel|matrix|_wf|rl_export|build_final|boot_guard|enforce|verify_restore|check)')
+_TAILPIPE = _re.compile(r'\|\s*(tail|head)\b')
+_ORTRUE = _re.compile(r'\|\|\s*(true|:)\s*(#|$)')
+def _h2_masking(root, man):
+    try:
+        cfg = man['H2_masking']
+        excl = tuple(cfg['scope_exclude_prefixes'])
+        aw = cfg.get('allowlist', [])
+        allow_line = {f"{a['file']}:{a['line']}" for a in aw if a.get('line')}
+        allow_file = {a['file'] for a in aw if not a.get('line')}
+        viol = []
+        for rel in _walk_scripts(root, {'.git', '__pycache__', 'vendor', 'backups', 'node_modules'}):
+            if not rel.endswith('.sh') or rel in allow_file or any(rel.startswith(p) for p in excl):
+                continue
+            try:
+                lines = open(os.path.join(root, rel), errors='replace').read().splitlines()
+            except Exception:
+                continue
+            invokes = any(_GATELIKE.search(l) for l in lines)
+            if invokes and not any('pipefail' in l for l in lines):
+                viol.append((rel, 0, 'R1 invokes a gate/guard but omits `set -o pipefail`'))
+            for i, l in enumerate(lines, 1):
+                if f'{rel}:{i}' in allow_line:
+                    continue
+                if ('|' in l and _TAILPIPE.search(l) and _GATELIKE.search(l.split('|')[0])
+                        and 'PIPESTATUS' not in l and 'rc=$?' not in l and not _re.match(r'\s*\w+=\$\(', l)):
+                    viol.append((rel, i, 'R2 pipes a gate through tail/head without capturing its exit code'))
+                if _ORTRUE.search(l) and _GATELIKE.search(l):
+                    viol.append((rel, i, 'R3 masks a gate with `|| true` / `|| :`'))
+        if viol:
+            return 'HALT', ('MASKED gate/guard invocation(s) in the LIVE harness (item-38 class): '
+                + '; '.join((f'{r}:{i} {m}' if i else f'{r} {m}') for r, i, m in viol)
+                + ' — capture the status (`cmd > log 2>&1; rc=$?; tail log; exit $rc`) or `set -o pipefail`;'
+                  ' a green summary line is not a pass. Fix it, or record it in data/harness_manifest.json'
+                  ' H2_masking.allowlist with a reason.')
+        return 'PASS', ('no masked gate in the live harness (root + hooks; closed session dirs excluded as the '
+                        'record): every live runner sets pipefail and captures gate exit codes. Lint = the '
+                        'item-38 `| tail -8` signature, generalised to the class.')
+    except Exception as ex:
+        return 'HALT', f'H2 masking check errored (silence is a red): {type(ex).__name__}: {ex}'
+_HMAN = json.load(open(os.path.join(ROOT, 'data', 'harness_manifest.json')))
+H1_STATUS, H1_DET = _h1_lookalike(ROOT, _HMAN)
+H2_STATUS, H2_DET = _h2_masking(ROOT, _HMAN)
+if os.environ.get('SGC_HARNESS_ONLY'):
+    # Fast path (no engine load): run ONLY the harness-integrity checks and exit. For H1/H2 red-path proofs
+    # (A1/A2) and the zero-false-positive sweep (A3) — propagation, not computation.
+    _hf = [g for g, s in (('H1', H1_STATUS), ('H2', H2_STATUS)) if s == 'HALT']
+    print(f'=== SGC_HARNESS_ONLY — harness-integrity checks (H1 lookalike, H2 masking) ===')
+    print(f'H1  {H1_STATUS}  {H1_DET}')
+    print(f'H2  {H2_STATUS}  {H2_DET}')
+    if _hf:
+        print('\n!! SUITE HALT (harness-only mode): ' + ', '.join(_hf) + ' produced a HALT. Exits non-zero.')
+    print('VERDICT (SGC_HARNESS_ONLY): ' + ('HALT' if _hf else 'PASS'))
+    sys.exit(1 if _hf else 0)
+# ==== end SECTION H early block ====
 # ---- BINDING REPORTING RULES (Luke's word, D10 03/07/2026 — see BAKE_CHECKLIST.md §REPORTING) ----
 # 5a: every gates/board output reports THREE COLUMNS — CONTROL / PREVIOUS / CURRENT, deltas explicit.
 # 5b: every board/report carries a LOUD state label; no unlabelled player value anywhere Luke-facing.
@@ -683,10 +795,15 @@ except Exception as ex:
 
 gate('C1', False, 'PENDING', 'naive-baseline book not yet built — definition proposal in report (needs its own directive)')
 gate('C2', False, 'PENDING', 'V1-pick-model book not yet built — definition proposal in report (needs its own directive)')
+# ---------- SECTION H — HARNESS INTEGRITY (computed pre-engine-load; register the verdicts here) ----------
+# H1 = anti-copy lookalike tripwire (SSI Guard 3 for code); H2 = masking lint (item-38 class). A HALT here
+# is a RED like any other — caught by the completeness/HALT nets below, exits the suite non-zero.
+gate('H1', False, H1_STATUS, H1_DET)
+gate('H2', False, H2_STATUS, H2_DET)
 
 # ---------- BOARD + REPORT ----------
 order = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15',
-         'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'D14a', 'D14b', 'D14c', 'C1', 'C2']
+         'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'D14a', 'D14b', 'D14c', 'C1', 'C2', 'H1', 'H2']
 RES.sort(key=lambda r: order.index(r[0]))
 cnt = {}
 lines = [f'=== STATE: {STATE_LABEL} ===',

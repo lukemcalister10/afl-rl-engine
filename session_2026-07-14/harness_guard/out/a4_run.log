@@ -1,0 +1,11 @@
+HEAD=2030e5df STORE=340a7a32 CFG=69ead79b944d
+
+[A4a stale/mismatch] rc=1
+    B1        PASS    | PASS    | HALT     candidate matrix unavailable — B1 produced NO result and HALTS rather than pass silently (the v2.5 comparator is NOT substituted): candidate matrix hashes != can
+   HALTs=True  names-config-mismatch=True
+[A4b matching config] rc=1
+    B1        PASS    | PASS    | INJECTED [INJECTED MATRIX — NOT A CERTIFICATION; run exits non-zero] JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath a
+    B1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):
+   stamp-accepts-book=True
+
+A4 PASS

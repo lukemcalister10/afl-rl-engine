@@ -132,6 +132,16 @@
    "dc": false,
    "status": "PENDING",
    "detail": "V1-pick-model book not yet built \u2014 definition proposal in report (needs its own directive)"
+  },
+  "H1": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "no code lookalike: 0 files outside the 9 canonical runners reproduce >= 0.50 of one (min 12 shared sig-lines). Tripwire = SSI Guard 3, pointed at code."
+  },
+  "H2": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "no masked gate in the live harness (root + hooks; closed session dirs excluded as the record): every live runner sets pipefail and captures gate exit codes. Lint = the item-38 `| tail -8` signature, g"
   }
  }
 }

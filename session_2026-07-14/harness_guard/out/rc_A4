@@ -1,0 +1,1 @@
+PASS  A4a: HALT=True names_config=True rc=1 | A4b: stamp_accepts=True rc=1
