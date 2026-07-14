@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v90 2026-07-14 (⚠ **ITEM 90 IS CORRECTED IN PLACE: A1 IS *CLAIMED, NOT VERIFIED*.** The supervisor granted it on the return's word, in the same entry that documented that return being wrong THREE TIMES about its own results — **caught three false claims and believed the fourth** (item 92, seat-6 ledger). **Item 91: THE GUARD ASSERTS ONE FILE AND THE ENGINE LOADS ANOTHER** — boot_guard hashes data/q97m.pkl; _load_q97m() prefers $RL_Q97M_PKL then /home/claude/q97m.pkl; bootstrap only ECHOES the workspace md5. An env var can point the engine at any pickle and the guard still passes. **The one commit whose purpose was determinism re-opened the exact stale-boot hole Guard 5 was built to close.** **Item 87: the supersession chain is CLOSED** — v98/rev135/v4.15 archived; v99's pointer resolves; Fable must read v98 itself.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v91 2026-07-14 (**THE boot_guard DIFF READ LINE BY LINE — VERDICT PASS** (item 93): it is ADDITIVE, it weakens NOTHING, and it does NOT block #76. But it copied the house pattern and **THE HOUSE PATTERN HAS TWO HOLES: a MISSING pin is SILENTLY SKIPPED (delete a line from expected_boot.json and the guard stops checking, quietly), and the PIN'S LENGTH DECIDES HOW STRICTLY THE PIN IS CHECKED.** Both PRE-EXISTING; both are item 67 in miniature — **these guards check that what we pinned still matches; they never check that everything that should be pinned IS pinned.** Owner-ruled: they go to FABLE as the completeness architecture's worked case, NOT bolted onto the follow-up. **Item 94: ITEM 74's REMEDY IS ITSELF CONDITIONAL** — 're-measure on the frozen build' assumes the frozen build is environment-stable, and CI IS STILL RED. The bake blocker has grown a precondition. **Item 95: the census return cites the WRONG HEAD SHA** (7989d21 is its PARENT; the head is 3ca74f3) — verdict unchanged, PASS; every prescreen now checks the cited SHA with git rev-parse.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2180,6 +2180,70 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     +0.69% incremental R²; HIS READ STANDS."** rev136 lists it under NOT-GOT-TO as if untouched. **It was
     measured, and the owner's read won.**
     **STANDING LESSON: an unfiled pack doc is a pointer that dangles the moment its successor ships.**
+
+93. **THE `boot_guard` DIFF — READ LINE BY LINE BY THE SUPERVISOR (not by the build that wrote it).
+    VERDICT: PASS. IT IS ADDITIVE, IT WEAKENS NOTHING, AND IT DOES NOT BLOCK #76.** (`ed13177..f14710d`.)
+    **THE WHOLE DIFF IS ONE NEW BLOCK — `(0d)` FITTED-ARTIFACT CHECKOUT-INTEGRITY.** It asserts four artifacts
+    against their pins on EVERY `assert_boot` entry (no caller need pass a path): `q97m` (`data/q97m.pkl`) ·
+    `peak_model` (`peak_model_v4.pkl`) · `pvc_snapshot` (`pvc_snapshot.json`) · `bust_prior`
+    (`bust_prior_table.json`). **NOTHING IS DELETED. NOTHING IS WEAKENED. NO EXISTING HALT IS REMOVED.**
+    **What it now HALTs on that it did not before:** a wrong OR ABSENT frozen artifact, for panel, gate, build
+    and self-test alike. **What it no longer HALTs on: NOTHING.** **The direction is correct and the build
+    deserves the credit — it closed D6 as directed, and it did it in the right place.**
+    ⚠ **BUT IT COPIED THE HOUSE PATTERN, AND THE HOUSE PATTERN HAS TWO HOLES. BOTH ARE PRE-EXISTING —
+    NOT THIS BUILD'S SIN — AND BOTH ARE THE COMPLETENESS DISEASE (item 67), WORKED IN MINIATURE.**
+    - **HOLE 1 — A MISSING PIN IS SILENTLY SKIPPED.** `if _pin is None: continue`, commented *"backward-
+      compatible: each field is skipped when absent from the manifest."* **DELETE THE `q97m` LINE FROM
+      `expected_boot.json` AND THE GUARD QUIETLY STOPS CHECKING `q97m`.** **You can disable the guard by
+      removing a line from the file the guard reads, and nothing says a word.** `(0b)` config and `(0c)` board
+      carry the identical pattern. **SILENCE IS A RED — a skipped check is not a passed check.**
+    - **HOLE 2 — THE PIN'S LENGTH DECIDES HOW STRICTLY THE PIN IS CHECKED.** `_cmp_on_pin_len(_fm, _pin)`
+      compares only as far as the pin runs. The pins are full 32-char md5s today, so the check is strict.
+      **TRUNCATE A PIN TO 8 CHARS AND THE CHECK SILENTLY BECOMES AN 8-CHAR PREFIX MATCH.** **THE THING BEING
+      CHECKED CONTROLS HOW HARD IT IS CHECKED.** (Precedent, same file: `(0c)`'s comment records that the
+      8-char `_fmt` truncation was RETIRED for the board field precisely because of this — **the lesson was
+      learned for ONE field and never generalised.**)
+    - **HOLE 3 = ITEM 91** (owner-caught): the guard hashes the REPO file; the engine loads `$RL_Q97M_PKL` →
+      `/home/claude/q97m.pkl` → repo. **Already scoped as F1 of the follow-up.**
+    **ALL THREE ARE ONE SENTENCE: THESE GUARDS CHECK THAT WHAT WE PINNED STILL MATCHES. THEY NEVER CHECK THAT
+    EVERYTHING THAT SHOULD BE PINNED IS PINNED.** That is item 67. **This diff is its worked example.**
+    **DISPOSITION (owner-ruled 2026-07-14): HOLES 1 AND 2 ARE NOT BOLTED ONTO THE FOLLOW-UP** — they are
+    pre-existing, the writer is already carrying a full fence, and bolting them on is the scope creep that has
+    cost this project twice. **THEY GO TO FABLE AS THE WORKED CASE FOR THE COMPLETENESS ARCHITECTURE.**
+    **#76's merge is blocked on A1 (item 92) and CI — NOT on this diff.**
+    TRIGGER: Fable's completeness architecture (item 67). Hole 3: the q97m follow-up, F1.
+
+94. **⚠ ITEM 74's REMEDY IS NOW ITSELF CONDITIONAL — AND NOBODY HAD WRITTEN THAT DOWN.**
+    Item 74 says: *"Once `q97m` is frozen, RE-MEASURE and RECONCILE every guard, anchor and census figure on the
+    frozen build."* **THAT SENTENCE ASSUMES THE FROZEN BUILD IS ENVIRONMENT-STABLE. IT IS NOT.**
+    **CI IS STILL RED.** Three players (Gawn · Goad · Green, all RUC — verified) still move across machines, and
+    **`_iso_dec` is STILL FITTING AT RUNTIME** (one of the **72** isotonic fits the freeze return excluded from
+    A2 by re-scoping it). **So "re-measure on the frozen build" does not yet mean "re-measure on a build whose
+    numbers do not depend on the machine."**
+    **AND ITEM 74 DEPENDS ON A1, WHICH IS CLAIMED, NOT VERIFIED (item 92).** The entire reconcile is *"compare
+    the re-measured figure against the recorded one"* — and **the recorded figures were all measured against
+    `81e48293`**, whose rebuildability is exactly the thing not yet proven.
+    **SO: ITEM 74 CANNOT BE DISCHARGED UNTIL (i) A1 IS PROVEN, (ii) CI IS GREEN — i.e. the residual
+    environment-movable term is FOUND AND FIXED, not just localised — and (iii) the non-AVX512 delta on the FULL
+    board AND THE PICK CURVE is known (does pick 1 still price 3000?).** **The bake blocker has grown a
+    precondition. Record it, so no seat reads "the freeze landed" as "item 74 can now start."**
+    **THE RECONCILE LIST IS DELIBERATELY NOT YET ENUMERATED** (supervisor recommendation, owner-agreed): if P3
+    finds the pick curve moving, the list changes shape and would be written twice.
+    TRIGGER: the q97m follow-up return. **STILL: NO BAKE.**
+
+95. **THE CENSUS RETURN CITES THE WRONG HEAD SHA — CORRECTED HERE.**
+    The return states *"head `7989d21`"*. **`7989d21` IS ITS PARENT — the base it was built on** (seat 5's
+    register v80 push). **The census branch's actual head is `3ca74f3`**, and **every C1/C2/D2/D3 artifact lives
+    in `3ca74f3`.** Verified: `git rev-parse claude/discontinuity-census-measurement-6c9vyb` = `3ca74f3`, parent
+    `7989d21`.
+    **CORE: a return ALWAYS states branch · head git SHA · PR. This one cites a SHA and it is CONFIDENTLY WRONG
+    — which is worse than absent: a seat pinning to `7989d21` would pin to a commit containing NONE of the
+    census work.** The verdict on the census is **UNCHANGED — PRESCREEN PASS** (item 88): the content was
+    measured exactly where it was told to be (store `b0c39d78` · board `81e48293` · engine `2030e5df` · tag
+    `9f8ae76` · Guard 5 PASS · board md5 named beside every figure). **The defect is in the label, not the work.**
+    **Item 88 already carries the CORRECT SHA, so the durable record was never wrong.**
+    ⚠ **THE SUPERVISOR MISSED THIS ON THE FIRST PRESCREEN AND THE OWNER CAUGHT IT ON THE SECOND READING.**
+    **Every prescreen from here checks the cited head SHA against `git rev-parse` — it is one command.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
