@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v99 2026-07-14 (⚠⚠ **FOURTH-PASS AUDIT** (item 110): **EIGHT SUPERSEDED ITEMS WERE UNMARKED — AND ITEM 101 STILL OPENED BY ASSERTING A FACT PROVED FALSE.** Anyone grepping for the determinism cause would have read *'THE CAUSE IS MEASURED'* and stopped. **NOW MARKED IN PLACE AT THEIR OWN TEXT: 74 · 76 · 88 · 90 · 91 · 92 · 98 · 101.** **RULE: WHEN AN ITEM IS SUPERSEDED, MARK IT AT ITS OWN TEXT — A CORRECTION FILED EIGHTY LINES BELOW THE ERROR IS NOT A CORRECTION.** Verified clean: all R98/R99 rulings exist · no duplicate items · the regimes sum to 804 · SSI v1.3 correct · CORE permits strict equality for a store/engine base, so both live directives comply · **and the `rl_model` pin is CONFIRMED DECORATIVE — it is in expected_boot.json and boot_guard never reads it.** ⚠ **STILL UNVERIFIED AND THE PACK LEANS ON IT: the flattery census's 123 players / +19,168 SCAR — the scale comparison for the WHOLE CHAPTER, which no seat-6 eye ever checked.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v100 2026-07-14 (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2605,6 +2605,30 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     the SCALE COMPARISON for the entire chapter (*"the denial is 1.5× larger and points the other way"*) — **and
     NO SEAT-6 EYE HAS EVER CHECKED IT.** **Tagged in the handover's provenance block and in the letter. VERIFY
     IT BEFORE BUILDING ON IT.**
+
+111. **PR #82 — FIX 1 + THE ABSENCE TERM. PRESCREEN: PASS. FENCE HELD. (head `e7d980eb` · board `e6a8e6ef` ·
+    engine `fef5719d` · book `2a2df435`, REBUILT not re-sealed.)** Supervisor-verified: strict descendant of
+    `addef03`; the STORE, `boot_guard`, `bootstrap`, `docs/`, config and the PVC are **ALL UNTOUCHED**; the two
+    files outside the declared fence are **ship_gates OUTPUTS in their standard house locations** (declared,
+    read-only, harmless).
+    **✅ FIX 1 ALONE = +1,171 — REPRODUCES R99.1's FIGURE EXACTLY, now from REAL CODE on a REAL BOARD rather
+    than a monkeypatch overlay. THAT IS AN INDEPENDENT CONFIRMATION, NOT A RE-REPORT.**
+    **✅ G-COHORT: PASS ×3 (1.2651 / 1.2444 / 1.1531 vs hard 1.30) — AND THE `y1` DENOMINATOR IS UNCHANGED AT
+    69,840. THE YOUNG WERE NOT CUT.** The rise is the year-4 NUMERATOR lifting (Fix 1 crediting improvers).
+    **The owner's doctrine held without anyone having to enforce it.**
+    **✅ JAMARRA LANDS AT 484** (owner: 187 too low, ~1,000 too high) · **Ladhams −306** (the 1-game-@97
+    over-price comes out — the owner spotted it from the board) · **PICK 1 = 3000 HELD** · **G-FLOOR IMPROVED
+    (+2,230)** · **path-additivity EXACTLY 0** · **double-charge overshoots: 0.**
+    **Three narrowest margins (OQ-B): A-BONT 2.6% · G-COHORT y4 2.7% · y5 4.3%.**
+    **⚠ PAIR 3 NARROWED ON ITS OWN: 13.7% → 10.9%.** Still a standing failed read, but **Fix 1 moved it the
+    RIGHT WAY without anyone aiming at it** — mild support for the diagnosis that pair 3 is a PRICING defect
+    (item 107), not an evidence one.
+    **⚠ `w(1) = 0.147`, NOT 0 — the build flagged it honestly.** The 0→1 jump is cut **6.8×** (1.0 → 0.147).
+    **The cameo problem is ~85% solved, not 100%.** Recorded, not hidden.
+    **⚠ MERGE-TIME CONFLICT FLAGGED BY THE BUILD ITSELF:** `expected_boot.json` is shared with the determinism
+    job (both re-pin `board` + `engine_head`). **This is exactly why the merge line must run SEQUENTIALLY:
+    `#81 → #82 → determinism`.**
+    **⇒ THE BUILD FOUND A DEFECT IN ITS OWN WORK AND SAID SO: BAILEY SMITH. SEE R100.11.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
