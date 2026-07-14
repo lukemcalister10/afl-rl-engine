@@ -23,7 +23,7 @@
 ### ⚠ **AND ONE BLOCK IS NEW (amendment 2, above): the guard's MEASUREMENTS ARE NOT YET FACTS** — every
 ### figure in this registry was measured in an incognito sandbox, not the bake environment, and the
 ### cross-environment drift is HALF G-COHORT's margin. **CONSISTENT, NOT VERIFIED. NO BAKE until the
-### post-freeze reconcile** (register item 74; machine-readable in `acceptance_v1.12.json`).
+### post-freeze reconcile** (register item 74; machine-readable in `acceptance_v1_12.json`).
 ###
 ### ⚠ G-BOOK IS FILED **INCOMPLETE, AND KNOWINGLY SO.** The book records `engine_head_md5` (of
 ### `_merged_recover.py` ONLY), `store_md5` and `config_sha256`. It does **NOT** record `rl_model.py` —
@@ -99,9 +99,9 @@ pricing curve is re-derived. A pair-3 failure is EXPECTED until the pricing curv
 
 ## PART 3 (flags) + PART 4 — carry VERBATIM from v1.8.
 
-## CHANGE DISCIPLINE — verbatim from v1.8. **DONE AT THIS FILING:** `acceptance_v1.12.json` REGENERATED ·
+## CHANGE DISCIPLINE — verbatim from v1.8. **DONE AT THIS FILING:** `acceptance_v1_12.json` REGENERATED ·
 ## both bumped · **v1.11 + acceptance_v1.11.json ARCHIVED** · manifest pointer updated to v1.12.
-## **NEXT EDITOR: regenerate `acceptance_v1.13.json`, bump both, archive v1.12, update the manifest pointer.**
+## **NEXT EDITOR: regenerate `acceptance_v1_13.json`, bump both, archive v1.12, update the manifest pointer.**
 
 
 ## PART 5 — LAWS (NEW at v1.12)

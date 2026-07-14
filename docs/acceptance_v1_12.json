@@ -1,7 +1,7 @@
 {
  "version": "v1.12",
  "date": "2026-07-14",
- "authority": "CONSTRAINTS_v1.12.md (human-readable master; regenerate this file on any change there; status strings use underscores)",
+ "authority": "docs/CONSTRAINTS_v1_12.md (human-readable master; regenerate this file on any change there; status strings use underscores). NAMING: repo filenames use UNDERSCORES (CONSTRAINTS_v1_12.md, acceptance_v1_12.json) - a pointer written with dots (CONSTRAINTS_v1.12.md) RESOLVES TO NOTHING.",
  "regenerated_from": "CONSTRAINTS_v1.12 (delta: L-SYMMETRY + L-SAGE-FADE filed; G-Y0 -> ADVISORY and construction flagged ill-posed; A-FADE basis approved + provenance UNVERIFIED)",
  "numeraire": {
   "law": "pick_1 == 3000 (owner: 'Rebase, 3000 is it.', register v30) \u2014 permanent",

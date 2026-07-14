@@ -12,7 +12,7 @@
 | **DECISIONS** | **v100** | 0 | rulings + owner to-dos. ⚠ **ALSO READ v98 ITSELF — the owner's verbatim words** |
 | **OPEN_ITEMS_REGISTER** | **read its OWN header** ⚠ | 1 | ⚠ **THE DURABLE LOG. IT IS THE REAL RECORD OF THE OVERNIGHT SESSION. READ IT.** |
 | **CONSTRAINTS** | **v1.12** | 1 | ONLY when judging a board. **L-SYMMETRY + L-SAGE-FADE are NEW** |
-| **acceptance_v1.12.json** | **v1.12** | 1 | ONLY when judging a board — **assert the JSON, never the prose** |
+| **acceptance_v1_12.json** | **v1.12** | 1 | ONLY when judging a board — **assert the JSON, never the prose** |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | when touching the store or a derived artifact. ⚠ **still at repo ROOT — move it into `docs/`** |
 | ROADMAP · UNRESOLVED · CHANGELOG | — | 2 | on demand |
 
