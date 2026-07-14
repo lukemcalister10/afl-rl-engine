@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v80 2026-07-14 (⚠⚠ **THE SUPERVISOR WAS CHASING THE WRONG MECHANISM** (item 68): **JAMARRA'S nqual NEVER CROSSES 4.** The nqual cliff never fires for him. His 1,009 -> 187 is `_lvlcurr`: a 3-game 26.0 cameo carrying **35% of his level estimate** because KEY decay is 0.40/yr and he MISSED 2025 — so 3 games outweigh a 22-game season. `_lvlcurr` has NO small-sample damping; `_par_prior` three lines away HAS one. **THE OWNER CALLED THE CIRCLING BEFORE I DID.** New doctrine (item 69): **HARD MECHANISMS ARE THE DISEASE — every transition must be CONTINUOUS.** Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v81 2026-07-14 (**ITEM 61 CLOSED — the captain curve's DIALS ARE SET** (BAR 105.0 · M 109.5 · W 1.85 · G 1.00; credit = level − 109.66 asymptotically; Gawn 16.34 · Bont 9.85 · Daicos 4.96; LOCKED, NOT WIRED). **R98.9 — the screening rule closes at the seam; the docs/-only TOKEN PEN is RESTORED.** **R98.10 — THE HANDOVER EXCEPTION to the freshness check**, with a BINDING directional guard. Plus the pack correction ledger (item 72). Seat-5 pen; owner-screened.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1501,7 +1501,8 @@
     with an obituary or re-run the trajectory on the CURRENT engine and put the curve in front of the
     owner. **No owner action required until that check is done.**
 
-61. **THE CAPTAINCY LAW — OWNER-RULED (2026-07-13). SHAPE APPROVED; DIALS NOT YET SET.**
+61. **⚠ SUPERSEDED — DIALS SET 2026-07-14. SEE "ITEM 61 — CLOSED" BELOW.**
+    **THE CAPTAINCY LAW — OWNER-RULED (2026-07-13). SHAPE APPROVED; DIALS NOT YET SET.**
     OWNER, VERBATIM: *"I agree with your captaincy idea. Let's implement it across the board — any scores
     projected into that range receive that bonus. Current and future. And looking back into the past (for
     valuations etc. and the walk-forward book) they are assigned it."*
@@ -1700,6 +1701,75 @@
     Acceptance: Jamarra's path smooth · the 1-season band is not the only negative one · Blakey and
     English same sign · the improvers survive · **every guard on a REBUILT book** · and a full continuity
     sweep naming any player who still steps.
+
+## ITEM 61 — CLOSED 2026-07-14 (THE CAPTAIN CURVE'S DIALS ARE SET)
+Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and this is the only list.**
+**APPROVED 2026-07-14** (owner: *"Approved on the captaincy. That's the curve."*):
+`credit(L) = G · ∫[BAR → L] P(a) da`, P logistic. **BAR 105.0 · M 109.5 · W 1.85 · G 1.00.**
+- Credit = **projected level − 109.66** once clear of the knee (the curve's own asymptote,
+  `M + W·ln(1 + e^((BAR−M)/W))` = 109.656). ⚠ **NOT 107.4** — that is `CAPT_THRESH`, the bar of the LIVE
+  SATURATING curve this one REPLACES, and it was carried into the prose by mistake. See item 71.
+- Per-point rate climbs 0.10 → 0.50 → 1.00 and reaches **1:1 at 120** — **0.997**, not "exactly."
+  A logistic approaches 1 and never touches it. **Do not gate on "exactly."**
+- **Gawn 16.34 · Bont 9.85 · Daicos 4.96** — gaps **6.49 / 4.89** against the owner's read of 6.5 / 5.0.
+- **LOCKED, NOT WIRED.** Wiring requires a REBUILT + RE-SEALED book (**G-BOOK**) — **and G-BOOK is
+  knowingly INCOMPLETE**: the book's stamp does not cover `rl_model.py`, **the file `capt_prem` lives in**.
+  **Close that gap first or you make the one change the guard cannot see.**
+
+71. **R98.9 / R98.10 — THE PEN, AND THE HANDOVER EXCEPTION (owner-ruled 2026-07-14).**
+    **R98.9 — R98.8 CLOSES AT THE SEAM.** The screening rule was aimed at seat 5 specifically and expires
+    at the seat-5 → Fable handover. **The supervisor's docs/-only TOKEN PEN is RESTORED.**
+    **R98.10 — THE HANDOVER EXCEPTION TO THE FRESHNESS CHECK.** Owner-worded: *"on disagreement, the repo
+    wins, OTHER THAN at seat handover. The supervisor should file the pack they receive to the repo, and
+    then keep it updated in the repo."* The incoming seat reads the seam pack from **Project knowledge**,
+    **FILES it to the repo as its first act** (superseded versions to `docs/archive/`), and thereafter the
+    repo is home and wins as before.
+    **⚠ DIRECTIONAL GUARD (BINDING):** compare PK against the repo **doc by doc, by header version**. PK
+    ahead or equal ⇒ file and proceed. **PK BEHIND on ANY doc ⇒ HALT and tell the owner.** *(Without this,
+    a missed sync no longer merely misleads a seat — it lets that seat write OLD docs over NEWER ones.
+    That is the stale-copy disease this project exists to prevent.)*
+    **SCOPE: pack docs ONLY.** SHAs, board/store md5s, the register, returns, code and artifacts are NEVER
+    read from Project knowledge. A seat verifies state live and cites the SHA it fetched. The exception
+    expires the moment the pack is filed.
+    ⚠ **NEITHER RULING IS IN CORE YET.** CORE v2.5's rule 8 and its FRESHNESS CHECK (*"disagree ⇒ the repo
+    wins"*) do not describe the rules in force. **A seat holding CORE v2.5 in full and obeying it literally
+    would throw away the newer pack it was just handed.** The **CORE v2.6 fold is FABLE'S FIRST PEN JOB**,
+    by owner ruling — a doctrine change to a binding Tier-0 doc is authored by the seat that will live
+    under it, not at the end of a long window.
+
+72. **THE PACK CORRECTION LEDGER (owner audit, 2026-07-14) — recorded so no seat reintroduces these.**
+    An independent owner-side audit of the seven screened pack docs found **six string-level defects** and
+    **two unlisted rulings**. Every STATE claim was verified rather than trusted and **all of it held**:
+    main `7989d21`, tag `9f8ae76`, board `81e48293` **recomputed**, store `340a7a32` / board `3dc19fbb` /
+    engine `2030e5df` / rl_model `952ddb3d` all exact, and **the one-SCAR claim proved by diffing all 804
+    active rows — EXACTLY ONE differs (`lachlan-bramble 92 → 93`).**
+    The six defects, all transcription, none substantive:
+    (a) the captain-curve credit line quoted **107.4** (the RETIRED curve's `CAPT_THRESH`) instead of the
+        approved curve's asymptote **109.66**;
+    (b) "1:1 **exactly** at 120" — a logistic never touches 1 (it is 0.997). **Do not gate on it.**
+    (c) CONSTRAINTS v1.11's CHANGE DISCIPLINE line still said *"regenerate acceptance_v1.9.json … archive
+        v1.8"* — **a pack-filing build following it literally would have left v1.10 live beside v1.11: a
+        lookalike, in the registry that forbids lookalikes;**
+    (d)/(e) CONSTRAINTS Part 1 / Part 2 headings cited v1.8/v1.9 provenance for content carried from v1.10
+        (substance verified correct — citation only);
+    (f) `acceptance_v1.11.json` named **v1.10** as its authority, and **G-BOOK was off-schema** — it
+        carried `"binding": true` (a field nothing else uses) and a prose sentence where the status enum
+        belongs. **The cold auditor is seeded with this JSON and told to score the guards against it;
+        G-BOOK was the one guard it could not classify.** Fixed: `status: BINDING`, measurement moved to
+        its own field, `known_gap` untouched.
+    **AND A REAL ONE, in the SSI:** `SINGLE_SOURCE_INVARIANT.md` gained a BINDING discipline rule
+    (**SILENCE IS A RED**) and **the header never moved** — leaving **two materially different documents
+    both calling themselves v1.2**, while the file's own changelog still read *"No rule changed."*
+    **In the document that forbids lookalikes.** Bumped to **v1.3**.
+
+73. **FOR FABLE — TWO BINDING LAWS ARE ABSENT FROM CONSTRAINTS.**
+    **THE CAPTAINCY LAW** (item 61: credit is a pure function of projected level, applied identically
+    everywhere a level is priced — current season, every future season in the peak band, and every
+    historical season in the walk-forward book; no player-specific exceptions) and **THE SMOOTHNESS LAW**
+    (R98.2: a valuation must be CONTINUOUS in its inputs; no player's value may jump because a counter
+    ticked over; propose no threshold — every transition is a curve).
+    **Both are BINDING. Both will govern every fix in the next chapter. Neither is in the registry.**
+    The owner ruled the wording deserves a fresh seat, not a transcription pass. **They are Fable's.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
