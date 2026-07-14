@@ -1,0 +1,209 @@
+{
+ "BASE": {
+  "label": "BASE",
+  "named": {
+   "bont": 3482,
+   "reid": 3594,
+   "sanders": 3960,
+   "duursma": 4339,
+   "zeke": 2692,
+   "butters": 5688,
+   "holmes": 6150
+  },
+  "floor_breaches": [
+   [
+    "Billy Cootee",
+    87,
+    214
+   ],
+   [
+    "Angus Anderson",
+    122,
+    131
+   ],
+   [
+    "Sam Davidson",
+    87,
+    126
+   ],
+   [
+    "Aidan Johnson",
+    86,
+    100
+   ],
+   [
+    "Jamarra Ugle-Hagan",
+    187,
+    257
+   ],
+   [
+    "Conor Stone",
+    84,
+    92
+   ],
+   [
+    "Jacob Wehr",
+    21,
+    26
+   ],
+   [
+    "Hunter Clark",
+    54,
+    85
+   ],
+   [
+    "Nicholas Coffield",
+    52,
+    81
+   ],
+   [
+    "Nathan Broad",
+    11,
+    14
+   ],
+   [
+    "Luke McDonald",
+    53,
+    81
+   ],
+   [
+    "Jack Martin",
+    96,
+    107
+   ],
+   [
+    "Jake Melksham",
+    50,
+    71
+   ]
+  ],
+  "convex": {
+   "<=21": 202797,
+   "22-24": 190622,
+   "25-26": 115005
+  },
+  "cohort": {
+   "avg": {
+    "1": 44042.6,
+    "2": 51242.3,
+    "3": 54751.6,
+    "4": 60113.0,
+    "5": 60472.9,
+    "6": 62206.6
+   },
+   "denom": 44042.6,
+   "ratios": {
+    "4": 136.5,
+    "5": 137.3,
+    "6": 141.2
+   },
+   "breach": true
+  },
+  "gy0": {
+   "y1_mean": 620.3,
+   "y2_mean": 721.7,
+   "y2_gt_y1": true
+  }
+ },
+ "F1+F2+F3": {
+  "label": "F1+F2+F3",
+  "named": {
+   "bont": 3482,
+   "reid": 3587,
+   "sanders": 3863,
+   "duursma": 4339,
+   "zeke": 2692,
+   "butters": 5688,
+   "holmes": 6150
+  },
+  "floor_breaches": [
+   [
+    "Billy Cootee",
+    87,
+    214
+   ],
+   [
+    "Angus Anderson",
+    122,
+    131
+   ],
+   [
+    "Sam Davidson",
+    87,
+    126
+   ],
+   [
+    "Aidan Johnson",
+    86,
+    100
+   ],
+   [
+    "Conor Stone",
+    84,
+    92
+   ],
+   [
+    "Jacob Wehr",
+    21,
+    26
+   ],
+   [
+    "Hunter Clark",
+    54,
+    85
+   ],
+   [
+    "Nicholas Coffield",
+    52,
+    81
+   ],
+   [
+    "Nathan Broad",
+    11,
+    14
+   ],
+   [
+    "Luke McDonald",
+    53,
+    81
+   ],
+   [
+    "Jack Martin",
+    96,
+    107
+   ],
+   [
+    "Jake Melksham",
+    50,
+    71
+   ]
+  ],
+  "convex": {
+   "<=21": 202273,
+   "22-24": 190982,
+   "25-26": 117889
+  },
+  "cohort": {
+   "avg": {
+    "1": 44042.6,
+    "2": 51336.6,
+    "3": 54871.4,
+    "4": 59985.1,
+    "5": 61564.3,
+    "6": 62956.1
+   },
+   "denom": 44042.6,
+   "ratios": {
+    "4": 136.2,
+    "5": 139.8,
+    "6": 142.9
+   },
+   "breach": true
+  },
+  "gy0": {
+   "y1_mean": 620.3,
+   "y2_mean": 723.1,
+   "y2_gt_y1": true
+  }
+ }
+}

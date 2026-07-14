@@ -1,0 +1,100 @@
+# raw measurement logs (base vs fixes)
+## board+ablation
+[BASE] ev/F board-md5=cb0e0528
+[F1] ev/F board-md5=2c7eb319
+[F2] ev/F board-md5=b14b8009
+[F3] ev/F board-md5=e2371ef2
+[F1+F2+F3] ev/F board-md5=c72c2033
+
+=== PER-FIX EFFECT (ev/F, board vs BASE 3dc19fbb store 340a7a32) ===
+F1         movers= 278 (up 166, down 112) netSCAR=+1171
+F2         movers=  57 (up 51, down 6) netSCAR=+4675
+F3         movers=  86 (up 30, down 56) netSCAR=-2612
+F1+F2+F3   movers= 335 (up 205, down 130) netSCAR=+4171
+
+=== A2 NET SCAR BY SEASON BAND (nseas 1..9) ===
+band   n_players     F1        F2        F3       ALL
+  1       280       -100        +0        +0      -100
+  2       200         -3        +0        +0        -3
+  3       166        +60        +0        +0       +60
+  4       118       -199     +1424     -1314      +242
+  5       112       -828      +944      -578       +42
+  6       114        -75     +1239      -641      +861
+  7        94      +1501      +861       -25     +2034
+  8        93       +119      +187       -55      +275
+  9       386       +696       +20        +1      +760
+
+=== A1 JAMARRA career-game sweep ===
+BASE       60g:996 64g:1009 67g:1009 70g:187 74g:142
+F1         60g:996 64g:1009 67g:1006 70g:466 74g:162
+F2         60g:996 64g:1009 67g:1009 70g:187 74g:142
+F3         60g:996 64g:1009 67g:1009 70g:187 74g:142
+F1+F2+F3   60g:996 64g:1009 67g:1006 70g:466 74g:162
+
+=== A3 Blakey/English/Wilmot/Berry & A4 improvers (ev/F) ===
+player                     BASE       F1       F2       F3      ALL
+Nick Blakey                3330     3328     3330     3330     3328
+Timothy English            3132     3251     3132     3132     3251
+Darcy Wilmot               4237     3544     4237     3764     3751
+Joe Berry                  1321     1328     1321     1321     1328
+Tristan Xerri              6251     6251     6251     5934     5934
+Max Holmes                 6150     6150     6150     6150     6150
+Lachlan Ash                5043     5024     5043     5028     5024
+Bailey Smith               5243     5243     5243     5243     5203
+
+DONE_measure
+
+## rest (band/A1-decomp/A6-named)
+=== A2b BAND-1 / FIRST-SEASON MOVER DETAIL (F1+F2+F3 vs BASE) ===
+band1: total=280 movers=24 up=17 down=7 net=-100
+debut>=2025: total=222 movers=24 up=13 down=11 net=-292
+  down movers: [('Xavier Lindsay', 1445, 1336), ('Sam Marshall', 1125, 1062), ('Josh Dolan', 445, 393), ('Alix Tauru', 1693, 1644), ('Harvey Langford', 2525, 2509), ('Riley Bice', 422, 406), ('Sam Lalor', 3483, 3468), ('Jobe Shanahan', 1606, 1592)]
+
+=== A1 JAMARRA level-vs-price decomposition (F1) ===
+  [BASE] total  level(_lvl_eff)  ev/F
+       60g  L= 60.75  ev/F=996
+       64g  L= 61.07  ev/F=1009
+       67g  L= 61.26  ev/F=1009
+       70g  L= 48.75  ev/F=187
+       74g  L= 44.00  ev/F=142
+  [F1] total  level(_lvl_eff)  ev/F
+       60g  L= 60.75  ev/F=996
+       64g  L= 61.16  ev/F=1009
+       67g  L= 61.40  ev/F=1006
+       70g  L= 54.56  ev/F=466
+       74g  L= 44.72  ev/F=162
+
+=== A6 CONTINUITY: named players, sweep 2026 games 0/3/6/9/12 ===
+  --- BASE ---
+    Jamarra Ugle-Hagan     [1009, 187, 151, 119, 105] max3gstep=81% (0, 3, 1009, 187)
+    Nick Blakey            [3457, 3434, 3404, 3403, 3343] max3gstep=2% (9, 12, 3403, 3343)
+    Timothy English        [4343, 4089, 3509, 3132, 3032] max3gstep=14% (3, 6, 4089, 3509)
+    Tristan Xerri          [5749, 5457, 5414, 5095, 6311] max3gstep=19% (9, 12, 5095, 6311)
+    Max Holmes             [5895, 5769, 5927, 5953, 6133] max3gstep=3% (9, 12, 5953, 6133)
+    Bailey Smith           [4513, 4692, 4800, 4963, 5162] max3gstep=4% (9, 12, 4963, 5162)
+    Harley Reid            [3176, 3234, 3423, 3492, 3485] max3gstep=6% (3, 6, 3234, 3423)
+    Marcus Bontempelli     [4753, 4188, 3948, 3704, 3494] max3gstep=12% (0, 3, 4753, 4188)
+    Darcy Wilmot           [2802, 3025, 3233, 3368, 4146] max3gstep=19% (9, 12, 3368, 4146)
+  --- F1+F2+F3 ---
+    Jamarra Ugle-Hagan     [1006, 466, 196, 119, 105] max3gstep=58% (3, 6, 466, 196)
+    Nick Blakey            [3457, 3334, 3395, 3360, 3340] max3gstep=4% (0, 3, 3457, 3334)
+    Timothy English        [4343, 4184, 3868, 3251, 3077] max3gstep=16% (6, 9, 3868, 3251)
+    Tristan Xerri          [5749, 5573, 5414, 5355, 6041] max3gstep=11% (9, 12, 5355, 6041)
+    Max Holmes             [5854, 5701, 5745, 5929, 6056] max3gstep=3% (6, 9, 5745, 5929)
+    Bailey Smith           [4494, 4533, 4796, 4869, 5159] max3gstep=6% (9, 12, 4869, 5159)
+    Harley Reid            [3176, 3202, 3405, 3455, 3481] max3gstep=6% (3, 6, 3202, 3405)
+    Marcus Bontempelli     [4753, 4188, 3948, 3704, 3494] max3gstep=12% (0, 3, 4753, 4188)
+    Darcy Wilmot           [2802, 2788, 3195, 3291, 3721] max3gstep=13% (3, 6, 2788, 3195)
+
+## A6 board-wide
+BASE steppers>20%: 243   F1+F2+F3 steppers>20%: 236
+worst BASE: [('Milan Murdock', 98), ('Harry Edwards', 93), ('Ned Moyle', 90), ('Marcus Herbert', 89), ('Jy Farrar', 89), ('Mitchell Hinge', 84), ('Rhyan Mansell', 83), ('Cooper Trembath', 82)]
+worst ALL : [('Milan Murdock', 98), ('Ned Moyle', 90), ('Marcus Herbert', 89), ('Jy Farrar', 88), ('Harry Edwards', 83), ('Cooper Trembath', 82), ('Nick Madden', 82), ('Cooper Harvey', 81)]
+ALL steppers list: [('Milan Murdock', 98), ('Ned Moyle', 90), ('Marcus Herbert', 89), ('Jy Farrar', 88), ('Harry Edwards', 83), ('Cooper Trembath', 82), ('Nick Madden', 82), ('Cooper Harvey', 81), ('Billy Dowling', 80), ('Joel Fitzgerald', 76), ('Archie Roberts', 75), ('James Borlase', 74), ('Max Hall', 73), ('Peter Ladhams', 73), ('Rhyan Mansell', 72), ('Jack Buller', 71), ('Luker Kentfield', 70), ('Hugo Hall-Kahan', 70), ('Harrison Jones', 70), ('Mitchell Hinge', 70), ('Kye Annand', 69), ('Dante Visentini', 69), ("Hudson O'Keeffe", 68), ('Deven Robertson', 68), ('Nick Bryan', 68), ('Shadeau Brain', 67), ('Brayden Cook', 67), ('Lachlan McAndrew', 67), ('Tom Edwards', 65), ('Max Heath', 65), ('Riley Bice', 64), ('Patrick Retschko', 64), ('Liam Fawcett', 64), ('Vigo Visentini', 64), ('Cooper Lord', 63), ('Sam Butler', 63), ('Arthur Jones', 62), ('Jai Culley', 62), ('Edward Allan', 61), ('Cody Weightman', 61), ('Kane McAuliffe', 60), ('Riley Garcia', 60), ('Jordan Croft', 59), ('Zane Zakostelsky', 59), ('Toby Conway', 59), ('Nick Murray', 59), ('Caiden Cleary', 58), ('Matt Carroll', 58), ('Tylar Young', 58), ('Jamarra Ugle-Hagan', 58), ('Mitchell Edwards', 57), ('George Stevens', 57), ('Jack Whitlock', 55), ('Jayden Nguyen', 55), ("Liam O'Connell", 55), ('Henry Smith', 55), ('Phoenix Gothard', 54), ('Tom Anastasopoulos', 54), ('Harry Barnett', 54), ('Jack Carroll', 54), ('Lachlan Smith', 53), ('Tyrell Dewar', 53), ('Liam McMahon', 53), ('Tom Blamires', 52), ('Mitchell Knevitt', 52), ('Tom Doedee', 51), ('Wil Parker', 51), ('Charlie West', 50), ('Henry Hustwaite', 50), ('Callum M. Brown', 50), ('Lucca Grego', 49), ('Zac Banch', 49), ('Billy Wilson', 49), ('Lucas Camporeale', 48), ('Luke Kennedy', 48), ('Lachlan Gulbin', 48), ('Harrison Ramm', 48), ('Clay Hall', 48), ('Campbell Gray', 48), ('Jed Adams', 48), ('Karl Worner', 48), ('Lewis Young', 48), ('Taylor Goad', 47), ('Matt Cottrell', 47), ('Zeke Uwland', 46), ('Lachie Jaques', 46), ('Jake Rogers', 46), ('William McCabe', 46), ('Jacob Konstanty', 46), ('Max Ramsden', 46), ('Malcolm Rosas', 46), ('Buku Khamis', 46), ('Billy Cootee', 45), ('Will Lorenz', 45), ('Ollie Lord', 45), ('Jacob Newton', 44), ('James Leake', 44), ('Harvey Thomas', 44), ('Elijah Tsatas', 44), ('Hugo Ralphsmith', 44), ('Charlie Edwards', 43), ('Tom Hanily', 43), ('Max Gruzewski', 43), ('Josh Lindsay', 42), ('Tew Jiath', 42), ('Josh Draper', 42), ('Brandon Walker', 42), ('Jagga Smith', 41), ('Corey Warner', 41), ('Zach Reid', 41), ('Ewan Mackinlay', 40), ('Angus Hastie', 40), ('Jedd Busslinger', 40), ('Connor Budarick', 40), ('Cooper Simpson', 39), ('Bodie Ryan', 39), ('Josh Sinn', 39), ('James Tunstill', 39), ('Francis Evans', 39), ('Harry Dean', 38), ('Hugh Bond', 38), ('Bailey Macdonald', 38), ('Oscar Steene', 38), ('Sandy Brock', 38), ("Nathan O'Driscoll", 38), ('Harry Sharp', 38), ('Tyler Brockman', 38), ('Will Hayes', 37), ('Riley Hardeman', 37), ('Hugh Davies', 37), ('Josh Goater', 37), ('Jake Riccardi', 37), ('Oscar Adams', 36), ('Wade Derksen', 36), ('Conor Stone', 36), ('Josaia Delana', 35), ('Joe Richards', 35), ('Malakai Champion', 34), ('Finnbar Maley', 34), ('Toby Murray', 34), ('Kaleb Smith', 34), ('Luke Pedlar', 34), ('Jacob Farrow', 33), ('Josh Lai', 33), ('Will McLachlan', 33), ('Harvey Harrison', 33), ('Luke Nankervis', 33), ('Liam Henry', 33), ('Cooper Duff-Tytler', 32), ('Alex Dodson', 32), ('Ashton Moir', 32), ('Jakob Ryan', 32), ('Isaac Keeler', 32), ('Willem Duursma', 31), ('Cody Curtin', 31), ('Mitch Zadow', 31), ('Jesse Dattoli', 31), ('Wil Dawson', 31), ('Robert Hansen', 31), ('Rhett Bazzo', 31), ('Jackson Mead', 31), ('Isaac Cumming', 31), ('Paddy Cross', 30), ('Jasper Alger', 30), ('Tom Cochrane', 30), ('Michael Sellwood', 30), ('Elijah Hewett', 30), ('Jye Amiss', 30), ('Jeremy Sharp', 30), ('Lukas Cooke', 29), ('Matt Whitlock', 29), ('Matthew Jefferson', 29), ('Toby McMullin', 29), ('Darcy Fort', 29), ('Corey Wagner', 29), ('Thomas Burton', 28), ('Leo Lombard', 28), ('Harrison Oliver', 28), ('Cody Angove', 28), ('Will Edwards', 28), ('Jackson Archer', 28), ('Bodhi Uwland', 28), ('Braeden Campbell', 28), ('Bailey Laurie', 28), ('Shannon Neale', 28), ('Maurice Rioli', 28), ('Bailey J. Williams', 28), ('Harvey Gallagher', 27), ('Logan McDonald', 27), ('Lachlan Sholl', 27), ('Oliver Hannaford', 26), ('Joseph Fonti', 26), ('Bruce Reville', 26), ('Anthony Caminiti', 26), ('Josh Gibcus', 26), ('Alex Davies', 26), ('Toby Bedford', 26), ('Lloyd Meek', 26), ('Charlie Banfield', 25), ('Cooper Hynes', 25), ('Sam Davidson', 25), ('Archer Reid', 25), ('Mykelti Lefau', 25), ('Jack Hutchinson', 25), ('Blake Howes', 25), ('Jaxon Prior', 25), ('Murphy Reid', 24), ('Tom Gross', 24), ('Aidan Johnson', 24), ('Harvey Johnston', 24), ('Oliver Wiltshire', 24), ('Lawson Humphries', 24), ('Aaron Cadman', 24), ('Daniel Turner', 24), ('Campbell Lake', 23), ('Bo Allan', 23), ('Rhys Unwin', 23), ('Archer Day-Wicks', 23), ('Sam Clohesy', 23), ('Lewis Hayes', 23), ('Campbell Chesser', 23), ('Jesse Motlop', 23), ('Joel Jeffrey', 23), ('Latrelle Pickett', 22), ('Jack Ison', 22), ('Shaun Mannagh', 22), ('Hugo Garcia', 22), ('Liam Reidy', 22), ('Heath Chapman', 22), ('Matthew Flynn', 22), ('Jack Dalton', 21), ('Angus Anderson', 21), ('Steely Green', 21), ('Zac Taylor', 21), ('Will Brodie', 21), ('Tyler Sonsie', 20)]
+A6BOARD_DONE
+
+## l3 official base (cohort calibration)
+MODE base | class sizes {2014: 76, 2015: 67, 2016: 76, 2017: 75, 2018: 78, 2019: 64, 2020: 61}
+  avg class-sum by t: {1: 44042.6, 2: 51242.3, 3: 54751.6, 4: 60113.0, 5: 60472.9, 6: 62206.6} | denom=min(t1,t2)=44043 (year-1)
+  ratios vs denom: t4=136.5% t5=137.3% t6=141.2% (hard 130%; guide 120-125%)
+  GATE: BREACH {4: True, 5: True, 6: True}
