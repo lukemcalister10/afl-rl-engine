@@ -49,3 +49,7 @@ fi
 if [ -f "$ROOT/run_panel.sh" ]; then echo "--- run_panel.sh tail (10-panel; confirm 10/10) ---"; (cd "$ROOT" && bash run_panel.sh 2>&1 | grep -v Warning | tail -4); fi
 echo "===================================="
 echo "VERDICT: $pass PASS / $fail FAIL  =>  $([ "$fail" = 0 ] && echo RESTORE-VERIFY PASS || echo RESTORE-VERIFY FAIL)"
+# SUITE HYGIENE 2026-07-13: the EXIT CODE is the authority, not the printed verdict string. This script
+# intentionally runs ALL chk()s and tallies (so a bare `set -e` — which would abort on the first failure
+# and hide the report — is deliberately NOT used); instead a non-zero fail count exits non-zero here.
+exit $(( fail > 0 ? 1 : 0 ))
