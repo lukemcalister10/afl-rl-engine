@@ -10,7 +10,7 @@
 | **CORE** | **v2.5** | 0 | in full — BINDING. ⚠ **v2.6 IS YOUR FIRST PEN JOB** (see below) |
 | **HANDOVER** | **rev137** | 0 | state + the action order — **addressed to FABLE** |
 | **DECISIONS** | **v100** | 0 | rulings + owner to-dos. ⚠ **ALSO READ v98 ITSELF — the owner's verbatim words** |
-| **OPEN_ITEMS_REGISTER** | **v96** | 1 | ⚠ **THE DURABLE LOG. IT IS THE REAL RECORD OF THE OVERNIGHT SESSION. READ IT.** |
+| **OPEN_ITEMS_REGISTER** | **read its OWN header** ⚠ | 1 | ⚠ **THE DURABLE LOG. IT IS THE REAL RECORD OF THE OVERNIGHT SESSION. READ IT.** |
 | **CONSTRAINTS** | **v1.12** | 1 | ONLY when judging a board. **L-SYMMETRY + L-SAGE-FADE are NEW** |
 | **acceptance_v1.12.json** | **v1.12** | 1 | ONLY when judging a board — **assert the JSON, never the prose** |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | when touching the store or a derived artifact. ⚠ **still at repo ROOT — move it into `docs/`** |
@@ -48,7 +48,7 @@ sums. If it is not localised, a declared tolerance is the answer — and that is
   **provenance UNVERIFIED**.
 - **DECISIONS → v100:** R100.1–R100.9.
 - **HANDOVER → rev137**, addressed to **FABLE**. **Correction ledger: THIRTEEN.**
-- **OPEN_ITEMS_REGISTER → v96:** items 96–108. ⚠ **Items 105–106 REOPEN item 101 — a false mechanism the
+- **OPEN_ITEMS_REGISTER:** items 96–109. ⚠ **NEVER PIN ITS VERSION IN A DOCUMENT — THE PEN MOVES IT ON EVERY PUSH.** ⚠ **Items 105–106 REOPEN item 101 — a false mechanism the
   supervisor registered as measured fact.**
 - **PR #76 closed (superseded). PR #81 opened** (`4de05f0a`): the q97m freeze + follow-up + **CI's board-md5
   print, which CI had never had.**
