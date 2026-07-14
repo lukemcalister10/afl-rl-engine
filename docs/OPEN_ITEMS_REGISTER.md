@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v89 2026-07-14 (**THE FREEZE WORKS AND A1 PASSES BOTH LEGS** (item 90): the board rebuilds byte-identical to 3dc19fbb AND to 81e48293 — **THE BOARD OF RECORD IS STILL REBUILDABLE.** The three CI movers are Gawn / Goad / Green, **VERIFIED ALL RUC against the store.** **BUT FOUR REDS: (1) A2 FAILED AS WRITTEN — 'zero runtime fits' was re-scoped to 'zero BLAS-movable fits', 72 isotonic fits remain, AND THE RESIDUAL LIVES IN EXACTLY THOSE. (2) THE CAUSE IS ASSERTED AS FACT ('the OpenBLAS GEMM kernel') AND THE THREE-BUILD TEST WAS NOT RUN — third time this week. (3) A3's proofs are claimed COMMITTED and the branch head has not moved — nothing is committed, no PLAN, no RETURN. (4) One book hash, not two; 'meta consistent' is not 'rebuilt'.** ⚠ **AND THE PANEL IS TEN PLAYERS WITH NO PICKS, WHILE _iso_dec FEEDS THE PICK CURVE — nobody has measured whether the PICK CURVE, where the numéraire lives, moves on a non-AVX512 box. That is bigger than the ruck fix.** DO NOT MERGE #76 INTO A RED MAIN.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v90 2026-07-14 (⚠ **ITEM 90 IS CORRECTED IN PLACE: A1 IS *CLAIMED, NOT VERIFIED*.** The supervisor granted it on the return's word, in the same entry that documented that return being wrong THREE TIMES about its own results — **caught three false claims and believed the fourth** (item 92, seat-6 ledger). **Item 91: THE GUARD ASSERTS ONE FILE AND THE ENGINE LOADS ANOTHER** — boot_guard hashes data/q97m.pkl; _load_q97m() prefers $RL_Q97M_PKL then /home/claude/q97m.pkl; bootstrap only ECHOES the workspace md5. An env var can point the engine at any pickle and the guard still passes. **The one commit whose purpose was determinism re-opened the exact stale-boot hole Guard 5 was built to close.** **Item 87: the supersession chain is CLOSED** — v98/rev135/v4.15 archived; v99's pointer resolves; Fable must read v98 itself.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2072,7 +2072,11 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
 90. **THE q97m FREEZE RETURN — PRESCREEN: THE FIX IS REAL AND A1 PASSES BOTH LEGS. **FOUR REDS**, AND ONE OF
     THEM IS THE ACCEPTANCE TEST THAT WOULD HAVE CAUGHT THE RESIDUAL, QUIETLY RELAXED.** (PR #76, draft, head
     `f14710d`, on #74's `ed13177`.)
-    **WHAT IS PROVEN, AND IT IS THE BIG ONE: A1 PASSES BOTH LEGS.** The board rebuilds **byte-identical to
+    ⚠⚠ **CORRECTED 2026-07-14 BY THE OWNER, SAME DAY, BEFORE IT COULD BE ACTED ON — SEE ITEM 92. THE LINE
+    BELOW ORIGINALLY READ "WHAT IS PROVEN, AND IT IS THE BIG ONE: A1 PASSES BOTH LEGS." IT IS NOT PROVEN.
+    IT IS CLAIMED. The supervisor granted A1 ON THE RETURN'S WORD, in the same entry that documented the
+    return being wrong THREE TIMES about its own results. Struck and restated:**
+    **A1 — CLAIMED, NOT VERIFIED. NO PROOF EXISTS IN THE REPO.** The board rebuilds **byte-identical to
     `3dc19fbb`** (working head, store `340a7a32`) **AND to `81e48293`** (the tagged board of record, store
     `b0c39d78`, at the tag's export tree). **THE BOARD OF RECORD IS STILL REBUILDABLE. THE CHAPTER SURVIVES.**
     The leg was run with config left at `c2d233ae` (47 vars) rather than the tag's `69ead79b` (40) — **and that
@@ -2118,6 +2122,64 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     A1 is the result the chapter needed. **Item 74's reconcile cannot start until CI is green.**
     TRIGGER: the follow-up. CLOSES when A2 is met or the 72 fits are cleared, the cause is MEASURED, the proofs
     are COMMITTED, both books are named, and the non-AVX512 full-board + pick-curve delta is measured.
+
+91. **⚠ THE GUARD ASSERTS ONE FILE. THE ENGINE LOADS ANOTHER. NOTHING ASSERTS THEY MATCH.**
+    **(Owner-caught 2026-07-14. Seat 6 verified it and found it WIDER.)**
+    **`boot_guard.py:133`** pins and hashes **`data/q97m.pkl`** — the REPO file.
+    **`_merged_recover.py`'s `_load_q97m()`** resolves in this order: **`$RL_Q97M_PKL`** → **`/home/claude/q97m.pkl`**
+    → `<repo>/data/q97m.pkl`. **The workspace copy WINS. The repo file is the LAST resort.**
+    **`bootstrap.sh:29`** copies `data/q97m.pkl` → `/home/claude/q97m.pkl`. **`bootstrap.sh:44/59` computes the
+    workspace md5 and ONLY ECHOES IT** — *"expect cfdc7321"*. **It does not assert it.** A stale workspace copy
+    would print a different hash and **NOTHING WOULD HALT. SILENCE IS A RED.** (The store and `cm_400.pkl` ARE
+    asserted at the workspace by bootstrap's verify block; **q97m was left out of it.**)
+    ⚠ **AND ONE STEP DEEPER THAN THE OWNER STATED: `$RL_Q97M_PKL` IS CHECKED FIRST.** **An environment variable
+    can point the engine at ANY pickle on disk and `boot_guard` STILL PASSES**, because it is hashing a different
+    file. **A guard that cannot fail. Same family as item 72's panel gate and item 83's inverted order.**
+    **THE IRONY IS EXACT, AND IT IS THE POINT.** `expected_boot.json`'s own `_doc` records the incident Guard 5
+    was BUILT to close: *"workspace held baked-v2.4 `644d1254` while the repo carried `e1b4d8bf`; the four data
+    guards validate whichever dir they are imported from, so they never caught the wrong DIRECTORY."*
+    **THE ONE COMMIT WHOSE ENTIRE PURPOSE WAS DETERMINISM RE-OPENED THAT HOLE ON THE ARTIFACT IT HAD JUST
+    FROZEN.** `cm_400.pkl` has the same shape (pre-existing, not introduced here) — **fix both.**
+    **FIX: ASSERT THE FILE THE ENGINE WILL ACTUALLY LOAD** (resolve through the same precedence the engine uses,
+    including the env var), not the file the repo happens to hold.
+    TRIGGER: the q97m follow-up. **BLOCKS the merge of #76.**
+
+92. **⚠ SEAT-6 CORRECTION LEDGER — TWO. BOTH SELF-INFLICTED, ONE CAUGHT BY THE OWNER.**
+    **(1) SELF-CAUGHT (item 86):** formed the catastrophe hypothesis that the frozen `q97m` could not be the
+    object that built `81e48293` (because it is fitted from the STORE, and the store moved at item 20) — **then
+    MEASURED it and killed it.** Bramble is excluded from the training pool twice over; the era aggregate
+    excludes 2026; X/yy are identical. Caught before it reached the owner as a catastrophe.
+    **(2) OWNER-CAUGHT — AND IT IS THE WORSE ONE. I WROTE "WHAT IS PROVEN: A1 PASSES BOTH LEGS" INTO THIS
+    REGISTER, ON THE RETURN'S WORD.** In the SAME entry I documented that the return had **mis-stated A2**,
+    **asserted the cause as fact**, and **claimed committed proofs that do not exist.** **I caught three false
+    claims in one document and believed the fourth.** CORE rule 1 — *a build's "it passed" is "consistent with
+    what I can see"* — broken by the seat whose job is to enforce it.
+    **AND THE METHOD MAY ALSO BE WRONG:** item 86 established that the `81e48293` leg is **unrunnable from that
+    branch's own pins** (four false halts). The return says it left config at `c2d233ae`. **Either it found the
+    clean construction and did not say so, or it did something else. NO PROOF, NO ANSWER.** I rationalised the
+    config choice as "self-validating because the board did not move" — **which is only true if the board really
+    did not move, which is the very thing being claimed.** That is circular, and it is the CONVENIENT FRAMING.
+    **THE PATTERN IS SEAT 5's PATTERN, AT SPEED: the number I WANTED was the one I did not check.**
+    **A1 IS THE ONE THAT MATTERS** — every anchor, floor, band, guard reading and census figure is measured
+    against `81e48293`. **STATUS: CLAIMED, NOT VERIFIED** (item 74's own language, now applied to the thing item
+    74 DEPENDS ON). **Re-run it. Commit the proof. Both board hashes AND both book hashes, printed.**
+
+87. **THE SUPERSESSION CHAIN IS CLOSED — v98 / rev135 / v4.15 ARE ARCHIVED; DECISIONS v99's POINTER RESOLVES.**
+    v99 §0 pointed to *"DECISIONS v98, archived at this filing"* — **and there was nothing to archive.** v98,
+    rev135 and manifest v4.15 existed NOWHERE in the repo; R98.8's screening meant seat 5 authored them and never
+    filed them. **The full text of ten BINDING rulings survived only as v99's one-liners.** Owner couriered them;
+    **filed to `docs/archive/` byte-copied from disk** (an earlier attempt was REFUSED because the files had not
+    landed on disk and a rulings document must never be filed from an unverifiable transcription).
+    **FABLE: READ v98 ITSELF, NOT v99's SUMMARY.** It carries the owner's WORDS: the eight improvers λ dragged
+    (Ash −2,088 · Xerri −1,711 · Callaghan −1,234 · Holmes −1,178 · Wilmot −1,136 · Blakey −1,126 ·
+    Wanganeen-Milera −1,119 · Bailey Smith −1,117 — *"players who probably shouldn't be dropping"*); the
+    construction for the trust-basis redesign (***"GAMES DECIDE HOW MUCH WE TRUST THE RECORD; AGE/STAGE DECIDES
+    WHAT WE COMPARE IT AGAINST"***); the pedigree fade shape (*"75 → 50 → 25 → 10 → 3 → 0"*); and the reasoning
+    for the 105 bar. **These govern the flattery chapter and the trust-basis redesign.**
+    ⚠ **rev135 CARRIES A LINE rev136 DROPPED: "Dylan Moore's read — his suspected mechanism measured SMALL:
+    +0.69% incremental R²; HIS READ STANDS."** rev136 lists it under NOT-GOT-TO as if untouched. **It was
+    measured, and the owner's read won.**
+    **STANDING LESSON: an unfiled pack doc is a pointer that dangles the moment its successor ships.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
