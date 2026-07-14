@@ -6,14 +6,21 @@
 # (D3's literal enumeration was not in main — PR #71 was report-only — so these
 # are the three worst in-fence sites found by direct sweep.)
 #
-# For each site: BEFORE = the script as it stood at git HEAD (pre-edit);
-# AFTER = the working-tree hardened script. Same induced break, compare rc.
+# For each site: BEFORE = the script as it stood PRE-HARDENING (commit c3b0337^,
+# the merge of PR #70); AFTER = the committed hardened script. Same induced break,
+# compare rc. (The hardening is committed, so HEAD is the *after* — see PRE below.)
 # All breaks are applied to SCRATCH copies; no real file is modified.
 # =============================================================================
 set -uo pipefail
 REPO=/home/user/afl-rl-engine
 SCR="$REPO/session_2026-07-13/suite_hygiene/proofs"
 LOG="$SCR/A2_run.log"
+# BEFORE = the PRE-HARDENING tree. The hardening is now COMMITTED (commit c3b0337),
+# so `HEAD` is the *after*; the pre-hardening baseline is that commit's parent
+# (= 2bc5151, the merge of PR #70). Pinning to c3b0337^ keeps this correct even as
+# the branch grows. (This is why a first resume-run showed BEFORE==AFTER on the two
+# git-sourced sites — the baseline had drifted onto the hardened HEAD.)
+PRE=$(git -C "$REPO" rev-parse c3b0337^)
 : > "$LOG"
 say(){ echo "$@" | tee -a "$LOG"; }
 
@@ -39,7 +46,7 @@ mk_panel(){ # $1 = source file, $2 = dest ; force a mismatch on the first panel 
             # copy lives in proofs/, so its own dirname would break line-8 boot_guard).
   sed -e "s|^HERE=\$(cd .*|HERE=$REPO|" \
       -e "s/('Nick Daicos',7667)/('Nick Daicos',9999)/" "$1" > "$2"; }
-git show HEAD:run_panel.sh > "$SCR/_panel_before_src.sh"
+git show "$PRE:run_panel.sh" > "$SCR/_panel_before_src.sh"
 mk_panel "$SCR/_panel_before_src.sh" "$SCR/_panel_before.sh"
 mk_panel "$REPO/run_panel.sh"        "$SCR/_panel_after.sh"
 bash "$SCR/_panel_before.sh" >>"$LOG" 2>&1; b1=$?
@@ -74,7 +81,7 @@ verdict "bootstrap.sh md5-pipe" "$b2" "$a2"
 # Run both against the live tree (it already has 2 real FAILs), compare rc.
 # ---------------------------------------------------------------------------
 say "### SITE 3: verify_restore.sh (a chk FAILs) ###"
-git show HEAD:verify_restore.sh > "$SCR/_vr_before.sh"
+git show "$PRE:verify_restore.sh" > "$SCR/_vr_before.sh"
 ( cd "$REPO" && bash "$SCR/_vr_before.sh" "$REPO" >>"$LOG" 2>&1 ); b3=$?
 ( cd "$REPO" && bash "$REPO/verify_restore.sh" "$REPO" >>"$LOG" 2>&1 ); a3=$?
 verdict "verify_restore.sh" "$b3" "$a3"

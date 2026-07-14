@@ -4,3 +4,23 @@ bootstrap OK
   store md5      : 340a7a32   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
   register md5   : 652d83e8   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)
 ===== SSI guards 1-4 (one_source_selftest) =====
+  PASS collision sentry: max-king-stk._draft_club ('St Kilda') != max-king-syd._draft_club ('Sydney') — must stay distinct (no cross-copy)
+
+SELF-TEST FAILED: 4 check(s)
+  - rl_app_data.json present (build it first)
+  - s4_matrix.json present (build it first)
+  - board rl_app_data.json present (run rl_export.py first)
+  - book s4_matrix.json present (run s4_matrix_M1v7.py first)
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)
+===== panel (run_panel.sh) =====
+RESULT: PASS 10/10
+panel exit via pipefail PIPESTATUS=0
+===== ship_gates suite =====
+ship_gates rc=1
+A2        FAIL    | FAIL    | FAIL     Curtis>=0.90xWard: 1598 vs 1562 (Ward=1735, ratio=0.921) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: 1661 vs 1735
+A3   [DC] FAIL    | FAIL    | FAIL     Connor Rozee: 2026=2396 2025=4464 ratio=0.54 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]
+A12  [DC] FAIL    | FAIL    | FAIL     Travaglia>Moraes: 824 vs 1041; Smillie>Retschko: 1349 vs 873
+B1        PASS    | PASS    | PASS     JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD; CANDIDATE regenerated this run — engine 2030e5df store 340a7a32 config 69ead79b944d): y1=69840.0 y2=79298.2 y3=82016.2 y4=88002.4 y5=86652.9 y6=80460.5 y7=71285.8; den=min(y1,y2)=y1=69840.0; ratios y4=1.2601(above-guide) y5=1.2407(in-guide) y6=1.1521(below-guide); hard<=1.30 -> PASS x3; guide 1.20-1.25 ADVISORY (margin reported, never gates)
+VERDICT: FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1  (477s)
+B1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):
+A3 DONE

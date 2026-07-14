@@ -1,5 +1,43 @@
 ### SITE 1: run_panel.sh (panel computes a FAIL) ###
 boot-store guard (Guard 5) PASS  [run_panel]  store 340a7a32 == pinned 340a7a32 (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+player                 EV(num)  EXPECT
+  Nick Daicos             7667    9999  <-- MISMATCH
+  Marcus Bontempelli      3482    3482
+  Harry Sheezel           7796    7796
+  Max Gawn                2393    2393
+  Harley Reid             3594    3594
+  Josh Ward               1649    1649
+  Darcy Moore              197     197
+  Taylor Goad              873     873
+  Josh Smillie            1282    1282
+  Will Green               655     655
+
+RESULT: FAIL
+boot-store guard (Guard 5) PASS  [run_panel]  store 340a7a32 == pinned 340a7a32 (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+player                 EV(num)  EXPECT
+  Nick Daicos             7667    9999  <-- MISMATCH
+  Marcus Bontempelli      3482    3482
+  Harry Sheezel           7796    7796
+  Max Gawn                2393    2393
+  Harley Reid             3594    3594
+  Josh Ward               1649    1649
+  Darcy Moore              197     197
+  Taylor Goad              873     873
+  Josh Smillie            1282    1282
+  Will Green               655     655
+
+RESULT: FAIL
+  => run_panel.sh: PASS  (BEFORE swallowed: rc=0 ; AFTER propagates: rc=1)
+### SITE 2: bootstrap.sh md5-pipe on a missing seed (lines 38-40 pattern) ###
+md5sum: /home/claude/__NO_SUCH_STORE__: No such file or directory
+REACHED-PAST-PIPE M=[]
+md5sum: /home/claude/__NO_SUCH_STORE__: No such file or directory
+  => bootstrap.sh md5-pipe: PASS  (BEFORE swallowed: rc=0 ; AFTER propagates: rc=1)
+### SITE 3: verify_restore.sh (a chk FAILs) ###
+PASS  head  _merged_recover.py = 2030e5df
+PASS  store rl_model_data.json = 340a7a32
+PASS  rl_model.py (DPP strip) = 952ddb3d
+PASS  band  cm_400.pkl = 34faa865
 FAIL  Maric   ev(2026) = 1295  (expected 1271)
 FAIL  Langdon ev(2026) = 591  (expected 567)
 PASS  harness present: _gate1_wf.py
@@ -8,3 +46,30 @@ PASS  harness present: s4_matrix_M1v7.py
 PASS  harness present: s4_render_M1v7.py
 PASS  cp-pair guard (repo fv == workspace fv, all .py) = 0
 --- run_panel.sh tail (10-panel; confirm 10/10) ---
+  Josh Smillie            1282    1282
+  Will Green               655     655
+
+RESULT: PASS 10/10
+====================================
+VERDICT: 9 PASS / 2 FAIL  =>  RESTORE-VERIFY FAIL
+PASS  head  _merged_recover.py = 2030e5df
+PASS  store rl_model_data.json = 340a7a32
+PASS  rl_model.py (DPP strip) = 952ddb3d
+PASS  band  cm_400.pkl = 34faa865
+FAIL  Maric   ev(2026) = 1295  (expected 1271)
+FAIL  Langdon ev(2026) = 591  (expected 567)
+PASS  harness present: _gate1_wf.py
+PASS  harness present: _gate1_picksplit.py
+PASS  harness present: s4_matrix_M1v7.py
+PASS  harness present: s4_render_M1v7.py
+PASS  cp-pair guard (repo fv == workspace fv, all .py) = 0
+--- run_panel.sh tail (10-panel; confirm 10/10) ---
+  Josh Smillie            1282    1282
+  Will Green               655     655
+
+RESULT: PASS 10/10
+====================================
+VERDICT: 9 PASS / 2 FAIL  =>  RESTORE-VERIFY FAIL
+  => verify_restore.sh: PASS  (BEFORE swallowed: rc=0 ; AFTER propagates: rc=1)
+----------------------------------------------------
+A2 RESULT: PASS  (all three sites: swallowed before, propagate now)

@@ -1,0 +1,22 @@
+===== A4 — NOTHING ELSE MOVED (base 2bc515161492935938489b88462d353975e49e24) =====
+PASS  store (repo source) == 340a7a32 (340a7a32)
+PASS  store (seeded workspace) == 340a7a32 (340a7a32)
+PASS  board (rl_app_data.json) == 3dc19fbb (3dc19fbb)
+PASS  boot pin 'board' == 3dc19fbb (3dc19fbb)
+----- files changed vs base, OUTSIDE session_2026-07-13/suite_hygiene/ -----
+  SHIP_GATES.md
+  bootstrap.sh
+  run_panel.sh
+  session_2026-07-13/v2_9_export_display/scripts/build_final_board.sh
+  verify_restore.sh
+PASS  non-session changes == the 5 named harness/doc files ONLY
+----- gate-construction files: byte-identical to base? -----
+PASS  unchanged: engine/rl_after/_merged_recover.py
+PASS  unchanged: engine/rl_after/rl_model.py
+PASS  unchanged: config_manifest.py
+PASS  unchanged: data/model_config.json
+PASS  unchanged: ship_gates_check.py
+n/a   one_source_selftest.py (not present)
+PASS  unchanged: boot_guard.py
+-------------------------------------------------------------
+A4 RESULT: PASS  (store/board byte-unchanged; only the 5 files moved; no gate construction touched)
