@@ -1,0 +1,50 @@
+=== R1 · matched returner events n=315 · board b0c39d78 ===
+mean effect (points)  : -3.421 SC
+mean effect (percent) : -3.56 %   [effect_i / pre_avg_i]
+pre_avg range: 45.5 .. 123.8  (mean 75.0)
+
+[A] ADDITIVE form — regress effect(POINTS) on pre_avg:
+    slope = -0.2740 pts per SC of level   95%CI[-0.3564,-0.1869]
+    intercept = +17.133 pts   (additive predicts flat: slope≈0)
+
+[B] MULTIPLICATIVE form — regress effect(PERCENT=eff/pre_avg) on pre_avg:
+    slope = -0.32949 %pts per SC of level   95%CI[-0.44328,-0.21856]
+    intercept = +21.160 %   (multiplicative predicts flat: slope≈0)
+
+[C] AGE-CONTROLLED (quadratic age) — effect(points) ~ age + age^2 + pre_avg:
+    level slope = -0.3321 pts per SC of level   95%CI[-0.4215,-0.2422]  (age curve held fixed)
+    percent form: level slope = -0.40030 %pts/SC  95%CI[-0.52980,-0.27651]
+
+[D] points vs percent by age stratum:
+    young 18-24  n=167  points=-4.94  percent=-5.64%  (mean lvl 71.3)
+    prime 25-28  n=106  points=-1.07  percent=-0.45%  (mean lvl 77.3)
+    older 29+    n= 42  points=-3.32  percent=-3.13%  (mean lvl 83.9)
+
+[E] level quartiles:
+    ALL (n=315):
+       lvl [ 45.5, 64.8] n= 79  points=+2.35  percent=+4.45%
+       lvl [ 64.8, 74.1] n= 77  points=-0.09  percent=-0.05%
+       lvl [ 74.1, 84.3] n= 80  points=-9.58  percent=-12.29%
+       lvl [ 84.3,123.8] n= 79  points=-6.20  percent=-6.13%
+    PRIME 25-28 only (n=106):
+       lvl [ 49.0, 66.7] n= 27  points=+1.84  percent=+3.32%
+       lvl [ 66.7, 76.0] n= 25  points=+4.45  percent=+6.45%
+       lvl [ 76.0, 85.0] n= 27  points=-4.06  percent=-5.13%
+       lvl [ 85.0,123.8] n= 27  points=-6.09  percent=-5.92%
+
+[F] MEAN-REVERSION control: Δavg ~ age + age^2 + start_avg  (continuous players):
+    control level-slope = -0.2722 pts/SC   95%CI[-0.2841,-0.2602]
+    returner level-slope (age-controlled, [C]) = -0.3321 pts/SC
+    ABSENCE-SPECIFIC level form = returner − control = -0.0599 pts/SC  95%CI[-0.1462,+0.0303]
+
+[G] MEAN-REVERSION-ADJUSTED effect (matched on age AND pre-level):
+    overall: -4.76 SC  95%CI[-6.17,-3.30]   (age-only was -3.42)
+    young 18-24  n=167  adj=-6.03  95%CI[-8.08,-3.99]
+    prime 25-28  n=106  adj=-2.41  95%CI[-4.77,-0.02]
+    older 29+    n= 42  adj=-5.63  95%CI[-9.21,-2.12]
+
+[VERDICT]  (the raw [A]/[B] slopes are dominated by mean-reversion; judge on [F] absence-specific)
+    absence-specific level slope = -0.0599 pts/SC   95%CI[-0.1462,+0.0303]
+    ADDITIVE       predicts slope  0.0000  -> INSIDE CI  (|dist|=0.0599)
+    MULTIPLICATIVE predicts slope -0.0635  -> INSIDE CI  (|dist|=0.0035)
+    => point estimate sits essentially ON the multiplicative prediction; both forms inside CI (undistinguished).

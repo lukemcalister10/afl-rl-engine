@@ -1,0 +1,44 @@
+=== R4 · FOUR PHANTOM BOARDS · one 1-game row per missed season · board b0c39d78 ===
+affected population: 109 established-base absence players; rest of board (695) UNCHANGED (ev is per-player)
+
+[1] avg=0                         movers(|Δ|≥1 SCAR)= 15 (↑5 ↓10)  ΣΔ=   -675  meanΔ=  -6.2  medianΔ= +0.0  max|Δ|=226
+[2] avg=REPL bar                  movers(|Δ|≥1 SCAR)= 12 (↑4 ↓8)  ΣΔ=    +23  meanΔ=  +0.2  medianΔ= +0.0  max|Δ|=49
+[3] avg=pre+effect (candidate)    movers(|Δ|≥1 SCAR)= 11 (↑5 ↓6)  ΣΔ=    +17  meanΔ=  +0.2  medianΔ= +0.0  max|Δ|=41
+[4] avg=pre (null)                movers(|Δ|≥1 SCAR)= 11 (↑5 ↓6)  ΣΔ=    +15  meanΔ=  +0.1  medianΔ= +0.0  max|Δ|=40
+
+--- Jamarra Ugle-Hagan (KFWD, gap 2025; pre-absence ~63.8; NOT yet returned) ---
+    baseline ev = 197 SCAR
+    [1] avg=0                        phantom_avg=  0.0 -> ev=  224  (Δ+27)
+    [2] avg=REPL bar                 phantom_avg= 66.8 -> ev=  226  (Δ+29)
+    [3] avg=pre+effect (candidate)   phantom_avg= 56.6 -> ev=  216  (Δ+19)
+    [4] avg=pre (null)               phantom_avg= 62.2 -> ev=  221  (Δ+24)
+
+--- A-anchors (no absence -> expected INERT; confirms surgical) ---
+    Marcus Bontempelli     ev= 3664  in-affected-population=False  (unaffected: phantoms are inserted only into gap-players' own records)
+    Max Gawn               ev= 2518  in-affected-population=False  (unaffected: phantoms are inserted only into gap-players' own records)
+    Nick Daicos            ev= 8069  in-affected-population=False  (unaffected: phantoms are inserted only into gap-players' own records)
+    Harry Sheezel          ev= 8204  in-affected-population=False  (unaffected: phantoms are inserted only into gap-players' own records)
+    Harley Reid            ev= 3782  in-affected-population=False  (unaffected: phantoms are inserted only into gap-players' own records)
+
+--- G-COHORT (board-side proxy = young gap-players age_pre<25; the binding walk-forward gate recompute is OUT of Tier-3 scope, declared) ---
+    young affected n=56   baseline Σev=19074
+    [1] avg=0                        Σev=  18408  (Δ-666, -3.5%)
+    [2] avg=REPL bar                 Σev=  19099  (Δ+25, +0.1%)
+    [3] avg=pre+effect (candidate)   Σev=  19091  (Δ+17, +0.1%)
+    [4] avg=pre (null)               Σev=  19088  (Δ+14, +0.1%)
+
+--- games-weight sensitivity: candidate avg (pre+effect) carried by g games ---
+    g= 1  movers(|Δ|≥1)= 11  ΣΔ=    +17  meanΔ=  +0.2  Jamarra Δ=+19
+    g= 5  movers(|Δ|≥1)= 20  ΣΔ=   -637  meanΔ=  -5.8  Jamarra Δ=+73
+    g=10  movers(|Δ|≥1)= 23  ΣΔ=  -1133  meanΔ= -10.4  Jamarra Δ=+138
+    g=18  movers(|Δ|≥1)= 23  ΣΔ=  -1248  meanΔ= -11.4  Jamarra Δ=+220
+
+--- largest |Δ| under [3] candidate (avg=pre+effect, 1 game) ---
+    Cody Weightman           GFWD  age 23  base   297 ->   338  (Δ+41)
+    Bailey Smith             MID   age 23  base  5518 ->  5478  (Δ-40)
+    Tanner Bruhn             MID   age 22  base  1136 ->  1173  (Δ+37)
+    Jamarra Ugle-Hagan       KFWD  age 22  base   197 ->   216  (Δ+19)
+    Oscar Allen              KFWD  age 22  base   188 ->   171  (Δ-17)
+    Logan McDonald           KFWD  age 22  base   893 ->   877  (Δ-16)
+    Ben King                 KFWD  age 21  base   383 ->   377  (Δ-6)
+    Charlie Curnow           KFWD  age 22  base  1249 ->  1246  (Δ-3)

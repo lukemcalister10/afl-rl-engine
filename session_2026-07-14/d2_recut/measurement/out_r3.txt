@@ -1,0 +1,22 @@
+=== R3 validation · Jamarra Ugle-Hagan (KFWD, gap 2025) · board b0c39d78 ===
+  scoring: [(2021, 5, 47.0), (2022, 17, 44.0), (2023, 23, 60.6), (2024, 22, 63.8), (2026, 3, 26.0)]
+  _lvlcurr actual(gap)=48.75  nogap=54.88  RECENCY CHARGE=-6.13 lvl-pts
+  ev()     actual=197  nogap=512  RECENCY CHARGE=-315 SCAR
+  truth (R2 adj curve @ age 22) = -5.63 lvl-pts
+
+=== recency charge across 109 gap players (established-base absences) ===
+  LEVEL charge @ return-year : mean -1.69  median -0.75 lvl-pts
+  LEVEL charge @ 2026 (board): mean -1.61  median -0.15 lvl-pts  (transience: decays as player re-establishes)
+  measured TRUTH  (R2 adj)   : mean -4.94 lvl-pts
+  SCAR charge @ return-year  : mean -6  median +0 SCAR
+
+=== UNDER / OVER / RIGHT — recency LEVEL charge (at return) vs truth, by age ===
+  (charge - truth < 0 => engine docks MORE than truth => OVER; > 0 => UNDER)
+  Two truths shown: [adj] mean-reversion-adjusted (R1[G], primary) · [ao] age-only (prior D2/directive framing)
+  18-22 (dev trough) n= 23  charge=-0.67  |  [adj] truth=-5.58 err=+4.91 UNDER  |  [ao] truth=-4.42 err=+3.75 UNDER
+  23-24              n= 33  charge=-0.77  |  [adj] truth=-5.42 err=+4.65 UNDER  |  [ao] truth=-4.24 err=+3.48 UNDER
+  25-28 prime        n= 38  charge=-2.41  |  [adj] truth=-4.39 err=+1.99 UNDER  |  [ao] truth=-3.08 err=+0.67 UNDER
+  29+ older          n= 15  charge=-3.47  |  [adj] truth=-4.26 err=+0.79 UNDER  |  [ao] truth=-2.52 err=-0.95 OVER 
+  ALL                n=109  charge=-1.69  |  [adj] truth=-4.94 err=+3.25  |  [ao] truth=-3.64 err=+1.95
+
+  error-vs-age slope = -0.472 lvl-pts/yr  95%CI[-0.780,-0.153]

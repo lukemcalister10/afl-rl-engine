@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" font-family="system-ui,Arial" font-size="12">
+<rect width="760" height="460" fill="white"/>
+<text x="58" y="18" font-size="14" font-weight="700">D2 re-cut · return-from-absence effect vs age (smooth, CORE rule 7) · board b0c39d78</text>
+<line x1="58" y1="408.0" x2="740" y2="408.0" stroke="#eee"/>
+<text x="50" y="412.0" text-anchor="end" fill="#666">-14</text>
+<line x1="58" y1="374.0" x2="740" y2="374.0" stroke="#eee"/>
+<text x="50" y="378.0" text-anchor="end" fill="#666">-12</text>
+<line x1="58" y1="340.0" x2="740" y2="340.0" stroke="#eee"/>
+<text x="50" y="344.0" text-anchor="end" fill="#666">-10</text>
+<line x1="58" y1="306.0" x2="740" y2="306.0" stroke="#eee"/>
+<text x="50" y="310.0" text-anchor="end" fill="#666">-8</text>
+<line x1="58" y1="272.0" x2="740" y2="272.0" stroke="#eee"/>
+<text x="50" y="276.0" text-anchor="end" fill="#666">-6</text>
+<line x1="58" y1="238.0" x2="740" y2="238.0" stroke="#eee"/>
+<text x="50" y="242.0" text-anchor="end" fill="#666">-4</text>
+<line x1="58" y1="204.0" x2="740" y2="204.0" stroke="#eee"/>
+<text x="50" y="208.0" text-anchor="end" fill="#666">-2</text>
+<line x1="58" y1="170.0" x2="740" y2="170.0" stroke="#eee"/>
+<text x="50" y="174.0" text-anchor="end" fill="#666">+0</text>
+<line x1="58" y1="136.0" x2="740" y2="136.0" stroke="#eee"/>
+<text x="50" y="140.0" text-anchor="end" fill="#666">+2</text>
+<line x1="58" y1="102.0" x2="740" y2="102.0" stroke="#eee"/>
+<text x="50" y="106.0" text-anchor="end" fill="#666">+4</text>
+<line x1="58" y1="68.0" x2="740" y2="68.0" stroke="#eee"/>
+<text x="50" y="72.0" text-anchor="end" fill="#666">+6</text>
+<line x1="58" y1="34.0" x2="740" y2="34.0" stroke="#eee"/>
+<text x="50" y="38.0" text-anchor="end" fill="#666">+8</text>
+<line x1="58" y1="170.0" x2="740" y2="170.0" stroke="#999" stroke-width="1"/>
+<text x="58.0" y="426" text-anchor="middle" fill="#666">18</text>
+<line x1="58.0" y1="34" x2="58.0" y2="408" stroke="#f6f6f6"/>
+<text x="143.2" y="426" text-anchor="middle" fill="#666">20</text>
+<line x1="143.2" y1="34" x2="143.2" y2="408" stroke="#f6f6f6"/>
+<text x="228.5" y="426" text-anchor="middle" fill="#666">22</text>
+<line x1="228.5" y1="34" x2="228.5" y2="408" stroke="#f6f6f6"/>
+<text x="313.8" y="426" text-anchor="middle" fill="#666">24</text>
+<line x1="313.8" y1="34" x2="313.8" y2="408" stroke="#f6f6f6"/>
+<text x="399.0" y="426" text-anchor="middle" fill="#666">26</text>
+<line x1="399.0" y1="34" x2="399.0" y2="408" stroke="#f6f6f6"/>
+<text x="484.2" y="426" text-anchor="middle" fill="#666">28</text>
+<line x1="484.2" y1="34" x2="484.2" y2="408" stroke="#f6f6f6"/>
+<text x="569.5" y="426" text-anchor="middle" fill="#666">30</text>
+<line x1="569.5" y1="34" x2="569.5" y2="408" stroke="#f6f6f6"/>
+<text x="654.8" y="426" text-anchor="middle" fill="#666">32</text>
+<line x1="654.8" y1="34" x2="654.8" y2="408" stroke="#f6f6f6"/>
+<text x="740.0" y="426" text-anchor="middle" fill="#666">34</text>
+<line x1="740.0" y1="34" x2="740.0" y2="408" stroke="#f6f6f6"/>
+<text x="399.0" y="452" text-anchor="middle" fill="#444">age at last pre-absence season</text>
+<text x="16" y="221.0" text-anchor="middle" fill="#444" transform="rotate(-90 16 221.0)">effect (SC pts, − = penalty)</text>
+<polygon points="58.0,231.4 100.6,251.8 143.2,272.4 185.9,288.0 228.5,298.1 271.1,296.6 313.8,286.5 356.4,272.2 399.0,261.6 441.6,256.0 484.2,262.0 526.9,281.1 569.5,316.6 612.1,373.4 654.8,462.9 697.4,585.6 740.0,746.7 740.0,140.9 697.4,193.8 654.8,211.6 612.1,209.6 569.5,197.9 526.9,190.2 484.2,187.3 441.6,193.3 399.0,203.9 356.4,217.9 313.8,231.0 271.1,238.2 228.5,233.2 185.9,206.0 143.2,156.6 100.6,84.0 58.0,-7.5" fill="#c62828" opacity="0.13"/>
+<polygon points="58.0,196.6 100.6,223.4 143.2,251.7 185.9,269.0 228.5,279.7 271.1,278.0 313.8,267.1 356.4,252.4 399.0,238.4 441.6,230.4 484.2,232.0 526.9,249.3 569.5,283.5 612.1,343.0 654.8,437.0 697.4,572.6 740.0,749.3 740.0,115.1 697.4,155.6 654.8,167.8 612.1,166.3 569.5,157.2 526.9,153.6 484.2,155.9 441.6,164.4 399.0,178.9 356.4,195.0 313.8,208.7 271.1,217.3 228.5,209.0 185.9,179.5 143.2,123.5 100.6,44.4 58.0,-55.7" fill="#1565c0" opacity="0.10"/>
+<rect x="58.0" y="34" width="85.2" height="374" fill="#000" opacity="0.05"/>
+<rect x="633.4" y="34" width="106.6" height="374" fill="#000" opacity="0.05"/>
+<text x="100.6" y="402" text-anchor="middle" fill="#999" font-size="10">no data</text>
+<text x="697.4" y="402" text-anchor="middle" fill="#999" font-size="10">thin</text>
+<polyline points="58.0,67.5 100.6,132.8 143.2,186.4 185.9,224.4 228.5,244.5 271.1,247.9 313.8,238.9 356.4,223.9 399.0,209.1 441.6,198.7 484.2,195.9 526.9,203.1 569.5,223.1 612.1,257.0 654.8,300.5 697.4,341.9 740.0,364.7" fill="none" stroke="#1565c0" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.8"/>
+<polyline points="58.0,108.0 100.6,165.2 143.2,212.6 185.9,246.3 228.5,264.4 271.1,267.4 313.8,259.3 356.4,245.9 399.0,233.1 441.6,225.3 484.2,225.3 526.9,235.4 569.5,257.3 612.1,290.7 654.8,329.7 697.4,361.9 740.0,372.0" fill="none" stroke="#c62828" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.7"/>
+<polyline points="100.6,165.2 143.2,212.6 185.9,246.3 228.5,264.4 271.1,267.4 313.8,259.3 356.4,245.9 399.0,233.1 441.6,225.3 484.2,225.3 526.9,235.4 569.5,257.3 612.1,290.7 654.8,329.7" fill="none" stroke="#c62828" stroke-width="2.6"/>
+<polyline points="100.6,132.8 143.2,186.4 185.9,224.4 228.5,244.5 271.1,247.9 313.8,238.9 356.4,223.9 399.0,209.1 441.6,198.7 484.2,195.9 526.9,203.1 569.5,223.1 612.1,257.0 654.8,300.5" fill="none" stroke="#1565c0" stroke-width="2.2"/>
+<rect x="504" y="38" width="230" height="52" fill="white" stroke="#ddd"/>
+<line x1="514" y1="54" x2="544" y2="54" stroke="#c62828" stroke-width="2.6"/><text x="550" y="58" font-size="11">mean-reversion-adjusted (primary)</text>
+<line x1="514" y1="74" x2="544" y2="74" stroke="#1565c0" stroke-width="2.2"/><text x="550" y="78" font-size="11">age-only DiD (prior D2)</text>
+<line x1="58.0" y1="254.0" x2="356.4" y2="254.0" stroke="#2e7d32" stroke-width="2" stroke-dasharray="2 2" opacity="0.7"/>
+<line x1="356.4" y1="188.2" x2="526.9" y2="188.2" stroke="#2e7d32" stroke-width="2" stroke-dasharray="2 2" opacity="0.7"/>
+<line x1="526.9" y1="226.4" x2="740.0" y2="226.4" stroke="#2e7d32" stroke-width="2" stroke-dasharray="2 2" opacity="0.7"/>
+<text x="377.7" y="182.2" fill="#2e7d32" font-size="10">old 3-bin cut (destroys the U)</text>
+</svg>
