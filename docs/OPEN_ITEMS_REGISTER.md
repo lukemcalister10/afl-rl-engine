@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v96 2026-07-14 (⚠⚠ **THE OWNER'S ENGLISH READ WAS RIGHT ALL ALONG AND THE SUPERVISOR REBUTTED IT TWICE ON A BADLY-FRAMED TEST** (item 107, seat-6 ledger #12). **IT IS NOT `_eo` — IT IS THE PRICING CURVE.** English is **3.0×** Briggs above the replacement bar and is worth **1.4×** as much — **AT BASE, before any machinery**; and the machinery WIDENS the gap rather than causing it (base 1.40× → board 1.49×). **IT IS THE SAME SHAPE AS A-PAIRS PAIR 3: the proven elite compressed, the speculative inflated. The owner caught the same defect twice, in two positions, without seeing the code. BOTH belong to the PVC RE-DERIVATION.** **Item 108: RULINGS — S_AGE MUST FADE TO A RESIDUAL, NOT VANISH AT 30 (Wilkie and Sinclair cleared BOTH evidence gates and got ZERO for their birthdays; nobody has ever tested whether the zero is real) · THE SYMMETRY LAW (risers get the same ramp and the same evidentiary bar as fallers) · G-Y0 stays ADVISORY · A-FADE basis APPROVED · pair 3 parked for Fable.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v97 2026-07-14 (⚠⚠ **SEAM-PACK SELF-AUDIT** (item 109). **FIX 1's FORMULA `g²/(g+5.8)` IS CORRECT AND DATA-DERIVED** (Var ~ 690/g + 119 => k = 690/119) — **but the supervisor quoted it FROM MEMORY into a LIVE DIRECTIVE and into the LETTER TO FABLE without ever reading the code. It happened to be right. THAT IS LUCK, NOT PROCESS.** ⚠⚠ **AND THE RUNNING DIRECTIVE'S FENCE FORBIDS FIX 1 FROM DOING HALF ITS JOB: Fix 1's own spec says it SUBSUMES the hard `<8 games -> 0.25` rule in `_par_prior`, and the fence says 'OUT: the pedigree blend'. The build will leave the very threshold Fix 1 exists to delete — an R98.2 violation left in place by the supervisor's own fence. KNOWN GAP; FABLE CLOSES IT.** Also filed: Fix 1 leaves a SINGLE-SEASON player UNCHANGED by construction (why it does not repeat R98.4's kid-nerf) · Fix 1 moves ENGLISH 3132->3251 · the manifest's *main MOVES when the pack is filed* warning RESTORED (Fable's freshness check could have HALTED on a false positive) · `_iso_dec` is at :801, not :820.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2525,6 +2525,36 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     - **THE ENGLISH ANCHOR (supervisor-proposed, item 98): WITHDRAWN BY THE SUPERVISOR.** It was framed on a
       mechanism that does not explain him. **If an anchor is wanted here, the correct one is item 107's, and it
       is the OWNER's to word.**
+
+109. **⚠⚠ SEAM-PACK SELF-AUDIT (seat 6, at the owner's instruction). FIVE FINDINGS. ONE IS A GAP THE
+    SUPERVISOR'S OWN FENCE PUT INTO A LIVE BUILD.**
+    **VERIFIED CORRECT:** every pack pointer resolves · **DECISIONS v98 IS in `docs/archive/`** (Fable was told to
+    read it — she can) · `acceptance_v1_12.json` is valid (9 guards · 8 anchors · **4 laws**) · register items
+    96–108 all present · the tag's pins match the pack **(board `81e48293` · store `b0c39d78` · engine
+    `2030e5df` · config `69ead79b` · rl_model `952ddb3d`)** · post-freeze engine `2334f570` ✅.
+    **⚠ F1 — FIX 1's FORMULA WAS NEVER VERIFIED BY THE SUPERVISOR AND IS NOW.** `w(g) = g²/(g+5.8)` **IS
+    CORRECT** — and it is **DATA-DERIVED**: across 10,459 player-seasons `Var ≈ 690/g + 119` ⇒ `k = 690/119 ≈
+    5.8` (PR #75, `FIX_SPECS.md` / `overlay_smooth_edges.py`, commit `6a6f2f6`). **THE SUPERVISOR QUOTED IT FROM
+    MEMORY INTO A LIVE DIRECTIVE AND INTO THE LETTER TO FABLE WITHOUT READING THE CODE. IT HAPPENED TO BE RIGHT.
+    THAT IS LUCK, NOT PROCESS — and the fourteenth instance of the same act.**
+    **⚠⚠ F2 — THE RUNNING DIRECTIVE'S FENCE FORBIDS FIX 1 FROM DOING HALF ITS JOB. SUPERVISOR ERROR.**
+    **FIX 1's OWN SPEC: *"This SUBSUMES the hard `<8 games → 0.25` rule (`_par_prior`) with a smooth curve."***
+    **The directive's FENCE says "OUT: the pedigree blend" — where `_par_prior` lives.** **⇒ THE BUILD WILL
+    SMOOTH `_lvlcurr` AND LEAVE THE HARD `<8 GAMES` CLIFF STANDING — the threshold Fix 1 exists to delete, and an
+    R98.2 (SMOOTHNESS) VIOLATION LEFT IN PLACE BY THE SUPERVISOR'S OWN FENCE.** **NOT FATAL. A KNOWN GAP.
+    FABLE CLOSES IT — it belongs with `w`, being one more hard threshold on the evidence axis.**
+    **⚠ F3 — TWO FIX-1 FACTS WERE OMITTED FROM THE PACK AND ARE NOW FILED:**
+    **(a) A SINGLE-SEASON PLAYER IS UNCHANGED BY CONSTRUCTION** — ρ cancels in the normalised ratio. **THIS IS
+    WHY FIX 1 DOES NOT REPEAT R98.4's DISASTER (the games basis that nerfed 60 of 76 first-season movers). It is
+    the reassurance the design needs and it was missing.**
+    **(b) FIX 1 MOVES TIMOTHY ENGLISH `3132 → 3251` (+119)** — directly relevant to the pricing thread (item 107).
+    **⚠ F4 — THE MANIFEST DROPPED v4.16's WARNING THAT *MAIN MOVES WHEN THE PACK IS FILED*.** It cites
+    `main = 60ba0e2`; **the pack's own filing commit moved main to `41c12ce`, and the register pen moves it
+    again.** **Fable's FRESHNESS CHECK could HALT on a docs/-only drift — a FALSE POSITIVE ON HER FIRST ACT.**
+    **RESTORED: a base pin reads "at or after `<SHA>` + docs/-only diff", NEVER strict equality (CORE, THE BASE
+    PIN).**
+    **⚠ F5 — `_iso_dec` IS AT `_merged_recover.py:801`, NOT `:820`.** The q97m follow-up return said 820 and the
+    supervisor carried it into a directive. **Verified against the tag's tree. Corrected.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).

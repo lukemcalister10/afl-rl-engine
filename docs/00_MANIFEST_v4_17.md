@@ -54,7 +54,11 @@ sums. If it is not localised, a declared tolerance is the answer — and that is
   print, which CI had never had.**
 
 ## REPO STATE (verify yourself — fresh clone, cite SHAs)
-- **main = `60ba0e2`** at authoring · tagged board of record **v2.9 = `9f8ae76`** (board `81e48293` · store
+⚠ **MAIN MOVES WHEN THE PACK IS FILED — INCLUDING BY THE VERY COMMIT THAT FILED THIS MANIFEST.** A base pin
+reads **"main AT OR AFTER `<SHA>`, and `git diff --name-only <SHA>..main` must be `docs/`-ONLY"** — **NEVER
+strict equality** (CORE v2.5, THE BASE PIN). **Do not HALT your freshness check on a docs/-only drift.**
+- **main = `60ba0e2`** at authoring; **the seam-pack filing itself moved it to `41c12ce` and the register pen
+  moves it again.** · tagged board of record **v2.9 = `9f8ae76`** (board `81e48293` · store
   `b0c39d78` · config `69ead79b` · **pick 1 = 3000**)
 - **⚠ A1 IS PROVEN** — the board of record **rebuilds byte-identical** at the tag's own tree (supervisor-verified
   against the tag's own `expected_boot.json`, **not a build's word**). **On this hardware class.**
