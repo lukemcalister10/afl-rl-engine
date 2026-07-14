@@ -72,10 +72,14 @@ def loclin(x0, xs, ys, h):
     normal equations have a CLOSED FORM; solving it with math.fsum (order-fixed, correctly-rounded) is
     the SAME maths, identical on every kernel and every CPU. b0 (the fit AT x0) is all we return."""
     w = tricube((xs - x0)/h)
-    wa = np.asarray(w, dtype=float); xa = np.asarray(xs, dtype=float); ya = np.asarray(ys, dtype=float)
+    # Only tricube-nonzero points contribute; dropping the exact zeros is EXACT for math.fsum (a 0.0 term
+    # changes no correctly-rounded sum) and shrinks each fsum from the full column to the in-bandwidth handful
+    # — the board is byte-identical, the per-build cost falls back near the pre-fix baseline.
+    nz = np.asarray(w, dtype=float) > 0.0
+    if not nz.any(): return float('nan'), 0.0
+    wa = np.asarray(w, dtype=float)[nz]; u = np.asarray(xs, dtype=float)[nz] - x0; ya = np.asarray(ys, dtype=float)[nz]
     Sw = _math.fsum(wa.tolist())
     if Sw <= 0: return float('nan'), 0.0
-    u = xa - x0
     Swu  = _math.fsum((wa*u).tolist())
     Swuu = _math.fsum((wa*u*u).tolist())
     Swy  = _math.fsum((wa*ya).tolist())

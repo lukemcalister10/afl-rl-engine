@@ -1,7 +1,7 @@
 # RETURN — board hardware-independence (determinism fix) · CANDIDATE (no bake/tag/merge)
 
-- **branch** `claude/board-hardware-independent-az0iz5` · **base** `e7d980eb` (PR #82) · **head** `<FILL>`
-- **PR** `<FILL>` · **board md5** `800bf461d5ec81d12da2e2426ff15c9c` · **book md5** `<FILL>`
+- **branch** `claude/board-hardware-independent-az0iz5` · **base** `e7d980eb` (PR #82) · **head** `84fd13fa`
+- **PR** #83 (base = PR #82 branch) · **board md5** `800bf461d5ec81d12da2e2426ff15c9c` · **book md5** `7fcb92c2` (stable-content seal)
 
 **B1 — THE FIRST DIVERGENT BIT.** `engine/forward_valuation/par_build.py:70` — `loclin`'s
 `np.linalg.solve(Xd.T@W@Xd, Xd.T@W@ys)` (BLAS `@` + LAPACK `dgesv`), the PAR replacement-level table. Its
@@ -30,17 +30,19 @@ Build cost: `rl_export` ~100 s, well under 2×.
 **A1 — FOUR KERNELS, ONE BOARD md5 (printed):** native/SkylakeX == Haswell == Prescott(SSE) == Nehalem(SSE4.2)
 = **`800bf461`** (each independently rebuilt on one box).
 
-**⚠ A2 — CI GREEN ON AMD, printed md5 == mine.** `<PENDING — E0 print added to CI; will read the AMD board md5>`
+**⚠ A2 — CI GREEN ON THE AMD RUNNER, printed md5 == mine — ✅ PROVEN.** PR #83 CI (GitHub ubuntu-24.04 / AMD EPYC), run 29355468343 on `84fd13f`, printed:
+`BOARD_MD5(built this run) = 800bf461d5ec81d12da2e2426ff15c9c` — **IDENTICAL to the bake-box board.** Panel 10/10 on the runner (Gawn 2395, Reid 3587, Goad 874, Green 658 — 3 of the 8 ruck movers, matched). The Intel(AVX-512)-vs-AMD(EPYC) physical-chip divergence that item 105 measured is CLOSED. The out-of-fence `np.average` residual did NOT surface (numpy's own reductions are chip-stable here).
 
 **A3 — per-player delta vs `e6a8e6ef`:** 8 movers, all rucks, +1..+4 SCAR (grundy +4 the largest); 796
 unchanged. **PICK 1 = 3000** (numéraire guard PASS; parity gate 804/804). No player > ~10 SCAR.
 
-**A4/A6 — guards + book.** `<FILL: ship_gates + panel>`. Book REBUILT on the fixed engine and re-sealed
-(old d371a27c → new `<FILL>`); head_md5 stamp advanced. Store UNTOUCHED (`340a7a32`, A5).
+**A4/A6 — guards + book.** one-source self-test PASS (F1/F2 parity 0 mismatches), GUARD-4 canary PASS, R3 ruling-config PASS, config-manifest PASS, panel 10/10. Book REBUILT on the fixed engine and re-sealed
+(old d371a27c → new 7fcb92c2); head_md5 stamp advanced. Store UNTOUCHED (`340a7a32`, A5).
 
 **In plain terms:** the board changed per-machine because the PAR table was built with a linear-algebra solve
 whose float rounding depends on the CPU — and one thin ruck-pick cell was numerically singular, so the chip's
 answer there was noise. I replaced that solve with order-fixed arithmetic (same maths, one answer on every
 chip) and made the singular cell fall back to the stable average. Now the four kernels I can force on this box
-all build the identical board, moving only 8 rucks by 1–4 points. Whether the AMD CI runner agrees is the one
-thing this box cannot prove — the CI print will say.
+all build the identical board, moving only 8 rucks by 1–4 points. The AMD CI runner agreed: it printed the identical
+board md5 (800bf461). This is, as far as the register records, the FIRST time CI builds the same board as the
+bake box — the cross-machine reproducibility the whole chapter was chasing.
