@@ -1,0 +1,338 @@
+# AFFECTED-ROW LIST — Fix 1 + the absence term (Option C) · candidate
+
+Numeraire SCAR (round(ev/1.0524)). base = both levers OFF (byte-exact, Jamarra=187).
+Legs path-additive, declared order Fix1->Absence: fix1 = base+Fix1; both = base+Fix1+Absence.
+
+## P0 — attribution (path-additive)
+- Fix 1 leg  (base->fix1): +1171 num-SCAR
+- Absence leg(fix1->both): -1977 num-SCAR   (absence alone base->abs: -1836)
+- BOTH total (base->both): -806 num-SCAR
+- path-additivity: L1+L2=-806 == total -806; max|Σlegs-total|=0
+
+## JAMARRA UGLE-HAGAN — under (a) Fix1, (b) Absence, (c) Both
+- base 187 | (a) Fix1 466 | (b) Absence 187 | (c) Both 484
+- levels: base 48.75 -> Fix1 54.56 -> Both 53.97
+- scoring [[2021, 5, 47.0], [2022, 17, 44.0], [2023, 23, 60.6], [2024, 22, 63.8], [2026, 3, 26.0]]; gap 2025, age_pre 22
+- double-charge split (both): decay -232 · new-term +18 · total -214 SCAR vs no-gap; level total -4.31 == mult-truth -4.31 (NO overshoot)
+
+## ABSENCE TERM — every gap player the term MOVES (sorted by |total ΔSCAR|)
+cols: player · pos · age_pre · missed · fade(N=2) · Lnogap · Lfin · decayΔlvl · newΔlvl · totΔlvl · mult-truth · | decayΔscar · newΔscar · totΔscar
+- Bailey Smith           MID      a23 miss[2024] fade0.50 | Lng 109.0 Lfin 104.8 | dcy +2.29 new -6.45 tot -4.16 truthM -8.33 | dcyS +384 newS -899 totS -515
+- Tanner Bruhn           MID      a22 miss[2025] fade1.00 | Lng 72.2 Lfin 66.9 | dcy +1.14 new -6.48 tot -5.35 truthM -5.35 | dcyS +84 newS -410 totS -326
+- Logan McDonald         KEY_FWD  a22 miss[2025] fade1.00 | Lng 60.5 Lfin 56.0 | dcy +0.58 new -5.05 tot -4.48 truthM -4.48 | dcyS +14 newS -202 totS -188
+- Nikolas Cox            KEY_FWD  a22 miss[2025] fade1.00 | Lng 51.7 Lfin 47.9 | dcy +0.64 new -4.46 tot -3.83 truthM -3.83 | dcyS -14 newS -171 totS -185
+- Cody Weightman         GEN_FWD  a23 miss[2025] fade1.00 | Lng 60.9 Lfin 56.2 | dcy -0.39 new -4.26 tot -4.65 truthM -4.65 | dcyS -29 newS -76 totS -105
+- Leek Aleer             KEY_DEF  a21 miss[2023] fade0.50 | Lng 57.7 Lfin 56.0 | dcy +0.01 new -1.74 tot -1.73 truthM -3.46 | dcyS -4 newS -71 totS -75
+- Brent Daniels          GEN_FWD  a22 miss[2022] fade0.50 | Lng 75.4 Lfin 72.6 | dcy +0.99 new -3.78 tot -2.79 truthM -5.58 | dcyS +52 newS -62 totS -10
+- Todd Marshall          KEY_FWD  a26 miss[2025] fade1.00 | Lng 59.0 Lfin 56.1 | dcy -0.01 new -2.91 tot -2.92 truthM -2.92 | dcyS -8 newS -38 totS -46
+- Harvey Harrison        GEN_FWD  a21 miss[2025] fade1.00 | Lng 57.4 Lfin 54.0 | dcy -0.13 new -3.31 tot -3.44 truthM -3.44 | dcyS +0 newS -22 totS -22
+- Jamarra Ugle-Hagan     KEY_FWD  a22 miss[2025] fade1.00 | Lng 58.3 Lfin 54.0 | dcy -3.71 new -0.60 tot -4.31 truthM -4.31 | dcyS -232 newS +18 totS -214
+- Andy Moniz-Wakefield   GEN_DEF  a21 miss[2025] fade1.00 | Lng 59.3 Lfin 55.8 | dcy +0.14 new -3.69 tot -3.55 truthM -3.55 | dcyS -5 newS -11 totS -16
+- Jeremy Sharp           MID      a21 miss[2023] fade0.50 | Lng 57.0 Lfin 55.3 | dcy +0.30 new -2.01 tot -1.71 truthM -3.41 | dcyS +26 newS -11 totS +14
+- Jy Farrar              KEY_FWD  a27 miss[2024] fade1.00 | Lng 56.1 Lfin 53.7 | dcy +1.50 new -3.93 tot -2.43 truthM -2.43 | dcyS +7 newS -7 totS +0
+- Callum Coleman-Jones   KEY_FWD  a20 miss[2020] fade0.50 | Lng 55.5 Lfin 54.6 | dcy -0.00 new -0.93 tot -0.93 truthM -1.86 | dcyS -4 newS -5 totS -9
+- Jack Buller            KEY_FWD  a22 miss[2024] fade1.00 | Lng 49.9 Lfin 46.2 | dcy +0.25 new -3.94 tot -3.70 truthM -3.70 | dcyS -1 newS +4 totS +3
+- Oscar McDonald         KEY_DEF  a26 miss[2023] fade1.00 | Lng 56.5 Lfin 53.7 | dcy +1.29 new -4.08 tot -2.79 truthM -2.79 | dcyS +5 newS -4 totS +1
+- Darragh Joyce          KEY_DEF  a27 miss[2025] fade1.00 | Lng 52.9 Lfin 50.6 | dcy +2.35 new -4.64 tot -2.29 truthM -2.29 | dcyS -2 newS -3 totS -5
+- Jack Silvagni          KEY_DEF  a26 miss[2024] fade0.50 | Lng 69.3 Lfin 67.6 | dcy +0.49 new -2.21 tot -1.71 truthM -3.43 | dcyS +35 newS -3 totS +32
+- Angus Sheldrick        MID      a20 miss[2024] fade0.50 | Lng 69.2 Lfin 68.0 | dcy +0.08 new -1.23 tot -1.16 truthM -2.32 | dcyS -21 newS -1 totS -22
+
+NEW-TERM double-charge OVERSHOOTS: 0 (HALT if >0). Total gap players detected: 323; term moves 19.
+Non-moving gap players (267): re-established (fade->0, >=2 post-return seasons) OR curve~0 (age<20 data-free) OR decay already >= curve.
+
+## FIX 1 — every value mover (|Δ|>=1), sorted by |Δ|. M4 flagged.
+278 movers. cols: player · pos · base · fix1 · Δ · lvlB->lvlF
+- Darcy Wilmot            GEN_DEF   4237 ->  3544  Δ -693  lvl 88.0->84.3
+- Connor Rozee            MID       2277 ->  2808  Δ +531  lvl 96.0->97.9
+- Connor MacDonald        GEN_FWD   2484 ->  1966  Δ -518  lvl 75.3->71.8
+- Reilly O'Brien          RUC        774 ->  1122  Δ +348  lvl 64.0->92.2
+- Peter Ladhams           RUC        458 ->   152  Δ -306  lvl 64.9->43.1 <<M4:Ladhams
+- Jamarra Ugle-Hagan      KEY_FWD    187 ->   466  Δ +279  lvl 48.8->54.6 <<M4:Jamarra
+- Sam Taylor              KEY_DEF   1753 ->  2019  Δ +266  lvl 75.1->77.8
+- Hugh McCluggage         MID       1627 ->  1890  Δ +263  lvl 86.8->96.1
+- Harrison Jones          KEY_FWD    113 ->   329  Δ +216  lvl 49.0->52.1
+- Aaron Cadman            KEY_FWD   3006 ->  2858  Δ -148  lvl 65.2->64.4
+- Izak Rankine            GEN_FWD   2603 ->  2735  Δ +132  lvl 87.7->89.7
+- Connor Idun             GEN_DEF   1876 ->  1745  Δ -131  lvl 83.8->81.8
+- Luke Ryan               GEN_DEF   1620 ->  1751  Δ +131  lvl 95.4->96.8
+- Timothy English         RUC       3132 ->  3251  Δ +119  lvl 104.1->104.9
+- Matthew Roberts         GEN_DEF   1676 ->  1788  Δ +112  lvl 74.9->75.4
+- Xavier Lindsay          GEN_DEF   1445 ->  1336  Δ -109  lvl 60.7->60.2 <<M4:Lindsay(X)
+- Harvey Thomas           GEN_FWD   2400 ->  2291  Δ -109  lvl 70.2->69.6
+- Elijah Hewett           MID        888 ->   997  Δ +109  lvl 58.8->60.6
+- Charlie Ballard         KEY_DEF    118 ->   222  Δ +104  lvl 52.7->59.6
+- Cody Weightman          GEN_FWD    282 ->   383  Δ +101  lvl 56.4->60.5
+- Lawson Humphries        GEN_DEF   1751 ->  1653  Δ  -98  lvl 75.4->75.1
+- Ryley Sanders           MID       3960 ->  3863  Δ  -97  lvl 84.4->83.9
+- Mitchell Hinge          GEN_DEF    463 ->   558  Δ  +95  lvl 75.5->77.8
+- Harry Rowston           MID        906 ->   821  Δ  -85  lvl 64.9->64.5
+- Nasiah Wanganeen-Milera MID       6348 ->  6427  Δ  +79  lvl 105.5->105.7
+- Lloyd Meek              RUC        895 ->   970  Δ  +75  lvl 64.1->72.0
+- Harry Edwards           KEY_DEF     97 ->   171  Δ  +74  lvl 52.0->57.1
+- Dylan Moore             GEN_FWD   1450 ->  1516  Δ  +66  lvl 81.2->82.0
+- Adam Cerra              MID       1135 ->  1200  Δ  +65  lvl 83.8->85.4
+- Brodie Kemp             KEY_FWD    823 ->   887  Δ  +64  lvl 63.9->64.6
+- Sam Marshall            MID       1125 ->  1062  Δ  -63  lvl 59.8->58.5
+- Brayden Cook            MID        754 ->   815  Δ  +61  lvl 74.1->74.7
+- Charlie Curnow          KEY_FWD   1187 ->  1248  Δ  +61  lvl 72.8->73.5
+- Jake Bowey              GEN_DEF   3219 ->  3159  Δ  -60  lvl 86.4->85.8
+- Lachlan Sholl           MID        228 ->   288  Δ  +60  lvl 68.1->70.5
+- Tom De Koning           RUC       1626 ->  1686  Δ  +60  lvl 82.4->82.9
+- Nathan O'Driscoll       MID        951 ->   895  Δ  -56  lvl 73.4->72.4 <<M4:O`Driscoll(N)
+- Hayden McLean           KEY_FWD    631 ->   576  Δ  -55  lvl 64.6->64.5
+- Brennan Cox             KEY_DEF    506 ->   451  Δ  -55  lvl 66.2->65.8
+- Jesse Hogan             KEY_FWD    379 ->   434  Δ  +55  lvl 62.7->72.9
+- Logan Evans             GEN_DEF   1242 ->  1295  Δ  +53  lvl 68.7->68.8
+- Darcy Cameron           RUC       1432 ->  1485  Δ  +53  lvl 94.5->95.4
+- Josh Dolan              GEN_FWD    445 ->   393  Δ  -52  lvl 50.6->50.1
+- Luke Davies-Uniacke     MID       3256 ->  3204  Δ  -52  lvl 103.5->102.1
+- Tom McCartin            KEY_DEF   1408 ->  1356  Δ  -52  lvl 70.1->69.9
+- Ned Long                MID        910 ->   961  Δ  +51  lvl 71.0->71.6
+- Alix Tauru              KEY_DEF   1693 ->  1644  Δ  -49  lvl 55.6->55.7
+- Logan Morris            KEY_FWD   3074 ->  3025  Δ  -49  lvl 65.7->65.4
+- Kysaiah Pickett         GEN_FWD   3329 ->  3281  Δ  -48  lvl 86.9->86.7
+- Jake Soligo             MID       2071 ->  2118  Δ  +47  lvl 78.2->78.8
+- Sandy Brock             KEY_DEF    363 ->   410  Δ  +47  lvl 59.3->60.3
+- Jack Scrimshaw          GEN_DEF     86 ->   133  Δ  +47  lvl 62.5->68.1
+- Dan Houston             GEN_DEF   1188 ->  1234  Δ  +46  lvl 87.3->87.6
+- Elijah Hollands         GEN_FWD    927 ->   971  Δ  +44  lvl 68.3->69.0
+- Matt Rowell             MID       3979 ->  4022  Δ  +43  lvl 102.7->102.7
+- Paul Curtis             GEN_FWD   1518 ->  1478  Δ  -40  lvl 70.2->70.1
+- Zac Fisher              GEN_FWD    171 ->   211  Δ  +40  lvl 55.7->67.7
+- Jordan Ridley           GEN_DEF   1040 ->  1078  Δ  +38  lvl 76.4->80.6
+- Seth Campbell           GEN_FWD   1027 ->   990  Δ  -37  lvl 66.4->66.1
+- Sam Berry               MID       2731 ->  2695  Δ  -36  lvl 86.2->85.7
+- Connor O'Sullivan       KEY_DEF   2786 ->  2751  Δ  -35  lvl 64.8->64.7
+- Errol Gulden            MID       5743 ->  5709  Δ  -34  lvl 101.6->101.6
+- Kai Lohmann             GEN_FWD    464 ->   497  Δ  +33  lvl 60.6->60.8
+- Archie Roberts          GEN_DEF   4386 ->  4354  Δ  -32  lvl 79.9->79.7
+- Will Day                MID       2950 ->  2918  Δ  -32  lvl 89.4->89.4 <<M4:Day(W)
+- Joel Jeffrey            GEN_DEF   1646 ->  1677  Δ  +31  lvl 77.5->77.7
+- Mattaes Phillipou       MID       1056 ->  1086  Δ  +30  lvl 63.4->63.9
+- Neil Erasmus            MID        800 ->   830  Δ  +30  lvl 66.2->66.4
+- Leek Aleer              KEY_DEF    338 ->   368  Δ  +30  lvl 58.0->57.7
+- Ryan Angwin             MID        434 ->   404  Δ  -30  lvl 67.0->67.0
+- George Wardlaw          MID       3061 ->  3032  Δ  -29  lvl 81.6->81.5
+- Tyler Sonsie            MID        750 ->   721  Δ  -29  lvl 66.1->65.7
+- James Borlase           KEY_DEF    487 ->   516  Δ  +29  lvl 63.5->63.9
+- Nikolas Cox             KEY_FWD    419 ->   391  Δ  -28  lvl 52.6->52.3
+- Jack Henry              KEY_DEF    199 ->   226  Δ  +27  lvl 63.2->63.7
+- Ryan Maric              MID       1231 ->  1257  Δ  +26  lvl 70.6->71.2
+- Jeremy Sharp            MID        109 ->   134  Δ  +25  lvl 56.9->57.3
+- Chad Warner             MID       2742 ->  2767  Δ  +25  lvl 91.5->91.7
+- Harry Sharp             GEN_FWD    217 ->   193  Δ  -24  lvl 56.5->56.3
+- Jye Caldwell            MID       1442 ->  1466  Δ  +24  lvl 85.5->85.7
+- Liam Baker              GEN_DEF    624 ->   648  Δ  +24  lvl 78.4->79.1
+- Hayden Young            MID       2612 ->  2635  Δ  +23  lvl 88.7->88.9
+- Ben Ainsworth           GEN_FWD    304 ->   282  Δ  -22  lvl 66.2->65.8
+- Dylan Stephens          MID        367 ->   346  Δ  -21  lvl 66.8->66.6
+- Jack Lukosius           KEY_FWD   1437 ->  1417  Δ  -20  lvl 68.8->68.2
+- Toby Nankervis          RUC       1982 ->  1962  Δ  -20  lvl 100.2->100.2
+- Oliver Hollands         GEN_DEF   1494 ->  1475  Δ  -19  lvl 71.3->71.1
+- Lachlan Ash             GEN_DEF   5043 ->  5024  Δ  -19  lvl 96.9->96.9
+- Jaxon Prior             GEN_DEF    293 ->   312  Δ  +19  lvl 66.6->66.8
+- Harry Morrison          MID         29 ->    48  Δ  +19  lvl 64.5->67.1
+- Judson Clarke           GEN_FWD     90 ->   108  Δ  +18  lvl 54.0->55.9
+- Shannon Neale           KEY_FWD   2343 ->  2325  Δ  -18  lvl 69.8->69.6
+- Josh Treacy             KEY_FWD   6224 ->  6206  Δ  -18  lvl 86.2->85.8
+- Jake Waterman           KEY_FWD   1404 ->  1422  Δ  +18  lvl 71.6->71.6
+- Riley Hardeman          GEN_DEF    386 ->   403  Δ  +17  lvl 56.6->58.3
+- Mykelti Lefau           KEY_FWD     58 ->    75  Δ  +17  lvl 56.4->57.0
+- Darcy Jones             GEN_FWD   1517 ->  1534  Δ  +17  lvl 67.6->67.7
+- Will Setterfield        MID       1511 ->  1494  Δ  -17  lvl 86.9->86.6
+- Sean Darcy              RUC        936 ->   953  Δ  +17  lvl 59.7->60.7
+- Matthew Flynn           RUC        693 ->   710  Δ  +17  lvl 76.7->77.8
+- Harvey Langford         MID       2525 ->  2509  Δ  -16  lvl 68.3->68.4
+- Riley Bice              GEN_DEF    422 ->   406  Δ  -16  lvl 67.6->67.5
+- Tom Brown               GEN_DEF    492 ->   476  Δ  -16  lvl 65.8->65.4
+- Luke Cleary             GEN_DEF     90 ->   106  Δ  +16  lvl 59.1->61.8
+- Beau McCreery           GEN_FWD    207 ->   191  Δ  -16  lvl 60.0->57.5
+- Luke Jackson            RUC       7460 ->  7444  Δ  -16  lvl 109.4->109.2
+- Connor Budarick         GEN_DEF    154 ->   138  Δ  -16  lvl 64.2->63.2
+- Oscar Allen             KEY_FWD    179 ->   195  Δ  +16  lvl 58.0->59.0
+- Sam Lalor               MID       3483 ->  3468  Δ  -15  lvl 79.9->79.7
+- Jy Simpkin              MID        601 ->   616  Δ  +15  lvl 82.2->82.4
+- Jobe Shanahan           KEY_FWD   1606 ->  1592  Δ  -14  lvl 55.8->55.9
+- Massimo D'Ambrosio      MID       1744 ->  1730  Δ  -14  lvl 77.0->76.8
+- Sam Walsh               MID       2739 ->  2753  Δ  +14  lvl 98.5->98.6
+- James Tunstill          MID         95 ->   108  Δ  +13  lvl 51.8->51.9
+- Maurice Rioli           GEN_FWD     82 ->    69  Δ  -13  lvl 52.7->52.4
+- Kyle Langford           KEY_FWD    642 ->   655  Δ  +13  lvl 69.5->70.2
+- Rory Laird              GEN_DEF    916 ->   929  Δ  +13  lvl 74.0->80.6
+- Nate Caddy              KEY_FWD   1727 ->  1715  Δ  -12  lvl 56.8->56.7
+- Edward Allan            MID        726 ->   714  Δ  -12  lvl 63.4->63.4
+- Malcolm Rosas           GEN_FWD     86 ->    74  Δ  -12  lvl 57.2->58.1
+- Murphy Reid             GEN_FWD   3794 ->  3805  Δ  +11  lvl 69.6->69.2
+- Caleb Windsor           MID       1678 ->  1667  Δ  -11  lvl 61.9->61.8
+- Luke Nankervis          GEN_DEF    342 ->   331  Δ  -11  lvl 60.8->61.5
+- Lance Collard           GEN_FWD    267 ->   277  Δ  +10  lvl 50.7->50.9
+- Finn Callaghan          MID       5546 ->  5556  Δ  +10  lvl 99.3->99.4
+- Tanner Bruhn            MID       1079 ->  1089  Δ  +10  lvl 73.4->73.4
+- James Rowbottom         MID        466 ->   476  Δ  +10  lvl 70.1->71.6
+- Darcy Fogarty           KEY_FWD    382 ->   392  Δ  +10  lvl 61.5->61.9
+- James Worpel            MID        515 ->   525  Δ  +10  lvl 75.6->76.3
+- Gryan Miers             GEN_FWD   1492 ->  1502  Δ  +10  lvl 81.3->81.3
+- Patrick Lipinski        GEN_FWD    517 ->   527  Δ  +10  lvl 73.4->73.5
+- Sam Draper              RUC        619 ->   629  Δ  +10  lvl 75.1->74.8
+- Christian Petracca      MID       2672 ->  2662  Δ  -10  lvl 105.0->105.0
+- Finn O'Sullivan         MID       3527 ->  3536  Δ   +9  lvl 73.4->73.0
+- Archer Reid             KEY_FWD   1088 ->  1097  Δ   +9  lvl 53.0->53.2
+- Liam O'Connell          GEN_DEF     96 ->    87  Δ   -9  lvl 51.9->51.8
+- Lachlan Bramble         GEN_FWD     93 ->   102  Δ   +9  lvl 64.5->64.7
+- Steely Green            GEN_FWD    273 ->   264  Δ   -9  lvl 54.7->54.5
+- Jordon Sweet            RUC       2052 ->  2043  Δ   -9  lvl 90.7->90.5
+- Callum M. Brown         GEN_FWD     16 ->    25  Δ   +9  lvl 54.5->56.0
+- John Noble              GEN_DEF   2404 ->  2395  Δ   -9  lvl 88.4->88.4
+- Andrew Brayshaw         MID       2770 ->  2779  Δ   +9  lvl 101.5->102.2
+- Shai Bolton             GEN_FWD   2201 ->  2192  Δ   -9  lvl 85.9->85.9
+- Eric Hipwood            KEY_FWD    100 ->    91  Δ   -9  lvl 57.4->58.1
+- Touk Miller             MID       1417 ->  1426  Δ   +9  lvl 96.8->98.5
+- Sam Darcy               KEY_FWD   3865 ->  3873  Δ   +8  lvl 74.6->75.2
+- Callum Wilkie           KEY_DEF   3150 ->  3142  Δ   -8  lvl 91.2->91.2
+- Callum Coleman-Jones    KEY_FWD     51 ->    59  Δ   +8  lvl 55.1->55.5
+- Clayton Oliver          MID       2440 ->  2432  Δ   -8  lvl 103.4->102.9
+- George Hewett           MID       1401 ->  1409  Δ   +8  lvl 95.1->95.1
+- Joe Berry               GEN_FWD   1321 ->  1328  Δ   +7  lvl 56.7->56.8
+- Harley Reid             MID       3594 ->  3587  Δ   -7  lvl 84.5->84.3
+- Max Hall                GEN_FWD   1855 ->  1848  Δ   -7  lvl 72.8->72.6
+- Ned Reeves              RUC        373 ->   366  Δ   -7  lvl 70.2->70.4
+- Tim Taranto             MID       2504 ->  2497  Δ   -7  lvl 99.4->99.4
+- Sam Powell-Pepper       GEN_FWD    311 ->   304  Δ   -7  lvl 68.1->68.5
+- Elliott Himmelberg      KEY_FWD    121 ->   114  Δ   -7  lvl 58.1->58.3
+- Wayne Milera            GEN_DEF   1665 ->  1658  Δ   -7  lvl 83.3->83.3
+- Thomas Liberatore       MID       1843 ->  1850  Δ   +7  lvl 106.4->106.4
+- Jack Whitlock           KEY_FWD   1256 ->  1262  Δ   +6  lvl 54.2->54.3
+- Nick Watson             GEN_FWD   3581 ->  3575  Δ   -6  lvl 73.6->73.0
+- Darcy Wilson            GEN_FWD   2389 ->  2395  Δ   +6  lvl 71.0->70.6
+- Will Ashcroft           MID       4940 ->  4946  Δ   +6  lvl 95.6->95.6
+- Jhye Clark              MID        680 ->   674  Δ   -6  lvl 54.1->53.4
+- Jacob Konstanty         GEN_FWD    360 ->   366  Δ   +6  lvl 53.7->53.9
+- Josh Gibcus             KEY_DEF    280 ->   274  Δ   -6  lvl 57.5->57.8
+- Jesse Motlop            GEN_FWD    155 ->   161  Δ   +6  lvl 50.9->51.1
+- Zac Taylor              GEN_FWD    357 ->   351  Δ   -6  lvl 58.9->58.6
+- Brandon Walker          GEN_DEF     91 ->    97  Δ   +6  lvl 51.7->52.8
+- Jy Farrar               KEY_FWD     28 ->    34  Δ   +6  lvl 54.5->57.6
+- Jordan Clark            GEN_DEF   3136 ->  3142  Δ   +6  lvl 93.6->93.6
+- Jack Buckley            KEY_DEF    726 ->   732  Δ   +6  lvl 70.6->71.2
+- Lewis Young             KEY_DEF    175 ->   181  Δ   +6  lvl 60.4->60.8
+- Callum Mills            GEN_DEF   1785 ->  1791  Δ   +6  lvl 95.4->95.6
+- Blake Acres             MID         96 ->    90  Δ   -6  lvl 78.4->75.7
+- Calsher Dear            KEY_FWD   1092 ->  1097  Δ   +5  lvl 56.3->56.2
+- Toby McMullin           GEN_FWD    209 ->   214  Δ   +5  lvl 46.1->46.5
+- Rhett Bazzo             KEY_DEF    567 ->   562  Δ   -5  lvl 59.8->59.4 <<M4:Bazzo
+- Jai Newcombe            MID       4242 ->  4237  Δ   -5  lvl 97.1->97.1
+- James Peatling          MID       1161 ->  1156  Δ   -5  lvl 77.6->77.6
+- Noah Anderson           MID       4525 ->  4530  Δ   +5  lvl 105.5->105.5
+- Max King                KEY_FWD    361 ->   366  Δ   +5  lvl 59.7->59.9
+- Brent Daniels           GEN_FWD   1300 ->  1305  Δ   +5  lvl 76.4->76.4
+- James Sicily            GEN_DEF   1948 ->  1943  Δ   -5  lvl 97.2->96.9
+- Daniel Curtin           MID       2215 ->  2219  Δ   +4  lvl 72.0->72.2
+- Cameron Mackenzie       MID       1595 ->  1599  Δ   +4  lvl 71.5->71.3
+- Robert Hansen           GEN_FWD    180 ->   184  Δ   +4  lvl 50.7->50.8
+- Mitchell Knevitt        MID        191 ->   195  Δ   +4  lvl 55.5->55.6
+- Brady Hough             GEN_DEF    375 ->   371  Δ   -4  lvl 60.7->61.0
+- Corey Warner            GEN_FWD    147 ->   151  Δ   +4  lvl 53.5->54.3
+- Jack Carroll            MID        177 ->   181  Δ   +4  lvl 62.7->63.3
+- Ollie Lord              KEY_FWD    166 ->   162  Δ   -4  lvl 48.6->48.8
+- Sam Flanders            MID       1710 ->  1706  Δ   -4  lvl 86.8->86.8
+- Jack Ross               MID       1608 ->  1604  Δ   -4  lvl 82.8->82.5
+- Toby Bedford            GEN_FWD    235 ->   231  Δ   -4  lvl 61.9->59.9
+- Lachlan Fogarty         GEN_FWD     78 ->    82  Δ   +4  lvl 60.5->61.1
+- Griffin Logue           KEY_DEF    135 ->   139  Δ   +4  lvl 59.0->59.2
+- Josh Battle             KEY_DEF   2009 ->  2005  Δ   -4  lvl 78.4->78.4
+- Nic Newman              GEN_DEF    876 ->   880  Δ   +4  lvl 91.6->92.2
+- Bo Allan                GEN_DEF   1210 ->  1213  Δ   +3  lvl 58.7->58.9
+- Ewan Mackinlay          GEN_FWD     41 ->    38  Δ   -3  lvl 55.2->55.1
+- Jed Walter              KEY_FWD   1553 ->  1556  Δ   +3  lvl 53.3->53.0
+- Caiden Cleary           GEN_FWD    740 ->   743  Δ   +3  lvl 57.7->57.2
+- Jack Hutchinson         MID         52 ->    55  Δ   +3  lvl 59.9->60.6
+- Tyrell Dewar            GEN_DEF    305 ->   308  Δ   +3  lvl 55.5->55.6
+- James Trezise           GEN_DEF    176 ->   173  Δ   -3  lvl 62.8->62.5
+- Josh Sinn               GEN_DEF    344 ->   347  Δ   +3  lvl 58.5->58.6
+- Campbell Chesser        MID        552 ->   549  Δ   -3  lvl 63.3->61.1 <<M4:Chesser
+- Arthur Jones            GEN_FWD    236 ->   239  Δ   +3  lvl 57.3->57.9
+- Jack Williams           KEY_FWD    558 ->   561  Δ   +3  lvl 52.0->52.2
+- Jackson Archer          GEN_DEF     87 ->    90  Δ   +3  lvl 54.2->55.1
+- Jackson Mead            GEN_FWD     60 ->    63  Δ   +3  lvl 55.1->54.9
+- Buku Khamis             KEY_DEF     75 ->    78  Δ   +3  lvl 55.5->55.6
+- Jack Higgins            GEN_FWD    199 ->   196  Δ   -3  lvl 65.0->64.6
+- Brandon Zerk-Thatcher   KEY_DEF    244 ->   241  Δ   -3  lvl 61.8->61.9
+- Andrew McGrath          GEN_DEF   1085 ->  1088  Δ   +3  lvl 83.7->84.0
+- Harry Perryman          GEN_DEF    175 ->   172  Δ   -3  lvl 71.3->71.0
+- Jayden Short            GEN_DEF   1507 ->  1504  Δ   -3  lvl 90.0->90.0
+- Karl Amon               GEN_DEF    776 ->   779  Δ   +3  lvl 89.0->89.0
+- Lachie Whitfield        GEN_DEF   2152 ->  2155  Δ   +3  lvl 103.4->103.4
+- Hamish Davis            MID        937 ->   939  Δ   +2  lvl 59.1->59.2
+- Archie May              KEY_FWD    382 ->   384  Δ   +2  lvl 53.7->53.7
+- Cooper Trembath         KEY_FWD   1506 ->  1508  Δ   +2  lvl 56.4->56.2
+- Isaac Keeler            KEY_FWD    438 ->   440  Δ   +2  lvl 53.6->53.7
+- Sam Banks               GEN_DEF    928 ->   926  Δ   -2  lvl 70.1->70.4
+- Bodhi Uwland            GEN_DEF   3072 ->  3074  Δ   +2  lvl 83.0->82.5
+- Riley Thilthorpe        KEY_FWD   3657 ->  3659  Δ   +2  lvl 79.1->79.1
+- Tom Powell              GEN_FWD   1898 ->  1900  Δ   +2  lvl 73.9->73.9
+- Alex Davies             MID        599 ->   601  Δ   +2  lvl 70.8->71.0
+- Daniel Turner           KEY_DEF   1615 ->  1617  Δ   +2  lvl 68.9->68.8
+- Deven Robertson         MID        294 ->   292  Δ   -2  lvl 71.6->71.3 <<M4:Robertson
+- Josh Worrell            GEN_DEF   3010 ->  3008  Δ   -2  lvl 90.5->90.5
+- Riley Garcia            GEN_FWD    161 ->   163  Δ   +2  lvl 63.0->63.3
+- Nick Blakey             GEN_DEF   3330 ->  3328  Δ   -2  lvl 94.8->94.7
+- Zac Bailey              GEN_FWD   2317 ->  2319  Δ   +2  lvl 84.5->84.4
+- Joel Amartey            KEY_FWD    143 ->   145  Δ   +2  lvl 57.1->57.2
+- Thomas Stewart          GEN_DEF   1013 ->  1015  Δ   +2  lvl 90.8->91.5
+- Darcy Parish            MID       1403 ->  1405  Δ   +2  lvl 93.4->93.6
+- Mason Redman            GEN_DEF   1412 ->  1414  Δ   +2  lvl 88.5->88.5
+- Jordan De Goey          GEN_FWD   1574 ->  1576  Δ   +2  lvl 83.6->83.7
+- Patrick Cripps          MID       1365 ->  1367  Δ   +2  lvl 97.0->97.3
+- Luke Parker             GEN_DEF   1393 ->  1391  Δ   -2  lvl 95.3->95.1
+- Taylor Walker           KEY_FWD    227 ->   229  Δ   +2  lvl 60.2->63.7
+- Jonty Faull             KEY_FWD   1193 ->  1194  Δ   +1  lvl 46.3->46.4
+- Christian Moraes        MID        989 ->   990  Δ   +1  lvl 57.9->57.8
+- Ty Gallop               KEY_FWD   1148 ->  1147  Δ   -1  lvl 54.0->54.0
+- Hugh Boxshall           MID        929 ->   930  Δ   +1  lvl 58.0->58.2
+- Archer Day-Wicks        GEN_FWD    414 ->   413  Δ   -1  lvl 53.0->53.1
+- Isaiah Dudley           GEN_FWD     83 ->    84  Δ   +1  lvl 53.7->53.6
+- Roan Steele             MID         14 ->    15  Δ   +1  lvl 59.1->59.2
+- Clay Hall               MID        606 ->   607  Δ   +1  lvl 64.7->64.9
+- Joel Freijah            MID       2224 ->  2223  Δ   -1  lvl 75.0->75.0
+- Matt Carroll            MID        945 ->   946  Δ   +1  lvl 64.3->64.0
+- Lachie Sullivan         GEN_FWD      1 ->     2  Δ   +1  lvl 53.0->53.2
+- Jedd Busslinger         KEY_DEF    735 ->   736  Δ   +1  lvl 60.4->60.3
+- Blake Howes             GEN_DEF    318 ->   317  Δ   -1  lvl 62.4->62.5
+- Marcus Windhager        MID       1719 ->  1720  Δ   +1  lvl 75.9->76.0
+- Andy Moniz-Wakefield    GEN_DEF     61 ->    62  Δ   +1  lvl 59.0->59.4
+- Nicholas Martin         MID       2857 ->  2858  Δ   +1  lvl 95.1->95.1
+- Samson Ryan             RUC        611 ->   610  Δ   -1  lvl 60.1->60.2
+- Tom Green               MID       4196 ->  4195  Δ   -1  lvl 104.9->104.9
+- Charlie Comben          KEY_DEF    728 ->   729  Δ   +1  lvl 64.8->64.9
+- Nick Bryan              RUC        814 ->   813  Δ   -1  lvl 65.8->65.8
+- Justin McInerney        MID       1426 ->  1425  Δ   -1  lvl 84.4->84.4
+- Kade Chandler           GEN_FWD    990 ->   991  Δ   +1  lvl 71.8->71.7
+- Mark Keane              KEY_DEF   1561 ->  1562  Δ   +1  lvl 70.0->70.1
+- Aaron Naughton          KEY_FWD   1650 ->  1651  Δ   +1  lvl 73.5->73.5
+- Ed Richards             MID       2839 ->  2840  Δ   +1  lvl 98.7->98.7
+- Noah Balta              KEY_FWD    423 ->   424  Δ   +1  lvl 63.9->63.9
+- Changkuoth Jiath        GEN_DEF     27 ->    26  Δ   -1  lvl 60.8->60.7
+- Isaac Cumming           GEN_DEF     47 ->    46  Δ   -1  lvl 64.5->64.1
+- Darragh Joyce           KEY_DEF      9 ->    10  Δ   +1  lvl 55.3->55.3
+- Jake Lever              KEY_DEF    544 ->   545  Δ   +1  lvl 71.0->71.2
+- Jack Steele             MID       1576 ->  1575  Δ   -1  lvl 98.4->98.3
+- Bailey Dale             GEN_DEF   1886 ->  1887  Δ   +1  lvl 95.6->95.6
+- Caleb Daniel            GEN_DEF   1213 ->  1214  Δ   +1  lvl 87.4->87.4
+- Daniel McStay           KEY_FWD     64 ->    65  Δ   +1  lvl 60.7->60.8
+- Dayne Zorko             GEN_DEF   1083 ->  1082  Δ   -1  lvl 101.2->101.2
+
+## M4 list explicit (owner-flagged overpriced)
+- Bazzo          Rhett Bazzo            base   567 · Fix1   562 · Both   562  (Δboth -5)
+- Chesser        Campbell Chesser       base   552 · Fix1   549 · Both   549  (Δboth -3)
+- Day(S)         Sam Day                base    24 · Fix1    24 · Both    24  (Δboth +0)
+- Day(W)         Will Day               base  2950 · Fix1  2918 · Both  2918  (Δboth -32)
+- Jamarra        Jamarra Ugle-Hagan     base   187 · Fix1   466 · Both   484  (Δboth +297)
+- Ladhams        Peter Ladhams          base   458 · Fix1   152 · Both   152  (Δboth -306)
+- Lindsay(J)     Josh Lindsay           base  1753 · Fix1  1753 · Both  1753  (Δboth +0)
+- Lindsay(X)     Xavier Lindsay         base  1445 · Fix1  1336 · Both  1336  (Δboth -109)
+- McAuliffe      Kane McAuliffe         base  1243 · Fix1  1243 · Both  1243  (Δboth +0)
+- Moyle          Ned Moyle              base  1630 · Fix1  1630 · Both  1630  (Δboth +0)
+- O`Driscoll(A)  Aiden O'Driscoll       base    11 · Fix1    11 · Both    11  (Δboth +0)
+- O`Driscoll(N)  Nathan O'Driscoll      base   951 · Fix1   895 · Both   895  (Δboth -56)
+- Robertson      Deven Robertson        base   294 · Fix1   292 · Both   292  (Δboth -2)
+- Tsatas         Elijah Tsatas          base  1181 · Fix1  1181 · Both  1181  (Δboth +0)

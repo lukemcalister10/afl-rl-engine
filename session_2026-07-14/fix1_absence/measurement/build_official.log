@@ -1,0 +1,26 @@
+===== 1. sync workspace engine = repo engine =====
+engine md5 = fef5719dddbb24aa10ecd5905a630076   (was 2334f570e91c555630be86e36408eea1)
+===== 2. re-pin engine_head BEFORE any boot_guard runs =====
+engine_head 2334f570 -> fef5719d
+===== 3. build board (gate mode; RL_DAMP/RL_ABSENCE default-ON, not in manifest) =====
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 7 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 511 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+exported active=804 cohort=1977 | mechanisms=7 categories analysed | board stamped src=340a7a32 (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1260, '11-20': 155, '21-30': 1825, '31-45': -173, '46-99': -138}
+CAT_BY_RANGE Open   : {'1-10': 82, '11-20': 8, '21-30': 75, '31-45': -26, '46-99': -7}
+board md5 = e6a8e6efda796cbfb7620338c5b2c3ef   (was 3dc19fbbf920958affe7c6a2be9697d2)
+===== 4. re-pin board =====
+board 3dc19fbb -> e6a8e6ef
+===== 5. build book (walk-forward matrix) =====
+  sat out draft Yr1: 606 players (29% of curve pool)
+  over-valuation when anchored at first-played vs real Yr1: total=97976 SCAR, mean=+162, median=+58
+  whole-pool anchor sum: buggy=1510314 -> fixed=1434911  (5.0% lower overall)
+  picks 1-20: 78 sat-out, mean over-val +298 (33% of real Yr1)
+  picks 21-40: 131 sat-out, mean over-val +138 (26% of real Yr1)
+  picks 41-80: 268 sat-out, mean over-val +125 (39% of real Yr1)
+book meta:
+{'kind': 'walk_forward_cohort_book', 'engine_head_md5': 'fef5719dddbb24aa10ecd5905a630076', 'store_md5': '340a7a32d767f199e4cdd93ef8ae059e', 'config_sha256': 'c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b', 'n_players': 2649}
+DONE. engine=fef5719dddbb24aa10ecd5905a630076 board=e6a8e6efda796cbfb7620338c5b2c3ef
