@@ -1,6 +1,6 @@
 # RETURN — SMOOTH THE THREE HARD EDGES (attribution-first; Tier 3, read-only, candidate)
 
-**branch** `claude/smooth-three-hard-edges-fxeza5` · **head** (see commit) · **PR** candidate (below) ·
+**branch** `claude/smooth-three-hard-edges-fxeza5` · **head** `6a6f2f6` · **PR** #75 (candidate) ·
 **board measured** `3dc19fbb` (store `340a7a32`, engine `2030e5df`) = ITEM-20 successor to tagged
 `81e48293` (bramble +1 the only v-delta; no measured player affected). Baseline rebuilt **twice,
 byte-identical** (`3dc19fbb == committed`), panel PASS 10/10 — **ground is stable here.** Overlay all-off
