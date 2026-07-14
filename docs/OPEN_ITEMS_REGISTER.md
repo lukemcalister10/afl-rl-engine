@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v93 2026-07-14 (**OWNER READ, AHEAD OF THE CODE** (item 98): *"English's value seemed low compared to some of the 'flakier' rucks"* — made from the BOARD before any seat found `_eo`. **`_eo` predicts it exactly: it scales with the fraction of available football a player has ACTUALLY PLAYED, so the flaky rucks are PROTECTED BY THEIR FLAKINESS and English is PUNISHED BY HIS DURABILITY.** NOT YET MEASURED — the ruck path has its own machinery and the determinism residual lives there too; the census M5 must DECOMPOSE and return EXPLAINED / PARTLY / NOT. **Item 99: JAMARRA — 187 AND ~1,000 ARE BOTH WRONG, AND BOTH ARE DRIVEN BY THREE GAMES.** The same 3 games are worth ~800 SCAR depending on how they fell: the cameo is not punished for being SMALL, it is priced for being UNLUCKY — and nobody has looked at the upside. The owner's ruling-in-waiting (*'1000 is too high, 187 is too small'*) IS the D2 hypothesis from the other end: **the recency decay UNDER-CHARGES absence.** That is exactly what D2's R3 measures.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v94 2026-07-14 (⚠⚠ **A1 IS PROVEN** (item 100): the tag's OWN expected_boot carries board=81e48293e4a47309567c47f392eda1fc and the build rebuilt EXACTLY that, at the tag's own tree, own config (69ead79b), no bypass — SUPERVISOR-VERIFIED against ground truth, not the return's word. **THE BOARD OF RECORD REBUILDS. THE PICK CURVE HOLDS — PICK 1 = 3000.** **Item 101: ITEM 76 CLOSED — the cause is MEASURED (BLAS kernel generation; SIMD refuted) and BOTH objections were right: BLAS is not inside the tree fitter, it is UPSTREAM in the np.dot sums that feed it.** ⚠⚠ **Item 102: THE SUPERVISOR WAS ONE MESSAGE FROM PINNING THE WRONG THING. P4 proved the board is SENSITIVE to the BLAS kernel; it did NOT prove the kernel is what DIFFERS IN CI. Nobody has EVER read CI's BLAS config, and CI does not print the board md5. THE UNTESTED ALTERNATIVE IS OPENBLAS_NUM_THREADS — thread count changes the SUMMATION ORDER of a dot product, identical signature, never once mentioned by any seat. READ THE ENVIRONMENT BEFORE PINNING.** **Item 103: the book seal's head_md5 is the THIRD decorative pin.** **Item 104: ITEM 74 HAS ALL BUT COLLAPSED — 8 rucks, +1..+4 SCAR, nothing flips.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2334,6 +2334,93 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     re-cut must settle which. DO NOT CARRY THIS UNCHECKED.**
     **THE UNIFYING STATEMENT: the three games should be a MINOR input to Jamarra's price. Today they are the
     DOMINANT one. Fix 1, the phantom row, and a correctly-sized absence charge are THREE FIXES FOR ONE DISEASE.**
+
+100. **⚠⚠ A1 IS PROVEN. THE BOARD OF RECORD REBUILDS. THE CHAPTER'S FOUNDATION IS A FACT.**
+    **(q97m follow-up, branch `claude/q97m-freeze-determinism-s9v8ky`, head `addef03`, 6-commit PR to main.)**
+    **SUPERVISOR-VERIFIED AGAINST THE TAG'S OWN GROUND TRUTH, NOT THE RETURN'S WORD.** `git show
+    9f8ae76:data/expected_boot.json` carries **`board = 81e48293e4a47309567c47f392eda1fc`** — **EXACTLY the hash
+    the build rebuilt.** Two further details independently corroborate the construction: the tag's **`q97m` pin
+    is ABSENT** (so the tag DOES fit it at runtime, as claimed) and the tag's **`config` is `69ead79b`** — so the
+    build booted on the **TAG'S OWN CONFIG**, not `c2d233ae`. **It did NOT take the item-86 trap.**
+    ⚠ **THE FIRST FREEZE RETURN SAID IT "LEFT CONFIG AT `c2d233ae`". THAT WAS ITS FOURTH FALSE CLAIM** (with the
+    A2 re-scope, the asserted cause, the phantom "committed" proofs, and a **wrong working-head book hash —
+    `2f8232a0`, where the seal file says `d371a27c`**). **REFUSING TO GRANT A1 ON ITS WORD (item 92) WAS CORRECT,
+    AND THE RE-RUN VINDICATED IT.**
+    **ALSO PROVEN:** four hashes rebuilt from source (both boards, both books) · **THE PICK CURVE HOLDS — PICK 1 =
+    3000 ON BOTH ENVIRONMENTS. THE NUMÉRAIRE IS SAFE.** · artifacts COMMITTED this time (PLAN first, as auto mode
+    requires; RETURN; A1_PROOF; F1 red-paths; P2/P3/P4/P5) · **(0e) READ LINE-BY-LINE BY THE SUPERVISOR AND IT IS
+    GOOD** — it mirrors the engine's load precedence byte-for-byte, covers `cm` as well as `q97m`, and treats an
+    UNRESOLVABLE path as a **FAILURE, not a skip.** **Item 91 is CLOSED.**
+    **FENCE: CLEAN.** The four job commits touched **nothing** outside fence. `ci-guards.yml`, `run_panel.sh`,
+    `book_stable_seal.json` and the gates snapshot were all touched by **`ed13177` (PR #74, prescreened PASS days
+    ago)** — verified per-commit. **This corroborates P5: #74 re-sealed the book; the freeze did not touch it.**
+
+101. **ITEM 76 IS CLOSED — THE CAUSE IS MEASURED, AND *BOTH* SIDES OF THE ARGUMENT WERE RIGHT.**
+    **Three separate builds. The BLAS KERNEL GENERATION is the mover** (SSE `Prescott` ⇒ board `935c2c29`; AVX2
+    Haswell == SkylakeX == AVX512-disabled ⇒ `3dc19fbb`). **numpy SIMD is REFUTED** — disabling it down to SSE2
+    changes nothing.
+    **THE RECONCILIATION, AND IT MATTERS:** item 76's objection — *"gradient boosting fits DECISION TREES, which
+    do not go through BLAS matmul"* — **was CORRECT about the mechanism and WRONG about the conclusion.** **BLAS
+    is not inside the tree fitter. It is UPSTREAM, in the `np.dot` NW-smoother sums that FEED the fits.** Seat 5's
+    original OpenBLAS call was right, for a reason nobody had stated. **Both objections were sound; neither was
+    complete.** **Register the reconciliation, not just the verdict.**
+
+102. **⚠⚠ THE RESIDUAL: THE SUPERVISOR WAS ONE MESSAGE FROM PINNING THE WRONG THING. STOPPED, AND WHY.**
+    **THE MEASURED DRIFT IS TINY: 8 of 804 players, +1..+4 SCAR, ALL RUCKS; board sum 696,248 → 696,264
+    (+0.0023%).** The owner's read — *"it's so inconsequential I don't care"* — **is right about the VALUATION and
+    wrong about the MACHINERY.**
+    ⚠ **`boot_guard` ASSERTS THE BOARD BY FULL HASH. ONE PLAYER MOVING ONE POINT PRODUCES A DIFFERENT md5 AND
+    HALTS EVERY GATE, PANEL, BAKE AND SELF-TEST.** **The magnitude is irrelevant. The hash does not care.** And
+    **a bake on a drifting box would build `935c2c29`, RE-PIN EVERY GUARD TO IT, and then every OTHER machine in
+    the project would halt.** It cannot be ignored.
+    **CI CONFIRMED RED, TWICE, IDENTICALLY** — Gawn 2395/2393 · Goad 874/873 · Green 658/655, **all RUC, all
+    inside P3's measured +1..+4 band, and 3 of the panel's 10 are rucks. The 3 CI movers ARE a subset of the 8.**
+    Every other CI guard is **GREEN**. **CI is STABLY building a different board — not flickering.**
+    ⚠⚠ **AND HERE IS THE ERROR THAT WAS ALMOST MADE. P4 PROVED THE BOARD IS *SENSITIVE* TO THE BLAS KERNEL. IT
+    DID NOT PROVE THE BLAS KERNEL IS WHAT *DIFFERS IN CI*. THOSE ARE DIFFERENT CLAIMS.** **NOBODY HAS EVER READ
+    CI's ACTUAL BLAS CONFIGURATION — not once, not this week — and CI DOES NOT PRINT THE BOARD md5.** We are
+    INFERRING the SSE board from three player values.
+    **THE UNTESTED ALTERNATIVE WITH AN IDENTICAL SIGNATURE: `OPENBLAS_NUM_THREADS`.** OpenBLAS accumulates a dot
+    product in a **DIFFERENT ORDER** at N threads than at 1 ⇒ different float sum ⇒ the NW-smoother sums shift ⇒
+    the 72 isotonic fits shift ⇒ **the board shifts.** **The pinned box and a GitHub runner have different core
+    counts. THREADING HAS NEVER BEEN MENTIONED BY ANY SEAT, IN ANY DOCUMENT, AT ANY POINT.**
+    **IF THE CI MOVER IS THREADING, PINNING `OPENBLAS_CORETYPE` CHANGES NOTHING AND WE SHIP A FENCE AROUND THE
+    WRONG FIELD BELIEVING WE ARE FIXED. THAT IS R99.2's "GUARD THAT CANNOT FAIL", REPAINTED.**
+    **DIRECTIVE ISSUED: READ THE ENVIRONMENT FIRST. FOUR BOARD BUILDS ON THE RUNNER ITSELF (baseline · threads=1
+    · kernel pinned · both), SEPARATELY. Verdict required in one line: THREADING / KERNEL / BOTH / UNKNOWN — and
+    IF NEITHER RECOVERS `3dc19fbb`, PIN NOTHING AND SAY THE CAUSE IS UNKNOWN.**
+    **AND WHEN IT IS PINNED: IN `bootstrap.sh`, NOT THE CI WORKFLOW** (pinning only CI makes CI green and leaves a
+    BAKE free to drift and re-pin every guard to a drifted board), **AND ASSERTED IN `boot_guard`** — **THREE
+    DECORATIVE PINS WERE FOUND TONIGHT (the board pin · the `rl_model` pin · the book seal's `head_md5`). A FOURTH
+    SET-BUT-NOT-ASSERTED PIN WOULD BE THE ONE THAT SILENTLY REVERTS AND RE-PINS A BAKE TO A DRIFTED BOARD.**
+
+103. **⚠ THE BOOK SEAL'S `head_md5` IS THE THIRD DECORATIVE PIN — RECORDED, WRONG, AND NEVER ASSERTED.**
+    `data/book_stable_seal.json` carries **`head_md5 = 2030e5df`** — the **PRE-FREEZE** engine. The live engine is
+    **`2334f570`**. B3 passes *"by content, independent of the stale head field."* **The field is recorded, it is
+    WRONG, and NOTHING HALTS.**
+    **THIRD INSTANCE OF ONE DEFECT:** the **board** pin (decorative until the S1 audit asserted it — item 24) · the
+    **`rl_model`** pin (**exists, is CORRECT, and `boot_guard.assert_boot()` never checks it** — G-BOOK's known
+    gap) · and now **the seal's head.** **G-BOOK is incomplete in a THIRD way.**
+    ✅ **P5's ANSWER IS RIGHT AND HONEST: "NEITHER rebuilt NOR re-stamped" — AND THAT IS THE *SAFE* OUTCOME.** The
+    freeze did **not** re-stamp a book it did not rebuild (G-BOOK's cardinal sin), **and it MEASURED that the book
+    content is INVARIANT to the freeze** (regenerating on `2334f570` reproduces the `2030e5df` seal byte-for-byte).
+    ⚠ **BUT THE BOOK IS ENVIRONMENT-MOVABLE: `d371a27c` → `98fc2a4f` on SSE.** **The walk-forward book — the
+    artifact that certifies the board OVER TIME — is not bit-stable across machines.** New. G-BOOK's problem.
+    **FOR FABLE: this is the completeness architecture's fourth worked case. FOUR pins recorded, THREE never
+    asserted. The guards check that what we pinned still matches; they have never checked that everything that
+    should be pinned IS pinned — NOR that everything that IS pinned is actually CHECKED.**
+
+104. **ITEM 74 HAS ALL BUT COLLAPSED — AND THE OWNER PRE-EMPTED THE REST OF IT.**
+    Item 74's remedy was *"re-measure every guard, anchor and census figure."* **THE MEASURED POST-FREEZE DRIFT IS:
+    8 PLAYERS, ALL RUCKS, +1..+4 SCAR. Board sum +0.0023%. THE PICK CURVE DOES NOT MOVE. PICK 1 = 3000.**
+    - **AGGREGATE GUARDS (G-COHORT · G-CONVEX · the census totals): NOTHING FLIPS.** The drift is ~10× below
+      G-COHORT's y4 margin, and it AVERAGES (item 96 — the owner's arithmetic, upheld).
+    - **SINGLE-PLAYER ANCHORS: only A-GAWN is even TOUCHED** (Gawn is one of the 8, at **+2**), and A-GAWN is
+      *"clearly above kieren-briggs"* — **an enormous margin. It does not flip.**
+    - **OWNER RULING 2026-07-14, which closes the rest:** *"if a player clears an anchor and drifts to slightly
+      fall under it I will waive the anchor most likely. As long as it's there or thereabouts."*
+    **⇒ THE RECONCILE IS A SHORT CHECKLIST, NOT A PROJECT.** **STILL GATED ON: CI GREEN** (item 102) **and A1 —
+    which is now PROVEN (item 100).** **The bake blocker survives only as a formality.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
