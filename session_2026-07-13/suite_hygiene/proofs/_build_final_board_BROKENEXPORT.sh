@@ -13,6 +13,7 @@ cd "$REPO"
 #    broken bootstrap must be a plain simple command that HALTs the bake.)
 bash "$REPO/bootstrap.sh" >/tmp/boot.log 2>&1
 echo "bootstrap OK (engine $(md5sum $WS/_merged_recover.py|cut -c1-8))"
+cp -f "/home/user/afl-rl-engine/session_2026-07-13/suite_hygiene/proofs/rl_export_BROKEN.py" "/home/claude/rl_workspace/rl_after/rl_export.py"   # A1 PROOF: break the WORKSPACE export copy only
 
 # 2. generate the wired board under the full six-lever refit env
 cd "$WS"

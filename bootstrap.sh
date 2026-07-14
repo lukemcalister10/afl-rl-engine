@@ -4,7 +4,8 @@
 # Recreates the exact layout the engine's absolute paths expect. OFFLINE-SAFE
 # (unidecode is VENDORED, no pip/network needed). Idempotent.
 # ============================================================================
-set -e
+set -euo pipefail   # SUITE HYGIENE 2026-07-13: +pipefail so a failing `md5sum | cut` on a missing seed
+                    # file HALTs instead of printing a wrong md5; +u so an unset var is a red, not empty.
 HERE=$(cd "$(dirname "$0")" && pwd)
 mkdir -p /home/claude/rl_workspace /home/claude/rl_build /home/claude/rl_vendor
 

@@ -55,6 +55,21 @@
 ### capture the status first — `python3 ship_gates_check.py > log 2>&1; rc=$?; tail log; exit $rc`
 ### (or `set -o pipefail` and test `${PIPESTATUS[0]}`). A green summary line is NOT a pass; the
 ### non-zero exit code is the authority.
+### THE STANDING RULE EXTENDED TO THE HARNESS (BINDING, 2026-07-13 suite-hygiene; the invocation rule
+### above governs the CLASS, not just the suite entry point): the rule is item-38's single instance; the
+### disease is a class across every runner.
+###   1. EVERY LIVE HARNESS RUNNER sets `set -o pipefail` (and, where it does not fight a deliberate
+###      run-all-checks tally, `set -e` and `set -u`). A pipeline's exit status must be the FAILING
+###      command's, never the last one's — `python3 <gate>.py | tail` returning tail's success is the
+###      exact defect. A runner that tallies and prints a verdict (e.g. verify_restore.sh) makes its
+###      EXIT CODE authoritative directly (`exit 1` on any fail) rather than relying on `set -e`.
+###   2. NO RUNNER MAY MASK A CHECK. `<gate-or-export> ... || true` (or any swallow of a check's non-zero
+###      status) is forbidden. If output must be truncated, capture the status FIRST:
+###      `cmd > log 2>&1; rc=$?; tail log; exit $rc`.
+###   3. A BAKE SCRIPT MUST NEVER PUBLISH OR PIN A BOARD IT DID NOT SUCCESSFULLY BUILD. The export's exit
+###      status is captured and asserted BEFORE any copy, re-pin of `expected_boot.json`, or UI
+###      re-extract; a non-zero export HALTs the bake with nothing published. (build_final_board.sh was
+###      the worst instance — it masked a failing `rl_export.py` and re-pinned the stale board anyway.)
 ### RED-PATH TEST SEAM (`SGC_B1_MATRIX`) — FOR RED-PATH PROOFS ONLY; A RUN USING IT IS **NOT A
 ### CERTIFICATION** (fail-close, owner-ruled Option B, 2026-07-13). When set, B1 reads that matrix path
 ### INSTEAD of regenerating one, so the item-38 red paths (a breaching matrix HALTs; a missing/unreadable

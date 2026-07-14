@@ -1,0 +1,17 @@
+### running the REAL hardened bake with a broken workspace export ###
+bootstrap OK (engine 2030e5df)
+FATAL: rl_export.py failed (rc=3) — NOT publishing, NOT re-pinning the board.
+----- last 40 lines of /tmp/rl_export.log -----
+INDUCED SUITE-HYGIENE PROOF: rl_export deliberately broken
+
+=================== A1 ASSERTIONS ===================
+PASS  bake exited NON-ZERO (rc=3)
+PASS  printed the FATAL halt line
+PASS  never reached FINAL BUILD DONE (nothing published)
+PASS  no re-pin occurred
+PASS  committed board byte-identical (3dc19fbbf920958affe7c6a2be9697d2)
+PASS  expected_boot.json byte-identical (b0e0992cada642f023b99478a18e0f09)
+PASS  board pin still 3dc19fbb (3dc19fbb)
+----------------------------------------------------
+A1 RESULT: PASS  (bake HALTED, published nothing, re-pinned nothing)
+(workspace restored via bootstrap)
