@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v91 2026-07-14 (**THE boot_guard DIFF READ LINE BY LINE — VERDICT PASS** (item 93): it is ADDITIVE, it weakens NOTHING, and it does NOT block #76. But it copied the house pattern and **THE HOUSE PATTERN HAS TWO HOLES: a MISSING pin is SILENTLY SKIPPED (delete a line from expected_boot.json and the guard stops checking, quietly), and the PIN'S LENGTH DECIDES HOW STRICTLY THE PIN IS CHECKED.** Both PRE-EXISTING; both are item 67 in miniature — **these guards check that what we pinned still matches; they never check that everything that should be pinned IS pinned.** Owner-ruled: they go to FABLE as the completeness architecture's worked case, NOT bolted onto the follow-up. **Item 94: ITEM 74's REMEDY IS ITSELF CONDITIONAL** — 're-measure on the frozen build' assumes the frozen build is environment-stable, and CI IS STILL RED. The bake blocker has grown a precondition. **Item 95: the census return cites the WRONG HEAD SHA** (7989d21 is its PARENT; the head is 3ca74f3) — verdict unchanged, PASS; every prescreen now checks the cited SHA with git rev-parse.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v92 2026-07-14 (**ITEM 74 IS RECALIBRATED — THE OWNER CHALLENGED ITS ARITHMETIC AND HE IS RIGHT ABOUT THE SUMS** (item 96): item 74's load-bearing sentence compares a PER-PLAYER drift to an AGGREGATE margin. G-COHORT is a SUM over a class averaged across classes, so independent drift falls as sigma/sqrt(n) — ~0.1% on the ratio against a 3.1% margin, a THIRTIETH not a HALF. **BUT THERE IS NO AVERAGING IN AN ANCHOR: A-BONT must clear 3392, measures 3482, headroom 90 SCAR = 2.6% — and a 1.8% drift on Bontempelli alone is 63 SCAR, 70% of the margin.** AND INDEPENDENCE IS UNTESTED: the three residual movers are Gawn/Goad/Green, ALL RUC — CLUSTERED drift does not cancel. **THE BLOCKER COLLAPSES TO: ONE full-board non-AVX512 delta (already commissioned as P3) from which every aggregate is recomputed analytically, PLUS ~8 single-player anchors. NOT 're-run everything'.** **Item 97: the two boot_guard holes are NOT a Fable job** — mechanical, Tier-1-lite, zero value moved; the supervisor conflated them with item 67's DESIGN question. Queued as the next build; blocked NOW only by concurrency, since F1 is editing the same two files.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2244,6 +2244,58 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     **Item 88 already carries the CORRECT SHA, so the durable record was never wrong.**
     ⚠ **THE SUPERVISOR MISSED THIS ON THE FIRST PRESCREEN AND THE OWNER CAUGHT IT ON THE SECOND READING.**
     **Every prescreen from here checks the cited head SHA against `git rev-parse` — it is one command.**
+
+96. **⚠ ITEM 74 IS RECALIBRATED. THE OWNER CHALLENGED ITS ARITHMETIC FROM FIRST PRINCIPLES AND HE IS RIGHT
+    ABOUT THE SUMS. THE BAKE BLOCKER COLLAPSES TO ONE MEASUREMENT PLUS EIGHT ANCHORS.**
+    **THE OWNER'S CHALLENGE (2026-07-14):** *"a 0.35–1.8% disagreement per player over 804 players probably
+    balances out; it is unlikely one cohort would be penalised enough over another with that large a sample to
+    throw out the numbers."*
+    **HE IS RIGHT, AND ITEM 74's LOAD-BEARING SENTENCE IS AN APPLES-TO-ORANGES ERROR THAT THE SUPERVISOR CARRIED
+    WITHOUT CHECKING.** Item 74 says *"the drift is HALF the narrowest binding margin"* — **it compares a
+    PER-PLAYER quantity to an AGGREGATE margin.**
+    **THE ARITHMETIC.** G-COHORT is a **SUM over a draft class, averaged across classes.** For mean-zero
+    independent per-player drift σ, the relative error on a sum of n players falls as **σ/√n**. With σ ≈ 1% and a
+    few hundred players across the sampled classes, the error on each sum is **~0.07%**, and on the RATIO
+    **~0.1%** — against G-COHORT's **3.1% margin** (1.2601 vs a hard 1.30). **≈ 1/30th of the margin, NOT 1/2.**
+    Same for G-CONVEX (band aggregates, margins 5–12%) and the flattery census total.
+    ⚠ **BUT IT DOES NOT SAVE THE SINGLE-PLAYER ANCHORS, AND THERE THE ORIGINAL CONCERN STANDS — SHARPENED.**
+    **THERE IS NO AVERAGING IN AN ANCHOR.** **A-BONT: baseline 3084, requires +10% ⇒ he must clear 3392. He
+    measures 3482. HEADROOM = 90 SCAR = 2.6%. A 1.8% DRIFT ON BONTEMPELLI ALONE IS 63 SCAR — 70% OF THE ENTIRE
+    MARGIN, ON ONE PLAYER, WITH NOTHING TO AVERAGE AGAINST.** A-GAWN, A-DARCY and A-PAIRS have the same shape
+    (A-PAIRS pair 2 sits at 3.2% inside a 10% band, and BOTH sides can drift).
+    ⚠ **AND THE INDEPENDENCE ASSUMPTION IS NOT FREE — THE ONE DRIFT WE HAVE ACTUALLY CHARACTERISED IS CLUSTERED.**
+    Averaging kills drift only if it is INDEPENDENT. **The three residual post-freeze movers are Gawn, Goad and
+    Green — ALL RUC (store-verified).** That is **POSITION-CLUSTERED**, not random noise. **Clustered drift does
+    not cancel; it shifts a cohort's composition systematically.** So the owner's argument is right *conditional
+    on independence*, and **independence is exactly what has not been tested.**
+    **⇒ THE REMEDY, AND IT IS FAR SMALLER THAN ITEM 74 SAID:**
+    **(1) ONE MEASUREMENT — the FULL-BOARD delta on a non-AVX512 box. ALREADY COMMISSIONED as P3 of the q97m
+    follow-up.** From that single delta **every aggregate guard can be RECOMPUTED ANALYTICALLY**, and the drift's
+    INDEPENDENT-vs-CLUSTERED structure reads straight off it.
+    **(2) THE ~8 SINGLE-PLAYER ANCHORS RE-MEASURED INDIVIDUALLY** (A-BONT · A-GAWN · A-CAM · A-DARCY · A-DUUR ·
+    A-PEAK · A-FADE · A-PAIRS). **No averaging protects them and A-BONT's margin is 2.6%.**
+    **NOT: "re-run every guard, anchor and census figure."** That was the blocker as written and it is
+    disproportionate. **(Owner's standing principle: 97% of the benefit for 50% of the time.)**
+    ⚠ **ITEM 74's OTHER PRECONDITIONS ARE UNCHANGED (item 94): A1 must be PROVEN, and CI must be GREEN.** The
+    recalibration shrinks the WORK; it does not remove the GATE.
+    **PROVENANCE: supervisor arithmetic on the owner's challenge — RE-RUNNABLE, NOT BUILD-CONFIRMED. The P3
+    return settles it with data. Do not let this become the next carried claim.**
+    TRIGGER: P3 of the q97m follow-up. **STILL: NO BAKE.**
+
+97. **THE TWO `boot_guard` HOLES ARE **NOT** A FABLE JOB — THE SUPERVISOR CONFLATED THEM WITH ITEM 67 AND THE
+    OWNER CALLED IT (2026-07-14).**
+    **Item 67 (the COMPLETENESS ARCHITECTURE) is a DESIGN question** — *how do you DERIVE what should be pinned,
+    from the system itself?* **That is Fable's, and it stays hers.**
+    **The two holes are MECHANICAL and small:** (1) a known-required pin ABSENT from `expected_boot.json` ⇒
+    **HALT**, not `continue`; (2) a pin shorter than a full hash ⇒ **HALT**, not a silently-shortened compare.
+    **Both move ZERO player value ⇒ TIER-1-LITE by the owner's 2026-07-13 ruling** (supervisor prescreen + the
+    job's own red-path proofs + the owner's word; no cold audit, no board view — the rung is empty by
+    construction). **An illustration of a design problem is not the same as needing the design. That was lazy
+    reasoning and it is recorded as such.**
+    ⚠ **THEY CANNOT FIRE NOW — AND NOT FOR FABLE'S SAKE, FOR CONCURRENCY'S.** The q97m follow-up's **F1 is
+    editing `boot_guard.py` AND `bootstrap.sh` right now.** A second build on the same two files is a direct
+    collision. **QUEUED AS THE NEXT BUILD the moment the follow-up returns.**
+    TRIGGER: the q97m follow-up return.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
