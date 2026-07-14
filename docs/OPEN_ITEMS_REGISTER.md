@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v81 2026-07-14 (**ITEM 61 CLOSED — the captain curve's DIALS ARE SET** (BAR 105.0 · M 109.5 · W 1.85 · G 1.00; credit = level − 109.66 asymptotically; Gawn 16.34 · Bont 9.85 · Daicos 4.96; LOCKED, NOT WIRED). **R98.9 — the screening rule closes at the seam; the docs/-only TOKEN PEN is RESTORED.** **R98.10 — THE HANDOVER EXCEPTION to the freshness check**, with a BINDING directional guard. Plus the pack correction ledger (item 72). Seat-5 pen; owner-screened.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v82 2026-07-14 (⚠⚠ **EVERY GUARD FIGURE IN THIS REGISTER IS CONSISTENT, NOT VERIFIED** (item 74): the cross-env drift is 0.35–1.8%/player and **G-COHORT's y4 margin is ~3%** — and the five-shard cold audit ran in INCOGNITO SANDBOXES, i.e. different machines from the bake. **RE-MEASURE AND RECONCILE EVERY GUARD ON THE FROZEN BUILD.** Item 75: **`cm_400.pkl` — the ONE pinned fitted artifact — CANNOT BE RE-DERIVED** (ingestion trigger). Item 76: the OpenBLAS cause is UNTESTED. Item 77: SHAKEDOWN found this on 07-02 and it was LOST. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1770,6 +1770,84 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     ticked over; propose no threshold — every transition is a curve).
     **Both are BINDING. Both will govern every fix in the next chapter. Neither is in the registry.**
     The owner ruled the wording deserves a fresh seat, not a transcription pass. **They are Fable's.**
+
+74. **⚠⚠ THE GUARD MARGINS ARE SMALLER THAN THE DRIFT — EVERY RECORDED FIGURE IS "CONSISTENT, NOT VERIFIED"
+    (owner-raised 2026-07-14; the most consequential line of the determinism chapter).**
+    The cross-environment drift measured in CI is **0.35%–1.8% per player** (Daicos 7640 vs 7667 · Ward
+    1679 vs 1649). **G-COHORT y4 = 1.2601 against a hard bound of 1.30 — a ~3% margin.** **The drift is
+    HALF THE NARROWEST BINDING MARGIN WE HAVE.**
+    **AND THE FIVE-SHARD COLD AUDIT RAN IN INCOGNITO SANDBOXES — different environments from the bake.**
+    So S2's `1.2601 / 1.2407 / 1.1521` were computed **on a different machine than the board they
+    certified**. The same is true of **the flattery census (123 players / +19,168)**, **the G-CONVEX floor
+    aggregates**, **the A-PAIRS values**, and every anchor figure in this file.
+    **THEY ARE NOT NECESSARILY WRONG. THEY ARE NOT ESTABLISHED.** CORE rule 4: report-only never sits in
+    VERIFIED.
+    **REQUIRED, ONCE `q97m` IS FROZEN — this is not bookkeeping, it is what turns these numbers back into
+    facts:** RE-MEASURE every guard, every anchor, the flattery census and the discontinuity census **on
+    the frozen build**, and **RECONCILE against the figure recorded here.** Any that moves gets an entry.
+    **Until that is done, no bake.**
+
+75. **⚠ `cm_400.pkl` — THE ONE PINNED FITTED ARTIFACT — CANNOT BE RE-DERIVED. (Measured, D5.)**
+    `PR.retrain()` produces **`b271ed2e`**; the committed, Guard-5-pinned band is **`34faa865`**. The claim
+    in `wire_redesign.py` that *"cache == retrain byte-for-byte"* is a **COMMENT, and it is FALSE.**
+    **A PIN PROVES A FILE HAS NOT CHANGED. IT DOES NOT PROVE THE FILE CAN BE REBUILT.** Guard 5 asserts
+    this band on entry to every gate, panel and bake — and **every board in this project's history rests on
+    a binary nobody can reconstruct.** This is **item 67 (consistency vs completeness) landing in the
+    hardest possible place**, and it is now a measurement, not a suspicion.
+    **⚠ INGESTION TRIGGER — THIS FIRES ON THE NEXT CHAPTER BUT ONE.** Round-score ingestion **changes the
+    store on purpose**, which forces a band refit — **and the refit band will not match the old one.** The
+    board will move for reasons **no lever explains and no attribution will find.**
+    **INGESTION GO-LIVE IS BLOCKED UNTIL THIS IS RULED.** The owner's 2026-07-14 ruling on `q97m` —
+    *frozen; regenerated AT a bake and ONLY at a bake, with a documented, stamped regeneration path* — is
+    the shape of the answer, but it must be extended to `cm` explicitly, and the category question (item
+    67: what IS a fitted model under the single-source invariant?) answered.
+
+76. **THE OpenBLAS CAUSE IS A PLAUSIBLE MECHANISM, NOT A MEASURED ONE — DO NOT REGISTER IT AS FACT
+    (owner-raised 2026-07-14).**
+    The determinism return **ruled library versions out BY PERTURBATION** (numpy 2.3.5 / scipy 1.16.1 →
+    board byte-identical). **That is a measurement and it stands.** It then attributed the remainder to
+    *"OpenBLAS `DYNAMIC_ARCH` on GitHub's mixed-CPU fleet."* **It did not test that, and on one machine it
+    could not have.** It is also **technically shaky**: `GradientBoostingRegressor` fits **decision trees**
+    — sorting and split-search — which **do not go through BLAS matmul**. A likelier driver is **numpy's
+    own runtime SIMD dispatch** changing float summation order in feature construction and flipping a
+    split. **Different knob. Different fix.**
+    **THIS IS THE THIRD TIME THIS WEEK A PLAUSIBLE MECHANISM HAS BEEN CARRIED AS A MEASURED ONE** — twice
+    by the supervisor, once now by a build. **The correction ledger's pattern applies to returns, not only
+    to seats.**
+    **THE PRACTICAL CONSEQUENCE (why this is not pedantry):** the return offered two remedies as if
+    symmetric — *"freeze+stamp `q97m`, or pin a platform."* **THEY ARE NOT SYMMETRIC.**
+    **FREEZE ⇒ the cause becomes IRRELEVANT** (there is no refit; it works whether the story is BLAS, SIMD,
+    or something nobody has named). **PIN A PLATFORM ⇒ it works ONLY IF THE DIAGNOSIS IS RIGHT** — pin
+    `OPENBLAS_CORETYPE` when the driver is SIMD dispatch and **you have pinned NOTHING while believing you
+    are fixed.** That is this week's disease exactly: a guard that cannot fail.
+    **OWNER RULING 2026-07-14: FREEZE. "Pin a platform" is NOT a symmetric option and must not be offered
+    as one.**
+    **ONE-COMMAND TEST, on the same box, before the cause is written down as fact:** force a different CPU
+    kernel (`NPY_DISABLE_CPU_FEATURES` / `OPENBLAS_CORETYPE`) and rebuild. **Board moves ⇒ confirmed.
+    Board does not move ⇒ THE STORY IS WRONG and the real cause is STILL UNKNOWN.**
+
+77. **A FINDING THAT IS WRITTEN DOWN BUT NOT TRACKED IS NOT A FINDING (owner-raised 2026-07-14).**
+    **`SHAKEDOWN.md` (2026-07-02) ALREADY LOCALISED THIS** — to *"the GBR/prior-trained path."*
+    **Found, lost, and re-found TWELVE DAYS LATER** — at the cost of a red main, a wrong supervisor
+    diagnosis, a merged PR that was never the fix, and most of a chapter.
+    **This is the same disease as item 67 (consistency vs completeness), one level up:** the finding was
+    CONSISTENT with the record and simply never entered the ONE LIST. **The register is the only list; a
+    document that is not the register is not a place a finding can live.** Belongs to Fable's completeness
+    architecture as a first-class case.
+
+78. **THE BOOK'S KEYS ARE MEMORY ADDRESSES (`str(id(p))`) — RECONCILE AND REGISTER (owner-raised).**
+    The determinism return: the book's raw bytes differ between two builds (`f602131e` vs `26771dcd`) while
+    **all 2,649 records are value-identical** — the only difference is the dict keys, which are
+    **`str(id(p))`: memory addresses.** The B3 seal is a **`stable_sha256` over stable-keyed content**, not
+    a raw-byte md5 (confirmed: `data/book_stable_seal.json` carries `stable_sha256`, no byte hash) — **so
+    nothing halts, and that is by design.**
+    **RECONCILIATION (open):** the S4 cold-audit shard reported the book seal proved **"bit-identical"** by
+    re-seeding the sealed head. **That claim must be read as "the STABLE seal matched," not "the file's
+    bytes matched"** — the bytes demonstrably do not. **The register previously recorded the looser word.
+    Corrected here.**
+    **AND A LATENT DEFECT:** `id()` is **reused after garbage collection.** A memory address as a dict key
+    is a bug waiting for the first consumer that joins on it. Nothing does today. **Nothing should ever be
+    allowed to.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
