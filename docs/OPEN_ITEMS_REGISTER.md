@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v97 2026-07-14 (⚠⚠ **SEAM-PACK SELF-AUDIT** (item 109). **FIX 1's FORMULA `g²/(g+5.8)` IS CORRECT AND DATA-DERIVED** (Var ~ 690/g + 119 => k = 690/119) — **but the supervisor quoted it FROM MEMORY into a LIVE DIRECTIVE and into the LETTER TO FABLE without ever reading the code. It happened to be right. THAT IS LUCK, NOT PROCESS.** ⚠⚠ **AND THE RUNNING DIRECTIVE'S FENCE FORBIDS FIX 1 FROM DOING HALF ITS JOB: Fix 1's own spec says it SUBSUMES the hard `<8 games -> 0.25` rule in `_par_prior`, and the fence says 'OUT: the pedigree blend'. The build will leave the very threshold Fix 1 exists to delete — an R98.2 violation left in place by the supervisor's own fence. KNOWN GAP; FABLE CLOSES IT.** Also filed: Fix 1 leaves a SINGLE-SEASON player UNCHANGED by construction (why it does not repeat R98.4's kid-nerf) · Fix 1 moves ENGLISH 3132->3251 · the manifest's *main MOVES when the pack is filed* warning RESTORED (Fable's freshness check could have HALTED on a false positive) · `_iso_dec` is at :801, not :820.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v98 2026-07-14 (⚠⚠ **ITEM 109's F2 IS RETRACTED — THE FENCE WAS RIGHT AND THE AUDIT FINDING WAS WRONG** (seat-6 ledger #15). The owner asked for an addendum to the LIVE build to make Fix 1 also strip `_par_prior`'s hard `<8 games -> 0.25` rule, because the spec says Fix 1 'SUBSUMES' it. **THE SUPERVISOR CHECKED BEFORE ACTING AND THE ADDENDUM WOULD HAVE BEEN HARMFUL: the PR #75 overlay patches `_lvlcurr` ONLY and passes `_par_prior` through UNCHANGED — so EVERY number the owner TOOK Fix 1 on (+1,171 SCAR, Jamarra's cliff halved, kids untouched, improvers clean, G-FLOOR improves) was measured with `_par_prior` UNTOUCHED. Change it and none of them apply, and R99.1's TAKE was on the `_lvlcurr`-only version — which is exactly what the fence describes.** 'Subsumes' was a DESIGN NOTE, not an implemented plan. **NO ADDENDUM SENT; THE LIVE BUILD IS UNTOUCHED.** What survives: `_par_prior`'s `<8` rule IS a real R98.2 violation — it is one more hard threshold on the EVIDENCE AXIS and it belongs with FABLE's `w`. **The other four audit findings (F1, F3, F4, F5) STAND.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2537,12 +2537,30 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     5.8` (PR #75, `FIX_SPECS.md` / `overlay_smooth_edges.py`, commit `6a6f2f6`). **THE SUPERVISOR QUOTED IT FROM
     MEMORY INTO A LIVE DIRECTIVE AND INTO THE LETTER TO FABLE WITHOUT READING THE CODE. IT HAPPENED TO BE RIGHT.
     THAT IS LUCK, NOT PROCESS — and the fourteenth instance of the same act.**
-    **⚠⚠ F2 — THE RUNNING DIRECTIVE'S FENCE FORBIDS FIX 1 FROM DOING HALF ITS JOB. SUPERVISOR ERROR.**
-    **FIX 1's OWN SPEC: *"This SUBSUMES the hard `<8 games → 0.25` rule (`_par_prior`) with a smooth curve."***
-    **The directive's FENCE says "OUT: the pedigree blend" — where `_par_prior` lives.** **⇒ THE BUILD WILL
-    SMOOTH `_lvlcurr` AND LEAVE THE HARD `<8 GAMES` CLIFF STANDING — the threshold Fix 1 exists to delete, and an
-    R98.2 (SMOOTHNESS) VIOLATION LEFT IN PLACE BY THE SUPERVISOR'S OWN FENCE.** **NOT FATAL. A KNOWN GAP.
-    FABLE CLOSES IT — it belongs with `w`, being one more hard threshold on the evidence axis.**
+    **⚠⚠ F2 — RETRACTED. **THE FENCE WAS RIGHT. THE AUDIT FINDING WAS WRONG.** (Seat-6 ledger #15.)
+    **F2 originally claimed the directive's fence stopped Fix 1 removing the hard `<8 games → 0.25` rule in
+    `_par_prior`, because FIX_SPECS.md says Fix 1 *"SUBSUMES"* it. THE OWNER ASKED FOR AN ADDENDUM TO THE LIVE
+    BUILD. THE SUPERVISOR CHECKED FIRST — AND THE ADDENDUM WOULD HAVE BEEN HARMFUL.**
+    **THE MEASURED FACT (`overlay_smooth_edges.py`, `6a6f2f6`, line 34): THE OVERLAY PATCHES `_lvlcurr` ONLY.
+    `_par_prior` IS PASSED THROUGH UNCHANGED (`_par_prior=G['_par_prior']`).**
+    **⇒ EVERY NUMBER THE OWNER *TOOK FIX 1 ON* WAS MEASURED WITH `_par_prior` UNTOUCHED:** **+1,171 SCAR ·
+    Jamarra's cliff halved (−81% → −54%) · "kids untouched" · "improvers clean" · G-FLOOR improves.**
+    **CHANGE `_par_prior` AND NONE OF THOSE NUMBERS APPLY. R99.1's TAKE WAS ON THE `_lvlcurr`-ONLY VERSION —
+    WHICH IS EXACTLY WHAT THE FENCE DESCRIBES.**
+    **"SUBSUMES" IS A DESIGN NOTE IN A SPEC, NOT AN IMPLEMENTED PLAN.** The two live in DIFFERENT functions
+    computing DIFFERENT quantities — `_par_prior` is the **draft pedigree**; `_lvlcurr` is the **production
+    level**. **The spec observed that a smooth reliability curve does the KIND of job a hard `<8` rule does. It
+    never wired it, never measured it, and the owner never took it.**
+    **AND S2 EXISTS FOR THIS: mid-flight scope growth goes to a NEW directive and a NEW chat, never appended.**
+    **Bolting an UNMEASURED, VALUE-MOVING change onto a RUNNING WRITER would have produced a board nobody has
+    ever seen, on a lever the owner approved in a different form.**
+    ⚠ **SEAT-6 LEDGER #15: the supervisor read *"subsumes"* in a spec, INFERRED an implementation that was never
+    there, and reported it as a defect in its own directive — THE SAME ACT, ONE MORE TIME, WITHIN AN HOUR OF
+    AUDITING ITSELF FOR IT. THE ONLY THING THAT SAVED IT WAS CHECKING BEFORE ACTING.**
+    ✅ **WHAT SURVIVES AND IS REAL: `_par_prior`'s hard `<8 games → 0.25` IS a genuine R98.2 (SMOOTHNESS)
+    VIOLATION. IT IS NOT THIS BUILD'S JOB. It is one more hard threshold on the EVIDENCE AXIS and it belongs
+    with FABLE's `w`, where every other one already is.** **NO ADDENDUM WAS SENT. THE LIVE BUILD IS UNTOUCHED.**
+
     **⚠ F3 — TWO FIX-1 FACTS WERE OMITTED FROM THE PACK AND ARE NOW FILED:**
     **(a) A SINGLE-SEASON PLAYER IS UNCHANGED BY CONSTRUCTION** — ρ cancels in the normalised ratio. **THIS IS
     WHY FIX 1 DOES NOT REPEAT R98.4's DISASTER (the games basis that nerfed 60 of 76 first-season movers). It is
