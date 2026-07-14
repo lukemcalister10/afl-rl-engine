@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v77 2026-07-13 (**THE CAPTAINCY LAW — OWNER-RULED** (item 61): the credit is a PURE FUNCTION OF PROJECTED LEVEL, applied identically wherever a level is priced — current season, every future season in the path, and EVERY HISTORICAL SEASON IN THE WALK-FORWARD BOOK. Shape approved (integral-of-P, marginal = P, structural slope-1 ceiling); **the DIALS ARE NOT SET — they get FITTED to the realized armband record, never to an opinion.** Retroactivity makes this a FULL-LADDER, BAKE-CLASS change: the book is rebuilt and re-sealed, so every gate re-measures and the earlier "self-funds" result DOES NOT CARRY OVER. Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v78 2026-07-13 (**THE BOOK-PARITY LAW — OWNER-RULED** (item 63): the walk-forward book is REBUILT every time the formula for current players changes. GOOD NEWS — it is ALREADY WIRED for CODE changes (the matrix carries engine_head_md5 + store_md5 and ship_gates ASSERTS both). ⚠ **THE GAP: the assertion ignores `config_sha256`, which the matrix already records** — so a formula change made through CONFIG/ENV would sail past on a STALE book. One-line fix; rides the harness work. Owner also rules: **correctness first — downstream anchor damage is acceptable** (item 64). Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1542,6 +1542,44 @@
     SEQUENCE: DERIVE (read-only, running) → OWNER VIEWS the fitted curve + the mover table → WIRE onto the
     pricing-chapter candidate → **ONE bake** with the flattery decay and the nqual/evidence ramp (CYCLE
     law: one bake per chapter).
+
+63. **THE BOOK-PARITY LAW — OWNER-RULED (2026-07-13).**
+    OWNER, VERBATIM: *"The walk-forward book should be rebuilt every time we change the formula for current
+    players — it makes no sense to measure current players on one formula and then assess how it performs
+    over time using a different formula."*
+    **THE LAW:** the book and the board must be built by the SAME formula. A book built with formula A
+    cannot certify a board priced with formula B. **Any change to the pricing formula REQUIRES a book
+    rebuild and re-seal before any gate reads it.**
+    **SUPERVISOR VERIFICATION — IT IS ALREADY WIRED, FOR CODE CHANGES.** The walk-forward matrix carries
+    `__meta__ = {kind, engine_head_md5, store_md5, config_sha256, n_players}`, and `ship_gates_check.py`
+    (L279) ASSERTS `engine_head_md5[:8] == HEAD and store_md5[:8] == STORE`, erroring loudly otherwise
+    (L284/286/290) — and since Job A2, an erroring gate **HALTs** (SILENCE IS A RED). The engine head it
+    stamps against is `_merged_recover.py` — the ACTUAL shipped price path. So: **change the code without
+    rebuilding the book and the gate dies. The law is a guard, not a sentence.** Good.
+    ⚠ **THE GAP, AND IT IS REAL: the assertion checks the ENGINE and the STORE — it does NOT check
+    `config_sha256`, even though the matrix already RECORDS it.** The captaincy params live in code
+    (rl_model.py), so THIS change would be caught. But the lever/config params are ENV-DRIVEN (RL_GAMMA,
+    PAR_RAMPS, RL_RECENCY_DECAY, …) — **change the formula through config rather than code, and the stamp
+    check passes on a STALE book.** The book would then certify a board it does not describe.
+    **FIX: extend the assertion to `config_sha256`.** One line. It rides the harness/hygiene work. Until it
+    lands, **any config-only formula change must rebuild the book by hand and say so in its RETURN.**
+    STATUS: to be FILED AS A NAMED GUARD (**G-BOOK**) in CONSTRAINTS at the next constraints bump — which
+    the captain-curve wiring will force anyway. Folding the two avoids a version churn for one entry; the
+    law is BINDING from now regardless of where it is written.
+
+64. **OWNER DISPOSITION — CORRECTNESS FIRST; DOWNSTREAM ANCHOR DAMAGE IS ACCEPTABLE (2026-07-13).**
+    OWNER, VERBATIM: *"Understood on the issues of one and two. This is a problem we need to address and if
+    it has downstream issues, that is fine."* — said having been told, before the fact, that the new
+    captain curve (a) invalidates the earlier "self-funds" result and must be re-measured on a rebuilt book,
+    and (b) pays more wherever a player's UPPER TAIL clears the bar, so it lifts young players too and **may
+    push A-PAIRS pair 3 FURTHER from his own read.**
+    **THE RULING, GENERALISED (and it is a good one): an anchor is a DIAGNOSTIC, not a TARGET.** A wrong
+    mechanism is not to be preserved because fixing it disturbs a read. The reads are how we DETECT
+    mispricing; they are not the thing being optimised. **No build may tune a lever to protect an anchor.**
+    (This is the same doctrine as the standing ban on predicate-based nerfs, pointed the other way.)
+    CONSEQUENCE: if pair 3 worsens under the fitted captain curve, that is REPORTED and CARRIED — not
+    fixed by bending the curve. Pair 3 remains a BASE-CURVE problem for the PVC re-derivation (items 44,
+    51, 53 — triple-confirmed).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
