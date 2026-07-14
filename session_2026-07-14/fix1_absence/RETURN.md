@@ -4,8 +4,8 @@
 Base = `addef03` (q97m freeze). File-disjoint from the CI job: `boot_guard.py` / `bootstrap.sh` UNTOUCHED.
 
 - **branch**: `claude/damping-absence-penalty-us81yn`
-- **head SHA**: `<FILLED AT PUSH>`
-- **PR**: `<FILLED AT PUSH>`
+- **head SHA**: `90ce3e1568bebae4cb499f63dd9a630bdda93cd5` (candidate; this RETURN-update commit follows it)
+- **PR**: #82 — https://github.com/lukemcalister10/afl-rl-engine/pull/82 (base = the q97m-freeze branch = addef03, clean candidate diff)
 - **board md5**: `e6a8e6efda796cbfb7620338c5b2c3ef` (was `3dc19fbb`)
 - **book stable-sha256**: `2a2df435fad4784eee3bd1c36c5b8fd2bc24777bc8a86e1e9f147dc6d907a939` (was `d371a27c`; n=2649; REBUILT, not re-sealed — re-seal is an owner bake action)
 
