@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v78 2026-07-13 (**THE BOOK-PARITY LAW — OWNER-RULED** (item 63): the walk-forward book is REBUILT every time the formula for current players changes. GOOD NEWS — it is ALREADY WIRED for CODE changes (the matrix carries engine_head_md5 + store_md5 and ship_gates ASSERTS both). ⚠ **THE GAP: the assertion ignores `config_sha256`, which the matrix already records** — so a formula change made through CONFIG/ENV would sail past on a STALE book. One-line fix; rides the harness work. Owner also rules: **correctness first — downstream anchor damage is acceptable** (item 64). Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v79 2026-07-14 (⚠ **THE CLIFF FIX DOES NOT FIX THE CLIFF** (item 65): Jamarra Ugle-Hagan is 187 -> 187, not even a mover. The cliff is NOT a ramp — at `n >= PROVEN_N` the formula is THROWN AWAY and **the pedigree par VANISHES from it entirely.** The par-prior weight IS the flattery decay AND the nqual cliff — ONE line of code. Supervisor hypothesis on the +14,301 REFUTED by measurement (item 66). **"Stop describing the system, start measuring it" PARKED FOR FABLE** (item 67, owner-ruled). Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1580,6 +1580,78 @@
     CONSEQUENCE: if pair 3 worsens under the fitted captain curve, that is REPORTED and CARRIED — not
     fixed by bending the curve. Pair 3 remains a BASE-CURVE problem for the PVC re-derivation (items 44,
     51, 53 — triple-confirmed).
+
+65. **⚠ THE CLIFF FIX DOES NOT FIX THE CLIFF — AND THE REAL MECHANISM IS STRUCTURAL (2026-07-14).**
+    The variant-A mover job (branch `claude/cliff-fix-variant-a-movers-ju31b9`, head `68c7f0f`) returned
+    367 movers / **+14,301 SCAR** — and **JAMARRA UGLE-HAGAN ("JUH") IS NOT ONE OF THEM. 187 → 187.**
+    His inputs: E=38.6 · k=15 · w=0.72 · prior 66.2 · prod 48.8. The build states it plainly: *"the
+    smooth-weight blend ALONE does not rescue him from the step-induced 187; the lift to 504 in the
+    shipped path comes from the RECENCY re-timing (variant B), not the cliff fix."*
+    **The lever the owner APPROVED does not fix the problem he approved it FOR. The lever that did fix it
+    (λ) he REJECTED — correctly, and for reasons that still stand (it destroys Xerri/Holmes/Ash).**
+    **THE SUPERVISOR WENT INTO THE CODE. THE CLIFF IS NOT A RAMP — IT IS A CHANGE OF FORMULA**
+    (`_merged_recover.py`, `_lvl_eff_core`):
+    ```
+    if n >= PROVEN_N:                    # ESTABLISHED (4+ seasons)
+        ... asymmetric hold-UP / shed-DOWN toward Lc (realised current form)
+    else:
+        c = n / PROVEN_N
+        return c*Lc + (1-c)*_par_prior(p,Y)      # THIN: blend current form with PEDIGREE PAR
+    ```
+    Below four seasons the level is a blend of current form and **pedigree par**. **At four seasons that
+    formula is DISCARDED and the pedigree par DOES NOT APPEAR IN IT AT ALL.** The prior does not fade —
+    **IT VANISHES.** JUH's 1,009 → 187 is not a weight moving; it is **a term disappearing.**
+    **AND THAT IS WHY VARIANT A MISSES IT:** the build replaced the ramp *inside* the thin branch
+    (`c = n/4` → `w = E/(E+k)`) and **never touched the jump BETWEEN the branches.** We smoothed the
+    staircase and left the cliff at the top of it.
+    **THE UNIFICATION, NOW CORRECTLY LOCATED:** the owner's flattery ruling is *"the draft bar fades as
+    real games pile up."* **The flattery decay and the nqual cliff are THE SAME LINE OF CODE — the weight
+    on the pedigree par.** Today it ramps 0.25 → 0.50 → 0.75 over three seasons and then **drops to
+    zero.** ONE continuous weight w(E), spanning BOTH regimes so the pedigree FADES instead of
+    VANISHING, kills both defects. **This is now the evidence lever's specification.**
+    STATUS: the +14,301 cliff fix is still worth having (see item 66) but **MUST NOT BE SOLD AS THE JUH
+    FIX. IT IS NOT ONE.** No wiring until the par-prior weight is designed.
+
+66. **SUPERVISOR HYPOTHESIS REFUTED BY MEASUREMENT — and this is the system working (2026-07-14).**
+    I predicted the +14,301 was **the inflated draft prior being re-injected** (the flattery census: 123
+    players / +19,168), and therefore that the cliff fix would AMPLIFY flattery and had to be co-designed
+    with the flattery decay. **The measurement says NO.** Board-wide split: **prior > production: 174
+    players, −2,379** · **production ≥ prior: 193 players, +16,680.** The old `c = n/4` ramp carried thin
+    over-priced players at a HEAVIER prior weight (0.75 at n=1) than the credibility curve ever does
+    (~0.5–0.7), so **the flattered come DOWN.** Every dollar of the +14,301 is **under-rated players —
+    producing at or above their draft billing — finally being paid for it.** **The cliff fix LEANS
+    AGAINST flattery.** Hypothesis dead; recorded so no future seat resurrects it.
+    (Knife-edge, n=93: RISE 56 = +5,304 · FALL 37 = −1,380 · net +3,924 — they do NOT offset; the old step
+    cut harder on the far side than it protected on the near side.)
+
+67. **"STOP DESCRIBING THE SYSTEM, START MEASURING IT" — PARKED FOR FABLE (owner-ruled 2026-07-14).**
+    OWNER: *"let's park it for Fable to get its head around the issue and review too. As Fable can
+    comprehend a lot more moving parts."*
+    THE PROBLEM STATEMENT, for the incoming design seat: every failure found on 2026-07-13/14 — the panel
+    gate that could not fail · the cohort gate that crashed behind a pipe · the bake script that masked a
+    broken export · the config manifest two bakes stale and missing five levers · the CI yaml hand-copying
+    6 of 40 variables · the book that does not stamp `rl_model.py` — **is a DESCRIPTION of the system that
+    somebody had to remember to keep in step with the system, and nothing failed when they did not.**
+    Our guards check **CONSISTENCY** (does the stamp match what it stamped?). **They have never checked
+    COMPLETENESS** (did we stamp everything that matters?). The config manifest is perfectly consistent
+    with itself. It is simply missing five variables, and nothing in the world was going to say so.
+    THE PROPOSED LAW (for Fable to review, sharpen or reject): **every registry, pin and manifest is
+    DERIVED FROM THE SYSTEM and asserts its own completeness — or it is deleted.** The engine EMITS the
+    variables it reads and the suite HALTs if any is unpinned; the engine hash covers every file the
+    import graph loads, not one entry point; one runner, called, never copied; nothing anywhere
+    hand-copies a pinned value.
+    NOT A BEHAVIOUR PROBLEM: this is what happens to any codebase whose CI has no teeth. Agents change the
+    RATE of drift, not its KIND. **And the supervisor seat is inside the failure mode, not outside it** —
+    this seat twice over-claimed and once "verified" a fact by PRINTING ITS OWN CONCLUSION inside a script
+    and reading it back as a result. The architecture must be robust to the supervisor too.
+
+## FABLE'S QUEUE (design seat, on return)
+1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
+   Unifies the flattery decay + the nqual cliff. Includes F1 (G-PEAK collision) + F2 (reference frame).
+2. **THE COMPLETENESS ARCHITECTURE** (item 67) — review, sharpen, or reject.
+3. **THE LENS PROJECTION REBUILD** (LENS-PROJECTION law, register v46).
+4. **THE RECENCY QUESTION, RE-OPENED** — λ is REJECTED (it drags improvers), but JUH's cameo problem is
+   real. The answer is NOT memory length. Likely: small-sample damping, not a longer look-back.
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
