@@ -1,8 +1,11 @@
-# CONSTRAINTS — the single-source registry of guards and acceptance anchors — v1.12 · 2026-07-14 · supersedes v1.11
+# CONSTRAINTS — the single-source registry of guards and acceptance anchors — v1.12 (AMENDED) · 2026-07-14 · supersedes v1.11
 ### CHANGELOG v1.12 (2026-07-14, owner-screened and owner-worded):
 ###  (1) **L-SYMMETRY IS FILED** — the owner's evidentiary-symmetry law becomes a named, citable law (PART 5).
 ###  (2) **L-SAGE-FADE IS FILED** — S_AGE must FADE to a measured residual, never VANISH at 30 (PART 5).
-###  (3) **G-Y0: PENDING_OWNER → ADVISORY**, by ruling — AND ITS CONSTRUCTION IS FLAGGED AS ILL-POSED.
+###  (3) **G-Y0: PENDING_OWNER → ADVISORY** by ruling. ⚠ **THE v1.12 G-Y0 BLOCK PUSHED AT `c48d390` WAS WRONG
+###      AND IS REPLACED HERE** — the supervisor's 'cost of holding' argument MISREAD `V0` (it is the player's value
+###      the day AFTER the draft, ONE DAY from the pick's; there is nothing to discount). **THE OWNER'S IDENTITY
+###      STANDS. What is stale is the FIX DIRECTION — it was drafted for the OPPOSITE breach.**
 ###  (4) **A-FADE: basis APPROVED (multi-bake ARC) — and its PROVENANCE is marked UNVERIFIED.**
 ### STATUS: OWNER-SCREENED 2026-07-14. NOT YET IN THE REPO — it files at SEAT 6's ACT 1 (the owner's word is given, R98.10). From that filing the repo copy is canonical.
 ### R98.8 (screening) remains LIVE until FABLE sits (R99.3).
@@ -143,26 +146,42 @@ pricing curve is re-derived. A pair-3 failure is EXPECTED until the pricing curv
 
 ## PART 6 — STATUS AMENDMENTS (v1.12)
 
-**G-Y0 — PENDING_OWNER → ADVISORY (owner-ruled 2026-07-14). ⚠ AND ITS CONSTRUCTION IS ILL-POSED.**
-**G-Y0 FUSED TWO CLAIMS AND ONLY ONE OF THEM IS THE OWNER'S:**
-- **CLAIM 1 — THE OWNER'S (2026-07-11, VERBATIM):** *"for every drop, there should be a rise... the average of
-  all possible pick results at a given pick should still be near to or equal to the PVC itself."* **Position
-  conditioning REDISTRIBUTES, never LEAKS. Deviations NET TO ZERO. THIS CLAIM STANDS.**
-- **CLAIM 2 — A SUPERVISOR EXTENSION:** *and the weighted mean V0 must EQUAL the derived PVC.* **⚠ THE OWNER
-  KNOCKED THIS OVER ON 2026-07-14:** *"Other than the cost of holding — if something worth 2,000 becomes worth
-  2,200 in six years, you're holding for 6 years for 10% of gain. 1.7% per year. It's not much. So I do think
-  picks can be worth less than the players too. And how do you value the players? Peak career value? A range of
-  samples across their peak? It's a bit arbitrary."*
-**⇒ A PICK DOES NOT DELIVER A PLAYER TODAY. IT DELIVERS ONE WHO PEAKS IN 5–8 YEARS. THE PICK *SHOULD* BE WORTH
-LESS. THE GAP IS THE COST OF HOLDING.**
-**⚠ AND THE MEASURED "BREACH" IS IN THE DIRECTION THE HOLDING COST PREDICTS:** comp-weighted V0 **>** derived
-PVC in EVERY band (**+19…+281**, widest at picks 21–30) — **the players are worth MORE than the picks.** On
-bands worth ~1,000–3,000 that is **1–10% over ~6 years ⇒ an implied discount of 0.2–1.6%/yr. If anything TOO
-SMALL.**
-**⚠⚠ SO G-Y0's FIX DIRECTION (`raise_young_side...`) WOULD CLOSE A GAP THAT OUGHT TO EXIST. DO NOT ACT ON IT.**
-**AND CLAIM 2 CARRIES TWO UNSPECIFIED FREE PARAMETERS — THE DISCOUNT RATE AND THE PLAYER-VALUATION WINDOW
-(peak? career mean? a window across the peak?). THAT IS NOT A GUARD; IT IS A CALIBRATION WITH NOTHING
-CALIBRATED.** **The PVC re-derivation must fix its CONSTRUCTION, not merely its numbers.**
+**G-Y0 — PENDING_OWNER → ADVISORY (owner-ruled 2026-07-14). THE IDENTITY IS SOUND. **THE PRESCRIBED CURE IS
+POINTED BACKWARDS.**
+⚠⚠ **THIS BLOCK REPLACES A WRONG SUPERVISOR ANALYSIS PUSHED AT `c48d390` AND CORRECTED BY THE OWNER WITHIN THE
+HOUR. THE ERROR AND ITS CORRECTION ARE BOTH RECORDED, BECAUSE THE WRONG VERSION WAS BRIEFLY BINDING.**
+- **THE SUPERVISOR'S ERROR:** it argued that a pick *should* be worth LESS than the player, because the player
+  peaks in 5–8 years — **"the gap is the cost of holding."** **IT MISREAD WHAT `V0` IS.**
+- **THE OWNER'S CORRECTION (2026-07-14, VERBATIM):** *"if we're talking about picks and the players immediately
+  post draft (i.e. pure v0 players), then they should be relatively even on average... Because otherwise 1 day
+  after the draft there'd be a heap of value created or lost which is nonsensical."*
+- **`V0` IS THE PLAYER'S VALUE THE DAY *AFTER* THE DRAFT. THE PVC IS THE PICK'S VALUE THE DAY *BEFORE*. THEY
+  ARE ONE DAY APART. THERE IS NO HOLDING COST BETWEEN THEM AND NOTHING TO DISCOUNT.** **They must be equal, or
+  the draft MANUFACTURES VALUE OUT OF NOTHING and no rational owner would ever sell a pick.**
+  **THE NO-ARBITRAGE ARGUMENT IS EXACT. THE IDENTITY IS THE OWNER'S AND IT STANDS.**
+- **THE HOLDING-COST QUESTION IS A DIFFERENT COMPARISON** — *pick vs the player's PEAK/CAREER value* — where the
+  owner's other point **does** bite (*"how do you value the players? Peak career value? A range of samples
+  across their peak? It's a bit arbitrary."*). **THAT COMPARISON IS NOT G-Y0. DO NOT WELD THEM TOGETHER AGAIN.**
+
+**THE IDENTITY, AS THE OWNER STATES IT:**
+- **CLAIM 1:** position conditioning **REDISTRIBUTES, never LEAKS.** A defender below the curve is paid for by a
+  midfielder above it. **Deviations NET TO ZERO.**
+- **CLAIM 2:** the composition-weighted mean `V0` **EQUALS the derived PVC.** **BOTH CLAIMS ARE THE OWNER'S.**
+- ⚠ **AND THE OWNER'S POSITIONAL CAVEAT IS PART OF THE LAW, NOT AN EXCUSE FOR IT:** *"acknowledging that some
+  drafts will be positionally weaker and as a result be below the PVC, while others may be positionally strong
+  and therefore above it."*
+  **⇒ THE IDENTITY HOLDS *ON AVERAGE ACROSS DRAFTS*, NOT DRAFT-BY-DRAFT. A SINGLE CLASS LANDING OFF THE CURVE IS
+  NOT A BREACH — IT IS A WEAK OR A STRONG CLASS. G-Y0 MUST THEREFORE BE MEASURED ACROSS MULTIPLE DRAFTS.**
+
+**⚠⚠ THE FIX DIRECTION IS STALE AND MUST NOT BE APPLIED.**
+**MEASURED (2026-07-13, the v2.9 seam table): comp-weighted `V0` > derived PVC in EVERY band (+19…+281, widest
+at picks 21–30). THE PLAYERS ARE WORTH MORE THAN THE PICKS. THE DRAFT CREATES VALUE.**
+**G-Y0's recorded `fix_direction` is `raise_young_side_never_cut_survivors_never_bend_derived_curve`.**
+**⇒ THE YOUNG SIDE IS ALREADY THE HIGH SIDE. RAISING IT WOULD *WIDEN* THE GAP.**
+**WHY: the remedy was drafted on 2026-07-11 anticipating the OPPOSITE breach** — the supervisor's note that day
+read *"the weighted average sits BELOW the curve broadly."* **The measurement came back the other way and NOBODY
+UPDATED THE REMEDY.** **The PVC re-derivation must re-derive the CURE, not only the numbers.**
+**ADVISORY, by owner ruling — scored and reported, not blocking, until the pricing-curve chapter.**
 
 **A-FADE — BASIS APPROVED (owner 2026-07-14). ⚠ PROVENANCE UNVERIFIED.**
 - **BASIS: APPROVED — the multi-bake ARC, not the single-bake tick.** *(Owner: "I'm happy to be loose on
