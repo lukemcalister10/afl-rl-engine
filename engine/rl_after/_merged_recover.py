@@ -1,7 +1,25 @@
 """WIRE (1) delist->~0 (2) staleness floor all-stalled (3) isotonic pick guard INTO the engine. Prove on named players."""
 import os,io,contextlib,copy,pickle,numpy as np
+import math as _math
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
+# ===== DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix) =====
+# PART 1 bisect finding: the FIRST cross-environment divergent bit is a BLAS-routed np.dot
+# (price6, below) — NOT the NW-smoother the register hypothesised. All 3 np.dot sites on the
+# board's critical path (price6 + the two Nadaraya-Watson smoothers) are order-sensitive: the
+# OpenBLAS kernel accumulates the sum in a different order per CPU, so the board value moved
+# 8 rucks (+1..+4 SCAR) between an AVX-512 (SkylakeX) and an AVX2 (Haswell) build on ONE box.
+# The repair (register item 106): replace the order-dependent reductions on the critical path
+# with math.fsum — exact-to-one-rounding, order-fixed, identical on every kernel AND every CPU
+# SIMD width. The NW normaliser (w.sum) and effective-n (sum(w*w)) are fsum'd for the same
+# reason. NOTHING ELSE is touched (fence: this file's identified reductions only).
+def _det_dot(a, b):
+    return _math.fsum(float(x) * float(y) for x, y in zip(a, b))
+def _det_sum(a):
+    return _math.fsum(float(x) for x in a)
+def _det_mean(a):
+    a = [float(x) for x in a]
+    return _math.fsum(a) / len(a) if a else 0.0
 with contextlib.redirect_stdout(io.StringIO()):
     import rl_model as MA, wire_redesign as W; cm=W.build()
 TR=W.TR; rd=TR.rd; cp=TR.cp; dp=TR.dp; PR=W.PR
@@ -203,7 +221,7 @@ def price6(p,bb,Y=2026):
     try:
         for g in MA.REPL: MA.REPL[g]=sav[g]-rd.REPL_DROP.get(g,0)
         MA.BASE_REF=MA.AGE_REF=Y; MA._pe_clear()
-        with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*np.dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))
+        with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*_det_dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))   # DETERMINISM FIX: order-fixed dot (was np.dot -> BLAS, CPU-dependent)
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
 def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
@@ -903,11 +921,11 @@ def _fit_pick_curve(pts,effn_min=35.0,h0=0.18,hmax=2.2):     # adaptive-bandwidt
     for lg in _V0_LGRID:
         h=h0
         while True:
-            w=np.exp(-0.5*((lx-lg)/h)**2); sw=w.sum(); effn=(sw*sw)/float(np.sum(w*w)) if sw>0 else 0.0
+            w=np.exp(-0.5*((lx-lg)/h)**2); sw=_det_sum(w); effn=(sw*sw)/_det_sum(w*w) if sw>0 else 0.0   # DETERMINISM FIX: order-fixed sums
             if effn>=effn_min or h>=hmax: break
             h*=1.15
         if h>=hmax: meta_hmax+=1
-        grid.append(float(np.dot(w,vy)/sw) if sw>0 else float(vy.mean())); meta_e.append(effn)
+        grid.append((_det_dot(w,vy)/sw) if sw>0 else _det_mean(vy)); meta_e.append(effn)   # DETERMINISM FIX: order-fixed dot/mean
     return _iso_dec(grid), dict(n=len(pts),min_effn=float(min(meta_e)),grid_at_hmax=meta_hmax)
 def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  # 2D (draft-age,log-pick) kernel; age-resolved surface
     aa=np.array([a for a,_,_ in pts]); lx=np.array([l for _,l,_ in pts]); vy=np.array([v for _,_,v in pts])
@@ -917,13 +935,13 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
         for lg in _V0_LGRID:
             ha,hp=ha0,hp0
             while True:
-                w=np.exp(-0.5*((aa-ag)/ha)**2)*np.exp(-0.5*((lx-lg)/hp)**2); sw=w.sum()
-                effn=(sw*sw)/float(np.sum(w*w)) if sw>0 else 0.0
+                w=np.exp(-0.5*((aa-ag)/ha)**2)*np.exp(-0.5*((lx-lg)/hp)**2); sw=_det_sum(w)   # DETERMINISM FIX: order-fixed sum
+                effn=(sw*sw)/_det_sum(w*w) if sw>0 else 0.0   # DETERMINISM FIX: order-fixed sum
                 if effn>=effn_min or (ha>=hamax and hp>=hpmax): break
                 if ha<hamax: ha*=1.2
                 else: hp*=1.15
             if ha>=hamax and hp>=hpmax: hmaxhit+=1
-            row.append(float(np.dot(w,vy)/sw) if sw>0 else float(vy.mean())); mine=min(mine,effn)
+            row.append((_det_dot(w,vy)/sw) if sw>0 else _det_mean(vy)); mine=min(mine,effn)   # DETERMINISM FIX: order-fixed dot/mean
         surf[ag]=_iso_dec(row)                                # pick-isotonic per age
     for i in range(len(_V0_GRIDPK)):                          # then non-increasing in draft-age at each pick
         run=1e18

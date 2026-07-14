@@ -1,11 +1,11 @@
 {
   "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-13 at the ITEM 20 STORE-IDENTITY JOB (engine 2030e5df UNCHANGED, store b0c39d78 -> 340a7a32). Only bramble's 2026 games (15->14) feed ev(); the afl_club/eligibility/_draft_club edits are identity fields ev() never reads. The book is re-measured on THIS version's store per the owner ruling. Owner tag/main promote remain owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "2030e5df",
+  "head_md5": "118f8ac6",
   "store_md5": "340a7a32",
   "n_players": 2649,
-  "stable_sha256": "d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f",
-  "sealed_by": "CONFIG-MANIFEST v2.9 COMPLETION re-seal 2026-07-14 (engine 2030e5df; store 340a7a32; config 69ead79b->c2d233ae). Book content UNCHANGED: stable_sha256 d371a27c byte-identical (the 7 newly-pinned model vars all == engine defaults, so the walk-forward book does not move); only the config stamp advances to cover the v2.9 levers per the BOOK-PARITY LAW.",
+  "stable_sha256": "7fcb92c2a5c228c56bad2dedb212bd7aee2033a15ca0c6d61704a0b007a11e96",
+  "sealed_by": "DETERMINISM FIX re-seal 2026-07-14 (session_2026-07-14/determinism_fix; engine 2030e5df->fef5719d->118f8ac6; store 340a7a32 UNCHANGED). The book was RE-BUILT on the fixed engine (G-BOOK: the formula moved — par_build loclin + price6/NW now use order-fixed math.fsum), NOT re-stamped. stable_sha256 d371a27c -> 7fcb92c2 because the 8 rucks that moved +1..+4 SCAR on the board also move in the present-year book column. head_md5 stamp advanced 2030e5df (stale pre-freeze, item 103) -> 118f8ac6. Candidate — owner tag/main promote remain owner-only.",
   "sealed_date": "2026-07-14",
   "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }

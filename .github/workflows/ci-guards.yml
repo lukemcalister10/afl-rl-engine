@@ -99,7 +99,15 @@ jobs:
           python3 guard_correction_canary.py
 
       - name: Panel 10/10 (run_panel.sh, + Guard 5 on entry)
-        run: bash run_panel.sh
+        # E0 (ci-env-pin, ported here 2026-07-14 — the determinism branch forked from a base that predates
+        # PR #81, so E0 was not inherited) — DIAGNOSTIC OUTPUT ONLY, changes no step logic and no verdict:
+        # print the md5 of the board THIS run built (rl_export.py output from the build step above) so CI's
+        # board identity is visible in the log, printed BEFORE the panel so it appears even on a panel failure.
+        # A2 proof = this printed md5 on the AMD runner == the bake-box md5. After the determinism fix
+        # (session_2026-07-14/determinism_fix) the board of record is 800bf461d5ec81d12da2e2426ff15c9c.
+        run: |
+          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (deterministic board of record = 800bf461d5ec81d12da2e2426ff15c9c)"
+          bash run_panel.sh
 
       - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"
         run: python3 ruling_config_check.py

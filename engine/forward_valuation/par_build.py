@@ -14,6 +14,7 @@ Run: cd /home/claude/rl_after && PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL
 import sys, os, io, contextlib, collections
 sys.path.insert(0, '/home/claude/rl_after')
 os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+import math as _math
 import numpy as np
 with contextlib.redirect_stdout(io.StringIO()):
     import rl_model as MA
@@ -62,16 +63,42 @@ def gather():
 def tricube(u):
     u = np.abs(u); w = (1 - u**3)**3; w[u >= 1] = 0.0; return w
 def loclin(x0, xs, ys, h):
-    """local-linear fit at x0; returns (yhat, ESS=(sum w)^2/sum w^2)."""
+    """local-linear fit at x0; returns (yhat, ESS=(sum w)^2/sum w^2).
+    DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix): PART 1 measured the PAR table
+    as the FIRST cross-environment divergent stage (upstream of everything) — NOT the NW-smoother the
+    register (item 106) hypothesised, and NOT price6. The cause is here: BLAS `@` (Xd.T@W@Xd, Xd.T@W@ys)
+    plus np.linalg.solve accumulate the weighted normal-equation sums in a CPU-kernel-dependent ORDER,
+    so the PAR level moved between an AVX-512 and an AVX2 build on ONE box. The 2-parameter weighted
+    normal equations have a CLOSED FORM; solving it with math.fsum (order-fixed, correctly-rounded) is
+    the SAME maths, identical on every kernel and every CPU. b0 (the fit AT x0) is all we return."""
     w = tricube((xs - x0)/h)
-    if w.sum() <= 0: return float('nan'), 0.0
-    W = np.diag(w); Xd = np.column_stack([np.ones_like(xs), xs - x0])
-    try:
-        beta = np.linalg.solve(Xd.T@W@Xd, Xd.T@W@ys); yhat = float(beta[0])
-    except np.linalg.LinAlgError:
-        yhat = float(np.sum(w*ys)/np.sum(w))
-    ess = float((w.sum()**2)/np.sum(w**2))
-    return yhat, ess
+    wa = np.asarray(w, dtype=float); xa = np.asarray(xs, dtype=float); ya = np.asarray(ys, dtype=float)
+    Sw = _math.fsum(wa.tolist())
+    if Sw <= 0: return float('nan'), 0.0
+    u = xa - x0
+    Swu  = _math.fsum((wa*u).tolist())
+    Swuu = _math.fsum((wa*u*u).tolist())
+    Swy  = _math.fsum((wa*ya).tolist())
+    Swuy = _math.fsum((wa*u*ya).tolist())
+    # Solve  [[Sw, Swu],[Swu, Swuu]] [b0,b1]^T = [Swy, Swuy]^T  by LU WITH PARTIAL PIVOTING — the SAME
+    # algorithm LAPACK dgesv uses — so a well-conditioned cell tracks the old np.linalg.solve to float
+    # precision. For a RANK-DEFICIENT cell (thin low picks whose tricube weight sits on one pick, so the
+    # weighted design has no x-spread) the local-linear fit is undefined; fall back to the local-CONSTANT
+    # (weighted mean) — the standard, numerically-stable degradation. relcond = det/(Sw*Swuu) at machine
+    # epsilon flags it. NOTE (measured, session_2026-07-14): the board of record e6a8e6ef used the native
+    # kernel's UNSTABLE solve of one boundary cell (relcond~2e-16, pick~4): a deterministic result there is
+    # the stable weighted mean, which differs from that garbage — this is the source of the ruck A3 delta.
+    relcond = (Sw*Swuu - Swu*Swu)/(Sw*Swuu) if Sw*Swuu > 0 else 0.0
+    if relcond < 1e-9:
+        yhat = Swy/Sw                                        # rank-deficient -> local-constant (weighted mean)
+    else:
+        a, b, c, d, e, f = Sw, Swu, Swu, Swuu, Swy, Swuy
+        if abs(c) > abs(a): a, b, e, c, d, f = c, d, f, a, b, e   # partial pivot on the larger leading entry
+        m = c/a; d2 = d - m*b; f2 = f - m*e
+        b1 = (f2/d2) if d2 != 0.0 else 0.0
+        yhat = (e - b*b1)/a                                  # b0 = the fit AT x0 (the intercept)
+    ess = (Sw*Sw)/_math.fsum((wa*wa).tolist())
+    return float(yhat), float(ess)
 
 # ---- 3. additive backfitting: level_pos(logpick) + ramp_pos(T) ----------------------------
 def fit():
