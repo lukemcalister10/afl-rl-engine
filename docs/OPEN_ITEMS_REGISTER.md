@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v83 2026-07-14 (**PR #75 RULED: Fix 1 TAKE · Fix 2 REJECT · Fix 3 HOLD** (item 79). **`_iso_dec` — A SECOND RUNTIME FIT THAT D3 MISSED** (item 80): `_merged_recover.py:801`, feeds the PICK CURVE; if CI is still red after the q97m freeze it is NOT a failed freeze — look here. **R98.9 REWORDED** (item 81): screening expires when FABLE sits, not at this rotation. Seat-5 closeout; seat 6 (Opus) holds overnight.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v84 2026-07-14 (**SEAT 6 OPENS.** **THE HANDOVER ORDER IS INVERTED IN THE PACK** (item 83): R98.10's directional guard requires CHECK-THEN-FILE, and rev136 / manifest v4.16 / R98.10 itself all say FILE-THEN-CHECK — a guard that runs after the thing it guards cannot fire. Owner-ruled: FRESHNESS CHECK FIRST. **CORE v2.6 must encode the order.** **THE LETTER TO THE FABLE SEAT** (item 84) is a required, CUMULATIVE handover artifact and was omitted from DECISIONS v99 §2's attachment list; each seat appends its day. Seat 6 ran the check FIRST: PK ahead on every pack doc, behind on none — guard PASSED, pack FILED.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1907,6 +1907,45 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     instead of measuring the real one.** It is the same pattern the builds show (items 65, 76, 80).
     **This is why every directive now leads with ATTRIBUTION BEFORE DESIGN, and why every multi-lever job must
     ABLATE.** **A seat must hold its own returns to it — and the next seat must hold the handover to it.**
+
+83. **⚠ THE HANDOVER ORDER IS INVERTED IN THE PACK ITSELF — FILE-THEN-CHECK, WHERE THE GUARD REQUIRES
+    CHECK-THEN-FILE (owner-raised 2026-07-14, at the seat-5 -> seat-6 handover; caught BEFORE seat 6 acted).**
+    R98.10's directional guard is: compare PK against the repo doc-by-doc by header version; PK ahead or equal
+    => file; PK BEHIND on any doc => HALT. **A comparison that runs AFTER the filing compares the repo against
+    itself.** File before you compare and **the guard never runs** — and the failure it exists to prevent (a
+    stale PK pack overwriting newer repo docs) is exactly the failure it is then unable to see.
+    **IT IS NOT CONFINED TO rev136. THREE pack docs carry it:** HANDOVER rev136 ("ACT 1 — FILE THE PACK …
+    ACT 2 — THE FRESHNESS CHECK") · 00_MANIFEST v4.16 ("files it to the repo as its first act") · DECISIONS
+    v99 R98.10 (leads with the filing; states the guard as a following clause, not a precondition).
+    **OWNER RULING 2026-07-14: FRESHNESS CHECK FIRST. THEN FILE.**
+    **DISPOSITION: CORE v2.6 (Fable's first pen job) MUST ENCODE THE ORDER EXPLICITLY.** R98.10 is not an
+    exception to the freshness *check*; it is an exception to *whose copy wins*, and it is CONDITIONAL ON THE
+    CHECK HAVING BEEN RUN. The three docs are filed VERBATIM as screened (the owner's word covers the pack he
+    handed over, not a seat's edits to it); the correction lands in CORE v2.6, not in a supervisor amendment.
+    **SEAT 6 RAN THE CHECK FIRST AND IT PASSED** — PK ahead on manifest/HANDOVER/DECISIONS/CONSTRAINTS/
+    acceptance/SSI; byte-identical on CORE (`34dc4c0b`); behind on nothing.
+    ⚠ **NOTE THE SHAPE.** It is the week's pattern one level up: a rule that describes the system correctly, and
+    an ORDERING nobody checked — so the guard could not fire. Same family as the panel gate that printed FAIL
+    and exited zero (item 72) and the config manifest consistent with itself and missing seven variables.
+    **A GUARD THAT RUNS AFTER THE THING IT GUARDS IS A GUARD THAT CANNOT FAIL.**
+    TRIGGER: the CORE v2.6 fold. CLOSES when CORE states the order.
+
+84. **THE LETTER TO THE FABLE SEAT IS A HANDOVER ARTIFACT, AND IT WAS OMITTED FROM THE OWNER'S ATTACHMENT
+    LIST (owner-raised 2026-07-14: "that omission is real").**
+    DECISIONS v99 §2 reads: *"Open SEAT 6 with the Project-knowledge pack, HANDOVER rev136, and both in-flight
+    directives as files."* It ENUMERATES the handover attachments — and omits `LETTER_to_the_fable_seat_
+    2026-07-14.md`, which the owner in fact attached and instructed seat 6 to read.
+    **IT IS NOT REDUNDANT WITH THE STATE DOCS.** It carries the seat-5 correction ledger WITH ITS MECHANISMS,
+    the working-with-the-owner section, the flattery-chapter self-refutation left deliberately visible, and the
+    "everything that broke this week had been broken for months" frame. **None of that survives in HANDOVER or
+    DECISIONS.** An enumerated attachment list that silently omits an attachment is the same class of defect as
+    a manifest consistent with itself and incomplete: **a seat following the list, and only the list, would
+    never open it and would never know it existed.**
+    **THE LETTER IS A LIVE, CUMULATIVE ARTIFACT (owner-ruled 2026-07-14): each seat APPENDS ITS OWN DAY and
+    keeps it true.** Seat 6 appends at its close, before Fable sits.
+    **DISPOSITION: the letter is NAMED as a required handover attachment** alongside the pack, HANDOVER and the
+    in-flight directives. Any future handover to-do that enumerates attachments MUST name it.
+    TRIGGER: every seat rotation. CLOSES: never — standing rule.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
