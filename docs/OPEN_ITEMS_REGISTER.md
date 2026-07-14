@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v86 2026-07-14 (**THE `81e48293` LEG IS A FOUR-PIN FALSE-ALARM TRAP** (item 86): the freeze branch is based on PR #74, not main, and pins store 340a7a32 / board 3dc19fbb / config c2d233ae / engine 2334f570 — the tagged board was built on b0c39d78 / 81e48293 / 69ead79b / 2030e5df, and boot_guard asserts ALL FOUR. A build reporting \"cannot reproduce the board of record\" from this branch is reporting GUARD ARITHMETIC, NOT A BOARD DEFECT. **AND the catastrophe hypothesis — that the frozen q97m cannot be the tag's object because the store moved — IS REFUTED: Bramble, the ONLY store delta, is excluded from q97m's training pool twice over, and the era aggregate excludes 2026. X/yy are identical; the leg should PASS.** Items 83-85 carry.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v88 2026-07-14 (**THE CENSUS LANDS — PRESCREEN PASS** (item 88): BLAKEY vs ENGLISH IS SOLVED — not a blend, an ASYMMETRIC UP/DOWN FORK in _coreM1 (Blakey rising +8.04 takes the up branch and the riser step fires; English falling -2.83 takes the down branch). The top live edges are SEASON-COUNTERS, not the ones we were chasing: the 10-game bar (551 players within one game) and the thin-career ramp (545). Fix 2's target CONFIRMED DEAD by a second independent measurement. **RETURN-FROM-ABSENCE IS REAL AND AGE-CONDITIONAL: young 18-24 lose 4.94 level pts; prime 25-28's CI SPANS ZERO — the supervisor's 'pure availability' expectation is true ONLY for prime.** Fix 1 meets the owner's w(1)≈w(0) constraint DIRECTIONALLY (6.8x cut) but NOT strictly, and ⚠ **D2 AND D3 COLLIDE — they are ONE ruling, not two.** **AND THE q97m FREEZE RETURN DOES NOT EXIST** (item 89): the branch is CODE ONLY — no PLAN, no RETURN, no A1-A5 proofs. **A1 IS UNPROVEN. SILENCE IS A RED. DO NOT MERGE IT.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2001,6 +2001,73 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     The directive and the job disagree; the job followed rev136. **A base pin that does not describe the base is
     a base pin that cannot fire.** Same family as items 83 and 72.
     TRIGGER: the q97m return. CLOSES when the return names the pins it booted on and confirms the X/yy identity.
+
+88. **THE DISCONTINUITY CENSUS — PRESCREEN: PASS. IT ANSWERS BLAKEY vs ENGLISH, AND IT PARTLY REFUTES THE
+    SUPERVISOR (`3ca74f3`, measured on the TAGGED board of record: store `b0c39d78` / board `81e48293` /
+    engine `2030e5df` / tag `9f8ae76`, Guard 5 PASS, board md5 named beside the figures — as directed).**
+    **C1 — THE RANKED CENSUS, and the top of it is NOT where we were looking.** The two biggest live edges are
+    **SEASON-COUNTERS**: (1) the **10-game qualifying bar** (`_merged_recover.py:106`, `games>=10`) — mean 3.3 /
+    max 32 level pts, **551 players within one game of it**; (2) the **thin-career nqual ramp** (`:248`, `c=n/4`)
+    — **545 players at n=1–3**. Then (3) the **PROVEN_N cliff** n=3→4, where the par term VANISHES (`:243/248`) —
+    median 5.4 / max 33, **253 players**. Then `_lvlcurr`'s cameo drag (165), `_eo`'s years-since-draft tick
+    (137), `TOL_M1` (96 near / 46 firing), `_radq` (91), age bucketing. **~550 players can move because a counter
+    ticked.**
+    **DEAD TWINS CONFIRMED, INDEPENDENTLY: `FLAT_TOL_G` (`:128`, `_lvl_eff_core`) and `_lvl_eff_infer` (`:152`)
+    are called by NOTHING.** **PR #75's Fix 2 targets one of them — R99.1's REJECT is confirmed by a second,
+    independent measurement.** Only two dead twins exist.
+    **C2 — BLAKEY vs ENGLISH IS SOLVED, AND IT WAS NEVER THE BLEND.** Their résumés match; their **FORM TRENDS
+    ARE OPPOSITE.** Blakey RISING (`Lc−Lo = +8.04`) takes `_coreM1`'s **UP branch**, clears `TOL_M1=5.0` and
+    `_radq`, and the riser step fires **+3.04**. English FALLING (`Lc−Lo = −2.83`) takes the **DOWN branch** and
+    `_eo` pulls him to his demonstrated floor. **Opposite branches of an ASYMMETRIC UP/DOWN FORK ⇒ opposite-sign
+    level moves ⇒ opposite-sign value through the convex price.** Neither sits on `TOL_M1`. **The standing
+    "a blend cannot produce opposite signs from the same inputs" is answered: it is not a blend, it is a FORK.**
+    **D2 — RETURN-FROM-ABSENCE: REAL, NEGATIVE, AND AGE-CONDITIONAL. THE SUPERVISOR'S EXPECTATION WAS TRUE FOR
+    PRIME PLAYERS ONLY, AND WRONG FOR THE YOUNG.** Age-controlled diff-in-diff vs 14,698 continuous transitions:
+    **overall −3.42 SC [−4.84, −1.95]**. **Young 18–24: −4.94 [−7.09, −2.84] — REAL developmental loss.**
+    **Prime 25–28: −1.07 [−3.49, +1.48] — CI SPANS ZERO ⇒ pure availability**, which is exactly what the
+    supervisor predicted — **and it holds ONLY there.** Older 29+: −3.3, marginal. **ABSENCE CARRIES GENUINE,
+    AGE-CONDITIONED LEVEL INFORMATION.** Caveats stated by the build and accepted: survivorship (521/843 never
+    returned ⇒ the estimate is CONSERVATIVE) and mean-reversion (sign robust, magnitude soft).
+    **D2b:** explicit `games==0` rows = **ZERO** — absence is a YEAR-GAP, not a zero row. **109 players** with a
+    full mid-career absence from an established base + **479** with a reduced-from-base season. **NOT TINY.**
+    **D3 — FIX 1's SHAPE: `w(g) = g²/(g+5.8)`. IT MEETS THE OWNER'S CONSTRAINT DIRECTIONALLY, NOT STRICTLY.**
+    `w(0)=0 · w(1)=0.147 · w(2)=0.51 · w(3)=1.02 · w(5)=2.31 · w(8)=4.64 · w(12)=8.09 · w(22)=17.41`.
+    The 0→1 jump falls **1.0 → 0.147 (6.8×)**; a 1-game cameo is now **0.84%** of a full season (was 4.55%).
+    **BUT `w(1)` IS NOT ≈ 0, AND THE INVERSION IS NOT ELIMINATED — ONLY SHRUNK.** Playing one bad game is STILL
+    worse than not playing at all, by 0.147. Jamarra's cameo share falls **35.4% → 19.2%** and `_lvlcurr` rises
+    **48.75 → 54.57** — but he **STILL STEPS ~58%**. Strict `w(1)≈0` needs a **shifted reliability**
+    `ρ(g) = max(0, g−1)/((g−1)+k)` — continuous, so it does NOT breach R98.2 — **owner's call; the build
+    correctly did NOT build it.**
+    ⚠ **SUPERVISOR OBSERVATION — D2 AND D3 COLLIDE, AND THE OWNER MUST SEE IT BEFORE HE RULES.** He asked that a
+    1-game season be a NEIGHBOUR of a missed season. **D2 has just measured that a MISSED SEASON IS ITSELF
+    INFORMATIVE — −4.94 level points for a young player.** Today `_lvlcurr` FILTERS absence out entirely
+    (`games>0`), so absence is worth ZERO in the level and is penalised only indirectly, by recency decay.
+    **So "make w(1) ≈ w(0)" and "0 games is also information on that curve" (his own words) pull in OPPOSITE
+    DIRECTIONS unless BOTH are set together.** Driving `w(1)` to 0 equalises a cameo with an absence that the
+    engine currently treats as free — **which, for a young player, the data says it is not.** **THE TWO ARE ONE
+    RULING, NOT TWO.** Do not wire D3's shift without settling what an absence is worth.
+    FENCE: honoured — new files only under `session_2026-07-14/discontinuity_census/`; store, engine, board,
+    gates, docs, pricing, λ and the trust basis untouched. Tier 3, read-only, no bake, no tag, no merge.
+
+89. **⚠ THE q97m FREEZE RETURN DOES NOT EXIST IN THE REPO. IT CANNOT BE PRESCREENED. IT MUST NOT BE MERGED.**
+    Branch `claude/freeze-q97m-determinism-5hitu3`, head **`f14710d`** — **ONE commit**, and it contains
+    **CODE ONLY**: `SHIP_GATES.md` · `boot_guard.py` · `bootstrap.sh` · `data/expected_boot.json` ·
+    `data/q97m.pkl` · `_merged_recover.py` · `wire_redesign.py` · `refit_q97m.py`.
+    **THERE IS NO `PLAN`. THERE IS NO `RETURN`. THERE ARE NO A1–A5 PROOFS.** The directive is **auto mode**, so
+    *"the build's first committed artifact is its PLAN"* — absent. **A3 says "Commit both proofs"** — absent.
+    The RETURN is specified in the directive and requires **the frozen q97m's md5 · A1 board byte-identical
+    YES/NO · A2's runtime-fit count · A3's two HALT proofs · A4's per-step CI exit codes · A5 store untouched.**
+    **NONE OF IT IS COMMITTED.**
+    **SILENCE IS A RED (CORE v2.5). A1 — the WHOLE TEST — IS UNPROVEN IN THE REPO.**
+    What CAN be said from the tree, and it is NOT a substitute: **A5 HOLDS** (`rl_model_data.json` is not in the
+    commit's diff — the store is untouched). The board pin in `expected_boot.json` is still **`3dc19fbb`** and
+    `engine_head` correctly moved `2030e5df` → **`2334f570`**; `q97m` is pinned at **`cfdc7321`**; the three D6
+    artifacts (`peak_model` `b763f59e` · `pvc_snapshot` `735d2dec` · `bust_prior` `ffb54267`) are pinned as
+    directed. **That is CONSISTENT with A1 and is NOT A1.** A pin is a claim. **Nothing is a fact until
+    independently re-run or owner-seen (CORE rule 1).**
+    **REQUIRED: the build's RETURN, and its artifacts committed.** See item 86 — when it runs the `81e48293`
+    leg it must run it at the TAG's tree, or four pins will false-halt it.
+    TRIGGER: the return. **BLOCKS: any merge of the freeze branch.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
