@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v76 2026-07-13 (SUPERVISOR CORRECTION to item 55 — I over-claimed "a ruling was reversed"; the old ruling attached to an OLD ENGINE, so it is NOT a governance breach. What survives is the ARGUMENT (it is about the GAME, not the engine) — and the fact that **the CURRENT curve has never been owner-ratified at all.** Owner rejects the weekly-volatility path (no weekly scores; too complex) and rejects the team-specific option (it prices PRACTICAL value, not TRADE value). NEW PATH: fit the ladder-convex curve to the REALIZED order-statistic value we already measured. **nqual moves to THIS seat** (item 58). **THE ENFORCEMENT GAP** (item 59). Seat-5 pen.)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v77 2026-07-13 (**THE CAPTAINCY LAW — OWNER-RULED** (item 61): the credit is a PURE FUNCTION OF PROJECTED LEVEL, applied identically wherever a level is priced — current season, every future season in the path, and EVERY HISTORICAL SEASON IN THE WALK-FORWARD BOOK. Shape approved (integral-of-P, marginal = P, structural slope-1 ceiling); **the DIALS ARE NOT SET — they get FITTED to the realized armband record, never to an opinion.** Retroactivity makes this a FULL-LADDER, BAKE-CLASS change: the book is rebuilt and re-sealed, so every gate re-measures and the earlier "self-funds" result DOES NOT CARRY OVER. Seat-5 pen.)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -1500,6 +1500,48 @@
     superseded line. Let the supervisor VERIFY SUBSUMPTION against G-COHORT + G-Y0, then either RETIRE it
     with an obituary or re-run the trajectory on the CURRENT engine and put the curve in front of the
     owner. **No owner action required until that check is done.**
+
+61. **THE CAPTAINCY LAW — OWNER-RULED (2026-07-13). SHAPE APPROVED; DIALS NOT YET SET.**
+    OWNER, VERBATIM: *"I agree with your captaincy idea. Let's implement it across the board — any scores
+    projected into that range receive that bonus. Current and future. And looking back into the past (for
+    valuations etc. and the walk-forward book) they are assigned it."*
+    **THE LAW:** the captaincy credit is a **PURE FUNCTION OF PROJECTED SCORING LEVEL**, applied
+    IDENTICALLY wherever a level is priced — the current season · every future season in a player's path
+    (i.e. at every level in his peak band, which is how the board already prices him) · and **every
+    historical season in the WALK-FORWARD BOOK.** **No player-specific exceptions. No special cases.**
+    (This is what keeps it a RULE and not a hand edit — cf. the standing doctrine against predicate-based
+    nerfs wearing a rule's clothes.)
+    **THE SHAPE (approved):** `credit(L) = G · ∫[BAR → L] P(a) da`, P logistic. Its derivative IS the
+    probability of the armband, so **one point of average can never add more than one point of credit** —
+    the owner's impossibility ceiling is STRUCTURAL, not clamped. This REPLACES the live `capt_prem`
+    (saturating, hard 18-pt cap), whose marginal credit *falls* with quality (0.49 near the bar → 0.30 at
+    Gawn) — backwards. Worked table put to the owner: today Gawn 7.72 / Bont 5.49; proposed (illustrative
+    candidate C: bar 111, width 3) Gawn 14.63 / Bont 7.79, with the marginal climbing 0.23 → 1.00.
+    ⚠ **THE DIALS ARE NOT RULED AND MUST NOT BE PICKED.** Candidate C was chosen by the SUPERVISOR because
+    it matched the owner's Gawn/Bont read. **Wiring it would be fitting the curve to an opinion and calling
+    it evidence.** The DERIVE-THE-CAPTAIN-CURVE job fits (BAR, M, W, G) to the **realized order-statistic
+    armband value measured off the record** (rank1→2 = 5.31 · rank5→6 = 1.09, full ladder), with a
+    **HELD-OUT rank test** as acceptance. **Derive → owner views the fitted curve and the movers → wire.**
+
+62. **WHAT THE RETROACTIVITY RULING ACTUALLY COSTS (supervisor, before the fact).**
+    Applying the credit to historical seasons means **THE WALK-FORWARD BOOK IS REBUILT AND RE-SEALED.**
+    Every gate is then measured on a DIFFERENT book — G-COHORT, G-PEAK, B1, the lot. **This is a
+    FULL-LADDER (Tier 1), BAKE-CLASS change**, not a tweak. Correct, and not an argument against it — but
+    three consequences the owner must have before anything is wired:
+    · **THE "SELF-FUNDS" RESULT DOES NOT CARRY OVER.** Item 51 measured that raising CAPT_GAIN did not
+      strain G-COHORT (y4 topped out at 1.2651 vs the 1.30 bound) — **but that was a GAIN change on the
+      SATURATING curve.** This is a **SHAPE** change and it is far larger at the top (Gawn 7.72 → 14.63).
+      **Re-measure on a REBUILT book. Assume nothing.** The derive directive now REQUIRES it and explicitly
+      forbids reporting gate figures off the existing matrix (which was built with the old captaincy and
+      would falsely show "no change").
+    · **IT LIFTS YOUNG PLAYERS TOO — AND MAY WORSEN PAIR 3.** The credit is applied across each player's
+      PEAK BAND (the board integrates `v_at_peak` over `b6`), so a steeper curve pays more wherever a
+      player's UPPER TAIL clears the bar. **Sanders' tail does.** Pair 3 (bont > sanders) could move
+      FURTHER from the owner's read. Measure it; do not assume the lever helps his own anchor.
+    · **A-BONT and A-GAWN both rest partly on captaincy** and should move FAVOURABLY. Report both.
+    SEQUENCE: DERIVE (read-only, running) → OWNER VIEWS the fitted curve + the mover table → WIRE onto the
+    pricing-chapter candidate → **ONE bake** with the flattery decay and the nqual/evidence ramp (CYCLE
+    law: one bake per chapter).
 
 ## THE v2.8 BOARD-VIEW RULING CARD — COMPLETE (2026-07-11)
 L1 ADOPTED (incl. the nine-veteran drift + day-zero position re-orderings, disclosed and blessed) ·
