@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v100 2026-07-14 (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v101 2026-07-15 · PEN: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2601,7 +2601,7 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     it from SEAT 5's LETTER** (line 363), which had it right. **It was still never verified against the code
     before being pushed into a LIVE build and into a handover. A carried claim that happens to be true is still
     a carried claim.**
-    **⚠ STILL UNVERIFIED, AND THE PACK LEANS ON IT: the flattery census's "123 players, +19,168 SCAR."** It is
+    **✅ SUPERSEDED IN PLACE (item 112, 2026-07-15): NOW VERIFIED TWICE — seat 6 (rev137 provenance block, exact re-derivation) AND the Fable seat (independent re-run 2026-07-15 from the census's own committed `flattery_census.json`, branch head `d6c481f6`: 123 players · +19,168 SCAR, EXACT; criterion-robust — no-threshold gives 142 / 19,315). The paragraph below is retained as the record of the gap.** **⚠ STILL UNVERIFIED, AND THE PACK LEANS ON IT: the flattery census's "123 players, +19,168 SCAR."** It is
     the SCALE COMPARISON for the entire chapter (*"the denial is 1.5× larger and points the other way"*) — **and
     NO SEAT-6 EYE HAS EVER CHECKED IT.** **Tagged in the handover's provenance block and in the letter. VERIFY
     IT BEFORE BUILDING ON IT.**
@@ -2629,6 +2629,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     job (both re-pin `board` + `engine_head`). **This is exactly why the merge line must run SEQUENTIALLY:
     `#81 → #82 → determinism`.**
     **⇒ THE BUILD FOUND A DEFECT IN ITS OWN WORK AND SAID SO: BAILEY SMITH. SEE R100.11.**
+
+112. **SEAM-KEEPING FILED (the Fable seat's pen, 2026-07-15): CORE v2.6 · CONSTRAINTS v1.13 +
+    `acceptance_v1_13.json` · DECISIONS v101 (R100.11 into the rulings record) · manifest v4.18 · superseded
+    versions archived. SHA cited in the filing turn. Freshness check run FIRST (R100.10): PASS — PK == repo on
+    every pack doc at main `a734559`.**
+    - **THE ITEM-74 BAKE BLOCKER IS REWRITTEN (owner-ordered 2026-07-15).** It no longer clears on the q97m
+      freeze — **the freeze does not fix the CPU dependence** (items 105–106; the sums are the source;
+      `_iso_dec` uncleared). It clears on **CPU-CLASS DETERMINISM SETTLED per R100.7** (one board name across
+      environments, proven by CI green on the AMD runner PRINTING the matching md5 — OR the owner's RULED
+      tolerance) **+ the reconcile on the build of record.** CONSTRAINTS v1.13 PART 7; machine-readable in the
+      acceptance JSON's `bake_blocker`.
+    - **SSI MOVE (root → docs/) QUEUED ON THE OWNER'S EXPLICIT WORD** — the root deletion sits outside the
+      pen's docs/-only fence; item 85 was a declared one-off, not precedent.
+    - **BOTH WRITERS HAVE RETURNED:** PR #82 (Fix 1 + absence; prescreened PASS at item 111 — a SEAT-6
+      prescreen) and the determinism bisect-then-fix (report with the owner; **not yet seen by any supervisor
+      eye**). Reports courier ONE AT A TIME on the owner's word. **OWNER-INSTRUCTED 2026-07-15: the Opus seats'
+      judgement is NOT ground truth — approach the last 36 hours with scrutiny.** Accordingly: the Fable seat
+      **re-verifies item 111's prescreen independently from PR #82's committed artifacts before any rung
+      advances**, and prescreens the determinism return from its artifacts, never its prose.
+    - **R100.11 ⇒ PR #82 REQUIRES A REWORK** (the schedule fade → evidence fade) **before any bake.** The
+      rework directive is drafted after both prescreens land; merge-line placement is an OWNER decision
+      (options in DECISIONS v101 §2). One writer at a time throughout.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
