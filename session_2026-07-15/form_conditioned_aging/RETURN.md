@@ -1,7 +1,7 @@
 # RETURN — Form-Conditioned Aging (Tier 3, READ-ONLY, MEASUREMENT ONLY)
 
 Base `9be07b8e` STRICT · Guard 5 store `b1fd0bce` PASS · engine_head `fc7045d6` · board `790136a3`.
-Auto mode: PLAN committed first (commit `6e2defc`), before any estimate. Fence clean (writes only under
+Auto mode: PLAN committed first (commit `3785f28`), before any estimate. Fence clean (writes only under
 `session_2026-07-15/form_conditioned_aging/`). No store/engine/config/board/gate/doc write; no wiring.
 
 FINDING — conditioning on flat-or-rising form to date does NOT buy slower decline at 30+:
@@ -28,7 +28,7 @@ ARTIFACTS (committed): PLAN.md · FINDING.md · OWNER_READ.md · measure.py · p
 hazard_by_age.csv · sensitivity.csv · worked_examples.csv · summary.json ·
 fig_hazard_by_age.png · fig_worked_examples.png · base_store_rl_model_data.json (b1fd0bce byte-copy).
 
-Branch: `claude/form-conditioned-aging-analysis-mjhiul`
-Head SHA: <FILL_HEAD>
-PR: <FILL_PR>
+Branch: `claude/form-conditioned-aging-analysis-mjhiul` (rebased onto promoted `main` post-bake; fence-clean)
+Head SHA: `af2ce04` (artifacts commit; this RETURN-fill commit follows)
+PR: #95  (https://github.com/lukemcalister10/afl-rl-engine/pull/95)
 Time: within the 1.5–3 h band. Measurement only — the owner rules on the return.
