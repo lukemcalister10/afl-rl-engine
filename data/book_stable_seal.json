@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-13 at the ITEM 20 STORE-IDENTITY JOB (engine 2030e5df UNCHANGED, store b0c39d78 -> 340a7a32). Only bramble's 2026 games (15->14) feed ev(); the afl_club/eligibility/_draft_club edits are identity fields ev() never reads. The book is re-measured on THIS version's store per the owner ruling. Owner tag/main promote remain owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-15 at the L-CAPTAIN candidate (the ruled captain curve credit(L)=G*integral[BAR->L]P replaces the retired saturating capt_prem in rl_model.py). The book is engine-ev()-derived and the credit rides every credited historical season, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped. engine_head (_merged_recover.py) UNCHANGED fc7045d6; rl_model.py moved -> f79fc740. Store/config UNCHANGED. Owner tag/main owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "2030e5df",
-  "store_md5": "340a7a32",
+  "head_md5": "fc7045d6",
+  "store_md5": "b1fd0bce",
   "n_players": 2649,
-  "stable_sha256": "d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f",
-  "sealed_by": "ITEM 20 store-identity re-seal 2026-07-13 (engine 2030e5df; store 340a7a32)",
-  "sealed_date": "2026-07-13",
-  "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b"
+  "stable_sha256": "99be9b3672bc1e1211538b192ef58a1742e772b9b3049ccfb7ef66c6591b505e",
+  "sealed_by": "L-CAPTAIN re-seal 2026-07-15 (session_2026-07-15/captaincy; rl_model 952ddb3d -> f79fc740 ruled captain curve; engine_head fc7045d6 UNCHANGED; store b1fd0bce UNCHANGED). stable_sha256 cf90c4f4 -> 99be9b36 because the captaincy credit moves in ev() (and thus the book) at every level it prices. Candidate \u2014 owner tag/main promote owner-only.",
+  "sealed_date": "2026-07-15",
+  "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }

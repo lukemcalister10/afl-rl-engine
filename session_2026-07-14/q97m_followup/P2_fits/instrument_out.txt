@@ -1,0 +1,8 @@
+TOTAL runtime .fit/.fit_transform calls during engine load: 72
+by estimator: {'IsotonicRegression.fit_transform': 6, 'IsotonicRegression.fit': 66}
+
+BY CALL SITE (site : count : source):
+  _merged_recover.py:820       x 60  _iso_dec <- _fit_pick_curve:831
+  _merged_recover.py:218       x 12  <module>
+
+wrote fit_census_raw.json

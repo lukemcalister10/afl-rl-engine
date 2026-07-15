@@ -1,0 +1,137 @@
+PHASE 2 ISOLATION — frozen engine 2334f570 — native(Haswell/AVX2) board pin 3dc19fbb, SSE 935c2c29
+BOARD  native (Haswell AVX2 BLAS)                    : 3dc19fbbf920958affe7c6a2be9697d2
+BOARD  SkylakeX (AVX512 BLAS) — realistic CI boundary : 3dc19fbbf920958affe7c6a2be9697d2
+BOARD  numpy-avx512-off only (BLAS native Haswell)   : 3dc19fbbf920958affe7c6a2be9697d2
+BOARD  SSE (Prescott + numpy-avx512-off)             : 935c2c297288dd699584d5857305f32d
+DONE_boards
+
+== BOARD DIFF native vs SSE (804 active) ==
+active players A=804 B=804 common-keyed=804
+SUM A=696248 SUM B=696264
+MOVERS (v differs): 8 of 804
+  delta range: min=+1 max=+4 sum=+16
+  |delta| histogram: {1: 4, 2: 1, 3: 2, 4: 1}
+  largest movers by |delta|:
+    brodie-grundy                     3718 ->    3722  (delta +4)
+    timothy-english                   3132 ->    3135  (delta +3)
+    will-green                         655 ->     658  (delta +3)
+    max-gawn                          2393 ->    2395  (delta +2)
+    tom-de-koning                     1626 ->    1627  (delta +1)
+    taylor-goad                        873 ->     874  (delta +1)
+    mitchell-edwards                  1550 ->    1551  (delta +1)
+    harry-barnett                      634 ->     635  (delta +1)
+
+== PICK CURVE native vs SSE ==
+-- NATIVE --
+{
+ "env": {
+  "OPENBLAS_CORETYPE": null,
+  "NPY_DISABLE_CPU_FEATURES": null,
+  "RL_PRIOR_TREES": null
+ },
+ "picks": {
+  "1": {
+   "v0": 3841.885,
+   "pvc": 3000
+  },
+  "2": {
+   "v0": 3746.393,
+   "pvc": 3000
+  },
+  "3": {
+   "v0": 3380.526,
+   "pvc": 2817
+  },
+  "5": {
+   "v0": 3006.797,
+   "pvc": 2365
+  },
+  "10": {
+   "v0": 2167.264,
+   "pvc": 1657
+  },
+  "20": {
+   "v0": 1266.973,
+   "pvc": 1126
+  },
+  "30": {
+   "v0": 982.453,
+   "pvc": 822
+  },
+  "50": {
+   "v0": 693.046,
+   "pvc": 473
+  },
+  "70": {
+   "v0": 602.543,
+   "pvc": 343
+  }
+ },
+ "ruc_ceiling": {
+  "grid_lo": 957.0644,
+  "grid_hi": 12549.218,
+  "n": 46,
+  "y_mid": 2859.202
+ },
+ "pick1_pvc": 3000,
+ "v0_c18_sha": "30435406b1208fd7"
+}
+-- SSE --
+{
+ "env": {
+  "OPENBLAS_CORETYPE": "Prescott",
+  "NPY_DISABLE_CPU_FEATURES": "AVX512F AVX512CD AVX512BW AVX512DQ AVX512VL AVX512_SKX AVX512_CLX AVX512_CNL AVX512_ICL AVX512_SPR AVX512_KNL AVX512_KNM",
+  "RL_PRIOR_TREES": null
+ },
+ "picks": {
+  "1": {
+   "v0": 3841.885,
+   "pvc": 3000
+  },
+  "2": {
+   "v0": 3746.393,
+   "pvc": 3000
+  },
+  "3": {
+   "v0": 3380.526,
+   "pvc": 2817
+  },
+  "5": {
+   "v0": 3006.797,
+   "pvc": 2365
+  },
+  "10": {
+   "v0": 2167.264,
+   "pvc": 1657
+  },
+  "20": {
+   "v0": 1266.973,
+   "pvc": 1126
+  },
+  "30": {
+   "v0": 982.453,
+   "pvc": 822
+  },
+  "50": {
+   "v0": 693.046,
+   "pvc": 473
+  },
+  "70": {
+   "v0": 602.543,
+   "pvc": 343
+  }
+ },
+ "ruc_ceiling": {
+  "grid_lo": 957.0644,
+  "grid_hi": 12549.218,
+  "n": 46,
+  "y_mid": 2859.202
+ },
+ "pick1_pvc": 3000,
+ "v0_c18_sha": "85071d090e4b90ca"
+}
+== BOOK under SSE (s4_matrix Prescott+numpy-off) — native book stable_sha in P5 results ==
+SSE book stable_sha256: 98fc2a4f333f6417b14a6b461ed27370ffdf5398fbdde102a28791b94f3ff953 n: 2649
+native/sealed stable_sha256: d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f
+BOOK MOVES ACROSS ENV: True
+DONE_phase2

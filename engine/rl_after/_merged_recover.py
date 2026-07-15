@@ -1,7 +1,25 @@
 """WIRE (1) delist->~0 (2) staleness floor all-stalled (3) isotonic pick guard INTO the engine. Prove on named players."""
-import os,io,contextlib,copy,numpy as np
+import os,io,contextlib,copy,pickle,numpy as np
+import math as _math
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
+# ===== DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix) =====
+# PART 1 bisect finding: the FIRST cross-environment divergent bit is a BLAS-routed np.dot
+# (price6, below) — NOT the NW-smoother the register hypothesised. All 3 np.dot sites on the
+# board's critical path (price6 + the two Nadaraya-Watson smoothers) are order-sensitive: the
+# OpenBLAS kernel accumulates the sum in a different order per CPU, so the board value moved
+# 8 rucks (+1..+4 SCAR) between an AVX-512 (SkylakeX) and an AVX2 (Haswell) build on ONE box.
+# The repair (register item 106): replace the order-dependent reductions on the critical path
+# with math.fsum — exact-to-one-rounding, order-fixed, identical on every kernel AND every CPU
+# SIMD width. The NW normaliser (w.sum) and effective-n (sum(w*w)) are fsum'd for the same
+# reason. NOTHING ELSE is touched (fence: this file's identified reductions only).
+def _det_dot(a, b):
+    return _math.fsum(float(x) * float(y) for x, y in zip(a, b))
+def _det_sum(a):
+    return _math.fsum(float(x) for x in a)
+def _det_mean(a):
+    a = [float(x) for x in a]
+    return _math.fsum(a) / len(a) if a else 0.0
 with contextlib.redirect_stdout(io.StringIO()):
     import rl_model as MA, wire_redesign as W; cm=W.build()
 TR=W.TR; rd=TR.rd; cp=TR.cp; dp=TR.dp; PR=W.PR
@@ -28,7 +46,26 @@ for _tp in MA.data:
         raise SystemExit("L4 TRIPWIRE HALT (membership stability): %s re-admitted to the calibration training pool "
                          "— a store edit flipped a named load-bearing leg (debut>2021 window / entry-type). Rule "
                          "before shipping (L4_AND_TRIO_FINDINGS; register item 17 D7)."%_tp.get('player'))
-q97m=GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=200,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(np.array(X),np.array(yy))
+# q97m FROZEN 2026-07-14 (owner ruling — determinism fix). WAS: a GradientBoostingRegressor.fit(X,yy) RIGHT HERE,
+# on every board/gate/panel import, PINNED BY NOTHING. numpy's OpenBLAS is DYNAMIC_ARCH (it selects a CPU-specific
+# float kernel at runtime); GitHub runs a mixed-CPU fleet, so the SAME commit trained q97m slightly differently per
+# runner -> every player moved a little in both directions -> the cross-environment CI red (green as pull_request,
+# red as push, same SHA). q97 is band[5] (price6 weight 0.10). It now gets the treatment cm already gets: fitted
+# ONCE at a bake, pickled to data/q97m.pkl, stamped (data/expected_boot.json 'q97m'), asserted by boot_guard on
+# entry, and LOADED here — NEVER fitted at build time. The X/yy pool above is retained UNCHANGED so the ONE
+# committed refit entry point (refit_q97m.py) fits from the identical inputs this line used to; the running engine
+# no longer consumes X/yy. Regenerate ONLY via refit_q97m.py at a bake (it re-pins + HALTs downstream). A silent
+# refit is the exact defect being fixed: there is deliberately no fit path left here.
+def _load_q97m():
+    _cands=[os.environ.get('RL_Q97M_PKL'), '/home/claude/q97m.pkl',
+            os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '','data','q97m.pkl')]
+    for _c in _cands:
+        if _c and os.path.exists(_c):
+            with open(_c,'rb') as _fh: return pickle.load(_fh)
+    raise SystemExit("q97m FROZEN-LOAD HALT: no frozen q97m pickle found (looked at RL_Q97M_PKL, "
+                     "/home/claude/q97m.pkl, <repo>/data/q97m.pkl). Re-run bootstrap.sh to seed the workspace copy, "
+                     "or regenerate via refit_q97m.py at a bake. The engine NEVER fits q97m at build time.")
+q97m=_load_q97m()
 WQ6=np.array([0.18]*5+[0.10]); WQ6/=WQ6.sum(); RECX=[0.30,0.52,0.67,0.82,0.97,1.30]; RECY=[0.54,0.64,0.84,1.00,1.00,1.00]
 midpos=next(r['pos'] for r in MA.data if MA.GRP.get(r.get('pos'))=='MID'); GRPPOS={}
 for r in MA.data:
@@ -111,28 +148,82 @@ def _nqual(p,Y): return sum(1 for x in p['scoring'] if x['games']>=10 and x['yea
 # accept-and-track 1140 -> 2080 breaking A8; O'Driscoll -525, Cadman -253 via mid-season proven flips).
 # Extending the proration to multi-season nqual increments needs a Luke ruling; the pre-existing
 # full-10-bar step for those players stands (known seam class, h-M3-blend-seam-noise register).
+# ==== FIX 1 — SMOOTH SMALL-SAMPLE DAMPING (R99.1 TAKE, owner-ruled 2026-07-14) ====================
+# A season's WEIGHT in the recency-weighted current level becomes w(g)=g^2/(g+5.8) instead of g, so thin
+# evidence counts for little and a 1-game cameo can no longer drag a demonstrated level to a cliff.
+# w: 0->0 · 1->0.147 · 2->0.513 · 3->1.02 · 5->2.32 · 8->4.64 · 12->8.09 · 22->17.41. ONE curve, both
+# directions: it takes Ladhams (1 game @ 97) DOWN off an over-price and the cold-cameo crash (Jamarra) UP.
+# Env-gate RL_DAMP (default ON); RL_DAMP=0 => w=g => byte-exact base. Kill-switch, G-ATTR-separable.
+# Owner constraint (reported, only APPROXIMATELY met): w(1)~=w(0)~=0 — the 0->1 jump is cut 6.8x but
+# w(1)=0.147, NOT zero: the inversion is shrunk, not eliminated (census item 88). SMOOTH THE AVERAGES,
+# NOT THE PRICE (R99.4): this touches _lvlcurr only; the convex pricing curve is untouched.
+_DAMP=os.environ.get('RL_DAMP','1')!='0'                      # kill-switch (G-ATTR separability): RL_DAMP=0 => w=g => byte-exact base. Declared exception, not a dial.
+_DAMP_K=5.8                                                   # PINNED (R100.11 item 3): in-code constant, no os.environ.get on a board-changing dial. Was os.environ.get('RL_DAMP_K','5.8').
+def _wg(gm): return (gm*gm/(gm+_DAMP_K)) if _DAMP else float(gm)
+# ==== EVIDENCE WEIGHT — FOUR REGIMES -> ONE CONTINUOUS OBJECT (RL_EVW; R98.4/R98.5, register item 65/124) ====
+# The FOUR discrete evidence regimes are replaced by ONE continuous evidence weight keyed on ONE quantity:
+#   E = career games SEEN (the T5 axis — trust saturates 40-70 games). From E:
+#     th(E) = E^2/(E^2+K^2)  — TRUST / maturity, 0 -> 1, saturating (the production weight)
+#     pw(E) = r + (1-r)(1-th) — the weight on the PEDIGREE PAR: 1 (no evidence: pedigree carries the row)
+#             -> r=0.11 (the T5-measured n=4 residual, CI[0.04,0.17], EXCLUDES ZERO). It FADES, NEVER VANISHES
+#             (R98.5) — replacing BOTH the nqual ramp (c=n/4) AND the PROVEN_N cliff (pedigree par -> 0), the
+#             "same line of code" item 65 located. Item 65's warning honoured: the transition BETWEEN the thin
+#             and established forms is also continuous (th blends the production reference), so we do not
+#             "smooth the staircase and leave the cliff at the top of it".
+# The 10-game bar dies because E counts games continuously (no games>=10 step). The exposure regime (expgate's
+# n>=4 gate) dies via _expgate below. L-SMOOTH: smooth, monotone, no branch. R99.4: touches the LEVEL only
+# (the convex price is untouched). Kill-switch RL_EVW=0 => the four discrete regimes => byte-exact base board:
+# a DECLARED exception (the #85 RL_DAMP pattern), NOT a manifest dial, so config_sha256 is UNMOVED. Constants
+# in-code (item 114): no os.environ.get on a board-changing dial.
+_EVW=os.environ.get('RL_EVW','1')!='0'                        # kill-switch (G-ATTR separability): RL_EVW=0 => base byte-exact. Declared exception, not a dial.
+_EVW_R=0.11                                                   # PINNED in-code: pedigree residual floor (T5 measured n=4 residual; CI[0.04,0.17]; R98.5 never 0).
+_EVW_Q0=11.0; _EVW_QW=1.1                                     # PINNED: soft 10-game qualifying bar centre/width — a season's QUALIFYING weight q(g)=logistic((g-Q0)/QW), CONTINUOUS (no games>=10 step; ~4-game ramp 9->13). Steep enough that a sub-10-game season (a mid-career non-qualifier — the A8/Tsatas trap, whose best season is 7g) counts ~0 and production keeps carrying him.
+_EVW_GK=0.55; _EVW_EST=3.6; _EVW_TAU=1.1                      # PINNED: pedigree-gate half-scale (unqualified -> 0), established centre (Lc->est), pedigree fade rate — in EFFECTIVE-QUALIFYING-SEASON units.
+def _ev_qual(p,Y):                                            # E_q: EFFECTIVE qualifying seasons (soft 10-game bar; the T5 evidence axis, seasons scale)
+    return float(sum(1.0/(1.0+_math.exp(-(x['games']-_EVW_Q0)/_EVW_QW)) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y))
+def _ev_rec(Eq):  return float(Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK))        # recency trust Lo->Lc: 0 (unqualified: conservative career level) -> 1 (qualified: trust recent form)
+def _ev_est(Eq):  return float(Eq*Eq*Eq/(Eq*Eq*Eq+_EVW_EST*_EVW_EST*_EVW_EST))  # established weight Lc->est: 0 (thin) -> 1 (proven), centred at ~PROVEN_N seasons
+def _ev_pw(Eq):                                              # PEDIGREE-PAR weight: qualifying-gated, fading to the residual r by ~n=4 (T5)
+    gate=Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK)                       # ~0 for the unqualified (production carries them: A8/Tsatas) -> 1 as seasons qualify
+    fade=_EVW_R+(1.0-_EVW_R)*_math.exp(-Eq/_EVW_TAU)         # the draft bar fades as real games pile up: reaches the residual r=0.11 by ~4 qualifying seasons (T5), NEVER 0 (R98.5)
+    return float(gate*fade)
+def _expgate(p,Y):                                            # EXPOSURE REGIME (regime 4): pole-recovery gate, smoothed
+    ramp=min(1.0, cp._exposure(p,Y)/max(1e-9,POLE_RAMP*min(1.0,_playable(p,Y)/cp.SEASON)))   # D10: 22-bar can't exceed playable games
+    if not _EVW: return 1.0 if _nqual(p,Y)>=PROVEN_N else ramp                                # BASE: hard n>=4 -> 1.0 gate
+    b=_ev_est(_ev_qual(p,Y)); return ramp + b*(1.0-ramp)     # EVW: smooth — base ramp for the unproven, -> 1.0 as evidence establishes (no n>=4 step; the low-E pole stays exposure-gated)
 def _lvlcurr(p,Y):                                            # steeper-recency CURRENT level (trend-aware; ==career avg for a flat player)
     ld=LDECAY_G[_ldg(MA.gfut(p))]                             # STEP-3 per-group recency decay
     rows=[(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y]
-    tw=sum(gm*ld**max(0,Y-yr) for yr,gm,_ in rows)
-    return float(sum(gm*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
+    tw=sum(_wg(gm)*ld**max(0,Y-yr) for yr,gm,_ in rows)       # FIX 1: small-sample damping w(g)=g^2/(g+5.8) (RL_DAMP)
+    return float(sum(_wg(gm)*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
 def _par_prior(p,Y): return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6))
 def eff_ten(p,Y,base):                                        # developmental tenure off a CONTEXT base; proven keeps base exactly
     if _nqual(p,Y)>=PROVEN_N: return base                     # proven: original tenure (each call site passes its own base)
     return max(base, cp._age_asof(p,Y)-18)                    # thin career: max(base, age-18); 18-19yo debut -> ==base (Delta=0)
-def _lvl_eff_core(p,Y):
-    L_old=cp._lvl_eff_orig(p,Y); n=_nqual(p,Y)
-    if n==0: return L_old                                     # cameo/never-played: original (pole gate handles never-played)
-    Lc=_lvlcurr(p,Y)
-    if n>=PROVEN_N:                                           # ESTABLISHED -> asymmetric: hold UP, SHED DOWN to realised forward
-        ft=FLAT_TOL_G[_ldg(MA.gfut(p))]
-        if Lc>=L_old: return L_old if (Lc-L_old)<=ft else Lc  # UP-side: hold (don't over-credit a wobble/one strong yr)
-        drop=L_old-Lc
-        if drop<=DOWN_TOL: return L_old                        # down-wobble (<=3): hold steady
-        sw=float(np.clip((drop-DOWN_TOL)/5.0,0.0,1.0))        # smooth shed onset over drop 3->8 (no hard boundary)
-        Lsh=Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))  # DECLINER SHED: form-conditioned (dormant twin; superseded by _coreM1 via the _inferM1 bind — kept in lock-step for code honesty)
-        return (1.0-sw)*L_old+sw*Lsh
-    c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)           # career-thin (1..3 seasons) -> shrink current toward pedigree par
+def _est_core(p,Y,L_old,Lc):                                  # ESTABLISHED (pre-M1 twin): hold UP wobble, SHED DOWN — internals UNCHANGED
+    ft=FLAT_TOL_G[_ldg(MA.gfut(p))]
+    if Lc>=L_old: return L_old if (Lc-L_old)<=ft else Lc      # UP-side: hold (don't over-credit a wobble/one strong yr)
+    drop=L_old-Lc
+    if drop<=DOWN_TOL: return L_old                           # down-wobble (<=3): hold steady
+    sw=float(np.clip((drop-DOWN_TOL)/5.0,0.0,1.0))            # smooth shed onset over drop 3->8 (no hard boundary)
+    return (1.0-sw)*L_old+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))  # DECLINER SHED (kept in lock-step with _coreM1)
+# NOTE (improver build, register item 134): the THREE improver legs — RL_EO2 (kill the _eo min()), RL_LSYM
+# (L-SYMMETRY), RL_SAGE29 (the S_AGE 29-tail) — are wired into the LIVE path ONLY (_inferM1/_est/_S_AGE; the
+# number ev() consumes is cp._lvl_eff=_inferM1). This DORMANT twin (_lvl_eff_core/_lvl_eff_infer/_est_core) is
+# superseded and never bound/called, and structurally predates the M1/S_AGE up-branch (leg 2/3 have no home
+# here); it is left byte-identical so all-switches-off stays byte-exact. Verified dead before the wire.
+def _lvl_eff_core(p,Y):                                       # DORMANT twin of _coreM1 (superseded via the _inferM1 bind); kept in lock-step
+    L_old=cp._lvl_eff_orig(p,Y)
+    if not _EVW:                                              # BASE: the four discrete regimes (RL_EVW=0 => byte-exact)
+        n=_nqual(p,Y)
+        if n==0: return L_old                                 # cameo/never-played: original (pole gate handles never-played)
+        Lc=_lvlcurr(p,Y)
+        if n>=PROVEN_N: return _est_core(p,Y,L_old,Lc)        # ESTABLISHED (n>=4 cliff)
+        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)       # thin ramp (c=n/4)
+    Lc=_lvlcurr(p,Y); Eq=_ev_qual(p,Y)                        # EVW: one continuous quantity E_q spans all four regimes
+    Lrec=L_old + _ev_rec(Eq)*(Lc-L_old)                       # conservative -> recency, by qualification
+    prod=(1.0-_ev_est(Eq))*Lrec + _ev_est(Eq)*_est_core(p,Y,L_old,Lc)  # recency/thin -> established, by evidence
+    return (1.0-_ev_pw(Eq))*prod + _ev_pw(Eq)*_par_prior(p,Y)  # pedigree hump fades to residual, never vanishes
 # UPSIDE FADE 2026-06-30 (GENTLER, candidate): elapsed-opportunity-gated fade of the pedigree/upside credit toward the
 #   floor at demonstrated production. Credit target = realised forward ceiling surface E[fwdPeak](dL=ceiling-bar, year N),
 #   kernel-smoothed from data. Keys on years-since-draft x exposure (NOT nq); young yr1-2 + first-yrs untouched (eo=0);
@@ -172,7 +263,7 @@ def price6(p,bb,Y=2026):
     try:
         for g in MA.REPL: MA.REPL[g]=sav[g]-rd.REPL_DROP.get(g,0)
         MA.BASE_REF=MA.AGE_REF=Y; MA._pe_clear()
-        with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*np.dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))
+        with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*_det_dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))   # DETERMINISM FIX: order-fixed dot (was np.dot -> BLAS, CPU-dependent)
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
 def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
@@ -188,7 +279,7 @@ def raw_ev(p,Y=2026):
     po,par=par_pole(pos,pk,T); a=MA.age(p)
     wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
     tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))          # pole-fade by DEVELOPMENTAL tenure
-    expgate=1.0 if _nqual(p,Y)>=PROVEN_N else min(1.0, cp._exposure(p,Y)/max(1e-9,POLE_RAMP*min(1.0,_playable(p,Y)/cp.SEASON)))   # STEP1 gate, D10: 22-bar can't exceed playable games (yr-1 mid-season 22->12.8)
+    expgate=_expgate(p,Y)                                                             # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
     w=wage*tfade*expgate
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
     return pr+w*recover(perf,par)*max(0.0,po-pr)
@@ -224,35 +315,86 @@ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
 _L3_AGE=os.environ.get('RL_AGE','1')!='0'
 _L3_AX=[20,21,22,23,24,25,26,27,28,29,30,31]
 _L3_AY=[0.915376,0.860795,0.789170,0.700837,0.599107,0.489589,0.377802,0.265858,0.150620,0.026915,0.0,0.0]
-def _S_AGE(a): return float(np.clip(np.interp(a,_L3_AX,_L3_AY),0.0,1.0)) if a is not None else 0.46
+# ==== IMPROVER LEG 3 — THE S_AGE 29-TAIL (RL_SAGE29; register item 128, FEED = PR #88 residual_by_age.csv) ====
+# The S_AGE age-persistence slope zeroes 29-year-olds (_L3_AY[age29]=0.026915 ~= the CSV's sage_engine 0.0269),
+# but the MEASURED age-29 smoothed forward level is +0.3793 (n_raw=33, CI[0.208,0.534], ZERO EXCLUDED — item 127).
+# Wire ONLY the age-29 knot to its measured value; the fade still reaches zero AT 30 (the age-30 knot 0.0 stays
+# UNTOUCHED — the measurement validates the 30+ zero) and the curve stays continuous (piecewise-linear np.interp;
+# 28=0.1506 -> 29=0.3793 -> 30=0.0, no discontinuity/cliff). Do NOT touch S_AGE anywhere else (one knot, one
+# consumer _est). Declared kill-switch (the #85 RL_DAMP / #89 RL_EVW pattern), in-code: RL_SAGE29=0 => age-29
+# knot 0.026915 => byte-exact base board.
+_SAGE29=os.environ.get('RL_SAGE29','1')!='0'                  # kill-switch (G-ATTR separability): RL_SAGE29=0 => base byte-exact. Declared exception, not a dial.
+_SAGE29_VAL=0.3793                                            # PINNED in-code: age-29 smoothed forward level (PR #88 residual_by_age.csv, s_real @ age 29; CI[0.208,0.534])
+_L3_AY_EFF=_L3_AY[:9]+[(_SAGE29_VAL if _SAGE29 else 0.026915)]+_L3_AY[10:]   # index 9 == age 29 (29-tail wired); indices 10,11 == age 30,31 (0.0) UNTOUCHED
+def _S_AGE(a): return float(np.clip(np.interp(a,_L3_AX,_L3_AY_EFF),0.0,1.0)) if a is not None else 0.46
 def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+# ==== IMPROVER LEG 2 — L-SYMMETRY WIRED (RL_LSYM; register item 108, spec = acceptance L-SYMMETRY) ====
+# owner (item 108, verbatim): "Risers should have the same smoothing/ramping. And you should have to have the
+# same drop for the engine to think you're declining as a rise for it to think you're rising." The base _est
+# up-branch has THREE asymmetries vs the decliner shed (acceptance L-SYMMETRY.asymmetry_corrected):
+#   (1) UNEQUAL BAR — a rise needs gap>=TOL_M1(5.0); a decline needs drop>DOWN_TOL(3.0). => use the SAME bar
+#       DOWN_TOL both sides (no new constant).
+#   (2) THE _radq GAMES-TEST — a rise additionally needs a 12-game season above the old level; a decline has NO
+#       games test at all. => DROP _radq from the rise gate.
+#   (3) CLIFF vs RAMP — fail either gate and the WHOLE improvement is DELETED (hard step to Lo); the decline is a
+#       SMOOTH onset ramp sw=clip((drop-DOWN_TOL)/5,0,1). => give the rise the SAME smooth ramp.
+# Symmetric up-branch: Lo + sw*s*gap  ==  (1-sw)*Lo + sw*(Lo+s*gap), mirroring the decline Lo + sw*(Lc*agemult2-Lo)
+# term-for-term (same DOWN_TOL bar, same 5-pt onset ramp; s=_S_AGE is the up-side form/age persistence fraction,
+# the analog of agemult2 — L-SYMMETRY corrects the BAR/RAMP/games-test, the S_AGE fraction is leg 3's territory).
+# L-SMOOTH: continuous at gap=DOWN_TOL (sw=0 -> Lo). RL_LSYM=0 => the hard TOL_M1+_radq step => byte-exact base.
+_LSYM=os.environ.get('RL_LSYM','1')!='0'                     # kill-switch (G-ATTR separability): RL_LSYM=0 => base byte-exact. Declared exception, not a dial.
+def _est(p,Y,Lo,Lc):                                          # ESTABLISHED level: M1/L-SYMMETRY up-credit + decliner shed (the evidence weight gates ENTRY, never these thresholds)
+    if Lc>=Lo:
+        s=(_S_AGE(cp._age_asof(p,Y)) if _L3_AGE else S_M1); gap=Lc-Lo
+        if not _LSYM:                                         # BASE: hard TOL_M1(5.0) bar + _radq games-test; fail EITHER => whole rise DELETED to Lo
+            return (Lo+s*gap) if (gap>=TOL_M1 and _radq(p,Y,Lo)) else Lo
+        if gap<=DOWN_TOL: return Lo                           # L-SYMMETRY: same bar as the decline (DOWN_TOL), NO games-test
+        sw=float(np.clip((gap-DOWN_TOL)/5,0,1)); return Lo+sw*s*gap   # same smooth onset ramp as the decliner shed (no hard delete)
+    drop=Lo-Lc
+    if drop<=DOWN_TOL: return Lo
+    sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
 def _coreM1(p,Y):
-    Lo=cp._lvl_eff_orig(p,Y); n=_nqual(p,Y)
-    if n==0:
-        # D10: the first qualifying season FORMING in progress earns fractional credit (kills the hard
-        # n 0->1 level flip). SCOPE (declared): FIRST-EVIDENCE players only — all evidence is the
-        # in-progress season. Multi-year n==0 careers (e.g. Tsatas: 4 list-years, no 10-game season)
-        # keep the exposure-shrunk Lo path: injecting the 75%-par-prior n=1 asymptote mid-career was
-        # measured this session at +940 on the Luke-ruled Tsatas anchor (A8 break) and REJECTED.
-        if Y!=INPROG_Y or any(x['games']>0 and x['year']<Y and (cp.debutyr(p)-1)<x['year'] for x in p['scoring']): return Lo
-        gy=sum(x['games'] for x in p['scoring'] if x['year']==Y and (cp.debutyr(p)-1)<x['year'])
-        f1=min(1.0, gy/max(1e-9,10.0*SEASON_FE))
-        if f1<=0.0: return Lo
-        return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
-    Lc=_lvlcurr(p,Y)
-    if n>=PROVEN_N:
-        if Lc>=Lo: return (Lo+(_S_AGE(cp._age_asof(p,Y)) if _L3_AGE else S_M1)*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
-        drop=Lo-Lc
-        if drop<=DOWN_TOL: return Lo
-        sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
-    c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
+    Lo=cp._lvl_eff_orig(p,Y)
+    if not _EVW:
+        # ---- BASE: the four discrete regimes (RL_EVW=0 => byte-exact base board) ----
+        # D10 n==0 first-evidence f1 credit; multi-year n==0 (e.g. Tsatas: 4 list-years, no 10-game season)
+        # keeps the exposure-shrunk Lo path (injecting the 75%-par-prior n=1 asymptote was measured +940 on the
+        # Luke-ruled Tsatas A8 anchor and REJECTED). n>=4 established (_est); 1..3 thin ramp c=n/4.
+        n=_nqual(p,Y)
+        if n==0:
+            if Y!=INPROG_Y or any(x['games']>0 and x['year']<Y and (cp.debutyr(p)-1)<x['year'] for x in p['scoring']): return Lo
+            gy=sum(x['games'] for x in p['scoring'] if x['year']==Y and (cp.debutyr(p)-1)<x['year'])
+            f1=min(1.0, gy/max(1e-9,10.0*SEASON_FE))
+            if f1<=0.0: return Lo
+            return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
+        Lc=_lvlcurr(p,Y)
+        if n>=PROVEN_N: return _est(p,Y,Lo,Lc)
+        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
+    # ---- CONTINUOUS EVIDENCE WEIGHT (default): ONE evidence quantity E_q spans all four regimes (item 65) ----
+    # 10-game bar dissolved (E_q counts qualifying seasons continuously) · nqual ramp + PROVEN_N cliff replaced
+    # by the production blend (Lo->Lc->est) + pedigree weight pw(E_q); the thin->established transition is
+    # continuous so no cliff is left "at the top of the staircase". Unqualified (E_q~0: the A8/Tsatas trap)
+    # stay on the conservative career level Lo — the base's production-carries protection, made continuous.
+    Lc=_lvlcurr(p,Y); Eq=_ev_qual(p,Y)
+    Lrec=Lo + _ev_rec(Eq)*(Lc-Lo)                             # conservative career level Lo -> recency Lc, by qualification
+    prod=(1.0-_ev_est(Eq))*Lrec + _ev_est(Eq)*_est(p,Y,Lo,Lc) # recency/thin -> established (M1/shed), by evidence
+    return (1.0-_ev_pw(Eq))*prod + _ev_pw(Eq)*_par_prior(p,Y)  # + PEDIGREE PAR at weight pw(E_q): hump -> residual r=0.11, never vanishes (R98.5)
+# ==== IMPROVER LEG 1 — `_eo` TWO-DIRECTIONAL (RL_EO2; register item 134, HANDOVER rev139 §improver) ====
+# The elapsed-opportunity term _eo blends L0 toward the demonstrated-production target T. The base min(L0,T)
+# caps T at L0 so the term can ONLY pull DOWN (the "Only ever pulls DOWN" note above) — it can mark over-priced
+# players but never under-priced. Kill the min(), KEEP the term (rev139: "it is the only anti-flattery mechanism
+# in the engine"): T = max(realised-forward-ceiling, recency-level), blended at weight eo. Now demonstrated
+# production ABOVE L0 pulls UP and BELOW pulls DOWN — both expressible. L-SMOOTH: max/blend continuous, eo->0
+# still returns L0, no new threshold. Declared kill-switch, in-code: RL_EO2=0 => min(L0,T) kept => byte-exact base.
+_EO2=os.environ.get('RL_EO2','1')!='0'                        # kill-switch (G-ATTR separability): RL_EO2=0 => base byte-exact. Declared exception, not a dial.
 def _inferM1(p,Y):
     L0=_coreM1(p,Y); eo=_eo(p,Y)
     if eo<=0: return L0
     avs=[x['avg'] for x in p['scoring'] if x.get('games',0)>=6 and (cp.debutyr(p)-1)<x['year']<=Y]
     if not avs: return L0
     bar=MA.REPL.get(MA.gfut(p),0.0)-3.0; N=Y-cp.debutyr(p)+1
-    return (1-eo)*L0+eo*min(L0,max(_upS(max(avs)-bar,N),_lvlcurr(p,Y)))
+    T=max(_upS(max(avs)-bar,N),_lvlcurr(p,Y))                 # demonstrated-production target (realised forward ceiling | recency level)
+    return (1-eo)*L0+eo*(T if _EO2 else min(L0,T))            # LEG 1 (RL_EO2): kill the min() => two-directional (UP when T>L0, DOWN when T<L0)
 def _v7(bb,p,Y):
     bb=list(bb); m=bb[2]; a=cp._age_asof(p,Y)
     asc=float(np.interp(a,[20,22,24,27],[1.0,0.76,0.58,0.40]))
@@ -285,6 +427,93 @@ def b6(p,Y=2026):
         except Exception: return bb
     return bb
 cp._lvl_eff=_inferM1; cp._feat=_feat_infer   # M1 level bind (was _lvl_eff_infer) + STEP1 inference feature path (q97m + ISO + POLE above used ORIGINAL features)
+# ==== THE ABSENCE TERM (Option C, owner-ruled 2026-07-14) =========================================
+# A missed season carries a PREDICTIVE, MULTIPLICATIVE penalty on a returning player's PROJECTED LEVEL
+# (cp._lvl_eff = _inferM1, the number ev() consumes). It is NOT a phantom row (rejected — a phantom season
+# carries 6x the evidential weight of six real games and LIFTS collapsed players) and NOT a threshold
+# (R98.2 — the age curve is continuous). Magnitude = D2 R2's mean-reversion-adjusted FITTED age curve
+# (session_2026-07-14/d2_recut, out_r2.txt; CORE rule 7 — the smooth curve, not the 3-bin cut that produced
+# a FALSE prime-negative), expressed as a FRACTION of level (D2 R1: multiplicative is the point-estimate form;
+# the CI admits additive — not overclaimed; L_REF=75 = the measured mean pre-absence level).
+#   THE DOUBLE-CHARGE (the single most likely way to get this wrong): the recency decay ld^(Y-yr) ALREADY
+#   ages a returner's last good season an extra year (D2 R3: mean -1.7 lvl pts charged; the measured truth
+#   owed is -4.9 => the SHORTFALL is ~-3.2). We deliver ONLY the shortfall by netting the decay PER PLAYER —
+#   L_nogap = _inferM1(gap-filled copy) via D2 R3's shift_out_gap (REUSED). The FULL-prior charge is the
+#   shortfall below the multiplicative truth, never lifting: pen = max(0, L_base - L_nogap*(1-frac)); where
+#   the decay already over-charges (Jamarra), pen = 0. R100.11: the prior is then WEIGHTED by pw(g) and the
+#   level is L_abs = L_base - pw(g)*pen. At pw=1 (a fresh return) this equals the old min(L_base, L_nogap*
+#   (1-frac)); as evidence accumulates pw(g)->0 and L_abs->L_base — the shed EMERGES from the arithmetic.
+#   (The old build scaled frac by the fade INSIDE the min, so the L_nogap<L_base residual on a returner whose
+#   post-return seasons are his best — Bailey Smith — never faded; weighting the whole prior fixes that.)
+# Env-gate RL_ABSENCE (default ON); RL_ABSENCE=0 => byte-exact base. Kill-switch, G-ATTR-separable.
+_ABSENCE=os.environ.get('RL_ABSENCE','1')!='0'               # kill-switch (G-ATTR separability): RL_ABSENCE=0 => byte-exact base. Declared exception, not a dial (the measurement ablation lever).
+_ABS_L_REF=75.0                                              # PINNED (R100.11 item 3): D2 R1 mean pre-absence level (multiplicative base). Was os.environ.get('RL_ABS_LREF').
+_ABS_CAP=0.20                                                # PINNED (R100.11 item 3): safety cap on the fraction (extrapolation beyond age 34). Was os.environ.get('RL_ABS_CAP').
+# R100.11 EVIDENCE FADE (owner-ruled 2026-07-14, "Agree on Smith — evidence-fade"). The absence term is a
+# PRIOR about an UNOBSERVED return; EVIDENCE DISSOLVES IT IN BOTH DIRECTIONS. The fade runs on EVIDENCE
+# WEIGHT = games played since the most-recent return (g), NEVER seasons elapsed, and NO SCHEDULE FALLBACK
+# (recurrence is an AVAILABILITY risk — _avail_hc / LTI; welding a clock into the LEVEL term double-charges
+# the fragility). The prior enters as ONE pseudo-observation against the measured evidence-reliability curve
+# w(g)=g^2/(g+K) (Fix 1's curve): its precision-blend weight is pw(g) = 1/(1+w(g)) = (g+K)/(g^2+g+K).
+#   pw(0)=1 (fresh return carries the FULL prior) -> 0 as evidence accumulates (the prior dissolves).
+# ONE continuous object: smooth, monotone, rational (g^2+g+K>0 for all g>=0). NO threshold, NO counter, NO
+# branch (L-SMOOTH, acceptance_v1_13.json). Retires the schedule fade clip(1-npost/_ABS_FADE_N) and its
+# >=10g season counter (both violated the ruling; the counter also violated L-SMOOTH).
+_ABS_FADE_K=5.8                                              # PINNED (R100.11 item 3): evidence-fade scale K = Fix 1's measured w(g) scale (RL_DAMP_K, :162). In-code, no env read.
+_ABS_AGE=[18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34]
+# D2 R2 mean-reversion-adjusted fitted effect (level points). The positive entries <age~20 are the DECLARED
+# data-free kernel extrapolation (raw n~=0) and are clamped to 0 below — an absence is never a bonus.
+_ABS_EFF=[3.65,0.28,-2.51,-4.49,-5.55,-5.73,-5.25,-4.46,-3.71,-3.25,-3.25,-3.85,-5.14,-7.10,-9.39,-11.29,-11.88]
+def _abs_frac(age):
+    if age is None: return 0.0
+    a=float(np.clip(age,_ABS_AGE[0],_ABS_AGE[-1]))
+    eff=float(np.interp(a,_ABS_AGE,_ABS_EFF))                 # fitted level-point effect (negative = penalty)
+    return float(np.clip(max(0.0,-eff)/_ABS_L_REF,0.0,_ABS_CAP))
+def _abs_gap(p,Y):
+    """the MOST-RECENT mid-career calendar gap (a games==0 year after >=1 prior played season) whose
+    return year <= Y. Returns dict(age_pre,ret,last,npost,gpost) or None. gpost = EVIDENCE WEIGHT (games
+    played since the most-recent return, i.e. year>=ret) — the R100.11 fade input; npost (the retired
+    schedule counter) is kept for the report only. Non-established players INCLUDED (law-4 coverage — the
+    curve is extrapolated below the established base, DECLARED). Multiple separate absences are charged on
+    the MOST RECENT return only, ONE penalty (law 5(a) assumption, DECLARED)."""
+    d0=cp.debutyr(p)
+    rows={x['year']:x['games'] for x in p['scoring'] if (d0-1)<x['year']}
+    yrs=[y for y,gmv in rows.items() if gmv>0]
+    if len(yrs)<2: return None
+    lo,hi=min(yrs),max(yrs); tl=[(y,rows.get(y,0)) for y in range(lo,hi+1)]
+    best=None; i=0
+    while i<len(tl):
+        if tl[i][1]!=0: i+=1; continue
+        prior=[yy for (yy,g2) in tl[:i] if g2>0]; j=i
+        while j<len(tl) and tl[j][1]==0: j+=1
+        if prior and j<len(tl):
+            ret=tl[j][0]
+            if ret<=Y:
+                last=prior[-1]; a=cp._age_asof(p,2026)
+                age_pre=(a-(2026-last)) if a is not None else None
+                npost=sum(1 for x in p['scoring'] if x['games']>=10 and x['year']>ret and (d0-1)<x['year']<=Y)  # RETIRED schedule counter — report only
+                gpost=sum(x['games'] for x in p['scoring'] if x['games']>0 and x['year']>=ret and (d0-1)<x['year']<=Y)  # R100.11 EVIDENCE WEIGHT: games since return (return season is the first evidence)
+                best=dict(age_pre=age_pre,ret=ret,last=last,npost=npost,gpost=gpost)   # keep LATEST qualifying gap
+        i=j
+    return best
+def _abs_shift(p,last,ret):                                   # D2 R3 shift_out_gap: slide pre-gap seasons forward so the record is contiguous (gap filled)
+    glen=ret-last-1                                           # shallow copy + rebuilt scoring (the level path never mutates q; cheaper than deepcopy in the walk-forward)
+    q=dict(p); q['scoring']=[({**x,'year':x['year']+glen} if x['year']<=last else x) for x in p['scoring']]
+    return q
+_lvl_eff_preabs=cp._lvl_eff                                   # = _inferM1 (the projected level WITHOUT the absence term)
+def _lvl_eff_abs(p,Y):
+    Lb=_lvl_eff_preabs(p,Y)
+    if not _ABSENCE or not _isreal(p): return Lb              # synths/lever-off: byte-exact (synths are gap-free anyway)
+    gi=_abs_gap(p,Y)
+    if gi is None or gi['age_pre'] is None: return Lb
+    frac=_abs_frac(gi['age_pre'])                            # FULL age-curve prior (fade=1); the <20 clamp lives inside _abs_frac (owner-kept)
+    if frac<=0.0: return Lb                                   # age<20 data-free clamp: no prior to fade
+    g=gi['gpost']                                            # EVIDENCE WEIGHT: games played since the most-recent return (R100.11)
+    fade=(g+_ABS_FADE_K)/(g*g+g+_ABS_FADE_K)                 # prior weight pw(g)=1/(1+w(g)), w(g)=g^2/(g+K); pw(0)=1 -> 0 on evidence. ONE continuous object; no threshold/counter/branch (L-SMOOTH)
+    Lng=_lvl_eff_preabs(_abs_shift(p,gi['last'],gi['ret']),Y) # counterfactual no-absence level (decay netted per player)
+    pen=max(0.0, Lb-Lng*(1.0-frac))                          # FULL-prior charge = shortfall below the multiplicative truth, NEVER lifting (=0 where the decay already over-charges, e.g. Jamarra). == base's (Lb-min(Lb,Lng*(1-frac))) at fade=1.
+    return Lb-fade*pen                                       # the prior enters as ONE weighted term; weight pw(g)->0 on evidence => L->Lb. The shed EMERGES from the arithmetic (a returner at/above his old level ends uncharged) — no threshold, no "if level>=preabs" branch.
+cp._lvl_eff=_lvl_eff_abs
 # ==== M3 CLOCK-PIN PLUMBING (BAKE CANDIDATE v2, D7 02/07/2026 — design: session_2026-07-02/
 # m3_design_proportional_tenure.md; the D4 backtest's monkeypatch hook inventory made first-class).
 # While _M3PIN is on (ONLY inside _ev_m3's pinned evaluation of the in-progress season), the age/tenure
@@ -804,11 +1033,11 @@ def _fit_pick_curve(pts,effn_min=35.0,h0=0.18,hmax=2.2):     # adaptive-bandwidt
     for lg in _V0_LGRID:
         h=h0
         while True:
-            w=np.exp(-0.5*((lx-lg)/h)**2); sw=w.sum(); effn=(sw*sw)/float(np.sum(w*w)) if sw>0 else 0.0
+            w=np.exp(-0.5*((lx-lg)/h)**2); sw=_det_sum(w); effn=(sw*sw)/_det_sum(w*w) if sw>0 else 0.0   # DETERMINISM FIX: order-fixed sums
             if effn>=effn_min or h>=hmax: break
             h*=1.15
         if h>=hmax: meta_hmax+=1
-        grid.append(float(np.dot(w,vy)/sw) if sw>0 else float(vy.mean())); meta_e.append(effn)
+        grid.append((_det_dot(w,vy)/sw) if sw>0 else _det_mean(vy)); meta_e.append(effn)   # DETERMINISM FIX: order-fixed dot/mean
     return _iso_dec(grid), dict(n=len(pts),min_effn=float(min(meta_e)),grid_at_hmax=meta_hmax)
 def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  # 2D (draft-age,log-pick) kernel; age-resolved surface
     aa=np.array([a for a,_,_ in pts]); lx=np.array([l for _,l,_ in pts]); vy=np.array([v for _,_,v in pts])
@@ -818,13 +1047,13 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
         for lg in _V0_LGRID:
             ha,hp=ha0,hp0
             while True:
-                w=np.exp(-0.5*((aa-ag)/ha)**2)*np.exp(-0.5*((lx-lg)/hp)**2); sw=w.sum()
-                effn=(sw*sw)/float(np.sum(w*w)) if sw>0 else 0.0
+                w=np.exp(-0.5*((aa-ag)/ha)**2)*np.exp(-0.5*((lx-lg)/hp)**2); sw=_det_sum(w)   # DETERMINISM FIX: order-fixed sum
+                effn=(sw*sw)/_det_sum(w*w) if sw>0 else 0.0   # DETERMINISM FIX: order-fixed sum
                 if effn>=effn_min or (ha>=hamax and hp>=hpmax): break
                 if ha<hamax: ha*=1.2
                 else: hp*=1.15
             if ha>=hamax and hp>=hpmax: hmaxhit+=1
-            row.append(float(np.dot(w,vy)/sw) if sw>0 else float(vy.mean())); mine=min(mine,effn)
+            row.append((_det_dot(w,vy)/sw) if sw>0 else _det_mean(vy)); mine=min(mine,effn)   # DETERMINISM FIX: order-fixed dot/mean
         surf[ag]=_iso_dec(row)                                # pick-isotonic per age
     for i in range(len(_V0_GRIDPK)):                          # then non-increasing in draft-age at each pick
         run=1e18

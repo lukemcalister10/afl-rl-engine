@@ -125,6 +125,92 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
                          "compare) — the board and its pin are out of sync (re-generate + re-pin, or the pin "
                          "drifted)" % (_fmt(repo_board_md5), _fmt(exp_board)))
 
+    # (0f) rl_model checkout-integrity (L-CAPTAIN prerequisite (1), 2026-07-15): the 'rl_model' pin has always
+    #      been present and CORRECT — it was simply never CHECKED (the one engine source Guard 5 did not assert;
+    #      capt_prem lived in the one file the guard could not see). Assert the checked-out rl_model source
+    #      (engine/rl_after/rl_model.py) equals the pin exactly as (0) asserts the store: compute its md5, compare
+    #      to the pin, HALT (never warn) on mismatch. Full-hash compare (the pin is a full 32-char md5). SILENCE
+    #      IS A RED — the verdict prints on the PASS line below, or the boot HALTs here. Backward-compatible:
+    #      skipped when the 'rl_model' pin is absent from the manifest.
+    exp_rl = exp.get('rl_model')
+    repo_rl_md5 = None
+    if exp_rl is not None:
+        repo_rl = os.path.join(root, 'engine', 'rl_after', 'rl_model.py')
+        repo_rl_md5 = _md5(repo_rl) if os.path.exists(repo_rl) else None
+        if repo_rl_md5 is None:
+            fails.append("rl_model pin present (%s) but engine/rl_after/rl_model.py is ABSENT — cannot assert the "
+                         "rl_model source (restore rl_model.py, or re-pin at a bake)" % _fmt(exp_rl))
+        elif not _cmp_on_pin_len(repo_rl_md5, exp_rl):
+            fails.append("checkout rl_model %s != pinned rl_model %s (data/expected_boot.json 'rl_model', full-hash "
+                         "compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync "
+                         "(re-pin at a bake, or the pin drifted; never boot on an unverified rl_model)"
+                         % (_fmt(repo_rl_md5), _fmt(exp_rl)))
+
+    # (0d) FITTED-ARTIFACT checkout-integrity (q97m FREEZE 2026-07-14, owner ruling): assert every FITTED artifact
+    #      that determines the board equals its pin, exactly as (0)/(0c) do for the store/board. These run
+    #      automatically on EVERY assert_boot entry (no caller need pass a path), so a wrong or missing frozen
+    #      artifact HALTS on line one for panel, gate, build and self-test alike. Backward-compatible: each field
+    #      is skipped when absent from the manifest. Full-hash compare (the pins are full 32-char md5s).
+    _FITTED = (('q97m',         os.path.join('data', 'q97m.pkl')),
+               ('peak_model',   os.path.join('engine', 'rl_after', 'peak_model_v4.pkl')),
+               ('pvc_snapshot', os.path.join('engine', 'rl_after', 'pvc_snapshot.json')),
+               ('bust_prior',   os.path.join('engine', 'rl_after', 'bust_prior_table.json')))
+    for _field, _rel in _FITTED:
+        _pin = exp.get(_field)
+        if _pin is None:
+            continue
+        _fp = os.path.join(root, _rel)
+        _fm = _md5(_fp) if os.path.exists(_fp) else None
+        if _fm is None:
+            fails.append("%s pin present (%s) but %s is ABSENT — cannot assert the frozen artifact (re-freeze + "
+                         "re-pin; for q97m run refit_q97m.py at a bake)" % (_field, _fmt(_pin), _rel))
+        elif not _cmp_on_pin_len(_fm, _pin):
+            fails.append("checkout %s %s != pinned %s (data/expected_boot.json '%s', full-hash compare) — the "
+                         "FROZEN artifact %s and its pin are out of sync (re-freeze + re-pin, or the pin drifted; "
+                         "the board's identity is made of this — never boot on an unverified fitted artifact)"
+                         % (_field, _fmt(_fm), _fmt(_pin), _field, _rel))
+
+    # (0e) LOADED-PATH integrity (q97m/cm load-path hole, register item 91; owner-caught 2026-07-14): block (0d)
+    #      above asserts the REPO copy of each fitted artifact — but the ENGINE loads through its OWN precedence,
+    #      and the workspace copy (and an env var) WIN over the repo. _load_q97m() (_merged_recover.py) resolves
+    #      $RL_Q97M_PKL -> /home/claude/q97m.pkl -> <repo>/data/q97m.pkl; wire_redesign.build() loads
+    #      /home/claude/cm_<RL_PRIOR_TREES>.pkl. So (0d) can PASS while the engine loads a DIFFERENT pickle — an
+    #      env var could point the engine at ANY pickle on disk and the guard still passed (a guard that cannot
+    #      fail; the very stale-boot hole Guard 5 exists to close, re-opened on the just-frozen artifact). This
+    #      block resolves each artifact through the engine's EXACT precedence and asserts THE PATH THAT WILL
+    #      ACTUALLY BE LOADED == the pin. HALT names the resolved path AND the expected pin. Skipped per-field
+    #      when the pin is absent (backward-compatible).
+    def _resolve_q97m_load():                 # mirror _merged_recover._load_q97m precedence, byte-for-byte
+        for _c in (os.environ.get('RL_Q97M_PKL'), '/home/claude/q97m.pkl',
+                   os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '', 'data', 'q97m.pkl')):
+            if _c and os.path.exists(_c):
+                return _c
+        return None
+    def _resolve_cm_load():                    # mirror wire_redesign.build() cache precedence
+        _trees = os.environ.get('RL_PRIOR_TREES', '400')
+        _cache = '/home/claude/cm_%s.pkl' % _trees
+        return _cache if os.path.exists(_cache) else None
+    _LOADED = (('q97m', exp.get('q97m'), _resolve_q97m_load(),
+                '$RL_Q97M_PKL -> /home/claude/q97m.pkl -> <repo>/data/q97m.pkl',
+                'the engine would FIT q97m at build time (the exact defect the freeze removed)'),
+               ('band', exp.get('band'), _resolve_cm_load(),
+                '/home/claude/cm_%s.pkl (RL_PRIOR_TREES)' % os.environ.get('RL_PRIOR_TREES', '400'),
+                'the engine would RETRAIN a non-canonical cm forest (DYNAMIC_ARCH, not bit-stable)'))
+    for _fld, _pin, _lp, _prec, _elsemsg in _LOADED:
+        if _pin is None:
+            continue
+        if _lp is None:
+            fails.append("%s LOAD-PATH unresolved: the engine's precedence (%s) finds NO file on disk, so %s. "
+                         "Re-run bootstrap.sh to seed the workspace copy." % (_fld, _prec, _elsemsg))
+            continue
+        _lm = _md5(_lp)
+        if not _cmp_on_pin_len(_lm, _pin):
+            fails.append("%s LOAD-PATH MISMATCH: the engine will LOAD\n        %s\n        md5 %s  !=  pinned %s "
+                         "(data/expected_boot.json '%s', full-hash compare).\n        The engine's own precedence "
+                         "(%s) resolved to a file that is NOT the pinned frozen artifact — an env var or a stale "
+                         "workspace copy is shadowing the frozen source. Re-run bootstrap.sh (or unset the "
+                         "override); never boot on an unverified LOADED artifact." % (_fld, _lp, _fmt(_lm), _fmt(_pin), _fld, _prec))
+
     def _chk(kind, path, pin, ref_md5):
         if path is None:
             return
@@ -151,8 +237,9 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
         if halt:
             raise SystemExit(msg)
         raise AssertionError(msg)
-    print("boot-store guard (Guard 5) PASS  [%s]  store %s == pinned %s (%s)"
-          % (label, _fmt(repo_md5), _fmt(exp.get('store')), exp.get('tag')))
+    _rl_verdict = ("  |  rl_model %s == pinned %s" % (_fmt(repo_rl_md5), _fmt(exp_rl))) if exp_rl is not None else ""
+    print("boot-store guard (Guard 5) PASS  [%s]  store %s == pinned %s%s (%s)"
+          % (label, _fmt(repo_md5), _fmt(exp.get('store')), _rl_verdict, exp.get('tag')))
     return True
 
 if __name__ == '__main__':

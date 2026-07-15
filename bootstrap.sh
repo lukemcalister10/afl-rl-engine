@@ -24,6 +24,9 @@ cp -f "$HERE/LTI_REGISTER.md"           /home/claude/rl_workspace/rl_after/LTI_R
 
 # 2. absolute-path data deps
 cp -f "$HERE/data/cm_400.pkl"                /home/claude/cm_400.pkl
+# q97m FROZEN 2026-07-14 (owner ruling): seed the frozen q97 CEILING model beside cm_400.pkl. The engine LOADS
+# this (/home/claude/q97m.pkl) — it NEVER fits q97m at build time. Guard 5 asserts data/q97m.pkl == the pin.
+cp -f "$HERE/data/q97m.pkl"                  /home/claude/q97m.pkl
 cp -f "$HERE/data/rl_build/rl_app_data.json" /home/claude/rl_build/rl_app_data.json
 
 # 3. VENDORED unidecode (offline; no pip). Placed on PYTHONPATH via run_panel/ENV.
@@ -38,6 +41,7 @@ ln -sfn /home/claude/rl_workspace/rl_after /home/claude/rl_after
 
 M=$(md5sum /home/claude/rl_workspace/rl_after/_merged_recover.py | cut -c1-8)
 C=$(md5sum /home/claude/cm_400.pkl | cut -c1-8)
+Q=$(md5sum /home/claude/q97m.pkl | cut -c1-8)
 S=$(md5sum /home/claude/rl_workspace/rl_after/rl_model_data.json | cut -c1-8)
 U=$(python3 -c "import sys; sys.path.insert(0,'/home/claude/rl_vendor'); import unidecode; print('OK')" 2>/dev/null || echo FAIL)
 # GUARD 5 (boot-store): the seed above copies from THIS checkout, so the workspace store/head/band MUST now
@@ -48,10 +52,16 @@ RL_REPO="$HERE" python3 "$HERE/boot_guard.py" bootstrap \
   /home/claude/rl_workspace/rl_after/_merged_recover.py \
   /home/claude/cm_400.pkl \
   /home/claude/rl_workspace/rl_after/LTI_REGISTER.md || { echo "bootstrap FAILED: seeded workspace does not match the pinned store/register (see above)"; exit 1; }
+# F1 (register item 91): ASSERT the workspace q97m the ENGINE will LOAD (/home/claude/q97m.pkl) == the pin —
+# do not merely echo it. boot_guard's (0e) loaded-path block also asserts this on entry; this is the visible,
+# fail-closed check in bootstrap's own verify block, matching the store/cm/register assertions in the call above.
+QPIN=$(python3 -c "import json,sys; sys.stdout.write(json.load(open('$HERE/data/expected_boot.json'))['q97m'][:8])")
+[ "$Q" = "$QPIN" ] || { echo "bootstrap FAILED: workspace q97m /home/claude/q97m.pkl md5 $Q != pinned $QPIN — the engine would LOAD an unverified pickle (F1)"; exit 1; }
 R=$(md5sum /home/claude/rl_workspace/rl_after/LTI_REGISTER.md | cut -c1-8)
 echo "bootstrap OK"
 echo "  engine md5     : $M   (candidate: F1/F2 one-source rewire)"
 echo "  cm_400 md5     : $C   (expect 34faa865)"
+echo "  q97m md5       : $Q   (expect cfdc7321 — FROZEN q97 ceiling; loaded, never fitted; Guard 5 asserted == pinned)"
 echo "  store md5      : $S   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)"
 echo "  register md5   : $R   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)"
 echo "  unidecode      : $U   (vendored, offline)"

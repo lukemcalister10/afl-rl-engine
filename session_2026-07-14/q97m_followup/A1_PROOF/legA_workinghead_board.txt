@@ -1,0 +1,15 @@
+A1 LEG A — WORKING-HEAD BOARD (branch head f14710d, this chapter's pins)
+=========================================================================
+Construction:
+  branch      : claude/q97m-freeze-determinism-s9v8ky @ f14710d (== directive BASE; based on ed13177/PR#74)
+  store       : 340a7a32 (engine/rl_after/rl_model_data.json; Guard 5 asserted == pinned)
+  config      : c2d233ae (data/model_config.json; RL_CONFIG_MODE=gate)
+  engine head : 2334f570 (_merged_recover.py; q97m LOADED from data/q97m.pkl cfdc7321, never fitted)
+  build cmd   : cd /home/claude/rl_workspace/rl_after && RL_REPO=<repo> RL_CONFIG_MODE=gate python3 rl_export.py
+  boot_guard  : NOT bypassed (Guard 5 PASS on entry; all four pins native to this branch)
+  box         : AVX512 (avx512f/bw/cd/dq/vl), OpenBLAS DYNAMIC_ARCH detects Haswell; numpy dispatch AVX512_ICL/SPR
+RESULT:
+  regenerated board md5 : 3dc19fbbf920958affe7c6a2be9697d2
+  pinned board (expected_boot 'board') : 3dc19fbbf920958affe7c6a2be9697d2
+  VERDICT: BYTE-IDENTICAL  (working-head board of record is rebuildable on this box)
+  refit_q97m --verify on this box : REPRODUCES cfdc7321 (frozen pickle == in-memory fit here)

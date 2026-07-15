@@ -1,0 +1,5 @@
+WORKING-HEAD BOOK (regenerated on engine 2334f570 store 340a7a32):
+  __meta__ engine_head: 2334f570 store: 340a7a32 config: c2d233aec104
+  regenerated stable_sha256: d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f  n_players: 2649
+  SEALED baseline (data/book_stable_seal.json): d371a27c787a34c93de18c1bcc824c63c63aadcaa68f8a0a4d9c7291871bc44f  n=2649  sealed_head=2030e5df
+  MATCH: True

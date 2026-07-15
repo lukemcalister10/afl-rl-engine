@@ -176,12 +176,28 @@ def basepk_c(g,pk):
 def expected_c(g,pk,s):
     fb=bandcoord(pk); lo=int(fb); hi=min(NB-1,lo+1); f=fb-lo
     return (1-f)*expected(g,lo,s)+f*expected(g,hi,s)
-CAPT_GAIN=0.35; CAPT_EXP=1.25; CAPT_CAP=18.0
-def capt_prem(lev):
+# ==== L-CAPTAIN — THE RULED CAPTAIN CURVE (CONSTRAINTS_v1_15 PART 5, R98.1; owner-ruled 2026-07-14) ==========
+# credit(L) = G * integral[BAR -> L] P(a) da, P logistic. The marginal IS the captaincy probability P(L), so the
+# slope-1 impossibility ceiling is STRUCTURAL (logistic asymptote), not clamped. Closed form: the integral of the
+# logistic is W*softplus, so credit(L) = G*W*[softplus((L-M)/W) - softplus((BAR-M)/W)], clamped >=0 (a credit is
+# never negative; the clamp bites only below the bar, where credit is 0 exactly at L=BAR -> continuous, L-SMOOTH).
+# Asymptote L-109.66 clear of the knee (NOT 107.4 = the retired CAPT_THRESH); per-point rate 0.10->0.50->0.997 at
+# bar/mid/120. REPLACES the retired saturating curve (below), which was NEVER owner-ratified.
+LCAPT_BAR=105.0; LCAPT_M=109.5; LCAPT_W=1.85; LCAPT_G=1.00   # PINNED in-code (item 114: no os.environ on a board-changing dial)
+_CAPT=os.environ.get('RL_CAPT','1')!='0'   # kill-switch (G-ATTR separability): RL_CAPT=0 => retired saturating curve => base board byte-exact. Default ON = the ruled L-CAPTAIN curve.
+CAPT_GAIN=0.35; CAPT_EXP=1.25; CAPT_CAP=18.0   # RETIRED saturating-curve constants; reachable ONLY via RL_CAPT=0 (the byte-exact base-reproduction proof)
+def _softplus(x):
+    return math.log1p(math.exp(x)) if x<30.0 else x   # overflow-safe: for large x, ln(1+e^x) -> x
+def _capt_ruled(lev):
+    c=LCAPT_G*LCAPT_W*(_softplus((lev-LCAPT_M)/LCAPT_W)-_softplus((LCAPT_BAR-LCAPT_M)/LCAPT_W))
+    return c if c>0.0 else 0.0
+def _capt_saturating(lev):   # RETIRED (the pre-R98.1 saturating premium, hard 18-pt cap); kept only for RL_CAPT=0
     over=max(0.0,lev-CAPT_THRESH)
     if over<=0: return 0.0
     cb=CAPT_GAIN*over**CAPT_EXP
     return cb*CAPT_CAP/(CAPT_CAP+cb)
+def capt_prem(lev):
+    return _capt_ruled(lev) if _CAPT else _capt_saturating(lev)
 GRACE={'KEY_FWD':2.5,'KEY_DEF':2.5,'RUC':2.5,'MID':1.0,'GEN_DEF':1.0,'GEN_FWD':1.0}
 LOS_C=0.16; LOS_P=1.82                 # progressive: gentle yr2 ~.85, steepening (yr3~.57 yr4~.31 yr5~.16)
 def los(p): return AGE_REF-p['year']

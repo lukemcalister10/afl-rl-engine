@@ -1,7 +1,7 @@
 {
  "head": "2030e5df",
  "store": "340a7a32",
- "config": "69ead79b944d291bf8b06679e377f66d543da1061d197d2903ed85ba25c3bb8b",
+ "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b",
  "gates": {
   "A1": {
    "dc": false,
@@ -91,7 +91,7 @@
   "B3": {
    "dc": false,
    "status": "PASS",
-   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 2030e5df store 340a7a32 config 69ead79b944d): MATCHES the sealed baseline. current=d371a27c787a34c9.. (2649 players) vs baseline=d371a27c787a3"
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 2030e5df store 340a7a32 config c2d233aec104): MATCHES the sealed baseline. current=d371a27c787a34c9.. (2649 players) vs baseline=d371a27c787a3"
   },
   "B4": {
    "dc": false,
