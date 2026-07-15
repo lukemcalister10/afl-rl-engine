@@ -1,0 +1,22 @@
+RED-PATH NEGATIVE TEST — rl_model pin assertion (boot_guard.py block 0f)
+base: improver head 2c7b905 (PR #90) · store 340a7a32 · pin rl_model=952ddb3d15fe6d4f72432d431abe75cc
+isolated scratch checkout (real repo UNTOUCHED): /tmp/claude-0/-home-user-afl-rl-engine/361ab25f-792b-5c9d-97c3-fa4f3a2ae5b6/scratchpad/redpath_repo
+invocation: RL_REPO=<scratch> python3 <scratch>/boot_guard.py rl_model_redpath <store>
+real repo rl_model.py md5 BEFORE: 952ddb3d15fe6d4f72432d431abe75cc
+
+=== STEP 1 — PRISTINE scratch → must PASS (faithful copy; new rl_model assertion green) ===
+boot-store guard (Guard 5) PASS  [rl_model_redpath]  store 340a7a32 == pinned 340a7a32  |  rl_model 952ddb3d == pinned 952ddb3d
+exit(pristine)=0   (expect 0)
+
+=== STEP 2 — corrupt ONLY scratch rl_model.py (append one comment byte) ===
+corrupted scratch rl_model.py md5 = 89c1b06d385c2cadb5e9f7867a1b80f5
+
+=== STEP 3 — CORRUPTED scratch → must HALT (rl_model line) + non-zero exit ===
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - checkout rl_model 89c1b06d != pinned rl_model 952ddb3d (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model)
+=========================================================================================
+exit(corrupted)=1   (expect 1)
+
+=== STEP 4 — real repo rl_model.py UNTOUCHED ===
+real repo rl_model.py md5 AFTER: 952ddb3d15fe6d4f72432d431abe75cc   untouched=YES

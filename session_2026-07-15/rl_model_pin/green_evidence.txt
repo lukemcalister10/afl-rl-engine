@@ -1,0 +1,18 @@
+GREEN PROOF — rl_model pin assertion (boot_guard.py block 0f) · base improver head 2c7b905 (PR #90)
+
+--- board md5 UNCHANGED from base (this job moves NO value) ---
+board @ base 2c7b905 : dc43d602c5140cac5be8e668380dda6e
+board @ working tree : dc43d602c5140cac5be8e668380dda6e
+(both = dc43d602c5140cac5be8e668380dda6e)
+
+--- fence: only boot_guard.py modified ---
+ M boot_guard.py
+?? session_2026-07-15/rl_model_pin/
+
+--- fresh bootstrap → Guard 5 PASS with the new rl_model verdict printed (SILENCE IS A RED) ---
+boot-store guard (Guard 5) PASS  [bootstrap]  store 340a7a32 == pinned 340a7a32  |  rl_model 952ddb3d == pinned 952ddb3d
+bootstrap OK
+  engine md5     : fc7045d6   (candidate: F1/F2 one-source rewire)
+  q97m md5       : cfdc7321   (expect cfdc7321 — FROZEN q97 ceiling; loaded, never fitted; Guard 5 asserted == pinned)
+  store md5      : 340a7a32   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+  register md5   : 652d83e8   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)

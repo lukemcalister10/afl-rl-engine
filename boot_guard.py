@@ -125,6 +125,27 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
                          "compare) — the board and its pin are out of sync (re-generate + re-pin, or the pin "
                          "drifted)" % (_fmt(repo_board_md5), _fmt(exp_board)))
 
+    # (0f) rl_model checkout-integrity (L-CAPTAIN prerequisite (1), 2026-07-15): the 'rl_model' pin has always
+    #      been present and CORRECT — it was simply never CHECKED (the one engine source Guard 5 did not assert;
+    #      capt_prem lived in the one file the guard could not see). Assert the checked-out rl_model source
+    #      (engine/rl_after/rl_model.py) equals the pin exactly as (0) asserts the store: compute its md5, compare
+    #      to the pin, HALT (never warn) on mismatch. Full-hash compare (the pin is a full 32-char md5). SILENCE
+    #      IS A RED — the verdict prints on the PASS line below, or the boot HALTs here. Backward-compatible:
+    #      skipped when the 'rl_model' pin is absent from the manifest.
+    exp_rl = exp.get('rl_model')
+    repo_rl_md5 = None
+    if exp_rl is not None:
+        repo_rl = os.path.join(root, 'engine', 'rl_after', 'rl_model.py')
+        repo_rl_md5 = _md5(repo_rl) if os.path.exists(repo_rl) else None
+        if repo_rl_md5 is None:
+            fails.append("rl_model pin present (%s) but engine/rl_after/rl_model.py is ABSENT — cannot assert the "
+                         "rl_model source (restore rl_model.py, or re-pin at a bake)" % _fmt(exp_rl))
+        elif not _cmp_on_pin_len(repo_rl_md5, exp_rl):
+            fails.append("checkout rl_model %s != pinned rl_model %s (data/expected_boot.json 'rl_model', full-hash "
+                         "compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync "
+                         "(re-pin at a bake, or the pin drifted; never boot on an unverified rl_model)"
+                         % (_fmt(repo_rl_md5), _fmt(exp_rl)))
+
     # (0d) FITTED-ARTIFACT checkout-integrity (q97m FREEZE 2026-07-14, owner ruling): assert every FITTED artifact
     #      that determines the board equals its pin, exactly as (0)/(0c) do for the store/board. These run
     #      automatically on EVERY assert_boot entry (no caller need pass a path), so a wrong or missing frozen
@@ -216,8 +237,9 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
         if halt:
             raise SystemExit(msg)
         raise AssertionError(msg)
-    print("boot-store guard (Guard 5) PASS  [%s]  store %s == pinned %s (%s)"
-          % (label, _fmt(repo_md5), _fmt(exp.get('store')), exp.get('tag')))
+    _rl_verdict = ("  |  rl_model %s == pinned %s" % (_fmt(repo_rl_md5), _fmt(exp_rl))) if exp_rl is not None else ""
+    print("boot-store guard (Guard 5) PASS  [%s]  store %s == pinned %s%s (%s)"
+          % (label, _fmt(repo_md5), _fmt(exp.get('store')), _rl_verdict, exp.get('tag')))
     return True
 
 if __name__ == '__main__':
