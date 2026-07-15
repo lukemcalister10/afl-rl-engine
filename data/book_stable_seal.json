@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-15 at the IMPROVER candidate (three legs: _eo two-directional / L-SYMMETRY / the S_AGE 29-tail). The book is engine-ev()-derived; the legs move ev() for the rows they touch, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped, not re-hashed. Store/config UNCHANGED. Owner tag/main owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-15 at the RE-ENTRY TRIO candidate (store correction: Perez/McAndrew/Keane -> SSP re-entry). The book is engine-ev()-derived; the store move reprices the MSD cohort (McAndrew's MSD->SSP relabel, PICKEQ['MSD'] 60->90), so those rows move in the book and it is RE-BUILT on the candidate store and re-stamped, not re-hashed. Engine/config UNCHANGED. Owner tag/main owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
   "head_md5": "fc7045d6",
-  "store_md5": "340a7a32",
+  "store_md5": "b1fd0bce",
   "n_players": 2649,
-  "stable_sha256": "2a77d83443187589a97ddd60309db6e1c3df77aff1cc1308db442f716ab32850",
-  "sealed_by": "IMPROVER re-seal 2026-07-15 (session_2026-07-15/improver; engine edc47017 -> fc7045d6 three improver legs; store 340a7a32 UNCHANGED). stable_sha256 3152fa06 -> 2a77d834 because the rows the legs touch move in ev() and thus in the book. head_md5 stamp advanced edc47017 -> fc7045d6. Candidate \u2014 owner tag/main promote owner-only.",
+  "stable_sha256": "cf90c4f4844ba26d512ec58ab1555952455cbf88d3d304a8248d520d3f945bf8",
+  "sealed_by": "RE-ENTRY TRIO re-seal 2026-07-15 (session_2026-07-15/reentry_trio; engine fc7045d6 UNCHANGED; store 340a7a32 -> b1fd0bce the trio SSP re-entry). stable_sha256 2a77d834 -> cf90c4f4 because the repriced MSD rows move in ev() and thus in the book. head_md5 stamp UNCHANGED fc7045d6. Candidate \u2014 owner tag/main promote owner-only.",
   "sealed_date": "2026-07-15",
   "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }
