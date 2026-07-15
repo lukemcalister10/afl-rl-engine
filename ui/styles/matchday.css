@@ -62,8 +62,17 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .seg.dbg button.on{background:var(--edge);color:var(--dim)}
 .seg.lens button.on{background:var(--volt);color:#0a0c10}
 
+/* ---- item 4: column headings (grid-aligned to the row templates) ---- */
+.rowhead{display:grid;gap:12px;align-items:end;padding:14px 16px 6px;border-bottom:1px solid var(--edge)}
+.rowhead.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
+.rowhead.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
+.rowhead .h{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);line-height:1.2}
+.rowhead .h.r{text-align:right}
+.rowhead .h.c{text-align:center}
+.rowhead .h small{display:block;font-size:8.5px;letter-spacing:.08em;color:var(--volt);opacity:.7;margin-top:2px}
+
 /* ---- board rows ---- */
-.rows{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.rows{margin-top:8px;display:flex;flex-direction:column;gap:8px}
 .row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
   padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
 .row.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
@@ -214,5 +223,6 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   .row.working{grid-template-columns:40px 20px 1fr 120px 84px 96px}
   .row.public{grid-template-columns:42px 1fr 96px 120px}
   .row .pos,.row .meta,.vline{display:none}
+  .rowhead{display:none} /* headings track the wide grid; the narrow layout collapses columns */
   .desk{grid-template-columns:1fr}
 }

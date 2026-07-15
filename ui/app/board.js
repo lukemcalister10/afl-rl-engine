@@ -85,6 +85,25 @@ MD.board = (function () {
     return el;
   }
 
+  /* item 4: a column-heading row, grid-aligned to the tier's row template (a label on every column). */
+  function boardHead(tier) {
+    const s = MD.state;
+    const el = fmt.el("div", "rowhead " + tier);
+    if (tier === "working") {
+      const dh = s.lens !== 2 ? "Δ vs now" : (s.deltaBase === "bake" ? "Δ vs bake" : "Δ vs round");
+      el.innerHTML =
+        '<span class="h r">#</span><span class="h c">★</span><span class="h">Player</span>' +
+        '<span class="h">Pos</span><span class="h">Club <small>AFFL · AFL</small></span>' +
+        '<span class="h r">Value</span><span class="h">vs top</span>' +
+        '<span class="h r">' + dh + '</span><span class="h r">Pick · Yr</span>';
+    } else {
+      el.innerHTML =
+        '<span class="h r">#</span><span class="h">Player</span><span class="h">Pos</span>' +
+        '<span class="h r">Value</span><span class="h">vs top</span><span class="h r">Movement</span>';
+    }
+    return el;
+  }
+
   function deltaPill(p, displayedVal) {
     const s = MD.state;
     if (s.lens !== 2) {
@@ -275,6 +294,7 @@ MD.board = (function () {
       if (ca) container.appendChild(clubBanner(ca, clubRanks[clubFilter], clubRanks));
     }
 
+    if (pool.length) container.appendChild(boardHead(s.tier)); // item 4: column headings
     const rowsEl = fmt.el("div", "rows");
     if (s.tier === "working" && groupByClub) {
       // grouped: club headers ranked by ΣSCAR, each with its top players — the team-context lens (inline
