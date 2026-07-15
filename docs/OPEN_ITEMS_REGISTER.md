@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v143 2026-07-15 · PEN: **THE AUDIT OF RECORD IS RECONCILED (item 159): shards B/D/F join A/C — 5/5 clean, NO unexplained delta · THE 1.335 WAIVER APPLIED BY THE SUPERVISOR, VISIBLY: B1 frozen verdict = HALT@1.30 (honest, suite unedited); max ratio y5 1.3057 <= owner-waived 1.335, margin 0.0293 (item 143 authority) · ITEM-74 LEG 2 CLEARS · ladder rung next = OWNER VIEWING** · prior (items 157/158): R100.11 fully closed (<20 clamp permanent) · shards A+C reconciled, stale board self-stamp queued to the bake build · earlier chain: the item entries (header shortened per item 148)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v144 2026-07-15 · PEN: **CENSUS CROSS-CHECK SCORED (item 160): headline par-relative flattery GREW +19,168→+24,839 — but the targeted iso disease DRAINED (Newcombe +560→+189) and the growth decomposes into RULED levers: this seat MEASURED the captaincy leg = +1,231 of the +5,671 growth (unmodified instrument, RL_CAPT=0 board, head aggregates reproduced exactly first); the instrument predates the chapter's two ruled value sources — re-cut queued post-bake · discontinuity: live probes show the dissolution (bar step 3.3→1.13); its headline counts read the RETIRED dead branch · NON-BLOCKING stands; owner judges at viewing** · prior (item 159): audit of record 5/5 clean, waiver applied visibly, item-74 leg 2 cleared · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3606,6 +3606,42 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     - **LADDER STATE: rung 2 (reconcile) COMPLETE → rung 3 = the owner views board+book vs his sealed
       reads → his written bake word.** One open fix rides the bake build: the stale board self-stamp
       (item 158).
+
+160. **CENSUS CROSS-CHECK RETURNED AND SCORED (item 155's Tier-3 diagnostic; NON-BLOCKING stands).**
+    Branch `claude/census-crosscheck-final-board-f0h6yh` @ `aa6815a` VERIFIED LIVE (this seat's ls-remote
+    + clone; FINDING.md read directly). Both instruments ran UNMODIFIED at the head (Guard 5 PASS entry;
+    all five head levers default-ON — the FINAL board was measured, not a base).
+    - **FLATTERY (the chapter's named success metric): the headline GREW — 123→150 positively flattered,
+      +19,168 → +24,839 SCAR (+5,671).** Top now Daicos +1,148 · Gulden +820 · Green +735 (all
+      base-carrier guns). **BUT the defect the chapter NAMED drained: Newcombe — the pk60/iso rung —
+      fell +560 → +189 and left the top 10** (iso reversed; effpk 60→90). 10 left the census (incl.
+      Wilmot, Noble); 37 entered (led by Sanders +341 — an `_eo` lift).
+    - **THE GROWTH DECOMPOSES INTO RULED LEVERS — MEASURED, not narrated (this seat's own runs).**
+      Method: the committed instrument copied BYTE-IDENTICAL, env-only wiring (FLATTERY_OUT + RL_CAPT=0),
+      run on this seat's head workspace (the one that reproduced boards 790136a3 AND 800d0399, item 158).
+      VALIDITY FIRST: re-aggregating the shard's committed head census with the instrument's own rule
+      (flat≥25 or ≥2%) reproduces its report EXACTLY (150 / +24,839). Then the same rule on the
+      RL_CAPT=0 board: **150 / +23,608 → THE CAPTAINCY LEG = +1,231 of the +5,671 growth** (Daicos +248
+      of his +303 rise · Gulden +100 · Green +105 · even Newcombe +50). The residual +4,440 sits with
+      the other ruled levers — dominated by the improver's `_eo` production pull-up (+38,000 ΣΔ, item
+      140) net of the evidence-weight drain (−5,714, item 134).
+    - **THE READING FOR THE OWNER: "par-relative flattery" now counts value the owner RULED IN.** The
+      instrument prices every player against a par-neutral ND-pick-1 twin; the chapter deliberately
+      added two value sources par does not model — demonstrated-production credit (`_eo`) and the
+      captaincy law. Growth concentrated in producing guns is those levers registering, not the iso
+      disease returning; the iso disease itself measurably drained. Whether the metric should be re-based
+      is the owner's call, made at viewing with FINDING.md's numbers side by side.
+    - **DISCONTINUITY: the medicine worked where the instrument reads LIVE** — 10-game-bar step mean|Δ|
+      3.3→1.13 (max 32→10.80); the first-evidence seam is smooth. Its unchanged headline counts
+      (551/545/253) read the RETIRED discrete-regime branch (the dead `if not _EVW:` code,
+      _merged_recover.py:358–372) — they describe the RL_EVW=0 base, not the head.
+    - **HYGIENE QUEUED (post-bake, Tier-3): re-cut BOTH instruments for the head engine** — flattery to
+      NET OUT ruled levers so it measures UNEARNED flattery again; discontinuity to probe the continuous
+      E_q path (L-SMOOTH's standing instrument is partially stale). **DELETE-DON'T-DISABLE candidate for
+      the owner: the dead `if not _EVW:` discrete-regime branch** (SSI: delete, don't disable) — flag at
+      the PVC chapter.
+    - LADDER: unchanged — the bar was met at item 159; this diagnostic raises NO halt. Next rung = the
+      owner's viewing.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
