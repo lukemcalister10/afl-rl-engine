@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v148 2026-07-15 · PEN: **AGING RETURN PRESCREENED — PASS (item 164): flat-or-rising form does NOT buy slower decline at 30+ (cond 0.5414/0.6303 vs unc 0.5128/0.6463, n=133/392; positive in all 11 sensitivity variants +0.0044..+0.0683 — every headline re-verified from committed CSVs/summary.json by this seat); recommendation to owner: ACCEPT — the 30+ zero and decline path stand, the age leg EXITS the merged chapter scope · TWO FLAGS: the return quoted head af2ce04 but the branch head is the fill-in c27682f (item-134 pattern, explained) · its "rebased onto promoted main" line is WRONG at this fetch (main e778d12, NO v2.10 tag, NO promotion merge — the bake has not promoted)** · prior (item 163): four owner words · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v149 2026-07-15 · PEN: **CENSUS INSTRUMENTS v2 PRESCREENED — PASS (item 165): every aggregate recomputed by this seat from the committed sweeps and EXACT (head 150/+24,839 · unearned 125/+15,612 · noEO 126/+16,350 · noCAPT 150/+23,608; fixed-set legs 13,436+10,606+1,280−483 = 24,839 exact) · THE PURIFIED CHAPTER VERDICT: unearned label credit +15,612 vs the +19,168 pre-chapter baseline ≈ −19% — the disease drained · discontinuity live-path anchors match the cross-check; the dead-regime 12.69 cliff is 1.17 live · dead branch untouched (PVC)** · prior (item 164): aging prescreen · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3776,6 +3776,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       NO promotion merge — the bake has NOT promoted.** The measurement's own base (9be07b8e) is
       verified and unaffected; the claim is simply wrong or premature. The bake return is still awaited;
       if the bake chat is holding a tag for the owner to push, that is the owner-only step by design.
+
+165. **CENSUS INSTRUMENTS v2 RETURNED (branch `claude/census-instruments-head-engine-c0rsmv`, head
+    `cfe4a14`) — SUPERVISOR PRESCREEN: PASS (my own recomputation of every aggregate).**
+    - MECHANICALS: Guard 5 entry PASS (store b1fd0bce · rl_model f79fc740) · fence clean (job dir only;
+      originals unedited; the dead `if not _EVW:` branch untouched — correctly queued to PVC) · PLAN
+      first · within band (~1.4 h).
+    - **FLATTERY v2 — every number EXACT against my own re-aggregation of the four committed sweeps**
+      (instrument rule flat≥25 or ≥2%): head 150/+24,839 · **unearned (levers-off) 125/+15,612** ·
+      noEO 126/+16,350 · noCAPT 150/+23,608 — the validity gate holds and both re-censused legs match
+      item 161 (`_eo` +8,489 · captaincy +1,231, flagged True/True in the committed reconciliation).
+      Fixed-set decomposition over the head census: **unearned +13,436 · `_eo` +10,606 · captaincy
+      +1,280 · interaction −483 = +24,839 EXACT.** Unearned top-3 flips to pure label:
+      Wanganeen-Milera +721 · Daicos +679 · McKercher +496.
+    - **THE PURIFIED CHAPTER VERDICT (the owner's original question, now on a clean gauge):** unearned
+      label credit on the head board = **+15,612**, vs the pre-chapter baseline census **+19,168** (a
+      near-like-for-like read — the 07-13 board predated `_eo` and the captaincy law, so its census was
+      ~all label machinery): **the disease drained ≈ −3,556, about −19%, across the chapter**, while the
+      earned legs are now measured separately instead of polluting the gauge.
+    - **DISCONTINUITY v2:** live-path probes (`cp._lvl_eff`, :378–381), constants asserted against the
+      live module, dead-branch closed forms DROPPED and declared. Kept anchors MATCH the cross-check
+      (S1 bar-step mean|Δ| 1.13 / max 10.80 · S6 seam smooth, bar step 1.32 ≈ mean). The 10-game bar is
+      now a soft ~4.8-game ramp; the #2/#3 boundary the frozen v1 reported as a 12.69 cliff measures
+      **1.17 on the live board** — dissolved, quantified.
+    - **BOTH v2 INSTRUMENTS ARE NOW THE STANDING CENSUS TOOLS for PVC scoring** (v1s retained on their
+      branches as lineage). Non-blocking rung; nothing above it moved.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
