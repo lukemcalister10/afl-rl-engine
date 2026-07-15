@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-15 at the EVIDENCE-WEIGHT candidate (four evidence regimes -> one continuous weight; pedigree fades to the T5 residual 0.11). The book is engine-ev()-derived; the evidence weight moves ev() for the rows the four regimes touched, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped, not re-hashed. Store/config UNCHANGED. Owner tag/main promote remain owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-15 at the IMPROVER candidate (three legs: _eo two-directional / L-SYMMETRY / the S_AGE 29-tail). The book is engine-ev()-derived; the legs move ev() for the rows they touch, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped, not re-hashed. Store/config UNCHANGED. Owner tag/main owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "edc47017",
+  "head_md5": "fc7045d6",
   "store_md5": "340a7a32",
   "n_players": 2649,
-  "stable_sha256": "3152fa061df870c88686b288ec4ce069a08d9445550470a7d0e9c1d747a55e16",
-  "sealed_by": "EVIDENCE-WEIGHT re-seal 2026-07-15 (session_2026-07-15/evidence_weight; engine 113a4223 -> edc47017 one-continuous-evidence-weight; store 340a7a32 UNCHANGED). stable_sha256 92e401a5 -> 3152fa06 because the rows the four regimes touched move in ev() and thus in the book. head_md5 stamp advanced 113a4223 -> edc47017. Candidate \u2014 owner tag/main promote owner-only.",
+  "stable_sha256": "2a77d83443187589a97ddd60309db6e1c3df77aff1cc1308db442f716ab32850",
+  "sealed_by": "IMPROVER re-seal 2026-07-15 (session_2026-07-15/improver; engine edc47017 -> fc7045d6 three improver legs; store 340a7a32 UNCHANGED). stable_sha256 3152fa06 -> 2a77d834 because the rows the legs touch move in ev() and thus in the book. head_md5 stamp advanced edc47017 -> fc7045d6. Candidate \u2014 owner tag/main promote owner-only.",
   "sealed_date": "2026-07-15",
   "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }

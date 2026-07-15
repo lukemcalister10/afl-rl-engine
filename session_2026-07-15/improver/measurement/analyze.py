@@ -61,12 +61,22 @@ v("- three largest LIFTS by name:")
 for k,d in lifts: v(f"    {base[k]['player'][:26]:26} {base[k]['pos']:8} age {base[k]['age']:.0f}  {base[k]['num']}->{allon[k]['num']} ({d:+d})")
 v("- three largest CUTS by name:")
 for k,d in cuts:  v(f"    {base[k]['player'][:26]:26} {base[k]['pos']:8} age {base[k]['age']:.0f}  {base[k]['num']}->{allon[k]['num']} ({d:+d})")
-# named beneficiaries of the 29-tail (item 127): Heeney, Dale
-v("- named 29-tail beneficiaries (item 127), base->new:")
-for nm in ['heeney','dale']:
-    hits=[k for k in keys if nm in base[k]['player'].lower()]
-    for k in hits:
-        v(f"    {base[k]['player'][:26]:26} age {base[k]['age']:.0f}  num {base[k]['num']}->{allon[k]['num']} ({allon[k]['num']-base[k]['num']:+d})  lvl {base[k]['lvl']:.2f}->{allon[k]['lvl']:.2f}")
+# named beneficiaries of the 29-tail study (item 127): Isaac Heeney, Bailey Dale — both AGE 30 in 2026, so
+# the age-29 knot (leg 3) gives them ZERO; their all-on lift is leg 1 (RL_EO2) pulling L0 up to demonstrated
+# production. The 30+ zero STANDS for them by design. Per-leg attribution shown.
+def attr(k):
+    return (f"eo2 {eo2[k]['num']-base[k]['num']:+d} / lsym {lsym[k]['num']-base[k]['num']:+d} / "
+            f"sage29 {sage29[k]['num']-base[k]['num']:+d}")
+v("- item-127 named names (Isaac Heeney, Bailey Dale) base->new [both AGE 30 => 29-tail=0; lift is RL_EO2]:")
+for full in ['isaac heeney','bailey dale']:
+    for k in [k for k in keys if base[k]['player'].lower()==full]:
+        v(f"    {base[k]['player'][:26]:26} age {base[k]['age']:.0f}  num {base[k]['num']}->{allon[k]['num']} "
+          f"({allon[k]['num']-base[k]['num']:+d})  lvl {base[k]['lvl']:.2f}->{allon[k]['lvl']:.2f}  [per-leg: {attr(k)}]")
+# the ACTUAL 29-tail (leg-3) movers — as-of-age-29 rows only
+s29=[(k,sage29[k]['num']-base[k]['num']) for k in keys if sage29[k]['num']!=base[k]['num']]
+v(f"- the ACTUAL leg-3 (RL_SAGE29) footprint — {len(s29)} movers, ALL as-of-age 29 (30+ untouched), ΣΔ {sum(d for _,d in s29):+d}:")
+for k,d in sorted(s29,key=lambda t:-abs(t[1])):
+    v(f"    {base[k]['player'][:26]:26} age {base[k]['age']:.0f}  {base[k]['num']}->{sage29[k]['num']} ({d:+d})")
 open(f'{M}/VALUE_FLOW.md','w').write('\n'.join(vf))
 print('\n'.join(vf))
 print(f"\n[additivity max|Σlegs-total| = {maxres}]  [combined {len(mv_all)} movers ΣΔ {sdall:+d}]")
