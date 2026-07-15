@@ -12,7 +12,7 @@
   "peak_model": "b763f59e6a6b8aa20946211674e37259",
   "pvc_snapshot": "735d2dec60cee285382a5d7a17c36a6f",
   "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
-  "panel": "PASS 10/10 (v2.9 BAKE num\u00e9raire board 81e48293; the 10 named in the num\u00e9raire = round(ev/1.0524): Daicos 7667 Bont 3482 Sheezel 7796 Gawn 2393 Reid 3594 Ward 1649 Moore 197 Goad 873 Smillie 1282 Green 655; raw \u00d71.0524 values Daicos 8069 Bont 3664 ... unchanged in the engine; deterministic; == ship_gates B4 board)",
+  "panel": "PASS 10/10 (v2.10 CAPTAINCY BAKE, board 790136a3; the 10 named = round(ev/1.0524) and equal the shipped board 'v': Daicos 8049 Bont 3585 Sheezel 8096 Gawn 2574 Reid 3467 Ward 2016 Moore 264 Goad 875 Smillie 1279 Green 660; the L-CAPTAIN ruled captain curve (RL_CAPT default ON) lifts the guns (Gawn 2393->2574, Bont 3482->3585, item 162) and the load-time calibration re-normalises sub-bar rows down; deterministic; == ship_gates B4 board 790136a3. Supersedes the v2.9-bake pin, board 81e48293.)",
   "register": "652d83e87780e415a01a2de6d8b3cc57",
   "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
   "rl_model": "f79fc7403b67942d7d7b9f425ea9c006",

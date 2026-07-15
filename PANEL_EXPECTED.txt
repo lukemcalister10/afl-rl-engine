@@ -1,28 +1,31 @@
-FIXED PANEL — v2.9 BAKE (NUMÉRAIRE), 2026-07-13; engine 2030e5df, store b0c39d78, config 69ead79b944d,
-board 81e48293. Candidate at the L-STOP (no tag/main merge; owner word required). L7 NUMÉRAIRE RE-BASE
-BAKED: every displayed value = round(ev/1.0524), re-basing the ×1.0524 refit candidate to the numéraire
-(pick-1 = 3000; players and picks off the one adopted curve pvc_curve_L1b.json). The engine ev() is
-UNCHANGED — the rebase is display-only; all ratios/orderings preserved (0 relative movers, 10 rounding
-ties declared). Every EV below equals the shipped numéraire board (data/rl_build/rl_app_data.json md5
-81e48293, ship_gates B4 byte-agree) and reproduces deterministically. A cold reload of THIS state MUST
-reproduce every EV exactly (round(ev/1.0524)).
+FIXED PANEL — v2.10 CAPTAINCY BAKE (NUMÉRAIRE), 2026-07-15; engine fc7045d6, store b1fd0bce, rl_model
+f79fc740, config c2d233aec104, board 790136a3. L7 NUMÉRAIRE RE-BASE stands: every displayed value =
+round(ev/1.0524), pick-1 = 3000 (players and picks off the one adopted curve pvc_curve_L1b.json). The
+L-CAPTAIN ruled captain curve (RL_CAPT default ON; credit(L)=G*integral[BAR->L]P(a)da, BAR 105.0 M 109.5
+W 1.85 G 1.00) is now the live capt_prem — it lifts the guns and, through the load-time calibration that
+conserves the cohort total, re-normalises sub-bar rows down. The engine ev() is otherwise UNCHANGED; the
+numéraire rebase is display-only; ratios/orderings preserved. Every EV below equals the shipped board
+(data/rl_build/rl_app_data.json md5 790136a3, ship_gates B4 byte-agree, == board 'v' for all 10) and
+reproduces deterministically. A cold reload of THIS state MUST reproduce every EV exactly (round(ev/1.0524)).
 
 player                pos       pk  ns     EV   note (raw ×1.0524 value in brackets)
-Nick Daicos           MID        4   5   7667   proven star            (raw 8069)
-Marcus Bontempelli    MID        4  13   3482   proven; combined anchor (raw 3664)
-Harry Sheezel         MID        3   4   7796   proven young           (raw 8204)
-Max Gawn              RUC       33  14   2393   proven ruck            (raw 2518)
-Harley Reid           MID        1   3   3594   first-year value, pk1  (raw 3782)
-Josh Ward             MID        7   5   1649   moderate pedigree      (raw 1735)
-Darcy Moore           KEY_DEF    8  11    197   decliner the shed fired on (raw 207)
-Taylor Goad           RUC       20   0    873   sat-out ruck           (raw 919)
-Josh Smillie          MID        7   0   1282   sat-out mid            (raw 1349)
-Will Green            RUC       16   0    655   sat-out ruck           (raw 689)
+Nick Daicos           MID        4   5   8049   proven star            (raw 8471)
+Marcus Bontempelli    MID        4  13   3585   proven; combined anchor (raw 3773)
+Harry Sheezel         MID        3   4   8096   proven young           (raw 8520)
+Max Gawn              RUC       33  14   2574   proven ruck; captaincy lift (raw 2709)
+Harley Reid           MID        1   3   3467   first-year value, pk1  (raw 3649)
+Josh Ward             MID        7   5   2016   moderate pedigree      (raw 2122)
+Darcy Moore           KEY_DEF    8  11    264   decliner the shed fired on (raw 278)
+Taylor Goad           RUC       20   0    875   sat-out ruck           (raw 921)
+Josh Smillie          MID        7   0   1279   sat-out mid            (raw 1346)
+Will Green            RUC       16   0    660   sat-out ruck           (raw 695)
 
-PROVENANCE: the ×1.0524 refit candidate (board f2d6e3f5, panel Daicos 8069 Bont 3664 Sheezel 8204 Gawn
-2518 Reid 3782 Ward 1735 Moore 207 Goad 919 Smillie 1349 Green 689) is re-based to the numéraire by the
-uniform L7 ÷1.0524 (owner: "Rebase, 3000 is it."). The shipped pick curve is repointed to the adopted
-pvc_curve_L1b.json (pick-1 = 3000, monotone), retiring the frozen v3.4×F display curve that diverged at
-98/99 picks (the "two currencies" oddity). Brodie's owner override displays at ×0.50 of his REBASED value
-(511, marked OWNER OVERRIDE; 511×1.0524 = 538, the owner's by-eye read on the pre-L7 board). The OFFICIAL
-cohort gate PASSES unchanged (ratios invariant under the uniform rebase: y4/y5/y6 = 126.8/125.2/116.1).
+PROVENANCE: this panel re-pins the v2.9-bake numéraire panel (board 81e48293: Daicos 7667 Bont 3482
+Sheezel 7796 Gawn 2393 Reid 3594 Ward 1649 Moore 197 Goad 873 Smillie 1282 Green 655) and the intervening
+determinism pins (board 800bf461: Gawn 2395 Reid 3587 Goad 874 Green 658) forward onto the CAPTAINCY board
+790136a3. The change is entirely the L-CAPTAIN curve + its cohort-conserving re-normalisation (register
+items 141/151/162): Gawn 2393->2574 and Bont 3482->3585 are the measured captaincy lifts named to the
+owner at the viewing (item 162, "the guns rose"); Daicos 7667->8049 and Sheezel 7796->8096 likewise gain
+captaincy credit; the sub-bar / young rows (Reid, Ward, Moore) drift down a few percent as the guns take
+value. Pick-1 = 3000 is the permanent numéraire (unchanged). The board of record and the shipped copy both
+carry 790136a3; RL_CAPT=0 reproduces the pre-captaincy board 800d0399 byte-exact.
