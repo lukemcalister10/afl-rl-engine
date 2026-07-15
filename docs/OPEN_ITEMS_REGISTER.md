@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v147 2026-07-15 · PEN: **FOUR OWNER WORDS (item 163): (1) MERGE — the next chapter = PVC + FLEX, one ladder, one bake · (2) his positioning registers READY for flex fire time · (3) cm_400 investigation FIRED + his cadence read filed (no weekly refits; season-end or big-model-change only) · (4) UI v1.1 FIRED post-promotion with his feedback batch VERBATIM — and his "+1/+2 lenses broken, everyone losing value" is the KNOWN RULED defect (LENS PROJECTION LAW, v46): the engine fix now RIDES THE MERGED CHAPTER; the UI disables the toggle meanwhile** · prior (item 162): the bake word · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v148 2026-07-15 · PEN: **AGING RETURN PRESCREENED — PASS (item 164): flat-or-rising form does NOT buy slower decline at 30+ (cond 0.5414/0.6303 vs unc 0.5128/0.6463, n=133/392; positive in all 11 sensitivity variants +0.0044..+0.0683 — every headline re-verified from committed CSVs/summary.json by this seat); recommendation to owner: ACCEPT — the 30+ zero and decline path stand, the age leg EXITS the merged chapter scope · TWO FLAGS: the return quoted head af2ce04 but the branch head is the fill-in c27682f (item-134 pattern, explained) · its "rebased onto promoted main" line is WRONG at this fetch (main e778d12, NO v2.10 tag, NO promotion merge — the bake has not promoted)** · prior (item 163): four owner words · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3747,6 +3747,35 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       DISABLES the +1/+2 toggle (tooltip: lands next chapter) so ruled-wrong numbers are never shown.
     - IN FLIGHT: the bake (writer) · aging (T3). UNFIRED IN OWNER'S HANDS: calibration · census re-cut ·
       cm_400 (fire now) · UI v1.1 (fires at the tag).
+
+164. **FORM-CONDITIONED AGING RETURNED (PR #95, branch `claude/form-conditioned-aging-analysis-mjhiul`)
+    — SUPERVISOR PRESCREEN: PASS (my own reads of the committed artifacts), TWO FLAGS, NO wiring.**
+    - MECHANICALS: PLAN committed FIRST (`3785f28`, definitions before estimates — as directed) · fence
+      clean (session dir only) · base `9be07b8e` + store `b1fd0bce` asserted in summary.json · **the
+      branch head is `c27682f`** (a RETURN fill-in commit; the return quoted `af2ce04`, the pre-fill
+      head — the item-134 relocation pattern, explained, not a red).
+    - **EVERY HEADLINE RE-VERIFIED from the committed summary.json/CSVs:** 30+ conditioned n=133,
+      H 0.5414/0.6303, mean ΔLc −4.064 vs unconditioned n=392, 0.5128/0.6463, −3.122 — conditioned ≈
+      cohort, slightly WORSE on the lower bound · sensitivity: 11/11 variants positive,
+      +0.0044..+0.0683 (my read of the full delta set) · survivorship bracket honest (32 exits / 5
+      still-elite) · engine cross-check present (agemult 0.73@30 · s_age 29 = 0.3793, 30+ = 0) ·
+      33–36 pooled AND declared (n=12) · worked trajectories committed (Gawn's 2026 partial Lc 126.5 at
+      35 — beating class expectation; Bont 31 partial 119.0 raw — near/below; both right-censored,
+      NO individual verdict, correctly).
+    - **THE FINDING: the owner's hypothesis is NOT supported at the class level** — flat-or-rising form
+      to date does not buy slower decline at 30+; a flat/rising 30-year-old has ~2 seasons to first
+      material decline, P(no decline 30→33) ≈ 0.11. The 30+ zero and the current decline path are
+      RE-VALIDATED conditionally. Prior-art branch (`…-5hi0xe`) correctly identified as the DOWN-arm
+      decliner-shed's origin (a different question), read, not reused.
+    - **RECOMMENDATION TO THE OWNER: ACCEPT AND CLOSE** — the age leg EXITS the merged PVC+FLEX scope
+      (scope saved); demonstrated current production already pays at any age via `_eo`; the persister
+      tail (Gawn) is real but individual, and the engine's recency level already carries his shown form.
+      His word rules.
+    - **⚠ PROVENANCE FLAG (not a measurement defect):** the return claims the branch was "rebased onto
+      promoted main post-bake." **At this seat's fetch: main = `e778d12` (the docs line), NO v2.10 tag,
+      NO promotion merge — the bake has NOT promoted.** The measurement's own base (9be07b8e) is
+      verified and unaffected; the claim is simply wrong or premature. The bake return is still awaited;
+      if the bake chat is holding a tag for the owner to push, that is the owner-only step by design.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
