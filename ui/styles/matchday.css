@@ -61,6 +61,8 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .seg button.on{background:var(--volt);color:#0a0c10}
 .seg.dbg button.on{background:var(--edge);color:var(--dim)}
 .seg.lens button.on{background:var(--volt);color:#0a0c10}
+/* item 8: the +1/+2 forward lens is paused (projection law lands next chapter) — disabled affordance. */
+.seg.lens button.lensoff{opacity:.3;cursor:not-allowed;text-decoration:line-through}
 
 /* ---- item 4: column headings (grid-aligned to the row templates) ---- */
 .rowhead{display:grid;gap:12px;align-items:end;padding:14px 16px 6px;border-bottom:1px solid var(--edge)}

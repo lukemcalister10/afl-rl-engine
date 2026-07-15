@@ -41,13 +41,20 @@ try {
   await sleep(900); // let scripts + DOMContentLoaded render
   if (SETUP) { await cmd('Runtime.evaluate', { expression: SETUP, awaitPromise: true }); await sleep(400); }
   // full-height capture
-  const metrics = await cmd('Page.getLayoutMetrics');
-  const h = Math.min(Math.ceil(metrics.result.cssContentSize?.height || H), 8000);
-  await cmd('Emulation.setDeviceMetricsOverride', { width: W, height: h, deviceScaleFactor: 1, mobile: false });
-  const shot = await cmd('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+  const CLIP = process.env.SHOOT_CLIP === '1';   // clip to the W×H viewport instead of full page
+  let shot;
+  if (CLIP) {
+    await cmd('Emulation.setDeviceMetricsOverride', { width: W, height: H, deviceScaleFactor: 1, mobile: false });
+    shot = await cmd('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width: W, height: H, scale: 1 } });
+  } else {
+    const metrics = await cmd('Page.getLayoutMetrics');
+    const h = Math.min(Math.ceil(metrics.result.cssContentSize?.height || H), 8000);
+    await cmd('Emulation.setDeviceMetricsOverride', { width: W, height: h, deviceScaleFactor: 1, mobile: false });
+    shot = await cmd('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+  }
   const { writeFileSync } = await import('node:fs');
   writeFileSync(OUT, Buffer.from(shot.result.data, 'base64'));
-  console.log('wrote', OUT, `(${W}x${h})`);
+  console.log('wrote', OUT);
 } finally {
   try { ws && ws.close(); } catch {}
   proc.kill('SIGKILL');
