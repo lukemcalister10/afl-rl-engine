@@ -1,4 +1,9 @@
-# CONSTRAINTS — the single-source registry of guards and acceptance anchors — v1.15 · 2026-07-15 · supersedes v1.14
+# CONSTRAINTS — the single-source registry of guards and acceptance anchors — v1.16 · 2026-07-15 · supersedes v1.15
+### CHANGELOG v1.16 (2026-07-15, THE v2.10 SEAM — filed by the Fable seat's pen after the promotion, SHA cited):
+###  **THE 1.335 G-COHORT WAIVER IS REVERTED TO THE HARD 1.30.** It was THIS-BAKE-ONLY (item 143) and expired at
+###  this filing — the first of the merged PVC+FLEX chapter. The v2.10 bake's y5 landed 1.3057 and cleared the
+###  waiver by 0.0293 (register item 159); the guard now HALTs at 1.30 again, no waived pass. acceptance_v1_16.json
+###  carries it machine-readable. Nothing else in the guard set changed this filing.
 ### CHANGELOG v1.13 (2026-07-15, filed by the Fable seat's pen on the owner's word; SHA cited in the filing turn):
 ###  (1) **L-CAPTAIN IS FILED** — R98.1's captain curve becomes a named, citable law (PART 5). BINDING.
 ###      **LOCKED, NOT WIRED** — three wiring prerequisites recorded on the law itself.

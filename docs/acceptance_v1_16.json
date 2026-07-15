@@ -1,12 +1,12 @@
 {
- "version": "v1.15",
+ "version": "v1.16",
  "date": "2026-07-15",
  "authority": "docs/CONSTRAINTS_v1_13.md (human-readable master; regenerate this file on any change there; status strings use underscores). NAMING: repo filenames use UNDERSCORES (CONSTRAINTS_v1_13.md, acceptance_v1_13.json) - a pointer written with dots (CONSTRAINTS_v1.13.md) RESOLVES TO NOTHING.",
  "regenerated_from": "CONSTRAINTS_v1.13 (delta: L-CAPTAIN + L-SMOOTH filed from DECISIONS v98 verbatim; ITEM-74 bake blocker REWRITTEN around CPU-class determinism per R100.7 - the q97m freeze is necessary hygiene, NOT sufficient; measurement_status clearing clauses updated to match)",
  "numeraire": {
-  "law": "pick_1 == 3000 (owner: 'Rebase, 3000 is it.', register v30) \u2014 permanent",
+  "law": "pick_1 == 3000 (owner: 'Rebase, 3000 is it.', register v30) — permanent",
   "rebase_factor": 1.0524,
-  "note": "v1.8 quotes SCAR in the L7-rebased numeraire (v1.7 figures \u00f7 1.0524). Ratios and percentages are invariant under the uniform rebase. Replacement bars UNCHANGED (par space)."
+  "note": "v1.8 quotes SCAR in the L7-rebased numeraire (v1.7 figures ÷ 1.0524). Ratios and percentages are invariant under the uniform rebase. Replacement bars UNCHANGED (par space)."
  },
  "status_values": [
   "BINDING",
@@ -19,16 +19,16 @@
    "id": "G-COHORT",
    "metric": "class_year_sum_averaged_across_classes",
    "construction": "for each draft class: SUM of that class's players' values in career year Y; average those sums across sampled classes; one figure per career year",
-   "construction_provenance": "OWNER_WORDED_2026-07-08; re-confirmed during the v4.1 remediation (WD-1 closed); UPHELD against the audited W4 breach; B1 CONFORMANCE RULED 2026-07-13 (register v52) \u2014 the July-8 construction IS the gate and the frozen code conforms to IT",
+   "construction_provenance": "OWNER_WORDED_2026-07-08; re-confirmed during the v4.1 remediation (WD-1 closed); UPHELD against the audited W4 breach; B1 CONFORMANCE RULED 2026-07-13 (register v52) — the July-8 construction IS the gate and the frozen code conforms to IT",
    "owner_rationale": "market no-arbitrage (owner 2026-07-08): if year 1-2 players were going to be worth 50% more 2-3 years later, one would simply hold them; younger-player value must rise to compensate",
    "per_capita_reading": "OVERRULED_do_not_use (retired-supervisor carry; owner-overruled 2026-07-08)",
-   "indexed_reading": "DEMOTED_2026-07-13 (obituary in CONSTRAINTS v1.8): the frozen suite's per-class yr1=100 renormalisation + mean-of-ratios (the owner's own 02/07 wording, D5) is SUPERSEDED by his 08/07 wording and 13/07 confirmation. May survive ONLY as B1's secondary SHAPE diagnostic (peak position / dip), never as the bound. The historic headline 126.8/125.2/116.1 was the indexed row \u2014 do not quote it as the gated number.",
-   "code_conform_job": "PENDING \u2014 implements the July-8 construction in ship_gates; owner's word GIVEN; fires at the seam",
+   "indexed_reading": "DEMOTED_2026-07-13 (obituary in CONSTRAINTS v1.8): the frozen suite's per-class yr1=100 renormalisation + mean-of-ratios (the owner's own 02/07 wording, D5) is SUPERSEDED by his 08/07 wording and 13/07 confirmation. May survive ONLY as B1's secondary SHAPE diagnostic (peak position / dip), never as the bound. The historic headline 126.8/125.2/116.1 was the indexed row — do not quote it as the gated number.",
+   "code_conform_job": "PENDING — implements the July-8 construction in ship_gates; owner's word GIVEN; fires at the seam",
    "years_tested": "each_of_year_4_5_6_individually",
-   "denominator": "min(year_1_figure, year_2_figure) \u2014 owner-picked from symmetric options 2026-07-08 (WD-1b closed)",
+   "denominator": "min(year_1_figure, year_2_figure) — owner-picked from symmetric options 2026-07-08 (WD-1b closed)",
    "book": "walk_forward_leak_free",
    "fitted_board_reading_invalid": true,
-   "basis_assertion": "CODE READING ONLY \u2014 walk-forward property (model scoring cohort year T sees only data <= T) and class-sum construction asserted from the script's code; numeric fingerprint aid RETIRED 2026-07-08 (non-discriminating; do not resurrect)",
+   "basis_assertion": "CODE READING ONLY — walk-forward property (model scoring cohort year T sees only data <= T) and class-sum construction asserted from the script's code; numeric fingerprint aid RETIRED 2026-07-08 (non-discriminating; do not resurrect)",
    "bound_hard": 1.3,
    "guide_band": [
     1.2,
@@ -48,7 +48,7 @@
    "fix_direction": "raise_year1_aggregate_never_cut_young",
    "remediation_doctrine": "owner-ruled 2026-07-08: NO blanket young multiplier to tick the box; investigate WHY younger players are under-valued relative to who they become 3-4 years later and rectify the identified mechanism; the retired 1.19x uniform sit-out lift stays retired",
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-MONO",
@@ -59,7 +59,7 @@
     "young_ruck_fade_smooth_no_pk20_21_step"
    ],
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-FLOOR",
@@ -67,8 +67,8 @@
    "metric": "first_year_unproven_value_floor",
    "rule": "never_crater",
    "status": "BINDING",
-   "dispensations_2026_07_11": "two one-off owner waivers recorded: <=5 SCAR on <=45 rows; the NAMED-16 <=13 SCAR (list committed on the remediation branch). Gate unmoved. CLOSED HISTORICAL (v1.8) \u2014 quoted in pre-rebase units; do not re-quote forward.",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "dispensations_2026_07_11": "two one-off owner waivers recorded: <=5 SCAR on <=45 rows; the NAMED-16 <=13 SCAR (list committed on the remediation branch). Gate unmoved. CLOSED HISTORICAL (v1.8) — quoted in pre-rebase units; do not re-quote forward.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-PEAK",
@@ -76,7 +76,7 @@
    "metric": "individual_survivor_peak_years4_6",
    "max_drop": 0.02,
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-CONVEX",
@@ -110,7 +110,7 @@
    },
    "status": "ADVISORY",
    "escalation": "remains ADVISORY until an EXPLICIT owner ruling makes it BINDING (owner-confirmed 2026-07-08; no automatic escalation). Scored as diagnostics at CA-5.",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-DATA",
@@ -124,7 +124,7 @@
    "behavior": "halt_not_warn",
    "numeraire_note": "the L7 display rebase moved the unit relation to board == round(ev / F); six parity checks were made numeraire-aware at the v2.9 bake (rl_export gate, run_panel, selftest F1/F2, canary, s4_matrix book<->board). The guards still catch mispricing; only the unit relation moved.",
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-ATTR",
@@ -133,7 +133,7 @@
    "rule": "every_lever_delta_separable_else_fail",
    "interpretation_note": "register v55: 'separable' == PATH-ADDITIVE along the declared lever order, not interaction-free; a different order splits the same total differently",
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "G-Y0",
@@ -148,7 +148,7 @@
    },
    "status": "ADVISORY",
    "provenance": "owner-worded 2026-07-11 (CLAIM 1 only); ADVISORY by owner ruling 2026-07-14",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
    "identity_2026_07_14_CORRECTED": "THE IDENTITY IS SOUND AND IT IS THE OWNER'S. A prior supervisor annotation (pushed c48d390, corrected within the hour) argued the pick SHOULD be worth less than the player because of a 'cost of holding'. IT MISREAD V0. V0 is the player's value the day AFTER the draft; the PVC is the pick's value the day BEFORE. ONE DAY APART. THERE IS NOTHING TO DISCOUNT. Owner verbatim 2026-07-14: 'if we're talking about picks and the players immediately post draft (i.e. pure v0 players), then they should be relatively even on average... otherwise 1 day after the draft there'd be a heap of value created or lost which is nonsensical.' CLAIM 1 (position conditioning redistributes, deviations net to zero) AND CLAIM 2 (composition-weighted mean V0 == derived PVC) ARE BOTH THE OWNER'S AND BOTH STAND. POSITIONAL CAVEAT IS PART OF THE LAW: some drafts are positionally weaker and SHOULD land below the PVC, others stronger and above. THE IDENTITY HOLDS ON AVERAGE ACROSS DRAFTS, NOT DRAFT-BY-DRAFT. A single class off the curve is a weak or strong class, NOT a breach. MEASURE ACROSS MULTIPLE DRAFTS. The holding-cost question belongs to a DIFFERENT comparison (pick vs the player's PEAK/career value), where the owner's 'how do you even value the player - peak? a window across the peak? it's arbitrary' does bite. DO NOT WELD THEM TOGETHER AGAIN.",
    "fix_direction_STALE_DO_NOT_APPLY": "The recorded fix_direction (raise_young_side_never_cut_survivors_never_bend_derived_curve) was drafted 2026-07-11 anticipating V0 < PVC ('the weighted average sits BELOW the curve broadly'). THE MEASUREMENT CAME BACK THE OTHER WAY: comp-weighted V0 > derived PVC in EVERY band (+19..+281, widest picks 21-30) - THE DRAFT CREATES VALUE. THE YOUNG SIDE IS ALREADY THE HIGH SIDE; RAISING IT WOULD WIDEN THE GAP. NOBODY UPDATED THE REMEDY. The PVC re-derivation must re-derive THE CURE, not only the numbers. DO NOT ACT ON THE RECORDED FIX DIRECTION."
   },
@@ -161,8 +161,8 @@
    "status": "BINDING",
    "known_gap": "STATED IN BOTH DIRECTIONS (corrected 2026-07-14 after the owner's audit). (1) rl_model.py IS PINNED AND THE PIN IS CORRECT: data/expected_boot.json carries rl_model=952ddb3d15fe6d4f72432d431abe75cc and it matches the live file exactly. An earlier supervisor claim that it was 'recorded by NOTHING' was WRONG. What is true is narrower: boot_guard.assert_boot() NEVER CHECKS IT (its signature takes store, engine_head, band, register - no rl_model path), and the book's __meta__ does not record it. So closing this half is WIRING AN EXISTING, CORRECT PIN INTO THE ASSERTION - not creating one. Precedent, same file, second time: the 'board' pin was DECORATIVE in exactly this way until the S1 audit asserted it (register item 24). (2) THE UNSTAMPED INPUTS ARE MORE NUMEROUS THAN PREVIOUSLY STATED (D6, determinism return e646abb): peak_model_v4.pkl (b763f59e), pvc_snapshot.json (735d2dec), bust_prior_table.json (ffb54267), plus several data tables - all loaded by the board, none in expected_boot.json. And q97m - the model refitted at import on every run - is pinned by nothing at all. G-BOOK CANNOT BE DECLARED COMPLETE UNTIL THE BOOK'S STAMP COVERS EVERY INPUT THAT DETERMINES THE BOARD. Closing this gap is a PREREQUISITE of the captain-curve wiring.",
    "owner_ruling": "2026-07-13 - the book is rebuilt every time the current-player formula changes",
-   "measurement_2026_07_14": "three stamped legs PASS; the guard is INCOMPLETE \u2014 see known_gap",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "measurement_2026_07_14": "three stamped legs PASS; the guard is INCOMPLETE — see known_gap",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
    "second_runtime_fit_open": "_merged_recover.py:801 _iso_dec = IsotonicRegression(...).fit(...) - a SECOND runtime fit that D3 MISSED. Feeds _fit_pick_curve -> the V0 curve -> the pick curve. Not cleared. If CI is still red after the q97m freeze, this is the first place to look - it is NOT a failed freeze."
   }
  ],
@@ -174,8 +174,8 @@
    "direction": "up",
    "min_delta_pct": 10.0,
    "status": "BINDING",
-   "baseline_note": "v1.8 NUMERAIRE fold: 3246 / 1.0524 = 3084 (round-trips 3084 x 1.0524 = 3246). v2.9 measured +12.88% (pre-rebase units); supervisor seam spot-check on the baked board: v = 3482 = +12.91% vs 3084 \u2014 PASS. Ratio invariant under rebase.",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "baseline_note": "v1.8 NUMERAIRE fold: 3246 / 1.0524 = 3084 (round-trips 3084 x 1.0524 = 3246). v2.9 measured +12.88% (pre-rebase units); supervisor seam spot-check on the baked board: v = 3482 = +12.91% vs 3084 — PASS. Ratio invariant under rebase.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "A-GAWN",
@@ -185,7 +185,7 @@
    "rule": "clearly_above",
    "status": "BINDING",
    "magnitude": "OWNER_ON_SIGHT",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "A-CAM",
@@ -195,7 +195,7 @@
    "min_delta_pct": null,
    "status": "OWNER_ON_SIGHT",
    "v2_9_note": "2026-07-13: v2.9 proxy ticked -1.11% vs vPrev; OWNER VIEWED AND ACCEPTED at the sitting (register v56). Direction-up expectation stands for future boards.",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "A-DARCY",
@@ -209,7 +209,7 @@
    "rule": "no_layer_clips_ceiling",
    "status": "OWNER_ON_SIGHT",
    "availability_note": "v1.8 re-quote, VERIFIED AT SEAM (supervisor seat 5, 2026-07-13, against the BAKED board: tag v2.9 = 9f8ae76, board md5 81e48293 recomputed): avail_nerf = -664 (was -677 pre-rebase), avail_hc 0.7273, lti_return_hc 0.0, v 3865. Availability is the SOLE suppressor; convexity ceiling and KPF-speculative ABSENT; no layer clips his ceiling; unwinds 2027.",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "A-DUUR",
@@ -217,7 +217,7 @@
    "direction": "up_via_year1_cohort_lift",
    "governed_by": "G-COHORT",
    "status": "OWNER_ON_SIGHT",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "A-PEAK",
@@ -228,7 +228,7 @@
    "rule": "held_not_crushed",
    "governed_by": "G-PEAK",
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   },
   {
    "id": "A-FADE",
@@ -239,11 +239,11 @@
     "zach-guthrie"
    ],
    "direction": "down",
-   "basis": "MULTI-BAKE TRAJECTORY (the fader's path across boards), NOT the single-bake vPrev tick \u2014 supervisor-drafted from the owner's 2026-07-08 clarification, closing S5's reported ambiguity",
+   "basis": "MULTI-BAKE TRAJECTORY (the fader's path across boards), NOT the single-bake vPrev tick — supervisor-drafted from the owner's 2026-07-08 clarification, closing S5's reported ambiguity",
    "basis_status": "OWNER_APPROVED_2026-07-14 (the multi-bake ARC, not the single-bake tick)",
    "threshold": "direction_only; players already at the scrap floor satisfy FLAT (no further drop required); attributed floor-basis effects do not fail it; escalate ONLY if the decline lever is absent / failed to fold (numeric threshold closed as moot, OQ-E)",
    "status": "BINDING",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
    "provenance_status": "UNVERIFIED. Owner 2026-07-14: 'I don't think I wrote that guard.' The 2026-07-08 clarification (scrap-floor satisfies FLAT) IS owner-worded; the FOUR NAMES predate it and their author cannot be established from the history. Carried as an owner read regardless. Precedent: A-GAWN's comparator had drifted to 'toby-briggs', a player who does not exist. CORE rule 4."
   },
   {
@@ -293,13 +293,13 @@
       "bontempelli": 3482,
       "delta_pct": 13.7
      },
-     "result": "FAILS_standing_failed_read \u2014 sanders sits 13.7% ABOVE bont; the read puts bont above him"
+     "result": "FAILS_standing_failed_read — sanders sits 13.7% ABOVE bont; the read puts bont above him"
     }
    },
-   "key_verification": "store-verified before filing: harley-reid = Harley Reid, MID, pick 1, West Coast, b.2005 (NOT murphy-reid, GEN_FWD, pick 17 \u2014 the store carries TEN 'Reid' rows) \u00b7 ryley-sanders = Ryley Sanders, MID, pick 6, Western Bulldogs, b.2005",
+   "key_verification": "store-verified before filing: harley-reid = Harley Reid, MID, pick 1, West Coast, b.2005 (NOT murphy-reid, GEN_FWD, pick 17 — the store carries TEN 'Reid' rows) · ryley-sanders = Ryley Sanders, MID, pick 6, Western Bulldogs, b.2005",
    "diagnosis": "THE GAP IS NOT FLATTERY. Census decomposition (numeraire): sanders = base 3903 + iso 58 + par_credit 0 (flat -21); bont = base 3070 + par_credit 439 + iso -28 (flat -29). Neither carries par-relative flattery, so THE FLATTERY FIX WILL NOT CLOSE PAIR 3. The gap is made by the BASE CURVE (pick-band price x growth on the young side) => it belongs to the PVC RE-DERIVATION / pricing-curve formalisation chapter (adjacent to G-CONVEX's young premium). NO HAND EDIT: cutting sanders to satisfy the read would be a predicate-based nerf wearing a rule's clothes (the owner's own remediation doctrine).",
-   "auditor_instruction": "SCORE BOTH PAIRS against the OWNER-RULED bands (pair 2: |delta| <= 10% \u00b7 pair 3: bont above sanders by 0-10%). Pair 3 is EXPECTED to fail until the pricing curve is re-derived \u2014 report and SCORE it; never report it as a skip. A-PAIRS is OWNER_ON_SIGHT, so a pair-3 failure is not by itself a bake blocker.",
-   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+   "auditor_instruction": "SCORE BOTH PAIRS against the OWNER-RULED bands (pair 2: |delta| <= 10% · pair 3: bont above sanders by 0-10%). Pair 3 is EXPECTED to fail until the pricing curve is re-derived — report and SCORE it; never report it as a skip. A-PAIRS is OWNER_ON_SIGHT, so a pair-3 failure is not by itself a bake blocker.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED — measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
   }
  ],
  "flags": [
@@ -396,9 +396,9 @@
   "player_key values follow the engine's key convention; a build must verify each key against the source store before asserting, and report any key mismatch rather than guessing (the toby-briggs drift is the standing example).",
   "Anchors with min_delta_pct null pass on direction only; magnitude is owner-ruled on sight (Q3 closed). Owner reads are challengeable per CORE MISSION; only the owner waives a read.",
   "The auditor ASSERTS the class-sum construction and the walk-forward property BY READING THE SCRIPT'S CODE. Post code-conform, the ship_gates B1 implementation IS the July-8 construction.",
-  "v1.8 (2026-07-13, at the v2.9 tag): NUMERAIRE FOLD (L7 rebase, pick-1 == 3000) \u2014 A-BONT 3084, G-CONVEX floors re-quoted; B1 CONFORMANCE ruled (July-8 wins; indexed reading demoted to a shape diagnostic; code-conform job fires at the seam); A-DARCY -664 VERIFIED at seam; A-FADE basis drafted (multi-bake trajectory, PENDING-OWNER wording); G-Y0 first measurement recorded, still PENDING-OWNER; LENS PROJECTION LAW recorded; CYCLE LAW recorded.",
+  "v1.8 (2026-07-13, at the v2.9 tag): NUMERAIRE FOLD (L7 rebase, pick-1 == 3000) — A-BONT 3084, G-CONVEX floors re-quoted; B1 CONFORMANCE ruled (July-8 wins; indexed reading demoted to a shape diagnostic; code-conform job fires at the seam); A-DARCY -664 VERIFIED at seam; A-FADE basis drafted (multi-bake trajectory, PENDING-OWNER wording); G-Y0 first measurement recorded, still PENDING-OWNER; LENS PROJECTION LAW recorded; CYCLE LAW recorded.",
   "STRAY-FILE OBITUARY: a build-authored docs/CONSTRAINTS_v1_8.md (commit da5f7f3, refit-cert build) predates this registry. Its numeraire re-quote table was correct (folded here); its 'the frozen suite is authoritative' conform of G-COHORT is OVERRULED by the owner's 2026-07-13 ruling. Builds never author docs (CORE); the stray is archived at this filing.",
-  "v1.9 (2026-07-13): A-PAIRS young_gun_tbd RETIRED \u2014 the owner named BOTH sides (harley-reid, ryley-sanders), key-verified against the store. Pair 2 (parity) PASSES at +3.2%; pair 3 FAILS by ~14% the wrong way and becomes a STANDING FAILED READ + an acceptance anchor of the PVC re-derivation chapter. Bands supervisor-proposed, PENDING_OWNER; the DIRECTION is owner-worded and stands. Guards and all other anchors carry verbatim from v1.8.",
+  "v1.9 (2026-07-13): A-PAIRS young_gun_tbd RETIRED — the owner named BOTH sides (harley-reid, ryley-sanders), key-verified against the store. Pair 2 (parity) PASSES at +3.2%; pair 3 FAILS by ~14% the wrong way and becomes a STANDING FAILED READ + an acceptance anchor of the PVC re-derivation chapter. Bands supervisor-proposed, PENDING_OWNER; the DIRECTION is owner-worded and stands. Guards and all other anchors carry verbatim from v1.8.",
   "v1.10 (2026-07-13): the A-PAIRS bands are OWNER-RULED ('Bands okay'). Nothing else changed from v1.9.",
   "v1.13 (2026-07-15): L-CAPTAIN + L-SMOOTH filed (R98.1/R98.2, DECISIONS v98 verbatim); ITEM-74 bake blocker REWRITTEN around CPU-class determinism (owner-ordered; the q97m freeze is necessary hygiene, not sufficient); every measurement_status clearing clause updated to match. Filed by the Fable seat's pen."
  ],
@@ -435,17 +435,16 @@
   {
    "id": "A-PAIRS-3",
    "status": "STANDING-FAILED-READ",
-   "source": "CONSTRAINTS PART 2 \u2014 expected to FAIL until the PVC re-derivation; score direction+magnitude, never skip"
+   "source": "CONSTRAINTS PART 2 — expected to FAIL until the PVC re-derivation; score direction+magnitude, never skip"
   }
  ],
  "audit_rule": "Any FAIL not in standing_fails is a NEW DEFECT. Every standing fail is SCORED with its numbers, never skipped, never smoothed.",
  "cohort_waiver": {
   "guard": "G-COHORT",
-  "normal_bound": 1.3,
-  "waived_bound": 1.335,
-  "scope": "THIS BAKE ONLY (the evidence-over-calendars chapter) \u2014 reverts to 1.30 at the next chapter's first filing",
-  "owner": "2026-07-15 verbatim: 'Confirm, run the batch, waiver to 1.335'",
-  "rationale": "captaincy credit lifts top-end/young-projected tails (L-CAPTAIN recorded warning); the owner authorises value to the guns, not mediocre mid-tenure. Breaching 1.335 remains a HALT.",
-  "audit_rule": "score every cohort ratio against 1.335; any ratio >1.335 is a NEW DEFECT / HALT, not a waived pass."
+  "bound": 1.3,
+  "status": "REVERTED — the 1.335 waiver was THIS-BAKE-ONLY (item 143) and expired at this filing, the first of the merged PVC+FLEX chapter",
+  "reverted": "2026-07-15, seam of the evidence-over-calendars bake (v2.10 tag d14efae, promoted a64c47f)",
+  "history": "waived to 1.335 for the v2.10 bake only; y5 landed 1.3057, cleared by 0.0293 (register item 159); hard bound now 1.30 again",
+  "audit_rule": "score every cohort ratio against 1.30; any ratio >1.30 is a HALT, not a waived pass"
  }
 }

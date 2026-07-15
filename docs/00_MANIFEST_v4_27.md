@@ -1,29 +1,38 @@
-# 00_MANIFEST — v4.26 · 2026-07-15 · supersedes v4.25
+# 00_MANIFEST — v4.27 · 2026-07-15 · supersedes v4.26
 ### The pointer file. Read it first. It tells you what is current and what to read WHEN.
-### Maintained by the FABLE seat (sitting 2026-07-15, seat 7). THIS FILING: DECISIONS → v103 (R102.6: the
-### absence U-curve's <20 clamp zero is PERMANENT — R100.11 FULLY CLOSED, item 157) · the pack-table
-### SELF-ROW FIXED (it read v4.22 under the v4.25 header — the self-row disease again) · the stale v4.25
-### changelog corrected (it described the v4.22-era filing, "CONSTRAINTS → v1.14"; the table's v1.15 was
-### and remains correct). STATE: the chapter is COMPLETE at final head `9be07b8e` (PR #94), PRE-BAKE —
-### HANDOVER rev141 carries the queue; audit reconcile in progress (register items 156/158).
-### ⚠ OWNER-INSTRUCTED 2026-07-15: prior seats' JUDGEMENT is not ground truth — verify before building.
+### Maintained by the FABLE seat (seat 7). THIS FILING: THE v2.10 SEAM — the "evidence over calendars"
+### chapter is BAKED (tag v2.10 = d14efae) + PROMOTED (main = a64c47f, two-parent PR #97). The 1.335
+### G-COHORT waiver REVERTS to 1.30 (CONSTRAINTS v1.16 + acceptance v1.16). DECISIONS → v104 (the R103.x
+### seam set) · HANDOVER → rev142 (the merged PVC+FLEX chapter's whole queue). CORE/SSI unchanged.
+### ⚠ OWNER-INSTRUCTED: prior seats' JUDGEMENT is not ground truth — verify before building.
 
 ## THE PACK — CURRENT VERSIONS
 | doc | version | tier | when to read |
 |---|---|---|---|
-| **00_MANIFEST** | **v4.26** | 0 | first, always |
+| **00_MANIFEST** | **v4.27** | 0 | first, always |
 | **CORE** | **v2.8** | 0 | in full — BINDING. |
-| **HANDOVER** | **rev141** | 0 | THE PRE-AUDIT SEAM handover — the incoming seat's whole queue. |
-| **DECISIONS** | **v103** | 0 | rulings + the owner's CURRENT to-dos. Read v98 itself for verbatim. |
-| **OPEN_ITEMS_REGISTER** | read its OWN header | 1 | THE DURABLE LOG (v122+; items 118–137 are this sitting). Repo-only. |
-| **CONSTRAINTS** | **v1.15** | 1 | REPO-ONLY (P1) — fetch + grep when judging a board. G-COHORT WAIVER 1.335 (this bake) · A9 RESOLVED-IN-CANDIDATE · AXIS RULE (PENDING-OWNER) · L-CAPTAIN prereqs. |
-| **acceptance_v1_15.json** | **v1.15** | 1 | REPO-ONLY (P1) — `cohort_waiver` (1.335) + `standing_fails` + `audit_rule` = the auditor's scoring frame. |
+| **HANDOVER** | **rev142** | 0 | THE POST-BAKE SEAM handover — the merged PVC+FLEX chapter's whole queue. |
+| **DECISIONS** | **v104** | 0 | rulings + the owner's CURRENT to-dos. Read the register for verbatim. |
+| **OPEN_ITEMS_REGISTER** | read its OWN header | 1 | THE DURABLE LOG (v155+). Repo-only. |
+| **CONSTRAINTS** | **v1.16** | 1 | REPO-ONLY (P1) — fetch + grep when judging a board. **G-COHORT bound back to 1.30 (waiver reverted)** · AXIS RULE (PENDING-OWNER). |
+| **acceptance_v1_16.json** | **v1.16** | 1 | REPO-ONLY (P1) — `cohort_waiver` REVERTED (1.30) + `standing_fails` + `audit_rule`. |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | when touching the store or a derived artifact (docs/). |
 | ROADMAP · UNRESOLVED · CHANGELOG | — | 2 | on demand |
 
 **NEVER BULK-READ THE PACK. Context is a budget.**
 
-## STATE AT v4.22 (the chapter's finish line, pre-loaded)
+## STATE AT v4.27 (THE v2.10 SEAM)
+- **BAKED + PROMOTED:** tag **v2.10 = `d14efae`** (byte-identical shipped state to the CI-verified bake
+  `83f945a`) · main **`a64c47f`** (two-parent PR #97; parents 7ba44a3 + d14efae) · board `790136a3` ·
+  store `b1fd0bce` · seal `99be9b36` · pick 1 = 3000. Prior tag v2.9 = `9f8ae76` intact. Verify main CI
+  went GREEN (AMD runner printing 790136a3).
+- **WAIVER REVERTED:** G-COHORT HALTs at 1.30 again. The v2.10 y5 was 1.3057 (waived zone) — a fresh
+  board there would now HALT; the merged chapter must return under 1.30 or seek a new waiver.
+- **L-CAPTAIN OPERATIVE.** **cm_400 FROZEN (R103.7) — item 75's ingestion blocker CLEARED.**
+- **NEXT: PVC + FLEX (merged, R103.2)** — baseline set complete (calibration item 170 · census-v2 item
+  165 · aging closed) · opens on the AXIS RULE ruling + the flex registers. See HANDOVER rev142.
+
+## STATE AT v4.22 (the chapter's finish line, pre-loaded — RETAINED for lineage)
 - **CHAPTER (owner-ruled EXTEND then SPLIT):** Fix 1 + absence (PR #85) + determinism (#83) +
   evidence-weight (#89, prescreen PASS item 134) + THE IMPROVER BUILD (**WRITER IN FLIGHT** — _eo
   two-directional · L-SYMMETRY · the S_AGE 29-tail). Candidate line `#82→#83→#85→#89→improver`, every

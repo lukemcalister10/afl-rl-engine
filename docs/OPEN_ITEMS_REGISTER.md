@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v155 2026-07-15 · PEN: **cm_400 FREEZE POSTURE RATIFIED (owner, item 171: "Ratifying the freeze postures") — cm_400 FROZEN through the season; refits ONLY as named, kill-switched, owner-viewed events; the FIRST refit restores permanent re-derivability + fixes the false comment + installs the pinball drift monitor. **ITEM 75's INGESTION BLOCKER CLEARS on this ruling.** Sequencing guidance given: tag push is independent and still required; merge the promotion PR AFTER its checks go green** · prior (item 170): calibration prescreen · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v156 2026-07-15 · PEN: **THE v2.10 SEAM IS FILED (item 172): chapter BAKED + PROMOTED (tag v2.10 = d14efae · main = a64c47f, two-parent PR #97; board 790136a3 · seal 99be9b36 · pick 1 = 3000, all verified by this seat's own clone) · THE 1.335 WAIVER REVERTED to 1.30 (CONSTRAINTS v1.16 + acceptance v1.16) · pack refreshed: manifest v4.27 · DECISIONS v104 (R103.1–.7) · HANDOVER rev142 · v4.26/v103/rev141 archived · L-CAPTAIN OPERATIVE · cm_400 FROZEN (item 75 cleared) · main CI was IN-PROGRESS at filing — verify green · PK SYNC ASK to the owner · SEAT ROTATION OPEN** · prior (item 171): cm_400 ratified · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3978,6 +3978,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       (bakes are made canonical BY TAG; the merge puts commits on main but names nothing). Recommended
       order: push the tag now (it names an already-CI-verified commit), merge the promotion PR AFTER
       its checks report green. Both steps, always.
+
+172. **THE v2.10 SEAM — FILED (supervisor pen, 2026-07-15). THE CHAPTER IS DONE.**
+    - **BAKED + PROMOTED, verified from this seat's own clone:** tag `v2.10` = `d14efae` (the branch
+      tip; byte-identical shipped state to the CI-verified bake `83f945a` — the owner tagged via the
+      release page against the branch, a stray-report relocation the only delta, item 169). main =
+      `a64c47f` — a two-parent merge commit (PR #97; parents 7ba44a3 [docs] + d14efae [bake]), the
+      #66-style promotion pattern. Board `790136a3` · store `b1fd0bce` · seal `99be9b36` · pick 1 =
+      3000, all read on main. Prior tag v2.9 = `9f8ae76` INTACT. **main CI was IN PROGRESS at filing —
+      the incoming seat verifies it went GREEN (AMD runner printing 790136a3, R100.7).**
+    - **THE 1.335 WAIVER REVERTED (R103.1):** CONSTRAINTS → v1.16, acceptance → v1.16 — G-COHORT HALTs
+      at 1.30 again, no waived pass. The v2.10 y5 was 1.3057 (waived zone); a fresh board there now
+      HALTs — the merged chapter must return under 1.30 or seek a new owner waiver.
+    - **PACK REFRESHED + ARCHIVED:** manifest v4.27 · DECISIONS v104 (R103.1–.7: bake · merge · lens
+      routing · aging accepted · override doctrine · Reid constraint · cm_400 freeze) · HANDOVER rev142
+      (the merged PVC+FLEX queue). v4.26 / v103 / rev141 → docs/archive/. CORE v2.8 · SSI v1.3 unchanged.
+    - **STATE CHANGES REGISTERED:** L-CAPTAIN OPERATIVE (all prereqs cleared at the bake) · cm_400
+      FROZEN (R103.7) → **item 75's ingestion blocker CLEARED** (remaining ingestion gate: item 67
+      completeness + the go-live provision).
+    - **TWO OWNER ASKS (DO):** (1) SYNC PROJECT KNOWLEDGE to this seam pack (manifest v4.27 · CORE v2.8 ·
+      DECISIONS v104 · HANDOVER rev142 · SSI v1.3) — the incoming seat's freshness check HALTs on a
+      stale PK. (2) Nothing else required; the merged chapter opens on the AXIS RULE ruling + the flex
+      registers at fire time.
+    - **SEAT ROTATION OPEN** at this clean seam (CORE: rotate on a real trigger; the incoming seat reads
+      the seam pack, runs the freshness check, files the handed pack, continues). The PVC+FLEX spec is
+      the incoming seat's first authoring job, on the complete baseline set (calibration 170 · census-v2
+      165 · aging closed).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
