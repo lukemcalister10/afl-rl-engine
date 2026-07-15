@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v130 2026-07-15 · PEN: **TRIO FORK — OWNER CORRECTED THE SUPERVISOR (item 145): the MSD reprice is the PRINCIPLED consequence of removing a re-entry from the MSD calibration, NOT the axis-rule disease; my OPTION-4 recommendation is WITHDRAWN. Direction verified (MSD PICKEQ 60→90 = DOWN toward the pickless-92 baseline; large because McAndrew propped a thin MSD pedestal near-alone; movers ALL MSD ⇒ Emmett/ND untouched, item-11 intent SATISFIED). NOW RECOMMEND OPTION 3 (store-only). Owner rules** · prior: BATCH CONFIRMED — G-COHORT 1.335 BOUNDED WAIVER FILED (acceptance v1.15 · CONSTRAINTS v1.15 · manifest v4.23); A9 → RESOLVED-IN-CANDIDATE; TRIO CLEARED TO FIRE on pin head `1073f633` (item 143)** · prior: rl_model-PIN PRESCREEN PASS (item 142; Tier-1-lite — board BYTE-UNCHANGED dc43d602, red-path HALTs, L-CAPTAIN prereq 1 SATISFIED); the trio directive's base placeholder resolves to `1073f633` — CHAIN CAN PROCEED on the owner's confirming word** · prior: TAIL RULED A (item 141) · Q97M FREEZE CONFIRMED IMPLEMENTED (the line's base commit), cm_400 extension still open · SUPERVISOR POSITION UPDATED on the captaincy fold-in: FOR, given the owner's corrected time-math + the bounded 1.335 waiver offer — TWO DIRECTIVES DRAFTED (trio · captaincy), fire on his confirming word** · prior (item 140): A9 SELF-RESOLVES (the owner predicted it same-day) · ⚠ y5 = 1.2998 vs 1.30 (margin 0.0002 — HEADLINE) · PARKED INVENTORY answered: L-CAPTAIN + THE RE-ENTRY TRIO (ruled 2026-07-12, NEVER EXECUTED — store-verified) · CAPTAINCY FOLD-IN CHALLENGED with the owner's own item-131 words; Tier-2 fast lane offered** · prior (item 139): the residual PLATEAUS ~0.14, does NOT keep shrinking; flat-0.11 defensible (inside every pooled tail CI); continued fade REFUTED; RULING WITH THE OWNER (keep 0.11 vs re-pin ~0.14)** · prior (item 138): CONSTRAINTS v1.14 + acceptance v1.14 (A9 machine-readable; AXIS RULE PENDING-OWNER; `standing_fails` + `audit_rule`) · DECISIONS v102 · manifest v4.22 (self-row typo fixed); superseded versions archived · CAPTAINCY ANSWERED: L-CAPTAIN LOCKED-NOT-WIRED, prereq-1 directive queued** · prior (item 137): AUDIT SEED SKELETON authored (two placeholders — fires the minute the final head exists) · CONSTRAINTS v1.14 + acceptance v1.14 + manifest v4.22 + DECISIONS v102 queued as the pen's between-returns work (A9 status is AUDIT-CRITICAL)** · prior (item 136): the pedigree floor is HELD FLAT beyond n=4 WITHOUT a deep-tail measurement — DIRECTIVE GAP OWNED BY THE SUPERVISOR; tail-measurement directive ISSUED; a re-pin leg rides before the ladder if the tail shrinks** · prior: A9 RULED — PARKED (expected-fail-by-law, scored, re-adjudicated at the PVC chapter; owner item 135)** · LINDSAY/ROBERTS LIFTS EXPLAINED WITH VERIFIED ROWS (item 135 — both-directions behaviour confirmed; LOW-EVIDENCE CALIBRATION flagged as a VIEWING-RUNG CHECKPOINT) · prior: EVIDENCE-WEIGHT PRESCREEN PASS — ONE FLAGGED LAW-vs-ANCHOR CONFLICT: A9 Ginnivan/Ward flips on the T5 residual, OWNER RULING ASKED (item 134) · value-flow CLEAN (not a young-strip; G-COHORT margins widen) · snapshot series HEALED · IMPROVER DIRECTIVE ISSUED (the chapter's LAST writer)** · prior (item 133): the PVC/pick-curve work is its OWN CHAPTER, opening after this chapter's bake on the reworked spec (items 130–132 verbatim)** · prior (item 132): `iso_corr` is a pick prior that NEVER fades — pos+pick only, no evidence term, applied at every valuation site forever; contradicts the engine's own 4-year pedigree fade. CURE: evidence-fade the iso (LIFT-led, the Face-2 English leg); consumes the w build ⇒ PVC sequenced AFTER this chapter's bake** · prior (item 131): English/Briggs is a PROVEN-SIDE defect — the cure lives on the proven-side axes, LIFT-led; THE AXIS RULE proposed; young a-little-under is BY DESIGN, the cohort guard encodes the bound; calibration directive re-issued v1.1** · prior (item 130): THE PVC CURE MUST NOT NET-STRIP THE YOUNG SIDE — Face-1-as-simulated REJECTED as a wireable form (ΣΔ −48,054; 298 cut / 27 lifted; Ashcroft +15.5-above cut −770); 'conserving' claim FALSE as simulated; SPEC REWORK REQUIRED, lift-led** · prior: PVC DERIVATION PRESCREEN (item 129: SIZE VERDICT = OWN CHAPTER, boundary ruling with the owner; pairs verified by seat recompute; MOVER-COUNT DISCREPANCY flagged 299 vs 324/325; **R100.1 DISPOSED BY THIS SEAT** — replace/adopt-as-contributor/discard) · S_AGE RULED WIRE (item 128) · R100.11 ASSUMPTION 1 RULED CLOSED — "No scaling" (item 126) · S_AGE RESIDUAL PRESCREEN PASS (item 127) · EVIDENCE-WEIGHT WRITER **IN FLIGHT** (owner fired it on Opus, 2026-07-15 — the ONE writer slot is TAKEN; three Tier-3 analyses run alongside) · PR #86 MERGED — `938b6298`, item-119 INTERIM RULE RETIRED (item 124) · prior: CHAPTER EXTENDED (owner-ruled, item 122 — cold audit DEFERRED to the true final head; three parallel Tier-3 jobs ISSUED) · FIX-1 PRESCREEN PASS (item 123, merge-ready) · PR #81 CONFIRMED CLOSED · prior: R100.11 REWORK RETURN (PR #85 @ `6235272`) PRESCREEN **PASS WITH NOTES** (item 121 — 28 movers/+1652 re-diffed by the seat's own hand; Smith 4344→5152; parked assumptions UNTOUCHED; gates-snapshot-deleted flag) · NEXT RUNG: COLD AUDIT on the line's final head · prior: PR #84 MERGED — merge `0c4aba84`, tools/seat standing (item 120) · FIX-1 DIRECTIVE ISSUED · PR #81 CLOSED AS SUPERSEDED (item 118) · REWORK WAS IN FLIGHT (item 117 — now RETURNED) · prior: items 115–116 · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v132 2026-07-15 · PEN: **REGISTER REPAIRED (item 147): the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3295,30 +3295,6 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       label is the axis-rule disease in miniature, and nobody ruled that reprice.
     - OPTION 1 — halt entirely: strictly dominated by 2 and 4.
 
-145. **TRIO FORK — OWNER CORRECTION ACCEPTED; SUPERVISOR RECOMMENDATION WITHDRAWN AND FLIPPED
-    (2026-07-15).** The owner: "I am fine with the pedigree pedestal moving in line with McAndrew being
-    pulled out of the MSD calibration... if McAndrew is no longer MSD, wouldn't the MSD value reprice
-    accordingly?" **HE IS RIGHT, and my item-144 axis-rule framing was a MISFIRE (owned):** the axis rule
-    forbids moving an UNRELATED population to close a two-player gap; here the MSD cohort reprices as the
-    HONEST downstream consequence of removing a non-representative point (a re-entry player) from its
-    calibration pool — a legitimate recalibration, not a hand-edit. My item-144 recommendation (Option 4:
-    guard the reprice away to ~neutral) is WITHDRAWN.
-    **DIRECTION + MECHANISM VERIFIED (my own read of the pin board `1073f633`):** `PICKEQ` is PER-TYPE
-    {MSD 60 · everything-else 92}. MSD 60→90 moves the MSD cohort's pedigree pedestal DOWN toward the
-    pickless-92 baseline ⇒ **MSD values FALL.** The magnitude is large because **MSD (107 training rows,
-    thin) had its favorable-vs-92 pedestal propped up near-single-handedly by McAndrew** — removing him
-    collapses most of MSD's special status toward the other secondary pathways. That is a real finding
-    the owner should weigh at viewing, not just a mechanical tweak. **CONTAINMENT CONFIRMED:** the build
-    reports all 106 movers ALL MSD ⇒ because only `PICKEQ['MSD']` shifts (other types pinned), **Emmett
-    (ND) and all non-MSD rows are UNTOUCHED — item 11's original intent ("McAndrew should have no bearing
-    on Emmett's value") is SATISFIED by this outcome, not violated.**
-    **RECOMMENDATION NOW: OPTION 3 (full trio, STORE-ONLY, engine untouched)** — it is the cleanest
-    expression of what was ruled and what the owner now confirms; no engine guard needed (the per-type
-    PICKEQ mechanism already contains the effect to MSD). Watch at viewing: the 43 material MSD movers'
-    named list (Newcombe is MSD — may move again) · the three cohort ratios vs the 1.335 waiver (the
-    build reports both). Option 4 stands only if the owner would rather PRESERVE MSD's pedestal despite
-    McAndrew's removal — he has said he would not.
-
 145. **OWNER RULED — PROCEED FULL TRIO, STORE-ONLY (owner, 2026-07-15; build already fired).** The owner
     OVERRODE the supervisor's Option-4 recommendation with a reasoned argument, and he is RIGHT:
     *"If McAndrew is no longer assigned to the MSD, then wouldn't it make sense that the value of the MSD
@@ -3342,6 +3318,14 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     owner scores the resulting MSD prices at board viewing against his sealed reads (on-sight per
     A-PAIRS/OQ-D). **Chain unchanged: trio (this build) → captaincy on its head → audit.**
 
+    **FOLDED FROM THE DEDUPED DRAFT (verified findings, my own read of the pin board `1073f633`):**
+    `PICKEQ` is PER-TYPE {MSD 60 · everything-else 92} ⇒ MSD 60→90 moves the MSD pedestal DOWN toward the
+    pickless-92 baseline — **MSD values FALL**, and the magnitude is large because the thin 107-row MSD
+    pool's favorable pedestal was propped up NEAR-SINGLE-HANDEDLY by McAndrew. **CONTAINMENT VERIFIED:
+    only `PICKEQ['MSD']` shifts ⇒ Emmett (ND) and every non-MSD row UNTOUCHED — item 11's intent
+    ("no bearing on Emmett's value") is SATISFIED by this outcome.** VIEWING WATCH: the 43 material MSD
+    movers by name — **Newcombe is MSD and may move a third time today** — plus the ratios vs 1.335.
+
 146. **ROTATION-READINESS (owner-raised 2026-07-15): the Fable safeguards routing has been redirecting to
     Opus 4.8 every message; the owner asks whether to move to a fresh Fable chat.** SUPERVISOR ANSWER
     (recorded): (1) the routing is Anthropic's conservatively-tuned Fable safeguard (catches some harmless
@@ -3356,6 +3340,19 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     rev139 archived. A new seat runs the freshness check, reads the register, and is oriented — no work
     lost.** Owner PK sync on rotation: manifest v4.24 + HANDOVER rev140 + DECISIONS v102 into Project
     knowledge.
+
+147. **REGISTER SELF-REPAIR (2026-07-15, prompted by the owner's rotation-readiness review).** The
+    orient.sh freshness check caught it: the header was STUCK at a v130 DRAFT wording and **item 145
+    existed TWICE** (a mid-turn draft push `5930bd5` + the final `77f09e9`). MECHANISM: two pen edits
+    used python `str.replace` against header text that no longer matched (the draft had already changed
+    it) — **silent no-ops**; the v131 bump (item 146's turn) never landed either. REPAIR: the draft 145
+    DELETED with its unique verified findings FOLDED into the survivor (reconcile-by-deletion honoured —
+    the draft carried the PER-TYPE PICKEQ mechanism, the FALL direction, the McAndrew-props-the-pedestal
+    finding, the Emmett containment proof, and the Newcombe watch item); header rewritten to v132.
+    **STANDING FIX (binding on this pen): every register edit ASSERTS its replacement count; the header's
+    first 200 chars are re-read from the pushed commit after every push.** Kin to the turn-9 ledger entry
+    (swallowed git stderr) — same disease, silence where a failure happened.
+
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
