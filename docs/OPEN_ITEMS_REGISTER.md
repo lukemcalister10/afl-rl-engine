@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v134 2026-07-15 · PEN: **TRIO RETURNED — PRESCREEN PASS (item 149): store 340a7a32→b1fd0bce · board 800d0399 · B1 CERTIFIED CLEAN (my own snapshot read) · cohort ratios under even the un-waived 1.30 (y5 1.2995) · 118-vs-106 reconciled (12 = back-section fringe) · CAPTAINCY CLEARED, base `0cf723af`** · prior (item 148): **EFFICIENCY REVIEW: SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v135 2026-07-15 · PEN: **SEAT-TOOLS-2 PRESCREEN PASS (item 150: pen.py/board_diff/gates_brief; fence clean from the TRUE merge-base; red-paths proven; PR #92 correctly opened — recommend owner merges) · CAPTAINCY FIRED on `0cf723af` (in flight) · THE PATHWAY + ROTATION PLAN RECORDED** · prior (item 149): **TRIO PRESCREEN PASS: store 340a7a32→b1fd0bce · board 800d0399 · B1 CERTIFIED CLEAN (my own snapshot read) · cohort ratios under even the un-waived 1.30 (y5 1.2995) · 118-vs-106 reconciled (12 = back-section fringe) · CAPTAINCY CLEARED, base `0cf723af`** · prior (item 148): **EFFICIENCY REVIEW: SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3389,6 +3389,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     are named by ENGINE hash only, so this run OVERWROTE gates_fc7045d6.json (same engine, new store) —
     the improver-head snapshot content lives only in git history at `2c7b905`; consider store-qualified
     snapshot names post-bake. **CAPTAINCY CLEARED: the directive's ⟨TRIO_HEAD_SHA⟩ = `0cf723af…f9ed`.**
+
+150. **SEAT-TOOLS-2 RETURNED (PR #92, head `8b6cfb8d…c0635`) — PRESCREEN PASS (Tier 3, my own reads).**
+    Fence verified from the TRUE MERGE-BASE (`9be179a`): the build's own writes = tools/seat/ + session
+    dir ONLY (an earlier pin-based diff showed the register — that line is main's own inherited history,
+    not a build write; reconciled). pen.py's token discipline read directly: PEN_TOKEN env-only, checked
+    EARLY before any write, never echoed; the item-147 assert law implemented (`found %d — refusing to
+    write`), duplicate-item scan included. Red-path evidence committed (0-match, 2-match, dup-item,
+    unset-token — all exit 1 pre-commit); gates_brief NEW-DEFECT path proven on a real old snapshot.
+    Sample line-counts within budget. **PR #92 was the CORRECT call** (the directive required it) —
+    recommend the owner MERGES it so the tools go live on main (tools commits on main are expected,
+    per #84/#86 precedent; base pins tolerate it by design). **THE PATHWAY (recorded for the incoming
+    seat): captaincy returns → THIS seat prescreens (credits vs Gawn 16.34/Bont 9.85/Daicos 4.96 ·
+    ratios vs BOTH bounds · pair 3 expected wider · RL_CAPT=0 byte-exact · value-flow; a HALT on the
+    future-projection leg escalates to owner+Fable) → seed placeholders filled + Shard C's switch list
+    extended (RL_CAPT + the trio store note) → HANDOVER rev141 (final head · prescreen results · seed
+    pointer) → ROTATE → the fresh seat hands the owner the seed → incognito audit → reconcile (ITEM-74
+    LEG 2) → owner views board+book vs SEALED READS → written bake word → bake+tag → promote main
+    (green) → seam close → the PVC chapter opens.** ⚠ STILL OUTSTANDING: the book-calibration v1.1
+    (Tier 3, the PVC scoring baseline) has not returned — chase at the seam, it does NOT block the bake.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
