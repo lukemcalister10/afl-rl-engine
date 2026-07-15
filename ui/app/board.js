@@ -145,20 +145,21 @@ MD.board = (function () {
 
   function publicRow(r, maxV) {
     const p = r.p;
+    // item 7 (de-clunk): ONE movement instance, correctly aligned. The old row emitted two "steady"
+    // pills (value-move + rank-move) into a 6-column grid, so the seventh cell wrapped under the name —
+    // the duplicated "steady" the owner flagged. Collapsed to a single movement-vs-previous-round pill
+    // (rank movement rides its tooltip); the row now emits exactly its grid's columns.
     const move = p.dRound == null
-      ? '<span class="pill flat" title="movement vs previous round — published with the weekly loop">— steady</span>'
-      : '<span class="pill ' + fmt.cls(p.dRound) + '">' + fmt.signed(p.dRound) + "</span>";
-    const rankMove = p.dRoundRank == null
-      ? '<span class="pill flat">— steady</span>'
-      : '<span class="pill ' + fmt.cls(p.dRoundRank) + '">' +
-        (p.dRoundRank > 0 ? "▲ " + p.dRoundRank : p.dRoundRank < 0 ? "▼ " + Math.abs(p.dRoundRank) : "— 0") + "</span>";
+      ? '<span class="pill flat" title="Movement vs previous round — value and rank both publish with the ' +
+        'weekly loop (Phase 3). Nothing fake shown until then.">— steady</span>'
+      : '<span class="pill ' + fmt.cls(p.dRound) + '" title="movement vs previous round">' + fmt.signed(p.dRound) + "</span>";
     const b = fmt.el("button", "row public");
     b.innerHTML =
       '<span class="rank num">' + r.rank + "</span>" +
       '<span class="nm">' + fmt.esc(p.name) + "</span>" +
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
-      MD.valueLine(r.val, maxV) + move + rankMove;
+      MD.valueLine(r.val, maxV) + move;
     return b;
   }
 
