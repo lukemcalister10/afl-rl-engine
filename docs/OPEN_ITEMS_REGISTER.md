@@ -3319,6 +3319,29 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     build reports both). Option 4 stands only if the owner would rather PRESERVE MSD's pedestal despite
     McAndrew's removal — he has said he would not.
 
+145. **OWNER RULED — PROCEED FULL TRIO, STORE-ONLY (owner, 2026-07-15; build already fired).** The owner
+    OVERRODE the supervisor's Option-4 recommendation with a reasoned argument, and he is RIGHT:
+    *"If McAndrew is no longer assigned to the MSD, then wouldn't it make sense that the value of the MSD
+    is repriced accordingly?"* — the 106-mover MSD reprice (PICKEQ 60→90) is the CORRECT downstream
+    consequence of removing a training point from a thin calibration, NOT a hand-edit. **SUPERVISOR
+    CORRECTION (owned):** item 144 called this "the axis-rule disease in miniature" — MISAPPLIED. The
+    axis rule bars moving a population to fix a *named-player gap*; here the cohort reprice flows from a
+    *legitimate input correction* (a corrected pool membership), which is honest recalibration. Different
+    thing; the framing was wrong.
+    **THE REGISTER'S PREMISE WAS ITSELF A SUPERVISOR ARTIFACT:** item 11(a)'s "pool-neutral McAndrew /
+    ~7 rows" rested on an assumed exclusion guard the owner did not necessarily want — the owner worked
+    the reprice through with a supervisor AT THE TIME and expected exactly this; he was surprised it
+    wasn't implemented. His clarified intent SUPERSEDES the recorded premise (the project's own pattern:
+    supervisor claims are not ground truth).
+    **DECISION: full trio committed store-only** (all three relabels + the accepted 106-mover MSD
+    reprice · engine UNTOUCHED · gates run · >2× flag). The item-11(a) exclusion guard is NOT built (not
+    wanted). **SUPERVISOR PRESCREEN ON RETURN will verify:** the 106 movers are ALL explained by the MSD
+    recalibration (separability — nothing leaked to unrelated cohorts) · G-COHORT ratios land under the
+    waived 1.335 · store md5 old→new + SSI canary · PICK 1 = 3000. **VIEWING CHECKPOINT (not a
+    re-argument):** one player out of a 107-row MSD pool drives the whole cohort's new pedestal — the
+    owner scores the resulting MSD prices at board viewing against his sealed reads (on-sight per
+    A-PAIRS/OQ-D). **Chain unchanged: trio (this build) → captaincy on its head → audit.**
+
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
    Unifies the flattery decay + the nqual cliff. Includes F1 (G-PEAK collision) + F2 (reference frame).
