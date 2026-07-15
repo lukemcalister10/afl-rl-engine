@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v133 2026-07-15 · PEN: **EFFICIENCY REVIEW (item 148, owner-asked): SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v134 2026-07-15 · PEN: **TRIO RETURNED — PRESCREEN PASS (item 149): store 340a7a32→b1fd0bce · board 800d0399 · B1 CERTIFIED CLEAN (my own snapshot read) · cohort ratios under even the un-waived 1.30 (y5 1.2995) · 118-vs-106 reconciled (12 = back-section fringe) · CAPTAINCY CLEARED, base `0cf723af`** · prior (item 148): **EFFICIENCY REVIEW: SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3370,6 +3370,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (4) NOT changed: per-turn journal files (crash insurance, CORE rule 8) · fresh-fetch verification ·
     directive detail (they are the product). Rotation remains the backstop: rev141 files at the
     pre-audit seam per the turn-40 plan.
+
+149. **TRIO RETURNED (PR #93, head `0cf723af6aa19743092d740a4a13c082b8d5f9ed`) — PRESCREEN PASS (my own
+    runs).** Mechanicals ✓ (strict base `1073f633` ancestry · board RECOMPUTED 800d0399 == pin · store
+    `340a7a32 → b1fd0bce` — the chapter's one store write · engine UNTOUCHED fc7045d6 · seal cf90c4f4 ·
+    expected_boot re-pinned · fence clean). **THE TURN-44 BAR WAS MET: B1 CERTIFIED CLEAN** — read from
+    the committed snapshot myself: B1 PASS (July-8 construction, conformed) · B3 PASS (seal regenerated
+    on the NEW store b1fd0bce, matches) · **B4 PASS with a REAL verdict (regenerated == shipped 800d0399,
+    export exit=0 — not silence)**; FAILs = A2/A3/A12 only. The infra failure was genuinely transient;
+    the frozen suite passed UNEDITED. Cohort ratios y4 1.2926 · y5 1.2995 · y6 1.2445 — **under even the
+    un-waived 1.30** (the MSD falls slightly IMPROVED y5, 1.2995 vs the improver's 1.2998); the 1.335
+    waiver remains banked for captaincy. **MOVER RECONCILE CLOSED: my 118 = the build's 106 (active
+    board, its claimed scope) + 12 back-section fringe rows (values 0–11, ±1–4 rounding).** Newcombe's
+    third move today confirmed (4302→3975, MSD as flagged). >2× time flag: disclosed (the halt→ruling
+    cycle + a self-inflicted env leak, fixed). MY OWN LEDGER ENTRY: my first snapshot read grabbed an
+    OLD file (`tail -1` alphabetical accident — gates_fef5719d) and I nearly read #82-era verdicts as
+    current; caught by the content's stale store hash. NOTE (artifact hygiene, not a defect): snapshots
+    are named by ENGINE hash only, so this run OVERWROTE gates_fc7045d6.json (same engine, new store) —
+    the improver-head snapshot content lives only in git history at `2c7b905`; consider store-qualified
+    snapshot names post-bake. **CAPTAINCY CLEARED: the directive's ⟨TRIO_HEAD_SHA⟩ = `0cf723af…f9ed`.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
