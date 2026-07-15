@@ -1,0 +1,12 @@
+band,quantile,n,out_lo,out_hi,output_mult,price_mult,mean_m
+>=27,Q1,42,0.1,2.2,0.125,0.35,-1.029
+>=27,Q2,42,2.3,6.0,0.626,0.484,0.257
+>=27,Q3,43,6.1,11.1,1.292,0.556,0.843
+>=27,Q4,42,11.2,18.3,2.271,2.075,0.091
+>=27,Q5,43,18.5,50.7,4.185,4.997,-0.177
+
+# age-banded elasticity beta (log price ~ log realised-output); beta<1 => top compressed within band
+# age <=22,beta=0.111,CI=[-0.010:0.286],n=19
+# age 23-26,beta=0.485,CI=[0.327:0.728],n=69
+# age >=27,beta=0.683,CI=[0.465:0.904],n=212
+# PEAK(age-neutral),beta=0.364,CI=[0.322:0.411],n=598

@@ -1,2 +1,4 @@
 out/BASE_BOOK_gate_seal-asserted.json
+out/board_cand_canonical.json
+out/calibrate_run.log
 out/*.tmp

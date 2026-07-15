@@ -1,0 +1,693 @@
+{
+  "base": "9be07b8e",
+  "n_players": 2649,
+  "contributors": 300,
+  "band_beta": {
+    "<=22": [
+      0.111,
+      [
+        -0.01,
+        0.286
+      ],
+      19
+    ],
+    "23-26": [
+      0.485,
+      [
+        0.327,
+        0.728
+      ],
+      69
+    ],
+    ">=27": [
+      0.683,
+      [
+        0.465,
+        0.904
+      ],
+      212
+    ]
+  },
+  "peak_beta": [
+    0.364,
+    [
+      0.322,
+      0.411
+    ],
+    598
+  ],
+  "proven_quintiles": [
+    {
+      "band": ">=27",
+      "quantile": "Q1",
+      "n": 42,
+      "out_lo": 0.1,
+      "out_hi": 2.2,
+      "output_mult": 0.125,
+      "price_mult": 0.35,
+      "mean_m": -1.029
+    },
+    {
+      "band": ">=27",
+      "quantile": "Q2",
+      "n": 42,
+      "out_lo": 2.3,
+      "out_hi": 6.0,
+      "output_mult": 0.626,
+      "price_mult": 0.484,
+      "mean_m": 0.257
+    },
+    {
+      "band": ">=27",
+      "quantile": "Q3",
+      "n": 43,
+      "out_lo": 6.1,
+      "out_hi": 11.1,
+      "output_mult": 1.292,
+      "price_mult": 0.556,
+      "mean_m": 0.843
+    },
+    {
+      "band": ">=27",
+      "quantile": "Q4",
+      "n": 42,
+      "out_lo": 11.2,
+      "out_hi": 18.3,
+      "output_mult": 2.271,
+      "price_mult": 2.075,
+      "mean_m": 0.091
+    },
+    {
+      "band": ">=27",
+      "quantile": "Q5",
+      "n": 43,
+      "out_lo": 18.5,
+      "out_hi": 50.7,
+      "output_mult": 4.185,
+      "price_mult": 4.997,
+      "mean_m": -0.177
+    }
+  ],
+  "named": {
+    "Timothy English": {
+      "kind": "named",
+      "who": "Timothy English",
+      "pos": "RUC",
+      "age": 29.0,
+      "pick": 19,
+      "type": "ND",
+      "realised_o_recent2": 28.2,
+      "realised_o_top3": 39.8,
+      "price_cur": 3402,
+      "price_peak": 8399,
+      "anchor": 1332,
+      "m_in_band": -1.405,
+      "resid_band": 1.875
+    },
+    "Kieren Briggs": {
+      "kind": "named",
+      "who": "Kieren Briggs",
+      "pos": "RUC",
+      "age": 27.0,
+      "pick": 34,
+      "type": "ND",
+      "realised_o_recent2": 4.9,
+      "realised_o_top3": 17.7,
+      "price_cur": 2182,
+      "price_peak": 4723,
+      "anchor": 869,
+      "m_in_band": -2.712,
+      "resid_band": 2.627
+    },
+    "Ryley Sanders": {
+      "kind": "named",
+      "who": "Ryley Sanders",
+      "pos": "MID",
+      "age": 21.0,
+      "pick": 6,
+      "type": "ND",
+      "realised_o_recent2": 4.1,
+      "realised_o_top3": -2.5,
+      "price_cur": 4220,
+      "price_peak": 4220,
+      "anchor": 2573,
+      "m_in_band": 0.07,
+      "resid_band": 0.226
+    },
+    "Marcus Bontempelli": {
+      "kind": "named",
+      "who": "Marcus Bontempelli",
+      "pos": "MID",
+      "age": 31.0,
+      "pick": 4,
+      "type": "ND",
+      "realised_o_recent2": 46.8,
+      "realised_o_top3": 51.3,
+      "price_cur": 3773,
+      "price_peak": 7976,
+      "anchor": 4815,
+      "m_in_band": -1.003,
+      "resid_band": 1.634
+    },
+    "Jai Newcombe": {
+      "kind": "named",
+      "who": "Jai Newcombe",
+      "pos": "MID",
+      "age": 25.0,
+      "pick": 90,
+      "type": "MSD",
+      "realised_o_recent2": 21.1,
+      "realised_o_top3": 22.2,
+      "price_cur": 4193,
+      "price_peak": 4860,
+      "anchor": 2025,
+      "m_in_band": 0.257,
+      "resid_band": 0.133
+    }
+  },
+  "iso": [
+    {
+      "pos": "RUC",
+      "pickband": "01-06",
+      "n": 2,
+      "mean_resid": -1.163,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "RUC",
+      "pickband": "07-12",
+      "n": 1,
+      "mean_resid": -2.471,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "RUC",
+      "pickband": "13-20",
+      "n": 1,
+      "mean_resid": 1.875,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "RUC",
+      "pickband": "21-34",
+      "n": 5,
+      "mean_resid": 1.19,
+      "ci_lo": -0.252,
+      "ci_hi": 2.215,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "RUC",
+      "pickband": "35-50",
+      "n": 7,
+      "mean_resid": 0.367,
+      "ci_lo": -0.73,
+      "ci_hi": 1.551,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "RUC",
+      "pickband": "51-70",
+      "n": 13,
+      "mean_resid": -0.54,
+      "ci_lo": -1.635,
+      "ci_hi": 0.535,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "MID",
+      "pickband": "01-06",
+      "n": 31,
+      "mean_resid": 0.856,
+      "ci_lo": 0.558,
+      "ci_hi": 1.141,
+      "note": "OVER(+)",
+      "support": "firm"
+    },
+    {
+      "pos": "MID",
+      "pickband": "07-12",
+      "n": 12,
+      "mean_resid": -0.028,
+      "ci_lo": -0.549,
+      "ci_hi": 0.382,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "MID",
+      "pickband": "13-20",
+      "n": 13,
+      "mean_resid": 0.089,
+      "ci_lo": -0.701,
+      "ci_hi": 0.835,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "MID",
+      "pickband": "21-34",
+      "n": 17,
+      "mean_resid": 0.138,
+      "ci_lo": -0.685,
+      "ci_hi": 0.849,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "MID",
+      "pickband": "35-50",
+      "n": 12,
+      "mean_resid": -0.135,
+      "ci_lo": -0.868,
+      "ci_hi": 0.567,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "MID",
+      "pickband": "51-70",
+      "n": 20,
+      "mean_resid": -0.977,
+      "ci_lo": -2.002,
+      "ci_hi": 0.059,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "GEN_DEF",
+      "pickband": "01-06",
+      "n": 2,
+      "mean_resid": 0.836,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_DEF",
+      "pickband": "07-12",
+      "n": 7,
+      "mean_resid": -0.326,
+      "ci_lo": -1.428,
+      "ci_hi": 0.753,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_DEF",
+      "pickband": "13-20",
+      "n": 5,
+      "mean_resid": -0.295,
+      "ci_lo": -1.975,
+      "ci_hi": 1.081,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_DEF",
+      "pickband": "21-34",
+      "n": 5,
+      "mean_resid": 0.603,
+      "ci_lo": -0.06,
+      "ci_hi": 1.266,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_DEF",
+      "pickband": "35-50",
+      "n": 4,
+      "mean_resid": -0.07,
+      "ci_lo": -2.012,
+      "ci_hi": 1.213,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_DEF",
+      "pickband": "51-70",
+      "n": 19,
+      "mean_resid": 0.485,
+      "ci_lo": -0.404,
+      "ci_hi": 1.187,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "GEN_FWD",
+      "pickband": "01-06",
+      "n": 9,
+      "mean_resid": 0.405,
+      "ci_lo": -0.339,
+      "ci_hi": 1.199,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_FWD",
+      "pickband": "07-12",
+      "n": 4,
+      "mean_resid": -0.391,
+      "ci_lo": -2.562,
+      "ci_hi": 1.061,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_FWD",
+      "pickband": "13-20",
+      "n": 4,
+      "mean_resid": 0.341,
+      "ci_lo": -0.941,
+      "ci_hi": 1.396,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_FWD",
+      "pickband": "21-34",
+      "n": 4,
+      "mean_resid": 1.141,
+      "ci_lo": 0.156,
+      "ci_hi": 2.093,
+      "note": "OVER(+)",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_FWD",
+      "pickband": "35-50",
+      "n": 11,
+      "mean_resid": 0.427,
+      "ci_lo": -0.413,
+      "ci_hi": 1.118,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "GEN_FWD",
+      "pickband": "51-70",
+      "n": 14,
+      "mean_resid": 0.187,
+      "ci_lo": -0.8,
+      "ci_hi": 1.161,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "KEY_DEF",
+      "pickband": "01-06",
+      "n": 2,
+      "mean_resid": 1.016,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_DEF",
+      "pickband": "07-12",
+      "n": 4,
+      "mean_resid": -0.303,
+      "ci_lo": -0.58,
+      "ci_hi": -0.027,
+      "note": "UNDER(-)",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_DEF",
+      "pickband": "13-20",
+      "n": 3,
+      "mean_resid": 0.19,
+      "ci_lo": -1.857,
+      "ci_hi": 2.109,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_DEF",
+      "pickband": "21-34",
+      "n": 2,
+      "mean_resid": 0.618,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_DEF",
+      "pickband": "35-50",
+      "n": 4,
+      "mean_resid": -1.858,
+      "ci_lo": -3.045,
+      "ci_hi": 0.299,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_DEF",
+      "pickband": "51-70",
+      "n": 12,
+      "mean_resid": -0.915,
+      "ci_lo": -2.211,
+      "ci_hi": 0.387,
+      "note": "~fair",
+      "support": "indicative"
+    },
+    {
+      "pos": "KEY_FWD",
+      "pickband": "01-06",
+      "n": 7,
+      "mean_resid": -0.291,
+      "ci_lo": -1.313,
+      "ci_hi": 0.813,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_FWD",
+      "pickband": "07-12",
+      "n": 7,
+      "mean_resid": 0.307,
+      "ci_lo": -1.288,
+      "ci_hi": 1.707,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_FWD",
+      "pickband": "13-20",
+      "n": 2,
+      "mean_resid": 0.079,
+      "ci_lo": null,
+      "ci_hi": null,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_FWD",
+      "pickband": "21-34",
+      "n": 6,
+      "mean_resid": -0.284,
+      "ci_lo": -1.926,
+      "ci_hi": 1.248,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_FWD",
+      "pickband": "35-50",
+      "n": 4,
+      "mean_resid": -0.173,
+      "ci_lo": -2.307,
+      "ci_hi": 1.441,
+      "note": "~fair",
+      "support": "thin"
+    },
+    {
+      "pos": "KEY_FWD",
+      "pickband": "51-70",
+      "n": 15,
+      "mean_resid": -0.413,
+      "ci_lo": -1.714,
+      "ci_hi": 0.828,
+      "note": "~fair",
+      "support": "indicative"
+    }
+  ],
+  "young": [
+    {
+      "pickband": "01-06",
+      "n": 112,
+      "n_star": 81,
+      "uncond_median_cur_over_anchor": 0.03,
+      "star_median_peakprice_over_anchor": 1.93,
+      "star_median_realisedfair_over_youngprice": 1.44,
+      "support": "firm"
+    },
+    {
+      "pickband": "07-12",
+      "n": 113,
+      "n_star": 63,
+      "uncond_median_cur_over_anchor": 0.04,
+      "star_median_peakprice_over_anchor": 2.42,
+      "star_median_realisedfair_over_youngprice": 2.06,
+      "support": "firm"
+    },
+    {
+      "pickband": "13-20",
+      "n": 148,
+      "n_star": 75,
+      "uncond_median_cur_over_anchor": 0.03,
+      "star_median_peakprice_over_anchor": 2.76,
+      "star_median_realisedfair_over_youngprice": 2.64,
+      "support": "firm"
+    },
+    {
+      "pickband": "21-34",
+      "n": 263,
+      "n_star": 92,
+      "uncond_median_cur_over_anchor": 0.03,
+      "star_median_peakprice_over_anchor": 3.84,
+      "star_median_realisedfair_over_youngprice": 3.45,
+      "support": "firm"
+    },
+    {
+      "pickband": "35-50",
+      "n": 298,
+      "n_star": 74,
+      "uncond_median_cur_over_anchor": 0.04,
+      "star_median_peakprice_over_anchor": 4.26,
+      "star_median_realisedfair_over_youngprice": 5.34,
+      "support": "firm"
+    },
+    {
+      "pickband": "51-70",
+      "n": 1059,
+      "n_star": 180,
+      "uncond_median_cur_over_anchor": 0.06,
+      "star_median_peakprice_over_anchor": 5.98,
+      "star_median_realisedfair_over_youngprice": 7.73,
+      "support": "firm"
+    },
+    {
+      "pickband": "rookie/pickless",
+      "n": 198,
+      "n_star": 15,
+      "uncond_median_cur_over_anchor": 1.0,
+      "star_median_peakprice_over_anchor": 6.06,
+      "star_median_realisedfair_over_youngprice": 9.74,
+      "support": "firm"
+    }
+  ],
+  "top_under": [
+    {
+      "cohort": "('GEN_FWD', '23-26')",
+      "axis": "position x ageband",
+      "n": 14,
+      "m": 0.568,
+      "ci": [
+        0.166,
+        1.011
+      ],
+      "examples": [
+        [
+          "Tarryn Thomas",
+          2.95
+        ],
+        [
+          "Rhyan Mansell",
+          1.36
+        ],
+        [
+          "Izak Rankine",
+          0.7
+        ],
+        [
+          "Connor Rozee",
+          0.65
+        ]
+      ]
+    }
+  ],
+  "top_over": [
+    {
+      "cohort": "('GEN_FWD', '>=27')",
+      "axis": "position x ageband",
+      "n": 29,
+      "m": -0.77,
+      "ci": [
+        -1.447,
+        -0.118
+      ],
+      "examples": [
+        [
+          "Ben McGlynn",
+          3.44
+        ],
+        [
+          "Christopher Mayne",
+          3.09
+        ],
+        [
+          "Robbie Gray",
+          3.03
+        ],
+        [
+          "Christopher Yarran",
+          1.61
+        ]
+      ]
+    },
+    {
+      "cohort": "('>=27', '01-06')",
+      "axis": "ageband x pickband",
+      "n": 30,
+      "m": -0.764,
+      "ci": [
+        -1.268,
+        -0.266
+      ],
+      "examples": [
+        [
+          "Nicholas Naitanui",
+          3.42
+        ],
+        [
+          "Jarryd Roughead",
+          2.44
+        ],
+        [
+          "Angus Brayshaw",
+          1.83
+        ],
+        [
+          "Christopher Yarran",
+          1.61
+        ]
+      ]
+    }
+  ],
+  "englishbriggs": {
+    "o_ratio_recent2": 5.77,
+    "cur_ratio": 1.56,
+    "o_ratio_peak": 2.25,
+    "peakprice_ratio": 1.78
+  },
+  "subreplacement": {
+    "never_delivered": 756,
+    "below_repl_recent": 1592
+  }
+}
