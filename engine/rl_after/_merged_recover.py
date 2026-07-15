@@ -157,8 +157,8 @@ def _nqual(p,Y): return sum(1 for x in p['scoring'] if x['games']>=10 and x['yea
 # Owner constraint (reported, only APPROXIMATELY met): w(1)~=w(0)~=0 — the 0->1 jump is cut 6.8x but
 # w(1)=0.147, NOT zero: the inversion is shrunk, not eliminated (census item 88). SMOOTH THE AVERAGES,
 # NOT THE PRICE (R99.4): this touches _lvlcurr only; the convex pricing curve is untouched.
-_DAMP=os.environ.get('RL_DAMP','1')!='0'
-_DAMP_K=float(os.environ.get('RL_DAMP_K','5.8'))
+_DAMP=os.environ.get('RL_DAMP','1')!='0'                      # kill-switch (G-ATTR separability): RL_DAMP=0 => w=g => byte-exact base. Declared exception, not a dial.
+_DAMP_K=5.8                                                   # PINNED (R100.11 item 3): in-code constant, no os.environ.get on a board-changing dial. Was os.environ.get('RL_DAMP_K','5.8').
 def _wg(gm): return (gm*gm/(gm+_DAMP_K)) if _DAMP else float(gm)
 def _lvlcurr(p,Y):                                            # steeper-recency CURRENT level (trend-aware; ==career avg for a flat player)
     ld=LDECAY_G[_ldg(MA.gfut(p))]                             # STEP-3 per-group recency decay
@@ -345,14 +345,28 @@ cp._lvl_eff=_inferM1; cp._feat=_feat_infer   # M1 level bind (was _lvl_eff_infer
 #   THE DOUBLE-CHARGE (the single most likely way to get this wrong): the recency decay ld^(Y-yr) ALREADY
 #   ages a returner's last good season an extra year (D2 R3: mean -1.7 lvl pts charged; the measured truth
 #   owed is -4.9 => the SHORTFALL is ~-3.2). We deliver ONLY the shortfall by netting the decay PER PLAYER —
-#   L_nogap = _inferM1(gap-filled copy) via D2 R3's shift_out_gap (REUSED) — and CAP at the multiplicative
-#   truth, never lifting: L_abs = min(L_base, L_nogap*(1 - frac)). So the NEW term never drives the total
-#   past the measured curve; where the decay already over-charges (Jamarra), the new term contributes 0.
+#   L_nogap = _inferM1(gap-filled copy) via D2 R3's shift_out_gap (REUSED). The FULL-prior charge is the
+#   shortfall below the multiplicative truth, never lifting: pen = max(0, L_base - L_nogap*(1-frac)); where
+#   the decay already over-charges (Jamarra), pen = 0. R100.11: the prior is then WEIGHTED by pw(g) and the
+#   level is L_abs = L_base - pw(g)*pen. At pw=1 (a fresh return) this equals the old min(L_base, L_nogap*
+#   (1-frac)); as evidence accumulates pw(g)->0 and L_abs->L_base — the shed EMERGES from the arithmetic.
+#   (The old build scaled frac by the fade INSIDE the min, so the L_nogap<L_base residual on a returner whose
+#   post-return seasons are his best — Bailey Smith — never faded; weighting the whole prior fixes that.)
 # Env-gate RL_ABSENCE (default ON); RL_ABSENCE=0 => byte-exact base. Kill-switch, G-ATTR-separable.
-_ABSENCE=os.environ.get('RL_ABSENCE','1')!='0'
-_ABS_L_REF=float(os.environ.get('RL_ABS_LREF','75.0'))       # D2 R1 mean pre-absence level (multiplicative base)
-_ABS_CAP=float(os.environ.get('RL_ABS_CAP','0.20'))          # safety cap on the fraction (extrapolation beyond age 34)
-_ABS_FADE_N=float(os.environ.get('RL_ABS_FADE_N','2.0'))     # ASSUMPTION (law 5, NOT measured): FULL penalty in the RETURN season; fades to 0 over this many SUBSEQUENT re-established (>=10g) seasons — NOT permanent. 2.0 chosen so a player who returns and plays two full seasons (e.g. Bailey Smith: out 2024, back 2025@116 & 2026@122) is no longer charged; flag for owner.
+_ABSENCE=os.environ.get('RL_ABSENCE','1')!='0'               # kill-switch (G-ATTR separability): RL_ABSENCE=0 => byte-exact base. Declared exception, not a dial (the measurement ablation lever).
+_ABS_L_REF=75.0                                              # PINNED (R100.11 item 3): D2 R1 mean pre-absence level (multiplicative base). Was os.environ.get('RL_ABS_LREF').
+_ABS_CAP=0.20                                                # PINNED (R100.11 item 3): safety cap on the fraction (extrapolation beyond age 34). Was os.environ.get('RL_ABS_CAP').
+# R100.11 EVIDENCE FADE (owner-ruled 2026-07-14, "Agree on Smith — evidence-fade"). The absence term is a
+# PRIOR about an UNOBSERVED return; EVIDENCE DISSOLVES IT IN BOTH DIRECTIONS. The fade runs on EVIDENCE
+# WEIGHT = games played since the most-recent return (g), NEVER seasons elapsed, and NO SCHEDULE FALLBACK
+# (recurrence is an AVAILABILITY risk — _avail_hc / LTI; welding a clock into the LEVEL term double-charges
+# the fragility). The prior enters as ONE pseudo-observation against the measured evidence-reliability curve
+# w(g)=g^2/(g+K) (Fix 1's curve): its precision-blend weight is pw(g) = 1/(1+w(g)) = (g+K)/(g^2+g+K).
+#   pw(0)=1 (fresh return carries the FULL prior) -> 0 as evidence accumulates (the prior dissolves).
+# ONE continuous object: smooth, monotone, rational (g^2+g+K>0 for all g>=0). NO threshold, NO counter, NO
+# branch (L-SMOOTH, acceptance_v1_13.json). Retires the schedule fade clip(1-npost/_ABS_FADE_N) and its
+# >=10g season counter (both violated the ruling; the counter also violated L-SMOOTH).
+_ABS_FADE_K=5.8                                              # PINNED (R100.11 item 3): evidence-fade scale K = Fix 1's measured w(g) scale (RL_DAMP_K, :162). In-code, no env read.
 _ABS_AGE=[18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34]
 # D2 R2 mean-reversion-adjusted fitted effect (level points). The positive entries <age~20 are the DECLARED
 # data-free kernel extrapolation (raw n~=0) and are clamped to 0 below — an absence is never a bonus.
@@ -364,9 +378,11 @@ def _abs_frac(age):
     return float(np.clip(max(0.0,-eff)/_ABS_L_REF,0.0,_ABS_CAP))
 def _abs_gap(p,Y):
     """the MOST-RECENT mid-career calendar gap (a games==0 year after >=1 prior played season) whose
-    return year <= Y. Returns dict(age_pre,ret,last,npost) or None. Non-established players INCLUDED
-    (law-4 coverage — the curve is extrapolated below the established base, DECLARED). Multiple separate
-    absences are charged on the MOST RECENT return only, ONE penalty (law 5(a) assumption, DECLARED)."""
+    return year <= Y. Returns dict(age_pre,ret,last,npost,gpost) or None. gpost = EVIDENCE WEIGHT (games
+    played since the most-recent return, i.e. year>=ret) — the R100.11 fade input; npost (the retired
+    schedule counter) is kept for the report only. Non-established players INCLUDED (law-4 coverage — the
+    curve is extrapolated below the established base, DECLARED). Multiple separate absences are charged on
+    the MOST RECENT return only, ONE penalty (law 5(a) assumption, DECLARED)."""
     d0=cp.debutyr(p)
     rows={x['year']:x['games'] for x in p['scoring'] if (d0-1)<x['year']}
     yrs=[y for y,gmv in rows.items() if gmv>0]
@@ -382,8 +398,9 @@ def _abs_gap(p,Y):
             if ret<=Y:
                 last=prior[-1]; a=cp._age_asof(p,2026)
                 age_pre=(a-(2026-last)) if a is not None else None
-                npost=sum(1 for x in p['scoring'] if x['games']>=10 and x['year']>ret and (d0-1)<x['year']<=Y)
-                best=dict(age_pre=age_pre,ret=ret,last=last,npost=npost)   # keep LATEST qualifying gap
+                npost=sum(1 for x in p['scoring'] if x['games']>=10 and x['year']>ret and (d0-1)<x['year']<=Y)  # RETIRED schedule counter — report only
+                gpost=sum(x['games'] for x in p['scoring'] if x['games']>0 and x['year']>=ret and (d0-1)<x['year']<=Y)  # R100.11 EVIDENCE WEIGHT: games since return (return season is the first evidence)
+                best=dict(age_pre=age_pre,ret=ret,last=last,npost=npost,gpost=gpost)   # keep LATEST qualifying gap
         i=j
     return best
 def _abs_shift(p,last,ret):                                   # D2 R3 shift_out_gap: slide pre-gap seasons forward so the record is contiguous (gap filled)
@@ -396,11 +413,13 @@ def _lvl_eff_abs(p,Y):
     if not _ABSENCE or not _isreal(p): return Lb              # synths/lever-off: byte-exact (synths are gap-free anyway)
     gi=_abs_gap(p,Y)
     if gi is None or gi['age_pre'] is None: return Lb
-    fade=float(np.clip(1.0-gi['npost']/_ABS_FADE_N,0.0,1.0))  # full in the return season; 0 after _ABS_FADE_N re-established seasons
-    frac=_abs_frac(gi['age_pre'])*fade
-    if frac<=0.0: return Lb
+    frac=_abs_frac(gi['age_pre'])                            # FULL age-curve prior (fade=1); the <20 clamp lives inside _abs_frac (owner-kept)
+    if frac<=0.0: return Lb                                   # age<20 data-free clamp: no prior to fade
+    g=gi['gpost']                                            # EVIDENCE WEIGHT: games played since the most-recent return (R100.11)
+    fade=(g+_ABS_FADE_K)/(g*g+g+_ABS_FADE_K)                 # prior weight pw(g)=1/(1+w(g)), w(g)=g^2/(g+K); pw(0)=1 -> 0 on evidence. ONE continuous object; no threshold/counter/branch (L-SMOOTH)
     Lng=_lvl_eff_preabs(_abs_shift(p,gi['last'],gi['ret']),Y) # counterfactual no-absence level (decay netted per player)
-    return min(Lb, Lng*(1.0-frac))                            # cap at multiplicative truth; NEVER lift
+    pen=max(0.0, Lb-Lng*(1.0-frac))                          # FULL-prior charge = shortfall below the multiplicative truth, NEVER lifting (=0 where the decay already over-charges, e.g. Jamarra). == base's (Lb-min(Lb,Lng*(1-frac))) at fade=1.
+    return Lb-fade*pen                                       # the prior enters as ONE weighted term; weight pw(g)->0 on evidence => L->Lb. The shed EMERGES from the arithmetic (a returner at/above his old level ends uncharged) — no threshold, no "if level>=preabs" branch.
 cp._lvl_eff=_lvl_eff_abs
 # ==== M3 CLOCK-PIN PLUMBING (BAKE CANDIDATE v2, D7 02/07/2026 — design: session_2026-07-02/
 # m3_design_proportional_tenure.md; the D4 backtest's monkeypatch hook inventory made first-class).
