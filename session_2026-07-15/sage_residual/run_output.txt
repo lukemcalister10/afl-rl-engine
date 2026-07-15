@@ -1,0 +1,27 @@
+config manifest (gate mode) LOADED  hash c2d233aec104  (47 model vars pinned; ambient cleared)
+
+age n_raw n_pl  s_smooth    95%CI(smooth)   s_raw(age-only) 95%CI(raw)      S_AGE  0inCI(smooth)
+ 29    33   74  +0.379  [+0.208,+0.534]      +0.551 [+0.150,+0.970]  0.027  False
+ 30    20   51  +0.236  [+0.014,+0.439]      -0.476 [-1.095,+0.101]  0.000  False
+ 31    12   32  +0.061  [-0.281,+0.392]      -0.396 [-1.410,+0.621]  0.000  True
+ 32     4   16  -0.061  [-0.559,+0.410]      +0.829 [-0.103,+1.971]  0.000  True
+ 33     2    6  -0.147  [-0.787,+0.460]      -0.047 [-2.167,+1.667]  0.000  True
+ 34     1    3  -0.359  [-0.978,+0.442]      -3.264 [-3.264,-3.264]  0.000  True
+ 35     1    2  -0.743  [-1.334,+0.454]      -0.675 [-0.675,-0.675]  0.000  True
+ 36     0    1  -1.046  [-1.810,+0.471]                    (no obs)  0.000  True
+
+# SENSITIVITY: pooled 30+ realised slope under knob variations
+  next_games>=10, gap>=5.0: n30=40 players30=34  slope(ratio)=-0.355  slope(mean y/x)=-0.350
+  next_games>=6, gap>=5.0: n30=46 players30=37  slope(ratio)=-0.417  slope(mean y/x)=-0.431
+  next_games>=10, gap>=3.0: n30=83 players30=60  slope(ratio)=-0.485  slope(mean y/x)=-0.608
+  next_games>=6, gap>=3.0: n30=90 players30=63  slope(ratio)=-0.575  slope(mean y/x)=-0.723
+
+# ATTRITION: proven up-branch (gap>=5, radq) breakouts with NO qualifying Y+1 (games>=10)
+  age  breakouts  washed_out(no qual Y+1)  washout_rate
+   29        36                    3        0.08
+   30        24                    4        0.17
+   31        18                    6        0.33
+   32         6                    2        0.33
+   33         4                    2        0.50
+   34         2                    1        0.50
+   35         1                    0        0.00
