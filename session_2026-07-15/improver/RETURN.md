@@ -1,6 +1,6 @@
 # RETURN — THE IMPROVER BUILD: `_eo` TWO-DIRECTIONAL · L-SYMMETRY · THE S_AGE 29-TAIL
 - **Branch** `claude/improver-build-symmetry-ukvtma` · base pin `557297c` STRICT (ls-remote+rev-parse verified) · line `#82→#83→#85→#89→this` · **PR based on the #89 branch** (`claude/intelligent-lovelace-6v863q`).
-- **Head SHA** `<RETURN commit>` · **PR** `#<n>`. Engine `edc47017 → fc7045d6`; board `9a9889f8 → dc43d602`; store `340a7a32` UNCHANGED; config `c2d233ae` UNMOVED.
+- **Head SHA** `3f94dc4` (impl+RETURN; this fill-in commit advances it) · **PR** `#90` (base = the #89 branch). Engine `edc47017 → fc7045d6`; board `9a9889f8 → dc43d602`; store `340a7a32` UNCHANGED; config `c2d233ae` UNMOVED.
 - **Three legs, three declared kill-switches (default ON):**
   - `RL_EO2` (kill the `_eo` min(), keep the term): **218 movers · ΣΔ +37792** — anti-flattery now two-directional (pulls UP to demonstrated production, not only DOWN).
   - `RL_LSYM` (L-SYMMETRY, item 108 verbatim): **53 movers · ΣΔ −408** — equal bar `DOWN_TOL` (was TOL_M1=5.0), `_radq` games-test dropped, hard-delete cliff → smooth onset ramp; a redistribution (over-credit at the old bar trimmed, denied risers restored).
