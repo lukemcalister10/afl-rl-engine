@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v157 2026-07-15 · PEN: **SUPERVISOR MISS CORRECTED (item 173): the UI directive said the AFFL club ranking page was "previously specced" — the build searched docs/ui_direction, docs/ui_styles, registers, notepads, full git history and found NO such spec. IT IS RIGHT; NO SPEC EXISTS — my seed-craft error (assumed from register item 163's wording). RULING to the build: BUILD THE REST, DEFER THE PAGE (its option 1) — ship items 1,3-8 + item-2 group/filter/ΣSCAR now, flag the page in RETURN; the page waits for the OWNER'S spec (a genuine design decision, not an invention)** · prior (item 172): the v2.10 seam · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v158 2026-07-15 · PEN: **HANDOVER HARDENED PRE-ROTATION at the owner's request (item 174): rev143 folds everything post-seam (item-173 UI ruling · open Tier-3 PR dispositions #95/#96 + branches · pending CI-green/PK-sync confirmations · snapshot-naming hygiene) · manifest → v4.28 · THE OPENING PROMPT for the incoming seat ISSUED (couriered to the owner) · this seat's session = items 156–174, journals = the crash record · ROTATION READY** · prior (item 173): the UI miss corrected · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4023,6 +4023,22 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       AFFL club ranking page show and rank — club ΣSCAR · roster depth · best-XI · positional balance? A
       genuine design decision. It rides the UI's next pass once the owner specs it (or delegates the
       design to a Fable seat with his brief). No board/value impact — pure view.
+
+174. **ROTATION-READINESS (owner-requested review of the handover, 2026-07-15).** The seam pack was
+    re-reviewed critically; rev142 was found INCOMPLETE against post-seam events — HARDENED to
+    **rev143** (manifest → **v4.28**): folds item 173 (the UI ranking-page miss + the build-rest ruling
+    + the page as an OPEN OWNER DESIGN ITEM) · the open Tier-3 dispositions (PR #95 aging `c27682f` ·
+    PR #96 calibration `cf153fd` with its declared lineage caveat · the census-v2 and cm_400-diagnosis
+    branches, no PRs by convention · the UI build in flight) · the two PENDING CONFIRMATIONS the
+    incoming seat chases first (main CI GREEN with the 790136a3 print · the owner's PK sync, with the
+    known-lag guidance so a one-filing-stale PK is asked-about, not world-halting) · the
+    snapshot-naming hygiene carry (read by ENGINE HASH, never sort order).
+    **THE OPENING PROMPT for the incoming seat was authored and couriered to the owner** (pin: main at
+    or after the SHA of THIS push, docs-only; first authoring job = the PVC+FLEX chapter spec on the
+    complete baseline set). **This seat's session spans items 156–174**; its per-turn journals are the
+    crash record. Model note (owner-raised): the supervisor seat is MODEL-AGNOSTIC BY DESIGN (rev141) —
+    the record carries regardless of which model held the seat; high-leverage spec work (the PVC+FLEX
+    spec, the compression+lens lever) is the standing Fable allocation.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).

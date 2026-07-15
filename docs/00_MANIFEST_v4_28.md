@@ -1,17 +1,19 @@
-# 00_MANIFEST — v4.27 · 2026-07-15 · supersedes v4.26
+# 00_MANIFEST — v4.28 · 2026-07-15 · supersedes v4.27
 ### The pointer file. Read it first. It tells you what is current and what to read WHEN.
 ### Maintained by the FABLE seat (seat 7). THIS FILING: THE v2.10 SEAM — the "evidence over calendars"
 ### chapter is BAKED (tag v2.10 = d14efae) + PROMOTED (main = a64c47f, two-parent PR #97). The 1.335
 ### G-COHORT waiver REVERTS to 1.30 (CONSTRAINTS v1.16 + acceptance v1.16). DECISIONS → v104 (the R103.x
 ### seam set) · HANDOVER → rev142 (the merged PVC+FLEX chapter's whole queue). CORE/SSI unchanged.
+### v4.28 (same day): HANDOVER → rev143 (hardened pre-rotation at the owner's request: item 173 UI
+### ranking-page miss + ruling · open Tier-3 PR dispositions · pending CI/PK confirmations). Nothing else moved.
 ### ⚠ OWNER-INSTRUCTED: prior seats' JUDGEMENT is not ground truth — verify before building.
 
 ## THE PACK — CURRENT VERSIONS
 | doc | version | tier | when to read |
 |---|---|---|---|
-| **00_MANIFEST** | **v4.27** | 0 | first, always |
+| **00_MANIFEST** | **v4.28** | 0 | first, always |
 | **CORE** | **v2.8** | 0 | in full — BINDING. |
-| **HANDOVER** | **rev142** | 0 | THE POST-BAKE SEAM handover — the merged PVC+FLEX chapter's whole queue. |
+| **HANDOVER** | **rev143** | 0 | THE POST-BAKE SEAM handover — the merged PVC+FLEX chapter's whole queue. |
 | **DECISIONS** | **v104** | 0 | rulings + the owner's CURRENT to-dos. Read the register for verbatim. |
 | **OPEN_ITEMS_REGISTER** | read its OWN header | 1 | THE DURABLE LOG (v155+). Repo-only. |
 | **CONSTRAINTS** | **v1.16** | 1 | REPO-ONLY (P1) — fetch + grep when judging a board. **G-COHORT bound back to 1.30 (waiver reverted)** · AXIS RULE (PENDING-OWNER). |
