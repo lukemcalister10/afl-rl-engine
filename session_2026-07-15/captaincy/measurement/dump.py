@@ -8,7 +8,7 @@ os.environ['PYTHONHASHSEED']='0'
 for k,v in dict(RL_GAMMA='0.85',RL_PICK1='3000',RL_RUCK_TAX='0.25',RL_RECENCY_DECAY='0.72',
                 RL_PRIOR_TREES='400',PAR_RAMPS='22').items():
     os.environ.setdefault(k,v)
-out=sys.argv[1]
+out=os.path.abspath(sys.argv[1])   # resolve BEFORE the chdir(WS) below
 WS='/home/claude/rl_workspace/rl_after'
 os.environ.setdefault('RL_REPO','/home/user/afl-rl-engine')
 sys.path.insert(0,'/home/claude/rl_vendor'); sys.path.insert(0,WS); os.chdir(WS)
