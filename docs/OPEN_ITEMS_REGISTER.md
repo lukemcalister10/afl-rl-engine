@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v102 2026-07-15 · PEN: SSI MOVED (owner-worded) · PR #83 PRESCREENED · item 106 mechanism SUPERSEDED IN PLACE (items 113–114) · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v103 2026-07-15 · PEN: A2 PROVEN AT HEAD (leg 1 SETTLED) · rev138 + REWORK DIRECTIVE issued · ROTATION SEAM (items 115–116) · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2692,6 +2692,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       any machine the environment of record, so incognito cold audits are valid instruments again.**
     - **MERGE-LINE RECOMMENDATION (owner decides):** `#81 → #82 → #83 → R100.11-rework`, rework based on #83's
       surviving head; ONE candidate walks ONE full ladder; ONE bake.
+
+115. **A2 IS PROVEN AT THE HEAD — ITEM-74 LEG 1 SETTLED VIA THE FIX ROAD (2026-07-15).** The supervisor
+    fetched the AMD runner's own job log for head `a2a06c7` (runs 29356463977 pull_request / 29356459105 push,
+    both success) and read the print: `BOARD_MD5(built this run) = 800bf461d5ec81d12da2e2426ff15c9c` — equal
+    to the pinned box's board. **Supervisor-read from the runner's log, not a build's word. No tolerance
+    ruling needed.** LEG 2 (the reconcile) rides the chapter ladder — hardware-independence restores incognito
+    cold audits as valid instruments. *(Method note: the Actions log is unreachable by git; the owner's token
+    was used read-only on the API for this one artifact — a declared exception to the git-only rule, which
+    remains the rule for all repo state.)*
+
+116. **ROTATION SEAM (owner-agreed): rev138 FILED · the R100.11 REWORK DIRECTIVE ISSUED (couriered; base
+    `a2a06c7` STRICT — A2-proven).** Requirements folded into the directive from items 111/114: continuous
+    evidence fade (no clock, no ≥10g counter, no threshold — L-SMOOTH) · shed emerges from construction ·
+    dials pinned (no env reads on board-changing values) · raw-board-move affected list · Smith/Buller/Wilmot
+    mechanisms named · panel re-pin · book rebuild + re-seal. **The two R100.11 open assumptions stay PARKED
+    (owner's): gap-length magnitude (TRIGGER: measure before ruling) · U-curve <20 clamp.**
+    ⚠ **#81 LINEAGE (merge-base checked): `4de05f0a` is NOT an ancestor of the candidate line** — its
+    disposition (likely: close as superseded, the #76 pattern) must be reconciled BEFORE any merge word.
+    **CONTEXT-ECONOMY rulings pending with the owner:** P1 (seam pack slims to Tier-0; CONSTRAINTS +
+    acceptance go repo-only) · P3 (Tier-3 build: standing orientation + prescreen scripts). P4 (chat = plain
+    read + decisions; detail to register/journal) is OWNER-AGREED and OPERATIVE. P5 (verification sub-chats)
+    PARKED: mechanical checks need no Fable — but P3's scripts capture most of the win without the trust hop.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
