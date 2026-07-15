@@ -27,8 +27,23 @@ done
 HEAD_SHA="$(git -C "$HERE" rev-parse HEAD)" || die "rev-parse HEAD failed"
 printf '  %-22s %s\n' "checkout HEAD" "$HEAD_SHA"
 
-# 2) The register's OWN header line (raw).
-echo "-- register header (raw line 1) --"
+# 2) The OPEN-ITEMS register's OWN header line — the durable freshness rung (raw, truncated).
+#    Line 1 leads with the version + PEN summary (the freshness-relevant part); it is very long,
+#    so print the first ~200 chars with an explicit marker. Missing/empty = a RED (house law #3).
+echo "-- open-items register header (docs/OPEN_ITEMS_REGISTER.md line 1) --"
+[ -f "$HERE/docs/OPEN_ITEMS_REGISTER.md" ] \
+  || die "docs/OPEN_ITEMS_REGISTER.md missing (open-items register is the durable freshness input)"
+OIR_HDR="$(head -n1 "$HERE/docs/OPEN_ITEMS_REGISTER.md")" || die "cannot read docs/OPEN_ITEMS_REGISTER.md"
+[ -n "$OIR_HDR" ] || die "docs/OPEN_ITEMS_REGISTER.md header line is empty (SILENCE IS A RED)"
+if [ "${#OIR_HDR}" -gt 200 ]; then
+  printf '  %s …(truncated)\n' "${OIR_HDR:0:200}"
+else
+  printf '  %s\n' "$OIR_HDR"
+fi
+
+# 2b) The LTI/availability register header (pinned input, root) — kept, honestly relabelled.
+#     This is the availability sidecar, NOT the open-items log printed above.
+echo "-- LTI register header (pinned input, root) --"
 REG_HDR="$(head -n1 "$HERE/LTI_REGISTER.md")" || die "cannot read LTI_REGISTER.md"
 [ -n "$REG_HDR" ] || die "LTI_REGISTER.md header line is empty"
 echo "  $REG_HDR"

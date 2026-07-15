@@ -1,12 +1,15 @@
 # orient.sh — live-state sample (captured 2026-07-15)
 # cmd: bash tools/seat/orient.sh   (exit 0)
+# NOTE: checkout HEAD below is this fix branch's commit, not live main — raw sample, compared by eye.
 
 == orient · https://github.com/lukemcalister10/afl-rl-engine.git ==
 -- ls-remote (RAW SHAs) --
-  refs/heads/main        5738f2b2dfbcb7fd746c3c349a09c518d6b541a0
+  refs/heads/main        75bc9bc4872bb38a844d83e1b6ef536043a76ef2
   refs/tags/v2.9         9f8ae7616555ce55c67ae2076247662960b731e5
-  checkout HEAD          5738f2b2dfbcb7fd746c3c349a09c518d6b541a0
--- register header (raw line 1) --
+  checkout HEAD          ce47229a2456e62d3e115bd36a0281c03c36bab4
+-- open-items register header (docs/OPEN_ITEMS_REGISTER.md line 1) --
+  # OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v106 2026-07-15 · PEN: PR #84 MERGED by owner — merge `0c4aba84`, tools/seat now the standing instrument (it …(truncated)
+-- LTI register header (pinned input, root) --
   # LTI & AVAILABILITY REGISTER — Luke's ground-truth data — KEYED SIDECAR v1 · 2026-07-09
 -- docs/ listing --
   00_MANIFEST_v4_21.md
