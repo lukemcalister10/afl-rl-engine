@@ -108,7 +108,7 @@ def main():
             "store": boot.get("store", "")[:8],
             "register": boot.get("register", "")[:8],
             "config": boot.get("config", "")[:12],
-            "tag": "v2.8",
+            "tag": "v2.10",
             "panel": boot.get("panel"),
             "baseYear": d.get("BASE_YEAR"),
             "nPlayers": len(active),

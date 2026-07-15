@@ -8,8 +8,11 @@ MD.config = {
      L7 numéraire re-base + adopted-curve repoint + Brodie owner override) -> 3dc19fbb (ITEM 20 store-
      identity job 2026-07-13: afl_club import + club-display repoint + bramble +1; display-only board
      move, engine ev() unchanged). The UI board pin tracks the shipped board, same as
-     data/expected_boot.json 'board'; the refreshed board_view bundles carry srcmd5 3dc19fbb. */
-  EXPECTED_BOARD: "3dc19fbb",
+     data/expected_boot.json 'board'; the refreshed board_view bundles carry srcmd5 3dc19fbb. Moved
+     3dc19fbb -> 790136a3 (v2.10 CAPTAINCY BAKE, tag d14efaef: the L-CAPTAIN ruled captain curve lifts the
+     guns + load-time re-normalisation; display-only for the UI — no value is computed here). The pin moves
+     with the tagged board, per the v1.1 base rule: bundles regenerate via extract_board_view.py from the tag. */
+  EXPECTED_BOARD: "790136a3",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
