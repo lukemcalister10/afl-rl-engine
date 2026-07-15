@@ -84,10 +84,15 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .row .club .affl{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--volt);overflow-wrap:anywhere}
 .row .club .afl{font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);overflow-wrap:anywhere}
 .row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
-/* segmented power bar — ten blocks, a block a decile of the top price */
-.pow{display:flex;gap:3px}
-.pow i{width:10px;height:14px;background:var(--edge)}
-.pow i.f{background:var(--volt)}
+/* item 3 (register item 163, owner-worded amendment to the LOCK, 2026-07-15): the CONTINUOUS value line.
+   The spectrum is painted on the track (anchored 0..top price); .vmask covers the unfilled remainder, so
+   the fill reveals the spectrum from the cool end up to the player's value — colour shifts as it fills.
+   Supersedes the ten-block bar; the figure alongside means colour is never the sole carrier (LOCK). */
+.vline{position:relative;height:11px;border-radius:2px;overflow:hidden;
+  background:linear-gradient(90deg,#3b4a5e 0%,#2bd4c8 22%,#7fe06a 48%,#c8f04a 72%,#f0c24a 100%)}
+.vline .vmask{position:absolute;top:0;bottom:0;right:0;background:var(--edge);
+  border-left:1px solid rgba(242,245,249,.4)}
+.vline-m{height:8px;border-radius:2px}
 .pill{justify-self:end;font-family:var(--mono);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
 .pill.up{background:rgba(74,222,128,.14);color:var(--up)}
 .pill.dn{background:rgba(240,101,94,.14);color:var(--dn)}
@@ -176,7 +181,6 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .trow .tpin{color:var(--volt)}
 .pickchip{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--volt);border:1px solid var(--volt);padding:1px 6px;margin-right:6px}
-.powmini{display:flex;gap:2px}.powmini i{width:7px;height:11px;background:var(--edge)}.powmini i.f{background:var(--volt)}
 .ttotal{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--card-2)}
 .ttotal .k{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
 .ttotal .tfig{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--volt)}
@@ -209,6 +213,6 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   /* narrow: keep name · club · value · Δ (club is now first-class); pos/meta/bar fold away */
   .row.working{grid-template-columns:40px 20px 1fr 120px 84px 96px}
   .row.public{grid-template-columns:42px 1fr 96px 120px}
-  .row .pos,.row .meta,.pow{display:none}
+  .row .pos,.row .meta,.vline{display:none}
   .desk{grid-template-columns:1fr}
 }

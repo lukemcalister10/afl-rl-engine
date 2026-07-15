@@ -136,7 +136,7 @@ MD.board = (function () {
       '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(p.affl_team || "—") + "</span>" +
         '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
-      MD.powerBar(r.val, maxV) +
+      MD.valueLine(r.val, maxV) +
       deltaPill(p, r.val) +
       '<span class="meta">' + (p.pk ? "pk " + p.pk : "—") + " · ’" + String(p.yr || "").slice(2) + "</span>";
     b.addEventListener("click", function () { MD.go("card", p.key); });
@@ -158,7 +158,7 @@ MD.board = (function () {
       '<span class="nm">' + fmt.esc(p.name) + "</span>" +
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
-      MD.powerBar(r.val, maxV) + move + rankMove;
+      MD.valueLine(r.val, maxV) + move + rankMove;
     return b;
   }
 
@@ -295,11 +295,11 @@ MD.board = (function () {
 
     const foot = fmt.el("footer", "foot");
     if (s.tier === "working") {
-      foot.innerHTML = "volt = your touch (reads · rules · controls) · blocks = share of the top price, one block a decile · " +
+      foot.innerHTML = "volt = your touch (reads · rules · controls) · the value line = share of the top price, its colour warming as it fills · " +
         "movement pills always signed · override headroom lives on the card's waterfall · showing top 60 of " +
         fmt.n(pool.length) + (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
     } else {
-      foot.innerHTML = "blocks = share of the top price, one block a decile · movement pills always signed, never colour alone · public trim — no ids, no internals";
+      foot.innerHTML = "the value line = share of the top price, its colour warming as it fills · movement pills always signed, never colour alone · public trim — no ids, no internals";
     }
     container.appendChild(foot);
   }

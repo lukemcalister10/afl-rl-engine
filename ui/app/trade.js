@@ -71,7 +71,7 @@ MD.trade = (function () {
         meta = '<i>' + fmt.esc(pl ? pl.pos : "") + (pl && pl.age ? " · " + pl.age + "yo" : "") + "</i>";
       }
       row.innerHTML = '<span class="tnm">' + nm + meta + "</span>" +
-        MD.powerBar(val, maxRail(), true) +
+        MD.valueLine(val, maxRail(), true) +
         '<span class="tfig num">' + fmt.n(val) + "</span>";
       p.appendChild(row);
     });

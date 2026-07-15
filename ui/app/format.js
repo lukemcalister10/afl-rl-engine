@@ -20,10 +20,10 @@ MD.fmt = {
     if (d < 0) return "dn";
     return "flat";
   },
-  /* ten-block power bar: fill = decile of the top price. Returns filled-block count 0..10. */
-  decile: function (v, maxV) {
+  /* fraction 0..1 of the top price (the value line's fill). */
+  frac: function (v, maxV) {
     if (!maxV || !v || v < 0) return 0;
-    return Math.max(0, Math.min(10, Math.round((v / maxV) * 10)));
+    return Math.max(0, Math.min(1, v / maxV));
   },
   el: function (tag, cls, html) {
     const e = document.createElement(tag);
@@ -49,10 +49,14 @@ MD.isPickAsset = function (p) {
   return false;
 };
 
-/* segmented power bar markup (ten blocks, N filled). */
-MD.powerBar = function (v, maxV, mini) {
-  const n = MD.fmt.decile(v, maxV);
-  let s = '<span class="' + (mini ? "powmini" : "pow") + '">';
-  for (let i = 0; i < 10; i++) s += "<i" + (i < n ? ' class="f"' : "") + "></i>";
-  return s + "</span>";
+/* value line (item 3 · owner-worded amendment to the Matchday LOCK, register item 163, 2026-07-15):
+   a CONTINUOUS filling line, not ten segmented blocks. The colour spectrum is anchored to the TRACK
+   (0..top price), and the unfilled remainder is masked, so the fill reveals the spectrum from the cool
+   end up to the player's value — the colour shifts as it fills (a top player reaches the hot end, a
+   sub-bar player only the cool end). The figure is always printed alongside, so colour is never the
+   sole carrier (LOCK). Supersedes the ten-block MD.powerBar; the old squares are not protected. */
+MD.valueLine = function (v, maxV, mini) {
+  const pct = (MD.fmt.frac(v, maxV) * 100).toFixed(1);
+  return '<span class="vline' + (mini ? " vline-m" : "") + '">' +
+    '<span class="vmask" style="left:' + pct + '%"></span></span>';
 };
