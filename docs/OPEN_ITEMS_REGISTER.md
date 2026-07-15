@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v142 2026-07-15 · PEN: **R100.11 FULLY CLOSED — the <20 clamp zero ruled PERMANENT (item 157, R102.6, DECISIONS v103 filed) · SHARDS A+C RECONCILED clean, no unexplained delta; ONE provenance-hygiene defect (stale board self-stamp) CONFIRMED and queued to the bake build; C's claimed base non-reproduction RESOLVED by this seat's own run — 800d0399 reproduces byte-exact on the frozen exporter (item 158)** · prior (item 156): audit framing corrected — auditors report RAW verdicts (B1 HALT@1.30) + caveats; the supervisor applies the 1.335 waiver VISIBLY at reconcile · earlier chain: the item entries themselves (header shortened per item 148)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v143 2026-07-15 · PEN: **THE AUDIT OF RECORD IS RECONCILED (item 159): shards B/D/F join A/C — 5/5 clean, NO unexplained delta · THE 1.335 WAIVER APPLIED BY THE SUPERVISOR, VISIBLY: B1 frozen verdict = HALT@1.30 (honest, suite unedited); max ratio y5 1.3057 <= owner-waived 1.335, margin 0.0293 (item 143 authority) · ITEM-74 LEG 2 CLEARS · ladder rung next = OWNER VIEWING** · prior (items 157/158): R100.11 fully closed (<20 clamp permanent) · shards A+C reconciled, stale board self-stamp queued to the bake build · earlier chain: the item entries (header shortened per item 148)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3572,6 +3572,40 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     - **C's question back ("what is this audit feeding into?") — ANSWERED: the internal pre-bake
       independent re-run rung (CORE ladder); the supervisor reconciles, the owner decides; NOTHING
       external is being certified.**
+
+159. **SHARDS B + D + F RECONCILED — THE AUDIT OF RECORD (A/B/C/D/F, the bake's bar per item 154) IS
+    5/5 CLEAN: NO UNEXPLAINED DELTA. ITEM-74 LEG 2 CLEARS.** All three at the pinned head `9be07b8e`,
+    raw-numbers-only per item 156; claimed ledger = items 134/140/142/149/151.
+    - **SHARD D (book re-seal): CLEAN MATCH.** Recomputed stable sha `99be9b36…` == committed == item
+      151's claimed seal · N=2649 both sides · seal file PRISTINE (non-mutation proven) · Guard-5 pins
+      all == the ledger. Process note (killed worker relaunched under setsid, generator exit 0, no
+      swallowed error) accepted — silence-is-a-red respected.
+    - **SHARD B (gates): CLEAN MATCH — and THE WAIVER, APPLIED HERE, IN THE OPEN.** Frozen suite verdict:
+      FAIL=3 · **HALT=1 (B1 at the standing 1.30 — the suite's honest word, UNEDITED, exit 1 propagated)**
+      · PASS=16. B1 recomputed from raw class-year sums: y4 1.2960 · y5 1.3057 · y6 1.2544 · y7 1.1239 —
+      **EXACT match to item 151's claims.** THE SUPERVISOR NOW APPLIES THE OWNER'S WAIVER (item 143,
+      acceptance v1.15 `cohort_waiver`, THIS BAKE ONLY): max ratio y5 = 1.3057 ≤ 1.335, margin 0.0293;
+      all four class-years clear → **B1 = WAIVED-PASS by owner authority, applied at reconcile by this
+      seat, logged here** — the frozen gate itself still says HALT and reverts to sole authority at the
+      next chapter's first filing. Standing fails scored, never skipped: A2 (Curtis r=0.753) · A3
+      (Rozee 0.64) · A12 (Travaglia 660<Moraes 958) — all ∈ standing_fails · **A9 genuinely PASSES**
+      (Ginnivan 2179 > Ward 2016, RESOLVED-IN-CANDIDATE confirmed independently) · pair 3 Sanders +11.9%
+      = the expected standing-failed read (matches item 151 exactly). NO FAIL outside the standing list.
+    - **SHARD F (named rows): CLEAN.** Board md5 == pin · **PICK 1 = 3000** (numéraire law) · Ginnivan/
+      Ward and Sanders/Bont == shard B == the ledger · Newcombe **3984** vs item 149's 3975 — EXPLAINED:
+      3975 was the TRIO-head value (board 800d0399); captaincy moved 925 rows (item 151), Newcombe +9 to
+      the final board — different heads, not a delta. Berry ambiguity: all four listed (honest, accepted).
+    - **SHARD F's "value wrinkle" RESOLVED (this seat's own read of expected_boot.json):** the board's
+      `v` field IS the num-SCAR display unit (proven by shard A's canary equation board == round(book/
+      1.0524)); the expected_boot notes quoting Daicos 7667/8069 are the HISTORICAL annotation of the
+      v2.9 re-base event (era values), not a second live conversion — annotations ride the artifact by
+      doctrine; no defect. **The owner's sealed reads compare directly against `v` as listed.**
+    - **STILL TO LAND (both NON-BLOCKING for the bar):** the census cross-check (item 155, Tier-3
+      diagnostic) · the build code return. Scored on arrival; any red brought to the owner before the
+      bake word.
+    - **LADDER STATE: rung 2 (reconcile) COMPLETE → rung 3 = the owner views board+book vs his sealed
+      reads → his written bake word.** One open fix rides the bake build: the stale board self-stamp
+      (item 158).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
