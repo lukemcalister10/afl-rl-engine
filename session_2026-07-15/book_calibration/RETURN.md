@@ -28,7 +28,7 @@ CSVs (cohort_calibration, output_price_map, iso_corr_structural_table, iso_corr_
 iso_pickband_residual, young_cohort_walkforward, worked_rows). Regenerated book = scratch (not committed).
 **NO cure proposals** — PVC spec rework is the supervisor's, on this baseline.
 
-**Branch** `claude/walk-forward-book-calibration-pwojve` · **head SHA** `__HEAD__` · **PR** #__PR__
+**Branch** `claude/walk-forward-book-calibration-pwojve` · **content head SHA** `39eeb69` · **PR** #96
 
 **IN PLAIN TERMS:** the book pays elite output sub-proportionally and taxes rucks drafted at picks 19–33
 forever regardless of what they've proven — while the young side it's blamed for is already priced below
