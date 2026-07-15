@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v104 2026-07-15 · PEN: P1 EXECUTED (pack slims to Tier-0; CONSTRAINTS+acceptance REPO-ONLY) · P3 seat-tools directive ISSUED · REWORK IN FLIGHT (item 117) · prior: items 115–116 · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v105 2026-07-15 · PEN: PR #81 CLOSED AS SUPERSEDED (owner-ruled, item 118) · SEAT-TOOLS RETURN (PR #84) PRESCREEN PASS WITH NOTES (item 119 — orient.sh register-step defect + INTERIM rule) · prior: P1 EXECUTED (pack slims to Tier-0; CONSTRAINTS+acceptance REPO-ONLY) · P3 seat-tools directive ISSUED · REWORK IN FLIGHT (item 117) · prior: items 115–116 · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2728,6 +2728,37 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       sample outputs. **Runs IN PARALLEL with the rework: disjoint fences (S3). One store/engine writer only —
       the rework holds that slot.**
     - P4 (chat = plain read + decisions) OPERATIVE since item 116. P5 remains PARKED.
+
+118. **PR #81 CLOSED AS SUPERSEDED (owner-ruled 2026-07-15, supervisor chat: "Agree on closing PR #81 as
+    per your recommendation").** The #76 pattern. Its commits are NOT ancestors of the candidate line
+    (merge-base, item 116); the line stands `addef03 → #82 e7d980eb → #83 a2a06c7 → rework`. rev139's one
+    pre-merge reconcile is DONE. The close click on the PR page is the owner's; this entry records the
+    ruling either way.
+
+119. **SEAT-TOOLS RETURN (PR #84, branch `claude/seat-tools-orient-prescreen-a7z23x`, head `478ef698`) —
+    SUPERVISOR PRESCREEN: PASS WITH NOTES (2026-07-15, incoming Fable seat's own runs).**
+    - VERIFIED (re-run, this seat): base pin exact (main == `5738f2b2`, diff empty; fresh ls-remote) ·
+      fence clean (`tools/seat/*` + `session_2026-07-15/seat_tools/PLAN.md` only) · all three committed
+      samples reproduced EXACTLY — prescreen.sh exit 0, 27 lines, byte-identical body (ancestry YES; board
+      `800bf461` RECOMPUTED-MATCH from the artifact at #83's head `a2a06c7`) · gates_score.py both modes
+      identical (mod filename echo) on `gates_fef5719d.json`, md5 `20f43e32` ✓ — B1 PASS, PICK 1 = 3000
+      from BOTH the detail scan and `acceptance.numeraire.law`, FAILs A2/A3/A12 with their owner-ruling
+      notes intact · missing input → loud FAIL, exit 1 (SILENCE IS A RED honoured) · WRITES NOTHING
+      verified by full code read (fetch-to-object-cache + /tmp only).
+    - **⚠ FINDING (fix required, one-line scale): orient.sh's "register header" step reads root
+      `LTI_REGISTER.md` (the availability sidecar) — NOT `docs/OPEN_ITEMS_REGISTER.md`, the durable log
+      whose header the freshness check requires.** Run alone, orient omits the open-items rung under a
+      label suggesting it is covered. **INTERIM RULE (binding on every seat until fixed): after orient.sh,
+      additionally run `head -n1 docs/OPEN_ITEMS_REGISTER.md`.** Fix rides the next Tier-3 tools directive.
+    - Minor (recorded, not blocking): prescreen.sh's board-pin compare accepts an 8-hex prefix (line 72;
+      house style is full hashes) · its absent-board path exits via `set -e` rather than its own die()
+      (still non-zero — loud) · gates_score.py hardcodes G-PEAK→B1 / G-FLOOR→B5 in anchor resolution
+      (the acceptance alias field is used for guards).
+    - Build's self-flag verified HONEST: cohort ratios are truncated out of snapshot details (200-char
+      cap); the script states their absence rather than inventing them — B1's status is the record.
+    - **DISPOSITION: merge-ready on the owner's word** (Tier-3 — no ladder). A merge moves main; the
+      rework is UNAFFECTED (base `a2a06c7` STRICT on its own branch; disjoint paths). Main CI stays red
+      after the merge — EXPECTED; the determinism fix rides the candidate line, not this PR.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
