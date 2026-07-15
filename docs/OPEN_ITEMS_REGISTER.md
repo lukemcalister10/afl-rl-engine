@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v107 2026-07-15 · PEN: R100.11 REWORK RETURN (PR #85 @ `6235272`) PRESCREEN **PASS WITH NOTES** (item 121 — 28 movers/+1652 re-diffed by the seat's own hand; Smith 4344→5152; parked assumptions UNTOUCHED; gates-snapshot-deleted flag) · NEXT RUNG: COLD AUDIT on the line's final head · prior: PR #84 MERGED — merge `0c4aba84`, tools/seat standing (item 120) · FIX-1 DIRECTIVE ISSUED · PR #81 CLOSED AS SUPERSEDED (item 118) · REWORK WAS IN FLIGHT (item 117 — now RETURNED) · prior: items 115–116 · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v108 2026-07-15 · PEN: CHAPTER EXTENDED (owner-ruled, item 122 — cold audit DEFERRED to the true final head; three parallel Tier-3 jobs ISSUED) · FIX-1 PRESCREEN PASS (item 123, merge-ready) · PR #81 CONFIRMED CLOSED · prior: R100.11 REWORK RETURN (PR #85 @ `6235272`) PRESCREEN **PASS WITH NOTES** (item 121 — 28 movers/+1652 re-diffed by the seat's own hand; Smith 4344→5152; parked assumptions UNTOUCHED; gates-snapshot-deleted flag) · NEXT RUNG: COLD AUDIT on the line's final head · prior: PR #84 MERGED — merge `0c4aba84`, tools/seat standing (item 120) · FIX-1 DIRECTIVE ISSUED · PR #81 CLOSED AS SUPERSEDED (item 118) · REWORK WAS IN FLIGHT (item 117 — now RETURNED) · prior: items 115–116 · prior: SEAM FILING, item 112 — CORE v2.6 · CONSTRAINTS v1.13 + acceptance · DECISIONS v101 (R100.11 into the record) · manifest v4.18 · **ITEM-74 BLOCKER REWRITTEN** · v100 headline retained: (⚠ **R100.11 — THE ABSENCE PENALTY FADES ON *EVIDENCE*, NOT ON A CLOCK. OWNER-RULED.** PR #82's own return flagged it: **BAILEY SMITH missed 2024, came back and averaged 116 then 122 — and was still docked −515**, because the fade was a fixed 2-season SCHEDULE. **He had already produced the evidence that refutes the prior and a clock overrode it.** The absence term is a PRIOR about an UNOBSERVED return; **evidence dissolves it in BOTH directions** — good football proves him fine, and bad football is ALREADY IN HIS LEVEL, where charging him again is a DOUBLE-CHARGE. **NO SCHEDULE FALLBACK: the durable-injury risk is real but it is an AVAILABILITY question, and the engine already has an availability layer (D2's R5) — welding a clock into the LEVEL term would charge the fragility TWICE.** **AND IT IS THE MECHANISM THIS CHAPTER EXISTS TO KILL: S_AGE's zero at 30, the pedigree's cliff at 4 seasons, the 12-game bar, the 5-point bar — every one a SCHEDULE deciding what only EVIDENCE should decide.** **Item 111: PR #82 PRESCREEN PASS — Fix 1 reproduces R99.1's +1,171 EXACTLY from real code; G-COHORT PASSES with the young UNCUT; Jamarra lands at 484; Ladhams −306; pick 1 = 3000.**)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -2812,6 +2812,46 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       LEG-2 reconcile). Sharded seed (S6) to be authored by the supervisor and couriered by the owner.
       NO merge word until PR #81's closure is confirmed on the PR page (ruled item 118) and the ladder
       completes; bake/tag/promote remain the owner's written word after board+book viewing.
+
+122. **CHAPTER EXTENDED — OWNER-RULED 2026-07-15 ("Agree, finish this chapter. Let's run the jobs in
+    parallel").** Item 121's "cold audit next" is SUPERSEDED IN PLACE: the audit binds to a head, so it
+    DEFERS to the chapter's TRUE final head; the #85 prescreen stands. **PR #81 CONFIRMED CLOSED on the
+    page (owner, this date) — the item-118 precondition is satisfied.**
+    - **THE FLATTERY QUESTION (owner asked; answered):** the 123/+19,168 flattery census IS this chapter's
+      target, via its convergent legs — the evidence-weight regimes (pedigree ruling after production
+      should), `_eo`'s one-directionality (the engine's only anti-flattery term — kill the `min()`, keep
+      the term), evidence-weighted par decay (the owner's ruled direction), and S_AGE's untested 30+ zero.
+      The census is the before/after instrument, re-measured at the ladder. Flattery is NOT a separate
+      chapter.
+    - **THE #1/#2 BOUNDARY (one chapter?): PROVISIONAL — decided cheaply, not bet on.** The PVC
+      derivation SPEC fires NOW as a read-only parallel job (below). If the cure comes back small and
+      clean, the PVC fix rides THIS chapter's line — one ladder, one bake, per the owner's push. If it
+      comes back a beast, it splits into its own chapter and we will have lost nothing. Mitigation either
+      way: every lever ships the #85 pattern — its own kill-switch (=0 ⇒ byte-exact base) + committed
+      per-lever affected-row list — so the owner's viewing rung stays attributable even in one bake.
+    - **CORRECTION (supervisor miss, owned):** the turn-7 roadmap said A-PAIRS pair 2 still needed the
+      owner's name. STALE — CONSTRAINTS v1.13 PART 2 already carries his naming verbatim: **pair 2 =
+      harley-reid vs bontempelli ("Harley and Bont can be similar" → PARITY; measured +3.2% = PASS)** ·
+      **pair 3 = ryley-sanders vs bontempelli ("Bont should be slightly above Sanders"; measured +13.7%
+      the WRONG WAY = the standing failed read)**. Nothing outstanding on the names; pair 3's failure is
+      precisely what the PVC re-derivation cures.
+    - **THREE TIER-3 DIRECTIVES ISSUED at this filing (all read-only, parallel per S3; analysis head =
+      the line's head `62352729` — pin STRICT in each):** (a) S_AGE 30+ RESIDUAL (L-SAGE-FADE: is the
+      zero real?) · (b) GAP-LENGTH MAGNITUDE (feeds parked R100.11 assumption 1 — measure first, the
+      owner rules after) · (c) PVC DERIVATION SPEC (pair 3 + English-vs-Briggs as ONE base defect;
+      re-derive the CURE — G-Y0's recorded direction is INVERTED-STALE, re-derive it, do not reuse it).
+      No writer fires until the evidence-weight build directive is issued on this line.
+
+123. **SEAT-TOOLS FIX 1 RETURNED (PR #86, branch `claude/orient-register-step-fix-7p999u`, head
+    `9ca54be5545da59e4245b7f757b868496b5ea4e7`) — SUPERVISOR PRESCREEN: PASS, MERGE-READY (this seat's
+    own runs).** Fence clean FROM THE TRUE BASE (merge-base `75bc9bc4`; the register file in a
+    main-vs-branch diff is main being AHEAD by the v107 pen push, not a branch touch — checked).
+    orient.sh diff read in full: open-items register header printed truncated-200 with marker, loud die
+    on missing/empty (message verified); LTI line kept under the honest "pinned input, root" label.
+    Negative test REPLICATED by this seat (temp copy, register removed → exit 1, correct FAIL message;
+    real file untouched). Live re-run prints the register header rung correctly. **On merge: item 119's
+    INTERIM RULE (extra `head -n1`) RETIRES.** Expect the PR's CI red — inherited, the standing main red,
+    same as #84 (the branch touches nothing CI executes).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
