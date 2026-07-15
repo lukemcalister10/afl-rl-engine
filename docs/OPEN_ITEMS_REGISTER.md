@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v149 2026-07-15 · PEN: **CENSUS INSTRUMENTS v2 PRESCREENED — PASS (item 165): every aggregate recomputed by this seat from the committed sweeps and EXACT (head 150/+24,839 · unearned 125/+15,612 · noEO 126/+16,350 · noCAPT 150/+23,608; fixed-set legs 13,436+10,606+1,280−483 = 24,839 exact) · THE PURIFIED CHAPTER VERDICT: unearned label credit +15,612 vs the +19,168 pre-chapter baseline ≈ −19% — the disease drained · discontinuity live-path anchors match the cross-check; the dead-regime 12.69 cliff is 1.17 live · dead branch untouched (PVC)** · prior (item 164): aging prescreen · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v150 2026-07-15 · PEN: **AGING FINDING ACCEPTED BY THE OWNER (item 166, verbatim, WITH his reservation recorded): the 30+ zero and decline path stand; the age leg exits the merged scope · THE GOVERNANCE CORRECTION PUT TO HIM: he does not need to convince the supervisor — his reads are ground truth and NAMED OWNER OVERRIDES are the ruled instrument for individual convictions the class model cannot carry (Brodie precedent); at Gawn's age the conditioned sample is n≈2 — the class curve is extrapolating and cannot rule on him individually · bake still in flight** · prior (item 165): census v2 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3801,6 +3801,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       **1.17 on the live board** — dissolved, quantified.
     - **BOTH v2 INSTRUMENTS ARE NOW THE STANDING CENSUS TOOLS for PVC scoring** (v1s retained on their
       branches as lineage). Non-blocking rung; nothing above it moved.
+
+166. **AGING FINDING — OWNER ACCEPTED, RESERVATION RECORDED (2026-07-15, verbatim):** *"I'm sure if
+    we asked this question each year for the last 5 years it would say 'Gawn is just as likely as his
+    peers to decline even if he hasn't shown signs of it already' and 5 years later, he's still just as
+    good at 34/35 as he was at 30. But I appreciate that I will not win this one with you, so I accept
+    it. If Gawn and Bontempelli are going to be fairly valued by this model, I will have to find another
+    way to do it and convince you."*
+    - **RULING EFFECT:** the class finding stands ACCEPTED — the 30+ forward-carry zero and the current
+      decline path are law; NO age lever rides the merged PVC+FLEX chapter.
+    - **THE SUPERVISOR'S CORRECTION, PUT TO HIM (governance, not statistics):** "convince you" is the
+      wrong bar — HIS reads are ground truth until HE waives them (CORE MISSION). The class measurement
+      answers only the class question; his statistical point about Gawn is CORRECT and the return itself
+      said so (the persister tail is real; no individual verdict follows from the class curve; at
+      Gawn's age the conditioned cell is n≈2 — the model is EXTRAPOLATING there, and Gawn's own track
+      record is most of the evidence that exists). **The ruled instrument for an individual conviction
+      the class model cannot carry is a NAMED OWNER OVERRIDE** (the Brodie precedent; Q-GHOST (b) UI
+      treatment already built: post-override figure + OWNER OVERRIDE tag, model figure one hover away)
+      — or a SEALED READ with a band at the next viewing, which scores the model rather than editing
+      it. OFFERED: on his word, named Gawn/Bontempelli overrides fold into the merged chapter's
+      candidate and walk its ladder. No predicate-based lever will be dressed up to reach them —
+      that instrument stays refused by his own prior ruling.
+    - Bake: STILL IN FLIGHT per the owner (no tag, no promotion at this seat's fetch — consistent).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
