@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v154 2026-07-15 · PEN: **CALIBRATION RETURNED — PRESCREEN PASS (item 170): all three PVC axes MEASURED (compression β=0.364 peak / 0.683 proven-27+, CI excludes 1 · RUC iso trough intact, the trio was a one-player patch · young star-track UNDER-priced 1.44× top-pick — net-cut wrong-direction as measured law) + the ≤22 output→price slope is NEARLY FLAT (β=0.111) — the owner's Reid worry, measured · book cross-CPU sha drift = new hygiene item (bounded 99.6%) · ⚠ CORRECTION: the TAG + PROMOTION are NOT on the remote at this fetch (no v2.10, main f1e6865) — the owner's two commands still pending; the seam stays ARMED, not fired** · prior (item 169): bake prescreen · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v155 2026-07-15 · PEN: **cm_400 FREEZE POSTURE RATIFIED (owner, item 171: "Ratifying the freeze postures") — cm_400 FROZEN through the season; refits ONLY as named, kill-switched, owner-viewed events; the FIRST refit restores permanent re-derivability + fixes the false comment + installs the pinball drift monitor. **ITEM 75's INGESTION BLOCKER CLEARS on this ruling.** Sequencing guidance given: tag push is independent and still required; merge the promotion PR AFTER its checks go green** · prior (item 170): calibration prescreen · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3958,6 +3958,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       PROMOTION MERGE are NOT on the remote** (no refs/tags/v2.10; main = `f1e6865`, the docs line).
       The owner's "Done" referred to the calibration deliverables. **His two commands (item 169) remain
       pending; THE SEAM stays ARMED and fires only when both are live.**
+
+171. **cm_400: THE FREEZE POSTURE RATIFIED (owner, 2026-07-15, verbatim: "Ratifying the freeze
+    postures").** Operative ruling, grounded in the item-168 diagnosis:
+    - **cm_400 (`34faa865`) is FROZEN through the season** — the q97m treatment. Weekly ingestion NEVER
+      forces a refit; the board moves only through attributable demonstrated data.
+    - **Refits happen ONLY as NAMED, kill-switched, owner-viewed events** (season end, or a big model
+      change — the owner's item-163 cadence, now law).
+    - **At the FIRST named refit:** (i) fit on the current FIXED par_build so the re-baked band is
+      deterministically re-derivable forever (proven possible — retrain is byte-deterministic, item
+      168) · (ii) correct the false `wire_redesign.py` "cache==retrain" comment · (iii) commit the
+      pinball fit-quality measurement as the STANDING DRIFT MONITOR (per-round; a ruled bound triggers
+      the next refit early).
+    - **CONSEQUENCE: ITEM 75's INGESTION BLOCKER CLEARS** — its "board moves for reasons no lever
+      explains" scenario is foreclosed by the freeze; ingestion's remaining gate is item 67
+      (completeness) + the go-live provision. CONSTRAINTS/item-75 text updates ride the seam filing.
+    - **Sequencing guidance to the owner (asked, answered):** the TAG is independent of the merge and
+      STILL REQUIRED either way — it is the permanent name pinned to the exact bake commit `83f945a`
+      (bakes are made canonical BY TAG; the merge puts commits on main but names nothing). Recommended
+      order: push the tag now (it names an already-CI-verified commit), merge the promotion PR AFTER
+      its checks report green. Both steps, always.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
