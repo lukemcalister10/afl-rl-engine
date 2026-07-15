@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v135 2026-07-15 · PEN: **SEAT-TOOLS-2 PRESCREEN PASS (item 150: pen.py/board_diff/gates_brief; fence clean from the TRUE merge-base; red-paths proven; PR #92 correctly opened — recommend owner merges) · CAPTAINCY FIRED on `0cf723af` (in flight) · THE PATHWAY + ROTATION PLAN RECORDED** · prior (item 149): **TRIO PRESCREEN PASS: store 340a7a32→b1fd0bce · board 800d0399 · B1 CERTIFIED CLEAN (my own snapshot read) · cohort ratios under even the un-waived 1.30 (y5 1.2995) · 118-vs-106 reconciled (12 = back-section fringe) · CAPTAINCY CLEARED, base `0cf723af`** · prior (item 148): **EFFICIENCY REVIEW: SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v136 2026-07-15 · PEN: **CAPTAINCY RETURNED — PRESCREEN PASS (item 151): the CHAPTER'S FINAL HEAD = `9be07b8e` (board 790136a3) · y5 = 1.3057, THE WAIVER ZONE (B1 HALT at 1.30 by design; clears 1.335 by 0.0293, committed gate report) · pair 3 IMPROVED +15.9→+11.9 · seed FINAL v3 + rev141 FILED — ROTATE NOW** · prior (item 150): **SEAT-TOOLS-2 PASS: pen.py/board_diff/gates_brief; fence clean from the TRUE merge-base; red-paths proven; PR #92 correctly opened — recommend owner merges) · CAPTAINCY FIRED on `0cf723af` (in flight) · THE PATHWAY + ROTATION PLAN RECORDED** · prior (item 149): **TRIO PRESCREEN PASS: store 340a7a32→b1fd0bce · board 800d0399 · B1 CERTIFIED CLEAN (my own snapshot read) · cohort ratios under even the un-waived 1.30 (y5 1.2995) · 118-vs-106 reconciled (12 = back-section fringe) · CAPTAINCY CLEARED, base `0cf723af`** · prior (item 148): **EFFICIENCY REVIEW: SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3408,6 +3408,29 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     LEG 2) → owner views board+book vs SEALED READS → written bake word → bake+tag → promote main
     (green) → seam close → the PVC chapter opens.** ⚠ STILL OUTSTANDING: the book-calibration v1.1
     (Tier 3, the PVC scoring baseline) has not returned — chase at the seam, it does NOT block the bake.
+
+151. **CAPTAINCY RETURNED (PR #94, head `9be07b8e5939eeade71106ef1eaee112df183441`) — PRESCREEN PASS.
+    THE CHAPTER'S FINAL HEAD.** Mechanicals ✓ (strict on `0cf723af` · fence = rl_model.py f79fc740 +
+    data re-pins + session only; store b1fd0bce UNTOUCHED, _merged_recover unchanged, config unmoved ·
+    board RECOMPUTED 790136a3 == pin · seal 99be9b36). Env-read flag = `RL_CAPT` — the ORDERED
+    kill-switch, in-code pinned default (item-114 satisfied). Curve anchors verified in return vs spec
+    (asymptote 109.6557 · P(120)=0.99658 · NOT the 107.4 ghost); achieved credits Gawn 16.83 / Bont
+    12.33 / Daicos 3.35 vs fitted refs — gaps are projection-level differences, the curve reproduces
+    fitted credits at fitted levels. **y-COHORT (committed gate report, my read): y4 1.2960 · y5 1.3057 ·
+    y6 1.2544 — y5 breaches the frozen 1.30 (B1 HALT, suite UNEDITED — correct) and clears the owner's
+    1.335 by 0.0293: THE WAIVER ZONE, exactly what item 143 ruled.** Pair 3 IMPROVED +15.9%→+11.9%
+    (Bont the gun closes it; still fails the absolute read — scored). Pair 2 −3.3% PASS. Value-flow:
+    925/2652 movers ΣΔ −4020 (guns lift — Jackson +574, Xerri +459, Daicos +382; broad sub-bar drift
+    down via the load-time calibration — disclosed, the owner views it). RL_CAPT=0 → 800d0399 byte-exact
+    (committed proof; audit Shard C re-proves). >2× TIME FLAG disclosed: the SGC_REPORT_DIR env leak —
+    **SECOND occurrence today (trio had it too): HYGIENE ITEM — ship-gates should strip/reject SGC_* in
+    its subprocess env (post-bake, with snapshot store-qualified naming).** MY LEDGER: board_diff.py
+    keys rows by NAME and collapsed ~165 duplicate-name back rows (my 760 vs the build's row-based 925;
+    ΣΔ agrees under the same explanation) — tool fix post-bake: key by stable id. **The build's offer to
+    "watch PR #94" DECLINED (owner-advised): builds are disposable, one job per chat; #94 merges at
+    promotion on the owner's word.** **FILED THIS PUSH: HANDOVER rev141 (the pre-audit seam handover) +
+    manifest v4.25; seed FINAL v3 couriered (head filled; Shard-B waiver scoring added so the auditor
+    reads B1's HALT as the waived pass, not a new defect). ROTATION IS NOW.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
