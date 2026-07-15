@@ -1,0 +1,29 @@
+# gates_brief.py — known-good sample (captured 2026-07-15)
+# cmd A: python3 tools/seat/gates_brief.py gates_2030e5df.json acceptance_v1_15.json          (exit 0)
+# cmd B: python3 tools/seat/gates_brief.py gates_7c199a1f.json acceptance_v1_15.json          (exit 1)
+# known-good: A = the live head 2030e5df — 3 FAILs, all listed standing-fails (A2/A3/A12), 0 NEW-DEFECT.
+#             B = a snapshot carrying B4 FAIL — NOT in acceptance.standing_fails -> NEW-DEFECT, loud exit 1.
+
+### --- A: clean known-good (all FAILs are standing) ---
+== gates_brief · gates_2030e5df.json  (head=2030e5df store=340a7a32) ==
+tally  : FAIL=3  FEATURE=1  PASS=17  PENDING=4  STRUCK=1
+PICK 1 : 3000  (acceptance.numeraire.law)
+B1     : PASS
+  A12   STANDING-FAIL
+  A2    STANDING-FAIL
+  A3    STANDING-FAIL
+xcheck : all 3 FAIL(s) are listed standing-fails (0 NEW-DEFECT)
+exit: 0
+
+### --- B: a NEW-DEFECT (B4 unlisted) — RED, exit 1 ---
+== gates_brief · gates_7c199a1f.json  (head=7c199a1f store=644d1254) ==
+tally  : FAIL=4  FEATURE=1  NOT-RUN=1  PASS=14  PENDING=5  STRUCK=1
+PICK 1 : 3000  (acceptance.numeraire.law)
+B1     : PASS
+  A12   STANDING-FAIL
+  A2    STANDING-FAIL
+  A3    STANDING-FAIL
+  B4    NEW-DEFECT (not in acceptance.standing_fails)
+xcheck : 1 NEW-DEFECT — B4
+gates_brief: FAIL — gates_brief RED — NEW-DEFECT FAIL(s): B4
+exit: 1

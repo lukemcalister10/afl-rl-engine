@@ -10,6 +10,15 @@ raw evidence, never a bare verdict:
 | `prescreen.sh <branch> <base_sha>` | *What does this candidate branch touch, and does it hold the fence?* |
 | `gates_score.py <gates_json> [acceptance_json]` | *What do a build's gates say against the binding registry?* |
 
+**SEAT TOOLS 2 (item 148)** — three more, to cut the supervisor's per-turn tool+context burn. The
+first is the one non-reader in this directory: it makes a register push a single, asserted call.
+
+| script | question / job |
+|---|---|
+| `pen.py append …` / `pen.py verify` | *Append an item + bump the header + push — with every replace asserted (the item-147 law).* |
+| `board_diff.py <revA> <revB> [--names …]` | *How did the board move between two revs?* (the standard prescreen diff) |
+| `gates_brief.py <gates_json> [acceptance_json]` | *The one-glance gate read — FAILs cross-checked against the standing-fails list.* |
+
 ## What each prints
 
 **`orient.sh`** — one command, no args:
@@ -37,11 +46,41 @@ against the hard bound (`<= 130`) where the snapshot carries the numbers · **ev
 `dc` flag and note · **named anchor values** scanned from details. With the acceptance JSON it also
 scores matching entries **by id** (`guards.alias → gate`, `anchors.governed_by → gate`).
 
+**`pen.py append --item-file F --header-summary "…" -m MSG`** — the register pen, mechanised.
+Inserts F's item text **before** the `## FABLE'S QUEUE` section, bumps the header `vN → vN+1` (date
+kept), and rewrites **only** the PEN summary's leading segment, keeping a short `· prior: <old first
+clause>` pointer so headers stay SHORT (item 148). **Every replacement is asserted to match exactly
+once** — a `str.replace` that matches 0 or 2 times is a HARD FAIL *before any commit* (this is the
+item-147 law: the silent-no-op that stuck the header at a v130 draft and left item 145 twice). It also
+asserts `new_version == old+1` and that item numbers are unique. Then it `git add`s the register only,
+commits `MSG`, pushes `HEAD:main` with a token read from **`PEN_TOKEN`** (env only — never echoed,
+never written to any file; the push URL is built in memory and errors are stripped of the token), and
+re-reads the pushed commit's header first-200-chars, printing it beside the new main SHA and a `git
+diff --name-only` proving docs/-only. One call, ≤12 lines. `--dry-run` runs every assert but writes /
+commits / pushes nothing (used for the committed samples). `pen.py verify` prints header version +
+item count + a duplicate-item scan (≤6 lines). **`PEN_TOKEN` is checked EARLY** — unset ⇒ loud fail
+before any write, nothing token-shaped printed.
+
+**`board_diff.py <revA> <revB> [--names n1,…]`** — the standard prescreen diff, terse (replaces ~30
+lines of ad-hoc python the seat had rewritten five times). Reads `data/rl_build/rl_app_data.json` at
+both revs with `git show` (no checkout) and prints: mover count (`active[].v` changed) + added/removed
+· ΣΔ num-SCAR (signed net + gross) · age-bucket ΣΔ at the head rev (≤22 / 23–26 / ≥27) · top-3 cuts +
+top-3 lifts by name · any `--names` rows before→after · PICK 1 both sides (`picks` n=1) · pair-2 /
+pair-3 ratios (pick2/pick1, pick3/pick1). ≤15 lines.
+
+**`gates_brief.py <gates_json> [acceptance_json] [--full]`** — wraps `gates_score`'s reader for the
+one-glance read: status tally · PICK 1 · B1 status · every FAIL id one-per-line (notes only with
+`--full`) · **standing-fails cross-check** — each FAIL is scored against `acceptance.standing_fails`
+(STANDING-FAIL); any FAIL that is **not** a listed standing-fail is flagged **NEW-DEFECT** and the tool
+exits non-zero. ≤10 lines.
+
 ## House laws — each is cited where it bites
 
-1. **Scripts WRITE NOTHING.** Pure readers; the only writes are temp under `/tmp`. `git fetch` in
-   `prescreen.sh` populates the `.git` *object cache* (the directive-authorized way to READ a remote
-   branch) — it never touches the working tree, store, board, or docs.
+1. **Scripts WRITE NOTHING** — with **one** authorized exception: `pen.py append`'s single intended
+   commit+push of the register (its whole job; still gated by the asserts, `--dry-run` writes
+   nothing). Every other script is a pure reader; the only writes are temp under `/tmp`. `git fetch`
+   in `prescreen.sh` and `git show` in `board_diff.py` populate/read the `.git` *object cache* (the
+   directive-authorized way to READ history) — never the working tree, store, board, or docs.
 2. **Every line carries RAW EVIDENCE** — a SHA, an md5, a number, a note — never a bare verdict.
    `MATCH`/`DRIFT`/`YES`/`NO` always sit beside the two values that produced them.
 3. **Non-zero exit on ANY failure or missing input, and the exit code PROPAGATES.** Bash scripts run
@@ -63,6 +102,14 @@ NEW-ENV-READ CHECK), **115** (evidence read from the record, not asserted).
   e7d980eb…` — known-good: **ancestry YES, board `800bf461` MATCH**, 27 lines.
 - `samples/gates_score.out.txt` — `gates_score.py gates_fef5719d.json` — known-good:
   **B1 PASS, PICK 1 = 3000, three FAILs (A2/A3/A12)**; plus the acceptance-scored run.
+- `samples/pen.out.txt` — `pen.py verify` + `append --dry-run` (GREEN) + the **red-path proofs**:
+  a replace matching 0/2 times HARD-FAILs, a duplicate item number is caught, and `PEN_TOKEN` unset
+  fails loud (exit 1) with nothing token-shaped printed.
+- `samples/board_diff.out.txt` — `board_diff.py e1d8d78 71a8860 --names "Nick Daicos,Timothy English"`
+  — known-good: **758 movers, PICK 1 held 3000, pair curve reshaped (p2/1 0.834→1.000)**, English
+  2916→3132 (the item-107 anchor).
+- `samples/gates_brief.out.txt` — `gates_brief.py` on `gates_2030e5df.json` (clean: 3 standing FAILs,
+  0 NEW-DEFECT) and `gates_7c199a1f.json` (**B4 unlisted → NEW-DEFECT, exit 1**).
 
 ## One thing the scripts could not encode
 

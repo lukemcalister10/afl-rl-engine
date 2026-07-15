@@ -1,0 +1,17 @@
+# board_diff.py — known-good sample (captured 2026-07-15)
+# cmd: python3 tools/seat/board_diff.py e1d8d78 71a8860 --names "Nick Daicos,Timothy English"   (exit 0)
+# known-good: 758 movers, PICK 1 held at 3000 both sides, pair-curve reshaped (p2/1 0.834->1.000);
+#             English 2916->3132 is the item-107 anchor the owner read by eye. 12 lines.
+
+== board_diff · e1d8d78..71a8860 ==
+movers     : 758 / 804 common  (+0 added, -1 removed)
+ΣΔ SCAR    : net +35995  (gross 55035 over movers)
+age ΣΔ     : <=22 +21633 | 23–26 +7572 | >=27 +6790
+top cuts   : Connor Rozee 2892->2277 (-615); Sam Flanders 2282->1710 (-572); Joshua Kelly 1012->556 (-456)
+top lifts  : Josh Treacy 5312->6224 (+912); Max Holmes 5386->6150 (+764); Zeke Uwland 1984->2692 (+708)
+PICK 1     : A 3000 -> B 3000
+pair ratios: A p2/1=0.834 p3/1=0.750 | B p2/1=1.000 p3/1=0.939
+-- --names rows (before->after) --
+  Nick Daicos        7002 -> 7667  (age 23)  MOVED
+  Timothy English    2916 -> 3132  (age 29)  MOVED
+== board_diff OK ==
