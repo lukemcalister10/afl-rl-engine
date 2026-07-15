@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v144 2026-07-15 · PEN: **CENSUS CROSS-CHECK SCORED (item 160): headline par-relative flattery GREW +19,168→+24,839 — but the targeted iso disease DRAINED (Newcombe +560→+189) and the growth decomposes into RULED levers: this seat MEASURED the captaincy leg = +1,231 of the +5,671 growth (unmodified instrument, RL_CAPT=0 board, head aggregates reproduced exactly first); the instrument predates the chapter's two ruled value sources — re-cut queued post-bake · discontinuity: live probes show the dissolution (bar step 3.3→1.13); its headline counts read the RETIRED dead branch · NON-BLOCKING stands; owner judges at viewing** · prior (item 159): audit of record 5/5 clean, waiver applied visibly, item-74 leg 2 cleared · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v145 2026-07-15 · PEN: **THE FLATTERY GROWTH FULLY DECOMPOSED ON THE OWNER'S QUESTION (item 161): the FIX did NOT add flattery — the growth is the improver's _eo (+8,489 leg; without it the head census reads +16,350, BELOW the +19,168 baseline) + captaincy (+1,231); the iso drain lives in the TRIO'S STORE REPRICE (PICKEQ 60→90) so no switch can ablate it — Newcombe +560→+189 · owner's "32,926" reconciled: it is net BOARD ΣΔ (−5,074+38,000), a different measure from census flattery · named paths to the head explained (trio + captaincy landed after the improver)** · prior (item 160): census scored, non-blocking · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3642,6 +3642,45 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       the PVC chapter.
     - LADDER: unchanged — the bar was met at item 159; this diagnostic raises NO halt. Next rung = the
       owner's viewing.
+
+161. **THE OWNER'S QUESTION — "how has this fix to flattery ADDED flattery?" — ANSWERED BY MEASUREMENT
+    (this seat's own runs; the committed instrument byte-identical, env-only wiring, on the workspace
+    that reproduces the shipped board).** One-at-a-time lever ablations at the head (NON-ADDITIVE by
+    construction — shard C/item 158; each leg = head-with-lever-ON minus head-with-that-lever-OFF,
+    instrument's own rule flat≥25 or ≥2%):
+    | state | n | Σ flattery |
+    |---|---|---|
+    | HEAD, all levers ON | 150 | **+24,839** |
+    | improver `_eo` OFF (RL_EO2=0) | 126 | **+16,350** |
+    | captaincy OFF (RL_CAPT=0) | 150 | +23,608 |
+    | evidence-weight OFF (RL_EVW=0) | 138 | +24,008 |
+    | baseline 2026-07-13 (board 8a66b4ba, v2.9 store) | 123 | +19,168 |
+    - **THE FIX DID NOT ADD FLATTERY. THE GROWTH IS THE IMPROVER.** The `_eo` leg is **+8,489** — without
+      it the head census sits at +16,350, **BELOW the pre-chapter baseline**: net of the production-credit
+      lever, the chapter DRAINS flattery. Captaincy adds +1,231 (item 160). The EVW machinery's own
+      par-relative leg is small (+831, interaction-laden — its −5,714 board drain is largely
+      label-symmetric, so the twin comparison nets most of it out).
+    - **WHERE THE ISO DRAIN ACTUALLY LIVES: THE TRIO'S STORE REPRICE**, not a switch. The owner-desired
+      PICKEQ 60→90 MSD reprice (item 145/149) is a STORE WRITE (b1fd0bce) — embedded in every head
+      measurement, un-ablatable by env. Named proof: Newcombe's census flattery +560 (baseline) → **+189**
+      (head); with `_eo` also off he reads **−441** (DEFLATED). Ash: +506 head → −108 without `_eo`.
+      The disease the chapter named is dead in the store; `_eo` then re-credits DEMONSTRATED production
+      on top — a different, RULED value source (per-leg honesty verified at item 140).
+    - **THE OWNER'S "32,926" RECONCILED: it is net BOARD ΣΔ, not flattery.** −5,074 (his
+      chapter→evidence-head figure) + 38,000 (improver) = 32,926 — a sum of board VALUE MOVEMENTS between
+      builds. The census's +24,839 measures a DIFFERENT quantity (par-relative label credit vs a pick-1
+      twin). The two are not comparable and nothing on the head should equal 32,926 — two more writers
+      (trio ΣΔ incl. Newcombe −327 · captaincy ΣΔ −4,020) landed after his numbers were quoted.
+    - **NAMED PATHS TO THE HEAD (his v2.9 arithmetic + the two later writers):** Newcombe 4242 → −677 →
+      +737 = 4302 → TRIO −327 (the MSD reprice he ruled) → CAPT +9 = **3984 ✓ shipped** · Roberts 4386 →
+      +616 → +145 = 5147 → trio+capt −30 = **5117 ✓** · Ash 5043 → −808 → +1246 = 5481 → +70 = **5551 ✓**.
+      Endpoints reconcile EXACTLY with the shipped board. (Register-vs-owner delta noted, not chased: his
+      per-leg figures differ slightly from the prescreens' — e.g. −5,074 vs item 134's −5,714, Roberts
+      +616 vs +648 — likely a different cut/base by the prior seat; the endpoints agree, which is what
+      binds.)
+    - **THE METRIC QUESTION FOR THE OWNER (at viewing, or PVC):** should "flattery" keep counting
+      evidence-backed `_eo` production credit and captaincy credit? The queued instrument re-cut (item
+      160) would net ruled levers out so the census measures UNEARNED label credit again. His call.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
