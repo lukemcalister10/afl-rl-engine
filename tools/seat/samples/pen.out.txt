@@ -1,0 +1,38 @@
+# pen.py — known-good + red-path sample (captured 2026-07-15)
+# The register pen mechanised: append (asserted replaces + bump + commit + push) and verify.
+# NOTE: the real push path (git add/commit/push HEAD:main with PEN_TOKEN) is NOT exercised here —
+#       these captures use --dry-run (writes/commits/pushes NOTHING) and tiny fixtures so the
+#       assertions are proven without mutating the live register. On the real path the same
+#       asserts gate the single intended commit; PEN_TOKEN is read from the env, never printed.
+
+### --- verify (against the live register) ---   exit 0
+== pen · verify ==
+version    : v133 2026-07-15  (header line 1)
+items      : 146 numbered before FABLE'S QUEUE  (max=148)
+duplicates : none
+fable queue: 4 items
+== pen verify OK ==
+
+### --- append --dry-run (GREEN: all asserts pass, nothing written) ---   exit 0
+# cmd: pen.py append --item-file item149.txt --header-summary "…item 149…" -m "…" --dry-run
+== pen · append (dry-run) ==
+version    : v133 -> v134  (date 2026-07-15 kept)
+item       : inserted before FABLE'S QUEUE  (items 146 -> 147, numbers unique)
+header     : # OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v134 2026-07-15 · PEN: **SEAT-TOOLS-2 FILED (item 149): pen.py + board_diff.py + gates_brief.py under tools/seat/ w
+dry-run    : NO write / NO commit / NO push (asserts passed)
+== pen append OK (dry-run) ==
+
+### --- RED-PATH (a): item-147 law — a replace that matches 0 or 2 times HARD-FAILS before any write ---
+# (a.1) FABLE'S QUEUE marker present TWICE in the fixture -> found 2:
+pen: FAIL — asserted 1 replacement of [FABLE'S QUEUE marker], found 2 (item-147 law: refusing to write)
+exit: 1
+# (a.2) FABLE'S QUEUE marker ABSENT in the fixture -> found 0:
+pen: FAIL — asserted 1 replacement of [FABLE'S QUEUE marker], found 0 (item-147 law: refusing to write)
+exit: 1
+# (a.3) twin item-147 defect — inserting a duplicate item number is caught:
+pen: FAIL — duplicate item numbers before FABLE'S QUEUE: [2]
+exit: 1
+
+### --- RED-PATH (b): PEN_TOKEN unset on the real push path — loud fail, nothing token-shaped, no write ---
+pen: FAIL — PEN_TOKEN is unset — refusing to push (set it in the env; it is never printed or written)
+exit: 1
