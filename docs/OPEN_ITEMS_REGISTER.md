@@ -3342,6 +3342,21 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     owner scores the resulting MSD prices at board viewing against his sealed reads (on-sight per
     A-PAIRS/OQ-D). **Chain unchanged: trio (this build) → captaincy on its head → audit.**
 
+146. **ROTATION-READINESS (owner-raised 2026-07-15): the Fable safeguards routing has been redirecting to
+    Opus 4.8 every message; the owner asks whether to move to a fresh Fable chat.** SUPERVISOR ANSWER
+    (recorded): (1) the routing is Anthropic's conservatively-tuned Fable safeguard (catches some harmless
+    requests; <5% of sessions on average) — a FRESH CHAT is a reasonable way to shed whatever accumulated
+    context keeps matching; the specific trigger is not diagnosable from here (do NOT confabulate one).
+    (2) The seat is MODEL-AGNOSTIC BY DESIGN — supervising (plan · prescreen · verify · author directives)
+    is well within Opus; the register + journals + seam pack mean NOTHING load-bearing lives only in a
+    chat. (3) Rotation is doctrinally cheap; mid-chain is fine because the register (v131) is fully current
+    and **HANDOVER is refreshed to rev140** capturing the exact in-flight state (pin done → trio running →
+    captaincy queued → audit). (4) The one moment Fable's judgement is highest-value: if the captaincy
+    build HALTS on its future-projection leg. **READINESS FILED: manifest v4.24 · HANDOVER rev140;
+    rev139 archived. A new seat runs the freshness check, reads the register, and is oriented — no work
+    lost.** Owner PK sync on rotation: manifest v4.24 + HANDOVER rev140 + DECISIONS v102 into Project
+    knowledge.
+
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
    Unifies the flattery decay + the nqual cliff. Includes F1 (G-PEAK collision) + F2 (reference frame).
