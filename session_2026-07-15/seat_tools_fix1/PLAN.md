@@ -34,10 +34,11 @@ Everything else read-only. No store/engine/data/docs writes.
 
 ## Steps
 1. [x] Base pin verify · read orient.sh, sample, register items 119/120, CORE seam-pack rule.
-2. [ ] Commit this PLAN (first artifact).
-3. [ ] Edit orient.sh: relabel LTI check (existence, still a guard) + rewrite register-header step to
-       read docs/OPEN_ITEMS_REGISTER.md line 1 with 200-char truncation.
-4. [ ] Live run → refresh sample.
-5. [ ] Negative test in temp checkout copy; capture command + exit code to session dir.
-6. [ ] Commit + push -u origin branch.
-7. [ ] RETURN.
+2. [x] Commit this PLAN (first artifact).
+3. [x] Edit orient.sh: new open-items rung (docs/OPEN_ITEMS_REGISTER.md line 1, die-loud, 200-char
+       truncate) + LTI rung relabelled honestly as pinned input (root). Syntax OK, live exit 0.
+4. [x] Live run → refreshed sample (4-line header; exit 0 recorded).
+5. [x] Negative test proven (negative_test.md): register removed from a full checkout copy → exit 1,
+       loud FAIL, real file untouched.
+6. [x] Commit + push -u origin branch.
+7. [x] RETURN.
