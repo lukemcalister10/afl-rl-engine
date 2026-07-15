@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v153 2026-07-15 · PEN: **THE BAKE RETURNED — PRESCREEN PASS (item 169, every claim re-verified from my own clone + API): bake head 83f945a on 9be07b8e STRICT · item-158 sidecar FIXED on committed bytes (own_md5==content==790136a3) · board byte-identical, zero movers · gates snapshot 42abe7d5 tallies EXACT (FAIL=3 = A2/A3/A12 only · B1 honest HALT, waiver zone) · CI GREEN at 83f945a (check-run success, API-read, item-115 exception) · tag + promotion correctly OWNER-GATED (403s) — his two commands are queued; THE SEAM fires on the tag + promotion landing** · prior (item 168): cm_400 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v154 2026-07-15 · PEN: **CALIBRATION RETURNED — PRESCREEN PASS (item 170): all three PVC axes MEASURED (compression β=0.364 peak / 0.683 proven-27+, CI excludes 1 · RUC iso trough intact, the trio was a one-player patch · young star-track UNDER-priced 1.44× top-pick — net-cut wrong-direction as measured law) + the ≤22 output→price slope is NEARLY FLAT (β=0.111) — the owner's Reid worry, measured · book cross-CPU sha drift = new hygiene item (bounded 99.6%) · ⚠ CORRECTION: the TAG + PROMOTION are NOT on the remote at this fetch (no v2.10, main f1e6865) — the owner's two commands still pending; the seam stays ARMED, not fired** · prior (item 169): bake prescreen · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3924,6 +3924,40 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       posture on his word · lens routing · aging closure · override doctrine) · manifest v4.27 ·
       HANDOVER rev142 · docs archive · PK sync ask · seat rotation · the PVC+FLEX spec authored on the
       calibration return.
+
+170. **BOOK CALIBRATION v1.1 RETURNED (PR #96, branch `claude/walk-forward-book-calibration-pwojve`,
+    content head `39eeb69`, RETURN-fill `cf153fd`) — SUPERVISOR PRESCREEN: PASS (headline numbers
+    re-read from the committed `_summary.json` by this seat), TWO NOTES. THIS IS THE PVC+FLEX SPEC'S
+    MEASURED BASELINE.**
+    - **THE THREE RULED AXES, ALL CONFIRMED WITH NUMBERS (my spot-checks in brackets):**
+      (1) **COMPRESSION (item 131):** price ~ output^β with **β = 0.364 peak [0.322, 0.411, n=598]** and
+      **0.683 proven-27+ [0.465, 0.904]** — CI excludes 1 at every band; English/Briggs 5.77× recent
+      output above replacement → priced **1.56×** [verified]. The Gawn/Bont/English mechanism, measured.
+      (2) **MID-ROUND TROUGH (item 132):** the iso pos×pick tax is INTACT and evidence-blind — RUC picks
+      19–33 = −10..−19% while pick-34 = 1.000 (English −11.5%); **the trio was a ONE-PLAYER store patch;
+      the whole table remains.** The English-leg evidence-fade is squarely the cure axis.
+      (3) **YOUNG (item 130):** star-track young are UNDER-priced vs realisation (1.44× at top picks
+      [verified] rising to ~7.7× late) while unconditional pedigree is over-priced (Sanders) — **a young
+      net-cut is wrong-direction AS MEASURED LAW**, exactly as ruled.
+    - **THE REID FINDING (unprompted, decision-grade):** the ≤22 band's output→price slope is
+      **β = 0.111 [−0.01, 0.286]** — for under-23s, price barely responds to scoring intensity at all;
+      value rides runway volume. **This is the owner's Reid worry (item 168), measured** — the spec's
+      convexity cure must extend intensity-responsiveness DOWN the age bands (projected years through
+      the same map), not only lift the proven top.
+    - NOTE 1 (declared lineage deviation, accepted): commits sit on the register line, but the ANALYSIS
+      data is `9be07b8e`'s — Guard-5 pins asserted (store b1fd0bce · engine fc7045d6) and
+      `_summary.json` base field verified. PR #96 shows inherited register commits; substantive content
+      = f202b91 + 39eeb69 (session dir only). Merge normally post-promotion.
+    - **NOTE 2 (NEW HYGIENE ITEM — the book's cross-CPU determinism):** the regenerated book's
+      stable-sha differed cross-runner (1b3c856a vs sealed 99be9b36; thread-count ruled out; bounded
+      DIRECTLY at 99.6% exact, ≤4 SCAR on 0.4% of cells; the SEALED book was scored). The par_build fix
+      proved the BOARD's cross-CPU determinism (item 115); **the BOOK matrix was never separately
+      proven.** Queued: a book-determinism check rides the next determinism window (not a bake blocker;
+      shard D reproduced the seal on-pin).
+    - **⚠ CORRECTION TO THE RECORD (this seat's own ls-remote, this turn): the v2.10 TAG and the
+      PROMOTION MERGE are NOT on the remote** (no refs/tags/v2.10; main = `f1e6865`, the docs line).
+      The owner's "Done" referred to the calibration deliverables. **His two commands (item 169) remain
+      pending; THE SEAM stays ARMED and fires only when both are live.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
