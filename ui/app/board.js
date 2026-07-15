@@ -10,6 +10,15 @@ MD.board = (function () {
   // spec was locatable; the ranking *information* lives here inline (club headers ranked by ΣSCAR).
   let clubFilter = null;   // null == all AFFL clubs
   let groupByClub = false;
+  let posFilter = null;    // item 5: null == all positions
+
+  /* distinct position labels present, in football order (for the position filter). */
+  function positions() {
+    const order = { "Mid": 1, "Ruck": 2, "Key Fwd": 3, "Fwd": 4, "Key Def": 5, "Def": 6 };
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) { if (p.pos) set[p.pos] = 1; });
+    return Object.keys(set).sort(function (a, b) { return (order[a] || 99) - (order[b] || 99); });
+  }
 
   /* AFFL clubs present in the working board, alphabetical (for the filter control). */
   function afflClubs() {
@@ -237,6 +246,18 @@ MD.board = (function () {
       });
       wrap.appendChild(rseg);
 
+      // item 5: filter by position.
+      wrap.appendChild(fmt.el("span", "lbl", "Position"));
+      const psel = document.createElement("select");
+      psel.className = "boardsel";
+      psel.innerHTML = '<option value="">all positions</option>' +
+        positions().map(function (pp) {
+          return '<option value="' + fmt.esc(pp) + '"' + (posFilter === pp ? " selected" : "") + ">" +
+            fmt.esc(pp) + "</option>";
+        }).join("");
+      psel.addEventListener("change", function () { posFilter = psel.value || null; render(container); });
+      wrap.appendChild(psel);
+
       // item 2: team-context lens — filter to one AFFL club + group-by-club (ΣSCAR totals).
       wrap.appendChild(fmt.el("span", "lbl", "Team lens"));
       const csel = document.createElement("select");
@@ -282,6 +303,11 @@ MD.board = (function () {
     if (s.tier === "working" && onlyReads) {
       pool = pool.filter(function (r) { return MD.anchors[r.p.key]; });
     }
+    // item 5: position filter (applies before club aggregation, so ΣSCAR/ranks respect the active
+    // position lens — e.g. "which club has the strongest mids").
+    if (s.tier === "working" && posFilter) {
+      pool = pool.filter(function (r) { return r.p.pos === posFilter; });
+    }
 
     // item 2: canonical club ranking (ΣSCAR over the full unfiltered pool) — used for club-rank badges.
     const clubRanks = {};
@@ -316,9 +342,11 @@ MD.board = (function () {
 
     const foot = fmt.el("footer", "foot");
     if (s.tier === "working") {
+      const shown = groupByClub ? "grouped by AFFL club" :
+        (pool.length > 60 ? "showing top 60 of " + fmt.n(pool.length) : "showing all " + fmt.n(pool.length));
       foot.innerHTML = "volt = your touch (reads · rules · controls) · the value line = share of the top price, its colour warming as it fills · " +
-        "movement pills always signed · override headroom lives on the card's waterfall · showing top 60 of " +
-        fmt.n(pool.length) + (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
+        "movement pills always signed · override headroom lives on the card's waterfall · " + shown +
+        (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
     } else {
       foot.innerHTML = "the value line = share of the top price, its colour warming as it fills · movement pills always signed, never colour alone · public trim — no ids, no internals";
     }
