@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v132 2026-07-15 · PEN: **REGISTER REPAIRED (item 147): the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v133 2026-07-15 · PEN: **EFFICIENCY REVIEW (item 148, owner-asked): SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3353,6 +3353,23 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     first 200 chars are re-read from the pushed commit after every push.** Kin to the turn-9 ledger entry
     (swallowed git stderr) — same disease, silence where a failure happened.
 
+
+148. **SUPERVISOR EFFICIENCY REVIEW (owner-asked 2026-07-15: keep supervisor chats strong longer).**
+    Measured burn sources this sitting and the fixes, recorded for every future seat:
+    (1) **Register mechanics → `pen.py`** (SEAT-TOOLS-2 DIRECTIVE ISSUED, Tier 3, parallel-safe fence):
+    append+bump+push+verify in one call with ASSERTED replacement counts (makes item-147's failure
+    impossible), token via env only, ≤12 output lines. (2) **Ad-hoc verification python → scripts**:
+    `board_diff.py` (the standard prescreen diff, rewritten ~5× today at ~30 lines each) and
+    `gates_brief.py` (gates_score wrapper, standing-fails cross-checked). (3) **PRACTICE (adopted now,
+    binding on this pen):** journals carry STATE-DELTA + pointers only (the register is the durable
+    record; stop duplicating filed text) · register pushes BATCH (rulings/returns/state-changes only,
+    not Q&A turns) · tool outputs filtered to asserted lines · **headers stay SHORT** — the PEN summary
+    keeps its last ~2 items + a `prior:` pointer; long retained headlines live in ITEMS, not the header
+    (note: the v132 header rewrite dropped the old retained R100.11 headline from the header line — the
+    ruling itself is safe in the items and DECISIONS v98–v101; treat headers as pointers henceforth).
+    (4) NOT changed: per-turn journal files (crash insurance, CORE rule 8) · fresh-fetch verification ·
+    directive detail (they are the product). Rotation remains the backstop: rev141 files at the
+    pre-audit seam per the turn-40 plan.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
