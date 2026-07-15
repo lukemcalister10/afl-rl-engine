@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v141 2026-07-15 · PEN: **AUDIT FRAMING CORRECTED — SHARD B's GOVERNANCE CATCH ADOPTED (item 156): the seed must NOT ask the auditor to apply the owner's WAIVER ('waived-pass') — that launders a governance call into a measurement. FIX: auditor reports the FROZEN gate's real verdict (HALT@1.30) + raw ratios; the SUPERVISOR applies the 1.335 waiver VISIBLY at reconcile. Shard C's 'byte-match≠determinism' caveat CORRECT. Auditor = full reasoner, not a judgment-suppressed shard** · prior (item 155): **CENSUS CROSS-CHECK FIRED (item 155, owner-worded): both census instruments run UNMODIFIED (instrument-freeze guard) from their own branches against the final head `9be07b8e` — the chapter's SUCCESS METRIC (did the flattery drain?); Tier 3, parallel, NON-BLOCKING for the bake** · prior (item 154): **SHARD E WITHDRAWN: the flattery/discontinuity census harnesses were never merged to the candidate line or main (verified: `d6c481f6`/`3ca74f3` are unmerged branches), so a head-pinned blind audit cannot run them. The auditor HALTED correctly (no fabrication). Censuses are DIAGNOSTICS, not gates — the bake's bar is A/B/C/D/F. Optional Tier-3 cross-check offered; does NOT block the bake** · prior (item 153): **AUDIT SEED REFRAMED: a memory-off model declined the 'independent auditor / don't reconcile' framing as a certification it couldn't vouch for — RIGHT that a bare number isn't verification, WRONG that the design is empty (blind-measure-then-separate-reconcile is MORE rigorous). Seeds reworded: 'blind measurement instrument', explicit 'not certifying', why-blind note. Blinding + silence-is-a-red + separate reconcile RETAINED** · prior (item 152): **AUDIT INSTRUMENT: memory-off-outside-the-Project = a VALID independent auditor (incognito is unstable on mobile); the reconciling seat must NOT reject the six returns for not-being-incognito** · prior: **CAPTAINCY RETURNED — PRESCREEN PASS (item 151): the CHAPTER'S FINAL HEAD = `9be07b8e` (board 790136a3) · y5 = 1.3057, THE WAIVER ZONE (B1 HALT at 1.30 by design; clears 1.335 by 0.0293, committed gate report) · pair 3 IMPROVED +15.9→+11.9 · seed FINAL v3 + rev141 FILED — ROTATE NOW** · prior (item 150): **SEAT-TOOLS-2 PASS: pen.py/board_diff/gates_brief; fence clean from the TRUE merge-base; red-paths proven; PR #92 correctly opened — recommend owner merges) · CAPTAINCY FIRED on `0cf723af` (in flight) · THE PATHWAY + ROTATION PLAN RECORDED** · prior (item 149): **TRIO PRESCREEN PASS: store 340a7a32→b1fd0bce · board 800d0399 · B1 CERTIFIED CLEAN (my own snapshot read) · cohort ratios under even the un-waived 1.30 (y5 1.2995) · 118-vs-106 reconciled (12 = back-section fringe) · CAPTAINCY CLEARED, base `0cf723af`** · prior (item 148): **EFFICIENCY REVIEW: SEAT-TOOLS-2 DIRECTIVE ISSUED (pen.py with asserted replaces + board_diff.py + gates_brief.py — Tier 3, parallel) + practice changes adopted (terser journals · batched pushes · filtered outputs · SHORT headers with a prior-pointer)** · prior (item 147): **REGISTER REPAIRED: the header had been STUCK AT A v130 DRAFT and ITEM 145 EXISTED TWICE — two silent-no-op str.replace edits (turns 36–37); deduped WITH the draft's verified findings FOLDED, header rewritten; standing fix = every pen replace now ASSERTS its match count** · prior: ROTATION-READINESS rev140/v4.24 (item 146) · FULL TRIO STORE-ONLY owner-ruled, MSD reprice desired (item 145) · 1.335 WAIVER FILED (item 143) · IMPROVER PASS, A9 self-resolved (item 140)
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v142 2026-07-15 · PEN: **R100.11 FULLY CLOSED — the <20 clamp zero ruled PERMANENT (item 157, R102.6, DECISIONS v103 filed) · SHARDS A+C RECONCILED clean, no unexplained delta; ONE provenance-hygiene defect (stale board self-stamp) CONFIRMED and queued to the bake build; C's claimed base non-reproduction RESOLVED by this seat's own run — 800d0399 reproduces byte-exact on the frozen exporter (item 158)** · prior (item 156): audit framing corrected — auditors report RAW verdicts (B1 HALT@1.30) + caveats; the supervisor applies the 1.335 waiver VISIBLY at reconcile · earlier chain: the item entries themselves (header shortened per item 148)
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3523,6 +3523,55 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       the 1.335 waiver yourself, in the open. B/C/F all read as MY seed-craft flaw (over-scripting
       suppresses the judgement that is the auditor's whole value), NOT a build defect — the builds are
       reading clean.**
+
+157. **R100.11 FULLY CLOSED — THE <20 CLAMP RULED PERMANENT (owner, 2026-07-15, verbatim: "Happy to rule
+    the zero permanent - option B. Such an edge case it's not worth spending time over.").** The absence
+    charge's age U-curve stays clamped to ZERO below age ~20 — LAW, no longer an assumption (options put
+    symmetrically in-chat; (b) chosen over parked-with-trigger (a) and measure-now (c)). NO code change:
+    the clamp ships as-is in the candidate (item 121 verified its lines unmodified). Both R100.11
+    declared assumptions are now ruled: gap-length (item 126, no scaling) · the <20 clamp (this item).
+    Filed this push: DECISIONS v103 (R102.6) · manifest v4.26 (the v4.25 pack-table self-row read v4.22 —
+    fixed; its changelog described the v4.22-era filing — corrected).
+
+158. **SHARDS A + C RECONCILED (interim; D/F + census + build return outstanding) — NO UNEXPLAINED DELTA;
+    ONE REAL DEFECT (provenance hygiene, fix queued to the bake build).** Both shards at the final head
+    `9be07b8e`, memory-off, raw-numbers-only per item 156. Claimed-side ledger: items 134/140/142/149/151.
+    - **SHARD A (guards): CLEAN MATCH.** 5/5 SSI guards PASS, all exits 0, from a cold checkout; every
+      pin == the claimed ledger (store b1fd0bce · engine fc7045d6 · rl_model f79fc740 · cm_400 34faa865 ·
+      q97m cfdc7321 · config c2d233ae) · canary (josh-ward +40) stuck through board AND book, numéraire
+      coherent · acceptance G-DATA asserted from the JSON, no guard in standing_fails. Honest scope notes
+      (guards prove provenance-coherence, not number-correctness; on-pin sandbox) accepted per item 156.
+    - **SHARD C — the strong result: the board REPRODUCES byte-exact.** Gate-mode regeneration ==
+      shipped == expected_boot pin == `790136a3` (matches item 151's claim). Store pin PASS. The seven
+      chapter kill-switches enumerated FROM CODE match the seed's list.
+    - **SHARD C's claimed "genuine non-reproduction" of the `800d0399` base: RESOLVED — THE CLAIM
+      REPRODUCES (this seat's own run).** Fresh bootstrap of `9be07b8e`, pinned toolchain (Py 3.12.3 /
+      numpy 2.4.4 / scipy 1.17.1 / sklearn 1.8.0): gate-mode default → `790136a3` (environment validity
+      PROVEN first), then the FROZEN exporter (rl_export.py) dev-shell RL_CAPT=0 → **`800d0399`
+      BYTE-EXACT**, exactly as item 151 claimed. C's differing `8fa02cb0` came from its OWN serialization
+      path (adds an override-metadata block; its all-on dev hash `29b19acf` ≠ `790136a3` shows the same
+      instrument offset) — an ad-hoc instrument: per S4 a FINDING, never a verdict. Red-path observed en
+      route: gate mode correctly REJECTS RL_CAPT=0 (config-manifest HALT, exit 1, board untouched) — the
+      kill-switch is dev-shell-only by construction; the build's proof was dev-shell dump per its PLAN.
+    - **THE ONE REAL DEFECT (C's find, CONFIRMED by this seat's own read of the committed bytes):**
+      `data/rl_build/rl_app_data.json.srcmd5` carries own_md5 = `800d0399` (the PRE-captaincy board)
+      while the committed content = `790136a3` — the captaincy build re-pinned expected_boot.board but
+      left the board's SELF-STAMP stale. source_md5 (`b1fd0bce`) correct; content proven right; zero
+      value moves. **FIX QUEUED: the bake build re-stamps the sidecar alongside its standing re-pin
+      duties; verified at the bake.** Guard-1 exposure noted: an own-integrity check on the COMMITTED
+      bytes pre-rebuild would red; shard A's G1 PASS ran post-canary-rebuild (fresh stamp) — both shards
+      measured truly, on different bytes.
+    - **C's remaining flags, dispositioned:** "all-7-off = pre-captaincy base" — C is CORRECT, that was
+      a SEED-craft flaw (the item-156 pattern); the committed base is RL_CAPT=0 only, per the build's own
+      PLAN.md · switch NON-ADDITIVITY (Σlegs 24,403 vs all-on 29,142; max per-player |Δ| 1,549, Wilmot) —
+      an EXPECTED property: legs share the level machinery (declared and accepted, item 140); G-ATTR's
+      claim is per-switch separability, not additive decomposition · ~14 other same-idiom env toggles +
+      RL_YOUNG's own "kill-switch" comment tag — noted; "the chapter's seven" is a curated subset
+      (hygiene candidate: post-bake, tag vocabulary cleanup) · determinism-achieved-by-fix caveat —
+      already owned (items 105–106, 114–115).
+    - **C's question back ("what is this audit feeding into?") — ANSWERED: the internal pre-bake
+      independent re-run rung (CORE ladder); the supervisor reconciles, the owner decides; NOTHING
+      external is being certified.**
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
