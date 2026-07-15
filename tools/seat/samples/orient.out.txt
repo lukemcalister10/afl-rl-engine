@@ -1,0 +1,45 @@
+# orient.sh — live-state sample (captured 2026-07-15)
+# cmd: bash tools/seat/orient.sh   (exit 0)
+
+== orient · https://github.com/lukemcalister10/afl-rl-engine.git ==
+-- ls-remote (RAW SHAs) --
+  refs/heads/main        5738f2b2dfbcb7fd746c3c349a09c518d6b541a0
+  refs/tags/v2.9         9f8ae7616555ce55c67ae2076247662960b731e5
+  checkout HEAD          5738f2b2dfbcb7fd746c3c349a09c518d6b541a0
+-- register header (raw line 1) --
+  # LTI & AVAILABILITY REGISTER — Luke's ground-truth data — KEYED SIDECAR v1 · 2026-07-09
+-- docs/ listing --
+  00_MANIFEST_v4_21.md
+  AFL_RL_WALKFORWARD_book_nogames_8aed420a.xlsx
+  AFL_RL_WALKFORWARD_book_v21_c8051893.xlsx
+  AFL_RL_WALKFORWARD_book_v2_4a134d05.xlsx
+  AUDIT_COLD_v21_c8051893.md
+  BUILD_report_2026-07-01_mechanism-pinned-rozee.md
+  CHANGELOG.md
+  CONSTRAINTS_v1_13.md
+  CORE_v2_8.md
+  DECISIONS_v101_2026-07-15.md
+  GO_LIVE_round_score_ingestion.md
+  HANDOVER_rev139_2026-07-15.md
+  OPEN_ITEMS_REGISTER.md
+  ROADMAP_v9_2026-07-06.md
+  SINGLE_SOURCE_INVARIANT.md
+  SYNTHESIS_fable_wave_2026-07-12.md
+  UNRESOLVED.md
+  acceptance_v1_13.json
+  archive
+  inputs
+  process
+  rationale
+  returns
+  ui_direction
+  ui_styles
+-- pack doc HEADER VERSIONS (for PK compare) --
+  MANIFEST    00_MANIFEST_v4_21.md               # 00_MANIFEST — v4.21 · 2026-07-15 · supersedes v4.20
+  CORE        CORE_v2_8.md                       # CORE — AFL SuperCoach RL engine — v2.8 · 2026-07-15 · supersedes v2.7
+  HANDOVER    HANDOVER_rev139_2026-07-15.md      # HANDOVER — rev139 · 2026-07-15 · supersedes rev138 (same-day P1/P3 fold; nothing else changed)
+  DECISIONS   DECISIONS_v101_2026-07-15.md       # DECISIONS — v101 · 2026-07-15 · supersedes v100
+  CONSTRAINTS CONSTRAINTS_v1_13.md               # CONSTRAINTS — the single-source registry of guards and acceptance anchors — v1.13 · 2026-07-15 · supersedes v1.12
+  acceptance  acceptance_v1_13.json              version v1.13 date 2026-07-15
+  SSI         SINGLE_SOURCE_INVARIANT.md         # THE SINGLE-SOURCE INVARIANT — v1.3 — read this before touching data or code
+== orient OK ==
