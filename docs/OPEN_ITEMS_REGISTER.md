@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v156 2026-07-15 · PEN: **THE v2.10 SEAM IS FILED (item 172): chapter BAKED + PROMOTED (tag v2.10 = d14efae · main = a64c47f, two-parent PR #97; board 790136a3 · seal 99be9b36 · pick 1 = 3000, all verified by this seat's own clone) · THE 1.335 WAIVER REVERTED to 1.30 (CONSTRAINTS v1.16 + acceptance v1.16) · pack refreshed: manifest v4.27 · DECISIONS v104 (R103.1–.7) · HANDOVER rev142 · v4.26/v103/rev141 archived · L-CAPTAIN OPERATIVE · cm_400 FROZEN (item 75 cleared) · main CI was IN-PROGRESS at filing — verify green · PK SYNC ASK to the owner · SEAT ROTATION OPEN** · prior (item 171): cm_400 ratified · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v157 2026-07-15 · PEN: **SUPERVISOR MISS CORRECTED (item 173): the UI directive said the AFFL club ranking page was "previously specced" — the build searched docs/ui_direction, docs/ui_styles, registers, notepads, full git history and found NO such spec. IT IS RIGHT; NO SPEC EXISTS — my seed-craft error (assumed from register item 163's wording). RULING to the build: BUILD THE REST, DEFER THE PAGE (its option 1) — ship items 1,3-8 + item-2 group/filter/ΣSCAR now, flag the page in RETURN; the page waits for the OWNER'S spec (a genuine design decision, not an invention)** · prior (item 172): the v2.10 seam · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4004,6 +4004,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       the seam pack, runs the freshness check, files the handed pack, continues). The PVC+FLEX spec is
       the incoming seat's first authoring job, on the complete baseline set (calibration 170 · census-v2
       165 · aging closed).
+
+173. **SUPERVISOR MISS — THE "PREVIOUSLY-SPECCED AFFL RANKING PAGE" DOES NOT EXIST (2026-07-15).**
+    The UI v1.1 directive (item 163) told the build the AFFL club ranking page was "previously specced"
+    and to locate + cite it or HALT-AND-ASK. **The build did exactly right:** it searched
+    docs/ui_direction/, docs/ui_styles/, the registers, the notepads, and full git history, found no
+    such spec, refused to invent one (the directive forbids it), and asked. **THERE IS NO SPEC** — this
+    seat verified the same (only the register's own item-163 wording references it; no design artifact).
+    A supervisor seed-craft error: "the previously-specced page" was asserted from the feedback's
+    phrasing, not from a located document — the exact "plausible claim written as fact" failure the
+    project warns against. Directly acknowledged.
+    - **RULING TO THE BUILD (its OPTION 1, "build rest, defer page"):** ship items 1 · 3 · 4 · 5 · 6 · 7
+      · 8 now, PLUS item-2's group/filter-by-AFFL-club + club ΣSCAR totals (all real, unblocked). The
+      standalone RANKING PAGE is DEFERRED — flagged in RETURN, NOT built, NOT invented. The other three
+      options are declined: "propose a design" bends the no-invent fence; "spec exists, point me" is
+      false (there is none); "halt entire job" throws away seven deliverable items over one.
+    - **THE PAGE IS NOW A REAL OPEN DESIGN ITEM for the OWNER** (not a lost artifact): what should the
+      AFFL club ranking page show and rank — club ΣSCAR · roster depth · best-XI · positional balance? A
+      genuine design decision. It rides the UI's next pass once the owner specs it (or delegates the
+      design to a Fable seat with his brief). No board/value impact — pure view.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
