@@ -35,27 +35,38 @@ condensed caps for names/labels, mono tabular figures; **full names everywhere**
   with a colour spectrum along the fill**. This PLAN records the amendment; the item-3 commit cites item 163.
   The old squares are **not** treated as protected.
 
-## THE FEEDBACK BATCH — one commit + one screenshot each (screenshot-per-change checklist)
-- [ ] **0 · PLAN** (this file). *(no screenshot — the artifact is the plan)*
-- [ ] **A · base refresh** — `extract_board_view.py` stamp `v2.8→v2.10`; regenerate bundles from tagged board
-      `790136a3`; `config.EXPECTED_BOARD 3dc19fbb→790136a3`. → `screenshots/01_board_working.png` (re-pinned).
-- [ ] **1 · clubs per player** — extractor reads the pinned store **read-only** (md5-verified, fail-closed),
+## THE FEEDBACK BATCH — one commit + one screenshot each (screenshot-per-change checklist) — ALL TICKED
+- [x] **0 · PLAN** (this file) — `b4a559a`. *(no screenshot — the artifact is the plan)*
+- [x] **A · base refresh** — `extract_board_view.py` stamp `v2.8→v2.10`; regenerate bundles from tagged board
+      `790136a3`; `config.EXPECTED_BOARD 3dc19fbb→790136a3` — `35c8922`. → `screenshots/01_board_working.png`.
+- [x] **1 · clubs per player** — extractor reads the pinned store **read-only** (md5-verified, fail-closed),
       joins on `key`, adds `afl_club` + `affl_team` **DISPLAY** fields (no value change). Board + card show
-      both. → `screenshots/10_clubs_afl_affl.png`.
-- [ ] **2 · team-context lens v1** (page deferred) — board **group/filter by AFFL club** + **club ΣSCAR
-      totals**. → `screenshots/11_team_context_lens.png`.
-- [ ] **3 · value bar → continuous filling line + colour spectrum** (cite item 163). →
+      both — `e5d1f2e`. → `screenshots/10_clubs_afl_affl.png`, `10_clubs_card.png`.
+- [x] **2 · team-context lens v1** (page deferred) — board **group/filter by AFFL club** + **club ΣSCAR
+      totals** — `ee03dc4`. → `screenshots/11_team_context_lens.png`, `11_team_context_grouped.png`.
+- [x] **3 · value bar → continuous filling line + colour spectrum** (cite item 163) — `be7676c`. →
       `screenshots/12_value_line_spectrum.png`.
-- [ ] **4 · column headings on every column** (working + public). → `screenshots/13_column_headings.png`.
-- [ ] **5 · filter by position**. → `screenshots/14_filter_position.png`.
-- [ ] **6 · trade desk** — every pick **1–80** individually selectable · players **type-ahead searchable** ·
-      dropdown font **matched to the board type style**. → `screenshots/07_trade_desk.png` (updated).
-- [ ] **7 · public board de-clunk** — fix the duplicated "steady" (row-end **and** misaligned under the name;
-      the 7th grid cell overflowing the 6-col template) → one instance, correctly aligned. →
-      `screenshots/03_board_public.png` (updated).
-- [ ] **8 · +1/+2 lens toggle DISABLED** with tooltip "projection law lands next chapter". **THE NUMBERS ARE
-      NOT TOUCHED** — the ruled LENS PROJECTION LAW fix rides the next (merged PVC+flex) chapter. →
-      `screenshots/15_lens_disabled.png`.
+- [x] **4 · column headings on every column** (working + public) — `b1ca723`. →
+      `screenshots/13_column_headings.png`, `03_board_public.png`.
+- [x] **5 · filter by position** — `0987239`. → `screenshots/14_filter_position.png`.
+- [x] **6 · trade desk** — every pick **1–80** individually selectable · players **type-ahead searchable** ·
+      dropdown font **matched to the board type style** — `b1c1315`. → `screenshots/07_trade_desk.png`,
+      `07_trade_pick_search.png`.
+- [x] **7 · public board de-clunk** — fix the duplicated "steady" (row-end **and** misaligned under the name;
+      the 7th grid cell overflowing the 6-col template) → one instance, correctly aligned — `0b62c50`. →
+      `screenshots/03_board_public.png`.
+- [x] **8 · +1/+2 lens toggle DISABLED** with tooltip "projection law lands next chapter". **THE NUMBERS ARE
+      NOT TOUCHED** — the ruled LENS PROJECTION LAW fix rides the next (merged PVC+flex) chapter — `90c789d`.
+      → `screenshots/15_lens_disabled.png`.
+
+## RETURN NOTES
+- **Fence held:** every change is under `ui/` (app, styles, extractor, bundles, screenshots, dev driver).
+  No `rl_export.py`, engine, store, `config`, gate, or `docs/` file touched; no computed value or lens
+  number changed (verified: `git diff --name-only v2.10..HEAD` is 100% `ui/`).
+- **Ring-fence intact:** the UI still fail-closes on a board-id mismatch (verified — forcing a wrong
+  `EXPECTED_BOARD` renders the alarm-red rejection; `09_fail_closed.png`). Guard-5-analogue live.
+- **DEFERRED (owner-ruled):** the standalone AFFL club ranking PAGE — no spec was locatable; the ranking
+  *information* ships inline via the group-by-club view. Awaiting the owner's spec to build the page.
 
 ## FENCE (honoured)
 **IN:** `ui/**` + `ui/tools/extract_board_view.py` (display fields only) + this job's session dir.
