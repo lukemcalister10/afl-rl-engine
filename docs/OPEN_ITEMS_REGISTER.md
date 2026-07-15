@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v146 2026-07-15 · PEN: **THE BAKE WORD IS GIVEN (item 162, owner verbatim "(i). Both in parallel.", after viewing board+book vs sealed reads — OQ-D satisfied): bake + tag v2.10 (pen-filled, owner-amendable) + promotion authorized; directive FINAL couriered · the older-guns read RESOLVED BY MEASUREMENT first: Gawn +181 (+7.6%) and Bont +103 THIS CHAPTER (captaincy = essentially all of it), ≥27 band +8,445 — rank fell, value rose · the form-conditioned 30+ persistence measurement FIRED in parallel (Tier-3, read-only, S3) · census re-cut confirmed post-bake default** · prior (item 161): flattery growth decomposed · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v147 2026-07-15 · PEN: **FOUR OWNER WORDS (item 163): (1) MERGE — the next chapter = PVC + FLEX, one ladder, one bake · (2) his positioning registers READY for flex fire time · (3) cm_400 investigation FIRED + his cadence read filed (no weekly refits; season-end or big-model-change only) · (4) UI v1.1 FIRED post-promotion with his feedback batch VERBATIM — and his "+1/+2 lenses broken, everyone losing value" is the KNOWN RULED defect (LENS PROJECTION LAW, v46): the engine fix now RIDES THE MERGED CHAPTER; the UI disables the toggle meanwhile** · prior (item 162): the bake word · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3712,6 +3712,41 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       the owner rules on the return (the age axis is PVC-chapter territory, items 130–132).
     - **CENSUS METRIC:** owner asked what the word was; resolved to ZERO asks — the instrument re-cut
       (flattery = unearned label credit only) proceeds post-bake as the item-160 default.
+
+163. **FOUR OWNER WORDS + THE FEEDBACK BATCH (2026-07-15, while the bake runs).**
+    - **(1) CHAPTER MERGE RULED (owner: "Merge"):** the next chapter = **PVC + FLEX in ONE chapter** —
+      sequential writer builds each behind its own kill-switch (this chapter's proven method), one
+      candidate line, ONE ladder, ONE bake. Ingestion stays OUT (store-content change, different risk
+      class + item 75). The seam's PVC spec rework becomes the PVC+FLEX spec; its inputs: the
+      calibration baseline · the aging return · the AXIS RULE ruling (owner, at open) · items 130–132
+      verbatim · flex spec v1.1 + THE LENS PROJECTION LAW build (below).
+    - **(2) POSITIONING REGISTERS: READY (owner: "Ready")** — couriered at flex fire time (item 99's
+      Harvey Thomas seam depends on them).
+    - **(3) cm_400 INVESTIGATION FIRED (owner: "Fire it now") + HIS CADENCE READ FILED (operative
+      direction, verbatim): "retraining with each weekly submission is overkill. I'd think retraining
+      either at the end of the season, or whenever there's a big model change is enough."** Supervisor
+      leaning given, aligned: FREEZE through the season + refits only as NAMED, kill-switched,
+      owner-viewed events (season end / big model change) + fix retrain determinism IF the
+      investigation shows it cheap (re-derivability restored). The investigation's return picks the
+      road. DIRECTIVE_cm400_investigation_T3 couriered (base 9be07b8e STRICT, diagnosis-only fence).
+    - **(4) UI v1.1 FIRED post-promotion (owner: "Yes, fire the UI team lens build after, ASAP") — THE
+      FEEDBACK BATCH (owner ground truth, one commit + screenshot each):** AFL + AFFL club columns ·
+      team-context lens v1 (group/filter by AFFL club, club ΣSCAR, the PREVIOUSLY-SPECCED AFFL ranking
+      page — build must locate + cite the spec or HALT-AND-ASK) · value bar = continuous fill line with
+      a colour spectrum (owner-worded AMENDMENT to the Matchday lock) · column headings · position
+      filter · trade desk: picks 1–80 individually selectable + player type-ahead search + dropdown
+      font matched to the board · public board de-clunk + the duplicated/misaligned "steady" fixed.
+      DIRECTIVE_matchday_ui_v1_1_T3 couriered — SELF-GATING base = the v2.10 TAG (HALT if absent).
+    - **THE LENS FINDING — CONFIRMED KNOWN, ROUTED:** the owner independently re-observed "the +1/+2
+      lenses are broken — everyone is losing value." That is EXACTLY the ruled LENS PROJECTION LAW
+      defect (register v46, owner "B, clearly", 2026-07-13: projected value with expected production
+      credited; the current rl_export leg burns runway without accruing production, measured gradient
+      ≤22 = 0.594). The build was queued to ride the flattery-fix chapter and DID NOT (the owner's
+      EXTEND-then-SPLIT scope, items 122/133, never included it — no seat error, but the routing is
+      now explicit): **THE LENS PROJECTION BUILD RIDES THE MERGED PVC+FLEX CHAPTER.** The UI meanwhile
+      DISABLES the +1/+2 toggle (tooltip: lands next chapter) so ruled-wrong numbers are never shown.
+    - IN FLIGHT: the bake (writer) · aging (T3). UNFIRED IN OWNER'S HANDS: calibration · census re-cut ·
+      cm_400 (fire now) · UI v1.1 (fires at the tag).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
