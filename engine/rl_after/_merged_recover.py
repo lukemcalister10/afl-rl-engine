@@ -207,6 +207,11 @@ def _est_core(p,Y,L_old,Lc):                                  # ESTABLISHED (pre
     if drop<=DOWN_TOL: return L_old                           # down-wobble (<=3): hold steady
     sw=float(np.clip((drop-DOWN_TOL)/5.0,0.0,1.0))            # smooth shed onset over drop 3->8 (no hard boundary)
     return (1.0-sw)*L_old+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))  # DECLINER SHED (kept in lock-step with _coreM1)
+# NOTE (improver build, register item 134): the THREE improver legs — RL_EO2 (kill the _eo min()), RL_LSYM
+# (L-SYMMETRY), RL_SAGE29 (the S_AGE 29-tail) — are wired into the LIVE path ONLY (_inferM1/_est/_S_AGE; the
+# number ev() consumes is cp._lvl_eff=_inferM1). This DORMANT twin (_lvl_eff_core/_lvl_eff_infer/_est_core) is
+# superseded and never bound/called, and structurally predates the M1/S_AGE up-branch (leg 2/3 have no home
+# here); it is left byte-identical so all-switches-off stays byte-exact. Verified dead before the wire.
 def _lvl_eff_core(p,Y):                                       # DORMANT twin of _coreM1 (superseded via the _inferM1 bind); kept in lock-step
     L_old=cp._lvl_eff_orig(p,Y)
     if not _EVW:                                              # BASE: the four discrete regimes (RL_EVW=0 => byte-exact)
@@ -310,10 +315,41 @@ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
 _L3_AGE=os.environ.get('RL_AGE','1')!='0'
 _L3_AX=[20,21,22,23,24,25,26,27,28,29,30,31]
 _L3_AY=[0.915376,0.860795,0.789170,0.700837,0.599107,0.489589,0.377802,0.265858,0.150620,0.026915,0.0,0.0]
-def _S_AGE(a): return float(np.clip(np.interp(a,_L3_AX,_L3_AY),0.0,1.0)) if a is not None else 0.46
+# ==== IMPROVER LEG 3 — THE S_AGE 29-TAIL (RL_SAGE29; register item 128, FEED = PR #88 residual_by_age.csv) ====
+# The S_AGE age-persistence slope zeroes 29-year-olds (_L3_AY[age29]=0.026915 ~= the CSV's sage_engine 0.0269),
+# but the MEASURED age-29 smoothed forward level is +0.3793 (n_raw=33, CI[0.208,0.534], ZERO EXCLUDED — item 127).
+# Wire ONLY the age-29 knot to its measured value; the fade still reaches zero AT 30 (the age-30 knot 0.0 stays
+# UNTOUCHED — the measurement validates the 30+ zero) and the curve stays continuous (piecewise-linear np.interp;
+# 28=0.1506 -> 29=0.3793 -> 30=0.0, no discontinuity/cliff). Do NOT touch S_AGE anywhere else (one knot, one
+# consumer _est). Declared kill-switch (the #85 RL_DAMP / #89 RL_EVW pattern), in-code: RL_SAGE29=0 => age-29
+# knot 0.026915 => byte-exact base board.
+_SAGE29=os.environ.get('RL_SAGE29','1')!='0'                  # kill-switch (G-ATTR separability): RL_SAGE29=0 => base byte-exact. Declared exception, not a dial.
+_SAGE29_VAL=0.3793                                            # PINNED in-code: age-29 smoothed forward level (PR #88 residual_by_age.csv, s_real @ age 29; CI[0.208,0.534])
+_L3_AY_EFF=_L3_AY[:9]+[(_SAGE29_VAL if _SAGE29 else 0.026915)]+_L3_AY[10:]   # index 9 == age 29 (29-tail wired); indices 10,11 == age 30,31 (0.0) UNTOUCHED
+def _S_AGE(a): return float(np.clip(np.interp(a,_L3_AX,_L3_AY_EFF),0.0,1.0)) if a is not None else 0.46
 def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
-def _est(p,Y,Lo,Lc):                                          # ESTABLISHED asymmetric level: M1 up-credit + decliner shed — internals UNCHANGED (L-SYMMETRY/S_AGE EXCLUDED; the evidence weight gates ENTRY, never these thresholds)
-    if Lc>=Lo: return (Lo+(_S_AGE(cp._age_asof(p,Y)) if _L3_AGE else S_M1)*(Lc-Lo)) if ((Lc-Lo)>=TOL_M1 and _radq(p,Y,Lo)) else Lo
+# ==== IMPROVER LEG 2 — L-SYMMETRY WIRED (RL_LSYM; register item 108, spec = acceptance L-SYMMETRY) ====
+# owner (item 108, verbatim): "Risers should have the same smoothing/ramping. And you should have to have the
+# same drop for the engine to think you're declining as a rise for it to think you're rising." The base _est
+# up-branch has THREE asymmetries vs the decliner shed (acceptance L-SYMMETRY.asymmetry_corrected):
+#   (1) UNEQUAL BAR — a rise needs gap>=TOL_M1(5.0); a decline needs drop>DOWN_TOL(3.0). => use the SAME bar
+#       DOWN_TOL both sides (no new constant).
+#   (2) THE _radq GAMES-TEST — a rise additionally needs a 12-game season above the old level; a decline has NO
+#       games test at all. => DROP _radq from the rise gate.
+#   (3) CLIFF vs RAMP — fail either gate and the WHOLE improvement is DELETED (hard step to Lo); the decline is a
+#       SMOOTH onset ramp sw=clip((drop-DOWN_TOL)/5,0,1). => give the rise the SAME smooth ramp.
+# Symmetric up-branch: Lo + sw*s*gap  ==  (1-sw)*Lo + sw*(Lo+s*gap), mirroring the decline Lo + sw*(Lc*agemult2-Lo)
+# term-for-term (same DOWN_TOL bar, same 5-pt onset ramp; s=_S_AGE is the up-side form/age persistence fraction,
+# the analog of agemult2 — L-SYMMETRY corrects the BAR/RAMP/games-test, the S_AGE fraction is leg 3's territory).
+# L-SMOOTH: continuous at gap=DOWN_TOL (sw=0 -> Lo). RL_LSYM=0 => the hard TOL_M1+_radq step => byte-exact base.
+_LSYM=os.environ.get('RL_LSYM','1')!='0'                     # kill-switch (G-ATTR separability): RL_LSYM=0 => base byte-exact. Declared exception, not a dial.
+def _est(p,Y,Lo,Lc):                                          # ESTABLISHED level: M1/L-SYMMETRY up-credit + decliner shed (the evidence weight gates ENTRY, never these thresholds)
+    if Lc>=Lo:
+        s=(_S_AGE(cp._age_asof(p,Y)) if _L3_AGE else S_M1); gap=Lc-Lo
+        if not _LSYM:                                         # BASE: hard TOL_M1(5.0) bar + _radq games-test; fail EITHER => whole rise DELETED to Lo
+            return (Lo+s*gap) if (gap>=TOL_M1 and _radq(p,Y,Lo)) else Lo
+        if gap<=DOWN_TOL: return Lo                           # L-SYMMETRY: same bar as the decline (DOWN_TOL), NO games-test
+        sw=float(np.clip((gap-DOWN_TOL)/5,0,1)); return Lo+sw*s*gap   # same smooth onset ramp as the decliner shed (no hard delete)
     drop=Lo-Lc
     if drop<=DOWN_TOL: return Lo
     sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
@@ -343,13 +379,22 @@ def _coreM1(p,Y):
     Lrec=Lo + _ev_rec(Eq)*(Lc-Lo)                             # conservative career level Lo -> recency Lc, by qualification
     prod=(1.0-_ev_est(Eq))*Lrec + _ev_est(Eq)*_est(p,Y,Lo,Lc) # recency/thin -> established (M1/shed), by evidence
     return (1.0-_ev_pw(Eq))*prod + _ev_pw(Eq)*_par_prior(p,Y)  # + PEDIGREE PAR at weight pw(E_q): hump -> residual r=0.11, never vanishes (R98.5)
+# ==== IMPROVER LEG 1 — `_eo` TWO-DIRECTIONAL (RL_EO2; register item 134, HANDOVER rev139 §improver) ====
+# The elapsed-opportunity term _eo blends L0 toward the demonstrated-production target T. The base min(L0,T)
+# caps T at L0 so the term can ONLY pull DOWN (the "Only ever pulls DOWN" note above) — it can mark over-priced
+# players but never under-priced. Kill the min(), KEEP the term (rev139: "it is the only anti-flattery mechanism
+# in the engine"): T = max(realised-forward-ceiling, recency-level), blended at weight eo. Now demonstrated
+# production ABOVE L0 pulls UP and BELOW pulls DOWN — both expressible. L-SMOOTH: max/blend continuous, eo->0
+# still returns L0, no new threshold. Declared kill-switch, in-code: RL_EO2=0 => min(L0,T) kept => byte-exact base.
+_EO2=os.environ.get('RL_EO2','1')!='0'                        # kill-switch (G-ATTR separability): RL_EO2=0 => base byte-exact. Declared exception, not a dial.
 def _inferM1(p,Y):
     L0=_coreM1(p,Y); eo=_eo(p,Y)
     if eo<=0: return L0
     avs=[x['avg'] for x in p['scoring'] if x.get('games',0)>=6 and (cp.debutyr(p)-1)<x['year']<=Y]
     if not avs: return L0
     bar=MA.REPL.get(MA.gfut(p),0.0)-3.0; N=Y-cp.debutyr(p)+1
-    return (1-eo)*L0+eo*min(L0,max(_upS(max(avs)-bar,N),_lvlcurr(p,Y)))
+    T=max(_upS(max(avs)-bar,N),_lvlcurr(p,Y))                 # demonstrated-production target (realised forward ceiling | recency level)
+    return (1-eo)*L0+eo*(T if _EO2 else min(L0,T))            # LEG 1 (RL_EO2): kill the min() => two-directional (UP when T>L0, DOWN when T<L0)
 def _v7(bb,p,Y):
     bb=list(bb); m=bb[2]; a=cp._age_asof(p,Y)
     asc=float(np.interp(a,[20,22,24,27],[1.0,0.76,0.58,0.40]))
