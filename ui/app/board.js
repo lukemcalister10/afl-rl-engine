@@ -4,6 +4,30 @@ window.MD = window.MD || {};
 MD.board = (function () {
   const fmt = MD.fmt;
   let onlyReads = false;
+  // item 2 (team-context lens v1): filter the board to one AFFL club, and/or group by AFFL club with
+  // per-club ΣSCAR totals. Display-only aggregation (a sum of given board figures, never a re-valuation).
+  // The standalone AFFL club ranking PAGE is owner-deferred (2026-07-15 "build rest, defer page") — no
+  // spec was locatable; the ranking *information* lives here inline (club headers ranked by ΣSCAR).
+  let clubFilter = null;   // null == all AFFL clubs
+  let groupByClub = false;
+
+  /* AFFL clubs present in the working board, alphabetical (for the filter control). */
+  function afflClubs() {
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) { if (p.affl_team) set[p.affl_team] = 1; });
+    return Object.keys(set).sort();
+  }
+
+  /* per-club aggregate over a row pool: ΣSCAR (sum of displayed values) + player count, ranked by ΣSCAR. */
+  function clubAgg(pool) {
+    const m = {};
+    pool.forEach(function (r) {
+      const c = r.p.affl_team || "—";
+      if (!m[c]) m[c] = { club: c, sigma: 0, n: 0 };
+      m[c].sigma += r.val; m[c].n += 1;
+    });
+    return Object.keys(m).map(function (k) { return m[k]; }).sort(function (a, b) { return b.sigma - a.sigma; });
+  }
 
   /* players visible at the active lens, with the displayed value + rank. */
   function rows(tier) {
@@ -39,6 +63,27 @@ MD.board = (function () {
   }
 
   function maxVal(pool) { return pool.length ? pool[0].val : 1; }
+
+  /* item 2: a club group header — club name · rank · ΣSCAR total · player count. */
+  function clubHeader(c, rank) {
+    const el = fmt.el("div", "clubhead");
+    el.innerHTML = '<span class="crank num">' + (rank || "—") + "</span>" +
+      '<span class="cname">' + fmt.esc(c.club) + "</span>" +
+      '<span class="csig num">Σ ' + fmt.n(c.sigma) + ' <small>SCAR</small></span>' +
+      '<span class="ccount num">' + fmt.n(c.n) + " players</span>";
+    return el;
+  }
+
+  /* item 2: a single-club context banner shown when the board is filtered to one AFFL club. */
+  function clubBanner(c, rank, clubRanks) {
+    const total = Object.keys(clubRanks).length;
+    const el = fmt.el("div", "clubbanner");
+    el.innerHTML = '<span class="cbname">' + fmt.esc(c.club) + "</span>" +
+      '<span class="cbstat">club rank <b>' + (rank || "—") + "</b> of " + total + "</span>" +
+      '<span class="cbstat">ΣSCAR <b class="num">' + fmt.n(c.sigma) + "</b></span>" +
+      '<span class="cbstat"><b class="num">' + fmt.n(c.n) + "</b> players</span>";
+    return el;
+  }
 
   function deltaPill(p, displayedVal) {
     const s = MD.state;
@@ -172,6 +217,26 @@ MD.board = (function () {
       });
       wrap.appendChild(rseg);
 
+      // item 2: team-context lens — filter to one AFFL club + group-by-club (ΣSCAR totals).
+      wrap.appendChild(fmt.el("span", "lbl", "Team lens"));
+      const csel = document.createElement("select");
+      csel.className = "boardsel";
+      csel.innerHTML = '<option value="">all AFFL clubs</option>' +
+        afflClubs().map(function (c) {
+          return '<option value="' + fmt.esc(c) + '"' + (clubFilter === c ? " selected" : "") + ">" +
+            fmt.esc(c) + "</option>";
+        }).join("");
+      csel.addEventListener("change", function () { clubFilter = csel.value || null; render(container); });
+      wrap.appendChild(csel);
+      const gseg = fmt.el("div", "seg");
+      [["off", "group off"], ["on", "by club"]].forEach(function (pair) {
+        const on = (pair[0] === "on") === groupByClub;
+        const btn = fmt.el("button", on ? "on" : "", pair[1]);
+        btn.addEventListener("click", function () { groupByClub = pair[0] === "on"; render(container); });
+        gseg.appendChild(btn);
+      });
+      wrap.appendChild(gseg);
+
       // Debug slugs
       wrap.appendChild(fmt.el("span", "lbl", "Debug"));
       const dbg = fmt.el("div", "seg dbg");
@@ -193,15 +258,39 @@ MD.board = (function () {
 
     const byKey = MD.seam.indexed().byKey;
     let pool = rows(s.tier);
-    const maxV = maxVal(pool);
+    const maxV = maxVal(pool);              // global board top (share-of-top-price reference), pre-filter
     if (s.tier === "working" && onlyReads) {
       pool = pool.filter(function (r) { return MD.anchors[r.p.key]; });
     }
 
+    // item 2: canonical club ranking (ΣSCAR over the full unfiltered pool) — used for club-rank badges.
+    const clubRanks = {};
+    if (s.tier === "working") clubAgg(pool).forEach(function (c, i) { clubRanks[c.club] = i + 1; });
+
+    // item 2: filter to a single AFFL club (working tier).
+    if (s.tier === "working" && clubFilter) {
+      pool = pool.filter(function (r) { return (r.p.affl_team || "—") === clubFilter; });
+      const ca = clubAgg(pool)[0];
+      if (ca) container.appendChild(clubBanner(ca, clubRanks[clubFilter], clubRanks));
+    }
+
     const rowsEl = fmt.el("div", "rows");
-    pool.slice(0, 60).forEach(function (r) {
-      rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
-    });
+    if (s.tier === "working" && groupByClub) {
+      // grouped: club headers ranked by ΣSCAR, each with its top players — the team-context lens (inline
+      // club ranking; the standalone page is owner-deferred).
+      clubAgg(pool).forEach(function (c) {
+        rowsEl.appendChild(clubHeader(c, clubRanks[c.club]));
+        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; }).slice(0, 6);
+        mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
+        const more = c.n - mine.length;
+        if (more > 0) rowsEl.appendChild(fmt.el("div", "clubmore", "+ " + fmt.n(more) + " more " +
+          fmt.esc(c.club) + " player" + (more === 1 ? "" : "s")));
+      });
+    } else {
+      pool.slice(0, clubFilter ? pool.length : 60).forEach(function (r) {
+        rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
+      });
+    }
     container.appendChild(rowsEl);
 
     const foot = fmt.el("footer", "foot");

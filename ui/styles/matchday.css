@@ -95,6 +95,27 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .pill.na{background:transparent;color:var(--faint);border:1px dashed var(--edge)}
 .row .meta{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right}
 
+/* ---- item 2: team-context lens (group/filter by AFFL club, ΣSCAR totals) ---- */
+.strip select.boardsel{background:var(--pitch);color:var(--text);border:1px solid var(--edge);
+  font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 8px;cursor:pointer}
+.clubbanner{display:flex;gap:20px;align-items:baseline;flex-wrap:wrap;background:var(--card-2);
+  border:1px solid var(--edge);border-left:4px solid var(--volt);padding:12px 16px;margin-top:12px}
+.clubbanner .cbname{font-family:var(--cond);font-weight:900;font-size:20px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--volt)}
+.clubbanner .cbstat{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+.clubbanner .cbstat b{color:var(--text);margin-left:4px}
+.clubhead{display:grid;grid-template-columns:48px 1fr auto auto;gap:14px;align-items:baseline;
+  padding:12px 16px 8px;margin-top:12px;border-bottom:2px solid var(--volt)}
+.clubhead .crank{font-family:var(--cond);font-weight:900;font-size:22px;color:var(--volt);text-align:right}
+.clubhead .cname{font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.03em;text-transform:uppercase;color:var(--text)}
+.clubhead .csig{font-family:var(--mono);font-weight:700;font-size:16px;color:var(--volt)}
+.clubhead .csig small{font-size:10px;color:var(--faint);font-weight:400}
+.clubhead .ccount{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.clubmore{font-family:var(--mono);font-size:11px;color:var(--faint);padding:6px 16px;border:1px dashed var(--edge);
+  border-top:0;background:var(--card)}
+
 /* ---- player card ---- */
 .card{max-width:640px;margin:20px auto 40px;background:var(--card);border:1px solid var(--edge);overflow:hidden}
 .card .head{padding:22px 24px 18px;border-bottom:1px solid var(--edge);border-left:6px solid var(--volt)}
