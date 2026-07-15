@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v152 2026-07-15 · PEN: **cm_400 DIAGNOSIS PRESCREENED — PASS (item 168): retrain is DETERMINISTIC (two fresh interpreters → b271ed2e byte-identical); the frozen artifact went stale under TWO named input moves (store migration 0.913 + par_build fix 0.699 EV/row, combined 0.923 ≈1.3%); frozen band NOT degraded (pinball within 0–1.2% of an in-sample-biased fresh) · PROPOSED RULING put to the owner: FREEZE through the season + named refits only, first refit restores permanent re-derivability + the monitor — UNBLOCKS item 75's ingestion leg · the owner's REID WORRY filed as an OPERATIVE SPEC CONSTRAINT for the merged chapter (convexity must price projected years through the same map; G-COHORT + calibration + a Reid watch row guard the young side) · level-conditioned cut DECLINED** · prior (item 167): override doctrine · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v153 2026-07-15 · PEN: **THE BAKE RETURNED — PRESCREEN PASS (item 169, every claim re-verified from my own clone + API): bake head 83f945a on 9be07b8e STRICT · item-158 sidecar FIXED on committed bytes (own_md5==content==790136a3) · board byte-identical, zero movers · gates snapshot 42abe7d5 tallies EXACT (FAIL=3 = A2/A3/A12 only · B1 honest HALT, waiver zone) · CI GREEN at 83f945a (check-run success, API-read, item-115 exception) · tag + promotion correctly OWNER-GATED (403s) — his two commands are queued; THE SEAM fires on the tag + promotion landing** · prior (item 168): cm_400 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3890,6 +3890,40 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       WATCH ROW (relative-standing band)** alongside the Gawn/Bontempelli up-watch rows (item 167).
     - **LEVEL-CONDITIONED AGING CUT: DECLINED by the owner ("seems unnecessary")** — not fired; the
       in-stats road for the elite old producers remains the compression cure + watch rows.
+
+169. **THE CHAPTER BAKE RETURNED (branch `claude/chapter-bake-promotion-merge-qtfce8`, bake head
+    `83f945a`, branch head `d14efae` after an in-fence housekeeping commit) — SUPERVISOR PRESCREEN:
+    PASS (every claim below re-verified by this seat from a fresh clone; CI via the API, the item-115
+    declared read-only exception).**
+    - MECHANICALS ✓: base `9be07b8e` STRICT (ancestry proven) · PLAN the first commit (auto mode) ·
+      chain dbd67b2→ecbc349→c0fdf02→4e88365→83f945a→d14efae · candidate history untouched · the
+      housekeeping commit relocates the suite's stray auto-written report IN-FENCE (the SGC_REPORT_DIR
+      hygiene pattern from items 149/151 — third sighting; the queued ship-gates strip/reject item
+      gains weight).
+    - **ITEM 158 CLOSED, verified on the COMMITTED bytes:** sidecar own_md5 = `790136a3` == content
+      md5 == expected_boot pin; source_md5 `b1fd0bce` unchanged; **board byte-identical — ZERO movers.**
+    - Panel re-pinned to the captaincy board (Gawn 2393→2574 · Bont 3482→3585, item-162 values),
+      10/10; stale prose refreshed incl. the CI diagnostic ref (800bf461→790136a3) so the R100.7 print
+      is honest.
+    - **Gates snapshot `gates_fc7045d6.json` md5 `42abe7d5` — MY OWN TALLY of the committed file:**
+      PASS=16 · FAIL=3 (**exactly A2/A3/A12**, all ∈ standing_fails) · HALT=1 (**B1, the frozen 1.30's
+      honest word; y5 1.3057 sits in the owner's waived zone per item 159**) · PENDING=4 · STRUCK=1 ·
+      FEATURE=1. Frozen q97m `cfdc7321`, no SGC_* env. Book seal `99be9b36` carried.
+    - **CI GREEN AT THE BAKE HEAD:** check-run "guards" = completed/success at `83f945a` — read by
+      this seat via the GitHub API (token, read-only, the item-115 declared exception; git remains the
+      rule for repo state). The run's board print (790136a3, R100.7) is report-consistent with the
+      committed diagnostic ref.
+    - **CORRECTLY OWNER-GATED (403 on both, as designed):** T5 the tag and T6 the promotion are ONE
+      COMMAND EACH, queued for the owner:
+      TAG: `git tag -a v2.10 83f945a -m "v2.10 — L-CAPTAIN chapter bake" && git push origin v2.10`
+      PROMOTE: merge the branch → main (the #66-style two-parent PR the bake chat offered to open —
+      RECOMMENDED — or the return's one-line merge command). Merge was conflict-verified vs main
+      `8ae103c`; main has since moved docs-only (`ae40f1d`) — file sets remain disjoint.
+    - **ON THE TAG + PROMOTION LANDING, THE SEAM FIRES** (supervisor pen): waiver REVERTS to 1.30
+      (CONSTRAINTS v1.16 + acceptance v1.16) · DECISIONS v104 (the R103.x set: merge ruling · cm_400
+      posture on his word · lens routing · aging closure · override doctrine) · manifest v4.27 ·
+      HANDOVER rev142 · docs archive · PK sync ask · seat rotation · the PVC+FLEX spec authored on the
+      calibration return.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
