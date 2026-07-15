@@ -66,7 +66,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .rows{margin-top:14px;display:flex;flex-direction:column;gap:8px}
 .row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
   padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
-.row.working{grid-template-columns:52px 26px 1fr 82px 92px 130px 118px 92px}
+.row.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
 .row.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
 .row:hover{background:var(--card-2);border-color:#2c3446}
 .row .rank{font-family:var(--cond);font-weight:900;font-size:24px;color:var(--faint);text-align:right}
@@ -79,6 +79,10 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
   text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);padding:2px 7px;margin-left:9px;
   vertical-align:3px;cursor:help}
 .row .pos{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+/* item 1: clubs per player — AFFL (lens focus) leads in volt, AFL muted beneath. Wrap, never clip. */
+.row .club{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.15}
+.row .club .affl{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--volt);overflow-wrap:anywhere}
+.row .club .afl{font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);overflow-wrap:anywhere}
 .row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
 /* segmented power bar — ten blocks, a block a decile of the top price */
 .pow{display:flex;gap:3px}
@@ -96,6 +100,10 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .card .head{padding:22px 24px 18px;border-bottom:1px solid var(--edge);border-left:6px solid var(--volt)}
 .card .name{font-family:var(--cond);font-weight:900;font-size:32px;letter-spacing:.02em;text-transform:uppercase;line-height:.98;overflow-wrap:anywhere}
 .card .id{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+/* item 1: clubs on the card head — AFL + AFFL, each clearly labelled. */
+.card .clubs{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:9px;font-family:var(--mono);font-size:12px;color:var(--text)}
+.card .clubs b{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;color:var(--faint);margin-right:6px}
+.card .clubs span:last-child b{color:var(--volt)}
 .card .cstamp{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:10px}
 .card .cstamp b{color:var(--dim)}
 .card .body{padding:20px 24px 34px}
@@ -177,7 +185,8 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.9}
 
 @media(max-width:920px){
-  .row.working{grid-template-columns:42px 22px 1fr 96px 118px}
+  /* narrow: keep name · club · value · Δ (club is now first-class); pos/meta/bar fold away */
+  .row.working{grid-template-columns:40px 20px 1fr 120px 84px 96px}
   .row.public{grid-template-columns:42px 1fr 96px 120px}
   .row .pos,.row .meta,.pow{display:none}
   .desk{grid-template-columns:1fr}

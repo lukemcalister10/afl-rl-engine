@@ -86,6 +86,10 @@ MD.board = (function () {
     b.innerHTML =
       '<span class="rank num">' + r.rank + "</span>" + pin + nm +
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
+      // item 1: AFL club + AFFL club, listed per player (AFFL is the team-context lens focus, so it leads
+      // in volt; AFL is the muted sub-line). Display-only strings from the bundle; "—" when absent.
+      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(p.affl_team || "—") + "</span>" +
+        '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.powerBar(r.val, maxV) +
       deltaPill(p, r.val) +

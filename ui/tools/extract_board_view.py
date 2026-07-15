@@ -19,7 +19,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 SRC = os.path.join(REPO, "data", "rl_build", "rl_app_data.json")
 BOOT = os.path.join(REPO, "data", "expected_boot.json")
+# The pinned master store — the "master database" of item 1 (2026-07-15 feedback). Read STRICTLY
+# READ-ONLY and md5-verified against expected_boot.store (fail-closed, same doctrine as the board
+# ring-fence): the extractor sources the AFL + AFFL club DISPLAY strings from here. No value is read
+# by ev() from these fields; nothing is computed; the store is never written.
+STORE = os.path.join(REPO, "engine", "rl_after", "rl_model_data.json")
 OUT_DIR = os.path.join(HERE, "..", "data")
+
+
+def norm_club(name):
+    """Display normalisation for a club string (casing only; the store carries 'Free agents'
+    and 'Free Agents' as two spellings of one AFFL bucket). Never invents a club."""
+    if not name:
+        return None
+    s = str(name).strip()
+    return "Free Agents" if s.lower() == "free agents" else s
 
 # Position label map (engine codes -> owner-voice display; names/values first, jargon in brackets).
 POS = {
@@ -42,6 +56,21 @@ def main():
     back = d.get("back", [])
     max_v = max((p.get("v") or 0) for p in active) or 1
 
+    # ---- item 1: AFFL club from the pinned master store (READ-ONLY, md5-verified) ----------------
+    # The board (rl_app_data.json) already carries the AFL club as `club`; the AFFL club lives only in
+    # the master store. We read it here as a DISPLAY string, verifying the store md5 head against the
+    # pinned store id first so a swapped/stale store fails closed rather than mislabelling a player.
+    store_raw = open(STORE, "rb").read()
+    store_md5 = hashlib.md5(store_raw).hexdigest()
+    want_store = str(boot.get("store", ""))[:8]
+    assert store_md5.startswith(want_store), (
+        "STORE RING-FENCE FAIL: rl_model_data.json md5 %s != pinned store %s" % (store_md5[:8], want_store))
+    affl_by_key = {}
+    for r in json.loads(store_raw):
+        k = r.get("key")
+        if k:
+            affl_by_key[k] = norm_club(r.get("affl_team"))
+
     def row_working(p):
         # Full field set for the owner's working aid (identity-bearing).
         return {
@@ -50,6 +79,11 @@ def main():
             "pos": label_pos(p.get("grp") or p.get("gf")),
             "posCode": p.get("grp") or p.get("gf"),
             "club": p.get("club"),
+            # item 1 (2026-07-15): AFL club + AFFL club listed per player. DISPLAY-ONLY strings — the AFL
+            # club is the board's own `club`; the AFFL club is joined from the master store by key. No value
+            # is changed; ev() never reads these. Null-safe: a player without an AFFL row shows "—" in the UI.
+            "afl_club": p.get("club"),
+            "affl_team": affl_by_key.get(p.get("key")),
             "age": p.get("age"),
             "g": p.get("g"),
             "cat": p.get("cat"),
@@ -81,6 +115,10 @@ def main():
         return {
             "name": p.get("name"),
             "pos": label_pos(p.get("grp") or p.get("gf")),
+            # item 1: clubs are public-safe display strings (no id/slug leak), so they ride the public
+            # bundle too. AFL club = the board's `club`; AFFL club joined from the store by key.
+            "afl_club": p.get("club"),
+            "affl_team": affl_by_key.get(p.get("key")),
             "v": p.get("v"),
             # Published movement-vs-previous-round scheme; wired to dRound / dRoundRank when the weekly
             # loop exports them. Absent today -> the app renders a neutral "steady" pill, never a fake move.
