@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v150 2026-07-15 · PEN: **AGING FINDING ACCEPTED BY THE OWNER (item 166, verbatim, WITH his reservation recorded): the 30+ zero and decline path stand; the age leg exits the merged scope · THE GOVERNANCE CORRECTION PUT TO HIM: he does not need to convince the supervisor — his reads are ground truth and NAMED OWNER OVERRIDES are the ruled instrument for individual convictions the class model cannot carry (Brodie precedent); at Gawn's age the conditioned sample is n≈2 — the class curve is extrapolating and cannot rule on him individually · bake still in flight** · prior (item 165): census v2 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v151 2026-07-15 · PEN: **OVERRIDE DOCTRINE SHARPENED BY THE OWNER (item 167, verbatim): overrides are for information OUTSIDE the stats (Brodie); Gawn/Bont are PERCEPTIBLE IN the stats, so the MODEL must reach them — no override. Supervisor's reconciliation: the top-end output→price COMPRESSION (the English/Briggs concavity, already the merged chapter's core surgery) is the likely in-stats mechanism — elite output is underpaid per point at ANY age; a LEVEL-conditioned aging cut offered as an optional chapter measurement · unearned-list semantics clarified (label credit ≠ overvalued; evidence-outlasted label credit is the disease; Daicos at 106 games vs McKercher at 23 are different cases)** · prior (item 166): aging accepted · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3823,6 +3823,39 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       candidate and walk its ladder. No predicate-based lever will be dressed up to reach them —
       that instrument stays refused by his own prior ruling.
     - Bake: STILL IN FLIGHT per the owner (no tag, no promotion at this seat's fetch — consistent).
+
+167. **THE OVERRIDE DOCTRINE, SHARPENED BY THE OWNER (2026-07-15, verbatim):** *"On Gawn and
+    Bontempelli I won't be providing an override because the reason they should be worth more is
+    perceptible and visible in the stats available to us. The Will Brodie override was an exception
+    where I had information the stats did not, so I knew there was no way our data could get us to the
+    conclusion that was necessary."*
+    - **DOCTRINE (operative from his words): OWNER OVERRIDES = extra-statistical information ONLY.** A
+      conviction whose basis is IN the available stats is a MODEL DEFECT claim, and the model must be
+      made to reach it — never overridden around. This sharpens the Brodie precedent into a rule.
+    - **THE STANDING CHALLENGE this creates:** "Gawn and Bontempelli should be worth more, and the
+      reason is visible in our stats." The supervisor's reconciliation, put to him: **the mechanism is
+      most likely the merged chapter's OWN core surgery — the top-end output→price COMPRESSION** (item
+      131, the English/Briggs axis: output 2.99× above replacement collapsing to price 2.14×). That
+      concavity underpays elite output at ANY age; Gawn (Lc 126.5) and Bontempelli sit exactly in the
+      compressed region on their current-output leg. If the concavity is cured LIFT-led as ruled, the
+      elite old producers rise WITHOUT any age lever — the in-stats road to his read. **The chapter's
+      acceptance set should therefore carry Gawn/Bontempelli as NAMED WATCH ROWS** (direction: up),
+      scored at his viewing.
+    - **OFFERED (optional, his word): a LEVEL-conditioned aging cut** — the item-164 measurement
+      conditioned on form TRAJECTORY; conditioning on demonstrated LEVEL (do 120+ producers at 30+
+      hold value differently from 90-point peers?) is a distinct, unmeasured, in-stats question. Cheap
+      Tier-3; can ride the merged chapter's measurement set. NOT fired without his word.
+    - **UNEARNED-LIST SEMANTICS CLARIFIED to the owner (his question):** the list does NOT say "these
+      players are valued too highly." Unearned label credit = the component of a price still justified
+      by the DRAFT LABEL rather than output. For a low-games player (McKercher, 23 games, +496) that is
+      the prior working AS DESIGNED. The DISEASE is label credit that OUTLASTS the evidence (the ruled
+      fade law: "by the time a player is valued on production, retaining par doesn't make sense") —
+      Daicos at 106 games carrying +679 is the archetype. And a player can carry stale label credit AND
+      be underpaid on his production leg by the same top-end compression — his TOTAL may be right or
+      LOW. The chapter cures axes (fade the stale label credit · un-compress the top) — it does not
+      "address players," and the ruled law forbids net-stripping the young side. The evidence-weighted
+      cut of the unearned list (credit vs games) is the true target ranking; the v2 gauge measures
+      every cure by unearned credit drained, earned credit untouched.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
