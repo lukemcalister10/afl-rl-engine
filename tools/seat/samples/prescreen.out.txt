@@ -1,0 +1,31 @@
+# prescreen.sh — known-good sample (captured 2026-07-15)
+# cmd: bash tools/seat/prescreen.sh claude/board-hardware-independent-az0iz5 e7d980ebd34308b68ed662ecdfa8d149678e372c   (exit 0)
+# known-good: ancestry YES, board 800bf461 (27 output lines, <=35 budget)
+
+== prescreen · claude/board-hardware-independent-az0iz5 ==
+branch     : claude/board-hardware-independent-az0iz5
+base       : e7d980ebd34308b68ed662ecdfa8d149678e372c
+head       : a2a06c773d4ca16b1f216c2689ca96f609e66500   (git rev-parse FETCH_HEAD)
+ancestry   : YES  base e7d980eb is-ancestor head a2a06c77
+-- diff --name-status base..head (session_*/ rolled up) --
+  M	.github/workflows/ci-guards.yml
+  M	data/book_stable_seal.json
+  M	data/expected_boot.json
+  M	data/rl_build/rl_app_data.json
+  M	data/rl_build/rl_app_data.json.srcmd5
+  M	engine/forward_valuation/par_build.py
+  M	engine/rl_after/_merged_recover.py
+  M	run_panel.sh
+  ~	session_2026-07-14/ (13 files, session scratch)
+board      : recomputed 800bf461 vs pin 800bf461  -> MATCH   (md5 of data/rl_build/rl_app_data.json @head)
+-- expected_boot changed fields (base..head) --
+  board        e6a8e6ef -> 800bf461
+  engine_head  fef5719d -> 118f8ac6
+-- book seal (data/book_stable_seal.json @head) --
+  seal head=118f8ac6 store=340a7a32 n=2649 sha256=7fcb92c2a5c2
+  __meta__ s4_matrix_baked_7a07e369.json head=7a07e369 store=04f38dad n=2649
+-- run_panel.sh pin diff (base..head) --
+  pins UNCHANGED base..head
+-- new env-read check in engine/ (register item 114) --
+  none — no ADDED os.environ.get/getenv in engine/ (no unpinned board dial introduced)
+== prescreen done ==

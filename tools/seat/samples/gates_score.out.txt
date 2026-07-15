@@ -1,0 +1,61 @@
+# gates_score.py — known-good sample (captured 2026-07-15)
+# cmd: python3 tools/seat/gates_score.py <gates_fef5719d.json>   (exit 0)
+# known-good: B1 PASS, PICK 1 = 3000, three FAILs (A2/A3/A12)
+# NOTE: gates_fef5719d.json is the snapshot of engine head fef5719d (the expected_boot base of
+#       branch claude/board-hardware-independent-az0iz5). It is NOT checked in at main's base,
+#       so this run scores the byte-identical object (md5 20f43e32) read from that branch's
+#       history via 'git show' into /tmp — no repo write.
+
+== gates_score · gates_fef5719d.json ==
+head=fef5719d store=340a7a32  (26 gates)
+tally: DIFFERS-BY-DESIGN=1  FAIL=3  FEATURE=1  PASS=16  PENDING=4  STRUCK=1
+PICK 1     : 3000   (gate A13 detail)
+-- cohort/peak vs hard bound (<= 130) --
+  B1       PASS  (ratios NOT in snapshot detail — truncated; status is the record)
+-- FAILs (id · dc · note) --
+  A12   dc=True  Travaglia>Moraes: 824 vs 1042; Smillie>Retschko: 1349 vs 873
+  A2    dc=False Curtis>=0.90xWard: 1555 vs 1562 (Ward=1735, ratio=0.896) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the l
+  A3    dc=True  Connor Rozee: 2026=2955 2025=4464 ratio=0.66 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026
+-- named anchors in details --
+  Ward                       1735   (A2)
+  Jack Ginnivan              1941   (A5)
+  Jake Bowey                 3325   (A5)
+  Nick Blakey                3502   (A5)
+  Berry                      2836   (A8)
+  Tsatas                     1243   (A8)
+  George Wardlaw             3191   (A13)
+  Levi Ashcroft              3259   (A13)
+  Trent Rivers               1798   (A14)
+  Zach Reid                  1719   (A14)
+  Jase Burgoyne              2098   (A14)
+== gates_score OK ==
+
+### --- same snapshot, acceptance-scored (+ docs/acceptance_v1_13.json) ---
+
+== gates_score · gates_fef5719d.json ==
+head=fef5719d store=340a7a32  (26 gates)
+tally: DIFFERS-BY-DESIGN=1  FAIL=3  FEATURE=1  PASS=16  PENDING=4  STRUCK=1
+PICK 1     : 3000   (acceptance.numeraire.law)
+-- cohort/peak vs hard bound (<= 130) --
+  B1       PASS  (ratios NOT in snapshot detail — truncated; status is the record)
+-- FAILs (id · dc · note) --
+  A12   dc=True  Travaglia>Moraes: 824 vs 1042; Smillie>Retschko: 1349 vs 873
+  A2    dc=False Curtis>=0.90xWard: 1555 vs 1562 (Ward=1735, ratio=0.896) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the l
+  A3    dc=True  Connor Rozee: 2026=2955 2025=4464 ratio=0.66 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026
+-- named anchors in details --
+  Ward                       1735   (A2)
+  Jack Ginnivan              1941   (A5)
+  Jake Bowey                 3325   (A5)
+  Nick Blakey                3502   (A5)
+  Berry                      2836   (A8)
+  Tsatas                     1243   (A8)
+  George Wardlaw             3191   (A13)
+  Levi Ashcroft              3259   (A13)
+  Trent Rivers               1798   (A14)
+  Zach Reid                  1719   (A14)
+  Jase Burgoyne              2098   (A14)
+-- acceptance scored by id (guards.alias -> gate) --
+  G-FLOOR  (alias B5 ) status=FEATURE acc.status=BINDING
+  G-PEAK   (alias B1 ) status=PASS  acc.status=BINDING
+  A-PEAK    governed_by G-PEAK   -> gate PASS
+== gates_score OK ==
