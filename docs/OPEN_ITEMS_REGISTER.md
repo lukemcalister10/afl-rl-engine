@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v151 2026-07-15 · PEN: **OVERRIDE DOCTRINE SHARPENED BY THE OWNER (item 167, verbatim): overrides are for information OUTSIDE the stats (Brodie); Gawn/Bont are PERCEPTIBLE IN the stats, so the MODEL must reach them — no override. Supervisor's reconciliation: the top-end output→price COMPRESSION (the English/Briggs concavity, already the merged chapter's core surgery) is the likely in-stats mechanism — elite output is underpaid per point at ANY age; a LEVEL-conditioned aging cut offered as an optional chapter measurement · unearned-list semantics clarified (label credit ≠ overvalued; evidence-outlasted label credit is the disease; Daicos at 106 games vs McKercher at 23 are different cases)** · prior (item 166): aging accepted · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v152 2026-07-15 · PEN: **cm_400 DIAGNOSIS PRESCREENED — PASS (item 168): retrain is DETERMINISTIC (two fresh interpreters → b271ed2e byte-identical); the frozen artifact went stale under TWO named input moves (store migration 0.913 + par_build fix 0.699 EV/row, combined 0.923 ≈1.3%); frozen band NOT degraded (pinball within 0–1.2% of an in-sample-biased fresh) · PROPOSED RULING put to the owner: FREEZE through the season + named refits only, first refit restores permanent re-derivability + the monitor — UNBLOCKS item 75's ingestion leg · the owner's REID WORRY filed as an OPERATIVE SPEC CONSTRAINT for the merged chapter (convexity must price projected years through the same map; G-COHORT + calibration + a Reid watch row guard the young side) · level-conditioned cut DECLINED** · prior (item 167): override doctrine · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -3856,6 +3856,40 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       "address players," and the ruled law forbids net-stripping the young side. The evidence-weighted
       cut of the unearned list (credit vs games) is the true target ranking; the v2 gauge measures
       every cure by unearned credit drained, earned credit untouched.
+
+168. **cm_400 DIAGNOSIS RETURNED (branch `claude/retrain-determinism-diagnosis-i3nbco`, head
+    `796f371`) — SUPERVISOR PRESCREEN: PASS (committed artifacts spot-verified) — plus TWO owner words
+    from the same message.**
+    - **THE DIAGNOSIS (verified from band_diff.md/fit_quality.csv):** retrain is DETERMINISTIC — two
+      fresh interpreters both produce `b271ed2e` byte-for-byte; no nondeterminism to fix. The frozen
+      `34faa865` went stale under TWO real, named, owner-viewed input moves: the store migration
+      (0.913 EV/row, par_build held) + the par_build determinism fix (0.699, store held) — combined
+      0.923 EV/row on ~69 median (~1.3%); the old-par+current-store third hash `93943eed` reproduces.
+      **Fit quality today: the frozen band is NOT measurably degraded** (pinball within 0–1.2% of a
+      fresh band that is in-sample-biased in its own favour; q0.5 gap −0.02%). The false
+      "cache==retrain" comment is stale-artifact, not flaky-retrain.
+    - **PROPOSED RULING (owner's word sought; matches his own cadence read, item 163):**
+      **cm_400 is FROZEN through the season (the q97m treatment). Refits happen ONLY as named,
+      kill-switched, owner-viewed events** (season end / big model change). **At the FIRST such refit:**
+      (i) refit on the current FIXED par_build so the re-baked band is deterministically re-derivable
+      forever · (ii) correct the false `wire_redesign.py` comment · (iii) commit the pinball fit-quality
+      measurement as the STANDING DRIFT MONITOR (per-round; a ruled bound triggers the next refit).
+      **EFFECT: item 75's ingestion blocker CLEARS on this ruling** — ingestion no longer forces a
+      refit; the board only moves through attributable demonstrated data.
+    - **THE OWNER'S REID WORRY — FILED AS AN OPERATIVE SPEC CONSTRAINT for the merged chapter
+      (verbatim):** *"a lot of the young players that are rated highly on the board are rated highly
+      despite not having a high projected forward average (for example Harley Reid). It's just the
+      volume of time ahead that gets them there, not the intensity of scoring. So if we increase the
+      convex value outcome of elite scoring, which we probably should, I worry it may leave the young
+      players behind again."* SPEC CONSTRAINTS derived: (1) the convexity cure prices PROJECTED future
+      output through the SAME un-compressed map — a young player's projected peak years receive the
+      same convex credit as a veteran's current years (the cure is anti-low-intensity, not anti-young);
+      (2) the young-relative standing is triple-guarded: **G-COHORT at the restored 1.30** (the ratio
+      the worry describes is exactly what B1 measures) + the CALIBRATION surface (if young cohorts are
+      already under-priced vs realisation, the spec must lift, not hold) + **Harley Reid as a NAMED
+      WATCH ROW (relative-standing band)** alongside the Gawn/Bontempelli up-watch rows (item 167).
+    - **LEVEL-CONDITIONED AGING CUT: DECLINED by the owner ("seems unnecessary")** — not fired; the
+      in-stats road for the elite old producers remains the compression cure + watch rows.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
