@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v158 2026-07-15 · PEN: **HANDOVER HARDENED PRE-ROTATION at the owner's request (item 174): rev143 folds everything post-seam (item-173 UI ruling · open Tier-3 PR dispositions #95/#96 + branches · pending CI-green/PK-sync confirmations · snapshot-naming hygiene) · manifest → v4.28 · THE OPENING PROMPT for the incoming seat ISSUED (couriered to the owner) · this seat's session = items 156–174, journals = the crash record · ROTATION READY** · prior (item 173): the UI miss corrected · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v159 2026-07-16 · PEN: **SEAT 8 OPENED + THE AXIS RULE RATIFIED (item 177: L-AXIS BINDING, CONSTRAINTS v1.17) · both rev143 pending confirmations CLOSED (item 175: CI print 790136a3 read from the run log; PK sync verified equal) · UI v1.1 prescreen PASS + owner viewed, merge on his click (items 176/178) · the UI v1.2 feedback batch filed verbatim (item 178 — it SPECS the item-173 ranking page) · DECISIONS → v105 · manifest → v4.29** · prior (item 174): rotation-readiness · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4161,3 +4161,57 @@ REFUSED LEVERS (recorded so no future seat "optimises" into them): fewer validat
 trusting reported numbers · thinner gate coverage. Exhibit A: the v2.8 panel claim-accuracy
 defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the residual is honest compute
 (G-ATTR's per-lever separability requires the board passes it requires).
+
+175. **SEAT 8 OPENED — FRESHNESS PASS + BOTH rev143 CONFIRMATIONS CLOSED (2026-07-16).** Freshness
+    check: main `5bea8b3` == the owner's opening pin; diff `a64c47f..main` docs/-only; PK equal to the
+    repo DOC BY DOC (manifest v4.28 · CORE v2.8 · HANDOVER rev143 · DECISIONS v104 · SSI v1.3) — the
+    handed pack was ALREADY the filed pack, nothing to push. Register header read at v158.
+    **CI CONFIRMATION CLOSED:** CI Guards run 437 (run 29433730709, job 87415022173) on main head
+    `5bea8b3` completed SUCCESS; the job log (supervisor-read via the owner's token, the item-115
+    instrument) prints `BOARD_MD5(built this run) = 790136a380b56ebdf5db2874b6f354de == board of
+    record` and `Guard 5 PASS (store b1fd0bce == pinned · rl_model f79fc740 == pinned)`. The owner
+    could not find the line on the run page because it sits inside a COLLAPSED STEP — the page shows
+    step names, not output. Runs 435/436 (the seam docs pushes) were CANCELLED-BY-SUPERSESSION, which
+    is why rev143 saw them in_progress. Token used read-only, never written to any file/commit/journal.
+
+176. **UI v1.1 PRESCREEN — PASS AGAINST ITEM 173 (2026-07-16).** Branch
+    `claude/matchday-ui-team-context-8w98ef` head `efa26cd` == refs/pull/98/head (PR #98). All from
+    fresh fetches: FENCE HELD — diff v2.10(`d14efae`)..head = 29 files, 100% `ui/`, zero
+    engine/store/gate/docs files; per-item commits match the return's SHAs (items 1 · 3–8 + item-2's
+    group/filter/ΣSCAR); **NO ranking-page file exists** and the deferral is FLAGGED in the RETURN —
+    the ruled Option 1 exactly; ring-fence pin moved `3dc19fbb→790136a3` (base-refresh `35c8922`),
+    bundles stamp board/store/tag `790136a3`/`b1fd0bce`/v2.10 with guard5 "pass" and panel 10/10 ==
+    shipped values; 18 screenshots committed; PLAN-first (auto mode) held at `b4a559a`; the build
+    HALTED-AND-ASKED on the briefly-missing v2.10 tag (push lag) — correct behaviour. Tier 3, never
+    bakes. NEXT RUNG: owner viewing (done, item 178) → his merge click.
+
+177. **THE AXIS RULE RATIFIED — L-AXIS IS BINDING (owner-worded 2026-07-16).** Verbatim: *"A with the
+    carveout is fine, and we can always waive it on a case-by-case basis if need be."* Filed at
+    CONSTRAINTS v1.17 PART 5 with the carve-out (globally-motivated, globally-measured recalibrations
+    are not "moving a third population"; the law forbids using another cohort's lever as the INSTRUMENT
+    for a named-pair gap) and owner-only, per-use, register-recorded waivers. Supersedes the v1.13
+    changelog PENDING-OWNER status. **The PVC+FLEX chapter's opening gate is RULED.**
+
+178. **UI v1.1 OWNER VIEWING + THE v1.2 FEEDBACK BATCH (owner-worded 2026-07-16, verbatim-in-substance).**
+    Viewing: *"Value board looks good… it is looking really good and much improved. None of the above is
+    a blocker to merging."* Merge = the owner's click on PR #98. THE BATCH (the UI v1.2 seed):
+    (1) **Club-name wrap:** shorten AFFL display names that break two lines — North Melbourne Kangaroos
+        → "North Melbourne" · Collingwood Magpies → "Collingwood" · Port Adelaide Power → "Port
+        Adelaide". Display-only.
+    (2) **Picks in club valuations:** draft picks are HOLDABLE, TRADABLE AFFL assets (clubs hold picks
+        for the upcoming draft AND one year ahead; the owner holds the ownership list). Club rankings
+        get a "players only" filter AND a "picks included" filter. **Issued picks appear ONLY in this
+        context** — the +1/+2 board lens carries the PLACEHOLDER PLAYER these picks become; cleaner
+        separated (owner-worded).
+    (3) **Team summary/ranking section** (this SPECS the item-173 ranking page): per club — Overall
+        Value · Total Player Value · Total Picks Value · Top-5 players value · Top-10 players value ·
+        **Best-23 value** (best positionally compliant team: 2 K-DEF · 4 G-DEF · 5 MID · 4 G-FWD ·
+        2 K-FWD · 1 RUCK + 5 bench any position; owner fallback: top-23-by-value if compliance is too
+        hard — supervisor note: it is not; greedy positional fill + best-remaining bench is exact for
+        this structure) · Non-Best-23 value.
+    (4) **A no-LLM trade-update mechanism:** players and picks trade regularly; the owner maintains
+        locations on a spreadsheet and wants updates to sync WITHOUT an LLM agent in the loop. Design
+        leg for the v1.2 spec — SSI-conformant shape: the owner's sheet becomes the AUTHORED source for
+        ownership; everything downstream derived; a deterministic ingest that VALIDATES-OR-HALTS
+        (halt-not-warn) regenerates the bundles. Options go to the owner in the v1.2 directive.
+    None of the batch blocks the #98 merge (owner-worded).
