@@ -1,7 +1,7 @@
 # DIRECTIVE — LEG C: FLEX POSITIONAL MACHINERY · 2026-07-16 · seat 9 (Fable) · PRE-DRAFTED
 ### STATUS: PRE-DRAFTED — fires ONLY after (1) the Leg-B RETURN prescreens PASS and (2) the owner's
 ### word. TWO PLACEHOLDERS, filled at fire time: 273463e (the prescreened Leg-B candidate head)
-### and <DOCS-SHA> (main at issue). THE ONE STORE WRITER of the chapter. SILENCE IS A RED. S1–S6.
+### and 8add349 (main at issue). THE ONE STORE WRITER of the chapter. SILENCE IS A RED. S1–S6.
 
 ## EFFORT: High · MODE: auto — PLAN first, then **STOP-AFTER-PLAN checkpoint** (the item-207
 ## pattern; three catches today earned it a place on every writer). The PLAN carries: the pre-view
@@ -25,9 +25,9 @@
 ## BASE PIN
 - **Engine/store base — STRICT:** the candidate branch at **273463e** exactly (the prescreened
   Leg-B head; verify by full-URL ls-remote; any other SHA ⇒ HALT). Continue THAT branch (never a
-  sibling — item 202/219; this directive's inputs are all at or before <DOCS-SHA>, so no item-219
+  sibling — item 202/219; this directive's inputs are all at or before 8add349, so no item-219
   contradiction exists: the base carries everything needed except docs, which are FETCHED, not merged).
-- **Docs base:** main AT OR AFTER **<DOCS-SHA>**, `git diff --name-only <DOCS-SHA>..main` docs/-only.
+- **Docs base:** main AT OR AFTER **8add349**, `git diff --name-only 8add349..main` docs/-only.
 
 ## THE JOB (kill-switch `RL_FLEX` — =0 ⇒ the 273463e board byte-exact; the RL_ISOFADE pattern)
 1. **THE INGEST — VALIDATE-OR-HALT:** parse the positioning CSV — 804 stable IDs resolve · vocab
