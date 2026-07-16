@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v190 2026-07-16 · PEN: **FLANDERS RULED: present_position → G-DEF (item 217, owner: 'Yes, G-DEF. Lock it in.') — joins the Leg-C store rider. UI v1.3.1 cleared to fire** · prior: v189
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v191 2026-07-16 · PEN: **UI v1.3.1 FIRED · THE LIFECYCLE NOTE FILED (item 218): owner-input class proposed · LTI re-pin tool = a named go-live requirement · THE SEASON-ROLLOVER RUNBOOK proposed as a small chapter (==2026 literals verified — rollover is a designed event)** · prior: v190
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4829,3 +4829,19 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     attribution deliverable regardless). future_position untouched (MID primary / G-DEF 30% per the
     owner's flex register). Rider rides the Leg-C directive when authored — never a separate writer.
     UI v1.3.1 is INDEPENDENT of the store rider (it reads the corrected CSV) — cleared to fire.
+
+218. **MAINTENANCE/LIFECYCLE — OWNER'S SIX QUESTIONS ANSWERED + THE NOTE FILED (2026-07-16):**
+    `docs/NOTE_maintenance_lifecycle_2026-07-16.md`. Substance: (1) the UI is self-sufficient
+    locally (static file://; the no-LLM three-file input flow already shipped); (2) weekly scores =
+    the BUILT provision plumbing + the go-live store-write — one local command per week, no agent
+    (owner ruling v25 stands: live is the FINAL switch); (3) LTI register local — **GAP NAMED: the
+    sanctioned re-pin tool joins the go-live chapter's requirements** (an owner edit must not HALT
+    unmediated); (4) trades DONE (the v1.2 flow); (5) future-position amendments = edit the flex
+    register → the Leg-C ingest re-runs → rebuild, local; **THE OWNER-INPUT CLASS proposed for
+    ratification at go-live** (scores · LTI · locations · picks · positioning = data-refresh, no
+    ladder; model changes keep the full ladder). (6) **THE SEASON-ROLLOVER RUNBOOK proposed as its
+    own small chapter** (after go-live, before season end): seal book → roll BASE/AGE_REF (after a
+    literals-to-config hygiene leg — `==2026` at rl_model.py:354/368/676/810/921 VERIFIED) → interim
+    year-0-reads-future-primary convention → draft intake (V0 off the live curve; stable-ID minting;
+    pick-ledger year shift) → announced-positions refresh. Rehearse before needed. UI v1.3.1 FIRED
+    (owner, this turn).
