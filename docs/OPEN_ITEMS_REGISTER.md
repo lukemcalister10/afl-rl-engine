@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v227 2026-07-16 · PEN: **GAP DIAGNOSTIC RETURNED (item 254): prescreen PASS at `c8bab8d` · item 252's recorded mechanism SUPERSEDED IN PLACE (leak = λ_eff 0.72 not the weight) · OWNER WORD OPEN: the Leg-B disposition, now grounded** · prior: v226
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v228 2026-07-16 · PEN: **ITEM 255: GOVERNANCE FINDING — the Leg-B per-position conservation scope is SEAT-AUTHORED, never owner-ruled (memo §3 "DECISION"); owner states unawareness; supervisor overstatement corrected on the record. Disposition word still OPEN** · prior: v227
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5472,3 +5472,27 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     STRUCTURAL. Time ≈3 h vs 1–2.5 band (1.2× top, declared). No selection proposed, nothing
     tuned. **OWNER WORD OPEN: the Leg-B disposition** — options in chat, symmetric, grounded in
     this map. Leg C still HOLDS.
+
+255. **GOVERNANCE FINDING — THE CONSERVATION RULE'S PROVENANCE (owner-raised, 2026-07-16).** The
+    owner, on learning the conservation renorm is Leg B's dominant leak: "I was not aware of this
+    conservation rule... over the journey numerous proposals have either increased or decreased
+    value across the total player pool." VERIFIED PROVENANCE: (a) NO board-wide conservation law
+    exists or has existed — the owner's observation is CORRECT (chapters have moved totals; e.g.
+    the flattery census's +19,168). (b) The CHAPTER-level principle ("genuinely CONSERVING —
+    value moves, never vanishes") rides in SPEC_PVC_FLEX_CHAPTER v1 line 31 (the spec of record)
+    with the acceptance conservation_ledger (whole-system, ±200 SCAR). (c) The PER-POSITION scope
+    — the term measured at ≈−0.087 β (item 254) — is memo v1.3 §3, EXPLICITLY LABELLED
+    "DECISION (b)", applies ONLY to the Leg-B map's own adjustments (captain/pedigree/iso pass
+    through NOMINAL), and carries NO R-numbered owner ruling anywhere in DECISIONS/CONSTRAINTS.
+    A SEAT-AUTHORED STRUCTURE rode inside the memo without a DO:/WHY: ruling ask — the
+    structural sibling of the seat-authored-number defect the Leg-B chapter spent four
+    iterations purging. FAIRNESS NOTE: memo §3's own pre-sims measured the alternatives dead
+    (unconserved ⇒ y5 1.71; per-cell ⇒ gate tautology) — the seat chose the least-bad regime;
+    the failure was not surfacing the choice. SUPERVISOR CORRECTION ON THE RECORD: seat 10
+    called conservation "an engine founding discipline / the owner's law by lineage" (turn 14)
+    — WRONG board-wide and overstated on ownership; corrected to the owner the same session.
+    CONSEQUENCE: the "chase" disposition option is reframed — a FIRST owner ruling on how the
+    uplift's books balance, not a reversal. STANDING RULE (bind on future memos/specs): a
+    structural design choice with measured value consequences is surfaced to the owner as an
+    explicit DO:/WHY: question, never carried in design prose alone. Disposition word remains
+    OPEN (partial / identity / chase).
