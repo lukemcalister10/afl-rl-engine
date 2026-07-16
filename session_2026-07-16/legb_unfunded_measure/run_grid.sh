@@ -1,8 +1,9 @@
 #!/bin/bash
-# LEG B UNFUNDED — the measurement grid driver (dev-shell; store b1fd0bce untouched). Fans out the
-# per-point jobs (gcohort + beta + ledger) with a concurrency cap; OFF baseline (beta_c + ledger) once.
-# All verdicts from FROZEN instruments. Writes to out/. NB: s=1.00 already measured (gc + beta); this
-# run fills OFF, s=1.00 ledger, and the other four points in full.
+# LEG B UNFUNDED — the measurement grid driver (dev-shell; store b1fd0bce untouched).
+# SEQUENTIAL + SINGLE-THREADED BLAS: the repo determinism fix made par_build/price6/NW order-fixed
+# (thread-count invariant, register A1), so 1-thread BLAS is byte-identical and avoids the OpenBLAS
+# oversubscription spin-thrash that stalled the -P2 run (load 12 on 4 cores). Each point ~2-4 min.
+# All verdicts from FROZEN instruments. Writes to out/.
 set -uo pipefail
 HERE=/home/user/afl-rl-engine
 WS=/home/claude/rl_workspace/rl_after
@@ -16,28 +17,19 @@ cp -f "$HERE/session_2026-07-16/legb_unfunded_measure/measure_gcohort.py" "$WS/m
 cd "$WS"
 export RL_REPO="$HERE" PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
 export PYTHONPATH="$WS":/home/claude/rl_vendor RL_Q97M_PKL="$HERE/data/q97m.pkl"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
 
-run_off () {
-  RL_UNCOMP=0 python3 beta_measure.py 2>"$OUT/beta_OFF.txt"
-  RL_UNCOMP=0 python3 ledger_dump.py "$OUT/led_OFF.json" >"$OUT/led_OFF.log" 2>&1
-  RL_UNCOMP=0 python3 measure_gcohort.py OFF >"$OUT/gc_OFF.txt" 2>"$OUT/gc_OFF.err"
-  echo "DONE OFF"
-}
-run_pt () {
-  local s="$1"
+echo "[$(date +%H:%M:%S)] OFF baseline (beta_c + ledger + gcohort)"
+RL_UNCOMP=0 python3 beta_measure.py 2>"$OUT/beta_OFF.txt"
+RL_UNCOMP=0 python3 ledger_dump.py "$OUT/led_OFF.json" >"$OUT/led_OFF.log" 2>&1
+RL_UNCOMP=0 python3 measure_gcohort.py OFF >"$OUT/gc_OFF.txt" 2>"$OUT/gc_OFF.err"
+echo "[$(date +%H:%M:%S)] OFF done: $(grep RATIOS "$OUT/gc_OFF.txt")"
+
+for s in 0.65 0.85 1.00 1.25 1.50; do
+  echo "[$(date +%H:%M:%S)] point s=$s (gcohort + beta + ledger)"
   RL_UNCONSERVE=1 RL_UNCOMP_S="$s" python3 measure_gcohort.py "s$s" >"$OUT/gc_s$s.txt" 2>"$OUT/gc_s$s.err"
   RL_UNCONSERVE=1 RL_UNCOMP_S="$s" python3 beta_measure.py 2>"$OUT/beta_s$s.txt"
   RL_UNCONSERVE=1 RL_UNCOMP_S="$s" python3 ledger_dump.py "$OUT/led_s$s.json" >"$OUT/led_s$s.log" 2>&1
-  echo "DONE s=$s"
-}
-export -f run_off run_pt
-export OUT WS HERE RL_REPO PYTHONHASHSEED RL_GAMMA RL_PICK1 RL_RUCK_TAX RL_RECENCY_DECAY RL_PRIOR_TREES PAR_RAMPS PYTHONPATH RL_Q97M_PKL
-
-# concurrency cap 2 (4 cores; each job is a chain of ~1-core loads)
-( run_off ) &
-for s in 0.65 0.85 1.25 1.50; do echo "run_pt $s"; done | xargs -I{} -P 2 bash -c '{}'
-wait
-# s=1.00 ledger (gc + beta already captured for s=1.00)
-run_pt_ledger_only () { RL_UNCONSERVE=1 RL_UNCOMP_S=1.00 python3 ledger_dump.py "$OUT/led_s1.00.json" >"$OUT/led_s1.00.log" 2>&1; }
-run_pt_ledger_only
+  echo "[$(date +%H:%M:%S)] s=$s done: $(grep RATIOS "$OUT/gc_s$s.txt") | $(grep '^s=' "$OUT/beta_s$s.txt")"
+done
 echo "ALL DONE"

@@ -1,3 +1,7 @@
-# transient run logs; final artifacts (GRID.out, SINCERITY_*.csv, POINT_*.md, MEASURE.md, ledgers) committed at completion
+# transient during-run files; final artifacts are force-added (git add -f) at grid completion
 *.log
 *.err
+gc_*.txt
+beta_*.txt
+PT_*.json
+DRIVER.log
