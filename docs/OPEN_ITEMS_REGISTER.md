@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v174 2026-07-16 · PEN: **B1 RULED: PROCEED EYES-OPEN (item 199 — the Leg-B memo MUST pre-sim a path under 1.30 or the waiver question returns pre-build) · THE GPT AUDIT FILED VERBATIM (41 findings, docs/AUDIT_gpt_spec_findings — triage frame in item 199; full reconcile = the Leg-B memo's opening input) · UI v1.2.1 FIRED · SEAT 8 CLOSES — ROTATION NOTE item 200** · prior: v173
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v175 2026-07-16 · PEN: **SEAT 9 OPENS (item 201: freshness CLEAN, pack EQUAL, main f06df85 == pin) · DECISIONS → v110 (R104.10 B1 proceed-eyes-open folded) · manifest → v4.35 · v109 archived** · prior: v174
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4536,3 +4536,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     B1 ruling pending fold).** Owner conduct rules carry (items 186/188). Token: the seat-8 pen token
     should be REVOKED by the owner now; a fresh token issues to seat 9 in-chat when its first filing
     needs it.
+
+201. **SEAT 9 (Fable) OPENS — FRESHNESS CHECK CLEAN + FIRST FILING (2026-07-16).** Fresh shallow
+    clone at main `f06df85` (full-URL ls-remote; HEAD == the owner's opening pin, strict match — the
+    pen had not moved it). Tags verified live: v2.10 `d14efae` · v2.9 `9f8ae76` intact. orient.sh run
+    from the clone: **orient OK**; PK compared to the repo DOC BY DOC, header versions — manifest
+    v4.34 · CORE v2.8 · HANDOVER rev144 · DECISIONS v109 · SSI v1.3 — **EQUAL on every doc** ⇒
+    nothing to file per R98.10 (equal is not behind; repo is home from this point). Register items
+    190–200 read in full; item 192's kill of the rev144 §4 pair-2 line NOTED AND CARRIED (A-PAIRS is
+    closed; pairs 2/3 live in the acceptance JSON). THIS FILING: DECISIONS → **v110** (R104.10 — the
+    item-199 B1 ruling folded verbatim; v109 archived) · manifest → **v4.35** · this header → v175.
+    Seat-8 token revocation is the owner's open DO (DECISIONS v110 §3). OPENING ORDER AHEAD: UI
+    v1.2.1 prescreen on its return → the Leg-B functional-form memo (Leg-A landed state engine
+    a83c9f6d · board 8d90c9ac + audit clusters (ii)/(iii) + the MANDATORY G-COHORT pre-sim) → spec
+    v1.2 fold + acceptance v1.17 → the Leg-B directive.
