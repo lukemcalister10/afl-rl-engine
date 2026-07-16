@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v197 2026-07-16 · PEN: **THE AXIS FINDING (item 224): level_now's output-elasticity = 0.124 — the v1.0 §2.1 Docherty cure flattened the target axis; MEMO → v1.1 (ρ = robust REALISED output, qualifying-season exclusion; corrected algebra β_eff=(1−w)β_c+w·λ_ρ; grid → {0.55..0.70}) · ACCEPTANCE → v1.18 (OPEN RE-SEAL; memo md5 c664062c · acceptance caf8636c) · seg-2's stray background tasks: kill; 'reap before HALT' standing** · prior: v196
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v198 2026-07-16 · PEN: **SEGMENT-3 DIRECTIVE REISSUED CONSOLIDATED (item 225) — the owner's double-check request caught THREE stale defects in the prior pair (base 1bf0a0e vs live head c27d697 — would have false-halted; act (A) superseded; docs base pre-#101). ONE self-contained directive now: DIRECTIVE_LEGB_segment3_rewire_v1_1 (base c27d697 STRICT · docs ≥62ab64d · seals c664062c/caf8636c · checkpoint kept). #101 MERGED (UI line SHIPPED)** · prior: v197
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4951,3 +4951,19 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     STANDING CONDUCT LINE: builds REAP all background tasks before any HALT/RETURN. Segment 3's (C)
     scope = the v1.1 re-wire; its (A) confirm-by-re-run now targets β_c + λ_level_now (the two
     load-bearing numbers) rather than the superseded full table.
+
+225. **SEGMENT-3 REISSUE — CONSOLIDATED, STALENESS CAUGHT ON THE OWNER'S ASK (2026-07-16).** The
+    owner asked for a double-check before sending; the check found the filed segment-3 directive +
+    the v1.1 paste pair carried THREE stale elements: (1) base pinned `1bf0a0e` STRICT while the
+    live head is `c27d697` (the second diagnostic moved it) — an obedient build would have HALTED
+    on line one; (2) its act (A) full-diagnostic superseded by item 224's light confirm; (3) its
+    docs base predated the #101 merge (ui/ in the diff ⇒ false halt). **REISSUED AS ONE
+    SELF-CONTAINED DOCUMENT:** `docs/DIRECTIVE_LEGB_segment3_rewire_v1_1_2026-07-16.md` — base
+    `c27d697` STRICT · docs ≥ `62ab64d` (post-#101) · the v1.1 seals verified from the committed
+    blobs (memo `c664062c…` · acceptance `caf8636c…`) · light confirm (β_c + λ) folded into the
+    PLAN evidence · the STOP-AFTER-PLAN checkpoint KEPT (the qualifying-floor declaration + the
+    hook site + the captain-pass mechanics are the reviewables) · the full item-206 deliverable set
+    carried · both new conduct lines in the header (context telemetry · reap tasks). The stale pair
+    archived. **#101 MERGED by the owner — the UI v1.2/v1.3/v1.3.1 line is SHIPPED on main
+    (`00677c9`).** Lesson: a directive is only as fresh as the last time its pins were checked
+    against ls-remote — RE-VERIFY AT HANDOVER, not just at authoring.
