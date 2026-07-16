@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v161 2026-07-16 · PEN: **THE PVC+FLEX CHAPTER SPEC v1 FILED (item 182: five legs A-E on one candidate line — iso evidence-fade · map un-compression · flex machinery + attribution · PVC re-derivation + pick bands · lens rebuild incl. the owner-raised POSTURE LENSES on the D5 dial) · six open owner rulings presented (§6) · acceptance v1.17 skeleton defined (§5)** · prior: v160 items 179–181 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v162 2026-07-16 · PEN: **FOUR SPEC-§6 RULINGS FILED (item 183: English≥1.75x Briggs hard floor w/ owner viewing flexibility · posture sketch adopted, balanced canonical · 2027 pick discount per-posture 10/15/5 · sealed reads WRITTEN) · DECISIONS → v106 · manifest → v4.30 · THE LEG-A DIRECTIVE ISSUED (iso evidence-fade; fires on the owner's word) · G-Y0 explained, word pending** · prior: v161 item 182 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4288,3 +4288,14 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     10–15, before any viewing). Leg A can fire on the owner's word; nothing fires past Leg A without
     §6.1. Hygiene carried into the legs: SGC_REPORT_DIR one-shot (Leg A fence) · the dead `_EVW`
     branch deleted-with-obituary · snapshots by engine hash.
+
+183. **SPEC §6 RULINGS — FOUR OF SIX, OWNER-WORDED (2026-07-16, verbatim):**
+    (1) *"Compression Acceptance: English - 1.75-1.8x Briggs as a minimum, but can be flexible on
+    seeing a candidate if needed."* → english_briggs_priced_ratio hard floor 1.75 (baseline 1.56, item
+    170); flexibility = the OWNER'S word at the viewing rung, per use, never a self-amended gate.
+    (2) *"Posture Presets - adopt sketch, agree balanced stays canonical."* (3) *"2027 Pick Discount:
+    10% at balanced, 15% at contender, 5% at rebuilder."* — the owner's OWN construction (per-posture
+    flat discounts), superseding both spec options. (4) *"Sealed reads written down."* — OQ-D satisfied
+    for this ladder. Filed at DECISIONS v106 (R104.3–R104.6). REMAINING §6 words: G-Y0 (explained this
+    turn, one word pending) + the chapter FIRE word. **THE LEG-A DIRECTIVE ISSUED** —
+    `docs/DIRECTIVE_LEGA_isofade_2026-07-16.md`, couriered; fires on "Fire Leg A" + a paste.
