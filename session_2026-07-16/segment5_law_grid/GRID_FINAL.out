@@ -1,0 +1,15 @@
+workspace store md5 : b1fd0bce  (expect b1fd0bce)
+workspace engine md5: 198742b5  (v1.3 d=0.25)
+UNCOMP_DECAY in seeded engine: 0.25
+
+================= STEP 1 — A/B RE-PROVE (RL_UNCOMP=0 -> 8d90c9ac BYTE-EXACT) =================
+RL_UNCOMP=0 board md5: 8d90c9ac  (expect 8d90c9ac)  ->  A/B PASS BYTE-EXACT
+
+================= STEP 2 — THE GRID (frozen fit_beta; owner bar beta >= 0.80) =================
+point       beta      CI_lo    CI_hi    width    n      >=0.80  CI>1.0  w<=.35  n>=120
+beta_c  s=OFF   beta=0.6219  CI=[0.4836,0.7899] width=0.3063  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.55   s=0.55  beta=0.6665  CI=[0.5275,0.8257] width=0.2982  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.60   s=0.60  beta=0.6706  CI=[0.5315,0.8297] width=0.2983  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.65   s=0.65  beta=0.6747  CI=[0.5354,0.8342] width=0.2988  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.70   s=0.70  beta=0.6788  CI=[0.5402,0.8403] width=0.3001  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+(bar = OWNER-SET 0.80; selection = smallest s with beta point >= 0.80; empty => HALT with this table)
