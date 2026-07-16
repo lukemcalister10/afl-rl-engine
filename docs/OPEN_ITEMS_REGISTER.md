@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v211 2026-07-16 · PEN: **THE SECOND OWNER-PROMPTED PACK REVIEW (item 238): 6 findings fixed in one filing — rev146 (one chat; seg-3 retired; 243106b pinned) · manifest v4.39 (stale HANDOVER row description) · DECISIONS v113 (to-do refs) · rev144/v111/v112 + 8 completed directives ARCHIVED · counter-calibration conduct line (self-estimates ~40% low: 165k vs 290k app counter). All edits POST-ASSERTED** · prior: v210
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v212 2026-07-16 · PEN: **DIAGNOSTIC RETURN PRESCREEN PASS (item 239): owner's catch MEASURED — floor-10 makes 144 phantom rookies (94 ≤22), 47% of windows rewritten; conditioned rule = ZERO phantoms, λ 0.9923, BAR-INSENSITIVE, Darcy dropped, proven +0.23. THE POST-PEAK RULING ASKED (KEEP rec vs EXCLUDE — Darcy Moore +20.7 the named cost). Memo v1.2 + segment-4 directive fire on the word** · prior: v211
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5169,3 +5169,21 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     telemetry):** seg-3 self-estimated ~165k vs the app's 290k — self-estimates run ~40% LOW;
     standing line refined: report the APP COUNTER when visible, self-estimates are FLOORS
     (rev146 §4). PK sync should use THIS pack (v4.39 · rev146 · v113).
+
+239. **THE QUALIFYING DIAGNOSTIC — RETURN PRESCREEN PASS (2026-07-16). Head `2b76d37`, branch
+    `claude/amazing-goldberg-noz7w0` (read-only).** MY CHECKS: TRUE fence verified from the actual
+    fork point (`b9ae47a`) — the job's own findings dir ONLY (my first diff against c27d697 was the
+    wrong base; corrected in-turn) · harness reproduced value-exact (0.8957/0.9937/0.1199) · the
+    committed FINDINGS/λ-table/named-cases concur with the return · store md5 asserted · honest
+    telemetry (~90k, comfortable). **THE OWNER'S CATCH, MEASURED:** floor-10 rewrites 47% of
+    windows and EMPTIES 144 (94 aged ≤22 — phantom rookies in counts); floor-6 still makes 75.
+    **THE CONDITIONED RULE: ZERO phantom rookies · Sam Darcy's injury year dropped exactly as a
+    floor drops it · proven-27+ moved +0.23 (vs floor-10's +1.96 inflation) · λ_ρ = 0.9923 (n=116,
+    CI to 1.0000) · IDENTICAL at BAR 6 and 10 — threshold-insensitive, the arbitrary-number problem
+    dissolves.** **THE POST-PEAK RULING PUT TO THE OWNER (the last open piece):** KEEP (conditioned-
+    base; REC — symmetric evidence: development counts up, decline counts down; veterans measured as
+    they are; λ 0.99; named case Darcy Moore 30 priced off reality at −18.3) vs EXCLUDE (sensitivity;
+    treats all 86 post-peak low-game cases as injury: veterans inflate ≈+1.7, Moore +20.7 — priced
+    off his age-24/25 self; λ degrades to 0.9015, back in empty-grid territory; individual genuinely-
+    injured stars are the OWNER-READ instrument's job, not a blanket rule's). On the word: MEMO v1.2
+    + acceptance re-seal + the SEGMENT-4 directive (base 243106b STRICT) in one turn, then ROTATION.
