@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v170 2026-07-16 · PEN: **OWNER VIEWING OF PR #99 — the '2,700 pick-2 bug' VERIFIED NOT A UI BUG but a CURVE FINDING (item 194: canonical PVC flat at picks 1–2, both 3000; UI faithful; owner read pick1>pick2 → Leg-D watch row; merge HELD) · UI v1.2.1 display-fix directive ISSUED (item 195: sort · two year-columns · per-year totals; 30–60 min) · UI v1.3 candidate scope RECORDED incl. the owner's DPP counting rule (item 196; fires only on his word)** · prior: v169 · earlier chain: items
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v171 2026-07-16 · PEN: **R104.9 RULED (item 197: the new PVC must be STRICTLY DESCENDING — every pick 1→80 at least 1 pt below its predecessor; rides acceptance v1.17/Leg D) · UI v1.3 APPROVED to author · club-pages-follow-lens DEFERRED · Leg A RETURNED + GPT audit RETURNED (41 findings) — prescreen order: LEG A FIRST** · prior: v170 · DECISIONS fold rides the next filing
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4454,3 +4454,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     posture + the R104.5 per-posture pick discounts (10/15/5); the ±1/±2 projection lenses never show
     issued picks (the owner's separation law, item 178(2)); whether club pages follow ±1/±2 for
     PLAYERS is a design option presented at that pass.
+
+197. **THREE OWNER WORDS (2026-07-16, one message):**
+    (1) **R104.9 — THE STRICT-DESCENT PVC GATE (verbatim-in-substance):** the current curve's flat
+    top is confirmed placeholder; **the re-derived PVC must have EVERY pick 1 through 80 at least
+    1 point lower than the pick before it** — curve(p+1) ≤ curve(p) − 1 for p = 1..79 ("if only to
+    make ordering descending lists easier"). Machine-readable at acceptance v1.17; a LEG-D HARD gate
+    (subsumes item 194's curve(2) < curve(1) watch row). DECISIONS fold (→ v109) rides the next
+    filing with the Leg-A prescreen.
+    (2) **UI v1.3 APPROVED** (the item-196 scope: hover pocket-profiles + the positional breakdown
+    with his DPP counting rule) — directive to be authored; queued BEHIND the two pending prescreens.
+    (3) **Club pages following the active lens: DEFERRED to a later date** (owner-worded) — the
+    post-Leg-E UI pass ships posture re-rendering per R104.4/.5; the club-page lens-follow question
+    is parked until he raises it.
+    **RETURNS PENDING PRESCREEN: Leg A (the chapter's critical path — FIRST) + the GPT adversarial
+    audit (41 findings; reconcile feeds the Leg-B memo — SECOND, filed verbatim to docs on arrival).**
