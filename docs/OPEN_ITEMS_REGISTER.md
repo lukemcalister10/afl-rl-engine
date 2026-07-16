@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v192 2026-07-16 · PEN: **UI v1.3.1 PRESCREEN: CONTENT PASS, MECHANICS NOTE (item 219) — sibling branch again, BUT the directive's own base pin was self-contradictory (strict 1a272ff + a CSV newer than it); build merged instead of halting. 3fc334b verified: 1a272ff IS ancestor, all 4 corrections in, collapse+throw in code. CURE = the known one-push fast-forward, then #101 one click** · prior: v191
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v193 2026-07-16 · PEN: **LEG-C DIRECTIVE PRE-DRAFTED (item 220: two placeholders — <LEG-B-HEAD> + <DOCS-SHA>; fires after the Leg-B prescreen + the owner's word; the one store writer; carries the item-216/217 rider + the item-207 checkpoint + audit #21/#27/(iv) folds). Rollover-runbook conversation PARKED on the owner's word** · prior: v192
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4864,3 +4864,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     (supervisor-owned): a directive requiring BOTH a strict branch base AND inputs newer than that
     base must SPECIFY the reconciliation (merge-main-in, as this build chose, or a re-pinned base) —
     the contradiction, not the build, caused the sibling. 35 min actual (honest under-run).
+
+220. **THE LEG-C DIRECTIVE PRE-DRAFTED (2026-07-16): `docs/DIRECTIVE_LEGC_flex_positional_2026-07-16.md`
+    — NOT ISSUED; fires only after the Leg-B RETURN prescreens PASS + the owner's word.** Two
+    placeholders filled at fire time: <LEG-B-HEAD> (engine/store base STRICT — the item-219 lesson
+    applied: all non-doc inputs are at-or-before the base, docs FETCHED not merged, so no
+    contradictory pin) + <DOCS-SHA>. Carries: the §1 verbatim stream law · the VALIDATE-OR-HALT
+    ingest (804 IDs · vocab w/ the item-180 trap stated · one alternate · sum-100) · the ELEVEN
+    future_position writes · **the item-216/217 RIDER (four enumerated writes incl. Flanders
+    present→GDEF)** · the 91 blends on the years-1+ leg only · the item-181 attribution deliverable
+    with SEQUENTIAL-CUMULATIVE stages + declared interaction residual (audit #21) · the conservation
+    note (audit cluster (iv)) · the per-young earned-component check over the changed rows (audit
+    #27) · the full `leg_c_remeasure` of every Leg-B statistic · RL_FLEX with byte-exact OFF proof ·
+    expected_boot re-pin in the store-moving commit · the item-207 STOP-AFTER-PLAN checkpoint
+    (three catches today earned it a standing place on writers). 3-5 h estimate. Rollover-runbook
+    discussion PARKED for the owner's later word (item 218's proposal stands).
