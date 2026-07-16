@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v167 2026-07-16 · PEN: **HANDOVER → rev144 (mid-chapter rotation-readiness, item 189): prescreen checklists for both in-flight lanes · the Leg-B memo DECISION LIST · owner-available parallel items (A-PAIRS pair 2 · spec adversarial review) · manifest → v4.32** · prior: v166 item 188 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v168 2026-07-16 · PEN: **R104.8 filed (item 190: the item-130 GLOSS — protected quantity = EARNED value; the pick prior dissolves BOTH ways; Leg A ships w/ the 37-row decomposition condition) · UI v1.2 PRESCREEN PASS (item 191: PR #99 head 2d00e3f, fence 0/21 non-ui, 20/20 verdicts, 16-club count VERIFIED vs source; merge on the owner's click) · DECISIONS → v108 · manifest → v4.33** · prior: v167 item 189 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4373,3 +4373,29 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     estimates · the vocab trap) · loose ends. Manifest → v4.32. PLANNED ROTATION: after the two
     returns are prescreened and filed, at that mini-seam — supervisor's timing per the standing
     entrustment.
+
+190. **R104.8 — THE ITEM-130 INTERPRETIVE GLOSS (owner-ruled 2026-07-16 via the Leg-A mid-build ask;
+    "I have responded in line with your feedback").** Leg A HALTED-AND-ASKED correctly on the literal
+    "no above-projection young player may be cut" clause: 37 above-projection young players carrying
+    early-pick BONUSES trim slightly as the bonus dissolves (33/37 pick-premium carriers; most <2%;
+    Cadman pick-1 −12.7% · Reid −3.5% · Gulden −2.5%) while the young side NETS +2,749 and English
+    hits 1.766× Briggs (the 1.75 floor cleared from Leg A alone). RULED: **SHIP, with each of the 37
+    deltas DECOMPOSED — movement must be 100% the iso/pick-premium channel, production components
+    byte-identical pre/post; any failing row = HALT.** THE GLOSS: the protected quantity is
+    EARNED/PRODUCTION value; the unearned pick prior dissolves in BOTH directions (L-SYMMETRY · the
+    owner's item-132 read · the flattery-census fix direction). Prescreen adds the decomposition as a
+    hard check on Leg A's RETURN.
+
+191. **UI v1.2 PRESCREEN — PASS (2026-07-16). PR #99, branch `claude/club-valuation-ui-v1-2-gdghtf`,
+    head `2d00e3f` == refs/pull/99/head (fresh fetch).** Verified by this seat: FENCE HELD — 0 of 21
+    changed files outside ui/ (merge-base d422c31) · `config.js EXPECTED_BOARD == 790136a3` ·
+    HOW_TO_UPDATE_INPUTS.md + tools/ingest_inputs.py + the screenshots dir EXIST at the head · the
+    committed verdicts file carries **20/20 PASS** · **the 16-club claim VERIFIED against the source
+    CSV** (18 distinct AFFL Team strings = 16 clubs + 'Free Agents'/'Free agents' — one of the build's
+    declared case-only reconciliations, visible and correct; Free Agents is a pool, not ranked).
+    DECLARED FALLBACK ACCEPTED per the directive: the offline file:// viewer cannot parse binary xlsx
+    at load, so the no-LLM path = GitHub web upload + ONE deterministic command
+    (`ui/tools/ingest_inputs.py`, validate-or-halt) + reload. Deferrals correctly flagged-not-built
+    (posture toggles · +1/+2 re-enable — post-Leg-E). OPTIONAL LATER (not a blocker, owner's call at
+    viewing): export the pick workbook's two tabs as CSVs like the other inputs and the viewer could
+    ingest at load with NO command step. NEXT RUNG: owner viewing → his merge click (Tier 3).
