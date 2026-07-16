@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v217 2026-07-16 · PEN: **PROVENANCE CORRECTED (item 244, owner-probed): β≥0.85 was SEAT-AUTHORED (memo v1.0), not owner law — the owner's hard numbers are E/B ≥1.75 (R104.3) + his reads/gates; λ≥0.95 is DERIVED arithmetic from 0.85. The owner's law as-written ⇒ β_eff ≈0.75 (real de-compression vs 0.62). Decision structure: kernel table FIRST; if no conforming shape ≥0.95, the owner may RE-RULE the β target (legitimate owner word) vs adopt a sharper kernel** · prior: v216
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v218 2026-07-16 · PEN: **THE KERNEL TABLE (item 245): conforming-kernel ceiling ~0.93 ⇒ β 0.85 UNREACHABLE without exclusion; gauss h=1.0's 1.0086 = noise (CI to 0.84, neighbours miss — REJECT). The kernel moves ONLY the injured veteran (Moore ρ negative under every never-wipe shape ⇒ identity/no-uplift; Sam Darcy robust +2.5..+3.9). OWNER RULING OPEN: A [REC] keep d=0.5 + retire the seat-authored β/λ gates + owner selects s at viewing on HIS gates · B steeper kernel (CI-indistinguishable, defer) · C reject · D exclusion (75 phantoms) — one word** · prior: v217
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5278,3 +5278,26 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     target (his word moving his line with full information — rule-3-clean; never a seat
     self-amendment) versus adopting a sharper conforming kernel; the E/B + cohort + reads rungs
     bind either way.
+
+245. **THE KERNEL-FAMILY TABLE — PRESCREENED; THE RULING STRUCTURED (2026-07-16). Head `ef6bf1a`
+    (anchors byte-exact: d=0.50→0.8086, floor6→0.9942 — instrument sound; both invariant assertions
+    passed per candidate; nothing selected; board/store/config unchanged).** FINDINGS: (1) the
+    NEVER-WIPE CEILING ≈ 0.93 (best conforming shapes 0.92-0.93) ⇒ β_eff ceiling ≈ 0.83 — **the
+    seat-authored 0.85 is unreachable by ANY rule-conforming construction**; only exclusion
+    (floor6, 0.9942) reaches it, and R105.4 forbids exclusion. (2) gauss h=1.0's λ=1.0086 is a
+    NON-ROBUST point (CI [0.844,1.219]; neighbours 0.933/0.906; λ(h) non-monotone ⇒ ±0.1 noise) —
+    selecting it = tuning to luck; REJECTED in the recommendation. (3) **THE KERNEL MOVES ONLY THE
+    INJURED VETERAN:** Darcy Moore (2026 = 4-game 33.5 dip) has NEGATIVE ρ under every conforming
+    kernel ⇒ w=0 ⇒ priced at IDENTITY (no uplift, no markdown); only exclusion reads him +0.28.
+    Sam Darcy is robust (+2.5..+3.9) under every shape — the protected young cohort is
+    kernel-insensitive. **THE RULING PUT (one word): A [REC]** — keep the owner's law at d=0.5;
+    RETIRE the seat-authored β≥0.85 gate + its derived λ≥0.95 pre-gate; segment 4 runs the full
+    grid and returns the PER-s TABLE of the OWNER'S gates (E/B ≥1.75 hard · G-COHORT y4/y5/y6 ·
+    ≤22 slope · β as diagnostic); THE OWNER SELECTS s AT HIS VIEWING; the all-804 ledger regenerates
+    at his s. Consequences stated: β_eff ≈0.75; dip-injured veterans receive no uplift (identity;
+    the override/read instruments + the ledger cover individuals). **B** steeper d≈0.15 (ceiling
+    0.83) — CI-indistinguishable from d=0.5; choosing on the point = soft noise-tuning; DEFER,
+    revisitable after the owner's viewing. **C** gauss h=1.0 — REJECT (noise). **D** amend R105.4
+    back to exclusion — reachable 0.85 but re-makes 75 phantom rookies + re-wipes the ruled-in
+    games; not recommended. Acceptance re-seal (v1.20) and memo v1.3 fire ON THE WORD — an owner
+    moving the owner's line (rule-3-clean), never a seat self-amendment.
