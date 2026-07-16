@@ -305,59 +305,27 @@ KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_
 S_SH=3.0
 def comp(v): return v   # no compression (v2.0)
 def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position value above replacement
-# ==== LEG B — UN-COMPRESS THE OUTPUT->PRICE MAP (RL_UNCOMP; memo/PLAN 2026-07-16, spec §3 Leg B) =========
-# posval(lev+capt_prem(lev)-REPL) is the concave output->price conversion (beta=0.364 at the peak): elite
-# output ratios do not carry into price ratios (item 131 compression). This layer blends the CAPTAIN-FREE
-# production price toward an output-proportional target in log-space, per demonstrated-evidence weight,
-# PRESERVING the L-CAPTAIN increment ADDITIVELY and leaving sub-bar / zero-evidence / synth legs BYTE-EXACT.
-#   rho = lev / L_ref[pos]   (PRE-captain);   t = V_ref[pos] * rho   (kappa=1, output-proportional target)
-#   v0  = posval(lev - REPL[pos])                              (captain-free production value)
-#   v0' = v0**(1-w) * t**w                                     (log-space production blend; w in [0,1])
-#   delta = posval(lev+capt_prem(lev)-REPL[pos]) - v0          (the UNCHANGED L-CAPTAIN increment)
-#   v'  = C[pos] * v0' + delta                                 (production-side renorm; captain delta additive)
-#   w   = s * E * ramp(m),  m = lev-REPL[pos],  ramp(m)=clip(m/UNCOMP_DELTA,0,1)   (memo §2.2 onset ramp)
-#   E   = 1 - exp(-Eq/UNCOMP_TAU),  Eq = _ev_qual  (the tau=1.1 pedigree-fade family Leg A rides, un-faded
-#         0->1 as qualifying evidence saturates).  Memo §2's algebra beta_eff=(1-w)*beta_c+w needs w in [0,s],
-#         so E is the SATURATING weight (E in [0,1]), NOT raw Eq (which would drive w>1 -> beta_eff>1). At the
-#         proven bar Eq~4: E~0.974, w=s*0.974 -> at s~0.53 w~0.527 -> beta_eff~0.85 (the memo's design target).
-# Declared kill-switch (the RL_ISOFADE / RL_EVW pattern -- NOT a manifest dial): RL_UNCOMP=0 => v' === base
-# => board 8d90c9ac BYTE-EXACT (config_sha256 UNMOVED). L_ref/V_ref/C[pos] are built LOAD-TIME by
-# _merged_recover (median-proven reference + a production-side conservation pass; PLAN §3/§5).
+# ==== LEG B — UN-COMPRESS THE OUTPUT->PRICE MAP (RL_UNCOMP; memo v1.1 / seg-3 2026-07-16, spec §3 Leg B) ==
+# OBITUARY (seg-2 posval-COMPONENT wiring — delete-don't-disable, SSI/CORE rule 7). The ORIGINAL design
+# (register items 211/213) wrapped the map at SIX posval sites via `posval_uncomp(lev,pos,Eq)`: the k-legs
+# of proj_from_peak/prod_floor here AND the W4 _proj_w4/_prod_floor_w4 in _merged_recover. That placement
+# was PROVEN to compress BY CONSTRUCTION (register 221): the REPL offset makes local elasticity >=1 at
+# posval for elites, so blending toward an elasticity-1 target pulls elite production DOWN, not up. The
+# axis finding (register 224) then located the deeper defect — the rho AXIS: level_now's output-elasticity
+# is only 0.124 (measured), so any blend toward V_ref*rho(level_now) flattens price-vs-output regardless of
+# hook. MEMO v1.1 CURES BOTH: the map moves to the PRODUCTION-VALUE hook (pr=price6, ONCE per player, at
+# _merged_recover.py raw_ev:298), and rho tracks REALISED OUTPUT. `posval_uncomp` + the per-leg E/CAL state
+# + the L_ref/V_ref dicts are DELETED here; the six posval sites are RESTORED to their pre-seg-2 originals
+# (posval(lev+capt_prem(lev)-REPL)). The v1.1 map, its references (RHO_DEN/V_ref_b) and the C[pos]
+# conservation now live in _merged_recover (co-located with the hook). This module keeps ONLY the declared
+# kill-switch + dials below (the RL_ISOFADE / RL_EVW pattern — NOT a manifest dial). RL_UNCOMP=0 (or the
+# strength dial unset) => the map is INERT => board 8d90c9ac BYTE-EXACT (config_sha256 UNMOVED).
 _UNCOMP=os.environ.get('RL_UNCOMP','1')!='0'
-UNCOMP_DELTA=6.0                       # onset-ramp width (avg-points above replacement); memo §2.2 / PLAN §4 (~2*S_SH clears the softplus knee)
-UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weight rate E=1-exp(-Eq/tau) (memo §2 / PLAN §3 "same family Leg A's fade rides")
-UNCOMP_S_DEFAULT=None                  # THE strength dial s -- hard-coded to the s-grid-selected literal after PLAN §7 selection; None => layer INERT
-_uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override (PLAN §7): RL_UNCOMP_S=<s> per grid point
+UNCOMP_DELTA=6.0                       # onset-ramp width (avg-points above replacement); memo §2.2 (~2*S_SH clears the softplus knee)
+UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weight rate E=1-exp(-Eq/tau) (memo §2 "same family Leg A's fade rides")
+UNCOMP_S_DEFAULT=None                  # THE strength dial s -- hard-coded to the s-grid-selected literal after selection; None => map INERT
+_uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override: RL_UNCOMP_S=<s> per grid point
 UNCOMP_S=(float(_uncs) if _uncs not in (None,'') else UNCOMP_S_DEFAULT)
-_UNCOMP_LREF={}                        # L_ref[pos]: MEDIAN level_now over the demonstrated-proven population (built load-time; PLAN §3)
-_UNCOMP_VREF={}                        # V_ref[pos] = posval(L_ref[pos]-REPL[pos]) (built load-time)
-_UNCOMP_C={}                           # C[pos]: per-position PRODUCTION-SIDE conservation renorm (built load-time; PLAN §5)
-_UNCOMP_E={'cur':0.0}                  # per-player evidence weight E for the DELEGATED rl_model sites 4-6 (set by the raw_ev wrapper; 0 for synths/poles)
-_UNCOMP_CAL={'on':False,'v0':{},'v0p':{}}   # load-time conservation accumulator (Sum v0, Sum v0p per pos over MAPPED legs)
-def posval_uncomp(lev,pos,Eq):
-    """The un-compressed above-replacement production->price value for ONE leg (memo §2 / PLAN §3), captain
-    preserved additively. Eq = raw evidence (_ev_qual). RL_UNCOMP=0, s unset, sub-bar (m<=0), zero-evidence
-    (Eq<=0) or a missing reference => the EXACT original posval(lev+capt_prem(lev)-REPL[pos]) (byte-identical
-    off / zero-E / synth path)."""
-    R=REPL[pos]; base=posval(lev+capt_prem(lev)-R)
-    if not _UNCOMP or UNCOMP_S is None: return base
-    m=lev-R
-    ramp=0.0 if m<=0.0 else (1.0 if m>=UNCOMP_DELTA else m/UNCOMP_DELTA)
-    E=1.0-math.exp(-Eq/UNCOMP_TAU) if Eq>0.0 else 0.0      # saturating evidence weight in [0,1] (memo §2 algebra needs w in [0,s])
-    w=UNCOMP_S*E*ramp
-    if w<=0.0: return base                                 # off the ramp / no evidence -> unchanged (self-test: zero-evidence identity)
-    Lref=_UNCOMP_LREF.get(pos)
-    if not Lref or Lref<=0.0: return base                  # reference not built yet (module init) -> identity
-    v0=posval(lev-R)
-    if v0<=0.0: return base
-    delta=base-v0                                          # L-CAPTAIN increment, byte-identical pre/post map (self-test at all six sites)
-    t=_UNCOMP_VREF[pos]*(lev/Lref)                         # kappa=1
-    if t<=0.0: return base
-    v0p=(v0**(1.0-w))*(t**w)                               # log-space production blend
-    if _UNCOMP_CAL['on']:                                  # load-time conservation calibration: accumulate (C is 1.0 here)
-        _UNCOMP_CAL['v0'][pos]=_UNCOMP_CAL['v0'].get(pos,0.0)+v0
-        _UNCOMP_CAL['v0p'][pos]=_UNCOMP_CAL['v0p'].get(pos,0.0)+v0p
-    return _UNCOMP_C.get(pos,1.0)*v0p+delta                # production-side renorm; captain delta additive & nominal
 CAPT_THRESH=107.4; CAPT_M=116.0; CAPT_W=5.0   # captaincy line (slider); 2026-06-21 M6: last-5 rank-25 ~=107.4 (unbiased upload), was 108.0
 def _pcap(a): return 1.0/(1.0+math.exp(-(a-CAPT_M)/CAPT_W))
 def capt_bonus(level):
@@ -405,9 +373,9 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if ag<=pa: lev=max(lev,cl)
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
-        _E=_UNCOMP_E['cur']                                    # LEG B sites 4/5 (delegated path: synths/ctx-None => E carried by the module slot; 0 => byte-exact)
-        if k==0: prod+=posval_uncomp(lev,g0,_E)*21/((1+d)**k)
-        else: prod+=sum(w*posval_uncomp(lev,gg,_E) for gg,w in fut)*21/((1+d)**k)
+        base=lev+capt_prem(lev)
+        if k==0: prod+=posval(base-REPL[g0])*21/((1+d)**k)
+        else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/((1+d)**k)
     if g in('KEY_FWD','KEY_DEF'): prod*=1.05
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
     return prod
@@ -419,7 +387,7 @@ def prod_floor(p,lens='bal'):
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_avail_hc'])
-        prod+=wt*posval_uncomp(lev,g,_UNCOMP_E['cur'])*21/((1+d)**k); k+=1   # LEG B site 6 (delegated: UNPROVEN/young floor -- the Reid side)
+        prod+=wt*posval(lev+capt_prem(lev)-REPL[g])*21/((1+d)**k); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
 # Replaces old blended cohort+demoPeak. Model = forward-realised best-3 (>=Y, completeness-weighted), bust-inclusive.

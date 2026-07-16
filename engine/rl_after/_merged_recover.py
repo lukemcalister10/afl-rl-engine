@@ -273,30 +273,8 @@ def par_pole(pos,pk,T):
     if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'GEN_FWD':0.93,'KEY_FWD':0.95,'GEN_DEF':1.08,'KEY_DEF':1.05,'RUC':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
-# ==== LEG B DIAGNOSTIC (supervisor item 221, FINDINGS-ONLY) — un-compress blend at the PRODUCTION-VALUE level
-# Apply v'=v^(1-w)*(V_ref_b*rho)^w to the production-side board value pr=price6 (BEFORE the pole-recovery term
-# below — the ev-path analogue of value()'s prod_full pre-max-with-pedestal; NOTE: the board renders ev(), not
-# value(), so the hook is pr here). rho=level_now/L_ref[pos] (pre-captain), V_ref_b[pos]=MEDIAN price6 over the
-# demonstrated-proven pop (built load-time), w=s*E PER PLAYER (E=1-exp(-Eq/tau), current evidence; no per-leg
-# split). SEPARATE flag RL_UNCOMP_L2_S; RL_UNCOMP stays INERT. CAPTAIN CAVEAT: pr carries the captain via the
-# posval sites, so this blends captain-inclusive production (flagged per the ruling, NOT reworked here).
-_L2S=(lambda _v: float(_v) if _v not in (None,'') else None)(os.environ.get('RL_UNCOMP_L2_S'))
-_L2_LREF={}; _L2_VREFB={}
-def _l2_blend(pr,p,Y):
-    if _L2S is None or pr<=0.0 or not _L2_VREFB: return pr    # off, or references not built yet (early-load raw_ev: pole warm / V0 build run before _isreal is defined)
-    _pos=MA.gfut(p); _Lref=_L2_LREF.get(_pos); _Vb=_L2_VREFB.get(_pos)
-    if not _Lref or not _Vb or _Lref<=0.0 or _Vb<=0.0 or not _isreal(p): return pr
-    _ln=MA.level_now(p)
-    if _ln is None: return pr
-    _Eq=_ev_qual(p,Y); _E=1.0-_math.exp(-_Eq/MA.UNCOMP_TAU) if _Eq>0.0 else 0.0
-    _w=_L2S*_E
-    if _w<=0.0: return pr
-    _t=_Vb*(_ln/_Lref)                                        # V_ref_b * rho (kappa=1)
-    if _t<=0.0: return pr
-    return pr**(1.0-_w)*_t**_w
 def raw_ev(p,Y=2026):
-    pr=price6(p,b6(p,Y),Y); pr=_l2_blend(pr,p,Y)             # LEG B item-221 diagnostic: production-value un-compress blend (no-op unless RL_UNCOMP_L2_S set)
-    pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
+    pr=price6(p,b6(p,Y),Y); pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
     et=min(max(eff_ten(p,Y, PR.tenure(p,Y)),1),6)                                     # STEP1: developmental tenure off original PR.tenure base
     po,par=par_pole(pos,pk,T); a=MA.age(p)
     wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
@@ -755,10 +733,10 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # RL_AVAIL present haircut L_p (was _b2hc)
         if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
-        _E=ctx.get('E',0.0)                                          # LEG B sites 1/2 (wired W4 proven/ctx-on population)
+        base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
-        if k==0: prod+=Wk*MA.posval_uncomp(lev,g0,_E)*21/((1+d)**k)
-        else: prod+=Wk*sum(w*MA.posval_uncomp(lev,gg,_E) for gg,w in fut)*21/((1+d)**k)
+        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
+        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
     if g in('KEY_FWD','KEY_DEF'): prod*=1.05
     runway=MA.clamp((25-a)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
@@ -780,7 +758,7 @@ def _prod_floor_w4(p,lens='bal'):
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_avail_hc'])  # RL_AVAIL: register-driven present haircut (was _b2hc; R-B2HC retired)
-        prod+=_w4_W(k,ctx)*wt*MA.posval_uncomp(lev,g,ctx.get('E',0.0))*21/((1+d)**k); k+=1   # LEG B site 3 (proven demonstrated-production floor)
+        prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================
@@ -857,10 +835,9 @@ def _ycred_mult(p,Y):
     return 1.0+_YC_W*R*phi
 _raw_ev_w4_0=raw_ev
 def raw_ev(p,Y=2026):                                        # W4: context-setting wrapper (real players only; synths delegate clean) + L1c credit
-    prev=_W4CTX['on']; ctx=_w4_ctx(p,Y); _W4CTX['on']=ctx
-    prevE=MA._UNCOMP_E['cur']; MA._UNCOMP_E['cur']=(ctx['E'] if ctx is not None else 0.0)   # LEG B: thread E to the DELEGATED rl_model sites 4-6 (0 for synths/ctx-None -> byte-exact)
+    prev=_W4CTX['on']; _W4CTX['on']=_w4_ctx(p,Y)
     try: return _raw_ev_w4_0(p,Y)*_ycred_mult(p,Y)           # L1c: ×1.0 exactly when RL_YOUNG=0 (byte-exact off-path)
-    finally: _W4CTX['on']=prev; MA._UNCOMP_E['cur']=prevE
+    finally: _W4CTX['on']=prev
 _B6PIN={'L':None}                                            # W4 KPF: band pin — collapse the forward band to one level (production-implied EFV probe)
 _b6_pre_w4=b6
 def b6(p,Y=2026):
@@ -1296,70 +1273,10 @@ if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
 
-# ==== LEG B — UN-COMPRESS REFERENCE (L_ref/V_ref) + PRODUCTION-SIDE CONSERVATION (C[pos]); built LOAD-TIME ==
-# PLAN §3/§5. Built AFTER ev() is defined + all player attributes finalized, and BEFORE the RL_AVAIL
-# attribution block so that block's ev()-diffs see the SAME (mapped) surface the board ships. INERT unless
-# RL_UNCOMP is on AND s is set (UNCOMP_S): the guard then leaves L_ref/V_ref/C empty -> posval_uncomp
-# returns base -> board 8d90c9ac BYTE-EXACT (poles above are already warmed unmapped: E=0 + empty reference).
-def _uncomp_scope(_p):                                        # valuation scope = active board population
-    return _isreal(_p) and not delisted(_p) and not _p.get('_retired')
-if MA._UNCOMP and MA.UNCOMP_S is not None:
-    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()              # module load leaves MA's clock at a historical V0-build year; pin to the present so level_now/ev = the 2026 surface (mirrors rl_export.py:42)
-    # (1) L_ref[pos] = MEDIAN level_now over the DEMONSTRATED-PROVEN population per position (PLAN §3 (b)):
-    #     { p : gfut(p)==pos, _nqual(p,2026) >= PROVEN_N (=4), p in scope }.  V_ref[pos] = posval(L_ref-REPL).
-    _lref_pool={}
-    for _p in MA.data:
-        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
-        _g=MA.gfut(_p)
-        if _g not in MA.REPL: continue
-        _ln=MA.level_now(_p)
-        if _ln is None: continue
-        _lref_pool.setdefault(_g,[]).append(float(_ln))
-    for _g,_vals in _lref_pool.items():
-        _Lr=float(np.median(_vals)); MA._UNCOMP_LREF[_g]=_Lr; MA._UNCOMP_VREF[_g]=MA.posval(_Lr-MA.REPL[_g])
-    # (2) C[pos]: PRODUCTION-SIDE conservation renorm (PLAN §5). ONE load-time calibration pass over the
-    #     valuation scope accumulates Sum(v0), Sum(v0p) per position over the MAPPED legs (posval_uncomp with
-    #     C==1); C[pos]=Sum(v0)/Sum(v0p) makes the position's TOTAL production value unchanged by the map
-    #     (an explicit per-position budget transfer across year-depths; pedigree/iso premiums + captain delta
-    #     are NOMINAL, never renormed). Firing the same ev() calls the board fires makes it conserving.
-    MA._UNCOMP_CAL['on']=True; MA._UNCOMP_CAL['v0'].clear(); MA._UNCOMP_CAL['v0p'].clear()
-    with contextlib.redirect_stdout(io.StringIO()):
-        for _p in MA.data:
-            if not _uncomp_scope(_p): continue
-            try: ev(_p,2026)
-            except Exception: pass
-    MA._UNCOMP_CAL['on']=False
-    for _g,_s0 in MA._UNCOMP_CAL['v0'].items():
-        _s0p=MA._UNCOMP_CAL['v0p'].get(_g,0.0); MA._UNCOMP_C[_g]=(_s0/_s0p) if _s0p>0.0 else 1.0
-    print("=== RL_UNCOMP LEG B: map ON (s=%.4f Delta=%.1f) | reference+conservation over %d proven / scope-pop ==="
-          %(MA.UNCOMP_S,MA.UNCOMP_DELTA,sum(len(v) for v in _lref_pool.values())))
-    for _g in sorted(MA._UNCOMP_LREF):
-        print("    %-8s L_ref=%7.2f V_ref=%8.2f C=%.5f (n_proven=%d)"%(_g,MA._UNCOMP_LREF[_g],MA._UNCOMP_VREF[_g],MA._UNCOMP_C.get(_g,1.0),len(_lref_pool.get(_g,[]))))
-
-# ==== LEG B DIAGNOSTIC (item 221) — production-value reference: L_ref (median level_now) + V_ref_b (median
-# price6) over the demonstrated-proven pop per position. Built load-time only when RL_UNCOMP_L2_S is set;
-# RL_UNCOMP stays inert. price6 is called with the map inert (posval_uncomp -> base), so V_ref_b is the BASE
-# production value. ============================================================================================
-if _L2S is not None:
-    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
-    _l2ln={}; _l2pr={}
-    for _p in MA.data:
-        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
-        _g=MA.gfut(_p)
-        if _g not in MA.REPL: continue
-        _ln=MA.level_now(_p)
-        if _ln is None: continue
-        with contextlib.redirect_stdout(io.StringIO()):
-            try: _pr=price6(_p,b6(_p,2026),2026)
-            except Exception: _pr=None
-        if _pr is None or _pr<=0.0: continue
-        _l2ln.setdefault(_g,[]).append(float(_ln)); _l2pr.setdefault(_g,[]).append(float(_pr))
-    for _g in _l2ln:
-        _L2_LREF[_g]=float(np.median(_l2ln[_g])); _L2_VREFB[_g]=float(np.median(_l2pr[_g]))
-    print("=== RL_UNCOMP_L2 DIAGNOSTIC (item 221): s=%.4f | production-value blend over %d proven (RL_UNCOMP inert) ==="
-          %(_L2S,sum(len(v) for v in _l2ln.values())))
-    for _g in sorted(_L2_LREF):
-        print("    %-8s L_ref=%7.2f V_ref_b(price6)=%9.1f (n=%d)"%(_g,_L2_LREF[_g],_L2_VREFB[_g],len(_l2ln.get(_g,[]))))
+# LEG B un-compress (seg-3 Task 1): the seg-2 posval-level reference/conservation block AND the item-221
+# production-value diagnostic reference build are REMOVED here (delete-don't-disable; the machinery they fed —
+# posval_uncomp / _l2_blend — is gone). The v1.1 production-value reference (RHO_DEN + V_ref_b), the C[pos]
+# conservation pass and the map are (re)wired at the raw_ev production-value hook in seg-3 Task 3.
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
