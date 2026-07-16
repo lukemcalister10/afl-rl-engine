@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v238 2026-07-16 · PEN: **ITEM 265: OWNER RULES — "Let's lock in s=0.10 and move forward." The bar/grid machine-selection is RETIRED (strength now owner-set). SELECTION directive ISSUED (wire 0.10 + clean re-measure, base `fef2b64` STRICT). Open owner word: pair-2 handling before the ladder** · prior: v237
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v239 2026-07-16 · PEN: **ITEM 266: owner re-bands PAIR 2 to ±15% ("Happy to reband to 15") — at his s=0.10 the pair now PASSES (−14.0%); both pairs green at the selected strength. Selection build FIRED by the owner. Open owner words: NONE until the selection return** · prior: v238
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5699,3 +5699,13 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     honest instrument. Sequencing: selection build → prescreen → **Leg C fires on the new
     Leg-B head** → D → E → ladder → ONE bake → v2.11. Leg C's <LEG-B-HEAD> placeholder fills
     from the prescreened selection head.
+
+266. **OWNER RE-BANDS PAIR 2 (2026-07-16, verbatim: "Happy to reband to 15. Firing directive
+    now.").** A-PAIRS pair 2 (Harley Reid vs Bontempelli) parity band widens ±10% → **±15%**,
+    owner-ruled. At his selected s=0.10 the measured −14.0% now sits INSIDE the band — both
+    pairs PASS at the selected strength (pair_3 −7.9% already passing). The item-265 open word
+    is CLOSED via option (b). CONSTRAINTS/acceptance fold (pair-2 band 0.15) rides the next
+    natural re-seal alongside L-SINCERE, the two-sided G-COHORT band, and the item-265 s-law;
+    operative from this item per OQ-A interim visibility. The SELECTION build (item 265) is
+    FIRED by the owner. Open owner words: NONE until its return. Next: selection return →
+    prescreen → Leg C placeholders fill → his Leg-C fire word.
