@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v204 2026-07-16 · PEN: **FABLE REVIEW OF THE OPUS TURNS (item 231): core redirect SOUND (halt + conditioned rule + measure-first all stand); THREE fixes to the diagnostic — the DECLINE third category (post-peak low-game seasons are evidence, not interruption — excluding them would inflate fading vets, the mirror defect), BAR declared ∈{6,10}, base pin tightened. ADDENDUM filed. No seam occurred (same window; model switch only)** · prior: v203
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v205 2026-07-16 · PEN: **SEG-3 STATE CLARIFIED (item 232): the floor-6 PROCEED was NEVER pasted (owner) — seg 3 still at its PLAN checkpoint; the HALT paste moot. PARTIAL PROCEED issued: build the rule-INDEPENDENT ratified scaffolding (removal · captain-off · hook+ramp · killswitch A/B) with rho's qualifying predicate STUBBED (NotImplementedError, one call site); no grid, no rho finals; HALT for memo v1.2** · prior: v204
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5074,3 +5074,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the post-peak category for the memo to rule on. The career-phase lesson applied to BOTH ends of
     the arc. (2) BAR was UNDEFINED in measurement 2 — now declared: run at both 6 and 10. (3) base
     pin tightened (state the exact SHA read, ≥ c2e91fe or c27d697).
+
+232. **SEG-3 PARTIAL PROCEED (2026-07-16).** Owner clarified: nothing was pasted to seg 3 since its
+    PLAN checkpoint — the floor-6 PROCEED (retracted at item 230) never reached it, and the HALT
+    paste is moot. ONE paste issued (PASTE_legb_segment3_partial_proceed.md): decisions resolved
+    (floor SUPERSEDED — no hard floor, the conditioned rule arrives as memo v1.2; branch = keep the
+    harness branch, ancestry defines the line); PROCEED on the RULE-INDEPENDENT prescreen-ratified
+    components ONLY — six-site removal + obituary · C[pos] re-point · captain-off pass + δ self-test
+    · the hook blend + Δ=6.0 ramp with `_qualifying(p, season)` as a STUBBED pluggable predicate
+    (NotImplementedError, exactly one call site) · RL_UNCOMP=0 ⇒ 8d90c9ac A/B proof. HARD STOPS: no
+    qualifying rule of any kind, no s-grid, no rho/V_ref_b finals; HALT with the predicate signature.
+    Rationale: the engine lane would otherwise idle for hours behind the diagnostic + memo v1.2 while
+    every listed component is already ratified and invariant to the rule under redesign; the single
+    pluggable predicate is the entire amendment surface. Memo v1.2 + the predicate law courier into
+    the SAME chat; the grid runs then.
