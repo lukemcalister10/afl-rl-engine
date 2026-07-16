@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v171 2026-07-16 · PEN: **R104.9 RULED (item 197: the new PVC must be STRICTLY DESCENDING — every pick 1→80 at least 1 pt below its predecessor; rides acceptance v1.17/Leg D) · UI v1.3 APPROVED to author · club-pages-follow-lens DEFERRED · Leg A RETURNED + GPT audit RETURNED (41 findings) — prescreen order: LEG A FIRST** · prior: v170 · DECISIONS fold rides the next filing
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v172 2026-07-16 · PEN: **LEG A PRESCREEN — PASS WITH TWO OWNER ITEMS (item 198: R104.8 decomposition VERIFIED 37/37 + global 2652/2652 production-frozen · fence clean · store b1fd0bce untouched · OFF-board == 790136a3 · English 1.766× · B1 over-1.30 pre-existing+0.010, owner posture word asked · A4 Reid rank-only) · DECISIONS → v109 (R104.9 folded) · manifest → v4.34** · prior: v171
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4469,3 +4469,25 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     is parked until he raises it.
     **RETURNS PENDING PRESCREEN: Leg A (the chapter's critical path — FIRST) + the GPT adversarial
     audit (41 findings; reconcile feeds the Leg-B memo — SECOND, filed verbatim to docs on arrival).**
+
+198. **LEG A PRESCREEN — PASS WITH TWO OWNER ITEMS (2026-07-16). PR #100, branch
+    `claude/iso-corr-evidence-fade-jnda76`, head `8b8ab7d` == refs/pull/100/head (fresh fetch).**
+    INDEPENDENTLY VERIFIED BY THIS SEAT: **FENCE CLEAN** — 27 files, ZERO store/rl_model.py/docs/ui;
+    store md5 at the head == `b1fd0bce` (untouched). **THE R104.8 HARD CHECK PASSES** — the committed
+    DECOMP.txt: GLOBAL raw_ev byte-identity 2652/2652 (production moved on 0 rows); all 37
+    above-projection young trims decomposed, every row rawev==YES with iso-ratio == value-ratio
+    (Cadman 1.1610→1.0129, 3356→2929 — the mid-build face, exact). **KILL-SWITCH A/B:** committed
+    board_off.json md5 == **790136a3** (the v2.10 board, byte-exact) + B4 PASS (ON board 8d90c9ac
+    byte-agree). PLAN-first held; 7 per-task commits. Gate snapshot `gates_a83c9f6d.json` read by this
+    seat: B2/B3/B4/B6 PASS · A2 Curtis standing-fail (unchanged by ruling D7) · panel/self-test per
+    return. **THE THREE NARROWEST MARGINS (OQ-B):** (1) **B1 G-COHORT y5 = 1.3160 vs 1.30 — OVER**
+    (pre-existing: base 790136a3 = 1.3057 under the LAPSED waiver; Leg A widens ~+0.010 — the fade
+    lifts proven producers' later years; the build did NOT tune τ to game it, declared). (2)
+    English/Briggs **1.766× vs floor 1.75 — +0.016 inside** (cleared on Leg A alone; upside for the
+    chapter). (3) A-PAIRS pair 3 (Sanders/Bont) **9.0% vs band 0–10% — 1.0% inside** (narrowed from
+    13.7%: the right direction). A4: Reid rank 40→44 (VALUE HELD, 3,650; rucks legitimately rose past
+    him) — recorded EXPECTED-RECOVERY at Leg B/D, revisit at the ladder. census-v2: NOT re-run by the
+    build; ACCEPTED-BY-ARGUMENT at prescreen (production byte-frozen + every iso premium moves
+    monotonically TOWARD 1 ⇒ the unearned gauge cannot grow) — **the ladder's cold audit re-runs it.**
+    **OWNER WORD ASKED (DECISIONS v109): B1 posture — (a) proceed eyes-open, gate binds at the ladder,
+    Leg-B memo must pre-sim a path under 1.30 (REC) · (b) hold the line for the pre-sim first.**
