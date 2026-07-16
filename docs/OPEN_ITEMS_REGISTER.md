@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v198 2026-07-16 · PEN: **SEGMENT-3 DIRECTIVE REISSUED CONSOLIDATED (item 225) — the owner's double-check request caught THREE stale defects in the prior pair (base 1bf0a0e vs live head c27d697 — would have false-halted; act (A) superseded; docs base pre-#101). ONE self-contained directive now: DIRECTIVE_LEGB_segment3_rewire_v1_1 (base c27d697 STRICT · docs ≥62ab64d · seals c664062c/caf8636c · checkpoint kept). #101 MERGED (UI line SHIPPED)** · prior: v197
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v199 2026-07-16 · PEN: **ROLLOVER SPEC v1 FILED (item 226: five independent idempotent acts + season_state.json + Guard 6 + order-tolerance V↔IV + the owner's phantom dry-run as the acceptance instrument) · LTI RE-PIN TOOL DIRECTIVE FILED — FIREABLE NOW (disjoint, Tier 3) · go-live directive pre-draft QUEUED · Leg-B seg3 IN FLIGHT** · prior: v198
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4967,3 +4967,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     archived. **#101 MERGED by the owner — the UI v1.2/v1.3/v1.3.1 line is SHIPPED on main
     (`00677c9`).** Lesson: a directive is only as fresh as the last time its pins were checked
     against ls-remote — RE-VERIFY AT HANDOVER, not just at authoring.
+
+226. **THE BACKGROUND MAINTENANCE WAVE (owner-driven 2026-07-16).** (1) **ROLLOVER SPEC v1 FILED**
+    (`docs/SPEC_SEASON_ROLLOVER_v1_2026-07-16.md`) — the owner's two refinements adopted as
+    first-class requirements: STAGED-NOT-ATOMIC (five independent idempotent acts · a committed
+    `data/season_state.json` · a new Guard 6 asserting build-behaviour == state-file · the engine
+    valid at EVERY intermediate state for weeks) and ORDER TOLERANCE (acts declare pre-conditions,
+    not sequence positions; announced positions (V) may precede draft intake (IV)); the owner's
+    phantom dry-run ADOPTED as the acceptance instrument (isolated sandbox · dummy class · both act
+    orders · idempotence double-application · a pre-signed expectation sheet — the sealed-reads
+    pattern applied to a process). BUILD SEQUENCING honest: spec now · hygiene+build = a small
+    post-bake chapter (the ==2026 literals are engine — the lane is held by Leg B and the candidate
+    line) · dry-run after · real off-season rehearsed. (2) **LTI RE-PIN TOOL DIRECTIVE FILED —
+    FIREABLE NOW** (`docs/DIRECTIVE_TOOL_lti_repin_2026-07-16.md`; tools/-only, disjoint from every
+    in-flight fence, 1-1.5 h; validate → re-pin the ONE field → report; never writes the store,
+    never rebuilds). (3) **Score store-write stays GATED by the owner's own v25 ruling** (no write
+    code before the go-live word — belt-and-braces preserved); the GO-LIVE DIRECTIVE PRE-DRAFT +
+    the weekly CSV format proposal QUEUED to this seat (next background slots). (4) Future-position
+    maintenance arrives WITH Leg C (its ingest is the re-usable path). Self-sufficiency layers
+    hereby enumerated: the tool (fireable) · the write (gated) · the rollover (spec'd).
