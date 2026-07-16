@@ -1,4 +1,8 @@
-# DIRECTIVE — LEG-B CONSERVED MEASUREMENT (read-only; ships nothing) · 2026-07-16 · seat 10
+# DIRECTIVE — LEG-B CONSERVED MEASUREMENT (read-only; ships nothing) · 2026-07-16 · seat 10 · v1.1
+### v1.1 (pre-fire, owner-asked item 261): the grid EXTENDS DOWNWARD — {0.15, 0.25, 0.35, 0.45}
+### added below the ratified four — to map where the cohort trajectory crosses the owner's
+### preferred 1.20–1.25 landing zone. Eight points, same battery. The return answers: at which s
+### does each cohort year sit in 1.20–1.25, do all three co-land, and what β does that zone buy.
 ### STATUS: ISSUED, fires on the owner's word + paste. PURPOSE: the unfunded road is measured
 ### DEAD (item 260 — every point fails the owner's 1.08 cohort floor; the board deflates 24–36%).
 ### The CONSERVED family at grid strength is now the only live Leg-B road — and its gate/band/
@@ -10,7 +14,7 @@
 ## EFFORT: Medium. Why not Low: four ON-points through the full battery with per-point ledgers
 ## is real bookkeeping. Why not High: the harness is COMMITTED AND PROVEN (item 260's branch,
 ## ~4 min/point); this is a re-run at different env values with zero new code beyond glue.
-## MODE: auto — PLAN first. TIME: 45–90 min. Confirm; flag >2×/<½×; report actual + wall-clock.
+## MODE: auto — PLAN first. TIME: 60–110 min (eight points). Confirm; flag >2×/<½×; report actual + wall-clock.
 
 ## BASE PIN — full-URL ls-remote against https://github.com/lukemcalister10/afl-rl-engine.git
 - **Engine base — STRICT:** branch `claude/legb-unfunded-measurement-1f7vym` at **`b7a776c`**
@@ -24,7 +28,7 @@ the unfunded verdict) · docs/MEMO_LEGB_functional_form (seal cf6c0080) · accep
 (seal 6b83e336) · session_2026-07-16/legb_unfunded_measure/ (the harness + MEASURE.md) ·
 session_2026-07-16/uncompress/beta_measure.py (FROZEN, 14c59139) · this directive.
 
-## THE JOB — the CONSERVED map (RL_UNCONSERVE unset) at s ∈ {0.55, 0.60, 0.65, 0.70}
+## THE JOB — the CONSERVED map (RL_UNCONSERVE unset) at s ∈ {0.15, 0.25, 0.35, 0.45, 0.55, 0.60, 0.65, 0.70}
 Per point, frozen instruments only (S4), the item-260 battery unchanged:
 β (CI/width/n) · **G-COHORT y4/y5/y6 via the frozen July-8 construction, judged against the
 FULL BAND (floor 1.08 · cap 1.30 · ideal 1.15–1.25) — a sub-floor reading is a FAILURE** ·
@@ -37,10 +41,11 @@ for the band verdict (known BREACH y4/y5 — the chapter's standing obligation).
 ## FENCE
 IN: env-var runs of the committed harness · glue/aggregation · session-dir artifacts.
 OUT (touch = HALT): engine · store · docs/ · config · acceptance · gate/guard code · the toggle
-file · any s outside the four listed · any selection or tuning. SILENCE IS A RED.
+file · any s outside the eight listed · any selection or tuning. SILENCE IS A RED.
 
 ## RETURN
 ≤25 lines + plain close: branch · head · per-point one-liners (β/width · y-band verdict BOTH
 SIDES · E/B with raw parts · Bontempelli SCAR+rank · net ΣΔ · sinc-fails) · does ANY point land
-the baseline breach INSIDE the band? · actual time. Artifacts carry the rest. The disposition
+the baseline breach INSIDE the band, and WHERE does the trajectory cross the 1.20–1.25 zone (per
+cohort year + jointly)? · actual time. Artifacts carry the rest. The disposition
 returns to the owner with both families fully measured.

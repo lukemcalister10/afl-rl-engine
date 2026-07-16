@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v233 2026-07-16 · PEN: **ITEM 260: UNFUNDED MEASUREMENT RETURNED — prescreen PASS at `b7a776c`; the unfunded road is MEASURED DEAD under the owner's band (every point fails the 1.08 floor) · the OFF baseline BREACHES the hard gate (the chapter's standing obligation) · CONSERVED-measure directive ISSUED pending word** · prior: v232
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v234 2026-07-16 · PEN: **ITEM 261: owner asks for the s landing cohorts at 1.20–1.25; conserved-measure directive → v1.1 (grid extended down: 8 points {0.15–0.70}); the one-dial-two-masters tradeoff stated. Fires on his paste** · prior: v233
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5596,3 +5596,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     owner-ratified grid {0.55–0.70}, same battery, band-judged both sides, E/B with raw parts,
     reusing the proven harness (Medium, 45–90 min, base `b7a776c` STRICT, read-only). The
     disposition then rules with BOTH families fully measured. Leg C still HOLDS.
+
+261. **OWNER ASKS THE LANDING-ZONE QUESTION (2026-07-16, verbatim): "Is there a S number that
+    would land the cohorts at 1.20-1.25 range? That would be better than 1.10-1.11."** Supervisor
+    answer of record: very likely yes and BELOW the ratified grid's bottom — the trajectory
+    sweeps from the baseline breach (1.302/1.316/1.266 at s=0) down through 1.10-1.15 by s=0.55
+    (pre-sim), so 1.20–1.25 sits near s ≈ 0.2–0.4 — MUST BE MEASURED (pre-sims wrong twice
+    today); whether y4/y5/y6 CO-LAND in a 0.05-wide window is exactly what the sweep shows.
+    TRADEOFF STATED PLAINLY (one dial, two masters): lower s ⇒ cohort health in his ideal zone
+    but minimal de-compression (β ≈ 0.65 projected at s≈0.3 vs 0.622 baseline) — a cohort-first
+    Leg B defers the compression fight to a future mechanism; his choice to make with the map in
+    hand. **DIRECTIVE AMENDED PRE-FIRE → v1.1:** grid {0.15, 0.25, 0.35, 0.45, 0.55, 0.60, 0.65,
+    0.70} (8 points, same battery, 60–110 min); return must state where the trajectory crosses
+    1.20–1.25 per cohort year and jointly. Fires on his paste. Leg C still HOLDS.
