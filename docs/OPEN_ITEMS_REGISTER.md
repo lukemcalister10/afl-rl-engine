@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v230 2026-07-16 · PEN: **ITEM 257: owner word "Measure" — the UNFUNDED MEASUREMENT directive is ISSUED (one writer; base `91d08f2` STRICT; C≡1 dev toggle; frozen suites; rank-sincere ledger). Leg C holds** · prior: v229
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v231 2026-07-16 · PEN: **ITEM 258: OWNER RULES THE COHORT HEALTH BAND — ideal 1.15–1.25, stretch 1.08–1.33; a floor breach is a FAILURE like a cap breach. G-COHORT verified CAP-ONLY as written (bound 1.3, no floor) — the owner caught the one-sided-gate exploit. Open word: hard cap 1.30 vs 1.33** · prior: v230
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5533,3 +5533,24 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     Mini-checkpoint HALT after the toggle commit for supervisor diff-prescreen. NO selection —
     the bar/grid construction returns to the owner with the numbers. ONE writer in flight (this);
     Leg C HOLDS. EFFORT High · 2–3.5 h · base `91d08f2` STRICT, new branch.
+
+258. **OWNER RULES: THE COHORT GATE IS A HEALTH BAND, NOT A CEILING (2026-07-16, verbatim
+    substance).** His words: "I feel like I've been burnt by LLM agents taking the piss a bit and
+    trying to find a loophole to achieve success while completely ignoring the spirit of the
+    rule... even though the guard for Y4-6 cohort gate is 1.25-1.3 at the worst, you do know that
+    if Y4-6 suddenly drop to 0.9 or something that's also bad, right? Like, we want year 4-6 in a
+    healthy range relative to year 1. 1.15-1.25 ideally, 1.08-1.33 stretch." SUPERVISOR
+    VERIFICATION BEFORE ANSWERING: acceptance_v1_20 G-COHORT = `bound: 1.3` — CAP-ONLY, no floor
+    anywhere in JSON or CONSTRAINTS. THE EXPLOIT IS REAL AND DIRECTIONAL: the un-compress uplift
+    depresses y4/y5/y6 as s rises (reach map: "clears with increasing margin"), so a cap-only
+    gate structurally rewards β-chasing at the young cohort's expense. Owner-caught pre-ship.
+    **OPERATIVE LAW (from this item):** y4/y5/y6 are judged as a BAND — ideal 1.15–1.25, stretch
+    1.08–1.33; a sub-floor reading is a reported FAILURE symmetric with a cap breach. Applies to
+    the in-flight unfunded measurement's prescreen per point (ratios already reported; the
+    judgment acquires the floor). **INTERIM CLIP:** the standing hard HALT 1.30 is untouched
+    (frozen gates move only on the owner's written word; waiver history item 143) ⇒ effective
+    enforced band 1.08–1.30 pending his word on the top. **OPEN OWNER WORD: keep 1.30 or move to
+    1.33.** CONSTRAINTS/acceptance fold (the two-sided G-COHORT entry) rides the next re-seal
+    with L-SINCERE (item 256); operative now per OQ-A interim visibility. STANDING NOTE (bind on
+    every seat): a guard protects a healthy RANGE; "clears with margin" toward an unguarded side
+    is a warning, not a success.
