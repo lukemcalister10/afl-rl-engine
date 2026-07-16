@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v187 2026-07-16 · PEN: **AMENDED PLAN VERIFIED (item 214: e7cf9ba, chain e7cf9ba→12cb206→8b8ab7d, PLAN.md only, both amendments folded verbatim-in-substance incl. all-six captain + δ self-test). SEGMENT 2 CLEARED TO FIRE (fresh chat, DIRECTIVE_LEGB_segment2). Plan chat RETIRED clean** · prior: v186
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v188 2026-07-16 · PEN: **UI v1.3 PRESCREEN PASS (item 215) + the 33-multi-position flag DIAGNOSED: the CSV lists K-implies-G expansions; house rule = K absorbs G (not DPP) ⇒ all 34 collapse to 1-2 positions. OWNER COUNTING RULING OPEN (collapse-first vs equal-split). Leg-B segment 2 FIRED. Best-23 K-in-G-slot eligibility check REGISTERED** · prior: v187
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4764,3 +4764,25 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     a clean segment-1 close, no checkpoint apology. **NEXT: the owner opens a FRESH Claude Code
     (Opus) chat with `docs/DIRECTIVE_LEGB_segment2_2026-07-16.md`** (base = e7cf9ba STRICT — the
     directive's "amended-PLAN head" pin now resolves to this SHA). Return prescreen on its RETURN.
+
+215. **UI v1.3 PRESCREEN — PASS (2026-07-16) + THE MULTI-POSITION DIAGNOSIS.** Branch
+    `claude/club-pocket-profiles-positional-ph5p4g`, head `1a272ff` (fresh fetch). MY CHECKS: fence
+    0 non-ui files (c317e4c..head) · verdicts file committed, base-pin + ring-fence PASS lines read ·
+    ui/data untouched in the diff · EXPECTED_BOARD 790136a3 asserted in positions_data.js · counting
+    tests 15/15 per the verdicts · under-estimate honest (1.5 h vs 2-3). **THE 33-PLAYER FLAG,
+    DIAGNOSED (owner suspicion CONFIRMED by this seat's own CSV extraction):** 34 players carry 3-4
+    listed positions (33 ranked; Cooper Bell is the unranked Free Agent — the build's count
+    reconciles exactly). Patterns: 15× RUCK+G/K-FWD · 10× four-way swingmen · 3× K-DEF+RUCK+G ·
+    3× pure-general G-DEF/G-FWD/MID · 3 singletons. EVERY case is the authoritative-universe
+    K-implies-G listing convention EXCEPT the 3 pure-general+MID rows. **HOUSE RULE (owner-worded
+    earlier, restated 2026-07-16): K-X ABSORBS G-X — the G listing is eligibility, NOT a DPP.**
+    Collapse-first reduces all 34 to 1-2 effective positions: RUCK/K-FWD DPPs (0.5/0.5) ·
+    K-DEF/K-FWD DPPs · Langford K-FWD/MID (exception verbatim: K-FWD 1, MID 0) · the 3 pure-general
+    rows = MID 0 + 0.5/0.5 across the two G's (the exception's natural extension). **OWNER RULING
+    OPEN:** (a) collapse-first then his rule [REC — matches the established convention; a ~30-min
+    follow-up on THE SAME branch pre-merge] vs (b) accept the build's equal-split generalisation
+    [zero further work; counts differ for 33 ranked players]. **ALSO REGISTERED:** (1) Whitlock's
+    CSV row (G-DEF,G-FWD,K-DEF) may be stale vs the owner's K-DEF/K-FWD eligibility correction —
+    owner eyeball asked; (2) the owner's Best-23 edge case (does the v1.2 solver model K-eligibility
+    for G slots — a 3rd K-DEF vs a 4th G-DEF) — a bundle/solver check OUT of this PR's fence, queued
+    as its own Tier-3 investigation on his word. **Leg-B SEGMENT 2 FIRED** (owner, this turn).
