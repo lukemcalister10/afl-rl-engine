@@ -1,0 +1,3 @@
+# transient run logs; final artifacts (GRID.out, SINCERITY_*.csv, POINT_*.md, MEASURE.md, ledgers) committed at completion
+*.log
+*.err
