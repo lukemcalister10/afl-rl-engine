@@ -5,7 +5,7 @@
 
 ## EFFORT: High · MODE: auto — PLAN first, then **STOP-AFTER-PLAN checkpoint** (the item-207
 ## pattern; three catches today earned it a place on every writer). The PLAN carries: the pre-view
-## hash manifest (this directive + acceptance v1.17 + the positioning CSV md5s) · the enumerated
+## hash manifest (this directive + acceptance v1.20 + the positioning CSV md5s) · the enumerated
 ## store writes (11 + the rider = the COMPLETE write list, row by row) · the blend wiring site ·
 ## the attribution construction. HALT, return the PLAN SHA, wait for PROCEED.
 ## TIME: 3–5 h wall-clock in two segments (~20-30 min to checkpoint; confirm, flag >2×/<½×).
@@ -18,7 +18,7 @@
    PRIMARY; the dual stream ONLY swaps the FUTURE REPLACEMENT BAR for the LOWER of the pair (the
    MAX law), p_dual% × the capitalised value of netting against the lower bar, floored ≥ 0) + §3
    Leg C. 2. `docs/inputs/AFFL_Future_Positioning.csv` (the owner's register; stable IDs). 3.
-   `docs/acceptance_v1_17.json` (`leg_c_remeasure` + the earned-component gate + census cells). 4.
+   `docs/acceptance_v1_20.json` (`leg_c_remeasure` + the earned-component gate + census cells). 4.
    `docs/DECISIONS_v111` + `docs/CONSTRAINTS_v1_18` (L-AXIS · G-COHORT 1.30 · the taxonomy). 5.
    Register items 216/217 (the rider, owner verbatim). 6. This directive.
 
