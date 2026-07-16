@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v215 2026-07-16 · PEN: **PACK REVIEW №3 (item 242): FIVE findings — rev146 doubly stale AT FILING (cited v112 + acceptance v1.18) · diagnostic shown in-flight · queue described the SUPERSEDED conditioned design · manifest acceptance row stale · R105.4/R105.5 MISSING from DECISIONS. Fixed: rev147 · DECISIONS v114 · manifest v4.40; seals re-verified live. PK sync uses THIS pack** · prior: v214
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v216 2026-07-16 · PEN: **SEGMENT-4 λ PRE-GATE HALT (item 243): the v1.2 law measured at λ=0.8086 < 0.95 (whole-career weighting drags elites to career-average; no d∈[0.30,0.72] clears; waive = DEAD, β_eff ≤ 0.8086 even at w=1). OPTIONS to the owner: A [REC] kernel-family diagnostic (rule-conforming fast-decay shapes, named-player table) · B dead · C chapter rethink. E-vs-ρ framing filed (evidence lives in E; ρ is current form). Seat-9 rotation = after this fork, unconditional** · prior: v215
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5241,3 +5241,23 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     post-asserted; predecessors archived. PATTERN NOTE for seat 10: three owner-prompted reviews
     found 4+6+5 defects — the doc-update cascade (handover→decisions→manifest→acceptance rows) is
     where a tired pen fails; VERIFY THE CASCADE as a unit at every filing.
+
+243. **SEGMENT-4 λ PRE-GATE HALT — THE LAW-VS-MECHANISM FORK (2026-07-16). Head `a427dd2` (fresh
+    fetch; 243106b IS an ancestor — candidate line intact; store/config unmoved; seals matched;
+    nothing built past step 0 — the build's conduct exemplary, the gate worked exactly as designed).**
+    MEASURED: λ_ρ(v1.2, d=0.5) = 0.8086, CI [0.68, 0.97], n=112 — the pinned anchors reproduced
+    exactly (floor6 0.9942 / floor10 0.8957), so the instrument is sound; the whole-career
+    games×recency weighting pulls elite ρ toward CAREER AVERAGE, decorrelating from recent-form
+    output. Decay sweep d∈[0.30,0.72]: best 0.8611 — none clears; only a horizon cap approaches,
+    which R105.4 forbids as exclusion. **WAIVE IS ARITHMETICALLY DEAD:** β_eff = (1−w)·0.6219 +
+    w·0.8086 ≤ 0.8086 at w=1 — the 0.85 grid can never fill. **THE FRAMING FILED:** the owner's
+    every-game-counts principle lives in **E** (total evidence, saturating, whole-record); **ρ is
+    the CURRENT-FORM measure** — for form, information decays hard; games are never wiped (positive
+    weight always) but old games' weight on NOW falls fast. **OPTIONS TO THE OWNER: A [REC]** — the
+    kernel-family diagnostic in seg 4 (geometric d 0.10-0.25 · Gaussian h 0.8-1.3 · soft-shoulder
+    window; EVERY candidate must pass two per-candidate assertions: positive weight for every played
+    game AND strict monotone per-game recency — R105.4/R105.5 intact by construction), λ + Sam
+    Darcy/Darcy Moore ρ per shape, owner rules the SHAPE from the named table; if NONE clears 0.95
+    ⇒ C. **B** — waive: shown dead, not offered seriously. **C** — chapter rethink (the fallback).
+    The paste is in the owner's hands. **ROTATION BOUNDED: seat 9 finishes THIS fork (table → shape
+    ruling → memo v1.3) then rotates UNCONDITIONALLY** — stated to the owner in the same turn.
