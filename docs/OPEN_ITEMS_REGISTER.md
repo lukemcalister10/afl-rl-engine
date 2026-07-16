@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v166 2026-07-16 · PEN: **UI v1.2 FIRED (item 188) — TWO lanes in flight (Leg A + UI, disjoint) · STANDING RULE filed: every directive carries a CONCRETE wall-clock TIME estimate (owner-worded; the UI directive's 'one session' was not one — miss owned; in-flight estimate ~1.5–3 h)** · prior: v165 items 186–187 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v167 2026-07-16 · PEN: **HANDOVER → rev144 (mid-chapter rotation-readiness, item 189): prescreen checklists for both in-flight lanes · the Leg-B memo DECISION LIST · owner-available parallel items (A-PAIRS pair 2 · spec adversarial review) · manifest → v4.32** · prior: v166 item 188 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4360,3 +4360,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     hours** of chat wall-clock (Medium scope; the xlsx ingest + summary page are the long poles; the
     display fixes are minutes). Rule carries into every future directive's TIME field + the next
     HANDOVER conduct block.
+
+189. **HANDOVER rev144 FILED — MID-CHAPTER ROTATION-READINESS (2026-07-16, owner-prompted after the
+    seat's context compaction).** The seat remains able (est. headroom: the two in-flight prescreens +
+    their filings, comfortably; the Leg-B memo is a large spend better opened by a FRESH seat) — the
+    pack is refreshed EARLY so rotation costs one freshness check whenever taken. rev144 carries: the
+    pins · the chapter state (all six §6 rulings) · BOTH prescreen checklists verbatim · THE QUEUE
+    with the Leg-B functional-form memo's DECISION LIST (family · conservation · Reid mechanics ·
+    acceptance mapping · interactions) so the next seat starts deciding, not re-deriving ·
+    owner-available parallel items (A-PAIRS pair 2 — never resolved, owner decision; cross-model
+    adversarial review of the spec, precedented) · the recent conduct rules (PK-courier · time
+    estimates · the vocab trap) · loose ends. Manifest → v4.32. PLANNED ROTATION: after the two
+    returns are prescreened and filed, at that mini-seam — supervisor's timing per the standing
+    entrustment.
