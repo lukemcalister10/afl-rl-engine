@@ -3,7 +3,7 @@
 Build session artifact (NOT a docs/ pack doc — CORE: builds never author docs).
 **Design of record (READ IN FULL, consumed):** `docs/MEMO_LEGB_functional_form_2026-07-16.md` — decisions (a)–(e) are settled; this leg IMPLEMENTS, it does not redesign.
 Directive: `docs/DIRECTIVE_LEGB_uncompress_2026-07-16.md`. Spec: `docs/SPEC_PVC_FLEX_CHAPTER_v1_2026-07-16.md` §3 Leg B (v1.2). Acceptance: `docs/acceptance_v1_17.json` (`leg_b.*`).
-Branch `claude/legb-output-price-decompress-3vo8y1`. **FIRST COMMITTED ARTIFACT (MODE: auto). After this commit → HALT at the owner-ruled checkpoint and WAIT for the PROCEED word.**
+Branch `claude/legb-output-price-decompress-3vo8y1`. **AMENDED PLAN — supervisor prescreen PASS with two amendments (register items 211–213), folded in (§2 site 7, §3 additive captain all-six, §13 flags). Segment 1 close: implementation runs in a FRESH chat per `docs/DIRECTIVE_LEGB_segment2_2026-07-16.md` (§14).**
 
 ---
 
@@ -44,7 +44,8 @@ ev → _prod_path = raw_ev·iso_eff  (_merged_recover.py:1142)
 | 4 | `rl_model.py:356` | `proj_from_peak` (k=0) | **current-year** | `posval(base−REPL[g0])` | delegated path: synths + ctx-None |
 | 5 | `rl_model.py:357` | `proj_from_peak` (k≥1) | **projected-year** | `posval(base−REPL[gg])` over `fut` | delegated path |
 | 6 | `rl_model.py:369` | `prod_floor` (k=0..H) | **current + near-projected** | `posval(lev+capt−REPL[g])` | delegated path: **UNPROVEN/young floor — the Reid side** |
-| dx | `_ov_final.py:37` | diagnostic `approx` | — | raw `posval(...)` in a print-only analysis script | **non-board** (not imported by any builder, not gated, not re-run). Analogue of Leg A's `_ov_angleA.py` diagnostic. **Proposed: NOT wired** (out of the live board/measured path) — supervisor to confirm at prescreen. |
+| 7 | `rl_model.py:559` | `_nv_bwd` (backward per-pick ruler) | — | `posval(b2+capt_prem(b2)−(REPL−PVC_REPL_BUF))` | **NOT WIRED** (AMENDMENT 1, item 211) — a backward MEASUREMENT ruler on realised careers, not a forward output→price valuation leg (outside memo §4's family). Wrapping it would move `_natcv34` → PICKEQ → pathway `_eff` (board-reaching) through an unruled channel and pre-empt Leg D's derivation; w=s·E has no coherent year on a career-realised measure. Whether the backward ruler carries the cured map is QUEUED FOR THE LEG-D MEMO (item 204's life-path measurement decides it). |
+| dx | `_ov_final.py:37` | diagnostic `approx` | — | raw `posval(...)` in a print-only analysis script | **non-board** (not imported by any builder, not gated, not re-run). Analogue of Leg A's `_ov_angleA.py` diagnostic. **NOT wired — RATIFIED at prescreen** (flag (f)); out of the live board/measured path. |
 
 **Both legs, per site:** at each posval site the k=0 term is the **current-year** leg and each k≥1 term is a **projected-year** leg (`proj_from_peak` runs k=0..17; `prod_floor` runs k=0..H≤3). Each leg carries **that year's own E** (§3). This is the same "current-year AND projected-year" split Leg A's directive named for `iso_eff`.
 
@@ -53,8 +54,13 @@ ev → _prod_path = raw_ev·iso_eff  (_merged_recover.py:1142)
 - **E (evidence weight)** — `w = s·E`, E = `_ev_qual(p, Y)` (`_merged_recover.py:182`; effective qualifying seasons), **τ = 1.1** = `_EVW_TAU` — the SAME family Leg A's fade rides. Per leg, `Y` = the year being valued (k=0 → 2026; k≥1 → 2026+k). `_ev_qual` counts qualifying seasons with `year≤Y`; no future seasons exist in the store, so E is **flat into the projected years** = the player's current demonstrated evidence — which is exactly the Reid mechanism (a young demonstrated over-performer carries real `w>0` on his projected years the moment evidence exists; no young special-case, no second map).
 - **ρ numerator = the SMOOTHED demonstrated level, NEVER single-season** (memo §2.1). Per leg it is the level already computed at that posval site: k=0 = the `level_now`-derived `lev` (`level_now(p)=_dev_advance(level_demo(p),p)`, `rl_model.py:296/234` — multi-season, robust-baseline, injury/thin-filtered); k≥1 = the projected `lev = lp·frac(ag,pa)` rolled forward along the dev curve. `lp` derives from `level_now`, so every leg's `lev` is in the `level_demo/level_now` family by construction. An LTI/injured season does not read as output collapse.
 - **V_ref (ρ's positional reference)** — from the **demonstrated-proven population per position**: `L_ref[pos]` = a robust central level (proposed **median**) of `level_now(p)` over `{ p : MA.gfut(p)==pos, _nqual(p,2026) ≥ PROVEN_N (=4), p in valuation scope }`. Built **load-time** (one pass, like the REPL derivation / the calibration pool). Reference **value** `V_ref[pos] = posval(L_ref[pos] − REPL[pos])`.
-- **The map** (memo §2, κ = 1): `ρ_k = lev_k / L_ref[pos]`; output-proportional target `t_k = V_ref[pos] · ρ_k^κ`; `v_k = posval(lev_k + capt_prem − REPL[pos])`; then
-  **`v′_k = v_k^(1−w_k) · t_k^(w_k)`** — a straight log-space blend of the current price toward the output-proportional price. At `lev=L_ref` (ρ=1) the map is identity; above it the concave `v` is lifted toward the linear-in-output target (β↑); κ stays 1 (the dial is `s`).
+- **The map** (memo §2, κ = 1; **captain PRESERVED ADDITIVELY at all six sites — AMENDMENT 2 as corrected, supervisor item 213**). ρ is **pre-captain**. Per leg:
+  - `ρ_k = lev_k / L_ref[pos]`; target `t_k = V_ref[pos] · ρ_k^κ`, κ=1, `V_ref[pos] = posval(L_ref[pos] − REPL[pos])`.
+  - `v0_k = posval(lev_k − REPL[pos])` — the **captain-free** production value.
+  - `v0′_k = v0_k^(1−w_k) · t_k^(w_k)` — the log-space blend of the captain-free price toward the output-proportional price.
+  - `δ_k = posval(lev_k + capt_prem(lev_k) − REPL[pos]) − posval(lev_k − REPL[pos])` — the **unchanged** L-CAPTAIN increment.
+  - **`v′_k = v0′_k + δ_k`** — blend the production side, add the captain premium back on top.
+  At `lev=L_ref` (ρ=1) the production blend is identity; above it the concave `v0` is lifted toward the linear-in-output target (β↑); κ stays 1 (the dial is `s`). **L-CAPTAIN untouched by construction** (δ byte-identical pre/post map). All six sites fold `capt_prem(lev)` into the argument (`rl_model.py:355/369` · `_merged_recover.py:742/766`), so the additive construction is applied at **every** site (1–6); the prescreen's "1/2/4/5 captain-free" is superseded (item 213). **Self-test:** δ (captain increment) byte-identical pre/post map over a sampled captain set, at all six sites.
 
 ## 4 — ONSET-RAMP WIDTH (memo §2.2 · directive item 4)
 
@@ -90,7 +96,7 @@ Candidate PR continuing the candidate line from `8b8ab7d`; per-task commits; **P
 - **Donor-side mover report** (memo §8): top-30 proven markdowns — name · Δ · ρ · w · earned/prior split (owner-viewing quality).
 - **Value-flow + R104.8 decomposition** (item-130 standing check): ΣΔ · cohort distribution · over-performer scan · every young trim decomposed, production components byte-identical or HALT.
 - **The w-export** (item 204): per-player-year evidence weight `w` + earned/prior decomposition, one committed artifact (Leg D consumes it). **Schema:** CSV `stable_player_id, player, pos, year, leg(current|projected+k), E, rho, w_full=s·E, ramp, w=s·E·ramp, earned_component, prior_component` — one row per player-year-leg.
-- **Gate snapshot by engine hash** + panel/self-test per the standing harness (self-tests: ρ/w identity at zero-evidence; RL_UNCOMP=0 site-level byte-exact; monotone onset ramp).
+- **Gate snapshot by engine hash** + panel/self-test per the standing harness (self-tests: ρ/w identity at zero-evidence; RL_UNCOMP=0 site-level byte-exact; monotone onset ramp; **δ captain increment byte-identical pre/post map at all six sites** — L-CAPTAIN preservation, item 213).
 
 ## 10 — DERIVED-ARTIFACT REGENERATION (stamped, S1)
 
@@ -106,16 +112,18 @@ Candidate PR continuing the candidate line from `8b8ab7d`; per-task commits; **P
 
 **IN:** engine files at the enumerated sites (`_merged_recover.py` sites 1–3 + reference/renorm/kill-switch/hygiene; `rl_model.py` sites 4–6 + the `posval`-map helper) · the kill-switch `RL_UNCOMP` · the deliverable artifacts · derived-artifact regeneration (board/matrices/pins, stamped). **OUT (touch = HALT):** the STORE `rl_model_data.json` (untouched, `b1fd0bce`) · docs/ (never authored) · ui/ · the acceptance JSON · gate/guard code (`ship_gates_check.py`, `boot_guard.py`, **the config manifest `data/model_config.json`**) · any other leg's machinery · any retuning of Leg A's τ. Mid-flight scope growth = a NEW directive (S2).
 
-## 13 — SUPERVISOR-PRESCREEN FLAGS (design readings stated for ratification, per "any ambiguity = HALT-AND-ASK")
+## 13 — SUPERVISOR PRESCREEN — OUTCOME: PASS WITH TWO AMENDMENTS (register items 211–213)
 
-The memo pins the design; these are the points the checkpoint prescreens (**sites · ρ feed · hashes · conservation placement**). I state a faithful reading and **WAIT** for ratification rather than deciding mid-build:
-- **(a) ρ per-leg `lev`** (k=0 = `level_now`-derived; k≥1 = projected `lev`) vs a single fixed k=0 `level_now` across all legs. Reading: **per-leg `lev`** (keeps the map local to each posval site; far projected years naturally carry smaller ρ).
-- **(b) V_ref construction:** `L_ref[pos]` = **median** `level_now` over the demonstrated-proven pop (`gfut==pos`, `_nqual≥4`); `V_ref[pos]=posval(L_ref−REPL)`. Median vs mean, and the exact proven-pop membership, to confirm.
-- **(c) onset width Δ = 6.0** avg-points (§4).
-- **(d) captain ordering:** the map wraps `posval(base)` with `base=lev+capt_prem` (captain inside, as the code stands); "the map sits pre-captain" read as *no coupling term* (separability proven by the kill-switch matrix), English/Briggs measured captain-IN. ρ uses the pre-captain `lev`.
-- **(e) conservation home:** the per-position production-side renorm `C[pos]` in the `_SCALE` production-scale family (§5).
-- **(f) `_ov_final.py:37`** diagnostic NOT wired (non-board).
+The plan passed the supervisor prescreen (sites · ρ feed · hashes · conservation placement). Amendments 1 (site 7 `_nv_bwd` NOT-WIRED, §2) and 2 (additive captain, §3) are folded in above. Flag dispositions:
+- **(a) ρ per-leg `lev`** (k=0 = `level_now`-derived; k≥1 = projected `lev`) — **RATIFIED AS READ.**
+- **(b) V_ref construction:** `L_ref[pos]` = **MEDIAN** `level_now` over the demonstrated-proven pop (`gfut==pos` ∧ `_nqual≥4`); `V_ref[pos]=posval(L_ref−REPL)` — **RATIFIED AS READ.**
+- **(c) onset width Δ = 6.0** avg-points — **RATIFIED AS READ.**
+- **(d) captain — RULED (item 213): ALL SIX captain sites.** Preserve captain ADDITIVELY (`v′=v0′+δ`, §3) at every posval site carrying `capt_prem`; ρ pre-captain; δ byte-identity self-test over all six sites. L-CAPTAIN untouched by construction; English/Briggs measured captain-IN. (The prescreen's "1/2/4/5 captain-free" was superseded after the code showed `base=lev+capt_prem(lev)` feeds every wrapped posval — `rl_model.py:355` / `_merged_recover.py:742`.)
+- **(e) conservation home:** per-position production-side renorm `C[pos]` in the `_SCALE` production-scale family (§5) — **RATIFIED AS READ.**
+- **(f) `_ov_final.py:37`** diagnostic NOT wired (non-board) — **RATIFIED AS READ.**
 
-## 14 — CHECKPOINT (owner-ruled 2026-07-16)
+## 14 — CHECKPOINT (owner-ruled 2026-07-16) — CLEARED; SEGMENT 1 CLOSED
 
-After this PLAN commit → **HALT.** Return **branch + PLAN-commit SHA in ≤10 lines and WAIT.** The supervisor prescreens the plan against the memo (sites · ρ feed · hashes · conservation placement); the owner pastes the PROCEED word into the chat. Only then does implementation begin. A rejected plan returns as an **amended plan commit**, never as improvisation.
+Prescreen **PASSED WITH TWO AMENDMENTS** (register items 211–213), both folded in above. This **amended** PLAN commit closes Segment 1. Per the supervisor ruling (supersedes the earlier PROCEED, item 212): **implementation does NOT run in this chat** — a fresh chat runs Segment 2 from this committed plan under `docs/DIRECTIVE_LEGB_segment2_2026-07-16.md` (already corrected to all-six captain sites). This chat retires after this commit + push + the SHA return.
+
+**Pre-view seal holds:** memo `3624ce55891f8c40fd561a9a82ab2149` · acceptance `c3d5008229d58fab5a67c62085d38314` re-verified unchanged at the latest docs base `main 64b6585`. Base pins and FENCE unchanged; store untouched (`b1fd0bce`).
