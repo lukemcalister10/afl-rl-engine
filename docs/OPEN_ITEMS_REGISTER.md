@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v220 2026-07-16 · PEN: **THE KNOT UNTANGLED (item 247): the 0.83 was never 'the gate/machine' — it is the OWNER'S LAW AT A FAST FADE; the 0.85 bar sits above every legal jumper's ceiling (that's why it retires/moves — impossible, not inferior); the MACHINE PICKER survives with an owner-set reachable bar. REC: quarter fade + machine at owner-set β≥0.80 + his viewing unchanged. Awaiting his wording** · prior: v219
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v221 2026-07-16 · PEN: **R105.6 — THE ACCEPT (item 248, owner verbatim 'Accept.'; constructed meaning as put: quarter fade + machine at owner-set β≥0.80 + better-not-perfect): MEMO → v1.3 · ACCEPTANCE → v1.20 (λ pre-gate retired with its parent; L-RECENCY + the all-804 ledger now acceptance-carried) · SEGMENT-5 DIRECTIVE ISSUED (base ef6bf1a STRICT; seg 4 retires). ROTATION AT THE NEXT FILING** · prior: v220
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5332,3 +5332,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     E/B ≥1.75 hard · overrule available at viewing).** Every number then measured or owner-set.
     Awaiting the owner's wording; memo v1.3 + acceptance v1.20 + the segment-4 continuation fire on
     it, then the bounded rotation.
+
+248. **R105.6 — THE ACCEPT (owner verbatim 2026-07-16: "Accept." — ruling the exact construction
+    put to him at items 245-247: QUARTER FADE + THE MACHINE AT AN OWNER-SET β ≥ 0.80 BAR + his
+    stated principle "I just don't want to let perfect get in the way of better").** EXECUTED:
+    **MEMO → v1.3** (d = 0.25 OWNER-SET — his R105.4 said a recent game counts 'more', v1.3 records
+    HOW much on his word; the seat's 0.85 bar replaced by his 0.80; the λ pre-gate RETIRED WITH ITS
+    PARENT — it was derived arithmetic from the dead 0.85; THE GRID IS THE ARBITER, empty ⇒ HALT,
+    risk accepted with open eyes). **ACCEPTANCE → v1.20** (decay + threshold provenance fields =
+    OWNER-SET; lambda_pre_gate removed; **leg_b.recency_invariant (R105.5) and leg_b.movement_ledger
+    ADDED** — the guarded invariant and the all-804 artifact are now acceptance-carried, closing
+    item 241's fold early). **SEGMENT-5 DIRECTIVE ISSUED** (fresh chat — seg 4 carries two
+    diagnostic rounds; the deliverable run is heavy; counter-calibration says don't risk it): base
+    `ef6bf1a` STRICT · seals embedded · the one-constant flip + the two guards at a MINI-checkpoint
+    · A/B · the grid at HIS bar · the full return + ledger + E/B vs HIS hard 1.75. SEG 4 RETIRES
+    with a clean record (the law wiring + two decisive diagnostics). Leg B's final design state:
+    ZERO seat-authored numbers — every constant measured or owner-worded. The pack cascade
+    (rev148 · DECISIONS v115 · manifest v4.41) rides THE ROTATION FILING, next.
