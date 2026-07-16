@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v176 2026-07-16 · PEN: **UI v1.2.1 PRESCREEN PASS-WITH-ONE-MECHANICAL-ITEM (item 202: content clean, pricing bundle byte-identical, but a SIBLING branch — #99's head does NOT yet carry the fix; one owner fast-forward push, then viewing + click)** · prior: v175
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v177 2026-07-16 · PEN: **THE LEG-B FUNCTIONAL-FORM MEMO FILED (item 203) — pre-sim VERDICT: A CREDIBLE PATH UNDER 1.30 EXISTS (output-anchored evidence blend; s≈0.55 ⇒ y5 1.154); the R104.10 waiver question does NOT return. NEW FINDING: y4 = 1.3017 ALSO over at the Leg-A head (base 1.2960 — crossed AT Leg A)** · prior: v176
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4569,3 +4569,23 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     cf78878:claude/club-valuation-ui-v1-2-gdghtf`) — #99's head becomes cf78878 and the ruled
     one-viewing-one-click close is restored. The supervisor pen is docs/-only and does not move ui
     branches. NEXT RUNG: owner fast-forward → viewing → his click closes #99 (Tier 3).
+
+203. **THE LEG-B FUNCTIONAL-FORM MEMO FILED (2026-07-16): `docs/MEMO_LEGB_functional_form_2026-07-16.md`
+    — the chapter's crux, EXTRA, seat-9 authored.** DECISIONS: (a) family = OUTPUT-ANCHORED EVIDENCE
+    BLEND v′=v^(1−w)·(V_ref·ρ)^w, w=s·E (one dial; β_eff=(1−w)·0.683+w ⇒ β≥0.85 at s≥~0.53); price-
+    exponent, PWL-knot and isotonic families REJECTED on pre-sim evidence; (b) conservation =
+    PRODUCTION-SIDE load-time calibration, per position, ACROSS year-depths (cell-level conservation
+    proven a denominator trap; global scale refused — census); (c) Reid extension = the same map at
+    the raw_ev/posval site family, per-year E, no age gates; ρ = the SMOOTHED level, never single-
+    season points (the Docherty finding); (d) acceptance v1.17 mapping folds audit cluster (ii) —
+    eleven entries enumerated in memo §5; (e) interactions closed (captain/L-SMOOTH/census/Leg-C
+    re-measure per audit #20). **THE R104.10 PRE-SIM (memo §6): supervisor re-runs of the frozen
+    July-8 construction on freshly built matrices (meta asserted a83c9f6d/b1fd0bce/c2d233a):
+    v2.10-exact base y4/y5/y6 = 1.2960/1.3057/1.2544 (y5 == item 198's base EXACTLY, now a re-run
+    fact) · Leg-A head = 1.3017/1.3160/1.2664 (y5 == the prescreen EXACTLY). NEW FINDING: y4 IS ALSO
+    OVER at the Leg-A head — it crossed AT Leg A (+0.0057); the acceptance scores y4 AND y5 AND y6.
+    Decided family at s=0.55: y4/y5/y6 = 1.100/1.154/1.113, den +9.3% — ALL UNDER with ≥0.14 margin;
+    proxy biases declared (S4 findings; the frozen suite measures the real candidate). VERDICT: a
+    credible path under 1.30 EXISTS ⇒ the waiver question does NOT return to the owner.** NEXT (memo
+    §9): spec v1.2 fold → acceptance v1.17 JSON → the Leg-B directive. The memo + acceptance carry
+    pre-view hashes at the directive (audit #45).
