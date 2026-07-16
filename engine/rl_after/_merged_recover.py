@@ -273,8 +273,59 @@ def par_pole(pos,pk,T):
     if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'GEN_FWD':0.93,'KEY_FWD':0.95,'GEN_DEF':1.08,'KEY_DEF':1.05,'RUC':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
+# ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
+# v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
+# added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
+# rho_out(p,pos)/RHO_DEN[pos], rho_out = recent-2 QUALIFYING-season avg above REPL[pos]. The qualifying test
+# is a PLUGGABLE PREDICATE `_qualifying(p, season)` (memo v1.2 — career-phase-conditioned: keep ascending
+# early-career seasons, exclude injury interruptions), STUBBED to raise until v1.2 lands (seg-3 partial-
+# proceed, register 232 — no floor, no smooth weight, no conditioned test yet). RL_UNCOMP is INERT by default
+# (UNCOMP_S_DEFAULT=None): the map + the s-gated load-time reference build both short-circuit BEFORE rho_out,
+# so nothing evaluates the stub. Onset ramp Delta=6.0 (memo §2.2) in the realised-output measure's units.
+_UC_VREFB={}          # V_ref_b[pos] = MEDIAN captain-free price6 (pr0) over the demonstrated-proven pop (load-time, s-gated)
+_UC_RHODEN={}         # RHO_DEN[pos] = MEDIAN rho_out over the demonstrated-proven pop (load-time, s-gated)
+_UC_C={}              # C[pos] = per-position production-side conservation renorm (load-time, s-gated)
+_UC_CAL={'on':False,'pr0':{},'v0p':{}}   # load-time conservation accumulator (Sum pr0, Sum v0p per pos; C==1 during accumulation)
+def _qualifying(p, season):
+    """PLUGGABLE PREDICATE — the career-phase-conditioned qualifying rule (memo v1.2). ONE call site (rho_out).
+    STUB: the qualifying LAW is deliberately not implemented (seg-3 partial-proceed, register 232). RL_UNCOMP
+    stays inert so this is never reached in any shipped/measured build; it raises loudly if a strength dial is
+    set before MEMO v1.2 supplies the law."""
+    raise NotImplementedError("LEG B v1.1 qualifying predicate awaits MEMO v1.2 (register 232); RL_UNCOMP must stay inert until then")
+def rho_out(p, pos):
+    """Realised above-replacement output numerator (memo v1.1 §2.1): recent-2 QUALIFYING-season avg points
+    above REPL[pos]; season selection delegated to _qualifying. Zero qualifying seasons => None (caller w=0)."""
+    _rows=sorted([(x['year'],x['avg']) for x in p.get('scoring') or [] if _qualifying(p,x) and x.get('avg',0)>0])
+    if not _rows: return None
+    return sum(v for _,v in _rows[-2:])/len(_rows[-2:]) - MA.REPL[pos]
+def _uncomp_prod(pr,p,Y,bb):
+    # INERT guard (RL_UNCOMP off / s unset / non-real / refs not built) => pr. Short-circuits BEFORE rho_out,
+    # so the _qualifying stub is UNREACHABLE while RL_UNCOMP is inert (the shipped/measured state this segment).
+    if not MA._UNCOMP or MA.UNCOMP_S is None or pr<=0.0 or not _isreal(p): return pr
+    pos=MA.gfut(p); Vb=_UC_VREFB.get(pos); Rden=_UC_RHODEN.get(pos)
+    if not Vb or not Rden or Vb<=0.0 or Rden<=0.0: return pr        # references not built (inert never reaches here)
+    _prev=MA._CAPT_OFF['on']; MA._CAPT_OFF['on']=True               # captain-off pass: recompute the CAPTAIN-FREE production
+    try:
+        with contextlib.redirect_stdout(io.StringIO()): pr0=price6(p,bb,Y)
+    finally: MA._CAPT_OFF['on']=_prev
+    if pr0 is None or pr0<=0.0: return pr
+    delta=pr-pr0                                                    # L-CAPTAIN increment, added back UNCHANGED (delta byte-identity self-test)
+    _ro=rho_out(p,pos)                                             # realised-output margin above REPL (avg-points)
+    if _ro is None or _ro<=0.0: return pr                          # zero qualifying seasons / sub-replacement => w=0 identity
+    ramp=1.0 if _ro>=MA.UNCOMP_DELTA else _ro/MA.UNCOMP_DELTA       # onset ramp (memo §2.2), realised-output units
+    _Eq=_ev_qual(p,Y); E=1.0-_math.exp(-_Eq/MA.UNCOMP_TAU) if _Eq>0.0 else 0.0   # saturating evidence weight in [0,1]
+    w=MA.UNCOMP_S*E*ramp
+    if w<=0.0: return pr
+    t=Vb*(_ro/Rden)                                                # V_ref_b * rho (kappa=1)
+    if t<=0.0: return pr
+    v0p=(pr0**(1.0-w))*(t**w)                                      # log-space blend of the CAPTAIN-FREE production toward the output-proportional target
+    if _UC_CAL['on']:                                             # load-time conservation calibration (C==1 here): accumulate Sum pr0, Sum v0p
+        _UC_CAL['pr0'][pos]=_UC_CAL['pr0'].get(pos,0.0)+pr0
+        _UC_CAL['v0p'][pos]=_UC_CAL['v0p'].get(pos,0.0)+v0p
+    return _UC_C.get(pos,1.0)*v0p+delta                            # production-side renorm; captain delta additive & nominal
 def raw_ev(p,Y=2026):
-    pr=price6(p,b6(p,Y),Y); pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
+    _bb=b6(p,Y); pr=price6(p,_bb,Y); pr=_uncomp_prod(pr,p,Y,_bb)   # LEG B v1.1 map at the production-value hook (inert unless RL_UNCOMP on + s set)
+    pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
     et=min(max(eff_ten(p,Y, PR.tenure(p,Y)),1),6)                                     # STEP1: developmental tenure off original PR.tenure base
     po,par=par_pole(pos,pk,T); a=MA.age(p)
     wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
@@ -1273,10 +1324,50 @@ if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
 
-# LEG B un-compress (seg-3 Task 1): the seg-2 posval-level reference/conservation block AND the item-221
-# production-value diagnostic reference build are REMOVED here (delete-don't-disable; the machinery they fed —
-# posval_uncomp / _l2_blend — is gone). The v1.1 production-value reference (RHO_DEN + V_ref_b), the C[pos]
-# conservation pass and the map are (re)wired at the raw_ev production-value hook in seg-3 Task 3.
+# ==== LEG B v1.1 — UN-COMPRESS REFERENCE (V_ref_b + RHO_DEN) + PRODUCTION-SIDE CONSERVATION (C[pos]); LOAD-TIME
+# memo v1.1 §2.1/§3. Built AFTER ev() is defined + player attrs finalized, BEFORE the RL_AVAIL attribution
+# block so its ev()-diffs see the mapped surface. INERT unless RL_UNCOMP on AND s set (UNCOMP_S): the guard
+# leaves V_ref_b/RHO_DEN/C empty => _uncomp_prod returns pr => board 8d90c9ac BYTE-EXACT. NOTE: with s set this
+# block RAISES (RHO_DEN calls rho_out -> _qualifying, the v1.2 stub) — BY DESIGN (seg-3 partial-proceed,
+# register 232): the qualifying LAW must arrive (MEMO v1.2) before any strength dial is set.
+def _uncomp_scope(_p):                                        # valuation scope = active board population
+    return _isreal(_p) and not delisted(_p) and not _p.get('_retired')
+if MA._UNCOMP and MA.UNCOMP_S is not None:
+    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()              # pin MA's clock to the present (mirrors rl_export.py); level_now/ev = the 2026 surface
+    # (1) V_ref_b[pos] = MEDIAN captain-free price6 (pr0); RHO_DEN[pos] = MEDIAN rho_out; over the
+    #     DEMONSTRATED-PROVEN pop { gfut==pos, _nqual(_,2026) >= PROVEN_N(=4), in scope }.
+    _vb_pool={}; _rd_pool={}
+    for _p in MA.data:
+        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
+        _g=MA.gfut(_p)
+        if _g not in MA.REPL: continue
+        _prev=MA._CAPT_OFF['on']; MA._CAPT_OFF['on']=True
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                try: _pr0=price6(_p,b6(_p,2026),2026)
+                except Exception: _pr0=None
+        finally: MA._CAPT_OFF['on']=_prev
+        _ro=rho_out(_p,_g)                                    # calls _qualifying (v1.2 stub) — reached ONLY when s is set
+        if _pr0 and _pr0>0.0: _vb_pool.setdefault(_g,[]).append(float(_pr0))
+        if _ro and _ro>0.0: _rd_pool.setdefault(_g,[]).append(float(_ro))
+    for _g,_vals in _vb_pool.items(): _UC_VREFB[_g]=float(np.median(_vals))
+    for _g,_vals in _rd_pool.items(): _UC_RHODEN[_g]=float(np.median(_vals))
+    # (2) C[pos]: production-side conservation renorm (memo §3). ONE load-time pass over the valuation scope,
+    #     accumulate Sum(pr0), Sum(v0p) per pos via the hook (C==1 during accumulation); C=Sum(pr0)/Sum(v0p) so
+    #     the position's TOTAL captain-free production is unchanged by the map (pedigree/iso/captain nominal).
+    _UC_CAL['on']=True; _UC_CAL['pr0'].clear(); _UC_CAL['v0p'].clear()
+    with contextlib.redirect_stdout(io.StringIO()):
+        for _p in MA.data:
+            if not _uncomp_scope(_p): continue
+            try: ev(_p,2026)
+            except Exception: pass
+    _UC_CAL['on']=False
+    for _g,_s0 in _UC_CAL['pr0'].items():
+        _s0p=_UC_CAL['v0p'].get(_g,0.0); _UC_C[_g]=(_s0/_s0p) if _s0p>0.0 else 1.0
+    print("=== RL_UNCOMP v1.1 LEG B: map ON (s=%.4f Delta=%.1f) | V_ref_b/RHO_DEN/C over %d proven / scope-pop ==="
+          %(MA.UNCOMP_S,MA.UNCOMP_DELTA,sum(len(v) for v in _vb_pool.values())))
+    for _g in sorted(_UC_VREFB):
+        print("    %-8s V_ref_b=%8.1f RHO_DEN=%7.2f C=%.5f"%(_g,_UC_VREFB.get(_g,0.0),_UC_RHODEN.get(_g,0.0),_UC_C.get(_g,1.0)))
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
