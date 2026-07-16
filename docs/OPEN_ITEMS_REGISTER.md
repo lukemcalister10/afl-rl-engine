@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v228 2026-07-16 · PEN: **ITEM 255: GOVERNANCE FINDING — the Leg-B per-position conservation scope is SEAT-AUTHORED, never owner-ruled (memo §3 "DECISION"); owner states unawareness; supervisor overstatement corrected on the record. Disposition word still OPEN** · prior: v227
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v229 2026-07-16 · PEN: **ITEM 256: OWNER RULES — per-position conservation is NOT his law (pools may re-rate; unfunded value permitted); guards = G-COHORT + SINCERITY (relative claims judged in relative terms, ledgers carry RANKS). Item 254 Lever-5 rider corrected in place. Disposition word OPEN: measure / partial / identity** · prior: v228
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5465,7 +5465,10 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ceiling β≈0.87 at w→1 (s=3.0 measured 0.875); the point crosses 0.80 at s≈2.1 but the
     estimator's precision rail (width ≤0.35) FAILS from s=2.0 and n=116<120 throughout; Δ→0 is
     forbidden by the smoothness law (replacement cliff); τ is dead (E already 0.99); UNCONSERVING
-    breaks G-COHORT (y5→1.71). At GRID strengths every acceptance rider holds (G-COHORT clears
+    breaks G-COHORT (y5→1.71). ⟪CORRECTED IN PLACE, item 256: the 1.71 is memo §B's REJECTED
+    price-exponent bench, inherited by the reach map as a rider — the DECIDED family's
+    unconserved G-COHORT is UNMEASURED. Supervisor repeated the inherited figure as measured
+    certainty in chat; corrected to the owner turn 16.⟫ At GRID strengths every acceptance rider holds (G-COHORT clears
     with margin; E/B 1.766→3.078 ≥ 1.75; width 0.30 ≤ 0.35; n<120 the standing sample note).
     (5) ESTIMATOR: the empty-grid verdict is decisive at the point; the s=0.70 CI [0.54,0.84]
     straddles the bar; more data tightens the interval, does not move the point — the gap is
@@ -5496,3 +5499,26 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     structural design choice with measured value consequences is surfaced to the owner as an
     explicit DO:/WHY: question, never carried in design prose alone. Disposition word remains
     OPEN (partial / identity / chase).
+
+256. **THE OWNER RULES THE CONSERVATION QUESTION (2026-07-16, verbatim substance).** On being
+    shown item 255: "position is about Ruck, mid, general, key etc. Not age. So the founding
+    principle is we can't boost middle aged players relative to young ones. Not we can't tinker
+    with positional scoring. If the value of the key defender pool goes up by 3000 and the value
+    of the midfield pool goes down by 2000 as a result of these changes, fine. That might just be
+    the data telling us that the key defender pool should be valued higher... As long as the
+    cohort gate remains intact, it's fine... I'm fine with value being added or subtracted, and
+    that value can be unfunded if necessary, but it shouldn't be used insincerely (ie previous
+    supervisors claiming that we had succeeded as Bontempelli was worth 10% more, when he dropped
+    ranks as everyone else rose more!)". THREE OPERATIVE LAWS: (1) **PER-POSITION CONSERVATION IS
+    NOT OWNER LAW** — memo v1.3 §3's scope is SUPERSEDED as a requirement; positional pools may
+    re-rate; unfunded value is permitted. (2) **G-COHORT remains the binding relativity guard**
+    (age, not position). (3) **THE SINCERITY LAW (standing, all future work):** a success claim
+    for a relative goal is judged in RELATIVE terms — movement ledgers and prescreens must carry
+    RANK / relative-share movement alongside SCAR deltas; a nominal rise that loses rank is a
+    FAILURE and must be reported as one. CONSTRAINTS fold (L-SINCERE + the §3 supersession) rides
+    the next natural re-seal; operative from this item per OQ-A interim visibility. CONSEQUENCE:
+    the reach map's Lever 5 becomes a LIVE, measurable road — C≡1 (± stacked s ≈ 1.0–1.5)
+    projects β across 0.80 INSIDE the precision rail; the decided family's unconserved G-COHORT
+    is the unmeasured question (item 254 corrected in place above). Disposition options put to
+    the owner: MEASURE (small default-off-toggle build, frozen suites, rank-sincere ledger;
+    supervisor-recommended) / PARTIAL / IDENTITY. Leg C still HOLDS.
