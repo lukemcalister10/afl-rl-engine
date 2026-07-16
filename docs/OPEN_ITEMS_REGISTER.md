@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v165 2026-07-16 · PEN: **LEG A FIRED (owner word, item 186) — the chapter is IN FLIGHT · SUPERVISOR MISS corrected + STANDING RULE filed: every PK-sync ask ships the referenced documents in the SAME turn (item 186) · THE UI v1.2 DIRECTIVE ISSUED (item 187: club valuation layer, Tier 3, S3-parallel, based on the SHIPPED board 790136a3)** · prior: v164 item 185 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v166 2026-07-16 · PEN: **UI v1.2 FIRED (item 188) — TWO lanes in flight (Leg A + UI, disjoint) · STANDING RULE filed: every directive carries a CONCRETE wall-clock TIME estimate (owner-worded; the UI directive's 'one session' was not one — miss owned; in-flight estimate ~1.5–3 h)** · prior: v165 items 186–187 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4350,3 +4350,13 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     docs/inputs/ → reload; ships a HOW-TO one-pager under ui/). DEFERRED, flagged-not-built: posture
     toggles + the +1/+2 re-enable (post-Leg-E). Fires on the owner's paste; merges on his click after
     viewing.
+
+188. **UI v1.2 FIRED (owner-worded 2026-07-16) — two lanes now in flight (Leg A writer + the ui/-only
+    build; disjoint per S3).** **STANDING RULE (owner-worded, same message): every directive carries a
+    CONCRETE wall-clock TIME ESTIMATE — a number band, as accurate as the supervisor can make it — so
+    the owner can plan his day around it; understood as a guide, but "one session" is NOT an estimate.**
+    Supervisor miss owned: the UI directive shipped without one (the Leg-A directive carried "2–5 h";
+    the UI directive did not). In-flight estimate for UI v1.2, for the owner's planning: **~1.5–3
+    hours** of chat wall-clock (Medium scope; the xlsx ingest + summary page are the long poles; the
+    display fixes are minutes). Rule carries into every future directive's TIME field + the next
+    HANDOVER conduct block.
