@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v177 2026-07-16 · PEN: **THE LEG-B FUNCTIONAL-FORM MEMO FILED (item 203) — pre-sim VERDICT: A CREDIBLE PATH UNDER 1.30 EXISTS (output-anchored evidence blend; s≈0.55 ⇒ y5 1.154); the R104.10 waiver question does NOT return. NEW FINDING: y4 = 1.3017 ALSO over at the Leg-A head (base 1.2960 — crossed AT Leg A)** · prior: v176
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v178 2026-07-16 · PEN: **SEAT-8 LEG-D NOTE FILED VERBATIM (item 204: circularity two-ends construction + survivorship/convexity; triaged vs the Leg-B memo — NO Leg-B design change; ONE directive deliverable added). #99 FAST-FORWARDED by the owner (head cf78878) — his click merges on viewing** · prior: v177
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4589,3 +4589,25 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     credible path under 1.30 EXISTS ⇒ the waiver question does NOT return to the owner.** NEXT (memo
     §9): spec v1.2 fold → acceptance v1.17 JSON → the Leg-B directive. The memo + acceptance carry
     pre-view hashes at the directive (audit #45).
+
+204. **THE SEAT-8 LEG-D NOTE FILED VERBATIM + TRIAGED AGAINST LEG B (2026-07-16):**
+    `docs/NOTE_seat8_legD_circularity_survivorship_2026-07-16.md` (owner-couriered; hypotheses, not
+    rulings — its own header says so). SUBSTANCE: (1) the derivation-window correction (PVC derives
+    at END OF YEAR 1, not entry; G-Y0 the identity is the separate day-after instrument — verify in
+    code before the Leg-D memo); (2) circularity cut-don't-test — the TWO-ENDS construction (entry
+    end = the position-adjusted pick pricing read directly; evidence end = prior-faded realised
+    production; the curve is the line between, both ends independently pinned); (3) survivorship +
+    convexity — busts in AND survivor compounding preserved, the owner's pool numbers TO BE MEASURED
+    at Leg D, never taken as given; the one-disease-three-costumes lens (Leg B top / item-130 young /
+    Leg D picks). **TRIAGE vs THE LEG-B MEMO (item 203) — SUPERVISOR-VERIFIED: NO Leg-B design
+    change.** The note is Leg-D matter; every memo decision stands. Two connections recorded:
+    (a) the note's "honest-calibration end" (prior-faded, evidence-bearing pricing) consumes EXACTLY
+    the machinery Leg B builds — **ONE DELIVERABLE ADDED to the Leg-B directive: the build exports
+    the per-player-year evidence weight w and the earned/prior decomposition as a committed artifact**
+    so Leg D's evidence end is constructible without re-derivation; (b) the convexity lens and
+    G-COHORT do NOT collide — the survivor reward the note protects is PER-HEAD (the output→price
+    distribution among survivors — the blend WIDENS it lawfully), while G-COHORT caps the CLASS-POOL
+    ratio (a sum); the Leg-B pre-sim moves both in the lawful direction (per-head convexity up, pool
+    ratio 1.316 → ~1.15). The note's Leg-D items queue for the LEG-D memo (first act there: MEASURE
+    the current derivation's life-path behaviour from data, per the note's discipline). Cluster-(iii)
+    triage of item 199 is hereby superseded-in-place by this fuller version.
