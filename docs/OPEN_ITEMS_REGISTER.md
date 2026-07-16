@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v184 2026-07-16 · PEN: **LEG-B PLAN PRESCREEN: PASS WITH TWO AMENDMENTS (item 211) — (1) the un-enumerated posval site rl_model.py:559 (_nv_bwd backward ruler) ruled NOT-WIRED; (2) flag (d) ruled CAPTAIN-PRESERVED-ADDITIVELY (the blend must not erode L-CAPTAIN). Owner pastes the amendment + PROCEED** · prior: v183
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v185 2026-07-16 · PEN: **LEG-B SEGMENT-2 SPLIT (item 212, owner-raised context risk): the plan chat (~187k tokens) RETIRES at the amended-PLAN commit; implementation runs in a FRESH chat via DIRECTIVE_LEGB_segment2 (base = amended-PLAN head STRICT). UI v1.3 FIRED** · prior: v184
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4721,3 +4721,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the _SCALE production-scale family · dx not wired. PROCESS: the build commits ONE amended PLAN
     commit carrying both amendments verbatim, then implementation begins on the owner's PROCEED (one
     paste covers both); the RETURN prescreen diffs the amended plan against this item's text.
+
+212. **LEG-B SEGMENT-2 SPLIT + UI v1.3 FIRED (2026-07-16).** OWNER-RAISED: the Leg-B plan chat sat at
+    ~187k tokens BEFORE implementation — a 4-6 h segment 2 from there would compact mid-wiring, the
+    exact place amendments/site-expressions/estimator details get silently lost. SUPERVISOR CURE
+    (the disposable-chat doctrine applied at the checkpoint seam): the plan chat's job ENDS at
+    committing the item-211 amended PLAN (it commits the amendments the owner pasted, returns the
+    SHA, and RETIRES — it does NOT implement); a FRESH chat runs implementation via
+    `docs/DIRECTIVE_LEGB_segment2_2026-07-16.md` — base = the amended-PLAN head STRICT (parent chain
+    amended → 12cb206 → 8b8ab7d), design of record = the COMMITTED amended PLAN + the pre-view-sealed
+    memo/acceptance (md5 assertion on open), fence/deliverables unchanged from the original
+    directive, 3.5-6 h. The 187k was spent PRODUCING the plan; the plan being a committed artifact
+    makes that context redundant — repo-durable state is the whole point. S2 lesson recorded: an
+    EXTRA leg's FEED+exploration can consume most of a window before writing begins; future EXTRA
+    directives pre-plan the plan/implement chat split rather than discovering it. **UI v1.3 FIRED**
+    (item 210's directive; ui/-only, parallel; prescreen on return).
