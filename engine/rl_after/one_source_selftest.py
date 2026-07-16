@@ -174,6 +174,72 @@ if _ISOFADE:
 else:
     print("  NOTE  RL_ISOFADE=0 (v2.10 base path): fade/monotone assertions skipped; the zero-evidence identity above holds either way.")
 
+print("=== (7) LEG B — L-RECENCY invariant (R105.5) + ρ FORBIDDEN-LIST (R105.4); halt-not-warn ===")
+# TWO owner-ruled guards on the un-compress ρ axis, suite-wired so a future decay/kernel change or a
+# re-introduced season gate HALTs the build (SILENCE IS A RED). Both hold whether RL_UNCOMP is on or off:
+# they inspect the ρ kernel + the rho_out source, not the live board (the map is inert until s is set).
+_rho_out = g['rho_out']; _d = float(MA.UNCOMP_DECAY)
+# ---- R105.5 L-RECENCY (register 241, owner verbatim): an individual match's influence must count for EQUAL
+# OR MORE than a match from an earlier season => the PER-GAME recency weight is NON-INCREASING in years-back
+# across the store's full observed season range. memo v1.3 conforms by construction (per-game weight =
+# d^yearsback, d=UNCOMP_DECAY=0.25); this guard LOCKS it against silent inversion. The binding probe drives
+# the SHIPPED rho_out with a two-season synthetic and RECOVERS the engine's own per-game weight, so a future
+# edit to the kernel INSIDE rho_out (not just the declared formula) is caught.
+_bs = sorted({2026 - x['year'] for p in store for x in (p.get('scoring') or []) if (x.get('games',0) or 0) > 0})
+check(0.0 < _d <= 1.0, "L-RECENCY: decay d in (0,1] (d=%.4f) — a non-inflating recency kernel (R105.6 owner-set 0.25)"%_d)
+check(len(_bs) >= 2, "L-RECENCY: store spans >=2 distinct years-back (range %d..%d) to test monotonicity"%(_bs[0],_bs[-1]))
+# declared-kernel monotonicity (fast, explicit)
+_wpg = [_d**_b for _b in _bs]
+check(all(_wpg[i] >= _wpg[i+1]-1e-15 for i in range(len(_wpg)-1)),
+      "L-RECENCY: declared kernel d^yearsback non-increasing over the store range yearsback=%d..%d"%(_bs[0],_bs[-1]))
+# engine-recovered kernel: rho_out of a 2-season synthetic (ref @ yb=0, probe @ yb=b) => w_b = (r-A)/(B-r) == d^b
+_pos = sorted(MA.REPL)[0]; _repl = MA.REPL[_pos]; _A, _B = 10.0, 20.0
+_rec = []; _probe_ok = True
+for _b in [b for b in _bs if b >= 1]:
+    _synth = {'scoring':[{'year':2026,'games':1,'avg':_repl+_A},{'year':2026-_b,'games':1,'avg':_repl+_B}]}
+    _r = _rho_out(_synth, _pos)
+    if _r is None or not (_A < _r < _B): _probe_ok = False; break
+    _rec.append((_b, (_r-_A)/(_B-_r)))
+check(_probe_ok and len(_rec)>=1, "L-RECENCY: engine rho_out evaluates the 2-season synthetic across the store range")
+if _probe_ok and _rec:
+    check(all(w > 0.0 for _,w in _rec), "L-RECENCY: engine per-game weight POSITIVE for every played years-back (no season wiped)")
+    check(all(_rec[i][1] >= _rec[i+1][1]-1e-12 for i in range(len(_rec)-1)),
+          "L-RECENCY: engine rho_out per-game weight NON-INCREASING in years-back (recovered kernel; R105.5)")
+    check(all(abs(w - _d**b) <= 1e-9 + 1e-6*(_d**b) for b,w in _rec),
+          "L-RECENCY: recovered engine weight == d^yearsback exactly (games-independent per-game weight, no inversion)")
+# ---- R105.4 FORBIDDEN-LIST (register 240, owner-ruled WEIGHT-DON'T-GATE): rho_out carries NO season-level
+# exclusion, NO games floor, NO career-phase test — the ONLY season filter is games>0. Assert the SHIPPED
+# rho_out source (AST; docstring stripped so the descriptive "NO exclusion/floor/phase" comments do not
+# false-trip) so a future edit re-introducing a floor/exclusion/phase gate HALTs the build.
+import ast as _ast
+_eng_ast = _ast.parse(open(hp('_merged_recover.py')).read())
+_rho_fn = next((n for n in _ast.walk(_eng_ast) if isinstance(n,_ast.FunctionDef) and n.name=='rho_out'), None)
+check(_rho_fn is not None, "R105.4: rho_out present in the engine source (the wired ρ law)")
+if _rho_fn is not None:
+    _fb = _rho_fn.body
+    if _fb and isinstance(_fb[0],_ast.Expr) and isinstance(getattr(_fb[0],'value',None),_ast.Constant) and isinstance(_fb[0].value.value,str):
+        _fb = _fb[1:]                                             # strip the docstring (comments are not in the AST)
+    _mod = _ast.Module(body=list(_fb), type_ignores=[])
+    # (a) games is compared ONLY to 0 (the games>0 / games<=0 filter) — any other numeric threshold is a floor
+    _bad_floor = []
+    for _n in _ast.walk(_mod):
+        if isinstance(_n,_ast.Compare):
+            _dump = _ast.dump(_n)
+            if 'games' in _dump or "'_gm'" in _dump or 'id=\'_gm\'' in _dump or '_gm' in _dump:
+                for _c in _ast.walk(_n):
+                    if isinstance(_c,_ast.Constant) and isinstance(_c.value,(int,float)) and _c.value not in (0, 0.0):
+                        _bad_floor.append((_ast.dump(_n), _c.value))
+    check(not _bad_floor, "R105.4: rho_out compares games only to 0 (games>0 filter) — NO games floor (offenders=%s)"%(_bad_floor[:2]))
+    # (b) no exclusion / floor / phase / classify / qualify token in EXECUTABLE code (docstring already stripped)
+    _forb = ('qualif','floor','exclud','exclus','phase','classif','interrupt','delist')
+    _idents = set(); _strs = []
+    for _n in _ast.walk(_mod):
+        if isinstance(_n,_ast.Name): _idents.add(_n.id.lower())
+        if isinstance(_n,_ast.Attribute): _idents.add(_n.attr.lower())
+        if isinstance(_n,_ast.Constant) and isinstance(_n.value,str): _strs.append(_n.value.lower())
+    _hit = sorted({t for t in _forb if any(t in i for i in _idents) or any(t in s for s in _strs)})
+    check(not _hit, "R105.4: rho_out executable code carries no exclusion/floor/phase/classify/qualify token (offenders=%s)"%_hit)
+
 print("=== COLLISION SENTRY: named-pair identity assertions (halt-not-warn; DECISIONS §29) ===")
 # Permanent, data-driven from collision_sentry.json (extensible; pairs ADDED ONLY WHEN THEY BITE). For every
 # pinned pair: both keys exist EXACTLY ONCE, every pinned field == the store's value (a bleed makes
@@ -208,6 +274,6 @@ else:
                       _pr['a']['key'],_f,_ra.get(_f),_pr['b']['key'],_f,_rb.get(_f)))
 
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
-      "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; collision sentry (King pair) clean."))
+      "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))
 print("  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)")
 sys.exit(1 if FAIL else 0)

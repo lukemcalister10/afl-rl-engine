@@ -278,20 +278,20 @@ def par_pole(pos,pk,T):
 # added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
 # rho_out(p,pos)/RHO_DEN[pos]. ⟪v1.2 — WEIGHT, DON'T GATE (memo §2.1, register 240)⟫ rho_out = ρ_num =
 # GAMES-AND-RECENCY-WEIGHTED realised above-replacement output over EVERY season with games>0:
-# u_s=games_s·d^(Ynow−year_s), d=UNCOMP_DECAY(=0.5); ρ_num=Σ u_s·(avg_s−REPL[pos])/Σ u_s. NO season exclusion,
+# u_s=games_s·d^(Ynow−year_s), d=UNCOMP_DECAY(=0.25 ⟪v1.3 OWNER-SET R105.6⟫); ρ_num=Σ u_s·(avg_s−REPL[pos])/Σ u_s. NO season exclusion,
 # NO games floor, NO career-phase test (the v1.1 `_qualifying` predicate is DELETED — a never-shipped stub;
 # the hard floor manufactured 144 phantom rookies and the conditioned rule wiped real games, both MEASURED,
 # register 239). RHO_DEN[pos]=MEDIAN of this same ρ_num over the demonstrated-proven pop (numerator and
 # denominator share ONE law). RL_UNCOMP is INERT by default (UNCOMP_S_DEFAULT=None): the map + the s-gated
 # load-time reference build both short-circuit BEFORE rho_out. Onset ramp Delta=6.0 (memo §2.2) in the
-# realised-output measure's units; decay d=0.5 DECLARED next to Δ=6.0 in rl_model.py.
+# realised-output measure's units; decay d=0.25 (⟪v1.3 OWNER-SET R105.6⟫) DECLARED next to Δ=6.0 in rl_model.py.
 _UC_VREFB={}          # V_ref_b[pos] = MEDIAN captain-free price6 (pr0) over the demonstrated-proven pop (load-time, s-gated)
 _UC_RHODEN={}         # RHO_DEN[pos] = MEDIAN rho_out over the demonstrated-proven pop (load-time, s-gated)
 _UC_C={}              # C[pos] = per-position production-side conservation renorm (load-time, s-gated)
 _UC_CAL={'on':False,'pr0':{},'v0p':{}}   # load-time conservation accumulator (Sum pr0, Sum v0p per pos; C==1 during accumulation)
 def rho_out(p, pos):
     """ρ_num — GAMES-AND-RECENCY-WEIGHTED realised above-replacement output (memo §2.1 ⟪v1.2⟫, WEIGHT-DON'T-GATE).
-    Over EVERY season with games>0: u_s = games_s · d^(Ynow−year_s) with d=MA.UNCOMP_DECAY(=0.5), Ynow=2026;
+    Over EVERY season with games>0: u_s = games_s · d^(Ynow−year_s) with d=MA.UNCOMP_DECAY(=0.25 ⟪v1.3 OWNER-SET⟫), Ynow=2026;
     ρ_num = Σ u_s·(avg_s − REPL[pos]) / Σ u_s. NO exclusion, NO games floor, NO career-phase test (register 240;
     the v1.1 `_qualifying` predicate is DELETED — a never-shipped stub). An injury-shortened year contributes
     exactly its games' worth (a 3-game season is 1/7th a 21-game season at equal recency — Docherty handled by
