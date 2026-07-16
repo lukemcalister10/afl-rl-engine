@@ -11,15 +11,23 @@ ledger, the kill-switch matrix, the decomposition) is the cost driver, and thinn
 REFUSED LEVER (CORE, SPEED RULES). The design itself is pinned by the memo, so the effort buys
 verification, not exploration.
 
-## MODE: auto — the FIRST COMMITTED ARTIFACT IS THE PLAN
-The PLAN commit must contain the PRE-VIEW HASH MANIFEST: the md5 of
+## MODE: auto — the FIRST COMMITTED ARTIFACT IS THE PLAN, **THEN STOP (owner-ruled checkpoint)**
+The PLAN commit must contain: (1) the PRE-VIEW HASH MANIFEST — the md5 of
 `docs/MEMO_LEGB_functional_form_2026-07-16.md` and of `docs/acceptance_v1_17.json` AS FETCHED AT THE
 BASE, recorded BEFORE any candidate metric is computed or rendered (acceptance `leg_b.preview_hashes`;
-audit #16/#22/#45). Scope limits live in the FENCE below, not in mode.
+audit #16/#22/#45); (2) the SITE ENUMERATION (every conversion point the map wraps, file:line, current-
+year AND projected-year legs); (3) the ρ FEED (the exact level function consumed + the V_ref
+construction); (4) the onset-ramp width; (5) the s-grid measurement plan.
+**CHECKPOINT (owner-ruled 2026-07-16): after the PLAN commit, HALT.** Return branch + PLAN-commit SHA
+in ≤10 lines and WAIT. The supervisor prescreens the plan against the memo (sites · ρ feed · hashes ·
+conservation placement); the owner pastes the PROCEED word into this chat. Only then does
+implementation begin. A plan the supervisor rejects comes back as an amended plan commit, not as
+improvisation. Scope limits live in the FENCE below, not in mode.
 
-## TIME: 4–7 hours wall-clock (confirm up front; flag >2× / <½×; report actual)
-Bands: plan+hash manifest ~20 min · site implementation ~1.5–2.5 h · frozen-suite measurement +
-s-selection ~1–1.5 h · deliverables (ledger, movers, decomposition, w-export) ~1–1.5 h · return ~30 min.
+## TIME: 4–7 hours wall-clock BUILD TIME, in two segments (confirm up front; flag >2× / <½×; report actual)
+Segment 1 (to the checkpoint): plan + hash manifest ~20–30 min, then HALT. Segment 2 (on the PROCEED
+word): site implementation ~1.5–2.5 h · frozen-suite measurement + s-selection ~1–1.5 h · deliverables
+(ledger, movers, decomposition, w-export) ~1–1.5 h · return ~30 min.
 
 ## FEED (documents, verbatim — never a prose restatement)
 1. `docs/MEMO_LEGB_functional_form_2026-07-16.md` — THE DESIGN. Decisions (a)–(e) are settled; you

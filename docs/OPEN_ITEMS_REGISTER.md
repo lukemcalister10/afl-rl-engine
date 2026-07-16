@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v179 2026-07-16 · PEN: **THE LEG-B PACKAGE COMPLETE (items 205-206): spec → v1.2 (cluster-(i) fold; post-view band-setting DELETED) · acceptance → v1.17 (the memo-§5 block) · THE LEG-B DIRECTIVE ISSUED (base 8b8ab7d STRICT, 4-7 h) — ONE owner word open: FIRE LEG B** · prior: v178
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v180 2026-07-16 · PEN: **LEG-B DIRECTIVE AMENDED (item 207, owner-ruled): STOP-AFTER-PLAN checkpoint — the build HALTS at its PLAN commit; supervisor prescreens the plan (sites · ρ feed · hashes · conservation); owner pastes PROCEED. Fire word still open** · prior: v179
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4635,3 +4635,15 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     L-SMOOTH · ledger · donor-side mover report · R104.8 decomposition · the w-export · gate snapshot.
     No store/engine writer in flight ⇒ fires clean. DECISIONS → v111 (the fire word + the slope-min
     veto window). One PROPOSED number rides for owner veto: ≤22 slope minimum 0.15.
+
+207. **LEG-B PLAN CHECKPOINT — OWNER-RULED (2026-07-16, "reviewing a plan given how big it is, is
+    probably a good idea" + supervisor concurrence).** The directive's MODE is AMENDED IN PLACE
+    (docs/DIRECTIVE_LEGB_uncompress_2026-07-16.md): the build commits its PLAN (pre-view hash
+    manifest · the SITE ENUMERATION file:line · the ρ feed + V_ref construction · onset width ·
+    s-grid plan) then **HALTS and returns the PLAN SHA**. The supervisor prescreens the plan against
+    the memo — the two named failure modes the checkpoint exists to catch: a missed/extra conversion
+    SITE (breaks the 8d90c9ac A/B identity or lets a projected-year leg escape the map) and a wrong
+    ρ FEED (re-imports the single-season/Docherty defect). The owner pastes PROCEED into the build
+    chat; rejected plans return as amended PLAN commits, never improvisation. TIME re-banded: ~20-30
+    min to checkpoint + 4-6.5 h after. Cost: one round-trip of latency; bought on an EXTRA leg
+    re-fitting the central pricing surface. The FIRE word remains the one open owner word.
