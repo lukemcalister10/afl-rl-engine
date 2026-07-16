@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v189 2026-07-16 · PEN: **THE COLLAPSE RULED + FOUR CSV ROWS CORRECTED BY THE PEN (item 216: Whitlock K-DEF/K-FWD; Flanders/Baker/Langdon G-DEF,G-FWD — owner-worded). UI v1.3.1 directive issued (same branch, #101 held). Store-eligibility corrections QUEUED TO LEG C. ONE owner word open on Flanders present_position. Injury-vs-posture note → LEG E** · prior: v188
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v190 2026-07-16 · PEN: **FLANDERS RULED: present_position → G-DEF (item 217, owner: 'Yes, G-DEF. Lock it in.') — joins the Leg-C store rider. UI v1.3.1 cleared to fire** · prior: v189
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4819,3 +4819,13 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     player's contender value ≈ trade value only) is a MAGNITUDE question — the Leg-E movers report
     MUST include named LTI rows (Rozee, out for 2026, the natural case) so the presets are ratified
     from evidence; no new mechanism pre-committed.
+
+217. **FLANDERS PRESENT-POSITION RULED — G-DEF (owner verbatim 2026-07-16: "Yes, G-DEF. Lock it
+    in.").** Closes item 216's open question. THE LEG-C STORE RIDER is now fully enumerated (four
+    owner-ruled store writes, validate-or-halt): (1) sam-flanders eligibilities → 'G-DEF,G-FWD';
+    (2) oskar-baker eligibilities → 'G-DEF,G-FWD'; (3) ed-langdon eligibilities → 'G-DEF,G-FWD';
+    (4) sam-flanders present_position MID → GDEF (value impact ~nil: LTI out until 2027, k=0
+    availability-haircut; the near-year floor terms move at most tens of SCAR — measured at Leg C's
+    attribution deliverable regardless). future_position untouched (MID primary / G-DEF 30% per the
+    owner's flex register). Rider rides the Leg-C directive when authored — never a separate writer.
+    UI v1.3.1 is INDEPENDENT of the store rider (it reads the corrected CSV) — cleared to fire.
