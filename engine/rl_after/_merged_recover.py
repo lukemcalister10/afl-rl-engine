@@ -214,12 +214,12 @@ def _est_core(p,Y,L_old,Lc):                                  # ESTABLISHED (pre
 # here); it is left byte-identical so all-switches-off stays byte-exact. Verified dead before the wire.
 def _lvl_eff_core(p,Y):                                       # DORMANT twin of _coreM1 (superseded via the _inferM1 bind); kept in lock-step
     L_old=cp._lvl_eff_orig(p,Y)
-    if not _EVW:                                              # BASE: the four discrete regimes (RL_EVW=0 => byte-exact)
-        n=_nqual(p,Y)
-        if n==0: return L_old                                 # cameo/never-played: original (pole gate handles never-played)
-        Lc=_lvlcurr(p,Y)
-        if n>=PROVEN_N: return _est_core(p,Y,L_old,Lc)        # ESTABLISHED (n>=4 cliff)
-        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)       # thin ramp (c=n/4)
+    # OBITUARY (Leg A, iso evidence-fade build 2026-07-16; SSI/CORE rule 7 — delete, don't disable): the dead
+    # `if not _EVW:` discrete-regime branch (the pre-EVW four regimes — n==0 cameo -> L_old · thin ramp c=n/4 ·
+    # PROVEN_N n>=4 cliff -> _est_core) is DELETED here. It was UNREACHABLE: this whole `_lvl_eff_core` twin is
+    # DORMANT — never bound or called (ev() consumes cp._lvl_eff=_inferM1 -> _coreM1; see :210-214, "Verified
+    # dead before the wire"). The LIVE RL_EVW=0 byte-exact base path survives untouched in _coreM1 (:375). No
+    # output moves (the function is never invoked). Resurrection ref: git show <pre-LegA base>:_merged_recover.py.
     Lc=_lvlcurr(p,Y); Eq=_ev_qual(p,Y)                        # EVW: one continuous quantity E_q spans all four regimes
     Lrec=L_old + _ev_rec(Eq)*(Lc-L_old)                       # conservative -> recency, by qualification
     prod=(1.0-_ev_est(Eq))*Lrec + _ev_est(Eq)*_est_core(p,Y,L_old,Lc)  # recency/thin -> established, by evidence
@@ -284,13 +284,30 @@ def raw_ev(p,Y=2026):
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
     return pr+w*recover(perf,par)*max(0.0,po-pr)
 # ===== (3) ISOTONIC PICK GUARD: per pos, monotone non-increasing in pick at par; correction factor =====
+# ==== LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (RL_ISOFADE; item 132, spec §3 Leg A) ====
+# (a) MONOTONIZE the multiplier: iso_corr = iso/raw is a monotone-non-increasing NUMERATOR over a
+#     NON-monotone denominator, so the RATIO is non-monotone — the Newcombe trough (pk19 0.882 < pk34
+#     1.000). Re-apply the house isotonic-non-increasing instrument to the MULTIPLIER itself, so no later
+#     pick carries a higher multiplier than an earlier one. Conserving (per-pos SigmaD~=0), two-directional.
+# (b) FADE per REAL player on the v2.10 evidence weight w=E_q (iso_eff below): full at zero evidence (the
+#     pick IS the information; V0 at Y=debutyr-1 has E_q=0 -> unchanged BY CONSTRUCTION), dissolving to 1.0
+#     as evidence saturates. DECLARED kill-switch, not a manifest dial: RL_ISOFADE=0 => original table +
+#     plain iso_corr at every site => v2.10 board 790136a3 byte-exact (config_sha256 UNMOVED).
+_ISOFADE=os.environ.get('RL_ISOFADE','1')!='0'               # kill-switch (G-ATTR separability): RL_ISOFADE=0 => v2.10 byte-exact. Declared exception, not a dial.
+_ISOFADE_TAU=_EVW_TAU                                         # =1.1: THE fade parameter — the pedigree-fade family rate (_ev_pw, :186-189) in effective-qualifying-season units; iso uses the residual-0 member exp(-w/tau).
 PICKS=list(range(1,71)); ISO={}
 for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:
     raw=np.array([raw_ev(synth(pk,PR.par_at(pos,min(pk,cp.KMAX),4),pos)) for pk in PICKS])
     iso=IsotonicRegression(increasing=False).fit_transform(PICKS,raw)        # monotone non-increasing in pick#
     ISO[pos]=(np.array(PICKS),np.maximum(iso,raw*0)+ (iso-raw>=0)*(iso-raw))  # iso is the guarded floor; correction additive where iso>raw
-    ISO[pos]=(np.array(PICKS), iso/np.maximum(raw,1e-6))                       # multiplicative correction (>=1 where shallow under-priced)
+    fs=iso/np.maximum(raw,1e-6)                                                # multiplicative correction (>=1 where shallow under-priced)
+    if _ISOFADE: fs=IsotonicRegression(increasing=False).fit_transform(PICKS,fs)   # LEG A (a): monotonize the MULTIPLIER (the ratio is non-monotone even though the numerator is) — kills the Newcombe trough
+    ISO[pos]=(np.array(PICKS), fs)
 def iso_corr(pos,pk): xs,fs=ISO[pos]; return float(np.interp(min(pk,70),xs,fs))
+def iso_eff(p,Y=2026):                                        # LEG A (b): per-REAL-player EFFECTIVE iso — the pick tax faded on the v2.10 evidence weight w=E_q
+    base=iso_corr(MA.gfut(p),MA.effpk(p))
+    if not _ISOFADE or not _isreal(p): return base            # switch off, or a synth (structural scaffold; zero-evidence convention) => raw/monotonized table, unfaded
+    return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)
 for _pp in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
         for _T in range(1,7): par_pole(_pp,_pk,_T)
@@ -837,7 +854,7 @@ def _kpf_prod_efv(p,Y,L=None):
     L pins an alternative demonstrated level (KPF REBALANCE T1: the SUSTAINED level LD prices the eD split)."""
     _B6PIN['L']=cp._lvl_eff(p,Y) if L is None else float(L)
     try:
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 1/6 (was iso_corr(gfut,effpk))
     finally: _B6PIN['L']=None
 # ===== helpers for delist + staleness =====
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
@@ -945,7 +962,7 @@ def _build_ruc_ceiling():                                     # pick-neutral pro
     avs=list(np.linspace(15.0,150.0,46))
     def _sp(a):
         sp=synth(int(RUC_CEIL_REFPK),float(a),'RUC')
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_corr('RUC',MA.effpk(sp))
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_eff(sp)   # LEG A site 2/6 (synth: iso_eff returns the monotonized table unfaded — structural scaffold)
     ys=[_sp(a) for a in avs]
     for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
     _RUCCEIL['grid']=(np.array(avs),np.array(ys))
@@ -979,7 +996,7 @@ def _v0_uncapped(p):                                          # zero-evidence ba
     if k not in _V0U:
         global cm,q97m
         _c,_q=cm,q97m; cm,q97m=_V0_CM,_V0_Q97
-        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_eff(p,cp.debutyr(p)-1)   # LEG A site 3/6 (V0: Y=debutyr-1 => E_q=0 => fade=1 => full strength, unchanged BY CONSTRUCTION)
         finally: cm,q97m=_c,_q
     return _V0U[k]
 def _v0_raw(p):                                              # ASK1: uncapped V0 -> RUC prior cap (still pre-ASK2-guard)
@@ -1122,7 +1139,7 @@ def _prod_path(p,Y):
     and the designed M3 pin-fade otherwise leave the evidence ramp non-monotone (B6 law: more games at
     the same rate never worth less). Centered, unit-mass, level-preserving; nobody outside the family
     is touched."""
-    e=raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+    e=raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 4/6 — THE BOARD PATH (feeds ev())
     if not _first_evidence(p,Y): return e
     row=[x for x in p['scoring'] if x['year']==Y and x['games']>0]
     if not row: return e
@@ -1131,7 +1148,7 @@ def _prod_path(p,Y):
         for gg in (max(g0-1,1),g0,g0+1):
             if gg==g0: out.append(e); continue
             r['games']=gg
-            out.append(raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p)))
+            out.append(raw_ev(p,Y)*iso_eff(p,Y))   # LEG A site 5/6 (first-evidence games-axis smoothing)
     finally: r['games']=g0
     return float(np.mean(out))
 # ===== WIRED ev =====
