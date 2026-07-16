@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v168 2026-07-16 · PEN: **R104.8 filed (item 190: the item-130 GLOSS — protected quantity = EARNED value; the pick prior dissolves BOTH ways; Leg A ships w/ the 37-row decomposition condition) · UI v1.2 PRESCREEN PASS (item 191: PR #99 head 2d00e3f, fence 0/21 non-ui, 20/20 verdicts, 16-club count VERIFIED vs source; merge on the owner's click) · DECISIONS → v108 · manifest → v4.33** · prior: v167 item 189 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v169 2026-07-16 · PEN: **A-PAIRS PAIR-2 STALE CARRY KILLED (item 192: RESOLVED SINCE 2026-07-13 at item 43 — Reid/Bont ≤10% · Sanders/Bont bont-ahead 0–10%, bands owner-ruled, CONSTRAINTS v1.10; the 'never resolved' claim was a seat-memory ghost repeated ~5 times — owned; rev144 §4 line SUPERSEDED) · ADVERSARIAL REVIEW PACKAGE ISSUED (item 193)** · prior: v168 items 190–191 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4399,3 +4399,24 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     (posture toggles · +1/+2 re-enable — post-Leg-E). OPTIONAL LATER (not a blocker, owner's call at
     viewing): export the pick workbook's two tabs as CSVs like the other inputs and the viewer could
     ingest at load with NO command step. NEXT RUNG: owner viewing → his merge click (Tier 3).
+
+192. **A-PAIRS "PAIR 2 OUTSTANDING" — A STALE CARRY, KILLED (owner-caught 2026-07-16, ~the FIFTH
+    reminder).** THE DECISION WAS MADE AND RECORDED 2026-07-13 — **register item 43 is the resolution
+    of record:** `young_gun_tbd` RETIRED; the pair SPLIT into **PAIR 2 = Harley Reid vs Bontempelli
+    (PARITY, band |Δ| ≤ 10%)** and **PAIR 3 = Ryley Sanders vs Bontempelli (Bont AHEAD by 0–10%)**;
+    bands owner-ruled ("Bands okay"); filed at CONSTRAINTS v1.10 + acceptance v1.10; auditors SCORE
+    both (pair 3 expected-fail until the pricing curve re-derives — which is THIS chapter's Leg B/D).
+    **NOTHING IS OUTSTANDING ON A-PAIRS.** The "never resolved" claim was a seat-memory ghost carried
+    across seats and repeated without verifying the register — the exact reconcile-by-deletion failure
+    CORE names ("the claim carried longest unchecked is the likeliest wrong"). SUPERVISOR-OWNED.
+    **rev144 §4's "A-PAIRS pair 2 has never been resolved" line is WRONG and SUPERSEDED BY THIS ITEM**
+    (corrected in the next HANDOVER fold). Seat memory corrected at source this turn. No future seat
+    carries this as open; the pairs live in the acceptance JSON, scored every ladder.
+
+193. **CROSS-MODEL ADVERSARIAL REVIEW — PACKAGE ISSUED (owner-agreed 2026-07-16):**
+    `docs/ADVERSARIAL_REVIEW_spec_prompt_2026-07-16.md` — a self-contained red-team prompt (the spec
+    v1.1 embedded verbatim + compact law context + nine named attack surfaces + a findings-only
+    output format with severity and a concrete exposing test per finding). FLOW: the owner pastes it
+    into a FRESH GPT chat (no prior context), runs it, couriers the raw output back to the supervisor
+    seat; the supervisor reconciles findings into the register (real holes → spec/directive
+    amendments; non-findings recorded as survived attacks). Precedent: the earlier cross-model reviews.
