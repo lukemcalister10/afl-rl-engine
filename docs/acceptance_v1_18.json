@@ -1,0 +1,596 @@
+{
+ "version": "v1.18",
+ "date": "2026-07-16",
+ "authority": "docs/CONSTRAINTS_v1_13.md (human-readable master; regenerate this file on any change there; status strings use underscores). NAMING: repo filenames use UNDERSCORES (CONSTRAINTS_v1_13.md, acceptance_v1_13.json) - a pointer written with dots (CONSTRAINTS_v1.13.md) RESOLVES TO NOTHING.",
+ "regenerated_from": "acceptance_v1_17 (delta: THE OPEN RE-SEAL, items 221/224 \u2014 leg_b.s_dial_selection grid {0.45..0.60} \u2192 {0.55,0.60,0.65,0.70} per memo v1.1 (the corrected \u03b2_eff algebra incl. the target-axis elasticity \u03bb_\u03c1; the v1.0 grid was derived from an algebra missing \u03bb_\u03c1). preview_hashes re-point to the AMENDED memo + THIS file, re-recorded in the segment-3 PLAN before any candidate metric. Nothing else moves.)",
+ "numeraire": {
+  "law": "pick_1 == 3000 (owner: 'Rebase, 3000 is it.', register v30) \u2014 permanent",
+  "rebase_factor": 1.0524,
+  "note": "v1.8 quotes SCAR in the L7-rebased numeraire (v1.7 figures \u00f7 1.0524). Ratios and percentages are invariant under the uniform rebase. Replacement bars UNCHANGED (par space)."
+ },
+ "status_values": [
+  "BINDING",
+  "PENDING_OWNER",
+  "ADVISORY",
+  "OWNER_ON_SIGHT"
+ ],
+ "guards": [
+  {
+   "id": "G-COHORT",
+   "metric": "class_year_sum_averaged_across_classes",
+   "construction": "for each draft class: SUM of that class's players' values in career year Y; average those sums across sampled classes; one figure per career year",
+   "construction_provenance": "OWNER_WORDED_2026-07-08; re-confirmed during the v4.1 remediation (WD-1 closed); UPHELD against the audited W4 breach; B1 CONFORMANCE RULED 2026-07-13 (register v52) \u2014 the July-8 construction IS the gate and the frozen code conforms to IT",
+   "owner_rationale": "market no-arbitrage (owner 2026-07-08): if year 1-2 players were going to be worth 50% more 2-3 years later, one would simply hold them; younger-player value must rise to compensate",
+   "per_capita_reading": "OVERRULED_do_not_use (retired-supervisor carry; owner-overruled 2026-07-08)",
+   "indexed_reading": "DEMOTED_2026-07-13 (obituary in CONSTRAINTS v1.8): the frozen suite's per-class yr1=100 renormalisation + mean-of-ratios (the owner's own 02/07 wording, D5) is SUPERSEDED by his 08/07 wording and 13/07 confirmation. May survive ONLY as B1's secondary SHAPE diagnostic (peak position / dip), never as the bound. The historic headline 126.8/125.2/116.1 was the indexed row \u2014 do not quote it as the gated number.",
+   "code_conform_job": "PENDING \u2014 implements the July-8 construction in ship_gates; owner's word GIVEN; fires at the seam",
+   "years_tested": "each_of_year_4_5_6_individually",
+   "denominator": "min(year_1_figure, year_2_figure) \u2014 owner-picked from symmetric options 2026-07-08 (WD-1b closed)",
+   "book": "walk_forward_leak_free",
+   "fitted_board_reading_invalid": true,
+   "basis_assertion": "CODE READING ONLY \u2014 walk-forward property (model scoring cohort year T sees only data <= T) and class-sum construction asserted from the script's code; numeric fingerprint aid RETIRED 2026-07-08 (non-discriminating; do not resurrect)",
+   "bound_hard": 1.3,
+   "guide_band": [
+    1.2,
+    1.25
+   ],
+   "current_measurement": {
+    "source": "S2 shard, independent, 2026-07-13; store b0c39d78 / engine 2030e5df",
+    "year1_sum": 69840,
+    "year2_sum": 79298,
+    "denominator_used": "year_1",
+    "y4": 1.2601,
+    "y5": 1.2407,
+    "y6": 1.1521,
+    "result": "PASS_x3",
+    "note": "y4 above the 1.25 guide (advisory, precedented). Ratios invariant under the L7 uniform rebase."
+   },
+   "fix_direction": "raise_year1_aggregate_never_cut_young",
+   "remediation_doctrine": "owner-ruled 2026-07-08: NO blanket young multiplier to tick the box; investigate WHY younger players are under-valued relative to who they become 3-4 years later and rectify the identified mechanism; the retired 1.19x uniform sit-out lift stays retired",
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "scored_year_depths": [
+    4,
+    5,
+    6
+   ],
+   "note_item203": "y4=1.3017 ALSO over at the Leg-A head (base 1.2960 \u2014 crossed AT Leg A); all three depths must clear 1.30. R104.10: candidate line proceeds eyes-open; the gate BINDS AT THE LADDER.",
+   "frozen_fixture": "committed row-level fixture required; build and audit implementations must produce byte-identical ratios (audit #17)"
+  },
+  {
+   "id": "G-MONO",
+   "metric": "pick_value_curve_monotonicity",
+   "requirements": [
+    "no_inversions",
+    "no_bin_cliffs",
+    "young_ruck_fade_smooth_no_pk20_21_step"
+   ],
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "G-FLOOR",
+   "alias": "B5",
+   "metric": "first_year_unproven_value_floor",
+   "rule": "never_crater",
+   "status": "BINDING",
+   "dispensations_2026_07_11": "two one-off owner waivers recorded: <=5 SCAR on <=45 rows; the NAMED-16 <=13 SCAR (list committed on the remediation branch). Gate unmoved. CLOSED HISTORICAL (v1.8) \u2014 quoted in pre-rebase units; do not re-quote forward.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "G-PEAK",
+   "alias": "B1",
+   "metric": "individual_survivor_peak_years4_6",
+   "max_drop": 0.02,
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "G-CONVEX",
+   "metric": "young_convexity_premium",
+   "coverage_definition": "engine_gap / implied_gap per young cohort (engine option-value premium vs realized-outcome-implied premium); floor locks the under-priced pocket young RUC picks 4-10 at 0.61; metric prices SYNTHS - candidates delegating synths byte-exactly cannot move it",
+   "thresholds": {
+    "young_floor_band_aggregate_scar": {
+     "le21": 180140,
+     "22_24": 178224,
+     "25_26": 107773
+    },
+    "convexity_coverage_band": [
+     0.6,
+     1.6
+    ]
+   },
+   "thresholds_provenance": "supervisor_carried_from_rev117_supplement (WD-3); cold audit 2026-07-08 cross-checked PR #43: VERBATIM MATCH; x1.0524 re-denominated 2026-07-11; DIVIDED BACK by 1.0524 at the v1.8 numeraire fold (L7 rebase, owner-ruled)",
+   "seam_verification_2026_07_13": {
+    "verified_by": "supervisor seat 5, independently, against the BAKED board (tag v2.9 = 9f8ae76; board md5 81e48293 recomputed)",
+    "measured_band_aggregate_scar": {
+     "le21": 202650,
+     "22_24": 189507,
+     "25_26": 113695
+    },
+    "margins": {
+     "le21": 22510,
+     "22_24": 11283,
+     "25_26": 5922
+    },
+    "result": "ALL_FLOORS_CLEAR"
+   },
+   "status": "ADVISORY",
+   "escalation": "remains ADVISORY until an EXPLICIT owner ruling makes it BINDING (owner-confirmed 2026-07-08; no automatic escalation). Scored as diagnostics at CA-5.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "G-DATA",
+   "metric": "data_integrity_suite",
+   "components": [
+    "five_single_source_guards",
+    "panel_10_of_10",
+    "book_seal_B3",
+    "board_parity_nonmovers_B4"
+   ],
+   "behavior": "halt_not_warn",
+   "numeraire_note": "the L7 display rebase moved the unit relation to board == round(ev / F); six parity checks were made numeraire-aware at the v2.9 bake (rl_export gate, run_panel, selftest F1/F2, canary, s4_matrix book<->board). The guards still catch mispricing; only the unit relation moved.",
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "G-ATTR",
+   "metric": "per_lever_attribution",
+   "scope": "multi_lever_builds",
+   "rule": "every_lever_delta_separable_else_fail",
+   "interpretation_note": "register v55: 'separable' == PATH-ADDITIVE along the declared lever order, not interaction-free; a different order splits the same total differently",
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "G-Y0",
+   "metric": "year0_cohort_identity",
+   "construction": "weighted-mean position-conditioned V0 == derived PVC per pick band (deviations net zero); y0 pick-sum -> wk1 cohort sum -> y1/2 sums chain with bounded steps, walk-forward",
+   "fix_direction": "raise_young_side_never_cut_survivors_never_bend_derived_curve",
+   "first_measurement": {
+    "date": "2026-07-13",
+    "source": "the v2.9 seam table",
+    "status": "ADVISORY_recorded_not_binding",
+    "result": "comp-weighted V0 > derived PVC in EVERY band (+19...+281, widest 21-30); the y0 -> wk1 -> y1 trough -> y2 recovery chain shape delivered"
+   },
+   "status": "ADVISORY",
+   "provenance": "owner-worded 2026-07-11 (CLAIM 1 only); ADVISORY by owner ruling 2026-07-14",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "identity_2026_07_14_CORRECTED": "THE IDENTITY IS SOUND AND IT IS THE OWNER'S. A prior supervisor annotation (pushed c48d390, corrected within the hour) argued the pick SHOULD be worth less than the player because of a 'cost of holding'. IT MISREAD V0. V0 is the player's value the day AFTER the draft; the PVC is the pick's value the day BEFORE. ONE DAY APART. THERE IS NOTHING TO DISCOUNT. Owner verbatim 2026-07-14: 'if we're talking about picks and the players immediately post draft (i.e. pure v0 players), then they should be relatively even on average... otherwise 1 day after the draft there'd be a heap of value created or lost which is nonsensical.' CLAIM 1 (position conditioning redistributes, deviations net to zero) AND CLAIM 2 (composition-weighted mean V0 == derived PVC) ARE BOTH THE OWNER'S AND BOTH STAND. POSITIONAL CAVEAT IS PART OF THE LAW: some drafts are positionally weaker and SHOULD land below the PVC, others stronger and above. THE IDENTITY HOLDS ON AVERAGE ACROSS DRAFTS, NOT DRAFT-BY-DRAFT. A single class off the curve is a weak or strong class, NOT a breach. MEASURE ACROSS MULTIPLE DRAFTS. The holding-cost question belongs to a DIFFERENT comparison (pick vs the player's PEAK/career value), where the owner's 'how do you even value the player - peak? a window across the peak? it's arbitrary' does bite. DO NOT WELD THEM TOGETHER AGAIN.",
+   "fix_direction_STALE_DO_NOT_APPLY": "The recorded fix_direction (raise_young_side_never_cut_survivors_never_bend_derived_curve) was drafted 2026-07-11 anticipating V0 < PVC ('the weighted average sits BELOW the curve broadly'). THE MEASUREMENT CAME BACK THE OTHER WAY: comp-weighted V0 > derived PVC in EVERY band (+19..+281, widest picks 21-30) - THE DRAFT CREATES VALUE. THE YOUNG SIDE IS ALREADY THE HIGH SIDE; RAISING IT WOULD WIDEN THE GAP. NOBODY UPDATED THE REMEDY. The PVC re-derivation must re-derive THE CURE, not only the numbers. DO NOT ACT ON THE RECORDED FIX DIRECTION."
+  },
+  {
+   "id": "G-BOOK",
+   "metric": "book_identity_vs_live_identity",
+   "construction": "s4_matrix stamps __meta__={engine_head_md5,store_md5,config_sha256,n_players}; ship_gates_check asserts all three against the live values (L281/L393).",
+   "rule": "the walk-forward book must be built from the same formula as the current-player board; any stamp mismatch HALTs",
+   "remediation_direction": "REBUILD THE BOOK - never re-stamp a book you did not rebuild",
+   "status": "BINDING",
+   "known_gap": "STATED IN BOTH DIRECTIONS (corrected 2026-07-14 after the owner's audit). (1) rl_model.py IS PINNED AND THE PIN IS CORRECT: data/expected_boot.json carries rl_model=952ddb3d15fe6d4f72432d431abe75cc and it matches the live file exactly. An earlier supervisor claim that it was 'recorded by NOTHING' was WRONG. What is true is narrower: boot_guard.assert_boot() NEVER CHECKS IT (its signature takes store, engine_head, band, register - no rl_model path), and the book's __meta__ does not record it. So closing this half is WIRING AN EXISTING, CORRECT PIN INTO THE ASSERTION - not creating one. Precedent, same file, second time: the 'board' pin was DECORATIVE in exactly this way until the S1 audit asserted it (register item 24). (2) THE UNSTAMPED INPUTS ARE MORE NUMEROUS THAN PREVIOUSLY STATED (D6, determinism return e646abb): peak_model_v4.pkl (b763f59e), pvc_snapshot.json (735d2dec), bust_prior_table.json (ffb54267), plus several data tables - all loaded by the board, none in expected_boot.json. And q97m - the model refitted at import on every run - is pinned by nothing at all. G-BOOK CANNOT BE DECLARED COMPLETE UNTIL THE BOOK'S STAMP COVERS EVERY INPUT THAT DETERMINES THE BOARD. Closing this gap is a PREREQUISITE of the captain-curve wiring.",
+   "owner_ruling": "2026-07-13 - the book is rebuilt every time the current-player formula changes",
+   "measurement_2026_07_14": "three stamped legs PASS; the guard is INCOMPLETE \u2014 see known_gap",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "second_runtime_fit_open": "_merged_recover.py:801 _iso_dec = IsotonicRegression(...).fit(...) - a SECOND runtime fit that D3 MISSED. Feeds _fit_pick_curve -> the V0 curve -> the pick curve. Not cleared. If CI is still red after the q97m freeze, this is the first place to look - it is NOT a failed freeze."
+  }
+ ],
+ "anchors": [
+  {
+   "id": "A-BONT",
+   "player_key": "marcus-bontempelli",
+   "baseline": 3084,
+   "direction": "up",
+   "min_delta_pct": 10.0,
+   "status": "BINDING",
+   "baseline_note": "v1.8 NUMERAIRE fold: 3246 / 1.0524 = 3084 (round-trips 3084 x 1.0524 = 3246). v2.9 measured +12.88% (pre-rebase units); supervisor seam spot-check on the baked board: v = 3482 = +12.91% vs 3084 \u2014 PASS. Ratio invariant under rebase.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "A-GAWN",
+   "player_key": "max-gawn",
+   "comparator_key": "kieren-briggs",
+   "comparator_note": "corrected 2026-07-08 from the drifted 'toby-briggs' (not a player - owner; origin unknown)",
+   "rule": "clearly_above",
+   "status": "BINDING",
+   "magnitude": "OWNER_ON_SIGHT",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "A-CAM",
+   "player_key": "jeremy-cameron",
+   "key_note": "corrected 2026-07-09 from the drifted charlie-cameron (owner: Charlie has never been an anchor; Jeremy verified in store)",
+   "direction": "up",
+   "min_delta_pct": null,
+   "status": "OWNER_ON_SIGHT",
+   "v2_9_note": "2026-07-13: v2.9 proxy ticked -1.11% vs vPrev; OWNER VIEWED AND ACCEPTED at the sitting (register v56). Direction-up expectation stands for future boards.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "A-DARCY",
+   "player_key": "sam-darcy",
+   "direction": "up",
+   "attribution_required": [
+    "young_convexity_ceiling",
+    "kpf_speculative",
+    "availability_layer"
+   ],
+   "rule": "no_layer_clips_ceiling",
+   "status": "OWNER_ON_SIGHT",
+   "availability_note": "v1.8 re-quote, VERIFIED AT SEAM (supervisor seat 5, 2026-07-13, against the BAKED board: tag v2.9 = 9f8ae76, board md5 81e48293 recomputed): avail_nerf = -664 (was -677 pre-rebase), avail_hc 0.7273, lti_return_hc 0.0, v 3865. Availability is the SOLE suppressor; convexity ceiling and KPF-speculative ABSENT; no layer clips his ceiling; unwinds 2027.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "A-DUUR",
+   "player_key": "willem-duursma",
+   "direction": "up_via_year1_cohort_lift",
+   "governed_by": "G-COHORT",
+   "status": "OWNER_ON_SIGHT",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "A-PEAK",
+   "player_keys": [
+    "zak-butters",
+    "max-holmes"
+   ],
+   "rule": "held_not_crushed",
+   "governed_by": "G-PEAK",
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  },
+  {
+   "id": "A-FADE",
+   "player_keys": [
+    "stephen-coniglio",
+    "taylor-adams",
+    "mark-blicavs",
+    "zach-guthrie"
+   ],
+   "direction": "down",
+   "basis": "MULTI-BAKE TRAJECTORY (the fader's path across boards), NOT the single-bake vPrev tick \u2014 supervisor-drafted from the owner's 2026-07-08 clarification, closing S5's reported ambiguity",
+   "basis_status": "OWNER_APPROVED_2026-07-14 (the multi-bake ARC, not the single-bake tick)",
+   "threshold": "direction_only; players already at the scrap floor satisfy FLAT (no further drop required); attributed floor-basis effects do not fail it; escalate ONLY if the decline lever is absent / failed to fold (numeric threshold closed as moot, OQ-E)",
+   "status": "BINDING",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears.",
+   "provenance_status": "UNVERIFIED. Owner 2026-07-14: 'I don't think I wrote that guard.' The 2026-07-08 clarification (scrap-floor satisfies FLAT) IS owner-worded; the FOUR NAMES predate it and their author cannot be established from the history. Carried as an owner read regardless. Precedent: A-GAWN's comparator had drifted to 'toby-briggs', a player who does not exist. CORE rule 4."
+  },
+  {
+   "id": "A-PAIRS",
+   "pairs": [
+    [
+     "max-gawn",
+     "kieren-briggs"
+    ],
+    [
+     "harley-reid",
+     "marcus-bontempelli"
+    ],
+    [
+     "ryley-sanders",
+     "marcus-bontempelli"
+    ]
+   ],
+   "status": "OWNER_ON_SIGHT",
+   "reads": {
+    "pair_2": {
+     "left": "harley-reid",
+     "right": "marcus-bontempelli",
+     "owner_read_verbatim": "I feel like Harley and Bont can be similar",
+     "direction": "PARITY",
+     "proposed_band_pct": 10.0,
+     "band_status": "OWNER_RULED_2026-07-13",
+     "measured_tagged_board_81e48293": {
+      "harley_reid": 3594,
+      "bontempelli": 3482,
+      "delta_pct": 3.2
+     },
+     "result": "PASS_consistent_with_the_read"
+    },
+    "pair_3": {
+     "left": "ryley-sanders",
+     "right": "marcus-bontempelli",
+     "owner_read_verbatim": "interestingly I'd think Bont should be slightly above Sanders",
+     "direction": "bontempelli_above_sanders",
+     "proposed_band_pct": [
+      0.0,
+      10.0
+     ],
+     "band_status": "OWNER_RULED_2026-07-13",
+     "measured_tagged_board_81e48293": {
+      "ryley_sanders": 3960,
+      "bontempelli": 3482,
+      "delta_pct": 13.7
+     },
+     "result": "FAILS_standing_failed_read \u2014 sanders sits 13.7% ABOVE bont; the read puts bont above him"
+    }
+   },
+   "key_verification": "store-verified before filing: harley-reid = Harley Reid, MID, pick 1, West Coast, b.2005 (NOT murphy-reid, GEN_FWD, pick 17 \u2014 the store carries TEN 'Reid' rows) \u00b7 ryley-sanders = Ryley Sanders, MID, pick 6, Western Bulldogs, b.2005",
+   "diagnosis": "THE GAP IS NOT FLATTERY. Census decomposition (numeraire): sanders = base 3903 + iso 58 + par_credit 0 (flat -21); bont = base 3070 + par_credit 439 + iso -28 (flat -29). Neither carries par-relative flattery, so THE FLATTERY FIX WILL NOT CLOSE PAIR 3. The gap is made by the BASE CURVE (pick-band price x growth on the young side) => it belongs to the PVC RE-DERIVATION / pricing-curve formalisation chapter (adjacent to G-CONVEX's young premium). NO HAND EDIT: cutting sanders to satisfy the read would be a predicate-based nerf wearing a rule's clothes (the owner's own remediation doctrine).",
+   "auditor_instruction": "SCORE BOTH PAIRS against the OWNER-RULED bands (pair 2: |delta| <= 10% \u00b7 pair 3: bont above sanders by 0-10%). Pair 3 is EXPECTED to fail until the pricing curve is re-derived \u2014 report and SCORE it; never report it as a skip. A-PAIRS is OWNER_ON_SIGHT, so a pair-3 failure is not by itself a bake blocker.",
+   "measurement_status": "CONSISTENT_NOT_VERIFIED \u2014 measured in incognito sandboxes, NOT the bake environment; cross-env drift 0.35-1.8%/player vs G-COHORT's ~3% margin (register item 74). RE-MEASURE on the build of record, in the environment of record, once CPU-class determinism is settled (R100.7), and RECONCILE before any bake. NO BAKE until ITEM-74 (rewritten at v1.13) clears."
+  }
+ ],
+ "flags": [
+  {
+   "id": "F-GENFWD",
+   "scope": "GEN_FWD_picks_41_70",
+   "prior_multiple": 2.14,
+   "rule": "may_compress_with_data"
+  },
+  {
+   "id": "F-MID13",
+   "scope": "MID_picks_1_3",
+   "prior_multiple": 2.09,
+   "rule": "owner_ruling_required_never_auto_cut",
+   "rationale": "thin_elite_cell + monotonicity_risk + year1_denominator_member_cutting_raises_G-COHORT_ratio"
+  },
+  {
+   "id": "F-YOUNG",
+   "scope": "high_pick_elite_young",
+   "rule": "cuts_need_data_and_owner_ruling_no_big_wipe",
+   "subordinate_to": [
+    "G-FLOOR",
+    "G-COHORT_denominator"
+   ]
+  }
+ ],
+ "flag_general_rule": "over-priced flags on YOUNG/year-1 cohorts are subordinate to G-FLOOR and the G-COHORT denominator; actionable over-priced flags live on the OLDER/lower-pick end",
+ "laws": [
+  {
+   "id": "LENS-PROJECTION",
+   "text": "the +1/+2 lens must show PROJECTED value (expected production credited for gap years); interim lens = no-improvement floor, cross-age trades NOT read off it",
+   "provenance": "owner-ruled 2026-07-13, register v46; build rides the flattery-fix chapter",
+   "status": "BINDING"
+  },
+  {
+   "id": "CYCLE",
+   "text": "one bake per chapter; changes batch onto a candidate and walk ONE ladder; UI and ingestion never bake",
+   "provenance": "owner-driven, seat-3 round; full text CORE v2.4",
+   "status": "BINDING"
+  },
+  {
+   "id": "L-SYMMETRY",
+   "text": "The engine must require THE SAME WEIGHT OF EVIDENCE to believe a player has IMPROVED as to believe he has DECLINED, and must deliver BOTH through CONTINUOUS RAMPS - never a threshold on one side and a ramp on the other.",
+   "owner_wording_verbatim": "Risers should have the same smoothing/ramping. And you should have to have the same drop for the engine to think you're declining as a rise for it to think you're rising.",
+   "asymmetry_corrected": "A RISE requires >=5.0 points (TOL_M1) AND a 12-game season above the old level (_radq); fail EITHER and the ENTIRE improvement is DELETED, not reduced - all 124 denied improvers ship at EXACTLY their old level (core==Lo). A DECLINE requires 3.0 points (DOWN_TOL) and NO games test at all, delivered by a SMOOTH RAMP. RISERS FACE CLIFFS; FALLERS GET A RAMP. Rachele improved 4.93 and got NOTHING; MacDonald improved 5.04 and got 3.53 points of level.",
+   "measured_cost": "+28,820 SCAR DENIED to improvers = 71.7% of ALL measured improvement (S_AGE 14,637 / TOL_M1 12,268 / _radq 1,915). The flattery census found +19,168 of OVERvaluation - the DENIAL is 1.5x LARGER and points the OTHER WAY.",
+   "relationship_to_R98_2": "STRICTER THAN SMOOTHNESS. R98.2 forbids the CLIFF; L-SYMMETRY additionally forbids an UNEQUAL BAR. Two smooth ramps with different thresholds SATISFY R98.2 AND VIOLATE THIS LAW.",
+   "provenance": "owner-ruled 2026-07-14",
+   "status": "BINDING",
+   "wired": false
+  },
+  {
+   "id": "L-SAGE-FADE",
+   "text": "The age-persistence discount on an improvement (S_AGE) must FADE TO A MEASURED RESIDUAL. It MAY NOT REACH ZERO on the assertion of a curve nobody has tested at that end.",
+   "today": "_S_AGE(a) interpolates 0.915(20) -> 0.490(25) -> 0.151(28) -> 0.000 FROM AGE 30, FOREVER.",
+   "indefensible_cases": "Callum Wilkie (+406) and Jack Sinclair (+143) CLEARED BOTH EVIDENCE GATES (>=5.0 points AND a 12-game season above their old level) and received EXACTLY ZERO because of their birthdays. The gates and S_AGE ask the same question twice and the AGE test OVERRIDES the EVIDENCE test completely.",
+   "precedent": "The draft pedigree still carries a significantly-positive ~0.11 residual at n=4 (CI [0.04,0.17], EXCLUDES ZERO) and the engine zeroes it anyway (PROVEN_N). VANISH-WHERE-IT-SHOULD-FADE is a PATTERN in this codebase, not an accident.",
+   "remediation": "MEASURE the 30+ residual; REPLACE the asserted zero with the measured fade. NOBODY HAS EVER TESTED WHETHER THE ZERO IS REAL.",
+   "provenance": "owner-ruled 2026-07-14",
+   "status": "BINDING",
+   "wired": false
+  },
+  {
+   "id": "L-CAPTAIN",
+   "text": "The captaincy credit follows the approved captain curve: credit(L) = G * integral[BAR->L] P(a) da, P logistic, BAR 105.0 / M 109.5 / W 1.85 / G 1.00. Credit reads as PROJECTED LEVEL minus 109.66 once clear of the knee (the curve's own asymptote; NOT 107.4 - that is CAPT_THRESH from the RETIRED saturating curve). Per-point rate climbs 0.10 -> 0.50 -> 1.00 and reaches 1:1 at 120, which READS 0.997 - a logistic approaches 1 and never touches it; DO NOT GATE ON 'EXACTLY'.",
+   "owner_wording_verbatim": "Approved on the captaincy. That's the curve. / it should be at 1:1 for reward as of 120 ppg, not 122 / players at the 108-109 range should receive some benefit. Otherwise really the captaincy benefit is assigned to 4-5 top-end players and not the other players who are paid for based on captaincy.",
+   "reference_values": {
+    "max-gawn": 16.34,
+    "marcus-bontempelli": 9.85,
+    "nick-daicos": 4.96
+   },
+   "wiring_prerequisites": [
+    "rl_model pin ASSERTED by boot_guard (pin exists and is correct; never checked - G-BOOK known gap; capt_prem lives in the one file the guard cannot see)",
+    "book REBUILT and RE-SEALED (G-BOOK)",
+    "ITEM-74 reconcile"
+   ],
+   "wiring_warning": "The old 'self-funds' result does NOT carry over (gain change on the retired curve vs shape change here, larger at the top); the curve lifts young upper tails so A-PAIRS pair 3 may get WORSE - MEASURE, do not assume.",
+   "provenance": "owner-ruled 2026-07-14 (R98.1, DECISIONS v98 verbatim); filed v1.13",
+   "status": "BINDING",
+   "wired": false
+  },
+  {
+   "id": "L-SMOOTH",
+   "text": "A valuation must be CONTINUOUS in its inputs. No player's value may jump because a counter ticked over. Design consequence: propose no threshold; every transition is a curve.",
+   "owner_wording_verbatim": "Hard mechanisms, not soft/staged ones... it shouldn't be a hard binary either-side step, it should be a smooth transition.",
+   "test_instrument": "the discontinuity census (register item 88, branch head 3ca74f3, PRESCREEN PASS) - ranked edge table on the tagged board of record; top edges: 10-game qualifying bar (_merged_recover.py:106; 551 players within one game), thin-career nqual ramp (:248; 545 at n=1-3), PROVEN_N n=3->4 cliff (:243/248; 253). A law you cannot test is a wish.",
+   "relationship_to_L_SYMMETRY": "L-SYMMETRY is STRICTER: smoothness forbids the cliff; symmetry additionally forbids an unequal bar. Two smooth ramps with different thresholds satisfy L-SMOOTH and violate L-SYMMETRY.",
+   "provenance": "owner-ruled 2026-07-14 (R98.2, DECISIONS v98 verbatim); filed v1.13",
+   "status": "BINDING",
+   "wired": false
+  }
+ ],
+ "notes": [
+  "player_key values follow the engine's key convention; a build must verify each key against the source store before asserting, and report any key mismatch rather than guessing (the toby-briggs drift is the standing example).",
+  "Anchors with min_delta_pct null pass on direction only; magnitude is owner-ruled on sight (Q3 closed). Owner reads are challengeable per CORE MISSION; only the owner waives a read.",
+  "The auditor ASSERTS the class-sum construction and the walk-forward property BY READING THE SCRIPT'S CODE. Post code-conform, the ship_gates B1 implementation IS the July-8 construction.",
+  "v1.8 (2026-07-13, at the v2.9 tag): NUMERAIRE FOLD (L7 rebase, pick-1 == 3000) \u2014 A-BONT 3084, G-CONVEX floors re-quoted; B1 CONFORMANCE ruled (July-8 wins; indexed reading demoted to a shape diagnostic; code-conform job fires at the seam); A-DARCY -664 VERIFIED at seam; A-FADE basis drafted (multi-bake trajectory, PENDING-OWNER wording); G-Y0 first measurement recorded, still PENDING-OWNER; LENS PROJECTION LAW recorded; CYCLE LAW recorded.",
+  "STRAY-FILE OBITUARY: a build-authored docs/CONSTRAINTS_v1_8.md (commit da5f7f3, refit-cert build) predates this registry. Its numeraire re-quote table was correct (folded here); its 'the frozen suite is authoritative' conform of G-COHORT is OVERRULED by the owner's 2026-07-13 ruling. Builds never author docs (CORE); the stray is archived at this filing.",
+  "v1.9 (2026-07-13): A-PAIRS young_gun_tbd RETIRED \u2014 the owner named BOTH sides (harley-reid, ryley-sanders), key-verified against the store. Pair 2 (parity) PASSES at +3.2%; pair 3 FAILS by ~14% the wrong way and becomes a STANDING FAILED READ + an acceptance anchor of the PVC re-derivation chapter. Bands supervisor-proposed, PENDING_OWNER; the DIRECTION is owner-worded and stands. Guards and all other anchors carry verbatim from v1.8.",
+  "v1.10 (2026-07-13): the A-PAIRS bands are OWNER-RULED ('Bands okay'). Nothing else changed from v1.9.",
+  "v1.13 (2026-07-15): L-CAPTAIN + L-SMOOTH filed (R98.1/R98.2, DECISIONS v98 verbatim); ITEM-74 bake blocker REWRITTEN around CPU-class determinism (owner-ordered; the q97m freeze is necessary hygiene, not sufficient); every measurement_status clearing clause updated to match. Filed by the Fable seat's pen."
+ ],
+ "status": "OFFICIAL",
+ "bake_blocker": {
+  "id": "ITEM-74",
+  "status": "OPEN",
+  "rewritten": "2026-07-15, owner-ordered. The v1.12 text keyed clearing to the q97m freeze. THE FREEZE DOES NOT FIX THE CPU DEPENDENCE (register items 105-106: four environments, four boards, ON THE FROZEN CODE; the sums are the source; second runtime fit _iso_dec at _merged_recover.py:801 uncleared). A 'frozen build' is still a per-machine build.",
+  "rule": "NO BAKE until BOTH legs hold. LEG 1 - CPU-CLASS DETERMINISM SETTLED (R100.7): EITHER one board md5 across environments (the divergence bisected and FIXED; the ONLY accepted proof is CI GREEN ON THE AMD RUNNER PRINTING A BOARD md5 EQUAL to the pinned box's - a green panel without the matching printed md5 is NOT acceptance; SILENCE IS A RED) OR the owner RULES the declared drift tolerance (an acceptable outcome, not a failure; the tolerance is then itself registered, versioned and asserted by the suite). LEG 2 - THE RECONCILE: every guard, anchor, the flattery census and the discontinuity census RE-MEASURED on the build of record, in the environment of record, and RECONCILED against the figures in this file and the register; any mover gets a register entry.",
+  "why": "The board md5 is the board's NAME - stamped into the tag, the book seal, expected_boot, every register entry and A1 itself. Two machines giving two names means no cold audit can ever confirm a number again.",
+  "clears_when": "leg 1 settled (one name proven via the AMD runner's printed md5, or the tolerance owner-ruled and registered) AND leg 2's reconcile complete on the build of record."
+ },
+ "standing_fails": [
+  {
+   "id": "A2",
+   "status": "STANDING-FAIL",
+   "source": "ruling D7 2026-07-02 (Curtis threshold UNCHANGED at 0.90; 'we can look at Curtis down the line')"
+  },
+  {
+   "id": "A3",
+   "status": "STANDING-FAIL",
+   "source": "ruling D7 (data-caused; Rozee pre-LTI, knife-edge by design)"
+  },
+  {
+   "id": "A12",
+   "status": "STANDING-FAIL",
+   "source": "data-caused (Travaglia/Moraes, Smillie/Retschko)"
+  },
+  {
+   "id": "A9",
+   "status": "RESOLVED-IN-CANDIDATE",
+   "source": "self-resolved by the two-directional _eo (improver PR #90, item 140): Ginnivan>Ward now holds. Kept listed as RESOLVED so the auditor scores the pair, not silence."
+  },
+  {
+   "id": "A-PAIRS-3",
+   "status": "STANDING-FAILED-READ",
+   "source": "CONSTRAINTS PART 2 \u2014 expected to FAIL until the PVC re-derivation; score direction+magnitude, never skip"
+  }
+ ],
+ "audit_rule": "Any FAIL not in standing_fails is a NEW DEFECT. Every standing fail is SCORED with its numbers, never skipped, never smoothed.",
+ "cohort_waiver": {
+  "guard": "G-COHORT",
+  "bound": 1.3,
+  "status": "REVERTED \u2014 the 1.335 waiver was THIS-BAKE-ONLY (item 143) and expired at this filing, the first of the merged PVC+FLEX chapter",
+  "reverted": "2026-07-15, seam of the evidence-over-calendars bake (v2.10 tag d14efae, promoted a64c47f)",
+  "history": "waived to 1.335 for the v2.10 bake only; y5 landed 1.3057, cleared by 0.0293 (register item 159); hard bound now 1.30 again",
+  "audit_rule": "score every cohort ratio against 1.30; any ratio >1.30 is a HALT, not a waived pass"
+ },
+ "leg_b": {
+  "design_of_record": "docs/MEMO_LEGB_functional_form_2026-07-16.md (pre-view hashed at the directive; mutation = HALT)",
+  "killswitch": {
+   "id": "RL_UNCOMP",
+   "off_identity": "RL_UNCOMP=0 board == Leg-A board 8d90c9ac byte-exact"
+  },
+  "beta_proven27": {
+   "point_min": 0.85,
+   "ci_must_contain": 1.0,
+   "estimator": "FROZEN (method+sample+weighting+CI declared in the directive before build)",
+   "max_ci_width": 0.35,
+   "min_effective_n": 120,
+   "why": "audit #13 \u2014 imprecision must not pass the gate",
+   "status": "BINDING"
+  },
+  "slope_le22": {
+   "baseline": 0.111,
+   "min": 0.15,
+   "ci_clear_of_baseline": true,
+   "status": "PROPOSED-owner-tunable-at-directive",
+   "why": "audit #12 \u2014 direction alone is not a gate"
+  },
+  "english_briggs": {
+   "ratio_min": 1.75,
+   "hard": true,
+   "measured_with_captain_lift": true,
+   "source": "R104.3",
+   "status": "BINDING"
+  },
+  "earned_component_gate": {
+   "population": "every young player (<=22 and 23-26 bands)",
+   "measure": "FINAL marginal SCAR attributable to earned production, after ALL composition",
+   "rule": "no negative baseline-to-candidate delta on any row",
+   "source": "R104.8 carried + audit #8/#26/#41",
+   "status": "BINDING"
+  },
+  "conservation_ledger": {
+   "scope": "whole-system: players + held picks + every derived adjustment",
+   "abs_tolerance_scar": 200,
+   "rel_tolerance": 0.0005,
+   "rule": "zero unexplained residual beyond tolerance; explicit budget-transfer entries visible",
+   "source": "audit #10/#40",
+   "status": "BINDING"
+  },
+  "census_v2": {
+   "global_gauge_max": 15612,
+   "cell_gates": "predeclared cells by age-band x evidence-band x position x draft-band, each <= baseline",
+   "source": "audit #15",
+   "status": "BINDING"
+  },
+  "l_smooth": {
+   "numeric_threshold": "declared in the directive before build",
+   "boundary_probes": [
+    "replacement-bar onset ramp",
+    "evidence continuum (no knots)",
+    "age +/- one day (no birthday cliffs)"
+   ],
+   "source": "audit #18/#28/#29",
+   "status": "BINDING"
+  },
+  "killswitch_matrix": {
+   "combos": "RL_UNCOMP x RL_ISOFADE (all four)",
+   "rule": "cold regeneration from the authored store hash-equals runtime-switched output per combo",
+   "source": "audit #19/#42",
+   "status": "BINDING"
+  },
+  "watch_rows": {
+   "gawn": {
+    "direction": "up",
+    "min_delta_scar": 25
+   },
+   "bontempelli": {
+    "direction": "up",
+    "min_delta_scar": 25,
+    "anchor": "A-BONT governs where stricter"
+   },
+   "reid": {
+    "rank_floor": 40,
+    "note": "A4 expected-recovery revisited HERE; value floor 3650 held"
+   },
+   "source": "audit #14",
+   "status": "BINDING"
+  },
+  "preview_hashes": {
+   "artifacts": [
+    "MEMO_LEGB_functional_form_2026-07-16.md (v1.1 header)",
+    "acceptance_v1_18.json"
+   ],
+   "rule": "md5s recorded in the build PLAN commit BEFORE any candidate metric renders; later mutation HALTS the ladder",
+   "source": "audit #16/#22/#45",
+   "status": "BINDING",
+   "reseal_note": "OPEN RE-SEAL at items 221/224 \u2014 halt-driven amendment, register-logged; new md5s recorded in the segment-3 PLAN"
+  },
+  "leg_c_remeasure": {
+   "rule": "every Leg-B acceptance statistic re-runs after Leg C lands on the candidate line; material drift is a ladder stop",
+   "source": "audit #20",
+   "status": "BINDING"
+  },
+  "s_dial_selection": {
+   "rule": "s = the SMALLEST value on the declared grid clearing beta_proven27 point >= 0.85 on the frozen estimator; deterministic, pre-declared \u2014 never result-conditioned",
+   "grid": [
+    0.55,
+    0.6,
+    0.65,
+    0.7
+   ],
+   "status": "BINDING",
+   "grid_amendment": "v1.18 open re-seal (items 221/224): the v1.17 grid presumed \u03b2_eff=(1\u2212w)\u03b2_c+w; the corrected algebra \u03b2_eff=(1\u2212w)\u03b2_c+w\u00b7\u03bb_\u03c1 with \u03bb\u22481 and \u03b2_c=0.622 needs w\u22480.60+"
+  },
+  "w_export": {
+   "deliverable": "committed artifact: per-player-year evidence weight w + earned/prior decomposition",
+   "consumer": "Leg D honest-calibration end (item 204)",
+   "status": "BINDING"
+  }
+ },
+ "leg_d_placeholders": {
+  "pvc_strict_descent": {
+   "rule": "curve(p+1) <= curve(p) - 1 for p = 1..79",
+   "source": "R104.9 owner-verbatim-in-substance (item 197)",
+   "status": "BINDING",
+   "effective": "Leg D"
+  },
+  "g_y0_population": {
+   "identity": "V0 = value the day after the draft, POPULATION-LEVEL (over the wider sample, on average); single-class top-heaviness is NOT a breach",
+   "tolerance": "TBD at the Leg-D memo (decile-residual gating weighed per audit #37)",
+   "source": "R104.7",
+   "status": "BINDING",
+   "effective": "Leg D"
+  },
+  "posture_2027_discounts": {
+   "balanced": 0.1,
+   "contender": 0.15,
+   "rebuilder": 0.05,
+   "assert": "exactly these three values in every generated artifact",
+   "source": "R104.5 + audit #6",
+   "status": "BINDING",
+   "effective": "Leg D/E"
+  }
+ }
+}

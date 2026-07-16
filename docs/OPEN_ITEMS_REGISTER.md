@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v196 2026-07-16 · PEN: **item 222 AMENDED IN SEQUENCE (item 223): the diagnostic was already pasted to seg 2 — LET IT FINISH; segment 3's act (A) becomes CONFIRM-BY-RE-RUN of seg 2's committed table before any re-wire. No stand-down whipsaw** · prior: v195
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v197 2026-07-16 · PEN: **THE AXIS FINDING (item 224): level_now's output-elasticity = 0.124 — the v1.0 §2.1 Docherty cure flattened the target axis; MEMO → v1.1 (ρ = robust REALISED output, qualifying-season exclusion; corrected algebra β_eff=(1−w)β_c+w·λ_ρ; grid → {0.55..0.70}) · ACCEPTANCE → v1.18 (OPEN RE-SEAL; memo md5 c664062c · acceptance caf8636c) · seg-2's stray background tasks: kill; 'reap before HALT' standing** · prior: v196
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4927,3 +4927,27 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the divergence is reported.** Everything else in item 222 stands: seg 2 retires ON delivering
     the table; memo v1.1 and the re-wire live in segment 3. No further owner coordination needed
     beyond couriering seg 2's table when it lands.
+
+224. **THE AXIS FINDING + MEMO v1.1 + ACCEPTANCE v1.18 (2026-07-16).** Seg-2's second diagnostic
+    (head `c27d697`, committed): at the production-value hook β STILL falls (0.622 → 0.437) — the
+    placement was a red herring; the measured elasticities NAIL it (ev 0.622 · price6 0.611 ·
+    **level_now 0.124**). v1.0 §2.1 (ρ = smoothed level — the Docherty cure) replaced the pre-sim's
+    REALISED-OUTPUT axis with a near-output-flat one, capping achievable β at ~0.12; the grids match
+    β_eff = (1−w)·β_c + w·λ_ρ exactly. The v1.0 algebra OMITTED λ_ρ — the memo's second defect, this
+    seat's, ledgered. **MEMO → v1.1 (amended in place, ⟪v1.1⟫-marked):** ρ = the robust REALISED
+    above-replacement output ratio — recent-2 QUALIFYING-season average (games ≥ the declared floor;
+    injury-wiped seasons SKIPPED, never averaged in — Docherty protected by EXCLUSION, not
+    flattening; zero qualifying ⇒ w=0) over the positional demonstrated-proven median · placement =
+    the price6 hook (the seg-3 diagnostic's exact construction) · once per player, current E ·
+    captain preserved additively via the RL_CAPT-off pass (δ self-test carries) · the seg-2 six-site
+    posval wiring REPLACED (delete-don't-disable, obituary) · corrected algebra: β ≥ 0.85 needs
+    w ≈ 0.60+ ⇒ **grid → {0.55, 0.60, 0.65, 0.70}**. §6's pre-sim RE-ATTRIBUTED: its Ppath
+    construction WAS the realised-output axis — that evidence (β-direction + July-8 y5 ~1.15, den
+    +9-14%) supports THIS design and always did. **ACCEPTANCE → v1.18 — THE OPEN RE-SEAL** (grid +
+    hash re-point only; new md5s: memo `c664062c…` · acceptance `caf8636c…`, re-recorded in the
+    segment-3 PLAN before any candidate metric; the halt-driven amendment is register-logged, silent
+    mutation stays forbidden). **SEG-2 HYGIENE:** its 6 stray background tasks (grid-sweep builds)
+    are harmless — the return is committed, they cannot push — KILL them / close the session;
+    STANDING CONDUCT LINE: builds REAP all background tasks before any HALT/RETURN. Segment 3's (C)
+    scope = the v1.1 re-wire; its (A) confirm-by-re-run now targets β_c + λ_level_now (the two
+    load-bearing numbers) rather than the superseded full table.

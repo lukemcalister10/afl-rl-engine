@@ -1,4 +1,16 @@
-# MEMO — LEG B FUNCTIONAL FORM · v1.0 · 2026-07-16 · seat 9 (Fable) · EXTRA
+# MEMO — LEG B FUNCTIONAL FORM · v1.1 · 2026-07-16 · seat 9 (Fable) · EXTRA
+### v1.1 (the HALT-DRIVEN AMENDMENT — items 221/224; the OPEN RE-SEAL: this file's md5 moves and is
+### re-recorded in the segment-3 PLAN before any candidate metric; silent mutation remains forbidden,
+### honest correction is the sanctioned path). TWO MEASURED FACTS force it (seg-2/seg-3 diagnostics,
+### frozen estimator, n=116): (1) the posval-component placement compresses BY CONSTRUCTION (local
+### elasticity ≥1 there; β_c 0.622 → 0.482 across the grid); (2) placement was then proven a RED
+### HERRING — at the production-value hook β STILL fell (0.622 → 0.437) because **the ρ AXIS was
+### wrong: level_now's output-elasticity is 0.124** — v1.0 §2.1 swapped the pre-sim's realised-output
+### axis for the fully-smoothed level (the Docherty cure) and thereby capped achievable β at ~0.12.
+### THE v1.1 CURE: ρ tracks REALISED OUTPUT, robust via QUALIFYING-SEASON EXCLUSION (Docherty
+### protected by skipping injury-wiped seasons, not by flattening the axis). §2/§2.1/§4/§5 amended
+### below IN PLACE (marked ⟪v1.1⟫); §6's pre-sim RE-ATTRIBUTED: its Ppath construction WAS the
+### realised-output axis — the evidence supports THIS design and always did.
 ### The design decisions, made BEFORE any build (spec §3 Leg B; R104.10's pre-sim obligation
 ### discharged in §6). Consumed: the Leg-A landed state (engine a83c9f6d · board 8d90c9ac · store
 ### b1fd0bce · config c2d233aec104) · the GPT audit clusters (ii)/(iii) (item 199) · rev144 §3's
@@ -19,11 +31,14 @@ For a player-year with demonstrated above-replacement level ρ (his level ÷ the
 level, BOTH from the engine's smoothed level machinery — §2.1) and evidence weight E (the v2.10
 `_ev_qual` family, τ = 1.1 — the SAME family Leg A's fade rides):
 
-**v′ = v^(1−w) · (V_ref · ρ^κ)^w,  w = s·E**, with s the ONE strength dial and κ = 1 (the β-target
-exponent; κ stays 1 — the dial is s). In log-space this is a straight blend of the current price
-toward the output-proportional price. Achieved top elasticity is exactly **β_eff = (1−w)·β_c + w**,
-so with β_c = 0.683 measured, **β ≥ 0.85 requires saturated w ≥ 0.527 ⇒ s ≥ ~0.53** (the build
-measures with the frozen estimator; this algebra is the design target, not the verdict).
+**v′ = v^(1−w) · (V_ref_b · ρ)^w,  w = s·E**, with s the ONE strength dial. ⟪v1.1⟫ The correct
+algebra is **β_eff = (1−w)·β_c + w·λ_ρ** where λ_ρ = the TARGET AXIS's own output-elasticity — the
+v1.0 omission of λ_ρ was the design defect (λ_level_now = 0.124, measured). With the v1.1 axis
+(λ ≈ 1 by construction) and β_c = 0.622 (measured at the hook): **β ≥ 0.85 needs saturated
+w ≥ ~0.60 ⇒ the grid extends to {0.55, 0.60, 0.65, 0.70}** (declared here, pre-measurement, openly
+re-sealed — acceptance v1.18). PLACEMENT ⟪v1.1⟫: the **production-value hook, pr = price6** (the
+ev-path production value pre-pole-recovery — the board renders ev(); the seg-3 diagnostic's exact
+hook), V_ref_b = the median demonstrated-proven price6 per position.
 
 REJECTED, with the pre-sim evidence (§6 table B):
 - **Price-exponent stretch** (power-law on v, two-sided around a pivot): the top tail is unbounded —
@@ -36,11 +51,16 @@ REJECTED, with the pre-sim evidence (§6 table B):
 - **Isotonic re-fit under a convexity floor**: least parametric, least auditable, step-function
   L-SMOOTH risk, no natural Reid extension. Rejected.
 
-### §2.1 — BINDING SUB-DECISION: ρ is the SMOOTHED LEVEL, never single-season points
-Pre-sim finding: with single-season output, injured-season cells are crushed (Docherty-class
-markdowns of −40..−60% at moderate s). ρ consumes the engine's demonstrated-level machinery
-(`level_demo`/`level_now` family — multi-season, injury-filtered), so an LTI year does not read as
-output collapse. The directive enumerates the exact feed.
+### §2.1 — ⟪v1.1 SUPERSEDES v1.0⟫ ρ TRACKS REALISED OUTPUT; DOCHERTY CURED BY EXCLUSION, NOT SMOOTHING
+v1.0 ruled ρ = the smoothed level; MEASURED FALSE as a target (λ = 0.124 — nearly output-flat for
+proven-27+; the blend then flattens price-vs-output regardless of hook or s). ⟪v1.1⟫: **ρ = the
+player's ROBUST REALISED above-replacement output ratio — recent-2 QUALIFYING-season average points
+above REPL[pos], over the positional demonstrated-proven median of the same measure.** A QUALIFYING
+season = games ≥ the declared floor (the estimator's own o-construction); injury-wiped seasons are
+SKIPPED, not averaged in — Docherty is protected because his ratio reads his last two REAL seasons,
+while the axis keeps elasticity ≈ 1 against realised output. Zero qualifying seasons in window ⇒
+w = 0 (untouched — the evidence weight already vanishes there). The v1.0 worry (single-season
+noise) is met by the two-season window + the qualifying floor, not by an axis that cannot move.
 ### §2.2 — Smooth onset at the replacement bar
 w ramps to zero continuously over a declared width above the bar (one parameter, stated in the
 directive) — no cliff between sub-bar and above-bar players (audit #28). No age gates anywhere:
@@ -62,9 +82,12 @@ responsiveness is continuous in evidence (audit #29 — no birthday cliffs by co
   implemented as the load-time calibration renorm.
 
 ## §4 — DECISION (c): THE REID EXTENSION — SAME MAP, EVERY VALUATION SITE, PER-YEAR EVIDENCE
-The map wraps the above-replacement production→SCAR conversion at the raw_ev/posval site family
-(the Leg-A `iso_eff` site precedent — the directive enumerates the sites exactly as Leg A's did).
-Current-year and projected-year legs each carry the E of the year being valued. The ≤22 slope rises
+⟪v1.1 SUPERSEDES⟫ The map applies ONCE PER PLAYER at the production-value hook (pr = price6,
+pre-pole-recovery), w = s·E with the player's CURRENT evidence — the projected years live inside
+pr already; no per-leg split at this level (the seg-2 six-site posval wiring is REPLACED —
+delete-don't-disable, obituary carried). CAPTAIN ⟪v1.1⟫: preserved additively at THIS level —
+δ = pr(capt on) − pr(capt off) computed via the existing RL_CAPT-off evaluation path, the blend
+runs on the capt-free pr, δ added back unchanged; the δ byte-identity self-test carries over. The ≤22 slope rises
 because a young demonstrated over-performer carries real w > 0 the moment evidence exists — no
 special young mechanism, no second map. Kill-switch **RL_UNCOMP**: OFF ⇒ the Leg-A head byte-exact
 (the A/B identity the ladder asserts).
