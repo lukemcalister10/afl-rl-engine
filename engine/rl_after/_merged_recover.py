@@ -669,7 +669,7 @@ def _w4_ctx(p,Y):
     """Per-player form context for the recalibrated projection; None => byte-exact original path."""
     if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
-    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
+    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n,'E':_ev_qual(p,Y)}   # LEG B: per-player evidence weight E for the un-compress map (sites 1-3; flat into projected years — no future store seasons)
     # Part-2 return haircut (RL_LTI_RETURN): apply the derived, net-of-aging return-season dip at the return
     # season k = ret_year - BASE_REF (decays to zero the next season = single k). Section-A out-names only;
     # young/speculative already ship h=0 (set on the record). SEPARABLE from Part 1 (own column lti_return_hc).
@@ -738,10 +738,10 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # RL_AVAIL present haircut L_p (was _b2hc)
         if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
-        base=lev+MA.capt_prem(lev)
+        _E=ctx.get('E',0.0)                                          # LEG B sites 1/2 (wired W4 proven/ctx-on population)
         Wk=_w4_W(k,ctx)
-        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
-        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
+        if k==0: prod+=Wk*MA.posval_uncomp(lev,g0,_E)*21/((1+d)**k)
+        else: prod+=Wk*sum(w*MA.posval_uncomp(lev,gg,_E) for gg,w in fut)*21/((1+d)**k)
     if g in('KEY_FWD','KEY_DEF'): prod*=1.05
     runway=MA.clamp((25-a)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
@@ -763,7 +763,7 @@ def _prod_floor_w4(p,lens='bal'):
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_avail_hc'])  # RL_AVAIL: register-driven present haircut (was _b2hc; R-B2HC retired)
-        prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
+        prod+=_w4_W(k,ctx)*wt*MA.posval_uncomp(lev,g,ctx.get('E',0.0))*21/((1+d)**k); k+=1   # LEG B site 3 (proven demonstrated-production floor)
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================
@@ -840,9 +840,10 @@ def _ycred_mult(p,Y):
     return 1.0+_YC_W*R*phi
 _raw_ev_w4_0=raw_ev
 def raw_ev(p,Y=2026):                                        # W4: context-setting wrapper (real players only; synths delegate clean) + L1c credit
-    prev=_W4CTX['on']; _W4CTX['on']=_w4_ctx(p,Y)
+    prev=_W4CTX['on']; ctx=_w4_ctx(p,Y); _W4CTX['on']=ctx
+    prevE=MA._UNCOMP_E['cur']; MA._UNCOMP_E['cur']=(ctx['E'] if ctx is not None else 0.0)   # LEG B: thread E to the DELEGATED rl_model sites 4-6 (0 for synths/ctx-None -> byte-exact)
     try: return _raw_ev_w4_0(p,Y)*_ycred_mult(p,Y)           # L1c: ×1.0 exactly when RL_YOUNG=0 (byte-exact off-path)
-    finally: _W4CTX['on']=prev
+    finally: _W4CTX['on']=prev; MA._UNCOMP_E['cur']=prevE
 _B6PIN={'L':None}                                            # W4 KPF: band pin — collapse the forward band to one level (production-implied EFV probe)
 _b6_pre_w4=b6
 def b6(p,Y=2026):
@@ -1277,6 +1278,46 @@ if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
         _PVCFIT_META['error']=repr(_e)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
+
+# ==== LEG B — UN-COMPRESS REFERENCE (L_ref/V_ref) + PRODUCTION-SIDE CONSERVATION (C[pos]); built LOAD-TIME ==
+# PLAN §3/§5. Built AFTER ev() is defined + all player attributes finalized, and BEFORE the RL_AVAIL
+# attribution block so that block's ev()-diffs see the SAME (mapped) surface the board ships. INERT unless
+# RL_UNCOMP is on AND s is set (UNCOMP_S): the guard then leaves L_ref/V_ref/C empty -> posval_uncomp
+# returns base -> board 8d90c9ac BYTE-EXACT (poles above are already warmed unmapped: E=0 + empty reference).
+def _uncomp_scope(_p):                                        # valuation scope = active board population
+    return _isreal(_p) and not delisted(_p) and not _p.get('_retired')
+if MA._UNCOMP and MA.UNCOMP_S is not None:
+    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()              # module load leaves MA's clock at a historical V0-build year; pin to the present so level_now/ev = the 2026 surface (mirrors rl_export.py:42)
+    # (1) L_ref[pos] = MEDIAN level_now over the DEMONSTRATED-PROVEN population per position (PLAN §3 (b)):
+    #     { p : gfut(p)==pos, _nqual(p,2026) >= PROVEN_N (=4), p in scope }.  V_ref[pos] = posval(L_ref-REPL).
+    _lref_pool={}
+    for _p in MA.data:
+        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
+        _g=MA.gfut(_p)
+        if _g not in MA.REPL: continue
+        _ln=MA.level_now(_p)
+        if _ln is None: continue
+        _lref_pool.setdefault(_g,[]).append(float(_ln))
+    for _g,_vals in _lref_pool.items():
+        _Lr=float(np.median(_vals)); MA._UNCOMP_LREF[_g]=_Lr; MA._UNCOMP_VREF[_g]=MA.posval(_Lr-MA.REPL[_g])
+    # (2) C[pos]: PRODUCTION-SIDE conservation renorm (PLAN §5). ONE load-time calibration pass over the
+    #     valuation scope accumulates Sum(v0), Sum(v0p) per position over the MAPPED legs (posval_uncomp with
+    #     C==1); C[pos]=Sum(v0)/Sum(v0p) makes the position's TOTAL production value unchanged by the map
+    #     (an explicit per-position budget transfer across year-depths; pedigree/iso premiums + captain delta
+    #     are NOMINAL, never renormed). Firing the same ev() calls the board fires makes it conserving.
+    MA._UNCOMP_CAL['on']=True; MA._UNCOMP_CAL['v0'].clear(); MA._UNCOMP_CAL['v0p'].clear()
+    with contextlib.redirect_stdout(io.StringIO()):
+        for _p in MA.data:
+            if not _uncomp_scope(_p): continue
+            try: ev(_p,2026)
+            except Exception: pass
+    MA._UNCOMP_CAL['on']=False
+    for _g,_s0 in MA._UNCOMP_CAL['v0'].items():
+        _s0p=MA._UNCOMP_CAL['v0p'].get(_g,0.0); MA._UNCOMP_C[_g]=(_s0/_s0p) if _s0p>0.0 else 1.0
+    print("=== RL_UNCOMP LEG B: map ON (s=%.4f Delta=%.1f) | reference+conservation over %d proven / scope-pop ==="
+          %(MA.UNCOMP_S,MA.UNCOMP_DELTA,sum(len(v) for v in _lref_pool.values())))
+    for _g in sorted(MA._UNCOMP_LREF):
+        print("    %-8s L_ref=%7.2f V_ref=%8.2f C=%.5f (n_proven=%d)"%(_g,MA._UNCOMP_LREF[_g],MA._UNCOMP_VREF[_g],MA._UNCOMP_C.get(_g,1.0),len(_lref_pool.get(_g,[]))))
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
