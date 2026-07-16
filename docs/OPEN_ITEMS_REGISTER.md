@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v200 2026-07-16 · PEN: **item 209 (Fable-efficiency) PROMOTED to turn-one visibility (item 227): rides HANDOVER rev145's standing-conduct block + flagged for CORE fold next seam — a fire-before-first-compute rule cannot live only at register depth. Turn-15 positions_data blob = the true heavy dump (store was NEVER read whole — self-correction)** · prior: v199
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v201 2026-07-16 · PEN: **LTI RE-PIN TOOL PRESCREEN PASS (item 228): store READ-ONLY verified in code (only write target = the boot register pin, surgical + asserted); fence clean (the 3 'changed' docs are base-lag artifacts, byte-identical to main — build never touched docs). #102 → owner click (Tier 3). Base one behind main — clean ff on merge** · prior: v200
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4999,3 +4999,19 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     this session, only grepped per-player; the genuinely enormous inline dump was the committed
     `positions_data.js` 804-player blob at turn 15 (collapse regen). The loose claim is corrected
     here — the verify-before-asserting rule applied to the seat's own memory.
+
+228. **LTI RE-PIN TOOL — PRESCREEN PASS (2026-07-16). PR #102, branch
+    `claude/lti-register-repin-bmtt8i`, head `a4982ec` (fresh fetch; parent f623e47).** THIS SEAT'S
+    OWN CODE READ: **store SAFETY PROVEN** — `rl_model_data.json` opened READ-ONLY
+    (`build_store_by_key`, no write mode); the file's ONLY write target is `expected_boot.json`, a
+    surgical single-field `register`-pin replace with a before/after assertion that no other field
+    moved + a tamper guard (on-disk boot may differ from HEAD only in the register pin). Idempotent
+    (PIN UNCHANGED path, no write). **FENCE CLEAN:** the diff vs main shows 3 docs 'changed' ONLY
+    because the branch based at f623e47 (one commit behind my v199/v200 doc pushes) — verified each
+    is byte-identical to main's copy (base-lag artifact, the build never touched docs); real changes
+    = tools/owner/lti_repin.py + test_lti_repin.py + docs/HOW_TO_LTI.md (the directive's sanctioned
+    doc). Tests 7/7 per the committed file (report-only at this seat; the verdicts + my code read
+    concur). Honest context report (55%) + no-background-tasks — the new conduct lines already
+    observed. **NEXT: owner merges #102 at will (Tier 3, off the ladder); base one behind main ⇒
+    clean fast-forward, no sibling risk here (PR merges, not a branch-continue).** The re-pin tool
+    is a GO-LIVE prerequisite (item 218) now BUILT ahead of its chapter — bankable.
