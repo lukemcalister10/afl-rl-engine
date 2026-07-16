@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v183 2026-07-16 · PEN: **UI v1.3 DIRECTIVE ISSUED (item 210; the item-196 approved scope; Tier 3 parallel to Leg B; 2-3 h; fires on the owner's word). Leg B IN FLIGHT toward its PLAN checkpoint** · prior: v182
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v184 2026-07-16 · PEN: **LEG-B PLAN PRESCREEN: PASS WITH TWO AMENDMENTS (item 211) — (1) the un-enumerated posval site rl_model.py:559 (_nv_bwd backward ruler) ruled NOT-WIRED; (2) flag (d) ruled CAPTAIN-PRESERVED-ADDITIVELY (the blend must not erode L-CAPTAIN). Owner pastes the amendment + PROCEED** · prior: v183
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4692,3 +4692,32 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     at-or-after 21d94a4, docs/-only diff. Merge = owner viewing + his click (the #99 pattern; the
     build CONTINUES ITS OWN PR's branch for any follow-up — the item-202 sibling-branch miss is named
     in the directive's house patterns by reference).
+
+211. **LEG-B PLAN CHECKPOINT — PRESCREEN PASS WITH TWO AMENDMENTS (2026-07-16).** Branch
+    `claude/legb-output-price-decompress-3vo8y1`, PLAN commit `12cb206` (fresh fetch; ONE commit,
+    parent == 8b8ab7d STRICT; only session_2026-07-16/uncompress/PLAN.md added). INDEPENDENTLY
+    VERIFIED BY THIS SEAT: pre-view hashes == this seat's own turn-5 records EXACTLY (memo
+    3624ce55... · acceptance c3d5008...) · the six enumerated sites exist at the base with the
+    exact wrapped expressions claimed (lines 743/744/766 + 356/357/369 read from code) · the
+    hygiene-rider line shift (375-389) verified real · the _ov_final.py:37 diagnostic verified
+    NON-BOARD (no importer anywhere — my own grep). **AMENDMENT 1 (a site the table was silent on —
+    the checkpoint's named failure mode):** exhaustive posval grep finds **rl_model.py:559 —
+    `_nv_bwd`**, the v3.4 BACKWARD per-pick ruler (posval-VOR on best2) feeding `_natcv34` → PICKEQ
+    → pathway `_eff` (board-reaching). RULED **NOT-WIRED**, added to the site table with the reason:
+    it is a backward MEASUREMENT ruler on realised careers, not a forward output→price valuation leg
+    (outside memo §4's family); wrapping it would move pathway pick-equivalents through an unruled
+    channel and pre-empt Leg D's derivation; w=s·E has no coherent year on a career-realised
+    measure. **QUEUED FOR THE LEG-D MEMO:** whether the backward ruler carries the cured map is the
+    one-disease-third-costume question (item 204) — decided there, with the life-path measurement,
+    never silently here. **AMENDMENT 2 (flag (d) — captain ordering):** the plan's as-code reading
+    (capt_prem INSIDE the wrapped posval at sites 3/6, ρ pre-captain) would let the blend drag a
+    high-w captain's price toward a CAPTAIN-FREE target — eroding the ruled L-CAPTAIN premium by
+    ~(1−w) in log space. RULED: **captain-EXCLUDED from the blend, premium PRESERVED ADDITIVELY** —
+    at sites 3/6 compute v0=posval(lev−REPL), blend v0′=v0^(1−w)·t^w, then add the UNCHANGED captain
+    increment δ=posval(lev+capt−REPL)−posval(lev−REPL): v′=v0′+δ. L-CAPTAIN untouched by
+    construction; E/B still measured captain-IN (board-level); separability still proven by the
+    kill-switch matrix. Sites 1/2/4/5 are captain-free — unchanged. **FLAGS (a)(b)(c)(e)(f) RATIFIED
+    AS READ:** per-leg lev · V_ref = MEDIAN level_now over gfut==pos ∧ _nqual≥4 · Δ=6.0 · renorm in
+    the _SCALE production-scale family · dx not wired. PROCESS: the build commits ONE amended PLAN
+    commit carrying both amendments verbatim, then implementation begins on the owner's PROCEED (one
+    paste covers both); the RETURN prescreen diffs the amended plan against this item's text.
