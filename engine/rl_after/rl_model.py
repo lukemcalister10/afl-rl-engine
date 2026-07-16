@@ -328,6 +328,7 @@ def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position v
 # strength dial unset) => the map is INERT => board 8d90c9ac BYTE-EXACT (config_sha256 UNMOVED).
 _UNCOMP=os.environ.get('RL_UNCOMP','1')!='0'
 UNCOMP_DELTA=6.0                       # onset-ramp width (avg-points above replacement); memo §2.2 (~2*S_SH clears the softplus knee)
+UNCOMP_DECAY=0.5                       # ρ games×recency decay d per year back; memo §2.1 ⟪v1.2⟫ WEIGHT-DON'T-GATE (register 240). u_s=games_s·d^(Ynow−year_s); d=0.5 puts ~effective mass on the recent two seasons. DECLARED constant (owner-tunable at seg-4), sits NEXT TO Δ=6.0. NO floor/exclusion/phase-test on the ρ axis (acceptance-enforced).
 UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weight rate E=1-exp(-Eq/tau) (memo §2 "same family Leg A's fade rides")
 UNCOMP_S_DEFAULT=None                  # THE strength dial s -- hard-coded to the s-grid-selected literal after selection; None => map INERT
 _uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override: RL_UNCOMP_S=<s> per grid point

@@ -276,31 +276,38 @@ def par_pole(pos,pk,T):
 # ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
 # v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
 # added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
-# rho_out(p,pos)/RHO_DEN[pos], rho_out = recent-2 QUALIFYING-season avg above REPL[pos]. The qualifying test
-# is a PLUGGABLE PREDICATE `_qualifying(p, season)` (memo v1.2 — career-phase-conditioned: keep ascending
-# early-career seasons, exclude injury interruptions), STUBBED to raise until v1.2 lands (seg-3 partial-
-# proceed, register 232 — no floor, no smooth weight, no conditioned test yet). RL_UNCOMP is INERT by default
-# (UNCOMP_S_DEFAULT=None): the map + the s-gated load-time reference build both short-circuit BEFORE rho_out,
-# so nothing evaluates the stub. Onset ramp Delta=6.0 (memo §2.2) in the realised-output measure's units.
+# rho_out(p,pos)/RHO_DEN[pos]. ⟪v1.2 — WEIGHT, DON'T GATE (memo §2.1, register 240)⟫ rho_out = ρ_num =
+# GAMES-AND-RECENCY-WEIGHTED realised above-replacement output over EVERY season with games>0:
+# u_s=games_s·d^(Ynow−year_s), d=UNCOMP_DECAY(=0.5); ρ_num=Σ u_s·(avg_s−REPL[pos])/Σ u_s. NO season exclusion,
+# NO games floor, NO career-phase test (the v1.1 `_qualifying` predicate is DELETED — a never-shipped stub;
+# the hard floor manufactured 144 phantom rookies and the conditioned rule wiped real games, both MEASURED,
+# register 239). RHO_DEN[pos]=MEDIAN of this same ρ_num over the demonstrated-proven pop (numerator and
+# denominator share ONE law). RL_UNCOMP is INERT by default (UNCOMP_S_DEFAULT=None): the map + the s-gated
+# load-time reference build both short-circuit BEFORE rho_out. Onset ramp Delta=6.0 (memo §2.2) in the
+# realised-output measure's units; decay d=0.5 DECLARED next to Δ=6.0 in rl_model.py.
 _UC_VREFB={}          # V_ref_b[pos] = MEDIAN captain-free price6 (pr0) over the demonstrated-proven pop (load-time, s-gated)
 _UC_RHODEN={}         # RHO_DEN[pos] = MEDIAN rho_out over the demonstrated-proven pop (load-time, s-gated)
 _UC_C={}              # C[pos] = per-position production-side conservation renorm (load-time, s-gated)
 _UC_CAL={'on':False,'pr0':{},'v0p':{}}   # load-time conservation accumulator (Sum pr0, Sum v0p per pos; C==1 during accumulation)
-def _qualifying(p, season):
-    """PLUGGABLE PREDICATE — the career-phase-conditioned qualifying rule (memo v1.2). ONE call site (rho_out).
-    STUB: the qualifying LAW is deliberately not implemented (seg-3 partial-proceed, register 232). RL_UNCOMP
-    stays inert so this is never reached in any shipped/measured build; it raises loudly if a strength dial is
-    set before MEMO v1.2 supplies the law."""
-    raise NotImplementedError("LEG B v1.1 qualifying predicate awaits MEMO v1.2 (register 232); RL_UNCOMP must stay inert until then")
 def rho_out(p, pos):
-    """Realised above-replacement output numerator (memo v1.1 §2.1): recent-2 QUALIFYING-season avg points
-    above REPL[pos]; season selection delegated to _qualifying. Zero qualifying seasons => None (caller w=0)."""
-    _rows=sorted([(x['year'],x['avg']) for x in p.get('scoring') or [] if _qualifying(p,x) and x.get('avg',0)>0])
-    if not _rows: return None
-    return sum(v for _,v in _rows[-2:])/len(_rows[-2:]) - MA.REPL[pos]
+    """ρ_num — GAMES-AND-RECENCY-WEIGHTED realised above-replacement output (memo §2.1 ⟪v1.2⟫, WEIGHT-DON'T-GATE).
+    Over EVERY season with games>0: u_s = games_s · d^(Ynow−year_s) with d=MA.UNCOMP_DECAY(=0.5), Ynow=2026;
+    ρ_num = Σ u_s·(avg_s − REPL[pos]) / Σ u_s. NO exclusion, NO games floor, NO career-phase test (register 240;
+    the v1.1 `_qualifying` predicate is DELETED — a never-shipped stub). An injury-shortened year contributes
+    exactly its games' worth (a 3-game season is 1/7th a 21-game season at equal recency — Docherty handled by
+    WEIGHT, not exclusion); a developing kid's early seasons count proportionally (no phantom rookies by
+    construction). Zero played seasons in the store => None (caller sets w=0; the map is identity there)."""
+    _num=0.0; _den=0.0
+    for x in p.get('scoring') or []:
+        _gm=x.get('games',0) or 0
+        if _gm<=0: continue                                       # games>0 only; NO other exclusion (the LAW)
+        _u=_gm*(MA.UNCOMP_DECAY**(2026-x['year']))                # season weight = games × recency (decay d per year back)
+        _num+=_u*(x['avg']-MA.REPL[pos]); _den+=_u
+    if _den<=0.0: return None                                     # no played season => zero-evidence identity (w=0)
+    return _num/_den                                              # weighted mean of (avg − REPL[pos]); RHO_DEN = its proven MEDIAN
 def _uncomp_prod(pr,p,Y,bb):
     # INERT guard (RL_UNCOMP off / s unset / non-real / refs not built) => pr. Short-circuits BEFORE rho_out,
-    # so the _qualifying stub is UNREACHABLE while RL_UNCOMP is inert (the shipped/measured state this segment).
+    # so with RL_UNCOMP inert the ρ axis is never evaluated => board 8d90c9ac BYTE-EXACT (the A/B identity).
     if not MA._UNCOMP or MA.UNCOMP_S is None or pr<=0.0 or not _isreal(p): return pr
     pos=MA.gfut(p); Vb=_UC_VREFB.get(pos); Rden=_UC_RHODEN.get(pos)
     if not Vb or not Rden or Vb<=0.0 or Rden<=0.0: return pr        # references not built (inert never reaches here)
@@ -1327,9 +1334,9 @@ def find(nm):
 # ==== LEG B v1.1 — UN-COMPRESS REFERENCE (V_ref_b + RHO_DEN) + PRODUCTION-SIDE CONSERVATION (C[pos]); LOAD-TIME
 # memo v1.1 §2.1/§3. Built AFTER ev() is defined + player attrs finalized, BEFORE the RL_AVAIL attribution
 # block so its ev()-diffs see the mapped surface. INERT unless RL_UNCOMP on AND s set (UNCOMP_S): the guard
-# leaves V_ref_b/RHO_DEN/C empty => _uncomp_prod returns pr => board 8d90c9ac BYTE-EXACT. NOTE: with s set this
-# block RAISES (RHO_DEN calls rho_out -> _qualifying, the v1.2 stub) — BY DESIGN (seg-3 partial-proceed,
-# register 232): the qualifying LAW must arrive (MEMO v1.2) before any strength dial is set.
+# leaves V_ref_b/RHO_DEN/C empty => _uncomp_prod returns pr => board 8d90c9ac BYTE-EXACT. ⟪v1.2⟫ with s set
+# this block now BUILDS the references: RHO_DEN[pos] = MEDIAN rho_out (the games×recency ρ_num, memo §2.1) over
+# the demonstrated-proven pop — numerator and denominator share ONE law (register 240). The v1.1 stub is gone.
 def _uncomp_scope(_p):                                        # valuation scope = active board population
     return _isreal(_p) and not delisted(_p) and not _p.get('_retired')
 if MA._UNCOMP and MA.UNCOMP_S is not None:
@@ -1347,7 +1354,7 @@ if MA._UNCOMP and MA.UNCOMP_S is not None:
                 try: _pr0=price6(_p,b6(_p,2026),2026)
                 except Exception: _pr0=None
         finally: MA._CAPT_OFF['on']=_prev
-        _ro=rho_out(_p,_g)                                    # calls _qualifying (v1.2 stub) — reached ONLY when s is set
+        _ro=rho_out(_p,_g)                                    # ρ_num (games×recency, memo §2.1 ⟪v1.2⟫) — reached ONLY when s is set
         if _pr0 and _pr0>0.0: _vb_pool.setdefault(_g,[]).append(float(_pr0))
         if _ro and _ro>0.0: _rd_pool.setdefault(_g,[]).append(float(_ro))
     for _g,_vals in _vb_pool.items(): _UC_VREFB[_g]=float(np.median(_vals))

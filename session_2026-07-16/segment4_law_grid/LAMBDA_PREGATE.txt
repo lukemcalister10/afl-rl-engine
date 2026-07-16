@@ -1,0 +1,7 @@
+lambda[ floor10 (v1.1, games>=10)                  vs o ] = 0.8957  CI=[0.7771,1.0085]  n=112  REPRO-OK
+lambda[ floor6  (v1.1, games>=6)                   vs o ] = 0.9942  CI=[0.9837,1.0001]  n=114  REPRO-OK
+lambda[ v12_gxr (THE LAW: games×recency d=0.50)    vs o ] = 0.8086  CI=[0.6800,0.9678]  n=112
+
+CROSS-CHECK  v12 harness rho_v12 == engine rho_out : max|Δ|=0.000e+00 over n=112 sampled players  IDENTICAL
+
+λ PRE-GATE (memo §2.1 step 0): λ_v12 = 0.8086  vs gate 0.95  ->  HALT
