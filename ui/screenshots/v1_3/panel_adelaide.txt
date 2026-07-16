@@ -11,10 +11,10 @@ BEST-23	31,926	60.3%	▼ −6,873 0.82×
 NON-BEST-23	4,801	9.1%	▼ −1,024 0.82×
 POSITIONAL VALUE (owner counting rule)
 	ABS	% PLAYER	VS AVG
-KEY DEF	1,865	5.1%	▲ +240 1.15×
-GEN DEF	11,088	30.2%	▼ −803 0.93×
+KEY DEF	3,581	9.7%	▲ +407 1.13×
+GEN DEF	9,299	25.3%	▼ −1,028 0.90×
 MID	2,558	7.0%	▼ −10,038 0.20×
-GEN FWD	9,664	26.3%	▼ −2,302 0.81×
-KEY FWD	4,216	11.5%	▲ +1,443 1.52×
-RUCK	7,337	20.0%	▲ +3,563 1.94×
-League average = mean over the 16 ranked clubs; the Free-Agents pool is excluded from every denominator and is never ranked (item 191). Positional value uses the owner rule — a player counts 1 to his position, a DPP player 0.5 to each, except a DPP midfielder (the non-mid counts 1, the mid 0); players the CSV lists at 3-4 positions split equally across their non-mid positions (value-conserving). Best-23 is the existing exact greedy.
+GEN FWD	5,378	14.6%	▼ −4,057 0.57×
+KEY FWD	8,362	22.8%	▲ +3,155 1.61×
+RUCK	7,551	20.6%	▲ +3,664 1.94×
+League average = mean over the 16 ranked clubs; the Free-Agents pool is excluded from every denominator and is never ranked (item 191). Positional value uses the owner rule, collapse-first — a Key listing absorbs its General counterpart (Key-Fwd absorbs Gen-Fwd, Key-Def absorbs Gen-Def; the General token is slot eligibility, not a second position). After that collapse a player counts 1 to his position, a DPP player 0.5 to each, except a DPP midfielder (the non-mid counts 1, the mid 0). Best-23 is the existing exact greedy.

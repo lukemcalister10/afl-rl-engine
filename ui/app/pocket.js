@@ -129,9 +129,10 @@ MD.pocket = (function () {
     const foot = '<div class="pk-foot">' +
       "League average = mean over the " + agg.nClubs + " ranked clubs; the Free-Agents pool is " +
       "excluded from every denominator and is never ranked (item 191). Positional value uses the " +
-      "owner rule — a player counts 1 to his position, a DPP player 0.5 to each, except a DPP " +
-      "midfielder (the non-mid counts 1, the mid 0); players the CSV lists at 3-4 positions split " +
-      "equally across their non-mid positions (value-conserving). Best-23 is the existing exact greedy." +
+      "owner rule, collapse-first — a Key listing absorbs its General counterpart (Key-Fwd absorbs " +
+      "Gen-Fwd, Key-Def absorbs Gen-Def; the General token is slot eligibility, not a second position). " +
+      "After that collapse a player counts 1 to his position, a DPP player 0.5 to each, except a DPP " +
+      "midfielder (the non-mid counts 1, the mid 0). Best-23 is the existing exact greedy." +
       "</div>";
     return head + block1 + block2 + foot;
   }
