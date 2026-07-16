@@ -1,0 +1,6 @@
+PAIR2 reid=3343 bont=3888 pct=-14.02
+PAIR3 sanders=3579 bont=3888 pct=-7.95
+BONT scar 3625->3888 (+263) rank 35->26 (-9)
+EB english=3655 briggs=2070 off=1.766 on=1.923
+PTJSON {"s": "0.10", "movers": 206, "sigmaD": 1231, "eb_on": 1.923157344485102, "bont": {"dscar": 263, "drank": -9}, "sinc_fail": 10, "pool": {"MID": 1155, "GEN_FWD": -404, "KEY_FWD": -45, "GEN_DEF": 148, "KEY_DEF": 105, "RUC": 272}}
+wrote SINCERITY_all804_s0.10.csv (804 rows) + POINT_s0.10.md

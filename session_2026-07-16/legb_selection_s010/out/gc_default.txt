@@ -1,0 +1,4 @@
+G-COHORT[default] matrix meta: engine a0635745==a0635745 store b1fd0bce==b1fd0bce config c2d233aec104 -> HASH-OK
+G-COHORT[default] July-8 (frozen, 17 classes 2004-2020 ND+RD): y1=70959.8 y2=81590.0 y3=84906.9 y4=89884.1 y5=90313.3 y6=87283.7 y7=79340.0 ; den=min(y1,y2)=y1=70959.8
+G-COHORT[default] RATIOS  y4=1.2667  y5=1.2727  y6=1.2300  | hard<=1.30 -> PASS x3
+GCJSON {"label": "default", "y4": 1.2666894356955924, "y5": 1.2727384261350874, "y6": 1.2300440099907404, "sum": {"1": 70959.82352941176, "2": 81590.0, "3": 84906.94117647059, "4": 89884.05882352941, "5": 90313.29411764706, "6": 87283.70588235294, "7": 79340.0}, "den": 70959.82352941176, "breaches": [], "engine": "a0635745", "store": "b1fd0bce", "n_classes": 17}

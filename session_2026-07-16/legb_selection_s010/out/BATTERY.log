@@ -1,0 +1,29 @@
+== store b1fd0bce (expect b1fd0bce) | engine a0635745 | s-default UNCOMP_S_DEFAULT=0.10 ==
+[17:23:22] OFF baseline (ledger + beta + gcohort) — RL_UNCOMP=0 => board 8d90c9ac
+[17:25:55] OFF beta: s=OFF   beta=0.6219  CI=[0.4836,0.7899] width=0.3063  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False | G-COHORT[OFF] RATIOS  y4=1.3017  y5=1.3160  y6=1.2664  | hard<=1.30 -> BREACH at y[4, 5] (finding)
+[17:25:55] DEFAULT PATH (no override; s=0.10 wired) — ledger + beta + gcohort
+[17:28:57] DEFAULT beta: s=OFF   beta=0.6299  CI=[0.4914,0.7960] width=0.3046  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False | G-COHORT[default] RATIOS  y4=1.2667  y5=1.2727  y6=1.2300  | hard<=1.30 -> PASS x3
+[17:28:57] ANALYZE — sincerity ledger + pools + census + E/B + Bontempelli (OFF -> default)
+[17:28:57] analyze: PTJSON {"s": "0.10", "movers": 206, "sigmaD": 1231, "eb_on": 1.923157344485102, "bont": {"dscar": 263, "drank": -9}, "sinc_fail": 10, "pool": {"MID": 1155, "GEN_FWD": -404, "KEY_FWD": -45, "GEN_DEF": 148, "KEY_DEF": 105, "RUC": 272}}
+[17:28:57] SELF-TEST SUITE — build board+book at default, one_source_selftest (R105.5/R105.4 + SSI)
+  board md5: f2f077b2 (expect f2f077b2)
+  book built: 1144775 bytes
+  one_source_selftest EXIT=1 -> RED <<<
+  FAIL GUARD 5: boot-store FAILED — - checkout rl_model 94b7016d != pinned rl_model f79fc740 (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model) - one_source_selftest about to read ENGINE _merged_recover.py at /home/claude/rl_workspace/rl_after/_merged_recover.py md5 a0635745  !=  expected a83c9f6d (pinned; repo checkout ) STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=== (7) LEG B — L-RECENCY invariant (R105.5) + ρ FORBIDDEN-LIST (R105.4); halt-not-warn ===
+  PASS L-RECENCY: decay d in (0,1] (d=0.2500) — a non-inflating recency kernel (R105.6 owner-set 0.25)
+  PASS L-RECENCY: engine rho_out per-game weight NON-INCREASING in years-back (recovered kernel; R105.5)
+  PASS R105.4: rho_out present in the engine source (the wired ρ law)
+  PASS R105.4: rho_out compares games only to 0 (games>0 filter) — NO games floor (offenders=[])
+  PASS R105.4: rho_out executable code carries no exclusion/floor/phase/classify/qualify token (offenders=[])
+SELF-TEST FAILED: 1 check(s)
+  - GUARD 5: boot-store FAILED — - checkout rl_model 94b7016d != pinned rl_model f79fc740 (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model) - one_source_selftest about to read ENGINE _merged_recover.py at /home/claude/rl_workspace/rl_after/_merged_recover.py md5 a0635745  !=  expected a83c9f6d (pinned; repo checkout ) STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+[17:32:24] GUARD 4 correction-canary (full rebuild)
+  guard_correction_canary EXIT=0 -> GREEN
+  PASS edited sentinel board == round(book/1.0524) — numéraire (5959 vs round(6271/1.0524)=5959)
+
+GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
+[17:37:41] S1 STAMPS on the new default board
+  rl_app_data.json     md5=f2f077b2  mode=0o444  srcmd5={"derived": "rl_app_data.json", "own_md5": "f2f077b2869a7dea3cad428764e646f5", "source": "rl_model_data.json", "source_md5": "b1fd0bced30baa838325814c39d43233", "tier": 1}
+  s4_matrix.json       md5=ce2769ae  mode=0o444  srcmd5={"derived": "s4_matrix.json", "own_md5": "ce2769aea5754ac39c7f472f8b41321e", "source": "rl_model_data.json", "source_md5": "b1fd0bced30baa838325814c39d43233", "tier": 1}
+[17:37:41] ALL DONE
