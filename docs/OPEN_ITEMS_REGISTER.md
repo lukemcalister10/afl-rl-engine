@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v237 2026-07-16 · PEN: **ITEM 264: two-point return — numbers PROVEN SOUND but BASE VIOLATED (branched from main, not fef2b64) ⇒ viewing-grade; the five-column sheet DELIVERED. NEW FINDING: the A-PAIRS joint window (~s 0.03–0.06) CONFLICTS with the cohort ideal zone (0.15–0.25). Owner word open: disposition/selection** · prior: v236
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v238 2026-07-16 · PEN: **ITEM 265: OWNER RULES — "Let's lock in s=0.10 and move forward." The bar/grid machine-selection is RETIRED (strength now owner-set). SELECTION directive ISSUED (wire 0.10 + clean re-measure, base `fef2b64` STRICT). Open owner word: pair-2 handling before the ladder** · prior: v237
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5677,3 +5677,25 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ruled band CONFLICT under this map; resolution is HIS at selection (re-band/waive a pair ·
     expected-fail-by-law per the A9 precedent · or a tiny-s selection forgoing the ideal zone).
     Nothing resolved by this seat. Owner word open: the disposition/selection. Leg C HOLDS.
+
+265. **THE OWNER SELECTS: s = 0.10 (2026-07-16, verbatim "Let's lock in s=0.10 and move
+    forward.").** THE LEG-B DISPOSITION IS PARTIAL AT AN OWNER-SET STRENGTH. Supersessions this
+    ruling effects: memo v1.3's machine-selection construction (β ≥ 0.80 bar + the {0.55–0.70}
+    grid) is RETIRED — like the fade d=0.25 and the band, the strength is now an OWNER number;
+    ZERO seat-authored numbers remain anywhere in Leg B. The compression ambition formally
+    DEFERS to a future mechanism (item 262's mapped chapter). At s=0.10 the measured (viewing-
+    grade) picture: y 1.2667/1.2727/1.2300 — band PASS, heals the Leg-A baseline breach ·
+    β 0.630 · E/B 1.923 (raw 3679/1913, denominator-collapse flag carried) · Bontempelli +263,
+    rank 35→26 · pair_3 PASS (−7.9%) · pair_2 FAIL (−14.0%, open word below). **DIRECTIVE
+    ISSUED: docs/DIRECTIVE_LEGB_selection_s010_2026-07-16.md** — the chapter's ONE writer: wire
+    UNCOMP_S_DEFAULT=0.10 (owner provenance in the comment) + mini-checkpoint + the CLEAN full
+    battery at the wired default on the properly-based line (item-264 cure: ancestry printed in
+    the return), candidate PR, no merge, no bake. **OPEN OWNER WORD — PAIR-2 HANDLING (needed
+    any time before the ladder, does NOT block this build):** at s=0.10 Reid-vs-Bont parity
+    (±10%) measures −14.0%. Options: (a) EXPECTED-FAIL-BY-LAW at v2.11 (A9 Ginnivan/Ward
+    precedent — the pair stays his law, the auditor scores it, never flags it; revisit on
+    form/reads) — supervisor-recommended; (b) re-band pair 2 (his new number); (c) waive pair 2.
+    What would change the recommendation: if his actual read of Reid has moved, (b)/(c) is the
+    honest instrument. Sequencing: selection build → prescreen → **Leg C fires on the new
+    Leg-B head** → D → E → ladder → ONE bake → v2.11. Leg C's <LEG-B-HEAD> placeholder fills
+    from the prescreened selection head.
