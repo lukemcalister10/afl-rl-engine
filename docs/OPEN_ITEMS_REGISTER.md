@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v219 2026-07-16 · PEN: **THE RULING RESTRUCTURED ON THE OWNER'S PROBE (item 246): the fade speed was NEVER his word — his ruling said 'more valuable', not HOW MUCH; d=0.5 was seat-filled. Q1 = confirm A (his law · gate retired · owner picks strength from 4 boards). Q2 = HIS fade: last-year game worth half (→~0.75) / quarter / ~15% (→~0.83; the last two noise-indistinguishable). Moore clarified: identity-not-verdict — the measure updates every round** · prior: v218
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v220 2026-07-16 · PEN: **THE KNOT UNTANGLED (item 247): the 0.83 was never 'the gate/machine' — it is the OWNER'S LAW AT A FAST FADE; the 0.85 bar sits above every legal jumper's ceiling (that's why it retires/moves — impossible, not inferior); the MACHINE PICKER survives with an owner-set reachable bar. REC: quarter fade + machine at owner-set β≥0.80 + his viewing unchanged. Awaiting his wording** · prior: v219
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5318,3 +5318,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     treatment is NOT a verdict — the games×recency measure updates each ingested round, so a
     returning veteran re-enters the uplift the moment his form reads positive. Memo v1.3 +
     acceptance v1.20 + the segment-4 continuation fire on the two answers.
+
+247. **THE 0.75-vs-0.83 KNOT, UNTANGLED (2026-07-16; the owner pressed twice — correctly).** The
+    confusion was this seat's conflation, now separated on the record: (1) THE BAR (β≥0.85) selects
+    nothing — it is a pass line, and it sits ABOVE the measured ceiling (0.83) of EVERY legal
+    version of the owner's law; it retires or moves because it is IMPOSSIBLE, not because 0.75 was
+    preferred. (2) THE 0.83 comes from the FAST FADE (last-year game ≈ a quarter of this-year's) —
+    the owner's law verbatim, stronger setting. (3) THE MACHINE PICKER broke only because its
+    instruction cited the impossible bar; with a REACHABLE owner-set bar it works and SURVIVES.
+    **RESTRUCTURED REC (the seat's final form of it): QUARTER FADE (ceiling ~0.83; matches the
+    owner's evident intent) + THE MACHINE at an OWNER-SET bar β ≥ 0.80 (reachable; smallest-s-
+    clearing rule restored) + the owner's viewing rung unchanged (winning board · all-804 ledger ·
+    E/B ≥1.75 hard · overrule available at viewing).** Every number then measured or owner-set.
+    Awaiting the owner's wording; memo v1.3 + acceptance v1.20 + the segment-4 continuation fire on
+    it, then the bounded rotation.
