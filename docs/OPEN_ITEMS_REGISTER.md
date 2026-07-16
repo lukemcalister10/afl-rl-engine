@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v160 2026-07-16 · PEN: **THE OWNER'S THREE INPUT FILES FILED VERBATIM to docs/inputs/ + VALIDATED (item 180: 804/804 stable-ID coverage · 91 blend rows clean · 11 primary-future changes enumerated · pick workbook = ownership+bands+ladder+old-PVC, incorporation shape ruled: STRUCTURE kept, VALUES from the live PVC, the 0.9 discount an owner parameter) · Tier-3 dispositions LANDED (item 179: #95/#96/#98 merged, heads ancestors of main; CI 443 green) · the flex ATTRIBUTION deliverable + owner-edit requirement filed (item 181)** · prior: v159 items 175–178 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v161 2026-07-16 · PEN: **THE PVC+FLEX CHAPTER SPEC v1 FILED (item 182: five legs A-E on one candidate line — iso evidence-fade · map un-compression · flex machinery + attribution · PVC re-derivation + pick bands · lens rebuild incl. the owner-raised POSTURE LENSES on the D5 dial) · six open owner rulings presented (§6) · acceptance v1.17 skeleton defined (§5)** · prior: v160 items 179–181 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4265,3 +4265,26 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
         docs/inputs/ files are the authored sources; edits arrive by re-courier (or the later
         published-sheet fetch) through a deterministic VALIDATE-OR-HALT ingest. Same mechanism family
         as item 178(4).
+
+182. **THE PVC+FLEX CHAPTER SPEC v1 FILED (2026-07-16, seat-8/Fable pen) —
+    `docs/SPEC_PVC_FLEX_CHAPTER_v1_2026-07-16.md`.** The chapter's governing document, written against
+    the complete baseline (items 130–132 · 170 · 165 · 20b/flex spec v1.1 §1.2 · R103.3/5/6 · L-AXIS
+    v1.17 · the filed owner inputs at `d4e9642`). Shape: FIVE LEGS, sequential kill-switched writers,
+    one candidate line, one ladder, one bake → tag v2.11: **A** iso_corr evidence-fade on the v2.10 `w`
+    (the English leg, item 132's construction) → **B** the output→price un-compression (lift-led
+    Face-2; the Reid constraint in the SAME map; the Fable earmark) → **C** flex machinery (the 11
+    primary changes + 91 blends per the ruled stream semantics; THE ATTRIBUTION DELIVERABLE, item 181)
+    → **D** PVC re-derivation + pick-band wiring (numéraire pinned; G-Y0 continuity asserted; the
+    owner's old-PVC tab reference-only) → **E** the lens rebuild (R103.3 projection law) + **THE
+    POSTURE LENSES (owner-raised 2026-07-16, verbatim-in-substance):** contender / balanced /
+    rebuilder as PARAMETERIZED PROFILES over the existing D5 dial (`rl_model.py:317` LENS bal=0.14 —
+    the owner's "14"); balanced = canonical and the ONLY board that gates/bakes/seals; owner sketch
+    contender 0.14→0.18–0.20 + current/+1 weight up, rebuilder 0.14→~0.10 + current weight down;
+    presets ratified after a top-20 MOVERS REPORT. Acceptance v1.17 skeleton in §5 (G-COHORT 1.30
+    hard · value-flow conservation + no-young-net-strip + over-performer scan · β bands · the
+    English/Briggs owner band · census-v2 gauge non-growth · watch rows Gawn↑/Bont↑/Reid band).
+    **SIX OPEN OWNER RULINGS (§6):** compression acceptance band · posture presets now-vs-at-viewing ·
+    2027 pick discount flat-0.10 vs lens-driven · G-Y0 ratification timing · sealed reads (OQ-D,
+    10–15, before any viewing). Leg A can fire on the owner's word; nothing fires past Leg A without
+    §6.1. Hygiene carried into the legs: SGC_REPORT_DIR one-shot (Leg A fence) · the dead `_EVW`
+    branch deleted-with-obituary · snapshots by engine hash.
