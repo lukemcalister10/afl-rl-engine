@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v218 2026-07-16 · PEN: **THE KERNEL TABLE (item 245): conforming-kernel ceiling ~0.93 ⇒ β 0.85 UNREACHABLE without exclusion; gauss h=1.0's 1.0086 = noise (CI to 0.84, neighbours miss — REJECT). The kernel moves ONLY the injured veteran (Moore ρ negative under every never-wipe shape ⇒ identity/no-uplift; Sam Darcy robust +2.5..+3.9). OWNER RULING OPEN: A [REC] keep d=0.5 + retire the seat-authored β/λ gates + owner selects s at viewing on HIS gates · B steeper kernel (CI-indistinguishable, defer) · C reject · D exclusion (75 phantoms) — one word** · prior: v217
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v219 2026-07-16 · PEN: **THE RULING RESTRUCTURED ON THE OWNER'S PROBE (item 246): the fade speed was NEVER his word — his ruling said 'more valuable', not HOW MUCH; d=0.5 was seat-filled. Q1 = confirm A (his law · gate retired · owner picks strength from 4 boards). Q2 = HIS fade: last-year game worth half (→~0.75) / quarter / ~15% (→~0.83; the last two noise-indistinguishable). Moore clarified: identity-not-verdict — the measure updates every round** · prior: v218
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5301,3 +5301,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     back to exclusion — reachable 0.85 but re-makes 75 phantom rookies + re-wipes the ruled-in
     games; not recommended. Acceptance re-seal (v1.20) and memo v1.3 fire ON THE WORD — an owner
     moving the owner's line (rule-3-clean), never a seat self-amendment.
+
+246. **THE FADE SPEED RETURNED TO THE OWNER (2026-07-16; his probe: "if my rule gets 0.75 and your
+    gate gets 0.83, why follow my rule?").** CORRECTION OF FRAME, on the record: the 0.83 path is
+    NOT "the seat's gate" — it is THE OWNER'S LAW AT A FASTER FADE (never-wipe + monotone-recency
+    both intact); the owner's R105.4 verbatim said one game this year is worth MORE than one last
+    year and never said HOW MUCH — **the d=0.5 (half-per-year) was seat-filled, not owner-worded**
+    (the second seat-filled number exposed today, after the 0.85 gate). RULING RESTRUCTURED, both
+    questions in the owner's units: **Q1** confirm A (law stands · seat gates retired · four
+    candidate boards · owner selects strength at viewing · ledger at his choice). **Q2 — THE FADE,
+    owner-set:** one game last season is worth (i) HALF a game this season (his earlier instinct;
+    stretch ~0.75) · (ii) a QUARTER (~0.83) · (iii) ~15% (~0.83) — (ii)/(iii) measured
+    noise-indistinguishable; the true choice is half vs much-less-than-half, a football judgment on
+    how fast form information goes stale. CLARIFICATIONS FILED: the fade exists ONLY inside the
+    switched-off feature (board byte-identical today — nothing revalued yet); Moore's identity
+    treatment is NOT a verdict — the games×recency measure updates each ingested round, so a
+    returning veteran re-enters the uplift the moment his form reads positive. Memo v1.3 +
+    acceptance v1.20 + the segment-4 continuation fire on the two answers.
