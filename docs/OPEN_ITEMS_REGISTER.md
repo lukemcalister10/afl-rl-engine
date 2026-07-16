@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v199 2026-07-16 · PEN: **ROLLOVER SPEC v1 FILED (item 226: five independent idempotent acts + season_state.json + Guard 6 + order-tolerance V↔IV + the owner's phantom dry-run as the acceptance instrument) · LTI RE-PIN TOOL DIRECTIVE FILED — FIREABLE NOW (disjoint, Tier 3) · go-live directive pre-draft QUEUED · Leg-B seg3 IN FLIGHT** · prior: v198
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v200 2026-07-16 · PEN: **item 209 (Fable-efficiency) PROMOTED to turn-one visibility (item 227): rides HANDOVER rev145's standing-conduct block + flagged for CORE fold next seam — a fire-before-first-compute rule cannot live only at register depth. Turn-15 positions_data blob = the true heavy dump (store was NEVER read whole — self-correction)** · prior: v199
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4986,3 +4986,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the weekly CSV format proposal QUEUED to this seat (next background slots). (4) Future-position
     maintenance arrives WITH Leg C (its ingest is the re-usable path). Self-sufficiency layers
     hereby enumerated: the tool (fireable) · the write (gated) · the rollover (spec'd).
+
+227. **THE EFFICIENCY RULE PROMOTED TO STARTUP VISIBILITY + A SELF-CORRECTION (2026-07-16).**
+    (1) Item 209 (substantial compute → parallel Opus/Code; supervisor flags before spending Fable
+    tokens; light checks inline) is a fire-BEFORE-first-heavy-compute rule but lived only at register
+    depth (~item 209 of 200+). GAP: a new seat reads the pack + the register-as-log, but could work
+    many turns before reaching it. FIX: it rides HANDOVER rev145's STANDING-CONDUCT block (turn-one
+    reading) and is FLAGGED FOR CORE §THE SEATS/§SPEED-RULES fold at the next seam. Same treatment
+    for the two conduct lines born today (item 222: builds report context at HALT/RETURN + reap
+    background tasks). (2) SELF-CORRECTION for the record: this seat's turn-27 audit said "a full
+    data-file read was enormous" — CHECKED: the store (rl_model_data.json, 804) was NEVER read whole
+    this session, only grepped per-player; the genuinely enormous inline dump was the committed
+    `positions_data.js` 804-player blob at turn 15 (collapse regen). The loose claim is corrected
+    here — the verify-before-asserting rule applied to the seat's own memory.
