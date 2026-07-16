@@ -1,15 +1,4 @@
-# 00_MANIFEST — v4.38 · 2026-07-16 · supersedes v4.37
-### v4.38 (seat 9's pen, THE rev145 SEAM-PREP): **HANDOVER → rev145** (the Leg-B three-iteration
-### story · exactly TWO chats in flight (seg-3 scaffolding, retiring at its halt ~250k; the HIGH
-### qualifying diagnostic) · the queue: memo v1.2 (+ the open POST-PEAK owner ruling) → SEGMENT 4
-### FRESH → return → seat-10 prescreen → Leg C (pre-drafted, rider in) → D → E → ladder → v2.11 ·
-### the promoted standing-conduct block). **DECISIONS → v112** (R105.1 collapse · R105.2 Flanders
-### GDEF · R105.3 qualifying redesign; open word: post-peak). Register → v208 (item 235+). UI line
-### SHIPPED (#99/#101) · LTI tool MERGED (#102). Acceptance **v1.18** (open re-seal, items 221/224).
-### Rotation: seat 10 opens after memo v1.2; revoke the seat-9 token then.
-### ⚠ FILING NOTE (item 236): the FIRST v4.38 filing destroyed this changelog lineage and left a
-### stale versions table (a scripted header surgery — the owner's doc review caught it). REPAIRED
-### here from git history; the lesson is in the register.
+# 00_MANIFEST — v4.37 · 2026-07-16 · supersedes v4.36
 ### v4.37 (seat 9's pen): **THE LEG-B PACKAGE IS COMPLETE — SPEC v1.2 FOLDED (audit cluster (i):
 ### all five §6 rulings folded in place, post-view band-setting DELETED, pre-view hashing adopted,
 ### the stale §7 A-PAIRS line killed) · ACCEPTANCE → v1.17 (the memo-§5 leg_b block: β/slope/ratio/
@@ -63,16 +52,17 @@
 ### v4.28 (same day): HANDOVER → rev143 (hardened pre-rotation at the owner's request: item 173 UI
 ### ranking-page miss + ruling · open Tier-3 PR dispositions · pending CI/PK confirmations). Nothing else moved.
 ### ⚠ OWNER-INSTRUCTED: prior seats' JUDGEMENT is not ground truth — verify before building.
+
 ## THE PACK — CURRENT VERSIONS
 | doc | version | tier | when to read |
 |---|---|---|---|
-| **00_MANIFEST** | **v4.38** | 0 | first, always |
+| **00_MANIFEST** | **v4.37** | 0 | first, always |
 | **CORE** | **v2.8** | 0 | in full — BINDING. |
-| **HANDOVER** | **rev145** | 0 | MID-CHAPTER rotation-readiness — two lanes in flight, prescreen checklists, the queue. |
-| **DECISIONS** | **v112** | 0 | rulings + the owner's CURRENT to-dos. Read the register for verbatim. |
+| **HANDOVER** | **rev144** | 0 | MID-CHAPTER rotation-readiness — two lanes in flight, prescreen checklists, the queue. |
+| **DECISIONS** | **v111** | 0 | rulings + the owner's CURRENT to-dos. Read the register for verbatim. |
 | **OPEN_ITEMS_REGISTER** | read its OWN header | 1 | THE DURABLE LOG (v155+). Repo-only. |
 | **CONSTRAINTS** | **v1.18** | 1 | REPO-ONLY (P1) — fetch + grep when judging a board. **G-COHORT hard 1.30** · **L-AXIS BINDING** · **G-Y0 BINDING (population-level, effective Leg D)**. |
-| **acceptance_v1_18.json** | **v1.18** | 1 | REPO-ONLY (P1) — `cohort_waiver` REVERTED (1.30) + `standing_fails` + `audit_rule`. |
+| **acceptance_v1_17.json** | **v1.17** | 1 | REPO-ONLY (P1) — `cohort_waiver` REVERTED (1.30) + `standing_fails` + `audit_rule`. |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | when touching the store or a derived artifact (docs/). |
 | ROADMAP · UNRESOLVED · CHANGELOG | — | 2 | on demand |
 

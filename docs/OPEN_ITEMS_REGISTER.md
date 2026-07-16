@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v208 2026-07-16 · PEN: **THE rev145 SEAM-PREP (item 235): HANDOVER rev145 + DECISIONS v112 + manifest v4.38 filed and SHIPPED to the owner same turn. SEGMENT-4 DECISION MADE NOW (seg-3 at ~250k retires at its halt; memo v1.2 goes to a FRESH chat). Rotation lands after memo v1.2; seat-9 token revoked then** · prior: v207
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v209 2026-07-16 · PEN: **THE OWNER'S DOC REVIEW CAUGHT FOUR DEFECTS IN MY v4.38 FILING (item 236): changelog lineage + the ⚠ OWNER-INSTRUCTED line DESTROYED · versions table silently stale (pointed at v4.37/v111/acceptance v1.17!) · no archived v4.37 · rev145 pin one-amend stale. ALL REPAIRED from git history; table now asserted by script. Lesson: scripted doc surgery needs the same post-edit verification as code** · prior: v208
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5123,3 +5123,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     to a FRESH segment-4 chat based STRICT on seg-3's committed halt head (the seg-2→seg-3 pattern,
     applied proactively). Pack shipped to the owner via present_files SAME TURN (item 186). PK sync
     + seat-9 token revocation land at the rotation itself.
+
+236. **DOC-REVIEW REPAIR (owner-prompted 2026-07-16; his prediction — 'tired supervisors leave dead
+    references' — was exactly right).** Four defects in the first v4.38 filing, all mine, all the
+    staleness class: (1) the scripted header surgery DELETED the manifest's whole changelog lineage
+    (v4.37 back) INCLUDING the standing '⚠ OWNER-INSTRUCTED: prior seats' judgement is not ground
+    truth' line; (2) the versions-table replacements silently NO-OPED (they targeted v4.35-era
+    strings) leaving the v4.38 manifest pointing at manifest v4.37 · DECISIONS v111 · acceptance
+    v1.17 — a seat trusting the table fetches the WRONG ACCEPTANCE FILE; (3) the rename left no
+    archived v4.37; (4) rev145's inline main pin was one amend stale. REPAIRED: lineage + ⚠ line
+    restored from git history (fc15a31^) with a filing note; table corrected and POST-EDIT ASSERTED
+    by script (every must-string checked before commit); docs/archive/00_MANIFEST_v4_37.md restored;
+    rev145's pin line rewritten to the verify-fresh convention. HANDOVER/DECISIONS re-reviewed in
+    the same pass: no further defects found (rev145's journal-count and STATE-AT historical refs are
+    tolerated lineage, not errors). LESSON (standing): scripted doc edits carry the same
+    POST-EDIT VERIFICATION duty as code — assert the result, never trust the replace().
