@@ -1,0 +1,16 @@
+# SEGMENT-3 (A) CONFIRM — frozen estimator re-run (directive item 0), proven-27+, n=116
+# harness: beta_axes.py + rho_axis_v11.py, dev-shell (bypasses Guard-5; engine source c27d697,
+# workspace-seeded; pinned env PYTHONHASHSEED=0 RL_GAMMA=0.85 ... PAR_RAMPS=22)
+
+## elasticity decomposition vs realised output o (beta_axes.py)
+beta[ ev (=beta_c)           vs o ] = 0.6219  CI=[0.4836,0.7899]  n=116   # memo expects ~0.622  AGREES
+beta[ price6 (production)    vs o ] = 0.6107  CI=[0.4658,0.8030]  n=116   # memo/item224 0.611    AGREES
+beta[ level_now (rho axis)   vs o ] = 0.1236  CI=[0.1062,0.1437]  n=116   # memo expects ~0.124  AGREES
+
+## the NEW v1.1 rho axis (rho_axis_v11.py) — realised-output ratio, qualifying floor
+lambda[ rho_v1.1 num (games>=10)   vs o ] = 0.8957  CI=[0.7771,1.0085]  n=112   # CI includes 1.0
+lambda[ rho num (games>=6)         vs o ] = 0.9937  CI=[0.9820,1.0001]  n=112
+lambda[ level_now (v1.0 axis)      vs o ] = 0.1199  CI=[0.0986,0.1458]  n=112
+
+# AGREEMENT LINE: seg-2's committed table (beta_c=0.6219, price6=0.6107, level_now=0.1236) reproduces
+# BYTE/VALUE-EXACT on this seat's re-run. Seg-3 numbers govern; no divergence to report.

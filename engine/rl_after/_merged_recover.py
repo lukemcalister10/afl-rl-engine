@@ -214,12 +214,12 @@ def _est_core(p,Y,L_old,Lc):                                  # ESTABLISHED (pre
 # here); it is left byte-identical so all-switches-off stays byte-exact. Verified dead before the wire.
 def _lvl_eff_core(p,Y):                                       # DORMANT twin of _coreM1 (superseded via the _inferM1 bind); kept in lock-step
     L_old=cp._lvl_eff_orig(p,Y)
-    if not _EVW:                                              # BASE: the four discrete regimes (RL_EVW=0 => byte-exact)
-        n=_nqual(p,Y)
-        if n==0: return L_old                                 # cameo/never-played: original (pole gate handles never-played)
-        Lc=_lvlcurr(p,Y)
-        if n>=PROVEN_N: return _est_core(p,Y,L_old,Lc)        # ESTABLISHED (n>=4 cliff)
-        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)       # thin ramp (c=n/4)
+    # OBITUARY (Leg A, iso evidence-fade build 2026-07-16; SSI/CORE rule 7 — delete, don't disable): the dead
+    # `if not _EVW:` discrete-regime branch (the pre-EVW four regimes — n==0 cameo -> L_old · thin ramp c=n/4 ·
+    # PROVEN_N n>=4 cliff -> _est_core) is DELETED here. It was UNREACHABLE: this whole `_lvl_eff_core` twin is
+    # DORMANT — never bound or called (ev() consumes cp._lvl_eff=_inferM1 -> _coreM1; see :210-214, "Verified
+    # dead before the wire"). The LIVE RL_EVW=0 byte-exact base path survives untouched in _coreM1 (:375). No
+    # output moves (the function is never invoked). Resurrection ref: git show <pre-LegA base>:_merged_recover.py.
     Lc=_lvlcurr(p,Y); Eq=_ev_qual(p,Y)                        # EVW: one continuous quantity E_q spans all four regimes
     Lrec=L_old + _ev_rec(Eq)*(Lc-L_old)                       # conservative -> recency, by qualification
     prod=(1.0-_ev_est(Eq))*Lrec + _ev_est(Eq)*_est_core(p,Y,L_old,Lc)  # recency/thin -> established, by evidence
@@ -273,8 +273,59 @@ def par_pole(pos,pk,T):
     if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'GEN_FWD':0.93,'KEY_FWD':0.95,'GEN_DEF':1.08,'KEY_DEF':1.05,'RUC':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
+# ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
+# v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
+# added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
+# rho_out(p,pos)/RHO_DEN[pos], rho_out = recent-2 QUALIFYING-season avg above REPL[pos]. The qualifying test
+# is a PLUGGABLE PREDICATE `_qualifying(p, season)` (memo v1.2 — career-phase-conditioned: keep ascending
+# early-career seasons, exclude injury interruptions), STUBBED to raise until v1.2 lands (seg-3 partial-
+# proceed, register 232 — no floor, no smooth weight, no conditioned test yet). RL_UNCOMP is INERT by default
+# (UNCOMP_S_DEFAULT=None): the map + the s-gated load-time reference build both short-circuit BEFORE rho_out,
+# so nothing evaluates the stub. Onset ramp Delta=6.0 (memo §2.2) in the realised-output measure's units.
+_UC_VREFB={}          # V_ref_b[pos] = MEDIAN captain-free price6 (pr0) over the demonstrated-proven pop (load-time, s-gated)
+_UC_RHODEN={}         # RHO_DEN[pos] = MEDIAN rho_out over the demonstrated-proven pop (load-time, s-gated)
+_UC_C={}              # C[pos] = per-position production-side conservation renorm (load-time, s-gated)
+_UC_CAL={'on':False,'pr0':{},'v0p':{}}   # load-time conservation accumulator (Sum pr0, Sum v0p per pos; C==1 during accumulation)
+def _qualifying(p, season):
+    """PLUGGABLE PREDICATE — the career-phase-conditioned qualifying rule (memo v1.2). ONE call site (rho_out).
+    STUB: the qualifying LAW is deliberately not implemented (seg-3 partial-proceed, register 232). RL_UNCOMP
+    stays inert so this is never reached in any shipped/measured build; it raises loudly if a strength dial is
+    set before MEMO v1.2 supplies the law."""
+    raise NotImplementedError("LEG B v1.1 qualifying predicate awaits MEMO v1.2 (register 232); RL_UNCOMP must stay inert until then")
+def rho_out(p, pos):
+    """Realised above-replacement output numerator (memo v1.1 §2.1): recent-2 QUALIFYING-season avg points
+    above REPL[pos]; season selection delegated to _qualifying. Zero qualifying seasons => None (caller w=0)."""
+    _rows=sorted([(x['year'],x['avg']) for x in p.get('scoring') or [] if _qualifying(p,x) and x.get('avg',0)>0])
+    if not _rows: return None
+    return sum(v for _,v in _rows[-2:])/len(_rows[-2:]) - MA.REPL[pos]
+def _uncomp_prod(pr,p,Y,bb):
+    # INERT guard (RL_UNCOMP off / s unset / non-real / refs not built) => pr. Short-circuits BEFORE rho_out,
+    # so the _qualifying stub is UNREACHABLE while RL_UNCOMP is inert (the shipped/measured state this segment).
+    if not MA._UNCOMP or MA.UNCOMP_S is None or pr<=0.0 or not _isreal(p): return pr
+    pos=MA.gfut(p); Vb=_UC_VREFB.get(pos); Rden=_UC_RHODEN.get(pos)
+    if not Vb or not Rden or Vb<=0.0 or Rden<=0.0: return pr        # references not built (inert never reaches here)
+    _prev=MA._CAPT_OFF['on']; MA._CAPT_OFF['on']=True               # captain-off pass: recompute the CAPTAIN-FREE production
+    try:
+        with contextlib.redirect_stdout(io.StringIO()): pr0=price6(p,bb,Y)
+    finally: MA._CAPT_OFF['on']=_prev
+    if pr0 is None or pr0<=0.0: return pr
+    delta=pr-pr0                                                    # L-CAPTAIN increment, added back UNCHANGED (delta byte-identity self-test)
+    _ro=rho_out(p,pos)                                             # realised-output margin above REPL (avg-points)
+    if _ro is None or _ro<=0.0: return pr                          # zero qualifying seasons / sub-replacement => w=0 identity
+    ramp=1.0 if _ro>=MA.UNCOMP_DELTA else _ro/MA.UNCOMP_DELTA       # onset ramp (memo §2.2), realised-output units
+    _Eq=_ev_qual(p,Y); E=1.0-_math.exp(-_Eq/MA.UNCOMP_TAU) if _Eq>0.0 else 0.0   # saturating evidence weight in [0,1]
+    w=MA.UNCOMP_S*E*ramp
+    if w<=0.0: return pr
+    t=Vb*(_ro/Rden)                                                # V_ref_b * rho (kappa=1)
+    if t<=0.0: return pr
+    v0p=(pr0**(1.0-w))*(t**w)                                      # log-space blend of the CAPTAIN-FREE production toward the output-proportional target
+    if _UC_CAL['on']:                                             # load-time conservation calibration (C==1 here): accumulate Sum pr0, Sum v0p
+        _UC_CAL['pr0'][pos]=_UC_CAL['pr0'].get(pos,0.0)+pr0
+        _UC_CAL['v0p'][pos]=_UC_CAL['v0p'].get(pos,0.0)+v0p
+    return _UC_C.get(pos,1.0)*v0p+delta                            # production-side renorm; captain delta additive & nominal
 def raw_ev(p,Y=2026):
-    pr=price6(p,b6(p,Y),Y); pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
+    _bb=b6(p,Y); pr=price6(p,_bb,Y); pr=_uncomp_prod(pr,p,Y,_bb)   # LEG B v1.1 map at the production-value hook (inert unless RL_UNCOMP on + s set)
+    pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
     et=min(max(eff_ten(p,Y, PR.tenure(p,Y)),1),6)                                     # STEP1: developmental tenure off original PR.tenure base
     po,par=par_pole(pos,pk,T); a=MA.age(p)
     wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
@@ -284,13 +335,30 @@ def raw_ev(p,Y=2026):
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
     return pr+w*recover(perf,par)*max(0.0,po-pr)
 # ===== (3) ISOTONIC PICK GUARD: per pos, monotone non-increasing in pick at par; correction factor =====
+# ==== LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (RL_ISOFADE; item 132, spec §3 Leg A) ====
+# (a) MONOTONIZE the multiplier: iso_corr = iso/raw is a monotone-non-increasing NUMERATOR over a
+#     NON-monotone denominator, so the RATIO is non-monotone — the Newcombe trough (pk19 0.882 < pk34
+#     1.000). Re-apply the house isotonic-non-increasing instrument to the MULTIPLIER itself, so no later
+#     pick carries a higher multiplier than an earlier one. Conserving (per-pos SigmaD~=0), two-directional.
+# (b) FADE per REAL player on the v2.10 evidence weight w=E_q (iso_eff below): full at zero evidence (the
+#     pick IS the information; V0 at Y=debutyr-1 has E_q=0 -> unchanged BY CONSTRUCTION), dissolving to 1.0
+#     as evidence saturates. DECLARED kill-switch, not a manifest dial: RL_ISOFADE=0 => original table +
+#     plain iso_corr at every site => v2.10 board 790136a3 byte-exact (config_sha256 UNMOVED).
+_ISOFADE=os.environ.get('RL_ISOFADE','1')!='0'               # kill-switch (G-ATTR separability): RL_ISOFADE=0 => v2.10 byte-exact. Declared exception, not a dial.
+_ISOFADE_TAU=_EVW_TAU                                         # =1.1: THE fade parameter — the pedigree-fade family rate (_ev_pw, :186-189) in effective-qualifying-season units; iso uses the residual-0 member exp(-w/tau).
 PICKS=list(range(1,71)); ISO={}
 for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:
     raw=np.array([raw_ev(synth(pk,PR.par_at(pos,min(pk,cp.KMAX),4),pos)) for pk in PICKS])
     iso=IsotonicRegression(increasing=False).fit_transform(PICKS,raw)        # monotone non-increasing in pick#
     ISO[pos]=(np.array(PICKS),np.maximum(iso,raw*0)+ (iso-raw>=0)*(iso-raw))  # iso is the guarded floor; correction additive where iso>raw
-    ISO[pos]=(np.array(PICKS), iso/np.maximum(raw,1e-6))                       # multiplicative correction (>=1 where shallow under-priced)
+    fs=iso/np.maximum(raw,1e-6)                                                # multiplicative correction (>=1 where shallow under-priced)
+    if _ISOFADE: fs=IsotonicRegression(increasing=False).fit_transform(PICKS,fs)   # LEG A (a): monotonize the MULTIPLIER (the ratio is non-monotone even though the numerator is) — kills the Newcombe trough
+    ISO[pos]=(np.array(PICKS), fs)
 def iso_corr(pos,pk): xs,fs=ISO[pos]; return float(np.interp(min(pk,70),xs,fs))
+def iso_eff(p,Y=2026):                                        # LEG A (b): per-REAL-player EFFECTIVE iso — the pick tax faded on the v2.10 evidence weight w=E_q
+    base=iso_corr(MA.gfut(p),MA.effpk(p))
+    if not _ISOFADE or not _isreal(p): return base            # switch off, or a synth (structural scaffold; zero-evidence convention) => raw/monotonized table, unfaded
+    return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)
 for _pp in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
         for _T in range(1,7): par_pole(_pp,_pk,_T)
@@ -355,22 +423,17 @@ def _est(p,Y,Lo,Lc):                                          # ESTABLISHED leve
     sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
 def _coreM1(p,Y):
     Lo=cp._lvl_eff_orig(p,Y)
-    if not _EVW:
-        # ---- BASE: the four discrete regimes (RL_EVW=0 => byte-exact base board) ----
-        # D10 n==0 first-evidence f1 credit; multi-year n==0 (e.g. Tsatas: 4 list-years, no 10-game season)
-        # keeps the exposure-shrunk Lo path (injecting the 75%-par-prior n=1 asymptote was measured +940 on the
-        # Luke-ruled Tsatas A8 anchor and REJECTED). n>=4 established (_est); 1..3 thin ramp c=n/4.
-        n=_nqual(p,Y)
-        if n==0:
-            if Y!=INPROG_Y or any(x['games']>0 and x['year']<Y and (cp.debutyr(p)-1)<x['year'] for x in p['scoring']): return Lo
-            gy=sum(x['games'] for x in p['scoring'] if x['year']==Y and (cp.debutyr(p)-1)<x['year'])
-            f1=min(1.0, gy/max(1e-9,10.0*SEASON_FE))
-            if f1<=0.0: return Lo
-            return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
-        Lc=_lvlcurr(p,Y)
-        if n>=PROVEN_N: return _est(p,Y,Lo,Lc)
-        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
-    # ---- CONTINUOUS EVIDENCE WEIGHT (default): ONE evidence quantity E_q spans all four regimes (item 65) ----
+    # OBITUARY (Leg B, un-compress build 2026-07-16; SSI/CORE rule 7 — delete, don't disable): the dead
+    # `if not _EVW:` discrete FOUR-REGIME branch (n==0 first-evidence f1 credit · n>=4 established _est ·
+    # 1..3 thin ramp c=n/4 · else Lo) is DELETED here. It was SUPERSEDED by the continuous evidence weight
+    # below (one E_q quantity spans all four regimes; item 65) and executed ONLY under RL_EVW=0. The
+    # shipped/live board runs RL_EVW=1 (default) and NEVER took this branch, so its deletion is BYTE-EXACT
+    # for the live board (verified: RL_UNCOMP-inert board == 8d90c9ac unchanged). Leg A retired the same
+    # branch in the DORMANT twin `_lvl_eff_core` (:~216) and its Task 4b listed-but-did-not-cut this LIVE
+    # copy; this completes that cut (directive §7 / spec §4 / PLAN §8). The unrelated live `if not _EVW:`
+    # one-liner in `_expgate` (:192) is OUT of scope and untouched. Resurrection ref (the deleted regimes):
+    #   git show d3f703f~1:engine/rl_after/_merged_recover.py  (the pre-Leg-B _coreM1 body).
+    # ---- CONTINUOUS EVIDENCE WEIGHT: ONE evidence quantity E_q spans all four regimes (item 65) ----
     # 10-game bar dissolved (E_q counts qualifying seasons continuously) · nqual ramp + PROVEN_N cliff replaced
     # by the production blend (Lo->Lc->est) + pedigree weight pw(E_q); the thin->established transition is
     # continuous so no cliff is left "at the top of the staircase". Unqualified (E_q~0: the A8/Tsatas trap)
@@ -652,7 +715,7 @@ def _w4_ctx(p,Y):
     """Per-player form context for the recalibrated projection; None => byte-exact original path."""
     if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
-    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
+    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n,'E':_ev_qual(p,Y)}   # LEG B: per-player evidence weight E for the un-compress map (sites 1-3; flat into projected years — no future store seasons)
     # Part-2 return haircut (RL_LTI_RETURN): apply the derived, net-of-aging return-season dip at the return
     # season k = ret_year - BASE_REF (decays to zero the next season = single k). Section-A out-names only;
     # young/speculative already ship h=0 (set on the record). SEPARABLE from Part 1 (own column lti_return_hc).
@@ -837,7 +900,7 @@ def _kpf_prod_efv(p,Y,L=None):
     L pins an alternative demonstrated level (KPF REBALANCE T1: the SUSTAINED level LD prices the eD split)."""
     _B6PIN['L']=cp._lvl_eff(p,Y) if L is None else float(L)
     try:
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 1/6 (was iso_corr(gfut,effpk))
     finally: _B6PIN['L']=None
 # ===== helpers for delist + staleness =====
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
@@ -945,7 +1008,7 @@ def _build_ruc_ceiling():                                     # pick-neutral pro
     avs=list(np.linspace(15.0,150.0,46))
     def _sp(a):
         sp=synth(int(RUC_CEIL_REFPK),float(a),'RUC')
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_corr('RUC',MA.effpk(sp))
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_eff(sp)   # LEG A site 2/6 (synth: iso_eff returns the monotonized table unfaded — structural scaffold)
     ys=[_sp(a) for a in avs]
     for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
     _RUCCEIL['grid']=(np.array(avs),np.array(ys))
@@ -979,7 +1042,7 @@ def _v0_uncapped(p):                                          # zero-evidence ba
     if k not in _V0U:
         global cm,q97m
         _c,_q=cm,q97m; cm,q97m=_V0_CM,_V0_Q97
-        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_eff(p,cp.debutyr(p)-1)   # LEG A site 3/6 (V0: Y=debutyr-1 => E_q=0 => fade=1 => full strength, unchanged BY CONSTRUCTION)
         finally: cm,q97m=_c,_q
     return _V0U[k]
 def _v0_raw(p):                                              # ASK1: uncapped V0 -> RUC prior cap (still pre-ASK2-guard)
@@ -1122,7 +1185,7 @@ def _prod_path(p,Y):
     and the designed M3 pin-fade otherwise leave the evidence ramp non-monotone (B6 law: more games at
     the same rate never worth less). Centered, unit-mass, level-preserving; nobody outside the family
     is touched."""
-    e=raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+    e=raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 4/6 — THE BOARD PATH (feeds ev())
     if not _first_evidence(p,Y): return e
     row=[x for x in p['scoring'] if x['year']==Y and x['games']>0]
     if not row: return e
@@ -1131,7 +1194,7 @@ def _prod_path(p,Y):
         for gg in (max(g0-1,1),g0,g0+1):
             if gg==g0: out.append(e); continue
             r['games']=gg
-            out.append(raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p)))
+            out.append(raw_ev(p,Y)*iso_eff(p,Y))   # LEG A site 5/6 (first-evidence games-axis smoothing)
     finally: r['games']=g0
     return float(np.mean(out))
 # ===== WIRED ev =====
@@ -1260,6 +1323,51 @@ if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
         _PVCFIT_META['error']=repr(_e)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
+
+# ==== LEG B v1.1 — UN-COMPRESS REFERENCE (V_ref_b + RHO_DEN) + PRODUCTION-SIDE CONSERVATION (C[pos]); LOAD-TIME
+# memo v1.1 §2.1/§3. Built AFTER ev() is defined + player attrs finalized, BEFORE the RL_AVAIL attribution
+# block so its ev()-diffs see the mapped surface. INERT unless RL_UNCOMP on AND s set (UNCOMP_S): the guard
+# leaves V_ref_b/RHO_DEN/C empty => _uncomp_prod returns pr => board 8d90c9ac BYTE-EXACT. NOTE: with s set this
+# block RAISES (RHO_DEN calls rho_out -> _qualifying, the v1.2 stub) — BY DESIGN (seg-3 partial-proceed,
+# register 232): the qualifying LAW must arrive (MEMO v1.2) before any strength dial is set.
+def _uncomp_scope(_p):                                        # valuation scope = active board population
+    return _isreal(_p) and not delisted(_p) and not _p.get('_retired')
+if MA._UNCOMP and MA.UNCOMP_S is not None:
+    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()              # pin MA's clock to the present (mirrors rl_export.py); level_now/ev = the 2026 surface
+    # (1) V_ref_b[pos] = MEDIAN captain-free price6 (pr0); RHO_DEN[pos] = MEDIAN rho_out; over the
+    #     DEMONSTRATED-PROVEN pop { gfut==pos, _nqual(_,2026) >= PROVEN_N(=4), in scope }.
+    _vb_pool={}; _rd_pool={}
+    for _p in MA.data:
+        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
+        _g=MA.gfut(_p)
+        if _g not in MA.REPL: continue
+        _prev=MA._CAPT_OFF['on']; MA._CAPT_OFF['on']=True
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                try: _pr0=price6(_p,b6(_p,2026),2026)
+                except Exception: _pr0=None
+        finally: MA._CAPT_OFF['on']=_prev
+        _ro=rho_out(_p,_g)                                    # calls _qualifying (v1.2 stub) — reached ONLY when s is set
+        if _pr0 and _pr0>0.0: _vb_pool.setdefault(_g,[]).append(float(_pr0))
+        if _ro and _ro>0.0: _rd_pool.setdefault(_g,[]).append(float(_ro))
+    for _g,_vals in _vb_pool.items(): _UC_VREFB[_g]=float(np.median(_vals))
+    for _g,_vals in _rd_pool.items(): _UC_RHODEN[_g]=float(np.median(_vals))
+    # (2) C[pos]: production-side conservation renorm (memo §3). ONE load-time pass over the valuation scope,
+    #     accumulate Sum(pr0), Sum(v0p) per pos via the hook (C==1 during accumulation); C=Sum(pr0)/Sum(v0p) so
+    #     the position's TOTAL captain-free production is unchanged by the map (pedigree/iso/captain nominal).
+    _UC_CAL['on']=True; _UC_CAL['pr0'].clear(); _UC_CAL['v0p'].clear()
+    with contextlib.redirect_stdout(io.StringIO()):
+        for _p in MA.data:
+            if not _uncomp_scope(_p): continue
+            try: ev(_p,2026)
+            except Exception: pass
+    _UC_CAL['on']=False
+    for _g,_s0 in _UC_CAL['pr0'].items():
+        _s0p=_UC_CAL['v0p'].get(_g,0.0); _UC_C[_g]=(_s0/_s0p) if _s0p>0.0 else 1.0
+    print("=== RL_UNCOMP v1.1 LEG B: map ON (s=%.4f Delta=%.1f) | V_ref_b/RHO_DEN/C over %d proven / scope-pop ==="
+          %(MA.UNCOMP_S,MA.UNCOMP_DELTA,sum(len(v) for v in _vb_pool.values())))
+    for _g in sorted(_UC_VREFB):
+        print("    %-8s V_ref_b=%8.1f RHO_DEN=%7.2f C=%.5f"%(_g,_UC_VREFB.get(_g,0.0),_UC_RHODEN.get(_g,0.0),_UC_C.get(_g,1.0)))
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The

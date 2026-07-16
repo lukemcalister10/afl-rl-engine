@@ -196,7 +196,13 @@ def _capt_saturating(lev):   # RETIRED (the pre-R98.1 saturating premium, hard 1
     if over<=0: return 0.0
     cb=CAPT_GAIN*over**CAPT_EXP
     return cb*CAPT_CAP/(CAPT_CAP+cb)
+_CAPT_OFF={'on':False}   # LEG B seg-3 captain-off pass: force capt_prem->0 to recompute the CAPTAIN-FREE production
+                         # value pr0 (memo v1.1 §4). NOT RL_CAPT=0 (that is the RETIRED saturating curve, not zero).
+                         # The map (_merged_recover raw_ev hook) sets this True around one price6 recompute, then
+                         # takes delta = pr(capt on) - pr(capt off) and adds it back UNCHANGED. Default False =>
+                         # capt_prem is the ruled L-CAPTAIN curve => board byte-exact.
 def capt_prem(lev):
+    if _CAPT_OFF['on']: return 0.0
     return _capt_ruled(lev) if _CAPT else _capt_saturating(lev)
 GRACE={'KEY_FWD':2.5,'KEY_DEF':2.5,'RUC':2.5,'MID':1.0,'GEN_DEF':1.0,'GEN_FWD':1.0}
 LOS_C=0.16; LOS_P=1.82                 # progressive: gentle yr2 ~.85, steepening (yr3~.57 yr4~.31 yr5~.16)
@@ -305,6 +311,27 @@ KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_
 S_SH=3.0
 def comp(v): return v   # no compression (v2.0)
 def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position value above replacement
+# ==== LEG B — UN-COMPRESS THE OUTPUT->PRICE MAP (RL_UNCOMP; memo v1.1 / seg-3 2026-07-16, spec §3 Leg B) ==
+# OBITUARY (seg-2 posval-COMPONENT wiring — delete-don't-disable, SSI/CORE rule 7). The ORIGINAL design
+# (register items 211/213) wrapped the map at SIX posval sites via `posval_uncomp(lev,pos,Eq)`: the k-legs
+# of proj_from_peak/prod_floor here AND the W4 _proj_w4/_prod_floor_w4 in _merged_recover. That placement
+# was PROVEN to compress BY CONSTRUCTION (register 221): the REPL offset makes local elasticity >=1 at
+# posval for elites, so blending toward an elasticity-1 target pulls elite production DOWN, not up. The
+# axis finding (register 224) then located the deeper defect — the rho AXIS: level_now's output-elasticity
+# is only 0.124 (measured), so any blend toward V_ref*rho(level_now) flattens price-vs-output regardless of
+# hook. MEMO v1.1 CURES BOTH: the map moves to the PRODUCTION-VALUE hook (pr=price6, ONCE per player, at
+# _merged_recover.py raw_ev:298), and rho tracks REALISED OUTPUT. `posval_uncomp` + the per-leg E/CAL state
+# + the L_ref/V_ref dicts are DELETED here; the six posval sites are RESTORED to their pre-seg-2 originals
+# (posval(lev+capt_prem(lev)-REPL)). The v1.1 map, its references (RHO_DEN/V_ref_b) and the C[pos]
+# conservation now live in _merged_recover (co-located with the hook). This module keeps ONLY the declared
+# kill-switch + dials below (the RL_ISOFADE / RL_EVW pattern — NOT a manifest dial). RL_UNCOMP=0 (or the
+# strength dial unset) => the map is INERT => board 8d90c9ac BYTE-EXACT (config_sha256 UNMOVED).
+_UNCOMP=os.environ.get('RL_UNCOMP','1')!='0'
+UNCOMP_DELTA=6.0                       # onset-ramp width (avg-points above replacement); memo §2.2 (~2*S_SH clears the softplus knee)
+UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weight rate E=1-exp(-Eq/tau) (memo §2 "same family Leg A's fade rides")
+UNCOMP_S_DEFAULT=None                  # THE strength dial s -- hard-coded to the s-grid-selected literal after selection; None => map INERT
+_uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override: RL_UNCOMP_S=<s> per grid point
+UNCOMP_S=(float(_uncs) if _uncs not in (None,'') else UNCOMP_S_DEFAULT)
 CAPT_THRESH=107.4; CAPT_M=116.0; CAPT_W=5.0   # captaincy line (slider); 2026-06-21 M6: last-5 rank-25 ~=107.4 (unbiased upload), was 108.0
 def _pcap(a): return 1.0/(1.0+math.exp(-(a-CAPT_M)/CAPT_W))
 def capt_bonus(level):

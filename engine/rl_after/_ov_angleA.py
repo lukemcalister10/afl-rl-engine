@@ -3,7 +3,7 @@ g={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 MA=g['MA']; cp=g['cp']; PR=g['PR']; rd=g['rd']
-price6=g['price6']; b6=g['b6']; raw_ev=g['raw_ev']; par_pole=g['par_pole']; iso_corr=g['iso_corr']
+price6=g['price6']; b6=g['b6']; raw_ev=g['raw_ev']; par_pole=g['par_pole']; iso_corr=g['iso_corr']; iso_eff=g['iso_eff']
 _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; nseas=g['nseas']; ev=g['ev']; _eo=g['_eo']
 Y=2026
 
@@ -36,7 +36,7 @@ for sub,exp,tag in TARGETS:
     bar_fut=MA.REPL[gfut]-3.0; bar_now=MA.REPL[bnow]-3.0
     L_old=cp._lvl_eff_orig(p,Y); Lc=_lvlcurr(p,Y); L_eff=cp._lvl_eff(p,Y)
     pr=price6(p,b6(p,Y),Y); raw=raw_ev(p,Y); pole=raw-pr
-    po,par=par_pole(gfut,pk,min(max(ten,1),6)); iso=iso_corr(gfut,pk); evf=ev(p,Y)
+    po,par=par_pole(gfut,pk,min(max(ten,1),6)); iso=iso_eff(p,Y); evf=ev(p,Y)   # LEG A site 6/6 (diagnostic: effective faded iso so e_pre tracks ev)
     e_pre=raw*iso
     stale=(evf < round(e_pre)-1)
     rows.append(dict(name=p['player'],tag=tag,pos=gfut,bnow=bnow,pk=pk,ten=ten,ns=ns,nq=nq,age=age,

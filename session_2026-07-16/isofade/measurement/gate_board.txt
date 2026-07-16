@@ -1,0 +1,25 @@
+A1        PASS    | PASS    | PASS     Duursma>Uwland: 4569 vs 2592
+A2        FAIL    | FAIL    | FAIL     Curtis>=0.90xWard: 1510 vs 1898 (Ward=2109, ratio=0.716) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: 1662 vs 2109
+A3   [DC] FAIL    | FAIL    | FAIL     Connor Rozee: 2026=3145 2025=4883 ratio=0.64 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]
+A4        PASS    | PASS    | FAIL     Harley Reid board rank=44 ev=3650 (need TOP 40)  <- MOVED
+A5        PASS    | PASS    | PASS     Jack Ginnivan=2304 (floor 1600); Jake Bowey=3706 (floor 2100); Nick Blakey=4568 (floor 2600) [SCAR floors — RE-BASE if PVC re-levels]
+A6        PASS    | PASS    | PASS     yr1-3 RUC median=478 (n=12, pooled — thin slice) vs pick-matched MID kernel median=669 (n=67, bw=0.6 log-pick, RATIFIED 02/07)
+A7        PASS    | PASS    | PASS     Ryan Maric: future_position=MID gfut=MID (need MID/MID) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]; Ed Langdon: future_position=GDEF gfut=GEN_DEF (need GDEF/GEN_DEF) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]
+A8   [DC] PASS    | PASS    | PASS     Berry=3799 Tsatas=1475 ratio=2.58x (need >=2.00x) [display de-ambiguated D4 02/07]
+A9        PASS    | PASS    | PASS     Ginnivan>Ward: 2304 vs 2109
+A10  [DC] PASS    | PASS    | PASS     Charlie Curnow: 2026=1315 2025=2324 ratio=0.57 (need >=0.50) [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]
+A11  [DC] PASS    | PASS    | PASS     Farrow>Patterson: 2363 vs 1021; Cumming>Annable: 2230 vs 2135
+A12  [DC] FAIL    | FAIL    | FAIL     Travaglia>Moraes: 633 vs 968; Smillie>Retschko: 1352 vs 872
+A13       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3288 lineball=True; Levi Ashcroft=3347 lineball=True
+A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1709: Trent Rivers=2225 lineball=False; Zach Reid=1825 lineball=True; Jase Burgoyne=2202 lineball=False
+A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
+B1        PASS    | PASS    | HALT     JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD; CANDIDATE regenerated this run — engine a83c9f6d store b1fd0bce config c2d233aec104): y1=70555.8 y2=81592.1 y3=85772.9 y4=91843.1 y5=92849.8 y6=89354.4 y7=80318.2; den=min(y1,y2)=y1=70555.8; ratios y4=1.3017(above-guide) y5=1.3160(above-guide) y6=1.2664(above-guide); hard<=1.30 -> BREACH at y[4, 5] (HALT); guide 1.20-1.25 ADVISORY (margin reported, never gates)  <- MOVED
+B2        PASS    | PASS    | PASS     leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUC|GOOD|T5:6.17, KEY_DEF|GOOD|T5:5.33, GEN_DEF|GOOD|T2:4.70, GEN_DEF|GOOD|T4:4.54; GOOD>BUST sep GEN_DEF 37.6/1.0, GEN_FWD 40.2/0.6, KEY_DEF 50.4/1.1, KEY_FWD 62.9/0.6, MID 47.1/0.5, RUC 25.8/0.4 [cert engine a83c9f6d store b1fd0bce config c2d233ae]
+B3        PASS    | PASS    | PASS     CANDIDATE book stable seal (regenerated this run — engine a83c9f6d store b1fd0bce config c2d233aec104): MATCHES the sealed baseline. current=ef2fbf9caf2ef63e.. (2649 players) vs baseline=ef2fbf9caf2ef63e.. (2649 players, sealed head a83c9f6d) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]
+B4        PASS    | PASS    | PASS     regenerated rl_app_data.json md5=8d90c9ac vs shipped 8d90c9ac (byte-agree gate; export exit=0)
+B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): 62 saves, aggregate lift +2199; pure lower bound: lowered=0 (bar 0), non-ND moved=0 (bar 0); saves table printed below (the new alarm surface)
+B6        PASS    | PASS    | PASS     ramp(0..14g)=[1349, 1549, 1881, 2587, 3245, 3368, 3502, 3587, 3689, 3789, 3975, 4162, 4369, 4506, 4586]; dips(more games worth less)=none; 0->6 rise T=+2153; 0->6 steps>50%T=none; rise by 3g=+1238 (need >=538) [whole-ramp re-spec, DECLARED thresholds]
+C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
+C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
+B1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):
+B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):

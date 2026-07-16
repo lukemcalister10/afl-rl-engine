@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-15 at the L-CAPTAIN candidate (the ruled captain curve credit(L)=G*integral[BAR->L]P replaces the retired saturating capt_prem in rl_model.py). The book is engine-ev()-derived and the credit rides every credited historical season, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped. engine_head (_merged_recover.py) UNCHANGED fc7045d6; rl_model.py moved -> f79fc740. Store/config UNCHANGED. Owner tag/main owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-16 at the LEG A iso-evidence-fade candidate (iso_corr fades on the v2.10 evidence weight + the ISO table is monotonized non-increasing in pick; RL_ISOFADE default ON). The book is engine-ev()-derived; the fade moves ev() for the rows it touches, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped, not re-hashed. Store/config UNCHANGED. RL_ISOFADE=0 reproduces the v2.10 book. Owner tag/main owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "fc7045d6",
+  "head_md5": "a83c9f6d",
   "store_md5": "b1fd0bce",
   "n_players": 2649,
-  "stable_sha256": "99be9b3672bc1e1211538b192ef58a1742e772b9b3049ccfb7ef66c6591b505e",
-  "sealed_by": "L-CAPTAIN re-seal 2026-07-15 (session_2026-07-15/captaincy; rl_model 952ddb3d -> f79fc740 ruled captain curve; engine_head fc7045d6 UNCHANGED; store b1fd0bce UNCHANGED). stable_sha256 cf90c4f4 -> 99be9b36 because the captaincy credit moves in ev() (and thus the book) at every level it prices. Candidate \u2014 owner tag/main promote owner-only.",
-  "sealed_date": "2026-07-15",
+  "stable_sha256": "ef2fbf9caf2ef63e0da527e203ddaf62733fcf9d9780e4e02b14623179ab841c",
+  "sealed_by": "LEG A re-seal 2026-07-16 (session_2026-07-16/isofade; engine fc7045d6 -> a83c9f6d, the iso evidence-fade + monotonization; store b1fd0bce UNCHANGED). stable_sha256 99be9b36 -> ef2fbf9c because the rows the fade touches move in ev() and thus in the book. head_md5 stamp advanced fc7045d6 -> a83c9f6d. Candidate \u2014 owner tag/main promote owner-only.",
+  "sealed_date": "2026-07-16",
   "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }
