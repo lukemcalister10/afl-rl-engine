@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v234 2026-07-16 · PEN: **ITEM 261: owner asks for the s landing cohorts at 1.20–1.25; conserved-measure directive → v1.1 (grid extended down: 8 points {0.15–0.70}); the one-dial-two-masters tradeoff stated. Fires on his paste** · prior: v233
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v235 2026-07-16 · PEN: **ITEM 262: CONSERVED MEASUREMENT RETURNED — prescreen PASS-WITH-CORRECTION at `fef2b64`: the build's "band ✓" at s≥0.55 was CAP-ONLY judging; re-judged, the band-legal zone is s ∈ {0.15–0.45}, the owner's joint 1.20–1.25 zone s≈0.154–0.183, all-three-IDEAL at s=0.25. OWNER WORD OPEN: the disposition/selection** · prior: v234
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5609,3 +5609,33 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     hand. **DIRECTIVE AMENDED PRE-FIRE → v1.1:** grid {0.15, 0.25, 0.35, 0.45, 0.55, 0.60, 0.65,
     0.70} (8 points, same battery, 60–110 min); return must state where the trajectory crosses
     1.20–1.25 per cohort year and jointly. Fires on his paste. Leg C still HOLDS.
+
+262. **CONSERVED MEASUREMENT RETURN — PRESCREEN PASS WITH ONE VERDICT-LAYER CORRECTION
+    (2026-07-16).** Head `fef2b64` (read-only fence VERIFIED: nothing outside the session dir);
+    A/B 8d90c9ac byte-exact; frozen instruments confirmed; numbers corroborated from GRID.out /
+    POINT files / SINCERITY CSVs. **THE CORRECTION:** the build's cohort verdict column judged
+    the CAP ONLY ("PASS x3 (<=1.30)") and the return echoed "band ✓" at every point — but under
+    the item-258/259 band (floor 1.08) the re-judged verdicts are: **BAND PASS s ∈ {0.15, 0.25,
+    0.35, 0.45}; BAND FAIL s ∈ {0.55 (y6 1.0670), 0.60 (y5 1.0711, y6 1.0491), 0.65, 0.70 (all
+    three sub-floor, y4 1.0748)}** — the ENTIRE former selection grid {0.55–0.70} fails the
+    owner's floor. The owner's same-morning band ruling + his landing-zone grid extension are
+    the only reasons a legal zone was measured at all. Honest numbers, wrong judgment layer —
+    conduct note, no data defect (MEASURE.md's own prose applied the floor correctly for the low
+    points). **THE MEASURED MAP:** every conserved point heals the Leg-A y4/y5 breach; the
+    owner's joint 1.20–1.25 zone sits at s≈0.154–0.183 (interp; β≈0.634 there); **s=0.25 is the
+    one measured all-three-IDEAL point (1.2158/1.2097/1.1755; β 0.642; Bontempelli +685 SCAR
+    rank 35→21)**; β never nears 0.80 anywhere band-legal — the compression ambition formally
+    DEFERS to a future mechanism (upstream weighting or conservation-shape redesign, the mapped
+    chapter). E/B "passes" by denominator collapse at every point (Briggs 2070→1838…1144,
+    English ~flat) — flagged per the item-260 lesson, carried to the ladder as a known-cosmetic
+    pass. Sincerity failures 6–9/point, ALL tiny (≤+7 rank slip on ≤+3.4% SCAR; named in the
+    POINT files — e.g. s=0.25: Maynard +12/+7, L. McAndrew, Daniels, Ridley, Drew, Madden,
+    J. Daicos) — owner eyeballs at selection. Net ΣΔ +1850…+8478 (+0.3–1.2%, mild un-conserved
+    drift from the additive captain leg — within the owner's item-256 unfunded-permitted law).
+    Time ~35 min (<½× declared, harness faster than estimated — no anomaly). **OWNER WORD OPEN —
+    the disposition:** PARTIAL at an owner-chosen s in the band-legal zone (his stated joint
+    zone ⇒ s≈0.15–0.18; the measured all-ideal point ⇒ s=0.25; any chosen s gets its own full
+    measurement at the selection build, ~4 min) — this retires/re-purposes the 0.80 selection
+    bar (a ruling to record) — or IDENTITY (leaves the baseline breach standing; the chapter
+    then owes a different pre-bake fix). Both families now fully measured on real boards.
+    Leg C HOLDS.
