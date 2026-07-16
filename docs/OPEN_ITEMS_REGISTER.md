@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v235 2026-07-16 · PEN: **ITEM 262: CONSERVED MEASUREMENT RETURNED — prescreen PASS-WITH-CORRECTION at `fef2b64`: the build's "band ✓" at s≥0.55 was CAP-ONLY judging; re-judged, the band-legal zone is s ∈ {0.15–0.45}, the owner's joint 1.20–1.25 zone s≈0.154–0.183, all-three-IDEAL at s=0.25. OWNER WORD OPEN: the disposition/selection** · prior: v234
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v236 2026-07-16 · PEN: **ITEM 263: owner asks for an all-player sheet at baseline·0.10·0.15·0.20·0.25; 0.10/0.20 unmeasured ⇒ TWO-POINT conserved extension directive ISSUED (Low, ~10-20 min, base `fef2b64` STRICT, read-only). Sheet built on return** · prior: v235
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5639,3 +5639,15 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     bar (a ruling to record) — or IDENTITY (leaves the baseline breach standing; the chapter
     then owes a different pre-bake fix). Both families now fully measured on real boards.
     Leg C HOLDS.
+
+263. **OWNER ASKS FOR A FIVE-COLUMN RATINGS SHEET (baseline · s=0.10 · 0.15 · 0.20 · 0.25),
+    2026-07-16.** s=0.15 and 0.25 are already measured (item 262 CSVs); s=0.10 and 0.20 were in
+    NO grid. Owner chose "fire then five" over an interpolated sheet (the supervisor declined to
+    fabricate the two columns — consistent with the sincerity law). **DIRECTIVE ISSUED:
+    docs/DIRECTIVE_LEGB_conserved_2pt_2026-07-16.md** — the item-262 battery re-run at s ∈ {0.10,
+    0.20} on the PROVEN md5-frozen harness (ZERO new engine code, toggle unset, band-judged both
+    sides, all-804 SINCERITY CSVs same schema, A-PAIRS 2/3 scored); Low, 10–20 min, base
+    `fef2b64` STRICT, read-only, new branch under legb_conserved_2pt/. On return the supervisor
+    assembles the five-column all-player sheet (baseline·0.10·0.15·0.20·0.25: value + rank +
+    Δrank per player) from the CSVs. This is a VIEWING aid, NOT a selection — no disposition
+    ruling implied; the owner's partial/identity word stays open. Leg C HOLDS.
