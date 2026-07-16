@@ -1,4 +1,16 @@
-# MEMO — LEG B FUNCTIONAL FORM · v1.1 · 2026-07-16 · seat 9 (Fable) · EXTRA
+# MEMO — LEG B FUNCTIONAL FORM · v1.2 · 2026-07-16 · seat 9 (Fable) · EXTRA
+### v1.2 (OWNER-RULED LAW — register items 230/239/240; the open re-seal continues, new md5s in the
+### segment-4 PLAN): **WEIGHT, DON'T GATE.** The v1.1 hard floor manufactured phantom rookies
+### (MEASURED: 144 at floor-10, 94 aged ≤22) and even the phase-CONDITIONED exclusion rule wiped
+### real evidence (MEASURED: Sam Darcy's 2026 six games at 81.8 avg classified 'interruption' and
+### dropped). THE OWNER'S LAW (verbatim substance): "I don't think we should wipe the data from the
+### year — the games are still good information. It shouldn't be weighted as a full season, but one
+### game this year is still more valuable intel about his current ability than one game last year,
+### or 5 years ago." ρ therefore has NO exclusions, NO thresholds, NO classification: every played
+### season contributes, weighted by GAMES × RECENCY. This is CORE rule 7 verbatim ("statistics at
+### the finest resolution the sample supports, smoothed — never wide bins"): season-level
+### include/exclude WAS a wide bin. §2.1 superseded below (⟪v1.2⟫). Everything else (§2 blend
+### algebra · the price6 hook · captain-off δ · the onset ramp · grid {0.55–0.70}) UNCHANGED.
 ### v1.1 (the HALT-DRIVEN AMENDMENT — items 221/224; the OPEN RE-SEAL: this file's md5 moves and is
 ### re-recorded in the segment-3 PLAN before any candidate metric; silent mutation remains forbidden,
 ### honest correction is the sanctioned path). TWO MEASURED FACTS force it (seg-2/seg-3 diagnostics,
@@ -51,16 +63,31 @@ REJECTED, with the pre-sim evidence (§6 table B):
 - **Isotonic re-fit under a convexity floor**: least parametric, least auditable, step-function
   L-SMOOTH risk, no natural Reid extension. Rejected.
 
-### §2.1 — ⟪v1.1 SUPERSEDES v1.0⟫ ρ TRACKS REALISED OUTPUT; DOCHERTY CURED BY EXCLUSION, NOT SMOOTHING
+### §2.1 — ⟪v1.2 SUPERSEDES v1.1⟫ ρ = GAMES-AND-RECENCY-WEIGHTED REALISED OUTPUT (weight, don't gate)
+**The construction:** over every season with games > 0, season weight **u_s = games_s · d^(Y_now − year_s)**
+with decay **d = 0.5 per year back** (DECLARED; owner-tunable at the segment-4 checkpoint; d=0.5 puts
+~effective mass on the recent two seasons, matching the frozen estimator's horizon).
+**ρ_num(p) = Σ u_s·(avg_s − REPL[pos]) / Σ u_s**; **ρ = ρ_num / RHO_DEN[pos]** where RHO_DEN = the
+demonstrated-proven positional MEDIAN of the same games×recency measure (numerator and denominator share
+one law). **Zero played seasons in the store ⇒ w = 0** (the map is identity; E already vanishes there).
+WHY THIS IS THE LAW (all measured, register item 239 + the Darcy row): a hard floor made 144 phantom
+rookies; the conditioned rule made zero phantoms but still WIPED real games (Darcy's six 2026 games at
+81.8); games×recency wipes NOTHING — an injury-shortened year contributes exactly its games' worth (a
+3-game season is 1/7th the weight of a 21-game season at equal recency — Docherty handled by weight, not
+exclusion), a developing kid's early seasons count proportionally (no phantom rookies BY CONSTRUCTION),
+and a veteran's current form carries the highest PER-GAME weight so decline is neither wiped nor
+inflated (Darcy Moore priced off reality). NO BAR, NO phase test, NO classification — every arbitrary
+threshold on this axis is gone. **λ PRE-GATE (segment-4 step 0):** measure λ of THIS construction with
+the pinned harness before the grid; **λ ≥ 0.95 ⇒ proceed; below ⇒ HALT with the number** (nearby
+constructions measured 0.9923–0.9942; the games×recency variant is expected in that range — expected is
+not measured, hence the gate). THE PREDECESSOR NOTE
 v1.0 ruled ρ = the smoothed level; MEASURED FALSE as a target (λ = 0.124 — nearly output-flat for
 proven-27+; the blend then flattens price-vs-output regardless of hook or s). ⟪v1.1⟫: **ρ = the
 player's ROBUST REALISED above-replacement output ratio — recent-2 QUALIFYING-season average points
-above REPL[pos], over the positional demonstrated-proven median of the same measure.** A QUALIFYING
-season = games ≥ the declared floor (the estimator's own o-construction); injury-wiped seasons are
-SKIPPED, not averaged in — Docherty is protected because his ratio reads his last two REAL seasons,
-while the axis keeps elasticity ≈ 1 against realised output. Zero qualifying seasons in window ⇒
-w = 0 (untouched — the evidence weight already vanishes there). The v1.0 worry (single-season
-noise) is met by the two-season window + the qualifying floor, not by an axis that cannot move.
+above REPL[pos], over the positional demonstrated-proven median of the same measure.** (v1.1's text, retained for lineage): it read ρ from the recent-2 seasons above a hard games floor.
+RETIRED at v1.2 — the floor manufactured phantom rookies (measured) and exclusion of any kind wipes
+real evidence (measured); the games×recency weighting achieves the injury-robustness the floor was
+for, without deleting a single game.
 ### §2.2 — Smooth onset at the replacement bar
 w ramps to zero continuously over a declared width above the bar (one parameter, stated in the
 directive) — no cliff between sub-bar and above-bar players (audit #28). No age gates anywhere:

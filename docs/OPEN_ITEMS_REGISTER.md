@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v212 2026-07-16 · PEN: **DIAGNOSTIC RETURN PRESCREEN PASS (item 239): owner's catch MEASURED — floor-10 makes 144 phantom rookies (94 ≤22), 47% of windows rewritten; conditioned rule = ZERO phantoms, λ 0.9923, BAR-INSENSITIVE, Darcy dropped, proven +0.23. THE POST-PEAK RULING ASKED (KEEP rec vs EXCLUDE — Darcy Moore +20.7 the named cost). Memo v1.2 + segment-4 directive fire on the word** · prior: v211
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v213 2026-07-16 · PEN: **R105.4 OWNER-RULED — WEIGHT, DON'T GATE (item 240): rho = games×recency-weighted realised output (u=games·0.5^yearsback), NO exclusions/thresholds/classification — the owner's law, measured against the Darcy row (his six 2026 games at 81.8 were being WIPED). MEMO → v1.2 · ACCEPTANCE → v1.19 (λ pre-gate 0.95) · SEGMENT-4 DIRECTIVE ISSUED (base 243106b STRICT). Rotation next turn** · prior: v212
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5187,3 +5187,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     off his age-24/25 self; λ degrades to 0.9015, back in empty-grid territory; individual genuinely-
     injured stars are the OWNER-READ instrument's job, not a blanket rule's). On the word: MEMO v1.2
     + acceptance re-seal + the SEGMENT-4 directive (base 243106b STRICT) in one turn, then ROTATION.
+
+240. **R105.4 — THE QUALIFYING LAW, OWNER-RULED: WEIGHT, DON'T GATE (2026-07-16; owner verbatim
+    substance: "I don't think we should wipe the data from the year — the games are still good
+    information... one game this year is still more valuable intel about his current ability than
+    one game last year, or 5 years ago").** The ruling SUPERSEDES the KEEP/EXCLUDE question — both
+    options gated at season level, and the named-case data proved the owner right: the conditioned
+    rule was WIPING Sam Darcy's six 2026 games at 81.8 avg (classified 'interruption'; window
+    [2024,2025]) — real current-form evidence deleted. **MEMO → v1.2** (§2.1 ⟪v1.2⟫: u_s = games_s ·
+    0.5^(Ynow−year_s) over every played season; ρ_num = Σu·(avg−REPL)/Σu; RHO_DEN = proven
+    positional median of the same measure; zero played ⇒ w=0; FORBIDDEN: any exclusion, floor, or
+    phase test — every arbitrary threshold on this axis is GONE; CORE rule 7 made literal). Docherty
+    handled by weight (a 3-game year is 1/7th a 21-game year), phantom rookies impossible BY
+    CONSTRUCTION, veteran decline neither wiped nor inflated. **ACCEPTANCE → v1.19** (rho_construction
+    entry + the λ PRE-GATE: segment-4 step 0 measures λ of the built construction, ≥0.95 or HALT —
+    nearby constructions measured 0.992-0.994 but expected ≠ measured). **THE SEGMENT-4 DIRECTIVE
+    ISSUED** (base `243106b` STRICT · seals embedded · replace the stub pair with the law · A/B
+    re-prove · the grid · the FULL item-206 return). The three-paradigm arc closed: floor → gate →
+    WEIGHT, each killed by measurement or the owner; the surviving law contains no number a future
+    seat could tune to pass a gate. Rotation at the NEXT filing (the pack fold + rev147).
