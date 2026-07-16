@@ -372,22 +372,17 @@ def _est(p,Y,Lo,Lc):                                          # ESTABLISHED leve
     sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
 def _coreM1(p,Y):
     Lo=cp._lvl_eff_orig(p,Y)
-    if not _EVW:
-        # ---- BASE: the four discrete regimes (RL_EVW=0 => byte-exact base board) ----
-        # D10 n==0 first-evidence f1 credit; multi-year n==0 (e.g. Tsatas: 4 list-years, no 10-game season)
-        # keeps the exposure-shrunk Lo path (injecting the 75%-par-prior n=1 asymptote was measured +940 on the
-        # Luke-ruled Tsatas A8 anchor and REJECTED). n>=4 established (_est); 1..3 thin ramp c=n/4.
-        n=_nqual(p,Y)
-        if n==0:
-            if Y!=INPROG_Y or any(x['games']>0 and x['year']<Y and (cp.debutyr(p)-1)<x['year'] for x in p['scoring']): return Lo
-            gy=sum(x['games'] for x in p['scoring'] if x['year']==Y and (cp.debutyr(p)-1)<x['year'])
-            f1=min(1.0, gy/max(1e-9,10.0*SEASON_FE))
-            if f1<=0.0: return Lo
-            return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
-        Lc=_lvlcurr(p,Y)
-        if n>=PROVEN_N: return _est(p,Y,Lo,Lc)
-        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
-    # ---- CONTINUOUS EVIDENCE WEIGHT (default): ONE evidence quantity E_q spans all four regimes (item 65) ----
+    # OBITUARY (Leg B, un-compress build 2026-07-16; SSI/CORE rule 7 — delete, don't disable): the dead
+    # `if not _EVW:` discrete FOUR-REGIME branch (n==0 first-evidence f1 credit · n>=4 established _est ·
+    # 1..3 thin ramp c=n/4 · else Lo) is DELETED here. It was SUPERSEDED by the continuous evidence weight
+    # below (one E_q quantity spans all four regimes; item 65) and executed ONLY under RL_EVW=0. The
+    # shipped/live board runs RL_EVW=1 (default) and NEVER took this branch, so its deletion is BYTE-EXACT
+    # for the live board (verified: RL_UNCOMP-inert board == 8d90c9ac unchanged). Leg A retired the same
+    # branch in the DORMANT twin `_lvl_eff_core` (:~216) and its Task 4b listed-but-did-not-cut this LIVE
+    # copy; this completes that cut (directive §7 / spec §4 / PLAN §8). The unrelated live `if not _EVW:`
+    # one-liner in `_expgate` (:192) is OUT of scope and untouched. Resurrection ref (the deleted regimes):
+    #   git show d3f703f~1:engine/rl_after/_merged_recover.py  (the pre-Leg-B _coreM1 body).
+    # ---- CONTINUOUS EVIDENCE WEIGHT: ONE evidence quantity E_q spans all four regimes (item 65) ----
     # 10-game bar dissolved (E_q counts qualifying seasons continuously) · nqual ramp + PROVEN_N cliff replaced
     # by the production blend (Lo->Lc->est) + pedigree weight pw(E_q); the thin->established transition is
     # continuous so no cliff is left "at the top of the staircase". Unqualified (E_q~0: the A8/Tsatas trap)
