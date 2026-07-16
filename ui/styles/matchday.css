@@ -61,12 +61,23 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .seg button.on{background:var(--volt);color:#0a0c10}
 .seg.dbg button.on{background:var(--edge);color:var(--dim)}
 .seg.lens button.on{background:var(--volt);color:#0a0c10}
+/* item 8: the +1/+2 forward lens is paused (projection law lands next chapter) — disabled affordance. */
+.seg.lens button.lensoff{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+
+/* ---- item 4: column headings (grid-aligned to the row templates) ---- */
+.rowhead{display:grid;gap:12px;align-items:end;padding:14px 16px 6px;border-bottom:1px solid var(--edge)}
+.rowhead.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
+.rowhead.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
+.rowhead .h{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);line-height:1.2}
+.rowhead .h.r{text-align:right}
+.rowhead .h.c{text-align:center}
+.rowhead .h small{display:block;font-size:8.5px;letter-spacing:.08em;color:var(--volt);opacity:.7;margin-top:2px}
 
 /* ---- board rows ---- */
-.rows{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.rows{margin-top:8px;display:flex;flex-direction:column;gap:8px}
 .row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
   padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
-.row.working{grid-template-columns:52px 26px 1fr 82px 92px 130px 118px 92px}
+.row.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
 .row.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
 .row:hover{background:var(--card-2);border-color:#2c3446}
 .row .rank{font-family:var(--cond);font-weight:900;font-size:24px;color:var(--faint);text-align:right}
@@ -79,11 +90,20 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
   text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);padding:2px 7px;margin-left:9px;
   vertical-align:3px;cursor:help}
 .row .pos{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+/* item 1: clubs per player — AFFL (lens focus) leads in volt, AFL muted beneath. Wrap, never clip. */
+.row .club{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.15}
+.row .club .affl{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--volt);overflow-wrap:anywhere}
+.row .club .afl{font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);overflow-wrap:anywhere}
 .row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
-/* segmented power bar — ten blocks, a block a decile of the top price */
-.pow{display:flex;gap:3px}
-.pow i{width:10px;height:14px;background:var(--edge)}
-.pow i.f{background:var(--volt)}
+/* item 3 (register item 163, owner-worded amendment to the LOCK, 2026-07-15): the CONTINUOUS value line.
+   The spectrum is painted on the track (anchored 0..top price); .vmask covers the unfilled remainder, so
+   the fill reveals the spectrum from the cool end up to the player's value — colour shifts as it fills.
+   Supersedes the ten-block bar; the figure alongside means colour is never the sole carrier (LOCK). */
+.vline{position:relative;height:11px;border-radius:2px;overflow:hidden;
+  background:linear-gradient(90deg,#3b4a5e 0%,#2bd4c8 22%,#7fe06a 48%,#c8f04a 72%,#f0c24a 100%)}
+.vline .vmask{position:absolute;top:0;bottom:0;right:0;background:var(--edge);
+  border-left:1px solid rgba(242,245,249,.4)}
+.vline-m{height:8px;border-radius:2px}
 .pill{justify-self:end;font-family:var(--mono);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
 .pill.up{background:rgba(74,222,128,.14);color:var(--up)}
 .pill.dn{background:rgba(240,101,94,.14);color:var(--dn)}
@@ -91,11 +111,36 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .pill.na{background:transparent;color:var(--faint);border:1px dashed var(--edge)}
 .row .meta{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right}
 
+/* ---- item 2: team-context lens (group/filter by AFFL club, ΣSCAR totals) ---- */
+.strip select.boardsel{background:var(--pitch);color:var(--text);border:1px solid var(--edge);
+  font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 8px;cursor:pointer}
+.clubbanner{display:flex;gap:20px;align-items:baseline;flex-wrap:wrap;background:var(--card-2);
+  border:1px solid var(--edge);border-left:4px solid var(--volt);padding:12px 16px;margin-top:12px}
+.clubbanner .cbname{font-family:var(--cond);font-weight:900;font-size:20px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--volt)}
+.clubbanner .cbstat{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+.clubbanner .cbstat b{color:var(--text);margin-left:4px}
+.clubhead{display:grid;grid-template-columns:48px 1fr auto auto;gap:14px;align-items:baseline;
+  padding:12px 16px 8px;margin-top:12px;border-bottom:2px solid var(--volt)}
+.clubhead .crank{font-family:var(--cond);font-weight:900;font-size:22px;color:var(--volt);text-align:right}
+.clubhead .cname{font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.03em;text-transform:uppercase;color:var(--text)}
+.clubhead .csig{font-family:var(--mono);font-weight:700;font-size:16px;color:var(--volt)}
+.clubhead .csig small{font-size:10px;color:var(--faint);font-weight:400}
+.clubhead .ccount{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.clubmore{font-family:var(--mono);font-size:11px;color:var(--faint);padding:6px 16px;border:1px dashed var(--edge);
+  border-top:0;background:var(--card)}
+
 /* ---- player card ---- */
 .card{max-width:640px;margin:20px auto 40px;background:var(--card);border:1px solid var(--edge);overflow:hidden}
 .card .head{padding:22px 24px 18px;border-bottom:1px solid var(--edge);border-left:6px solid var(--volt)}
 .card .name{font-family:var(--cond);font-weight:900;font-size:32px;letter-spacing:.02em;text-transform:uppercase;line-height:.98;overflow-wrap:anywhere}
 .card .id{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+/* item 1: clubs on the card head — AFL + AFFL, each clearly labelled. */
+.card .clubs{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:9px;font-family:var(--mono);font-size:12px;color:var(--text)}
+.card .clubs b{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;color:var(--faint);margin-right:6px}
+.card .clubs span:last-child b{color:var(--volt)}
 .card .cstamp{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:10px}
 .card .cstamp b{color:var(--dim)}
 .card .body{padding:20px 24px 34px}
@@ -147,12 +192,27 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .trow .tpin{color:var(--volt)}
 .pickchip{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--volt);border:1px solid var(--volt);padding:1px 6px;margin-right:6px}
-.powmini{display:flex;gap:2px}.powmini i{width:7px;height:11px;background:var(--edge)}.powmini i.f{background:var(--volt)}
 .ttotal{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--card-2)}
 .ttotal .k{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
 .ttotal .tfig{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--volt)}
-.addrow{padding:9px 16px;color:var(--faint);font-family:var(--mono);font-size:12px}
-.addrow select{background:var(--pitch);color:var(--text);border:1px solid var(--edge);font:inherit;padding:4px 6px;margin-left:6px}
+/* item 6: type-ahead combobox — dropdown font matched to the board's condensed type style. */
+.combo{position:relative;padding:9px 16px}
+.combo input.tradesearch{width:100%;background:var(--pitch);color:var(--text);border:1px solid var(--edge);
+  font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:8px 10px}
+.combo input.tradesearch:focus{outline:none;border-color:var(--volt)}
+.combo input.tradesearch::placeholder{color:var(--faint);text-transform:none;letter-spacing:.02em;font-weight:400}
+.combo .results{position:absolute;left:16px;right:16px;top:44px;z-index:30;background:var(--card-2);
+  border:1px solid var(--edge);max-height:280px;overflow:auto;box-shadow:0 10px 28px rgba(0,0,0,.55)}
+.combo .results button{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;
+  text-align:left;background:transparent;border:0;border-bottom:1px solid var(--edge);padding:8px 12px;cursor:pointer;
+  font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--text)}
+.combo .results button:hover{background:var(--volt);color:#0a0c10}
+.combo .results button .rv{font-family:var(--mono);font-weight:700;color:var(--faint)}
+.combo .results button:hover .rv{color:#0a0c10}
+.combo .results .rpick{color:var(--volt)}
+.combo .results .rpick small{font-family:var(--mono);font-weight:400;font-size:10px;color:var(--faint);letter-spacing:0}
+.combo .results button:hover .rpick,.combo .results button:hover .rpick small{color:#0a0c10}
+.combo .results .rnone{padding:9px 12px;color:var(--faint);font-family:var(--mono);font-size:12px}
 .verdict{margin-top:16px;background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--volt);padding:18px 20px}
 .verdict .gap{font-family:var(--mono);font-size:24px;font-weight:800}
 .verdict .gap.up{color:var(--up)} .verdict .gap.dn{color:var(--dn)} .verdict .gap.flat{color:var(--faint)}
@@ -177,8 +237,10 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--mono);text-align:center;line-height:1.9}
 
 @media(max-width:920px){
-  .row.working{grid-template-columns:42px 22px 1fr 96px 118px}
+  /* narrow: keep name · club · value · Δ (club is now first-class); pos/meta/bar fold away */
+  .row.working{grid-template-columns:40px 20px 1fr 120px 84px 96px}
   .row.public{grid-template-columns:42px 1fr 96px 120px}
-  .row .pos,.row .meta,.pow{display:none}
+  .row .pos,.row .meta,.vline{display:none}
+  .rowhead{display:none} /* headings track the wide grid; the narrow layout collapses columns */
   .desk{grid-template-columns:1fr}
 }

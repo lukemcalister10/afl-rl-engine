@@ -51,6 +51,68 @@ MD.trade = (function () {
     return "a " + pos + " " + ord + "-round pick (≈ pick " + best + ")";
   }
 
+  /* item 6: match a query to picks (1–80, individually) + players (type-ahead by name).
+     numeric query -> the exact/prefix picks; text query -> player-name substring. */
+  function matchItems(q) {
+    q = String(q || "").trim().toLowerCase();
+    const players = MD.seam.working.players || [];
+    const out = [];
+    if (!q) {
+      players.slice().sort(function (a, b) { return b.v - a.v; }).slice(0, 8)
+        .forEach(function (pl) { out.push({ t: "player", key: pl.key, label: pl.name, val: pl.v }); });
+      return out;
+    }
+    if (/^\d+$/.test(q)) {
+      for (let n = 1; n <= 80 && out.length < 6; n++) {
+        if (String(n).indexOf(q) === 0) out.push({ t: "pick", n: n, label: "Pick " + n, val: pickVal(n) });
+      }
+    }
+    players.filter(function (pl) { return String(pl.name).toLowerCase().indexOf(q) !== -1; })
+      .slice(0, 8)
+      .forEach(function (pl) { out.push({ t: "player", key: pl.key, label: pl.name, val: pl.v }); });
+    return out.slice(0, 12);
+  }
+
+  function combo(side, basket, container) {
+    const wrap = fmt.el("div", "combo");
+    const input = document.createElement("input");
+    input.className = "tradesearch";
+    input.type = "text";
+    input.setAttribute("placeholder", "add — search a player, or type a pick number 1–80…");
+    const results = fmt.el("div", "results");
+    results.style.display = "none";
+
+    function paint() {
+      const items = matchItems(input.value);
+      results.innerHTML = "";
+      if (!items.length) {
+        const none = fmt.el("div", "rnone", "no match — try a name, or a pick number 1–80");
+        results.appendChild(none);
+      }
+      items.forEach(function (it) {
+        const b = fmt.el("button");
+        const nm = it.t === "pick"
+          ? '<span class="rpick">' + fmt.esc(it.label) + " <small>2026 ND</small></span>"
+          : '<span>' + fmt.esc(it.label) + "</span>";
+        b.innerHTML = nm + '<span class="rv num">' + fmt.n(it.val) + "</span>";
+        b.addEventListener("mousedown", function (e) {
+          e.preventDefault(); // fire before the input blur so the pick registers
+          if (it.t === "pick") basket.push({ t: "pick", n: it.n });
+          else basket.push({ t: "player", key: it.key });
+          render(container);
+        });
+        results.appendChild(b);
+      });
+      results.style.display = "block";
+    }
+    input.addEventListener("focus", paint);
+    input.addEventListener("input", paint);
+    input.addEventListener("blur", function () { setTimeout(function () { results.style.display = "none"; }, 120); });
+    wrap.appendChild(input);
+    wrap.appendChild(results);
+    return wrap;
+  }
+
   function pane(side, title, container) {
     const p = fmt.el("div", "pane");
     p.innerHTML = "<h3>" + title + "</h3>";
@@ -71,30 +133,14 @@ MD.trade = (function () {
         meta = '<i>' + fmt.esc(pl ? pl.pos : "") + (pl && pl.age ? " · " + pl.age + "yo" : "") + "</i>";
       }
       row.innerHTML = '<span class="tnm">' + nm + meta + "</span>" +
-        MD.powerBar(val, maxRail(), true) +
+        MD.valueLine(val, maxRail(), true) +
         '<span class="tfig num">' + fmt.n(val) + "</span>";
       p.appendChild(row);
     });
-    // add-row dropdown (players + a few picks)
-    const add = fmt.el("div", "addrow");
-    const sel = document.createElement("select");
-    sel.innerHTML = '<option value="">+ add player or pick…</option>' +
-      '<optgroup label="Picks">' + [1, 5, 10, 20, 30, 40].map(function (n) {
-        return '<option value="pick:' + n + '">Pick ' + n + " (" + fmt.n(pickVal(n)) + ")</option>";
-      }).join("") + "</optgroup>" +
-      '<optgroup label="Players (top 40)">' +
-      MD.seam.working.players.slice().sort(function (a, b) { return b.v - a.v; }).slice(0, 40)
-        .map(function (pl) { return '<option value="player:' + pl.key + '">' + fmt.esc(pl.name) + " (" + fmt.n(pl.v) + ")</option>"; })
-        .join("") + "</optgroup>";
-    sel.addEventListener("change", function () {
-      if (!sel.value) return;
-      const parts = sel.value.split(":");
-      if (parts[0] === "pick") basket.push({ t: "pick", n: parseInt(parts[1], 10) });
-      else basket.push({ t: "player", key: parts[1] });
-      render(container);
-    });
-    add.appendChild(sel);
-    p.appendChild(add);
+    // item 6: a custom type-ahead combobox (replaces the bare <select>) — players are searchable and
+    // EVERY pick 1–80 is individually selectable by typing its number; the results dropdown is styled in
+    // the board's condensed type (requirement 3: dropdown font matched to the board type style).
+    p.appendChild(combo(side, basket, container));
 
     const tot = fmt.el("div", "ttotal");
     tot.innerHTML = '<span class="k">Total ' + (side === "give" ? "out" : "in") + '</span>' +

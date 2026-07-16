@@ -4,6 +4,39 @@ window.MD = window.MD || {};
 MD.board = (function () {
   const fmt = MD.fmt;
   let onlyReads = false;
+  // item 2 (team-context lens v1): filter the board to one AFFL club, and/or group by AFFL club with
+  // per-club ΣSCAR totals. Display-only aggregation (a sum of given board figures, never a re-valuation).
+  // The standalone AFFL club ranking PAGE is owner-deferred (2026-07-15 "build rest, defer page") — no
+  // spec was locatable; the ranking *information* lives here inline (club headers ranked by ΣSCAR).
+  let clubFilter = null;   // null == all AFFL clubs
+  let groupByClub = false;
+  let posFilter = null;    // item 5: null == all positions
+
+  /* distinct position labels present, in football order (for the position filter). */
+  function positions() {
+    const order = { "Mid": 1, "Ruck": 2, "Key Fwd": 3, "Fwd": 4, "Key Def": 5, "Def": 6 };
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) { if (p.pos) set[p.pos] = 1; });
+    return Object.keys(set).sort(function (a, b) { return (order[a] || 99) - (order[b] || 99); });
+  }
+
+  /* AFFL clubs present in the working board, alphabetical (for the filter control). */
+  function afflClubs() {
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) { if (p.affl_team) set[p.affl_team] = 1; });
+    return Object.keys(set).sort();
+  }
+
+  /* per-club aggregate over a row pool: ΣSCAR (sum of displayed values) + player count, ranked by ΣSCAR. */
+  function clubAgg(pool) {
+    const m = {};
+    pool.forEach(function (r) {
+      const c = r.p.affl_team || "—";
+      if (!m[c]) m[c] = { club: c, sigma: 0, n: 0 };
+      m[c].sigma += r.val; m[c].n += 1;
+    });
+    return Object.keys(m).map(function (k) { return m[k]; }).sort(function (a, b) { return b.sigma - a.sigma; });
+  }
 
   /* players visible at the active lens, with the displayed value + rank. */
   function rows(tier) {
@@ -39,6 +72,46 @@ MD.board = (function () {
   }
 
   function maxVal(pool) { return pool.length ? pool[0].val : 1; }
+
+  /* item 2: a club group header — club name · rank · ΣSCAR total · player count. */
+  function clubHeader(c, rank) {
+    const el = fmt.el("div", "clubhead");
+    el.innerHTML = '<span class="crank num">' + (rank || "—") + "</span>" +
+      '<span class="cname">' + fmt.esc(c.club) + "</span>" +
+      '<span class="csig num">Σ ' + fmt.n(c.sigma) + ' <small>SCAR</small></span>' +
+      '<span class="ccount num">' + fmt.n(c.n) + " players</span>";
+    return el;
+  }
+
+  /* item 2: a single-club context banner shown when the board is filtered to one AFFL club. */
+  function clubBanner(c, rank, clubRanks) {
+    const total = Object.keys(clubRanks).length;
+    const el = fmt.el("div", "clubbanner");
+    el.innerHTML = '<span class="cbname">' + fmt.esc(c.club) + "</span>" +
+      '<span class="cbstat">club rank <b>' + (rank || "—") + "</b> of " + total + "</span>" +
+      '<span class="cbstat">ΣSCAR <b class="num">' + fmt.n(c.sigma) + "</b></span>" +
+      '<span class="cbstat"><b class="num">' + fmt.n(c.n) + "</b> players</span>";
+    return el;
+  }
+
+  /* item 4: a column-heading row, grid-aligned to the tier's row template (a label on every column). */
+  function boardHead(tier) {
+    const s = MD.state;
+    const el = fmt.el("div", "rowhead " + tier);
+    if (tier === "working") {
+      const dh = s.lens !== 2 ? "Δ vs now" : (s.deltaBase === "bake" ? "Δ vs bake" : "Δ vs round");
+      el.innerHTML =
+        '<span class="h r">#</span><span class="h c">★</span><span class="h">Player</span>' +
+        '<span class="h">Pos</span><span class="h">Club <small>AFFL · AFL</small></span>' +
+        '<span class="h r">Value</span><span class="h">vs top</span>' +
+        '<span class="h r">' + dh + '</span><span class="h r">Pick · Yr</span>';
+    } else {
+      el.innerHTML =
+        '<span class="h r">#</span><span class="h">Player</span><span class="h">Pos</span>' +
+        '<span class="h r">Value</span><span class="h">vs top</span><span class="h r">Movement</span>';
+    }
+    return el;
+  }
 
   function deltaPill(p, displayedVal) {
     const s = MD.state;
@@ -86,8 +159,12 @@ MD.board = (function () {
     b.innerHTML =
       '<span class="rank num">' + r.rank + "</span>" + pin + nm +
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
+      // item 1: AFL club + AFFL club, listed per player (AFFL is the team-context lens focus, so it leads
+      // in volt; AFL is the muted sub-line). Display-only strings from the bundle; "—" when absent.
+      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(p.affl_team || "—") + "</span>" +
+        '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
-      MD.powerBar(r.val, maxV) +
+      MD.valueLine(r.val, maxV) +
       deltaPill(p, r.val) +
       '<span class="meta">' + (p.pk ? "pk " + p.pk : "—") + " · ’" + String(p.yr || "").slice(2) + "</span>";
     b.addEventListener("click", function () { MD.go("card", p.key); });
@@ -96,20 +173,21 @@ MD.board = (function () {
 
   function publicRow(r, maxV) {
     const p = r.p;
+    // item 7 (de-clunk): ONE movement instance, correctly aligned. The old row emitted two "steady"
+    // pills (value-move + rank-move) into a 6-column grid, so the seventh cell wrapped under the name —
+    // the duplicated "steady" the owner flagged. Collapsed to a single movement-vs-previous-round pill
+    // (rank movement rides its tooltip); the row now emits exactly its grid's columns.
     const move = p.dRound == null
-      ? '<span class="pill flat" title="movement vs previous round — published with the weekly loop">— steady</span>'
-      : '<span class="pill ' + fmt.cls(p.dRound) + '">' + fmt.signed(p.dRound) + "</span>";
-    const rankMove = p.dRoundRank == null
-      ? '<span class="pill flat">— steady</span>'
-      : '<span class="pill ' + fmt.cls(p.dRoundRank) + '">' +
-        (p.dRoundRank > 0 ? "▲ " + p.dRoundRank : p.dRoundRank < 0 ? "▼ " + Math.abs(p.dRoundRank) : "— 0") + "</span>";
+      ? '<span class="pill flat" title="Movement vs previous round — value and rank both publish with the ' +
+        'weekly loop (Phase 3). Nothing fake shown until then.">— steady</span>'
+      : '<span class="pill ' + fmt.cls(p.dRound) + '" title="movement vs previous round">' + fmt.signed(p.dRound) + "</span>";
     const b = fmt.el("button", "row public");
     b.innerHTML =
       '<span class="rank num">' + r.rank + "</span>" +
       '<span class="nm">' + fmt.esc(p.name) + "</span>" +
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
-      MD.powerBar(r.val, maxV) + move + rankMove;
+      MD.valueLine(r.val, maxV) + move;
     return b;
   }
 
@@ -125,11 +203,29 @@ MD.board = (function () {
       wrap.appendChild(fmt.el("span", "lbl", "Board lens"));
       const lens = fmt.el("div", "seg lens");
       MD.config.LENS_LABELS.forEach(function (lab, i) {
+        // item 8: DISABLE the +1/+2 forward-lens toggle (indices 3,4). The forward projection is the
+        // KNOWN, RULED defect (THE LENS PROJECTION LAW, register v46: production not accrued) — the ENGINE
+        // fix rides the next (merged PVC+flex) chapter. Here we only gate the toggle so the board never
+        // shows the numbers the owner has ruled wrong. The NUMBERS ARE NOT TOUCHED. −2/−1/Now (real
+        // backward re-values + now) stay live.
+        const forward = i > 2;
         const btn = fmt.el("button", i === s.lens ? "on" : "", lab);
-        btn.addEventListener("click", function () { s.lens = i; render(container); });
+        if (forward) {
+          btn.disabled = true;
+          btn.classList.add("lensoff");
+          btn.title = "projection law lands next chapter";
+        } else {
+          btn.addEventListener("click", function () { s.lens = i; render(container); });
+        }
         lens.appendChild(btn);
       });
       wrap.appendChild(lens);
+      const lnote = fmt.el("span", "lbl", "+1/+2 paused — projection law lands next chapter");
+      lnote.style.color = "var(--faint)"; lnote.style.textTransform = "none"; lnote.style.letterSpacing = ".02em";
+      lnote.title = "The forward lens is the ruled LENS PROJECTION LAW defect (production not yet accrued); " +
+        "the engine fix rides the next chapter. The numbers are untouched — the toggle is paused so the board " +
+        "never shows values the owner has ruled wrong.";
+      wrap.appendChild(lnote);
 
       // Q-DELTA-BASE toggle (built; default = bake). Dimmed on a non-now lens (does not apply).
       wrap.appendChild(fmt.el("span", "lbl", "Δ base"));
@@ -168,6 +264,38 @@ MD.board = (function () {
       });
       wrap.appendChild(rseg);
 
+      // item 5: filter by position.
+      wrap.appendChild(fmt.el("span", "lbl", "Position"));
+      const psel = document.createElement("select");
+      psel.className = "boardsel";
+      psel.innerHTML = '<option value="">all positions</option>' +
+        positions().map(function (pp) {
+          return '<option value="' + fmt.esc(pp) + '"' + (posFilter === pp ? " selected" : "") + ">" +
+            fmt.esc(pp) + "</option>";
+        }).join("");
+      psel.addEventListener("change", function () { posFilter = psel.value || null; render(container); });
+      wrap.appendChild(psel);
+
+      // item 2: team-context lens — filter to one AFFL club + group-by-club (ΣSCAR totals).
+      wrap.appendChild(fmt.el("span", "lbl", "Team lens"));
+      const csel = document.createElement("select");
+      csel.className = "boardsel";
+      csel.innerHTML = '<option value="">all AFFL clubs</option>' +
+        afflClubs().map(function (c) {
+          return '<option value="' + fmt.esc(c) + '"' + (clubFilter === c ? " selected" : "") + ">" +
+            fmt.esc(c) + "</option>";
+        }).join("");
+      csel.addEventListener("change", function () { clubFilter = csel.value || null; render(container); });
+      wrap.appendChild(csel);
+      const gseg = fmt.el("div", "seg");
+      [["off", "group off"], ["on", "by club"]].forEach(function (pair) {
+        const on = (pair[0] === "on") === groupByClub;
+        const btn = fmt.el("button", on ? "on" : "", pair[1]);
+        btn.addEventListener("click", function () { groupByClub = pair[0] === "on"; render(container); });
+        gseg.appendChild(btn);
+      });
+      wrap.appendChild(gseg);
+
       // Debug slugs
       wrap.appendChild(fmt.el("span", "lbl", "Debug"));
       const dbg = fmt.el("div", "seg dbg");
@@ -189,24 +317,56 @@ MD.board = (function () {
 
     const byKey = MD.seam.indexed().byKey;
     let pool = rows(s.tier);
-    const maxV = maxVal(pool);
+    const maxV = maxVal(pool);              // global board top (share-of-top-price reference), pre-filter
     if (s.tier === "working" && onlyReads) {
       pool = pool.filter(function (r) { return MD.anchors[r.p.key]; });
     }
+    // item 5: position filter (applies before club aggregation, so ΣSCAR/ranks respect the active
+    // position lens — e.g. "which club has the strongest mids").
+    if (s.tier === "working" && posFilter) {
+      pool = pool.filter(function (r) { return r.p.pos === posFilter; });
+    }
 
+    // item 2: canonical club ranking (ΣSCAR over the full unfiltered pool) — used for club-rank badges.
+    const clubRanks = {};
+    if (s.tier === "working") clubAgg(pool).forEach(function (c, i) { clubRanks[c.club] = i + 1; });
+
+    // item 2: filter to a single AFFL club (working tier).
+    if (s.tier === "working" && clubFilter) {
+      pool = pool.filter(function (r) { return (r.p.affl_team || "—") === clubFilter; });
+      const ca = clubAgg(pool)[0];
+      if (ca) container.appendChild(clubBanner(ca, clubRanks[clubFilter], clubRanks));
+    }
+
+    if (pool.length) container.appendChild(boardHead(s.tier)); // item 4: column headings
     const rowsEl = fmt.el("div", "rows");
-    pool.slice(0, 60).forEach(function (r) {
-      rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
-    });
+    if (s.tier === "working" && groupByClub) {
+      // grouped: club headers ranked by ΣSCAR, each with its top players — the team-context lens (inline
+      // club ranking; the standalone page is owner-deferred).
+      clubAgg(pool).forEach(function (c) {
+        rowsEl.appendChild(clubHeader(c, clubRanks[c.club]));
+        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; }).slice(0, 6);
+        mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
+        const more = c.n - mine.length;
+        if (more > 0) rowsEl.appendChild(fmt.el("div", "clubmore", "+ " + fmt.n(more) + " more " +
+          fmt.esc(c.club) + " player" + (more === 1 ? "" : "s")));
+      });
+    } else {
+      pool.slice(0, clubFilter ? pool.length : 60).forEach(function (r) {
+        rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
+      });
+    }
     container.appendChild(rowsEl);
 
     const foot = fmt.el("footer", "foot");
     if (s.tier === "working") {
-      foot.innerHTML = "volt = your touch (reads · rules · controls) · blocks = share of the top price, one block a decile · " +
-        "movement pills always signed · override headroom lives on the card's waterfall · showing top 60 of " +
-        fmt.n(pool.length) + (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
+      const shown = groupByClub ? "grouped by AFFL club" :
+        (pool.length > 60 ? "showing top 60 of " + fmt.n(pool.length) : "showing all " + fmt.n(pool.length));
+      foot.innerHTML = "volt = your touch (reads · rules · controls) · the value line = share of the top price, its colour warming as it fills · " +
+        "movement pills always signed · override headroom lives on the card's waterfall · " + shown +
+        (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
     } else {
-      foot.innerHTML = "blocks = share of the top price, one block a decile · movement pills always signed, never colour alone · public trim — no ids, no internals";
+      foot.innerHTML = "the value line = share of the top price, its colour warming as it fills · movement pills always signed, never colour alone · public trim — no ids, no internals";
     }
     container.appendChild(foot);
   }
