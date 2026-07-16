@@ -42,8 +42,9 @@ word): site implementation ~1.5–2.5 h · frozen-suite measurement + s-selectio
   **`8b8ab7d`** exactly (the Leg-A candidate head; PR #100). Verify:
   `git ls-remote https://github.com/lukemcalister10/afl-rl-engine claude/iso-corr-evidence-fade-jnda76`
   must print `8b8ab7d3772d1d5b653be01a2d76834ea6207b8b`. Any other SHA ⇒ HALT-AND-ASK.
-- **Docs base:** `git ls-remote https://github.com/lukemcalister10/afl-rl-engine main` — main AT OR
-  AFTER `629211e`, and `git diff --name-only 629211e..main` must be `docs/`-ONLY. Fetch the FEED docs
+- **Docs base (RE-PINNED at register item 208 — the owner's #99 merge legitimately moved main with
+  ui/ files):** `git ls-remote https://github.com/lukemcalister10/afl-rl-engine main` — main AT OR
+  AFTER `fcbd03a`, and `git diff --name-only fcbd03a..main` must be `docs/`-ONLY. Fetch the FEED docs
   from that main.
 - Boot: Guard 5 asserts store `b1fd0bce` on entry of every gate/panel run. Store is NOT touched by
   this job (see FENCE).

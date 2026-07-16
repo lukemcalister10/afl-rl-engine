@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v180 2026-07-16 · PEN: **LEG-B DIRECTIVE AMENDED (item 207, owner-ruled): STOP-AFTER-PLAN checkpoint — the build HALTS at its PLAN commit; supervisor prescreens the plan (sites · ρ feed · hashes · conservation); owner pastes PROCEED. Fire word still open** · prior: v179
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v181 2026-07-16 · PEN: **#99 MERGED BY THE OWNER (item 208) — THE UI v1.2 LINE IS CLOSED; the Leg-B directive's docs base RE-PINNED to fcbd03a (the merge made the 629211e diff non-docs-only — a false-halt trap, defused). FIRE WORD still the one open owner word** · prior: v180
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4647,3 +4647,14 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     chat; rejected plans return as amended PLAN commits, never improvisation. TIME re-banded: ~20-30
     min to checkpoint + 4-6.5 h after. Cost: one round-trip of latency; bought on an EXTRA leg
     re-fitting the central pricing surface. The FIRE word remains the one open owner word.
+
+208. **#99 MERGED — THE UI v1.2 LINE CLOSED + THE LEG-B DOCS BASE RE-PINNED (2026-07-16).** Owner
+    clicked merge: main gained `23b18c0` (Merge PR #99, head cf78878 — v1.2 + the v1.2.1 display fix;
+    Tier 3, prescreened items 191/202, owner-viewed). UI v1.3 remains approved-unfired (item 196);
+    the post-Leg-E UI pass remains deferred-flagged. CONSEQUENCE CAUGHT ON THE SUPERVISOR'S OWN
+    FRESHNESS CHECK: the Leg-B directive's docs-base guard read "diff from 629211e docs/-only" — the
+    merge legitimately put ui/ in that diff, so an obedient build would have FALSE-HALTED. The
+    directive is AMENDED IN PLACE: docs base = main at-or-after `fcbd03a`, docs/-only diff from
+    there. The ENGINE base is untouched (`8b8ab7d` STRICT — the merge does not touch the candidate
+    branch). Lesson already in CORE (THE BASE PIN: main MOVES between writing and pasting); recorded
+    here because this instance was an OWNER merge, not the pen.
