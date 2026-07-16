@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v172 2026-07-16 · PEN: **LEG A PRESCREEN — PASS WITH TWO OWNER ITEMS (item 198: R104.8 decomposition VERIFIED 37/37 + global 2652/2652 production-frozen · fence clean · store b1fd0bce untouched · OFF-board == 790136a3 · English 1.766× · B1 over-1.30 pre-existing+0.010, owner posture word asked · A4 Reid rank-only) · DECISIONS → v109 (R104.9 folded) · manifest → v4.34** · prior: v171
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v173 2026-07-16 · PEN: **ITEM 198 CORRECTED IN PLACE (the OFF-board md5 line was REPORT-ONLY mislabelled as verified — wrong artifact compared; value-level evidence stands; OFF-rebuild md5 assertion added to the COLD-AUDIT checklist). Verdict UNCHANGED: PASS WITH TWO OWNER ITEMS; B1 posture word open** · prior: v172
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4476,9 +4476,15 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     store md5 at the head == `b1fd0bce` (untouched). **THE R104.8 HARD CHECK PASSES** — the committed
     DECOMP.txt: GLOBAL raw_ev byte-identity 2652/2652 (production moved on 0 rows); all 37
     above-projection young trims decomposed, every row rawev==YES with iso-ratio == value-ratio
-    (Cadman 1.1610→1.0129, 3356→2929 — the mid-build face, exact). **KILL-SWITCH A/B:** committed
-    board_off.json md5 == **790136a3** (the v2.10 board, byte-exact) + B4 PASS (ON board 8d90c9ac
-    byte-agree). PLAN-first held; 7 per-task commits. Gate snapshot `gates_a83c9f6d.json` read by this
+    (Cadman 1.1610→1.0129, 3356→2929 — the mid-build face, exact). **KILL-SWITCH A/B — TRUST LABEL CORRECTED (v173, same day):** this item FIRST claimed
+    "committed board_off.json md5 == 790136a3" — WRONG ARTIFACT: board_off.json is a 2652-player
+    measurement DUMP (its md5 is 27003c7e, this seat's own check), not the board export. Correct
+    provenance: the OFF==v2.10 identity is REPORT-ONLY at the full-board-md5 level (return prose +
+    the VALUE_FLOW.md header); the committed EVIDENCE is value-level (the OFF/ON dumps, 2652 players,
+    zero-diff analysis) + B4 PASS (ON board 8d90c9ac byte-agree) + store untouched. **THE LADDER'S
+    COLD AUDIT RE-RUNS THE OFF REBUILD AND ASSERTS ITS md5 == 790136a3** — added to the audit
+    checklist. The error and its correction are both recorded (the header never moves without the
+    content). PLAN-first held; 7 per-task commits. Gate snapshot `gates_a83c9f6d.json` read by this
     seat: B2/B3/B4/B6 PASS · A2 Curtis standing-fail (unchanged by ruling D7) · panel/self-test per
     return. **THE THREE NARROWEST MARGINS (OQ-B):** (1) **B1 G-COHORT y5 = 1.3160 vs 1.30 — OVER**
     (pre-existing: base 790136a3 = 1.3057 under the LAPSED waiver; Leg A widens ~+0.010 — the fade
