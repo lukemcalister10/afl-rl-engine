@@ -1,0 +1,5 @@
+# transient run scaffolding only; all measurement deliverables are tracked
+*.log
+*.err
+PT_*.json
+DRIVER.log
