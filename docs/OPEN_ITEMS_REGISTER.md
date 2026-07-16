@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v222 2026-07-16 · PEN: **item 249: the owner's directive re-check caught a DANGLING DOCS PIN in segment-5 (b89703f = the pre-amend orphan, never pushed — a fresh clone HALTs on it); fixed → 0163ed5. Seals + base verified live-good. ROOT CAUSE: pin-then-amend; standing fix: NEVER amend after embedding a SHA — fill pins in a FOLLOW-UP commit. Bake timing clarified to the owner: ONE bake, chapter end, after Legs B-E + the ladder** · prior: v221
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v223 2026-07-16 · PEN: **THE SEAT-9 ROTATION (item 250): rev148 + DECISIONS v115 (R105.6 folded) + manifest v4.41 filed AS ONE CASCADE and second-checked pre-push. Segment 5 in flight; its mini-checkpoint = seat 10's first act. Seat-9 token REVOKE = owner to-do NOW** · prior: v222
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5361,3 +5361,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     at-or-after the PREVIOUS push head.** Bake timing also clarified on the owner's question: ONE
     bake per chapter, at the END — B → C → D → E → ladder (audit · sealed reads · viewing) → word →
     bake → v2.11; the earlier 'consequences' sentence compressed the chain misleadingly.
+
+250. **THE SEAT-9 ROTATION FILING (2026-07-16).** Segment 5 FIRED (owner) — the fork is closed and
+    the bounded rotation executes. Filed as ONE CASCADE (the item-242 lesson): **HANDOVER rev148**
+    (the four-iteration Leg-B story CLOSED · segment 5 + its mini-checkpoint as seat 10's first act
+    · the queue to the ONE chapter-end bake · the standing-conduct block incl. all three pin rules)
+    · **DECISIONS v115** (R105.6 folded verbatim-substance; §2 OPEN WORDS: NONE; to-dos = PK sync +
+    REVOKE the seat-9 token NOW) · **manifest v4.41** (all rows current; seals cited = the segment-5
+    FEED). SECOND-CHECKED PRE-PUSH per the owner's instruction (the check script + its verdicts in
+    this item's commit). Seat 9's ledger, honest both ways: the catches (the pre-sim, five+
+    checkpoint saves, the axis/fake-rookie/decline diagnoses executed, four design iterations each
+    killed pre-ship, the final law owner-worded end to end) and the misses (two design defects, two
+    seat-filled numbers exposed, three pin failures, 15 doc defects across three owner-prompted
+    reviews — every one caught by the system or the owner before shipping harm). Seat 10 opens on
+    rev148 with one chat in flight and zero open owner words.
