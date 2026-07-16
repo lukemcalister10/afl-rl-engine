@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v210 2026-07-16 · PEN: **SEG-3 SCAFFOLDING HALT — PRESCREEN PASS (item 237): fence clean (2 engine files + session artifacts) · stub verified (one def, one call site, unreachable while inert) · six-site removal + obituary confirmed · A/B 8d90c9ac BYTE-EXACT both variants (committed proof read). SEG 3 RETIRES HERE. Segment-4 base = 243106b STRICT. AWAITING: the diagnostic → memo v1.2** · prior: v209
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v211 2026-07-16 · PEN: **THE SECOND OWNER-PROMPTED PACK REVIEW (item 238): 6 findings fixed in one filing — rev146 (one chat; seg-3 retired; 243106b pinned) · manifest v4.39 (stale HANDOVER row description) · DECISIONS v113 (to-do refs) · rev144/v111/v112 + 8 completed directives ARCHIVED · counter-calibration conduct line (self-estimates ~40% low: 165k vs 290k app counter). All edits POST-ASSERTED** · prior: v210
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5155,3 +5155,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     **SEG 3's JOB IS DONE — it retires with a clean record. SEGMENT-4 BASE = `243106b` STRICT**
     (goes into the segment-4 directive with memo v1.2). CRITICAL PATH NOW: the qualifying
     diagnostic's return → the post-peak owner ruling → memo v1.2 → segment 4 → the grid.
+
+238. **PACK REVIEW №2 (owner-prompted 2026-07-16) — SIX FINDINGS, ONE FILING, ALL ASSERTED.**
+    (1) rev145 stale against events (said TWO chats; seg 3 since retired at 243106b, item 237) →
+    **HANDOVER rev146** (one chat · segment-4 base pinned `243106b` STRICT · register cite
+    updated). (2) Manifest table's HANDOVER row still carried rev144's DESCRIPTION → fixed in
+    **v4.39** (lineage preserved this time — prepend, never rebuild; every must-string asserted).
+    (3) DECISIONS to-do referenced the superseded pack → **v113** (references only; no ruling
+    moved). (4) **rev144 + DECISIONS v111/v112 were never archived** — moved to docs/archive/.
+    (5) **Eight COMPLETED directives archived** (Leg A · seg 2 · seg 3 · LTI tool · the four UI
+    jobs); LIVE docs/ now carries only live work (kept: LEGB_uncompress — segment 4's deliverable
+    source · LEGC pre-draft · DIAG_qualifying_v2 in flight). (6) **COUNTER CALIBRATION (owner
+    telemetry):** seg-3 self-estimated ~165k vs the app's 290k — self-estimates run ~40% LOW;
+    standing line refined: report the APP COUNTER when visible, self-estimates are FLOORS
+    (rev146 §4). PK sync should use THIS pack (v4.39 · rev146 · v113).
