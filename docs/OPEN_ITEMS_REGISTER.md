@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v182 2026-07-16 · PEN: **FABLE-EFFICIENCY STANDING RULE (item 209, owner-agreed): substantial compute is a PARALLEL Opus/Code measurement job, NOT run in the Fable seat; the supervisor PROACTIVELY flags when a turn needs one BEFORE spending Fable tokens, and owns the heavy-vs-light judgement. Opus-as-supervisor REJECTED by the owner (loses thread; handovers error-prone) — Fable stays the supervisor seat** · prior: v181
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v183 2026-07-16 · PEN: **UI v1.3 DIRECTIVE ISSUED (item 210; the item-196 approved scope; Tier 3 parallel to Leg B; 2-3 h; fires on the owner's word). Leg B IN FLIGHT toward its PLAN checkpoint** · prior: v182
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4677,3 +4677,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     out of Fable, not from moving the SEAT off Fable. Also standing: context economy (grep never read
     wholesale; sparse-poll backgrounded computes) already in CORE — reaffirmed here as part of the same
     discipline.
+
+210. **UI v1.3 DIRECTIVE ISSUED (2026-07-16): `docs/DIRECTIVE_UI_v1_3_pocket_profiles_2026-07-16.md`
+    — the item-196 APPROVED scope (item 197(2)), fires on the owner's word.** Tier 3, ui/-only,
+    S3-parallel to the Leg-B writer (disjoint fences — engine vs ui). Medium · auto/PLAN-first ·
+    **2-3 h wall-clock** (item 188). Ring-fence: EXPECTED_BOARD == 790136a3 (shipped bundles the only
+    value source; the Leg-B candidate does not exist for this job); bundle byte-match proven in the
+    verdicts file. Scope: (1) club hover pocket-profile (overall/player/picks/top-5/top-10/Best-23/
+    non-Best-23, each absolute · % of club overall · vs league average); (2) positional breakdown per
+    club on the locations CSV Position/s with THE OWNER'S COUNTING RULE verbatim-in-substance (1 to
+    his position; DPP 0.5 each; DPP-MID exception: non-mid 1, mid 0) + committed unit tests; (3)
+    league average over the 16 RANKED clubs, Free Agents excluded from every denominator, footnoted
+    on-panel for the viewing; (4) lens-awareness stays deferred-flagged (post-Leg-E). Base: main
+    at-or-after 21d94a4, docs/-only diff. Merge = owner viewing + his click (the #99 pattern; the
+    build CONTINUES ITS OWN PR's branch for any follow-up — the item-202 sibling-branch miss is named
+    in the directive's house patterns by reference).
