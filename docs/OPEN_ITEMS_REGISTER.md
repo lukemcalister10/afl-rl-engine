@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v164 2026-07-16 · PEN: **SPEC → v1.1 (owner catch, item 185): per-leg EFFORT + SEAT allocation added — A High/Opus · B EXTRA/Fable-designed+form-memo, Code-built · C High/Opus · D High/Fable-directive, Opus build · E High/Fable projection-law construction, Opus build · UI v1.2 Medium/Opus. Fire word still open** · prior: v163 item 184 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v165 2026-07-16 · PEN: **LEG A FIRED (owner word, item 186) — the chapter is IN FLIGHT · SUPERVISOR MISS corrected + STANDING RULE filed: every PK-sync ask ships the referenced documents in the SAME turn (item 186) · THE UI v1.2 DIRECTIVE ISSUED (item 187: club valuation layer, Tier 3, S3-parallel, based on the SHIPPED board 790136a3)** · prior: v164 item 185 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4326,3 +4326,27 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     leverage lives in DESIGN DECISIONS, which land in Fable-authored directives; execution against a
     pinned design is Opus work. The supervisor seat (Fable) carries all directives + prescreens
     through the chapter — the standing allocation.
+
+186. **LEG A FIRED (owner-worded 2026-07-16: "I've fired leg A.") — THE PVC+FLEX CHAPTER IS IN
+    FLIGHT.** One writer in flight (the iso evidence-fade, directive of record
+    `docs/DIRECTIVE_LEGA_isofade_2026-07-16.md`); the supervisor prescreens its RETURN against item
+    130's value-flow check + the directive's measured set.
+    **SUPERVISOR MISS (owner-caught, same message):** the turn-8 PK-sync ask referenced manifest
+    v4.31 without couriering it — the owner had to fetch it from the repo himself. Directly
+    acknowledged. **STANDING RULE (owner-worded): whenever the supervisor asks for a PK sync, EVERY
+    document referenced in the ask ships via present_files IN THE SAME TURN.** Carried into the next
+    HANDOVER's supervisor-conduct block.
+
+187. **THE UI v1.2 DIRECTIVE ISSUED (2026-07-16) —
+    `docs/DIRECTIVE_UI_v1_2_club_valuation_2026-07-16.md`, couriered.** Tier 3 · Medium · Opus ·
+    ui/-fenced · **RUNS IN PARALLEL with Leg A** (S3: disjoint files; based on the SHIPPED board
+    790136a3/tag v2.10, never the Leg-A candidate; the UI recomputes no value). Scope = item 178
+    verbatim: the three club display names · the deterministic VALIDATE-OR-HALT inputs ingest (pick
+    bands from the owner's workbook STRUCTURE; values NEVER from the sheet — the live canonical pick
+    curve, stamp-asserted, mean over the band, 2027 × 0.90 per R104.5 balanced) · players-only vs
+    picks-included club filters (issued picks appear ONLY there, owner law) · the team summary page
+    (Overall/Player/Picks totals · Top-5 · Top-10 · Best-23 by exact greedy positional fill 2/4/5/4/2/1
+    + 5 bench · Non-Best-23) · the no-LLM owner update flow (edit sheet → GitHub web upload over
+    docs/inputs/ → reload; ships a HOW-TO one-pager under ui/). DEFERRED, flagged-not-built: posture
+    toggles + the +1/+2 re-enable (post-Leg-E). Fires on the owner's paste; merges on his click after
+    viewing.
