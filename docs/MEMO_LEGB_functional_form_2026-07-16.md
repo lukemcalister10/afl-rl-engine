@@ -1,4 +1,13 @@
-# MEMO — LEG B FUNCTIONAL FORM · v1.2 · 2026-07-16 · seat 9 (Fable) · EXTRA
+# MEMO — LEG B FUNCTIONAL FORM · v1.3 · 2026-07-16 · seat 9 (Fable) · EXTRA
+### v1.3 (R105.6 — THE OWNER'S ACCEPT, register item 248; "better, not perfect" — his words): the
+### kernel table measured the never-wipe ceiling at λ≈0.93 ⇒ β ceiling ≈0.83; the owner ACCEPTED it.
+### THREE owner-set numbers replace the two seat-authored ones: (1) FADE d = 0.25 (owner-worded: one
+### game last season ≈ a QUARTER of one this season — his R105.4 said 'more', v1.3 records HOW much);
+### (2) the machine-selection bar β ≥ 0.80 (OWNER-SET, reachable under the 0.83 ceiling; replaces the
+### seat's impossible 0.85); (3) the λ pre-gate is RETIRED WITH ITS PARENT (it was derived arithmetic
+### from 0.85; the GRID ITSELF is now the arbiter — empty ⇒ HALT with the table, the owner accepted
+### that risk with open eyes). R105.5 L-RECENCY (the guarded monotone-recency self-test) + the
+### ALL-804 movement ledger are BINDING deliverables of the build. Nothing else moves.
 ### v1.2 (OWNER-RULED LAW — register items 230/239/240; the open re-seal continues, new md5s in the
 ### segment-4 PLAN): **WEIGHT, DON'T GATE.** The v1.1 hard floor manufactured phantom rookies
 ### (MEASURED: 144 at floor-10, 94 aged ≤22) and even the phase-CONDITIONED exclusion rule wiped
@@ -65,8 +74,8 @@ REJECTED, with the pre-sim evidence (§6 table B):
 
 ### §2.1 — ⟪v1.2 SUPERSEDES v1.1⟫ ρ = GAMES-AND-RECENCY-WEIGHTED REALISED OUTPUT (weight, don't gate)
 **The construction:** over every season with games > 0, season weight **u_s = games_s · d^(Y_now − year_s)**
-with decay **d = 0.5 per year back** (DECLARED; owner-tunable at the segment-4 checkpoint; d=0.5 puts
-~effective mass on the recent two seasons, matching the frozen estimator's horizon).
+with decay **d = 0.25 per year back** ⟪v1.3, OWNER-SET — R105.6⟫ (one game last season ≈ a quarter of
+one this season; measured λ at this fade 0.9225, the strong end of the never-wipe family).
 **ρ_num(p) = Σ u_s·(avg_s − REPL[pos]) / Σ u_s**; **ρ = ρ_num / RHO_DEN[pos]** where RHO_DEN = the
 demonstrated-proven positional MEDIAN of the same games×recency measure (numerator and denominator share
 one law). **Zero played seasons in the store ⇒ w = 0** (the map is identity; E already vanishes there).

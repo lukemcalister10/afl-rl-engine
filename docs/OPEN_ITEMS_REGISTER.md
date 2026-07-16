@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v214 2026-07-16 · PEN: **R105.5 OWNER-RULED (item 241): L-RECENCY — a more recent game's PER-GAME weight must be ≥ any earlier season's game, ALWAYS (v1.2 already conforms: 0.5^back is monotone; now GUARDED by a halt-not-warn self-test) + THE FULL MOVEMENT LEDGER (all-804 per-player Δ from the map, committed artifact). Both ride the segment-4 PROCEED paste (the v1.19 seal stays intact for the FEED check); CONSTRAINTS/acceptance folds at the next natural re-seal** · prior: v213
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v222 2026-07-16 · PEN: **item 249: the owner's directive re-check caught a DANGLING DOCS PIN in segment-5 (b89703f = the pre-amend orphan, never pushed — a fresh clone HALTs on it); fixed → 0163ed5. Seals + base verified live-good. ROOT CAUSE: pin-then-amend; standing fix: NEVER amend after embedding a SHA — fill pins in a FOLLOW-UP commit. Bake timing clarified to the owner: ONE bake, chapter end, after Legs B-E + the ladder** · prior: v221
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5226,3 +5226,138 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     instruction governs, register-backed here); L-RECENCY + the ledger fold into CONSTRAINTS (→v1.19)
     and the acceptance JSON at the next natural re-seal (the return/ladder). Zero owner action now —
     the PROCEED paste carries it.
+
+242. **PACK REVIEW №3 (owner-prompted 2026-07-16) — FIVE FINDINGS, ONE FILING, ASSERTED.** (1)
+    rev146's pack line was stale AT ITS OWN FILING (cited DECISIONS v112 when v113 existed — a
+    defect my review №2 missed) and cited acceptance v1.18 (superseded same day). (2) rev146 showed
+    the diagnostic in-flight (returned + prescreened, item 239). (3) rev146's queue still described
+    the SUPERSEDED conditioned-predicate design and the dissolved post-peak ruling. (4) Manifest
+    acceptance row → v1.19. (5) THE SUBSTANTIVE ONE: **R105.4 and R105.5 lived only in the register
+    — DECISIONS, the rulings document, had fallen two owner rulings behind.** Fixed: **HANDOVER
+    rev147** (segment 4 as the one in-flight chat; the PROCEED-must-carry-R105.5 instruction
+    explicit for the incoming seat) · **DECISIONS v114** (R105.4 + R105.5 verbatim-substance; §2
+    OPEN WORDS: NONE — the post-peak question dissolved) · **manifest v4.40**. Seals RE-VERIFIED
+    live (memo 1ff0702a · acceptance 7a97717b — both == the segment-4 directive's FEED). All edits
+    post-asserted; predecessors archived. PATTERN NOTE for seat 10: three owner-prompted reviews
+    found 4+6+5 defects — the doc-update cascade (handover→decisions→manifest→acceptance rows) is
+    where a tired pen fails; VERIFY THE CASCADE as a unit at every filing.
+
+243. **SEGMENT-4 λ PRE-GATE HALT — THE LAW-VS-MECHANISM FORK (2026-07-16). Head `a427dd2` (fresh
+    fetch; 243106b IS an ancestor — candidate line intact; store/config unmoved; seals matched;
+    nothing built past step 0 — the build's conduct exemplary, the gate worked exactly as designed).**
+    MEASURED: λ_ρ(v1.2, d=0.5) = 0.8086, CI [0.68, 0.97], n=112 — the pinned anchors reproduced
+    exactly (floor6 0.9942 / floor10 0.8957), so the instrument is sound; the whole-career
+    games×recency weighting pulls elite ρ toward CAREER AVERAGE, decorrelating from recent-form
+    output. Decay sweep d∈[0.30,0.72]: best 0.8611 — none clears; only a horizon cap approaches,
+    which R105.4 forbids as exclusion. **WAIVE IS ARITHMETICALLY DEAD:** β_eff = (1−w)·0.6219 +
+    w·0.8086 ≤ 0.8086 at w=1 — the 0.85 grid can never fill. **THE FRAMING FILED:** the owner's
+    every-game-counts principle lives in **E** (total evidence, saturating, whole-record); **ρ is
+    the CURRENT-FORM measure** — for form, information decays hard; games are never wiped (positive
+    weight always) but old games' weight on NOW falls fast. **OPTIONS TO THE OWNER: A [REC]** — the
+    kernel-family diagnostic in seg 4 (geometric d 0.10-0.25 · Gaussian h 0.8-1.3 · soft-shoulder
+    window; EVERY candidate must pass two per-candidate assertions: positive weight for every played
+    game AND strict monotone per-game recency — R105.4/R105.5 intact by construction), λ + Sam
+    Darcy/Darcy Moore ρ per shape, owner rules the SHAPE from the named table; if NONE clears 0.95
+    ⇒ C. **B** — waive: shown dead, not offered seriously. **C** — chapter rethink (the fallback).
+    The paste is in the owner's hands. **ROTATION BOUNDED: seat 9 finishes THIS fork (table → shape
+    ruling → memo v1.3) then rotates UNCONDITIONALLY** — stated to the owner in the same turn.
+
+244. **THE 0.85/0.95 PROVENANCE — CORRECTED ON THE OWNER'S PROBE (2026-07-16).** For the record
+    before any ruling: **β ≥ 0.85 was seat-authored** (memo v1.0's quantification of "mostly
+    proportional" between β_c=0.62 and 1.0) and rode the package into acceptance — it is NOT an
+    owner-worded law and must not be defended as one. The owner's actual hard numbers: **E/B ≥ 1.75
+    captain-in (R104.3)** · G-COHORT 1.30 · the young protections · his sealed reads and viewing.
+    **λ ≥ 0.95 is pure derived arithmetic** from 0.85 + the dial's realistic max (w≈0.68): target
+    needed = (β_goal − 0.32·0.62)/0.68 — at β 0.80 it is ~0.89; at 0.75 it is ~0.81, exactly the
+    owner's law as-written. **λ involves NO prediction** (both rulers are contemporaneous over the
+    same recent period — the crystal-ball worry dissolved in-chat). **0.81 IS materially better
+    than nothing:** the owner's law at full dial ⇒ β_eff ≈ 0.75 vs today's 0.62 — whether that
+    SUFFICES is measurable against HIS gates (E/B 1.75 + the board to his eye), not against my
+    0.85. **DECISION STRUCTURE FILED:** (1) the kernel table lands first (running) — a conforming
+    shape ≥0.95 moots the question; (2) if none, the owner holds a LEGITIMATE RE-RULING of the β
+    target (his word moving his line with full information — rule-3-clean; never a seat
+    self-amendment) versus adopting a sharper conforming kernel; the E/B + cohort + reads rungs
+    bind either way.
+
+245. **THE KERNEL-FAMILY TABLE — PRESCREENED; THE RULING STRUCTURED (2026-07-16). Head `ef6bf1a`
+    (anchors byte-exact: d=0.50→0.8086, floor6→0.9942 — instrument sound; both invariant assertions
+    passed per candidate; nothing selected; board/store/config unchanged).** FINDINGS: (1) the
+    NEVER-WIPE CEILING ≈ 0.93 (best conforming shapes 0.92-0.93) ⇒ β_eff ceiling ≈ 0.83 — **the
+    seat-authored 0.85 is unreachable by ANY rule-conforming construction**; only exclusion
+    (floor6, 0.9942) reaches it, and R105.4 forbids exclusion. (2) gauss h=1.0's λ=1.0086 is a
+    NON-ROBUST point (CI [0.844,1.219]; neighbours 0.933/0.906; λ(h) non-monotone ⇒ ±0.1 noise) —
+    selecting it = tuning to luck; REJECTED in the recommendation. (3) **THE KERNEL MOVES ONLY THE
+    INJURED VETERAN:** Darcy Moore (2026 = 4-game 33.5 dip) has NEGATIVE ρ under every conforming
+    kernel ⇒ w=0 ⇒ priced at IDENTITY (no uplift, no markdown); only exclusion reads him +0.28.
+    Sam Darcy is robust (+2.5..+3.9) under every shape — the protected young cohort is
+    kernel-insensitive. **THE RULING PUT (one word): A [REC]** — keep the owner's law at d=0.5;
+    RETIRE the seat-authored β≥0.85 gate + its derived λ≥0.95 pre-gate; segment 4 runs the full
+    grid and returns the PER-s TABLE of the OWNER'S gates (E/B ≥1.75 hard · G-COHORT y4/y5/y6 ·
+    ≤22 slope · β as diagnostic); THE OWNER SELECTS s AT HIS VIEWING; the all-804 ledger regenerates
+    at his s. Consequences stated: β_eff ≈0.75; dip-injured veterans receive no uplift (identity;
+    the override/read instruments + the ledger cover individuals). **B** steeper d≈0.15 (ceiling
+    0.83) — CI-indistinguishable from d=0.5; choosing on the point = soft noise-tuning; DEFER,
+    revisitable after the owner's viewing. **C** gauss h=1.0 — REJECT (noise). **D** amend R105.4
+    back to exclusion — reachable 0.85 but re-makes 75 phantom rookies + re-wipes the ruled-in
+    games; not recommended. Acceptance re-seal (v1.20) and memo v1.3 fire ON THE WORD — an owner
+    moving the owner's line (rule-3-clean), never a seat self-amendment.
+
+246. **THE FADE SPEED RETURNED TO THE OWNER (2026-07-16; his probe: "if my rule gets 0.75 and your
+    gate gets 0.83, why follow my rule?").** CORRECTION OF FRAME, on the record: the 0.83 path is
+    NOT "the seat's gate" — it is THE OWNER'S LAW AT A FASTER FADE (never-wipe + monotone-recency
+    both intact); the owner's R105.4 verbatim said one game this year is worth MORE than one last
+    year and never said HOW MUCH — **the d=0.5 (half-per-year) was seat-filled, not owner-worded**
+    (the second seat-filled number exposed today, after the 0.85 gate). RULING RESTRUCTURED, both
+    questions in the owner's units: **Q1** confirm A (law stands · seat gates retired · four
+    candidate boards · owner selects strength at viewing · ledger at his choice). **Q2 — THE FADE,
+    owner-set:** one game last season is worth (i) HALF a game this season (his earlier instinct;
+    stretch ~0.75) · (ii) a QUARTER (~0.83) · (iii) ~15% (~0.83) — (ii)/(iii) measured
+    noise-indistinguishable; the true choice is half vs much-less-than-half, a football judgment on
+    how fast form information goes stale. CLARIFICATIONS FILED: the fade exists ONLY inside the
+    switched-off feature (board byte-identical today — nothing revalued yet); Moore's identity
+    treatment is NOT a verdict — the games×recency measure updates each ingested round, so a
+    returning veteran re-enters the uplift the moment his form reads positive. Memo v1.3 +
+    acceptance v1.20 + the segment-4 continuation fire on the two answers.
+
+247. **THE 0.75-vs-0.83 KNOT, UNTANGLED (2026-07-16; the owner pressed twice — correctly).** The
+    confusion was this seat's conflation, now separated on the record: (1) THE BAR (β≥0.85) selects
+    nothing — it is a pass line, and it sits ABOVE the measured ceiling (0.83) of EVERY legal
+    version of the owner's law; it retires or moves because it is IMPOSSIBLE, not because 0.75 was
+    preferred. (2) THE 0.83 comes from the FAST FADE (last-year game ≈ a quarter of this-year's) —
+    the owner's law verbatim, stronger setting. (3) THE MACHINE PICKER broke only because its
+    instruction cited the impossible bar; with a REACHABLE owner-set bar it works and SURVIVES.
+    **RESTRUCTURED REC (the seat's final form of it): QUARTER FADE (ceiling ~0.83; matches the
+    owner's evident intent) + THE MACHINE at an OWNER-SET bar β ≥ 0.80 (reachable; smallest-s-
+    clearing rule restored) + the owner's viewing rung unchanged (winning board · all-804 ledger ·
+    E/B ≥1.75 hard · overrule available at viewing).** Every number then measured or owner-set.
+    Awaiting the owner's wording; memo v1.3 + acceptance v1.20 + the segment-4 continuation fire on
+    it, then the bounded rotation.
+
+248. **R105.6 — THE ACCEPT (owner verbatim 2026-07-16: "Accept." — ruling the exact construction
+    put to him at items 245-247: QUARTER FADE + THE MACHINE AT AN OWNER-SET β ≥ 0.80 BAR + his
+    stated principle "I just don't want to let perfect get in the way of better").** EXECUTED:
+    **MEMO → v1.3** (d = 0.25 OWNER-SET — his R105.4 said a recent game counts 'more', v1.3 records
+    HOW much on his word; the seat's 0.85 bar replaced by his 0.80; the λ pre-gate RETIRED WITH ITS
+    PARENT — it was derived arithmetic from the dead 0.85; THE GRID IS THE ARBITER, empty ⇒ HALT,
+    risk accepted with open eyes). **ACCEPTANCE → v1.20** (decay + threshold provenance fields =
+    OWNER-SET; lambda_pre_gate removed; **leg_b.recency_invariant (R105.5) and leg_b.movement_ledger
+    ADDED** — the guarded invariant and the all-804 artifact are now acceptance-carried, closing
+    item 241's fold early). **SEGMENT-5 DIRECTIVE ISSUED** (fresh chat — seg 4 carries two
+    diagnostic rounds; the deliverable run is heavy; counter-calibration says don't risk it): base
+    `ef6bf1a` STRICT · seals embedded · the one-constant flip + the two guards at a MINI-checkpoint
+    · A/B · the grid at HIS bar · the full return + ledger + E/B vs HIS hard 1.75. SEG 4 RETIRES
+    with a clean record (the law wiring + two decisive diagnostics). Leg B's final design state:
+    ZERO seat-authored numbers — every constant measured or owner-worded. The pack cascade
+    (rev148 · DECISIONS v115 · manifest v4.41) rides THE ROTATION FILING, next.
+
+249. **THE DANGLING-PIN FIX (owner-prompted re-check 2026-07-16).** The segment-5 directive's docs
+    pin `b89703f` was the PRE-AMEND orphan: the SHA was embedded, then the commit AMENDED (to fill
+    it) — the amend replaced the commit, the orphan survives only in the authoring sandbox, and a
+    build's fresh clone HALTs unable to resolve it. The turn-57 journal's "holds by construction"
+    claim was WRONG (an at-or-after pin must EXIST to be diffed against). FIXED → `0163ed5` (real,
+    on remote main); seals (memo cf6c0080 · acceptance 6b83e336) and the base (`ef6bf1a`) verified
+    LIVE-GOOD in the same check. **STANDING FIX (the third pin lesson today, now mechanical): never
+    amend a commit after embedding its SHA anywhere — fill pins in a FOLLOW-UP commit, or pin
+    at-or-after the PREVIOUS push head.** Bake timing also clarified on the owner's question: ONE
+    bake per chapter, at the END — B → C → D → E → ladder (audit · sealed reads · viewing) → word →
+    bake → v2.11; the earlier 'consequences' sentence compressed the chain misleadingly.
