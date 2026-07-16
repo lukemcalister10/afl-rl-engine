@@ -6,7 +6,7 @@
 ## THE RULINGS (register item 216)
 1. **K ABSORBS G (owner-worded):** a K-FWD listing absorbs a G-FWD listing; K-DEF absorbs G-DEF.
    The G is slot ELIGIBILITY, never a DPP. Apply this collapse FIRST, then the counting rule.
-2. **The locations CSV is CORRECTED at main ≥ `<this filing's SHA>`** (four rows: Matt Whitlock →
+2. **The locations CSV is CORRECTED at main ≥ `cf0a410`** (four rows: Matt Whitlock →
    "K-DEF,K-FWD"; Flanders/Oskar Baker/Ed Langdon → "G-DEF,G-FWD"). **Regenerate
    `ui/app/positions_data.js` from the corrected CSV via the committed
    `ui/tools/extract_positions.py`** — no hand edits to the generated file.
