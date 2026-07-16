@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v162 2026-07-16 · PEN: **FOUR SPEC-§6 RULINGS FILED (item 183: English≥1.75x Briggs hard floor w/ owner viewing flexibility · posture sketch adopted, balanced canonical · 2027 pick discount per-posture 10/15/5 · sealed reads WRITTEN) · DECISIONS → v106 · manifest → v4.30 · THE LEG-A DIRECTIVE ISSUED (iso evidence-fade; fires on the owner's word) · G-Y0 explained, word pending** · prior: v161 item 182 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v163 2026-07-16 · PEN: **G-Y0 → BINDING, POPULATION-LEVEL (item 184, owner verbatim: 'over the wider sample, on average' — V0 is positional, single-class top-heaviness is NOT a breach) · CONSTRAINTS → v1.18 · DECISIONS → v107 · manifest → v4.31 · ALL SIX spec-§6 rulings now IN; the chapter waits only on the FIRE word** · prior: v162 item 183 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4299,3 +4299,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     for this ladder. Filed at DECISIONS v106 (R104.3–R104.6). REMAINING §6 words: G-Y0 (explained this
     turn, one word pending) + the chapter FIRE word. **THE LEG-A DIRECTIVE ISSUED** —
     `docs/DIRECTIVE_LEGA_isofade_2026-07-16.md`, couriered; fires on "Fire Leg A" + a paste.
+
+184. **G-Y0 RATIFIED BINDING — POPULATION-LEVEL CONSTRUCTION (owner-worded 2026-07-16, verbatim):**
+    *"Yes, on G-Y0 we should formalise it to binding. The only thing is with some understanding that
+    v0 is positional, and different positions have different values, so some drafts might just be very
+    top heavy on say, K-Forwards, and as a result the v0 is lower on day 1 than the pick PVC. So it
+    shouldn't be draft specific, just 'over the wider sample, on average'."*
+    Filed: CONSTRAINTS **v1.18** (status line flipped on the G-Y0 block itself, history retained; the
+    block's existing "MEASURED ACROSS MULTIPLE DRAFTS" clause HARDENS into the gate's construction) ·
+    DECISIONS **v107** (R104.7). Effective AT THE LEG-D RE-DERIVATION (the v2.11 candidate) — the
+    shipped curve is not retro-halted. The gate: curve(p) = E[V0 | pick p] over the derivation sample
+    (multi-class average) within the acceptance-v1.17 tolerance (files with the Leg-D directive);
+    single-class deviation from positional composition or class strength is NOT a breach.
+    **With this, ALL SIX spec-§6 rulings are IN. The chapter is fully ruled; open word = FIRE.**
