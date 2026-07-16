@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v225 2026-07-16 · PEN: **SEG-5 RETURN (item 252): GRID EMPTY at bar 0.80 — sanctioned HALT · prescreen PASS at `91d08f2` · Option-A fix verified pure relocation · OWNER WORD OPEN: Leg-B disposition** · prior: v224
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v226 2026-07-16 · PEN: **ITEM 253: owner rules "Diagnose first" on the Leg-B disposition; the read-only GAP DIAGNOSTIC directive is ISSUED (Tier 3; base `91d08f2` STRICT); Leg C holds** · prior: v225
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5428,3 +5428,19 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     (supersedes DECISIONS v115 §2 "NONE" pending the fold):** Leg-B disposition — options put
     symmetrically in chat (accept-identity / diagnose-the-gap-first [supervisor-recommended,
     read-only Tier-3] / re-rule bar-or-law). Leg C holds until the disposition settles its base.
+
+253. **THE OWNER RULES THE EMPTY-GRID PATH: "Diagnose first." (2026-07-16, verbatim; his note:
+    "0.67 is an immaterial improvement over 0.65. I am surprised the previous supervisor and code
+    job were so wrong in their estimation... It seems odd to me that all of this work can only at
+    best get a 0.67".)** Supervisor number-note filed with the ruling: the measured lift is
+    β_c 0.6219 → 0.6788 at s=0.70 (the 0.65-vs-0.67 reading conflated the s=0.65 GRID POINT with
+    the baseline); the substance of his read — immaterial vs the 0.80 bar — stands unchanged.
+    **DIRECTIVE ISSUED: docs/DIRECTIVE_LEGB_gap_diagnostic_2026-07-16.md** (Tier 3 read-only;
+    EFFORT High; base `91d08f2` STRICT on a new branch; session-dir-only writes; frozen estimator
+    14c59139 the only verdict instrument). Four deliverables: the per-player w = s·E·ramp (+C)
+    decomposition over the n=116 sample · the prediction bridge 0.81 → 0.6747 term-by-term (or
+    "the memo's prediction is not reproducible from its own text", if so) · the reach map with
+    G-COHORT pre-sim + E/B riders on any bar-reaching profile (R104.10) · the estimator's own
+    CI/sample story. NO seat numbers, NO re-tune, findings only. **Leg C HOLDS** until the
+    disposition settles <LEG-B-HEAD>. Seg-5 chat: retired at its sanctioned HALT (return filed,
+    item 252). Fires on the owner's paste to a fresh Claude Code chat.
