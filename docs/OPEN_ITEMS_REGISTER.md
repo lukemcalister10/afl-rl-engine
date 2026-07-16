@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v193 2026-07-16 · PEN: **LEG-C DIRECTIVE PRE-DRAFTED (item 220: two placeholders — <LEG-B-HEAD> + <DOCS-SHA>; fires after the Leg-B prescreen + the owner's word; the one store writer; carries the item-216/217 rider + the item-207 checkpoint + audit #21/#27/(iv) folds). Rollover-runbook conversation PARKED on the owner's word** · prior: v192
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v194 2026-07-16 · PEN: **LEG-B s-DIAL HALT (item 221): the map COMPRESSES at the posval sites — SUPERVISOR DESIGN ERROR OWNED (memo §4 wired component-level; the pre-sim's evidence was FINAL-VALUE level; posval local elasticity ≥1 makes the target sit below every elite). Board SAFE (8d90c9ac byte-exact off, proven). RULED: the build's option 2, narrowly — diagnostic β at the final-production-value placement, findings only, then HALT. Memo v1.1 follows** · prior: v193
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4879,3 +4879,28 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     expected_boot re-pin in the store-moving commit · the item-207 STOP-AFTER-PLAN checkpoint
     (three catches today earned it a standing place on writers). 3-5 h estimate. Rollover-runbook
     discussion PARKED for the owner's later word (item 218's proposal stands).
+
+221. **LEG-B s-DIAL HALT — THE PLACEMENT WAS WRONG; SUPERVISOR-OWNED (2026-07-16).** Build head
+    `1bf0a0e` (fresh fetch): implementation of the amended PLAN COMPLETE and byte-safe (RL_UNCOMP=0
+    ⇒ 8d90c9ac PROVEN; captain δ byte-identical; hygiene rider landed); the frozen fit_beta table
+    (n=116, CI widths ~0.29 — precision gates met) shows **β_c = 0.6219 and β FALLING monotonically
+    in s (0.514/0.503/0.492/0.482)** — no grid value clears 0.85; the build HALTED exactly per the
+    rule, shipped nothing, improvised nothing. **ROOT CAUSE, VERIFIED BY THIS SEAT'S OWN ALGEBRA:**
+    at the posval component the REPL offset makes local elasticity ≥1 for elites (v0 ≈ lev−REPL ⇒
+    d ln v0/d ln lev = lev/(lev−REPL) > 1), so the elasticity-1 target t = V_ref·ρ sits BELOW v0 for
+    every above-median player — the blend compresses BY CONSTRUCTION at that site. The chapter's
+    measured compression (β_c 0.62-0.68, board level) lives in the DOWNSTREAM composition (clamps ·
+    the relative-cap · gating · the pedestal max), not in posval. **THE ERROR: memo §4 pinned the
+    posval component sites while memo §6's pre-sim evidence was gathered at the FINAL VALUE level
+    (matrix Vpath) — the β_eff=(1−w)β_c+w algebra assumed β_c at the wrapped site, false there.
+    Items 211/213's site rulings refined a wrong family. On this seat's ledger.** **RULED (the
+    build's option 2, NARROW):** one diagnostic measurement round, findings only (S4) — the blend
+    applied at the FINAL PRODUCTION-VALUE level (prod-side board price, the pre-sim's own
+    construction: v′=v^(1−w)·(V_ref_b·ρ)^w with ρ = smoothed-level ratio, V_ref_b = the median
+    demonstrated-proven PRODUCTION VALUE per position, w = s·E per PLAYER), frozen estimator, the
+    same grid + β_c at that level + (if cheap) July-8 y4/y5/y6 at one mid setting; RL_UNCOMP stays
+    inert, NOTHING selected, ≤45 min, then HALT with the table. **THEN: MEMO → v1.1** (the site
+    correction · captain preservation reworked for the final level · the Reid/per-year semantics
+    restated per-player) with the hash re-seal RECORDED OPENLY — a halt-driven, register-logged
+    amendment is the sanctioned path; silent post-view mutation remains forbidden (audit #22/#45).
+    The checkpoint/halt discipline's FOURTH catch today — this one caught the memo itself.
