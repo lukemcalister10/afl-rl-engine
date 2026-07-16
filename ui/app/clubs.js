@@ -54,15 +54,21 @@ MD.clubs = (function () {
     const tr = fmt.el("tr");
     tr.appendChild(fmt.el("td", "rk num", String(rank)));
     const club = fmt.el("td", "club");
-    const a = fmt.el("a", "", fmt.esc(c.display || fmt.club(c.team)));
-    a.href = "#";
-    a.title = "open " + fmt.esc(c.display || c.team) + " on the board (picks included)";
-    a.addEventListener("click", function (e) {
+    // the club NAME is the pocket-profile target (hover / keyboard-focus / tap on touch → the panel);
+    // a separate "open ›" link carries the board navigation, so the two intents never collide on touch.
+    const nm = fmt.el("span", "cnm", fmt.esc(c.display || fmt.club(c.team)));
+    nm.title = "hover / tap for the pocket profile";
+    if (MD.pocket) MD.pocket.attach(nm, c.team);
+    club.appendChild(nm);
+    const open = fmt.el("a", "copen", "open ›");
+    open.href = "#";
+    open.title = "open " + fmt.esc(c.display || c.team) + " on the board (picks included)";
+    open.addEventListener("click", function (e) {
       e.preventDefault();
       MD.board.focusClub(c.team, true);   // filter the board to this club + turn picks on
       MD.go("board");
     });
-    club.appendChild(a);
+    club.appendChild(open);
     tr.appendChild(club);
     COLS.forEach(function (col) {
       tr.appendChild(fmt.el("td", "num " + col.cls, fmt.n(c[col.key])));
