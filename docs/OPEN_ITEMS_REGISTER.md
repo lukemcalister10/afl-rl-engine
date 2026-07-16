@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v194 2026-07-16 · PEN: **LEG-B s-DIAL HALT (item 221): the map COMPRESSES at the posval sites — SUPERVISOR DESIGN ERROR OWNED (memo §4 wired component-level; the pre-sim's evidence was FINAL-VALUE level; posval local elasticity ≥1 makes the target sit below every elite). Board SAFE (8d90c9ac byte-exact off, proven). RULED: the build's option 2, narrowly — diagnostic β at the final-production-value placement, findings only, then HALT. Memo v1.1 follows** · prior: v193
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v195 2026-07-16 · PEN: **SEG-2 RETIRED AT ~385k (owner telemetry — already compacted; item 222): the item-221 diagnostic REDIRECTED to a fresh SEGMENT-3 chat (directive filed; base 1bf0a0e STRICT; diagnostic → in-chat HALT → memo v1.1 → re-wire, one chat). NEW STANDING LINE: builds report context usage at every HALT/RETURN** · prior: v194
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4904,3 +4904,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     restated per-player) with the hash re-seal RECORDED OPENLY — a halt-driven, register-logged
     amendment is the sanctioned path; silent post-view mutation remains forbidden (audit #22/#45).
     The checkpoint/halt discipline's FOURTH catch today — this one caught the memo itself.
+
+222. **SEG-2 RETIRED ON OWNER TELEMETRY (~385k tokens — at least one compaction) + SEGMENT 3
+    DIRECTED (2026-07-16).** The item-221 diagnostic authorization is SUPERSEDED as to venue: do
+    NOT run it in seg 2 (degraded context executing a measurement that will ground a design is a
+    false economy). Seg 2's job ENDED at the halt — its durable record is COMMITTED at `1bf0a0e`
+    (implementation + A/B proofs + the finding); retire it with thanks, its conduct was exemplary.
+    **`docs/DIRECTIVE_LEGB_segment3_diagnostic_2026-07-16.md` FILED:** fresh chat, base `1bf0a0e`
+    STRICT, (A) the item-221 diagnostic verbatim → in-chat HALT with the table → (B) the supervisor
+    couriers MEMO v1.1 into the SAME (still-fresh) chat → (C) the re-wire executes there — one
+    fresh chat, one seam inside, no third handover. **STANDING CONDUCT LINE ADDED: every build
+    reports its context usage at every HALT and RETURN** — degradation becomes visible telemetry,
+    not an owner's late catch. S2 lesson extended: EXTRA legs assume multi-segment chats from the
+    directive, and the supervisor budgets the segments, not the build.
