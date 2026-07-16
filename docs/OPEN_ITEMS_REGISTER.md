@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v240 2026-07-16 · PEN: **ITEM 267: SELECTION RETURN — prescreen PASS at `273463e` (PR #103): s=0.10 WIRED, board `f2f077b2`, band healed both sides, both pairs green, suite green save the documented GUARD-5 candidate condition. LEG-C <LEG-B-HEAD> FILLED = `273463e`** · prior: v239
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v241 2026-07-16 · PEN: **ITEM 268: owner-requested PRE-FIRE AUDIT of Leg C — four real hazards found and fixed (count 11→13 · RUCK vocab · stale DECISIONS ref · prose-vs-JSON) + the checkpoint CONVERTED to commit-and-proceed for the overnight run. Directive → v1.1. Fires on his paste** · prior: v240
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5731,3 +5731,28 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     conduct clean; ~70 min in-window. **LEG C UNBLOCKED: <LEG-B-HEAD> = `273463e` filled in the
     pre-drafted directive this commit; <DOCS-SHA> fills in the follow-up commit (item-249
     pattern).** The selection chat retires; PR #103 merges at chapter end (one bake).
+
+268. **THE LEG-C PRE-FIRE AUDIT (owner-requested: "double check... for anything that might be
+    wrong, inconsistent, or cause the build to unnecessarily halt", 2026-07-16). FOUR REAL
+    HAZARDS FOUND, FIXED IN DIRECTIVE v1.1:** (1) **THE COUNT WAS STALE — 11 → MEASURED 13:**
+    the CSV-primary vs 273463e-store diff (RUCK≡RUC, 804/804 matched) yields THIRTEEN
+    primary-future changes (named in the directive); the item-180 "eleven" predated the owner
+    finalizing the register — a build told "eleven, complete" that finds 13 halts or improvises.
+    (2) **THE VOCAB TRAP WAS LIVE:** the register's PRIMARY column writes **RUCK on 54 rows**
+    (ALTERNATE writes RUC once); the draft's "vocab exactly {…RUC}" validate-or-HALT would trip —
+    normalization (strip hyphens · uppercase · RUCK≡RUC) now stated, HALT only outside the
+    NORMALIZED vocab. (3) FEED referenced archived `DECISIONS_v111` → v115. (4) The
+    leg_c_remeasure prose list (incl. a "≤22 slope" the v1.20 JSON does not carry) → replaced
+    with ASSERT-THE-JSON per CORE rule 5. ADDED to deliverables: the post-dating owner laws
+    (item-256 sincerity ledger w/ ranks · items-258/259 band both sides · item-266 pair-2 ±15%)
+    — their acceptance fold rides the PRE-LADDER RE-SEAL (now also carrying the item-265 s-law
+    and the RETIREMENT of the stale `s_dial_selection` block, which still encodes the dead
+    bar/grid — flagged so the ladder never asserts it). **CHECKPOINT CONVERTED (owner-authorized
+    by his overnight constraint):** STOP-AFTER-PLAN → the PLAN commits and pushes FIRST, then
+    PROCEED WITHOUT WAITING — rationale: the courier is asleep so any HALT strands regardless of
+    whose rung it is; the store writes are branch-only and kill-switched; the plan is prescreened
+    WITH the return; the ladder (cold audit · sealed reads · owner viewing) still precedes any
+    merge/bake — the conversion trades an early catch for a possible re-run, never for safety.
+    Earlier same turn: <LEG-B-HEAD>=273463e (8add349) · <DOCS-SHA>=8add349 (631654c) · stale
+    acceptance pin v1.17→v1.20 (35ca2f1). Directive v1.1 + this item file together; fires on the
+    owner's paste.
