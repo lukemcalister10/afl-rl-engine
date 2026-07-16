@@ -1,4 +1,12 @@
-# THE PVC + FLEX CHAPTER — SPEC v1.1 · 2026-07-16 · authored by the seat-8 (Fable) pen
+# THE PVC + FLEX CHAPTER — SPEC v1.2 · 2026-07-16 · authored by the seat-9 (Fable) pen
+### v1.2 (audit cluster (i) fold — the TEXT now matches the RULED state; item 199/203): §6's five open
+### rulings are ALL RULED and folded in place (R104.3-.7); the post-view band-setting option is DELETED
+### and PRE-VIEW HASHING adopted (audit #16/#22/#45). §5's acceptance is superseded-in-substance by
+### **acceptance v1.17** + MEMO_LEGB_functional_form §5 (G-COHORT scored y4 AND y5 AND y6 — item 203).
+### §3 Leg B: the functional-form memo IS the design of record. §3 Leg D gains R104.9 strict-descent +
+### the item-204 note's two-ends/life-path candidates. §7's stale A-PAIRS-pair-2 line DELETED (item
+### 192: resolved at item 43). R104.10: the candidate line runs over 1.30 eyes-open; the gate binds at
+### the ladder; the memo's pre-sim found the path under (§5 note). Filename keeps the v1 path (SSI rule).
 ### v1.1 (same day, owner-prompted): §3 gains PER-LEG EFFORT + SEAT ALLOCATION lines (the spec had
 ### none — owner catch). The filename keeps the v1 path so the standing Leg-A directive's FEED
 ### citation stays valid; header and content move together (the SSI rule).
@@ -68,6 +76,12 @@ Lift-led Face-2 re-map of the top: above-replacement output ratios carry into pr
 constraint applies IN the same map: intensity-responsiveness extends DOWN the age bands (the ≤22 slope
 must RISE from 0.111) with the young side guarded by G-COHORT 1.30 hard + the calibration surface.
 Kill-switch `RL_UNCOMP`. This leg consumes Leg A (the fade is part of the axis it lifts on).
+**DESIGN OF RECORD (v1.2): `docs/MEMO_LEGB_functional_form_2026-07-16.md`** — the OUTPUT-ANCHORED
+EVIDENCE BLEND (one dial s; ρ = the SMOOTHED level, never single-season points), PRODUCTION-SIDE
+per-position conservation ACROSS year-depths, the Reid extension as the same map at the raw_ev/posval
+sites with per-year evidence. Pre-sim (memo §6): the R104.10 obligation DISCHARGED — a credible path
+under 1.30 exists (s=0.55 ⇒ y4/y5/y6 = 1.100/1.154/1.113). ADDED DELIVERABLE (item 204): the build
+exports per-player-year w + the earned/prior decomposition (Leg D's honest-calibration input).
 **LEG C — FLEX POSITIONAL MACHINERY (consumes docs/inputs/AFFL_Future_Positioning.csv, filed d4e9642).**
 EFFORT **High** · semantics fully RULED (item 20b / flex spec §1.2.3) · build **Opus via Claude Code**.
 (1) The ELEVEN primary-future changes → `future_position` store writes (validated item 180; the one
@@ -80,7 +94,12 @@ HALT on ambiguity (the two Max Kings are distinct and verified).
 **LEG D — PVC RE-DERIVATION (consumes A+B+C; the reworked spec of items 130–132).**
 EFFORT **High** · constructions settled (derive-from-distribution · numéraire pin · population-level
 G-Y0, R104.7) · **Fable authors the directive** (the G-Y0 tolerance + derivation construction) ·
-build **Opus via Claude Code**.
+build **Opus via Claude Code**. **v1.2 additions:** R104.9 STRICT DESCENT is a Leg-D HARD gate
+(curve(p+1) ≤ curve(p) − 1, p = 1..79 — kills the flat top item 194 caught). The Leg-D memo weighs
+the item-204 note's candidates (the TWO-ENDS construction for circularity · the LIFE-PATH pool for
+survivorship+convexity) and its FIRST ACT is the measurement discipline: build the life-path pool
+totals from data and read what the current derivation DOES before designing. Multi-start +
+prior-removed derivations ride as planned tests (audit #34/#35/#44).
 The pick value curve re-derives from the cured, flexed value distribution; L7 re-base pins pick 1 =
 3000. G-Y0's identity (V0 = value the day after the draft) is asserted as the curve's year-0
 continuity check — its ADVISORY→ratified status is an owner ruling AT THIS LADDER. **Pick bands wire
@@ -115,39 +134,46 @@ touches the file (delete-don't-disable).
 ## §5 — ACCEPTANCE + THE LADDER (Tier 1, FULL; one bake → tag v2.11 → promote)
 Machine-readable at **acceptance v1.17** (filed with the Leg-B directive; prescreen asserts JSON,
 reports the three NARROWEST margins):
-- **G-COHORT y1–y5 < 1.30 HARD** (captain lift included; no waiver assumed).
+- **G-COHORT: y4 AND y5 AND y6 EACH < 1.30 HARD** (captain lift included; no waiver assumed; committed
+  row-level fixture — audit #17). Item-203 finding: y4 = 1.3017 is ALSO over at the Leg-A head; R104.10
+  posture = proceed-eyes-open on the candidate line, the gate BINDS AT THE LADDER.
 - **Value-flow:** ΣΔ conservation within a stated tolerance · young cohorts (≤22, 23–26) net Δ ≥ 0 ·
   ZERO above-projection young players cut (the item-130 scan).
-- **Compression:** proven-27+ β point ≥ [PROPOSED 0.85] with CI containing 1.0 · ≤22 slope RISEN from
-  0.111 · **English/Briggs priced ratio within the owner's band** (§6.1 — he rules the band).
-- **Census-v2 unearned gauge ≤ baseline** (+15,612 does not grow).
+- **Compression (RULED — R104.3):** proven-27+ β point ≥ 0.85 · CI ∋ 1.0 · FROZEN estimator with max
+  CI width / min effective n (audit #13) · ≤22 slope ≥ 0.15 with CI clear of 0.111 (audit #12;
+  owner-tunable at the directive) · **English/Briggs ≥ 1.75 HARD** (owner flexibility AT THE VIEWING
+  RUNG only), measured with the captain lift IN.
+- **Census-v2 unearned gauge ≤ baseline** (+15,612 does not grow) **+ predeclared CELL-LEVEL gates**
+  (age × evidence × position × draft-band — audit #15).
+- **Per-young-player EARNED-COMPONENT gate at FINAL SCAR** (no negative delta on any row — R104.8
+  carried; audit #8/#26/#41) · **whole-system SCAR ledger incl. held picks** at declared tolerances
+  (audit #10/#40) · **kill-switch regeneration matrix** RL_UNCOMP × RL_ISOFADE (audit #19/#42) ·
+  **pre-view hashes** on the memo + acceptance JSON, recorded in the build's PLAN commit; later
+  mutation HALTS the ladder (audit #16/#22/#45) · **Leg-C re-measure** of every Leg-B statistic on the
+  candidate line (audit #20).
 - **Watch rows:** Gawn ↑ and Bontempelli ↑ vs board 790136a3 · Reid inside his relative band.
 - **A-PAIRS scored · standing fails carried per acceptance · L-SMOOTH census on the new map.**
 Ladder: supervisor prescreen → incognito cold audit (S6-sharded; integrity manifest = addresses never
 results) → **owner's SEALED READS (OQ-D: 10–15, direction + band, written BEFORE viewing)** → owner
 views board + book → his written word → bake → tag → clean promote. UI v1.2 and ingestion never bake.
 
-## §6 — OPEN OWNER RULINGS (presented symmetrically; nothing fires past Leg A without §6.1)
-1. **The compression acceptance band:** (a) supervisor-proposed numbers above (β ≥ 0.85 / CI ∋ 1.0 /
-   English-Briggs ratio band set by you) — tight, measurable, may force iteration; or (b) you rule
-   bands after seeing Leg B's first measured candidate — looser start, one extra viewing. REC: (a)
-   for β, with the English/Briggs band worded by you now (it is your read made law).
-2. **Posture presets:** (a) adopt CONTENDER (now-weight ~0.40, discount 0.19) and REBUILDER
-   (now-weight ~0.28, discount 0.10) as defaults, tuned after the movers report; or (b) ship the
-   parameterized machinery with balanced only and set both presets at the movers viewing. REC: (a) —
-   your sketch is reasonable and the report makes tuning one word.
-3. **The 2027 pick discount:** (a) your flat 0.10 under every lens (simple, matches your sheet); or
-   (b) lens-driven — each posture's own per-year rate discounts next-year picks (balanced 14% ·
-   contender ~19% · rebuilder ~10%; coherent, and rebuilder lands on your 10% naturally) — but
-   balanced would then discount 14%, a change from your sheet. REC: (b) for coherence; your call.
-4. **G-Y0 ratification:** (a) ratify at this ladder (the curve's year-0 continuity becomes law with
-   the re-derivation); or (b) keep ADVISORY one more chapter. REC: (a) — the identity is asserted by
-   Leg D anyway; ratifying merely names what ships.
-5. **Sealed reads:** written on paper before you view any candidate (OQ-D) — 10–15 rows, direction +
-   rough band; the English/Briggs, Gawn, Bontempelli, Reid rows are natural members.
+## §6 — THE §6 RULINGS — ALL RULED (v1.2 fold; register items 183/197/199; DECISIONS v106-v110)
+1. **Compression band — RULED (R104.3):** β ≥ 0.85 / CI ∋ 1.0 / **English/Briggs HARD FLOOR 1.75**
+   (owner flexibility AT THE VIEWING RUNG only). The post-view band-setting option is DELETED
+   (audit #16/#22): every numeric gate is PRE-VIEW HASHED; nothing is ruled after seeing a candidate.
+2. **Posture presets — RULED (R104.4):** the owner sketch ADOPTED; **BALANCED is CANONICAL** — the
+   only board that gates, bakes, or seals; contender/rebuilder preset numbers ratified at the movers
+   report, SEALED before any non-balanced report is viewed (audit #31).
+3. **2027 pick discount — RULED (R104.5):** PER-POSTURE **0.10 / 0.15 / 0.05** (balanced/contender/
+   rebuilder) — asserted exactly in every artifact (audit #6).
+4. **G-Y0 — RULED (R104.7):** **BINDING, POPULATION-LEVEL** ("over the wider sample, on average";
+   single-class top-heaviness is NOT a breach), effective at Leg D; tolerance construction at the
+   Leg-D memo (decile residuals weighed — audit #37).
+5. **Sealed reads — WRITTEN (R104.6, OQ-D satisfied).**
+6. **B1 posture — RULED (R104.10):** proceed eyes-open over 1.30 on the candidate line; the gate
+   binds at the ladder; the Leg-B memo's pre-sim obligation is DISCHARGED (path under 1.30 exists).
 
 ## §7 — OUT OF SCOPE (so no seat drifts)
 Ingestion go-live (gated separately) · any age lever (R103.4) · UI v1.2 (its own Tier-3 directive — EFFORT **Medium**, build **Opus via Claude Code**:
 club-name shortening · picks-included club valuations · the team summary/Best-23 page · the no-LLM
-sync · posture toggles + the +1/+2 re-enable when Leg E lands) · A-PAIRS pair 2 (owner decision,
-unchanged) · the flex positioning REGISTERS beyond the filed CSV (courier at fire time if revised).
+sync · posture toggles + the +1/+2 re-enable when Leg E lands) · the flex positioning REGISTERS beyond the filed CSV (courier at fire time if revised).

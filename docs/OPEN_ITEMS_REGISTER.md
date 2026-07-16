@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v178 2026-07-16 · PEN: **SEAT-8 LEG-D NOTE FILED VERBATIM (item 204: circularity two-ends construction + survivorship/convexity; triaged vs the Leg-B memo — NO Leg-B design change; ONE directive deliverable added). #99 FAST-FORWARDED by the owner (head cf78878) — his click merges on viewing** · prior: v177
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v179 2026-07-16 · PEN: **THE LEG-B PACKAGE COMPLETE (items 205-206): spec → v1.2 (cluster-(i) fold; post-view band-setting DELETED) · acceptance → v1.17 (the memo-§5 block) · THE LEG-B DIRECTIVE ISSUED (base 8b8ab7d STRICT, 4-7 h) — ONE owner word open: FIRE LEG B** · prior: v178
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4611,3 +4611,27 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ratio 1.316 → ~1.15). The note's Leg-D items queue for the LEG-D memo (first act there: MEASURE
     the current derivation's life-path behaviour from data, per the note's discipline). Cluster-(iii)
     triage of item 199 is hereby superseded-in-place by this fuller version.
+
+205. **SPEC → v1.2 + ACCEPTANCE → v1.17 FILED (2026-07-16).** Spec (same filename, header v1.2): the
+    audit cluster-(i) fold — §6's five rulings folded in place as RULED (R104.3-.7 + R104.10);
+    the §6.1(b) post-view band-setting option DELETED (audit #16/#22) and PRE-VIEW HASHING adopted;
+    §5's G-COHORT line now scores y4 AND y5 AND y6 (item 203); §3 Leg B cites the memo as design of
+    record + the w-export deliverable; §3 Leg D gains R104.9 strict-descent + the item-204 note's
+    candidates + the measure-first discipline; §7's stale A-PAIRS-pair-2 line DELETED (item 192).
+    Acceptance v1.17 (v1.16 archived): the memo-§5 `leg_b` block (15 entries incl. β estimator
+    freeze w/ max-CI-width 0.35 + min-n 120 · slope-min 0.15 PROPOSED-owner-tunable · E/B 1.75 hard ·
+    earned-component gate at FINAL SCAR · whole-system ledger tol 200 abs / 0.05% rel · census cells ·
+    L-SMOOTH numeric+probes · killswitch matrix · watch-row min deltas (Gawn/Bont +25 SCAR) · pre-view
+    hashes · Leg-C re-measure · the deterministic s-dial rule (smallest of {0.45,0.50,0.55,0.60}
+    clearing β≥0.85) · the w-export) + `leg_d_placeholders` (R104.9 strict descent · R104.7 G-Y0
+    population · R104.5 posture discounts asserted).
+206. **THE LEG-B DIRECTIVE ISSUED (2026-07-16): `docs/DIRECTIVE_LEGB_uncompress_2026-07-16.md` —
+    FIRES ON THE OWNER'S WORD.** EXTRA · auto/PLAN-first (the PLAN commit carries the pre-view hash
+    manifest) · **4-7 h wall-clock** (item 188) · FEED = memo + acceptance v1.17 + spec v1.2 +
+    DECISIONS v111 + CONSTRAINTS v1.18 · base = Leg-A head `8b8ab7d` STRICT (engine base; docs base
+    at-or-after 629211e, docs/-only diff) · fence: enumerated engine sites only, STORE/docs/ui/gates
+    OUT, RL_UNCOMP kill-switch with the 8d90c9ac byte-identity proof, HALT-AND-ASK on any ambiguity
+    or an empty s-grid. Deliverables: frozen-suite β/slope/ratio/G-COHORT(y4/y5/y6+fixture)/census/
+    L-SMOOTH · ledger · donor-side mover report · R104.8 decomposition · the w-export · gate snapshot.
+    No store/engine writer in flight ⇒ fires clean. DECISIONS → v111 (the fire word + the slope-min
+    veto window). One PROPOSED number rides for owner veto: ≤22 slope minimum 0.15.
