@@ -11,6 +11,16 @@ MD.board = (function () {
   let clubFilter = null;   // null == all AFFL clubs
   let groupByClub = false;
   let posFilter = null;    // item 5: null == all positions
+  // item 178(2): the club-valuation asset filter — "players only" (default, current behaviour) vs
+  // "picks included" (players + the club's held draft picks, priced off the canonical PVC by the ingest).
+  // Issued picks appear ONLY here (owner law) — the +1/+2 placeholder players are untouched.
+  let picksIncluded = false;
+
+  /* item 178(2): a club's held-pick asset value (sum over the ingest's priced picks). 0 if the overlay
+     is absent/halted or the club holds none. Never a re-valuation — a sum of the ingest's figures. */
+  function clubPicksValue(afflTeamLong) {
+    return MD.seam.picksFor(afflTeamLong).reduce(function (s, p) { return s + p.value; }, 0);
+  }
 
   /* distinct position labels present, in football order (for the position filter). */
   function positions() {
@@ -73,13 +83,22 @@ MD.board = (function () {
 
   function maxVal(pool) { return pool.length ? pool[0].val : 1; }
 
-  /* item 2: a club group header — club name · rank · ΣSCAR total · player count. */
+  /* item 2: a club group header — club name · rank · ΣSCAR total · player count. When picks are
+     included (item 178(2)) the header carries the club's held-picks value and a players+picks total. */
   function clubHeader(c, rank) {
     const el = fmt.el("div", "clubhead");
-    el.innerHTML = '<span class="crank num">' + (rank || "—") + "</span>" +
-      '<span class="cname">' + fmt.esc(fmt.club(c.club)) + "</span>" +
-      '<span class="csig num">Σ ' + fmt.n(c.sigma) + ' <small>SCAR</small></span>' +
-      '<span class="ccount num">' + fmt.n(c.n) + " players</span>";
+    let html = '<span class="crank num">' + (rank || "—") + "</span>" +
+      '<span class="cname">' + fmt.esc(fmt.club(c.club)) + "</span>";
+    if (picksIncluded) {
+      const pv = clubPicksValue(c.club);
+      html += '<span class="csig num">Σ ' + fmt.n(c.sigma + pv) + ' <small>players+picks</small></span>' +
+        '<span class="ccount num">' + fmt.n(c.sigma) + ' <small>P</small> · ' + fmt.n(pv) +
+          ' <small>PK</small> · ' + fmt.n(c.n) + " pl</span>";
+    } else {
+      html += '<span class="csig num">Σ ' + fmt.n(c.sigma) + ' <small>SCAR</small></span>' +
+        '<span class="ccount num">' + fmt.n(c.n) + " players</span>";
+    }
+    el.innerHTML = html;
     return el;
   }
 
@@ -87,11 +106,42 @@ MD.board = (function () {
   function clubBanner(c, rank, clubRanks) {
     const total = Object.keys(clubRanks).length;
     const el = fmt.el("div", "clubbanner");
-    el.innerHTML = '<span class="cbname">' + fmt.esc(fmt.club(c.club)) + "</span>" +
+    let html = '<span class="cbname">' + fmt.esc(fmt.club(c.club)) + "</span>" +
       '<span class="cbstat">club rank <b>' + (rank || "—") + "</b> of " + total + "</span>" +
-      '<span class="cbstat">ΣSCAR <b class="num">' + fmt.n(c.sigma) + "</b></span>" +
+      '<span class="cbstat">Σ players <b class="num">' + fmt.n(c.sigma) + "</b></span>" +
       '<span class="cbstat"><b class="num">' + fmt.n(c.n) + "</b> players</span>";
+    if (picksIncluded) {
+      const pv = clubPicksValue(c.club);
+      const np = MD.seam.picksFor(c.club).length;
+      html += '<span class="cbstat">Σ picks <b class="num">' + fmt.n(pv) + "</b> (" + np + ")</span>" +
+        '<span class="cbstat cbtot">overall <b class="num">' + fmt.n(c.sigma + pv) + "</b></span>";
+    }
+    el.innerHTML = html;
     return el;
+  }
+
+  /* item 178(2): the held-picks panel for a single filtered club — each pick listed with its band and
+     its PVC-priced value (from the ingest). Rendered under the roster when "picks included" is on. */
+  function picksPanel(afflTeamLong) {
+    const picks = MD.seam.picksFor(afflTeamLong);
+    const wrap = fmt.el("div", "pickspanel");
+    const total = picks.reduce(function (s, p) { return s + p.value; }, 0);
+    wrap.appendChild(fmt.el("div", "picksh",
+      '<span>Held draft picks <small>priced off the canonical PVC · 2027 × 0.90 (balanced)</small></span>' +
+      '<span class="num">Σ ' + fmt.n(total) + " · " + picks.length + " pick" + (picks.length === 1 ? "" : "s") + "</span>"));
+    if (!picks.length) {
+      wrap.appendChild(fmt.el("div", "picknone", "no held picks in the ledger"));
+      return wrap;
+    }
+    picks.forEach(function (p) {
+      const row = fmt.el("div", "pickrow");
+      row.innerHTML =
+        '<span class="pkband">' + fmt.esc(p.band) + "</span>" +
+        '<span class="pkmeta">' + p.year + " · R" + p.round + " · from " + fmt.esc(fmt.club(p.origin)) + "</span>" +
+        '<span class="pkval num">' + fmt.n(p.value) + "</span>";
+      wrap.appendChild(row);
+    });
+    return wrap;
   }
 
   /* item 4: a column-heading row, grid-aligned to the tier's row template (a label on every column). */
@@ -282,8 +332,9 @@ MD.board = (function () {
       csel.className = "boardsel";
       csel.innerHTML = '<option value="">all AFFL clubs</option>' +
         afflClubs().map(function (c) {
+          // value = the raw affl_team (join key); label = the shortened display name (item 178(1)).
           return '<option value="' + fmt.esc(c) + '"' + (clubFilter === c ? " selected" : "") + ">" +
-            fmt.esc(c) + "</option>";
+            fmt.esc(fmt.club(c)) + "</option>";
         }).join("");
       csel.addEventListener("change", function () { clubFilter = csel.value || null; render(container); });
       wrap.appendChild(csel);
@@ -295,6 +346,23 @@ MD.board = (function () {
         gseg.appendChild(btn);
       });
       wrap.appendChild(gseg);
+
+      // item 178(2): players-only / picks-included asset filter (halt-aware).
+      wrap.appendChild(fmt.el("span", "lbl", "Assets"));
+      const halted = MD.seam.clubHalt();
+      const aseg = fmt.el("div", "seg assets");
+      [["players", "players only"], ["picks", "picks included"]].forEach(function (pair) {
+        const on = (pair[0] === "picks") === picksIncluded;
+        const btn = fmt.el("button", on ? "on" : "", pair[1]);
+        if (pair[0] === "picks" && halted) {
+          btn.disabled = true; btn.classList.add("lensoff");
+          btn.title = "Picks overlay HALTED by the ingest — " + fmt.esc(halted.reason);
+        } else {
+          btn.addEventListener("click", function () { picksIncluded = pair[0] === "picks"; render(container); });
+        }
+        aseg.appendChild(btn);
+      });
+      wrap.appendChild(aseg);
 
       // Debug slugs
       wrap.appendChild(fmt.el("span", "lbl", "Debug"));
@@ -356,6 +424,10 @@ MD.board = (function () {
         rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
       });
     }
+    // item 178(2): a single filtered club with "picks included" lists its held picks under the roster.
+    if (s.tier === "working" && clubFilter && picksIncluded && !MD.seam.clubHalt()) {
+      rowsEl.appendChild(picksPanel(clubFilter));
+    }
     container.appendChild(rowsEl);
 
     const foot = fmt.el("footer", "foot");
@@ -371,5 +443,13 @@ MD.board = (function () {
     container.appendChild(foot);
   }
 
-  return { render: render };
+  /* item 178(3): the team-summary page links a club row into its filtered board view. Sets the
+     team-lens filter (and turns picks on) before the router switches to the board. */
+  function focusClub(afflTeamLong, withPicks) {
+    clubFilter = afflTeamLong || null;
+    groupByClub = false;
+    if (withPicks && !MD.seam.clubHalt()) picksIncluded = true;
+  }
+
+  return { render: render, focusClub: focusClub };
 })();
