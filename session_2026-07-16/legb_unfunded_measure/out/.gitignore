@@ -1,7 +1,5 @@
-# transient during-run files; final artifacts are force-added (git add -f) at grid completion
-*.log
-*.err
-gc_*.txt
-beta_*.txt
-PT_*.json
-DRIVER.log
+# During the run the whole working tree is ignored to keep the repo-clean check quiet.
+# At grid completion the final deliverables are force-added:
+#   GRID.out, MEASURE.md, POINT_s*.md, SINCERITY_all804_s*.csv, gc_*.txt, beta_*.txt, led_*.json
+*
+!.gitignore
