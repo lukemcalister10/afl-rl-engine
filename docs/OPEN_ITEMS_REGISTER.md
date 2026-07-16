@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v203 2026-07-16 · PEN: **THE QUALIFYING-RULE DEFECT (item 230, owner-caught): a hard games-floor MANUFACTURES FAKE ROOKIES — excludes developing players' 4-9-game early seasons, reading year-4 as year-1 (under-reads the young cohort items 130/170 protect). Floor-6 rec RETRACTED; smooth-weight ALSO insufficient. FIX = INTERRUPTION-vs-ASCENT conditioned rule → read-only diagnostic FIRED to ground memo v1.2. SEG-3 HALT at next clean point** · prior: v202
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v204 2026-07-16 · PEN: **FABLE REVIEW OF THE OPUS TURNS (item 231): core redirect SOUND (halt + conditioned rule + measure-first all stand); THREE fixes to the diagnostic — the DECLINE third category (post-peak low-game seasons are evidence, not interruption — excluding them would inflate fading vets, the mirror defect), BAR declared ∈{6,10}, base pin tightened. ADDENDUM filed. No seam occurred (same window; model switch only)** · prior: v203
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5060,3 +5060,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     qualifying rule) + acceptance re-seal → seg-3 continuation directive. ROTATION (item 229) HOLDS
     at the next clean seam — this redirect is continuity-critical and stays with this seat through
     the diagnostic return + memo v1.2, THEN hands over.
+
+231. **THE FABLE REVIEW OF THE OPUS-AUTHORED TURNS (2026-07-16; owner disclosed the seat ran Opus by
+    accident, switched back).** NO SEAM: same chat window, full context inherited — the rotation plan
+    (hold through memo v1.2, then seat 10) is unchanged. VERDICT on the artifacts (re-read from main,
+    not memory): the seg-3 HALT, the interruption-vs-ascent redirect, the measure-first discipline,
+    the halt paste, and item 230's error ledger all SOUND — they stand. THREE FIXES to the diagnostic
+    directive, filed as `docs/ADDENDUM_DIAG_qualifying_2026-07-16.md` (additive; paste works
+    fired-or-not): **(1) THE DECLINE GAP (substantive):** the interruption test (games<BAR ∧ prior
+    higher level) also sweeps up POST-PEAK low-game seasons, where low games may BE the decline
+    signal — excluding them overstates fading veterans, the exact mirror of the fake-rookie defect;
+    the diagnostic must phase-split interruption cases (pre/at/post-peak vs PEAK_AGE[pos]) and size
+    the post-peak category for the memo to rule on. The career-phase lesson applied to BOTH ends of
+    the arc. (2) BAR was UNDEFINED in measurement 2 — now declared: run at both 6 and 10. (3) base
+    pin tightened (state the exact SHA read, ≥ c2e91fe or c27d697).
