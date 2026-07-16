@@ -333,6 +333,7 @@ UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weig
 UNCOMP_S_DEFAULT=None                  # THE strength dial s -- hard-coded to the s-grid-selected literal after selection; None => map INERT
 _uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override: RL_UNCOMP_S=<s> per grid point
 UNCOMP_S=(float(_uncs) if _uncs not in (None,'') else UNCOMP_S_DEFAULT)
+_UNCONSERVE=os.environ.get('RL_UNCONSERVE','0')=='1'   # DEV-SHELL measurement override (RL_ISOFADE/RL_UNCOMP_S pattern; item 256/257 "Measure"): =1 => the memo §3 per-position conservation renorm C[pos] is IDENTITY (C≡1) on the un-compress map (the applied factor at _merged_recover.py:332 becomes 1.0; load-time C is still computed but not applied). Default OFF => shipped behaviour BYTE-EXACT (pure no-op when unset). Ships nothing; measures the DECIDED family UNFUNDED. NOT a manifest dial (config_sha256 UNMOVED); UNCOMP_S_DEFAULT stays None, UNCOMP_DECAY stays 0.25.
 CAPT_THRESH=107.4; CAPT_M=116.0; CAPT_W=5.0   # captaincy line (slider); 2026-06-21 M6: last-5 rank-25 ~=107.4 (unbiased upload), was 108.0
 def _pcap(a): return 1.0/(1.0+math.exp(-(a-CAPT_M)/CAPT_W))
 def capt_bonus(level):

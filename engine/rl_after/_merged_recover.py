@@ -329,7 +329,8 @@ def _uncomp_prod(pr,p,Y,bb):
     if _UC_CAL['on']:                                             # load-time conservation calibration (C==1 here): accumulate Sum pr0, Sum v0p
         _UC_CAL['pr0'][pos]=_UC_CAL['pr0'].get(pos,0.0)+pr0
         _UC_CAL['v0p'][pos]=_UC_CAL['v0p'].get(pos,0.0)+v0p
-    return _UC_C.get(pos,1.0)*v0p+delta                            # production-side renorm; captain delta additive & nominal
+    _C=1.0 if MA._UNCONSERVE else _UC_C.get(pos,1.0)               # §3 per-position production-side renorm; RL_UNCONSERVE=1 => C≡1 (UNFUNDED measurement, item 256/257); OFF => C[pos] (shipped, byte-exact)
+    return _C*v0p+delta                                            # production-side renorm; captain delta additive & nominal
 def raw_ev(p,Y=2026):
     _bb=b6(p,Y); pr=price6(p,_bb,Y); pr=_uncomp_prod(pr,p,Y,_bb)   # LEG B v1.1 map at the production-value hook (inert unless RL_UNCOMP on + s set)
     pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
