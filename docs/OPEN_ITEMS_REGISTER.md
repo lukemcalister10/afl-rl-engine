@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v159 2026-07-16 · PEN: **SEAT 8 OPENED + THE AXIS RULE RATIFIED (item 177: L-AXIS BINDING, CONSTRAINTS v1.17) · both rev143 pending confirmations CLOSED (item 175: CI print 790136a3 read from the run log; PK sync verified equal) · UI v1.1 prescreen PASS + owner viewed, merge on his click (items 176/178) · the UI v1.2 feedback batch filed verbatim (item 178 — it SPECS the item-173 ranking page) · DECISIONS → v105 · manifest → v4.29** · prior (item 174): rotation-readiness · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v160 2026-07-16 · PEN: **THE OWNER'S THREE INPUT FILES FILED VERBATIM to docs/inputs/ + VALIDATED (item 180: 804/804 stable-ID coverage · 91 blend rows clean · 11 primary-future changes enumerated · pick workbook = ownership+bands+ladder+old-PVC, incorporation shape ruled: STRUCTURE kept, VALUES from the live PVC, the 0.9 discount an owner parameter) · Tier-3 dispositions LANDED (item 179: #95/#96/#98 merged, heads ancestors of main; CI 443 green) · the flex ATTRIBUTION deliverable + owner-edit requirement filed (item 181)** · prior: v159 items 175–178 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4215,3 +4215,53 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
         ownership; everything downstream derived; a deterministic ingest that VALIDATES-OR-HALTS
         (halt-not-warn) regenerates the bundles. Options go to the owner in the v1.2 directive.
     None of the batch blocks the #98 merge (owner-worded).
+
+179. **TIER-3 DISPOSITIONS LANDED (2026-07-16, owner-clicked).** Verified by fresh fetch + ancestry:
+    merge commits `b9fa6b4` (PR #95 aging) · `dbb9092` (PR #96 calibration) · `a5d780f` (PR #98 UI v1.1)
+    — all two-parent (merge-commit policy held); all three PR heads (`c27682f`/`cf153fd`/`efa26cd`)
+    ANCESTORS of main. **main = `a5d780f`** at verification (docs pen moves it after). PK re-synced by
+    the owner (manifest v4.29 + DECISIONS v105 visible in the seam pack). CI Guards **run 443 on the
+    merge head: SUCCESS** (page-read); runs 441/442 cancelled-by-supersession (the known pattern).
+    Branch posture: no owner word — the DEFAULT stands (census-v2 `cfe4a14` + cm_400 diagnosis `796f371`
+    remain standing branches, cited by SHA).
+
+180. **THE OWNER'S INPUT FILES COURIERED + FILED VERBATIM (2026-07-16) — docs/inputs/.** Three files:
+    `AFFL_Player_Locations.csv` · `AFFL_Future_Positioning.csv` · `AFFL_Pick_Locations.xlsx`.
+    **VALIDATION (supervisor-run against the live store, 804 players):**
+    - **Future positioning:** 804/804 stable_player_id EXACT match (0 missing either side); schema =
+      the ruled stream template (primary · at-most-one alternate · p_dual_stream %); **91 blend rows**,
+      all streams parse 0–100, no alternate-without-%; primary vocab maps 1:1 to the store's
+      (K-DEF→KDEF etc.). **11 TRUE PRIMARY-FUTURE CHANGES vs the store** (the owner's yellow rows,
+      detected deterministically by diff — CSV export drops highlighting): Jack Carroll MID→GDEF ·
+      Zeke Uwland GDEF→MID · Archie Roberts GDEF→MID · Xavier Lindsay GDEF→MID · Harvey Thomas
+      GFWD→MID · Tom Powell GFWD→MID · Will Graham GFWD→MID · Bailey Humphrey GFWD→MID · Max Hall
+      GFWD→MID · Luke Lloyd KFWD→KDEF · Louis Emmett RUC→KFWD.
+      ⚠ supervisor note: a FIRST diff pass used the board posCode vocab (GEN_DEF…) instead of the
+      store's future_position vocab (GDEF…) and showed 556 false diffs — caught and corrected in the
+      same turn, recorded here so no seat repeats the mapping.
+    - **Player locations:** 804 rows + header; columns Player Name · AFFL Team · Position/s · AFL Club.
+      NAME-KEYED (no stable id) — the two Max Kings ARE distinct ("Max King" STK · "Maxwell King" SYD,
+      matching board keys), so name-join works today; the ingest should join names→IDs via the
+      positioning file and FLAG any ambiguity (halt-not-warn).
+    - **Pick workbook (why it is an xlsx):** four sheets — Picks (160-row ledger: Year 2026/2027 ·
+      Round · Origin · Owner · Pick low/high · Band · values), Ladder (per-team projected finish
+      RANGES driving the bands + the 2027 multiplier **0.9**), Pick Values (the owner's OLD PVC table,
+      pick 1 = 3000 — same numéraire), Dashboard (club totals + a value-conservation integrity check).
+    - **INCORPORATION SHAPE (supervisor-answered; owner's conditional "if without much effort, great"):**
+      the STRUCTURE is kept as the authored source (ownership · origin · year · band ranges · ladder);
+      the VALUES are NOT ingested — pick value = the LIVE engine PVC evaluated over the band
+      [low, high] (mean today; probability-weighted later if the owner supplies weights), with 2027
+      picks × (1 − PICK_FUTURE_DISCOUNT), the discount a NAMED OWNER PARAMETER (his 0.10) until the
+      PVC chapter derives or ratifies it. The Pick Values tab is reference-only and dies with the old
+      PVC. No plain-text fallback list needed.
+
+181. **OWNER REQUIREMENTS FILED (2026-07-16, ride the flex + UI v1.2 directives):**
+    (1) **THE ATTRIBUTION DELIVERABLE (owner-worded):** when the positional machinery lands, report
+        how much value is added/lost by EACH LAYER separately — (a) the current positional layer,
+        (b) the primary-future-position changes, (c) the future positional blend. Per-player deltas +
+        totals, shipped as a decomposition artifact on the flex build's ladder.
+    (2) **OWNER EDITABILITY, NO-LLM:** the owner must be able to change a player's future blend or
+        primary future position (and pick/player locations) without an agent in the loop — the
+        docs/inputs/ files are the authored sources; edits arrive by re-courier (or the later
+        published-sheet fetch) through a deterministic VALIDATE-OR-HALT ingest. Same mechanism family
+        as item 178(4).
