@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v181 2026-07-16 · PEN: **#99 MERGED BY THE OWNER (item 208) — THE UI v1.2 LINE IS CLOSED; the Leg-B directive's docs base RE-PINNED to fcbd03a (the merge made the 629211e diff non-docs-only — a false-halt trap, defused). FIRE WORD still the one open owner word** · prior: v180
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v182 2026-07-16 · PEN: **FABLE-EFFICIENCY STANDING RULE (item 209, owner-agreed): substantial compute is a PARALLEL Opus/Code measurement job, NOT run in the Fable seat; the supervisor PROACTIVELY flags when a turn needs one BEFORE spending Fable tokens, and owns the heavy-vs-light judgement. Opus-as-supervisor REJECTED by the owner (loses thread; handovers error-prone) — Fable stays the supervisor seat** · prior: v181
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4658,3 +4658,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     there. The ENGINE base is untouched (`8b8ab7d` STRICT — the merge does not touch the candidate
     branch). Lesson already in CORE (THE BASE PIN: main MOVES between writing and pasting); recorded
     here because this instance was an OWNER merge, not the pen.
+
+209. **THE FABLE-EFFICIENCY STANDING RULE (owner-agreed 2026-07-16).** CONTEXT: Fable usage burned
+    faster over 2026-07-15/16 than prior sessions despite lighter chats — diagnosis: the drain was
+    not design thinking but MEASUREMENT SCAFFOLDING run inside the Fable seat (the Leg-B memo turn
+    bootstrapped the engine + ran two matrix builds + a ~12-variant pre-sim sweep in Fable context;
+    build logs / matrix dumps / gate snapshots then sit in-window). RULE: **substantial compute
+    (matrix builds · multi-setting sweeps · full board recompute · cold-audit-scale measurement) is a
+    PARALLEL Opus/Claude-Code measurement job (read-only, disjoint-file, S3) — the Fable seat writes a
+    short measurement directive, the cheap seat runs + commits the numbers, Fable reads the committed
+    result and makes the design call.** The expensive compute lives in the cheap seat; Fable pays only
+    for the decision. PROPORTIONALITY (owner-worded reliance): the supervisor OWNS the heavy-vs-light
+    judgement and FLAGS IT PROACTIVELY — before spending Fable tokens — stating which bucket a task is
+    in so the owner can veto; LIGHT checks (a ratio · a fence diff · a hash · a few grep/ls-remote
+    commands) stay INLINE because offloading them wastes more round-trip than it saves. REJECTED LEVER
+    (owner-tested): defaulting the SUPERVISOR seat to Opus — it loses the thread and errors on handover
+    authoring in practice; **Fable remains the supervisor seat.** The saving comes from moving COMPUTE
+    out of Fable, not from moving the SEAT off Fable. Also standing: context economy (grep never read
+    wholesale; sparse-poll backgrounded computes) already in CORE — reaffirmed here as part of the same
+    discipline.
