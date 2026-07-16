@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v236 2026-07-16 · PEN: **ITEM 263: owner asks for an all-player sheet at baseline·0.10·0.15·0.20·0.25; 0.10/0.20 unmeasured ⇒ TWO-POINT conserved extension directive ISSUED (Low, ~10-20 min, base `fef2b64` STRICT, read-only). Sheet built on return** · prior: v235
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v237 2026-07-16 · PEN: **ITEM 264: two-point return — numbers PROVEN SOUND but BASE VIOLATED (branched from main, not fef2b64) ⇒ viewing-grade; the five-column sheet DELIVERED. NEW FINDING: the A-PAIRS joint window (~s 0.03–0.06) CONFLICTS with the cohort ideal zone (0.15–0.25). Owner word open: disposition/selection** · prior: v236
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5651,3 +5651,29 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     assembles the five-column all-player sheet (baseline·0.10·0.15·0.20·0.25: value + rank +
     Δrank per player) from the CSVs. This is a VIEWING aid, NOT a selection — no disposition
     ruling implied; the owner's partial/identity word stays open. Leg C HOLDS.
+
+264. **TWO-POINT RETURN (s=0.10, 0.20) — SOUND NUMBERS, VIOLATED BASE; THE SHEET DELIVERED; THE
+    PAIR CONFLICT SURFACED (2026-07-16).** Head `a90d2e8`. **BASE VIOLATION:** the branch was cut
+    from MAIN (`c419412`), not the pinned engine base `fef2b64` (merge-base check: fef2b64 NOT an
+    ancestor). The build staged the fef2b64 engine into scratch for the actual runs ("repo tree
+    stayed clean") — which inverts the pin's purpose: the committed tree cannot re-run its own
+    artifacts (main's engine has no Leg-B map), and the staged engine's md5 was never asserted
+    in-script. **THE NUMBERS WERE NEVERTHELESS PROVEN SOUND:** the build's own writes are
+    session-dir-only; the OFF column is BYTE-IDENTICAL across all 804 rows to the item-262
+    ledgers; every 0.10/0.20 value interleaves strictly monotone between the independently
+    measured 0.15/0.25 brackets (β 0.630/0.638 inside 0.622–0.634–0.642; y-ratios likewise); the
+    A/B and OFF gate ratios reproduce the candidate line exactly — a wrong engine cannot fake
+    that jointly. TREATMENT: **VIEWING-GRADE** — used for the owner's sheet; the SELECTED s is
+    re-measured on a properly-based branch before anything ships. CONDUCT (standing, all future
+    directives): the base pin means ARTIFACTS AND THE TREE THAT MADE THEM TRAVEL TOGETHER; a
+    staged engine must have its md5 asserted in-script, and "the repo stayed clean" is not
+    conformance. **DELIVERED: LegB_ratings_baseline_s010-025.xlsx** — 804 players × (baseline +
+    four s points), SCAR/rank/Δrank per point, point-summary tab with band verdicts, E/B raw
+    parts, Bontempelli, pairs, and declared caveats. **NEW FINDING — THE PAIR CONFLICT (from the
+    committed A_PAIRS_2pt.txt):** at the candidate baseline pair_2 PASSES (Reid −4.3%) but
+    pair_3 FAILS (Sanders +9.0% ABOVE Bont — a post-Leg-A condition); at s=0.10 pair_2 FAILS
+    (−14.0%) while pair_3 passes (−7.9%); at s=0.20 BOTH fail. Joint passing window ≈ s 0.03–0.06
+    — squarely BELOW the owner's cohort ideal zone (0.15–0.25). The owner's ruled anchors and his
+    ruled band CONFLICT under this map; resolution is HIS at selection (re-band/waive a pair ·
+    expected-fail-by-law per the A9 precedent · or a tiny-s selection forgoing the ideal zone).
+    Nothing resolved by this seat. Owner word open: the disposition/selection. Leg C HOLDS.
