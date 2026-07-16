@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v185 2026-07-16 · PEN: **LEG-B SEGMENT-2 SPLIT (item 212, owner-raised context risk): the plan chat (~187k tokens) RETIRES at the amended-PLAN commit; implementation runs in a FRESH chat via DIRECTIVE_LEGB_segment2 (base = amended-PLAN head STRICT). UI v1.3 FIRED** · prior: v184
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v186 2026-07-16 · PEN: **BUILD-CAUGHT SUPERVISOR ERROR, CORRECTED (item 213): amendment 2's 'sites 1/2/4/5 captain-free' was WRONG — base=lev+capt_prem(lev) at every wrapped site (verified :355/:742). RULED: captain-additive at ALL SIX sites. Segment-2 directive corrected in place** · prior: v185
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4736,3 +4736,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     EXTRA leg's FEED+exploration can consume most of a window before writing begins; future EXTRA
     directives pre-plan the plan/implement chat split rather than discovering it. **UI v1.3 FIRED**
     (item 210's directive; ui/-only, parallel; prescreen on return).
+
+213. **THE CAPTAIN-SCOPE CORRECTION — BUILD-CAUGHT, SUPERVISOR-OWNED (2026-07-16).** The plan chat
+    HALTED-AND-ASKED (correctly, per the directive) on amendment 2's scope: item 211 wrote "sites
+    1/2/4/5 are captain-free — unchanged." **THAT CLAIM WAS WRONG — this seat's error, on the
+    ledger:** the wrapped expressions at 1/2/4/5 read `posval(base−REPL)` and this seat did not trace
+    `base` upstream; VERIFIED NOW from the code at 8b8ab7d: `base = lev + capt_prem(lev)` one line
+    above the wrap in BOTH `proj_from_peak` (rl_model.py:355) and `_proj_w4` (_merged_recover.py:742)
+    — every one of the six sites folds the L-CAPTAIN premium into the argument. Left as ruled, the
+    plain blend at 1/2/4/5 would have eroded the premium by ~(1−w) in log space at the forward-
+    projection legs for high-w captains (Gawn/Bontempelli — the ↑ watch rows) — the exact defect
+    amendment 2 exists to prevent. **RULED (the build's own recommendation adopted): the additive
+    construction applies at ALL SIX SITES** — v0=posval(lev−REPL) · v0′=v0^(1−w)·t^w · δ=posval(lev+
+    capt_prem(lev)−REPL)−posval(lev−REPL) · v′=v0′+δ, ρ pre-captain, the δ byte-identity self-test
+    over all sites. Item 211's amendment-2 text is SUPERSEDED on scope by this item (rationale
+    unchanged). The segment-2 directive corrected IN PLACE (its "3/6" references → all six). The
+    checkpoint's third catch — this one caught the SUPERVISOR. Correction ledger: honest, immediate,
+    at source.
