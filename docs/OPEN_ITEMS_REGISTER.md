@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v239 2026-07-16 · PEN: **ITEM 266: owner re-bands PAIR 2 to ±15% ("Happy to reband to 15") — at his s=0.10 the pair now PASSES (−14.0%); both pairs green at the selected strength. Selection build FIRED by the owner. Open owner words: NONE until the selection return** · prior: v238
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v240 2026-07-16 · PEN: **ITEM 267: SELECTION RETURN — prescreen PASS at `273463e` (PR #103): s=0.10 WIRED, board `f2f077b2`, band healed both sides, both pairs green, suite green save the documented GUARD-5 candidate condition. LEG-C <LEG-B-HEAD> FILLED = `273463e`** · prior: v239
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5709,3 +5709,25 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     operative from this item per OQ-A interim visibility. The SELECTION build (item 265) is
     FIRED by the owner. Open owner words: NONE until its return. Next: selection return →
     prescreen → Leg C placeholders fill → his Leg-C fire word.
+
+267. **SELECTION RETURN — PRESCREEN PASS; LEG B IS BUILT AND WIRED (2026-07-16).** Head
+    `273463e` (wire `ddb1328` prescreened turn 32) · PR **#103** (base the fef2b64 line;
+    ancestry re-verified by the supervisor). Post-wire fence: session-dir only ✓. NUMBERS OF
+    RECORD (corroborated from committed artifacts, gate meta HASH-OK engine `a0635745` · store
+    `b1fd0bce` · config `c2d233ae`): **new default board `f2f077b2`** · kill-switch RL_UNCOMP=0
+    ⇒ `8d90c9ac` BYTE-EXACT · explicit RL_UNCOMP_S=0.10 == default (default path proven) ·
+    **G-COHORT y4 1.2667 / y5 1.2727 / y6 1.2300 — BAND PASS both sides (y6 ideal); the Leg-A
+    baseline breach (1.3017/1.3160) IS HEALED at the wired default** · β 0.6299 (width 0.3046
+    OK, n=116 standing note) · E/B 1.923 raw 3679/1913 (mild denominator flag; English himself
+    a marginal sincerity slip) · Bontempelli +263, rank 35→26 PASS · pair_2 −14.0% PASS under
+    the item-266 ±15% band (scored) · pair_3 −7.9% PASS · sincerity slips 10, ALL marginal and
+    named (Maynard · English · Ridley · Drew · Madden · Sweet · Daniels · Waterman · McKay ·
+    Lester) · net ΣΔ +1231 (+0.17%, legal per item 256; generational recycle MID+1155 /
+    GEN_FWD−404). **GUARD-5 CONDITION (documented, NOT a defect, binding on every later seat):**
+    the boot-store pin (data/expected_boot.json) carries the SHIPPED engine hashes; the Leg-B
+    wire legitimately moves rl_model/_merged_recover md5s, so GUARD 5 trips RED on ANY unbaked
+    candidate — cleared by the RE-PIN AT THE CHAPTER-END BAKE; never weaken the guard and never
+    read this RED as a candidate defect (its own failure text names the mechanism). Build
+    conduct clean; ~70 min in-window. **LEG C UNBLOCKED: <LEG-B-HEAD> = `273463e` filled in the
+    pre-drafted directive this commit; <DOCS-SHA> fills in the follow-up commit (item-249
+    pattern).** The selection chat retires; PR #103 merges at chapter end (one bake).

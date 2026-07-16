@@ -1,6 +1,6 @@
 # DIRECTIVE — LEG C: FLEX POSITIONAL MACHINERY · 2026-07-16 · seat 9 (Fable) · PRE-DRAFTED
 ### STATUS: PRE-DRAFTED — fires ONLY after (1) the Leg-B RETURN prescreens PASS and (2) the owner's
-### word. TWO PLACEHOLDERS, filled at fire time: <LEG-B-HEAD> (the prescreened Leg-B candidate head)
+### word. TWO PLACEHOLDERS, filled at fire time: 273463e (the prescreened Leg-B candidate head)
 ### and <DOCS-SHA> (main at issue). THE ONE STORE WRITER of the chapter. SILENCE IS A RED. S1–S6.
 
 ## EFFORT: High · MODE: auto — PLAN first, then **STOP-AFTER-PLAN checkpoint** (the item-207
@@ -23,13 +23,13 @@
    Register items 216/217 (the rider, owner verbatim). 6. This directive.
 
 ## BASE PIN
-- **Engine/store base — STRICT:** the candidate branch at **<LEG-B-HEAD>** exactly (the prescreened
+- **Engine/store base — STRICT:** the candidate branch at **273463e** exactly (the prescreened
   Leg-B head; verify by full-URL ls-remote; any other SHA ⇒ HALT). Continue THAT branch (never a
   sibling — item 202/219; this directive's inputs are all at or before <DOCS-SHA>, so no item-219
   contradiction exists: the base carries everything needed except docs, which are FETCHED, not merged).
 - **Docs base:** main AT OR AFTER **<DOCS-SHA>**, `git diff --name-only <DOCS-SHA>..main` docs/-only.
 
-## THE JOB (kill-switch `RL_FLEX` — =0 ⇒ the <LEG-B-HEAD> board byte-exact; the RL_ISOFADE pattern)
+## THE JOB (kill-switch `RL_FLEX` — =0 ⇒ the 273463e board byte-exact; the RL_ISOFADE pattern)
 1. **THE INGEST — VALIDATE-OR-HALT:** parse the positioning CSV — 804 stable IDs resolve · vocab
    exactly {GDEF,GFWD,KDEF,KFWD,MID,RUC} store-side (the CSV writes K-DEF/G-FWD style — the item-180
    VOCAB TRAP: never confuse store vocab with board posCodes; state the mapping in the PLAN) · at
@@ -54,7 +54,7 @@
    chapter) — expected_boot re-pinned in the same commit; board/matrix/panel regenerated, stamped.
 
 ## DELIVERABLES
-PLAN (then checkpoint) · A/B proof RL_FLEX=0 == <LEG-B-HEAD> board byte-exact · the ingest's
+PLAN (then checkpoint) · A/B proof RL_FLEX=0 == 273463e board byte-exact · the ingest's
 validation report (804/804 · vocab · streams) · the attribution artifact (5) · the conservation note
 (6) · **the per-young-player EARNED-COMPONENT check over the 11 + Flanders (audit #27: a primary-
 position write must not cut a young player's earned value at FINAL SCAR — any negative row = HALT)**
