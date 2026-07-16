@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v188 2026-07-16 · PEN: **UI v1.3 PRESCREEN PASS (item 215) + the 33-multi-position flag DIAGNOSED: the CSV lists K-implies-G expansions; house rule = K absorbs G (not DPP) ⇒ all 34 collapse to 1-2 positions. OWNER COUNTING RULING OPEN (collapse-first vs equal-split). Leg-B segment 2 FIRED. Best-23 K-in-G-slot eligibility check REGISTERED** · prior: v187
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v189 2026-07-16 · PEN: **THE COLLAPSE RULED + FOUR CSV ROWS CORRECTED BY THE PEN (item 216: Whitlock K-DEF/K-FWD; Flanders/Baker/Langdon G-DEF,G-FWD — owner-worded). UI v1.3.1 directive issued (same branch, #101 held). Store-eligibility corrections QUEUED TO LEG C. ONE owner word open on Flanders present_position. Injury-vs-posture note → LEG E** · prior: v188
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4786,3 +4786,36 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     owner eyeball asked; (2) the owner's Best-23 edge case (does the v1.2 solver model K-eligibility
     for G slots — a 3rd K-DEF vs a 4th G-DEF) — a bundle/solver check OUT of this PR's fence, queued
     as its own Tier-3 investigation on his word. **Leg-B SEGMENT 2 FIRED** (owner, this turn).
+
+216. **THE COLLAPSE RULING EXECUTED + THE THREE PURE-GENERALS + WHITLOCK (owner-worded 2026-07-16).**
+    RULINGS: (1) K-X ABSORBS G-X — eligibility, never DPP; collapse-first then the counting rule;
+    (2) Flanders/Oskar Baker/Ed Langdon = DPP G-DEF/G-FWD, NOT mid — "a player should NOT have three
+    positions", store AND UI; (3) Whitlock's locations row incorrect → K-DEF/K-FWD, no remnants.
+    **EXECUTED BY THE PEN (docs/inputs is docs/):** four rows of AFFL_Player_Locations.csv corrected
+    verbatim to the rulings (lines 183/527/617/676 verified post-edit). **REMNANT SWEEP (this seat's
+    own greps):** Matt Whitlock's STORE was ALREADY CORRECT (eligibilities K-DEF,K-FWD — the item-20
+    correction held; the CSV was the one stale copy); his Future_Positioning row (K-FWD primary,
+    K-DEF 50%) consistent; ui/data/board_view_* bundles are DERIVED (regenerate at the next board
+    build — never hand-edited). **STORE CORRECTIONS QUEUED TO LEG C (the chapter's one store
+    writer):** eligibilities 'G-DEF,G-FWD' for the three (currently carry MID); an enumerated
+    owner-ruled rider on the Leg-C directive — NOT a new writer (Leg-B seg2 holds the engine lane).
+    **ONE OWNER QUESTION OPEN — FLANDERS' SINGLE-VALUED POSITIONS:** his store present_position =
+    MID (Langdon GDEF ✓, Baker GFWD ✓ already consistent); under "not mid" it should move to G-DEF
+    or G-FWD — WHICH is his present primary? (Value-moving — the year-0 replacement bar changes.)
+    His FUTURE stays per the owner's flex register (MID primary, G-DEF 30% alternate) unless the
+    owner says otherwise — present≠future is the taxonomy working as designed, flagged for his
+    confirmation. **UI v1.3.1 DIRECTIVE ISSUED** (same branch at 1a272ff STRICT; collapse-first ·
+    regenerate positions_data.js via the COMMITTED extract_positions.py · delete equal-split w/
+    obituary · the ≤2-positions assertion · #101 held for it). **PRESCREEN ADDENDA (owner-challenged,
+    honestly):** (i) this seat did NOT view the v1.3 screenshots (existence/size only — the owner
+    viewing rung covers rendering, but it should have been LABELLED); (ii) the 15/15 tests and the
+    Σ==player-value exactness were read from the committed verdicts, REPORT-ONLY at this seat's
+    level; (iii) the seven pockets OVERLAP (top-5 ⊂ top-10 ⊂ players) so %-of-overall never sums to
+    100 — by design, worth a viewing note; (iv) credit: values-free positions_data with a stamp
+    block + a committed generator is SSI-clean practice; (v) the return's PR link format (/issues/)
+    cosmetic. **INJURY × POSTURE (owner-raised) → LEG E INPUT:** partially covered already — the
+    availability layer haircuts the CURRENT season (B2/RL_AVAIL), and a contender lens up-weighting
+    'now' AMPLIFIES that discount automatically; the owner's categorical read (a season-long-injured
+    player's contender value ≈ trade value only) is a MAGNITUDE question — the Leg-E movers report
+    MUST include named LTI rows (Rozee, out for 2026, the natural case) so the presets are ratified
+    from evidence; no new mechanism pre-committed.
