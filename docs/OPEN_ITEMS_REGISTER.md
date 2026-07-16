@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v216 2026-07-16 · PEN: **SEGMENT-4 λ PRE-GATE HALT (item 243): the v1.2 law measured at λ=0.8086 < 0.95 (whole-career weighting drags elites to career-average; no d∈[0.30,0.72] clears; waive = DEAD, β_eff ≤ 0.8086 even at w=1). OPTIONS to the owner: A [REC] kernel-family diagnostic (rule-conforming fast-decay shapes, named-player table) · B dead · C chapter rethink. E-vs-ρ framing filed (evidence lives in E; ρ is current form). Seat-9 rotation = after this fork, unconditional** · prior: v215
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v217 2026-07-16 · PEN: **PROVENANCE CORRECTED (item 244, owner-probed): β≥0.85 was SEAT-AUTHORED (memo v1.0), not owner law — the owner's hard numbers are E/B ≥1.75 (R104.3) + his reads/gates; λ≥0.95 is DERIVED arithmetic from 0.85. The owner's law as-written ⇒ β_eff ≈0.75 (real de-compression vs 0.62). Decision structure: kernel table FIRST; if no conforming shape ≥0.95, the owner may RE-RULE the β target (legitimate owner word) vs adopt a sharper kernel** · prior: v216
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5261,3 +5261,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ⇒ C. **B** — waive: shown dead, not offered seriously. **C** — chapter rethink (the fallback).
     The paste is in the owner's hands. **ROTATION BOUNDED: seat 9 finishes THIS fork (table → shape
     ruling → memo v1.3) then rotates UNCONDITIONALLY** — stated to the owner in the same turn.
+
+244. **THE 0.85/0.95 PROVENANCE — CORRECTED ON THE OWNER'S PROBE (2026-07-16).** For the record
+    before any ruling: **β ≥ 0.85 was seat-authored** (memo v1.0's quantification of "mostly
+    proportional" between β_c=0.62 and 1.0) and rode the package into acceptance — it is NOT an
+    owner-worded law and must not be defended as one. The owner's actual hard numbers: **E/B ≥ 1.75
+    captain-in (R104.3)** · G-COHORT 1.30 · the young protections · his sealed reads and viewing.
+    **λ ≥ 0.95 is pure derived arithmetic** from 0.85 + the dial's realistic max (w≈0.68): target
+    needed = (β_goal − 0.32·0.62)/0.68 — at β 0.80 it is ~0.89; at 0.75 it is ~0.81, exactly the
+    owner's law as-written. **λ involves NO prediction** (both rulers are contemporaneous over the
+    same recent period — the crystal-ball worry dissolved in-chat). **0.81 IS materially better
+    than nothing:** the owner's law at full dial ⇒ β_eff ≈ 0.75 vs today's 0.62 — whether that
+    SUFFICES is measurable against HIS gates (E/B 1.75 + the board to his eye), not against my
+    0.85. **DECISION STRUCTURE FILED:** (1) the kernel table lands first (running) — a conforming
+    shape ≥0.95 moots the question; (2) if none, the owner holds a LEGITIMATE RE-RULING of the β
+    target (his word moving his line with full information — rule-3-clean; never a seat
+    self-amendment) versus adopting a sharper conforming kernel; the E/B + cohort + reads rungs
+    bind either way.
