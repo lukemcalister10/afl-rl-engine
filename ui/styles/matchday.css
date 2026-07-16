@@ -302,3 +302,39 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .ctable tbody tr:hover{background:var(--card-2)}
 .ctable td small{color:var(--faint);font-size:10px}
 .clubspage .cfoot{margin-top:12px;font-size:11px;color:var(--faint)}
+
+/* ---- v1.3: club pocket-profile + positional breakdown (item 196) ---------------------------- */
+.pk-target{cursor:help;border-bottom:1px dotted var(--edge);outline:none}
+.pk-target:hover,.pk-target:focus{border-bottom-color:var(--volt);color:var(--volt)}
+/* Clubs page: name is the pocket target; a separate "open ›" carries the board navigation. */
+.ctable td.club .cnm{font-family:var(--cond);font-weight:900;font-size:15px;letter-spacing:.02em;text-transform:uppercase}
+.ctable td.club .copen{margin-left:10px;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--edge)}
+.ctable td.club .copen:hover{color:var(--volt);border-bottom-color:var(--volt)}
+
+.pocketpanel{position:fixed;z-index:9000;width:360px;max-width:calc(100vw - 20px);
+  background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--volt);
+  box-shadow:0 14px 40px rgba(0,0,0,.55);padding:0 0 4px}
+.pocketpanel .pk-head{padding:11px 14px 8px;border-bottom:1px solid var(--edge)}
+.pocketpanel .pk-name{display:block;font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--text)}
+.pocketpanel .pk-sub{display:block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin-top:2px}
+.pocketpanel .pk-sec{font-family:var(--cond);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--volt);padding:10px 14px 4px}
+.pocketpanel .pk-sec small{color:var(--faint);letter-spacing:.06em;font-weight:400;text-transform:none}
+.pocketpanel .pk-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.pocketpanel .pk-tbl th,.pocketpanel .pk-tbl td{padding:3px 14px;text-align:right;white-space:nowrap}
+.pocketpanel .pk-tbl th{font-family:var(--cond);font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);border-bottom:1px solid var(--edge)}
+.pocketpanel .pk-tbl td.pk-lbl{text-align:left;font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--dim)}
+.pocketpanel .pk-tbl td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pocketpanel .pk-tbl td.pk-abs{color:var(--text);font-weight:700}
+.pocketpanel .pk-tbl td.pk-pct{color:var(--dim)}
+.pocketpanel .pk-tbl tbody tr:hover{background:var(--card-2)}
+.pocketpanel .pk-vs{font-family:var(--mono);font-size:11px;font-weight:700}
+.pocketpanel .pk-vs small{font-weight:400;color:var(--faint);margin-left:3px}
+.pocketpanel .pk-vs.up{color:var(--up)} .pocketpanel .pk-vs.dn{color:var(--dn)} .pocketpanel .pk-vs.flat{color:var(--faint)}
+.pocketpanel .pk-foot{font-size:10px;line-height:1.5;color:var(--faint);padding:9px 14px 4px;border-top:1px solid var(--edge);margin-top:4px}
+@media (max-width:480px){.pocketpanel{width:calc(100vw - 20px)}}

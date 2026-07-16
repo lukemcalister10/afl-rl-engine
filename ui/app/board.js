@@ -99,6 +99,9 @@ MD.board = (function () {
         '<span class="ccount num">' + fmt.n(c.n) + " players</span>";
     }
     el.innerHTML = html;
+    // v1.3 (item 196): the ranked club name gains the pocket profile on hover / focus / tap.
+    const nmEl = el.querySelector(".cname");
+    if (nmEl && MD.pocket && MD.pocket.has(c.club)) MD.pocket.attach(nmEl, c.club);
     return el;
   }
 
@@ -117,6 +120,8 @@ MD.board = (function () {
         '<span class="cbstat cbtot">overall <b class="num">' + fmt.n(c.sigma + pv) + "</b></span>";
     }
     el.innerHTML = html;
+    const cbnm = el.querySelector(".cbname");
+    if (cbnm && MD.pocket && MD.pocket.has(c.club)) MD.pocket.attach(cbnm, c.club);
     return el;
   }
 
