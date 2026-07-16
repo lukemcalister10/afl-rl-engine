@@ -23,3 +23,19 @@ _uncomp_prod inert      -> returns pr UNCHANGED, never reaches rho_out/_qualifyi
   def _qualifying(p, season) -> bool          # engine/rl_after/_merged_recover.py  (def) 
   called once in: rho_out(p, pos)             # engine/rl_after/_merged_recover.py  season-selection comprehension
   # v1.2 replaces ONLY the stub body; nothing else in the map moves.
+
+## Captain-off pass δ self-test (price6 level, no s, no map — the mechanism only)
+# pr_on = price6 (capt on) ; pr_off = price6 under MA._CAPT_OFF ; delta = pr_on - pr_off = L-CAPTAIN increment
+player                     pos       pr_on     pr_off      delta   restored_ok
+Max Gawn                 RUC       2889.00   2356.16    532.84     True
+Brodie Grundy            RUC       4241.50   3698.28    543.22     True
+Tristan Xerri            RUC       7278.98   6160.52   1118.46     True
+Zak Butters              MID       5769.16   5144.70    624.46     True
+Isaac Heeney             MID       3669.60   3256.94    412.66     True
+Marcus Bontempelli       MID       3339.00   2977.00    362.00     True
+Rhys Unwin               GEN_FWD    230.42    230.42      0.00  (sub-captain: delta~0)
+SELF-TEST: PASS — pr_off <= pr_on (captain removed), delta >= 0, delta==0 for a sub-captain player,
+captain-off deterministic and byte-restored (pr_on recomputed == pr_on). In the map, delta is added back
+UNCHANGED (v' = C*v0p + delta); when w<=0 the map returns pr (identity), so the L-CAPTAIN increment is
+preserved regardless of the production blend. The full pre/post-MAP delta identity runs once the map turns
+on (needs MEMO v1.2's predicate).
