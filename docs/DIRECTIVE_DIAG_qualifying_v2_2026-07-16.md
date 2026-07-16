@@ -2,8 +2,15 @@
 ### ⚠ THIS IS ITS OWN FRESH CHAT — separate from, and parallel to, the Leg-B build chat (S3). It
 ### MEASURES; it writes NOTHING to store/engine/board/docs. v2 consolidates the v1 directive + its
 ### addendum (both archived) after a cross-model review: the DECLINE third category folded in, the
-### interruption BAR declared, pins tightened. Fresh Claude Code (Opus) chat · Tier 3 · Medium ·
-### ~1.5–2 h. SILENCE IS A RED. Report context at HALT/RETURN; reap background tasks.
+### interruption BAR declared, pins tightened. Fresh Claude Code (Opus) chat · Tier 3 · **HIGH** ·
+### ~2–2.5 h. SILENCE IS A RED. Report context at HALT/RETURN; reap background tasks.
+### EFFORT — why not one lower (owner-challenged, raised from Medium): the job is read-only and its
+### NUMBERS are re-verified downstream, but its CLASSIFICATION TEST is a judgment surface that shapes
+### memo v1.2 directly — a subtle classification error costs a DESIGN ROUND (three paid today), and
+### the insurance (self-verify the test against the named cases BEFORE committing the census; sanity-
+### check phase boundaries on knowns) is ~30 min on a 2 h job. High buys verification breadth at the
+### one point downstream checks reach LAST. Why not Extra: the harness is pre-built and pinned, the
+### sample is fixed, nothing ships — design-grade scrutiny belongs to the memo, not the measurement.
 
 ## WHY (register items 230/231/233)
 Leg B's un-compression target reads a player's recent-2 QUALIFYING seasons. A hard games-floor

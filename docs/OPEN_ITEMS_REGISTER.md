@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v206 2026-07-16 · PEN: **DIAGNOSTIC DIRECTIVE REISSUED AS v2 (item 233): v1 + addendum CONSOLIDATED (owner asked; the two-piece issue caused real confusion — one document now). Three-way classification first-class (ASCENT/INTERRUPTION/POST-PEAK) · BAR∈{6,10} · post-peak base+sensitivity variants · harness pinned at e3ff2c7 (the branch moves, the pin doesn't) · docs ≥8272aff. NOT YET FIRED — the owner opens it as ITS OWN chat, parallel to seg 3** · prior: v205
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v207 2026-07-16 · PEN: **DIAGNOSTIC DIRECTIVE REISSUED AS v2 (item 233): v1 + addendum CONSOLIDATED (owner asked; the two-piece issue caused real confusion — one document now). Three-way classification first-class (ASCENT/INTERRUPTION/POST-PEAK) · BAR∈{6,10} · post-peak base+sensitivity variants · harness pinned at e3ff2c7 (the branch moves, the pin doesn't) · docs ≥8272aff. EFFORT RAISED Medium→HIGH on the owner's challenge (item 234) — the classification test is a judgment surface; a subtle error there costs a design round. NOT YET FIRED** · prior: v206
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5101,3 +5101,13 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     fence on the job's own fresh branch. `docs/DIRECTIVE_DIAG_qualifying_v2_2026-07-16.md`. STATUS:
     NOT FIRED — the owner opens a FRESH Opus chat with it (separate from the Leg-B build chat),
     ~1.5–2 h, findings → memo v1.2.
+
+234. **DIAGNOSTIC EFFORT RAISED Medium → HIGH (owner-challenged 2026-07-16).** The v2 directive
+    omitted the required "why not one lower" line (conformance gap), and writing it out showed
+    Medium was wrong: it priced the cheap failure (a wrong number — caught downstream by the frozen
+    suite) and ignored the expensive one (a wrong CLASSIFICATION TEST — misleads memo v1.2 and
+    surfaces a design round late; three design rounds paid today). High adds ~30 min of
+    self-verification (test the classification against the named cases BEFORE the census; phase
+    boundaries sanity-checked on knowns) at the one point downstream checks reach last. Why not
+    Extra: pre-built pinned harness, fixed sample, nothing ships — design-grade scrutiny is the
+    memo's job. Directive amended in place; time band → 2–2.5 h.
