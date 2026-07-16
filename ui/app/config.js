@@ -22,6 +22,16 @@ MD.config = {
      Maps to lens = [vM2, vM1, v, vP1, vP2] = ev @ 2024/2025/2026/2027/2028 (rl_export.py:66). */
   LENS_DEFAULT: 2,
   LENS_LABELS: ["−2 yr", "−1 yr", "Now", "+1 yr", "+2 yr"],
+
+  /* item 178(1) CLUB-NAME WRAP FIX (owner-worded 2026-07-16): a DISPLAY-NAME MAP for exactly the three
+     owner-named AFFL clubs whose full nicknames break two lines. DISPLAY-ONLY — the long name stays the
+     join key everywhere (bundle affl_team, the picks-Owner join, the club-filter value); only the
+     rendered string is shortened. Any club not in this map renders verbatim. */
+  CLUB_DISPLAY: {
+    "North Melbourne Kangaroos": "North Melbourne",
+    "Collingwood Magpies": "Collingwood",
+    "Port Adelaide Power": "Port Adelaide",
+  },
 };
 
 /* ANCHOR MANIFEST — the owner's acceptance reads (documented, owner-worded). Working tier only.

@@ -36,6 +36,13 @@ MD.fmt = {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
     });
   },
+  /* item 178(1): the DISPLAY name for an AFFL club — the owner's three shortened clubs map here, every
+     other club passes through verbatim. Display-only; callers keep the raw name as the join key. */
+  club: function (name) {
+    if (name == null) return "—";
+    const m = (MD.config && MD.config.CLUB_DISPLAY) || {};
+    return m[name] || name;
+  },
 };
 
 /* Pick-asset guard (owner ruling, register v16 item 14): the current board is a PLAYER RANKING.

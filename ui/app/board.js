@@ -77,7 +77,7 @@ MD.board = (function () {
   function clubHeader(c, rank) {
     const el = fmt.el("div", "clubhead");
     el.innerHTML = '<span class="crank num">' + (rank || "—") + "</span>" +
-      '<span class="cname">' + fmt.esc(c.club) + "</span>" +
+      '<span class="cname">' + fmt.esc(fmt.club(c.club)) + "</span>" +
       '<span class="csig num">Σ ' + fmt.n(c.sigma) + ' <small>SCAR</small></span>' +
       '<span class="ccount num">' + fmt.n(c.n) + " players</span>";
     return el;
@@ -87,7 +87,7 @@ MD.board = (function () {
   function clubBanner(c, rank, clubRanks) {
     const total = Object.keys(clubRanks).length;
     const el = fmt.el("div", "clubbanner");
-    el.innerHTML = '<span class="cbname">' + fmt.esc(c.club) + "</span>" +
+    el.innerHTML = '<span class="cbname">' + fmt.esc(fmt.club(c.club)) + "</span>" +
       '<span class="cbstat">club rank <b>' + (rank || "—") + "</b> of " + total + "</span>" +
       '<span class="cbstat">ΣSCAR <b class="num">' + fmt.n(c.sigma) + "</b></span>" +
       '<span class="cbstat"><b class="num">' + fmt.n(c.n) + "</b> players</span>";
@@ -161,7 +161,7 @@ MD.board = (function () {
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
       // item 1: AFL club + AFFL club, listed per player (AFFL is the team-context lens focus, so it leads
       // in volt; AFL is the muted sub-line). Display-only strings from the bundle; "—" when absent.
-      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(p.affl_team || "—") + "</span>" +
+      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(fmt.club(p.affl_team)) + "</span>" +
         '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) +
@@ -349,7 +349,7 @@ MD.board = (function () {
         mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
         const more = c.n - mine.length;
         if (more > 0) rowsEl.appendChild(fmt.el("div", "clubmore", "+ " + fmt.n(more) + " more " +
-          fmt.esc(c.club) + " player" + (more === 1 ? "" : "s")));
+          fmt.esc(fmt.club(c.club)) + " player" + (more === 1 ? "" : "s")));
       });
     } else {
       pool.slice(0, clubFilter ? pool.length : 60).forEach(function (r) {
