@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v241 2026-07-16 · PEN: **ITEM 268: owner-requested PRE-FIRE AUDIT of Leg C — four real hazards found and fixed (count 11→13 · RUCK vocab · stale DECISIONS ref · prose-vs-JSON) + the checkpoint CONVERTED to commit-and-proceed for the overnight run. Directive → v1.1. Fires on his paste** · prior: v240
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v242 2026-07-17 · PEN: **ITEM 269: the v1.1 "thirteen" was the SUPERVISOR'S OWN ERROR (name-collision with retired duplicates); stable-ID recount = ELEVEN, build vindicated; item 268 superseded in place; PROCEED-with-11 paste issued** · prior: v241
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5734,7 +5734,8 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
 
 268. **THE LEG-C PRE-FIRE AUDIT (owner-requested: "double check... for anything that might be
     wrong, inconsistent, or cause the build to unnecessarily halt", 2026-07-16). FOUR REAL
-    HAZARDS FOUND, FIXED IN DIRECTIVE v1.1:** (1) **THE COUNT WAS STALE — 11 → MEASURED 13:**
+    HAZARDS FOUND, FIXED IN DIRECTIVE v1.1:** (1) **THE COUNT WAS STALE — 11 → MEASURED 13** ⟪SUPERSEDED IN PLACE, item 269: the 13 was
+    the SUPERVISOR'S OWN name-collision artifact — the 11 was right all along⟫**:**
     the CSV-primary vs 273463e-store diff (RUCK≡RUC, 804/804 matched) yields THIRTEEN
     primary-future changes (named in the directive); the item-180 "eleven" predated the owner
     finalizing the register — a build told "eleven, complete" that finds 13 halts or improvises.
@@ -5756,3 +5757,28 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     Earlier same turn: <LEG-B-HEAD>=273463e (8add349) · <DOCS-SHA>=8add349 (631654c) · stale
     acceptance pin v1.17→v1.20 (35ca2f1). Directive v1.1 + this item file together; fires on the
     owner's paste.
+
+269. **THE ELEVEN STANDS — MY THIRTEEN WAS WRONG (2026-07-17, seat 10 owning its own defect).**
+    The Leg-C build HALTed exactly as instructed on the count disagreement and handed back the
+    finding: its stable-ID recomputation gives ELEVEN primary-future changes, matching item-180
+    and SPEC §3; the v1.1 audit's THIRTEEN added Butler GDEF→GFWD and Lynch GFWD→KFWD — both
+    PHANTOM. ROOT CAUSE (verified this morning): the audit resolved players BY NAME over the
+    full 2,652-row store; the store carries a RETIRED Sam Butler (fut GDEF, no stable ID) beside
+    the active Hawthorn Sam Butler (GFWD) and a RETIRED Tom Lynch (GFWD) beside the active
+    Richmond Tom Lynch (KFWD) — the retired duplicates collided into the name map and
+    manufactured two changes that do not exist. Stable-ID re-run: 804/804 resolve, CHANGES = 11
+    (Carroll · Uwland · Roberts · Lindsay · Thomas · Powell · Graham · Humphrey · Hall · Lloyd ·
+    Emmett). The v1.1 header's "the register was finalized after the item-180 count" story was
+    an invented explanation for my own artifact — retracted. WHAT HELD: the guard I wrote into
+    v1.1 ("a disagreement is a finding for the supervisor, not a thing to improvise past") made
+    the build HALT instead of writing a wrong list — the system caught the supervisor. COST: the
+    overnight run stopped at the write list (~the one halt the pre-fire audit existed to
+    prevent, caused by the audit itself — recorded without varnish). The OTHER v1.1 fixes stand
+    unaffected (RUCK vocab — measured from the CSV directly, no identity resolution · DECISIONS
+    v115 · assert-JSON · the owner-law deliverables · the checkpoint conversion). **STANDING
+    RULE (bind on every seat): identity resolution is by STABLE ID against the 804-scope ONLY;
+    name-matching over the 2,652-row store is FORBIDDEN as an identity instrument** — the
+    retired-namesake trap is precisely what the Max King collision sentry documents. Directive
+    v1.1's embedded 13-list is superseded by this item (archive-time tidy; not edited
+    mid-flight). **PROCEED-WITH-VERIFIED-11 issued via the owner** — the build writes the 11 +
+    the 4-write rider, logs the discrepancy as a finding, and runs to its return.
