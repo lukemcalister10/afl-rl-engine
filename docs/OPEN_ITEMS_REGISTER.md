@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v232 2026-07-16 · PEN: **ITEM 259: owner keeps the hard HALT at 1.30; band edges move only via an explicit benefit/tradeoff conversation. Enforced band 1.08–1.30, ideal 1.15–1.25. Open words: NONE until the measurement returns** · prior: v231
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v233 2026-07-16 · PEN: **ITEM 260: UNFUNDED MEASUREMENT RETURNED — prescreen PASS at `b7a776c`; the unfunded road is MEASURED DEAD under the owner's band (every point fails the 1.08 floor) · the OFF baseline BREACHES the hard gate (the chapter's standing obligation) · CONSERVED-measure directive ISSUED pending word** · prior: v232
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5564,3 +5564,35 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     direction, either side) comes to the owner as an explicit benefit/tradeoff case — measured
     consequences on both sides, symmetric options — never as a rider inside other work. Open
     owner words: NONE. In flight: the unfunded measurement grid (item 257).
+
+260. **UNFUNDED MEASUREMENT RETURN — PRESCREEN PASS; THE UNFUNDED ROAD IS DEAD (2026-07-16).**
+    Head `b7a776c`; fence VERIFIED (only the item-257 toggle files outside the session dir; 38
+    session artifacts); frozen instruments verified (beta 14c59139; G-COHORT via
+    ship_gates_check._b1_july8); per-point numbers CORROBORATED from committed artifacts (GRID.out
+    · MEASURE.md table · beta_s*.txt · SINCERITY_all804_s*.csv with full rank columns — the item-
+    256 ledger operational for the first time); thread-invariance proven (OFF re-derives
+    y 1.3017/1.3160/1.2664 byte-exact single- vs multi-threaded after an OpenBLAS thrash the
+    build diagnosed and fixed). **JUDGMENT UNDER THE OWNER'S LAWS: every unfunded point FAILS the
+    item-258 band floor** — best y4 0.880 (s=0.65), worst y6 0.475 (s=1.50), all ≪ 1.08; the
+    July-8 curve INVERTS (older cohorts below the y1/y2 base). Letter-passes are cosmetic exactly
+    as the owner's laws predicted: G-COHORT "clears" by deflation; E/B "passes" by Briggs
+    collapsing 2070→512; β crosses 0.80 only at s=1.50 where its own width rail breaks (0.388,
+    CI spans 1.0); net board −24%→−36% (−175k→−261k of 734k); the young core gutted (N. Daicos
+    −54% rank 2→6 · Sheezel −55% 3→9 · at s=1.50 Pickett 32→486, Wilmot 23→442) while proven
+    journeymen leap (T. Nankervis 110→17, +1094). Sincerity count 0 by the letter; the ledger
+    tells the story anyway. **THE OFF ROW RESTATES THE CHAPTER'S STANDING OBLIGATION:** the
+    baseline at the candidate head BREACHES the hard gate (y4 1.3017 / y5 1.3160 > 1.30) — the
+    known Leg-A condition (R104.10 proceed-eyes-open; the v2.10 waiver EXPIRED at the v4.27 seam)
+    — so IDENTITY does not close the chapter cleanly: something must bring y4/y5 under 1.30
+    before the bake. The memo's conserved pre-sim (s=0.55 ⇒ 1.100/1.154/1.113 — IN BAND) was the
+    planned discharge and remains UNMEASURED on a real board. **CONDUCT NOTE:** the build
+    proceeded past its mini-checkpoint without interactive confirmation (session non-interactive;
+    cited MODE:auto + the Measure word) — materially harmless (the supervisor's diff prescreen
+    had already PASSED at 6d9a4269 before compute began) but recorded: a gate that fires without
+    its confirmation is a defect even when the outcome is clean. Honest flags: <½× time declared
+    (~24 min targeted vs the full-suite estimate); APP counter unavailable, wall-clock reported.
+    **DIRECTIVE ISSUED (pending the owner's word):
+    docs/DIRECTIVE_LEGB_conserved_measure_2026-07-16.md** — the conserved family at the
+    owner-ratified grid {0.55–0.70}, same battery, band-judged both sides, E/B with raw parts,
+    reusing the proven harness (Medium, 45–90 min, base `b7a776c` STRICT, read-only). The
+    disposition then rules with BOTH families fully measured. Leg C still HOLDS.
