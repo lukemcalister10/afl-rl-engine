@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v231 2026-07-16 · PEN: **ITEM 258: OWNER RULES THE COHORT HEALTH BAND — ideal 1.15–1.25, stretch 1.08–1.33; a floor breach is a FAILURE like a cap breach. G-COHORT verified CAP-ONLY as written (bound 1.3, no floor) — the owner caught the one-sided-gate exploit. Open word: hard cap 1.30 vs 1.33** · prior: v230
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v232 2026-07-16 · PEN: **ITEM 259: owner keeps the hard HALT at 1.30; band edges move only via an explicit benefit/tradeoff conversation. Enforced band 1.08–1.30, ideal 1.15–1.25. Open words: NONE until the measurement returns** · prior: v231
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5554,3 +5554,13 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     with L-SINCERE (item 256); operative now per OQ-A interim visibility. STANDING NOTE (bind on
     every seat): a guard protects a healthy RANGE; "clears with margin" toward an unguarded side
     is a warning, not a success.
+
+259. **OWNER CLOSES THE ITEM-258 SUB-QUESTION (2026-07-16, verbatim): "Keep halt at 1.3, I will
+    consider stretching either side of the guide but it needs to be a conversation about what the
+    benefit and tradeoff is."** OPERATIVE: the hard G-COHORT HALT stays **1.30** (unchanged in
+    code/acceptance — nothing to build). The item-258 band is enforced as **1.08 floor – 1.30
+    cap, ideal 1.15–1.25**; the 1.33 stretch top is RECORDED but CLIPPED until such a
+    conversation rules otherwise. STANDING RULE: any proposal to move a band edge (either
+    direction, either side) comes to the owner as an explicit benefit/tradeoff case — measured
+    consequences on both sides, symmetric options — never as a rider inside other work. Open
+    owner words: NONE. In flight: the unfunded measurement grid (item 257).
