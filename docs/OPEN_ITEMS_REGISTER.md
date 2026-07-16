@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v224 2026-07-16 · PEN: **SEAT 10 OPENS (item 251): freshness CLEAN · pack EQUAL (nothing filed) · seg-5 MINI-CHECKPOINT prescreen PASS at `4c0d7e4` · PROCEED given** · prior: v223
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v225 2026-07-16 · PEN: **SEG-5 RETURN (item 252): GRID EMPTY at bar 0.80 — sanctioned HALT · prescreen PASS at `91d08f2` · Option-A fix verified pure relocation · OWNER WORD OPEN: Leg-B disposition** · prior: v224
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5401,3 +5401,30 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     (8d90c9ac both paths) stays REPORT-ONLY pending the A/B re-prove — the first post-PROCEED act
     by design. Next: seg-5 runs to its RETURN (grid at bar 0.80, all-804 ledger); seat-10 heavy
     prescreen follows.
+
+252. **SEG-5 RETURN — THE GRID IS EMPTY AT THE OWNER'S BAR: SANCTIONED HALT; PRESCREEN PASS
+    (2026-07-16).** Head `91d08f2` (branch legb-segment5-law-grid-flq57f; PR none — no merge
+    candidacy while the disposition is open). MID-BUILD: a seg-4 LATENT load-order defect blocked
+    every map-ON build (`_uncomp_prod` line 311 read `_isreal`, defined at 491; the load-time ISO
+    build at 358 triggers it the first time the dial is set — dormant until now because the inert
+    guard short-circuits at `UNCOMP_S is None` BEFORE the name is evaluated, which is also why
+    every prior guard/A-B was clean). Supervisor verified all three code sites BEFORE the ruling
+    ask; owner authorized **Option A** (one-time fence amendment, verbatim conditions in chat).
+    Fix `132f321` SUPERVISOR-VERIFIED PURE RELOCATION: the two executable lines char-identical at
+    the new site, additions comment-only; window 356–490 verified free of store-list writes; OFF
+    A/B re-proven `8d90c9ac` BYTE-EXACT post-fix; guards + preflight re-run PASS. THE GRID
+    (committed GRID_FINAL.out; instrument `beta_measure.py` md5 `14c59139` — verified BYTE-
+    IDENTICAL to the seg-4 base copy at `ef6bf1a`, S4 frozen, one process/point): β_c 0.6219 ·
+    s=0.55→0.6665 · 0.60→0.6706 · 0.65→0.6747 · 0.70→0.6788 — **EMPTY at the owner's point-bar
+    0.80**; per the directive/memo v1.3 the build HALTED with the table, extended nothing,
+    re-tuned nothing. No s selected; dial stays None; board `8d90c9ac`, store `b1fd0bce`, config
+    unchanged; heavy-prescreen ledger/E-B/G-COHORT rungs EMPTY BY CONSTRUCTION (no ON board).
+    MEASURED MECHANISM (FINDING doc): realised weight w = s·E·ramp ≈ 0.15 at s=0.55 over
+    proven-27+ (E-saturation + onset ramp cut w to ~¼ of s); slope ≈ 0.0008 β per 0.01 s ⇒ the
+    bar is UNREACHABLE on the s dial (s ≈ 4+). ⚠ FLAG CARRIED: rev148 §2 recorded the algebra
+    PREDICTING s=0.65 selects at β_eff≈0.81; MEASURED 0.6747 — a ~0.14 prediction-vs-measurement
+    gap in the R104.10 pre-sim lineage, UNRECONCILED. Also noted: n=116, CI width ≈0.30 (the
+    s=0.70 CI [0.54,0.84] straddles the bar; the law judges the POINT). **OWNER WORD OPEN
+    (supersedes DECISIONS v115 §2 "NONE" pending the fold):** Leg-B disposition — options put
+    symmetrically in chat (accept-identity / diagnose-the-gap-first [supervisor-recommended,
+    read-only Tier-3] / re-rule bar-or-law). Leg C holds until the disposition settles its base.
