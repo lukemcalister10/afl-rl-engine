@@ -16,7 +16,7 @@
    superseded by memo ⟪v1.1⟫/⟪v1.2⟫/⟪v1.3⟫. 4. Register items 240/241/245-248.
 
 ## BASE PIN — STRICT: branch `claude/legb-segment4-v1-2-law-grid-2l4dhv` at **`ef6bf1a`** exactly
-## (full-URL ls-remote; other head ⇒ HALT). CONTINUE it. Docs: main at-or-after **`b89703f`**,
+## (full-URL ls-remote; other head ⇒ HALT). CONTINUE it. Docs: main at-or-after **`0163ed5`**,
 ## docs/-only diff. Store `b1fd0bce` + config `c2d233ae` untouched.
 
 ## THE JOB

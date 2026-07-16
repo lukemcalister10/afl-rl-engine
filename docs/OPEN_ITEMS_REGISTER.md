@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v221 2026-07-16 · PEN: **R105.6 — THE ACCEPT (item 248, owner verbatim 'Accept.'; constructed meaning as put: quarter fade + machine at owner-set β≥0.80 + better-not-perfect): MEMO → v1.3 · ACCEPTANCE → v1.20 (λ pre-gate retired with its parent; L-RECENCY + the all-804 ledger now acceptance-carried) · SEGMENT-5 DIRECTIVE ISSUED (base ef6bf1a STRICT; seg 4 retires). ROTATION AT THE NEXT FILING** · prior: v220
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v222 2026-07-16 · PEN: **item 249: the owner's directive re-check caught a DANGLING DOCS PIN in segment-5 (b89703f = the pre-amend orphan, never pushed — a fresh clone HALTs on it); fixed → 0163ed5. Seals + base verified live-good. ROOT CAUSE: pin-then-amend; standing fix: NEVER amend after embedding a SHA — fill pins in a FOLLOW-UP commit. Bake timing clarified to the owner: ONE bake, chapter end, after Legs B-E + the ladder** · prior: v221
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5349,3 +5349,15 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     with a clean record (the law wiring + two decisive diagnostics). Leg B's final design state:
     ZERO seat-authored numbers — every constant measured or owner-worded. The pack cascade
     (rev148 · DECISIONS v115 · manifest v4.41) rides THE ROTATION FILING, next.
+
+249. **THE DANGLING-PIN FIX (owner-prompted re-check 2026-07-16).** The segment-5 directive's docs
+    pin `b89703f` was the PRE-AMEND orphan: the SHA was embedded, then the commit AMENDED (to fill
+    it) — the amend replaced the commit, the orphan survives only in the authoring sandbox, and a
+    build's fresh clone HALTs unable to resolve it. The turn-57 journal's "holds by construction"
+    claim was WRONG (an at-or-after pin must EXIST to be diffed against). FIXED → `0163ed5` (real,
+    on remote main); seals (memo cf6c0080 · acceptance 6b83e336) and the base (`ef6bf1a`) verified
+    LIVE-GOOD in the same check. **STANDING FIX (the third pin lesson today, now mechanical): never
+    amend a commit after embedding its SHA anywhere — fill pins in a FOLLOW-UP commit, or pin
+    at-or-after the PREVIOUS push head.** Bake timing also clarified on the owner's question: ONE
+    bake per chapter, at the END — B → C → D → E → ladder (audit · sealed reads · viewing) → word →
+    bake → v2.11; the earlier 'consequences' sentence compressed the chain misleadingly.
