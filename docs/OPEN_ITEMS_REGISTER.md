@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v202 2026-07-16 · PEN: **SEG-3 PLAN PRESCREEN PASS (item 229): premise CONFIRMED (λ_ρ 0.90@10 / 0.99@6 vs level_now 0.12); captain-off pass sound; hook/removal/ramp ratified. TWO OWNER DECISIONS AT PROCEED: (1) games FLOOR — REC 6 (grid clears; 10 risks empty-grid HALT, independently reproduced) (2) branch re-point to decompress-3vo8y1 (harmless either way — REC keep the harness branch, it IS the candidate line's continuation). ROTATION AT PROCEED** · prior: v201
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v203 2026-07-16 · PEN: **THE QUALIFYING-RULE DEFECT (item 230, owner-caught): a hard games-floor MANUFACTURES FAKE ROOKIES — excludes developing players' 4-9-game early seasons, reading year-4 as year-1 (under-reads the young cohort items 130/170 protect). Floor-6 rec RETRACTED; smooth-weight ALSO insufficient. FIX = INTERRUPTION-vs-ASCENT conditioned rule → read-only diagnostic FIRED to ground memo v1.2. SEG-3 HALT at next clean point** · prior: v202
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5038,3 +5038,25 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the shared parent). Harmless either way. **ROTATION: seat 9 hands over at PROCEED (item 230 to
     follow) — this prescreen was the continuity-critical act; the build then runs 2.5-4 h unattended,
     the clean seam.** Grid/G-COHORT/deliverables all correctly carried; context 55%, no bg tasks.
+
+230. **THE QUALIFYING-SEASON DEFECT — OWNER-CAUGHT, DESIGN REDIRECTED (2026-07-16).** The seg-3
+    PLAN's hard games-floor (and this seat's floor-6 REC, and the smooth-weight fallback) share a
+    fatal premise: "low-game seasons aren't real evidence." FALSE for developing players — a young
+    key-pos player with 4/7/9-game early seasons has them EXCLUDED by any floor, so the recent-2
+    qualifying measure reads his 4th year as his FIRST — a PHANTOM ROOKIE, under-reading the exact
+    young cohort items 130/170 exist to protect (and the harder, commoner case vs the injury
+    exception the floor was defending against). **SUPERVISOR ERROR OWNED (twice on this axis):** the
+    floor-6 rec was a magnitude tuned to clear the β gate — the named anti-pattern — and it broke the
+    young cohort to do it; the owner caught both the tuning and the relabelling. **THE FIX (design,
+    not dial):** condition on SITUATION — exclude a low-game season only when it is an INTERRUPTION to
+    an established level (injury; Docherty protected), KEEP it when it is an ASCENDING early-career
+    rung (development; no fake rookie). The engine's demonstrated-level machinery already distinguishes
+    these. **A READ-ONLY DIAGNOSTIC IS FIRED** (`docs/DIRECTIVE_DIAG_qualifying_rule_2026-07-16.md`;
+    disjoint, parallel, ~1-1.5 h): the mislabel census · the conditioned rule's young-vs-proven delta ·
+    λ under floor-6/floor-10/conditioned (must stay ≈1) · named cases (Docherty · 3 young key-pos ·
+    Reid). Grounds memo v1.2 in counts. **SEG-3 BUILD HALTS** at its next clean point (the floor-6
+    run's young-side numbers are untrustworthy by exactly this defect — not a usable baseline); it
+    resumes on memo v1.2's conditioned rule. Path: diagnostic returns → memo v1.2 (v1.1 + the
+    qualifying rule) + acceptance re-seal → seg-3 continuation directive. ROTATION (item 229) HOLDS
+    at the next clean seam — this redirect is continuity-critical and stays with this seat through
+    the diagnostic return + memo v1.2, THEN hands over.
