@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v186 2026-07-16 · PEN: **BUILD-CAUGHT SUPERVISOR ERROR, CORRECTED (item 213): amendment 2's 'sites 1/2/4/5 captain-free' was WRONG — base=lev+capt_prem(lev) at every wrapped site (verified :355/:742). RULED: captain-additive at ALL SIX sites. Segment-2 directive corrected in place** · prior: v185
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v187 2026-07-16 · PEN: **AMENDED PLAN VERIFIED (item 214: e7cf9ba, chain e7cf9ba→12cb206→8b8ab7d, PLAN.md only, both amendments folded verbatim-in-substance incl. all-six captain + δ self-test). SEGMENT 2 CLEARED TO FIRE (fresh chat, DIRECTIVE_LEGB_segment2). Plan chat RETIRED clean** · prior: v186
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4753,3 +4753,14 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     unchanged). The segment-2 directive corrected IN PLACE (its "3/6" references → all six). The
     checkpoint's third catch — this one caught the SUPERVISOR. Correction ledger: honest, immediate,
     at source.
+
+214. **AMENDED PLAN VERIFIED — SEGMENT 2 CLEARED (2026-07-16).** Fresh fetch: head `e7cf9ba`, chain
+    e7cf9ba → 12cb206 → 8b8ab7d intact, diff = PLAN.md ONLY. Content read by this seat: the site-7
+    `_nv_bwd` NOT-WIRED row verbatim-in-substance (item 211) · the additive-captain construction at
+    ALL SIX sites with ρ pre-captain and the δ byte-identity self-test over all sites (item 213 —
+    including the honest note that the prescreen's own "1/2/4/5 captain-free" was superseded, cited
+    to :355/:742) · flags (a)(b)(c)(e)(f) dispositions folded · the segment-2 handoff stated in the
+    plan itself. Pre-view seal intact; store untouched. The plan chat retired exactly per item 212 —
+    a clean segment-1 close, no checkpoint apology. **NEXT: the owner opens a FRESH Claude Code
+    (Opus) chat with `docs/DIRECTIVE_LEGB_segment2_2026-07-16.md`** (base = e7cf9ba STRICT — the
+    directive's "amended-PLAN head" pin now resolves to this SHA). Return prescreen on its RETURN.
