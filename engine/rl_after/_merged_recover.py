@@ -273,8 +273,30 @@ def par_pole(pos,pk,T):
     if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'GEN_FWD':0.93,'KEY_FWD':0.95,'GEN_DEF':1.08,'KEY_DEF':1.05,'RUC':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
+# ==== LEG B DIAGNOSTIC (supervisor item 221, FINDINGS-ONLY) — un-compress blend at the PRODUCTION-VALUE level
+# Apply v'=v^(1-w)*(V_ref_b*rho)^w to the production-side board value pr=price6 (BEFORE the pole-recovery term
+# below — the ev-path analogue of value()'s prod_full pre-max-with-pedestal; NOTE: the board renders ev(), not
+# value(), so the hook is pr here). rho=level_now/L_ref[pos] (pre-captain), V_ref_b[pos]=MEDIAN price6 over the
+# demonstrated-proven pop (built load-time), w=s*E PER PLAYER (E=1-exp(-Eq/tau), current evidence; no per-leg
+# split). SEPARATE flag RL_UNCOMP_L2_S; RL_UNCOMP stays INERT. CAPTAIN CAVEAT: pr carries the captain via the
+# posval sites, so this blends captain-inclusive production (flagged per the ruling, NOT reworked here).
+_L2S=(lambda _v: float(_v) if _v not in (None,'') else None)(os.environ.get('RL_UNCOMP_L2_S'))
+_L2_LREF={}; _L2_VREFB={}
+def _l2_blend(pr,p,Y):
+    if _L2S is None or pr<=0.0 or not _L2_VREFB: return pr    # off, or references not built yet (early-load raw_ev: pole warm / V0 build run before _isreal is defined)
+    _pos=MA.gfut(p); _Lref=_L2_LREF.get(_pos); _Vb=_L2_VREFB.get(_pos)
+    if not _Lref or not _Vb or _Lref<=0.0 or _Vb<=0.0 or not _isreal(p): return pr
+    _ln=MA.level_now(p)
+    if _ln is None: return pr
+    _Eq=_ev_qual(p,Y); _E=1.0-_math.exp(-_Eq/MA.UNCOMP_TAU) if _Eq>0.0 else 0.0
+    _w=_L2S*_E
+    if _w<=0.0: return pr
+    _t=_Vb*(_ln/_Lref)                                        # V_ref_b * rho (kappa=1)
+    if _t<=0.0: return pr
+    return pr**(1.0-_w)*_t**_w
 def raw_ev(p,Y=2026):
-    pr=price6(p,b6(p,Y),Y); pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
+    pr=price6(p,b6(p,Y),Y); pr=_l2_blend(pr,p,Y)             # LEG B item-221 diagnostic: production-value un-compress blend (no-op unless RL_UNCOMP_L2_S set)
+    pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
     et=min(max(eff_ten(p,Y, PR.tenure(p,Y)),1),6)                                     # STEP1: developmental tenure off original PR.tenure base
     po,par=par_pole(pos,pk,T); a=MA.age(p)
     wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
@@ -1313,6 +1335,31 @@ if MA._UNCOMP and MA.UNCOMP_S is not None:
           %(MA.UNCOMP_S,MA.UNCOMP_DELTA,sum(len(v) for v in _lref_pool.values())))
     for _g in sorted(MA._UNCOMP_LREF):
         print("    %-8s L_ref=%7.2f V_ref=%8.2f C=%.5f (n_proven=%d)"%(_g,MA._UNCOMP_LREF[_g],MA._UNCOMP_VREF[_g],MA._UNCOMP_C.get(_g,1.0),len(_lref_pool.get(_g,[]))))
+
+# ==== LEG B DIAGNOSTIC (item 221) — production-value reference: L_ref (median level_now) + V_ref_b (median
+# price6) over the demonstrated-proven pop per position. Built load-time only when RL_UNCOMP_L2_S is set;
+# RL_UNCOMP stays inert. price6 is called with the map inert (posval_uncomp -> base), so V_ref_b is the BASE
+# production value. ============================================================================================
+if _L2S is not None:
+    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
+    _l2ln={}; _l2pr={}
+    for _p in MA.data:
+        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
+        _g=MA.gfut(_p)
+        if _g not in MA.REPL: continue
+        _ln=MA.level_now(_p)
+        if _ln is None: continue
+        with contextlib.redirect_stdout(io.StringIO()):
+            try: _pr=price6(_p,b6(_p,2026),2026)
+            except Exception: _pr=None
+        if _pr is None or _pr<=0.0: continue
+        _l2ln.setdefault(_g,[]).append(float(_ln)); _l2pr.setdefault(_g,[]).append(float(_pr))
+    for _g in _l2ln:
+        _L2_LREF[_g]=float(np.median(_l2ln[_g])); _L2_VREFB[_g]=float(np.median(_l2pr[_g]))
+    print("=== RL_UNCOMP_L2 DIAGNOSTIC (item 221): s=%.4f | production-value blend over %d proven (RL_UNCOMP inert) ==="
+          %(_L2S,sum(len(v) for v in _l2ln.values())))
+    for _g in sorted(_L2_LREF):
+        print("    %-8s L_ref=%7.2f V_ref_b(price6)=%9.1f (n=%d)"%(_g,_L2_LREF[_g],_L2_VREFB[_g],len(_l2ln.get(_g,[]))))
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
