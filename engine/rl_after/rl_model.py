@@ -316,11 +316,16 @@ def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position v
 #   delta = posval(lev+capt_prem(lev)-REPL[pos]) - v0          (the UNCHANGED L-CAPTAIN increment)
 #   v'  = C[pos] * v0' + delta                                 (production-side renorm; captain delta additive)
 #   w   = s * E * ramp(m),  m = lev-REPL[pos],  ramp(m)=clip(m/UNCOMP_DELTA,0,1)   (memo §2.2 onset ramp)
+#   E   = 1 - exp(-Eq/UNCOMP_TAU),  Eq = _ev_qual  (the tau=1.1 pedigree-fade family Leg A rides, un-faded
+#         0->1 as qualifying evidence saturates).  Memo §2's algebra beta_eff=(1-w)*beta_c+w needs w in [0,s],
+#         so E is the SATURATING weight (E in [0,1]), NOT raw Eq (which would drive w>1 -> beta_eff>1). At the
+#         proven bar Eq~4: E~0.974, w=s*0.974 -> at s~0.53 w~0.527 -> beta_eff~0.85 (the memo's design target).
 # Declared kill-switch (the RL_ISOFADE / RL_EVW pattern -- NOT a manifest dial): RL_UNCOMP=0 => v' === base
 # => board 8d90c9ac BYTE-EXACT (config_sha256 UNMOVED). L_ref/V_ref/C[pos] are built LOAD-TIME by
 # _merged_recover (median-proven reference + a production-side conservation pass; PLAN §3/§5).
 _UNCOMP=os.environ.get('RL_UNCOMP','1')!='0'
 UNCOMP_DELTA=6.0                       # onset-ramp width (avg-points above replacement); memo §2.2 / PLAN §4 (~2*S_SH clears the softplus knee)
+UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weight rate E=1-exp(-Eq/tau) (memo §2 / PLAN §3 "same family Leg A's fade rides")
 UNCOMP_S_DEFAULT=None                  # THE strength dial s -- hard-coded to the s-grid-selected literal after PLAN §7 selection; None => layer INERT
 _uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override (PLAN §7): RL_UNCOMP_S=<s> per grid point
 UNCOMP_S=(float(_uncs) if _uncs not in (None,'') else UNCOMP_S_DEFAULT)
@@ -329,14 +334,16 @@ _UNCOMP_VREF={}                        # V_ref[pos] = posval(L_ref[pos]-REPL[pos
 _UNCOMP_C={}                           # C[pos]: per-position PRODUCTION-SIDE conservation renorm (built load-time; PLAN §5)
 _UNCOMP_E={'cur':0.0}                  # per-player evidence weight E for the DELEGATED rl_model sites 4-6 (set by the raw_ev wrapper; 0 for synths/poles)
 _UNCOMP_CAL={'on':False,'v0':{},'v0p':{}}   # load-time conservation accumulator (Sum v0, Sum v0p per pos over MAPPED legs)
-def posval_uncomp(lev,pos,E):
+def posval_uncomp(lev,pos,Eq):
     """The un-compressed above-replacement production->price value for ONE leg (memo §2 / PLAN §3), captain
-    preserved additively. RL_UNCOMP=0, s unset, sub-bar (m<=0), zero-evidence (E<=0) or a missing reference
-    => the EXACT original posval(lev+capt_prem(lev)-REPL[pos]) (byte-identical off / zero-E / synth path)."""
+    preserved additively. Eq = raw evidence (_ev_qual). RL_UNCOMP=0, s unset, sub-bar (m<=0), zero-evidence
+    (Eq<=0) or a missing reference => the EXACT original posval(lev+capt_prem(lev)-REPL[pos]) (byte-identical
+    off / zero-E / synth path)."""
     R=REPL[pos]; base=posval(lev+capt_prem(lev)-R)
     if not _UNCOMP or UNCOMP_S is None: return base
     m=lev-R
     ramp=0.0 if m<=0.0 else (1.0 if m>=UNCOMP_DELTA else m/UNCOMP_DELTA)
+    E=1.0-math.exp(-Eq/UNCOMP_TAU) if Eq>0.0 else 0.0      # saturating evidence weight in [0,1] (memo §2 algebra needs w in [0,s])
     w=UNCOMP_S*E*ramp
     if w<=0.0: return base                                 # off the ramp / no evidence -> unchanged (self-test: zero-evidence identity)
     Lref=_UNCOMP_LREF.get(pos)
