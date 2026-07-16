@@ -1,4 +1,7 @@
-# THE PVC + FLEX CHAPTER — SPEC v1 · 2026-07-16 · authored by the seat-8 (Fable) pen
+# THE PVC + FLEX CHAPTER — SPEC v1.1 · 2026-07-16 · authored by the seat-8 (Fable) pen
+### v1.1 (same day, owner-prompted): §3 gains PER-LEG EFFORT + SEAT ALLOCATION lines (the spec had
+### none — owner catch). The filename keeps the v1 path so the standing Leg-A directive's FEED
+### citation stays valid; header and content move together (the SSI rule).
 ### The chapter's governing document. Owner-ruled MERGED (R103.2): ONE candidate line · ONE ladder ·
 ### ONE bake · sequential store/engine writers, EACH BEHIND A KILL-SWITCH · ingestion stays OUT ·
 ### UI v1.2 runs PARALLEL (Tier 3, S3) and never touches this ladder. Directives cite this spec but
@@ -50,16 +53,23 @@ unearned gauge at 125 players / +15,612 SCAR (the chapter's standing disease met
 
 ## §3 — THE LEGS (sequential writers on ONE candidate line, strict bases, each kill-switched)
 **LEG A — THE ISO EVIDENCE-FADE (the English leg; smallest surgical writer, fires first).**
+EFFORT **High** (as issued) · design DONE (item 132 + the directive) · build **Opus via Claude Code**.
 `iso_corr` gains the item-132 fade on `w`; then monotonize the ISO table across picks (kills the
 Newcombe trough where the pick still speaks). Movers are proven mid-round picks — pure lifts.
 Kill-switch `RL_ISOFADE`. Scored: census-v2 gauge · L-SMOOTH census · value-flow (WHERE-DOES-THE-
 VALUE-GO: ΣΔ + cohort distribution + over-performer scan, the item-130 standing prescreen check).
 **LEG B — UN-COMPRESS THE OUTPUT→PRICE MAP (the big lever; the standing Fable earmark).**
+EFFORT **Extra** — the one leg that re-fits the central pricing surface with genuinely open design
+(functional family · conservation mechanics · the Reid extension down the age bands). Split: **Fable
+authors the directive + a FUNCTIONAL-FORM MEMO (the design decisions, made before any build)**; the
+build executes in **Claude Code (strongest available model)** against the pinned design — any design
+ambiguity mid-build is a HALT-AND-ASK to the supervisor, never an in-build model escalation.
 Lift-led Face-2 re-map of the top: above-replacement output ratios carry into price ratios. The Reid
 constraint applies IN the same map: intensity-responsiveness extends DOWN the age bands (the ≤22 slope
 must RISE from 0.111) with the young side guarded by G-COHORT 1.30 hard + the calibration surface.
 Kill-switch `RL_UNCOMP`. This leg consumes Leg A (the fade is part of the axis it lifts on).
 **LEG C — FLEX POSITIONAL MACHINERY (consumes docs/inputs/AFFL_Future_Positioning.csv, filed d4e9642).**
+EFFORT **High** · semantics fully RULED (item 20b / flex spec §1.2.3) · build **Opus via Claude Code**.
 (1) The ELEVEN primary-future changes → `future_position` store writes (validated item 180; the one
 store writer). (2) The NINETY-ONE blend rows → the §1 ruled stream semantics on the years-1+ leg.
 (3) **THE ATTRIBUTION DELIVERABLE (item 181, owner-worded):** a decomposition artifact — baseline →
@@ -68,6 +78,9 @@ owner-viewed on the ladder. Kill-switch `RL_FLEX`. Ingest is VALIDATE-OR-HALT (8
 alternate · streams 0–100); the locations file joins by name via the positioning file's name→ID map,
 HALT on ambiguity (the two Max Kings are distinct and verified).
 **LEG D — PVC RE-DERIVATION (consumes A+B+C; the reworked spec of items 130–132).**
+EFFORT **High** · constructions settled (derive-from-distribution · numéraire pin · population-level
+G-Y0, R104.7) · **Fable authors the directive** (the G-Y0 tolerance + derivation construction) ·
+build **Opus via Claude Code**.
 The pick value curve re-derives from the cured, flexed value distribution; L7 re-base pins pick 1 =
 3000. G-Y0's identity (V0 = value the day after the draft) is asserted as the curve's year-0
 continuity check — its ADVISORY→ratified status is an owner ruling AT THIS LADDER. **Pick bands wire
@@ -77,6 +90,9 @@ PARAMETER (0.10, his sheet) pending §6.3. Deliverables: the new curve · diff v
 (stamp-asserted — the S5 stale-curve failure never repeats) · reconcile vs the owner's workbook curve
 (reference only; his Pick Values tab dies with the old PVC). Kill-switch `RL_PVC2`.
 **LEG E — THE LENS REBUILD (consumes everything; display machinery, values un-baked).**
+EFFORT **High** (the R103.3 "expected production credited" semantics are the subtle part; the posture
+profiles are near-trivial once the streams exist) · **Fable authors the projection-law construction**
+(the lens half of the standing compression+lens earmark) · build **Opus via Claude Code**.
 (1) R103.3: +1/+2 projects value WITH expected production credited, through the SAME map (Reid
 constraint) — the UI toggle re-enables on this landing. (2) **THE POSTURE LENSES (owner-raised
 2026-07-16):** three named profiles over the EXISTING D5 dial family (`rl_model.py:317`,
@@ -131,7 +147,7 @@ views board + book → his written word → bake → tag → clean promote. UI v
    rough band; the English/Briggs, Gawn, Bontempelli, Reid rows are natural members.
 
 ## §7 — OUT OF SCOPE (so no seat drifts)
-Ingestion go-live (gated separately) · any age lever (R103.4) · UI v1.2 (its own Tier-3 directive:
+Ingestion go-live (gated separately) · any age lever (R103.4) · UI v1.2 (its own Tier-3 directive — EFFORT **Medium**, build **Opus via Claude Code**:
 club-name shortening · picks-included club valuations · the team summary/Best-23 page · the no-LLM
 sync · posture toggles + the +1/+2 re-enable when Leg E lands) · A-PAIRS pair 2 (owner decision,
 unchanged) · the flex positioning REGISTERS beyond the filed CSV (courier at fire time if revised).

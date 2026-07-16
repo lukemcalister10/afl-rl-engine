@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v163 2026-07-16 · PEN: **G-Y0 → BINDING, POPULATION-LEVEL (item 184, owner verbatim: 'over the wider sample, on average' — V0 is positional, single-class top-heaviness is NOT a breach) · CONSTRAINTS → v1.18 · DECISIONS → v107 · manifest → v4.31 · ALL SIX spec-§6 rulings now IN; the chapter waits only on the FIRE word** · prior: v162 item 183 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v164 2026-07-16 · PEN: **SPEC → v1.1 (owner catch, item 185): per-leg EFFORT + SEAT allocation added — A High/Opus · B EXTRA/Fable-designed+form-memo, Code-built · C High/Opus · D High/Fable-directive, Opus build · E High/Fable projection-law construction, Opus build · UI v1.2 Medium/Opus. Fire word still open** · prior: v163 item 184 · earlier chain: the item entries
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4312,3 +4312,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     (multi-class average) within the acceptance-v1.17 tolerance (files with the Leg-D directive);
     single-class deviation from positional composition or class strength is NOT a breach.
     **With this, ALL SIX spec-§6 rulings are IN. The chapter is fully ruled; open word = FIRE.**
+
+185. **SPEC AMENDED TO v1.1 — PER-LEG EFFORT + SEAT ALLOCATION (owner catch, 2026-07-16: "spec for
+    pvc/flex doesn't have a suggested effort level or fable vs opus?").** The v1 spec carried neither
+    — a real gap; CORE puts EFFORT on directives, but the CHAPTER-level allocation is spec material.
+    Filed in place (same v1 filename so the Leg-A directive's FEED citation holds; header+content move
+    together): **A** High · design done · Opus build. **B EXTRA** — the only open-design leg; FABLE
+    authors the directive + a FUNCTIONAL-FORM MEMO before any build; Claude Code executes (strongest
+    available model); mid-build design ambiguity = HALT-AND-ASK, never in-build escalation. **C** High
+    · ruled semantics · Opus. **D** High · Fable-authored directive (G-Y0 tolerance + derivation
+    construction) · Opus build. **E** High · Fable authors the R103.3 projection-law construction ·
+    Opus build. **UI v1.2** Medium · Opus. Rationale = the owner's proportionality doctrine: the
+    leverage lives in DESIGN DECISIONS, which land in Fable-authored directives; execution against a
+    pinned design is Opus work. The supervisor seat (Fable) carries all directives + prescreens
+    through the chapter — the standing allocation.
