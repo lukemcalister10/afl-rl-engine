@@ -1,0 +1,44 @@
+UI v1.3 — CLUB POCKET-PROFILES + POSITIONAL BREAKDOWN · VERDICTS (item 196)
+Generated read-only; display-only tier-3 job; the v1.2 verdict pattern.
+====================================================================================
+
+[PASS] BASE PIN — branched from main head c317e4c; git diff --name-only 21d94a4..origin/main
+       is docs-ONLY (DIRECTIVE_UI_v1_3…md, OPEN_ITEMS_REGISTER.md). No ui/ or engine/ mover.
+
+[PASS] RING-FENCE PIN — ui/app/config.js EXPECTED_BOARD == "790136a3" (asserted in code:
+       ui/app/seam.js ringFence + ui/tools/extract_positions.py load_board). Values come from
+       the SHIPPED board's bundles only; the Leg-B candidate does not exist for this job.
+       working bundle stamp.board == 790136a380b56ebdf5db2874b6f354de · tag v2.10 · engine
+       fc7045d6 · store b1fd0bce.
+
+[PASS] BUNDLE BYTE-MATCH — ui/data/ UNTOUCHED (the ONLY VALUE SOURCE), md5:
+       board_view_public.js   53faca4de712bb5b6bbbff7e955db712
+       board_view_working.js  d07b30e6a714d952a17ec412b67956ae
+       club_valuation.js      aed4099d6ca0f02c1d2819f4249a3998
+       positions_data.js is VALUES-FREE (canonical posCodes only; 0 dollar values carried).
+
+[PASS] COUNTING-RULE TESTS — node ui/tests/counting_rule.test.js: 15/15 pass
+       (exit 0). Covers single non-mid, single mid, DPP no-mid, the DPP-mid EXCEPTION,
+       3-pos no-mid, 3-pos-with-mid, 4-pos, weight-sum==1, dup-token, and the value-conservation
+       property. The rule reproduces the owner's three verbatim cases; the 3-4-position split is
+       forced by value conservation (0.5×3=1.5 impossible) and flagged in the RETURN + footnote.
+
+[PASS] CONSERVATION — Σ(positional value) == club totalPlayer for all 16 ranked clubs
+       (max |Δ| = 0.000000), so "% of the club's PLAYER value" totals 100%.
+
+[PASS] JOIN — all 804 board players join to exactly one AFFL_Player_Locations Position/s row via
+       the ESTABLISHED normalised-name key (0 unmatched, 0 ambiguous); the two Max Kings stay
+       distinct. extract_positions.py HALTs on any ambiguity/gap.
+
+[PASS] FENCE 100% ui/ — every changed/added path is under ui/ (app, styles, tests, tools/
+       extract_positions.py, screenshots/v1_3, index.html, PLAN). No engine/store/docs/pricing/
+       rounding/Best-23/ingest/bundle/config-value edit. Lens deferral (item 196(3)) untouched.
+
+[PASS] LEAGUE AVERAGE — mean over the 16 ranked clubs; the 75-player Free-Agents pool is excluded
+       from every denominator and never ranked (item 191). Stated on the panel footnote.
+
+SURFACES: pocket profile (7 pockets × abs/%ovr/vs-avg) + positional breakdown (6 rows ×
+abs/%player/vs-avg) on one hover/tap panel, attached to the club name wherever it renders ranked
+(Clubs summary rows; board ranked club headers + single-club banner). Best-23 = the ingest's
+existing exact greedy, read from the bundle (not reimplemented).
+====================================================================================

@@ -1,0 +1,20 @@
+ADELAIDE CROWS
+POCKET PROFILE · VS A 16-CLUB LEAGUE
+VALUE POCKETS
+	ABS	% OVR	VS AVG
+OVERALL	52,957	100.0%	▲ +112 1.00×
+PLAYER	36,727	69.4%	▼ −7,897 0.82×
+PICKS	16,230	30.6%	▲ +8,008 1.97×
+TOP-5	14,978	28.3%	▼ −3,392 0.82×
+TOP-10	22,508	42.5%	▼ −5,193 0.81×
+BEST-23	31,926	60.3%	▼ −6,873 0.82×
+NON-BEST-23	4,801	9.1%	▼ −1,024 0.82×
+POSITIONAL VALUE (owner counting rule)
+	ABS	% PLAYER	VS AVG
+KEY DEF	1,865	5.1%	▲ +240 1.15×
+GEN DEF	11,088	30.2%	▼ −803 0.93×
+MID	2,558	7.0%	▼ −10,038 0.20×
+GEN FWD	9,664	26.3%	▼ −2,302 0.81×
+KEY FWD	4,216	11.5%	▲ +1,443 1.52×
+RUCK	7,337	20.0%	▲ +3,563 1.94×
+League average = mean over the 16 ranked clubs; the Free-Agents pool is excluded from every denominator and is never ranked (item 191). Positional value uses the owner rule — a player counts 1 to his position, a DPP player 0.5 to each, except a DPP midfielder (the non-mid counts 1, the mid 0); players the CSV lists at 3-4 positions split equally across their non-mid positions (value-conserving). Best-23 is the existing exact greedy.
