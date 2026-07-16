@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v169 2026-07-16 · PEN: **A-PAIRS PAIR-2 STALE CARRY KILLED (item 192: RESOLVED SINCE 2026-07-13 at item 43 — Reid/Bont ≤10% · Sanders/Bont bont-ahead 0–10%, bands owner-ruled, CONSTRAINTS v1.10; the 'never resolved' claim was a seat-memory ghost repeated ~5 times — owned; rev144 §4 line SUPERSEDED) · ADVERSARIAL REVIEW PACKAGE ISSUED (item 193)** · prior: v168 items 190–191 · earlier chain: the item entries
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v170 2026-07-16 · PEN: **OWNER VIEWING OF PR #99 — the '2,700 pick-2 bug' VERIFIED NOT A UI BUG but a CURVE FINDING (item 194: canonical PVC flat at picks 1–2, both 3000; UI faithful; owner read pick1>pick2 → Leg-D watch row; merge HELD) · UI v1.2.1 display-fix directive ISSUED (item 195: sort · two year-columns · per-year totals; 30–60 min) · UI v1.3 candidate scope RECORDED incl. the owner's DPP counting rule (item 196; fires only on his word)** · prior: v169 · earlier chain: items
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4420,3 +4420,37 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     into a FRESH GPT chat (no prior context), runs it, couriers the raw output back to the supervisor
     seat; the supervisor reconciles findings into the register (real holes → spec/directive
     amendments; non-findings recorded as survived attacks). Precedent: the earlier cross-model reviews.
+
+194. **PR #99 OWNER VIEWING — THE "PICK-2 = 2,700" FLAG, DIAGNOSED (2026-07-16). NOT A UI BUG — A
+    CURVE FINDING.** Owner flagged: 2027 ex-Fremantle pick (band #2, his sheet 2495→2246) displays
+    2,700 == 2027 #1, and sits ABOVE the #1 in the list. SUPERVISOR-VERIFIED from the artifacts: the
+    ledger row is correct (Fremantle 2027 R1 = band [2,2], owner Hawthorn); the ingest's price_pick()
+    is correct (mean over band × 0.90); **the canonical engine curve itself has curve[1] == curve[2]
+    == 3000 — a FLAT TOP** (pvc_curve_L1b.json; weakly-monotone so the monotone verdict passed).
+    Every other screenshot row reconciles to the curve exactly (e.g. #6-7 → mean(1755,1739)=1747 ✓,
+    #9-11 → 1663 ✓). The UI told the truth about a curve defect. The display tie broke by ledger
+    order — hence #2 above #1. **THE OWNER'S READ (operative per R103.5): pick 1 > pick 2 — filed as
+    a LEG-D WATCH/ACCEPTANCE row: the re-derived curve must be STRICTLY decreasing at the top (at
+    minimum curve(2) < curve(1)); rides acceptance v1.17.** Values in the UI stay live-curve-faithful
+    (the ruled incorporation shape) — the cure is Leg D, never a sheet override. **MERGE HELD** by
+    the owner pending v1.2.1.
+
+195. **UI v1.2.1 DIRECTIVE ISSUED (item 194's display batch; owner-worded design):**
+    `docs/DIRECTIVE_UI_v1_2_1_pickdisplay_2026-07-16.md` — continues PR #99's branch at `2d00e3f`
+    STRICT, fresh chat, Low effort, **30–60 min**: (1) held-picks sorted by VALUE desc (tie: band-low,
+    then year); (2) TWO COLUMNS — 2026 | 2027 — each value-sorted; (3) per-year Σ totals atop each
+    column, retaining the overall Σ + count. NO pricing change (bundle must byte-match). One viewing,
+    one click closes #99.
+
+196. **UI v1.3 CANDIDATE SCOPE — RECORDED, NOT FIRED (owner: "nice-to-have, not essential"; fires
+    only on his word).** (1) **Club hover pocket-profile:** overall/player/picks/top-5/top-10/
+    best-23/non-best-23, EACH as absolute + % of the club's overall + vs league average. (2)
+    **Positional value breakdown per club** (absolute · % of player value · vs league average), on
+    CURRENT positions from the locations CSV's Position/s column, **the owner's counting rule
+    VERBATIM-IN-SUBSTANCE: each player counts 1 to his position; a DPP player counts 0.5 to each;
+    EXCEPT DPP midfielders — the non-mid position counts 1 and the midfield component counts 0.**
+    Estimate if fired: ~2–3 h, Medium, Opus, ui/-only. (3) LENS-AWARENESS lands separately with the
+    post-Leg-E UI pass: posture lenses re-weight players ⇒ club totals/rankings/Best-23 re-render per
+    posture + the R104.5 per-posture pick discounts (10/15/5); the ±1/±2 projection lenses never show
+    issued picks (the owner's separation law, item 178(2)); whether club pages follow ±1/±2 for
+    PLAYERS is a design option presented at that pass.
