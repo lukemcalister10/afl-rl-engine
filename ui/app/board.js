@@ -121,7 +121,34 @@ MD.board = (function () {
   }
 
   /* item 178(2): the held-picks panel for a single filtered club — each pick listed with its band and
-     its PVC-priced value (from the ingest). Rendered under the roster when "picks included" is on. */
+     its PVC-priced value (from the ingest). Rendered under the roster when "picks included" is on.
+     item 194 (UI v1.2.1): display-only ordering + layout. Picks are sorted VALUE DESC (tie-break
+     band-low ASC, then year ASC) and split into per-year columns (2026 | 2027), each column headed by
+     its own Σ + pick count. The panel header keeps the overall Σ + total count. No value is re-priced —
+     this re-orders and groups the ingest's own figures; the data bundle is untouched. */
+  function pickOrder(a, b) {
+    // value desc, then band-low asc, then year asc — a pure comparator over the ingest's figures.
+    return (b.value - a.value) || (a.low - b.low) || (a.year - b.year);
+  }
+
+  function picksColumn(yr, yearPicks) {
+    const col = fmt.el("div", "pickcol");
+    const yTotal = yearPicks.reduce(function (s, p) { return s + p.value; }, 0);
+    col.appendChild(fmt.el("div", "pickcolh",
+      "<span>" + yr + "</span>" +
+      '<span class="num">Σ ' + fmt.n(yTotal) + " · " + yearPicks.length + " pick" +
+        (yearPicks.length === 1 ? "" : "s") + "</span>"));
+    yearPicks.slice().sort(pickOrder).forEach(function (p) {
+      const row = fmt.el("div", "pickrow");
+      row.innerHTML =
+        '<span class="pkband">' + fmt.esc(p.band) + "</span>" +
+        '<span class="pkmeta">R' + p.round + " · from " + fmt.esc(fmt.club(p.origin)) + "</span>" +
+        '<span class="pkval num">' + fmt.n(p.value) + "</span>";
+      col.appendChild(row);
+    });
+    return col;
+  }
+
   function picksPanel(afflTeamLong) {
     const picks = MD.seam.picksFor(afflTeamLong);
     const wrap = fmt.el("div", "pickspanel");
@@ -133,14 +160,13 @@ MD.board = (function () {
       wrap.appendChild(fmt.el("div", "picknone", "no held picks in the ledger"));
       return wrap;
     }
-    picks.forEach(function (p) {
-      const row = fmt.el("div", "pickrow");
-      row.innerHTML =
-        '<span class="pkband">' + fmt.esc(p.band) + "</span>" +
-        '<span class="pkmeta">' + p.year + " · R" + p.round + " · from " + fmt.esc(fmt.club(p.origin)) + "</span>" +
-        '<span class="pkval num">' + fmt.n(p.value) + "</span>";
-      wrap.appendChild(row);
+    const years = Object.keys(picks.reduce(function (m, p) { m[p.year] = 1; return m; }, {}))
+      .map(Number).sort(function (a, b) { return a - b; });
+    const cols = fmt.el("div", "pickcols");
+    years.forEach(function (yr) {
+      cols.appendChild(picksColumn(yr, picks.filter(function (p) { return p.year === yr; })));
     });
+    wrap.appendChild(cols);
     return wrap;
   }
 

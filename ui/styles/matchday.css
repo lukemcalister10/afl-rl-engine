@@ -259,13 +259,24 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .pickspanel .picksh small{display:block;font-family:var(--sans);font-weight:400;font-size:10px;
   letter-spacing:.02em;text-transform:none;color:var(--faint);margin-top:2px}
 .pickspanel .picksh .num{color:var(--volt);font-size:15px}
-.pickrow{display:grid;grid-template-columns:96px 1fr 96px;gap:12px;align-items:baseline;
+/* item 194 (UI v1.2.1): per-year columns — 2026 | 2027 side by side, each value-sorted, each with its
+   own Σ + count header. Display-only; the overall Σ stays in .picksh above. */
+.pickspanel .pickcols{display:grid;grid-template-columns:1fr 1fr}
+.pickspanel .pickcol{min-width:0}
+.pickspanel .pickcol + .pickcol{border-left:1px solid var(--edge)}
+.pickspanel .pickcolh{display:flex;justify-content:space-between;align-items:baseline;padding:8px 16px;
+  border-bottom:1px solid var(--edge);font-family:var(--cond);font-weight:900;font-size:12px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
+.pickspanel .pickcolh .num{color:var(--volt);font-size:13px}
+.pickrow{display:grid;grid-template-columns:72px 1fr 72px;gap:10px;align-items:baseline;
   padding:6px 16px;border-bottom:1px solid rgba(35,41,54,.5)}
 .pickrow:last-child{border-bottom:0}
 .pickrow .pkband{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--text)}
 .pickrow .pkmeta{font-family:var(--cond);font-size:12px;letter-spacing:.03em;color:var(--dim);text-transform:uppercase}
 .pickrow .pkval{text-align:right;font-size:14px;color:var(--volt)}
 .pickspanel .picknone{padding:10px 16px;color:var(--faint);font-size:12px}
+@media (max-width:720px){.pickspanel .pickcols{grid-template-columns:1fr}
+  .pickspanel .pickcol + .pickcol{border-left:0;border-top:1px solid var(--edge)}}
 
 /* item 178(3): the team-summary (Clubs) page */
 .clubspage{margin-top:14px}
