@@ -196,7 +196,13 @@ def _capt_saturating(lev):   # RETIRED (the pre-R98.1 saturating premium, hard 1
     if over<=0: return 0.0
     cb=CAPT_GAIN*over**CAPT_EXP
     return cb*CAPT_CAP/(CAPT_CAP+cb)
+_CAPT_OFF={'on':False}   # LEG B seg-3 captain-off pass: force capt_prem->0 to recompute the CAPTAIN-FREE production
+                         # value pr0 (memo v1.1 §4). NOT RL_CAPT=0 (that is the RETIRED saturating curve, not zero).
+                         # The map (_merged_recover raw_ev hook) sets this True around one price6 recompute, then
+                         # takes delta = pr(capt on) - pr(capt off) and adds it back UNCHANGED. Default False =>
+                         # capt_prem is the ruled L-CAPTAIN curve => board byte-exact.
 def capt_prem(lev):
+    if _CAPT_OFF['on']: return 0.0
     return _capt_ruled(lev) if _CAPT else _capt_saturating(lev)
 GRACE={'KEY_FWD':2.5,'KEY_DEF':2.5,'RUC':2.5,'MID':1.0,'GEN_DEF':1.0,'GEN_FWD':1.0}
 LOS_C=0.16; LOS_P=1.82                 # progressive: gentle yr2 ~.85, steepening (yr3~.57 yr4~.31 yr5~.16)
