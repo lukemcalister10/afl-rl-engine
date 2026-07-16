@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v191 2026-07-16 · PEN: **UI v1.3.1 FIRED · THE LIFECYCLE NOTE FILED (item 218): owner-input class proposed · LTI re-pin tool = a named go-live requirement · THE SEASON-ROLLOVER RUNBOOK proposed as a small chapter (==2026 literals verified — rollover is a designed event)** · prior: v190
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v192 2026-07-16 · PEN: **UI v1.3.1 PRESCREEN: CONTENT PASS, MECHANICS NOTE (item 219) — sibling branch again, BUT the directive's own base pin was self-contradictory (strict 1a272ff + a CSV newer than it); build merged instead of halting. 3fc334b verified: 1a272ff IS ancestor, all 4 corrections in, collapse+throw in code. CURE = the known one-push fast-forward, then #101 one click** · prior: v191
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4845,3 +4845,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     year-0-reads-future-primary convention → draft intake (V0 off the live curve; stable-ID minting;
     pick-ledger year shift) → announced-positions refresh. Rehearse before needed. UI v1.3.1 FIRED
     (owner, this turn).
+
+219. **UI v1.3.1 PRESCREEN — CONTENT PASS, MECHANICS NOTE, DIRECTIVE FLAW OWNED (2026-07-16).**
+    Head `3fc334b` on SIBLING `claude/positions-collapse-rule-pxl9hi` (not the v1.3 branch — the
+    item-202 pattern again), BUT this seat's directive was the flawed instrument: it pinned the
+    branch base STRICT at `1a272ff` AND required regeneration from the corrected CSV that exists
+    only on main AFTER that base — an unsatisfiable pair. The build resolved it: branch from main
+    `c71b5d7` → merge `1a272ff` in → the work. VERIFIED BY THIS SEAT: **1a272ff IS an ancestor of
+    3fc334b** (the v1.3 work is carried); positions_data regenerated CORRECT (whitlock KEY_DEF/
+    KEY_FWD · flanders/baker/langdon GEN_DEF/GEN_FWD — read from the committed file); collapse-first
+    + the 3+-throw in counting.js; equal-split deleted w/ obituary; tests file committed (24/24 per
+    verdicts, report-only); fence = ui files + the docs content the merge legitimately carries
+    (already ancestors of main — the #101 file diff vs main stays ui-only). CONSERVATION ≈ (36,729
+    vs 36,727): display-rounding of per-position rows vs the exact split — the v1.3 EXACTNESS test
+    still holds at full precision per the verdicts. **CURE (the known move): one owner fast-forward
+    push of 3fc334b onto `claude/club-pocket-profiles-positional-ph5p4g` (clean ff — descendant
+    verified), then viewing + ONE click closes #101 carrying v1.3 + v1.3.1.** STANDING LESSON
+    (supervisor-owned): a directive requiring BOTH a strict branch base AND inputs newer than that
+    base must SPECIFY the reconciliation (merge-main-in, as this build chose, or a re-pinned base) —
+    the contradiction, not the build, caused the sibling. 35 min actual (honest under-run).
