@@ -44,7 +44,7 @@ window.MD = window.MD || {};
     const s = MD.state;
     const row = fmt.el("div", "controls");
     const tabs = fmt.el("div", "tabs");
-    const defs = [["board", "Board"], ["card", "Player card"], ["trade", "Trade desk"], ["review", "Round review"]];
+    const defs = [["board", "Board"], ["clubs", "Clubs"], ["card", "Player card"], ["trade", "Trade desk"], ["review", "Round review"]];
     defs.forEach(function (d) {
       const btn = fmt.el("button", s.view === d[0] ? "on" : "", d[1]);
       btn.addEventListener("click", function () { MD.go(d[0]); });
@@ -77,6 +77,7 @@ window.MD = window.MD || {};
     root.appendChild(app);
 
     if (s.view === "board") MD.board.render(holder);
+    else if (s.view === "clubs") MD.clubs.render(holder);
     else if (s.view === "card") MD.card.render(holder);
     else if (s.view === "trade") MD.trade.render(holder);
     else if (s.view === "review") MD.review.render(holder);

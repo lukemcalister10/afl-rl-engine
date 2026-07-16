@@ -1,0 +1,30 @@
+
+  VALIDATION VERDICTS
+  ------------------------------------------------------------------------
+  [PASS] board id ring-fence  (bundle board 790136a3 vs expected 790136a3)
+  [PASS] PVC == engine pvc_curve_L1b.json (over 99 shared picks)
+  [PASS] PVC numeraire anchor pick1 == 3000  (pick1 = 3000)
+  [PASS] PVC monotone non-increasing
+  [PASS] board name-join keys unambiguous (normalised)  (dups: [])
+  [PASS] AFFL club count  (16 clubs (+ Free Agents pool))
+  [PASS] player names unambiguous in Player_Locations.csv (normalised)  (dups: none)
+  [PASS] player names unambiguous in Future_Positioning.csv (normalised)  (dups: none)
+  [PASS] every Player_Locations name -> a unique stable_player_id (positioning join)  (unmatched: none)
+  [PASS] every Player_Locations name -> a unique board player (name join)  (unmatched: none)
+  [PASS] the two Max Kings are distinct by name (assert)  (Max King=afl-player-v1-f2d8efef518ca2749612 · Maxwell King=afl-player-v1-5f43c9c902f7780ce789)
+  [PASS] case-only name variants reconciled by normalised key  (5 reconciled: Bailey MacDonald, Harry Demattia, Hayden Mclean, Jacob van Rooyen, Jordan de Goey)
+  [PASS] authored CSV ownership agrees with the stamped board affl_team  (0 mismatch(es))
+  [PASS] ladder 2027 multiplier reconciles to R104.5 balanced (1-0.10=0.90)  (sheet cell = 0.9 · governing = 0.9)
+  [PASS] pick ledger row count == 160  (160 rows)
+  [PASS] all bands within 1-80 and low <= high  (offenders: none)
+  [PASS] both drafts <= one year ahead (2026/2027)  (years=[2026, 2027])
+  [PASS] every pick Owner + Origin joins to exactly one AFFL club (+Free Agents)  (16 distinct owners+origins)
+  [PASS] pick-count conservation (Sum per-club == ledger == 160)  (sum=160 ledger=160)
+  [PASS] all 160 picks priced off the canonical curve  (priced=160)
+
+  CLEAN INGEST — 160 picks priced, 16 clubs.  Bundle: ui/data/club_valuation.js
+
+  TOP-3 CLUBS BY OVERALL VALUE:
+    West Coast Eagles  overall 67,552  (players 66,558 + picks 994)
+    Fremantle Dockers  overall 62,254  (players 49,969 + picks 12,285)
+    Melbourne Demons   overall 59,867  (players 47,708 + picks 12,159)

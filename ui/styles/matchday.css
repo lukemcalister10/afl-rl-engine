@@ -244,3 +244,61 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   .rowhead{display:none} /* headings track the wide grid; the narrow layout collapses columns */
   .desk{grid-template-columns:1fr}
 }
+
+/* ============ UI v1.2 — CLUB VALUATION LAYER ============ */
+/* item 178(2): the assets (players-only / picks-included) segmented toggle reuses .seg; disabled state */
+.seg.assets button.lensoff{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.clubbanner .cbstat.cbtot b{color:var(--volt)}
+
+/* item 178(2): held-picks panel under a filtered club roster */
+.pickspanel{border:1px solid var(--edge);border-left:4px solid var(--volt);background:var(--card-2);
+  margin:14px 0 4px;padding:0 0 6px}
+.pickspanel .picksh{display:flex;justify-content:space-between;align-items:baseline;padding:10px 16px;
+  border-bottom:1px solid var(--edge);font-family:var(--cond);font-weight:900;font-size:14px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--text)}
+.pickspanel .picksh small{display:block;font-family:var(--sans);font-weight:400;font-size:10px;
+  letter-spacing:.02em;text-transform:none;color:var(--faint);margin-top:2px}
+.pickspanel .picksh .num{color:var(--volt);font-size:15px}
+/* item 194 (UI v1.2.1): per-year columns — 2026 | 2027 side by side, each value-sorted, each with its
+   own Σ + count header. Display-only; the overall Σ stays in .picksh above. */
+.pickspanel .pickcols{display:grid;grid-template-columns:1fr 1fr}
+.pickspanel .pickcol{min-width:0}
+.pickspanel .pickcol + .pickcol{border-left:1px solid var(--edge)}
+.pickspanel .pickcolh{display:flex;justify-content:space-between;align-items:baseline;padding:8px 16px;
+  border-bottom:1px solid var(--edge);font-family:var(--cond);font-weight:900;font-size:12px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
+.pickspanel .pickcolh .num{color:var(--volt);font-size:13px}
+.pickrow{display:grid;grid-template-columns:72px 1fr 72px;gap:10px;align-items:baseline;
+  padding:6px 16px;border-bottom:1px solid rgba(35,41,54,.5)}
+.pickrow:last-child{border-bottom:0}
+.pickrow .pkband{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--text)}
+.pickrow .pkmeta{font-family:var(--cond);font-size:12px;letter-spacing:.03em;color:var(--dim);text-transform:uppercase}
+.pickrow .pkval{text-align:right;font-size:14px;color:var(--volt)}
+.pickspanel .picknone{padding:10px 16px;color:var(--faint);font-size:12px}
+@media (max-width:720px){.pickspanel .pickcols{grid-template-columns:1fr}
+  .pickspanel .pickcol + .pickcol{border-left:0;border-top:1px solid var(--edge)}}
+
+/* item 178(3): the team-summary (Clubs) page */
+.clubspage{margin-top:14px}
+.clubspage .cintro{background:var(--card-2);border:1px solid var(--edge);border-left:4px solid var(--volt);
+  padding:12px 16px;margin-bottom:14px;font-size:12.5px;color:var(--dim)}
+.clubspage .cintro b{color:var(--text)}
+.clubspage .cintro .halt{color:var(--alarm);font-weight:700}
+.ctable{width:100%;border-collapse:collapse;font-size:13px}
+.ctable th,.ctable td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--edge);white-space:nowrap}
+.ctable th{position:sticky;top:0;background:var(--card);font-family:var(--cond);font-weight:700;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--dim);cursor:pointer;user-select:none}
+.ctable th.on{color:var(--volt)}
+.ctable th .ar{font-size:9px;margin-left:3px;color:var(--volt)}
+.ctable th.club,.ctable td.club{text-align:left}
+.ctable th.rk,.ctable td.rk{text-align:right;color:var(--faint);width:34px}
+.ctable td.club{font-family:var(--cond);font-weight:900;font-size:15px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--text)}
+.ctable td.club a{color:var(--text);text-decoration:none;border-bottom:1px dotted var(--edge)}
+.ctable td.club a:hover{color:var(--volt);border-bottom-color:var(--volt)}
+.ctable td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--text)}
+.ctable td.overall{color:var(--volt);font-weight:700}
+.ctable td.picks{color:var(--dim)}
+.ctable tbody tr:hover{background:var(--card-2)}
+.ctable td small{color:var(--faint);font-size:10px}
+.clubspage .cfoot{margin-top:12px;font-size:11px;color:var(--faint)}

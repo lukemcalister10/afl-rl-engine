@@ -26,9 +26,20 @@ MD.seam = (function () {
     return { players: players, byKey: byKey };
   }
 
+  /* club-valuation overlay (item 178(2)/(3)): the picks + per-club summary emitted by the deterministic
+     VALIDATE-OR-HALT ingest (ui/tools/ingest_inputs.py).  Null if the bundle is absent; carries `.halt`
+     (a {reason, verdicts}) when the ingest refused — the overlay features fail-closed to that message
+     while the board itself still renders. */
+  const club = window.__CLUB_VALUATION__ || null;
+  function clubHalt() { return club && club.halt ? club.halt : null; }
+  function picksFor(afflTeamLong) { return (club && club.picksByTeam && club.picksByTeam[afflTeamLong]) || []; }
+
   return {
     working: working,
     public: pub,
+    club: club,
+    clubHalt: clubHalt,
+    picksFor: picksFor,
     ringFence: ringFence,
     indexed: indexed,
   };
