@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v213 2026-07-16 · PEN: **R105.4 OWNER-RULED — WEIGHT, DON'T GATE (item 240): rho = games×recency-weighted realised output (u=games·0.5^yearsback), NO exclusions/thresholds/classification — the owner's law, measured against the Darcy row (his six 2026 games at 81.8 were being WIPED). MEMO → v1.2 · ACCEPTANCE → v1.19 (λ pre-gate 0.95) · SEGMENT-4 DIRECTIVE ISSUED (base 243106b STRICT). Rotation next turn** · prior: v212
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v214 2026-07-16 · PEN: **R105.5 OWNER-RULED (item 241): L-RECENCY — a more recent game's PER-GAME weight must be ≥ any earlier season's game, ALWAYS (v1.2 already conforms: 0.5^back is monotone; now GUARDED by a halt-not-warn self-test) + THE FULL MOVEMENT LEDGER (all-804 per-player Δ from the map, committed artifact). Both ride the segment-4 PROCEED paste (the v1.19 seal stays intact for the FEED check); CONSTRAINTS/acceptance folds at the next natural re-seal** · prior: v213
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5206,3 +5206,23 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     re-prove · the grid · the FULL item-206 return). The three-paradigm arc closed: floor → gate →
     WEIGHT, each killed by measurement or the owner; the surviving law contains no number a future
     seat could tune to pass a gate. Rotation at the NEXT filing (the pack fold + rev147).
+
+241. **R105.5 — L-RECENCY + THE MOVEMENT LEDGER (owner-ruled 2026-07-16).** (1) **THE INVARIANT
+    (owner verbatim substance): an individual match's influence must always count for equal or more
+    than matches from earlier seasons — seasons may carry less weight only via fewer games, never
+    via an inverted per-game weight.** STATUS OF THE LAW: memo v1.2 ALREADY CONFORMS BY CONSTRUCTION
+    (per-game weight = 0.5^yearsback, strictly non-increasing backward, independent of games) — the
+    ruling adds the GUARD, not a redesign: a halt-not-warn SELF-TEST asserting the per-game weight
+    function is non-increasing in years-back across the store's full season range, so no future
+    construction/decay/variant can invert it silently. Constraint ID **L-RECENCY**, BINDING on the
+    owner's word. (2) **THE FULL MOVEMENT LEDGER (owner-asked double-check):** segment 4's return
+    adds a committed ALL-804 artifact — per player: board price map-OFF · map-ON at the chosen s ·
+    Δ (SCAR + %) · ρ · w · games-in-window — the full-population version of the top-30 mover report,
+    reviewed at prescreen (outlier scan · the item-130 young-net-strip check over EVERY row · a
+    specific weight-law scan for measures dominated by tiny recent samples) and available at the
+    owner's viewing rung. **DELIVERY/SEAL ORDERING (explicit so no seat reads a violation):** the
+    segment-4 FEED seal on acceptance_v1_19 STAYS INTACT (the directive may already be fired); both
+    additions ride the supervisor's PROCEED paste at the plan checkpoint (newest supervisor-issued
+    instruction governs, register-backed here); L-RECENCY + the ledger fold into CONSTRAINTS (→v1.19)
+    and the acceptance JSON at the next natural re-seal (the return/ladder). Zero owner action now —
+    the PROCEED paste carries it.
