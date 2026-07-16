@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v195 2026-07-16 · PEN: **SEG-2 RETIRED AT ~385k (owner telemetry — already compacted; item 222): the item-221 diagnostic REDIRECTED to a fresh SEGMENT-3 chat (directive filed; base 1bf0a0e STRICT; diagnostic → in-chat HALT → memo v1.1 → re-wire, one chat). NEW STANDING LINE: builds report context usage at every HALT/RETURN** · prior: v194
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v196 2026-07-16 · PEN: **item 222 AMENDED IN SEQUENCE (item 223): the diagnostic was already pasted to seg 2 — LET IT FINISH; segment 3's act (A) becomes CONFIRM-BY-RE-RUN of seg 2's committed table before any re-wire. No stand-down whipsaw** · prior: v195
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4917,3 +4917,13 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     reports its context usage at every HALT and RETURN** — degradation becomes visible telemetry,
     not an owner's late catch. S2 lesson extended: EXTRA legs assume multi-segment chats from the
     directive, and the supervisor budgets the segments, not the build.
+
+223. **SEQUENCE AMENDMENT (2026-07-16): the owner had already pasted the item-221 diagnostic into
+    seg 2 before item 222's redirect landed.** RULED (proportionality over choreography): seg 2
+    FINISHES the diagnostic — its output is a committed table under the frozen estimator, cheap to
+    verify; the compaction risk attached to EXECUTING a re-wire, not to producing a re-checkable
+    artifact. **Segment 3's act (A) becomes: RE-RUN the diagnostic from the committed harness and
+    CONFIRM seg 2's table (byte/values agreement) — divergence ⇒ segment 3's own numbers govern and
+    the divergence is reported.** Everything else in item 222 stands: seg 2 retires ON delivering
+    the table; memo v1.1 and the re-wire live in segment 3. No further owner coordination needed
+    beyond couriering seg 2's table when it lands.
