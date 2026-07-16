@@ -1,0 +1,59 @@
+UI v1.3.1 — THE COLLAPSE RULE · VERDICTS (item 216, continues item 196)
+Generated read-only; display-only tier-3 job; the v1.3 verdict pattern.
+====================================================================================
+
+[PASS] BASE PIN — continues the v1.3 branch at 1a272ff STRICT (never a sibling, item 202);
+       the docs rulings (COLLAPSE + 4 CSV corrections cf0a410; Flanders G-DEF c71b5d7) are
+       merged in. main at-or-after the v1.3.1 filing SHA differs from this branch by docs/ only.
+
+[PASS] COLLAPSE RULE (item 216(1)) — K ABSORBS G, applied FIRST, then the owner counting rule:
+       a K-FWD listing absorbs a G-FWD listing; K-DEF absorbs G-DEF. The G token is slot
+       ELIGIBILITY, never a DPP. Implemented as ui/app/counting.js `collapse()`, run inside
+       positionWeights()/accumulate() before the owner rule (1 / DPP 0.5-0.5 / DPP-mid non-mid 1,
+       mid 0), which is otherwise UNCHANGED.
+
+[PASS] EQUAL-SPLIT GENERALISATION DELETED (item 216, obituary) — the v1.3 equal-split for
+       3-4 listed positions (1/3, 1/4 each) is DEAD CODE post-collapse and is DELETED (not
+       disabled), with an OBITUARY block in counting.js. A post-collapse count of 3+ is now an
+       INVARIANT VIOLATION (throws); it cannot occur on real data.
+
+[PASS] CSV CORRECTED + REGENERATED (item 216(2)) — positions_data.js REGENERATED from the
+       corrected docs/inputs/AFFL_Player_Locations.csv (>= cf0a410) via the committed
+       ui/tools/extract_positions.py — NO hand edits. Corrected rows verified in the map:
+       Matt Whitlock KEY_DEF/KEY_FWD · Sam Flanders / Oskar Baker / Ed Langdon GEN_DEF/GEN_FWD.
+       804 players, board 790136a3, values-free. Stamp block updated (n=804).
+
+[PASS] <=2 POSITIONS ASSERTION (item 216(3)) — a committed test FAILS if any ranked player
+       carries 3+ effective positions after collapse. node ui/tests/counting_rule.test.js:
+       24/24 pass (exit 0); the SHIPPED-map assertion checks all 804 players -> 0 offenders.
+       The 30 CSV rows with 3-4 raw tokens all collapse to <=2 (RUCK+K-FWD swingmen, K-family
+       swingmen -> plain DPPs; Kyle Langford -> K-FWD/MID, the DPP-mid exception verbatim).
+
+[PASS] TESTS (item 216(4)) — the suite covers: collapse cases (K absorbs same-flank G; four-way
+       swingman; Langford; bare-G untouched; cross-flank no-collapse), the owner's verbatim cases,
+       ONE case per collapsed pattern (a RUCK/K-FWD, a four-way swingman, Langford, a corrected
+       pure-general G-DEF/G-FWD), the 3+ THROWS guard, the weight-sum/dup/conservation invariants,
+       and the real-map <=2 assertion.
+
+[PASS] BUNDLE BYTE-MATCH — ui/data/ UNTOUCHED (the ONLY VALUE SOURCE), git status clean, md5:
+       board_view_public.js   53faca4de712bb5b6bbbff7e955db712
+       board_view_working.js  d07b30e6a714d952a17ec412b67956ae
+       club_valuation.js      aed4099d6ca0f02c1d2819f4249a3998
+       positions_data.js is VALUES-FREE (canonical posCodes only; 0 dollar values carried).
+
+[PASS] CONSERVATION — collapse preserves value conservation: the per-player weights still sum to
+       1.0, so Sigma(positional value) == club totalPlayer. Adelaide panel: positional rows sum
+       36,729 ~= player 36,727 (rounding); St Kilda 51,635 ~= 51,634.
+
+[PASS] FOOTNOTE (item 216(5)) — the panel footnote now STATES the collapse rule (Key absorbs
+       General) and the 3-4-position caveat is REMOVED (ui/app/pocket.js, footnote text only).
+
+[PASS] SCREENSHOTS (item 216(6)) — positional panels refreshed with the post-collapse numbers:
+       03 Adelaide (12 collapsed swingmen; K-FWD 4,216->8,362, G-FWD 9,664->5,378, K-DEF up),
+       04 St Kilda (contains the Kyle Langford K-FWD/MID collapse); pocket panels 01/02 and the
+       panel_adelaide.txt dump refreshed for the same footnote/positional change.
+
+[PASS] FENCE — every changed path is IN: ui/app/counting.js · ui/app/positions_data.js
+       (generated only) · ui/tests/counting_rule.test.js · ui/app/pocket.js (footnote text only)
+       · ui/screenshots/v1_3. No engine/store/ingest/bundle/config-value/docs edit.
+====================================================================================
