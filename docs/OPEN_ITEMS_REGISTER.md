@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v205 2026-07-16 · PEN: **SEG-3 STATE CLARIFIED (item 232): the floor-6 PROCEED was NEVER pasted (owner) — seg 3 still at its PLAN checkpoint; the HALT paste moot. PARTIAL PROCEED issued: build the rule-INDEPENDENT ratified scaffolding (removal · captain-off · hook+ramp · killswitch A/B) with rho's qualifying predicate STUBBED (NotImplementedError, one call site); no grid, no rho finals; HALT for memo v1.2** · prior: v204
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v206 2026-07-16 · PEN: **DIAGNOSTIC DIRECTIVE REISSUED AS v2 (item 233): v1 + addendum CONSOLIDATED (owner asked; the two-piece issue caused real confusion — one document now). Three-way classification first-class (ASCENT/INTERRUPTION/POST-PEAK) · BAR∈{6,10} · post-peak base+sensitivity variants · harness pinned at e3ff2c7 (the branch moves, the pin doesn't) · docs ≥8272aff. NOT YET FIRED — the owner opens it as ITS OWN chat, parallel to seg 3** · prior: v205
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5088,3 +5088,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     every listed component is already ratified and invariant to the rule under redesign; the single
     pluggable predicate is the entire amendment surface. Memo v1.2 + the predicate law courier into
     the SAME chat; the grid runs then.
+
+233. **THE QUALIFYING DIAGNOSTIC — REISSUED v2, CONSOLIDATED (2026-07-16).** Owner flagged confusion
+    (a directive + a separate addendum, amid heavy paste traffic — supervisor's issuance style at
+    fault; one document now, both predecessors archived). CROSS-MODEL REVIEW APPLIED in the fold:
+    the three-way career-phase classification is now FIRST-CLASS and used by every measurement
+    (ASCENT / INTERRUPTION ≤ peak / POST-PEAK low-game — the last sized in BASE (kept) and
+    SENSITIVITY (excluded) variants because it is an OWNER RULING, not a presumption) · the
+    interruption BAR runs at both 6 and 10 · named cases extended (+2 post-peak veterans) · the
+    frozen-β harness PINNED at `e3ff2c7` explicitly because seg-3's partial proceed is MOVING that
+    branch (the item-225 staleness lesson applied at authoring) · docs base ≥ `8272aff` · read-only
+    fence on the job's own fresh branch. `docs/DIRECTIVE_DIAG_qualifying_v2_2026-07-16.md`. STATUS:
+    NOT FIRED — the owner opens a FRESH Opus chat with it (separate from the Leg-B build chat),
+    ~1.5–2 h, findings → memo v1.2.
