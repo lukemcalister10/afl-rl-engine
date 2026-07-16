@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v223 2026-07-16 · PEN: **THE SEAT-9 ROTATION (item 250): rev148 + DECISIONS v115 (R105.6 folded) + manifest v4.41 filed AS ONE CASCADE and second-checked pre-push. Segment 5 in flight; its mini-checkpoint = seat 10's first act. Seat-9 token REVOKE = owner to-do NOW** · prior: v222
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v224 2026-07-16 · PEN: **SEAT 10 OPENS (item 251): freshness CLEAN · pack EQUAL (nothing filed) · seg-5 MINI-CHECKPOINT prescreen PASS at `4c0d7e4` · PROCEED given** · prior: v223
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5375,3 +5375,29 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     seat-filled numbers exposed, three pin failures, 15 doc defects across three owner-prompted
     reviews — every one caught by the system or the owner before shipping harm). Seat 10 opens on
     rev148 with one chat in flight and zero open owner words.
+
+251. **SEAT 10 OPENS + THE SEG-5 MINI-CHECKPOINT PRESCREEN — PASS, PROCEED GIVEN (2026-07-16).**
+    Opening: freshness check CLEAN (main `271c521` == the owner's pin EXACTLY; tags v2.10 `d14efae` /
+    v2.9 `9f8ae76` live; pack EQUAL doc-by-doc — nothing filed per R98.10). Seat-9 token REVOKED
+    (owner-confirmed). Checkpoint: pushed as a NEW branch `claude/legb-segment5-law-grid-flq57f` at
+    **`4c0d7e4`** — a PLAIN CREATE (supervisor verified pre-authorization that NO remote ref
+    pre-existed and the abandoned tip `7eae8f7` is an ancestor of main; the build's force-with-lease
+    ask was a stale local tracking ref; seg-4 branch untouched at `ef6bf1a`, base honoured STRICT).
+    Diff `ef6bf1a..4c0d7e4` supervisor-verified IN FULL: (a) the FLIP — rl_model.py ONE LINE,
+    UNCOMP_DECAY 0.5→0.25 with R105.6 owner-provenance (+ comment-only provenance updates in
+    _merged_recover.py); (b) R105.5 L-RECENCY suite-wired — declared kernel AND engine-RECOVERED
+    per-game weight (2-season synthetic through the shipped rho_out) non-increasing and ==
+    d^yearsback, halting via the suite's non-zero exit; (c) R105.4 forbidden-list — AST scan of the
+    shipped rho_out, docstring stripped: games compared only to 0, no exclusion/floor/phase/
+    classify/qualify token; (d) pre-run assertions (session preflight + prove_guards, both
+    sys.exit-non-zero) hard-pathing the SEALED law — memo v1.3 `cf6c0080` + acceptance v1.20
+    `6b83e336` asserted by md5; decay 0.25 / bar 0.80 / grid {0.55–0.70} / recency_invariant /
+    movement_ledger / λ-gate-RETIRED asserted from v1.20; store `b1fd0bce` pinned (fence intact);
+    board `8d90c9ac` asserted. Docs commit `9b52064`: seven files BYTE-IDENTICAL to main@`7eae8f7`,
+    archive copies added, nothing authored. HYGIENE (non-blocking): the branch docs ROOT still
+    carries seg-4-era stale duplicates main has archived (manifest v4.39 · DECISIONS v113 · rev146
+    · acceptance v1.19) — INERT (preflight hard-paths sealed v1.20) but the RETURN prescreen
+    re-confirms no v1.19 read; tidy at the next branch docs sync. The byte-inert board claim
+    (8d90c9ac both paths) stays REPORT-ONLY pending the A/B re-prove — the first post-PROCEED act
+    by design. Next: seg-5 runs to its RETURN (grid at bar 0.80, all-804 ledger); seat-10 heavy
+    prescreen follows.
