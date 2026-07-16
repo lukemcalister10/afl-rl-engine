@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v207 2026-07-16 · PEN: **DIAGNOSTIC DIRECTIVE REISSUED AS v2 (item 233): v1 + addendum CONSOLIDATED (owner asked; the two-piece issue caused real confusion — one document now). Three-way classification first-class (ASCENT/INTERRUPTION/POST-PEAK) · BAR∈{6,10} · post-peak base+sensitivity variants · harness pinned at e3ff2c7 (the branch moves, the pin doesn't) · docs ≥8272aff. EFFORT RAISED Medium→HIGH on the owner's challenge (item 234) — the classification test is a judgment surface; a subtle error there costs a design round. NOT YET FIRED** · prior: v206
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v208 2026-07-16 · PEN: **THE rev145 SEAM-PREP (item 235): HANDOVER rev145 + DECISIONS v112 + manifest v4.38 filed and SHIPPED to the owner same turn. SEGMENT-4 DECISION MADE NOW (seg-3 at ~250k retires at its halt; memo v1.2 goes to a FRESH chat). Rotation lands after memo v1.2; seat-9 token revoked then** · prior: v207
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5111,3 +5111,15 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     boundaries sanity-checked on knowns) at the one point downstream checks reach last. Why not
     Extra: pre-built pinned harness, fixed sample, nothing ships — design-grade scrutiny is the
     memo's job. Directive amended in place; time band → 2–2.5 h.
+
+235. **THE rev145 SEAM-PREP (2026-07-16).** Handover pack refreshed pre-rotation while both chats
+    run: **HANDOVER rev145** (the three-iteration Leg-B story as the incoming seat's first read ·
+    the two-chat state · the queue to v2.11 · the promoted standing-conduct block — items
+    209/222/225/232/233/234 now at turn-one visibility, CORE-fold flagged) · **DECISIONS v112**
+    (R105.1 collapse · R105.2 Flanders GDEF · R105.3 qualifying redesign; ONE open word: the
+    POST-PEAK treatment, ruled from the diagnostic's two-variant table at the memo-v1.2 step) ·
+    **manifest v4.38**. **THE SEGMENT-4 DECISION, made now not later (owner cognisant):** seg-3
+    reported ~250k tokens — compacted; it RETIRES at its scaffolding halt; memo v1.2 + the grid go
+    to a FRESH segment-4 chat based STRICT on seg-3's committed halt head (the seg-2→seg-3 pattern,
+    applied proactively). Pack shipped to the owner via present_files SAME TURN (item 186). PK sync
+    + seat-9 token revocation land at the rotation itself.

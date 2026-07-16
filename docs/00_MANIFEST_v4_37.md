@@ -1,64 +1,18 @@
-# 00_MANIFEST — v4.37 · 2026-07-16 · supersedes v4.36
-### v4.37 (seat 9's pen): **THE LEG-B PACKAGE IS COMPLETE — SPEC v1.2 FOLDED (audit cluster (i):
-### all five §6 rulings folded in place, post-view band-setting DELETED, pre-view hashing adopted,
-### the stale §7 A-PAIRS line killed) · ACCEPTANCE → v1.17 (the memo-§5 leg_b block: β/slope/ratio/
-### earned-gate/ledger/census-cells/L-SMOOTH/killswitch-matrix/pre-view-hashes/Leg-C-remeasure +
-### R104.9 strict-descent + G-Y0/posture-discount placeholders; v1.16 archived) · THE LEG-B DIRECTIVE
-### ISSUED (docs/DIRECTIVE_LEGB_uncompress_2026-07-16.md; base 8b8ab7d STRICT; 4-7 h; fires on the
-### owner's word)** · DECISIONS → v111 (to-do refresh; ONE owner word open: FIRE LEG B; the ≤22
-### slope-min 0.15 rides PROPOSED for veto) · register → v179 (items 205-206). Seat-8 Leg-D note
-### filed at item 204 (no Leg-B design change; w-export deliverable added).
-### v4.36 (seat 9's pen): **THE LEG-B FUNCTIONAL-FORM MEMO FILED** (item 203; docs/MEMO_LEGB_
-### functional_form_2026-07-16.md). Pre-sim VERDICT: a credible path under 1.30 EXISTS (output-
-### anchored evidence blend + production-side per-position conservation; s≈0.55 ⇒ y4/y5/y6
-### 1.100/1.154/1.113) — **the R104.10 waiver question does NOT return**. NEW: y4 = 1.3017 also over
-### at the Leg-A head (crossed AT Leg A). Register → v177. NEXT: spec v1.2 fold → acceptance v1.17
-### → the Leg-B directive. UI v1.2.1 prescreened PASS-w/-one-mechanical-item (item 202: owner
-### fast-forward of #99's branch to cf78878, then viewing + click).
-### v4.35 (seat 9's pen, FIRST FILING): **SEAT 9 (Fable) OPENS** — freshness check CLEAN (main
-### `f06df85` == the owner's pin; pack EQUAL doc-by-doc, nothing filed per R98.10; tags v2.10/v2.9
-### verified live). **DECISIONS → v110** (R104.10: B1 proceed-eyes-open, owner verbatim; the Leg-B
-### memo MUST pre-sim a path under 1.30 or the waiver question returns pre-build). Register → v175
-### (item 201). IN FLIGHT: UI v1.2.1 (prescreen on return) · NEXT: the LEG-B FUNCTIONAL-FORM MEMO
-### (audit clusters (ii)/(iii) + the G-COHORT pre-sim are its opening inputs) → spec v1.2 fold +
-### acceptance v1.17 → the Leg-B directive.
-### v4.34 (seat 8's pen): **LEG A PRESCREEN PASS-WITH-TWO-OWNER-ITEMS** (item 198: decomposition
-### verified 37/37 + 2652/2652; OFF==790136a3; English 1.766×; B1 over-1.30 pre-existing+0.010 —
-### OWNER POSTURE WORD OPEN; A4 rank-only). DECISIONS → **v109** (R104.9 strict-descent folded).
-### Register → v172. UI v1.2.1 issued (item 195, #99 held) · UI v1.3 approved (item 196).
-### v4.33 (seat 8's pen): **R104.8** (the item-130 GLOSS: earned value protected; the pick prior
-### dissolves both ways; Leg A ships with the 37-row decomposition condition — DECISIONS → **v108**)
-### · **UI v1.2 prescreen PASS** (PR #99 `2d00e3f`; merge on the owner's click) · register → v168
-### (items 190–191). Leg A build IN FLIGHT toward its RETURN.
-### v4.32 (seat 8's pen): **HANDOVER → rev144 — MID-CHAPTER ROTATION-READINESS** (two lanes in flight:
-### Leg A writer + UI v1.2; prescreen checklists inside; the queue = Leg-B functional-form memo →
-### directives C/D/E → the ladder). Register → v166 (items 186–188: Leg A fired · UI fired · the
-### PK-courier + time-estimate standing rules). Pack otherwise: DECISIONS v107 · CONSTRAINTS v1.18.
-### v4.30 (seat 8's pen): the spec-§6 rulings land — DECISIONS → **v106** (R104.3–.6: English/Briggs
-### floor 1.75 · posture sketch adopted, balanced canonical · per-posture 2027 pick discount 10/15/5 ·
-### sealed reads written). Register → v162 (item 183). **THE LEG-A DIRECTIVE ISSUED** (chapter opener,
-### fires on the owner's word). CHAPTER SPEC of record: docs/SPEC_PVC_FLEX_CHAPTER_v1_2026-07-16.md
-### (item 182). Open owner words: G-Y0 · the fire word. Nothing else moved.
-### v4.29 (seat 8's pen): **THE AXIS RULE IS RATIFIED — L-AXIS BINDING** (CONSTRAINTS → **v1.17**; the
-### merged PVC+FLEX chapter's opening gate is RULED). DECISIONS → **v105** (R104.x). Register → v159
-### (items 175–178: both rev143 confirmations CLOSED — main CI printed board 790136a3, Guard 5 PASS;
-### UI v1.1 prescreen PASS + owner viewed, merge on his click; the UI v1.2 feedback batch filed —
-### it SPECS the item-173 ranking page). Nothing else moved; tags/main state unchanged below.
-### The pointer file. Read it first. It tells you what is current and what to read WHEN.
-### Maintained by the FABLE seat (seat 7). THIS FILING: THE v2.10 SEAM — the "evidence over calendars"
-### chapter is BAKED (tag v2.10 = d14efae) + PROMOTED (main = a64c47f, two-parent PR #97). The 1.335
-### G-COHORT waiver REVERTS to 1.30 (CONSTRAINTS v1.16 + acceptance v1.16). DECISIONS → v104 (the R103.x
-### seam set) · HANDOVER → rev142 (the merged PVC+FLEX chapter's whole queue). CORE/SSI unchanged.
-### v4.28 (same day): HANDOVER → rev143 (hardened pre-rotation at the owner's request: item 173 UI
-### ranking-page miss + ruling · open Tier-3 PR dispositions · pending CI/PK confirmations). Nothing else moved.
-### ⚠ OWNER-INSTRUCTED: prior seats' JUDGEMENT is not ground truth — verify before building.
-
+# 00_MANIFEST — v4.38 · 2026-07-16 · supersedes v4.37
+### v4.38 (seat 9's pen, THE rev145 SEAM-PREP): **HANDOVER → rev145** (the Leg-B three-iteration
+### story · exactly TWO chats in flight (seg-3 scaffolding, retiring at its halt ~250k; the HIGH
+### qualifying diagnostic) · the queue: memo v1.2 (+ the open POST-PEAK owner ruling) → SEGMENT 4
+### FRESH → return → seat-10 prescreen → Leg C (pre-drafted, rider in) → D → E → ladder → v2.11 ·
+### the promoted standing-conduct block). **DECISIONS → v112** (R105.1 collapse · R105.2 Flanders
+### GDEF · R105.3 qualifying redesign; open word: post-peak). Register → v208 (item 235). UI line
+### SHIPPED (#99/#101) · LTI tool MERGED (#102). Acceptance **v1.18** (open re-seal, items 221/224).
+### Rotation: seat 10 opens after memo v1.2; revoke the seat-9 token then.
 ## THE PACK — CURRENT VERSIONS
 | doc | version | tier | when to read |
 |---|---|---|---|
 | **00_MANIFEST** | **v4.37** | 0 | first, always |
 | **CORE** | **v2.8** | 0 | in full — BINDING. |
-| **HANDOVER** | **rev144** | 0 | MID-CHAPTER rotation-readiness — two lanes in flight, prescreen checklists, the queue. |
+| **HANDOVER** | **rev145** | 0 | MID-CHAPTER rotation-readiness — two lanes in flight, prescreen checklists, the queue. |
 | **DECISIONS** | **v111** | 0 | rulings + the owner's CURRENT to-dos. Read the register for verbatim. |
 | **OPEN_ITEMS_REGISTER** | read its OWN header | 1 | THE DURABLE LOG (v155+). Repo-only. |
 | **CONSTRAINTS** | **v1.18** | 1 | REPO-ONLY (P1) — fetch + grep when judging a board. **G-COHORT hard 1.30** · **L-AXIS BINDING** · **G-Y0 BINDING (population-level, effective Leg D)**. |
