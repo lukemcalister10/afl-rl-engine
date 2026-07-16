@@ -147,6 +147,33 @@ check(not _multi, "present/future positions are single-valued (no list legs); of
 _seam=[p['key'] for p in store if p.get('future_position')!=p.get('present_position')]
 check(not _seam, "future_position == present_position for every record this build; offenders=%s"%_seam[:5])
 
+print("=== (6) LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (item 132; RL_ISOFADE) ===")
+# The fade dissolves the pick tax on the v2.10 evidence weight w=E_q; the ISO multiplier is monotonized
+# non-increasing in pick. Asserted here so a regression in either HALTs the build (SILENCE IS A RED).
+_iso_eff=g['iso_eff']; _iso_corr=g['iso_corr']; _ISO=g['ISO']; _evq=g['_ev_qual']
+_isreal=g['_isreal']; _cp=g['cp']; _ISOFADE=g['_ISOFADE']
+_reals=[p for p in MA.players if _isreal(p)]
+with contextlib.redirect_stdout(io.StringIO()):
+    # (a) ZERO-EVIDENCE (the V0 leg): at Y=debutyr-1, E_q==0 => fade==1 => iso_eff == iso_corr, unchanged BY CONSTRUCTION
+    _ze_ok=True; _ze_ex='ok'
+    for _p in _reals[:80]:
+        _y0=_cp.debutyr(_p)-1
+        if _evq(_p,_y0)!=0.0: _ze_ok=False; _ze_ex=(_p['key'],'E_q!=0 at debutyr-1'); break
+        if _iso_eff(_p,_y0)!=_iso_corr(MA.gfut(_p),MA.effpk(_p)): _ze_ok=False; _ze_ex=(_p['key'],'iso_eff!=iso_corr at w=0'); break
+    # (b) SATURATED-EVIDENCE: the most-proven real player's iso has dissolved to ~1.0
+    _sat=max(_reals, key=lambda p:_evq(p,2026)); _satEq=float(_evq(_sat,2026)); _satiso=float(_iso_eff(_sat,2026))
+check(_ze_ok, "LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; %s)"%(_ze_ex,))
+if _ISOFADE:
+    check(_satEq>5.0 and abs(_satiso-1.0)<0.02,
+          "LEG A fade: saturated player %s (E_q=%.1f) iso_eff=%.4f ~= 1.0 (|d|<0.02)"%(_sat['key'],_satEq,_satiso))
+    _mono_bad=[]
+    for _pos,(xs,fs) in _ISO.items():
+        for _i in range(len(fs)-1):
+            if float(fs[_i]) < float(fs[_i+1])-1e-9: _mono_bad.append((_pos,int(xs[_i]),round(float(fs[_i]),4),round(float(fs[_i+1]),4))); break
+    check(not _mono_bad, "LEG A monotone: ISO[pos] multiplier non-increasing in pick, every position (violations=%s)"%(_mono_bad[:4]))
+else:
+    print("  NOTE  RL_ISOFADE=0 (v2.10 base path): fade/monotone assertions skipped; the zero-evidence identity above holds either way.")
+
 print("=== COLLISION SENTRY: named-pair identity assertions (halt-not-warn; DECISIONS §29) ===")
 # Permanent, data-driven from collision_sentry.json (extensible; pairs ADDED ONLY WHEN THEY BITE). For every
 # pinned pair: both keys exist EXACTLY ONCE, every pinned field == the store's value (a bleed makes
