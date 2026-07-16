@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v229 2026-07-16 · PEN: **ITEM 256: OWNER RULES — per-position conservation is NOT his law (pools may re-rate; unfunded value permitted); guards = G-COHORT + SINCERITY (relative claims judged in relative terms, ledgers carry RANKS). Item 254 Lever-5 rider corrected in place. Disposition word OPEN: measure / partial / identity** · prior: v228
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v230 2026-07-16 · PEN: **ITEM 257: owner word "Measure" — the UNFUNDED MEASUREMENT directive is ISSUED (one writer; base `91d08f2` STRICT; C≡1 dev toggle; frozen suites; rank-sincere ledger). Leg C holds** · prior: v229
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5522,3 +5522,14 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     is the unmeasured question (item 254 corrected in place above). Disposition options put to
     the owner: MEASURE (small default-off-toggle build, frozen suites, rank-sincere ledger;
     supervisor-recommended) / PARTIAL / IDENTITY. Leg C still HOLDS.
+
+257. **OWNER WORD: "Measure." (2026-07-16) — THE UNFUNDED MEASUREMENT DIRECTIVE ISSUED:
+    docs/DIRECTIVE_LEGB_unfunded_measure_2026-07-16.md.** The item-256 road, measured before any
+    disposition: RL_UNCONSERVE dev toggle (default OFF, byte-exact A/B) on the decided family at
+    C≡1 × s ∈ {0.65, 0.85, 1.00, 1.25, 1.50}; per point the FROZEN β estimator (14c59139) + the
+    FROZEN July-8 G-COHORT suite (the real gate, not the §6 proxy — the unmeasured question of
+    record) + E/B 1.75 + census gauge + position-pool Δ totals + the item-256 SINCERITY LEDGER
+    (all-804 ΔSCAR/Δrank; Bontempelli the named test; SCAR-up-rank-down counted as failures).
+    Mini-checkpoint HALT after the toggle commit for supervisor diff-prescreen. NO selection —
+    the bar/grid construction returns to the owner with the numbers. ONE writer in flight (this);
+    Leg C HOLDS. EFFORT High · 2–3.5 h · base `91d08f2` STRICT, new branch.
