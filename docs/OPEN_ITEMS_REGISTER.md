@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v214 2026-07-16 · PEN: **R105.5 OWNER-RULED (item 241): L-RECENCY — a more recent game's PER-GAME weight must be ≥ any earlier season's game, ALWAYS (v1.2 already conforms: 0.5^back is monotone; now GUARDED by a halt-not-warn self-test) + THE FULL MOVEMENT LEDGER (all-804 per-player Δ from the map, committed artifact). Both ride the segment-4 PROCEED paste (the v1.19 seal stays intact for the FEED check); CONSTRAINTS/acceptance folds at the next natural re-seal** · prior: v213
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v215 2026-07-16 · PEN: **PACK REVIEW №3 (item 242): FIVE findings — rev146 doubly stale AT FILING (cited v112 + acceptance v1.18) · diagnostic shown in-flight · queue described the SUPERSEDED conditioned design · manifest acceptance row stale · R105.4/R105.5 MISSING from DECISIONS. Fixed: rev147 · DECISIONS v114 · manifest v4.40; seals re-verified live. PK sync uses THIS pack** · prior: v214
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5226,3 +5226,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     instruction governs, register-backed here); L-RECENCY + the ledger fold into CONSTRAINTS (→v1.19)
     and the acceptance JSON at the next natural re-seal (the return/ladder). Zero owner action now —
     the PROCEED paste carries it.
+
+242. **PACK REVIEW №3 (owner-prompted 2026-07-16) — FIVE FINDINGS, ONE FILING, ASSERTED.** (1)
+    rev146's pack line was stale AT ITS OWN FILING (cited DECISIONS v112 when v113 existed — a
+    defect my review №2 missed) and cited acceptance v1.18 (superseded same day). (2) rev146 showed
+    the diagnostic in-flight (returned + prescreened, item 239). (3) rev146's queue still described
+    the SUPERSEDED conditioned-predicate design and the dissolved post-peak ruling. (4) Manifest
+    acceptance row → v1.19. (5) THE SUBSTANTIVE ONE: **R105.4 and R105.5 lived only in the register
+    — DECISIONS, the rulings document, had fallen two owner rulings behind.** Fixed: **HANDOVER
+    rev147** (segment 4 as the one in-flight chat; the PROCEED-must-carry-R105.5 instruction
+    explicit for the incoming seat) · **DECISIONS v114** (R105.4 + R105.5 verbatim-substance; §2
+    OPEN WORDS: NONE — the post-peak question dissolved) · **manifest v4.40**. Seals RE-VERIFIED
+    live (memo 1ff0702a · acceptance 7a97717b — both == the segment-4 directive's FEED). All edits
+    post-asserted; predecessors archived. PATTERN NOTE for seat 10: three owner-prompted reviews
+    found 4+6+5 defects — the doc-update cascade (handover→decisions→manifest→acceptance rows) is
+    where a tired pen fails; VERIFY THE CASCADE as a unit at every filing.
