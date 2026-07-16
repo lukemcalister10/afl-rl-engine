@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v209 2026-07-16 · PEN: **THE OWNER'S DOC REVIEW CAUGHT FOUR DEFECTS IN MY v4.38 FILING (item 236): changelog lineage + the ⚠ OWNER-INSTRUCTED line DESTROYED · versions table silently stale (pointed at v4.37/v111/acceptance v1.17!) · no archived v4.37 · rev145 pin one-amend stale. ALL REPAIRED from git history; table now asserted by script. Lesson: scripted doc surgery needs the same post-edit verification as code** · prior: v208
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v210 2026-07-16 · PEN: **SEG-3 SCAFFOLDING HALT — PRESCREEN PASS (item 237): fence clean (2 engine files + session artifacts) · stub verified (one def, one call site, unreachable while inert) · six-site removal + obituary confirmed · A/B 8d90c9ac BYTE-EXACT both variants (committed proof read). SEG 3 RETIRES HERE. Segment-4 base = 243106b STRICT. AWAITING: the diagnostic → memo v1.2** · prior: v209
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5138,3 +5138,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the same pass: no further defects found (rev145's journal-count and STATE-AT historical refs are
     tolerated lineage, not errors). LESSON (standing): scripted doc edits carry the same
     POST-EDIT VERIFICATION duty as code — assert the result, never trust the replace().
+
+237. **SEG-3 SCAFFOLDING HALT — PRESCREEN PASS; SEG 3 RETIRES (2026-07-16). Head `243106b`
+    (fresh fetch; plan-ancestry e3ff2c7 verified).** MY CHECKS: fence = exactly
+    `_merged_recover.py` + `rl_model.py` + session artifacts (store b1fd0bce and config c2d233ae
+    NOT in the diff — untouched by construction) · the pluggable predicate verified in code (one
+    `def _qualifying(p, season)` raising NotImplementedError · exactly one call site inside
+    `rho_out`'s season-selection · unreachable while the map is inert — the committed proof shows
+    neither A/B build reaches it) · six-site posval removal confirmed (the only two remaining
+    `posval_uncomp` mentions in rl_model.py are the OBITUARY prose, rule-7-correct) · **A/B:
+    DEFAULT-inert AND RL_UNCOMP=0 both print board `8d90c9ac` BYTE-EXACT** (read from the committed
+    SCAFFOLDING_PROOF, concurring with the return) · four per-task commits on the PLAN · hard stops
+    honored (no rule, no grid, no finals) · honest telemetry (~165k; nothing to reap). NOTE: the
+    build's ~165k self-estimate vs the owner's earlier ~250k UI reading — the retire-at-halt +
+    fresh-segment-4 decision (item 235) STANDS regardless; it is the derisked path either way.
+    **SEG 3's JOB IS DONE — it retires with a clean record. SEGMENT-4 BASE = `243106b` STRICT**
+    (goes into the segment-4 directive with memo v1.2). CRITICAL PATH NOW: the qualifying
+    diagnostic's return → the post-peak owner ruling → memo v1.2 → segment 4 → the grid.
