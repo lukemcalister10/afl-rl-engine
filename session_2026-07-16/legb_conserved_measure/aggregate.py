@@ -42,7 +42,7 @@ if bc:
     w("  %-8s %8.4f  [%6.4f,%6.4f] %8.4f %6d   width%s n%s" % ('β_c(OFF)', bc['beta'], bc['lo'], bc['hi'],
       bc['width'], bc['n'], 'OK' if bc['width'] <= 0.35 else 'RAIL', 'OK' if bc['n'] >= 120 else '<120'))
 for s in GRID:
-    b = beta(s)
+    b = beta('s'+s)
     if b:
         w("  s=%-6s %8.4f  [%6.4f,%6.4f] %8.4f %6d   width%s n%s" % (s, b['beta'], b['lo'], b['hi'],
           b['width'], b['n'], 'OK' if b['width'] <= 0.35 else 'RAIL', 'OK' if b['n'] >= 120 else '<120'))
@@ -51,7 +51,7 @@ w()
 w("## G-COHORT y4/y5/y6 (FROZEN July-8 construction, ship_gates_check._b1_july8; hard <=1.30)")
 w("  %-8s %9s %9s %9s   %s" % ('point', 'y4', 'y5', 'y6', 'verdict'))
 for label in ['OFF'] + GRID:
-    g = gcjson(label)
+    g = gcjson(label if label == 'OFF' else 's'+label)
     if g:
         br = g['breaches']
         w("  %-8s %9.4f %9.4f %9.4f   %s" % (label if label == 'OFF' else 's=' + label, g['y4'], g['y5'], g['y6'],
