@@ -1,5 +1,5 @@
-# During the run the whole working tree is ignored to keep the repo-clean check quiet.
-# At grid completion the final deliverables are force-added:
-#   GRID.out, MEASURE.md, POINT_s*.md, SINCERITY_all804_s*.csv, gc_*.txt, beta_*.txt, led_*.json
-*
-!.gitignore
+# transient run scaffolding only; all measurement deliverables are tracked
+*.log
+*.err
+PT_*.json
+DRIVER.log

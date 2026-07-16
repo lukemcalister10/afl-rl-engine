@@ -1,0 +1,26 @@
+# LEG B UNFUNDED — MEASUREMENT GRID (C≡1; RL_UNCONSERVE=1)  ·  frozen instruments only
+# base 91d08f2 · store b1fd0bce · board OFF=8d90c9ac · toggle 6d9a4269 · A/B byte-exact
+
+## β (proven-27+, FROZEN beta_measure.py md5 14c59139; owner reference bar 0.80; rails width<=0.35, n>=120)
+  point           β  CI                        width      n   rails
+  β_c(OFF)   0.6219  [0.4836,0.7899]   0.3063    116   widthOK n<120
+
+## G-COHORT y4/y5/y6 (FROZEN July-8 construction, ship_gates_check._b1_july8; hard <=1.30)
+  point           y4        y5        y6   verdict
+  OFF         1.3017    1.3160    1.2664   BREACH y[4, 5]
+
+## PER-POINT (E/B vs 1.75 · Bontempelli SCAR/rank · net board SigmaD · sincerity failures)
+  point          E/B Bontempelli                        net ΣΔ  sinc-fail
+  s=0.65       3.080 SCAR+15 rank-24 OK                -174696          0
+  s=0.85       3.656 SCAR+20 rank-25 OK                -204370          0
+  s=1.00       4.156 SCAR+24 rank-27 OK                -222115          0
+  s=1.25       5.149 SCAR+30 rank-30 OK                -245107          0
+  s=1.50       6.379 SCAR+35 rank-29 OK                -261402          0
+
+## POSITION-POOL Δ TOTALS per point (ΣΔnum by pos — which pools re-rate)
+  point          MID   GEN_FWD   KEY_FWD   GEN_DEF   KEY_DEF       RUC
+  s=0.65      -61773    -34471    -17655    -43312    -16778      -707
+  s=0.85      -74022    -38601    -21037    -50984    -19645       -81
+  s=1.00      -81808    -40750    -23168    -55666    -21393      +670
+  s=1.25      -92619    -43216    -26179    -61886    -23704     +2497
+  s=1.50     -101185    -44810    -28537    -66536    -25449     +5115
