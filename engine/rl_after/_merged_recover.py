@@ -353,6 +353,12 @@ def raw_ev(p,Y=2026):
 #     plain iso_corr at every site => v2.10 board 790136a3 byte-exact (config_sha256 UNMOVED).
 _ISOFADE=os.environ.get('RL_ISOFADE','1')!='0'               # kill-switch (G-ATTR separability): RL_ISOFADE=0 => v2.10 byte-exact. Declared exception, not a dial.
 _ISOFADE_TAU=_EVW_TAU                                         # =1.1: THE fade parameter — the pedigree-fade family rate (_ev_pw, :186-189) in effective-qualifying-season units; iso uses the residual-0 member exp(-w/tau).
+# _REAL/_isreal HOISTED here from ~130 lines below (seg-5 map-ON load-order fix, owner-authorized fence
+# amendment 2026-07-16; content BYTE-IDENTICAL to the original site): the ISO-table build just below calls
+# raw_ev(synth(...)) at MODULE LOAD, and with RL_UNCOMP ON the _uncomp_prod guard resolves _isreal — which
+# must therefore be defined BEFORE this point. MA.data is fully built and not mutated between here and there.
+_REAL=set(p['key'] for p in MA.data)
+def _isreal(p): return p.get('key') in _REAL
 PICKS=list(range(1,71)); ISO={}
 for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:
     raw=np.array([raw_ev(synth(pk,PR.par_at(pos,min(pk,cp.KMAX),4),pos)) for pk in PICKS])
@@ -487,8 +493,8 @@ def _v7(bb,p,Y):
 # copy is priced. (The shipped-board bug: rl_export exec'd a 2nd rl_model instance, so id(p) matched 0/805 and
 # every real-store layer was silently dropped, over-pricing ~2/3 of the board.) Synths (no 'key') never match;
 # copies carrying the same key resolve as real by construction. Keys verified non-null + unique across MA.data.
-_REAL=set(p['key'] for p in MA.data)
-def _isreal(p): return p.get('key') in _REAL
+# _REAL/_isreal are now DEFINED ABOVE (hoisted to just before the ISO-table build; seg-5 map-ON load-order
+# fix, owner-authorized). Original definition site was HERE; this block documents their keying, retained in place.
 _b6_pre_v7=b6
 def b6(p,Y=2026):
     bb=_b6_pre_v7(p,Y)
