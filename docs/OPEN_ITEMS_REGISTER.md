@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v173 2026-07-16 · PEN: **ITEM 198 CORRECTED IN PLACE (the OFF-board md5 line was REPORT-ONLY mislabelled as verified — wrong artifact compared; value-level evidence stands; OFF-rebuild md5 assertion added to the COLD-AUDIT checklist). Verdict UNCHANGED: PASS WITH TWO OWNER ITEMS; B1 posture word open** · prior: v172
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v174 2026-07-16 · PEN: **B1 RULED: PROCEED EYES-OPEN (item 199 — the Leg-B memo MUST pre-sim a path under 1.30 or the waiver question returns pre-build) · THE GPT AUDIT FILED VERBATIM (41 findings, docs/AUDIT_gpt_spec_findings — triage frame in item 199; full reconcile = the Leg-B memo's opening input) · UI v1.2.1 FIRED · SEAT 8 CLOSES — ROTATION NOTE item 200** · prior: v173
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4497,3 +4497,42 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     monotonically TOWARD 1 ⇒ the unearned gauge cannot grow) — **the ladder's cold audit re-runs it.**
     **OWNER WORD ASKED (DECISIONS v109): B1 posture — (a) proceed eyes-open, gate binds at the ladder,
     Leg-B memo must pre-sim a path under 1.30 (REC) · (b) hold the line for the pre-sim first.**
+
+199. **B1 RULED + THE AUDIT LANDED (2026-07-16).**
+    **B1/G-COHORT POSTURE (owner verbatim): "A) Proceed eyes-open. We're aware, we're discussing it.
+    That's fine for now. I don't want to hold anything."** The candidate line proceeds over the 1.30
+    line (y5 = 1.3160, pre-existing base 1.3057 + Leg A ~+0.010); the gate BINDS AT THE LADDER; **the
+    Leg-B memo MUST pre-sim a credible path under 1.30 — if none exists, the waiver question returns
+    to the owner BEFORE any Leg-B build fires** (the condition attached to the recommendation he
+    adopted). DECISIONS fold (→ v110) rides the next seat's first filing.
+    **THE GPT AUDIT (item 193's instrument) FILED VERBATIM: `docs/AUDIT_gpt_spec_findings_2026-07-16.md`
+    — 41 findings (23 BLOCKER / 18 MAJOR by its own labels). TRIAGE FRAME (full reconcile = the Leg-B
+    memo's opening input, next seat):** (i) a cluster attacks the SPEC TEXT's §6 options that later
+    rulings already superseded (G-Y0 §6.4 vs R104.7 · posture/pick-discount §6.3 vs R104.5 · the
+    owner-band §6.1 vs R104.3's hard 1.75 floor) — the CURE is a spec v1.2 fold so the document
+    matches the ruled state, plus the pre-view-hash discipline it recommends; (ii) a large, genuinely
+    valuable cluster HARDENS ACCEPTANCE v1.17 (explicit tolerances · per-young-player EARNED-component
+    gate measured at FINAL SCAR, not raw inputs · G-COHORT frozen-fixture definition · L-SMOOTH
+    numeric threshold · watch-row minimum deltas · census cell-level gating · kill-switch regeneration
+    matrix · whole-system SCAR ledger incl. picks · pre-view hashes) — these fold INTO the acceptance
+    JSON and the memo's §d; (iii) the PVC-derivation attacks (circularity · degenerate fixed point ·
+    survivorship · decile-level G-Y0 · draft-day-information-only V0) are REAL DESIGN INPUTS for the
+    Leg-D construction (multi-start + prior-removed derivations adopted as planned tests); (iv) a few
+    misread the ruled blend semantics (the flex "creates SCAR" finding vs the owner's MAX-law
+    construction — the dual stream is his ruled definition of the asset's value, not an unfunded
+    bonus; still worth a conservation NOTE in Leg C's return). NOTHING in the audit blocks Leg A
+    (already prescreened on stronger per-row evidence than the audit demands) or UI v1.2.1.
+
+200. **SEAT 8 CLOSES — ROTATION NOTE (2026-07-16).** Open with: rev144 + register items 190–200
+    (items SUPERSEDE rev144 where they conflict — notably §4's pair-2 line, killed at item 192).
+    STATE AT CLOSE: main `584c1ed`+ (this filing moves it) · Leg A prescreened PASS (item 198, PR
+    #100 head 8b8ab7d, candidate line head) · UI v1.2.1 FIRED (prescreen checklist = item 195's
+    directive; #99 held for it) · UI v1.3 approved-unfired (item 196) · B1 proceed-eyes-open (item
+    199) · the audit filed (reconcile pending). **NEXT SEAT'S OPENING ORDER: (1) freshness check;
+    (2) UI v1.2.1 prescreen when it returns; (3) THE LEG-B FUNCTIONAL-FORM MEMO consuming: the
+    Leg-A landed state (engine a83c9f6d · board 8d90c9ac) + the audit findings (ii)/(iii) + the
+    G-COHORT pre-sim OBLIGATION (item 199) + rev144 §3's decision list; (4) spec v1.2 fold (audit
+    cluster (i)) + acceptance v1.17 JSON; (5) DECISIONS → v110 fold (R104.9 done at v109; item 199's
+    B1 ruling pending fold).** Owner conduct rules carry (items 186/188). Token: the seat-8 pen token
+    should be REVOKED by the owner now; a fresh token issues to seat 9 in-chat when its first filing
+    needs it.
