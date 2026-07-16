@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v201 2026-07-16 · PEN: **LTI RE-PIN TOOL PRESCREEN PASS (item 228): store READ-ONLY verified in code (only write target = the boot register pin, surgical + asserted); fence clean (the 3 'changed' docs are base-lag artifacts, byte-identical to main — build never touched docs). #102 → owner click (Tier 3). Base one behind main — clean ff on merge** · prior: v200
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v202 2026-07-16 · PEN: **SEG-3 PLAN PRESCREEN PASS (item 229): premise CONFIRMED (λ_ρ 0.90@10 / 0.99@6 vs level_now 0.12); captain-off pass sound; hook/removal/ramp ratified. TWO OWNER DECISIONS AT PROCEED: (1) games FLOOR — REC 6 (grid clears; 10 risks empty-grid HALT, independently reproduced) (2) branch re-point to decompress-3vo8y1 (harmless either way — REC keep the harness branch, it IS the candidate line's continuation). ROTATION AT PROCEED** · prior: v201
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5015,3 +5015,26 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     observed. **NEXT: owner merges #102 at will (Tier 3, off the ladder); base one behind main ⇒
     clean fast-forward, no sibling risk here (PR merges, not a branch-continue).** The re-pin tool
     is a GO-LIVE prerequisite (item 218) now BUILT ahead of its chapter — bankable.
+
+229. **SEGMENT-3 PLAN — PRESCREEN PASS, TWO OWNER DECISIONS (2026-07-16). PLAN `e3ff2c7`, branch
+    `claude/legb-segment3-v1-rewire-5jy7f3`, base `c27d697` STRICT (verified; PLAN.md + CONFIRM +
+    rho_axis_v11.py only — no engine write yet, correct for a checkpoint).** THIS SEAT VERIFIED:
+    seals match (memo c664062c · acceptance caf8636c); the CONFIRM reproduces seg-2 value-exact
+    (β_c 0.6219 · λ_level_now 0.1236); **the v1.1 PREMISE HOLDS — the new ρ axis λ_ρ = 0.896@games≥10
+    / 0.994@games≥6 vs level_now's 0.12** (the axis now tracks realised output; hook _merged_recover.py:298
+    confirmed pre-pole; captain-off via MA._CAPT_OFF is a TRUE zero — not the retired RL_CAPT=0
+    saturating curve — build caught that distinction correctly; capt_bonus verified dead; δ self-test
+    carried). **DECISION 1 — THE GAMES FLOOR (independently reproduced by this seat):** at floor 10
+    (λ=0.896) β_eff tops out ~0.81 at s=0.70 — **grid could HALT EMPTY**; floor 6 (λ=0.994) clears at
+    s≥0.65 (β_eff 0.857/0.876). CI at floor 10 spans 0.73–0.89 — genuinely uncertain. **REC: FLOOR = 6.**
+    Rationale: floor 6 still excludes injury-wiped seasons (a <6-game season is not a real season by any
+    reading), keeps λ≈1 so the fix actually clears, and the frozen s-grid remains the true authority
+    regardless. Floor 10 is the purist's engine-convention choice but courts an empty-grid re-loop the
+    chapter can't afford — and an empty grid at floor 10 would just send us back to rule floor 6 anyway.
+    **DECISION 2 — BRANCH:** the PLAN is on `…segment3-v1-rewire-5jy7f3`, not `…decompress-3vo8y1`; the
+    directive's 'continue this branch' meant the CANDIDATE LINE, and this harness branch based STRICT on
+    c27d697 IS that continuation (decompress undisturbed at c27d697). **REC: keep the harness branch**
+    (re-pointing gains nothing; the candidate line is defined by ancestry, not branch name — c27d697 is
+    the shared parent). Harmless either way. **ROTATION: seat 9 hands over at PROCEED (item 230 to
+    follow) — this prescreen was the continuity-critical act; the build then runs 2.5-4 h unattended,
+    the clean seam.** Grid/G-COHORT/deliverables all correctly carried; context 55%, no bg tasks.
