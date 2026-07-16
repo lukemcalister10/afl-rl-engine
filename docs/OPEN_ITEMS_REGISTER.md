@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v175 2026-07-16 · PEN: **SEAT 9 OPENS (item 201: freshness CLEAN, pack EQUAL, main f06df85 == pin) · DECISIONS → v110 (R104.10 B1 proceed-eyes-open folded) · manifest → v4.35 · v109 archived** · prior: v174
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v176 2026-07-16 · PEN: **UI v1.2.1 PRESCREEN PASS-WITH-ONE-MECHANICAL-ITEM (item 202: content clean, pricing bundle byte-identical, but a SIBLING branch — #99's head does NOT yet carry the fix; one owner fast-forward push, then viewing + click)** · prior: v175
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4550,3 +4550,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     v1.2.1 prescreen on its return → the Leg-B functional-form memo (Leg-A landed state engine
     a83c9f6d · board 8d90c9ac + audit clusters (ii)/(iii) + the MANDATORY G-COHORT pre-sim) → spec
     v1.2 fold + acceptance v1.17 → the Leg-B directive.
+
+202. **UI v1.2.1 PRESCREEN — PASS WITH ONE MECHANICAL ITEM (2026-07-16).** Branch
+    `claude/held-picks-display-fix-ro5220`, head `cf78878` (fresh fetch). INDEPENDENTLY VERIFIED BY
+    THIS SEAT: **base STRICT** — exactly ONE commit whose parent IS `2d00e3f` (#99's head). **FENCE
+    CLEAN** — 4 changed files, all ui/: `ui/app/board.js` + `ui/styles/matchday.css` (display-only;
+    +13 css lines) + the two v1_2_1 screenshots (real committed binaries, 634KB/622KB). **ZERO
+    PRICING CHANGE PROVEN** — `ui/data/club_valuation.js` md5 `aed4099d…` at BOTH `2d00e3f` and
+    `cf78878` (this seat's own hash both sides); no other ui/data or ingest path touched ⇒ the
+    bundle byte-matches by construction. **THE RULED DISPLAY, IN THE CODE:** comparator = value DESC
+    → band-low ASC → year ASC (item 195's tie-break exactly; kills the item-194 #2-above-#1
+    disorder); per-year columns 2026 | 2027, each headed by its own Σ + count; the panel keeps the
+    overall Σ. Return's totals internally consistent (17,470 + 9,400 = 26,870). **THE MECHANICAL
+    ITEM (a directive deviation, not a content defect):** item 195 said CONTINUE #99's branch; the
+    build made a SIBLING branch instead — refs/pull/99/head still = `2d00e3f`, so **as it stands the
+    owner's one click on #99 would merge WITHOUT the fix.** cf78878 is a clean fast-forward of #99's
+    branch (descendant, verified). CURE = ONE owner push (`git push origin
+    cf78878:claude/club-valuation-ui-v1-2-gdghtf`) — #99's head becomes cf78878 and the ruled
+    one-viewing-one-click close is restored. The supervisor pen is docs/-only and does not move ui
+    branches. NEXT RUNG: owner fast-forward → viewing → his click closes #99 (Tier 3).
