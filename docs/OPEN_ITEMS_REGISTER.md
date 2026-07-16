@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v226 2026-07-16 · PEN: **ITEM 253: owner rules "Diagnose first" on the Leg-B disposition; the read-only GAP DIAGNOSTIC directive is ISSUED (Tier 3; base `91d08f2` STRICT); Leg C holds** · prior: v225
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v227 2026-07-16 · PEN: **GAP DIAGNOSTIC RETURNED (item 254): prescreen PASS at `c8bab8d` · item 252's recorded mechanism SUPERSEDED IN PLACE (leak = λ_eff 0.72 not the weight) · OWNER WORD OPEN: the Leg-B disposition, now grounded** · prior: v226
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5421,7 +5421,11 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     unchanged; heavy-prescreen ledger/E-B/G-COHORT rungs EMPTY BY CONSTRUCTION (no ON board).
     MEASURED MECHANISM (FINDING doc): realised weight w = s·E·ramp ≈ 0.15 at s=0.55 over
     proven-27+ (E-saturation + onset ramp cut w to ~¼ of s); slope ≈ 0.0008 β per 0.01 s ⇒ the
-    bar is UNREACHABLE on the s dial (s ≈ 4+). ⚠ FLAG CARRIED: rev148 §2 recorded the algebra
+    bar is UNREACHABLE on the s dial (s ≈ 4+). ⟪SUPERSEDED IN PLACE, item 254 (2026-07-16): the
+    ¼-weight attribution was an algebraic back-out using the memo's wrong λ and is MEASURED
+    FALSE — per-player decomposition gives E=0.993, ramp=0.845, w̄≈0.55 at s=0.65; the leak is
+    the effective target elasticity 0.72 vs the memo's 0.92, dominated by the conservation
+    renorm C the memo formula omitted. The HALT itself stands — only the recorded cause moves.⟫ ⚠ FLAG CARRIED: rev148 §2 recorded the algebra
     PREDICTING s=0.65 selects at β_eff≈0.81; MEASURED 0.6747 — a ~0.14 prediction-vs-measurement
     gap in the R104.10 pre-sim lineage, UNRECONCILED. Also noted: n=116, CI width ≈0.30 (the
     s=0.70 CI [0.54,0.84] straddles the bar; the law judges the POINT). **OWNER WORD OPEN
@@ -5444,3 +5448,27 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     CI/sample story. NO seat numbers, NO re-tune, findings only. **Leg C HOLDS** until the
     disposition settles <LEG-B-HEAD>. Seg-5 chat: retired at its sanctioned HALT (return filed,
     item 252). Fires on the owner's paste to a fresh Claude Code chat.
+
+254. **THE GAP DIAGNOSTIC RETURNS — PRESCREEN PASS; THE MECHANISM IS CORRECTED (2026-07-16).**
+    Head `c8bab8d` (branch legb-gap-diagnostic-mrr9rm, cut from `91d08f2` STRICT). Fence VERIFIED
+    read-only: diff = session_2026-07-16/legb_gap_diag/ ONLY; PLAN the first commit; instrument
+    reproduced GRID_FINAL byte-for-number; A/B 8d90c9ac re-proven. Supervisor spot-checked the
+    artifacts: DECOMP.csv = 116×5 rows, means E 0.993 / ramp 0.845 / w-col 0.42 (≡ 0.841·mean-s
+    0.5) — arithmetic self-consistent; bridge reproduces. FINDINGS OF RECORD: (1) rev148's
+    prediction IS faithfully reproducible from memo v1.3's own text (β_eff=(1−w)β_c+wλ_ρ with
+    w=s, β_c .622, λ_ρ .9225 ⇒ 0.816 at s=0.65). (2) The 0.141 gap decomposes: weight −0.031
+    (22%) + effective-λ −0.110 (78%); λ_eff MEASURED 0.719, stable across s. Dominant piece: the
+    per-position CONSERVATION RENORM C ≈ −0.087 — ABSENT from the memo's β_eff formula; plus
+    λ_ρ=0.9225 was borrowed from a different bench (realised 0.72). ⇒ MEMO v1.3 CARRIES TWO
+    MEASURED DEFECTS (the omitted C term; the borrowed λ) — bind on any future memo revision.
+    (3) Item 252's ¼-weight mechanism superseded in place (above). (4) REACH MAP: population
+    ceiling β≈0.87 at w→1 (s=3.0 measured 0.875); the point crosses 0.80 at s≈2.1 but the
+    estimator's precision rail (width ≤0.35) FAILS from s=2.0 and n=116<120 throughout; Δ→0 is
+    forbidden by the smoothness law (replacement cliff); τ is dead (E already 0.99); UNCONSERVING
+    breaks G-COHORT (y5→1.71). At GRID strengths every acceptance rider holds (G-COHORT clears
+    with margin; E/B 1.766→3.078 ≥ 1.75; width 0.30 ≤ 0.35; n<120 the standing sample note).
+    (5) ESTIMATOR: the empty-grid verdict is decisive at the point; the s=0.70 CI [0.54,0.84]
+    straddles the bar; more data tightens the interval, does not move the point — the gap is
+    STRUCTURAL. Time ≈3 h vs 1–2.5 band (1.2× top, declared). No selection proposed, nothing
+    tuned. **OWNER WORD OPEN: the Leg-B disposition** — options in chat, symmetric, grounded in
+    this map. Leg C still HOLDS.
