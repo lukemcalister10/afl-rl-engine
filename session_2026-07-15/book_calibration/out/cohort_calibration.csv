@@ -1,0 +1,55 @@
+axis,cohort,n,mean_priced,mean_realised_out,signed_mispricing_m,m_ci_lo,m_ci_hi,verdict,support
+position x ageband,"('GEN_DEF', '23-26')",12,3465.0,14.3,-0.207,-0.642,0.188,fair/uncertain,indicative
+position x ageband,"('GEN_DEF', '<=22')",1,5385,17.7,1.289,,,fair/uncertain,POOLED/withheld
+position x ageband,"('GEN_DEF', '>=27')",30,843.0,11.76,-0.21,-0.877,0.539,fair/uncertain,firm
+position x ageband,"('GEN_FWD', '23-26')",14,1857.0,10.96,0.568,0.166,1.011,UNDER,indicative
+position x ageband,"('GEN_FWD', '<=22')",5,4079.0,12.7,0.722,-0.187,1.524,fair/uncertain,POOLED/withheld
+position x ageband,"('GEN_FWD', '>=27')",29,875.0,10.84,-0.77,-1.447,-0.118,OVER,indicative
+position x ageband,"('KEY_DEF', '23-26')",6,2379.0,10.51,-0.189,-0.801,0.383,fair/uncertain,POOLED/withheld
+position x ageband,"('KEY_DEF', '<=22')",2,2684.0,3.1,0.226,,,fair/uncertain,POOLED/withheld
+position x ageband,"('KEY_DEF', '>=27')",22,598.0,9.59,0.731,-0.254,1.704,fair/uncertain,indicative
+position x ageband,"('KEY_FWD', '23-26')",8,3348,15.02,-0.281,-0.99,0.234,fair/uncertain,POOLED/withheld
+position x ageband,"('KEY_FWD', '<=22')",2,3488.0,4.7,0.354,,,fair/uncertain,POOLED/withheld
+position x ageband,"('KEY_FWD', '>=27')",31,586.0,8.16,0.23,-0.706,1.143,fair/uncertain,firm
+position x ageband,"('MID', '23-26')",27,3846.0,18.84,-0.102,-0.487,0.178,fair/uncertain,indicative
+position x ageband,"('MID', '<=22')",8,3584.0,4.32,-0.973,-2.229,0.131,fair/uncertain,POOLED/withheld
+position x ageband,"('MID', '>=27')",72,937.0,12.31,0.043,-0.398,0.483,fair/uncertain,firm
+position x ageband,"('RUC', '23-26')",2,5264,24.52,0.336,,,fair/uncertain,POOLED/withheld
+position x ageband,"('RUC', '<=22')",1,1544,7.85,1.725,,,fair/uncertain,POOLED/withheld
+position x ageband,"('RUC', '>=27')",28,1139.0,13.74,0.083,-0.612,0.704,fair/uncertain,indicative
+ageband,23-26,69,3232.0,15.45,-0.0,-0.213,0.203,fair/uncertain,firm
+ageband,<=22,19,3597.0,7.33,0.0,-0.763,0.638,fair/uncertain,indicative
+ageband,>=27,212,855.0,11.33,0.0,-0.293,0.293,fair/uncertain,firm
+"position (all ages, note runway-mixed)",GEN_DEF,43,1680.0,12.61,-0.175,-0.678,0.351,fair/uncertain,firm
+"position (all ages, note runway-mixed)",GEN_FWD,48,1495.0,11.07,-0.224,-0.669,0.299,fair/uncertain,firm
+"position (all ages, note runway-mixed)",KEY_DEF,30,1093.0,9.34,0.513,-0.246,1.257,fair/uncertain,firm
+"position (all ages, note runway-mixed)",KEY_FWD,41,1266.0,9.33,0.136,-0.564,0.833,fair/uncertain,firm
+"position (all ages, note runway-mixed)",MID,107,1869.0,13.36,-0.069,-0.401,0.24,fair/uncertain,firm
+"position (all ages, note runway-mixed)",RUC,31,1418.0,14.25,0.153,-0.559,0.818,fair/uncertain,firm
+ageband x pickband,"('23-26', '01-06')",14,4850.0,24.08,0.192,-0.042,0.402,fair/uncertain,indicative
+ageband x pickband,"('23-26', '07-12')",13,3688.0,20.96,0.313,-0.244,0.849,fair/uncertain,indicative
+ageband x pickband,"('23-26', '13-20')",5,2977.0,13.14,-0.174,-0.847,0.304,fair/uncertain,POOLED/withheld
+ageband x pickband,"('23-26', '21-34')",8,3809.0,17.27,-0.175,-0.854,0.347,fair/uncertain,POOLED/withheld
+ageband x pickband,"('23-26', '35-50')",8,2031.0,6.66,-0.469,-1.186,0.138,fair/uncertain,POOLED/withheld
+ageband x pickband,"('23-26', '51-70')",15,2283.0,9.07,-0.265,-0.781,0.157,fair/uncertain,indicative
+ageband x pickband,"('23-26', 'rookie/pickless')",6,1885.0,10.52,0.541,0.178,0.881,UNDER,POOLED/withheld
+ageband x pickband,"('<=22', '01-06')",9,4502.0,9.62,-0.1,-1.165,0.788,fair/uncertain,POOLED/withheld
+ageband x pickband,"('<=22', '07-12')",2,2684.0,3.1,0.226,,,fair/uncertain,POOLED/withheld
+ageband x pickband,"('<=22', '13-20')",1,4353,9.5,0.879,,,fair/uncertain,POOLED/withheld
+ageband x pickband,"('<=22', '21-34')",1,3443,3.35,0.072,,,fair/uncertain,POOLED/withheld
+ageband x pickband,"('<=22', '35-50')",2,1960.0,0.45,-2.107,,,fair/uncertain,POOLED/withheld
+ageband x pickband,"('<=22', '51-70')",3,3063.0,8.28,0.662,-0.983,1.681,fair/uncertain,POOLED/withheld
+ageband x pickband,"('<=22', 'rookie/pickless')",1,1544,7.85,1.725,,,fair/uncertain,POOLED/withheld
+ageband x pickband,"('>=27', '01-06')",30,1318.0,14.51,-0.764,-1.268,-0.266,OVER,firm
+ageband x pickband,"('>=27', '07-12')",20,590.0,10.03,0.228,-0.512,0.988,fair/uncertain,indicative
+ageband x pickband,"('>=27', '13-20')",22,758,9.68,-0.19,-0.897,0.547,fair/uncertain,indicative
+ageband x pickband,"('>=27', '21-34')",30,1163.0,14.92,-0.329,-0.903,0.338,fair/uncertain,firm
+ageband x pickband,"('>=27', '35-50')",32,616.0,9.98,0.068,-0.627,0.679,fair/uncertain,firm
+ageband x pickband,"('>=27', '51-70')",75,773.0,10.27,0.363,-0.195,0.934,fair/uncertain,firm
+ageband x pickband,"('>=27', 'rookie/pickless')",3,259.0,5.35,0.988,-3.194,3.653,fair/uncertain,POOLED/withheld
+type x ageband,"('drafted', '23-26')",56,3537.0,16.69,-0.071,-0.333,0.17,fair/uncertain,firm
+type x ageband,"('drafted', '<=22')",17,3853.0,7.36,-0.2,-0.904,0.447,fair/uncertain,indicative
+type x ageband,"('drafted', '>=27')",207,859.0,11.33,-0.029,-0.289,0.261,fair/uncertain,firm
+type x ageband,"('rookie', '23-26')",13,1919.0,10.09,0.304,0.032,0.585,UNDER,indicative
+type x ageband,"('rookie', '<=22')",2,1420.0,7.07,1.703,,,fair/uncertain,POOLED/withheld
+type x ageband,"('rookie', '>=27')",5,687,11.25,1.199,-1.44,3.683,fair/uncertain,POOLED/withheld

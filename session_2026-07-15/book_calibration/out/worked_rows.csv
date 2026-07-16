@@ -1,0 +1,9 @@
+kind,who,pos,age,pick,type,realised_o_recent2,realised_o_top3,price_cur,price_peak,anchor,m_in_band,resid_band,axis,n,m,ci,examples
+named,Timothy English,RUC,29.0,19,ND,28.2,39.8,3402,8399,1332,-1.405,1.875,,,,,
+named,Kieren Briggs,RUC,27.0,34,ND,4.9,17.7,2182,4723,869,-2.712,2.627,,,,,
+named,Ryley Sanders,MID,21.0,6,ND,4.1,-2.5,4220,4220,2573,0.07,0.226,,,,,
+named,Marcus Bontempelli,MID,31.0,4,ND,46.8,51.3,3773,7976,4815,-1.003,1.634,,,,,
+named,Jai Newcombe,MID,25.0,90,MSD,21.1,22.2,4193,4860,2025,0.257,0.133,,,,,
+top-under,"('GEN_FWD', '23-26')",,,,,,,,,,,,position x ageband,14,0.568,"[np.float64(0.166), np.float64(1.011)]","[('Tarryn Thomas', 2.95), ('Rhyan Mansell', 1.36), ('Izak Rankine', 0.7), ('Connor Rozee', 0.65)]"
+top-over,"('GEN_FWD', '>=27')",,,,,,,,,,,,position x ageband,29,-0.77,"[np.float64(-1.447), np.float64(-0.118)]","[('Ben McGlynn', 3.44), ('Christopher Mayne', 3.09), ('Robbie Gray', 3.03), ('Christopher Yarran', 1.61)]"
+top-over,"('>=27', '01-06')",,,,,,,,,,,,ageband x pickband,30,-0.764,"[np.float64(-1.268), np.float64(-0.266)]","[('Nicholas Naitanui', 3.42), ('Jarryd Roughead', 2.44), ('Angus Brayshaw', 1.83), ('Christopher Yarran', 1.61)]"

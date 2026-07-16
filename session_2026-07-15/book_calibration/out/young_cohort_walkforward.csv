@@ -1,0 +1,8 @@
+pickband,n,n_star,uncond_median_cur_over_anchor,star_median_peakprice_over_anchor,star_median_realisedfair_over_youngprice,support
+01-06,112,81,0.03,1.93,1.44,firm
+07-12,113,63,0.04,2.42,2.06,firm
+13-20,148,75,0.03,2.76,2.64,firm
+21-34,263,92,0.03,3.84,3.45,firm
+35-50,298,74,0.04,4.26,5.34,firm
+51-70,1059,180,0.06,5.98,7.73,firm
+rookie/pickless,198,15,1.0,6.06,9.74,firm

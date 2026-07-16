@@ -1,0 +1,7 @@
+pos,pick1,trough_min,trough_min_pick,pick34,picks13_33_below_pick34,max_haircut_pct
+RUC,1.069,0.815,32,1.0,15,18.5
+MID,1.0,0.949,28,1.025,19,5.1
+GEN_DEF,1.0,0.913,28,1.024,17,8.7
+GEN_FWD,1.075,0.93,29,1.032,17,7.0
+KEY_DEF,1.0,0.943,32,0.992,8,5.7
+KEY_FWD,1.161,0.968,29,1.0,10,3.2
