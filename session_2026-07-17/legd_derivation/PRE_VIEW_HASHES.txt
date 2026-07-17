@@ -1,0 +1,13 @@
+PRE-VIEW HASHES — recorded BEFORE any candidate curve renders (ACT 2 mutation ⇒ HALT the ladder)
+base: 33c8b52 · store 968de0c7 · captured ACT-1 checkpoint
+================================================================
+abe387d9d2fc54d6d01c2718c3a4d52f  session_2026-07-17/legd_derivation/MEMO_LEGD_construction.md
+04b9350e2998b690b7dbaf5614658f22  session_2026-07-17/legd_derivation/SITE_CENSUS.md
+6b83e3368ecd19843663ffd9b1c41695  docs/acceptance_v1_20.json
+  (acceptance_v1_21.json is a docs-branch successor not on the engine base; docs/ is
+   OUT of the fence. Operative Leg-D entries are present and substance-identical on v1_20.)
+--- supporting evidence artifact hashes (this base) ---
+762a842a94a390592f354950cfaabc91  session_2026-07-17/legd_derivation/out/gy0_residuals.json
+031c14d62f7d45e2e0dfe38cdd6b43f0  session_2026-07-17/legd_derivation/out/reconcile_vs_groundwork.json
+26a034c2c8d451c65840dc50a917e239  engine/rl_after/pvc_curve_L1b.json
+  (pvc_curve_L1b.json = the SHIPPED curve being replaced; recorded for the ACT-2 diff-vs-shipped)
