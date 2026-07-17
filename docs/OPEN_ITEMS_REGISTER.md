@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v309 2026-07-17 · PEN: ITEM 336: audit seed shell filed (GPT-§5 = owner-courier slot; leak-guard mechanical); owner's court EMPTY of mandatory items; bake runbook held until Leg E fires · prior: ITEM 335
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v310 2026-07-17 · PEN: ITEM 337: GPT clean-room §5 list couriered + filed verbatim + wired into audit shard E; maps 1:1 onto construction+riders (corroborates coverage, no new gap) · prior: ITEM 336
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5065,6 +5065,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     list · the sealed-reads scoring step · the viewing · the bake word (RL_PVC2
     manifest/INFRA_ALLOW rides it, RL_FLEX pattern). Both builds in flight; seat idle-ready
     for returns.
+
+337. **THE GPT CLEAN-ROOM §5 LIST — COURIERED BY OWNER, FILED VERBATIM, WIRED INTO THE AUDIT
+    (2026-07-18).** The §5 failure-mode self-critique (lost with seat-12's chat; confirmed
+    not-in-repo turns 8/9) was couriered by Luke and filed verbatim:
+    `docs/inputs/CLEANROOM_GPT_section5_failure_modes_2026-07-18.md` (provenance header; the
+    durable copy now exists). AUDIT_SEED_SHELL SHARD E rewritten: the ⟦courier SLOT⟧ replaced by
+    the filed list, each mode 5.1–5.9 converted to a COMPUTE-AND-REPORT auditor address (never a
+    seeded conclusion; leak-guard still runs at seeding — the list is external neutral language,
+    clean by construction). Filed at main `a5355d9` (docs-only). **CORROBORATION FINDING
+    (report-only, owner viewing):** §5 maps ONE-TO-ONE onto instruments already built/in-flight —
+    5.1 circularity=evidence-weighting/52%-pole cure · 5.2 stock-as-flow=our entry-asset-price
+    target (the item-324 core divergence, our side) · 5.3 censoring=continuous evidence weights,
+    no hard cutoff · 5.4 late-draft=rider(ii) short-era caveat · 5.5 superstar leverage=rider(ii)
+    + non-median kernel (rev159) · 5.6 era/rules=rider(i) held-out calibration gate on recency ·
+    5.7 position composition=R107.3 composed pathway (generic curve marginal, pathways separate) ·
+    5.8 false precision=rider(iii) uncertainty grading past ~p60 · 5.9 data coding=item-324's four
+    catches (re-verified @ 9845180). The external blind-spot list opens NO new gap — it confirms
+    coverage. No owner action; ladder-time seed is now complete-by-default (richer than the
+    fallback).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
