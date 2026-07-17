@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v310 2026-07-17 · PEN: ITEM 337: GPT clean-room §5 list couriered + filed verbatim + wired into audit shard E; maps 1:1 onto construction+riders (corroborates coverage, no new gap) · prior: ITEM 336
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v311 2026-07-17 · PEN: ITEM 338: riders i-iii returned + prescreened GREEN (inputs by stamp, fence held, rule-7 clean, report-only); base-parent precision fix; tail read = gross 5.5x both model&reality, owner's ratio is replacement-adjusted (rider iv pending) · prior: ITEM 337
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5084,6 +5084,37 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     catches (re-verified @ 9845180). The external blind-spot list opens NO new gap — it confirms
     coverage. No owner action; ladder-time seed is now complete-by-default (richer than the
     fallback).
+
+338. **RIDERS (i)–(iii) RETURNED + SUPERVISOR-PRESCREENED (2026-07-18; PR #110, branch
+    `…riders-analysis-3fav5l` head `03cecdec`, REPORT-ONLY / DO-NOT-MERGE).** VERIFIED THIS SEAT
+    (fresh fetch, own sandbox): (a) INPUTS correct — true frozen hashes at `e4177c2` independently
+    recomputed: curve file `56dd7a7b` ✓, store `968de0c7` ✓; the riders asserted these + payload
+    `89c14729` + per_entrant `40d7da7c` at load, HALT-on-mismatch. (b) FENCE HELD — the 5 rider
+    commits (parent `6c6fc6b`) touched ONLY `session_2026-07-18/riders_i_iii/`; zero
+    engine/store/docs. (c) RULE-7 CLEAN — per-exact-pick, adaptive-bandwidth kernel (eff-n≥35), no
+    decile/wide bins (declared + verified). (d) report-only, non-mutating, nothing merged.
+    **PRECISION CORRECTION to the return (re-tagged, not carried):** "base e4177c2 STRICT" is true
+    of the INPUTS (by stamp), NOT the git branch — the branch is parented on MAIN (`6c6fc6b`);
+    `e4177c2` is NOT an ancestor. For a read-only job with verified stamps + DO-NOT-MERGE this is
+    SOUND (provenance-by-stamp), but the phrase is imprecise; the riders directive predated the
+    item-334 GIT ENTRY block. CURE: future read-only directives state "branch parent = main
+    expected; provenance is the three stamps" so "strict base" names one verifiable thing.
+    **FINDINGS (report-only; re-runnable — authoritative independent recompute = the ladder cold
+    audit; the reading is the OWNER's at the ladder, I did not steer):** rider (i) curve-vs-
+    realized(life-path mean(vpath)): UNDER-prices upper-mid (pick20 +20%, pick30 +16%, pick40
+    +11%) · OVER-prices deep tail (pick60 −14% … pick99 −32%). CAVEAT (mine): "realized" =
+    life-path average ⇒ part of the residual is the entry-price-vs-realized-average DEFINITIONAL
+    gap (GPT §5.2), not pure miscalibration. rider (ii) deep tail far shakier (bootstrap rel-SD
+    ≈34% p50–98 vs 17% top; one player swings a deep pick ≈73%). rider (iii) uncertainty grade
+    ≈2.2× top by the deep tail. **BEARING ON THE OWNER TAIL READ (item 325/332), stated
+    neutrally:** off rider (i)'s own numbers — GROSS p1/p60 ≈ 5.5× in BOTH the curve (5.54×) AND
+    realized outcomes (5.48×) — i.e. gross, reality AGREES with the model, the model is not the
+    outlier. The owner's ~7.5–8.6× is the REPLACEMENT-ADJUSTED view: at his R≈220, curve→8.6×,
+    realized→9.5× (realized slightly STRONGER than his read). So his intuition lives in the
+    replacement adjustment — a VIEW (R107.7), consistent with the gross curve staying as built —
+    and is tested directly by RIDER (iv), still QUEUED on the migration's measured-R emit. No
+    curve defect on the gross ratio; no hand-bending implicated. Banks into the ladder viewing
+    pack. No owner action now.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
