@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v247 2026-07-17 · PEN: **ITEM 274: THE CURRENT-SEASON DPP DESIGN WAS NEVER CAPTURED INTO THE SPEC (owner-raised with frustration — justified): the chapter spec carries ZERO current-season DPP language; Leg C built the future blend only. Seat-10 turn-41 R105.1 over-application owned. CURE: law-form to owner for confirm → spec addendum → rides the relay** · prior: v246
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v248 2026-07-17 · PEN: **ITEM 275: owner CONFIRMS the §1b current-season DPP law (+ the K/G collapse note) and corrects Driscoll to 100% MID ("My mistake") — spec → v1.3, register CSV edited by the pen (blend rows 91→90), THE RELAY DIRECTIVE ISSUED. Fires on his paste** · prior: v247
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5893,3 +5893,26 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     component untouched; years-1+ = the future blend law; singles unchanged; examples Sheezel/
     Petracca/Jagga Smith). Self-resolved: Sheezel's future register needs NO alternate (his
     uplift is year-0). Still open to owner: the law confirm · Driscoll 90% · the relay go.
+
+275. **THE §1b LAW IS CONFIRMED + THE DRISCOLL CORRECTION (2026-07-17, owner verbatim: "Yes,
+    however it is worth noting that the authoritative universe spreadsheet has K-DEF and K-FWD
+    players also listed as G-DEF/G-FWD... any dual Key/General player should have the General
+    dropped. As that is not DPP. Can we also amend Driscoll to 100% midfield going forward
+    please. My mistake.").** EXECUTED THIS FILING: (1) **SPEC → v1.3** — §1b THE CURRENT-SEASON
+    DPP LAW added verbatim-substance (year-0 leg only · post-collapse eligibilities, K-X drops
+    every G per R105.1 · remaining-season bar = the more valuable of the dual pair · level path
+    keyed to present_position · banked component untouched · years-1+ = §1 · singles unchanged ·
+    the Sheezel/Petracca/Jagga examples). (2) **THE DRISCOLL REGISTER CORRECTION executed by the
+    pen** (the item-216 precedent for owner-worded input corrections): alternate + percentage
+    blanked → 100% MID; **blend rows measured 91 → NINETY**. (3) **THE RELAY DIRECTIVE ISSUED:
+    docs/DIRECTIVE_LEGC_relay_2026-07-17.md** — one build closing items 270–275: FIRST COMMANDS
+    (ancestry or HALT) · base 273463e STRICT · re-ingest from the corrected register · the §1b
+    year-0 wiring + futblend + RL_FLEX gating BOTH · the guard update (future==present →
+    flex-era invariants, named for the cold audit) · the fut-label fix + per-row assertion ·
+    the item-272 two-row waiver wired scored-never-flagged · the full owner-law battery (band
+    both sides · sincerity ledger · pairs · census) · attribution with the §1b stage and named
+    rows (Petracca/Sheezel/Jagga) · b4c67bb6 non-reproduction EXPECTED (Driscoll + §1b move
+    values) · mini-checkpoint after the wiring commit (owner present; minutes). Fires on his
+    paste. NOTE: after this return, the pre-ladder RE-SEAL carries: L-SINCERE · the two-sided
+    G-COHORT band · pair-2 ±15% · the s=0.10 law · s_dial_selection retirement · §1b acceptance
+    entries · the item-272 waiver rows.
