@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v243 2026-07-17 · PEN: **ITEM 270: LEG-C RETURN — CONTENT SOUND (11+rider+91 verified by stable ID; base files byte-equal) / TOPOLOGY BROKEN AGAIN (cut from main — 2nd in 24 h ⇒ FIRST-COMMANDS standing rule) / EARNED-COMPONENT HALT on Carroll+Emmett (owner adjudication OPEN) / the future==present guard obsolete by owner law. Cure = ONE RELAY BUILD after the word** · prior: v242
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v244 2026-07-17 · PEN: **ITEM 271: the EMMETT DECOMPOSITION of record (bars 78.5 vs 66.8 vs his pn 74.97 — the +138 is ALL the primary write; d_blend=0) + a NEW DEFECT: 8/91 board rows render the alternate stream with the PRIMARY label (values right, provenance wrong) — relay-build fix. Adjudication word still OPEN** · prior: v243
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5816,3 +5816,24 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     audit), and produce the honestly-skipped owner-law deliverables (post-C sincerity ledger ·
     band both sides · pairs · census cells). Nothing merges meanwhile; 2b64630 quarantined as
     the content reference.
+
+271. **THE EMMETT DECOMPOSITION + THE STREAM-LABEL DEFECT (2026-07-17, owner-question-driven).**
+    OWNER ASKED how Emmett GAINS value RUC→KFWD given ruck ceilings. ANSWER OF RECORD (all from
+    committed artifacts): the engine pays SURPLUS ABOVE THE POSITIONAL BAR, not raw scoring —
+    REPL bars: RUC **78.5** (2nd-highest) vs KEY_FWD **66.8** (lowest); Emmett pn **74.97** ⇒
+    below ruck replacement as a RUC (projection ≈ 0) but ~+8/game above the KFWD bar ⇒ the
+    entire **+138 is the PRIMARY write** (attribution.json: d_primary +138 · **d_blend 0** ·
+    d_current 0). His measured legs fall (vM1/vM2 1048→789, the gate's −259) because 5 games at
+    32.8 aged 19 reads ahead-of-schedule on the late RUC curve and ordinary on a KFWD one.
+    **CORRECTION:** the build's return prose ("total only positive via the blend lift") is
+    WRONG against its own artifact — recorded. His 15% RUC alternate adds ZERO under the MAX
+    law (alternate bar HIGHER than primary ⇒ no swap, floored 0) — correct behaviour. **NEW
+    DEFECT (supervisor-found, relay-build scope):** on the **8 of 91** blend rows whose
+    alternate bar exceeds the primary's (Emmett alt-RUC · McCabe/Whitlock/Gallop/Kemp alt-KDEF ·
+    Cleary alt-MID · +2), the board's `fut` array renders BOTH streams with the PRIMARY label —
+    the alternate silently dropped from the RENDERING. Verified: the STORE is register-exact on
+    all 91 (alternate_position + p_dual_stream); the VALUES are right by construction (uplift
+    legitimately 0 on those 8); the board's PROVENANCE is wrong — any lens/UI consumer would
+    deny Emmett's ruck stream exists. RELAY-BUILD ADDITIONS: fix the fut rendering to carry the
+    true alternate label regardless of bar comparison + a per-row assertion (board labels ==
+    store primary/alternate for all 91). Adjudication word (accept/hold/mechanism) still OPEN.
