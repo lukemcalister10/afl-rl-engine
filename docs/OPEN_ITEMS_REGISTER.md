@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v263 2026-07-17 · PEN: **ITEM 290: the DUAL SEAM AUDIT (ChatGPT + incognito Opus) TRIAGED — ~22 confirmed, 3 fixed this commit, the rest routed to NAMED vehicles with complete lists; two NEW halt-grade discoveries (the G-Y0 status contradiction; the stale-active fix_direction). Seat 10 closes on this** · prior: v262
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v264 2026-07-17 · PEN: **ITEM 291: the owner-prompted DOUBLE-CHECK — four audit claims VERIFIED against the repo (one narrowed, one auditor-misquote caught, one confirmed verbatim); the pack fixed to rev153/v120/v4.46. Seat 10 closes** · prior: v263
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6226,3 +6226,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     correctly folded · the four deferred checks intact as ACT 1 · every disclosed acceptance
     contradiction covered by cargo · no undisclosed acceptance/ruling contradiction found.
     Nothing here reopens the relay or PR #104; all cures ride the already-queued vehicles.
+
+291. **THE DOUBLE-CHECK (2026-07-17, owner-prompted): CLAIMS VERIFIED, PACK FIXED.**
+    VERIFICATION AGAINST THE ACTUAL FILES (not the auditors' word): (a) GPT-F11 NARROWED — the
+    CONSTRAINTS operative G-Y0 block reads BINDING (owner-ruled item 184, effective Leg-D);
+    the ADVISORY strings sit in the CHANGELOG narrative; the acceptance-side residue remains
+    for the re-seal to unify — cargo retained, "contradiction" downgraded to "narrative +
+    possible JSON residue". (b) GPT-F12: the CLASS is real (an active machine `fix_direction`
+    exists) but GPT MISQUOTED the field — actual string "raise_year1_aggregate_never_cut_young"
+    vs its invented quote; auditor-reliability datum recorded; cargo line reworded to "verify
+    the active fix_direction's currency; align or null". (c) GPT-F14/Opus-F4 CONFIRMED VERBATIM
+    — `"authority": "docs/CONSTRAINTS_v1_13.md"` live in acceptance v1.20; cargo stands.
+    (d) pair_2 10.0 + live s_dial_selection re-confirmed (disclosed/cargoed). (e) Opus-F5
+    inconclusive from the grep — the verify-before-fold cargo line stands. **PACK FIXED
+    (rev152's audited defects executed, not deferred): HANDOVER → rev153** (§0 §3→§2 · both
+    "better bar" uses qualified LOWER-replacement · the 804-movement-vs-115-failure ledger
+    distinction stated · run_panel tidy on the ladder line) · **DECISIONS → v120** (the FULL
+    item-284 rule incl. same-line-vs-cross-class and present∉pair · the R106.7 preservation
+    clauses · the cap-sole-HALT/floor-reported semantics) · **manifest → v4.46**; superseded
+    versions archived. Seat 10 closes on THIS filing; the PK-sync set is rev153 · v120 · v4.46.
