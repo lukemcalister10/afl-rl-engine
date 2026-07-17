@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v288 2026-07-17 · PEN: ITEM 315: THE LEG-D DIRECTIVE ISSUED at d67940a (memo-first → pushed checkpoint: owner rules construction + G-Y0 tolerance → derive; base 33c8b52 strict · groundwork 9845180 feed · R104.9 hard · RL_PVC2 · store read-only) · owner fires it in a fresh Opus chat · prior: ITEM 314
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v289 2026-07-17 · PEN: ITEM 316: parallel batch at 5eade6d — the ROUND-ENTRY TOOL directive (item-305 law; dry-run only, write path absent, disjoint from Leg D) + the LEG-E construction memo v0.1 DRAFT (finalized post-Leg-D) · the item-315 docs-adjacent premise corrected · prior: ITEM 315
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4539,6 +4539,37 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     assigned as REPORT-ONLY for this pen (inputs/ prose, not the build's to edit). **OWNER DO:**
     paste the directive into a fresh Claude Code chat (Opus) to fire Leg D. NEXT SUPERVISOR
     RUNG: the ACT-1 checkpoint prescreen → courier the construction + tolerance rulings.
+
+316. **PARALLEL BATCH ISSUED WHILE LEG D BUILDS (2026-07-17, owner: "1 and 2 please"). Push
+    `5eade6d` (docs-only, guard-gated pre-commit).** **(1) THE ROUND-ENTRY TOOL DIRECTIVE**
+    (`docs/DIRECTIVE_ROUND_ENTRY_tool_2026-07-17.md`): Opus, Medium, 2–4 h, base = MAIN
+    at-or-after `4848f80` docs-only-diff; parallel-safe BY CONSTRUCTION (fence =
+    engine/rl_after/ingestion/** + tools/round_entry, disjoint from every Leg-D file; store
+    READ-ONLY; the store-WRITE path stays ABSENT — go-live is the separate post-delivery
+    owner-worded job, register v25/GO_LIVE). The item-305 frame carried verbatim as THE LAW:
+    exact-match name→active-stable-ID over the LIVE pool at run time · residue = flagged
+    one-tap confirm, NEVER silent-drop/wrong-row/new-row · the owner's 2-minute paste workflow
+    preserved as the design bar. Deliverables: resolver · entry path (idempotent per round) ·
+    residue confirm loop · SSI-stamped per-round snapshots w/ determinism check · five fixture
+    proofs + NO-WRITE proofs (apply() raises · store md5 unchanged) · PR against main
+    (tools path, owner-mergeable on prescreen like #106/#107). **(2) THE LEG-E CONSTRUCTION
+    MEMO v0.1 DRAFT** (`docs/MEMO_LEGE_projection_construction_DRAFT_2026-07-17.md`;
+    Fable-assigned per SPEC §3; **NOT OPERATIVE — finalized after Leg D lands**): the R103.3
+    projection construction (projected level through the SAME un-compressed map at the projected
+    evidence state; Reid constraint; k=0 reproduces balanced byte-exact; L-SMOOTH/L-SYMMETRY/
+    weight-don't-gate bind inside the lens) · postures = named vectors over the existing D5 dial
+    family (semantics pinned FROM CODE at issue; `:397` on the groundwork base, the register's
+    `:317` stale) · the composition law (R104.5 10/15/5 applied ONCE, final step; unit-testable)
+    · injury×posture default = free graded amplification via B2/RL_AVAIL × now-weight, the
+    categorical read a MAGNITUDE ruling at the movers report with Rozee the mandatory named row
+    · the seal-first ratification workflow (audit #31/#33). Owner parameters marked [OWNER]
+    throughout; item 307/308 explicitly out of scope. **CORRECTION OWNED (from item 315's
+    turn):** the Leg-D directive called `national_draft_last_pick.json` "docs-adjacent" — wrong
+    premise; the file lives at `engine/rl_after/` (verified). The instruction (build reports,
+    never edits) STANDS for the right reason — an authored input outside the Leg-D fence; the
+    one-line 2019 annotation fix rides a later tiny named engine change. **OWNER DO:** paste the
+    round-entry directive into a SECOND fresh Claude Code chat (Opus) — it runs alongside Leg D.
+    The Leg-E memo needs nothing from him now.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
