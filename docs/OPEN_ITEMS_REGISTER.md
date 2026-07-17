@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v248 2026-07-17 · PEN: **ITEM 275: owner CONFIRMS the §1b current-season DPP law (+ the K/G collapse note) and corrects Driscoll to 100% MID ("My mistake") — spec → v1.3, register CSV edited by the pen (blend rows 91→90), THE RELAY DIRECTIVE ISSUED. Fires on his paste** · prior: v247
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v249 2026-07-17 · PEN: **ITEM 276: THE ROTATION-PREP FILING — HANDOVER → rev149 · DECISIONS → v116 (R106.1–.6) · manifest → v4.42; superseded versions archived; cascade verified as a unit. The relay is FIRED (owner). Seat 10 closes at the relay-return seam** · prior: v248
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5916,3 +5916,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     paste. NOTE: after this return, the pre-ladder RE-SEAL carries: L-SINCERE · the two-sided
     G-COHORT band · pair-2 ±15% · the s=0.10 law · s_dial_selection retirement · §1b acceptance
     entries · the item-272 waiver rows.
+
+276. **THE ROTATION-PREP FILING (2026-07-17, owner-worded "Please update the handover docs";
+    the relay FIRED by the owner this turn).** HANDOVER → **rev149** (pins · the seat-10 story
+    items 250–275 · the relay in flight + its mini-checkpoint as the next supervisor act · the
+    queue incl. THE PRE-LADDER RE-SEAL cargo · standing conduct: FIRST COMMANDS, stable-ID-only,
+    band-both-sides, rank ledgers, capture-to-spec, audit-the-auditor · the seat-10 correction
+    ledger ×3, owned). DECISIONS → **v116** (R106.1 conservation+sincerity · R106.2 the health
+    band · R106.3 s=0.10 owner-set/bar-grid retired · R106.4 pair-2 ±15% · R106.5 the two-row
+    Accept waiver · R106.6 §1b the current-season DPP law + the Driscoll correction; open words
+    NONE until the relay returns). Manifest → **v4.42** (table rows: SPEC v1.3 added; acceptance
+    v1.20 flagged ⚠ s_dial_selection stale, RE-SEAL QUEUED). Superseded rev148/v115/v4.41
+    ARCHIVED. CASCADE VERIFIED AS A UNIT (item 242 discipline): handover↔decisions↔manifest
+    rows agree; acceptance row carries the queued re-seal honestly. Owner to-dos in v116 §3:
+    PK sync at the rotation seam · revoke the seat-10 token at the rotation.
