@@ -1,0 +1,22 @@
+RIDERS (i)-(iii) — ENTRY ASSERTION PROOF
+job: seat-13 ladder-viewing riders (i)-(iii); R107.6 / item 325 Adopt; REPORT-ONLY, read-only
+captured: 2026-07-18 (session date 2026-07-17 boot)
+branch (designated dev): claude/legd-ladder-riders-analysis-3fav5l
+
+== BASE PIN (STRICT; HALT on mismatch) ==
+$ git ls-remote https://github.com/lukemcalister10/afl-rl-engine.git claude/legd-pvc-rederivation-act2-l2hqpl
+e4177c21934148c19d9cec3c015fee5d28480102	refs/heads/claude/legd-pvc-rederivation-act2-l2hqpl
+EXPECT e4177c21934148c19d9cec3c015fee5d28480102 -> PASS
+
+== THREE STAMPS on the frozen candidate (read via git object @ e4177c2; source of truth) ==
+code SHA (engine-content base) : e4177c21934148c19d9cec3c015fee5d28480102
+pvc_curve_v2.json file md5     : 56dd7a7b   (expect 56dd7a7b) -> PASS
+pvc curve payload md5          : 89c14729   (expect 89c14729) -> PASS
+per_entrant.json md5           : 40d7da7c   (expect 40d7da7c) -> PASS
+boot-store base stamp          : 968de0c7  (per_entrant/curve derived_from base; = curve.stamp.store_md5)
+
+NOTE on branch base: the designated dev branch carries seat-13 governance commits that exist
+ONLY on this branch (not on main); re-parenting onto e4177c2 would destroy them. Provenance to
+the frozen candidate is therefore carried MECHANICALLY by the three stamps above (asserted at
+load in scripts/common.py, HALT on mismatch), not by git parentage — per the directive's own
+stamp guarantee. Frozen inputs are READ from the e4177c2 git object, never written into tree.
