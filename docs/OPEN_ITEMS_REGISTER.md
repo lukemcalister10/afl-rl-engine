@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v255 2026-07-17 · PEN: **ITEM 282: the relay checkpoint — first HELD (branch not pushed; a diff you cannot fetch is a report, not a fact), then pushed and PRESCREENED PASS at 7a78366 (branch claude/legc-relay-dpp-law-10c4z7). PROCEED issued** · prior: v254
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v256 2026-07-17 · PEN: **ITEM 283: the ChatGPT adversarial audit TRIAGED — ~24/30 findings CONFIRMED; 3 load-bearing (F13 the ladder-halting β gate · F8 the spec name-join · F18 the cross-line collapse ambiguity, checked at the relay return). SPEC → v1.4 surgery is the NEXT pen job; the re-seal cargo GROWS. No mid-flight build change** · prior: v255
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6029,3 +6029,44 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ✓ · the fut-label fix splits TRUE labels (futstreams) from the value blend (futblend) with
     a per-row RL_FLEX-gated assertion ✓. **VERDICT: PASS — PROCEED issued** for the unattended
     pipeline (store writes → derived → re-pin → the full battery → PR → RETURN).
+
+283. **THE ADVERSARIAL AUDIT — TRIAGE OF RECORD (2026-07-17; every finding verified against the
+    record, none accepted on its face).** CONFIRMED LOAD-BEARING: **F13** — SPEC §5 still binds
+    the RETIRED β≥0.85/CI compression gate; the owner-selected candidate (β 0.6299, R106.3)
+    CANNOT pass it ⇒ certain ladder halt unless formally dispositioned — CURE: spec v1.4 retires
+    the β/CI gate for v2.11 (E/B 1.75 SURVIVES, R104.3), compression reopens per item 262's
+    mapped chapter; the re-seal cargo carries the same disposition (F28). **F8** — SPEC §3 still
+    instructs the locations NAME-JOIN that produced the Butler/Lynch phantoms ⇒ v1.4 mandates
+    stable-ID joins for EVERY input. **F18** — the collapse rule reads two ways cross-line ⇒
+    v1.4 adopts the owner-verbatim-consistent sentence: "If ANY K eligibility exists, remove
+    EVERY G eligibility regardless of line; K-DEF+G-FWD collapses to K-DEF, not a DPP" — AND
+    the relay-return prescreen VERIFIES which the build implemented (the one finding that could
+    touch the running build; no interruption — return-verifiable). CONFIRMED FOR SPEC v1.4
+    (one batch): F5 (91→90, item-275 supersession) · F9 (conservation → diagnostics per R106.1)
+    · F10 (memo v1.3 + surviving clauses) · F11 (CONSTRAINTS v1.18 / acceptance v1.20 refs) ·
+    F12 (two-sided band, endpoints stated) · F15 (the two named waiver rows) · F16 (pair-2
+    ±15%) · F17 (attribution convention = the relay's staging, DECLARED) · F19 (post-collapse
+    cardinality 1–2 else HALT) · F20 (present_position ∈ the collapsed pair, else mismatch
+    report; policy = owner) · F21 (the exact formula: remaining = clamp(1−SEASON_PROG,0,1),
+    endpoints asserted). CONFIRMED FOR THE RE-SEAL CARGO (grows): F26 (CONSTRAINTS **and**
+    acceptance, both versioned) · F27 (R106.1 conservation retirement) · F28 (every compression
+    field dispositioned) · F29 (§1b entries ENUMERATED: all-G collapse · cardinality ·
+    SEASON_PROG formula+endpoints · present-mismatch · banked identity · singles · years-1+
+    isolation) · F14 (R104.3 subclause survival stated). CONFIRMED HYGIENE (archive-time /
+    next-bump): F1 (already cured in-flight, item 281 + the standing site-from-code rule) ·
+    F3/F4/F7 (directive pin/feed hygiene — the build already executed correctly) · F23 ("more
+    valuable" → "(the lower replacement bar)" at the next DECISIONS bump) · F25 (PR doctrine
+    stated: STACKED PR on the true line; #103 remains; both merge in order at chapter end) ·
+    F30 (the correction ledger honestly recounted: FIVE classes — the 13-count · R105.1 ·
+    the ledger mislabel · the header-lookalike/§1b-placement · the fence-siting). REFUTED /
+    NARROWED: **F2** — the candidate-branch expected_boot re-pin is the seat-9-designed CORRECT
+    mechanism (guard 5's store half must re-pin to run at all post-store-write); the SHIPPED
+    pin on main is untouched; item 267's "re-pin at bake" refers to the shipped line — one
+    reconciling sentence lands in spec v1.4, no build change. **F6** — answered from the
+    item-271 measurement: the stale claim is **8/90**, and Driscoll was NOT among the eight
+    (his alternate bar was LOWER — the uplift class, not the collapse class). **RETURN-
+    PRESCREEN ADDITIONS (F18 · F20 · F21 · F24):** verify the collapse implementation is
+    all-G-drop · the present∈pair mismatch count · SEASON_PROG semantics (elapsed-share;
+    §1b magnitude hand-checked for one named player) · every deliverable asserted from
+    COMMITTED ARTIFACTS regardless of the ≤30-line prose. NO RELAY INTERRUPTION. NEXT PEN JOB:
+    SPEC → v1.4 (the batch above).
