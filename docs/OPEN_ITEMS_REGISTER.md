@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v250 2026-07-17 · PEN: **ITEM 277: the OWNER-PROMPTED SELF-AUDIT of the rotation cascade — FOUR defects found and fixed (the SPEC v1.2-header LOOKALIKE + §1b at the tail · stale register refs across all three docs · the missing checkpoint-paste note). HANDOVER → rev150 · DECISIONS → v117 · manifest → v4.43 · SPEC header → v1.3** · prior: v249
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v251 2026-07-17 · PEN: **ITEM 278: owner calls a CROSS-MODEL ADVERSARIAL AUDIT of the rotation pack + §1b + the relay directive — the prompt is authored and filed; findings return as hypotheses for supervisor verification** · prior: v250
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5948,3 +5948,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     every owner-prompted cascade audit has found defects (4+6+5, and now 4); the standing rule
     stands — verify the cascade AS A UNIT, and verify the VERIFIER: a fix asserted into
     existence ("'§1b' in t") is not a fix confirmed in place.
+
+278. **THE ADVERSARIAL AUDIT IS CALLED (2026-07-17, owner: "Sounds like another adversarial
+    audit is needed then" — after the item-277 self-audit found four defects in the
+    supervisor's own cascade).** PROMPT AUTHORED AND FILED:
+    docs/ADVERSARIAL_REVIEW_rotation_prompt_2026-07-17.md (the GPT cross-review precedent).
+    SCOPE: the rotation pack (manifest v4.43 · rev150 · v117 · register items 250–277) ·
+    SPEC v1.3 §1/§1b law coherence (incl. the cross-line dual question K-DEF+G-FWD and
+    SEASON_PROG edges) · the in-flight relay directive (false-halt hunting — findings inform
+    the return prescreen even mid-flight) · the re-seal cargo completeness. FORMAT: numbered
+    findings with quotes/locations/severity; false positives acceptable, missed defects not.
+    MECHANICS: the owner pastes the prompt + the six documents to the independent model and
+    couriers the findings back; EVERY finding is a HYPOTHESIS the supervisor verifies against
+    the record before any correction (the GPT-audit precedent: real findings and noise both
+    arrive). Read-only, parallel-safe with the in-flight relay. The audit score to beat:
+    4+6+5+4 across four human-prompted cascade audits.
