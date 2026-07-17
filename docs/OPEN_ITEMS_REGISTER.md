@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v302 2026-07-17 · PEN: ITEM 329: THE SEAT-12 ROTATION FILING — rev159 · v123 · v4.52 (Leg D complete+audited; queue: five-migration → Leg E → ladder → v2.11; the open tail read carried; pick-equivalent answer + the curve/mover viewing couriered) · SEAT 12 CLOSES; seat-13 prompt couriered; owner: PK sync · fresh token · revoke · prior: ITEM 328
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v303 2026-07-17 · PEN: ITEM 330: the handover recheck — verified end-to-end; two cures (census MAP-OF-RECORD pointer in rev159+prompt; unfired 319 pack archived); prior-seat root directives = standing practice, noted; five-migration authorship = SEAT 13 (late-context law honestly applied) · SEAT 12 CLOSES · prior: ITEM 329
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4937,6 +4937,33 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     builds → the clean-room competition → three owner design directions) delivered. The seat-13
     opening prompt is couriered with this filing; the owner syncs PK, issues the fresh token,
     revokes seat-12's.
+
+330. **THE OWNER-REQUESTED HANDOVER RECHECK — VERIFIED, ONE AMENDMENT FILED (2026-07-17; push
+    `be14f16b`).** FULL PASS over rev159 · v123 · v4.52 · the seat-13 prompt against the live
+    tree: pins verified (main/register/candidate SHAs; the prompt's at-or-after form absorbs
+    this amendment by design) · the three self-references green · no superseded doc referenced
+    as live · every in-chat resolution traced to a register item (the PVC-stays-gross
+    clarification 328 · riders 325 · the migration sequencing carried in the owner-FIRED ACT-2
+    directive = his paste, his word · the tail read v123 §1 · the 326/327 design directions) ·
+    the curve/mover figures in rev159 re-checked against the committed ledger (incl. "no fall
+    exceeds 1 SCAR" — two −1 rows) · the PK-sync list correct (three changed docs; CORE/SSI
+    untouched). **DEFECTS FOUND AND CURED: (1)** rev159's five-consumer list was MY PARAPHRASE
+    of the committed census (a mislabelled-grouping risk) — replaced with **THE MAP-OF-RECORD
+    POINTER: `session_2026-07-17/legd_derivation/SITE_CENSUS.md` @ `e4177c2`; prose lists
+    deprecated**; the seat-13 prompt re-cut with the same pointer (re-couriered). **(2)** the
+    UNFIRED item-319-superseded review pack still sat in docs/ root as an apparent live
+    instrument — ARCHIVED (the 319 supersession enacted). **NOTED, not cured (a judgment left
+    explicit, not a trap):** docs/ root carries completed PRIOR-seat directives (LEGB/LEGC era)
+    per standing practice; an archive sweep is optional hygiene for a future seam — nothing in
+    them outranks the manifest. **THE FIVE-MIGRATION AUTHORSHIP QUESTION (owner-asked, answered
+    honestly): SEAT 13 AUTHORS IT.** The pull of "I hold the context" is exactly the
+    late-context trap: the seat-11 law (PRECISION DECAYS LATE-CONTEXT — rotate at the seam
+    rather than push through) exists because deep seats author defective precision work — THIS
+    seat's fence defect (322) was authored far shallower than here, and its mechanical slips
+    (321 stale-fetch · the heredoc · the sed-regex this very turn) all cluster late. Everything
+    the directive needs is COMMITTED (the census · the audited base `e4177c2` · the
+    measured-first ruling · the R rider · the derived-fence law): a fresh seat with those
+    inputs beats a spent seat with memories. SEAT 12 CLOSES.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
