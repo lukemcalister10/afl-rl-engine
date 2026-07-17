@@ -1,0 +1,43 @@
+====================================================================
+THE FIVE-MIGRATION (Leg D consumers) — EXECUTE-FIRST / ENTRY PROOF
+captured 2026-07-18 · writer branch: claude/five-migration-pvc-consumers-kxykfd
+====================================================================
+Every line below was produced by a command run in THIS session (no prose
+restatement stands in for a fetch). SILENCE IS A RED — each check prints its
+verdict.
+
+--- BASE PIN (STRICT equality; HALT on mismatch) ---
+$ git ls-remote https://github.com/lukemcalister10/afl-rl-engine.git \
+      claude/legd-pvc-rederivation-act2-l2hqpl
+e4177c21934148c19d9cec3c015fee5d28480102  refs/heads/claude/legd-pvc-rederivation-act2-l2hqpl
+  EXPECT e4177c21934148c19d9cec3c015fee5d28480102 -> MATCH [PASS]
+  branched from that head; auto-created (main-based) branch discarded, nothing pushed from it.
+
+--- TOPOLOGY (the designed shape, verified by fetch — not asserted) ---
+  governance docs live on MAIN (fetched): docs/DECISIONS_v123_2026-07-17.md present;
+    R107.5 (fence + the five) present and AUTHORIZES this build:
+    "Leg D = ev-channel only; the five MA.PVC consumers migrate in a SEPARATE
+     pre-ladder build, per-consumer proofs, pvc_snapshot measured-first w/ post-bake fallback."
+    directive DIRECTIVE_FIVE_MIGRATION_2026-07-18.md present on main (matches the issued job).
+  engine candidate lives on the pinned branch (stacked PR #105 -> #109) at e4177c2.
+  Both true at once = the designed topology. No merge/rebase across lineages performed.
+
+--- ENTRY ASSERTIONS (before any edit) ---
+$ md5sum engine/rl_after/rl_model_data.json
+968de0c7a0183ca3914165536f39607a  -> begins 968de0c7  [PASS]  (boot-store guard, Guard 5 PASS in bootstrap)
+$ md5sum engine/rl_after/pvc_curve_v2.json
+56dd7a7bca4306d9224aec0ef52efa32  -> begins 56dd7a7b  [PASS]  (curve artifact file md5)
+  payload curve_md5 stamp = 89c14729  [PASS]  (a KAT names WHAT it hashes: 56dd7a7b=file, 89c14729=curve payload)
+  curve stamp store_md5 = 968de0c7 (derived_from base) [PASS]
+
+--- BOARD REPRODUCES BYTE-EXACT ON THIS CONTAINER (py3.12.3/np2.4.4/scipy1.17.1/sklearn1.8.0) ---
+  panel: PASS 10/10 (run_panel.sh, gate mode)
+  board build recipe: dev-shell (RL_PVC2 is a DECLARED kill-switch, not a manifest dial — gate mode
+    rejects it; it "rides the bake" per DECISIONS v123 §2). RL_REPO set so owner_overrides.py finds
+    data/owner_overrides.json (the Brodie ov injection).
+$ RL_PVC2=0  ->  board md5 9829d01a   [PASS]  (kill-switch / byte-hold baseline == pinned)
+$ RL_PVC2=1  ->  board md5 270a2c5f   [PASS]  (ACT-2 ev-channel board == committed data/rl_build/rl_app_data.json)
+
+ALL ENTRY VERDICTS: PASS. No HALT condition. Base + ruling + topology + reproducibility all proven.
+Proceeding to the PLAN (first committed artifact) then per-consumer execution.
+====================================================================
