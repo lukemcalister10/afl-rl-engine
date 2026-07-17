@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v276 2026-07-17 · PEN: ITEM 303: three parallel directives filed (eba96f3 — Leg-D/E groundwork · base guard · viewing pack) + the round-entry workflow ruling (name-based raw list, active-804 resolve, halt-and-ask, per-round snapshots, week-to-week UI log) — job-4 directive next · prior: ITEM 302
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v277 2026-07-17 · PEN: ITEM 304: pre-fire audit of the 3 directives — groundwork+base-guard clean; viewing-pack had a blocker (known-answer cited the wrong base board f2f077b2 vs the committed 8d90c9ac, cross-schema) — fixed to a supervisor-verified 119/393/+15533 pair + schema pin + merge-order note (4382baa) · prior: ITEM 303
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4239,6 +4239,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     derived snapshots (SSI-conformant: derived, read-only, source-stamped), the UI reads the
     series. The build tool may be BUILT now (disjoint files, dry-run read-only) but NEVER writes
     the store until post-delivery. Its directive: seat 11's next authored item.
+
+304. **PRE-FIRE AUDIT OF THE THREE PARALLEL DIRECTIVES (2026-07-17, owner-requested — the same
+    audit discipline that caught the Leg-C hazards).** GROUNDWORK + BASE-GUARD: CLEAN — every
+    referenced file verified present on its cited base (NOTE_seat8/AUDIT_gpt/store on 6306378;
+    national_draft_last_pick.json at engine/rl_after/; prescreen.sh + board_diff.py on main;
+    first_commands.sh correctly ABSENT — the base-guard job creates it). VIEWING-PACK: THREE fixes
+    (`4382baa`, docs-only): (1) BLOCKER — the known-answer test cited `273463e:...rl_app_data.json`
+    as the f2f077b2 base for the item-295 115. WRONG: 273463e's committed board is `8d90c9ac`
+    (uncompress-OFF), NOT f2f077b2 (no rl_app_data board for f2f077b2 is committed — it lived only
+    in led_default, a DIFFERENT schema). As written the tool would fail its own correct build
+    chasing a 115 it cannot reproduce, OR be told to consume two schemas. FIX: supervisor computed
+    the TRUE known-answer in the schema the tool actually uses — 8d90c9ac→ee70335a = **119**
+    value-up-rank-down · 393 movers · +15533 net ΣΔ (804 common), stated in the directive as the
+    build's known-answer. (2) SCHEMA pinned explicitly to rl_app_data active[]{v}; led_default
+    named as NOT an input. (3) MERGE-ORDER note: viewing-pack edits no existing file, base-guard
+    edits prescreen.sh — disjoint, either order, no downstream conflict. board_diff.py confirmed to
+    read the same schema (reuse advice sound). LESSON BANKED: a "known-answer test" is only
+    known-answer if its inputs are the exact committed artifacts in the exact schema — a verified
+    NUMBER (the 115) is base-specific and does not transfer to a different base board.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
