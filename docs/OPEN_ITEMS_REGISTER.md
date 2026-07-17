@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v296 2026-07-17 · PEN: ITEM 323: the ACT-2 audit shard FIRED on the owner's word — prompt filed (addresses+checks only; build numbers grep-excluded from seeding; auditor computes everything itself); five-migration WAITS; owner pastes into a fresh out-of-Project chat · prior: ITEM 322
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v297 2026-07-17 · PEN: ITEM 324: GPT clean-room proposal assessed — independent rediscovery of circularity/monotonicity/owner-discount/marginal-pathways CORROBORATES the build; core tail divergence = target definition (career-average vs asset price), not adopted; ONE new insight proposed as report-only ladder riders (external realized-outcome calibration + cohort bootstrap + tail uncertainty grading, owner's word); its three data catches VERIFIED incl. my CSV dictionary error (games cumulative), owned · prior: ITEM 323
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4771,6 +4771,38 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     a loud syntax failure, no partial state); re-run correctly ordered. OWNER DO: paste the
     shard prompt into a FRESH chat with repo access, OUTSIDE this Project (no memory, no
     project knowledge); courier its ≤25-line return here. THEN the GPT clean-room proposal.
+
+324. **THE CLEAN-ROOM COMPETITOR PROPOSAL — SUPERVISOR ASSESSMENT (2026-07-17; the owner's frame:
+    interesting, not ground truth; verified per the hypothesis discipline).** THE HEADLINE: the
+    experiment WORKED — seeded with data+goal only, GPT independently REDISCOVERED (a) the
+    circularity ("if the valuation system uses draft pick as an input, early-career value_asof
+    may mechanically reproduce draft order... weight later seasons") = our measured 52%-pole
+    finding AND our evidence-weighting cure; (b) monotonicity from choice-set dominance = R104.9's
+    rationale; (c) owner-set future-pick discounting (unidentifiable from data) = the R104.5
+    treatment; (d) marginal-curve-preserving position pathways = the law-of-total-expectation
+    form we built. Independent convergence on four pillars = real corroboration. **THE CORE
+    DIVERGENCE (target definition, not error):** GPT prices A_i = a 10-yr discounted AVERAGE of
+    value_asof (career-holding value); OUR engine's value_asof is ALREADY an expected-future-
+    value ASSET PRICE — averaging future stock prices of a self-discounting asset double-counts
+    expectations, so the coherent pick price IN THIS SYSTEM is the entry asset price (what Leg D
+    built). GPT flagged its own dependency (§6.1 asks for the engine spec). Its tail (~247 @ p80,
+    CI 202–352) vs ours (494) is mostly THIS definitional gap + its mature-cohort-only hard
+    threshold (2004–2016 — a gate our law forbids; censoring is instead handled by our continuous
+    evidence weights). NOT ADOPTED: the career-average target · the cohort cutoff · plateau
+    permissiveness (strict descent is owner law; the −1 step is an ordering tiebreak below data
+    resolution, conceded as such, not measured precision). **THE ONE GENUINELY NEW INSIGHT
+    (candidate for adoption):** our pooled 2% gate verifies INTERNAL consistency (curve ↔ the
+    engine's own day-after V0) — it cannot detect the ENGINE's entry pricing being externally
+    miscalibrated; GPT's leave-one-cohort-out calibration against REALIZED career outcomes is
+    the missing EXTERNAL check. PROPOSED (owner's word): three REPORT-ONLY ladder-viewing riders,
+    no construction change — (i) realized-outcome cohort-holdout calibration vs the new curve ·
+    (ii) cohort-bootstrap tail influence (extends multi-start) · (iii) uncertainty grading past
+    ~pick 50 in the viewing pack. **DATA CATCHES — ALL THREE VERIFIED against per_entrant @
+    9845180 this turn:** games_by is CUMULATIVE (2,649/2,649 non-decreasing — MY clean-room
+    data dictionary said "games that season": WRONG, owned; the engine derivation is unaffected,
+    it never read my CSV) · entry years span 2003–2026 (brief said 2004–2025) · MSD pick = 90
+    placeholder. Banked for any future data hand-off. GPT's §5 failure-mode list is high-quality
+    checklist material for the ladder audit seeding (addresses only, as ever).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
