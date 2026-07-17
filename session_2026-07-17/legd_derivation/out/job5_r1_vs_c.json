@@ -1,0 +1,162 @@
+{
+ "_doc": "R1 (COMPOSED PATHWAY, ruled) vs C (two-ends blend, named fallback) + the planned tests. R1 is the owner-ruled construction; C rules ONLY if R1 cannot satisfy the constraints. The FALLBACK TRIGGER names which constraint failed and by how much (null => R1 stands).",
+ "R1": {
+  "construction": "composed_pathway_year0",
+  "tau": 0.12,
+  "nmin": 35,
+  "gy0_pooled_abs_pct": 0.257,
+  "gy0_mean_rel_pct": 0.11,
+  "strict_descent": true,
+  "pin1_3000": true,
+  "sample": {
+   "1": 3000,
+   "3": 2675,
+   "10": 1604,
+   "50": 589,
+   "80": 494,
+   "99": 463
+  }
+ },
+ "C": {
+  "construction": "two_ends_continuous_blend",
+  "gy0_pooled_abs_pct": 9.486,
+  "gy0_mean_rel_pct": 19.318,
+  "sample": {
+   "1": 3000,
+   "3": 2819,
+   "10": 1636,
+   "50": 497,
+   "80": 355,
+   "99": 327
+  }
+ },
+ "R1_vs_C_divergence": {
+  "max_abs": 220,
+  "mean_abs": 84.8,
+  "max_rel_pct": 41.59,
+  "mean_rel_pct": 19.65
+ },
+ "fallback_trigger": null,
+ "ruled": "R1 (composed pathway) \u2014 satisfies pooled 2%% HARD, strict descent, pin. C held as the committed fallback.",
+ "multistart_audit_34_35": {
+  "nmin=25": {
+   "divergence_vs_shipped": {
+    "max_abs": 44,
+    "mean_abs": 1.5,
+    "max_rel_pct": 1.65,
+    "mean_rel_pct": 0.06
+   },
+   "gy0_pooled_abs_pct": 0.107,
+   "gy0_mean_rel_pct": 0.062,
+   "sample": {
+    "1": 3000,
+    "3": 2719,
+    "10": 1604,
+    "50": 589,
+    "80": 494,
+    "99": 463
+   }
+  },
+  "nmin=35": {
+   "divergence_vs_shipped": {
+    "max_abs": 0,
+    "mean_abs": 0.0,
+    "max_rel_pct": 0.0,
+    "mean_rel_pct": 0.0
+   },
+   "gy0_pooled_abs_pct": 0.257,
+   "gy0_mean_rel_pct": 0.11,
+   "sample": {
+    "1": 3000,
+    "3": 2675,
+    "10": 1604,
+    "50": 589,
+    "80": 494,
+    "99": 463
+   }
+  },
+  "nmin=50": {
+   "divergence_vs_shipped": {
+    "max_abs": 60,
+    "mean_abs": 2.3,
+    "max_rel_pct": 2.24,
+    "mean_rel_pct": 0.09
+   },
+   "gy0_pooled_abs_pct": 0.495,
+   "gy0_mean_rel_pct": 0.188,
+   "sample": {
+    "1": 3000,
+    "3": 2615,
+    "10": 1604,
+    "50": 589,
+    "80": 494,
+    "99": 463
+   }
+  },
+  "tau=0.08": {
+   "divergence_vs_shipped": {
+    "max_abs": 1,
+    "mean_abs": 0.0,
+    "max_rel_pct": 0.21,
+    "mean_rel_pct": 0.01
+   },
+   "gy0_pooled_abs_pct": 0.254,
+   "gy0_mean_rel_pct": 0.104,
+   "sample": {
+    "1": 3000,
+    "3": 2675,
+    "10": 1604,
+    "50": 589,
+    "80": 494,
+    "99": 463
+   }
+  },
+  "tau=0.12": {
+   "divergence_vs_shipped": {
+    "max_abs": 0,
+    "mean_abs": 0.0,
+    "max_rel_pct": 0.0,
+    "mean_rel_pct": 0.0
+   },
+   "gy0_pooled_abs_pct": 0.257,
+   "gy0_mean_rel_pct": 0.11,
+   "sample": {
+    "1": 3000,
+    "3": 2675,
+    "10": 1604,
+    "50": 589,
+    "80": 494,
+    "99": 463
+   }
+  },
+  "tau=0.25": {
+   "divergence_vs_shipped": {
+    "max_abs": 5,
+    "mean_abs": 3.0,
+    "max_rel_pct": 1.08,
+    "mean_rel_pct": 0.54
+   },
+   "gy0_pooled_abs_pct": 0.633,
+   "gy0_mean_rel_pct": 0.672,
+   "sample": {
+    "1": 3000,
+    "3": 2674,
+    "10": 1603,
+    "50": 586,
+    "80": 490,
+    "99": 458
+   }
+  }
+ },
+ "prior_removed_audit_44": {
+  "divergence_vs_shipped": {
+   "max_abs": 83,
+   "mean_abs": 35.4,
+   "max_rel_pct": 17.93,
+   "mean_rel_pct": 6.22
+  },
+  "gy0_pooled_abs_pct": 3.979,
+  "gy0_mean_rel_pct": 7.257,
+  "finding": "Zeroing the 1093 zero-evidence poles on the EVIDENCE end leaves the shape ~unchanged (the poles already carry ~0 evidence weight); the entry end still uses their day-after V0 for the floor BY DESIGN, not circularity. Divergence is a reported number, not a silent pick."
+ }
+}

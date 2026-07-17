@@ -56,13 +56,16 @@ PVC=g['PVC']; SCALE=g['SCALE']; debut=g['debut']; data=g['data']; BANDS=g['BANDS
 #       ONE currency off ONE curve. F = the certified 1.0524 (pick_redenomination.json), retained here ONLY as
 #       the numéraire divisor; the old frozen-v3.4 × F redenomination is RETIRED (no legacy path remains).
 _NUM=json.load(open('pick_redenomination.json')); _F=_NUM['factor']
-_adopted_doc=json.load(open('pvc_curve_L1b.json'))
+# LEG D ACT-2 (RL_PVC2, job 8): the HELD-PICK LADDER currency reads the LIVE re-derived curve (the ev-channel
+# basis _PVC0 == pvc_curve_v2.json). RL_PVC2=0 => stays the L1b adopted artifact => board 9829d01a byte-exact.
+_pvc_art='pvc_curve_v2.json' if os.environ.get('RL_PVC2','1')!='0' else 'pvc_curve_L1b.json'
+_adopted_doc=json.load(open(_pvc_art))
 _ADOPTED={int(k):int(v) for k,v in _adopted_doc['curve'].items()}
-assert _ADOPTED.get(1)==3000, 'L7 HALT: adopted_curve[1] != 3000 (pvc_curve_L1b.json)'
+assert _ADOPTED.get(1)==3000, 'L7 HALT: adopted_curve[1] != 3000 (%s)'%_pvc_art
 _akeys=sorted(_ADOPTED)
 assert all(_ADOPTED[_akeys[i]]>=_ADOPTED[_akeys[i+1]] for i in range(len(_akeys)-1)), 'L7 HALT: adopted curve not monotone non-increasing'
 PVC={k:_ADOPTED[k] for k in PVC if k in _ADOPTED}                 # shipped PVC IS the adopted curve (the stamped pvc_curve artifact)
-print('L7 ADOPTED-CURVE REPOINT: shipped PVC = adopted pvc_curve_L1b.json (pick1=%d, %d picks, monotone, ÷F=%.4f on players)'%(PVC[1],len(PVC),_F))
+print('L7 ADOPTED-CURVE REPOINT: shipped PVC = %s (pick1=%d, %d picks, monotone, ÷F=%.4f on players)'%(_pvc_art,PVC[1],len(PVC),_F))
 # ==== (g) NUMÉRAIRE ASSERT — UNCONDITIONAL STANDING LAW (register v30 item 17; L7 baked 2026-07-13) =======
 # "PICK 1 = 3000 IS THE NUMÉRAIRE." The dormant legacy (×1.0524, factor≠1.0) branch is RETIRED at the bake:
 # no pre-L7 path remains, so the assert is UNCONDITIONAL — a shipped board with pick-1 ≠ 3000 HALTS, always.
@@ -454,6 +457,17 @@ out={'active':active,'back':back,'cohort':coh,
      'intakePickSum':round(sum((PVC[k] if k in PVC else PVC[max(PVC)]) for k in range(1,61)) + 6*PVC.get(80,PVC[max(PVC)]) + 13*PVC.get(90,PVC[max(PVC)]) + 9*PVC.get(84,PVC[max(PVC)])),   # durable per-season pick-equiv replenishment (60 ND +6 RD +13 post-draft +9 SSP), ex-transient MSD — reference only
      'intakeFull':round(sum((PVC[k] if k in PVC else PVC[max(PVC)]) for k in range(1,61)) + 6*PVC.get(80,PVC[max(PVC)]) + 13*PVC.get(90,PVC[max(PVC)]) + 27*PVC.get(84,PVC[max(PVC)])),  # + transient MSD (9 SSP+18 MSD = 27 at pick-84 equiv)
      'picks':[{'n':n,'v':PVC[n]} for n in range(1,31)]}                 # Option-A replenishment: future-draft picks as board assets (value=PVC, label year rolls with the view)
+# ==== LEG D ACT-2 (job 8): PICK-BAND WIRING on the LIVE re-derived curve (PVC == the ev-channel basis _PVC0).
+# GATED on RL_PVC2 so RL_PVC2=0 stays board 9829d01a byte-exact. posture 2027 discounts are R104.5/§6.3 BINDING
+# (acceptance leg_d_placeholders.posture_2027_discounts) — EXACTLY these three values. 2027 (+1 lens) held picks
+# x (1 - discount), ONE application (no double-count: the +1 lensPicks carry FACE value; this is the posture view).
+if os.environ.get('RL_PVC2','1')!='0':
+    out['posture_2027_discounts']={'balanced':0.10,'contender':0.15,'rebuilder':0.05}
+    out['picks_2027']={_post:[{'n':n,'v':int(round(PVC[n]*(1-_d)))} for n in range(1,31)]
+                       for _post,_d in (('balanced',0.10),('contender',0.15),('rebuilder',0.05))}
+    # held pick = the LIVE curve over its ladder band [low,high], taken as the equal-weight MEAN (memo §5)
+    out['pick_band_mean']={'%d-%d'%(lo,hi):int(round(sum(PVC[min(k,max(PVC))] for k in range(lo,hi+1))/(hi-lo+1)))
+                           for lo,hi in ((1,3),(4,7),(8,12),(13,20),(21,27),(28,35),(36,48),(49,99))}
 # ==== PERMANENT EXPORT<->ENGINE VALUE-PARITY GATE (F1 regression tripwire, 2026-07-05) ==================
 # Every board value MUST equal the engine's gated ev() for that player, recomputed INDEPENDENTLY here and
 # matched by STABLE KEY. This is exactly the check the shipped board silently failed (2nd rl_model instance

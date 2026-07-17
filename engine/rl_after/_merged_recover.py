@@ -1340,6 +1340,26 @@ if os.environ.get('RL_PVCADOPT','1')!='0':
     _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
     _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
     MA._pe_clear()
+# ===== LEG D ACT-2 (RL_PVC2): swap the ev-channel basis _PVC0 to the RE-DERIVED COMPOSED-PATHWAY curve
+#       pvc_curve_v2.json (owner ruling R1: PVC(p) = the YEAR-0 point of the fitted 2-D pick x career-year
+#       evidence-weighted NON-median trajectory surface; busts at REAL outcomes FULL WEIGHT, no survivor pool,
+#       no games floor, no threshold — L-SMOOTH / weight-don't-gate) + rebuild the V0 guard / V0 curve / RUC
+#       ceiling — an EXACT parallel of the RL_PVCADOPT recipe above, STACKED after it. Gate RL_PVC2 (default
+#       ON; a DECLARED kill-switch, NOT a manifest dial — config_sha256 UNMOVED, exactly as RL_EVW/RL_ISOFADE/
+#       RL_FLEX). RL_PVC2=0 => this block is SKIPPED => _PVC0 stays the L1b curve => board 9829d01a byte-exact
+#       (the kill-switch proof). The offline-derived, stamped artifact is LOADED here, never refit; the
+#       _iso_dec/_fit_pick_curve import-time chain is untouched (it is re-run by _build_v0_curve because a new
+#       _PVC0 moves its inputs — the same behaviour RL_PVCADOPT already carries, not a new import-time fit).
+if os.environ.get('RL_PVC2','1')!='0':
+    import json as _p2j
+    _V2J=_p2j.load(open('pvc_curve_v2.json'))
+    _V2CURVE={int(_k):int(_v) for _k,_v in _V2J['curve'].items()}
+    assert _V2CURVE[1]==3000, "RL_PVC2 numeraire: curve(1)=%r != 3000"%_V2CURVE[1]
+    assert all(_V2CURVE[_k]>_V2CURVE[_k+1] for _k in range(1,max(_V2CURVE))), "RL_PVC2 R104.9: strict descent violated"
+    _PVC0.clear(); _PVC0.update(_V2CURVE)
+    _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
+    _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
+    MA._pe_clear()
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
