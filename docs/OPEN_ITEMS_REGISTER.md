@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v285 2026-07-17 · PEN: ITEM 312: THE SEAT-11 ROTATION FILING at e47ad9a — rev157 · v122 · v4.50 (Leg C content-complete; seat-12 queue: v1.4 review → re-seal → Leg D → E → ladder; SPEC v1.4 pending review, v1.3 governs). SEAT 11 CLOSES · prior: ITEM 311
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v286 2026-07-17 · PEN: ITEM 313: SEAT 12 OPENS — freshness GREEN · pack equal (no-op filing) · SPEC v1.4 REVIEWED: APPROVED/OPERATIVE (all 8 folds verified; one minor line-51 survivor recorded) · next = the re-seal · prior: ITEM 312
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4434,6 +4434,33 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     v4.50** (SPEC v1.4 PENDING SEAT-12 REVIEW, v1.3 governs · the re-seal = seat 12's first pen
     job · tools on main). Superseded rev156/v121/v4.49 archived. The seat-12 OPENING PROMPT
     couriered to the owner with this filing. SEAT 11 CLOSES at the next register push's head.
+
+313. **SEAT 12 OPENS — FRESHNESS GREEN · THE PACK FILED-BY-EQUALITY · SPEC v1.4 REVIEWED:
+    APPROVED, OPERATIVE (2026-07-17).** ACTS 1+2 (R100.10): full-URL ls-remote — main =
+    `ca59bce` (== the handed pin, zero diff; docs-only trivially) · tag v2.10 `d14efae` ·
+    legd-groundwork `9845180`; orient.sh `== orient OK ==`; PK vs repo DOC BY DOC: all five
+    Tier-0 docs BYTE-IDENTICAL (v4.50 · v2.8 · rev157 · v122 · SSI v1.3) — pack EQUAL ⇒ the
+    filing is a VERIFIED NO-OP (directional guard satisfied at equal; nothing pushed). Register
+    head read v285/item 312. **THE v1.4 REVIEW (HANDOVER §2 ACT 1, owner-set gate):** main's
+    spec byte-equal to the `c0d4003` issue; the FULL v1.3→v1.4 diff read at `c0d4003^..c0d4003`
+    (one file, 69+/16−). ALL EIGHT item-310 folds VERIFIED IN THE DIFF: (1) §5+§6.1 β/CI
+    RETIRED, E/B ≥ 1.75 HARD survives; (2) §1b R106.7 + preservation clauses +
+    blend-outside-the-nonlinearity + F21 with endpoints + the item-284 law (four cross-class
+    fixtures · report-by-NAME · single-position · continue) + 1.30-sole-halt/sub-1.08-reported +
+    F17; (3) 91→NINETY (Driscoll cite in body); (4) THE LOWER-BAR LAW rename; (5) the stale
+    G-Y0 sentence DELETED, the R104.7 BINDING statement in; (6) value-flow re-stated
+    R106.1/R106.2 + pair-2 ±15% + pair-3 0–10% watch rows; (7) §4 F2 sentence; (8) the
+    acceptance pointer de-versioned. The line-19 survivor CONFIRMED benign ('acceptance v1.17'
+    inside the v1.2 historical changelog). **INDEPENDENT-SWEEP FINDING (minor, NON-BLOCKING):
+    line 51 'L-AXIS (CONSTRAINTS v1.17, BINDING)'** — a SECOND versioned survivor the item-310
+    assertion pattern (acceptance-shaped) missed; body text, provenance-only (the law itself is
+    carried in CONSTRAINTS v1.18 unchanged), but it goes staler at every re-seal — the item-294
+    self-reference class. DISPOSITION: no spec edit now (one provenance word does not buy a
+    header bump); the de-version RIDES THE NEXT SPEC VERSION; recorded here so no later sweep
+    re-finds it as news. Consistency asserted: spec §5/§6.1 == DECISIONS v122 §0 (R104.3 = E/B
+    1.75 ONLY). **VERDICT: APPROVED — SPEC v1.4 IS OPERATIVE FROM THIS ITEM; v1.3 STANDS
+    DOWN.** NEXT: ACT 2 — the RE-SEAL (cargo = item 290 grown by 295/300/306/310, + the
+    item-301 reconciliation table).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
