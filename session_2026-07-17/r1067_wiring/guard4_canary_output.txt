@@ -5,3 +5,5 @@
   PASS edit SURVIVES to the BOARD: josh-ward v 5973 -> 11213 (must rise)
   PASS edit SURVIVES to the BOOK: josh-ward cur 2108 -> 11801 (must rise)
   PASS edited sentinel board == round(book/1.0524) — numéraire (11213 vs round(11801/1.0524)=11213)
+
+GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
