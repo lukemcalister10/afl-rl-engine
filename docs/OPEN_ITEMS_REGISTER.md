@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v275 2026-07-17 · PEN: ITEM 302: conditional-audit triggers for the R106.7 return adopted (auditor-proposed, refined: unadjudicated fence expansion · binding-gate red/verdict-missing · out-of-expectation movement · new interpretation · unprovable chain) — checked at prescreen end; owner fires · prior: ITEM 301
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v276 2026-07-17 · PEN: ITEM 303: three parallel directives filed (eba96f3 — Leg-D/E groundwork · base guard · viewing pack) + the round-entry workflow ruling (name-based raw list, active-804 resolve, halt-and-ask, per-round snapshots, week-to-week UI log) — job-4 directive next · prior: ITEM 302
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4218,6 +4218,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     A tripped trigger ⇒ the prescreen's decision-required line RECOMMENDS the bounded shard; the
     OWNER's word fires it (audits remain owner-launched, seeded per doctrine). Nothing fires
     automatically.
+
+303. **THREE PARALLEL DIRECTIVES FIRED-READY + THE ROUND-ENTRY WORKFLOW RULING (2026-07-17,
+    owner: "Yes to the first 3").** Directives filed at `eba96f3` (docs-only): LEGD_groundwork
+    (read-only from the relay pin — derivation window from code · circularity quantified with cut
+    OPTIONS · survivorship map · input verification incl. the last-pick table and _eff · draft
+    acceptance harness R104.9/G-Y0/R104.5 · the LEG-E rider inventory) · TOOLS_base_guard
+    (first_commands.sh + prescreen hook + red-path proofs; hygiene iv/v delivered) ·
+    TOOLS_viewing_pack (one owner-readable HTML per candidate: headline+attribution · named rows ·
+    both item-256 ledgers, positional ranks per item 295; known-answer test = the verified 115).
+    All three parallel-safe (read-only / tools-disjoint from the wiring fence); each carries the
+    execute-first base block. **JOB 4 — OWNER-WORDED WORKFLOW (the design ruling of record):** he
+    will enter scores ONE ROUND AT A TIME as a RAW LIST — "Round number, player name, player
+    score" — names only, NO stable IDs ("that's too much work for me. Just their name, which
+    matches our database"); the UI must LOG WEEK-TO-WEEK VALUE CHANGE per player from his first
+    entry to END OF YEAR. IDENTITY-LAW RECONCILIATION (item 269 preserved): the ingestion tool
+    resolves name→stable-ID over the ACTIVE-804 SCOPE ONLY, HALT-AND-ASK on any ambiguous
+    (active-namesake — the Max King pair) or unrecognised name — the owner answers with a club,
+    once; NEVER a silent guess, never full-store name-matching. Week-to-week = stamped per-round
+    derived snapshots (SSI-conformant: derived, read-only, source-stamped), the UI reads the
+    series. The build tool may be BUILT now (disjoint files, dry-run read-only) but NEVER writes
+    the store until post-delivery. Its directive: seat 11's next authored item.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
