@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v254 2026-07-17 · PEN: **ITEM 281: the relay HALTed on the §1b siting (the year-0 site lives in forward_valuation/distribution_pricing.py, OUTSIDE the directive fence — supervisor fence-mapping error); owner authorizes OPTION 1 (narrow fence amendment: v_at_peak SEASON_PROG blend only) + the spec-header erratum sent in the same paste** · prior: v253
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v255 2026-07-17 · PEN: **ITEM 282: the relay checkpoint — first HELD (branch not pushed; a diff you cannot fetch is a report, not a fact), then pushed and PRESCREENED PASS at 7a78366 (branch claude/legc-relay-dpp-law-10c4z7). PROCEED issued** · prior: v254
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6012,3 +6012,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     fence waiver) and 3/4 (defer §1b — a full extra cycle for a fence-mapping error) declined
     with reasons in chat. Build conduct: exemplary — located the true site, refused both the
     wrong room and the locked room, asked.
+
+282. **THE RELAY CHECKPOINT — HELD, PUSHED, PRESCREENED PASS (2026-07-17).** The checkpoint
+    first cited commits that existed ONLY in the build's local workspace — NO branch on origin
+    carried them (full ls-remote enumerated). HOLD issued: "the prescreen runs against the
+    remote, never a description." STANDING NOTE: every checkpoint HALT must arrive PUSHED.
+    Build pushed claude/legc-relay-dpp-law-10c4z7 (head 5164a61 ⊇ PLAN 6be9fc6 · wiring
+    7a78366). PRESCREEN (own fetch): ancestry from 273463e ✓ · 4 engine files +108/−8 + session
+    artifacts ✓ · **the §1b site verified in the diff**: v_at_peak blends BEFORE the nonlinear
+    val() via the exact identity sp·proj(g0=present)+(1−sp)·proj(g0=low), low = y0dpp_bar (the
+    R105.1-collapsed min-REPL helper, RL_FLEX-gated: None ⇒ single call ⇒ byte-exact),
+    now-board-only, the demonstrated prod_floor still applies after (⇒ the flagged Petracca
+    masking is the law's faithful "banked untouched" consequence — surfaced at viewing; any
+    floor-re-bar amendment is the OWNER'S §1b question post-attribution) · Leg-B constants
+    UNTOUCHED ✓ · the obsolete future==present guard replaced with the item-271 flex invariants
+    ✓ · the fut-label fix splits TRUE labels (futstreams) from the value blend (futblend) with
+    a per-row RL_FLEX-gated assertion ✓. **VERDICT: PASS — PROCEED issued** for the unattended
+    pipeline (store writes → derived → re-pin → the full battery → PR → RETURN).
