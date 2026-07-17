@@ -1,4 +1,16 @@
-# THE PVC + FLEX CHAPTER — SPEC v1.3 · 2026-07-17 · seat-10 pen (v1.2 authored by the seat-9 pen)
+# THE PVC + FLEX CHAPTER — SPEC v1.4 · 2026-07-17 · seat-11 pen (v1.3 seat-10 · v1.2 seat-9)
+### v1.4 (2026-07-17, seat 11; PENDING SEAT-12 REVIEW before treated operative — owner-set gate):
+### the item-283 batch + the chapter rulings folded. (1) §5/§6.1: the R104.3 β/CI compression
+### clauses are RETIRED (R106.3 — s=0.10 OWNER-SET, machine-selection retired; compression defers
+### to its mapped chapter); **English/Briggs ≥ 1.75 HARD SURVIVES** — F13's certain-ladder-halt
+### killed. (2) §1b gains R106.7 (THE LEG-BLIND BAR), the item-284 DPP data-error law, the F21
+### exact formula, and the reconciled halt semantics. (3) §3 Leg C: 91 → NINETY blend rows
+### (Driscoll 100% MID — F8/Opus-F7). (4) §1: the 'MAX law' tag renamed THE LOWER-BAR LAW
+### (Opus-F9). (5) §3 Leg D: the stale G-Y0 'ADVISORY→ratified at this ladder' sentence DELETED
+### (G-Y0 is BINDING by R104.7 — rev155's named deletion). (6) §5: value-flow re-stated per
+### R106.1/R106.2 (conservation NOT law; the two-sided cohort band); pair-2 band ±15% (R106.4);
+### the acceptance pointer de-versioned (the item-294 self-reference class). (7) §4: the F2
+### reconciling sentence (expected_boot candidate-line re-pin = designed behaviour).
 ### v1.3 (2026-07-17, seat 10): §1b THE CURRENT-SEASON DPP LAW added — OWNER-CONFIRMED. [SAME-DAY HEADER CORRECTION, item 277: the first v1.3 filing left the HEADER at v1.2 — the SSI lookalike sin — and appended §1b at the file TAIL; both corrected: header = v1.3, §1b relocated beside §1.]
 ### (item 275 verbatim; the design was discussed across seats and never captured — item 274).
 ### v1.2 (audit cluster (i) fold — the TEXT now matches the RULED state; item 199/203): §6's five open
@@ -50,7 +62,9 @@ rebuilds the lens projection — including the NEW owner-raised posture lenses.
   probability blend of STREAMS summing to 100 — a pure stream + AT MOST ONE dual primary/alternate
   stream. The dual stream NEVER revalues the player "as" the alternate: peak/curve/runway/key-premium
   stay keyed to the PRIMARY; the dual stream only swaps the FUTURE REPLACEMENT BAR for the LOWER of
-  the pair (the MAX law), p_dual% × the capitalised value of netting against the lower bar, floored ≥0.
+  the pair (**THE LOWER-BAR LAW** — take the LOWER replacement bar, value-maximising; renamed from
+  the misleading 'MAX law' tag, Opus-F9), p_dual% × the capitalised value of netting against the
+  lower bar, floored ≥0.
 - **Standing law untouched:** the position taxonomy (three single-valued columns; `drafted_position`
   drives cohort curves) · numéraire pick 1 = 3000 permanent · L-CAPTAIN operative · L-SMOOTH /
   L-SYMMETRY / L-SAGE-FADE · cm_400 FROZEN (R103.7) · NO age lever (R103.4) · SSI + the five guards.
@@ -68,6 +82,27 @@ remains after collapse is his position set, at most two) apply to the YEAR-0 LEG
 - Examples (owner's own): Sheezel & Petracca (G-FWD/MID) — remaining season nets vs GEN_FWD
   70.9 not MID 80.1. Jagga Smith — MID by draft/development, forward-barred for the rest of
   this season, MID in future. A K-DEF also listed G-DEF is NOT a DPP — the G drops.
+- **R106.7 — THE LEG-BLIND BAR (owner-ruled, register item 286; WIRED, both halves, PR #104+#105):**
+  §1b applies to WHICHEVER leg produces the year-0 number — the projection AND the demonstrated
+  floor. PRESERVATION CLAUSES (BINDING): the bar-swap applies ONLY to each winning leg's
+  REMAINING-SEASON component; the banked/played component is untouched; years-1+ remain governed
+  solely by §1. The blend is done OUTSIDE the nonlinearity — two evaluations,
+  SEASON_PROG·f(bar=present) + (1−SEASON_PROG)·f(bar=low), never a blended bar inside one call.
+- **THE EXACT FORMULA (F21):** remaining = clamp(1−SEASON_PROG, 0, 1); SEASON_PROG = elapsed share
+  of the season; endpoints asserted (SEASON_PROG=0 ⇒ the whole year-0 nets vs the low bar; =1 ⇒
+  §1b is a no-op).
+- **THE DPP DATA-ERROR LAW (item 284, owner verbatim; F19/F20):** the post-collapse set has
+  cardinality 1–2. Same-line K/G = the silent listing-artifact collapse (no flag). The four
+  CROSS-CLASS fixtures (K-DEF+G-FWD · K-FWD+G-DEF · RUC+G-FWD · RUC+G-DEF) and
+  present_position ∉ the collapsed set are DATA ERRORS — the row is REPORTED BY NAME, treated
+  SINGLE-POSITION for §1b (no dual bar), and the build CONTINUES; never a halt; the owner's read
+  fixes the data.
+- **HALT SEMANTICS (items 258/259 reconciled at R106.7):** the G-COHORT 1.30 cap is the SOLE hard
+  HALT; a sub-1.08 floor reading is a REPORTED failure for the owner's benefit/tradeoff
+  conversation — never a self-halt.
+- **ATTRIBUTION CONVENTION (F17, owner: "Build order fine"):** staged writes → blend → §1b is the
+  convention of record; final values are order-independent, stage credit is not — declared, not
+  re-litigated.
 
 ## §2 — THE MEASURED BASELINE (item 170 = the scoring floor; item 165 = the scoring tool)
 Compression β 0.364 peak / 0.683 proven-27+ · English/Briggs 5.77× → 1.56× · RUC iso trough intact
@@ -101,7 +136,7 @@ exports per-player-year w + the earned/prior decomposition (Leg D's honest-calib
 **LEG C — FLEX POSITIONAL MACHINERY (consumes docs/inputs/AFFL_Future_Positioning.csv, filed d4e9642).**
 EFFORT **High** · semantics fully RULED (item 20b / flex spec §1.2.3) · build **Opus via Claude Code**.
 (1) The ELEVEN primary-future changes → `future_position` store writes (validated item 180; the one
-store writer). (2) The NINETY-ONE blend rows → the §1 ruled stream semantics on the years-1+ leg.
+store writer). (2) The **NINETY** blend rows (91→90: Driscoll ruled 100% MID — item 270/R106.6; F8/Opus-F7) → the §1 ruled stream semantics on the years-1+ leg.
 (3) **THE ATTRIBUTION DELIVERABLE (item 181, owner-worded):** a decomposition artifact — baseline →
 +current positional layer → +primary-future changes → +future blend — per-player deltas and totals,
 owner-viewed on the ladder. Kill-switch `RL_FLEX`. Ingest is VALIDATE-OR-HALT (804 IDs · vocab · one
@@ -118,7 +153,9 @@ totals from data and read what the current derivation DOES before designing. Mul
 prior-removed derivations ride as planned tests (audit #34/#35/#44).
 The pick value curve re-derives from the cured, flexed value distribution; L7 re-base pins pick 1 =
 3000. G-Y0's identity (V0 = value the day after the draft) is asserted as the curve's year-0
-continuity check — its ADVISORY→ratified status is an owner ruling AT THIS LADDER. **Pick bands wire
+continuity check — **G-Y0 is BINDING, population-level (R104.7, owner-ruled item 184), effective at
+the Leg-D re-derivation (§6.4)**; the stale 'ADVISORY→ratified at this ladder' sentence is DELETED
+(rev155's named deletion — the registry unification rides the re-seal). **Pick bands wire
 here:** a held pick's value = the LIVE curve evaluated over its ladder band [low, high] (mean; owner
 weights later if supplied), 2027 picks × (1 − PICK_FUTURE_DISCOUNT), the discount a NAMED OWNER
 PARAMETER (0.10, his sheet) pending §6.3. Deliverables: the new curve · diff vs the SHIPPED curve
@@ -143,22 +180,34 @@ a priori. Picks price through the active lens (a rebuilder naturally values futu
 A → B → C → D → E, one writer in flight, strict-SHA bases between writers (store/engine bases are
 strict; only docs pins are at-or-after). Read-only measurement jobs run parallel (S3). Every directive
 carries EFFORT/MODE/TIME/FEED/FENCE + the full-URL base pin + S1–S6. Snapshots read by ENGINE HASH.
-The SGC_REPORT_DIR auto-write fix (rev143 hygiene) rides Leg A's fence as a one-shot. The dead
+The SGC_REPORT_DIR auto-write fix (rev143 hygiene) rides Leg A's fence as a one-shot. **The
+candidate-line `expected_boot` re-pin is DESIGNED BEHAVIOUR (item 283 F2, narrowed):** each
+store/engine writer re-pins expected_boot to its own candidate state in the same commit — a Guard-5
+base-RED on an intermediate candidate that deferred its re-pin is the known, benign form of this,
+closed by the next writer's re-pin; it is not drift. The dead
 `if not _EVW:` branch (_merged_recover.py:358–372) is DELETED with an obituary in the first leg that
 touches the file (delete-don't-disable).
 
 ## §5 — ACCEPTANCE + THE LADDER (Tier 1, FULL; one bake → tag v2.11 → promote)
-Machine-readable at **acceptance v1.17** (filed with the Leg-B directive; prescreen asserts JSON,
+Machine-readable at **the CURRENT sealed acceptance JSON per the manifest** (a version named here
+goes stale on every re-seal — the item-294 self-reference class; prescreen asserts the JSON,
 reports the three NARROWEST margins):
 - **G-COHORT: y4 AND y5 AND y6 EACH < 1.30 HARD** (captain lift included; no waiver assumed; committed
   row-level fixture — audit #17). Item-203 finding: y4 = 1.3017 is ALSO over at the Leg-A head; R104.10
   posture = proceed-eyes-open on the candidate line, the gate BINDS AT THE LADDER.
-- **Value-flow:** ΣΔ conservation within a stated tolerance · young cohorts (≤22, 23–26) net Δ ≥ 0 ·
-  ZERO above-projection young players cut (the item-130 scan).
-- **Compression (RULED — R104.3):** proven-27+ β point ≥ 0.85 · CI ∋ 1.0 · FROZEN estimator with max
-  CI width / min effective n (audit #13) · ≤22 slope ≥ 0.15 with CI clear of 0.111 (audit #12;
-  owner-tunable at the directive) · **English/Briggs ≥ 1.75 HARD** (owner flexibility AT THE VIEWING
-  RUNG only), measured with the captain lift IN.
+- **Value-flow — RE-RULED (R106.1/R106.2):** per-position conservation is NOT law; UNFUNDED value is
+  permitted; the guards are **G-COHORT (the TWO-SIDED band: floor 1.08 · hard cap 1.30 · ideal
+  1.15–1.25, judged both sides — the 1.30 cap the SOLE hard halt, a sub-1.08 reading REPORTED)** +
+  **THE SINCERITY LAW** (ledgers carry RANKS; nominal-up-rank-down rows are reported failures for
+  the owner's eyes; the all-active MOVEMENT ledger and its FAILURE subset are two artifacts,
+  item-256 schema). Young cohorts (≤22, 23–26) net Δ ≥ 0 · ZERO above-projection young players cut
+  (the item-130 scan) — unchanged.
+- **Compression — RE-RULED (R106.3 supersedes R104.3's β/CI clauses):** the β-point and CI gates are
+  **RETIRED** (Leg-B strength s = 0.10 is OWNER-SET; bar/grid machine-selection retired; compression
+  defers to its mapped chapter) — the s=0.10 candidate measures β = 0.6235 and a live β ≥ 0.85 gate
+  would be a CERTAIN false ladder halt (item 283 F13, killed here). **SURVIVES UNCHANGED:
+  English/Briggs ≥ 1.75 HARD** (owner flexibility AT THE VIEWING RUNG only), measured with the
+  captain lift IN. The registry/JSON disposition rides the re-seal.
 - **Census-v2 unearned gauge ≤ baseline** (+15,612 does not grow) **+ predeclared CELL-LEVEL gates**
   (age × evidence × position × draft-band — audit #15).
 - **Per-young-player EARNED-COMPONENT gate at FINAL SCAR** (no negative delta on any row — R104.8
@@ -167,16 +216,20 @@ reports the three NARROWEST margins):
   **pre-view hashes** on the memo + acceptance JSON, recorded in the build's PLAN commit; later
   mutation HALTS the ladder (audit #16/#22/#45) · **Leg-C re-measure** of every Leg-B statistic on the
   candidate line (audit #20).
-- **Watch rows:** Gawn ↑ and Bontempelli ↑ vs board 790136a3 · Reid inside his relative band.
+- **Watch rows:** Gawn ↑ and Bontempelli ↑ vs board 790136a3 · Reid inside his relative band —
+  **pair 2 (Reid/Bontempelli) parity band ±15% (R106.4)** · pair 3 (Sanders/Bontempelli) Bont ahead
+  0–10%.
 - **A-PAIRS scored · standing fails carried per acceptance · L-SMOOTH census on the new map.**
 Ladder: supervisor prescreen → incognito cold audit (S6-sharded; integrity manifest = addresses never
 results) → **owner's SEALED READS (OQ-D: 10–15, direction + band, written BEFORE viewing)** → owner
 views board + book → his written word → bake → tag → clean promote. UI v1.2 and ingestion never bake.
 
 ## §6 — THE §6 RULINGS — ALL RULED (v1.2 fold; register items 183/197/199; DECISIONS v106-v110)
-1. **Compression band — RULED (R104.3):** β ≥ 0.85 / CI ∋ 1.0 / **English/Briggs HARD FLOOR 1.75**
-   (owner flexibility AT THE VIEWING RUNG only). The post-view band-setting option is DELETED
-   (audit #16/#22): every numeric gate is PRE-VIEW HASHED; nothing is ruled after seeing a candidate.
+1. **Compression band — RE-RULED (R106.3; supersedes R104.3's β/CI clauses — see §5):** β/CI gates
+   RETIRED (s = 0.10 OWNER-SET; machine-selection retired); **English/Briggs HARD FLOOR 1.75
+   SURVIVES** (owner flexibility AT THE VIEWING RUNG only). The post-view band-setting option stays
+   DELETED (audit #16/#22): every numeric gate is PRE-VIEW HASHED; nothing is ruled after seeing a
+   candidate.
 2. **Posture presets — RULED (R104.4):** the owner sketch ADOPTED; **BALANCED is CANONICAL** — the
    only board that gates, bakes, or seals; contender/rebuilder preset numbers ratified at the movers
    report, SEALED before any non-balanced report is viewed (audit #31).
