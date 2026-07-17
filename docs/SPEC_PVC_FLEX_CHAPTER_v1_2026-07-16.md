@@ -1,5 +1,5 @@
-# THE PVC + FLEX CHAPTER — SPEC v1.2 · 2026-07-16 · authored by the seat-9 (Fable) pen
-### v1.3 (2026-07-17, seat 10): §1b THE CURRENT-SEASON DPP LAW added — OWNER-CONFIRMED
+# THE PVC + FLEX CHAPTER — SPEC v1.3 · 2026-07-17 · seat-10 pen (v1.2 authored by the seat-9 pen)
+### v1.3 (2026-07-17, seat 10): §1b THE CURRENT-SEASON DPP LAW added — OWNER-CONFIRMED. [SAME-DAY HEADER CORRECTION, item 277: the first v1.3 filing left the HEADER at v1.2 — the SSI lookalike sin — and appended §1b at the file TAIL; both corrected: header = v1.3, §1b relocated beside §1.]
 ### (item 275 verbatim; the design was discussed across seats and never captured — item 274).
 ### v1.2 (audit cluster (i) fold — the TEXT now matches the RULED state; item 199/203): §6's five open
 ### rulings are ALL RULED and folded in place (R104.3-.7); the post-view band-setting option is DELETED
@@ -54,6 +54,20 @@ rebuilds the lens projection — including the NEW owner-raised posture lenses.
 - **Standing law untouched:** the position taxonomy (three single-valued columns; `drafted_position`
   drives cohort curves) · numéraire pick 1 = 3000 permanent · L-CAPTAIN operative · L-SMOOTH /
   L-SYMMETRY / L-SAGE-FADE · cm_400 FROZEN (R103.7) · NO age lever (R103.4) · SSI + the five guards.
+
+## §1b — THE CURRENT-SEASON DPP LAW (owner-confirmed 2026-07-17, item 275 — BINDING)
+A player's OFFICIAL current-season dual positions (the authoritative universe ELIGIBILITIES,
+collapsed first per R105.1: a K-listed player DROPS every G listing — K-X absorbs G-X; what
+remains after collapse is his position set, at most two) apply to the YEAR-0 LEG ONLY:
+- His scoring/level path stays keyed to the role he is actually playing (present_position) —
+  "he's still playing as a mid."
+- The REPLACEMENT BAR for the REMAINING-SEASON forward-looking component (the SEASON_PROG
+  remainder, ~10 of 24 at issue) is WHICHEVER of his post-collapse dual positions' bars is MORE
+  VALUABLE for him (the lower bar). The banked, already-played component is untouched.
+- Years-1+ stay governed by §1 (the future blend law). Single-position players unchanged.
+- Examples (owner's own): Sheezel & Petracca (G-FWD/MID) — remaining season nets vs GEN_FWD
+  70.9 not MID 80.1. Jagga Smith — MID by draft/development, forward-barred for the rest of
+  this season, MID in future. A K-DEF also listed G-DEF is NOT a DPP — the G drops.
 
 ## §2 — THE MEASURED BASELINE (item 170 = the scoring floor; item 165 = the scoring tool)
 Compression β 0.364 peak / 0.683 proven-27+ · English/Briggs 5.77× → 1.56× · RUC iso trough intact
@@ -179,17 +193,3 @@ views board + book → his written word → bake → tag → clean promote. UI v
 Ingestion go-live (gated separately) · any age lever (R103.4) · UI v1.2 (its own Tier-3 directive — EFFORT **Medium**, build **Opus via Claude Code**:
 club-name shortening · picks-included club valuations · the team summary/Best-23 page · the no-LLM
 sync · posture toggles + the +1/+2 re-enable when Leg E lands) · the flex positioning REGISTERS beyond the filed CSV (courier at fire time if revised).
-
-## §1b — THE CURRENT-SEASON DPP LAW (owner-confirmed 2026-07-17, item 275 — BINDING)
-A player's OFFICIAL current-season dual positions (the authoritative universe ELIGIBILITIES,
-collapsed first per R105.1: a K-listed player DROPS every G listing — K-X absorbs G-X; what
-remains after collapse is his position set, at most two) apply to the YEAR-0 LEG ONLY:
-- His scoring/level path stays keyed to the role he is actually playing (present_position) —
-  "he's still playing as a mid."
-- The REPLACEMENT BAR for the REMAINING-SEASON forward-looking component (the SEASON_PROG
-  remainder, ~10 of 24 at issue) is WHICHEVER of his post-collapse dual positions' bars is MORE
-  VALUABLE for him (the lower bar). The banked, already-played component is untouched.
-- Years-1+ stay governed by §1 (the future blend law). Single-position players unchanged.
-- Examples (owner's own): Sheezel & Petracca (G-FWD/MID) — remaining season nets vs GEN_FWD
-  70.9 not MID 80.1. Jagga Smith — MID by draft/development, forward-barred for the rest of
-  this season, MID in future. A K-DEF also listed G-DEF is NOT a DPP — the G drops.

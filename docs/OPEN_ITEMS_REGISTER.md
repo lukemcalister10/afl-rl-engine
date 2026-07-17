@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v249 2026-07-17 · PEN: **ITEM 276: THE ROTATION-PREP FILING — HANDOVER → rev149 · DECISIONS → v116 (R106.1–.6) · manifest → v4.42; superseded versions archived; cascade verified as a unit. The relay is FIRED (owner). Seat 10 closes at the relay-return seam** · prior: v248
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v250 2026-07-17 · PEN: **ITEM 277: the OWNER-PROMPTED SELF-AUDIT of the rotation cascade — FOUR defects found and fixed (the SPEC v1.2-header LOOKALIKE + §1b at the tail · stale register refs across all three docs · the missing checkpoint-paste note). HANDOVER → rev150 · DECISIONS → v117 · manifest → v4.43 · SPEC header → v1.3** · prior: v249
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5930,3 +5930,21 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ARCHIVED. CASCADE VERIFIED AS A UNIT (item 242 discipline): handover↔decisions↔manifest
     rows agree; acceptance row carries the queued re-seal honestly. Owner to-dos in v116 §3:
     PK sync at the rotation seam · revoke the seat-10 token at the rotation.
+
+277. **THE OWNER-PROMPTED CASCADE SELF-AUDIT (2026-07-17, his words: "tired supervisors can be
+    sloppy... stale references, not update item/document numbers...") — FOUR DEFECTS, FOUND AND
+    FIXED.** (1) **THE LOOKALIKE, in the flesh:** the spec's HEADER still read v1.2 under an
+    injected v1.3 changelog — "a v1.2 header over a v1.3 body," the exact SSI sin — the item-275
+    edit's conditional replace silently NO-OPED and my verification checked only that '§1b' was
+    present, not WHERE or the header. Header now v1.3, correction declared in the changelog.
+    (2) **§1b sat at the FILE TAIL** (the insertion anchor matched '§3' inside the CHANGELOG, so
+    the block appended after §7) — relocated to sit beside §1, where a law belongs. (3) Stale
+    register references across ALL THREE cascade docs ("v248, items → 275" — reality v249/276 at
+    push; DECISIONS internally inconsistent, citing item 276 one line above "→ 275") — corrected
+    to v249+/277. (4) DECISIONS §2 omitted the IMMINENT mechanical owner paste (the relay
+    mini-checkpoint PROCEED) — added, per the rev148 precedent. VERSION DISCIPLINE HONOURED:
+    the three docs were BUMPED (rev149→rev150 · v116→v117 · v4.42→v4.43), defective versions
+    archived — no editing under a standing version number. THE PATTERN (item-242 continues):
+    every owner-prompted cascade audit has found defects (4+6+5, and now 4); the standing rule
+    stands — verify the cascade AS A UNIT, and verify the VERIFIER: a fix asserted into
+    existence ("'§1b' in t") is not a fix confirmed in place.
