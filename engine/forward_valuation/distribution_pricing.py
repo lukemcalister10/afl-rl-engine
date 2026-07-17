@@ -250,8 +250,22 @@ def ref_width(age):
 def v_at_peak(p,L,lens='bal'):
     """Value p AS IF forward-peak = L, through the production chain at the player's REAL age.
     Proven players: == value() at L=peak_est (production-dominated). Old players: declines (real age past peak)."""
-    g=MA.gfut(p); g0=MA.bnow(p); cur=MA.level_now(p)
-    prod=MA.val(MA.proj_from_peak(g,L,MA.age(p),cur,lens,g0=g0,fut=MA.futblend(p),pre_hc=p.get('_avail_hc',0.0)))
+    g=MA.gfut(p); g0=MA.bnow(p); cur=MA.level_now(p); a=MA.age(p); hc=p.get('_avail_hc',0.0); fb=MA.futblend(p)
+    # ==== §1b — THE CURRENT-SEASON DPP LAW (item 275; owner fence amendment item 281, LIMITED to this site) ==
+    # The year-0 REMAINING-SEASON component (the 1-SEASON_PROG remainder) nets vs the LOWER of the post-collapse
+    # dual eligibility bars (y0dpp_bar); the banked SEASON_PROG component + the level path stay keyed to present
+    # (g0=bnow). g0 affects ONLY proj_from_peak's k==0 REPL term (Wk / k>=1 / the ×1.05 / runway multipliers are
+    # identical between the two calls), and val()=SCALE·r^0.85 is NONLINEAR, so the blend is done HERE, BEFORE
+    # val(), via the EXACT identity  proj_1b = SEASON_PROG·proj(g0=present) + (1-SEASON_PROG)·proj(g0=low).
+    # RL_FLEX-gated inside y0dpp_bar (=None ⇒ single call ⇒ byte-exact). Now-board only (the remaining season is
+    # a present concept). NO Leg-B dial/constant touched — this is a pure Leg-C site at the production hook.
+    lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
+    raw=MA.proj_from_peak(g,L,a,cur,lens,g0=g0,fut=fb,pre_hc=hc)
+    if lowbar is not None:
+        raw_low=MA.proj_from_peak(g,L,a,cur,lens,g0=lowbar,fut=fb,pre_hc=hc)
+        sp=MA.SEASON_PROG
+        raw=sp*raw+(1.0-sp)*raw_low
+    prod=MA.val(raw)
     return max(prod,MA.prod_floor(p,lens))
 
 # ======================= dist_value =======================

@@ -75,7 +75,7 @@ if PVC[1] != 3000:
 print('NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)')
 expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PICKEQ=g['PICKEQ']; MECH_STATS=g['MECH_STATS']
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
-val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']
+val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']; futstreams=g['futstreams']  # futstreams = the board LABEL blend (TRUE alternate; item 271 fut-label fix)
 
 # ONE PRICE (D4, Luke's ruling 02/07/2026): the board renders engine ev() -- _merged_recover is the single
 # valuation source. The forward/backward season view asks the engine the as-of-year question:
@@ -159,7 +159,7 @@ _vprev_by_key=_EXPORT_ATTR.get('vPrev',{})
 _levers_by_key=_EXPORT_ATTR.get('levers',{})
 
 def player_rec(p):
-    grp=bnow(p); gf=gfut(p); fb=futblend(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)
+    grp=bnow(p); gf=gfut(p); fb=futstreams(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)   # fut-label fix (item 271): the board 'fut' carries the TRUE primary/alternate label (futstreams), NOT the value blend (futblend, whose MAX law collapses alt->pri when REPL[alt]>=REPL[pri]); VALUE already priced into _v via futblend upstream
     g['STBL']=False; pn=peak_est(p); g['STBL']=True; ps=peak_est(p); g['STBL']=False
     dlt,_=track_delta(gf,ep,srel(p)); surv=survival(b,dlt if dlt is not None else 0,p['games'])
     cg=sum(r['games'] for r in p['scoring']); sr=srel(p)
@@ -189,6 +189,24 @@ def player_rec(p):
             # ten club-less rows fill. affl_team (the AFFL keeper side) is a SEPARATE field, untouched.
 active=[player_rec(p) for p in players]
 back=[player_rec(p) for p in g['back_extra']]   # board-history-only rows (retired players recalled for -1/-2)
+# ==== FUT-LABEL PER-ROW ASSERTION (item 271) — the board 'fut' stream carries the store's TRUE primary/
+# alternate on EVERY dual row (labels, not the value-collapsed bar). RL_FLEX-gated: with RL_FLEX=0 the board
+# is byte-exact base (futstreams => single), so the store's dual data is intentionally not rendered. A
+# regression HALTs (SILENCE IS A RED).
+if os.environ.get('RL_FLEX','1')!='0':
+    _by_key={r['key']:r for r in active}
+    _flexrows=[p for p in players if p.get('alternate_position') and p.get('p_dual_stream')]
+    _futmis=[]
+    for p in _flexrows:
+        r=_by_key.get(p['key'])
+        if r is None: continue
+        q=float(p['p_dual_stream'])/100.0
+        want=[[gfut(p),round(1.0-q,4)],[GRP.get(p['alternate_position'],gfut(p)),round(q,4)]]
+        if r.get('fut')!=want: _futmis.append((p['key'],r.get('fut'),want))
+    if _futmis:
+        raise SystemExit('FUT-LABEL HALT (item 271): %d dual rows board-label != store primary/alternate: %s'
+                         % (len(_futmis), _futmis[:5]))
+    print('FUT-LABEL ASSERTION: PASS — %d dual rows carry the true primary/alternate on the board' % len(_flexrows))
 # ==== (d) ZERO-EMPTY-CLUB ACCEPTANCE (register v59, item 20/33) — HALT on any blank `club` on the board ====
 # After the afl_club import (b) + the club repoint (d), EVERY exported row must display a club: active rows
 # carry the current AFL club (afl_club); back rows fall back to their draft club. The ten formerly-blank

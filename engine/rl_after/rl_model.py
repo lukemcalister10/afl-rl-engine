@@ -18,6 +18,12 @@ for _p in data:
     _pp=_p.get('present_position')
     _p['_pos_now']=_pp if (_pp and _pp!=_p['pos']) else None
     _p['_futpos']=_p.get('future_position') or _pp    # single settled-future position (fallback to present)
+    # LEG C flex (RL_FLEX, item 20b / flex spec §1.2): a player MAY carry ONE dual primary/alternate FUTURE
+    # stream — an alternate_position + its probability p_dual_stream (0-100). Parsed once here; consumed by
+    # futblend()'s years-1+ REPL blend. Absent on non-dual rows (the store carries it on the 90 dual rows).
+    _ap=_p.get('alternate_position'); _pd=_p.get('p_dual_stream')
+    _p['_altpos']=(_ap if (_ap and _pd) else None)
+    _p['_pdual']=(float(_pd)/100.0 if (_ap and _pd) else 0.0)
 # --- MSD/IRE credit machinery SCRUBBED 2026-07-05 (Luke directive, one-source rewire) ------------
 # The v3.3.1 MSD mid-season debut standardisation (MSD_Y1_MULT=1.5x debut-year game boost, folded into
 # the career total) is DELETED, together with the four credit/bust phantom rows and the _double_count /
@@ -42,7 +48,52 @@ def gfut(p):                                  # SETTLED FUTURE position (single)
     fp=p.get('_futpos')
     if fp: return GRP.get(fp) or bnow(p)
     return bnow(p)                            # no future_position (e.g. gate synths) -> present position
-def futblend(p): return [(gfut(p),1.0)]       # DPP STRIP: years-1+ leg is a SINGLE position (future_position), no blend
+_FLEX=os.environ.get('RL_FLEX','1')!='0'       # LEG C kill-switch (RL_ISOFADE pattern): RL_FLEX=0 => single-position stubs => board byte-exact base. Declared exception, not a dial. Gates ALL of Leg C incl. §1b.
+def futblend(p):
+    # DPP-STRIP base: the years-1+ leg is a SINGLE position (future_position). LEG C flex (RL_FLEX, §1 ruled
+    # stream semantics): a dual primary/alternate stream swaps the years-1+ REPLACEMENT BAR for the LOWER of
+    # the pair (the MAX law) on a p_dual fraction of the stream. The PRIMARY keys peak/curve/runway/key-premium
+    # (g=gfut(p) unchanged upstream); ONLY the bar in the years-1+ posval sum moves. The lower bar gives posval
+    # >= the primary-bar posval, so the netting is FLOORED >=0 by construction. RL_FLEX=0 (or a row with no
+    # dual) => [(gfut,1.0)] => the years-1+ leg is byte-identical to the base board. This is the VALUE blend.
+    pri=gfut(p)
+    if not _FLEX: return [(pri,1.0)]
+    ap=p.get('_altpos'); q=p.get('_pdual',0.0)
+    if not ap or q<=0.0: return [(pri,1.0)]
+    alt=GRP.get(ap) or pri
+    low=alt if REPL.get(alt,REPL[pri])<REPL[pri] else pri   # LOWER replacement bar of the {primary,alternate} pair
+    return [(pri,1.0-q),(low,q)]
+def futstreams(p):
+    # BOARD-LABEL blend (fut-label fix, item 271): the board's stream array must carry the TRUE alternate
+    # label regardless of the bar comparison (futblend collapses the alt->pri when REPL[alt]>=REPL[pri], which
+    # is right for VALUE but drops the alternate provenance on the board). Same weights as futblend; the
+    # position label is the TRUE alternate. RL_FLEX=0 => [(gfut,1.0)] => byte-exact display.
+    pri=gfut(p)
+    if not _FLEX: return [(pri,1.0)]
+    ap=p.get('_altpos'); q=p.get('_pdual',0.0)
+    if not ap or q<=0.0: return [(pri,1.0)]
+    return [(pri,1.0-q),(GRP.get(ap) or pri,q)]
+# ==== §1b — THE CURRENT-SEASON DPP LAW (item 275, BINDING; RL_FLEX-gated) — the eligibility-collapse helper.
+# A player's OFFICIAL current-season dual positions (the store `eligibilities`, collapsed per R105.1: a
+# KEY-listed position DROPS its matching GEN — K-FWD absorbs G-FWD, K-DEF absorbs G-DEF; <=2 remain) apply to
+# the YEAR-0 LEG ONLY. The year-0 REMAINING-SEASON component nets vs whichever post-collapse bar is MORE
+# VALUABLE for him (the LOWER REPL); the banked component + the level path stay keyed to present (bnow). The
+# SEASON_PROG-scaled blend itself is done at v_at_peak (before val(); item 281). Here we only resolve the bar.
+_ELIG_MAP={'MID':'MID','RUC':'RUC','RUCK':'RUC','G-FWD':'GEN_FWD','K-FWD':'KEY_FWD','G-DEF':'GEN_DEF','K-DEF':'KEY_DEF'}
+def _collapse_elig(elig):
+    if not elig: return set()
+    s={_ELIG_MAP.get(t.strip().upper()) for t in elig.split(',') if t.strip()}
+    s.discard(None)
+    if 'KEY_FWD' in s: s.discard('GEN_FWD')      # R105.1: K-X absorbs G-X (a K-DEF also listed G-DEF is NOT a DPP)
+    if 'KEY_DEF' in s: s.discard('GEN_DEF')
+    return s
+def y0dpp_bar(p):
+    # The §1b year-0 REMAINING-SEASON replacement bar (GRP value), or None (single-position / no lower bar).
+    if not _FLEX: return None
+    es=_collapse_elig(p.get('eligibilities'))
+    if len(es)<2: return None
+    low=min(es,key=lambda g:REPL[g])             # lower REPL = more valuable for him
+    return low if REPL[low]<REPL[bnow(p)] else None
 # Real-life entry mechanisms. National draft ('ND') is the pick scale. Rookie ('RD') extends it.
 # The rest entered with NO national slot -> their _eff (pick-equivalent) is derived empirically AFTER the PVC is built.
 PICKLESS={'SSP','MSD','IRE','UNR','PDA','PDN','PDS'}

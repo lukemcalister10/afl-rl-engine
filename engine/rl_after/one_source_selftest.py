@@ -143,9 +143,26 @@ check('drafted_position' in _keys and 'present_position' in _keys and 'future_po
 check('raw_multipos' not in _keys, "raw_multipos (the DPP blend) is GONE from the store")
 _multi=[p['key'] for p in store if isinstance(p.get('present_position'),list) or isinstance(p.get('future_position'),list)]
 check(not _multi, "present/future positions are single-valued (no list legs); offenders=%s"%_multi[:5])
-# in THIS build future == present for every record (the seam resolves identically now)
-_seam=[p['key'] for p in store if p.get('future_position')!=p.get('present_position')]
-check(not _seam, "future_position == present_position for every record this build; offenders=%s"%_seam[:5])
+# LEG C FLEX-ERA INVARIANTS (item 271; REPLACES the obsolete `future==present for every record` seam check —
+# that assertion held ONLY for the DPP-strip build; the flex build populates future_position (the 11) and the
+# dual streams (the 90), so the seam is EXPECTED to differ). The new guard asserts the FLEX SCHEMA: (a) every
+# future_position is in the position vocab; (b) at most ONE alternate per row (single-valued, never a list —
+# the "<=1 alternate" law); (c) blend params register-consistent (alternate in vocab, 0<p_dual<=100,
+# alternate != primary; alt/p_dual set together). GUARD CHANGE, named for the cold audit. SILENCE IS A RED.
+_VOCAB={'MID','RUC','GFWD','KFWD','GDEF','KDEF'}
+_futbad=[p['key'] for p in store if p.get('future_position') and p.get('future_position') not in _VOCAB]
+check(not _futbad, "flex: every future_position in vocab; offenders=%s"%_futbad[:5])
+_altlist=[p['key'] for p in store if isinstance(p.get('alternate_position'),list)]
+check(not _altlist, "flex: at most ONE alternate per row (single-valued, never a list); offenders=%s"%_altlist[:5])
+_dualbad=[]
+for p in store:
+    ap=p.get('alternate_position'); pd=p.get('p_dual_stream')
+    if ap is None and pd is None: continue
+    if (ap is None)!=(pd is None): _dualbad.append((p['key'],'alt/p_dual half-set'))
+    elif ap not in _VOCAB: _dualbad.append((p['key'],'alt not in vocab'))
+    elif not (0.0<float(pd)<=100.0): _dualbad.append((p['key'],'p_dual out of (0,100]'))
+    elif ap==p.get('future_position'): _dualbad.append((p['key'],'alt==primary'))
+check(not _dualbad, "flex: blend params register-consistent (alt in vocab, 0<p_dual<=100, alt!=primary); offenders=%s"%_dualbad[:5])
 
 print("=== (6) LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (item 132; RL_ISOFADE) ===")
 # The fade dissolves the pick tax on the v2.10 evidence weight w=E_q; the ISO multiplier is monotonized
