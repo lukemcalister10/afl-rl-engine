@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v266 2026-07-17 · PEN: **ITEM 293: third-pass audit (3 findings, all confirmed — register-vs-handover text gaps): rev155 (ACT-1(b) BEHAVIOURS · cargo-of-record = item 290 · the G-Y0 spec deletion named in the v1.4 queue) · manifest v4.48. THE PK SET: rev155 · v121 · v4.48. Seat 10 closes** · prior: v265
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v267 2026-07-17 · PEN: **ITEM 294: the gate CAUGHT the fourth self-reference (the handover naming the manifest's version — circular, stale on every bump) — the CLASS retired like the item-counts; gate now wired to FAIL. THE FINAL PK SET: rev156 · v121 · v4.49. SEAT 10 CLOSES** · prior: v266
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6272,3 +6272,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     everywhere; no ratification remains for the ladder). Manifest → v4.48. DECISIONS v121
     UNCHANGED (no ruling touched). The three-self-references check ran BEFORE this push.
     THE FINAL PK SET: **rev155 · v121 · v4.48**.
+
+294. **THE FOURTH SELF-REFERENCE — CAUGHT AND RETIRED AS A CLASS (2026-07-17).** The item-292
+    gate caught the residual this time (the handover pack line naming manifest v4.47 under a
+    v4.48 reality) but was not wired to BLOCK — now it is (grep → fail). ROOT: a document
+    naming its own INDEXER's version is circular — it must go stale on every manifest bump by
+    construction. CURE (the item-279 pattern): the mention is REMOVED AS A CLASS — the
+    handover's pack line reads "per the MANIFEST (versions are its table's job)". The
+    self-reference check is now THREE items again (the manifest's own row · its STATE heading ·
+    nothing in the handover names the manifest) and BLOCKS the push. HANDOVER → **rev156** ·
+    manifest → **v4.49** · DECISIONS **v121** unchanged. **THE FINAL PK-SYNC SET: rev156 ·
+    v121 · v4.49** (+ CORE v2.8 · SSI v1.3). Seat 10 closes on this filing — its last lesson
+    the same as its first: structures that must be manually synchronized eventually aren't;
+    delete the synchronization, not the discipline.
