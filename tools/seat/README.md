@@ -7,7 +7,7 @@ raw evidence, never a bare verdict:
 | script | question it answers |
 |---|---|
 | `orient.sh` | *Am I looking at the live tree, and does Project-Knowledge match the repo?* |
-| `prescreen.sh <branch> <base_sha>` | *What does this candidate branch touch, and does it hold the fence?* |
+| `prescreen.sh <branch> <base_sha>` | *What does this candidate branch touch, does it hold the fence — and was it cut from the pinned base?* |
 | `gates_score.py <gates_json> [acceptance_json]` | *What do a build's gates say against the binding registry?* |
 
 **SEAT TOOLS 2 (item 148)** — three more, to cut the supervisor's per-turn tool+context burn. The
@@ -18,6 +18,15 @@ first is the one non-reader in this directory: it makes a register push a single
 | `pen.py append …` / `pen.py verify` | *Append an item + bump the header + push — with every replace asserted (the item-147 law).* |
 | `board_diff.py <revA> <revB> [--names …]` | *How did the board move between two revs?* (the standard prescreen diff) |
 | `gates_brief.py <gates_json> [acceptance_json]` | *The one-glance gate read — FAILs cross-checked against the standing-fails list.* |
+
+**THE BASE GUARD (items 264 · 270 · 298 · 299)** — the wrong-base failure (a build cut from `main`,
+or content-copied to match, instead of branched FROM the pinned base) recurred three times, twice on a
+store writer. The defence was prose; nothing failed loudly when skipped. This mechanizes it.
+
+| script | question / job |
+|---|---|
+| `first_commands.sh BRANCH_REF EXPECTED_SHA NEW_BRANCH [STORE_MD5] [SYMBOL[:FILE]]` | *Stand this build on the PINNED base — by proof, not by prose — and leave the transcript as the branch's first artifact.* |
+| `prescreen.sh` **FIRST check** | *Does the candidate's FIRST commit carry that proof, and does the SHA it recorded equal the branch's actual base?* |
 
 ## What each prints
 
@@ -74,13 +83,35 @@ one-glance read: status tally · PICK 1 · B1 status · every FAIL id one-per-li
 (STANDING-FAIL); any FAIL that is **not** a listed standing-fail is flagged **NEW-DEFECT** and the tool
 exits non-zero. ≤10 lines.
 
+**`first_commands.sh BRANCH_REF EXPECTED_SHA NEW_BRANCH [EXPECTED_STORE_MD5] [REQUIRED_SYMBOL[:FILE]]`**
+— runs the directive's EXECUTE-FIRST base block as six ordered checks, each an explicit PASS/FAIL beside
+its raw SHA/md5: **[0]** refuse on a dirty tree (uncommitted changes to *tracked* files — untracked
+scratch survives `checkout -B`, so it is tolerated) · **[1]** `ls-remote BRANCH_REF == EXPECTED_SHA`
+(the pin is live on the canonical URL) · **[2]** fetch the pinned object · **[3]** `checkout -B NEW_BRANCH
+EXPECTED_SHA` (branch **from** the pin) · **[4]** `merge-base --is-ancestor` proof · **[5]** optional store
+md5 == `EXPECTED_STORE_MD5` on the Guard-5 store `engine/rl_after/rl_model_data.json` (the pinned store
+travels with the tree — item 264) · **[6]** optional `git grep -c REQUIRED_SYMBOL ≥ 1` (a base-only tree
+lacks the candidate's symbol — item 298). On full success it writes the whole transcript to
+`FIRST_COMMANDS_PROOF.txt` in the CWD — carrying a machine-readable `base_sha` line — and prints the one
+line the build commits it with as its **first** commit. Any failure routes through `die()` (exit 1) and
+writes **no** green proof — SILENCE IS A RED (the [6] miss is guarded so the zero-count fails *loudly*,
+not at the assignment).
+
+**`prescreen.sh`'s FIRST check** — before it reads anything else (the item-298 SEAM NOTE), it locates the
+branch's first commit above the base, asserts that commit carries `FIRST_COMMANDS_PROOF.txt`, and that the
+`base_sha` the proof recorded equals BOTH the commit's **actual** parent AND the pinned base handed to
+prescreen. A content-copied branch (item 270/298) fails here: its first commit sits on `main`, not the pin.
+
 ## House laws — each is cited where it bites
 
-1. **Scripts WRITE NOTHING** — with **one** authorized exception: `pen.py append`'s single intended
-   commit+push of the register (its whole job; still gated by the asserts, `--dry-run` writes
-   nothing). Every other script is a pure reader; the only writes are temp under `/tmp`. `git fetch`
-   in `prescreen.sh` and `git show` in `board_diff.py` populate/read the `.git` *object cache* (the
-   directive-authorized way to READ history) — never the working tree, store, board, or docs.
+1. **Scripts WRITE NOTHING** — with **two** authorized exceptions, each writing only what its whole job
+   is: `pen.py append`'s single intended commit+push of the register (gated by the asserts; `--dry-run`
+   writes nothing), and `first_commands.sh`'s `checkout -B NEW_BRANCH` + its `FIRST_COMMANDS_PROOF.txt`
+   transcript in the CWD (standing a build on the pinned base *is* a branch+proof write; it never touches
+   the store, board, engine, or docs, and writes no green proof on a failed base). Every other script is a
+   pure reader; the only writes are temp under `/tmp`. `git fetch` in `prescreen.sh`/`first_commands.sh`
+   and `git show` in `board_diff.py` populate/read the `.git` *object cache* (the directive-authorized way
+   to READ history) — never the working tree, store, board, or docs.
 2. **Every line carries RAW EVIDENCE** — a SHA, an md5, a number, a note — never a bare verdict.
    `MATCH`/`DRIFT`/`YES`/`NO` always sit beside the two values that produced them.
 3. **Non-zero exit on ANY failure or missing input, and the exit code PROPAGATES.** Bash scripts run
@@ -110,6 +141,11 @@ NEW-ENV-READ CHECK), **115** (evidence read from the record, not asserted).
   2916→3132 (the item-107 anchor).
 - `samples/gates_brief.out.txt` — `gates_brief.py` on `gates_2030e5df.json` (clean: 3 standing FAILs,
   0 NEW-DEFECT) and `gates_7c199a1f.json` (**B4 unlisted → NEW-DEFECT, exit 1**).
+- `session_2026-07-17/base_guard/` — `first_commands.sh` red-path proofs: (a) wrong `EXPECTED_SHA` →
+  **[1] ls-remote MISMATCH**, (b) wrong store md5 → **[5] store md5 MISMATCH**, (c) missing symbol →
+  **[6] symbol MISSING** — all exit 1; plus the green run against the live `main` pin (all six PASS) and
+  the two `prescreen.sh` FIRST-check transcripts (green: proof records base == parent == pin; red: first
+  commit above a wrong base carries no proof → exit 1).
 
 ## One thing the scripts could not encode
 

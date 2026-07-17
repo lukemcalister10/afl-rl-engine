@@ -1,0 +1,7 @@
+== prescreen · claude/tools-base-guard-a19812 ==
+branch     : claude/tools-base-guard-a19812
+base       : bee58cc71079112fb0b1c9b6ed039f338d78a801
+head       : feeaa8d4c0f6ce778a1540f1924ddc8e848f0c53   (git rev-parse FETCH_HEAD)
+-- FIRST_COMMANDS_PROOF check (base guard, first artifact) --
+prescreen: FAIL — branch's first commit eba96f3e does NOT contain FIRST_COMMANDS_PROOF.txt (the base guard's first artifact is missing — items 298/299)
+EXIT=1

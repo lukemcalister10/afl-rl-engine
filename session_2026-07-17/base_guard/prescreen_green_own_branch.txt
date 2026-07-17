@@ -1,0 +1,24 @@
+== prescreen · claude/tools-base-guard-a19812 ==
+branch     : claude/tools-base-guard-a19812
+base       : de9f0fd0ad85d43a0e027385e364a9b945f20b07
+head       : feeaa8d4c0f6ce778a1540f1924ddc8e848f0c53   (git rev-parse FETCH_HEAD)
+-- FIRST_COMMANDS_PROOF check (base guard, first artifact) --
+  proof      : PASS  first commit 13560af0 records base_sha de9f0fd0 == actual parent de9f0fd0 == pinned base de9f0fd0
+ancestry   : YES  base de9f0fd0 is-ancestor head feeaa8d4
+-- diff --name-status base..head (session_*/ rolled up) --
+  A	FIRST_COMMANDS_PROOF.txt
+  A	tools/seat/first_commands.sh
+  M	tools/seat/prescreen.sh
+  ~	session_2026-07-17/ (5 files, session scratch)
+board      : recomputed 790136a3 vs pin 790136a3  -> MATCH   (md5 of data/rl_build/rl_app_data.json @head)
+-- expected_boot changed fields (base..head) --
+  (no expected_boot field changed)
+-- book seal (data/book_stable_seal.json @head) --
+  seal head=fc7045d6 store=b1fd0bce n=2649 sha256=99be9b3672bc
+  __meta__ s4_matrix_baked_7a07e369.json head=7a07e369 store=04f38dad n=2649
+-- run_panel.sh pin diff (base..head) --
+  pins UNCHANGED base..head
+-- new env-read check in engine/ (register item 114) --
+  none — no ADDED os.environ.get/getenv in engine/ (no unpinned board dial introduced)
+== prescreen done ==
+EXIT=0
