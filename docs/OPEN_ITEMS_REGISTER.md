@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v279 2026-07-17 · PEN: ITEM 306: R106.7 prescreen GREEN — store 968de0c7 (2 rows exact) · board 9829d01a · 6 named rows verified to the digit · 284 behaviours in code · 5 triggers ALL CLEAR, no shard · Leg C content-complete · next: SPEC v1.4 → re-seal → Leg D · prior: ITEM 305
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v280 2026-07-17 · PEN: ITEM 307: owner-raised — season dial vs premiership leverage (current-season value floor ~75%, hold from halfway, off-season drop). Split-the-dial shape adopted in principle; blocks: Smoothness-Law cliff at rd24 + principled basis for 75% + the one-currency neutrality ruling. Trigger: post-delivery chapter · prior: ITEM 306
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4304,6 +4304,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     …6306378 → 33c8b52 (PR #105 on #104). LEG C IS NOW CONTENT-COMPLETE. NEXT: SPEC v1.4 → the
     re-seal (cargo = items 290+295+296+300+304+this; the reconciliation table per item 301) →
     Leg D. The chapter LADDER remains ahead of any bake.
+
+307. **OWNER-RAISED VALUATION QUESTION — SEASON-DIAL vs PREMIERSHIP LEVERAGE (2026-07-17; design
+    for the POST-v2.11 chapter, owner's own framing: "probably too late to incorporate it, but
+    let's note it down").** OWNER VERBATIM (the core): the dial exists to mark elapsed season and
+    scale context (5 games halfway ≠ 5 games in a full year) — keep it for those reasons. But
+    "right now, there is still one premiership to play for... The stakes and prize are still the
+    same. And will be with 6 weeks left too. So why with six weeks left is current season
+    performance worth 25% of what it is at the start of the season?" PROPOSAL (his, first-pass):
+    the current-season VALUE component never dips below 75% weighting — first half of season
+    decays two-weeks-for-one to 75%, second half HOLDS (the dial advancing doesn't reduce value;
+    weekly information still updates projections), then post-round-24 the component comes off
+    into off-season mode. SUPERVISOR ASSESSMENT (discussed, owner-heard): (a) the honest form of
+    the intuition is LEVERAGE-WEIGHTING vs game-count bookkeeping — late/finals games carry more
+    premiership probability per game; may argue for MORE than a floor; (b) DESIGN SHAPE ADOPTED
+    IN PRINCIPLE: split the dial's two jobs — elapsed-time context (dial unchanged) vs
+    remaining-season VALUE weighting (its own function); (c) TWO BLOCKS before law: the
+    post-round-24 drop is a SMOOTHNESS-LAW conflict (a 75%-block cliff on a counter tick — must
+    become a steep-but-smooth finals-window decay), and the 75% needs a principled basis
+    (league finals structure / measured leverage curve, not a round number); (d) NEUTRALITY
+    QUESTION to rule: one currency for contenders and rebuilders — leverage-weighting ~triples
+    proven producers' late-season year-0 components and relatively deflates future-heavy youth; a
+    philosophical choice about what the currency IS. TRIGGER: the post-delivery chapter, when the
+    owner's weekly round-entry cadence makes the dial live. INTERACTIONS to spec then: §1b
+    credits scale with the same remaining share · the mid-season benefit-of-doubt prior term ·
+    SPEC_SEASON_ROLLOVER. No design now; nothing in the v2.11 cycle moves.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
