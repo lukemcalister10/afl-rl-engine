@@ -1,0 +1,10 @@
+R106.7 VALUE-UP / RANK-DOWN FAILURE SUBSET (item-256; tie-break POSITIONAL rank)
+board ee70335a -> 9829d01a (FLEX=1, corrected store)
+relay's prior subset was 115; NEW COUNT = 5
+
+key                          v_base  v_new   dv   rank_base rank_new drank(worse)
+josh-daicos                    2144   2145    +1       95      96     +1
+brayden-maynard                 938    939    +1      236     239     +3
+nic-newman                      944    945    +1      235     237     +2
+joshua-kelly                    616    617    +1      317     320     +3
+christian-salem                 597    598    +1      327     329     +2

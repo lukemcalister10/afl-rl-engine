@@ -1,0 +1,81 @@
+{
+  "_doc": "R106.7 named rows \u2014 shipped board (numeraire ev/F=1.0524). base=ee70335a (projection-half \u00a71b), new=9829d01a (projection+floor \u00a71b, corrected store).",
+  "rows": [
+    {
+      "name": "Christian Petracca",
+      "key": "christian-petracca",
+      "eligibilities": "MID,G-FWD",
+      "present": "MID",
+      "y0dpp_bar": "GEN_FWD",
+      "floor_binds": true,
+      "v_base_ee70335a": 2881,
+      "v_new_9829d01a": 2955,
+      "delta": 74,
+      "note": "OWNER-VIEWING corrected preview; relay +29/+97 was pre-amendment by design; floor nets vs GEN_FWD"
+    },
+    {
+      "name": "Colby McKercher",
+      "key": "colby-mckercher",
+      "eligibilities": "G-DEF,MID",
+      "present": "MID",
+      "y0dpp_bar": "GEN_DEF",
+      "floor_binds": false,
+      "v_base_ee70335a": 3904,
+      "v_new_9829d01a": 3824,
+      "delta": -80,
+      "note": "corrected store: bar GEN_FWD->GEN_DEF; most of item-295 +105 comes back off"
+    },
+    {
+      "name": "Jake Lloyd",
+      "key": "jake-lloyd",
+      "eligibilities": "G-DEF,G-FWD",
+      "present": "GDEF",
+      "y0dpp_bar": "GEN_FWD",
+      "floor_binds": true,
+      "v_base_ee70335a": 100,
+      "v_new_9829d01a": 104,
+      "delta": 4,
+      "note": "corrected store: bar stays GEN_FWD, now legitimate (present GEN_DEF in set); ~unchanged"
+    },
+    {
+      "name": "Harry Sheezel",
+      "key": "harry-sheezel",
+      "eligibilities": "MID,G-FWD",
+      "present": "MID",
+      "y0dpp_bar": "GEN_FWD",
+      "floor_binds": false,
+      "v_base_ee70335a": 7963,
+      "v_new_9829d01a": 7964,
+      "delta": 1,
+      "note": "projection-leg already barred; floor half lifts low band nodes +1"
+    },
+    {
+      "name": "Marcus Bontempelli",
+      "key": "marcus-bontempelli",
+      "eligibilities": "MID",
+      "present": "MID",
+      "y0dpp_bar": null,
+      "floor_binds": true,
+      "v_base_ee70335a": 3897,
+      "v_new_9829d01a": 3897,
+      "delta": 0,
+      "note": "single MID elig (pdual is a future-stream, not \u00a71b); HOLD"
+    },
+    {
+      "name": "Driscoll (Nathan ODriscoll, 100% MID)",
+      "key": "nathan-o-driscoll",
+      "eligibilities": "MID",
+      "present": "MID",
+      "y0dpp_bar": null,
+      "floor_binds": false,
+      "v_base_ee70335a": 894,
+      "v_new_9829d01a": 894,
+      "delta": 0,
+      "note": "100% MID single-position, NO \u00a71b bar -> MUST HOLD; verified HOLD"
+    }
+  ],
+  "item284_named_rows": {
+    "store_data_errors": 0,
+    "note": "store scan found 0 cross-class/present-not-in-set rows after the two owner corrections; runtime registry clean (the fixtures self-flag only)."
+  }
+}

@@ -297,6 +297,7 @@ print("=== (8) item-284 — DPP DATA-ERROR classes: fixture proofs + store flag-
 # (b) the STORE SCAN is REPORT-ONLY: it NAMES offending rows without failing the suite (item-284: continue), and
 # ALWAYS emits a verdict line even at zero rows (SILENCE IS A RED).
 _y0=MA.y0dpp_bar; _col=MA._collapse_elig
+_reg_boardbuild=dict(MA._DPP_DATA_ERRORS)    # SNAPSHOT the real board-build registry BEFORE the fixtures pollute it
 def _fix(elig,present,drafted=None):     # minimal row exercising bnow/_collapse_elig/y0dpp_bar
     dp=drafted or present
     return {'eligibilities':elig,'present_position':present,'drafted_position':dp,'pos':dp,
@@ -319,7 +320,9 @@ for _p in MA.data:
 print("  item-284 STORE SCAN verdict: %d DPP data-error row(s) (report-only, build CONTINUES — never a halt)"%len(_errs))
 for _pl,_sid,_rs,_cs,_pp,_el in sorted(_errs):
     print("    - %-24s [%s] %-16s elig=%-13s collapsed=%s present=%s"%(_pl,_sid,_rs,_el,_cs,_pp))
-print("  item-284 runtime registry (y0dpp_bar flagged during the board build, section 1): %d row(s)"%len(MA._DPP_DATA_ERRORS))
+print("  item-284 runtime registry (y0dpp_bar flagged across the full board build, section 1): %d row(s)"%len(_reg_boardbuild))
+for _sid,_v in sorted(_reg_boardbuild.items()):
+    print("    - %-24s [%s] %-16s elig=%-13s collapsed=%s present=%s"%(_v['player'],_sid,_v['reason'],_v['eligibilities'],_v['collapsed'],_v['present']))
 
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
       "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))
