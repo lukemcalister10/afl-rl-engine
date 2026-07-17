@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v257 2026-07-17 · PEN: **ITEM 284: owner rules the F18/F20 questions — CROSS-CLASS DUALS ARE DATA ERRORS (key carries across positions), flag-and-continue; F17 re-explained, word pending; the Petracca floor question framed for viewing** · prior: v256
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v258 2026-07-17 · PEN: **ITEM 285: owner confirms F17 ("Build order fine.") — the relay's attribution staging (writes→blend→§1b) is the convention of record** · prior: v257
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6091,3 +6091,10 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     him. Both Q1/Q2 join the spec v1.4 batch (item 283) and the §1b acceptance enumeration
     (F29): the invalid-pair fixture set is now K-DEF+G-FWD · K-FWD+G-DEF · RUC+G-FWD ·
     RUC+G-DEF, each flag-and-continue.
+
+285. **F17 CONFIRMED (2026-07-17, owner verbatim "Build order fine."):** the relay's attribution
+    staging — +writes → +blend → +§1b — is the CONVENTION OF RECORD for v2.11 receipts; the
+    spec v1.4 batch (item 283) carries the declaration. Final values are order-independent;
+    only stage credit is convention. The Petracca floor mechanics were re-explained in depth
+    same turn (chat + journal); the possible floor-re-bar amendment remains HIS question at
+    viewing, with an exact per-player preview available from the return data on request.
