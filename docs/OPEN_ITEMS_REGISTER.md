@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v242 2026-07-17 · PEN: **ITEM 269: the v1.1 "thirteen" was the SUPERVISOR'S OWN ERROR (name-collision with retired duplicates); stable-ID recount = ELEVEN, build vindicated; item 268 superseded in place; PROCEED-with-11 paste issued** · prior: v241
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v243 2026-07-17 · PEN: **ITEM 270: LEG-C RETURN — CONTENT SOUND (11+rider+91 verified by stable ID; base files byte-equal) / TOPOLOGY BROKEN AGAIN (cut from main — 2nd in 24 h ⇒ FIRST-COMMANDS standing rule) / EARNED-COMPONENT HALT on Carroll+Emmett (owner adjudication OPEN) / the future==present guard obsolete by owner law. Cure = ONE RELAY BUILD after the word** · prior: v242
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5782,3 +5782,37 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     v1.1's embedded 13-list is superseded by this item (archive-time tidy; not edited
     mid-flight). **PROCEED-WITH-VERIFIED-11 issued via the owner** — the build writes the 11 +
     the 4-write rider, logs the discrepancy as a finding, and runs to its return.
+
+270. **LEG-C RETURN — CONTENT SOUND, TOPOLOGY BROKEN, ONE OWNER ADJUDICATION OPEN (2026-07-17).**
+    Head `2b64630`. **CONTENT (supervisor-verified from the trees, stable-ID resolution):** store
+    b1fd0bce → ca21b0da carries EXACTLY the verified 11 future_position writes + the 4-write
+    rider (Flanders/Baker/Langdon eligibilities + Flanders present MID→GDEF) + 91 blend/
+    alternate rows; untouched base files BYTE-EQUAL to 273463e (spot: _merged_recover ·
+    one_source_selftest · par_matrix); triple A/B chain reported byte-exact (RL_FLEX=0+RL_UNCOMP=0
+    ⇒ 8d90c9ac · RL_FLEX=0 @ s=0.10 ⇒ f2f077b2 · shipped-store ⇒ 807e6551); post-C board
+    b4c67bb6 committed, panel 10/10, expected_boot re-pinned. **TOPOLOGY: 273463e is NOT an
+    ancestor** — the build cut from main (48f6706) and copied the 12 candidate files across by
+    content: the SECOND wrong-base in 24 h (item 264), now on the STORE WRITER; the candidate
+    line's one-straight-history is broken at its newest link. **STANDING RULE (bind on every
+    future directive as boilerplate): THE FIRST COMMANDS** — `git fetch origin <base-branch> &&
+    git checkout -b <job-branch> <BASE-SHA> && git merge-base --is-ancestor <BASE-SHA> HEAD`
+    printed in the PLAN, HALT on failure; "content moved to match" is NEVER conformance.
+    **THE EARNED-COMPONENT HALT (audit #27, BINDING — the gate did its job): OWNER ADJUDICATION
+    OPEN.** Carroll (MID→GDEF): Δearned −16/−37, total −90 · Emmett (RUC→KFWD): Δearned
+    −259/−259, total +138 via the blend — both young, both cuts DRIVEN by the owner's own
+    positional corrections (future_position → gfut → peak/curve/bar), stable across both base
+    configs. Powell/Uwland: negative TOTAL but positive earned — projection-side, not breaches.
+    Options put: (a) ACCEPT the two cuts as correct repricing + a NAMED two-row waiver of audit
+    #27 at the viewing rung (recommended — his reads are ground truth; magnitudes small; both
+    rows ride the sincerity ledger at the ladder) · (b) HOLD the two writes this chapter (board
+    then disagrees with his register) · (c) reopen the MECHANISM (should earned value be
+    future-position-invariant? — a design question for a future chapter; interim = (b)).
+    **ALSO:** one_source_selftest lines 146-148 assert future==present for every record — an
+    era-scoped check ("in THIS build") now OBSOLETE BY OWNER LAW; the post-C store fails it by
+    design (panel green, selftest red at that line). **THE CURE = ONE RELAY BUILD after the
+    word:** replay the verified Leg-C diff onto the TRUE line (branch from 273463e, FIRST
+    COMMANDS, content equivalence proven), implement the adjudication outcome, UPDATE the
+    obsolete guard to the flex-era invariants (guard change — explicitly listed for the cold
+    audit), and produce the honestly-skipped owner-law deliverables (post-C sincerity ledger ·
+    band both sides · pairs · census cells). Nothing merges meanwhile; 2b64630 quarantined as
+    the content reference.
