@@ -290,6 +290,37 @@ else:
                       "collision sentry: %s.%s (%r) != %s.%s (%r) — must stay distinct (no cross-copy)"%(
                       _pr['a']['key'],_f,_ra.get(_f),_pr['b']['key'],_f,_rb.get(_f)))
 
+print("=== (8) item-284 — DPP DATA-ERROR classes: fixture proofs + store flag-and-name (report-only) ===")
+# item-284 (DECISIONS v121): the four CROSS-CLASS combos and present_position ∉ collapsed are DATA ERRORS —
+# SINGLE-POSITION for §1b (y0dpp_bar -> None), REPORTED BY NAME, build CONTINUES (never a halt). Same-line K/G is
+# the SILENT R105.1 collapse (no flag). (a) FIXTURE PROOFS are hard invariants — a guard regression is a real FAIL.
+# (b) the STORE SCAN is REPORT-ONLY: it NAMES offending rows without failing the suite (item-284: continue), and
+# ALWAYS emits a verdict line even at zero rows (SILENCE IS A RED).
+_y0=MA.y0dpp_bar; _col=MA._collapse_elig
+def _fix(elig,present,drafted=None):     # minimal row exercising bnow/_collapse_elig/y0dpp_bar
+    dp=drafted or present
+    return {'eligibilities':elig,'present_position':present,'drafted_position':dp,'pos':dp,
+            '_pos_now':(present if present!=dp else None),'player':'FIXTURE','stable_player_id':'fixture'}
+for _e,_pr in [('K-DEF,G-FWD','KDEF'),('K-FWD,G-DEF','KFWD'),('RUCK,G-FWD','RUC'),('RUCK,G-DEF','RUC')]:
+    check(_y0(_fix(_e,_pr)) is None,
+          "item-284 fixture: cross-class %s (present %s, collapsed %s) -> single-position (y0dpp_bar None)"%(_e,_pr,sorted(_col(_e))))
+check(_y0(_fix('G-DEF,G-FWD','MID','MID')) is None,
+      "item-284 fixture: present-not-in-set G-DEF,G-FWD present MID -> single-position (y0dpp_bar None)")
+check(_y0(_fix('MID,G-FWD','MID','MID'))=='GEN_FWD',
+      "item-284 fixture: VALID MID,G-FWD present MID resolves a bar (GEN_FWD) — verdict produced")
+_errs=[]
+for _p in MA.data:
+    _es=_col(_p.get('eligibilities'))
+    if len(_es)<2: continue
+    if frozenset(_es) in MA._CROSS_CLASS: _reason='cross-class'
+    elif MA.bnow(_p) not in _es: _reason='present-not-in-set'
+    else: continue
+    _errs.append((_p.get('player'),_p.get('stable_player_id'),_reason,sorted(_es),_p.get('present_position'),_p.get('eligibilities')))
+print("  item-284 STORE SCAN verdict: %d DPP data-error row(s) (report-only, build CONTINUES — never a halt)"%len(_errs))
+for _pl,_sid,_rs,_cs,_pp,_el in sorted(_errs):
+    print("    - %-24s [%s] %-16s elig=%-13s collapsed=%s present=%s"%(_pl,_sid,_rs,_el,_cs,_pp))
+print("  item-284 runtime registry (y0dpp_bar flagged during the board build, section 1): %d row(s)"%len(MA._DPP_DATA_ERRORS))
+
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
       "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))
 print("  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)")

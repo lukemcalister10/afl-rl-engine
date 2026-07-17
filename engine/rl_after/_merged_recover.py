@@ -818,12 +818,26 @@ def _prod_floor_w4(p,lens='bal'):
     if ctx is None or ctx.get('n',0)<PROVEN_N or not _W4FWD: return _prod_floor_w4_0(p,lens)
     g=MA.bnow(p); a=MA.age(p); pa_=MA.PEAK_AGE[g]; cur=MA.level_now(p)
     if cur is None: return 0
+    # ==== §1b FLOOR HALF (R106.7, DECISIONS v121 §1) — PROVEN-player shipped-board copy of MA.prod_floor's floor.
+    # ⚠ DUPLICATE-LOOP HAZARD (owner condition 4; fence extended by the Option-2 adjudication 2026-07-17): this is a
+    # PARALLEL copy of rl_model.prod_floor's loop (rl_model.py:441). The §1b k==0 split MUST stay IDENTICAL in
+    # BOTH — edit both or neither. Blend OUTSIDE the nonlinearity: TWO posval evaluations at k==0, sp·posval(vs
+    # present) + (1-sp)·posval(vs low), NEVER a blended bar inside one call. RL_FLEX=0 => y0dpp_bar None =>
+    # byte-exact. QUEUED HYGIENE (registered, NOT this build): option-3 delegation — this fn -> MA.prod_floor for
+    # bar resolution, removing the duplicate loop — carries a determinism-proof requirement.
+    lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
     d=MA.LENS[lens]; H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_avail_hc'])  # RL_AVAIL: register-driven present haircut (was _b2hc; R-B2HC retired)
-        prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
+        base=lev+MA.capt_prem(lev)
+        if k==0 and lowbar is not None:
+            sp=MA.SEASON_PROG                                 # banked (sp) vs present bar; remaining (1-sp) vs low bar
+            pv=sp*MA.posval(base-MA.REPL[g])+(1.0-sp)*MA.posval(base-MA.REPL[lowbar])
+        else:
+            pv=MA.posval(base-MA.REPL[g])
+        prod+=_w4_W(k,ctx)*wt*pv*21/((1+d)**k); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================

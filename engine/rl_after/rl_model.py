@@ -87,11 +87,28 @@ def _collapse_elig(elig):
     if 'KEY_FWD' in s: s.discard('GEN_FWD')      # R105.1: K-X absorbs G-X (a K-DEF also listed G-DEF is NOT a DPP)
     if 'KEY_DEF' in s: s.discard('GEN_DEF')
     return s
+# ==== item-284 (DECISIONS v121) — DPP DATA-ERROR classes. Same-line K/G is the SILENT R105.1 listing-artifact
+# collapse above (no flag). The FOUR cross-class combos and present_position ∉ the collapsed set are DATA ERRORS:
+# the row is treated SINGLE-POSITION for §1b (y0dpp_bar -> None, NO dual bar), REPORTED BY NAME (the registry
+# below -> a committed named-row artifact, not a log line), and the build CONTINUES — never a halt. SILENCE IS A
+# RED: y0dpp_bar always resolves (a bar or None) and every error row lands in the registry with a verdict.
+_CROSS_CLASS={frozenset({'KEY_DEF','GEN_FWD'}),frozenset({'KEY_FWD','GEN_DEF'}),
+              frozenset({'RUC','GEN_FWD'}),frozenset({'RUC','GEN_DEF'})}
+_DPP_DATA_ERRORS={}                              # stable_player_id -> dict(player,reason,collapsed,present); deduped
+def _flag_dpp_error(p,es,reason):
+    sid=p.get('stable_player_id') or ('name:'+(p.get('player') or '?'))
+    _DPP_DATA_ERRORS[sid]={'player':p.get('player'),'reason':reason,
+                           'collapsed':sorted(es),'present':p.get('present_position'),
+                           'eligibilities':p.get('eligibilities')}
 def y0dpp_bar(p):
     # The §1b year-0 REMAINING-SEASON replacement bar (GRP value), or None (single-position / no lower bar).
     if not _FLEX: return None
     es=_collapse_elig(p.get('eligibilities'))
     if len(es)<2: return None
+    if frozenset(es) in _CROSS_CLASS:            # item-284: cross-class combo -> DATA ERROR -> single-position + named
+        _flag_dpp_error(p,es,'cross-class'); return None
+    if bnow(p) not in es:                        # item-284: present_position not in the collapsed set -> DATA ERROR
+        _flag_dpp_error(p,es,'present-not-in-set'); return None
     low=min(es,key=lambda g:REPL[g])             # lower REPL = more valuable for him
     return low if REPL[low]<REPL[bnow(p)] else None
 # Real-life entry mechanisms. National draft ('ND') is the pick scale. Rookie ('RD') extends it.
@@ -441,12 +458,30 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
 def prod_floor(p,lens='bal'):
     g=bnow(p); a=age(p); pa_=PEAK_AGE[g]; cur=level_now(p)
     if cur is None: return 0
+    # ==== §1b FLOOR HALF (R106.7, DECISIONS v121 §1; RL_FLEX-gated via y0dpp_bar) — the leg-blind bar, floor half.
+    # §1b applies to WHICHEVER leg produces the year-0 number: the projection half is wired at v_at_peak
+    # (distribution_pricing.py:250); THIS is the DEMONSTRATED-FLOOR half. The floor's YEAR-0 (k==0) REMAINING-SEASON
+    # component nets vs the LOWER post-collapse dual bar (y0dpp_bar); the banked SEASON_PROG component + the level
+    # path/horizon stay keyed to PRESENT (bnow). The blend is done OUTSIDE the nonlinearity — TWO posval
+    # evaluations at k==0, sp·posval(base-REPL[present]) + (1-sp)·posval(base-REPL[low]) — NEVER a blended bar
+    # inside one posval call (owner condition 1). Now-board only (AGE_REF==BASE_REF; remaining-season is a present
+    # concept). years-1+ (k>=1) + the banked component untouched. RL_FLEX=0 => y0dpp_bar None => byte-exact off.
+    # ⚠ DUPLICATE-LOOP HAZARD (owner condition 4): _merged_recover.py::_prod_floor_w4 is a PARALLEL copy of THIS
+    # loop for PROVEN players on the shipped board (run_panel.sh -> ev()). It carries the SAME §1b k==0 split —
+    # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
+    lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
     d=LENS[lens]; H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_avail_hc'])
-        prod+=wt*posval(lev+capt_prem(lev)-REPL[g])*21/((1+d)**k); k+=1
+        base=lev+capt_prem(lev)
+        if k==0 and lowbar is not None:
+            sp=SEASON_PROG                                    # banked (sp) vs present bar; remaining (1-sp) vs low bar
+            pv=sp*posval(base-REPL[g])+(1.0-sp)*posval(base-REPL[lowbar])
+        else:
+            pv=posval(base-REPL[g])
+        prod+=wt*pv*21/((1+d)**k); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
 # Replaces old blended cohort+demoPeak. Model = forward-realised best-3 (>=Y, completeness-weighted), bust-inclusive.

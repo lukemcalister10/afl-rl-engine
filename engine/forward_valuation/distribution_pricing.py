@@ -266,6 +266,10 @@ def v_at_peak(p,L,lens='bal'):
         sp=MA.SEASON_PROG
         raw=sp*raw+(1.0-sp)*raw_low
     prod=MA.val(raw)
+    # FLOOR HALF (R106.7): §1b also applies to the DEMONSTRATED-FLOOR leg — wired inside MA.prod_floor
+    # (rl_model.py:441) and its PROVEN-player shipped-board copy _merged_recover.py::_prod_floor_w4 (⚠ duplicate
+    # loop — owner condition 4). The floor's k==0 remaining-season nets vs y0dpp_bar; here it just consumes the
+    # already-§1b floor via max(). RL_FLEX=0 => both floors byte-exact.
     return max(prod,MA.prod_floor(p,lens))
 
 # ======================= dist_value =======================
