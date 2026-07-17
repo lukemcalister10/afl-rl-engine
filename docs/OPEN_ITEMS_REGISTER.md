@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v271 2026-07-17 · PEN: ITEM 298: R106.7 build cut from MAIN not the pin (third wrong-base, proven from its history) — halt discipline held; adjudication: abandon branch, FIRST COMMANDS properly, redo the 2-row edit on 0efdc5d6, re-probe, re-push checkpoint · prior: ITEM 297
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v272 2026-07-17 · PEN: ITEM 299: wrong-base root cause (main is a trap; the defence was prose) · owner chose fresh chat · directive v1.1 re-fired with an execute-first base block (8d50bd5) · hygiene grows: first_commands.sh + template law · prior: ITEM 298
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4136,6 +4136,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     hygiene batch: the ancestor proof must be the FIRST COMMITTED ARTIFACT and prescreen must
     verify it before reading anything else — a return whose first commit is not the proof is
     incomplete by construction.
+
+299. **WHY THE WRONG-BASE RECURS + THE v1.1 RE-FIRE (2026-07-17, owner-raised: "Enough to be
+    concerned, why does it keep happening?").** DIAGNOSIS OF RECORD: (i) MAIN IS A TRAP WE BUILT —
+    all engine work lives on unmerged candidate branches by design while the directive itself is
+    filed to main's docs/; a fresh build's first natural act (clone, read orders) stands it on
+    main, and where a build first stands becomes its ground truth (both proven cases cut from the
+    docs-commit region). (ii) THE DEFENCE WAS PROSE — FIRST COMMANDS is a paragraph; nothing fails
+    loudly when skipped, and Guard 5 PASSES on main (main agrees with itself — the same
+    self-consistent-stale-workspace hole SSI Guard 5's own note describes for directories, now on
+    branch topology). Same disease as the store's history: prose rules did not stop stale-copy
+    failures; mechanical halts did. We never built the mechanical guard for topology. OWNER
+    DECISION: fresh build chat over continuing the contaminated one (an hour's sunk work vs
+    residual wrong-model risk in the STORE WRITER; supervisor recommended fresh, owner-prompted).
+    **DIRECTIVE v1.1 issued** (`8d50bd5`, docs-only): the ONLY change is structural — the base
+    commands are now a literal EXECUTE-FIRST block at the top (ls-remote assert → fetch →
+    checkout -B `claude/r1067-wiring-v11` from `6306378` → ancestor proof → store-md5 0efdc5d6
+    assert → y0dpp_bar-present assert), its output committed as FIRST_COMMANDS_PROOF.txt before
+    the PLAN; every mismatch is an explicit HALT. No job, fence, target, or deliverable changed.
+    HYGIENE BATCH (grows item 297's list): (iv) a `tools/seat/first_commands.sh` that mechanizes
+    this block for every future directive (a build's write — tools/ is outside the docs pen);
+    (v) directive TEMPLATE law — the base block is always the document's first section.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
