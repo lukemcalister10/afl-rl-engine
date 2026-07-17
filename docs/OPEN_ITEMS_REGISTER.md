@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v272 2026-07-17 · PEN: ITEM 299: wrong-base root cause (main is a trap; the defence was prose) · owner chose fresh chat · directive v1.1 re-fired with an execute-first base block (8d50bd5) · hygiene grows: first_commands.sh + template law · prior: ITEM 298
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v273 2026-07-17 · PEN: ITEM 300: floor-shadow adjudication — option 2 (one k==0 edit in _prod_floor_w4, fence extended to that site only, 5 conditions; owner's submission = the word) · option 1 rejected (Petracca on the W4 path) · option 3 queued as hygiene w/ determinism proof · prior: ITEM 299
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4157,6 +4157,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     HYGIENE BATCH (grows item 297's list): (iv) a `tools/seat/first_commands.sh` that mechanizes
     this block for every future directive (a build's write — tools/ is outside the docs pen);
     (v) directive TEMPLATE law — the base block is always the document's first section.
+
+300. **THE FLOOR-SHADOW FENCE ADJUDICATION (2026-07-17; the v1.1 build's ACT-1 checkpoint —
+    FIRST_COMMANDS held this time; the probe supervisor-verified from the tree).** FINDING (build's,
+    confirmed): the shipped board's floor for PROVEN players is NOT the in-fence
+    `rl_model.prod_floor` — `_merged_recover.py:815-828` monkey-patches `MA.prod_floor` →
+    `_prod_floor_w4` (gated `n ≥ PROVEN_N`), whose k==0 nets `lev+capt_prem−REPL[bnow]` — present
+    bar only, not §1b-aware; non-proven fall through to base. Consequence: base-only wiring
+    (build's option 1) would leave PETRACCA (proven, floor-dominated — the build's centrepiece)
+    and LLOYD (285 gm, floor-binding) un-§1b'd on the shipped board — REJECTED on purpose-failure.
+    Option 3 (W4 delegates to base — kills the duplicate-loop disease) REJECTED FOR NOW: a
+    structural rewrite of the protected Leg-B module mid-cycle risks float-order drift in a
+    determinism-sensitive board; QUEUED as hygiene with a determinism-proof requirement.
+    **ADJUDICATION: OPTION 2** — the one parallel k==0 edit in `_prod_floor_w4`, fence extended to
+    that site ONLY, under five conditions couriered with the owner's submission (his click = the
+    fence-amendment word, the item-281 pattern): (1) blend OUTSIDE the nonlinearity exactly as the
+    base half — two evaluations, SP·f(REPL[present]) + (1−SP)·f(REPL[low]), never a blended bar
+    inside one call; (2) RL_FLEX-gated, RL_FLEX=0 byte-exact asserted; (3) committed named-row
+    proof Petracca AND Lloyd net vs the low bar ON THE SHIPPED PATH, McKercher shown non-binding;
+    (4) cross-reference comments at both floor sites naming the duplicate-loop hazard; (5) the
+    option-3 refactor explicitly NOT this build. HYGIENE (grows 297/299): (vi) the W4→base floor
+    delegation refactor, own build, determinism proof mandatory.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
