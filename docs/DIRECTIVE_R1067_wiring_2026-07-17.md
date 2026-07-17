@@ -1,6 +1,25 @@
 # DIRECTIVE — R106.7 WIRING (the leg-blind bar: the floor half) + item-284 behaviours + the two owner data corrections
-2026-07-17 · supervisor seat 11 · build model: Opus · ONE JOB, ONE CHAT (S2)
+**v1.1** · 2026-07-17 · supervisor seat 11 · build model: Opus · ONE JOB, ONE CHAT (S2)
+### v1.1 (same day): re-issued for a FRESH chat after the first firing cut from MAIN (the third
+### wrong-base of its class — register item 298; the prior branch `claude/r1067-wiring-item-284-c37vsh`
+### @ `f2bf728` is QUARANTINED, content reference only, owner deletes). ONE structural change: the
+### base commands moved from prose to the literal block below — EXECUTE IT BEFORE READING FURTHER.
+### No job, fence, target, or deliverable changed.
 STATUS: ISSUED — fire when pasted by the owner. Do not fire from the repo alone.
+
+## ⛔ EXECUTE FIRST — BEFORE READING ANYTHING ELSE (your first committed artifact is this block's proof)
+```
+git ls-remote https://github.com/lukemcalister10/afl-rl-engine.git refs/heads/claude/legc-relay-dpp-law-10c4z7
+#   MUST print 6306378691d178551a7f8a461c73811f7a29df4e — anything else: HALT, report, stop.
+git fetch origin claude/legc-relay-dpp-law-10c4z7
+git checkout -B claude/r1067-wiring-v11 6306378691d178551a7f8a461c73811f7a29df4e
+git merge-base --is-ancestor 6306378691d178551a7f8a461c73811f7a29df4e HEAD && echo ANCESTOR-PROOF-PASS
+md5sum engine/rl_after/rl_model_data.json     # MUST begin 0efdc5d6 — anything else: HALT.
+grep -c y0dpp_bar engine/rl_after/rl_model.py # MUST be >=2 — if 0 you are on the wrong tree: HALT.
+```
+Commit this block's output as `session_2026-07-17/r1067_wiring/FIRST_COMMANDS_PROOF.txt` — your
+FIRST commit, before the PLAN. You are NOT on main. Main carries only docs; every engine target
+in this directive exists on the base you just checked out (supervisor live-verified, item 295).
 
 ## THE FIVE (CORE)
 - **EFFORT: High.** Why not Medium: this is the chapter's store/engine writer; it touches the §1b
