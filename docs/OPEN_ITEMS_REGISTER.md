@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v269 2026-07-17 · PEN: ITEM 296: owner-worded eligibility corrections — McKercher G-DEF,MID · Lloyd G-DEF,G-FWD — ride the R106.7 wiring build; item-284 behaviours still implemented · prior: ITEM 295
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v270 2026-07-17 · PEN: ITEM 297: SEASON_PROG deferred (owner: per-round advancement post-project) · seam plan set — seat 11 finishes R106.7 + spec v1.4 + re-seal + hygiene, then rotates; seat 12 opens on Leg D · prior: ITEM 296
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4096,6 +4096,21 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     become conformant; the behaviours guard the next data error). Owner also confirmed the build
     incorporates the Petracca issue — that IS R106.7's floor half (the leg-blind bar), per the
     standing queue.
+
+297. **SEASON_PROG DEFERRAL + THE SEAT-11 SEAM PLAN (2026-07-17, owner-worded).** Owner verbatim:
+    "We currently are four weeks of data behind, while this project works, so once it's done, I'll
+    enter each round, and advance the dial. But that's not a now thing." ⇒ SEASON_PROG stays 0.58
+    through the v2.11 chapter; TRIGGER: post-bake, owner enters rounds and advances the dial
+    himself (an owner dial, never a build's). SEAM PLAN (owner-set): seat 11 carries the R106.7
+    build (fired) through checkpoint + prescreen → SPEC v1.4 → the re-seal → the hygiene batch →
+    ROTATION; seat 12 opens on Leg D. Ordering confirmed to the owner: SPEC v1.4 + the re-seal
+    (both pen jobs, no build) sit between the R106.7 build and Leg D. HYGIENE CANDIDATES (for the
+    seam conversation, not churned now): (i) one_source_selftest's hardcoded /home/claude/
+    rl_workspace path forecloses independent supervisor gate re-runs — an env-var override
+    (RL_WORKSPACE) would open them; (ii) counts in returns must be EMITTED BY THE SCRIPT into the
+    committed artifact, never typed (the BATTERY 112-vs-115 class, item 295); (iii) the per-gate
+    committed-verdict requirement graduates from per-directive boilerplate into the standing cert
+    harness (S5).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
