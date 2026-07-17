@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v290 2026-07-17 · PEN: ITEM 317: Leg-D ACT-1 checkpoint PRESCREEN GREEN at 12a0761 (read-only held; reconcile 20/21; pre-view hashes in; v1_20-hash finding cured via paste-back rider 7c12d0d6=v1_21) — three rulings couriered: construction C-weighted rec · G-Y0 10%/decile+5% pooled rec · fence ev-channel-only rec · prior: ITEM 316
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v291 2026-07-17 · PEN: ITEM 318: the composed pathway construction converges owner-worded (tautology named by the owner; pooled 2% HARD, no bands — my bin proposal corrected; frozen five = separate pre-ladder migration build) · the cross-model review pack fired at 6c7d682 · build holds at 12a0761 · ACT-2 paste-back drafted awaiting his final word · prior: ITEM 317
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4605,6 +4605,36 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     frozen-stamp breakage). The consumer migration = a NAMED post-v2.11 follow-up with its own
     determinism proof (defect-lives-on-its-axis). The 2019 annotation stays report-only (316).
     NEXT: the owner's three words → the ACT-2 paste-back (incl. the v1_21 hash rider).
+
+318. **THE CONSTRUCTION CONVERGES OWNER-WORDED + THE CROSS-MODEL REVIEW FIRES (2026-07-17). Push
+    `6c7d682` (review pack, docs-only, leak-guarded).** THE OWNER'S DESIGN DIALOGUE (this seam's
+    substance, his words the law): (a) he NAMED THE TAUTOLOGY himself — a zero-evidence draftee's
+    V0 *is* the PVC read back — which locks the entry closure: derive the curve from OUTCOMES,
+    then SET zero-evidence V0 from the curve (definitional, leak-free); (b) he REJECTED decile
+    bands for the residual diagnostic as a CORE-rule-7 violation — **supervisor error owned: I
+    proposed wide bins; corrected to the per-exact-pick kernel-smoothed residual CURVE, reported
+    not gated**; (c) his gate construction: NO per-draft-class gate · **POOLED ≤ 2% HARD** ·
+    the smoothed per-pick curve for his eyes; (d) his lean on the FROZEN FIVE adopted:
+    **migrate in a SEPARATE build BEFORE the ladder**, one consumer at a time with per-consumer
+    proofs, the peak-model pvc_snapshot consumer MEASURED FIRST (trained on the old snapshot —
+    retrain risk) with a post-bake fallback; (e) his two ideas composed into THE CONSTRUCTION OF
+    RECORD (pending his final word + the review): **THE COMPOSED PATHWAY CONSTRUCTION** —
+    PVC(p) = Σ_pos P(pos|p) × E[pathway value | pos, p], pathway values fitted from realized
+    walk-forward TRAJECTORIES (2-D pick×year, per-exact-pick, kernel-smoothed non-median),
+    **busts at real outcomes at FULL WEIGHT (owner-explicit)**, evidence-weighted continuously,
+    PVC = the year-0 point; memo-C demoted to the NAMED FALLBACK on a committed-measurement
+    trigger only. **THE REVIEW (owner-scoped: second opinion, NOT design):**
+    `docs/ADVERSARIAL_REVIEW_pvc_construction_2026-07-17.md` — the construction + the measured
+    evidence + 8 numbered questions (entry-closure vacuousness · 2-D estimator risks · bust
+    selection effects · year-0 extrapolation bias · composition drift · validation demands ·
+    fallback trigger · anything-better) + a NOT-to-do fence (no survivor pools/thresholds/market
+    pricing). Leak-guard asserted: no SHAs, register items, or seat names in the pack. Findings
+    return as HYPOTHESES for supervisor verification (the item-290 pattern). **SEQUENCE:** the
+    build HOLDS at `12a0761` (a designed seam; re-fire from that SHA if its budget dies) → owner
+    pastes the pack to ChatGPT → findings verified → his three final words → the ACT-2 paste-back
+    (drafted, couriered to him this turn: rulings verbatim-in-substance + the v1_21 hash rider
+    `7c12d0d6` + the frozen-five separate-build ruling). The FIVE-MIGRATION DIRECTIVE queues
+    behind the ACT-2 return.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
