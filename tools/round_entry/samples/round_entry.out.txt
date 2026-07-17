@@ -1,0 +1,25 @@
+$ printf 'name,score\nWillem Duursma,101\nErrol Gulden,124\nNic Fakename,55\n' | round_entry enter --round 12
+ROUND 12 — active pool 804 — 2 resolved, 1 residue
+  OK   Errol Gulden              124.0  -> errol-gulden
+  OK   Willem Duursma            101.0  -> willem-duursma
+  ??   Nic Fakename               55.0  [unresolved] candidates: 1)Nick Larkey, 2)Nick Blakey
+
+1 line(s) need a one-tap confirm. Edit the ACTION lines in:
+  <out-dir>/round_12.residue.txt
+then run:  round_entry confirm --round 12
+(no snapshot written — nothing enters a snapshot unresolved)
+
+# --- the owner edits round_12.residue.txt: sets ACTION: skip on the not-in-DB line ---
+$ round_entry confirm --round 12
+ROUND 12 confirmed — snapshot written: <out-dir>/round_12.snapshot.json
+  resolved 2 (2 exact + 0 confirmed) · skipped 1 · residue_open 0
+  SKIP Nic Fakename               55.0 (owner-skip)
+
+$ round_entry show --round 12
+ROUND 12 snapshot — <out-dir>/round_12.snapshot.json
+  season 2026 · generated 2026-07-17T09:00:00Z
+  source_store_md5 b1fd0bce · module_code_md5 1c11615e
+  counts: {"residue_open": 0, "resolved": 2, "skipped": 1}
+    Errol Gulden              124.0  errol-gulden (exact)
+    Willem Duursma            101.0  willem-duursma (exact)
+    [skip] Nic Fakename         55.0  owner-skip

@@ -1,0 +1,181 @@
+{
+  "apply_raised": "round-score APPLY is OFF (APPLY_DEFAULT=False, env INGEST_SCORE_APPLY unset). This provision job writes nothing to the store; go-live is a separate owner-worded job.",
+  "board_md5_after": "790136a3",
+  "board_md5_before": "790136a3",
+  "board_md5_pinned": "790136a3",
+  "checks": [
+    {
+      "detail": "resolved=3",
+      "name": "a.resolved==3",
+      "pass": true
+    },
+    {
+      "detail": "residue=0",
+      "name": "a.residue==0",
+      "pass": true
+    },
+    {
+      "detail": "{\"residue_open\": 0, \"resolved\": 3, \"skipped\": 0}",
+      "name": "a.snapshot.counts",
+      "pass": true
+    },
+    {
+      "detail": "active_pool=6",
+      "name": "a.retired-excluded (pool=6 not 7)",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "b.residue-file-written",
+      "pass": true
+    },
+    {
+      "detail": "resolved=1 residue=1",
+      "name": "b.1-exact-1-residue",
+      "pass": true
+    },
+    {
+      "detail": "candidates=['Nick Daicos', 'Josh Daicos']",
+      "name": "b.near-candidates-list-Nick-Daicos",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "b.reason==unresolved",
+      "pass": true
+    },
+    {
+      "detail": "{\"residue_open\": 0, \"resolved\": 2, \"skipped\": 0}",
+      "name": "b.confirmed.counts",
+      "pass": true
+    },
+    {
+      "detail": "vias=['confirm', 'exact']",
+      "name": "b.one-exact-one-confirm",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "b.confirmed-row-is-Nick-Daicos-key",
+      "pass": true
+    },
+    {
+      "detail": "resolved=1 residue=1",
+      "name": "c.1-exact-1-residue",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "c.unknown-name-in-residue",
+      "pass": true
+    },
+    {
+      "detail": "{\"residue_open\": 0, \"resolved\": 1, \"skipped\": 1}",
+      "name": "c.skip.counts",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "c.skipped-is-the-unknown",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "c.unknown-NOT-in-resolved",
+      "pass": true
+    },
+    {
+      "detail": "resolved=0",
+      "name": "d.no-auto-resolve",
+      "pass": true
+    },
+    {
+      "detail": "residue=1",
+      "name": "d.one-residue-line",
+      "pass": true
+    },
+    {
+      "detail": "reason=ambiguous",
+      "name": "d.reason==ambiguous",
+      "pass": true
+    },
+    {
+      "detail": "candidates=2",
+      "name": "d.BOTH-candidates-shown",
+      "pass": true
+    },
+    {
+      "detail": "keys=['sam-clash-a', 'sam-clash-b']",
+      "name": "d.both-active-exact-keys",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "d.both-kind-active-exact",
+      "pass": true
+    },
+    {
+      "detail": "resolved=2",
+      "name": "e.first-entry-2-resolved",
+      "pass": true
+    },
+    {
+      "detail": "cli said REPLACING",
+      "name": "e.re-entry-announces-REPLACING",
+      "pass": true
+    },
+    {
+      "detail": "keys=['zak-butters']",
+      "name": "e.replaced-not-merged",
+      "pass": true
+    },
+    {
+      "detail": "snapshot files=['round_5.snapshot.json']",
+      "name": "e.single-snapshot-no-dup",
+      "pass": true
+    },
+    {
+      "detail": "round-score APPLY is OFF (APPLY_DEFAULT=False, env INGEST_SCORE_APPLY unset). Th",
+      "name": "nw.apply-raises-IngestionGatedError",
+      "pass": true
+    },
+    {
+      "detail": "md5 770a4b63 == 770a4b63",
+      "name": "det.byte-identical",
+      "pass": true
+    },
+    {
+      "detail": "b1fd0bce -> b1fd0bce",
+      "name": "nw.store-md5-unchanged",
+      "pass": true
+    },
+    {
+      "detail": "b1fd0bce (pin b1fd0bce)",
+      "name": "nw.store-md5==pinned",
+      "pass": true
+    },
+    {
+      "detail": "790136a3 -> 790136a3",
+      "name": "nw.board-md5-unchanged",
+      "pass": true
+    },
+    {
+      "detail": "790136a3 (pin 790136a3)",
+      "name": "nw.board-md5==pinned",
+      "pass": true
+    }
+  ],
+  "checks_passed": 32,
+  "checks_total": 32,
+  "clean_snapshot_counts": {
+    "residue_open": 0,
+    "resolved": 3,
+    "skipped": 0
+  },
+  "determinism_snapshot_md5": "770a4b63",
+  "module_code_md5": "1c11615e",
+  "proof_pass": true,
+  "store_md5_after": "b1fd0bce",
+  "store_md5_before": "b1fd0bce",
+  "store_md5_pinned": "b1fd0bce"
+}

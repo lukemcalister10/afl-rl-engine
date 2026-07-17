@@ -1,0 +1,33 @@
+=== FIRST_COMMANDS_PROOF — round_entry_tool build — 2026-07-17 ===
+
+$ git ls-remote .../refs/heads/main
+0339e373f5195e5f09a431a34c3b00462ff3a35a	refs/heads/main
+
+BASE RULE: main SHA 0339e373 AT-OR-AFTER 4848f80 — checking docs-only drift
+$ git diff --name-only 4848f80..0339e373
+docs/DIRECTIVE_ROUND_ENTRY_tool_2026-07-17.md
+docs/MEMO_LEGE_projection_construction_DRAFT_2026-07-17.md
+docs/OPEN_ITEMS_REGISTER.md
+  -> ALL docs/ — PASS (no non-docs drift)
+
+$ git checkout -b claude/round-entry-tool-zvh7vw origin/main   (branch pre-existed, clean at main HEAD; 0 ahead / 0 behind)
+$ git merge-base --is-ancestor 4848f80 HEAD
+ANCESTOR-PROOF-PASS
+
+$ ls engine/rl_after/ingestion/
+PLAN.md
+PROOF.md
+__init__.py
+dry_run_proof.py
+proof.json
+round_score_parser.py
+score_ingestor.py
+
+$ grep -n 'IngestionGatedError|APPLY_DEFAULT' score_ingestor.py
+11:    ScoreIngestor().apply(preview)               # RAISES IngestionGatedError — switch is OFF
+45:APPLY_DEFAULT = False                     # code half of the switch — MUST stay False in this job
+49:class IngestionGatedError(RuntimeError):
+55:    return bool(APPLY_DEFAULT) and bool(os.environ.get(_APPLY_ENV))
+  -> gate present, APPLY_DEFAULT False — write path ABSENT BY DESIGN — PASS
+
+ALL EXECUTE-FIRST CHECKS PASS.

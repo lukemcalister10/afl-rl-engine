@@ -1,0 +1,120 @@
+[
+  {
+    "key": "nick-daicos",
+    "player": "Nick Daicos",
+    "stable_player_id": "afl-player-v1-1111111111111111aaaa",
+    "afl_club": "Collingwood",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "josh-daicos",
+    "player": "Josh Daicos",
+    "stable_player_id": "afl-player-v1-2222222222222222bbbb",
+    "afl_club": "Collingwood",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "errol-gulden",
+    "player": "Errol Gulden",
+    "stable_player_id": "afl-player-v1-3333333333333333cccc",
+    "afl_club": "Sydney",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "marcus-bontempelli",
+    "player": "Marcus Bontempelli",
+    "stable_player_id": "afl-player-v1-4444444444444444dddd",
+    "afl_club": "Western Bulldogs",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "zak-butters",
+    "player": "Zak Butters",
+    "stable_player_id": "afl-player-v1-5555555555555555eeee",
+    "afl_club": "Port Adelaide",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "caleb-serong",
+    "player": "Caleb Serong",
+    "stable_player_id": "afl-player-v1-6666666666666666ffff",
+    "afl_club": "Fremantle",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "nick-daicos-retired",
+    "player": "Nick Daicos",
+    "stable_player_id": null,
+    "afl_club": "Old Club",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ],
+    "_retired": true
+  },
+  {
+    "key": "sam-clash-a",
+    "player": "Sam Clash",
+    "stable_player_id": "afl-player-v1-7777777777777777aaaa",
+    "afl_club": "Geelong",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  },
+  {
+    "key": "sam-clash-b",
+    "player": "Sam Clash",
+    "stable_player_id": "afl-player-v1-8888888888888888bbbb",
+    "afl_club": "Adelaide",
+    "scoring": [
+      {
+        "year": 2026,
+        "avg": 80.0,
+        "games": 10
+      }
+    ]
+  }
+]
