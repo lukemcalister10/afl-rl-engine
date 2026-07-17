@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v289 2026-07-17 · PEN: ITEM 316: parallel batch at 5eade6d — the ROUND-ENTRY TOOL directive (item-305 law; dry-run only, write path absent, disjoint from Leg D) + the LEG-E construction memo v0.1 DRAFT (finalized post-Leg-D) · the item-315 docs-adjacent premise corrected · prior: ITEM 315
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v290 2026-07-17 · PEN: ITEM 317: Leg-D ACT-1 checkpoint PRESCREEN GREEN at 12a0761 (read-only held; reconcile 20/21; pre-view hashes in; v1_20-hash finding cured via paste-back rider 7c12d0d6=v1_21) — three rulings couriered: construction C-weighted rec · G-Y0 10%/decile+5% pooled rec · fence ev-channel-only rec · prior: ITEM 316
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4570,6 +4570,41 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     one-line 2019 annotation fix rides a later tiny named engine change. **OWNER DO:** paste the
     round-entry directive into a SECOND fresh Claude Code chat (Opus) — it runs alongside Leg D.
     The Leg-E memo needs nothing from him now.
+
+317. **LEG-D ACT-1 CHECKPOINT — PRESCREEN GREEN; the three rulings COURIERED to the owner
+    (2026-07-17).** Branch `claude/legd-pvc-rederivation-o290ye`, head `12a0761` (5 commits),
+    SUPERVISOR-VERIFIED own-fetch: proof-first held (first commit = FIRST_COMMANDS_PROOF, six
+    verdicts) ✓ · base ancestry from `33c8b52` ✓ · **READ-ONLY HELD — the 33c8b52..12a0761 diff
+    touches ONLY session_2026-07-17/legd_derivation/** (no engine, no store)** ✓ · the
+    reconciliation is script-emitted and committed (20/21 headline fields byte-identical to the
+    groundwork; the 1 diff = 3 per-band mean_peak ≤1 SCAR — base-change noise, a finding not a
+    problem) ✓ · pre-view hashes committed BEFORE any curve (memo · SITE_CENSUS · acceptance ·
+    the SHIPPED pvc_curve_L1b for the ACT-2 diff target) ✓ · the retired G-Y0 remedy NOT wired ✓.
+    **ONE PRESCREEN FINDING, cured in the paste-back:** the build hashed `acceptance_v1_20.json`
+    from its OWN TREE (docs on the engine base pre-date the re-seal; docs are OUT of its fence —
+    correct discipline, explicitly flagged, and its "substance-identical" claim was SCOPED to the
+    operative Leg-D entries, which I verified TRUE: leg_d_placeholders byte-identical v1.20↔
+    v1.21). The guards[G-Y0] delta (ADVISORY→BINDING · fix_direction) is carried by the
+    DIRECTIVE's own law text, which the build honoured. CURE: the ACT-2 paste-back records the
+    CURRENT twin's md5 — `7c12d0d6949b303d7965d5d80aac9309 docs/acceptance_v1_21.json @ main` —
+    alongside the build's v1_20 hash, so the ladder's hash rung pins the sealed twin. **THE
+    THREE RULINGS PUT (recommendations couriered; the words are the owner's):** (1) CONSTRUCTION
+    — rec **C-weighted** (continuous two-ends; A = dropping 1093 poles is a hard gate/games-
+    floor, the R105.4 permanently-rejected pattern; B = 531 survivors-only re-imports
+    survivorship bias + a threshold; both would need L-SMOOTH/R105.4 waivers, C needs none).
+    (2) G-Y0 TOLERANCE — shape as proposed (relative · per-pick-decile · population-averaged vs
+    the NEW curve); number options **10%/decile + 5% pooled (rec — sized to catch construction
+    failure on a first derivation, tightened by re-seal on measurement; the F13 false-halt
+    lesson)** vs 8%/decile + 5% pooled (tighter, re-run risk). Build's sign-changing residual
+    finding noted (top 1–41 V0≤PVC −1.6..−6.2% · tail 51+ +36..+54% vs the flat floor) with the
+    honest attribution vs the 2026-07-13 table (different construction, different comparator).
+    (3) FENCE — rec **ev-channel-only** (`_PVC0` swap; RL_PVC2=0 ⇒ 9829d01a byte-exact): the
+    five rl_model.py MA.PVC consumers stay on FROZEN v3.4 BY EXISTING DESIGN (job-4b provenance
+    stamps; pickless _eff · pedestal · pvc_snapshot→peak model), so narrow = the shipped state
+    preserved on those axes; extending would move multiple axes in one build (G-ATTR strain,
+    frozen-stamp breakage). The consumer migration = a NAMED post-v2.11 follow-up with its own
+    determinism proof (defect-lives-on-its-axis). The 2019 annotation stays report-only (316).
+    NEXT: the owner's three words → the ACT-2 paste-back (incl. the v1_21 hash rider).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
