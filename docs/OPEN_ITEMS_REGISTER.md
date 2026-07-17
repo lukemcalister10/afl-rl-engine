@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v291 2026-07-17 · PEN: ITEM 318: the composed pathway construction converges owner-worded (tautology named by the owner; pooled 2% HARD, no bands — my bin proposal corrected; frozen five = separate pre-ladder migration build) · the cross-model review pack fired at 6c7d682 · build holds at 12a0761 · ACT-2 paste-back drafted awaiting his final word · prior: ITEM 317
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v292 2026-07-17 · PEN: ITEM 319: scope corrected (owner: independent from-scratch competitor, not a review — 318 misread owned; 6c7d682 pack superseded-in-purpose) · clean-room pack couriered (13,628-row trajectory CSV, machinery withheld + pollution-guarded brief at 4a48021) · ACT-2 paste-back re-headed FIRE NOW; competitor weighed at the ACT-2 return · prior: ITEM 318
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4635,6 +4635,39 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (drafted, couriered to him this turn: rulings verbatim-in-substance + the v1_21 hash rider
     `7c12d0d6` + the frozen-five separate-build ruling). The FIVE-MIGRATION DIRECTIVE queues
     behind the ACT-2 return.
+
+319. **SCOPE CORRECTED (owner-worded) — THE CLEAN-ROOM DESIGN COMPETITION FIRES + ACT 2 GOES FULL
+    SPEED (2026-07-17). Push `4a48021` (the brief, docs-only, pollution-guarded).** OWNED: item
+    318's "second opinion on ours" read was MY misread of the owner's intent — he wants an
+    INDEPENDENT FROM-SCRATCH proposal from ChatGPT as a healthy COMPETITOR, incorporated only if
+    it works, while OUR construction proceeds full speed and makes it redundant if we succeed.
+    The item-318 review pack (`6c7d682`) is SUPERSEDED-IN-PURPOSE (unfired; reusable later at an
+    incorporation adjudication if ever wanted). **THE CLEAN-ROOM PACK (couriered):** (1)
+    `afl_draft_trajectories.csv` — 2,649 entrants · 13,628 player-season rows, derived READ-ONLY
+    from the committed groundwork artifact `per_entrant.json @ 9845180` (src md5 7aa39da2;
+    provenance header in-file): player · entry year · mechanism · pick · position · per-season
+    value_asof + games · exit markers. **WITHHELD BY GUARD (our machinery):** v0 · anchor · eq ·
+    pw · _eff · band · incurve — asserted absent from the header pre-courier. (2)
+    `docs/CLEANROOM_BRIEF_pick_valuation_2026-07-17.md` — goal (owner's intent verbatim; pick 1
+    ≡ 3,000; consistency with the player values as the given currency) + league context +
+    data dictionary + six deliverables (method · assumptions · worked shape · validation ·
+    failure modes · data wished for). **POLLUTION GUARD MECHANICALLY GATED THE PUSH:** none of
+    our construction vocabulary or law forms appear (asserted list: trajectory-anchor · composed
+    pathway · two-ends · circularity · residuals · strict descent · smooth · thresholds · 2% ·
+    G-Y0/V0/day-after · PVC · walk-forward · kernel · SHAs · seats). Our LAWS deliberately
+    withheld too — the competitor derives its own principles; OUR laws adjudicate at
+    incorporation, not at design. **OUR TRACK:** the ACT-2 paste-back re-headed FIRE NOW
+    ("full speed ahead" = the word; the clean-room run does NOT gate the build; its result is
+    weighed at the ACT-2 return). Rulings unchanged from 318's convergence: the composed pathway
+    construction (busts REAL outcomes FULL weight) · pooled ≤2% HARD, per-exact-pick smoothed
+    residual curve reported, no bands, no per-draft gate · fence narrow + the FIVE-migration
+    separate pre-ladder build (pvc_snapshot measured-first, post-bake fallback) · the v1_21 hash
+    rider 7c12d0d6. **INCORPORATION TRIGGER (recorded so it is not vibes):** if the competitor's
+    proposal survives supervisor verification AND offers something ours measurably lacks, it
+    enters as a design input adjudicated by the owner at the ACT-2 prescreen window — with
+    measurements, per the item-290 hypothesis discipline. OWNER DOs: (1) start a fresh ChatGPT
+    chat: upload the CSV, paste the brief. (2) paste the ACT-2 go into the build chat NOW
+    (re-fire from `12a0761` if that chat's budget is dead).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
