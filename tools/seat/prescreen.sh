@@ -31,6 +31,32 @@ echo "branch     : $BRANCH"
 echo "base       : $BASE"
 echo "head       : $HEAD   (git rev-parse FETCH_HEAD)"
 
+# --- FIRST CHECK (base guard, directive 2026-07-17 / register items 264·270·298·299): the branch's
+#     FIRST commit above the base must carry FIRST_COMMANDS_PROOF.txt, and the SHA it recorded must
+#     equal the branch's ACTUAL base (the parent of that first commit) AND the pinned base we were
+#     handed. A content-copy branch (item 270/298) fails here: its first commit sits on main, not the
+#     pin, so the recorded pin != the actual parent. This runs BEFORE anything else is read — the
+#     item-298 SEAM NOTE: prescreen verifies the ancestor proof before reading the candidate. ---
+echo "-- FIRST_COMMANDS_PROOF check (base guard, first artifact) --"
+FIRST="$(git -C "$HERE" rev-list --reverse --ancestry-path "${BASE}..${HEAD}" 2>/dev/null | head -n1 || true)"
+if [ -z "$FIRST" ]; then
+  die "cannot locate the branch's first commit above base — ${BASE:0:8}..${HEAD:0:8} has no ancestry path (base NOT an ancestor of head: the wrong-base failure, items 270/298)"
+fi
+PROOF_TXT="$(show "$FIRST" "FIRST_COMMANDS_PROOF.txt")" \
+  || die "branch's first commit ${FIRST:0:8} does NOT contain FIRST_COMMANDS_PROOF.txt (the base guard's first artifact is missing — items 298/299)"
+[ -n "$PROOF_TXT" ] || die "FIRST_COMMANDS_PROOF.txt is empty at first commit ${FIRST:0:8} (SILENCE IS A RED)"
+REC_SHA="$(printf '%s\n' "$PROOF_TXT" | grep -E '^base_sha' | head -n1 | grep -oE '[0-9a-fA-F]{40}' | head -n1 || true)"
+[ -n "$REC_SHA" ] || die "FIRST_COMMANDS_PROOF.txt at ${FIRST:0:8} carries no 'base_sha' 40-hex line (cannot read the recorded base)"
+ACTUAL_BASE="$(git -C "$HERE" rev-parse "${FIRST}^" 2>/dev/null || true)"
+[ -n "$ACTUAL_BASE" ] || die "cannot resolve parent of first commit ${FIRST:0:8} (its actual base)"
+if [ "$REC_SHA" = "$ACTUAL_BASE" ] && [ "$REC_SHA" = "$BASE" ]; then
+  echo "  proof      : PASS  first commit ${FIRST:0:8} records base_sha ${REC_SHA:0:8} == actual parent ${ACTUAL_BASE:0:8} == pinned base ${BASE:0:8}"
+elif [ "$REC_SHA" != "$ACTUAL_BASE" ]; then
+  die "recorded base ${REC_SHA:0:8} != first commit's ACTUAL parent ${ACTUAL_BASE:0:8} — the proof claims a base the branch was not cut from (content-copied? items 270/298)"
+else
+  die "recorded base ${REC_SHA:0:8} != the pinned base ${BASE:0:8} we were handed — branch's first commit proves a different pin"
+fi
+
 # --- ancestry (raw SHAs, explicit verdict) ---
 if git -C "$HERE" merge-base --is-ancestor "$BASE" "$HEAD" 2>/dev/null; then
   echo "ancestry   : YES  base $(echo "$BASE" | cut -c1-8) is-ancestor head $(echo "$HEAD" | cut -c1-8)"
