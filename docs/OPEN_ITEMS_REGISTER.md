@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v256 2026-07-17 · PEN: **ITEM 283: the ChatGPT adversarial audit TRIAGED — ~24/30 findings CONFIRMED; 3 load-bearing (F13 the ladder-halting β gate · F8 the spec name-join · F18 the cross-line collapse ambiguity, checked at the relay return). SPEC → v1.4 surgery is the NEXT pen job; the re-seal cargo GROWS. No mid-flight build change** · prior: v255
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v257 2026-07-17 · PEN: **ITEM 284: owner rules the F18/F20 questions — CROSS-CLASS DUALS ARE DATA ERRORS (key carries across positions), flag-and-continue; F17 re-explained, word pending; the Petracca floor question framed for viewing** · prior: v256
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6070,3 +6070,24 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     §1b magnitude hand-checked for one named player) · every deliverable asserted from
     COMMITTED ARTIFACTS regardless of the ≤30-line prose. NO RELAY INTERRUPTION. NEXT PEN JOB:
     SPEC → v1.4 (the batch above).
+
+284. **THE §1b EDGE RULINGS (2026-07-17, owner verbatim).** **Q1 (F18):** "A player listed as
+    K-DEF + G-FWD is a mistake and should be flagged, likewise K-FWD and G-DEF, or RUC/G-FWD,
+    or RUC/G-DEF (ruck dual position without the key). Key designation carries across
+    positions, so it's not possible to be key in one position and general in another." ⇒ the
+    LAW for spec v1.4: cross-class pairings (any K-line or RUC listing beside any G listing,
+    other than the SAME-LINE K/G listing artifact which silently collapses to K) are DATA
+    ERRORS — never design cases. **Q2 (F20):** "Flag it, but keep building." ⇒ operational
+    treatment for BOTH error classes (cross-class duals; present_position ∉ the collapsed
+    set): the build REPORTS the row by name, treats it as SINGLE-POSITION for §1b (no dual
+    bar), and CONTINUES; the owner's read fixes the data; no halt. **F17:** re-explained in
+    plain terms (the receipt/discount-order analogy — final values identical, stage credit
+    order-dependent); the owner's confirm word PENDING ("build's order fine" blesses
+    writes→blend→§1b as the convention of record). **THE PETRACCA FLOOR QUESTION framed for
+    viewing (not now):** his §1b lift (~+1) is the "banked untouched" clause working literally
+    — his demonstrated-production floor out-tops the improved projection; IF the owner's intent
+    is that a proven player's demonstrated remaining-season output ALSO measures against the
+    better bar, that is a one-clause §1b amendment to rule WITH the attribution in front of
+    him. Both Q1/Q2 join the spec v1.4 batch (item 283) and the §1b acceptance enumeration
+    (F29): the invalid-pair fixture set is now K-DEF+G-FWD · K-FWD+G-DEF · RUC+G-FWD ·
+    RUC+G-DEF, each flag-and-continue.
