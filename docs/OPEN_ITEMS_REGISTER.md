@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v246 2026-07-17 · PEN: **ITEM 273: the item-272 ledger was MISLABELLED (base column carried 8d90c9ac, the POST-Leg-A board, not baked v2.10 790136a3 — owner-caught); CORRECTED sheet re-filed with the true four-board lineage. Numbers unchanged, columns realigned. Relay still awaits the go** · prior: v245
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v247 2026-07-17 · PEN: **ITEM 274: THE CURRENT-SEASON DPP DESIGN WAS NEVER CAPTURED INTO THE SPEC (owner-raised with frustration — justified): the chapter spec carries ZERO current-season DPP language; Leg C built the future blend only. Seat-10 turn-41 R105.1 over-application owned. CURE: law-form to owner for confirm → spec addendum → rides the relay** · prior: v246
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5870,3 +5870,26 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     (Player_values_leg_by_leg_CORRECTED.xlsx); net per corrected leg A +8,454 · B +1,231 ·
     C +11,750 · overall +21,435. The first file is superseded. No engine/store impact — a
     reporting defect only. Relay directive still awaits the owner's go.
+
+274. **THE CURRENT-SEASON DPP MISS (2026-07-17, owner-raised, verbatim substance): "For the
+    CURRENT SEASON, players can have dual positions... official supercoach positions.
+    Eligibilities tab on the authoritative universe sheet... the DPP was meant to add the future
+    positional blend, but ALSO add in dual positions for the CURRENT season... Sheezel or
+    Petracca would have their CURRENT season FORWARD LOOKING component (~10 of 24) measured
+    against the forward bar... still playing as a mid, just measured against the forward bar...
+    current season valuation component is based upon whichever of the dual positions is more
+    valuable for them... This has been discussed at length. I am frustrated this has slipped."**
+    DROP-POINT ESTABLISHED: SPEC_PVC_FLEX_CHAPTER v1.2 (the spec of record) contains NO
+    current-season DPP / eligibilities-bar language anywhere (grep: zero hits) — the design
+    lived in discussion across seats and was NEVER CAPTURED into the binding law; the Leg-C
+    directive faithfully implemented the incomplete spec. THE FAILURE CLASS: a discussed owner
+    design not reduced to verbatim law — the exact disease the one-pen discipline exists to
+    prevent. SEAT-10 CORRECTION LEDGER +1: turn 41 over-applied R105.1 ("eligibility is never a
+    valuation") — R105.1's true scope is K-listings' G = slot-only; it does not bar G/M
+    current-season DPP pricing. CURE (proportionate): the eligibilities are ALREADY STORE-
+    RESIDENT and SEASON_PROG already in config ⇒ engine wiring only, riding the ALREADY-OWED
+    relay build. LAW-FORM sent to the owner for confirm (year-0 leg only; level path keyed to
+    the real role; remaining-season bar = the more valuable of the dual positions; banked
+    component untouched; years-1+ = the future blend law; singles unchanged; examples Sheezel/
+    Petracca/Jagga Smith). Self-resolved: Sheezel's future register needs NO alternate (his
+    uplift is year-0). Still open to owner: the law confirm · Driscoll 90% · the relay go.
