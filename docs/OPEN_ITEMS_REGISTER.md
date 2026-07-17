@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v293 2026-07-17 · PEN: ITEM 320: ACT-2 re-fire directive at d3a7cfb — fresh chat from checkpoint 12a0761 (ACT-1 chat write-retired; memo hash re-asserted at entry; sealed twin 7c12d0d6 pinned from main); owner rulings carried in full · owner pastes into a fresh Opus chat · prior: ITEM 319
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v294 2026-07-17 · PEN: ITEM 321: round-entry tool PRESCREEN GREEN at c562932 (fence exact · 32/32 from committed proof.json · apply-gate intact · store/board byte-unchanged) — OWNER MERGES PR #108; go-live stays the separate post-delivery word · prescreen fetch-freshness lesson banked · prior: ITEM 320
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4691,6 +4691,30 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     4–6 h. OWNER DO: paste into a FRESH Claude Code chat (Opus); the old chat stays open for
     questions only. SUPERVISOR NEXT: the ACT-2 return prescreen (item-302 five triggers) ·
     the competitor proposal's verification when the owner couriers it.
+
+321. **ROUND-ENTRY TOOL RETURN — PRESCREEN GREEN; OWNER-MERGEABLE (2026-07-17).** Branch
+    `claude/round-entry-tool-zvh7vw` head `c562932`, PR #108 against MAIN (the #106/#107 light
+    tools path). SUPERVISOR-VERIFIED (own fetch, committed artifacts not the return's prose):
+    proof-first held (`fc70cce` = FIRST_COMMANDS_PROOF, then PLAN) ✓ · base rule held (pin
+    `4848f80` is an ancestor; true merge-base `0339e373`; base drift docs-only) ✓ · **FENCE
+    EXACT: zero files outside engine/rl_after/ingestion/** + tools/round_entry/** + the session
+    dir** ✓ · store diff on the branch = 0 lines ✓ · **proof.json read directly: checks 32/32 ·
+    proof_pass TRUE · apply() gate INTACT (APPLY_DEFAULT False, env unset — the write path
+    remains ABSENT) · store b1fd0bce and board 790136a3 byte-identical before/after/pinned ·
+    snapshot determinism md5 recorded (770a4b63)** ✓. Item-305 law implemented as directed:
+    exact-match over the live 804-row active pool at run time · near-miss/ambiguous → residue
+    with candidates, one-ACTION confirm blocks, loud refusal on blank/invalid · idempotent
+    loud-replace per round · SSI-stamped snapshots (store md5 · module md5 · generated_at).
+    Actual ~30 min vs the 2–4 h band (flagged <½× correctly; reusable provision plumbing — the
+    directive scoped it as enumerated work). BUILD'S "watch the PR" OFFER DECLINED: one job per
+    chat; the chat RETIRES on its return; the owner merges on prescreen. SUPERVISOR SELF-NOTE
+    (owned): my first merge-base ran against a STALE local origin/main tracking ref (last true
+    fetch several pushes back) and mis-scoped the file list — caught immediately (the log range
+    showed my own pen commits), re-fetched, recomputed; the pinned-SHA ancestor check was
+    correct throughout. Lesson banked: a prescreen merge-base is only as good as the fetch just
+    run — `git fetch origin main` opens EVERY prescreen, not just the seat's first turn.
+    **OWNER DO: merge PR #108.** GO-LIVE remains the separate post-delivery owner-worded job
+    (register v25 / GO_LIVE runbook); the tool ships armed with nothing.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
