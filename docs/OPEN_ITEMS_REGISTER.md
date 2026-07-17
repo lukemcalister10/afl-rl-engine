@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v252 2026-07-17 · PEN: **ITEM 279: the SECOND self-audit (owner-prompted) — FIVE more defects fixed; cascade → rev151/v118/v4.44; TERMINAL ITEM-COUNTS ABOLISHED as a class from pack docs. One LIVE CONTINGENCY armed: the relay fired against the pre-fix spec header (v1.2 lookalike era)** · prior: v251
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v253 2026-07-17 · PEN: **ITEM 280: third self-audit — the pack verifies CLEAN; the ADVERSARIAL PROMPT ITSELF was stale in four places (archived versions + a 277 cap) → v1.1 pre-consumption. Proactive ERRATUM paste to the relay recommended re: the spec-header window** · prior: v252
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5982,3 +5982,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     277); the law text is unchanged; proceed." Not a defect in the build. The adversarial
     review (item 278) now runs against rev151/v118/v4.44 + SPEC v1.3 + the relay directive +
     items 250–279. Self-audit series: 4, then 5 — the independent eye remains necessary.
+
+280. **THE THIRD SELF-AUDIT (2026-07-17, owner-prompted "one more review before I send it to
+    ChatGPT").** The three live pack docs + the full manifest table verify CLEAN (the only
+    superseded-version hits are correct historical changelog lines). THE FINDING: **the
+    adversarial prompt itself (item 278) was stale in four places** — it named the archived
+    v4_43/rev150/v117 and capped the register at 277 twice; pasted as-is, the auditor's first
+    finding would have been the auditor's brief. PROMPT → **v1.1** (versions v4_44/rev151/v118 ·
+    items 250–279 · the error-count framing updated to the running series), correction declared
+    in its own header. ALSO RULED-TO-RECOMMEND: a PROACTIVE ERRATUM to the in-flight relay
+    (rather than waiting for a halt) — the build fired inside the spec-header lookalike window;
+    a mid-flight factual erratum prevents both the false halt AND the silent-improvise failure
+    mode the conduct history shows; text in chat. Self-audit series now 4 · 5 · 1 — converging,
+    and the independent review proceeds against rev151/v118/v4.44 regardless.
