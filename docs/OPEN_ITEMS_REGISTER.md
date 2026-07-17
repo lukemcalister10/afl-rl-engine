@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v294 2026-07-17 · PEN: ITEM 321: round-entry tool PRESCREEN GREEN at c562932 (fence exact · 32/32 from committed proof.json · apply-gate intact · store/board byte-unchanged) — OWNER MERGES PR #108; go-live stays the separate post-delivery word · prescreen fetch-freshness lesson banked · prior: ITEM 320
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v295 2026-07-17 · PEN: ITEM 322: ACT-2 prescreen at e4177c2 — SUBSTANCE GREEN (descent recomputed 0 violations; G-Y0 1.10% pass; kill-switch byte-exact; named rows hold; pair-3 +6.2% Bont-ahead inside band; tail cured ~334→494) · triggers 1+4 TRIPPED (rl_export fence omission = MY directive defect, owned; branch reconciliation disclosed) · REC: bounded shard before the five-migration · owner's word decides · prior: ITEM 321
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4715,6 +4715,43 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     run — `git fetch origin main` opens EVERY prescreen, not just the seat's first turn.
     **OWNER DO: merge PR #108.** GO-LIVE remains the separate post-delivery owner-worded job
     (register v25 / GO_LIVE runbook); the tool ships armed with nothing.
+
+322. **LEG-D ACT-2 RETURN — PRESCREEN: SUBSTANCE GREEN · TWO ITEM-302 TRIGGERS TRIPPED (both
+    governance-mechanical, one MY directive defect) · DECISION LINE: bounded shard RECOMMENDED
+    before the five-migration stacks (2026-07-17).** Branch
+    `claude/legd-pvc-rederivation-act2-l2hqpl` head `e4177c2`, PR #109 stacked on #105.
+    SUPERVISOR-VERIFIED (own fetch + own recomputes): checkpoint `12a0761` AND base `33c8b52`
+    ancestors ✓ · o290ye UNMOVED at 12a0761 (one-writer held) ✓ · proof-first (e0ee8079) ✓ ·
+    store diff 0 lines ✓ · **MD5 SEMANTICS RESOLVED: the return's `89c14729` = the artifact's
+    internal curve-payload stamp (I RECOMPUTED it — matches); whole-file md5 `56dd7a7b`; a KAT
+    names WHAT it hashes — banked** · **strict descent RECOMPUTED MYSELF from the curve: 0
+    violations p1..80; curve(1)=3000; curve(80)=494 (the tail lift)** ✓ · per-gate committed
+    verdicts read: RL_PVC2=0 ⇒ 9829d01a byte-exact (proven) · G-Y0 pooled 0.257% offline /
+    **1.10% real-engine ≤ 2% HARD PASS** · R104.5 exact · entry closure (Jagga Smith pk3
+    2675==_PVC0[3]) · pre-view hashes unmutated · G-COHORT PASS×3 (1.2650/1.2697/1.2260) ·
+    B2/B3/B4/B6 PASS · four A-FAILs pre-existing with BYTE-IDENTICAL players under RL_PVC2=0/1 ·
+    memo-C fallback measured 9.486% → FAILS → R1 stands (committed comparison) · multi-start ≤
+    2.24% · prior-removed 0.21% (non-circular) · named rows TO THE DIGIT (Bont 3897 · Reid 3348 ·
+    Sanders 3668 · Gawn 3416, all HOLD; **pair 3 = Bont ahead +6.2% — INSIDE the 0–10% band on
+    this candidate; formally scored at the ladder**) · 22 movers all young ≤1490 · panel 10/10
+    (Will Green 649→651, the standing re-pin pattern). **TRIGGER FRAME (item 302, named):**
+    (1) FENCE — **TRIPPED: `rl_export.py` changed, absent from the fence's IN list — MY
+    DIRECTIVE DEFECT, OWNED: job 8 (pick-band wiring) REQUIRED a change whose census site is
+    rl_export.py; my fence list omitted it — the fence and the job list contradicted.** The
+    build implemented at the true site, RL_PVC2-gated, disclosed in-diff, instead of the
+    item-281 HALT-and-ask — (4) NEW INTERPRETATION also **TRIPPED** on that resolution plus the
+    disclosed branch-target reconciliation (harness pinned act2-l2hqpl; directive said o290ye;
+    based at the checkpoint, governance intact). run_panel.sh + the ship-gates report =
+    harness-standing outputs, not breaches. Triggers (2)(3)(5) CLEAR. **DECISION REQUIRED
+    (owner's word; nothing fires automatically): REC = fire the S6-bounded read-only shard NOW**
+    — scope: RL_PVC2=0 byte-exactness re-run · the rl_export/_merged_recover diffs read · the
+    1.10% pooled recompute — BEFORE the five-migration build stacks on this head; ALT = fold
+    into the ladder's full cold audit (arriving anyway; risk: a latent ACT-2 defect compounds
+    under the stacked migration). FINDING BANKED for the design record: the owner's 2% gate
+    BINDS the pathway (tau ≥ 0.5 breaches) — the curve's substantive win is the non-median/
+    evidence-weighted TAIL CURE (~334 → ~463–494), not a pathway displacement; entry closure
+    leak-free as ruled. GPT clean-room proposal = the next courier, verified as hypotheses
+    against THIS measured candidate.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
