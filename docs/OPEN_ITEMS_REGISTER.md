@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v304 2026-07-17 · PEN: ITEM 331: seat 13 opens — freshness GREEN, pack verified filed, THE FIVE-MIGRATION DIRECTIVE issued (filed b655380; base e4177c2 STRICT; census = map of record) · prior: ITEM 330
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v305 2026-07-17 · PEN: ITEM 332: the owner's tail-read replacement frame recorded (R~220 prior; net ~8.6x on carried figures); GO RIDERS — directive filed 704a3cf; rider iv queued on measured R · prior: ITEM 331
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4981,6 +4981,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     Seat mechanical note (owned, loud, cured same turn): first push attempt failed auth on a shell
     expansion-order bug AND its exit was read through a tail — the retry captured the push's own
     exit directly. OWNER ASK: fire the directive into a fresh build chat.
+
+332. **THE OWNER'S TAIL-READ FRAME RECORDED + "GO RIDERS" (2026-07-18).** Owner, verbatim: "I'm
+    viewing pick 60 as 'not that far above what a free replacement selection would get' - which
+    might be worth 220 scar let's say. So when we consider that pick 1 is 2800 above that, and
+    pick 60 is 350 above that, all of a sudden pick 1 is 7.5x pick 60 and it makes a little more
+    sense." This is the item-325 tail read re-expressed in the RIDER-(iv) frame (v−R beside gross,
+    R107.6): on the carried candidate figures (curve(1)=3000 exact; gross ratio 5.5x per rev159 ⇒
+    pick-60 gross ≈545, report-only tags), his R≈220 prior gives (3000−220)/(545−220) ≈ **8.6x
+    net** — his direction, slightly stronger than his own 7.5x rounding. STATUS: DECISIONS v123 §1
+    UNCHANGED — the read stays OPERATIVE until his explicit word (waiver offered symmetrically;
+    the natural decision point = the ladder viewing, measured R beside his 220 prior). His 220 and
+    this arithmetic are VIEWING material only — deliberately NOT fed to the rider build (it
+    measures; interpretation is his). GO-WORD RECEIVED: DIRECTIVE_RIDERS_i_iii_2026-07-18.md filed
+    at main `704a3cf` (docs-only proven): read-only Tier-3 parallel build (S3), base `e4177c2`
+    STRICT, riders (i)-(iii) one commit each, triple-stamped outputs (code SHA · store md5 · curve
+    payload 89c14729) so the ladder mechanically asserts early riders describe the final
+    candidate; the item-325 statistical law encoded (finest supported resolution, smoothed, NEVER
+    decile/wide bins; gross stays gross per R107.7). RIDER (iv) QUEUED: waits on the measured-R /
+    free-intake pick-equivalents report from the five-migration build's job 6; at the viewing,
+    measured R sits beside the owner's 220 prior. OWNER ASK: paste the riders directive into a
+    SECOND fresh build chat (runs alongside the migration writer).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
