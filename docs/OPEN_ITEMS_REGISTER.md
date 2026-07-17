@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v284 2026-07-17 · PEN: ITEM 311: re-seal HANDED TO SEAT 12 (cargo fully enumerated; fresh eyes on gate definitions; v1.4 review first) · hygiene dispositioned (iv/v delivered+merged; ii embodied; i/iii seat-12 queue; vi post-v2.11) · two lessons bind via rev157 · remaining seat-11 work = the rotation pack only · prior: ITEM 310
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v285 2026-07-17 · PEN: ITEM 312: THE SEAT-11 ROTATION FILING at e47ad9a — rev157 · v122 · v4.50 (Leg C content-complete; seat-12 queue: v1.4 review → re-seal → Leg D → E → ladder; SPEC v1.4 pending review, v1.3 governs). SEAT 11 CLOSES · prior: ITEM 311
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4420,6 +4420,20 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     fetch). REMAINING SEAT-11 WORK: the ROTATION PACK ONLY (rev157 · DECISIONS bump · manifest
     bump · seat-12 ordered queue: v1.4 review → re-seal → Leg D directive from the groundwork →
     Leg E → ladder).
+
+312. **THE SEAT-11 ROTATION FILING (2026-07-17).** Filed at **`e47ad9a`** (docs-only, gate-passed
+    mechanically per the item-310 lesson): **HANDOVER rev157** (the true seam: Leg C
+    CONTENT-COMPLETE at PR #105 `33c8b52` prescreen-GREEN · the seat-12 ordered queue: SPEC v1.4
+    review → the RE-SEAL (cargo 290+295/300/306/310 + the item-301 reconciliation table) → the
+    Leg-D directive from the groundwork feed `9845180` → Leg E → the ladder → ONE bake → v2.11 ·
+    standing-conduct adds: base-block-first/first_commands.sh mandatory · KATs name their fetch
+    path · assertions gate pushes mechanically · script-emitted counts · per-gate verdicts ·
+    the 302 trigger frame · the 301 G/A/R header · seat-11 correction ledger ×3 owned) ·
+    **DECISIONS v122** (R106.x closes wired; the seam record 296/297/300/305/307/308; owner
+    to-dos: PK sync · seat-12 token + revoke seat-11 NOW · the dead-branch delete) · **manifest
+    v4.50** (SPEC v1.4 PENDING SEAT-12 REVIEW, v1.3 governs · the re-seal = seat 12's first pen
+    job · tools on main). Superseded rev156/v121/v4.49 archived. The seat-12 OPENING PROMPT
+    couriered to the owner with this filing. SEAT 11 CLOSES at the next register push's head.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
