@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v265 2026-07-17 · PEN: **ITEM 292: the item-291 filing itself carried three residuals (the manifest self-row class, THIRD occurrence) — caught by the in-turn grep AFTER the push, fixed at rev154/v121/v4.47; "the three self-references" is now a NAMED final cascade step. THE PK-SYNC SET IS rev154 · v121 · v4.47. Seat 10 closes** · prior: v264
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v266 2026-07-17 · PEN: **ITEM 293: third-pass audit (3 findings, all confirmed — register-vs-handover text gaps): rev155 (ACT-1(b) BEHAVIOURS · cargo-of-record = item 290 · the G-Y0 spec deletion named in the v1.4 queue) · manifest v4.48. THE PK SET: rev155 · v121 · v4.48. Seat 10 closes** · prior: v265
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6259,3 +6259,16 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     THE FINAL PK-SYNC SET: **HANDOVER rev154 · DECISIONS v121 · manifest v4.47** (+ CORE v2.8 ·
     SSI v1.3 unchanged). Seat 10 closes on this filing — truly, this time, with the check
     that would have caught its own last error now standing law.
+
+293. **THE THIRD-PASS AUDIT — THREE CONFIRMED, ALL THE SAME CLASS (2026-07-17): the register
+    recorded the cure, the HANDOVER text did not carry it.** (F1) ACT-1(b) verified counts not
+    behaviours — rev155 now requires, for BOTH error classes: no-halt-after-flag ·
+    single-position fallback applied · rows NAMED. (F2) the cargo line falsely claimed
+    self-containment while omitting the item-290 additions — rev155 names ITEM 290 THE CARGO
+    OF RECORD (the register is never archived; pointing at it is the house style) and keeps
+    only a topical summary. (F3) the SPEC's Leg-D sentence still schedules a G-Y0
+    "ADVISORY→ratified at this ladder" — stale vs the BINDING operative state; the v1.4 batch
+    now names its EXPLICIT DELETION (G-Y0 = BINDING · population-level · effective Leg D
+    everywhere; no ratification remains for the ladder). Manifest → v4.48. DECISIONS v121
+    UNCHANGED (no ruling touched). The three-self-references check ran BEFORE this push.
+    THE FINAL PK SET: **rev155 · v121 · v4.48**.
