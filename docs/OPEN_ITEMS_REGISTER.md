@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v261 2026-07-17 · PEN: **ITEM 288: the owner-prompted PRE-HANDOVER CHECK — rev151/v118/v4.44 were STALE (predated items 277–287: the audit series, R106.7, the relay RETURN). The TRUE pack filed: HANDOVER rev152 · DECISIONS v119 (R106.7 folded; LEG C NOT DONE stated plainly) · manifest v4.45. One in-turn self-catch (an archived-doc cargo pointer). SEAT 10 CLOSES** · prior: v260
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v262 2026-07-17 · PEN: **ITEM 289: the SEAM adversarial-audit prompt (v2) drafted + filed — 8 named documents incl. acceptance/CONSTRAINTS/the register capped at 288; the intended-state framing (Leg C not done · spec pre-v1.4 · re-seal queued) built in so the auditor cannot mis-flag them** · prior: v261
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6170,3 +6170,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     archived; no terminal item-counts; ONE in-turn self-catch (the re-seal cargo pointed at
     the ARCHIVED rev151 §3 — the F27 class — replaced with the self-contained enumeration).
     SEAT 10 CLOSES on this filing.
+
+289. **THE SEAM ADVERSARIAL PROMPT v2 (2026-07-17, owner-requested at the close).** FILED:
+    docs/ADVERSARIAL_REVIEW_seam_prompt_v2_2026-07-17.md. Eight documents named: manifest v4.45
+    · rev152 · v119 · SPEC v1.3 · the relay directive · acceptance_v1_20.json · CONSTRAINTS
+    v1.18 · register items 250–288 (cap stated — the item-280 lesson). INTENDED-STATE FRAMING
+    baked in so the auditor does not burn findings on the deliberate state: Leg C NOT done
+    (R106.7 floor half unwired; Petracca pre-amendment), SPEC pre-v1.4 (the item-283 batch
+    queued), the re-seal queued (stale acceptance/CONSTRAINTS entries flagged only if
+    UNDISCLOSED or omitted from cargo). Hunt-list targets the newest surface hardest: §1b/R106.7
+    coherence (cross-class data-error rule · lower-bar definition everywhere · SEASON_PROG
+    endpoints · leg-blindness · present∉pair), the re-seal cargo completeness cross-checked
+    against the JSON+prose directly, and the four item-287 deferred checks carried as seat-11
+    ACT 1. Findings return as HYPOTHESES for the INCOMING seat to verify against the record
+    (this is seat 10's last authored artifact). Read-only; parallel-safe.
