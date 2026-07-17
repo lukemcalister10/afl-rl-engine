@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v301 2026-07-17 · PEN: ITEM 328: the shard reconciles GREEN (auditor-built base board byte-exact; pooled 1.100% independently re-run; every number matches; both 322 triggers CURED) — the FIVE-MIGRATION releases to seat 13's pen; owner clarified: PVC stays GROSS, R is a view never a subtraction; SEAT 12 ROTATES at this seam, pack next turn · prior: ITEM 327
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v302 2026-07-17 · PEN: ITEM 329: THE SEAT-12 ROTATION FILING — rev159 · v123 · v4.52 (Leg D complete+audited; queue: five-migration → Leg E → ladder → v2.11; the open tail read carried; pick-equivalent answer + the curve/mover viewing couriered) · SEAT 12 CLOSES; seat-13 prompt couriered; owner: PK sync · fresh token · revoke · prior: ITEM 328
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4912,6 +4912,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     seat 12 closes at this seam (context depth; rotate-at-the-seam per the seat-11 law); the
     rotation pack (HANDOVER rev159 · DECISIONS v123 · manifest v4.52 · the seat-13 opening
     prompt) authors NEXT TURN; the owner then syncs PK, issues a fresh token, revokes seat-12's.
+
+329. **THE SEAT-12 ROTATION FILING (2026-07-17; docs-only, lookalike-guarded, three
+    self-references asserted pre-push).** HANDOVER **rev159** (Leg D COMPLETE + SHARD-AUDITED at
+    PR #109 `e4177c2`; the candidate line, curve shape, 22-ruck movement record, riders i–iv,
+    the open tail read, seat-13's ordered queue = five-migration → Leg E → ladder → ONE bake →
+    v2.11; the seat-12 conduct additions + correction ledger ×5 owned) · DECISIONS **v123**
+    (R107.1–.7 folded: v1.4 operative · the re-seal · the composed-pathway construction · the
+    pooled-2% gate law · the ev-channel fence + separate migration · riders adopted · the
+    incremental-currency post-v2.11 direction with the orthogonal-axes correction; §1 the OPEN
+    TAIL READ; §3 the owner's rotation to-dos) · manifest **v4.52**; the superseded three
+    archived. OWNER-VIEWING COURIERED THIS SEAM (read-only, from committed artifacts):
+    `PICK_CURVE_and_player_changes.md` — the old-vs-new curve table (p2–40 down 2–8%; the tail
+    lift p50 473→589 · p60 355→542 · p80 342→494 · pathway slots p84 340→485 · p90 334→473) +
+    ALL 22 movers (all RUCKS, all up; max +208/+50.5% pickless pk90; no fall exceeds 1 SCAR).
+    **PICK-EQUIVALENT ANSWER FILED (his question):** pathway entrants (MSD/SSP/IRE/RD…) carry an
+    EMPIRICAL pick-equivalent `_eff` — the engine takes each mechanism's REALIZED outcomes and
+    INVERTS the pick curve (where do outcomes like these come from?) → MSD ≈ pk90-equivalent ·
+    SSP ≈ pk84 (currently via the FROZEN v3.4 inversion `_natcv34` — one of the five, re-measured
+    at the migration); comparing an MSD pick to an ND pick = read both slots off ONE curve (new:
+    MSD ≈ 473 ≈ an ND pick in the high-70s; SSP ≈ 485 ≈ ND ~72–75). These equivalents ARE the
+    engine-side R measurement (326/327). SEAT 12 CLOSES: 17 turns · items 313–329 · pushes all
+    docs-only, SHAs cited per turn · one chapter (the re-seal → Leg D end-to-end → two parallel
+    builds → the clean-room competition → three owner design directions) delivered. The seat-13
+    opening prompt is couriered with this filing; the owner syncs PK, issues the fresh token,
+    revokes seat-12's.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
