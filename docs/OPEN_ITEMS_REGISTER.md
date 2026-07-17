@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v264 2026-07-17 · PEN: **ITEM 291: the owner-prompted DOUBLE-CHECK — four audit claims VERIFIED against the repo (one narrowed, one auditor-misquote caught, one confirmed verbatim); the pack fixed to rev153/v120/v4.46. Seat 10 closes** · prior: v263
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v265 2026-07-17 · PEN: **ITEM 292: the item-291 filing itself carried three residuals (the manifest self-row class, THIRD occurrence) — caught by the in-turn grep AFTER the push, fixed at rev154/v121/v4.47; "the three self-references" is now a NAMED final cascade step. THE PK-SYNC SET IS rev154 · v121 · v4.47. Seat 10 closes** · prior: v264
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6245,3 +6245,17 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     item-284 rule incl. same-line-vs-cross-class and present∉pair · the R106.7 preservation
     clauses · the cap-sole-HALT/floor-reported semantics) · **manifest → v4.46**; superseded
     versions archived. Seat 10 closes on THIS filing; the PK-sync set is rev153 · v120 · v4.46.
+
+292. **THE RESIDUAL CATCH (2026-07-17, same turn as 291 — the self-check grep ran after the
+    push and found three live defects in my own fix):** rev153's §0 pack line still named
+    v4.45/v119 · the manifest's OWN table row and STATE heading still read v4.45 — the
+    manifest-self-row class for the THIRD time (items 279, 291, now 292). Fixed at
+    **rev154 · v121 · v4.47** (superseded versions archived; DECISIONS content unchanged —
+    version-only bump for the lookalike law). STANDING CURE for the recurring class: every
+    cascade filing ends with "THE THREE SELF-REFERENCES" as its LAST named check — the
+    manifest's own row · its STATE heading · the handover §0 pack line — and the check runs
+    BEFORE the push, gating it. Pattern owned: template edits under fatigue skip the
+    self-referential strings precisely because they describe the document being edited.
+    THE FINAL PK-SYNC SET: **HANDOVER rev154 · DECISIONS v121 · manifest v4.47** (+ CORE v2.8 ·
+    SSI v1.3 unchanged). Seat 10 closes on this filing — truly, this time, with the check
+    that would have caught its own last error now standing law.
