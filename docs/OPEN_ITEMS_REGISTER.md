@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v307 2026-07-17 · PEN: ITEM 334: v1 five-migration chat retired CLEAN — return verified zero-impact (no commits/tags/pushes, both sides); GIT ENTRY block now boilerplate; run v2 fresh · prior: ITEM 333
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v308 2026-07-17 · PEN: ITEM 335: Leg E directive pre-drafted (DRAFT/DO-NOT-FIRE, slots fill at post-migration seam); audit-pack shell queued next quiet turn · prior: ITEM 334
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5036,6 +5036,19 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     is BOILERPLATE in every build directive I author hereafter (the Claude Code workspace opens on
     main, so "branch from <SHA>" must be spelled as commands or the tool default wins). No engine
     state moved this whole episode; candidate line intact at `e4177c2`.
+
+335. **LEG-E DIRECTIVE PRE-DRAFTED (2026-07-18; owner-agreed "worth it" this turn).**
+    DIRECTIVE_LEGE_DRAFT_2026-07-18.md filed (DRAFT — DO NOT FIRE, loud header; slots ⟦BASE⟧
+    ⟦DIAL⟧ ⟦B-HASH⟧ + memo-v1.0 issuance fill at the post-migration seam via its own SEAM
+    CHECKLIST). Grounded in MEMO_LEGE v0.1 (seat-12 draft, read this turn): projection law R103.3
+    (credited production, Reid constraint, k=0 byte-exact invariant) · postures as values over the
+    D5 dial family w/ read-semantics-first discipline · one-discount-per-axis unit test (R104.5
+    exact triple) · injury default only · interim-lens DELETION + obituary (rule 7) · balanced
+    board alone gates/bakes (R104.4), proven not assumed. GIT ENTRY boilerplate included (item
+    334). TRIGGER to convert draft→fireable: the v2 five-migration candidate passes prescreen.
+    REMAINING PREP QUEUE (next quiet turn): the S6 cold-audit seeding pack SHELL — integrity
+    manifest template (addresses only) + GPT §5 failure-mode checklist skeleton; addresses fill at
+    the ladder; items-319/323 leak-guard scrub runs at seeding time, mechanically.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
