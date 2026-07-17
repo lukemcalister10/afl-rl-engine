@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v297 2026-07-17 · PEN: ITEM 324: GPT clean-room proposal assessed — independent rediscovery of circularity/monotonicity/owner-discount/marginal-pathways CORROBORATES the build; core tail divergence = target definition (career-average vs asset price), not adopted; ONE new insight proposed as report-only ladder riders (external realized-outcome calibration + cohort bootstrap + tail uncertainty grading, owner's word); its three data catches VERIFIED incl. my CSV dictionary error (games cumulative), owned · prior: ITEM 323
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v298 2026-07-17 · PEN: ITEM 325: riders ADOPTED (owner word) incl. washout calibration fold-in + a NEW replacement-adjusted viewing rider (iv, flagged for narrowing) · THE OWNER'S TAIL READ registered OPEN (p1/p60 5.5x challenged) with the gross-vs-incremental decomposition + the external-calibration test path; hand-bending forbidden; engine entry-pricing axis = the named cure site if the read stands · prior: ITEM 324
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4803,6 +4803,39 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     it never read my CSV) · entry years span 2003–2026 (brief said 2004–2025) · MSD pick = 90
     placeholder. Banked for any future data hand-off. GPT's §5 failure-mode list is high-quality
     checklist material for the ladder audit seeding (addresses only, as ever).
+
+325. **RIDERS ADOPTED (owner: "Adopt") + THE OWNER'S TAIL READ REGISTERED AS AN OPEN READ
+    (2026-07-17).** (A) The three item-324 report-only ladder riders are ADOPTED owner-worded:
+    (i) realized-outcome cohort-holdout calibration vs the new curve · (ii) cohort-bootstrap
+    tail influence · (iii) uncertainty grading past ~pick 50 — plus, folded into (i) on this
+    filing, GPT §4.7's washout-exit calibration by pick/position and the §5.4 short-vs-long-
+    draft-era caveat carried as a rider-(ii) note. All REPORT-ONLY; no gate, no construction
+    change. (B) **THE OWNER'S READ (operative until he waives it): "I don't see a world where
+    pick 1 is only worth 6x more than pick 60."** The candidate curve reads p60=542, p1/p60 =
+    5.5x (p80=494, 6.1x). Per the OVERRIDE DOCTRINE this is an in-stats model-defect claim the
+    model must REACH — no hand-bent curve (that breaks the 2% identity and L-AXIS). THE HONEST
+    DECOMPOSITION filed with it: (1) TWO independent constructions agree on single-digit GROSS
+    multiples (ours 5.5x; GPT's from-scratch curve p60=411 → 7.3x) — the fat gross tail is
+    data-supported, not an artifact of our method alone; (2) the owner's ratio intuition lives
+    in INCREMENTAL-over-replacement terms (GPT §2.H named the gap): a listed body carries
+    replacement value every club can access free (pooled non-ND mean ≈253/median ≈22, GPT-
+    computed, to be re-verified); pick 1's premium over pick 60 in INCREMENTAL terms ≈
+    (3000−R)/(542−R) — at R≈300 that is ~11x, at R≈450 ~29x — the market-folklore steepness
+    without any curve change; (3) the remaining question — is the ENGINE's tail entry pricing
+    itself rich? — is EXACTLY what adopted rider (i) tests externally (the 2% gate cannot; it
+    anchors to the engine's own V0). **NEW VIEWING RIDER (iv), proposed and adopted with this
+    filing's "Adopt" scope read broadly — flagged for the owner to narrow if unintended: the
+    REPLACEMENT-ADJUSTED VIEW** — the curve minus a MEASURED pickless/RD replacement benchmark,
+    shown beside the gross curve in the viewing pack (report-only), so the incremental ratio his
+    read speaks to is a number on the page, not an inference. DISPOSITION: if riders (i)+(iv)
+    at the ladder leave his read standing, the cure lives on the ENGINE'S entry-pricing axis
+    (position entry curves / replacement floor) — a NAMED post-v2.11 chapter candidate, on his
+    word then. ALSO BANKED from the GPT report, previously uncovered: strict descent retained
+    as owner law with the −1 step conceded as an ORDERING tiebreak below data resolution (GPT's
+    plateau-permissiveness argument recorded, not adopted); its §6 wishlist items we already
+    hold (age at entry · LTI/availability) noted for future data hand-offs; my CSV dictionary
+    correction (games cumulative) carried from 324. AWAITING: the shard return (gates the
+    five-migration directive).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
