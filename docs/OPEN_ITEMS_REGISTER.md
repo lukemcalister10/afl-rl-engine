@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v259 2026-07-17 · PEN: **ITEM 286: OWNER RULES THE §1b FLOOR AMENDMENT ("Whichever method is used, he can now play that number as a G-FWD. So it should be measured against that.") — BINDING; wired by a small dedicated post-return job (floor probe first, site from the code). The relay return's floor-rider numbers are PRE-amendment by design** · prior: v258
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v260 2026-07-17 · PEN: **ITEM 287: RELAY RETURN — verified-core prescreen PASS-PROVISIONAL at `6306378` (PR #104): ancestry/fence/board `ee70335a`/waiver all supervisor-verified; four named deep checks EXPLICITLY DEFERRED to seat 11 act 1 (never silently claimed). THE ROTATION SEAM IS NOW** · prior: v259
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6122,3 +6122,35 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     ROLLOVER refreshes the horizon (sawtooth, not bleed), and the pick-anchored relative
     currency makes win-now-vs-future drift correct dynasty economics; the one unverified piece
     (pre-§1b year-0 scaling) rides the ACT-1 probe rather than being asserted.
+
+287. **THE RELAY RETURN — VERIFIED-CORE PASS-PROVISIONAL; THE ROTATION SEAM (2026-07-17).**
+    Head `6306378` · PR #104 (base = the Leg-B true line — STACKED per the item-283 doctrine;
+    #103 remains; ordered chapter-end merge). SUPERVISOR-VERIFIED (own fetch): FIRST-COMMANDS
+    ancestry ✓ · board `ee70335a` == my own md5 of the committed tree ✓ · fence = engine/data/
+    session + run_panel.sh — the panel change ADJUDICATED IN-FENCE-BY-CLASS (the 10-player
+    expectation PANEL re-pinned to the candidate board, the same derived-re-pin class as
+    expected_boot; the file was unnamed, the class was named; ONE WART: stale prose from the
+    old pin survives in the comment — LADDER TIDY, not a halt) · the panel pins corroborate the
+    return (Bont 3897 · store `0efdc5d6` · RL_FLEX=0 ⇒ f2f077b2 embedded) · earned-gate
+    conformance (only the two item-272 waiver rows cut) · BATTERY.md committed. REPORTED (build,
+    consistent, not yet independently re-run): A/B chain f2f077b2/8d90c9ac/807e6551 · suite
+    GREEN with the ship_gates ORCHESTRATOR env-killed 144 and constituents run independently —
+    per SILENCE-IS-A-RED this is acceptable ONLY against per-gate committed verdicts, which is
+    check (d) below. **FOUR DEEP CHECKS EXPLICITLY DEFERRED TO SEAT 11, ACT 1 (provenance
+    honesty — not silently claimed):** (a) the store diff by STABLE ID (11+4+90; Driscoll
+    100% MID; untouched rows byte-equal); (b) the item-284 collapse implementation (all-G-drop;
+    cross-class flags present; mismatch counts); (c) SEASON_PROG semantics hand-checked on one
+    named §1b row (Sheezel +94); (d) the constituent gate verdicts + the 115-row sincerity
+    ledger scan from BATTERY.md artifacts. **OWNER-VIEWING ITEMS:** the sincerity ledger runs
+    115 named rows (vs Leg B's 10) — mechanically expected (the 135-row DPP cohort lifts ⇒
+    non-DPP ranks ease; Bontempelli named: value +9, rank 26→29) but HIS law makes each a
+    reported failure for HIS eyes at the ladder · Petracca §1b = +29 (not the checkpoint's +1:
+    the preview was PRE-blend; with the blend staged first his projection sits nearer the
+    floor, so §1b partially clears it; total +97; the R106.7 amendment adds the floor's share)
+    · Driscoll −326 vs the quarantined reference = his correction, expected. **THE SEAM:**
+    seat 10 CLOSES here (57 turns; correction ledger ×5, owned). Seat 11 opens on HANDOVER
+    rev151 (+ this item as the live delta): ACT 1 = the four deferred checks; then the R106.7
+    wiring directive (the floor probe FIRST — site from the code); then SPEC v1.4 (the item-283
+    batch + R106.7 + item-284) → the re-seal → Leg D → E → ladder → ONE bake → v2.11. Owner
+    to-dos at the seam: PK sync (rev151 · v118 · v4.44; register moved past them — its header
+    rules) · REVOKE the seat-10 token.
