@@ -20,7 +20,7 @@ Checks:
   (4) DATA GROUND TRUTH: Kako 2025 23@55.2 / 2026 6@55.0 ; Bontempelli 13-season track regenerated == source
   (5) POSITION MODEL: store carries drafted/present/future single-valued columns; raw_multipos GONE
 """
-import io, os, re, sys, json, stat, contextlib
+import io, os, re, sys, json, stat, contextlib, hashlib
 import single_source as SS
 
 FAIL=[]
@@ -323,6 +323,56 @@ for _pl,_sid,_rs,_cs,_pp,_el in sorted(_errs):
 print("  item-284 runtime registry (y0dpp_bar flagged across the full board build, section 1): %d row(s)"%len(_reg_boardbuild))
 for _sid,_v in sorted(_reg_boardbuild.items()):
     print("    - %-24s [%s] %-16s elig=%-13s collapsed=%s present=%s"%(_v['player'],_sid,_v['reason'],_v['eligibilities'],_v['collapsed'],_v['present']))
+
+print("=== (9) LEG D ACT-2 — PVC RE-DERIVATION gates + ENTRY CLOSURE (RL_PVC2; promoted job-5 harness) ===")
+# The one instrument for the Leg-D curve. Gated on RL_PVC2 (the v2-specific asserts); the ENTRY CLOSURE is
+# structural and holds for whichever curve is loaded. HALT-not-warn: any FAIL -> sys.exit(1) below.
+_pvc2_on = os.environ.get('RL_PVC2','1')!='0'
+_PVC0=g['_PVC0']; _v0s=g['v0_start']; _dval=g['draftval']
+# R104.9 strict descent on the LIVE ev-channel basis (== the loaded curve): curve(p+1) <= curve(p)-1, p=1..79
+def _sd_viol(cur):
+    return [p for p in range(1,80) if not (cur.get(p+1,cur.get(min(p+1,99))) <= cur.get(p,cur.get(min(p,99))) - 1)]
+_p0i={k:int(round(_PVC0[k])) for k in range(1,100)}
+_viol=_sd_viol(_p0i)
+check(len(_viol)==0, "R104.9 strict descent on _PVC0 (p=1..79, no plateaus): %d violation(s) %s"%(len(_viol),_viol[:6]))
+check(_p0i[1]==3000, "numeraire: _PVC0(1)==3000 (got %d)"%_p0i[1])
+# ENTRY CLOSURE (owner's named tautology, made safe): a zero-evidence entrant's evidence-free V0 basis is the
+# pick-prior scaffold draftval, which == _PVC0[pick] == the loaded curve. Definitionally equal; the curve's
+# content comes from OUTCOMES (derived from realized trajectories), so pricing a zero-evidence entrant leaks
+# nothing. Assert on a real zero-games in-curve entrant.
+_INC={'ND','RD'}
+def _elig(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
+_pool=[p for p in MA.data if _elig(p) and p.get('type') in _INC and MA.effpk(p) and 2004<=(p.get('year') or 0)<=2024]
+_zero=[p for p in _pool if not any(r.get('games',0)>=1 and r['year']==(p.get('year')+1) for r in p['scoring'])]
+if _zero:
+    _z=_zero[0]; _pk=min(MA.effpk(_z),70)
+    with contextlib.redirect_stdout(io.StringIO()): _dv=_dval(_z)
+    check(abs(_dv-_PVC0[_pk])<1e-6, "ENTRY CLOSURE: draftval(zero-evidence %s pk%d)=%.1f == _PVC0[%d]=%.1f"%(_z['player'][:16],MA.effpk(_z),_dv,_pk,_PVC0[_pk]))
+    check(abs(_dv-_p0i[_pk])<1.0, "ENTRY CLOSURE: the entrant's evidence-free V0 basis IS the loaded curve (no separate pick-prior path)")
+if _pvc2_on:
+    _v2=json.load(open(hp('pvc_curve_v2.json')))
+    _v2c={int(k):int(v) for k,v in _v2['curve'].items()}
+    check(all(_p0i[k]==_v2c[k] for k in range(1,100)), "_PVC0 == pvc_curve_v2.json (the loaded ev-channel basis is the derived curve)")
+    # stamp-assert-not-stale: the curve carries the store md5 it was derived on (S5 never repeats)
+    _boot_store=hashlib.md5(open(hp('rl_model_data.json'),'rb').read()).hexdigest()[:8]
+    check(_v2.get('stamp',{}).get('store_md5')==_boot_store, "STAMP not stale: pvc_curve_v2 store_md5=%s == boot store %s"%(_v2.get('stamp',{}).get('store_md5'),_boot_store))
+    check(_v2.get('numeraire_pin1_3000') is True and _v2.get('r104_9_strict_descent') is True, "curve artifact self-declares pin(1)=3000 + strict descent")
+    # posture discounts EXACT (BINDING; acceptance leg_d_placeholders.posture_2027_discounts)
+    if os.path.exists(board_path):
+        _bd=json.load(open(board_path)); _pd=_bd.get('posture_2027_discounts')
+        check(_pd=={'balanced':0.10,'contender':0.15,'rebuilder':0.05}, "R104.5 posture discounts EXACT {0.10/0.15/0.05} in the board (got %s)"%_pd)
+    # G-Y0 POOLED HARD gate: |comp-weighted mean day-after V0 - curve| <= 2%
+    from collections import defaultdict as _dd
+    _byp=_dd(list)
+    for _p in _pool:
+        with contextlib.redirect_stdout(io.StringIO()): _byp[MA.effpk(_p)].append(_v0s(_p))
+    _num=sum(len(_byp[k])*(sum(_byp[k])/len(_byp[k]) - _p0i[min(k,99)]) for k in _byp)
+    _den=sum(len(_byp[k])*_p0i[min(k,99)] for k in _byp)
+    _pooled=abs(100.0*_num/_den)
+    check(_pooled<=2.0, "G-Y0 pooled |comp-weighted mean V0 - curve| = %.3f%% <= 2%% HARD"%_pooled)
+    print("       (G-Y0 owner-viewing per-pick residual curve: session_2026-07-17/legd_derivation/out/gy0_residual_curve_v2.json — REPORT-ONLY)")
+else:
+    print("  NOTE  RL_PVC2=0 (L1b base path): v2-specific asserts skipped; ENTRY CLOSURE above holds either way.")
 
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
       "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))

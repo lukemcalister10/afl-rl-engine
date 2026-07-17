@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-16 at the LEG A iso-evidence-fade candidate (iso_corr fades on the v2.10 evidence weight + the ISO table is monotonized non-increasing in pick; RL_ISOFADE default ON). The book is engine-ev()-derived; the fade moves ev() for the rows it touches, so it is RE-BUILT on the candidate engine (G-BOOK: the formula moved) and re-stamped, not re-hashed. Store/config UNCHANGED. RL_ISOFADE=0 reproduces the v2.10 book. Owner tag/main owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-17 at the LEG D ACT-2 PVC re-derivation candidate (RL_PVC2, the composed-pathway ev-channel _PVC0 swap, default ON). The book is engine-ev()-derived; the swap moves ev() for the young rows whose scaffold/cap/floor read draftval, so it is RE-BUILT on the candidate engine (G-BOOK) and re-stamped, not re-hashed. Store/config UNCHANGED. RL_PVC2=0 reproduces the L1b book. Owner tag/main owner-only.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "a83c9f6d",
-  "store_md5": "b1fd0bce",
+  "head_md5": "40f43772",
+  "store_md5": "968de0c7",
   "n_players": 2649,
-  "stable_sha256": "ef2fbf9caf2ef63e0da527e203ddaf62733fcf9d9780e4e02b14623179ab841c",
-  "sealed_by": "LEG A re-seal 2026-07-16 (session_2026-07-16/isofade; engine fc7045d6 -> a83c9f6d, the iso evidence-fade + monotonization; store b1fd0bce UNCHANGED). stable_sha256 99be9b36 -> ef2fbf9c because the rows the fade touches move in ev() and thus in the book. head_md5 stamp advanced fc7045d6 -> a83c9f6d. Candidate \u2014 owner tag/main promote owner-only.",
-  "sealed_date": "2026-07-16",
+  "stable_sha256": "745e3462007aec2fbeca6473dd50f9be21226ace89509cdf0aeec15c09695eca",
+  "sealed_by": "LEG D ACT-2 re-seal 2026-07-17 (session_2026-07-17/legd_derivation; engine bea8fea8 -> 40f43772, the RL_PVC2 composed-pathway swap; store 968de0c7 UNCHANGED). stable_sha256 ef2fbf9c -> 745e3462 because the young rows the tail lift touches move in ev() and thus in the book. Candidate \u2014 owner tag/main owner-only.",
+  "sealed_date": "2026-07-17",
   "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
 }
