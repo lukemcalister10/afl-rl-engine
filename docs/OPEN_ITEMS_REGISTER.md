@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v274 2026-07-17 · PEN: ITEM 301: auditor guidance dispositioned — 4 adoptions (W4 merge post-v2.11 · G/A/R checkpoint header · re-seal reconciliation table · standing materiality test) · rest mapped to existing law · one PENDING-OWNER divergence (no extra R106.7 audit unless he says) · prior: ITEM 300
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v275 2026-07-17 · PEN: ITEM 302: conditional-audit triggers for the R106.7 return adopted (auditor-proposed, refined: unadjudicated fence expansion · binding-gate red/verdict-missing · out-of-expectation movement · new interpretation · unprovable chain) — checked at prescreen end; owner fires · prior: ITEM 301
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4200,6 +4200,24 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     R106.7 return; owner-ruled doctrine is ONE cold audit per chapter at the ladder. Supervisor
     recommends holding doctrine (prescreen + mandatory verdict files fill the seam; the ladder
     re-runs everything); a bounded read-only shard is available on the owner's word.
+
+302. **THE CONDITIONAL-AUDIT TRIGGERS FOR THE R106.7 RETURN (2026-07-17; auditor-proposed via the
+    owner, supervisor-refined, adopted).** Doctrine holds (one cold audit per chapter, at the
+    ladder — item 301's divergence CLOSED, auditor concurring). A NARROW independent read-only
+    shard on the R106.7 return becomes CONDITIONAL on five triggers, checked explicitly at the END
+    OF THE PRESCREEN (each named tripped/clear): (1) fence expansion BEYOND THE FENCE AS
+    ADJUDICATED (the W4 site is IN by the owner's item-300 word — an owner-approved extension is
+    not a trigger); (2) a BINDING gate red or missing its committed verdict (owner-designed
+    report-only items — the sub-1.08 floor reading, the sincerity-ledger rows — are NOT triggers,
+    they are his law working); (3) movement outside the stated named-row expectations (McKercher
+    returns most of +105 · Lloyd ≈ unchanged · Petracca's floor share arrives · Sheezel ≈
+    unchanged · Driscoll untouched) or large unexplained board-wide drift; (4) any point where
+    the build required a NEW INTERPRETATION (already a halt-to-owner — stronger than a trigger);
+    (5) an unprovable preservation/artifact chain (FLEX=0 byte-exactness · banked-untouched ·
+    per-gate verdicts) — first cure is the build fixing its proofs; the shard is the escalation.
+    A tripped trigger ⇒ the prescreen's decision-required line RECOMMENDS the bounded shard; the
+    OWNER's word fires it (audits remain owner-launched, seeded per doctrine). Nothing fires
+    automatically.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
