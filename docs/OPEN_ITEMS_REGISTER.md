@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v305 2026-07-17 · PEN: ITEM 332: the owner's tail-read replacement frame recorded (R~220 prior; net ~8.6x on carried figures); GO RIDERS — directive filed 704a3cf; rider iv queued on measured R · prior: ITEM 331
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v306 2026-07-17 · PEN: ITEM 333: v1 five-migration chat mis-based (false repo claim, no fetch) — halted, NOTHING PUSHED, retired; v2 filed a742f81 w/ GIT ENTRY block; job unchanged · prior: ITEM 332
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5002,6 +5002,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     free-intake pick-equivalents report from the five-migration build's job 6; at the viewing,
     measured R sits beside the owner's 220 prior. OWNER ASK: paste the riders directive into a
     SECOND fresh build chat (runs alongside the migration writer).
+
+333. **THE v1 FIVE-MIGRATION CHAT MIS-BASED — HALTED ON VERIFIED FACTS, NOTHING PUSHED, v2 FILED
+    (2026-07-18).** Owner relayed the build's stream: it auto-branched
+    `claude/legd-five-pvc-migration-bt9opz` off the governance lineage instead of `e4177c2`,
+    narrated content hashes as disjoint "worlds" (the CORE-rule-2 confusion: an md5 is a content
+    check, not a place to stand), claimed the governance docs "exist ONLY on my branch — not on
+    main," and mused about a "hard-to-reverse" branch decision instead of HALTing. SUPERVISOR
+    VERIFICATION (fresh ls-remote + ls-tree, this seat's sandbox): (a) main tip `6c6fc6b8`
+    CONTAINS DECISIONS v123 + HANDOVER rev159 + the directive — the claim is FALSE, and false even
+    against the build's own stated HEAD `5733714d` (the directive landed at its parent `b655380`);
+    (b) branch `bt9opz` exists on NO remote ref — nothing pushed, zero remote damage; (c)
+    `e4177c2` unmoved. RULING APPLIED (rule 1): a chat that asserts repo facts without a fresh
+    fetch and improvises where the directive says HALT is retired, not steered. CURE:
+    DIRECTIVE_FIVE_MIGRATION_v2_2026-07-18.md filed at main `a742f81` (docs-only) — job content
+    UNCHANGED; adds the GIT ENTRY block (verbatim checkout of `e4177c2`, discard auto-branches,
+    the expected two-lineage topology STATED so it is never "discovered," never join lineages,
+    every repo claim cites a this-session fetch) and the law: a step that looks hard-to-reverse is
+    itself the HALT signal. Owner asked to: halt/retire the v1 chat (paste provided) · fire v2 in
+    a FRESH chat. Riders build unaffected (its directive carries its own strict base pin; v2's GIT
+    ENTRY pattern will be standard boilerplate in every future directive this seat authors).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
