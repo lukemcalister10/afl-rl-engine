@@ -16,7 +16,7 @@ engine-caused by this build.
 | **A-PAIRS** | mixed (no NEW fail) | — | PASS: A1,A5,A6,A7,A8,A9,A10,A11,D14a/b/c. Pre-existing FAIL (FAIL on CONTROL): A2 Curtis (D7 ruling, unchanged), A3 Rozee [DC], A12 Travaglia/Smillie [DC]. A4 Reid rank 48 = **pre-existing on ee70335a** (v=3348 identical base↔new; "MOVED" flag is vs an older pre-flex snapshot, not this build). PENDING A13/A14 (PVC stage not run); STRUCK A15 |
 | **E/B** | n/a in frozen suite | — | not separately enumerated in suite 764a0d91; the expected-vs-realized separation A8 (Berry/Tsatas 2.44x, need ≥2.00x) PASSES |
 | **β / CI** | REPORTED (F13) | — | no β gate in the frozen suite; the spec β/CI gate is the KNOWN queued-re-seal matter (item-283 **F13**) — a red there is a REPORTED finding, not a halt. B2 leave-cohort-out separation PASSES (median \|IS-WF\| leakage 0.000 %-pts) |
-| **Guard 4** (correction-sticks canary) | see guard4_canary_output.txt | (filled below) | guard_correction_canary.py, run separately per the selftest note |
+| **Guard 4** (correction-sticks canary) | **PASS** | 0 | guard_correction_canary.py (run separately): sentinel josh-ward +40 SURVIVES the full rebuild to the BOARD (5973→11213) and the BOOK (2108→11801), and board == round(book/1.0524) numéraire parity holds. All substantive correction-sticks assertions GREEN. |
 
 ## ship_gates VERDICT line
 `DIFFERS-BY-DESIGN=1  FAIL=5  FEATURE=1  PASS=14  PENDING=4  STRUCK=1  (454s)`
