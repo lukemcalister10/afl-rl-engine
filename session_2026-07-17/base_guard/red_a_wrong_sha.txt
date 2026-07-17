@@ -1,0 +1,10 @@
+== first_commands · THE BASE GUARD ==
+url          : https://github.com/lukemcalister10/afl-rl-engine.git
+branch_ref   : refs/heads/main
+base_sha     : 0000000000000000000000000000000000000000
+new_branch   : _bg_probe
+store_md5    : b1fd0bce
+symbol       : prod_floor
+[0] dirty-tree : PASS  no uncommitted changes to tracked files (untracked scratch tolerated)
+first_commands: FAIL — [1] ls-remote MISMATCH — refs/heads/main is de9f0fd0ad85d43a0e027385e364a9b945f20b07 on the remote, expected 0000000000000000000000000000000000000000 (the pin moved or the wrong ref was named)
+EXIT=1
