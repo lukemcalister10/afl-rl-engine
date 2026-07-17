@@ -1,0 +1,7 @@
+# sample named players for the owner viewing pack
+nick-daicos
+Harry Sheezel
+Luke Jackson
+Archie Roberts
+Finn Callaghan
+Sam Lalor
