@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v270 2026-07-17 · PEN: ITEM 297: SEASON_PROG deferred (owner: per-round advancement post-project) · seam plan set — seat 11 finishes R106.7 + spec v1.4 + re-seal + hygiene, then rotates; seat 12 opens on Leg D · prior: ITEM 296
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v271 2026-07-17 · PEN: ITEM 298: R106.7 build cut from MAIN not the pin (third wrong-base, proven from its history) — halt discipline held; adjudication: abandon branch, FIRST COMMANDS properly, redo the 2-row edit on 0efdc5d6, re-probe, re-push checkpoint · prior: ITEM 297
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4111,6 +4111,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     committed artifact, never typed (the BATTERY 112-vs-115 class, item 295); (iii) the per-gate
     committed-verdict requirement graduates from per-directive boilerplate into the standing cert
     harness (S5).
+
+298. **THE R106.7 BUILD'S CHECKPOINT — WRONG BASE, THE THIRD OF THE CLASS (2026-07-17; supervisor-
+    proven from the build's own pushed history, not its report).** Branch
+    `claude/r1067-wiring-item-284-c37vsh` head `f2bf728`: `git log` shows its parents are the
+    supervisor's docs pushes — **cut from MAIN at `6542604`** (the very commit that filed the
+    directive), NOT the pinned `legc-relay-dpp-law-10c4z7@6306378`. FIRST COMMANDS (item 270)
+    skipped: no fetch of the pinned branch, no checkout -B from the pin, no committed ancestor
+    proof — the exact guard that exists for this failure (items 264 · 270; now the THIRD wrong-
+    base, again on a store writer). CONSEQUENCES, all explained by the base: "§1b/RL_FLEX/
+    y0dpp_bar absent — zero matches" (true ON MAIN; on `6306378` they exist — y0dpp_bar
+    rl_model.py:90, §1b @ distribution_pricing.py v_at_peak, supervisor live-probed at item 295)
+    · base store b1fd0bce (main's store; the pin is 0efdc5d6) · "register-credited commits touched
+    only docs/" (true of main's recent history — the engine work lives on the unmerged candidate
+    line) · prod_floor at :361 (main's line numbering; ~:441 on the relay head). **WHAT HELD:**
+    the build HALTED at the checkpoint instead of fabricating a §1b subsystem — the halt
+    discipline worked; the base discipline failed. Its two store edits are per-row content-correct
+    but sit on the wrong store. **ADJUDICATION (couriered):** abandon the branch in place (owner
+    deletes later — QUARANTINED BY NAME: `claude/r1067-wiring-item-284-c37vsh`/`f2bf728`, content
+    reference only); run FIRST COMMANDS as the directive writes them; redo job 1 on the 0efdc5d6
+    store (the two rows' base eligibilities are IDENTICAL there, supervisor-verified — same
+    two-token edits; report the new store md5); re-run the probe on the correct tree and re-push
+    the checkpoint. The directive's hash targets are valid on the correct base. SEAM NOTE for the
+    hygiene batch: the ancestor proof must be the FIRST COMMITTED ARTIFACT and prescreen must
+    verify it before reading anything else — a return whose first commit is not the proof is
+    incomplete by construction.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
