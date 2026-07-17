@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v295 2026-07-17 · PEN: ITEM 322: ACT-2 prescreen at e4177c2 — SUBSTANCE GREEN (descent recomputed 0 violations; G-Y0 1.10% pass; kill-switch byte-exact; named rows hold; pair-3 +6.2% Bont-ahead inside band; tail cured ~334→494) · triggers 1+4 TRIPPED (rl_export fence omission = MY directive defect, owned; branch reconciliation disclosed) · REC: bounded shard before the five-migration · owner's word decides · prior: ITEM 321
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v296 2026-07-17 · PEN: ITEM 323: the ACT-2 audit shard FIRED on the owner's word — prompt filed (addresses+checks only; build numbers grep-excluded from seeding; auditor computes everything itself); five-migration WAITS; owner pastes into a fresh out-of-Project chat · prior: ITEM 322
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4752,6 +4752,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     evidence-weighted TAIL CURE (~334 → ~463–494), not a pathway displacement; entry closure
     leak-free as ruled. GPT clean-room proposal = the next courier, verified as hypotheses
     against THIS measured candidate.
+
+323. **THE OWNER FIRES THE SHARD (2026-07-17, "Yes, fire it now" — the item-322 decision line
+    taken). Shard prompt filed docs-only this push: `docs/AUDIT_SHARD_legd_act2_2026-07-17.md`.**
+    Seeded PER DOCTRINE: integrity manifest (branch/head `e4177c2` · base `33c8b52` · checkpoint
+    `12a0761` · store `968de0c7` · gate-definition ADDRESSES incl. the twin pin `7c12d0d6`) +
+    five checks (scope read incl. the rl_export/_merged_recover diffs · kill-switch
+    byte-exactness with the auditor deriving its OWN base reference · curve recompute by its own
+    arithmetic · the pooled identity RE-RUN on the frozen suite · the memo seal) — **the build's
+    reported numbers EXCLUDED from seeding (VERDICTS/CHECKPOINT/out/ reads forbidden; leakage
+    grep-asserted before the push); the supervisor reconciles audit-computed vs build-claimed
+    AFTER the return.** S6-sized (two engine loads). Read-only; no push. THE FIVE-MIGRATION
+    DIRECTIVE WAITS on the shard's reconciliation. PEN NOTES (benign, banked): (a) the item-322
+    push first REJECTED non-fast-forward — main had moved (the owner's PR #108 merge,
+    `52da0fad`); pen.py halted loudly; reset to fresh main, re-ran clean — the item-321
+    fetch-freshness lesson demonstrated by the pen itself; (b) this filing's first attempt died
+    on MY bash heredoc-ordering defect (the guard consumed the wrong block; NOTHING executed —
+    a loud syntax failure, no partial state); re-run correctly ordered. OWNER DO: paste the
+    shard prompt into a FRESH chat with repo access, OUTSIDE this Project (no memory, no
+    project knowledge); courier its ≤25-line return here. THEN the GPT clean-room proposal.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
