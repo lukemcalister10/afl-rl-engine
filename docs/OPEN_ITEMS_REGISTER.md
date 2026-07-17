@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v287 2026-07-17 · PEN: ITEM 314: THE RE-SEAL FILED at 21cc35f — CONSTRAINTS v1.19 · acceptance v1.21 · manifest v4.51 · HANDOVER rev158 (G-Y0 BINDING+RE_DERIVE_AT_LEG_D · R106.3 compression · R106.1/.2 value-flow · pair-2 ±15% · leg_c fixtures · item-272 waiver #8/#26/#41 · PART-8 reconciliation table) · next = the LEG-D directive · prior: ITEM 313
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v288 2026-07-17 · PEN: ITEM 315: THE LEG-D DIRECTIVE ISSUED at d67940a (memo-first → pushed checkpoint: owner rules construction + G-Y0 tolerance → derive; base 33c8b52 strict · groundwork 9845180 feed · R104.9 hard · RL_PVC2 · store read-only) · owner fires it in a fresh Opus chat · prior: ITEM 314
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4501,6 +4501,44 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     NEXT: **THE LEG-D DIRECTIVE** — construction memo FIRST from the groundwork @ `9845180`
     (R104.9 strict descent · G-Y0 BINDING effective HERE · R104.5 discounts 10/15/5 exact).
     OWNER: re-sync PK Tier-0 (manifest v4.51 + HANDOVER rev158; CORE/DECISIONS/SSI unchanged).
+
+315. **THE LEG-D DIRECTIVE ISSUED (2026-07-17, seat-12/Fable pen per SPEC §3's authoring
+    assignment). Filed at `d67940a` (docs-only, guard-gated: pin/FIVE/stale-ref asserts green
+    before the commit).** `docs/DIRECTIVE_LEGD_derivation_2026-07-17.md` — Opus build, ONE chat,
+    TWO ACTS. **BASE (strict, live-verified at authoring):** candidate head `33c8b52` on
+    `claude/r1067-wiring-v11-m86stv` (fetch path named), store `968de0c7`, board `9829d01a`;
+    evidence feed `claude/legd-groundwork` @ `9845180` (fetch path in the EXECUTE-FIRST block —
+    the item-304 KAT law honoured at authoring). **ACT 1 (read-only):** re-emit the groundwork
+    evidence on THIS base (its own header marks magnitudes provisional) · the site census from
+    the code (yr-1 anchor s4_matrix_7147:62 · v0_start pole · the `_iso_dec` import-time refit
+    chain PART 7 names uncleared) · THE CONSTRUCTION MEMO weighing cut options A/B/C + the
+    life-path pool with symmetric recommendations · **the G-Y0 tolerance PROPOSAL (decile
+    residuals per audit #37 — the NUMBER is the owner's)** · the pick-band wiring plan (R104.5
+    10/15/5 exact) · planned multi-start/prior-removed tests (#34/#35/#44) enumerated · pre-view
+    hashes (memo + acceptance_v1_21) recorded BEFORE any candidate curve · **PUSHED CHECKPOINT
+    HALT** — the supervisor prescreens and couriers; the owner rules THE CONSTRUCTION + THE
+    TOLERANCE; his paste-back is ACT 2's go. **ACT 2:** derive OFFLINE into a STAMPED artifact,
+    LOADED not refit (no new import-time fits — the q97m/_iso_dec disease; the memo states how
+    the existing chain retires) · `RL_PVC2` kill-switch (=0 ⇒ board 9829d01a byte-exact) ·
+    curve(1)==3000 asserted · **R104.9 STRICT DESCENT HARD (the shipped curve's 15 plateau
+    violations must ALL clear — job 5's live self-test)** · G-Y0 BINDING at the ruled tolerance,
+    effective HERE (a red HALTs the build) · pick bands wire · derived+battery+expected_boot
+    re-pin (F2 class, said in the commit) · per-gate committed verdicts incl. the item-272
+    scored-never-flagged pair · named rows (top-10 picks old→new · Bont · Reid · Sanders · Gawn
+    · held picks) · both item-256 ledgers. DESIGN CONSTRAINTS carried: finest-resolution-
+    smoothed (CORE 7) · L-SMOOTH no thresholds · weight-don't-gate · L-AXIS (pair 3 maps here
+    but the derivation is NEVER result-conditioned on it; scored at the ladder) · the store is
+    READ-ONLY the entire leg (any write impulse = HALT-and-ask). FENCE names _merged_recover
+    (pick-curve sites) · s4_matrix_7147 READ · the curve artifact · one_source_selftest + the
+    job-5 harness promotion; rl_model.py only via checkpoint-ask (item-281). EFFORT High (why
+    stated both directions) · MODE auto · TIME 6–10 h across the checkpoint. SEAT NOTE (owned,
+    benign): the directive's push initially failed on a shell-expansion defect in MY chain
+    (inline `PEN_TOKEN=` does not expand in the same command line — the URL went out with an
+    empty token); the guard and commit were already green; re-pushed correctly with an exported
+    var; nothing un-asserted moved. The job-4a 2019 stale "gapless" annotation is directive-
+    assigned as REPORT-ONLY for this pen (inputs/ prose, not the build's to edit). **OWNER DO:**
+    paste the directive into a fresh Claude Code chat (Opus) to fire Leg D. NEXT SUPERVISOR
+    RUNG: the ACT-1 checkpoint prescreen → courier the construction + tolerance rulings.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
