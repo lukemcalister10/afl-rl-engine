@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v258 2026-07-17 · PEN: **ITEM 285: owner confirms F17 ("Build order fine.") — the relay's attribution staging (writes→blend→§1b) is the convention of record** · prior: v257
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v259 2026-07-17 · PEN: **ITEM 286: OWNER RULES THE §1b FLOOR AMENDMENT ("Whichever method is used, he can now play that number as a G-FWD. So it should be measured against that.") — BINDING; wired by a small dedicated post-return job (floor probe first, site from the code). The relay return's floor-rider numbers are PRE-amendment by design** · prior: v258
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6098,3 +6098,27 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     only stage credit is convention. The Petracca floor mechanics were re-explained in depth
     same turn (chat + journal); the possible floor-re-bar amendment remains HIS question at
     viewing, with an exact per-player preview available from the return data on request.
+
+286. **R106.7 — THE §1b LEG-BLIND BAR RULING (2026-07-17, owner verbatim: "The point of this is
+    that Petracca for the next 10 rounds can play as a forward. That makes him more valuable.
+    Whichever way the engine values him, whether it's projection or floor, it gives him a
+    number it thinks he will score for the next 10 weeks. Whichever method is used, he can now
+    'play' that number as a G-FWD. So it should be measured against that.").** §1b's
+    remaining-season bar-swap applies to WHICHEVER leg produces the year-0 number — projection
+    AND the demonstrated floor; the projection/floor distinction is plumbing the law does not
+    see. BINDING; spec v1.4 carries it as the §1b completion. IMPLEMENTATION: the relay
+    (mid-flight) wires the projection half only ⇒ its return shows floor-riders (Petracca ~+1)
+    PRE-amendment — EXPECTED, not a defect. A SMALL DEDICATED WIRING JOB fires immediately
+    after the return prescreen: ACT 1 = read prod_floor's internals and NAME THE SITE FROM THE
+    CODE (item-281 law; the same read answers whether the pre-§1b year-0 machinery was
+    SEASON_PROG-scaled — the owner's seasonal-weighting question — and the floor's age
+    treatment, PARKED as design per his word, read only as wiring necessity); ACT 2 = the
+    one-clause wire, RL_FLEX-gated, kill-switch chain intact; ACT 3 = re-measure + per-player
+    preview (Petracca named) for his viewing pre-ladder. ALSO CONFIRMED this turn: his lift-one
+    restatement is exact (50/50 dual ⇒ effective future bar ≈ midpoint 75.5 ⇒ ~4.6 ppg more
+    surplus than a pure MID on identical scoring). SEASONAL-WEIGHTING answer of record: the
+    current season is a wasting asset priced smaller as rounds burn (§1b's blend does so
+    explicitly); the board does NOT wholesale weaken — years-1+ dominates most rows, the
+    ROLLOVER refreshes the horizon (sawtooth, not bleed), and the pick-anchored relative
+    currency makes win-now-vs-future drift correct dynasty economics; the one unverified piece
+    (pre-§1b year-0 scaling) rides the ACT-1 probe rather than being asserted.
