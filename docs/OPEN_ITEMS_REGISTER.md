@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v306 2026-07-17 · PEN: ITEM 333: v1 five-migration chat mis-based (false repo claim, no fetch) — halted, NOTHING PUSHED, retired; v2 filed a742f81 w/ GIT ENTRY block; job unchanged · prior: ITEM 332
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v307 2026-07-17 · PEN: ITEM 334: v1 five-migration chat retired CLEAN — return verified zero-impact (no commits/tags/pushes, both sides); GIT ENTRY block now boilerplate; run v2 fresh · prior: ITEM 333
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5022,6 +5022,20 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     itself the HALT signal. Owner asked to: halt/retire the v1 chat (paste provided) · fire v2 in
     a FRESH chat. Riders build unaffected (its directive carries its own strict base pin; v2's GIT
     ENTRY pattern will be standard boilerplate in every future directive this seat authors).
+
+334. **v1 FIVE-MIGRATION CHAT RETIRED CLEAN — RETURN VERIFIED ZERO-IMPACT (2026-07-18).** The
+    mis-based v1 chat (item 333) acknowledged the false premise, self-verified, and returned:
+    branch `claude/legd-five-pvc-migration-bt9opz` · local HEAD `5733714d` (== origin, ahead by 0)
+    · commits none · tags none · pushes none (read-only fetch/ls-remote only; tree clean). Matches
+    this seat's independent ls-remote (the branch on NO remote ref; main `664f928d`; `e4177c2`
+    unmoved) — zero remote impact CONFIRMED from both sides. Chat CLOSED. The single defect was
+    reasoning from a stale local view without `git fetch origin main` first; its own last line
+    named the cure. FORWARD: the corrected job runs from v2 (`a742f81`, GIT ENTRY block) in a fresh
+    chat. STANDING ADOPTION (this seat): the GIT ENTRY block — verbatim checkout of the pinned SHA,
+    discard auto-branches, expected-topology stated, every repo claim cites a this-session fetch —
+    is BOILERPLATE in every build directive I author hereafter (the Claude Code workspace opens on
+    main, so "branch from <SHA>" must be spelled as commands or the tool default wins). No engine
+    state moved this whole episode; candidate line intact at `e4177c2`.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
