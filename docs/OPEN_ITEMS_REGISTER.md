@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v278 2026-07-17 · PEN: ITEM 305: round-entry workflow — owner-corrected risk frame (FootyWire name,score export, current players only, exact-match trivial; 2 live clashes both non-issues) — real risk is a SILENT MISS: flag residue for 1-tap confirm, never silent drop/wrong-row/new-row. Future-proof: live active-pool resolve, new IDs auto. Supersedes item 303's identity para · prior: ITEM 304
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v279 2026-07-17 · PEN: ITEM 306: R106.7 prescreen GREEN — store 968de0c7 (2 rows exact) · board 9829d01a · 6 named rows verified to the digit · 284 behaviours in code · 5 triggers ALL CLEAR, no shard · Leg C content-complete · next: SPEC v1.4 → re-seal → Leg D · prior: ITEM 305
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4279,6 +4279,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     derived/read-only/source-stamped). Buildable now (disjoint, dry-run read-only); store write
     post-delivery only. This item is the design ruling of record for the job-4 directive; item
     303's identity paragraph is SUPERSEDED by this frame.
+
+306. **R106.7 RETURN — PRESCREEN GREEN, ALL FIVE TRIGGERS CLEAR (2026-07-17).** PR #105, branch
+    claude/r1067-wiring-v11-m86stv, head `33c8b52` (9 commits, FIRST_COMMANDS_PROOF the first —
+    the item-298 rule held). SUPERVISOR-VERIFIED (own recomputes): ancestry ✓ · store 0efdc5d6→
+    **968de0c7**, EXACTLY the two item-296 rows, eligibilities only ✓ · board **9829d01a** md5 ✓ ·
+    ledger recomputed: 85 movers · 5 up-rank-down · net **+942** ✓ · ALL SIX NAMED ROWS to the
+    digit (Petracca **+74** · McKercher **−80** · Lloyd **+4** · Sheezel +1 · Bont 0 · NICK
+    Driscoll 0) ✓ · pairs on the new board: pair 2 **14.1%** / pair 3 **+6.2%** ✓ · item-284
+    behaviours IN CODE (cross-class + present∉set → flag, NAME, single-position, continue) with
+    selftest §8 fixtures ✓ · the W4 edit carries all five item-300 conditions ✓. REPORT-ONLY
+    (committed verdicts w/ exits; cold audit re-runs): FLEX=0 ⇒ **807e6551** byte-exact (matches
+    the supervisor's PRE-DERIVED target — corroboration) · Guard 4/5 · F1/F2 · G-COHORT
+    1.2692/1.2748/1.2314 < 1.30 (sole hard halt CLEAR) · earned B6 monotone. Suite FAILs = 5, all
+    pre-existing/data-caused or BY-DESIGN (B4 board-moved + B3 book re-seal = the re-seal's
+    flags). NITS (non-material): FINDINGS litmus names NATHAN O'Driscoll (894) where the ruled row
+    is NICK Driscoll — supervisor verified the RIGHT one (552→552 HOLD); panel re-pin adjudicated
+    in-fence-by-class (item-287 precedent, named not silent). OWNER-VIEWING ITEMS at the ladder:
+    the 49-row ±1–4 single-position conservation ripple (FLEX-gated, the accepted projection-half
+    class, litmus rows hold — FINDINGS.md §2) · the DPP floor lifts (Petracca +74 · Treloar +118 ·
+    Yeo +116 · Kelly +108). TRIGGER CHECK (item 302): 1 no unadjudicated fence touch (run_panel =
+    derived-re-pin class) · 2 no binding red/verdict-missing · 3 movement inside expectations ·
+    4 no new interpretation · 5 chain proven — **ALL CLEAR, no audit shard**. CANDIDATE LINE now
+    …6306378 → 33c8b52 (PR #105 on #104). LEG C IS NOW CONTENT-COMPLETE. NEXT: SPEC v1.4 → the
+    re-seal (cargo = items 290+295+296+300+304+this; the reconciliation table per item 301) →
+    Leg D. The chapter LADDER remains ahead of any bake.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
