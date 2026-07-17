@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v299 2026-07-17 · PEN: ITEM 326: owner-raised POST-v2.11 design direction — THE INCREMENTAL CURRENCY (value = over free-replacement, picks AND players; R operationally defined via backfill intake + delist top-up) · two consequences named (list spots priced as assets in unequal trades; the embedded bar-netting double-count trap — measure first) · v2.11 stays gross; rider (iv) = the first measurement; owner rules post-v2.11 · prior: ITEM 325
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v300 2026-07-17 · PEN: ITEM 327: owner's correction adopted — production-bars vs list-space R are ORTHOGONAL axes (the 326 double-count trap dissolved, conceded); PVC gross curve STANDS, incremental = a lens (rider iv, measured R); the ordered path to v2.11 restated (shard reconcile → five-migration → Leg E → ladder → one bake); seat-12 rotation at the reconciliation seam · prior: ITEM 326
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4861,6 +4861,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (season leverage) · the frozen-five migration (pickless pick-equivalents ARE part of R's
     engine-side measurement) · the A-PAIRS bands (gross-calibrated; a re-base re-derives them).
     Nothing here is buildable without his word at the post-v2.11 gate.
+
+327. **THE OWNER'S CORRECTION REFINES ITEM 326 + THE PATH TO v2.11 RESTATED (2026-07-17).**
+    OWNER-WORDED: "Positional replacement is about on-field impact — production value, where the
+    depth of freely available scoring is. Whereas this is about LIST SPACE. A different
+    concept." ADOPTED: the two replacement axes are ORTHOGONAL — the engine's positional BARS =
+    production replacement (on-field); R (item 326) = ACQUISITION replacement (the free list-
+    slot yield). **SUPERVISOR CONCESSION OWNED: the item-326 "double-count trap" is DISSOLVED
+    in its strong form by this split** — R is the gross engine value of the free alternative
+    asset; gross-minus-gross is clean incremental arithmetic; no interaction with bar-netting.
+    (Residual note kept: R must be measured as the engine's value of the free asset, both
+    sides, per 326.) He ratified the trade-math consequence ("good and correct"). **THE PVC
+    DISPOSITION: the GROSS curve STANDS unchanged** — the incremental frame is a LENS over it
+    (v − R + the list-spot term in unequal-count trades), delivered first as rider (iv) at the
+    ladder with MEASURED R; his tail read (325) stays open and gets its external test there.
+    **THE ORDERED PATH TO v2.11 (restated as the queue of record):** (1) the shard return →
+    supervisor reconciliation (THE ONLY OPEN GATE); (2) the FIVE-MIGRATION directive on green —
+    that build also emits the engine-side R inputs (the pickless intake pick-equivalents live
+    in the frozen consumers); (3) LEG E — finalize the v0.1 memo on the post-migration base,
+    issue, build, prescreen; (4) THE LADDER — S6-sharded cold audit · sealed reads scored ·
+    owner viewing (board + book + chapter ledgers + riders i–iv incl. the incremental view) ·
+    his written word → ONE bake → v2.11 → clean promote; (5) POST-DELIVERY: round-entry
+    go-live on his word · SEASON_PROG advances · the post-v2.11 chapter queue = the incremental
+    currency (326/327) · season leverage (307/308) · the tail entry-pricing question if the
+    325 read stands. ROTATION NOTE: seat 12 rotates at the shard-reconciliation seam (context
+    depth); the handover pack authors at that seam.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
