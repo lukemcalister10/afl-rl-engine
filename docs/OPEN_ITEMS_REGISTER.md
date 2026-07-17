@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v273 2026-07-17 · PEN: ITEM 300: floor-shadow adjudication — option 2 (one k==0 edit in _prod_floor_w4, fence extended to that site only, 5 conditions; owner's submission = the word) · option 1 rejected (Petracca on the W4 path) · option 3 queued as hygiene w/ determinism proof · prior: ITEM 299
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v274 2026-07-17 · PEN: ITEM 301: auditor guidance dispositioned — 4 adoptions (W4 merge post-v2.11 · G/A/R checkpoint header · re-seal reconciliation table · standing materiality test) · rest mapped to existing law · one PENDING-OWNER divergence (no extra R106.7 audit unless he says) · prior: ITEM 300
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4178,6 +4178,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (4) cross-reference comments at both floor sites naming the duplicate-loop hazard; (5) the
     option-3 refactor explicitly NOT this build. HYGIENE (grows 297/299): (vi) the W4→base floor
     delegation refactor, own build, determinism proof mandatory.
+
+301. **THE AUDITOR PROCESS GUIDANCE — DISPOSITION OF RECORD (2026-07-17; couriered by the owner
+    with the framing: consider, not ground truth; no interruption to the in-flight build; no new
+    audit programme).** ADOPTED (new): (1) hygiene item (vi), the W4→base floor merge, moves
+    EXPLICITLY POST-v2.11 (refactor, not certification support — the guidance's materiality lens
+    applied); (2) the G/A/R CHECKPOINT HEADER (objective · verdict · changed · verified ·
+    failed/report-only · decision-required? · recommendation · not-run · invalidators) becomes the
+    prescreen/owner-checkpoint opening for the chapter's remaining seams; (3) the ONE-TIME
+    RECONCILIATION TABLE (ruling ↔ SPEC ↔ CONSTRAINTS ↔ acceptance ↔ implementation ↔
+    verification, per critical rule) becomes a RE-SEAL DELIVERABLE riding the item-290 cargo — the
+    RULED/SPECIFIED/IMPLEMENTED/VERIFIED distinction lives as its columns, not a new global
+    vocabulary; (4) the MATERIALITY TEST (values · pass/fail · halt behaviour · scope · exceptions
+    · reproducibility) is the standing filter for any new corrective work this chapter. ALREADY
+    OPERATIVE (no change, mapped for the record): script-emitted counts = hygiene (ii)/item 295 ·
+    committed per-gate verdicts, no inferred greens = item 295's cure, in directive v1.1 ·
+    behaviour-over-evidence = rev156 ACT-1(b)/item 290 GPT-F9 · bounded jobs incl. expected-
+    unchanged = THE FIVE + fence + base pin · the declared sequence = the standing queue verbatim
+    · the deferral list conflicts with nothing planned. ONE DIVERGENCE, OWNER'S CALL (PROPOSED,
+    PENDING-OWNER — silence = doctrine holds): the guidance suggests independent review at the
+    R106.7 return; owner-ruled doctrine is ONE cold audit per chapter at the ladder. Supervisor
+    recommends holding doctrine (prescreen + mandatory verdict files fill the seam; the ladder
+    re-runs everything); a bounded read-only shard is available on the owner's word.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
