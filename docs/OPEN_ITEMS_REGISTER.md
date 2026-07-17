@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v283 2026-07-17 · PEN: ITEM 310: SPEC v1.4 issued at c0d4003 (β/CI retired, E/B survives; leg-blind bar + 284 law + F21 + halt semantics into §1b; 91→90; LOWER-BAR rename; G-Y0 stale sentence deleted; F2; de-versioned pointer) — PENDING SEAT-12 REVIEW; near-miss owned: fired assertion didn't gate the push (chain bug), survivor proved historical/benign · prior: ITEM 309
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v284 2026-07-17 · PEN: ITEM 311: re-seal HANDED TO SEAT 12 (cargo fully enumerated; fresh eyes on gate definitions; v1.4 review first) · hygiene dispositioned (iv/v delivered+merged; ii embodied; i/iii seat-12 queue; vi post-v2.11) · two lessons bind via rev157 · remaining seat-11 work = the rotation pack only · prior: ITEM 310
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4397,6 +4397,29 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     performs the push; a fired guard that doesn't block is the silence-is-a-red disease in the pen.
     STATUS: v1.4 is NOT operative until seat 12's review (owner's word); v1.3 governs any directive
     fired before that review lands.
+
+311. **THE RE-SEAL HANDED TO SEAT 12 + THE HYGIENE DISPOSITION (2026-07-17; the owner's
+    tired-pen safety valve exercised, as agreed).** DECISION: the CONSTRAINTS+acceptance RE-SEAL
+    (+ the item-301 reconciliation table) is SEAT 12's, not seat 11's. REASONING OF RECORD: the
+    spec needed this seat's chapter knowledge (done, item 310); the re-seal is precision-mechanical
+    against a cargo ALREADY FULLY ENUMERATED (item 290 = the cargo of record; +295 the two verified
+    strings & the report-only pins · +300 the item-284 acceptance fixtures · +302 the trigger frame
+    · +304/309 the KAT lesson · +306 the B3/B4 by-design flags & the chapter verification base ·
+    +310 the spec-side dispositions). A fresh seat executing a complete checklist beats a tired
+    seat on gate definitions (precedent: the v1.12 wrong-block; signal: the item-310 near-miss).
+    Seat 12 reviews SPEC v1.4 FIRST, then re-seals — both sealing-adjacent documents get the same
+    fresh eyes. **HYGIENE DISPOSITION (items 297/299/301 closed out):** (iv) first_commands.sh +
+    prescreen hook — DELIVERED, owner-MERGED to main · (v) directive template law (base block
+    first) — ADOPTED, binds via the rotation pack · (ii) script-emitted counts — EMBODIED in
+    viewing_pack + base guard; formalises at the S5 cert harness (seat 12) · (i) RL_WORKSPACE
+    override + (iii) per-gate-verdict harness consolidation — small engine-adjacent jobs, seat
+    12's queue, ride the next natural build · (vi) the W4→base floor delegation — POST-v2.11 as
+    ruled (301), determinism proof mandatory. TWO PROCESS LESSONS bind forward via rev157 standing
+    conduct: a KAT names its FETCH PATH (304/309) · a post-edit assertion MECHANICALLY GATES the
+    push (310). OWNER MERGES CONFIRMED: the two tools PRs are on main (verified this turn's
+    fetch). REMAINING SEAT-11 WORK: the ROTATION PACK ONLY (rev157 · DECISIONS bump · manifest
+    bump · seat-12 ordered queue: v1.4 review → re-seal → Leg D directive from the groundwork →
+    Leg E → ladder).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
