@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v245 2026-07-17 · PEN: **ITEM 272: OWNER ADJUDICATES "Accept." — audit #27 waived for the two NAMED rows (Carroll, Emmett); Leg-C HALT closed. The four-stage all-player ledger delivered (base·ΔA·ΔB·ΔC·overall). Next: the RELAY directive** · prior: v244
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v246 2026-07-17 · PEN: **ITEM 273: the item-272 ledger was MISLABELLED (base column carried 8d90c9ac, the POST-Leg-A board, not baked v2.10 790136a3 — owner-caught); CORRECTED sheet re-filed with the true four-board lineage. Numbers unchanged, columns realigned. Relay still awaits the go** · prior: v245
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5855,3 +5855,18 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     wired as acceptance standing_fails-style entries · the future==present guard update · the
     8/91 fut-label fix + per-row assertion · the skipped owner-law deliverables). Leg C's chat
     retires.
+
+273. **LEDGER MISLABEL — CORRECTED (2026-07-17, owner-caught).** The item-272 spreadsheet
+    labelled its base column "v2.10" but populated it with board `8d90c9ac` — which is the
+    POST-Leg-A board (v2.10 WITH the Iso Evidence Fade already applied), not baked v2.10. Baked
+    v2.10 is board `790136a3` (tag d14efae). Consequence: the "Δ Leg A" column was actually
+    measuring the un-compress delta, and Leg B / Leg C were each shifted one leg. Every cell was
+    a real board-to-board delta; three of four column LABELS were wrong. The owner caught it
+    ("if Leg A was shipped as 2.10, wouldn't they be the same?"). ROOT: I conflated the SHIPPED
+    evidence-over-calendars chapter (=v2.10) with this chapter's opening leg (the Iso Evidence
+    Fade). VERIFIED TRUE LINEAGE (md5 from the repo): base v2.10 `790136a3` → **Leg A Iso
+    Evidence Fade** (head 8b8ab7d) `8d90c9ac` → **Leg B** un-compress s=0.10 `f2f077b2` →
+    **Leg C** flex `b4c67bb6`. CORRECTED sheet delivered
+    (Player_values_leg_by_leg_CORRECTED.xlsx); net per corrected leg A +8,454 · B +1,231 ·
+    C +11,750 · overall +21,435. The first file is superseded. No engine/store impact — a
+    reporting defect only. Relay directive still awaits the owner's go.
