@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v286 2026-07-17 · PEN: ITEM 313: SEAT 12 OPENS — freshness GREEN · pack equal (no-op filing) · SPEC v1.4 REVIEWED: APPROVED/OPERATIVE (all 8 folds verified; one minor line-51 survivor recorded) · next = the re-seal · prior: ITEM 312
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v287 2026-07-17 · PEN: ITEM 314: THE RE-SEAL FILED at 21cc35f — CONSTRAINTS v1.19 · acceptance v1.21 · manifest v4.51 · HANDOVER rev158 (G-Y0 BINDING+RE_DERIVE_AT_LEG_D · R106.3 compression · R106.1/.2 value-flow · pair-2 ±15% · leg_c fixtures · item-272 waiver #8/#26/#41 · PART-8 reconciliation table) · next = the LEG-D directive · prior: ITEM 313
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4461,6 +4461,46 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     1.75 ONLY). **VERDICT: APPROVED — SPEC v1.4 IS OPERATIVE FROM THIS ITEM; v1.3 STANDS
     DOWN.** NEXT: ACT 2 — the RE-SEAL (cargo = item 290 grown by 295/300/306/310, + the
     item-301 reconciliation table).
+
+314. **THE RE-SEAL — FILED (2026-07-17, seat-12 pen; HANDOVER §2 ACT 2 DONE). Push `21cc35f`
+    (docs-only, 8 paths, guard-gated: the assert script ITSELF performed the push — the item-310
+    law honoured by construction).** CONSTRAINTS **v1.18 → v1.19** · acceptance **v1.20 → v1.21**
+    · manifest **v4.50 → v4.51** · HANDOVER **rev157 → rev158**; the superseded four archived.
+    CARGO EXECUTED (item 290 grown by 295/300/306/310): **(1) G-Y0 UNIFIED** — BINDING ·
+    population-level · effective the Leg-D re-derivation (R104.7, item 184) in BOTH documents;
+    the PART-6 stale 'ADVISORY, by owner ruling' tail DELETED; the twin's machine `fix_direction`
+    (raise_young_side… — drafted 2026-07-11 for the OPPOSITE breach) → **RE_DERIVE_AT_LEG_D**,
+    history retained in the sidecar. **(2) COMPRESSION per R106.3:** beta_proven27 + slope_le22 +
+    s_dial_selection REMOVED from the twin (s = 0.10 OWNER-SET; β at s=0.10 = 0.6235 recorded as
+    a FIGURE, never a gate — F13's certain false halt stays killed); **English/Briggs ≥ 1.75 HARD
+    UNCHANGED**; disposition block carries the record. **(3) VALUE-FLOW per R106.1/R106.2:**
+    conservation_ledger REMOVED → `leg_b.value_flow` (per-position conservation NOT law · unfunded
+    permitted · sincerity two-artifact schema); G-COHORT gains the TWO-SIDED BAND (floor 1.08
+    REPORTED · ideal 1.15–1.25 · 1.30 the SOLE hard halt; guide_band superseded) + the item-306
+    candidate reading (1.2692/1.2748/1.2314, report-only). **(4) A-PAIRS pair-2 band 10 → 15
+    (R106.4)** in PART 2 and the twin; candidate figures recorded (board 9829d01a: pair 2 14.1% ·
+    pair 3 +6.2%, register-verbatim; scored at the ladder). **(5) THE leg_c BLOCK (new):** R106.7
+    leg-blind bar + preservation clauses + F21 with endpoints · the item-284 data-error law with
+    the FOUR cross-class fixtures + required behaviours (flag · NAME · single-position · continue;
+    never a halt) · halt semantics · RL_FLEX off-identity (807e6551, report-only) · SEASON_PROG
+    0.58 OWNER DIAL (item 297) · 90 blend rows (R106.6). **(6) THE ITEM-272 TWO-ROW WAIVER
+    FOLDED** as standing_fails `EARNED-2ROW-WAIVER` (Carroll · Emmett; auditor SCORES, never
+    flags; both ride the sincerity ledger) — **the identifier VERIFIED against the ledger BEFORE
+    the fold (Opus-F5 CLOSED):** memo §5, SPEC §5 and the twin CONCUR the standing gate is
+    **audit #8/#26/#41**; **"#27" was the Leg-C DIRECTIVE'S numbered INSTANCE** of that gate over
+    the 14 written rows (items 268/272), not a second gate — no registration mismatch exists.
+    **(7) POINTER HYGIENE (GPT-F14/Opus-F4/F15 + item-294 class):** authority → v1.19; PART-7
+    machine pointer + CHANGE DISCIPLINE de-versioned; preview-hash HISTORICAL seals separated
+    from the ACTIVE ladder rule. **(8) CHANGELOGS REORDERED strictly descending (Opus-F8)** —
+    pure move, no history reworded. **(9) B3/B4 BY-DESIGN** noted on G-DATA (item 306). **(10)
+    THE ITEM-301 RECONCILIATION TABLE = CONSTRAINTS v1.19 PART 8** (12 rows,
+    ruling↔SPEC↔CONSTRAINTS↔acceptance↔implementation↔verification). SEAT NOTE (owned, benign):
+    two of my own post-edit assertion patterns fired OVER-BROAD on legitimate historical strings
+    (the item-310 lesson in the other direction) — both narrowed to live-region/version-cell
+    scope before the push; the guard gated correctly throughout, nothing pushed un-asserted.
+    NEXT: **THE LEG-D DIRECTIVE** — construction memo FIRST from the groundwork @ `9845180`
+    (R104.9 strict descent · G-Y0 BINDING effective HERE · R104.5 discounts 10/15/5 exact).
+    OWNER: re-sync PK Tier-0 (manifest v4.51 + HANDOVER rev158; CORE/DECISIONS/SSI unchanged).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
