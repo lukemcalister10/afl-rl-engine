@@ -150,13 +150,13 @@
  },
  "prior_removed_audit_44": {
   "divergence_vs_shipped": {
-   "max_abs": 83,
-   "mean_abs": 35.4,
-   "max_rel_pct": 17.93,
-   "mean_rel_pct": 6.22
+   "max_abs": 1,
+   "mean_abs": 0.1,
+   "max_rel_pct": 0.21,
+   "mean_rel_pct": 0.01
   },
-  "gy0_pooled_abs_pct": 3.979,
-  "gy0_mean_rel_pct": 7.257,
+  "gy0_pooled_abs_pct": 0.253,
+  "gy0_mean_rel_pct": 0.103,
   "finding": "Zeroing the 1093 zero-evidence poles on the EVIDENCE end leaves the shape ~unchanged (the poles already carry ~0 evidence weight); the entry end still uses their day-after V0 for the floor BY DESIGN, not circularity. Divergence is a reported number, not a silent pick."
  }
 }
