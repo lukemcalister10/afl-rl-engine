@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v267 2026-07-17 · PEN: **ITEM 294: the gate CAUGHT the fourth self-reference (the handover naming the manifest's version — circular, stale on every bump) — the CLASS retired like the item-counts; gate now wired to FAIL. THE FINAL PK SET: rev156 · v121 · v4.49. SEAT 10 CLOSES** · prior: v266
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v268 2026-07-17 · PEN: ITEM 295: seat-11 ACT 1 complete — (a) store diff PASS (11+4+90 exact, null-schema finding) · (b) item-284 behaviours ABSENT, McKercher +105 / Lloyd +39 dual-barred, cure rides the R106.7 build · (c) Sheezel +95 semantics PASS · (d) ledger 115 re-run-verified (BATTERY's 112 wrong), gates report-only pending committed verdicts · item-290 strings both confirmed · prior: ITEM 294
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4039,6 +4039,50 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     crash record. Model note (owner-raised): the supervisor seat is MODEL-AGNOSTIC BY DESIGN (rev141) —
     the record carries regardless of which model held the seat; high-leverage spec work (the PVC+FLEX
     spec, the compression+lens lever) is the standing Fable allocation.
+
+295. **SEAT-11 ACT 1 — THE FOUR DEFERRED CHECKS RUN (2026-07-17; supervisor re-run, own sandbox,
+    worktree at `6306378`; every figure below independently recomputed unless marked report-only).**
+    **(a) STORE DIFF BY STABLE ID — PASS, one named finding.** 273463e→6306378: value changes on
+    exactly 14 rows = the 11 primary-future (the item-269 list EXACT: Carroll · Uwland · Roberts ·
+    Lindsay · Thomas · Powell · Graham · Humphrey · Hall · Lloyd · Emmett) + the 4-write rider
+    (Flanders elig + present MID→GDEF · Baker elig · Langdon elig, per item 270); 90 rows carry
+    blend values (91→90, Driscoll removed); Driscoll 100% MID (no blend fields; 552==552); the
+    1,848 non-active rows BYTE-EQUAL. FINDING (judged benign schema-uniformity, not a write): the
+    flex columns (alternate_position/p_dual_stream) were added as EXPLICIT NULLS to all 804
+    stable-ID rows — the 714 non-written active rows are semantically untouched but NOT byte-equal.
+    **(b) THE ITEM-284 BEHAVIOURS — FAIL: ABSENT** (attribution: ruled post-directive; the cure was
+    already assigned to the R106.7 wiring build, item 290 — not relay disobedience). _collapse_elig
+    implements ONLY the same-line K/G silent collapse. NO cross-class flag path exists (unexercised
+    — 0 store rows). The present∉pair class has **TWO LIVE ROWS, silently dual-barred on board
+    ee70335a**: **Colby McKercher** (present MID 80.1 · elig G-DEF,G-FWD → bar GEN_FWD 70.9 · §1b
+    overstatement ≈ **+105**) and **Jake Lloyd** (present GDEF 78.3 · elig MID,G-FWD → bar GEN_FWD
+    70.9 · ≈ **+39**); neither named in any committed artifact; y0dpp_bar live-probed returns
+    GEN_FWD for both. Both are Locations-CSV data errors (eligibilities missing the present
+    position). RIDES THE R106.7 BUILD: flag + name + single-position fallback + continue for BOTH
+    classes; the item-284 fixture set into acceptance.
+    **(c) SEASON_PROG SEMANTICS, SHEEZEL — PASS.** Recomputed §1b Δ = +95.0 vs the claimed +94
+    (rounding). Raw-space identity verified: blend = 0.58·proj(g0=MID) + 0.42·proj(g0=GEN_FWD);
+    banked untouched (g0 enters only the k==0 REPL term); the 0.42 remainder = 89.97 of the 214.23
+    raw bar gap.
+    **(d) GATES + LEDGER — SPLIT.** RE-RUN-VERIFIED from the committed boards (led_default.json @
+    273463e vs rl_app_data.json @ 6306378): sincerity value-up-rank-down = **115** ✓ — **the
+    BATTERY's own "112" line is WRONG** (claim-accuracy defect in the build artifact; the seam
+    docs' 115 stands; positional-rank tie-break — the dense-rank variant reads 176) · movers 349
+    (250/99) ✓ · net ΣΔ +14302 ✓ · pool Δ exact (MID +9353 …) ✓ · age +7234/+4874/+2194, YOUNG
+    +12108 ✓ · pair 2 |Δ| 14.1% ✓ · pair 3 +6.2% ✓ · E/B 3682/1914 = 1.924 ✓ · Bont 3888→3897,
+    rank 26→29 ✓. **STILL REPORT-ONLY** (no per-gate verdicts committed under legc_relay/; the
+    frozen suite needs the bootstrapped workspace — heavier than one background compute, S6): F1/F2
+    parity · Guard 4 canary · Guard 5 · G-COHORT 1.2692/1.2748/1.2313 · β 0.6235. CURE: the R106.7
+    build commits per-gate verdicts on the moved board (SILENCE-IS-A-RED); these figures never
+    upgrade until then.
+    **PLUS the item-290 string verification — BOTH CONFIRMED:** (i) acceptance guards[G-Y0].status
+    = 'ADVISORY' vs CONSTRAINTS v1.18 (BINDING, effective Leg-D) vs SPEC v1.3 (BINDING,
+    population-level) — the contradiction is real; (ii) guards[G-Y0].fix_direction still
+    machine-live ('raise_young_side…') beside its prose STALE_DO_NOT_APPLY sidecar. Both cures
+    ride the re-seal as cargoed. **OPEN TO OWNER:** the McKercher/Lloyd data correction — A:
+    supply corrected eligibilities now, riding the wiring build's re-ingest (cleaner board) · B:
+    leave the data; the new flag path names them and his read fixes later. Recommendation: A if
+    the two corrections are one line to him; B costs nothing mechanically.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
