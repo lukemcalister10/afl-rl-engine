@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v244 2026-07-17 · PEN: **ITEM 271: the EMMETT DECOMPOSITION of record (bars 78.5 vs 66.8 vs his pn 74.97 — the +138 is ALL the primary write; d_blend=0) + a NEW DEFECT: 8/91 board rows render the alternate stream with the PRIMARY label (values right, provenance wrong) — relay-build fix. Adjudication word still OPEN** · prior: v243
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v245 2026-07-17 · PEN: **ITEM 272: OWNER ADJUDICATES "Accept." — audit #27 waived for the two NAMED rows (Carroll, Emmett); Leg-C HALT closed. The four-stage all-player ledger delivered (base·ΔA·ΔB·ΔC·overall). Next: the RELAY directive** · prior: v244
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5837,3 +5837,21 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     deny Emmett's ruck stream exists. RELAY-BUILD ADDITIONS: fix the fut rendering to carry the
     true alternate label regardless of bar comparison + a per-row assertion (board labels ==
     store primary/alternate for all 91). Adjudication word (accept/hold/mechanism) still OPEN.
+
+272. **OWNER ADJUDICATES THE EARNED-COMPONENT HALT: "Accept." (2026-07-17, verbatim.)** Audit
+    #27 is WAIVED for the TWO NAMED ROWS ONLY — Jack Carroll (MID→GDEF, Δearned −16/−37) and
+    Louis Emmett (RUC→KFWD, Δearned −259/−259, total +138) — as CORRECT REPRICINGS of his own
+    positional reads; the gate itself stays BINDING for every other row and every future write
+    (the A9 named-exemption pattern). The auditor scores both rows, never flags them; both ride
+    the sincerity ledger at the ladder. Pre-ruling context given: the Emmett counterfactual
+    (drafted-cohort lens + present-position year-0 + the dormant 15% alternate remain
+    RUC-keyed; a full-KFWD counterfactual probe offered, not requested). **DELIVERED with the
+    ruling: Player_values_leg_by_leg_v210_to_LegC.xlsx** — 804 players × (base 790136a3 · ΔLeg-A
+    to 8d90c9ac · ΔLeg-B to f2f077b2 · ΔLeg-C to b4c67bb6 · overall · final · rank base/now/Δ),
+    every board md5-verified from the repo this morning; net movement A +8,454 · B +1,231 ·
+    C +11,750 · overall +21,435 num-SCAR; the Leg-C column carries the item-270 quarantine
+    provenance (relay must reproduce b4c67bb6 byte-exact — mismatch = finding). NEXT: the RELAY
+    directive (FIRST COMMANDS · replay the verified diff on the true line · the two-row waiver
+    wired as acceptance standing_fails-style entries · the future==present guard update · the
+    8/91 fut-label fix + per-row assertion · the skipped owner-law deliverables). Leg C's chat
+    retires.
