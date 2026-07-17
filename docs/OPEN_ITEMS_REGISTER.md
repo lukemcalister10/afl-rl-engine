@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v260 2026-07-17 · PEN: **ITEM 287: RELAY RETURN — verified-core prescreen PASS-PROVISIONAL at `6306378` (PR #104): ancestry/fence/board `ee70335a`/waiver all supervisor-verified; four named deep checks EXPLICITLY DEFERRED to seat 11 act 1 (never silently claimed). THE ROTATION SEAM IS NOW** · prior: v259
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v261 2026-07-17 · PEN: **ITEM 288: the owner-prompted PRE-HANDOVER CHECK — rev151/v118/v4.44 were STALE (predated items 277–287: the audit series, R106.7, the relay RETURN). The TRUE pack filed: HANDOVER rev152 · DECISIONS v119 (R106.7 folded; LEG C NOT DONE stated plainly) · manifest v4.45. One in-turn self-catch (an archived-doc cargo pointer). SEAT 10 CLOSES** · prior: v260
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6154,3 +6154,19 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     batch + R106.7 + item-284) → the re-seal → Leg D → E → ladder → ONE bake → v2.11. Owner
     to-dos at the seam: PK sync (rev151 · v118 · v4.44; register moved past them — its header
     rules) · REVOKE the seat-10 token.
+
+288. **THE TRUE ROTATION PACK (2026-07-17, owner-prompted: "check your documentation before we
+    handover... there likely are things that need updating" — he was right).** The staged
+    rev151/v118/v4.44 predated the audit series (277–283), the edge rulings (284–286) and the
+    relay RETURN (287) — a seat opening on them would have believed the relay in flight,
+    R106.1–.6 the whole law, and the ledger ×3. FILED: **HANDOVER rev152** (the actual seam:
+    relay RETURNED `6306378`/PR #104/board `ee70335a`; **LEG C NOT DONE — R106.7's floor half
+    unwired is the next writer**, stated in its own section; seat-11 ACT 1 = the four deferred
+    checks; the ordered queue through v1.4/the re-seal/D/E/the ladder; the conduct laws; the
+    ×5 ledger). **DECISIONS v119** (R106.1–.7 incl. the F23 "(the LOWER replacement bar, and
+    nothing else)" parenthetical · the item-284 data-error law · the 285 convention · the
+    R104.3 survival clause per F14). **Manifest v4.45** (rows current; SPEC v1.4 QUEUED; both
+    re-seals queued with the F13 halt warning ⚠ on the table row). Superseded versions
+    archived; no terminal item-counts; ONE in-turn self-catch (the re-seal cargo pointed at
+    the ARCHIVED rev151 §3 — the F27 class — replaced with the self-contained enumeration).
+    SEAT 10 CLOSES on this filing.
