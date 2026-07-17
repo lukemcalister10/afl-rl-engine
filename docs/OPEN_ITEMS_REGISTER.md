@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v262 2026-07-17 · PEN: **ITEM 289: the SEAM adversarial-audit prompt (v2) drafted + filed — 8 named documents incl. acceptance/CONSTRAINTS/the register capped at 288; the intended-state framing (Leg C not done · spec pre-v1.4 · re-seal queued) built in so the auditor cannot mis-flag them** · prior: v261
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v263 2026-07-17 · PEN: **ITEM 290: the DUAL SEAM AUDIT (ChatGPT + incognito Opus) TRIAGED — ~22 confirmed, 3 fixed this commit, the rest routed to NAMED vehicles with complete lists; two NEW halt-grade discoveries (the G-Y0 status contradiction; the stale-active fix_direction). Seat 10 closes on this** · prior: v262
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5850,7 +5850,7 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     to 8d90c9ac · ΔLeg-B to f2f077b2 · ΔLeg-C to b4c67bb6 · overall · final · rank base/now/Δ),
     every board md5-verified from the repo this morning; net movement A +8,454 · B +1,231 ·
     C +11,750 · overall +21,435 num-SCAR; the Leg-C column carries the item-270 quarantine
-    provenance (relay must reproduce b4c67bb6 byte-exact — mismatch = finding). NEXT: the RELAY
+    provenance (relay must reproduce b4c67bb6 byte-exact — mismatch = finding) ⟪SUPERSEDED IN PLACE, item 290/Opus-F3: invalidated by the item-274/275 Driscoll+§1b changes — b4c67bb6 does NOT reproduce BY DESIGN (directive job 4, item 287)⟫. NEXT: the RELAY
     directive (FIRST COMMANDS · replay the verified diff on the true line · the two-row waiver
     wired as acceptance standing_fails-style entries · the future==present guard update · the
     8/91 fut-label fix + per-row assertion · the skipped owner-law deliverables). Leg C's chat
@@ -6184,3 +6184,45 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     against the JSON+prose directly, and the four item-287 deferred checks carried as seat-11
     ACT 1. Findings return as HYPOTHESES for the INCOMING seat to verify against the record
     (this is seat 10's last authored artifact). Read-only; parallel-safe.
+
+290. **THE DUAL SEAM AUDIT — TRIAGE OF RECORD (2026-07-17; two independent reports, ChatGPT +
+    incognito Opus, treated as hypotheses; corroborations noted, neither taken as truth).**
+    **FIXED THIS COMMIT:** the relay directive stamped EXECUTED/RETURNED — do-not-fire — with
+    its errata (GPT-F2/F3+Opus-F2: 8/91→8/90; the item-281 fence amendment noted) · item 272's
+    b4c67bb6 claim superseded in place (Opus-F3 — a marker-discipline catch). **NEW HALT-GRADE
+    DISCOVERIES (both GPT; seat 11 verifies the strings, then the re-seal cures):** (i) **the
+    G-Y0 STATUS CONTRADICTION** — BINDING vs ADVISORY across CONSTRAINTS/acceptance/SPEC
+    (GPT-F11); unify everywhere as BINDING · population-level · effective Leg D. (ii) **the
+    stale-ACTIVE `fix_direction`** in acceptance G-Y0 (a machine-readable field ordering the
+    known-backwards cure, contradicted only by later prose — GPT-F12); null/replace with
+    RE_DERIVE_AT_LEG_D. **THE R106.7 WIRING DIRECTIVE MUST CARRY (GPT-F5/F6/F19 + Opus-F11):**
+    the item-284 rule VERBATIM (same-line K/G = silent collapse; the four cross-class fixtures
+    = flagged, named, single-position fallback, NO halt; present∉pair likewise) · the exact
+    formula remaining = clamp(1−SEASON_PROG,0,1), SEASON_PROG = elapsed share, endpoints
+    asserted · the two preservation clauses EXPLICIT (banked/played untouched; years-1+
+    solely §1) · **the halt-semantics clause: the 1.30 cap is the SOLE hard HALT; a sub-1.08
+    floor reading is a REPORTED failure for the owner's benefit/tradeoff conversation (items
+    258/259 reconciled — Opus-F11, a real false-halt risk killed)**. **SPEC v1.4 BATCH
+    ADDITIONS:** GPT-F13 (Leg-D pick discounts are the RULED per-posture 10/15/5 — R104.5 —
+    not a pending 0.10) · Opus-F9 (rename the "MAX law" tag: take the LOWER replacement bar,
+    value-maximising) · Opus-F7 (§3's 91 line rides the same cure as F5). **RE-SEAL CARGO
+    ADDITIONS (with the COMPLETE source list — GPT-F10's omission cured: items 256 · 258/259 ·
+    265/266 · 272 · 275 · 283 · 284 · 285 · 286 + this item):** the G-Y0 unification (i) · the
+    fix_direction replacement (ii) · the LIVE VERSION-POINTER unification (acceptance authority
+    → CONSTRAINTS v1.18-successor; preview artifact → the new acceptance; PART-7/NEXT-EDITOR
+    pointers — GPT-F14+Opus-F4, live executable provenance, previously uncargoed) · the
+    historical-seals-vs-active-ladder-hash separation (GPT-F15) · **the earned-gate identifier
+    verified against the audit ledger BEFORE the waiver folds (audit #27 vs #8/#26/#41 — the
+    sole gate-number mismatch, Opus-F5)** · the changelog reordering (Opus-F8). **SEAT-11
+    ACT-1(b) EXTENDED (GPT-F9): verify BEHAVIOURS not flags** — no-halt-after-flag ·
+    single-position fallback applied · rows named. **HANDOVER NEXT-BUMP LIST (batch at seat
+    11's first natural touch, not churned now):** the lower-bar parenthetical in both "better
+    bar" uses (GPT-F7/Opus-F6) · the §0 "§3"→"§2" pointer (GPT-F17) · one sentence
+    distinguishing the 804-row movement ledger from its 115-row failure SUBSET (GPT-F16) ·
+    the run_panel stale-comment tidy added to the ladder-hygiene list (GPT-F18) · the
+    DECISIONS R106.6/.7 full-rule fold (GPT-F8/F19). META: both prompts' register-cap
+    staleness (GPT-F1/Opus-F1) — expected, the register moved at item 289; the reviewed range
+    was 250–288 as instructed. CORROBORATION BANKED (Opus categories C/E/F/G): R106.1–.7
+    correctly folded · the four deferred checks intact as ACT 1 · every disclosed acceptance
+    contradiction covered by cargo · no undisclosed acceptance/ruling contradiction found.
+    Nothing here reopens the relay or PR #104; all cures ride the already-queued vehicles.

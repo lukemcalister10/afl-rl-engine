@@ -1,5 +1,9 @@
 # DIRECTIVE — LEG C RELAY: THE TRUE LINE + THE CURRENT-SEASON DPP LAW · 2026-07-17 · seat 10
-### STATUS: fires on the owner's paste. This ONE build closes items 270–275: the topology cure,
+### STATUS: **EXECUTED AND RETURNED (2026-07-17, head 6306378, PR #104) — HISTORICAL REFERENCE ONLY;
+### DO NOT FIRE** (item 290/GPT-F2). Known text errata, superseded by the register: the header's
+### "8/91" reads 8/90 (items 283/290); the job-2 fence was amended in-flight by the owner's Option 1
+### (IN += forward_valuation/distribution_pricing.py:v_at_peak, item 281). Original status line:
+### fires on the owner's paste. This ONE build closes items 270–275: the topology cure,
 ### the owner's Accept waiver, the §1b CURRENT-SEASON DPP LAW (owner-confirmed), the Driscoll
 ### register correction (100% MID), the obsolete future==present guard, the 8/91 fut-label
 ### defect, and the owner-law deliverables Leg C honestly skipped. THE ONE STORE WRITER.
