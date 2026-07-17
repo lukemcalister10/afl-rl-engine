@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v268 2026-07-17 · PEN: ITEM 295: seat-11 ACT 1 complete — (a) store diff PASS (11+4+90 exact, null-schema finding) · (b) item-284 behaviours ABSENT, McKercher +105 / Lloyd +39 dual-barred, cure rides the R106.7 build · (c) Sheezel +95 semantics PASS · (d) ledger 115 re-run-verified (BATTERY's 112 wrong), gates report-only pending committed verdicts · item-290 strings both confirmed · prior: ITEM 294
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v269 2026-07-17 · PEN: ITEM 296: owner-worded eligibility corrections — McKercher G-DEF,MID · Lloyd G-DEF,G-FWD — ride the R106.7 wiring build; item-284 behaviours still implemented · prior: ITEM 295
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4083,6 +4083,19 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     supply corrected eligibilities now, riding the wiring build's re-ingest (cleaner board) · B:
     leave the data; the new flag path names them and his read fixes later. Recommendation: A if
     the two corrections are one line to him; B costs nothing mechanically.
+
+296. **THE McKERCHER/LLOYD ELIGIBILITY CORRECTIONS — OWNER-WORDED (2026-07-17, Option A taken).**
+    Owner verbatim: "McKercher's listed eligibilities can be G-DEF, MID / Lloyd's listed
+    eligibilities can be G-DEF, G-FWD." ⇒ store corrections for the R106.7 wiring build's
+    re-ingest (stable-ID, validate-or-halt, store vocabulary): **Colby McKercher eligibilities →
+    `G-DEF,MID`** (present MID now ∈ set; his §1b bar becomes GEN_DEF 78.3, not the accidental
+    GEN_FWD 70.9 — most of the item-295 +105 overstatement comes back off) · **Jake Lloyd
+    eligibilities → `G-DEF,G-FWD`** (present GDEF now ∈ set; his GEN_FWD 70.9 bar becomes
+    LEGITIMATE — value ≈ unchanged vs the relay board, now correctly attributed). The item-284
+    flag/fallback/naming behaviours are STILL implemented regardless (the two corrected rows
+    become conformant; the behaviours guard the next data error). Owner also confirmed the build
+    incorporates the Petracca issue — that IS R106.7's floor half (the leg-blind bar), per the
+    standing queue.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
