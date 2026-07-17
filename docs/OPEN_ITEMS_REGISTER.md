@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v292 2026-07-17 · PEN: ITEM 319: scope corrected (owner: independent from-scratch competitor, not a review — 318 misread owned; 6c7d682 pack superseded-in-purpose) · clean-room pack couriered (13,628-row trajectory CSV, machinery withheld + pollution-guarded brief at 4a48021) · ACT-2 paste-back re-headed FIRE NOW; competitor weighed at the ACT-2 return · prior: ITEM 318
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v293 2026-07-17 · PEN: ITEM 320: ACT-2 re-fire directive at d3a7cfb — fresh chat from checkpoint 12a0761 (ACT-1 chat write-retired; memo hash re-asserted at entry; sealed twin 7c12d0d6 pinned from main); owner rulings carried in full · owner pastes into a fresh Opus chat · prior: ITEM 319
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4668,6 +4668,29 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     measurements, per the item-290 hypothesis discipline. OWNER DOs: (1) start a fresh ChatGPT
     chat: upload the CSV, paste the brief. (2) paste the ACT-2 go into the build chat NOW
     (re-fire from `12a0761` if that chat's budget is dead).
+
+320. **ACT 2 RE-FIRES IN A FRESH CHAT (owner-worded; the designed seam exercised). Directive at
+    `d3a7cfb` (docs-only, guard-gated).** `docs/DIRECTIVE_LEGD_ACT2_refire_2026-07-17.md` —
+    self-contained for a chat with no ACT-1 memory: base = the ACT-1 branch
+    `claude/legd-pvc-rederivation-o290ye` RESET-HARD to checkpoint `12a0761` (a moved head at
+    fetch = an incident, HALT); ancestor proof to `33c8b52`; store `968de0c7`; **the ACT-1 memo's
+    pre-view hash RE-ASSERTED at entry (`abe387d9`; mutation halts the LADDER)**; the sealed twin
+    fetched FROM MAIN and pinned (`7c12d0d6 = acceptance_v1_21.json`) — the item-317 rider now a
+    mechanical entry check. **ONE-WRITER LAW APPLIED TO THE SEAM: the ACT-1 chat is RETIRED FROM
+    WRITING (answer-only if the owner consults it); the fresh chat is the sole writer from its
+    proof commit.** The owner's rulings carried IN FULL as the build's law: R1 the COMPOSED
+    PATHWAY CONSTRUCTION (busts REAL outcomes FULL weight · continuous evidence weighting ·
+    2-D per-exact-pick non-median kernel · PVC = the year-0 point · the entry closure asserted
+    in selftest · memo-C the measured-trigger fallback with a committed comparison) · R2 pooled
+    ≤2% HARD, per-exact-pick smoothed residual curve owner-viewing, NO bands, no per-draft gate,
+    unreachable ⇒ HALT-to-supervisor never a quiet widen · R3 ev-channel-only, the five census
+    consumers OWNER-RULED OUT (their migration = the separate pre-ladder build, census as map).
+    ACT-2 job list §6–§10 amended-in-place (RL_PVC2=0 ⇒ 9829d01a byte-exact · curve(1)==3000 ·
+    strict descent all-15-clear · R104.5 exact · offline stamped loaded-not-refit · planned
+    tests + R1-vs-C committed · battery + expected_boot F2-class re-pin). EFFORT High · auto ·
+    4–6 h. OWNER DO: paste into a FRESH Claude Code chat (Opus); the old chat stays open for
+    questions only. SUPERVISOR NEXT: the ACT-2 return prescreen (item-302 five triggers) ·
+    the competitor proposal's verification when the owner couriers it.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
