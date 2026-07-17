@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v253 2026-07-17 · PEN: **ITEM 280: third self-audit — the pack verifies CLEAN; the ADVERSARIAL PROMPT ITSELF was stale in four places (archived versions + a 277 cap) → v1.1 pre-consumption. Proactive ERRATUM paste to the relay recommended re: the spec-header window** · prior: v252
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v254 2026-07-17 · PEN: **ITEM 281: the relay HALTed on the §1b siting (the year-0 site lives in forward_valuation/distribution_pricing.py, OUTSIDE the directive fence — supervisor fence-mapping error); owner authorizes OPTION 1 (narrow fence amendment: v_at_peak SEASON_PROG blend only) + the spec-header erratum sent in the same paste** · prior: v253
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5995,3 +5995,20 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     a mid-flight factual erratum prevents both the false halt AND the silent-improvise failure
     mode the conduct history shows; text in chat. Self-audit series now 4 · 5 · 1 — converging,
     and the independent review proceeds against rev151/v118/v4.44 regardless.
+
+281. **THE §1b SITING HALT + THE OWNER'S OPTION-1 WORD (2026-07-17).** The relay HALTed
+    correctly: the board-live year-0 pricing site is `v_at_peak` in
+    forward_valuation/distribution_pricing.py — NOT on the directive's IN list; the only
+    on-list alternative sits inside Leg-B's fenced-OUT map. SUPERVISOR ERROR CLASS: the
+    directive authorized the §1b WORK without verifying WHERE the work lives — the fence's file
+    list was assumed, not mapped (the correction ledger grows; the future rule: a directive
+    that adds an engine behaviour names its wiring SITE from the code, not from memory).
+    **OWNER AUTHORIZES OPTION 1 (verbatim paste of record, sent with the item-279 spec-header
+    ERRATUM):** IN += distribution_pricing.py LIMITED to the §1b SEASON_PROG year-0 blend at
+    v_at_peak (before val) · RL_FLEX-gated · no Leg-B dial/constant · all byte-exact A/B
+    proofs unchanged (RL_FLEX=0 ⇒ f2f077b2 in every option) · the wiring diff still HALTs at
+    the mini-checkpoint for the supervisor prescreen. Defect-on-its-axis honoured: a year-0
+    pricing law lands in the year-0 pricing code. Options 2 (edit Leg-B's map — wrong axis,
+    fence waiver) and 3/4 (defer §1b — a full extra cycle for a fence-mapping error) declined
+    with reasons in chat. Build conduct: exemplary — located the true site, refused both the
+    wrong room and the locked room, asked.
