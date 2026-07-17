@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v303 2026-07-17 · PEN: ITEM 330: the handover recheck — verified end-to-end; two cures (census MAP-OF-RECORD pointer in rev159+prompt; unfired 319 pack archived); prior-seat root directives = standing practice, noted; five-migration authorship = SEAT 13 (late-context law honestly applied) · SEAT 12 CLOSES · prior: ITEM 329
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v304 2026-07-17 · PEN: ITEM 331: seat 13 opens — freshness GREEN, pack verified filed, THE FIVE-MIGRATION DIRECTIVE issued (filed b655380; base e4177c2 STRICT; census = map of record) · prior: ITEM 330
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4964,6 +4964,23 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     the directive needs is COMMITTED (the census · the audited base `e4177c2` · the
     measured-first ruling · the R rider · the derived-fence law): a fresh seat with those
     inputs beats a spent seat with memories. SEAT 12 CLOSES.
+
+331. **SEAT 13 OPENS (2026-07-18): FRESHNESS GREEN · PACK VERIFIED FILED · THE FIVE-MIGRATION
+    DIRECTIVE ISSUED.** ls-remote fresh: main `f846fe3` == the handed pin (zero drift, so the
+    docs-only diff is trivially clean); v2.10 `d14efae`; act2 head `e4177c21934…` == e4177c2
+    UNMOVED; o290ye `12a0761` unmoved (WRITE-RETIRED holds); groundwork `9845180`. R100.10 ACT 1:
+    PK vs repo DOC BY DOC — all five BYTE-IDENTICAL (manifest v4.52 · CORE v2.8 · HANDOVER rev159 ·
+    DECISIONS v123 · SSI v1.3) ⇒ ACT 2 already satisfied, nothing to file. SITE_CENSUS read at
+    `e4177c2` (the MAP OF RECORD): the five `rl_model.py` MA.PVC sites confirmed from the code —
+    `:714` import fit (+`:716`/`:720-722`/`:726-737`) · `:798` unpl_eq · `:813` pedestal ·
+    `:834-853` _natcv34 · `:515,:530` pvc_snapshot/_V4PVC. DIRECTIVE_FIVE_MIGRATION_2026-07-18.md
+    filed at main `b655380` (docs-only diff proven): base `e4177c2` STRICT · pvc_snapshot MEASURED
+    FIRST w/ post-bake fallback (R107.5) · no new import-time fit, RL_PVC2 template · fence DERIVED
+    from the job list in the build's PLAN (the 322 law) · per-consumer proofs incl. RL_PVC2=0 ⇒
+    `9829d01a` byte-hold at every step · rider = engine-side R inputs report-only (326/327).
+    Seat mechanical note (owned, loud, cured same turn): first push attempt failed auth on a shell
+    expansion-order bug AND its exit was read through a tail — the retry captured the push's own
+    exit directly. OWNER ASK: fire the directive into a fresh build chat.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
