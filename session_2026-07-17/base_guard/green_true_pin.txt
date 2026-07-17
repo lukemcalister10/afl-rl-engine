@@ -1,0 +1,19 @@
+== first_commands · THE BASE GUARD ==
+url          : https://github.com/lukemcalister10/afl-rl-engine.git
+branch_ref   : refs/heads/main
+base_sha     : de9f0fd0ad85d43a0e027385e364a9b945f20b07
+new_branch   : _bg_probe
+store_md5    : b1fd0bce
+symbol       : prod_floor:engine/rl_after/_merged_recover.py
+[0] dirty-tree : PASS  no uncommitted changes to tracked files (untracked scratch tolerated)
+[1] ls-remote  : PASS  refs/heads/main -> de9f0fd0ad85d43a0e027385e364a9b945f20b07 == expected
+[2] fetch      : PASS  de9f0fd0ad85d43a0e027385e364a9b945f20b07 present locally (git cat-file -e ok)
+[3] checkout   : PASS  _bg_probe @ HEAD de9f0fd0ad85d43a0e027385e364a9b945f20b07 (== pin; branched FROM it, not copied ONTO it)
+[4] ancestor   : PASS  de9f0fd0ad85d43a0e027385e364a9b945f20b07 is-ancestor HEAD de9f0fd0ad85d43a0e027385e364a9b945f20b07 (the pinned base is in this branch's history)
+[5] store md5  : PASS  engine/rl_after/rl_model_data.json = b1fd0bce == expected b1fd0bce
+[6] symbol     : PASS  'prod_floor' found 5 time(s) in engine/rl_after/_merged_recover.py (>=1 — the candidate's code is present)
+== first_commands PASS — base proven; this transcript IS the branch's first committed artifact ==
+
+wrote /home/user/afl-rl-engine/FIRST_COMMANDS_PROOF.txt — commit it as the branch's FIRST commit with:
+  git add FIRST_COMMANDS_PROOF.txt && git commit -m 'base: FIRST_COMMANDS_PROOF (de9f0fd0ad85d43a0e027385e364a9b945f20b07 on _bg_probe)'
+EXIT=0

@@ -1,0 +1,16 @@
+== first_commands · THE BASE GUARD (by hand — the base-guard job proves its own base) ==
+url          : https://github.com/lukemcalister10/afl-rl-engine.git
+branch_ref   : refs/heads/main
+base_sha     : de9f0fd0ad85d43a0e027385e364a9b945f20b07
+new_branch   : claude/tools-base-guard-a19812
+directive    : docs/DIRECTIVE_TOOLS_base_guard_2026-07-17.md
+
+[1] ls-remote  : PASS  refs/heads/main -> de9f0fd0ad85d43a0e027385e364a9b945f20b07 == HEAD
+[2] rev-parse  : PASS  git rev-parse HEAD == de9f0fd0ad85d43a0e027385e364a9b945f20b07
+[3] ancestor   : PASS  bee58cc71079112fb0b1c9b6ed039f338d78a801 is-ancestor HEAD (exit 0)
+[4] docs-only  : PASS  git diff --name-only bee58cc7..HEAD touches docs/ ONLY (the pen moves main):
+                 docs/DIRECTIVE_LEGD_groundwork_2026-07-17.md
+                 docs/DIRECTIVE_TOOLS_base_guard_2026-07-17.md
+                 docs/DIRECTIVE_TOOLS_viewing_pack_2026-07-17.md
+                 docs/OPEN_ITEMS_REGISTER.md
+== first_commands PASS — this job branches from MAIN @ de9f0fd0; this transcript is the branch's first committed artifact ==
