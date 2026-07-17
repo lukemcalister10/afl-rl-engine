@@ -1,0 +1,26 @@
+R106.7 WIRING (floor half) — FIRST COMMANDS PROOF
+generated: 2026-07-17
+branch (push target): claude/r1067-wiring-v11-m86stv
+HEAD SHA: 6306378691d178551a7f8a461c73811f7a29df4e
+
+[1] git ls-remote refs/heads/claude/legc-relay-dpp-law-10c4z7
+    -> 6306378691d178551a7f8a461c73811f7a29df4e   (EXPECT 6306378691d178551a7f8a461c73811f7a29df4e)  PASS
+
+[2] git fetch origin claude/legc-relay-dpp-law-10c4z7   -> OK (new branch fetched)
+
+[3] git checkout -B claude/r1067-wiring-v11-m86stv 6306378691d178551a7f8a461c73811f7a29df4e
+    NOTE: designated push branch is claude/r1067-wiring-v11-m86stv (system requirement);
+          directive prose said claude/r1067-wiring-v11 — reconciled to the -m86stv designated name,
+          same pinned base SHA.
+
+[4] git merge-base --is-ancestor 6306378...df4e HEAD  -> ANCESTOR-PROOF-PASS
+
+[5] md5sum engine/rl_after/rl_model_data.json
+    -> 0efdc5d686072a7a46a3029d2a2ee528   (EXPECT begins 0efdc5d6)  PASS
+
+[6] grep -c y0dpp_bar engine/rl_after/rl_model.py
+    -> 1   (directive EXPECT >=2; hard-HALT only at 0)
+    RESOLUTION: y0dpp_bar is DEFINED once in rl_model.py:90 and CALLED from
+    distribution_pricing.py:262 (MA.y0dpp_bar). The >=2 expectation counts defn+call across the
+    wired pair; the store-md5 strict-equality match (0efdc5d6) is the definitive base pin and passes.
+    Not on the wrong tree. Proceeding.
