@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v277 2026-07-17 · PEN: ITEM 304: pre-fire audit of the 3 directives — groundwork+base-guard clean; viewing-pack had a blocker (known-answer cited the wrong base board f2f077b2 vs the committed 8d90c9ac, cross-schema) — fixed to a supervisor-verified 119/393/+15533 pair + schema pin + merge-order note (4382baa) · prior: ITEM 303
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v278 2026-07-17 · PEN: ITEM 305: round-entry workflow — owner-corrected risk frame (FootyWire name,score export, current players only, exact-match trivial; 2 live clashes both non-issues) — real risk is a SILENT MISS: flag residue for 1-tap confirm, never silent drop/wrong-row/new-row. Future-proof: live active-pool resolve, new IDs auto. Supersedes item 303's identity para · prior: ITEM 304
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4258,6 +4258,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     read the same schema (reuse advice sound). LESSON BANKED: a "known-answer test" is only
     known-answer if its inputs are the exact committed artifacts in the exact schema — a verified
     NUMBER (the 115) is base-specific and does not transfer to a different base board.
+
+305. **ROUND-ENTRY WORKFLOW — OWNER-CORRECTED RISK FRAME + FUTURE-PROOFING (2026-07-17, owner
+    ground-truth; supersedes item 303's over-stated identity caution).** The owner corrected the
+    seat's framing: the item-269 identity hazards (retired namesakes, Mitch/Mitchell drift,
+    cross-era clashes) DO NOT occur in the weekly input. Source of record: a FootyWire weekly
+    export in `name, score` format, names IDENTICAL to the DB, CURRENT players only. Live-era name
+    clashes in the AFL right now = TWO; one carries a distinguishing middle initial already in the
+    DB; the other (the Max King pair) has NEITHER player active. So the resolver's real job is
+    trivial EXACT-MATCH over the active pool, with halt-and-ask reserved for genuine residue — NOT
+    a constant interrogation. Owner workflow PRESERVED: paste round+name+score, 2-minute job;
+    submitting unique IDs (a 2-hour job) is NOT required and not asked for. THE LAW, RESTATED (the
+    real failure mode is a SILENT MISS, not a clash): the tool exact-matches name→active-stable-ID
+    at run time; **any export name that does not cleanly resolve is a FLAGGED RESIDUE LINE for a
+    one-tap owner confirm — NEVER a silent drop, NEVER attached to the wrong row, NEVER a
+    new-row invention.** FUTURE-PROOFING (owner requirement, explicit): the resolver reads the LIVE
+    active pool at run time, so new-intake IDs are picked up automatically the moment they enter
+    the DB; a scoring player not yet in the DB is a flagged residue (ask the owner), never guessed.
+    Per-round stamped derived snapshots feed the UI week-to-week value line to year end (SSI:
+    derived/read-only/source-stamped). Buildable now (disjoint, dry-run read-only); store write
+    post-delivery only. This item is the design ruling of record for the job-4 directive; item
+    303's identity paragraph is SUPERSEDED by this frame.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
