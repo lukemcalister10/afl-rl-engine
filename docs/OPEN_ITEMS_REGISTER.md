@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v281 2026-07-17 · PEN: ITEM 308: item-307 refined to a CONVEX season weighting (illustrative: rd1 ~1%, last round ~40 — curve to be derived) + Smoothness Law OWNER-WAIVED for the season-end evaporation ONLY (verbatim recorded; binding everywhere else). Post-v2.11 trigger unchanged · prior: ITEM 307
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v282 2026-07-17 · PEN: ITEM 309: three parallel returns GREEN — base guard delivered (hygiene iv/v; found a real silence hole) · viewing pack GREEN, KAT blocker was MY directive defect (no fetch path), build refused to fake it, KAT closed SUPERVISOR-RUN (119/393/+15533/804 exact) · groundwork GREEN, owner's end-of-y1 window CONFIRMED from code · prior: ITEM 308
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4345,6 +4345,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     the current-season value component (grand-final → off-season). It remains BINDING everywhere
     else, including every within-season point of the future convex curve. No seat may read this as
     a general relaxation; the waiver rides the item-307 design when specced, post-delivery.
+
+309. **THREE PARALLEL RETURNS — ALL GREEN; THE KAT CLOSED SUPERVISOR-RUN (2026-07-17).**
+    **BASE GUARD** (claude/tools-base-guard-a19812, head `ea264d4`, base de9f0fd0 docs-only-proven):
+    first_commands.sh (6 ordered verdicts, non-zero on any red, dirty-tree refusal) + the prescreen
+    first-commit-proof hook + 4 committed transcripts (green + 3 reds, each verdict-then-exit-1) +
+    2 prescreen-hook transcripts. Found+fixed a REAL silence-is-a-red hole (git grep no-match exit
+    killing scripts pre-verdict). Proof = first commit 13560af, parent de9f0fd0 ✓ (my check).
+    Hygiene items (iv)+(v) DELIVERED. **VIEWING PACK** (claude/session-qsj22e, head `f56c7fe`):
+    built to spec, counts computed-at-gen w/ input-md5 stamps, board_diff reuse, loud refusals.
+    THE KAT BLOCKER — **the directive defect was MINE** (item 304's KAT named commits 273463e/
+    6306378 without naming the CANDIDATE BRANCHES to fetch; a main clone lacks those objects). The
+    build REFUSED TO FAKE IT, proved the logic on a hand-computed 6-row fixture, documented the
+    gap — exemplary conduct, named as such. **CLOSURE: supervisor fetched the pushed tool and ran
+    the true KAT against the exact boards (8d90c9ac→ee70335a): 119 / 393 / +15533 / 804 common —
+    ALL FOUR REPRODUCED.** KAT closed, supervisor-run; no build round-trip needed. LESSON (banks
+    with item 304's): a KAT must name the FETCH PATH to its inputs, not just their commits.
+    **LEG-D/E GROUNDWORK** (claude/legd-groundwork, head `9845180`, base 6306378): prescreen-depth
+    GREEN — proof-first ✓, all six jobs' artifacts + emitting scripts committed ✓, provisional-
+    values discipline ✓. HEADLINE RESULT (job 1): the owner's derivation-window correction
+    CONFIRMED FROM THE CODE — PVC derives from END-OF-CALENDAR-YEAR-1 as-of value
+    (s4_matrix_7147.py:62 anchor; pvc_fit header), while G-Y0 = the day-after identity, a separate
+    gate (v0_start, _merged_recover.py:1157) — seat-8's "day one" slip settled the owner's way.
+    Job-2 note of substance for the Leg-D memo: a precise earned/prior split is NOT yet computable
+    (the item-204 Leg-B export doesn't exist in code — verified); the robust measure is
+    games-at-anchor tiers over the 2083-entrant pool. OWNER DOs: open+merge the two tools PRs
+    (light path — tools-only, no value change); groundwork branch stays as seat-12 feed, no action.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
