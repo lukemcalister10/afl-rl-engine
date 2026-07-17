@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v300 2026-07-17 · PEN: ITEM 327: owner's correction adopted — production-bars vs list-space R are ORTHOGONAL axes (the 326 double-count trap dissolved, conceded); PVC gross curve STANDS, incremental = a lens (rider iv, measured R); the ordered path to v2.11 restated (shard reconcile → five-migration → Leg E → ladder → one bake); seat-12 rotation at the reconciliation seam · prior: ITEM 326
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v301 2026-07-17 · PEN: ITEM 328: the shard reconciles GREEN (auditor-built base board byte-exact; pooled 1.100% independently re-run; every number matches; both 322 triggers CURED) — the FIVE-MIGRATION releases to seat 13's pen; owner clarified: PVC stays GROSS, R is a view never a subtraction; SEAT 12 ROTATES at this seam, pack next turn · prior: ITEM 327
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4886,6 +4886,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     currency (326/327) · season leverage (307/308) · the tail entry-pricing question if the
     325 read stands. ROTATION NOTE: seat 12 rotates at the shard-reconciliation seam (context
     depth); the handover pack authors at that seam.
+
+328. **THE SHARD RECONCILES GREEN — ACT 2 STANDS AUDITED; THE FIVE-MIGRATION RELEASES; SEAT 12
+    ROTATES AT THIS SEAM (2026-07-17).** Audit-computed vs build-claimed, line by line, ALL
+    MATCH: kill-switch RL_PVC2=0 board `9829d01a` BYTE-EXACT (the auditor BUILT THE BASE BOARD
+    ITSELF) · curve(1)=3000 · 0 strict-descent violations · curve(10)=1604 / curve(40)=677 /
+    curve(80)=494 (= the supervisor's own recomputes) · stamp 968de0c7 · **pooled identity
+    INDEPENDENTLY RE-RUN on the frozen §9 harness: 1.100% ≤ 2%** (build: 1.10%) · entry-closure/
+    stamp/posture/_PVC0==v2 PASS · memo seal abe387d9 · store byte-identical base↔head ·
+    rl_model.py UNTOUCHED · no store writes in any changed .py · scope reading matches the
+    item-322 prescreen exactly. Audit's two observations, both verified-consistent: (a) the
+    selftest's overall exit≠0 = two book checks on artifacts the auditor chose not to build —
+    EXPLAINED, outside the five checks (silence-is-red satisfied by explanation); (b) RL_PVC2
+    absent from manifest/INFRA_ALLOW ⇒ dev-shell-only under gate mode — IDENTICAL to the
+    RL_FLEX/RL_ISOFADE standing pattern, config_sha256 unmoved; the manifest/INFRA_ALLOW entry
+    rides the BAKE like its predecessors. **BOTH ITEM-322 TRIGGERS CURED** (the fence deviation
+    independently read clean; the branch reconciliation verified). **RELEASED: the FIVE-
+    MIGRATION directive** — to be authored by SEAT 13 as its first pen job (fence DERIVED FROM
+    the job list mechanically, the item-322 lesson; per-consumer proofs; pvc_snapshot→peak-model
+    measured-first with post-bake fallback; emits the engine-side R inputs as a report-only
+    rider for items 326/327). **OWNER CLARIFICATION FILED (his question this seam): the PVC
+    stays GROSS — R is never subtracted from the curve; it is a side-by-side VIEW (rider iv)
+    and, post-v2.11 on his word, trade-calculator math; the five-migration is housekeeping
+    (frozen copies → the new curve) unrelated to R except the free measurement.** ROTATION:
+    seat 12 closes at this seam (context depth; rotate-at-the-seam per the seat-11 law); the
+    rotation pack (HANDOVER rev159 · DECISIONS v123 · manifest v4.52 · the seat-13 opening
+    prompt) authors NEXT TURN; the owner then syncs PK, issues a fresh token, revokes seat-12's.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
