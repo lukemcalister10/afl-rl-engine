@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v298 2026-07-17 · PEN: ITEM 325: riders ADOPTED (owner word) incl. washout calibration fold-in + a NEW replacement-adjusted viewing rider (iv, flagged for narrowing) · THE OWNER'S TAIL READ registered OPEN (p1/p60 5.5x challenged) with the gross-vs-incremental decomposition + the external-calibration test path; hand-bending forbidden; engine entry-pricing axis = the named cure site if the read stands · prior: ITEM 324
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v299 2026-07-17 · PEN: ITEM 326: owner-raised POST-v2.11 design direction — THE INCREMENTAL CURRENCY (value = over free-replacement, picks AND players; R operationally defined via backfill intake + delist top-up) · two consequences named (list spots priced as assets in unequal trades; the embedded bar-netting double-count trap — measure first) · v2.11 stays gross; rider (iv) = the first measurement; owner rules post-v2.11 · prior: ITEM 325
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4836,6 +4836,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     hold (age at entry · LTI/availability) noted for future data hand-offs; my CSV dictionary
     correction (games cumulative) carried from 324. AWAITING: the shard return (gates the
     five-migration directive).
+
+326. **OWNER-RAISED DESIGN DIRECTION — THE INCREMENTAL CURRENCY QUESTION (2026-07-17;
+    POST-v2.11 trigger, the 307/308 class; verbatim-in-substance).** THE OWNER'S FRAME: "Pick
+    60's value isn't pick 60. It's whatever pick 60 is worth over a free-to-replace list spot
+    (the last pick in the pre-season/rookie/SSP/mid-season draft — if you didn't have pick 60
+    you would be issued another pick to fill the slot). The same can be said for PLAYERS: their
+    value is what they offer over a freely available pool replacement — you can delist a player
+    and receive a top-up pick." OPERATIONAL DEFINITIONS his words give: R(pick) = the value of
+    the guaranteed backfill intake; R(player) = the free-pool alternative + the delist top-up
+    pick. TWO CONSEQUENCES NAMED AT CAPTURE: (1) INCREMENTAL VALUATION PRICES LIST SPOTS AS
+    ASSETS — unequal-count trades change by exactly R per freed spot (2-for-1 consolidation
+    gains a spot worth R); the gross board structurally cannot see this; it is the strongest
+    evidence the frame is a re-founding, not a display choice. (2) DOUBLE-COUNT TRAP: the
+    engine's year-0 pricing already nets against positional replacement BARS internally —
+    the embedded netting share is EMPIRICAL; subtracting full R from partially-netted values
+    double-subtracts. MEASUREMENT FIRST (the seat-error-pattern law). SEQUENCE RULED-IN-
+    SUBSTANCE: v2.11 currency stays GROSS; rider (iv) (item 325) delivers the first measured R
+    + the incremental view at the ladder; POST-v2.11 investigation then: measure R from both
+    sides (engine entry-pricing of the free mechanisms — the rl_export intake pick-equivalents —
+    vs realized pathway outcomes, GPT's 253/22 as the first external estimate), quantify the
+    embedded bar-netting, spec the redenomination question incl. the pick-1=3000 pin's fate and
+    the list-spot trade-math term — OWNER RULES with numbers. Interacts with: items 307/308
+    (season leverage) · the frozen-five migration (pickless pick-equivalents ARE part of R's
+    engine-side measurement) · the A-PAIRS bands (gross-calibrated; a re-base re-derives them).
+    Nothing here is buildable without his word at the post-v2.11 gate.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
