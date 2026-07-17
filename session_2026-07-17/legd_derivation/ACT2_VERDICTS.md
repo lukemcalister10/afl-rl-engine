@@ -23,7 +23,23 @@ curve `pvc_curve_v2.json` curve_md5 `89c14729` (R1 composed pathway; tau=0.12, n
 | **stamp-assert-not-stale** | curve carries the store md5 it was derived on | **PASS** (`968de0c7`) |
 | **pre-view-hash LAW** | MEMO/census/acceptance unmutated | **PASS** (`abe387d9`/`04b9350e`/`6b83e336`) |
 | **one_source_selftest §(9)** | promoted job-5 harness — all above, halt-not-warn | **PASS** (in-pipeline) |
-| **G-COHORT (SOLE hard halt)** | class-year sum ratio ≤ 1.30, y4/y5/y6 | _see ship_gates battery_ |
+| **G-COHORT (SOLE hard halt)** | class-year sum ratio ≤ 1.30, y4/y5/y6 | **PASS×3** (y4=1.2650 · y5=1.2697 · y6=1.2260; guide 1.20–1.25 ADVISORY) |
+
+## THE BATTERY (`ship_gates_check.py`, gate mode, candidate engine `40f43772` / store `968de0c7` / config `c2d233ae`)
+- **B1 G-COHORT (SOLE hard halt): PASS×3** (raw class-year sums, 17 classes 2004–2020; hard ≤1.30).
+- **B2 leak PASS** (0.000 %-pts) · **B3 book seal PASS** (`745e3462` matches the re-seal) ·
+  **B4 board PASS** (`270a2c5f` byte-agrees the shipped) · **B6 ramp PASS** · B5 FEATURE (60 saves).
+- **Four A-gate FAILs — ALL PRE-EXISTING, none caused by RL_PVC2:** A2 (Curtis, data-caused, ruling
+  D7), A3 (Rozee, out-for-2026 knife-edge), A12 (Travaglia/Smillie), **A4 (Reid board rank 48,
+  need top-40)**. PROVEN: every A-FAIL player holds **byte-identical value under RL_PVC2=0 (`9829d01a`)
+  and RL_PVC2=1 (`270a2c5f`)** — Curtis 1510, Ward 3104, Weddle 1578, Rozee 3068, Travaglia 601,
+  Smillie 1324, Reid 3348 — all unchanged. The 22 movers are all ≤1490 (young/low-value), below every
+  A-gate assertion. A4's "MOVED" flag is vs the all-levers-off CONTROL, not vs RL_PVC2 (Reid rank 48
+  on the RL_PVC2=0 board too — identical to PR #105's finding). A13/A14 PENDING (PVC stage advisory);
+  A15 STRUCK; C1/C2 PENDING (need their own directive).
+- **HALT SEMANTICS honoured:** G-COHORT 1.30 is the SOLE hard halt (PASS); a sub-1.08 floor reading
+  would be REPORTED (none breached); the 2019 "gapless" annotation stays REPORT-ONLY (ACT-1 finding,
+  supervisor's pen — inputs untouched).
 
 ## THE G-Y0 DIAGNOSTIC (owner-viewing, REPORT-ONLY — NOT gated; CORE rule 7)
 `out/gy0_residual_curve_v2.json` — the residual PER EXACT PICK, kernel-smoothed across picks.
