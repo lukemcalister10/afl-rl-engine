@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v308 2026-07-17 · PEN: ITEM 335: Leg E directive pre-drafted (DRAFT/DO-NOT-FIRE, slots fill at post-migration seam); audit-pack shell queued next quiet turn · prior: ITEM 334
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v309 2026-07-17 · PEN: ITEM 336: audit seed shell filed (GPT-§5 = owner-courier slot; leak-guard mechanical); owner's court EMPTY of mandatory items; bake runbook held until Leg E fires · prior: ITEM 335
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5049,6 +5049,22 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     REMAINING PREP QUEUE (next quiet turn): the S6 cold-audit seeding pack SHELL — integrity
     manifest template (addresses only) + GPT §5 failure-mode checklist skeleton; addresses fill at
     the ladder; items-319/323 leak-guard scrub runs at seeding time, mechanically.
+
+336. **AUDIT SEED SHELL FILED + THE OWNER'S-COURT SNAPSHOT (2026-07-18).**
+    AUDIT_SEED_SHELL_2026-07-18.md filed (SHELL header; auditor contract restated; integrity-
+    manifest template addresses-only per OQ-C; shards A–E S6-sized incl. ⟦GPT-§5⟧ slot — the
+    clean-room §5 list is NOT in the repo (verified: docs/, inputs/, returns/, archive/ all
+    empty of it), so it is OWNER-COURIERED at seeding time, fallback = the item-324 category
+    set converted to addresses; the 319/323 leak-guard made mechanical with committed scan
+    proofs; return format = compute-and-report, verdicts supervisor-side). PREP QUEUE NOW
+    EMPTY except the bake/ladder runbook pre-draft, deliberately HELD until Leg E fires
+    (drift risk exceeds the saving before then). OWNER'S COURT AT THIS SNAPSHOT — NOTHING
+    MANDATORY; queued words only: (a) optional now — retire vs hold the tail read (default:
+    hold, rule at the ladder w/ measured R beside his 220 prior, item 332); (b) at migration
+    prescreen PASS — fire the filled Leg E directive; (c) at the ladder — courier the GPT §5
+    list · the sealed-reads scoring step · the viewing · the bake word (RL_PVC2
+    manifest/INFRA_ALLOW rides it, RL_FLEX pattern). Both builds in flight; seat idle-ready
+    for returns.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
