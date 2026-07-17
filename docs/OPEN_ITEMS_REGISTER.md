@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v282 2026-07-17 · PEN: ITEM 309: three parallel returns GREEN — base guard delivered (hygiene iv/v; found a real silence hole) · viewing pack GREEN, KAT blocker was MY directive defect (no fetch path), build refused to fake it, KAT closed SUPERVISOR-RUN (119/393/+15533/804 exact) · groundwork GREEN, owner's end-of-y1 window CONFIRMED from code · prior: ITEM 308
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v283 2026-07-17 · PEN: ITEM 310: SPEC v1.4 issued at c0d4003 (β/CI retired, E/B survives; leg-blind bar + 284 law + F21 + halt semantics into §1b; 91→90; LOWER-BAR rename; G-Y0 stale sentence deleted; F2; de-versioned pointer) — PENDING SEAT-12 REVIEW; near-miss owned: fired assertion didn't gate the push (chain bug), survivor proved historical/benign · prior: ITEM 309
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4371,6 +4371,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (the item-204 Leg-B export doesn't exist in code — verified); the robust measure is
     games-at-anchor tiers over the 2083-entrant pool. OWNER DOs: open+merge the two tools PRs
     (light path — tools-only, no value change); groundwork branch stays as seat-12 feed, no action.
+
+310. **SPEC v1.4 ISSUED — PENDING SEAT-12 REVIEW (owner-set gate) + A SUPERVISOR NEAR-MISS OWNED
+    (2026-07-17).** Pushed at **`c0d4003`** (docs-only): the full source read first; ten asserted
+    edits in one scripted pass. THE FOLDS: (1) §5+§6.1 — R104.3's β/CI clauses RETIRED per R106.3
+    (s=0.10 owner-set; β=0.6235 vs a live β≥0.85 gate = the F13 certain false ladder halt, KILLED);
+    **E/B ≥ 1.75 HARD survives unchanged**; (2) §1b gains R106.7 THE LEG-BLIND BAR verbatim
+    (+preservation clauses, blend-outside-the-nonlinearity), the F21 exact formula w/ endpoints,
+    the item-284 DPP DATA-ERROR LAW (F19/F20), the reconciled halt semantics (1.30 sole hard halt;
+    sub-1.08 reported), the F17 attribution convention; (3) §3 Leg C 91→NINETY (F8/Opus-F7);
+    (4) §1 'MAX law' → THE LOWER-BAR LAW (Opus-F9); (5) §3 Leg D's stale
+    'ADVISORY→ratified-at-this-ladder' G-Y0 sentence DELETED, replaced with the R104.7 BINDING
+    statement (rev155's named deletion); (6) §5 value-flow re-stated per R106.1/R106.2 (conservation
+    not law · the two-sided band · the sincerity law, item-256 two-artifact schema); pair-2 ±15%
+    (R106.4) + pair-3 0–10% added to watch rows; (7) §4 gains the F2 reconciling sentence
+    (candidate-line expected_boot re-pin = designed behaviour); (8) the §5 acceptance pointer
+    DE-VERSIONED to 'per the manifest' (the item-294 self-reference class). POST-EDIT ASSERTIONS:
+    all new strings present; ONE flagged survivor = 'acceptance v1.17' at line 19 INSIDE THE v1.2
+    HISTORICAL CHANGELOG — legitimate (true when written; editing history is falsification); the
+    assertion pattern was over-broad. **THE NEAR-MISS (owned):** the assertion FIRED and the push
+    went through anyway — a shell-chaining defect in the supervisor's own turn (heredoc then
+    newline-separated git, not one &&-chain), so the guard did not gate the push. Outcome verified
+    correct on inspection; the failure class is real. LESSON (binds this seat + the rotation pack):
+    a post-edit assertion must MECHANICALLY gate the push — one &&-chain or the guard script itself
+    performs the push; a fired guard that doesn't block is the silence-is-a-red disease in the pen.
+    STATUS: v1.4 is NOT operative until seat 12's review (owner's word); v1.3 governs any directive
+    fired before that review lands.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
