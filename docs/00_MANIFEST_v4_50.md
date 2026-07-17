@@ -3,8 +3,8 @@
 ### CONTENT-COMPLETE at PR #105 `33c8b52`, prescreen GREEN; the parallel batch delivered and
 ### owner-merged; seat-12 queue = the v1.4 review → the re-seal → Leg D → E → ladder).
 ### DECISIONS → v122. SPEC → **v1.4 PENDING SEAT-12 REVIEW — v1.3 governs until the verdict**
-### (item 310). The CONSTRAINTS+acceptance RE-SEAL = SEAT 12's FIRST PEN JOB (item 311; cargo =
-### item 290, grown by 295/300/306/310).
+### (item 310). The CONSTRAINTS+acceptance RE-SEAL = SEAT 12's SEALING JOB, after the v1.4 review (item 311;
+### cargo = item 290, grown by 295/300/306/310).
 ## THE PACK — CURRENT VERSIONS
 | doc | version | tier | when to read |
 |---|---|---|---|
@@ -13,7 +13,7 @@
 | **HANDOVER** | **rev157** | 0 | THE ROTATION DOC — the seam state · seat-12 queue · standing conduct. |
 | **DECISIONS** | **v122** | 0 | carried rulings + the seam record + to-dos. Register for verbatim. |
 | **OPEN_ITEMS_REGISTER** | read its OWN header | 1 | THE DURABLE LOG. Repo-only. |
-| **CONSTRAINTS** | **v1.18** | 1 | REPO-ONLY. **THE RE-SEAL = SEAT 12's FIRST PEN JOB.** |
+| **CONSTRAINTS** | **v1.18** | 1 | REPO-ONLY. **THE RE-SEAL = SEAT 12's SEALING JOB (HANDOVER §2, after the v1.4 review).** |
 | **acceptance_v1_20.json** | **v1.20** | 1 | REPO-ONLY — assert the JSON. ⚠ s_dial_selection + G-Y0 fix_direction STALE; the re-seal cures. |
 | **SPEC_PVC_FLEX_CHAPTER** | **v1.4 — PENDING SEAT-12 REVIEW (v1.3 governs)** | 1 | §1 + §1b binding once the review verdict registers. |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | before touching the store or a derived artifact. |
