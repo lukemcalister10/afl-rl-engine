@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v251 2026-07-17 · PEN: **ITEM 278: owner calls a CROSS-MODEL ADVERSARIAL AUDIT of the rotation pack + §1b + the relay directive — the prompt is authored and filed; findings return as hypotheses for supervisor verification** · prior: v250
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v252 2026-07-17 · PEN: **ITEM 279: the SECOND self-audit (owner-prompted) — FIVE more defects fixed; cascade → rev151/v118/v4.44; TERMINAL ITEM-COUNTS ABOLISHED as a class from pack docs. One LIVE CONTINGENCY armed: the relay fired against the pre-fix spec header (v1.2 lookalike era)** · prior: v251
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5963,3 +5963,22 @@ defect. Expectation set with the owner: ~⅓–½ wall-clock reduction; the resi
     the record before any correction (the GPT-audit precedent: real findings and noise both
     arrive). Read-only, parallel-safe with the in-flight relay. The audit score to beat:
     4+6+5+4 across four human-prompted cascade audits.
+
+279. **THE SECOND SELF-AUDIT — FIVE MORE, AND A CLASS ABOLISHED (2026-07-17, owner-prompted
+    "one more self audit before the adversarial review").** FOUND + FIXED: (1) the manifest's
+    OWN table row still read v4.42 under the v4.43 header — the manifest disagreeing with
+    itself; (2) its STATE heading likewise; (3) DECISIONS §3's PK-sync list named the
+    SUPERSEDED versions — a v117 doc instructing a v116 sync; (4) two LIVE pointers at the
+    archived rev149 §3 for the re-seal cargo; (5) terminal item-counts stale by one AGAIN
+    (→277 while 278 existed). DURABLE CURE for (5): terminal item-counts are REMOVED from
+    every pack doc as a class — "read the register's own header" is the only phrasing
+    permitted; the register alone owns its count. Cascade bumped by the book: HANDOVER →
+    **rev151** · DECISIONS → **v118** · manifest → **v4.44**; the defective versions archived.
+    §1b verified COMPLETE post-relocation (all clauses + the collapse note + the examples).
+    **LIVE CONTINGENCY, armed:** the relay FIRED while the spec header still read v1.2 (the
+    item-277 lookalike was fixed post-fire at f8a0198); the relay directive's FEED says
+    "header v1.3". IF the relay halts on a spec-version mismatch, the owner's paste is:
+    "Refetch docs at main ≥ f8a0198 — the spec header lookalike was corrected post-fire (item
+    277); the law text is unchanged; proceed." Not a defect in the build. The adversarial
+    review (item 278) now runs against rev151/v118/v4.44 + SPEC v1.3 + the relay directive +
+    items 250–279. Self-audit series: 4, then 5 — the independent eye remains necessary.
