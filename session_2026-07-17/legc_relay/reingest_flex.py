@@ -163,7 +163,7 @@ def main(do_write=False):
             by_sid[sid]['eligibilities'] = nb
         for nm, _, nb in present_writes:
             r = next(x for x in fut if x['name'] == nm); by_sid[r['sid']]['present_position'] = nb
-        json.dump(store, open(STORE, 'w'), sort_keys=True, indent=0)
+        json.dump(store, open(STORE, 'w'))     # match the store's native single-line, insertion-order format
         print('WROTE store %s' % STORE)
 
 if __name__ == '__main__':

@@ -149,7 +149,7 @@ check(not _multi, "present/future positions are single-valued (no list legs); of
 # future_position is in the position vocab; (b) at most ONE alternate per row (single-valued, never a list —
 # the "<=1 alternate" law); (c) blend params register-consistent (alternate in vocab, 0<p_dual<=100,
 # alternate != primary; alt/p_dual set together). GUARD CHANGE, named for the cold audit. SILENCE IS A RED.
-_VOCAB={'MID','RUC','GFWD','KFWD','GDEF','KDEF'}
+_VOCAB=set(MA.GRP)   # the engine's OWN position vocab (incl. the 'DEF'->GEN_DEF legacy alias on back-catalogue rows)
 _futbad=[p['key'] for p in store if p.get('future_position') and p.get('future_position') not in _VOCAB]
 check(not _futbad, "flex: every future_position in vocab; offenders=%s"%_futbad[:5])
 _altlist=[p['key'] for p in store if isinstance(p.get('alternate_position'),list)]
