@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v280 2026-07-17 · PEN: ITEM 307: owner-raised — season dial vs premiership leverage (current-season value floor ~75%, hold from halfway, off-season drop). Split-the-dial shape adopted in principle; blocks: Smoothness-Law cliff at rd24 + principled basis for 75% + the one-currency neutrality ruling. Trigger: post-delivery chapter · prior: ITEM 306
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v281 2026-07-17 · PEN: ITEM 308: item-307 refined to a CONVEX season weighting (illustrative: rd1 ~1%, last round ~40 — curve to be derived) + Smoothness Law OWNER-WAIVED for the season-end evaporation ONLY (verbatim recorded; binding everywhere else). Post-v2.11 trigger unchanged · prior: ITEM 307
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -4329,6 +4329,22 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     owner's weekly round-entry cadence makes the dial live. INTERACTIONS to spec then: §1b
     credits scale with the same remaining share · the mid-season benefit-of-doubt prior term ·
     SPEC_SEASON_ROLLOVER. No design now; nothing in the v2.11 cycle moves.
+
+308. **ITEM 307 REFINED + A SCOPED SMOOTHNESS-LAW WAIVER (2026-07-17, owner-worded; still
+    POST-v2.11-triggered — nothing in the current cycle moves).** DESIGN REFINEMENT (owner): not a
+    75% floor — a CONVEX weighting along the season dial. His reasoning verbatim: "Late season
+    games might be worth more per game, but whether it's round 2 or round 18, round 24 is still
+    ahead of us so would factor into the valuation." Illustrative shape (his words, NOT ruled
+    constants): "the last round worth say 40 and maybe round 1 only taking 1% off or something" —
+    i.e., early rounds shave ~1% each off the current-season component; the final round carries a
+    large share (~40). The future spec derives the actual curve (principled basis per item 307c).
+    **THE WAIVER (owner verbatim, scope exact):** "I understand round 24 to off season would not
+    be a smooth transition, and violate a law. Waived. Because we play for a premiership, and once
+    the grand final is done, that current season value does legitimately evaporate." ⇒ the
+    Smoothness Law is OWNER-WAIVED for ONE NAMED TRANSITION ONLY: the season-end evaporation of
+    the current-season value component (grand-final → off-season). It remains BINDING everywhere
+    else, including every within-season point of the future convex curve. No seat may read this as
+    a general relaxation; the waiver rides the item-307 design when specced, post-delivery.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
