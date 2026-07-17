@@ -1,0 +1,4 @@
+=== GUARD 4: correction-sticks canary (full rebuild; sentinel=josh-ward +40) ===
+  PASS sentinel josh-ward present on the board (baseline v=5973)
+  PASS sentinel josh-ward present in the book (baseline cur=2108)
+  edited store: josh-ward 2026 avg 116.9 -> 156.9
