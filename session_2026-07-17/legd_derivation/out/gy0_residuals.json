@@ -1,0 +1,199 @@
+{
+ "_doc": "G-Y0 signed residuals (meanV0 - shipped_PVC) by pick decile + band, base 968de0c7. Evidence for the memo's tolerance proposal (audit #37). Number is the owner's; nothing fitted.",
+ "identity": "comp-weighted mean V0 per band == derived PVC per band (population, across drafts). Single class off-curve NOT a breach; measure across drafts.",
+ "pool_n": 2082,
+ "shipped_curve": "pvc_curve_L1b.json (the curve being replaced \u2014 residuals show the CURRENT gap shape)",
+ "overall_mean_signed_resid": 64.3,
+ "overall_mean_rel_resid_pct": 21.6,
+ "max_abs_decile_rel_pct": 54.15,
+ "median_abs_decile_rel_pct": 22.41,
+ "by_pick_decile": [
+  {
+   "decile": 1,
+   "n": 208,
+   "pick_lo": 1,
+   "pick_hi": 10,
+   "mean_V0": 2196.4,
+   "mean_PVC": 2246.5,
+   "mean_signed_resid": -50.1,
+   "median_signed_resid": 67.6,
+   "mean_rel_resid_pct": -1.57,
+   "sd_resid": 883.4
+  },
+  {
+   "decile": 2,
+   "n": 208,
+   "pick_lo": 11,
+   "pick_hi": 21,
+   "mean_V0": 1241.9,
+   "mean_PVC": 1319.8,
+   "mean_signed_resid": -77.9,
+   "median_signed_resid": -136.9,
+   "mean_rel_resid_pct": -6.18,
+   "sd_resid": 300.8
+  },
+  {
+   "decile": 3,
+   "n": 208,
+   "pick_lo": 21,
+   "pick_hi": 31,
+   "mean_V0": 894.3,
+   "mean_PVC": 919.9,
+   "mean_signed_resid": -25.6,
+   "median_signed_resid": -90.1,
+   "mean_rel_resid_pct": -2.78,
+   "sd_resid": 174.1
+  },
+  {
+   "decile": 4,
+   "n": 208,
+   "pick_lo": 31,
+   "pick_hi": 41,
+   "mean_V0": 741.6,
+   "mean_PVC": 752.4,
+   "mean_signed_resid": -10.8,
+   "median_signed_resid": -15.9,
+   "mean_rel_resid_pct": -1.55,
+   "sd_resid": 132.0
+  },
+  {
+   "decile": 5,
+   "n": 209,
+   "pick_lo": 41,
+   "pick_hi": 51,
+   "mean_V0": 622.8,
+   "mean_PVC": 580.8,
+   "mean_signed_resid": 42.0,
+   "median_signed_resid": 73.0,
+   "mean_rel_resid_pct": 8.53,
+   "sd_resid": 136.9
+  },
+  {
+   "decile": 6,
+   "n": 208,
+   "pick_lo": 51,
+   "pick_hi": 61,
+   "mean_V0": 552.6,
+   "mean_PVC": 390.3,
+   "mean_signed_resid": 162.3,
+   "median_signed_resid": 205.6,
+   "mean_rel_resid_pct": 41.97,
+   "sd_resid": 127.2
+  },
+  {
+   "decile": 7,
+   "n": 208,
+   "pick_lo": 61,
+   "pick_hi": 72,
+   "mean_V0": 531.1,
+   "mean_PVC": 344.5,
+   "mean_signed_resid": 186.6,
+   "median_signed_resid": 197.6,
+   "mean_rel_resid_pct": 54.15,
+   "sd_resid": 147.1
+  },
+  {
+   "decile": 8,
+   "n": 208,
+   "pick_lo": 72,
+   "pick_hi": 85,
+   "mean_V0": 503.0,
+   "mean_PVC": 342.1,
+   "mean_signed_resid": 160.9,
+   "median_signed_resid": 150.7,
+   "mean_rel_resid_pct": 47.05,
+   "sd_resid": 169.0
+  },
+  {
+   "decile": 9,
+   "n": 208,
+   "pick_lo": 85,
+   "pick_hi": 99,
+   "mean_V0": 469.5,
+   "mean_PVC": 335.1,
+   "mean_signed_resid": 134.4,
+   "median_signed_resid": 146.2,
+   "mean_rel_resid_pct": 40.11,
+   "sd_resid": 246.0
+  },
+  {
+   "decile": 10,
+   "n": 209,
+   "pick_lo": 99,
+   "pick_hi": 99,
+   "mean_V0": 455.2,
+   "mean_PVC": 334,
+   "mean_signed_resid": 121.2,
+   "median_signed_resid": 146.2,
+   "mean_rel_resid_pct": 36.29,
+   "sd_resid": 199.2
+  }
+ ],
+ "by_band": [
+  {
+   "band": "1-3",
+   "n": 63,
+   "mean_V0": 2813.7,
+   "mean_PVC": 2939,
+   "mean_signed_resid": -125.3,
+   "mean_rel_resid_pct": -4.22
+  },
+  {
+   "band": "4-7",
+   "n": 82,
+   "mean_V0": 2152.3,
+   "mean_PVC": 2133.5,
+   "mean_signed_resid": 18.8,
+   "mean_rel_resid_pct": 2.17
+  },
+  {
+   "band": "8-12",
+   "n": 104,
+   "mean_V0": 1599.0,
+   "mean_PVC": 1662.8,
+   "mean_signed_resid": -63.7,
+   "mean_rel_resid_pct": -3.83
+  },
+  {
+   "band": "13-20",
+   "n": 164,
+   "mean_V0": 1170.6,
+   "mean_PVC": 1253.3,
+   "mean_signed_resid": -82.7,
+   "mean_rel_resid_pct": -6.82
+  },
+  {
+   "band": "21-27",
+   "n": 146,
+   "mean_V0": 932.3,
+   "mean_PVC": 957.8,
+   "mean_signed_resid": -25.5,
+   "mean_rel_resid_pct": -2.64
+  },
+  {
+   "band": "28-35",
+   "n": 164,
+   "mean_V0": 795.8,
+   "mean_PVC": 800.0,
+   "mean_signed_resid": -4.2,
+   "mean_rel_resid_pct": -0.45
+  },
+  {
+   "band": "36-48",
+   "n": 271,
+   "mean_V0": 658.7,
+   "mean_PVC": 659.9,
+   "mean_signed_resid": -1.1,
+   "mean_rel_resid_pct": 0.44
+  },
+  {
+   "band": "49-99",
+   "n": 1088,
+   "mean_V0": 506.7,
+   "mean_PVC": 354.8,
+   "mean_signed_resid": 151.8,
+   "mean_rel_resid_pct": 43.12
+  }
+ ],
+ "note": "V0 > PVC in every band (the draft creates value; the young side is already the high side) \u2014 consistent with acceptance fix_direction_STALE_DO_NOT_APPLY. The NEW curve, derived toward the comp-weighted V0 target, should shrink these residuals; the tolerance bounds the residual the gate tolerates per decile AFTER re-derivation."
+}
