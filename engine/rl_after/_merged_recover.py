@@ -255,14 +255,14 @@ def _feat_infer(p,Y):
     return oh+[np.log(ep), cp._exposure(p,Y), ten, cp._lvl_eff(p,Y), age]
 # (inference rebind deferred to AFTER the isotonic guard builds on ORIGINAL features -> proven-flat stays Delta=0)
 def b6(p,Y=2026):
-    MA.BASE_REF=MA.AGE_REF=Y; MA._pe_clear()
+    MA.AGE_REF=Y; MA.BASE_REF=(MA._LENS_FORM if getattr(MA,'_LENS_FORM',None) is not None else Y); MA._pe_clear()   # LEG E projection law (R103.3): a forward lens sets MA._LENS_FORM (=the true-now form anchor, 2026) so AGE_REF>BASE_REF => _dev_advance CREDITS expected production (age+k through the map's own growth curve; no lens-only term, the Reid constraint). _LENS_FORM None (balanced/back path) => BASE_REF=AGE_REF=Y, byte-exact.
     with contextlib.redirect_stdout(io.StringIO()): b=np.asarray(cp.cond_prior_band(p,cm,Y))
     return np.append(b,max(float(q97m.predict(np.array([cp._feat(p,Y)]))[0]),b[4]))
 def price6(p,bb,Y=2026):
     sav=dict(MA.REPL)
     try:
         for g in MA.REPL: MA.REPL[g]=sav[g]-rd.REPL_DROP.get(g,0)
-        MA.BASE_REF=MA.AGE_REF=Y; MA._pe_clear()
+        MA.AGE_REF=Y; MA.BASE_REF=(MA._LENS_FORM if getattr(MA,'_LENS_FORM',None) is not None else Y); MA._pe_clear()   # LEG E projection law (R103.3): form-anchor split (see b6). _LENS_FORM None => byte-exact base path.
         with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*_det_dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))   # DETERMINISM FIX: order-fixed dot (was np.dot -> BLAS, CPU-dependent)
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))

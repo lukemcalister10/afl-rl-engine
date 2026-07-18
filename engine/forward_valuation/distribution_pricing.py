@@ -280,7 +280,7 @@ def dist_value(p,models,prior,META,k_shrink=None,scale=None,lens='bal'):
     band,_=final_band(p,models,prior,META,k_shrink)
     ev=scale*float(np.dot(WQ,[v_at_peak(p,L,lens) for L in band]))
     if MA.brodie_sig(p): ev*=0.5
-    return round(ev*MA.lens_tilt(p,lens))
+    return round(ev)   # LEG E: lens_tilt (interim tilt) RETIRED; the posture dial flows through v_at_peak(p,L,lens) above (weight-don't-gate). Was round(ev*MA.lens_tilt(p,lens)); lens_tilt('bal')==1.0 => byte-exact.
 
 # ======================= build (the live 2026 model) =======================
 def build():

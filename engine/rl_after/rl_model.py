@@ -123,6 +123,7 @@ def slug(n): return re.sub(r"[^a-z0-9]+","-",unidecode(n).lower()).strip('-')
 # birthyear is carried in-data (_by, from the sheet Age col); no fuzzy matching needed.
 AGE_REF=2026                          # "now" anchor for the age clock; bumped by forward/back board views (re-ages everyone, leaves demonstrated form fixed). Default 2026 reproduces the shipped values byte-for-byte.
 BASE_REF=2026                         # true-now anchor for demonstrated form + scoring truncation. offset=AGE_REF-BASE_REF drives the Phase-2 dev projection; BASE_REF==AGE_REF==2026 reproduces shipped values byte-for-byte.
+_LENS_FORM=None                       # LEG E (R103.3 projection law): the forward-lens form anchor. None => balanced/back path (BASE_REF pinned to the eval year, byte-exact). Set to 2026 by rl_export's forward lens so the +1/+2 view runs offset>0 (AGE_REF>BASE_REF) => _dev_advance credits expected production through the map's OWN growth curve (no lens-only growth term; the Reid constraint). k=0 => AGE_REF==BASE_REF => byte-exact.
 _LEVEL_OVR=None                       # when set, level_now returns this (used to integrate value over the level distribution in the variance layer); None in all default/parity paths.
 def by(p): return p.get('_by') or (p['year']-18)   # FIX: _by can be present-but-None (cont.22 DOB fold-in wrote explicit None for ~302 DOB-less records); .get(key,default) would return None and crash _age_at. Guard like L367.
 def _cycle_year(p): return p['year']-(1 if p.get('type')=='MSD' else 0)   # MSD draft_year IS the debut year, so its ND/RD-cycle equivalent is -1; SSP draft_year already IS the cycle year
@@ -412,11 +413,27 @@ def capt_bonus(level):
 def pedmix(pk): return 0.50+0.32*math.exp(-(pk-1)/9.0)
 def clamp(x,a,b): return max(a,min(b,x))
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
-LTILT=0.30; LTSPREAD=6.0           # lens = bounded (+/-30%) tilt around balanced, by age-vs-peak phase
-def lens_tilt(p,lens):
-    if lens=='bal': return 1.0
-    g=bnow(p); phase=clamp((age(p)-PEAK_AGE[g])/LTSPREAD,-1.0,1.0)
-    return clamp(1+LTILT*phase,0.7,1.3) if lens=='now' else clamp(1-LTILT*phase,0.7,1.3)
+# LEG E POSTURES (memo §3): NEW VALUES over the SAME dial family — a posture is the per-annum production discount
+# d, not a new code path. balanced == 'bal' (owner-ruled, byte-exact, the ONLY board that gates/bakes/seals).
+# Strawmen SEALED in session_2026-07-18/lege/posture_presets_v1.json (md5 c2e17c49); owner ratifies at the movers
+# report (nothing ruled here). Higher d => future discounted MORE => now-weight up. Gate RL_LEGE (default ON; a
+# DECLARED kill-switch like RL_PVC2/RL_EVW — NOT a manifest dial). RL_LEGE=0 => posture keys absent + the forward
+# form-anchor inert => board 06d8af60 BYTE-EXACT (the kill-switch proof).
+_LEGE=os.environ.get('RL_LEGE','1')!='0'
+if _LEGE:
+    LENS.update({'balanced':LENS['bal'],   # == 'bal' (byte-exact production path)
+                 'contender':0.18,          # sketch 0.14->0.18-0.20 (win-now: near-term weight up). STRAWMAN.
+                 'rebuilder':0.10})         # sketch 0.14->~0.10 (future weight up). STRAWMAN.
+POSTURES=('balanced','contender','rebuilder')
+# ── OBITUARY — lens_tilt (the INTERIM no-improvement-floor lens), DELETED at Leg E (delete-don't-disable) ──
+# Was: `def lens_tilt(p,lens): a bounded +/-30% (LTILT=0.30) multiplicative tilt around balanced by age-vs-peak
+# phase`, applied as the final multiplier in value() for the 'now'/'fut' display lenses while production stayed
+# hard-anchored at 'bal'. It credited NO projected production — the ruled LENS-PROJECTION defect (acceptance
+# laws[LENS-PROJECTION]: "interim lens = no-improvement floor, cross-age trades NOT read off it"). RETIRED here:
+# the real projection law (R103.3, the forward form-anchor offset in _merged_recover.b6/price6) supersedes it,
+# and postures replace the display tilt with a genuine dial re-weighting. `value(p,lens)` now weights, never
+# tilts (weight-don't-gate, R105.4). It returned 1.0 for lens=='bal', so its removal is byte-exact on the
+# balanced board. The UI +1/+2 toggle re-enables on this landing (SPEC §3).
 RWE={1:1.0,2:1.3,3:1.6,4:1.7,5:1.7}
 def track_delta(g,pk,sr):
     num=den=tg=0
@@ -817,16 +834,17 @@ def brodie_sig(p):                      # Brodie role-reliability cut (ported on
     ln=level_now(p)                     # non-ruck, 5+ seasons, NOT a recent starter, NEVER durable, level>=80 -> value x0.5
     return (grp3(p)!='RUC' and seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and ln is not None and ln>=80)
 def value(p,lens='bal'):
+    _pd={'balanced':'bal'}.get(lens,lens)   # LEG E: the POSTURE production dial. 'balanced'->'bal' (the exact byte-exact path); 'contender'/'rebuilder' price the SAME streams at their own discount d (weight-don't-gate); 'bal'/'now'/'fut' unchanged. Pedigree pedestals (unpl_eq/pedestal) are NOT re-discounted — a posture re-weights production STREAMS, not the pick pedestal.
     ep=effpk(p); b=bandof(ep); decu=los_decay(p)
     unpl_eq=_PVC2M[min(ep,70)]*decu*debut_factor(p)   # JOB 2 (RL_PVC2): pickless unpl_eq reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
-    if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq*lens_tilt(p,lens))   # pure pedigree for genuine pre-debut prospects (window not open) OR explicit draft-value (`_pedonly`, P inert by design); in-window 0-game players fall through to the P-gated branch so 0->1 games is continuous
+    if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq)   # LEG E: pedigree-only prospect has no production stream to re-weight => posture-invariant (lens_tilt retired)
     g=gfut(p)   # settled future position drives pedigree/form-delta/out-tilt (matches peak_est); prod_floor stays present
     if level_now(p) is None:                                          # 0-game but IN opportunity window (debut season+): P applies continuously (prospect-path RETIRED 2026-06-18); genuine pre-debut prospects hit the _unplayed branch above and keep pure pedigree
         Pz = 1.0 if P_HOOK is None else P_HOOK(p)
-        return round(unpl_eq * Pz * lens_tilt(p,lens))
+        return round(unpl_eq * Pz)   # LEG E: pedigree/P only, no production stream => posture-invariant (lens_tilt retired)
     surv=1.0   # cont.20: survival() REMOVED from value path (v4 subsumes the bust-tracking haircut; verified 11.8pt separation vs survival's <=9%)
     Pz = None if P_HOOK is None else P_HOOK(p)                # v3.4: establishment-P, computed ONCE; gates BOTH the production term (below) and the pedigree pedestal (decay_eff), each carrying P exactly once
-    prod_v=val(player_raw(p,'bal'))*surv                      # anchor at balanced; lens is a bounded tilt below
+    prod_v=val(player_raw(p,_pd))*surv                        # LEG E: production priced at the posture dial (was hard-'bal'); balanced=='bal'=byte-exact
     relative=clamp((peak_est(p)/max(basepk_c(g,ep),40.0))**2.2, 0.40, 3.0)
     # out_tilt CUT (cont.21): audited redundant with v4 — corr(out_tilt_sig, realised-v4)=-0.05, marginal R2=+0.001, coef after v4=-0.04. Same form double-count as the removed survival(). relative stays at the v4 pedigree multiplier.
     if g in('RUC','KEY_FWD','KEY_DEF') and age(p)<=22 and relative<1.0:   # v3.4 relative-floor: young key-pos debut can't drag the pedestal below the clean pick baseline; YEAR-SCALED (more chances seen -> less lift)
@@ -834,7 +852,7 @@ def value(p,lens='bal'):
     decay=max(0.0,1-(seasons(p)-1)/4.5)
     decay_eff = decay if Pz is None else min(decay, Pz)   # v3.4: establishment-P only ever PULLS DOWN (min) on the pedigree track; established players P=1 -> min=decay, untouched
     pedestal = _PVC2M[min(ep,70)]*relative*surv*decay_eff   # JOB 3 (RL_PVC2): pedigree pedestal reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
-    pf = prod_floor(p,'bal')
+    pf = prod_floor(p,_pd)                                # LEG E: demonstrated-floor at the posture dial (balanced=='bal'=byte-exact)
     prod_full = max(prod_v, pf)                           # full production estimate: projection OR demonstrated-level floor, whichever is higher
     if Pz is not None and PROD_GATE!='off':                # v3.4 PRODUCTION-GATING. fully_gated = P*production + (1-P)*floor. floor = pedestal ('full'/'blend') OR a games-weighted demonstrated floor ('fulldemo'/'blenddemo') so survivors who banked games aren't stripped to the bare pick. 'full*'=straight; 'blend*'=Luke's 2/3 toward fully-gated.
         if PROD_GATE in ('fulldemo','blenddemo'):
@@ -846,7 +864,7 @@ def value(p,lens='bal'):
         elif PROD_GATE in ('blend','blenddemo'): prod_full = (1.0/3.0)*prod_full + (2.0/3.0)*fully_gated
     res=max(prod_full, pedestal)
     if brodie_sig(p): res*=0.5                            # Brodie role-reliability cut (now on the board; flows to convex/backward via value())
-    return round(res*lens_tilt(p,lens))
+    return round(res)                                     # LEG E: lens_tilt (interim no-improvement tilt) RETIRED; value() weights via the posture dial above, never tilts
 # ---- PICK-EQUIVALENT for the no-slot entry mechanisms (MSD/SSP/Ireland/Unregistered/post-draft) ----
 # "What national pick is an X player worth?" Build a national realised-career-value curve (no effpk
 # dependence, same risk-averse pooling as the PVC), then invert it against each mechanism's pooled value.

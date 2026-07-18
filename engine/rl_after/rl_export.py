@@ -92,7 +92,14 @@ _raw2026 = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     for _p in players:
         _r = _ev(_p, 2026); _raw2026[_p['key']] = _r; _p['_v'] = _nb(_r)
-        _p['_vM2'], _p['_vM1'], _p['_vP1'], _p['_vP2'] = _nb(_ev(_p, 2024)), _nb(_ev(_p, 2025)), _nb(_ev(_p, 2027)), _nb(_ev(_p, 2028))
+        _p['_vM2'], _p['_vM1'] = _nb(_ev(_p, 2024)), _nb(_ev(_p, 2025))   # backward = REAL past re-values (byte-exact; no form-anchor)
+        # LEG E projection law (R103.3): the FORWARD lens sets the form anchor to true-now (2026) so the +1/+2
+        # view credits EXPECTED production (age+k, _dev_advance up the map's OWN growth curve — the Reid
+        # constraint; no lens-only term). RL_LEGE=0 => _LENS_FORM stays None => old ev(p,2027/2028) => 06d8af60
+        # byte-exact. LTI truncation is honoured automatically: demonstrated form/games stay at 2026 (BASE_REF).
+        if os.environ.get('RL_LEGE', '1') != '0': g['_LENS_FORM'] = 2026
+        _p['_vP1'], _p['_vP2'] = _nb(_ev(_p, 2027)), _nb(_ev(_p, 2028))
+        g['_LENS_FORM'] = None
         _p['_cvx'] = 1.0
     for _p in g['back_extra']:
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
