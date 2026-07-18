@@ -1,0 +1,29 @@
+{
+  "_law": "SEALED strawman parameter vector — hashed and committed BEFORE any phantom render (MEMO_LEGF §6). All values are strawmen carrying [OWNER] slots, ratified at the viewing. k=0 phantom content = NONE.",
+  "seal_id": "legf1-strawman-v1",
+  "free_intake_R_realized": 207,
+  "exit_bar_X": 207,
+  "R_alternatives_labelled_only": { "R_owner": 220, "R_curve": 471 },
+  "R_note": "R_realized=207 is the item-343 replacement value (numeraire). Alternatives carried as labelled reference lines only (item-343 three-candidate frame); the owner rules the R slot at the viewing.",
+  "draft_capital": {
+    "pool": "picks 1..30 (the next-EOY National Draft class, == the existing item-12 lensPicks pool)",
+    "pricing": "v2 curve GROSS (PVC[n]); no future-pick discount invented (item-12 defers that dial)",
+    "attribution": "natural-order round-robin: pick n -> club at natural-order index (n-1) mod 18",
+    "club_natural_order": "alphabetical by club name (strawman; owner may re-seal to reverse-ladder at the viewing)",
+    "flag": "phantom=true on every intake row"
+  },
+  "exit_rule_list_size_conservation": {
+    "lenses": [1, 2],
+    "basis": "each active player's projected value at +k (vP1 / vP2, the RL_LEGE projection-law columns)",
+    "exit": "players with vP_k < X (207) exit; their vP_k residual leaves the club total",
+    "list_size": "CONSERVED endogenously: refill_count == exit_count (no exogenous fixed list size L)",
+    "refill_priority": "the club's draft-capital picks (natural order, bounded by exit_count) fill first at PVC gross; the remaining freed slots fill with free intake at R=207 each",
+    "STRUCTURAL_STRAWMAN_FLAGGED": "draft-capital picks CONSUME exit slots (bounded by exit_count), consistent with MEMO_LEGF §1 ('shed value returns as list spots + draft capital'). Alternative reading — draft picks ADD on top of a full list regardless of exits — is NOT taken; flagged for owner/supervisor ratification at the viewing."
+  },
+  "totals_report": {
+    "granularity": "per club + league, per lens (bal/+1/+2), WITH and WITHOUT the phantom layer (§2.v)",
+    "smoothing": "per-pick where curves appear; NO wide/decile bins (CORE rule 7 / item 325)"
+  },
+  "gate": { "env": "RL_LEGF", "default": "ON (1)", "off_reproduces": "the Leg-E boards byte-exact (this container: 83a4b21d default / 30d96f1f balanced)" },
+  "k0_invariant": "ZERO phantom content at k=0; the balanced board's per-player v column is byte-identical with RL_LEGF on vs off (the checkpoint law)."
+}
