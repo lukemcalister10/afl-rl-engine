@@ -1,0 +1,237 @@
+{
+ "totals_singlerun": {
+  "now": 725590,
+  "fwd1": 532870,
+  "fwd2": 406836,
+  "back1": 797633,
+  "back2": 846657,
+  "n": 804
+ },
+ "job1_backtestA_controlled": {
+  "roster_now": 725590,
+  "fwd1_modeled": 532870,
+  "fwd_rate_pct": -26.6,
+  "back1_state": 797633,
+  "back_rate_realized_pct": -9.0,
+  "calibrated_fwd1_if_symmetric": 660054,
+  "undershoot_vs_symmetric": 127184,
+  "undershoot_pct": 17.5
+ },
+ "job1_backtestB_F2boards": {
+  "minus1_total": 771152,
+  "pred_now": 526851,
+  "actual_now": 752427,
+  "err_now": -225576,
+  "err_now_pct": -30.0,
+  "minus2_total": 770987,
+  "pred_minus1": 527298,
+  "actual_minus1": 771152,
+  "err_m1": -243854,
+  "err_m1_pct": -31.6
+ },
+ "job2_decomp": {
+  "developing(<=23)": {
+   "n": 375,
+   "now": 340003,
+   "fwd1": 226830,
+   "signed_delta": -113173,
+   "mean_delta": -302,
+   "pct": -33.3
+  },
+  "mid(24-27)": {
+   "n": 210,
+   "now": 230184,
+   "fwd1": 174290,
+   "signed_delta": -55894,
+   "mean_delta": -266,
+   "pct": -24.3
+  },
+  "veteran(>=28)": {
+   "n": 219,
+   "now": 155403,
+   "fwd1": 131750,
+   "signed_delta": -23653,
+   "mean_delta": -108,
+   "pct": -15.2
+  }
+ },
+ "job2_exits_phantom": {
+  "phantom_intake_plus1_singlerun": 45003,
+  "F1_filed_phantom_net_plus1": 80480,
+  "F1_filed_draft": 43266,
+  "F1_filed_free": 69552,
+  "F1_filed_exits_refilled": 366,
+  "F1_filed_residual": 32338
+ },
+ "job3_pedigree": {
+  "young_le23": {
+   "n": 375,
+   "now": 340003,
+   "fwd1": 226830,
+   "premium_lost": 113173,
+   "mean_pct": 33.3
+  },
+  "young_highpick_lowgames": {
+   "n": 119,
+   "now": 110738,
+   "fwd1": 69158,
+   "premium_lost": 41580,
+   "mean_pct": 37.5
+  },
+  "pedOnly_rows": {
+   "n": 0,
+   "now": 0,
+   "fwd1": 0,
+   "premium_lost": 0,
+   "mean_pct": null
+  },
+  "examples": [
+   {
+    "name": "Jagga Smith",
+    "age": 20,
+    "pk": 3,
+    "g": 12,
+    "v": 3437,
+    "vP1": 901,
+    "lost": 2536
+   },
+   {
+    "name": "Willem Duursma",
+    "age": 19,
+    "pk": 1,
+    "g": 12,
+    "v": 4328,
+    "vP1": 3093,
+    "lost": 1235
+   },
+   {
+    "name": "Sam Lalor",
+    "age": 20,
+    "pk": 1,
+    "g": 18,
+    "v": 3299,
+    "vP1": 2071,
+    "lost": 1228
+   },
+   {
+    "name": "Taj Hotton",
+    "age": 20,
+    "pk": 12,
+    "g": 7,
+    "v": 1642,
+    "vP1": 511,
+    "lost": 1131
+   },
+   {
+    "name": "Leo Lombard",
+    "age": 20,
+    "pk": 9,
+    "g": 16,
+    "v": 1442,
+    "vP1": 457,
+    "lost": 985
+   },
+   {
+    "name": "Xavier Lindsay",
+    "age": 20,
+    "pk": 11,
+    "g": 23,
+    "v": 1212,
+    "vP1": 277,
+    "lost": 935
+   },
+   {
+    "name": "Josh Lindsay",
+    "age": 19,
+    "pk": 19,
+    "g": 12,
+    "v": 2354,
+    "vP1": 1448,
+    "lost": 906
+   },
+   {
+    "name": "Jacob Farrow",
+    "age": 19,
+    "pk": 10,
+    "g": 11,
+    "v": 2126,
+    "vP1": 1231,
+    "lost": 895
+   },
+   {
+    "name": "Ethan Read",
+    "age": 21,
+    "pk": 9,
+    "g": 34,
+    "v": 1365,
+    "vP1": 487,
+    "lost": 878
+   },
+   {
+    "name": "Daniel Annable",
+    "age": 19,
+    "pk": 6,
+    "g": 1,
+    "v": 2033,
+    "vP1": 1162,
+    "lost": 871
+   },
+   {
+    "name": "Zeke Uwland",
+    "age": 19,
+    "pk": 2,
+    "g": 10,
+    "v": 2396,
+    "vP1": 1551,
+    "lost": 845
+   },
+   {
+    "name": "Jed Walter",
+    "age": 21,
+    "pk": 3,
+    "g": 37,
+    "v": 1286,
+    "vP1": 487,
+    "lost": 799
+   }
+  ],
+  "share_of_developing_decline": {
+   "developing_decline": 113173,
+   "highpick_lowgames_lost": 41580,
+   "pct": 36.7
+  }
+ },
+ "job4_distributed_retirement": {
+  "construction": "P(retire|age) = pooled empirical exit hazard from F2 -2/-1/now, +/-1yr smoothed, age>=26 eligible; per-player haircut = P*v; no named exits",
+  "eligible_n": 320,
+  "distributed_liability_plus1": 32836,
+  "distributed_liability_plus2": 65484,
+  "discrete_exit_rule_X": 207,
+  "discrete_exits_n": 359,
+  "discrete_removed_value": 65067,
+  "F1_filed_exits_plus1": 366,
+  "F1_filed_residual_plus1": 32338,
+  "diff_discrete_minus_distributed_plus1": 32231,
+  "hazard_by_age": {
+   "18": 0.333,
+   "19": 0.007,
+   "20": 0.332,
+   "21": 0.026,
+   "22": 0.157,
+   "23": 0.0,
+   "24": 0.169,
+   "25": 0.011,
+   "26": 0.119,
+   "27": 0.0,
+   "28": 0.184,
+   "29": 0.0,
+   "30": 0.254,
+   "31": 0.0,
+   "32": 0.299,
+   "33": 0.0,
+   "34": 0.516,
+   "35": 0.0,
+   "36": 0.455
+  }
+ }
+}

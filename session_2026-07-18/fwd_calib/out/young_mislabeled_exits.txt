@@ -1,0 +1,22 @@
+discrete exits vP1<207: 359  | of which developing(<=23): 155 (Sv=42481)
+name                     age   pk    g  v_now    vP1
+Hugh Boxshall             20   45   16    902    192
+Patrick Retschko          20    9    8    826    126
+Lachie Jaques             20   29    8    792    179
+Angus Clarke              20   39   14    744    164
+Harry Rowston             22   16   21    611    182
+Josh Draper               22 None   31    611    188
+Clay Hall                 21   38   16    604    170
+Tom Gross                 20   46    9    600    190
+Zak Johnson               20   70   14    573    161
+Matthew Jefferson         22   15   14    567    130
+Edward Allan              22   19   22    546    168
+Jack Ison                 19   47    3    519    194
+Caiden Cleary             21   24   21    518    162
+Rhett Bazzo               23   37   32    479    166
+Tom Brown                 23   17   50    471    206
+Noah Roberts-Thomson      19   54    3    470    172
+Hussien El Achkar         19   53    4    464    174
+Charlie West              20   50    3    449    166
+Isaac Keeler              22   44   13    425    103
+Campbell Chesser          23   14   39    416    144
