@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v321 2026-07-17 · PEN: ITEM 348: F2 GREEN — retro boards leak-free, bridge sane (~2.5%); two backward-eval engine findings triaged: shipped board unaffected, THE CURVE CLEAN (recorded vpath targets + ASOF truncation, evidence cited); Y-awareness fix queued; audit corroborates; F2's container reproduces canonical hashes · prior: ITEM 347
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v322 2026-07-17 · PEN: ITEM 349: F1 GREEN — chapter head 7b6dfc5 (fence a strict subset, first this chapter; phantom layer = export/UI only); SINGLE-THREAD CURE ADOPTED (OPENBLAS_NUM_THREADS=1 restores absolute hashes; jitter was display-field float order; v/ranks immune); PR #115 stays candidate; audit seeding next · prior: ITEM 348
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5336,6 +5336,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     worktree re-point to the cc58570 engine was the designed read (proven by the 06d8af60
     reproduction); no redirect. F2 CLOSED pending the ladder; the retro boards + bridge join the
     owner's viewing.
+
+349. **F1 RETURNED + PRESCREENED GREEN — THE CHAPTER HEAD IS `7b6dfc5`; THE SINGLE-THREAD CURE
+    ADOPTED (2026-07-18).** PR #115 (stacked on the lege branch — RULED: stays as-is, the
+    candidate PR, not report-only), branch `…legf-phantom-intake-…-dvbipz` head `7b6dfc5`,
+    in-band. VERIFIED this seat: stacked on cc58570 ✓ · files = `rl_export.py` + `ui/app/board.js`
+    + session dir ONLY — **the first build this chapter whose touched set is a strict SUBSET of
+    its declared fence** (the phantom layer lives in the export/UI view layer, never pricing
+    code) · engine untouched to the digit (rl_model `cc626d7d` · _merged `6ad07bb2`) · data
+    absolutes held (store `968de0c7` · curve `56dd7a7b`) · no docs/pins · seal `1d180424`
+    committed BEFORE render (§6) · discriminator + annex artifacts present. [Build-run,
+    report-only until audit:] RL_LEGF=0 ⇒ d85901af/06d8af60/9829d01a byte-exact single-thread ·
+    RL_LEGF=1 ⇒ `e613ca58`, +3 additive keys, 0 movers of any kind at any lens · totals Δ+80,480
+    @+1 (366 exits) / Δ+92,562 @+2 (436) · k=0 WITH==WITHOUT. **THE HEADLINE, ADOPTED AS
+    DOCTRINE (refines item 347):** the filed hashes reproduce on F1's container
+    SINGLE-THREADED — the variance was OpenBLAS multi-thread reduction-order jitter in 6-dp
+    float DISPLAY fields; integer v/ranks immune (discriminator 10/10, max|Δv|=0). **STANDING:
+    every bit-exact proof, gate, audit shard, and the bake itself runs with
+    `OPENBLAS_NUM_THREADS=1`.** Absolute board hashes are RESTORED as cross-container labels
+    under the pin; item-347's container-relative posture narrows to unpinned-thread runs; the
+    annex requirement stays. FOR THE VIEWING (owner ratifies): seal R=207/X=207 + the structural
+    strawman "draft picks consume exit slots" (build-flagged). NOISE, NO ACTION: the build's MCP
+    authorization note — environmental, deliberately not authorized. **THE CANDIDATE LINE IS
+    COMPLETE: …e4177c2 → a90052a → cc58570 → `7b6dfc5`.** NEXT: audit seeding at `7b6dfc5`
+    (shards A–E re-addressed · THREADS=1 in every shard · auditor annex required · F2
+    corroboration + Leg-F checks folded) — seat-13 deliverable, next turn.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
