@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v315 2026-07-17 · PEN: ITEM 342: owner replacement steer recorded (curve(60)=542, curve(90)=473 confirmed — flat tail); v−R first-class at the viewing; rider (iv) issued 16d35d6 (three R candidates, era-matched, symmetric); Leg E firing · prior: ITEM 341
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v316 2026-07-17 · PEN: ITEM 343: rider (iv) prescreened GREEN — R_realized 207 [184-229] CONTAINS the owner's 220; R_curve 471 = 2.3x realized at entry (the tail read measured); v-R_curve unstable (deep premium ~0); my circularity premise refuted+confirmed; viewing pack COMPLETE · prior: ITEM 342
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5198,6 +5198,30 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     gross beside v−R per exact pick, ratio tables per candidate, rider-(iii) uncertainty overlaid
     · symmetric, verdict-free, the axes note verbatim on the summary. OWNER ASK: paste rider (iv)
     into a SECOND chat beside Leg E.
+
+343. **RIDER (iv) RETURNED + PRESCREENED GREEN — THE OWNER'S 220 MEASURED-VALIDATED; THE TAIL READ
+    NOW IN NUMBERS (2026-07-18).** PR #112 (REPORT-ONLY/DO-NOT-MERGE), branch
+    `…rider-iv-…-iqpkn1` head `472a5fa`, in-band (~1h15m). VERIFIED this seat: fence HELD (14
+    files, ALL under `session_2026-07-18/rider_iv/`; zero HARD-OUT) · provenance stamps asserted
+    at load (a90052a · store 968de0c7 · curve payload 89c14729 · per_entrant 40d7da7c) · branch
+    parent = main per the read-only law. **THE FINDINGS (report-only):** R_realized = **207
+    [16/84: 184–229]** era-matched, evidence-weighted, busts full weight — **the owner's prior 220
+    (item 332) sits INSIDE the measured interval**; era-matched national-at-entry 248 brackets it.
+    R_curve = **471** (v2 list price at pick-eq 90/92) ≈ **2.3× the realized** at the same entry —
+    the item-325 tail read in MEASURED form: the LIST ≫ REALISED at the free-pool entry. Ratios:
+    p1/p90 6.3× GROSS → 10.5×/11.0× under v−R_realized/owner; **v−R_curve UNSTABLE (denominator→0
+    at entry: under the list's own prices, deep picks carry ≈zero premium over free entry)**.
+    Deep-tail premium carries rider-(iii)'s grade (~40% @pk90) — low-confidence whichever R is
+    read. Samples thin and DECLARED (MSD 44/17, SSP 31/16, others 5–12; bootstrap rel-SD 23–34%,
+    seed 20260718). **DIRECTIVE PREMISE CORRECTED (register honesty; credit the build):** my
+    R_curve circularity note is REFUTED — the build tested per_entrant + derive_pvc2 (mechanisms
+    incurve=False, 0/389 in load_pool) and THIS SEAT INDEPENDENTLY CONFIRMED via the gate
+    snapshots ("incurve ND+RD"): the curve fit never saw the mechanisms; pk86-94 is real-pick
+    RD+ND. My conflation: rev159's "pickless pk90 rucks" were board MOVERS, not fit anchors. The
+    accurate finding rides the artifact. STATUS: viewing pack COMPLETE (riders i–iv + the §5-wired
+    audit shell). The tail read stays OPERATIVE, unresolved BY DESIGN until the ladder: no
+    hand-bending; if it stands at the viewing, the cure = the engine entry-pricing axis,
+    post-v2.11, on the owner's word (R107.x standing path). Waiting ONLY on Leg E.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
