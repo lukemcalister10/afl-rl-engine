@@ -1,0 +1,27 @@
+======================================================================
+LEG F BUILD 2 — RETROSPECTIVE BOARDS (-1/-2) · ENTRY PROOF · seat 13 · 2026-07-18
+construction of record: MEMO_LEGF v1.0 §3 · READ-ONLY (Tier 3) · provenance-by-stamp (item-338 law)
+container: py3.12.3 np2.4.4 scipy1.17.1 sklearn1.8.0 · dev-shell (RL_LEGE=0 RL_PVC2=1)
+======================================================================
+SILENCE IS A RED — every line below is a command verdict, not prose.
+
+--- GIT ENTRY (read-only variant) ---
+git fetch origin main claude/lege-projection-law-postures-63u283 : DONE
+ls-remote lege branch : cc58570a65616a643a5dcfc955a79f5a44dd5adc  EXPECT cc58570…5adc  [PASS/STRICT]
+commit branch (where artifacts are written) : claude/legf-retrospective-boards-cyqx00, parent = MAIN (240c7378) [expected]
+
+--- PROVENANCE (stamps asserted at load; HALT-on-mismatch) ---
+read base = e4177c2→a90052a→cc58570 line, extracted READ-ONLY via git worktree (engine never edited)
+store  rl_model_data.json md5 : 968de0c7  EXPECT 968de0c7  [PASS]
+curve  pvc_curve_v2.json file  : 56dd7a7b  EXPECT 56dd7a7b  [PASS]
+curve  payload curve_md5 stamp : 89c14729  EXPECT 89c14729  [PASS]  (KAT: 56dd7a7b=file, 89c14729=payload)
+
+--- BALANCED BOARD REPRODUCES BYTE-EXACT ON THIS CONTAINER ---
+RL_LEGE=0 RL_PVC2=1 board md5 : 06d8af60  EXPECT 06d8af60  [PASS]  <-- the k=0 untouchable invariant
+
+--- FENCE ---
+writes: session_2026-07-18/legf2/ ONLY. Engine/store/curve read READ-ONLY from an out-of-tree worktree
+(/home/user/legf2_legebase) + the runtime workspace (/home/claude); zero repo engine/store/curve/docs edits.
+
+ALL ENTRY VERDICTS: PASS. No HALT condition at entry. Boards built; see PLAN.md (gap verdict = NO GAP).
+======================================================================

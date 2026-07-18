@@ -1,0 +1,27 @@
+{
+ "stamp": {
+  "balanced_board_md5": "06d8af60",
+  "code_sha": "240c737",
+  "curve_file_md5": "56dd7a7b",
+  "curve_payload_md5": "89c14729",
+  "engine_merged_recover_md5": "6ad07bb2",
+  "numeraire_F": 1.0524,
+  "posture": "RL_LEGE=0 RL_PVC2=1 (balanced, dev-shell)",
+  "rl_model_md5": "cc626d7d",
+  "store_md5": "968de0c7"
+ },
+ "totals": {
+  "minus1": {
+   "n": 772,
+   "total_v": 771152
+  },
+  "minus2": {
+   "n": 777,
+   "total_v": 770987
+  },
+  "now": {
+   "n": 804,
+   "total_v": 752427
+  }
+ }
+}
