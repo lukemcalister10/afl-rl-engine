@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v324 2026-07-17 · PEN: ITEM 351: owner rules investigate + enriches (conservation via already-priced expectations; distributed retirement); investigation issued 8c63404 — backtest (project -1 → must hit 752427) + cohort decomposition + pedigree-premium-carry + distributed-retirement alternative; likely root = kids re-priced on production not pedigree · prior: ITEM 350
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v325 2026-07-17 · PEN: ITEM 352: VERDICT NOT CALIBRATED — backtest −30%, gradient inverted (developing −33.3% steepest), pedigree strip 36.7%, exit rule mislabels 155; owner's distributed liability matches aggregate naming none; MEMO v1.1 + F3 fix issued (acceptance = the backtest; HALT rather than bend a law); ladder holds · prior: ITEM 351
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5405,6 +5405,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     carry test; (4) distributed-retirement alternative beside F1's discrete rule; (5) verdict,
     localize-by-address, NO fix. Gating: the ladder holds on the result. OWNER ASK: fire it into a
     fresh chat.
+
+352. **THE CALIBRATION VERDICT: NOT CALIBRATED — THE OWNER'S DIAGNOSIS CONFIRMED END-TO-END; F3
+    FIX ISSUED (2026-07-18).** Investigation PR #116 (REPORT-ONLY), head `618eb5b`, fence HELD
+    (verified). [Report-only findings, audit corroborates:] **BACKTEST: −1→now projects 526,851
+    vs actual 752,427 = −30.0% undershoot** (−2→−1 −31.6%; composition-controlled forward −26.6%
+    vs realized backward −9.0% — a 3× asymmetry). **THE GRADIENT IS INVERTED:** developing ≤23
+    −33.3% (steepest) · mid −24.3% · veteran −15.2% (softest) — developing should hold/rise,
+    falls hardest; the PEDIGREE STRIP (young hi-pick lo-games −37.5%) explains 36.7% of it. The
+    discrete X=207 exit rule, fed under-projected vP1, mislabels 155 developing players (43% of
+    exits) as retirees; the owner's DISTRIBUTED liability (32,836) ≈ F1's residual (32,338) while
+    naming none. LOCALIZED: `rl_model.py::proj_from_peak` · `rl_export.py:96` form anchor ·
+    `rl_export.py:~526` exit bar. PROVENANCE CAVEAT (recorded): the build's secondary probe ran
+    at v2.10 (store b1fd0bce) after an in-container store absence; the LOAD-BEARING backtest ran
+    on F2's stamped committed boards (d223d8f6/ad0c6610) — verdict structural; audit re-runs at
+    the canonical head. **CURE FILED (`e79b76f`, docs-only): MEMO_LEGF ADDENDUM v1.1** — §2.iii
+    REPLACED with the owner's distributed retirement liability (P(retire|age)·vP, measured from
+    recorded exits, sealed) · §2.vi NEW: pedigree-blend compliance at the projected evidence
+    state (R103.3 honoured, not new law) — **+ DIRECTIVE_LEGF3** (writer, base `7b6dfc5` STRICT,
+    THREADS=1, ~2–3 h): the two-site fix + the exit replacement, **ACCEPTANCE = the backtest
+    itself** (−1→now within ±5%; gradient un-inverted; k=0 byte-exact; HALT rather than bend the
+    Reid constraint or hand-tune a cohort to pass). The ladder holds until F3 lands GREEN.
+    OWNER ASK: fire F3 into a fresh chat.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
