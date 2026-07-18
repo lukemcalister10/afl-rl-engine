@@ -514,6 +514,87 @@ for _k, _f, _dv in _ov_applied:
 # HALTS in gate/bake mode. Closes the hole where a silent [] shipped an override-less board.
 _OV.assert_presence(active)
 
+# ==== LEG F1 — PHANTOM INTAKE LAYER (+1/+2 · MEMO_LEGF §2 · gate RL_LEGF, default ON) =====================
+# Report/view ONLY. k=0 carries ZERO phantom content; the balanced board's per-player `v` is byte-identical
+# with RL_LEGF on vs off — the phantom keys are ADDITIVE lens-scoped arrays and the engine ev() is UNTOUCHED
+# (this block reads only PVC + the already-computed forward columns vP1/vP2 + the `club` field), so the
+# balanced board cannot move by construction (the checkpoint law). RL_LEGF=0 => none of §§2.i–2.v is emitted
+# => the Leg-E board is byte-exact. Strawman parameters (free-intake R=207, exit bar X=207, natural-order
+# draft slots) are SEALED and hashed BEFORE this render (the §6 law):
+# session_2026-07-18/legf1/sealed_strawman.sha256 = 1d180424...  (alternatives R_owner 220 / R_curve 471 are
+# labelled reference lines only — the owner rules the R slot at the viewing). See legf1/PLAN.md.
+if os.environ.get('RL_LEGF', '1') != '0':
+    _LF_R = 207; _LF_X = 207                                  # SEALED strawmen (item-343 R_realized; free intake + exit bar)
+    _LF_ALT = {'R_owner': 220, 'R_curve': 471}
+    _LF_LENS = [(1, 'vP1', 2027), (2, 'vP2', 2028)]           # the forward lenses (k=0 excluded: no phantom at balanced)
+    # -- §2.i DRAFT CAPITAL: picks 1..30 priced v2-curve GROSS (PVC), attributed natural-order round-robin --
+    # over the 18 clubs (alphabetical natural-order strawman). Conserves the item-12 league pick pool; each
+    # row flagged phantom=true. No future-pick discount invented (item-12 defers that dial).
+    _lf_clubs = sorted({r['club'] for r in active if r.get('club')})
+    _lf_nc = len(_lf_clubs) or 1
+    _lf_pick_of = {}                                          # club -> [ {n, v=PVC[n], club, phantom} ] natural order
+    for _n in range(1, 31):
+        _cl = _lf_clubs[(_n - 1) % _lf_nc]
+        _lf_pick_of.setdefault(_cl, []).append({'n': _n, 'v': PVC.get(_n, PVC[max(PVC)]), 'club': _cl, 'phantom': True})
+    # -- §2.ii FREE INTAKE + §2.iii EXITS (list-size conservation) per club per forward lens ---------------
+    _by_club = {}
+    for _r in active:
+        if _r.get('club'):
+            _by_club.setdefault(_r['club'], []).append(_r)
+    phantomLayer = {}; phantomPicks = []
+    _cl_tot = {}                                              # club -> lens-str -> {with,without,...}
+    _lg = {'0': {'with': 0, 'without': 0, 'exits': 0, 'residual': 0, 'draftValue': 0, 'freeValue': 0}}
+    for _k, _fld, _yr in _LF_LENS:
+        _lg[str(_k)] = {'with': 0, 'without': 0, 'exits': 0, 'residual': 0, 'draftValue': 0, 'freeValue': 0}
+    for _cl in _lf_clubs:
+        _rows = _by_club.get(_cl, []); _picks = _lf_pick_of.get(_cl, [])
+        phantomLayer[_cl] = {}; _cl_tot[_cl] = {}
+        # lens 0 (balanced): report-only echo — WITH == WITHOUT == Σ v (ZERO phantom at k=0, the invariant)
+        _v0 = sum((_r.get('v') or 0) for _r in _rows)
+        _cl_tot[_cl]['0'] = {'withPhantom': _v0, 'withoutPhantom': _v0, 'delta': 0, 'nPlayers': len(_rows)}
+        _lg['0']['with'] += _v0; _lg['0']['without'] += _v0
+        for _k, _fld, _yr in _LF_LENS:
+            _proj = [_r for _r in _rows if _r.get(_fld) is not None]
+            _retained = [_r for _r in _proj if _r[_fld] >= _LF_X]
+            _exits = [_r for _r in _proj if _r[_fld] < _LF_X]
+            _E = len(_exits); _residual = sum(_r[_fld] for _r in _exits)
+            _used = _picks[:_E]                              # draft picks CONSUME exit slots (sealed structural strawman, memo §1)
+            _free_slots = _E - len(_used); _free_value = _free_slots * _LF_R
+            _ret_sum = sum(_r[_fld] for _r in _retained)
+            _draft_value = sum(_p['v'] for _p in _used)
+            _with = _ret_sum + _draft_value + _free_value    # list-size conserved: refill count == exit count
+            _without = sum(_r[_fld] for _r in _proj)         # the plain forward lens (no phantom)
+            _intake = [{'kind': 'draft', 'n': _p['n'], 'v': _p['v'], 'club': _cl, 'lens': _k,
+                        'labelYear': _yr, 'phantom': True} for _p in _used] \
+                    + [{'kind': 'free', 'v': _LF_R, 'club': _cl, 'lens': _k,
+                        'labelYear': _yr, 'phantom': True} for _ in range(_free_slots)]
+            phantomPicks.extend(_p for _p in _intake if _p['kind'] == 'draft')
+            phantomLayer[_cl][str(_k)] = {'retained': len(_retained), 'retainedSum': _ret_sum,
+                'exits': _E, 'residual': _residual, 'draftPicks': _used, 'draftValue': _draft_value,
+                'freeSlots': _free_slots, 'freeValue': _free_value, 'intake': _intake,
+                'withPhantom': _with, 'withoutPhantom': _without, 'delta': _with - _without}
+            _cl_tot[_cl][str(_k)] = {'withPhantom': _with, 'withoutPhantom': _without,
+                'delta': _with - _without, 'nPlayers': len(_proj)}
+            _s = _lg[str(_k)]; _s['with'] += _with; _s['without'] += _without
+            _s['exits'] += _E; _s['residual'] += _residual; _s['draftValue'] += _draft_value; _s['freeValue'] += _free_value
+    # -- §2.v TOTALS REPORT: per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer -----
+    phantomTotals = {'_meta': {'R_realized': _LF_R, 'exit_bar_X': _LF_X, 'R_alternatives': _LF_ALT,
+        'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer (MEMO_LEGF §2.v)',
+        'list_size': 'conserved endogenously (refill count == exit count; no exogenous L)',
+        'report_only': True, 'gates': False, 'k0_phantom': 'none', 'seal_sha256_8': '1d180424',
+        'note': 'per-pick draft capital priced off PVC (v2 curve, GROSS); no wide/decile bins (CORE rule 7)'},
+        'clubs': _cl_tot, 'league': {_lk: {'withPhantom': _lv['with'], 'withoutPhantom': _lv['without'],
+            'delta': _lv['with'] - _lv['without'], 'exits': _lv['exits'], 'residual': _lv['residual'],
+            'draftValue': _lv['draftValue'], 'freeValue': _lv['freeValue']} for _lk, _lv in _lg.items()}}
+    out['phantomLayer'] = phantomLayer
+    out['phantomPicks'] = phantomPicks
+    out['phantomTotals'] = phantomTotals
+    print('LEG F1 PHANTOM INTAKE (RL_LEGF=1): %d clubs · +1 league Δ=%+d (%d exits) · +2 league Δ=%+d (%d exits) · R=%d X=%d · k=0 phantom=NONE'
+          % (len(_lf_clubs), phantomTotals['league']['1']['delta'], _lg['1']['exits'],
+             phantomTotals['league']['2']['delta'], _lg['2']['exits'], _LF_R, _LF_X))
+else:
+    print('LEG F1 PHANTOM INTAKE: RL_LEGF=0 — layer NOT emitted (Leg-E board byte-exact)')
+
 _SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)
 _srcmd5=_SS.stamp_derived('rl_app_data.json',tier=1)        # GUARD 1: stamp with source md5 + set read-only (generator is the only writer)
