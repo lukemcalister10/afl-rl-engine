@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v322 2026-07-17 · PEN: ITEM 349: F1 GREEN — chapter head 7b6dfc5 (fence a strict subset, first this chapter; phantom layer = export/UI only); SINGLE-THREAD CURE ADOPTED (OPENBLAS_NUM_THREADS=1 restores absolute hashes; jitter was display-field float order; v/ranks immune); PR #115 stays candidate; audit seeding next · prior: ITEM 348
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v323 2026-07-17 · PEN: ITEM 350: owner red-flag — forward board value declines ~35% by +2 even with phantom (backward flat). Concern SOUND; part legitimate (prices embed future) but magnitude (28%/yr stripped) too steep + converges w/ Leg-E kids-fall flag + phantom draft looks light. Report-only view, board untouched. BACKTEST proposed (project -1 → must reproduce now 752427); gating for the ladder · prior: ITEM 349
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5361,6 +5361,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     COMPLETE: …e4177c2 → a90052a → cc58570 → `7b6dfc5`.** NEXT: audit seeding at `7b6dfc5`
     (shards A–E re-addressed · THREADS=1 in every shard · auditor annex required · F2
     corroboration + Leg-F checks folded) — seat-13 deliverable, next turn.
+
+350. **OWNER RED-FLAG: THE FORWARD BOARD-VALUE DECLINE — LEGITIMATE, TRIAGED, BACKTEST PROPOSED
+    (2026-07-18).** Owner flagged the per-lens totals: −2 770,987 · −1 771,152 · now 752,427 (BACKWARD
+    FLAT) vs +1 618,248-with/537,768-without · +2 485,937-with/393,375-without (FORWARD STEEP
+    DECLINE ~35% by +2 EVEN WITH phantom). SUPERVISOR ANALYSIS (report-only, from committed F1/F2
+    totals; NOT yet a verdict): (1) CONCERN SOUND — a steady-state league conserves aggregate value;
+    the backward boards confirm (~flat); a 1/3 drop in two years is not physical. (2) PARTIAL
+    LEGITIMATE COMPONENT — asset prices embed the future, so rolling a player +1yr correctly lowers
+    his price (one prime year "spent"); the question is whether the MAGNITUDE exceeds this.
+    Arithmetic: strip phantom ⇒ existing players shed 214,659 in ONE year (752,427→537,768), ~28% —
+    steeper than "one year consumed" warrants. (3) CONVERGES WITH the owner's own Leg-E flag (item
+    344): raw young players FALL at +1/+2 — if development doesn't offset veteran decline the board
+    bleeds forward. (4) SECOND SUSPECT — phantom DRAFT capital Σ43,266 for a whole league's draft
+    looks LIGHT vs real early-pick value; intake side may under-fill. SCOPE REASSURANCE: this is a
+    RED FLAG IN A REPORT-ONLY VIEW; the balanced "now" board that prices trades is byte-untouched;
+    nothing baked. **DECISIVE DIAGNOSTIC PROPOSED (read-only, data in hand): BACKTEST the forward
+    lens — project the KNOWN −1 board (end 2025) forward one year; it MUST reproduce "now" 752,427
+    if calibrated; a material under-shoot localizes a systematic under-projection.** Plus a now→+1
+    DECOMPOSITION (veteran decline vs young development vs exits vs phantom intake). STATUS: PROPOSED,
+    awaiting the owner's "investigate" word; this is now a GATING question for the ladder — a forward
+    lens the owner does not trust should not ride the bake (the Option-B purpose, item 346). Balanced
+    board + migration + projection-at-k=0 remain independently sound regardless.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
