@@ -284,29 +284,16 @@ MD.board = (function () {
       wrap.appendChild(fmt.el("span", "lbl", "Board lens"));
       const lens = fmt.el("div", "seg lens");
       MD.config.LENS_LABELS.forEach(function (lab, i) {
-        // item 8: DISABLE the +1/+2 forward-lens toggle (indices 3,4). The forward projection is the
-        // KNOWN, RULED defect (THE LENS PROJECTION LAW, register v46: production not accrued) — the ENGINE
-        // fix rides the next (merged PVC+flex) chapter. Here we only gate the toggle so the board never
-        // shows the numbers the owner has ruled wrong. The NUMBERS ARE NOT TOUCHED. −2/−1/Now (real
-        // backward re-values + now) stay live.
-        const forward = i > 2;
+        // LEG E (SPEC §3): the +1/+2 forward-lens toggle is RE-ENABLED. The projection law (R103.3) has
+        // landed — the forward lens now credits EXPECTED production (age+k through the map's own growth
+        // curve; engine: rl_export _LENS_FORM + _merged_recover b6/price6 form-anchor). The ruled
+        // no-improvement-floor defect (register v46) is retired with the interim lens (lens_tilt).
+        // −2/−1/Now stay the real backward re-values + now; +1/+2 are the live projection lenses.
         const btn = fmt.el("button", i === s.lens ? "on" : "", lab);
-        if (forward) {
-          btn.disabled = true;
-          btn.classList.add("lensoff");
-          btn.title = "projection law lands next chapter";
-        } else {
-          btn.addEventListener("click", function () { s.lens = i; render(container); });
-        }
+        btn.addEventListener("click", function () { s.lens = i; render(container); });
         lens.appendChild(btn);
       });
       wrap.appendChild(lens);
-      const lnote = fmt.el("span", "lbl", "+1/+2 paused — projection law lands next chapter");
-      lnote.style.color = "var(--faint)"; lnote.style.textTransform = "none"; lnote.style.letterSpacing = ".02em";
-      lnote.title = "The forward lens is the ruled LENS PROJECTION LAW defect (production not yet accrued); " +
-        "the engine fix rides the next chapter. The numbers are untouched — the toggle is paused so the board " +
-        "never shows values the owner has ruled wrong.";
-      wrap.appendChild(lnote);
 
       // Q-DELTA-BASE toggle (built; default = bake). Dimmed on a non-now lens (does not apply).
       wrap.appendChild(fmt.el("span", "lbl", "Δ base"));
