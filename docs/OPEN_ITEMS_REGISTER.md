@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v323 2026-07-17 · PEN: ITEM 350: owner red-flag — forward board value declines ~35% by +2 even with phantom (backward flat). Concern SOUND; part legitimate (prices embed future) but magnitude (28%/yr stripped) too steep + converges w/ Leg-E kids-fall flag + phantom draft looks light. Report-only view, board untouched. BACKTEST proposed (project -1 → must reproduce now 752427); gating for the ladder · prior: ITEM 349
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v324 2026-07-17 · PEN: ITEM 351: owner rules investigate + enriches (conservation via already-priced expectations; distributed retirement); investigation issued 8c63404 — backtest (project -1 → must hit 752427) + cohort decomposition + pedigree-premium-carry + distributed-retirement alternative; likely root = kids re-priced on production not pedigree · prior: ITEM 350
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5383,6 +5383,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     awaiting the owner's "investigate" word; this is now a GATING question for the ladder — a forward
     lens the owner does not trust should not ride the bake (the Option-B purpose, item 346). Balanced
     board + migration + projection-at-k=0 remain independently sound regardless.
+
+351. **OWNER RULES "INVESTIGATE" + ENRICHES THE MODEL; THE CALIBRATION INVESTIGATION ISSUED
+    (2026-07-18).** Owner's conservation model, verbatim gist: veterans regress but developers
+    improve (offset), and new draftees offset age/retirement exits; retirement "liability split
+    between those old enough to potentially retire" (distributed, since the lens can't know who
+    retires). SUPERVISOR SHARPENING (recorded): his intuition is fundamentally RIGHT (the board
+    should ~conserve forward) with ONE precision — expected development AND decline are ALREADY
+    PRICED into the current board (MISSION: assets = expected FUTURE value), so a correct forward
+    roll mostly re-prices the remaining future + realizes one year; conservation then comes from
+    intake replacing the consumed year. The DECISIVE TELL is therefore whether DEVELOPING players
+    HOLD/RISE (they should — ascending toward peak) or FALL. LIKELY ROOT (hypothesis): the current
+    board anchors zero/low-evidence young rows on PEDIGREE (the Leg-D V0=curve entry value) but the
+    forward lens re-prices them on thin PRODUCTION ⇒ strips the pedigree premium ⇒ kids crater
+    (ties the owner's item-344 Leg-E flag directly to Leg-D entry pricing). His distributed-
+    retirement idea is a genuine improvement over F1's discrete value<X exit. **ISSUED:
+    DIRECTIVE_LEGF_forward_calibration_investigation** (main `8c63404`, docs-only): READ-ONLY, base
+    `7b6dfc5` STRICT, THREADS=1 — (1) BACKTEST project the KNOWN −1 board forward, must reproduce
+    now 752,427 (under-shoot = smoking gun) + −2→−1; (2) now→+1 cohort decomposition (veteran vs
+    developer vs exits vs intake; developer-cohort NEGATIVE = the defect); (3) pedigree-premium-
+    carry test; (4) distributed-retirement alternative beside F1's discrete rule; (5) verdict,
+    localize-by-address, NO fix. Gating: the ladder holds on the result. OWNER ASK: fire it into a
+    fresh chat.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
