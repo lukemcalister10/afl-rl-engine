@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v316 2026-07-17 · PEN: ITEM 343: rider (iv) prescreened GREEN — R_realized 207 [184-229] CONTAINS the owner's 220; R_curve 471 = 2.3x realized at entry (the tail read measured); v-R_curve unstable (deep premium ~0); my circularity premise refuted+confirmed; viewing pack COMPLETE · prior: ITEM 342
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v317 2026-07-17 · PEN: ITEM 344: Leg E prescreened PASS w/ notes (seal-first honoured; balanced byte-exact; d85901af = full-lens board; two fence-omitted edits seeded to audit; owner flag: raw-pick benefit-of-doubt). ALL BUILDS DONE — the ladder opens; audit seeding next · prior: ITEM 343
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5222,6 +5222,31 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     audit shell). The tail read stays OPERATIVE, unresolved BY DESIGN until the ladder: no
     hand-bending; if it stands at the viewing, the cure = the engine entry-pricing axis,
     post-v2.11, on the owner's word (R107.x standing path). Waiting ONLY on Leg E.
+
+344. **LEG E RETURNED + PRESCREENED — PASS WITH NOTES. ALL BUILDS DONE; THE LADDER OPENS
+    (2026-07-18).** PR #113, branch `…lege-projection-law-postures-63u283` head `cc58570`,
+    stacked on `a90052a` ✓ (verified ancestor), 4 commits, in-band. VERIFIED this seat: store
+    `968de0c7` ✓ · no docs/ · no pin/gate/acceptance touched · SEAL-FIRST honoured (presets
+    `c2e17c49` in the PLAN commit `64721e7`, before any non-balanced render — the §6 workflow's
+    key risk closed) · balanced invariants PASS as claimed [build-run; audit recomputes]:
+    RL_LEGE=0,RL_PVC2=1 ⇒ `06d8af60` byte-exact · RL_PVC2=0 ⇒ `9829d01a` · full-lens candidate
+    board (RL_LEGE=1) = **`d85901af`** (a KAT names what it hashes — resolved from
+    exit_hashes.txt) · v-parity 0/804 · G-Y0 1.100% headroom 0.90pp · the one known guard-5 red
+    carried (bake cure, with RL_PVC2 + now RL_LEGE INFRA_ALLOW riding the bake word). **FENCE
+    NOTES (the chapter's recurring 322 gap, third instance):** two edited files ABSENT from the
+    build's own derived fence — `_merged_recover.py` (ONE hunk @ `_feat_infer` :255ff — the
+    R103.3 root-defect fix, BASE_REF=AGE_REF pin; OUTSIDE the :1121-1171 hard-out chain,
+    verified) and `engine/forward_valuation/distribution_pricing.py` (edited, the lens path).
+    Both content-legitimate; both diffs SEEDED TO AUDIT SHARD D BY ADDRESS; the fence-derivation
+    law gets a standing-conduct tightening at the seam docs. **OWNER FLAG carried to the
+    viewing:** raw high-pick, few-game kids fall hard at +1/+2 — the "benefit of the doubt for a
+    raw pick" [OWNER] ruling at the movers report (named rows incl. Rozee per the memo). **THE
+    SEAM: Legs C+D+E + five-migration + riders (i)–(iv) COMPLETE on candidate line
+    …e4177c2→a90052a→cc58570.** NEXT (the FULL LADDER, in order): seat 13 seeds the S6 cold audit
+    (shell → real addresses @ cc58570, leak-guard scrubbed, next turn) → owner runs shards
+    INCOGNITO outside the Project → reconciliation → owner's viewing (board d85901af + book +
+    movers + riders i–iv + chapter ledger) scored against his SEALED READS → his written bake
+    word (guard-5 re-pin + INFRA_ALLOW entries ride it) → ONE bake → v2.11 → clean promote.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
