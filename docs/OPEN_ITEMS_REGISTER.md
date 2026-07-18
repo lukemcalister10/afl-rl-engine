@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v313 2026-07-17 · PEN: ITEM 340: rescue verified (parented e4177c2; job-1 peak-model HOLD banked w/ measurement; 469-row re-rank v-parity WIP finding; single_source fence deviation caught); BUILD B issued bb350be (base e7c59d07 strict, checkpoint law) · prior: ITEM 339
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v314 2026-07-17 · PEN: ITEM 341: Build B prescreen PASS (1 known red: guard-5 rl_model pin, cure rides the bake); checkpoint law 0/804; R inputs 90/92 curve-independent; MEMO_LEGE v1.0 + DIRECTIVE_LEGE issued (base a90052a); seat harness defect owned+cured · prior: ITEM 340
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5160,6 +5160,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     **CHECKPOINT LAW: any shipped per-row v change at RL_PVC2=1 ⇒ HALT and return the rows to the
     supervisor.** Band 2–3 h (right-sized per the item-339 lesson). OWNER ASK: fire Build B into
     a fresh chat.
+
+341. **BUILD B PRESCREENED — PASS (one KNOWN RED) · LEG E ISSUED (2026-07-18).** PR #111, branch
+    `…-kxykfd` head `a90052a` (8 commits on `e7c59d0`). VERIFIED this seat: store `968de0c7` ✓ ·
+    curve `56dd7a7b` ✓ · `rl_model.py` md5 `fdc54e24` ✓ (matches the flagged guard-5 red) · fence
+    = rl_model.py + session dir ONLY · **NO pin/gate/acceptance file touched (no
+    self-amendment)** · G-Y0 asserted by KEY in acceptance_v1_21.json (reported 1.100% ≤ 2%
+    HARD, 0.90pp headroom) · R-inputs rider real (free-intake pick-equivalents: MSD 90, six
+    mechanisms 92; measured curve-independent, byte-identical across the kill-switch). THE ONE
+    RED: guard-5 boot pin `a5fd3d7d` ≠ head `fdc54e24` — EXPECTED (first rl_model.py-touching
+    build), honestly flagged not self-cured; **CURE RIDES THE BAKE on the owner's word (with the
+    RL_PVC2 INFRA_ALLOW entry, the RL_FLEX pattern)**. Checkpoint law held: 0/804 shipped-v
+    movers board-wide. [Report-only until audit:] boards 270a2c5f→06d8af60 (RL_PVC2=1), =0 ⇒
+    9829d01a; umbrella 697 rank movers (394 real / 303 cascade), Darcy #445→#342. **LEG E
+    ISSUED:** MEMO_LEGE → v1.0 OPERATIVE (re-pinned :414/:442/:473 @ a90052a; curve of record
+    payload 89c14729; §6 sealing workflow binding) + DIRECTIVE_LEGE fireable (base `a90052a`
+    STRICT; B-hash 06d8af60; k=0 byte-exact invariant), draft archived. **SEAT MECHANICAL DEFECT
+    OWNED (the register's honesty rule):** the first filing pushed HALF the pair — my python
+    transform died on its own slot-assertion but the git ops were NEWLINE-chained not &&-chained,
+    so the commit ran anyway (a swallowed failure, the SILENCE-IS-A-RED disease at my own desk).
+    Caught same turn (the assert existed and fired — the harness around it was the hole); cured:
+    assert-before-write + &&-chained ops; the completing commit `398f3973` verified zero slots at
+    HEAD. NEXT: owner fires Leg E · rider (iv) directive next turn (R inputs now in hand).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
