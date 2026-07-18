@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v318 2026-07-17 · PEN: ITEM 345: owner steers — phantom picks in +1/+2 (the exits→draft-capital cure; same family as R107.7 incremental currency) + retrospective -1/-2 boards; PROPOSED, placement word open (A: queue post-v2.11, recommended · B: hold the bake) · prior: ITEM 344
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v319 2026-07-17 · PEN: ITEM 346: OWNER RULES OPTION B — Leg F opened (bake holds, consequences recorded); MEMO_LEGF v1.0 + directives F1 (phantom intake, writer) + F2 (retro boards, read-only) filed; owner pastes two chats · prior: ITEM 345
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5268,6 +5268,24 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (B) HOLD THE BAKE and fold phantom picks into Leg E now (consequences stated: reopens the
     candidate, re-runs prescreen + the cold audit, delays v2.11 by at least one build+ladder
     cycle). Audit seeding continues next turn unless he words (B).
+
+346. **OWNER RULES OPTION B — THE CHAPTER EXTENDS: LEG F OPENED (2026-07-18).** Owner, verbatim:
+    "Option B, and also make the -1/2 lens work. Makes sense to do it all at the same time."
+    CONSEQUENCES ACCEPTED AND RECORDED: the bake HOLDS; the candidate reopens past `cc58570`; the
+    prescreen + cold audit run at the eventual Leg-F head; v2.11 moves ≥1 build cycle out; the
+    audit seeding WAITS for the F-head (addresses re-pin there); the item-345 option-A queue is
+    VOID (both features land now). EXECUTED THIS TURN: **MEMO_LEGF v1.0** filed (`7765cc0`) — the
+    conservation law (phantom intake = the exits→draft-capital cure) · strawman parameters SEALED
+    pre-render w/ [OWNER] slots (free-intake R=207 · exit bar X=207 · natural-order slots),
+    ratified at the viewing (§6 workflow) · retrospective −1/−2 = HISTORY not projection (no
+    backward phantoms; HALT on missing records, no guessing) · phantoms never on the balanced
+    board, never gate/bake (R104.4 extended) · RL_LEGF default ON, =0 ⇒ d85901af + 06d8af60
+    byte-exact · the incremental-currency ruling (326/327) stays post-v2.11 — this is a VIEW
+    using its raw material. **DIRECTIVES FILED (`8c8aa7b`): F1** phantom intake (WRITER, base
+    `cc58570` STRICT, ~3–4 h, checkpoint law: any k=0 balanced change ⇒ HALT; fence honesty
+    demanded — three 322-misses this chapter) + **F2** retrospective boards (READ-ONLY PARALLEL,
+    ~1–2 h, §5.9 games-cumulative trap named, bridge report −2→−1→now). OWNER ASK: paste F1 and
+    F2 into TWO fresh chats (they run simultaneously).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
