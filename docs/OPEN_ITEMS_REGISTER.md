@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v311 2026-07-17 · PEN: ITEM 338: riders i-iii returned + prescreened GREEN (inputs by stamp, fence held, rule-7 clean, report-only); base-parent precision fix; tail read = gross 5.5x both model&reality, owner's ratio is replacement-adjusted (rider iv pending) · prior: ITEM 337
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v312 2026-07-17 · PEN: ITEM 339: v2 five-migration build stuck ~8h, NOTHING pushed (verified, zero repo damage); rescue WIP + SPLIT re-fire; my over-large fence owned · prior: ITEM 338
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5115,6 +5115,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     and is tested directly by RIDER (iv), still QUEUED on the migration's measured-R emit. No
     curve defect on the gross ratio; no hand-bending implicated. Banks into the ladder viewing
     pack. No owner action now.
+
+339. **THE v2 FIVE-MIGRATION BUILD STUCK ~8 h — NOTHING PUSHED (verified), RESCUE + SPLIT RE-FIRE
+    ORDERED (2026-07-18).** Owner relayed a screenshot: the build was mid-JOB-2 (the
+    value()/rank/pick-equiv consumer), reasoning SOUNDLY — it found job 2's board effect is a pure
+    ROW RE-RANK from `rl_model.value()` migrating (exported ev fields v/vM*/vP*/vRaw/cvx unchanged;
+    `_vpt` not exported; ev-channel already on v2 via ACT-2 `_PVC0`), and was characterizing
+    cascade-vs-real movers "before committing" — then hung on a spinner ~8 h. SUPERVISOR
+    VERIFICATION (fresh ls-remote, own sandbox): NO `claude/five-migration-*` branch on the remote;
+    the two migration-ish names (`establishment-pvc-checks`, `id-primary-migration`) are stale
+    (Jul-4 / Jul-12, NOT based on e4177c2). ⇒ the build pushed nothing: no branch, no commits, no
+    PR. Candidate `e4177c2` UNMOVED, main `3ef7af7d` untouched — ZERO repo damage; the ~8 h of work
+    (incl. job-1 pvc_snapshot measured-first, the delicate train/serve-skew measurement) is trapped
+    LOCAL to the hung chat. Time band was 2–4 h; ~8 h with no >2× flag and no return = SILENCE IS A
+    RED (a build that never reports has failed to report). SUPERVISOR CORRECTION OWNED (my fence):
+    the v2 directive packed all five consumers + measure-first + rider into ONE chat — too large per
+    S2 (fences sized to finish in budget with a clean return). Job 2 also surfaced a BOARD-CHANGE
+    JUDGMENT (row re-rank: real movers vs cascade) that warranted a SUPERVISOR CHECKPOINT, which the
+    directive did not force. ACTIONS: (1) RESCUE — owner stops the hung turn, build pushes WIP-labelled
+    branch + returns state (jobs 1–5 status, the job-1 measurement), nothing merged. (2) SPLIT RE-FIRE
+    once state seen: Build A = job-1 measure-first alone; Build B = the four consumers, each with a
+    HALT-AND-CHECKPOINT-ON-ANY-BOARD-CHANGE rule + GIT ENTRY block (item 334). Candidate integrity
+    intact throughout.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
