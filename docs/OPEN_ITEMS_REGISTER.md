@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v314 2026-07-17 · PEN: ITEM 341: Build B prescreen PASS (1 known red: guard-5 rl_model pin, cure rides the bake); checkpoint law 0/804; R inputs 90/92 curve-independent; MEMO_LEGE v1.0 + DIRECTIVE_LEGE issued (base a90052a); seat harness defect owned+cured · prior: ITEM 340
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v315 2026-07-17 · PEN: ITEM 342: owner replacement steer recorded (curve(60)=542, curve(90)=473 confirmed — flat tail); v−R first-class at the viewing; rider (iv) issued 16d35d6 (three R candidates, era-matched, symmetric); Leg E firing · prior: ITEM 341
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5182,6 +5182,22 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     Caught same turn (the assert existed and fired — the harness around it was the hole); cured:
     assert-before-write + &&-chained ops; the completing commit `398f3973` verified zero slots at
     HEAD. NEXT: owner fires Leg E · rider (iv) directive next turn (R inputs now in hand).
+
+342. **THE OWNER'S REPLACEMENT STEER RECORDED + RIDER (iv) ISSUED (2026-07-18).** Owner, verbatim:
+    "Pick 90 is 473? And pick 60 is 550 odd or so? I think we should consider how much it's worth
+    over walking to the free pool more than we do." Numbers CONFIRMED from artifacts: v2
+    curve(60)=542, curve(90)=473 — ~69 SCAR across 30 picks; the flat tail is the fact his steer
+    responds to. STATUS: an EMPHASIS steer, recorded — it elevates the v−R view to first-class at
+    the ladder viewing; it does NOT change pricing law (R107.7 stands: gross bakes at v2.11; v−R
+    as the traded currency = the named post-v2.11 chapter, on his word — option held open to him
+    symmetrically). Leg E: owner firing now (writer). **RIDER (iv) ISSUED** (main `16d35d6`,
+    docs-only): read-only PARALLEL to Leg E (S3, disjoint) — three R candidates constructed and
+    labelled (R_curve @ pick-equiv 90–92 w/ the circularity note · R_realized era-matched w/
+    continuous-evidence censoring handling, busts full weight · R_owner=220 as reference line
+    only) · cohort-bootstrap uncertainty ON R (thin samples said plainly: MSD 44/17, SSP 31/16) ·
+    gross beside v−R per exact pick, ratio tables per candidate, rider-(iii) uncertainty overlaid
+    · symmetric, verdict-free, the axes note verbatim on the summary. OWNER ASK: paste rider (iv)
+    into a SECOND chat beside Leg E.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
