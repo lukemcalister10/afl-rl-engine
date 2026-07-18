@@ -396,10 +396,80 @@ MD.board = (function () {
     container.appendChild(wrap);
   }
 
+  // ==== LEG F1 — PHANTOM INTAKE (+1/+2) + RETROSPECTIVE (−1/−2) VIEW LAW (MEMO_LEGF §4) ==================
+  // Pure view; reads the board's additive phantom keys (present only on an RL_LEGF=1 board) and F2's
+  // retrospective bundle. EMPTY-STATE SAFE: an RL_LEGF=0 board carries no phantom keys => nothing renders;
+  // F2 not landed => the −1/−2 tab shows a pending note over the engine backward re-value. k=0 shows NONE.
+  function phantomTotals() { return (MD.seam.working && MD.seam.working.phantomTotals) || null; }
+  // F2 injects its stamped retrospective boards like the club overlay: window.__MATCHDAY_RETRO__ =
+  // { "-1": {board, stamp}, "-2": {board, stamp} }. STAMP-ASSERTED at load vs the working board's source
+  // store md5 (the ringFence/Guard-5 analogue) — an unstamped/mismatched retro board must look absent.
+  function retroFor(lensIdx) {
+    const rb = window.__MATCHDAY_RETRO__ || null;
+    if (!rb) return { state: "pending" };
+    const entry = rb[lensIdx === 0 ? "-2" : "-1"];
+    if (!entry) return { state: "pending" };
+    const want = String((((MD.seam.working || {}).stamp || {}).source_md5) || "968de0c7").slice(0, 8);
+    const got = String((entry.stamp || {}).store_md5 || "").slice(0, 8);
+    if (got !== want) return { state: "mismatch", got: got, want: want };
+    return { state: "ok", entry: entry };
+  }
+  function phantomBanner(container) {
+    const s = MD.state;
+    const money = function (n) { return (n < 0 ? "−" : "+") + Math.abs(Math.round(n)).toLocaleString(); };
+    const banner = function (bg, html) {
+      const el = fmt.el("div", "phantombanner");
+      el.style.cssText = "margin:.35rem 0;padding:.4rem .6rem;border-left:3px solid " + bg +
+        ";background:rgba(127,127,127,.08);font-size:.82rem;line-height:1.5";
+      el.innerHTML = html; container.appendChild(el); return el;
+    };
+    const tag = function (txt, bg) {
+      return '<span style="display:inline-block;padding:.02rem .3rem;margin-right:.4rem;border-radius:.2rem;' +
+        'background:' + bg + ';color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.02em">' + fmt.esc(txt) + '</span>';
+    };
+    // −1/−2: F2 retrospective board tab (empty-state safe)
+    if (s.lens === 0 || s.lens === 1) {
+      const r = retroFor(s.lens);
+      if (r.state === "ok") return;   // F2 board present + stamp-asserted; row pipeline renders it (future wiring)
+      banner("#c98a1a", r.state === "mismatch"
+        ? tag("retrospective F2 · STAMP MISMATCH", "#b23") + "got " + fmt.esc(r.got) + " want " + fmt.esc(r.want) +
+          " — showing the engine backward re-value"
+        : tag("retrospective F2 · pending", "#8a7") + "the " + MD.config.LENS_LABELS[s.lens] +
+          " tab reads F2’s stamped artifact when it lands; showing the engine backward re-value meanwhile");
+      return;
+    }
+    // +1/+2: phantom intake layer
+    if (s.lens === 3 || s.lens === 4) {
+      const pt = phantomTotals(); if (!pt) return;   // RL_LEGF=0 board => no phantom keys => empty-state
+      const lk = String(s.lens - 2);                 // lens 3 -> "1", 4 -> "2"
+      const lg = pt.league[lk]; if (!lg) return;
+      const el = banner("#3a7", tag("phantom intake · " + MD.config.LENS_LABELS[s.lens], "#2a6") +
+        "league <b>WITH</b> Σ" + Math.round(lg.withPhantom).toLocaleString() +
+        " vs <b>WITHOUT</b> Σ" + Math.round(lg.withoutPhantom).toLocaleString() +
+        " (Δ " + money(lg.delta) + ") · " + lg.exits + " exits refilled · R=" + pt._meta.R_realized +
+        " X=" + pt._meta.exit_bar_X + ' · <span style="opacity:.6">report-only · k=0 phantom=none · seal ' +
+        fmt.esc(pt._meta.seal_sha256_8 || "") + "</span>");
+      const tbl = fmt.el("div", "phantomclubs");
+      tbl.style.cssText = "margin-top:.35rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.15rem .8rem";
+      Object.keys(pt.clubs).sort().forEach(function (c) {
+        const row = pt.clubs[c][lk]; if (!row) return;
+        const seg = fmt.el("div", "pcrow");
+        seg.style.cssText = "display:flex;justify-content:space-between;gap:.5rem;font-size:.78rem";
+        seg.innerHTML = '<span>' + fmt.esc(c) + "</span>" +
+          '<span style="opacity:.8">Σ' + Math.round(row.withPhantom).toLocaleString() + "</span>" +
+          '<span style="color:' + (row.delta >= 0 ? "#3a7" : "#b23") + '">' + money(row.delta) + "</span>" +
+          tag("phantom", "#2a6");
+        tbl.appendChild(seg);
+      });
+      el.appendChild(tbl);
+    }
+  }
+
   function render(container) {
     container.innerHTML = "";
     const s = MD.state;
     strip(container);
+    if (s.tier === "working") phantomBanner(container);   // LEG F1: phantom (+1/+2) / retrospective (−1/−2) view, empty-state safe
 
     const byKey = MD.seam.indexed().byKey;
     let pool = rows(s.tier);
