@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v317 2026-07-17 · PEN: ITEM 344: Leg E prescreened PASS w/ notes (seal-first honoured; balanced byte-exact; d85901af = full-lens board; two fence-omitted edits seeded to audit; owner flag: raw-pick benefit-of-doubt). ALL BUILDS DONE — the ladder opens; audit seeding next · prior: ITEM 343
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v318 2026-07-17 · PEN: ITEM 345: owner steers — phantom picks in +1/+2 (the exits→draft-capital cure; same family as R107.7 incremental currency) + retrospective -1/-2 boards; PROPOSED, placement word open (A: queue post-v2.11, recommended · B: hold the bake) · prior: ITEM 344
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5247,6 +5247,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     INCOGNITO outside the Project → reconciliation → owner's viewing (board d85901af + book +
     movers + riders i–iv + chapter ledger) scored against his SEALED READS → his written bake
     word (guard-5 re-pin + INFRA_ALLOW entries ride it) → ONE bake → v2.11 → clean promote.
+
+345. **TWO OWNER DESIGN STEERS AT THE SEAM: PHANTOM PICKS (+1/+2) AND RETROSPECTIVE LENSES
+    (−1/−2) (2026-07-18).** Owner, verbatim: "The +1/2 lenses should include phantom draft picks
+    to replace the value of declining players who exit the system." and "The -1/2 lenses should
+    be easy to achieve as we have a record of all the players on a list in 2024/2025 for
+    example." SUPERVISOR READ (recorded, not ruled): (1) PHANTOM PICKS — sound; without
+    replacement inflow the +1/+2 totals mechanically understate the future league (exits shed
+    value that in reality returns as draft capital + free intake). This is the SAME design family
+    as the ratified-in-principle list-spot trade-math term and the incremental currency
+    (R107.7, items 326/327) — the R inputs and pick-equivalents built this chapter are its raw
+    material. Natural home: the named POST-v2.11 design chapter, likely small. (2) −1/−2
+    RETROSPECTIVE BOARDS — feasible in principle from vpath/asof records as READ-ONLY analysis
+    (a different artifact than the forward lens: historical re-pricing, not projection); engine
+    asof-evaluation support unverified; natural home: a Tier-3 read-only job any time, or
+    post-v2.11. STATUS: BOTH RECORDED AS PROPOSED, AWAITING THE OWNER'S PLACEMENT WORD. The
+    symmetric options put to him: (A) QUEUE both post-v2.11 (recommended: the balanced board —
+    what prices trades — is untouched by either; the candidate is complete and prescreened; the
+    ladder proceeds now; both land as a fast follow-on chapter with the R-input machinery warm);
+    (B) HOLD THE BAKE and fold phantom picks into Leg E now (consequences stated: reopens the
+    candidate, re-runs prescreen + the cold audit, delays v2.11 by at least one build+ladder
+    cycle). Audit seeding continues next turn unless he words (B).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
