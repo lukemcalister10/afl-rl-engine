@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v319 2026-07-17 · PEN: ITEM 346: OWNER RULES OPTION B — Leg F opened (bake holds, consequences recorded); MEMO_LEGF v1.0 + directives F1 (phantom intake, writer) + F2 (retro boards, read-only) filed; owner pastes two chats · prior: ITEM 345
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v320 2026-07-17 · PEN: ITEM 347: reproducibility ruling — FP board hashes container-relative, equivalence is the invariant; F1 proceeds w/ discriminator (zero rank moves or HALT) + numeric-stack annex; data md5s stay absolute; audit shell amends at seeding; stack-pinning queued [OWNER] · prior: ITEM 346
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5286,6 +5286,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     demanded — three 322-misses this chapter) + **F2** retrospective boards (READ-ONLY PARALLEL,
     ~1–2 h, §5.9 games-cumulative trap named, bridge report −2→−1→now). OWNER ASK: paste F1 and
     F2 into TWO fresh chats (they run simultaneously).
+
+347. **THE REPRODUCIBILITY RULING: FP BOARD HASHES ARE CONTAINER-RELATIVE; EQUIVALENCE IS THE
+    INVARIANT (2026-07-18).** F1 entered on a container whose absolute board hashes differ
+    (06d8af60/d85901af/9829d01a → 30d96f1f/83a4b21d/86444a70) with store/curve/engine files
+    byte-identical; its diagnosis: OpenBLAS DYNAMIC_ARCH 1-ULP ev() shifts. The build HALTED AND
+    ASKED (the item-333 lesson working). SEAT VERIFICATION: the repo pins NO numeric stack — no
+    requirements/lock/pyproject, no numpy/OpenBLAS pin in bootstrap — so every prior byte-match
+    rested on fleet homogeneity, never on control; the finding is credible and was always latent.
+    **RULING (couriered to the build via Other):** PROCEED CONTAINER-RELATIVE with two BINDING
+    additions, else halt — (1) **DISCRIMINATOR FIRST:** commit, before any phantom work, max
+    |Δev| (ULP-scale expected), changed-row count, and RANK changes vs the filed boards —
+    **expect ZERO rank moves; any rank move or super-ULP |Δ| ⇒ HARD HALT** (then it is a defect,
+    not weather). (2) **REPRODUCIBILITY ANNEX committed:** numpy + OpenBLAS versions, lscpu
+    model/flags, threads, OPENBLAS_CORETYPE — so reconciliation and the audit can tell CPU
+    dispatch from dependency drift. No budget on CORETYPE-pinning archaeology (S2/S6). All
+    byte-exact proofs run SAME-CONTAINER (RL_LEGF=0 ⇒ its own 83a4b21d/30d96f1f byte-exact; 0
+    k=0 v-movers). **DATA artifacts stay ABSOLUTE:** store `968de0c7` · curve `56dd7a7b` are
+    byte-defined, no tolerance, must match exactly — they did. **DOCTRINE (standing, this seat):**
+    (a) FP-derived whole-board md5s are CONTAINER-TAGGED labels; the safety property was always
+    same-container equivalence under kill-switches, which is unaffected; (b) every future
+    build/audit return carries the numeric-stack annex; (c) the AUDIT SHELL amends at seeding:
+    shards C/D verify EQUIVALENCES + numeric gates (tolerance-natured) + data md5s absolute, and
+    the auditor records its own annex; cross-container absolute-hash matches are corroboration,
+    never a rung. Filed register-only; the pipeline-pinning question (lock the numeric stack?)
+    QUEUED as an owner option post-v2.11 — pinning buys absolute reproducibility at the cost of
+    a frozen dependency floor [OWNER, no urgency].
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
