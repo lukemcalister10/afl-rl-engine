@@ -1,0 +1,11 @@
+RIDER (iv) — FIRST COMMANDS PROOF  ·  seat 13  ·  2026-07-18
+== git-entry precision law (read-only variant) ==
+$ git ls-remote https://github.com/lukemcalister10/afl-rl-engine.git claude/five-migration-pvc-consumers-kxykfd
+a90052add8570c014626196cc2e3e13eece02548	refs/heads/claude/five-migration-pvc-consumers-kxykfd
+expected: a90052add8570c014626196cc2e3e13eece02548  (HALT on mismatch)
+
+== provenance stamps (md5 of the pinned git objects) ==
+store  968de0c7 : 968de0c7
+curve  file 56dd7a7b : 56dd7a7b
+per_entrant 40d7da7c : 40d7da7c
+curve payload 89c14729 : asserted in scripts/common_riv.py (md5 of the sorted curve dict)

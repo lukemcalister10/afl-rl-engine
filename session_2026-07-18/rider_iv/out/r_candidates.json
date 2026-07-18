@@ -1,0 +1,267 @@
+{
+ "rider": "(iv) the replacement-adjusted view \u2014 three R candidates + uncertainty on R",
+ "report_only": true,
+ "do_not_merge": true,
+ "verdict": false,
+ "stamps": {
+  "pin_sha": "a90052add8570c014626196cc2e3e13eece02548",
+  "curve_file_md5": "56dd7a7b",
+  "curve_payload_md5": "89c14729",
+  "per_entrant_md5": "40d7da7c",
+  "store_base_md5": "968de0c7"
+ },
+ "axes_note": "production bars and list-space R are orthogonal (R107.7); v2.11 bakes GROSS either way; making v-R the traded currency is the named post-v2.11 chapter, on the owner's word.",
+ "pick_equivalents": {
+  "IRE": 92,
+  "MSD": 90,
+  "PDA": 92,
+  "PDN": 92,
+  "PDS": 92,
+  "SSP": 92,
+  "UNR": 92
+ },
+ "candidates": {
+  "R_curve": {
+   "label": "(a) R_curve = v2 curve @ pick-equivalent",
+   "pooled": 470.8,
+   "by_mech": {
+    "MSD": 473,
+    "SSP": 470,
+    "IRE": 470,
+    "UNR": 470,
+    "PDA": 470,
+    "PDN": 470,
+    "PDS": 470
+   },
+   "circularity_test": {
+    "directive_expectation": "v2 deep tail partly anchored on pickless pk90 outcomes -> self-referential",
+    "finding": "REFUTED under this construction",
+    "mechanism_rows_in_curve_load_pool": 0,
+    "all_mechanisms_incurve_false": true,
+    "pk86_94_anchor_mix": {
+     "RD": 109,
+     "ND": 9
+    },
+    "detail": "every mechanism entrant has incurve=False (0/389 in load_pool); the pk86-94 region is fit on real-pick RD+ND only, so R_curve is NOT self-referential on pickless outcomes here"
+   }
+  },
+  "R_realized": {
+   "label": "(b) R_realized = era-matched realised value, evidence-weighted, busts full weight, NO cutoff",
+   "pooled": 207.5,
+   "pooled_sum_w": 305.5,
+   "pooled_n": 389,
+   "pooled_bootstrap": {
+    "median": 206.7,
+    "mean": 207.0,
+    "sd": 22.4,
+    "rel_sd_pct": 10.9,
+    "lo16": 184.4,
+    "hi84": 229.2,
+    "lo025": 165.3,
+    "hi975": 253.5,
+    "B": 5000
+   },
+   "by_mech": {
+    "MSD": {
+     "R": 273.0,
+     "sum_w": 62.5,
+     "n": 106,
+     "played": 64,
+     "pick_equiv": 90,
+     "engine_cohort_n": 44,
+     "engine_played_n": 17,
+     "bootstrap": {
+      "median": 267.8,
+      "mean": 273.5,
+      "sd": 66.8,
+      "rel_sd_pct": 24.9,
+      "lo16": 208.0,
+      "hi84": 338.5,
+      "lo025": 159.6,
+      "hi975": 423.2,
+      "B": 5000
+     }
+    },
+    "SSP": {
+     "R": 339.6,
+     "sum_w": 38.0,
+     "n": 52,
+     "played": 36,
+     "pick_equiv": 92,
+     "engine_cohort_n": 31,
+     "engine_played_n": 16,
+     "bootstrap": {
+      "median": 332.1,
+      "mean": 340.0,
+      "sd": 90.0,
+      "rel_sd_pct": 27.1,
+      "lo16": 251.2,
+      "hi84": 427.2,
+      "lo025": 187.9,
+      "hi975": 536.3,
+      "B": 5000
+     }
+    },
+    "IRE": {
+     "R": 160.6,
+     "sum_w": 51.3,
+     "n": 57,
+     "played": 8,
+     "pick_equiv": 92,
+     "engine_cohort_n": 48,
+     "engine_played_n": 13,
+     "bootstrap": {
+      "median": 157.3,
+      "mean": 160.0,
+      "sd": 38.0,
+      "rel_sd_pct": 24.2,
+      "lo16": 122.5,
+      "hi84": 196.8,
+      "lo025": 91.9,
+      "hi975": 241.6,
+      "B": 5000
+     }
+    },
+    "UNR": {
+     "R": 131.5,
+     "sum_w": 52.5,
+     "n": 59,
+     "played": 7,
+     "pick_equiv": 92,
+     "engine_cohort_n": 46,
+     "engine_played_n": 13,
+     "bootstrap": {
+      "median": 131.4,
+      "mean": 132.3,
+      "sd": 29.9,
+      "rel_sd_pct": 22.7,
+      "lo16": 102.4,
+      "hi84": 161.7,
+      "lo025": 78.2,
+      "hi975": 195.4,
+      "B": 5000
+     }
+    },
+    "PDA": {
+     "R": 266.0,
+     "sum_w": 44.8,
+     "n": 51,
+     "played": 12,
+     "pick_equiv": 92,
+     "engine_cohort_n": 38,
+     "engine_played_n": 10,
+     "bootstrap": {
+      "median": 259.5,
+      "mean": 264.5,
+      "sd": 63.0,
+      "rel_sd_pct": 24.3,
+      "lo16": 202.4,
+      "hi84": 324.3,
+      "lo025": 157.4,
+      "hi975": 402.9,
+      "B": 5000
+     }
+    },
+    "PDN": {
+     "R": 125.7,
+     "sum_w": 35.3,
+     "n": 43,
+     "played": 5,
+     "pick_equiv": 92,
+     "engine_cohort_n": 24,
+     "engine_played_n": 4,
+     "bootstrap": {
+      "median": 123.7,
+      "mean": 125.9,
+      "sd": 29.3,
+      "rel_sd_pct": 23.7,
+      "lo16": 97.1,
+      "hi84": 154.7,
+      "lo025": 73.8,
+      "hi975": 187.6,
+      "B": 5000
+     }
+    },
+    "PDS": {
+     "R": 90.5,
+     "sum_w": 21.0,
+     "n": 21,
+     "played": 1,
+     "pick_equiv": 92,
+     "engine_cohort_n": 21,
+     "engine_played_n": 4,
+     "bootstrap": {
+      "median": 89.9,
+      "mean": 91.1,
+      "sd": 30.2,
+      "rel_sd_pct": 33.6,
+      "lo16": 60.4,
+      "hi84": 121.4,
+      "lo025": 38.8,
+      "hi975": 154.1,
+      "B": 5000
+     }
+    }
+   },
+   "era_matching": {
+    "nd_at_entry": {
+     "pick_lo": 88,
+     "pick_hi": 94,
+     "n": 7,
+     "R_realized_ND": 247.5,
+     "curve_mean": 474.0
+    },
+    "nd_at_entry_sameera": {
+     "pick_lo": 88,
+     "pick_hi": 94,
+     "n": 7,
+     "R_realized_ND": 247.5,
+     "curve_mean": 474.0
+    },
+    "nd_deep": {
+     "pick_lo": 80,
+     "pick_hi": 99,
+     "n": 19,
+     "R_realized_ND": 397.7,
+     "curve_mean": 482.3
+    },
+    "span": "2003-2026"
+   },
+   "method": "realised=mean(vpath); never-produced->0; w=1.0 if terminal else min(1,n_obs/6)"
+  },
+  "R_owner": {
+   "label": "(c) R_owner = 220 (labelled reference constant, item 332)",
+   "value": 220,
+   "fed_to_computation": false
+  }
+ },
+ "grades": {
+  "R_curve": {
+   "grade_kind": "rider-(iii) curve uncertainty at the entry pick",
+   "grade_pct_at_pk90": 39.79,
+   "grade_pct_at_pk92": 39.65,
+   "top_reference_pct": 17.35,
+   "deep_vs_top_ratio": 2.16,
+   "note": "the free-pool entry sits in the curve's low-confidence deep tail (~2.3x the top grade)"
+  },
+  "R_realized": {
+   "grade_kind": "cohort-bootstrap rel-SD (seed 20260718)",
+   "pooled_rel_sd_pct": 10.9,
+   "per_mech_rel_sd_pct": {
+    "MSD": 24.9,
+    "SSP": 27.1,
+    "IRE": 24.2,
+    "UNR": 22.7,
+    "PDA": 24.3,
+    "PDN": 23.7,
+    "PDS": 33.6
+   },
+   "note": "cohorts are THIN (MSD 44/17, SSP 31/16 played; the other five 5-12 played) \u2014 the pooled and per-mechanism bands are wide; read as a band, not a point"
+  },
+  "R_owner": {
+   "grade_kind": "asserted prior, not measured",
+   "note": "item-332 reference constant; no sampling uncertainty (a prior, not an estimate)"
+  }
+ },
+ "thin_sample_declaration": "MSD 44/17 played, SSP 31/16 (engine cohort); IRE/UNR/PDA/PDN/PDS 5-12 played. Said on every artifact."
+}
