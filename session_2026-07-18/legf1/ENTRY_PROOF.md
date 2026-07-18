@@ -43,3 +43,22 @@ The Leg-F safety invariants are **relative** and fully provable on-container:
 These are proven against the container baselines above. The absolute-hash gap is an environment/BLAS
 reproducibility finding for supervisor reconciliation at the canonical runner — it does not touch code,
 store, curve, or the balanced-board invariant. **Flagged, not silently absorbed (SILENCE IS A RED).**
+
+## RESOLUTION (post supervisor item-347 discriminator) — THE FILED HASHES REPRODUCE BYTE-EXACT
+The gap was **multi-threaded OpenBLAS reduction-order nondeterminism**, not a fixed container offset.
+`OPENBLAS_NUM_THREADS` was unset (4 CPUs); with >1 thread the cross-thread reduction order over the
+player-feature reductions is not fixed → run-to-run last-ULP jitter in the 6-dp float display fields → a
+*wandering* whole-board md5 (one un-pinned run even landed on the filed `d85901af`). Pinning
+`OPENBLAS_NUM_THREADS=OMP_NUM_THREADS=MKL_NUM_THREADS=NUMEXPR_NUM_THREADS=1` (determinism, **not** a
+CORETYPE/microarch pin — item 347 honoured) makes the board **bit-stable AND reproduces every filed hash
+byte-exact**:
+
+| env config (single-thread dev-shell) | this container | filed | verdict |
+|---|---|---|---|
+| RL_LEGE=0 RL_PVC2=1 RL_LEGF=0 | `06d8af60` | 06d8af60 | **PASS byte-exact** |
+| RL_LEGE=1 RL_PVC2=1 RL_LEGF=0 | `d85901af` | d85901af | **PASS byte-exact** |
+| RL_LEGE=0 RL_PVC2=0 RL_LEGF=0 | `9829d01a` | 9829d01a | **PASS byte-exact** |
+
+The build harness (`scripts/build_board.sh`) now pins the thread env. All Leg-F proofs are therefore stated
+against the **filed absolutes**, not container-relative. The multi-thread nondeterminism itself is carried
+as the headline reconciliation finding (any bit-exact board gate in this repo must pin threads).

@@ -12,6 +12,12 @@ cd "$WS"
 export RL_REPO="$REPO"
 export PYTHONHASHSEED=0
 export PYTHONPATH="$WS:/home/claude/rl_vendor"
+# DETERMINISM: pin BLAS/OpenMP to a single thread. The board reduces over player features through OpenBLAS
+# (DYNAMIC_ARCH); with >1 thread the cross-thread reduction order is not fixed => run-to-run last-ULP jitter
+# in 6-dp float display fields => a wandering whole-board md5. Single-thread makes the board bit-stable AND
+# reproduces the filed hashes byte-exact (06d8af60 / d85901af / 9829d01a). This is determinism, not a
+# CORETYPE/microarch pin (supervisor item 347: no CORETYPE archaeology).
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
 rm -f rl_app_data.json
 python3 rl_export.py > "/home/user/afl-rl-engine/session_2026-07-18/legf1/out/exportlog_${LABEL}.txt" 2>&1
 MD5=$(md5sum rl_app_data.json | cut -c1-8)

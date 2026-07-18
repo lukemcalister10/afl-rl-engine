@@ -1,0 +1,103 @@
+=== GUARD 5: BOOT-STORE (this dir's store == the checked-out, pinned store) ===
+  FAIL GUARD 5: boot-store FAILED — - checkout rl_model cc626d7d != pinned rl_model a5fd3d7d (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model) - one_source_selftest about to read ENGINE _merged_recover.py at /home/claude/rl_ws_legf/rl_after/_merged_recover.py md5 6ad07bb2  !=  expected 40f43772 (pinned; repo checkout ) STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=== GUARD 3: SINGLE SOURCE (lookalike tripwire + engine opens) ===
+  PASS exactly one rl_model_data*.json, no lookalikes, engine opens only classified inputs
+=== GUARD 1 + GUARD 2: derived files read-only + source-md5-stamped + content-intact ===
+  PASS GUARD 1: rl_app_data.json is read-only (mode 444)
+  PASS GUARD 1: rl_app_data.json carries a .srcmd5 stamp
+  PASS GUARD 1: rl_app_data.json content md5 == stamped own_md5 (not hand-edited)
+  PASS GUARD 2: rl_app_data.json stamp == current source md5 968de0c7
+  FAIL s4_matrix.json present (build it first)
+       source md5 = 968de0c7a0183ca3914165536f39607a
+=== (1) ENGINE LOADS from the single store; active == 804 ===
+  PASS engine active players == 804 (got 804)
+  PASS active keys unique
+=== (2) EXPORT PARITY (F1): board v == independently recomputed engine gated ev(), key-for-key ===
+  PASS board active set == engine active set, key-for-key
+  FAIL every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=22 [('nick-madden', 1490, 1573), ('will-green', 649, 685), ('toby-conway', 563, 591), ('harry-barnett', 626, 658), ('lachlan-smith', 697, 742), ('alex-dodson', 449, 515), ('jacob-molier', 458, 520), ('flynn-riley', 412, 653)]
+=== (3) BOOK PARITY (F2): book cur == board v for shared players ===
+  FAIL book s4_matrix.json present (run s4_matrix_M1v7.py first)
+=== (4) DATA GROUND TRUTH: Kako + Bontempelli regenerated from source ===
+  PASS exactly one isaac-kako in the store
+  PASS Kako 2025 == 23 games @ 55.2 (owner ground truth); got (23, 55.2)
+  PASS Kako 2026 == 6 games @ 55.0; got (6, 55.0)
+  PASS exactly one marcus-bontempelli in the store
+  PASS Bontempelli has 13 seasons in source (got 13)
+  PASS regenerated 13-season track == source, season-for-season
+       Bontempelli seasons 2014..2026  first=(2014, 78.6, 16) last=(2026, 119.0, 14)
+=== (5) POSITION MODEL: three single-valued columns; DPP blend GONE ===
+  PASS store carries drafted_position + present_position + future_position
+  PASS raw_multipos (the DPP blend) is GONE from the store
+  PASS present/future positions are single-valued (no list legs); offenders=[]
+  PASS flex: every future_position in vocab; offenders=[]
+  PASS flex: at most ONE alternate per row (single-valued, never a list); offenders=[]
+  PASS flex: blend params register-consistent (alt in vocab, 0<p_dual<=100, alt!=primary); offenders=[]
+=== (6) LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (item 132; RL_ISOFADE) ===
+  PASS LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ok)
+  PASS LEG A fade: saturated player scott-pendlebury (E_q=19.3) iso_eff=1.0000 ~= 1.0 (|d|<0.02)
+  PASS LEG A monotone: ISO[pos] multiplier non-increasing in pick, every position (violations=[])
+=== (7) LEG B — L-RECENCY invariant (R105.5) + ρ FORBIDDEN-LIST (R105.4); halt-not-warn ===
+  PASS L-RECENCY: decay d in (0,1] (d=0.2500) — a non-inflating recency kernel (R105.6 owner-set 0.25)
+  PASS L-RECENCY: store spans >=2 distinct years-back (range 0..21) to test monotonicity
+  PASS L-RECENCY: declared kernel d^yearsback non-increasing over the store range yearsback=0..21
+  PASS L-RECENCY: engine rho_out evaluates the 2-season synthetic across the store range
+  PASS L-RECENCY: engine per-game weight POSITIVE for every played years-back (no season wiped)
+  PASS L-RECENCY: engine rho_out per-game weight NON-INCREASING in years-back (recovered kernel; R105.5)
+  PASS L-RECENCY: recovered engine weight == d^yearsback exactly (games-independent per-game weight, no inversion)
+  PASS R105.4: rho_out present in the engine source (the wired ρ law)
+  PASS R105.4: rho_out compares games only to 0 (games>0 filter) — NO games floor (offenders=[])
+  PASS R105.4: rho_out executable code carries no exclusion/floor/phase/classify/qualify token (offenders=[])
+=== COLLISION SENTRY: named-pair identity assertions (halt-not-warn; DECISIONS §29) ===
+  PASS collision sentry carries >=1 named pair (got 1)
+  PASS collision sentry: max-king-stk exists EXACTLY ONCE in the store (found 1)
+  PASS collision sentry: max-king-stk.key == 'max-king-stk' (pinned) — got 'max-king-stk'
+  PASS collision sentry: max-king-stk.player == 'Max King' (pinned) — got 'Max King'
+  PASS collision sentry: max-king-stk._by == 2000 (pinned) — got 2000
+  PASS collision sentry: max-king-stk._bd == '2000-07-07' (pinned) — got '2000-07-07'
+  PASS collision sentry: max-king-stk.pick == 4 (pinned) — got 4
+  PASS collision sentry: max-king-stk.year == 2018 (pinned) — got 2018
+  PASS collision sentry: max-king-stk._draft_club == 'St Kilda' (pinned) — got 'St Kilda'
+  PASS collision sentry: max-king-stk.drafted_position == 'KFWD' (pinned) — got 'KFWD'
+  PASS collision sentry: max-king-syd exists EXACTLY ONCE in the store (found 1)
+  PASS collision sentry: max-king-syd.key == 'max-king-syd' (pinned) — got 'max-king-syd'
+  PASS collision sentry: max-king-syd.player == 'Maxwell King' (pinned) — got 'Maxwell King'
+  PASS collision sentry: max-king-syd._by == 2007 (pinned) — got 2007
+  PASS collision sentry: max-king-syd._bd == '2007-01-09' (pinned) — got '2007-01-09'
+  PASS collision sentry: max-king-syd.pick == 49 (pinned) — got 49
+  PASS collision sentry: max-king-syd.year == 2025 (pinned) — got 2025
+  PASS collision sentry: max-king-syd._draft_club == 'Sydney' (pinned) — got 'Sydney'
+  PASS collision sentry: max-king-syd.drafted_position == 'GFWD' (pinned) — got 'GFWD'
+  PASS collision sentry: max-king-stk.player ('Max King') != max-king-syd.player ('Maxwell King') — must stay distinct (no cross-copy)
+  PASS collision sentry: max-king-stk._by (2000) != max-king-syd._by (2007) — must stay distinct (no cross-copy)
+  PASS collision sentry: max-king-stk._bd ('2000-07-07') != max-king-syd._bd ('2007-01-09') — must stay distinct (no cross-copy)
+  PASS collision sentry: max-king-stk.pick (4) != max-king-syd.pick (49) — must stay distinct (no cross-copy)
+  PASS collision sentry: max-king-stk.year (2018) != max-king-syd.year (2025) — must stay distinct (no cross-copy)
+  PASS collision sentry: max-king-stk._draft_club ('St Kilda') != max-king-syd._draft_club ('Sydney') — must stay distinct (no cross-copy)
+=== (8) item-284 — DPP DATA-ERROR classes: fixture proofs + store flag-and-name (report-only) ===
+  PASS item-284 fixture: cross-class K-DEF,G-FWD (present KDEF, collapsed ['GEN_FWD', 'KEY_DEF']) -> single-position (y0dpp_bar None)
+  PASS item-284 fixture: cross-class K-FWD,G-DEF (present KFWD, collapsed ['GEN_DEF', 'KEY_FWD']) -> single-position (y0dpp_bar None)
+  PASS item-284 fixture: cross-class RUCK,G-FWD (present RUC, collapsed ['GEN_FWD', 'RUC']) -> single-position (y0dpp_bar None)
+  PASS item-284 fixture: cross-class RUCK,G-DEF (present RUC, collapsed ['GEN_DEF', 'RUC']) -> single-position (y0dpp_bar None)
+  PASS item-284 fixture: present-not-in-set G-DEF,G-FWD present MID -> single-position (y0dpp_bar None)
+  PASS item-284 fixture: VALID MID,G-FWD present MID resolves a bar (GEN_FWD) — verdict produced
+  item-284 STORE SCAN verdict: 0 DPP data-error row(s) (report-only, build CONTINUES — never a halt)
+  item-284 runtime registry (y0dpp_bar flagged across the full board build, section 1): 0 row(s)
+=== (9) LEG D ACT-2 — PVC RE-DERIVATION gates + ENTRY CLOSURE (RL_PVC2; promoted job-5 harness) ===
+  PASS R104.9 strict descent on _PVC0 (p=1..79, no plateaus): 0 violation(s) []
+  PASS numeraire: _PVC0(1)==3000 (got 3000)
+  PASS ENTRY CLOSURE: draftval(zero-evidence Jagga Smith pk3)=2675.0 == _PVC0[3]=2675.0
+  PASS ENTRY CLOSURE: the entrant's evidence-free V0 basis IS the loaded curve (no separate pick-prior path)
+  PASS _PVC0 == pvc_curve_v2.json (the loaded ev-channel basis is the derived curve)
+  PASS STAMP not stale: pvc_curve_v2 store_md5=968de0c7 == boot store 968de0c7
+  PASS curve artifact self-declares pin(1)=3000 + strict descent
+  FAIL R104.5 posture discounts EXACT {0.10/0.15/0.05} in the board (got None)
+  PASS G-Y0 pooled |comp-weighted mean V0 - curve| = 1.100% <= 2% HARD
+       (G-Y0 owner-viewing per-pick residual curve: session_2026-07-17/legd_derivation/out/gy0_residual_curve_v2.json — REPORT-ONLY)
+
+SELF-TEST FAILED: 5 check(s)
+  - GUARD 5: boot-store FAILED — - checkout rl_model cc626d7d != pinned rl_model a5fd3d7d (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model) - one_source_selftest about to read ENGINE _merged_recover.py at /home/claude/rl_ws_legf/rl_after/_merged_recover.py md5 6ad07bb2  !=  expected 40f43772 (pinned; repo checkout ) STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+  - s4_matrix.json present (build it first)
+  - every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=22 [('nick-madden', 1490, 1573), ('will-green', 649, 685), ('toby-conway', 563, 591), ('harry-barnett', 626, 658), ('lachlan-smith', 697, 742), ('alex-dodson', 449, 515), ('jacob-molier', 458, 520), ('flynn-riley', 412, 653)]
+  - book s4_matrix.json present (run s4_matrix_M1v7.py first)
+  - R104.5 posture discounts EXACT {0.10/0.15/0.05} in the board (got None)
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)

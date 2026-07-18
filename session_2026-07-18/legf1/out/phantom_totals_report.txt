@@ -1,0 +1,28 @@
+LEG F1 — PHANTOM INTAKE TOTALS (report-only; MEMO_LEGF §2.v) · R_realized=207 · X=207 · seal 1d180424
+board: RL_LEGF=1 e613ca58 (k=0 phantom=NONE; RL_LEGF=0 => d85901af byte-exact)
+
+                     +1 WITHOUT      +1 WITH         +1 Δ |   +2 WITHOUT      +2 WITH         +2 Δ
+Adelaide                  31740        37392        +5652 |        22874        29496        +6622
+Brisbane                  29920        36041        +6121 |        22960        29804        +6844
+Carlton                   20678        26891        +6213 |        14138        21099        +6961
+Collingwood               21171        27126        +5955 |        15877        22368        +6491
+Essendon                  32554        37283        +4729 |        21344        26786        +5442
+Fremantle                 41383        46149        +4766 |        32396        37643        +5247
+GWS                       36253        39969        +3716 |        27360        31862        +4502
+Geelong                   29570        34365        +4795 |        22815        28323        +5508
+Gold Coast                33436        37475        +4039 |        24819        29330        +4511
+Hawthorn                  26333        30201        +3868 |        19285        23791        +4506
+Melbourne                 23343        28190        +4847 |        17411        22801        +5390
+North Melbourne           38412        42780        +4368 |        28652        33583        +4931
+Port Adelaide             27796        31664        +3868 |        19870        24326        +4456
+Richmond                  24958        28283        +3325 |        17185        21217        +4032
+St Kilda                  34373        37986        +3613 |        25955        29989        +4034
+Sydney                    28517        32047        +3530 |        21624        25720        +4096
+West Coast                27434        30856        +3422 |        16374        21078        +4704
+Western Bulldogs          29897        33550        +3653 |        22436        26721        +4285
+----------------------------------------------------------------------------------------------------
+LEAGUE                   537768       618248       +80480 |       393375       485937       +92562
+
++1: 366 exits refilled (Σresidual 32338) · draft Σ43266 · free Σ69552
++2: 436 exits refilled (Σresidual 34746) · draft Σ43266 · free Σ84042
+balanced (k=0): WITH Σ752427 == WITHOUT Σ752427  (phantom=NONE, the invariant)
