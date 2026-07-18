@@ -1,0 +1,63 @@
+{
+ "MECH_STATS": {
+  "IRE": {
+   "cutoff": 2021,
+   "n": 48,
+   "name": "Ireland",
+   "pick_equiv": 92,
+   "played_n": 13
+  },
+  "MSD": {
+   "cutoff": 2021,
+   "n": 44,
+   "name": "Mid-Season",
+   "pick_equiv": 90,
+   "played_n": 17
+  },
+  "PDA": {
+   "cutoff": 2021,
+   "n": 38,
+   "name": "Post-draft Academy",
+   "pick_equiv": 92,
+   "played_n": 10
+  },
+  "PDN": {
+   "cutoff": 2021,
+   "n": 24,
+   "name": "Post-draft Next-Gen",
+   "pick_equiv": 92,
+   "played_n": 4
+  },
+  "PDS": {
+   "cutoff": 2021,
+   "n": 21,
+   "name": "Post-draft Scholarship",
+   "pick_equiv": 92,
+   "played_n": 4
+  },
+  "SSP": {
+   "cutoff": 2022,
+   "n": 31,
+   "name": "SSP / pre-season supp.",
+   "pick_equiv": 92,
+   "played_n": 16
+  },
+  "UNR": {
+   "cutoff": 2021,
+   "n": 46,
+   "name": "Unregistered",
+   "pick_equiv": 92,
+   "played_n": 13
+  }
+ },
+ "PICKEQ": {
+  "IRE": 92,
+  "MSD": 90,
+  "PDA": 92,
+  "PDN": 92,
+  "PDS": 92,
+  "SSP": 92,
+  "UNR": 92
+ },
+ "RL_PVC2": "1"
+}
