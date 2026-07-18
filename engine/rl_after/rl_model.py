@@ -824,7 +824,7 @@ def value(p,lens='bal'):
         _sc={1:1.0,2:0.8,3:0.5,4:0.2}.get(2026-p['year'],0.0); relative=relative+_sc*(1.0-relative)
     decay=max(0.0,1-(seasons(p)-1)/4.5)
     decay_eff = decay if Pz is None else min(decay, Pz)   # v3.4: establishment-P only ever PULLS DOWN (min) on the pedigree track; established players P=1 -> min=decay, untouched
-    pedestal = PVC[min(ep,70)]*relative*surv*decay_eff
+    pedestal = _PVC2M[min(ep,70)]*relative*surv*decay_eff   # JOB 3 (RL_PVC2): pedigree pedestal reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
     pf = prod_floor(p,'bal')
     prod_full = max(prod_v, pf)                           # full production estimate: projection OR demonstrated-level floor, whichever is higher
     if Pz is not None and PROD_GATE!='off':                # v3.4 PRODUCTION-GATING. fully_gated = P*production + (1-P)*floor. floor = pedestal ('full'/'blend') OR a games-weighted demonstrated floor ('fulldemo'/'blenddemo') so survivors who banked games aren't stripped to the bare pick. 'full*'=straight; 'blend*'=Luke's 2/3 toward fully-gated.
