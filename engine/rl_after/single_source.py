@@ -33,7 +33,8 @@ TIER2_DERIVED = ['peak_model_v4.pkl', 'pvc_snapshot.json']  # train-time caches
 # the ONLY files rl_model.py is permitted to open (source + classified authored inputs + frozen caches)
 ALLOWED_OPENS = {SOURCE_NAME, 'params.json', 'rl_passmark.json',
                  'peak_model_v4.pkl', 'bust_prior_table.json', 'pvc_snapshot.json',
-                 'national_draft_last_pick.json'}   # PICK-CORRECTION (b) 2026-07-11: authoritative chaining-offset sidecar (classified static input, like params.json)
+                 'national_draft_last_pick.json',   # PICK-CORRECTION (b) 2026-07-11: authoritative chaining-offset sidecar (classified static input, like params.json)
+                 'pvc_curve_v2.json'}   # LEG D FIVE-MIGRATION 2026-07-18 (R107.5): the OFFLINE-derived, stamped v2 pick curve the MA.PVC consumers load under RL_PVC2 (classified read-only static input, like pvc_snapshot.json; rl_export.py already reads it). RL_PVC2=0 leaves the v3.4 import-fit path byte-exact.
 
 def _hp(*p): return os.path.join(HERE, *p)
 def _md5(path):

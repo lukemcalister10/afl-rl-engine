@@ -735,6 +735,20 @@ def _deplateau(P, start_before=46):
     for k in range(2,N+1): P[k]=min(P[k],P[k-1])                    # safety monotone
     return P
 PVC=_deplateau(PVC)
+# ===== LEG D FIVE-MIGRATION (RL_PVC2, ruling R107.5): carry the OFFLINE-DERIVED, stamped pvc_curve_v2.json
+#       to the rl_model.py MA.PVC consumers below. _PVC2M is the v3.4 ruler object PVC by default, so
+#       RL_PVC2=0 => the consumers read byte-identical PVC => board 9829d01a byte-exact (the kill-switch
+#       proof, re-proven per commit); under RL_PVC2 (default ON) it is the loaded v2 curve. OFFLINE +
+#       LOADED, NO new import-time fit (the RL_PVCADOPT/L1b template; rl_export.py:61 already loads this
+#       artifact). The consumers are repointed PVC[...] -> _PVC2M[...] ONE AT A TIME (jobs 2-5); the v3.4
+#       import fit above still runs and is byte-exact when off. peak-model _V4PVC (:515) is NOT wired here
+#       (job 1 HOLD: train/serve skew, retrain = post-bake fallback).
+_PVC2M=PVC
+if os.environ.get('RL_PVC2','1')!='0':
+    _V2M={int(_k):int(_v) for _k,_v in json.load(open('pvc_curve_v2.json'))['curve'].items()}
+    assert _V2M[1]==3000, "RL_PVC2 numeraire: v2 curve(1)=%r != 3000"%_V2M[1]
+    assert all(_V2M[_k]>_V2M[_k+1] for _k in range(1,max(_V2M))), "RL_PVC2 R104.9: v2 strict descent violated"
+    _PVC2M=_V2M
 SEASON_PROG=0.58                              # ~round 14 of 24 (mid-Jun 2026). knob: 0=preseason ... 1=season done
 def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
 def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick
@@ -795,7 +809,7 @@ def brodie_sig(p):                      # Brodie role-reliability cut (ported on
     return (grp3(p)!='RUC' and seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and ln is not None and ln>=80)
 def value(p,lens='bal'):
     ep=effpk(p); b=bandof(ep); decu=los_decay(p)
-    unpl_eq=PVC[min(ep,70)]*decu*debut_factor(p)
+    unpl_eq=_PVC2M[min(ep,70)]*decu*debut_factor(p)   # JOB 2 (RL_PVC2): pickless unpl_eq reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
     if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq*lens_tilt(p,lens))   # pure pedigree for genuine pre-debut prospects (window not open) OR explicit draft-value (`_pedonly`, P inert by design); in-window 0-game players fall through to the P-gated branch so 0->1 games is continuous
     g=gfut(p)   # settled future position drives pedigree/form-delta/out-tilt (matches peak_est); prod_floor stays present
     if level_now(p) is None:                                          # 0-game but IN opportunity window (debut season+): P applies continuously (prospect-path RETIRED 2026-06-18); genuine pre-debut prospects hit the _unplayed branch above and keep pure pedigree
