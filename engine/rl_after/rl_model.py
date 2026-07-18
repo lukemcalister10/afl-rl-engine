@@ -749,6 +749,15 @@ if os.environ.get('RL_PVC2','1')!='0':
     assert _V2M[1]==3000, "RL_PVC2 numeraire: v2 curve(1)=%r != 3000"%_V2M[1]
     assert all(_V2M[_k]>_V2M[_k+1] for _k in range(1,max(_V2M))), "RL_PVC2 R104.9: v2 strict descent violated"
     _PVC2M=_V2M
+# JOB 5 (RL_PVC2): GLOBAL PRODUCER SWAP — the module-level PVC now IS the migrated curve, so the RESIDUAL
+# v3.4 readers below (the print-only value->pick-label `pe()` :1108-1110 and the `PVC:` diagnostic :1117)
+# read v2 too. Leaf consumers (unpl_eq/pedestal) already read _PVC2M so there is no double-move; the
+# build_pvc_v34 import fit + CURVE_H/BOARD_FACTOR/SCALE (computed ABOVE at :714-737, before _PVC2M) are
+# untouched — SCALE stays frozen, so no player is rescaled. RL_PVC2=0 => _PVC2M IS PVC (same object) => this
+# is `PVC=PVC`, a no-op => board 9829d01a byte-exact. Placed here (after _PVC2M) so the swap never reaches
+# the producer transforms. rl_export rebuilds its OWN shipped curve from pvc_curve artifacts keyed by the
+# _ADOPTED intersection, so g['PVC']'s key-set change (if any) does not reach the board (verified: board-null).
+PVC=_PVC2M
 SEASON_PROG=0.58                              # ~round 14 of 24 (mid-Jun 2026). knob: 0=preseason ... 1=season done
 def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
 def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick
