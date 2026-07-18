@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v320 2026-07-17 · PEN: ITEM 347: reproducibility ruling — FP board hashes container-relative, equivalence is the invariant; F1 proceeds w/ discriminator (zero rank moves or HALT) + numeric-stack annex; data md5s stay absolute; audit shell amends at seeding; stack-pinning queued [OWNER] · prior: ITEM 346
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v321 2026-07-17 · PEN: ITEM 348: F2 GREEN — retro boards leak-free, bridge sane (~2.5%); two backward-eval engine findings triaged: shipped board unaffected, THE CURVE CLEAN (recorded vpath targets + ASOF truncation, evidence cited); Y-awareness fix queued; audit corroborates; F2's container reproduces canonical hashes · prior: ITEM 347
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5312,6 +5312,30 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     never a rung. Filed register-only; the pipeline-pinning question (lock the numeric stack?)
     QUEUED as an owner option post-v2.11 — pinning buys absolute reproducibility at the cost of
     a frozen dependency floor [OWNER, no urgency].
+
+348. **F2 RETURNED + PRESCREENED GREEN — TWO REAL ENGINE FINDINGS, BOTH TRIAGED; THE CURVE IS
+    CLEAN (2026-07-18).** PR #114 (draft, REPORT-ONLY), branch `…legf-retrospective-…-cyqx00`
+    head `cf94589` (parent MAIN `240c7378` per the read-only law), in-band. VERIFIED: fence HELD
+    (session_2026-07-18/legf2/ only) · stamps ✓ · **its container reproduced `06d8af60`
+    BYTE-EXACT** — the canonical hashes DO reproduce on part of the fleet; heterogeneity
+    confirmed from the other side; item-347 doctrine holding. NO-GAP verdict: every on-board
+    member priced (−1: 772/772 · −2: 777/777), membership as recorded, evidence truncated ≤Y,
+    nothing guessed. Bridge: −2 771k → −1 771k → now 752k (~2.5%; value converts, does not
+    vanish); movers sane (Thilthorpe/B.Smith/Ash ascending). **THE TWO FINDINGS (engine backward-
+    eval surface):** (a) `delisted()` not Y-aware ⇒ retired stars read ≈66 scrap at past years
+    (F2 recovers: McGovern 3078 · Daniher 2227 · May 1925 at −2); (b) `raw_ev` (W4 context)
+    reads year>Y rows ⇒ 451/1608 members drift at −1 (max |Δ|=676 ≈10%). The real §5.9-class
+    trap = FUTURE ROWS, not the cumulative games field. **TRIAGE (this seat, evidence cited):**
+    the SHIPPED board evaluates NOW — unaffected. THE CURVE IS CLEAN: `derive_pvc2.py` targets =
+    RECORDED `vpath` + year-0 `v0` (docstring lines 6–17), and `emit_matrix.py` walks forward
+    through `_ev_qual` year≤Y truncation (its line-14 note; engine line 183) — the leak surface
+    was never a derivation input. Seeded to AUDIT SHARD E BY ADDRESS anyway (corroboration).
+    F2's artifacts are leak-free by construction (truncated re-render) — the FEATURE ships
+    without an engine fix; **the backward-eval Y-awareness fix QUEUES** (post-v2.11 hygiene or
+    the next natural engine build; it must NOT ride F1 — S2). **UNASKED DECISION RATIFIED:** the
+    worktree re-point to the cc58570 engine was the designed read (proven by the 06d8af60
+    reproduction); no redirect. F2 CLOSED pending the ladder; the retro boards + bridge join the
+    owner's viewing.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
