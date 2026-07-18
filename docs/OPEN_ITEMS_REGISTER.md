@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v312 2026-07-17 · PEN: ITEM 339: v2 five-migration build stuck ~8h, NOTHING pushed (verified, zero repo damage); rescue WIP + SPLIT re-fire; my over-large fence owned · prior: ITEM 338
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v313 2026-07-17 · PEN: ITEM 340: rescue verified (parented e4177c2; job-1 peak-model HOLD banked w/ measurement; 469-row re-rank v-parity WIP finding; single_source fence deviation caught); BUILD B issued bb350be (base e7c59d07 strict, checkpoint law) · prior: ITEM 339
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5137,6 +5137,29 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     once state seen: Build A = job-1 measure-first alone; Build B = the four consumers, each with a
     HALT-AND-CHECKPOINT-ON-ANY-BOARD-CHANGE rule + GIT ENTRY block (item 334). Candidate integrity
     intact throughout.
+
+340. **THE RESCUE VERIFIED — JOB 1 BANKED, BUILD B ISSUED (2026-07-18).** Rescued branch
+    `claude/five-migration-pvc-consumers-kxykfd` head `e7c59d07` VERIFIED this seat: on origin ·
+    PARENTED ON `e4177c2` (the GIT ENTRY block worked) · 3 commits (ENTRY+PLAN `8159268` · job-1
+    HOLD `a2ee7aa` · WIP-HALTED `e7c59d0`) · store+curve untouched · SEASON_PROG context-only
+    (dial untouched, -U0 proven). **JOB 1 ACCEPTED (committed+proven): peak model HELD frozen** —
+    measured: v2 in the `_V4PVC` logPVC slot moves peak_est for 600/655 model-path players, mean
+    2.62% / max 16.06% (Joel Hamling −16.1%, Kieren Briggs −9.5 pts; big rucks down, e.g. Max
+    Gawn −8.6 pts — the v2 deep-tail LIFT lowers log-gap features for mid-pick talls); clear
+    train/serve skew ⇒ HOLD per R107.5/memo-C, retrain = post-bake fallback, RECORDED with the
+    full measurement artifact (`out/job1_peakmodel_measure.json`). **KEY WIP FINDING (unproven,
+    job 3):** migrating `unpl_eq` re-ranks rl_model's internal value() (469 rows; Will Darcy
+    #446→#325) with ZERO shipped per-row v change (v-parity; ev-channel already v2 via ACT-2
+    `_PVC0`) — RL_PVC2=1 board `01c3645d`, RL_PVC2=0 byte-hold `9829d01a` confirmed. **FENCE
+    DEVIATION (322 pattern, benign, caught):** `single_source.py` ALLOWED_OPENS +=
+    `pvc_curve_v2.json` — correct + mechanically required, but absent from the build's own
+    derived fence; cure ordered in Build B's plan. **BUILD B ISSUED** (main `bb350be`,
+    docs-only): base `e7c59d07` STRICT, continue same branch · FIRST ACTS = WIP audit
+    (keep/redo per hunk) + fence re-derivation · jobs 3-finalize/4/5/2-closeout one commit each ·
+    the R-inputs rider (rider (iv) waits on it) · exit incl. final RL_PVC2=0 `9829d01a` proof ·
+    **CHECKPOINT LAW: any shipped per-row v change at RL_PVC2=1 ⇒ HALT and return the rows to the
+    supervisor.** Band 2–3 h (right-sized per the item-339 lesson). OWNER ASK: fire Build B into
+    a fresh chat.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
