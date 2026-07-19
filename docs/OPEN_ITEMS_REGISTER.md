@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v337 2026-07-17 · PEN: ITEM 364: owner rules the v−R basis — R = single FLAT scalar (not positional; a free hit is position-agnostic), DERIVED = rider-iv R_realized 207 [184-229] (220 was illustrative); flat ⇒ rank preserved, re-values in place; one exported scalar + UI subtraction, small Tier-3; closes item-363 fork · prior: ITEM 363
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v338 2026-07-17 · PEN: ITEM 365: F4 GREEN — both roster gates IN (-2.8%/+0.1%), symmetry 8.8v9.0, gradient monotone; s-bisection lawfully targets sealed r_pop (in-code proof); §2.iii deleted w/ obituary; F5 FIRED 19eda19 (the last build); the turn-15 cure fired correctly on a missed slot · prior: ITEM 364
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5665,6 +5665,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     Selectable-R (207 default, show 220/471) may remain a minor UI nicety, owner's option, not
     required. Post-v2.11, kin to 326/327. The derived R (and any drift in it) is a natural line on
     the weekly/seasonal report.
+
+365. **F4 PRESCREENED GREEN — THE CALIBRATION IS DONE; F5 FIRED (2026-07-18).** F4: PR #118,
+    branch `…legf4-…-o6x36j` head `a9570cb5` (return omitted its SHA — noted per the return law,
+    recovered by ls-remote). VERIFIED this seat: fence = `_merged_recover.py` + `rl_export.py` +
+    session ONLY · store `968de0c7` ✓ · `rl_model` `cc626d7d` unchanged ✓ · no pins/docs/ui ·
+    **the s(age) bisection objective confirmed IN THE CODE: reproduces the SEALED r_pop
+    (`c62b5ee8`), "NOT iterated against a backtest"** — the lawful side of the measurement/fudge
+    line · §2.iii DELETED with the obituary section in EXIT_PROOF (symbols named:
+    `_LF_PRET`/`_pret`/`_hair`/`_residual`); the doc-level obituary rides my seam filing.
+    [Build-run, audit recomputes:] **BOTH ROSTER-MATCHED GATES IN: −2→−1 −2.8% · −1→now +0.1%**
+    (pre-F4: −25.8%/−28.1%) · forward −8.8% vs backward −9.0% (the item-354 ~11pt residual closed
+    to ~0.2pt) · gradient monotone-correct (developing −3.8% ≥ mid −9.5% ≥ veteran −18.3%) ·
+    k=0/backward dormancy 0-diff · balanced == board_now 804/804 Σ752,427 · RL_LEGF=0 chain 3/3 ·
+    THREADS=1 · warm-state determinism proven (two warm builds byte-identical; the cold-start
+    transient read per F3's §0 lesson). **F5 FIRED** (main `19eda19`, docs-only; draft archived;
+    zero-slot assert PASSED at HEAD — and note: the first conversion attempt left one slot, the
+    turn-15 &&-chain cure STOPPED EVERYTHING loudly, nothing half-shipped, fixed and re-run):
+    base `a9570cb5` STRICT · the entrant layer to the v1.3 full structure · the league
+    conservation gate ±5% both transitions · the chapter's LAST build. OWNER ASK: fire F5.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
