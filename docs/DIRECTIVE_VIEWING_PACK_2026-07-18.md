@@ -12,10 +12,13 @@ build the balanced board and assert it == `06d8af60` byte-exact; if it does NOT 
 instance, item 374), HALT and report — render only on a reproducing container. Engine imported
 READ-ONLY; never edit engine/store/curve/docs.
 
-## EFFORT: Medium-High (assembly, not computation — every number exists in committed artifacts
-or re-renders deterministically; the care is completeness + honest labelling). MODE: auto, PLAN
-first. TIME: ~2–3 h. Reuse S5: the board/book emitters, board_diff, the rider outputs @ their
-pinned heads, the F2 retro boards, the gate harnesses.
+## EFFORT: Medium (mostly COLLATION of committed artifacts, not computation — verified: only
+THREE items are fresh compute — the per-row Δ-vs-v2.10 join, the Rozee/Reid re-render at the
+audited head, and the reproduction-precondition board build; the rest — board, retro boards,
+bridge, rider tables, gate + audit ledger — are existing artifacts gathered and laid out, and
+the ui/app renderer already carries the Δ/track fields. MODE: auto, PLAN first. TIME: ~1–1.5 h
+(flag >2×/<½× per S3). Reuse S5: the board/book emitters, board_diff, the rider outputs @ their
+pinned heads, the F2 retro boards, the gate harnesses — DO NOT rebuild what is committed.
 
 ## THE PACK (one committed section each; every figure carries its provenance tag —
 ## owner-seen / re-runnable / report-only — and its source head)
