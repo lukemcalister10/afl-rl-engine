@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v353 2026-07-17 · PEN: ITEM 380: the weather DIAGNOSED — not random: a live IsotonicRegression.fit() at _merged_recover:1222 (the one fit q97m's freeze missed), PAVA near-tie knife-edge flips Sheezel −95 under DYNAMIC_ARCH 1-ULP; affects balanced board (1 row, display-scale). OWNER DECISION: (A) ship-as-is + reproduction gate vs (B) freeze _iso_dec pre-bake (recommended — kills the retry roulette, same pattern as q97m) · prior: ITEM 379
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v354 2026-07-17 · PEN: ITEM 381: owner rules FIX IT — F6 iso-freeze issued (80b6ffe): freeze _iso_dec the q97m way w/ MANDATORY clean-instance precondition (no freezing on a weather box) + empty-k=0-diff proof + forced-kernel determinism check; ~1h Tier-1-lite, k=0 bounded to ≤1 row; on pass the retry-roulette is gone; corrected owner: not the 400-tree peak model · prior: ITEM 380
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6024,6 +6024,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     defensible and faster and the shipped artifact is equally correct — but it leaves a known
     brittle row and a manual retry in every future render/bake. Owner's call; the viewing can
     render on a clean instance under EITHER (re-fire meanwhile is still valid for A).
+
+381. **OWNER RULES "FIX IT" (option B) — F6 iso-freeze directive ISSUED (2026-07-18).** Owner
+    asked the two right questions before confirming: (1) pricing tradeoff? — answered: the ONLY
+    risk is freezing on a weather instance (would bake the wrong Sheezel value in); mechanically
+    prevented by the clean-instance precondition; a second-order risk (pickle-path non-identity)
+    is caught by the empty-k=0-diff proof. (2) how short? — ~1 h, one localized function, one of
+    the smallest builds of the chapter. Owner clarified his mental model (thought it was the 400-
+    tree peak model) — corrected: peak model was already frozen 2026-07-14; this is the small
+    isotonic smoother `_iso_dec` the same freeze missed. ISSUED: **DIRECTIVE_LEGF6** (main
+    `80b6ffe`, docs-only): base `15a9abd` STRICT · **★ CLEAN-INSTANCE PRECONDITION FIRST** (assert
+    balanced == 06d8af60 before freezing; HALT on a weather box — the one real risk) · freeze
+    `_iso_dec` the q97m way (fit once → pickle `data/v0surf.pkl` → load; or order-fix the PAVA
+    input grid, builder's choice) · pin its md5 in expected_boot · **THE PROOF: k=0 row-diff vs
+    the pre-freeze clean board must be EMPTY (0 rows)** + a forced-kernel determinism check (the
+    board holds 06d8af60 under a simulated weather perturbation once loading the pickle). Fence:
+    _iso_dec + v0surf.pkl + the one pin add + session; everything else HARD-OUT; any k=0 change
+    beyond removing the weather flip ⇒ HALT. Tier-1-lite (k=0 bounded to ≤1 row by construction;
+    re-audit = the one-row diff). On PASS: F6 head becomes the new candidate/viewing/bake base
+    (the reproduction precondition then passes on ANY instance — the retry roulette is gone).
+    OWNER ASK: fire F6.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
