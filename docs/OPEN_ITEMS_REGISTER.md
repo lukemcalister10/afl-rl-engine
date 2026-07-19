@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v336 2026-07-17 · PEN: ITEM 363: replacement-adjusted board toggle (v−R mode) QUEUED — rider (iv) graduating to a live UI mode; R candidates already measured, toggles exist; owner fork = which R + flat-vs-per-slot + re-rank-or-not; post-v2.11 Tier-3, kin to the 326/327 currency chapter; ruling forms at the viewing · prior: ITEM 362
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v337 2026-07-17 · PEN: ITEM 364: owner rules the v−R basis — R = single FLAT scalar (not positional; a free hit is position-agnostic), DERIVED = rider-iv R_realized 207 [184-229] (220 was illustrative); flat ⇒ rank preserved, re-values in place; one exported scalar + UI subtraction, small Tier-3; closes item-363 fork · prior: ITEM 363
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5648,6 +5648,23 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     QUEUED post-v2.11, Tier-3 UI, alongside the incremental-currency chapter (326/327) to which it
     is kin — same axis, the "should v−R become the traded currency" question the owner reserved.
     Rider (iv)'s three-candidate view at the VIEWING is the natural place he forms the ruling.
+
+364. **OWNER RULES THE R BASIS FOR THE v−R TOGGLE (item-363 fork closed) (2026-07-18).** Owner:
+    "it's a flat number, doesn't have to be 220, and ideally derived if it's possible, but it's
+    not positional — it's just what a player is worth above a free hit, and a free hit is the same
+    regardless of position." RULED, folding the item-363 fork: (1) R is a SINGLE FLAT SCALAR
+    across the whole board — NOT per-position/per-slot (a free hit is position-agnostic;
+    definitionally what the free pool yields, full stop). (2) DERIVED, not hand-set: R =
+    rider-(iv)'s measured R_realized = 207 [16/84: 184–229] (item 343 — the era-matched realized
+    free-intake value; his 220 prior sits inside the interval). The 220 was illustrative; the
+    engine uses the MEASURED number, re-derived at bake-time data. (3) Therefore v−R is v minus a
+    constant ⇒ RANK IS PRESERVED (a flat subtraction cannot re-order) — the toggle re-VALUES rows
+    in place, never re-ranks; the deep tail compresses toward zero, the top barely moves
+    (pick1 3000→~2793, pick60 ~542→~335 at R=207). CONSEQUENCE for later: v−R with a flat derived
+    R needs only ONE exported scalar + the UI subtraction — a genuinely small Tier-3 job.
+    Selectable-R (207 default, show 220/471) may remain a minor UI nicety, owner's option, not
+    required. Post-v2.11, kin to 326/327. The derived R (and any drift in it) is a natural line on
+    the weekly/seasonal report.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
