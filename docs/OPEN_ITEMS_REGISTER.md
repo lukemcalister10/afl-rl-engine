@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v327 2026-07-17 · PEN: ITEM 354: F3 pedigree fix TRUE (gradient un-inverted, k=0 exact) — residual = distinct mid/vet forward calibration defect; RULED: accept partial + re-scope to F4, ±5% acceptance transfers UNWAIVED, ladder still holds; PR opens now w/ tension flagged; no laws bent · prior: ITEM 353
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v328 2026-07-17 · PEN: ITEM 355: F3 closed (fence exact to ruling, gradient cured, backtest -26.1% honest, self-correction banked); background tasks harmless; F4 issued a59426f (checkpoint-gated, ±5% transferred unwaived, owner re-rules if honest maths can't reach) · prior: ITEM 354
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5475,6 +5475,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     pass. F4 directive + memo addendum v1.2 author AFTER F3's final return (its artifacts pin the
     addresses). SCORE SO FAR: one chapter defect cured and proven; one newly isolated with its
     acceptance intact; zero laws bent.
+
+355. **F3 CLOSED — PRESCREENED, PARTIAL-ACCEPTED PER ITEM 354; F4 ISSUED (2026-07-18).** F3 final:
+    PR #117 (stacked #115), head `bccc231`. VERIFIED this seat: fence held EXACTLY to the ruled
+    extension (`_merged_recover.py` + `rl_export.py` + session only; rl_model/ui/store/curve/
+    pins/docs untouched — the grep proof) · k=0 dormancy test committed · seals φ `fd92b6fc` ·
+    P(retire|age) `6100f121`. [Build-run, audit recomputes:] backtest 556,300 vs 752,427 =
+    **−26.1%, honestly OUT of ±5%** (improved from −30.0%, not bent) · gradient UN-INVERTED
+    (developing −30.5%→−18.5%, now shallowest; veteran −25.0% largest — the item-352 inversion +
+    false-exit strip CURED) · byte-exact chain 06d8af60/d85901af/9829d01a · +1 liability 31,091 ≈
+    F1's 32,338. **BUILD'S SELF-CORRECTION banked:** its early "container mismatch 30d96f1f"
+    claim was a cold-start transient — filed hashes reproduce 3/3 on its container; it corrected
+    its own record (weakens nothing in item 349: the THREADS=1 doctrine rests on F1's measured
+    multi-thread jitter). BACKGROUND-TASKS NOTE (owner asked): the 5 lingering tasks are sandbox
+    compute probes — cannot push (no git), die with the chat; close it, nothing to stop. **F4
+    ISSUED** (main `a59426f`, docs-only): mid/vet forward calibration — base `bccc231` STRICT ·
+    CHECKPOINT-GATED (diagnose read-only → supervisor answers mechanism + grants fence + authors
+    MEMO v1.2 → only then fix) · **the ±5% acceptance TRANSFERRED UNWAIVED** · F3's cures = the
+    floor, never re-opened · the self-rejected pedigree-over-carry stays rejected · if honest
+    law-compliant maths cannot reach ±5%, HALT — that tension goes to the OWNER (only he re-rules
+    the expectation). OWNER ASK: fire F4 into a fresh chat.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
