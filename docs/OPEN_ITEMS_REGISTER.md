@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v344 2026-07-17 · PEN: ITEM 371: shard A reconciled GREEN — default board 1f10220c deterministic x3 (knife-edge did not trigger here); guard-5 RED = the KNOWN pre-bake pin (v2.10-era pins vs by-design-edited engine, verified); gate-mode switch reject = INFRA_ALLOW rides the bake; RL_LEGF=0=d85901af matches filed lens board; the 3-off equivalence is shard C's load-bearing check · prior: ITEM 370
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v345 2026-07-17 · PEN: ITEM 372: shard B GREEN — all gates computed inside bounds (G-Y0 0.257%, descent 0, pick1 3000, triple exact, B1<1.30); guard-5 non-run known. REAL FINDING owned: acceptance_v1_21 is on MAIN not the candidate lineage (I mis-asserted it repo-wide); v1_20→v1_21 delta verified harmless to every gate (folds already-ruled changes); cure = land it at the bake + fix the pack pointer · prior: ITEM 371
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5814,6 +5814,35 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     VERDICT: shard A clean — every RED/non-run is a known, ruled, pre-bake condition reproduced
     independently; determinism holds on this container. ANNEX noted: DYNAMIC_ARCH present (the
     reproduction-gate rationale stands; item 366). Awaiting shards B–E.
+
+372. **AUDIT SHARD B RECONCILED — GATES GREEN; A REAL ACCEPTANCE-POINTER ERROR (MINE) CAUGHT +
+    CORRECTED (2026-07-18).** Auditor at 15a9abd (pins assert; THREADS=1; same Haswell/DYNAMIC_ARCH
+    box as A). **GATES — ALL COMPUTED INSIDE THEIR BOUNDS, independently:** G-Y0 pooled recompute
+    **0.257%** (mean-rel 0.110%) == artifact stamp · strict-descent **0 violations** p=1..79 ·
+    pick-1 == **3000** · posture triple **0.10/0.15/0.05** exact · B1/G-COHORT cohort ratios
+    1.2650/1.2697/1.2260 all < the 1.30 sole-hard-halt. Every gate the frozen suite emits matches
+    the build claims and sits inside acceptance. **THE FROZEN-SUITE NON-RUN = the known guard-5
+    pre-bake red** (engine caf013e2 ≠ pinned 40f43772) — same as shard A, re-pin rides the bake.
+    "Three narrowest margins" — the auditor correctly reports the FROZEN suite emits no such
+    ranking (that phrase is a per-BUILD-return convention, not a suite output); the real margins
+    it surfaced are the B1 below-bound gaps (y5 0.0303 < y4 0.0350 < y6 0.0740) — noted for the
+    viewing. **THE REAL FINDING — acceptance_v1_21.json ABSENT AT THE CANDIDATE (a supervisor
+    bookkeeping error, not a candidate defect):** VERIFIED — the candidate ENGINE lineage
+    (…→15a9abd) carries acceptance up to **v1_20**; **v1_21 exists only on the docs/MAIN lineage**
+    (the seat-12 item-314 RE-SEAL was filed to main; the engine branch forked before it). I (and
+    the pack: manifest v4.54, the audit seed, several directives) asserted "acceptance_v1_21" as
+    the candidate's bar — WRONG at the candidate head. DELTA v1_20→v1_21 CONFIRMED HARMLESS to
+    every scored gate: it (a) makes G-Y0 status ADVISORY→BINDING with fix_direction
+    RE_DERIVE_AT_LEG_D (already done — Leg D), (b) folds COMPRESSION/VALUE-FLOW removals already
+    ruled, (c) adds the G-COHORT two_sided_band (1.08 report / 1.15–1.25 ideal / 1.30 sole halt) —
+    the candidate's 1.226–1.270 sit inside the ideal band, STRONGER than the auditor could score
+    on v1_20. NO grid value that gates the candidate differs. The G-Y0 "TBD tolerance" the auditor
+    flagged UNSCORABLE is resolved by the ruled construction (re-derive-at-Leg-D, done), not a
+    numeric bound — correct that it's not a scalar gate. **CURE (next turn): the acceptance file
+    must ride onto the candidate at the bake** (BAKE_RUNBOOK add: land acceptance_v1_21.json on the
+    bake head so v2.11 ships with its own bar) AND the pack pointer corrected to name v1_20 as the
+    candidate-resident bar + v1_21 as the main-resident re-seal folding already-ruled deltas.
+    Shard B verdict: GREEN on every gate; one doc-lineage pointer error owned, cured at the bake.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
