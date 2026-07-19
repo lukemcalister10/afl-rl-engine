@@ -209,6 +209,62 @@ def _fa_year(Y):
     # tenure clock on BASE_REF is done by passing _fa_year(Y). RL_LEGF=0 or k=0 => returns Y => identity.
     lf=getattr(MA,'_LENS_FORM',None)
     return lf if (_LEGF_ON and lf is not None) else Y
+# ==== LEG F4 (§2.vii/§2.ix, MEMO_LEGF v1.2/v1.3; owner rulings item 356/359) — THE L-SYMMETRY DAMPER =======
+# The forward lens over-declines the mid/veteran PRODUCTION cohorts (phi=0) ~2x their realized rate (the
+# item-354 residual: composition forward -19.9% vs realized backward -9.0%). F4 tempers the forward AGE_REF
+# advance of the TWO production-price age reads (the b6 demonstrated-level band :287-288 + the level_now
+# consumption :851) to the SAME players' MEASURED POPULATION backward-transition rate r_pop(age) — measured
+# on each committed -2/-1/now roster INCLUDING exiters' realized residual paths (busts full weight, R107.3),
+# so a single population rate carries exit risk and the F3 §2.iii retirement haircut RETIRES (v1.3 §2.ix, no
+# double-count). Geometric blend by the sealed s(age): x_used = x_form * (x_age/x_form)**s. s=1 => x_used ==
+# x_age (undamped, byte-exact); s in [0,1) tempers the advance toward the form anchor. FORWARD-ONLY (MA.
+# _LENS_FORM set AND AGE_REF>BASE_REF) + RL_LEGF-gated => k=0 / balanced / backward / RL_LEGF=0 => x_age==x_form
+# => x_used==x_age => the pre-F4 chain byte-exact BY CONSTRUCTION. Reid: the damper's ONLY content is the
+# sealed measured rate; s(age) is the deterministic coefficient reproducing r_pop(age), sealed beside it, never
+# iterated against a backtest. No cohort hand-tuning (per age-transition, smoothed rule 7). F3's cures are the floor.
+import json as _f4json
+_LSYM_ON=_LEGF_ON   # rides the F-leg RL_LEGF gate (default ON); RL_LEGF=0 => _LEGF_ON False => damper inert
+# THE SEALED RATE (measured ONCE on the committed -2/-1/now boards, sealed pre-render, NEVER iterated against a
+# backtest — MEMO_LEGF v1.3 §2.ix, owner item 359):
+#   r_pop(age) = value-weighted realized backward-transition rate per draft-year age, INCLUDING exiters'
+#                realized residuals (off-board=0, busts full weight R107.3); rule-7 smoothed. SEAL sha256_8 c62b5ee8.
+#   s(age)     = the geometric-blend coefficient bisected so the DAMPED median(vP1/v) per age == r_pop(age)
+#                (deterministic solution of the sealed-rate constraint; Reid — content IS the measured rate). SEAL sha256_8 efe97ee3.
+# Embedded literal (no external file — the seal ships IN the engine source; env RL_LSYM_TAB path overrides for
+# re-derivation only). s=1 => byte-exact undamped; forward-lens + RL_LEGF gated + k=0-inert (see _lsym_active).
+_LSYM_SEAL={'r_pop':{'18':1.0016,'20':1.0007,'22':0.9777,'24':0.9073,'26':0.7886,'28':0.7886,'30':0.7886,'32':0.7886,'34':0.7886,'36':0.7886,'38':0.6591},
+            's':{'18':0.0,'20':0.0,'22':0.0,'24':0.048,'26':0.5988,'28':0.6053,'30':0.5988,'32':0.426,'34':1.0,'36':1.0,'38':1.0,'40':1.0},
+            'r_pop_sha256_8':'c62b5ee8','s_sha256_8':'efe97ee3'}
+_LSYM_TAB=None
+if _LSYM_ON:
+    _ov=os.environ.get('RL_LSYM_TAB')                        # re-derivation override ONLY (calibration harness); default = the sealed literal
+    try: _LSYM_TAB=_f4json.load(open(_ov)) if _ov else _LSYM_SEAL
+    except Exception: _LSYM_TAB=_LSYM_SEAL
+def _lsym_active():
+    return (_LSYM_ON and _LSYM_TAB is not None
+            and getattr(MA,'_LENS_FORM',None) is not None and MA.AGE_REF!=MA.BASE_REF)  # forward lens only
+def _lsym_age(p):
+    # the age-at-START key, on the SAME draft-year basis r_pop was measured on the committed boards
+    # (round((asof-draft_year)+18.5)) so the sealed rate and the damper index the identical transition.
+    yr=p.get('year')
+    if yr is None: return MA._age_at(p,MA.BASE_REF) if hasattr(MA,'_age_at') else MA.age(p)
+    return int(round((MA.BASE_REF-int(yr))+18.5))
+def _lsym_s(a):
+    if _LSYM_TAB is None or a is None: return 1.0
+    st=_LSYM_TAB.get('s') or {}; ai=int(round(a))
+    if str(ai) in st: return float(st[str(ai)])
+    if not st: return 1.0
+    nk=min((int(k) for k in st),key=lambda x:abs(x-ai)); return float(st[str(nk)])
+def _lsym_blend(x_form,x_age,a):
+    # geometric temper of the AGE-REF advance toward the FORM anchor; s=1 => identity (x_age). Vector or scalar.
+    s=_lsym_s(a)
+    if s>=1.0 or x_form is None or x_age is None: return x_age
+    xf=np.asarray(x_form,dtype=float); xa=np.asarray(x_age,dtype=float)
+    with np.errstate(divide='ignore',invalid='ignore'):
+        r=np.where(xf>0.0, xa/xf, 1.0)
+        out=xf*np.power(np.clip(r,1e-9,None),s)
+    out=np.where(xf>0.0,out,xa)
+    return out if getattr(x_age,'ndim',0) else float(out)
 def _ev_pw(Eq):                                              # PEDIGREE-PAR weight: qualifying-gated, fading to the residual r by ~n=4 (T5)
     gate=Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK)                       # ~0 for the unqualified (production carries them: A8/Tsatas) -> 1 as seasons qualify
     fade=_EVW_R+(1.0-_EVW_R)*_math.exp(-Eq/_EVW_TAU)         # the draft bar fades as real games pile up: reaches the residual r=0.11 by ~4 qualifying seasons (T5), NEVER 0 (R98.5)
@@ -282,10 +338,21 @@ def _feat_infer(p,Y):
     ten=eff_ten(p,Y, max(0,Y-(cp.debutyr(p)-1)))             # base = original _feat tenure
     return oh+[np.log(ep), cp._exposure(p,Y), ten, cp._lvl_eff(p,Y), age]
 # (inference rebind deferred to AFTER the isotonic guard builds on ORIGINAL features -> proven-flat stays Delta=0)
-def b6(p,Y=2026):
+def _b6_core(p,Y):
     MA.AGE_REF=Y; MA.BASE_REF=(MA._LENS_FORM if getattr(MA,'_LENS_FORM',None) is not None else Y); MA._pe_clear()   # LEG E projection law (R103.3): a forward lens sets MA._LENS_FORM (=the true-now form anchor, 2026) so AGE_REF>BASE_REF => _dev_advance CREDITS expected production (age+k through the map's own growth curve; no lens-only term, the Reid constraint). _LENS_FORM None (balanced/back path) => BASE_REF=AGE_REF=Y, byte-exact.
     with contextlib.redirect_stdout(io.StringIO()): b=np.asarray(cp.cond_prior_band(p,cm,Y))
     return np.append(b,max(float(q97m.predict(np.array([cp._feat(p,Y)]))[0]),b[4]))
+def b6(p,Y=2026):
+    b_age=_b6_core(p,Y)
+    # LEG F4 §2.vii: temper this band's AGE_REF advance to r_pop(age) — read #1 of the two granted sites.
+    if _lsym_active() and Y!=MA.BASE_REF:                     # forward lens only; k=0 (Y==BASE_REF) => skip (byte-exact)
+        _bf=MA.BASE_REF                                       # the form-anchor year (== _LENS_FORM)
+        a0=_lsym_age(p)   # draft-year age basis (matches r_pop)
+        if _lsym_s(a0)<1.0:                                   # s>=1 => no-op => skip the extra band build (byte-exact + fast)
+            b_form=_b6_core(p,_bf)                            # form-anchored band (AGE_REF held at BASE_REF; no future scoring rows => == the now band)
+            b_age=_lsym_blend(b_form,b_age,a0)
+            MA.AGE_REF=Y; MA.BASE_REF=_bf; MA._pe_clear()     # restore the forward-lens clock the caller set
+    return b_age
 def price6(p,bb,Y=2026):
     sav=dict(MA.REPL)
     try:
@@ -849,6 +916,8 @@ def _prod_floor_w4(p,lens='bal'):
     ctx=_W4CTX['on']
     if ctx is None or ctx.get('n',0)<PROVEN_N or not _W4FWD: return _prod_floor_w4_0(p,lens)
     g=MA.bnow(p); a=MA.age(p); pa_=MA.PEAK_AGE[g]; cur=MA.level_now(p)
+    if cur is not None and _lsym_active():                    # LEG F4 §2.vii read #2: temper the level_now (_dev_advance) roll to r_pop(age); k=0/backward/RL_LEGF=0 => inert (byte-exact). level_demo == form-anchored level (AGE_REF held); level_now == advanced.
+        cur=_lsym_blend(MA.level_demo(p),cur,_lsym_age(p))
     if cur is None: return 0
     # ==== §1b FLOOR HALF (R106.7, DECISIONS v121 §1) — PROVEN-player shipped-board copy of MA.prod_floor's floor.
     # ⚠ DUPLICATE-LOOP HAZARD (owner condition 4; fence extended by the Option-2 adjudication 2026-07-17): this is a
