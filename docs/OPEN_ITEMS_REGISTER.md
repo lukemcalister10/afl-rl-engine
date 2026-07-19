@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v351 2026-07-17 · PEN: ITEM 378: viewing build halted on pin mismatch — reconciled (correct caution, benign): read-base = candidate BRANCH still at 15a9abd (verified unmoved); 0432fd7/31138225 = main moved by the docs pen, NOT the base (base-pin rule); absent session dir is the build's to create; couriered proceed · prior: ITEM 377
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v352 2026-07-17 · PEN: ITEM 379: viewing reproduction precondition FIRED (correct-by-design) — container = the item-374 weather instance (83a4b21d/Sheezel−95), not a candidate defect (int-v invariant holds, display-only); clean containers exist (shard C); ACTION = re-fire the directive UNCHANGED until an instance reproduces 06d8af60; same gate guards the bake · prior: ITEM 378
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5977,6 +5977,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     reproduction precondition stands. No defect — the build's HALT-on-unverified-mismatch is the
     wanted reflex; only the two-pins distinction needed clarifying (a recurring teaching point:
     read-base ≠ main while the docs pen is live).
+
+379. **THE VIEWING REPRODUCTION PRECONDITION FIRED — CORRECT-BY-DESIGN; RE-RUN ON A CLEAN
+    CONTAINER (2026-07-18).** The viewing build HALTED before rendering: its balanced board =
+    `83a4b21d` / Σv 750,159 / Sheezel −95 ≠ the filed `06d8af60` / 752,427. RECONCILED: this is
+    the EXACT weather instance shard C adjudicated (item 374 — identical hash, Σv, and the same
+    single Sheezel row); the precondition (item 366) did PRECISELY its job — it refused to render
+    the owner's viewing on a machine proven to mis-compute one display row. **NOT a candidate
+    defect and NOT a code fix:** shard C's clean container reproduced `06d8af60` byte-exact, so
+    reproducing containers EXIST; the −95 is a float-DISPLAY artifact (integer-v invariant
+    `9d097fce` identical across switches, item 374 — ranks/valuations untouched). The build did
+    everything right: two warm builds byte-identical (deterministic instance), fence held, PR #120
+    report-only, and it DELIVERED every non-board section by-reference (§3 lens/bridge · §4 riders
+    3-R · §5 the audit ledger · §6 the ratification list) — only §1 board HTML + §2 Rozee/Reid
+    re-render are HELD for a clean container. **ACTION: re-fire the viewing directive UNCHANGED on
+    fresh instances until one reproduces `06d8af60` at the precondition (retry is cheap; the
+    precondition self-selects the clean box).** Note recorded for the bake: the SAME instrument
+    (the bake-container reproduction gate) will require a reproducing instance for v2.11 — pinning
+    threads helped but did not fully de-weather these instances; the clean-container retry is the
+    procedure. No doc/scope change to the directive.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
