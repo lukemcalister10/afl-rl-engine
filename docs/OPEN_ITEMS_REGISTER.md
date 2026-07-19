@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v333 2026-07-17 · PEN: ITEM 360: bring-forward filed (F5 draft + bake runbook draft, d64925c); conservation arithmetic — real year: survivors -46k, exits -27k, entrants +74k vs v1.3 layer ~75-80k (the model closes the loop; corrects my 357/358 conflation); holdup map incl. the owner's viewing queue; round-score go-live READY on one post-v2.11 word · prior: ITEM 359
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v334 2026-07-17 · PEN: ITEM 361: weekly value-tracking loop confirmed feasible (ledger + board_diff already do SCAR-Δ + rank-Δ per named row) and QUEUED as Tier-3 riding the go-live wiring build; round-grain history from go-live, season-grain before · prior: ITEM 360
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5602,6 +5602,20 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     GO_LIVE runbook filed; gated on ONE owner word post-v2.11; optional no-risk dry-run rehearsal
     offered. AUDIT SEEDING: the shell + mechanical leak-guard already defer address/list assembly
     to the final head by design — nothing further pre-buildable there.
+
+361. **OWNER FEATURE CONFIRMED + QUEUED: THE WEEKLY VALUE-TRACKING LOOP (2026-07-18).** Owner
+    asked whether post-go-live the engine tracks week-to-week per-player change in BOTH absolute
+    SCAR and rank. VERIFIED: the parts exist — the ingestion dedup ledger is a durable
+    per-(player,season,round) record; per-round re-pricing is the design ("weekly scores WILL
+    move value"); `board_diff` already reports Δv(SCAR) + Δrank per NAMED row + age-bucket ΣΔ
+    (the chapter's own movers-proof tool); the runbook's first-round checklist includes an
+    owner movers review. THE GAP (one small wiring job): the recurring loop that RETAINS each
+    round's S1-stamped board snapshot, diffs prev→curr automatically, and emits the weekly
+    movers report + a per-player cumulative series (SCAR Δ and rank Δ since any round). QUEUED:
+    Tier-3 (UI/report only, no value change, never bakes) — RIDES THE GO-LIVE WIRING BUILD on
+    the owner's post-v2.11 word (GO_LIVE runbook job 6 "wire the recurring weekly loop" grows
+    this reporting). Expectation set: round-grain history accumulates FROM go-live; pre-go-live
+    history stays season-grain (vpath).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
