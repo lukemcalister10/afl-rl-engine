@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v355 2026-07-17 · PEN: ITEM 382: F6 mis-fire caught — the 'slow build' is a WRONG-CHAT/stale branch (claude/iso-corr-evidence-fade = old LEG A work, NOT based on 15a9abd, touches out-of-fence files), not F6. No damage (not on main/candidate; bases intact). STOP that chat; re-fire F6 into a fresh chat. Branch-name+base = first mis-fire tell · prior: ITEM 381
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v356 2026-07-17 · PEN: ITEM 383: CORRECTS item 382 — the F6 mis-fire was a STALE-BASE RESUME (branch shares no merge-base with 15a9abd; built on old Leg-A line), NOT a wrong chat; the base-pin assertion didn't bite. Supervisor gave a confident wrong diagnosis first — owned. No damage. Re-fire w/ base-proof as job 1. Rotate now (long seat erring at a fragile moment = the signal) · prior: ITEM 382
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6062,6 +6062,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     branch, one function + one pinned artifact, ~1h. STANDING LESSON: a build's BRANCH NAME + base
     SHA are the first tell of a mis-fire — check them before waiting on run time. (Reinforces the
     handover case: rotate at the CORRECT F6's prescreen.)
+
+383. **ITEM-382 CORRECTED — the F6 mis-fire was a STALE-BASE RESUME, NOT a wrong chat; supervisor
+    erred (2026-07-18).** Owner corrected me: he fired the correct F6 directive into a fresh chat.
+    RE-VERIFIED, and item 382's "wrong/old chat" diagnosis was WRONG — I apologise. The true fault:
+    the branch `claude/iso-corr-evidence-fade-jnda76` (`8b8ab7d`) shares NO merge-base with the
+    candidate `15a9abd` (empty merge-base; 15a9abd is NOT an ancestor). Its commit history is the
+    weeks-old LEG-A line (iso_corr evidence-fade, SPEC v1.1, CONSTRAINTS v1.18). CONCLUSION: the
+    build RESUMED FROM A STALE LEG-A BASE instead of checking out `15a9abd` per the F6 GIT ENTRY —
+    the base-pin assertion ("ls-remote must return 15a9abd STRICT → checkout") either was not run
+    or did not HALT. This is a real GAP: the directive's base pin did not bite; a fresh chat is
+    NOT sufficient protection if the workspace carries a stale branch and the checkout/assert step
+    is skipped. NO DAMAGE (divergent branch, not on main/candidate; bases intact — main
+    `1fcf6316`→this push; candidate `15a9abd` unmoved). CURE for the re-fire: F6's FIRST committed
+    act must be the base proof — `git ls-remote` + checkout `15a9abd` + assert HEAD==15a9abd +
+    build balanced==06d8af60 (the clean-instance precondition) — and HALT LOUDLY on any miss,
+    before any freeze work. SUPERVISOR NOTE (owned): I gave a confident wrong diagnosis (item 382)
+    before verifying the branch ancestry; corrected here on the owner's push-back. This — a long
+    seat making a confident error at a fragile moment — is itself the strongest signal yet to
+    ROTATE. Recommendation: hand over now; the incoming seat re-fires F6 with the hard base-check
+    as job 1 and carries the viewing.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
