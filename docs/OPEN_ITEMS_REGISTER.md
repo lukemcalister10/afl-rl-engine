@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v339 2026-07-17 · PEN: ITEM 366: F5 GREEN — CHAPTER BUILD-COMPLETE at 15a9abd (conservation gates IN -1.2%/+1.7%; entrant layer 83,538 sealed-not-tuned); THE SHEEZEL FINDING not waved through (-95 cross-container = a flipped discrete branch hypothesis) → BAKE-CONTAINER REPRODUCTION GATE adopted + audit shard address; the ladder OPENS · prior: ITEM 365
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v340 2026-07-17 · PEN: ITEM 367: the cold-audit seed filed at 15a9abd — five shards, compute-and-report, THREADS=1, annexes, knife-edge probe unnamed; leak-guard scrub PROVEN (all results+vocab grep to zero; one 'damper' hit scrubbed); owner: five incognito pastes outside the Project · prior: ITEM 366
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5712,6 +5712,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     rows are a model-brittleness finding for the owner's viewing.** NEXT (seat 13, next turn):
     the audit seed pack at `15a9abd` (shards A–E, THREADS=1, annexes, leak-guard scrub) + the
     viewing-pack render directive. The ladder OPENS.
+
+367. **THE COLD-AUDIT SEED FILED — THE LADDER'S FIRST RUNG IN THE OWNER'S HANDS (2026-07-18).**
+    `docs/AUDIT_SEED_15a9abd_2026-07-18.md` filed (this push): FIVE self-contained shard prompts
+    at head `15a9abd` — A environment/reproduction/guards (incl. the twice-build determinism
+    check, the switch-matrix md5s, and the differing-row naming + branch-bisection instruction if
+    any runs disagree — the item-366 knife-edge probe, unnamed) · B the gates from the frozen
+    suite + acceptance JSON by key (numbers beside thresholds, no verdicts) · C the kill-switch
+    equivalence matrix + per-consumer proofs re-executed from inputs + the store re-read · D the
+    projection chain (all committed dormancy tests · the committed gate harnesses re-run with NO
+    expected values seeded · seal-file sha256s + their own derivation notes · the two item-344
+    fence-noted diffs described by address) · E the §5 external checklist by address incl. the
+    derivation-target and truncation checks. DISCIPLINE: compute-and-report only; THREADS=1;
+    annex mandatory; addresses + input pins (store `968de0c7`, curve payload `89c14729`) are the
+    ONLY numbers seeded. **LEAK-GUARD SCRUB PROOF (run pre-push, one fix applied):** every filed
+    board hash, gate value, backtest number, league total, entrant total, the named knife-edge
+    player, and our vocabulary ("rider", "phantom layer", "composed pathway", "damper" —
+    one hit found and scrubbed) grep to ZERO in the seed. OWNER PROCEDURE: five SEPARATE fresh
+    incognito chats OUTSIDE the Project (no Project context, no memory), one shard block each,
+    verbatim; courier each return back whole; order irrelevant; parallel fine. Reconciliation
+    (audit-computed vs build-claimed, every number) = seat 13, on returns. The viewing-pack
+    render directive follows alongside reconciliation.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
