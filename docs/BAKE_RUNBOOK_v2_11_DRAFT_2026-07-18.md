@@ -14,6 +14,12 @@ structure seal ⟦⟧ · φ pedigree-carry `fd92b6fc` · r_pop seal ⟦⟧ · po
    `rl_export` ⟦⟧ · others per the manifest's own list) — the ONE sanctioned pin edit, owner-worded.
 3. **INFRA_ALLOW / manifest entries ride the word (the RL_FLEX pattern):** `RL_PVC2` · `RL_LEGE`
    · `RL_LEGF` (defaults ON as shipped).
+3b. **LAND THE DOCS-ON-MAIN-ONLY FILES ONTO THE BAKE HEAD (items 372/375 — the two lineage
+   splits):** `docs/acceptance_v1_21.json` and `docs/inputs/CLEANROOM_GPT_section5_failure_modes_
+   2026-07-18.md` exist on the docs/MAIN lineage but NOT on the candidate engine lineage. At the
+   bake, bring both onto the bake head (they carry only already-ruled content — verified harmless
+   to every gate at item 372) so v2.11 ships carrying its own acceptance bar + the §5 record. This
+   is a docs-carry, not a value change; the store/board are untouched by it.
 4. Bake → tag **v2.11** (owner pushes tags) → boards/book stamped (S1) → **clean fast-forward
    promote of `main` to the bake head — never force** (owner's act).
 5. POST: seam docs (HANDOVER/DECISIONS/manifest rev) · convenience-copy sync (owner) ·

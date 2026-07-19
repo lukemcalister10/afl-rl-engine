@@ -14,7 +14,7 @@
 | **HANDOVER** | **rev161** | 0 | THE ROTATION DOC — chapter state · the ladder remainder · conduct. |
 | **DECISIONS** | **v124** | 0 | R108.x + the OPEN TAIL READ + the VIEWING RATIFICATION LIST + to-dos. |
 | **OPEN_ITEMS_REGISTER** | read its OWN header (v340+ at this filing) | 1 | THE DURABLE LOG. Repo-only. |
-| CONSTRAINTS **v1.19** + **acceptance_v1_21.json** | — | 1 | REPO-ONLY; assert the JSON. |
+| CONSTRAINTS **v1.19** + **acceptance** | — | 1 | REPO-ONLY; assert the JSON. **CANDIDATE lineage carries v1_20; v1_21 (the item-314 re-seal, already-ruled deltas) is on docs/MAIN and LANDS at the bake (runbook 3b, items 372/375).** |
 | SPEC v1.4 · MEMO_LEGE v1.0 · **MEMO_LEGF v1.0–v1.3** | — | 1 | the construction docs of record. |
 | **SINGLE_SOURCE_INVARIANT** | **v1.3** | 1 | before touching the store or a derived artifact. |
 | AUDIT_SEED_15a9abd · BAKE_RUNBOOK_v2_11_DRAFT | — | 1 | the ladder's live instruments. |
