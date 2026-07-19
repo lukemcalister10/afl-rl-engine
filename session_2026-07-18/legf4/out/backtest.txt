@@ -1,0 +1,8 @@
+=== THE BACKTEST (F3 fixed board ratios applied to F2 boards) ===
+  -1 board 771152  --project-->  now: pred 558568  vs actual 752427   -193859 (-25.8%) OUT
+  -2 board 770987  --project-->  -1 : pred 554439  vs actual 771152   -216713 (-28.1%) OUT
+  [comp-controlled same-roster: fwd -19.6% | backward -9.1% | symmetric-target fwd≈682148]
+=== THE GRADIENT (signed mean Δ per player; un-inverted iff developing ≥ mid ≥ veteran) ===
+  developing(<=23) n=375  mean Δ  -168.9   (-18.2%)
+  mid(24-27)       n=210  mean Δ  -201.1   (-18.0%)
+  veteran(>=28)    n=219  mean Δ  -190.7   (-24.8%)

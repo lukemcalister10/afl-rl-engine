@@ -1,0 +1,21 @@
+=== BASELINE (F3 fixed board, RL_LEGF=1 RL_LEGE=1) ===
+--- baseline ---
+  cohort         n       now     fwd%    back%   fwd/back
+  developing   375    365451   -26.3%    -2.4%   10.87x
+  mid          210    246466   -18.2%   -10.2%    1.79x
+  veteran      219    177559   -24.8%   -19.0%    1.30x
+  MID+VET             424025   -20.9%   -14.1%    1.48x
+
+=== MECH 1: _dev_advance -> identity (no forward level roll) ===
+--- dev_advance OFF ---
+  cohort         n       now     fwd%    back%   fwd/back
+  developing   375    365771   -29.4%    -2.3%   12.59x
+  mid          210    246448   -17.2%   -10.2%    1.70x
+  veteran      219    176293   -10.6%   -19.6%    0.54x
+  MID+VET             422741   -14.5%   -14.4%    1.01x
+
+=== MECH 3: availability (_avail_hc / RL_AVAIL present haircut) present-year share ===
+  players with _avail_hc>0: %d ; but present haircut applies at k==0 (BASE_REF==AGE_REF==2026) only —
+  forward vP1 has AGE_REF=2027 so the k==0 present-haircut branch is INERT forward (see _proj_w4:830).
+
+[baseline fwd/back and dev_advance-off fwd/back tell the level-roll share of the asymmetry]

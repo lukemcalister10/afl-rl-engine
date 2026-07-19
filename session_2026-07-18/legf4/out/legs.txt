@@ -1,0 +1,9 @@
+cohort          n | raw_ev fwd/back %      | iso fwd/back %         | prod_path fwd/back %  
+developing    375 | fwd  -22.2  back   -5.6 | fwd   +0.0  back   +0.0 | fwd  -22.2  back   -5.4
+mid           210 | fwd  -16.7  back  -12.7 | fwd   +0.0  back   +0.1 | fwd  -16.7  back  -12.8
+veteran       219 | fwd  -23.9  back  -20.8 | fwd   +0.0  back   +0.0 | fwd  -23.9  back  -20.8
+
+cohort      | peak_est(lp) fwd %       | level_now(cur) fwd % vs demo
+developing  | peak_est fwd  +0.00%      | level_now fwd  +5.40%  (now vs demo +0.00%)
+mid         | peak_est fwd  +0.00%      | level_now fwd  -0.97%  (now vs demo +0.00%)
+veteran     | peak_est fwd  +0.00%      | level_now fwd  -3.69%  (now vs demo +0.00%)

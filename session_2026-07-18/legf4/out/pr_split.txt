@@ -1,0 +1,4 @@
+cohort          n | pr (price6/b6) fwd/back  | pole fwd/back        | b6 mean fwd/back      
+developing    375 | fwd  -23.4  back   -3.4  | fwd   -4.0 back   +1.0 | fwd  -6.05 back  +0.22  (pr share now=361254 pole=15596)
+mid           210 | fwd  -23.2  back  -12.6  | fwd   +1.9 back  -39.6 | fwd  -5.93 back  -1.84  (pr share now=233777 pole=1478)
+veteran       219 | fwd  -28.4  back  -21.0  | fwd   +0.0 back   +0.0 | fwd  -7.14 back  -4.16  (pr share now=165155 pole=0)
