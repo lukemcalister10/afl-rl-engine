@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v346 2026-07-17 · PEN: ITEM 373: shard D GREEN (strongest) — dormancy 11/10/8 PASS; gate_f4 −2.8%/+0.1% exact; gate_f5 −1.3%/+1.6% (~0.1pp FP, both IN, inputs identical); entrant 83538 exact; seal derivations sound (r_pop incl exiters); BOTH k=0/balanced invariants confirmed BY CODE-READING (items 353/344) not just hash · prior: ITEM 372
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v347 2026-07-17 · PEN: ITEM 374: shard C GREEN (load-bearing) — all three filed boards BYTE-EXACT (06d8af60/9829d01a/d85901af); integer-v invariant proves the CURVE is the SOLE value-mover (lens+phantom move zero valuations); SHEEZEL −95 ADJUDICATED = foreign-container BLAS weather confined to F5's build, NOT shipped identity NOT hardware-class → vindicates the bake reproduction gate; knife-edge downgraded · prior: ITEM 373
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5870,6 +5870,35 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
       344, likewise. Guard-5 non-run = the known pre-bake red (same as A/B). Shard D VERDICT:
       GREEN — the projection chain reproduces and its safety properties are independently proven
       from the source, not merely asserted. Awaiting C + E.
+
+374. **AUDIT SHARD C RECONCILED — THE EQUIVALENCE CHAIN VERIFIED BYTE-EXACT; THE SHEEZEL
+    KNIFE-EDGE RESOLVED AS FOREIGN-CONTAINER WEATHER, NOT A CANDIDATE PROPERTY (2026-07-18).**
+    The load-bearing shard. Auditor at 15a9abd (pins assert; THREADS=1; HASHSEED=0; a
+    DETERMINISM-CLEAN container — Xeon@2.80GHz). **THE KILL-SWITCH EQUIVALENCE CHAIN — ALL THREE
+    FILED BOARDS BYTE-EXACT:** RL_LEGF=0,RL_LEGE=0 ⇒ `06d8af60` = filed balanced ✓ · +RL_PVC2=0
+    ⇒ `9829d01a` = filed (item 322, the v2.10-equivalent pre-curve board) ✓ · RL_LEGF=0(LEGE=1)
+    ⇒ `d85901af` = filed Leg-E lens ✓. **THE INTEGER-V INVARIANT (the auditor's instrument, the
+    strongest form):** int-v md5 `9d097fce` IDENTICAL across defaults/LEGE=0/LEGF=0/both-off ⇒
+    the lens + phantom switches move ZERO integer valuations; int-v `0cbe7a78` only under
+    RL_PVC2=0 ⇒ **the curve is the SOLE valuation-moving axis** — R107.7 and the whole chapter's
+    display-not-pricing claim, independently proven. Σv 752,427 (lens family) / 750,519 (pvc2-off)
+    consistent. Five-migration re-run: umbrella 270a2c5f→06d8af60 shipped-v parity 0/804, 697
+    rank movers — MATCHES; job-1 peak HOLD reproduced (n_moved 600, max|Δ| 9.52). Store 968de0c7
+    unchanged post-pipeline. **THE SHEEZEL FINDING (item 366) ADJUDICATED — RESOLVED THE GOOD
+    WAY:** the auditor's clean container reproduces Sheezel 7964 (no −95), Daicos/Gawn/Reid all
+    matching the filed panel, both filed boards byte-exact, two warm builds identical. VERDICT:
+    F5's `83a4b21d`/Σv750159/"Sheezel −95" was a BUILD-TIME OpenBLAS DYNAMIC_ARCH kernel-dispatch
+    artifact CONFINED TO THAT ONE BUILD INSTANCE — NOT the shipped board identity, NOT an inherent
+    property of the hardware class (same lscpu line, no weather). The candidate's board identities
+    are reproducible byte-exact in an independent weather-free container. **This VINDICATES the
+    item-366 BAKE-CONTAINER REPRODUCTION GATE** (it exists precisely to reject a weather instance)
+    and downgrades the "knife-edge brittleness" viewing note: the row is stable; the −95 was one
+    machine's dispatch artifact, catchable by the reproduction gate. Two prior non-reproducibles
+    both now EXPLAINED not open: per-consumer incremental boards = structural (all consumers ship
+    under one RL_PVC2 gate; no per-consumer flag — by design); 83a4b21d = foreign-container
+    artifact. Shard C VERDICT: GREEN at the strongest level — the equivalence chain holds byte-exact
+    and the sole-value-axis property is proven. FOUR shards green; only E (the external checklist)
+    remains.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
