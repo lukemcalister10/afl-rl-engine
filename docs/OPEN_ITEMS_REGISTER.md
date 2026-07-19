@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v349 2026-07-17 · PEN: ITEM 376: viewing-pack render directive issued (read-only, base 15a9abd, reproduction-precondition; 7 sections incl. movers w/ Rozee/Reid re-rendered, per-lens phantom-split totals, riders 3-R-candidates, the 5-shard audit ledger, THE RATIFICATION LIST) + the two lineage-split cures filed (runbook 3b lands acceptance+§5 at bake; manifest pointer corrected) · prior: ITEM 375
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v350 2026-07-17 · PEN: ITEM 377: viewing-pack directive tightened (owner challenged the estimate, correctly) — no UI difference by design (same ui/app pipeline; Δ column + audit sections are viewing-only overlays); TIME 2-3h→1-1.5h (only 3 compute items, rest collation); reuse-not-rebuild explicit · prior: ITEM 376
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5949,6 +5949,19 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     v2.11 ships carrying its own bar; MANIFEST v4.54 acceptance pointer CORRECTED (candidate =
     v1_20; v1_21 the main-resident re-seal, lands at the bake). OWNER ASK: fire the viewing-pack
     directive; its return is the viewing you score + ratify.
+
+377. **VIEWING-PACK DIRECTIVE TIGHTENED — the owner's estimate challenge was right (2026-07-18).**
+    Owner asked why ~2–3 h and whether the pack differs from the shipping UI. VERIFIED against the
+    tree: (a) NO UI difference by design — the pack renders through the SAME ui/app board pipeline
+    that ships; the only viewing-only overlays are the temporary Δ-vs-v2.10 column (falls away
+    post-bake — v2.11 becomes the board) + the audit/ratification decision sections. board.js
+    already carries the Δ/track fields (feed-and-display, no new UI). (b) The estimate was loose:
+    of the 7 sections, only THREE are fresh compute (the per-row Δ-vs-v2.10 join · the Rozee/Reid
+    re-render at 15a9abd · the reproduction-precondition build); the rest are COLLATION of
+    committed artifacts (board, retro boards, bridge, rider tables, gate + audit ledger). CURED:
+    TIME → ~1–1.5 h, EFFORT → Medium, "reuse not rebuild" made explicit (the loose band was a
+    fence-discipline miss — S2/S3; a wide time band is exactly what lets a chat wander). Pushed
+    docs-only. No scope change; the directive is otherwise as item 376.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
