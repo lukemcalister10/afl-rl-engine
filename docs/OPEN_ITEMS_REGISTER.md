@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v347 2026-07-17 · PEN: ITEM 374: shard C GREEN (load-bearing) — all three filed boards BYTE-EXACT (06d8af60/9829d01a/d85901af); integer-v invariant proves the CURVE is the SOLE value-mover (lens+phantom move zero valuations); SHEEZEL −95 ADJUDICATED = foreign-container BLAS weather confined to F5's build, NOT shipped identity NOT hardware-class → vindicates the bake reproduction gate; knife-edge downgraded · prior: ITEM 373
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v348 2026-07-17 · PEN: ITEM 375: shard E GREEN + THE COLD AUDIT CLOSED — all 5 shards green, NO candidate defect; the curve RE-DERIVES BYTE-IDENTICAL from raw inputs; §5 cures independently confirmed; second lineage-split (the §5 file on main not candidate) owned = rides the bake w/ acceptance. Candidate 15a9abd AUDIT-CLEAR. Next: viewing-pack render + bake-runbook amend · prior: ITEM 374
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5899,6 +5899,38 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     artifact. Shard C VERDICT: GREEN at the strongest level — the equivalence chain holds byte-exact
     and the sole-value-axis property is proven. FOUR shards green; only E (the external checklist)
     remains.
+
+375. **AUDIT SHARD E RECONCILED + THE COLD AUDIT CLOSED — GREEN ON ALL FIVE; THE CANDIDATE IS
+    AUDIT-CLEAR (2026-07-18).** Auditor at 15a9abd (pins assert incl. per_entrant 40d7da7c;
+    THREADS=1). **§5 CHECKS — all independently CONFIRM the chapter's cures:** §5.1 circularity —
+    pick R² collapses 0.68→0.50→0.14 as evidence accrues (signal washes out, NOT baked-in) ·
+    §5.2 — derive_pvc2 target is the YEAR-0 ENTRY point (v0 wt 1.0), NOT a career aggregate (the
+    item-343 core, verified in code) · §5.3 — evidence share fades smooth, NO hard maturity cutoff
+    (header+L91) · §5.9 — pickless excluded, poles 52.5% full-weight, busts at real outcomes (the
+    item-343 figures independently re-verified) · truncation — ASOF year≤Y at emit_matrix
+    L58/_ev_qual L183 (the item-348 curve-clean-of-leakage proof, by line number). **THE DEEPEST
+    CONFIRMATION: the curve RE-DERIVES BYTE-IDENTICAL from raw inputs** — derive_pvc2.py (tau 0.12,
+    nmin 35) ⇒ curve_md5 89c14729 == pin, strict_descent True, pin1 3000, G-Y0 0.257% == committed,
+    output byte-identical to pvc_curve_v2.json. The Leg-D foundation reconstructs from
+    per_entrant+store exactly. **SECOND LINEAGE-SPLIT FINDING (same class as item 372, owned):**
+    the §5 file lives on docs/MAIN only (filed at item 337, `10f41b5`), absent from the candidate
+    ENGINE lineage → the auditor computed §5 from the seed's inline spec (correct fallback);
+    §5.9's exact four unmappable without the file. CURE = same as acceptance: the §5 file + the
+    acceptance JSON RIDE ONTO THE BAKE HEAD (BAKE_RUNBOOK addendum).
+    ============================================================================================
+    **THE COLD AUDIT — CLOSED, ALL FIVE SHARDS GREEN (items 371–375):** A determinism holds +
+    guard-5/gate-mode = known pre-bake reds · B every gate inside bounds · C the equivalence chain
+    BYTE-EXACT + the curve the SOLE value-mover (integer-v invariant) + Sheezel = foreign-container
+    weather not a candidate property · D the projection chain reproduced + both k=0/balanced
+    invariants confirmed BY CODE-READING · E the §5 cures confirmed + the curve byte-re-derived.
+    NO CANDIDATE DEFECT FOUND. The only findings are (i) the known pre-bake guard-5 pin (re-pin
+    rides the bake) and (ii) TWO docs-on-main-not-candidate lineage splits (acceptance_v1_21 +
+    the §5 file) — both MINE, both immaterial to every value/gate, both cured by landing those docs
+    on the bake head. Cross-container determinism doctrine (347/366) VINDICATED by C. **THE
+    CANDIDATE `15a9abd` IS AUDIT-CLEAR.** NEXT (seat 13): author the VIEWING-PACK RENDER directive
+    (board+book+movers re-rendered at 15a9abd · riders i–iv · retro bridge · per-lens phantom-split
+    totals · THE RATIFICATION LIST) + amend BAKE_RUNBOOK (land acceptance_v1_21 + the §5 file at
+    the bake; fix the pack pointer). Then the OWNER'S VIEWING → sealed-reads scoring → the word.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
