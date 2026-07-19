@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v335 2026-07-17 · PEN: ITEM 362: pocket-profile scoped (code-read) — track trajectory + Δ toggle ALREADY BUILT (round mode = one-line config flip); gap is data-feed not display; SCAR-Δ wired once fed, RANK-Δ card element is a small explicit UI add (not overclaimed); refines item 361 · prior: ITEM 361
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v336 2026-07-17 · PEN: ITEM 363: replacement-adjusted board toggle (v−R mode) QUEUED — rider (iv) graduating to a live UI mode; R candidates already measured, toggles exist; owner fork = which R + flat-vs-per-slot + re-rank-or-not; post-v2.11 Tier-3, kin to the 326/327 currency chapter; ruling forms at the viewing · prior: ITEM 362
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5631,6 +5631,23 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     surfacing is a small UI ADDITION, flagged explicitly for the go-live build (not assumed).
     Updates item 361: the weekly-tracking job = (mostly) export plumbing into existing UI + one
     small rank-Δ card element; still Tier-3, rides the go-live wiring on the owner's post-v2.11 word.
+
+363. **OWNER FEATURE QUEUED: THE REPLACEMENT-ADJUSTED BOARD TOGGLE (v−R MODE) (2026-07-18).**
+    Owner: a board toggle from current GROSS mode into a mode showing value ABOVE a free-
+    replacement list spot — his worked example: pick 60 (450) − R(220) = 230; pick 1 (3000) −
+    R(220) = 2780. This is RIDER (iv) / the item-342 steer graduating from ladder-report into a
+    LIVE BOARD MODE (a display toggle beside the ±1/2 lens + Δ toggles; UI-layer, never re-prices
+    the store, never bakes — R107.7: v2.11 stays GROSS, R is a VIEW). Machinery mostly exists: the
+    R candidates are measured (rider iv — R_realized 207 [184–229] · R_curve 471 · R_owner 220,
+    item 343) and the UI already carries multi-mode toggles. **THE OWNER FORK (his to rule, do NOT
+    presume):** WHICH R, and is it FLAT or PER-SLOT? — (a) a single flat R (his 220 example;
+    simplest; subtract one constant from every row) vs (b) a per-position/per-slot replacement
+    (a key defender spot ≠ a key forward spot; more correct, needs the R-by-slot construction) vs
+    (c) selectable R (220 / measured-207 / curve). Also his to rule: does v−R re-RANK the board or
+    just re-VALUE rows in place (a flat R preserves rank; a per-slot R can re-order). STATUS:
+    QUEUED post-v2.11, Tier-3 UI, alongside the incremental-currency chapter (326/327) to which it
+    is kin — same axis, the "should v−R become the traded currency" question the owner reserved.
+    Rider (iv)'s three-candidate view at the VIEWING is the natural place he forms the ruling.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
