@@ -183,6 +183,32 @@ def _ev_qual(p,Y):                                            # E_q: EFFECTIVE q
     return float(sum(1.0/(1.0+_math.exp(-(x['games']-_EVW_Q0)/_EVW_QW)) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y))
 def _ev_rec(Eq):  return float(Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK))        # recency trust Lo->Lc: 0 (unqualified: conservative career level) -> 1 (qualified: trust recent form)
 def _ev_est(Eq):  return float(Eq*Eq*Eq/(Eq*Eq*Eq+_EVW_EST*_EVW_EST*_EVW_EST))  # established weight Lc->est: 0 (thin) -> 1 (proven), centred at ~PROVEN_N seasons
+# ==== LEG F3 (§2.vi, MEMO_LEGF v1.1; supervisor ruling item 353) — FORM-ANCHOR CLOCK ================
+# The forward lens (rl_export sets MA._LENS_FORM => AGE_REF>BASE_REF) must carry the SAME pedigree/evidence
+# blend at the projected state, the pedigree weight decaying ONLY as PROJECTED EVIDENCE accrues — NOT as the
+# age/tenure clock advances (R103.3 / MEMO_LEGF v1.1 §2.vi; the item-352 "age erases pedigree" defect). This
+# context evaluates the pedigree-fade + tenure clocks at the FORM ANCHOR (BASE_REF) while the production/growth
+# path keeps AGE_REF. Gated on MA._LENS_FORM (the SAME signal b6/price6 use, :258/:265) — NOT on
+# AGE_REF!=BASE_REF, because the load-time V0-curve/ISO/backward builds run AGE_REF!=BASE_REF with _LENS_FORM
+# None and MUST stay byte-exact (they feed the k=0 board / the HARD-OUT V0 chain :1121-1171, never touched
+# here). k=0 / balanced / backward => _LENS_FORM None => pure no-op => byte-exact BY CONSTRUCTION (proven:
+# balanced RL_LEGE=0 => 06d8af60, edited==pristine). No new multiplier, no lens-only growth term (Reid) — it
+# REMOVES a lens-only clock PENALTY.
+import contextlib as _f3ctx
+_LEGF_ON=os.environ.get('RL_LEGF','1')!='0'   # LEG F3 gate (== the F1 phantom gate): the whole §2.vi projection cure rides RL_LEGF (default ON). RL_LEGF=0 => every F3 edit below is INERT => the pre-F3 Leg-E chain reproduces byte-exact (d85901af / 06d8af60 / 9829d01a), the directive's RL_LEGF=0 kill-switch proof.
+@_f3ctx.contextmanager
+def _form_anchor_clock():
+    _sv=MA.AGE_REF
+    if _LEGF_ON and getattr(MA,'_LENS_FORM',None) is not None and MA.AGE_REF!=MA.BASE_REF:
+        MA.AGE_REF=MA.BASE_REF
+    try: yield
+    finally: MA.AGE_REF=_sv
+def _fa_year(Y):
+    # the FORM-ANCHOR year for evidence/tenure clocks: BASE_REF (== MA._LENS_FORM) inside the forward lens,
+    # else the eval year Y. PR.tenure/nseas key on the YEAR ARGUMENT (not only AGE_REF), so re-keying the
+    # tenure clock on BASE_REF is done by passing _fa_year(Y). RL_LEGF=0 or k=0 => returns Y => identity.
+    lf=getattr(MA,'_LENS_FORM',None)
+    return lf if (_LEGF_ON and lf is not None) else Y
 def _ev_pw(Eq):                                              # PEDIGREE-PAR weight: qualifying-gated, fading to the residual r by ~n=4 (T5)
     gate=Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK)                       # ~0 for the unqualified (production carries them: A8/Tsatas) -> 1 as seasons qualify
     fade=_EVW_R+(1.0-_EVW_R)*_math.exp(-Eq/_EVW_TAU)         # the draft bar fades as real games pile up: reaches the residual r=0.11 by ~4 qualifying seasons (T5), NEVER 0 (R98.5)
@@ -196,7 +222,9 @@ def _lvlcurr(p,Y):                                            # steeper-recency 
     rows=[(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y]
     tw=sum(_wg(gm)*ld**max(0,Y-yr) for yr,gm,_ in rows)       # FIX 1: small-sample damping w(g)=g^2/(g+5.8) (RL_DAMP)
     return float(sum(_wg(gm)*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
-def _par_prior(p,Y): return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6))
+def _par_prior(p,Y):
+    with _form_anchor_clock(): _T=min(max(PR.tenure(p,_fa_year(Y)),1),6)   # LEG F3 §2.vi: the PEDIGREE PAR (the pedigree-fade "decay", pw·par in _coreM1) holds at the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick's draft pedigree does not fade just because the forward lens advanced his tenure a year. k=0 identity by construction.
+    return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),_T)
 def eff_ten(p,Y,base):                                        # developmental tenure off a CONTEXT base; proven keeps base exactly
     if _nqual(p,Y)>=PROVEN_N: return base                     # proven: original tenure (each call site passes its own base)
     return max(base, cp._age_asof(p,Y)-18)                    # thin career: max(base, age-18); 18-19yo debut -> ==base (Delta=0)
@@ -333,13 +361,15 @@ def _uncomp_prod(pr,p,Y,bb):
     return _C*v0p+delta                                            # production-side renorm; captain delta additive & nominal
 def raw_ev(p,Y=2026):
     _bb=b6(p,Y); pr=price6(p,_bb,Y); pr=_uncomp_prod(pr,p,Y,_bb)   # LEG B v1.1 map at the production-value hook (inert unless RL_UNCOMP on + s set)
-    pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
-    et=min(max(eff_ten(p,Y, PR.tenure(p,Y)),1),6)                                     # STEP1: developmental tenure off original PR.tenure base
-    po,par=par_pole(pos,pk,T); a=MA.age(p)
-    wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
-    tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))          # pole-fade by DEVELOPMENTAL tenure
-    expgate=_expgate(p,Y)                                                             # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
-    w=wage*tfade*expgate
+    pos=MA.gfut(p); pk=MA.effpk(p)
+    with _form_anchor_clock():                                                        # LEG F3 §2.vi: the pedigree-pole fade keys on PROJECTED EVIDENCE (BASE_REF), not the advancing age/tenure clock (k=0 identity)
+        T=min(max(PR.tenure(p,_fa_year(Y)),1),6)
+        et=min(max(eff_ten(p,_fa_year(Y), PR.tenure(p,_fa_year(Y))),1),6)             # STEP1: developmental tenure off original PR.tenure base
+        po,par=par_pole(pos,pk,T); a=MA.age(p)
+        wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
+        tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
+        expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
+        w=wage*tfade*expgate
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
     return pr+w*recover(perf,par)*max(0.0,po-pr)
 # ===== (3) ISOTONIC PICK GUARD: per pos, monotone non-increasing in pick at par; correction factor =====
@@ -787,11 +817,13 @@ _proj_w4_0=MA.proj_from_peak
 def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
     ctx=_W4CTX['on']
     if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc)   # synths / lever-off: byte-exact original
-    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(a,pa); prod=0.0
+    _off=(MA.AGE_REF-MA.BASE_REF) if _LEGF_ON else 0     # LEG F3 §2.vi (ruling 353, still-implicated proj_from_peak): fwd-lens offset; 0 at k=0/balanced/backward OR RL_LEGF=0 => byte-exact ORIGINAL by construction
+    ah=a-_off if _off>0 else a           # form-anchored age SHAPE: the pedigree-driven projection curve-position + young-runway credit hold at BASE_REF, so growth flows through the ADVANCING level (lp from the band at AGE_REF; cur=level_now via _dev_advance) — the premium decays with PROJECTED EVIDENCE, not the age clock (Reid: same map at the projected evidence state; no new multiplier/growth term). k=0: _off=0 => ah==a => byte-exact.
+    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
-        ag=a+k
+        ag=ah+k
         if ag>38 or MA.frac(ag,pa)<0.42: break
         lev=lp*MA.frac(ag,pa)
         if ag<=pa: lev=max(lev,cl)
@@ -803,7 +835,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
         else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
     if g in('KEY_FWD','KEY_DEF'): prod*=1.05
-    runway=MA.clamp((25-a)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
+    runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
 MA.proj_from_peak=_proj_w4
 # The DEMONSTRATED-PRODUCTION FLOOR carries the same near-year certainty credit (proven branch only). Without
@@ -1255,7 +1287,8 @@ def ev(p,Y=2026):
                 e=_eP+W4_KPFSH_DEM*(min(e,_eD)-_eP)+W4_KPFSH*(e-max(_eD,_eP))
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
-    pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
+    with _form_anchor_clock(): el=PR.tenure(p,_fa_year(Y))          # LEG F3 §2.vi: the staleness/tenure clock keys on the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick is NOT relabeled "stalled prospect" purely by the forward lens advancing the clock (item-352 155-mislabeled-exits defect). k=0 identity by construction.
+    pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         return round(sitout_ev(p,Y,e))
     keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = (4 if keyruc else 3)

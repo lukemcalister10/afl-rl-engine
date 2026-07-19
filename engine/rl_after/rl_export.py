@@ -100,6 +100,24 @@ with _ctx.redirect_stdout(_io.StringIO()):
         if os.environ.get('RL_LEGE', '1') != '0': g['_LENS_FORM'] = 2026
         _p['_vP1'], _p['_vP2'] = _nb(_ev(_p, 2027)), _nb(_ev(_p, 2028))
         g['_LENS_FORM'] = None
+        # ==== LEG F3 §2.vi — RE-SUPPLY THE PEDIGREE ANCHOR AT +k (MEMO_LEGF v1.1; ruling item 353 pt 4:
+        # rl_export:96 is STILL IMPLICATED after the true-site clock cure in _merged_recover). The item-352
+        # verdict: the forward lens "re-prices on the production map without re-supplying the pedigree anchor at
+        # +k", so a zero/low-evidence young pick (priced today on the Leg-D V0 pedigree blend) collapses forward.
+        # CURE: floor the +k value at the NOW value _v decayed by PROJECTED EVIDENCE φ(g)=(1-g/G0)^2 — the
+        # engine's OWN young-credit decay (G0=46 career games; _merged L1c _ycred φ), so the pedigree weight
+        # decays ONLY as projected evidence accrues (smooth in games, no cliff; g>=G0 => φ=0 => byte-exact).
+        # REID: the anchor is the SAME map's now value _v (no separate young multiplier, no lens-only growth
+        # term — a floored DECLINE, the mirror of "no lens-only growth"). FORWARD-ONLY (never _v/_vM1/_vM2);
+        # k=0-safe (φ<=1 => the max is inert on _v); rides RL_LEGF (=0 => skipped => the RL_LEGF=0 chain
+        # byte-exact) AND RL_LEGE (the forward lens). Strawman φ SEALED in the PLAN; [OWNER] at the viewing.
+        if os.environ.get('RL_LEGF', '1') != '0' and os.environ.get('RL_LEGE', '1') != '0':
+            _gc = _p.get('games')
+            if _gc is None: _gc = sum(int(x.get('games', 0) or 0) for x in (_p.get('scoring') or []))
+            if _gc < 46:
+                _fl = int(round(((1.0 - _gc / 46.0) ** 2) * _p['_v']))
+                if _p['_vP1'] < _fl: _p['_vP1'] = _fl
+                if _p['_vP2'] < _fl: _p['_vP2'] = _fl
         _p['_cvx'] = 1.0
     for _p in g['back_extra']:
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
@@ -524,8 +542,23 @@ _OV.assert_presence(active)
 # session_2026-07-18/legf1/sealed_strawman.sha256 = 1d180424...  (alternatives R_owner 220 / R_curve 471 are
 # labelled reference lines only — the owner rules the R slot at the viewing). See legf1/PLAN.md.
 if os.environ.get('RL_LEGF', '1') != '0':
-    _LF_R = 207; _LF_X = 207                                  # SEALED strawmen (item-343 R_realized; free intake + exit bar)
+    _LF_R = 207; _LF_X = 207                                  # SEALED strawmen (item-343 R_realized; free intake + LEGACY exit bar, retained for the WITHOUT/report echo only)
     _LF_ALT = {'R_owner': 220, 'R_curve': 471}
+    # ==== §2.iii (MEMO_LEGF v1.1) — DISTRIBUTED RETIREMENT LIABILITY replaces the discrete X-bar exit ========
+    # No named exits. At +k each age-eligible player carries a probability-weighted haircut h(p) =
+    # P(retire|age(p),+k)·vP(p); the aggregate liability Σh leaves the club total; the phantom intake sizes to
+    # the aggregate (expected exits ΣP ⇒ expected slots). P(retire|age) MEASURED from F2 recorded exits (pooled
+    # −2/−1/now, ±1yr window; age≥26 eligible; youth floored ≤0.02; isotonic-increasing per CORE rule 7, no
+    # wide bins). SEALED strawman (sha256 in the PLAN); [OWNER] ratifies at the viewing. +k cumulative
+    # 1−(1−P)^k. Report-only, never gates/bakes; k=0 carries ZERO (the balanced board is untouchable).
+    _LF_PRET = {24: 0.02, 25: 0.02, 26: 0.073, 27: 0.087, 28: 0.104, 29: 0.123, 30: 0.151, 31: 0.177,
+                32: 0.208, 33: 0.267, 34: 0.388, 35: 0.388, 36: 0.388, 37: 0.388, 38: 0.50, 39: 0.50}
+    def _pret(_age, _k):
+        if _age is None: return 0.0
+        _a = int(round(_age))
+        if _a < 26: _p1 = min(_LF_PRET.get(_a, 0.0), 0.02)
+        else: _p1 = _LF_PRET.get(_a, _LF_PRET[39])
+        return 1.0 - (1.0 - _p1) ** _k                        # +k cumulative retirement probability
     _LF_LENS = [(1, 'vP1', 2027), (2, 'vP2', 2028)]           # the forward lenses (k=0 excluded: no phantom at balanced)
     # -- §2.i DRAFT CAPITAL: picks 1..30 priced v2-curve GROSS (PVC), attributed natural-order round-robin --
     # over the 18 clubs (alphabetical natural-order strawman). Conserves the item-12 league pick pool; each
@@ -555,33 +588,38 @@ if os.environ.get('RL_LEGF', '1') != '0':
         _lg['0']['with'] += _v0; _lg['0']['without'] += _v0
         for _k, _fld, _yr in _LF_LENS:
             _proj = [_r for _r in _rows if _r.get(_fld) is not None]
-            _retained = [_r for _r in _proj if _r[_fld] >= _LF_X]
-            _exits = [_r for _r in _proj if _r[_fld] < _LF_X]
-            _E = len(_exits); _residual = sum(_r[_fld] for _r in _exits)
-            _used = _picks[:_E]                              # draft picks CONSUME exit slots (sealed structural strawman, memo §1)
-            _free_slots = _E - len(_used); _free_value = _free_slots * _LF_R
-            _ret_sum = sum(_r[_fld] for _r in _retained)
+            # §2.iii DISTRIBUTED RETIREMENT: probability-weighted haircut per age-eligible player (no named
+            # exits). liability = Σ P(retire|age,+k)·vP ; expected exits = Σ P (⇒ expected refill slots).
+            _hair = [(_r, _pret(_r.get('age'), _k)) for _r in _proj]
+            _residual = sum(_pp * (_r.get(_fld) or 0) for _r, _pp in _hair)   # aggregate liability leaving the club
+            _Ef = sum(_pp for _r, _pp in _hair)                              # expected exits (fractional)
+            _E = int(round(_Ef))                                            # expected slots ⇒ integer intake count
+            _ret_sum = sum((_r.get(_fld) or 0) for _r in _proj) - _residual  # retained value after the distributed haircut
+            _used = _picks[:_E]                              # draft picks CONSUME expected slots (sealed structural strawman, memo §1)
+            _free_slots = max(0, _E - len(_used)); _free_value = _free_slots * _LF_R
             _draft_value = sum(_p['v'] for _p in _used)
-            _with = _ret_sum + _draft_value + _free_value    # list-size conserved: refill count == exit count
-            _without = sum(_r[_fld] for _r in _proj)         # the plain forward lens (no phantom)
+            _with = _ret_sum + _draft_value + _free_value    # list-size conserved: refill count == EXPECTED exit count (aggregate liability re-filled)
+            _without = sum((_r.get(_fld) or 0) for _r in _proj)  # the plain forward lens (no phantom)
             _intake = [{'kind': 'draft', 'n': _p['n'], 'v': _p['v'], 'club': _cl, 'lens': _k,
                         'labelYear': _yr, 'phantom': True} for _p in _used] \
                     + [{'kind': 'free', 'v': _LF_R, 'club': _cl, 'lens': _k,
                         'labelYear': _yr, 'phantom': True} for _ in range(_free_slots)]
             phantomPicks.extend(_p for _p in _intake if _p['kind'] == 'draft')
-            phantomLayer[_cl][str(_k)] = {'retained': len(_retained), 'retainedSum': _ret_sum,
-                'exits': _E, 'residual': _residual, 'draftPicks': _used, 'draftValue': _draft_value,
+            phantomLayer[_cl][str(_k)] = {'retained': len(_proj), 'retainedSum': _ret_sum,
+                'exits': round(_Ef, 3), 'expectedSlots': _E, 'residual': _residual, 'draftPicks': _used, 'draftValue': _draft_value,
                 'freeSlots': _free_slots, 'freeValue': _free_value, 'intake': _intake,
                 'withPhantom': _with, 'withoutPhantom': _without, 'delta': _with - _without}
             _cl_tot[_cl][str(_k)] = {'withPhantom': _with, 'withoutPhantom': _without,
                 'delta': _with - _without, 'nPlayers': len(_proj)}
             _s = _lg[str(_k)]; _s['with'] += _with; _s['without'] += _without
-            _s['exits'] += _E; _s['residual'] += _residual; _s['draftValue'] += _draft_value; _s['freeValue'] += _free_value
+            _s['exits'] += _Ef; _s['residual'] += _residual; _s['draftValue'] += _draft_value; _s['freeValue'] += _free_value
     # -- §2.v TOTALS REPORT: per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer -----
-    phantomTotals = {'_meta': {'R_realized': _LF_R, 'exit_bar_X': _LF_X, 'R_alternatives': _LF_ALT,
+    phantomTotals = {'_meta': {'R_realized': _LF_R, 'R_alternatives': _LF_ALT,
+        'exit_model': 'DISTRIBUTED RETIREMENT LIABILITY (MEMO_LEGF v1.1 §2.iii): h(p)=P(retire|age,+k)·vP; no named exits',
+        'P_retire_by_age': _LF_PRET, 'P_retire_youth_floor': 0.02, 'P_retire_eligible_from_age': 26,
         'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer (MEMO_LEGF §2.v)',
-        'list_size': 'conserved endogenously (refill count == exit count; no exogenous L)',
-        'report_only': True, 'gates': False, 'k0_phantom': 'none', 'seal_sha256_8': '1d180424',
+        'list_size': 'conserved endogenously (expected refill count == expected exit count ΣP; no exogenous L)',
+        'report_only': True, 'gates': False, 'k0_phantom': 'none',
         'note': 'per-pick draft capital priced off PVC (v2 curve, GROSS); no wide/decile bins (CORE rule 7)'},
         'clubs': _cl_tot, 'league': {_lk: {'withPhantom': _lv['with'], 'withoutPhantom': _lv['without'],
             'delta': _lv['with'] - _lv['without'], 'exits': _lv['exits'], 'residual': _lv['residual'],
