@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v340 2026-07-17 · PEN: ITEM 367: the cold-audit seed filed at 15a9abd — five shards, compute-and-report, THREADS=1, annexes, knife-edge probe unnamed; leak-guard scrub PROVEN (all results+vocab grep to zero; one 'damper' hit scrubbed); owner: five incognito pastes outside the Project · prior: ITEM 366
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v341 2026-07-17 · PEN: ITEM 368: MID-LADDER PACK REFRESH — manifest v4.53 · HANDOVER rev160 · DECISIONS v124 filed, predecessors archived; doctrine + rulings folded; ratification list standing; rotation insurance in place; seat-13 context honest-assessed as shard-capable · prior: ITEM 367
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5733,6 +5733,20 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     verbatim; courier each return back whole; order irrelevant; parallel fine. Reconciliation
     (audit-computed vs build-claimed, every number) = seat 13, on returns. The viewing-pack
     render directive follows alongside reconciliation.
+
+368. **THE MID-LADDER PACK REFRESH FILED (owner-requested, 2026-07-18).** Pushed `a7592632`
+    (docs-only): **manifest v4.53 · HANDOVER rev160 · DECISIONS v124**; rev159/v123/v4.52
+    archived. rev160 = the rotation doc: the full candidate line + PR stack + all seals · the
+    chapter's doctrine additions (GIT ENTRY · THREADS=1 · container-label/equivalence · THE
+    BAKE-CONTAINER REPRODUCTION GATE · sealed-rate law · checkpoint gating; CORE v2.9 fold
+    QUEUED post-bake, operative meanwhile) · the ladder remainder ordered · seat-13 correction
+    ledger ×5 owned. v124 = R108.1–.6 folded (Option B · the conservation construction · bars
+    never widened, tests corrected · v−R first-class · the flat-derived R toggle · weekly
+    tracking) + the OPEN TAIL READ (ruled at the viewing) + THE VIEWING RATIFICATION LIST + the
+    owner to-dos (shards now · viewing+word next · PK sync mandatory at the bake seam). CONTEXT
+    HONESTY (the owner asked): seat 13 is long but functional for the shard reconciliation;
+    this refresh is the rotation insurance — if degradation shows, the seat rotates at the
+    reconciliation seam and the incoming seat continues from rev160 + the register in one read.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
