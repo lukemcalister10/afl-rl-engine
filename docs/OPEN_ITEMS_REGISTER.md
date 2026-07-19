@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v356 2026-07-17 · PEN: ITEM 383: CORRECTS item 382 — the F6 mis-fire was a STALE-BASE RESUME (branch shares no merge-base with 15a9abd; built on old Leg-A line), NOT a wrong chat; the base-pin assertion didn't bite. Supervisor gave a confident wrong diagnosis first — owned. No damage. Re-fire w/ base-proof as job 1. Rotate now (long seat erring at a fragile moment = the signal) · prior: ITEM 382
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v357 2026-07-17 · PEN: ITEM 384: F6 directive HARDENED after the stale-base resume — fresh-clone mandate + checkout 15a9abd by SHA + BASE_PROOF.txt as commit #1 (4-way assert, HALT on miss) before any freeze. Owner path: land F6 green then hand over · prior: ITEM 383
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6082,6 +6082,16 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     seat making a confident error at a fragile moment — is itself the strongest signal yet to
     ROTATE. Recommendation: hand over now; the incoming seat re-fires F6 with the hard base-check
     as job 1 and carries the viewing.
+
+384. **F6 DIRECTIVE HARDENED FOR CLEAN RE-FIRE (2026-07-18).** After the item-383 stale-base
+    resume, the F6 GIT ENTRY is rewritten so the failure cannot recur: (1) FRESH CLONE mandated
+    (`rm -rf` + clone — a reused workspace is how the stale Leg-A branch was inherited); (2)
+    explicit checkout of `15a9abd` by SHA with `git rev-parse HEAD` verification; (3) **COMMIT #1
+    = BASE_PROOF.txt**, a four-way assert (HEAD==15a9abd · 15a9abd is-ancestor · balanced==06d8af60
+    · store 968de0c7) that HALTS and commits nothing further on any miss. Only then does the freeze
+    begin. Filed to main `212921b` (docs-only). Candidate base intact. This is the owner's chosen
+    path: land F6 GREEN, THEN hand over. Re-fire instructions couriered (fresh chat + the fresh-clone
+    firing block).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
