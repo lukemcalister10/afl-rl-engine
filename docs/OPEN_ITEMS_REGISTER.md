@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v334 2026-07-17 · PEN: ITEM 361: weekly value-tracking loop confirmed feasible (ledger + board_diff already do SCAR-Δ + rank-Δ per named row) and QUEUED as Tier-3 riding the go-live wiring build; round-grain history from go-live, season-grain before · prior: ITEM 360
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v335 2026-07-17 · PEN: ITEM 362: pocket-profile scoped (code-read) — track trajectory + Δ toggle ALREADY BUILT (round mode = one-line config flip); gap is data-feed not display; SCAR-Δ wired once fed, RANK-Δ card element is a small explicit UI add (not overclaimed); refines item 361 · prior: ITEM 361
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5616,6 +5616,21 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     the owner's post-v2.11 word (GO_LIVE runbook job 6 "wire the recurring weekly loop" grows
     this reporting). Expectation set: round-grain history accumulates FROM go-live; pre-go-live
     history stays season-grain (vpath).
+
+362. **POCKET-PROFILE RENDERING SCOPED (item-361 refinement, code-verified 2026-07-18).** Owner
+    asked if weekly tracking is viewable on each player's HTML pocket profile. READ THE UI (board.js
+    /card.js/PLAN/README): the SCAFFOLDING EXISTS — the pocket profile card renders per-player
+    `track` as a round-by-round trajectory lineChart (`card.js:76-109`); the board carries a
+    FULLY-BUILT Δ column + toggle, mode (a) Δ-vs-last-bake / (b) Δ-vs-previous-round, the round mode
+    a one-line `config.js DELTA_BASE_DEFAULT` flip; missing-field cells show a clean "awaiting
+    export" guard, never a fake Δ (`board.js:206-211,331`). ⇒ the GAP IS DATA-FEED, NOT DISPLAY:
+    the go-live loop must populate `track` (round trajectory) + `vPrev`/`dRound` (deltas) per round;
+    then value-change lights up on the card as built. **PRECISE CAVEAT (do not overclaim):
+    SCAR-Δ on the card = wired end-to-end once fed; RANK-Δ AS ITS OWN CARD ELEMENT is NOT a
+    confirmed rendered field** — rank-Δ lives in `board_diff` tooling but its pocket-profile
+    surfacing is a small UI ADDITION, flagged explicitly for the go-live build (not assumed).
+    Updates item 361: the weekly-tracking job = (mostly) export plumbing into existing UI + one
+    small rank-Δ card element; still Tier-3, rides the go-live wiring on the owner's post-v2.11 word.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
