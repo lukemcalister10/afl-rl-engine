@@ -1,0 +1,7 @@
+LEG F3 EXIT HASHES (single-thread; OPENBLAS/OMP/MKL/NUMEXPR=1)
+RL_LEGF=0 RL_LEGE=0 RL_PVC2=1  balanced k=0 = 06d8af60  (filed 06d8af60)  PASS
+RL_LEGF=0 RL_LEGE=1 RL_PVC2=1  Leg-E lens    = d85901af  (filed d85901af)  PASS
+RL_LEGF=0 RL_LEGE=0 RL_PVC2=0  PVC2 kill      = 9829d01a  (filed 9829d01a)  PASS
+RL_LEGF=1 RL_LEGE=1 RL_PVC2=1  F3 fixed board = 71dbeb58  (moves +1/+2 lens + phantom only)
+store rl_model_data.json = 968de0c7 (absolute, matched) · curve pvc_curve_v2.json = 56dd7a7b
+k=0 dormancy unit test: PASS · guard-5 rl_model cc626d7d != pin a5fd3d7d = known pre-bake red (flagged)
