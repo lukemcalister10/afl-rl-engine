@@ -1,0 +1,38 @@
+VIEWING PACK — REPRODUCTION PRECONDITION (item 366, MANDATORY) · seat 13 · 2026-07-19
+Single-thread OPENBLAS/OMP/MKL/NUMEXPR=1 · dev-shell recipe (build_board.sh; PYTHONHASHSEED=0; no RL_CONFIG_MODE)
+
+GIT ENTRY (read-only variant, item-338 law)
+  fetch origin main claude/legf5-entrant-layer-conservation-p4susl
+  ls-remote refs/heads/claude/legf5-entrant-layer-conservation-p4susl
+    = 15a9abd996f8f7426e98f173d83a0d600b966a3c   STRICT  MATCHED (== item-375 audit-clear head)
+  ls-remote refs/heads/main = ecb146877ae6c66d35fab5e5288d3501cb86a080 (branch parent = MAIN, item 378)
+
+LOAD-TIME PROVENANCE STAMPS (built from the audited-head engine, engine/rl_after @ 15a9abd — NOT the boot workspace)
+  store  rl_model_data.json  md5 = 968de0c7   (== audited-head anchor)   [boot workspace store is b1fd0bce — a different, boot-pinned engine]
+  curve  pvc_curve_v2.json    file = 56dd7a7b  / payload self-stamp = 89c14729   (== anchor)
+  engine rl_model.py = cc626d7d   _merged_recover.py = caf013e2   rl_export.py = 90aa3323   (all == audited head)
+  NOTE: rl_model cc626d7d is the KNOWN guard-5 pre-bake red (checkout head != boot pin f79fc740) — flagged, never self-pinned.
+
+REPRODUCTION-PRECONDITION BOARD BUILD (RL_LEGF=0, balanced)
+  warm build 1  balanced board md5 = 83a4b21d   Sum v = 750159
+  warm build 2  balanced board md5 = 83a4b21d   Sum v = 750159   -> BYTE-IDENTICAL (this container is DETERMINISTIC)
+  FILED anchor  balanced board md5 = 06d8af60   Sum v = 752427
+  ASSERT built == 06d8af60 byte-exact:  FALSE   ->  WEATHER INSTANCE (item 374)
+
+WEATHER CHARACTERIZATION (panel: this container vs filed EXPECT)
+  player                built   filed   delta
+  Nick Daicos            8014    8017      -3
+  Marcus Bontempelli     3896    3897      -1
+  Harry Sheezel          7869    7964     -95   <-- the weather (one row)
+  Max Gawn               3415    3416      -1
+  Harley Reid            3347    3348      -1
+  Josh Ward              2003    2003       0
+  Darcy Moore             257     257       0
+  Taylor Goad             914     914       0
+  Josh Smillie           1323    1324      -1
+  Will Green              651     651       0
+  => 9/10 within +/-3; Sheezel -95. IDENTICAL to the legf5 EXIT_PROOF characterization (weather lives ENTIRELY
+     in the UNEDITED F4 base; item 347 forbids CORETYPE archaeology; item 374 downgrades this to weather, not brittleness).
+
+VERDICT (item 366): the balanced board does NOT reproduce filed 06d8af60 byte-exact on this container.
+  => HALT the render. Per item 366 the pack renders ONLY on a reproducing container. No board is rendered.
