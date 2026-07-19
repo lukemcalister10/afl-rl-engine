@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v332 2026-07-17 · PEN: ITEM 359: OWNER RULES IT — MEMO v1.3 filed (full entrant side at PVC; one population carrier, §2.iii retired; conservation gates F4=roster-matched / F5=league-level, ±5% unmoved); supersedes the A/B/C letter; F4 resumes (population re-seal + haircut retirement); F5 at F4's return · prior: ITEM 358
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v333 2026-07-17 · PEN: ITEM 360: bring-forward filed (F5 draft + bake runbook draft, d64925c); conservation arithmetic — real year: survivors -46k, exits -27k, entrants +74k vs v1.3 layer ~75-80k (the model closes the loop; corrects my 357/358 conflation); holdup map incl. the owner's viewing queue; round-score go-live READY on one post-v2.11 word · prior: ITEM 359
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5581,6 +5581,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     all other HARD-OUTs absolute; gate = roster-matched ±5%; all byte-proofs + dormancy suite
     stand. F5 (the entrant-side rebuild + the league gate) authors at F4's return, base = F4's
     head. The ladder holds until F5's conservation gate lands IN.
+
+360. **BRING-FORWARD FILED WHILE F4 RUNS + THE HOLDUP MAP + GO-LIVE READINESS (2026-07-18; owner
+    asked, work delivered not promised).** FILED (`d64925c`, docs-only): **DIRECTIVE_LEGF5 DRAFT**
+    (the chapter's last build — entrant layer to the v1.3 full ~100-slot structure at PVC, sealed
+    from recorded intake history; the league-level conservation gate ±5% both transitions; F1's
+    pick-slot strawman superseded; ⟦BASE⟧ fills at F4's prescreen) + **BAKE_RUNBOOK v2.11 DRAFT**
+    (the word's prerequisites incl. THE RATIFICATION LIST · the sanctioned guard-5 re-pin ·
+    RL_PVC2/RL_LEGE/RL_LEGF INFRA_ALLOW · tag/promote/post-delivery sequence). **CONSERVATION
+    ARITHMETIC (report-only, supervisor):** the real 2024→2025 year decomposes survivors −46k ·
+    exits −27k · entrants **+74k** — vs the v1.3 full entrant layer pricing ~75–80k at PVC: the
+    owner's construction closes the loop on real data; the F5 gate looks passable BECAUSE the
+    model is right. (Corrects my item-357/358 framing that conflated the exit residual 27,441
+    with entrant value.) **THE HOLDUP MAP (told plainly):** F4 honest-fail (low; returns to
+    owner) · audit discrepancy (its job; fix-loop price) · environment weather (disarmed,
+    THREADS=1) · THE OWNER'S VIEWING DECISION QUEUE (the big one; enumerated: tail read · R=207 ·
+    entrant-structure seal · φ fd92b6fc · r_pop · presets c2e17c49 · the raw-pick flag) ·
+    seat-13 context length (rotation at the seam is cheap; the register carries all).
+    **ROUND-SCORE GO-LIVE: READY** — the tool owner-merged on main (PR #108), dry-run proven,
+    GO_LIVE runbook filed; gated on ONE owner word post-v2.11; optional no-risk dry-run rehearsal
+    offered. AUDIT SEEDING: the shell + mechanical leak-guard already defer address/list assembly
+    to the final head by design — nothing further pre-buildable there.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
