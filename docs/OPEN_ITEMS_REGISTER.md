@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v329 2026-07-17 · PEN: ITEM 356: F4 checkpoint answered — L-SYMMETRY breach in raw_ev production price (dev_advance roll consumption dominant, 1.01x symmetry on neutralization; b6 band read; 4x posval leverage); DAMPER GRANTED per MEMO v1.2 (measured realized rate, sealed, never iterated vs backtest; k=0-inert; Reid held) · prior: ITEM 355
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v330 2026-07-17 · PEN: ITEM 357: F4 halt — honest sealed rate: -1→now IN (-4.5%), -2→-1 OUT (-7.4%) = COMPOSITION not calibration (roster backtest can't see entrants; supervisor owns the test defect — it conflated roster vs league sides of the owner's conservation law); options A(control the test, recommended)/B(accept+re-scope)/C(widen, anti-recommended) to the OWNER · prior: ITEM 356
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5515,6 +5515,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     every prior HARD-OUT absolute (incl. `_dev_advance`'s source and the `v_at_peak` leverage —
     wrap consumption, never edit them). If the honest rate cannot reach ±5%: HALT — the
     expectation goes to the OWNER. F4 resumes on the courier of this ruling.
+
+357. **F4 HALT & RETURN — THE HONEST RATE LANDS −1→now IN; −2→−1 EXPOSES A DEFECT IN THE
+    ACCEPTANCE TEST ITSELF; THE ±5% RULING GOES TO THE OWNER (2026-07-18).** F4 (branch
+    `…legf4-…-o6x36j`, verified on origin) measured + sealed r_real(age) PRE-RENDER (seal
+    `ef1970db`, never iterated — §2.vii pts 1–2 honoured), implemented NOTHING (the two granted
+    sites untouched; the acceptance proxy applies r(age) directly), and returned: **−1→now
+    718,768 vs 752,427 = −4.5% IN · −2→−1 714,210 vs 771,152 = −7.4% OUT** (pre-F4: −25.8% /
+    −28.1% — the +160k correction cures the diagnosed asymmetry). **THE STRUCTURAL FINDING: the
+    residual is COMPOSITION, not calibration** — the committed boards conserve their totals only
+    through entrant/exit turnover; the per-player roster backtest cannot see entrant value
+    (−2→−1: survivors realize −6.2%, 122 players/27,441 exit, the −1 total is held flat by NEW
+    entrants). Forcing a per-player rate to hit ~0% would keep declining/exiting veterans at
+    ~full value — abandoning real ageing, the forbidden bend. **SUPERVISOR OWNS THE TEST DEFECT:
+    my backtest construction (items 351/352) compared a ROSTER projection against a LEAGUE
+    total — conflating the two sides of the owner's own conservation law (items 345/351): the
+    league conserves BY intake; the roster alone must not.** OPTIONS TO THE OWNER (symmetric;
+    only he re-rules ±5%): (A) COMPOSITION-CONTROL THE TEST — recommended: two cross-checking
+    variants, (i) SURVIVOR-MATCHED (project each roster, compare the SAME players' realized
+    next-year values, ±5%) and (ii) LEAGUE-LEVEL (projected total CREDITS the existing F1
+    phantom/entrant layer at its sealed parameters, ±5%), BOTH legs BOTH variants IN — a
+    STRONGER test that measures the actual claim; the bar itself unmoved. (B) accept the landing
+    (−1→now IN; −7.4% re-scoped as pure composition) — leaves an OUT explained in prose. (C)
+    widen the −2→−1 bar — recommended AGAINST (widening-to-pass is the house smell, even on a
+    supervisor-authored bar). On (A): the damper then builds at the granted sites per v1.2, the
+    SEALED RATE STANDS (no re-measure), dormancy suite extends, full exit proofs, PR on #117.
+    AWAITING THE OWNER'S LETTER: A / B / C.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
