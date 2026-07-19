@@ -152,6 +152,7 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
     #      artifact HALTS on line one for panel, gate, build and self-test alike. Backward-compatible: each field
     #      is skipped when absent from the manifest. Full-hash compare (the pins are full 32-char md5s).
     _FITTED = (('q97m',         os.path.join('data', 'q97m.pkl')),
+               ('v0surf',       os.path.join('data', 'v0surf.pkl')),   # LEG F6 FREEZE 2026-07-18: the frozen V0 pick-curve surface (_iso_dec residual weather)
                ('peak_model',   os.path.join('engine', 'rl_after', 'peak_model_v4.pkl')),
                ('pvc_snapshot', os.path.join('engine', 'rl_after', 'pvc_snapshot.json')),
                ('bust_prior',   os.path.join('engine', 'rl_after', 'bust_prior_table.json')))
@@ -190,9 +191,18 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
         _trees = os.environ.get('RL_PRIOR_TREES', '400')
         _cache = '/home/claude/cm_%s.pkl' % _trees
         return _cache if os.path.exists(_cache) else None
+    def _resolve_v0surf_load():                # mirror _merged_recover._load_v0surf precedence, byte-for-byte
+        for _c in (os.environ.get('RL_V0SURF_PKL'), '/home/claude/v0surf.pkl',
+                   os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '', 'data', 'v0surf.pkl')):
+            if _c and os.path.exists(_c):
+                return _c
+        return None
     _LOADED = (('q97m', exp.get('q97m'), _resolve_q97m_load(),
                 '$RL_Q97M_PKL -> /home/claude/q97m.pkl -> <repo>/data/q97m.pkl',
                 'the engine would FIT q97m at build time (the exact defect the freeze removed)'),
+               ('v0surf', exp.get('v0surf'), _resolve_v0surf_load(),
+                '$RL_V0SURF_PKL -> /home/claude/v0surf.pkl -> <repo>/data/v0surf.pkl',
+                'the engine would FIT the shipped V0 pick-curve surface at build time (the _iso_dec weather the freeze removed)'),
                ('band', exp.get('band'), _resolve_cm_load(),
                 '/home/claude/cm_%s.pkl (RL_PRIOR_TREES)' % os.environ.get('RL_PRIOR_TREES', '400'),
                 'the engine would RETRAIN a non-canonical cm forest (DYNAMIC_ARCH, not bit-stable)'))

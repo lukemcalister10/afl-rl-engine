@@ -1,0 +1,11 @@
+[
+  {
+    "ts_utc": "2026-07-19T12:29:39Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "a610237ed54179adfd68a7413c71fed4",
+    "old_md5": null,
+    "old_pin": null,
+    "new_md5": "3af2b7258b8c8c596c4184617f99d3ca",
+    "note": "FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)"
+  }
+]

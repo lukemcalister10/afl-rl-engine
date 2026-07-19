@@ -1,0 +1,36 @@
+LEG F6 — FREEZE _iso_dec · PROOF (single-thread OPENBLAS/OMP/MKL/NUMEXPR=1; this clean instance)
+
+CLEAN-INSTANCE PRECONDITION (asserted immediately before the bake):
+  new engine, FIT mode (RL_V0SURF_REFIT=1), RL_LEGF=0 RL_LEGE=0 -> balanced md5 06d8af60, Σv 752427  PASS
+  (my code changes do NOT perturb the fit path — fit-mode board == the clean board of record byte-exact)
+
+FROZEN ARTIFACT:
+  data/v0surf.pkl  md5 3af2b7258b8c8c596c4184617f99d3ca  (pinned expected_boot.json 'v0surf')
+  shipped-config signature a610237ed541 (curve pvc_curve_v2 + roster geometry + value-gate env; NOT _v0_raw)
+  payload = {sig: {c18(6 pos), surfN(12 ages), surfR(12 ages), meta}}
+
+JOB 4 — k=0 PROOF:
+  LOAD-mode board (pickle present) == 06d8af60, Σv 752427; _v0surf_frozen=True (surface LOADED, not fitted)
+  FULL k=0 row-diff  LOAD board vs pre-freeze CLEAN board  =  0 rows (EMPTY)  PASS
+  => the freeze of a clean-instance fit changes NOTHING on a clean instance; it removes only the weather flip.
+
+DETERMINISM (simulate the weather — force a different BLAS coretype, pickle loaded, assert 06d8af60):
+  default SkylakeX      06d8af60
+  forced  Prescott/Katmai 06d8af60
+  forced  Nehalem       06d8af60
+  forced  Haswell       06d8af60
+  (SandyBridge not run — 4 kernels suffice; the surface is LOADED so it is kernel-invariant by construction)  PASS
+
+IDENTITY ACROSS CONFIGS — pre-freeze (pristine caf013e2, fits) vs frozen (loads shipped, fits kill switches):
+  default  RL_LEGF1 RL_LEGE1 : 1f10220c == 1f10220c
+  balanced RL_LEGF0 RL_LEGE0 : 06d8af60 == 06d8af60
+  forward  RL_LEGF0 RL_LEGE1 : d85901af == d85901af
+  killsw   RL_PVC2=0         : 9829d01a == 9829d01a   (documented kill-switch board reproduced byte-exact)
+
+EXIT:
+  RL_LEGF=0 chain byte-exact; k=0 phantom NONE: active v (RL_LEGF=1) == (RL_LEGF=0) 0/804
+  dormancy F3/F4/F5 : PASS / PASS / PASS
+  store rl_model_data.json 968de0c7 UNTOUCHED ; curve 56dd7a7b UNTOUCHED ; q97m cfdc7321 UNTOUCHED
+  Guard 5 asserts v0surf (checkout + load-path); fails on a bad pin, passes on 3af2b725.
+  PRE-BAKE RED persists on the OTHER pins (rl_model a5fd3d7d, engine_head 40f43772) exactly as at pristine
+  15a9abd — pre-existing candidate-head pin drift, NOT introduced by this freeze (moves only at an owner bake).

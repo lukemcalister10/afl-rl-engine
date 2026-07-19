@@ -1219,6 +1219,52 @@ _build_v0_guard()
 _BOARD_PATH  # (declared above, before _R_surf)
 _V0CURVE={}; _V0CURVE_META={}; _V0_GRIDPK=list(range(1,91)); _V0_LGRID=np.log(_V0_GRIDPK)
 def _ageR(p): return int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1))))
+# ==== LEG F6 — FREEZE _iso_dec (THE RESIDUAL WEATHER), 2026-07-18 (item 381; the SAME pattern owner-blessed
+#      for q97m 2026-07-14). WAS: _build_v0_curve() re-fit the V0 pick-curve surface (three isotonic surfaces
+#      via _iso_dec) at EVERY board/gate/panel import, over the REAL roster's _v0_raw. numpy's OpenBLAS is
+#      DYNAMIC_ARCH (a CPU-specific float kernel at runtime); on a mixed-CPU fleet the same commit produced a
+#      slightly different V0 surface per box -> the whole board shifted coherently (the balanced-board 06d8af60
+#      <-> 83a4b21d weather flip, Sheezel +/-95, item 380 diagnosis). q97m/cm are already frozen pickles and the
+#      NW kernels are order-fixed (_det_*); _iso_dec/_build_v0_curve was the ONE live fit left on the value path.
+#      NOW: the SHIPPED V0 surface is computed ONCE at a bake (session_2026-07-18/legf6/scripts/refit_v0surf.py),
+#      pickled to data/v0surf.pkl keyed by a DETERMINISTIC config signature, md5-pinned (data/expected_boot.json
+#      'v0surf'), asserted by boot_guard (Guard 5) on entry, and LOADED here — the shipped surface is NEVER
+#      fitted at board-build. The signature is a function of the ACTIVE PICK CURVE + roster geometry + the
+#      value-gate env ONLY (never _v0_raw values), so a weather box computes the SAME signature as a clean box
+#      and loads the SAME clean surface -> the flip is removed. A NON-shipped config (a kill switch: RL_PVC2=0,
+#      RL_EVW=0, RL_ISOFADE=0, RL_W4_RUC=0, ...) has a different signature, is NOT in the frozen set, and still
+#      FITS exactly as before -> every declared kill-switch stays byte-exact. Regenerate ONLY via the refit entry
+#      point (RL_V0SURF_REFIT=1 forces a fit + re-pin; a silent refit is the exact defect being frozen out).
+def _load_v0surf():
+    if os.environ.get('RL_V0SURF_REFIT')=='1': return {}     # the ONE refit entry point: fit from scratch, ignore any stale pickle
+    _cands=[os.environ.get('RL_V0SURF_PKL'), '/home/claude/v0surf.pkl',
+            os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '','data','v0surf.pkl')]
+    for _c in _cands:
+        if _c and os.path.exists(_c):
+            with open(_c,'rb') as _fh: return pickle.load(_fh)
+    raise SystemExit("v0surf FROZEN-LOAD HALT: no frozen v0surf pickle found (looked at RL_V0SURF_PKL, "
+                     "/home/claude/v0surf.pkl, <repo>/data/v0surf.pkl). Re-run bootstrap.sh to seed the workspace "
+                     "copy, or regenerate via session_2026-07-18/legf6/scripts/refit_v0surf.py at a bake. The "
+                     "engine NEVER fits the shipped V0 surface at build time (the exact defect the freeze removed).")
+_V0SURF=_load_v0surf()
+# Value-gate defaults, byte-for-byte the code defaults, so a build that SETS a gate to its default (gate mode's
+# config_manifest) signs identically to a build that leaves it UNSET (dev shell). LENS gates (RL_LEGF/RL_LEGE)
+# are DELIBERATELY excluded: they never touch the V0 surface, so RL_LEGF=0 must LOAD the SAME frozen surface
+# (the RL_LEGF=0 chain byte-exactness). The active pick curve already encodes RL_PVCADOPT/RL_PVC2/RL_PVCFIT.
+_V0SURF_GATES={'RL_RUC_PRIOR_CAP':'1.4','RL_W4_RUC':'1','RL_RUC_CEIL_HEAD':'0.80','RL_RUC_CEIL_REFPK':'72',
+    'RL_RUC_YRH':'0.35','RL_FORMDECL':'1','RL_M3_FE':'0.58','RL_DAMP':'1','RL_DAMP_K':'5.8','RL_EVW':'1',
+    'RL_MSD_POOL_EXCL':'1','RL_AGE':'1','RL_SAGE29':'1','RL_LSYM':'1','RL_EO2':'1','RL_ABSENCE':'1',
+    'RL_FWDRECAL':'1','RL_YOUNG':'1','RL_OVPX':'1','RL_KPFFIX':'1','RL_V7FORM':'1','RL_V7_FORM_W':'0.6',
+    'RL_W4_CRED':'0.17','RL_W4_KPFUP':'1.6','RL_W4_FADE':'0.60','RL_W4_OVPX':'1.0','RL_W4_KPFSH':'0.55',
+    'RL_W4_KPFSH_DEM':'0.70','RL_W4_KPFTOP':'0.4','RL_W4_KPFM0':'8.0','RL_W4_KPFMS':'16.0','RL_AVAIL':'1',
+    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1'}
+def _v0surf_sig(real):
+    import hashlib as _hl, json as _js
+    _curve=_PVC0 if '_PVC0' in globals() else MA.PVC          # the pick curve _v0_raw is actually reading right now
+    _payload={'pvc':sorted((int(k),int(v)) for k,v in _curve.items()),
+              'roster':sorted([str(MA.gfut(p)),_ageR(p),int(p.get('pick'))] for p in real),
+              'gates':{g:os.environ.get(g,d) for g,d in sorted(_V0SURF_GATES.items())}}
+    return _hl.md5(_js.dumps(_payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def _iso_dec(y): return list(map(float,IsotonicRegression(increasing=False,out_of_bounds='clip').fit(_V0_LGRID,y).predict(_V0_LGRID)))
 def _fit_pick_curve(pts,effn_min=35.0,h0=0.18,hmax=2.2):     # adaptive-bandwidth NW over log-pick -> isotonic non-increasing
     lx=np.array([a for a,_ in pts]); vy=np.array([b for _,b in pts]); grid=[]; meta_e=[]; meta_hmax=0
@@ -1255,13 +1301,26 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
 def _build_v0_curve():
     POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
     real=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None]
-    for pos in POS:
-        pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
-        grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
-    matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
-    matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
-    surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
+    _sig=_v0surf_sig(real)                                   # LEG F6: deterministic config signature (weather-invariant)
+    _frozen=_V0SURF.get(_sig) if isinstance(_V0SURF,dict) else None
+    if _frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1':
+        # ---- FROZEN LOAD (the shipped config): the _iso_dec residual weather is removed — LOAD the three
+        #      surfaces + their fit metas, NEVER re-fit. star()/np.interp/_V0CURVE below are UNCHANGED, so the
+        #      board is byte-identical to the clean fit by construction (freeze the OUTPUT, don't re-derive it).
+        c18=_frozen['c18']; surfN=_frozen['surfN']; surfR=_frozen['surfR']
+        _V0CURVE_META.update(_frozen.get('meta',{}))
+    else:
+        # ---- FIT PATH: the refit entry point (RL_V0SURF_REFIT=1), or a NON-shipped config (a kill switch) whose
+        #      signature is not in the frozen set — fits exactly as before the freeze, so every declared kill
+        #      switch (RL_PVC2=0 -> 9829d01a, RL_EVW=0, RL_ISOFADE=0, RL_W4_RUC=0, ...) stays byte-exact.
+        for pos in POS:
+            pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
+            grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
+        matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
+        matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
+        surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
     _V0CURVE_META['_c18']=c18; _V0CURVE_META['_surfN']=surfN; _V0CURVE_META['_surfR']=surfR
+    _V0CURVE_META['_v0surf_sig']=_sig; _V0CURVE_META['_v0surf_frozen']=(_frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1')
     def star(pos,ag,pick):
         lp=np.log(min(max(pick,1),90))
         if ag<=18: return float(np.interp(lp,_V0_LGRID,c18[pos]))

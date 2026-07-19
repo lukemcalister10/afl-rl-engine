@@ -12,6 +12,7 @@
   "peak_model": "b763f59e6a6b8aa20946211674e37259",
   "pvc_snapshot": "735d2dec60cee285382a5d7a17c36a6f",
   "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "v0surf": "3af2b7258b8c8c596c4184617f99d3ca",
   "panel": "PASS 10/10 (LEG D ACT-2 candidate board 270a2c5f, RL_PVC2 composed-pathway ev-channel swap default ON): Nick Daicos 8017 Marcus Bontempelli 3897 Harry Sheezel 7964 Max Gawn 3416 Harley Reid 3348 Josh Ward 2003 Darcy Moore 257 Taylor Goad 914 Josh Smillie 1324 Will Green 651. ONLY Will Green moves vs 9829d01a (649->651, pk16 RUC prior-cap reads the lifted deep-tail draftval); the other 9 HOLD (ev-channel only). RL_PVC2=0 reproduces board 9829d01a byte-exact (Will Green 649).",
   "register": "652d83e87780e415a01a2de6d8b3cc57",
   "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
