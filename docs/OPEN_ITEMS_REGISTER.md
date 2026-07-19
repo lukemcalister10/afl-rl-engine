@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v354 2026-07-17 · PEN: ITEM 381: owner rules FIX IT — F6 iso-freeze issued (80b6ffe): freeze _iso_dec the q97m way w/ MANDATORY clean-instance precondition (no freezing on a weather box) + empty-k=0-diff proof + forced-kernel determinism check; ~1h Tier-1-lite, k=0 bounded to ≤1 row; on pass the retry-roulette is gone; corrected owner: not the 400-tree peak model · prior: ITEM 380
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v355 2026-07-17 · PEN: ITEM 382: F6 mis-fire caught — the 'slow build' is a WRONG-CHAT/stale branch (claude/iso-corr-evidence-fade = old LEG A work, NOT based on 15a9abd, touches out-of-fence files), not F6. No damage (not on main/candidate; bases intact). STOP that chat; re-fire F6 into a fresh chat. Branch-name+base = first mis-fire tell · prior: ITEM 381
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6044,6 +6044,24 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     re-audit = the one-row diff). On PASS: F6 head becomes the new candidate/viewing/bake base
     (the reproduction precondition then passes on ANY instance — the retry roulette is gone).
     OWNER ASK: fire F6.
+
+382. **F6 MIS-FIRE CAUGHT — the long run was a WRONG-CHAT/STALE-BRANCH, not a slow build
+    (2026-07-18).** Owner flagged F6 taking too long for a ~1h job. INVESTIGATED on the remote: NO
+    `legf6` branch exists. The only new branch is `claude/iso-corr-evidence-fade-jnda76` head
+    `8b8ab7d` — and it is NOT F6: its commits are **"Leg A"** (iso_corr evidence-fade +
+    monotonization + RL_ISOFADE), it carries OLD-CHAPTER docs (SPEC v1.1, CONSTRAINTS v1.18,
+    register ~item 185 — weeks stale), it is **NOT based on `15a9abd`** (the directed F6 base), and
+    it touches files FAR outside the F6 fence (`_ov_angleA.py`, `ingestion/round_entry.py`,
+    `one_source_selftest.py`, `ui/data/club_valuation.js`). DIAGNOSIS: the freeze directive was
+    pasted into an OLD/WRONG Claude Code chat (still on the Leg-A world) OR a stale branch was
+    resumed — either way it is executing the wrong work. **NO DAMAGE:** the branch is not on main,
+    not on the candidate line; bases intact (`15a9abd` unmoved, main `197a5a42`→this register push).
+    This stale branch must NOT merge/bake. ACTION couriered: (1) owner checks the fired chat's
+    header — if it shows Leg-A content not the F6 directive (base 15a9abd, freeze _iso_dec), STOP
+    it; (2) re-fire DIRECTIVE_LEGF6 into a genuinely FRESH chat; a correct run creates a `legf6`
+    branch, one function + one pinned artifact, ~1h. STANDING LESSON: a build's BRANCH NAME + base
+    SHA are the first tell of a mis-fire — check them before waiting on run time. (Reinforces the
+    handover case: rotate at the CORRECT F6's prescreen.)
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
