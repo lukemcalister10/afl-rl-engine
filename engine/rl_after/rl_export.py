@@ -532,50 +532,82 @@ for _k, _f, _dv in _ov_applied:
 # HALTS in gate/bake mode. Closes the hole where a silent [] shipped an override-less board.
 _OV.assert_presence(active)
 
-# ==== LEG F1 — PHANTOM INTAKE LAYER (+1/+2 · MEMO_LEGF §2 · gate RL_LEGF, default ON) =====================
+# ==== LEG F5 — §2.viii THE ENTRANT LAYER (+1/+2 · MEMO_LEGF v1.3 §2.viii · gate RL_LEGF, default ON) =======
 # Report/view ONLY. k=0 carries ZERO phantom content; the balanced board's per-player `v` is byte-identical
 # with RL_LEGF on vs off — the phantom keys are ADDITIVE lens-scoped arrays and the engine ev() is UNTOUCHED
-# (this block reads only PVC + the already-computed forward columns vP1/vP2 + the `club` field), so the
-# balanced board cannot move by construction (the checkpoint law). RL_LEGF=0 => none of §§2.i–2.v is emitted
-# => the Leg-E board is byte-exact. Strawman parameters (free-intake R=207, exit bar X=207, natural-order
-# draft slots) are SEALED and hashed BEFORE this render (the §6 law):
-# session_2026-07-18/legf1/sealed_strawman.sha256 = 1d180424...  (alternatives R_owner 220 / R_curve 471 are
-# labelled reference lines only — the owner rules the R slot at the viewing). See legf1/PLAN.md.
+# (this block reads only PVC + the already-computed forward columns vP1/vP2 + the `club` field + the SEALED
+# structure file), so the balanced board cannot move by construction (the checkpoint law). RL_LEGF=0 => none
+# of the §2.viii layer is emitted => the Leg-E board is byte-exact.
+#
+# §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
+# draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
+# (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal a17aafed) — NOT
+# tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
+#
+# OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
+# was picks 1..30 in natural-order round-robin (`_lf_pick_of`) + a flat free-intake at `_LF_R=207` per expected
+# exit slot + an exit bar X=207 (the register item-343 R-candidate frame 207 / R_owner 220 / R_curve 471). That
+# pick-slot strawman RETIRES: the entrant side is now the full sealed intake at PVC (§2.viii); exit risk already
+# lives in r_pop (§2.ix, F4 — one carrier, no double-count). The owner's ratification list updates (§2.viii
+# supersedes the item-343 R slot). Resurrection ref: git show a9570cb5:engine/rl_after/rl_export.py.
 if os.environ.get('RL_LEGF', '1') != '0':
-    _LF_R = 207                                              # free-intake strawman (report echo)
-    _LF_ALT = {'R_owner': 220, 'R_curve': 471}
-    # ==== §2.iii DISTRIBUTED RETIREMENT HAIRCUT — RETIRED (MEMO_LEGF v1.3 §2.ix, owner ruling item 359) ======
-    # OBITUARY (delete, don't disable — CORE rule 7). The F3 §2.iii construction haircut each age-eligible
-    # continuing player by h(p)=P(retire|age,+k)·vP and re-sized the phantom intake to that aggregate exit
-    # liability (the `_LF_PRET` P(retire|age) table + `_pret` cumulative + `_hair`/`_residual`/`_Ef`/`_E`).
-    # The owner RETIRED it: exit risk now lives ENTIRELY in the L-SYMMETRY damper's POPULATION rate r_pop —
-    # r_pop is measured on each historical roster INCLUDING exiters' realized residual paths (busts full
-    # weight, R107.3, MEMO_LEGF v1.3 §2.ix), so the damped forward value ALREADY contains the exit downside.
-    # A second haircut here would DOUBLE-COUNT. ONE carrier. Resurrection ref: git show <pre-F4>:rl_export.py
-    # (the _LF_PRET/_pret/_hair block). No named exits — that law is unchanged. The entrant/refill sizing moves
-    # to §2.viii intake-history sizing (F5); for F4 the phantom intake is 0 (clean no-op, Δ=0), pending F5.
+    import hashlib as _hl
     _LF_LENS = [(1, 'vP1', 2027), (2, 'vP2', 2028)]           # the forward lenses (k=0 excluded: no phantom at balanced)
-    # -- §2.i DRAFT CAPITAL: picks 1..30 priced v2-curve GROSS (PVC), attributed natural-order round-robin --
-    # over the 18 clubs (alphabetical natural-order strawman). Conserves the item-12 league pick pool; each
-    # row flagged phantom=true. No future-pick discount invented (item-12 defers that dial).
+    # -- load + SEAL-VERIFY the sealed entrant structure (the §6 seal-first law; HALT on drift) --------------
+    _lf_seal_path = os.path.join(os.environ.get('RL_REPO', '.'),
+                                 'session_2026-07-18', 'legf5', 'sealed_entrant_structure.json')
+    _lf_struct = json.load(open(_lf_seal_path))
+    _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
+    _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'a17aafed'):
+        raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
+                         '%s vs pinned a17aafed. Re-seal from intake history before rendering.'
+                         % (_lf_seal, _lf_struct.get('seal_sha256_8')))
+    _PVCMAX = max(PVC)
+    def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
+    # -- §2.viii THE SEALED ENTRANT SLOT STRUCTURE: expected per-year occupancy per effective pick ----------
+    # draft = ND + RD/PSD chained onto the national draft; mech = pickless at PICKEQ (90/92). Each priced at
+    # the v2-curve PVC of its effective pick (GROSS). The sealed counts are the frozen measurement; the price
+    # is re-read from the stamped curve here (identical v2 curve, so the total re-derives to the sealed 83,538).
+    _lf_draft = sorted(((int(_e), _c, _lf_pvc(_e)) for _e, _c in _lf_struct['draft_occupancy'].items()),
+                       key=lambda t: t[0])                   # [(effpk, expected slots/yr, pvc)] natural draft order
+    _lf_mech = sorted(((int(_e), _c, _lf_pvc(_e)) for _e, _c in _lf_struct['mech_occupancy'].items()),
+                      key=lambda t: t[0])                    # [(effpk 90/92, expected slots/yr, pvc)]
+    _lf_draft_pvc = sum(_c * _p for _e, _c, _p in _lf_draft)
+    _lf_mech_pvc = sum(_c * _p for _e, _c, _p in _lf_mech)
+    _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~83,538)
+    # -- per-club allocation (report-only; the §2.x gate is LEAGUE-level so the split is presentational):
+    # draft slots round-robin across the 18 clubs in natural draft order; mechanisms split evenly. -----------
     _lf_clubs = sorted({r['club'] for r in active if r.get('club')})
     _lf_nc = len(_lf_clubs) or 1
-    _lf_pick_of = {}                                          # club -> [ {n, v=PVC[n], club, phantom} ] natural order
-    for _n in range(1, 31):
-        _cl = _lf_clubs[(_n - 1) % _lf_nc]
-        _lf_pick_of.setdefault(_cl, []).append({'n': _n, 'v': PVC.get(_n, PVC[max(PVC)]), 'club': _cl, 'phantom': True})
-    # -- §2.ii FREE INTAKE + §2.iii EXITS (list-size conservation) per club per forward lens ---------------
+    _lf_draft_of = {c: [] for c in _lf_clubs}                # club -> [(effpk, count, pvc)]
+    for _i, _slot in enumerate(_lf_draft):
+        _lf_draft_of[_lf_clubs[_i % _lf_nc]].append(_slot)
+    _lf_mech_share = _lf_mech_pvc / _lf_nc                   # even mechanism value per club
+    _lf_mech_cnt_share = sum(_c for _e, _c, _p in _lf_mech) / _lf_nc
+    def _lf_entval(_cl):                                     # this club's annual entrant-layer value (one class)
+        return sum(_c * _p for _e, _c, _p in _lf_draft_of[_cl]) + _lf_mech_share
+    # -- per club per forward lens: retained forward (r_pop-damped) + one annual entrant class ---------------
     _by_club = {}
     for _r in active:
         if _r.get('club'):
             _by_club.setdefault(_r['club'], []).append(_r)
     phantomLayer = {}; phantomPicks = []
     _cl_tot = {}                                              # club -> lens-str -> {with,without,...}
-    _lg = {'0': {'with': 0, 'without': 0, 'exits': 0, 'residual': 0, 'draftValue': 0, 'freeValue': 0}}
+    _lg = {'0': {'with': 0, 'without': 0, 'draftValue': 0, 'freeValue': 0, 'entrantValue': 0}}
     for _k, _fld, _yr in _LF_LENS:
-        _lg[str(_k)] = {'with': 0, 'without': 0, 'exits': 0, 'residual': 0, 'draftValue': 0, 'freeValue': 0}
+        _lg[str(_k)] = {'with': 0, 'without': 0, 'draftValue': 0, 'freeValue': 0, 'entrantValue': 0}
+    # league phantomPicks: the sealed draft slot structure (one row per occupied effective pick, per lens)
+    for _k, _fld, _yr in _LF_LENS:
+        for _e, _c, _p in _lf_draft:
+            phantomPicks.append({'kind': 'draft', 'effpk': _e, 'count': round(_c, 4), 'v': _p,
+                                 'value': round(_c * _p), 'lens': _k, 'labelYear': _yr, 'phantom': True})
     for _cl in _lf_clubs:
-        _rows = _by_club.get(_cl, []); _picks = _lf_pick_of.get(_cl, [])
+        _rows = _by_club.get(_cl, [])
+        _cdraft = _lf_draft_of[_cl]
+        _cdraft_val = sum(_c * _p for _e, _c, _p in _cdraft)
+        _cent_val = _cdraft_val + _lf_mech_share
         phantomLayer[_cl] = {}; _cl_tot[_cl] = {}
         # lens 0 (balanced): report-only echo — WITH == WITHOUT == Σ v (ZERO phantom at k=0, the invariant)
         _v0 = sum((_r.get('v') or 0) for _r in _rows)
@@ -583,46 +615,47 @@ if os.environ.get('RL_LEGF', '1') != '0':
         _lg['0']['with'] += _v0; _lg['0']['without'] += _v0
         for _k, _fld, _yr in _LF_LENS:
             _proj = [_r for _r in _rows if _r.get(_fld) is not None]
-            # §2.iii RETIRED (v1.3 §2.ix): exit risk lives in r_pop (the damped forward value), NOT a haircut
-            # here — a second haircut would double-count. Retained = the full projected (damped) forward value;
-            # no residual, no P(retire)-sized refill. Entrant/refill sizing => §2.viii intake-history (F5); 0 here.
-            _residual = 0.0; _Ef = 0.0; _E = 0
-            _ret_sum = sum((_r.get(_fld) or 0) for _r in _proj)              # full retained forward value (exit risk already in r_pop)
-            _used = _picks[:_E]                              # draft picks CONSUME expected slots (sealed structural strawman, memo §1)
-            _free_slots = max(0, _E - len(_used)); _free_value = _free_slots * _LF_R
-            _draft_value = sum(_p['v'] for _p in _used)
-            _with = _ret_sum + _draft_value + _free_value    # list-size conserved: refill count == EXPECTED exit count (aggregate liability re-filled)
-            _without = sum((_r.get(_fld) or 0) for _r in _proj)  # the plain forward lens (no phantom)
-            _intake = [{'kind': 'draft', 'n': _p['n'], 'v': _p['v'], 'club': _cl, 'lens': _k,
-                        'labelYear': _yr, 'phantom': True} for _p in _used] \
-                    + [{'kind': 'free', 'v': _LF_R, 'club': _cl, 'lens': _k,
-                        'labelYear': _yr, 'phantom': True} for _ in range(_free_slots)]
-            phantomPicks.extend(_p for _p in _intake if _p['kind'] == 'draft')
+            _ret_sum = sum((_r.get(_fld) or 0) for _r in _proj)             # retained forward value (exit risk already in r_pop, §2.ix)
+            _with = _ret_sum + _cent_val                                    # + one annual entrant class (§2.viii)
+            _without = _ret_sum
+            _intake = [{'kind': 'draft', 'effpk': _e, 'count': round(_c, 4), 'v': _p, 'club': _cl,
+                        'lens': _k, 'labelYear': _yr, 'phantom': True} for _e, _c, _p in _cdraft] \
+                    + [{'kind': 'free', 'effpk': _e, 'count': round(_c / _lf_nc, 4), 'v': _p, 'club': _cl,
+                        'lens': _k, 'labelYear': _yr, 'phantom': True} for _e, _c, _p in _lf_mech]
             phantomLayer[_cl][str(_k)] = {'retained': len(_proj), 'retainedSum': _ret_sum,
-                'exits': round(_Ef, 3), 'expectedSlots': _E, 'residual': _residual, 'draftPicks': _used, 'draftValue': _draft_value,
-                'freeSlots': _free_slots, 'freeValue': _free_value, 'intake': _intake,
+                'draftValue': round(_cdraft_val), 'freeValue': round(_lf_mech_share),
+                'entrantValue': round(_cent_val), 'draftSlots': round(sum(_c for _e, _c, _p in _cdraft), 3),
+                'freeSlots': round(_lf_mech_cnt_share, 3), 'intake': _intake,
                 'withPhantom': _with, 'withoutPhantom': _without, 'delta': _with - _without}
             _cl_tot[_cl][str(_k)] = {'withPhantom': _with, 'withoutPhantom': _without,
                 'delta': _with - _without, 'nPlayers': len(_proj)}
             _s = _lg[str(_k)]; _s['with'] += _with; _s['without'] += _without
-            _s['exits'] += _Ef; _s['residual'] += _residual; _s['draftValue'] += _draft_value; _s['freeValue'] += _free_value
-    # -- §2.v TOTALS REPORT: per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer -----
-    phantomTotals = {'_meta': {'R_realized': _LF_R, 'R_alternatives': _LF_ALT,
-        'exit_model': 'RETIRED (MEMO_LEGF v1.3 §2.ix, item 359): exit risk carried by the L-SYMMETRY damper population rate r_pop (incl exiters residuals); no §2.iii haircut, no double-count',
-        'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer (MEMO_LEGF §2.v)',
-        'list_size': 'F4: exit side folded into r_pop; entrant/refill sizing pending §2.viii intake-history (F5) -> phantom intake 0 here (delta=0)',
+            _s['draftValue'] += _cdraft_val; _s['freeValue'] += _lf_mech_share; _s['entrantValue'] += _cent_val
+    # -- §2.viii TOTALS REPORT: per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer ---
+    phantomTotals = {'_meta': {
+        'law': 'MEMO_LEGF v1.3 §2.viii (owner item 359): FULL expected annual intake at v2-curve PVC per effective pick',
+        'sealed_structure': 'session_2026-07-18/legf5/sealed_entrant_structure.json',
+        'seal_sha256_8': _lf_struct['seal_sha256_8'],
+        'entrant_layer_pvc': round(_lf_ent_pvc), 'draft_pvc': round(_lf_draft_pvc), 'mech_pvc': round(_lf_mech_pvc),
+        'expected_slots_per_year': _lf_struct['expected_slots_per_year'],
+        'pickeq': _lf_struct['pickeq'],
+        'exit_model': 'exit risk carried by r_pop (§2.ix, F4 — incl exiters residuals); no §2.iii haircut, no double-count',
+        'per_lens': 'each forward lens carries ONE annual entrant class on top of the r_pop-retained roster; +2 is the marginal-annual view and runs slightly under now (declared caveat, item-12 lens-conservation)',
+        'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer',
         'report_only': True, 'gates': False, 'k0_phantom': 'none',
-        'note': 'per-pick draft capital priced off PVC (v2 curve, GROSS); no wide/decile bins (CORE rule 7)'},
-        'clubs': _cl_tot, 'league': {_lk: {'withPhantom': _lv['with'], 'withoutPhantom': _lv['without'],
-            'delta': _lv['with'] - _lv['without'], 'exits': _lv['exits'], 'residual': _lv['residual'],
-            'draftValue': _lv['draftValue'], 'freeValue': _lv['freeValue']} for _lk, _lv in _lg.items()}}
+        'note': 'draft slots priced off PVC per effective pick (v2 curve, GROSS); mechanisms at PICKEQ 90/92; no wide/decile bins (CORE rule 7); sealed from intake history, NOT tuned against the §2.x gate'},
+        'clubs': _cl_tot, 'league': {_lk: {'withPhantom': round(_lv['with']), 'withoutPhantom': round(_lv['without']),
+            'delta': round(_lv['with'] - _lv['without']), 'draftValue': round(_lv['draftValue']),
+            'freeValue': round(_lv['freeValue']), 'entrantValue': round(_lv['entrantValue'])} for _lk, _lv in _lg.items()}}
     out['phantomLayer'] = phantomLayer
     out['phantomPicks'] = phantomPicks
     out['phantomTotals'] = phantomTotals
-    print('LEG F4 PHANTOM LAYER (RL_LEGF=1): %d clubs · §2.iii RETIRED (exit risk in r_pop) · entrant sizing pending F5 §2.viii · +1 Δ=%+d · +2 Δ=%+d · k=0 phantom=NONE'
-          % (len(_lf_clubs), phantomTotals['league']['1']['delta'], phantomTotals['league']['2']['delta']))
+    print('LEG F5 ENTRANT LAYER (RL_LEGF=1): %d clubs · §2.viii sealed intake %d PVC (draft %d + mech %d, %.1f slots/yr, seal %s) · +1 Δ=%+d · +2 Δ=%+d · k=0 phantom=NONE'
+          % (len(_lf_clubs), round(_lf_ent_pvc), round(_lf_draft_pvc), round(_lf_mech_pvc),
+             _lf_struct['expected_slots_per_year'], _lf_struct['seal_sha256_8'],
+             phantomTotals['league']['1']['delta'], phantomTotals['league']['2']['delta']))
 else:
-    print('LEG F1 PHANTOM INTAKE: RL_LEGF=0 — layer NOT emitted (Leg-E board byte-exact)')
+    print('LEG F5 ENTRANT LAYER: RL_LEGF=0 — layer NOT emitted (Leg-E board byte-exact)')
 
 _SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)

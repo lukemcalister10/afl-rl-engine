@@ -443,12 +443,17 @@ MD.board = (function () {
       const pt = phantomTotals(); if (!pt) return;   // RL_LEGF=0 board => no phantom keys => empty-state
       const lk = String(s.lens - 2);                 // lens 3 -> "1", 4 -> "2"
       const lg = pt.league[lk]; if (!lg) return;
-      const el = banner("#3a7", tag("phantom intake · " + MD.config.LENS_LABELS[s.lens], "#2a6") +
+      // LEG F5 §2.viii: the entrant LAYER (full sealed annual intake at PVC). Supersedes F1's exits/R/X
+      // strawman fields (retired) — banner now shows the sealed entrant layer size + slot structure.
+      const em = pt._meta || {};
+      const el = banner("#3a7", tag("entrant layer · " + MD.config.LENS_LABELS[s.lens], "#2a6") +
         "league <b>WITH</b> Σ" + Math.round(lg.withPhantom).toLocaleString() +
         " vs <b>WITHOUT</b> Σ" + Math.round(lg.withoutPhantom).toLocaleString() +
-        " (Δ " + money(lg.delta) + ") · " + lg.exits + " exits refilled · R=" + pt._meta.R_realized +
-        " X=" + pt._meta.exit_bar_X + ' · <span style="opacity:.6">report-only · k=0 phantom=none · seal ' +
-        fmt.esc(pt._meta.seal_sha256_8 || "") + "</span>");
+        " (Δ " + money(lg.delta) + ") · entrant layer Σ" +
+        Math.round(em.entrant_layer_pvc || lg.entrantValue || lg.delta).toLocaleString() +
+        " PVC (" + (em.expected_slots_per_year != null ? em.expected_slots_per_year + " slots/yr" : "sealed intake") +
+        ') · <span style="opacity:.6">report-only · k=0 phantom=none · §2.viii seal ' +
+        fmt.esc(em.seal_sha256_8 || "") + "</span>");
       const tbl = fmt.el("div", "phantomclubs");
       tbl.style.cssText = "margin-top:.35rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.15rem .8rem";
       Object.keys(pt.clubs).sort().forEach(function (c) {

@@ -1,0 +1,13 @@
+LEG F5 — BYTE-EXACT CHAIN + DORMANCY (single-thread; this container instance)
+DETERMINISM: two warm RL_LEGF=0 builds byte-identical; stable balanced md5 = 83a4b21d ; Sum v = 750159
+  (filed 06d8af60 NOT byte-reproduced on this instance -- container weather in the UNEDITED F4 base;
+   F1 discriminator doctrine / item 347 no-CORETYPE-archaeology)
+RL_LEGF=0  edited rl_export.py  == original F4 rl_export.py :  md5 83a4b21d == 83a4b21d  cmp IDENTICAL  PASS
+k=0 phantom=NONE  RL_LEGF=1 balanced v == RL_LEGF=0 v : 0/804 diffs (Σv 750159 == 750159)  PASS
+executable diff bounded to the RL_LEGF!='0' phantom block => every RL_LEGF=0 config byte-exact by construction
+PARITY GATE: 804/804 board v == engine gated ev() (eps=0)  PASS
+DORMANCY: test_k0_dormancy_f5.py PASS ; test_k0_dormancy_f4.py PASS (_merged_recover.py untouched)
+STORE 968de0c7 untouched ; CURVE 56dd7a7b (payload 89c14729) untouched
+F5 ENTRANT LAYER build line:
+  LEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs · §2.viii sealed intake 83538 PVC (draft 69266 + mech 14272,
+  103.4 slots/yr, seal a17aafed) · +1 Δ=+83538 · +2 Δ=+83538 · k=0 phantom=NONE
