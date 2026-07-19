@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v330 2026-07-17 · PEN: ITEM 357: F4 halt — honest sealed rate: -1→now IN (-4.5%), -2→-1 OUT (-7.4%) = COMPOSITION not calibration (roster backtest can't see entrants; supervisor owns the test defect — it conflated roster vs league sides of the owner's conservation law); options A(control the test, recommended)/B(accept+re-scope)/C(widen, anti-recommended) to the OWNER · prior: ITEM 356
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v331 2026-07-17 · PEN: ITEM 358: owner sharpens A — phantom count corrected (366 entrants at +1 not 30; over-churns 3x vs reality, an F4-bug artifact); option A refined: variant (i) survivor-matched GATES F4 (passable), variant (ii) with-phantom is REPORTED phantom-sizing calibration for the viewing (not gated); resolves 'can never match' · prior: ITEM 357
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5541,6 +5541,27 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     supervisor-authored bar). On (A): the damper then builds at the granted sites per v1.2, the
     SEALED RATE STANDS (no re-measure), dormancy suite extends, full exit proofs, PR on #117.
     AWAITING THE OWNER'S LETTER: A / B / C.
+
+358. **OWNER SHARPENS OPTION A: PHANTOM SIZING vs REALITY — THE TWO VARIANTS SPLIT BY ROLE
+    (2026-07-18).** Owner flagged the phantom count as the reason the forward lens can't match
+    reality. NUMBER CORRECTED (from F1 committed artifacts): the +1 lens adds 366 entrants (30
+    phantom PICKS + 336 free-intake, refill==exit for list-size conservation), not 30; +2 adds
+    436 (30 picks + 406 free). vs reality's 122 exits (−2→−1) the lens OVER-churns ~3× — an
+    artifact of the F4 under-projection bug (too many mid/vets fall below the X=207 exit bar; the
+    count shrinks toward reality once the damper lands). SUPERVISOR ACCEPTS THE UNDERLYING POINT +
+    REFINES ITEM-357 OPTION A (owning a conflation in my own option): the two backtest variants
+    have DIFFERENT ROLES and must not both gate — (i) SURVIVOR-MATCHED (project roster, compare
+    the SAME players' realized next-year values, no entrants either side) tests ONLY F4's
+    projection fix ⇒ **this is F4's acceptance GATE, ±5%, passable by construction (the damper is
+    calibrated to the realized rate)**; (ii) LEAGUE-LEVEL-WITH-PHANTOM tests the PHANTOM LAYER's
+    sizing against the known −2→−1 entrant value (~24–27k) ⇒ **REPORTED, NOT GATED** — a measured
+    calibration of the R=207 strawman + the 30-pick draft model, feeding the OWNER's seal
+    ratification at the viewing (gating it would force phantom tuning-to-pass, which is his
+    ratification call, not a build's). This RESOLVES the "can never match" worry: F4's gate (i)
+    measures exactly what F4 fixes; the phantom question becomes evidence, not an impossible bar.
+    Refined-A is now the recommended letter. STILL THE OWNER'S LETTER: A(refined) / B / C. On
+    A: gate = variant (i) ±5% both transitions; variant (ii) committed as a report; the sealed
+    rate `ef1970db` stands; damper builds at the granted sites.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
