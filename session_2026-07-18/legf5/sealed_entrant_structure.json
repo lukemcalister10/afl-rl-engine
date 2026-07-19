@@ -1,0 +1,192 @@
+{
+ "basis": "FULL expected annual intake measured from recorded store intake history; each board-eligible (GRP) entrant credited at the v2-curve PVC of its engine effective pick effpk(p) (ND=pick, RD/PSD=chained _NDC[year]+pick, pickless=PICKEQ 90/92, item 341). Smoothed = per-effective-pick mean per-year occupancy over the window (no wide/decile bins, CORE rule 7). Measured ONCE, sealed pre-render, NOT tuned against the conservation gate.",
+ "draft_occupancy": {
+  "1": 1.0,
+  "10": 1.0,
+  "11": 1.0,
+  "12": 1.0,
+  "13": 1.0,
+  "14": 1.0,
+  "15": 1.0,
+  "16": 1.0,
+  "17": 1.0,
+  "18": 1.0,
+  "19": 1.0,
+  "2": 1.0,
+  "20": 1.0,
+  "21": 1.0,
+  "22": 1.0,
+  "23": 1.0,
+  "24": 1.0,
+  "25": 1.0,
+  "26": 1.0,
+  "27": 1.0,
+  "28": 1.0,
+  "29": 1.0,
+  "3": 1.0,
+  "30": 1.0,
+  "31": 1.0,
+  "32": 1.0,
+  "33": 1.0,
+  "34": 1.0,
+  "35": 0.8571,
+  "36": 1.0,
+  "37": 1.0,
+  "38": 1.0,
+  "39": 1.0,
+  "4": 1.0,
+  "40": 1.0,
+  "41": 1.0,
+  "42": 1.0,
+  "43": 1.0,
+  "44": 1.0,
+  "45": 1.0,
+  "46": 1.0,
+  "47": 1.0,
+  "48": 1.0,
+  "49": 1.0,
+  "5": 1.0,
+  "50": 1.0,
+  "51": 1.0,
+  "52": 1.0,
+  "53": 1.0,
+  "54": 1.0,
+  "55": 1.0,
+  "56": 1.0,
+  "57": 1.0,
+  "58": 1.0,
+  "59": 1.0,
+  "6": 1.0,
+  "60": 1.0,
+  "61": 0.8571,
+  "62": 1.0,
+  "63": 1.0,
+  "64": 1.0,
+  "65": 0.5714,
+  "66": 1.0,
+  "67": 0.7143,
+  "68": 0.7143,
+  "69": 0.7143,
+  "7": 1.0,
+  "70": 0.7143,
+  "71": 0.7143,
+  "72": 0.5714,
+  "73": 0.4286,
+  "74": 0.7143,
+  "75": 0.5714,
+  "76": 0.5714,
+  "77": 0.2857,
+  "78": 0.1429,
+  "79": 0.2857,
+  "8": 1.0,
+  "80": 0.2857,
+  "81": 0.1429,
+  "82": 0.2857,
+  "9": 1.0
+ },
+ "entrant_pvc": {
+  "draft": 69266,
+  "mech": 14272,
+  "total": 83538
+ },
+ "expected_counts": {
+  "draft": 73.14,
+  "mech": 30.29
+ },
+ "expected_slots_per_year": 103.43,
+ "law": "MEMO_LEGF v1.3 \u00a72.viii (owner item 359)",
+ "mech_occupancy": {
+  "90": 12.5714,
+  "92": 17.7143
+ },
+ "mech_summary": {
+  "IRE": {
+   "mean_per_year": 2.2857,
+   "pick_equiv": 92,
+   "pvc_each": 470,
+   "pvc_total": 1074
+  },
+  "MSD": {
+   "mean_per_year": 12.5714,
+   "pick_equiv": 90,
+   "pvc_each": 473,
+   "pvc_total": 5946
+  },
+  "PDA": {
+   "mean_per_year": 2.8571,
+   "pick_equiv": 92,
+   "pvc_each": 470,
+   "pvc_total": 1343
+  },
+  "PDN": {
+   "mean_per_year": 4.2857,
+   "pick_equiv": 92,
+   "pvc_each": 470,
+   "pvc_total": 2014
+  },
+  "SSP": {
+   "mean_per_year": 6.1429,
+   "pick_equiv": 92,
+   "pvc_each": 470,
+   "pvc_total": 2887
+  },
+  "UNR": {
+   "mean_per_year": 2.1429,
+   "pick_equiv": 92,
+   "pvc_each": 470,
+   "pvc_total": 1007
+  }
+ },
+ "n_years": 7,
+ "name": "F5_ENTRANT_SLOT_STRUCTURE",
+ "per_club": {
+  "n_clubs": 18,
+  "rule": "league expected structure allocated across the 18 clubs in natural draft order (round-robin over the sorted effective-pick slot list); mechanisms split evenly. Report/view only \u2014 the \u00a72.x gate is LEAGUE-level, so the club split is presentational."
+ },
+ "pickeq": {
+  "IRE": 92,
+  "MSD": 90,
+  "PDA": 92,
+  "PDN": 92,
+  "PDS": 92,
+  "SSP": 92,
+  "UNR": 92
+ },
+ "round_counts": {
+  "1-18": {
+   "mean_slots": 18.0,
+   "pvc": 32201
+  },
+  "19-36": {
+   "mean_slots": 17.857,
+   "pvc": 15549
+  },
+  "37-54": {
+   "mean_slots": 18.0,
+   "pvc": 11315
+  },
+  "55-72": {
+   "mean_slots": 15.571,
+   "pvc": 8338
+  },
+  "73-90": {
+   "mean_slots": 3.714,
+   "pvc": 1863
+  },
+  "91-99": {
+   "mean_slots": 0,
+   "pvc": 0
+  }
+ },
+ "seal_sha256_8": "a17aafed",
+ "stamp": {
+  "board_balanced_md5": "06d8af60",
+  "curve_file_md5": "56dd7a7b",
+  "curve_payload_md5": "89c14729",
+  "store_md5": "968de0c7"
+ },
+ "window": [
+  2019,
+  2025
+ ]
+}
