@@ -1,4 +1,5 @@
 # MEMO — LEG F ADDENDUM v1.1 · 2026-07-18 · amends MEMO_LEGF v1.0 (§2.iii replaced; §2.vi added)
+> **AMENDED (item 369): the §2.iii distributed-retirement construction herein was RETIRED at v1.3 §2.ix (folded into the population rate). §2.vi stands.**
 ### Grounds: the item-352 calibration verdict (backtest −30% undershoot; developing cohort −33.3%,
 ### the inverted gradient; pedigree strip = 36.7% of it; the discrete exit rule mislabels 155
 ### developing players as retirees). Both changes implement ALREADY-RULED law or the owner's

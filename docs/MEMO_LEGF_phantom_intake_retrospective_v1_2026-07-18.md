@@ -1,4 +1,5 @@
 # MEMO — LEG F: PHANTOM INTAKE (+1/+2) + RETROSPECTIVE BOARDS (−1/−2) · v1.0 · 2026-07-18
+> **AMENDED (item 369): read with the v1.1–v1.3 addenda — §2.iii is RETIRED (v1.3 §2.ix, one population carrier); the §2.i/§2.ii sizing is SUPERSEDED by §2.viii (the full entrant structure). This file is the base construction; the addenda rule.**
 ### Owner-ruled at item 346 ("Option B, and also make the -1/2 lens work. Makes sense to do it
 ### all at the same time"). The construction of record for builds F1 (writer) + F2 (read-only).
 ### Strawman parameters carry [OWNER] slots, sealed before render, ratified at the viewing (the

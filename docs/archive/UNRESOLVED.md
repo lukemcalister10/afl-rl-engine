@@ -1,4 +1,5 @@
 # UNRESOLVED — in-flight workstreams — cut 2026-07-02
+> **STALE — ARCHIVED (item 369): this cut is 2026-07-02, pre-v2.10. It describes the D4/D5 world and is superseded by the register (the single durable list) + HANDOVER rev160. Retained verbatim below as history.**
 _Head `8aed420a`. Five-state vocab (PROPOSED→DERIVED→WIRED→VERIFIED→BAKED). Nothing baked past `e0ac9c377d1e`._
 _D4 (02/07 pm): BAKE CANDIDATE exists — branch `claude/d4-bake-candidate-m2-m1v7` (engine `fb39d88a`, M1+v7 + M2 wired,
 board 11P/6F) — holds for the external cold audit + Luke's bake word. Canonical head untouched. See §1/§2 updates below,

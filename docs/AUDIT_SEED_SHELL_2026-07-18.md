@@ -1,4 +1,5 @@
 # AUDIT SEED SHELL — the ladder's S6-sharded cold audit · seat 13 · 2026-07-18
+> **TEMPLATE NOTE (item 369): this is the reusable SHELL. The live seeded instance for the current ladder is `AUDIT_SEED_15a9abd_2026-07-18.md`.**
 ### **STATUS: SHELL — addresses unfilled. Not a seed until seat 13 fills every ⟦SLOT⟧ at the
 ### ladder (after the Leg-E candidate's prescreen) and the leak-guard scrub passes.** Per CORE
 ### (AUDITOR seat) · OQ-C (manifest = addresses, never results) · S6 (shard sizing) · items
