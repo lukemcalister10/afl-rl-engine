@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v345 2026-07-17 · PEN: ITEM 372: shard B GREEN — all gates computed inside bounds (G-Y0 0.257%, descent 0, pick1 3000, triple exact, B1<1.30); guard-5 non-run known. REAL FINDING owned: acceptance_v1_21 is on MAIN not the candidate lineage (I mis-asserted it repo-wide); v1_20→v1_21 delta verified harmless to every gate (folds already-ruled changes); cure = land it at the bake + fix the pack pointer · prior: ITEM 371
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v346 2026-07-17 · PEN: ITEM 373: shard D GREEN (strongest) — dormancy 11/10/8 PASS; gate_f4 −2.8%/+0.1% exact; gate_f5 −1.3%/+1.6% (~0.1pp FP, both IN, inputs identical); entrant 83538 exact; seal derivations sound (r_pop incl exiters); BOTH k=0/balanced invariants confirmed BY CODE-READING (items 353/344) not just hash · prior: ITEM 372
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5843,6 +5843,33 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     bake head so v2.11 ships with its own bar) AND the pack pointer corrected to name v1_20 as the
     candidate-resident bar + v1_21 as the main-resident re-seal folding already-ruled deltas.
     Shard B verdict: GREEN on every gate; one doc-lineage pointer error owned, cured at the bake.
+
+373. **AUDIT SHARD D RECONCILED — GREEN, the strongest shard: the projection chain independently
+    reproduced AND its two invariants confirmed BY CODE-READING (2026-07-18).** Auditor at 15a9abd
+    (pins assert; THREADS=1; PYTHONHASHSEED=0 engine-self-pinned; same Haswell box). RECONCILED
+    vs the build claims (items 365/366):
+    · **DORMANCY:** F3 11/11 · F4 10/10 · F5 8/8 (entrant seal recomputes `a17aafed`) — all PASS,
+      MATCH.
+    · **gate_f4 roster-matched: −2.8% / +0.1% — EXACT MATCH to the filed item 365.**
+    · **gate_f5 conservation: auditor −1.3% / +1.6% vs filed −1.2% / +1.7% — ~0.1pp, BOTH IN.**
+      RESOLVED as container FP, not divergence: the auditor's realized league totals
+      770,987/771,152/752,427 EQUAL the filed F2 bridge EXACTLY (inputs identical); the ~0.1pp
+      sits in the projection arithmetic under DYNAMIC_ARCH (the item-347/366 doctrine; sub-0.2pp,
+      immaterial to the ±5% verdict). r_pop-direct −0.6%/+2.3% also IN.
+    · **ENTRANT LAYER 83,538 (draft 69,266 + mech 14,272) — EXACT MATCH, board-emitted == sealed.**
+    · **SEAL DERIVATIONS read + sound (the measurement-not-fudge line, independently):**
+      r_pop = Σrealized_next/Σv per transition INCL exiters' residual (off-board=0, R107.3) —
+      the population carrier exactly as ruled (v1.3 §2.ix); r_real (superseded survivor basis)
+      documented; entrant structure = full recorded intake at v2-curve PVC of effpk. sha256s
+      recorded.
+    · **THE TWO INVARIANTS CONFIRMED BY CODE-READING (stronger than a hash match):** (1) the
+      `_feat_infer` hunk — `BASE_REF=_LENS_FORM` (Leg-E credit) + Leg-F4 forward-only temper —
+      "cannot change the balanced/backward path (_LENS_FORM None ⇒ BASE_REF=AGE_REF=Y) or k=0"
+      → the item-353 clock-identity ruling, VERIFIED in the code by an independent reader. (2)
+      distribution_pricing retires the interim tilt, `lens_tilt('bal')==1.0 ⇒ byte-exact` → item
+      344, likewise. Guard-5 non-run = the known pre-bake red (same as A/B). Shard D VERDICT:
+      GREEN — the projection chain reproduces and its safety properties are independently proven
+      from the source, not merely asserted. Awaiting C + E.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
