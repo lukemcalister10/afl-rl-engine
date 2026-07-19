@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v341 2026-07-17 · PEN: ITEM 368: MID-LADDER PACK REFRESH — manifest v4.53 · HANDOVER rev160 · DECISIONS v124 filed, predecessors archived; doctrine + rulings folded; ratification list standing; rotation insurance in place; seat-13 context honest-assessed as shard-capable · prior: ITEM 367
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v342 2026-07-17 · PEN: ITEM 369: the hygiene sweep — UNRESOLVED (pre-v2.10, misleading) archived w/ stamp; the fireable-looking superseded v1 directive + the LEGE draft archived; GO_LIVE v2.9 ref + MEMO_LEGF v1.0/v1.1 amendment stamps; all 29 completed directives → archive; root = living instruments only; nothing deleted · prior: ITEM 368
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5747,6 +5747,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     HONESTY (the owner asked): seat 13 is long but functional for the shard reconciliation;
     this refresh is the rotation insurance — if degradation shows, the seat rotates at the
     reconciliation seam and the incoming seat continues from rev160 + the register in one read.
+
+369. **THE HYGIENE SWEEP — SECOND DOCUMENTATION PASS (owner-ordered, 2026-07-18).** The check
+    found and cured real staleness beyond the item-368 pack refresh. Pushed (this line's
+    predecessor commit, docs-only, 32 renames + 5 stamps): **HAZARDS ARCHIVED** —
+    `DIRECTIVE_FIVE_MIGRATION` v1 (superseded same-day, sat in root looking fireable) ·
+    `MEMO_LEGE …DRAFT` (beside its operative v1.0) · **`UNRESOLVED.md`** (cut 2026-07-02,
+    described the pre-v2.10 D4/D5 world — actively misleading; stamped STALE-superseded-by-the-
+    register-and-rev160, retained verbatim in archive). **STAMPS (bodies untouched):**
+    `GO_LIVE` — its "after the v2.9 bake" line marked historical, read as the current chapter's
+    bake (v2.11) · `MEMO_LEGF v1.0` — AMENDED note (§2.iii retired at v1.3; §2.i/ii sizing
+    superseded by §2.viii; the addenda rule) · `MEMO_LEGF v1.1` — its §2.iii construction
+    retired at v1.3 · `AUDIT_SEED_SHELL` — template note pointing at the live `AUDIT_SEED_15a9abd`
+    instance. **THE COMPLETED-DIRECTIVE SWEEP EXECUTED** (the item-330 optional sweep, now
+    owner-ordered): all 29 completed directives (seat-13's twelve + the prior seats' seventeen,
+    LEGB/C/D · R1067 · ROUND_ENTRY · TOOLS · DIAG) → `docs/archive/`; the register carries every
+    filing SHA so history is intact by name. **docs/ ROOT NOW = LIVING INSTRUMENTS ONLY:** the
+    pack (v4.53/CORE/rev160/v124/SSI) · the register · CONSTRAINTS+acceptance · the SPECs · the
+    memos of record (LEGB · LEGE v1 · LEGF v1.0–1.3 stamped) · the two audit docs · the bake
+    runbook · GO_LIVE · HOW_TO_LTI · ROADMAP · prior-seat notes/reviews · the data books.
+    Nothing deleted anywhere; everything moved is in archive verbatim.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
