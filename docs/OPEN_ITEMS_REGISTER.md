@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v342 2026-07-17 · PEN: ITEM 369: the hygiene sweep — UNRESOLVED (pre-v2.10, misleading) archived w/ stamp; the fireable-looking superseded v1 directive + the LEGE draft archived; GO_LIVE v2.9 ref + MEMO_LEGF v1.0/v1.1 amendment stamps; all 29 completed directives → archive; root = living instruments only; nothing deleted · prior: ITEM 368
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v343 2026-07-17 · PEN: ITEM 370: the handover's own audit — token safety VERIFIED repo-wide (the grep hit = the bare prefix in seat-2 prose, no secret ever committed); two real defects cured: rev161 STANDALONE (pen mechanics + entry + reconciliation sources folded in) + manifest v4.54; a fresh seat needs nothing from archive · prior: ITEM 369
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5767,6 +5767,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     memos of record (LEGB · LEGE v1 · LEGF v1.0–1.3 stamped) · the two audit docs · the bake
     runbook · GO_LIVE · HOW_TO_LTI · ROADMAP · prior-seat notes/reviews · the data books.
     Nothing deleted anywhere; everything moved is in archive verbatim.
+
+370. **THE HANDOVER'S OWN AUDIT — DON'T-ASSUME PASS (owner-ordered, 2026-07-18).** Read my own
+    filings back like a stranger and verified, not presumed: (1) **TOKEN SAFETY, REPO-WIDE:** a
+    grep hit in `docs/returns/NOTEPAD_seat2…` resolved by MASKED inspection to the bare
+    11-character prefix `github_pat_` inside instructional prose ("generate, copy once
+    (github_pat_...), paste alone here") — **NO actual token has ever been committed; the public
+    tree is clean of secrets, now KNOWN not presumed.** (2) **NO dangling archived references**
+    in any living doc (manifest/handover/decisions/runbook/seed all point at live paths). (3)
+    **TWO REAL DEFECTS FOUND AND CURED:** rev160 §3 was a DELTA depending on the ARCHIVED rev159,
+    and rev160 nowhere told a fresh seat how the PEN works — a rotation doc that couldn't rotate.
+    **CURE: HANDOVER rev161** (this push `ec217e84`, docs-only; rev160 + manifest v4.53
+    archived; **manifest v4.54**): §3 rewritten STANDALONE — entry per CORE/R100.10 · THE PEN
+    MECHANICS (pen.py append · PEN_TOKEN in-chat-only, never in files — cross-referenced to this
+    item's verification · fetch-before-append · docs-only proof · assert-before-write &&-chains)
+    · the owner-message format · the build laws · **THE RECONCILIATION SOURCES OF RECORD**
+    (register items 341/343/344/348/349/352/355/365/366 + the session EXIT_PROOFs) so the
+    incoming seat can run the live task from the doc alone. The stale ≈-pin phrasing replaced
+    with "always ls-remote fresh." A fresh seat now needs rev161 + the register and NOTHING from
+    archive. Handover condition: GOOD, verified.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
