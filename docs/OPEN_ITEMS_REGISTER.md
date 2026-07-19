@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v348 2026-07-17 · PEN: ITEM 375: shard E GREEN + THE COLD AUDIT CLOSED — all 5 shards green, NO candidate defect; the curve RE-DERIVES BYTE-IDENTICAL from raw inputs; §5 cures independently confirmed; second lineage-split (the §5 file on main not candidate) owned = rides the bake w/ acceptance. Candidate 15a9abd AUDIT-CLEAR. Next: viewing-pack render + bake-runbook amend · prior: ITEM 374
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v349 2026-07-17 · PEN: ITEM 376: viewing-pack render directive issued (read-only, base 15a9abd, reproduction-precondition; 7 sections incl. movers w/ Rozee/Reid re-rendered, per-lens phantom-split totals, riders 3-R-candidates, the 5-shard audit ledger, THE RATIFICATION LIST) + the two lineage-split cures filed (runbook 3b lands acceptance+§5 at bake; manifest pointer corrected) · prior: ITEM 375
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5931,6 +5931,24 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (board+book+movers re-rendered at 15a9abd · riders i–iv · retro bridge · per-lens phantom-split
     totals · THE RATIFICATION LIST) + amend BAKE_RUNBOOK (land acceptance_v1_21 + the §5 file at
     the bake; fix the pack pointer). Then the OWNER'S VIEWING → sealed-reads scoring → the word.
+
+376. **THE VIEWING-PACK RENDER DIRECTIVE ISSUED + THE BAKE-RUNBOOK/PACK CURES FILED (2026-07-18).**
+    Pushed `8459d69` (docs-only): **DIRECTIVE_VIEWING_PACK** — READ-ONLY, base `15a9abd` STRICT,
+    with the item-366 REPRODUCTION PRECONDITION (assert balanced == `06d8af60` byte-exact before
+    rendering, else HALT — renders only on a weather-free container). Seven sections, each figure
+    provenance-tagged: (1) the board at the audited head + the per-row Δ-vs-v2.10 · (2) NAMED
+    movers with Rozee/Reid RE-RENDERED at 15a9abd (superseding their Leg-E-era item-344 figures)
+    + the raw-pick benefit-of-doubt list · (3) per-lens totals bal/+1/+2 WITH/WITHOUT phantom +
+    the retro −1/−2 boards + the bridge (770,987→771,152→752,427) · (4) riders (i)–(iv) incl. the
+    three R candidates (207[184–229]/220/471) with the gross-vs-net ratio tables · (5) the gate
+    + FIVE-SHARD AUDIT ledger (item 375, all green + the two owned splits + the guard-5 red — full
+    evidentiary state, nothing hidden) · (6) THE RATIFICATION LIST (each call: value · what it
+    decides · recommendation + what would change it) · (7) UI HTML + markdown. **THE TWO
+    LINEAGE-SPLIT CURES (items 372/375):** BAKE_RUNBOOK gains step 3b — land `acceptance_v1_21.json`
+    + the §5 file onto the bake head (already-ruled content, harmless-to-every-gate verified) so
+    v2.11 ships carrying its own bar; MANIFEST v4.54 acceptance pointer CORRECTED (candidate =
+    v1_20; v1_21 the main-resident re-seal, lands at the bake). OWNER ASK: fire the viewing-pack
+    directive; its return is the viewing you score + ratify.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
