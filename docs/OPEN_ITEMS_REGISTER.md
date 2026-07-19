@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v331 2026-07-17 · PEN: ITEM 358: owner sharpens A — phantom count corrected (366 entrants at +1 not 30; over-churns 3x vs reality, an F4-bug artifact); option A refined: variant (i) survivor-matched GATES F4 (passable), variant (ii) with-phantom is REPORTED phantom-sizing calibration for the viewing (not gated); resolves 'can never match' · prior: ITEM 357
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v332 2026-07-17 · PEN: ITEM 359: OWNER RULES IT — MEMO v1.3 filed (full entrant side at PVC; one population carrier, §2.iii retired; conservation gates F4=roster-matched / F5=league-level, ±5% unmoved); supersedes the A/B/C letter; F4 resumes (population re-seal + haircut retirement); F5 at F4's return · prior: ITEM 358
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5562,6 +5562,25 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     Refined-A is now the recommended letter. STILL THE OWNER'S LETTER: A(refined) / B / C. On
     A: gate = variant (i) ±5% both transitions; variant (ii) committed as a report; the sealed
     rate `ef1970db` stands; damper builds at the granted sites.
+
+359. **OWNER RULES THE CONSERVATION CONSTRUCTION ("Rule it") — MEMO v1.3 FILED; F4 RESUMES ON
+    THE NEW BASIS; F5 NAMED (2026-07-18).** The owner's model (items 345/351/358 + his turn-36
+    statement, verbatim in those items) becomes LAW at MEMO_LEGF **v1.3** (`53aa5ac`, docs-only):
+    §2.viii the FULL entrant side (~100 slots, real pick structure + mechanisms at 90/92, each at
+    v2-curve PVC, counts measured+sealed) · §2.ix ONE CARRIER — the POPULATION-measured decline
+    rate (includes exiters, busts full weight) carries ALL exit risk; **§2.iii RETIRED** (folded;
+    obituary rides F4's session; the double-count prevented) · §2.x the CONSERVATION GATES — F4:
+    ROSTER-MATCHED ±5% both transitions (project each roster under the population rate vs the
+    SAME players' realized incl. exit residuals; no entrant layer needed); F5: LEAGUE-LEVEL ±5%
+    both transitions (projection + full entrant layer vs realized totals, ~flat like reality);
+    survivor-only = diagnostic report, never a gate. This SUPERSEDES the item-357/358 A/B/C
+    letter — the owner's construction IS the answer (a corrected test, the bar unmoved at ±5%).
+    F4 RESUME RULING (paste couriered): the rate basis changes to POPULATION by owner word ⇒ ONE
+    new measurement + seal (r_pop, never iterated; ef1970db documented beside it); fence EXTENDS
+    to the F3 §2.iii haircut site in `rl_export.py` for the RETIREMENT (delete w/ obituary note),
+    all other HARD-OUTs absolute; gate = roster-matched ±5%; all byte-proofs + dormancy suite
+    stand. F5 (the entrant-side rebuild + the league gate) authors at F4's return, base = F4's
+    head. The ladder holds until F5's conservation gate lands IN.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
