@@ -1,0 +1,7 @@
+=== F4 ACCEPTANCE PROXY — sealed honest realized rate r_real(a) applied to the committed boards ===
+(backtest.py applies r(age) to the board; the sealed damper makes the board r(age) ~= r_real, so this IS the acceptance)
+  -1 -> now: board=771152  proj=718768  vs actual=752427  err -4.5%  band[714806,790048]  IN +/-5%
+  -2 -> -1 : board=770987  proj=714210  vs actual=771152  err -7.4%  band[732594,809710]  OUT
+
+  Pre-F4 (F3 board, forward -19.6%): -1->now pred 558568 (-25.8% OUT), -2->-1 pred 554439 (-28.1% OUT)
+  Honest rate CURES the asymmetry: -1->now IN; -2->-1 OUT by 2.4pt (structural entrant/exit composition).
