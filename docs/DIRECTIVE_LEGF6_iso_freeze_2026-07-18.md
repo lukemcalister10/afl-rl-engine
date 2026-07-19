@@ -3,12 +3,26 @@
 ### closer. Freezes the one live fit q97m's 2026-07-14 freeze missed. The SAME pattern already
 ### owner-blessed for q97m. Tier-1-lite by construction (k=0 diff bounded to ≤1 row).
 
-## GIT ENTRY (verbatim; item-334 law)
-`git fetch origin main claude/legf5-entrant-layer-conservation-p4susl`; ls-remote must return
-`15a9abd996f8f7426e98f173d83a0d600b966a3c` STRICT → checkout → `git checkout -b
-claude/legf6-iso-freeze-<suffix>`. Docs on MAIN; never join lineages; this-session fetch; THREADS=1
-(OPENBLAS/OMP/MKL/NUMEXPR). Entry stamps: store `968de0c7` · curve `56dd7a7b`/`89c14729` · q97m
-`cfdc7321`.
+## ★ GIT ENTRY — BASE PROOF IS COMMIT #1, NON-NEGOTIABLE (item 383/384 — the last run
+## resumed on a STALE Leg-A branch because this step was skipped; it does not get skipped again) ★
+**Start from a FRESH CLONE, not any existing workspace** (a reused workspace is how the stale
+branch was inherited):
+```
+rm -rf afl-rl-engine && git clone https://github.com/lukemcalister10/afl-rl-engine.git
+cd afl-rl-engine
+git ls-remote origin claude/legf5-entrant-layer-conservation-p4susl   # MUST print 15a9abd996f8f7426e98f173d83a0d600b966a3c
+git checkout 15a9abd996f8f7426e98f173d83a0d600b966a3c                  # detached at the candidate head
+git rev-parse HEAD                                                     # MUST equal 15a9abd996f8f7426e98f173d83a0d600b966a3c
+git checkout -b claude/legf6-iso-freeze-<suffix>
+```
+**COMMIT #1 (before ANY freeze work) = the BASE PROOF ARTIFACT** `session_2026-07-18/legf6/
+BASE_PROOF.txt`: the ls-remote output, `git rev-parse HEAD`, `git merge-base --is-ancestor
+15a9abd HEAD` result, and the balanced-board build md5. **ASSERT ALL FOUR: HEAD == 15a9abd ·
+15a9abd IS the base · balanced == 06d8af60 · store 968de0c7. If ANY fails → HALT, commit nothing
+further, report "base proof failed" with the values.** A build whose history does not descend
+from 15a9abd is the item-383 defect — STOP. Only after BASE_PROOF passes does the freeze begin.
+Docs on MAIN; never join lineages; this-session fetch; THREADS=1 (OPENBLAS/OMP/MKL/NUMEXPR).
+Entry stamps: store `968de0c7` · curve `56dd7a7b`/`89c14729` · q97m `cfdc7321`.
 
 ## ★ THE CLEAN-INSTANCE PRECONDITION (MANDATORY — DO THIS FIRST, HALT IF IT FAILS) ★
 Before freezing ANYTHING: build the balanced board and assert == `06d8af60` byte-exact (Σv
