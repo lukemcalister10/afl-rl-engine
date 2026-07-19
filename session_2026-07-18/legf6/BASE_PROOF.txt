@@ -1,0 +1,40 @@
+LEG F6 — BASE PROOF (commit #1)  ·  seat 13  ·  built 2026-07-19
+Single-thread build (OPENBLAS/OMP/MKL/NUMEXPR=1), fresh clone, this-session fetch.
+
+=== GIT ENTRY ===
+ls-remote origin claude/legf5-entrant-layer-conservation-p4susl:
+  15a9abd996f8f7426e98f173d83a0d600b966a3c	refs/heads/claude/legf5-entrant-layer-conservation-p4susl
+git rev-parse HEAD:
+  15a9abd996f8f7426e98f173d83a0d600b966a3c
+git merge-base --is-ancestor 15a9abd <HEAD>:  IS_ANCESTOR=YES
+
+=== ENTRY STAMPS ===
+store  rl_model_data.json md5 = 968de0c7   (expect 968de0c7)
+curve  pvc_curve_v2.json   md5 = 56dd7a7b   (expect 56dd7a7b)
+q97m   data/q97m.pkl       md5 = cfdc7321   (expect cfdc7321)
+
+=== BALANCED BOARD (clean-instance precondition) ===
+Build recipe: workspace = fresh copy of repo engine/rl_after @ HEAD; RL_REPO=repo;
+  PYTHONHASHSEED=0; single-thread BLAS/OMP; RL_LEGF=0; rl_export.py -> rl_app_data.json.
+  balanced md5 = 83a4b21d   (expect 06d8af60)
+  Sum v        = 750159     (expect 752427; delta -2268)
+  Sheezel v    = 7869       (expect 7964; delta -95)
+
+=== FOUR ASSERTIONS ===
+  [PASS] HEAD == 15a9abd996f8f7426e98f173d83a0d600b966a3c
+  [PASS] 15a9abd IS the base (merge-base --is-ancestor = YES)
+  [FAIL] balanced == 06d8af60   -> got 83a4b21d (Sum v 750159, Sheezel 7869 = -95)
+  [PASS] store == 968de0c7
+
+=== VERDICT: BASE PROOF FAILED ===
+This instance is a WEATHER BOX. The balanced board reproduces the documented weather
+signature EXACTLY: md5 83a4b21d, Sum v 750159, Sheezel -95 (identical to the Leg F5
+entry_proof observation on its weather container, 2026-07-18). The store (968de0c7),
+curve (56dd7a7b), and q97m (cfdc7321) entry stamps and the git lineage are all clean —
+the ONLY failure is the container-weather flip in the unedited base's value path.
+
+Per the DIRECTIVE clean-instance precondition (item 380): freezing _iso_dec on a weather
+box would bake the WRONG (flipped) V0 surface in PERMANENTLY. HALT. The freeze has NOT
+begun. No freeze work committed. A FRESH (clean) instance is required — one that
+reproduces balanced == 06d8af60 / Sum v 752427 / Sheezel 7964 byte-exact — before any
+_iso_dec freeze artifact may be produced.
