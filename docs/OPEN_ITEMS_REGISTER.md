@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v338 2026-07-17 · PEN: ITEM 365: F4 GREEN — both roster gates IN (-2.8%/+0.1%), symmetry 8.8v9.0, gradient monotone; s-bisection lawfully targets sealed r_pop (in-code proof); §2.iii deleted w/ obituary; F5 FIRED 19eda19 (the last build); the turn-15 cure fired correctly on a missed slot · prior: ITEM 364
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v339 2026-07-17 · PEN: ITEM 366: F5 GREEN — CHAPTER BUILD-COMPLETE at 15a9abd (conservation gates IN -1.2%/+1.7%; entrant layer 83,538 sealed-not-tuned); THE SHEEZEL FINDING not waved through (-95 cross-container = a flipped discrete branch hypothesis) → BAKE-CONTAINER REPRODUCTION GATE adopted + audit shard address; the ladder OPENS · prior: ITEM 365
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5684,6 +5684,34 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     turn-15 &&-chain cure STOPPED EVERYTHING loudly, nothing half-shipped, fixed and re-run):
     base `a9570cb5` STRICT · the entrant layer to the v1.3 full structure · the league
     conservation gate ±5% both transitions · the chapter's LAST build. OWNER ASK: fire F5.
+
+366. **F5 PRESCREENED GREEN — THE CHAPTER IS BUILD-COMPLETE; THE BAKE-CONTAINER REPRODUCTION GATE
+    ADOPTED (2026-07-18).** F5: PR #119 (stacked #118), branch `…legf5-…-p4susl` head `15a9abd`.
+    VERIFIED this seat: stacked on `a9570cb5` ✓ · fence = `rl_export.py` + `ui/app/board.js`
+    (justified: F1-field retirement banner) + session ONLY · store `968de0c7` · curve `56dd7a7b`
+    · `rl_model` `cc626d7d` · `_merged_recover` `caf013e2` (the F4 state, untouched by F5) ·
+    sealed entrant structure committed. [Build-run, audit recomputes:] **THE OWNER'S CONSERVATION
+    GATE — BOTH IN: −2→−1 762,262 vs 771,152 = −1.2% · −1→now 765,382 vs 752,427 = +1.7%**;
+    the F4 roster gate stays IN (−2.6%/+0.3%); entrant layer 83,538 (draft 69,266 + mech 14,272,
+    ~103 slots) sealed `a17aafed` from intake history 2019–2025, NOT tuned (vs the item-360
+    estimate ~75–80k and realized ~74k — honest, slightly rich, visible); F1 strawman superseded
+    w/ in-block obituary; survivor diagnostic −6.2%/−2.2%; k=0 phantom NONE 0/804; RL_LEGF=0
+    edited==base byte-exact (cmp); dormancy PASS. **THE FINAL CANDIDATE: …→ e4177c2 → a90052a →
+    cc58570 → 7b6dfc5 → bccc231 → a9570cb5 → `15a9abd`** (PR stack #111→#113→#115→#117→#118→#119).
+    **THE SHEEZEL FINDING — NOT waved through as weather:** F5's container, single-threaded and
+    internally deterministic, does NOT reproduce the filed `06d8af60`, with a NAMED row −95
+    (Sheezel) in the UNEDITED base — a 95-SCAR cross-container delta is NOT 1-ULP dust and
+    contradicts a naive reading of item 349. HYPOTHESIS (to be proven, not assumed): FP
+    micro-difference flipping a DISCRETE branch (a knife-edge row on a threshold — min/max/floor
+    /int-rounding). F5's own proofs stand (structural diff-vs-own-base; gate %s robust: 95 ≈
+    0.01% of league). **DOCTRINE ADDED (this seat): (a) THE BAKE-CONTAINER REPRODUCTION GATE —
+    the bake instance must FIRST reproduce the candidate's filed boards byte-exact or HALT and
+    take another instance (never bake container-dependent values); (b) every audit-shard annex
+    reports reproduction status; a non-reproducing shard NAMES the differing rows and localizes
+    the flipped branch (the Sheezel-cliff probe = a standing shard-A/C address); (c) knife-edge
+    rows are a model-brittleness finding for the owner's viewing.** NEXT (seat 13, next turn):
+    the audit seed pack at `15a9abd` (shards A–E, THREADS=1, annexes, leak-guard scrub) + the
+    viewing-pack render directive. The ladder OPENS.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
