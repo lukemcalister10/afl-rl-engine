@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v350 2026-07-17 · PEN: ITEM 377: viewing-pack directive tightened (owner challenged the estimate, correctly) — no UI difference by design (same ui/app pipeline; Δ column + audit sections are viewing-only overlays); TIME 2-3h→1-1.5h (only 3 compute items, rest collation); reuse-not-rebuild explicit · prior: ITEM 376
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v351 2026-07-17 · PEN: ITEM 378: viewing build halted on pin mismatch — reconciled (correct caution, benign): read-base = candidate BRANCH still at 15a9abd (verified unmoved); 0432fd7/31138225 = main moved by the docs pen, NOT the base (base-pin rule); absent session dir is the build's to create; couriered proceed · prior: ITEM 377
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5962,6 +5962,21 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     TIME → ~1–1.5 h, EFFORT → Medium, "reuse not rebuild" made explicit (the loose band was a
     fence-discipline miss — S2/S3; a wide time band is exactly what lets a chat wander). Pushed
     docs-only. No scope change; the directive is otherwise as item 376.
+
+378. **VIEWING BUILD HALTED ON A PIN MISMATCH — RECONCILED (correct caution, benign cause;
+    2026-07-18).** The viewing-pack build verified references before executing (the discipline
+    working) and flagged: directive pins `15a9abd` but "actual HEAD" is `0432fd7`, and
+    `session_2026-07-18/viewing_pack/` absent. RECONCILED against the remote (cited): the two SHAs
+    are DIFFERENT REFS by design (the CORE base-pin rule) — the build's READ-BASE is the CANDIDATE
+    BRANCH `claude/legf5-entrant-layer-conservation-p4susl`, head asserted **still `15a9abd`,
+    unmoved on the remote**; `0432fd7` (→ `31138225` now) is **main**, which the docs pen advances
+    every register push and is NOT the build's base — main-moving-on-the-docs-line is the exact
+    expected state the base-pin rule covers ("main AT OR AFTER, docs-only diff"). The absent
+    `viewing_pack/` session dir is CORRECT — a read-only build creates its own. Courier sent: assert
+    15a9abd against the BRANCH, ignore main's docs drift, create the session dir, proceed; the
+    reproduction precondition stands. No defect — the build's HALT-on-unverified-mismatch is the
+    wanted reflex; only the two-pins distinction needed clarifying (a recurring teaching point:
+    read-base ≠ main while the docs pen is live).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
