@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v343 2026-07-17 · PEN: ITEM 370: the handover's own audit — token safety VERIFIED repo-wide (the grep hit = the bare prefix in seat-2 prose, no secret ever committed); two real defects cured: rev161 STANDALONE (pen mechanics + entry + reconciliation sources folded in) + manifest v4.54; a fresh seat needs nothing from archive · prior: ITEM 369
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v344 2026-07-17 · PEN: ITEM 371: shard A reconciled GREEN — default board 1f10220c deterministic x3 (knife-edge did not trigger here); guard-5 RED = the KNOWN pre-bake pin (v2.10-era pins vs by-design-edited engine, verified); gate-mode switch reject = INFRA_ALLOW rides the bake; RL_LEGF=0=d85901af matches filed lens board; the 3-off equivalence is shard C's load-bearing check · prior: ITEM 370
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5786,6 +5786,34 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     incoming seat can run the live task from the doc alone. The stale ≈-pin phrasing replaced
     with "always ls-remote fresh." A fresh seat now needs rev161 + the register and NOTHING from
     archive. Handover condition: GOOD, verified.
+
+371. **AUDIT SHARD A RECONCILED — GREEN with TWO understood non-runs; ONE cross-check DEFERRED to
+    C (2026-07-18).** Auditor at pin 15a9abd (asserted; store 968de0c7 ✓, curve 89c14729 ✓;
+    THREADS=1; numpy 2.4.4 / OpenBLAS 0.3.31 DYNAMIC_ARCH Haswell). **RECONCILED:**
+    · **A2 DETERMINISM: the key positive — default board built THREE times = `1f10220c` identical
+      (dev-shell too); NO run-to-run divergence, so the item-366 knife-edge probe did NOT trigger
+      on this container.** The candidate default is `1f10220c` (F5 head; the additive phantom keys
+      + the calibration — NOT the stale `270a2c5f`, which was the e4177c2/ACT-2-era board; the
+      auditor correctly noted the gap is scope, not a mover).
+    · **NON-RUN 1 — GUARD-5 RED = THE KNOWN PRE-BAKE RED, EXACTLY (items 341/349/366):** the
+      auditor's cause is verbatim correct — checkout `rl_model cc626d7d` ≠ pinned `a5fd3d7d`,
+      `_merged_recover caf013e2` ≠ `engine_head 40f43772`. VERIFIED: those pins are the v2.10-ERA
+      identities; the five-migration + Leg E/F EDITED both files BY DESIGN; store matches. The
+      guarded path fails closed on line one AS INTENDED until the bake re-pins (BAKE_RUNBOOK step
+      2, owner-worded). The auditor reproduced the standing red independently — CONFIRMS it, not a
+      new defect. (Boards were built by direct rl_export invocation, the correct pre-bake method.)
+    · **NON-RUN 2 — kill-switches rejected in `RL_CONFIG_MODE=gate`** ("UNKNOWN model override
+      not in manifest"): EXPECTED — the RL_PVC2/RL_LEGE/RL_LEGF INFRA_ALLOW/manifest entries
+      RIDE THE BAKE (the RL_FLEX pattern, items 344/366; BAKE_RUNBOOK step 3). Pre-bake they are
+      dev-shell-only; the auditor exercised them there correctly.
+    · **BOARD CROSS-CHECKS:** RL_LEGF=0 ⇒ `d85901af` MATCHES the filed Leg-E lens board (item 344)
+      ✓. RL_PVC2=0 ⇒ `0a1ec290`: NOT compared to the filed `9829d01a` because that was RL_PVC2=0
+      on the five-migration base (Leg E/F absent); on 15a9abd the other two layers stay ON ⇒ a
+      DIFFERENT board legitimately. **THE APPLES-TO-APPLES 3-switch-off check is SHARD C's job —
+      flagged there as the load-bearing equivalence reconciliation.**
+    VERDICT: shard A clean — every RED/non-run is a known, ruled, pre-bake condition reproduced
+    independently; determinism holds on this container. ANNEX noted: DYNAMIC_ARCH present (the
+    reproduction-gate rationale stands; item 366). Awaiting shards B–E.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
