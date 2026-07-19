@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v357 2026-07-17 · PEN: ITEM 384: F6 directive HARDENED after the stale-base resume — fresh-clone mandate + checkout 15a9abd by SHA + BASE_PROOF.txt as commit #1 (4-way assert, HALT on miss) before any freeze. Owner path: land F6 green then hand over · prior: ITEM 383
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v358 2026-07-17 · PEN: ITEM 385: F6 re-fire HALTED correctly (right base, weather instance) — but weather is RUN-TO-RUN not per-instance (build stable neither across nor within box; can't swap container), invalidating the item-380 freeze-a-clean-surface plan. Path corrected to the source order-fix (BLAS-invariant _iso_dec). OWNER DECISION A(defer/ship under gate) vs B(source fix); ROTATE now (judgment fork + long seat). d85901af-as-balanced flagged not asserted · prior: ITEM 384
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6092,6 +6092,29 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     begin. Filed to main `212921b` (docs-only). Candidate base intact. This is the owner's chosen
     path: land F6 GREEN, THEN hand over. Re-fire instructions couriered (fresh chat + the fresh-clone
     firing block).
+
+385. **F6 (clean re-fire) HALTED CORRECTLY — but the weather is RUN-TO-RUN, not per-instance;
+    APPROACH MUST CHANGE; DECISION + ROTATION TO OWNER (2026-07-18).** The hardened F6 re-fire
+    worked: correct base (15a9abd, BASE_PROOF path), ran the clean-instance precondition, found
+    this instance = weather (balanced 83a4b21d / Σv 750159 / Sheezel 7869), and HALTED rather than
+    freezing (the guard working). THEN the build established two NEW facts: (1) it CANNOT swap its
+    own execution container from inside the session — so "retry for a clean box" is not a lever;
+    (2) the board is NOT run-to-run stable on ONE box (build 1 = 83a4b21d/750159; build 2 =
+    d85901af/752427) — the isotonic tie-break flips between RUNS, not only between machines.
+    **THIS INVALIDATES the item-380 premise** that the weather is per-instance-stable and that a
+    clean instance can be drawn to freeze: it cannot, here. **SUPERVISOR FLAG (owned, not
+    asserted):** build-2's `d85901af` is the filed LENS hash, not balanced — I CANNOT resolve from
+    my sandbox whether that's a mislabel or a real collision, and after the item-382 wrong call I
+    am flagging it, not theorising. **THE CORRECTED PATH:** the pickle-a-clean-surface freeze is
+    dead in this environment; the SURVIVOR is the directive's sanctioned alternative — ORDER-FIX /
+    rational-quantise the `_iso_dec` input so PAVA tie-breaks are BLAS-invariant (deterministic at
+    source, needs no clean instance). That is real determinism engineering, ~1h but a different
+    technique deserving its own build + re-audit. **OWNER DECISION (surfaced): (A) DEFER F6 — ship
+    v2.11 under the bake-container reproduction gate (shipped board correct; wobble stays a known
+    viewing/bake retry cost) vs (B) the SOURCE ORDER-FIX build now.** RECOMMENDATION: this
+    judgment-heavy fork + a long seat that already erred once tonight (item 383) = ROTATE. Stop the
+    build (no freeze, no more rebuilds); hand over; the fresh seat's job 1 = rule A vs B with the
+    owner, then execute. Candidate 15a9abd intact; nothing damaged; no time pressure (v2.10 usable).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
