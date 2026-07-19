@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v326 2026-07-17 · PEN: ITEM 353: F3 checkpoint — true sites = _merged_recover.py (_proj_w4 copy; pedigree fade + staleness gate + PR.tenure all on AGE_REF); fence EXTENDED with conditions (k=0-dormant by construction + clock-identity unit test; V0 chain stays hard-out; acceptance unchanged); item-352 addresses corrected; chat continues · prior: ITEM 352
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v327 2026-07-17 · PEN: ITEM 354: F3 pedigree fix TRUE (gradient un-inverted, k=0 exact) — residual = distinct mid/vet forward calibration defect; RULED: accept partial + re-scope to F4, ±5% acceptance transfers UNWAIVED, ladder still holds; PR opens now w/ tension flagged; no laws bent · prior: ITEM 353
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5453,6 +5453,28 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     inactive copies are REPORTED, not deleted (obituaries are another build's scope). (5) The
     acceptance UNCHANGED: backtest ±5% · gradient un-inverted · HALT rather than bend Reid or
     hand-tune. The chat CONTINUES (it did everything right).
+
+354. **F3 SECOND CHECKPOINT: THE PEDIGREE FIX LANDS TRUE; THE RESIDUAL IS A SECOND, DISTINCT
+    DEFECT — PARTIAL-ACCEPT + RE-SCOPE RULED (2026-07-18).** F3 (branch head `bccc231`, verified
+    on origin) committed the §2.vi+§2.iii fix: **k=0 byte-exact ✓ · RL_LEGF=0 chain byte-exact ✓ ·
+    THE GRADIENT UN-INVERTED ✓** (the kids-crater defect CURED at the true sites). The ±5%
+    backtest is NOT met: the residual (~11pt) is a BOARD-WIDE MID/VETERAN forward L-SYMMETRY
+    calibration issue — a DIFFERENT mechanism, outside the item-352/§2.vi pedigree scope. The
+    build refused to start the larger change without a ruling AND self-rejected the
+    pedigree-over-carry shortcut (only touches g<46 rows; cannot close a board-wide gap; risks
+    over-carrying) — both correct. **RULING Q1: ACCEPT F3 PARTIAL + RE-SCOPE (S2: mid-flight
+    scope growth goes to a NEW directive and a NEW chat, never appended). THE ±5% ACCEPTANCE IS
+    NOT WAIVED — it transfers INTACT to the follow-up build (F4, the mid/vet forward
+    calibration); the ladder continues to HOLD until the backtest lands inside ±5% at some head.**
+    F3's closing obligations: commit the residual characterization (mechanism · cohort
+    decomposition · addresses if localizable) as its final artifact; touch NO mid/vet code in
+    that chat. **RULING Q2: OPEN THE PR NOW, stacked on #115, honest EXIT_PROOF as the body, the
+    ±5% tension and the L-SYMMETRY residual flagged PROMINENTLY, marked pending-F4/do-not-merge**
+    — durability and reviewability outrank tidiness (the item-339 lesson); nothing merges without
+    the owner's word regardless, and an honest flagged tension is the opposite of an overclaimed
+    pass. F4 directive + memo addendum v1.2 author AFTER F3's final return (its artifacts pin the
+    addresses). SCORE SO FAR: one chapter defect cured and proven; one newly isolated with its
+    acceptance intact; zero laws bent.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
