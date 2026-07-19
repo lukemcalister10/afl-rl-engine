@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v325 2026-07-17 · PEN: ITEM 352: VERDICT NOT CALIBRATED — backtest −30%, gradient inverted (developing −33.3% steepest), pedigree strip 36.7%, exit rule mislabels 155; owner's distributed liability matches aggregate naming none; MEMO v1.1 + F3 fix issued (acceptance = the backtest; HALT rather than bend a law); ladder holds · prior: ITEM 351
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v326 2026-07-17 · PEN: ITEM 353: F3 checkpoint — true sites = _merged_recover.py (_proj_w4 copy; pedigree fade + staleness gate + PR.tenure all on AGE_REF); fence EXTENDED with conditions (k=0-dormant by construction + clock-identity unit test; V0 chain stays hard-out; acceptance unchanged); item-352 addresses corrected; chat continues · prior: ITEM 352
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5427,6 +5427,32 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     itself** (−1→now within ±5%; gradient un-inverted; k=0 byte-exact; HALT rather than bend the
     Reid constraint or hand-tune a cohort to pass). The ladder holds until F3 lands GREEN.
     OWNER ASK: fire F3 into a fresh chat.
+
+353. **F3 CHECKPOINT: THE TRUE SITES LIVE IN `_merged_recover.py` — FENCE EXTENSION RULED WITH
+    CONDITIONS (2026-07-18).** F3 measured the mechanism fully before asking (a model checkpoint:
+    durable artifact, no fence bent, no law bent): the forward collapse has TWO drivers, BOTH in
+    `_merged_recover.py`, BOTH consuming the AGE_REF clock — (A) the pedigree prior
+    (`raw_ev≈_par_prior` for thin-evidence young rows) fades on the ADVANCING age/seasons clock
+    (decay ≈ 1−(seasons−1)/4.5) though no new seasons were produced; (B) the staleness gate
+    (`el≥onset & ns≤1 ⇒ e=min(e, 0.25·V0)`) fires because `PR.tenure` advances with AGE_REF while
+    produced-seasons don't — the lens mislabels young pedigree as "stalled prospects" and crushes
+    to the floor (~0.28·V0; Jagga 3622→2681 then 971). Its evidence-clock probe (+46-line
+    monkeypatch, −28.3%→−28.2%) proved `PR.tenure` ignores its Y argument. **ITEM-352 ADDRESS
+    CORRECTION ACCEPTED:** the active `proj_from_peak` is the `_proj_w4` COPY in
+    `_merged_recover.py`, not rl_model's literally-named site; audit shard-D addresses update at
+    seeding. **THE RULING (supervisor — the fence is this seat's artifact; NO owner law moves:
+    the construction is MEMO v1.1 §2.vi verbatim, at the true address; owner may veto):** (1)
+    FENCE EXTENDED: `_merged_recover.py` edits GRANTED, LIMITED to the `_proj_w4` copy · the
+    pedigree-fade decay · the staleness block · `PR.tenure`'s clock keying — each re-keyed on
+    PROJECTED EVIDENCE (BASE_REF), written so k=0 semantics are identical BY CONSTRUCTION (the
+    clocks coincide at k=0). (2) The V0/`_iso_dec` chain `:1121-1171` stays HARD-OUT absolutely;
+    any required edit inside it ⇒ HALT again. (3) NEW EXIT PROOF: a committed unit test asserting
+    the edited sites are DORMANT at k=0 (the clock-identity at each site), beside the unchanged
+    k=0 `06d8af60` byte-exact · RL_LEGF=0 chain · store `968de0c7` · THREADS=1. (4)
+    `rl_model.py::proj_from_peak` / `rl_export.py:96`: touch only if still implicated post-fix;
+    inactive copies are REPORTED, not deleted (obituaries are another build's scope). (5) The
+    acceptance UNCHANGED: backtest ±5% · gradient un-inverted · HALT rather than bend Reid or
+    hand-tune. The chat CONTINUES (it did everything right).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
