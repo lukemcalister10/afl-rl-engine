@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v359 2026-07-17 · PEN: ITEM 386: corrects item 385 — the F6 precondition I wrote compared the WRONG board (default RL_LEGE=1 gives d85901af, not the LEGE=0-gated 06d8af60); with correct env the balanced board reproduces 06d8af60 BYTE-EXACT. Integers clean+stable 2/3 runs; the flip is OCCASIONAL not every-run. item-385 'freeze path dead' overstated. Await the build's genuine-weather-vs-first-run verdict. Two supervisor overstatements tonight = rotation signal stands · prior: ITEM 385
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v360 2026-07-17 · PEN: ITEM 387: HANDOVER → rev162 + manifest v4.55 (owner-requested refresh + second pass). Folds the closed audit + F6 seam w/ the corrected LEGE=0 precondition (verified in code); §5 incoming first-acts; §4 owns tonight's 2 overstatements as the rotation signal. Standalone. Seat 13 rotates here · prior: ITEM 386
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6135,6 +6135,21 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     the build. The pattern (a long seat over-concluding on determinism minutiae) stands as the
     rotation signal; but F6 is NOT dead and the environment is NOT hopeless — the freeze path may
     well be viable after all. Await the build's verdict, THEN the A/B decision + rotation.
+
+387. **HANDOVER REFRESHED TO rev162 + SECOND-PASS CHECKED; manifest v4.55 (owner-requested,
+    2026-07-18).** Pushed `dc51b76` (docs-only): **HANDOVER rev162 · manifest v4.55**; rev161/v4.54
+    archived. rev162 folds everything since rev161: the CLOSED cold audit (all 5 shards green, no
+    candidate defect, items 371–375), the two owned lineage-split cures (acceptance_v1_21 + §5 file
+    land at bake), and the F6 determinism seam (items 380–386) with the CORRECTED read — the
+    Sheezel flip is OCCASIONAL not every-run; **any board build/repro check MUST use
+    `RL_LEGE=0 RL_LEGF=0`** (the prior precondition compared the LEGE=1 lens board d85901af, not the
+    LEGE=0-gated 06d8af60 — verified in rl_export.py this pass). §2 states the F6 A/B decision; §4
+    ledger owns tonight's two supervisor overstatements (382 owner-caught, 385 build-caught) as the
+    rotation signal; §5 gives the incoming seat ordered first-acts (F6 verdict → rule A/B → ladder).
+    SECOND PASS (owner-requested) caught + fixed: a garbled §2 line, the manifest bump to match, and
+    CONFIRMED the LEGE=0 gating in code. rev162 is STANDALONE — a fresh seat needs only it + the
+    register. Stale branch `iso-corr-…8b8ab7d` noted abandoned. THIS SEAT ROTATES here; F6 build
+    still running (do not interrupt).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
