@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v328 2026-07-17 · PEN: ITEM 355: F3 closed (fence exact to ruling, gradient cured, backtest -26.1% honest, self-correction banked); background tasks harmless; F4 issued a59426f (checkpoint-gated, ±5% transferred unwaived, owner re-rules if honest maths can't reach) · prior: ITEM 354
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v329 2026-07-17 · PEN: ITEM 356: F4 checkpoint answered — L-SYMMETRY breach in raw_ev production price (dev_advance roll consumption dominant, 1.01x symmetry on neutralization; b6 band read; 4x posval leverage); DAMPER GRANTED per MEMO v1.2 (measured realized rate, sealed, never iterated vs backtest; k=0-inert; Reid held) · prior: ITEM 355
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5495,6 +5495,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     floor, never re-opened · the self-rejected pedigree-over-carry stays rejected · if honest
     law-compliant maths cannot reach ±5%, HALT — that tension goes to the OWNER (only he re-rules
     the expectation). OWNER ASK: fire F4 into a fresh chat.
+
+356. **F4 CHECKPOINT ANSWERED — MECHANISM ACCEPTED, THE DAMPER GRANTED UNDER THE MEASURED-RATE
+    LAW (2026-07-18).** F4's checkpoint (entry re-proofs clean at `bccc231`; residual reproduced
+    −25.8% vs F3's filed −26.1%; fence honored pre-checkpoint): the mid/vet forward decline is an
+    **L-SYMMETRY breach in `raw_ev`'s production price** — two AGE_REF reads F3's form-anchor
+    never touched: (1) the `_dev_advance` AGE_CURVE roll consumption (DOMINANT — neutralizing
+    restores MID+VET −20.9%→−14.5% vs backward −14.4%, ratio 1.01×) and (2) the demonstrated-
+    level band `b6` read (mid; form-anchor-independent, −5.93% vs −5.86%); a 6–7% level drop
+    levers ~4× through `v_at_peak posval(level−REPL)` into 23–28% price. Addresses:
+    `_merged_recover.py:287-288` · `:820-821`/`:851` · (`rl_model.py:361` + `v_at_peak` NAMED as
+    out-of-fence — correctly not requested). **RULING: GRANTED** — MEMO_LEGF **v1.2** filed
+    (`7ee1a84`): §2.vii THE L-SYMMETRY DAMPER — a consumption wrapper tempering the forward
+    AGE_REF advance to the SAME players' MEASURED realized backward-transition rate (from F2's
+    stamped boards), per-age-transition, smoothed, **SEALED BEFORE RENDER AND NEVER ITERATED
+    AGAINST THE BACKTEST** (the line between measurement and fudge), forward-only, RL_LEGF-gated,
+    k=0-inert w/ the dormancy suite extended, Reid held (no free parameter — the damper's only
+    content is the measured rate), F3 floor held. Fence grant = the two wrapper sites + session;
+    every prior HARD-OUT absolute (incl. `_dev_advance`'s source and the `v_at_peak` leverage —
+    wrap consumption, never edit them). If the honest rate cannot reach ±5%: HALT — the
+    expectation goes to the OWNER. F4 resumes on the courier of this ruling.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
