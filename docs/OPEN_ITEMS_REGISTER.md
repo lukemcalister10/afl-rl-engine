@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v352 2026-07-17 · PEN: ITEM 379: viewing reproduction precondition FIRED (correct-by-design) — container = the item-374 weather instance (83a4b21d/Sheezel−95), not a candidate defect (int-v invariant holds, display-only); clean containers exist (shard C); ACTION = re-fire the directive UNCHANGED until an instance reproduces 06d8af60; same gate guards the bake · prior: ITEM 378
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v353 2026-07-17 · PEN: ITEM 380: the weather DIAGNOSED — not random: a live IsotonicRegression.fit() at _merged_recover:1222 (the one fit q97m's freeze missed), PAVA near-tie knife-edge flips Sheezel −95 under DYNAMIC_ARCH 1-ULP; affects balanced board (1 row, display-scale). OWNER DECISION: (A) ship-as-is + reproduction gate vs (B) freeze _iso_dec pre-bake (recommended — kills the retry roulette, same pattern as q97m) · prior: ITEM 379
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -5996,6 +5996,34 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     (the bake-container reproduction gate) will require a reproducing instance for v2.11 — pinning
     threads helped but did not fully de-weather these instances; the clean-container retry is the
     procedure. No doc/scope change to the directive.
+
+380. **THE "WEATHER" DIAGNOSED — NOT A DICE ROLL: a live isotonic .fit() at import, one row
+    knife-edge; OWNER DECISION SURFACED (2026-07-18).** The owner rightly balked at "just keep
+    retrying." INVESTIGATED (read-only, at 15a9abd): the weather is NOT hardware (shard C got
+    06d8af60 on a 2.80GHz box; the viewing got 83a4b21d on the same class) and NOT random — it is
+    BUILD-TIME STATE. The 2026-07-14 determinism fix FROZE q97m (pickled `cfdc7321`, loaded not
+    refit) and order-fixed the PAR/NW sums — but **one fit survived: `_merged_recover.py:1222
+    _iso_dec = IsotonicRegression(increasing=False).fit(...)`, called live at board-build
+    (:1233/:1249) inside the V0 pick-curve surface.** IsotonicRegression's pooled-adjacent-
+    violators solver resolves near-ties differently under 1-ULP input differences from
+    DYNAMIC_ARCH BLAS ⇒ a knife-edge that flips exactly ONE row (Sheezel, −95) on some instances.
+    This is the sole residual weather source; it sits in the V0/`_iso_dec` chain that has been
+    HARD-OUT all chapter. **IT DOES AFFECT THE BALANCED BOARD** (the V0 surface feeds year-0), so
+    it is a real (if 1-row, display-scale) value-path item, NOT lens-only. **THE OWNER DECISION
+    (surfaced, not taken):** (A) SHIP AS-IS + bake-container reproduction gate — accept that some
+    instances mis-render Sheezel by 95; the gate already guarantees v2.11 bakes only on an
+    instance reproducing 06d8af60, so the SHIPPED board is correct; the "retry until clean" is
+    then only a convenience cost for viewing/bake, not a defect in the baked artifact. (B) FIX THE
+    ROOT pre-bake — a small engine build freezing _iso_dec the q97m way (fit once at bake → pickle
+    → load; or order-fix/quantise the solver input) so EVERY instance reproduces byte-exact; this
+    is a value-path engine change ⇒ its own Tier-1-lite ladder (k=0 diff = the Sheezel row only,
+    by construction; re-audit the one row). RECOMMENDATION: **(B)** — it is the same freeze
+    pattern already blessed for q97m, it removes the retry-roulette entirely, and "the board's
+    identity shouldn't depend on which machine drew it" is the chapter's own doctrine (items
+    347/366); the cost is one more small build + a one-row re-audit before the bake. (A) is
+    defensible and faster and the shipped artifact is equally correct — but it leaves a known
+    brittle row and a manual retry in every future render/bake. Owner's call; the viewing can
+    render on a clean instance under EITHER (re-fire meanwhile is still valid for A).
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
