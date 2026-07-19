@@ -1,4 +1,4 @@
-# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v358 2026-07-17 · PEN: ITEM 385: F6 re-fire HALTED correctly (right base, weather instance) — but weather is RUN-TO-RUN not per-instance (build stable neither across nor within box; can't swap container), invalidating the item-380 freeze-a-clean-surface plan. Path corrected to the source order-fix (BLAS-invariant _iso_dec). OWNER DECISION A(defer/ship under gate) vs B(source fix); ROTATE now (judgment fork + long seat). d85901af-as-balanced flagged not asserted · prior: ITEM 384
+# OPEN ITEMS REGISTER — the single durable list · maintained by the supervisor pen · v359 2026-07-17 · PEN: ITEM 386: corrects item 385 — the F6 precondition I wrote compared the WRONG board (default RL_LEGE=1 gives d85901af, not the LEGE=0-gated 06d8af60); with correct env the balanced board reproduces 06d8af60 BYTE-EXACT. Integers clean+stable 2/3 runs; the flip is OCCASIONAL not every-run. item-385 'freeze path dead' overstated. Await the build's genuine-weather-vs-first-run verdict. Two supervisor overstatements tonight = rotation signal stands · prior: ITEM 385
 ### RULE (owner-driven, 2026-07-11): nothing is "on a list" unless it is in THIS file. Every parked,
 ### deferred, gated, or owner-raised item lives here with its SOURCE and its TRIGGER. Chat memory is
 ### not a register. Updated by supervisor push (SHA cited each time); audited by each incoming seat.
@@ -6115,6 +6115,26 @@ Item 61 read *"SHAPE APPROVED; DIALS NOT YET SET."* **That is now false, and thi
     judgment-heavy fork + a long seat that already erred once tonight (item 383) = ROTATE. Stop the
     build (no freeze, no more rebuilds); hand over; the fresh seat's job 1 = rule A vs B with the
     owner, then execute. Candidate 15a9abd intact; nothing damaged; no time pressure (v2.10 usable).
+
+386. **ITEM-385 PARTLY CORRECTED — the F6 PRECONDITION was mis-specified (my error); the board is
+    mostly CLEAN, the flip is OCCASIONAL not every-run (2026-07-18).** The build (still running,
+    correctly) found: `06d8af60` is gated to `RL_LEGE=0` (rl_export.py:100; shard-C mapping item
+    374). The F6 base-proof I wrote built with DEFAULT env (`RL_LEGE=1`) ⇒ produces `d85901af`
+    (the lens board), so "balanced ≠ 06d8af60" under default env was EXPECTED, not weather — **my
+    precondition compared the wrong board.** This also resolves the item-385 `d85901af`-as-balanced
+    flag I refused to assert: it was the lens board from the mis-set env, exactly. RE-TESTED by the
+    build: with `RL_LEGE=0 RL_LEGF=0` the balanced board reproduces **`06d8af60` BYTE-EXACT (Σv
+    752427, Sheezel 7964)**. THE CORRECTED READ OF THE THREE RUNS: run 1 = a genuine weather flip
+    (83a4b21d/750159/Sheezel 7869); runs 2&3 = clean stable integers (Σv752427/Sheezel 7964); the
+    explicit LEGE=0 build = clean byte-exact. So item-385's "NOT run-to-run stable / freeze-a-clean-
+    surface is dead" was OVERSTATED — the integers are clean and stable most runs; the tie-break
+    fired ONCE in three, not every run. **OPEN QUESTION THE BUILD IS RESOLVING (do not interrupt):**
+    was run-1 genuine-but-rare weather (⇒ the fix still warranted, and a clean surface CAN be drawn
+    since most runs are clean) or a first-run artifact (⇒ risk smaller still). SUPERVISOR NOTE: two
+    overstatements from me in one evening (items 382, 385), both caught — 382 by the owner, 386 by
+    the build. The pattern (a long seat over-concluding on determinism minutiae) stands as the
+    rotation signal; but F6 is NOT dead and the environment is NOT hopeless — the freeze path may
+    well be viable after all. Await the build's verdict, THEN the A/B decision + rotation.
 
 ## FABLE'S QUEUE (design seat, on return)
 1. **THE EVIDENCE LEVER** — one continuous weight on the pedigree par, spanning both regimes (item 65).
