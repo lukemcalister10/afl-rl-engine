@@ -73,9 +73,18 @@ jobs:
           cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
 
       - name: Independent-runner fingerprint (visibility only)
+        # Prints the numpy + bundled-OpenBLAS identity (item 392 determinism pin: board 06d8af60 is only
+        # reproducible on the pinned wheel). Diagnostic only — does not gate.
         run: |
           echo "node=$(uname -n)  arch=$(uname -m)  runner=${RUNNER_NAME:-github-hosted}"
-          python3 -c "import numpy,sys; print('python', sys.version.split()[0], 'numpy', numpy.__version__)"
+          python3 - <<'PY'
+          import numpy, sys, os, glob, hashlib
+          print('python', sys.version.split()[0], 'numpy', numpy.__version__)
+          libs = glob.glob(os.path.join(os.path.dirname(os.path.dirname(numpy.__file__)), 'numpy.libs', 'libscipy_openblas*.so'))
+          if libs:
+              print('bundled OpenBLAS sha256', hashlib.sha256(open(libs[0],'rb').read()).hexdigest()[:16],
+                    '(pin 05c9f9eb89ee68a4)')
+          PY
 
       - name: FV provenance red/green suite (strict board 06d8af60 + fail-closed red paths)
         run: |

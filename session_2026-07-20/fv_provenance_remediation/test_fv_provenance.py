@@ -61,10 +61,18 @@ def _snapshot_guarded():
 
 
 def _seed_pkls():
+    # frozen artifacts the engine loads by ABSOLUTE path (mirrors bootstrap.sh)
     for name in ('cm_400.pkl', 'q97m.pkl', 'v0surf.pkl'):
         src = os.path.join(REPO, 'data', name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(CLAUDE, name))
+    # compute.py reads /home/claude/rl_build/rl_app_data.json at IMPORT time (the "before" analysis panel);
+    # its CONTENT does not affect the board md5, but the FILE must EXIST or the engine import fails
+    # (bootstrap.sh line 58 seeds it). On a fresh runner /home/claude is empty, so seed it here.
+    rb_src = os.path.join(REPO, 'data', 'rl_build', 'rl_app_data.json')
+    if os.path.exists(rb_src):
+        os.makedirs(os.path.join(CLAUDE, 'rl_build'), exist_ok=True)
+        shutil.copy2(rb_src, os.path.join(CLAUDE, 'rl_build', 'rl_app_data.json'))
 
 
 def _staging():
@@ -136,9 +144,10 @@ def green1():
     ok = (r['rc'] == 0 and r['board_md5'] == BOARD_MD5_GOOD)
     facts = _board_facts(r['board_path']) if r['board_path'] else {}
     ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 752427 and facts.get('sheezel') == 7964
+    _tail = '' if ok else '  ::STDERR_TAIL:: ' + ' | '.join((r['stderr'] or '').strip().splitlines()[-4:])
     record('GREEN1_strict_board_06d8af60', ok,
-           "rc=%s md5=%s active=%s sumv=%s sheezel=%s (expect 06d8af60/804/752427/7964)"
-           % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel')))
+           "rc=%s md5=%s active=%s sumv=%s sheezel=%s (expect 06d8af60/804/752427/7964)%s"
+           % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'), _tail))
     shutil.rmtree(r['base'], ignore_errors=True)
     return r
 
