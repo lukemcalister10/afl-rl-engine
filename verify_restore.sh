@@ -6,6 +6,11 @@ set -uo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")" && pwd)}"
 RA="$ROOT/engine/rl_after"
 export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+# fv-provenance remediation 2026-07-20: bind RL_REPO + RL_FV to THIS restored tree so the engine's cp/PR chain
+# imports forward_valuation from the tree being verified — NOT the ambient /home/claude/rl_workspace copy. This
+# is the "parameterize _FV" root fix the pair-guard below anticipated (D8 mixed-pair caveat); wire_redesign now
+# fails closed if RL_FV/RL_REPO are unset rather than defaulting to the workspace.
+export RL_REPO="$ROOT" RL_FV="$ROOT/engine/forward_valuation"
 export PYTHONPATH="$RA:$ROOT/engine/forward_valuation:$ROOT/vendor:${RL_VENDOR:-/home/claude/rl_vendor}"
 pass=0; fail=0
 chk(){ if [ "$2" = "$3" ]; then echo "PASS  $1 = $2"; pass=$((pass+1)); else echo "FAIL  $1 = $2  (expected $3)"; fail=$((fail+1)); fi; }
@@ -32,9 +37,12 @@ chk "Langdon ev(2026)" "$(echo "$PF"|cut -d' ' -f2)" "567"
 for h in _gate1_wf.py _gate1_picksplit.py s4_matrix_M1v7.py s4_render_M1v7.py; do
   if [ -f "$RA/$h" ]; then echo "PASS  harness present: $h"; pass=$((pass+1)); else echo "FAIL  harness MISSING: $h"; fail=$((fail+1)); fi
 done
-# PAIR-GUARD (D8 ASK 3iii — closes the D7 mixed-pair instrument caveat): the engine's cp/PR chain loads
-# through wire_redesign.py's HARDCODED _FV=/home/claude/rl_workspace/forward_valuation — NOT this tree —
-# so the named-player axes above ran repo-engine x WORKSPACE-forward_valuation. Make a mixed pair LOUD:
+# PAIR-GUARD (D8 ASK 3iii — closes the D7 mixed-pair instrument caveat): historically wire_redesign.py's
+# HARDCODED _FV=/home/claude/rl_workspace/forward_valuation meant the named-player axes above ran
+# repo-engine x WORKSPACE-forward_valuation. That root cause is now FIXED (RL_FV bound to $ROOT above; the
+# engine loads THIS tree's forward_valuation), so the axes ran repo-engine x repo-forward_valuation. This
+# guard is now a defense-in-depth check that a lingering workspace copy still matches the repo — a mismatch
+# no longer changes the verify above, but is surfaced LOUD:
 WFV="/home/claude/rl_workspace/forward_valuation"
 if [ -d "$WFV" ] && [ -d "$ROOT/engine/forward_valuation" ]; then
   pgfail=0

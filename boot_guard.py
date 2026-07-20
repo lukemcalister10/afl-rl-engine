@@ -58,6 +58,75 @@ def _cmp_on_pin_len(got, pin):
     got = got or ''; pin = pin or ''
     return bool(pin) and got[:len(pin)] == pin
 
+def fv_provenance_fails(root=None):
+    """FORWARD-VALUATION PROVENANCE assertions (Guard 5, fv-provenance remediation 2026-07-20). Returns a list
+    of failure strings (empty == pass). Asserts BOTH:
+      (a) CHECKOUT integrity  — the checked-out engine/forward_valuation source set == the pin ('fv');
+      (b) LOADED-PATH integrity — the EXACT RL_FV directory the engine WILL import == the pin.
+    On any mismatch (or an unresolved RL_FV path) the failure names the resolved RL_FV, the computed identity,
+    the expected identity, and the failure class (checkout drift / loaded-path drift / unresolved path).
+    Backward-compatible: no-op (empty list) when the 'fv' pin is absent from the manifest. FAIL-CLOSED: if the
+    pin is present but fv_provenance cannot be imported, that is itself a failure (we cannot verify -> HALT)."""
+    root = root or repo_root()
+    exp = expected(root)
+    pin = exp.get('fv')
+    if pin is None:
+        return []
+    try:
+        import fv_provenance as _fv
+    except Exception as e:
+        return ["fv pin present (%s) but fv_provenance is not importable (%r) — cannot verify the "
+                "forward-valuation source set; refusing to boot on an unverified forward_valuation "
+                "(fail-closed)." % (_fmt(pin), e)]
+    fails = []
+    # (a) checkout integrity — the repo's own engine/forward_valuation must equal the pin.
+    ck_dir = _fv.checkout_fv_dir(root)
+    ck_id = _fv.fv_identity(ck_dir)
+    if ck_id is None:
+        fails.append("fv CHECKOUT DRIFT: engine/forward_valuation source set is ABSENT/empty at %s — cannot "
+                     "assert the forward-valuation pin %s (restore the checkout, or re-pin at a bake)."
+                     % (ck_dir, _fmt(pin)))
+    elif ck_id != pin:
+        fails.append("fv CHECKOUT DRIFT: checked-out forward_valuation identity\n        %s\n        %s  !=  "
+                     "pinned %s (data/expected_boot.json 'fv')\n        An engine/forward_valuation source "
+                     "changed without re-stamping the pin (or the pin drifted). Re-pin at a bake in the same "
+                     "commit that moves the source; never boot on an unverified forward_valuation."
+                     % (ck_dir, ck_id, pin))
+    # (b) loaded-path integrity — the EXACT dir the engine will import (RL_FV / checkout) must equal the pin.
+    ld_dir = _fv.resolve_fv(root, halt=False)
+    if ld_dir is None:
+        fails.append("fv LOADED-PATH UNRESOLVED: RL_FV is unset and no checked-out engine/forward_valuation "
+                     "was found via RL_REPO / CLAUDE_PROJECT_DIR — the engine has no verified forward-valuation "
+                     "source to import (refusing an ambient-workspace fallback). Set RL_FV to the checked-out "
+                     "engine/forward_valuation, or RL_REPO to the checkout root. (expected identity %s)"
+                     % _fmt(pin))
+    else:
+        ld_id = _fv.fv_identity(ld_dir)
+        if ld_id != pin:
+            fails.append("fv LOADED-PATH DRIFT: the engine will IMPORT forward-valuation from\n        RL_FV=%s\n"
+                         "        resolved dir %s\n        identity %s  !=  pinned %s (data/expected_boot.json "
+                         "'fv')\n        An explicit RL_FV (or a stale workspace copy) points at a "
+                         "forward_valuation tree that is NOT the pinned source — the exact stale-import hole "
+                         "Guard 5 exists to close. Point RL_FV at the checked-out engine/forward_valuation (or "
+                         "unset it so the checkout is used); never boot on an unverified loaded forward_valuation."
+                         % (os.environ.get('RL_FV'), ld_dir, ld_id, pin))
+    return fails
+
+
+def assert_fv_provenance(root=None, halt=True):
+    """Standalone fail-closed entry point for the forward-valuation provenance assertions (green/red proofs +
+    the canonical board-build entry point call this before generation). HALT (SystemExit) on any failure."""
+    fails = fv_provenance_fails(root)
+    if fails:
+        msg = ("\n============ FORWARD-VALUATION PROVENANCE (Guard 5) FAILED — BUILD HALTED ============\n"
+               "  - " + "\n  - ".join(fails) +
+               "\n=====================================================================================")
+        if halt:
+            raise SystemExit(msg)
+        raise AssertionError(msg)
+    return True
+
+
 def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, register_path=None, halt=True):
     """Assert the store (and optionally engine head / band / register) a script is about to READ matches the
     checked-out repo AND the pinned expected. HALT (SystemExit) on any mismatch. Returns True on pass.
@@ -240,6 +309,13 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
     if exp.get('register') is not None:
         _chk('REGISTER LTI_REGISTER.md', register_path, exp.get('register'),    None)
 
+    # (0g) FORWARD-VALUATION provenance (fv-provenance remediation 2026-07-20): assert the checked-out
+    #      engine/forward_valuation source set == the pin AND the EXACT RL_FV dir the engine will import ==
+    #      the pin. Closes the exact hole that produced the 06d8af60 -> d7a95e8d 109-wobble (a stale
+    #      distribution_pricing.py imported silently with no guard firing). Backward-compatible: no-op when
+    #      the 'fv' pin is absent.
+    fails.extend(fv_provenance_fails(root))
+
     if fails:
         msg = ("\n==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================\n"
                "  - " + "\n  - ".join(fails) +
@@ -248,8 +324,9 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
             raise SystemExit(msg)
         raise AssertionError(msg)
     _rl_verdict = ("  |  rl_model %s == pinned %s" % (_fmt(repo_rl_md5), _fmt(exp_rl))) if exp_rl is not None else ""
-    print("boot-store guard (Guard 5) PASS  [%s]  store %s == pinned %s%s (%s)"
-          % (label, _fmt(repo_md5), _fmt(exp.get('store')), _rl_verdict, exp.get('tag')))
+    _fv_verdict = ("  |  fv %s == pinned %s (checkout+loaded-path)" % (_fmt(exp.get('fv')), _fmt(exp.get('fv')))) if exp.get('fv') is not None else ""
+    print("boot-store guard (Guard 5) PASS  [%s]  store %s == pinned %s%s%s (%s)"
+          % (label, _fmt(repo_md5), _fmt(exp.get('store')), _rl_verdict, _fv_verdict, exp.get('tag')))
     return True
 
 if __name__ == '__main__':

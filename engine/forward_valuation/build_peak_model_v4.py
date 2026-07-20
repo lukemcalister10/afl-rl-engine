@@ -1,6 +1,11 @@
 # CANONICAL v4 build (cont.19): forward-realised target (best-3 >=Y, completeness-weighted current year) + draft rows (bust-inclusive) + corrected age + games-weighted recency. Produces peak_model_v4.pkl. Run: python3 build_peak_model_v4.py (needs rl_after engine + dob_corrected.json + bust_prior_table.json).
-import sys; sys.path.insert(0,'/home/claude/rl_after')
-import os; os.environ['RL_GAMMA']='0.85'; os.environ['RL_PICK1']='3000'
+import sys, os
+# rl_model provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after insert REMOVED;
+# rl_model resolves through the configured environment only (already-imported, else RL_REPO checkout).
+if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+    _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+    if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+os.environ['RL_GAMMA']='0.85'; os.environ['RL_PICK1']='3000'
 import io,contextlib,json,pickle
 with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 import numpy as np

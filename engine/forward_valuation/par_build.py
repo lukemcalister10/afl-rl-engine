@@ -12,7 +12,12 @@ Run: cd /home/claude/rl_after && PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL
      python3 ../forward_valuation/par_build.py
 """
 import sys, os, io, contextlib, collections
-sys.path.insert(0, '/home/claude/rl_after')
+# rl_model provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after insert REMOVED;
+# rl_model resolves through the configured environment only (already-imported by the engine, else RL_REPO
+# checkout). conditional_prior resolves from the canonically-resolved _FV (par_redesign puts it on sys.path).
+if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+    _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+    if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
 os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
 import math as _math
 import numpy as np

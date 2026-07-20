@@ -1,0 +1,91 @@
+name: FV Provenance
+
+# PERMANENT durable provenance regression (fv-provenance remediation 2026-07-20). Runs the fail-closed
+# forward-valuation / rl_model / config red-green suite on every push and pull_request, on a CLEAN GitHub
+# runner (a genuinely independent host, not the bake box), and FAILS (never warns) unless every scenario
+# passes. This is the normal durable test path for the provenance fix — NOT a disposable run-once workflow.
+#
+# Bar (all must pass, halt-not-warn), via session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py:
+#   GREEN 1  strict checked-out forward-valuation is SELECTED and produces board 06d8af60 (804/752427/7964, 0 movers)
+#   GREEN 2  the full provenance record (RL_FV, resolved dir, FV identity, dp+rl_model paths/hashes, config id) is emitted
+#   RED 1    a stale 21d530bf module at the FORMER ambient workspace path is IGNORED — never produces d7a95e8d
+#   RED 2    an explicit stale RL_FV HALTS before board generation (Guard 5 loaded-path drift)
+#   RED 3    a DIFFERENT imported forward-valuation source drifting HALTS (the whole set is pinned)
+#   RED 4    a missing / mismatched config_manifest HALTS a bake/gate board build (no silent continue)
+#   RED 5    a foreign rl_model under /home/claude/rl_after is never imported; the verified rl_model is used
+# Every red path also asserts: no board written, no pin changed, no production file changed, no retry.
+#
+# This workflow deliberately does NOT run the legacy full Guard-5 bootstrap: the base head (3055ea5) carries a
+# PRE-EXISTING rl_model/engine_head boot-pin drift (register item 399 "stale-boot-pin bug") that is out of scope
+# for this import/provenance fix and would red the legacy guard regardless. The provenance suite exercises the
+# forward-valuation provenance path in isolation (fail-closed FV assertion + strict board reproduction), so the
+# independent-runner proof is not blocked by that unrelated pre-existing condition.
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: fv-provenance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fv-provenance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      PYTHONHASHSEED: "0"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pin Python 3.12.3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Ensure python3.12 on PATH (setup_env.sh discovers it by name)
+        run: |
+          set -euo pipefail
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+          python3.12 --version
+
+      - name: Create engine absolute-path root (/home/claude/...)
+        # The engine hard-codes /home/claude/... absolute paths for the frozen pkls + vendored unidecode.
+        run: sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+
+      - name: Provision pinned env (setup_env.sh)
+        # The board of record 06d8af60 is only reproducible on the pinned numpy/scipy/sklearn wheels (item 392).
+        run: |
+          set -euo pipefail
+          bash setup_env.sh
+          echo "$HOME/rl_venv312/bin" >> "$GITHUB_PATH"
+
+      - name: Seed vendored unidecode (offline import dep)
+        run: |
+          set -euo pipefail
+          mkdir -p /home/claude/rl_vendor
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+
+      - name: Independent-runner fingerprint (visibility only)
+        run: |
+          echo "node=$(uname -n)  arch=$(uname -m)  runner=${RUNNER_NAME:-github-hosted}"
+          python3 -c "import numpy,sys; print('python', sys.version.split()[0], 'numpy', numpy.__version__)"
+
+      - name: FV provenance red/green suite (strict board 06d8af60 + fail-closed red paths)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+
+      - name: Upload provenance results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fv-provenance-results
+          path: session_2026-07-20/fv_provenance_remediation/RESULTS.json
+          if-no-files-found: ignore

@@ -1,0 +1,42 @@
+{
+  "pass": 7,
+  "total": 7,
+  "results": [
+    {
+      "name": "GREEN1_strict_board_06d8af60",
+      "ok": true,
+      "detail": "rc=0 md5=06d8af60b679a12db07c064c60c065f9 active=804 sumv=752427 sheezel=7964 (expect 06d8af60/804/752427/7964)"
+    },
+    {
+      "name": "GREEN2_provenance_record",
+      "ok": true,
+      "detail": "all_fields=True fv_identity==pin=True stderr_marker=True (fv=fa060917 dp=dd19a234 rlm=cc626d7d cfg=c2d233ae)"
+    },
+    {
+      "name": "RED1_stale_ambient_ignored",
+      "ok": true,
+      "detail": "stale_seeded=True board=06d8af60b679a12db07c064c60c065f9 (must be 06d8af60, never d7a95e8d) files_unchanged=True"
+    },
+    {
+      "name": "RED2_explicit_stale_rl_fv_halts",
+      "ok": true,
+      "detail": "rc=1 board=None named_drift=True files_unchanged=True"
+    },
+    {
+      "name": "RED3_sibling_source_drift_halts",
+      "ok": true,
+      "detail": "rc=1 board=None named_checkout_drift=True files_unchanged=True"
+    },
+    {
+      "name": "RED4_config_manifest_failclosed",
+      "ok": true,
+      "detail": "4a_missing:ok(rc=1 board=False); 4b_mismatch:ok(rc=1 board=None) files_unchanged=True"
+    },
+    {
+      "name": "RED5_foreign_rl_model_ignored",
+      "ok": true,
+      "detail": "board=06d8af60b679a12db07c064c60c065f9 rl_model_path=/home/claude/fvprov_2wz9bcvc/rl_after/rl_model.py (not /home/claude/rl_after=True) files_unchanged=True"
+    }
+  ],
+  "fv_pin": "fa060917c8e5cd057c4248855c276f790764c1d4fee192b166c0218fc6c4db4f"
+}

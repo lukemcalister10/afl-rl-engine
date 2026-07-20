@@ -18,7 +18,27 @@ fleet. The cache is therefore the SINGLE SOURCE OF TRUTH, regenerated ONLY at a 
 speed optimisation over an equivalent recompute. (This is the same freeze q97m now gets, for the same reason.)
 """
 import io, contextlib, importlib.util, os, pickle
-_FV = os.environ.get('RL_FV', '/home/claude/rl_workspace/forward_valuation')   # D10: parameterized (D8 mixed-pair root cause); default byte-identical
+def _resolve_fv():
+    """CANONICAL FORWARD-VALUATION SOURCE SELECTION (fail-closed, fv-provenance remediation 2026-07-20).
+    An explicit RL_FV wins (Guard 5's loaded-path assertion verifies its identity == pin, so an explicit-but-
+    stale RL_FV HALTS, it is not trusted blindly); otherwise the CHECKED-OUT engine/forward_valuation
+    (RL_REPO / CLAUDE_PROJECT_DIR). There is NO ambient-workspace default: a canonical build never silently
+    imports /home/claude/rl_workspace/forward_valuation, the persistent copy a previous branch may have seeded
+    (the exact hole that produced the 06d8af60 -> d7a95e8d 109-wobble; ROOT_CAUSE.md)."""
+    fv = os.environ.get('RL_FV')
+    if fv:
+        return os.path.abspath(fv)
+    for base in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR')):
+        if base:
+            cand = os.path.join(base, 'engine', 'forward_valuation')
+            if os.path.isdir(cand):
+                return os.path.abspath(cand)
+    raise SystemExit(
+        "wire_redesign: cannot resolve forward_valuation source — RL_FV is unset and no checked-out "
+        "engine/forward_valuation was found via RL_REPO / CLAUDE_PROJECT_DIR. Refusing to fall back to an "
+        "ambient /home/claude/rl_workspace/forward_valuation copy (fail-closed provenance; fv-provenance "
+        "remediation). Set RL_FV to the checked-out engine/forward_valuation, or RL_REPO to the checkout root.")
+_FV = _resolve_fv()
 def _ld(n, p):
     s = importlib.util.spec_from_file_location(n, p); m = importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m); return m

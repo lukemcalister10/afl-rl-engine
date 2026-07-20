@@ -14,8 +14,14 @@ WHAT REMAINS (engine dependencies, unchanged semantics):
     the par-derivation harnesses price through it).
   - build(): the conditional-prior cm trainer (component 1) — PR.retrain()/W.build() reach it.
 """
-import sys; sys.path.insert(0,'/home/claude/rl_after')
-import os; os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+import sys, os
+# rl_model provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after insert REMOVED;
+# rl_model resolves through the configured environment only (already-imported by the engine, else RL_REPO
+# checkout — never a hardcoded workspace path).
+if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+    _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+    if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
 import io,contextlib,numpy as np,copy
 import importlib.util
 def _load(name,path):

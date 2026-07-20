@@ -9,13 +9,33 @@ Run: cd /home/claude/rl_after && PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL
      python3 ../forward_valuation/par_redesign.py
 """
 import sys,os,io,contextlib,copy,collections,numpy as np
-sys.path.insert(0,'/home/claude/rl_after'); sys.path.insert(0,'/home/claude/rl_workspace/forward_valuation')
+# rl_model resolves through the CONFIGURED engine/build environment (the canonical entry points put the
+# checked-out/verified engine/rl_after on PYTHONPATH), NOT a hardcoded /home/claude workspace path. If it is
+# not already importable, fall back to the EXPLICIT checkout (RL_REPO); never to an ambient workspace copy
+# (fail-closed provenance; fv-provenance remediation 2026-07-20).
+if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+    _rl_ra=os.path.join(os.environ['RL_REPO'],'engine','rl_after')
+    if os.path.isdir(_rl_ra): sys.path.insert(0,_rl_ra)
 import importlib.util
 def _L(n,p):
     s=importlib.util.spec_from_file_location(n,p); m=importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m)
     return m
-_FV=os.environ.get('RL_FV','/home/claude/rl_workspace/forward_valuation')   # D10: parameterized (D8 mixed-pair root cause); default byte-identical
+def _resolve_fv():   # CANONICAL FV SELECTION (fail-closed) — see wire_redesign._resolve_fv / fv_provenance.py
+    fv=os.environ.get('RL_FV')
+    if fv: return os.path.abspath(fv)
+    for base in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR')):
+        if base:
+            cand=os.path.join(base,'engine','forward_valuation')
+            if os.path.isdir(cand): return os.path.abspath(cand)
+    raise SystemExit("par_redesign: cannot resolve forward_valuation source — RL_FV unset and no checked-out "
+                     "engine/forward_valuation via RL_REPO/CLAUDE_PROJECT_DIR. Refusing an ambient-workspace "
+                     "fallback (fail-closed provenance; fv-provenance remediation).")
+_FV=_resolve_fv()
+# FV-sibling bare imports (par_build's `import conditional_prior`) resolve from the SAME canonically-resolved
+# _FV — replacing the removed ambient `/home/claude/rl_workspace/forward_valuation` insert with the verified
+# checkout FV so no bare FV import can fall through to a stale workspace copy.
+if _FV not in sys.path: sys.path.insert(0,_FV)
 rd=_L('rd',os.path.join(_FV,'dist_redesign.py')); cp=rd.cp; dp=rd.dp; MA=cp.MA
 pb=_L('pb',os.path.join(_FV,'par_build.py')); F=pb.fit()
 with contextlib.redirect_stdout(io.StringIO()): import compute

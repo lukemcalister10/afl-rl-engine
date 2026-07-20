@@ -14,18 +14,8 @@
 #      (a function of LOCAL DATA COUNT, not pick) (TODO#3). K_SHRINK strength is SURFACED, not baked.
 #   5. dist_value(p) = SCALE_DIST * E[v_at_peak over the shrunk band]. SCALE_DIST harness-calibrated (TODO#5).
 #   6. GUARDRAILS: monotone quantiles (sort) + width-by-age sanity vs the empirical table (TODO#2).
-import sys, os
-# rl_model provenance (JOB 3, fv-provenance remediation 2026-07-20): the hardcoded
-# `sys.path.insert(0,'/home/claude/rl_after')` is REMOVED. It force-prepended a mutable workspace path onto
-# sys.path[0], so a stale/foreign rl_model under /home/claude/rl_after could outrank the intended source. rl_model
-# now resolves ONLY through the configured engine/build environment: it is already imported by the engine before
-# this module loads (the canonical path), else it is resolved from the EXPLICIT checkout (RL_REPO) — never a
-# hardcoded /home/claude workspace path. A foreign file placed under /home/claude/rl_after can no longer change
-# the canonical build (proof: session_2026-07-20/fv_provenance_remediation, RED 5).
-if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
-    _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
-    if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+import sys; sys.path.insert(0,'/home/claude/rl_after')
+import os; os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
 import io,contextlib,numpy as np
 with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 from sklearn.ensemble import GradientBoostingRegressor
@@ -260,26 +250,8 @@ def ref_width(age):
 def v_at_peak(p,L,lens='bal'):
     """Value p AS IF forward-peak = L, through the production chain at the player's REAL age.
     Proven players: == value() at L=peak_est (production-dominated). Old players: declines (real age past peak)."""
-    g=MA.gfut(p); g0=MA.bnow(p); cur=MA.level_now(p); a=MA.age(p); hc=p.get('_avail_hc',0.0); fb=MA.futblend(p)
-    # ==== §1b — THE CURRENT-SEASON DPP LAW (item 275; owner fence amendment item 281, LIMITED to this site) ==
-    # The year-0 REMAINING-SEASON component (the 1-SEASON_PROG remainder) nets vs the LOWER of the post-collapse
-    # dual eligibility bars (y0dpp_bar); the banked SEASON_PROG component + the level path stay keyed to present
-    # (g0=bnow). g0 affects ONLY proj_from_peak's k==0 REPL term (Wk / k>=1 / the ×1.05 / runway multipliers are
-    # identical between the two calls), and val()=SCALE·r^0.85 is NONLINEAR, so the blend is done HERE, BEFORE
-    # val(), via the EXACT identity  proj_1b = SEASON_PROG·proj(g0=present) + (1-SEASON_PROG)·proj(g0=low).
-    # RL_FLEX-gated inside y0dpp_bar (=None ⇒ single call ⇒ byte-exact). Now-board only (the remaining season is
-    # a present concept). NO Leg-B dial/constant touched — this is a pure Leg-C site at the production hook.
-    lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
-    raw=MA.proj_from_peak(g,L,a,cur,lens,g0=g0,fut=fb,pre_hc=hc)
-    if lowbar is not None:
-        raw_low=MA.proj_from_peak(g,L,a,cur,lens,g0=lowbar,fut=fb,pre_hc=hc)
-        sp=MA.SEASON_PROG
-        raw=sp*raw+(1.0-sp)*raw_low
-    prod=MA.val(raw)
-    # FLOOR HALF (R106.7): §1b also applies to the DEMONSTRATED-FLOOR leg — wired inside MA.prod_floor
-    # (rl_model.py:441) and its PROVEN-player shipped-board copy _merged_recover.py::_prod_floor_w4 (⚠ duplicate
-    # loop — owner condition 4). The floor's k==0 remaining-season nets vs y0dpp_bar; here it just consumes the
-    # already-§1b floor via max(). RL_FLEX=0 => both floors byte-exact.
+    g=MA.gfut(p); g0=MA.bnow(p); cur=MA.level_now(p)
+    prod=MA.val(MA.proj_from_peak(g,L,MA.age(p),cur,lens,g0=g0,fut=MA.futblend(p),pre_hc=p.get('_avail_hc',0.0)))
     return max(prod,MA.prod_floor(p,lens))
 
 # ======================= dist_value =======================
@@ -290,7 +262,7 @@ def dist_value(p,models,prior,META,k_shrink=None,scale=None,lens='bal'):
     band,_=final_band(p,models,prior,META,k_shrink)
     ev=scale*float(np.dot(WQ,[v_at_peak(p,L,lens) for L in band]))
     if MA.brodie_sig(p): ev*=0.5
-    return round(ev)   # LEG E: lens_tilt (interim tilt) RETIRED; the posture dial flows through v_at_peak(p,L,lens) above (weight-don't-gate). Was round(ev*MA.lens_tilt(p,lens)); lens_tilt('bal')==1.0 => byte-exact.
+    return round(ev*MA.lens_tilt(p,lens))
 
 # ======================= build (the live 2026 model) =======================
 def build():

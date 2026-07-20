@@ -8,7 +8,12 @@ WS=/home/claude/rl_workspace/rl_after
 # GUARD 5 (boot-store): HALT before the engine loads if the workspace store/head is not the checked-out,
 # pinned store. Closes the stale-boot hole the four data guards miss (they validate whichever dir they are
 # imported from, so a stale-but-self-consistent workspace passes them). Re-run bootstrap.sh to re-seed.
-RL_REPO="$HERE" python3 "$HERE/boot_guard.py" run_panel "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" "$WS/LTI_REGISTER.md" || exit 1
+# fv-provenance remediation 2026-07-20: bind RL_FV EXPLICITLY to the checked-out engine/forward_valuation (JOB
+# 1 — no ambient-workspace default) so Guard 5's forward-valuation loaded-path assertion verifies the exact
+# tree the engine will import == the pin. RL_REPO also resolves it, but the explicit bind is the intended
+# canonical source and makes the selection auditable.
+export RL_FV="$HERE/engine/forward_valuation"
+RL_REPO="$HERE" RL_FV="$HERE/engine/forward_valuation" python3 "$HERE/boot_guard.py" run_panel "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" "$WS/LTI_REGISTER.md" || exit 1
 cd "$WS"
 # CONFIG-MANIFEST v2.9 COMPLETION 2026-07-14: run the panel UNDER RL_CONFIG_MODE=gate so the engine takes
 # ALL model vars from the pinned manifest (data/model_config.json) rather than code defaults / a hand-copied
@@ -16,7 +21,7 @@ cd "$WS"
 # RL_*/PAR_* override, and loads the manifest — its values == the engine defaults, so the panel is byte-identical.
 # RL_REPO lets config_manifest find the repo manifest after the `cd "$WS"` above. The pinned exports remain the
 # panel's official env; they equal the manifest so the gate-mode reject-scan passes.
-export RL_REPO="$HERE" RL_CONFIG_MODE=gate
+export RL_REPO="$HERE" RL_CONFIG_MODE=gate RL_FV="$HERE/engine/forward_valuation"
 export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
 export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
 rm -f /tmp/inspect.py

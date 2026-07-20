@@ -31,6 +31,10 @@ jobs:
       # boot_guard / ruling_config anchor on the checkout via these
       RL_REPO: ${{ github.workspace }}
       CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      # fv-provenance remediation 2026-07-20: bind RL_FV EXPLICITLY to the checked-out forward-valuation source
+      # (JOB 1 — no ambient-workspace default). Guard 5's forward-valuation loaded-path assertion verifies the
+      # exact tree the engine imports == the pin. RL_FV is an INFRA_ALLOW var, so gate/bake enforcement permits it.
+      RL_FV: ${{ github.workspace }}/engine/forward_valuation
       # determinism + engine import path — true infrastructure, never model semantics
       PYTHONHASHSEED: "0"
       PYTHONPATH: /home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
