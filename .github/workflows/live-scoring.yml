@@ -77,6 +77,22 @@ jobs:
           mkdir -p /home/claude/rl_vendor
           cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
 
+      - name: Seed engine absolute-path artifacts (frozen pkls + import-time board panel)
+        # The engine loads a few frozen artifacts by ABSOLUTE /home/claude/... path, and compute.py
+        # reads /home/claude/rl_build/rl_app_data.json at IMPORT time (a diagnostic "before" panel whose
+        # CONTENT does not affect the board — but the file must EXIST or the board build's import fails).
+        # This is the same seeding session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py does
+        # on a clean runner (mirrors bootstrap.sh) — WITHOUT running the legacy bootstrap Guard 5, which
+        # the accepted foundation's stale engine pins would red (register item 399).
+        run: |
+          set -euo pipefail
+          for f in cm_400.pkl q97m.pkl v0surf.pkl; do
+            [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true
+          done
+          mkdir -p /home/claude/rl_build
+          cp -f data/rl_build/rl_app_data.json /home/claude/rl_build/rl_app_data.json
+          echo "seeded /home/claude: $(ls /home/claude) | rl_build: $(ls /home/claude/rl_build)"
+
       - name: Assert the store-write gate ships OFF (belt-and-braces, both halves)
         run: |
           set -euo pipefail
