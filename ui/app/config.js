@@ -11,8 +11,12 @@ MD.config = {
      data/expected_boot.json 'board'; the refreshed board_view bundles carry srcmd5 3dc19fbb. Moved
      3dc19fbb -> 790136a3 (v2.10 CAPTAINCY BAKE, tag d14efaef: the L-CAPTAIN ruled captain curve lifts the
      guns + load-time re-normalisation; display-only for the UI — no value is computed here). The pin moves
-     with the tagged board, per the v1.1 base rule: bundles regenerate via extract_board_view.py from the tag. */
-  EXPECTED_BOARD: "790136a3",
+     with the tagged board, per the v1.1 base rule: bundles regenerate via extract_board_view.py from the tag.
+     Moved 790136a3 -> 06d8af60 (v2.11-rc1 RELEASE CANDIDATE, release/v2.11-rc1: the installed balanced board
+     of record data/expected_boot.json 'board' = full md5 06d8af60b679a12db07c064c60c065f9, RL_LEGE=0 RL_LEGF=0
+     RL_PVC2=1 on engine cc626d7d/904722cd, store 968de0c7; display-only for the UI — no value is computed here.
+     The seam authenticates working.stamp.board_md5[:8] == this id). */
+  EXPECTED_BOARD: "06d8af60",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */

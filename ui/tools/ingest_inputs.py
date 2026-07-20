@@ -25,7 +25,7 @@ BOARD_BUNDLE = os.path.join(UI_DATA, "board_view_working.js")
 ENGINE_CURVE = os.path.join(ROOT, "engine", "rl_after", "pvc_curve_L1b.json")
 OUT = os.path.join(UI_DATA, "club_valuation.js")
 
-EXPECTED_BOARD = "790136a3"      # ui/app/config.js EXPECTED_BOARD — the shipped board (v2.10)
+EXPECTED_BOARD = "06d8af60"      # ui/app/config.js EXPECTED_BOARD — v2.11-rc1 balanced board of record
 PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
 BASE_YEAR = 2026
 # Best-23 positional structure (item 178(3)); posCode vocab is the board's CURRENT posCode.

@@ -17,14 +17,18 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-SRC = os.path.join(REPO, "data", "rl_build", "rl_app_data.json")
-BOOT = os.path.join(REPO, "data", "expected_boot.json")
+# Production paths are the defaults; each may be redirected via an env var so a FIXTURE run
+# (a temporary board + temporary boot manifest + temporary out dir) can exercise the exact same
+# fail-closed code without touching production data. The overrides change WHERE we read/write, never
+# WHAT we assert — every ring-fence below stays live regardless of the paths.
+SRC = os.environ.get("RL_UI_SRC", os.path.join(REPO, "data", "rl_build", "rl_app_data.json"))
+BOOT = os.environ.get("RL_UI_BOOT", os.path.join(REPO, "data", "expected_boot.json"))
 # The pinned master store — the "master database" of item 1 (2026-07-15 feedback). Read STRICTLY
 # READ-ONLY and md5-verified against expected_boot.store (fail-closed, same doctrine as the board
 # ring-fence): the extractor sources the AFL + AFFL club DISPLAY strings from here. No value is read
 # by ev() from these fields; nothing is computed; the store is never written.
-STORE = os.path.join(REPO, "engine", "rl_after", "rl_model_data.json")
-OUT_DIR = os.path.join(HERE, "..", "data")
+STORE = os.environ.get("RL_UI_STORE", os.path.join(REPO, "engine", "rl_after", "rl_model_data.json"))
+OUT_DIR = os.environ.get("RL_UI_OUT_DIR", os.path.join(HERE, "..", "data"))
 
 
 def norm_club(name):
@@ -108,6 +112,11 @@ def main():
             # (attribution is owner-facing); passed through verbatim, never fabricated here.
             "levers": p.get("levers"),
             "lti_reg": p.get("lti_reg"),
+            # movement-vs-previous-round fields, wired to the weekly loop's dRound / dRoundRank exports.
+            # Passed through VERBATIM on the working tier too (same scheme as row_public); None until the
+            # weekly loop lands them -> the working card renders a neutral "steady", never a fabricated move.
+            "dRound": p.get("dRound"),
+            "dRoundRank": p.get("dRoundRank"),
         }
 
     def row_public(p):
@@ -137,16 +146,54 @@ def main():
     # phantom picks stand in for the future player on the forward lenses; item-14 ladder exclusion holds).
     lens_picks = d.get("lensPicks", [])
     lens_conservation = d.get("lensConservation", {})
+    # Leg-F entrant/phantom machinery (MEMO_LEGF §2.viii; owner item 359). Working-tier ONLY — this is
+    # owner/internal intake economics and never rides the public bundle. Passed through VERBATIM; the
+    # extractor recomputes nothing. Absent on a pre-Leg-F board -> empty container (carried, never
+    # fabricated), so the +1/+2 entrant banner degrades to "no phantom layer" rather than an invented one:
+    #   phantomLayer  — per-club × per-lens entrant/draft/free breakdown (the banner detail rows)
+    #   phantomPicks  — the flat phantom draft-pick ladder on the forward lenses
+    #   phantomTotals — league/club roll-ups + `_meta` (entrant_layer_pvc, expected_slots_per_year,
+    #                   seal_sha256_8) that the +1/+2 entrant banner header reads
+    phantom_layer = d.get("phantomLayer", {})
+    phantom_picks = d.get("phantomPicks", [])
+    phantom_totals = d.get("phantomTotals", {})
+
+    # ---- durable release/round metadata contract (no hardcoded label ever again) ------------------
+    # release_version + as_of_round are OPTIONAL top-level keys on data/expected_boot.json. The extractor
+    # PASSES THEM THROUGH verbatim (it never invents a version or a round); when a key is absent the stamp
+    # carries None and the UI renders a neutral unknown state. The final bake will set release_version
+    # "v2.11" / as_of_round 14 in expected_boot.json; the weekly updater will later advance as_of_round —
+    # both without a single code change here. The prior hardcoded "v2.10" / "Round 17" are gone.
+    release_version = boot.get("release_version")
+    as_of_round = boot.get("as_of_round")
 
     working = {
         "stamp": {
+            # ---- three EXPLICIT, separately-named provenance identities (no overloaded field) ---------
+            # board_md5: full md5 of the INSTALLED working board (rl_app_data.json). This — and only this —
+            # is the identity the UI ring-fence authenticates. Not the store, not the balanced reference.
+            "board_md5": srcmd5,
+            # store_md5: full md5 of the ACTUAL pinned source store the extractor just read + md5-verified
+            # (== the STORE ring-fence subject above). The retrospective seam matches on this.
+            "store_md5": store_md5,
+            # balanced_board_md5: the accepted balanced / current-lens reference identity. OPTIONAL —
+            # passed VERBATIM from release metadata (expected_boot); None until the final bake sets it.
+            # The retrospective seam requires it, so an un-baked bundle keeps the retro tab pending.
+            "balanced_board_md5": boot.get("balanced_board_md5"),
+            # srcmd5: temporary back-compat alias, identical to board_md5, for the un-regenerated
+            # production bundle / un-migrated ring-fence code. Dropped once every consumer reads board_md5.
             "srcmd5": srcmd5,
             "board": boot.get("board"),
             "engine": boot.get("engine_head", "")[:8],
             "store": boot.get("store", "")[:8],
             "register": boot.get("register", "")[:8],
             "config": boot.get("config", "")[:12],
-            "tag": "v2.10",
+            # Metadata contract: verbatim from the boot manifest, None when unset (never a baked label).
+            "releaseVersion": release_version,
+            "asOfRound": as_of_round,
+            # Legacy provenance alias still read by card.js / clubs.js. == the release version, coerced to
+            # "" (neutral) when unknown so those (unedited) stamp lines never print a stale "v2.10".
+            "tag": release_version if release_version is not None else "",
             "panel": boot.get("panel"),
             "baseYear": d.get("BASE_YEAR"),
             "nPlayers": len(active),
@@ -161,6 +208,10 @@ def main():
         "pvc": pvc,
         "lensPicks": lens_picks,
         "lensConservation": lens_conservation,
+        # Leg-F entrant/phantom layer (working-tier only; see pass-through note above).
+        "phantomLayer": phantom_layer,
+        "phantomPicks": phantom_picks,
+        "phantomTotals": phantom_totals,
     }
 
     public = {
@@ -187,7 +238,8 @@ def main():
     p1 = emit("board_view_working.js", "__MATCHDAY_WORKING__", working)
     p2 = emit("board_view_public.js", "__MATCHDAY_PUBLIC__", public)
 
-    print("srcmd5 (== board id):", srcmd5)
+    print("board_md5 (board id) :", srcmd5, "(alias srcmd5 carries the same value)")
+    print("store_md5 (verified) :", store_md5)
     print("board id (boot)     :", boot.get("board"))
     assert srcmd5.startswith(boot.get("board", "")[:8]), "RING-FENCE FAIL: artifact md5 != pinned board id"
     print("ring-fence OK       : md5 head == board id")

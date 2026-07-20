@@ -3,7 +3,22 @@ window.MD = window.MD || {};
 
 (function () {
   const fmt = MD.fmt;
-  const root = document.getElementById("root");
+  const root = (typeof document !== "undefined") ? document.getElementById("root") : null;
+
+  // ---- release/round labels from the durable metadata contract (no hardcoded v2.10 / Round 17) -----
+  // The stamp carries releaseVersion / asOfRound VERBATIM from data/expected_boot.json (via the
+  // extractor). When either is unset the label is a NEUTRAL UNKNOWN — never an invented version or
+  // round. On MD so the seam tests exercise the exact functions the masthead renders.
+  function releaseLabel(st) {
+    const v = st && st.releaseVersion;
+    return (v === null || v === undefined || v === "") ? "unversioned" : String(v);
+  }
+  function roundLabel(st) {
+    const r = st && st.asOfRound;
+    return (r === null || r === undefined || r === "") ? "Round —" : "Round " + r;
+  }
+  MD.releaseLabel = releaseLabel;
+  MD.roundLabel = roundLabel;
 
   function failClosed(fence) {
     root.innerHTML =
@@ -28,10 +43,10 @@ window.MD = window.MD || {};
     mast.appendChild(fmt.el("div", "spacer"));
     const stamp = fmt.el("div", "stamp");
     if (pub) {
-      stamp.innerHTML = "Round 17 · " + (st.baseYear || 2026) + "<br>movement vs previous round · " +
+      stamp.innerHTML = roundLabel(st) + " · " + (st.baseYear || 2026) + "<br>movement vs previous round · " +
         fmt.n(st.nPlayers) + " players";
     } else {
-      stamp.innerHTML = "board <b>" + st.tag + "</b> · engine <b>" + st.engine + "</b> · store <b>" + st.store +
+      stamp.innerHTML = "board <b>" + releaseLabel(st) + "</b> · engine <b>" + st.engine + "</b> · store <b>" + st.store +
         "</b> · board id <b>" + st.board + '</b><span class="badge">real</span><span class="badge ok">guard 5 pass</span><br>' +
         "Δ " + (s.deltaBase === "bake" ? "vs last accepted bake" : "vs previous round") + " · " +
         fmt.n(st.nPlayers) + " players · panel " + fmt.esc((st.panel || "").split(" ")[1] || "10/10");
@@ -96,6 +111,10 @@ window.MD = window.MD || {};
   };
 
   MD.render = render;
-  document.addEventListener("DOMContentLoaded", render);
-  if (document.readyState !== "loading") render();
+  // Only auto-mount in a real browser; under a headless test harness (no document) the module just
+  // exposes MD.releaseLabel / MD.roundLabel for the seam tests without trying to render.
+  if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", render);
+    if (document.readyState !== "loading") render();
+  }
 })();

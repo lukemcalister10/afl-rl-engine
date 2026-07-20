@@ -275,8 +275,13 @@ MD.board = (function () {
   function strip(container) {
     const s = MD.state;
     const wrap = fmt.el("div", "strip");
-    const yr = (MD.seam.working.stamp || {}).baseYear || 2026;
-    wrap.innerHTML = '<span class="lbl">Round 17 · ' + yr + (s.tier === "public" ? " · published" : "") + "</span>";
+    const st = MD.seam.working.stamp || {};
+    const yr = st.baseYear || 2026;
+    // Round label from the durable metadata contract (asOfRound); neutral "Round —" when unset —
+    // never the old hardcoded "Round 17". MD.roundLabel is defined in main.js (loaded last); this runs
+    // only at render time, so it is always resolved. Guarded for safety.
+    const roundLbl = MD.roundLabel ? MD.roundLabel(st) : (st.asOfRound != null ? "Round " + st.asOfRound : "Round —");
+    wrap.innerHTML = '<span class="lbl">' + roundLbl + " · " + yr + (s.tier === "public" ? " · published" : "") + "</span>";
     wrap.appendChild(fmt.el("span", "spacer"));
 
     // ±1/2-yr board lens (both tiers meaningful for value-by-year, but kept working-only per two-tier trim)
@@ -402,16 +407,29 @@ MD.board = (function () {
   // F2 not landed => the −1/−2 tab shows a pending note over the engine backward re-value. k=0 shows NONE.
   function phantomTotals() { return (MD.seam.working && MD.seam.working.phantomTotals) || null; }
   // F2 injects its stamped retrospective boards like the club overlay: window.__MATCHDAY_RETRO__ =
-  // { "-1": {board, stamp}, "-2": {board, stamp} }. STAMP-ASSERTED at load vs the working board's source
-  // store md5 (the ringFence/Guard-5 analogue) — an unstamped/mismatched retro board must look absent.
+  // { "-1": {board, stamp}, "-2": {board, stamp} }. The real F2 artifact stamps its SOURCE STORE and its
+  // BALANCED-BOARD reference (store_md5 / balanced_board_md5) — NOT the final post-Leg-F working-board
+  // md5 — so we authenticate the retro against THOSE two provenance identities, independently, and name
+  // the field that fails. No hardcoded fallback (the audit's stale-id hazard). balanced_board_md5 is set
+  // only at the final bake; until the installed working board carries it the contract cannot be
+  // authenticated, so the tab stays PENDING (never ok, never a guessed id).
   function retroFor(lensIdx) {
     const rb = window.__MATCHDAY_RETRO__ || null;
     if (!rb) return { state: "pending" };
     const entry = rb[lensIdx === 0 ? "-2" : "-1"];
     if (!entry) return { state: "pending" };
-    const want = String((((MD.seam.working || {}).stamp || {}).source_md5) || "968de0c7").slice(0, 8);
-    const got = String((entry.stamp || {}).store_md5 || "").slice(0, 8);
-    if (got !== want) return { state: "mismatch", got: got, want: want };
+    const wst = ((MD.seam.working || {}).stamp) || {};
+    const est = (entry.stamp || {});
+    if (wst.balanced_board_md5 == null) return { state: "pending" };
+    const checks = [
+      { field: "store_md5", want: wst.store_md5, got: est.store_md5 },
+      { field: "balanced_board_md5", want: wst.balanced_board_md5, got: est.balanced_board_md5 },
+    ];
+    for (let i = 0; i < checks.length; i++) {
+      const want = String(checks[i].want || "").slice(0, 8);
+      const got = String(checks[i].got || "").slice(0, 8);
+      if (!want || got !== want) return { state: "mismatch", field: checks[i].field, got: got, want: want };
+    }
     return { state: "ok", entry: entry };
   }
   function phantomBanner(container) {
@@ -544,5 +562,7 @@ MD.board = (function () {
     if (withPicks && !MD.seam.clubHalt()) picksIncluded = true;
   }
 
-  return { render: render, focusClub: focusClub };
+  // retroFor exposed so the release-seam test can exercise the EXACT retrospective identity check
+  // the UI runs (same doctrine as counting.js). Pure view; reads no DOM.
+  return { render: render, focusClub: focusClub, retroFor: retroFor };
 })();

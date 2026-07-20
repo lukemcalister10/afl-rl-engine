@@ -1,0 +1,27 @@
+v2.11 UI/RELEASE-SEAM — UI proof (real config.js / seam.js / main.js)
+  ------------------------------------------------------------------
+  [PASS] main.js: no hardcoded 'Round 17' display literal
+  [PASS] board.js: no hardcoded 'Round 17' display literal
+  [PASS] main.js exposes MD.releaseLabel / MD.roundLabel
+  [PASS] releaseLabel shows the contract version verbatim
+  [PASS] roundLabel shows the contract round verbatim
+  [PASS] releaseLabel: missing version -> neutral 'unversioned'
+  [PASS] roundLabel: missing round -> neutral 'Round —'
+  [PASS] releaseLabel: missing version is NEVER 'v2.10'
+  [PASS] roundLabel: missing round is NEVER 'Round 17'
+  [PASS] config.EXPECTED_BOARD is an 8-hex board pin
+  [PASS] ring-fence ACCEPTS a bundle keyed by board_md5
+  [PASS] ring-fence ACCEPTS a legacy bundle keyed only by the srcmd5 alias
+  [PASS] ring-fence keys on board identity ONLY (store/balanced do not authenticate it)
+  [PASS] ring-fence REFUSES a mismatched board (fail-closed)
+  [PASS] ring-fence reports got/want for the fail-closed screen
+  [PASS] ring-fence REFUSES a missing working bundle
+  [PASS] board.js exposes retroFor (the exact retro identity check)
+  [PASS] retro ACCEPTS an F2 stamp with matching store_md5 AND balanced_board_md5
+  [PASS] retro REFUSES a wrong store_md5 and names the field
+  [PASS] retro REFUSES a wrong balanced_board_md5 and names the field
+  [PASS] retro stays PENDING while balanced_board_md5 is unset (no premature ok)
+  [PASS] retro with no bundle stays empty-state 'pending'
+  [PASS] board.js retro check hardcodes neither 968de0c7 nor 06d8af60
+  ------------------------------------------------------------------
+  23/23 passed

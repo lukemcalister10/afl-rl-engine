@@ -1,0 +1,45 @@
+v2.11 UI/RELEASE-SEAM — extractor proof (temp board + temp boot; fail-closed)
+  ------------------------------------------------------------------
+  [PASS] read diagnostic candidate fixture from 6720dfae (schema fixture only, NOT merged)
+  [PASS] extractor runs fail-closed on the candidate fixture (temp board + temp boot)
+  [PASS] JOB1: phantomLayer transferred (non-empty)
+  [PASS] JOB1: phantomPicks transferred (non-empty)
+  [PASS] JOB1: phantomTotals transferred (non-empty)
+  [PASS] JOB1: existing lensPicks / lensConservation retained
+  [PASS] JOB1 proof: entrant PVC 83538 exact
+  [PASS] JOB1 proof: expected slots ~103.4 exact
+  [PASS] JOB1 proof: seal a17aafed exact
+  [PASS] JOB2: stamp.releaseVersion from boot manifest
+  [PASS] JOB2: stamp.asOfRound from boot manifest
+  [PASS] JOB2: legacy tag alias == release_version (not hardcoded)
+  [PASS] FOLLOWUP2: stamp.board_md5 == actual source-board md5
+  [PASS] FOLLOWUP2: stamp.store_md5 == actual verified store md5
+  [PASS] FOLLOWUP2: srcmd5 retained, identical to board_md5
+  [PASS] FOLLOWUP2: board_md5 and store_md5 are distinct identities (not overloaded)
+  [PASS] FOLLOWUP2: ambiguous 'source_md5' key removed from the stamp
+  [PASS] FOLLOWUP2: balanced_board_md5 absent in boot -> null (verbatim, never invented)
+  [PASS] JOB3: stamp.board == the pinned (temp) board id
+  [PASS] JOB3: player values passed through verbatim (extractor recomputes nothing)
+  [PASS] JOB2: no 'v2.10' in generated working bundle
+  [PASS] JOB2: no 'Round 17' in generated working bundle
+  [PASS] JOB4#6: public bundle carries no phantom/lens/pick machinery
+  [PASS] JOB4#6: public player rows carry no id/owner-rule/mech fields
+  [PASS] JOB4#6: entrant/seal internals do not leak to the public bundle
+  [PASS] JOB2: no stale labels in the public bundle
+  [PASS] FOLLOWUP2: public stamp carries no internal provenance identity
+  [PASS] FOLLOWUP2: no internal identity key anywhere in the public bundle text
+  [PASS] extractor runs with a boot manifest that omits release/round
+  [PASS] JOB2: absent metadata -> null in the stamp (never invented)
+  [PASS] JOB2: legacy tag alias neutral ('') when release_version absent
+  [PASS] JOB4#4: missing metadata does NOT reintroduce v2.10 / Round 17
+  [PASS] JOB3: mismatched board pin STILL fails closed (assertion not weakened)
+  [PASS] JOB3: mismatched store pin STILL fails closed (assertion not weakened)
+  [PASS] extractor runs on the synthetic movement board
+  [PASS] FOLLOWUP: working row carries dRound / dRoundRank VERBATIM
+  [PASS] FOLLOWUP: public row carries dRound / dRoundRank verbatim (unchanged behaviour)
+  [PASS] FOLLOWUP: absent movement fields remain NULL on the working tier (never fabricated)
+  [PASS] FOLLOWUP: absent movement fields remain null on the public tier
+  [PASS] extractor runs with balanced_board_md5 present in the manifest
+  [PASS] FOLLOWUP2: balanced_board_md5 passed through verbatim from the manifest
+  ------------------------------------------------------------------
+  41/41 passed

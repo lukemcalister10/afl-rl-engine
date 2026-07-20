@@ -10,7 +10,9 @@ MD.seam = (function () {
 
   function ringFence() {
     if (!working || !working.stamp) return { ok: false, why: "working board bundle missing" };
-    const head = String(working.stamp.srcmd5 || "").slice(0, 8);
+    // Authenticate the INSTALLED WORKING BOARD only — `board_md5` (not the store, not the balanced
+    // reference). `srcmd5` is the temporary identical alias read for un-regenerated bundles.
+    const head = String(working.stamp.board_md5 || working.stamp.srcmd5 || "").slice(0, 8);
     const want = MD.config.EXPECTED_BOARD;
     if (head !== want) {
       return { ok: false, why: "board id mismatch", got: head, want: want };

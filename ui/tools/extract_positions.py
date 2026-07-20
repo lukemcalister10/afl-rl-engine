@@ -22,7 +22,7 @@ UI_DATA = os.path.join(ROOT, "ui", "data")
 BOARD_BUNDLE = os.path.join(UI_DATA, "board_view_working.js")
 LOC_CSV = os.path.join(INPUTS, "AFFL_Player_Locations.csv")
 OUT = os.path.join(ROOT, "ui", "app", "positions_data.js")
-EXPECTED_BOARD = "790136a3"
+EXPECTED_BOARD = "06d8af60"      # ui/app/config.js EXPECTED_BOARD — v2.11-rc1 balanced board of record
 
 # REUSE the ingest's established join key rather than reimplementing it.
 _spec = importlib.util.spec_from_file_location(
