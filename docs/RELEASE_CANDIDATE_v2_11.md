@@ -120,14 +120,17 @@ accurate for `06d8af60`. No other pin or descriptive field was altered.
   - `ui/data/board_view_public.js` — `window.__MATCHDAY_PUBLIC__`, leak-proof stamp `{baseYear, maxV, nPlayers}`
     only (no md5/board/store/guard identity).
   - `ui/app/positions_data.js` — values-free position map, 804 players, board `06d8af60`.
-- **Club-valuation overlay (`ui/data/club_valuation.js`): fail-closed on the RC board (reported).** Regenerating
-  the owner-input club overlay against `06d8af60` triggers the pre-existing **S5 STALE-CURVE guard** — the RC
-  board's `RL_PVC2` composed-pathway PVC does not byte-match the engine's adopted `pvc_curve_L1b.json`. This is a
-  curve-provenance condition, **not** a board-identity failure (the board-id ring-fence PASSED: bundle
-  `06d8af60` == expected `06d8af60`). No valuation math was altered (forbidden by the RC scope). The bundle was
-  regenerated to its designed **HALT** state (overlay refuses to render; board still renders) rather than
-  shipping the stale v2.10 overlay (which would surface v2.10-era club data as valid). Deferred to a post-RC
-  curve/overlay reconciliation.
+- **Club-valuation overlay (`ui/data/club_valuation.js`): RESOLVED (independent-review corrective, §9).** The
+  overlay previously fail-closed on the RC board because `ui/tools/ingest_inputs.py` hardcoded
+  `pvc_curve_L1b.json` as the canonical curve while the RC board carries the adopted `RL_PVC2` composed-pathway
+  PVC (`pvc_curve_v2.json`). The corrective commit replaces the hardcoded rule with a deterministic, fail-closed
+  resolver driven by an explicit release-metadata contract (`ui/release_pick_curve.json`): it resolves the
+  release-active pathway (RL_PVC2 → `pvc_curve_v2.json`), cross-checks the contract against the accepted release
+  (store `968de0c7`, `release_version v2.11-rc1`) and the engine curve's own self-declared gate/identity, and
+  cross-checks the board PVC against the resolved curve — HALTing on unknown/missing/conflicting selection. The
+  overlay now regenerates clean (no HALT): 16 clubs, 160 held picks priced off the v2 curve, correct board+curve
+  provenance stamp, no stale v2.10 data. No installed board / store / engine / valuation / `expected_boot` change;
+  no player value or rank changed.
 
 ---
 
@@ -202,9 +205,40 @@ unidecode, `RL_FV` bound to the checkout's `engine/forward_valuation`.
 
 - **No merge, tag, release, public deploy, or valuation-math change** is authorised. The PR is a DRAFT for
   independent review only (base `claude/fv-provenance-fail-closed-fm2gas` to keep the RC diff narrow).
-- Club-valuation overlay is fail-closed on the RC board (§5) pending a curve/overlay provenance reconciliation
-  (out of scope; no valuation change permitted here).
+- Club-valuation overlay is RESOLVED (§5 / §9): it now renders (16 clubs, 160 held picks) on the RC board via a
+  deterministic fail-closed curve-provenance resolver. No outstanding overlay restriction.
 - Weekly score-ingestion (PR #125 lineage) remains post-release and unaccepted (transaction-safety /
   stale-preview / UI-refresh / round-history / multi-round proof unverified).
 - Long-term determinism: the RC ships committed exact bytes and a fixed-provenance reproduction; the broader
   cross-container `np.interp` hardening remains tracked work, now guarded fail-closed by `df5066a`.
+
+---
+
+## 9 — Club-valuation curve-provenance correction (independent-review corrective commit)
+
+Bounded corrective commit on `release/v2.11-rc1` (accepted core RC artifacts unchanged: installed board, store,
+valuation/engine source, `expected_boot` hashes/metadata, FV provenance code, all player values/ranks).
+
+- **Root cause:** `ui/tools/ingest_inputs.py` treated `engine/rl_after/pvc_curve_L1b.json` as the canonical curve
+  (the S5 STALE-CURVE guard), so it HALTed on the RC board's adopted `RL_PVC2` composed-pathway PVC
+  (`pvc_curve_v2.json`), disabling the club-valuation + held-pick overlay.
+- **Fix:** an explicit, fail-closed release-metadata contract `ui/release_pick_curve.json` declares the
+  release-active pathway (the config manifest pins `RL_PVCADOPT` but does not carry the `RL_PVC2` engine
+  default-ON kill-switch, so the pathway cannot be read from the config alone). `ingest_inputs.py` resolves the
+  release-active curve **deterministically** from the contract, cross-checking: the contract vs the accepted
+  release (`store 968de0c7`, `release_version v2.11-rc1`, `pin1 3000`); the engine curve file's OWN self-declared
+  identity (filename-for-pathway, full-file md5 `56dd7a7b…`, `curve_md5 89c14729`, gate token `RL_PVC2`, store
+  binding `968de0c7`); and the installed board PVC == the resolved curve (full shared-pick equality). Unknown /
+  missing / conflicting selection HALTs. Preserved unchanged: board-id ring fence, full shared-pick curve
+  equality, pick1 == 3000, monotone non-increasing curve, pick ledger + club joins, no-workbook-value pricing.
+- **Regenerated `ui/data/club_valuation.js`:** no HALT; 16 clubs; 160 held picks priced off `pvc_curve_v2.json`
+  (`RL_PVC2`); stamp `board 06d8af60 / engine 904722cd / store 968de0c7 / releaseVersion v2.11-rc1 / asOfRound 14
+  / pvcPathway RL_PVC2 / pvcCurveMd5 89c14729`; no stale v2.10 data.
+- **Tests (`ui/tests/club_curve_provenance.test.py`, 24/24):** accepted v2 curve passes + totals conserved
+  (16/160, Sum per-club picks == 160, prices == curve mean); L1b-under-RL_PVC2 fails closed (contract-path AND
+  board-PVC); unknown pathway / wrong store / missing contract / curve-md5 drift fail closed; board-id mismatch
+  fails closed; board_view bundles byte-unchanged (Board/Player/Trade views intact). Existing UI suites still
+  green (extract_seam 41/41, release_seam 23/23, counting_rule 24/24).
+- **Rendered evidence** (`session_2026-07-20/ui_release_seam/evidence/`, 16/16 assertions, desktop 1440×900 +
+  mobile 390×844): normal board renders; club valuation renders (no HALT); held picks render (club focused on
+  board, Σ picks shown); version `v2.11-rc1` + as-of `Round 14` shown; no integrity alarm / fail-closed screen.
