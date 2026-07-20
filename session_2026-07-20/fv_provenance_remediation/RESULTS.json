@@ -35,7 +35,7 @@
     {
       "name": "RED5_foreign_rl_model_ignored",
       "ok": true,
-      "detail": "board=06d8af60b679a12db07c064c60c065f9 rl_model_path=/home/claude/fvprov_2wz9bcvc/rl_after/rl_model.py (not /home/claude/rl_after=True) files_unchanged=True"
+      "detail": "board=06d8af60b679a12db07c064c60c065f9 rl_model_path=/home/claude/fvprov_71mralet/rl_after/rl_model.py (not /home/claude/rl_after=True) files_unchanged=True"
     }
   ],
   "fv_pin": "fa060917c8e5cd057c4248855c276f790764c1d4fee192b166c0218fc6c4db4f"

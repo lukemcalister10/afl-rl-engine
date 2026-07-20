@@ -155,4 +155,13 @@ Every red path additionally verified: **no board written, no pin changed, no pro
   checkout + loaded-path assertions PASS.
 
 **Independent-runner proof:** `.github/workflows/fv-provenance.yml` runs this suite on every push/PR on a clean
-GitHub `ubuntu-24.04` runner — see the PR checks for the fresh-host result.
+GitHub `ubuntu-24.04` runner (draft PR #126, base `claude/env-pin-2026-07-19-4y4w0p` == `3055ea5`).
+
+The first fresh-runner run surfaced a harness gap (not a fix defect): `compute.py` reads
+`/home/claude/rl_build/rl_app_data.json` at import time (the analysis "before" panel; its content does not
+affect the board md5), which `bootstrap.sh` seeds but the harness did not — so on a truly empty `/home/claude`
+the build errored and the build-dependent scenarios failed while the halt-only RED 2/3/4 passed. Fixed by
+seeding that file in `_seed_pkls` (commit `cac2daf`), and **re-verified locally against a simulated-fresh
+`/home/claude`** (all engine state cleared): GREEN 1 → board `06d8af60` byte-exact, RED 1 stale-ambient ignored
+→ `06d8af60`, all halts intact. This is the honest fresh-host reproduction; the CI checks on PR #126 are the
+genuinely-independent GitHub-runner confirmation.
