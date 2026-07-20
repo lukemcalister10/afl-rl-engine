@@ -8,7 +8,7 @@ parse -> resolve -> preview. Regenerate: `python3 dry_run_proof.py`.
 | field | value |
 |---|---|
 | proof season | 2026 |
-| store md5 | `b0c39d78` |
+| store md5 | `968de0c7` |
 | players sampled | 625 |
 | byte-for-byte reproduced | 625 |
 | failed | 0 |

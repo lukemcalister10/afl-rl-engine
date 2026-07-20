@@ -1,0 +1,5 @@
+{
+  "_doc": "DEDUP LEDGER for weekly round-score APPLY (round_apply.py). One record per applied (stable_player_id | season | round): a re-sent weekly feed reproduces the same triples, so RoundApplier.apply refuses the across-feed re-send (blocks double-counting). Seeded EMPTY: this build ships the apply gate OFF and has applied nothing to the real store. At go-live each applied round appends its triples here in the same commit as the store write. NOT a store lookalike (name is outside rl_model_data*.json); NOT a derived artifact (operational state, hand-audited, never regenerated from the store).",
+  "version": 1,
+  "applied": []
+}
