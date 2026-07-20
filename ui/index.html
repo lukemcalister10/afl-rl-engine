@@ -19,6 +19,9 @@
 <script src="data/club_valuation.js"></script>
 <!-- v1.3 values-free position map (item 196(2); from ui/tools/extract_positions.py — no dollar value) -->
 <script src="app/positions_data.js"></script>
+<!-- weekly movers bundle (one report per committed round; from engine/rl_after/ingestion/round_movers.py).
+     Optional: absent until a round is applied; the Movers view fail-closes cleanly when it is missing. -->
+<script src="data/movers.js"></script>
 
 <!-- app -->
 <script src="app/config.js"></script>
@@ -31,6 +34,7 @@
 <script src="app/card.js"></script>
 <script src="app/trade.js"></script>
 <script src="app/review.js"></script>
+<script src="app/movers.js"></script>
 <script src="app/main.js"></script>
 </body>
 </html>

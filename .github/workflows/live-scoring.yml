@@ -128,6 +128,16 @@ jobs:
           set -euo pipefail
           python3 session_2026-07-20/live_scoring_catchup/catchup_proof.py --write
 
+      - name: Movers view logic tests (integrity fail-closed, deterministic sort, filters, DNP)
+        run: |
+          set -euo pipefail
+          node ui/tests/movers.test.js
+
+      - name: Movers acceptance proof (committed R15-R19 reports: one-per-round, chain, coverage, no-overwrite)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/live_scoring_catchup/movers_proof.py --write
+
       - name: Failure-injection + crash-recovery + acceptance proof (7 points)
         run: |
           set -euo pipefail

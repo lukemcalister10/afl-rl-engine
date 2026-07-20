@@ -118,6 +118,14 @@ def hist(scr, name):
     return json.load(open(os.path.join(scr, 'engine', 'rl_after', 'ingestion', name)))
 
 
+def _read_bundle(path):
+    if not os.path.exists(path):
+        return None
+    with open(path) as f:
+        t = f.read()
+    return json.loads(t[t.index('{'):t.rindex('}') + 1])
+
+
 # ==================================================================================================
 def main(argv):
     ap = argparse.ArgumentParser()
@@ -256,6 +264,35 @@ def main(argv):
         report['D_sequential']['history_rounds_final'] = {'value': vr, 'rank': rr, 'pos_rank': pr}
         report['D_sequential']['pass'] = report['D_sequential']['pass'] and vr == rr == pr == [14, 15, 16, 17, 18, 19]
 
+        # === (G) MOVERS — exactly one report per committed round, DNP represented, bundle chained =====
+        # each applied round emitted a movers report only AFTER it committed; every active player is
+        # covered (played + DNP == player_count); the accumulated UI bundle chains R15..R19.
+        movers_dir = os.path.join(scr, 'engine', 'rl_after', 'ingestion', 'movers')
+        report_files = sorted(f for f in (os.listdir(movers_dir) if os.path.isdir(movers_dir) else [])
+                              if f.endswith('.json'))
+        per_round_ok = True
+        dnp_seen = False
+        for r in seq:
+            if r['status'] != 'applied':
+                continue
+            played = r.get('movers_played')
+            dnp = r.get('movers_dnp')
+            if played is None or dnp is None or not r.get('movers_report'):
+                per_round_ok = False
+            if dnp and dnp > 0:
+                dnp_seen = True
+        mbundle = _read_bundle(os.path.join(scr, 'ui', 'data', 'movers.js'))
+        report['G_movers'] = {
+            'movers_report_files': report_files,
+            'one_per_round': len(report_files) == 5,
+            'each_round_played_plus_dnp': per_round_ok,
+            'dnp_represented': dnp_seen,
+            'bundle_rounds': (mbundle or {}).get('rounds'),
+            'bundle_chain_ok': (mbundle or {}).get('integrity', {}).get('board_chain_ok'),
+            'pass': len(report_files) == 5 and per_round_ok and dnp_seen
+            and (mbundle or {}).get('rounds') == ROUNDS
+            and (mbundle or {}).get('integrity', {}).get('board_chain_ok')}
+
     finally:
         FI.disarm()
         shutil.rmtree(scr, ignore_errors=True)
@@ -269,7 +306,7 @@ def main(argv):
 
     report['elapsed_s'] = round(time.time() - t0, 1)
     order = ['A_preflight', 'B_participation', 'C_identity', 'D_sequential', 'E_restart_dedup',
-             'F_no_production_touched']
+             'G_movers', 'F_no_production_touched']
     all_pass = off and all(report[k]['pass'] for k in order)
     report['ALL_PASS'] = all_pass
 
@@ -334,6 +371,7 @@ def _md(r):
          "| C · identity by stable key (Callum Brown, the two Bailey Williams) | %s |" % _p(r, 'C_identity'),
          "| D · sequential per-round transactions (store/board/hashes/ledger/txn/3 histories/movers) | %s |" % _p(r, 'D_sequential'),
          "| E · restart/resume + duplicate-execution refusal | %s |" % _p(r, 'E_restart_dedup'),
+         "| G · movers report per committed round (DNP represented, bundle chained) | %s |" % _p(r, 'G_movers'),
          "| F · no production / RC files touched | %s |" % _p(r, 'F_no_production_touched'),
          "", "### Preflight (consolidated)",
          "| round | encoding | listed=played | listed-zero | absent/DNP | file sha256 |", "|---|---|---|---|---|---|"]

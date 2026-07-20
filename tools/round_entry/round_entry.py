@@ -292,13 +292,25 @@ def _apply_and_report(snap, args, repo):
     except _REFUSALS as e:
         die("%s: %s" % (type(e).__name__, e), code=2)
 
-    # POST-COMMIT (only after a fully committed board): refresh the Matchday UI view bundles.
+    # POST-COMMIT (only after a fully committed board): refresh the Matchday UI view bundles, then
+    # generate the durable weekly movers report (JSON + CSV + the integrated UI movers bundle).
     ui_ev = applier.refresh_ui()
-    _print_apply_summary(res, repo, ui_ev)
+    mv_ev = None
+    try:
+        import round_movers as MV
+        played = {r['key']: r['score'] for r in snap.get('resolved', [])}
+        evidence = {'store_md5_before': res.store_md5_before, 'store_md5_after': res.store_md5_after,
+                    'board_md5_before': res.board_md5_before, 'board_md5_after': res.board_md5_after,
+                    'txn_id': os.path.basename(res.txn_dir)}
+        mv_ev = MV.emit(repo, res.round, played=played, evidence=evidence,
+                        generated_at=(getattr(args, 'now', None) or _now(args)))
+    except Exception as e:                                  # movers is a post-commit aid; never unwind a commit
+        mv_ev = {'error': '%s: %s' % (type(e).__name__, e)}
+    _print_apply_summary(res, repo, ui_ev, mv_ev)
     return 0
 
 
-def _print_apply_summary(res, repo, ui_ev=None):
+def _print_apply_summary(res, repo, ui_ev=None, mv_ev=None):
     h = res.history or {}
     print("\n================ WEEKLY UPDATE APPLIED ================")
     print("  Round applied      : R%d, season %d" % (res.round, res.season))
@@ -323,6 +335,13 @@ def _print_apply_summary(res, repo, ui_ev=None):
     else:
         print("  UI bundles         : FAILED to refresh (rc=%s) — %s"
               % (ui_ev.get('rc'), (ui_ev.get('stderr_tail') or '').strip()[:120]))
+    if mv_ev and not mv_ev.get('error'):
+        print("  Movers report      : %d players (%d played, %d DNP) — %s + CSV; Movers UI updated"
+              % (mv_ev.get('player_count', 0), mv_ev.get('played', 0), mv_ev.get('dnp', 0),
+                 os.path.basename(mv_ev.get('movers_json') or 'movers.json')))
+        print("                       (top risers/fallers show in the Matchday UI 'Movers' tab)")
+    elif mv_ev and mv_ev.get('error'):
+        print("  Movers report      : NOT generated (%s)" % mv_ev['error'])
     print("  The store/board/manifest/ledger/history were staged, validated, and swapped atomically;")
     print("  a crash mid-swap rolls back. Backups, transaction record, ledger and history are kept.")
     print("======================================================")

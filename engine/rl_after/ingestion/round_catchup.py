@@ -238,7 +238,16 @@ class RoundCatchup:
             snap = self._build_snapshot(round_n, rd['resolved_rows'], generated_at)
             res = applier.apply_snapshot(snap, generated_at=generated_at, txn_id='txn_catchup_r%d' % round_n)
             ui_ev = applier.refresh_ui() if refresh_ui else {'ran': False}
-            mv_ev = MV.emit(self.repo_root, round_n) if emit_movers else None
+            # movers is generated ONLY after the round fully committed (store+board+ledger+history+UI):
+            # played = the keys LISTED this round (a score of 0 is a played score); absent keys are DNP.
+            mv_ev = None
+            if emit_movers:
+                played = {r.key: r.score for r in rd['resolved_rows']}
+                evidence = {'store_md5_before': res.store_md5_before, 'store_md5_after': res.store_md5_after,
+                            'board_md5_before': res.board_md5_before, 'board_md5_after': res.board_md5_after,
+                            'txn_id': os.path.basename(res.txn_dir)}
+                mv_ev = MV.emit(self.repo_root, round_n, played=played, evidence=evidence,
+                                generated_at=generated_at)
             results.append({
                 'round': round_n, 'status': 'applied', 'players_applied': res.players_applied,
                 'store_before': res.store_md5_before, 'store_after': res.store_md5_after,
@@ -249,7 +258,10 @@ class RoundCatchup:
                 'rank_history_md5': (res.history or {}).get('rank_history_md5'),
                 'pos_rank_history_md5': (res.history or {}).get('pos_rank_history_md5'),
                 'ui_ok': ui_ev.get('ok'), 'ui_board_stamp': ui_ev.get('ui_board_stamp'),
-                'movers_report': (mv_ev or {}).get('movers_report'),
+                'movers_report': (mv_ev or {}).get('movers_json'),
+                'movers_ui_bundle': (mv_ev or {}).get('ui_bundle'),
+                'movers_played': (mv_ev or {}).get('played'),
+                'movers_dnp': (mv_ev or {}).get('dnp'),
                 'movers_ui_rows_injected': (mv_ev or {}).get('ui_rows_injected'),
                 'txn_dir': os.path.basename(res.txn_dir),
             })
