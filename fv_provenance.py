@@ -40,6 +40,162 @@ def repo_root(root=None):
     return os.path.dirname(os.path.abspath(__file__))
 
 
+def env_root(halt=True):
+    """The TRUSTED checkout root, derived INDEPENDENTLY from the canonical environment only
+    (RL_REPO / CLAUDE_PROJECT_DIR) — never from a possibly-shadowed module's own resolver, and never by
+    walking up from a workspace copy. Must contain data/expected_boot.json. This is the anchor for
+    fail-closed config-manifest / rl_model provenance: we decide the trusted root from the environment
+    BEFORE trusting or executing any resolver a foreign module might supply."""
+    for cand in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR')):
+        if cand and os.path.exists(os.path.join(cand, 'data', 'expected_boot.json')):
+            return os.path.abspath(cand)
+    if halt:
+        raise SystemExit(
+            "fv_provenance.env_root: no trusted checkout root — set RL_REPO or CLAUDE_PROJECT_DIR to the "
+            "checkout (containing data/expected_boot.json). Refusing to anchor provenance to an untrusted "
+            "module's own root (fail-closed).")
+    return None
+
+
+def load_trusted(root, modname):
+    """Load EXACTLY <root>/<modname>.py by ABSOLUTE PATH — bypassing sys.path and any shadow — install it as
+    sys.modules[modname], and return the module. HALT if the file is absent. Use this to execute a canonical
+    module (config_manifest) from the trusted checkout, never whatever `import` happens to resolve."""
+    import importlib.util
+    path = os.path.join(root, modname + '.py')
+    if not os.path.exists(path):
+        raise SystemExit("fv_provenance.load_trusted: %s is ABSENT under the trusted root %s — cannot load the "
+                         "canonical %s module (fail-closed)." % (path, root, modname))
+    spec = importlib.util.spec_from_file_location(modname, path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[modname] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def verify_config_manifest(mode, root=None, halt=True):
+    """FAIL-CLOSED config-manifest verification for a CANONICAL build (bake/gate). Non-circular:
+      1. anchor the trusted root from the ENVIRONMENT (env_root), not from config_manifest;
+      2. HALT if a config_manifest is already loaded from a DIFFERENT file with DIFFERENT bytes (a shadow
+         pre-empted enforcement) — this is why callers must run this BEFORE anything imports config_manifest;
+      3. HALT if a bare `import config_manifest` WOULD resolve, via sys.path, to a DIFFERENT file with
+         DIFFERENT bytes than the trusted one (a foreign config_manifest earlier on the path);
+      4. execute the EXACT trusted <root>/config_manifest.py by path (install it in sys.modules);
+      5. HALT if the manifest data file is absent, or enforce(mode) does not engage / returns no identity
+         (enforce also HALTs internally on a manifest-hash-vs-pin mismatch or a divergent override).
+    Returns (accepted_config_identity, trusted_root)."""
+    root = root or env_root()
+    trusted = os.path.join(root, 'config_manifest.py')
+    tp = os.path.abspath(trusted)
+
+    def _fail(msg):
+        if halt:
+            raise SystemExit("CANONICAL BUILD HALT (%s mode) — config provenance: %s" % (mode, msg))
+        raise AssertionError(msg)
+
+    if not os.path.exists(trusted):
+        _fail("trusted config_manifest %s is ABSENT under the checkout root — cannot enforce the pinned model "
+              "configuration (fail-closed)." % trusted)
+    # (2) an already-cached config_manifest from a different file with different bytes = shadow that pre-empted us
+    pre = sys.modules.get('config_manifest')
+    if pre is not None:
+        pf = os.path.abspath(getattr(pre, '__file__', '') or '')
+        if pf and pf != tp and _file_md5(pf) != _file_md5(tp):
+            _fail("a config_manifest is ALREADY loaded from %s (md5 %s), not the trusted %s (md5 %s) — a "
+                  "shadow pre-empted enforcement; refusing to generate a board."
+                  % (pf, _file_md5(pf)[:8], tp, _file_md5(tp)[:8]))
+    # (3) sys.path shadow: what a bare `import config_manifest` WOULD resolve to
+    import importlib.machinery as _im
+    spec = _im.PathFinder.find_spec('config_manifest', list(sys.path))
+    res = os.path.abspath(spec.origin) if (spec and getattr(spec, 'origin', None)) else None
+    if res and res != tp and os.path.exists(res) and _file_md5(res) != _file_md5(tp):
+        _fail("a foreign config_manifest %s (md5 %s) earlier on sys.path shadows the trusted %s (md5 %s) — "
+              "refusing to generate a board (a bare import would execute the shadow)."
+              % (res, _file_md5(res)[:8], tp, _file_md5(tp)[:8]))
+    # (4) execute the EXACT trusted file by path
+    cm = load_trusted(root, 'config_manifest')
+    data = cm.manifest_path(root)
+    if not os.path.exists(data):
+        _fail("config manifest data file %s is ABSENT under the trusted root — cannot enforce." % data)
+    # (5) enforce must engage and return the accepted identity (hash-vs-pin + reject-scan are inside enforce)
+    h = cm.enforce(mode)
+    if not h:
+        _fail("config_manifest.enforce(%r) did not return an accepted config identity — enforcement did not "
+              "engage; refusing to generate a board." % mode)
+    return h, root
+
+
+def assert_loaded_fv(loaded_files, root=None, halt=True):
+    """ACTUAL-LOADED-MODULE proof (not a constructed path): every forward-valuation module Python actually
+    LOADED must (a) live in the resolved forward_valuation directory the loader used, and (b) have bytes
+    equal to the pinned per-file source hash (== the checkout, which Guard 5 asserts == the 'fv' pin). Covers
+    spec-loaded siblings AND bare-import / sys.modules reuse (e.g. conditional_prior). `loaded_files` is a
+    {label: abspath} map of the modules' real __file__. HALT on any drift."""
+    root = root or env_root()
+    fv_dir = os.path.abspath(resolve_fv(root))
+    pinned = fv_source_hashes(checkout_fv_dir(root))     # trusted per-file hashes
+    fails = []
+    seen = 0
+    for label, path in (loaded_files or {}).items():
+        if not path:
+            continue
+        ap = os.path.realpath(os.path.abspath(path))
+        base = os.path.basename(ap)
+        if os.path.realpath(os.path.dirname(ap)) != os.path.realpath(fv_dir):
+            fails.append("loaded FV module '%s' at %s is OUTSIDE the resolved forward_valuation dir %s "
+                         "(an unpinned / stale source reached the engine)" % (label, ap, fv_dir))
+            continue
+        if base not in pinned:
+            fails.append("loaded FV module '%s' (%s) is not a member of the pinned forward-valuation source "
+                         "set" % (label, base))
+            continue
+        got = _sha256_file(ap)
+        if got != pinned[base]:
+            fails.append("loaded FV module '%s' (%s) bytes %s != pinned %s — the file actually imported is "
+                         "not the pinned source" % (label, base, got[:12], pinned[base][:12]))
+            continue
+        seen += 1
+    if seen == 0 and not fails:
+        fails.append("no forward-valuation modules were observed as loaded — cannot prove the actual loaded "
+                     "source (fail-closed)")
+    if fails:
+        msg = ("\n======== ACTUAL-LOADED FORWARD-VALUATION PROOF FAILED — BUILD HALTED ========\n  - "
+               + "\n  - ".join(fails) + "\n=============================================================================")
+        if halt:
+            raise SystemExit(msg)
+        raise AssertionError(msg)
+    return True
+
+
+def assert_loaded_rl_model(loaded_path, root=None, halt=True):
+    """ACTIVE rl_model provenance: the rl_model the engine actually LOADED (its real __file__) must be
+    byte-identical to the trusted checkout/staged engine/rl_after/rl_model.py. Not find_spec, not the
+    provenance report — the bytes of the module Python reused. HALT if a foreign or stale rl_model is loaded
+    or shadows the intended source. (Compares against the CHECKOUT source, never the boot-pin — the pin's
+    pre-existing drift is out of scope and is NOT touched here.)"""
+    root = root or env_root()
+    trusted = os.path.join(root, 'engine', 'rl_after', 'rl_model.py')
+
+    def _fail(msg):
+        if halt:
+            raise SystemExit("\n======== ACTIVE rl_model PROVENANCE FAILED — BUILD HALTED ========\n  - " + msg
+                             + "\n=================================================================")
+        raise AssertionError(msg)
+
+    if not os.path.exists(trusted):
+        _fail("trusted checkout rl_model %s is ABSENT — cannot verify the loaded rl_model." % trusted)
+    if not loaded_path or not os.path.exists(loaded_path):
+        _fail("the engine's loaded rl_model has no resolvable __file__ (%r) — cannot prove it is the trusted "
+              "source." % loaded_path)
+    lp = os.path.realpath(os.path.abspath(loaded_path))
+    if _sha256_file(lp) != _sha256_file(trusted):
+        _fail("the engine LOADED rl_model from\n        %s  (sha %s)\n     which is NOT byte-identical to the "
+              "trusted checkout\n        %s  (sha %s)\n     — a foreign or stale rl_model was imported / "
+              "shadowed the intended source; refusing to generate a board."
+              % (lp, _sha256_file(lp)[:12], trusted, _sha256_file(trusted)[:12]))
+    return True
+
+
 def checkout_fv_dir(root=None):
     """The checked-out repo's own engine/forward_valuation (the canonical source)."""
     return os.path.join(repo_root(root), 'engine', 'forward_valuation')

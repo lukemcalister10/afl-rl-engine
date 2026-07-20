@@ -10,7 +10,8 @@ valuation mathematics, no §1b law, no parameter, no data, no board selection, n
 | Fix branch base | `3055ea5ffdc390f81d5e17476a60fbb841f24cff` (env-pin commit #2, item 392) |
 | Working tree at start | HEAD == `3055ea5`, clean |
 | Diagnostic commit `7c6768e` merged/rebased in? | **NO** — read read-only via `git show`; never merged |
-| Relationship to `origin/main` | **git-disjoint** (`git merge-base` = ∅); main is the stale 50-commit docs line whose `distribution_pricing.py` is the §1b-missing `21d530bf` |
+| Commits on the remediation branch | **four** (correcting the earlier "single diff commit" claim): `9e9e385` (fix) → `cac2daf` (fresh-runner seed) → `3d85e66` (doc) → this corrective commit |
+| Relationship to `origin/main` | **DIVERGENT, not git-disjoint** (an earlier claim of "git-disjoint" was WRONG — it came from a shallow local `origin/main`). The merge-base is `0d21b2ecb82712fc83cf22dbf087abdbf4a99b12` ("docs: R105.5 L-RECENCY … register v214"), a genuine common ancestor of both HEAD and `origin/main`. Main is the branch whose `distribution_pricing.py` is the §1b-missing `21d530bf`. |
 | Strict `distribution_pricing.py` at base | `d0c8c69f` (with §1b), confirmed also on `15a9abd` — the bake-base checkout was correct |
 
 The bad board did **not** come from a bad checkout. It came from the runtime importing a *stale workspace
@@ -124,19 +125,54 @@ provenance path **in isolation** (`assert_fv_provenance` + the strict board buil
 drifting `rl_model`/`engine_head` pins). The permanent CI workflow does the same, so the independent-runner
 proof is not blocked by this pre-existing condition.
 
+## 9b. Corrective round (review findings 1–3, 2026-07-20)
+
+**C1 — config shadow, non-circular.** `rl_export` no longer asks the (possibly-shadowed) imported
+`config_manifest` for the root and then compares against a file under that same root. It now: derives the
+trusted checkout root **independently** from `RL_REPO`/`CLAUDE_PROJECT_DIR` (`fv_provenance.env_root`); runs
+**before** anything imports/caches `config_manifest`; HALTs if a `config_manifest` is already cached from a
+different file with different bytes, or if a bare import would resolve on `sys.path` to a foreign file with
+different bytes; executes the **exact** `<root>/config_manifest.py` by path
+(`fv_provenance.verify_config_manifest` → `load_trusted`); and HALTs if the data manifest is missing, the
+hash mismatches the pin, or `enforce()` returns no accepted identity. Red tests: missing, mismatch, foreign
+shadow on path (returns a fake-valid identity), enforce→None — each HALTs before board output.
+
+**C2 — one resolver + actual-loaded proof.** `wire_redesign.py`, `par_redesign.py`, `build_cohort_book.py`
+no longer duplicate the resolver — they call the single `fv_provenance.resolve_fv` that Guard 5 also uses, so
+the production loader and the guard cannot resolve differently. **After** the FV chain loads, `rl_export`
+proves the **actual** loaded module files (the spec-loaded siblings reached via `wire_redesign`'s namespace
+*and* the bare-imported `conditional_prior` in `sys.modules`) are members of the resolved pinned tree with the
+pinned per-file hashes (`fv_provenance.assert_loaded_fv`) — a real `__file__`, not a constructed path.
+
+**C3 — active rl_model provenance.** `rl_export` verifies the rl_model the engine **actually loaded**
+(`MA.__file__` bytes) is byte-identical to the trusted checkout `engine/rl_after/rl_model.py`
+(`fv_provenance.assert_loaded_rl_model`) — not `find_spec`, not the provenance report. A new red test
+actively **preloads** a byte-different foreign rl_model into `sys.modules` (via a `sitecustomize` on the path)
+so the engine reuses it; the build HALTs before writing a board. The retired `/home/claude/rl_after` test is
+kept as a separate defence-in-depth case. `rl_model.py` and its (drifted) boot-pin are **not** touched.
+
+Additional changed paths this round: `fv_provenance.py` (env_root / load_trusted / verify_config_manifest /
+assert_loaded_fv / assert_loaded_rl_model), `engine/rl_after/rl_export.py` (non-circular preamble + post-exec
+loaded proofs), `engine/rl_after/wire_redesign.py`, `engine/forward_valuation/par_redesign.py`,
+`engine/forward_valuation/build_cohort_book.py` (single resolver), `data/expected_boot.json` (`fv` pin
+`fa060917…` → `de4c7ec3…`, import-only FV edits), and the test suite + a `reference_vector_06d8af60.json`
+fixture (full active-vector zero-mover check).
+
 ## 10. Verified results (this environment)
 
-**Red/green suite — `test_fv_provenance.py` → 7/7 PASS** (`RESULTS.json`):
+**Red/green suite — `test_fv_provenance.py` → 8/8 PASS** (`RESULTS.json`, corrected round; re-verified on a
+simulated-fresh `/home/claude`):
 
 | Scenario | Result |
 |---|---|
-| GREEN 1 strict board | rc=0, board **06d8af60**, active **804**, Σv **752427**, Sheezel **7964**, 0 movers |
-| GREEN 2 provenance record | all fields present; `fv_identity == pin`; stderr `PROVENANCE` marker; sidecar written |
-| RED 1 stale ambient ignored | stale `21d530bf` seeded at the former default path → board **06d8af60** (never `d7a95e8d`); files unchanged |
+| GREEN 1 strict board + full-vector zero movers | rc=0, board **06d8af60**, active **804**, Σv **752427**, Sheezel **7964**; **complete 804-key active-value vector == accepted reference, 0 movers** |
+| GREEN 2 provenance record | all fields present; `fv_identity == pin` (`de4c7ec3`); stderr `PROVENANCE` marker; sidecar written |
+| RED 1 stale ambient ignored | stale `21d530bf` at the former default path → board **06d8af60** (never `d7a95e8d`); files unchanged |
 | RED 2 explicit stale RL_FV | HALT (loaded-path drift), no board, files unchanged |
 | RED 3 sibling FV source drift | HALT (checkout drift — `conditional_prior.py` changed), no board, files unchanged |
-| RED 4 config manifest fail-closed | 4a missing → HALT; 4b hash mismatch → HALT; no board, files unchanged |
-| RED 5 foreign rl_model @ /home/claude/rl_after | never imported; board **06d8af60**; `rl_model_path` is the verified staging copy; files unchanged |
+| RED 4 config manifest fail-closed (**4 cases**) | 4a missing → HALT; 4b hash mismatch → HALT; **4c foreign shadow on sys.path → HALT**; **4d enforce→None → HALT**; no board, files unchanged |
+| RED 5 retired `/home/claude/rl_after` path (defence-in-depth) | never imported; board **06d8af60**; loaded `rl_model` is the verified staging copy; files unchanged |
+| RED 6 **active** foreign rl_model preloaded | foreign rl_model preloaded into `sys.modules` (sitecustomize) so the engine reuses it → **HALT** (loaded bytes ≠ trusted checkout), no board, files unchanged |
 
 Every red path additionally verified: **no board written, no pin changed, no production file changed, no retry.**
 

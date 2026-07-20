@@ -1,16 +1,16 @@
 {
-  "pass": 7,
-  "total": 7,
+  "pass": 8,
+  "total": 8,
   "results": [
     {
-      "name": "GREEN1_strict_board_06d8af60",
+      "name": "GREEN1_strict_board_06d8af60_zero_movers",
       "ok": true,
-      "detail": "rc=0 md5=06d8af60b679a12db07c064c60c065f9 active=804 sumv=752427 sheezel=7964 (expect 06d8af60/804/752427/7964)"
+      "detail": "rc=0 md5=06d8af60b679a12db07c064c60c065f9 active=804 sumv=752427 sheezel=7964 vector_movers=0 (expect 06d8af60/804/752427/7964/0)"
     },
     {
       "name": "GREEN2_provenance_record",
       "ok": true,
-      "detail": "all_fields=True fv_identity==pin=True stderr_marker=True (fv=fa060917 dp=dd19a234 rlm=cc626d7d cfg=c2d233ae)"
+      "detail": "all_fields=True fv_identity==pin=True stderr_marker=True (fv=de4c7ec3 dp=dd19a234 rlm=cc626d7d cfg=c2d233ae)"
     },
     {
       "name": "RED1_stale_ambient_ignored",
@@ -28,15 +28,20 @@
       "detail": "rc=1 board=None named_checkout_drift=True files_unchanged=True"
     },
     {
-      "name": "RED4_config_manifest_failclosed",
+      "name": "RED4_config_manifest_failclosed_4cases",
       "ok": true,
-      "detail": "4a_missing:ok(rc=1 board=False); 4b_mismatch:ok(rc=1 board=None) files_unchanged=True"
+      "detail": "4a_missing:ok; 4b_mismatch:ok; 4c_shadow:ok; 4d_noident:ok files_unchanged=True"
     },
     {
-      "name": "RED5_foreign_rl_model_ignored",
+      "name": "RED5_retired_rl_after_path_ignored",
       "ok": true,
-      "detail": "board=06d8af60b679a12db07c064c60c065f9 rl_model_path=/home/claude/fvprov_71mralet/rl_after/rl_model.py (not /home/claude/rl_after=True) files_unchanged=True"
+      "detail": "board=06d8af60b679a12db07c064c60c065f9 rl_model_path=/home/claude/fvprov_1j9uk3sy/rl_after/rl_model.py (not /home/claude/rl_after=True) files_unchanged=True"
+    },
+    {
+      "name": "RED6_active_foreign_rl_model_halts",
+      "ok": true,
+      "detail": "rc=1 board=False named_rl_model_halt=True files_unchanged=True"
     }
   ],
-  "fv_pin": "fa060917c8e5cd057c4248855c276f790764c1d4fee192b166c0218fc6c4db4f"
+  "fv_pin": "de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64"
 }

@@ -5,18 +5,19 @@ import json, numpy as np, math
 from collections import defaultdict
 import io as _io, contextlib as _ctx
 import single_source as _SS
-# ==== PROVENANCE + CONFIG FAIL-CLOSED PREAMBLE (fv-provenance remediation 2026-07-20) ====================
+import fv_provenance as _FVP     # the ONE canonical FV selector / identity + fail-closed provenance helpers
+# ==== PROVENANCE + CONFIG FAIL-CLOSED PREAMBLE (fv-provenance remediation 2026-07-20; corrective 2026-07-20) =
 # GREEN 2: record the full forward-valuation + rl_model + config provenance BEFORE any board is generated
 # (RL_FV, resolved dir, FV source-set identity, distribution_pricing.py path+hash, rl_model path+hash,
 # config_manifest path+identity) — written to an rl_app_data.provenance.json sidecar and a one-line stderr
 # marker, so the import state that made the board is fingerprinted (closes the audit's "no import-state record").
-# JOB 4: in a CANONICAL board build (RL_CONFIG_MODE=bake|gate) config-manifest enforcement AND forward-valuation
-# provenance are FAIL-CLOSED — a missing/shadowed/mismatched config_manifest, a non-engaged/failed enforcement,
-# or a forward_valuation checkout/loaded-path drift HALTS *before* board generation. Dev-shell (no RL_CONFIG_MODE)
+# JOB 4 / C1: in a CANONICAL board build (RL_CONFIG_MODE=bake|gate) config-manifest enforcement is FAIL-CLOSED
+# and NON-CIRCULAR — the trusted checkout root is derived INDEPENDENTLY from the environment, the EXACT
+# <root>/config_manifest.py is executed by path (never a sys.path shadow), and this runs BEFORE anything
+# (incl. the provenance report) can import/cache an unverified config_manifest. Dev-shell (no RL_CONFIG_MODE)
 # stays available for exploration (enforce is a no-op) but still emits the provenance record.
 def _emit_provenance():
     try:
-        import fv_provenance as _FVP
         _prov = _FVP.provenance_report()
     except Exception as _e:
         _prov = {'error': repr(_e)}
@@ -30,50 +31,24 @@ def _emit_provenance():
          'distribution_pricing_md5', 'rl_model_path', 'rl_model_md5',
          'config_manifest_path', 'config_manifest_identity')}, sort_keys=True) + "\n")
     return _prov
-_PROV = _emit_provenance()
 _CANON_MODE = os.environ.get('RL_CONFIG_MODE')
+_TROOT = _FVP.env_root(halt=False)          # trusted checkout root from RL_REPO/CLAUDE_PROJECT_DIR (env only)
 if _CANON_MODE in ('bake', 'gate'):
-    # (1) config_manifest must resolve from the checked-out/staged repo; its module path + data path verified.
-    try:
-        import config_manifest as _CFG
-    except Exception as _e:
-        raise SystemExit("CANONICAL BUILD HALT (%s mode): config_manifest is not importable (%r) — a bake/gate "
-                         "board build MUST enforce the pinned model configuration; refusing to generate a board "
-                         "without config enforcement (fail-closed; fv-provenance remediation JOB 4)." % (_CANON_MODE, _e))
-    _cfg_root = _CFG.repo_root()
-    _cm_data = _CFG.manifest_path(_cfg_root)
-    if not os.path.exists(_cm_data):
-        raise SystemExit("CANONICAL BUILD HALT (%s mode): config manifest data file %s is ABSENT under the "
-                         "resolved repo %s — cannot enforce the pinned model configuration." % (_CANON_MODE, _cm_data, _cfg_root))
-    # shadow detection: the IMPORTED config_manifest.py must be the checked-out module byte-for-byte (a foreign
-    # config_manifest.py earlier on the path would otherwise silently replace enforcement).
-    _cm_mod = os.path.abspath(getattr(_CFG, '__file__', '') or '')
-    _cm_repo = os.path.join(_cfg_root, 'config_manifest.py')
-    if os.path.exists(_cm_repo):
-        import hashlib as _hh
-        _h_imp = _hh.md5(open(_cm_mod, 'rb').read()).hexdigest() if os.path.exists(_cm_mod) else None
-        _h_repo = _hh.md5(open(_cm_repo, 'rb').read()).hexdigest()
-        if _h_imp != _h_repo:
-            raise SystemExit("CANONICAL BUILD HALT (%s mode): imported config_manifest (%s, md5 %s) is NOT the "
-                             "checked-out module (%s, md5 %s) — a shadowed/foreign config_manifest is on the path; "
-                             "refusing to generate a board." % (_CANON_MODE, _cm_mod, (_h_imp or 'MISSING')[:8], _cm_repo, _h_repo[:8]))
-    # (2) enforce() MUST return the accepted config identity (reject-scan + manifest-hash-vs-pin are inside it;
-    #     a divergent/unknown override or a manifest/pin mismatch HALTs there). None == mode not engaged -> HALT.
-    _cfg_hash = _CFG.enforce(_CANON_MODE)
-    if not _cfg_hash:
-        raise SystemExit("CANONICAL BUILD HALT (%s mode): config_manifest.enforce(%r) did not return an accepted "
-                         "config identity — gate/bake enforcement did not engage; refusing to generate a board."
-                         % (_CANON_MODE, _CANON_MODE))
-    sys.stderr.write("CONFIG ACCEPTED %s  (manifest %s)\n" % (_cfg_hash[:12], _cm_data))
-    # (3) forward-valuation provenance fail-closed (Guard 5 checkout + loaded-path) BEFORE board generation.
+    # (1+2) C1: verify+execute the trusted config_manifest by path and enforce — BEFORE _emit_provenance can
+    #       import/cache an unverified one. Missing / shadowed-on-path / already-cached-foreign / data-missing /
+    #       hash-mismatch / enforce-no-identity all HALT here, before board generation.
+    _cfg_hash, _TROOT = _FVP.verify_config_manifest(_CANON_MODE)
+    sys.stderr.write("CONFIG ACCEPTED %s  (trusted %s)\n" % (_cfg_hash[:12], os.path.join(_TROOT, 'config_manifest.py')))
+    # (3) forward-valuation checkout + resolved-dir provenance fail-closed BEFORE board generation.
     import boot_guard as _BG
-    _BG.assert_fv_provenance(_cfg_root)
+    _BG.assert_fv_provenance(_TROOT)
 else:
     # dev-shell: config manifest is a NO-OP (enforce returns None outside bake/gate); exploration stays available.
     try:
         import config_manifest as _CFG; _CFG.enforce()
     except ImportError:
         pass
+_PROV = _emit_provenance()                  # config_manifest, if imported, is now the TRUSTED one in bake/gate
 # ========================================================================================================
 _SS.assert_startup()            # GUARDS 3 + 3b (lookalike tripwire + engine-opens) before the board is built
 _SS.lock_tier2()               # stamp + read-only-lock the frozen train-time caches (peak model + pvc_snapshot)
@@ -92,6 +67,36 @@ _ens = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], _ens)
 _ev = _ens['ev']; g = _ens['MA'].__dict__          # THE engine instance (rl_model imported as MA, valuation-wired)
+# ==== ACTUAL-LOADED PROVENANCE PROOF (C2/C3, corrective 2026-07-20) — BEFORE any board is written ==========
+# Prove the FV modules + rl_model the engine ACTUALLY loaded are the pinned/trusted sources (not a constructed
+# path). The spec-loaded FV siblings are reached via wire_redesign's bound namespace (PR/TR/rd/cp/dp + PR.pb),
+# the bare-imported ones (e.g. conditional_prior) via sys.modules; each must be a member of the resolved pinned
+# forward_valuation tree with the pinned bytes, and the loaded rl_model must be byte-identical to the trusted
+# checkout. A HALT here occurs before json.dump, so no board / pin / production file is written or mutated.
+if _FVP.expected_identity(_TROOT) is not None:
+    if _TROOT is None:
+        raise SystemExit("CANONICAL BUILD HALT: cannot verify loaded provenance — set RL_REPO / CLAUDE_PROJECT_DIR "
+                         "to the checkout (env-anchored trusted root required for the actual-loaded proof; fail-closed).")
+    _loaded_fv = {}
+    _W = sys.modules.get('wire_redesign') or _ens.get('W')
+    if _W is not None:
+        for _nm in ('PR', 'TR', 'rd', 'cp', 'dp'):
+            _m = getattr(_W, _nm, None)
+            if _m is not None and getattr(_m, '__file__', None):
+                _loaded_fv['wire_redesign.' + _nm] = _m.__file__
+        _pr = getattr(_W, 'PR', None)
+        _pb = getattr(_pr, 'pb', None) if _pr is not None else None
+        if _pb is not None and getattr(_pb, '__file__', None):
+            _loaded_fv['par_redesign.pb'] = _pb.__file__
+    _fv_basenames = set(_FVP.fv_source_files(_FVP.checkout_fv_dir(_TROOT)))
+    for _mn, _mod in list(sys.modules.items()):
+        _f = getattr(_mod, '__file__', None)
+        if _f and os.path.basename(_f) in _fv_basenames:
+            _loaded_fv['sys.modules[%s]' % _mn] = _f
+    _FVP.assert_loaded_fv(_loaded_fv, _TROOT)
+    _FVP.assert_loaded_rl_model(getattr(_ens['MA'], '__file__', None), _TROOT)
+    sys.stderr.write("LOADED-PROVENANCE OK  fv_modules=%d rl_model=%s\n"
+                     % (len(_loaded_fv), os.path.abspath(getattr(_ens['MA'], '__file__', '') or '?')))
 # ==== R3 BAKE GUARD (2026-07-09) — the PVC fit is HELD OUT of the baked board by owner ruling R3 ==========
 # The shipped board's pick currency (PVC / picks / intake*) MUST be the frozen v3.4 curve (_PVC0), never the
 # fitted candidate curve. RL_PVCFIT now defaults 0 (compliant-by-default); this guard makes a fitted board

@@ -21,17 +21,14 @@ def _L(n,p):
     s=importlib.util.spec_from_file_location(n,p); m=importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m)
     return m
-def _resolve_fv():   # CANONICAL FV SELECTION (fail-closed) — see wire_redesign._resolve_fv / fv_provenance.py
-    fv=os.environ.get('RL_FV')
-    if fv: return os.path.abspath(fv)
-    for base in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR')):
-        if base:
-            cand=os.path.join(base,'engine','forward_valuation')
-            if os.path.isdir(cand): return os.path.abspath(cand)
-    raise SystemExit("par_redesign: cannot resolve forward_valuation source — RL_FV unset and no checked-out "
-                     "engine/forward_valuation via RL_REPO/CLAUDE_PROJECT_DIR. Refusing an ambient-workspace "
-                     "fallback (fail-closed provenance; fv-provenance remediation).")
-_FV=_resolve_fv()
+# CANONICAL FV SELECTION (fail-closed): the ONE resolver fv_provenance.resolve_fv (same as Guard 5 and
+# wire_redesign — the loader and the guard cannot resolve differently; corrective C2).
+try:
+    import fv_provenance as _FVP
+except Exception as _e:
+    raise SystemExit("par_redesign: the canonical resolver fv_provenance is not importable (%r) — cannot "
+                     "select the forward_valuation source (fail-closed; fv-provenance remediation)." % _e)
+_FV=_FVP.resolve_fv()
 # FV-sibling bare imports (par_build's `import conditional_prior`) resolve from the SAME canonically-resolved
 # _FV — replacing the removed ambient `/home/claude/rl_workspace/forward_valuation` insert with the verified
 # checkout FV so no bare FV import can fall through to a stale workspace copy.

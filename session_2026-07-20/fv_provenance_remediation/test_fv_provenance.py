@@ -138,16 +138,27 @@ def record(name, ok, detail):
     print("  [%s] %s — %s" % ('PASS' if ok else 'FAIL', name, detail))
 
 
-# ============================ GREEN 1 — strict canonical build ============================
+# ============================ GREEN 1 — strict canonical build + full-vector zero movers ============================
 def green1():
     r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
     ok = (r['rc'] == 0 and r['board_md5'] == BOARD_MD5_GOOD)
     facts = _board_facts(r['board_path']) if r['board_path'] else {}
     ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 752427 and facts.get('sheezel') == 7964
+    # C5: compare the COMPLETE active-player value vector against the accepted reference — require ZERO movers.
+    movers = None
+    ref_path = os.path.join(FIX, 'reference_vector_06d8af60.json')
+    if r['board_path'] and os.path.exists(ref_path):
+        ref = json.load(open(ref_path))['vector']
+        built = {p['key']: p['v'] for p in json.loads(open(r['board_path'], 'rb').read())['active']}
+        both = set(ref) & set(built)
+        movers = [k for k in both if ref[k] != built[k]]
+        only_ref = set(ref) - set(built); only_built = set(built) - set(ref)
+        ok = ok and len(movers) == 0 and not only_ref and not only_built and len(both) == 804
     _tail = '' if ok else '  ::STDERR_TAIL:: ' + ' | '.join((r['stderr'] or '').strip().splitlines()[-4:])
-    record('GREEN1_strict_board_06d8af60', ok,
-           "rc=%s md5=%s active=%s sumv=%s sheezel=%s (expect 06d8af60/804/752427/7964)%s"
-           % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'), _tail))
+    record('GREEN1_strict_board_06d8af60_zero_movers', ok,
+           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s (expect 06d8af60/804/752427/7964/0)%s"
+           % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'),
+              (len(movers) if movers is not None else '?'), _tail))
     shutil.rmtree(r['base'], ignore_errors=True)
     return r
 
@@ -237,48 +248,91 @@ def red3():
     shutil.rmtree(r['base'], ignore_errors=True); shutil.rmtree(drift_repo, ignore_errors=True)
 
 
-# ============================ RED 4 — missing/wrong config manifest -> HALT (bake) ============================
-def red4():
-    before = _snapshot_guarded()
-    results = []
-    # 4a: config_manifest not importable (removed from the run dir, and not on PYTHONPATH)
+# ============================ RED 4 — config manifest fail-closed (4 cases) -> HALT before board ============================
+def _config_red_build(rl_repo, prepend_pp=None, strip_ws_config=False):
+    """Bake-mode rl_export with controlled RL_REPO + import path. The trusted config_manifest is loaded BY PATH
+    from RL_REPO; prepend_pp / strip_ws_config let us control exactly what a bare `import config_manifest` could
+    resolve to on sys.path. Returns dict(rc, board(bool), stderr, base)."""
     base, ws = _staging()
-    os.remove(os.path.join(ws, 'config_manifest.py'))
     _seed_pkls()
+    if strip_ws_config:
+        try: os.remove(os.path.join(ws, 'config_manifest.py'))
+        except OSError: pass
     env = dict(os.environ)
     for k in ('RL_PVC2', 'RL_LEGE', 'RL_LEGF', 'RL_V0SURF_REFIT'):
         env.pop(k, None)
-    env.update({'RL_REPO': REPO, 'RL_FV': os.path.join(REPO, 'engine', 'forward_valuation'),
+    pp = ([prepend_pp] if prepend_pp else []) + [ws, os.path.join(CLAUDE, 'rl_vendor')]
+    env.update({'RL_REPO': rl_repo, 'RL_FV': os.path.join(REPO, 'engine', 'forward_valuation'),
                 'RL_CONFIG_MODE': 'bake', 'RL_PRIOR_TREES': '400', 'PYTHONHASHSEED': '0',
                 'OPENBLAS_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1', 'NUMEXPR_NUM_THREADS': '1',
-                'PYTHONPATH': ws + ':' + os.path.join(CLAUDE, 'rl_vendor')})  # NOTE: repo NOT on path -> config_manifest unresolvable
-    for f in ('rl_app_data.json', 'rl_app_data.json.srcmd5'):
-        try: os.remove(os.path.join(ws, f))
-        except OSError: pass
-    p = subprocess.run([sys.executable, 'rl_export.py'], cwd=ws, env=env, capture_output=True, text=True)
+                'PYTHONPATH': ':'.join(pp)})
     board = os.path.join(ws, 'rl_app_data.json')
-    a_ok = (p.returncode != 0 and not os.path.exists(board) and 'not importable' in p.stderr)
-    results.append(('4a_missing', a_ok, "rc=%s board=%s" % (p.returncode, os.path.exists(board))))
-    shutil.rmtree(base, ignore_errors=True)
-    # 4b: mismatched manifest hash (tampered model_config.json under a scratch repo root)
-    scratch = tempfile.mkdtemp(prefix='fvcfg_', dir=CLAUDE if os.path.isdir(CLAUDE) else None)
-    os.makedirs(os.path.join(scratch, 'data'), exist_ok=True)
-    shutil.copy2(os.path.join(REPO, 'data', 'expected_boot.json'), os.path.join(scratch, 'data', 'expected_boot.json'))
+    try: os.remove(board)
+    except OSError: pass
+    p = subprocess.run([sys.executable, 'rl_export.py'], cwd=ws, env=env, capture_output=True, text=True)
+    return {'rc': p.returncode, 'board': os.path.exists(board), 'stderr': p.stderr, 'base': base}
+
+
+def _scratch_root(with_config=True, tamper=False, stub_enforce=False):
+    d = tempfile.mkdtemp(prefix='fvcfg_', dir=CLAUDE if os.path.isdir(CLAUDE) else None)
+    os.makedirs(os.path.join(d, 'data'), exist_ok=True)
+    shutil.copy2(os.path.join(REPO, 'data', 'expected_boot.json'), os.path.join(d, 'data', 'expected_boot.json'))
     mc = json.load(open(os.path.join(REPO, 'data', 'model_config.json')))
-    mc['vars']['RL_PRIOR_TREES'] = '999'   # tamper -> hash != pin
-    json.dump(mc, open(os.path.join(scratch, 'data', 'model_config.json'), 'w'))
-    r = _run_build({'RL_REPO': scratch}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'),
-                   config_mode='bake', balanced=False)
-    b_ok = (r['rc'] != 0 and r['board_md5'] is None and ('REJECTED' in r['stderr'] or 'hash' in r['stderr']))
-    results.append(('4b_mismatch', b_ok, "rc=%s board=%s" % (r['rc'], r['board_md5'])))
-    shutil.rmtree(r['base'], ignore_errors=True); shutil.rmtree(scratch, ignore_errors=True)
+    if tamper:
+        mc['vars']['RL_PRIOR_TREES'] = '999'
+    json.dump(mc, open(os.path.join(d, 'data', 'model_config.json'), 'w'))
+    if stub_enforce:
+        with open(os.path.join(d, 'config_manifest.py'), 'w') as f:
+            f.write("import os\n"
+                    "def repo_root(root=None): return os.environ.get('RL_REPO') or '.'\n"
+                    "def manifest_path(root=None): return os.path.join(repo_root(root),'data','model_config.json')\n"
+                    "def manifest_hash(root=None): return 'stub'\n"
+                    "def enforce(mode=None, halt=True): return None   # never returns an accepted identity\n")
+    elif with_config:
+        shutil.copy2(os.path.join(REPO, 'config_manifest.py'), os.path.join(d, 'config_manifest.py'))
+    return d
+
+
+def red4():
+    before = _snapshot_guarded()
+    results = []
+    # 4a MISSING: RL_REPO has no config_manifest.py -> load-by-path ABSENT -> HALT
+    root_a = _scratch_root(with_config=False)
+    ra = _config_red_build(root_a)
+    results.append(('4a_missing', ra['rc'] != 0 and not ra['board'] and 'ABSENT' in ra['stderr'],
+                    "rc=%s board=%s" % (ra['rc'], ra['board'])))
+    shutil.rmtree(ra['base'], ignore_errors=True); shutil.rmtree(root_a, ignore_errors=True)
+    # 4b MISMATCH: tampered model_config.json under RL_REPO -> enforce hash-vs-pin -> HALT
+    root_b = _scratch_root(tamper=True)
+    rb = _config_red_build(root_b, strip_ws_config=True)
+    results.append(('4b_mismatch', rb['rc'] != 0 and not rb['board'] and ('REJECTED' in rb['stderr'] or 'hash' in rb['stderr']),
+                    "rc=%s board=%s" % (rb['rc'], rb['board'])))
+    shutil.rmtree(rb['base'], ignore_errors=True); shutil.rmtree(root_b, ignore_errors=True)
+    # 4c SHADOW: a foreign config_manifest earlier on sys.path (diff bytes, fake-valid identity) -> HALT
+    shadow_dir = tempfile.mkdtemp(prefix='fvshadow_', dir=CLAUDE if os.path.isdir(CLAUDE) else None)
+    with open(os.path.join(shadow_dir, 'config_manifest.py'), 'w') as f:
+        f.write("import os\n# FOREIGN config_manifest (red fixture) — returns an apparently valid identity\n"
+                "def repo_root(root=None): return os.environ.get('RL_REPO') or '.'\n"
+                "def manifest_path(root=None): return os.path.join(repo_root(root),'data','model_config.json')\n"
+                "def manifest_hash(root=None): return 'c0ffee'*10\n"
+                "def enforce(mode=None, halt=True): return 'c0ffee'*10   # pretends to accept, enforces nothing\n")
+    rc = _config_red_build(REPO, prepend_pp=shadow_dir, strip_ws_config=True)
+    results.append(('4c_shadow', rc['rc'] != 0 and not rc['board'] and 'shadow' in rc['stderr'].lower(),
+                    "rc=%s board=%s" % (rc['rc'], rc['board'])))
+    shutil.rmtree(rc['base'], ignore_errors=True); shutil.rmtree(shadow_dir, ignore_errors=True)
+    # 4d NO-IDENTITY: trusted config_manifest.enforce() returns None -> HALT
+    root_d = _scratch_root(stub_enforce=True)
+    rd = _config_red_build(root_d, strip_ws_config=True)
+    results.append(('4d_noident', rd['rc'] != 0 and not rd['board'] and ('accepted config identity' in rd['stderr'] or 'did not return' in rd['stderr']),
+                    "rc=%s board=%s" % (rd['rc'], rd['board'])))
+    shutil.rmtree(rd['base'], ignore_errors=True); shutil.rmtree(root_d, ignore_errors=True)
     after = _snapshot_guarded()
     ok = all(x[1] for x in results) and (before == after)
-    record('RED4_config_manifest_failclosed', ok,
-           "; ".join("%s:%s(%s)" % (n, 'ok' if o else 'BAD', d) for n, o, d in results) + " files_unchanged=%s" % (before == after))
+    record('RED4_config_manifest_failclosed_4cases', ok,
+           "; ".join("%s:%s" % (n, 'ok' if o else 'BAD(%s)' % d) for n, o, d in results) + " files_unchanged=%s" % (before == after))
 
 
-# ============================ RED 5 — foreign rl_model under /home/claude/rl_after ignored ============================
+# ============================ RED 5 — RETIRED /home/claude/rl_after path ignored (defence-in-depth) ============================
 def red5():
     before = _snapshot_guarded()
     # ensure the FORMER hardcoded path exists and plant a foreign, CRASHING rl_model there
@@ -304,7 +358,7 @@ def red5():
         # strongest proof: the build SUCCEEDED with the good board (a crashing foreign import would have failed it)
         ok = (r['board_md5'] == BOARD_MD5_GOOD and 'provenance breach' not in (r['stderr'] or '')
               and not_foreign and (before == after))
-        record('RED5_foreign_rl_model_ignored', ok,
+        record('RED5_retired_rl_after_path_ignored', ok,
                "board=%s rl_model_path=%s (not /home/claude/rl_after=%s) files_unchanged=%s"
                % (r['board_md5'], rlm_path, not_foreign, before == after))
         shutil.rmtree(r['base'], ignore_errors=True)
@@ -315,13 +369,57 @@ def red5():
             shutil.move(saved, foreign)
 
 
+# ============================ RED 6 — ACTIVE foreign rl_model preloaded/reused -> HALT before board ============================
+def red6():
+    """Actively make a FOREIGN rl_model the module Python reuses: a sitecustomize on the path preloads a
+    byte-different rl_model (a real copy + a marker comment, so the engine still runs) into sys.modules BEFORE
+    rl_export imports it. The engine reuses that preloaded module; the actual-loaded rl_model proof must HALT
+    (loaded bytes != trusted checkout) before any board is written. Proves protection of the rl_model ACTUALLY
+    used, not merely the retired hardcoded path (RED5)."""
+    before = _snapshot_guarded()
+    base, ws = _staging()
+    _seed_pkls()
+    # foreign rl_model = the real one + a marker comment (functionally identical, byte-different)
+    preload = tempfile.mkdtemp(prefix='fvpreload_', dir=CLAUDE if os.path.isdir(CLAUDE) else None)
+    foreign_rl = os.path.join(preload, 'foreign_rl_model.py')
+    with open(foreign_rl, 'w') as f:
+        f.write("# FOREIGN rl_model (red fixture) — real engine bytes + this marker => byte-different, provenance breach\n")
+        f.write(open(os.path.join(REPO, 'engine', 'rl_after', 'rl_model.py')).read())
+    with open(os.path.join(preload, 'sitecustomize.py'), 'w') as f:
+        f.write("import os, sys, importlib.util as _u\n"
+                "_p = os.environ.get('FV_FOREIGN_RL')\n"
+                "if _p and os.path.exists(_p):\n"
+                "    _s = _u.spec_from_file_location('rl_model', _p); _m = _u.module_from_spec(_s)\n"
+                "    sys.modules['rl_model'] = _m; _s.loader.exec_module(_m)\n")
+    env = dict(os.environ)
+    for k in ('RL_PVC2', 'RL_LEGE', 'RL_LEGF', 'RL_V0SURF_REFIT', 'RL_CONFIG_MODE'):
+        env.pop(k, None)
+    env.update({'RL_REPO': REPO, 'RL_FV': os.path.join(REPO, 'engine', 'forward_valuation'),
+                'RL_PVC2': '1', 'RL_LEGE': '0', 'RL_LEGF': '0', 'RL_PRIOR_TREES': '400', 'PYTHONHASHSEED': '0',
+                'OPENBLAS_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1', 'NUMEXPR_NUM_THREADS': '1',
+                'FV_FOREIGN_RL': foreign_rl,
+                'PYTHONPATH': ':'.join([preload, ws, REPO, os.path.join(CLAUDE, 'rl_vendor')])})
+    board = os.path.join(ws, 'rl_app_data.json')
+    try: os.remove(board)
+    except OSError: pass
+    p = subprocess.run([sys.executable, 'rl_export.py'], cwd=ws, env=env, capture_output=True, text=True)
+    after = _snapshot_guarded()
+    halted = (p.returncode != 0 and not os.path.exists(board))
+    named = ('ACTIVE rl_model PROVENANCE' in p.stderr or 'not byte-identical to the trusted' in p.stderr)
+    ok = halted and named and (before == after)
+    record('RED6_active_foreign_rl_model_halts', ok,
+           "rc=%s board=%s named_rl_model_halt=%s files_unchanged=%s"
+           % (p.returncode, os.path.exists(board), named, before == after))
+    shutil.rmtree(base, ignore_errors=True); shutil.rmtree(preload, ignore_errors=True)
+
+
 def main():
     print("=" * 90)
     print("FORWARD-VALUATION PROVENANCE RED/GREEN SUITE   repo=%s" % REPO)
     print("  pinned fv identity: %s" % json.load(open(os.path.join(REPO, 'data', 'expected_boot.json'))).get('fv'))
     print("=" * 90)
     os.makedirs(CLAUDE, exist_ok=True)
-    for fn in (green1, green2, red1, red2, red3, red4, red5):
+    for fn in (green1, green2, red1, red2, red3, red4, red5, red6):
         try:
             fn()
         except Exception as e:

@@ -12,16 +12,13 @@ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
 with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 import importlib.util,numpy as np
-def _resolve_fv():   # CANONICAL FV SELECTION (fail-closed) — see wire_redesign._resolve_fv / fv_provenance.py
-    _fv=os.environ.get('RL_FV')
-    if _fv: return os.path.abspath(_fv)
-    for _b in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR')):
-        if _b:
-            _c=os.path.join(_b,'engine','forward_valuation')
-            if os.path.isdir(_c): return os.path.abspath(_c)
-    raise SystemExit("build_cohort_book: cannot resolve forward_valuation source (set RL_FV or RL_REPO); "
-                     "refusing an ambient-workspace fallback (fail-closed provenance; fv-provenance remediation).")
-spec=importlib.util.spec_from_file_location('dp',os.path.join(_resolve_fv(),'distribution_pricing.py'))
+# CANONICAL FV SELECTION (fail-closed): the ONE resolver fv_provenance.resolve_fv (same as Guard 5; C2).
+try:
+    import fv_provenance as _FVP
+except Exception as _e:
+    raise SystemExit("build_cohort_book: the canonical resolver fv_provenance is not importable (%r) — cannot "
+                     "select the forward_valuation source (fail-closed; fv-provenance remediation)." % _e)
+spec=importlib.util.spec_from_file_location('dp',os.path.join(_FVP.resolve_fv(),'distribution_pricing.py'))
 dp=importlib.util.module_from_spec(spec)
 with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(dp)
 from openpyxl import Workbook
