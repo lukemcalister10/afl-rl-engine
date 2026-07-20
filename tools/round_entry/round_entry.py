@@ -72,6 +72,7 @@ import round_entry as RE          # noqa: E402
 import staged_apply as SA         # noqa: E402
 import score_ingestor as SI       # noqa: E402
 import round_catchup as RC        # noqa: E402
+import round_finalize as FZ       # noqa: E402
 
 
 DEFAULT_OUT = os.path.join(repo_root(), "engine", "rl_after", "ingestion", "round_snapshots")
@@ -270,12 +271,25 @@ def cmd_apply(args):
 
 
 def _apply_and_report(snap, args, repo):
-    """Run the staged transaction for a verified snapshot, then (only after a fully committed board)
-    refresh the UI bundles and print the owner summary. Shared by `apply` and `run`."""
-    applier = SA.StagedRoundApplier.for_repo(
-        repo, txn_root=(os.path.abspath(args.txn_root) if getattr(args, 'txn_root', None) else None))
+    """Run the staged transaction for a verified snapshot (the CANONICAL commit), then run the
+    JOURNALED FINALIZATION of the re-derivable owner-facing outputs and print the owner summary. A
+    finalization failure NEVER rolls back the canonical commit; it is reported and the command exits
+    non-zero (never an unqualified success). Shared by `apply` and `run`."""
+    txn_root = os.path.abspath(args.txn_root) if getattr(args, 'txn_root', None) else None
+    gen = (getattr(args, 'now', None) or _now(args))
+    finalizer = FZ.RoundFinalizer(repo, txn_root=txn_root)
+    # (restart) finish any prior committed-but-unfinalized round, and REFUSE to advance while the
+    # immediately-preceding committed round is not FINALIZED.
+    finalizer.finalize_pending(generated_at=gen)
+    blocker = finalizer.advance_blocked(int(snap['round']))
+    if blocker is not None:
+        die("round %d cannot apply — prior committed round %d is not FINALIZED. Finish it first:\n"
+            "    round_entry finalize --round %d   (or: round_entry repair --round %d)"
+            % (int(snap['round']), blocker, blocker, blocker), code=5)
+
+    applier = SA.StagedRoundApplier.for_repo(repo, txn_root=txn_root)
     try:
-        res = applier.apply_snapshot(snap, generated_at=(getattr(args, 'now', None) or _now(args)))
+        res = applier.apply_snapshot(snap, generated_at=gen)
     except SI.IngestionGatedError as e:
         # the shipped default: gate OFF. Refuse to write; tell the owner how to arm locally.
         print("\nAPPLY REFUSED — the store-write gate is OFF (shipped default; nothing was written).")
@@ -292,26 +306,28 @@ def _apply_and_report(snap, args, repo):
     except _REFUSALS as e:
         die("%s: %s" % (type(e).__name__, e), code=2)
 
-    # POST-COMMIT (only after a fully committed board): refresh the Matchday UI view bundles, then
-    # generate the durable weekly movers report (JSON + CSV + the integrated UI movers bundle).
-    ui_ev = applier.refresh_ui()
-    mv_ev = None
-    try:
-        import round_movers as MV
-        played = {r['key']: r['score'] for r in snap.get('resolved', [])}
-        evidence = {'store_md5_before': res.store_md5_before, 'store_md5_after': res.store_md5_after,
-                    'board_md5_before': res.board_md5_before, 'board_md5_after': res.board_md5_after,
-                    'txn_id': os.path.basename(res.txn_dir)}
-        mv_ev = MV.emit(repo, res.round, played=played, evidence=evidence,
-                        generated_at=(getattr(args, 'now', None) or _now(args)))
-    except Exception as e:                                  # movers is a post-commit aid; never unwind a commit
-        mv_ev = {'error': '%s: %s' % (type(e).__name__, e)}
-    _print_apply_summary(res, repo, ui_ev, mv_ev)
+    # CANONICAL commit is durable. Record it, then FINALIZE (journaled, re-derivable).
+    played = {r['key']: r['score'] for r in snap.get('resolved', [])}
+    evidence = {'store_md5_before': res.store_md5_before, 'store_md5_after': res.store_md5_after,
+                'board_md5_before': res.board_md5_before, 'board_md5_after': res.board_md5_after,
+                'txn_id': os.path.basename(res.txn_dir)}
+    finalizer.record_core_committed(res.round, season=res.season, played=played,
+                                    evidence=evidence, generated_at=gen)
+    fz = finalizer.finalize_round(res.round, generated_at=gen)
+    _print_apply_summary(res, repo, fz)
+    if not fz.get('ok'):
+        print("\n  FINALIZATION INCOMPLETE for R%d — the scores are COMMITTED, but a re-derivable output"
+              % res.round)
+        print("  failed: %s" % fz.get('why'))
+        print("  The canonical store/board/ledger/history are intact and were NOT rolled back. Repair:")
+        print("    round_entry repair --round %d" % res.round)
+        return 6
     return 0
 
 
-def _print_apply_summary(res, repo, ui_ev=None, mv_ev=None):
+def _print_apply_summary(res, repo, fz=None):
     h = res.history or {}
+    fz = fz or {}
     print("\n================ WEEKLY UPDATE APPLIED ================")
     print("  Round applied      : R%d, season %d" % (res.round, res.season))
     print("  Players applied    : %d" % res.players_applied)
@@ -325,25 +341,19 @@ def _print_apply_summary(res, repo, ui_ev=None, mv_ev=None):
     print("  Value+rank history : rounds %s recorded for %d players (append-only; earlier rounds kept)"
           % (h.get('rounds_after'), h.get('players', 0)))
     print("  FV provenance      : board built from the STAGED valuation module (recorded in the txn)")
-    if ui_ev is None or not ui_ev.get('ran'):
-        reason = (ui_ev or {}).get('reason', 'not run')
-        print("  UI bundles         : not refreshed (%s)" % reason)
-    elif ui_ev.get('ok'):
-        print("  UI bundles         : refreshed — working + public (board stamp %s == committed %s%s)"
-              % (ui_ev.get('ui_board_stamp'), ui_ev.get('committed_board_id'),
-                 ", public leak-free" if ui_ev.get('public_leak_free') else ""))
-    else:
-        print("  UI bundles         : FAILED to refresh (rc=%s) — %s"
-              % (ui_ev.get('rc'), (ui_ev.get('stderr_tail') or '').strip()[:120]))
-    if mv_ev and not mv_ev.get('error'):
+    print("  --- CANONICAL COMMIT ABOVE (durable) · FINALIZATION (re-derivable) BELOW ---")
+    if fz.get('ok'):
+        d = fz.get('derivatives') or {}
+        print("  Finalization       : FINALIZED — UI board bundles + movers report/bundle + delta inject")
         print("  Movers report      : %d players (%d played, %d DNP) — %s + CSV; Movers UI updated"
-              % (mv_ev.get('player_count', 0), mv_ev.get('played', 0), mv_ev.get('dnp', 0),
-                 os.path.basename(mv_ev.get('movers_json') or 'movers.json')))
+              % (fz.get('player_count', 0), fz.get('played', 0), fz.get('dnp', 0),
+                 os.path.basename(d.get('movers_json') or 'movers.json')))
         print("                       (top risers/fallers show in the Matchday UI 'Movers' tab)")
-    elif mv_ev and mv_ev.get('error'):
-        print("  Movers report      : NOT generated (%s)" % mv_ev['error'])
+    else:
+        print("  Finalization       : %s — %s" % (fz.get('status', 'INCOMPLETE'), fz.get('why', '')))
     print("  The store/board/manifest/ledger/history were staged, validated, and swapped atomically;")
-    print("  a crash mid-swap rolls back. Backups, transaction record, ledger and history are kept.")
+    print("  a crash mid-swap rolls back. Finalization is journaled + idempotent; a failed derivative")
+    print("  never rolls back the commit — repair it with `round_entry repair --round N`.")
     print("======================================================")
 
 
@@ -361,6 +371,68 @@ def cmd_recover(args):
         print("  %s: restored %s" % (r['txn'], ", ".join(r['restored']) or "(nothing to restore)"))
     print("recover: done — the store/board/manifest/ledger are back to their pre-apply state. Evidence kept.")
     return 0
+
+
+# ---- FINALIZE / REPAIR (re-derive the owner-facing outputs from a committed round; no re-apply) ----
+def _finalizer(args):
+    repo = os.path.abspath(args.repo) if args.repo else repo_root()
+    txn_root = os.path.abspath(args.txn_root) if getattr(args, 'txn_root', None) else None
+    return repo, FZ.RoundFinalizer(repo, txn_root=txn_root)
+
+
+def _print_fz(tag, r):
+    ok = r.get('ok')
+    print("  R%-2d  %-22s %s" % (r.get('round'), r.get('status'),
+                                 "" if ok else ("— " + (r.get('why') or ''))))
+
+
+def cmd_finalize(args):
+    """Finish (or resume) the FINALIZATION of a committed round: regenerate + validate the UI board
+    bundles, movers report/bundle and round-delta injection from the CANONICAL committed state. Never
+    re-applies scores; never rolls back the commit. Idempotent. Without --round, finishes every
+    committed-but-unfinalized round in order."""
+    _repo, fz = _finalizer(args)
+    gen = _now(args)
+    if getattr(args, 'round', None):
+        st = fz.status(args.round)
+        if st is None:
+            die("round %d has no CORE_COMMITTED record — nothing to finalize (was it applied on this "
+                "checkout?)" % args.round, code=2)
+        res = fz.finalize_round(args.round, generated_at=gen)
+        print("finalize:")
+        _print_fz('finalize', res)
+        return 0 if res.get('ok') else 6
+    pend = fz.finalize_pending(generated_at=gen)
+    if not pend['pending']:
+        print("finalize: no committed-but-unfinalized round — everything is FINALIZED (clean).")
+        return 0
+    print("finalize: finishing %d committed-but-unfinalized round(s):" % len(pend['pending']))
+    for r in pend['pending']:
+        _print_fz('finalize', r)
+    return 0 if pend['clean'] else 6
+
+
+def cmd_repair(args):
+    """Force a rebuild of a committed round's derivatives (e.g. after a partial/failed finalization or
+    a manual UI edit). Same safety as finalize: no re-apply, no rollback of the canonical commit."""
+    _repo, fz = _finalizer(args)
+    gen = _now(args)
+    if getattr(args, 'round', None):
+        st = fz.status(args.round)
+        if st is None:
+            die("round %d has no CORE_COMMITTED record — nothing to repair" % args.round, code=2)
+        res = fz.finalize_round(args.round, generated_at=gen, force=True)
+        print("repair:")
+        _print_fz('repair', res)
+        return 0 if res.get('ok') else 6
+    rep = fz.repair(generated_at=gen)
+    if not rep['repaired']:
+        print("repair: no committed-but-unfinalized round to repair (clean).")
+        return 0
+    print("repair: rebuilding %d round(s):" % len(rep['repaired']))
+    for r in rep['repaired']:
+        _print_fz('repair', r)
+    return 0 if rep['clean'] else 6
 
 
 # ---- RUN (the one-launcher owner path): resolve -> preview -> approve -> apply -> UI + history ----
@@ -517,16 +589,26 @@ def cmd_catchup(args):
     print("\n================ CATCH-UP APPLIED ================")
     for r in run['rounds']:
         if r['status'] == 'applied':
-            print("  R%-2d  store %s->%s  board %s->%s  players=%d  guard5=%s  hist=%s  movers->UI=%s"
+            print("  R%-2d  store %s->%s  board %s->%s  players=%d  guard5=%s  hist=%s  final=%s  movers->UI=%s"
                   % (r['round'], (r.get('store_before') or '')[:8], (r.get('store_after') or '')[:8],
                      (r.get('board_before') or '')[:8], (r.get('board_after') or '')[:8],
                      r['players_applied'], r['guard5_green'], r['history_rounds'],
-                     r.get('movers_ui_rows_injected')))
+                     r.get('finalization'), r.get('movers_ui_rows_injected')))
+        elif r['status'] == 'blocked_prior_unfinalized':
+            print("  R%-2d  BLOCKED — prior committed round R%d is not FINALIZED (run finalize/repair)"
+                  % (r['round'], r.get('blocking_round')))
         else:
-            print("  R%-2d  SKIPPED (already applied — restart-safe)" % r['round'])
+            print("  R%-2d  SKIPPED (already applied+finalized — restart-safe) [%s]"
+                  % (r['round'], r.get('finalization')))
     print("  Final store %s · board %s" % (run['final_store'][:8], run['final_board'][:8]))
     print("  Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank")
     print("  histories and movers reports are all retained.")
+    if run.get('incomplete'):
+        print("  FINALIZATION INCOMPLETE — the last round's canonical commit is durable but a re-derivable")
+        print("  output failed / was blocked. Nothing was rolled back. Finish it with:")
+        print("    round_entry finalize   (or: round_entry repair --round N)")
+        print("=================================================")
+        return 6
     print("=================================================")
     return 0
 
@@ -585,6 +667,20 @@ def build_parser():
     pn.add_argument("--now", help="pin timestamps (ISO)")
     pn.add_argument("--txn-root", help="transaction directory root (default: under ingestion/)")
     pn.set_defaults(func=cmd_run)
+
+    pf = sub.add_parser("finalize", help="finish/resume finalization of a committed round (no re-apply)")
+    pf.add_argument("--round", type=int, help="round to finalize (omit: every unfinalized round in order)")
+    pf.add_argument("--repo", help="repo root (default: this checkout)")
+    pf.add_argument("--txn-root", help="transaction directory root (default: under ingestion/)")
+    pf.add_argument("--now", help="pin the finalization timestamp (ISO)")
+    pf.set_defaults(func=cmd_finalize)
+
+    prp = sub.add_parser("repair", help="force-rebuild a committed round's derived outputs (no re-apply)")
+    prp.add_argument("--round", type=int, help="round to repair (omit: every unfinalized round in order)")
+    prp.add_argument("--repo", help="repo root (default: this checkout)")
+    prp.add_argument("--txn-root", help="transaction directory root (default: under ingestion/)")
+    prp.add_argument("--now", help="pin the repair timestamp (ISO)")
+    prp.set_defaults(func=cmd_repair)
 
     pcu = sub.add_parser("catchup", help="controlled multi-round catch-up: one preflight + one approval")
     pcu.add_argument("--dir", help="directory of round files (round parsed from each filename's R<N>)")

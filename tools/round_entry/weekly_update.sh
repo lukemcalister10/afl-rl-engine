@@ -6,11 +6,21 @@
 # match the board-of-record recipe) and forwards every argument to the CLI. NO Python editing needed.
 #
 # THE 2-MINUTE WORKFLOW
-#   ./weekly_update.sh enter   --round 15 --body-file round15.csv   # paste name,score -> snapshot
-#   ./weekly_update.sh confirm --round 15                           # (only if there was residue)
-#   ./weekly_update.sh show    --round 15                           # inspect the EXACT snapshot
-#   ./weekly_update.sh apply   --round 15                           # apply it (gate-guarded)
-#   ./weekly_update.sh recover                                      # after an interrupted apply
+#   ./weekly_update.sh enter    --round 15 --body-file round15.csv  # paste name,score -> snapshot
+#   ./weekly_update.sh confirm  --round 15                          # (only if there was residue)
+#   ./weekly_update.sh show     --round 15                          # inspect the EXACT snapshot
+#   ./weekly_update.sh apply    --round 15                          # apply (gate-guarded) + finalize
+#   ./weekly_update.sh recover                                      # after an interrupted apply (rollback)
+#   ./weekly_update.sh finalize --round 15                          # finish/resume finalization (no re-apply)
+#   ./weekly_update.sh repair   --round 15                          # force-rebuild derived outputs (no re-apply)
+#
+# TWO PHASES PER ROUND. `apply`/`run`/`catchup` first make the CANONICAL commit (store/board/ledger/
+# history, staged + atomic, rollback on a mid-swap crash), then run a JOURNALED, IDEMPOTENT
+# FINALIZATION of the re-derivable owner-facing outputs (UI board bundles + movers report/bundle +
+# round-delta injection). A finalization failure NEVER rolls back the commit: the round is left
+# FINALIZATION_INCOMPLETE and the command exits non-zero. `finalize`/`repair` finish or rebuild those
+# outputs from the committed state; a restart auto-detects a committed-but-unfinalized round and will
+# not advance to the next round until it is FINALIZED.
 #
 # APPLY IS GATED OFF BY DEFAULT (this build applies no real round). `apply` will REFUSE and print
 # instructions unless you arm BOTH halves LOCALLY for the run — no code edit, just two env vars:

@@ -40,6 +40,7 @@ try:
     from . import footywire_parser as FW
     from . import staged_apply as SA
     from . import round_movers as MV
+    from . import round_finalize as FZ
     from .round_apply import ledger_key, load_ledger
 except (ImportError, ValueError):
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -47,6 +48,7 @@ except (ImportError, ValueError):
     import footywire_parser as FW       # type: ignore
     import staged_apply as SA           # type: ignore
     import round_movers as MV           # type: ignore
+    import round_finalize as FZ         # type: ignore
     from round_apply import ledger_key, load_ledger  # type: ignore
 
 DEFAULT_SEASON = 2026
@@ -207,12 +209,21 @@ class RoundCatchup:
         return ent.build_snapshot(resolved_rows, generated_at=generated_at)
 
     # -- RUN: sequential per-round transactions after ONE approval --------------------------------
-    def run(self, *, approved, generated_at, refresh_ui=True, emit_movers=True, txn_root=None):
+    def run(self, *, approved, generated_at, refresh_ui=True, emit_movers=True, txn_root=None,
+            finalize=True):
         """Apply every round in numerical order, each as its own committed transaction, using the
-        immediately-preceding committed round as the next baseline. Requires ONE approval. Stops
-        immediately on any round failure (the last fully committed round is preserved). Restart-safe:
-        an already-committed round (all triples in the ledger) is SKIPPED and the catch-up resumes from
-        the next unapplied round; a crash mid-commit is refused until recovered."""
+        immediately-preceding committed round as the next baseline. Requires ONE approval.
+
+        Two-phase per round: (1) the CANONICAL commit (store/board/ledger/history, staged + atomic);
+        then (2) a JOURNALED FINALIZATION of the re-derivable owner-facing outputs (UI board bundles +
+        movers report/bundle + round-delta injection). A finalization failure NEVER rolls back the
+        canonical commit; instead the round is left FINALIZATION_INCOMPLETE, the run stops, and it
+        returns `incomplete=True` (never an unqualified success). The catch-up REFUSES to advance to a
+        round while a prior committed round is not FINALIZED.
+
+        Restart-safe: a committed-but-unfinalized round from a prior run is finalized/repaired FIRST; an
+        already-committed+finalized round (triples in the ledger) is SKIPPED; a crash mid-commit is
+        refused until recovered."""
         if not approved:
             raise CatchupError("catch-up not approved — no round applied (one consolidated approval "
                                "is required before the first write).")
@@ -226,29 +237,41 @@ class RoundCatchup:
         if applier.scan_incomplete():
             raise SA.IncompleteTransactionError(applier.scan_incomplete())
 
+        finalizer = FZ.RoundFinalizer(self.repo_root, txn_root=txn_root) if finalize else None
+        # (restart) finish any prior committed-but-unfinalized round before starting new work
+        pending = finalizer.finalize_pending(generated_at=generated_at) if finalizer else {'clean': True}
+
         results = []
+        incomplete = False
         for rd in rounds:
             round_n = rd['round']
-            # restart-safe / dedup: skip a round already fully committed
+            # REFUSE to advance while a prior committed round is not yet FINALIZED
+            if finalizer:
+                blocker = finalizer.advance_blocked(round_n)
+                if blocker is not None:
+                    finalizer.finalize_pending(generated_at=generated_at)
+                    blocker = finalizer.advance_blocked(round_n)
+                if blocker is not None:
+                    results.append({'round': round_n, 'status': 'blocked_prior_unfinalized',
+                                    'blocking_round': blocker})
+                    incomplete = True
+                    break
+            # restart-safe / dedup: skip a round already fully committed AND finalized
             ledger_applied = set(load_ledger(self._ledger_path()).get('applied', []))
             if set(rd['triples']) <= ledger_applied and rd['triples']:
-                results.append({'round': round_n, 'status': 'skipped_already_applied',
+                fstatus = finalizer.status(round_n) if finalizer else FZ.FINALIZED
+                results.append({'round': round_n,
+                                'status': 'skipped_already_applied', 'finalization': fstatus,
                                 'store_after': _md5(self._store_path())})
                 continue
+            # (1) CANONICAL commit
             snap = self._build_snapshot(round_n, rd['resolved_rows'], generated_at)
             res = applier.apply_snapshot(snap, generated_at=generated_at, txn_id='txn_catchup_r%d' % round_n)
-            ui_ev = applier.refresh_ui() if refresh_ui else {'ran': False}
-            # movers is generated ONLY after the round fully committed (store+board+ledger+history+UI):
-            # played = the keys LISTED this round (a score of 0 is a played score); absent keys are DNP.
-            mv_ev = None
-            if emit_movers:
-                played = {r.key: r.score for r in rd['resolved_rows']}
-                evidence = {'store_md5_before': res.store_md5_before, 'store_md5_after': res.store_md5_after,
-                            'board_md5_before': res.board_md5_before, 'board_md5_after': res.board_md5_after,
-                            'txn_id': os.path.basename(res.txn_dir)}
-                mv_ev = MV.emit(self.repo_root, round_n, played=played, evidence=evidence,
-                                generated_at=generated_at)
-            results.append({
+            played = {r.key: r.score for r in rd['resolved_rows']}
+            evidence = {'store_md5_before': res.store_md5_before, 'store_md5_after': res.store_md5_after,
+                        'board_md5_before': res.board_md5_before, 'board_md5_after': res.board_md5_after,
+                        'txn_id': os.path.basename(res.txn_dir)}
+            row = {
                 'round': round_n, 'status': 'applied', 'players_applied': res.players_applied,
                 'store_before': res.store_md5_before, 'store_after': res.store_md5_after,
                 'board_before': res.board_md5_before, 'board_after': res.board_md5_after,
@@ -257,15 +280,38 @@ class RoundCatchup:
                 'value_history_md5': (res.history or {}).get('value_history_md5'),
                 'rank_history_md5': (res.history or {}).get('rank_history_md5'),
                 'pos_rank_history_md5': (res.history or {}).get('pos_rank_history_md5'),
-                'ui_ok': ui_ev.get('ok'), 'ui_board_stamp': ui_ev.get('ui_board_stamp'),
-                'movers_report': (mv_ev or {}).get('movers_json'),
-                'movers_ui_bundle': (mv_ev or {}).get('ui_bundle'),
-                'movers_played': (mv_ev or {}).get('played'),
-                'movers_dnp': (mv_ev or {}).get('dnp'),
-                'movers_ui_rows_injected': (mv_ev or {}).get('ui_rows_injected'),
                 'txn_dir': os.path.basename(res.txn_dir),
-            })
+            }
+            # (2) FINALIZATION (journaled, re-derivable) — canonical commit is already durable
+            if finalizer:
+                finalizer.record_core_committed(round_n, season=self.season, played=played,
+                                                evidence=evidence, generated_at=generated_at)
+                fz = finalizer.finalize_round(round_n, generated_at=generated_at)
+                row['finalization'] = fz.get('status')
+                row['finalization_ok'] = fz.get('ok')
+                row['movers_played'] = fz.get('played')
+                row['movers_dnp'] = fz.get('dnp')
+                row['ui_ok'] = fz.get('ok')
+                row['movers_report'] = (fz.get('derivatives') or {}).get('movers_json')
+                row['movers_ui_bundle'] = (fz.get('derivatives') or {}).get('movers_bundle')
+                row['movers_ui_rows_injected'] = (fz.get('derivatives') or {}).get('working_delta_rows')
+                results.append(row)
+                if not fz.get('ok'):
+                    incomplete = True
+                    break     # stop — never advance past an unfinalized round
+            elif emit_movers:
+                mv_ev = MV.emit(self.repo_root, round_n, played=played, evidence=evidence,
+                                generated_at=generated_at)
+                row['movers_report'] = mv_ev.get('movers_json')
+                row['movers_ui_bundle'] = mv_ev.get('ui_bundle')
+                row['movers_played'] = mv_ev.get('played')
+                row['movers_dnp'] = mv_ev.get('dnp')
+                row['movers_ui_rows_injected'] = mv_ev.get('ui_rows_injected')
+                results.append(row)
+            else:
+                results.append(row)
         return {'kind': 'catchup_run', 'season': self.season, 'rounds': results,
+                'incomplete': incomplete, 'restart_finalized': pending.get('pending', []),
                 'final_store': _md5(self._store_path()), 'final_board': _md5(
                     os.path.join(self.repo_root, 'data', 'rl_build', 'rl_app_data.json'))}
 
