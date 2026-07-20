@@ -1,0 +1,31 @@
+=== ENV DIAGNOSIS — env-pin 2026-07-19 (item 391 root cause) ===
+python           : 3.12.3 Linux-6.18.5-x86_64-with-glibc2.39
+numpy.__version__: 2.4.4
+numpy.__file__   : /root/rl_venv312/lib/python3.12/site-packages/numpy/__init__.py
+
+--- BLAS is BUNDLED IN THE WHEEL (numpy.libs) ---
+  libgfortran-040039e1-0352e75f.so.5.0.0        sha256:c6090048eccc7635...
+  libquadmath-96973f99-934c22de.so.0.0.0        sha256:6ed5137f412781ad...
+  libscipy_openblas64_-32a4b2a6.so              sha256:05c9f9eb89ee68a4...
+
+--- np.interp provenance (the amplifier) ---
+  np.interp module : numpy
+  -> compiled C in the numpy WHEEL (numpy/_core, compiled_base.c arr_interp); no BLAS involved.
+
+--- numpy build BLAS (from show_config) ---
+/root/rl_venv312/lib/python3.12/site-packages/numpy/__config__.py:155: UserWarning: Install `pyyaml` for better output
+  warnings.warn("Install `pyyaml` for better output", stacklevel=1)
+   "name": "scipy-openblas",
+   "name": "scipy-openblas",
+   "openblas configuration": "OpenBLAS 0.3.31.188.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
+   "openblas configuration": "OpenBLAS 0.3.31.188.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
+   "version": "14.2.1",
+   "version": "3.2.4",
+   "version": "14.2.1",
+   "version": "0.3.31.188.0",
+   "version": "0.3.31.188.0",
+   "version": "3.12"
+
+--- np.interp is thread-invariant (confirms: not a BLAS reduction) ---
+  np.interp sample: ['30.8936595654216', '97.993062047564', '-18.7239460661339', '-95.8950232252616']
+  (identical run-to-run within a build; a DIFFERENT wheel can differ in the last ULPs)
