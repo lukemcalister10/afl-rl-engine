@@ -1,0 +1,8 @@
+mode=coherent   (balanced board of record = 06d8af60, Sv=752427, Sheezel=7964)
+EPS(np.interp rel)        board_md5     result           Sv / Sheezel
+  0                        06d8af60     HOLDS 06d8af60  md5=06d8af60 Sv=0 Sheezel=None
+  1e-12                    06d8af60     HOLDS 06d8af60  md5=06d8af60 Sv=0 Sheezel=None
+  1e-9                     06d8af60     HOLDS 06d8af60  md5=06d8af60 Sv=0 Sheezel=None
+  1e-8                     06d8af60     HOLDS 06d8af60  md5=06d8af60 Sv=0 Sheezel=None
+  1e-7                     06d8af60     HOLDS 06d8af60  md5=06d8af60 Sv=0 Sheezel=None
+  1e-6                     52386bbf     DIVERGED         md5=52386bbf Sv=0 Sheezel=None

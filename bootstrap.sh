@@ -7,6 +7,28 @@
 set -euo pipefail   # SUITE HYGIENE 2026-07-13: +pipefail so a failing `md5sum | cut` on a missing seed
                     # file HALTs instead of printing a wrong md5; +u so an unset var is a red, not empty.
 HERE=$(cd "$(dirname "$0")" && pwd)
+
+# ENV PIN (item 392, 2026-07-19): fail-closed check that the running numpy is the PINNED build. The board
+# of record 06d8af60 is only reproducible on the pinned numpy wheel (np.interp diverges >=1e-8 across
+# DIFFERENT numpy builds -> rank-unsafe board flip; item 391). This is an OFFLINE hash check (no network,
+# no install) — it HALTs if the container is on an unpinned numpy. To INSTALL the pin, run bootstrap_env.sh
+# at build start (one command, hash-verified). Kept a hard assert here, mirroring Guard 5's store/q97m/v0surf
+# asserts: an unverified ENV is a silent cross-container board mover exactly as an unverified store is.
+if [ -f "$HERE/bootstrap_env.sh" ]; then
+  PIN_BLAS_SHA="05c9f9eb89ee68a4b9d673184fa91c99587e736392c0c2d49180a8aa5303d080"
+  python3 - "2.4.4" "$PIN_BLAS_SHA" <<'PY' || { echo "bootstrap HALT: numpy env is NOT the pinned build — run 'bash $HERE/bootstrap_env.sh' to install the pin (see requirements-lock.txt). The board 06d8af60 is not reproducible off the pin (item 391/392)."; exit 1; }
+import sys, os, glob, hashlib
+want_ver, want_blas = sys.argv[1], sys.argv[2]
+import numpy as np
+assert np.__version__ == want_ver, f"numpy {np.__version__} != pinned {want_ver}"
+libs = glob.glob(os.path.join(os.path.dirname(os.path.dirname(np.__file__)), "numpy.libs", "libscipy_openblas*.so"))
+assert libs, "no bundled OpenBLAS in numpy.libs"
+got = hashlib.sha256(open(libs[0], "rb").read()).hexdigest()
+assert got == want_blas, f"bundled OpenBLAS {got[:16]}.. != pinned {want_blas[:16]}.."
+print(f"  ENV PIN        : numpy {np.__version__} + bundled OpenBLAS {got[:8]} (byte-exact to the pin; item 392)")
+PY
+fi
+
 mkdir -p /home/claude/rl_workspace /home/claude/rl_build /home/claude/rl_vendor
 
 # 1. engine + support modules + harness + pipeline + data files

@@ -1,0 +1,18 @@
+EPS            board_md5     result
+  0            06d8af60     HOLDS
+  1e-7         06d8af60     HOLDS
+  3e-7         f20efa4d     DIVERGED
+  5e-7         f20efa4d     DIVERGED
+  1e-6         52386bbf     DIVERGED
+
+=== pinned board (EPS=0) stats ===
+file      : /home/user/afl-rl-engine/session_2026-07-19/envpin/out/board_eps_0.json
+md5       : 06d8af60
+n / Sv    : 804 / 752427
+Sheezel v : 7964
+top-6     : Luke Jackson=8613 > Nick Daicos=8017 > Harry Sheezel=7964 > Tristan Xerri=7635 > Max Holmes=6932 > Josh Treacy=6713
+
+=== divergence at EPS=1e-6 vs pinned (value + rank) ===
+row v-movers (keyed): 1
+  lachlan-mcandrew: 1292 -> 1293 (+1)
+top-6 rank change: NONE
