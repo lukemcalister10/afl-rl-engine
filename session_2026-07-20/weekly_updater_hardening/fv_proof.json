@@ -1,0 +1,50 @@
+{
+  "ALL_PASS": true,
+  "config_conflict": {
+    "conflicting_flag": "RL_LEGE=0",
+    "files_byte_identical": true,
+    "first_line": "the board build must use the accepted release policy, not inherited shell flags:",
+    "halted": true,
+    "pass": true
+  },
+  "elapsed_s": 187.7,
+  "gate_off_on_real_store": true,
+  "green": {
+    "board_after": "83e21b69",
+    "config_gate_loaded": true,
+    "config_hash": "c2d233aec104",
+    "fv_distribution_pricing_md5": "d0c8c69f",
+    "fv_inside_staged_repo": true,
+    "fv_is_staged_not_stale": true,
+    "fv_not_21d530bf": true,
+    "guard5_green": true,
+    "pass": true,
+    "store_after": "615bfe77",
+    "store_before": "968de0c7"
+  },
+  "red_apply_halt": {
+    "board_unchanged": true,
+    "files_byte_identical": true,
+    "halted_before_generation": true,
+    "no_ledger_entry": true,
+    "pass": true,
+    "txn_status": "ABORTED_PRECOMMIT"
+  },
+  "red_apply_override": {
+    "committed": true,
+    "fv_forced_to_staged": true,
+    "fv_inside_staged_repo": true,
+    "fv_not_ambient_stale": true,
+    "guard5_green": true,
+    "pass": true
+  },
+  "red_guard": {
+    "ambient_distribution_pricing_md5": "21d530bf",
+    "ambient_fv_path": "/home/claude/rl_workspace/forward_valuation",
+    "first_line": "forward-valuation module the build would load is OUTSIDE the staged repo:",
+    "guard_halted_on_ambient": true,
+    "guard_halted_on_unset": true,
+    "is_the_stale_21d530bf": true,
+    "pass": true
+  }
+}

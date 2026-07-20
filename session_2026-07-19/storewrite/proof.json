@@ -1,0 +1,85 @@
+{
+  "ALL_PASS": true,
+  "A_scratch_apply": {
+    "all_fed_players_moved": true,
+    "board_md5_after": "cd45ddf5",
+    "board_md5_before": "1f10220c",
+    "board_moved": true,
+    "guard5_green": true,
+    "ledger_after": 7,
+    "pass": true,
+    "players_merged": 7,
+    "restamp_coherent": true,
+    "store_md5_after": "15711cb3",
+    "store_md5_before": "968de0c7",
+    "store_moved": true,
+    "values_moved": {
+      "darcy-moore": [
+        257,
+        279
+      ],
+      "harley-reid": [
+        3348,
+        3382
+      ],
+      "harry-sheezel": [
+        7964,
+        8060
+      ],
+      "josh-ward": [
+        2003,
+        2107
+      ],
+      "marcus-bontempelli": [
+        3897,
+        3943
+      ],
+      "max-gawn": [
+        3416,
+        3309
+      ],
+      "nick-daicos": [
+        8017,
+        7994
+      ]
+    }
+  },
+  "B_dedup_resend": {
+    "board_unchanged": true,
+    "error": "round already applied (dedup ledger blocks re-send): 7 triple(s), e.g. ['afl-player-v1-25c",
+    "ledger_unchanged": true,
+    "pass": true,
+    "resend_blocked": true,
+    "store_unchanged": true
+  },
+  "C_season_bound": {
+    "error": "round(s) [99] outside the season bound [1, 24] \u2014 refused (owner pins the exact count at go",
+    "pass": true,
+    "round_99_refused": true,
+    "season_rounds": 24,
+    "store_unchanged": true
+  },
+  "D_single_env_stability": {
+    "board_md5s": [
+      "cd45ddf5",
+      "cd45ddf5",
+      "cd45ddf5",
+      "cd45ddf5",
+      "cd45ddf5"
+    ],
+    "byte_stable": true,
+    "matches_proofA_board": true,
+    "pass": true,
+    "runs": 5,
+    "stable_md5": "cd45ddf5"
+  },
+  "elapsed_s": 542.7,
+  "feed_players": 7,
+  "gate_off_on_real_store": true,
+  "gate_shipped": {
+    "APPLY_DEFAULT": false,
+    "INGEST_SCORE_APPLY": "unset"
+  },
+  "real_store_written": false,
+  "round": 15
+}

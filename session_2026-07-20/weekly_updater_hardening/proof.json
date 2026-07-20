@@ -1,0 +1,144 @@
+{
+  "ALL_PASS": true,
+  "clean_apply": {
+    "board_after": "c5bd2446",
+    "board_before": "270a2c5f",
+    "board_moved": true,
+    "guard5_green": true,
+    "ledger_total": 5,
+    "manifest_pins_coherent": true,
+    "pass": true,
+    "players_applied": 5,
+    "store_after": "4a17ffb0",
+    "store_before": "968de0c7",
+    "store_moved": true
+  },
+  "crash_recovery": {
+    "child_crashed_after_first_replacement": true,
+    "incomplete_detected": true,
+    "mid_crash_board_stale_inconsistent": true,
+    "mid_crash_store_changed": true,
+    "next_apply_refused": true,
+    "no_dedup_entry_after_recover": true,
+    "pass": true,
+    "recover_restored_all_originals": true,
+    "txn_marked_recovered": true
+  },
+  "elapsed_s": 664.8,
+  "gate_off_on_real_store": true,
+  "gate_shipped": {
+    "APPLY_DEFAULT": false,
+    "INGEST_SCORE_APPLY": "unset"
+  },
+  "injection": {
+    "after_board_generation": {
+      "expected_status": "ABORTED_PRECOMMIT",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "after_board_generation",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ABORTED_PRECOMMIT"
+    },
+    "after_first_replacement": {
+      "expected_status": "ROLLED_BACK",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "after_first_replacement",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ROLLED_BACK"
+    },
+    "after_subsequent_replacement": {
+      "expected_status": "ROLLED_BACK",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "after_subsequent_replacement",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ROLLED_BACK"
+    },
+    "before_store_staging": {
+      "expected_status": "ABORTED_PRECOMMIT",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "before_store_staging",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ABORTED_PRECOMMIT"
+    },
+    "during_board_generation": {
+      "expected_status": "ABORTED_PRECOMMIT",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "during_board_generation",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ABORTED_PRECOMMIT"
+    },
+    "during_ledger_staging": {
+      "expected_status": "ABORTED_PRECOMMIT",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "during_ledger_staging",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ABORTED_PRECOMMIT"
+    },
+    "during_manifest_staging": {
+      "expected_status": "ABORTED_PRECOMMIT",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "during_manifest_staging",
+      "rollback_journaled": true,
+      "txn_evidence_explains": true,
+      "txn_status": "ABORTED_PRECOMMIT"
+    }
+  },
+  "real_store_written": false,
+  "refusals": {
+    "altered_hash_blocked": true,
+    "files_unchanged": true,
+    "invalid_round_blocked": true,
+    "pass": true,
+    "residue_open_blocked": true
+  },
+  "resend_blocked": {
+    "blocked": true,
+    "error": "round already applied (dedup ledger blocks re-send): 5 triple(s), e.g. ['afl-pla",
+    "files_unchanged": true,
+    "pass": true
+  },
+  "snapshot_preview_equivalence": {
+    "mismatches": [],
+    "pass": true,
+    "players": 8,
+    "same_keys": true
+  },
+  "stale_blocked": {
+    "blocked": true,
+    "files_unchanged": true,
+    "pass": true
+  }
+}
