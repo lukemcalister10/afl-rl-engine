@@ -1,4 +1,11 @@
 # BAKE RUNBOOK — v2.11 · DRAFT · seat 13 · 2026-07-18
+### ⚠️ STALE — PREDATES THE DETERMINISM SAGA (flagged 2026-07-19, item 398). This draft was written
+### before F6/F7/env-pin/dispatch-pin and does NOT yet enforce: the balanced-board REPRODUCTION GATE
+### (bake only on an instance reproducing the pinned board), the v0surf pin (3af2b725), the ENV-PIN
+### assert, or the dispatch assert; nor the candidate STACK (15a9abd←540b62f←3055ea5←dispatch-pin) or
+### the BOARD-OF-RECORD REFRAME (item 395: a pinned md5 may supersede 06d8af60 at the viewing). MUST be
+### brought saga-current — once the dispatch-pin OUTCOME is known (which md5 to pin) — BEFORE the owner's
+### bake word. Do not bake off this draft as-is.
 ### **STATUS: DRAFT — executes ONLY on the owner's written bake word, AFTER the full ladder**
 ### (audit shards reconciled · viewing done · sealed reads scored). ⟦SLOTS⟧ fill at the word.
 

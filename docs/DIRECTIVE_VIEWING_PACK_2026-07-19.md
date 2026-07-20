@@ -1,4 +1,9 @@
 # DIRECTIVE — THE VIEWING-PACK RENDER · seat 14 · 2026-07-19 · supersedes the 2026-07-18 render
+### ⛔ HOLD — DO NOT FIRE AS-IS (2026-07-19): the base below (`3055ea5`, the env-pin head) is now
+### GATE-RED — the container-#2 gate FAILED on it (item 394: identical pinned env still flips to
+### d7a95e8d). The dispatch pin (item 396, IN FLIGHT) supersedes it. The supervisor RE-BASES this
+### directive to the dispatch-pin head + re-pins the target md5 (item 395 outcome i/ii) BEFORE the
+### render fires. Everything below is retained for that re-base; do not launch until then.
 ### The owner's ladder viewing. RE-BASED to the F6 head `540b62f` (PR #121): the owner ruled F6
 ### RIDES AS-IS into the v2.11 bake (no lite, no re-audit — 2026-07-19), so the viewing renders the
 ### EXACT board that bakes — via the FROZEN v0surf load path, not the pre-freeze fit. Two corrections
