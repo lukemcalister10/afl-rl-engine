@@ -163,7 +163,7 @@ def load_curve_contract():
     single deterministic source of the release-active pathway: the config manifest pins RL_PVCADOPT but does
     NOT carry the RL_PVC2 default-ON kill-switch, so the pathway cannot be read from the config alone."""
     c = _read_json(CURVE_CONTRACT, "release pick-curve contract")
-    need = ("release_version", "adopted_pathway", "pick_curve_path",
+    need = ("release_version", "as_of_round", "adopted_pathway", "pick_curve_path",
             "pick_curve_file_md5", "pick_curve_curve_md5", "store_md5", "numeraire_pin1")
     miss = [k for k in need if k not in c]
     check("release pick-curve contract has all required fields", not miss, "missing: %s" % (miss or "none"))
@@ -190,6 +190,15 @@ def load_curve_contract():
     if not rv_ok:
         halt("CONFLICTING curve-selection: contract release_version %s != release %s (HALT-AND-ASK)"
              % (c["release_version"], boot.get("release_version")))
+    # as_of_round must be present on the contract AND agree with the release manifest — a contract for a
+    # different round is a stale/wrong pick-curve selection and must fail closed (not silently priced).
+    boot_round = boot.get("as_of_round")
+    ar_ok = boot_round is not None and str(c["as_of_round"]) == str(boot_round)
+    check("contract as_of_round == release manifest as_of_round", ar_ok,
+          "contract %s vs manifest %s" % (c["as_of_round"], boot_round))
+    if not ar_ok:
+        halt("CONFLICTING curve-selection: contract as_of_round %s != release as_of_round %s — the pick-curve "
+             "contract is not for this release round (HALT-AND-ASK)" % (c["as_of_round"], boot_round))
     pin_ok = int(c["numeraire_pin1"]) == 3000
     check("contract numeraire pin1 == 3000", pin_ok, "pin1 = %s" % c["numeraire_pin1"])
     if not pin_ok:

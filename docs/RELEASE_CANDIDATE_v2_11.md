@@ -242,3 +242,31 @@ valuation/engine source, `expected_boot` hashes/metadata, FV provenance code, al
 - **Rendered evidence** (`session_2026-07-20/ui_release_seam/evidence/`, 16/16 assertions, desktop 1440×900 +
   mobile 390×844): normal board renders; club valuation renders (no HALT); held picks render (club focused on
   board, Σ picks shown); version `v2.11-rc1` + as-of `Round 14` shown; no integrity alarm / fail-closed screen.
+
+---
+
+## 10 — Mobile-layout acceptance + contract hardening (independent-review corrective commit)
+
+Bounded UI-only corrective on `release/v2.11-rc1` (accepted core RC artifacts unchanged: installed board, store,
+engine, valuation code, `expected_boot` hashes/metadata, FV provenance, pick curves, generated player values,
+rankings, club-curve pricing logic — all byte-identical).
+
+- **Mobile board layout** (`ui/styles/matchday.css`): at phone widths the fixed grid columns squeezed the name
+  `1fr` to ~0 and `.nm{overflow-wrap:anywhere}` broke names one-character-per-line, while `.tabs{overflow:hidden}`
+  clipped nav tabs. Fix: (a) `overflow-wrap:anywhere → break-word` on `.nm`/`.affl`/`.afl` (no desktop change —
+  wide columns never wrap); (b) a `@media(max-width:560px)` two-line board card (`grid-template-areas`:
+  rank | name/club | value/movement, `minmax(0,1fr)` name, reduced font) so names render on ≤2 lines with usable
+  width; rank · name · club · value · movement all preserved (pick number folds away); (c) nav tabs wrap
+  (`flex-wrap:wrap; overflow:visible`) so every destination is reachable; (d) a global `.tablewrap{overflow-x:auto}`
+  (+ `ui/app/clubs.js` wraps the club table) so the wide sortable table scrolls within its own region and the
+  document never overflows horizontally. Desktop (>920px) is untouched.
+- **Contract hardening** (`ui/tools/ingest_inputs.py`): `as_of_round` is now a required contract field and is
+  cross-checked against `data/expected_boot.json` `as_of_round` (a contract for a different round fails closed).
+- **Responsive Chromium suite** (`ui/tests/responsive_layout.test.mjs`, **72/72** at widths 320/360/390/430/720/1440)
+  replaces the weak "board renders" text check. Asserts per width: `scrollWidth <= innerWidth`; first five names
+  usable width + ≤2 lines + never char-by-char; every nav destination reachable (hit-tested) and not clipped;
+  rank+name+club+value visible in first five rows; club-valuation + held-pick views render without HALT and
+  without document overflow. Corrected screenshots at 390×844 and 720px (board + nav): `board_390_fixed.png`,
+  `board_720_fixed.png`, `clubs_390_fixed.png`, `heldpicks_390_fixed.png`.
+- **Suites re-run green:** `club_curve_provenance` 26/26 (incl. new `as_of_round` cases), `extract_seam` 41/41,
+  `release_seam` 23/23, `counting_rule` 24/24, responsive 72/72; CI Guards + FV Provenance green on the runners.

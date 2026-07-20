@@ -198,6 +198,18 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
     check(rc == 2 and b is not None and b.get("halt"),
           "CASE4 board-id mismatch still fails closed (ring fence)", "rc=%d" % rc)
 
+    # ---- CASE 5: contract as_of_round is required + cross-checked against expected_boot -----------------
+    c5 = json.load(open(REAL_CONTRACT)); c5["as_of_round"] = 13   # != expected_boot as_of_round (14)
+    bad5 = os.path.join(TMP, "contract_round.json"); json.dump(c5, open(bad5, "w"))
+    rc, b, log = run_ingest(TMP, RL_UI_CURVE_CONTRACT=bad5, RL_UI_OUT=os.path.join(TMP, "o5a.js"))
+    check(rc == 2 and b is not None and b.get("halt"),
+          "CASE5a contract as_of_round mismatch vs expected_boot fails closed", "rc=%d" % rc)
+    c5b = json.load(open(REAL_CONTRACT)); c5b.pop("as_of_round", None)
+    bad5b = os.path.join(TMP, "contract_noround.json"); json.dump(c5b, open(bad5b, "w"))
+    rc, b, log = run_ingest(TMP, RL_UI_CURVE_CONTRACT=bad5b, RL_UI_OUT=os.path.join(TMP, "o5b.js"))
+    check(rc == 2 and b is not None and b.get("halt"),
+          "CASE5b contract missing as_of_round fails closed", "rc=%d" % rc)
+
 print("\n  " + "-" * 66)
 print("  %d/%d passed" % (n - fails, n))
 sys.exit(1 if fails else 0)
