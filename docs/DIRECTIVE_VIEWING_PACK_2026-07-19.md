@@ -6,18 +6,24 @@
 ### now carries the MANDATORY `RL_LEGE=0 RL_LEGF=0` env — the LEGE=0 correction (rev162 §2b): naming
 ### the `06d8af60` target WITHOUT the env HALTed F6's first run. READ-ONLY (Tier 3) · report-only ·
 ### changes NOTHING; never bakes. THREADS=1.
+### RE-BASED AGAIN (2026-07-19, env-pin): base `540b62f` → the ENV-PIN head `3055ea5` (item 392), so
+### the render runs on the PINNED numpy env — this pinned-env render is CONTAINER #2 of the item-392
+### reproduction gate. Run `bash bootstrap.sh` FIRST; its fail-closed ENV-PIN assert must PASS. The
+### board is byte-identical to the F6 head (the env pin is value-neutral, k=0), so every figure below stands.
 
 ## GIT ENTRY (read-only variant — item-338 law)
-`git fetch origin main claude/legf6-iso-freeze-bhigmd`; ls-remote must return
-`540b62f3c1600178aabc56f2dd1ab59c68460b2b` STRICT (PR #121 head = the F6 freeze), HALT on mismatch.
-It descends from the audit-clear head `15a9abd` (item 375) + the F6 freeze (item 381). Branch
+`git fetch origin main claude/env-pin-2026-07-19-4y4w0p`; ls-remote must return
+`3055ea5ffdc390f81d5e17476a60fbb841f24cff` STRICT (the ENV-PIN head, stacked on PR #121), HALT on mismatch.
+It descends from `15a9abd` (item 375) + the F6 freeze (item 381) + the env pin (item 392). **Run `bash
+bootstrap.sh` at start — its fail-closed ENV-PIN assert MUST pass before any board build (item 392).** Branch
 parent = MAIN; provenance = stamps at load: store `968de0c7` · curve payload `89c14729` ·
 per_entrant `40d7da7c` · v0surf `3af2b725` (the frozen V0 surface, Guard-5 asserted).
 **REPRODUCTION PRECONDITION (item 366 + the LEGE=0 correction, MANDATORY):** before rendering any
 board, build the balanced board **with `RL_LEGE=0 RL_LEGF=0`** and assert it == `06d8af60`
-byte-exact. On the F6 head this LOADS the frozen v0surf surface (a weather box loads the SAME clean
-surface), so the precondition is robust; if it does NOT reproduce, HALT and report (bad/absent
-pickle, or wrong env — never render on a non-reproducing container). Engine imported READ-ONLY;
+byte-exact. On the PINNED env + F6 head this LOADS the frozen v0surf surface AND runs the pinned numpy
+(so np.interp is deterministic — item 391/392); the precondition is robust. If it does NOT reproduce,
+HALT and report — the pin is insufficient on this container → we pin deeper (item 392 gate). This
+render reproducing `06d8af60` IS the container-#2 leg of the gate. Engine imported READ-ONLY;
 never edit engine/store/curve/docs.
 
 ## EFFORT: Medium (mostly COLLATION of committed artifacts, not computation — only THREE items are
