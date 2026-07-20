@@ -1,0 +1,26 @@
+{
+  "kind": "owner_identity_overrides",
+  "season": 2026,
+  "note": "Owner-authored identity overrides for the R15-R19 catch-up (owner ruling 2026-07-20). These resolve export display names that do NOT cleanly map to a single active stable identity, BY STABLE KEY and never by display name or row order. Values are store `key`s. Applied BEFORE the name resolver; a covered name with no matching rule is treated as UNRESOLVED (halt), never guessed.",
+  "overrides": [
+    {
+      "name": "Callum Brown",
+      "rule": "map_all",
+      "stable_key": "callum-brown-ire",
+      "reason": "Owner ruling 2026-07-20: the export lists 'Callum Brown'; the active player is 'Callum M. Brown' (key callum-brown-ire, St Kilda) — FootyWire omits the middle initial. The only exact 'Callum Brown' in the store is retired. All listed 'Callum Brown' scores attach to callum-brown-ire."
+    },
+    {
+      "name": "Bailey Williams",
+      "rule": "by_round_score",
+      "reason": "Owner ruling 2026-07-20: two active players share the display name 'Bailey Williams'. Bailey Williams (key bailey-williams-wb, Collingwood): R18=55, R19=137. Bailey J. Williams (key bailey-williams-wc, Sydney): R16=67, R17=82, R18=100, R19=84. Disambiguated by (round, score) so each listed score reaches the correct stable record; the two never collapse.",
+      "map": {
+        "16|67": "bailey-williams-wc",
+        "17|82": "bailey-williams-wc",
+        "18|100": "bailey-williams-wc",
+        "18|55": "bailey-williams-wb",
+        "19|137": "bailey-williams-wb",
+        "19|84": "bailey-williams-wc"
+      }
+    }
+  ]
+}

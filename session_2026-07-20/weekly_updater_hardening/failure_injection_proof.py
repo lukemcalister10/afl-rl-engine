@@ -41,6 +41,7 @@ sys.path.insert(0, ING)
 import round_entry as RE                                        # noqa: E402
 import staged_apply as SA                                       # noqa: E402
 import score_ingestor as SI                                     # noqa: E402
+import scratch_fixture as SF                                    # noqa: E402
 from score_ingestor import ScoreIngestor                        # noqa: E402
 from round_score_parser import parse_feed                       # noqa: E402
 
@@ -71,13 +72,17 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
                     os.path.join(dst, 'engine', 'forward_valuation'))
     ws = os.path.join(dst, 'engine', 'rl_after')
-    for f in ('config_manifest.py', 'LTI_REGISTER.md'):
+    # fv_provenance.py + boot_guard.py ride along: df5066a's rl_export.py imports them at build time
+    # (fail-closed provenance preamble), and the applier's own workspace copy re-copies them from this
+    # scratch root — so the scratch must carry them at the root and beside rl_export.
+    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(ws, f))
-    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md'):
+    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(dst, f))
     shutil.copytree(os.path.join(REPO, 'data'), os.path.join(dst, 'data'))
     shutil.copytree(os.path.join(REPO, 'session_2026-07-18', 'legf5'),
                     os.path.join(dst, 'session_2026-07-18', 'legf5'))
+    SF.stamp_release_identities(dst)     # coherent engine identities for the fixture's Guard 5
     return dst
 
 

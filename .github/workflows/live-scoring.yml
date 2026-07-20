@@ -1,0 +1,143 @@
+name: Live Scoring Updater
+
+# Weekly live-scoring / round-updater evidence suite (work/v2.11-live-scoring). Runs the full updater
+# proof set on a CLEAN GitHub-hosted runner and FAILS (never warns) unless every proof passes. The
+# store-write gate ships OFF; this workflow never arms it against the real store — every write is on a
+# throwaway SCRATCH repo whose expected_boot.json is stamped coherent with its own engine.
+#
+# Bar (all must pass, halt-not-warn):
+#   0  GATE OFF shipped        — the apply switch constants ship OFF (APPLY_DEFAULT=False, env unset)
+#   1  fast unit tests         — snapshot identity + every pre-staging refusal (no board build)
+#   2  two-round proof         — R15 -> R16 sequential: preview/apply/board/value+rank history/restart/
+#                                dedup/stale/tamper/universe-residue/failure-injection/crash-recovery/
+#                                UI-refresh/no-production-touch (the 17-point live-scoring proof)
+#   2b five-round catch-up      — R15 -> R19 on the owner's real files: preflight (encoding/participation/
+#                                identity overrides/halt), sequential per-round transactions, value +
+#                                overall-rank + positional-rank history, movers, restart/resume, dedup
+#   3  failure injection       — 7-point mid-apply fault matrix + crash recovery + acceptance
+#   4  store-write proof       — scratch apply + dedup ledger + single-env stability
+#   5  FV provenance red/green — the staged board build is fail-closed on forward-valuation provenance
+#
+# Like fv-provenance.yml, this does NOT run the legacy full Guard-5 bootstrap: the accepted foundation
+# carries a PRE-EXISTING engine_head/rl_model boot-pin drift (register item 399) that is out of scope
+# for this workstream. The updater proofs supply COHERENT release identities to their scratch fixtures,
+# so Guard 5 is exercised against a coherent fixture, not blocked by that unrelated pre-existing drift.
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: live-scoring-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  live-scoring:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      PYTHONHASHSEED: "0"
+      # single-env board recipe (matches the board-of-record build)
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pin Python 3.12.3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Ensure python3.12 on PATH (setup_env.sh discovers it by name)
+        run: |
+          set -euo pipefail
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+          python3.12 --version
+
+      - name: Create engine absolute-path root (/home/claude/...)
+        run: sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+
+      - name: Provision pinned env (setup_env.sh)
+        run: |
+          set -euo pipefail
+          bash setup_env.sh
+          echo "$HOME/rl_venv312/bin" >> "$GITHUB_PATH"
+
+      - name: Seed vendored unidecode (offline import dep)
+        run: |
+          set -euo pipefail
+          mkdir -p /home/claude/rl_vendor
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+
+      - name: Assert the store-write gate ships OFF (belt-and-braces, both halves)
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import sys, os
+          sys.path.insert(0, 'engine/rl_after/ingestion')
+          import score_ingestor as SI
+          assert SI.APPLY_DEFAULT is False, "APPLY_DEFAULT must ship False"
+          assert not os.environ.get('INGEST_SCORE_APPLY'), "INGEST_SCORE_APPLY must be unset"
+          assert not os.environ.get('INGEST_SCORE_APPLY_ARMED'), "INGEST_SCORE_APPLY_ARMED must be unset"
+          assert SI._apply_enabled() is False, "the shipped gate must be OFF"
+          print("GATE OFF (shipped): APPLY_DEFAULT=%s, env unset, _apply_enabled=%s"
+                % (SI.APPLY_DEFAULT, SI._apply_enabled()))
+          PY
+
+      - name: Fast unit tests (snapshot identity + pre-staging refusals)
+        run: |
+          set -euo pipefail
+          python3 engine/rl_after/ingestion/test_weekly_updater.py
+
+      - name: Fast catch-up preflight tests (encoding, overrides, participation classification)
+        run: |
+          set -euo pipefail
+          python3 engine/rl_after/ingestion/test_catchup_preflight.py
+
+      - name: Sequential two-round proof (R15 -> R16, history integrity, restart, UI, no-prod-touch)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/live_scoring_two_round/two_round_proof.py --write
+
+      - name: Controlled five-round catch-up proof (R15 -> R19 on the owner's real files)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/live_scoring_catchup/catchup_proof.py --write
+
+      - name: Failure-injection + crash-recovery + acceptance proof (7 points)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py --write
+
+      - name: Store-write proof (scratch apply + dedup + single-env stability)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-19/storewrite/storewrite_proof.py --write
+
+      - name: FV provenance red/green (staged board build fail-closed on FV provenance)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/weekly_updater_hardening/fv_provenance_proof.py --write
+
+      - name: Upload proof artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-scoring-proofs
+          path: |
+            session_2026-07-20/live_scoring_two_round/proof.json
+            session_2026-07-20/live_scoring_two_round/PROOF.md
+            session_2026-07-20/live_scoring_catchup/proof.json
+            session_2026-07-20/live_scoring_catchup/PROOF.md
+            session_2026-07-20/weekly_updater_hardening/proof.json
+            session_2026-07-19/storewrite/proof.json
+            session_2026-07-20/weekly_updater_hardening/fv_proof.json
+          if-no-files-found: ignore

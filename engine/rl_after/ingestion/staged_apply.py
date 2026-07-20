@@ -35,6 +35,7 @@ import json, os, sys, shutil, tempfile, subprocess, hashlib, stat
 
 try:
     from . import round_entry as RE
+    from . import round_history as RH
     from .score_ingestor import (IngestionGatedError, _apply_enabled, APPLY_DEFAULT, _APPLY_ENV,
                                  IngestionPreview, SeasonAppend, ScoreIngestor, ROUND_DECIMALS)
     from .round_score_parser import RoundScore
@@ -44,6 +45,7 @@ try:
 except (ImportError, ValueError):    # allow direct-script / non-package execution
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import round_entry as RE  # type: ignore
+    import round_history as RH  # type: ignore
     from score_ingestor import (IngestionGatedError, _apply_enabled, APPLY_DEFAULT, _APPLY_ENV,  # type: ignore
                                 IngestionPreview, SeasonAppend, ScoreIngestor, ROUND_DECIMALS)
     from round_score_parser import RoundScore  # type: ignore
@@ -62,13 +64,21 @@ STATUS_ABORTED_PRECOMMIT = 'ABORTED_PRECOMMIT'
 STATUS_RECOVERED = 'RECOVERED'
 _TERMINAL = {STATUS_COMMITTED, STATUS_ROLLED_BACK, STATUS_ABORTED_PRECOMMIT, STATUS_RECOVERED}
 
-# the five live targets a weekly apply replaces (repo-root-relative)
+# the live targets a weekly apply replaces (repo-root-relative). The store/board/sidecar/manifest/
+# ledger are the original five; value_history + rank_history are the persistent per-player round-by-
+# round records, added to the transaction so they commit atomically with the board and roll back /
+# recover on any failure (a crash can never leave a half-written history). NEW targets that did not
+# exist pre-apply are REMOVED on rollback/recovery (pre_apply_present in the manifest), so a first-
+# round history leaves no partial state either.
 TARGETS = (
     ('store',   os.path.join('engine', 'rl_after', 'rl_model_data.json')),
     ('board',   os.path.join('data', 'rl_build', 'rl_app_data.json')),
     ('sidecar', os.path.join('data', 'rl_build', 'rl_app_data.json.srcmd5')),
     ('manifest', os.path.join('data', 'expected_boot.json')),
     ('ledger',  os.path.join('engine', 'rl_after', 'ingestion', 'applied_rounds_ledger.json')),
+    ('value_history', os.path.join('engine', 'rl_after', 'ingestion', 'value_history.json')),
+    ('rank_history',  os.path.join('engine', 'rl_after', 'ingestion', 'rank_history.json')),
+    ('pos_rank_history', os.path.join('engine', 'rl_after', 'ingestion', 'pos_rank_history.json')),
 )
 
 
@@ -197,7 +207,7 @@ def _clear_ro(path):
 class StagedApplyResult:
     __slots__ = ('round', 'season', 'players_applied', 'store_md5_before', 'store_md5_after',
                  'board_md5_before', 'board_md5_after', 'ledger_added', 'ledger_total',
-                 'txn_dir', 'guard5_green', 'triples')
+                 'txn_dir', 'guard5_green', 'triples', 'history')
 
     def __init__(self, **kw):
         for k in self.__slots__:
@@ -280,16 +290,9 @@ class StagedRoundApplier:
         report = {'recovered': [], 'clean': True}
         for d in self.scan_incomplete():
             man = self._read_txn_manifest(d) or {}
-            restored = []
-            orig_dir = os.path.join(d, 'originals')
-            if os.path.isdir(orig_dir):
-                # restore every original that was backed up (COMMIT_BEGIN reached) -> full pre-apply state
-                for name, rel in TARGETS:
-                    ob = os.path.join(orig_dir, name)
-                    if os.path.exists(ob):
-                        _clear_ro(os.path.join(self.repo_root, rel))
-                        _atomic_place(ob, os.path.join(self.repo_root, rel))
-                        restored.append(name)
+            # restore every backed-up original (COMMIT_BEGIN reached) -> full pre-apply state, and
+            # remove any target created by this txn that was absent pre-apply (no partial state).
+            restored = self._restore_from_txn(d)
             self._journal(d, 'RECOVER_ROLLBACK', restored=restored, at=generated_at)
             self._set_status(d, STATUS_RECOVERED, failure=man.get('failure'),
                              recovered_restored=restored)
@@ -423,12 +426,17 @@ class StagedRoundApplier:
 
         store_before = _md5_file_full(self._store_path())
         board_before = _md5_file_full(self._live('board')) if os.path.exists(self._live('board')) else None
+        # which targets EXISTED before this apply — a target absent here that gets created during the
+        # commit must be REMOVED (not "restored") on rollback/recovery, so a first-round history (or a
+        # fresh board) leaves NO partial state after a failure.
+        pre_apply_present = {n: os.path.exists(os.path.join(self.repo_root, rel)) for n, rel in TARGETS}
         man = {'txn_id': txn_id, 'kind': 'weekly_round_apply', 'created_at': generated_at,
                'round': int(snapshot['round']), 'season': int(snapshot['season_year']),
                'snapshot_content_hash': snapshot.get('content_hash'),
                'snapshot_source_store_md5_full': snapshot.get('source_store_md5_full'),
                'store_md5_before': store_before, 'status': STATUS_STAGING, 'failure': None,
                'config_hash': self.config_hash, 'fv_provenance': None,
+               'pre_apply_present': pre_apply_present, 'history': None,
                'targets': [{'name': n, 'live': rel} for n, rel in TARGETS]}
         self._write_manifest(txn_dir, man)
         self._journal(txn_dir, 'STAGE_BEGIN', round=man['round'], season=man['season'],
@@ -473,6 +481,18 @@ class StagedRoundApplier:
             save_ledger(wsapp.ledger_path, wsl)
             self._journal(txn_dir, 'LEDGER_STAGED', added=len(triples), total=len(wsl['applied']))
 
+            # (d2) STAGE the persistent value + rank history from the STAGED board. The FIRST apply
+            #      seeds the previous round (round-1) from the PRE-APPLY board — so the round-14 ->
+            #      round-15 transition is recorded for every active player — then appends this round.
+            #      Existing rounds are never overwritten (append-only). Committed atomically with the
+            #      board; rolled back / removed on any failure.
+            self._fault('during_history_staging')
+            hist_ev = self._stage_history(ws, snapshot)
+            man = self._read_txn_manifest(txn_dir) or {}
+            man['history'] = hist_ev
+            self._write_manifest(txn_dir, man)
+            self._journal(txn_dir, 'HISTORY_STAGED', **hist_ev)
+
             # (e) VALIDATE the STAGED outputs (nothing live touched yet)
             guard5 = self._validate_staged(ws, live_store_rows, allowed_keys, triples, preview,
                                            staged_store_md5, staged_board_md5, snapshot)
@@ -499,7 +519,7 @@ class StagedRoundApplier:
                 players_applied=merged, store_md5_before=store_before, store_md5_after=staged_store_md5,
                 board_md5_before=board_before, board_md5_after=staged_board_md5,
                 ledger_added=len(triples), ledger_total=len(wsl['applied']), txn_dir=txn_dir,
-                guard5_green=guard5, triples=sorted(triples))
+                guard5_green=guard5, triples=sorted(triples), history=hist_ev)
         except BaseException as e:
             self._handle_failure(txn_dir, e)
             raise
@@ -521,8 +541,14 @@ class StagedRoundApplier:
             # nothing live was touched (failure before COMMIT) — abort, keep evidence.
             self._set_status(txn_dir, STATUS_ABORTED_PRECOMMIT, failure=failure)
 
-    def _rollback(self, txn_dir):
+    def _restore_from_txn(self, txn_dir):
+        """Return the live files to their pre-apply state from a transaction's immutable backups:
+        every backed-up original is restored byte-for-byte; a target that was ABSENT pre-apply but was
+        created during the commit is REMOVED (so a first-round history / fresh board leaves no partial
+        state). Shared by the commit-phase rollback and the crash-recovery path."""
         orig_dir = os.path.join(txn_dir, 'originals')
+        man = self._read_txn_manifest(txn_dir) or {}
+        present = man.get('pre_apply_present') or {}
         restored = []
         for name, rel in TARGETS:
             ob = os.path.join(orig_dir, name)
@@ -531,7 +557,17 @@ class StagedRoundApplier:
                 _clear_ro(live)
                 _atomic_place(ob, live)
                 restored.append(name)
+            elif present.get(name, True) is False and os.path.exists(live):
+                _clear_ro(live)
+                try:
+                    os.remove(live)
+                    restored.append(name + ':removed')
+                except OSError:
+                    pass
         return restored
+
+    def _rollback(self, txn_dir):
+        return self._restore_from_txn(txn_dir)
 
     def _commit(self, txn_dir, staged_paths):
         self._journal(txn_dir, 'COMMIT_BEGIN', order=[n for n, _ in TARGETS])
@@ -558,9 +594,14 @@ class StagedRoundApplier:
         shutil.copytree(os.path.join(R, 'engine', 'forward_valuation'),
                         os.path.join(ws, 'engine', 'forward_valuation'))
         wsra = os.path.join(ws, 'engine', 'rl_after')
-        for f in ('config_manifest.py', 'LTI_REGISTER.md'):
+        # rl_export.py (run with cwd=wsra) now imports fv_provenance + boot_guard + config_manifest at
+        # the repo root under df5066a's fail-closed provenance preamble — copy them beside it so the
+        # staged build resolves the SAME accepted provenance modules the checkout ships (never an
+        # ambient one). boot_guard.py runs BOTH as a script (Guard 5, from ws root) and as an import
+        # (rl_export gate mode, from wsra), so it lands in both.
+        for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py'):
             shutil.copyfile(os.path.join(R, f), os.path.join(wsra, f))
-        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md'):
+        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py'):
             shutil.copyfile(os.path.join(R, f), os.path.join(ws, f))
         shutil.copytree(os.path.join(R, 'data'), os.path.join(ws, 'data'))
         legf5 = os.path.join('session_2026-07-18', 'legf5')
@@ -793,6 +834,12 @@ class StagedRoundApplier:
         if missing:
             fails.append("ledger missing %d snapshot triple(s)" % len(missing))
 
+        # (vi-b) VALUE + RANK history: parses, records THIS round for every active board player, and
+        #        PRESERVES every earlier round byte-for-byte vs the live histories (append-only). The
+        #        recorded value/rank equal the staged board's own value + descending-value rank.
+        hist_fail = self._validate_history(ws, active, int(snapshot['round']), int(snapshot['season_year']))
+        fails.extend(hist_fail)
+
         # (vii) board player universe unchanged vs the pre-apply board (a round moves values, not keys)
         uni_fail = self._player_universe_ok(ws, active)
         if uni_fail:
@@ -875,11 +922,128 @@ class StagedRoundApplier:
             return "board player universe changed (added %s / removed %s)" % (added, removed)
         return None
 
+    def _validate_history(self, ws, staged_active, round_n, season):
+        """Gate the three staged histories (value / overall-rank / positional-rank). Returns a list of
+        failures (empty == OK). For each history:
+          - it parses;
+          - THIS round is recorded for EVERY active player in the staged board;
+          - the recorded metric equals the staged board's own metric (value / descending-`v` overall
+            rank / rank within the position group) — the history agrees with the board it came from;
+          - every (player, round) present in the LIVE history is preserved byte-equal (append-only)."""
+        fails = []
+        truth = RH.board_metrics({'active': staged_active})    # v, rank, pos_rank per active key
+        rk = str(round_n)
+        for name, target, field in (('value', 'value_history', 'v'), ('rank', 'rank_history', 'rank'),
+                                    ('pos_rank', 'pos_rank_history', 'pos_rank')):
+            path = self._ws_target_path(ws, target)
+            try:
+                with open(path) as f:
+                    hist = json.load(f)
+            except (OSError, ValueError) as e:
+                fails.append("staged %s history unparseable: %s" % (name, e))
+                continue
+            players = hist.get('players', {})
+            missing = [k for k in truth if rk not in (players.get(k, {}).get('by_round', {}))]
+            if missing:
+                fails.append("%s history missing round %d for %d active player(s), e.g. %s"
+                             % (name, round_n, len(missing), sorted(missing)[:3]))
+            bad = [k for k in truth if k not in missing and players[k]['by_round'][rk] != truth[k][field]]
+            if bad:
+                fails.append("%s history round %d disagrees with the board for %d player(s), e.g. %s"
+                             % (name, round_n, len(bad), sorted(bad)[:3]))
+            live = self._live_history(target)
+            for k, lentry in (live.get('players', {}) if live else {}).items():
+                for r, val in (lentry.get('by_round') or {}).items():
+                    if players.get(k, {}).get('by_round', {}).get(r) != val:
+                        fails.append("%s history OVERWROTE round %s for %s — append-only" % (name, r, k))
+                        break
+        return fails
+
+    def _live_history(self, name):
+        p = os.path.join(self.repo_root, dict(TARGETS)[name])
+        if not os.path.exists(p):
+            return None
+        try:
+            with open(p) as f:
+                return json.load(f)
+        except (OSError, ValueError):
+            return None
+
+    # ===========================================================================================
+    # POST-COMMIT UI EXTRACTION (TIER 3, read-only; triggered ONLY after a fully committed board)
+    # ===========================================================================================
+    def refresh_ui(self):
+        """Regenerate the Matchday UI view bundles from the COMMITTED board. Runs the checkout's own
+        ui/tools/extract_board_view.py (never an ambient copy) against repo_root; the extractor
+        ring-fences the board md5 against the boot board pin (which the apply re-stamped), so it can
+        only produce coherent bundles from a fully committed board and fails closed otherwise. This is
+        a read-only TIER-3 step, deliberately OUTSIDE the store transaction (UI bundles are re-derivable
+        and never gate a store write). Skips gracefully if ui/ is absent. Returns an evidence dict."""
+        extractor = os.path.join(self.repo_root, 'ui', 'tools', 'extract_board_view.py')
+        if not os.path.exists(extractor):
+            return {'ran': False, 'reason': 'no ui/tools/extract_board_view.py under repo root'}
+        env = dict(os.environ)
+        env['RL_REPO'] = self.repo_root
+        env.setdefault('PYTHONHASHSEED', '0')
+        env.setdefault('RL_VENDOR', os.environ.get('RL_VENDOR', '/home/claude/rl_vendor'))
+        env['PYTHONPATH'] = (os.path.join(self.repo_root, 'engine', 'rl_after') + os.pathsep
+                             + env.get('RL_VENDOR', '') + os.pathsep + env.get('PYTHONPATH', ''))
+        r = subprocess.run([sys.executable, extractor], cwd=self.repo_root, env=env,
+                           capture_output=True, text=True)
+        working = os.path.join(self.repo_root, 'ui', 'data', 'board_view_working.js')
+        public = os.path.join(self.repo_root, 'ui', 'data', 'board_view_public.js')
+        ok = (r.returncode == 0 and os.path.exists(working) and os.path.exists(public))
+        ev = {'ran': True, 'rc': r.returncode, 'ok': ok,
+              'working_bundle': working if os.path.exists(working) else None,
+              'public_bundle': public if os.path.exists(public) else None,
+              'stderr_tail': (r.stderr or '')[-500:] if not ok else None}
+        if ok:
+            ev.update(self._ui_coherence(working, public))
+        return ev
+
+    @staticmethod
+    def _parse_bundle(path):
+        """Parse a `window.__X__ = {...};` bundle back to a dict (the extractor's own emit format)."""
+        with open(path) as f:
+            text = f.read()
+        i = text.index('{')
+        j = text.rindex('}')
+        return json.loads(text[i:j + 1])
+
+    def _ui_coherence(self, working, public):
+        """Coherence of the two emitted bundles vs the committed board: the working bundle's board
+        stamp equals the committed board id, the two bundles cover the same players, and the PUBLIC
+        bundle carries NO identity leak (no key/id/md5/stamp.srcmd5) — the two-tier UI law."""
+        w = self._parse_bundle(working)
+        p = self._parse_bundle(public)
+        board_id = _md5_file_full(self._live('board'))
+        wstamp = (w.get('stamp') or {})
+        srcmd5 = wstamp.get('srcmd5') or ''
+        pub_leak = any(k in (row or {}) for row in p.get('players', []) for k in ('key', 'stable_player_id'))
+        pub_stamp_leak = any(k in (p.get('stamp') or {}) for k in ('srcmd5', 'store', 'register', 'guard5'))
+        return {
+            'ui_board_stamp': srcmd5[:12], 'committed_board_id': board_id[:12],
+            'ui_board_stamp_matches_committed': srcmd5 == board_id,
+            'working_players': len(w.get('players', [])), 'public_players': len(p.get('players', [])),
+            'players_match': len(w.get('players', [])) == len(p.get('players', [])),
+            'public_leak_free': not pub_leak and not pub_stamp_leak,
+        }
+
     def _run_guard5(self, ws):
         wsra = os.path.join(ws, 'engine', 'rl_after')
-        env = dict(os.environ)
+        # SANITIZE the boot-validation environment exactly as the staged board build does
+        # (_strict_regen_env): drop every ambient RL_*/PAR_* redirect and bind RL_FV to the STAGED
+        # forward_valuation. df5066a's Guard 5 asserts the forward-valuation LOADED PATH (the exact dir
+        # the engine would import via RL_FV) against the pinned `fv` identity; an ambient/adversarial
+        # inherited RL_FV must NOT make Guard 5 validate — or reject — against a non-staged tree. Guard 5
+        # here validates the SAME forward_valuation the board was just built from.
+        vendor = os.environ.get('RL_VENDOR', '/home/claude/rl_vendor')
+        env = {k: v for k, v in os.environ.items() if not (k.startswith('RL_') or k.startswith('PAR_'))}
         env['RL_REPO'] = ws
-        env['PYTHONPATH'] = wsra + ':' + env.get('RL_VENDOR', '/home/claude/rl_vendor')
+        env['RL_VENDOR'] = vendor
+        env['RL_FV'] = os.path.abspath(self.fv_dir_override or self._fv_dir(ws))
+        env['PYTHONPATH'] = wsra + os.pathsep + vendor
+        env['PYTHONHASHSEED'] = '0'
         r = subprocess.run(
             [sys.executable, os.path.join(ws, 'boot_guard.py'), 'weekly_updater_staged',
              os.path.join(wsra, 'rl_model_data.json'), os.path.join(wsra, '_merged_recover.py'),
@@ -896,7 +1060,46 @@ class StagedRoundApplier:
             'sidecar': os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json.srcmd5'),
             'manifest': os.path.join(ws, 'data', 'expected_boot.json'),
             'ledger':  os.path.join(wsra, 'ingestion', 'applied_rounds_ledger.json'),
+            'value_history': os.path.join(wsra, 'ingestion', 'value_history.json'),
+            'rank_history':  os.path.join(wsra, 'ingestion', 'rank_history.json'),
+            'pos_rank_history': os.path.join(wsra, 'ingestion', 'pos_rank_history.json'),
         }[name]
+
+    # -- persistent value + overall-rank + positional-rank history (a transaction target) ----------
+    _HISTORY_TARGETS = (('value', 'value_history', RH.KIND_VALUE),
+                        ('rank', 'rank_history', RH.KIND_RANK),
+                        ('pos_rank', 'pos_rank_history', RH.KIND_POS_RANK))
+
+    def _stage_history(self, ws, snapshot):
+        """Fold the staged board's per-player value + overall-rank + positional-rank into the three
+        persistent histories, in the workspace. Seeds the previous round (round-1) from the PRE-APPLY
+        live board on the first apply (the round-14 -> round-15 transition), then appends this round;
+        never overwrites a recorded round. Returns an evidence dict."""
+        season = int(snapshot['season_year'])
+        rnd = int(snapshot['round'])
+        live_board_path = self._live('board')
+        prev_board = None
+        if os.path.exists(live_board_path):
+            with open(live_board_path) as f:
+                prev_board = json.load(f)
+        with open(self._ws_target_path(ws, 'board')) as f:
+            new_board = json.load(f)
+        hists, paths = {}, {}
+        for key, target, kind in self._HISTORY_TARGETS:
+            paths[key] = self._ws_target_path(ws, target)
+            hists[key] = RH.load_history(paths[key], kind, season)
+        rounds_before = RH.rounds_recorded(hists['value'])
+        hists = RH.update_histories(hists, season=season, round_n=rnd,
+                                    prev_board=prev_board, new_board=new_board)
+        md5s = {}
+        for key, target, _kind in self._HISTORY_TARGETS:
+            RH.save_history(paths[key], hists[key])
+            md5s[target + '_md5'] = _md5_file_full(paths[key])
+        ev = {'season': season, 'round': rnd, 'prev_round': rnd - 1,
+              'rounds_before': rounds_before, 'rounds_after': RH.rounds_recorded(hists['value']),
+              'players': len(hists['value'].get('players', {}))}
+        ev.update(md5s)
+        return ev
 
     def _collect_staged(self, ws, txn_dir):
         """Copy the validated workspace outputs into txn/staged (same FS as live) and md5-verify each

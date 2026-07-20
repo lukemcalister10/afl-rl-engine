@@ -2,7 +2,7 @@
 
 Writes **nothing** to the real store: the apply gate ships OFF (`APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset); apply() on the real store refused (`gate_off_on_real_store=True`). Every write below is on a throwaway scratch repo.
 
-## RESULT: **ALL PASS**  (542.7s)
+## RESULT: **ALL PASS**  (516.2s)
 
 ## A — scratch round-15 apply (write + regen + re-stamp + Guard 5)
 | field | value |

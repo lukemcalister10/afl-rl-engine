@@ -2,7 +2,7 @@
 
 Writes **nothing** to the real store (gate ships OFF: `APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset; real-store apply refused = `True`). Every write below is on a throwaway scratch repo.
 
-## RESULT: **ALL PASS**  (664.8s)
+## RESULT: **ALL PASS**  (526.3s)
 
 ## Failure injection (7 points) — rollback leaves the scratch byte-identical
 | injection point | files byte-identical | no dedup entry | no partial board | txn status | pass |

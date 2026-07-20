@@ -24,7 +24,7 @@
     "recover_restored_all_originals": true,
     "txn_marked_recovered": true
   },
-  "elapsed_s": 664.8,
+  "elapsed_s": 526.3,
   "gate_off_on_real_store": true,
   "gate_shipped": {
     "APPLY_DEFAULT": false,

@@ -1,17 +1,28 @@
 #!/usr/bin/env python3
-"""round_entry.py — the owner's weekly round workflow CLI (one tool, five verbs).
+"""round_entry.py — the owner's weekly round workflow CLI (one tool, seven verbs).
 
-The 2-minute weekly workflow (register item 305 + the 2026-07-20 safe-local hardening):
+The one-command weekly workflow (register item 305 + the 2026-07-20 live-scoring hardening):
+
+    place ONE score file  ->  round_entry run --round N --body-file scores.csv  ->  review  ->  approve
+
+`run` does the whole clean-round job in one command: resolve every name, print a human-readable
+preview + unresolved-name report, require an EXPLICIT approval, then apply the exact snapshot and
+refresh the UI + history. The five lower-level verbs remain for power users / a residue round:
 
     1. enter    paste/supply `name,score` + a round -> resolve every name -> stamped snapshot
     2. confirm   one-tap resolve any residue (a number or `skip`) -> stamped snapshot
     3. show      inspect the EXACT stamped snapshot before applying anything
     4. apply     apply THAT EXACT snapshot to the store, staged+validated+atomic (gate-guarded)
     5. recover   restore after an interrupted apply (crash recovery)
+    6. run       the one-command owner path: resolve -> preview -> approve -> apply -> UI + history
+    7. catchup   controlled multi-round catch-up (several rounds, ONE preflight + ONE approval,
+                 each round its own sequential committed transaction; restart-safe)
 
-The owner never constructs the older structured feed by hand: paste `name,score`, pick a round, and
-confirm residue — the tool resolves names to live stable IDs, stamps a self-verifying snapshot, and
-(when armed) applies exactly that snapshot through the staged transaction.
+The owner never constructs the older structured feed by hand and never edits Python: place a score
+file, run one command, review the preview, approve. A name that does not resolve is the one human
+review — a candidate number or `skip`, never a silent drop. A successful apply moves the store +
+board atomically, records the persistent per-player value + rank history, and refreshes the Matchday
+UI bundles; backups, the transaction record, the dedup ledger and the history are all kept.
 
 COMMANDS
   enter   --round N  [--body-file F | --body - ]  [--store PATH] [--out DIR]
@@ -60,6 +71,7 @@ sys.path.insert(0, os.path.join(repo_root(), "engine", "rl_after"))
 import round_entry as RE          # noqa: E402
 import staged_apply as SA         # noqa: E402
 import score_ingestor as SI       # noqa: E402
+import round_catchup as RC        # noqa: E402
 
 
 DEFAULT_OUT = os.path.join(repo_root(), "engine", "rl_after", "ingestion", "round_snapshots")
@@ -254,11 +266,16 @@ def cmd_apply(args):
           % (snap['round'], snap['season_year'], snap['counts']['resolved'], paths['snapshot']))
     print("  snapshot store id %s · content_hash %s (verified)"
           % (snap['source_store_md5'], (snap.get('content_hash') or '')[:12]))
+    return _apply_and_report(snap, args, repo)
 
+
+def _apply_and_report(snap, args, repo):
+    """Run the staged transaction for a verified snapshot, then (only after a fully committed board)
+    refresh the UI bundles and print the owner summary. Shared by `apply` and `run`."""
     applier = SA.StagedRoundApplier.for_repo(
-        repo, txn_root=(os.path.abspath(args.txn_root) if args.txn_root else None))
+        repo, txn_root=(os.path.abspath(args.txn_root) if getattr(args, 'txn_root', None) else None))
     try:
-        res = applier.apply_snapshot(snap, generated_at=(args.now or _now(args)))
+        res = applier.apply_snapshot(snap, generated_at=(getattr(args, 'now', None) or _now(args)))
     except SI.IngestionGatedError as e:
         # the shipped default: gate OFF. Refuse to write; tell the owner how to arm locally.
         print("\nAPPLY REFUSED — the store-write gate is OFF (shipped default; nothing was written).")
@@ -267,7 +284,7 @@ def cmd_apply(args):
         print("  (two env vars — NO Python editing; nothing is armed in the committed repo):")
         print("    INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<your-token> \\")
         print("      round_entry apply --round %d      # or via tools/round_entry/weekly_update.sh"
-              % args.round)
+              % snap['round'])
         print("  See tools/round_entry/README.md.")
         return 3
     except SA.IncompleteTransactionError as e:
@@ -275,11 +292,14 @@ def cmd_apply(args):
     except _REFUSALS as e:
         die("%s: %s" % (type(e).__name__, e), code=2)
 
-    _print_apply_summary(res, repo)
+    # POST-COMMIT (only after a fully committed board): refresh the Matchday UI view bundles.
+    ui_ev = applier.refresh_ui()
+    _print_apply_summary(res, repo, ui_ev)
     return 0
 
 
-def _print_apply_summary(res, repo):
+def _print_apply_summary(res, repo, ui_ev=None):
+    h = res.history or {}
     print("\n================ WEEKLY UPDATE APPLIED ================")
     print("  Round applied      : R%d, season %d" % (res.round, res.season))
     print("  Players applied    : %d" % res.players_applied)
@@ -290,13 +310,21 @@ def _print_apply_summary(res, repo):
     print("  Transaction/backup : %s" % res.txn_dir)
     print("  Duplicate guard    : recorded %d triple(s); ledger now holds %d (a re-send is blocked)"
           % (res.ledger_added, res.ledger_total))
+    print("  Value+rank history : rounds %s recorded for %d players (append-only; earlier rounds kept)"
+          % (h.get('rounds_after'), h.get('players', 0)))
     print("  FV provenance      : board built from the STAGED valuation module (recorded in the txn)")
-    print("  UI regeneration    : STILL REQUIRED — the Matchday UI view bundle is a separate step:")
-    print("                       python3 ui/tools/extract_board_view.py   (TIER-3, read-only)")
-    print("  Not yet generated  : previous-round movement data; immutable history / correct / undo")
-    print("                       (pending tranche — see tools/round_entry/README.md)")
-    print("  The store/board/manifest/ledger were staged, validated, and swapped atomically;")
-    print("  a crash mid-swap rolls back. This is a transaction core, not yet a hands-off operator.")
+    if ui_ev is None or not ui_ev.get('ran'):
+        reason = (ui_ev or {}).get('reason', 'not run')
+        print("  UI bundles         : not refreshed (%s)" % reason)
+    elif ui_ev.get('ok'):
+        print("  UI bundles         : refreshed — working + public (board stamp %s == committed %s%s)"
+              % (ui_ev.get('ui_board_stamp'), ui_ev.get('committed_board_id'),
+                 ", public leak-free" if ui_ev.get('public_leak_free') else ""))
+    else:
+        print("  UI bundles         : FAILED to refresh (rc=%s) — %s"
+              % (ui_ev.get('rc'), (ui_ev.get('stderr_tail') or '').strip()[:120]))
+    print("  The store/board/manifest/ledger/history were staged, validated, and swapped atomically;")
+    print("  a crash mid-swap rolls back. Backups, transaction record, ledger and history are kept.")
     print("======================================================")
 
 
@@ -313,6 +341,174 @@ def cmd_recover(args):
     for r in report['recovered']:
         print("  %s: restored %s" % (r['txn'], ", ".join(r['restored']) or "(nothing to restore)"))
     print("recover: done — the store/board/manifest/ledger are back to their pre-apply state. Evidence kept.")
+    return 0
+
+
+# ---- RUN (the one-launcher owner path): resolve -> preview -> approve -> apply -> UI + history ----
+def cmd_run(args):
+    """One command for the whole weekly job: place a score file, run this, review the preview, approve.
+
+    resolve the round -> print a human-readable preview + unresolved-name report -> (clean round only)
+    require an EXPLICIT approval (interactive `yes`, or --approve) -> apply the exact snapshot through
+    the staged transaction -> refresh the UI bundles -> print a clear SUCCESS or REFUSAL. No Python, no
+    manual file editing on a clean round; a residue line is the one human review (a number or `skip`)."""
+    out_dir = args.out or DEFAULT_OUT
+    os.makedirs(out_dir, exist_ok=True)
+    paths = _paths(out_dir, args.round)
+    repo = os.path.abspath(args.repo) if args.repo else repo_root()
+    body = _read_body(args)
+
+    ent = RE.RoundEntry(args.round, store_path=args.store or RE._STORE_DEFAULT)
+    try:
+        resolved, residue = ent.resolve_body(body)
+    except RE.RoundEntryParseError as e:
+        die("parse error: %s" % e)
+
+    _announce_replace(paths)
+    print("ROUND %d — active pool %d — %d resolved, %d unresolved"
+          % (args.round, ent.resolver.active_count, len(resolved), len(residue)))
+    for r in resolved:
+        print("  OK   %-24s %8s  -> %s" % (r.name, r.score, r.key))
+
+    if residue:
+        RE.write_residue(args.round, residue, paths['residue'])
+        print("\n%d name(s) did NOT cleanly resolve — a one-tap review (never a silent drop):" % len(residue))
+        for r in residue:
+            near = ", ".join("%d)%s" % (c['index'], c['name']) for c in r.candidates) or "(none)"
+            print("  ??   %-24s %8s  [%s] candidates: %s" % (r.name, r.score, r.reason, near))
+        print("\n  Edit the ACTION line (a candidate NUMBER or `skip`) in:\n    %s" % paths['residue'])
+        print("  then finish with:\n    round_entry confirm --round %d && round_entry run --round %d --approve"
+              % (args.round, args.round))
+        print("  (nothing is applied while a name is unresolved.)")
+        return 0
+
+    snap = ent.build_snapshot(resolved, generated_at=_now(args))
+    _write_snapshot(paths['snapshot'], snap)
+    print("\nPREVIEW — clean round, snapshot stamped:")
+    print("  store id %s (full %s) · content_hash %s · %d players"
+          % (snap['source_store_md5'], snap['source_store_md5_full'][:8],
+             snap['content_hash'][:12], snap['counts']['resolved']))
+
+    if not _approved(args):
+        print("\nNOT APPROVED — nothing was applied. Re-run with --approve (or answer `yes`) to apply.")
+        return 0
+
+    print("\nAPPROVED — applying round %d ..." % args.round)
+    return _apply_and_report(snap, args, repo)
+
+
+def _approved(args, prompt="Apply this round to the store now? type `yes` to confirm: "):
+    """Explicit owner approval: the --approve flag, or an interactive `yes` on the prompt. A
+    non-interactive run without --approve is treated as NOT approved (never applies unattended)."""
+    if getattr(args, 'approve', False):
+        return True
+    if not sys.stdin or not sys.stdin.isatty():
+        return False
+    try:
+        ans = input(prompt).strip().lower()
+    except EOFError:
+        return False
+    return ans in ('yes', 'y')
+
+
+# ---- CATCHUP (controlled multi-round): ONE preflight + ONE approval, per-round transactions --------
+import re as _re
+
+
+def _collect_catchup_files(args):
+    """Gather [(round, path)]: from `--dir DIR` (round parsed from each filename's `R<N>`), and/or
+    repeated `--file N=path` (or `N:path`). Sorted by round; a duplicate round is an error."""
+    files = {}
+    if args.dir:
+        for name in sorted(os.listdir(args.dir)):
+            m = _re.search(r'[Rr](\d+)', name)
+            if m and name.lower().endswith(('.csv', '.txt')):
+                files[int(m.group(1))] = os.path.join(args.dir, name)
+    for spec in (args.file or []):
+        sep = '=' if '=' in spec else ':'
+        rnd, path = spec.split(sep, 1)
+        r = int(rnd.lstrip('Rr'))
+        if r in files and os.path.abspath(files[r]) != os.path.abspath(path):
+            die("two files given for round %d" % r)
+        files[r] = path
+    if not files:
+        die("no round files — pass --dir DIR (files named R15.csv ...) or --file 15=path")
+    return sorted(files.items())
+
+
+def _print_preflight(report):
+    print("================ CATCH-UP PREFLIGHT ================")
+    print("  season %s · %d round(s) · identity overrides: %s"
+          % (report['season'], len(report['rounds']), ", ".join(report['identity_override_names']) or "none"))
+    for rd in report['rounds']:
+        print("  R%-2d  enc=%-9s listed/played=%-4d resolved=%-4d listed-zero=%-3d absent/DNP=%-4d  sha256 %s"
+              % (rd['round'], rd['encoding'], rd['listed'], rd['resolved'], rd['listed_zero'],
+                 rd['absent_dnp'], rd['sha256'][:12]))
+        for o in rd['identity_overrides']:
+            print("        identity override: %-22s -> %-22s (score %g, %s)"
+                  % (o['name'], o['key'], o['score'], o['via']))
+        for u in rd['unresolved']:
+            print("        UNRESOLVED: %r score=%s (%s)" % (u['name'], u.get('score'), u['reason']))
+        for a in rd['ambiguous']:
+            print("        AMBIGUOUS: %r score=%s" % (a['name'], a.get('score')))
+        for d in rd['duplicate_keys']:
+            print("        DUPLICATE stable key: %s scores=%s" % (d['key'], d['scores']))
+        if rd['already_applied']:
+            print("        (already applied — will be SKIPPED on resume)")
+    if report['clean']:
+        print("  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.")
+    else:
+        print("  PREFLIGHT HALTED:")
+        for h in report['halt_reasons']:
+            print("    - %s" % h)
+    print("===================================================")
+
+
+def cmd_catchup(args):
+    repo = os.path.abspath(args.repo) if args.repo else repo_root()
+    files = _collect_catchup_files(args)
+    overrides = (RC.IdentityOverrides.load(args.overrides) if args.overrides else RC.IdentityOverrides.load())
+    cu = RC.RoundCatchup(repo, files, overrides=overrides)
+    report, _rounds = cu.preflight()
+    _print_preflight(report)
+    if not report['clean']:
+        die("catch-up preflight HALTED — resolve the identity issues above; NOTHING was applied.", code=2)
+
+    print("\nAbout to apply rounds %s — each as its own sequential transaction, committed in order."
+          % [r for r, _ in files])
+    if not _approved(args, prompt="Approve this catch-up (all rounds above)? type `yes`: "):
+        print("NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).")
+        return 0
+
+    try:
+        run = cu.run(approved=True, generated_at=_now(args),
+                     txn_root=(os.path.abspath(args.txn_root) if args.txn_root else None))
+    except SI.IngestionGatedError as e:
+        print("\nCATCH-UP REFUSED — the store-write gate is OFF (shipped default; nothing was written).")
+        print("  %s" % e)
+        print("  Arm BOTH halves LOCALLY for the run (no code edit):")
+        print("    INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<your-token> \\")
+        print("      round_entry catchup --dir <scores> --approve")
+        return 3
+    except SA.IncompleteTransactionError as e:
+        die("%s\n  run:  round_entry recover" % e, code=4)
+    except (RC.CatchupError, *_REFUSALS) as e:
+        die("%s: %s" % (type(e).__name__, e), code=2)
+
+    print("\n================ CATCH-UP APPLIED ================")
+    for r in run['rounds']:
+        if r['status'] == 'applied':
+            print("  R%-2d  store %s->%s  board %s->%s  players=%d  guard5=%s  hist=%s  movers->UI=%s"
+                  % (r['round'], (r.get('store_before') or '')[:8], (r.get('store_after') or '')[:8],
+                     (r.get('board_before') or '')[:8], (r.get('board_after') or '')[:8],
+                     r['players_applied'], r['guard5_green'], r['history_rounds'],
+                     r.get('movers_ui_rows_injected')))
+        else:
+            print("  R%-2d  SKIPPED (already applied — restart-safe)" % r['round'])
+    print("  Final store %s · board %s" % (run['final_store'][:8], run['final_board'][:8]))
+    print("  Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank")
+    print("  histories and movers reports are all retained.")
+    print("=================================================")
     return 0
 
 
@@ -357,6 +553,29 @@ def build_parser():
     pr.add_argument("--txn-root", help="transaction directory root (default: under ingestion/)")
     pr.add_argument("--now", help="pin the recovery timestamp (ISO)")
     pr.set_defaults(func=cmd_recover)
+
+    pn = sub.add_parser("run", help="one command: resolve -> preview -> approve -> apply -> UI+history")
+    pn.add_argument("--round", type=int, required=True)
+    pn.add_argument("--body-file", help="read the name,score body from this file (.csv or text)")
+    pn.add_argument("--body", default="-", help="'-' (default) reads the body from stdin")
+    pn.add_argument("--approve", action="store_true",
+                    help="explicit approval to apply a clean round (else you are prompted / it stops)")
+    pn.add_argument("--store", help="store path (default: the single source)")
+    pn.add_argument("--out", help="artifact dir")
+    pn.add_argument("--repo", help="repo root to apply against (default: this checkout)")
+    pn.add_argument("--now", help="pin timestamps (ISO)")
+    pn.add_argument("--txn-root", help="transaction directory root (default: under ingestion/)")
+    pn.set_defaults(func=cmd_run)
+
+    pcu = sub.add_parser("catchup", help="controlled multi-round catch-up: one preflight + one approval")
+    pcu.add_argument("--dir", help="directory of round files (round parsed from each filename's R<N>)")
+    pcu.add_argument("--file", action="append", help="explicit round file: `15=path` (repeatable)")
+    pcu.add_argument("--overrides", help="owner identity-override JSON (default: the shipped catch-up overrides)")
+    pcu.add_argument("--approve", action="store_true", help="approve the whole catch-up (else prompted/stops)")
+    pcu.add_argument("--repo", help="repo root to apply against (default: this checkout)")
+    pcu.add_argument("--now", help="pin timestamps (ISO)")
+    pcu.add_argument("--txn-root", help="transaction directory root (default: under ingestion/)")
+    pcu.set_defaults(func=cmd_catchup)
     return p
 
 

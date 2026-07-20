@@ -5,7 +5,7 @@ Proves the 2026-07-20 provenance hardening (staged_apply):
   GREEN — a staged apply binds RL_FV to the STAGED forward_valuation, builds the board under the
           accepted release config policy (RL_CONFIG_MODE=gate), records distribution_pricing's path +
           full hash in the transaction manifest, passes Guard 5, and commits. The FV module used is the
-          staged d0c8c69f, INSIDE the staged repo.
+          staged dd19a234, INSIDE the staged repo.
 
   RED (the audit's defect) — the stale distribution_pricing 21d530bf sits on the RL_FV DEFAULT path
           (/home/claude/rl_workspace/forward_valuation) in this container. The updater must NEVER
@@ -14,7 +14,7 @@ Proves the 2026-07-20 provenance hardening (staged_apply):
             R2  a full apply whose FV binding is mis-pointed at the ambient stale dir HALTS before board
                 generation (ABORTED_PRECOMMIT) — no board, no pins, no ledger, live files byte-identical;
             R3  a full apply with an ADVERSARIAL inherited RL_FV=<ambient stale> is FORCED back to the
-                staged module, builds the CORRECT board (d0c8c69f), and commits — the stale board is
+                staged module, builds the CORRECT board (dd19a234), and commits — the stale board is
                 never produced.
 
   CONFIG — an inherited conflicting valuation flag (e.g. RL_LEGE=0) HALTS before any staging
@@ -56,13 +56,15 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
                     os.path.join(dst, 'engine', 'forward_valuation'))
     ws = os.path.join(dst, 'engine', 'rl_after')
-    for f in ('config_manifest.py', 'LTI_REGISTER.md'):
+    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(ws, f))
-    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md'):
+    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(dst, f))
     shutil.copytree(os.path.join(REPO, 'data'), os.path.join(dst, 'data'))
     shutil.copytree(os.path.join(REPO, 'session_2026-07-18', 'legf5'),
                     os.path.join(dst, 'session_2026-07-18', 'legf5'))
+    import scratch_fixture as _SF        # coherent engine identities for the fixture's Guard 5
+    _SF.stamp_release_identities(dst)
     return dst
 
 
@@ -131,7 +133,7 @@ def prove_green():
             'board_after': res.board_md5_after[:8], 'guard5_green': res.guard5_green,
             'fv_inside_staged_repo': bool(fv.get('inside_staged_repo')),
             'fv_distribution_pricing_md5': dp_md5[:8],
-            'fv_is_staged_not_stale': dp_md5.startswith('d0c8c69f'),
+            'fv_is_staged_not_stale': dp_md5.startswith('dd19a234'),
             'fv_not_21d530bf': not dp_md5.startswith('21d530bf'),
             'config_hash': (man or {}).get('config_hash', '')[:12],
             'config_gate_loaded': bool(fv.get('config_mode_gate_loaded')),
@@ -196,7 +198,7 @@ def prove_red_apply_halt():
 
 def prove_red_apply_override():
     """R3: an ADVERSARIAL inherited RL_FV=<ambient stale> is FORCED back to the staged module; the
-    board built is the CORRECT staged d0c8c69f, and the apply commits. The stale board is never made."""
+    board built is the CORRECT staged dd19a234, and the apply commits. The stale board is never made."""
     scr = make_scratch('ro')
     prev = os.environ.get('RL_FV')
     try:
@@ -207,10 +209,10 @@ def prove_red_apply_override():
         fv = (man or {}).get('fv_provenance') or {}
         dp_md5 = fv.get('distribution_pricing_md5', '')
         return {'committed': True, 'guard5_green': res.guard5_green,
-                'fv_forced_to_staged': dp_md5.startswith('d0c8c69f'),
+                'fv_forced_to_staged': dp_md5.startswith('dd19a234'),
                 'fv_not_ambient_stale': not dp_md5.startswith('21d530bf'),
                 'fv_inside_staged_repo': bool(fv.get('inside_staged_repo')),
-                'pass': res.guard5_green and dp_md5.startswith('d0c8c69f')
+                'pass': res.guard5_green and dp_md5.startswith('dd19a234')
                         and bool(fv.get('inside_staged_repo'))}
     except Exception as e:
         return {'committed': False, 'error': '%s: %s' % (type(e).__name__, e), 'pass': False}
@@ -328,7 +330,7 @@ def _md(r):
         "", "## GREEN — staged strict build",
         "| check | value |", "|---|---|",
         "| store `%s` → `%s`, board `%s` | applied |" % (g['store_before'], g['store_after'], g['board_after']),
-        "| distribution_pricing used (staged `d0c8c69f`, inside the staged repo) | `%s` / %s |" % (g['fv_distribution_pricing_md5'], g['fv_inside_staged_repo']),
+        "| distribution_pricing used (staged `dd19a234`, inside the staged repo) | `%s` / %s |" % (g['fv_distribution_pricing_md5'], g['fv_inside_staged_repo']),
         "| not the stale `21d530bf` | %s |" % g['fv_not_21d530bf'],
         "| RL_CONFIG_MODE=gate loaded the release manifest (config `%s`) | %s |" % (g['config_hash'], g['config_gate_loaded']),
         "| Guard 5 GREEN on the staged set | %s |" % g['guard5_green'],

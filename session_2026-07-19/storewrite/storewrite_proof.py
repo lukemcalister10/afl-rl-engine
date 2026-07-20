@@ -79,9 +79,9 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
                     os.path.join(dst, 'engine', 'forward_valuation'))
     ws = os.path.join(dst, 'engine', 'rl_after')
-    for f in ('config_manifest.py', 'LTI_REGISTER.md'):        # rl_export imports these from the workspace
+    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py'):  # rl_export imports these
         shutil.copyfile(os.path.join(REPO, f), os.path.join(ws, f))
-    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md'):
+    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(dst, f))
     # whole data/ (16M) so the engine resolves every RL_REPO-relative read (pickles, owner_overrides,
     # model_config, the board) inside the SCRATCH — RL_REPO=dst, zero real-repo interaction at regen.
@@ -89,6 +89,8 @@ def make_scratch(tag):
     # the legf5 entrant-structure seal rl_export asserts ($RL_REPO/session_2026-07-18/legf5/...).
     shutil.copytree(os.path.join(REPO, 'session_2026-07-18', 'legf5'),
                     os.path.join(dst, 'session_2026-07-18', 'legf5'))
+    import scratch_fixture as _SF        # coherent engine identities for the fixture's Guard 5
+    _SF.stamp_release_identities(dst)
     return dst
 
 

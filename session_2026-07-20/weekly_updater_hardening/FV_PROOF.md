@@ -2,7 +2,7 @@
 
 Writes nothing to the real store (gate OFF: real-store apply refused = `True`).
 
-## RESULT: **ALL PASS**  (187.7s)
+## RESULT: **ALL PASS**  (150.6s)
 
 ## RED — the audit's defect (stale `21d530bf` on the RL_FV default path)
 | check | value |
@@ -22,7 +22,7 @@ Writes nothing to the real store (gate OFF: real-store apply refused = `True`).
 | check | value |
 |---|---|
 | store `968de0c7` → `615bfe77`, board `83e21b69` | applied |
-| distribution_pricing used (staged `d0c8c69f`, inside the staged repo) | `d0c8c69f` / True |
+| distribution_pricing used (staged `dd19a234`, inside the staged repo) | `dd19a234` / True |
 | not the stale `21d530bf` | True |
 | RL_CONFIG_MODE=gate loaded the release manifest (config `c2d233aec104`) | True |
 | Guard 5 GREEN on the staged set | True |

@@ -1,0 +1,177 @@
+{
+  "10_stale_r16_preview_blocked": {
+    "blocked": true,
+    "files_unchanged": true,
+    "pass": true
+  },
+  "11_tampered_preview_blocked": {
+    "blocked": true,
+    "pass": true
+  },
+  "12_universe_residue_blocked": {
+    "absent_key_blocked": true,
+    "pass": true,
+    "residue_open_blocked": true
+  },
+  "13_failure_injection_no_partial": {
+    "pass": true,
+    "points": {
+      "after_first_replacement": {
+        "history_unchanged": true,
+        "no_r16_in_history": true,
+        "pass": true,
+        "r15_state_byte_identical": true,
+        "raised": true
+      },
+      "during_history_staging": {
+        "history_unchanged": true,
+        "no_r16_in_history": true,
+        "pass": true,
+        "r15_state_byte_identical": true,
+        "raised": true
+      }
+    }
+  },
+  "14_hard_exit_detected_refuses": {
+    "board_inconsistent_mid_crash": true,
+    "child_crashed_mid_commit": true,
+    "next_run_refused": true,
+    "pass": true,
+    "store_swapped_mid_crash": true
+  },
+  "15_recovery_byte_identical_evidence": {
+    "files_byte_identical_to_pre_txn": true,
+    "forensic_journal_kept": true,
+    "history_restored": true,
+    "not_clean": true,
+    "pass": true,
+    "txn_marked_recovered": true
+  },
+  "16a_ui_after_r15_commit": {
+    "board_stamp_matches_committed": true,
+    "mismatched_board_refused": true,
+    "ok": true,
+    "pass": true,
+    "public_leak_free": true,
+    "public_players": 804,
+    "ran": true,
+    "working_players": 804
+  },
+  "16b_ui_after_r16_commit": {
+    "board_stamp_matches_committed": true,
+    "ok": true,
+    "pass": true,
+    "public_leak_free": true,
+    "public_players": 804,
+    "ran": true,
+    "working_players": 804
+  },
+  "17_no_production_files_touched": {
+    "all_byte_identical": true,
+    "changed": [],
+    "checked": [
+      "board",
+      "boot_manifest",
+      "ledger",
+      "rank_history",
+      "store",
+      "ui_public",
+      "ui_working",
+      "value_history"
+    ],
+    "pass": true
+  },
+  "1_r15_preview_validates": {
+    "content_hash_verifies": true,
+    "identities_resolve_to_active_ids": true,
+    "pass": true,
+    "players": 8,
+    "score_meaning_preserved": true,
+    "source_store_md5_full_matches_live": true,
+    "strong": true
+  },
+  "2_r15_apply_atomic": {
+    "guard5_green": true,
+    "manifest_board_pin_coherent": true,
+    "manifest_store_pin_coherent": true,
+    "pass": true,
+    "players_applied": 8,
+    "sidecar_source_stamp_coherent": true,
+    "store": "968de0c7 -> 66cc4879",
+    "txn_committed": true
+  },
+  "3_r15_board_regenerated": {
+    "board": "270a2c5f -> f58ac3e0",
+    "board_source_is_updated_store": true,
+    "pass": true
+  },
+  "4_history_r14_r15_transition": {
+    "active_players": 804,
+    "every_active_player_has_r14_and_r15": true,
+    "pass": true,
+    "players_tracked": 804,
+    "r15_rank_agrees_with_board": true,
+    "r15_value_agrees_with_board": true,
+    "rank_rounds": [
+      14,
+      15
+    ],
+    "value_rounds": [
+      14,
+      15
+    ]
+  },
+  "5_stop_and_restart": {
+    "committed_history_persists": true,
+    "fresh_process_reads_committed_board": true,
+    "fresh_process_reads_committed_store": true,
+    "pass": true
+  },
+  "6_r16_preview_on_committed_r15": {
+    "content_hash_verifies": true,
+    "equals_committed_r15_store": true,
+    "pass": true,
+    "r16_stamped_against_store": "66cc4879"
+  },
+  "7_r16_apply_atomic_fresh_process": {
+    "applied_in_fresh_process": true,
+    "board": "f58ac3e0 -> f3cc9131",
+    "guard5_green": true,
+    "manifest_pins_coherent": true,
+    "pass": true,
+    "players_applied": 8,
+    "store": "66cc4879 -> 9c88c550"
+  },
+  "8_history_r14_r15_r16_no_overwrite": {
+    "earlier_rounds_preserved_byte_equal": true,
+    "every_active_player_has_all_three": true,
+    "pass": true,
+    "r16_value_agrees_with_board": true,
+    "rank_rounds": [
+      14,
+      15,
+      16
+    ],
+    "value_rounds": [
+      14,
+      15,
+      16
+    ]
+  },
+  "9_resend_r15_r16_blocked": {
+    "files_unchanged": true,
+    "pass": true,
+    "resend_r15_blocked": true,
+    "resend_r16_blocked": true
+  },
+  "ALL_PASS": true,
+  "elapsed_s": 383.2,
+  "gate_off_real_store_refused": {
+    "pass": true,
+    "refused": true
+  },
+  "gate_shipped": {
+    "APPLY_DEFAULT": false,
+    "INGEST_SCORE_APPLY": "unset"
+  }
+}

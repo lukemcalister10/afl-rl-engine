@@ -1,17 +1,68 @@
 # Weekly Updater — owner's local runbook
 
-> **STATUS: transaction-core prototype — NOT yet a safe weekly updater, NOT for real owner use.**
-> The store-write gate is **OFF** and must stay OFF. This branch delivers the safe transaction core
-> (staged apply, atomic swap, rollback, crash recovery, strong snapshot identity, fail-closed
-> forward-valuation provenance). It does **not** yet regenerate the Matchday **UI bundles**, generate
-> **previous-round movement** data, or provide **immutable weekly history / correction / undo**. Those
-> land in a later tranche, after the numerical root result is final, the v2.11 release head exists, and
-> this branch is rebased onto it. See `session_2026-07-20/weekly_updater_hardening/DESIGN.md`.
+> **STATUS: live-scoring transaction core — proven end-to-end on scratch, store-write gate OFF.**
+> The store-write gate is **OFF** and must stay OFF on the committed branch. This branch delivers the
+> safe transaction core (staged apply, atomic swap, rollback, crash recovery, strong snapshot identity,
+> fail-closed forward-valuation provenance) **plus** the live-scoring layer proven in
+> `session_2026-07-20/live_scoring_two_round/`: persistent per-player **value + rank history**,
+> post-commit **UI bundle refresh**, and a one-command owner path (`run`). Two consecutive rounds
+> (R15 → R16) are proven across a full stop/restart, with duplicate / stale / tamper / universe
+> protection and no partial writes. What is still open before real-owner go-live: **`correct` / `undo`**,
+> season/round from release metadata, and the accepted-foundation's own stale `engine_head` / `rl_model`
+> boot pins (a bake re-stamp, outside this workstream). See
+> `session_2026-07-20/weekly_updater_hardening/DESIGN.md`.
 
-One tool, one command, the whole *entry* job: paste `name,score`, confirm any misses, inspect the
-exact snapshot, and (once armed locally) apply it to the store — staged, validated, and atomically
-swapped, with rollback and crash recovery. **No Python editing. The real store write is gated OFF by
-default** (this build applies no real round).
+One tool, one command, the whole job: place a `name,score` file, review the preview + any unresolved
+names, and approve — the tool resolves names to live stable IDs, stamps a self-verifying snapshot,
+applies it to the store (staged, validated, atomically swapped, with rollback + crash recovery),
+records the persistent value + rank history, and refreshes the UI bundles. **No Python editing. The
+real store write is gated OFF by default** (this build applies no real round).
+
+## The one-command path
+
+```
+# place the FootyWire `name,score` export for the round as a file, then:
+./weekly_update.sh run --round 15 --body-file round15.csv --approve
+```
+
+`run` resolves the round, prints a human-readable preview + unresolved-name report, requires an
+EXPLICIT approval (`--approve`, or an interactive `yes`), then applies the exact snapshot and refreshes
+the UI + history. If a name does not resolve, it stops and points you at the one-tap residue review
+(a candidate number or `skip`); finish that with `confirm`, then `run --approve`.
+
+## Catching up several rounds at once (`catchup`)
+
+When you have several consecutive weekly files to apply (e.g. R15–R19), `catchup` does them in one
+go — **one** preflight + **one** approval, but internally **every round is a separate sequential
+transaction** committed in full before the next begins (never one combined update):
+
+```
+# put the round files in a folder (named so each contains its round, e.g. R15.csv … R19.csv):
+./weekly_update.sh catchup --dir scores/ --approve
+#   or list them explicitly:
+./weekly_update.sh catchup --file 15=R15.csv --file 16=R16.csv … --approve
+```
+
+The consolidated **preflight** reports, per round: the file's SHA-256, the detected encoding
+(CP1252 / UTF-8 with or without BOM are all read without altering names or scores), the listed/played
+count, the legitimate listed-zero count, the absent/DNP count vs the active universe, every resolved
+stable key, and the identity overrides applied. **It HALTS before the first write** on any unresolved
+name, ambiguous name, or duplicate stable-key assignment — never a silent drop, never the wrong row.
+
+**Participation is defined by file membership** (owner ruling): a listed player played (score appended,
++1 game); a listed score of **0 is a legitimate played zero** (+1 game, +0 to the average); an absent
+player did not play (no score, no placeholder, no game, no carry-forward). Identity is resolved by
+**stable key** — the owner override file (`engine/rl_after/ingestion/catchup_identity_overrides.json`)
+carries the authorised disambiguations (the two Bailey Williams by round+score; Callum Brown →
+`callum-brown-ire`), so each listed score reaches the correct record and the two Bailey Williams never
+collapse.
+
+`catchup` is **restart-safe**: if it stops partway, re-running it skips the already-committed rounds
+(the dedup ledger) and resumes from the next unapplied round; a crash mid-commit is refused until
+`recover`. Each round keeps its own store, board, hashes, ledger entry, transaction evidence, value /
+overall-rank / positional-rank history, and a movers report (with the movement folded into the working
+UI bundle). Proven end-to-end on the owner's real R15–R19 files in
+`session_2026-07-20/live_scoring_catchup/`.
 
 ## Launch
 
@@ -76,15 +127,17 @@ A successful apply prints:
 ```
 ================ WEEKLY UPDATE APPLIED ================
   Round applied      : R15, season 2026
-  Players applied    : 7
-  Store hash         : 968de0c7  ->  15711cb3
-  Board hash         : 270a2c5f  ->  cd45ddf5
+  Players applied    : 318
+  Store hash         : 968de0c7  ->  692d6302
+  Board hash         : 270a2c5f  ->  … 
   Guard 5 (boot)     : GREEN (validated on the staged build)
   Transaction/backup : .../engine/rl_after/ingestion/.weekly_txn/txn_...
-  Duplicate guard    : recorded 7 triple(s); ledger now holds 7 (a re-send is blocked)
-  UI regeneration    : STILL REQUIRED — the Matchday UI view bundle is a separate step:
-                       python3 ui/tools/extract_board_view.py   (TIER-3, read-only)
-  Everything else was staged, validated, and swapped atomically; a crash mid-swap rolls back.
+  Duplicate guard    : recorded 318 triple(s); ledger now holds 318 (a re-send is blocked)
+  Value+rank history : rounds [14, 15] recorded for 804 players (append-only; earlier rounds kept)
+  FV provenance      : board built from the STAGED valuation module (recorded in the txn)
+  UI bundles         : refreshed — working + public (board stamp == committed, public leak-free)
+  The store/board/manifest/ledger/history were staged, validated, and swapped atomically;
+  a crash mid-swap rolls back. Backups, transaction record, ledger and history are kept.
 ======================================================
 ```
 
@@ -115,13 +168,28 @@ conflicting inherited flag halts.
 > forward-valuation provenance. No cross-run/cross-machine numerical-determinism verdict is claimed
 > here (the value wobble is a separate, external blocker).
 
+## Now included (this workstream)
+
+Each `apply` / `run` / `catchup` round regenerates the store, board (+sidecar), boot manifest and dedup
+ledger, **and**:
+- records the persistent per-player **value**, **overall-rank** and **positional-rank** history
+  (append-only, one entry per round, earlier rounds never overwritten);
+- refreshes the Matchday **UI bundles** (working + public) from the committed board, ring-fenced to the
+  committed board id, with the public bundle leak-free by construction;
+- writes a per-round **movers report** and folds the previous-round movement (`dRound` / `dRoundRank` /
+  `dRoundPosRank`) into the working UI bundle (integrated HTML-engine movers data);
+- supports the controlled multi-round **`catchup`** (one preflight + one approval, per-round sequential
+  transactions, restart-safe).
+
 ## Not yet included (pending a later tranche, after the v2.11 rebase)
 
-`apply` regenerates the store, board (+sidecar), boot manifest and dedup ledger only. It does **not**:
-- regenerate the Matchday **UI bundles** (run `python3 ui/tools/extract_board_view.py` yourself);
-- produce **previous-round movement** / Round-Review data;
-- keep an **immutable per-round history**, or support **`correct`** / **`undo`**;
-- read season/round from release metadata (season 2026 / 24 rounds are still defaults).
+- **`correct`** / **`undo`** (a mistaken round cannot yet be surgically reverted beyond crash rollback);
+- season/round read from release metadata (season 2026 / 24 rounds are still defaults);
+- the accepted foundation's own **stale `engine_head` / `rl_model` boot pins** (`40f43772` / `a5fd3d7d`
+  vs the checked-out `904722cd` / `cc626d7d`) — a bake re-stamp of `data/expected_boot.json`, an
+  owner/bake action OUTSIDE this workstream. The proofs supply coherent engine identities to their
+  scratch fixtures so Guard 5 validates against a coherent release, but the real manifest still needs
+  that re-stamp before a real go-live.
 
 Until those exist and this branch is rebased onto the baked v2.11 head, treat the tool as a reviewed
-transaction core, not a hands-off weekly operator.
+transaction core with the live-scoring layer proven on scratch — not yet a real-store operator.

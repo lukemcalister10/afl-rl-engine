@@ -1,0 +1,331 @@
+{
+  "ALL_PASS": true,
+  "A_preflight": {
+    "clean": true,
+    "encodings": {
+      "15": "cp1252",
+      "16": "cp1252",
+      "17": "cp1252",
+      "18": "utf-8",
+      "19": "utf-8"
+    },
+    "expected_counts": {
+      "15": 318,
+      "16": 319,
+      "17": 410,
+      "18": 406,
+      "19": 405
+    },
+    "file_hashes": {
+      "15": "20d138b35237",
+      "16": "c4d5b3cf5e1f",
+      "17": "11797f6e33c1",
+      "18": "8d0b8ae0e9f8",
+      "19": "463fbb451c24"
+    },
+    "halt_reasons": [],
+    "listed_counts": {
+      "15": 318,
+      "16": 319,
+      "17": 410,
+      "18": 406,
+      "19": 405
+    },
+    "override_names": [
+      "Bailey Williams",
+      "Callum Brown"
+    ],
+    "pass": true,
+    "r19_listed_zero": 1
+  },
+  "B_participation": {
+    "absent_after": [
+      1,
+      40.0
+    ],
+    "absent_baseline": [
+      1,
+      40.0
+    ],
+    "absent_player_key": "daniel-annable",
+    "absent_unchanged": true,
+    "jordan_croft_r19_zero_counts_as_played": true,
+    "pass": true,
+    "players": {
+      "bailey-williams-wb": {
+        "after": [
+          12,
+          86.08
+        ],
+        "avg_ok": true,
+        "baseline": [
+          10,
+          84.1
+        ],
+        "expected": [
+          12,
+          86.08
+        ],
+        "games_ok": true,
+        "rounds_listed": [
+          18,
+          19
+        ]
+      },
+      "bailey-williams-wc": {
+        "after": [
+          13,
+          90.62
+        ],
+        "avg_ok": true,
+        "baseline": [
+          9,
+          93.9
+        ],
+        "expected": [
+          13,
+          90.62
+        ],
+        "games_ok": true,
+        "rounds_listed": [
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "callum-brown-ire": {
+        "after": [
+          13,
+          56.09
+        ],
+        "avg_ok": true,
+        "baseline": [
+          8,
+          41.4
+        ],
+        "expected": [
+          13,
+          56.09
+        ],
+        "games_ok": true,
+        "rounds_listed": [
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "jordan-croft": {
+        "after": [
+          13,
+          38.82
+        ],
+        "avg_ok": true,
+        "baseline": [
+          9,
+          43.2
+        ],
+        "expected": [
+          13,
+          38.82
+        ],
+        "games_ok": true,
+        "rounds_listed": [
+          15,
+          17,
+          18,
+          19
+        ]
+      }
+    }
+  },
+  "C_identity": {
+    "bailey_wb_ok": true,
+    "bailey_wb_rounds": [
+      18,
+      19
+    ],
+    "bailey_wc_ok": true,
+    "bailey_wc_rounds": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "callum_brown_to_ire": true,
+    "pass": true,
+    "wb_wc_distinct": true
+  },
+  "D_sequential": {
+    "chain_all_applied_guard5": true,
+    "each_round_full_artifacts": true,
+    "final_board": "d3ae24622dbb",
+    "final_store": "f37d9716648c",
+    "history_rounds_final": {
+      "pos_rank": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "rank": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "value": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "pass": true,
+    "per_round": [
+      {
+        "board": "270a2c5f->10708265",
+        "history_rounds": [
+          14,
+          15
+        ],
+        "ledger_total": 318,
+        "movers_ui_rows_injected": 804,
+        "players_applied": 318,
+        "pos_rank_history_md5": "1c3ff3a3241b",
+        "rank_history_md5": "9bbee088c49d",
+        "round": 15,
+        "store": "968de0c7->692d6302",
+        "txn": "txn_catchup_r15",
+        "value_history_md5": "1ec5b07f048f"
+      },
+      {
+        "board": "10708265->9cadb4a3",
+        "history_rounds": [
+          14,
+          15,
+          16
+        ],
+        "ledger_total": 637,
+        "movers_ui_rows_injected": 804,
+        "players_applied": 319,
+        "pos_rank_history_md5": "13af85413d72",
+        "rank_history_md5": "ff3db990fa4e",
+        "round": 16,
+        "store": "692d6302->0b951852",
+        "txn": "txn_catchup_r16",
+        "value_history_md5": "42bbc5b34eb2"
+      },
+      {
+        "board": "9cadb4a3->674b3c3a",
+        "history_rounds": [
+          14,
+          15,
+          16,
+          17
+        ],
+        "ledger_total": 1047,
+        "movers_ui_rows_injected": 804,
+        "players_applied": 410,
+        "pos_rank_history_md5": "ea4697945c73",
+        "rank_history_md5": "fc76e9e40e11",
+        "round": 17,
+        "store": "0b951852->c312eb5b",
+        "txn": "txn_catchup_r17",
+        "value_history_md5": "d526cbad57a4"
+      },
+      {
+        "board": "674b3c3a->4377574d",
+        "history_rounds": [
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "ledger_total": 1453,
+        "movers_ui_rows_injected": 804,
+        "players_applied": 406,
+        "pos_rank_history_md5": "a353b855b320",
+        "rank_history_md5": "8d02a55e5d5b",
+        "round": 18,
+        "store": "c312eb5b->64795076",
+        "txn": "txn_catchup_r18",
+        "value_history_md5": "25629905cf85"
+      },
+      {
+        "board": "4377574d->d3ae2462",
+        "history_rounds": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "ledger_total": 1858,
+        "movers_ui_rows_injected": 804,
+        "players_applied": 405,
+        "pos_rank_history_md5": "9cdc15b8cc99",
+        "rank_history_md5": "168c0960129d",
+        "round": 19,
+        "store": "64795076->f37d9716",
+        "txn": "txn_catchup_r19",
+        "value_history_md5": "d69c308620c9"
+      }
+    ],
+    "rounds_applied": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "E_restart_dedup": {
+    "pass": true,
+    "rerun_all_skipped": true,
+    "resent_round_blocked": true,
+    "resume_applied": [
+      16
+    ],
+    "resume_final_history": [
+      14,
+      15,
+      16
+    ],
+    "resume_skipped": [
+      15
+    ]
+  },
+  "F_no_production_touched": {
+    "changed": [],
+    "checked": [
+      "board",
+      "boot_manifest",
+      "ledger",
+      "pos_rank_history",
+      "rank_history",
+      "store",
+      "ui_public",
+      "ui_working",
+      "value_history"
+    ],
+    "pass": true
+  },
+  "elapsed_s": 525.2,
+  "gate_off_real_store": true,
+  "gate_off_real_store_pass": true,
+  "gate_shipped": {
+    "APPLY_DEFAULT": false,
+    "INGEST_SCORE_APPLY": "unset"
+  }
+}

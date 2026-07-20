@@ -7,13 +7,13 @@
     "halted": true,
     "pass": true
   },
-  "elapsed_s": 187.7,
+  "elapsed_s": 150.6,
   "gate_off_on_real_store": true,
   "green": {
     "board_after": "83e21b69",
     "config_gate_loaded": true,
     "config_hash": "c2d233aec104",
-    "fv_distribution_pricing_md5": "d0c8c69f",
+    "fv_distribution_pricing_md5": "dd19a234",
     "fv_inside_staged_repo": true,
     "fv_is_staged_not_stale": true,
     "fv_not_21d530bf": true,
