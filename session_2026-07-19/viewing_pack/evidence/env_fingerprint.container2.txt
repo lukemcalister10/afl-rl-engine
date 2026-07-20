@@ -1,0 +1,18 @@
+# Container #2 environment fingerprint (item-392 gate)
+numpy 2.4.4
+scipy 1.17.1
+sklearn 1.8.0
+numpy file: /root/rl_venv312/lib/python3.12/site-packages/numpy/__init__.py
+bundled openblas: libscipy_openblas64_-32a4b2a6.so
+bundled openblas sha256[:8]: 05c9f9eb
+-- numpy.show_config (blas block) --
+      "name": "scipy-openblas",
+      "found": true,
+--
+      "openblas configuration": "OpenBLAS 0.3.31.188.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
+      "pc file directory": "/project/.openblas"
+--
+      "name": "scipy-openblas",
+      "found": true,
+--
+      "openblas configuration": "OpenBLAS 0.3.31.188.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
