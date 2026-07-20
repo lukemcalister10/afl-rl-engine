@@ -69,67 +69,109 @@ try {
   };
 
   // ---- the in-page acceptance suite ---------------------------------------------------------
+  // The SHIPPED production bundle is EMPTY, so we (a) prove the honest empty state renders on the real
+  // ship, then (b) inject a synthetic bundle whose lineage is anchored to the LOADED working board
+  // (window.__MATCHDAY_WORKING__.stamp.board) to exercise + screenshot the populated view. The
+  // synthetic bundle passes the new lineage check precisely because it is chained to the loaded app.
   const res = await evalJson(`
     const out = {};
     const MD = window.MD;
     out.md_present = !!MD && !!MD.movers;
-    // 1: Movers is a native nav tab (existing shell)
     const navBtns = Array.from(document.querySelectorAll('.tabs button'));
     const moversBtn = navBtns.find(b => b.textContent.trim() === 'Movers');
     out.nav_has_movers = !!moversBtn;
-    out.nav_tab_count = navBtns.length;
     moversBtn && moversBtn.click();
     out.view_is_movers = MD.state.view === 'movers';
-    // uses the existing app shell (masthead + controls live in #root .app)
-    out.in_app_shell = !!document.querySelector('#root .app .movertable');
     out.has_masthead = !!document.querySelector('#root .app .mast');
-    // 2: existing styles (volt token on the active nav button)
+
+    // (A) SHIPPED bundle is EMPTY -> honest empty state (neutral panel), no alarm, no table
+    const shipped = window.__MATCHDAY_MOVERS__;
+    out.shipped_rounds = (shipped && shipped.rounds) || [];
+    out.empty_state_shown = !!document.querySelector('#root .app .moversempty');
+    out.empty_no_table = !document.querySelector('.movertable');
+    out.empty_not_alarm = !document.querySelector('#root .app .failclosed');
+
+    // (B) inject a synthetic bundle anchored to the LOADED working board
+    const appBoard = (window.__MATCHDAY_WORKING__ && window.__MATCHDAY_WORKING__.stamp && (window.__MATCHDAY_WORKING__.stamp.board || window.__MATCHDAY_WORKING__.stamp.srcmd5)) || 'appboard';
+    function pad(s){ s=String(s); while(s.length<32) s+='0'; return s.slice(0,32); }
+    const boards = ['base' , 'r15b', 'r16b', 'r17b', 'r18b'].map(pad); boards.push(appBoard);
+    function players(rn){
+      const arr=[];
+      for(let i=0;i<120;i++){
+        const dnp = (i%3===0);
+        const dv = dnp ? (i%2? -3 : 2) : (60 - i);          // spread of value changes
+        arr.push({key:'p'+i, name:'Player '+i, affl_team:(i%2?'North Melbourne Kangaroos':'Collingwood Magpies'),
+          club:(i%2?'West Coast':'Western Bulldogs'), pos:(i%3===0?'Ruck':(i%2?'Mid':'Def')),
+          played:!dnp, dnp:dnp, score: dnp? null : 50+(i%80),
+          prev_value:800+i, cur_value:800+i+dv, value_change:dv, value_change_pct: Math.round(dv/(800+i)*1000)/10,
+          prev_rank: i+2, cur_rank: i+1, rank_change: 1, prev_pos_rank: 3, cur_pos_rank: 2, pos_rank_change: 1});
+      }
+      return arr;
+    }
+    function views(pl){
+      const risers = pl.filter(p=>p.value_change>0).sort((a,b)=>b.value_change-a.value_change).map(p=>p.key).slice(0,50);
+      const fallers = pl.filter(p=>p.value_change<0).sort((a,b)=>a.value_change-b.value_change).map(p=>p.key).slice(0,50);
+      return {value_risers:risers, value_fallers:fallers, rank_risers:pl.map(p=>p.key).slice(0,50), rank_fallers:pl.map(p=>p.key).slice(0,50),
+        played_count: pl.filter(p=>p.played).length, dnp_count: pl.filter(p=>p.dnp).length};
+    }
+    function rep(rn, bb, ba){
+      const pl = players(rn);
+      return {kind:'weekly_movers_report', submitted_round:rn, previous_round:rn-1,
+        board_md5_before:bb, board_md5_after:ba, source_store_md5_before:pad('s'+(rn-1)), source_store_md5_after:pad('s'+rn),
+        release_identity:{release_version:'candidate:'+boards[0].slice(0,8), as_of_round:rn}, player_count:pl.length,
+        integrity:{players_unique:true, coverage_full:true, board_after_matches_committed:true},
+        views:views(pl), players:pl};
+    }
+    const reports={}; const rounds=[15,16,17,18,19];
+    rounds.forEach((rn,idx)=>{ reports[String(rn)] = rep(rn, boards[idx], boards[idx+1]); });
+    window.__MATCHDAY_MOVERS__ = {kind:'matchday_movers_bundle', rounds:rounds, reports:reports,
+      baseline:{as_of_round:14, board:boards[0], store:pad('s14')},
+      integrity:{board_chain_ok:true, baseline_anchor_ok:true, overwrite_conflict_last_write:false, rounds:rounds}};
+    out.lineage = MD.movers.core.lineage(window.__MATCHDAY_MOVERS__, {board:appBoard});
+    MD.state.round = null; MD.state.view='value_risers'; MD.state.club=null; MD.state.pos=null; MD.state.status=null; MD.state.sort=null;
+    MD.go('movers');
+
+    out.in_app_shell = !!document.querySelector('#root .app .movertable');
     const activeMovers = Array.from(document.querySelectorAll('.tabs button.on')).some(b => b.textContent.trim()==='Movers');
     out.active_tab_styled = activeMovers;
-    // 3: round selector R15-R19
     const rsel = document.querySelector('.moversbar select');
     out.round_options = rsel ? Array.from(rsel.options).map(o => o.value) : [];
-    // summary cards + table
     out.summary_cards = document.querySelectorAll('.movercards .movercard').length;
     out.mover_rows = document.querySelectorAll('.moverrow').length;
-    // 4: deterministic sort — the default (value risers) first row equals the core order
-    const rep = window.__MATCHDAY_MOVERS__.reports[rsel.value];
-    const wantTop = MD.movers.core.viewRows(rep, 'value_risers', {})[0].key;
+    const rep0 = window.__MATCHDAY_MOVERS__.reports[rsel.value];
+    const wantTop = MD.movers.core.viewRows(rep0, 'value_risers', {})[0].key;
     out.default_top_matches_core = document.querySelector('.moverrow') && document.querySelector('.moverrow').getAttribute('data-key') === wantTop;
-    // DNP players are visible in the complete "All players" view (the focused riser/faller views hold
-    // players who moved on value, so DNP rows naturally surface in All / under the DNP filter).
+    out.release_shown = !!Array.from(document.querySelectorAll('.moversmeta .lbl')).find(e=>e.textContent.trim()==='release');
     const allBtn0 = Array.from(document.querySelectorAll('.moversbar .seg button')).find(b => b.textContent.trim() === 'All players');
     allBtn0 && allBtn0.click();
     out.dnp_rows = document.querySelectorAll('.moverrow.dnp').length;
     const risersBtn = Array.from(document.querySelectorAll('.moversbar .seg button')).find(b => b.textContent.trim() === 'Value risers');
     risersBtn && risersBtn.click();
-    // 5: filter DNP — every visible row is a DNP row
     const dnpBtn = Array.from(document.querySelectorAll('.moversfilters .seg button')).find(b => b.textContent.trim()==='DNP');
     dnpBtn && dnpBtn.click();
     const afterFilter = Array.from(document.querySelectorAll('.moverrow'));
     out.dnp_filter_all_dnp = afterFilter.length > 0 && afterFilter.every(r => r.classList.contains('dnp'));
-    // reset filter to All
     const allBtn = Array.from(document.querySelectorAll('.moversfilters .seg button')).find(b => b.textContent.trim()==='All');
     allBtn && allBtn.click();
-    // 6: player link -> existing card view
     const firstRow = document.querySelector('.moverrow');
     const linkedKey = firstRow.getAttribute('data-key');
     firstRow.click();
     out.row_links_to_card = MD.state.view === 'card' && MD.state.cardKey === linkedKey;
-    // back to movers for the screenshot
     MD.go('movers');
-    // 7: no new frontend framework loaded
     const srcs = Array.from(document.scripts).map(s => (s.src||'') + ' ' + (s.textContent||'').slice(0,0));
     out.no_framework = !srcs.some(s => /react|vue|angular|svelte|jquery|preact|ember/i.test(s));
-    // 8: fail-closed on malformed movers data
+    // fail-closed on malformed movers data (duplicate keys)
     const saved = window.__MATCHDAY_MOVERS__;
-    window.__MATCHDAY_MOVERS__ = { rounds:[15], reports:{ '15': { kind:'weekly_movers_report', players:[{key:'a'},{key:'a'}] } } };
-    MD.movers = MD.movers.core ? MD.movers : MD.movers; // keep instance
+    window.__MATCHDAY_MOVERS__ = { kind:'matchday_movers_bundle', rounds:[15], baseline:{board:'base'}, integrity:{board_chain_ok:true,baseline_anchor_ok:true}, reports:{ '15': { kind:'weekly_movers_report', board_md5_before:'base', board_md5_after:appBoard, source_store_md5_before:'x', source_store_md5_after:'y', previous_round:14, submitted_round:15, release_identity:{}, players:[{key:'a'},{key:'a'}] } } };
     MD.go('movers');
-    out.failclosed_on_bad = !!document.querySelector('.movers, #root .app .failclosed') && !!document.querySelector('#root .app .failclosed');
+    out.failclosed_on_bad = !!document.querySelector('#root .app .failclosed');
+    // fail-closed on an OUT-OF-LINEAGE bundle (loaded app board != latest report board)
+    window.__MATCHDAY_MOVERS__ = { kind:'matchday_movers_bundle', rounds:[15], baseline:{board:'base'}, integrity:{board_chain_ok:true,baseline_anchor_ok:true}, reports:{ '15': rep(15,'base','SOME_OTHER_BOARD') } };
+    MD.go('movers');
+    out.failclosed_out_of_lineage = !!document.querySelector('#root .app .failclosed');
     window.__MATCHDAY_MOVERS__ = saved;
     MD.go('movers');
-    // 9: Board view still renders (no regression)
+    // Board view still renders (no regression)
     MD.go('board');
     out.board_still_ok = !!document.querySelector('#root .app .rows, #root .app .row');
     MD.go('movers');
@@ -140,17 +182,22 @@ try {
     ['MD.movers present', res.md_present],
     ['Movers is a native nav tab', res.nav_has_movers],
     ['clicking Movers sets the movers view', res.view_is_movers],
+    ['SHIPPED production bundle is EMPTY', Array.isArray(res.shipped_rounds) && res.shipped_rounds.length === 0],
+    ['empty bundle shows the honest empty state (neutral, not an alarm)', res.empty_state_shown && res.empty_not_alarm && res.empty_no_table],
+    ['synthetic bundle passes lineage when anchored to the loaded app', res.lineage && res.lineage.ok && res.lineage.state === 'ok'],
     ['Movers renders inside the existing app shell', res.in_app_shell && res.has_masthead],
     ['active nav tab uses existing styling', res.active_tab_styled],
     ['round selector offers R15-R19', JSON.stringify(res.round_options) === JSON.stringify(['15','16','17','18','19'])],
     ['four summary cards render', res.summary_cards === 4],
     ['complete movers table has rows', res.mover_rows > 0],
+    ['release identity (derived) shown in the meta strip', res.release_shown],
     ['DNP players are visible', res.dnp_rows > 0],
     ['default order matches deterministic core', res.default_top_matches_core],
     ['DNP filter shows only DNP rows', res.dnp_filter_all_dnp],
     ['row links into the existing player card', res.row_links_to_card],
     ['no new frontend framework introduced', res.no_framework],
     ['malformed movers data fails closed', res.failclosed_on_bad],
+    ['out-of-lineage bundle fails closed', res.failclosed_out_of_lineage],
     ['existing Board view still renders (no regression)', res.board_still_ok],
   ];
   console.log('MOVERS UI CHECK');
@@ -172,6 +219,12 @@ try {
   mkdirSync(SHOTS, { recursive: true });
   await shot(1280, path.join(SHOTS, 'movers_desktop.png'), false);
   await shot(390, path.join(SHOTS, 'movers_mobile.png'), true);
+
+  // the honest EMPTY state (what the SHIPPED production bundle renders on a fresh baseline app)
+  await cmd('Runtime.evaluate', { expression:
+    "window.__MATCHDAY_MOVERS__ = {kind:'matchday_movers_bundle',rounds:[],reports:{},baseline:{as_of_round:14,board:'baseline'},integrity:{board_chain_ok:true,baseline_anchor_ok:true}}; window.MD && MD.go && MD.go('movers');" });
+  await sleep(300);
+  await shot(1280, path.join(SHOTS, 'movers_empty.png'), false);
 
   console.log(rc === 0 ? 'MOVERS UI CHECK: ALL PASS' : 'MOVERS UI CHECK: FAIL');
 } catch (e) {

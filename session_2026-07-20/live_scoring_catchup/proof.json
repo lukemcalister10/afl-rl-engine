@@ -342,7 +342,7 @@
     "one_per_round": true,
     "pass": true
   },
-  "elapsed_s": 525.0,
+  "elapsed_s": 575.1,
   "gate_off_real_store": true,
   "gate_off_real_store_pass": true,
   "gate_shipped": {

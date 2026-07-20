@@ -15,6 +15,8 @@ name: Live Scoring Updater
 #                                identity overrides/halt), sequential per-round transactions, value +
 #                                overall-rank + positional-rank history, movers, restart/resume, dedup
 #   3  failure injection       — 7-point mid-apply fault matrix + crash recovery + acceptance
+#   3b finalization injection   — 8-point POST-COMMIT fault matrix: a failed re-derivable output never
+#                                rolls back the canonical commit; restart detects + repairs; no re-apply
 #   4  store-write proof       — scratch apply + dedup ledger + single-env stability
 #   5  FV provenance red/green — the staged board build is fail-closed on forward-valuation provenance
 #
@@ -143,6 +145,11 @@ jobs:
           set -euo pipefail
           python3 session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py --write
 
+      - name: Finalization failure-injection proof (8 points — post-commit; restart + repair; no re-apply)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/weekly_updater_hardening/finalization_injection_proof.py --write
+
       - name: Store-write proof (scratch apply + dedup + single-env stability)
         run: |
           set -euo pipefail
@@ -164,6 +171,7 @@ jobs:
             session_2026-07-20/live_scoring_catchup/proof.json
             session_2026-07-20/live_scoring_catchup/PROOF.md
             session_2026-07-20/weekly_updater_hardening/proof.json
+            session_2026-07-20/weekly_updater_hardening/finalization_proof.json
             session_2026-07-19/storewrite/proof.json
             session_2026-07-20/weekly_updater_hardening/fv_proof.json
           if-no-files-found: ignore

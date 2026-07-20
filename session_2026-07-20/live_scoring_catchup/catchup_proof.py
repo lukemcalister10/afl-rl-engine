@@ -52,6 +52,7 @@ sys.path.insert(0, ING)
 sys.path.insert(0, WUH)
 
 import round_catchup as RC             # noqa: E402
+import round_movers as MV              # noqa: E402
 import staged_apply as SA              # noqa: E402
 import score_ingestor as SI            # noqa: E402
 import failure_injection_proof as FI   # noqa: E402  (fixture-coherent scratch + gate helpers)
@@ -64,8 +65,8 @@ FILES = [(r, os.path.join(FIX, 'R%d.csv' % r)) for r in ROUNDS]
 LISTED = {
     'callum-brown-ire': {15: 45, 16: 76, 17: 46, 18: 124, 19: 107},   # Callum Brown, all five
     'jordan-croft': {15: 29, 17: 46, 18: 41, 19: 0},                  # absent R16; R19 legit zero
-    'bailey-williams-wb': {18: 55, 19: 137},                          # Bailey Williams (Collingwood)
-    'bailey-williams-wc': {16: 67, 17: 82, 18: 100, 19: 84},          # Bailey J. Williams (Sydney)
+    'bailey-williams-wb': {18: 55, 19: 137},              # Bailey Williams — AFL club Western Bulldogs
+    'bailey-williams-wc': {16: 67, 17: 82, 18: 100, 19: 84},  # Bailey J. Williams — AFL club West Coast
 }
 
 
@@ -93,6 +94,9 @@ def install_ui(scr):
     os.makedirs(os.path.join(scr, 'ui', 'data'), exist_ok=True)
     shutil.copyfile(os.path.join(REPO, 'ui', 'tools', 'extract_board_view.py'),
                     os.path.join(scr, 'ui', 'tools', 'extract_board_view.py'))
+    # seed the clean EMPTY production bundle (exactly what ships) so the scratch accumulates onto the
+    # release-baseline board-of-record, matching the live application's ship state.
+    MV.init_empty_bundle(os.path.join(scr, 'ui', 'data', 'movers.js'), scr)
 
 
 def _real_state():

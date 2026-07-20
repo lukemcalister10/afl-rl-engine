@@ -1,8 +1,9 @@
-/* UI — unit tests for the MOVERS view's pure logic (integrity, deterministic sort, filters, views).
+/* UI — unit tests for the MOVERS view's pure logic (integrity, LINEAGE anchoring, sort, filters).
    Run:  node ui/tests/movers.test.js      (exit 0 = all pass, exit 1 = a failure)
-   Exercises the EXACT dual-target functions the browser runs (ui/app/movers.js core). Also validates
-   the committed movers bundle (ui/data/movers.js) if present. Browser-integration + styling + player-
-   link + screenshot evidence is produced by ui/tools/movers_ui_check.mjs (headless Chromium). */
+   Exercises the EXACT dual-target functions the browser runs (ui/app/movers.js core). Validates the
+   committed PRODUCTION bundle (ui/data/movers.js — ships EMPTY) and the R15-R19 SCRATCH EVIDENCE bundle
+   (session_2026-07-20/live_scoring_catchup/movers_bundle_scratch.js). Browser-integration + styling +
+   player-link + screenshot evidence is produced by ui/tools/movers_ui_check.mjs (headless Chromium). */
 var M = require("../app/movers.js");
 var core = M.core;
 var fs = require("fs"), path = require("path");
@@ -14,7 +15,9 @@ function eq(got, want, label) { ok(JSON.stringify(got) === JSON.stringify(want),
 function mkReport(over) {
   var base = {
     kind: "weekly_movers_report", submitted_round: 16, previous_round: 15,
-    board_md5_before: "b15", board_md5_after: "b16", release_identity: { tag: "v2.10" },
+    board_md5_before: "b15", board_md5_after: "b16",
+    source_store_md5_before: "s15", source_store_md5_after: "s16",
+    release_identity: { release_version: "candidate:270a2c5f", as_of_round: 16 },
     integrity: { players_unique: true, coverage_full: true, board_after_matches_committed: true },
     views: { played_count: 3, dnp_count: 1 },
     players: [
@@ -25,6 +28,25 @@ function mkReport(over) {
     ],
   };
   return Object.assign(base, over || {});
+}
+
+/* A minimal coherent two-round bundle: baseline board B0; R15 (B0->B1), R16 (B1->B2). */
+function mkBundle(over) {
+  function rep(rn, bb, ba, sb, sa) {
+    return { kind: "weekly_movers_report", submitted_round: rn, previous_round: rn - 1,
+             board_md5_before: bb, board_md5_after: ba, source_store_md5_before: sb, source_store_md5_after: sa,
+             release_identity: { release_version: "candidate:B0" }, board: ba,
+             integrity: { players_unique: true, coverage_full: true, board_after_matches_committed: true },
+             views: { played_count: 1, dnp_count: 0 }, player_count: 1,
+             players: [{ key: "a", name: "A", played: true, dnp: false, cur_value: 100, value_change: 1, rank_change: 0, pos_rank_change: 0 }] };
+  }
+  var b = {
+    kind: "matchday_movers_bundle", rounds: [15, 16],
+    baseline: { as_of_round: 14, board: "B0", store: "S0" },
+    reports: { "15": rep(15, "B0", "B1", "S0", "S1"), "16": rep(16, "B1", "B2", "S1", "S2") },
+    integrity: { board_chain_ok: true, baseline_anchor_ok: true, rounds: [15, 16] },
+  };
+  return Object.assign(b, over || {});
 }
 
 console.log("MOVERS-VIEW TESTS\n  " + "-".repeat(60));
@@ -38,6 +60,33 @@ ok(!core.integrity(mkReport({ integrity: { board_after_matches_committed: false 
 ok(!core.integrity(mkReport(), { integrity: { board_chain_ok: false } }).ok, "broken board chain fails closed");
 var dup = mkReport(); dup.players = dup.players.concat([dup.players[0]]);
 ok(!core.integrity(dup).ok, "duplicate player rows fail closed");
+
+// ---- LINEAGE anchoring (directive E) --------------------------------------------------------
+// empty bundle -> honest empty state (NOT an alarm), ok:true
+var emptyBundle = { kind: "matchday_movers_bundle", rounds: [], reports: {}, baseline: { as_of_round: 14, board: "B0" }, integrity: { board_chain_ok: true, baseline_anchor_ok: true } };
+var linEmpty = core.lineage(emptyBundle, { board: "B0" });
+eq([linEmpty.ok, linEmpty.state], [true, "empty"], "empty bundle -> honest empty state (not an alarm)");
+// coherent bundle, latest report board == loaded app board -> ok
+eq([core.lineage(mkBundle(), { board: "B2" }).ok, core.lineage(mkBundle(), { board: "B2" }).state], [true, "ok"], "coherent bundle anchored to the loaded app passes lineage");
+// a SCRATCH bundle beginning at the superseded board 270a2c5f must FAIL CLOSED vs the RC baseline 06d8af60
+var scratch = mkBundle({ baseline: { as_of_round: 14, board: "270a2c5f", store: "S0" } });
+scratch.reports["15"].board_md5_before = "270a2c5f"; // begins at the superseded board
+var linRC = core.lineage(scratch, { board: "06d8af60" });  // loaded app is on the RC baseline lineage
+ok(!linRC.ok && linRC.state === "mismatch", "scratch bundle (begins 270a2c5f) fails closed vs RC baseline 06d8af60");
+// baseline-anchor break: first report's board_before != bundle baseline board
+var badBase = mkBundle(); badBase.reports["15"].board_md5_before = "ZZZ";
+ok(!core.lineage(badBase, { board: "B2" }).ok, "baseline-anchor break fails closed");
+// board-chain break between rounds
+var chainBreak = mkBundle(); chainBreak.reports["16"].board_md5_before = "XXX";
+ok(!core.lineage(chainBreak, { board: "B2" }).ok, "board-identity chain break fails closed");
+// store-chain break between rounds
+var storeBreak = mkBundle(); storeBreak.reports["16"].source_store_md5_before = "XXX";
+ok(!core.lineage(storeBreak, { board: "B2" }).ok, "store-identity chain break fails closed");
+// latest finalized report must match the loaded app board
+ok(!core.lineage(mkBundle(), { board: "SOME_OTHER_BOARD" }).ok, "latest report not matching the loaded app fails closed");
+// non-sequential rounds
+var gap = mkBundle(); gap.reports["16"].previous_round = 14;
+ok(!core.lineage(gap, { board: "B2" }).ok, "non-sequential previous_round fails closed");
 
 // deterministic sort + tie-break (primary field, then cur_value desc, then key asc)
 eq(core.viewRows(mkReport(), "value_risers", {}).map(function (p) { return p.key; }), ["a", "d", "c", "b"], "value risers order");
@@ -60,25 +109,43 @@ ok(mkReport().players.find(function (p) { return p.key === "b"; }).played === tr
 var s = core.summary(mkReport());
 eq([s.value_increase.key, s.value_decrease.key, s.rank_improve.key, s.rank_decline.key], ["a", "b", "a", "b"], "summary headline movers");
 
-// ---- committed bundle (if generated) --------------------------------------------------------
-var bundlePath = path.join(__dirname, "..", "data", "movers.js");
-if (fs.existsSync(bundlePath)) {
-  var txt = fs.readFileSync(bundlePath, "utf8");
-  var obj = JSON.parse(txt.slice(txt.indexOf("{"), txt.lastIndexOf("}") + 1));
-  eq(obj.rounds, [15, 16, 17, 18, 19], "committed bundle carries R15-R19");
-  ok(obj.integrity.board_chain_ok, "committed bundle board-identity chain coherent");
+function readBundle(p) { var t = fs.readFileSync(p, "utf8"); return JSON.parse(t.slice(t.indexOf("{"), t.lastIndexOf("}") + 1)); }
+
+// ---- PRODUCTION bundle ships EMPTY (directive A) --------------------------------------------
+var prodPath = path.join(__dirname, "..", "data", "movers.js");
+if (fs.existsSync(prodPath)) {
+  var prod = readBundle(prodPath);
+  eq(prod.rounds, [], "production ui/data/movers.js ships EMPTY (no finalized rounds)");
+  ok(prod.reports && Object.keys(prod.reports).length === 0, "production bundle carries no reports");
+  ok(prod.baseline && typeof prod.baseline.board === "string", "production bundle carries a release-baseline block");
+  eq(core.lineage(prod, { board: prod.baseline.board }).state, "empty", "production bundle renders the honest EMPTY state");
+} else {
+  console.log("  [skip] production ui/data/movers.js not present");
+}
+
+// ---- SCRATCH EVIDENCE bundle (R15-R19) — preserved under the session proof path -------------
+var scratchPath = path.join(__dirname, "..", "..", "session_2026-07-20", "live_scoring_catchup", "movers_bundle_scratch.js");
+if (fs.existsSync(scratchPath)) {
+  var sb = readBundle(scratchPath);
+  eq(sb.rounds, [15, 16, 17, 18, 19], "scratch evidence bundle carries R15-R19");
+  ok(sb.integrity.board_chain_ok, "scratch evidence board-identity chain coherent");
+  ok(sb.integrity.baseline_anchor_ok, "scratch evidence anchors to its own baseline board");
+  // lineage passes against ITS OWN baseline app (the last committed scratch board)
+  var lastRep = sb.reports[String(sb.rounds[sb.rounds.length - 1])];
+  ok(core.lineage(sb, { board: lastRep.board_md5_after }).ok, "scratch bundle is self-coherent against its own last board");
   var allGood = true, dnpSeen = false;
-  obj.rounds.forEach(function (r) {
-    var rep = obj.reports[String(r)];
-    var ig = core.integrity(rep, obj);
+  sb.rounds.forEach(function (r) {
+    var rep = sb.reports[String(r)];
+    var ig = core.integrity(rep, sb);
     if (!ig.ok) { allGood = false; console.log("    round " + r + " integrity: " + ig.why); }
     var keys = {}; rep.players.forEach(function (p) { keys[p.key] = (keys[p.key] || 0) + 1; if (p.dnp) dnpSeen = true; });
-    if (Object.keys(keys).length !== rep.players.length) allGood = false;   // unique coverage
+    if (Object.keys(keys).length !== rep.players.length) allGood = false;
+    if (rep.release_identity && rep.release_identity.tag === "v2.10") allGood = false;  // no hardcoded tag
   });
-  ok(allGood, "every committed round report passes integrity + unique player coverage");
-  ok(dnpSeen, "committed reports represent DNP players");
+  ok(allGood, "every scratch round report passes integrity + unique coverage + no hardcoded v2.10 tag");
+  ok(dnpSeen, "scratch reports represent DNP players");
 } else {
-  console.log("  [skip] committed ui/data/movers.js not present (run generate_movers_bundle.py)");
+  console.log("  [skip] scratch evidence bundle not present (run generate_movers_bundle.py)");
 }
 
 console.log("  " + "-".repeat(60));

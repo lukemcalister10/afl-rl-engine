@@ -1,4 +1,17 @@
 {
+  "0_production_empty_and_derived_identity": {
+    "no_hardcoded_v2_10_tag": true,
+    "pass": true,
+    "production_empty": true,
+    "production_rounds": [],
+    "release_versions": [
+      "candidate:10708265",
+      "candidate:4377574d",
+      "candidate:674b3c3a",
+      "candidate:9cadb4a3",
+      "candidate:d3ae2462"
+    ]
+  },
   "1_one_report_per_round": {
     "pass": true,
     "rounds": [

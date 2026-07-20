@@ -2,7 +2,7 @@
 
 Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Round-14 state**. Gate armed in-process against the scratch only; the real store / RC / production UI are byte-untouched. One consolidated preflight + approval; every round is its own sequential staged transaction.
 
-## RESULT: **ALL PASS**  (525.0s)
+## RESULT: **ALL PASS**  (575.1s)
 
 | proof | result |
 |---|---|

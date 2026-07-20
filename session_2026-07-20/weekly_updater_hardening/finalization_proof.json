@@ -1,0 +1,232 @@
+{
+  "ALL_PASS": true,
+  "elapsed_s": 319.1,
+  "kind": "finalization_injection_proof",
+  "no_real_touch": true,
+  "points": [
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_core_commit_before_ui",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "during_working_board_refresh",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_board_before_movers_json",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_json_before_csv",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_json_csv_before_bundle",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_bundle_before_delta",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "fault_raised": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_all_before_final_validation",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    },
+    {
+      "advance_blocked_before_repair": true,
+      "advance_unblocked_after_repair": true,
+      "bundle_coherent": true,
+      "bundle_rounds": [
+        15,
+        16
+      ],
+      "canonical": {
+        "board_is_r16": true,
+        "boot_board_pin_ok": true,
+        "histories_R14_16": true,
+        "sidecar_source_is_store": true
+      },
+      "child_hard_exited": true,
+      "csv_present": true,
+      "different_board_flags_conflict": true,
+      "ledger_invariant_after_fault": true,
+      "ledger_invariant_after_repair": true,
+      "movers_R16_board_ok": true,
+      "pass": true,
+      "point": "after_bundle_before_delta",
+      "r16_triples_present_once": true,
+      "repair_ok": true,
+      "restart_detects_unfinalized": true,
+      "status_after_repair": "FINALIZED",
+      "status_before_repair": "FINALIZING"
+    }
+  ]
+}

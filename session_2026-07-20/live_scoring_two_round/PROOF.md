@@ -2,7 +2,7 @@
 
 Writes **nothing** to the real store (gate ships OFF: `APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset; real-store apply refused = `True`). Round 16 is applied in a **fresh process** after a full stop; the scratch `expected_boot.json` is stamped coherent with the scratch engine (release identities supplied to the fixture).
 
-## RESULT: **ALL PASS**  (383.2s)
+## RESULT: **ALL PASS**  (419.5s)
 
 | # | proof | result |
 |---|---|---|
