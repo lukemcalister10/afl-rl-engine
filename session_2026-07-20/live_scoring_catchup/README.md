@@ -32,11 +32,14 @@ machinery in `../weekly_updater_hardening/` and `../live_scoring_two_round/`.
 Resolved by **stable identity**, never display name or row order — see
 `engine/rl_after/ingestion/catchup_identity_overrides.json`:
 
-- **Callum Brown** → `callum-brown-ire` (active "Callum M. Brown", St Kilda). The export omits the
-  middle initial; the exact "Callum Brown" in the store is retired. (Owner decision, 2026-07-20.)
-- **Bailey Williams** — two active players share the display name, disambiguated by (round, score):
-  `bailey-williams-wb` (Collingwood) R18=55, R19=137; `bailey-williams-wc` ("Bailey J. Williams",
-  Sydney) R16=67, R17=82, R18=100, R19=84.
+- **Callum Brown** → `callum-brown-ire` (active "Callum M. Brown"; AFL club GWS, AFFL ownership team
+  St Kilda Saints — owner-approved reference "St Kilda"). The export omits the middle initial; the
+  exact "Callum Brown" in the store is retired. (Owner decision, 2026-07-20.)
+- **Bailey Williams** — two active players share the display name, disambiguated by (round, score).
+  Distinguish the AFL club (where they play) from the AFFL ownership team: `bailey-williams-wb` =
+  Bailey Williams, **AFL club Western Bulldogs** (AFFL team Collingwood Magpies) R18=55, R19=137;
+  `bailey-williams-wc` = "Bailey J. Williams", **AFL club West Coast** (AFFL team Sydney Swans)
+  R16=67, R17=82, R18=100, R19=84.
 
 ## Fixtures
 

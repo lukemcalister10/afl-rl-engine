@@ -18505,14 +18505,17 @@
   ],
   "previous_round": 18,
   "release_identity": {
+    "as_of_round": 19,
+    "balanced_board_md5": "d3ae24622dbbc21d95fe7f6bc18f4aab",
     "board": "d3ae24622dbbc21d95fe7f6bc18f4aab",
     "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b",
     "engine_head": "904722cd3fc16957a58796d8e2cb4caa",
     "fv": "de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64",
+    "manifest_source": "data/expected_boot.json",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "release_version": "candidate:d3ae2462",
     "rl_model": "cc626d7db7524929e5d2f1b024b25fb4",
-    "store": "f37d9716648cfe4382b8c6a24c4f064f",
-    "tag": "v2.10"
+    "store": "f37d9716648cfe4382b8c6a24c4f064f"
   },
   "schema_version": 1,
   "season": 2026,

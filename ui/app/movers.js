@@ -28,6 +28,58 @@
       return { ok: true };
     },
 
+    /* Fail-closed LINEAGE anchoring of the WHOLE bundle against the CURRENT loaded application
+       (corrective 2026-07-20, review directive E). Self-declared report flags are not trusted alone;
+       the bundle must sit on the SAME application lineage the working board is loaded at:
+         - state "empty"      : no finalized round reports -> honest empty state (NOT an alarm), and
+                                 NOT scratch data. A fresh baseline (e.g. Round 14) app renders this.
+         - baseline anchor    : the first report's board_md5_before must equal the bundle's release
+                                 baseline board (a scratch bundle beginning at a SUPERSEDED board fails
+                                 closed against the accepted release baseline).
+         - continuous chain   : board_md5_before == prev board_md5_after, store md5 likewise, and
+                                 previous_round == current_round - 1 for every step.
+         - current app match  : the LATEST finalized report's board_md5_after must equal the board the
+                                 working app is actually loaded at (appIdentity.board).
+       `appIdentity` = {board, store} of the loaded working app (from __MATCHDAY_WORKING__.stamp). When
+       it is absent the bundle can only be self-checked ("unanchored") — the caller decides how strict
+       to be; the browser always passes the real app identity. */
+    lineage: function (bundle, appIdentity) {
+      if (!bundle || bundle.kind !== "matchday_movers_bundle") return { ok: false, state: "nobundle", why: "no movers bundle" };
+      var rounds = (bundle.rounds || []).slice();
+      var reports = bundle.reports || {};
+      if (!rounds.length) return { ok: true, state: "empty", why: "no finalized round reports yet" };
+      var baseline = bundle.baseline || {};
+      var first = reports[String(rounds[0])];
+      if (!first) return { ok: false, state: "mismatch", why: "bundle lists round " + rounds[0] + " but has no report for it" };
+      if (baseline.board && first.board_md5_before && first.board_md5_before !== baseline.board)
+        return { ok: false, state: "mismatch",
+                 why: "first report baseline " + String(first.board_md5_before).slice(0, 8) +
+                      " does not match the release baseline board " + String(baseline.board).slice(0, 8) };
+      for (var i = 1; i < rounds.length; i++) {
+        var cur = reports[String(rounds[i])], prev = reports[String(rounds[i - 1])];
+        if (!cur || !prev) return { ok: false, state: "mismatch", why: "a report is missing from the round chain" };
+        if (cur.board_md5_before !== prev.board_md5_after)
+          return { ok: false, state: "mismatch", why: "board-identity chain break before R" + rounds[i] };
+        if (cur.source_store_md5_before !== prev.source_store_md5_after)
+          return { ok: false, state: "mismatch", why: "store-identity chain break before R" + rounds[i] };
+        if (cur.previous_round !== cur.submitted_round - 1)
+          return { ok: false, state: "mismatch", why: "non-sequential rounds at R" + rounds[i] };
+      }
+      if (bundle.integrity && bundle.integrity.board_chain_ok === false)
+        return { ok: false, state: "mismatch", why: "bundle declares a broken board chain" };
+      if (bundle.integrity && bundle.integrity.baseline_anchor_ok === false)
+        return { ok: false, state: "mismatch", why: "bundle does not anchor to the release baseline board" };
+      if (appIdentity && appIdentity.board) {
+        var last = reports[String(rounds[rounds.length - 1])];
+        if (last.board_md5_after !== appIdentity.board)
+          return { ok: false, state: "mismatch",
+                   why: "latest finalized report board " + String(last.board_md5_after).slice(0, 8) +
+                        " does not match the loaded app board " + String(appIdentity.board).slice(0, 8) };
+        return { ok: true, state: "ok" };
+      }
+      return { ok: true, state: "unanchored" };
+    },
+
     /* Deterministic comparator: primary movement field (dir), then current value desc, then key asc. */
     cmp: function (field, dir) {
       var sgn = dir === "asc" ? 1 : -1;
@@ -90,16 +142,37 @@
 
     function bundle() { return (typeof window !== "undefined" && window.__MATCHDAY_MOVERS__) || null; }
 
+    /* The identity of the working board the app is CURRENTLY loaded at — the lineage anchor. */
+    function appIdentity() {
+      var w = (typeof window !== "undefined") && window.__MATCHDAY_WORKING__;
+      var st = w && w.stamp;
+      if (!st) return null;
+      return { board: st.board || st.srcmd5, store: st.store };
+    }
+
     function availableRounds(b) { return (b && b.rounds) ? b.rounds.slice() : []; }
 
     function reportFor(b, rnd) { return b && b.reports ? b.reports[String(rnd)] : null; }
+
+    /* HONEST empty state — no finalized round reports yet. This is NOT an integrity alarm and NOT
+       scratch data; a fresh baseline (e.g. Round 14) app renders exactly this. */
+    function emptyState(holder, why) {
+      var box = fmt.el("div", "moversempty");
+      box.innerHTML = "<h1>Movers — no finalized round reports yet</h1>" +
+        "<p>Weekly movers appear here once a round's scores are applied and <b>finalized</b>. There are " +
+        "no finalized round reports on this build, so the view is intentionally empty rather than " +
+        "showing placeholder or scratch data.</p>" +
+        '<p class="mono">' + fmt.esc(why || "no finalized round reports") + "</p>";
+      holder.appendChild(box);
+    }
 
     function failState(holder, why) {
       var box = fmt.el("div", "failclosed");
       box.innerHTML = "<h1>■ Movers unavailable — integrity check failed</h1>" +
         "<p>The Movers view renders only a movers report whose transaction committed and whose board " +
-        "identities are coherent. This report did not pass the integrity check, so nothing is shown " +
-        "rather than showing stale or partial data.</p>" +
+        "identities sit on the SAME lineage as the loaded application. This bundle did not pass the " +
+        "lineage / integrity check, so nothing is shown rather than showing stale, out-of-lineage or " +
+        "partial data.</p>" +
         '<p class="mono">reason: ' + fmt.esc(why) + "</p>";
       holder.appendChild(box);
     }
@@ -115,7 +188,7 @@
         '<span class="lbl">DNP</span><b class="num">' + fmt.n((report.views || {}).dnp_count) + "</b>" +
         '<span class="lbl">board</span><b class="num">' + fmt.esc(String(report.board_md5_before || "").slice(0, 8)) +
           " → " + fmt.esc(String(report.board_md5_after || "").slice(0, 8)) + "</b>" +
-        '<span class="lbl">tag</span><b class="num">' + fmt.esc(rel.tag || "—") + "</b>";
+        '<span class="lbl">release</span><b class="num">' + fmt.esc(rel.release_version || "—") + "</b>";
       return s;
     }
 
@@ -251,7 +324,10 @@
       MD.__moversHolder = holder;
       holder.innerHTML = "";
       const b = bundle();
-      if (!b || !availableRounds(b).length) { failState(holder, "no movers reports available yet"); return; }
+      // LINEAGE first: anchor the whole bundle to the loaded application before touching a report.
+      const lin = core.lineage(b, appIdentity());
+      if (lin.state === "empty") { emptyState(holder, lin.why); return; }   // honest empty, not an alarm
+      if (!lin.ok) { failState(holder, lin.why); return; }                  // out-of-lineage -> fail closed
       if (state.round == null) state.round = availableRounds(b)[availableRounds(b).length - 1];
       const report = reportFor(b, state.round);
       const intg = core.integrity(report, b);
