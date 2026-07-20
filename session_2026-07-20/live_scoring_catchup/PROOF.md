@@ -2,7 +2,7 @@
 
 Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Round-14 state**. Gate armed in-process against the scratch only; the real store / RC / production UI are byte-untouched. One consolidated preflight + approval; every round is its own sequential staged transaction.
 
-## RESULT: **ALL PASS**  (525.2s)
+## RESULT: **ALL PASS**  (525.0s)
 
 | proof | result |
 |---|---|
@@ -12,6 +12,7 @@ Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Ro
 | C · identity by stable key (Callum Brown, the two Bailey Williams) | ✅ |
 | D · sequential per-round transactions (store/board/hashes/ledger/txn/3 histories/movers) | ✅ |
 | E · restart/resume + duplicate-execution refusal | ✅ |
+| G · movers report per committed round (DNP represented, bundle chained) | ✅ |
 | F · no production / RC files touched | ✅ |
 
 ### Preflight (consolidated)

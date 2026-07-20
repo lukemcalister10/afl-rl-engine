@@ -321,7 +321,28 @@
     ],
     "pass": true
   },
-  "elapsed_s": 525.2,
+  "G_movers": {
+    "bundle_chain_ok": true,
+    "bundle_rounds": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "dnp_represented": true,
+    "each_round_played_plus_dnp": true,
+    "movers_report_files": [
+      "movers_R15.json",
+      "movers_R16.json",
+      "movers_R17.json",
+      "movers_R18.json",
+      "movers_R19.json"
+    ],
+    "one_per_round": true,
+    "pass": true
+  },
+  "elapsed_s": 525.0,
   "gate_off_real_store": true,
   "gate_off_real_store_pass": true,
   "gate_shipped": {
