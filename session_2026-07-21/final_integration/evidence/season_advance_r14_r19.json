@@ -8,8 +8,21 @@
       "exposure_pace": 0.545,
       "eligible_durable": 305,
       "median_current_games": 12,
+      "season_state_source_store_md5": "968de0c7a0183ca3914165536f39607a",
+      "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
       "store_md5": "968de0c7a0183ca3914165536f39607a",
       "board_md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+      "boot_as_of_round": 14,
+      "boot_store": "968de0c7a0183ca3914165536f39607a",
+      "boot_board": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+      "contract_as_of_round": 14,
+      "contract_store": "968de0c7a0183ca3914165536f39607a",
+      "contract_board": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+      "contract_sha256": "9f91011c34841be42abf29ec5e86ce2bec51d89040707db1387713e1fb6206c0",
+      "contract_calendar": 0.58,
+      "contract_exposure": 0.545,
+      "contract_verifies": true,
+      "write_gate_on": false,
       "active": 804,
       "picks_2027": 64,
       "picks_2028": 64,
@@ -23,8 +36,21 @@
       "exposure_pace": 0.591,
       "eligible_durable": 305,
       "median_current_games": 13,
+      "season_state_source_store_md5": "692d63024ea7a2d990ce4edc86c88572",
+      "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
       "store_md5": "692d63024ea7a2d990ce4edc86c88572",
       "board_md5": "2fe266756da3b7fb98eef38f4602c3b5",
+      "boot_as_of_round": 15,
+      "boot_store": "692d63024ea7a2d990ce4edc86c88572",
+      "boot_board": "2fe266756da3b7fb98eef38f4602c3b5",
+      "contract_as_of_round": 15,
+      "contract_store": "692d63024ea7a2d990ce4edc86c88572",
+      "contract_board": "2fe266756da3b7fb98eef38f4602c3b5",
+      "contract_sha256": "b8ff829735afea1af0cd6c9edd40f2e87ad5b43f14b212685dbdc92ea2d7055e",
+      "contract_calendar": 0.63,
+      "contract_exposure": 0.591,
+      "contract_verifies": true,
+      "write_gate_on": false,
       "active": 804,
       "picks_2027": 64,
       "picks_2028": 64,
@@ -38,8 +64,21 @@
       "exposure_pace": 0.636,
       "eligible_durable": 305,
       "median_current_games": 14,
+      "season_state_source_store_md5": "0b9518521ec5b7c6e13b07e84972a756",
+      "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
       "store_md5": "0b9518521ec5b7c6e13b07e84972a756",
       "board_md5": "8ad4170820ced82f50963bb0795e2fc9",
+      "boot_as_of_round": 16,
+      "boot_store": "0b9518521ec5b7c6e13b07e84972a756",
+      "boot_board": "8ad4170820ced82f50963bb0795e2fc9",
+      "contract_as_of_round": 16,
+      "contract_store": "0b9518521ec5b7c6e13b07e84972a756",
+      "contract_board": "8ad4170820ced82f50963bb0795e2fc9",
+      "contract_sha256": "14238fcd86c1a5a3080488ee3fdc3451f168e8c62b85063c6085a2900fa430b6",
+      "contract_calendar": 0.67,
+      "contract_exposure": 0.636,
+      "contract_verifies": true,
+      "write_gate_on": false,
       "active": 804,
       "picks_2027": 64,
       "picks_2028": 64,
@@ -53,8 +92,21 @@
       "exposure_pace": 0.636,
       "eligible_durable": 305,
       "median_current_games": 14,
+      "season_state_source_store_md5": "c312eb5ba933a2187f411520d49acc74",
+      "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
       "store_md5": "c312eb5ba933a2187f411520d49acc74",
       "board_md5": "0308202fbec7ea8dfa76705a108e8e45",
+      "boot_as_of_round": 17,
+      "boot_store": "c312eb5ba933a2187f411520d49acc74",
+      "boot_board": "0308202fbec7ea8dfa76705a108e8e45",
+      "contract_as_of_round": 17,
+      "contract_store": "c312eb5ba933a2187f411520d49acc74",
+      "contract_board": "0308202fbec7ea8dfa76705a108e8e45",
+      "contract_sha256": "4116a4115173d7d3d046f8aa87941d3bcfbd6d0af69b64dfd277a4eb81a17793",
+      "contract_calendar": 0.71,
+      "contract_exposure": 0.636,
+      "contract_verifies": true,
+      "write_gate_on": false,
       "active": 804,
       "picks_2027": 64,
       "picks_2028": 64,
@@ -68,8 +120,21 @@
       "exposure_pace": 0.682,
       "eligible_durable": 305,
       "median_current_games": 15,
+      "season_state_source_store_md5": "64795076ba61008600ea89f24db13a81",
+      "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
       "store_md5": "64795076ba61008600ea89f24db13a81",
       "board_md5": "4323c448d7fd3df3518391adaea2cdd3",
+      "boot_as_of_round": 18,
+      "boot_store": "64795076ba61008600ea89f24db13a81",
+      "boot_board": "4323c448d7fd3df3518391adaea2cdd3",
+      "contract_as_of_round": 18,
+      "contract_store": "64795076ba61008600ea89f24db13a81",
+      "contract_board": "4323c448d7fd3df3518391adaea2cdd3",
+      "contract_sha256": "dd8d485e3a1e524cda0f162cf0132156bf5934e99c40c6bce4da76e80aeb94e9",
+      "contract_calendar": 0.75,
+      "contract_exposure": 0.682,
+      "contract_verifies": true,
+      "write_gate_on": false,
       "active": 804,
       "picks_2027": 64,
       "picks_2028": 64,
@@ -83,8 +148,21 @@
       "exposure_pace": 0.727,
       "eligible_durable": 305,
       "median_current_games": 16,
+      "season_state_source_store_md5": "f37d9716648cfe4382b8c6a24c4f064f",
+      "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
       "store_md5": "f37d9716648cfe4382b8c6a24c4f064f",
       "board_md5": "92a8f3a0528e5668029ca8056a841821",
+      "boot_as_of_round": 19,
+      "boot_store": "f37d9716648cfe4382b8c6a24c4f064f",
+      "boot_board": "92a8f3a0528e5668029ca8056a841821",
+      "contract_as_of_round": 19,
+      "contract_store": "f37d9716648cfe4382b8c6a24c4f064f",
+      "contract_board": "92a8f3a0528e5668029ca8056a841821",
+      "contract_sha256": "61bfa2f388a04d4ba63ca8f872ef2db6230b3e4da6a45d215042f289566191c4",
+      "contract_calendar": 0.79,
+      "contract_exposure": 0.727,
+      "contract_verifies": true,
+      "write_gate_on": false,
       "active": 804,
       "picks_2027": 64,
       "picks_2028": 64,
@@ -105,6 +183,11 @@
     },
     {
       "check": "R14 baseline 804 active + 64+64 picks",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R14 baseline authority COHERENT (season/boot/contract all R14; contract verifies; gate OFF)",
       "pass": true,
       "detail": ""
     },
@@ -139,6 +222,41 @@
       "detail": ""
     },
     {
+      "check": "R15 expected_boot advanced (as_of_round=15, store+board re-pinned to the new md5s)",
+      "pass": true,
+      "detail": "boot_aor=15 boot_store=692d6302"
+    },
+    {
+      "check": "R15 release_contract advanced (as_of_round=15; identities.store/board == new store/board)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 contract season_metadata == derived (calendar 0.63, exposure 0.591)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 season_state exposure derived off the NEW store (source_store_md5 == store)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 fail-closed release-contract VERIFY passes on the advanced set",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 no artifact on a stale round (season==boot==contract==15)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 real-store write gate still OFF",
+      "pass": true,
+      "detail": ""
+    },
+    {
       "check": "R16 as_of_round advanced to 16",
       "pass": true,
       "detail": "16"
@@ -165,6 +283,41 @@
     },
     {
       "check": "R16 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 expected_boot advanced (as_of_round=16, store+board re-pinned to the new md5s)",
+      "pass": true,
+      "detail": "boot_aor=16 boot_store=0b951852"
+    },
+    {
+      "check": "R16 release_contract advanced (as_of_round=16; identities.store/board == new store/board)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 contract season_metadata == derived (calendar 0.67, exposure 0.636)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 season_state exposure derived off the NEW store (source_store_md5 == store)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 fail-closed release-contract VERIFY passes on the advanced set",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 no artifact on a stale round (season==boot==contract==16)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 real-store write gate still OFF",
       "pass": true,
       "detail": ""
     },
@@ -199,6 +352,41 @@
       "detail": ""
     },
     {
+      "check": "R17 expected_boot advanced (as_of_round=17, store+board re-pinned to the new md5s)",
+      "pass": true,
+      "detail": "boot_aor=17 boot_store=c312eb5b"
+    },
+    {
+      "check": "R17 release_contract advanced (as_of_round=17; identities.store/board == new store/board)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 contract season_metadata == derived (calendar 0.71, exposure 0.636)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 season_state exposure derived off the NEW store (source_store_md5 == store)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 fail-closed release-contract VERIFY passes on the advanced set",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 no artifact on a stale round (season==boot==contract==17)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 real-store write gate still OFF",
+      "pass": true,
+      "detail": ""
+    },
+    {
       "check": "R18 as_of_round advanced to 18",
       "pass": true,
       "detail": "18"
@@ -229,6 +417,41 @@
       "detail": ""
     },
     {
+      "check": "R18 expected_boot advanced (as_of_round=18, store+board re-pinned to the new md5s)",
+      "pass": true,
+      "detail": "boot_aor=18 boot_store=64795076"
+    },
+    {
+      "check": "R18 release_contract advanced (as_of_round=18; identities.store/board == new store/board)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 contract season_metadata == derived (calendar 0.75, exposure 0.682)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 season_state exposure derived off the NEW store (source_store_md5 == store)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 fail-closed release-contract VERIFY passes on the advanced set",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 no artifact on a stale round (season==boot==contract==18)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 real-store write gate still OFF",
+      "pass": true,
+      "detail": ""
+    },
+    {
       "check": "R19 as_of_round advanced to 19",
       "pass": true,
       "detail": "19"
@@ -255,6 +478,41 @@
     },
     {
       "check": "R19 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 expected_boot advanced (as_of_round=19, store+board re-pinned to the new md5s)",
+      "pass": true,
+      "detail": "boot_aor=19 boot_store=f37d9716"
+    },
+    {
+      "check": "R19 release_contract advanced (as_of_round=19; identities.store/board == new store/board)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 contract season_metadata == derived (calendar 0.79, exposure 0.727)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 season_state exposure derived off the NEW store (source_store_md5 == store)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 fail-closed release-contract VERIFY passes on the advanced set",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 no artifact on a stale round (season==boot==contract==19)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 real-store write gate still OFF",
       "pass": true,
       "detail": ""
     },

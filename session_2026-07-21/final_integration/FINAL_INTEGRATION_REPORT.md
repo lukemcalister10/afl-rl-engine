@@ -218,3 +218,74 @@ runs all generating tests on the pinned runner.
 
 **Note:** the report's §5 board identity `039ff8d4` was superseded by the engine-native `2ab73a6f` (§13) and
 carried unchanged through the season-state wiring (§14). Board of record = **`2ab73a6fed1f06fc8eecc2ce597c2aec`**.
+
+---
+
+## 15. SUPERVISOR 3rd REVIEW — FENCED READS, FAIL-CLOSED VERIFY, COHERENT WEEKLY AUTHORITY (2026-07-21)
+
+Eight substantive corrections. R14 board stays **byte-identical `2ab73a6fed1f06fc8eecc2ce597c2aec`**; no
+canonical R15–R19 scores applied; no real-store write; write gate stays OFF.
+
+**1 — Fenced season-state reads HALT (never fall back).** Under `RL_CONFIG_MODE` in `bake|gate|canonical`
+the engine readers (`rl_model`/`_merged_recover`/`conditional_prior` `_season_val`; `season_state`
+`read_value`/`calendar_progress_value`/`exposure_pace_value`) now RAISE on missing / malformed / missing-key /
+non-numeric / non-finite `season_state.json` or an unresolved-untrusted repo root; only an explicit UNFENCED
+dev shell keeps the fallback. `rl_export.py` gives `canonical` the same fail-closed config/FV enforcement as
+bake/gate (it was falling into the unfenced branch). Proof `season_state_fenced_test.py` **94/94** — every
+fenced mode × corruption HALTs, unfenced falls back, and a gate build against a corrupt `season_state.json`
+exits non-zero and writes **no board** (rejection before any board is written).
+
+**2 — release_contract.verify is FAIL-CLOSED.** Removed every `except Exception: pass` around the
+authoritative season-state checks; any error loading/parsing/verifying `season_state.py`, `season_state.json`,
+the source store, the calendar/exposure derivation, or the policy/store/round/season identity is now an
+explicit rejection stating the real cause. A fenced contract with no `season_metadata` is rejected.
+`release_state_failclosed_test.py` **23/23** (8 new season red-paths).
+
+**3 & 5 — One coherent weekly authority.** Investigation confirmed the flagged incoherence: `_restamp_manifest`
+(`round_apply.py`) moved only `store`+`board` (`expected_boot.as_of_round` frozen at 14), and
+`release_contract.json` had **no runtime writer** and was **not** a transaction target. Fix: `_restamp_manifest`
+now also advances `expected_boot.as_of_round`; new `release_contract.restamp_dynamic` re-stamps the contract's
+`as_of_round` + `identities.store/board` + `season_metadata` + `contract_sha256` from the staged
+manifest/board/season-state; `release_contract.json` is now an atomic **TARGET**; staged phase (c2) re-stamps
+it after the board exists; `_validate_staged` (vii-c) rejects a stale round on season_state/expected_boot/
+contract, a stale contract pin, exposure off a stale store, and runs the fail-closed contract verify — all
+before commit. `data/release_lineage.json` (immutable present-lens baseline) is deliberately NOT a target.
+
+**Writers of the five artifacts (authoritative):** `expected_boot.json` — `_restamp_manifest` (store+board+
+`as_of_round`), INSIDE the atomic txn. `season_state.json` — staged phase (a2) `derive`, INSIDE the txn.
+`release_contract.json` — staged phase (c2) `restamp_dynamic`, INSIDE the txn (**new**). `release_lineage.json`
+— **no runtime writer** (immutable). UI `stamp.release` — `round_movers.inject_release_contract` at finalize
+(Tier-3, derivative), reads the advanced authority; not a substitute for repository state.
+
+**4 — Superseded contract text removed.** `release_contract.json` `season_metadata` no longer states
+"frozen literal SEASON_PROG", "DECOUPLED", "never re-bakes", or "DEFERRED"; replaced with the derived/coupled
+truth; contract re-stamped. Historical lineage stays in this report, not in hashed authority.
+
+**6 — Extended R14–R19 evidence** (`season_advance_r14_r19.json`): per round now records + verifies
+`as_of_round`, calendar, durable count, median games, exposure, season-state source-store md5, store md5,
+board md5, **expected_boot as_of_round/store/board, release-contract as_of_round/store/board, contract_sha256,
+release-contract verification result**, derivation-policy id, active count, picks-by-lens, F5, **write-gate
+status**. Required results hold: R14 `2ab73a6f`, calendar 0.58/exposure 0.545; R15–R19 calendar
+0.63/0.67/0.71/0.75/0.79 with freshly-derived exposure; 804 + 64+64 survive; F5 83,538; canonical R14 files
+untouched; gate OFF; and at every round season_state == expected_boot == release_contract on the SAME round.
+
+**7 — Rollback / crash recovery cover the dynamic authority.** `failure_injection_proof.py` byte-state now
+includes `season_state.json` + `release_contract.json`; a new injection point `during_contract_staging`; and a
+round-coherence assertion — every pre-commit fault leaves all authoritative files byte-identical, every
+partial commit / crash recovery restores them, and recovery never leaves them split across rounds.
+
+**8 — CI.** `final-integration.yml` runs `season_state_fenced_test.py` + the extended
+`season_advance_r14_r19_proof.py`/`release_state_failclosed_test.py`; `live-scoring.yml` runs the extended
+`failure_injection_proof.py` (8 points + round-coherence). Committed JSON alone is never sufficient — the red
+paths and sequential/rollback proofs are re-run on the pinned runner.
+
+**Immutable vs dynamic identity.** Immutable release policy = the derivation policy (`derivation_policy_id`),
+the config manifest, and the source identities (`rl_model`/`engine_head`/`fv`/`register`/`band`). Dynamic
+release state = `as_of_round`, `store`/`board` pins, `calendar_progress`, `exposure_pace` — advanced together
+each week across `expected_boot.json` + `season_state.json` + `release_contract.json`; the present-lens
+baseline `release_lineage.json` never moves for a weekly round.
+
+**Re-pin (source edits for the fencing).** `rl_model` `c3a243ee→4f776e07`, `engine_head` `feff9471→dc7e34b0`,
+`fv` `97abe963→6a9a520f` in `expected_boot.json` + `release_contract.json` identities; regenerated
+`board_view_working.js` + `club_valuation.js`. Board bytes unchanged (`2ab73a6f`); only source identities move.
+Clean-room rebuild-equality **9/9**; R15 ladder **12/12**; R14–R19 sequential proof green.

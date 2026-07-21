@@ -91,8 +91,11 @@ jobs:
           python3 session_2026-07-21/final_integration/tools/config_inventory.py
           python3 session_2026-07-21/final_integration/tests/release_state_failclosed_test.py
 
-      - name: Season-state — derivation, wiring, behaviour, stale rejection (req 2/4/5/7)
-        run: python3 session_2026-07-21/final_integration/tests/season_progress_test.py
+      - name: Season-state — derivation, wiring, behaviour, stale rejection + FENCED reads halt (req 1/2/4/5/7)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-21/final_integration/tests/season_progress_test.py
+          python3 session_2026-07-21/final_integration/tests/season_state_fenced_test.py
 
       - name: Present / forward invariants + F5 reconciliation (vs Board A / Board B oracles)
         run: python3 session_2026-07-21/final_integration/tools/invariant_proof.py
