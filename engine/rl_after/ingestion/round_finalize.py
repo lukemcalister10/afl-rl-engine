@@ -2,38 +2,35 @@
 
 The core weekly transaction (staged_apply) commits the CANONICAL state ATOMICALLY: store, board,
 sidecar, boot manifest, ledger, and the three histories. THAT commit is the source of truth. Everything
-downstream — the Matchday UI board bundles (board_view_working.js / board_view_public.js), the
-per-round movers report (JSON + CSV), the accumulated UI movers bundle (ui/data/movers.js), and the
-round-delta injection into the working board — is RE-DERIVABLE from that committed state.
+downstream — the Matchday UI board bundles + release contract, the per-round movers report (JSON +
+CSV), the accumulated UI movers bundle, and the round-delta injection — is RE-DERIVABLE from that
+committed state and is produced here as a SEPARATE, JOURNALED FINALIZATION phase.
 
-This module runs those derivations as a SEPARATE, JOURNALED FINALIZATION phase, so that:
+CRASH-GAP CLOSURE (corrective 2026-07-20, review A). The pending-finalization record does NOT depend on
+the caller surviving the canonical commit: the applier writes `played` + board/store ids durably into
+the COMMITTED transaction manifest, and `reconcile()` reconstructs the CORE_COMMITTED record from those
+committed transaction manifests on restart. A kill immediately after COMMITTED (before the caller runs
+`record_core_committed`) therefore never strands the round.
 
-  * a failure in a re-derivable output NEVER rolls back a valid canonical commit — the scores stay
-    committed exactly once; only the derived outputs are (re)built;
-  * the finalization status of every round is DURABLE (finalization_state.json + a journal), so a
-    restart can DETECT a committed-but-unfinalized round and FINISH it (finalize) or REBUILD a
-    partial / failed derivation (repair) before the round is treated complete or the next round is
-    allowed to advance;
-  * finalization is IDEMPOTENT — re-running it reproduces the same derivatives and NEVER silently
-    overwrites a DIFFERENT historical movers report (a same-round report with a different board id is
-    an integrity break, kept as a flag, not overwritten).
+FINALIZED IS THE FINAL DURABLE OP (review C). Derivatives are generated while the round is FINALIZING;
+FULL validation runs FIRST; only after validation succeeds is FINALIZED written, as the last state
+transition. A crash after derivatives-but-before-validation, or after-validation-but-before-FINALIZED,
+restarts as unfinalized and repairs safely.
 
-STATES (per round, in finalization_state.json):
-    CORE_COMMITTED         the canonical transaction committed; finalization has not completed.
-    FINALIZING             a finalization pass is in progress (a crash here is detected on restart).
-    FINALIZATION_INCOMPLETE a derivation step failed; the canonical commit stands; repair is required.
-    FINALIZED              every owner-facing derivative was generated AND validated.
+NEVER MUTATE ON CONFLICT (review B). Before writing ANY same-round artifact, the existing JSON + bundle
+entry are inspected; if their governing identity (txn/board/store/round) differs, finalization refuses
+and leaves every existing byte unchanged (no JSON, no CSV, no bundle write; status not advanced).
 
-run / catchup REFUSE to advance while a prior committed round is not FINALIZED (advance_blocked()).
+HISTORICAL REPAIR IS SAFE (review E). Each round's FROZEN governing release identity is stored in its
+durable finalization record. A repair of an OLDER round rebuilds only that round's report + bundle entry
+from the stored identity + committed histories; it does NOT touch the working board (which stays on the
+latest round) and does NOT alter any canonical score or ledger entry.
 
-Derivatives finalized here:
-    board_view_working.js + board_view_public.js       (refresh_ui / ui/tools/extract_board_view.py)
-    dRound / dRoundRank / dRoundPosRank in the working  (round_movers.inject_working)
-    movers/movers_R<N>.json + .csv                      (round_movers.write_report_json/_csv)
-    ui/data/movers.js accumulated bundle                (round_movers.accumulate_bundle)
-Deliberately NOT finalized here (out of scope this build):
-    ui/data/club_valuation.js   — Track A owns the club-valuation curve; no temporary curve rule here.
-    ui/app/positions_data.js    — values-free position map derived from the owner CSV, not the board.
+STATES: CORE_COMMITTED -> FINALIZING -> FINALIZED, or -> FINALIZATION_INCOMPLETE on a derivation
+failure / conflict. run / catchup REFUSE to advance while a prior committed round is not FINALIZED.
+
+Deliberately NOT finalized here: ui/data/club_valuation.js (Track A owns the club-valuation curve) and
+ui/app/positions_data.js (values-free position map derived from the owner CSV, not the board).
 """
 import json
 import os
@@ -58,17 +55,16 @@ FINALIZATION_INCOMPLETE = 'FINALIZATION_INCOMPLETE'
 FINALIZED = 'FINALIZED'
 _UNFINALIZED = {CORE_COMMITTED, FINALIZING, FINALIZATION_INCOMPLETE}
 
-# the ordered finalization fault points (the failure-injection matrix, directive F)
+# the ordered finalization fault points (the failure-injection matrix, directives F + C)
 FAULT_POINTS = (
-    'after_core_commit_before_ui',        # (a) after the canonical commit, before any UI refresh
-    'during_working_board_refresh',       # (b) as the working/public board refresh begins
-    'after_board_before_movers_json',     # (c) after the board bundles, before the movers JSON
-    'after_json_before_csv',              # (d) after the movers JSON, before the CSV
-    'after_json_csv_before_bundle',       # (e) after JSON+CSV, before the accumulated bundle
-    'after_bundle_before_delta',          # (f) after the bundle, before the working-board delta inject
-    'after_all_before_final_validation',  # (g) after every file, before the final validation
-    # (h) a hard termination anywhere in finalization is simulated by killing the process mid-pass;
-    #     on restart the FINALIZING status is detected and repaired.
+    'after_core_commit_before_ui',           # after the canonical commit, before any UI refresh
+    'during_working_board_refresh',          # as the working/public board refresh begins
+    'after_board_before_movers_json',        # after the board bundles, before the movers JSON
+    'after_json_before_csv',                 # after the movers JSON, before the CSV
+    'after_json_csv_before_bundle',          # after JSON+CSV, before the accumulated bundle
+    'after_bundle_before_delta',             # after the bundle, before the working-board delta inject
+    'after_derivatives_before_validation',   # (C) all derivatives written, before validation
+    'after_validation_before_finalized',     # (C) validation passed, before the FINALIZED state write
 )
 
 
@@ -86,7 +82,7 @@ class RoundFinalizer:
         self.state_path = state_path or os.path.join(ing, STATE_FILENAME)
         self.journal_path = journal_path or os.path.join(ing, JOURNAL_FILENAME)
         self.fault = fault          # test hook: fault(point) may raise
-        self.txn_root = txn_root    # forwarded to the applier's refresh_ui environment
+        self.txn_root = txn_root    # transaction-dir root (default: the applier's default under ingestion)
 
     # -- state io -------------------------------------------------------------------------------
     def _load(self):
@@ -136,6 +132,9 @@ class RoundFinalizer:
     def entry(self, round_n):
         return self._load()['rounds'].get(str(int(round_n)))
 
+    def recorded_rounds(self):
+        return sorted(int(r) for r in self._load()['rounds'])
+
     def finalized_rounds(self):
         st = self._load()
         return sorted(int(r) for r, e in st['rounds'].items() if e.get('status') == FINALIZED)
@@ -145,6 +144,10 @@ class RoundFinalizer:
         st = self._load()
         return sorted(int(r) for r, e in st['rounds'].items() if e.get('status') in _UNFINALIZED)
 
+    def _latest_committed_round(self):
+        rr = self.recorded_rounds()
+        return rr[-1] if rr else None
+
     def advance_blocked(self, next_round):
         """Refuse to advance to `next_round` while the immediately-preceding committed round is not
         FINALIZED. Returns the blocking round number, or None if clear to advance."""
@@ -152,33 +155,79 @@ class RoundFinalizer:
         e = self.entry(prev)
         if e and e.get('status') in _UNFINALIZED:
             return prev
-        # also block if ANY earlier committed round is unfinalized (never leapfrog a broken round)
         un = [r for r in self.unfinalized_rounds() if r < int(next_round)]
         return min(un) if un else None
 
-    # -- record the canonical commit (called immediately after apply_snapshot succeeds) ---------
-    def record_core_committed(self, round_n, *, season, played, evidence, generated_at=None):
-        """Persist the CORE_COMMITTED record with everything finalization + repair need to re-derive
-        the round's outputs WITHOUT re-applying scores (the played score-map + the txn evidence)."""
+    # ===========================================================================================
+    # RECONCILE — reconstruct pending-finalization records from the COMMITTED transaction manifests
+    # (closes the post-commit / pre-record crash gap; never depends on the caller surviving).
+    # ===========================================================================================
+    def _applier(self):
+        return SA.StagedRoundApplier.for_repo(self.repo_root, txn_root=self.txn_root)
+
+    def _committed_txns(self):
+        """[(round, manifest)] for every transaction that reached COMMITTED (durable canonical commit)."""
+        ap = self._applier()
+        out = []
+        for d in ap._txn_dirs():
+            man = ap._read_txn_manifest(d)
+            if man and man.get('status') == SA.STATUS_COMMITTED and man.get('round') is not None:
+                out.append((int(man['round']), man))
+        return out
+
+    def reconcile(self, *, generated_at=None):
+        """For every COMMITTED transaction with NO finalization record, reconstruct a CORE_COMMITTED
+        record from the transaction manifest (round, season, played, board/store ids) + the frozen
+        release identity. Idempotent: an existing record (any status) is left untouched. Returns the
+        list of rounds reconciled."""
+        st = self._load()
+        reconciled = []
+        for rnd, man in self._committed_txns():
+            if str(rnd) in st['rounds']:
+                continue                      # already tracked (record present) — leave it
+            evidence = {'store_md5_before': man.get('store_md5_before'),
+                        'store_md5_after': man.get('store_md5_after'),
+                        'board_md5_before': man.get('board_md5_before'),
+                        'board_md5_after': man.get('board_md5_after'),
+                        'txn_id': man.get('txn_id')}
+            self._record(rnd, season=man.get('season'), played=man.get('played') or {},
+                         evidence=evidence, generated_at=generated_at or man.get('created_at'),
+                         reconciled=True)
+            reconciled.append(rnd)
+        if reconciled:
+            self._journal('RECONCILED', rounds=reconciled)
+        return reconciled
+
+    # -- record the canonical commit (fast path; reconcile is the crash-safe backstop) ----------
+    def _record(self, round_n, *, season, played, evidence, generated_at=None, reconciled=False):
         round_n = int(round_n)
+        st = self._load()
+        if (st['rounds'].get(str(round_n)) or {}).get('status') == FINALIZED:
+            return st['rounds'][str(round_n)]       # never clobber a finalized round
+        rel = MV.frozen_release_identity(self.repo_root, round_n,
+                                         (evidence or {}).get('board_md5_after'),
+                                         (evidence or {}).get('store_md5_after'))
         entry = {
-            'status': CORE_COMMITTED, 'round': round_n, 'season': int(season),
-            'previous_round': round_n - 1,
-            'txn_id': (evidence or {}).get('txn_id'),
+            'status': CORE_COMMITTED, 'round': round_n, 'season': int(season) if season else None,
+            'previous_round': round_n - 1, 'txn_id': (evidence or {}).get('txn_id'),
             'store_md5_before': (evidence or {}).get('store_md5_before'),
             'store_md5_after': (evidence or {}).get('store_md5_after'),
             'board_md5_before': (evidence or {}).get('board_md5_before'),
             'board_md5_after': (evidence or {}).get('board_md5_after'),
             'played': {k: played[k] for k in sorted(played or {})},
+            'release_identity': rel,                # FROZEN governing identity (historical repair reads this)
             'generated_at': generated_at, 'core_committed_at': generated_at,
-            'finalized_at': None, 'derivatives': None, 'failure': None,
+            'reconciled': bool(reconciled), 'finalized_at': None, 'derivatives': None, 'failure': None,
         }
-        st = self._load()
         st['rounds'][str(round_n)] = entry
         self._save(st)
         self._journal('CORE_COMMITTED', round=round_n, txn_id=entry['txn_id'],
-                      board_md5_after=entry['board_md5_after'])
+                      board_md5_after=entry['board_md5_after'], reconciled=bool(reconciled))
         return entry
+
+    def record_core_committed(self, round_n, *, season, played, evidence, generated_at=None):
+        return self._record(round_n, season=season, played=played, evidence=evidence,
+                            generated_at=generated_at, reconciled=False)
 
     def _evidence(self, entry):
         return {'store_md5_before': entry.get('store_md5_before'),
@@ -191,91 +240,114 @@ class RoundFinalizer:
         if self.fault is not None:
             self.fault(point)
 
-    # -- the finalization pass ------------------------------------------------------------------
+    # ===========================================================================================
+    # THE FINALIZATION PASS
+    # ===========================================================================================
     def finalize_round(self, round_n, *, generated_at=None, force=False):
         """Generate + validate every owner-facing derivative for a committed round, idempotently.
 
-        A FINALIZED round with valid derivatives is a no-op unless `force` (repair). Any derivation
-        failure marks the round FINALIZATION_INCOMPLETE and returns {'ok': False, ...} — it NEVER
-        rolls back or re-applies the canonical commit. Returns an evidence dict."""
+        For the LATEST committed round this refreshes the working board (+ release contract + round
+        deltas) and (re)builds the movers report/bundle. For an OLDER round (a historical repair) it
+        rebuilds ONLY that round's movers report + bundle entry from the round's FROZEN identity, and
+        leaves the working board on the latest round. Validation runs BEFORE FINALIZED is written. A
+        conflict or any derivation failure leaves the round unfinalized and writes no conflicting bytes;
+        it NEVER rolls back or re-applies the canonical commit. Returns an evidence dict."""
         round_n = int(round_n)
         entry = self.entry(round_n)
         if entry is None:
             raise RuntimeError('round %d has no CORE_COMMITTED record — nothing to finalize' % round_n)
+        latest = self._latest_committed_round()
+        historical = latest is not None and round_n < latest
         if entry.get('status') == FINALIZED and not force:
-            val = self._validate_derivatives(round_n, entry)
+            val = self._validate_derivatives(round_n, entry, historical=historical)
             if val['ok']:
                 return {'ok': True, 'round': round_n, 'status': FINALIZED, 'already': True,
-                        'validation': val}
-            # FINALIZED but a derivative drifted / is missing -> fall through and repair.
+                        'historical': historical, 'validation': val}
 
         played = entry.get('played') or {}
         evidence = self._evidence(entry)
+        rel = entry.get('release_identity')          # FROZEN identity (E) — repair reproduces it exactly
         self._set_status(round_n, FINALIZING)
-        self._journal('FINALIZE_BEGIN', round=round_n, force=bool(force))
+        self._journal('FINALIZE_BEGIN', round=round_n, force=bool(force), historical=historical)
         try:
             self._fault('after_core_commit_before_ui')
+            ui_data = os.path.join(self.repo_root, 'ui', 'data')
+            working = os.path.join(ui_data, MV.WORKING_BUNDLE_NAME)
 
-            # (1) UI board bundles (working + public) from the committed board
-            self._fault('during_working_board_refresh')
-            applier = SA.StagedRoundApplier.for_repo(self.repo_root, txn_root=self.txn_root)
-            ui_ev = applier.refresh_ui()
-            if not (ui_ev.get('ran') and ui_ev.get('ok')):
-                return self._incomplete(round_n, 'board_view refresh failed: rc=%s %s'
-                                        % (ui_ev.get('rc'), (ui_ev.get('stderr_tail') or '')[:200]))
+            if not historical:
+                # LATEST round: refresh the working/public board bundles from the committed board, then
+                # stamp the FULL release contract (as_of_round = this round) the browser validates against.
+                self._fault('during_working_board_refresh')
+                ui_ev = self._applier().refresh_ui()
+                if not (ui_ev.get('ran') and ui_ev.get('ok')):
+                    return self._incomplete(round_n, 'board_view refresh failed: rc=%s %s'
+                                            % (ui_ev.get('rc'), (ui_ev.get('stderr_tail') or '')[:200]))
+                if os.path.exists(working):
+                    MV.inject_release_contract(working, self.repo_root, round_n)
+            else:
+                ui_ev = {'ran': False, 'reason': 'historical repair — working board left on the latest round'}
 
-            # (2) movers report JSON
+            # movers report (built from the round's FROZEN identity)
             self._fault('after_board_before_movers_json')
             report = MV.build_report(self.repo_root, round_n, played=played, evidence=evidence,
-                                     generated_at=generated_at or entry.get('generated_at'))
-            jpath = MV.write_report_json(self.repo_root, round_n, report)
+                                     generated_at=generated_at or entry.get('generated_at'),
+                                     release_identity_override=rel)
 
-            # (3) movers report CSV
+            # NEVER MUTATE ON CONFLICT — inspect existing JSON + bundle BEFORE any write (B)
+            conflict, why = MV.movers_conflict(self.repo_root, round_n, report)
+            if conflict:
+                return self._incomplete(round_n, 'artifact identity conflict (no bytes written): %s' % why)
+
+            jpath = MV.write_report_json(self.repo_root, round_n, report)
             self._fault('after_json_before_csv')
             cpath = MV.write_report_csv(self.repo_root, round_n, report)
 
-            # (4) accumulated UI movers bundle (never silently overwrite a DIFFERENT historical report)
             self._fault('after_json_csv_before_bundle')
-            ui_data = os.path.join(self.repo_root, 'ui', 'data')
             bundle_path = os.path.join(ui_data, 'movers.js')
             bundle_res = {'path': None}
             if os.path.isdir(ui_data):
                 bundle_res = MV.accumulate_bundle(bundle_path, report, repo_root=self.repo_root)
                 if bundle_res.get('overwrite_conflict'):
-                    return self._incomplete(round_n, 'movers bundle overwrite conflict for R%d — a '
-                                            'DIFFERENT board id already recorded for this round' % round_n)
+                    return self._incomplete(round_n, 'movers bundle identity conflict for R%d — a '
+                                            'DIFFERENT report already recorded (no bytes changed)' % round_n)
 
-            # (5) round-delta injection into the working board bundle
             self._fault('after_bundle_before_delta')
-            working = os.path.join(ui_data, 'board_view_working.js')
-            injected = MV.inject_working(working, report) if os.path.exists(working) else 0
+            # working-board round deltas ONLY for the latest round (a historical repair must leave the
+            # working board's displayed movement on the latest round, not the repaired old round).
+            injected = 0
+            if not historical and os.path.exists(working):
+                injected = MV.inject_working(working, report)
 
-            # (6) final validation of everything above
-            self._fault('after_all_before_final_validation')
+            # ALL derivatives written; VALIDATE FIRST (C), while still FINALIZING.
+            self._fault('after_derivatives_before_validation')
+            val = self._validate_derivatives(round_n, entry, historical=historical)
+            if not val['ok']:
+                return self._incomplete(round_n, 'validation failed: %s' % val['why'])
+
+            # FINALIZED is the FINAL durable operation (C).
+            self._fault('after_validation_before_finalized')
             derivatives = {
-                'board_view_working': ui_ev.get('working_bundle'),
-                'board_view_public': ui_ev.get('public_bundle'),
-                'movers_json': jpath, 'movers_csv': cpath,
-                'movers_bundle': bundle_res.get('path'),
+                'board_view_working': ui_ev.get('working_bundle') if not historical else 'unchanged (historical)',
+                'board_view_public': ui_ev.get('public_bundle') if not historical else 'unchanged (historical)',
+                'release_contract': (not historical),
+                'movers_json': jpath, 'movers_csv': cpath, 'movers_bundle': bundle_res.get('path'),
                 'working_delta_rows': injected,
                 'club_valuation': 'SKIPPED (Track A owns the club-valuation curve)',
                 'positions_bundle': 'SKIPPED (values-free position map; not board-derived)',
             }
             self._set_status(round_n, FINALIZED, derivatives=derivatives,
                              finalized_at=generated_at or entry.get('generated_at'), failure=None)
-            val = self._validate_derivatives(round_n, self.entry(round_n))
-            if not val['ok']:
-                return self._incomplete(round_n, 'post-finalization validation failed: %s' % val['why'])
-            self._journal('FINALIZED', round=round_n, movers_json=os.path.basename(jpath),
-                          injected=injected, chain_ok=bundle_res.get('chain_ok'))
+            self._journal('FINALIZED', round=round_n, historical=historical,
+                          movers_json=os.path.basename(jpath), injected=injected)
             return {'ok': True, 'round': round_n, 'status': FINALIZED, 'already': False,
-                    'derivatives': derivatives, 'player_count': report['player_count'],
+                    'historical': historical, 'derivatives': derivatives,
+                    'player_count': report['player_count'],
                     'played': report['views']['played_count'], 'dnp': report['views']['dnp_count'],
                     'bundle_chain_ok': bundle_res.get('chain_ok'),
                     'bundle_baseline_anchor_ok': bundle_res.get('baseline_anchor_ok'),
                     'validation': val}
         except FinalizationFault as e:
-            # a mid-pass fault leaves the round FINALIZING (the honest "unfinalized" state a restart
+            # a mid-pass fault leaves the round FINALIZING (the honest unfinalized state a restart
             # detects); the canonical commit is untouched. Re-raise so the caller/test observes it.
             self._journal('FINALIZE_FAULT', round=round_n, point=str(e))
             raise
@@ -286,15 +358,17 @@ class RoundFinalizer:
         return {'ok': False, 'round': int(round_n), 'status': FINALIZATION_INCOMPLETE, 'why': why}
 
     # -- validation of the derivatives against the committed state -------------------------------
-    def _validate_derivatives(self, round_n, entry):
-        """Confirm the round's derivatives exist, parse, and cohere with the committed board/store.
-        Returns {'ok': bool, 'why': str, 'checks': {...}}."""
+    def _validate_derivatives(self, round_n, entry, *, historical=False):
+        """Confirm the round's derivatives exist, parse, and cohere. For the latest round the working
+        board stamp must equal the committed board and carry the round delta + release contract; for a
+        historical repair those working-board checks are skipped (it stays on the latest round). The
+        movers report's committed board id is checked against the round's OWN evidence (not the current
+        board). Returns {'ok', 'why', 'checks'}."""
         round_n = int(round_n)
         checks, fails = {}, []
         committed_board = MV._md5(os.path.join(self.repo_root, 'data', 'rl_build', 'rl_app_data.json'))
         board_after = (entry or {}).get('board_md5_after')
 
-        # movers JSON exists, parses, and its committed board id matches this round's txn evidence
         jpath, cpath, _ = MV.movers_paths(self.repo_root, round_n)
         rep = None
         if not os.path.exists(jpath):
@@ -308,13 +382,15 @@ class RoundFinalizer:
         if rep is not None:
             checks['movers_board_matches_txn'] = (rep.get('board_md5_after') == board_after)
             if rep.get('board_md5_after') != board_after:
-                fails.append('movers report board %s != committed round board %s'
+                fails.append('movers report board %s != this round committed board %s'
                              % (str(rep.get('board_md5_after'))[:8], str(board_after)[:8]))
+            # the report's frozen release identity must match the stored governing identity
+            if entry.get('release_identity') and rep.get('release_identity') != entry.get('release_identity'):
+                fails.append('movers report release identity != stored governing identity')
         checks['movers_csv_present'] = os.path.exists(cpath)
         if not os.path.exists(cpath):
             fails.append('movers CSV missing')
 
-        # accumulated bundle: this round present, chain + baseline anchor intact, no overwrite conflict
         ui_data = os.path.join(self.repo_root, 'ui', 'data')
         bundle_path = os.path.join(ui_data, 'movers.js')
         if os.path.isdir(ui_data):
@@ -338,9 +414,8 @@ class RoundFinalizer:
                 if bi.get('overwrite_conflict_last_write'):
                     fails.append('movers bundle overwrite conflict')
 
-            # board_view working stamp coheres with the committed board
-            working = os.path.join(ui_data, 'board_view_working.js')
-            if os.path.exists(working):
+            working = os.path.join(ui_data, MV.WORKING_BUNDLE_NAME)
+            if not historical and os.path.exists(working):
                 try:
                     w = SA.StagedRoundApplier._parse_bundle(working)
                     stamp = (w.get('stamp') or {})
@@ -349,7 +424,9 @@ class RoundFinalizer:
                     if wboard != committed_board:
                         fails.append('working board stamp %s != committed board %s'
                                      % (str(wboard)[:8], str(committed_board)[:8]))
-                    # the round-delta was injected for at least some rows
+                    # the FULL release contract must be present for the browser lineage check
+                    if not (stamp.get('release') or {}).get('balanced_board_md5'):
+                        fails.append('working board stamp carries no release contract (stamp.release)')
                     ninj = sum(1 for row in w.get('players', [])
                                if row.get('dRound') is not None or row.get('dRoundRank') is not None)
                     checks['working_delta_injected'] = ninj
@@ -361,20 +438,25 @@ class RoundFinalizer:
         return {'ok': not fails, 'why': '; '.join(fails), 'checks': checks}
 
     # -- resume / repair ------------------------------------------------------------------------
-    def finalize_pending(self, *, generated_at=None):
-        """Finish every committed-but-unfinalized round, in order. Called on restart and at the start
-        of a run/catchup so a prior crash's half-finalized round is completed before new work."""
+    def finalize_pending(self, *, generated_at=None, reconcile=True):
+        """RECONCILE first (reconstruct records for committed-but-unrecorded rounds), then finish every
+        committed-but-unfinalized round in order. Called on restart + at the start of run/catchup."""
+        if reconcile:
+            self.reconcile(generated_at=generated_at)
         done = []
         for r in self.unfinalized_rounds():
             res = self.finalize_round(r, generated_at=generated_at)
             done.append(res)
             if not res.get('ok'):
-                break   # stop at the first round that will not finalize — do not leapfrog it
+                break
         return {'pending': done, 'clean': all(d.get('ok') for d in done)}
 
     def repair(self, round_n=None, *, generated_at=None):
-        """Explicitly rebuild derivatives from the committed inputs. With a round, repairs that round
-        (force). Without, repairs every unfinalized round in order. Never re-applies scores."""
+        """Rebuild derivatives from the committed inputs. With a round, force-repairs that round (a
+        historical round rebuilds only its report + bundle entry, leaving the working board on the
+        latest round). Without, reconciles + repairs every unfinalized round in order. Never re-applies
+        scores; never alters the canonical store/board/ledger/history."""
+        self.reconcile(generated_at=generated_at)
         if round_n is not None:
             return self.finalize_round(int(round_n), generated_at=generated_at, force=True)
         out = []

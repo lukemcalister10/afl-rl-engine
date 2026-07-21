@@ -76,47 +76,107 @@ def _boot(repo_root):
     return _load(os.path.join(repo_root, 'data', 'expected_boot.json'))
 
 
-def _release_version(boot):
-    """A DERIVED release version — never a hardcoded marketing tag. Prefers an explicit
-    `release_version` in the manifest; otherwise names the board-of-record the release rides on
-    (`candidate:<board8>`), so the value can only ever describe the actual pinned board."""
-    v = boot.get('release_version')
-    if v:
-        return v
-    board = boot.get('board') or ''
-    return 'candidate:%s' % board[:8] if board else 'candidate:unknown'
+def _release_baseline(repo_root):
+    """The IMMUTABLE release-baseline identity (owner ruling 2026-07-20): release_version +
+    balanced_board_md5. Read from data/release_lineage.json — a permanent PRESENT-LENS baseline that is
+    NEVER synthesized from the weekly board, NEVER re-stamped by a weekly score transaction, and NOT
+    assumed to be the final complete board-file hash (Leg E/F forward-lens acceptance + final full-board
+    pinning are external dependencies). Absent file is a hard error; the RC manifest supersedes it on
+    integration."""
+    p = os.path.join(repo_root, 'data', 'release_lineage.json')
+    lin = _load(p)
+    bb = lin.get('balanced_board_md5')
+    if not bb or not lin.get('release_version'):
+        raise ValueError('release_lineage.json missing release_version / balanced_board_md5 at %s' % p)
+    return {'release_version': lin['release_version'], 'balanced_board_md5': bb}
+
+
+# release identity = FIXED baseline (release_version, balanced_board_md5 — immutable, from
+# release_lineage.json) + FIXED model pins (engine_head/rl_model/fv/config/register — from the boot
+# manifest, which a weekly round never re-stamps) + DYNAMIC weekly fields (board, store — re-stamped
+# each round; as_of_round — this round). The two field classes are validated differently by the UI
+# lineage check (fixed must equal the loaded release; dynamic latest must equal the loaded current).
+RELEASE_FIXED_FIELDS = ('release_version', 'balanced_board_md5', 'engine_head', 'rl_model', 'fv',
+                        'config', 'register')
+RELEASE_DYNAMIC_FIELDS = ('board', 'store', 'as_of_round')
 
 
 def release_identity(repo_root, round_n, boot=None):
-    """Build a report's release identity from the coherent release manifest (data/expected_boot.json).
+    """Build a report's release identity: the FIXED baseline (release_version + balanced_board_md5 from
+    release_lineage.json) + the FIXED model pins (from expected_boot.json) + the DYNAMIC weekly fields
+    (current board + store from expected_boot, and this round as as_of_round).
 
-    Records the DERIVED release_version, the as-of round, and the manifest's coherent pin set
-    (board == balanced board of record, store, engine_head, rl_model, fv, config, register). No field
-    is hardcoded; every value comes from the manifest as it stands when this round is finalized, so a
-    historical report keeps its own governing identity."""
+    balanced_board_md5 is the immutable accepted PRESENT-LENS baseline identity — copied verbatim,
+    NEVER synthesized from the weekly `board`, and NOT assumed to be the final complete board-file hash
+    (Leg E/F forward-lens acceptance + final full-board pinning are external dependencies). The DYNAMIC
+    `board` field is the complete CURRENT board artifact. as_of_round tracks the applied round (15 after
+    R15, never left at 14). A historical report keeps its own frozen governing identity."""
     boot = boot if boot is not None else _boot(repo_root)
+    base = _release_baseline(repo_root)
     return {
-        'release_version': _release_version(boot),
-        'as_of_round': int(round_n),
-        'board': boot.get('board'),
-        'balanced_board_md5': boot.get('board'),   # the pinned board IS the balanced board of record
-        'store': boot.get('store'),
+        # FIXED release-baseline identity (immutable across weekly rounds)
+        'release_version': base['release_version'],
+        'balanced_board_md5': base['balanced_board_md5'],   # permanent PRESENT-LENS baseline; not synthesized
+        # FIXED model pins (the boot manifest; a weekly round merges scores, never the model)
         'engine_head': boot.get('engine_head'),
         'rl_model': boot.get('rl_model'),
         'fv': boot.get('fv'),
         'config': boot.get('config'),
         'register': boot.get('register'),
-        'manifest_source': 'data/expected_boot.json',
+        # DYNAMIC weekly fields
+        'board': boot.get('board'),
+        'store': boot.get('store'),
+        'as_of_round': int(round_n),
+        'manifest_source': 'data/expected_boot.json + data/release_lineage.json',
     }
 
 
+def frozen_release_identity(repo_root, round_n, board_md5, store_md5, boot=None):
+    """The release identity a round is FROZEN to for durable storage + historical repair. Same as
+    release_identity, but the DYNAMIC board/store are the round's OWN committed ids (from the
+    transaction evidence) rather than the current (possibly later-moved) manifest — so repairing R15
+    after R19 reproduces R15's exact identity. The FIXED baseline + model pins are immutable across
+    weekly rounds, so reading the model pins from the current manifest is historical-safe."""
+    rel = release_identity(repo_root, round_n, boot=boot)
+    rel['board'] = board_md5
+    rel['store'] = store_md5
+    return rel
+
+
+# ---- UI release contract: the FULL release identity the browser validates lineage against ----------
+WORKING_BUNDLE_NAME = 'board_view_working.js'
+
+
+def inject_release_contract(working_path, repo_root, as_of_round):
+    """Augment the working board bundle's stamp with the FULL release identity (`stamp.release`), so
+    the browser validates movers lineage against verified full-length pins rather than the abbreviated
+    stamp fields. Idempotent. Returns the injected release identity (or None if the bundle is absent)."""
+    if not os.path.exists(working_path):
+        return None
+    rel = release_identity(repo_root, as_of_round)
+    with open(working_path) as f:
+        text = f.read()
+    i, j = text.index('{'), text.rindex('}')
+    prefix, obj, suffix = text[:i], json.loads(text[i:j + 1]), text[j + 1:]
+    stamp = obj.setdefault('stamp', {})
+    stamp['release'] = rel
+    with open(working_path, 'w') as f:
+        f.write(prefix)
+        json.dump(obj, f, ensure_ascii=False, separators=(',', ':'))
+        f.write(suffix)
+    return rel
+
+
 # ---- the report -----------------------------------------------------------------------------------
-def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at=None):
+def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at=None,
+                 release_identity_override=None):
     """Build the full movers report for a committed round from the two committed boards (via histories).
 
     `played` maps stable key -> submitted score for players LISTED this round (a score of 0 is a
     legitimate played score); a key absent from it is DNP. `evidence` carries the transaction's
-    store/board md5 before/after + txn id (from the applier result)."""
+    store/board md5 before/after + txn id (from the applier result). `release_identity_override`, when
+    given, is the round's FROZEN governing identity (used by a historical repair so the rebuilt report
+    keeps its original release/board/store identity instead of the current manifest's)."""
     round_n = int(round_n)
     prev_round = round_n - 1
     played = played or {}
@@ -166,6 +226,11 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
             'prev_pos_rank': pp, 'cur_pos_rank': cp, 'pos_rank_change': dpos,
         })
 
+    # DETERMINISTIC player order (sorted by stable key), INDEPENDENT of the current board's `active`
+    # array order — so a historical repair (which reads a LATER board's roster) reproduces a round's
+    # report BYTE-FOR-BYTE, and the report never depends on incidental board ordering.
+    players.sort(key=lambda p: p['key'] or '')
+
     def rank_view(field, reverse):
         # deterministic tie-break: primary field, then cur_value desc, then key asc
         elig = [p for p in players if p.get(field) is not None]
@@ -192,12 +257,19 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
         'source_store_md5_before': ev.get('store_md5_before'), 'source_store_md5_after': ev.get('store_md5_after'),
         'board_md5_before': ev.get('board_md5_before'), 'board_md5_after': board_after,
         'txn_id': ev.get('txn_id'), 'generated_at': generated_at, 'player_count': len(players),
-        'release_identity': release_identity(repo_root, round_n, boot=boot),
+        'release_identity': (release_identity_override
+                             if release_identity_override is not None
+                             else release_identity(repo_root, round_n, boot=boot)),
         'integrity': {
             'players_unique': len({p['key'] for p in players}) == len(players),
             'coverage_full': len(players) == len([p for p in active if p.get('key')]),
-            'board_after_matches_committed': board_after == _md5(
-                os.path.join(repo_root, 'data', 'rl_build', 'rl_app_data.json')),
+            # the report carries the round's committed board id (from the transaction evidence). This is
+            # a report-level presence check; the STRONG board-matching integrity (report board == the
+            # round's committed board; latest report board == the loaded current board) is enforced by
+            # round_finalize._validate_derivatives + the UI lineage check. Deliberately NOT compared
+            # against the mutable on-disk board, so a HISTORICAL repair reproduces the report byte-for-
+            # byte (the current board has legitimately moved on to a later round by repair time).
+            'board_after_matches_committed': board_after is not None,
         },
         'views': views, 'players': players,
     }
@@ -223,23 +295,48 @@ def report_csv(report):
 
 
 # ---- the accumulated UI bundle (window.__MATCHDAY_MOVERS__) ---------------------------------------
+def _ui_working_stamp(repo_root):
+    """The board/store the LOADED Matchday app is actually on, from ui/data/board_view_working.js's
+    stamp (the app ring-fences a specific board id). Returns {'board','store'} or None if absent."""
+    p = os.path.join(repo_root, 'ui', 'data', 'board_view_working.js')
+    if not os.path.exists(p):
+        return None
+    try:
+        with open(p) as f:
+            text = f.read()
+        obj = json.loads(text[text.index('{'):text.rindex('}') + 1])
+        st = obj.get('stamp') or {}
+        return {'board': st.get('srcmd5') or st.get('board'), 'store': st.get('store')}
+    except (OSError, ValueError):
+        return None
+
+
 def empty_bundle(repo_root, *, as_of_round=BASELINE_ROUND):
     """A clean, EMPTY initial movers bundle: schema + release-baseline block only, NO round reports.
 
     This is what the production ui/data/movers.js SHIPS as until real scoring is owner-applied. A fresh
     checkout at the baseline round therefore has no finalized round reports, and the Movers view renders
-    an HONEST empty state (not an integrity alarm, not scratch data). The baseline block records the
-    release identity the app runs on so the UI can anchor lineage the moment a first real round lands."""
+    an HONEST empty state (not an integrity alarm, not scratch data). The baseline is anchored GENERICALLY
+    to the board/store the LOADED app is actually on (board_view_working.js — the app ring-fences a
+    specific board id), falling back to the engine board-of-record (expected_boot) when the UI bundle is
+    absent (e.g. a fresh scratch, whose UI is generated from the engine board on the first refresh). This
+    keeps the shipped empty state coherent with the app WITHOUT assuming any final board/switch posture."""
     boot = _boot(repo_root)
+    rel = release_identity(repo_root, as_of_round, boot=boot)
+    stamp = _ui_working_stamp(repo_root)
+    base_board = (stamp or {}).get('board') or boot.get('board')
+    base_store = (stamp or {}).get('store') or boot.get('store')
+    rel = dict(rel); rel['board'] = base_board; rel['store'] = base_store   # baseline release is self-consistent
     return {
         'kind': 'matchday_movers_bundle', 'schema_version': SCHEMA_VERSION,
         'rounds': [], 'reports': {},
         'baseline': {
             'as_of_round': int(as_of_round),
-            'board': boot.get('board'), 'store': boot.get('store'),
-            'release_identity': release_identity(repo_root, as_of_round, boot=boot),
+            'board': base_board, 'store': base_store, 'release_identity': rel,
             'note': 'Empty initial bundle — no finalized round reports. The Movers view is unavailable '
-                    '(honest empty state) until a real round is applied and finalized by the owner.',
+                    '(honest empty state) until a real round is applied and finalized by the owner. The '
+                    'baseline board/store are the LOADED app board (board_view_working.js), so the empty '
+                    'state is validated against the app; the fixed release fields are provenance.',
         },
         'integrity': {'board_chain_ok': True, 'baseline_anchor_ok': True, 'rounds': []},
     }
@@ -276,10 +373,60 @@ def load_bundle(path, repo_root=None):
     return json.loads(text[i:j + 1])
 
 
+# ---- conflict identity: the tuple that makes two same-round reports the SAME report ----------------
+def report_identity(report):
+    """The identity that distinguishes two reports for the same round: transaction id + committed
+    board id + committed store id + submitted round. Two reports whose (COMPLETE) identities differ are
+    a CONFLICT (never silently overwritten); identical identities are an idempotent regeneration."""
+    r = (report or {}).get('submitted_round')
+    return ((report or {}).get('txn_id'), (report or {}).get('board_md5_after'),
+            (report or {}).get('source_store_md5_after'), (int(r) if r is not None else None))
+
+
+def _identity_complete(ident):
+    return all(x is not None for x in ident)
+
+
+def movers_conflict(repo_root, round_n, report, *, movers_dir=None, bundle_path=None):
+    """Inspect the EXISTING same-round artifacts (JSON report + accumulated bundle entry) BEFORE any
+    write and report a conflict ONLY when an existing report has a VALID, COMPLETE identity (txn +
+    board + store + round) that DIFFERS from `report`'s. On conflict the caller must write NOTHING
+    (JSON, CSV or bundle) and leave every existing byte unchanged. A missing artifact (first write), an
+    identical-identity artifact (idempotent regeneration), or a CORRUPT / incomplete artifact (which a
+    repair is meant to rebuild) is NOT a conflict. Returns (conflict: bool, reason: str)."""
+    want = report_identity(report)
+    jpath, _cpath, _mdir = movers_paths(repo_root, round_n, movers_dir)
+    if os.path.exists(jpath):
+        try:
+            with open(jpath) as f:
+                existing = json.load(f)
+        except (OSError, ValueError):
+            existing = None                    # corrupt/unparseable -> a repair may rebuild it
+        if existing is not None:
+            eid = report_identity(existing)
+            if _identity_complete(eid) and eid != want:
+                return True, ('existing movers_R%d.json has a different valid identity (txn/board/store/'
+                              'round) %s != %s' % (int(round_n), eid, want))
+    bpath = bundle_path or os.path.join(repo_root, 'ui', 'data', 'movers.js')
+    if os.path.exists(bpath):
+        try:
+            bundle = load_bundle(bpath)
+        except (OSError, ValueError):
+            bundle = None
+        rep = (bundle or {}).get('reports', {}).get(str(int(round_n)))
+        if rep:
+            rid = report_identity(rep)
+            if _identity_complete(rid) and rid != want:
+                return True, ('bundle already holds R%d with a different valid identity %s != %s'
+                              % (int(round_n), rid, want))
+    return False, ''
+
+
 def accumulate_bundle(path, report, repo_root=None):
-    """Add/replace this round's report in the UI bundle. A round already present is only replaced when
-    its board_md5_after MATCHES (idempotent re-emit); a DIFFERENT board for the same round is an
-    integrity break — kept as a flag, never a silent overwrite of history.
+    """Add/replace this round's report in the UI bundle. A round already present with a DIFFERENT
+    governing identity (txn/board/store/round) is a CONFLICT: the bundle is left BYTE-UNCHANGED (the
+    report is NOT assigned and nothing is written), returning overwrite_conflict=True. A same-identity
+    round is an idempotent replace.
 
     The bundle carries a release-baseline block; the board-identity chain must (a) begin at the
     baseline board and (b) be continuous (report[n].board_md5_before == report[n-1].board_md5_after).
@@ -293,7 +440,13 @@ def accumulate_bundle(path, report, repo_root=None):
     rnd = str(report['submitted_round'])
     reports = bundle.setdefault('reports', {})
     prior = reports.get(rnd)
-    overwrite_conflict = bool(prior and prior.get('board_md5_after') != report['board_md5_after'])
+    if prior:
+        pid = report_identity(prior)
+        if _identity_complete(pid) and pid != report_identity(report):
+            # CONFLICT — do NOT assign reports[rnd]=report; do NOT write. Leave every existing byte intact.
+            return {'path': path, 'overwrite_conflict': True, 'wrote': False,
+                    'chain_ok': (bundle.get('integrity') or {}).get('board_chain_ok'),
+                    'baseline_anchor_ok': (bundle.get('integrity') or {}).get('baseline_anchor_ok')}
     reports[rnd] = report
     bundle['rounds'] = sorted(int(r) for r in reports)
     if not bundle.get('baseline'):
@@ -316,10 +469,9 @@ def accumulate_bundle(path, report, repo_root=None):
         if idx == 0 and base_board and rep.get('board_md5_before') and rep['board_md5_before'] != base_board:
             baseline_anchor_ok = False
     bundle['integrity'] = {'board_chain_ok': chain_ok, 'baseline_anchor_ok': baseline_anchor_ok,
-                           'overwrite_conflict_last_write': overwrite_conflict,
-                           'rounds': bundle['rounds']}
+                           'overwrite_conflict_last_write': False, 'rounds': bundle['rounds']}
     write_bundle(path, bundle)
-    return {'path': path, 'overwrite_conflict': overwrite_conflict,
+    return {'path': path, 'overwrite_conflict': False, 'wrote': True,
             'chain_ok': chain_ok, 'baseline_anchor_ok': baseline_anchor_ok}
 
 

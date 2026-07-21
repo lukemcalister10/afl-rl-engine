@@ -430,11 +430,19 @@ class StagedRoundApplier:
         # commit must be REMOVED (not "restored") on rollback/recovery, so a first-round history (or a
         # fresh board) leaves NO partial state after a failure.
         pre_apply_present = {n: os.path.exists(os.path.join(self.repo_root, rel)) for n, rel in TARGETS}
+        # FINALIZATION-RECOVERY payload, written DURABLY into the transaction manifest so the round is
+        # never stranded by a crash AFTER the canonical commit but BEFORE the caller records a pending-
+        # finalization entry: `played` (the per-key round score map the movers report needs) is captured
+        # here from the preview, and board_md5_before is recorded, so a restart can reconstruct the
+        # finalization context from the COMMITTED transaction manifest alone (round_finalize.reconcile).
+        played_map = {a.key: a.rounds[0][1] for a in preview.appends if a.rounds}
         man = {'txn_id': txn_id, 'kind': 'weekly_round_apply', 'created_at': generated_at,
                'round': int(snapshot['round']), 'season': int(snapshot['season_year']),
                'snapshot_content_hash': snapshot.get('content_hash'),
                'snapshot_source_store_md5_full': snapshot.get('source_store_md5_full'),
-               'store_md5_before': store_before, 'status': STATUS_STAGING, 'failure': None,
+               'store_md5_before': store_before, 'board_md5_before': board_before,
+               'played': {k: played_map[k] for k in sorted(played_map)},
+               'status': STATUS_STAGING, 'failure': None,
                'config_hash': self.config_hash, 'fv_provenance': None,
                'pre_apply_present': pre_apply_present, 'history': None,
                'targets': [{'name': n, 'live': rel} for n, rel in TARGETS]}
