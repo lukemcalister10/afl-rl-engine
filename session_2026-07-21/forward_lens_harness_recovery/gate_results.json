@@ -1,0 +1,469 @@
+{
+  "verdict": "FAIL",
+  "board_b": {
+    "temporary_path": "/tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json",
+    "md5": "1f10220c341679903b79a319f554672c",
+    "row_count": 804,
+    "present_value_total": 752427.0,
+    "command": "python3 rl_export.py"
+  },
+  "harness_results": [
+    {
+      "name": "bootstrap",
+      "command": "bash /workspace/afl-rl-engine/bootstrap.sh",
+      "cwd": "/workspace/afl-rl-engine",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "fv_provenance",
+      "command": "python3 -c import boot_guard; boot_guard.assert_fv_provenance()",
+      "cwd": "/workspace/afl-rl-engine",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "build_board_B",
+      "command": "python3 rl_export.py",
+      "cwd": "/tmp/legEF_boardB_gjpeyfa3/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": "1",
+        "RL_LEGE": "1",
+        "RL_LEGF": "1",
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "legf3_k0",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf3/tests/test_k0_dormancy.py",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "legf4_k0",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "legf5_k0",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "gate_f4",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/scripts/gate_f4.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "gate_f5",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/scripts/gate_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json /workspace/afl-rl-engine/session_2026-07-18/legf5/sealed_entrant_structure.json",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "legf3_k0",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf3/tests/test_k0_dormancy.py",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "legf4_k0",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "legf5_k0",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "gate_f4",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/scripts/gate_f4.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "gate_f5",
+      "command": "python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/scripts/gate_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json /workspace/afl-rl-engine/session_2026-07-18/legf5/sealed_entrant_structure.json",
+      "cwd": "/workspace/afl-rl-engine/engine/rl_after",
+      "env": {
+        "RL_REPO": "/workspace/afl-rl-engine",
+        "PYTHONHASHSEED": "0",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "RL_PVC2": null,
+        "RL_LEGE": null,
+        "RL_LEGF": null,
+        "RL_CONFIG_MODE": null
+      },
+      "exit_code": 0
+    }
+  ],
+  "gate_inventory": [
+    [
+      "historical -1 -> now",
+      "RERUN PASS",
+      "gate_f4.py and gate_f5.py reran unchanged against Board B; both transitions were inside \u00b15%."
+    ],
+    [
+      "historical -2 -> -1",
+      "RERUN PASS",
+      "gate_f4.py and gate_f5.py reran unchanged against Board B; both transitions were inside \u00b15%."
+    ],
+    [
+      "\u00b15% league-total gate",
+      "RERUN PASS",
+      "gate_f5.py reran unchanged and passed the F5 league conservation \u00b15% gate."
+    ],
+    [
+      "developing \u2265 mid-career \u2265 veteran gradient",
+      "RERUN PASS",
+      "legf3/scripts/backtest.py reran unchanged; developing -3.8% \u2265 mid -9.5% \u2265 veteran -18.3%."
+    ],
+    [
+      "age and evidence continuity",
+      "COMMITTED RESULT ONLY \u2014 NOT RERUNNABLE",
+      "Located as narrative/probe evidence in legf3 CHECKPOINT/EXIT_PROOF; no dedicated unchanged pass/fail gate located."
+    ],
+    [
+      "horizon cliffs",
+      "COMMITTED RESULT ONLY \u2014 NOT RERUNNABLE",
+      "Located as narrative/probe evidence in legf3/legf4 documents; no dedicated unchanged pass/fail gate located."
+    ],
+    [
+      "pedigree fading",
+      "COMMITTED RESULT ONLY \u2014 NOT RERUNNABLE",
+      "Located as probe/narrative evidence in legf3 scripts and reports; no dedicated unchanged pass/fail gate located."
+    ],
+    [
+      "LTI/availability",
+      "COMMITTED RESULT ONLY \u2014 NOT RERUNNABLE",
+      "Located as legf4 diagnostic availability references; no dedicated unchanged pass/fail gate located."
+    ],
+    [
+      "retirement and exit behavior",
+      "COMMITTED RESULT ONLY \u2014 NOT RERUNNABLE",
+      "Located as F3/F4/F5 reports and exit-inclusive gate behavior; no standalone unchanged retirement gate located."
+    ],
+    [
+      "RL_LEGF=0 kill switch",
+      "RERUN PASS",
+      "legf3/legf4/legf5 k0 dormancy harnesses reran unchanged and passed."
+    ]
+  ],
+  "search_hits": {
+    "historical": [
+      "session_2026-07-18/legf4/scripts/gate_f4.py:3:# Build r(age)=median(vP1/v) from the DAMPED board, project each committed historical roster forward, and",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:10:Project each committed historical roster forward under the damped board's r(age), vs the SAME players'",
+      "session_2026-07-18/legf5/scripts/gate_f5.py:3:#  (A) F5 LEAGUE-LEVEL, \u00b15%, BOTH transitions: project each committed historical roster forward under the",
+      "session_2026-07-18/legf5/PLAN.md:45:- **F5 LEAGUE-LEVEL, \u00b15%, BOTH transitions**: project each committed historical roster forward under the",
+      "session_2026-07-18/legf5/EXIT_PROOF.md:13:Project each committed historical roster forward under the population rate, ADD the \u00a72.viii entrant layer at",
+      "engine/rl_after/_merged_recover.py:949:# pooling declared per rung in the committed census), the historical ONE-YEAR RE-RATING of the class at the",
+      "engine/rl_after/_merged_recover.py:1085:# further down) DO NOT touch the historical book (Luke's backtest exemption -> the walk-forward book reproduces).",
+      "engine/rl_after/_merged_recover.py:1183:# verbatim: \"For the backtesting this is not a rule and doesn't make sense to be\") means the historical book must",
+      "engine/rl_after/lti_return_table.json:5: \"store_note\": \"derived on store a2fbc9a0 (post King/Murphy fix). Historical windows carry no injury labels \\u2014 the measured quantity prices ABSENCE, the treatment the register applies (\\u00a74.1).\",",
+      "verify/d15/book_hashcheck.py:9:historical book so it must reproduce v2.3 byte-for-byte). The regenerated book is",
+      "engine/rl_after/derive_lti_return.py:103:        'store_note': 'derived on store a2fbc9a0 (post King/Murphy fix). Historical windows carry no injury '",
+      "engine/rl_after/rl_export.py:113:g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # _merged_recover's load left MA's clock at a historical V0-build year; pin to the present before pulling AGE_REF / building display fields",
+      "engine/rl_after/s4_matrix_M1v7.py:14:g['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD path \u2014 Luke's exemption. Board-only laws (V0 curve, KPP floor) OFF here so the historical book reproduces (max\u0394=0 vs v2.3).",
+      "engine/rl_after/s4_matrix_M1v7.py:50:    g['_BOARD_PATH']=(Y==2026)   # F2 parity: the PRESENT-year column uses the BOARD path (V0 curve + KPP floor ON) so `cur` == the board (engine gated); 2003-2025 keep Luke's D14 backtest exemption (board-only laws OFF -> the historical walk-forward book reproduces)",
+      "engine/rl_after/ingestion/dry_run_proof.py:1:\"\"\"DRY-RUN PROOF (directive step 4) \u2014 replay historical rounds through the ingestion plumbing.",
+      "engine/prototypes/staleness_recency_fix.py:30:# walk-forward matrix applies the identical rule historically \u2014 measured: new-B1 avg peak N=4 RISES to",
+      "engine/prototypes/staleness_graded_cap.py:16:#  - 532 historical fire-population cells (Y=2008..2022, ns==1 & el>=onset & listed-at-Y per the standing",
+      "engine/prototypes/decay_proration_overlay.py:4:# exact no-op for Y!=curr_year (f=1) -> historical book + M1+v7 curve untouched by construction.",
+      "engine/prototypes/decay_proration_overlay.py:7:#  - INERT at f=1: byte-identical historical (max|delta|=0 over 60 players x 2022-2025).",
+      "engine/forward_valuation/distribution_pricing.py:120:    \"\"\"Per position: forward-peak CENTRE(pick) + WIDTH(pick) from career-best-3 over the historical pool."
+    ],
+    "league-total": [],
+    "mid-career": [
+      "engine/rl_after/_merged_recover.py:180:_EVW_Q0=11.0; _EVW_QW=1.1                                     # PINNED: soft 10-game qualifying bar centre/width \u2014 a season's QUALIFYING weight q(g)=logistic((g-Q0)/QW), CONTINUOUS (no games>=10 step; ~4-game ramp 9->13). Steep enough that a sub-10-game season (a mid-career non-qualifier \u2014 the A8/Tsatas trap, whose best season is 7g) counts ~0 and production keeps carrying him.",
+      "engine/rl_after/_merged_recover.py:647:    \"\"\"the MOST-RECENT mid-career calendar gap (a games==0 year after >=1 prior played season) whose"
+    ],
+    "veteran": [
+      "session_2026-07-18/legf4/scripts/probe_f4_legs.py:16:def coh_of(a): return 'developing' if (a or 99) <= 23 else 'mid' if a <= 27 else 'veteran'",
+      "session_2026-07-18/legf4/scripts/probe_f4_legs.py:40:for c in ('developing', 'mid', 'veteran'):",
+      "session_2026-07-18/legf4/scripts/probe_f4_legs.py:50:for c in ('developing', 'mid', 'veteran'):",
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:2:# LEG F4 \u2014 DIAGNOSIS (READ-ONLY): decompose the mid/veteran (phi=0) forward-vs-backward asymmetry.",
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:29:                        coh=('developing' if (a or 99) <= 23 else 'mid' if a <= 27 else 'veteran')))",
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:38:    for c in ('developing', 'mid', 'veteran'):",
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:45:    for c in ('mid', 'veteran'):",
+      "session_2026-07-18/legf4/scripts/probe_f4_pr.py:16:def coh_of(a): return 'developing' if (a or 99) <= 23 else 'mid' if a <= 27 else 'veteran'",
+      "session_2026-07-18/legf4/scripts/probe_f4_pr.py:47:for c in ('developing', 'mid', 'veteran'):",
+      "session_2026-07-18/legf4/CHECKPOINT2.md:33:- To hit \u22122\u2192\u22121's target (\u22480% / flat) a forward rate would have to keep declining veterans AND to-exit",
+      "session_2026-07-18/legf4/PLAN.md:1:# LEG F4 \u2014 MID/VETERAN FORWARD CALIBRATION \u00b7 PLAN + ENTRY PROOF (read-only diagnosis) \u00b7 seat 13 \u00b7 2026-07-19",
+      "session_2026-07-18/legf4/PLAN.md:3:vs realized backward \u22129.0%) living in the mid/veteran PRODUCTION cohorts (\u03c6=0, untouched by F3). **WRITER",
+      "session_2026-07-18/legf4/PLAN.md:26:  filed 556,300); cohort gradient developing \u221218.2% / mid \u221218.0% / veteran \u221224.8% (EXIT_PROOF \u221218.5/\u221218.3/",
+      "session_2026-07-18/legf4/PLAN.md:30:Localize WHY mid/veteran (\u03c6=0) rows project forward ~2\u00d7 steeper than their realized backward path \u2014",
+      "session_2026-07-18/legf4/out/legs.txt:4:veteran       219 | fwd  -23.9  back  -20.8 | fwd   +0.0  back   +0.0 | fwd  -23.9  back  -20.8",
+      "session_2026-07-18/legf4/out/legs.txt:9:veteran     | peak_est fwd  +0.00%      | level_now fwd  -3.69%  (now vs demo +0.00%)",
+      "session_2026-07-18/legf4/out/decomp.txt:6:  veteran      219    177559   -24.8%   -19.0%    1.30x",
+      "session_2026-07-18/legf4/out/decomp.txt:14:  veteran      219    176293   -10.6%   -19.6%    0.54x",
+      "session_2026-07-18/legf4/out/pr_split.txt:4:veteran       219 | fwd  -28.4  back  -21.0  | fwd   +0.0 back   +0.0 | fwd  -7.14 back  -4.16  (pr share now=165155 pole=0)",
+      "session_2026-07-18/legf4/out/backtest.txt:5:=== THE GRADIENT (signed mean \u0394 per player; un-inverted iff developing \u2265 mid \u2265 veteran) ==="
+    ],
+    "horizon": [
+      "session_2026-07-18/legf4/scripts/probe_f4_legs.py:4:# forward change lives in peak_est(lp), level_now(cur/dev_advance), or the horizon frac/DELTAS.",
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:65:# --- MECH 2: neutralize the multi-year horizon DELTAS decline (frac flat past peak) on the FORWARD stream only.",
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:68:#     dev_advance + horizon are entangled through cur. MECH1 already captures the level-roll; report note only.",
+      "engine/rl_after/rl_model.py:482:    # path/horizon stay keyed to PRESENT (bnow). The blend is done OUTSIDE the nonlinearity \u2014 TWO posval",
+      "session_2026-07-18/legf3/scripts/probe_validate_proj.py:3:# v_at_peak -> proj_from_peak(g,L,a,cur,...); the forward pr collapse is the horizon+runway keying on the",
+      "session_2026-07-18/legf3/scripts/probe_validate_proj.py:6:# Variants:  V1 = runway/elite age anchored only.  V2 = whole horizon age anchored (a_fa) + runway.",
+      "session_2026-07-18/legf3/scripts/probe_validate_proj.py:28:    a_h = a_fa if VAR == 'V2' else a         # V2 anchors the horizon age-shape; V1 keeps it advancing",
+      "engine/rl_after/s4_render_M1v7.py:84:        cell=ws.cell(hh,c); cell.font=H; cell.fill=GREY; cell.alignment=Alignment(horizontal='center')",
+      "session_2026-07-18/legf3/CHECKPOINT2.md:14:5. **proj_from_peak (`_proj_w4`, ruling pt 4 \"still implicated\")** \u2014 the horizon age-shape + young-runway",
+      "session_2026-07-18/legf3/CHECKPOINT2.md:46:~25\u201335% via `pr = price6(b6)` \u2192 `dp.v_at_peak` \u2192 `proj_from_peak` over the horizon (Jagga prod_path",
+      "session_2026-07-18/legf3/CHECKPOINT2.md:48:~4pt of it; the rest sits in the price6/`v_at_peak` pricing of the (age-advanced) horizon \u2014 I could NOT fully",
+      "session_2026-07-18/legf3/CHECKPOINT2.md:65:  horizon pricing at the projected-evidence state (form-anchor the pricing-side age where it de-pedigrees),",
+      "session_2026-07-18/legf3/PLAN.md:23:pt 4, still-implicated: horizon age-shape + runway form-anchored) \u00b7 `rl_export.py` (form-anchor pedigree-carry",
+      "session_2026-07-18/legf3/PLAN.md:34:    \"one more year of thin production does not erase draft pedigree.\" `proj_from_peak` (`_proj_w4`): horizon",
+      "session_2026-07-18/legf3/PLAN.md:46:no wide bins). **SEALED TABLE** (age\u2192P, +1 horizon; +k cumulative `1\u2212(1\u2212P)^k`):",
+      "session_2026-07-18/legf3/tests/test_k0_dormancy.py:45:#     so ah==a and the horizon/runway age-substitution is a no-op. (End-to-end byte-exactness is proven by the",
+      "engine/rl_after/_merged_recover.py:726:# horizon. The owner's ground truth (rev116/ADDENDUM): that flat weighting treats a moderate producer's year-9",
+      "engine/rl_after/_merged_recover.py:736:# c_near = interp(k,[0,2,5],[1,1,0]) (present-tense, runway-independent \u2014 a short-horizon elite benefits most;",
+      "engine/rl_after/_merged_recover.py:776:#   because eD already prices LD through the engine's age/horizon machinery \u2014 DECLARED double-count",
+      "engine/rl_after/_before_after_805.py:77:    cell=ws.cell(hr,j); cell.font=Font(name=F,bold=True,color='FFFFFF'); cell.fill=hf; cell.alignment=Alignment(horizontal='center')"
+    ],
+    "pedigree": [
+      "session_2026-07-18/legf4/scripts/probe_f4_pr.py:2:# LEG F4 \u2014 split raw_ev into pr(=price6(b6) production price) vs pole(pedigree), per cohort, fwd/back.",
+      "session_2026-07-18/legf4/DIAGNOSIS.md:15:\u00b9 developing's \u221226.3% is the *un-floored* probe value; on the shipped board F3's \u03c6 pedigree-carry FLOOR",
+      "session_2026-07-18/legf4/DIAGNOSIS.md:23:  pedigree `pole` is \u22480 for \u03c6=0 (mid pole 1,478 vs pr 233,777; veteran pole 0). Confirms production-anchored.",
+      "session_2026-07-18/legf4/DIAGNOSIS.md:31:F3's `_off`/`_LENS_FORM` form-anchor lives ONLY in `_proj_w4` (the age SHAPE `ah=a-_off`) and the pedigree/",
+      "session_2026-07-18/legf4/DIAGNOSIS.md:58:\"projected improvement and decline face the same evidentiary bar\"). It is NOT a pedigree strip (\u00a72.vi, F3)",
+      "engine/rl_after/_ov_final.py:45:print(\"\\n\"+\"=\"*70,\"\\n(b4) BAND pedigree sensitivity: Jeffrey b6 at pk30 vs pk60 (prior vs ceiling):\")",
+      "engine/rl_after/_p1_parish.py:15:print(\"  MID bar=77.1. par=pedigree par(pk5). Leff=engine level. EVdem=EV re-priced forcing level=that-yr season avg.\")",
+      "engine/rl_after/rl_model.py:367:    cp=basepk_c(g,effpk(p))                                     # pedigree-implied peak (independent of L -> no recursion)",
+      "engine/rl_after/rl_model.py:369:    L1=L + w*(L*(c1/c0-1.0)) + (1-w)*(cp*(c1-c0))              # blend the CHANGE (own arc vs pedigree catch-up); zero at offset 0",
+      "engine/rl_after/rl_model.py:451:    # Bust is already priced once in the pedigree curve (PVC carries 1-BUST_BAND); the band-average",
+      "engine/rl_after/rl_model.py:582:# unplayed prospects: recent national/rookie draftees not yet debuted (valued on pedigree alone, like the old engine)",
+      "engine/rl_after/rl_model.py:819:P_HOOK=None                            # v3.4: when set, P_HOOK(p) supplies the establishment-probability weight on the pedigree track for NOT-yet-established players (replaces the seasons-only `decay`); established players keep `decay`.",
+      "engine/rl_after/rl_model.py:837:    _pd={'balanced':'bal'}.get(lens,lens)   # LEG E: the POSTURE production dial. 'balanced'->'bal' (the exact byte-exact path); 'contender'/'rebuilder' price the SAME streams at their own discount d (weight-don't-gate); 'bal'/'now'/'fut' unchanged. Pedigree pedestals (unpl_eq/pedestal) are NOT re-discounted \u2014 a posture re-weights production STREAMS, not the pick pedestal.",
+      "engine/rl_after/rl_model.py:840:    if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq)   # LEG E: pedigree-only prospect has no production stream to re-weight => posture-invariant (lens_tilt retired)",
+      "engine/rl_after/rl_model.py:841:    g=gfut(p)   # settled future position drives pedigree/form-delta/out-tilt (matches peak_est); prod_floor stays present",
+      "engine/rl_after/rl_model.py:842:    if level_now(p) is None:                                          # 0-game but IN opportunity window (debut season+): P applies continuously (prospect-path RETIRED 2026-06-18); genuine pre-debut prospects hit the _unplayed branch above and keep pure pedigree",
+      "engine/rl_after/rl_model.py:844:        return round(unpl_eq * Pz)   # LEG E: pedigree/P only, no production stream => posture-invariant (lens_tilt retired)",
+      "engine/rl_after/rl_model.py:846:    Pz = None if P_HOOK is None else P_HOOK(p)                # v3.4: establishment-P, computed ONCE; gates BOTH the production term (below) and the pedigree pedestal (decay_eff), each carrying P exactly once",
+      "engine/rl_after/rl_model.py:849:    # out_tilt CUT (cont.21): audited redundant with v4 \u2014 corr(out_tilt_sig, realised-v4)=-0.05, marginal R2=+0.001, coef after v4=-0.04. Same form double-count as the removed survival(). relative stays at the v4 pedigree multiplier.",
+      "engine/rl_after/rl_model.py:853:    decay_eff = decay if Pz is None else min(decay, Pz)   # v3.4: establishment-P only ever PULLS DOWN (min) on the pedigree track; established players P=1 -> min=decay, untouched"
+    ],
+    "LTI": [
+      "session_2026-07-18/legf4/scripts/probe_f4_decomp.py:65:# --- MECH 2: neutralize the multi-year horizon DELTAS decline (frac flat past peak) on the FORWARD stream only.",
+      "engine/rl_after/owner_overrides.py:7:  override is a final multiplier on a single player's DISPLAYED value; it is applied LAST, after every",
+      "engine/rl_after/owner_overrides.py:130:        print(\"OWNER-OVERRIDE WARNING (dev-shell, non-halting):\", msg)",
+      "engine/rl_after/lti_register.py:2:\"\"\"LTI & AVAILABILITY REGISTER CONSUMER (Chapter-3 injury build, 2026-07-09).",
+      "engine/rl_after/lti_register.py:4:The register (`LTI_REGISTER.md`) is OWNER-AUTHORED ground truth, pinned as a versioned engine INPUT",
+      "engine/rl_after/lti_register.py:7:per-player availability STATE the RL_AVAIL / RL_LTI_RETURN levers consume. It writes NOTHING to the register",
+      "engine/rl_after/lti_register.py:10:SCHEMA (one row per injury WINDOW; repeat-LTI players get two rows):",
+      "engine/rl_after/lti_register.py:24:REGISTER_FILENAME = 'LTI_REGISTER.md'",
+      "engine/rl_after/lti_register.py:89:        raise ValueError(\"LTI REGISTER VALIDATION HALT (halt-not-warn):\\n  - \" + \"\\n  - \".join(halts))",
+      "engine/rl_after/lti_register.py:136:        raise ValueError(\"LTI REGISTER HALT: %s not found (RL_AVAIL is ON but the pinned register is absent \u2014 \"",
+      "session_2026-07-18/legf3/f2_boards/board_minus1_2025.json:9854:   \"key\": \"mykelti-lefau\",",
+      "session_2026-07-18/legf3/f2_boards/board_minus1_2025.json:9856:   \"name\": \"Mykelti Lefau\",",
+      "engine/rl_after/rl_model.py:14:# raw_multipos blend (futblend weights, gfut multi-leg, _fut list) is GONE; each dual is collapsed to its",
+      "engine/rl_after/rl_model.py:429:# Was: `def lens_tilt(p,lens): a bounded +/-30% (LTILT=0.30) multiplicative tilt around balanced by age-vs-peak",
+      "engine/rl_after/rl_model.py:430:# phase`, applied as the final multiplier in value() for the 'now'/'fut' display lenses while production stayed",
+      "engine/rl_after/rl_model.py:732:CURVE_H=1.0                            # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)",
+      "engine/rl_after/rl_model.py:849:    # out_tilt CUT (cont.21): audited redundant with v4 \u2014 corr(out_tilt_sig, realised-v4)=-0.05, marginal R2=+0.001, coef after v4=-0.04. Same form double-count as the removed survival(). relative stays at the v4 pedigree multiplier.",
+      "engine/rl_after/rl_model.py:992:# (1 - _avail_hc). The SOURCE of _avail_hc is the LTI REGISTER (Chapter-3 2026-07-09, RL_AVAIL layer set in",
+      "engine/rl_after/rl_model.py:1021:CVX_CAP=1.25          # cap on the present convexity multiplier (guards the value-floor threshold artifact for fringe straddlers)",
+      "engine/rl_after/rl_model.py:1046:    p['_cvx']=min(round(p['_v']/p['_vpt'],6), CVX_CAP) if p['_vpt']>0 else 1.0   # convexity multiplier in [1.0, CVX_CAP]; min() honours the documented cap (round(v)/round(vpt) could otherwise edge past it at low values)"
+    ],
+    "retirement": [
+      "session_2026-07-18/legf4/EXIT_PROOF.md:5:`rl_export.py` (\u00a72.iii retirement, \u00a72.ix) \u00b7 `session_2026-07-18/legf4/`. HARD-OUT verified untouched:",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:52:The F3 distributed-retirement haircut (`_LF_PRET`/`_pret`/`_hair`/`_residual`) is DELETED (not disabled) \u2014",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:54:the k=0 chain are untouched by the retirement. Entrant/refill sizing deferred to \u00a72.viii (F5).",
+      "session_2026-07-18/legf3/PLAN.md:3:retirement). WRITER build. Supervisor ruling **item 353** governs scope (fence extended to the 4 named",
+      "session_2026-07-18/legf3/PLAN.md:42:## 4 \u2014 \u00a72.iii DISTRIBUTED RETIREMENT LIABILITY (replaces the discrete X-bar exit, `rl_export` ~:576)",
+      "engine/rl_after/_merged_recover.py:218:# so a single population rate carries exit risk and the F3 \u00a72.iii retirement haircut RETIRES (v1.3 \u00a72.ix, no",
+      "session_2026-07-18/legf3/CHECKPOINT.md:77:3. \u00a72.iii distributed retirement (rl_export exit) + \u00a72.vi proj_from_peak runway (pedigree-carry, both copies)",
+      "session_2026-07-18/legf3/EXIT_PROOF.md:45:## \u00a72.iii DISTRIBUTED RETIREMENT (report-only; replaces the discrete X-bar)",
+      "session_2026-07-18/lege/PLAN.md:103:## 6 \u2014 RETIREMENT",
+      "engine/rl_after/one_source_selftest.py:89:# (mid-season retirement) drops him from the live/active board. Count re-pinned like the panel/board seal.",
+      "engine/rl_after/rl_export.py:520:# at retirements make the future lenses run slightly under \u2014 small and explainable, or itself a finding."
+    ],
+    "RL_LEGF=0": [
+      "session_2026-07-18/legf4/PLAN.md:22:- **k=0 / backward DORMANCY invariant PASS** \u2014 RL_LEGF=0 vs RL_LEGF=1 boards are BYTE-IDENTICAL on v / vM1 /",
+      "session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py:3:# DORMANT at k=0 / backward / RL_LEGF=0 by IDENTITY \u2014 a no-op off the forward lens, independent of FP hashes.",
+      "session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py:39:# (4) RL_LEGF=0 kill-switch => the whole damper is inert (_LSYM_ON False => _lsym_active False even forward)",
+      "session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py:43:    chk(\"RL_LEGF=0 => _lsym_active False even in the forward lens\", not active())",
+      "session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py:46:    chk(\"RL_LEGF default ON (_LSYM_ON True) \u2014 kill-switch path asserted under RL_LEGF=0 in the exit proof\", True)",
+      "session_2026-07-18/legf4/out/entry_proof.txt:7:DORMANCY INVARIANT (RL_LEGF=0 vs RL_LEGF=1, RL_LEGE=1 RL_PVC2=1):",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:32:| RL_LEGF=0 RL_LEGE=0 RL_PVC2=1 (balanced k=0) | edited == original engine | **PASS byte-exact** |",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:33:| RL_LEGF=0 RL_LEGE=1 RL_PVC2=1 (Leg-E lens)   | edited == original engine | **PASS byte-exact** |",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:34:| RL_LEGF=0 RL_LEGE=0 RL_PVC2=0 (PVC2 kill)    | edited == original engine | **PASS byte-exact** |",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:36:  damper is forward-only + RL_LEGF-gated \u21d2 a no-op at k=0 / balanced / backward / RL_LEGF=0 BY CONSTRUCTION.",
+      "session_2026-07-18/legf4/EXIT_PROOF.md:64:and RL_LEGF=0-inert, \u00a72.iii retired without double-count. Store/curve/rl_model/v_at_peak untouched.",
+      "session_2026-07-18/legf5/PLAN.md:17:RL_LEGF=0 builds byte-identical, stable balanced md5 `83a4b21d`, \u03a3v 750,159) but does NOT byte-reproduce the",
+      "session_2026-07-18/legf5/PLAN.md:22:- **RL_LEGF=0 chain byte-exact**: edited `rl_export.py` == original F4 `rl_export.py` at RL_LEGF=0 (the",
+      "session_2026-07-18/legf5/PLAN.md:24:- **k=0 phantom = NONE**: RL_LEGF=1 balanced `v` == RL_LEGF=0 `v`, 0/804 diffs (additive lens-scoped arrays;",
+      "session_2026-07-18/legf5/PLAN.md:52:k=0 byte-exact (edited==original RL_LEGF=0) \u00b7 RL_LEGF=0 chain \u00b7 dormancy suites PASS \u00b7 store untouched \u00b7",
+      "session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py:3:# k=0 / RL_LEGF=0 by CONSTRUCTION \u2014 additive, lens-scoped, engine-ev()-free, seal-gated. Independent of FP",
+      "session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py:15:# (1) the ENTIRE \u00a72.viii layer lives inside the RL_LEGF guard (k=0/RL_LEGF=0 emits nothing)",
+      "session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py:18:i_else = src.find(\"else:\\n    print('LEG F5 ENTRANT LAYER: RL_LEGF=0\")",
+      "session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py:20:chk(\"RL_LEGF=0 branch prints 'layer NOT emitted' (no phantom keys)\", \"RL_LEGF=0 \u2014 layer NOT emitted\" in src)",
+      "session_2026-07-18/legf5/out/chain_proof.txt:2:DETERMINISM: two warm RL_LEGF=0 builds byte-identical; stable balanced md5 = 83a4b21d ; Sum v = 750159"
+    ],
+    "kill switch": [
+      "engine/rl_after/_merged_recover.py:1234:#      and loads the SAME clean surface -> the flip is removed. A NON-shipped config (a kill switch: RL_PVC2=0,",
+      "engine/rl_after/_merged_recover.py:1313:        # ---- FIT PATH: the refit entry point (RL_V0SURF_REFIT=1), or a NON-shipped config (a kill switch) whose",
+      "session_2026-07-18/legf6/PLAN.md:22:  never touch V0). A non-shipped config (a kill switch) has a different signature \u2192 not in the frozen set \u2192",
+      "session_2026-07-18/legf6/PLAN.md:23:  **still fits, exactly as before** \u2192 every declared kill switch stays byte-exact.",
+      "session_2026-07-18/legf6/out/proof.txt:24:IDENTITY ACROSS CONFIGS \u2014 pre-freeze (pristine caf013e2, fits) vs frozen (loads shipped, fits kill switches):",
+      "session_2026-07-18/legf6/EXIT_PROOF.md:26:## Identity across configs \u2014 pristine (pre-freeze, fits) vs frozen (loads shipped, fits kill switches)",
+      "session_2026-07-18/legf6/EXIT_PROOF.md:32:| kill switch RL_PVC2=0 | `9829d01a` | `9829d01a` |"
+    ],
+    "age and evidence": [
+      "session_2026-07-18/lege/EXIT_PROOF.md:31:No thresholds introduced \u21d2 continuous in age and evidence (L-SMOOTH); the only new branch is a"
+    ],
+    "continuity": [
+      "engine/rl_after/s4_matrix_M1v7_blend.py:75:    e=(1-w)*anchor + w*e                                        # continuity across the 6g boundary; veterans w->1 => pure production",
+      "engine/rl_after/_merged_recover.py:502:# 28=0.1506 -> 29=0.3793 -> 30=0.0, no discontinuity/cliff). Do NOT touch S_AGE anywhere else (one knot, one",
+      "engine/rl_after/_merged_recover.py:957:# CONTINUITY (owner law, BINDING): no cliff anywhere on pick-PVC \u2192 V0 \u2192 end-y1 \u2192 y2/3/4 \u2014 the multiplier is",
+      "engine/rl_after/rl_export.py:515:# The owner's year-0 continuity law rendered as a check: \"\u22122 through today through +2 lens should have",
+      "engine/rl_after/rl_export.py:532:lensConservation['_meta']={'principle':'year-0 continuity: value converts, does not vanish (item 12)',"
+    ]
+  }
+}

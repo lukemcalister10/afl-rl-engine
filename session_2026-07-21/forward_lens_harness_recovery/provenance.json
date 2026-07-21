@@ -1,0 +1,11 @@
+{
+  "start_head": "f05ebe6df49b653b053f0ebdd82ddc56ee8d4187",
+  "pr_127_verified_head": "f05ebe6df49b653b053f0ebdd82ddc56ee8d4187",
+  "board_b": {
+    "temporary_path": "/tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json",
+    "md5": "1f10220c341679903b79a319f554672c",
+    "row_count": 804,
+    "present_value_total": 752427.0,
+    "command": "python3 rl_export.py"
+  }
+}

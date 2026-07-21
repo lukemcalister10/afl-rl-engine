@@ -1,0 +1,302 @@
+### bootstrap
+COMMAND: bash /workspace/afl-rl-engine/bootstrap.sh
+CWD: /workspace/afl-rl-engine
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  ENV PIN        : numpy 2.4.4 + bundled OpenBLAS 05c9f9eb (byte-exact to the pin; item 392)
+boot-store guard (Guard 5) PASS  [bootstrap]  store 968de0c7 == pinned 968de0c7  |  rl_model cc626d7d == pinned cc626d7d  |  fv de4c7ec3 == pinned de4c7ec3 (checkout+loaded-path) (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+bootstrap OK
+  engine md5     : 904722cd   (candidate: F1/F2 one-source rewire)
+  cm_400 md5     : 34faa865   (expect 34faa865)
+  q97m md5       : cfdc7321   (expect cfdc7321 — FROZEN q97 ceiling; loaded, never fitted; Guard 5 asserted == pinned)
+  store md5      : 968de0c7   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)
+  register md5   : 652d83e8   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)
+  fv identity    : de4c7ec3   (engine/forward_valuation source set; CHECKOUT + workspace copy asserted == pinned 'fv'; canonical build binds RL_FV to the CHECKOUT)
+  unidecode      : OK   (vendored, offline)
+  ENV (with vendor): PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor ; RL_FV=<repo>/engine/forward_valuation (canonical FV source)
+  next: bash /workspace/afl-rl-engine/run_panel.sh
+
+--- STDERR ---
+
+
+### fv_provenance
+COMMAND: python3 -c import boot_guard; boot_guard.assert_fv_provenance()
+CWD: /workspace/afl-rl-engine
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+
+--- STDERR ---
+
+
+### build_board_B
+COMMAND: python3 rl_export.py
+CWD: /tmp/legEF_boardB_gjpeyfa3/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": "1", "RL_LEGF": "1", "RL_PVC2": "1", "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+L7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_v2.json (pick1=3000, 99 picks, monotone, ÷F=1.0524 on players)
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 13 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+FUT-LABEL ASSERTION: PASS — 90 dual rows carry the true primary/alternate on the board
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 510 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+LEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs · §2.viii sealed intake 83538 PVC (draft 69266 + mech 14272, 103.4 slots/yr, seal a17aafed) · +1 Δ=+83538 · +2 Δ=+83538 · k=0 phantom=NONE
+exported active=804 cohort=1976 | mechanisms=7 categories analysed | board stamped src=968de0c7 (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1263, '11-20': 140, '21-30': 1902, '31-45': -173, '46-99': -140}
+CAT_BY_RANGE Open   : {'1-10': 82, '11-20': 7, '21-30': 74, '31-45': -25, '46-99': -7}
+
+--- STDERR ---
+PROVENANCE {"RL_FV_env": "/workspace/afl-rl-engine/engine/forward_valuation", "config_manifest_identity": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b", "config_manifest_path": "/workspace/afl-rl-engine/data/model_config.json", "distribution_pricing_md5": "dd19a2349a5b5a361b6eead0aab83ff3", "fv_identity": "de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64", "fv_identity_expected": "de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64", "resolved_fv_dir": "/workspace/afl-rl-engine/engine/forward_valuation", "rl_model_md5": "cc626d7db7524929e5d2f1b024b25fb4", "rl_model_path": "/tmp/legEF_boardB_gjpeyfa3/rl_after/rl_model.py"}
+LOADED-PROVENANCE OK  fv_modules=7 rl_model=/tmp/legEF_boardB_gjpeyfa3/rl_after/rl_model.py
+
+
+### legf3_k0
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf3/tests/test_k0_dormancy.py
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  PASS _fa_year(2026)==2026 when _LENS_FORM None
+  PASS _fa_year(2027)==2026 in the forward lens (re-keys to BASE_REF)
+  PASS _fa_year(2027)==2027 off the lens (identity)
+  PASS _form_anchor_clock no-op: AGE_REF stays 2026 off the lens
+  PASS _form_anchor_clock no-op at k=0 (AGE_REF==BASE_REF)
+  PASS _form_anchor_clock BITES forward (AGE_REF->BASE_REF 2026)
+  PASS _form_anchor_clock RESTORES AGE_REF after (==2027)
+  PASS RL_LEGF gate present (_LEGF_ON)
+  PASS _proj_w4 offset==0 at k=0 (=> ah==a => the F3 age-substitution is a no-op)
+  PASS _proj_w4 carries the F3 ah-guard (ah=a-_off if _off>0 else a)
+  PASS _proj_w4 offset gated on RL_LEGF (_LEGF_ON else 0)
+
+RESULT: PASS
+
+--- STDERR ---
+
+
+### legf4_k0
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  PASS _lsym_active False when _LENS_FORM None (k=0 / balanced / backward)
+  PASS _lsym_active False at k=0 even in the lens (AGE_REF==BASE_REF)
+  PASS _lsym_active True ONLY forward (lens set AND AGE_REF>BASE_REF)
+  PASS _lsym_blend(x, x, a) == x  (k=0: advanced read == form-anchored read => identity)
+  PASS _lsym_blend identity holds elementwise byte-equal
+  PASS blend tempers when s<1 (x between form and age)
+  PASS _LSYM_ON present (rides RL_LEGF)
+  PASS RL_LEGF default ON (_LSYM_ON True) — kill-switch path asserted under RL_LEGF=0 in the exit proof
+  PASS b6 damper gated on _lsym_active() and Y!=BASE_REF (k=0 skip)
+  PASS level_now damper gated on _lsym_active() (k=0/backward inert)
+
+RESULT: PASS
+
+--- STDERR ---
+
+
+### legf5_k0
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  PASS §2.viii layer is INSIDE the RL_LEGF!=0 branch
+  PASS RL_LEGF=0 branch prints 'layer NOT emitted' (no phantom keys)
+  PASS block does NOT call _ev( (engine valuation untouched)
+  PASS block only ADDS out['phantom*'] keys (no out['active']/['back'] mutation)
+  PASS block reads only PVC / vP1 / vP2 / club / sealed file (no ev channel)
+  PASS lens '0' withPhantom==withoutPhantom==Σv (k=0 delta 0)
+  PASS seal-verify present + pinned a17aafed + HALT on drift
+  PASS sealed structure recomputes to a17aafed
+  PASS built board: league k=0 delta == 0
+  PASS built board: +1 and +2 entrant delta == sealed total 83538
+  PASS built board: k=0 withPhantom == withoutPhantom (byte)
+
+RESULT: PASS
+
+--- STDERR ---
+
+
+### gate_f4
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/scripts/gate_f4.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+=== F4 GATE — ROSTER-MATCHED, ±5%, BOTH transitions (realized INCLUDING exiters' residuals) ===
+  -2 -> -1 : pred=677809  realized(incl exiters)=697105  err -2.8%  IN ±5%
+  -1 -> now : pred=681034  realized(incl exiters)=680109  err +0.1%  IN ±5%
+  GATE: PASS (both ±5%)
+
+--- DIAGNOSTIC (survivor-only; ageing-quality isolation, NOT a gate) ---
+  -2 -> -1 survivors: pred=652809 realized=697105 err -6.4%
+  -1 -> now survivors: pred=664187 realized=680109 err -2.3%
+
+--- STDERR ---
+
+
+### gate_f5
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/scripts/gate_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json /workspace/afl-rl-engine/session_2026-07-18/legf5/sealed_entrant_structure.json
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+ENTRANT LAYER (sealed a17aafed): 83538 PVC (draft 69266 + mech 14272)  | board emitted: 83538  | MATCH True
+REALIZED league totals (F2 bridge): minus2=770987  minus1=771152  now=752427  (~flat)
+
+=== (A) F5 CONSERVATION GATE — LEAGUE-LEVEL, ±5%, BOTH transitions (roster @ r_pop + §2.viii entrant layer) ===
+  -2 -> -1 : roster_proj=677809 + entrant=83538 = pred=761347  vs realized=771152  err -1.3%  IN ±5%
+  -1 -> now : roster_proj=681034 + entrant=83538 = pred=764572  vs realized=752427  err +1.6%  IN ±5%
+  F5 LEAGUE GATE: PASS (both ±5%)
+  [r_pop-direct variant]:
+    -2 -> -1 : pred=766566 vs 771152  err -0.6%  IN
+    -1 -> now : pred=770004 vs 752427  err +2.3%  IN
+
+=== (B) F4 ROSTER-MATCHED GATE (re-run — must stay IN ±5%; realized = SAME players incl exiters) ===
+  -2 -> -1 : pred=677809  realized(incl exiters)=697105  err -2.8%  IN ±5%
+  -1 -> now : pred=681034  realized(incl exiters)=680109  err +0.1%  IN ±5%
+  F4 ROSTER-MATCHED GATE: PASS (both ±5%)
+
+--- (C) DIAGNOSTIC (survivor-only; ageing-quality isolation, NOT a gate) ---
+  -2 -> -1 survivors: pred=652809 realized=697105 err -6.4%
+  -1 -> now survivors: pred=664187 realized=680109 err -2.3%
+
+--- STDERR ---
+
+
+### legf3_k0
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf3/tests/test_k0_dormancy.py
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  PASS _fa_year(2026)==2026 when _LENS_FORM None
+  PASS _fa_year(2027)==2026 in the forward lens (re-keys to BASE_REF)
+  PASS _fa_year(2027)==2027 off the lens (identity)
+  PASS _form_anchor_clock no-op: AGE_REF stays 2026 off the lens
+  PASS _form_anchor_clock no-op at k=0 (AGE_REF==BASE_REF)
+  PASS _form_anchor_clock BITES forward (AGE_REF->BASE_REF 2026)
+  PASS _form_anchor_clock RESTORES AGE_REF after (==2027)
+  PASS RL_LEGF gate present (_LEGF_ON)
+  PASS _proj_w4 offset==0 at k=0 (=> ah==a => the F3 age-substitution is a no-op)
+  PASS _proj_w4 carries the F3 ah-guard (ah=a-_off if _off>0 else a)
+  PASS _proj_w4 offset gated on RL_LEGF (_LEGF_ON else 0)
+
+RESULT: PASS
+
+--- STDERR ---
+
+
+### legf4_k0
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  PASS _lsym_active False when _LENS_FORM None (k=0 / balanced / backward)
+  PASS _lsym_active False at k=0 even in the lens (AGE_REF==BASE_REF)
+  PASS _lsym_active True ONLY forward (lens set AND AGE_REF>BASE_REF)
+  PASS _lsym_blend(x, x, a) == x  (k=0: advanced read == form-anchored read => identity)
+  PASS _lsym_blend identity holds elementwise byte-equal
+  PASS blend tempers when s<1 (x between form and age)
+  PASS _LSYM_ON present (rides RL_LEGF)
+  PASS RL_LEGF default ON (_LSYM_ON True) — kill-switch path asserted under RL_LEGF=0 in the exit proof
+  PASS b6 damper gated on _lsym_active() and Y!=BASE_REF (k=0 skip)
+  PASS level_now damper gated on _lsym_active() (k=0/backward inert)
+
+RESULT: PASS
+
+--- STDERR ---
+
+
+### legf5_k0
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+  PASS §2.viii layer is INSIDE the RL_LEGF!=0 branch
+  PASS RL_LEGF=0 branch prints 'layer NOT emitted' (no phantom keys)
+  PASS block does NOT call _ev( (engine valuation untouched)
+  PASS block only ADDS out['phantom*'] keys (no out['active']/['back'] mutation)
+  PASS block reads only PVC / vP1 / vP2 / club / sealed file (no ev channel)
+  PASS lens '0' withPhantom==withoutPhantom==Σv (k=0 delta 0)
+  PASS seal-verify present + pinned a17aafed + HALT on drift
+  PASS sealed structure recomputes to a17aafed
+  PASS built board: league k=0 delta == 0
+  PASS built board: +1 and +2 entrant delta == sealed total 83538
+  PASS built board: k=0 withPhantom == withoutPhantom (byte)
+
+RESULT: PASS
+
+--- STDERR ---
+
+
+### gate_f4
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf4/scripts/gate_f4.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+=== F4 GATE — ROSTER-MATCHED, ±5%, BOTH transitions (realized INCLUDING exiters' residuals) ===
+  -2 -> -1 : pred=677809  realized(incl exiters)=697105  err -2.8%  IN ±5%
+  -1 -> now : pred=681034  realized(incl exiters)=680109  err +0.1%  IN ±5%
+  GATE: PASS (both ±5%)
+
+--- DIAGNOSTIC (survivor-only; ageing-quality isolation, NOT a gate) ---
+  -2 -> -1 survivors: pred=652809 realized=697105 err -6.4%
+  -1 -> now survivors: pred=664187 realized=680109 err -2.3%
+
+--- STDERR ---
+
+
+### gate_f5
+COMMAND: python3 /workspace/afl-rl-engine/session_2026-07-18/legf5/scripts/gate_f5.py /tmp/legEF_boardB_gjpeyfa3/rl_after/rl_app_data.json /workspace/afl-rl-engine/session_2026-07-18/legf5/sealed_entrant_structure.json
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "PYTHONHASHSEED": "0", "RL_CONFIG_MODE": null, "RL_LEGE": null, "RL_LEGF": null, "RL_PVC2": null, "RL_REPO": "/workspace/afl-rl-engine"}
+EXIT: 0
+--- STDOUT ---
+ENTRANT LAYER (sealed a17aafed): 83538 PVC (draft 69266 + mech 14272)  | board emitted: 83538  | MATCH True
+REALIZED league totals (F2 bridge): minus2=770987  minus1=771152  now=752427  (~flat)
+
+=== (A) F5 CONSERVATION GATE — LEAGUE-LEVEL, ±5%, BOTH transitions (roster @ r_pop + §2.viii entrant layer) ===
+  -2 -> -1 : roster_proj=677809 + entrant=83538 = pred=761347  vs realized=771152  err -1.3%  IN ±5%
+  -1 -> now : roster_proj=681034 + entrant=83538 = pred=764572  vs realized=752427  err +1.6%  IN ±5%
+  F5 LEAGUE GATE: PASS (both ±5%)
+  [r_pop-direct variant]:
+    -2 -> -1 : pred=766566 vs 771152  err -0.6%  IN
+    -1 -> now : pred=770004 vs 752427  err +2.3%  IN
+
+=== (B) F4 ROSTER-MATCHED GATE (re-run — must stay IN ±5%; realized = SAME players incl exiters) ===
+  -2 -> -1 : pred=677809  realized(incl exiters)=697105  err -2.8%  IN ±5%
+  -1 -> now : pred=681034  realized(incl exiters)=680109  err +0.1%  IN ±5%
+  F4 ROSTER-MATCHED GATE: PASS (both ±5%)
+
+--- (C) DIAGNOSTIC (survivor-only; ageing-quality isolation, NOT a gate) ---
+  -2 -> -1 survivors: pred=652809 realized=697105 err -6.4%
+  -1 -> now survivors: pred=664187 realized=680109 err -2.3%
+
+--- STDERR ---
+
+
+### legf3_backtest_inventory_gradient
+COMMAND: python3 ../../session_2026-07-18/legf3/scripts/backtest.py "$BOARD_B_TEMP_PATH"
+CWD: /workspace/afl-rl-engine/engine/rl_after
+ENV: {"RL_REPO":"/workspace/afl-rl-engine","PYTHONHASHSEED":"0","OPENBLAS_NUM_THREADS":"1","OMP_NUM_THREADS":"1","MKL_NUM_THREADS":"1","NUMEXPR_NUM_THREADS":"1"}
+EXIT: 0
+--- STDOUT ---
+=== THE BACKTEST (F3 fixed board ratios applied to F2 boards) ===
+  -1 board 771152  --project-->  now: pred 672404  vs actual 752427   -80023 (-10.6%) OUT
+  -2 board 770987  --project-->  -1 : pred 668712  vs actual 771152   -102440 (-13.3%) OUT
+  [comp-controlled same-roster: fwd -8.8% | backward -9.0% | symmetric-target fwd≈684463]
+=== THE GRADIENT (signed mean Δ per player; un-inverted iff developing ≥ mid ≥ veteran) ===
+  developing(<=23) n=375  mean Δ   -35.3   (-3.8%)
+  mid(24-27)       n=210  mean Δ  -106.0   (-9.5%)
+  veteran(>=28)    n=219  mean Δ  -141.1   (-18.3%)
+--- STDERR ---
+
