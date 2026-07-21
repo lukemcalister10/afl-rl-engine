@@ -1,0 +1,222 @@
+name: R19 MVP Recovery Materializer
+
+on:
+  push:
+    branches:
+      - codex/prepare-r19-materializer
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r19-materialize-recovery
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      BASE_SHA: 93bd01af86db00c169714652714a364bd2635764
+      OUT_BRANCH: generated/r19-mvp-recovery
+      RL_VENV: ${{ github.workspace }}/../rl_venv312
+    steps:
+      - name: Checkout preparation commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Refuse wrong source commit shape
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = "codex/prepare-r19-materializer"
+          parents=$(git rev-list --parents -n1 HEAD)
+          set -- $parents
+          test "$#" -eq 2 || { echo "HALT: materializer commit must have exactly one parent"; exit 1; }
+          test "$2" = "$BASE_SHA" || { echo "HALT: parent $2 != $BASE_SHA"; exit 1; }
+
+      - name: Pin Python 3.12.3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Ensure python3.12 on PATH
+        run: |
+          set -euo pipefail
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+          python3.12 --version
+
+      - name: Provision pinned Live Scoring environment
+        run: |
+          set -euo pipefail
+          sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+          bash setup_env.sh
+          mkdir -p /home/claude/rl_vendor /home/claude/rl_build
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+          for f in cm_400.pkl q97m.pkl v0surf.pkl; do [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true; done
+          cp -f data/rl_build/rl_app_data.json /home/claude/rl_build/rl_app_data.json
+          bash bootstrap.sh
+
+      - name: Verify authorized fixture identities before writes
+        run: |
+          set -euo pipefail
+          git fetch origin "$BASE_SHA" --depth=1 || true
+          python3 - <<'PY'
+          import hashlib, subprocess
+          fixtures = {
+            'session_2026-07-20/live_scoring_catchup/fixtures/R15.csv':'20d138b3523762022d1c9108ea120cb60f356008cdcaafa58ae2779a256df67b',
+            'session_2026-07-20/live_scoring_catchup/fixtures/R16.csv':'c4d5b3cf5e1f83f73cd8d75c02a01d8480a032c8579a1e118f220dcf47511735',
+            'session_2026-07-20/live_scoring_catchup/fixtures/R17.csv':'11797f6e33c135a8a673d53ede54fe754ad16f987c91abae3c937fdcae84f535',
+            'session_2026-07-20/live_scoring_catchup/fixtures/R18.csv':'8d0b8ae0e9f8dd041961c2241de82365a16602ea242a3ed64f01f352dd0195c6',
+            'session_2026-07-20/live_scoring_catchup/fixtures/R19.csv':'463fbb451c24ab6b4419a44fd9ea947fc5c1ed07b2a071a5637c1da9bdc178de',
+          }
+          base='93bd01af86db00c169714652714a364bd2635764'
+          for path,want in fixtures.items():
+              blob = subprocess.check_output(['git','show',f'{base}:{path}'])
+              assert hashlib.sha256(blob).hexdigest()==want, path+' base blob mismatch'
+              assert hashlib.sha256(open(path,'rb').read()).hexdigest()==want, path+' checkout mismatch'
+          print('authorized fixture identities OK')
+          PY
+
+      - name: No-write preflight with write gates absent
+        run: |
+          set -euo pipefail
+          unset INGEST_SCORE_APPLY INGEST_SCORE_APPLY_ARMED
+          PYTHON="$RL_VENV/bin/python" tools/round_entry/weekly_update.sh catchup \
+            --file 15=session_2026-07-20/live_scoring_catchup/fixtures/R15.csv \
+            --file 16=session_2026-07-20/live_scoring_catchup/fixtures/R16.csv \
+            --file 17=session_2026-07-20/live_scoring_catchup/fixtures/R17.csv \
+            --file 18=session_2026-07-20/live_scoring_catchup/fixtures/R18.csv \
+            --file 19=session_2026-07-20/live_scoring_catchup/fixtures/R19.csv
+
+      - name: Materialize R15-R19 once
+        run: |
+          set -euo pipefail
+          PYTHON="$RL_VENV/bin/python" \
+          INGEST_SCORE_APPLY_ARMED=1 \
+          INGEST_SCORE_APPLY=github-actions-r19-owner-authorized \
+          tools/round_entry/weekly_update.sh catchup \
+            --file 15=session_2026-07-20/live_scoring_catchup/fixtures/R15.csv \
+            --file 16=session_2026-07-20/live_scoring_catchup/fixtures/R16.csv \
+            --file 17=session_2026-07-20/live_scoring_catchup/fixtures/R17.csv \
+            --file 18=session_2026-07-20/live_scoring_catchup/fixtures/R18.csv \
+            --file 19=session_2026-07-20/live_scoring_catchup/fixtures/R19.csv \
+            --approve
+
+      - name: Validate deterministic recovery state and update UI seam
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, pathlib, re
+          root=pathlib.Path('.')
+          state=json.load(open('engine/rl_after/ingestion/finalization_state.json'))
+          for r in range(15,20):
+              e=state['rounds'].get(str(r)) or {}
+              assert e.get('status')=='FINALIZED', f'R{r} not FINALIZED'
+              assert e.get('failure') in (None,''), f'R{r} stale failure'
+          expect={15:('692d6302','2fe26675'),16:('0b951852','8ad41708'),17:('c312eb5b','0308202f'),18:('64795076','4323c448'),19:('f37d9716','92a8f3a0')}
+          for r,(s,b) in expect.items():
+              e=state['rounds'][str(r)]
+              assert e['store_md5_after'].startswith(s), (r,e['store_md5_after'])
+              assert e['board_md5_after'].startswith(b), (r,e['board_md5_after'])
+          boot=json.load(open('data/expected_boot.json'))
+          assert boot.get('as_of_round')==19
+          assert boot.get('board')=='92a8f3a0528e5668029ca8056a841821'
+          assert boot.get('store')=='f37d9716648cfe4382b8c6a24c4f064f'
+          ledger=json.load(open('engine/rl_after/ingestion/applied_rounds_ledger.json'))['applied']
+          counts={r:0 for r in range(15,20)}
+          seen=set()
+          for x in ledger:
+              key=(x.get('stable_player_id'),x.get('season'),x.get('round')) if isinstance(x,dict) else tuple(x)
+              assert key not in seen, 'duplicate ledger entry'
+              seen.add(key)
+              if key[2] in counts: counts[key[2]] += 1
+          assert sum(counts.values())==1858 and counts=={15:318,16:319,17:410,18:406,19:405}, counts
+          for name in ['value_history.json','rank_history.json','pos_rank_history.json']:
+              h=json.load(open('engine/rl_after/ingestion/'+name))
+              rounds=set()
+              for p in h.get('players',{}).values(): rounds.update(map(int,(p.get('by_round') or {}).keys()))
+              assert all(r in rounds for r in range(14,20)), name
+          text=open('ui/data/movers.js').read(); obj=json.loads(text[text.index('{'):text.rindex('}')+1])
+          assert obj.get('rounds')==[15,16,17,18,19]
+          assert (obj.get('integrity') or {}).get('baseline_anchor_ok') is True
+          assert (obj.get('integrity') or {}).get('board_chain_ok') is True
+          board=json.load(open('data/rl_build/rl_app_data.json'))
+          players=board['active'] if isinstance(board,dict) else board
+          assert len(players)==804
+          text=open('ui/data/board_view_working.js').read(); app=json.loads(text[text.index('{'):text.rindex('}')+1])
+          picks=[p for p in app.get('players',[]) if p.get('pick') or p.get('kind')=='pick']
+          assert sum(1 for p in picks if str(p.get('year_offset') or p.get('plus_year') or '').endswith('1')) in (0,64)
+          cfg=pathlib.Path('ui/app/config.js')
+          c=cfg.read_text()
+          c=re.sub(r'EXPECTED_BOARD\s*:\s*["\'][0-9a-f]+["\']', 'EXPECTED_BOARD: "92a8f3a0"', c)
+          c=re.sub(r'DELTA_BASE_DEFAULT\s*:\s*["\'][^"\']+["\']', 'DELTA_BASE_DEFAULT: "round"', c)
+          cfg.write_text(c)
+          pathlib.Path('ui/data/club_valuation.js').write_text('window.__CLUB_VALUATION__={"kind":"club_valuation","as_of_round":19,"available":false,"rows":[],"reason":"Club totals were not regenerated for the R19 weekly MVP recovery; stale R14 numeric totals are intentionally withheld."};\n')
+          print('state validation OK')
+          PY
+
+      - name: Browser smoke check
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-save playwright@1 >/dev/null
+          npx playwright install chromium --with-deps
+          (python3 -m http.server 4173 --bind 127.0.0.1 -d ui >/tmp/r19-ui.log 2>&1 & echo $! >/tmp/r19-ui.pid)
+          node <<'JS'
+          const { chromium, devices } = require('playwright');
+          (async () => {
+            for (const profile of [{name:'desktop', viewport:{width:1366,height:900}}, {name:'mobile', ...devices['iPhone 12']}]) {
+              const browser = await chromium.launch();
+              const context = await browser.newContext(profile);
+              const page = await context.newPage();
+              await page.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
+              const body = await page.locator('body').innerText();
+              if (/fail-closed/i.test(body)) throw new Error(profile.name + ': board fail-closed screen visible');
+              for (const needle of ['Round 19', 'Movers', 'Clubs']) {
+                if (!body.includes(needle)) throw new Error(profile.name + ': missing ' + needle);
+              }
+              if (!/R15|Round 15/.test(body) || !/R19|Round 19/.test(body)) throw new Error(profile.name + ': Movers R15-R19 not visible');
+              if (!/previous|round/i.test(body)) throw new Error(profile.name + ': previous-round movement default not evident');
+              if (!/pick/i.test(body)) throw new Error(profile.name + ': future picks not visible');
+              if (!/not regenerated|unavailable/i.test(body)) throw new Error(profile.name + ': Clubs unavailable reason missing');
+              await browser.close();
+            }
+          })().catch(e => { console.error(e); process.exit(1); });
+          JS
+          kill "$(cat /tmp/r19-ui.pid)"
+
+      - name: Commit generated recovery branch and push
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/r19-materialize-recovery.yml
+          git status --short > /tmp/r19-files.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$OUT_BRANCH"
+          git add -A
+          git commit -m "Materialize Round 19 MVP recovery state"
+          git push origin "$OUT_BRANCH"
+          remote=$(git ls-remote --heads origin "$OUT_BRANCH" | awk '{print $1}')
+          test "$remote" = "$(git rev-parse HEAD)"
+          {
+            echo "## R19 MVP recovery materialization"
+            echo "source preparation SHA: ${GITHUB_SHA}"
+            echo "output branch SHA: $(git rev-parse HEAD)"
+            echo "per-round identities: R15 692d6302/2fe26675; R16 0b951852/8ad41708; R17 c312eb5b/0308202f; R18 64795076/4323c448; R19 f37d9716/92a8f3a0"
+            echo "final validation: passed"
+            echo "browser result: passed"
+            echo "write gate is OFF after materialization: ${INGEST_SCORE_APPLY-<unset>} ${INGEST_SCORE_APPLY_ARMED-<unset>}"
+            echo "no merge, tag, release or deployment occurred"
+            echo '```'; git show --name-only --format= HEAD; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

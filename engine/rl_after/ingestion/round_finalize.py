@@ -119,7 +119,9 @@ class RoundFinalizer:
         entry = st['rounds'].setdefault(str(int(round_n)), {})
         entry['status'] = status
         for k, v in extra.items():
-            if v is not None or k not in entry:
+            if k == 'failure' and status == FINALIZED and v is None:
+                entry.pop('failure', None)
+            elif v is not None or k not in entry:
                 entry[k] = v
         self._save(st)
         self._journal('STATUS', round=int(round_n), status=status)

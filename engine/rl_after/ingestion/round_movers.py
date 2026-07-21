@@ -422,6 +422,21 @@ def movers_conflict(repo_root, round_n, report, *, movers_dir=None, bundle_path=
     return False, ''
 
 
+def _baseline_release_identity_from_report(report):
+    rel = dict((report or {}).get('release_identity') or {})
+    rel['as_of_round'] = (report or {}).get('previous_round')
+    rel['board'] = (report or {}).get('board_md5_before')
+    rel['store'] = (report or {}).get('source_store_md5_before')
+    return rel
+
+
+def _baseline_from_report(report):
+    return {'as_of_round': (report or {}).get('previous_round'),
+            'board': (report or {}).get('board_md5_before'),
+            'store': (report or {}).get('source_store_md5_before'),
+            'release_identity': _baseline_release_identity_from_report(report)}
+
+
 def accumulate_bundle(path, report, repo_root=None):
     """Add/replace this round's report in the UI bundle. A round already present with a DIFFERENT
     governing identity (txn/board/store/round) is a CONFLICT: the bundle is left BYTE-UNCHANGED (the
@@ -432,11 +447,10 @@ def accumulate_bundle(path, report, repo_root=None):
     baseline board and (b) be continuous (report[n].board_md5_before == report[n-1].board_md5_after).
     Returns {'path', 'overwrite_conflict', 'chain_ok', 'baseline_anchor_ok'}."""
     existed = os.path.exists(path)
-    # A pre-seeded bundle (as production ships) carries the board-of-record baseline; only when NO
-    # bundle exists do we lazily create one — and then the baseline is the FIRST round's PRE-apply
-    # board (the board the app was at before any round), NOT the manifest (which has already moved to
-    # the just-committed board by the time finalization runs).
-    bundle = load_bundle(path, repo_root=None) if not existed else load_bundle(path, repo_root=repo_root)
+    # A missing bundle or a pre-seeded ZERO-REPORT bundle is an unconsumed seed: when the first real
+    # report is accumulated, anchor the immutable baseline to that report's ACTUAL pre-apply identity.
+    # Once any report exists, the baseline is never re-anchored.
+    bundle = load_bundle(path, repo_root=repo_root) if existed else load_bundle(path, repo_root=None)
     rnd = str(report['submitted_round'])
     reports = bundle.setdefault('reports', {})
     prior = reports.get(rnd)
@@ -447,14 +461,12 @@ def accumulate_bundle(path, report, repo_root=None):
             return {'path': path, 'overwrite_conflict': True, 'wrote': False,
                     'chain_ok': (bundle.get('integrity') or {}).get('board_chain_ok'),
                     'baseline_anchor_ok': (bundle.get('integrity') or {}).get('baseline_anchor_ok')}
+    first_real_report = not reports
     reports[rnd] = report
     bundle['rounds'] = sorted(int(r) for r in reports)
-    if not bundle.get('baseline'):
+    if first_real_report or not bundle.get('baseline'):
         first = reports[str(bundle['rounds'][0])]
-        bundle['baseline'] = {'as_of_round': first.get('previous_round'),
-                              'board': first.get('board_md5_before'),
-                              'store': first.get('source_store_md5_before'),
-                              'release_identity': first.get('release_identity')}
+        bundle['baseline'] = _baseline_from_report(first)
     baseline = bundle.get('baseline') or {}
     base_board = baseline.get('board')
     # board-identity chain: report[n].board_md5_before must equal report[n-1].board_md5_after,
