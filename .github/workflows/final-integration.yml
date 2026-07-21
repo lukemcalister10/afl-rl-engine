@@ -78,9 +78,18 @@ jobs:
         run: |
           set -euo pipefail
           npm i --no-save playwright-core@1.47.2
-          npx playwright install chromium
+          # Pin the INSTALLER to the same version so it fetches the exact chromium revision
+          # playwright-core@1.47.2 expects (an unpinned `npx playwright install` fetches a different
+          # revision, leaving chromium.executablePath() pointing at a path that does not exist).
+          npx --yes playwright@1.47.2 install chromium
           echo "PLAYWRIGHT_CORE=$PWD/node_modules/playwright-core" >> "$GITHUB_ENV"
-          echo "CHROME_BIN=$(node -e "const {chromium}=require('playwright-core');console.log(chromium.executablePath())")" >> "$GITHUB_ENV"
+          CHROME="$(node -e "const {chromium}=require('playwright-core');console.log(chromium.executablePath())")"
+          # Belt-and-braces: if the pinned path is somehow absent, fall back to whatever chromium landed in
+          # the ms-playwright cache (playwright-core 1.47.2 drives any recent chromium over stable CDP).
+          if [ ! -x "$CHROME" ]; then CHROME="$(ls -d "$HOME"/.cache/ms-playwright/chromium-*/chrome-linux/chrome 2>/dev/null | head -1)"; fi
+          test -x "$CHROME" || { echo "no chromium installed for the UI checks"; exit 1; }
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          echo "Chromium for UI checks: $CHROME"
 
       - name: Config / release-state identity closure (fail-closed)
         run: |
