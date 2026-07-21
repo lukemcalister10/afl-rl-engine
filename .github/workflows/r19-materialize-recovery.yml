@@ -71,6 +71,14 @@ jobs:
           set -euo pipefail
           sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
           bash setup_env.sh
+          export PATH="$RL_VENV/bin:$PATH"
+          "$RL_VENV/bin/python" - <<'PY'
+          import sys, numpy, scipy, sklearn, openpyxl
+          got = (sys.version.split()[0], numpy.__version__, scipy.__version__, sklearn.__version__, openpyxl.__version__)
+          want = ('3.12.3', '2.4.4', '1.17.1', '1.8.0', '3.1.5')
+          assert got == want, f'pinned environment mismatch: {got} != {want}'
+          print('pinned environment OK:', *got)
+          PY
           mkdir -p /home/claude/rl_vendor /home/claude/rl_build
           cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
           for f in cm_400.pkl q97m.pkl v0surf.pkl; do [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true; done
@@ -199,7 +207,7 @@ jobs:
           cfg=pathlib.Path('ui/app/config.js')
           c=cfg.read_text()
           c=re.sub(r'EXPECTED_BOARD\s*[:=]\s*["\'][0-9a-f]+["\']', 'EXPECTED_BOARD: "92a8f3a0"', c)
-          c=re.sub(r'DELTA_BASE_DEFAULT\s*[:=]\s*["\'][^"\']+["\']', 'DELTA_BASE_DEFAULT: "round"', c)
+          c=re.sub(r'DELTA_BASE_DEFAULT\s*[:=]\s*["\'][^["\']]+["\']', 'DELTA_BASE_DEFAULT: "round"', c)
           cfg.write_text(c)
           pathlib.Path('ui/data/club_valuation.js').write_text('window.__CLUB_VALUATION__={"kind":"club_valuation","as_of_round":19,"available":false,"rows":[],"reason":"Club totals were not regenerated for the R19 weekly MVP recovery; stale R14 numeric totals are intentionally withheld."};\n')
           print('state validation OK')
