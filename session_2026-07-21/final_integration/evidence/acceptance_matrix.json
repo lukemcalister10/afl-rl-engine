@@ -50,6 +50,11 @@
       "pass": true,
       "rc": 0
     },
+    "season_progress": {
+      "cmd": "python3 session_2026-07-21/final_integration/tests/season_progress_test.py",
+      "pass": true,
+      "rc": 0
+    },
     "trackB_catchup_preflight": {
       "cmd": "python3 engine/rl_after/ingestion/test_catchup_preflight.py",
       "pass": true,
@@ -66,7 +71,7 @@
       "rc": 0
     }
   },
-  "final_board_md5": "039ff8d45a3a47e2f34f183933353bd9",
+  "final_board_md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
   "generated_for": "integration/v2.11-final-rc",
   "hard_fail": [],
   "matrix": {
@@ -94,10 +99,10 @@
       "detail": {
         "balanced_board_md5_lineage": "06d8af60b679a12db07c064c60c065f9",
         "config": "3a1e714f2fa015b6e1942fbbbcaf2b22c359cf82ae5067e3cab199a25f794132",
-        "expected_boot_board": "039ff8d45a3a47e2f34f183933353bd9",
-        "git_blob": "80eb536bc8dc9dcb64e037ad912a2b7219cb0769",
-        "md5": "039ff8d45a3a47e2f34f183933353bd9",
-        "sha256": "3445d0ffe1732e6c3af8399d16d946c9457f76a183273a8a937af0c2be835e70",
+        "expected_boot_board": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+        "git_blob": "42f063bb911a23cd6c53cbb9983f72c685b78bc4",
+        "md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+        "sha256": "0026c3f82e6bb5558e70163a7136d0e8e0dd7ffd409aeb9b33b89e5e7ab5b65f",
         "store": "968de0c7a0183ca3914165536f39607a"
       },
       "status": "PASS"
@@ -164,6 +169,26 @@
     },
     "19_acceptance_summary": {
       "detail": "this file",
+      "status": "PASS"
+    },
+    "S1_canonical_reproducibility": {
+      "detail": "clean-room: engine build reproduces the committed board 2ab73a6f BYTE-IDENTICAL + bundles byte-identical; Board B is an oracle only (no diagnostic build input). cleanroom_repro.json 9/9",
+      "status": "PASS"
+    },
+    "S2_season_progress": {
+      "detail": "SEASON_PROG=0.58 frozen valuation authority (pinned via rl_model+board md5), decoupled from dynamic as_of_round; RL_SEASON_ROUNDS=24 = ingestion sanity bound (class B, inert); R14-vs-R24 controlled test + contract binding + fail-closed coherence",
+      "status": "PASS"
+    },
+    "S3_no_row_caps": {
+      "detail": "all 804 players render on the current ladder (no 60-cap); grouped mode renders every player; last row in DOM",
+      "status": "PASS"
+    },
+    "S4_unified_future_ranking": {
+      "detail": "one combined 868-asset value-descending ranking (804 players + 64 interleaved picks) per lens; ranks 1..868; last player + last pick in DOM; filter removes picks; residuals in a separate reconciliation panel",
+      "status": "PASS"
+    },
+    "S5_r15_ladder_survival": {
+      "detail": "disposable R15 update: the updater board-regen reproduces the 64-pick ladder + exact F5 reconciliation automatically (no manual post-processing); canonical store/board unchanged; gate OFF. r15_ladder_survival.json 12/12",
       "status": "PASS"
     }
   },

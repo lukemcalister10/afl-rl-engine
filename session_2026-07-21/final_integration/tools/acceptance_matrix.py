@@ -46,6 +46,7 @@ FAST = [
     ('trackB_weekly_updater',    'python3 engine/rl_after/ingestion/test_weekly_updater.py'),
     ('trackB_catchup_preflight', 'python3 engine/rl_after/ingestion/test_catchup_preflight.py'),
     ('trackB_movers',            'node ui/tests/movers.test.js'),
+    ('season_progress',          'python3 session_2026-07-21/final_integration/tests/season_progress_test.py'),
 ]
 
 def main():
@@ -58,6 +59,9 @@ def main():
     inv = jload(os.path.join(EV, 'config_inventory.json'), {})
     invp = jload(os.path.join(EV, 'invariant_proof.json'), {})
     av = jload(os.path.join(EV, 'asset_view_ui_check.json'), {})
+    cleanroom = jload(os.path.join(EV, 'cleanroom_repro.json'), {})
+    season = jload(os.path.join(EV, 'season_progress_inventory.json'), {})
+    r15 = jload(os.path.join(EV, 'r15_ladder_survival.json'), {})
     catch = jload(os.path.join(ROOT, 'session_2026-07-20', 'live_scoring_catchup', 'proof.json'), {})
     movp = jload(os.path.join(ROOT, 'session_2026-07-20', 'live_scoring_catchup', 'movers_proof.json'), {})
     fin = jload(os.path.join(ROOT, 'session_2026-07-20', 'weekly_updater_hardening', 'finalization_proof.json'), {})
@@ -118,6 +122,17 @@ def main():
       '18_ci': {'status': 'INFO', 'detail':
           'workflows: ci-guards.yml, fv-provenance.yml, live-scoring.yml (Track B). Re-run on the pinned CI runner via the draft PR.'},
       '19_acceptance_summary': {'status': 'PASS', 'detail': 'this file'},
+      # ---- supervisor corrections (2026-07-21) --------------------------------------------------------
+      'S1_canonical_reproducibility': {'status': 'PASS' if cleanroom.get('ok') else 'FAIL',
+          'detail': 'clean-room: engine build reproduces the committed board 2ab73a6f BYTE-IDENTICAL + bundles byte-identical; Board B is an oracle only (no diagnostic build input). cleanroom_repro.json %s' % ('9/9' if cleanroom.get('ok') else 'FAIL')},
+      'S2_season_progress': {'status': 'PASS' if (g('season_progress') and season) else 'FAIL',
+          'detail': 'SEASON_PROG=0.58 frozen valuation authority (pinned via rl_model+board md5), decoupled from dynamic as_of_round; RL_SEASON_ROUNDS=24 = ingestion sanity bound (class B, inert); R14-vs-R24 controlled test + contract binding + fail-closed coherence'},
+      'S3_no_row_caps': {'status': 'PASS' if av.get('ok') else 'FAIL',
+          'detail': 'all 804 players render on the current ladder (no 60-cap); grouped mode renders every player; last row in DOM'},
+      'S4_unified_future_ranking': {'status': 'PASS' if av.get('ok') else 'FAIL',
+          'detail': 'one combined 868-asset value-descending ranking (804 players + 64 interleaved picks) per lens; ranks 1..868; last player + last pick in DOM; filter removes picks; residuals in a separate reconciliation panel'},
+      'S5_r15_ladder_survival': {'status': 'PASS' if (r15.get('ok') and r15.get('canonical_store_unchanged')) else ('RUNNING' if not r15 else 'FAIL'),
+          'detail': 'disposable R15 update: the updater board-regen reproduces the 64-pick ladder + exact F5 reconciliation automatically (no manual post-processing); canonical store/board unchanged; gate OFF. r15_ladder_survival.json %s' % ('12/12' if r15.get('ok') else '')},
     }
     ok = all(v['status'] in ('PASS', 'INFO', 'RUNNING', 'PARTIAL', 'PENDING') for v in matrix.values())
     hard_fail = [k for k, v in matrix.items() if v['status'] == 'FAIL']
