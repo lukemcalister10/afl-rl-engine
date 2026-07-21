@@ -1,0 +1,136 @@
+{
+  "ok": true,
+  "fails": 0,
+  "checks": [
+    {
+      "name": "390px · now-lens: no asset ladder (player-only)",
+      "ok": true,
+      "detail": "present=false"
+    },
+    {
+      "name": "390px · now-lens: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1 asset ladder present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1 exactly 64 visible 2027 picks",
+      "ok": true,
+      "detail": "visible=64"
+    },
+    {
+      "name": "390px · +1 exactly 2 residual aggregates",
+      "ok": true,
+      "detail": "residual=2"
+    },
+    {
+      "name": "390px · +1 first row = \"2027 Draft Pick 1\"",
+      "ok": true,
+      "detail": "2027 Draft Pick 1"
+    },
+    {
+      "name": "390px · +1 last visible = \"2027 Draft Pick 64\"",
+      "ok": true,
+      "detail": "2027 Draft Pick 64"
+    },
+    {
+      "name": "390px · +1 no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1 pick rows carry asset id, no player identity",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +2 exactly 64 visible 2028 picks",
+      "ok": true,
+      "detail": "visible=64"
+    },
+    {
+      "name": "390px · +2 exactly 2 residual aggregates",
+      "ok": true,
+      "detail": "residual=2"
+    },
+    {
+      "name": "390px · +2 first row = \"2028 Draft Pick 1\"",
+      "ok": true,
+      "detail": "2028 Draft Pick 1"
+    },
+    {
+      "name": "390px · +2 no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · now-lens: no asset ladder (player-only)",
+      "ok": true,
+      "detail": "present=false"
+    },
+    {
+      "name": "1440px · now-lens: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1 asset ladder present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1 exactly 64 visible 2027 picks",
+      "ok": true,
+      "detail": "visible=64"
+    },
+    {
+      "name": "1440px · +1 exactly 2 residual aggregates",
+      "ok": true,
+      "detail": "residual=2"
+    },
+    {
+      "name": "1440px · +1 first row = \"2027 Draft Pick 1\"",
+      "ok": true,
+      "detail": "2027 Draft Pick 1"
+    },
+    {
+      "name": "1440px · +1 last visible = \"2027 Draft Pick 64\"",
+      "ok": true,
+      "detail": "2027 Draft Pick 64"
+    },
+    {
+      "name": "1440px · +1 no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1 pick rows carry asset id, no player identity",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +2 exactly 64 visible 2028 picks",
+      "ok": true,
+      "detail": "visible=64"
+    },
+    {
+      "name": "1440px · +2 exactly 2 residual aggregates",
+      "ok": true,
+      "detail": "residual=2"
+    },
+    {
+      "name": "1440px · +2 first row = \"2028 Draft Pick 1\"",
+      "ok": true,
+      "detail": "2028 Draft Pick 1"
+    },
+    {
+      "name": "1440px · +2 no document overflow",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

@@ -488,6 +488,66 @@ MD.board = (function () {
     }
   }
 
+  /* final integration 2026-07-21: the VISIBLE future-draft asset ladder on the +1/+2 lenses.
+     The current / backward views are PLAYER-only ladders; the forward views are ASSET ladders — the known
+     players (rendered above by the player pipeline, with vP1/vP2) PLUS the anonymous future national-draft
+     placeholders (2027/2028 Draft Pick 1-64 at the release-active PVC) and the labelled residual entrant
+     aggregates. These are ASSETS, not players: no key, no card, no club / positional-rank / club-filter /
+     ΣSCAR join — they never enter the player pool, clubAgg, or the position/club filters. The visible
+     picks + residual aggregates reconcile EXACTLY to the sealed F5 entrant layer (draftAssetTotals). */
+  function pickRow(pk, maxV) {
+    const b = fmt.el("button", "row working pickrow");
+    b.setAttribute("data-asset", pk.id);
+    const tag = pk.residual
+      ? '<span class="tag" title="Aggregate future-entrant value not shown as an individual numbered ' +
+        'national-draft pick (deep national-draft tail beyond pick 64 / non-national-draft entry mechanisms). ' +
+        'Reconciled to the sealed F5 entrant layer.">Entrant aggregate</span>'
+      : '<span class="tag" title="Anonymous future national-draft asset — NOT a player, and not held by any ' +
+        'AFL or AFFL club. Valued at the release-active pick-value curve (PVC).">Draft asset</span>';
+    b.innerHTML =
+      '<span class="rank num">' + (pk.n != null ? pk.n : "·") + "</span>" +
+      '<span class="pin"></span>' +
+      '<span class="nm">' + fmt.esc(pk.label) + tag + "</span>" +
+      '<span class="pos">—</span>' +
+      '<span class="club"><span class="affl" title="Future asset — no AFFL club">Future draft</span>' +
+        '<span class="afl" title="Future asset — no AFL club">—</span></span>' +
+      '<span class="val num">' + fmt.n(pk.v) + "</span>" +
+      MD.valueLine(pk.v, maxV) +
+      '<span class="pill na" title="Future asset — no round movement">—</span>' +
+      '<span class="meta">' + (pk.n != null ? "pick " + pk.n : "aggregate") + " · " + fmt.esc(String(pk.labelYear)) + "</span>";
+    return b;   // no click handler — assets have no player card
+  }
+
+  function assetLadder(container) {
+    const s = MD.state;
+    const w = MD.seam.working;
+    const off = s.lens - 2;                         // lens 3 -> +1 (2027), lens 4 -> +2 (2028)
+    const picks = (w.lensPicks || []).filter(function (p) { return p.lens === off; });
+    if (!picks.length) return;                      // RL_LEGF=0 board / no ladder -> nothing (empty-state safe)
+    const ly = 2026 + off;
+    const visible = picks.filter(function (p) { return !p.residual; })
+                         .sort(function (a, b) { return b.v - a.v; });   // Pick 1..64 (PVC desc)
+    const residual = picks.filter(function (p) { return p.residual; })
+                          .sort(function (a, b) { return b.v - a.v; });
+    const dat = (w.draftAssetTotals || {})["+" + off] || null;
+    const sec = fmt.el("section", "assetladder");
+    const head = fmt.el("div", "assethead");
+    head.style.cssText = "margin:.7rem 0 .2rem;font-weight:600;font-size:.9rem;border-top:1px solid rgba(127,127,127,.25);padding-top:.5rem";
+    head.innerHTML = fmt.esc(ly + " future draft assets") +
+      ' <span style="opacity:.6;font-weight:400;font-size:.78rem">— ' + visible.length +
+      " anonymous national-draft placeholders (Pick 1–" + visible.length + ") priced at the release-active PVC" +
+      (dat ? " · Σ visible " + fmt.n(dat.visible_1_64) + " + residual " + fmt.n(dat.residual_total) +
+        " = entrant layer " + fmt.n(dat.total) + " (reconciled to F5)" : "") +
+      " · assets, not players — never in the current ranking</span>";
+    sec.appendChild(head);
+    const rowsEl = fmt.el("div", "rows");
+    const maxV = visible.length ? visible[0].v : 1;
+    visible.forEach(function (p) { rowsEl.appendChild(pickRow(p, maxV)); });
+    residual.forEach(function (p) { rowsEl.appendChild(pickRow(p, maxV)); });
+    sec.appendChild(rowsEl);
+    container.appendChild(sec);
+  }
+
   function render(container) {
     container.innerHTML = "";
     const s = MD.state;
@@ -540,6 +600,9 @@ MD.board = (function () {
       rowsEl.appendChild(picksPanel(clubFilter));
     }
     container.appendChild(rowsEl);
+
+    // final integration: the visible future-draft asset ladder (Pick 1-64 + residual aggregates) on +1/+2.
+    if (s.tier === "working" && (s.lens === 3 || s.lens === 4)) assetLadder(container);
 
     const foot = fmt.el("footer", "foot");
     if (s.tier === "working") {
