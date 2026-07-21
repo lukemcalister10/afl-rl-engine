@@ -23,7 +23,7 @@ Proves the 2026-07-20 provenance hardening (staged_apply):
 Run:  python3 session_2026-07-20/weekly_updater_hardening/fv_provenance_proof.py [--write]
 Exit 0 = ALL PASS.
 """
-import os, sys, json, shutil, tempfile, hashlib, argparse, time
+import os, sys, json, shutil, tempfile, hashlib, argparse, time, uuid
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -56,9 +56,11 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
                     os.path.join(dst, 'engine', 'forward_valuation'))
     ws = os.path.join(dst, 'engine', 'rl_after')
-    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py'):
+    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py',
+              'season_state.py', 'release_contract.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(ws, f))
-    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py'):
+    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py',
+              'season_state.py', 'release_contract.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(dst, f))
     shutil.copytree(os.path.join(REPO, 'data'), os.path.join(dst, 'data'))
     shutil.copytree(os.path.join(REPO, 'session_2026-07-18', 'legf5'),
@@ -254,7 +256,12 @@ def main(argv):
     ap.add_argument('--write', action='store_true')
     args = ap.parse_args(argv[1:])
     t0 = time.time()
-    report = {}
+    run_id = os.environ.get('GITHUB_RUN_ID') or 'local-%s' % uuid.uuid4().hex
+    report = {
+        'proof_generated_at_epoch': t0,
+        'proof_generated_at_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t0)),
+        'proof_run_id': run_id,
+    }
 
     real_off = False
     try:
@@ -301,9 +308,16 @@ def main(argv):
           % ('ALL PASS' if all_pass else 'FAIL', report['elapsed_s']))
 
     if args.write:
-        with open(os.path.join(HERE, 'fv_proof.json'), 'w') as f:
+        out_json = os.path.join(HERE, 'fv_proof.json')
+        out_md = os.path.join(HERE, 'FV_PROOF.md')
+        for out in (out_json, out_md):
+            try:
+                os.remove(out)
+            except FileNotFoundError:
+                pass
+        with open(out_json, 'x') as f:
             json.dump(report, f, indent=2, sort_keys=True)
-        with open(os.path.join(HERE, 'FV_PROOF.md'), 'w') as f:
+        with open(out_md, 'x') as f:
             f.write(_md(report))
         print("wrote fv_proof.json + FV_PROOF.md")
     return 0 if all_pass else 1
@@ -315,7 +329,7 @@ def _md(r):
     return "\n".join([
         "# FORWARD-VALUATION PROVENANCE + CONFIG-POLICY PROOF (gate OFF, scratch only)", "",
         "Writes nothing to the real store (gate OFF: real-store apply refused = `%s`)." % r['gate_off_on_real_store'],
-        "", "## RESULT: **%s**  (%.1fs)" % ('ALL PASS' if r['ALL_PASS'] else 'FAIL', r['elapsed_s']), "",
+        "", "## RESULT: **%s**  (%.1fs)\n\nGenerated at `%s` for proof run `%s`" % ('ALL PASS' if r['ALL_PASS'] else 'FAIL', r['elapsed_s'], r['proof_generated_at_utc'], r['proof_run_id']), "",
         "## RED — the audit's defect (stale `21d530bf` on the RL_FV default path)",
         "| check | value |", "|---|---|",
         "| ambient `%s` distribution_pricing md5 | `%s` |" % (rg['ambient_fv_path'], rg['ambient_distribution_pricing_md5']),
