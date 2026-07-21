@@ -9,12 +9,19 @@
      - no document-width overflow at mobile (390) + desktop (1440).
    Run: PLAYWRIGHT_CORE=<abs> CHROME_BIN=<abs> node session_2026-07-21/final_integration/tools/asset_view_ui_check.mjs */
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_CORE || 'playwright-core');
-const URL = 'file:///home/user/afl-rl-engine/ui/index.html';
-const OUT = '/home/user/afl-rl-engine/session_2026-07-21/final_integration/evidence';
+// Repo-relative paths (portable across the local workspace + the CI runner). Prefer RL_REPO (the
+// workflow sets it to the checkout root); else derive from this file's location: tools -> final_integration
+// -> session_2026-07-21 -> repo root.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = process.env.RL_REPO || path.resolve(__dirname, '..', '..', '..');
+const URL = 'file://' + path.join(ROOT, 'ui', 'index.html');
+const OUT = path.join(ROOT, 'session_2026-07-21', 'final_integration', 'evidence');
 fs.mkdirSync(OUT, { recursive: true });
 function chromePath() {
   if (process.env.CHROME_BIN && fs.existsSync(process.env.CHROME_BIN)) return process.env.CHROME_BIN;

@@ -14,6 +14,8 @@
      - the Club-valuation and held-pick views render without HALT (and without document overflow).
    1440 additionally documents that the desktop layout is preserved. */
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { createRequire } from 'module';
 
@@ -23,8 +25,12 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_CORE || 'playwright-core');
 
-const URL = 'file:///home/user/afl-rl-engine/ui/index.html';
-const OUT = '/home/user/afl-rl-engine/session_2026-07-20/ui_release_seam/evidence';
+// Repo-relative paths (portable across the local workspace + the CI runner). Prefer RL_REPO (the
+// workflow sets it to the checkout root); else derive from this file's location: tests -> ui -> repo root.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = process.env.RL_REPO || path.resolve(__dirname, '..', '..');
+const URL = 'file://' + path.join(ROOT, 'ui', 'index.html');
+const OUT = path.join(ROOT, 'session_2026-07-20', 'ui_release_seam', 'evidence');
 fs.mkdirSync(OUT, { recursive: true });
 
 function chromePath() {
