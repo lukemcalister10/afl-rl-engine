@@ -108,9 +108,9 @@ jobs:
         # print the md5 of the board THIS run built (rl_export.py output from the build step above) so CI's
         # board identity is visible in the log, printed BEFORE the panel so it appears even on a panel failure.
         # A2 proof = this printed md5 on the AMD runner == the bake-box md5. Board of record = the v2.10
-        # CAPTAINCY BAKE board 790136a380b56ebdf5db2874b6f354de (supersedes the determinism board 800bf461).
+        # FINAL-INTEGRATION board of record = 2ab73a6fed1f06fc8eecc2ce597c2aec (v2.11-final-rc; supersedes 790136a3 / 06d8af60).
         run: |
-          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (deterministic board of record = 790136a380b56ebdf5db2874b6f354de)"
+          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (final-integration board of record = 2ab73a6fed1f06fc8eecc2ce597c2aec)"
           bash run_panel.sh
 
       - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"

@@ -60,7 +60,7 @@ jobs:
         run: sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
 
       - name: Provision pinned env (setup_env.sh)
-        # The board of record 06d8af60 is only reproducible on the pinned numpy/scipy/sklearn wheels (item 392).
+        # The present-lens baseline 06d8af60 (final board 2ab73a6f) is only reproducible on the pinned numpy/scipy/sklearn wheels (item 392).
         run: |
           set -euo pipefail
           bash setup_env.sh
