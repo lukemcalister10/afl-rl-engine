@@ -38,6 +38,13 @@ def board_rows(path: Path):
     return board, rows
 
 
+def rank_map(rows):
+    """Canonical weekly rank law: descending v, ties by stable key."""
+    ordered = sorted((p for p in rows if p.get("key")),
+                     key=lambda p: (-(float(p.get("v") or 0.0)), p["key"]))
+    return {p["key"]: i for i, p in enumerate(ordered, 1)}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--baseline", required=True)
@@ -59,10 +66,8 @@ def main() -> None:
     assert len(bmap) == len(cmap) == 804
     assert set(bmap) == set(cmap)
 
-    # The board is emitted in rank order. Cross-check the known R19 Gothard rank so a changed exporter
-    # ordering cannot silently turn array position into a false rank.
-    brank = {p["key"]: i for i, p in enumerate(baseline, 1)}
-    crank = {p["key"]: i for i, p in enumerate(candidate, 1)}
+    brank = rank_map(baseline)
+    crank = rank_map(candidate)
     assert brank["phoenix-gothard"] == 415, brank["phoenix-gothard"]
 
     g = load_engine(workspace)
@@ -161,6 +166,7 @@ def main() -> None:
         "status": "PASS",
         "baseline_board_md5": md5(baseline_path),
         "candidate_board_md5": md5(candidate_path),
+        "candidate_engine_md5": md5(workspace / "_merged_recover.py"),
         "store_md5": md5(workspace / "rl_model_data.json"),
         "active_players": len(rows),
         "stalled_fire_population": len(fire_keys),
