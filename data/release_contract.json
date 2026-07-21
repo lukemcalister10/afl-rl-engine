@@ -1,0 +1,47 @@
+{
+  "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "as_of_round": 14,
+  "switch_posture": {
+    "RL_PVC2": "1",
+    "RL_LEGE": "1",
+    "RL_LEGF": "1"
+  },
+  "config_sha256": "3a1e714f2fa015b6e1942fbbbcaf2b22c359cf82ae5067e3cab199a25f794132",
+  "identities": {
+    "board": "039ff8d45a3a47e2f34f183933353bd9",
+    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "store": "968de0c7a0183ca3914165536f39607a",
+    "engine_head": "904722cd3fc16957a58796d8e2cb4caa",
+    "rl_model": "cc626d7db7524929e5d2f1b024b25fb4",
+    "fv": "de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "band": "34faa8659cc8f19794f5cb9584fa19b2"
+  },
+  "pvc_provenance": {
+    "adopted_pathway": "RL_PVC2",
+    "curve_file": "pvc_curve_v2.json",
+    "curve_payload_md5": "89c14729",
+    "numeraire_pin1": 3000
+  },
+  "must_be_unset": [
+    "RL_UNCOMP_S",
+    "RL_LSYM_TAB",
+    "RL_V0SURF_REFIT"
+  ],
+  "present_lens_baseline": {
+    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "active": 804,
+    "present_value_total": 752427,
+    "note": "durable present-lens release-lineage identity; NOT the final complete-board file hash"
+  },
+  "f5_entrant_reconciliation": {
+    "visible_1_64": 64617,
+    "residual_nd_tail": 4649,
+    "residual_mech": 14272,
+    "entrant_layer_pvc": 83538,
+    "seal": "a17aafed",
+    "reconciled": true
+  },
+  "contract_sha256": "fec18cddd7c1a85313db6d9c31bbcd64143ff04d19f7c4f29fe9dae080f755c2"
+}

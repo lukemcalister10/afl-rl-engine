@@ -175,15 +175,13 @@ if __name__ == '__main__':
         print(contract_hash(load(_root))); sys.exit(0)
     if len(sys.argv) > 1 and sys.argv[1] == 'check':
         # assert the contract is internally + externally consistent (as a canonical build would), non-zero on fail.
+        os.environ.setdefault('RL_CONFIG_MODE', 'gate')
         try:
-            os.environ.setdefault('RL_CONFIG_MODE', 'gate')
             h = verify('gate', _root, halt=False)
-            print("RELEASE-CONTRACT CHECK: PASS  (contract %s; identities + config + posture consistent)" % str(h)[:12])
-            sys.exit(0)
         except AssertionError as e:
             print("RELEASE-CONTRACT CHECK: FAILED" + str(e)); sys.exit(1)
-        except SystemExit as e:
-            print("RELEASE-CONTRACT CHECK: FAILED" + str(e)); sys.exit(1)
+        print("RELEASE-CONTRACT CHECK: PASS  (contract %s; identities + config + posture consistent)" % str(h)[:12])
+        sys.exit(0)
     # default: print the contract hash + a short summary
     try:
         c = load(_root)

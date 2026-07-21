@@ -34,7 +34,7 @@ CURVE_CONTRACT = os.environ.get("RL_UI_CURVE_CONTRACT", os.path.join(ROOT, "ui",
 BOOT = os.environ.get("RL_UI_BOOT", os.path.join(ROOT, "data", "expected_boot.json"))
 OUT = os.environ.get("RL_UI_OUT", os.path.join(UI_DATA, "club_valuation.js"))
 
-EXPECTED_BOARD = "06d8af60"      # ui/app/config.js EXPECTED_BOARD — v2.11-rc1 balanced board of record
+EXPECTED_BOARD = "039ff8d4"      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
 PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
 BASE_YEAR = 2026
 

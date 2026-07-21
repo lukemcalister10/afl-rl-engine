@@ -1,74 +1,5 @@
 {
-  "class_A_unrepresented": [
-    {
-      "var": "RL_DAMP",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_EVW",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_LEGF",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_LSYM_TAB",
-      "why": "class-A override hook not declared must_be_unset in release_contract.json"
-    },
-    {
-      "var": "RL_ISOFADE",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_SAGE29",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_LSYM",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_EO2",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_ABSENCE",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_V0SURF_REFIT",
-      "why": "class-A override hook not declared must_be_unset in release_contract.json"
-    },
-    {
-      "var": "RL_PVC2",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_LEGE",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_FLEX",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_CAPT",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_UNCOMP",
-      "why": "class-A switch absent from model_config.json vars"
-    },
-    {
-      "var": "RL_UNCOMP_S",
-      "why": "class-A override hook not declared must_be_unset in release_contract.json"
-    },
-    {
-      "var": "RL_UNCONSERVE",
-      "why": "class-A switch absent from model_config.json vars"
-    }
-  ],
+  "class_A_unrepresented": [],
   "class_counts": {
     "?": 0,
     "A": 63,
@@ -77,7 +8,7 @@
   },
   "n_reads": 148,
   "n_vars": 82,
-  "ok": false,
+  "ok": true,
   "root": "/home/user/afl-rl-engine",
   "surface_file_count": 69,
   "unclassified": [],

@@ -112,9 +112,9 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
     st = (b or {}).get("stamp", {})
     check(st.get("pvcPathway") == "RL_PVC2", "CASE1 resolved pathway == RL_PVC2", st.get("pvcPathway"))
     check(st.get("pvcCurveMd5") == "89c14729", "CASE1 resolved curve_md5 == 89c14729", st.get("pvcCurveMd5"))
-    check(str(st.get("board", ""))[:8] == "06d8af60", "CASE1 board id 06d8af60 in stamp")
-    check(st.get("releaseVersion") == "v2.11-rc1" and st.get("asOfRound") == 14,
-          "CASE1 stamp carries releaseVersion v2.11-rc1 + asOfRound 14")
+    check(str(st.get("board", ""))[:8] == "039ff8d4", "CASE1 board id 039ff8d4 in stamp")
+    check(st.get("releaseVersion") == "v2.11-final-rc1-PROVISIONAL" and st.get("asOfRound") == 14,
+          "CASE1 stamp carries releaseVersion v2.11-final-rc1-PROVISIONAL + asOfRound 14")
     for stale in ("790136a3", "v2.10", "pvc_curve_L1b", "b1fd0bce", "fc7045d6"):
         raw = json.dumps(b)
         check(stale not in raw, "CASE1 no stale token '%s' carried forward" % stale)
