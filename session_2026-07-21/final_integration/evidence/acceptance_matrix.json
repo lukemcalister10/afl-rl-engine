@@ -98,7 +98,7 @@
     "09_final_board_identity": {
       "detail": {
         "balanced_board_md5_lineage": "06d8af60b679a12db07c064c60c065f9",
-        "config": "3a1e714f2fa015b6e1942fbbbcaf2b22c359cf82ae5067e3cab199a25f794132",
+        "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
         "expected_boot_board": "2ab73a6fed1f06fc8eecc2ce597c2aec",
         "git_blob": "42f063bb911a23cd6c53cbb9983f72c685b78bc4",
         "md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",

@@ -15,6 +15,81 @@
       "picks_2028": 64,
       "f5_plus1": 83538,
       "f5_reconciled": true
+    },
+    {
+      "round": 15,
+      "as_of_round": 15,
+      "calendar_progress": 0.63,
+      "exposure_pace": 0.591,
+      "eligible_durable": 305,
+      "median_current_games": 13,
+      "store_md5": "692d63024ea7a2d990ce4edc86c88572",
+      "board_md5": "2fe266756da3b7fb98eef38f4602c3b5",
+      "active": 804,
+      "picks_2027": 64,
+      "picks_2028": 64,
+      "f5_plus1": 83538,
+      "f5_reconciled": true
+    },
+    {
+      "round": 16,
+      "as_of_round": 16,
+      "calendar_progress": 0.67,
+      "exposure_pace": 0.636,
+      "eligible_durable": 305,
+      "median_current_games": 14,
+      "store_md5": "0b9518521ec5b7c6e13b07e84972a756",
+      "board_md5": "8ad4170820ced82f50963bb0795e2fc9",
+      "active": 804,
+      "picks_2027": 64,
+      "picks_2028": 64,
+      "f5_plus1": 83538,
+      "f5_reconciled": true
+    },
+    {
+      "round": 17,
+      "as_of_round": 17,
+      "calendar_progress": 0.71,
+      "exposure_pace": 0.636,
+      "eligible_durable": 305,
+      "median_current_games": 14,
+      "store_md5": "c312eb5ba933a2187f411520d49acc74",
+      "board_md5": "0308202fbec7ea8dfa76705a108e8e45",
+      "active": 804,
+      "picks_2027": 64,
+      "picks_2028": 64,
+      "f5_plus1": 83538,
+      "f5_reconciled": true
+    },
+    {
+      "round": 18,
+      "as_of_round": 18,
+      "calendar_progress": 0.75,
+      "exposure_pace": 0.682,
+      "eligible_durable": 305,
+      "median_current_games": 15,
+      "store_md5": "64795076ba61008600ea89f24db13a81",
+      "board_md5": "4323c448d7fd3df3518391adaea2cdd3",
+      "active": 804,
+      "picks_2027": 64,
+      "picks_2028": 64,
+      "f5_plus1": 83538,
+      "f5_reconciled": true
+    },
+    {
+      "round": 19,
+      "as_of_round": 19,
+      "calendar_progress": 0.79,
+      "exposure_pace": 0.727,
+      "eligible_durable": 305,
+      "median_current_games": 16,
+      "store_md5": "f37d9716648cfe4382b8c6a24c4f064f",
+      "board_md5": "92a8f3a0528e5668029ca8056a841821",
+      "active": 804,
+      "picks_2027": 64,
+      "picks_2028": 64,
+      "f5_plus1": 83538,
+      "f5_reconciled": true
     }
   ],
   "checks": [
@@ -30,6 +105,176 @@
     },
     {
       "check": "R14 baseline 804 active + 64+64 picks",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 as_of_round advanced to 15",
+      "pass": true,
+      "detail": "15"
+    },
+    {
+      "check": "R15 calendar_progress advanced to 0.63 (not frozen at R14 0.58)",
+      "pass": true,
+      "detail": "0.63"
+    },
+    {
+      "check": "R15 exposure_pace freshly derived from the staged store",
+      "pass": true,
+      "detail": "0.591"
+    },
+    {
+      "check": "R15 board advanced (season-state re-priced; board md5 changed)",
+      "pass": true,
+      "detail": "2fe266756da3b7fb98eef38f4602c3b5"
+    },
+    {
+      "check": "R15 804 active + 64+64 future picks survive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R15 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 as_of_round advanced to 16",
+      "pass": true,
+      "detail": "16"
+    },
+    {
+      "check": "R16 calendar_progress advanced to 0.67 (not frozen at R14 0.58)",
+      "pass": true,
+      "detail": "0.67"
+    },
+    {
+      "check": "R16 exposure_pace freshly derived from the staged store",
+      "pass": true,
+      "detail": "0.636"
+    },
+    {
+      "check": "R16 board advanced (season-state re-priced; board md5 changed)",
+      "pass": true,
+      "detail": "8ad4170820ced82f50963bb0795e2fc9"
+    },
+    {
+      "check": "R16 804 active + 64+64 future picks survive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R16 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 as_of_round advanced to 17",
+      "pass": true,
+      "detail": "17"
+    },
+    {
+      "check": "R17 calendar_progress advanced to 0.71 (not frozen at R14 0.58)",
+      "pass": true,
+      "detail": "0.71"
+    },
+    {
+      "check": "R17 exposure_pace freshly derived from the staged store",
+      "pass": true,
+      "detail": "0.636"
+    },
+    {
+      "check": "R17 board advanced (season-state re-priced; board md5 changed)",
+      "pass": true,
+      "detail": "0308202fbec7ea8dfa76705a108e8e45"
+    },
+    {
+      "check": "R17 804 active + 64+64 future picks survive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R17 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 as_of_round advanced to 18",
+      "pass": true,
+      "detail": "18"
+    },
+    {
+      "check": "R18 calendar_progress advanced to 0.75 (not frozen at R14 0.58)",
+      "pass": true,
+      "detail": "0.75"
+    },
+    {
+      "check": "R18 exposure_pace freshly derived from the staged store",
+      "pass": true,
+      "detail": "0.682"
+    },
+    {
+      "check": "R18 board advanced (season-state re-priced; board md5 changed)",
+      "pass": true,
+      "detail": "4323c448d7fd3df3518391adaea2cdd3"
+    },
+    {
+      "check": "R18 804 active + 64+64 future picks survive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R18 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 as_of_round advanced to 19",
+      "pass": true,
+      "detail": "19"
+    },
+    {
+      "check": "R19 calendar_progress advanced to 0.79 (not frozen at R14 0.58)",
+      "pass": true,
+      "detail": "0.79"
+    },
+    {
+      "check": "R19 exposure_pace freshly derived from the staged store",
+      "pass": true,
+      "detail": "0.727"
+    },
+    {
+      "check": "R19 board advanced (season-state re-priced; board md5 changed)",
+      "pass": true,
+      "detail": "92a8f3a0528e5668029ca8056a841821"
+    },
+    {
+      "check": "R19 804 active + 64+64 future picks survive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R19 F5 reconciliation exact (83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "calendar_progress strictly increases R14..R19 (no stale round)",
+      "pass": true,
+      "detail": "[0.58, 0.63, 0.67, 0.71, 0.75, 0.79]"
+    },
+    {
+      "check": "canonical store byte-identical (968de0c7 untouched)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "canonical board byte-identical (2ab73a6f untouched)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "real-store apply gate OFF after the scratch run",
       "pass": true,
       "detail": ""
     }

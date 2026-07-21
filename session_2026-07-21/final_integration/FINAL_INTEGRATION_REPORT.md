@@ -180,3 +180,41 @@ ladder + exact F5 reconciliation automatically (no manual post-processing); cano
 gate OFF.
 
 Acceptance matrix `acceptance_matrix.json`: **OVERALL PASS**, all items + S1–S5 green.
+
+---
+
+## 14. SUPERVISOR 2nd REVIEW — WEEKLY SEASON-STATE CORRECTION (2026-07-21)
+
+The weekly updater no longer leaves valuation season-state frozen at Round 14. TWO distinct dynamic
+concepts, both DERIVED, never conflated (`season_state.py` + `data/season_state.json`, single source):
+
+1. **Calendar season progress** = `round_half_up(100·as_of_round/season_total_rounds)/100`.
+   R14=**0.58**, R15=0.63, R16=0.67, R17=0.71, R18=0.75, R19=0.79, final=1.00. Replaces the frozen
+   `SEASON_PROG` literal + `RL_M3_FE`; used everywhere those were read.
+2. **Empirical exposure pace** (NOT calendar) = `round(median(current games of durable pop prior_games≥18)/22, 3)`,
+   cap 1.0. R14 = **0.545** (305 durable, median 12, 12/22). Per-player scope `s=clip(1−g/11,0,1)`; ≥11
+   current games untouched (s=0). Freshly derived from the staged store each round. Replaces `RL_EXPO_F`.
+
+**R14 byte-identity PROVEN:** the canonical engine build under the rerouted engine reproduces board
+`2ab73a6fed1f06fc8eecc2ce597c2aec` EXACTLY (derived == prior frozen values at R14). Only source identities
+moved: rl_model `cc626d7d→c3a243ee`, engine_head `904722cd→feff9471`, fv `de4c7ec3→97abe963` (re-pinned).
+`RL_M3_FE`+`RL_EXPO_F` removed from the manifest (config `3a1e714f→45b207c0`, 59 vars); immutable
+derivation policy stamped `season_state_policy_id`.
+
+**Updater derives + commits atomically:** the staged transaction derives the season-state from the staged
+store after applying scores, before the board regen, and commits `data/season_state.json` in the atomic
+TARGETS (with store/board/sidecar/manifest/ledger/histories) — a crash cannot leave a new round on stale
+season-state.
+
+**Contract verifies DERIVATION** (not equality): calendar == its formula; season_state internally
+consistent + not stale (round/calendar/policy/season_year); exposure derived from the LIVE store
+(`source_store_md5` == live store, else stale-exposure HALT).
+
+**Evidence:** `season_progress_test.py` **20/20** (derivation, wiring, behaviour: 6-game s=0.4545 less
+influence, ≥11-game untouched, direction-symmetric, calendar≠exposure, completed seasons byte-inert, stale
+rejection); `season_advance_r14_r19.json` (R14 byte-identical + R15–R19 calendar advances + exposure freshly
+derived + 804+64+64 survive + F5 exact + canonical untouched + gate OFF); `.github/workflows/final-integration.yml`
+runs all generating tests on the pinned runner.
+
+**Note:** the report's §5 board identity `039ff8d4` was superseded by the engine-native `2ab73a6f` (§13) and
+carried unchanged through the season-state wiring (§14). Board of record = **`2ab73a6fed1f06fc8eecc2ce597c2aec`**.
