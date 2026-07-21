@@ -8,6 +8,13 @@ set -euo pipefail   # SUITE HYGIENE 2026-07-13: +pipefail so a failing `md5sum |
                     # file HALTs instead of printing a wrong md5; +u so an unset var is a red, not empty.
 HERE=$(cd "$(dirname "$0")" && pwd)
 
+# When the caller has provisioned the pinned virtual environment, use it for every
+# python3 invocation in this bootstrap. This preserves the fail-closed pin check instead
+# of accidentally checking the runner's unpinned system Python.
+if [ -n "${RL_VENV:-}" ] && [ -x "$RL_VENV/bin/python3" ]; then
+  export PATH="$RL_VENV/bin:$PATH"
+fi
+
 # ENV PIN (item 392, 2026-07-19): fail-closed check that the running numpy is the PINNED build. The board
 # of record 06d8af60 is only reproducible on the pinned numpy wheel (np.interp diverges >=1e-8 across
 # DIFFERENT numpy builds -> rank-unsafe board flip; item 391). This is an OFFLINE hash check (no network,
