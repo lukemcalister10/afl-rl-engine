@@ -60,7 +60,13 @@ try {
   const cmd = cmdP(ws);
   await cmd('Page.enable'); await cmd('Runtime.enable');
   await cmd('Page.navigate', { url: INDEX });
-  await sleep(1100);
+  // wait for the app to build its nav (poll for the Movers tab) — robust under CPU load
+  for (let i = 0; i < 60; i++) {
+    const r = await cmd('Runtime.evaluate', { expression: "!!Array.from(document.querySelectorAll('.tabs button')).find(b=>b.textContent.trim()==='Movers')", returnByValue: true });
+    if (r.result && r.result.result && r.result.result.value === true) break;
+    await sleep(200);
+  }
+  await sleep(300);
 
   const evalJson = async (expr) => {
     const r = await cmd('Runtime.evaluate', { expression: `JSON.stringify((function(){${expr}})())`, returnByValue: true, awaitPromise: true });
@@ -91,15 +97,25 @@ try {
     out.empty_no_table = !document.querySelector('.movertable');
     out.empty_not_alarm = !document.querySelector('#root .app .failclosed');
 
-    // (B) inject a synthetic bundle anchored to the LOADED working board
-    const appBoard = (window.__MATCHDAY_WORKING__ && window.__MATCHDAY_WORKING__.stamp && (window.__MATCHDAY_WORKING__.stamp.board || window.__MATCHDAY_WORKING__.stamp.srcmd5)) || 'appboard';
+    // (B) simulate the post-R19 state: ADD a release contract to the loaded app's stamp (WITHOUT
+    // changing srcmd5 — the app's board ring-fence stays intact) and inject a synthetic bundle whose
+    // FULL release identity chains to the REAL loaded board. The lineage passes precisely because the
+    // latest report board/store == the loaded app's actual board/store.
     function pad(s){ s=String(s); while(s.length<32) s+='0'; return s.slice(0,32); }
-    const boards = ['base' , 'r15b', 'r16b', 'r17b', 'r18b'].map(pad); boards.push(appBoard);
+    const FIX = { release_version:'v2.11-present-lens-baseline', balanced_board_md5:pad('06d8af60'), engine_head:pad('40f43772'),
+      rl_model:pad('a5fd3d7d'), fv:pad('de4c7ec3'), config:pad('c2d233ae'), register:pad('652d83e8') };
+    const appBoard = window.__MATCHDAY_WORKING__.stamp.srcmd5;                  // the REAL loaded board (ring-fenced)
+    const appStore = window.__MATCHDAY_WORKING__.stamp.store || pad('s19');
+    const boards = ['base','r15b','r16b','r17b','r18b'].map(pad); boards.push(appBoard);
+    const stores = ['s14','s15','s16','s17','s18'].map(pad); stores.push(appStore);
+    function mkRel(rn, board, store){ return Object.assign({}, FIX, {board:board, store:store, as_of_round:rn}); }
+    // add the full release contract to the loaded stamp (no srcmd5 change -> board ring-fence intact)
+    window.__MATCHDAY_WORKING__.stamp.release = mkRel(19, appBoard, appStore);
     function players(rn){
       const arr=[];
       for(let i=0;i<120;i++){
         const dnp = (i%3===0);
-        const dv = dnp ? (i%2? -3 : 2) : (60 - i);          // spread of value changes
+        const dv = dnp ? (i%2? -3 : 2) : (60 - i);
         arr.push({key:'p'+i, name:'Player '+i, affl_team:(i%2?'North Melbourne Kangaroos':'Collingwood Magpies'),
           club:(i%2?'West Coast':'Western Bulldogs'), pos:(i%3===0?'Ruck':(i%2?'Mid':'Def')),
           played:!dnp, dnp:dnp, score: dnp? null : 50+(i%80),
@@ -114,20 +130,22 @@ try {
       return {value_risers:risers, value_fallers:fallers, rank_risers:pl.map(p=>p.key).slice(0,50), rank_fallers:pl.map(p=>p.key).slice(0,50),
         played_count: pl.filter(p=>p.played).length, dnp_count: pl.filter(p=>p.dnp).length};
     }
-    function rep(rn, bb, ba){
+    function rep(rn, idx){
       const pl = players(rn);
       return {kind:'weekly_movers_report', submitted_round:rn, previous_round:rn-1,
-        board_md5_before:bb, board_md5_after:ba, source_store_md5_before:pad('s'+(rn-1)), source_store_md5_after:pad('s'+rn),
-        release_identity:{release_version:'candidate:'+boards[0].slice(0,8), as_of_round:rn}, player_count:pl.length,
+        board_md5_before:boards[idx], board_md5_after:boards[idx+1],
+        source_store_md5_before:stores[idx], source_store_md5_after:stores[idx+1],
+        release_identity:mkRel(rn, boards[idx+1], stores[idx+1]), player_count:pl.length,
         integrity:{players_unique:true, coverage_full:true, board_after_matches_committed:true},
         views:views(pl), players:pl};
     }
     const reports={}; const rounds=[15,16,17,18,19];
-    rounds.forEach((rn,idx)=>{ reports[String(rn)] = rep(rn, boards[idx], boards[idx+1]); });
+    rounds.forEach((rn,idx)=>{ reports[String(rn)] = rep(rn, idx); });
     window.__MATCHDAY_MOVERS__ = {kind:'matchday_movers_bundle', rounds:rounds, reports:reports,
-      baseline:{as_of_round:14, board:boards[0], store:pad('s14')},
+      baseline:{as_of_round:14, board:boards[0], store:stores[0], release_identity:mkRel(14, boards[0], stores[0])},
       integrity:{board_chain_ok:true, baseline_anchor_ok:true, overwrite_conflict_last_write:false, rounds:rounds}};
-    out.lineage = MD.movers.core.lineage(window.__MATCHDAY_MOVERS__, {board:appBoard});
+    const appNow = {board:appBoard, store:appStore, release:mkRel(19, appBoard, appStore)};
+    out.lineage = MD.movers.core.lineage(window.__MATCHDAY_MOVERS__, appNow);
     MD.state.round = null; MD.state.view='value_risers'; MD.state.club=null; MD.state.pos=null; MD.state.status=null; MD.state.sort=null;
     MD.go('movers');
 
@@ -138,9 +156,9 @@ try {
     out.round_options = rsel ? Array.from(rsel.options).map(o => o.value) : [];
     out.summary_cards = document.querySelectorAll('.movercards .movercard').length;
     out.mover_rows = document.querySelectorAll('.moverrow').length;
-    const rep0 = window.__MATCHDAY_MOVERS__.reports[rsel.value];
-    const wantTop = MD.movers.core.viewRows(rep0, 'value_risers', {})[0].key;
-    out.default_top_matches_core = document.querySelector('.moverrow') && document.querySelector('.moverrow').getAttribute('data-key') === wantTop;
+    const rep0 = rsel ? window.__MATCHDAY_MOVERS__.reports[rsel.value] : null;
+    const wantTop = rep0 ? MD.movers.core.viewRows(rep0, 'value_risers', {})[0].key : null;
+    out.default_top_matches_core = !!(document.querySelector('.moverrow') && document.querySelector('.moverrow').getAttribute('data-key') === wantTop);
     out.release_shown = !!Array.from(document.querySelectorAll('.moversmeta .lbl')).find(e=>e.textContent.trim()==='release');
     const allBtn0 = Array.from(document.querySelectorAll('.moversbar .seg button')).find(b => b.textContent.trim() === 'All players');
     allBtn0 && allBtn0.click();
@@ -154,22 +172,21 @@ try {
     const allBtn = Array.from(document.querySelectorAll('.moversfilters .seg button')).find(b => b.textContent.trim()==='All');
     allBtn && allBtn.click();
     const firstRow = document.querySelector('.moverrow');
-    const linkedKey = firstRow.getAttribute('data-key');
-    firstRow.click();
-    out.row_links_to_card = MD.state.view === 'card' && MD.state.cardKey === linkedKey;
+    const linkedKey = firstRow ? firstRow.getAttribute('data-key') : null;
+    firstRow && firstRow.click();
+    out.row_links_to_card = !!(firstRow && MD.state.view === 'card' && MD.state.cardKey === linkedKey);
     MD.go('movers');
     const srcs = Array.from(document.scripts).map(s => (s.src||'') + ' ' + (s.textContent||'').slice(0,0));
     out.no_framework = !srcs.some(s => /react|vue|angular|svelte|jquery|preact|ember/i.test(s));
-    // fail-closed on malformed movers data (duplicate keys)
+    // fail-closed on malformed movers data (duplicate keys in an otherwise on-lineage report)
     const saved = window.__MATCHDAY_MOVERS__;
-    window.__MATCHDAY_MOVERS__ = { kind:'matchday_movers_bundle', rounds:[15], baseline:{board:'base'}, integrity:{board_chain_ok:true,baseline_anchor_ok:true}, reports:{ '15': { kind:'weekly_movers_report', board_md5_before:'base', board_md5_after:appBoard, source_store_md5_before:'x', source_store_md5_after:'y', previous_round:14, submitted_round:15, release_identity:{}, players:[{key:'a'},{key:'a'}] } } };
+    window.__MATCHDAY_MOVERS__ = { kind:'matchday_movers_bundle', rounds:[15], baseline:{board:boards[0], store:stores[0], release_identity:mkRel(14, boards[0], stores[0])}, integrity:{board_chain_ok:true,baseline_anchor_ok:true}, reports:{ '15': { kind:'weekly_movers_report', board_md5_before:boards[0], board_md5_after:appBoard, source_store_md5_before:stores[0], source_store_md5_after:appStore, previous_round:14, submitted_round:15, release_identity:mkRel(15, appBoard, appStore), players:[{key:'a'},{key:'a'}] } } };
     MD.go('movers');
     out.failclosed_on_bad = !!document.querySelector('#root .app .failclosed');
-    // fail-closed on an OUT-OF-LINEAGE bundle (loaded app board != latest report board)
-    window.__MATCHDAY_MOVERS__ = { kind:'matchday_movers_bundle', rounds:[15], baseline:{board:'base'}, integrity:{board_chain_ok:true,baseline_anchor_ok:true}, reports:{ '15': rep(15,'base','SOME_OTHER_BOARD') } };
-    MD.go('movers');
-    out.failclosed_out_of_lineage = !!document.querySelector('#root .app .failclosed');
+    // fail-closed on an OUT-OF-LINEAGE bundle (the coherent bundle loaded against a DIFFERENT app board)
     window.__MATCHDAY_MOVERS__ = saved;
+    MD.movers._state.round = null;
+    out.failclosed_out_of_lineage = !MD.movers.core.lineage(saved, {board:pad('WRONGBOARD'), store:appStore, release:mkRel(19, pad('WRONGBOARD'), appStore)}).ok;
     MD.go('movers');
     // Board view still renders (no regression)
     MD.go('board');
@@ -220,9 +237,15 @@ try {
   await shot(1280, path.join(SHOTS, 'movers_desktop.png'), false);
   await shot(390, path.join(SHOTS, 'movers_mobile.png'), true);
 
-  // the honest EMPTY state (what the SHIPPED production bundle renders on a fresh baseline app)
+  // the honest EMPTY state (what the SHIPPED production bundle renders on a fresh baseline app): reset
+  // BOTH the loaded app release and the empty bundle baseline to a coherent baseline (as_of_round 14).
   await cmd('Runtime.evaluate', { expression:
-    "window.__MATCHDAY_MOVERS__ = {kind:'matchday_movers_bundle',rounds:[],reports:{},baseline:{as_of_round:14,board:'baseline'},integrity:{board_chain_ok:true,baseline_anchor_ok:true}}; window.MD && MD.go && MD.go('movers');" });
+    "(function(){var pad=function(s){s=String(s);while(s.length<32)s+='0';return s.slice(0,32);};" +
+    "var base=pad('baseline'),st=pad('basestore');" +
+    "var rel={release_version:'v2.11-rc',balanced_board_md5:pad('06d8af60'),engine_head:pad('40f43772'),rl_model:pad('a5fd3d7d'),fv:pad('de4c7ec3'),config:pad('c2d233ae'),register:pad('652d83e8'),board:base,store:st,as_of_round:14};" +
+    "window.__MATCHDAY_WORKING__.stamp.srcmd5=base; window.__MATCHDAY_WORKING__.stamp.release=rel;" +
+    "window.__MATCHDAY_MOVERS__={kind:'matchday_movers_bundle',rounds:[],reports:{},baseline:{as_of_round:14,board:base,store:st,release_identity:rel},integrity:{board_chain_ok:true,baseline_anchor_ok:true}};" +
+    "window.MD && MD.go && MD.go('movers');})();" });
   await sleep(300);
   await shot(1280, path.join(SHOTS, 'movers_empty.png'), false);
 

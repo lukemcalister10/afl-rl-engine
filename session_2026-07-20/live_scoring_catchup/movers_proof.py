@@ -174,12 +174,17 @@ def main(argv):
     report['8_restart_preserves'] = {'rounds_after_reread': reread.get('rounds'),
                                      'pass': reread.get('rounds') == ROUNDS}
 
-    # 9: no silent overwrite — per-round board ids distinct + chained; bundle records no conflict
+    # 9: no silent overwrite — per-round board ids distinct + chained; bundle records no conflict. The
+    #    stronger BYTE-PRESERVING conflict refusal (a conflicting same-round write leaves the existing
+    #    JSON + CSV + bundle byte-identical) is DEMONSTRATED in finalization_injection_proof.py
+    #    (CONFLICT_BYTE_PRESERVATION) — this section only asserts the accumulated bundle is chained + has
+    #    distinct per-round board ids with no recorded conflict.
     board_ids = [reports[str(r)]['board_md5_after'] for r in ROUNDS]
     no_overwrite = (len(set(board_ids)) == len(board_ids)
                     and bundle.get('integrity', {}).get('board_chain_ok')
                     and not bundle.get('integrity', {}).get('overwrite_conflict_last_write'))
     report['9_no_silent_overwrite'] = {'board_ids_distinct': len(set(board_ids)) == len(board_ids),
+                                       'byte_preservation_proven_in': 'finalization_injection_proof.py (CONFLICT_BYTE_PRESERVATION)',
                                        'pass': bool(no_overwrite)}
 
     # per-round CSV present

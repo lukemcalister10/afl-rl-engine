@@ -53,6 +53,7 @@ sys.path.insert(0, WUH)
 
 import round_catchup as RC             # noqa: E402
 import round_movers as MV              # noqa: E402
+import round_finalize as FZ            # noqa: E402
 import staged_apply as SA              # noqa: E402
 import score_ingestor as SI            # noqa: E402
 import failure_injection_proof as FI   # noqa: E402  (fixture-coherent scratch + gate helpers)
@@ -297,6 +298,44 @@ def main(argv):
             and (mbundle or {}).get('rounds') == ROUNDS
             and (mbundle or {}).get('integrity', {}).get('board_chain_ok')}
 
+        # === (H) HISTORICAL REPAIR — repair R15 AFTER R19 (safe; working board stays on R19) ==========
+        # Corrupt the R15 report, run repair --round 15, and prove: the original R15 JSON/CSV + bundle
+        # entry are reproduced EXACTLY (its frozen release/transaction identity is retained), the working
+        # board stays on R19 (its displayed movement fields are R19's, not R15's), and NO canonical score
+        # or ledger entry is altered.
+        jp15, cp15, _ = MV.movers_paths(scr, 15)
+        orig15 = (open(jp15).read(), open(cp15).read())
+        orig15_rel = json.load(open(jp15))['release_identity']
+        workp = os.path.join(scr, 'ui', 'data', 'board_view_working.js')
+        wtext = open(workp).read()
+        wobj = json.loads(wtext[wtext.index('{'):wtext.rindex('}') + 1])
+        work_board_before = wobj['stamp'].get('srcmd5')
+        work_asof_before = (wobj['stamp'].get('release') or {}).get('as_of_round')
+        scr_ledger = os.path.join(scr, 'engine', 'rl_after', 'ingestion', 'applied_rounds_ledger.json')
+        ledger_before_repair = len(json.load(open(scr_ledger))['applied'])
+        open(jp15, 'w').write('{"corrupt": true}')          # corrupt R15 JSON
+        os.remove(cp15)                                       # remove R15 CSV
+        fzr = FZ.RoundFinalizer(scr)
+        hrep = fzr.repair(15, generated_at=GEN)
+        new15 = (open(jp15).read(), open(cp15).read())
+        wtext2 = open(workp).read()
+        wobj2 = json.loads(wtext2[wtext2.index('{'):wtext2.rindex('}') + 1])
+        ledger_after_repair = len(json.load(open(os.path.join(scr, 'engine', 'rl_after', 'ingestion',
+                              'applied_rounds_ledger.json')))['applied'])
+        report['H_historical_repair'] = {
+            'repair_ok': hrep.get('ok'), 'historical': hrep.get('historical'),
+            'r15_json_reproduced': new15[0] == orig15[0], 'r15_csv_reproduced': new15[1] == orig15[1],
+            'r15_identity_retained': json.load(open(jp15))['release_identity'] == orig15_rel,
+            'working_board_stayed_R19': (wobj2['stamp'].get('srcmd5') == work_board_before
+                                         and (wobj2['stamp'].get('release') or {}).get('as_of_round') == 19),
+            'work_asof_before': work_asof_before,
+            'ledger_unchanged': ledger_after_repair == ledger_before_repair,
+            'pass': (hrep.get('ok') and hrep.get('historical') and new15[0] == orig15[0]
+                     and new15[1] == orig15[1]
+                     and json.load(open(jp15))['release_identity'] == orig15_rel
+                     and (wobj2['stamp'].get('release') or {}).get('as_of_round') == 19
+                     and ledger_after_repair == ledger_before_repair)}
+
     finally:
         FI.disarm()
         shutil.rmtree(scr, ignore_errors=True)
@@ -310,7 +349,7 @@ def main(argv):
 
     report['elapsed_s'] = round(time.time() - t0, 1)
     order = ['A_preflight', 'B_participation', 'C_identity', 'D_sequential', 'E_restart_dedup',
-             'G_movers', 'F_no_production_touched']
+             'G_movers', 'H_historical_repair', 'F_no_production_touched']
     all_pass = off and all(report[k]['pass'] for k in order)
     report['ALL_PASS'] = all_pass
 
@@ -376,6 +415,7 @@ def _md(r):
          "| D · sequential per-round transactions (store/board/hashes/ledger/txn/3 histories/movers) | %s |" % _p(r, 'D_sequential'),
          "| E · restart/resume + duplicate-execution refusal | %s |" % _p(r, 'E_restart_dedup'),
          "| G · movers report per committed round (DNP represented, bundle chained) | %s |" % _p(r, 'G_movers'),
+         "| H · historical repair (repair R15 after R19: byte-reproduced, identity kept, working stays R19) | %s |" % _p(r, 'H_historical_repair'),
          "| F · no production / RC files touched | %s |" % _p(r, 'F_no_production_touched'),
          "", "### Preflight (consolidated)",
          "| round | encoding | listed=played | listed-zero | absent/DNP | file sha256 |", "|---|---|---|---|---|---|"]

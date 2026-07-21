@@ -15,10 +15,17 @@ name: Live Scoring Updater
 #                                identity overrides/halt), sequential per-round transactions, value +
 #                                overall-rank + positional-rank history, movers, restart/resume, dedup
 #   3  failure injection       — 7-point mid-apply fault matrix + crash recovery + acceptance
-#   3b finalization injection   — 8-point POST-COMMIT fault matrix: a failed re-derivable output never
-#                                rolls back the canonical commit; restart detects + repairs; no re-apply
+#   3b finalization injection   — POST-COMMIT fault matrix incl. post-commit/pre-record (reconcile from the
+#                                committed txn manifest), pre-validation + pre-FINALIZED crashes, hard os._exit,
+#                                and byte-preserving conflict refusal; a failed re-derivable output never rolls
+#                                back the canonical commit; restart detects + repairs; no re-apply
+#   3c release-metadata contract — the movers/UI release contract copies VERIFIED manifest fields; the fixed
+#                                present-lens balanced_board_md5 is never synthesized from the weekly board;
+#                                as_of_round tracks the applied round (generic; no final-RC claim)
 #   4  store-write proof       — scratch apply + dedup ledger + single-env stability
 #   5  FV provenance red/green — the staged board build is fail-closed on forward-valuation provenance
+#  (the five-round catch-up step also runs the R15-after-R19 HISTORICAL REPAIR proof: byte-reproduced,
+#   original identity kept, the working board stays on R19)
 #
 # Like fv-provenance.yml, this does NOT run the legacy full Guard-5 bootstrap: the accepted foundation
 # carries a PRE-EXISTING engine_head/rl_model boot-pin drift (register item 399) that is out of scope
@@ -145,10 +152,15 @@ jobs:
           set -euo pipefail
           python3 session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py --write
 
-      - name: Finalization failure-injection proof (8 points — post-commit; restart + repair; no re-apply)
+      - name: Finalization failure-injection proof (post-commit matrix; restart + reconcile + repair; no re-apply)
         run: |
           set -euo pipefail
           python3 session_2026-07-20/weekly_updater_hardening/finalization_injection_proof.py --write
+
+      - name: Generic release-metadata contract proof (copies verified fields; present-lens baseline, no final-RC claim)
+        run: |
+          set -euo pipefail
+          python3 session_2026-07-20/weekly_updater_hardening/rc_manifest_compat_proof.py --write
 
       - name: Store-write proof (scratch apply + dedup + single-env stability)
         run: |
@@ -172,6 +184,7 @@ jobs:
             session_2026-07-20/live_scoring_catchup/PROOF.md
             session_2026-07-20/weekly_updater_hardening/proof.json
             session_2026-07-20/weekly_updater_hardening/finalization_proof.json
+            session_2026-07-20/weekly_updater_hardening/rc_manifest_compat_proof.json
             session_2026-07-19/storewrite/proof.json
             session_2026-07-20/weekly_updater_hardening/fv_proof.json
           if-no-files-found: ignore

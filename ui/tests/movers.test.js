@@ -30,24 +30,34 @@ function mkReport(over) {
   return Object.assign(base, over || {});
 }
 
-/* A minimal coherent two-round bundle: baseline board B0; R15 (B0->B1), R16 (B1->B2). */
+/* The FIXED release-baseline identity (immutable across weekly rounds; balanced_board_md5 is the fixed
+   present-lens baseline anchor, not a final full-board hash). */
+var FIX = { release_version: "v2.11-present-lens-baseline", balanced_board_md5: "06d8af60", engine_head: "40f43772",
+            rl_model: "a5fd3d7d", fv: "de4c7ec3", config: "c2d233ae", register: "652d83e8" };
+function mkRel(rn, board, store, over) {
+  return Object.assign({}, FIX, { board: board, store: store, as_of_round: rn }, over || {});
+}
+function mkApp(rn, board, store, relOver) { return { board: board, store: store, release: mkRel(rn, board, store, relOver) }; }
+
+/* A minimal coherent two-round bundle: baseline board B0/store S0; R15 (B0->B1), R16 (B1->B2). */
 function mkBundle(over) {
   function rep(rn, bb, ba, sb, sa) {
     return { kind: "weekly_movers_report", submitted_round: rn, previous_round: rn - 1,
              board_md5_before: bb, board_md5_after: ba, source_store_md5_before: sb, source_store_md5_after: sa,
-             release_identity: { release_version: "candidate:B0" }, board: ba,
+             release_identity: mkRel(rn, ba, sa),
              integrity: { players_unique: true, coverage_full: true, board_after_matches_committed: true },
              views: { played_count: 1, dnp_count: 0 }, player_count: 1,
              players: [{ key: "a", name: "A", played: true, dnp: false, cur_value: 100, value_change: 1, rank_change: 0, pos_rank_change: 0 }] };
   }
   var b = {
     kind: "matchday_movers_bundle", rounds: [15, 16],
-    baseline: { as_of_round: 14, board: "B0", store: "S0" },
+    baseline: { as_of_round: 14, board: "B0", store: "S0", release_identity: mkRel(14, "B0", "S0") },
     reports: { "15": rep(15, "B0", "B1", "S0", "S1"), "16": rep(16, "B1", "B2", "S1", "S2") },
     integrity: { board_chain_ok: true, baseline_anchor_ok: true, rounds: [15, 16] },
   };
   return Object.assign(b, over || {});
 }
+var APP = mkApp(16, "B2", "S2");   // loaded app: current board B2, store S2, on the release lineage
 
 console.log("MOVERS-VIEW TESTS\n  " + "-".repeat(60));
 
@@ -61,32 +71,46 @@ ok(!core.integrity(mkReport(), { integrity: { board_chain_ok: false } }).ok, "br
 var dup = mkReport(); dup.players = dup.players.concat([dup.players[0]]);
 ok(!core.integrity(dup).ok, "duplicate player rows fail closed");
 
-// ---- LINEAGE anchoring (directive E) --------------------------------------------------------
-// empty bundle -> honest empty state (NOT an alarm), ok:true
-var emptyBundle = { kind: "matchday_movers_bundle", rounds: [], reports: {}, baseline: { as_of_round: 14, board: "B0" }, integrity: { board_chain_ok: true, baseline_anchor_ok: true } };
-var linEmpty = core.lineage(emptyBundle, { board: "B0" });
-eq([linEmpty.ok, linEmpty.state], [true, "empty"], "empty bundle -> honest empty state (not an alarm)");
-// coherent bundle, latest report board == loaded app board -> ok
-eq([core.lineage(mkBundle(), { board: "B2" }).ok, core.lineage(mkBundle(), { board: "B2" }).state], [true, "ok"], "coherent bundle anchored to the loaded app passes lineage");
-// a SCRATCH bundle beginning at the superseded board 270a2c5f must FAIL CLOSED vs the RC baseline 06d8af60
-var scratch = mkBundle({ baseline: { as_of_round: 14, board: "270a2c5f", store: "S0" } });
-scratch.reports["15"].board_md5_before = "270a2c5f"; // begins at the superseded board
-var linRC = core.lineage(scratch, { board: "06d8af60" });  // loaded app is on the RC baseline lineage
-ok(!linRC.ok && linRC.state === "mismatch", "scratch bundle (begins 270a2c5f) fails closed vs RC baseline 06d8af60");
-// baseline-anchor break: first report's board_before != bundle baseline board
+// ---- FULL release-lineage anchoring (directive D; owner ruling on balanced_board_md5) --------
+// coherent populated bundle against the loaded release -> ok
+eq([core.lineage(mkBundle(), APP).ok, core.lineage(mkBundle(), APP).state], [true, "ok"], "coherent bundle passes full-identity lineage");
+// EMPTY coherent bundle -> honest empty state (validated vs the loaded app first)
+var emptyOk = { kind: "matchday_movers_bundle", rounds: [], reports: {}, baseline: { as_of_round: 14, board: "B0", store: "S0", release_identity: mkRel(14, "B0", "S0") }, integrity: {} };
+eq([core.lineage(emptyOk, mkApp(14, "B0", "S0")).ok, core.lineage(emptyOk, mkApp(14, "B0", "S0")).state], [true, "empty"], "empty bundle on the loaded lineage -> honest empty state");
+// EMPTY bundle on the WRONG lineage fails closed (empty 270a2c5f bundle vs a DIFFERENT baseline board)
+var emptyDf = { kind: "matchday_movers_bundle", rounds: [], reports: {}, baseline: { as_of_round: 14, board: "270a2c5f", store: "968de0c7", release_identity: mkRel(14, "270a2c5f", "968de0c7") }, integrity: {} };
+var eMis = core.lineage(emptyDf, mkApp(14, "06d8af60", "otherstore"));
+ok(!eMis.ok && eMis.state === "mismatch", "empty 270a2c5f bundle vs a different baseline board fails closed (not empty state)");
+// same board, WRONG store (current-store mismatch)
+ok(!core.lineage(mkBundle(), mkApp(16, "B2", "SXX")).ok, "same board but wrong current store fails closed");
+// same board/store, WRONG release_version
+ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { release_version: "v9.9" })).ok, "same board/store but wrong release_version fails closed");
+// WRONG engine / fv / config / register
+ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { engine_head: "deadbeef" })).ok, "wrong engine_head fails closed");
+ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { fv: "deadbeef" })).ok, "wrong fv fails closed");
+ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { config: "deadbeef" })).ok, "wrong config fails closed");
+ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { register: "deadbeef" })).ok, "wrong register fails closed");
+// a report carrying a DIFFERENT balanced_board_md5 than the fixed baseline
+var badBB = mkBundle(); badBB.reports["16"].release_identity.balanced_board_md5 = "ffffffff";
+ok(!core.lineage(badBB, APP).ok, "a report with a different balanced_board_md5 fails closed");
+// baseline board / store anchor breaks
 var badBase = mkBundle(); badBase.reports["15"].board_md5_before = "ZZZ";
-ok(!core.lineage(badBase, { board: "B2" }).ok, "baseline-anchor break fails closed");
-// board-chain break between rounds
+ok(!core.lineage(badBase, APP).ok, "baseline board-anchor break fails closed");
+var badBaseS = mkBundle(); badBaseS.reports["15"].source_store_md5_before = "ZZZ";
+ok(!core.lineage(badBaseS, APP).ok, "baseline store-anchor break fails closed");
+// board / store chain breaks
 var chainBreak = mkBundle(); chainBreak.reports["16"].board_md5_before = "XXX";
-ok(!core.lineage(chainBreak, { board: "B2" }).ok, "board-identity chain break fails closed");
-// store-chain break between rounds
+ok(!core.lineage(chainBreak, APP).ok, "board-identity chain break fails closed");
 var storeBreak = mkBundle(); storeBreak.reports["16"].source_store_md5_before = "XXX";
-ok(!core.lineage(storeBreak, { board: "B2" }).ok, "store-identity chain break fails closed");
-// latest finalized report must match the loaded app board
-ok(!core.lineage(mkBundle(), { board: "SOME_OTHER_BOARD" }).ok, "latest report not matching the loaded app fails closed");
+ok(!core.lineage(storeBreak, APP).ok, "store-identity chain break fails closed");
+// latest report board / store must equal the loaded current board / store
+ok(!core.lineage(mkBundle(), mkApp(16, "OTHER_BOARD", "S2")).ok, "latest report board != loaded current board fails closed");
+// as_of_round coherence
+var badAsof = mkBundle(); badAsof.reports["16"].release_identity.as_of_round = 14;
+ok(!core.lineage(badAsof, APP).ok, "incoherent as_of_round fails closed");
 // non-sequential rounds
 var gap = mkBundle(); gap.reports["16"].previous_round = 14;
-ok(!core.lineage(gap, { board: "B2" }).ok, "non-sequential previous_round fails closed");
+ok(!core.lineage(gap, APP).ok, "non-sequential previous_round fails closed");
 
 // deterministic sort + tie-break (primary field, then cur_value desc, then key asc)
 eq(core.viewRows(mkReport(), "value_risers", {}).map(function (p) { return p.key; }), ["a", "d", "c", "b"], "value risers order");
@@ -118,7 +142,13 @@ if (fs.existsSync(prodPath)) {
   eq(prod.rounds, [], "production ui/data/movers.js ships EMPTY (no finalized rounds)");
   ok(prod.reports && Object.keys(prod.reports).length === 0, "production bundle carries no reports");
   ok(prod.baseline && typeof prod.baseline.board === "string", "production bundle carries a release-baseline block");
-  eq(core.lineage(prod, { board: prod.baseline.board }).state, "empty", "production bundle renders the honest EMPTY state");
+  ok(prod.baseline.release_identity && prod.baseline.release_identity.balanced_board_md5 === "06d8af60b679a12db07c064c60c065f9",
+     "production baseline carries the fixed present-lens baseline balanced_board_md5 (06d8af60)");
+  // honest empty state when the loaded app matches the baseline; fail-closed when it does not
+  var pApp = { board: prod.baseline.board, store: prod.baseline.store, release: prod.baseline.release_identity };
+  eq(core.lineage(prod, pApp).state, "empty", "production bundle renders the honest EMPTY state on its lineage");
+  eq(core.lineage(prod, { board: "06d8af60b679a12db07c064c60c065f9", store: "x", release: null }).state, "mismatch",
+     "production empty bundle fails closed when loaded against a different board");
 } else {
   console.log("  [skip] production ui/data/movers.js not present");
 }
@@ -130,9 +160,13 @@ if (fs.existsSync(scratchPath)) {
   eq(sb.rounds, [15, 16, 17, 18, 19], "scratch evidence bundle carries R15-R19");
   ok(sb.integrity.board_chain_ok, "scratch evidence board-identity chain coherent");
   ok(sb.integrity.baseline_anchor_ok, "scratch evidence anchors to its own baseline board");
-  // lineage passes against ITS OWN baseline app (the last committed scratch board)
+  // full-identity lineage passes against ITS OWN loaded app (the last committed scratch board/store/release)
   var lastRep = sb.reports[String(sb.rounds[sb.rounds.length - 1])];
-  ok(core.lineage(sb, { board: lastRep.board_md5_after }).ok, "scratch bundle is self-coherent against its own last board");
+  var sApp = { board: lastRep.board_md5_after, store: lastRep.source_store_md5_after, release: lastRep.release_identity };
+  ok(core.lineage(sb, sApp).ok, "scratch bundle passes full-identity lineage against its own last board/store/release");
+  // the PERMANENT balanced_board_md5 is identical across every scratch round (never per-round board)
+  ok(sb.rounds.every(function (r) { return (sb.reports[String(r)].release_identity || {}).balanced_board_md5 === "06d8af60b679a12db07c064c60c065f9"; }),
+     "every scratch report carries the same fixed balanced_board_md5 (06d8af60)");
   var allGood = true, dnpSeen = false;
   sb.rounds.forEach(function (r) {
     var rep = sb.reports[String(r)];
@@ -141,8 +175,9 @@ if (fs.existsSync(scratchPath)) {
     var keys = {}; rep.players.forEach(function (p) { keys[p.key] = (keys[p.key] || 0) + 1; if (p.dnp) dnpSeen = true; });
     if (Object.keys(keys).length !== rep.players.length) allGood = false;
     if (rep.release_identity && rep.release_identity.tag === "v2.10") allGood = false;  // no hardcoded tag
+    if (rep.release_identity && rep.release_identity.balanced_board_md5 === rep.board_md5_after) allGood = false;  // never synthesized
   });
-  ok(allGood, "every scratch round report passes integrity + unique coverage + no hardcoded v2.10 tag");
+  ok(allGood, "every scratch round report: integrity + unique coverage + no v2.10 tag + balanced not synthesized");
   ok(dnpSeen, "scratch reports represent DNP players");
 } else {
   console.log("  [skip] scratch evidence bundle not present (run generate_movers_bundle.py)");

@@ -5,11 +5,7 @@
     "production_empty": true,
     "production_rounds": [],
     "release_versions": [
-      "candidate:10708265",
-      "candidate:4377574d",
-      "candidate:674b3c3a",
-      "candidate:9cadb4a3",
-      "candidate:d3ae2462"
+      "v2.11-present-lens-baseline"
     ]
   },
   "1_one_report_per_round": {
@@ -87,6 +83,7 @@
   },
   "9_no_silent_overwrite": {
     "board_ids_distinct": true,
+    "byte_preservation_proven_in": "finalization_injection_proof.py (CONFLICT_BYTE_PRESERVATION)",
     "pass": true
   },
   "ALL_PASS": true,

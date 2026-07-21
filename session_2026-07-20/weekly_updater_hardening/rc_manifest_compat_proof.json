@@ -1,0 +1,28 @@
+{
+  "1_fixed_baseline_copied": {
+    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "pass": true,
+    "release_version": "synthetic-baseline-v1"
+  },
+  "2_balanced_not_synthesized": {
+    "balanced": "06d8af60b679a12db07c064c60c065f9",
+    "pass": true,
+    "weekly_board": "b15b15b15b15b15b15b15b15b15b15b1"
+  },
+  "3_model_pins_copied": {
+    "pass": true
+  },
+  "4_as_of_round_tracks_round": {
+    "pass": true,
+    "r15": 15,
+    "r16": 16
+  },
+  "5_baseline_immutable_board_moves": {
+    "balanced_r15": "06d8af60",
+    "balanced_r16": "06d8af60",
+    "pass": true,
+    "r15_board": "b15b15b1",
+    "r16_board": "b16b16b1"
+  },
+  "ALL_PASS": true
+}

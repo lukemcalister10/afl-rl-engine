@@ -165,7 +165,7 @@
     "resend_r16_blocked": true
   },
   "ALL_PASS": true,
-  "elapsed_s": 419.5,
+  "elapsed_s": 404.8,
   "gate_off_real_store_refused": {
     "pass": true,
     "refused": true

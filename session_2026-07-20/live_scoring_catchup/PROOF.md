@@ -2,7 +2,7 @@
 
 Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Round-14 state**. Gate armed in-process against the scratch only; the real store / RC / production UI are byte-untouched. One consolidated preflight + approval; every round is its own sequential staged transaction.
 
-## RESULT: **ALL PASS**  (575.1s)
+## RESULT: **ALL PASS**  (551.1s)
 
 | proof | result |
 |---|---|
@@ -13,6 +13,7 @@ Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Ro
 | D · sequential per-round transactions (store/board/hashes/ledger/txn/3 histories/movers) | ✅ |
 | E · restart/resume + duplicate-execution refusal | ✅ |
 | G · movers report per committed round (DNP represented, bundle chained) | ✅ |
+| H · historical repair (repair R15 after R19: byte-reproduced, identity kept, working stays R19) | ✅ |
 | F · no production / RC files touched | ✅ |
 
 ### Preflight (consolidated)

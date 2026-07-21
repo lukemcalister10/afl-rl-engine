@@ -21,10 +21,16 @@ each of the eight finalization fault points and, for every one, asserts:
       overwritten;
   (7) the next round CANNOT advance while R16 is unfinalized, and CAN once it is FINALIZED.
 
-The eight fault points (directive F):
-   1 after_core_commit_before_ui   2 during_working_board_refresh   3 after_board_before_movers_json
-   4 after_json_before_csv         5 after_json_csv_before_bundle   6 after_bundle_before_delta
-   7 after_all_before_final_validation                              8 HARD TERMINATION (child os._exit)
+The fault matrix (directives F, C, A, B):
+   1 after_core_commit_before_ui        2 during_working_board_refresh   3 after_board_before_movers_json
+   4 after_json_before_csv              5 after_json_csv_before_bundle   6 after_bundle_before_delta
+   7 after_derivatives_before_validation (C: crash before validation)
+   8 after_validation_before_finalized  (C: crash before the FINALIZED state write)
+   H HARD TERMINATION (child os._exit mid-finalization)
+   A POST_COMMIT_PRE_RECORD (killed before the caller records the pending-finalization entry — restart
+     reconciles the record from the COMMITTED transaction manifest, then finalizes; scores applied once)
+   B CONFLICT_BYTE_PRESERVATION (a conflicting same-round write is refused; the existing JSON + CSV +
+     bundle are byte-identical afterwards, and finalization is not advanced to complete)
 
 Run:  python3 session_2026-07-20/weekly_updater_hardening/finalization_injection_proof.py [--write]
 Exit 0 = ALL PASS. Writes NOTHING to the real store (gate ships OFF; armed in-process on SCRATCH only).
@@ -196,6 +202,68 @@ def _assert_point(base_scr, r16_ev, base_ledger, point, hard=False):
     return checks
 
 
+def _assert_reconcile_gap(base, base_ledger):
+    """POST-COMMIT / PRE-RECORD crash (review A). The canonical commit reached COMMITTED but the caller
+    was KILLED before it could write the finalization record. On restart, reconcile reconstructs the
+    record from the COMMITTED transaction manifest (played + board/store ids), finalizes, and the scores
+    + ledger stay applied EXACTLY ONCE (no re-apply, no duplicate)."""
+    scr = base + '_reconcilegap'
+    shutil.copytree(base, scr)
+    checks = {'case': 'post_commit_pre_record'}
+    try:
+        fz = FZ.RoundFinalizer(scr)
+        # simulate the gap: R16 committed (txn manifest COMMITTED) but its finalization record never written
+        st = fz._load(); st['rounds'].pop('16', None); fz._save(st)
+        checks['r16_record_absent'] = (fz.status(16) is None)
+        led0 = FI.ledger_count(scr)
+        reconciled = fz.reconcile(generated_at=GEN)
+        checks['reconciled_from_txn_manifest'] = (16 in reconciled and fz.status(16) == FZ.CORE_COMMITTED)
+        entry = fz.entry(16) or {}
+        checks['reconstructed_played_and_flag'] = bool(entry.get('played')) and entry.get('reconciled') is True
+        pend = fz.finalize_pending(generated_at=GEN)
+        checks['finalized'] = (fz.status(16) == FZ.FINALIZED and pend['clean'])
+        checks['ledger_unchanged'] = (FI.ledger_count(scr) == led0 == base_ledger)
+        led = json.load(open(FI.live_paths(scr)['ledger']))
+        r16 = [t for t in led.get('applied', []) if '|16' in t]
+        checks['r16_applied_once'] = bool(r16) and len(r16) == len(set(r16))
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+    checks['pass'] = all(checks.get(k) for k in ('r16_record_absent', 'reconciled_from_txn_manifest',
+                         'reconstructed_played_and_flag', 'finalized', 'ledger_unchanged', 'r16_applied_once'))
+    return checks
+
+
+def _assert_conflict_bytes(base):
+    """BYTE-PRESERVING CONFLICT REFUSAL (review B). Hash the R16 JSON + CSV + accumulated bundle, attempt
+    a CONFLICTING same-round write (different transaction/board id), and confirm all THREE are
+    byte-identical afterwards — no artifact mutated, finalization not advanced to complete."""
+    scr = base + '_conflict'
+    shutil.copytree(base, scr)
+    checks = {'case': 'conflict_byte_preservation'}
+    try:
+        fz = FZ.RoundFinalizer(scr)
+        fz.reconcile(generated_at=GEN)
+        r = fz.finalize_round(16, generated_at=GEN)
+        checks['r16_finalized'] = r.get('ok')
+        jp, cp, _ = MV.movers_paths(scr, 16)
+        bp = os.path.join(scr, 'ui', 'data', 'movers.js')
+        h0 = (FI.md5(jp), FI.md5(cp), FI.md5(bp))
+        good = json.load(open(jp))
+        bad = dict(good); bad['board_md5_after'] = 'deadbeef' * 4; bad['txn_id'] = 'txn_evil'
+        conflict, _why = MV.movers_conflict(scr, 16, bad)
+        checks['conflict_detected'] = conflict
+        res = MV.accumulate_bundle(bp, bad, repo_root=scr)
+        checks['bundle_write_refused'] = bool(res.get('overwrite_conflict')) and res.get('wrote') is False
+        h1 = (FI.md5(jp), FI.md5(cp), FI.md5(bp))
+        checks['all_three_hashes_identical'] = (h0 == h1)
+        checks['status_still_finalized'] = (fz.status(16) == FZ.FINALIZED)
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+    checks['pass'] = all(checks.get(k) for k in ('r16_finalized', 'conflict_detected', 'bundle_write_refused',
+                         'all_three_hashes_identical', 'status_still_finalized'))
+    return checks
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument('--write', action='store_true')
@@ -215,6 +283,16 @@ def main(argv):
             print("  [%s] point: %-34s (restart->repair, ledger invariant, coherent)"
                   % ('PASS' if res['pass'] else 'FAIL', point))
             results.append(res)
+        # review A — post-commit / pre-record crash: reconcile from the committed txn manifest
+        gap = _assert_reconcile_gap(base, base_ledger)
+        print("  [%s] case : %-34s (kill before record -> reconcile from txn manifest -> finalize; once)"
+              % ('PASS' if gap['pass'] else 'FAIL', 'POST_COMMIT_PRE_RECORD'))
+        results.append(gap)
+        # review B — byte-preserving conflict refusal (JSON + CSV + bundle unchanged)
+        conf = _assert_conflict_bytes(base)
+        print("  [%s] case : %-34s (conflicting write refused; all three artifacts byte-identical)"
+              % ('PASS' if conf['pass'] else 'FAIL', 'CONFLICT_BYTE_PRESERVATION'))
+        results.append(conf)
     finally:
         shutil.rmtree(base, ignore_errors=True)
 

@@ -342,7 +342,18 @@
     "one_per_round": true,
     "pass": true
   },
-  "elapsed_s": 575.1,
+  "H_historical_repair": {
+    "historical": true,
+    "ledger_unchanged": true,
+    "pass": true,
+    "r15_csv_reproduced": true,
+    "r15_identity_retained": true,
+    "r15_json_reproduced": true,
+    "repair_ok": true,
+    "work_asof_before": 19,
+    "working_board_stayed_R19": true
+  },
+  "elapsed_s": 551.1,
   "gate_off_real_store": true,
   "gate_off_real_store_pass": true,
   "gate_shipped": {
