@@ -25,11 +25,11 @@ MD.config = {
      lens unchanged: 804 active, Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as
      balanced_board_md5 lineage). Engine cc626d7d/904722cd, store 968de0c7, config 3a1e714f unchanged (rl_export
      is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC). */
-  EXPECTED_BOARD: "2ab73a6f",
+  EXPECTED_BOARD: "92a8f3a0",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
-  DELTA_BASE_DEFAULT: "bake", // "bake" (a) today · flip to "round" (b) at go-live.
+  DELTA_BASE_DEFAULT: "round", // "bake" (a) today · flip to "round" (b) at go-live.
 
   /* ±1/2-yr board lens (completion-path requirement). Index 2 == now (BASE_YEAR).
      Maps to lens = [vM2, vM1, v, vP1, vP2] = ev @ 2024/2025/2026/2027/2028 (rl_export.py:66). */

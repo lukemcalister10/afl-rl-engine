@@ -1,0 +1,25 @@
+{"board_md5_after": "2fe266756da3b7fb98eef38f4602c3b5", "event": "CORE_COMMITTED", "reconciled": false, "round": 15, "txn_id": "txn_catchup_r15"}
+{"event": "STATUS", "round": 15, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 15}
+{"event": "STATUS", "round": 15, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R15.json", "round": 15}
+{"board_md5_after": "8ad4170820ced82f50963bb0795e2fc9", "event": "CORE_COMMITTED", "reconciled": false, "round": 16, "txn_id": "txn_catchup_r16"}
+{"event": "STATUS", "round": 16, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 16}
+{"event": "STATUS", "round": 16, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R16.json", "round": 16}
+{"board_md5_after": "0308202fbec7ea8dfa76705a108e8e45", "event": "CORE_COMMITTED", "reconciled": false, "round": 17, "txn_id": "txn_catchup_r17"}
+{"event": "STATUS", "round": 17, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 17}
+{"event": "STATUS", "round": 17, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R17.json", "round": 17}
+{"board_md5_after": "4323c448d7fd3df3518391adaea2cdd3", "event": "CORE_COMMITTED", "reconciled": false, "round": 18, "txn_id": "txn_catchup_r18"}
+{"event": "STATUS", "round": 18, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 18}
+{"event": "STATUS", "round": 18, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R18.json", "round": 18}
+{"board_md5_after": "92a8f3a0528e5668029ca8056a841821", "event": "CORE_COMMITTED", "reconciled": false, "round": 19, "txn_id": "txn_catchup_r19"}
+{"event": "STATUS", "round": 19, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 19}
+{"event": "STATUS", "round": 19, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R19.json", "round": 19}
