@@ -147,7 +147,7 @@ jobs:
           set -euo pipefail
           python3 session_2026-07-20/live_scoring_catchup/movers_proof.py --write
 
-      - name: Failure-injection + crash-recovery + acceptance proof (7 points)
+      - name: Failure-injection + crash-recovery + acceptance proof (8 points; incl contract-staging + round-coherence)
         run: |
           set -euo pipefail
           python3 session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py --write

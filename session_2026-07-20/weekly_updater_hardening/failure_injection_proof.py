@@ -6,12 +6,14 @@ scratch path resolves to the real single source.
 
 It proves the staged transaction (engine/rl_after/ingestion/staged_apply.py) is safe under failure:
 
-  FAILURE INJECTION (7 points). For each, a fault is injected mid-apply and we assert the live scratch
+  FAILURE INJECTION (8 points). For each, a fault is injected mid-apply and we assert the live scratch
   files are byte-identical to their pre-run bytes (rolled back or never touched), no dedup entry
   remains, no partial board remains, and the transaction evidence explains the failure:
     1 before_store_staging   2 during_board_generation   3 after_board_generation
-    4 during_manifest_staging 5 during_ledger_staging
-    6 after_first_replacement (commit-phase -> rollback)  7 after_subsequent_replacement (rollback)
+    4 during_manifest_staging 5 during_contract_staging   6 during_ledger_staging
+    7 after_first_replacement (commit-phase -> rollback)  8 after_subsequent_replacement (rollback)
+  Every point additionally asserts the authoritative DYNAMIC files (season_state.json + release_contract.json)
+  are byte-restored AND left on the SAME round as store/board/expected_boot (never split across rounds).
 
   CRASH RECOVERY. A child process HARD-EXITS after the first live replacement (skipping rollback);
   the next apply REFUSES (incomplete transaction) and `recover` restores every original — the store
@@ -47,7 +49,7 @@ from round_score_parser import parse_feed                       # noqa: E402
 
 INJECTION_POINTS = [
     'before_store_staging', 'during_board_generation', 'after_board_generation',
-    'during_manifest_staging', 'during_ledger_staging',
+    'during_manifest_staging', 'during_contract_staging', 'during_ledger_staging',
     'after_first_replacement', 'after_subsequent_replacement',
 ]
 GEN = "2026-07-20T00:00:00Z"
@@ -98,12 +100,31 @@ def live_paths(scr):
         'board':   os.path.join(scr, 'data', 'rl_build', 'rl_app_data.json'),
         'sidecar': os.path.join(scr, 'data', 'rl_build', 'rl_app_data.json.srcmd5'),
         'manifest': os.path.join(scr, 'data', 'expected_boot.json'),
+        # the authoritative DYNAMIC release-state files must be covered by the SAME transaction guarantees
+        # (supervisor 3rd review req 7): a pre-commit failure leaves them byte-identical, a partial commit
+        # restores them, and recovery cannot leave them on a different round than store/board/expected_boot.
+        'season_state':     os.path.join(scr, 'data', 'season_state.json'),
+        'release_contract': os.path.join(scr, 'data', 'release_contract.json'),
         'ledger':  os.path.join(scr, 'engine', 'rl_after', 'ingestion', 'applied_rounds_ledger.json'),
     }
 
 
 def snapshot_bytes_state(scr):
     return {k: md5(p) for k, p in live_paths(scr).items()}
+
+
+def round_coherence(scr):
+    """(coherent, rounds): the as_of_round on season_state, expected_boot AND release_contract must all be
+    EQUAL (supervisor 3rd review req 7 — recovery/rollback cannot leave the authoritative dynamic artifacts
+    on different rounds). Missing/unparseable => not coherent."""
+    lp = live_paths(scr)
+    try:
+        ss = json.load(open(lp['season_state'])).get('as_of_round')
+        boot = json.load(open(lp['manifest'])).get('as_of_round')
+        con = json.load(open(lp['release_contract'])).get('as_of_round')
+    except (OSError, ValueError):
+        return False, None
+    return (ss is not None and ss == boot == con), {'season_state': ss, 'expected_boot': boot, 'release_contract': con}
 
 
 def build_snapshot(scr, n_players=5, rnd=15, base=90.0, step=7.0, store_path=None):
@@ -180,12 +201,16 @@ def prove_injection(target):
             man.get('failure') and target in (man['failure'].get('error') or '')
         journal_has_failure = any(e.get('event') == 'FAILURE' for e in (journal or []))
         rolled_back_evt = (not commit_phase) or any(e.get('event') == 'ROLLBACK_OK' for e in (journal or []))
+        # req 7: the restored season_state / expected_boot / release_contract are byte-identical (already in
+        # `after == before`) AND all on the SAME round — never left on different rounds by a failure.
+        coherent, rounds = round_coherence(scr)
         ok = all([raised is not None, files_restored, no_dedup, no_partial_board,
-                  evidence_ok, journal_has_failure, rolled_back_evt])
+                  evidence_ok, journal_has_failure, rolled_back_evt, coherent])
         return {
             'point': target, 'fault_raised': raised is not None,
             'files_byte_identical_after': files_restored,
             'no_dedup_entry': no_dedup, 'no_partial_board': no_partial_board,
+            'authority_round_coherent_after': coherent, 'rounds_after': rounds,
             'txn_status': man.get('status') if man else None, 'expected_status': expected_status,
             'txn_evidence_explains': evidence_ok, 'rollback_journaled': rolled_back_evt,
             'pass': ok,
@@ -230,8 +255,11 @@ def prove_crash_recovery():
         fully_restored = (after == before)
         no_dedup = (ledger_count(scr) == 0)
         recovered_terminal = bool(man_after) and man_after.get('status') == SA.STATUS_RECOVERED
+        # req 7: after recovery the store/board/expected_boot/season_state/release_contract are byte-restored
+        # (fully_restored) AND all back on the SAME (pre-apply) round — never split across rounds.
+        coherent_after, rounds_after = round_coherence(scr)
         ok = all([crashed, store_changed_mid, board_stale_mid, incomplete_detected, refused,
-                  fully_restored, no_dedup, recovered_terminal, not rep['clean']])
+                  fully_restored, no_dedup, recovered_terminal, not rep['clean'], coherent_after])
         return {
             'child_crashed_after_first_replacement': crashed,
             'mid_crash_store_changed': store_changed_mid,
@@ -239,6 +267,7 @@ def prove_crash_recovery():
             'incomplete_detected': incomplete_detected,
             'next_apply_refused': refused,
             'recover_restored_all_originals': fully_restored,
+            'authority_round_coherent_after_recover': coherent_after, 'rounds_after_recover': rounds_after,
             'no_dedup_entry_after_recover': no_dedup,
             'txn_marked_recovered': recovered_terminal,
             'pass': ok,
@@ -459,7 +488,7 @@ def _md_report(r):
          "`INGEST_SCORE_APPLY` unset; real-store apply refused = `%s`). Every write below is on a "
          "throwaway scratch repo." % r['gate_off_on_real_store'],
          "", "## RESULT: **%s**  (%.1fs)" % ('ALL PASS' if r['ALL_PASS'] else 'FAIL', r['elapsed_s']),
-         "", "## Failure injection (7 points) — rollback leaves the scratch byte-identical",
+         "", "## Failure injection (8 points) — rollback leaves the scratch byte-identical (incl season_state + release_contract)",
          "| injection point | files byte-identical | no dedup entry | no partial board | txn status | pass |",
          "|---|---|---|---|---|---|"]
     for p in INJECTION_POINTS:
