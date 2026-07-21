@@ -1,0 +1,7 @@
+{
+  "engine_before": "dc7e34b0d50470897af237c638236868",
+  "engine_after": "265bda427da78a5a76d8d3c1abc584e5",
+  "prototype": "engine/prototypes/staleness_graded_cap.py",
+  "knots_changed": false,
+  "player_overrides": 0
+}
