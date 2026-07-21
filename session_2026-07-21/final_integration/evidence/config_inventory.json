@@ -1319,7 +1319,7 @@
         {
           "default": "<expr:DEFAULT_SEASON_ROUNDS>",
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 235
+          "line": 241
         }
       ],
       "var": "RL_SEASON_ROUNDS"
@@ -1483,17 +1483,17 @@
         {
           "default": null,
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 681
+          "line": 698
         },
         {
           "default": "/home/claude/rl_vendor",
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 1034
+          "line": 1098
         },
         {
           "default": "/home/claude/rl_vendor",
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 1086
+          "line": 1150
         }
       ],
       "var": "RL_VENDOR"
