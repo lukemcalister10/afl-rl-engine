@@ -386,3 +386,72 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .pocketpanel .pk-vs.up{color:var(--up)} .pocketpanel .pk-vs.dn{color:var(--dn)} .pocketpanel .pk-vs.flat{color:var(--faint)}
 .pocketpanel .pk-foot{font-size:10px;line-height:1.5;color:var(--faint);padding:9px 14px 4px;border-top:1px solid var(--edge);margin-top:4px}
 @media (max-width:480px){.pocketpanel{width:calc(100vw - 20px)}}
+
+/* ============================================================================
+   MOVERS view (item: weekly movers, 2026-07-20) — a NATIVE section of the engine.
+   Reuses the design tokens, the .strip filter bar, .seg segmented controls, the
+   .pill movement grammar and the .num mono figures. No new palette, font or shell. */
+.movercards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.movercard{background:var(--card);border:1px solid var(--edge);border-top:3px solid var(--volt);
+  padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.movercard:hover{background:var(--card-2);border-color:#2c3446}
+.movercard .mcl{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint)}
+.movercard .mcn{font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--text);line-height:1.05;overflow-wrap:anywhere}
+.movercard .mcv{font-family:var(--mono);font-weight:700;font-size:16px}
+.movercard .mcv.up{color:var(--up)} .movercard .mcv.dn{color:var(--dn)}
+.movercard .mcv.flat,.movercard .mcv.na{color:var(--faint)}
+.movercard .mcs{font-size:10.5px;color:var(--dim)}
+
+.moversmeta{border-left-color:var(--edge)}
+.moversmeta b{color:var(--text);font-size:12px}
+.moversbar select.boardsel,.moversfilters select.boardsel{margin-right:4px}
+
+.movertable{margin-top:12px}
+.moverhead{display:grid;gap:10px;align-items:end;padding:10px 14px 6px;border-bottom:1px solid var(--edge);
+  grid-template-columns:52px 1fr 118px 88px 128px 72px 118px 78px}
+.moverhead .mh{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);cursor:pointer;user-select:none}
+.moverhead .mh.r{text-align:right}
+.moverhead .mh:hover{color:var(--volt)}
+.moverrows{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.moverrow{display:grid;gap:10px;align-items:center;background:var(--card);border:1px solid var(--edge);
+  padding:8px 14px;cursor:pointer;grid-template-columns:52px 1fr 118px 88px 128px 72px 118px 78px}
+.moverrow:hover{background:var(--card-2);border-color:#2c3446}
+.moverrow.dnp{opacity:.72;border-style:dashed}
+.moverrow .mr.rank{font-family:var(--cond);font-weight:900;font-size:20px;color:var(--faint);text-align:right}
+.moverrow .mr.who{display:flex;flex-direction:column;gap:1px;min-width:0}
+.moverrow .mr.who .nm{font-family:var(--cond);font-weight:700;font-size:16px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--text);overflow-wrap:anywhere;line-height:1.05}
+.moverrow .mr.who .sub{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.moverrow .mr.val{font-family:var(--mono);font-weight:700;font-size:15px;text-align:right}
+.moverrow .mr.dv,.moverrow .mr.dr{justify-self:end}
+.moverrow .mr.dvp,.moverrow .mr.dpr{font-family:var(--mono);font-size:12px;text-align:right}
+.moverrow .mr.dvp.up,.moverrow .mr.dpr.up{color:var(--up)}
+.moverrow .mr.dvp.dn,.moverrow .mr.dpr.dn{color:var(--dn)}
+.moverrow .mr.dvp.flat,.moverrow .mr.dpr.flat,.moverrow .mr.dvp.na,.moverrow .mr.dpr.na{color:var(--faint)}
+.moverrow .mr.pdn .pill{font-size:10.5px;padding:2px 8px}
+.movercount{font-family:var(--mono);font-size:11px;color:var(--faint);padding:10px 4px 2px}
+.movercount .num{color:var(--dim)}
+
+/* honest empty state (no finalized round reports) — a neutral panel, NOT the alarm treatment. */
+.moversempty{max-width:640px;margin:60px auto;border:1px solid var(--edge);background:var(--card);padding:28px 30px}
+.moversempty h1{font-family:var(--cond);font-weight:900;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin:0 0 10px}
+.moversempty p{color:var(--dim);font-size:13px;line-height:1.7}
+.moversempty .mono{font-family:var(--mono);font-size:12px;color:var(--faint)}
+
+@media(max-width:920px){
+  .movercards{grid-template-columns:repeat(2,1fr)}
+  .moverhead{display:none}
+  .moverrow{grid-template-columns:40px 1fr auto;grid-auto-rows:auto;row-gap:6px;padding:10px 12px}
+  .moverrow .mr.who{grid-column:2}
+  .moverrow .mr.rank{font-size:17px}
+  .moverrow .mr.pdn{grid-column:3;justify-self:end}
+  .moverrow .mr.val{grid-column:1 / -1;text-align:left;font-size:13px}
+  .moverrow .mr.dv{grid-column:1 / 2;justify-self:start}
+  .moverrow .mr.dvp{grid-column:2 / 3;text-align:left}
+  .moverrow .mr.dr{grid-column:3 / 4;justify-self:end}
+  .moverrow .mr.dpr{display:none}
+}
+@media(max-width:480px){.movercards{grid-template-columns:1fr}}

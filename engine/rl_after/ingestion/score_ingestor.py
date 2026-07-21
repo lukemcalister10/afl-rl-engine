@@ -41,9 +41,18 @@ DEFAULT_SEASON_YEAR = 2026        # the live season; == rl_model.py BASE_REF (rl
 ROUND_DECIMALS = 2                # store `avg` precision (verified: every stored avg == round(avg,2))
 DEFAULT_SCORE_BOUNDS = (-100.0, 400.0)   # a PLAYED round outside this band is an impossible-score anomaly
 
-# ---- THE HARD APPLY SWITCH (env + code, default OFF) ---------------------------------------
-APPLY_DEFAULT = False                     # code half of the switch — MUST stay False in this job
-_APPLY_ENV = 'INGEST_SCORE_APPLY'         # env half — unset by default; owner-worded token at go-live
+# ---- THE HARD APPLY SWITCH (two halves, default OFF) ---------------------------------------
+# The store write is gated by TWO deliberate, DISTINCT opt-ins, both OFF by default (belt-and-braces:
+# no single stray var/edit arms it). This BUILD ships BOTH halves OFF and applies no real round.
+#   code half : APPLY_DEFAULT (a code constant, MUST stay False here) OR the LOCAL override env
+#               INGEST_SCORE_APPLY_ARMED=1 — the local half lets the owner arm without editing Python
+#               (the launcher/README use it), while the SHIPPED constant stays False.
+#   env  half : an explicit INGEST_SCORE_APPLY token (unset by default; owner-worded at go-live).
+# Shipped state: APPLY_DEFAULT=False, both env vars unset => _apply_enabled() is False => the real
+# store is never written. Arming requires TWO explicit, local opt-ins.
+APPLY_DEFAULT = False                     # code half — MUST stay False in this build (shipped default)
+_APPLY_ENV = 'INGEST_SCORE_APPLY'         # env half — the explicit apply token (unset by default)
+_APPLY_CODE_ENV = 'INGEST_SCORE_APPLY_ARMED'   # LOCAL code-half override (=1 to arm without a code edit)
 
 
 class IngestionGatedError(RuntimeError):
@@ -51,8 +60,10 @@ class IngestionGatedError(RuntimeError):
 
 
 def _apply_enabled():
-    """Both halves must be on: the code default AND an explicit env opt-in. Default => OFF."""
-    return bool(APPLY_DEFAULT) and bool(os.environ.get(_APPLY_ENV))
+    """BOTH halves must be on: the code half (APPLY_DEFAULT constant, or the local
+    INGEST_SCORE_APPLY_ARMED=1 override) AND an explicit INGEST_SCORE_APPLY token. Default => OFF."""
+    code_half = bool(APPLY_DEFAULT) or os.environ.get(_APPLY_CODE_ENV) == '1'
+    return code_half and bool(os.environ.get(_APPLY_ENV))
 
 
 # ---- identity/eligibility helpers (pure; mirror rl_model, NO valuation) --------------------
@@ -259,22 +270,24 @@ class ScoreIngestor:
 
     # -- APPLY: HARD-GATED OFF. No store write exists in this job. ---------------------------
     def apply(self, preview):
-        """Would apply the preview's appends to the single source. GATED OFF for this whole job.
+        """Apply the preview's appends to the single source — BEHIND the double-OFF gate.
 
-        The switch has two halves (code APPLY_DEFAULT + env INGEST_SCORE_APPLY), both default OFF,
-        so this raises IngestionGatedError. The store-write itself is DELIBERATELY NOT IMPLEMENTED
-        here — even a flipped switch cannot write, because there is no write code. Building the
-        write AND flipping the switch is the future owner-worded go-live job.
-        See docs/GO_LIVE_round_score_ingestion.md.
+        The switch has two halves (code APPLY_DEFAULT + env INGEST_SCORE_APPLY), both default OFF, so
+        this raises IngestionGatedError until go-live arms BOTH (belt-and-braces). When armed, it
+        delegates to round_apply.RoundApplier.for_repo() — the go-live store-write: merge -> regen
+        board -> re-stamp the boot manifest -> record the dedup ledger, under the five SSI guards.
+        See docs/GO_LIVE_round_score_ingestion.md (FLIP ORDER). This build ships the gate OFF, so
+        apply() against the real store always refuses; the write path is proven on scratch copies.
         """
         if not _apply_enabled():
             raise IngestionGatedError(
-                "round-score APPLY is OFF (APPLY_DEFAULT=%s, env %s unset). This provision job "
-                "writes nothing to the store; go-live is a separate owner-worded job."
+                "round-score APPLY is OFF (APPLY_DEFAULT=%s, env %s unset). This build writes nothing "
+                "to the store; go-live arms both halves (docs/GO_LIVE_round_score_ingestion.md)."
                 % (APPLY_DEFAULT, _APPLY_ENV))
-        raise NotImplementedError(
-            "the store-write path is intentionally absent from the provision job — implementing "
-            "it behind this switch is the go-live job (docs/GO_LIVE_round_score_ingestion.md).")
+        from .round_apply import RoundApplier   # lazy: avoid a score_ingestor <-> round_apply cycle
+        repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__)))))
+        return RoundApplier.for_repo(repo_root).apply(preview)
 
 
 def _md5_of(path):

@@ -1,0 +1,27 @@
+{
+  "kind": "owner_identity_overrides",
+  "season": 2026,
+  "note": "Owner-authored identity overrides for the R15-R19 catch-up (owner ruling 2026-07-20). These resolve export display names that do NOT cleanly map to a single active stable identity, BY STABLE KEY and never by display name or row order. Values are store `key`s. Applied BEFORE the name resolver; a covered name with no matching rule is treated as UNRESOLVED (halt), never guessed.",
+  "identity_model_note": "THREE DISTINCT IDENTITY CONCEPTS (corrective 2026-07-20, review directive G) — do not conflate them: (1) STABLE KEY — the store `key` (e.g. bailey-williams-wb); the ONLY thing a score attaches to. (2) AFL CLUB — the real football club the player plays for, store field `afl_club` (e.g. Western Bulldogs). (3) AFFL OWNERSHIP TEAM — the AFFL fantasy/ownership team, store field `affl_team` (e.g. Collingwood Magpies). Prior notes mislabelled Bailey Williams as 'Collingwood' and Bailey J. Williams as 'Sydney' — those are AFFL ownership teams, NOT the players' AFL clubs. The score-to-key MAPPINGS below are unchanged; only the descriptive club/team text is corrected.",
+  "overrides": [
+    {
+      "name": "Callum Brown",
+      "rule": "map_all",
+      "stable_key": "callum-brown-ire",
+      "reason": "Owner ruling 2026-07-20: the export lists 'Callum Brown'; the active player is 'Callum M. Brown' (stable key callum-brown-ire) — FootyWire omits the middle initial. Store identity: AFL club = GWS (afl_club), AFFL ownership team = St Kilda Saints (affl_team); the owner-approved reference is 'St Kilda' (the AFFL ownership team). The only exact 'Callum Brown' in the store is retired. All listed 'Callum Brown' scores attach to callum-brown-ire."
+    },
+    {
+      "name": "Bailey Williams",
+      "rule": "by_round_score",
+      "reason": "Owner ruling 2026-07-20: two active players share the display name 'Bailey Williams', disambiguated by (round, score) so each listed score reaches the correct STABLE KEY; the two never collapse. bailey-williams-wb = Bailey Williams — AFL club Western Bulldogs (afl_club); AFFL ownership team Collingwood Magpies (affl_team): R18=55, R19=137. bailey-williams-wc = Bailey J. Williams — AFL club West Coast (afl_club); AFFL ownership team Sydney Swans (affl_team): R16=67, R17=82, R18=100, R19=84. (The AFL clubs are Western Bulldogs and West Coast; Collingwood and Sydney are the AFFL ownership teams, not the players' clubs.)",
+      "map": {
+        "16|67": "bailey-williams-wc",
+        "17|82": "bailey-williams-wc",
+        "18|100": "bailey-williams-wc",
+        "18|55": "bailey-williams-wb",
+        "19|137": "bailey-williams-wb",
+        "19|84": "bailey-williams-wc"
+      }
+    }
+  ]
+}

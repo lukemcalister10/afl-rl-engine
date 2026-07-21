@@ -35,9 +35,10 @@ _STORE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))
 
 def _reconstruct_feed(player_name, entry, club=None):
     """Build a weekly JSON feed reproducing one player's season entry as flat played rounds.
-    `club` (the row's affl_team) is carried so collision names (two Max Kings, etc.) resolve via
-    the club veto — exactly as a real weekly feed disambiguates them. JSON avoids CSV-quoting the
-    club string ('Free agents')."""
+    `club` (the row's afl_club — the CURRENT AFL club a real feed carries, item 20d; NOT affl_team,
+    the AFFL keeper side) is carried so collision names (two Max Kings, etc.) resolve via the club
+    veto — exactly as a real weekly feed disambiguates them. JSON avoids CSV-quoting the club
+    string ('Free agents')."""
     a, g = entry['avg'], entry['games']
     rows = [{'player': player_name, 'round': rnd, 'score': a, 'played': 1, 'club': club}
             for rnd in range(1, g + 1)]
@@ -64,7 +65,7 @@ def run(season_year=DEFAULT_SEASON_YEAR):
                'exceptions_total': 0, 'anomalies_total': 0, 'failures': [], 'worked_example': None}
 
     for row, entry in candidates:
-        feed = _reconstruct_feed(row['player'], entry, club=row.get('affl_team'))
+        feed = _reconstruct_feed(row['player'], entry, club=row.get('afl_club'))
         rows = parse_feed(feed)
         pv = ing.preview(rows, season_year=season_year, merge_with_store=False)
 

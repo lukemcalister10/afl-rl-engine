@@ -1,0 +1,16 @@
+{
+  "_doc": "IMMUTABLE PRESENT-LENS BASELINE IDENTITY for the v2.11 lineage (owner/supervisor rulings 2026-07-20). balanced_board_md5 identifies the accepted PRESENT-LENS baseline — the accepted present `v` values and present rankings represented by 06d8af60. It is a fixed lineage ANCHOR that is CONSTANT across weekly rounds: a weekly score transaction updates the CURRENT board + store + as_of_round + the per-report board/store before-and-after chain, but NEVER these baseline fields. The fixed MODEL identity pins (engine_head / rl_model / fv / config / register) are read from data/expected_boot.json (the governing boot manifest, which the weekly updater never re-stamps for the model); only the baseline fields (release_version + balanced_board_md5) not present in the boot manifest live here.",
+  "_present_lens_only": "IMPORTANT (addendum 2026-07-20): balanced_board_md5 = 06d8af60 is the accepted PRESENT-LENS baseline identity ONLY. It is NOT assumed to be the final COMPLETE board-file artifact hash. The owner has accepted the present `v` values + rankings but has NOT accepted the old vP1/vP2 forward-lens outputs; once Leg E/F forward-lens fields are adopted, the complete board artifact (and its full-board hash) will differ. The moving `board` field in a report is the complete CURRENT board artifact; balanced_board_md5 anchors the present-lens lineage only.",
+  "_not_final_rc": "This file does NOT claim final RC compatibility and does NOT represent the final release policy. The candidate final release-policy switches (RL_PVC2 / RL_LEGE / RL_LEGF) are UNRESOLVED and subject to a separate read-only forward-lens acceptance + owner viewing; this file encodes NO switch posture (it does not assume 1/0/0, 1/1/1, or any final value). release_version below is the present-lens-baseline lineage label, not a claim that the current manifest is the final release.",
+  "_external_integration_dependencies": [
+    "canonical switch-manifest closure (data/model_config.json does not yet express all release-semantic switches)",
+    "final Leg E/F forward-lens owner acceptance",
+    "final full-board regeneration and pinning (the final complete board-file hash is not yet known)",
+    "club-valuation regeneration (owned by the Track A release contract)",
+    "RC-lineage integration (PR #127)"
+  ],
+  "release_version": "v2.11-present-lens-baseline",
+  "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+  "_model_pins_source": "data/expected_boot.json (engine_head, rl_model, fv, config, register — fixed across weekly rounds; re-stamped only at a separately-approved valuation-changing release)",
+  "_rc_note": "On RC integration (PR #127) this file is superseded by the RC manifest's verified release_version + balanced_board_md5 (and the final full-board pin once Leg E/F is accepted); the weekly updater copies those verified fields, it never synthesizes them."
+}

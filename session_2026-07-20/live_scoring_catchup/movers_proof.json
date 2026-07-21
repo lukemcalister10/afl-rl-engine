@@ -1,0 +1,100 @@
+{
+  "0_production_empty_and_derived_identity": {
+    "no_hardcoded_v2_10_tag": true,
+    "pass": true,
+    "production_empty": true,
+    "production_rounds": [],
+    "release_versions": [
+      "v2.11-present-lens-baseline"
+    ]
+  },
+  "1_one_report_per_round": {
+    "pass": true,
+    "rounds": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "2_baseline_is_prior_round": {
+    "pass": true
+  },
+  "3_unique_full_coverage": {
+    "pass": true,
+    "per_round": {
+      "15": {
+        "count_matches": true,
+        "players": 804,
+        "unique": true
+      },
+      "16": {
+        "count_matches": true,
+        "players": 804,
+        "unique": true
+      },
+      "17": {
+        "count_matches": true,
+        "players": 804,
+        "unique": true
+      },
+      "18": {
+        "count_matches": true,
+        "players": 804,
+        "unique": true
+      },
+      "19": {
+        "count_matches": true,
+        "players": 804,
+        "unique": true
+      }
+    }
+  },
+  "4_deltas_recompute_and_chain": {
+    "chain_ok": true,
+    "delta_ok": true,
+    "examples": [],
+    "pass": true
+  },
+  "5_deterministic_views": {
+    "pass": true
+  },
+  "6_dnp_represented": {
+    "listed_zero_stays_played_example": [
+      19,
+      "jordan-croft"
+    ],
+    "pass": true
+  },
+  "7_no_extra_reports": {
+    "pass": true,
+    "report_count": 5
+  },
+  "8_restart_preserves": {
+    "pass": true,
+    "rounds_after_reread": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "9_no_silent_overwrite": {
+    "board_ids_distinct": true,
+    "byte_preservation_proven_in": "finalization_injection_proof.py (CONFLICT_BYTE_PRESERVATION)",
+    "pass": true
+  },
+  "ALL_PASS": true,
+  "csv_reports": {
+    "files": [
+      "movers_R15.csv",
+      "movers_R16.csv",
+      "movers_R17.csv",
+      "movers_R18.csv",
+      "movers_R19.csv"
+    ],
+    "pass": true
+  }
+}
