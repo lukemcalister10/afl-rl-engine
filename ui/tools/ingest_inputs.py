@@ -34,7 +34,7 @@ CURVE_CONTRACT = os.environ.get("RL_UI_CURVE_CONTRACT", os.path.join(ROOT, "ui",
 BOOT = os.environ.get("RL_UI_BOOT", os.path.join(ROOT, "data", "expected_boot.json"))
 OUT = os.environ.get("RL_UI_OUT", os.path.join(UI_DATA, "club_valuation.js"))
 
-EXPECTED_BOARD = "2ab73a6f"      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
+EXPECTED_BOARD = None      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
 PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
 BASE_YEAR = 2026
 
@@ -81,7 +81,7 @@ def _emit_halt(reason):
     print("\n■ HALT — %s" % reason)
     print("  The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.")
     payload = {
-        "stamp": {"expectedBoard": EXPECTED_BOARD, "generated": _now()},
+        "stamp": {"expectedBoard": _expected_board_short(), "generated": _now()},
         "halt": {"reason": reason, "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts]},
         "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts],
         "clubs": [], "picksByTeam": {}, "notes": notes,
@@ -122,11 +122,27 @@ def load_board():
         halt("board bundle is not parseable JSON: %s" % e)
     stamp = obj.get("stamp", {})
     board = str(stamp.get("board", ""))
-    check("board id ring-fence", board[:8] == EXPECTED_BOARD,
-          "bundle board %s vs expected %s" % (board[:8], EXPECTED_BOARD))
-    if board[:8] != EXPECTED_BOARD:
-        halt("board id mismatch — bundle %s != EXPECTED_BOARD %s (regenerate board_view or re-pin)"
-             % (board[:8], EXPECTED_BOARD))
+    boot = _release_manifest()
+    expected_board = str(boot["board"])
+    board_ok = board == expected_board
+    check("board id ring-fence == current release manifest", board_ok,
+          "bundle board %s vs manifest %s" % (board[:8], expected_board[:8]))
+    if not board_ok:
+        halt("board id mismatch — bundle %s != current release board %s (regenerate board_view)"
+             % (board[:8], expected_board[:8]))
+    round_ok = stamp.get("asOfRound") == boot["as_of_round"]
+    check("board asOfRound == current release manifest", round_ok,
+          "bundle %s vs manifest %s" % (stamp.get("asOfRound"), boot["as_of_round"]))
+    if not round_ok:
+        halt("board round mismatch — bundle R%s != current release R%s"
+             % (stamp.get("asOfRound"), boot["as_of_round"]))
+    bundle_store = str(stamp.get("store_md5") or stamp.get("store") or "")
+    store_ok = bundle_store == str(boot["store"])
+    check("board source store == current release manifest", store_ok,
+          "bundle %s vs manifest %s" % (bundle_store[:8], str(boot["store"])[:8]))
+    if not store_ok:
+        halt("board store mismatch — bundle %s != current release store %s"
+             % (bundle_store[:8], str(boot["store"])[:8]))
     pvc = {int(k): v for k, v in obj.get("pvc", {}).items()}
     return obj, stamp, pvc
 
@@ -148,6 +164,26 @@ def _read_json(path, what):
         halt("%s is not parseable JSON: %s (%s)" % (what, path, e))
 
 
+
+def _release_manifest():
+    """Dynamic weekly authority: board, store and round move together after every apply."""
+    boot = _read_json(BOOT, "release manifest (expected_boot)")
+    missing = [k for k in ("board", "store", "as_of_round", "release_version")
+               if boot.get(k) in (None, "")]
+    check("release manifest has current board/store/round/version", not missing,
+          "missing: %s" % (missing or "none"))
+    if missing:
+        halt("release manifest lacks current weekly identity fields: %s" % missing)
+    return boot
+
+
+def _expected_board_short():
+    try:
+        return str(json.load(open(BOOT, encoding="utf-8")).get("board", ""))[:8]
+    except Exception:
+        return "unknown"
+
+
 def _gate_token(curve_doc):
     """The first whitespace token of a curve file's self-declared 'gate' string is its pathway id
     (e.g. 'RL_PVC2 (parallel of RL_PVCADOPT) ...' -> 'RL_PVC2'). Absent gate -> None (fails closed later)."""
@@ -163,8 +199,8 @@ def load_curve_contract():
     single deterministic source of the release-active pathway: the config manifest pins RL_PVCADOPT but does
     NOT carry the RL_PVC2 default-ON kill-switch, so the pathway cannot be read from the config alone."""
     c = _read_json(CURVE_CONTRACT, "release pick-curve contract")
-    need = ("release_version", "as_of_round", "adopted_pathway", "pick_curve_path",
-            "pick_curve_file_md5", "pick_curve_curve_md5", "store_md5", "numeraire_pin1")
+    need = ("release_version", "adopted_pathway", "pick_curve_path",
+            "pick_curve_file_md5", "pick_curve_curve_md5", "curve_source_store_md5", "numeraire_pin1")
     miss = [k for k in need if k not in c]
     check("release pick-curve contract has all required fields", not miss, "missing: %s" % (miss or "none"))
     if miss:
@@ -176,29 +212,19 @@ def load_curve_contract():
     if pathway not in KNOWN_PATHWAYS:
         halt("UNKNOWN curve-selection: adopted_pathway '%s' is not a known pathway %s — refusing to guess "
              "(HALT-AND-ASK)" % (pathway, sorted(KNOWN_PATHWAYS)))
-    boot = _read_json(BOOT, "release manifest (expected_boot)")
-    store_ok = str(c["store_md5"]) == str(boot.get("store"))
-    check("contract store_md5 == release manifest store", store_ok,
-          "contract %s vs manifest %s" % (str(c["store_md5"])[:8], str(boot.get("store"))[:8]))
-    if not store_ok:
-        halt("CONFLICTING curve-selection: contract store_md5 %s != release store %s — this pick-curve "
-             "contract is not for this release (HALT-AND-ASK)"
-             % (str(c["store_md5"])[:8], str(boot.get("store"))[:8]))
+    boot = _release_manifest()
     rv_ok = str(c["release_version"]) == str(boot.get("release_version"))
-    check("contract release_version == release manifest release_version", rv_ok,
+    check("curve contract release_version == current release version", rv_ok,
           "contract %s vs manifest %s" % (c["release_version"], boot.get("release_version")))
     if not rv_ok:
         halt("CONFLICTING curve-selection: contract release_version %s != release %s (HALT-AND-ASK)"
              % (c["release_version"], boot.get("release_version")))
-    # as_of_round must be present on the contract AND agree with the release manifest — a contract for a
-    # different round is a stale/wrong pick-curve selection and must fail closed (not silently priced).
-    boot_round = boot.get("as_of_round")
-    ar_ok = boot_round is not None and str(c["as_of_round"]) == str(boot_round)
-    check("contract as_of_round == release manifest as_of_round", ar_ok,
-          "contract %s vs manifest %s" % (c["as_of_round"], boot_round))
-    if not ar_ok:
-        halt("CONFLICTING curve-selection: contract as_of_round %s != release as_of_round %s — the pick-curve "
-             "contract is not for this release round (HALT-AND-ASK)" % (c["as_of_round"], boot_round))
+    source_store = str(c["curve_source_store_md5"])
+    source_ok = len(source_store) == 32 and all(ch in "0123456789abcdef" for ch in source_store.lower())
+    check("curve contract carries a full immutable source-store identity", source_ok,
+          "curve source store %s" % source_store[:8])
+    if not source_ok:
+        halt("curve_source_store_md5 is not a full md5 identity (HALT-AND-ASK)")
     pin_ok = int(c["numeraire_pin1"]) == 3000
     check("contract numeraire pin1 == 3000", pin_ok, "pin1 = %s" % c["numeraire_pin1"])
     if not pin_ok:
@@ -245,17 +271,17 @@ def resolve_release_curve(contract):
     # L1b does not — an ABSENT binding is permitted, a PRESENT-and-WRONG one HALTs).
     curve_store = str(((doc.get("stamp") or {}).get("store_md5")) or "")
     if curve_store:
-        cs_ok = curve_store[:8] == str(contract["store_md5"])[:8]
+        cs_ok = curve_store[:8] == str(contract["curve_source_store_md5"])[:8]
         check("engine curve store binding == release store", cs_ok,
-              "curve %s vs release %s" % (curve_store[:8], str(contract["store_md5"])[:8]))
+              "curve %s vs release %s" % (curve_store[:8], str(contract["curve_source_store_md5"])[:8]))
         if not cs_ok:
             halt("CONFLICTING curve-selection: %s binds store %s != release store %s (HALT-AND-ASK)"
-                 % (want_name, curve_store[:8], str(contract["store_md5"])[:8]))
+                 % (want_name, curve_store[:8], str(contract["curve_source_store_md5"])[:8]))
     if int(doc.get("pin", 0)) != 3000:
         halt("release-active curve %s pin != 3000 — numeraire drift (HALT-AND-ASK)" % want_name)
     eng = {int(k): int(v) for k, v in doc["curve"].items()}
     return {"curve": eng, "gate": pathway, "path": "engine/rl_after/" + want_name,
-            "file_md5": file_md5, "curve_md5": str(doc.get("curve_md5")), "store_md5": str(contract["store_md5"])}
+            "file_md5": file_md5, "curve_md5": str(doc.get("curve_md5")), "curve_source_store_md5": str(contract["curve_source_store_md5"])}
 
 
 # ---------------------------------------- board PVC == release-active curve (S5 stamp-assert, corrected)
@@ -568,8 +594,8 @@ def run():
     payload = {
         "stamp": {
             "board": stamp.get("board"), "engine": stamp.get("engine"), "store": stamp.get("store"),
-            "tag": stamp.get("tag"), "expectedBoard": EXPECTED_BOARD, "baseYear": BASE_YEAR,
-            "releaseVersion": contract.get("release_version"), "asOfRound": contract.get("as_of_round"),
+            "tag": stamp.get("tag"), "expectedBoard": _expected_board_short(), "baseYear": BASE_YEAR,
+            "releaseVersion": contract.get("release_version"), "asOfRound": stamp.get("asOfRound"),
             # Provenance of the release-active pick curve, resolved (never hardcoded) from the contract.
             "pvcSource": "%s (%s composed pathway; adopted %s; == rl_app_data PVC; pick1=3000)"
                          % (resolved["path"], resolved["gate"], contract.get("release_version")),

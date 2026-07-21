@@ -11,7 +11,8 @@
     "previous-round movement default",
     "future-pick rendering",
     "Movers R15-R19",
-    "safe club halt",
+    "current club totals for 16 clubs and 160 held picks",
+    "club-total arithmetic and table render",
     "no fail-closed screen",
     "no horizontal document overflow"
   ]
