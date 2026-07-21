@@ -75,6 +75,10 @@ TARGETS = (
     ('board',   os.path.join('data', 'rl_build', 'rl_app_data.json')),
     ('sidecar', os.path.join('data', 'rl_build', 'rl_app_data.json.srcmd5')),
     ('manifest', os.path.join('data', 'expected_boot.json')),
+    # season-state: the authoritative dynamic calendar_progress + exposure_pace (supervisor 2nd review).
+    # Derived from the STAGED store after applying scores + advancing the round, BEFORE the board regen, and
+    # committed ATOMICALLY with the store/board so a crash can never leave a new round on stale season-state.
+    ('season_state', os.path.join('data', 'season_state.json')),
     ('ledger',  os.path.join('engine', 'rl_after', 'ingestion', 'applied_rounds_ledger.json')),
     ('value_history', os.path.join('engine', 'rl_after', 'ingestion', 'value_history.json')),
     ('rank_history',  os.path.join('engine', 'rl_after', 'ingestion', 'rank_history.json')),
@@ -461,6 +465,25 @@ class StagedRoundApplier:
             staged_store_md5 = _md5_file_full(wsapp.store_path)
             self._journal(txn_dir, 'STORE_STAGED', players_merged=merged, staged_store_md5=staged_store_md5)
 
+            # (a2) DERIVE + ADVANCE the authoritative dynamic SEASON-STATE from the STAGED store + the new
+            #      round, AFTER applying scores and BEFORE the board regen (supervisor 2nd review). The board
+            #      the next phase builds therefore reflects the advanced calendar_progress and the freshly
+            #      DERIVED exposure_pace (RL_REPO=ws, so the engine reads ws/data/season_state.json). Written
+            #      into the workspace + committed atomically (it is a TARGET) — a crash can never leave a new
+            #      round with stale Round-14 season-state, a new store with a stale exposure pace, or a board
+            #      built from season-state different from its stamped state.
+            _ssm = self._season_state_module()
+            _ss_new = _ssm.derive(int(snapshot['round']), wsapp.store_path,
+                                  season_year=int(snapshot['season_year']),
+                                  season_total_rounds=self.season_rounds)
+            with open(os.path.join(ws, 'data', 'season_state.json'), 'w') as _ssf:
+                json.dump(_ss_new, _ssf, indent=2)
+            self._journal(txn_dir, 'SEASON_STATE_STAGED', as_of_round=_ss_new['as_of_round'],
+                          calendar_progress=_ss_new['calendar_progress'], exposure_pace=_ss_new['exposure_pace'],
+                          source_store_md5=_ss_new['source_store_md5'],
+                          eligible_durable=_ss_new['exposure_derivation']['eligible_durable_players'],
+                          median_current_games=_ss_new['exposure_derivation']['median_current_games'])
+
             # (b) REGEN the board from the STAGED store under a STRICT, fail-closed environment:
             #     RL_FV bound to the STAGED forward_valuation, PYTHONPATH from the staged repo + pinned
             #     vendor, every ambient valuation redirect cleared, board policy from the release config
@@ -657,6 +680,17 @@ class StagedRoundApplier:
         if os.path.isdir('/home/claude/rl_vendor/unidecode'):
             return '/home/claude/rl_vendor'
         return os.path.join(self.repo_root, 'vendor')
+
+    def _season_state_module(self):
+        """Import the immutable season-state derivation POLICY (repo-root season_state.py). The policy
+        (population / denominator / formula / rounding) is applied to the STAGED store to derive the
+        dynamic calendar_progress + exposure_pace for the new round."""
+        import importlib.util
+        p = os.path.join(self.repo_root, 'season_state.py')
+        spec = importlib.util.spec_from_file_location('season_state_pol', p)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        return m
 
     def _strict_regen_env(self, ws):
         """A STRICT, fail-closed environment for the staged board build. It (1) binds RL_FV to the
