@@ -137,3 +137,46 @@ loads the new manifest ("CONFIG ACCEPTED 3a1e714f, 61 model vars pinned, ambient
   presentation step — a documented wiring point, out of scope for this integration (R15–R19 is not applied here).
 - **CI on the pinned runner:** `.github/workflows/{ci-guards,fv-provenance,live-scoring}.yml` re-run on the PR;
   locally the gates were verified (config acceptance, Guard 5, fast suites, both scratch proofs).
+
+---
+
+## 13. SUPERVISOR CORRECTIONS (2026-07-21, PR #132 review)
+
+Final board identity moved `039ff8d4` → **`2ab73a6fed1f06fc8eecc2ce597c2aec`** (SHA256
+`0026c3f82e6bb555…`). `config` `3a1e714f` and `store` `968de0c7` unchanged. `balanced_board_md5` `06d8af60`
+preserved as present-lens lineage.
+
+**S1 — Canonical reproducibility (no diagnostic build input).** The final board is now produced by the
+CANONICAL ENGINE BUILD: `rl_export.py` (RL_LEGF=1 block) emits the visible future-draft ladder + F5
+reconciliation directly. `build_final_board.py` is repurposed into the clean-room reproduction driver.
+Clean-room proof `cleanroom_repro.json` **9/9**: bootstrap re-sync from checkout → engine build → rebuilt
+board BYTE-IDENTICAL to the committed board → bundles byte-identical → Board B (`70ef0ff`) as an ORACLE only
+(0 diffs on present v / vP1 / vP2 / universe). No `git show` of a diagnostic, no other branch/commit, is a
+build input.
+
+**S2 — Season-progress authority.** Investigated + classified + tested (`season_progress_inventory.json`,
+`season_progress_test.py` **11/11**). Finding: valuation season progress is the FROZEN literal
+`SEASON_PROG=0.58` (`rl_model.py:778`, pinned via rl_model + board md5), DECOUPLED from the dynamic
+`as_of_round=14` (stamped, weekly, feeds no valuation). `RL_SEASON_ROUNDS`/`DEFAULT_SEASON_ROUNDS=24` is the
+ingestion round-bound SANITY guard only — class B, inert for valuation. Controlled R14-vs-R24 test (7-games
+player): grossed-up games 12.07→7.0, benefit-of-doubt 0.584→0.50, year-0 blend 83.2→100.0. `release_contract`
+binds `season_metadata` with a fail-closed coherence check. Re-deriving the fraction from
+as_of_round/season_total would move approved vectors — DEFERRED, owner-authorized, not this task.
+
+**S3 — No row caps.** `board.js` renders EVERY row: removed the top-60 truncation, grouped-club top-6, and
+the "+N more" counts. Current ladder = all 804 players; grouped mode = every player for every club; footer
+reports the true rendered count.
+
+**S4 — Unified +1/+2 ranking.** The future lenses are ONE combined value-descending ranking of **868**
+assets (804 players at vP1/vP2 + 64 anonymous national-draft placeholders at PVC), picks interleaved with
+players by value, global ranks 1..868, pick number shown separately from rank. Player-only filters
+(position/club) remove the anonymous picks while active; clearing restores 868. UI check **40/40**: 868
+rows, 64 picks, interleaved, last player + last pick in DOM, no overflow at 390/1440.
+
+**S5 — F5 residuals + R15 survival.** The two residual aggregates are held OUT of the ranking in a separate
+reconciliation panel (visible ΣPVC[1..64] 64617 + ND deep-tail 4649 + non-ND mech 14272 = sealed 83538).
+Disposable R15 regeneration `r15_ladder_survival.json` **12/12**: the updater board-regen reproduces the
+ladder + exact F5 reconciliation automatically (no manual post-processing); canonical store/board unchanged;
+gate OFF.
+
+Acceptance matrix `acceptance_matrix.json`: **OVERALL PASS**, all items + S1–S5 green.
