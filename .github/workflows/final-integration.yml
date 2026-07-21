@@ -27,6 +27,23 @@ jobs:
       PYTHONHASHSEED: "0"
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Oracle reads need real history: invariant_proof.py does `git show f05ebe6:…` (Board A,
+          # an ancestor of this branch) and the clean-room driver + invariant proof do
+          # `git show 70ef0ff:…` (Board B). A shallow checkout (the default depth 1) has neither.
+          fetch-depth: 0
+
+      - name: Fetch the Board B diagnostic commit (oracle only; never a build input)
+        run: |
+          set -euo pipefail
+          # Board B (70ef0ff) is the tip of origin/codex/establish-forward-lens-acceptance and is NOT an
+          # ancestor of this branch, so fetch-depth:0 alone will not pull it. Fetch the immutable SHA so
+          # `git show 70ef0ff:…` resolves for the comparison oracle. It is read-only — not transplanted,
+          # not a build input — and the board_B JSON is deliberately absent from this branch's tree.
+          git fetch --no-tags origin 70ef0ff36ca7633aa4097a9b7c1a730013870abe
+          git cat-file -e 70ef0ff36ca7633aa4097a9b7c1a730013870abe:session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json
+          git cat-file -e f05ebe6df49b653b053f0ebdd82ddc56ee8d4187:data/rl_build/rl_app_data.json
+          echo "Board A (f05ebe6) + Board B (70ef0ff) oracle blobs are resolvable"
 
       - name: Pin Python 3.12.3
         uses: actions/setup-python@v5
