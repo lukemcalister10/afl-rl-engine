@@ -46,7 +46,7 @@ window.MD = window.MD || {};
       stamp.innerHTML = roundLabel(st) + " · " + (st.baseYear || 2026) + "<br>movement vs previous round · " +
         fmt.n(st.nPlayers) + " players";
     } else {
-      stamp.innerHTML = "board <b>" + releaseLabel(st) + "</b> · engine <b>" + st.engine + "</b> · store <b>" + st.store +
+      stamp.innerHTML = roundLabel(st) + " · board <b>" + releaseLabel(st) + "</b> · engine <b>" + st.engine + "</b> · store <b>" + st.store +
         "</b> · board id <b>" + st.board + '</b><span class="badge">real</span><span class="badge ok">guard 5 pass</span><br>' +
         "Δ " + (s.deltaBase === "bake" ? "vs last accepted bake" : "vs previous round") + " · " +
         fmt.n(st.nPlayers) + " players · panel " + fmt.esc((st.panel || "").split(" ")[1] || "10/10");
