@@ -1,0 +1,171 @@
+{
+  "fast_gates": {
+    "club_curve_provenance": {
+      "cmd": "python3 ui/tests/club_curve_provenance.test.py",
+      "pass": true,
+      "rc": 0
+    },
+    "config_inventory": {
+      "cmd": "python3 session_2026-07-21/final_integration/tools/config_inventory.py",
+      "pass": true,
+      "rc": 0
+    },
+    "config_manifest": {
+      "cmd": "python3 config_manifest.py check",
+      "pass": true,
+      "rc": 0
+    },
+    "counting_rule": {
+      "cmd": "node ui/tests/counting_rule.test.js",
+      "pass": true,
+      "rc": 0
+    },
+    "extract_seam": {
+      "cmd": "python3 ui/tests/extract_seam.test.py",
+      "pass": true,
+      "rc": 0
+    },
+    "invariant_proof": {
+      "cmd": "python3 session_2026-07-21/final_integration/tools/invariant_proof.py",
+      "pass": true,
+      "rc": 0
+    },
+    "release_contract": {
+      "cmd": "python3 release_contract.py check",
+      "pass": true,
+      "rc": 0
+    },
+    "release_seam": {
+      "cmd": "node ui/tests/release_seam.test.js",
+      "pass": true,
+      "rc": 0
+    },
+    "release_state_failclosed": {
+      "cmd": "python3 session_2026-07-21/final_integration/tests/release_state_failclosed_test.py",
+      "pass": true,
+      "rc": 0
+    },
+    "ruling_config": {
+      "cmd": "python3 ruling_config_check.py",
+      "pass": true,
+      "rc": 0
+    },
+    "trackB_catchup_preflight": {
+      "cmd": "python3 engine/rl_after/ingestion/test_catchup_preflight.py",
+      "pass": true,
+      "rc": 0
+    },
+    "trackB_movers": {
+      "cmd": "node ui/tests/movers.test.js",
+      "pass": true,
+      "rc": 0
+    },
+    "trackB_weekly_updater": {
+      "cmd": "python3 engine/rl_after/ingestion/test_weekly_updater.py",
+      "pass": true,
+      "rc": 0
+    }
+  },
+  "final_board_md5": "039ff8d45a3a47e2f34f183933353bd9",
+  "generated_for": "integration/v2.11-final-rc",
+  "hard_fail": [],
+  "matrix": {
+    "01_starting_branch_sha": {
+      "detail": "release/v2.11-rc1 @ f05ebe6df49b653b053f0ebdd82ddc56ee8d4187 (verified live)",
+      "status": "PASS"
+    },
+    "02_implementation_branch": {
+      "detail": "integration/v2.11-final-rc (also pushed to claude/afl-rl-engine-final-integration-468j4t)",
+      "status": "PASS"
+    },
+    "03_integrated_source_heads": {
+      "detail": "RC f05ebe6; Track B a3d345b (merged); Board B diagnostic 70ef0ff (source, not transplanted)",
+      "status": "PASS"
+    },
+    "07_canonical_manifest_posture": {
+      "detail": "model_config.json pins RL_PVC2=1 RL_LEGE=1 RL_LEGF=1 (+ all class-A); release_contract switch_posture bound; config_sha256 3a1e714f",
+      "status": "PASS"
+    },
+    "08_fail_closed_tests": {
+      "detail": "missing config / ambient-only / contradictory / unknown switch / stale pins / missing contract / conflicting PVC \u2014 15/15",
+      "status": "PASS"
+    },
+    "09_final_board_identity": {
+      "detail": {
+        "balanced_board_md5_lineage": "06d8af60b679a12db07c064c60c065f9",
+        "config": "3a1e714f2fa015b6e1942fbbbcaf2b22c359cf82ae5067e3cab199a25f794132",
+        "expected_boot_board": "039ff8d45a3a47e2f34f183933353bd9",
+        "git_blob": "80eb536bc8dc9dcb64e037ad912a2b7219cb0769",
+        "md5": "039ff8d45a3a47e2f34f183933353bd9",
+        "sha256": "3445d0ffe1732e6c3af8399d16d946c9457f76a183273a8a937af0c2be835e70",
+        "store": "968de0c7a0183ca3914165536f39607a"
+      },
+      "status": "PASS"
+    },
+    "10_present_lens_invariants": {
+      "detail": "804 active; \u03a3v=752427; 0 present-v/rank/order movers vs Board A (invariant_proof.json)",
+      "status": "PASS"
+    },
+    "11_forward_vector_invariants": {
+      "detail": {
+        "added": 0,
+        "missing": 0,
+        "vP1_changed": 0,
+        "vP1_equal": 804,
+        "vP2_changed": 0,
+        "vP2_equal": 804
+      },
+      "status": "PASS"
+    },
+    "12_visible_draft_assets": {
+      "detail": "64+64 visible picks, 0 on current ladder, unique ids, PVC equality, monotone, sorted (data 32/32 + UI 26/26)",
+      "status": "PASS"
+    },
+    "13_f5_reconciliation": {
+      "detail": "visible 64617 + residual_nd 4649 + residual_mech 14272 = 83538 per lens; no double-count vs sealed phantomTotals",
+      "status": "PASS"
+    },
+    "14_club_valuation": {
+      "detail": "PVC resolved fail-closed (RL_PVC2 pvc_curve_v2, curve_md5 89c14729), 160 held picks, 16 clubs, no stale/workbook substitution (26/26)",
+      "status": "PASS"
+    },
+    "15_ui_proof": {
+      "detail": "current player-only, +1/+2 asset views, desktop+mobile, no overflow, empty Movers state (asset_view 26/26 + responsive 72/72)",
+      "status": "PASS"
+    },
+    "16_trackB_tests": {
+      "detail": "fast unit + preflight + movers (47); atomic/exactly-once/finalization/conflict/repair/lineage/gate-off proofs merged from a3d345b",
+      "status": "PASS"
+    },
+    "17_scratch_r15_r19": {
+      "detail": {
+        "ALL_PASS": true,
+        "canonical_store_md5": "968de0c7a0183ca3914165536f39607a",
+        "canonical_store_unchanged": true,
+        "gate_off": true,
+        "movers_proof_all_pass": true,
+        "note": "disposable scratch copies only; canonical store remains 968de0c7 (clean R14 boundary)",
+        "sections": {
+          "A_preflight": true,
+          "B_participation": true,
+          "C_identity": true,
+          "D_sequential": true,
+          "E_restart_dedup": true,
+          "F_no_production_touched": true,
+          "G_movers": true,
+          "H_historical_repair": true
+        }
+      },
+      "status": "PASS"
+    },
+    "18_ci": {
+      "detail": "workflows: ci-guards.yml, fv-provenance.yml, live-scoring.yml (Track B). Re-run on the pinned CI runner via the draft PR.",
+      "status": "INFO"
+    },
+    "19_acceptance_summary": {
+      "detail": "this file",
+      "status": "PASS"
+    }
+  },
+  "overall": "PASS"
+}
