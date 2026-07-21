@@ -19,7 +19,9 @@ concurrency:
 jobs:
   final-integration:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    # The engine-build tail is heavy: clean-room rebuild + R15 ladder + the SEQUENTIAL R14->R19 advance
+    # (six full board builds) + Track B, on top of env provisioning. 90 min leaves headroom on a slow runner.
+    timeout-minutes: 90
     env:
       RL_REPO: ${{ github.workspace }}
       CLAUDE_PROJECT_DIR: ${{ github.workspace }}
