@@ -28,33 +28,80 @@
       return { ok: true };
     },
 
+    /* The FIXED release-baseline identity fields — immutable across weekly rounds (owner ruling
+       2026-07-20). balanced_board_md5 is the fixed PRESENT-LENS baseline anchor (not the final
+       full-board hash); the model pins + release_version move only at a separately-approved
+       valuation-changing release. They must be identical between every report and the loaded release.
+       (board / store / as_of_round are the DYNAMIC weekly fields; `board` is the current artifact.) */
+    RELEASE_FIXED: ["release_version", "balanced_board_md5", "engine_head", "rl_model", "fv", "config", "register"],
+
+    sameFixed: function (a, b) {
+      a = a || {}; b = b || {};
+      for (var i = 0; i < core.RELEASE_FIXED.length; i++) {
+        var k = core.RELEASE_FIXED[i];
+        if (a[k] == null || b[k] == null || a[k] !== b[k]) return { ok: false, field: k, a: a[k], b: b[k] };
+      }
+      return { ok: true };
+    },
+
     /* Fail-closed LINEAGE anchoring of the WHOLE bundle against the CURRENT loaded application
-       (corrective 2026-07-20, review directive E). Self-declared report flags are not trusted alone;
-       the bundle must sit on the SAME application lineage the working board is loaded at:
-         - state "empty"      : no finalized round reports -> honest empty state (NOT an alarm), and
-                                 NOT scratch data. A fresh baseline (e.g. Round 14) app renders this.
-         - baseline anchor    : the first report's board_md5_before must equal the bundle's release
-                                 baseline board (a scratch bundle beginning at a SUPERSEDED board fails
-                                 closed against the accepted release baseline).
-         - continuous chain   : board_md5_before == prev board_md5_after, store md5 likewise, and
-                                 previous_round == current_round - 1 for every step.
-         - current app match  : the LATEST finalized report's board_md5_after must equal the board the
-                                 working app is actually loaded at (appIdentity.board).
-       `appIdentity` = {board, store} of the loaded working app (from __MATCHDAY_WORKING__.stamp). When
-       it is absent the bundle can only be self-checked ("unanchored") — the caller decides how strict
-       to be; the browser always passes the real app identity. */
-    lineage: function (bundle, appIdentity) {
+       (corrective 2026-07-20, review directives D + E; owner ruling on balanced_board_md5). The bundle
+       must sit on the SAME release lineage the working app is loaded at — validated against the FULL
+       release contract (window.__MATCHDAY_WORKING__.stamp.release), never abbreviated / self-declared
+       stamp fields. For a POPULATED bundle:
+         - FIXED identity: every report + the loaded release carry the same balanced_board_md5, and the
+           latest report's release_version + engine/rl_model/fv/config/register equal the loaded release;
+         - baseline board + store anchor the first report;
+         - board AND store continuity between every consecutive report; previous_round == round - 1;
+         - the LATEST report board_md5_after == the loaded CURRENT board, and source_store_md5_after ==
+           the loaded CURRENT store; as_of_round is coherent (latest report == latest round == loaded).
+       For an EMPTY bundle the baseline identity (board, store, fixed pins) is validated against the
+       loaded application BEFORE returning the honest empty state — an empty bundle on the wrong lineage
+       (e.g. an empty 270a2c5f bundle loaded against a DIFFERENT present-lens baseline board) fails
+       closed, it is not "empty". This is generic board/store/release lineage checking: balanced_board_md5
+       is the fixed present-lens baseline anchor and the moving `board` field is the complete current
+       artifact; it makes no assumption about final switch values or a final full-board hash.
+       `app` = {board, store, release} from the loaded working stamp. Absent app.release -> best-effort
+       "unanchored" (board/store/chain only); the browser always supplies the full contract. */
+    lineage: function (bundle, app) {
       if (!bundle || bundle.kind !== "matchday_movers_bundle") return { ok: false, state: "nobundle", why: "no movers bundle" };
+      app = app || {};
+      var appRel = app.release || null;
       var rounds = (bundle.rounds || []).slice();
       var reports = bundle.reports || {};
-      if (!rounds.length) return { ok: true, state: "empty", why: "no finalized round reports yet" };
       var baseline = bundle.baseline || {};
+
+      // ---- EMPTY bundle: validate the baseline identity vs the loaded app before the empty state ----
+      if (!rounds.length) {
+        if (app.board && baseline.board && baseline.board !== app.board)
+          return { ok: false, state: "mismatch", why: "empty bundle baseline board " + String(baseline.board).slice(0, 8) +
+                   " does not match the loaded app board " + String(app.board).slice(0, 8) };
+        if (app.store && baseline.store && baseline.store !== app.store)
+          return { ok: false, state: "mismatch", why: "empty bundle baseline store " + String(baseline.store).slice(0, 8) +
+                   " does not match the loaded app store " + String(app.store).slice(0, 8) };
+        if (appRel) {
+          var sfE = core.sameFixed(baseline.release_identity, appRel);
+          if (!sfE.ok) return { ok: false, state: "mismatch", why: "empty bundle baseline release identity differs at " + sfE.field };
+        }
+        return { ok: true, state: "empty", why: "no finalized round reports yet" };
+      }
+
+      // ---- POPULATED bundle ----
       var first = reports[String(rounds[0])];
       if (!first) return { ok: false, state: "mismatch", why: "bundle lists round " + rounds[0] + " but has no report for it" };
       if (baseline.board && first.board_md5_before && first.board_md5_before !== baseline.board)
-        return { ok: false, state: "mismatch",
-                 why: "first report baseline " + String(first.board_md5_before).slice(0, 8) +
-                      " does not match the release baseline board " + String(baseline.board).slice(0, 8) };
+        return { ok: false, state: "mismatch", why: "first report baseline board " + String(first.board_md5_before).slice(0, 8) +
+                 " does not match the release baseline board " + String(baseline.board).slice(0, 8) };
+      if (baseline.store && first.source_store_md5_before && first.source_store_md5_before !== baseline.store)
+        return { ok: false, state: "mismatch", why: "first report baseline store does not match the release baseline store" };
+      // fixed balanced_board_md5 identical across EVERY report
+      for (var b = 0; b < rounds.length; b++) {
+        var rb = reports[String(rounds[b])], rel = (rb || {}).release_identity || {};
+        if (baseline.release_identity && baseline.release_identity.balanced_board_md5 &&
+            rel.balanced_board_md5 !== baseline.release_identity.balanced_board_md5)
+          return { ok: false, state: "mismatch", why: "R" + rounds[b] + " carries a different balanced_board_md5 than the baseline" };
+      }
+      // board AND store continuity + sequential rounds
       for (var i = 1; i < rounds.length; i++) {
         var cur = reports[String(rounds[i])], prev = reports[String(rounds[i - 1])];
         if (!cur || !prev) return { ok: false, state: "mismatch", why: "a report is missing from the round chain" };
@@ -69,12 +116,25 @@
         return { ok: false, state: "mismatch", why: "bundle declares a broken board chain" };
       if (bundle.integrity && bundle.integrity.baseline_anchor_ok === false)
         return { ok: false, state: "mismatch", why: "bundle does not anchor to the release baseline board" };
-      if (appIdentity && appIdentity.board) {
-        var last = reports[String(rounds[rounds.length - 1])];
-        if (last.board_md5_after !== appIdentity.board)
-          return { ok: false, state: "mismatch",
-                   why: "latest finalized report board " + String(last.board_md5_after).slice(0, 8) +
-                        " does not match the loaded app board " + String(appIdentity.board).slice(0, 8) };
+
+      var last = reports[String(rounds[rounds.length - 1])];
+      var lastRel = last.release_identity || {};
+      // latest dynamic report vs the loaded CURRENT board + store
+      if (app.board && last.board_md5_after !== app.board)
+        return { ok: false, state: "mismatch", why: "latest report board " + String(last.board_md5_after).slice(0, 8) +
+                 " != loaded current board " + String(app.board).slice(0, 8) };
+      if (app.store && last.source_store_md5_after !== app.store)
+        return { ok: false, state: "mismatch", why: "latest report store " + String(last.source_store_md5_after).slice(0, 8) +
+                 " != loaded current store " + String(app.store).slice(0, 8) };
+      // as_of_round coherence
+      if (lastRel.as_of_round != null && lastRel.as_of_round !== last.submitted_round)
+        return { ok: false, state: "mismatch", why: "latest report as_of_round " + lastRel.as_of_round + " != submitted round " + last.submitted_round };
+      if (appRel && appRel.as_of_round != null && lastRel.as_of_round != null && appRel.as_of_round !== lastRel.as_of_round)
+        return { ok: false, state: "mismatch", why: "loaded as_of_round " + appRel.as_of_round + " != latest report as_of_round " + lastRel.as_of_round };
+      // all FIXED model identity pins + release_version match the loaded release
+      if (appRel) {
+        var sf = core.sameFixed(lastRel, appRel);
+        if (!sf.ok) return { ok: false, state: "mismatch", why: "release identity differs from the loaded release at " + sf.field };
         return { ok: true, state: "ok" };
       }
       return { ok: true, state: "unanchored" };
@@ -142,12 +202,19 @@
 
     function bundle() { return (typeof window !== "undefined" && window.__MATCHDAY_MOVERS__) || null; }
 
-    /* The identity of the working board the app is CURRENTLY loaded at — the lineage anchor. */
+    /* The identity of the working board the app is CURRENTLY loaded at — the lineage anchor. Prefers
+       the FULL release contract (stamp.release: full-length board/store + fixed pins) so lineage is
+       validated against verified identity, not the abbreviated stamp fields. */
     function appIdentity() {
       var w = (typeof window !== "undefined") && window.__MATCHDAY_WORKING__;
       var st = w && w.stamp;
       if (!st) return null;
-      return { board: st.board || st.srcmd5, store: st.store };
+      var rel = st.release || null;
+      return {
+        board: (rel && rel.board) || st.srcmd5 || st.board,
+        store: (rel && rel.store) || st.store,
+        release: rel,
+      };
     }
 
     function availableRounds(b) { return (b && b.rounds) ? b.rounds.slice() : []; }
