@@ -183,6 +183,48 @@ def verify(mode=None, root=None, halt=True):
                                    % (sm.get('season_prog'), _bsp))
             except Exception:
                 pass
+        # (8b) VERIFY THE DERIVATION, not merely equality of duplicated fields (supervisor 2nd review req 7):
+        #      calendar_progress MUST equal round_half_up(100*as_of_round/season_total_rounds)/100; the
+        #      committed season_state.json must be internally consistent + freshly derived (immutable policy,
+        #      round, calendar) and NOT built on a stale source store; and the season_year authorities agree.
+        try:
+            import importlib.util as _il, hashlib as _h
+            _sp = _il.spec_from_file_location('season_state_v', os.path.join(root, 'season_state.py'))
+            _S = _il.module_from_spec(_sp); _sp.loader.exec_module(_S)
+            _tot = int(sm.get('season_total_rounds') or _S.SEASON_TOTAL_ROUNDS_DEFAULT)
+            _aor = int(sm.get('as_of_round'))
+            _cp_der = _S.calendar_progress(_aor, _tot)
+            if sm.get('calendar_progress') is not None and float(sm['calendar_progress']) != _cp_der:
+                rejects.append("season_metadata calendar_progress %s != derived round_half_up(100*%d/%d)=%.2f"
+                               % (sm.get('calendar_progress'), _aor, _tot, _cp_der))
+            if sm.get('derivation_policy_id') and sm['derivation_policy_id'] != _S.policy_id():
+                rejects.append("season_metadata derivation_policy_id stale (%s != live policy %s)"
+                               % (str(sm.get('derivation_policy_id'))[:12], _S.policy_id()[:12]))
+            _ssf = os.path.join(root, 'data', 'season_state.json')
+            if os.path.exists(_ssf):
+                _ss = json.load(open(_ssf))
+                if str(_ss.get('as_of_round')) != str(_aor):
+                    rejects.append("season_state.json as_of_round %s != contract %s (stale)"
+                                   % (_ss.get('as_of_round'), _aor))
+                if float(_ss.get('calendar_progress', -1)) != _cp_der:
+                    rejects.append("season_state.json calendar_progress %s != derived %.2f (stale calendar)"
+                                   % (_ss.get('calendar_progress'), _cp_der))
+                if _ss.get('derivation_policy_id') != _S.policy_id():
+                    rejects.append("season_state.json derivation_policy_id stale vs live policy")
+                if sm.get('season_year') is not None and _ss.get('season_year') != sm.get('season_year'):
+                    rejects.append("season_year inconsistent (contract %s vs season_state %s)"
+                                   % (sm.get('season_year'), _ss.get('season_year')))
+                _store = os.path.join(root, 'engine', 'rl_after', 'rl_model_data.json')
+                if os.path.exists(_store):
+                    _live = _h.md5(open(_store, 'rb').read()).hexdigest()
+                    if _ss.get('source_store_md5') != _live:
+                        rejects.append("season_state.json source_store_md5 %s != live store %s — exposure_pace "
+                                       "was derived from a STALE store" % (str(_ss.get('source_store_md5'))[:8], _live[:8]))
+                if sm.get('exposure_pace') is not None and float(_ss.get('exposure_pace', -1)) != float(sm['exposure_pace']):
+                    rejects.append("season_state.json exposure_pace %s != contract %s (stale exposure)"
+                                   % (_ss.get('exposure_pace'), sm.get('exposure_pace')))
+        except Exception:
+            pass
 
     if rejects:
         _fail(mode, rejects, halt)

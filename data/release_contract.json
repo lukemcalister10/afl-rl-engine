@@ -63,8 +63,9 @@
     "exposure_pace": 0.545,
     "calendar_progress": 0.58,
     "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; policy immutable"
+    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; policy immutable",
+    "season_year": 2026
   },
   "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-  "contract_sha256": "5d9da77739ce29b252658da70bef7f641f031b5d8fa7b93a53b293d4e78ad690"
+  "contract_sha256": "0c5fa2d1cd9a2373d2847b166578ac47893e4e82a0e80e0690e94c5366cd3eb5"
 }

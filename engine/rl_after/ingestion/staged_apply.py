@@ -630,10 +630,14 @@ class StagedRoundApplier:
         # staged build resolves the SAME accepted provenance modules the checkout ships (never an
         # ambient one). boot_guard.py runs BOTH as a script (Guard 5, from ws root) and as an import
         # (rl_export gate mode, from wsra), so it lands in both.
-        for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py'):
-            shutil.copyfile(os.path.join(R, f), os.path.join(wsra, f))
-        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py'):
-            shutil.copyfile(os.path.join(R, f), os.path.join(ws, f))
+        for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py', 'season_state.py'):
+            _src = os.path.join(R, f)
+            if os.path.exists(_src):
+                shutil.copyfile(_src, os.path.join(wsra, f))
+        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'season_state.py'):
+            _src = os.path.join(R, f)
+            if os.path.exists(_src):
+                shutil.copyfile(_src, os.path.join(ws, f))
         shutil.copytree(os.path.join(R, 'data'), os.path.join(ws, 'data'))
         legf5 = os.path.join('session_2026-07-18', 'legf5')
         if os.path.isdir(os.path.join(R, legf5)):

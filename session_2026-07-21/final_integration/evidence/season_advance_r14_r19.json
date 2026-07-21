@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "round": 14,
+      "as_of_round": 14,
+      "calendar_progress": 0.58,
+      "exposure_pace": 0.545,
+      "eligible_durable": 305,
+      "median_current_games": 12,
+      "store_md5": "968de0c7a0183ca3914165536f39607a",
+      "board_md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+      "active": 804,
+      "picks_2027": 64,
+      "picks_2028": 64,
+      "f5_plus1": 83538,
+      "f5_reconciled": true
+    }
+  ],
+  "checks": [
+    {
+      "check": "R14 baseline board == approved canonical 2ab73a6f (byte-identical)",
+      "pass": true,
+      "detail": "2ab73a6fed1f06fc8eecc2ce597c2aec"
+    },
+    {
+      "check": "R14 baseline calendar 0.58 + exposure 0.545",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R14 baseline 804 active + 64+64 picks",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
