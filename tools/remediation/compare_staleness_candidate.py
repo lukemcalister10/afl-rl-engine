@@ -20,7 +20,10 @@ def md5(path: Path) -> str:
 
 def load_engine(workspace: Path):
     old_cwd = Path.cwd()
-    sys.path.insert(0, str(workspace))
+    vendor = Path("/home/claude/rl_vendor")
+    for path in (workspace, vendor):
+        if path.exists() and str(path) not in sys.path:
+            sys.path.insert(0, str(path))
     env = {"__name__": "staleness_candidate_diagnostic"}
     try:
         os.chdir(workspace)
