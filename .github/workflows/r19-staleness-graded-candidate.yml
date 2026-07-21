@@ -1,0 +1,177 @@
+name: R19 Graded Staleness Candidate
+
+on:
+  push:
+    branches:
+      - model/r19-staleness-graded
+    paths:
+      - .github/workflows/r19-staleness-graded-candidate.yml
+      - tools/remediation/apply_staleness_graded.py
+      - tools/remediation/compare_staleness_candidate.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r19-staleness-graded-candidate
+  cancel-in-progress: false
+
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      BASE_SHA: 0156ec445c29789f5dc7b79adca53e632a9da7f3
+      BASE_BOARD: 92a8f3a0528e5668029ca8056a841821
+      BASE_STORE: f37d9716648cfe4382b8c6a24c4f064f
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      RL_FV: ${{ github.workspace }}/engine/forward_valuation
+      RL_VENV: ${{ github.workspace }}/../rl_venv312
+      PYTHONHASHSEED: "0"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+
+    steps:
+      - name: Checkout bounded candidate branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact Round 19 baseline and authorized scope
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "model/r19-staleness-graded"
+          git merge-base --is-ancestor "$BASE_SHA" HEAD
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          assert md5('data/rl_build/rl_app_data.json') == '92a8f3a0528e5668029ca8056a841821'
+          assert md5('engine/rl_after/rl_model_data.json') == 'f37d9716648cfe4382b8c6a24c4f064f'
+          boot=json.load(open('data/expected_boot.json'))
+          assert boot['as_of_round']==19 and boot['board']=='92a8f3a0528e5668029ca8056a841821'
+          assert boot['store']=='f37d9716648cfe4382b8c6a24c4f064f'
+          assert boot['engine_head']=='dc7e34b0d50470897af237c638236868'
+          PY
+          git diff --name-only "$BASE_SHA"..HEAD | sort > /tmp/changed.txt
+          cat > /tmp/allowed.txt <<'EOF'
+          .github/workflows/r19-staleness-graded-candidate.yml
+          tools/remediation/apply_staleness_graded.py
+          tools/remediation/compare_staleness_candidate.py
+          EOF
+          sed -i 's/^          //' /tmp/allowed.txt
+          sort -o /tmp/allowed.txt /tmp/allowed.txt
+          diff -u /tmp/allowed.txt /tmp/changed.txt
+
+      - name: Apply sole pre-derived candidate in the disposable runner
+        run: |
+          set -euo pipefail
+          mkdir -p session_2026-07-22/staleness_graded_r19_candidate
+          python3 tools/remediation/apply_staleness_graded.py | tee session_2026-07-22/staleness_graded_r19_candidate/source_patch.json
+          git diff -- engine/rl_after/_merged_recover.py > session_2026-07-22/staleness_graded_r19_candidate/engine_candidate.patch
+          python3 - <<'PY'
+          import json,hashlib,pathlib
+          b=json.load(open('data/expected_boot.json')); c=json.load(open('data/release_contract.json'))
+          eng=hashlib.md5(pathlib.Path('engine/rl_after/_merged_recover.py').read_bytes()).hexdigest()
+          assert b['engine_head']==eng and c['identities']['engine_head']==eng
+          import release_contract
+          assert c['contract_sha256']==release_contract.contract_hash(c)
+          print('candidate source + boot/contract pins coherent:',eng)
+          PY
+
+      - name: Pin Python 3.12.3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Ensure python3.12 on PATH
+        run: |
+          set -euo pipefail
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+          python3.12 --version
+
+      - name: Provision pinned deterministic engine environment
+        run: |
+          set -euo pipefail
+          sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+          bash setup_env.sh
+          export PATH="$RL_VENV/bin:$PATH"
+          "$RL_VENV/bin/python" - <<'PY'
+          import sys,numpy,scipy,sklearn,openpyxl
+          got=(sys.version.split()[0],numpy.__version__,scipy.__version__,sklearn.__version__,openpyxl.__version__)
+          want=('3.12.3','2.4.4','1.17.1','1.8.0','3.1.5')
+          assert got==want,(got,want)
+          print('pinned environment OK:',*got)
+          PY
+          mkdir -p /home/claude/rl_vendor /home/claude/rl_build
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+          for f in cm_400.pkl q97m.pkl v0surf.pkl; do
+            [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true
+          done
+          cp -f data/rl_build/rl_app_data.json /home/claude/rl_build/rl_app_data.json
+          bash bootstrap.sh
+
+      - name: Build the corrected current-store board once
+        run: |
+          set -euo pipefail
+          export PATH="$RL_VENV/bin:$PATH"
+          export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+          export RL_CONFIG_MODE=bake
+          cd /home/claude/rl_workspace/rl_after
+          "$RL_VENV/bin/python" rl_export.py > /tmp/staleness_candidate_build.log 2>&1 || {
+            tail -100 /tmp/staleness_candidate_build.log
+            exit 1
+          }
+          test -s rl_app_data.json
+          md5sum rl_app_data.json
+
+      - name: Produce complete before-after owner review and enforce mechanism gates
+        run: |
+          set -euo pipefail
+          OUT=session_2026-07-22/staleness_graded_r19_candidate
+          "$RL_VENV/bin/python" tools/remediation/compare_staleness_candidate.py \
+            --baseline data/rl_build/rl_app_data.json \
+            --candidate /home/claude/rl_workspace/rl_after/rl_app_data.json \
+            --workspace /home/claude/rl_workspace/rl_after \
+            --out "$OUT" | tee "$OUT/validation.log"
+          python3 - <<'PY'
+          import json
+          s=json.load(open('session_2026-07-22/staleness_graded_r19_candidate/summary.json'))
+          assert s['status']=='PASS'
+          assert s['baseline_board_md5']=='92a8f3a0528e5668029ca8056a841821'
+          assert s['store_md5']=='f37d9716648cfe4382b8c6a24c4f064f'
+          assert s['active_players']==804
+          assert s['changed_players']>0
+          assert s['phoenix_gothard']['before']==410
+          assert s['phoenix_gothard']['after']>410
+          print('owner-review candidate PASS:',s['changed_players'],'players changed; Gothard',s['phoenix_gothard']['before'],'->',s['phoenix_gothard']['after'])
+          PY
+
+      - name: Prove the candidate run did not mutate the Round 19 product state
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,pathlib
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          assert md5('data/rl_build/rl_app_data.json')=='92a8f3a0528e5668029ca8056a841821'
+          assert md5('engine/rl_after/rl_model_data.json')=='f37d9716648cfe4382b8c6a24c4f064f'
+          PY
+          # Source/pin edits were disposable inputs to the candidate build. Keep this branch evidence-only
+          # until the owner has reviewed every before/after value and authorizes final materialization.
+          git checkout -- engine/rl_after/_merged_recover.py data/expected_boot.json data/release_contract.json
+          test "$(md5sum engine/rl_after/_merged_recover.py | cut -d' ' -f1)" = "dc7e34b0d50470897af237c638236868"
+
+      - name: Commit reproducible candidate evidence only
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add session_2026-07-22/staleness_graded_r19_candidate
+          git commit -m "evidence: grade staleness candidate against Round 19"
+          git push origin HEAD:model/r19-staleness-graded
