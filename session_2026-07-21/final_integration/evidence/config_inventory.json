@@ -3,14 +3,14 @@
   "class_counts": {
     "?": 0,
     "A": 63,
-    "B": 17,
+    "B": 19,
     "C": 2
   },
-  "n_reads": 148,
-  "n_vars": 82,
+  "n_reads": 153,
+  "n_vars": 84,
   "ok": true,
   "root": "/home/user/afl-rl-engine",
-  "surface_file_count": 69,
+  "surface_file_count": 84,
   "unclassified": [],
   "vars": [
     {
@@ -1317,6 +1317,25 @@
       "canonical": null,
       "cls": "B",
       "kind": "infra",
+      "note": "Track B updater season-round-count schedule control; not a valuation semantic; staged_apply INFRA_ALLOW",
+      "reads": [
+        {
+          "default": "<expr:DEFAULT_SEASON_ROUNDS>",
+          "file": "engine/rl_after/ingestion/round_apply.py",
+          "line": 139
+        },
+        {
+          "default": "<expr:DEFAULT_SEASON_ROUNDS>",
+          "file": "engine/rl_after/ingestion/staged_apply.py",
+          "line": 231
+        }
+      ],
+      "var": "RL_SEASON_ROUNDS"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
       "note": "ingest/UI test override (club_curve_provenance harness)",
       "reads": [
         {
@@ -1462,6 +1481,30 @@
         }
       ],
       "var": "RL_V0SURF_PKL"
+    },
+    {
+      "canonical": "/home/claude/rl_vendor",
+      "cls": "B",
+      "kind": "infra",
+      "note": "Track B updater vendor path (like RL_FV); staged_apply INFRA_ALLOW",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/ingestion/staged_apply.py",
+          "line": 654
+        },
+        {
+          "default": "/home/claude/rl_vendor",
+          "file": "engine/rl_after/ingestion/staged_apply.py",
+          "line": 996
+        },
+        {
+          "default": "/home/claude/rl_vendor",
+          "file": "engine/rl_after/ingestion/staged_apply.py",
+          "line": 1048
+        }
+      ],
+      "var": "RL_VENDOR"
     },
     {
       "canonical": null,

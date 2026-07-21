@@ -48,10 +48,16 @@ def surface_files():
     fs += sorted(glob.glob(os.path.join(ROOT, 'engine', 'rl_after', '*.py')))
     fs += sorted(glob.glob(os.path.join(ROOT, 'engine', 'forward_valuation', '*.py')))
     fs += sorted(glob.glob(os.path.join(ROOT, 'ui', 'tools', '*.py')))
+    # Track B weekly live-scoring updater (release-adjacent path; gate-OFF in this build). Modules only.
+    fs += sorted(glob.glob(os.path.join(ROOT, 'engine', 'rl_after', 'ingestion', '*.py')))
+    fs += sorted(glob.glob(os.path.join(ROOT, 'tools', 'round_entry', '*.py')))
     for f in ('boot_guard.py', 'config_manifest.py', 'fv_provenance.py', 'ruling_config_check.py',
               'release_contract.py', 'refit_q97m.py'):
         p = os.path.join(ROOT, f)
         if os.path.exists(p): fs.append(p)
+    # tests / proofs are class-C (off the canonical release path) by construction — excluded from the scan.
+    fs = [p for p in fs if not os.path.basename(p).startswith('test_')
+          and not os.path.basename(p).endswith('_test.py')]
     return fs
 
 # ---- match REAL reads only (skip comment mentions: a '#' before the match on the line) ---------------
@@ -169,6 +175,9 @@ CLASSIFICATION = {
   'RL_NO_OWNER_OVERRIDES':('B','infra','0', 'display-only Brodie override toggle; REJECTED in gate/bake/canonical'),
   'RL_Q97M_PKL':     ('B','infra', None,    'q97m pickle path override; loaded md5 pinned by boot_guard'),
   'RL_V0SURF_PKL':   ('B','infra', None,    'v0surf pickle path override; loaded md5 pinned by boot_guard'),
+  # ---- Track B weekly-updater path (gate-OFF): infra/schedule controls, not board-valuation semantics ---
+  'RL_VENDOR':       ('B','infra','/home/claude/rl_vendor', 'Track B updater vendor path (like RL_FV); staged_apply INFRA_ALLOW'),
+  'RL_SEASON_ROUNDS':('B','infra', None,    'Track B updater season-round-count schedule control; not a valuation semantic; staged_apply INFRA_ALLOW'),
   # ---- class C diagnostic/test/bake-tool/retired (off the canonical board-generation path) ------------
   'RL_WS':           ('C','diag', '/home/claude/rl_workspace/rl_after', 'refit_q97m workspace (bake tool only)'),
   'RL_BAKE_REFIT':   ('C','diag',  None,    'refit_q97m trigger (bake tool only; produced pickle md5-pinned)'),
