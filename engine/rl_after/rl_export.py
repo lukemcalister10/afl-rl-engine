@@ -721,6 +721,64 @@ if os.environ.get('RL_LEGF', '1') != '0':
     out['phantomLayer'] = phantomLayer
     out['phantomPicks'] = phantomPicks
     out['phantomTotals'] = phantomTotals
+    # ==== VISIBLE FUTURE-DRAFT ASSET LADDER (final integration 2026-07-21; canonical, RL_LEGF=1) ==========
+    # The owner-facing +1/+2 views are UNIFIED asset ladders: the 804 known players (vP1/vP2) ranked together
+    # with the 64 anonymous national-draft placeholders per lens (2027/2028 Draft Pick 1..64 at the EXACT
+    # release-active PVC[n]). Emitted HERE (in the canonical engine build) so a plain re-run — and the Track B
+    # weekly updater's board regen — reproduces the presentation with NO post-processing. The visible 64 picks
+    # are the rankable assets (lensPicks); the two F5 residual aggregates are held OUT of the ranking and live
+    # in draftAssetTotals for a separate reconciliation panel (they are not single tradeable assets). All three
+    # reconcile EXACTLY to the sealed F5 entrant layer. Player v/vP1/vP2 are untouched (this reads only PVC +
+    # the already-computed forward columns + the sealed F5 draft/mech totals). RL_LEGF=0 => this block is
+    # skipped and the pre-F5 30-pick lensPicks/lensConservation stand (kill-switch clean).
+    _PVC64 = sum(PVC[_n] for _n in range(1, 65))                     # Σ release-active PVC[1..64] = 64617
+    _draft_r = round(_lf_draft_pvc); _mech_r = round(_lf_mech_pvc)   # sealed F5 draft / mech totals (PVC-face)
+    _res_nd = _draft_r - _PVC64                                      # national-draft deep tail + partial occupancy
+    _res_mech = _mech_r                                              # non-national-draft entry mechanisms
+    _visible = []
+    for _k, _fld, _yr in _LF_LENS:                                   # (1,'vP1',2027) , (2,'vP2',2028)
+        for _n in range(1, 65):
+            _visible.append({'lens': _k, 'labelYear': _yr, 'n': _n, 'v': PVC[_n],
+                             'kind': 'pick', 'asset': 'pick', 'assetType': 'future_national_draft_pick',
+                             'label': '%d Draft Pick %d' % (_yr, _n), 'id': 'draft-pick:%d:%d' % (_yr, _n),
+                             'club': None, 'affl_team': None, 'phantom': True})
+    out['lensPicks'] = _visible                                      # 64 rankable picks per lens (supersedes the 30-pick ladder)
+    # recompute the lens-conservation diagnostic against the visible 64-pick ladder (report-only)
+    _LF2 = [('-2', 'vM2', -2), ('-1', 'vM1', -1), ('now', 'v', 0), ('+1', 'vP1', 1), ('+2', 'vP2', 2)]
+    _lc = {}
+    for _lbl, _fld, _o in _LF2:
+        _ps = sum((_r.get(_fld) or 0) for _r in active); _nb = 0
+        if _o < 0:
+            _ps += sum((_r.get(_fld) or _r.get('v') or 0) for _r in back); _nb = len(back)
+        _pk = sum(pp['v'] for pp in _visible if pp['lens'] == _o)
+        _lc[_lbl] = {'lensYear': 2026 + _o, 'players': _ps, 'picks': _pk, 'total': _ps + _pk,
+                     'nPlayers': len(active) + _nb, 'nPicks': sum(1 for pp in _visible if pp['lens'] == _o)}
+    _cn = _lc['now']['total'] or 1
+    _lc['_meta'] = {'principle': 'year-0 continuity: value converts, does not vanish (item 12)',
+                    'report_only': True,
+                    'basis': 'visible national-draft picks 1-64 at release-active PVC face value (the ranked assets)',
+                    'spread_vs_now': {_l: round(100 * (_lc[_l]['total'] - _cn) / _cn, 2) for _l, _, _ in _LF2}}
+    out['lensConservation'] = _lc
+    # draftAssetTotals: the visible+residual -> F5 reconciliation (residuals separate; not ranked)
+    _dat = {}
+    for _k, _fld, _yr in _LF_LENS:
+        _dat['+%d' % _k] = {'lensYear': _yr, 'nVisiblePicks': 64, 'visible_1_64': _PVC64,
+                            'residual_nd_tail': _res_nd, 'residual_mech': _res_mech,
+                            'residual_total': _res_nd + _res_mech, 'total': _PVC64 + _res_nd + _res_mech,
+                            'f5_entrant_layer_pvc': round(_lf_ent_pvc), 'f5_draft_pvc': _draft_r,
+                            'f5_mech_pvc': _mech_r,
+                            'reconciled_to_f5': (_PVC64 + _res_nd + _res_mech == _draft_r + _mech_r),
+                            'players_sum': sum((_r.get(_fld) or 0) for _r in active)}
+    _dat['_meta'] = {
+        'basis': 'owner-facing visible future-draft asset ladder: picks 1-64 at exact release-active PVC[n], '
+                 'RANKED among players in the +1/+2 lens; the two residual aggregates are held OUT of the '
+                 'ranking (a separate reconciliation panel), not single tradeable assets',
+        'reconciliation': 'Σ PVC[1..64] + residual_nd(draft_pvc - ΣPVC[1..64]) + residual_mech == sealed F5 '
+                          'entrant layer (draft + mech); no value added on top of F5',
+        'no_double_count': 'lensPicks (visible face) and phantomPicks (occupancy) are two views of the same F5 '
+                           'draft and are never summed; club-held real picks are a separate owned-asset namespace',
+        'report_only': True}
+    out['draftAssetTotals'] = _dat
     print('LEG F5 ENTRANT LAYER (RL_LEGF=1): %d clubs · §2.viii sealed intake %d PVC (draft %d + mech %d, %.1f slots/yr, seal %s) · +1 Δ=%+d · +2 Δ=%+d · k=0 phantom=NONE'
           % (len(_lf_clubs), round(_lf_ent_pvc), round(_lf_draft_pvc), round(_lf_mech_pvc),
              _lf_struct['expected_slots_per_year'], _lf_struct['seal_sha256_8'],

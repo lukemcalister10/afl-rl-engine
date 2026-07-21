@@ -9,7 +9,7 @@
   },
   "config_sha256": "3a1e714f2fa015b6e1942fbbbcaf2b22c359cf82ae5067e3cab199a25f794132",
   "identities": {
-    "board": "039ff8d45a3a47e2f34f183933353bd9",
+    "board": "2ab73a6fed1f06fc8eecc2ce597c2aec",
     "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
     "store": "968de0c7a0183ca3914165536f39607a",
     "engine_head": "904722cd3fc16957a58796d8e2cb4caa",
@@ -41,7 +41,8 @@
     "residual_mech": 14272,
     "entrant_layer_pvc": 83538,
     "seal": "a17aafed",
-    "reconciled": true
+    "reconciled": true,
+    "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
   },
-  "contract_sha256": "fec18cddd7c1a85313db6d9c31bbcd64143ff04d19f7c4f29fe9dae080f755c2"
+  "contract_sha256": "c65527d6a4943136bb6ee5b6f1f5ddc2ff85a154a398c74f5099b497bdfc24b4"
 }

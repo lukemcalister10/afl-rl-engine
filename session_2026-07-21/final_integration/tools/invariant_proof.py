@@ -108,15 +108,16 @@ def main():
        sort1 == sorted(sort1, reverse=True) and sort2 == sorted(sort2, reverse=True))
 
     sum64 = sum(PVC[n] for n in range(1, 65))
+    # residuals are held OUT of the ranking (supervisor req 5) — they live in draftAssetTotals, NOT lensPicks.
+    ck('(12) lensPicks carries ONLY the 64 rankable visible picks per lens (no residual rows in the ranking)',
+       all(not p.get('residual') for p in lp) and len(vis1) == 64 and len(vis2) == 64)
     for off, vis in ((1, vis1), (2, vis2)):
-        res = [p for p in lp if p['lens'] == off and p.get('residual')]
-        res_nd = next(p['v'] for p in res if 'nd' in p['id'])
-        res_mech = next(p['v'] for p in res if 'mech' in p['id'])
-        visible = sum(p['v'] for p in vis)
         dat = F['draftAssetTotals']['+%d' % off]
-        ck('(13) lens +%d: visible == Sigma PVC[1..64] == 64617' % off, visible == sum64 == 64617, visible)
+        res_nd = dat['residual_nd_tail']; res_mech = dat['residual_mech']
+        visible = sum(p['v'] for p in vis)
+        ck('(13) lens +%d: visible == Sigma PVC[1..64] == 64617' % off, visible == sum64 == 64617 == dat['visible_1_64'], visible)
         ck('(13) lens +%d: visible + residual == 83538 (F5 entrant layer)' % off,
-           visible + res_nd + res_mech == 83538, visible + res_nd + res_mech)
+           visible + res_nd + res_mech == 83538 == dat['f5_entrant_layer_pvc'], visible + res_nd + res_mech)
         ck('(13) lens +%d: residual_nd == draft_pvc(69266) - 64617 == 4649' % off, res_nd == 4649, res_nd)
         ck('(13) lens +%d: residual_mech == mech_pvc == 14272' % off, res_mech == 14272, res_mech)
         ck('(13) lens +%d: draftAssetTotals reconciled_to_f5' % off, dat['reconciled_to_f5'] is True)

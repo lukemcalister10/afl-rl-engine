@@ -67,7 +67,7 @@
     },
     {
       "check": "(12) unique stable asset ids",
-      "detail": "132 ids 132 unique",
+      "detail": "128 ids 128 unique",
       "pass": true
     },
     {
@@ -97,6 +97,11 @@
     },
     {
       "check": "(12) visible picks sorted by value desc (both lenses)",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) lensPicks carries ONLY the 64 rankable visible picks per lens (no residual rows in the ranking)",
       "detail": "",
       "pass": true
     },
@@ -163,8 +168,8 @@
   ],
   "final_board_identity": {
     "balanced_board_md5_lineage": "06d8af60b679a12db07c064c60c065f9",
-    "md5": "039ff8d45a3a47e2f34f183933353bd9",
-    "sha256": "3445d0ffe1732e6c3af8399d16d946c9457f76a183273a8a937af0c2be835e70"
+    "md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+    "sha256": "0026c3f82e6bb5558e70163a7136d0e8e0dd7ffd409aeb9b33b89e5e7ab5b65f"
   },
   "forward": {
     "added": 0,
@@ -174,7 +179,7 @@
     "vP2_changed": 0,
     "vP2_equal": 804
   },
-  "n": 32,
-  "n_pass": 32,
+  "n": 33,
+  "n_pass": 33,
   "ok": true
 }

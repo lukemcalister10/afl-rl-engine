@@ -41,6 +41,7 @@ MD.board = (function () {
   function clubAgg(pool) {
     const m = {};
     pool.forEach(function (r) {
+      if (MD.isPickAsset(r.p)) return;   // anonymous future picks have no AFFL club — never in ΣSCAR / club ranks
       const c = r.p.affl_team || "—";
       if (!m[c]) m[c] = { club: c, sigma: 0, n: 0 };
       m[c].sigma += r.val; m[c].n += 1;
@@ -66,6 +67,18 @@ MD.board = (function () {
         (w.back || []).forEach(function (p) {
           const val = p.lens[s.lens];
           if (val !== null && val !== undefined) pool.push({ p: p, val: val, back: true });
+        });
+      }
+      // final integration: the +1/+2 forward lenses are UNIFIED asset ladders — the 64 anonymous national-
+      // draft placeholders rank TOGETHER with the 804 players (by value), one combined value-descending
+      // ranking of 868 assets. Player-only filters (position / club / group-by-club) remove them while
+      // active; the default unfiltered future view contains BOTH players and picks. Residual aggregates are
+      // NOT ranked — they live in the reconciliation panel.
+      if ((s.lens === 3 || s.lens === 4) && !posFilter && !clubFilter && !groupByClub) {
+        const off = s.lens - 2;
+        (w.lensPicks || []).forEach(function (pk) {
+          if (pk.lens !== off || pk.residual) return;
+          pool.push({ p: pickAsset(pk), val: pk.v, pick: true });
         });
       }
     }
@@ -488,26 +501,28 @@ MD.board = (function () {
     }
   }
 
-  /* final integration 2026-07-21: the VISIBLE future-draft asset ladder on the +1/+2 lenses.
-     The current / backward views are PLAYER-only ladders; the forward views are ASSET ladders — the known
-     players (rendered above by the player pipeline, with vP1/vP2) PLUS the anonymous future national-draft
-     placeholders (2027/2028 Draft Pick 1-64 at the release-active PVC) and the labelled residual entrant
-     aggregates. These are ASSETS, not players: no key, no card, no club / positional-rank / club-filter /
-     ΣSCAR join — they never enter the player pool, clubAgg, or the position/club filters. The visible
-     picks + residual aggregates reconcile EXACTLY to the sealed F5 entrant layer (draftAssetTotals). */
-  function pickRow(pk, maxV) {
+  /* final integration 2026-07-21: an anonymous future-draft placeholder, RANKED among the players in the
+     +1/+2 lens. It is an ASSET, not a player: no key, no card, no AFL/AFFL club, no position, a stable
+     asset id, posCode "PICK" so MD.isPickAsset() ring-fences it out of the current/backward ladders and off
+     the player-only joins (club aggregation / positional rank / club filter / player card). */
+  function pickAsset(pk) {
+    return { asset: "pick", kind: "pick", posCode: "PICK", id: pk.id, label: pk.label, n: pk.n,
+             v: pk.v, labelYear: pk.labelYear, assetType: pk.assetType, affl_team: null, club: null, pos: null };
+  }
+
+  /* render one ranked future-draft placeholder row (same grid as workingRow; GLOBAL combined rank in the
+     rank column, the draft PICK NUMBER shown separately in the meta column). No player-card click. */
+  function pickRow(r, maxV) {
+    const pk = r.p;
     const b = fmt.el("button", "row working pickrow");
     b.setAttribute("data-asset", pk.id);
-    const tag = pk.residual
-      ? '<span class="tag" title="Aggregate future-entrant value not shown as an individual numbered ' +
-        'national-draft pick (deep national-draft tail beyond pick 64 / non-national-draft entry mechanisms). ' +
-        'Reconciled to the sealed F5 entrant layer.">Entrant aggregate</span>'
-      : '<span class="tag" title="Anonymous future national-draft asset — NOT a player, and not held by any ' +
-        'AFL or AFFL club. Valued at the release-active pick-value curve (PVC).">Draft asset</span>';
     b.innerHTML =
-      '<span class="rank num">' + (pk.n != null ? pk.n : "·") + "</span>" +
+      '<span class="rank num">' + r.rank + "</span>" +
       '<span class="pin"></span>' +
-      '<span class="nm">' + fmt.esc(pk.label) + tag + "</span>" +
+      '<span class="nm">' + fmt.esc(pk.label) +
+        '<span class="tag" title="Anonymous future national-draft asset — NOT a player, and not held by any ' +
+        'AFL or AFFL club. Valued at the release-active pick-value curve (PVC). Ranked among players by value.">' +
+        'Draft asset</span></span>' +
       '<span class="pos">—</span>' +
       '<span class="club"><span class="affl" title="Future asset — no AFFL club">Future draft</span>' +
         '<span class="afl" title="Future asset — no AFL club">—</span></span>' +
@@ -518,34 +533,23 @@ MD.board = (function () {
     return b;   // no click handler — assets have no player card
   }
 
-  function assetLadder(container) {
+  /* +1/+2 F5 reconciliation panel (residuals held OUT of the ranking): visible Σ PVC[1..64] + national-draft
+     deep-tail residual + non-national-draft mechanism residual == the sealed F5 entrant layer. */
+  function reconciliationPanel(container) {
     const s = MD.state;
-    const w = MD.seam.working;
-    const off = s.lens - 2;                         // lens 3 -> +1 (2027), lens 4 -> +2 (2028)
-    const picks = (w.lensPicks || []).filter(function (p) { return p.lens === off; });
-    if (!picks.length) return;                      // RL_LEGF=0 board / no ladder -> nothing (empty-state safe)
-    const ly = 2026 + off;
-    const visible = picks.filter(function (p) { return !p.residual; })
-                         .sort(function (a, b) { return b.v - a.v; });   // Pick 1..64 (PVC desc)
-    const residual = picks.filter(function (p) { return p.residual; })
-                          .sort(function (a, b) { return b.v - a.v; });
-    const dat = (w.draftAssetTotals || {})["+" + off] || null;
-    const sec = fmt.el("section", "assetladder");
-    const head = fmt.el("div", "assethead");
-    head.style.cssText = "margin:.7rem 0 .2rem;font-weight:600;font-size:.9rem;border-top:1px solid rgba(127,127,127,.25);padding-top:.5rem";
-    head.innerHTML = fmt.esc(ly + " future draft assets") +
-      ' <span style="opacity:.6;font-weight:400;font-size:.78rem">— ' + visible.length +
-      " anonymous national-draft placeholders (Pick 1–" + visible.length + ") priced at the release-active PVC" +
-      (dat ? " · Σ visible " + fmt.n(dat.visible_1_64) + " + residual " + fmt.n(dat.residual_total) +
-        " = entrant layer " + fmt.n(dat.total) + " (reconciled to F5)" : "") +
-      " · assets, not players — never in the current ranking</span>";
-    sec.appendChild(head);
-    const rowsEl = fmt.el("div", "rows");
-    const maxV = visible.length ? visible[0].v : 1;
-    visible.forEach(function (p) { rowsEl.appendChild(pickRow(p, maxV)); });
-    residual.forEach(function (p) { rowsEl.appendChild(pickRow(p, maxV)); });
-    sec.appendChild(rowsEl);
-    container.appendChild(sec);
+    if (!(s.lens === 3 || s.lens === 4)) return;
+    const dat = ((MD.seam.working || {}).draftAssetTotals || {})["+" + (s.lens - 2)];
+    if (!dat) return;
+    const el = fmt.el("div", "reconpanel");
+    el.style.cssText = "margin:.5rem 0;padding:.4rem .6rem;border-left:3px solid #6a8;background:rgba(127,127,127,.06);font-size:.8rem;line-height:1.6";
+    el.innerHTML = '<b>' + dat.lensYear + " future-entrant reconciliation</b> (residuals held out of the ranking) — " +
+      "visible Picks 1–64 Σ<b>" + fmt.n(dat.visible_1_64) + "</b> + national-draft deep-tail residual <b>" +
+      fmt.n(dat.residual_nd_tail) + "</b> + non-national-draft entry residual <b>" + fmt.n(dat.residual_mech) +
+      "</b> = sealed F5 entrant layer <b>" + fmt.n(dat.f5_entrant_layer_pvc) + "</b>" +
+      (dat.reconciled_to_f5 ? " ✓" : " ✗") +
+      ' <span style="opacity:.6">· the deep-tail (picks 65+) and non-national-draft mechanisms (MSD/SSP/rookie/' +
+      'pre-season/international) are aggregates, not single tradeable assets — never ranked</span>';
+    container.appendChild(el);
   }
 
   function render(container) {
@@ -578,21 +582,21 @@ MD.board = (function () {
     }
 
     if (pool.length) container.appendChild(boardHead(s.tier)); // item 4: column headings
+    // final integration: the +1/+2 future-entrant reconciliation panel (residuals held out of the ranking).
+    if (s.tier === "working") reconciliationPanel(container);
     const rowsEl = fmt.el("div", "rows");
     if (s.tier === "working" && groupByClub) {
-      // grouped: club headers ranked by ΣSCAR, each with its top players — the team-context lens (inline
-      // club ranking; the standalone page is owner-deferred).
+      // grouped: club headers ranked by ΣSCAR, EVERY player for every club (owner ruling: no truncation).
       clubAgg(pool).forEach(function (c) {
         rowsEl.appendChild(clubHeader(c, clubRanks[c.club]));
-        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; }).slice(0, 6);
+        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; });
         mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
-        const more = c.n - mine.length;
-        if (more > 0) rowsEl.appendChild(fmt.el("div", "clubmore", "+ " + fmt.n(more) + " more " +
-          fmt.esc(fmt.club(c.club)) + " player" + (more === 1 ? "" : "s")));
       });
     } else {
-      pool.slice(0, clubFilter ? pool.length : 60).forEach(function (r) {
-        rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
+      // owner ruling: EVERY matching row renders — no top-60 cap, no hidden rows (players + ranked picks).
+      pool.forEach(function (r) {
+        rowsEl.appendChild(r.pick ? pickRow(r, maxV)
+          : (s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV)));
       });
     }
     // item 178(2): a single filtered club with "picks included" lists its held picks under the roster.
@@ -601,13 +605,13 @@ MD.board = (function () {
     }
     container.appendChild(rowsEl);
 
-    // final integration: the visible future-draft asset ladder (Pick 1-64 + residual aggregates) on +1/+2.
-    if (s.tier === "working" && (s.lens === 3 || s.lens === 4)) assetLadder(container);
-
     const foot = fmt.el("footer", "foot");
     if (s.tier === "working") {
-      const shown = groupByClub ? "grouped by AFFL club" :
-        (pool.length > 60 ? "showing top 60 of " + fmt.n(pool.length) : "showing all " + fmt.n(pool.length));
+      const nPick = pool.filter(function (r) { return r.pick; }).length;
+      const nPlayer = pool.length - nPick;
+      const shown = groupByClub ? ("grouped by AFFL club · all " + fmt.n(pool.length) + " rows")
+        : ("rendering all " + fmt.n(pool.length) + " rows" +
+           (nPick ? " (" + fmt.n(nPlayer) + " players + " + fmt.n(nPick) + " draft assets)" : ""));
       foot.innerHTML = "volt = your touch (reads · rules · controls) · the value line = share of the top price, its colour warming as it fills · " +
         "movement pills always signed · override headroom lives on the card's waterfall · " + shown +
         (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");

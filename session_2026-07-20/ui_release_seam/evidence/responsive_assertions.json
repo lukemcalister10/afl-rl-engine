@@ -33,7 +33,7 @@
     "width": 320,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Workin✓ Public✓"
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
   },
   {
     "width": 320,
@@ -105,7 +105,7 @@
     "width": 360,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Workin✓ Public✓"
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
   },
   {
     "width": 360,
@@ -177,7 +177,7 @@
     "width": 390,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Workin✓ Public✓"
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
   },
   {
     "width": 390,
@@ -249,7 +249,7 @@
     "width": 430,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Workin✓ Public✓"
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
   },
   {
     "width": 430,
@@ -321,7 +321,7 @@
     "width": 720,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Workin✓ Public✓"
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
   },
   {
     "width": 720,
@@ -393,7 +393,7 @@
     "width": 1440,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Workin✓ Public✓"
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
   },
   {
     "width": 1440,

@@ -16,14 +16,16 @@ MD.config = {
      of record data/expected_boot.json 'board' = full md5 06d8af60b679a12db07c064c60c065f9, RL_LEGE=0 RL_LEGF=0
      RL_PVC2=1 on engine cc626d7d/904722cd, store 968de0c7; display-only for the UI — no value is computed here.
      The seam authenticates working.stamp.board_md5[:8] == this id).
-     Moved 06d8af60 -> 039ff8d4 (FINAL INTEGRATION 2026-07-21, integration/v2.11-final-rc: the final board =
-     accepted forward-lens Board B (RL_LEGE=1 RL_LEGF=1 RL_PVC2=1, was 1f10220c) + the owner-facing visible
-     future-draft asset ladder (2027/2028 Draft Pick 1-64 at release-active PVC + 2 labelled residual
-     aggregates, reconciled EXACTLY to the sealed F5 entrant layer 83538). Present lens unchanged: 804 active,
-     Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as balanced_board_md5 lineage);
-     forward vectors == Board B for all 804. Engine cc626d7d/904722cd, store 968de0c7 unchanged; config
-     c2d233ae -> 3a1e714f (14 class-A switches now stamped). Display-only for the UI. PROVISIONAL final-RC). */
-  EXPECTED_BOARD: "039ff8d4",
+     Moved 06d8af60 -> 2ab73a6f (FINAL INTEGRATION 2026-07-21, integration/v2.11-final-rc: the CANONICAL ENGINE
+     BUILD — rl_export.py under RL_PVC2=1 RL_LEGE=1 RL_LEGF=1 — reproduces this board from tracked code + the
+     canonical store + the sealed F5 input; NO diagnostic artifact is a build input. It equals accepted Board B
+     (1f10220c) on present v + vP1 + vP2 + row universe (0 diffs; Board B is an oracle only) and adds the owner-
+     facing visible future-draft asset ladder: 2027/2028 Draft Pick 1-64 at release-active PVC, RANKED among the
+     804 players in the +1/+2 lens; the two F5 residual aggregates sit in a separate reconciliation panel. Present
+     lens unchanged: 804 active, Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as
+     balanced_board_md5 lineage). Engine cc626d7d/904722cd, store 968de0c7, config 3a1e714f unchanged (rl_export
+     is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC). */
+  EXPECTED_BOARD: "2ab73a6f",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
