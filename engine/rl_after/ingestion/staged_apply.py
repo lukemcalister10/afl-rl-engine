@@ -79,6 +79,12 @@ TARGETS = (
     # Derived from the STAGED store after applying scores + advancing the round, BEFORE the board regen, and
     # committed ATOMICALLY with the store/board so a crash can never leave a new round on stale season-state.
     ('season_state', os.path.join('data', 'season_state.json')),
+    # release contract: the authoritative dynamic release identity (supervisor 3rd review req 3). Re-stamped
+    # from the staged manifest + board + season-state AFTER the board exists and committed ATOMICALLY with
+    # store/board/expected_boot/season_state, so a successful round can never leave the contract on a stale
+    # round, a stale store/board pin, or a stale season fraction. (release_lineage.json is the IMMUTABLE
+    # present-lens baseline and is deliberately NOT a target — it must not move when a weekly round advances.)
+    ('release_contract', os.path.join('data', 'release_contract.json')),
     ('ledger',  os.path.join('engine', 'rl_after', 'ingestion', 'applied_rounds_ledger.json')),
     ('value_history', os.path.join('engine', 'rl_after', 'ingestion', 'value_history.json')),
     ('rank_history',  os.path.join('engine', 'rl_after', 'ingestion', 'rank_history.json')),
@@ -500,10 +506,21 @@ class StagedRoundApplier:
                           fv_distribution_pricing_md5=fv_ev.get('distribution_pricing_md5'),
                           fv_rl_fv=fv_ev.get('rl_fv'), config_hash=self.config_hash)
 
-            # (c) RE-STAMP the workspace boot manifest (move store+board pins)
+            # (c) RE-STAMP the workspace boot manifest (move store+board pins AND advance as_of_round)
             self._fault('during_manifest_staging')
-            wsapp._restamp_manifest(staged_store_md5, staged_board_md5)
-            self._journal(txn_dir, 'MANIFEST_STAGED')
+            wsapp._restamp_manifest(staged_store_md5, staged_board_md5, as_of_round=int(snapshot['round']))
+            self._journal(txn_dir, 'MANIFEST_STAGED', as_of_round=int(snapshot['round']))
+
+            # (c2) RE-STAMP the authoritative dynamic RELEASE CONTRACT from the staged manifest + board +
+            #      season-state (supervisor 3rd review req 3): advance as_of_round, re-pin identities.store/
+            #      board, refresh season_metadata (calendar/exposure/policy/round), recompute contract_sha256.
+            #      The atomic commit therefore moves store/board/expected_boot/season_state AND the release
+            #      contract to the SAME round; release_lineage.json (immutable present-lens baseline) is untouched.
+            self._fault('during_contract_staging')
+            _rc = self._release_contract_module()
+            _new_csha = _rc.restamp_dynamic(ws, int(snapshot['round']), staged_store_md5, staged_board_md5, _ss_new)
+            self._journal(txn_dir, 'CONTRACT_STAGED', as_of_round=int(snapshot['round']),
+                          contract_sha256=_new_csha[:12], store=staged_store_md5[:8], board=staged_board_md5[:8])
 
             # (d) UPDATE the workspace ledger with the exact snapshot triples
             self._fault('during_ledger_staging')
@@ -692,6 +709,17 @@ class StagedRoundApplier:
         import importlib.util
         p = os.path.join(self.repo_root, 'season_state.py')
         spec = importlib.util.spec_from_file_location('season_state_pol', p)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        return m
+
+    def _release_contract_module(self):
+        """Import the release-contract authority (repo-root release_contract.py) to re-stamp the dynamic
+        release identity (as_of_round + store/board pins + season_metadata) onto the STAGED contract and to
+        fail-closed-verify the complete staged set before commit."""
+        import importlib.util
+        p = os.path.join(self.repo_root, 'release_contract.py')
+        spec = importlib.util.spec_from_file_location('release_contract_pol', p)
         m = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(m)
         return m
@@ -905,6 +933,42 @@ class StagedRoundApplier:
                 fails.append("staged forward_valuation distribution_pricing %s != live repo FV %s"
                              % (self._fv_evidence['distribution_pricing_md5'][:8], live_md5[:8]))
 
+        # (vii-c) DYNAMIC RELEASE-STATE coherence (supervisor 3rd review req 5): the staged season_state,
+        #         expected_boot and release_contract must ALL be on THIS round; the contract's store/board
+        #         pins must equal the freshly-staged md5s; exposure must be derived off the staged store; and
+        #         the fail-closed contract verify (calendar derivation, exposure-from-live-store, policy /
+        #         store / round / season identity) must pass. A stale round on ANY of the three artifacts, or
+        #         a stale pin/contract, is rejected here — before commit.
+        try:
+            _round = int(snapshot['round'])
+            _ss = json.load(open(os.path.join(ws, 'data', 'season_state.json')))
+            _con = json.load(open(os.path.join(ws, 'data', 'release_contract.json')))
+        except (OSError, ValueError) as e:
+            raise StagedValidationError("staged season_state / release_contract unparseable: %s" % e)
+        if int(_ss.get('as_of_round', -1)) != _round:
+            fails.append("staged season_state as_of_round %s != round %d (stale round)" % (_ss.get('as_of_round'), _round))
+        if _ss.get('source_store_md5') != staged_store_md5:
+            fails.append("staged season_state source_store_md5 %s != staged store %s (exposure off a stale store)"
+                         % ((_ss.get('source_store_md5') or '')[:8], staged_store_md5[:8]))
+        if int(pins.get('as_of_round', -1)) != _round:
+            fails.append("staged expected_boot as_of_round %s != round %d (boot manifest did not advance)"
+                         % (pins.get('as_of_round'), _round))
+        if int(_con.get('as_of_round', -1)) != _round:
+            fails.append("staged release_contract as_of_round %s != round %d (stale contract)" % (_con.get('as_of_round'), _round))
+        if int((_con.get('season_metadata') or {}).get('as_of_round', -1)) != _round:
+            fails.append("staged contract season_metadata.as_of_round != round %d (artifacts on different rounds)" % _round)
+        _cids = _con.get('identities') or {}
+        if _cids.get('store') != staged_store_md5:
+            fails.append("staged contract identities.store %s != staged store %s (stale pin)"
+                         % ((_cids.get('store') or '')[:8], staged_store_md5[:8]))
+        if _cids.get('board') != staged_board_md5:
+            fails.append("staged contract identities.board %s != staged board %s (stale pin)"
+                         % ((_cids.get('board') or '')[:8], staged_board_md5[:8]))
+        try:
+            self._release_contract_module().verify('gate', ws, halt=True)
+        except AssertionError as e:
+            fails.append("staged release-contract verify FAILED (fail-closed): %s" % str(e)[:400])
+
         if fails:
             raise StagedValidationError("STAGED validation failed:\n  - " + "\n  - ".join(fails))
 
@@ -1106,6 +1170,7 @@ class StagedRoundApplier:
             'sidecar': os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json.srcmd5'),
             'manifest': os.path.join(ws, 'data', 'expected_boot.json'),
             'season_state': os.path.join(ws, 'data', 'season_state.json'),
+            'release_contract': os.path.join(ws, 'data', 'release_contract.json'),
             'ledger':  os.path.join(wsra, 'ingestion', 'applied_rounds_ledger.json'),
             'value_history': os.path.join(wsra, 'ingestion', 'value_history.json'),
             'rank_history':  os.path.join(wsra, 'ingestion', 'rank_history.json'),

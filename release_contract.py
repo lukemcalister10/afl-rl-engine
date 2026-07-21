@@ -259,6 +259,47 @@ def verify(mode=None, root=None, halt=True):
     return contract.get('contract_sha256')
 
 
+def restamp_dynamic(root, as_of_round, store_md5, board_md5, season_state):
+    """Re-stamp the DYNAMIC fields of <root>/data/release_contract.json to a newly-accepted round and
+    recompute the deterministic self-hash (supervisor 3rd review req 3 — one coherent weekly authority).
+
+    Advances the top-level as_of_round, re-pins identities.store + identities.board to the freshly-staged
+    md5s, and refreshes season_metadata (as_of_round / calendar_progress / exposure_pace / season_prog /
+    derivation_policy_id / season_year / season_total_rounds) from the authoritative season_state dict.
+    EVERYTHING ELSE is preserved byte-for-byte: release_version, config_sha256, switch_posture,
+    pvc_provenance, must_be_unset, present_lens_baseline, f5 reconciliation, the descriptive season notes,
+    and the immutable engine/rl_model/fv/register/band identities. The immutable present-lens baseline
+    (data/release_lineage.json) is NEVER touched here.
+
+    Written atomically to the SAME path (os.replace); returns the new contract_sha256. Called by the Track B
+    staged transaction against the WORKSPACE contract so the atomic commit moves store/board/expected_boot/
+    season_state AND the release contract to the SAME round."""
+    cp = contract_path(root)
+    with open(cp) as f:
+        c = json.load(f)
+    aor = int(as_of_round)
+    cal = float(season_state['calendar_progress'])
+    c['as_of_round'] = aor
+    ids = c.setdefault('identities', {})
+    ids['store'] = store_md5
+    ids['board'] = board_md5
+    sm = c.setdefault('season_metadata', {})
+    sm['as_of_round'] = aor
+    sm['calendar_progress'] = cal
+    sm['exposure_pace'] = float(season_state['exposure_pace'])
+    sm['season_prog'] = cal                          # the board's SEASON_PROG == calendar_progress (same dial)
+    sm['derivation_policy_id'] = season_state['derivation_policy_id']
+    sm['season_year'] = int(season_state['season_year'])
+    sm['season_total_rounds'] = int(season_state['season_total_rounds'])
+    c.pop('contract_sha256', None)
+    c['contract_sha256'] = contract_hash(c)
+    tmp = cp + '.tmp_restamp'
+    with open(tmp, 'w') as f:
+        json.dump(c, f, indent=2)
+    os.replace(tmp, cp)
+    return c['contract_sha256']
+
+
 if __name__ == '__main__':
     _root = repo_root()
     if len(sys.argv) > 1 and sys.argv[1] == 'hash':

@@ -244,9 +244,11 @@ class RoundApplier:
         return _md5_full(board_path)
 
     # -- manifest re-stamp (SSI guard 5: move store+board pins with the write) -----------------
-    def _restamp_manifest(self, store_md5, board_md5):
-        """Surgically move ONLY the `store` and `board` pins to the new md5s (every other pin/note
-        byte-unchanged), so Guard 5 re-pins to the written store instead of halting on the mover."""
+    def _restamp_manifest(self, store_md5, board_md5, as_of_round=None):
+        """Surgically move the `store` and `board` pins (and, when given, advance the `as_of_round`) to
+        the new values — every other pin/note byte-unchanged — so Guard 5 re-pins to the written store and
+        the boot manifest advances IN LOCKSTEP with the round (supervisor 3rd review req 3: expected_boot's
+        as_of_round must not stay frozen while season_state/contract advance)."""
         with open(self.manifest_path) as f:
             text = f.read()
         for field, val in (('store', store_md5), ('board', board_md5)):
@@ -254,6 +256,12 @@ class RoundApplier:
             new, n = re.subn(pat, lambda m, v=val: m.group(1) + v + m.group(2), text, count=1)
             if n != 1:
                 raise RuntimeError("manifest re-stamp: expected exactly 1 %r pin, found %d" % (field, n))
+            text = new
+        if as_of_round is not None:
+            pat = r'("as_of_round":\s*)\d+'
+            new, n = re.subn(pat, lambda m, v=int(as_of_round): m.group(1) + str(v), text, count=1)
+            if n != 1:
+                raise RuntimeError("manifest re-stamp: expected exactly 1 'as_of_round' field, found %d" % n)
             text = new
         d = os.path.dirname(self.manifest_path)
         fd, tmp = tempfile.mkstemp(prefix='.boot_tmp_', suffix='.json', dir=d)
