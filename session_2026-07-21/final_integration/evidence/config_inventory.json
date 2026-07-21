@@ -1,0 +1,1564 @@
+{
+  "class_A_unrepresented": [
+    {
+      "var": "RL_DAMP",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_EVW",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_LEGF",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_LSYM_TAB",
+      "why": "class-A override hook not declared must_be_unset in release_contract.json"
+    },
+    {
+      "var": "RL_ISOFADE",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_SAGE29",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_LSYM",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_EO2",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_ABSENCE",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_V0SURF_REFIT",
+      "why": "class-A override hook not declared must_be_unset in release_contract.json"
+    },
+    {
+      "var": "RL_PVC2",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_LEGE",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_FLEX",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_CAPT",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_UNCOMP",
+      "why": "class-A switch absent from model_config.json vars"
+    },
+    {
+      "var": "RL_UNCOMP_S",
+      "why": "class-A override hook not declared must_be_unset in release_contract.json"
+    },
+    {
+      "var": "RL_UNCONSERVE",
+      "why": "class-A switch absent from model_config.json vars"
+    }
+  ],
+  "class_counts": {
+    "?": 0,
+    "A": 63,
+    "B": 17,
+    "C": 2
+  },
+  "n_reads": 148,
+  "n_vars": 82,
+  "ok": false,
+  "root": "/home/user/afl-rl-engine",
+  "surface_file_count": 69,
+  "unclassified": [],
+  "vars": [
+    {
+      "canonical": "0.40",
+      "cls": "A",
+      "kind": "switch",
+      "note": "par bandwidth",
+      "reads": [
+        {
+          "default": "0.40",
+          "file": "engine/forward_valuation/par_build.py",
+          "line": 29
+        }
+      ],
+      "var": "PAR_BW"
+    },
+    {
+      "canonical": "30",
+      "cls": "A",
+      "kind": "switch",
+      "note": "par k",
+      "reads": [
+        {
+          "default": "30",
+          "file": "engine/forward_valuation/par_build.py",
+          "line": 31
+        }
+      ],
+      "var": "PAR_K"
+    },
+    {
+      "canonical": "6",
+      "cls": "A",
+      "kind": "switch",
+      "note": "par min games",
+      "reads": [
+        {
+          "default": "6",
+          "file": "engine/forward_valuation/par_build.py",
+          "line": 30
+        }
+      ],
+      "var": "PAR_MING"
+    },
+    {
+      "canonical": "22",
+      "cls": "A",
+      "kind": "switch",
+      "note": "par ramps",
+      "reads": [
+        {
+          "default": "22",
+          "file": "engine/forward_valuation/par_redesign.py",
+          "line": 44
+        }
+      ],
+      "var": "PAR_RAMPS"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: absence-penalty layer",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 623
+        }
+      ],
+      "var": "RL_ABSENCE"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v2.9 L3",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 494
+        }
+      ],
+      "var": "RL_AGE"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "LTI/availability",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 93
+        }
+      ],
+      "var": "RL_AVAIL"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: ruled captain curve (L-CAPTAIN)",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 256
+        }
+      ],
+      "var": "RL_CAPT"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: damping layer (kill-switch; RL_DAMP=0 => byte-exact base)",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 160
+        }
+      ],
+      "var": "RL_DAMP"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v2.9 L2",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 415
+        }
+      ],
+      "var": "RL_DIAL14"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: two-directional anti-flattery (kill _eo min())",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 563
+        }
+      ],
+      "var": "RL_EO2"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: continuous evidence weight (v2.10)",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 178
+        }
+      ],
+      "var": "RL_EVW"
+    },
+    {
+      "canonical": "0.545",
+      "cls": "A",
+      "kind": "switch",
+      "note": "exposure f",
+      "reads": [
+        {
+          "default": "0.545",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 61
+        }
+      ],
+      "var": "RL_EXPO_F"
+    },
+    {
+      "canonical": "2026",
+      "cls": "A",
+      "kind": "switch",
+      "note": "exposure in-progress yr",
+      "reads": [
+        {
+          "default": "2026",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 60
+        }
+      ],
+      "var": "RL_EXPO_INPROG_Y"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: Leg C flex positional machinery + \u00a71b DPP law",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 295
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 51
+        }
+      ],
+      "var": "RL_FLEX"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "form decline",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 130
+        }
+      ],
+      "var": "RL_FORMDECL"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "fwd recal",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 755
+        }
+      ],
+      "var": "RL_FWDRECAL"
+    },
+    {
+      "canonical": "0.85",
+      "cls": "A",
+      "kind": "switch",
+      "note": "discount",
+      "reads": [
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/build_peak_model_v4.py",
+          "line": 8
+        }
+      ],
+      "var": "RL_GAMMA"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: iso_corr evidence-fade + ISO monotonization (Leg A)",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 452
+        }
+      ],
+      "var": "RL_ISOFADE"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "kpf fix",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 758
+        }
+      ],
+      "var": "RL_KPFFIX"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v2.9 L5",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 984
+        }
+      ],
+      "var": "RL_L5_PICKLESS"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: Leg E forward projection law (R103.3); owner-approved ON",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 171
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 185
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 422
+        }
+      ],
+      "var": "RL_LEGE"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: Leg F forward/phantom-intake layer; owner-approved ON",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 198
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 185
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 625
+        }
+      ],
+      "var": "RL_LEGF"
+    },
+    {
+      "canonical": "14",
+      "cls": "A",
+      "kind": "switch",
+      "note": "level ramp",
+      "reads": [
+        {
+          "default": "14",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 83
+        }
+      ],
+      "var": "RL_LEVEL_RAMP"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: L-SYMMETRY",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 524
+        }
+      ],
+      "var": "RL_LSYM"
+    },
+    {
+      "canonical": null,
+      "cls": "A",
+      "kind": "unset",
+      "note": "L-SYMMETRY table path override; canonical ABSENT (sealed literal ships in source)",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 240
+        }
+      ],
+      "var": "RL_LSYM_TAB"
+    },
+    {
+      "canonical": "advance",
+      "cls": "A",
+      "kind": "switch",
+      "note": "R-i owner ruling",
+      "reads": [
+        {
+          "default": "advance",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 95
+        },
+        {
+          "default": "<expr:<default>>",
+          "file": "ruling_config_check.py",
+          "line": 85
+        },
+        {
+          "default": null,
+          "file": "ruling_config_check.py",
+          "line": 91
+        }
+      ],
+      "var": "RL_LTI_CLOCK"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "LTI return arm",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 94
+        }
+      ],
+      "var": "RL_LTI_RETURN"
+    },
+    {
+      "canonical": "0.58",
+      "cls": "A",
+      "kind": "switch",
+      "note": "m3 fe",
+      "reads": [
+        {
+          "default": "0.58",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 81
+        },
+        {
+          "default": "0.58",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1441
+        },
+        {
+          "default": "0.58",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 84
+        }
+      ],
+      "var": "RL_M3_FE"
+    },
+    {
+      "canonical": "2026",
+      "cls": "A",
+      "kind": "switch",
+      "note": "m3 in-progress yr",
+      "reads": [
+        {
+          "default": "2026",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 82
+        },
+        {
+          "default": "2026",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 700
+        }
+      ],
+      "var": "RL_M3_INPROG_Y"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v2.9 L4",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 33
+        }
+      ],
+      "var": "RL_MSD_POOL_EXCL"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "overperformer px",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 757
+        }
+      ],
+      "var": "RL_OVPX"
+    },
+    {
+      "canonical": "3000",
+      "cls": "A",
+      "kind": "switch",
+      "note": "numeraire pick-1",
+      "reads": [
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/build_peak_model_v4.py",
+          "line": 8
+        }
+      ],
+      "var": "RL_PICK1"
+    },
+    {
+      "canonical": "400",
+      "cls": "A",
+      "kind": "switch",
+      "note": "GBM trees",
+      "reads": [
+        {
+          "default": "<required>",
+          "file": "engine/rl_after/_gate1_picksplit.py",
+          "line": 4
+        },
+        {
+          "default": "<required>",
+          "file": "engine/rl_after/_gate1_wf.py",
+          "line": 5
+        },
+        {
+          "default": "400",
+          "file": "engine/rl_after/wire_redesign.py",
+          "line": 50
+        },
+        {
+          "default": "400",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 114
+        },
+        {
+          "default": "400",
+          "file": "boot_guard.py",
+          "line": 260
+        },
+        {
+          "default": "400",
+          "file": "boot_guard.py",
+          "line": 276
+        }
+      ],
+      "var": "RL_PRIOR_TREES"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: composed-pathway PVC ev-channel swap (Leg D Act-2); owner-approved ON",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1514
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/one_source_selftest.py",
+          "line": 330
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 132
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 560
+        },
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 764
+        }
+      ],
+      "var": "RL_PVC2"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v2.9 L1",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1497
+        }
+      ],
+      "var": "RL_PVCADOPT"
+    },
+    {
+      "canonical": "0",
+      "cls": "A",
+      "kind": "switch",
+      "note": "HELD OUT (R3); default 0",
+      "reads": [
+        {
+          "default": "0",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1490
+        },
+        {
+          "default": "<expr:<default>>",
+          "file": "ruling_config_check.py",
+          "line": 53
+        },
+        {
+          "default": null,
+          "file": "ruling_config_check.py",
+          "line": 58
+        }
+      ],
+      "var": "RL_PVCFIT"
+    },
+    {
+      "canonical": "0.72",
+      "cls": "A",
+      "kind": "switch",
+      "note": "recency",
+      "reads": [
+        {
+          "default": "0.72",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 46
+        }
+      ],
+      "var": "RL_RECENCY_DECAY"
+    },
+    {
+      "canonical": "3",
+      "cls": "A",
+      "kind": "switch",
+      "note": "replacement drop",
+      "reads": [
+        {
+          "default": "3",
+          "file": "engine/forward_valuation/dist_redesign.py",
+          "line": 35
+        }
+      ],
+      "var": "RL_REPL_DROP"
+    },
+    {
+      "canonical": "0.80",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ruck ceil head",
+      "reads": [
+        {
+          "default": "0.80",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1132
+        }
+      ],
+      "var": "RL_RUC_CEIL_HEAD"
+    },
+    {
+      "canonical": "72",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ruck ceil refpk",
+      "reads": [
+        {
+          "default": "72",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1133
+        }
+      ],
+      "var": "RL_RUC_CEIL_REFPK"
+    },
+    {
+      "canonical": "1.4",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ruck prior cap",
+      "reads": [
+        {
+          "default": "1.4",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1113
+        }
+      ],
+      "var": "RL_RUC_PRIOR_CAP"
+    },
+    {
+      "canonical": "0.35",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ruck yr haircut",
+      "reads": [
+        {
+          "default": "0.35",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1134
+        }
+      ],
+      "var": "RL_RUC_YRH"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: S_AGE 29-tail",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 505
+        }
+      ],
+      "var": "RL_SAGE29"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: uncompress output->price map (inert unless RL_UNCOMP_S set; canonical == default 1, RL_UNCOMP_S unset)",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 398
+        }
+      ],
+      "var": "RL_UNCOMP"
+    },
+    {
+      "canonical": null,
+      "cls": "A",
+      "kind": "unset",
+      "note": "dev-shell grid-sweep s override; canonical ABSENT (keeps RL_UNCOMP inert)",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/rl_model.py",
+          "line": 403
+        }
+      ],
+      "var": "RL_UNCOMP_S"
+    },
+    {
+      "canonical": "0",
+      "cls": "A",
+      "kind": "switch",
+      "note": "ADDENDUM: dev-shell UNFUNDED measurement override; canonical OFF (0)",
+      "reads": [
+        {
+          "default": "0",
+          "file": "engine/rl_after/rl_model.py",
+          "line": 405
+        }
+      ],
+      "var": "RL_UNCONSERVE"
+    },
+    {
+      "canonical": null,
+      "cls": "A",
+      "kind": "unset",
+      "note": "forces a v0surf REFIT; canonical ABSENT (load the pinned pickle, never fit)",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1239
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1306
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1323
+        }
+      ],
+      "var": "RL_V0SURF_REFIT"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v7 form",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 759
+        }
+      ],
+      "var": "RL_V7FORM"
+    },
+    {
+      "canonical": "0.6",
+      "cls": "A",
+      "kind": "switch",
+      "note": "v7 form weight",
+      "reads": [
+        {
+          "default": "0.6",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 760
+        }
+      ],
+      "var": "RL_V7_FORM_W"
+    },
+    {
+      "canonical": "0.17",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "0.17",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 761
+        }
+      ],
+      "var": "RL_W4_CRED"
+    },
+    {
+      "canonical": "0.60",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "0.60",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 763
+        }
+      ],
+      "var": "RL_W4_FADE"
+    },
+    {
+      "canonical": "8.0",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "8.0",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 796
+        }
+      ],
+      "var": "RL_W4_KPFM0"
+    },
+    {
+      "canonical": "16.0",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "16.0",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 797
+        }
+      ],
+      "var": "RL_W4_KPFMS"
+    },
+    {
+      "canonical": "0.55",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "0.55",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 766
+        }
+      ],
+      "var": "RL_W4_KPFSH"
+    },
+    {
+      "canonical": "0.70",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "0.70",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 794
+        }
+      ],
+      "var": "RL_W4_KPFSH_DEM"
+    },
+    {
+      "canonical": "0.4",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "0.4",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 795
+        }
+      ],
+      "var": "RL_W4_KPFTOP"
+    },
+    {
+      "canonical": "1.6",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "1.6",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 762
+        }
+      ],
+      "var": "RL_W4_KPFUP"
+    },
+    {
+      "canonical": "1.0",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4",
+      "reads": [
+        {
+          "default": "1.0",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 764
+        }
+      ],
+      "var": "RL_W4_OVPX"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "w4 ruck",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1131
+        }
+      ],
+      "var": "RL_W4_RUC"
+    },
+    {
+      "canonical": "0.92",
+      "cls": "A",
+      "kind": "switch",
+      "note": "young cred kpf",
+      "reads": [
+        {
+          "default": "0.92",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 974
+        }
+      ],
+      "var": "RL_YCRED_KPF"
+    },
+    {
+      "canonical": "0.9",
+      "cls": "A",
+      "kind": "switch",
+      "note": "young cred w",
+      "reads": [
+        {
+          "default": "0.9",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 973
+        }
+      ],
+      "var": "RL_YCRED_W"
+    },
+    {
+      "canonical": "1",
+      "cls": "A",
+      "kind": "switch",
+      "note": "young credit",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 756
+        }
+      ],
+      "var": "RL_YOUNG"
+    },
+    {
+      "canonical": "0",
+      "cls": "B",
+      "kind": "infra",
+      "note": "R3 bake-write escape hatch (governed by R3 bake guard + RULING-CONFIG)",
+      "reads": [
+        {
+          "default": "0",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 107
+        }
+      ],
+      "var": "RL_ALLOW_PVCFIT_BOARD"
+    },
+    {
+      "canonical": "rl_app_data.json",
+      "cls": "B",
+      "kind": "infra",
+      "note": "board output filename",
+      "reads": [
+        {
+          "default": "rl_app_data.json",
+          "file": "engine/rl_after/one_source_selftest.py",
+          "line": 94
+        },
+        {
+          "default": "rl_app_data.json",
+          "file": "engine/rl_after/s4_matrix_M1v7.py",
+          "line": 11
+        },
+        {
+          "default": "rl_app_data.json",
+          "file": "engine/rl_after/s4_matrix_M1v7.py",
+          "line": 122
+        }
+      ],
+      "var": "RL_APP_DATA"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "manifest mode flag (bake|gate|canonical)",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/owner_overrides.py",
+          "line": 34
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/owner_overrides.py",
+          "line": 56
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/owner_overrides.py",
+          "line": 64
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/rl_export.py",
+          "line": 34
+        },
+        {
+          "default": null,
+          "file": "config_manifest.py",
+          "line": 83
+        },
+        {
+          "default": null,
+          "file": "config_manifest.py",
+          "line": 113
+        },
+        {
+          "default": null,
+          "file": "release_contract.py",
+          "line": 83
+        },
+        {
+          "default": null,
+          "file": "release_contract.py",
+          "line": 96
+        }
+      ],
+      "var": "RL_CONFIG_MODE"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "forward_valuation path (identity independently pinned as fv)",
+      "reads": [
+        {
+          "default": null,
+          "file": "boot_guard.py",
+          "line": 112
+        },
+        {
+          "default": null,
+          "file": "fv_provenance.py",
+          "line": 207
+        },
+        {
+          "default": null,
+          "file": "fv_provenance.py",
+          "line": 307
+        }
+      ],
+      "var": "RL_FV"
+    },
+    {
+      "canonical": "0",
+      "cls": "B",
+      "kind": "infra",
+      "note": "display-only Brodie override toggle; REJECTED in gate/bake/canonical",
+      "reads": [
+        {
+          "default": "0",
+          "file": "engine/rl_after/owner_overrides.py",
+          "line": 79
+        }
+      ],
+      "var": "RL_NO_OWNER_OVERRIDES"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "q97m pickle path override; loaded md5 pinned by boot_guard",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 60
+        },
+        {
+          "default": null,
+          "file": "boot_guard.py",
+          "line": 254
+        }
+      ],
+      "var": "RL_Q97M_PKL"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "checkout locator",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 61
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1241
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/lti_register.py",
+          "line": 35
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/one_source_selftest.py",
+          "line": 45
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/owner_overrides.py",
+          "line": 39
+        },
+        {
+          "default": ".",
+          "file": "engine/rl_after/rl_export.py",
+          "line": 629
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/build_cohort_book.py",
+          "line": 10
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/build_cohort_book.py",
+          "line": 11
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/build_peak_model_v4.py",
+          "line": 5
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/build_peak_model_v4.py",
+          "line": 6
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 12
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 13
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/dist_redesign.py",
+          "line": 21
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/dist_redesign.py",
+          "line": 22
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/distribution_pricing.py",
+          "line": 25
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/distribution_pricing.py",
+          "line": 26
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/par_build.py",
+          "line": 18
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/par_build.py",
+          "line": 19
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/par_redesign.py",
+          "line": 16
+        },
+        {
+          "default": "<required>",
+          "file": "engine/forward_valuation/par_redesign.py",
+          "line": 17
+        },
+        {
+          "default": null,
+          "file": "boot_guard.py",
+          "line": 32
+        },
+        {
+          "default": null,
+          "file": "boot_guard.py",
+          "line": 255
+        },
+        {
+          "default": null,
+          "file": "boot_guard.py",
+          "line": 265
+        },
+        {
+          "default": null,
+          "file": "config_manifest.py",
+          "line": 44
+        },
+        {
+          "default": null,
+          "file": "fv_provenance.py",
+          "line": 36
+        },
+        {
+          "default": null,
+          "file": "fv_provenance.py",
+          "line": 49
+        },
+        {
+          "default": null,
+          "file": "fv_provenance.py",
+          "line": 290
+        },
+        {
+          "default": null,
+          "file": "ruling_config_check.py",
+          "line": 27
+        },
+        {
+          "default": null,
+          "file": "release_contract.py",
+          "line": 34
+        },
+        {
+          "default": null,
+          "file": "refit_q97m.py",
+          "line": 44
+        }
+      ],
+      "var": "RL_REPO"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(UI_DATA, \"board_view_working.js\">",
+          "file": "ui/tools/ingest_inputs.py",
+          "line": 28
+        }
+      ],
+      "var": "RL_UI_BOARD_BUNDLE"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(REPO, \"data\", \"expected_boot.json\">",
+          "file": "ui/tools/extract_board_view.py",
+          "line": 25
+        },
+        {
+          "default": "<expr:os.path.join(ROOT, \"data\", \"expected_boot.json\">",
+          "file": "ui/tools/ingest_inputs.py",
+          "line": 34
+        }
+      ],
+      "var": "RL_UI_BOOT"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(ROOT, \"ui\", \"release_pick_curve.json\">",
+          "file": "ui/tools/ingest_inputs.py",
+          "line": 32
+        }
+      ],
+      "var": "RL_UI_CURVE_CONTRACT"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(ROOT, \"engine\", \"rl_after\">",
+          "file": "ui/tools/ingest_inputs.py",
+          "line": 30
+        }
+      ],
+      "var": "RL_UI_ENGINE_DIR"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(ROOT, \"docs\", \"inputs\">",
+          "file": "ui/tools/ingest_inputs.py",
+          "line": 26
+        }
+      ],
+      "var": "RL_UI_INPUTS"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(UI_DATA, \"club_valuation.js\">",
+          "file": "ui/tools/ingest_inputs.py",
+          "line": 35
+        }
+      ],
+      "var": "RL_UI_OUT"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(HERE, \"..\", \"data\">",
+          "file": "ui/tools/extract_board_view.py",
+          "line": 31
+        }
+      ],
+      "var": "RL_UI_OUT_DIR"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(REPO, \"data\", \"rl_build\", \"rl_app_data.json\">",
+          "file": "ui/tools/extract_board_view.py",
+          "line": 24
+        }
+      ],
+      "var": "RL_UI_SRC"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "ingest/UI test override (club_curve_provenance harness)",
+      "reads": [
+        {
+          "default": "<expr:os.path.join(REPO, \"engine\", \"rl_after\", \"rl_model_data.json\">",
+          "file": "ui/tools/extract_board_view.py",
+          "line": 30
+        }
+      ],
+      "var": "RL_UI_STORE"
+    },
+    {
+      "canonical": null,
+      "cls": "B",
+      "kind": "infra",
+      "note": "v0surf pickle path override; loaded md5 pinned by boot_guard",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1240
+        },
+        {
+          "default": null,
+          "file": "boot_guard.py",
+          "line": 264
+        }
+      ],
+      "var": "RL_V0SURF_PKL"
+    },
+    {
+      "canonical": null,
+      "cls": "C",
+      "kind": "diag",
+      "note": "refit_q97m trigger (bake tool only; produced pickle md5-pinned)",
+      "reads": [
+        {
+          "default": null,
+          "file": "refit_q97m.py",
+          "line": 104
+        }
+      ],
+      "var": "RL_BAKE_REFIT"
+    },
+    {
+      "canonical": "/home/claude/rl_workspace/rl_after",
+      "cls": "C",
+      "kind": "diag",
+      "note": "refit_q97m workspace (bake tool only)",
+      "reads": [
+        {
+          "default": "/home/claude/rl_workspace/rl_after",
+          "file": "refit_q97m.py",
+          "line": 57
+        }
+      ],
+      "var": "RL_WS"
+    }
+  ]
+}
