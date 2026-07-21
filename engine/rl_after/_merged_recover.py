@@ -3,6 +3,15 @@ import os,io,contextlib,copy,pickle,numpy as np
 import math as _math
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
+def _season_val(_key, _fb):
+    """DYNAMIC season-state value (calendar_progress|exposure_pace) from data/season_state.json (single
+    source; advances weekly). Fallback preserves dev-shell + R14 byte-exact."""
+    try:
+        import json as _j
+        _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '.'
+        return float(_j.load(open(os.path.join(_r, 'data', 'season_state.json')))[_key])
+    except Exception:
+        return float(_fb)
 # ===== DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix) =====
 # PART 1 bisect finding: the FIRST cross-environment divergent bit is a BLAS-routed np.dot
 # (price6, below) — NOT the NW-smoother the register hypothesised. All 3 np.dot sites on the
@@ -78,7 +87,7 @@ PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec sp
 # judged only against games that were playable (R14/24 -> fE=0.58 at this cut; RL_M3_FE = the M2/M3
 # season-progress convention, one dial). Completed seasons are byte-identical (fE=1). G_ADQ (12, M1
 # proven-player recent-adequacy window) deliberately NOT prorated — outside the 6/10/14/22 enumeration.
-SEASON_FE=float(os.environ.get('RL_M3_FE','0.58'))
+SEASON_FE=_season_val('calendar_progress',0.58)   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state
 INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
 # ==== RL_AVAIL — LTI/AVAILABILITY LAYER (Chapter-3 2026-07-09; register-driven; touches register keys only) ==
 # Part 1 (current-season nerf, R-iv = season-state at the proration seam): for a register name out for the
@@ -1438,7 +1447,7 @@ def ev(p,Y=2026):
 # evaluation date (fE -> 1 as the season completes). RL_M3_FE=1 = kill-switch (byte-exact inert).
 # RE-REGISTERED ACCEPTANCE at this config (D7): A3 >= 0.75 (Luke's amended bar) with ZERO on-pace
 # collateral >2% and B-gates holding.
-M3_FE=float(os.environ.get('RL_M3_FE','0.58'))                # elapsed-season fraction; 1.0 -> lever off
+M3_FE=_season_val('calendar_progress',0.58)   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state                # elapsed-season fraction; 1.0 -> lever off
 M3_DEN=11.0                                                   # M2's evidence-replacement denominator (on-pace floor)
 _ev_click=ev                                                  # the full-click evaluation (M1+asc + M2 + caps)
 def _m3_s(p,Y):

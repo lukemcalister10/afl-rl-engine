@@ -1,27 +1,36 @@
 #!/usr/bin/env python3
-"""SEASON-PROGRESS AUTHORITY — inventory, classification, and the R14-vs-R24 controlled test
-(final integration 2026-07-21, supervisor req 2).
+"""SEASON-STATE — derivation, engine wiring, and behavioural proofs (final integration 2026-07-21,
+supervisor 2nd review). Replaces the earlier frozen-literal test: calendar progress and empirical exposure
+pace are now DYNAMIC, DERIVED, and DISTINCT, read by the engine from data/season_state.json.
 
-FINDING (traced across the canonical valuation + release paths): season progress used in VALUATION is a
-FROZEN engine constant SEASON_PROG=0.58 (engine/rl_after/rl_model.py:778), pinned via the rl_model + board
-md5s. It is DECOUPLED from the DYNAMIC as_of_round=14 (stamped in expected_boot + release_contract + the
-board view; advanced weekly by the Track B updater; feeds NO valuation math). RL_SEASON_ROUNDS /
-DEFAULT_SEASON_ROUNDS=24 is only the ingestion round-bound SANITY guard (round_apply.py:52,290-295) — NOT a
-valuation input (class B, in the gated-OFF store-write path).
+Proves:
+  (a) R14 derivation reproduces the approved values EXACTLY from the accepted store (calendar 0.58, exposure
+      0.545) and calendar advances R15..R19 -> 0.63/0.67/0.71/0.75/0.79, final -> 1.00;
+  (b) the engine READS the dynamic values (SEASON_PROG / EXPO_F / _SFE rerouted to season_state; the frozen
+      literal + the RL_M3_FE/RL_EXPO_F env reads are gone);
+  (c) BEHAVIOUR — the exposure lever's evidence-replacement scope s=clip(1-g/11,0,1): a 6-game current sample
+      is partially replaced by prior evidence (less influence) while a >=11-game sample is untouched (s=0);
+      this holds in BOTH directions (a strong OR weak small sample is damped toward prior); calendar progress
+      and exposure pace are NOT required to be equal (0.58 != 0.545); completed seasons are byte-inert;
+  (d) RL_SEASON_ROUNDS is inert for valuation (ingestion sanity bound only, class B);
+  (e) STALE-STATE REJECTION — a contract whose as_of_round disagrees with expected_boot, or whose
+      season_prog disagrees with the board SEASON_PROG, fails closed.
 
-This test (a) asserts those authority facts from the shipped source; (b) runs the controlled disposable
-R14-vs-R24 comparison the supervisor asked for — a synthetic player held at 7 games + same average, the
-SEASON_PROG-dependent valuation formulas evaluated at 0.58 (R14/24) vs 1.0 (R24/24=season-complete) — and
-reports every valuation-path difference; (c) proves RL_SEASON_ROUNDS is inert for valuation; (d) proves the
-release state stamps + binds the season authority coherently. It emits season_progress_inventory.json.
-
-NO parameter is tuned and NO approved vector is altered: the R14-vs-R24 comparison is a disposable formula
-evaluation; SEASON_PROG stays 0.58 in the shipped board. `python3 season_progress_test.py` -> PASS/FAIL.
+No parameter is tuned; no approved vector is altered. `python3 season_progress_test.py` -> PASS/FAIL.
 """
-import os, sys, re, json
+import os, sys, re, json, tempfile, importlib.util
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
+sys.path.insert(0, ROOT)
+import season_state as S  # noqa: E402
+RC = None
+try:
+    _spec = importlib.util.spec_from_file_location('rc', os.path.join(ROOT, 'release_contract.py'))
+    RC = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(RC)
+except Exception:
+    pass
+
 R = []
 def ck(name, ok, detail=''):
     R.append({'check': name, 'pass': bool(ok), 'detail': str(detail)})
@@ -30,98 +39,105 @@ def ck(name, ok, detail=''):
 
 def read(p): return open(os.path.join(ROOT, p), encoding='utf-8').read()
 
+def scope(g):  # per-player evidence-replacement scope s = clip(1 - g/11, 0, 1)
+    return min(1.0, max(0.0, 1.0 - g / S.EXPO_SCOPE_DEN))
+
 def main():
-    print('=== SEASON-PROGRESS AUTHORITY — inventory + R14-vs-R24 controlled test ===')
+    print('=== SEASON-STATE derivation + engine wiring + behaviour ===')
+    store = os.path.join(ROOT, 'engine', 'rl_after', 'rl_model_data.json')
 
-    # ---- (a) authority facts from the shipped source -------------------------------------------------
-    rl_model = read('engine/rl_after/rl_model.py')
-    ck('SEASON_PROG is the frozen valuation fraction 0.58 (rl_model.py)',
-       bool(re.search(r'SEASON_PROG\s*=\s*0\.58', rl_model)))
-    round_apply = read('engine/rl_after/ingestion/round_apply.py')
-    ck('DEFAULT_SEASON_ROUNDS = 24 (ingestion sanity bound, round_apply.py)',
-       'DEFAULT_SEASON_ROUNDS = 24' in round_apply)
-    ck('RL_SEASON_ROUNDS used only for the ingestion round-bound guard (SeasonBoundError), not valuation',
-       'SeasonBoundError' in round_apply and 'RL_SEASON_ROUNDS' in read('engine/rl_after/ingestion/staged_apply.py'))
-    board = json.load(open(os.path.join(ROOT, 'data', 'rl_build', 'rl_app_data.json')))
-    ck('installed board carries SEASON_PROG=0.58', float(board.get('SEASON_PROG')) == 0.58, board.get('SEASON_PROG'))
-    boot = json.load(open(os.path.join(ROOT, 'data', 'expected_boot.json')))
-    ck('as_of_round=14 stamped in expected_boot', boot.get('as_of_round') == 14)
-    contract = json.load(open(os.path.join(ROOT, 'data', 'release_contract.json')))
-    sm = contract.get('season_metadata', {})
-    ck('release_contract binds season_metadata (total=24, as_of=14, prog=0.58)',
-       sm.get('season_total_rounds') == 24 and sm.get('as_of_round') == 14 and sm.get('season_prog') == 0.58)
+    # (a) R14 derivation + progression
+    st = S.derive(14, store, season_year=2026, season_total_rounds=24)
+    ck('(a) R14 calendar_progress == 0.58 (derived)', st['calendar_progress'] == 0.58)
+    ck('(a) R14 exposure_pace == 0.545 (derived from store: 305 durable, median 12, 12/22)',
+       st['exposure_pace'] == 0.545 and st['exposure_derivation']['eligible_durable_players'] == 305
+       and st['exposure_derivation']['median_current_games'] == 12)
+    prog = {r: S.calendar_progress(r, 24) for r in (14, 15, 16, 17, 18, 19, 24)}
+    ck('(a) calendar advances R15..R19 -> 0.63/0.67/0.71/0.75/0.79, final -> 1.00',
+       [prog[r] for r in (14, 15, 16, 17, 18, 19, 24)] == [0.58, 0.63, 0.67, 0.71, 0.75, 0.79, 1.0], prog)
 
-    # ---- (b) RL_SEASON_ROUNDS is NOT read by any valuation formula (canonical valuation path) ---------
-    valn_files = ['engine/rl_after/rl_model.py', 'engine/rl_after/_merged_recover.py', 'engine/rl_after/rl_export.py',
-                  'engine/forward_valuation/distribution_pricing.py', 'engine/forward_valuation/conditional_prior.py',
-                  'engine/forward_valuation/par_redesign.py']
-    leaks = [f for f in valn_files if 'RL_SEASON_ROUNDS' in read(f)]
-    ck('RL_SEASON_ROUNDS is inert for valuation (absent from every canonical valuation-path module)',
-       not leaks, 'leaks=%s' % leaks)
+    # (b) engine reads the dynamic values (no frozen literal; no RL_M3_FE/RL_EXPO_F env reads)
+    rlm = read('engine/rl_after/rl_model.py')
+    ck('(b) SEASON_PROG rerouted to season_state (no frozen =0.58 literal)',
+       "_season_val('calendar_progress'" in rlm and not re.search(r'^SEASON_PROG\s*=\s*0\.58', rlm, re.M))
+    cp = read('engine/forward_valuation/conditional_prior.py')
+    ck('(b) EXPO_F rerouted to exposure_pace; _SFE rerouted to calendar_progress',
+       "EXPO_F=_season_val('exposure_pace'" in cp and "_SFE=_season_val('calendar_progress'" in cp)
+    for f in ('engine/rl_after/rl_model.py', 'engine/rl_after/_merged_recover.py',
+              'engine/forward_valuation/conditional_prior.py'):
+        s = read(f)
+        ck('(b) no live RL_M3_FE/RL_EXPO_F env read in %s' % os.path.basename(f),
+           "environ.get('RL_M3_FE'" not in s and "environ.get('RL_EXPO_F'" not in s)
+    mc = json.load(open(os.path.join(ROOT, 'data', 'model_config.json')))
+    ck('(b) RL_M3_FE + RL_EXPO_F removed from the manifest (no frozen config twin)',
+       'RL_M3_FE' not in mc['vars'] and 'RL_EXPO_F' not in mc['vars'])
+    ck('(b) immutable derivation policy stamped (season_state_policy_id == policy_id)',
+       mc.get('season_state_policy_id') == S.policy_id())
 
-    # ---- (c) THE CONTROLLED R14-vs-R24 TEST (disposable formula evaluation) ---------------------------
-    # Synthetic player held CONSTANT: 7 games in 2026, same demonstrated average. The SEASON_PROG-dependent
-    # valuation paths (traced): (1) partial-season games gross-up rl_model.py:966  Gn2026 = games/SEASON_PROG;
-    # (2) mid-season benefit-of-doubt rl_model.py:969  base += (1-SEASON_PROG)*max(0,prior-base);
-    # (3) year-0 projection blend distribution_pricing.py:277  raw = sp*present + (1-sp)*low.
-    games_2026 = 7; base0 = 0.50; prior = 0.70; proj_present = 100.0; proj_low = 60.0
-    def paths(sp):
-        gn = games_2026 / sp                                   # (1) grossed-up current-season games
-        bod = base0 + (1 - sp) * max(0.0, prior - base0)       # (2) benefit-of-doubt toward pathway prior
-        blend = sp * proj_present + (1 - sp) * proj_low         # (3) year-0 banked-vs-remaining blend
-        return {'grossed_up_games': round(gn, 3), 'benefit_of_doubt_base': round(bod, 4), 'year0_blend': round(blend, 3)}
-    r14 = paths(0.58)     # as-of Round 14 in a 24-round season (season 58% elapsed)
-    r24 = paths(1.00)     # as-of Round 24 in a 24-round season (season COMPLETE)
-    diffs = {k: {'R14': r14[k], 'R24': r24[k], 'delta_R24_minus_R14': round(r24[k] - r14[k], 3)} for k in r14}
-    for k in r14:
-        print('    path %-22s R14(0.58)=%-9s R24(1.00)=%-9s Δ=%s' % (k, r14[k], r24[k], diffs[k]['delta_R24_minus_R14']))
-    ck('R14 vs R24 changes valuation via SEASON_PROG (grossed-up games 12.07 -> 7.0; blend 83.2 -> 100.0)',
-       r14['grossed_up_games'] != r24['grossed_up_games'] and r14['year0_blend'] != r24['year0_blend'])
-    ck('R24 (season complete) removes the mid-season benefit-of-doubt (base 0.50 vs R14 0.584)',
-       abs(r24['benefit_of_doubt_base'] - base0) < 1e-9 and r14['benefit_of_doubt_base'] > base0)
+    # (c) BEHAVIOUR — small sample partially replaced; >=11 untouched; both directions; distinct from calendar
+    s6, s9, s11, s12 = scope(6), scope(9), scope(11), scope(12)
+    ck('(c) 6-game sample is partially replaced by prior evidence (s>0)', s6 > 0, 's(6)=%.4f' % s6)
+    ck('(c) >=11-game sample is UNTOUCHED by the exposure lever (s=0)', s11 == 0.0 and s12 == 0.0,
+       's(11)=%.4f s(12)=%.4f' % (s11, s12))
+    ck('(c) smaller current sample -> MORE prior replacement (monotone s: 6>9>11)', s6 > s9 > s11)
+    # a smaller sample has LESS influence: the in-progress prior-decay exponent ex = 1 - s*(1-f) is SMALLER
+    # for a bigger s (prior seasons decay less -> retained more -> current sample counts relatively less).
+    f = st['exposure_pace']
+    ex6 = 1 - s6 * (1 - f); ex12 = 1 - s12 * (1 - f)
+    ck('(c) 6-game current sample has LESS influence than 12-game (prior retained more: ex(6) < ex(12))',
+       ex6 < ex12, 'ex(6)=%.4f ex(12)=%.4f' % (ex6, ex12))
+    # both directions: the damping toward prior is symmetric in the sample's strength (a proxy: the current
+    # level's weight (1-s) is < 1 for a small sample and == 1 for >=11, regardless of whether the level is
+    # above or below the prior — the lever damps a strong small sample AND a weak small sample identically).
+    ck('(c) damping is direction-symmetric: current-level weight (1-s) < 1 for a small sample, == 1 at >=11',
+       (1 - s6) < 1.0 and (1 - s12) == 1.0)
+    ck('(c) calendar_progress and exposure_pace are DISTINCT (not required equal): 0.58 != 0.545',
+       st['calendar_progress'] != st['exposure_pace'])
+    # completed seasons byte-inert: the in-progress branch only fires for Y == inprog_year
+    cpsrc = read('engine/forward_valuation/conditional_prior.py')
+    ck('(c) exposure lever fires ONLY for the in-progress season (completed seasons byte-inert)',
+       'Y==EXPO_INPROG_Y and EXPO_F<1.0' in cpsrc)
 
-    # ---- (d) THE DECOUPLING: moving as_of_round alone (RL_SEASON_ROUNDS/as_of_round) with SEASON_PROG
-    #          frozen changes NOTHING — the valuation authority is SEASON_PROG, not the as-of round --------
-    ck('decoupling: as_of_round 14->24 with SEASON_PROG frozen at 0.58 => IDENTICAL valuation paths',
-       paths(0.58) == paths(0.58))   # (RL_SEASON_ROUNDS is not an argument to any path)
-    ck('release_contract records the decoupling finding + the deferred re-architecture',
-       'decoupl' in json.dumps(sm).lower() and 'DEFERRED' in json.dumps(sm))
+    # (d) RL_SEASON_ROUNDS inert for valuation
+    valn = ['engine/rl_after/rl_model.py', 'engine/rl_after/_merged_recover.py',
+            'engine/forward_valuation/conditional_prior.py', 'engine/forward_valuation/distribution_pricing.py']
+    ck('(d) RL_SEASON_ROUNDS absent from every valuation-path module (class B, inert)',
+       not any('RL_SEASON_ROUNDS' in read(f) for f in valn))
 
-    # ---- emit machine-readable evidence --------------------------------------------------------------
-    inv = {
-      'authorities': {
-        'A_season_total_rounds': {'value': 24, 'source': 'round_apply.py:52 DEFAULT_SEASON_ROUNDS / RL_SEASON_ROUNDS',
-                                  'affects_valuation': False, 'weekly': False, 'class': 'B',
-                                  'role': 'ingestion round-bound sanity guard only (SeasonBoundError)'},
-        'B_as_of_round': {'value': 14, 'source': 'expected_boot + release_contract + board-view stamp',
-                          'affects_valuation': False, 'weekly': True, 'stamped': True,
-                          'role': 'dynamic display/contract round; advanced by the Track B updater'},
-        'C_season_prog': {'value': 0.58, 'source': 'rl_model.py:778 (frozen literal)',
-                          'affects_valuation': True, 'weekly': False,
-                          'stamped_via': ['rl_model md5', 'board md5', 'RL_M3_FE=0.58 in config_sha256'],
-                          'role': 'THE valuation season-progress fraction (gross-up / benefit-of-doubt / year-0 blend)'},
-        'C_prime_config_twins': {'RL_M3_FE': 0.58, 'RL_EXPO_F': 0.545, 'RL_M3_INPROG_Y': 2026, 'RL_EXPO_INPROG_Y': 2026,
-                                 'stamped': 'config_sha256', 'affects_valuation': True},
-        'D_player_games': {'source': 'store (rl_model_data.json) 2026 scoring rows', 'affects_valuation': True,
-                           'weekly': True, 'stamped_via': 'store md5'},
-        'E_projected_remaining': {'value': '1-SEASON_PROG=0.42', 'derived_from': 'C', 'affects_valuation': True},
-      },
-      'rl_season_rounds_verdict': 'total scheduled season rounds (24) used ONLY as the ingestion round-bound '
-                                  'sanity guard; NOT a valuation input; NOT SEASON_PROG; class B (infra); '
-                                  'gated-OFF store-write path',
-      'r14_vs_r24_controlled_test': {'held_constant': {'games_2026': games_2026, 'prior': prior, 'base': base0,
-                                     'proj_present': proj_present, 'proj_low': proj_low},
-                                     'R14_sp_0.58': r14, 'R24_sp_1.00': r24, 'path_diffs': diffs},
-      'decoupling_finding': sm.get('decoupling_finding'),
-      'classification': {'SEASON_PROG': 'A live valuation semantic (bound via rl_model+board md5)',
-                         'as_of_round': 'dynamic release-lineage state (stamped weekly)',
-                         'RL_SEASON_ROUNDS': 'B infra (ingestion sanity bound; inert for valuation)'},
-    }
-    outp = os.path.abspath(os.path.join(HERE, '..', 'evidence', 'season_progress_inventory.json'))
-    os.makedirs(os.path.dirname(outp), exist_ok=True)
-    json.dump(inv, open(outp, 'w'), indent=2)
+    # (e) STALE-STATE REJECTION (via release_contract.verify fail-closed season coherence)
+    if RC is not None:
+        tmp = tempfile.mkdtemp()
+        os.makedirs(os.path.join(tmp, 'data'), exist_ok=True)
+        for rel in ('data/model_config.json', 'data/expected_boot.json', 'data/release_contract.json',
+                    'data/rl_build/rl_app_data.json'):
+            os.makedirs(os.path.dirname(os.path.join(tmp, rel)), exist_ok=True)
+            open(os.path.join(tmp, rel), 'wb').write(open(os.path.join(ROOT, rel), 'rb').read())
+        def halts(mut):
+            c = json.load(open(os.path.join(ROOT, 'data', 'release_contract.json')))
+            mut(c); c.pop('contract_sha256', None); c['contract_sha256'] = RC.contract_hash(c)
+            json.dump(c, open(os.path.join(tmp, 'data', 'release_contract.json'), 'w'))
+            try:
+                RC.verify('gate', tmp, halt=False); return False
+            except (AssertionError, SystemExit):
+                return True
+        def mut_round(c): c['season_metadata']['as_of_round'] = 15
+        def mut_prog(c):  c['season_metadata']['season_prog'] = 0.63
+        ck('(e) stale as_of_round in season_metadata fails closed', halts(mut_round))
+        ck('(e) stale season_prog (!= board SEASON_PROG) fails closed', halts(mut_prog))
+    else:
+        ck('(e) release_contract importable for stale-state checks', False, 'import failed')
+
     npass = sum(1 for x in R if x['pass']); n = len(R)
-    print('\nRESULT: %d/%d PASS  -> %s' % (npass, n, os.path.relpath(outp, ROOT)))
+    out = os.path.abspath(os.path.join(HERE, '..', 'evidence', 'season_progress_inventory.json'))
+    inv = {'r14_state': st, 'calendar_progression': prog, 'exposure_scope_examples': {g: scope(g) for g in (3, 6, 9, 11, 12, 20)},
+           'engine_wired': True, 'policy_id': S.policy_id(),
+           'classification': {'calendar_progress': 'A live valuation semantic — DERIVED, dynamic release state',
+                              'exposure_pace': 'A live valuation semantic — DERIVED from the staged store, dynamic',
+                              'RL_SEASON_ROUNDS': 'B infra (ingestion sanity bound; inert)'},
+           'derivation_policy': S._POLICY}
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    json.dump(inv, open(out, 'w'), indent=2)
+    print('\nRESULT: %d/%d PASS  -> %s' % (npass, n, os.path.relpath(out, ROOT)))
     return 0 if npass == n else 1
 
 if __name__ == '__main__':

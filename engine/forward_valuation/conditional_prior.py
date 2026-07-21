@@ -6,6 +6,15 @@ demonstrated band + reliability blend come in components 2-3.
   Validate: cd rl_after && PYTHONHASHSEED=0 python3 ../forward_valuation/conditional_prior.py
 """
 import sys, os
+def _season_val(_key, _fb):
+    """DYNAMIC season-state value (calendar_progress|exposure_pace) from data/season_state.json (single
+    source; advances weekly). Fallback preserves dev-shell + R14 byte-exact."""
+    try:
+        import json as _j
+        _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '.'
+        return float(_j.load(open(os.path.join(_r, 'data', 'season_state.json')))[_key])
+    except Exception:
+        return float(_fb)
 # rl_model provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after insert REMOVED;
 # rl_model resolves through the configured environment only (already-imported by the engine, else RL_REPO
 # checkout — never a hardcoded workspace path).
@@ -58,7 +67,7 @@ def _swt(yr,Y): return RECENCY_DECAY ** max(0, Y-yr)
 # zero-collateral denominator (0/288 on-pace movers >2%, max 0.00% — D3 ASK3, session_2026-07-02/scripts/
 # d3_ask3_final.py). Derivation: session_2026-07-02/dropfix_design_M2exposure.md. RL_EXPO_F=1 = kill-switch.
 EXPO_INPROG_Y=int(os.environ.get('RL_EXPO_INPROG_Y','2026'))  # the season in progress at the store cut
-EXPO_F=float(os.environ.get('RL_EXPO_F','0.545'))             # durable-player pace; 1.0 -> lever off (byte-exact)
+EXPO_F=_season_val('exposure_pace',0.545)             # durable-player pace; 1.0 -> lever off (byte-exact)
 EXPO_DEN=11.0                                                 # evidence-replacement denominator (on-pace floor)
 def _exposure(p,Y):
     """Recency-weighted reliable game-count = the UNCERTAINTY signal (replaces raw cumulative games). Smooth: phases in
@@ -81,7 +90,7 @@ def _age_asof(p,Y):
     a=MA.age(p)
     return float(a-(MA.AGE_REF-Y)) if a is not None else 18.0+max(0,Y-(debutyr(p)-1))
 LEVEL_RAMP=float(os.environ.get('RL_LEVEL_RAMP','14'))   # recency-wtd games for the level to count FULLY (dial)
-_SFE=float(os.environ.get('RL_M3_FE','0.58'))            # D10 03/07/2026: season-progress proration (R14/24 convention, same dial as M3)
+_SFE=_season_val('calendar_progress',0.58)            # D10 03/07/2026: season-progress proration (R14/24 convention, same dial as M3)
 def _playable_fse(p,Y):                                  # full-season-equivalent games playable since debut
     return SEASON*(max(0,Y-debutyr(p))+((_SFE if Y==EXPO_INPROG_Y else 1.0) if Y>=debutyr(p) else 0.0))
 def _lvl_eff(p,Y):

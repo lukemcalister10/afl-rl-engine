@@ -3,7 +3,7 @@
   "version": "1.0",
   "date": "2026-07-09",
   "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) — RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
-  "config_sha256": "3a1e714f2fa015b6e1942fbbbcaf2b22c359cf82ae5067e3cab199a25f794132",
+  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
   "excluded_infrastructure_vars": {
     "_note": "NOT model semantics — path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
     "RL_REPO": "checkout locator",
@@ -27,10 +27,8 @@
     "PAR_BW": "0.40",
     "PAR_MING": "6",
     "PAR_K": "30",
-    "RL_EXPO_F": "0.545",
     "RL_EXPO_INPROG_Y": "2026",
     "RL_LEVEL_RAMP": "14",
-    "RL_M3_FE": "0.58",
     "RL_M3_INPROG_Y": "2026",
     "RL_FORMDECL": "1",
     "RL_FWDRECAL": "1",
@@ -92,6 +90,8 @@
     "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
     "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) — model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
     "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) — model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
-    "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit."
-  }
+    "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
+    "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars — the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
+  },
+  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
 }

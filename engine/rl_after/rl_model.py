@@ -1,4 +1,12 @@
 import json, numpy as np, math, re, os
+def _season_val(_key, _fb):
+    """Read a DYNAMIC season-state value (calendar_progress | exposure_pace) from the authoritative
+    data/season_state.json (single source; advances weekly). Fallback preserves dev-shell + R14 byte-exact."""
+    try:
+        _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '.'
+        return float(json.load(open(os.path.join(_r, 'data', 'season_state.json')))[_key])
+    except Exception:
+        return float(_fb)
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode
 data=json.load(open('rl_model_data.json')); P=json.load(open('params.json')); PMD=json.load(open('rl_passmark.json'))
@@ -775,7 +783,7 @@ if os.environ.get('RL_PVC2','1')!='0':
 # the producer transforms. rl_export rebuilds its OWN shipped curve from pvc_curve artifacts keyed by the
 # _ADOPTED intersection, so g['PVC']'s key-set change (if any) does not reach the board (verified: board-null).
 PVC=_PVC2M
-SEASON_PROG=0.58                              # ~round 14 of 24 (mid-Jun 2026). knob: 0=preseason ... 1=season done
+SEASON_PROG=_season_val('calendar_progress',0.58)   # CALENDAR progress from data/season_state.json (dynamic; R14/24=0.58). Was the frozen literal 0.58.
 def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
 def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick
     ep=effpk(p); s=los(p); cg=sum(r['games'] for r in p['scoring'])
