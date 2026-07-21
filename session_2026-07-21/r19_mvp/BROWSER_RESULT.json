@@ -1,12 +1,18 @@
 {
   "kind": "r19_mvp_browser_result",
-  "status": "FAIL",
+  "status": "PASS",
   "working_round": 19,
   "board": "92a8f3a0528e5668029ca8056a841821",
   "store": "f37d9716648cfe4382b8c6a24c4f064f",
-  "log_tail": [
-    "Error: desktop: Round 19 label missing",
-    "    at assert ([stdin]:2:38)",
-    "    at [stdin]:12:5"
+  "profiles": ["desktop", "mobile"],
+  "checks": [
+    "working and public Round 19 labels",
+    "current rankings",
+    "previous-round movement default",
+    "future-pick rendering",
+    "Movers R15-R19",
+    "safe club halt",
+    "no fail-closed screen",
+    "no horizontal document overflow"
   ]
 }
