@@ -1,11 +1,28 @@
 import json, numpy as np, math, re, os
 def _season_val(_key, _fb):
     """Read a DYNAMIC season-state value (calendar_progress | exposure_pace) from the authoritative
-    data/season_state.json (single source; advances weekly). Fallback preserves dev-shell + R14 byte-exact."""
+    data/season_state.json (single source; advances weekly).
+    FENCED (RL_CONFIG_MODE in bake|gate|canonical): HALT on any of unresolved/untrusted repo root,
+    missing file, malformed JSON, missing key, or a non-numeric / non-finite value — a release build
+    must never silently fall back to a stale Round-14 default. UNFENCED dev shell: use the fallback."""
+    _mode = (os.environ.get('RL_CONFIG_MODE') or '').strip().lower()
+    _fenced = _mode in ('bake', 'gate', 'canonical')
+    _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
+    if not _r:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): repo root unresolved "
+                               "(RL_REPO/CLAUDE_PROJECT_DIR unset) — cannot load authoritative season state" % _mode)
+        _r = '.'
+    _p = os.path.join(_r, 'data', 'season_state.json')
     try:
-        _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '.'
-        return float(json.load(open(os.path.join(_r, 'data', 'season_state.json')))[_key])
-    except Exception:
+        _v = float(json.load(open(_p))[_key])
+        if _v != _v or _v in (float('inf'), float('-inf')):
+            raise ValueError("non-finite %s=%r" % (_key, _v))
+        return _v
+    except Exception as _e:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
+                               % (_mode, _key, _p, _e)) from _e
         return float(_fb)
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode

@@ -5,12 +5,28 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
 def _season_val(_key, _fb):
     """DYNAMIC season-state value (calendar_progress|exposure_pace) from data/season_state.json (single
-    source; advances weekly). Fallback preserves dev-shell + R14 byte-exact."""
+    source; advances weekly).
+    FENCED (RL_CONFIG_MODE in bake|gate|canonical): HALT on any of unresolved/untrusted repo root,
+    missing file, malformed JSON, missing key, or a non-numeric / non-finite value. UNFENCED dev: fallback."""
+    import json as _j
+    _mode = (os.environ.get('RL_CONFIG_MODE') or '').strip().lower()
+    _fenced = _mode in ('bake', 'gate', 'canonical')
+    _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
+    if not _r:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): repo root unresolved "
+                               "(RL_REPO/CLAUDE_PROJECT_DIR unset) — cannot load authoritative season state" % _mode)
+        _r = '.'
+    _p = os.path.join(_r, 'data', 'season_state.json')
     try:
-        import json as _j
-        _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '.'
-        return float(_j.load(open(os.path.join(_r, 'data', 'season_state.json')))[_key])
-    except Exception:
+        _v = float(_j.load(open(_p))[_key])
+        if _v != _v or _v in (float('inf'), float('-inf')):
+            raise ValueError("non-finite %s=%r" % (_key, _v))
+        return _v
+    except Exception as _e:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
+                               % (_mode, _key, _p, _e)) from _e
         return float(_fb)
 # ===== DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix) =====
 # PART 1 bisect finding: the FIRST cross-environment divergent bit is a BLAS-routed np.dot

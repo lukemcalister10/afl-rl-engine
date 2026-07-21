@@ -33,7 +33,7 @@ def _emit_provenance():
     return _prov
 _CANON_MODE = os.environ.get('RL_CONFIG_MODE')
 _TROOT = _FVP.env_root(halt=False)          # trusted checkout root from RL_REPO/CLAUDE_PROJECT_DIR (env only)
-if _CANON_MODE in ('bake', 'gate'):
+if _CANON_MODE in ('bake', 'gate', 'canonical'):   # 'canonical' = the fenced release board build; same fail-closed treatment
     # (1+2) C1: verify+execute the trusted config_manifest by path and enforce — BEFORE _emit_provenance can
     #       import/cache an unverified one. Missing / shadowed-on-path / already-cached-foreign / data-missing /
     #       hash-mismatch / enforce-no-identity all HALT here, before board generation.

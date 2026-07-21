@@ -6,7 +6,7 @@
     "B": 19,
     "C": 2
   },
-  "n_reads": 152,
+  "n_reads": 155,
   "n_vars": 82,
   "ok": true,
   "root": "/home/user/afl-rl-engine",
@@ -78,7 +78,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 632
+          "line": 648
         }
       ],
       "var": "RL_ABSENCE"
@@ -92,7 +92,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 503
+          "line": 519
         }
       ],
       "var": "RL_AGE"
@@ -106,7 +106,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 102
+          "line": 118
         }
       ],
       "var": "RL_AVAIL"
@@ -120,7 +120,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 264
+          "line": 281
         }
       ],
       "var": "RL_CAPT"
@@ -134,7 +134,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 169
+          "line": 185
         }
       ],
       "var": "RL_DAMP"
@@ -148,7 +148,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 423
+          "line": 440
         }
       ],
       "var": "RL_DIAL14"
@@ -162,7 +162,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 572
+          "line": 588
         }
       ],
       "var": "RL_EO2"
@@ -176,7 +176,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 187
+          "line": 203
         }
       ],
       "var": "RL_EVW"
@@ -190,7 +190,7 @@
         {
           "default": "2026",
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 69
+          "line": 85
         }
       ],
       "var": "RL_EXPO_INPROG_Y"
@@ -209,7 +209,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 59
+          "line": 76
         }
       ],
       "var": "RL_FLEX"
@@ -223,7 +223,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 139
+          "line": 155
         }
       ],
       "var": "RL_FORMDECL"
@@ -237,7 +237,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 764
+          "line": 780
         }
       ],
       "var": "RL_FWDRECAL"
@@ -265,7 +265,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 461
+          "line": 477
         }
       ],
       "var": "RL_ISOFADE"
@@ -279,7 +279,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 767
+          "line": 783
         }
       ],
       "var": "RL_KPFFIX"
@@ -293,7 +293,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 992
+          "line": 1009
         }
       ],
       "var": "RL_L5_PICKLESS"
@@ -317,7 +317,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 430
+          "line": 447
         }
       ],
       "var": "RL_LEGE"
@@ -331,7 +331,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 207
+          "line": 223
         },
         {
           "default": "1",
@@ -355,7 +355,7 @@
         {
           "default": "14",
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 92
+          "line": 108
         }
       ],
       "var": "RL_LEVEL_RAMP"
@@ -369,7 +369,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 533
+          "line": 549
         }
       ],
       "var": "RL_LSYM"
@@ -383,7 +383,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 249
+          "line": 265
         }
       ],
       "var": "RL_LSYM_TAB"
@@ -397,7 +397,7 @@
         {
           "default": "advance",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 104
+          "line": 120
         },
         {
           "default": "<expr:<default>>",
@@ -421,7 +421,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 103
+          "line": 119
         }
       ],
       "var": "RL_LTI_RETURN"
@@ -435,12 +435,12 @@
         {
           "default": "2026",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 91
+          "line": 107
         },
         {
           "default": "2026",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 709
+          "line": 725
         }
       ],
       "var": "RL_M3_INPROG_Y"
@@ -454,7 +454,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 42
+          "line": 58
         }
       ],
       "var": "RL_MSD_POOL_EXCL"
@@ -468,7 +468,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 766
+          "line": 782
         }
       ],
       "var": "RL_OVPX"
@@ -511,7 +511,7 @@
         {
           "default": "400",
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 123
+          "line": 139
         },
         {
           "default": "400",
@@ -535,7 +535,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1523
+          "line": 1539
         },
         {
           "default": "1",
@@ -555,7 +555,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 772
+          "line": 789
         }
       ],
       "var": "RL_PVC2"
@@ -569,7 +569,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1506
+          "line": 1522
         }
       ],
       "var": "RL_PVCADOPT"
@@ -583,7 +583,7 @@
         {
           "default": "0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1499
+          "line": 1515
         },
         {
           "default": "<expr:<default>>",
@@ -607,7 +607,7 @@
         {
           "default": "0.72",
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 55
+          "line": 71
         }
       ],
       "var": "RL_RECENCY_DECAY"
@@ -635,7 +635,7 @@
         {
           "default": "0.80",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1141
+          "line": 1157
         }
       ],
       "var": "RL_RUC_CEIL_HEAD"
@@ -649,7 +649,7 @@
         {
           "default": "72",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1142
+          "line": 1158
         }
       ],
       "var": "RL_RUC_CEIL_REFPK"
@@ -663,7 +663,7 @@
         {
           "default": "1.4",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1122
+          "line": 1138
         }
       ],
       "var": "RL_RUC_PRIOR_CAP"
@@ -677,7 +677,7 @@
         {
           "default": "0.35",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1143
+          "line": 1159
         }
       ],
       "var": "RL_RUC_YRH"
@@ -691,7 +691,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 514
+          "line": 530
         }
       ],
       "var": "RL_SAGE29"
@@ -705,7 +705,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 406
+          "line": 423
         }
       ],
       "var": "RL_UNCOMP"
@@ -719,7 +719,7 @@
         {
           "default": null,
           "file": "engine/rl_after/rl_model.py",
-          "line": 411
+          "line": 428
         }
       ],
       "var": "RL_UNCOMP_S"
@@ -733,7 +733,7 @@
         {
           "default": "0",
           "file": "engine/rl_after/rl_model.py",
-          "line": 413
+          "line": 430
         }
       ],
       "var": "RL_UNCONSERVE"
@@ -747,17 +747,17 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1248
+          "line": 1264
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1315
+          "line": 1331
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1332
+          "line": 1348
         }
       ],
       "var": "RL_V0SURF_REFIT"
@@ -771,7 +771,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 768
+          "line": 784
         }
       ],
       "var": "RL_V7FORM"
@@ -785,7 +785,7 @@
         {
           "default": "0.6",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 769
+          "line": 785
         }
       ],
       "var": "RL_V7_FORM_W"
@@ -799,7 +799,7 @@
         {
           "default": "0.17",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 770
+          "line": 786
         }
       ],
       "var": "RL_W4_CRED"
@@ -813,7 +813,7 @@
         {
           "default": "0.60",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 772
+          "line": 788
         }
       ],
       "var": "RL_W4_FADE"
@@ -827,7 +827,7 @@
         {
           "default": "8.0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 805
+          "line": 821
         }
       ],
       "var": "RL_W4_KPFM0"
@@ -841,7 +841,7 @@
         {
           "default": "16.0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 806
+          "line": 822
         }
       ],
       "var": "RL_W4_KPFMS"
@@ -855,7 +855,7 @@
         {
           "default": "0.55",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 775
+          "line": 791
         }
       ],
       "var": "RL_W4_KPFSH"
@@ -869,7 +869,7 @@
         {
           "default": "0.70",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 803
+          "line": 819
         }
       ],
       "var": "RL_W4_KPFSH_DEM"
@@ -883,7 +883,7 @@
         {
           "default": "0.4",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 804
+          "line": 820
         }
       ],
       "var": "RL_W4_KPFTOP"
@@ -897,7 +897,7 @@
         {
           "default": "1.6",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 771
+          "line": 787
         }
       ],
       "var": "RL_W4_KPFUP"
@@ -911,7 +911,7 @@
         {
           "default": "1.0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 773
+          "line": 789
         }
       ],
       "var": "RL_W4_OVPX"
@@ -925,7 +925,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1140
+          "line": 1156
         }
       ],
       "var": "RL_W4_RUC"
@@ -939,7 +939,7 @@
         {
           "default": "0.92",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 983
+          "line": 999
         }
       ],
       "var": "RL_YCRED_KPF"
@@ -953,7 +953,7 @@
         {
           "default": "0.9",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 982
+          "line": 998
         }
       ],
       "var": "RL_YCRED_W"
@@ -967,7 +967,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 765
+          "line": 781
         }
       ],
       "var": "RL_YOUNG"
@@ -1018,6 +1018,11 @@
       "reads": [
         {
           "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 12
+        },
+        {
+          "default": null,
           "file": "engine/rl_after/owner_overrides.py",
           "line": 34
         },
@@ -1035,6 +1040,16 @@
           "default": null,
           "file": "engine/rl_after/rl_export.py",
           "line": 34
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/rl_model.py",
+          "line": 8
+        },
+        {
+          "default": null,
+          "file": "engine/forward_valuation/conditional_prior.py",
+          "line": 15
         },
         {
           "default": null,
@@ -1106,7 +1121,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 69
+          "line": 85
         },
         {
           "default": null,
@@ -1125,17 +1140,17 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 11
+          "line": 14
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 70
+          "line": 86
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1250
+          "line": 1266
         },
         {
           "default": null,
@@ -1160,7 +1175,7 @@
         {
           "default": null,
           "file": "engine/rl_after/rl_model.py",
-          "line": 6
+          "line": 10
         },
         {
           "default": null,
@@ -1185,17 +1200,17 @@
         {
           "default": null,
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 14
+          "line": 17
         },
         {
           "default": null,
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 21
+          "line": 37
         },
         {
           "default": "<required>",
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 22
+          "line": 38
         },
         {
           "default": null,
@@ -1449,7 +1464,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1249
+          "line": 1265
         },
         {
           "default": null,

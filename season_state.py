@@ -122,19 +122,68 @@ def load(root=None):
         return json.load(f)
 
 
-# ---- engine-facing accessors: the DYNAMIC values the engine consumes (fallback preserves dev-shell) -------
-def calendar_progress_value(root=None, fallback=0.58):
-    try:
-        return float(load(root)['calendar_progress'])
-    except Exception:
+class SeasonStateError(RuntimeError):
+    """The authoritative dynamic season state could not be loaded/validated in a FENCED release build."""
+
+
+_FENCED_MODES = ('bake', 'gate', 'canonical')
+
+
+def _fenced(mode=None):
+    m = mode if mode is not None else os.environ.get('RL_CONFIG_MODE', '')
+    return (m or '').strip().lower() in _FENCED_MODES
+
+
+def read_value(key, fallback, root=None, mode=None):
+    """Fenced-aware read of a DYNAMIC season-state value (calendar_progress | exposure_pace) from
+    data/season_state.json.
+    FENCED (RL_CONFIG_MODE in bake|gate|canonical): raise SeasonStateError on any of unresolved/untrusted
+    repo root, missing file, malformed JSON, missing key, or a non-numeric / non-finite value — a release
+    build must NEVER silently fall back to a stale default. UNFENCED dev shell: return the fallback."""
+    fenced = _fenced(mode)
+    # resolve the trusted repo root. An EXPLICIT root is authoritative — never silently fall back to a
+    # DIFFERENT tree (that would load stale/wrong state); it must itself carry the state or we HALT. With
+    # root=None (the engine-facing path) resolve via RL_REPO / CLAUDE_PROJECT_DIR / the module's own repo,
+    # taking the first candidate that actually carries the state file.
+    cand = None
+    if root is not None:
+        if os.path.exists(os.path.join(root, *STATE_PATH)):
+            cand = os.path.abspath(root)
+    else:
+        for c in (os.environ.get('RL_REPO'), os.environ.get('CLAUDE_PROJECT_DIR'),
+                  os.path.dirname(os.path.abspath(__file__))):
+            if c and os.path.exists(os.path.join(c, *STATE_PATH)):
+                cand = os.path.abspath(c); break
+    if cand is None:
+        if fenced:
+            raise SeasonStateError("FENCED (RL_CONFIG_MODE=%s): no trusted repo root carries %s "
+                                   "(explicit root missing the state, or RL_REPO/CLAUDE_PROJECT_DIR unresolved)"
+                                   % (os.environ.get('RL_CONFIG_MODE'), os.path.join(*STATE_PATH)))
         return float(fallback)
+    p = os.path.join(cand, *STATE_PATH)
+    try:
+        with open(p) as f:
+            st = json.load(f)
+        if not isinstance(st, dict) or key not in st:
+            raise KeyError("season_state.json has no %r" % key)
+        v = float(st[key])
+        if not math.isfinite(v):
+            raise ValueError("season_state.json %r=%r is non-finite" % (key, st[key]))
+        return v
+    except Exception as e:
+        if fenced:
+            raise SeasonStateError("FENCED (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
+                                   % (os.environ.get('RL_CONFIG_MODE'), key, p, e)) from e
+        return float(fallback)
+
+
+# ---- engine-facing accessors: the DYNAMIC values the engine consumes (fenced in a release build) ----------
+def calendar_progress_value(root=None, fallback=0.58):
+    return read_value('calendar_progress', fallback, root)
 
 
 def exposure_pace_value(root=None, fallback=0.545):
-    try:
-        return float(load(root)['exposure_pace'])
-    except Exception:
-        return float(fallback)
+    return read_value('exposure_pace', fallback, root)
 
 
 if __name__ == '__main__':

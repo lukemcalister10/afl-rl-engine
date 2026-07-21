@@ -12,9 +12,9 @@
     "board": "2ab73a6fed1f06fc8eecc2ce597c2aec",
     "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
     "store": "968de0c7a0183ca3914165536f39607a",
-    "engine_head": "feff9471ad61c6127a30390aa4b2137a",
-    "rl_model": "c3a243ee0d61e719b348fe48053bb6e8",
-    "fv": "97abe96342092df858e53d19626d9bfb8d69c7ff2b49eeeda5e4cac683039245",
+    "engine_head": "dc7e34b0d50470897af237c638236868",
+    "rl_model": "4f776e073ea50548ebe017cdb2f06368",
+    "fv": "6a9a520fa2f8b4051e889d324d905cff0a37e592232cd5e68f0e0d9bdfeeec35",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
     "band": "34faa8659cc8f19794f5cb9584fa19b2"
   },
@@ -48,7 +48,6 @@
     "season_total_rounds": 24,
     "as_of_round": 14,
     "season_prog": 0.58,
-    "season_prog_source": "engine/rl_after/rl_model.py:778 (frozen literal SEASON_PROG=0.58); stamped via rl_model md5 + board md5",
     "season_prog_config_twins": {
       "RL_M3_FE": "0.58",
       "RL_EXPO_F": "0.545",
@@ -58,14 +57,16 @@
     "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
     "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
     "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
-    "decoupling_finding": "as_of_round (dynamic, weekly) and SEASON_PROG (frozen 0.58 — the ACTUAL valuation fraction) are DECOUPLED; a weekly round advances as_of_round but the updater never re-bakes SEASON_PROG. Re-deriving the fraction from as_of_round/season_total would MOVE approved vectors (a valuation change) — DEFERRED, owner-authorized, NOT this task.",
-    "class": "A-adjacent: SEASON_PROG is a live valuation semantic bound via rl_model+board md5; as_of_round is dynamic release-lineage state (stamped, weekly); RL_SEASON_ROUNDS is class-B infra",
+    "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
     "exposure_pace": 0.545,
     "calendar_progress": 0.58,
     "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; policy immutable",
-    "season_year": 2026
+    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
+    "season_year": 2026,
+    "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
+    "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
+    "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
   },
   "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-  "contract_sha256": "0c5fa2d1cd9a2373d2847b166578ac47893e4e82a0e80e0690e94c5366cd3eb5"
+  "contract_sha256": "9f91011c34841be42abf29ec5e86ce2bec51d89040707db1387713e1fb6206c0"
 }

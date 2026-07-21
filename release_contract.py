@@ -164,32 +164,51 @@ def verify(mode=None, root=None, halt=True):
             rejects.append("override hook %s is SET (=%r) — canonical build requires it ABSENT (ambient"
                            " override of the authoritative state)" % (k, os.environ.get(k)))
 
-    # (8) season-progress authority coherence (final integration 2026-07-21, supervisor req 2). The as-of
-    #     round is DYNAMIC weekly state (stamped here + expected_boot + the board view); the valuation
-    #     season-progress fraction SEASON_PROG is FROZEN in rl_model.py (pinned via the rl_model + board md5s);
-    #     RL_SEASON_ROUNDS is only the ingestion round-bound sanity guard, never a valuation input. Bind them
-    #     so a release whose season authority is stale / contradictory halts. (Conditional: only if declared.)
+    # (8) DYNAMIC season-state authority coherence (final integration 2026-07-21; supervisor 2nd/3rd review).
+    #     as_of_round, calendar_progress and exposure_pace are DYNAMIC weekly release state stamped here +
+    #     in expected_boot + season_state.json + the board. calendar_progress replaces the former frozen
+    #     SEASON_PROG literal and RL_M3_FE; exposure_pace replaces RL_EXPO_F; both are DERIVED each round and
+    #     FEED the valuation. FAIL-CLOSED: a stale/contradictory/absent season authority, or any error while
+    #     loading/parsing/verifying it, is an explicit rejection that HALTS.
     sm = contract.get('season_metadata')
-    if sm:
+    if not sm:
+        rejects.append("release contract has NO season_metadata — a fenced release must bind the dynamic "
+                       "season-state authority (as_of_round / calendar_progress / exposure_pace)")
+    else:
         if str(sm.get('as_of_round')) != str(boot.get('as_of_round')):
             rejects.append("season_metadata as_of_round %s != expected_boot as_of_round %s (stale season stamp)"
                            % (sm.get('as_of_round'), boot.get('as_of_round')))
         _bp = os.path.join(root, 'data', 'rl_build', 'rl_app_data.json')
-        if os.path.exists(_bp) and sm.get('season_prog') is not None:
-            try:
-                _bsp = json.load(open(_bp)).get('SEASON_PROG')
-                if _bsp is not None and float(_bsp) != float(sm['season_prog']):
-                    rejects.append("season_metadata season_prog %s != board SEASON_PROG %s (contradiction)"
-                                   % (sm.get('season_prog'), _bsp))
-            except Exception:
-                pass
-        # (8b) VERIFY THE DERIVATION, not merely equality of duplicated fields (supervisor 2nd review req 7):
-        #      calendar_progress MUST equal round_half_up(100*as_of_round/season_total_rounds)/100; the
-        #      committed season_state.json must be internally consistent + freshly derived (immutable policy,
-        #      round, calendar) and NOT built on a stale source store; and the season_year authorities agree.
+        if sm.get('season_prog') is not None:
+            if not os.path.exists(_bp):
+                rejects.append("season_metadata declares season_prog but board %s is ABSENT — cannot verify "
+                               "board season-progress coherence" % os.path.relpath(_bp, root))
+            else:
+                try:
+                    _bsp = json.load(open(_bp)).get('SEASON_PROG')
+                    if _bsp is None:
+                        rejects.append("board %s has no SEASON_PROG field to bind season_metadata against"
+                                       % os.path.relpath(_bp, root))
+                    elif float(_bsp) != float(sm['season_prog']):
+                        rejects.append("season_metadata season_prog %s != board SEASON_PROG %s (contradiction)"
+                                       % (sm.get('season_prog'), _bsp))
+                except (KeyboardInterrupt, SystemExit):
+                    raise
+                except Exception as _e:
+                    rejects.append("could not verify board SEASON_PROG at %s (fail-closed): %s"
+                                   % (os.path.relpath(_bp, root), _e))
+        # (8b) VERIFY THE DERIVATION, not merely equality of duplicated fields (supervisor 2nd review req 7).
+        #      FAIL-CLOSED (supervisor 3rd review req 2): any error loading/parsing/verifying the derivation
+        #      policy (season_state.py), the authoritative season_state.json, or the source store — including
+        #      their ABSENCE — is an explicit rejection, never a silent skip. calendar_progress MUST equal
+        #      round_half_up(100*as_of_round/season_total_rounds)/100; season_state.json must be internally
+        #      consistent + freshly derived (policy, round, calendar) off the LIVE store; season_year agrees.
         try:
             import importlib.util as _il, hashlib as _h
-            _sp = _il.spec_from_file_location('season_state_v', os.path.join(root, 'season_state.py'))
+            _ssp = os.path.join(root, 'season_state.py')
+            if not os.path.exists(_ssp):
+                raise FileNotFoundError("authoritative derivation policy season_state.py ABSENT at %s" % _ssp)
+            _sp = _il.spec_from_file_location('season_state_v', _ssp)
             _S = _il.module_from_spec(_sp); _sp.loader.exec_module(_S)
             _tot = int(sm.get('season_total_rounds') or _S.SEASON_TOTAL_ROUNDS_DEFAULT)
             _aor = int(sm.get('as_of_round'))
@@ -201,10 +220,14 @@ def verify(mode=None, root=None, halt=True):
                 rejects.append("season_metadata derivation_policy_id stale (%s != live policy %s)"
                                % (str(sm.get('derivation_policy_id'))[:12], _S.policy_id()[:12]))
             _ssf = os.path.join(root, 'data', 'season_state.json')
-            if os.path.exists(_ssf):
+            if not os.path.exists(_ssf):
+                rejects.append("authoritative season_state.json ABSENT at %s — cannot verify the season-state "
+                               "derivation (a fenced release must carry the dynamic season state)"
+                               % os.path.relpath(_ssf, root))
+            else:
                 _ss = json.load(open(_ssf))
                 if str(_ss.get('as_of_round')) != str(_aor):
-                    rejects.append("season_state.json as_of_round %s != contract %s (stale)"
+                    rejects.append("season_state.json as_of_round %s != contract %s (artifacts on different rounds)"
                                    % (_ss.get('as_of_round'), _aor))
                 if float(_ss.get('calendar_progress', -1)) != _cp_der:
                     rejects.append("season_state.json calendar_progress %s != derived %.2f (stale calendar)"
@@ -215,7 +238,10 @@ def verify(mode=None, root=None, halt=True):
                     rejects.append("season_year inconsistent (contract %s vs season_state %s)"
                                    % (sm.get('season_year'), _ss.get('season_year')))
                 _store = os.path.join(root, 'engine', 'rl_after', 'rl_model_data.json')
-                if os.path.exists(_store):
+                if not os.path.exists(_store):
+                    rejects.append("source store %s ABSENT — cannot verify exposure_pace was derived from the "
+                                   "live store" % os.path.relpath(_store, root))
+                else:
                     _live = _h.md5(open(_store, 'rb').read()).hexdigest()
                     if _ss.get('source_store_md5') != _live:
                         rejects.append("season_state.json source_store_md5 %s != live store %s — exposure_pace "
@@ -223,8 +249,10 @@ def verify(mode=None, root=None, halt=True):
                 if sm.get('exposure_pace') is not None and float(_ss.get('exposure_pace', -1)) != float(sm['exposure_pace']):
                     rejects.append("season_state.json exposure_pace %s != contract %s (stale exposure)"
                                    % (_ss.get('exposure_pace'), sm.get('exposure_pace')))
-        except Exception:
-            pass
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except Exception as _e:
+            rejects.append("season-state DERIVATION verification could not complete (fail-closed): %s" % _e)
 
     if rejects:
         _fail(mode, rejects, halt)

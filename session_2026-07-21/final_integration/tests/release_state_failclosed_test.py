@@ -30,6 +30,7 @@ def _load(modname, path):
 CM = _load('config_manifest_t', os.path.join(ROOT, 'config_manifest.py'))
 RC = _load('release_contract_t', os.path.join(ROOT, 'release_contract.py'))
 INV = _load('config_inventory_t', os.path.join(HERE, '..', 'tools', 'config_inventory.py'))
+SS = _load('season_state_t', os.path.join(ROOT, 'season_state.py'))
 
 _RESULTS = []
 def ok(name, cond, detail=''):
@@ -39,9 +40,25 @@ def ok(name, cond, detail=''):
 def _manhash(vars_):
     return hashlib.sha256('\n'.join('%s=%s' % (k, vars_[k]) for k in sorted(vars_)).encode()).hexdigest()
 
-def make_fixture(tmp, vars_=None, boot_over=None, contract_over=None, write_contract=True):
-    """Build a minimal, internally-consistent temp release state under tmp/. Returns paths."""
+def make_fixture(tmp, vars_=None, boot_over=None, contract_over=None, write_contract=True,
+                 write_season=True, season_over=None, sm_over=None, aor=14):
+    """Build a minimal, internally-consistent temp release state under tmp/ — INCLUDING the dynamic season
+    authority (season_state.py + data/season_state.json + a source store + the contract's season_metadata),
+    so the fail-closed season-state verification (supervisor 3rd review req 2) is exercised on a complete,
+    genuinely-consistent release. `write_season=False`/`season_over`/`sm_over` build the red-path fixtures.
+    Returns the contract dict."""
     os.makedirs(os.path.join(tmp, 'data'), exist_ok=True)
+    # a source store (a couple of bytes is enough — verify only pins its md5, never reads the rows)
+    _store_dir = os.path.join(tmp, 'engine', 'rl_after'); os.makedirs(_store_dir, exist_ok=True)
+    _store_path = os.path.join(_store_dir, 'rl_model_data.json')
+    with open(_store_path, 'w') as _sf:
+        _sf.write('{"_fixture_store": true}')
+    _store_md5 = hashlib.md5(open(_store_path, 'rb').read()).hexdigest()
+    # the authoritative derivation policy travels with the fixture (verify executes tmp/season_state.py)
+    shutil.copy(os.path.join(ROOT, 'season_state.py'), os.path.join(tmp, 'season_state.py'))
+    _cp = SS.calendar_progress(aor, 24)         # derived calendar (round_half_up whole-percent)
+    _pol = SS.policy_id()
+    _ep = 0.545
     # a tiny but valid manifest
     vars_ = dict(vars_ or {'RL_PVC2': '1', 'RL_LEGE': '1', 'RL_LEGF': '1', 'RL_GAMMA': '0.85'})
     ch = _manhash(vars_)
@@ -49,10 +66,20 @@ def make_fixture(tmp, vars_=None, boot_over=None, contract_over=None, write_cont
               open(os.path.join(tmp, 'data', 'model_config.json'), 'w'))
     boot = {'board': 'aaaa1111', 'balanced_board_md5': '06d8af60', 'store': 'bbbb2222',
             'engine_head': 'cccc3333', 'rl_model': 'dddd4444', 'fv': 'eeee5555',
-            'register': 'ffff6666', 'config': ch, 'as_of_round': 14}
+            'register': 'ffff6666', 'config': ch, 'as_of_round': aor}
     if boot_over: boot.update(boot_over)
     json.dump(boot, open(os.path.join(tmp, 'data', 'expected_boot.json'), 'w'))
-    contract = {'release_version': 'v2.11-final-rc-test', 'as_of_round': 14,
+    # the dynamic season-state authority (its as_of_round/calendar/policy must agree with the contract)
+    if write_season:
+        ss = {'season_year': 2026, 'season_total_rounds': 24, 'as_of_round': aor,
+              'calendar_progress': _cp, 'exposure_pace': _ep, 'source_store_md5': _store_md5,
+              'derivation_policy_id': _pol, 'inprog_year': 2026}
+        if season_over: ss.update(season_over)
+        json.dump(ss, open(os.path.join(tmp, 'data', 'season_state.json'), 'w'))
+    sm = {'as_of_round': aor, 'season_total_rounds': 24, 'season_year': 2026,
+          'calendar_progress': _cp, 'exposure_pace': _ep, 'derivation_policy_id': _pol}
+    if sm_over: sm.update(sm_over)
+    contract = {'release_version': 'v2.11-final-rc-test', 'as_of_round': aor,
                 'switch_posture': {'RL_PVC2': '1', 'RL_LEGE': '1', 'RL_LEGF': '1'},
                 'config_sha256': ch,
                 'identities': {'board': boot['board'], 'store': boot['store'],
@@ -60,7 +87,8 @@ def make_fixture(tmp, vars_=None, boot_over=None, contract_over=None, write_cont
                                'fv': boot['fv'], 'register': boot['register']},
                 'pvc_provenance': {'adopted_pathway': 'RL_PVC2', 'curve_file': 'pvc_curve_v2.json',
                                    'curve_payload_md5': '89c14729', 'numeraire_pin1': 3000},
-                'must_be_unset': list(RC.DEFAULT_MUST_UNSET)}
+                'must_be_unset': list(RC.DEFAULT_MUST_UNSET),
+                'season_metadata': sm}
     if contract_over: contract.update(contract_over)
     contract['contract_sha256'] = RC.contract_hash(contract)
     if write_contract:
@@ -183,6 +211,58 @@ def main():
         r = with_env(RL_REPO=t9, RL_CONFIG_MODE='gate', RL_LEGF='0')
         ok('divergent/unknown switch value rejected (gate mode)', halts(lambda: CM.enforce('gate', halt=True)))
         r(); shutil.rmtree(t9, ignore_errors=True)
+
+        # --- SEASON-STATE fail-closed (supervisor 3rd review req 2): a fenced verify must NOT fail-open ---
+        # (a) contract with NO season_metadata HALTS (the fenced release must bind the season authority)
+        ta = tempfile.mkdtemp()
+        make_fixture(ta, contract_over={'season_metadata': None})
+        r = with_env(RL_REPO=ta, RL_CONFIG_MODE='gate')
+        ok('missing season_metadata halts', halts(lambda: RC.verify('gate', ta, halt=True)))
+        r(); shutil.rmtree(ta, ignore_errors=True)
+        # (b) authoritative season_state.json ABSENT HALTS (was silently skipped before; now fail-closed)
+        tb = tempfile.mkdtemp()
+        make_fixture(tb, write_season=False)
+        r = with_env(RL_REPO=tb, RL_CONFIG_MODE='gate')
+        ok('missing season_state.json halts', halts(lambda: RC.verify('gate', tb, halt=True)))
+        r(); shutil.rmtree(tb, ignore_errors=True)
+        # (c) malformed season_state.json HALTS (parse error becomes an explicit rejection, not a pass)
+        tc = tempfile.mkdtemp()
+        make_fixture(tc)
+        open(os.path.join(tc, 'data', 'season_state.json'), 'w').write('{ this is not json')
+        r = with_env(RL_REPO=tc, RL_CONFIG_MODE='gate')
+        ok('malformed season_state.json halts', halts(lambda: RC.verify('gate', tc, halt=True)))
+        r(); shutil.rmtree(tc, ignore_errors=True)
+        # (d) STALE calendar_progress in season_state.json (!= round_half_up derivation) HALTS
+        td = tempfile.mkdtemp()
+        make_fixture(td, season_over={'calendar_progress': 0.63})   # R14 must derive 0.58, not 0.63
+        r = with_env(RL_REPO=td, RL_CONFIG_MODE='gate')
+        ok('stale calendar_progress halts', halts(lambda: RC.verify('gate', td, halt=True)))
+        r(); shutil.rmtree(td, ignore_errors=True)
+        # (e) STALE source_store_md5 (exposure derived from a store other than the live one) HALTS
+        te = tempfile.mkdtemp()
+        make_fixture(te, season_over={'source_store_md5': 'deadbeefdeadbeefdeadbeefdeadbeef'})
+        r = with_env(RL_REPO=te, RL_CONFIG_MODE='gate')
+        ok('stale source_store_md5 halts', halts(lambda: RC.verify('gate', te, halt=True)))
+        r(); shutil.rmtree(te, ignore_errors=True)
+        # (f) season_state.json as_of_round != contract round HALTS (artifacts on different rounds)
+        tf = tempfile.mkdtemp()
+        make_fixture(tf, season_over={'as_of_round': 13})
+        r = with_env(RL_REPO=tf, RL_CONFIG_MODE='gate')
+        ok('season_state on a different round halts', halts(lambda: RC.verify('gate', tf, halt=True)))
+        r(); shutil.rmtree(tf, ignore_errors=True)
+        # (g) STALE derivation_policy_id HALTS (policy identity mismatch)
+        tg = tempfile.mkdtemp()
+        make_fixture(tg, season_over={'derivation_policy_id': 'stalepolicyid00'})
+        r = with_env(RL_REPO=tg, RL_CONFIG_MODE='gate')
+        ok('stale derivation_policy_id halts', halts(lambda: RC.verify('gate', tg, halt=True)))
+        r(); shutil.rmtree(tg, ignore_errors=True)
+        # (h) the derivation-policy module (season_state.py) ABSENT HALTS (cannot verify derivation)
+        th = tempfile.mkdtemp()
+        make_fixture(th)
+        os.remove(os.path.join(th, 'season_state.py'))
+        r = with_env(RL_REPO=th, RL_CONFIG_MODE='gate')
+        ok('missing season_state.py (derivation policy) halts', halts(lambda: RC.verify('gate', th, halt=True)))
+        r(); shutil.rmtree(th, ignore_errors=True)
 
         # --- changing each class-A semantic MOVES the stamped identity (canonical_hash) -----------------
         base_vars = {'RL_PVC2': '1', 'RL_LEGE': '1', 'RL_LEGF': '1', 'RL_GAMMA': '0.85', 'RL_CAPT': '1'}
