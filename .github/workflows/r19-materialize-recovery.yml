@@ -3,7 +3,7 @@ name: R19 MVP Recovery Materializer
 on:
   push:
     branches:
-      - codex/prepare-r19-materializer
+      - codex/implement-round-19-mvp-recovery-process
 
 permissions:
   contents: write
@@ -33,14 +33,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Refuse wrong source commit shape
+      - name: Validate preparation source before any writes
         run: |
           set -euo pipefail
-          test "${GITHUB_REF_NAME}" = "codex/prepare-r19-materializer"
-          parents=$(git rev-list --parents -n1 HEAD)
-          set -- $parents
-          test "$#" -eq 2 || { echo "HALT: materializer commit must have exactly one parent"; exit 1; }
-          test "$2" = "$BASE_SHA" || { echo "HALT: parent $2 != $BASE_SHA"; exit 1; }
+          test "${GITHUB_REF_NAME}" = "codex/implement-round-19-mvp-recovery-process"
+          git fetch origin integration/v2.11-final-rc --depth=1
+          remote_base="$(git rev-parse refs/remotes/origin/integration/v2.11-final-rc)"
+          test "$remote_base" = "$BASE_SHA" || { echo "HALT: origin/integration/v2.11-final-rc $remote_base != $BASE_SHA"; exit 1; }
+          merge_base="$(git merge-base HEAD "$BASE_SHA")"
+          test "$merge_base" = "$BASE_SHA" || { echo "HALT: merge-base $merge_base != $BASE_SHA"; exit 1; }
+          cat > /tmp/r19-prep-allow.txt <<'EOF'
+          .github/workflows/r19-materialize-recovery.yml
+          engine/rl_after/ingestion/round_finalize.py
+          engine/rl_after/ingestion/round_movers.py
+          engine/rl_after/ingestion/test_weekly_updater.py
+          EOF
+          git diff --name-only "$BASE_SHA"..HEAD | sort > /tmp/r19-prep-actual.txt
+          sed 's/^          //' /tmp/r19-prep-allow.txt | sort > /tmp/r19-prep-expected.txt
+          diff -u /tmp/r19-prep-expected.txt /tmp/r19-prep-actual.txt || { echo "HALT: preparation diff is not exactly the four reviewed files"; exit 1; }
 
       - name: Pin Python 3.12.3
         uses: actions/setup-python@v5
@@ -117,13 +127,17 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import json, pathlib, re
+          import json, pathlib, re, sys
+          sys.path.insert(0, 'engine/rl_after/ingestion')
+          import round_finalize as RF
           root=pathlib.Path('.')
           state=json.load(open('engine/rl_after/ingestion/finalization_state.json'))
           for r in range(15,20):
               e=state['rounds'].get(str(r)) or {}
               assert e.get('status')=='FINALIZED', f'R{r} not FINALIZED'
               assert e.get('failure') in (None,''), f'R{r} stale failure'
+              val=RF.RoundFinalizer(str(root))._validate_derivatives(r, e, historical=(r < 19))
+              assert val.get('ok') is True, f'R{r} derivative validation failed: {val}'
           expect={15:('692d6302','2fe26675'),16:('0b951852','8ad41708'),17:('c312eb5b','0308202f'),18:('64795076','4323c448'),19:('f37d9716','92a8f3a0')}
           for r,(s,b) in expect.items():
               e=state['rounds'][str(r)]
@@ -134,33 +148,58 @@ jobs:
           assert boot.get('board')=='92a8f3a0528e5668029ca8056a841821'
           assert boot.get('store')=='f37d9716648cfe4382b8c6a24c4f064f'
           ledger=json.load(open('engine/rl_after/ingestion/applied_rounds_ledger.json'))['applied']
-          counts={r:0 for r in range(15,20)}
-          seen=set()
+          counts={r:0 for r in range(15,20)}; seen=set()
           for x in ledger:
               key=(x.get('stable_player_id'),x.get('season'),x.get('round')) if isinstance(x,dict) else tuple(x)
-              assert key not in seen, 'duplicate ledger entry'
-              seen.add(key)
+              assert key not in seen, 'duplicate ledger entry'; seen.add(key)
               if key[2] in counts: counts[key[2]] += 1
           assert sum(counts.values())==1858 and counts=={15:318,16:319,17:410,18:406,19:405}, counts
           for name in ['value_history.json','rank_history.json','pos_rank_history.json']:
-              h=json.load(open('engine/rl_after/ingestion/'+name))
-              rounds=set()
+              h=json.load(open('engine/rl_after/ingestion/'+name)); rounds=set()
               for p in h.get('players',{}).values(): rounds.update(map(int,(p.get('by_round') or {}).keys()))
               assert all(r in rounds for r in range(14,20)), name
-          text=open('ui/data/movers.js').read(); obj=json.loads(text[text.index('{'):text.rindex('}')+1])
-          assert obj.get('rounds')==[15,16,17,18,19]
-          assert (obj.get('integrity') or {}).get('baseline_anchor_ok') is True
-          assert (obj.get('integrity') or {}).get('board_chain_ok') is True
+          text=open('ui/data/movers.js').read(); movers=json.loads(text[text.index('{'):text.rindex('}')+1])
+          assert movers.get('rounds')==[15,16,17,18,19]
+          assert (movers.get('integrity') or {}).get('baseline_anchor_ok') is True
+          assert (movers.get('integrity') or {}).get('board_chain_ok') is True
           board=json.load(open('data/rl_build/rl_app_data.json'))
           players=board['active'] if isinstance(board,dict) else board
           assert len(players)==804
-          text=open('ui/data/board_view_working.js').read(); app=json.loads(text[text.index('{'):text.rindex('}')+1])
-          picks=[p for p in app.get('players',[]) if p.get('pick') or p.get('kind')=='pick']
-          assert sum(1 for p in picks if str(p.get('year_offset') or p.get('plus_year') or '').endswith('1')) in (0,64)
+          wtxt=open('ui/data/board_view_working.js').read(); app=json.loads(wtxt[wtxt.index('{'):wtxt.rindex('}')+1])
+          assert not [p for p in app.get('lensPicks',[]) if int(p.get('lens',-1))==0], 'current lens must not expose future pick rows'
+          pvc={int(k):int(v) for k,v in (board.get('PVC') or app.get('pvc') or {}).items()}
+          all_ids=[]
+          for lens,year,label in [(1,2027,'+1'),(2,2028,'+2')]:
+              picks=[p for p in app.get('lensPicks',[]) if int(p.get('lens'))==lens and int(p.get('labelYear'))==year]
+              assert len(picks)==64, (label, len(picks))
+              ids=[p.get('id') for p in picks]
+              assert len(ids)==len(set(ids)), label+' duplicate asset id within lens'
+              all_ids.extend(ids)
+              by_n={int(p.get('n')):p for p in picks}
+              assert sorted(by_n)==list(range(1,65)), label+' missing picks 1..64'
+              vals=[int(by_n[n].get('v', by_n[n].get('value'))) for n in range(1,65)]
+              assert vals==[pvc[n] for n in range(1,65)], label+' visible values differ from PVC'
+              assert all(vals[i] >= vals[i+1] for i in range(len(vals)-1)), label+' not monotone by pick'
+              assert sum(vals)==64617, (label, sum(vals))
+              totals=(app.get('draftAssetTotals') or {}).get(label) or {}
+              assert totals.get('nVisiblePicks')==64
+              assert totals.get('visible_1_64')==64617
+              assert totals.get('residual_nd_tail')==4649
+              assert totals.get('residual_mech')==14272
+              assert totals.get('total')==83538
+              assert totals.get('reconciled_to_f5') is True
+              assert totals.get('f5_draft_pvc')==69266
+              assert totals.get('f5_mech_pvc')==14272
+              assert totals.get('f5_entrant_layer_pvc')==83538
+              assert totals.get('visible_1_64') + totals.get('residual_nd_tail') + totals.get('residual_mech') == totals.get('total')
+              pt=(app.get('phantomTotals') or {}).get('league',{}).get(str(lens)) or (app.get('phantomTotals') or {}).get('league',{}).get(lens) or {}
+              assert pt.get('draftValue')==69266 and pt.get('freeValue')==14272 and pt.get('entrantValue')==83538, (label, pt)
+          assert len(all_ids)==len(set(all_ids)), 'duplicate asset id across future lenses'
+          assert 'never summed' in ((app.get('draftAssetTotals') or {}).get('_meta') or {}).get('no_double_count','')
           cfg=pathlib.Path('ui/app/config.js')
           c=cfg.read_text()
-          c=re.sub(r'EXPECTED_BOARD\s*:\s*["\'][0-9a-f]+["\']', 'EXPECTED_BOARD: "92a8f3a0"', c)
-          c=re.sub(r'DELTA_BASE_DEFAULT\s*:\s*["\'][^"\']+["\']', 'DELTA_BASE_DEFAULT: "round"', c)
+          c=re.sub(r'EXPECTED_BOARD\s*[:=]\s*["\'][0-9a-f]+["\']', 'EXPECTED_BOARD: "92a8f3a0"', c)
+          c=re.sub(r'DELTA_BASE_DEFAULT\s*[:=]\s*["\'][^"\']+["\']', 'DELTA_BASE_DEFAULT: "round"', c)
           cfg.write_text(c)
           pathlib.Path('ui/data/club_valuation.js').write_text('window.__CLUB_VALUATION__={"kind":"club_valuation","as_of_round":19,"available":false,"rows":[],"reason":"Club totals were not regenerated for the R19 weekly MVP recovery; stale R14 numeric totals are intentionally withheld."};\n')
           print('state validation OK')
@@ -169,9 +208,10 @@ jobs:
       - name: Browser smoke check
         run: |
           set -euo pipefail
-          npm init -y >/dev/null 2>&1 || true
-          npm install --no-save playwright@1 >/dev/null
-          npx playwright install chromium --with-deps
+          PLAYWRIGHT_DIR="$RUNNER_TEMP/r19-playwright"
+          rm -rf "$PLAYWRIGHT_DIR" && mkdir -p "$PLAYWRIGHT_DIR"
+          (cd "$PLAYWRIGHT_DIR" && npm init -y >/dev/null && npm install --no-save playwright@1 >/dev/null && npx playwright install chromium --with-deps)
+          export NODE_PATH="$PLAYWRIGHT_DIR/node_modules"
           (python3 -m http.server 4173 --bind 127.0.0.1 -d ui >/tmp/r19-ui.log 2>&1 & echo $! >/tmp/r19-ui.pid)
           node <<'JS'
           const { chromium, devices } = require('playwright');
@@ -195,16 +235,73 @@ jobs:
           })().catch(e => { console.error(e); process.exit(1); });
           JS
           kill "$(cat /tmp/r19-ui.pid)"
+          test ! -e package.json
+          test ! -e package-lock.json
+          test -z "$(find . -path './node_modules' -o -path '*/node_modules' -print -quit)"
 
       - name: Commit generated recovery branch and push
         run: |
           set -euo pipefail
+          if git ls-remote --exit-code --heads origin "$OUT_BRANCH" >/dev/null 2>&1; then
+            echo "HALT: $OUT_BRANCH already exists unexpectedly"; exit 1
+          fi
           git rm .github/workflows/r19-materialize-recovery.yml
-          git status --short > /tmp/r19-files.txt
+          git add -A
+          cat > /tmp/r19-final-allow.txt <<'EOF'
+          data/expected_boot.json
+          data/release_contract.json
+          data/rl_build/rl_app_data.json
+          data/rl_build/rl_app_data.json.srcmd5
+          data/season_state.json
+          engine/rl_after/rl_model_data.json
+          engine/rl_after/ingestion/applied_rounds_ledger.json
+          engine/rl_after/ingestion/finalization_journal.jsonl
+          engine/rl_after/ingestion/finalization_state.json
+          engine/rl_after/ingestion/pos_rank_history.json
+          engine/rl_after/ingestion/rank_history.json
+          engine/rl_after/ingestion/value_history.json
+          engine/rl_after/ingestion/round_finalize.py
+          engine/rl_after/ingestion/round_movers.py
+          engine/rl_after/ingestion/test_weekly_updater.py
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15/journal.jsonl
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15/manifest.json
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r16/journal.jsonl
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r16/manifest.json
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r17/journal.jsonl
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r17/manifest.json
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r18/journal.jsonl
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r18/manifest.json
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r19/journal.jsonl
+          engine/rl_after/ingestion/.weekly_txn/txn_catchup_r19/manifest.json
+          engine/rl_after/ingestion/movers/movers_R15.csv
+          engine/rl_after/ingestion/movers/movers_R15.json
+          engine/rl_after/ingestion/movers/movers_R16.csv
+          engine/rl_after/ingestion/movers/movers_R16.json
+          engine/rl_after/ingestion/movers/movers_R17.csv
+          engine/rl_after/ingestion/movers/movers_R17.json
+          engine/rl_after/ingestion/movers/movers_R18.csv
+          engine/rl_after/ingestion/movers/movers_R18.json
+          engine/rl_after/ingestion/movers/movers_R19.csv
+          engine/rl_after/ingestion/movers/movers_R19.json
+          ui/app/config.js
+          ui/data/board_view_public.js
+          ui/data/board_view_working.js
+          ui/data/club_valuation.js
+          ui/data/movers.js
+          EOF
+          sed 's/^          //' /tmp/r19-final-allow.txt | sort > /tmp/r19-final-allow-clean.txt
+          git diff --cached --name-only "$BASE_SHA" | sort > /tmp/r19-final-actual.txt
+          comm -23 /tmp/r19-final-actual.txt /tmp/r19-final-allow-clean.txt > /tmp/r19-final-forbidden.txt
+          test ! -s /tmp/r19-final-forbidden.txt || { echo "HALT: forbidden changed paths"; cat /tmp/r19-final-forbidden.txt; exit 1; }
+          for required in data/expected_boot.json data/release_contract.json data/rl_build/rl_app_data.json data/rl_build/rl_app_data.json.srcmd5 data/season_state.json engine/rl_after/rl_model_data.json engine/rl_after/ingestion/applied_rounds_ledger.json engine/rl_after/ingestion/finalization_journal.jsonl engine/rl_after/ingestion/finalization_state.json engine/rl_after/ingestion/pos_rank_history.json engine/rl_after/ingestion/rank_history.json engine/rl_after/ingestion/value_history.json ui/app/config.js ui/data/board_view_public.js ui/data/board_view_working.js ui/data/club_valuation.js ui/data/movers.js; do
+            grep -Fx "$required" /tmp/r19-final-actual.txt >/dev/null || { echo "HALT: required changed path missing: $required"; exit 1; }
+          done
+          test ! -e .github/workflows/r19-materialize-recovery.yml
+          test ! -e package.json && test ! -e package-lock.json
+          test -z "$(find . \( -path './node_modules' -o -name __pycache__ -o -name .pytest_cache -o -iname '*screenshot*' -o -iname '*.log' -o -iname '*backup*' \) -print -quit)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B "$OUT_BRANCH"
-          git add -A
           git commit -m "Materialize Round 19 MVP recovery state"
           git push origin "$OUT_BRANCH"
           remote=$(git ls-remote --heads origin "$OUT_BRANCH" | awk '{print $1}')
