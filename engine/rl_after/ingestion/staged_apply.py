@@ -1105,6 +1105,7 @@ class StagedRoundApplier:
             'board':   os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json'),
             'sidecar': os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json.srcmd5'),
             'manifest': os.path.join(ws, 'data', 'expected_boot.json'),
+            'season_state': os.path.join(ws, 'data', 'season_state.json'),
             'ledger':  os.path.join(wsra, 'ingestion', 'applied_rounds_ledger.json'),
             'value_history': os.path.join(wsra, 'ingestion', 'value_history.json'),
             'rank_history':  os.path.join(wsra, 'ingestion', 'rank_history.json'),
