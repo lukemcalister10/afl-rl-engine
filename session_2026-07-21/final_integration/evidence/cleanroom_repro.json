@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "n_pass": 9,
+  "n": 9,
+  "committed_board_md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+  "rebuilt_board_md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+  "checks": [
+    {
+      "check": "(1) bootstrap re-sync from checkout OK (Guard 5 store/rl_model/fv pins)",
+      "pass": true,
+      "detail": "rc=0"
+    },
+    {
+      "check": "(2) canonical engine build (RL_PVC2/LEGE/LEGF=1) succeeds",
+      "pass": true,
+      "detail": "rc=0"
+    },
+    {
+      "check": "(3) rebuilt board BYTE-IDENTICAL to committed data/rl_build/rl_app_data.json",
+      "pass": true,
+      "detail": "rebuilt 2ab73a6fed1f vs committed 2ab73a6fed1f"
+    },
+    {
+      "check": "(4) board_view_working.js byte-identical to committed (HEAD)",
+      "pass": true,
+      "detail": "match"
+    },
+    {
+      "check": "(4) board_view_public.js byte-identical to committed (HEAD)",
+      "pass": true,
+      "detail": "match"
+    },
+    {
+      "check": "(5-oracle) row universe == Board B",
+      "pass": true,
+      "detail": "804 vs 804"
+    },
+    {
+      "check": "(5-oracle) present v == Board B (0 diffs)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "(5-oracle) vP1 == Board B (0 diffs)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "(5-oracle) vP2 == Board B (0 diffs)",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

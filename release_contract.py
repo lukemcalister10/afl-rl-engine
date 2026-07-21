@@ -164,6 +164,26 @@ def verify(mode=None, root=None, halt=True):
             rejects.append("override hook %s is SET (=%r) — canonical build requires it ABSENT (ambient"
                            " override of the authoritative state)" % (k, os.environ.get(k)))
 
+    # (8) season-progress authority coherence (final integration 2026-07-21, supervisor req 2). The as-of
+    #     round is DYNAMIC weekly state (stamped here + expected_boot + the board view); the valuation
+    #     season-progress fraction SEASON_PROG is FROZEN in rl_model.py (pinned via the rl_model + board md5s);
+    #     RL_SEASON_ROUNDS is only the ingestion round-bound sanity guard, never a valuation input. Bind them
+    #     so a release whose season authority is stale / contradictory halts. (Conditional: only if declared.)
+    sm = contract.get('season_metadata')
+    if sm:
+        if str(sm.get('as_of_round')) != str(boot.get('as_of_round')):
+            rejects.append("season_metadata as_of_round %s != expected_boot as_of_round %s (stale season stamp)"
+                           % (sm.get('as_of_round'), boot.get('as_of_round')))
+        _bp = os.path.join(root, 'data', 'rl_build', 'rl_app_data.json')
+        if os.path.exists(_bp) and sm.get('season_prog') is not None:
+            try:
+                _bsp = json.load(open(_bp)).get('SEASON_PROG')
+                if _bsp is not None and float(_bsp) != float(sm['season_prog']):
+                    rejects.append("season_metadata season_prog %s != board SEASON_PROG %s (contradiction)"
+                                   % (sm.get('season_prog'), _bsp))
+            except Exception:
+                pass
+
     if rejects:
         _fail(mode, rejects, halt)
     return contract.get('contract_sha256')

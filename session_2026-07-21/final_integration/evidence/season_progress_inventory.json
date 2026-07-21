@@ -1,0 +1,94 @@
+{
+  "authorities": {
+    "A_season_total_rounds": {
+      "value": 24,
+      "source": "round_apply.py:52 DEFAULT_SEASON_ROUNDS / RL_SEASON_ROUNDS",
+      "affects_valuation": false,
+      "weekly": false,
+      "class": "B",
+      "role": "ingestion round-bound sanity guard only (SeasonBoundError)"
+    },
+    "B_as_of_round": {
+      "value": 14,
+      "source": "expected_boot + release_contract + board-view stamp",
+      "affects_valuation": false,
+      "weekly": true,
+      "stamped": true,
+      "role": "dynamic display/contract round; advanced by the Track B updater"
+    },
+    "C_season_prog": {
+      "value": 0.58,
+      "source": "rl_model.py:778 (frozen literal)",
+      "affects_valuation": true,
+      "weekly": false,
+      "stamped_via": [
+        "rl_model md5",
+        "board md5",
+        "RL_M3_FE=0.58 in config_sha256"
+      ],
+      "role": "THE valuation season-progress fraction (gross-up / benefit-of-doubt / year-0 blend)"
+    },
+    "C_prime_config_twins": {
+      "RL_M3_FE": 0.58,
+      "RL_EXPO_F": 0.545,
+      "RL_M3_INPROG_Y": 2026,
+      "RL_EXPO_INPROG_Y": 2026,
+      "stamped": "config_sha256",
+      "affects_valuation": true
+    },
+    "D_player_games": {
+      "source": "store (rl_model_data.json) 2026 scoring rows",
+      "affects_valuation": true,
+      "weekly": true,
+      "stamped_via": "store md5"
+    },
+    "E_projected_remaining": {
+      "value": "1-SEASON_PROG=0.42",
+      "derived_from": "C",
+      "affects_valuation": true
+    }
+  },
+  "rl_season_rounds_verdict": "total scheduled season rounds (24) used ONLY as the ingestion round-bound sanity guard; NOT a valuation input; NOT SEASON_PROG; class B (infra); gated-OFF store-write path",
+  "r14_vs_r24_controlled_test": {
+    "held_constant": {
+      "games_2026": 7,
+      "prior": 0.7,
+      "base": 0.5,
+      "proj_present": 100.0,
+      "proj_low": 60.0
+    },
+    "R14_sp_0.58": {
+      "grossed_up_games": 12.069,
+      "benefit_of_doubt_base": 0.584,
+      "year0_blend": 83.2
+    },
+    "R24_sp_1.00": {
+      "grossed_up_games": 7.0,
+      "benefit_of_doubt_base": 0.5,
+      "year0_blend": 100.0
+    },
+    "path_diffs": {
+      "grossed_up_games": {
+        "R14": 12.069,
+        "R24": 7.0,
+        "delta_R24_minus_R14": -5.069
+      },
+      "benefit_of_doubt_base": {
+        "R14": 0.584,
+        "R24": 0.5,
+        "delta_R24_minus_R14": -0.084
+      },
+      "year0_blend": {
+        "R14": 83.2,
+        "R24": 100.0,
+        "delta_R24_minus_R14": 16.8
+      }
+    }
+  },
+  "decoupling_finding": "as_of_round (dynamic, weekly) and SEASON_PROG (frozen 0.58 \u2014 the ACTUAL valuation fraction) are DECOUPLED; a weekly round advances as_of_round but the updater never re-bakes SEASON_PROG. Re-deriving the fraction from as_of_round/season_total would MOVE approved vectors (a valuation change) \u2014 DEFERRED, owner-authorized, NOT this task.",
+  "classification": {
+    "SEASON_PROG": "A live valuation semantic (bound via rl_model+board md5)",
+    "as_of_round": "dynamic release-lineage state (stamped weekly)",
+    "RL_SEASON_ROUNDS": "B infra (ingestion sanity bound; inert for valuation)"
+  }
+}

@@ -44,5 +44,22 @@
     "reconciled": true,
     "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
   },
-  "contract_sha256": "c65527d6a4943136bb6ee5b6f1f5ddc2ff85a154a398c74f5099b497bdfc24b4"
+  "season_metadata": {
+    "season_total_rounds": 24,
+    "as_of_round": 14,
+    "season_prog": 0.58,
+    "season_prog_source": "engine/rl_after/rl_model.py:778 (frozen literal SEASON_PROG=0.58); stamped via rl_model md5 + board md5",
+    "season_prog_config_twins": {
+      "RL_M3_FE": "0.58",
+      "RL_EXPO_F": "0.545",
+      "RL_M3_INPROG_Y": "2026",
+      "RL_EXPO_INPROG_Y": "2026"
+    },
+    "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
+    "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
+    "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
+    "decoupling_finding": "as_of_round (dynamic, weekly) and SEASON_PROG (frozen 0.58 — the ACTUAL valuation fraction) are DECOUPLED; a weekly round advances as_of_round but the updater never re-bakes SEASON_PROG. Re-deriving the fraction from as_of_round/season_total would MOVE approved vectors (a valuation change) — DEFERRED, owner-authorized, NOT this task.",
+    "class": "A-adjacent: SEASON_PROG is a live valuation semantic bound via rl_model+board md5; as_of_round is dynamic release-lineage state (stamped, weekly); RL_SEASON_ROUNDS is class-B infra"
+  },
+  "contract_sha256": "e67b557750ee7c79bc1bd5a31349ce0373d0849b31e39813cd48918ae210b4d0"
 }
