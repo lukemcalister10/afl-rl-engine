@@ -1,0 +1,209 @@
+{
+  "verdict": "FAIL",
+  "reason": "One or more original required validations could not be identified/rerun unchanged; directive requires halt/report limitation.",
+  "board_A": {
+    "label": "board_A_lege0_legf0",
+    "RL_PVC2": "1",
+    "RL_LEGE": "0",
+    "RL_LEGF": "0",
+    "RL_CONFIG_MODE": "UNSET (diagnostic limitation; not canonical bake)",
+    "md5": "06d8af60b679a12db07c064c60c065f9",
+    "stdout_tail": "PROVENANCE {\"RL_FV_env\": \"/workspace/afl-rl-engine/engine/forward_valuation\", \"config_manifest_identity\": \"c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b\", \"config_manifest_path\": \"/workspace/afl-rl-engine/data/model_config.json\", \"distribution_pricing_md5\": \"dd19a2349a5b5a361b6eead0aab83ff3\", \"fv_identity\": \"de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64\", \"fv_identity_expected\": \"de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64\", \"resolved_fv_dir\": \"/workspace/afl-rl-engine/engine/forward_valuation\", \"rl_model_md5\": \"cc626d7db7524929e5d2f1b024b25fb4\", \"rl_model_path\": \"/home/claude/rl_workspace/rl_after/rl_model.py\"}\nLOADED-PROVENANCE OK  fv_modules=7 rl_model=/home/claude/rl_workspace/rl_after/rl_model.py\nL7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_v2.json (pick1=3000, 99 picks, monotone, \u00f7F=1.0524 on players)\nNUM\u00c9RAIRE GUARD: PASS \u2014 shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)\nL7 NUM\u00c9RAIRE RE-BASE \u00f71.0524: order preserved (no strict inversion; 13 rounding ties), 10/10 anchor ratios <0.2%\nEXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)\nFUT-LABEL ASSERTION: PASS \u2014 90 dual rows carry the true primary/alternate on the board\nZERO-EMPTY-CLUB ACCEPTANCE: PASS \u2014 0 blank club across 1002 exported rows (active 804 + back 198)\nPARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)\nOWNER OVERRIDE applied (display-only): will-brodie \u00d70.50 -> displayed 510 (of the REBASED value; engine v untouched; vRaw model figure stamped)\nLEG F5 ENTRANT LAYER: RL_LEGF=0 \u2014 layer NOT emitted (Leg-E board byte-exact)\nexported active=804 cohort=1976 | mechanisms=7 categories analysed | board stamped src=968de0c7 (read-only)\nCAT_BY_RANGE Academy: {'1-10': 1263, '11-20': 140, '21-30': 1902, '31-45': -173, '46-99': -140}\nCAT_BY_RANGE Open   : {'1-10': 82, '11-20': 7, '21-30': 74, '31-45': -25, '46-99': -7}\n",
+    "store_before": "968de0c7a0183ca3914165536f39607a",
+    "store_after": "968de0c7a0183ca3914165536f39607a",
+    "installed_board_before": "06d8af60b679a12db07c064c60c065f9",
+    "installed_board_after": "06d8af60b679a12db07c064c60c065f9"
+  },
+  "board_B": {
+    "label": "board_B_lege1_legf1",
+    "RL_PVC2": "1",
+    "RL_LEGE": "1",
+    "RL_LEGF": "1",
+    "RL_CONFIG_MODE": "UNSET (diagnostic limitation; not canonical bake)",
+    "md5": "1f10220c341679903b79a319f554672c",
+    "stdout_tail": "manifest_identity\": \"c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b\", \"config_manifest_path\": \"/workspace/afl-rl-engine/data/model_config.json\", \"distribution_pricing_md5\": \"dd19a2349a5b5a361b6eead0aab83ff3\", \"fv_identity\": \"de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64\", \"fv_identity_expected\": \"de4c7ec38b1da026575f700ec5d76cd79c633207b9ca11d25bef0e7e1a5b2c64\", \"resolved_fv_dir\": \"/workspace/afl-rl-engine/engine/forward_valuation\", \"rl_model_md5\": \"cc626d7db7524929e5d2f1b024b25fb4\", \"rl_model_path\": \"/home/claude/rl_workspace/rl_after/rl_model.py\"}\nLOADED-PROVENANCE OK  fv_modules=7 rl_model=/home/claude/rl_workspace/rl_after/rl_model.py\nL7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_v2.json (pick1=3000, 99 picks, monotone, \u00f7F=1.0524 on players)\nNUM\u00c9RAIRE GUARD: PASS \u2014 shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)\nL7 NUM\u00c9RAIRE RE-BASE \u00f71.0524: order preserved (no strict inversion; 13 rounding ties), 10/10 anchor ratios <0.2%\nEXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)\nFUT-LABEL ASSERTION: PASS \u2014 90 dual rows carry the true primary/alternate on the board\nZERO-EMPTY-CLUB ACCEPTANCE: PASS \u2014 0 blank club across 1002 exported rows (active 804 + back 198)\nPARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)\nOWNER OVERRIDE applied (display-only): will-brodie \u00d70.50 -> displayed 510 (of the REBASED value; engine v untouched; vRaw model figure stamped)\nLEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs \u00b7 \u00a72.viii sealed intake 83538 PVC (draft 69266 + mech 14272, 103.4 slots/yr, seal a17aafed) \u00b7 +1 \u0394=+83538 \u00b7 +2 \u0394=+83538 \u00b7 k=0 phantom=NONE\nexported active=804 cohort=1976 | mechanisms=7 categories analysed | board stamped src=968de0c7 (read-only)\nCAT_BY_RANGE Academy: {'1-10': 1263, '11-20': 140, '21-30': 1902, '31-45': -173, '46-99': -140}\nCAT_BY_RANGE Open   : {'1-10': 82, '11-20': 7, '21-30': 74, '31-45': -25, '46-99': -7}\n",
+    "store_before": "968de0c7a0183ca3914165536f39607a",
+    "store_after": "968de0c7a0183ca3914165536f39607a",
+    "installed_board_before": "06d8af60b679a12db07c064c60c065f9",
+    "installed_board_after": "06d8af60b679a12db07c064c60c065f9"
+  },
+  "present_invariance": {
+    "added": [],
+    "removed": [],
+    "current_value_diffs": 0,
+    "present_rank_diffs": 0,
+    "present_order_diffs": 0,
+    "current_sum_A": 752427,
+    "current_sum_B": 752427,
+    "identity_diffs": 0,
+    "pick1_A": 3000,
+    "pick1_B": 3000
+  },
+  "tests": [
+    {
+      "test": "bootstrap fail-closed provenance",
+      "source": "bootstrap.sh / boot_guard.py",
+      "threshold": "pinned md5 equality",
+      "command": "bash bootstrap.sh",
+      "rc": 0,
+      "pass": true,
+      "artifact": "session_2026-07-21/forward_lens_acceptance/bootstrap_fail-closed_provenance.txt",
+      "freshly_rerun": true,
+      "observed": "isplay. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])\nbootstrap OK\n  engine md5     : 904722cd   (candidate: F1/F2 one-source rewire)\n  cm_400 md5     : 34faa865   (expect 34faa865)\n  q97m md5       : cfdc7321   (expect cfdc7321 \u2014 FROZEN q97 ceiling; loaded, never fitted; Guard 5 asserted == pinned)\n  store md5      : 968de0c7   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)\n  register md5   : 652d83e8   (LTI_REGISTER.md \u2014 R-REG=R2 pinned availability input; Guard 5 asserted == pinned)\n  fv identity    : de4c7ec3   (engine/forward_valuation source set; CHECKOUT + workspace copy asserted == pinned 'fv'; canonical build binds RL_FV to the CHECKOUT)\n  unidecode      : OK   (vendored, offline)\n  ENV (with vendor): PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor ; RL_FV=<repo>/engine/forward_valuation (canonical FV source)\n  next: bash /workspace/afl-rl-engine/run_panel.sh\n"
+    },
+    {
+      "test": "k=0 dormancy f3",
+      "source": "session_2026-07-18/legf3/tests/test_k0_dormancy.py",
+      "threshold": "unchanged script passes",
+      "command": "python3 session_2026-07-18/legf3/tests/test_k0_dormancy.py",
+      "rc": 1,
+      "pass": false,
+      "artifact": "session_2026-07-21/forward_lens_acceptance/k=0_dormancy_f3.txt",
+      "freshly_rerun": true,
+      "observed": "Traceback (most recent call last):\n  File \"/workspace/afl-rl-engine/session_2026-07-18/legf3/tests/test_k0_dormancy.py\", line 12, in <module>\n    exec(open('_merged_recover.py').read().split('print(\"=== AFTER')[0], g)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '_merged_recover.py'\n"
+    },
+    {
+      "test": "k=0 dormancy f4",
+      "source": "session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py",
+      "threshold": "unchanged script passes",
+      "command": "python3 session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py",
+      "rc": 1,
+      "pass": false,
+      "artifact": "session_2026-07-21/forward_lens_acceptance/k=0_dormancy_f4.txt",
+      "freshly_rerun": true,
+      "observed": "Traceback (most recent call last):\n  File \"/workspace/afl-rl-engine/session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py\", line 13, in <module>\n    exec(open('_merged_recover.py').read().split('print(\"=== AFTER')[0], g)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '_merged_recover.py'\n"
+    },
+    {
+      "test": "k=0 dormancy f5",
+      "source": "session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py",
+      "threshold": "unchanged script passes",
+      "command": "python3 session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py",
+      "rc": 1,
+      "pass": false,
+      "artifact": "session_2026-07-21/forward_lens_acceptance/k=0_dormancy_f5.txt",
+      "freshly_rerun": true,
+      "observed": "  PASS \u00a72.viii layer is INSIDE the RL_LEGF!=0 branch\n  PASS RL_LEGF=0 branch prints 'layer NOT emitted' (no phantom keys)\n  PASS block does NOT call _ev( (engine valuation untouched)\n  PASS block only ADDS out['phantom*'] keys (no out['active']/['back'] mutation)\n  PASS block reads only PVC / vP1 / vP2 / club / sealed file (no ev channel)\n  PASS lens '0' withPhantom==withoutPhantom==\u03a3v (k=0 delta 0)\n  PASS seal-verify present + pinned a17aafed + HALT on drift\nTraceback (most recent call last):\n  File \"/workspace/afl-rl-engine/session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py\", line 38, in <module>\n    struct = json.load(open(os.path.join(REPO, 'session_2026-07-18', 'legf5', 'sealed_entrant_structure.json')))\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/user/afl-rl-engine/session_2026-07-18/legf5/sealed_entrant_structure.json'\n"
+    },
+    {
+      "test": "Leg F4 gate",
+      "source": "session_2026-07-18/legf4/scripts/gate_f4.py",
+      "threshold": "predeclared script pass",
+      "command": "python3 session_2026-07-18/legf4/scripts/gate_f4.py",
+      "rc": 1,
+      "pass": false,
+      "artifact": "session_2026-07-21/forward_lens_acceptance/Leg_F4_gate.txt",
+      "freshly_rerun": true,
+      "observed": "Traceback (most recent call last):\n  File \"/workspace/afl-rl-engine/session_2026-07-18/legf4/scripts/gate_f4.py\", line 8, in <module>\n    BOARD = sys.argv[1]\n            ~~~~~~~~^^^\nIndexError: list index out of range\n"
+    },
+    {
+      "test": "Leg F5 gate",
+      "source": "session_2026-07-18/legf5/scripts/gate_f5.py",
+      "threshold": "predeclared script pass",
+      "command": "python3 session_2026-07-18/legf5/scripts/gate_f5.py",
+      "rc": 1,
+      "pass": false,
+      "artifact": "session_2026-07-21/forward_lens_acceptance/Leg_F5_gate.txt",
+      "freshly_rerun": true,
+      "observed": "Traceback (most recent call last):\n  File \"/workspace/afl-rl-engine/session_2026-07-18/legf5/scripts/gate_f5.py\", line 15, in <module>\n    BOARD = sys.argv[1]\n            ~~~~~~~~^^^\nIndexError: list index out of range\n"
+    }
+  ],
+  "missing_or_unresolved_required_harnesses": [
+    "historical -1 -> now projection comparison unchanged harness",
+    "historical -2 -> -1 projection comparison unchanged harness",
+    "original \u00b15% projected league-total gate unchanged harness",
+    "developing >= mid-career >= veteran gradient unchanged harness",
+    "age/evidence continuity, horizon cliffs, pedigree fading, LTI/availability, retirement/exit unchanged harness inventory"
+  ],
+  "population": {
+    "league_totals": {
+      "A": {
+        "v": 752427,
+        "vP1": 559828,
+        "vP2": 434182
+      },
+      "B": {
+        "v": 752427,
+        "vP1": 686000,
+        "vP2": 635411
+      }
+    },
+    "ratios": {
+      "A_vP1_v": {
+        "n": 804,
+        "min": 0.1111111111111111,
+        "q1": 0.5112913824680105,
+        "median": 0.7067435863817141,
+        "q3": 0.85,
+        "max": 2.8461538461538463
+      },
+      "B_vP1_v": {
+        "n": 804,
+        "min": 0.1308411214953271,
+        "q1": 0.7329564489112228,
+        "median": 0.8944113693105435,
+        "q3": 1.0,
+        "max": 2.272727272727273
+      },
+      "A_vP2_v": {
+        "n": 804,
+        "min": 0.0,
+        "q1": 0.35459140867522443,
+        "median": 0.5276575276575277,
+        "q3": 0.73470673709292,
+        "max": 2.6538461538461537
+      },
+      "B_vP2_v": {
+        "n": 804,
+        "min": 0.09345794392523364,
+        "q1": 0.6113061397364262,
+        "median": 0.8019842419559934,
+        "q3": 1.0,
+        "max": 2.0
+      }
+    },
+    "A_counts": {
+      "vP1": {
+        "zero": 0,
+        "near_zero_lt100": 200,
+        "fall_gt10": 668,
+        "fall_gt25": 466,
+        "fall_gt50": 183,
+        "rise_gt10": 9,
+        "rise_gt25": 7,
+        "rise_gt50": 4
+      },
+      "vP2": {
+        "zero": 1,
+        "near_zero_lt100": 259,
+        "fall_gt10": 732,
+        "fall_gt25": 617,
+        "fall_gt50": 358,
+        "rise_gt10": 8,
+        "rise_gt25": 5,
+        "rise_gt50": 3
+      }
+    },
+    "B_counts": {
+      "vP1": {
+        "zero": 0,
+        "near_zero_lt100": 168,
+        "fall_gt10": 412,
+        "fall_gt25": 214,
+        "fall_gt50": 39,
+        "rise_gt10": 11,
+        "rise_gt25": 3,
+        "rise_gt50": 2
+      },
+      "vP2": {
+        "zero": 0,
+        "near_zero_lt100": 194,
+        "fall_gt10": 483,
+        "fall_gt25": 334,
+        "fall_gt50": 109,
+        "rise_gt10": 20,
+        "rise_gt25": 6,
+        "rise_gt50": 2
+      }
+    }
+  }
+}

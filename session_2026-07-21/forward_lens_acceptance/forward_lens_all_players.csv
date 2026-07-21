@@ -1,0 +1,805 @@
+stable_key,player_name,age,position,club,LTI_status,current_value,current_rank,Board_A_vP1,Board_B_vP1,abs_vP1_diff,pct_vP1_diff,Board_A_vP2,Board_B_vP2,abs_vP2_diff,pct_vP2_diff,old_plus1_rank,new_plus1_rank,old_plus2_rank,new_plus2_rank,projection_attribution
+aaron-cadman,Aaron Cadman,22,KEY_FWD,GWS,,2837,63,1877,3054,1177,62.706446457112406,1502,3114,1612,107.32356857523303,82,55,84,44,Leg E/F forward-lens delta
+aaron-naughton,Aaron Naughton,27,KEY_FWD,Western Bulldogs,,1680,143,1285,1460,175,13.618677042801556,975,1196,221,22.666666666666664,144,156,141,168,Leg E/F forward-lens delta
+adam-cerra,Adam Cerra,27,MID,Carlton,,1179,210,1018,1072,54,5.304518664047151,578,840,262,45.32871972318339,176,202,209,218,Leg E/F forward-lens delta
+adam-saad,Adam Saad,32,GEN_DEF,Carlton,,669,307,495,395,-100,-20.2020202020202,458,252,-206,-44.97816593886463,282,392,248,475,Leg E/F forward-lens delta
+adam-sweid,Adam Sweid,19,GEN_FWD,Fremantle,,645,313,338,645,307,90.8284023668639,331,645,314,94.86404833836858,357,288,312,264,Leg E/F forward-lens delta
+adam-treloar,Adam Treloar,33,MID,Western Bulldogs,,723,294,609,227,-382,-62.725779967159276,561,213,-348,-62.03208556149733,249,526,215,517,Leg E/F forward-lens delta
+aidan-corr,Aidan Corr,32,KEY_DEF,North Melbourne,,49,735,49,49,0,0.0,49,49,0,0.0,692,711,660,695,unchanged
+aidan-johnson,Aidan Johnson,26,KEY_FWD,Melbourne,,86,685,56,68,12,21.428571428571427,53,68,15,28.30188679245283,673,671,643,653,Leg E/F forward-lens delta
+aidan-schubert,Aidan Schubert,19,KEY_FWD,Hawthorn,,693,300,367,693,326,88.8283378746594,360,693,333,92.5,343,271,296,251,Leg E/F forward-lens delta
+aiden-riddle,Aiden Riddle,21,RUC,Fremantle,,480,391,408,480,72,17.647058823529413,408,480,72,17.647058823529413,312,346,271,328,Leg E/F forward-lens delta
+alex-davies,Alex Davies,24,MID,Gold Coast,,515,370,158,388,230,145.56962025316454,81,358,277,341.9753086419753,516,397,590,391,Leg E/F forward-lens delta
+alex-dodson,Alex Dodson,20,RUC,St Kilda,,489,383,416,468,52,12.5,416,468,52,12.5,307,352,265,336,Leg E/F forward-lens delta
+alex-neal-bullen,Alex Neal-Bullen,30,GEN_FWD,Adelaide,,534,362,458,404,-54,-11.790393013100436,414,293,-121,-29.227053140096622,296,384,268,430,Leg E/F forward-lens delta
+alex-pearce,Alex Pearce,31,KEY_DEF,Fremantle,,38,747,38,38,0,0.0,38,38,0,0.0,717,731,696,721,unchanged
+alex-van-wyk,Alex Van Wyk,22,RUC,Port Adelaide,,620,319,408,620,212,51.9607843137255,408,620,212,51.9607843137255,313,297,272,273,Leg E/F forward-lens delta
+aliir-aliir,Aliir Aliir,32,KEY_DEF,Port Adelaide,,1059,223,954,854,-100,-10.482180293501047,878,693,-185,-21.070615034168565,185,229,156,252,Leg E/F forward-lens delta
+alix-tauru,Alix Tauru,20,KEY_DEF,St Kilda,,1496,167,835,1417,582,69.7005988023952,328,1321,993,302.7439024390244,205,160,314,154,Leg E/F forward-lens delta
+andrew-brayshaw,Andrew Brayshaw,27,MID,Fremantle,,2836,64,2505,2645,140,5.588822355289421,1759,2305,546,31.040363843092667,55,64,64,69,Leg E/F forward-lens delta
+andrew-mcgrath,Andrew McGrath,28,GEN_DEF,Essendon,,1061,222,737,905,168,22.795115332428765,573,711,138,24.083769633507853,227,221,210,248,Leg E/F forward-lens delta
+andy-moniz-wakefield,Andy Moniz-Wakefield,23,GEN_DEF,Melbourne,"{'L': 0.9091, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",55,723,20,38,18,90.0,10,38,28,280.0,764,732,773,722,Leg E/F forward-lens delta
+angus-anderson,Angus Anderson,23,MID,Collingwood,,253,549,100,182,82,82.0,67,182,115,171.6417910447761,602,553,613,543,Leg E/F forward-lens delta
+angus-clarke,Angus Clarke,20,GEN_DEF,Essendon,,758,282,166,685,519,312.6506024096385,134,661,527,393.2835820895522,502,276,496,259,Leg E/F forward-lens delta
+angus-hastie,Angus Hastie,21,GEN_DEF,St Kilda,,303,500,131,157,26,19.84732824427481,82,157,75,91.46341463414635,560,575,588,564,Leg E/F forward-lens delta
+angus-sheldrick,Angus Sheldrick,23,MID,Sydney,,765,280,410,716,306,74.63414634146342,164,659,495,301.8292682926829,308,261,451,260,Leg E/F forward-lens delta
+anthony-caminiti,Anthony Caminiti,23,KEY_FWD,St Kilda,,1066,220,281,645,364,129.5373665480427,174,604,430,247.1264367816092,392,289,435,283,Leg E/F forward-lens delta
+archer-day-wicks,Archer Day-Wicks,20,GEN_FWD,Essendon,,343,472,99,290,191,192.92929292929293,89,239,150,168.53932584269663,605,463,571,485,Leg E/F forward-lens delta
+archer-reid,Archer Reid,21,KEY_FWD,West Coast,,871,259,389,697,308,79.17737789203085,99,617,518,523.2323232323233,327,269,546,281,Leg E/F forward-lens delta
+archie-ludowyke,Archie Ludowyke,19,KEY_FWD,Adelaide,,398,438,193,398,205,106.21761658031087,166,398,232,139.75903614457832,468,390,447,366,Leg E/F forward-lens delta
+archie-may,Archie May,22,KEY_FWD,Essendon,"{'L': 0.5455, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",482,389,293,456,163,55.631399317406135,174,430,256,147.1264367816092,382,355,436,345,Leg E/F forward-lens delta
+archie-perkins,Archie Perkins,24,GEN_FWD,Essendon,,286,514,146,257,111,76.02739726027397,83,239,156,187.95180722891567,533,500,580,486,Leg E/F forward-lens delta
+archie-roberts,Archie Roberts,21,GEN_DEF,Essendon,,5184,13,4572,5459,887,19.400699912510934,3660,5637,1977,54.01639344262294,10,10,10,9,Leg E/F forward-lens delta
+arthur-jones,Arthur Jones,23,GEN_FWD,Western Bulldogs,,98,671,48,67,19,39.58333333333333,27,54,27,100.0,696,673,739,681,Leg E/F forward-lens delta
+asher-eastham,Asher Eastham,20,GEN_FWD,Gold Coast,,204,584,147,204,57,38.775510204081634,102,204,102,100.0,530,542,537,524,Leg E/F forward-lens delta
+ashton-moir,Ashton Moir,21,GEN_FWD,Carlton,,278,521,147,176,29,19.727891156462583,92,176,84,91.30434782608695,531,561,565,550,Leg E/F forward-lens delta
+avery-thomas,Avery Thomas,19,GEN_DEF,Gold Coast,,560,354,291,560,269,92.43986254295532,282,560,278,98.58156028368793,383,314,342,292,Leg E/F forward-lens delta
+bailey-banfield,Bailey Banfield,28,GEN_DEF,Fremantle,,15,784,3,4,1,33.33333333333333,2,3,1,50.0,797,797,794,797,Leg E/F forward-lens delta
+bailey-dale,Bailey Dale,30,GEN_DEF,Western Bulldogs,,2079,103,1907,1872,-35,-1.8353434714210803,1670,1523,-147,-8.802395209580837,81,107,73,132,Leg E/F forward-lens delta
+bailey-humphrey,Bailey Humphrey,22,GEN_FWD,Gold Coast,,2269,88,1594,2206,612,38.393977415307404,947,2134,1187,125.34318901795143,103,87,142,80,Leg E/F forward-lens delta
+bailey-laurie,Bailey Laurie,24,GEN_FWD,Melbourne,,72,707,40,40,0,0.0,40,40,0,0.0,712,727,685,714,unchanged
+bailey-macdonald,Bailey Macdonald,22,GEN_DEF,Hawthorn,,122,643,75,75,0,0.0,52,75,23,44.230769230769226,640,664,648,645,Leg E/F forward-lens delta
+bailey-scott,Bailey Scott,26,MID,North Melbourne,,53,727,33,33,0,0.0,33,33,0,0.0,735,743,711,734,unchanged
+bailey-smith,Bailey Smith,26,MID,Geelong,,5861,9,5067,5533,466,9.196763370830867,4198,4870,672,16.00762267746546,9,9,9,14,Leg E/F forward-lens delta
+bailey-williams-wb,Bailey Williams,29,GEN_DEF,Western Bulldogs,,646,312,544,493,-51,-9.375,525,365,-160,-30.476190476190478,265,341,224,387,Leg E/F forward-lens delta
+bailey-williams-wc,Bailey J. Williams,26,RUC,West Coast,,2184,92,1632,1762,130,7.965686274509803,1337,1622,285,21.31637995512341,96,116,97,119,Leg E/F forward-lens delta
+balyn-o-brien,Balyn O'Brien,19,GEN_DEF,Port Adelaide,,277,524,135,277,142,105.18518518518518,120,277,157,130.83333333333334,554,471,517,445,Leg E/F forward-lens delta
+bayley-fritsch,Bayley Fritsch,30,GEN_FWD,Melbourne,,188,596,170,112,-58,-34.11764705882353,155,67,-88,-56.774193548387096,499,621,466,656,Leg E/F forward-lens delta
+beau-addinsall,Beau Addinsall,19,MID,Gold Coast,,1115,215,603,1115,512,84.90878938640132,599,1115,516,86.14357262103506,252,200,206,181,Leg E/F forward-lens delta
+beau-mccreery,Beau McCreery,25,GEN_FWD,Collingwood,,221,575,139,208,69,49.64028776978417,106,194,88,83.01886792452831,550,539,533,536,Leg E/F forward-lens delta
+ben-ainsworth,Ben Ainsworth,28,GEN_FWD,Carlton,,278,522,230,144,-86,-37.391304347826086,222,101,-121,-54.5045045045045,425,583,375,608,Leg E/F forward-lens delta
+ben-camporeale,Ben Camporeale,20,MID,Carlton,,359,459,264,359,95,35.984848484848484,209,359,150,71.77033492822966,406,419,394,390,Leg E/F forward-lens delta
+ben-jepson,Ben Jepson,25,MID,Gold Coast,,16,782,13,14,1,7.6923076923076925,10,14,4,40.0,773,776,774,773,Leg E/F forward-lens delta
+ben-keays,Ben Keays,29,GEN_FWD,Adelaide,,412,430,275,319,44,16.0,203,223,20,9.852216748768473,397,439,399,508,Leg E/F forward-lens delta
+ben-king,Ben King,26,KEY_FWD,Gold Coast,,428,422,283,339,56,19.78798586572438,178,250,72,40.44943820224719,387,430,427,477,Leg E/F forward-lens delta
+ben-long,Ben Long,29,GEN_FWD,Gold Coast,,32,758,32,32,0,0.0,32,32,0,0.0,737,748,714,740,unchanged
+ben-mckay,Ben McKay,29,KEY_DEF,Essendon,,46,739,46,46,0,0.0,46,46,0,0.0,699,715,670,701,unchanged
+ben-miller,Ben Miller,27,KEY_DEF,Richmond,,1223,204,860,993,133,15.465116279069768,706,749,43,6.090651558073654,201,211,179,235,Leg E/F forward-lens delta
+ben-murphy,Ben Murphy,19,GEN_DEF,Brisbane,,277,525,135,277,142,105.18518518518518,120,277,157,130.83333333333334,555,472,518,446,Leg E/F forward-lens delta
+benny-barrett,Benny Barrett,20,GEN_FWD,Port Adelaide,,137,632,99,137,38,38.38383838383838,68,137,69,101.47058823529412,606,592,606,577,Leg E/F forward-lens delta
+billy-cootee,Billy Cootee,24,MID,Sydney,,89,681,80,80,0,0.0,73,74,1,1.36986301369863,636,656,598,646,Leg E/F forward-lens delta
+billy-dowling,Billy Dowling,22,GEN_FWD,Adelaide,,126,640,107,121,14,13.084112149532709,94,121,27,28.723404255319153,592,608,561,591,Leg E/F forward-lens delta
+billy-frampton,Billy Frampton,30,KEY_DEF,Collingwood,,173,609,155,100,-55,-35.483870967741936,145,70,-75,-51.724137931034484,519,634,478,649,Leg E/F forward-lens delta
+billy-wilson,Billy Wilson,21,GEN_DEF,Carlton,,274,529,230,230,0,0.0,219,219,0,0.0,426,518,379,513,unchanged
+blake-acres,Blake Acres,31,MID,Carlton,,94,676,63,63,0,0.0,63,63,0,0.0,663,680,623,666,unchanged
+blake-hardwick,Blake Hardwick,29,GEN_DEF,Hawthorn,,450,411,347,356,9,2.5936599423631126,288,252,-36,-12.5,354,421,335,476,Leg E/F forward-lens delta
+blake-howes,Blake Howes,23,GEN_DEF,Melbourne,,320,491,150,295,145,96.66666666666667,53,272,219,413.2075471698113,523,456,644,454,Leg E/F forward-lens delta
+blake-thredgold,Blake Thredgold,19,KEY_DEF,North Melbourne,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",541,361,364,541,177,48.62637362637363,354,541,187,52.824858757062145,344,324,299,303,Leg E/F forward-lens delta
+bo-allan,Bo Allan,20,GEN_DEF,West Coast,,990,228,604,852,248,41.05960264900662,194,737,543,279.8969072164948,251,230,413,237,Leg E/F forward-lens delta
+bobby-hill,Bobby Hill,26,GEN_FWD,Collingwood,,67,712,39,39,0,0.0,39,39,0,0.0,716,729,692,719,unchanged
+bodhi-uwland,Bodhi Uwland,23,GEN_DEF,Gold Coast,,3199,51,2572,3283,711,27.64385692068429,2076,3320,1244,59.92292870905588,52,46,50,37,Leg E/F forward-lens delta
+bodie-ryan,Bodie Ryan,21,GEN_DEF,Hawthorn,,366,456,155,320,165,106.4516129032258,119,320,201,168.9075630252101,520,437,521,409,Leg E/F forward-lens delta
+bradley-close,Bradley Close,28,GEN_FWD,Geelong,,29,765,8,16,8,100.0,3,10,7,233.33333333333334,788,774,790,781,Leg E/F forward-lens delta
+bradley-hill,Bradley Hill,33,GEN_FWD,St Kilda,,811,273,756,702,-54,-7.142857142857142,669,622,-47,-7.025411061285501,218,265,189,271,Leg E/F forward-lens delta
+brady-hough,Brady Hough,23,GEN_DEF,West Coast,,353,462,183,319,136,74.31693989071039,81,296,215,265.4320987654321,483,440,591,424,Leg E/F forward-lens delta
+braeden-campbell,Braeden Campbell,24,GEN_DEF,Sydney,,457,407,160,309,149,93.125,64,295,231,360.9375,512,446,622,427,Leg E/F forward-lens delta
+brandon-starcevich,Brandon Starcevich,27,GEN_DEF,Brisbane,,42,741,42,42,0,0.0,42,42,0,0.0,707,722,681,709,unchanged
+brandon-walker,Brandon Walker,24,GEN_DEF,Fremantle,,114,654,29,65,36,124.13793103448276,29,59,30,103.44827586206897,748,679,724,671,Leg E/F forward-lens delta
+brandon-zerk-thatcher,Brandon Zerk-Thatcher,28,KEY_DEF,Essendon,,247,554,119,120,1,0.8403361344537815,115,91,-24,-20.869565217391305,573,610,522,620,Leg E/F forward-lens delta
+brayden-cook,Brayden Cook,24,MID,Adelaide,,886,255,486,758,272,55.96707818930041,297,717,420,141.41414141414143,286,248,326,245,Leg E/F forward-lens delta
+brayden-fiorini,Brayden Fiorini,29,MID,Essendon,"{'L': 0.9091, 'designations': ['2026'], 'flags': ['return_hc'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",321,490,766,293,-473,-61.74934725848564,700,172,-528,-75.42857142857143,216,459,182,555,Leg E/F forward-lens delta
+brayden-george,Brayden George,22,GEN_FWD,North Melbourne,,319,492,316,319,3,0.949367088607595,225,319,94,41.77777777777778,370,441,370,410,Leg E/F forward-lens delta
+brayden-maynard,Brayden Maynard,30,GEN_DEF,Collingwood,,939,239,883,774,-109,-12.344280860702153,792,553,-239,-30.176767676767675,194,245,168,295,Leg E/F forward-lens delta
+brennan-cox,Brennan Cox,28,KEY_DEF,Fremantle,,452,410,378,368,-10,-2.6455026455026456,366,296,-70,-19.12568306010929,332,411,293,425,Leg E/F forward-lens delta
+brent-daniels,Brent Daniels,27,GEN_FWD,GWS,,1451,174,1233,1260,27,2.18978102189781,1124,1012,-112,-9.9644128113879,149,179,123,193,Leg E/F forward-lens delta
+brodie-grundy,Brodie Grundy,32,RUC,Sydney,,4798,17,4212,4395,183,4.344729344729345,3605,3744,139,3.855755894590846,15,19,11,28,Leg E/F forward-lens delta
+brodie-kemp,Brodie Kemp,25,KEY_FWD,Carlton,,852,265,641,709,68,10.60842433697348,453,569,116,25.607064017660043,237,264,251,290,Leg E/F forward-lens delta
+brody-mihocek,Brody Mihocek,33,KEY_FWD,Melbourne,"{'L': 0.5455, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",11,790,28,25,-3,-10.714285714285714,25,22,-3,-12.0,753,766,744,766,Leg E/F forward-lens delta
+bruce-reville,Bruce Reville,25,MID,Brisbane,,67,713,18,63,45,250.0,7,57,50,714.2857142857143,767,681,782,676,Leg E/F forward-lens delta
+buku-khamis,Buku Khamis,26,KEY_DEF,Western Bulldogs,,85,688,33,43,10,30.303030303030305,19,29,10,52.63157894736842,736,719,756,751,Leg E/F forward-lens delta
+caiden-cleary,Caiden Cleary,21,GEN_FWD,Sydney,,486,386,163,195,32,19.631901840490798,101,195,94,93.06930693069307,507,548,539,535,Leg E/F forward-lens delta
+caleb-daniel,Caleb Daniel,30,GEN_DEF,North Melbourne,,1245,199,1192,1060,-132,-11.073825503355705,1067,796,-271,-25.398313027179007,155,204,132,226,Leg E/F forward-lens delta
+caleb-graham,Caleb Graham,26,KEY_DEF,Gold Coast,,75,704,35,41,6,17.142857142857142,32,32,0,0.0,727,726,715,741,Leg E/F forward-lens delta
+caleb-lewis,Caleb Lewis,23,KEY_FWD,Gold Coast,,219,578,143,219,76,53.14685314685315,136,219,83,61.029411764705884,538,531,491,514,Leg E/F forward-lens delta
+caleb-may,Caleb May,21,RUC,Western Bulldogs,,620,320,408,620,212,51.9607843137255,408,620,212,51.9607843137255,314,298,273,274,Leg E/F forward-lens delta
+caleb-serong,Caleb Serong,25,MID,Fremantle,,4546,19,3478,4002,524,15.066129959746982,2673,3296,623,23.30714552936775,22,23,25,38,Leg E/F forward-lens delta
+caleb-windsor,Caleb Windsor,21,MID,Melbourne,,1638,148,873,1597,724,82.93241695303551,347,1515,1168,336.5994236311239,200,141,303,133,Leg E/F forward-lens delta
+callum-ah-chee,Callum Ah Chee,29,GEN_FWD,Adelaide,,84,689,84,84,0,0.0,84,84,0,0.0,627,650,579,631,unchanged
+callum-brown-ire,Callum M. Brown,26,GEN_FWD,GWS,,25,774,10,11,1,10.0,10,10,0,0.0,783,783,775,782,Leg E/F forward-lens delta
+callum-coleman-jones,Callum Coleman-Jones,27,KEY_FWD,North Melbourne,,42,742,42,42,0,0.0,42,42,0,0.0,708,723,682,710,unchanged
+callum-mills,Callum Mills,29,GEN_DEF,Sydney,,1822,132,1632,1585,-47,-2.8799019607843137,1569,1339,-230,-14.65901848311026,97,143,79,151,Leg E/F forward-lens delta
+callum-wilkie,Callum Wilkie,30,KEY_DEF,St Kilda,,3723,34,3097,3378,281,9.073296738779463,2599,3018,419,16.12158522508657,32,40,27,47,Leg E/F forward-lens delta
+calsher-dear,Calsher Dear,21,KEY_FWD,Hawthorn,,973,231,453,845,392,86.53421633554083,183,803,620,338.7978142076503,299,232,421,225,Leg E/F forward-lens delta
+cameron-mackenzie,Cameron Mackenzie,22,MID,Hawthorn,,1867,124,1181,1854,673,56.98560541913632,669,1801,1132,169.20777279521675,157,110,190,107,Leg E/F forward-lens delta
+cameron-nairn,Cameron Nairn,19,GEN_FWD,Hawthorn,,798,275,422,730,308,72.98578199052133,416,730,314,75.48076923076923,305,258,266,239,Leg E/F forward-lens delta
+cameron-rayner,Cameron Rayner,27,GEN_FWD,Brisbane,,438,417,349,370,21,6.017191977077363,171,192,21,12.280701754385964,352,409,440,539,Leg E/F forward-lens delta
+cameron-zurhaar,Cameron Zurhaar,28,GEN_FWD,North Melbourne,,199,588,173,105,-68,-39.30635838150289,167,67,-100,-59.88023952095808,497,627,445,657,Leg E/F forward-lens delta
+campbell-chesser,Campbell Chesser,23,MID,Carlton,,412,431,149,233,84,56.375838926174495,83,210,127,153.0120481927711,527,516,581,519,Leg E/F forward-lens delta
+campbell-gray,Campbell Gray,23,KEY_DEF,Richmond,,272,533,167,254,87,52.09580838323353,128,276,148,115.625,501,502,503,449,Leg E/F forward-lens delta
+campbell-lake,Campbell Lake,22,GEN_FWD,St Kilda,,148,627,74,142,68,91.8918918918919,66,142,76,115.15151515151516,644,587,616,572,Leg E/F forward-lens delta
+chad-warner,Chad Warner,25,MID,Sydney,,2929,60,2330,2532,202,8.669527896995708,1846,2209,363,19.664138678223186,62,67,59,76,Leg E/F forward-lens delta
+changkuoth-jiath,Changkuoth Jiath,27,GEN_DEF,Melbourne,,26,770,9,12,3,33.33333333333333,5,8,3,60.0,786,780,785,789,Leg E/F forward-lens delta
+charlie-ballard,Charlie Ballard,27,KEY_DEF,Gold Coast,,221,576,105,123,18,17.142857142857142,77,89,12,15.584415584415584,595,606,594,623,Leg E/F forward-lens delta
+charlie-banfield,Charlie Banfield,19,MID,St Kilda,,818,271,300,715,415,138.33333333333334,277,715,438,158.12274368231047,378,262,344,246,Leg E/F forward-lens delta
+charlie-cameron,Charlie Cameron,32,GEN_FWD,Brisbane,,267,538,246,180,-66,-26.82926829268293,230,157,-73,-31.73913043478261,417,554,365,565,Leg E/F forward-lens delta
+charlie-comben,Charlie Comben,25,KEY_DEF,North Melbourne,,746,286,535,659,124,23.177570093457945,352,509,157,44.60227272727273,267,281,302,315,Leg E/F forward-lens delta
+charlie-curnow,Charlie Curnow,29,KEY_FWD,Carlton,,1247,198,1007,966,-41,-4.07149950347567,625,714,89,14.24,178,217,202,247,Leg E/F forward-lens delta
+charlie-edwards,Charlie Edwards,21,MID,Adelaide,,754,284,533,690,157,29.45590994371482,533,690,157,29.45590994371482,270,273,221,255,Leg E/F forward-lens delta
+charlie-nicholls,Charlie Nicholls,20,KEY_FWD,Fremantle,,379,448,282,379,97,34.39716312056738,259,379,120,46.33204633204633,391,404,352,376,Leg E/F forward-lens delta
+charlie-spargo,Charlie Spargo,27,GEN_FWD,Melbourne,,35,751,35,35,0,0.0,35,35,0,0.0,728,739,705,730,unchanged
+charlie-west,Charlie West,20,KEY_FWD,Collingwood,,449,412,166,392,226,136.14457831325302,158,392,234,148.1012658227848,503,394,456,370,Leg E/F forward-lens delta
+chayce-jones,Chayce Jones,26,MID,Adelaide,,113,655,113,113,0,0.0,113,113,0,0.0,581,620,527,598,unchanged
+chris-scerri,Chris Scerri,20,GEN_FWD,Fremantle,,331,481,183,267,84,45.90163934426229,105,238,133,126.66666666666666,484,488,534,488,Leg E/F forward-lens delta
+christian-moraes,Christian Moraes,20,MID,Port Adelaide,,926,242,583,805,222,38.078902229845625,239,703,464,194.14225941422595,255,238,359,249,Leg E/F forward-lens delta
+christian-petracca,Christian Petracca,30,MID,Gold Coast,,2955,59,2801,2433,-368,-13.138164941092468,2421,1929,-492,-20.322180916976457,45,73,34,97,Leg E/F forward-lens delta
+christian-salem,Christian Salem,31,GEN_DEF,Melbourne,,598,334,454,367,-87,-19.162995594713657,416,286,-130,-31.25,298,412,267,439,Leg E/F forward-lens delta
+cillian-bourke,Cillian Bourke,20,GEN_DEF,Essendon,,380,445,184,380,196,106.5217391304348,163,380,217,133.12883435582822,480,402,452,374,Leg E/F forward-lens delta
+cillian-burke,Cillian Burke,23,GEN_DEF,Geelong,,118,648,85,118,33,38.82352941176471,59,118,59,100.0,625,612,630,595,Leg E/F forward-lens delta
+clay-hall,Clay Hall,21,MID,West Coast,,613,328,175,261,86,49.142857142857146,156,261,105,67.3076923076923,494,494,461,466,Leg E/F forward-lens delta
+clayton-oliver,Clayton Oliver,29,MID,GWS,,2549,73,2470,2270,-200,-8.097165991902834,2285,1844,-441,-19.299781181619256,56,83,43,103,Leg E/F forward-lens delta
+cody-anderson,Cody Anderson,20,GEN_FWD,Hawthorn,,196,590,142,196,54,38.028169014084504,98,196,98,100.0,542,545,557,533,Leg E/F forward-lens delta
+cody-angove,Cody Angove,20,MID,GWS,,644,314,496,537,41,8.266129032258064,490,537,47,9.591836734693878,281,326,238,305,Leg E/F forward-lens delta
+cody-curtin,Cody Curtin,19,KEY_FWD,Brisbane,,720,295,217,600,383,176.49769585253458,198,600,402,203.03030303030303,446,303,407,284,Leg E/F forward-lens delta
+cody-weightman,Cody Weightman,25,GEN_FWD,Western Bulldogs,,346,467,181,179,-2,-1.1049723756906076,142,133,-9,-6.338028169014084,487,558,482,580,Leg E/F forward-lens delta
+colby-mckercher,Colby McKercher,21,MID,North Melbourne,,3824,32,3055,3967,912,29.852700490998362,2066,4022,1956,94.675701839303,37,25,51,20,Leg E/F forward-lens delta
+connor-budarick,Connor Budarick,25,GEN_DEF,Western Bulldogs,,197,589,138,127,-11,-7.971014492753622,122,81,-41,-33.60655737704918,553,602,512,638,Leg E/F forward-lens delta
+connor-idun,Connor Idun,26,GEN_DEF,GWS,,1985,114,1479,1682,203,13.725490196078432,1252,1536,284,22.683706070287542,121,126,104,131,Leg E/F forward-lens delta
+connor-macdonald,Connor MacDonald,23,GEN_FWD,Hawthorn,,2263,89,1800,2250,450,25.0,1364,2114,750,54.98533724340176,84,85,95,81,Leg E/F forward-lens delta
+connor-o-sullivan,Connor O'Sullivan,21,KEY_DEF,Geelong,,2962,58,2388,3154,766,32.077051926298154,1708,3277,1569,91.86182669789227,61,53,68,39,Leg E/F forward-lens delta
+connor-rozee,Connor Rozee,26,MID,Port Adelaide,"{'L': 0.9091, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",3068,56,2609,2931,322,12.341893445764661,2172,2459,287,13.213627992633517,50,56,47,65,Leg E/F forward-lens delta
+conor-mckenna,Conor McKenna,30,GEN_FWD,Brisbane,,11,791,10,7,-3,-30.0,10,4,-6,-60.0,784,793,776,796,Leg E/F forward-lens delta
+conor-nash,Conor Nash,28,MID,Hawthorn,,344,470,209,218,9,4.30622009569378,183,128,-55,-30.05464480874317,450,533,422,586,Leg E/F forward-lens delta
+conor-stone,Conor Stone,24,GEN_DEF,GWS,,86,686,48,48,0,0.0,48,48,0,0.0,697,713,662,699,unchanged
+cooper-bell,Cooper Bell,20,KEY_DEF,Gold Coast,,367,453,238,367,129,54.20168067226891,223,367,144,64.57399103139014,424,413,372,384,Leg E/F forward-lens delta
+cooper-duff-tytler,Cooper Duff-Tytler,19,KEY_FWD,West Coast,,1649,147,1577,1632,55,3.487634749524413,1172,1658,486,41.467576791808874,105,134,114,114,Leg E/F forward-lens delta
+cooper-harvey,Cooper Harvey,22,GEN_FWD,North Melbourne,,103,667,87,99,12,13.793103448275861,69,99,30,43.47826086956522,620,637,604,611,Leg E/F forward-lens delta
+cooper-hynes,Cooper Hynes,20,MID,Western Bulldogs,,1173,212,738,1055,317,42.953929539295395,266,954,688,258.64661654135335,226,205,348,199,Leg E/F forward-lens delta
+cooper-lord,Cooper Lord,21,MID,Carlton,,393,440,86,95,9,10.465116279069768,76,95,19,25.0,621,642,595,615,Leg E/F forward-lens delta
+cooper-sharman,Cooper Sharman,26,KEY_FWD,St Kilda,,763,281,512,739,227,44.3359375,328,721,393,119.81707317073172,276,255,315,242,Leg E/F forward-lens delta
+cooper-simpson,Cooper Simpson,21,GEN_DEF,Fremantle,,252,550,221,221,0,0.0,207,207,0,0.0,440,529,397,521,unchanged
+cooper-trembath,Cooper Trembath,21,KEY_FWD,North Melbourne,,1536,163,1207,1755,548,45.401822700911346,212,2109,1897,894.811320754717,152,117,392,82,Leg E/F forward-lens delta
+corey-durdin,Corey Durdin,24,GEN_FWD,Carlton,,55,724,32,52,20,62.5,29,50,21,72.41379310344827,738,700,725,691,Leg E/F forward-lens delta
+corey-wagner,Corey Wagner,29,GEN_DEF,Fremantle,,42,743,36,29,-7,-19.444444444444446,35,29,-6,-17.142857142857142,724,757,706,752,Leg E/F forward-lens delta
+corey-warner,Corey Warner,23,GEN_FWD,Sydney,,79,700,51,51,0,0.0,29,29,0,0.0,687,706,726,753,unchanged
+dan-houston,Dan Houston,29,GEN_DEF,Collingwood,,1239,200,994,1037,43,4.325955734406438,925,837,-88,-9.513513513513514,180,206,145,221,Leg E/F forward-lens delta
+dane-rampe,Dane Rampe,36,GEN_DEF,Sydney,,12,788,12,12,0,0.0,12,12,0,0.0,776,781,766,775,unchanged
+daniel-annable,Daniel Annable,19,MID,Brisbane,,2058,108,1192,1969,777,65.18456375838926,1192,1969,777,65.18456375838926,156,98,109,92,Leg E/F forward-lens delta
+daniel-butler,Daniel Butler,30,GEN_FWD,St Kilda,,20,779,20,20,0,0.0,20,20,0,0.0,765,770,754,768,unchanged
+daniel-curtin,Daniel Curtin,21,MID,Adelaide,,2501,75,1699,2344,645,37.9635079458505,1148,2328,1180,102.78745644599303,92,78,118,68,Leg E/F forward-lens delta
+daniel-mcstay,Daniel McStay,31,KEY_FWD,Collingwood,,63,715,49,52,3,6.122448979591836,43,40,-3,-6.976744186046512,693,701,679,715,Leg E/F forward-lens delta
+daniel-rioli,Daniel Rioli,29,GEN_DEF,Gold Coast,,784,278,657,627,-30,-4.5662100456621,605,470,-135,-22.31404958677686,234,295,204,335,Leg E/F forward-lens delta
+daniel-turner,Daniel Turner,24,KEY_DEF,Melbourne,,1585,155,1128,1593,465,41.22340425531915,899,1616,717,79.75528364849833,166,142,149,122,Leg E/F forward-lens delta
+dante-visentini,Dante Visentini,23,RUC,Port Adelaide,,914,248,642,798,156,24.299065420560748,558,765,207,37.096774193548384,235,241,217,230,Leg E/F forward-lens delta
+darcy-byrne-jones,Darcy Byrne-Jones,31,GEN_DEF,Port Adelaide,,346,468,319,155,-164,-51.410658307210035,302,109,-193,-63.90728476821192,366,578,324,600,Leg E/F forward-lens delta
+darcy-cameron,Darcy Cameron,31,RUC,Collingwood,,1561,159,1177,1443,266,22.59983007646559,874,1158,284,32.494279176201374,158,158,158,174,Leg E/F forward-lens delta
+darcy-fogarty,Darcy Fogarty,27,KEY_FWD,Adelaide,,398,439,222,271,49,22.07207207207207,162,201,39,24.074074074074073,437,482,454,526,Leg E/F forward-lens delta
+darcy-fort,Darcy Fort,33,RUC,Geelong,,81,696,75,33,-42,-56.00000000000001,68,33,-35,-51.470588235294116,641,744,607,735,Leg E/F forward-lens delta
+darcy-gardiner,Darcy Gardiner,31,KEY_DEF,Brisbane,,45,740,45,45,0,0.0,45,45,0,0.0,701,718,676,705,unchanged
+darcy-jones,Darcy Jones,22,GEN_FWD,GWS,"{'L': 1.0, 'designations': ['2025'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",1628,151,1010,1508,498,49.306930693069305,700,1545,845,120.71428571428571,177,150,183,130,Leg E/F forward-lens delta
+darcy-moore,Darcy Moore,30,KEY_DEF,Collingwood,,257,544,140,133,-7,-5.0,103,92,-11,-10.679611650485436,548,596,535,619,Leg E/F forward-lens delta
+darcy-parish,Darcy Parish,29,MID,Essendon,,1460,172,1390,1202,-188,-13.525179856115107,1283,882,-401,-31.254871395167577,133,187,101,208,Leg E/F forward-lens delta
+darcy-wilmot,Darcy Wilmot,23,GEN_DEF,Brisbane,,3869,29,3183,3827,644,20.23248507697141,2397,3742,1345,56.11180642469754,30,28,36,29,Leg E/F forward-lens delta
+darcy-wilson,Darcy Wilson,21,GEN_FWD,St Kilda,,2366,83,1924,2484,560,29.10602910602911,1544,2607,1063,68.84715025906736,78,71,81,63,Leg E/F forward-lens delta
+darragh-joyce,Darragh Joyce,29,KEY_DEF,Brisbane,,10,795,5,6,1,20.0,5,7,2,40.0,792,796,786,793,Leg E/F forward-lens delta
+dayne-zorko,Dayne Zorko,37,GEN_DEF,Brisbane,,1248,197,1224,1225,1,0.08169934640522876,1138,1138,0,0.0,151,184,119,175,Leg E/F forward-lens delta
+deven-robertson,Deven Robertson,25,MID,West Coast,"{'L': 0.8182, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",251,552,141,150,9,6.382978723404255,59,76,17,28.8135593220339,545,579,631,642,Leg E/F forward-lens delta
+dion-prestia,Dion Prestia,34,MID,Richmond,,472,398,427,293,-134,-31.381733021077284,418,283,-135,-32.29665071770335,304,460,264,442,Leg E/F forward-lens delta
+dougal-howard,Dougal Howard,30,KEY_DEF,St Kilda,,91,677,69,46,-23,-33.33333333333333,59,32,-27,-45.76271186440678,652,716,632,742,Leg E/F forward-lens delta
+dylan-moore,Dylan Moore,27,GEN_FWD,Hawthorn,,1572,157,1413,1462,49,3.4677990092002826,770,1214,444,57.66233766233766,129,155,172,165,Leg E/F forward-lens delta
+dylan-patterson,Dylan Patterson,19,GEN_DEF,Gold Coast,,987,230,550,987,437,79.45454545454545,550,987,437,79.45454545454545,263,212,219,196,Leg E/F forward-lens delta
+dylan-stephens,Dylan Stephens,25,MID,North Melbourne,,483,387,258,372,114,44.18604651162791,146,236,90,61.64383561643836,409,406,476,491,Leg E/F forward-lens delta
+dyson-sharp,Dyson Sharp,19,MID,Essendon,,1708,140,1350,1749,399,29.555555555555557,502,1635,1133,225.6972111553785,137,118,231,117,Leg E/F forward-lens delta
+eamonn-armstrong,Eamonn Armstrong,20,GEN_DEF,St Kilda,,165,615,120,165,45,37.5,83,165,82,98.79518072289156,571,569,582,557,Leg E/F forward-lens delta
+ed-langdon,Ed Langdon,30,GEN_DEF,Melbourne,,677,304,658,426,-232,-35.25835866261398,598,257,-341,-57.02341137123745,233,368,207,472,Leg E/F forward-lens delta
+ed-richards,Ed Richards,27,MID,Western Bulldogs,,3431,44,2853,3159,306,10.725552050473187,2439,2703,264,10.824108241082412,43,50,33,59,Leg E/F forward-lens delta
+edward-allan,Edward Allan,22,MID,Collingwood,,562,351,173,402,229,132.3699421965318,112,336,224,200.0,498,387,529,403,Leg E/F forward-lens delta
+elijah-hewett,Elijah Hewett,22,MID,West Coast,,841,266,268,622,354,132.08955223880596,149,553,404,271.1409395973154,402,296,471,296,Leg E/F forward-lens delta
+elijah-hollands,Elijah Hollands,24,GEN_FWD,Carlton,,872,258,431,711,280,64.96519721577727,284,669,385,135.56338028169014,303,263,338,258,Leg E/F forward-lens delta
+elijah-tsatas,Elijah Tsatas,22,MID,Essendon,,1402,179,743,1149,406,54.643337819650064,519,1112,593,114.25818882466281,224,194,227,182,Leg E/F forward-lens delta
+elliot-himmelberg,Elliott Himmelberg,28,KEY_FWD,Adelaide,,121,645,46,50,4,8.695652173913043,46,43,-3,-6.521739130434782,700,708,671,706,Leg E/F forward-lens delta
+elliot-yeo,Elliot Yeo,33,MID,West Coast,,703,298,666,280,-386,-57.95795795795796,617,264,-353,-57.212317666126424,232,469,203,464,Leg E/F forward-lens delta
+eric-hipwood,Eric Hipwood,29,KEY_FWD,Brisbane,,89,682,62,54,-8,-12.903225806451612,46,46,0,0.0,665,693,672,702,Leg E/F forward-lens delta
+errol-gulden,Errol Gulden,24,MID,Sydney,,5857,10,3959,5315,1356,34.25107350340995,3181,5119,1938,60.924237661112855,19,12,16,12,Leg E/F forward-lens delta
+esava-ratugolea,Esava Ratugolea,28,KEY_DEF,Port Adelaide,"{'L': 0.6818, 'designations': ['2026'], 'flags': ['return_hc'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",96,672,86,93,7,8.13953488372093,85,88,3,3.5294117647058822,622,645,578,624,Leg E/F forward-lens delta
+ethan-read,Ethan Read,21,KEY_FWD,Gold Coast,,1365,184,487,1296,809,166.11909650924025,178,1207,1029,578.0898876404494,285,174,428,166,Leg E/F forward-lens delta
+ewan-mackinlay,Ewan Mackinlay,23,GEN_FWD,Port Adelaide,"{'L': 0.4091, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",59,718,42,53,11,26.190476190476193,23,46,23,100.0,709,694,748,703,Leg E/F forward-lens delta
+finlay-macrae,Finlay Macrae,24,MID,West Coast,,109,657,61,61,0,0.0,61,61,0,0.0,667,685,626,667,unchanged
+finn-callaghan,Finn Callaghan,23,MID,GWS,,5491,11,4416,5416,1000,22.644927536231883,3218,5168,1950,60.596643878185205,12,11,14,11,Leg E/F forward-lens delta
+finn-maginness,Finn Maginness,25,GEN_FWD,Hawthorn,,35,752,35,35,0,0.0,35,35,0,0.0,729,740,707,731,unchanged
+finn-o-sullivan,Finn O'Sullivan,20,MID,North Melbourne,,3390,47,2717,3550,833,30.65881486934118,1823,3890,2067,113.38453099286889,46,35,60,22,Leg E/F forward-lens delta
+finnbar-maley,Finnbar Maley,23,KEY_FWD,Adelaide,,259,542,182,141,-41,-22.52747252747253,91,141,50,54.94505494505495,486,589,567,573,Leg E/F forward-lens delta
+finnegan-davis,Finnegan Davis,19,GEN_DEF,GWS,,464,401,225,464,239,106.22222222222221,200,464,264,132.0,431,353,402,338,Leg E/F forward-lens delta
+flynn-perez,Flynn Perez,25,GEN_DEF,Hawthorn,,13,786,4,7,3,75.0,2,6,4,200.0,794,794,795,795,Leg E/F forward-lens delta
+flynn-riley,Flynn Riley,22,RUC,Carlton,,620,321,408,620,212,51.9607843137255,408,620,212,51.9607843137255,315,299,274,275,Leg E/F forward-lens delta
+flynn-young,Flynn Young,24,GEN_FWD,Carlton,,12,789,9,7,-2,-22.22222222222222,5,7,2,40.0,787,795,787,794,Leg E/F forward-lens delta
+francis-evans,Francis Evans,25,GEN_FWD,Carlton,,166,614,82,124,42,51.21951219512195,48,90,42,87.5,632,604,663,622,Leg E/F forward-lens delta
+fred-rodriguez,Fred Rodriguez,19,MID,West Coast,,494,378,239,494,255,106.69456066945607,213,494,281,131.92488262910797,423,338,389,320,Leg E/F forward-lens delta
+george-hewett,George Hewett,31,MID,Carlton,,1541,162,1355,1215,-140,-10.33210332103321,1185,937,-248,-20.928270042194093,136,185,110,201,Leg E/F forward-lens delta
+george-stevens,George Stevens,21,MID,Geelong,,353,463,145,308,163,112.41379310344828,100,308,208,208.0,534,447,542,416,Leg E/F forward-lens delta
+george-wardlaw,George Wardlaw,22,MID,North Melbourne,,3104,55,2156,3082,926,42.949907235621524,1536,3080,1544,100.52083333333333,67,54,83,46,Leg E/F forward-lens delta
+griffin-logue,Griffin Logue,28,KEY_DEF,North Melbourne,,131,637,95,100,5,5.263157894736842,89,84,-5,-5.617977528089887,615,635,572,632,Leg E/F forward-lens delta
+gryan-miers,Gryan Miers,27,GEN_FWD,Geelong,,1893,123,1567,1727,160,10.21059349074665,1155,1460,305,26.406926406926406,106,121,115,136,Leg E/F forward-lens delta
+hamish-davis,Hamish Davis,20,MID,West Coast,,923,245,640,848,208,32.5,267,769,502,188.01498127340824,238,231,347,227,Leg E/F forward-lens delta
+harley-barker,Harley Barker,19,MID,Geelong,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",753,285,507,753,246,48.5207100591716,496,753,257,51.81451612903226,277,251,234,232,Leg E/F forward-lens delta
+harley-reid,Harley Reid,21,MID,West Coast,,3348,48,2643,3496,853,32.27393113885736,1881,3539,1658,88.14460393407761,49,37,58,33,Leg E/F forward-lens delta
+harris-andrews,Harris Andrews,30,KEY_DEF,Brisbane,,1730,138,1561,1466,-95,-6.085842408712364,1417,1244,-173,-12.208892025405788,109,154,88,161,Leg E/F forward-lens delta
+harrison-coe,Harrison Coe,27,RUC,Collingwood,,254,546,166,254,88,53.01204819277109,166,254,88,53.01204819277109,504,503,448,473,Leg E/F forward-lens delta
+harrison-himmelberg,Harrison Himmelberg,30,GEN_DEF,GWS,,443,414,96,318,222,231.25,47,187,140,297.8723404255319,611,442,666,541,Leg E/F forward-lens delta
+harrison-jones,Harrison Jones,25,KEY_FWD,Essendon,,338,476,86,143,57,66.27906976744185,38,87,49,128.94736842105263,623,584,697,625,Leg E/F forward-lens delta
+harrison-oliver,Harrison Oliver,20,GEN_DEF,GWS,,610,330,371,558,187,50.40431266846361,369,558,189,51.21951219512195,342,315,291,293,Leg E/F forward-lens delta
+harrison-petty,Harrison Petty,27,KEY_DEF,Melbourne,,155,622,89,109,20,22.47191011235955,51,70,19,37.254901960784316,619,624,653,650,Leg E/F forward-lens delta
+harrison-ramm,Harrison Ramm,20,KEY_DEF,Port Adelaide,,322,488,131,295,164,125.1908396946565,124,295,171,137.90322580645162,561,457,506,428,Leg E/F forward-lens delta
+harry-armstrong,Harry Armstrong,20,KEY_FWD,Richmond,,877,257,561,774,213,37.967914438502675,265,691,426,160.75471698113208,261,246,349,253,Leg E/F forward-lens delta
+harry-barnett,Harry Barnett,22,RUC,West Coast,,625,317,561,572,11,1.9607843137254901,493,572,79,16.024340770791078,262,311,236,288,Leg E/F forward-lens delta
+harry-charleson,Harry Charleson,20,GEN_DEF,Carlton,,269,537,194,269,75,38.659793814432994,135,269,134,99.25925925925925,465,484,493,455,Leg E/F forward-lens delta
+harry-cunningham,Harry Cunningham,33,GEN_DEF,Sydney,,3,800,3,1,-2,-66.66666666666666,2,1,-1,-50.0,798,800,796,800,Leg E/F forward-lens delta
+harry-dean,Harry Dean,19,KEY_DEF,Carlton,,2052,109,1918,2099,181,9.436913451511991,1208,2304,1096,90.72847682119205,79,92,107,70,Leg E/F forward-lens delta
+harry-demattia,Harry DeMattia,21,MID,Collingwood,,488,384,476,488,12,2.5210084033613445,476,488,12,2.5210084033613445,288,344,242,326,Leg E/F forward-lens delta
+harry-edwards,Harry Edwards,26,KEY_DEF,West Coast,"{'L': 0.9091, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",175,605,96,103,7,7.291666666666667,63,69,6,9.523809523809524,612,630,624,651,Leg E/F forward-lens delta
+harry-kyle,Harry Kyle,19,GEN_DEF,Sydney,,924,244,468,845,377,80.55555555555556,468,845,377,80.55555555555556,291,233,243,217,Leg E/F forward-lens delta
+harry-mckay,Harry McKay,29,KEY_FWD,Carlton,,1853,128,1548,1619,71,4.58656330749354,1073,1192,119,11.09040074557316,110,138,131,170,Leg E/F forward-lens delta
+harry-morrison,Harry Morrison,28,MID,Hawthorn,,50,733,28,28,0,0.0,28,28,0,0.0,754,760,735,757,unchanged
+harry-o-farrell,Harry O'Farrell,20,KEY_DEF,Carlton,"{'L': 1.0, 'designations': ['2025'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",861,261,617,887,270,43.76012965964344,296,905,609,205.74324324324326,246,223,328,203,Leg E/F forward-lens delta
+harry-perryman,Harry Perryman,28,GEN_DEF,Collingwood,,175,606,115,105,-10,-8.695652173913043,100,66,-34,-34.0,577,628,543,661,Leg E/F forward-lens delta
+harry-rowston,Harry Rowston,22,MID,GWS,,614,326,186,364,178,95.6989247311828,129,303,174,134.88372093023256,477,417,500,420,Leg E/F forward-lens delta
+harry-schoenberg,Harry Schoenberg,25,MID,Adelaide,,56,721,56,56,0,0.0,56,56,0,0.0,674,689,638,678,unchanged
+harry-sharp,Harry Sharp,24,GEN_FWD,Brisbane,,105,662,59,89,30,50.847457627118644,41,79,38,92.6829268292683,669,647,684,639,Leg E/F forward-lens delta
+harry-sheezel,Harry Sheezel,22,MID,North Melbourne,,7964,3,6983,8133,1150,16.46856651868824,5564,8130,2566,46.11790079079799,2,2,2,1,Leg E/F forward-lens delta
+harvey-gallagher,Harvey Gallagher,23,GEN_DEF,Western Bulldogs,,135,635,84,84,0,0.0,58,58,0,0.0,628,651,633,674,unchanged
+harvey-harrison,Harvey Harrison,23,GEN_FWD,Collingwood,,60,716,42,42,0,0.0,23,24,1,4.3478260869565215,710,724,749,762,Leg E/F forward-lens delta
+harvey-johnston,Harvey Johnston,21,GEN_DEF,West Coast,,282,517,122,170,48,39.34426229508197,75,163,88,117.33333333333333,570,567,596,561,Leg E/F forward-lens delta
+harvey-langford,Harvey Langford,20,MID,Melbourne,,2487,76,1790,2490,700,39.10614525139665,1039,2624,1585,152.5505293551492,85,70,136,62,Leg E/F forward-lens delta
+harvey-thomas,Harvey Thomas,21,GEN_FWD,GWS,,2524,74,2139,2535,396,18.513323983169705,1676,2573,897,53.52028639618138,68,66,72,64,Leg E/F forward-lens delta
+hayden-mclean,Hayden McLean,27,KEY_FWD,Sydney,,586,339,378,418,40,10.582010582010582,304,353,49,16.11842105263158,333,376,322,393,Leg E/F forward-lens delta
+hayden-young,Hayden Young,25,MID,Fremantle,,2732,66,1742,2112,370,21.23995407577497,1381,1796,415,30.050687907313538,89,91,91,108,Leg E/F forward-lens delta
+heath-chapman,Heath Chapman,24,GEN_DEF,Fremantle,,607,332,355,590,235,66.19718309859155,205,600,395,192.6829268292683,350,307,398,285,Leg E/F forward-lens delta
+henry-hustwaite,Henry Hustwaite,22,MID,Hawthorn,,342,473,247,247,0,0.0,195,198,3,1.5384615384615385,415,506,411,529,Leg E/F forward-lens delta
+henry-smith,Henry Smith,24,KEY_FWD,Brisbane,,157,620,156,156,0,0.0,156,156,0,0.0,518,577,462,567,unchanged
+hudson-o-keeffe,Hudson O'Keeffe,22,KEY_FWD,Carlton,,378,449,115,258,143,124.34782608695652,114,258,144,126.3157894736842,578,499,525,471,Leg E/F forward-lens delta
+hugh-bond,Hugh Bond,22,GEN_DEF,Adelaide,,222,574,75,129,54,72.0,52,99,47,90.38461538461539,642,599,649,612,Leg E/F forward-lens delta
+hugh-boxshall,Hugh Boxshall,20,MID,St Kilda,,905,250,196,813,617,314.7959183673469,158,718,560,354.4303797468354,463,237,457,244,Leg E/F forward-lens delta
+hugh-davies,Hugh Davies,22,KEY_DEF,Fremantle,,305,498,283,283,0,0.0,214,279,65,30.373831775700932,388,468,385,443,Leg E/F forward-lens delta
+hugh-mccluggage,Hugh McCluggage,28,MID,Brisbane,,1903,121,1196,1629,433,36.20401337792642,882,1340,458,51.92743764172335,154,136,153,150,Leg E/F forward-lens delta
+hugo-garcia,Hugo Garcia,21,MID,St Kilda,,2641,70,2040,2802,762,37.35294117647059,1561,2859,1298,83.15182575272262,74,59,80,54,Leg E/F forward-lens delta
+hugo-hall-kahan,Hugo Hall-Kahan,23,GEN_DEF,Adelaide,,107,659,31,98,67,216.1290322580645,29,98,69,237.93103448275863,743,640,727,613,Leg E/F forward-lens delta
+hugo-mikunda,Hugo Mikunda,19,GEN_FWD,North Melbourne,,392,442,191,392,201,105.23560209424083,171,392,221,129.23976608187135,471,395,441,371,Leg E/F forward-lens delta
+hugo-ralphsmith,Hugo Ralphsmith,25,MID,Richmond,,59,719,34,34,0,0.0,34,34,0,0.0,732,741,708,732,unchanged
+hunter-clark,Hunter Clark,27,GEN_DEF,St Kilda,,55,725,55,55,0,0.0,55,55,0,0.0,677,692,639,679,unchanged
+hunter-holmes,Hunter Holmes,19,MID,Geelong,,732,293,373,732,359,96.24664879356568,356,732,376,105.61797752808988,336,257,298,238,Leg E/F forward-lens delta
+hussien-el-achkar,Hussien El Achkar,19,GEN_FWD,Essendon,,481,390,176,401,225,127.84090909090908,157,401,244,155.4140127388535,493,388,460,365,Leg E/F forward-lens delta
+iliro-smit,Iliro Smit,21,RUC,Collingwood,,308,495,308,308,0,0.0,280,308,28,10.0,373,448,343,417,Leg E/F forward-lens delta
+indy-cotton,Indy Cotton,19,GEN_DEF,Adelaide,,277,526,135,277,142,105.18518518518518,120,277,157,130.83333333333334,556,473,519,447,Leg E/F forward-lens delta
+isaac-cumming,Isaac Cumming,28,GEN_DEF,Adelaide,,70,709,40,39,-1,-2.5,39,39,0,0.0,713,730,693,720,Leg E/F forward-lens delta
+isaac-heeney,Isaac Heeney,30,MID,Sydney,,4242,21,3983,3592,-391,-9.816721064524229,3398,2902,-496,-14.596821659799883,18,32,13,51,Leg E/F forward-lens delta
+isaac-kako,Isaac Kako,20,GEN_FWD,Essendon,,1438,176,1134,1363,229,20.19400352733686,506,1326,820,162.05533596837944,164,165,230,152,Leg E/F forward-lens delta
+isaac-keeler,Isaac Keeler,22,KEY_FWD,St Kilda,,425,425,103,219,116,112.62135922330097,142,219,77,54.22535211267606,598,532,483,515,Leg E/F forward-lens delta
+isaac-quaynor,Isaac Quaynor,26,GEN_DEF,Collingwood,,579,342,317,426,109,34.38485804416404,213,287,74,34.74178403755869,369,369,390,437,Leg E/F forward-lens delta
+isaiah-dudley,Isaiah Dudley,23,GEN_FWD,Fremantle,,84,690,43,75,32,74.4186046511628,17,67,50,294.11764705882354,703,665,759,658,Leg E/F forward-lens delta
+izak-rankine,Izak Rankine,26,GEN_FWD,Adelaide,,3011,57,2456,2702,246,10.01628664495114,2016,2284,268,13.293650793650794,57,62,54,71,Leg E/F forward-lens delta
+jack-bowes,Jack Bowes,28,MID,Geelong,,123,642,107,107,0,0.0,107,107,0,0.0,593,625,532,603,unchanged
+jack-buckley,Jack Buckley,29,KEY_DEF,GWS,,737,290,625,581,-44,-7.04,294,418,124,42.17687074829932,242,309,329,354,Leg E/F forward-lens delta
+jack-buller,Jack Buller,25,KEY_FWD,Collingwood,,77,702,52,53,1,1.9230769230769231,28,49,21,75.0,682,695,736,696,Leg E/F forward-lens delta
+jack-carroll,Jack Carroll,24,MID,St Kilda,,95,674,38,83,45,118.42105263157893,29,73,44,151.72413793103448,718,652,728,647,Leg E/F forward-lens delta
+jack-crisp,Jack Crisp,33,MID,Collingwood,,671,306,625,342,-283,-45.28,561,319,-242,-43.13725490196079,243,428,216,411,Leg E/F forward-lens delta
+jack-dalton,Jack Dalton,19,GEN_FWD,Hawthorn,,576,344,274,527,253,92.33576642335767,260,527,267,102.69230769230768,398,327,351,308,Leg E/F forward-lens delta
+jack-darling,Jack Darling,34,KEY_FWD,North Melbourne,,367,454,321,321,0,0.0,289,289,0,0.0,364,436,332,433,unchanged
+jack-ginnivan,Jack Ginnivan,24,GEN_FWD,Collingwood,,2064,107,1651,1983,332,20.109024833434283,1326,1918,592,44.645550527903474,95,97,98,98,Leg E/F forward-lens delta
+jack-graham,Jack Graham,28,MID,West Coast,,572,349,332,272,-60,-18.072289156626507,261,177,-84,-32.18390804597701,358,481,350,548,Leg E/F forward-lens delta
+jack-gunston,Jack Gunston,35,KEY_FWD,Hawthorn,,1284,192,1000,1000,0,0.0,870,877,7,0.8045977011494253,179,210,159,210,Leg E/F forward-lens delta
+jack-henderson,Jack Henderson,27,GEN_FWD,Melbourne,,4,799,3,3,0,0.0,2,3,1,50.0,799,799,797,798,Leg E/F forward-lens delta
+jack-henry,Jack Henry,28,KEY_DEF,Geelong,,243,559,190,185,-5,-2.631578947368421,175,127,-48,-27.42857142857143,474,552,433,587,Leg E/F forward-lens delta
+jack-higgins,Jack Higgins,27,GEN_FWD,St Kilda,,186,601,168,141,-27,-16.071428571428573,138,67,-71,-51.449275362318836,500,590,487,659,Leg E/F forward-lens delta
+jack-hutchinson,Jack Hutchinson,25,MID,West Coast,,72,708,8,27,19,237.5,3,25,22,733.3333333333333,789,762,791,761,Leg E/F forward-lens delta
+jack-ison,Jack Ison,19,GEN_FWD,Carlton,,492,380,196,430,234,119.38775510204083,176,430,254,144.3181818181818,464,364,432,346,Leg E/F forward-lens delta
+jack-lukosius,Jack Lukosius,26,KEY_FWD,Port Adelaide,,1467,170,1027,1150,123,11.976630963972736,940,981,41,4.361702127659575,174,193,144,198,Leg E/F forward-lens delta
+jack-martin,Jack Martin,32,GEN_FWD,Geelong,,96,673,96,96,0,0.0,96,96,0,0.0,613,641,558,614,unchanged
+jack-ough,Jack Ough,20,MID,GWS,,427,423,319,427,108,33.85579937304075,284,427,143,50.352112676056336,367,366,339,349,Leg E/F forward-lens delta
+jack-payne,Jack Payne,27,KEY_DEF,Brisbane,"{'L': 1.0, 'designations': ['2025'], 'flags': ['return_hc'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",219,579,153,146,-7,-4.57516339869281,139,120,-19,-13.66906474820144,522,581,486,592,Leg E/F forward-lens delta
+jack-ross,Jack Ross,26,MID,Richmond,,2169,93,1771,1842,71,4.009034443817053,1542,1603,61,3.955901426718547,87,112,82,124,Leg E/F forward-lens delta
+jack-scrimshaw,Jack Scrimshaw,28,GEN_DEF,Hawthorn,,175,607,73,79,6,8.21917808219178,55,55,0,0.0,647,657,640,680,Leg E/F forward-lens delta
+jack-silvagni,Jack Silvagni,29,KEY_DEF,St Kilda,,677,305,595,544,-51,-8.571428571428571,431,406,-25,-5.800464037122969,253,322,255,361,Leg E/F forward-lens delta
+jack-sinclair,Jack Sinclair,31,GEN_DEF,St Kilda,,3306,50,2907,2829,-78,-2.683178534571723,2507,2411,-96,-3.8292780215396887,41,58,29,67,Leg E/F forward-lens delta
+jack-steele,Jack Steele,31,MID,Melbourne,,1693,141,1532,1341,-191,-12.467362924281984,1369,1021,-348,-25.4200146092038,114,166,94,192,Leg E/F forward-lens delta
+jack-viney,Jack Viney,32,MID,Melbourne,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': ['return_hc'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",427,424,614,509,-105,-17.100977198697066,572,358,-214,-37.41258741258741,248,334,211,392,Leg E/F forward-lens delta
+jack-watkins,Jack Watkins,26,MID,Port Adelaide,,2,801,1,1,0,0.0,1,1,0,0.0,801,801,800,801,unchanged
+jack-whitlock,Jack Whitlock,20,KEY_FWD,Port Adelaide,,1268,194,876,1227,351,40.06849315068493,287,1194,907,316.0278745644599,198,183,336,169,Leg E/F forward-lens delta
+jack-williams,Jack Williams,23,KEY_FWD,West Coast,,561,353,288,438,150,52.083333333333336,173,406,233,134.68208092485548,385,359,437,362,Leg E/F forward-lens delta
+jackson-archer,Jackson Archer,23,GEN_DEF,North Melbourne,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",75,705,52,52,0,0.0,29,29,0,0.0,683,702,729,754,unchanged
+jackson-macrae,Jackson Macrae,32,MID,St Kilda,,258,543,222,159,-63,-28.37837837837838,209,119,-90,-43.0622009569378,438,573,395,594,Leg E/F forward-lens delta
+jackson-mead,Jackson Mead,25,GEN_FWD,Port Adelaide,,53,728,38,38,0,0.0,38,38,0,0.0,719,733,698,723,unchanged
+jacob-farrow,Jacob Farrow,19,GEN_DEF,Essendon,,2245,91,1301,2494,1193,91.69869331283628,289,3129,2840,982.6989619377163,140,69,333,43,Leg E/F forward-lens delta
+jacob-hopper,Jacob Hopper,29,MID,Richmond,,124,641,124,124,0,0.0,124,124,0,0.0,566,605,507,588,unchanged
+jacob-konstanty,Jacob Konstanty,22,GEN_FWD,North Melbourne,,237,564,119,143,24,20.168067226890756,83,109,26,31.32530120481928,574,585,583,601,Leg E/F forward-lens delta
+jacob-molier,Jacob Molier,20,RUC,Geelong,,494,379,421,494,73,17.339667458432302,421,494,73,17.339667458432302,306,339,261,321,Leg E/F forward-lens delta
+jacob-moss,Jacob Moss,22,KEY_FWD,Port Adelaide,,278,523,181,278,97,53.591160220994475,173,278,105,60.69364161849711,488,470,438,444,Leg E/F forward-lens delta
+jacob-newton,Jacob Newton,20,GEN_FWD,West Coast,"{'L': 0.8636, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",149,625,99,118,19,19.19191919191919,68,118,50,73.52941176470588,607,613,608,596,Leg E/F forward-lens delta
+jacob-van-rooyen,Jacob Van Rooyen,23,KEY_FWD,Melbourne,,1057,224,513,696,183,35.67251461988304,365,673,308,84.38356164383562,275,270,294,257,Leg E/F forward-lens delta
+jacob-wehr,Jacob Wehr,28,GEN_DEF,Port Adelaide,,21,778,11,11,0,0.0,11,11,0,0.0,778,784,769,779,unchanged
+jacob-weitering,Jacob Weitering,29,KEY_DEF,Carlton,,1270,193,1124,1135,11,0.9786476868327402,992,880,-112,-11.29032258064516,167,196,139,209,Leg E/F forward-lens delta
+jade-gresham,Jade Gresham,29,GEN_FWD,Essendon,,50,734,50,50,0,0.0,50,50,0,0.0,689,709,657,692,unchanged
+jaeger-o-meara,Jaeger O'Meara,33,MID,Fremantle,,194,591,194,194,0,0.0,194,194,0,0.0,466,549,414,537,unchanged
+jagga-smith,Jagga Smith,20,MID,Carlton,,3512,43,924,3699,2775,300.32467532467535,742,4062,3320,447.4393530997305,190,31,175,19,Leg E/F forward-lens delta
+jai-culley,Jai Culley,23,MID,Melbourne,"{'L': 0.6818, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",78,701,67,76,9,13.432835820895523,57,76,19,33.33333333333333,653,662,635,643,Leg E/F forward-lens delta
+jai-murray,Jai Murray,19,MID,Gold Coast,,1184,209,636,1133,497,78.14465408805032,633,1133,500,78.98894154818325,240,198,198,177,Leg E/F forward-lens delta
+jai-newcombe,Jai Newcombe,25,MID,Hawthorn,,4125,24,3310,4057,747,22.56797583081571,2443,3882,1439,58.90298812934917,26,22,32,23,Leg E/F forward-lens delta
+jai-saxena,Jai Saxena,19,GEN_FWD,Collingwood,,229,567,111,229,118,106.30630630630631,99,229,130,131.31313131313132,583,521,547,496,Leg E/F forward-lens delta
+jai-serong,Jai Serong,23,GEN_DEF,Sydney,,116,652,102,116,14,13.725490196078432,86,116,30,34.883720930232556,599,616,576,597,Leg E/F forward-lens delta
+jaime-uhr-henry,Jaime Uhr-Henry,23,RUC,Hawthorn,,480,392,408,480,72,17.647058823529413,408,480,72,17.647058823529413,316,347,275,329,Leg E/F forward-lens delta
+jake-bowey,Jake Bowey,24,GEN_DEF,Melbourne,,3347,49,2441,3159,718,29.414174518639904,1819,3104,1285,70.64321055525014,59,51,61,45,Leg E/F forward-lens delta
+jake-kolodjashnij,Jake Kolodjashnij,31,KEY_DEF,Geelong,,37,748,37,37,0,0.0,37,37,0,0.0,720,735,699,725,unchanged
+jake-lever,Jake Lever,30,KEY_DEF,Melbourne,,577,343,535,412,-123,-22.990654205607477,497,313,-184,-37.02213279678068,268,378,233,415,Leg E/F forward-lens delta
+jake-lloyd,Jake Lloyd,33,GEN_DEF,Sydney,,104,665,101,26,-75,-74.25742574257426,99,24,-75,-75.75757575757575,601,763,548,763,Leg E/F forward-lens delta
+jake-melksham,Jake Melksham,35,KEY_FWD,Melbourne,,49,736,49,49,0,0.0,49,49,0,0.0,694,712,661,697,unchanged
+jake-riccardi,Jake Riccardi,27,KEY_FWD,GWS,,403,437,227,298,71,31.277533039647576,115,204,89,77.39130434782608,429,454,523,525,Leg E/F forward-lens delta
+jake-rogers,Jake Rogers,21,GEN_FWD,Gold Coast,,614,327,272,424,152,55.88235294117647,168,347,179,106.54761904761905,401,371,444,397,Leg E/F forward-lens delta
+jake-soligo,Jake Soligo,23,MID,Adelaide,,2442,78,1754,2268,514,29.304446978335235,1125,2158,1033,91.82222222222222,88,84,122,78,Leg E/F forward-lens delta
+jake-stringer,Jake Stringer,32,GEN_FWD,GWS,,127,639,119,86,-33,-27.73109243697479,112,86,-26,-23.214285714285715,575,649,530,627,Leg E/F forward-lens delta
+jake-waterman,Jake Waterman,28,KEY_FWD,West Coast,,1850,129,1463,1634,171,11.688311688311687,1204,1343,139,11.544850498338871,123,133,108,149,Leg E/F forward-lens delta
+jakob-ryan,Jakob Ryan,22,GEN_DEF,Collingwood,,280,518,277,277,0,0.0,200,268,68,34.0,396,474,403,456,Leg E/F forward-lens delta
+jamarra-ugle-hagan,Jamarra Ugle-Hagan,24,KEY_FWD,Gold Coast,,420,427,187,299,112,59.893048128342244,94,275,181,192.5531914893617,475,452,562,450,Leg E/F forward-lens delta
+james-barrat,James Barrat,20,KEY_DEF,St Kilda,,423,426,319,423,104,32.60188087774294,304,423,119,39.14473684210527,368,372,323,351,Leg E/F forward-lens delta
+james-blanck,James Blanck,26,KEY_DEF,Hawthorn,,33,757,11,12,1,9.090909090909092,6,12,6,100.0,779,782,783,776,Leg E/F forward-lens delta
+james-borlase,James Borlase,24,KEY_DEF,Adelaide,,457,408,278,451,173,62.23021582733813,197,480,283,143.6548223350254,395,356,409,330,Leg E/F forward-lens delta
+james-jordon,James Jordon,26,MID,Sydney,,182,602,86,106,20,23.25581395348837,44,78,34,77.27272727272727,624,626,677,641,Leg E/F forward-lens delta
+james-leake,James Leake,21,GEN_DEF,GWS,,345,469,410,410,0,0.0,410,410,0,0.0,309,381,270,358,unchanged
+james-o-donnell,James O'Donnell,24,KEY_DEF,Western Bulldogs,,592,335,327,561,234,71.55963302752293,172,547,375,218.02325581395348,362,313,439,300,Leg E/F forward-lens delta
+james-peatling,James Peatling,26,MID,Adelaide,,1378,183,968,1332,364,37.60330578512397,729,1306,577,79.14951989026063,181,167,177,156,Leg E/F forward-lens delta
+james-rowbottom,James Rowbottom,26,MID,Sydney,,930,241,627,620,-7,-1.1164274322169059,478,482,4,0.8368200836820083,241,300,241,327,Leg E/F forward-lens delta
+james-sicily,James Sicily,31,GEN_DEF,Hawthorn,,1995,113,1788,1697,-91,-5.089485458612975,1582,1424,-158,-9.987357774968395,86,124,77,141,Leg E/F forward-lens delta
+james-trezise,James Trezise,24,GEN_DEF,Richmond,,181,603,51,149,98,192.15686274509804,17,141,124,729.4117647058823,688,580,760,574,Leg E/F forward-lens delta
+james-tunstill,James Tunstill,23,MID,Brisbane,,108,658,67,75,8,11.940298507462686,37,66,29,78.37837837837837,654,666,700,662,Leg E/F forward-lens delta
+james-worpel,James Worpel,27,MID,Geelong,,519,367,304,355,51,16.776315789473685,181,223,42,23.204419889502763,375,422,424,509,Leg E/F forward-lens delta
+jamie-cripps,Jamie Cripps,34,GEN_FWD,West Coast,,34,755,34,34,0,0.0,34,34,0,0.0,733,742,709,733,unchanged
+jamie-elliott,Jamie Elliott,34,GEN_FWD,Collingwood,"{'L': 0.5, 'designations': ['2026'], 'flags': ['return_hc'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",32,759,32,32,0,0.0,32,32,0,0.0,739,749,716,743,unchanged
+jaren-carr,Jaren Carr,22,GEN_FWD,Fremantle,,245,555,177,245,68,38.4180790960452,123,245,122,99.1869918699187,491,507,510,479,Leg E/F forward-lens delta
+jarman-impey,Jarman Impey,31,GEN_DEF,Hawthorn,,690,301,617,506,-111,-17.990275526742302,563,396,-167,-29.66252220248668,247,335,214,367,Leg E/F forward-lens delta
+jarrod-berry,Jarrod Berry,28,MID,Brisbane,,559,355,372,377,5,1.3440860215053763,354,238,-116,-32.7683615819209,338,405,300,489,Leg E/F forward-lens delta
+jarrod-witts,Jarrod Witts,34,RUC,Gold Coast,,466,400,404,404,0,0.0,371,371,0,0.0,321,385,288,381,unchanged
+jase-burgoyne,Jase Burgoyne,23,GEN_DEF,Port Adelaide,,2086,102,1625,2136,511,31.446153846153845,1212,2152,940,77.55775577557755,100,90,106,79,Leg E/F forward-lens delta
+jason-horne-francis,Jason Horne-Francis,23,MID,Port Adelaide,,4127,23,3203,3981,778,24.289728379644085,2383,3816,1433,60.13428451531683,28,24,37,26,Leg E/F forward-lens delta
+jaspa-fletcher,Jaspa Fletcher,22,GEN_DEF,Brisbane,,2093,101,1470,2087,617,41.97278911564626,989,2012,1023,103.43781597573307,122,93,140,87,Leg E/F forward-lens delta
+jasper-alger,Jasper Alger,20,GEN_FWD,Richmond,,330,483,148,225,77,52.02702702702703,103,225,122,118.44660194174756,528,527,536,504,Leg E/F forward-lens delta
+jaxon-artemis,Jaxon Artemis,20,GEN_DEF,Essendon,,380,446,184,380,196,106.5217391304348,163,380,217,133.12883435582822,481,403,453,375,Leg E/F forward-lens delta
+jaxon-prior,Jaxon Prior,25,GEN_DEF,Brisbane,,497,376,226,341,115,50.88495575221239,121,243,122,100.82644628099173,430,429,515,481,Leg E/F forward-lens delta
+jay-polkinghorne,Jay Polkinghorne,20,GEN_FWD,Geelong,,261,540,192,261,69,35.9375,149,261,112,75.16778523489933,470,495,472,467,Leg E/F forward-lens delta
+jayden-laverde,Jayden Laverde,30,KEY_DEF,Essendon,,528,364,495,353,-142,-28.68686868686869,461,268,-193,-41.86550976138829,283,423,246,457,Leg E/F forward-lens delta
+jayden-nguyen,Jayden Nguyen,20,GEN_DEF,GWS,,471,399,143,288,145,101.3986013986014,99,288,189,190.9090909090909,539,465,549,435,Leg E/F forward-lens delta
+jayden-short,Jayden Short,30,GEN_DEF,Richmond,,1603,152,1540,1405,-135,-8.766233766233766,1376,1064,-312,-22.674418604651162,112,162,92,188,Leg E/F forward-lens delta
+jed-adams,Jed Adams,22,KEY_DEF,Melbourne,,273,531,224,261,37,16.517857142857142,183,261,78,42.62295081967213,435,496,423,468,Leg E/F forward-lens delta
+jed-bews,Jed Bews,33,GEN_DEF,Geelong,,26,771,26,26,0,0.0,26,26,0,0.0,757,764,741,759,unchanged
+jed-walter,Jed Walter,21,KEY_FWD,Gold Coast,,1321,189,501,1237,736,146.9061876247505,190,1135,945,497.3684210526316,278,181,417,176,Leg E/F forward-lens delta
+jedd-busslinger,Jedd Busslinger,22,KEY_DEF,Western Bulldogs,,742,287,374,438,64,17.11229946524064,197,438,241,122.33502538071066,335,360,410,342,Leg E/F forward-lens delta
+jeremy-cameron,Jeremy Cameron,33,KEY_FWD,Geelong,,1591,153,1460,1403,-57,-3.904109589041096,1118,1096,-22,-1.9677996422182469,124,163,124,184,Leg E/F forward-lens delta
+jeremy-howe,Jeremy Howe,36,GEN_DEF,Collingwood,,308,496,299,299,0,0.0,299,299,0,0.0,379,453,325,422,unchanged
+jeremy-sharp,Jeremy Sharp,25,MID,Fremantle,,117,650,52,52,0,0.0,52,52,0,0.0,684,703,650,688,unchanged
+jesse-dattoli,Jesse Dattoli,20,GEN_FWD,Sydney,,483,388,373,422,49,13.136729222520108,370,422,52,14.054054054054054,337,373,289,352,Leg E/F forward-lens delta
+jesse-hogan,Jesse Hogan,32,KEY_FWD,GWS,,464,402,274,315,41,14.963503649635038,217,238,21,9.67741935483871,399,445,383,490,Leg E/F forward-lens delta
+jesse-mellor,Jesse Mellor,19,MID,Geelong,,304,499,147,304,157,106.80272108843538,131,304,173,132.06106870229007,532,450,499,418,Leg E/F forward-lens delta
+jesse-motlop,Jesse Motlop,23,GEN_FWD,Carlton,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",144,629,66,66,0,0.0,36,51,15,41.66666666666667,657,676,702,690,Leg E/F forward-lens delta
+jevan-phillipou,Jevan Phillipou,19,GEN_FWD,Sydney,,526,365,267,526,259,97.00374531835206,253,526,273,107.90513833992095,403,328,353,309,Leg E/F forward-lens delta
+jhye-clark,Jhye Clark,22,MID,Geelong,,613,329,309,317,8,2.5889967637540456,214,260,46,21.49532710280374,371,443,386,469,Leg E/F forward-lens delta
+jobe-shanahan,Jobe Shanahan,20,KEY_FWD,West Coast,,1588,154,1198,1617,419,34.974958263772955,670,1682,1012,151.044776119403,153,139,188,112,Leg E/F forward-lens delta
+joe-berry,Joe Berry,20,GEN_FWD,Port Adelaide,,1161,214,1080,1143,63,5.833333333333333,447,1127,680,152.1252796420582,169,195,252,179,Leg E/F forward-lens delta
+joe-pike,Joe Pike,21,RUC,Geelong,,480,393,408,480,72,17.647058823529413,408,480,72,17.647058823529413,317,348,276,331,Leg E/F forward-lens delta
+joe-richards,Joe Richards,27,GEN_FWD,Port Adelaide,,857,264,812,763,-49,-6.0344827586206895,774,542,-232,-29.97416020671835,208,247,171,301,Leg E/F forward-lens delta
+joel-amartey,Joel Amartey,27,KEY_FWD,Sydney,"{'L': 0.3636, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",136,634,104,137,33,31.73076923076923,52,94,42,80.76923076923077,597,593,651,617,Leg E/F forward-lens delta
+joel-cochran,Joel Cochran,20,KEY_DEF,Collingwood,,372,452,246,372,126,51.21951219512195,219,372,153,69.86301369863014,418,407,380,378,Leg E/F forward-lens delta
+joel-fitzgerald,Joel Fitzgerald,23,MID,Melbourne,,110,656,37,105,68,183.7837837837838,33,105,72,218.18181818181816,721,629,712,604,Leg E/F forward-lens delta
+joel-freijah,Joel Freijah,21,MID,Western Bulldogs,,2923,61,2413,2925,512,21.218400331537506,1706,2945,1239,72.62602579132474,60,57,69,49,Leg E/F forward-lens delta
+joel-hamling,Joel Hamling,33,KEY_DEF,Sydney,,36,750,36,36,0,0.0,36,36,0,0.0,725,737,703,727,unchanged
+joel-jeffrey,Joel Jeffrey,24,GEN_DEF,Gold Coast,,1949,119,1299,1936,637,49.03772132409546,909,1947,1038,114.1914191419142,141,102,146,96,Leg E/F forward-lens delta
+john-noble,John Noble,29,GEN_DEF,Gold Coast,,2646,69,2326,2364,38,1.633705932932072,2196,2096,-100,-4.553734061930783,63,77,46,84,Leg E/F forward-lens delta
+jonty-faull,Jonty Faull,20,KEY_FWD,Richmond,"{'L': 0.5455, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut', 'kpf_LD_fallback'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",1090,217,741,972,231,31.17408906882591,323,868,545,168.73065015479875,225,216,316,212,Leg E/F forward-lens delta
+jordan-boyd,Jordan Boyd,28,GEN_DEF,Carlton,,9,797,2,4,2,100.0,1,3,2,200.0,800,798,801,799,Leg E/F forward-lens delta
+jordan-clark,Jordan Clark,26,GEN_DEF,Fremantle,,3740,33,2919,3336,417,14.285714285714285,2251,2858,607,26.96579298089738,40,41,44,55,Leg E/F forward-lens delta
+jordan-croft,Jordan Croft,21,KEY_FWD,Western Bulldogs,,1081,219,356,932,576,161.79775280898875,277,840,563,203.24909747292418,348,219,345,219,Leg E/F forward-lens delta
+jordan-dawson,Jordan Dawson,29,MID,Adelaide,,3713,36,3379,3228,-151,-4.46877774489494,3016,2688,-328,-10.875331564986737,24,49,22,60,Leg E/F forward-lens delta
+jordan-de-goey,Jordan De Goey,30,GEN_FWD,Collingwood,,1510,165,1437,1275,-162,-11.273486430062631,1291,1005,-286,-22.153369481022462,127,177,100,194,Leg E/F forward-lens delta
+jordan-ridley,Jordan Ridley,28,GEN_DEF,Essendon,,1190,208,943,908,-35,-3.711558854718982,879,766,-113,-12.85551763367463,187,220,155,229,Leg E/F forward-lens delta
+jordon-butts,Jordon Butts,27,KEY_DEF,Adelaide,,13,787,10,10,0,0.0,9,10,1,11.11111111111111,785,787,780,783,Leg E/F forward-lens delta
+jordon-sweet,Jordon Sweet,28,RUC,Port Adelaide,,2484,77,1955,2276,321,16.419437340153454,1793,2045,252,14.054656999442274,77,82,62,85,Leg E/F forward-lens delta
+josaia-delana,Josaia Delana,20,GEN_FWD,GWS,,203,585,99,146,47,47.474747474747474,68,146,78,114.70588235294117,608,582,609,569,Leg E/F forward-lens delta
+joseph-fonti,Joseph Fonti,22,GEN_DEF,GWS,,781,279,524,805,281,53.62595419847328,289,868,579,200.34602076124565,273,239,334,213,Leg E/F forward-lens delta
+josh-battle,Josh Battle,28,KEY_DEF,St Kilda,,2416,81,2029,2236,207,10.202069985214392,1742,1964,222,12.743972445464982,75,86,66,93,Leg E/F forward-lens delta
+josh-daicos,Josh Daicos,28,GEN_DEF,Collingwood,,2145,96,1697,1909,212,12.49263406010607,1428,1599,171,11.974789915966387,93,105,87,126,Leg E/F forward-lens delta
+josh-dolan,Josh Dolan,20,GEN_FWD,Western Bulldogs,,322,489,191,248,57,29.84293193717277,143,199,56,39.16083916083916,472,505,480,528,Leg E/F forward-lens delta
+josh-draper,Josh Draper,22,KEY_DEF,Fremantle,,621,318,191,399,208,108.90052356020942,83,360,277,333.73493975903614,473,389,584,389,Leg E/F forward-lens delta
+josh-dunkley,Josh Dunkley,29,MID,Brisbane,,1168,213,956,975,19,1.9874476987447698,811,751,-60,-7.398273736128237,183,215,166,234,Leg E/F forward-lens delta
+josh-gibcus,Josh Gibcus,23,KEY_DEF,Richmond,"{'L': 0.9545, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",245,556,109,142,33,30.275229357798167,61,129,68,111.47540983606557,591,588,627,583,Leg E/F forward-lens delta
+josh-goater,Josh Goater,23,GEN_DEF,North Melbourne,,104,666,66,66,0,0.0,36,57,21,58.333333333333336,658,677,704,677,Leg E/F forward-lens delta
+josh-lai,Josh Lai,21,GEN_DEF,Port Adelaide,,358,461,119,261,142,119.32773109243698,55,244,189,343.6363636363636,576,497,641,480,Leg E/F forward-lens delta
+josh-lindsay,Josh Lindsay,19,GEN_DEF,West Coast,,2360,84,1452,2770,1318,90.77134986225896,226,3619,3393,1501.3274336283184,125,61,368,30,Leg E/F forward-lens delta
+josh-rachele,Josh Rachele,23,GEN_FWD,Adelaide,,1963,117,1590,1960,370,23.270440251572328,1175,1829,654,55.659574468085104,104,99,112,106,Leg E/F forward-lens delta
+josh-sinn,Josh Sinn,23,GEN_DEF,Port Adelaide,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",260,541,92,117,25,27.173913043478258,51,100,49,96.07843137254902,618,615,654,610,Leg E/F forward-lens delta
+josh-smillie,Josh Smillie,20,MID,Richmond,,1324,188,1130,1324,194,17.168141592920357,1130,1324,194,17.168141592920357,165,169,121,153,Leg E/F forward-lens delta
+josh-treacy,Josh Treacy,24,KEY_FWD,Fremantle,,6713,6,5882,6749,867,14.739884393063585,4705,6155,1450,30.818278427205104,5,6,5,7,Leg E/F forward-lens delta
+josh-ward,Josh Ward,23,MID,Hawthorn,,2003,112,1405,1933,528,37.580071174377224,843,1833,990,117.43772241992883,130,104,160,105,Leg E/F forward-lens delta
+josh-worrell,Josh Worrell,25,GEN_DEF,Adelaide,,3632,41,2843,3256,413,14.526908195568062,2236,2868,632,28.264758497316638,44,47,45,53,Leg E/F forward-lens delta
+joshua-kelly,Joshua Kelly,31,MID,GWS,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': ['return_hc'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",617,325,766,649,-117,-15.274151436031334,704,490,-214,-30.39772727272727,217,286,181,325,Leg E/F forward-lens delta
+joshua-weddle,Joshua Weddle,22,GEN_DEF,Hawthorn,,1578,156,1115,1601,486,43.587443946188344,732,1603,871,118.98907103825135,168,140,176,125,Leg E/F forward-lens delta
+judd-mcvee,Judd McVee,23,GEN_DEF,Fremantle,,270,535,155,244,89,57.41935483870968,67,225,158,235.82089552238807,521,508,614,505,Leg E/F forward-lens delta
+judson-clarke,Judson Clarke,23,GEN_FWD,Richmond,"{'L': 1.0, 'designations': ['2025'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",90,679,62,62,0,0.0,34,36,2,5.88235294117647,666,683,710,728,Leg E/F forward-lens delta
+justin-mcinerney,Justin McInerney,26,MID,Sydney,,1950,118,1544,1644,100,6.476683937823833,1241,1390,149,12.006446414182111,111,131,105,142,Leg E/F forward-lens delta
+jy-farrar,Jy Farrar,30,KEY_FWD,Gold Coast,,26,772,74,10,-64,-86.48648648648648,69,9,-60,-86.95652173913044,645,788,605,788,Leg E/F forward-lens delta
+jy-simpkin,Jy Simpkin,28,MID,North Melbourne,,945,236,642,643,1,0.1557632398753894,499,429,-70,-14.02805611222445,236,291,232,348,Leg E/F forward-lens delta
+jye-amiss,Jye Amiss,23,KEY_FWD,Fremantle,,1451,175,835,1168,333,39.880239520958085,639,1174,535,83.7245696400626,206,191,197,172,Leg E/F forward-lens delta
+jye-caldwell,Jye Caldwell,26,MID,Essendon,,1405,178,1062,1173,111,10.451977401129943,896,994,98,10.9375,170,190,150,195,Leg E/F forward-lens delta
+kade-chandler,Kade Chandler,26,GEN_FWD,Melbourne,,1216,205,940,1008,68,7.234042553191489,900,887,-13,-1.4444444444444444,188,208,148,205,Leg E/F forward-lens delta
+kai-lohmann,Kai Lohmann,23,GEN_FWD,Brisbane,,462,405,261,436,175,67.04980842911877,136,406,270,198.52941176470588,407,362,492,363,Leg E/F forward-lens delta
+kalani-white,Kalani White,19,KEY_FWD,Melbourne,,291,510,141,291,150,106.38297872340425,122,291,169,138.52459016393445,546,462,513,432,Leg E/F forward-lens delta
+kaleb-smith,Kaleb Smith,22,GEN_DEF,Richmond,,122,644,75,75,0,0.0,52,67,15,28.846153846153843,643,667,652,660,Leg E/F forward-lens delta
+kane-farrell,Kane Farrell,27,GEN_DEF,Port Adelaide,,1568,158,1286,1437,151,11.741835147744945,1044,1183,139,13.31417624521073,142,159,135,171,Leg E/F forward-lens delta
+kane-mcauliffe,Kane McAuliffe,21,MID,Richmond,,1357,186,779,1205,426,54.685494223363285,588,1169,581,98.80952380952381,214,186,208,173,Leg E/F forward-lens delta
+karl-amon,Karl Amon,31,GEN_DEF,Hawthorn,,816,272,712,637,-75,-10.53370786516854,646,521,-125,-19.34984520123839,228,294,194,311,Leg E/F forward-lens delta
+karl-worner,Karl Worner,24,GEN_DEF,Fremantle,,591,336,372,591,219,58.87096774193549,216,610,394,182.40740740740742,339,306,384,282,Leg E/F forward-lens delta
+kayle-gerreyn,Kayle Gerreyn,20,KEY_FWD,Essendon,,347,466,252,347,95,37.698412698412696,220,347,127,57.72727272727273,413,426,378,398,Leg E/F forward-lens delta
+keidean-coleman,Keidean Coleman,26,GEN_DEF,Brisbane,,885,256,525,661,136,25.9047619047619,343,496,153,44.606413994169095,272,280,306,319,Leg E/F forward-lens delta
+keighton-matofai-forbes,Keighton Matofai-Forbes,20,GEN_DEF,Geelong,,273,532,197,273,76,38.578680203045685,137,273,136,99.27007299270073,462,480,489,453,Leg E/F forward-lens delta
+kieren-briggs,Kieren Briggs,27,RUC,GWS,,1914,120,1525,1765,240,15.737704918032788,1077,1548,471,43.73259052924791,116,115,130,129,Leg E/F forward-lens delta
+kobe-mcdonald,Kobe McDonald,19,GEN_DEF,St Kilda,,277,527,135,277,142,105.18518518518518,120,277,157,130.83333333333334,557,475,520,448,Leg E/F forward-lens delta
+koby-coulson,Koby Coulson,19,MID,Gold Coast,,558,356,274,558,284,103.64963503649636,247,558,311,125.91093117408907,400,316,356,294,Leg E/F forward-lens delta
+koby-evans,Koby Evans,19,GEN_FWD,Brisbane,,491,382,246,491,245,99.59349593495935,230,491,261,113.47826086956523,419,343,366,324,Leg E/F forward-lens delta
+koltyn-tholstrup,Koltyn Tholstrup,21,GEN_DEF,Melbourne,,1492,169,798,1457,659,82.58145363408521,334,1447,1113,333.23353293413174,210,157,310,137,Leg E/F forward-lens delta
+kye-annand,Kye Annand,23,KEY_DEF,Richmond,,188,597,82,180,98,119.51219512195121,70,180,110,157.14285714285714,633,555,600,544,Leg E/F forward-lens delta
+kye-fincher,Kye Fincher,19,MID,St Kilda,,516,368,250,516,266,106.4,222,516,294,132.43243243243242,414,330,376,314,Leg E/F forward-lens delta
+kyle-langford,Kyle Langford,30,KEY_FWD,Essendon,,667,308,567,443,-124,-21.869488536155202,524,341,-183,-34.9236641221374,259,358,225,402,Leg E/F forward-lens delta
+kysaiah-pickett,Kysaiah Pickett,25,GEN_FWD,Melbourne,,3831,31,3324,3569,245,7.370637785800241,2826,3215,389,13.765038924274592,25,33,23,41,Leg E/F forward-lens delta
+lachie-jaques,Lachie Jaques,20,GEN_DEF,Western Bulldogs,,860,262,183,790,607,331.69398907103823,147,769,622,423.12925170068024,485,242,473,228,Leg E/F forward-lens delta
+lachie-neale,Lachie Neale,33,MID,Brisbane,,2066,106,1912,1498,-414,-21.652719665271967,1610,1260,-350,-21.73913043478261,80,151,76,159,Leg E/F forward-lens delta
+lachie-sullivan,Lachie Sullivan,29,GEN_FWD,Collingwood,,1,803,1,1,0,0.0,0,1,1,,802,802,804,802,Leg E/F forward-lens delta
+lachie-whitfield,Lachie Whitfield,32,GEN_DEF,GWS,,2274,87,2066,1986,-80,-3.8722168441432716,1784,1628,-156,-8.74439461883408,71,96,63,118,Leg E/F forward-lens delta
+lachlan-ash,Lachlan Ash,25,GEN_DEF,GWS,,5372,12,4229,4877,648,15.322771340742491,3144,4100,956,30.407124681933844,14,15,17,18,Leg E/F forward-lens delta
+lachlan-blakiston,Lachlan Blakiston,28,KEY_DEF,Essendon,,16,783,12,14,2,16.666666666666664,10,12,2,20.0,777,777,777,777,Leg E/F forward-lens delta
+lachlan-bramble,Lachlan Bramble,28,GEN_FWD,Western Bulldogs,,101,670,50,91,41,82.0,47,86,39,82.97872340425532,690,646,667,628,Leg E/F forward-lens delta
+lachlan-carmichael,Lachlan Carmichael,19,GEN_DEF,Western Bulldogs,,640,315,342,640,298,87.13450292397661,337,640,303,89.91097922848664,355,292,309,268,Leg E/F forward-lens delta
+lachlan-cowan,Lachlan Cowan,22,GEN_DEF,Carlton,,589,338,357,568,211,59.103641456582636,109,540,431,395.41284403669727,347,312,531,304,Leg E/F forward-lens delta
+lachlan-fogarty,Lachlan Fogarty,27,GEN_FWD,Carlton,,84,691,66,46,-20,-30.303030303030305,62,42,-20,-32.25806451612903,659,717,625,711,Leg E/F forward-lens delta
+lachlan-gulbin,Lachlan Gulbin,20,GEN_FWD,Gold Coast,,308,497,71,261,190,267.6056338028169,65,220,155,238.46153846153845,649,498,618,512,Leg E/F forward-lens delta
+lachlan-jones,Lachlan Jones,24,GEN_DEF,Port Adelaide,,121,646,70,114,44,62.857142857142854,46,108,62,134.7826086956522,651,618,673,602,Leg E/F forward-lens delta
+lachlan-mcandrew,Lachlan McAndrew,26,RUC,Adelaide,,1292,191,1043,1278,235,22.53116011505273,186,1317,1131,608.0645161290323,172,176,420,155,Leg E/F forward-lens delta
+lachlan-mcneil,Lachlan McNeil,25,GEN_FWD,Western Bulldogs,,19,780,4,15,11,275.0,3,14,11,366.66666666666663,795,775,792,774,Leg E/F forward-lens delta
+lachlan-schultz,Lachlan Schultz,29,GEN_FWD,Fremantle,,796,276,678,658,-20,-2.949852507374631,628,501,-127,-20.222929936305732,230,282,201,316,Leg E/F forward-lens delta
+lachlan-sholl,Lachlan Sholl,26,MID,Adelaide,,311,493,64,116,52,81.25,29,87,58,200.0,662,617,730,626,Leg E/F forward-lens delta
+lachlan-smith,Lachlan Smith,21,RUC,Western Bulldogs,,705,297,447,645,198,44.29530201342282,406,645,239,58.86699507389162,300,290,279,265,Leg E/F forward-lens delta
+lachlan-weller,Lachlan Weller,30,MID,Gold Coast,,83,693,83,83,0,0.0,83,83,0,0.0,630,653,585,635,unchanged
+lachy-dovaston,Lachy Dovaston,19,GEN_FWD,North Melbourne,,863,260,499,799,300,60.120240480961925,315,742,427,135.55555555555557,279,240,318,236,Leg E/F forward-lens delta
+laitham-vandermeer,Laitham Vandermeer,27,GEN_FWD,Western Bulldogs,,32,760,32,32,0,0.0,32,32,0,0.0,740,750,717,744,unchanged
+lance-collard,Lance Collard,21,GEN_FWD,St Kilda,,274,530,150,179,29,19.333333333333332,93,143,50,53.76344086021505,524,559,563,570,Leg E/F forward-lens delta
+latrelle-pickett,Latrelle Pickett,21,GEN_FWD,Melbourne,,580,341,240,448,208,86.66666666666667,192,381,189,98.4375,420,357,416,373,Leg E/F forward-lens delta
+lawson-humphries,Lawson Humphries,23,GEN_DEF,Geelong,,1848,130,1485,1934,449,30.23569023569024,1155,1980,825,71.42857142857143,120,103,116,89,Leg E/F forward-lens delta
+leek-aleer,Leek Aleer,25,KEY_DEF,GWS,,287,513,93,196,103,110.75268817204301,46,176,130,282.60869565217394,616,546,674,551,Leg E/F forward-lens delta
+lennox-hoffman,Lennox Hoffman,20,GEN_DEF,Geelong,,275,528,199,275,76,38.19095477386934,138,275,137,99.27536231884058,460,476,488,451,Leg E/F forward-lens delta
+leo-lombard,Leo Lombard,20,GEN_FWD,Gold Coast,,1390,181,463,1326,863,186.39308855291577,372,1260,888,238.70967741935485,294,168,286,160,Leg E/F forward-lens delta
+leon-kickett,Leon Kickett,20,GEN_FWD,Fremantle,,367,455,178,367,189,106.17977528089888,158,367,209,132.27848101265823,490,414,458,385,Leg E/F forward-lens delta
+levi-ashcroft,Levi Ashcroft,20,MID,Brisbane,,3180,52,2542,3241,699,27.498033044846576,1641,3414,1773,108.04387568555758,54,48,74,35,Leg E/F forward-lens delta
+lewis-hayes,Lewis Hayes,22,KEY_DEF,Essendon,"{'L': 1.0, 'designations': ['2025', '2026'], 'flags': ['repeat_lti'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",359,460,359,359,0,0.0,253,344,91,35.96837944664031,345,420,354,400,Leg E/F forward-lens delta
+lewis-melican,Lewis Melican,30,KEY_DEF,Sydney,,56,722,43,30,-13,-30.23255813953488,40,22,-18,-45.0,704,754,686,767,Leg E/F forward-lens delta
+lewis-young,Lewis Young,28,KEY_DEF,Carlton,,191,594,142,114,-28,-19.718309859154928,137,84,-53,-38.68613138686132,543,619,490,633,Leg E/F forward-lens delta
+liam-baker,Liam Baker,28,GEN_DEF,West Coast,,655,309,470,511,41,8.72340425531915,127,372,245,192.91338582677164,289,332,505,379,Leg E/F forward-lens delta
+liam-duggan,Liam Duggan,30,GEN_DEF,West Coast,,437,419,372,305,-67,-18.010752688172044,331,178,-153,-46.22356495468278,340,449,313,546,Leg E/F forward-lens delta
+liam-fawcett,Liam Fawcett,21,KEY_FWD,Richmond,,548,360,216,427,211,97.68518518518519,194,394,200,103.09278350515463,447,367,415,369,Leg E/F forward-lens delta
+liam-henry,Liam Henry,25,GEN_FWD,St Kilda,,83,694,83,83,0,0.0,83,83,0,0.0,631,654,586,636,unchanged
+liam-hetherton,Liam Hetherton,19,KEY_FWD,Sydney,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",221,577,141,221,80,56.73758865248227,122,221,99,81.14754098360656,547,530,514,511,Leg E/F forward-lens delta
+liam-mcmahon,Liam McMahon,24,KEY_FWD,Essendon,,224,571,126,180,54,42.857142857142854,83,165,82,98.79518072289156,564,556,587,558,Leg E/F forward-lens delta
+liam-o-connell,Liam O'Connell,23,GEN_DEF,St Kilda,,86,687,20,47,27,135.0,11,47,36,327.2727272727273,766,714,770,700,Leg E/F forward-lens delta
+liam-puncher,Liam Puncher,23,KEY_DEF,Collingwood,,170,611,82,170,88,107.31707317073172,70,170,100,142.85714285714286,634,568,601,556,Leg E/F forward-lens delta
+liam-reidy,Liam Reidy,26,RUC,Carlton,,298,505,229,229,0,0.0,200,225,25,12.5,428,522,404,506,Leg E/F forward-lens delta
+liam-ryan,Liam Ryan,30,GEN_FWD,St Kilda,,29,766,29,29,0,0.0,29,29,0,0.0,749,758,731,755,unchanged
+liam-stocker,Liam Stocker,26,GEN_DEF,St Kilda,,40,745,40,40,0,0.0,40,40,0,0.0,714,728,687,716,unchanged
+lincoln-mccarthy,Lincoln McCarthy,33,GEN_FWD,Brisbane,,27,768,21,20,-1,-4.761904761904762,20,20,0,0.0,763,771,755,769,Leg E/F forward-lens delta
+lloyd-meek,Lloyd Meek,28,RUC,Hawthorn,,1231,203,854,1064,210,24.59016393442623,777,887,110,14.157014157014158,202,203,170,206,Leg E/F forward-lens delta
+logan-evans,Logan Evans,21,GEN_DEF,Port Adelaide,,1264,196,881,1377,496,56.29965947786606,601,1465,864,143.7603993344426,196,164,205,135,Leg E/F forward-lens delta
+logan-mcdonald,Logan McDonald,24,KEY_FWD,Sydney,,956,234,675,947,272,40.2962962962963,518,868,350,67.56756756756756,231,218,228,214,Leg E/F forward-lens delta
+logan-morris,Logan Morris,21,KEY_FWD,Brisbane,,3120,54,2545,3301,756,29.70530451866405,1940,3585,1645,84.79381443298969,53,44,57,32,Leg E/F forward-lens delta
+logan-smith,Logan Smith,20,RUC,GWS,,477,395,406,477,71,17.48768472906404,406,477,71,17.48768472906404,320,350,280,333,Leg E/F forward-lens delta
+louis-emmett,Louis Emmett,19,RUC,Western Bulldogs,,917,247,349,728,379,108.59598853868195,339,728,389,114.74926253687316,353,259,308,240,Leg E/F forward-lens delta
+lucas-camporeale,Lucas Camporeale,20,MID,Carlton,,302,501,218,264,46,21.100917431192663,151,264,113,74.83443708609272,443,492,469,465,Leg E/F forward-lens delta
+lucca-grego,Lucca Grego,20,GEN_DEF,West Coast,,280,519,203,268,65,32.01970443349754,146,268,122,83.56164383561644,457,486,477,458,Leg E/F forward-lens delta
+lukas-cooke,Lukas Cooke,23,KEY_DEF,Melbourne,,188,598,82,180,98,119.51219512195121,70,180,110,157.14285714285714,635,557,602,545,Leg E/F forward-lens delta
+luke-beecken,Luke Beecken,25,MID,Brisbane,,35,753,23,33,10,43.47826086956522,15,33,18,120.0,762,745,762,736,Leg E/F forward-lens delta
+luke-cleary,Luke Cleary,24,GEN_DEF,Western Bulldogs,,87,683,56,56,0,0.0,31,41,10,32.25806451612903,675,690,719,713,Leg E/F forward-lens delta
+luke-davies-uniacke,Luke Davies-Uniacke,27,MID,North Melbourne,,3721,35,3184,3469,285,8.951005025125628,2684,2959,275,10.245901639344263,29,38,24,48,Leg E/F forward-lens delta
+luke-jackson,Luke Jackson,25,RUC,Fremantle,,8613,1,7926,8614,688,8.68029270754479,6415,7953,1538,23.97505845674201,1,1,1,2,Leg E/F forward-lens delta
+luke-kennedy,Luke Kennedy,20,MID,Western Bulldogs,,433,420,204,414,210,102.94117647058823,142,414,272,191.54929577464787,455,377,484,355,Leg E/F forward-lens delta
+luke-lloyd,Luke Lloyd,21,KEY_FWD,Brisbane,,284,516,218,284,66,30.275229357798167,203,284,81,39.90147783251231,444,467,400,441,Leg E/F forward-lens delta
+luke-mcdonald,Luke McDonald,31,GEN_DEF,North Melbourne,,53,729,53,53,0,0.0,53,53,0,0.0,679,696,645,682,unchanged
+luke-nankervis,Luke Nankervis,23,GEN_DEF,Adelaide,,270,536,78,208,130,166.66666666666669,40,197,157,392.5,638,540,688,531,Leg E/F forward-lens delta
+luke-parker,Luke Parker,34,GEN_DEF,North Melbourne,,1462,171,1286,1286,0,0.0,1106,1106,0,0.0,143,175,126,183,unchanged
+luke-pedlar,Luke Pedlar,24,GEN_FWD,Adelaide,,142,631,79,79,0,0.0,79,79,0,0.0,637,658,592,640,unchanged
+luke-ryan,Luke Ryan,30,GEN_DEF,Fremantle,,1799,134,1534,1581,47,3.0638852672750976,1275,1280,5,0.39215686274509803,113,144,102,157,Leg E/F forward-lens delta
+luke-trainor,Luke Trainor,20,KEY_DEF,Richmond,,1413,177,967,1406,439,45.39813857290589,432,1385,953,220.60185185185185,182,161,253,143,Leg E/F forward-lens delta
+luke-urquhart,Luke Urquhart,20,MID,North Melbourne,,294,508,212,294,82,38.67924528301887,147,294,147,100.0,449,458,474,429,Leg E/F forward-lens delta
+luker-kentfield,Luker Kentfield,21,KEY_FWD,Melbourne,,380,447,115,348,233,202.6086956521739,115,348,233,202.6086956521739,579,425,524,396,Leg E/F forward-lens delta
+mabior-chol,Mabior Chol,29,KEY_FWD,Hawthorn,,341,475,259,232,-27,-10.424710424710424,248,162,-86,-34.67741935483871,408,517,355,562,Leg E/F forward-lens delta
+mac-andrew,Mac Andrew,23,KEY_DEF,Gold Coast,,3633,40,2940,3560,620,21.08843537414966,2317,3487,1170,50.496331463098834,39,34,40,34,Leg E/F forward-lens delta
+malakai-champion,Malakai Champion,20,GEN_FWD,West Coast,,325,486,71,274,203,285.9154929577465,65,226,161,247.6923076923077,650,478,619,503,Leg E/F forward-lens delta
+malcolm-rosas,Malcolm Rosas,25,GEN_FWD,Sydney,,84,692,35,61,26,74.28571428571429,21,40,19,90.47619047619048,730,686,753,717,Leg E/F forward-lens delta
+mani-liddy,Mani Liddy,24,MID,Port Adelaide,"{'L': 1.0, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",55,726,11,36,25,227.27272727272728,6,36,30,500.0,780,738,784,729,Leg E/F forward-lens delta
+marc-pittonet,Marc Pittonet,30,RUC,Carlton,,505,374,391,384,-7,-1.7902813299232736,367,317,-50,-13.623978201634879,326,401,292,413,Leg E/F forward-lens delta
+marcus-bontempelli,Marcus Bontempelli,31,MID,Western Bulldogs,,3897,28,3556,3303,-253,-7.114735658042745,3068,2679,-389,-12.679269882659714,20,43,20,61,Leg E/F forward-lens delta
+marcus-herbert,Marcus Herbert,24,GEN_DEF,West Coast,,35,754,14,33,19,135.71428571428572,13,33,20,153.84615384615387,770,746,765,737,Leg E/F forward-lens delta
+marcus-windhager,Marcus Windhager,23,MID,St Kilda,,1813,133,1271,1733,462,36.34933123524783,808,1644,836,103.46534653465346,146,120,167,115,Leg E/F forward-lens delta
+mark-blicavs,Mark Blicavs,35,MID,Geelong,,11,792,11,10,-1,-9.090909090909092,11,10,-1,-9.090909090909092,781,789,771,784,Leg E/F forward-lens delta
+mark-keane,Mark Keane,26,KEY_DEF,Adelaide,,2146,95,1528,1954,426,27.87958115183246,1359,1897,538,39.587932303164095,115,100,96,100,Leg E/F forward-lens delta
+mark-o-connor,Mark O'Connor,29,GEN_DEF,Geelong,,15,785,13,11,-2,-15.384615384615385,12,8,-4,-33.33333333333333,774,785,767,790,Leg E/F forward-lens delta
+mason-cox,Mason Cox,35,KEY_FWD,Fremantle,,1,804,1,1,0,0.0,1,1,0,0.0,803,803,802,803,unchanged
+mason-redman,Mason Redman,29,GEN_DEF,Essendon,,1651,146,1240,1299,59,4.758064516129032,1173,1086,-87,-7.41687979539642,148,173,113,185,Leg E/F forward-lens delta
+mason-wood,Mason Wood,33,GEN_FWD,St Kilda,,152,623,143,132,-11,-7.6923076923076925,134,124,-10,-7.462686567164178,540,598,497,589,Leg E/F forward-lens delta
+massimo-d-ambrosio,Massimo D'Ambrosio,23,MID,Hawthorn,,1670,144,1229,1682,453,36.85923515052888,827,1639,812,98.18621523579202,150,127,163,116,Leg E/F forward-lens delta
+matt-carroll,Matt Carroll,21,MID,Carlton,"{'L': 0.5455, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",950,235,624,893,269,43.108974358974365,353,839,486,137.67705382436262,244,222,301,220,Leg E/F forward-lens delta
+matt-cottrell,Matt Cottrell,26,MID,Carlton,,107,660,52,14,-38,-73.07692307692307,48,10,-38,-79.16666666666666,685,778,664,785,Leg E/F forward-lens delta
+matt-duffy,Matt Duffy,22,GEN_DEF,Carlton,,187,599,135,187,52,38.51851851851852,93,187,94,101.0752688172043,558,551,564,542,Leg E/F forward-lens delta
+matt-guelfi,Matt Guelfi,29,GEN_FWD,Essendon,,26,773,26,26,0,0.0,26,26,0,0.0,758,765,742,760,unchanged
+matt-hill,Matt Hill,22,GEN_FWD,Hawthorn,,133,636,96,133,37,38.54166666666667,67,133,66,98.50746268656717,614,597,615,581,Leg E/F forward-lens delta
+matt-johnson-1,Matt Johnson,23,MID,Fremantle,,741,288,410,687,277,67.5609756097561,175,641,466,266.2857142857143,310,275,434,267,Leg E/F forward-lens delta
+matt-owies,Matt Owies,29,GEN_FWD,Carlton,,2,802,1,1,0,0.0,1,1,0,0.0,804,804,803,804,unchanged
+matt-rowell,Matt Rowell,25,MID,Gold Coast,,3992,27,3099,3506,407,13.13326879638593,2372,2884,512,21.585160202360875,31,36,38,52,Leg E/F forward-lens delta
+matt-whitlock,Matt Whitlock,20,KEY_FWD,North Melbourne,,444,413,339,406,67,19.76401179941003,334,406,72,21.55688622754491,356,383,311,364,Leg E/F forward-lens delta
+mattaes-phillipou,Mattaes Phillipou,22,MID,St Kilda,,1530,164,913,1475,562,61.5553121577218,414,1431,1017,245.65217391304347,192,153,269,140,Leg E/F forward-lens delta
+matthew-flynn,Matthew Flynn,29,RUC,West Coast,,717,296,522,502,-20,-3.8314176245210727,430,372,-58,-13.488372093023257,274,336,257,380,Leg E/F forward-lens delta
+matthew-jefferson,Matthew Jefferson,22,KEY_FWD,Melbourne,,576,345,132,419,287,217.42424242424244,170,371,201,118.23529411764706,559,374,443,382,Leg E/F forward-lens delta
+matthew-kennedy-1,Matthew Kennedy,29,MID,Western Bulldogs,,687,303,582,510,-72,-12.371134020618557,533,318,-215,-40.33771106941838,256,333,222,412,Leg E/F forward-lens delta
+matthew-leray,Matthew LeRay,19,MID,Hawthorn,,497,377,240,497,257,107.08333333333333,214,497,283,132.2429906542056,421,337,387,318,Leg E/F forward-lens delta
+matthew-roberts,Matthew Roberts,23,GEN_DEF,Sydney,,1898,122,1396,1951,555,39.75644699140401,1056,1976,920,87.12121212121212,131,101,133,90,Leg E/F forward-lens delta
+maurice-rioli-1,Maurice Rioli,24,GEN_FWD,Richmond,,81,697,34,62,28,82.35294117647058,23,53,30,130.43478260869566,734,684,750,683,Leg E/F forward-lens delta
+max-beattie,Max Beattie,23,GEN_FWD,Hawthorn,,53,730,26,53,27,103.84615384615385,23,53,30,130.43478260869566,759,697,751,684,Leg E/F forward-lens delta
+max-gawn,Max Gawn,35,RUC,Melbourne,,3416,46,2976,3156,180,6.048387096774194,2470,2832,362,14.65587044534413,38,52,30,56,Leg E/F forward-lens delta
+max-gruzewski,Max Gruzewski,22,KEY_FWD,GWS,,366,457,284,241,-43,-15.140845070422534,132,197,65,49.24242424242424,386,510,498,532,Leg E/F forward-lens delta
+max-hall,Max Hall,24,GEN_FWD,St Kilda,,2395,82,2059,2298,239,11.60757649344342,1736,2248,512,29.493087557603687,73,81,67,73,Leg E/F forward-lens delta
+max-heath,Max Heath,24,RUC,Melbourne,,212,581,181,207,26,14.3646408839779,156,207,51,32.69230769230769,489,541,463,522,Leg E/F forward-lens delta
+max-holmes,Max Holmes,24,MID,Geelong,,6932,5,5741,6861,1120,19.508796376937816,4609,6532,1923,41.722716424387066,7,5,6,5,Leg E/F forward-lens delta
+max-king-stk,Max King,26,KEY_FWD,St Kilda,,376,450,205,237,32,15.609756097560975,142,178,36,25.352112676056336,454,514,485,547,Leg E/F forward-lens delta
+max-king-syd,Maxwell King,19,GEN_FWD,Sydney,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",266,539,187,266,79,42.24598930481284,167,266,99,59.2814371257485,476,489,446,460,Leg E/F forward-lens delta
+max-knobel,Max Knobel,22,RUC,Gold Coast,,492,381,444,492,48,10.81081081081081,385,492,107,27.79220779220779,301,342,283,323,Leg E/F forward-lens delta
+max-kondogiannis,Max Kondogiannis,19,GEN_DEF,Essendon,,516,369,255,430,175,68.62745098039215,239,430,191,79.9163179916318,410,365,360,347,Leg E/F forward-lens delta
+max-mapley,Max Mapley,21,RUC,Melbourne,,620,322,408,620,212,51.9607843137255,408,620,212,51.9607843137255,318,301,277,276,Leg E/F forward-lens delta
+max-michalanney,Max Michalanney,22,GEN_DEF,Adelaide,,569,350,283,548,265,93.63957597173145,129,518,389,301.5503875968992,389,321,501,312,Leg E/F forward-lens delta
+max-ramsden,Max Ramsden,23,KEY_FWD,Hawthorn,,223,573,114,129,15,13.157894736842104,114,129,15,13.157894736842104,580,600,526,584,Leg E/F forward-lens delta
+michael-frederick,Michael Frederick,26,GEN_FWD,Fremantle,,95,675,63,59,-4,-6.349206349206349,60,46,-14,-23.333333333333332,664,687,628,704,Leg E/F forward-lens delta
+michael-sellwood,Michael Sellwood,23,GEN_DEF,Western Bulldogs,,87,684,36,74,38,105.55555555555556,19,69,50,263.15789473684214,726,669,757,652,Leg E/F forward-lens delta
+milan-murdock,Milan Murdock,26,GEN_FWD,West Coast,,919,246,875,740,-135,-15.428571428571427,2,619,617,30850.0,199,254,798,279,Leg E/F forward-lens delta
+miles-bergman,Miles Bergman,25,GEN_DEF,Port Adelaide,,795,277,410,554,144,35.12195121951219,195,378,183,93.84615384615384,311,317,412,377,Leg E/F forward-lens delta
+mitch-georgiades,Mitch Georgiades,25,KEY_FWD,Port Adelaide,,1393,180,1175,1255,80,6.808510638297872,881,1085,204,23.15550510783201,159,180,154,186,Leg E/F forward-lens delta
+mitch-mcgovern,Mitch McGovern,32,GEN_DEF,Carlton,,28,767,28,28,0,0.0,28,28,0,0.0,755,761,737,758,unchanged
+mitch-podhajski,Mitch Podhajski,27,KEY_FWD,Collingwood,,31,762,14,30,16,114.28571428571428,12,30,18,150.0,771,755,768,748,Leg E/F forward-lens delta
+mitch-zadow,Mitch Zadow,22,GEN_FWD,Port Adelaide,,145,628,74,139,65,87.83783783783784,66,139,73,110.6060606060606,646,591,617,576,Leg E/F forward-lens delta
+mitchell-edwards,Mitchell Edwards,21,RUC,Geelong,,1855,127,380,1747,1367,359.7368421052632,342,1671,1329,388.59649122807014,331,119,307,113,Leg E/F forward-lens delta
+mitchell-hinge,Mitchell Hinge,28,GEN_DEF,Adelaide,,555,357,332,274,-58,-17.46987951807229,124,205,81,65.32258064516128,359,479,508,523,Leg E/F forward-lens delta
+mitchell-knevitt,Mitchell Knevitt,23,MID,Geelong,,192,593,99,99,0,0.0,55,59,4,7.2727272727272725,609,638,642,672,Leg E/F forward-lens delta
+mitchell-lewis,Mitchell Lewis,28,KEY_FWD,Hawthorn,,688,302,535,538,3,0.5607476635514018,520,439,-81,-15.576923076923077,269,325,226,341,Leg E/F forward-lens delta
+mitchell-marsh,Mitchell Marsh,19,KEY_FWD,Adelaide,,698,299,372,698,326,87.63440860215054,365,698,333,91.23287671232877,341,268,295,250,Leg E/F forward-lens delta
+mitchito-owens,Mitchito Owens,23,KEY_FWD,St Kilda,,2126,98,1378,1638,260,18.867924528301888,1081,1618,537,49.67622571692877,135,132,129,120,Leg E/F forward-lens delta
+murphy-reid,Murphy Reid,20,GEN_FWD,Fremantle,,3855,30,3503,4256,753,21.495860690836427,3076,4439,1363,44.31079323797139,21,20,19,16,Leg E/F forward-lens delta
+mykelti-lefau,Mykelti Lefau,28,KEY_FWD,Richmond,,70,710,40,67,27,67.5,30,61,31,103.33333333333334,715,674,722,668,Leg E/F forward-lens delta
+nasiah-wanganeen-milera,Nasiah Wanganeen-Milera,23,MID,St Kilda,,6709,7,5809,6687,878,15.114477534859699,4298,6307,2009,46.74267100977198,6,7,8,6,Leg E/F forward-lens delta
+nate-caddy,Nate Caddy,21,KEY_FWD,Essendon,,1783,136,1052,1769,717,68.15589353612167,554,1789,1235,222.92418772563178,171,114,218,109,Leg E/F forward-lens delta
+nathan-broad,Nathan Broad,33,GEN_DEF,Richmond,,11,793,11,11,0,0.0,11,11,0,0.0,782,786,772,780,unchanged
+nathan-o-driscoll,Nathan O'Driscoll,24,MID,Fremantle,,894,253,401,717,316,78.80299251870323,235,678,443,188.51063829787233,323,260,362,256,Leg E/F forward-lens delta
+nathan-wardius,Nathan Wardius,22,GEN_FWD,GWS,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",143,630,100,143,43,43.0,68,143,75,110.29411764705883,603,586,610,571,Leg E/F forward-lens delta
+ned-bowman,Ned Bowman,20,GEN_FWD,Sydney,,419,428,321,419,98,30.529595015576323,316,419,103,32.594936708860764,365,375,317,353,Leg E/F forward-lens delta
+ned-long,Ned Long,23,MID,Collingwood,,1233,202,795,1135,340,42.76729559748428,492,1073,581,118.08943089430895,211,197,237,187,Leg E/F forward-lens delta
+ned-moyle,Ned Moyle,24,RUC,Gold Coast,,1686,142,1156,1717,561,48.529411764705884,1028,1882,854,83.0739299610895,161,123,137,101,Leg E/F forward-lens delta
+ned-reeves,Ned Reeves,28,RUC,Hawthorn,,404,436,144,264,120,83.33333333333334,87,224,137,157.47126436781608,536,493,575,507,Leg E/F forward-lens delta
+neil-erasmus,Neil Erasmus,23,MID,Fremantle,,737,291,377,691,314,83.28912466843501,179,645,466,260.33519553072625,334,272,426,266,Leg E/F forward-lens delta
+nic-newman,Nic Newman,33,GEN_DEF,Carlton,,945,237,853,699,-154,-18.053927315357562,753,620,-133,-17.66268260292165,203,267,173,277,Leg E/F forward-lens delta
+nicholas-coffield,Nicholas Coffield,27,GEN_DEF,Western Bulldogs,,53,731,53,53,0,0.0,53,53,0,0.0,680,698,646,685,unchanged
+nicholas-holman,Nicholas Holman,31,GEN_FWD,Gold Coast,,24,775,24,24,0,0.0,24,24,0,0.0,761,768,746,764,unchanged
+nicholas-martin,Nicholas Martin,25,MID,Essendon,"{'L': 1.0, 'designations': ['2025'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",3648,39,3070,3920,850,27.68729641693811,2413,3784,1371,56.81723995026937,36,26,35,27,Leg E/F forward-lens delta
+nick-blakey,Nick Blakey,26,GEN_DEF,Sydney,,4212,22,3225,3735,510,15.813953488372093,2529,3245,716,28.311585606959273,27,30,28,40,Leg E/F forward-lens delta
+nick-bryan,Nick Bryan,25,RUC,Essendon,,807,274,623,666,43,6.902086677367576,391,528,137,35.0383631713555,245,278,282,307,Leg E/F forward-lens delta
+nick-daicos,Nick Daicos,23,MID,Collingwood,,8017,2,6934,8119,1185,17.089702913181426,5200,7661,2461,47.32692307692308,3,3,4,3,Leg E/F forward-lens delta
+nick-driscoll,Nick Driscoll,19,MID,Geelong,,552,358,267,552,285,106.74157303370787,238,552,314,131.9327731092437,404,318,361,297,Leg E/F forward-lens delta
+nick-haynes,Nick Haynes,34,GEN_DEF,Carlton,,81,698,67,67,0,0.0,65,65,0,0.0,655,675,620,663,unchanged
+nick-larkey,Nick Larkey,28,KEY_FWD,North Melbourne,,739,289,571,648,77,13.485113835376533,486,500,14,2.880658436213992,258,287,239,317,Leg E/F forward-lens delta
+nick-madden,Nick Madden,22,RUC,GWS,,1495,168,280,1130,850,303.57142857142856,244,1130,886,363.11475409836066,393,199,358,178,Leg E/F forward-lens delta
+nick-murray,Nick Murray,26,KEY_DEF,Adelaide,,373,451,208,334,126,60.57692307692307,135,322,187,138.5185185185185,451,432,494,408,Leg E/F forward-lens delta
+nick-vlastuin,Nick Vlastuin,32,GEN_DEF,Richmond,,116,653,107,81,-26,-24.299065420560748,101,53,-48,-47.524752475247524,594,655,540,686,Leg E/F forward-lens delta
+nick-watson,Nick Watson,21,GEN_FWD,Hawthorn,,3176,53,2679,3286,607,22.657708100037325,2129,3392,1263,59.3236261155472,47,45,48,36,Leg E/F forward-lens delta
+nikolas-cox,Nikolas Cox,24,KEY_FWD,Essendon,,296,506,150,214,64,42.66666666666667,51,192,141,276.4705882352941,525,536,655,540,Leg E/F forward-lens delta
+noah-anderson,Noah Anderson,25,MID,Gold Coast,,5160,14,4107,4685,578,14.073532992451913,3096,3954,858,27.71317829457364,16,18,18,21,Leg E/F forward-lens delta
+noah-answerth,Noah Answerth,27,GEN_DEF,Brisbane,,31,763,31,31,0,0.0,31,31,0,0.0,744,752,720,746,unchanged
+noah-balta,Noah Balta,27,KEY_FWD,Richmond,,413,429,279,328,49,17.562724014336915,201,259,58,28.855721393034827,394,434,401,470,Leg E/F forward-lens delta
+noah-chamberlain,Noah Chamberlain,19,GEN_FWD,Sydney,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",157,621,111,157,46,41.44144144144144,99,157,58,58.58585858585859,584,576,550,566,Leg E/F forward-lens delta
+noah-howes,Noah Howes,21,KEY_FWD,Collingwood,,285,515,186,285,99,53.2258064516129,177,285,108,61.016949152542374,478,466,430,440,Leg E/F forward-lens delta
+noah-long,Noah Long,22,GEN_FWD,West Coast,"{'L': 1.0, 'designations': ['2026_preseason'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",300,503,56,99,43,76.78571428571429,39,76,37,94.87179487179486,676,639,694,644,Leg E/F forward-lens delta
+noah-mraz,Noah Mraz,20,KEY_DEF,Hawthorn,,412,432,304,412,108,35.526315789473685,276,412,136,49.275362318840585,376,379,346,356,Leg E/F forward-lens delta
+noah-roberts-thomson,Noah Roberts-Thomson,19,GEN_FWD,Richmond,,487,385,174,426,252,144.82758620689654,155,426,271,174.83870967741936,495,370,467,350,Leg E/F forward-lens delta
+oisin-mullin,Oisin Mullin,26,GEN_DEF,Geelong,,11,794,4,10,6,150.0,3,10,7,233.33333333333334,796,790,793,786,Leg E/F forward-lens delta
+oliver-florent,Oliver Florent,28,GEN_DEF,Carlton,,900,252,744,734,-10,-1.3440860215053763,688,563,-125,-18.168604651162788,223,256,186,291,Leg E/F forward-lens delta
+oliver-francou,Oliver Francou,20,MID,West Coast,,410,433,199,410,211,106.03015075376885,177,410,233,131.63841807909606,461,382,431,359,Leg E/F forward-lens delta
+oliver-griffin,Oliver Griffin,19,GEN_FWD,North Melbourne,,229,568,111,229,118,106.30630630630631,99,229,130,131.31313131313132,585,523,551,497,Leg E/F forward-lens delta
+oliver-hannaford,Oliver Hannaford,20,GEN_FWD,GWS,,432,421,469,469,0,0.0,468,468,0,0.0,290,351,244,337,unchanged
+oliver-hayes-brown,Oliver Hayes-Brown,26,RUC,Richmond,,330,484,225,316,91,40.44444444444444,152,316,164,107.89473684210526,432,444,468,414,Leg E/F forward-lens delta
+oliver-henry,Oliver Henry,24,GEN_FWD,Geelong,,91,678,50,68,18,36.0,50,65,15,30.0,691,672,658,664,Leg E/F forward-lens delta
+oliver-hollands,Oliver Hollands,22,GEN_DEF,Carlton,,1555,161,1135,1520,385,33.92070484581498,745,1566,821,110.20134228187919,163,146,174,128,Leg E/F forward-lens delta
+oliver-wiltshire,Oliver Wiltshire,24,GEN_FWD,Geelong,,102,668,77,77,0,0.0,48,73,25,52.083333333333336,639,661,665,648,Leg E/F forward-lens delta
+oliver-wines,Oliver Wines,32,MID,Port Adelaide,,513,371,462,370,-92,-19.913419913419915,432,248,-184,-42.592592592592595,295,410,254,478,Leg E/F forward-lens delta
+ollie-dempsey,Ollie Dempsey,23,MID,Geelong,,1864,125,1382,1843,461,33.35745296671491,888,1775,887,99.88738738738738,134,111,152,110,Leg E/F forward-lens delta
+ollie-greeves,Ollie Greeves,19,MID,Hawthorn,,525,366,255,525,270,105.88235294117648,226,525,299,132.3008849557522,411,329,369,310,Leg E/F forward-lens delta
+ollie-lord,Ollie Lord,24,KEY_FWD,Port Adelaide,"{'L': 0.9545, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",169,613,44,112,68,154.54545454545453,24,102,78,325.0,702,622,747,606,Leg E/F forward-lens delta
+ollie-murphy,Ollie Murphy,21,KEY_DEF,Fremantle,,289,512,225,289,64,28.444444444444443,200,289,89,44.5,433,464,405,434,Leg E/F forward-lens delta
+oscar-adams,Oscar Adams,23,GEN_DEF,Gold Coast,,75,706,52,52,0,0.0,29,30,1,3.4482758620689653,686,704,732,749,Leg E/F forward-lens delta
+oscar-allen,Oscar Allen,27,KEY_FWD,West Coast,,191,595,85,111,26,30.58823529411765,60,91,31,51.66666666666667,626,623,629,621,Leg E/F forward-lens delta
+oscar-berry,Oscar Berry,24,KEY_DEF,Melbourne,,120,647,58,120,62,106.89655172413792,50,120,70,140.0,671,611,659,593,Leg E/F forward-lens delta
+oscar-mcdonald,Oscar McDonald,30,KEY_DEF,Fremantle,,48,738,35,33,-2,-5.714285714285714,33,33,0,0.0,731,747,713,738,Leg E/F forward-lens delta
+oscar-ryan,Oscar Ryan,21,GEN_DEF,Adelaide,,292,509,283,292,9,3.180212014134275,283,292,9,3.180212014134275,390,461,341,431,Leg E/F forward-lens delta
+oscar-steene,Oscar Steene,23,RUC,Collingwood,"{'L': 0.6364, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",344,471,247,275,28,11.336032388663968,219,275,56,25.570776255707763,416,477,381,452,Leg E/F forward-lens delta
+oskar-baker,Oskar Baker,28,GEN_FWD,Western Bulldogs,,31,764,31,31,0,0.0,31,31,0,0.0,745,753,721,747,unchanged
+oskar-taylor,Oskar Taylor,19,GEN_DEF,GWS,,828,270,455,828,373,81.97802197802197,455,828,373,81.97802197802197,297,236,250,224,Leg E/F forward-lens delta
+paddy-cross,Paddy Cross,23,GEN_FWD,Melbourne,,60,717,13,43,30,230.76923076923075,17,43,26,152.94117647058823,775,720,761,707,Leg E/F forward-lens delta
+paddy-dow,Paddy Dow,27,MID,St Kilda,,165,616,165,165,0,0.0,165,165,0,0.0,505,570,449,559,unchanged
+patrick-carr,Patrick Carr,21,RUC,Richmond,,620,323,408,620,212,51.9607843137255,408,620,212,51.9607843137255,319,302,278,278,Leg E/F forward-lens delta
+patrick-cripps,Patrick Cripps,31,MID,Carlton,,1460,173,1319,1184,-135,-10.23502653525398,1181,935,-246,-20.829805249788315,139,188,111,202,Leg E/F forward-lens delta
+patrick-dangerfield,Patrick Dangerfield,37,GEN_FWD,Geelong,,129,638,129,129,0,0.0,129,129,0,0.0,562,601,502,585,unchanged
+patrick-lipinski,Patrick Lipinski,28,GEN_FWD,Collingwood,,610,331,497,404,-93,-18.712273641851105,466,304,-162,-34.763948497854074,280,386,245,419,Leg E/F forward-lens delta
+patrick-retschko,Patrick Retschko,20,MID,Geelong,,829,269,126,786,660,523.8095238095239,113,834,721,638.0530973451328,565,243,528,223,Leg E/F forward-lens delta
+patrick-said,Patrick Said,20,GEN_FWD,St Kilda,,201,586,145,201,56,38.62068965517241,101,201,100,99.00990099009901,535,543,541,527,Leg E/F forward-lens delta
+patrick-snell,Patrick Snell,21,KEY_DEF,Sydney,,254,547,221,254,33,14.93212669683258,221,254,33,14.93212669683258,441,504,377,474,Leg E/F forward-lens delta
+patrick-voss,Patrick Voss,23,KEY_FWD,Fremantle,,1856,126,1498,1872,374,24.966622162883844,1092,1879,787,72.06959706959707,119,108,127,102,Leg E/F forward-lens delta
+paul-curtis,Paul Curtis,23,GEN_FWD,North Melbourne,,1510,166,1148,1515,367,31.968641114982578,826,1384,558,67.55447941888619,162,148,164,144,Leg E/F forward-lens delta
+peter-ladhams,Peter Ladhams,28,RUC,Sydney,,351,465,193,137,-56,-29.015544041450774,156,105,-51,-32.69230769230769,469,594,464,605,Leg E/F forward-lens delta
+peter-wright,Peter Wright,30,KEY_FWD,Essendon,,2047,110,1832,1670,-162,-8.842794759825328,1611,1365,-246,-15.27001862197393,83,129,75,148,Leg E/F forward-lens delta
+phoenix-gothard,Phoenix Gothard,21,GEN_FWD,GWS,,410,434,330,367,37,11.212121212121213,293,367,74,25.25597269624573,360,415,330,386,Leg E/F forward-lens delta
+reece-torrent,Reece Torrent,21,MID,Brisbane,,216,580,140,216,76,54.285714285714285,96,216,120,125.0,549,534,559,516,Leg E/F forward-lens delta
+reef-mcinnes,Reef McInnes,24,KEY_DEF,Collingwood,"{'L': 1.0, 'designations': ['2025', '2026'], 'flags': ['repeat_lti'], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",77,703,43,43,0,0.0,43,43,0,0.0,705,721,680,708,unchanged
+reilly-o-brien,Reilly O'Brien,31,RUC,Adelaide,,1194,207,1274,875,-399,-31.318681318681318,1133,722,-411,-36.27537511032657,145,225,120,241,Leg E/F forward-lens delta
+reuben-ginbey,Reuben Ginbey,22,KEY_DEF,West Coast,,2679,67,2103,2780,677,32.19210651450309,1577,2737,1160,73.5573874445149,69,60,78,57,Leg E/F forward-lens delta
+rhett-bazzo,Rhett Bazzo,23,KEY_DEF,West Coast,,464,403,162,361,199,122.83950617283949,82,336,254,309.7560975609756,508,418,589,404,Leg E/F forward-lens delta
+rhyan-mansell,Rhyan Mansell,26,GEN_FWD,Richmond,,105,663,31,63,32,103.2258064516129,14,60,46,328.57142857142856,746,682,763,670,Leg E/F forward-lens delta
+rhylee-west,Rhylee West,26,GEN_FWD,Western Bulldogs,,171,610,110,126,16,14.545454545454545,89,95,6,6.741573033707865,590,603,573,616,Leg E/F forward-lens delta
+rhys-stanley,Rhys Stanley,36,RUC,Geelong,,37,749,37,37,0,0.0,37,37,0,0.0,722,736,701,726,unchanged
+rhys-unwin,Rhys Unwin,20,GEN_FWD,Essendon,,200,587,144,175,31,21.52777777777778,100,175,75,75.0,537,564,544,552,Leg E/F forward-lens delta
+riak-andrew,Riak Andrew,21,KEY_DEF,Sydney,,336,478,219,336,117,53.42465753424658,208,336,128,61.53846153846154,442,431,396,405,Leg E/F forward-lens delta
+ricky-mentha,Ricky Mentha,20,GEN_FWD,Melbourne,,137,633,99,137,38,38.38383838383838,68,137,69,101.47058823529412,610,595,611,578,Leg E/F forward-lens delta
+riley-bice,Riley Bice,26,GEN_DEF,Sydney,,473,397,382,387,5,1.3089005235602094,347,346,-1,-0.2881844380403458,329,398,304,399,Leg E/F forward-lens delta
+riley-garcia,Riley Garcia,25,GEN_FWD,Western Bulldogs,,149,626,37,51,14,37.83783783783784,29,29,0,0.0,723,707,733,756,Leg E/F forward-lens delta
+riley-hamilton,Riley Hamilton,20,GEN_FWD,GWS,,334,479,162,334,172,106.17283950617285,143,334,191,133.56643356643357,509,433,481,406,Leg E/F forward-lens delta
+riley-hardeman,Riley Hardeman,21,GEN_DEF,North Melbourne,,353,464,159,177,18,11.320754716981133,92,177,85,92.3913043478261,514,560,566,549,Leg E/F forward-lens delta
+riley-onley,Riley Onley,19,MID,Melbourne,,438,418,213,438,225,105.63380281690141,189,438,249,131.74603174603175,448,361,418,343,Leg E/F forward-lens delta
+riley-thilthorpe,Riley Thilthorpe,24,KEY_FWD,Adelaide,,4103,26,3418,3866,448,13.107080163838503,2657,3588,931,35.039518253669556,23,27,26,31,Leg E/F forward-lens delta
+river-stevens,River Stevens,20,GEN_FWD,North Melbourne,,193,592,139,193,54,38.84892086330935,96,193,97,101.04166666666667,551,550,560,538,Leg E/F forward-lens delta
+roan-steele,Roan Steele,25,MID,Collingwood,,23,776,8,21,13,162.5,2,19,17,850.0,790,769,799,770,Leg E/F forward-lens delta
+rob-monahan,Rob Monahan,22,GEN_DEF,Carlton,,175,608,113,175,62,54.86725663716814,78,175,97,124.35897435897436,582,565,593,553,Leg E/F forward-lens delta
+robert-hansen,Robert Hansen,22,GEN_FWD,North Melbourne,,162,619,25,52,27,108.0,22,52,30,136.36363636363635,760,705,752,689,Leg E/F forward-lens delta
+rory-laird,Rory Laird,33,GEN_DEF,Adelaide,,1027,226,953,701,-252,-26.442812172088143,832,619,-213,-25.600961538461537,186,266,162,280,Leg E/F forward-lens delta
+rory-lobb,Rory Lobb,33,KEY_DEF,Western Bulldogs,,391,443,358,271,-87,-24.30167597765363,315,239,-76,-24.126984126984127,346,483,319,487,Leg E/F forward-lens delta
+rowan-marshall,Rowan Marshall,31,RUC,St Kilda,,1364,185,1033,1165,132,12.778315585672798,712,949,237,33.28651685393258,173,192,178,200,Leg E/F forward-lens delta
+ryan-angwin,Ryan Angwin,24,MID,GWS,,441,415,150,391,241,160.66666666666666,70,363,293,418.5714285714286,526,396,603,388,Leg E/F forward-lens delta
+ryan-byrnes,Ryan Byrnes,25,GEN_DEF,St Kilda,,107,661,29,50,21,72.41379310344827,29,33,4,13.793103448275861,750,710,734,739,Leg E/F forward-lens delta
+ryan-gardner,Ryan Gardner,29,KEY_DEF,Western Bulldogs,,32,761,32,32,0,0.0,32,32,0,0.0,741,751,718,745,unchanged
+ryan-lester,Ryan Lester,34,KEY_DEF,Brisbane,,905,251,783,783,0,0.0,691,691,0,0.0,213,244,185,254,unchanged
+ryan-maric,Ryan Maric,22,MID,West Coast,,1357,187,932,1269,337,36.1587982832618,526,1236,710,134.9809885931559,189,178,223,162,Leg E/F forward-lens delta
+ryda-luke,Ryda Luke,19,GEN_FWD,Fremantle,,229,569,111,229,118,106.30630630630631,99,229,130,131.31313131313132,586,524,552,498,Leg E/F forward-lens delta
+ryley-sanders,Ryley Sanders,21,MID,Western Bulldogs,,3668,38,3087,3807,720,23.323615160349853,2452,3879,1427,58.1973898858075,35,29,31,24,Leg E/F forward-lens delta
+saad-el-hawli,Saad El-Hawli,25,GEN_DEF,Essendon,,22,777,5,13,8,160.0,4,12,8,200.0,793,779,788,778,Leg E/F forward-lens delta
+sam-allen,Sam Allen,19,MID,West Coast,,837,268,433,837,404,93.30254041570439,420,837,417,99.28571428571429,302,234,262,222,Leg E/F forward-lens delta
+sam-banks,Sam Banks,23,GEN_DEF,Richmond,,1302,190,824,1228,404,49.029126213592235,428,1198,770,179.90654205607478,207,182,260,167,Leg E/F forward-lens delta
+sam-berry,Sam Berry,24,MID,Adelaide,,3417,45,2596,3308,712,27.426810477657938,1977,3187,1210,61.20384420839656,51,42,55,42,Leg E/F forward-lens delta
+sam-butler-1,Sam Butler,23,GEN_FWD,Hawthorn,,105,664,72,72,0,0.0,40,50,10,25.0,648,670,689,693,Leg E/F forward-lens delta
+sam-clohesy,Sam Clohesy,24,MID,Gold Coast,,296,507,93,241,148,159.13978494623655,40,228,188,470.0,617,511,690,500,Leg E/F forward-lens delta
+sam-cumming,Sam Cumming,19,MID,Richmond,,2119,99,1516,2191,675,44.52506596306068,694,2238,1544,222.47838616714697,118,88,184,75,Leg E/F forward-lens delta
+sam-darcy,Sam Darcy,23,KEY_FWD,Western Bulldogs,"{'L': 0.7273, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",4824,15,4438,5294,856,19.28796755295178,3552,5111,1559,43.890765765765764,11,13,12,13,Leg E/F forward-lens delta
+sam-davidson,Sam Davidson,25,GEN_FWD,Western Bulldogs,,117,651,60,94,34,56.666666666666664,44,84,40,90.9090909090909,668,644,678,634,Leg E/F forward-lens delta
+sam-de-koning,Sam De Koning,25,KEY_DEF,Geelong,,1234,201,921,1087,166,18.023887079261673,646,884,238,36.84210526315789,191,201,195,207,Leg E/F forward-lens delta
+sam-draper,Sam Draper,28,RUC,Brisbane,,944,238,548,599,51,9.306569343065693,431,517,86,19.953596287703014,264,304,256,313,Leg E/F forward-lens delta
+sam-durham,Sam Durham,25,MID,Essendon,,1787,135,1335,1651,316,23.670411985018728,875,1598,723,82.62857142857143,138,130,157,127,Leg E/F forward-lens delta
+sam-flanders,Sam Flanders,25,GEN_DEF,St Kilda,"{'L': 0.4545, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",2070,105,2060,2315,255,12.37864077669903,1754,2019,265,15.108323831242872,72,80,65,86,Leg E/F forward-lens delta
+sam-lalor,Sam Lalor,20,MID,Richmond,,4115,25,2868,4081,1213,42.29428172942817,1956,4347,2391,122.23926380368097,42,21,56,17,Leg E/F forward-lens delta
+sam-marshall,Sam Marshall,20,MID,Brisbane,,926,243,309,744,435,140.7766990291262,232,629,397,171.1206896551724,372,252,363,270,Leg E/F forward-lens delta
+sam-powell-pepper,Sam Powell-Pepper,28,GEN_FWD,Port Adelaide,,301,502,225,118,-107,-47.55555555555556,219,86,-133,-60.73059360730594,434,614,382,629,Leg E/F forward-lens delta
+sam-sturt,Sam Sturt,26,GEN_FWD,Fremantle,,53,732,53,53,0,0.0,53,53,0,0.0,681,699,647,687,unchanged
+sam-switkowski,Sam Switkowski,30,GEN_FWD,Fremantle,,49,737,43,29,-14,-32.55813953488372,39,18,-21,-53.84615384615385,706,759,695,771,Leg E/F forward-lens delta
+sam-taylor,Sam Taylor,27,KEY_DEF,GWS,,1979,115,1517,1565,48,3.1641397495056034,1296,1368,72,5.555555555555555,117,145,99,147,Leg E/F forward-lens delta
+sam-walsh,Sam Walsh,26,MID,Carlton,,2763,65,2279,2497,218,9.565598946906539,2031,2209,178,8.764155588380108,64,68,52,77,Leg E/F forward-lens delta
+sam-wicks,Sam Wicks,27,GEN_DEF,Sydney,,27,769,14,18,4,28.57142857142857,10,10,0,0.0,772,772,778,787,Leg E/F forward-lens delta
+samson-ryan,Samson Ryan,26,RUC,Richmond,,453,409,208,349,141,67.78846153846155,181,350,169,93.37016574585635,452,424,425,394,Leg E/F forward-lens delta
+samuel-collins,Samuel Collins,32,KEY_DEF,Gold Coast,,988,229,883,754,-129,-14.609286523216308,813,571,-242,-29.766297662976633,195,250,165,289,Leg E/F forward-lens delta
+samuel-grlj,Samuel Grlj,19,MID,Richmond,,2422,80,1602,2428,826,51.56054931335831,665,2426,1761,264.812030075188,102,75,191,66,Leg E/F forward-lens delta
+samuel-swadling,Samuel Swadling,19,MID,Collingwood,,655,310,330,655,325,98.48484848484848,310,655,345,111.29032258064515,361,283,321,262,Leg E/F forward-lens delta
+sandy-brock,Sandy Brock,24,KEY_DEF,West Coast,,331,482,120,198,78,65.0,91,198,107,117.58241758241759,572,544,568,530,Leg E/F forward-lens delta
+scott-pendlebury,Scott Pendlebury,39,MID,Collingwood,,638,316,638,638,0,0.0,633,633,0,0.0,239,293,199,269,unchanged
+sean-darcy,Sean Darcy,28,RUC,Fremantle,,1208,206,839,980,141,16.805721096543504,792,861,69,8.712121212121213,204,214,169,215,Leg E/F forward-lens delta
+seth-campbell,Seth Campbell,22,GEN_FWD,Richmond,,957,233,754,1005,251,33.28912466843501,543,1059,516,95.02762430939227,220,209,220,189,Leg E/F forward-lens delta
+shadeau-brain,Shadeau Brain,22,GEN_DEF,Brisbane,,81,699,47,78,31,65.95744680851064,26,68,42,161.53846153846155,698,659,743,654,Leg E/F forward-lens delta
+shai-bolton,Shai Bolton,28,GEN_FWD,Fremantle,,2440,79,2232,2143,-89,-3.9874551971326166,2120,1902,-218,-10.283018867924529,66,89,49,99,Leg E/F forward-lens delta
+shannon-neale,Shannon Neale,24,KEY_FWD,Geelong,,2317,86,1723,2316,593,34.41671503192107,1458,2247,789,54.11522633744856,91,79,86,74,Leg E/F forward-lens delta
+shaun-mannagh,Shaun Mannagh,29,GEN_FWD,Geelong,,511,372,468,371,-97,-20.726495726495727,429,266,-163,-37.995337995338,292,408,259,461,Leg E/F forward-lens delta
+sid-draper,Sid Draper,20,MID,Adelaide,,1177,211,878,878,0,0.0,658,721,63,9.574468085106384,197,224,192,243,Leg E/F forward-lens delta
+steele-sidebottom,Steele Sidebottom,36,MID,Collingwood,,102,669,102,102,0,0.0,102,102,0,0.0,600,631,538,607,unchanged
+steely-green,Steely Green,22,GEN_FWD,Richmond,,291,511,142,269,127,89.43661971830986,51,230,179,350.98039215686276,544,485,656,494,Leg E/F forward-lens delta
+stephen-coniglio,Stephen Coniglio,33,MID,GWS,,165,617,165,165,0,0.0,165,165,0,0.0,506,571,450,560,unchanged
+sullivan-robey,Sullivan Robey,19,MID,Essendon,,2640,71,2005,2700,695,34.66334164588529,633,2735,2102,332.0695102685624,76,63,200,58,Leg E/F forward-lens delta
+tai-hayes,Tai Hayes,22,GEN_FWD,Brisbane,,300,504,148,300,152,102.7027027027027,135,300,165,122.22222222222223,529,451,495,421,Leg E/F forward-lens delta
+taj-hotton,Taj Hotton,20,MID,Richmond,,2071,104,536,1681,1145,213.61940298507466,430,1614,1184,275.34883720930236,266,128,258,123,Leg E/F forward-lens delta
+talor-byrne,Talor Byrne,19,GEN_FWD,Carlton,,441,416,356,386,30,8.426966292134832,144,331,187,129.86111111111111,349,399,479,407,Leg E/F forward-lens delta
+tanner-bruhn,Tanner Bruhn,24,MID,Geelong,,1386,182,779,1300,521,66.8806161745828,382,1233,851,222.77486910994764,215,172,284,163,Leg E/F forward-lens delta
+taylor-goad,Taylor Goad,21,RUC,North Melbourne,,914,249,595,875,280,47.05882352941176,564,875,311,55.14184397163121,254,226,213,211,Leg E/F forward-lens delta
+taylor-walker,Taylor Walker,37,KEY_FWD,Adelaide,,239,563,222,222,0,0.0,214,222,8,3.7383177570093453,439,528,388,510,Leg E/F forward-lens delta
+tew-jiath,Tew Jiath,21,GEN_DEF,Collingwood,,244,557,206,234,28,13.592233009708737,187,234,47,25.13368983957219,453,515,419,492,Leg E/F forward-lens delta
+thomas-anastasopoulos,Tom Anastasopoulos,21,GEN_FWD,Port Adelaide,,323,487,124,296,172,138.70967741935485,90,296,206,228.88888888888889,567,455,570,426,Leg E/F forward-lens delta
+thomas-burton,Thomas Burton,19,GEN_FWD,Richmond,,334,480,111,265,154,138.73873873873873,99,265,166,167.67676767676767,587,490,553,462,Leg E/F forward-lens delta
+thomas-liberatore,Thomas Liberatore,34,MID,Western Bulldogs,,2129,97,1689,1689,0,0.0,1375,1375,0,0.0,94,125,93,146,unchanged
+thomas-matthews,Thomas Matthews,19,GEN_FWD,Melbourne,,584,340,301,584,283,94.01993355481729,292,584,292,100.0,377,308,331,286,Leg E/F forward-lens delta
+thomas-sims,Thomas Sims,20,KEY_FWD,Richmond,,1083,218,529,984,455,86.01134215500946,313,901,588,187.8594249201278,271,213,320,204,Leg E/F forward-lens delta
+thomas-stewart,Thomas Stewart,33,GEN_DEF,Geelong,,1108,216,1027,866,-161,-15.676728334956183,890,753,-137,-15.393258426966291,175,227,151,233,Leg E/F forward-lens delta
+tim-kelly,Tim Kelly,32,MID,West Coast,,1030,225,956,688,-268,-28.03347280334728,902,459,-443,-49.11308203991131,184,274,147,340,Leg E/F forward-lens delta
+tim-membrey,Tim Membrey,32,KEY_FWD,St Kilda,,40,746,29,25,-4,-13.793103448275861,28,24,-4,-14.285714285714285,751,767,738,765,Leg E/F forward-lens delta
+tim-taranto,Tim Taranto,28,MID,Richmond,,2619,72,2453,2375,-78,-3.1797798613942114,2300,1985,-315,-13.695652173913043,58,76,41,88,Leg E/F forward-lens delta
+timothy-english,Timothy English,29,RUC,Western Bulldogs,,3682,37,3095,3410,315,10.177705977382875,2367,2910,543,22.9404309252218,33,39,39,50,Leg E/F forward-lens delta
+tobie-travaglia,Tobie Travaglia,20,GEN_DEF,St Kilda,,601,333,297,434,137,46.12794612794613,223,342,119,53.36322869955157,380,363,373,401,Leg E/F forward-lens delta
+toby-bedford,Toby Bedford,26,GEN_FWD,GWS,,248,553,204,176,-28,-13.725490196078432,198,141,-57,-28.78787878787879,456,562,408,575,Leg E/F forward-lens delta
+toby-conway,Toby Conway,23,RUC,Geelong,"{'L': 1.0, 'designations': ['2025'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",562,352,494,494,0,0.0,494,494,0,0.0,284,340,235,322,unchanged
+toby-greene,Toby Greene,33,GEN_FWD,GWS,,859,263,800,744,-56,-7.000000000000001,706,658,-48,-6.79886685552408,209,253,180,261,Leg E/F forward-lens delta
+toby-mcmullin,Toby McMullin,22,GEN_FWD,GWS,,181,604,84,88,4,4.761904761904762,58,65,7,12.068965517241379,629,648,634,665,Leg E/F forward-lens delta
+toby-murray,Toby Murray,23,KEY_FWD,Adelaide,,272,534,161,196,35,21.73913043478261,86,196,110,127.90697674418605,510,547,577,534,Leg E/F forward-lens delta
+toby-nankervis,Toby Nankervis,32,RUC,Richmond,,2112,100,1628,1727,99,6.081081081081082,1404,1445,41,2.92022792022792,98,122,89,138,Leg E/F forward-lens delta
+toby-pink,Toby Pink,28,KEY_DEF,North Melbourne,"{'L': 0.7727, 'designations': ['2026'], 'flags': ['sectionB_no_return_haircut'], 'out': True, 'ret_year': 2027, 'return_arm': False, 'section': 'B'}",19,781,16,18,2,12.5,14,16,2,14.285714285714285,768,773,764,772,Leg E/F forward-lens delta
+toby-whan,Toby Whan,19,GEN_FWD,Fremantle,,229,570,111,229,118,106.30630630630631,99,229,130,131.31313131313132,588,525,554,499,Leg E/F forward-lens delta
+tobyn-murray,Tobyn Murray,21,GEN_FWD,Fremantle,,461,406,230,461,231,100.43478260869566,213,461,248,116.4319248826291,427,354,391,339,Leg E/F forward-lens delta
+todd-marshall,Todd Marshall,28,KEY_FWD,Port Adelaide,,151,624,100,101,1,1.0,91,83,-8,-8.791208791208792,604,632,569,637,Leg E/F forward-lens delta
+tom-atkins,Tom Atkins,31,MID,Geelong,,337,477,307,216,-91,-29.64169381107492,287,136,-151,-52.613240418118465,374,535,337,579,Leg E/F forward-lens delta
+tom-barrass,Tom Barrass,31,KEY_DEF,Hawthorn,,477,396,403,366,-37,-9.181141439205955,345,243,-102,-29.565217391304348,322,416,305,482,Leg E/F forward-lens delta
+tom-blamires,Tom Blamires,24,GEN_DEF,North Melbourne,,82,695,49,75,26,53.06122448979592,10,93,83,830.0000000000001,695,668,779,618,Leg E/F forward-lens delta
+tom-brown,Tom Brown,23,GEN_DEF,Richmond,,464,404,202,394,192,95.04950495049505,71,371,300,422.53521126760563,458,393,599,383,Leg E/F forward-lens delta
+tom-cochrane,Tom Cochrane,20,GEN_FWD,Port Adelaide,,252,551,143,210,67,46.85314685314685,100,210,110,110.00000000000001,541,538,545,520,Leg E/F forward-lens delta
+tom-cole,Tom Cole,29,GEN_DEF,West Coast,,68,711,30,30,0,0.0,30,30,0,0.0,747,756,723,750,unchanged
+tom-de-koning,Tom De Koning,27,RUC,St Kilda,,1970,116,1628,1863,235,14.434889434889433,1151,1618,467,40.57341442224153,99,109,117,121,Leg E/F forward-lens delta
+tom-doedee,Tom Doedee,29,GEN_DEF,Brisbane,,393,441,291,212,-79,-27.147766323024054,74,133,59,79.72972972972973,384,537,597,582,Leg E/F forward-lens delta
+tom-edwards,Tom Edwards,26,KEY_FWD,Essendon,,57,720,27,38,11,40.74074074074074,27,38,11,40.74074074074074,756,734,740,724,Leg E/F forward-lens delta
+tom-green,Tom Green,25,MID,GWS,"{'L': 1.0, 'designations': ['2026'], 'flags': [], 'out': True, 'ret_year': 2027, 'return_arm': True, 'section': 'A'}",4817,16,4236,4775,539,12.72426817752597,3033,3869,836,27.56346851302341,13,16,21,25,Leg E/F forward-lens delta
+tom-gross,Tom Gross,20,MID,West Coast,,590,337,194,512,318,163.91752577319588,156,411,255,163.46153846153845,467,331,465,357,Leg E/F forward-lens delta
+tom-hanily,Tom Hanily,21,GEN_FWD,Sydney,,165,618,65,101,36,55.38461538461539,57,101,44,77.19298245614034,661,633,636,609,Leg E/F forward-lens delta
+tom-lynch-1,Tom Lynch,34,KEY_FWD,Richmond,,187,600,161,161,0,0.0,147,147,0,0.0,511,572,475,568,unchanged
+tom-mccarthy,Tom McCarthy,26,GEN_DEF,West Coast,,1636,149,1562,1514,-48,-3.0729833546734953,1486,1439,-47,-3.1628532974428,108,149,85,139,Leg E/F forward-lens delta
+tom-mccartin,Tom McCartin,27,KEY_DEF,Sydney,,1666,145,1417,1492,75,5.29287226534933,1272,1280,8,0.628930817610063,128,152,103,158,Leg E/F forward-lens delta
+tom-mcdonald,Tom McDonald,34,KEY_DEF,Melbourne,,360,458,255,255,0,0.0,232,232,0,0.0,412,501,364,493,unchanged
+tom-papley,Tom Papley,30,GEN_FWD,Sydney,,511,373,468,347,-121,-25.85470085470086,420,228,-192,-45.714285714285715,293,427,263,501,Leg E/F forward-lens delta
+tom-powell,Tom Powell,24,GEN_FWD,North Melbourne,,2247,90,1440,2052,612,42.5,945,1976,1031,109.1005291005291,126,94,143,91,Leg E/F forward-lens delta
+tom-sparrow,Tom Sparrow,26,MID,Melbourne,,887,254,607,596,-11,-1.8121911037891267,459,432,-27,-5.88235294117647,250,305,247,344,Leg E/F forward-lens delta
+touk-miller,Touk Miller,30,MID,Gold Coast,,1720,139,1566,1323,-243,-15.517241379310345,1396,1024,-372,-26.64756446991404,107,170,90,191,Leg E/F forward-lens delta
+trent-rivers,Trent Rivers,25,GEN_DEF,Melbourne,,2015,111,1396,1631,235,16.83381088825215,833,1217,384,46.0984393757503,132,135,161,164,Leg E/F forward-lens delta
+tristan-xerri,Tristan Xerri,27,RUC,North Melbourne,,7635,4,6813,7467,654,9.59929546455306,5411,6726,1315,24.302347070781742,4,4,3,4,Leg E/F forward-lens delta
+ty-gallop,Ty Gallop,20,KEY_FWD,Brisbane,,1062,221,784,1016,232,29.591836734693878,370,985,615,166.2162162162162,212,207,290,197,Leg E/F forward-lens delta
+tyan-prindable,Tyan Prindable,19,MID,Collingwood,,755,283,387,755,368,95.09043927648578,372,755,383,102.95698924731182,328,249,287,231,Leg E/F forward-lens delta
+tylah-williams,Tylah Williams,19,GEN_FWD,West Coast,,480,394,240,480,240,100.0,223,480,257,115.24663677130044,422,349,374,332,Leg E/F forward-lens delta
+tylar-young,Tylar Young,28,KEY_DEF,West Coast,,234,565,54,230,176,325.9259259259259,47,228,181,385.1063829787234,678,519,668,502,Leg E/F forward-lens delta
+tyler-brockman,Tyler Brockman,24,GEN_FWD,West Coast,,90,680,29,56,27,93.10344827586206,25,49,24,96.0,752,691,745,698,Leg E/F forward-lens delta
+tyler-sonsie,Tyler Sonsie,23,MID,Richmond,,1268,195,752,1180,428,56.91489361702128,357,1116,759,212.60504201680672,222,189,297,180,Leg E/F forward-lens delta
+tyler-welsh,Tyler Welsh,20,KEY_FWD,Adelaide,,243,560,159,243,84,52.83018867924528,151,243,92,60.9271523178808,515,509,470,483,Leg E/F forward-lens delta
+tyrell-dewar,Tyrell Dewar,22,GEN_DEF,West Coast,,209,582,32,78,46,143.75,18,61,43,238.88888888888889,742,660,758,669,Leg E/F forward-lens delta
+tyson-stengle,Tyson Stengle,28,GEN_FWD,Richmond,,254,548,129,100,-29,-22.48062015503876,124,68,-56,-45.16129032258064,563,636,509,655,Leg E/F forward-lens delta
+vigo-visentini,Vigo Visentini,21,RUC,Essendon,,326,485,326,326,0,0.0,297,298,1,0.33670033670033667,363,435,327,423,Leg E/F forward-lens delta
+wade-derksen,Wade Derksen,25,KEY_DEF,Carlton,,118,649,158,158,0,0.0,158,158,0,0.0,517,574,459,563,unchanged
+wayne-milera,Wayne Milera,29,GEN_DEF,Adelaide,,1839,131,1726,1627,-99,-5.735805330243337,1680,1384,-296,-17.61904761904762,90,137,70,145,Leg E/F forward-lens delta
+wil-dawson,Wil Dawson,21,KEY_DEF,North Melbourne,,498,375,396,396,0,0.0,396,396,0,0.0,325,391,281,368,unchanged
+wil-parker,Wil Parker,24,GEN_DEF,Collingwood,,34,756,59,59,0,0.0,40,40,0,0.0,670,688,691,718,unchanged
+wil-powell,Wil Powell,27,GEN_DEF,Gold Coast,,967,232,753,834,81,10.756972111553784,646,621,-25,-3.8699690402476783,221,235,196,272,Leg E/F forward-lens delta
+will-ashcroft,Will Ashcroft,22,MID,Brisbane,,4729,18,4012,4747,735,18.320039880358923,3183,4650,1467,46.08859566446748,17,17,15,15,Leg E/F forward-lens delta
+will-brodie,Will Brodie,28,MID,Port Adelaide,,1019,227,756,671,-85,-11.243386243386242,680,350,-330,-48.529411764705884,219,277,187,395,Leg E/F forward-lens delta
+will-darcy,Will Darcy,19,KEY_DEF,Western Bulldogs,,549,359,266,549,283,106.39097744360902,229,549,320,139.73799126637553,405,320,367,299,Leg E/F forward-lens delta
+will-day,Will Day,25,MID,Hawthorn,,3585,42,2087,2611,524,25.107810253953044,1679,2264,585,34.84216795711733,70,65,71,72,Leg E/F forward-lens delta
+will-edwards,Will Edwards,23,KEY_DEF,Sydney,,241,561,105,173,68,64.76190476190476,68,173,105,154.41176470588235,596,566,612,554,Leg E/F forward-lens delta
+will-graham,Will Graham,21,GEN_FWD,Gold Coast,,1561,160,912,1517,605,66.33771929824562,513,1483,970,189.08382066276803,193,147,229,134,Leg E/F forward-lens delta
+will-green,Will Green,21,RUC,Sydney,,651,311,574,651,77,13.414634146341465,567,651,84,14.814814814814813,257,285,212,263,Leg E/F forward-lens delta
+will-hayes-b,Will Hayes,20,GEN_FWD,Collingwood,,310,494,123,239,116,94.3089430894309,99,212,113,114.14141414141415,569,513,555,518,Leg E/F forward-lens delta
+will-hayward,Will Hayward,28,GEN_FWD,Carlton,,224,572,177,121,-56,-31.63841807909605,171,86,-85,-49.707602339181285,492,609,442,630,Leg E/F forward-lens delta
+will-lewis,Will Lewis,27,KEY_FWD,Western Bulldogs,,10,796,15,8,-7,-46.666666666666664,9,8,-1,-11.11111111111111,769,791,781,791,Leg E/F forward-lens delta
+will-lorenz,Will Lorenz,21,MID,Port Adelaide,,409,435,139,265,126,90.64748201438849,123,265,142,115.44715447154472,552,491,511,463,Leg E/F forward-lens delta
+will-mclachlan,Will McLachlan,21,GEN_FWD,Brisbane,,170,612,57,122,65,114.03508771929825,57,122,65,114.03508771929825,672,607,637,590,Leg E/F forward-lens delta
+will-setterfield,Will Setterfield,28,MID,Essendon,,1632,150,1157,1307,150,12.964563526361278,1112,1036,-76,-6.83453237410072,160,171,125,190,Leg E/F forward-lens delta
+willem-drew,Willem Drew,28,MID,Port Adelaide,,841,267,691,664,-27,-3.907380607814761,647,476,-171,-26.42967542503864,229,279,193,334,Leg E/F forward-lens delta
+willem-duursma,Willem Duursma,19,MID,West Coast,,4265,20,3095,5032,1937,62.58481421647819,1086,5663,4577,421.45488029465935,34,14,128,8,Leg E/F forward-lens delta
+william-mccabe,William McCabe,21,KEY_FWD,Hawthorn,,575,346,381,550,169,44.35695538057743,381,550,169,44.35695538057743,330,319,285,298,Leg E/F forward-lens delta
+xavier-bamert,Xavier Bamert,19,GEN_FWD,Port Adelaide,,280,520,111,268,157,141.44144144144144,99,268,169,170.7070707070707,589,487,556,459,Leg E/F forward-lens delta
+xavier-duursma,Xavier Duursma,26,MID,Essendon,,257,545,124,176,52,41.935483870967744,65,111,46,70.76923076923077,568,563,621,599,Leg E/F forward-lens delta
+xavier-lindsay,Xavier Lindsay,20,GEN_DEF,Melbourne,,2155,94,567,2017,1450,255.7319223985891,456,1954,1498,328.50877192982455,260,95,249,95,Leg E/F forward-lens delta
+xavier-o-halloran,Xavier O'Halloran,26,GEN_FWD,GWS,,42,744,42,42,0,0.0,42,42,0,0.0,711,725,683,712,unchanged
+xavier-taylor,Xavier Taylor,19,GEN_DEF,Melbourne,,938,240,483,858,375,77.63975155279503,483,858,375,77.63975155279503,287,228,240,216,Leg E/F forward-lens delta
+xavier-walsh,Xavier Walsh,21,KEY_DEF,Port Adelaide,,230,566,200,230,30,15.0,200,230,30,15.0,459,520,406,495,Leg E/F forward-lens delta
+zac-bailey,Zac Bailey,27,GEN_FWD,Brisbane,,2649,68,2274,2432,158,6.948109058927001,2025,2100,75,3.7037037037037033,65,74,53,83,Leg E/F forward-lens delta
+zac-banch,Zac Banch,23,GEN_FWD,North Melbourne,,66,714,66,66,0,0.0,46,50,4,8.695652173913043,660,678,675,694,Leg E/F forward-lens delta
+zac-fisher,Zac Fisher,28,GEN_FWD,North Melbourne,,208,583,67,76,9,13.432835820895523,47,58,11,23.404255319148938,656,663,669,675,Leg E/F forward-lens delta
+zac-mccarthy,Zac McCarthy,19,KEY_FWD,Collingwood,,385,444,186,385,199,106.98924731182795,161,385,224,139.1304347826087,479,400,455,372,Leg E/F forward-lens delta
+zac-taylor,Zac Taylor,23,GEN_FWD,Adelaide,,342,474,184,320,136,73.91304347826086,88,288,200,227.27272727272728,482,438,574,436,Leg E/F forward-lens delta
+zac-walker,Zac Walker,20,GEN_DEF,Western Bulldogs,,240,562,174,240,66,37.93103448275862,121,240,119,98.34710743801654,496,512,516,484,Leg E/F forward-lens delta
+zach-guthrie,Zach Guthrie,28,GEN_DEF,Geelong,,534,363,350,411,61,17.42857142857143,178,287,109,61.23595505617978,351,380,429,438,Leg E/F forward-lens delta
+zach-reid,Zach Reid,24,KEY_DEF,Essendon,,1734,137,1242,1777,535,43.07568438003221,996,1841,845,84.83935742971887,147,113,138,104,Leg E/F forward-lens delta
+zachary-merrett,Zachary Merrett,31,MID,Essendon,,2900,62,2646,2453,-193,-7.294028722600151,2289,1962,-327,-14.285714285714285,48,72,42,94,Leg E/F forward-lens delta
+zachary-williams,Zachary Williams,32,GEN_DEF,Carlton,,244,558,218,95,-123,-56.42201834862385,210,59,-151,-71.9047619047619,445,643,393,673,Leg E/F forward-lens delta
+zak-butters,Zak Butters,26,MID,Port Adelaide,,6198,8,5227,5740,513,9.814425100440022,4406,5169,763,17.31729459827508,8,8,7,10,Leg E/F forward-lens delta
+zak-evans,Zak Evans,26,MID,Gold Coast,,8,798,6,8,2,33.33333333333333,4,8,4,100.0,791,792,789,792,Leg E/F forward-lens delta
+zak-johnson,Zak Johnson,20,GEN_DEF,Essendon,,574,347,160,483,323,201.87499999999997,128,410,282,220.3125,513,345,504,360,Leg E/F forward-lens delta
+zane-duursma,Zane Duursma,21,GEN_FWD,North Melbourne,,736,292,398,654,256,64.321608040201,247,530,283,114.5748987854251,324,284,357,306,Leg E/F forward-lens delta
+zane-peucker,Zane Peucker,19,GEN_FWD,Richmond,,573,348,295,573,278,94.23728813559322,284,573,289,101.7605633802817,381,310,340,287,Leg E/F forward-lens delta
+zane-zakostelsky,Zane Zakostelsky,21,KEY_DEF,Brisbane,,620,324,224,542,318,141.96428571428572,224,542,318,141.96428571428572,436,323,371,302,Leg E/F forward-lens delta
+zeke-uwland,Zeke Uwland,19,GEN_DEF,Gold Coast,,2334,85,1619,1906,287,17.726991970352067,1047,1759,712,68.00382043935052,101,106,134,111,Leg E/F forward-lens delta

@@ -1,0 +1,12 @@
+  PASS §2.viii layer is INSIDE the RL_LEGF!=0 branch
+  PASS RL_LEGF=0 branch prints 'layer NOT emitted' (no phantom keys)
+  PASS block does NOT call _ev( (engine valuation untouched)
+  PASS block only ADDS out['phantom*'] keys (no out['active']/['back'] mutation)
+  PASS block reads only PVC / vP1 / vP2 / club / sealed file (no ev channel)
+  PASS lens '0' withPhantom==withoutPhantom==Σv (k=0 delta 0)
+  PASS seal-verify present + pinned a17aafed + HALT on drift
+Traceback (most recent call last):
+  File "/workspace/afl-rl-engine/session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py", line 38, in <module>
+    struct = json.load(open(os.path.join(REPO, 'session_2026-07-18', 'legf5', 'sealed_entrant_structure.json')))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/user/afl-rl-engine/session_2026-07-18/legf5/sealed_entrant_structure.json'

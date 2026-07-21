@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/afl-rl-engine/session_2026-07-18/legf4/tests/test_k0_dormancy_f4.py", line 13, in <module>
+    exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '_merged_recover.py'

@@ -1,0 +1,1 @@
+Read-only diagnostic artifacts for v2.11 forward-lens acceptance. Verdict is FAIL because required original validation harnesses were not all locatable/rerunnable unchanged. Builds intentionally leave RL_CONFIG_MODE unset and are not canonical bakes.

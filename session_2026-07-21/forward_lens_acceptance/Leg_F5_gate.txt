@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/afl-rl-engine/session_2026-07-18/legf5/scripts/gate_f5.py", line 15, in <module>
+    BOARD = sys.argv[1]
+            ~~~~~~~~^^^
+IndexError: list index out of range
