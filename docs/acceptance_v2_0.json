@@ -1,0 +1,109 @@
+{
+ "version": "2.0",
+ "date": "2026-07-22",
+ "status": "OFFICIAL",
+ "supersedes": [
+  "acceptance_v1_21.json"
+ ],
+ "regenerated_from": "RULEBOOK.md v2.0 (owner-signed 2026-07-22)",
+ "laws": [
+  {
+   "id": "ONE-SOURCE",
+   "status": "BINDING",
+   "check": "five SSI guards halt-not-warn; spec docs/SINGLE_SOURCE_INVARIANT.md"
+  },
+  {
+   "id": "SILENCE-IS-RED",
+   "status": "BINDING",
+   "check": "every gate emits a verdict or halts; non-zero exit propagates"
+  },
+  {
+   "id": "L-SMOOTH",
+   "status": "BINDING",
+   "check": "no value discontinuities across age/evidence/position"
+  },
+  {
+   "id": "G-MONO",
+   "status": "BINDING",
+   "check": "pick curve strictly decreasing",
+   "pick1_equals": 3000
+  },
+  {
+   "id": "L-SYMMETRY",
+   "status": "BINDING",
+   "check": "upside and downside evidence use identical machinery"
+  },
+  {
+   "id": "L-SAGE-FADE",
+   "status": "BINDING",
+   "check": "veteran value declines toward measured floor, never below, never propped",
+   "threshold": "direction_only"
+  },
+  {
+   "id": "L-CAPTAIN",
+   "status": "BINDING",
+   "check": "captaincy premium applied consistently or not at all"
+  },
+  {
+   "id": "LENS-PROJECTION",
+   "status": "BINDING",
+   "check": "year-0=present_position; years-1+=future_position; cohort=drafted_position; never inferred"
+  },
+  {
+   "id": "CONSERVATION",
+   "status": "BINDING",
+   "check": "re-pricing redistributes value",
+   "band_scar": 200
+  },
+  {
+   "id": "G-Y0",
+   "status": "BINDING",
+   "check": "pooled abs pct",
+   "max_pct": 2.0
+  },
+  {
+   "id": "G-COHORT",
+   "status": "BINDING",
+   "check": "walk-forward book ratio",
+   "max": 1.3,
+   "note": "UNMEASURED at R19 until harness migration rebuilds the book"
+  },
+  {
+   "id": "OWNER-ONLY-WORDS",
+   "status": "BINDING",
+   "check": "rulebook changes, tags/releases, score-write arming require explicit owner word"
+  },
+  {
+   "id": "SEAM-PATTERN",
+   "status": "BINDING",
+   "check": "every release: numbered claims note + one blind independent review + owner word; register is the single durable list"
+  }
+ ],
+ "dated_reads": {
+  "status": "ALL RETIRED by owner 2026-07-22 \u2014 'they've done their job'",
+  "retired": [
+   "A-BONT",
+   "A-GAWN",
+   "A-CAM",
+   "A-DARCY",
+   "A-DUUR",
+   "A-PAIRS",
+   "A-PEAK",
+   "english_briggs_1.75"
+  ],
+  "english_briggs_ruling": "anchored at R14 lock; superseded by R15-19 results; R19 board correct on current evidence (owner, 2026-07-22)",
+  "forward_policy": "board judged by owner's eye at each release; new reads may be added to this file only on owner word"
+ },
+ "carried_records": {
+  "standing_fails": [
+   "A2",
+   "A3",
+   "A12",
+   "A-PAIRS-3"
+  ],
+  "waivers": [
+   "EARNED-2ROW-WAIVER"
+  ],
+  "note": "as recorded in acceptance_v1_21; carried until owner re-rules or rows change"
+ }
+}
