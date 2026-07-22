@@ -167,8 +167,7 @@ jobs:
           assert json.load(open('session_2026-07-22/present_board_correction/summary.json'))['status']=='PASS'
           print('candidate identity PASS',b['board'],b['engine_head'])
           PY
-          "$RL_VENV/bin/python" -m pip install -q pytest
-          "$RL_VENV/bin/python" -m pytest -q ui/tests/test_club_valuation_current.py
+          "$RL_VENV/bin/python" ui/tests/test_club_valuation_current.py
           node --check ui/data/board_view_working.js
           node --check ui/data/board_view_public.js
           node --check ui/data/club_valuation.js
