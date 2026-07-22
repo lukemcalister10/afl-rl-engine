@@ -1,0 +1,41 @@
+name: ITEM 408 Apply Prestop
+
+on:
+  push:
+    branches:
+      - tmp/item408-prestop-apply
+
+permissions:
+  contents: write
+
+concurrency:
+  group: item408-prestop-apply
+  cancel-in-progress: true
+
+jobs:
+  apply:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout helper branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply and publish clean exact-base commit
+        env:
+          BASE: 83ed3bb1606b708af16a2ad90a26d63553de6789
+          TARGET: ci/r19-provenance-migration
+        run: |
+          set -euo pipefail
+          cat .item408_apply/part.* | tr -d '\n' | base64 -d > /tmp/item408.patch
+          git checkout --detach "$BASE"
+          git apply --check /tmp/item408.patch
+          git apply /tmp/item408.patch
+          git diff --check
+          git add -A
+          git config user.name "afl-rl build-seat"
+          git config user.email "build-seat@users.noreply.github.com"
+          tree="$(git write-tree)"
+          commit="$(printf '%s\n' 'ci(item-408): prepare R19 provenance STOP-1' | git commit-tree "$tree" -p "$BASE")"
+          git push --force origin "$commit:refs/heads/$TARGET"
+          echo "published=$commit" >> "$GITHUB_STEP_SUMMARY"
