@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   census:
-    if: github.event.head_commit.message == 'Merge PR #142: run exact handover file census once'
+    if: startsWith(github.event.head_commit.message, 'Merge PR #143: run exact handover file census')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout handover branch with full history
