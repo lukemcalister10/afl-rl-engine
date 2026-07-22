@@ -93,22 +93,40 @@ jobs:
             /tmp/item408.diagnostics.txt
           if-no-files-found: error
 
-      - name: Apply and publish clean exact-base commit
+      - name: Attempt clean exact-base publication
         env:
           BASE: 83ed3bb1606b708af16a2ad90a26d63553de6789
           TARGET: ci/r19-provenance-migration
         run: |
-          set -euo pipefail
-          grep -qx 'decode_rc=0' /tmp/item408.diagnostics.txt
-          grep -qx 'transport_fix_rc=0' /tmp/item408.diagnostics.txt
-          grep -qx 'apply_rc=0' /tmp/item408.diagnostics.txt
-          git checkout --detach "$BASE"
-          git apply /tmp/item408.patch
-          git diff --check
-          git add -A
-          git config user.name "afl-rl build-seat"
-          git config user.email "build-seat@users.noreply.github.com"
-          tree="$(git write-tree)"
-          commit="$(printf '%s\n' 'ci(item-408): prepare R19 provenance STOP-1' | git commit-tree "$tree" -p "$BASE")"
-          git push --force origin "$commit:refs/heads/$TARGET"
-          echo "published=$commit" >> "$GITHUB_STEP_SUMMARY"
+          set +e
+          {
+            grep -qx 'decode_rc=0' /tmp/item408.diagnostics.txt
+            grep -qx 'transport_fix_rc=0' /tmp/item408.diagnostics.txt
+            grep -qx 'apply_rc=0' /tmp/item408.diagnostics.txt
+            git checkout --detach "$BASE"
+            git apply /tmp/item408.patch
+            git diff --check
+            git add -A
+            git config user.name "afl-rl build-seat"
+            git config user.email "build-seat@users.noreply.github.com"
+            tree="$(git write-tree)"
+            commit="$(printf '%s\n' 'ci(item-408): prepare R19 provenance STOP-1' | git commit-tree "$tree" -p "$BASE")"
+            echo "commit=$commit"
+            git push --force origin "$commit:refs/heads/$TARGET"
+            echo "published=$commit"
+          } > /tmp/item408.publish.txt 2>&1
+          publish_rc=$?
+          echo "publish_rc=$publish_rc" >> /tmp/item408.publish.txt
+          cat /tmp/item408.publish.txt
+          exit 0
+
+      - name: Upload publication diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: item408-prestop-publication
+          path: /tmp/item408.publish.txt
+          if-no-files-found: error
+
+      - name: Enforce successful publication
+        run: grep -qx 'publish_rc=0' /tmp/item408.publish.txt
