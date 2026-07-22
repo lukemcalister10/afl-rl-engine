@@ -1,0 +1,64 @@
+name: Handover file census once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  census:
+    if: github.event.head_commit.message == 'Merge PR #142: run exact handover file census once'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout handover branch with full history
+        uses: actions/checkout@v4
+        with:
+          ref: docs/handover-r19-mvp-release-2026-07-22
+          fetch-depth: 0
+          path: handover
+
+      - name: Run exact requested diff and commit complete file list
+        working-directory: handover
+        run: |
+          set -euo pipefail
+          BASE=612d4c058560568b3d4d49ecd785759931885081
+          git cat-file -e "$BASE^{commit}" || git fetch --no-tags origin "$BASE"
+          mkdir -p docs
+          {
+            echo "# Exact command"
+            echo
+            echo '```text'
+            echo "git diff --name-only ${BASE}..HEAD"
+            echo '```'
+            echo
+            echo "# Changed files"
+            echo
+            git diff --name-only "${BASE}..HEAD"
+          } > docs/HANDOVER_CHANGED_FILES_2026-07-22.txt
+          COUNT=$(git diff --name-only "${BASE}..HEAD" | wc -l | tr -d ' ')
+          echo "Changed file count: ${COUNT}"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add docs/HANDOVER_CHANGED_FILES_2026-07-22.txt
+          git commit -m "docs: record exact 612d4c05-to-release file census"
+          git push origin HEAD:docs/handover-r19-mvp-release-2026-07-22
+
+      - name: Remove this one-shot workflow from main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          path: mainrepo
+
+      - name: Self-remove
+        working-directory: mainrepo
+        run: |
+          set -euo pipefail
+          rm .github/workflows/handover-file-census-once.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/handover-file-census-once.yml
+          git commit -m "ops: remove one-shot handover file census"
+          git push origin HEAD:main
