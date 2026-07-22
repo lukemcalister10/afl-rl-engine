@@ -5,10 +5,6 @@ window.MD = window.MD || {};
   const fmt = MD.fmt;
   const root = (typeof document !== "undefined") ? document.getElementById("root") : null;
 
-  // ---- release/round labels from the durable metadata contract (no hardcoded v2.10 / Round 17) -----
-  // The stamp carries releaseVersion / asOfRound VERBATIM from data/expected_boot.json (via the
-  // extractor). When either is unset the label is a NEUTRAL UNKNOWN — never an invented version or
-  // round. On MD so the seam tests exercise the exact functions the masthead renders.
   function releaseLabel(st) {
     const v = st && st.releaseVersion;
     return (v === null || v === undefined || v === "") ? "unversioned" : String(v);
@@ -59,7 +55,8 @@ window.MD = window.MD || {};
     const s = MD.state;
     const row = fmt.el("div", "controls");
     const tabs = fmt.el("div", "tabs");
-    const defs = [["board", "Board"], ["clubs", "Clubs"], ["card", "Player card"], ["trade", "Trade desk"], ["review", "Round review"], ["movers", "Movers"]];
+    // The old Round Review was an unwired placeholder. Movers is now the single weekly-review surface.
+    const defs = [["board", "Board"], ["clubs", "Clubs"], ["card", "Player card"], ["trade", "Trade desk"], ["movers", "Movers"]];
     defs.forEach(function (d) {
       const btn = fmt.el("button", s.view === d[0] ? "on" : "", d[1]);
       btn.addEventListener("click", function () { MD.go(d[0]); });
@@ -81,6 +78,7 @@ window.MD = window.MD || {};
     const fence = MD.seam.ringFence();
     if (!fence.ok) { failClosed(fence); return; }
     const s = MD.state;
+    if (s.view === "review") s.view = "movers"; // stale links/bookmarks resolve to the live weekly view.
     root.innerHTML = "";
     const mh = masthead();
     root.appendChild(mh.bar);
@@ -95,15 +93,13 @@ window.MD = window.MD || {};
     else if (s.view === "clubs") MD.clubs.render(holder);
     else if (s.view === "card") MD.card.render(holder);
     else if (s.view === "trade") MD.trade.render(holder);
-    else if (s.view === "review") MD.review.render(holder);
     else if (s.view === "movers") MD.movers.render(holder);
   }
 
   MD.go = function (view, key) {
-    MD.state.view = view;
+    MD.state.view = view === "review" ? "movers" : view;
     if (view === "card" && key) MD.state.cardKey = key;
     if (view === "card" && !MD.state.cardKey) {
-      // default to the top-ranked player if none picked yet
       const top = (MD.seam.working.players || []).slice().sort(function (a, b) { return b.v - a.v; })[0];
       MD.state.cardKey = top ? top.key : null;
     }
@@ -112,8 +108,6 @@ window.MD = window.MD || {};
   };
 
   MD.render = render;
-  // Only auto-mount in a real browser; under a headless test harness (no document) the module just
-  // exposes MD.releaseLabel / MD.roundLabel for the seam tests without trying to render.
   if (typeof document !== "undefined" && document.addEventListener) {
     document.addEventListener("DOMContentLoaded", render);
     if (document.readyState !== "loading") render();
