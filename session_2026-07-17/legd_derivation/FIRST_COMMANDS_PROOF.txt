@@ -1,0 +1,38 @@
+FIRST_COMMANDS_PROOF — LEG D PVC RE-DERIVATION
+captured: 2026-07-17 (session date) on base 33c8b52
+branch: claude/legd-pvc-rederivation-o290ye (harness-designated; pinned to directive base 33c8b52)
+================================================================
+
+$ bash tools/seat/first_commands.sh 2>/dev/null || true
+(no output — helper not present on this checkout; '|| true' path)
+
+$ git ls-remote https://github.com/lukemcalister10/afl-rl-engine.git refs/heads/claude/r1067-wiring-v11-m86stv
+33c8b52cb7a38d5fda2ceff5d3fb96841575c2e7	refs/heads/claude/r1067-wiring-v11-m86stv
+  VERDICT: MUST be 33c8b52cb7a38d5fda2ceff5d3fb96841575c2e7 -> PASS
+
+$ git rev-parse HEAD
+33c8b52cb7a38d5fda2ceff5d3fb96841575c2e7
+$ git merge-base --is-ancestor 33c8b52 HEAD && echo ANCESTOR-PROOF-PASS
+ANCESTOR-PROOF-PASS
+
+$ md5sum engine/rl_after/rl_model_data.json
+968de0c7a0183ca3914165536f39607a  engine/rl_after/rl_model_data.json
+  VERDICT: MUST begin 968de0c7 -> PASS
+
+$ grep -n 'END OF CALENDAR YEAR 1' engine/rl_after/s4_matrix_7147.py
+62:    anchor=ASOF.get((id(p),C+1))                          # END OF CALENDAR YEAR 1 (regardless of games) = the curve anchor
+  VERDICT: MUST hit ~:62 -> PASS
+
+$ git fetch origin claude/legd-groundwork   (evidence feed / KAT fetch path)
+  -> fetched OK (origin/claude/legd-groundwork)
+
+$ git show 9845180:session_2026-07-17/legd_groundwork/GROUNDWORK_LEGD.md | head -5
+# GROUNDWORK_LEGD — design evidence, input verification, acceptance harness (READ-ONLY)
+Session 2026-07-17 · seat 11 · base = legc-relay head `6306378`, store `0efdc5d6`, engine exec'd on that base.
+Runs parallel to the R106.7 writer. **Player VALUES will move again — every magnitude here is design evidence,
+provisional, never a fit.** Every table cited exists as a committed artifact in `out/`, emitted by the named
+script in `scripts/`. Nothing here rules; Jobs 2/3 offer options, Job 5 is a DRAFT the supervisor seals.
+  VERDICT: renders -> PASS
+
+================================================================
+ALL SIX VERDICTS PASS. Base pin confirmed: branch head 33c8b52, store 968de0c7.

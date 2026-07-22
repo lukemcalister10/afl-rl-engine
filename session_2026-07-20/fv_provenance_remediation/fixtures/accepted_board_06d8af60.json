@@ -1,0 +1,8 @@
+{
+  "_doc": "Accepted balanced-config reference board identity (strict head 3055ea5, RL_PVC2=1 RL_LEGE=0 RL_LEGF=0, V0SURF frozen). The full 1.16 MB board lives at session_2026-07-20/root_cause_109_wobble/cross_host_gate/fixtures/reference_06d8af60.json (whole-file md5 == board_md5 below). GREEN 1 asserts a fresh strict build reproduces these exactly; 0 movers.",
+  "board_md5": "06d8af60b679a12db07c064c60c065f9",
+  "active": 804,
+  "sum_v": 752427,
+  "harry_sheezel_v": 7964,
+  "bad_board_md5_must_not_appear": "d7a95e8d"
+}

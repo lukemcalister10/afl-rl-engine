@@ -5,10 +5,51 @@ import json, numpy as np, math
 from collections import defaultdict
 import io as _io, contextlib as _ctx
 import single_source as _SS
-try:                            # gate-integrity (e): config manifest. NO-OP unless RL_CONFIG_MODE=bake|gate.
-    import config_manifest as _CFG; _CFG.enforce()   # bake mode: clear ambient model env, reject unknown/divergent overrides, load data/model_config.json BEFORE the engine reads the env. Dev-shell (no RL_CONFIG_MODE) is unchanged.
-except ImportError:
-    pass
+import fv_provenance as _FVP     # the ONE canonical FV selector / identity + fail-closed provenance helpers
+# ==== PROVENANCE + CONFIG FAIL-CLOSED PREAMBLE (fv-provenance remediation 2026-07-20; corrective 2026-07-20) =
+# GREEN 2: record the full forward-valuation + rl_model + config provenance BEFORE any board is generated
+# (RL_FV, resolved dir, FV source-set identity, distribution_pricing.py path+hash, rl_model path+hash,
+# config_manifest path+identity) — written to an rl_app_data.provenance.json sidecar and a one-line stderr
+# marker, so the import state that made the board is fingerprinted (closes the audit's "no import-state record").
+# JOB 4 / C1: in a CANONICAL board build (RL_CONFIG_MODE=bake|gate) config-manifest enforcement is FAIL-CLOSED
+# and NON-CIRCULAR — the trusted checkout root is derived INDEPENDENTLY from the environment, the EXACT
+# <root>/config_manifest.py is executed by path (never a sys.path shadow), and this runs BEFORE anything
+# (incl. the provenance report) can import/cache an unverified config_manifest. Dev-shell (no RL_CONFIG_MODE)
+# stays available for exploration (enforce is a no-op) but still emits the provenance record.
+def _emit_provenance():
+    try:
+        _prov = _FVP.provenance_report()
+    except Exception as _e:
+        _prov = {'error': repr(_e)}
+    try:
+        with open('rl_app_data.provenance.json', 'w') as _pf:
+            json.dump(_prov, _pf, indent=2, sort_keys=True)
+    except Exception:
+        pass
+    sys.stderr.write("PROVENANCE " + json.dumps({_k: _prov.get(_k) for _k in
+        ('RL_FV_env', 'resolved_fv_dir', 'fv_identity', 'fv_identity_expected',
+         'distribution_pricing_md5', 'rl_model_path', 'rl_model_md5',
+         'config_manifest_path', 'config_manifest_identity')}, sort_keys=True) + "\n")
+    return _prov
+_CANON_MODE = os.environ.get('RL_CONFIG_MODE')
+_TROOT = _FVP.env_root(halt=False)          # trusted checkout root from RL_REPO/CLAUDE_PROJECT_DIR (env only)
+if _CANON_MODE in ('bake', 'gate', 'canonical'):   # 'canonical' = the fenced release board build; same fail-closed treatment
+    # (1+2) C1: verify+execute the trusted config_manifest by path and enforce — BEFORE _emit_provenance can
+    #       import/cache an unverified one. Missing / shadowed-on-path / already-cached-foreign / data-missing /
+    #       hash-mismatch / enforce-no-identity all HALT here, before board generation.
+    _cfg_hash, _TROOT = _FVP.verify_config_manifest(_CANON_MODE)
+    sys.stderr.write("CONFIG ACCEPTED %s  (trusted %s)\n" % (_cfg_hash[:12], os.path.join(_TROOT, 'config_manifest.py')))
+    # (3) forward-valuation checkout + resolved-dir provenance fail-closed BEFORE board generation.
+    import boot_guard as _BG
+    _BG.assert_fv_provenance(_TROOT)
+else:
+    # dev-shell: config manifest is a NO-OP (enforce returns None outside bake/gate); exploration stays available.
+    try:
+        import config_manifest as _CFG; _CFG.enforce()
+    except ImportError:
+        pass
+_PROV = _emit_provenance()                  # config_manifest, if imported, is now the TRUSTED one in bake/gate
+# ========================================================================================================
 _SS.assert_startup()            # GUARDS 3 + 3b (lookalike tripwire + engine-opens) before the board is built
 _SS.lock_tier2()               # stamp + read-only-lock the frozen train-time caches (peak model + pvc_snapshot)
 # ==== ONE ENGINE INSTANCE (F1 FIX 2026-07-05, Luke one-source rewire) ====================================
@@ -26,6 +67,36 @@ _ens = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], _ens)
 _ev = _ens['ev']; g = _ens['MA'].__dict__          # THE engine instance (rl_model imported as MA, valuation-wired)
+# ==== ACTUAL-LOADED PROVENANCE PROOF (C2/C3, corrective 2026-07-20) — BEFORE any board is written ==========
+# Prove the FV modules + rl_model the engine ACTUALLY loaded are the pinned/trusted sources (not a constructed
+# path). The spec-loaded FV siblings are reached via wire_redesign's bound namespace (PR/TR/rd/cp/dp + PR.pb),
+# the bare-imported ones (e.g. conditional_prior) via sys.modules; each must be a member of the resolved pinned
+# forward_valuation tree with the pinned bytes, and the loaded rl_model must be byte-identical to the trusted
+# checkout. A HALT here occurs before json.dump, so no board / pin / production file is written or mutated.
+if _FVP.expected_identity(_TROOT) is not None:
+    if _TROOT is None:
+        raise SystemExit("CANONICAL BUILD HALT: cannot verify loaded provenance — set RL_REPO / CLAUDE_PROJECT_DIR "
+                         "to the checkout (env-anchored trusted root required for the actual-loaded proof; fail-closed).")
+    _loaded_fv = {}
+    _W = sys.modules.get('wire_redesign') or _ens.get('W')
+    if _W is not None:
+        for _nm in ('PR', 'TR', 'rd', 'cp', 'dp'):
+            _m = getattr(_W, _nm, None)
+            if _m is not None and getattr(_m, '__file__', None):
+                _loaded_fv['wire_redesign.' + _nm] = _m.__file__
+        _pr = getattr(_W, 'PR', None)
+        _pb = getattr(_pr, 'pb', None) if _pr is not None else None
+        if _pb is not None and getattr(_pb, '__file__', None):
+            _loaded_fv['par_redesign.pb'] = _pb.__file__
+    _fv_basenames = set(_FVP.fv_source_files(_FVP.checkout_fv_dir(_TROOT)))
+    for _mn, _mod in list(sys.modules.items()):
+        _f = getattr(_mod, '__file__', None)
+        if _f and os.path.basename(_f) in _fv_basenames:
+            _loaded_fv['sys.modules[%s]' % _mn] = _f
+    _FVP.assert_loaded_fv(_loaded_fv, _TROOT)
+    _FVP.assert_loaded_rl_model(getattr(_ens['MA'], '__file__', None), _TROOT)
+    sys.stderr.write("LOADED-PROVENANCE OK  fv_modules=%d rl_model=%s\n"
+                     % (len(_loaded_fv), os.path.abspath(getattr(_ens['MA'], '__file__', '') or '?')))
 # ==== R3 BAKE GUARD (2026-07-09) — the PVC fit is HELD OUT of the baked board by owner ruling R3 ==========
 # The shipped board's pick currency (PVC / picks / intake*) MUST be the frozen v3.4 curve (_PVC0), never the
 # fitted candidate curve. RL_PVCFIT now defaults 0 (compliant-by-default); this guard makes a fitted board
@@ -56,13 +127,16 @@ PVC=g['PVC']; SCALE=g['SCALE']; debut=g['debut']; data=g['data']; BANDS=g['BANDS
 #       ONE currency off ONE curve. F = the certified 1.0524 (pick_redenomination.json), retained here ONLY as
 #       the numéraire divisor; the old frozen-v3.4 × F redenomination is RETIRED (no legacy path remains).
 _NUM=json.load(open('pick_redenomination.json')); _F=_NUM['factor']
-_adopted_doc=json.load(open('pvc_curve_L1b.json'))
+# LEG D ACT-2 (RL_PVC2, job 8): the HELD-PICK LADDER currency reads the LIVE re-derived curve (the ev-channel
+# basis _PVC0 == pvc_curve_v2.json). RL_PVC2=0 => stays the L1b adopted artifact => board 9829d01a byte-exact.
+_pvc_art='pvc_curve_v2.json' if os.environ.get('RL_PVC2','1')!='0' else 'pvc_curve_L1b.json'
+_adopted_doc=json.load(open(_pvc_art))
 _ADOPTED={int(k):int(v) for k,v in _adopted_doc['curve'].items()}
-assert _ADOPTED.get(1)==3000, 'L7 HALT: adopted_curve[1] != 3000 (pvc_curve_L1b.json)'
+assert _ADOPTED.get(1)==3000, 'L7 HALT: adopted_curve[1] != 3000 (%s)'%_pvc_art
 _akeys=sorted(_ADOPTED)
 assert all(_ADOPTED[_akeys[i]]>=_ADOPTED[_akeys[i+1]] for i in range(len(_akeys)-1)), 'L7 HALT: adopted curve not monotone non-increasing'
 PVC={k:_ADOPTED[k] for k in PVC if k in _ADOPTED}                 # shipped PVC IS the adopted curve (the stamped pvc_curve artifact)
-print('L7 ADOPTED-CURVE REPOINT: shipped PVC = adopted pvc_curve_L1b.json (pick1=%d, %d picks, monotone, ÷F=%.4f on players)'%(PVC[1],len(PVC),_F))
+print('L7 ADOPTED-CURVE REPOINT: shipped PVC = %s (pick1=%d, %d picks, monotone, ÷F=%.4f on players)'%(_pvc_art,PVC[1],len(PVC),_F))
 # ==== (g) NUMÉRAIRE ASSERT — UNCONDITIONAL STANDING LAW (register v30 item 17; L7 baked 2026-07-13) =======
 # "PICK 1 = 3000 IS THE NUMÉRAIRE." The dormant legacy (×1.0524, factor≠1.0) branch is RETIRED at the bake:
 # no pre-L7 path remains, so the assert is UNCONDITIONAL — a shipped board with pick-1 ≠ 3000 HALTS, always.
@@ -75,7 +149,7 @@ if PVC[1] != 3000:
 print('NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)')
 expected_c=g['expected_c']; realized_cv=g['realized_cv']; natcv=g['_natcv']; PICKEQ=g['PICKEQ']; MECH_STATS=g['MECH_STATS']
 P_estab=g['P_estab']; established=g['established']; _durable=g['_durable']; _recent_starter=g['_recent_starter']; level_now=g['level_now']; AGE_REF=g['AGE_REF']  # establishment-P + Brodie (JS-parity bake)
-val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']
+val=g['val']; proj_from_peak=g['proj_from_peak']; gfut=g['gfut']; futblend=g['futblend']; futstreams=g['futstreams']  # futstreams = the board LABEL blend (TRUE alternate; item 271 fut-label fix)
 
 # ONE PRICE (D4, Luke's ruling 02/07/2026): the board renders engine ev() -- _merged_recover is the single
 # valuation source. The forward/backward season view asks the engine the as-of-year question:
@@ -89,7 +163,32 @@ _raw2026 = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     for _p in players:
         _r = _ev(_p, 2026); _raw2026[_p['key']] = _r; _p['_v'] = _nb(_r)
-        _p['_vM2'], _p['_vM1'], _p['_vP1'], _p['_vP2'] = _nb(_ev(_p, 2024)), _nb(_ev(_p, 2025)), _nb(_ev(_p, 2027)), _nb(_ev(_p, 2028))
+        _p['_vM2'], _p['_vM1'] = _nb(_ev(_p, 2024)), _nb(_ev(_p, 2025))   # backward = REAL past re-values (byte-exact; no form-anchor)
+        # LEG E projection law (R103.3): the FORWARD lens sets the form anchor to true-now (2026) so the +1/+2
+        # view credits EXPECTED production (age+k, _dev_advance up the map's OWN growth curve — the Reid
+        # constraint; no lens-only term). RL_LEGE=0 => _LENS_FORM stays None => old ev(p,2027/2028) => 06d8af60
+        # byte-exact. LTI truncation is honoured automatically: demonstrated form/games stay at 2026 (BASE_REF).
+        if os.environ.get('RL_LEGE', '1') != '0': g['_LENS_FORM'] = 2026
+        _p['_vP1'], _p['_vP2'] = _nb(_ev(_p, 2027)), _nb(_ev(_p, 2028))
+        g['_LENS_FORM'] = None
+        # ==== LEG F3 §2.vi — RE-SUPPLY THE PEDIGREE ANCHOR AT +k (MEMO_LEGF v1.1; ruling item 353 pt 4:
+        # rl_export:96 is STILL IMPLICATED after the true-site clock cure in _merged_recover). The item-352
+        # verdict: the forward lens "re-prices on the production map without re-supplying the pedigree anchor at
+        # +k", so a zero/low-evidence young pick (priced today on the Leg-D V0 pedigree blend) collapses forward.
+        # CURE: floor the +k value at the NOW value _v decayed by PROJECTED EVIDENCE φ(g)=(1-g/G0)^2 — the
+        # engine's OWN young-credit decay (G0=46 career games; _merged L1c _ycred φ), so the pedigree weight
+        # decays ONLY as projected evidence accrues (smooth in games, no cliff; g>=G0 => φ=0 => byte-exact).
+        # REID: the anchor is the SAME map's now value _v (no separate young multiplier, no lens-only growth
+        # term — a floored DECLINE, the mirror of "no lens-only growth"). FORWARD-ONLY (never _v/_vM1/_vM2);
+        # k=0-safe (φ<=1 => the max is inert on _v); rides RL_LEGF (=0 => skipped => the RL_LEGF=0 chain
+        # byte-exact) AND RL_LEGE (the forward lens). Strawman φ SEALED in the PLAN; [OWNER] at the viewing.
+        if os.environ.get('RL_LEGF', '1') != '0' and os.environ.get('RL_LEGE', '1') != '0':
+            _gc = _p.get('games')
+            if _gc is None: _gc = sum(int(x.get('games', 0) or 0) for x in (_p.get('scoring') or []))
+            if _gc < 46:
+                _fl = int(round(((1.0 - _gc / 46.0) ** 2) * _p['_v']))
+                if _p['_vP1'] < _fl: _p['_vP1'] = _fl
+                if _p['_vP2'] < _fl: _p['_vP2'] = _fl
         _p['_cvx'] = 1.0
     for _p in g['back_extra']:
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
@@ -159,7 +258,7 @@ _vprev_by_key=_EXPORT_ATTR.get('vPrev',{})
 _levers_by_key=_EXPORT_ATTR.get('levers',{})
 
 def player_rec(p):
-    grp=bnow(p); gf=gfut(p); fb=futblend(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)
+    grp=bnow(p); gf=gfut(p); fb=futstreams(p); ep=effpk(p); b=bandof(ep); ln=level_now(p); lns=level_stable(p)   # fut-label fix (item 271): the board 'fut' carries the TRUE primary/alternate label (futstreams), NOT the value blend (futblend, whose MAX law collapses alt->pri when REPL[alt]>=REPL[pri]); VALUE already priced into _v via futblend upstream
     g['STBL']=False; pn=peak_est(p); g['STBL']=True; ps=peak_est(p); g['STBL']=False
     dlt,_=track_delta(gf,ep,srel(p)); surv=survival(b,dlt if dlt is not None else 0,p['games'])
     cg=sum(r['games'] for r in p['scoring']); sr=srel(p)
@@ -189,6 +288,24 @@ def player_rec(p):
             # ten club-less rows fill. affl_team (the AFFL keeper side) is a SEPARATE field, untouched.
 active=[player_rec(p) for p in players]
 back=[player_rec(p) for p in g['back_extra']]   # board-history-only rows (retired players recalled for -1/-2)
+# ==== FUT-LABEL PER-ROW ASSERTION (item 271) — the board 'fut' stream carries the store's TRUE primary/
+# alternate on EVERY dual row (labels, not the value-collapsed bar). RL_FLEX-gated: with RL_FLEX=0 the board
+# is byte-exact base (futstreams => single), so the store's dual data is intentionally not rendered. A
+# regression HALTs (SILENCE IS A RED).
+if os.environ.get('RL_FLEX','1')!='0':
+    _by_key={r['key']:r for r in active}
+    _flexrows=[p for p in players if p.get('alternate_position') and p.get('p_dual_stream')]
+    _futmis=[]
+    for p in _flexrows:
+        r=_by_key.get(p['key'])
+        if r is None: continue
+        q=float(p['p_dual_stream'])/100.0
+        want=[[gfut(p),round(1.0-q,4)],[GRP.get(p['alternate_position'],gfut(p)),round(q,4)]]
+        if r.get('fut')!=want: _futmis.append((p['key'],r.get('fut'),want))
+    if _futmis:
+        raise SystemExit('FUT-LABEL HALT (item 271): %d dual rows board-label != store primary/alternate: %s'
+                         % (len(_futmis), _futmis[:5]))
+    print('FUT-LABEL ASSERTION: PASS — %d dual rows carry the true primary/alternate on the board' % len(_flexrows))
 # ==== (d) ZERO-EMPTY-CLUB ACCEPTANCE (register v59, item 20/33) — HALT on any blank `club` on the board ====
 # After the afl_club import (b) + the club repoint (d), EVERY exported row must display a club: active rows
 # carry the current AFL club (afl_club); back rows fall back to their draft club. The ten formerly-blank
@@ -436,6 +553,17 @@ out={'active':active,'back':back,'cohort':coh,
      'intakePickSum':round(sum((PVC[k] if k in PVC else PVC[max(PVC)]) for k in range(1,61)) + 6*PVC.get(80,PVC[max(PVC)]) + 13*PVC.get(90,PVC[max(PVC)]) + 9*PVC.get(84,PVC[max(PVC)])),   # durable per-season pick-equiv replenishment (60 ND +6 RD +13 post-draft +9 SSP), ex-transient MSD — reference only
      'intakeFull':round(sum((PVC[k] if k in PVC else PVC[max(PVC)]) for k in range(1,61)) + 6*PVC.get(80,PVC[max(PVC)]) + 13*PVC.get(90,PVC[max(PVC)]) + 27*PVC.get(84,PVC[max(PVC)])),  # + transient MSD (9 SSP+18 MSD = 27 at pick-84 equiv)
      'picks':[{'n':n,'v':PVC[n]} for n in range(1,31)]}                 # Option-A replenishment: future-draft picks as board assets (value=PVC, label year rolls with the view)
+# ==== LEG D ACT-2 (job 8): PICK-BAND WIRING on the LIVE re-derived curve (PVC == the ev-channel basis _PVC0).
+# GATED on RL_PVC2 so RL_PVC2=0 stays board 9829d01a byte-exact. posture 2027 discounts are R104.5/§6.3 BINDING
+# (acceptance leg_d_placeholders.posture_2027_discounts) — EXACTLY these three values. 2027 (+1 lens) held picks
+# x (1 - discount), ONE application (no double-count: the +1 lensPicks carry FACE value; this is the posture view).
+if os.environ.get('RL_PVC2','1')!='0':
+    out['posture_2027_discounts']={'balanced':0.10,'contender':0.15,'rebuilder':0.05}
+    out['picks_2027']={_post:[{'n':n,'v':int(round(PVC[n]*(1-_d)))} for n in range(1,31)]
+                       for _post,_d in (('balanced',0.10),('contender',0.15),('rebuilder',0.05))}
+    # held pick = the LIVE curve over its ladder band [low,high], taken as the equal-weight MEAN (memo §5)
+    out['pick_band_mean']={'%d-%d'%(lo,hi):int(round(sum(PVC[min(k,max(PVC))] for k in range(lo,hi+1))/(hi-lo+1)))
+                           for lo,hi in ((1,3),(4,7),(8,12),(13,20),(21,27),(28,35),(36,48),(49,99))}
 # ==== PERMANENT EXPORT<->ENGINE VALUE-PARITY GATE (F1 regression tripwire, 2026-07-05) ==================
 # Every board value MUST equal the engine's gated ev() for that player, recomputed INDEPENDENTLY here and
 # matched by STABLE KEY. This is exactly the check the shipped board silently failed (2nd rl_model instance
@@ -474,6 +602,189 @@ for _k, _f, _dv in _ov_applied:
 # carry its `ov` block on the exported board — a listed-but-unapplied override (key drift / silent drop)
 # HALTS in gate/bake mode. Closes the hole where a silent [] shipped an override-less board.
 _OV.assert_presence(active)
+
+# ==== LEG F5 — §2.viii THE ENTRANT LAYER (+1/+2 · MEMO_LEGF v1.3 §2.viii · gate RL_LEGF, default ON) =======
+# Report/view ONLY. k=0 carries ZERO phantom content; the balanced board's per-player `v` is byte-identical
+# with RL_LEGF on vs off — the phantom keys are ADDITIVE lens-scoped arrays and the engine ev() is UNTOUCHED
+# (this block reads only PVC + the already-computed forward columns vP1/vP2 + the `club` field + the SEALED
+# structure file), so the balanced board cannot move by construction (the checkpoint law). RL_LEGF=0 => none
+# of the §2.viii layer is emitted => the Leg-E board is byte-exact.
+#
+# §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
+# draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
+# (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal a17aafed) — NOT
+# tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
+#
+# OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
+# was picks 1..30 in natural-order round-robin (`_lf_pick_of`) + a flat free-intake at `_LF_R=207` per expected
+# exit slot + an exit bar X=207 (the register item-343 R-candidate frame 207 / R_owner 220 / R_curve 471). That
+# pick-slot strawman RETIRES: the entrant side is now the full sealed intake at PVC (§2.viii); exit risk already
+# lives in r_pop (§2.ix, F4 — one carrier, no double-count). The owner's ratification list updates (§2.viii
+# supersedes the item-343 R slot). Resurrection ref: git show a9570cb5:engine/rl_after/rl_export.py.
+if os.environ.get('RL_LEGF', '1') != '0':
+    import hashlib as _hl
+    _LF_LENS = [(1, 'vP1', 2027), (2, 'vP2', 2028)]           # the forward lenses (k=0 excluded: no phantom at balanced)
+    # -- load + SEAL-VERIFY the sealed entrant structure (the §6 seal-first law; HALT on drift) --------------
+    _lf_seal_path = os.path.join(os.environ.get('RL_REPO', '.'),
+                                 'session_2026-07-18', 'legf5', 'sealed_entrant_structure.json')
+    _lf_struct = json.load(open(_lf_seal_path))
+    _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
+    _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'a17aafed'):
+        raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
+                         '%s vs pinned a17aafed. Re-seal from intake history before rendering.'
+                         % (_lf_seal, _lf_struct.get('seal_sha256_8')))
+    _PVCMAX = max(PVC)
+    def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
+    # -- §2.viii THE SEALED ENTRANT SLOT STRUCTURE: expected per-year occupancy per effective pick ----------
+    # draft = ND + RD/PSD chained onto the national draft; mech = pickless at PICKEQ (90/92). Each priced at
+    # the v2-curve PVC of its effective pick (GROSS). The sealed counts are the frozen measurement; the price
+    # is re-read from the stamped curve here (identical v2 curve, so the total re-derives to the sealed 83,538).
+    _lf_draft = sorted(((int(_e), _c, _lf_pvc(_e)) for _e, _c in _lf_struct['draft_occupancy'].items()),
+                       key=lambda t: t[0])                   # [(effpk, expected slots/yr, pvc)] natural draft order
+    _lf_mech = sorted(((int(_e), _c, _lf_pvc(_e)) for _e, _c in _lf_struct['mech_occupancy'].items()),
+                      key=lambda t: t[0])                    # [(effpk 90/92, expected slots/yr, pvc)]
+    _lf_draft_pvc = sum(_c * _p for _e, _c, _p in _lf_draft)
+    _lf_mech_pvc = sum(_c * _p for _e, _c, _p in _lf_mech)
+    _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~83,538)
+    # -- per-club allocation (report-only; the §2.x gate is LEAGUE-level so the split is presentational):
+    # draft slots round-robin across the 18 clubs in natural draft order; mechanisms split evenly. -----------
+    _lf_clubs = sorted({r['club'] for r in active if r.get('club')})
+    _lf_nc = len(_lf_clubs) or 1
+    _lf_draft_of = {c: [] for c in _lf_clubs}                # club -> [(effpk, count, pvc)]
+    for _i, _slot in enumerate(_lf_draft):
+        _lf_draft_of[_lf_clubs[_i % _lf_nc]].append(_slot)
+    _lf_mech_share = _lf_mech_pvc / _lf_nc                   # even mechanism value per club
+    _lf_mech_cnt_share = sum(_c for _e, _c, _p in _lf_mech) / _lf_nc
+    def _lf_entval(_cl):                                     # this club's annual entrant-layer value (one class)
+        return sum(_c * _p for _e, _c, _p in _lf_draft_of[_cl]) + _lf_mech_share
+    # -- per club per forward lens: retained forward (r_pop-damped) + one annual entrant class ---------------
+    _by_club = {}
+    for _r in active:
+        if _r.get('club'):
+            _by_club.setdefault(_r['club'], []).append(_r)
+    phantomLayer = {}; phantomPicks = []
+    _cl_tot = {}                                              # club -> lens-str -> {with,without,...}
+    _lg = {'0': {'with': 0, 'without': 0, 'draftValue': 0, 'freeValue': 0, 'entrantValue': 0}}
+    for _k, _fld, _yr in _LF_LENS:
+        _lg[str(_k)] = {'with': 0, 'without': 0, 'draftValue': 0, 'freeValue': 0, 'entrantValue': 0}
+    # league phantomPicks: the sealed draft slot structure (one row per occupied effective pick, per lens)
+    for _k, _fld, _yr in _LF_LENS:
+        for _e, _c, _p in _lf_draft:
+            phantomPicks.append({'kind': 'draft', 'effpk': _e, 'count': round(_c, 4), 'v': _p,
+                                 'value': round(_c * _p), 'lens': _k, 'labelYear': _yr, 'phantom': True})
+    for _cl in _lf_clubs:
+        _rows = _by_club.get(_cl, [])
+        _cdraft = _lf_draft_of[_cl]
+        _cdraft_val = sum(_c * _p for _e, _c, _p in _cdraft)
+        _cent_val = _cdraft_val + _lf_mech_share
+        phantomLayer[_cl] = {}; _cl_tot[_cl] = {}
+        # lens 0 (balanced): report-only echo — WITH == WITHOUT == Σ v (ZERO phantom at k=0, the invariant)
+        _v0 = sum((_r.get('v') or 0) for _r in _rows)
+        _cl_tot[_cl]['0'] = {'withPhantom': _v0, 'withoutPhantom': _v0, 'delta': 0, 'nPlayers': len(_rows)}
+        _lg['0']['with'] += _v0; _lg['0']['without'] += _v0
+        for _k, _fld, _yr in _LF_LENS:
+            _proj = [_r for _r in _rows if _r.get(_fld) is not None]
+            _ret_sum = sum((_r.get(_fld) or 0) for _r in _proj)             # retained forward value (exit risk already in r_pop, §2.ix)
+            _with = _ret_sum + _cent_val                                    # + one annual entrant class (§2.viii)
+            _without = _ret_sum
+            _intake = [{'kind': 'draft', 'effpk': _e, 'count': round(_c, 4), 'v': _p, 'club': _cl,
+                        'lens': _k, 'labelYear': _yr, 'phantom': True} for _e, _c, _p in _cdraft] \
+                    + [{'kind': 'free', 'effpk': _e, 'count': round(_c / _lf_nc, 4), 'v': _p, 'club': _cl,
+                        'lens': _k, 'labelYear': _yr, 'phantom': True} for _e, _c, _p in _lf_mech]
+            phantomLayer[_cl][str(_k)] = {'retained': len(_proj), 'retainedSum': _ret_sum,
+                'draftValue': round(_cdraft_val), 'freeValue': round(_lf_mech_share),
+                'entrantValue': round(_cent_val), 'draftSlots': round(sum(_c for _e, _c, _p in _cdraft), 3),
+                'freeSlots': round(_lf_mech_cnt_share, 3), 'intake': _intake,
+                'withPhantom': _with, 'withoutPhantom': _without, 'delta': _with - _without}
+            _cl_tot[_cl][str(_k)] = {'withPhantom': _with, 'withoutPhantom': _without,
+                'delta': _with - _without, 'nPlayers': len(_proj)}
+            _s = _lg[str(_k)]; _s['with'] += _with; _s['without'] += _without
+            _s['draftValue'] += _cdraft_val; _s['freeValue'] += _lf_mech_share; _s['entrantValue'] += _cent_val
+    # -- §2.viii TOTALS REPORT: per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer ---
+    phantomTotals = {'_meta': {
+        'law': 'MEMO_LEGF v1.3 §2.viii (owner item 359): FULL expected annual intake at v2-curve PVC per effective pick',
+        'sealed_structure': 'session_2026-07-18/legf5/sealed_entrant_structure.json',
+        'seal_sha256_8': _lf_struct['seal_sha256_8'],
+        'entrant_layer_pvc': round(_lf_ent_pvc), 'draft_pvc': round(_lf_draft_pvc), 'mech_pvc': round(_lf_mech_pvc),
+        'expected_slots_per_year': _lf_struct['expected_slots_per_year'],
+        'pickeq': _lf_struct['pickeq'],
+        'exit_model': 'exit risk carried by r_pop (§2.ix, F4 — incl exiters residuals); no §2.iii haircut, no double-count',
+        'per_lens': 'each forward lens carries ONE annual entrant class on top of the r_pop-retained roster; +2 is the marginal-annual view and runs slightly under now (declared caveat, item-12 lens-conservation)',
+        'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer',
+        'report_only': True, 'gates': False, 'k0_phantom': 'none',
+        'note': 'draft slots priced off PVC per effective pick (v2 curve, GROSS); mechanisms at PICKEQ 90/92; no wide/decile bins (CORE rule 7); sealed from intake history, NOT tuned against the §2.x gate'},
+        'clubs': _cl_tot, 'league': {_lk: {'withPhantom': round(_lv['with']), 'withoutPhantom': round(_lv['without']),
+            'delta': round(_lv['with'] - _lv['without']), 'draftValue': round(_lv['draftValue']),
+            'freeValue': round(_lv['freeValue']), 'entrantValue': round(_lv['entrantValue'])} for _lk, _lv in _lg.items()}}
+    out['phantomLayer'] = phantomLayer
+    out['phantomPicks'] = phantomPicks
+    out['phantomTotals'] = phantomTotals
+    # ==== VISIBLE FUTURE-DRAFT ASSET LADDER (final integration 2026-07-21; canonical, RL_LEGF=1) ==========
+    # The owner-facing +1/+2 views are UNIFIED asset ladders: the 804 known players (vP1/vP2) ranked together
+    # with the 64 anonymous national-draft placeholders per lens (2027/2028 Draft Pick 1..64 at the EXACT
+    # release-active PVC[n]). Emitted HERE (in the canonical engine build) so a plain re-run — and the Track B
+    # weekly updater's board regen — reproduces the presentation with NO post-processing. The visible 64 picks
+    # are the rankable assets (lensPicks); the two F5 residual aggregates are held OUT of the ranking and live
+    # in draftAssetTotals for a separate reconciliation panel (they are not single tradeable assets). All three
+    # reconcile EXACTLY to the sealed F5 entrant layer. Player v/vP1/vP2 are untouched (this reads only PVC +
+    # the already-computed forward columns + the sealed F5 draft/mech totals). RL_LEGF=0 => this block is
+    # skipped and the pre-F5 30-pick lensPicks/lensConservation stand (kill-switch clean).
+    _PVC64 = sum(PVC[_n] for _n in range(1, 65))                     # Σ release-active PVC[1..64] = 64617
+    _draft_r = round(_lf_draft_pvc); _mech_r = round(_lf_mech_pvc)   # sealed F5 draft / mech totals (PVC-face)
+    _res_nd = _draft_r - _PVC64                                      # national-draft deep tail + partial occupancy
+    _res_mech = _mech_r                                              # non-national-draft entry mechanisms
+    _visible = []
+    for _k, _fld, _yr in _LF_LENS:                                   # (1,'vP1',2027) , (2,'vP2',2028)
+        for _n in range(1, 65):
+            _visible.append({'lens': _k, 'labelYear': _yr, 'n': _n, 'v': PVC[_n],
+                             'kind': 'pick', 'asset': 'pick', 'assetType': 'future_national_draft_pick',
+                             'label': '%d Draft Pick %d' % (_yr, _n), 'id': 'draft-pick:%d:%d' % (_yr, _n),
+                             'club': None, 'affl_team': None, 'phantom': True})
+    out['lensPicks'] = _visible                                      # 64 rankable picks per lens (supersedes the 30-pick ladder)
+    # recompute the lens-conservation diagnostic against the visible 64-pick ladder (report-only)
+    _LF2 = [('-2', 'vM2', -2), ('-1', 'vM1', -1), ('now', 'v', 0), ('+1', 'vP1', 1), ('+2', 'vP2', 2)]
+    _lc = {}
+    for _lbl, _fld, _o in _LF2:
+        _ps = sum((_r.get(_fld) or 0) for _r in active); _nb = 0
+        if _o < 0:
+            _ps += sum((_r.get(_fld) or _r.get('v') or 0) for _r in back); _nb = len(back)
+        _pk = sum(pp['v'] for pp in _visible if pp['lens'] == _o)
+        _lc[_lbl] = {'lensYear': 2026 + _o, 'players': _ps, 'picks': _pk, 'total': _ps + _pk,
+                     'nPlayers': len(active) + _nb, 'nPicks': sum(1 for pp in _visible if pp['lens'] == _o)}
+    _cn = _lc['now']['total'] or 1
+    _lc['_meta'] = {'principle': 'year-0 continuity: value converts, does not vanish (item 12)',
+                    'report_only': True,
+                    'basis': 'visible national-draft picks 1-64 at release-active PVC face value (the ranked assets)',
+                    'spread_vs_now': {_l: round(100 * (_lc[_l]['total'] - _cn) / _cn, 2) for _l, _, _ in _LF2}}
+    out['lensConservation'] = _lc
+    # draftAssetTotals: the visible+residual -> F5 reconciliation (residuals separate; not ranked)
+    _dat = {}
+    for _k, _fld, _yr in _LF_LENS:
+        _dat['+%d' % _k] = {'lensYear': _yr, 'nVisiblePicks': 64, 'visible_1_64': _PVC64,
+                            'residual_nd_tail': _res_nd, 'residual_mech': _res_mech,
+                            'residual_total': _res_nd + _res_mech, 'total': _PVC64 + _res_nd + _res_mech,
+                            'f5_entrant_layer_pvc': round(_lf_ent_pvc), 'f5_draft_pvc': _draft_r,
+                            'f5_mech_pvc': _mech_r,
+                            'reconciled_to_f5': (_PVC64 + _res_nd + _res_mech == _draft_r + _mech_r),
+                            'players_sum': sum((_r.get(_fld) or 0) for _r in active)}
+    _dat['_meta'] = {
+        'basis': 'owner-facing visible future-draft asset ladder: picks 1-64 at exact release-active PVC[n], '
+                 'RANKED among players in the +1/+2 lens; the two residual aggregates are held OUT of the '
+                 'ranking (a separate reconciliation panel), not single tradeable assets',
+        'reconciliation': 'Σ PVC[1..64] + residual_nd(draft_pvc - ΣPVC[1..64]) + residual_mech == sealed F5 '
+                          'entrant layer (draft + mech); no value added on top of F5',
+        'no_double_count': 'lensPicks (visible face) and phantomPicks (occupancy) are two views of the same F5 '
+                           'draft and are never summed; club-held real picks are a separate owned-asset namespace',
+        'report_only': True}
+    out['draftAssetTotals'] = _dat
+    print('LEG F5 ENTRANT LAYER (RL_LEGF=1): %d clubs · §2.viii sealed intake %d PVC (draft %d + mech %d, %.1f slots/yr, seal %s) · +1 Δ=%+d · +2 Δ=%+d · k=0 phantom=NONE'
+          % (len(_lf_clubs), round(_lf_ent_pvc), round(_lf_draft_pvc), round(_lf_mech_pvc),
+             _lf_struct['expected_slots_per_year'], _lf_struct['seal_sha256_8'],
+             phantomTotals['league']['1']['delta'], phantomTotals['league']['2']['delta']))
+else:
+    print('LEG F5 ENTRANT LAYER: RL_LEGF=0 — layer NOT emitted (Leg-E board byte-exact)')
 
 _SS.prepare_write('rl_app_data.json')                       # clear the read-only bit from a prior guarded build
 json.dump(out,open('rl_app_data.json','w'),sort_keys=True)   # sort_keys: byte-deterministic output regardless of PYTHONHASHSEED (key order no longer jitters)

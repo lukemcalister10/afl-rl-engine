@@ -41,6 +41,7 @@ MD.board = (function () {
   function clubAgg(pool) {
     const m = {};
     pool.forEach(function (r) {
+      if (MD.isPickAsset(r.p)) return;   // anonymous future picks have no AFFL club — never in ΣSCAR / club ranks
       const c = r.p.affl_team || "—";
       if (!m[c]) m[c] = { club: c, sigma: 0, n: 0 };
       m[c].sigma += r.val; m[c].n += 1;
@@ -66,6 +67,18 @@ MD.board = (function () {
         (w.back || []).forEach(function (p) {
           const val = p.lens[s.lens];
           if (val !== null && val !== undefined) pool.push({ p: p, val: val, back: true });
+        });
+      }
+      // final integration: the +1/+2 forward lenses are UNIFIED asset ladders — the 64 anonymous national-
+      // draft placeholders rank TOGETHER with the 804 players (by value), one combined value-descending
+      // ranking of 868 assets. Player-only filters (position / club / group-by-club) remove them while
+      // active; the default unfiltered future view contains BOTH players and picks. Residual aggregates are
+      // NOT ranked — they live in the reconciliation panel.
+      if ((s.lens === 3 || s.lens === 4) && !posFilter && !clubFilter && !groupByClub) {
+        const off = s.lens - 2;
+        (w.lensPicks || []).forEach(function (pk) {
+          if (pk.lens !== off || pk.residual) return;
+          pool.push({ p: pickAsset(pk), val: pk.v, pick: true });
         });
       }
     }
@@ -275,8 +288,13 @@ MD.board = (function () {
   function strip(container) {
     const s = MD.state;
     const wrap = fmt.el("div", "strip");
-    const yr = (MD.seam.working.stamp || {}).baseYear || 2026;
-    wrap.innerHTML = '<span class="lbl">Round 17 · ' + yr + (s.tier === "public" ? " · published" : "") + "</span>";
+    const st = MD.seam.working.stamp || {};
+    const yr = st.baseYear || 2026;
+    // Round label from the durable metadata contract (asOfRound); neutral "Round —" when unset —
+    // never the old hardcoded "Round 17". MD.roundLabel is defined in main.js (loaded last); this runs
+    // only at render time, so it is always resolved. Guarded for safety.
+    const roundLbl = MD.roundLabel ? MD.roundLabel(st) : (st.asOfRound != null ? "Round " + st.asOfRound : "Round —");
+    wrap.innerHTML = '<span class="lbl">' + roundLbl + " · " + yr + (s.tier === "public" ? " · published" : "") + "</span>";
     wrap.appendChild(fmt.el("span", "spacer"));
 
     // ±1/2-yr board lens (both tiers meaningful for value-by-year, but kept working-only per two-tier trim)
@@ -284,29 +302,16 @@ MD.board = (function () {
       wrap.appendChild(fmt.el("span", "lbl", "Board lens"));
       const lens = fmt.el("div", "seg lens");
       MD.config.LENS_LABELS.forEach(function (lab, i) {
-        // item 8: DISABLE the +1/+2 forward-lens toggle (indices 3,4). The forward projection is the
-        // KNOWN, RULED defect (THE LENS PROJECTION LAW, register v46: production not accrued) — the ENGINE
-        // fix rides the next (merged PVC+flex) chapter. Here we only gate the toggle so the board never
-        // shows the numbers the owner has ruled wrong. The NUMBERS ARE NOT TOUCHED. −2/−1/Now (real
-        // backward re-values + now) stay live.
-        const forward = i > 2;
+        // LEG E (SPEC §3): the +1/+2 forward-lens toggle is RE-ENABLED. The projection law (R103.3) has
+        // landed — the forward lens now credits EXPECTED production (age+k through the map's own growth
+        // curve; engine: rl_export _LENS_FORM + _merged_recover b6/price6 form-anchor). The ruled
+        // no-improvement-floor defect (register v46) is retired with the interim lens (lens_tilt).
+        // −2/−1/Now stay the real backward re-values + now; +1/+2 are the live projection lenses.
         const btn = fmt.el("button", i === s.lens ? "on" : "", lab);
-        if (forward) {
-          btn.disabled = true;
-          btn.classList.add("lensoff");
-          btn.title = "projection law lands next chapter";
-        } else {
-          btn.addEventListener("click", function () { s.lens = i; render(container); });
-        }
+        btn.addEventListener("click", function () { s.lens = i; render(container); });
         lens.appendChild(btn);
       });
       wrap.appendChild(lens);
-      const lnote = fmt.el("span", "lbl", "+1/+2 paused — projection law lands next chapter");
-      lnote.style.color = "var(--faint)"; lnote.style.textTransform = "none"; lnote.style.letterSpacing = ".02em";
-      lnote.title = "The forward lens is the ruled LENS PROJECTION LAW defect (production not yet accrued); " +
-        "the engine fix rides the next chapter. The numbers are untouched — the toggle is paused so the board " +
-        "never shows values the owner has ruled wrong.";
-      wrap.appendChild(lnote);
 
       // Q-DELTA-BASE toggle (built; default = bake). Dimmed on a non-now lens (does not apply).
       wrap.appendChild(fmt.el("span", "lbl", "Δ base"));
@@ -409,10 +414,149 @@ MD.board = (function () {
     container.appendChild(wrap);
   }
 
+  // ==== LEG F1 — PHANTOM INTAKE (+1/+2) + RETROSPECTIVE (−1/−2) VIEW LAW (MEMO_LEGF §4) ==================
+  // Pure view; reads the board's additive phantom keys (present only on an RL_LEGF=1 board) and F2's
+  // retrospective bundle. EMPTY-STATE SAFE: an RL_LEGF=0 board carries no phantom keys => nothing renders;
+  // F2 not landed => the −1/−2 tab shows a pending note over the engine backward re-value. k=0 shows NONE.
+  function phantomTotals() { return (MD.seam.working && MD.seam.working.phantomTotals) || null; }
+  // F2 injects its stamped retrospective boards like the club overlay: window.__MATCHDAY_RETRO__ =
+  // { "-1": {board, stamp}, "-2": {board, stamp} }. The real F2 artifact stamps its SOURCE STORE and its
+  // BALANCED-BOARD reference (store_md5 / balanced_board_md5) — NOT the final post-Leg-F working-board
+  // md5 — so we authenticate the retro against THOSE two provenance identities, independently, and name
+  // the field that fails. No hardcoded fallback (the audit's stale-id hazard). balanced_board_md5 is set
+  // only at the final bake; until the installed working board carries it the contract cannot be
+  // authenticated, so the tab stays PENDING (never ok, never a guessed id).
+  function retroFor(lensIdx) {
+    const rb = window.__MATCHDAY_RETRO__ || null;
+    if (!rb) return { state: "pending" };
+    const entry = rb[lensIdx === 0 ? "-2" : "-1"];
+    if (!entry) return { state: "pending" };
+    const wst = ((MD.seam.working || {}).stamp) || {};
+    const est = (entry.stamp || {});
+    if (wst.balanced_board_md5 == null) return { state: "pending" };
+    const checks = [
+      { field: "store_md5", want: wst.store_md5, got: est.store_md5 },
+      { field: "balanced_board_md5", want: wst.balanced_board_md5, got: est.balanced_board_md5 },
+    ];
+    for (let i = 0; i < checks.length; i++) {
+      const want = String(checks[i].want || "").slice(0, 8);
+      const got = String(checks[i].got || "").slice(0, 8);
+      if (!want || got !== want) return { state: "mismatch", field: checks[i].field, got: got, want: want };
+    }
+    return { state: "ok", entry: entry };
+  }
+  function phantomBanner(container) {
+    const s = MD.state;
+    const money = function (n) { return (n < 0 ? "−" : "+") + Math.abs(Math.round(n)).toLocaleString(); };
+    const banner = function (bg, html) {
+      const el = fmt.el("div", "phantombanner");
+      el.style.cssText = "margin:.35rem 0;padding:.4rem .6rem;border-left:3px solid " + bg +
+        ";background:rgba(127,127,127,.08);font-size:.82rem;line-height:1.5";
+      el.innerHTML = html; container.appendChild(el); return el;
+    };
+    const tag = function (txt, bg) {
+      return '<span style="display:inline-block;padding:.02rem .3rem;margin-right:.4rem;border-radius:.2rem;' +
+        'background:' + bg + ';color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.02em">' + fmt.esc(txt) + '</span>';
+    };
+    // −1/−2: F2 retrospective board tab (empty-state safe)
+    if (s.lens === 0 || s.lens === 1) {
+      const r = retroFor(s.lens);
+      if (r.state === "ok") return;   // F2 board present + stamp-asserted; row pipeline renders it (future wiring)
+      banner("#c98a1a", r.state === "mismatch"
+        ? tag("retrospective F2 · STAMP MISMATCH", "#b23") + "got " + fmt.esc(r.got) + " want " + fmt.esc(r.want) +
+          " — showing the engine backward re-value"
+        : tag("retrospective F2 · pending", "#8a7") + "the " + MD.config.LENS_LABELS[s.lens] +
+          " tab reads F2’s stamped artifact when it lands; showing the engine backward re-value meanwhile");
+      return;
+    }
+    // +1/+2: phantom intake layer
+    if (s.lens === 3 || s.lens === 4) {
+      const pt = phantomTotals(); if (!pt) return;   // RL_LEGF=0 board => no phantom keys => empty-state
+      const lk = String(s.lens - 2);                 // lens 3 -> "1", 4 -> "2"
+      const lg = pt.league[lk]; if (!lg) return;
+      // LEG F5 §2.viii: the entrant LAYER (full sealed annual intake at PVC). Supersedes F1's exits/R/X
+      // strawman fields (retired) — banner now shows the sealed entrant layer size + slot structure.
+      const em = pt._meta || {};
+      const el = banner("#3a7", tag("entrant layer · " + MD.config.LENS_LABELS[s.lens], "#2a6") +
+        "league <b>WITH</b> Σ" + Math.round(lg.withPhantom).toLocaleString() +
+        " vs <b>WITHOUT</b> Σ" + Math.round(lg.withoutPhantom).toLocaleString() +
+        " (Δ " + money(lg.delta) + ") · entrant layer Σ" +
+        Math.round(em.entrant_layer_pvc || lg.entrantValue || lg.delta).toLocaleString() +
+        " PVC (" + (em.expected_slots_per_year != null ? em.expected_slots_per_year + " slots/yr" : "sealed intake") +
+        ') · <span style="opacity:.6">report-only · k=0 phantom=none · §2.viii seal ' +
+        fmt.esc(em.seal_sha256_8 || "") + "</span>");
+      const tbl = fmt.el("div", "phantomclubs");
+      tbl.style.cssText = "margin-top:.35rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.15rem .8rem";
+      Object.keys(pt.clubs).sort().forEach(function (c) {
+        const row = pt.clubs[c][lk]; if (!row) return;
+        const seg = fmt.el("div", "pcrow");
+        seg.style.cssText = "display:flex;justify-content:space-between;gap:.5rem;font-size:.78rem";
+        seg.innerHTML = '<span>' + fmt.esc(c) + "</span>" +
+          '<span style="opacity:.8">Σ' + Math.round(row.withPhantom).toLocaleString() + "</span>" +
+          '<span style="color:' + (row.delta >= 0 ? "#3a7" : "#b23") + '">' + money(row.delta) + "</span>" +
+          tag("phantom", "#2a6");
+        tbl.appendChild(seg);
+      });
+      el.appendChild(tbl);
+    }
+  }
+
+  /* final integration 2026-07-21: an anonymous future-draft placeholder, RANKED among the players in the
+     +1/+2 lens. It is an ASSET, not a player: no key, no card, no AFL/AFFL club, no position, a stable
+     asset id, posCode "PICK" so MD.isPickAsset() ring-fences it out of the current/backward ladders and off
+     the player-only joins (club aggregation / positional rank / club filter / player card). */
+  function pickAsset(pk) {
+    return { asset: "pick", kind: "pick", posCode: "PICK", id: pk.id, label: pk.label, n: pk.n,
+             v: pk.v, labelYear: pk.labelYear, assetType: pk.assetType, affl_team: null, club: null, pos: null };
+  }
+
+  /* render one ranked future-draft placeholder row (same grid as workingRow; GLOBAL combined rank in the
+     rank column, the draft PICK NUMBER shown separately in the meta column). No player-card click. */
+  function pickRow(r, maxV) {
+    const pk = r.p;
+    const b = fmt.el("button", "row working pickrow");
+    b.setAttribute("data-asset", pk.id);
+    b.innerHTML =
+      '<span class="rank num">' + r.rank + "</span>" +
+      '<span class="pin"></span>' +
+      '<span class="nm">' + fmt.esc(pk.label) +
+        '<span class="tag" title="Anonymous future national-draft asset — NOT a player, and not held by any ' +
+        'AFL or AFFL club. Valued at the release-active pick-value curve (PVC). Ranked among players by value.">' +
+        'Draft asset</span></span>' +
+      '<span class="pos">—</span>' +
+      '<span class="club"><span class="affl" title="Future asset — no AFFL club">Future draft</span>' +
+        '<span class="afl" title="Future asset — no AFL club">—</span></span>' +
+      '<span class="val num">' + fmt.n(pk.v) + "</span>" +
+      MD.valueLine(pk.v, maxV) +
+      '<span class="pill na" title="Future asset — no round movement">—</span>' +
+      '<span class="meta">' + (pk.n != null ? "pick " + pk.n : "aggregate") + " · " + fmt.esc(String(pk.labelYear)) + "</span>";
+    return b;   // no click handler — assets have no player card
+  }
+
+  /* +1/+2 F5 reconciliation panel (residuals held OUT of the ranking): visible Σ PVC[1..64] + national-draft
+     deep-tail residual + non-national-draft mechanism residual == the sealed F5 entrant layer. */
+  function reconciliationPanel(container) {
+    const s = MD.state;
+    if (!(s.lens === 3 || s.lens === 4)) return;
+    const dat = ((MD.seam.working || {}).draftAssetTotals || {})["+" + (s.lens - 2)];
+    if (!dat) return;
+    const el = fmt.el("div", "reconpanel");
+    el.style.cssText = "margin:.5rem 0;padding:.4rem .6rem;border-left:3px solid #6a8;background:rgba(127,127,127,.06);font-size:.8rem;line-height:1.6";
+    el.innerHTML = '<b>' + dat.lensYear + " future-entrant reconciliation</b> (residuals held out of the ranking) — " +
+      "visible Picks 1–64 Σ<b>" + fmt.n(dat.visible_1_64) + "</b> + national-draft deep-tail residual <b>" +
+      fmt.n(dat.residual_nd_tail) + "</b> + non-national-draft entry residual <b>" + fmt.n(dat.residual_mech) +
+      "</b> = sealed F5 entrant layer <b>" + fmt.n(dat.f5_entrant_layer_pvc) + "</b>" +
+      (dat.reconciled_to_f5 ? " ✓" : " ✗") +
+      ' <span style="opacity:.6">· the deep-tail (picks 65+) and non-national-draft mechanisms (MSD/SSP/rookie/' +
+      'pre-season/international) are aggregates, not single tradeable assets — never ranked</span>';
+    container.appendChild(el);
+  }
+
   function render(container) {
     container.innerHTML = "";
     const s = MD.state;
     strip(container);
+    if (s.tier === "working") phantomBanner(container);   // LEG F1: phantom (+1/+2) / retrospective (−1/−2) view, empty-state safe
 
     const byKey = MD.seam.indexed().byKey;
     let pool = rows(s.tier);
@@ -438,21 +582,21 @@ MD.board = (function () {
     }
 
     if (pool.length) container.appendChild(boardHead(s.tier)); // item 4: column headings
+    // final integration: the +1/+2 future-entrant reconciliation panel (residuals held out of the ranking).
+    if (s.tier === "working") reconciliationPanel(container);
     const rowsEl = fmt.el("div", "rows");
     if (s.tier === "working" && groupByClub) {
-      // grouped: club headers ranked by ΣSCAR, each with its top players — the team-context lens (inline
-      // club ranking; the standalone page is owner-deferred).
+      // grouped: club headers ranked by ΣSCAR, EVERY player for every club (owner ruling: no truncation).
       clubAgg(pool).forEach(function (c) {
         rowsEl.appendChild(clubHeader(c, clubRanks[c.club]));
-        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; }).slice(0, 6);
+        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; });
         mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
-        const more = c.n - mine.length;
-        if (more > 0) rowsEl.appendChild(fmt.el("div", "clubmore", "+ " + fmt.n(more) + " more " +
-          fmt.esc(fmt.club(c.club)) + " player" + (more === 1 ? "" : "s")));
       });
     } else {
-      pool.slice(0, clubFilter ? pool.length : 60).forEach(function (r) {
-        rowsEl.appendChild(s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV));
+      // owner ruling: EVERY matching row renders — no top-60 cap, no hidden rows (players + ranked picks).
+      pool.forEach(function (r) {
+        rowsEl.appendChild(r.pick ? pickRow(r, maxV)
+          : (s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV)));
       });
     }
     // item 178(2): a single filtered club with "picks included" lists its held picks under the roster.
@@ -463,8 +607,11 @@ MD.board = (function () {
 
     const foot = fmt.el("footer", "foot");
     if (s.tier === "working") {
-      const shown = groupByClub ? "grouped by AFFL club" :
-        (pool.length > 60 ? "showing top 60 of " + fmt.n(pool.length) : "showing all " + fmt.n(pool.length));
+      const nPick = pool.filter(function (r) { return r.pick; }).length;
+      const nPlayer = pool.length - nPick;
+      const shown = groupByClub ? ("grouped by AFFL club · all " + fmt.n(pool.length) + " rows")
+        : ("rendering all " + fmt.n(pool.length) + " rows" +
+           (nPick ? " (" + fmt.n(nPlayer) + " players + " + fmt.n(nPick) + " draft assets)" : ""));
       foot.innerHTML = "volt = your touch (reads · rules · controls) · the value line = share of the top price, its colour warming as it fills · " +
         "movement pills always signed · override headroom lives on the card's waterfall · " + shown +
         (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
@@ -482,5 +629,7 @@ MD.board = (function () {
     if (withPicks && !MD.seam.clubHalt()) picksIncluded = true;
   }
 
-  return { render: render, focusClub: focusClub };
+  // retroFor exposed so the release-seam test can exercise the EXACT retrospective identity check
+  // the UI runs (same doctrine as counting.js). Pure view; reads no DOM.
+  return { render: render, focusClub: focusClub, retroFor: retroFor };
 })();

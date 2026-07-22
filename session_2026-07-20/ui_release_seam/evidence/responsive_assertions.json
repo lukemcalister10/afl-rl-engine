@@ -1,0 +1,434 @@
+[
+  {
+    "width": 320,
+    "name": "no fail-closed / integrity alarm",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 320,
+    "name": "scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=320 innerWidth=320"
+  },
+  {
+    "width": 320,
+    "name": "first five player names present",
+    "ok": true,
+    "detail": "5 names"
+  },
+  {
+    "width": 320,
+    "name": "names usable width (>=50px, not one-char column)",
+    "ok": true,
+    "detail": "Luke Jacks:159px Nick Daico:166px Harry Shee:159px Tristan Xe:159px Max Holmes:159px"
+  },
+  {
+    "width": 320,
+    "name": "names render in <= 2 text lines (never char-by-char)",
+    "ok": true,
+    "detail": "1L 1L 1L 1L 1L"
+  },
+  {
+    "width": 320,
+    "name": "every nav destination reachable + in viewport",
+    "ok": true,
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+  },
+  {
+    "width": 320,
+    "name": "nav strip not clipped behind inaccessible overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 320,
+    "name": "rank+name+club+value visible in first five rows",
+    "ok": true,
+    "detail": "[rncvm][rncvm][rncvm][rncvm][rncvm]"
+  },
+  {
+    "width": 320,
+    "name": "club valuation renders without HALT",
+    "ok": true,
+    "detail": "halted=false rows=16"
+  },
+  {
+    "width": 320,
+    "name": "club view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=320 innerWidth=320"
+  },
+  {
+    "width": 320,
+    "name": "held-pick view renders (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 320,
+    "name": "held-pick view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=320 innerWidth=320"
+  },
+  {
+    "width": 360,
+    "name": "no fail-closed / integrity alarm",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 360,
+    "name": "scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=360 innerWidth=360"
+  },
+  {
+    "width": 360,
+    "name": "first five player names present",
+    "ok": true,
+    "detail": "5 names"
+  },
+  {
+    "width": 360,
+    "name": "names usable width (>=50px, not one-char column)",
+    "ok": true,
+    "detail": "Luke Jacks:199px Nick Daico:206px Harry Shee:199px Tristan Xe:199px Max Holmes:199px"
+  },
+  {
+    "width": 360,
+    "name": "names render in <= 2 text lines (never char-by-char)",
+    "ok": true,
+    "detail": "1L 1L 1L 1L 1L"
+  },
+  {
+    "width": 360,
+    "name": "every nav destination reachable + in viewport",
+    "ok": true,
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+  },
+  {
+    "width": 360,
+    "name": "nav strip not clipped behind inaccessible overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 360,
+    "name": "rank+name+club+value visible in first five rows",
+    "ok": true,
+    "detail": "[rncvm][rncvm][rncvm][rncvm][rncvm]"
+  },
+  {
+    "width": 360,
+    "name": "club valuation renders without HALT",
+    "ok": true,
+    "detail": "halted=false rows=16"
+  },
+  {
+    "width": 360,
+    "name": "club view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=360 innerWidth=360"
+  },
+  {
+    "width": 360,
+    "name": "held-pick view renders (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 360,
+    "name": "held-pick view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=360 innerWidth=360"
+  },
+  {
+    "width": 390,
+    "name": "no fail-closed / integrity alarm",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 390,
+    "name": "scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=390 innerWidth=390"
+  },
+  {
+    "width": 390,
+    "name": "first five player names present",
+    "ok": true,
+    "detail": "5 names"
+  },
+  {
+    "width": 390,
+    "name": "names usable width (>=50px, not one-char column)",
+    "ok": true,
+    "detail": "Luke Jacks:229px Nick Daico:236px Harry Shee:229px Tristan Xe:229px Max Holmes:229px"
+  },
+  {
+    "width": 390,
+    "name": "names render in <= 2 text lines (never char-by-char)",
+    "ok": true,
+    "detail": "1L 1L 1L 1L 1L"
+  },
+  {
+    "width": 390,
+    "name": "every nav destination reachable + in viewport",
+    "ok": true,
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+  },
+  {
+    "width": 390,
+    "name": "nav strip not clipped behind inaccessible overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 390,
+    "name": "rank+name+club+value visible in first five rows",
+    "ok": true,
+    "detail": "[rncvm][rncvm][rncvm][rncvm][rncvm]"
+  },
+  {
+    "width": 390,
+    "name": "club valuation renders without HALT",
+    "ok": true,
+    "detail": "halted=false rows=16"
+  },
+  {
+    "width": 390,
+    "name": "club view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=390 innerWidth=390"
+  },
+  {
+    "width": 390,
+    "name": "held-pick view renders (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 390,
+    "name": "held-pick view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=390 innerWidth=390"
+  },
+  {
+    "width": 430,
+    "name": "no fail-closed / integrity alarm",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 430,
+    "name": "scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=430 innerWidth=430"
+  },
+  {
+    "width": 430,
+    "name": "first five player names present",
+    "ok": true,
+    "detail": "5 names"
+  },
+  {
+    "width": 430,
+    "name": "names usable width (>=50px, not one-char column)",
+    "ok": true,
+    "detail": "Luke Jacks:269px Nick Daico:276px Harry Shee:269px Tristan Xe:269px Max Holmes:269px"
+  },
+  {
+    "width": 430,
+    "name": "names render in <= 2 text lines (never char-by-char)",
+    "ok": true,
+    "detail": "1L 1L 1L 1L 1L"
+  },
+  {
+    "width": 430,
+    "name": "every nav destination reachable + in viewport",
+    "ok": true,
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+  },
+  {
+    "width": 430,
+    "name": "nav strip not clipped behind inaccessible overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 430,
+    "name": "rank+name+club+value visible in first five rows",
+    "ok": true,
+    "detail": "[rncvm][rncvm][rncvm][rncvm][rncvm]"
+  },
+  {
+    "width": 430,
+    "name": "club valuation renders without HALT",
+    "ok": true,
+    "detail": "halted=false rows=16"
+  },
+  {
+    "width": 430,
+    "name": "club view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=430 innerWidth=430"
+  },
+  {
+    "width": 430,
+    "name": "held-pick view renders (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 430,
+    "name": "held-pick view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=430 innerWidth=430"
+  },
+  {
+    "width": 720,
+    "name": "no fail-closed / integrity alarm",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 720,
+    "name": "scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=720 innerWidth=720"
+  },
+  {
+    "width": 720,
+    "name": "first five player names present",
+    "ok": true,
+    "detail": "5 names"
+  },
+  {
+    "width": 720,
+    "name": "names usable width (>=50px, not one-char column)",
+    "ok": true,
+    "detail": "Luke Jacks:230px Nick Daico:230px Harry Shee:230px Tristan Xe:230px Max Holmes:230px"
+  },
+  {
+    "width": 720,
+    "name": "names render in <= 2 text lines (never char-by-char)",
+    "ok": true,
+    "detail": "1L 1L 1L 1L 1L"
+  },
+  {
+    "width": 720,
+    "name": "every nav destination reachable + in viewport",
+    "ok": true,
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+  },
+  {
+    "width": 720,
+    "name": "nav strip not clipped behind inaccessible overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 720,
+    "name": "rank+name+club+value visible in first five rows",
+    "ok": true,
+    "detail": "[rncvm][rncvm][rncvm][rncvm][rncvm]"
+  },
+  {
+    "width": 720,
+    "name": "club valuation renders without HALT",
+    "ok": true,
+    "detail": "halted=false rows=16"
+  },
+  {
+    "width": 720,
+    "name": "club view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=720 innerWidth=720"
+  },
+  {
+    "width": 720,
+    "name": "held-pick view renders (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 720,
+    "name": "held-pick view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=720 innerWidth=720"
+  },
+  {
+    "width": 1440,
+    "name": "no fail-closed / integrity alarm",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 1440,
+    "name": "scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=1440 innerWidth=1440"
+  },
+  {
+    "width": 1440,
+    "name": "first five player names present",
+    "ok": true,
+    "detail": "5 names"
+  },
+  {
+    "width": 1440,
+    "name": "names usable width (>=50px, not one-char column)",
+    "ok": true,
+    "detail": "Luke Jacks:336px Nick Daico:336px Harry Shee:336px Tristan Xe:336px Max Holmes:336px"
+  },
+  {
+    "width": 1440,
+    "name": "names render in <= 2 text lines (never char-by-char)",
+    "ok": true,
+    "detail": "1L 1L 1L 1L 1L"
+  },
+  {
+    "width": 1440,
+    "name": "every nav destination reachable + in viewport",
+    "ok": true,
+    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+  },
+  {
+    "width": 1440,
+    "name": "nav strip not clipped behind inaccessible overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 1440,
+    "name": "rank+name+club+value visible in first five rows",
+    "ok": true,
+    "detail": "[rncvm][rncvm][rncvm][rncvm][rncvm]"
+  },
+  {
+    "width": 1440,
+    "name": "club valuation renders without HALT",
+    "ok": true,
+    "detail": "halted=false rows=16"
+  },
+  {
+    "width": 1440,
+    "name": "club view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=1440 innerWidth=1440"
+  },
+  {
+    "width": 1440,
+    "name": "held-pick view renders (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "width": 1440,
+    "name": "held-pick view: scrollWidth <= innerWidth",
+    "ok": true,
+    "detail": "scrollWidth=1440 innerWidth=1440"
+  }
+]

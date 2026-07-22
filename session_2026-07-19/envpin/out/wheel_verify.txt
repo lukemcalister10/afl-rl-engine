@@ -1,0 +1,12 @@
+=== WHEEL-PIN VERIFICATION (env-pin 2026-07-19) ===
+numpy wheel        : numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+wheel sha256       : 81f4a14bee47aec54f883e0cad2d73986640c1590eb9bfaaba7ad17394481e6e
+pinned  sha256     : 81f4a14bee47aec54f883e0cad2d73986640c1590eb9bfaaba7ad17394481e6e
+wheel == pin       : True
+bundled OpenBLAS   : numpy.libs/libscipy_openblas64_-32a4b2a6.so
+wheel BLAS sha256  : 05c9f9eb89ee68a4b9d673184fa91c99587e736392c0c2d49180a8aa5303d080
+installed BLAS s256: 05c9f9eb89ee68a4b9d673184fa91c99587e736392c0c2d49180a8aa5303d080
+BLAS wheel==inst   : True
+
+=> installing the pinned wheel reproduces THIS container's numpy binary + OpenBLAS byte-for-byte,
+   so np.interp (compiled in the wheel) is bit-identical on every container => board holds 06d8af60.

@@ -1,0 +1,36 @@
+{
+ "P_retire_by_age": {
+  "cumulative": "1-(1-P)^k",
+  "eligible_from": 26,
+  "sha256_8": "6100f121",
+  "source": "F2 recorded exits pooled -2/-1/now \u00b11yr, isotonic-increasing rule7",
+  "table": {
+   "24": 0.02,
+   "25": 0.02,
+   "26": 0.073,
+   "27": 0.087,
+   "28": 0.104,
+   "29": 0.123,
+   "30": 0.151,
+   "31": 0.177,
+   "32": 0.208,
+   "33": 0.267,
+   "34": 0.388,
+   "35": 0.388,
+   "36": 0.388,
+   "37": 0.388,
+   "38": 0.5,
+   "39": 0.5
+  },
+  "youth_floor": 0.02
+ },
+ "owner_ratifies_at_viewing": true,
+ "phi_blend_decay": {
+  "G0": 46,
+  "applies": "vP_k=max(vP_k,round(phi*v)); forward-only; RL_LEGF+RL_LEGE gated",
+  "basis": "engine L1c _ycred young-credit decay",
+  "form": "(1-g/G0)^2",
+  "sha256_8": "fd92b6fc"
+ },
+ "sealed_pre_render": true
+}

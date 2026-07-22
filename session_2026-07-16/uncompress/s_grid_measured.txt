@@ -1,0 +1,8 @@
+SYNTAX OK (hygiene edit)
+=== HYGIENE byte-safety: map-inert board must stay 8d90c9ac after the _coreM1 branch deletion ===
+inert board md5: 8d90c9ac
+=== FROZEN-ESTIMATOR s-GRID (PLAN §7 acceptance leg_b.beta_proven27; gate: pt>=0.85) ===
+s=OFF   beta=0.6219  CI=[0.4836,0.7899] width=0.3063  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.45  beta=0.5140  CI=[0.3843,0.6704] width=0.2861  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.50  beta=0.5031  CI=[0.3741,0.6607] width=0.2866  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False
+s=0.60  beta=0.4817  CI=[0.3522,0.6388] width=0.2866  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False

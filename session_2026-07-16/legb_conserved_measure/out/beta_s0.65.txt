@@ -1,0 +1,2 @@
+DIAG AGE_REF=2026 BASE_REF=2026 | ages n=804 min=19 max=39 | age>=27:265 pos:265 rows:264 o>0:116 p>0:264 -> sub:116
+s=0.65  beta=0.6747  CI=[0.5354,0.8342] width=0.2988  n=116  | pt>=0.85:False  CI_contains_1.0:False  width<=0.35:True  n>=120:False

@@ -1,0 +1,185 @@
+{
+  "checks": [
+    {
+      "check": "(10) final active count == 804",
+      "detail": 804,
+      "pass": true
+    },
+    {
+      "check": "(10) final Sigma present v == 752427",
+      "detail": 752427,
+      "pass": true
+    },
+    {
+      "check": "(10) zero present-v movers vs Board A",
+      "detail": "0 movers",
+      "pass": true
+    },
+    {
+      "check": "(10) no added/removed active players vs Board A",
+      "detail": "added=0 removed=0",
+      "pass": true
+    },
+    {
+      "check": "(10) zero present-rank movers vs Board A",
+      "detail": "0 rank movers",
+      "pass": true
+    },
+    {
+      "check": "(10) zero present-order movers vs Board A",
+      "detail": "order identical",
+      "pass": true
+    },
+    {
+      "check": "(11) vP1 == Board B for all 804 active",
+      "detail": "equal=804 changed=0",
+      "pass": true
+    },
+    {
+      "check": "(11) vP2 == Board B for all 804 active",
+      "detail": "equal=804 changed=0",
+      "pass": true
+    },
+    {
+      "check": "(11) no missing/added active rows vs Board B",
+      "detail": "missing=0 added=0",
+      "pass": true
+    },
+    {
+      "check": "(12) exactly 64 visible 2027 national-draft placeholders (+1)",
+      "detail": 64,
+      "pass": true
+    },
+    {
+      "check": "(12) exactly 64 visible 2028 national-draft placeholders (+2)",
+      "detail": 64,
+      "pass": true
+    },
+    {
+      "check": "(12) all visible labelYear correct (2027/2028)",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) zero visible future placeholders on the current player ladder",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) unique stable asset ids",
+      "detail": "128 ids 128 unique",
+      "pass": true
+    },
+    {
+      "check": "(12) labels distinguish year + pick number",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) no AFL club / no AFFL club on any visible pick",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) no accidental player identity (no key join; kind/asset == pick)",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) exact PVC equality for every visible pick (v == PVC[n])",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) release-active PVC monotone non-increasing over 1..64",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) visible picks sorted by value desc (both lenses)",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(12) lensPicks carries ONLY the 64 rankable visible picks per lens (no residual rows in the ranking)",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(13) lens +1: visible == Sigma PVC[1..64] == 64617",
+      "detail": 64617,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +1: visible + residual == 83538 (F5 entrant layer)",
+      "detail": 83538,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +1: residual_nd == draft_pvc(69266) - 64617 == 4649",
+      "detail": 4649,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +1: residual_mech == mech_pvc == 14272",
+      "detail": 14272,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +1: draftAssetTotals reconciled_to_f5",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(13) lens +2: visible == Sigma PVC[1..64] == 64617",
+      "detail": 64617,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +2: visible + residual == 83538 (F5 entrant layer)",
+      "detail": 83538,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +2: residual_nd == draft_pvc(69266) - 64617 == 4649",
+      "detail": 4649,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +2: residual_mech == mech_pvc == 14272",
+      "detail": 14272,
+      "pass": true
+    },
+    {
+      "check": "(13) lens +2: draftAssetTotals reconciled_to_f5",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(13) Board B sealed entrant layer == 83538 (draft 69266 + mech 14272)",
+      "detail": "",
+      "pass": true
+    },
+    {
+      "check": "(13) final board carries Board B phantomPicks/phantomLayer/phantomTotals unchanged",
+      "detail": "",
+      "pass": true
+    }
+  ],
+  "final_board_identity": {
+    "balanced_board_md5_lineage": "06d8af60b679a12db07c064c60c065f9",
+    "md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
+    "sha256": "0026c3f82e6bb5558e70163a7136d0e8e0dd7ffd409aeb9b33b89e5e7ab5b65f"
+  },
+  "forward": {
+    "added": 0,
+    "missing": 0,
+    "vP1_changed": 0,
+    "vP1_equal": 804,
+    "vP2_changed": 0,
+    "vP2_equal": 804
+  },
+  "n": 33,
+  "n_pass": 33,
+  "ok": true
+}

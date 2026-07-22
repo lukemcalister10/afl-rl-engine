@@ -1,0 +1,24 @@
+==============================================================
+LEG E — PROJECTION LAW + POSTURES · ENTRY PROOF
+captured 2026-07-18 · branch claude/lege-projection-law-postures-63u283
+container: py3.12.3 np2.4.4 scipy1.17.1 sklearn1.8.0 · dev-shell board recipe
+==============================================================
+--- BASE PIN (this-session fetch; STRICT) ---
+git rev-parse HEAD                : a90052add8570c014626196cc2e3e13eece02548
+EXPECT a90052add8570c014626196cc2e3e13eece02548 (five-migration BUILD B EXIT)
+a90052a ancestor of migration tip: PASS
+--- STORE / CURVE (HARD-OUT; must be UNTOUCHED at entry+exit) ---
+store rl_model_data.json md5     : 968de0c7
+  EXPECT 968de0c7
+curve pvc_curve_v2.json file md5 : 56dd7a7b
+  EXPECT 56dd7a7b (payload stamp 89c14729)
+rl_model.py (base engine) md5    : fdc54e24
+  EXPECT fdc54e24
+--- BASE BALANCED BOARD REPRODUCES BYTE-EXACT (dev-shell: RL_REPO set, PYTHONHASHSEED=0, no RL_CONFIG_MODE) ---
+RL_PVC2=1 (default) board md5    : 06d8af60   EXPECT 06d8af60   PASS   <-- THE k=0 BALANCED INVARIANT TARGET
+RL_PVC2=0 (kill-switch) board md5: 9829d01a   EXPECT 9829d01a   PASS
+canonical board restored         : 06d8af60
+--- store UNCHANGED after builds ---
+store md5 post-build             : 968de0c7
+  EXPECT 968de0c7 (HARD-OUT held)
+ALL ENTRY VERDICTS: PASS. Base + store + curve + byte-exact reproducibility proven. Proceeding to build.

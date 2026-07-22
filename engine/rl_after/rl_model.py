@@ -1,4 +1,29 @@
 import json, numpy as np, math, re, os
+def _season_val(_key, _fb):
+    """Read a DYNAMIC season-state value (calendar_progress | exposure_pace) from the authoritative
+    data/season_state.json (single source; advances weekly).
+    FENCED (RL_CONFIG_MODE in bake|gate|canonical): HALT on any of unresolved/untrusted repo root,
+    missing file, malformed JSON, missing key, or a non-numeric / non-finite value — a release build
+    must never silently fall back to a stale Round-14 default. UNFENCED dev shell: use the fallback."""
+    _mode = (os.environ.get('RL_CONFIG_MODE') or '').strip().lower()
+    _fenced = _mode in ('bake', 'gate', 'canonical')
+    _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
+    if not _r:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): repo root unresolved "
+                               "(RL_REPO/CLAUDE_PROJECT_DIR unset) — cannot load authoritative season state" % _mode)
+        _r = '.'
+    _p = os.path.join(_r, 'data', 'season_state.json')
+    try:
+        _v = float(json.load(open(_p))[_key])
+        if _v != _v or _v in (float('inf'), float('-inf')):
+            raise ValueError("non-finite %s=%r" % (_key, _v))
+        return _v
+    except Exception as _e:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
+                               % (_mode, _key, _p, _e)) from _e
+        return float(_fb)
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode
 data=json.load(open('rl_model_data.json')); P=json.load(open('params.json')); PMD=json.load(open('rl_passmark.json'))
@@ -18,6 +43,12 @@ for _p in data:
     _pp=_p.get('present_position')
     _p['_pos_now']=_pp if (_pp and _pp!=_p['pos']) else None
     _p['_futpos']=_p.get('future_position') or _pp    # single settled-future position (fallback to present)
+    # LEG C flex (RL_FLEX, item 20b / flex spec §1.2): a player MAY carry ONE dual primary/alternate FUTURE
+    # stream — an alternate_position + its probability p_dual_stream (0-100). Parsed once here; consumed by
+    # futblend()'s years-1+ REPL blend. Absent on non-dual rows (the store carries it on the 90 dual rows).
+    _ap=_p.get('alternate_position'); _pd=_p.get('p_dual_stream')
+    _p['_altpos']=(_ap if (_ap and _pd) else None)
+    _p['_pdual']=(float(_pd)/100.0 if (_ap and _pd) else 0.0)
 # --- MSD/IRE credit machinery SCRUBBED 2026-07-05 (Luke directive, one-source rewire) ------------
 # The v3.3.1 MSD mid-season debut standardisation (MSD_Y1_MULT=1.5x debut-year game boost, folded into
 # the career total) is DELETED, together with the four credit/bust phantom rows and the _double_count /
@@ -42,7 +73,69 @@ def gfut(p):                                  # SETTLED FUTURE position (single)
     fp=p.get('_futpos')
     if fp: return GRP.get(fp) or bnow(p)
     return bnow(p)                            # no future_position (e.g. gate synths) -> present position
-def futblend(p): return [(gfut(p),1.0)]       # DPP STRIP: years-1+ leg is a SINGLE position (future_position), no blend
+_FLEX=os.environ.get('RL_FLEX','1')!='0'       # LEG C kill-switch (RL_ISOFADE pattern): RL_FLEX=0 => single-position stubs => board byte-exact base. Declared exception, not a dial. Gates ALL of Leg C incl. §1b.
+def futblend(p):
+    # DPP-STRIP base: the years-1+ leg is a SINGLE position (future_position). LEG C flex (RL_FLEX, §1 ruled
+    # stream semantics): a dual primary/alternate stream swaps the years-1+ REPLACEMENT BAR for the LOWER of
+    # the pair (the MAX law) on a p_dual fraction of the stream. The PRIMARY keys peak/curve/runway/key-premium
+    # (g=gfut(p) unchanged upstream); ONLY the bar in the years-1+ posval sum moves. The lower bar gives posval
+    # >= the primary-bar posval, so the netting is FLOORED >=0 by construction. RL_FLEX=0 (or a row with no
+    # dual) => [(gfut,1.0)] => the years-1+ leg is byte-identical to the base board. This is the VALUE blend.
+    pri=gfut(p)
+    if not _FLEX: return [(pri,1.0)]
+    ap=p.get('_altpos'); q=p.get('_pdual',0.0)
+    if not ap or q<=0.0: return [(pri,1.0)]
+    alt=GRP.get(ap) or pri
+    low=alt if REPL.get(alt,REPL[pri])<REPL[pri] else pri   # LOWER replacement bar of the {primary,alternate} pair
+    return [(pri,1.0-q),(low,q)]
+def futstreams(p):
+    # BOARD-LABEL blend (fut-label fix, item 271): the board's stream array must carry the TRUE alternate
+    # label regardless of the bar comparison (futblend collapses the alt->pri when REPL[alt]>=REPL[pri], which
+    # is right for VALUE but drops the alternate provenance on the board). Same weights as futblend; the
+    # position label is the TRUE alternate. RL_FLEX=0 => [(gfut,1.0)] => byte-exact display.
+    pri=gfut(p)
+    if not _FLEX: return [(pri,1.0)]
+    ap=p.get('_altpos'); q=p.get('_pdual',0.0)
+    if not ap or q<=0.0: return [(pri,1.0)]
+    return [(pri,1.0-q),(GRP.get(ap) or pri,q)]
+# ==== §1b — THE CURRENT-SEASON DPP LAW (item 275, BINDING; RL_FLEX-gated) — the eligibility-collapse helper.
+# A player's OFFICIAL current-season dual positions (the store `eligibilities`, collapsed per R105.1: a
+# KEY-listed position DROPS its matching GEN — K-FWD absorbs G-FWD, K-DEF absorbs G-DEF; <=2 remain) apply to
+# the YEAR-0 LEG ONLY. The year-0 REMAINING-SEASON component nets vs whichever post-collapse bar is MORE
+# VALUABLE for him (the LOWER REPL); the banked component + the level path stay keyed to present (bnow). The
+# SEASON_PROG-scaled blend itself is done at v_at_peak (before val(); item 281). Here we only resolve the bar.
+_ELIG_MAP={'MID':'MID','RUC':'RUC','RUCK':'RUC','G-FWD':'GEN_FWD','K-FWD':'KEY_FWD','G-DEF':'GEN_DEF','K-DEF':'KEY_DEF'}
+def _collapse_elig(elig):
+    if not elig: return set()
+    s={_ELIG_MAP.get(t.strip().upper()) for t in elig.split(',') if t.strip()}
+    s.discard(None)
+    if 'KEY_FWD' in s: s.discard('GEN_FWD')      # R105.1: K-X absorbs G-X (a K-DEF also listed G-DEF is NOT a DPP)
+    if 'KEY_DEF' in s: s.discard('GEN_DEF')
+    return s
+# ==== item-284 (DECISIONS v121) — DPP DATA-ERROR classes. Same-line K/G is the SILENT R105.1 listing-artifact
+# collapse above (no flag). The FOUR cross-class combos and present_position ∉ the collapsed set are DATA ERRORS:
+# the row is treated SINGLE-POSITION for §1b (y0dpp_bar -> None, NO dual bar), REPORTED BY NAME (the registry
+# below -> a committed named-row artifact, not a log line), and the build CONTINUES — never a halt. SILENCE IS A
+# RED: y0dpp_bar always resolves (a bar or None) and every error row lands in the registry with a verdict.
+_CROSS_CLASS={frozenset({'KEY_DEF','GEN_FWD'}),frozenset({'KEY_FWD','GEN_DEF'}),
+              frozenset({'RUC','GEN_FWD'}),frozenset({'RUC','GEN_DEF'})}
+_DPP_DATA_ERRORS={}                              # stable_player_id -> dict(player,reason,collapsed,present); deduped
+def _flag_dpp_error(p,es,reason):
+    sid=p.get('stable_player_id') or ('name:'+(p.get('player') or '?'))
+    _DPP_DATA_ERRORS[sid]={'player':p.get('player'),'reason':reason,
+                           'collapsed':sorted(es),'present':p.get('present_position'),
+                           'eligibilities':p.get('eligibilities')}
+def y0dpp_bar(p):
+    # The §1b year-0 REMAINING-SEASON replacement bar (GRP value), or None (single-position / no lower bar).
+    if not _FLEX: return None
+    es=_collapse_elig(p.get('eligibilities'))
+    if len(es)<2: return None
+    if frozenset(es) in _CROSS_CLASS:            # item-284: cross-class combo -> DATA ERROR -> single-position + named
+        _flag_dpp_error(p,es,'cross-class'); return None
+    if bnow(p) not in es:                        # item-284: present_position not in the collapsed set -> DATA ERROR
+        _flag_dpp_error(p,es,'present-not-in-set'); return None
+    low=min(es,key=lambda g:REPL[g])             # lower REPL = more valuable for him
+    return low if REPL[low]<REPL[bnow(p)] else None
 # Real-life entry mechanisms. National draft ('ND') is the pick scale. Rookie ('RD') extends it.
 # The rest entered with NO national slot -> their _eff (pick-equivalent) is derived empirically AFTER the PVC is built.
 PICKLESS={'SSP','MSD','IRE','UNR','PDA','PDN','PDS'}
@@ -55,6 +148,7 @@ def slug(n): return re.sub(r"[^a-z0-9]+","-",unidecode(n).lower()).strip('-')
 # birthyear is carried in-data (_by, from the sheet Age col); no fuzzy matching needed.
 AGE_REF=2026                          # "now" anchor for the age clock; bumped by forward/back board views (re-ages everyone, leaves demonstrated form fixed). Default 2026 reproduces the shipped values byte-for-byte.
 BASE_REF=2026                         # true-now anchor for demonstrated form + scoring truncation. offset=AGE_REF-BASE_REF drives the Phase-2 dev projection; BASE_REF==AGE_REF==2026 reproduces shipped values byte-for-byte.
+_LENS_FORM=None                       # LEG E (R103.3 projection law): the forward-lens form anchor. None => balanced/back path (BASE_REF pinned to the eval year, byte-exact). Set to 2026 by rl_export's forward lens so the +1/+2 view runs offset>0 (AGE_REF>BASE_REF) => _dev_advance credits expected production through the map's OWN growth curve (no lens-only growth term; the Reid constraint). k=0 => AGE_REF==BASE_REF => byte-exact.
 _LEVEL_OVR=None                       # when set, level_now returns this (used to integrate value over the level distribution in the variance layer); None in all default/parity paths.
 def by(p): return p.get('_by') or (p['year']-18)   # FIX: _by can be present-but-None (cont.22 DOB fold-in wrote explicit None for ~302 DOB-less records); .get(key,default) would return None and crash _age_at. Guard like L367.
 def _cycle_year(p): return p['year']-(1 if p.get('type')=='MSD' else 0)   # MSD draft_year IS the debut year, so its ND/RD-cycle equivalent is -1; SSP draft_year already IS the cycle year
@@ -196,7 +290,13 @@ def _capt_saturating(lev):   # RETIRED (the pre-R98.1 saturating premium, hard 1
     if over<=0: return 0.0
     cb=CAPT_GAIN*over**CAPT_EXP
     return cb*CAPT_CAP/(CAPT_CAP+cb)
+_CAPT_OFF={'on':False}   # LEG B seg-3 captain-off pass: force capt_prem->0 to recompute the CAPTAIN-FREE production
+                         # value pr0 (memo v1.1 §4). NOT RL_CAPT=0 (that is the RETIRED saturating curve, not zero).
+                         # The map (_merged_recover raw_ev hook) sets this True around one price6 recompute, then
+                         # takes delta = pr(capt on) - pr(capt off) and adds it back UNCHANGED. Default False =>
+                         # capt_prem is the ruled L-CAPTAIN curve => board byte-exact.
 def capt_prem(lev):
+    if _CAPT_OFF['on']: return 0.0
     return _capt_ruled(lev) if _CAPT else _capt_saturating(lev)
 GRACE={'KEY_FWD':2.5,'KEY_DEF':2.5,'RUC':2.5,'MID':1.0,'GEN_DEF':1.0,'GEN_FWD':1.0}
 LOS_C=0.16; LOS_P=1.82                 # progressive: gentle yr2 ~.85, steepening (yr3~.57 yr4~.31 yr5~.16)
@@ -305,6 +405,29 @@ KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_
 S_SH=3.0
 def comp(v): return v   # no compression (v2.0)
 def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position value above replacement
+# ==== LEG B — UN-COMPRESS THE OUTPUT->PRICE MAP (RL_UNCOMP; memo v1.1 / seg-3 2026-07-16, spec §3 Leg B) ==
+# OBITUARY (seg-2 posval-COMPONENT wiring — delete-don't-disable, SSI/CORE rule 7). The ORIGINAL design
+# (register items 211/213) wrapped the map at SIX posval sites via `posval_uncomp(lev,pos,Eq)`: the k-legs
+# of proj_from_peak/prod_floor here AND the W4 _proj_w4/_prod_floor_w4 in _merged_recover. That placement
+# was PROVEN to compress BY CONSTRUCTION (register 221): the REPL offset makes local elasticity >=1 at
+# posval for elites, so blending toward an elasticity-1 target pulls elite production DOWN, not up. The
+# axis finding (register 224) then located the deeper defect — the rho AXIS: level_now's output-elasticity
+# is only 0.124 (measured), so any blend toward V_ref*rho(level_now) flattens price-vs-output regardless of
+# hook. MEMO v1.1 CURES BOTH: the map moves to the PRODUCTION-VALUE hook (pr=price6, ONCE per player, at
+# _merged_recover.py raw_ev:298), and rho tracks REALISED OUTPUT. `posval_uncomp` + the per-leg E/CAL state
+# + the L_ref/V_ref dicts are DELETED here; the six posval sites are RESTORED to their pre-seg-2 originals
+# (posval(lev+capt_prem(lev)-REPL)). The v1.1 map, its references (RHO_DEN/V_ref_b) and the C[pos]
+# conservation now live in _merged_recover (co-located with the hook). This module keeps ONLY the declared
+# kill-switch + dials below (the RL_ISOFADE / RL_EVW pattern — NOT a manifest dial). RL_UNCOMP=0 (or the
+# strength dial unset) => the map is INERT => board 8d90c9ac BYTE-EXACT (config_sha256 UNMOVED).
+_UNCOMP=os.environ.get('RL_UNCOMP','1')!='0'
+UNCOMP_DELTA=6.0                       # onset-ramp width (avg-points above replacement); memo §2.2 (~2*S_SH clears the softplus knee)
+UNCOMP_DECAY=0.25                      # ρ games×recency decay d per year back; memo §2.1 ⟪v1.3⟫ OWNER-SET (R105.6, register 248 — the owner's ACCEPT: "a recent game counts MORE"; his R105.4 said 'more', v1.3 records HOW much = a QUARTER). u_s=games_s·d^(Ynow−year_s); d=0.25 measured λ_ρ≈0.9225 (strong end of the never-wipe family; the seat's d=0.5 was seat-filled, retired). DECLARED constant (owner-worded, one number), sits NEXT TO Δ=6.0. NO floor/exclusion/phase-test on the ρ axis (acceptance-enforced; L-RECENCY + forbidden-list self-tests guard it).
+UNCOMP_TAU=1.1                         # =_EVW_TAU: the saturating evidence-weight rate E=1-exp(-Eq/tau) (memo §2 "same family Leg A's fade rides")
+UNCOMP_S_DEFAULT=0.10                  # THE strength dial s -- OWNER-SET (register item 265, verbatim: "Let's lock in s=0.10 and move forward."). The memo v1.3 machine-selection construction (the beta>=0.80 bar + the {0.55-0.70} grid) is RETIRED -- s is now an owner-worded number, like the fade d=0.25; ZERO seat-authored numbers. Was None (map INERT until selection); now the selected literal wires the default path live.
+_uncs=os.environ.get('RL_UNCOMP_S')    # dev-shell grid sweep override: RL_UNCOMP_S=<s> per grid point
+UNCOMP_S=(float(_uncs) if _uncs not in (None,'') else UNCOMP_S_DEFAULT)
+_UNCONSERVE=os.environ.get('RL_UNCONSERVE','0')=='1'   # DEV-SHELL measurement override (RL_ISOFADE/RL_UNCOMP_S pattern; item 256/257 "Measure"): =1 => the memo §3 per-position conservation renorm C[pos] is IDENTITY (C≡1) on the un-compress map (the applied factor at _merged_recover.py:332 becomes 1.0; load-time C is still computed but not applied). Default OFF => shipped behaviour BYTE-EXACT (pure no-op when unset). Ships nothing; measures the DECIDED family UNFUNDED. NOT a manifest dial (config_sha256 UNMOVED); UNCOMP_S_DEFAULT stays None, UNCOMP_DECAY stays 0.25.
 CAPT_THRESH=107.4; CAPT_M=116.0; CAPT_W=5.0   # captaincy line (slider); 2026-06-21 M6: last-5 rank-25 ~=107.4 (unbiased upload), was 108.0
 def _pcap(a): return 1.0/(1.0+math.exp(-(a-CAPT_M)/CAPT_W))
 def capt_bonus(level):
@@ -315,11 +438,27 @@ def capt_bonus(level):
 def pedmix(pk): return 0.50+0.32*math.exp(-(pk-1)/9.0)
 def clamp(x,a,b): return max(a,min(b,x))
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
-LTILT=0.30; LTSPREAD=6.0           # lens = bounded (+/-30%) tilt around balanced, by age-vs-peak phase
-def lens_tilt(p,lens):
-    if lens=='bal': return 1.0
-    g=bnow(p); phase=clamp((age(p)-PEAK_AGE[g])/LTSPREAD,-1.0,1.0)
-    return clamp(1+LTILT*phase,0.7,1.3) if lens=='now' else clamp(1-LTILT*phase,0.7,1.3)
+# LEG E POSTURES (memo §3): NEW VALUES over the SAME dial family — a posture is the per-annum production discount
+# d, not a new code path. balanced == 'bal' (owner-ruled, byte-exact, the ONLY board that gates/bakes/seals).
+# Strawmen SEALED in session_2026-07-18/lege/posture_presets_v1.json (md5 c2e17c49); owner ratifies at the movers
+# report (nothing ruled here). Higher d => future discounted MORE => now-weight up. Gate RL_LEGE (default ON; a
+# DECLARED kill-switch like RL_PVC2/RL_EVW — NOT a manifest dial). RL_LEGE=0 => posture keys absent + the forward
+# form-anchor inert => board 06d8af60 BYTE-EXACT (the kill-switch proof).
+_LEGE=os.environ.get('RL_LEGE','1')!='0'
+if _LEGE:
+    LENS.update({'balanced':LENS['bal'],   # == 'bal' (byte-exact production path)
+                 'contender':0.18,          # sketch 0.14->0.18-0.20 (win-now: near-term weight up). STRAWMAN.
+                 'rebuilder':0.10})         # sketch 0.14->~0.10 (future weight up). STRAWMAN.
+POSTURES=('balanced','contender','rebuilder')
+# ── OBITUARY — lens_tilt (the INTERIM no-improvement-floor lens), DELETED at Leg E (delete-don't-disable) ──
+# Was: `def lens_tilt(p,lens): a bounded +/-30% (LTILT=0.30) multiplicative tilt around balanced by age-vs-peak
+# phase`, applied as the final multiplier in value() for the 'now'/'fut' display lenses while production stayed
+# hard-anchored at 'bal'. It credited NO projected production — the ruled LENS-PROJECTION defect (acceptance
+# laws[LENS-PROJECTION]: "interim lens = no-improvement floor, cross-age trades NOT read off it"). RETIRED here:
+# the real projection law (R103.3, the forward form-anchor offset in _merged_recover.b6/price6) supersedes it,
+# and postures replace the display tilt with a genuine dial re-weighting. `value(p,lens)` now weights, never
+# tilts (weight-don't-gate, R105.4). It returned 1.0 for lens=='bal', so its removal is byte-exact on the
+# balanced board. The UI +1/+2 toggle re-enables on this landing (SPEC §3).
 RWE={1:1.0,2:1.3,3:1.6,4:1.7,5:1.7}
 def track_delta(g,pk,sr):
     num=den=tg=0
@@ -361,12 +500,30 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
 def prod_floor(p,lens='bal'):
     g=bnow(p); a=age(p); pa_=PEAK_AGE[g]; cur=level_now(p)
     if cur is None: return 0
+    # ==== §1b FLOOR HALF (R106.7, DECISIONS v121 §1; RL_FLEX-gated via y0dpp_bar) — the leg-blind bar, floor half.
+    # §1b applies to WHICHEVER leg produces the year-0 number: the projection half is wired at v_at_peak
+    # (distribution_pricing.py:250); THIS is the DEMONSTRATED-FLOOR half. The floor's YEAR-0 (k==0) REMAINING-SEASON
+    # component nets vs the LOWER post-collapse dual bar (y0dpp_bar); the banked SEASON_PROG component + the level
+    # path/horizon stay keyed to PRESENT (bnow). The blend is done OUTSIDE the nonlinearity — TWO posval
+    # evaluations at k==0, sp·posval(base-REPL[present]) + (1-sp)·posval(base-REPL[low]) — NEVER a blended bar
+    # inside one posval call (owner condition 1). Now-board only (AGE_REF==BASE_REF; remaining-season is a present
+    # concept). years-1+ (k>=1) + the banked component untouched. RL_FLEX=0 => y0dpp_bar None => byte-exact off.
+    # ⚠ DUPLICATE-LOOP HAZARD (owner condition 4): _merged_recover.py::_prod_floor_w4 is a PARALLEL copy of THIS
+    # loop for PROVEN players on the shipped board (run_panel.sh -> ev()). It carries the SAME §1b k==0 split —
+    # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
+    lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
     d=LENS[lens]; H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_avail_hc'])
-        prod+=wt*posval(lev+capt_prem(lev)-REPL[g])*21/((1+d)**k); k+=1
+        base=lev+capt_prem(lev)
+        if k==0 and lowbar is not None:
+            sp=SEASON_PROG                                    # banked (sp) vs present bar; remaining (1-sp) vs low bar
+            pv=sp*posval(base-REPL[g])+(1.0-sp)*posval(base-REPL[lowbar])
+        else:
+            pv=posval(base-REPL[g])
+        prod+=wt*pv*21/((1+d)**k); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
 # Replaces old blended cohort+demoPeak. Model = forward-realised best-3 (>=Y, completeness-weighted), bust-inclusive.
@@ -620,7 +777,30 @@ def _deplateau(P, start_before=46):
     for k in range(2,N+1): P[k]=min(P[k],P[k-1])                    # safety monotone
     return P
 PVC=_deplateau(PVC)
-SEASON_PROG=0.58                              # ~round 14 of 24 (mid-Jun 2026). knob: 0=preseason ... 1=season done
+# ===== LEG D FIVE-MIGRATION (RL_PVC2, ruling R107.5): carry the OFFLINE-DERIVED, stamped pvc_curve_v2.json
+#       to the rl_model.py MA.PVC consumers below. _PVC2M is the v3.4 ruler object PVC by default, so
+#       RL_PVC2=0 => the consumers read byte-identical PVC => board 9829d01a byte-exact (the kill-switch
+#       proof, re-proven per commit); under RL_PVC2 (default ON) it is the loaded v2 curve. OFFLINE +
+#       LOADED, NO new import-time fit (the RL_PVCADOPT/L1b template; rl_export.py:61 already loads this
+#       artifact). The consumers are repointed PVC[...] -> _PVC2M[...] ONE AT A TIME (jobs 2-5); the v3.4
+#       import fit above still runs and is byte-exact when off. peak-model _V4PVC (:515) is NOT wired here
+#       (job 1 HOLD: train/serve skew, retrain = post-bake fallback).
+_PVC2M=PVC
+if os.environ.get('RL_PVC2','1')!='0':
+    _V2M={int(_k):int(_v) for _k,_v in json.load(open('pvc_curve_v2.json'))['curve'].items()}
+    assert _V2M[1]==3000, "RL_PVC2 numeraire: v2 curve(1)=%r != 3000"%_V2M[1]
+    assert all(_V2M[_k]>_V2M[_k+1] for _k in range(1,max(_V2M))), "RL_PVC2 R104.9: v2 strict descent violated"
+    _PVC2M=_V2M
+# JOB 5 (RL_PVC2): GLOBAL PRODUCER SWAP — the module-level PVC now IS the migrated curve, so the RESIDUAL
+# v3.4 readers below (the print-only value->pick-label `pe()` :1108-1110 and the `PVC:` diagnostic :1117)
+# read v2 too. Leaf consumers (unpl_eq/pedestal) already read _PVC2M so there is no double-move; the
+# build_pvc_v34 import fit + CURVE_H/BOARD_FACTOR/SCALE (computed ABOVE at :714-737, before _PVC2M) are
+# untouched — SCALE stays frozen, so no player is rescaled. RL_PVC2=0 => _PVC2M IS PVC (same object) => this
+# is `PVC=PVC`, a no-op => board 9829d01a byte-exact. Placed here (after _PVC2M) so the swap never reaches
+# the producer transforms. rl_export rebuilds its OWN shipped curve from pvc_curve artifacts keyed by the
+# _ADOPTED intersection, so g['PVC']'s key-set change (if any) does not reach the board (verified: board-null).
+PVC=_PVC2M
+SEASON_PROG=_season_val('calendar_progress',0.58)   # CALENDAR progress from data/season_state.json (dynamic; R14/24=0.58). Was the frozen literal 0.58.
 def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
 def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick
     ep=effpk(p); s=los(p); cg=sum(r['games'] for r in p['scoring'])
@@ -679,24 +859,25 @@ def brodie_sig(p):                      # Brodie role-reliability cut (ported on
     ln=level_now(p)                     # non-ruck, 5+ seasons, NOT a recent starter, NEVER durable, level>=80 -> value x0.5
     return (grp3(p)!='RUC' and seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and ln is not None and ln>=80)
 def value(p,lens='bal'):
+    _pd={'balanced':'bal'}.get(lens,lens)   # LEG E: the POSTURE production dial. 'balanced'->'bal' (the exact byte-exact path); 'contender'/'rebuilder' price the SAME streams at their own discount d (weight-don't-gate); 'bal'/'now'/'fut' unchanged. Pedigree pedestals (unpl_eq/pedestal) are NOT re-discounted — a posture re-weights production STREAMS, not the pick pedestal.
     ep=effpk(p); b=bandof(ep); decu=los_decay(p)
-    unpl_eq=PVC[min(ep,70)]*decu*debut_factor(p)
-    if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq*lens_tilt(p,lens))   # pure pedigree for genuine pre-debut prospects (window not open) OR explicit draft-value (`_pedonly`, P inert by design); in-window 0-game players fall through to the P-gated branch so 0->1 games is continuous
+    unpl_eq=_PVC2M[min(ep,70)]*decu*debut_factor(p)   # JOB 2 (RL_PVC2): pickless unpl_eq reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
+    if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq)   # LEG E: pedigree-only prospect has no production stream to re-weight => posture-invariant (lens_tilt retired)
     g=gfut(p)   # settled future position drives pedigree/form-delta/out-tilt (matches peak_est); prod_floor stays present
     if level_now(p) is None:                                          # 0-game but IN opportunity window (debut season+): P applies continuously (prospect-path RETIRED 2026-06-18); genuine pre-debut prospects hit the _unplayed branch above and keep pure pedigree
         Pz = 1.0 if P_HOOK is None else P_HOOK(p)
-        return round(unpl_eq * Pz * lens_tilt(p,lens))
+        return round(unpl_eq * Pz)   # LEG E: pedigree/P only, no production stream => posture-invariant (lens_tilt retired)
     surv=1.0   # cont.20: survival() REMOVED from value path (v4 subsumes the bust-tracking haircut; verified 11.8pt separation vs survival's <=9%)
     Pz = None if P_HOOK is None else P_HOOK(p)                # v3.4: establishment-P, computed ONCE; gates BOTH the production term (below) and the pedigree pedestal (decay_eff), each carrying P exactly once
-    prod_v=val(player_raw(p,'bal'))*surv                      # anchor at balanced; lens is a bounded tilt below
+    prod_v=val(player_raw(p,_pd))*surv                        # LEG E: production priced at the posture dial (was hard-'bal'); balanced=='bal'=byte-exact
     relative=clamp((peak_est(p)/max(basepk_c(g,ep),40.0))**2.2, 0.40, 3.0)
     # out_tilt CUT (cont.21): audited redundant with v4 — corr(out_tilt_sig, realised-v4)=-0.05, marginal R2=+0.001, coef after v4=-0.04. Same form double-count as the removed survival(). relative stays at the v4 pedigree multiplier.
     if g in('RUC','KEY_FWD','KEY_DEF') and age(p)<=22 and relative<1.0:   # v3.4 relative-floor: young key-pos debut can't drag the pedestal below the clean pick baseline; YEAR-SCALED (more chances seen -> less lift)
         _sc={1:1.0,2:0.8,3:0.5,4:0.2}.get(2026-p['year'],0.0); relative=relative+_sc*(1.0-relative)
     decay=max(0.0,1-(seasons(p)-1)/4.5)
     decay_eff = decay if Pz is None else min(decay, Pz)   # v3.4: establishment-P only ever PULLS DOWN (min) on the pedigree track; established players P=1 -> min=decay, untouched
-    pedestal = PVC[min(ep,70)]*relative*surv*decay_eff
-    pf = prod_floor(p,'bal')
+    pedestal = _PVC2M[min(ep,70)]*relative*surv*decay_eff   # JOB 3 (RL_PVC2): pedigree pedestal reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
+    pf = prod_floor(p,_pd)                                # LEG E: demonstrated-floor at the posture dial (balanced=='bal'=byte-exact)
     prod_full = max(prod_v, pf)                           # full production estimate: projection OR demonstrated-level floor, whichever is higher
     if Pz is not None and PROD_GATE!='off':                # v3.4 PRODUCTION-GATING. fully_gated = P*production + (1-P)*floor. floor = pedestal ('full'/'blend') OR a games-weighted demonstrated floor ('fulldemo'/'blenddemo') so survivors who banked games aren't stripped to the bare pick. 'full*'=straight; 'blend*'=Luke's 2/3 toward fully-gated.
         if PROD_GATE in ('fulldemo','blenddemo'):
@@ -708,7 +889,7 @@ def value(p,lens='bal'):
         elif PROD_GATE in ('blend','blenddemo'): prod_full = (1.0/3.0)*prod_full + (2.0/3.0)*fully_gated
     res=max(prod_full, pedestal)
     if brodie_sig(p): res*=0.5                            # Brodie role-reliability cut (now on the board; flows to convex/backward via value())
-    return round(res*lens_tilt(p,lens))
+    return round(res)                                     # LEG E: lens_tilt (interim no-improvement tilt) RETIRED; value() weights via the posture dial above, never tilts
 # ---- PICK-EQUIVALENT for the no-slot entry mechanisms (MSD/SSP/Ireland/Unregistered/post-draft) ----
 # "What national pick is an X player worth?" Build a national realised-career-value curve (no effpk
 # dependence, same risk-averse pooling as the PVC), then invert it against each mechanism's pooled value.

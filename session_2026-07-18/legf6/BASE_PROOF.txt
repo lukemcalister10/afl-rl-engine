@@ -1,0 +1,47 @@
+LEG F6 — BASE PROOF (commit #1)  ·  seat 13  ·  built 2026-07-19
+Single-thread build (OPENBLAS/OMP/MKL/NUMEXPR=1), fresh clone, this-session fetch.
+
+=== GIT ENTRY ===
+ls-remote origin claude/legf5-entrant-layer-conservation-p4susl:
+  15a9abd996f8f7426e98f173d83a0d600b966a3c	refs/heads/claude/legf5-entrant-layer-conservation-p4susl
+git rev-parse HEAD:
+  15a9abd996f8f7426e98f173d83a0d600b966a3c
+git merge-base --is-ancestor 15a9abd <HEAD>:  IS_ANCESTOR=YES
+
+=== ENTRY STAMPS ===
+store  rl_model_data.json md5 = 968de0c7   (expect 968de0c7)
+curve  pvc_curve_v2.json   md5 = 56dd7a7b   (expect 56dd7a7b)
+q97m   data/q97m.pkl       md5 = cfdc7321   (expect cfdc7321)
+
+=== BALANCED BOARD (clean-instance precondition) ===
+Build recipe: workspace = fresh copy of repo engine/rl_after @ HEAD; RL_REPO=repo; PYTHONHASHSEED=0;
+  single-thread BLAS/OMP; the balanced board of record is the RL_LEGE=0 RL_LEGF=0 build (rl_export.py:100
+  ties 06d8af60 to RL_LEGE=0). rl_export.py -> rl_app_data.json.
+  balanced md5 = 06d8af60   (expect 06d8af60)  BYTE-EXACT
+  Sum v        = 752427     (expect 752427)
+  Sheezel v    = 7964       (expect 7964)
+  Reproduced 5/5 consecutive builds; also holds under forced BLAS coretypes (Prescott/Nehalem/Haswell).
+
+=== FOUR ASSERTIONS ===
+  [PASS] HEAD == 15a9abd996f8f7426e98f173d83a0d600b966a3c
+  [PASS] 15a9abd IS the base (merge-base --is-ancestor = YES)
+  [PASS] balanced == 06d8af60   (Sum v 752427, Sheezel 7964)
+  [PASS] store == 968de0c7
+
+=== VERDICT: BASE PROOF PASSED — freeze may begin ===
+
+CORRECTION NOTE (honest record of the first commit on this branch):
+  The FIRST BASE_PROOF commit on this branch recorded a FAIL and a HALT ("weather box"). That was WRONG on
+  two counts, both now corrected:
+   (1) ENV ERROR — that build used the default RL_LEGE=1, whose whole-file md5 is d85901af (the forward-lens
+       fields differ; the balanced NOW values are identical). The board of record 06d8af60 is the RL_LEGE=0
+       build. With the correct env this instance reproduces 06d8af60 byte-exact, 5/5 consecutive.
+   (2) COLD-START FLIP — the very first build after the workspace copy DID produce the documented weather
+       signature (83a4b21d / Σv 750159 / Sheezel 7869 = -95). Every build since (8+) has clean integer values
+       (Σv 752427, Sheezel 7964). So this box is weather-SUSCEPTIBLE (it flipped once on cold start) but now
+       reproduces the clean board reliably.
+
+  OWNER/USER RULING (2026-07-19): given the box reproduces 06d8af60 byte-exact and the freeze is gated by a
+  hard proof (job 4: the frozen board must == 06d8af60 byte-exact with a 0-row k=0 diff, and hold 06d8af60
+  under a forced-kernel change, or HALT+revert), FREEZE HERE WITH THE FULL SAFETY NET. The freeze-compute was
+  gated on a build verified to hash 06d8af60; a baked flip could not survive the job-4 proof. See out/proof.txt.

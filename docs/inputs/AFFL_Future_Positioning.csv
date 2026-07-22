@@ -1,4 +1,4 @@
-stable_player_id,player_name,affl_team,"primary_future_position (engine, reference)",alternate_position (AT MOST ONE ï¿½ leave blank if none),p_dual_stream % (chance the future state is PRIMARY/ALTERNATE dual; blank = 0 = pure primary),notes (optional)
+stable_player_id,player_name,affl_team,"primary_future_position (engine, reference)",alternate_position (AT MOST ONE — leave blank if none),p_dual_stream % (chance the future state is PRIMARY/ALTERNATE dual; blank = 0 = pure primary),notes (optional)
 afl-player-v1-1df9ecb7c033ae7646a4,Jack Carroll,Adelaide Crows,G-DEF,,,
 afl-player-v1-868ea8f767a946d70917,Jaspa Fletcher,Adelaide Crows,G-DEF,,,
 afl-player-v1-61b3ccb5ea59c4851445,Jordan Ridley,Adelaide Crows,G-DEF,K-DEF,20%,
@@ -688,7 +688,7 @@ afl-player-v1-7f1a97e8d1d17bed7d0a,Jack Graham,Port Adelaide Power,MID,G-FWD,25%
 afl-player-v1-57dca48502d181a8ae5e,Jack Steele,Port Adelaide Power,MID,,,
 afl-player-v1-c01448b8c1a9d2ca5862,James Worpel,Port Adelaide Power,MID,,,
 afl-player-v1-8a0b76cec5160934fed4,Luke Beecken,Port Adelaide Power,MID,,,
-afl-player-v1-c9130ccf04e0cd0474b0,Nick Driscoll,Port Adelaide Power,MID,,,
+afl-player-v1-c9130ccf04e0cd0474b0,Nick Driscoll,Port Adelaide Power,MID,G-FWD,90%,
 afl-player-v1-3c4dfebabc0d54a341af,Patrick Cripps,Port Adelaide Power,MID,,,
 afl-player-v1-7fa57669a2ceda593183,Stephen Coniglio,Port Adelaide Power,MID,G-FWD,50%,
 afl-player-v1-9900e16ea0f47957de5c,Tom Atkins,Port Adelaide Power,MID,,,

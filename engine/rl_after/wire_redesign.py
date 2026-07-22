@@ -18,7 +18,17 @@ fleet. The cache is therefore the SINGLE SOURCE OF TRUTH, regenerated ONLY at a 
 speed optimisation over an equivalent recompute. (This is the same freeze q97m now gets, for the same reason.)
 """
 import io, contextlib, importlib.util, os, pickle
-_FV = os.environ.get('RL_FV', '/home/claude/rl_workspace/forward_valuation')   # D10: parameterized (D8 mixed-pair root cause); default byte-identical
+# CANONICAL FORWARD-VALUATION SOURCE SELECTION (fail-closed): resolved by the ONE canonical selector
+# fv_provenance.resolve_fv — the SAME function Guard 5 uses, so the production loader and the guard can never
+# resolve differently (fv-provenance remediation 2026-07-20; corrective C2). No ambient-workspace default: a
+# canonical build never silently imports /home/claude/rl_workspace/forward_valuation (the 06d8af60 -> d7a95e8d
+# hole). If fv_provenance is not importable, fail closed rather than guess a source.
+try:
+    import fv_provenance as _FVP
+except Exception as _e:
+    raise SystemExit("wire_redesign: the canonical resolver fv_provenance is not importable (%r) — cannot "
+                     "select the forward_valuation source (fail-closed; fv-provenance remediation)." % _e)
+_FV = _FVP.resolve_fv()
 def _ld(n, p):
     s = importlib.util.spec_from_file_location(n, p); m = importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m); return m

@@ -1,0 +1,48 @@
+# LEG B CONSERVED — MEASUREMENT GRID (shipped C applied; RL_UNCONSERVE UNSET)  ·  frozen instruments only
+# engine base b7a776c · store b1fd0bce · board OFF=8d90c9ac · toggle UNSET (no-op) · A/B byte-exact
+
+## β (proven-27+, FROZEN beta_measure.py md5 14c59139; owner reference bar 0.80; rails width<=0.35, n>=120)
+  point           β  CI                        width      n   rails
+  β_c(OFF)   0.6219  [0.4836,0.7899]   0.3063    116   widthOK n<120
+  s=0.15     0.6340  [0.4969,0.7980]   0.3010    116   widthOK n<120
+  s=0.25     0.6420  [0.5058,0.8039]   0.2981    116   widthOK n<120
+  s=0.35     0.6503  [0.5123,0.8115]   0.2993    116   widthOK n<120
+  s=0.45     0.6584  [0.5211,0.8167]   0.2957    116   widthOK n<120
+  s=0.55     0.6665  [0.5275,0.8257]   0.2982    116   widthOK n<120
+  s=0.60     0.6706  [0.5315,0.8297]   0.2983    116   widthOK n<120
+  s=0.65     0.6747  [0.5354,0.8342]   0.2988    116   widthOK n<120
+  s=0.70     0.6788  [0.5402,0.8403]   0.3001    116   widthOK n<120
+
+## G-COHORT y4/y5/y6 (FROZEN July-8 construction, ship_gates_check._b1_july8; hard <=1.30)
+  point           y4        y5        y6   verdict
+  OFF         1.3017    1.3160    1.2664   BREACH y[4, 5]
+  s=0.15      1.2495    1.2515    1.2118   PASS x3 (<=1.30)
+  s=0.25      1.2158    1.2097    1.1755   PASS x3 (<=1.30)
+  s=0.35      1.1829    1.1688    1.1391   PASS x3 (<=1.30)
+  s=0.45      1.1509    1.1289    1.1029   PASS x3 (<=1.30)
+  s=0.55      1.1198    1.0901    1.0670   PASS x3 (<=1.30)
+  s=0.60      1.1046    1.0711    1.0491   PASS x3 (<=1.30)
+  s=0.65      1.0896    1.0523    1.0313   PASS x3 (<=1.30)
+  s=0.70      1.0748    1.0338    1.0135   PASS x3 (<=1.30)
+
+## PER-POINT (E/B vs 1.75 · Bontempelli SCAR/rank · net board SigmaD · sincerity failures)
+  point          E/B Bontempelli                        net ΣΔ  sinc-fail
+  s=0.15       2.007 SCAR+400 rank-10 OK                 +1850          7
+  s=0.25       2.187 SCAR+685 rank-14 OK                 +3080          7
+  s=0.35       2.382 SCAR+985 rank-17 OK                 +4245          9
+  s=0.45       2.596 SCAR+1300 rank-20 OK                +5409          7
+  s=0.55       2.824 SCAR+1630 rank-23 OK                +6666          7
+  s=0.60       2.950 SCAR+1800 rank-24 OK                +7286          6
+  s=0.65       3.079 SCAR+1974 rank-24 OK                +7884          6
+  s=0.70       3.212 SCAR+2150 rank-25 OK                +8478          6
+
+## POSITION-POOL Δ TOTALS per point (ΣΔnum by pos — which pools re-rate)
+  point          MID   GEN_FWD   KEY_FWD   GEN_DEF   KEY_DEF       RUC
+  s=0.15       +1752      -623       -65      +202      +166      +418
+  s=0.25       +2970     -1095      -110      +319      +291      +705
+  s=0.35       +4223     -1632      -167      +410      +412      +999
+  s=0.45       +5517     -2218      -226      +474      +550     +1312
+  s=0.55       +6889     -2794      -285      +532      +692     +1632
+  s=0.60       +7606     -3112      -320      +553      +769     +1790
+  s=0.65       +8317     -3445      -353      +557      +850     +1958
+  s=0.70       +9025     -3794      -389      +568      +940     +2128

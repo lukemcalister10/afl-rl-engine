@@ -1,0 +1,22 @@
+R106.7 UNIT-PROOFS (jobs 3+4) — run 2026-07-17T06:09:57Z
+store md5: 968de0c7 (corrected)
+=== RL_FLEX=1 (default) ===
+RL_FLEX on: True
+=== item-284 fixture proofs (_collapse_elig / y0dpp_bar) ===
+  PASS cross-class K-DEF,G-FWD  present KDEF collapsed ['GEN_FWD', 'KEY_DEF'] -> y0dpp_bar None (single-position)
+  PASS cross-class K-FWD,G-DEF  present KFWD collapsed ['GEN_DEF', 'KEY_FWD'] -> y0dpp_bar None (single-position)
+  PASS cross-class RUCK,G-FWD   present RUC  collapsed ['GEN_FWD', 'RUC'] -> y0dpp_bar None (single-position)
+  PASS cross-class RUCK,G-DEF   present RUC  collapsed ['GEN_DEF', 'RUC'] -> y0dpp_bar None (single-position)
+  PASS present-not-in-set G-DEF,G-FWD present MID -> y0dpp_bar None (single-position)
+  PASS VALID MID,G-FWD present MID -> y0dpp_bar GEN_FWD (verdict always produced)
+=== §1b floor ENDPOINTS (sp=1 no-op == original; sp=0 whole year-0 vs low) ===
+  PASS Petracca   bar=GEN_FWD  sp=1 floor==orig(2277.00) | sp=0=2524.00 sp=0.58=2382.00 (low-bar nets UP)
+  PASS Jake Lloyd bar=GEN_FWD  sp=1 floor==orig(20.00) | sp=0=106.00 sp=0.58=59.00 (low-bar nets UP)
+  PASS McKercher  bar=GEN_DEF  sp=1 floor==orig(480.00) | sp=0=531.00 sp=0.58=501.00 (low-bar nets UP)
+=== condition 2: RL_FLEX=0 byte-exact — deferred to a FLEX=0 subprocess (see .txt) ===
+RL_FLEX=1 exit: 0
+
+=== condition 2: RL_FLEX=0 byte-exact (prod_floor == original, all players) ===
+  RL_FLEX on: False
+  checked 655 players; prod_floor != original: 0  -> PASS byte-exact
+  y0dpp_bar(Petracca) at FLEX=0: None

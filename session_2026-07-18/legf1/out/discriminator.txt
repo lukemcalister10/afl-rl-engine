@@ -1,0 +1,17 @@
+LEG F1 DISCRIMINATOR — filed panel (10 pinned v) vs this container
+player                   mine_v    filed  delta
+  Nick Daicos              8017     8017      0
+  Marcus Bontempelli       3897     3897      0
+  Harry Sheezel            7964     7964      0
+  Max Gawn                 3416     3416      0
+  Harley Reid              3348     3348      0
+  Josh Ward                2003     2003      0
+  Darcy Moore               257      257      0
+  Taylor Goad               914      914      0
+  Josh Smillie             1324     1324      0
+  Will Green                651      651      0
+
+max |delta_v| on filed anchors : 0   (expect 0 — integer v is BLAS-weather-immune here)
+changed anchor rows            : 0 / 10
+panel rank order preserved     : True (filed==mine)
+VERDICT: PASS — 0 value moves, 0 rank moves => gap is 6dp-float weather, not a defect

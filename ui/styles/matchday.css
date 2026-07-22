@@ -84,7 +84,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .row .pin{text-align:center;font-size:15px}
 .pinf{color:var(--volt)} .pinh{color:var(--volt);opacity:.45}
 .row .nm{font-family:var(--cond);font-weight:700;font-size:19px;letter-spacing:.02em;text-transform:uppercase;
-  line-height:1.15;overflow-wrap:anywhere}
+  line-height:1.15;overflow-wrap:break-word}
 .row .slug{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);font-weight:400}
 .tag{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.12em;
   text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);padding:2px 7px;margin-left:9px;
@@ -92,8 +92,8 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .row .pos{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
 /* item 1: clubs per player — AFFL (lens focus) leads in volt, AFL muted beneath. Wrap, never clip. */
 .row .club{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.15}
-.row .club .affl{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--volt);overflow-wrap:anywhere}
-.row .club .afl{font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);overflow-wrap:anywhere}
+.row .club .affl{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--volt);overflow-wrap:break-word}
+.row .club .afl{font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);overflow-wrap:break-word}
 .row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
 /* item 3 (register item 163, owner-worded amendment to the LOCK, 2026-07-15): the CONTINUOUS value line.
    The spectrum is painted on the track (anchored 0..top price); .vmask covers the unfilled remainder, so
@@ -245,6 +245,54 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   .desk{grid-template-columns:1fr}
 }
 
+/* ---- PHONE (<=560px): the board row becomes a two-line card so the player NAME gets a full-width
+   column (never one-character-per-line); the required fields — rank · name · club · value · movement —
+   all stay visible; the pick number folds away (secondary). Nav destinations stay reachable via
+   deliberate wrapping (no clipped overflow region). The wide club table scrolls inside its own region so
+   the DOCUMENT never overflows horizontally. Desktop (>920px) is untouched. ---- */
+@media(max-width:560px){
+  .app{padding:0 12px 60px}
+
+  /* board — working tier: rank spans two lines on the left; name over club in the middle; value over
+     the movement pill on the right. minmax(0,1fr) lets the name column shrink so nothing overflows. */
+  .row.working{
+    grid-template-columns:28px minmax(0,1fr) auto;
+    grid-template-areas:"rank name val" "rank club pill";
+    gap:2px 10px;padding:10px 12px;align-items:center;
+  }
+  .row.working .rank{grid-area:rank;font-size:20px;align-self:center}
+  .row.working .pin{display:none}                 /* read/star marker — secondary on phones */
+  .row.working .nm{grid-area:name;min-width:0;font-size:16px;line-height:1.12;
+    overflow-wrap:break-word;white-space:normal}   /* wraps at spaces, <=2 lines; never char-by-char */
+  .row.working .club{grid-area:club;min-width:0}
+  .row.working .val{grid-area:val;font-size:17px;align-self:end}
+  .row.working .pill{grid-area:pill;justify-self:end;align-self:start;margin-top:2px}
+
+  /* board — public tier: rank | name (two rows) | value over movement. */
+  .row.public{
+    grid-template-columns:28px minmax(0,1fr) auto;
+    grid-template-areas:"rank name val" "rank name pill";
+    gap:2px 10px;padding:10px 12px;align-items:center;
+  }
+  .row.public .rank{grid-area:rank;font-size:20px}
+  .row.public .nm{grid-area:name;min-width:0;font-size:16px;line-height:1.12;overflow-wrap:break-word}
+  .row.public .val{grid-area:val;font-size:17px;align-self:end}
+  .row.public .pill{grid-area:pill;justify-self:end;align-self:start}
+
+  /* navigation: EVERY destination reachable — the tab strip wraps onto as many rows as needed instead of
+     clipping behind overflow:hidden. The tier toggle drops to its own full-width row. */
+  .controls{gap:8px}
+  .tabs{flex-basis:100%;flex-wrap:wrap;overflow:visible}
+  .tier{flex-basis:100%;margin-left:0;overflow:visible}
+
+  /* masthead identity: let the long board-id hex wrap instead of forcing document overflow. */
+  .mast .stamp{overflow-wrap:anywhere}
+}
+
+/* club valuation: the wide sortable table scrolls WITHIN its own region at ANY width narrower than the
+   table, so the DOCUMENT never overflows horizontally (no-op on wide desktops where the table fits). */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
 /* ============ UI v1.2 — CLUB VALUATION LAYER ============ */
 /* item 178(2): the assets (players-only / picks-included) segmented toggle reuses .seg; disabled state */
 .seg.assets button.lensoff{opacity:.3;cursor:not-allowed;text-decoration:line-through}
@@ -338,3 +386,72 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .pocketpanel .pk-vs.up{color:var(--up)} .pocketpanel .pk-vs.dn{color:var(--dn)} .pocketpanel .pk-vs.flat{color:var(--faint)}
 .pocketpanel .pk-foot{font-size:10px;line-height:1.5;color:var(--faint);padding:9px 14px 4px;border-top:1px solid var(--edge);margin-top:4px}
 @media (max-width:480px){.pocketpanel{width:calc(100vw - 20px)}}
+
+/* ============================================================================
+   MOVERS view (item: weekly movers, 2026-07-20) — a NATIVE section of the engine.
+   Reuses the design tokens, the .strip filter bar, .seg segmented controls, the
+   .pill movement grammar and the .num mono figures. No new palette, font or shell. */
+.movercards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.movercard{background:var(--card);border:1px solid var(--edge);border-top:3px solid var(--volt);
+  padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.movercard:hover{background:var(--card-2);border-color:#2c3446}
+.movercard .mcl{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint)}
+.movercard .mcn{font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--text);line-height:1.05;overflow-wrap:anywhere}
+.movercard .mcv{font-family:var(--mono);font-weight:700;font-size:16px}
+.movercard .mcv.up{color:var(--up)} .movercard .mcv.dn{color:var(--dn)}
+.movercard .mcv.flat,.movercard .mcv.na{color:var(--faint)}
+.movercard .mcs{font-size:10.5px;color:var(--dim)}
+
+.moversmeta{border-left-color:var(--edge)}
+.moversmeta b{color:var(--text);font-size:12px}
+.moversbar select.boardsel,.moversfilters select.boardsel{margin-right:4px}
+
+.movertable{margin-top:12px}
+.moverhead{display:grid;gap:10px;align-items:end;padding:10px 14px 6px;border-bottom:1px solid var(--edge);
+  grid-template-columns:52px 1fr 118px 88px 128px 72px 118px 78px}
+.moverhead .mh{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);cursor:pointer;user-select:none}
+.moverhead .mh.r{text-align:right}
+.moverhead .mh:hover{color:var(--volt)}
+.moverrows{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.moverrow{display:grid;gap:10px;align-items:center;background:var(--card);border:1px solid var(--edge);
+  padding:8px 14px;cursor:pointer;grid-template-columns:52px 1fr 118px 88px 128px 72px 118px 78px}
+.moverrow:hover{background:var(--card-2);border-color:#2c3446}
+.moverrow.dnp{opacity:.72;border-style:dashed}
+.moverrow .mr.rank{font-family:var(--cond);font-weight:900;font-size:20px;color:var(--faint);text-align:right}
+.moverrow .mr.who{display:flex;flex-direction:column;gap:1px;min-width:0}
+.moverrow .mr.who .nm{font-family:var(--cond);font-weight:700;font-size:16px;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--text);overflow-wrap:anywhere;line-height:1.05}
+.moverrow .mr.who .sub{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.moverrow .mr.val{font-family:var(--mono);font-weight:700;font-size:15px;text-align:right}
+.moverrow .mr.dv,.moverrow .mr.dr{justify-self:end}
+.moverrow .mr.dvp,.moverrow .mr.dpr{font-family:var(--mono);font-size:12px;text-align:right}
+.moverrow .mr.dvp.up,.moverrow .mr.dpr.up{color:var(--up)}
+.moverrow .mr.dvp.dn,.moverrow .mr.dpr.dn{color:var(--dn)}
+.moverrow .mr.dvp.flat,.moverrow .mr.dpr.flat,.moverrow .mr.dvp.na,.moverrow .mr.dpr.na{color:var(--faint)}
+.moverrow .mr.pdn .pill{font-size:10.5px;padding:2px 8px}
+.movercount{font-family:var(--mono);font-size:11px;color:var(--faint);padding:10px 4px 2px}
+.movercount .num{color:var(--dim)}
+
+/* honest empty state (no finalized round reports) — a neutral panel, NOT the alarm treatment. */
+.moversempty{max-width:640px;margin:60px auto;border:1px solid var(--edge);background:var(--card);padding:28px 30px}
+.moversempty h1{font-family:var(--cond);font-weight:900;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin:0 0 10px}
+.moversempty p{color:var(--dim);font-size:13px;line-height:1.7}
+.moversempty .mono{font-family:var(--mono);font-size:12px;color:var(--faint)}
+
+@media(max-width:920px){
+  .movercards{grid-template-columns:repeat(2,1fr)}
+  .moverhead{display:none}
+  .moverrow{grid-template-columns:40px 1fr auto;grid-auto-rows:auto;row-gap:6px;padding:10px 12px}
+  .moverrow .mr.who{grid-column:2}
+  .moverrow .mr.rank{font-size:17px}
+  .moverrow .mr.pdn{grid-column:3;justify-self:end}
+  .moverrow .mr.val{grid-column:1 / -1;text-align:left;font-size:13px}
+  .moverrow .mr.dv{grid-column:1 / 2;justify-self:start}
+  .moverrow .mr.dvp{grid-column:2 / 3;text-align:left}
+  .moverrow .mr.dr{grid-column:3 / 4;justify-self:end}
+  .moverrow .mr.dpr{display:none}
+}
+@media(max-width:480px){.movercards{grid-template-columns:1fr}}

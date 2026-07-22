@@ -1,0 +1,21 @@
+{
+  "season_year": 2026,
+  "season_total_rounds": 24,
+  "as_of_round": 19,
+  "calendar_progress": 0.79,
+  "exposure_pace": 0.727,
+  "exposure_derivation": {
+    "eligible_durable_players": 305,
+    "median_current_games": 16,
+    "denominator": 22.0,
+    "raw_ratio": 0.7272727272727273,
+    "released_value": 0.727,
+    "rounding": "round(., 3) then cap 1.0",
+    "scope_denominator": 11.0,
+    "durable_min_prior_games": 18
+  },
+  "source_store_md5": "f37d9716648cfe4382b8c6a24c4f064f",
+  "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+  "inprog_year": 2026,
+  "_doc": "AUTHORITATIVE DYNAMIC SEASON STATE. calendar_progress (scheduled-season elapsed) and exposure_pace (empirical durable-sample pace \u2014 NOT calendar) are DISTINCT and both DYNAMIC; the engine reads these values; the derivation policy is immutable (derivation_policy_id)."
+}

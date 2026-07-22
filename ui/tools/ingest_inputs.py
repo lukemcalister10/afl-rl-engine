@@ -19,15 +19,32 @@ Run:  python3 ui/tools/ingest_inputs.py         (exit 0 = clean bundle written; 
 import csv, json, os, sys, collections, hashlib, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # repo root
-INPUTS = os.path.join(ROOT, "docs", "inputs")
+# Production paths are the defaults; each may be redirected via an env var so a FIXTURE run (a temp board
+# bundle / temp contract / temp engine-curve dir / temp boot manifest / temp out) exercises the SAME
+# fail-closed resolver and asserts without touching production data. Overrides change WHERE we read/write,
+# never WHAT we assert — every ring-fence + curve-provenance HALT below stays live regardless of the paths.
+INPUTS = os.environ.get("RL_UI_INPUTS", os.path.join(ROOT, "docs", "inputs"))
 UI_DATA = os.path.join(ROOT, "ui", "data")
-BOARD_BUNDLE = os.path.join(UI_DATA, "board_view_working.js")
-ENGINE_CURVE = os.path.join(ROOT, "engine", "rl_after", "pvc_curve_L1b.json")
-OUT = os.path.join(UI_DATA, "club_valuation.js")
+BOARD_BUNDLE = os.environ.get("RL_UI_BOARD_BUNDLE", os.path.join(UI_DATA, "board_view_working.js"))
+# Engine curve DIR (not a single hardcoded file): the release-active curve is resolved from the contract.
+ENGINE_DIR = os.environ.get("RL_UI_ENGINE_DIR", os.path.join(ROOT, "engine", "rl_after"))
+# The explicit, fail-closed release-metadata contract that declares the release-active pick curve.
+CURVE_CONTRACT = os.environ.get("RL_UI_CURVE_CONTRACT", os.path.join(ROOT, "ui", "release_pick_curve.json"))
+# The accepted release manifest — read STRICTLY READ-ONLY for the store + release_version cross-check.
+BOOT = os.environ.get("RL_UI_BOOT", os.path.join(ROOT, "data", "expected_boot.json"))
+OUT = os.environ.get("RL_UI_OUT", os.path.join(UI_DATA, "club_valuation.js"))
 
-EXPECTED_BOARD = "790136a3"      # ui/app/config.js EXPECTED_BOARD — the shipped board (v2.10)
+EXPECTED_BOARD = None      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
 PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
 BASE_YEAR = 2026
+
+# Known release pick-curve pathways -> the engine curve FILENAME each pathway loads. The contract's
+# adopted_pathway MUST be one of these; the resolver cross-checks the contract's declared path AND the
+# curve file's OWN self-declared gate token against this registry. An unknown pathway HALTs.
+KNOWN_PATHWAYS = {
+    "RL_PVC2": "pvc_curve_v2.json",       # v2.9+ composed pathway (the v2.11 adopted curve)
+    "RL_PVCADOPT": "pvc_curve_L1b.json",  # prior v2.9 L1b adopt curve (superseded by RL_PVC2)
+}
 # Best-23 positional structure (item 178(3)); posCode vocab is the board's CURRENT posCode.
 SLOTS = [("KEY_DEF", 2), ("GEN_DEF", 4), ("MID", 5), ("GEN_FWD", 4), ("KEY_FWD", 2), ("RUC", 1)]
 BENCH = 5
@@ -42,19 +59,34 @@ def check(name, ok, detail=""):
     return bool(ok)
 
 
+class HaltError(Exception):
+    """Raised by halt(); caught in main() -> renders the verdict table, writes a HALTED overlay bundle
+    (so the UI refuses to render) and exits 2. Making halt() RAISE rather than sys.exit lets the
+    curve-provenance resolver + guards be unit-tested for fail-closed behaviour (import + assert-raises)."""
+
+    def __init__(self, reason):
+        self.reason = reason
+        super().__init__(reason)
+
+
 def halt(reason):
-    """Print the verdict table + the halt reason, write a HALTED bundle (so the overlay refuses), exit 2."""
+    """Fail closed. Nothing is ever guessed; the overlay refuses to render on an ambiguous ingest."""
+    raise HaltError(reason)
+
+
+def _emit_halt(reason):
+    """Render the verdict table + the halt reason and write the HALTED bundle (overlay refuses). Called
+    once, from main(), when any guard raises HaltError."""
     _print_verdicts()
     print("\n■ HALT — %s" % reason)
     print("  The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.")
     payload = {
-        "stamp": {"expectedBoard": EXPECTED_BOARD, "generated": _now()},
+        "stamp": {"expectedBoard": _expected_board_short(), "generated": _now()},
         "halt": {"reason": reason, "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts]},
         "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts],
         "clubs": [], "picksByTeam": {}, "notes": notes,
     }
     _write(payload)
-    sys.exit(2)
 
 
 def _now():
@@ -90,29 +122,184 @@ def load_board():
         halt("board bundle is not parseable JSON: %s" % e)
     stamp = obj.get("stamp", {})
     board = str(stamp.get("board", ""))
-    check("board id ring-fence", board[:8] == EXPECTED_BOARD,
-          "bundle board %s vs expected %s" % (board[:8], EXPECTED_BOARD))
-    if board[:8] != EXPECTED_BOARD:
-        halt("board id mismatch — bundle %s != EXPECTED_BOARD %s (regenerate board_view or re-pin)"
-             % (board[:8], EXPECTED_BOARD))
+    boot = _release_manifest()
+    expected_board = str(boot["board"])
+    board_ok = board == expected_board
+    check("board id ring-fence == current release manifest", board_ok,
+          "bundle board %s vs manifest %s" % (board[:8], expected_board[:8]))
+    if not board_ok:
+        halt("board id mismatch — bundle %s != current release board %s (regenerate board_view)"
+             % (board[:8], expected_board[:8]))
+    round_ok = stamp.get("asOfRound") == boot["as_of_round"]
+    check("board asOfRound == current release manifest", round_ok,
+          "bundle %s vs manifest %s" % (stamp.get("asOfRound"), boot["as_of_round"]))
+    if not round_ok:
+        halt("board round mismatch — bundle R%s != current release R%s"
+             % (stamp.get("asOfRound"), boot["as_of_round"]))
+    bundle_store = str(stamp.get("store_md5") or stamp.get("store") or "")
+    store_ok = bundle_store == str(boot["store"])
+    check("board source store == current release manifest", store_ok,
+          "bundle %s vs manifest %s" % (bundle_store[:8], str(boot["store"])[:8]))
+    if not store_ok:
+        halt("board store mismatch — bundle %s != current release store %s"
+             % (bundle_store[:8], str(boot["store"])[:8]))
     pvc = {int(k): v for k, v in obj.get("pvc", {}).items()}
     return obj, stamp, pvc
 
 
-# ------------------------------------------------------- canonical pick curve stamp-assert (S5 guard)
-def assert_pvc(pvc):
+def _md5_file(path):
+    h = hashlib.md5()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 16), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _read_json(path, what):
+    if not os.path.exists(path):
+        halt("%s missing: %s (HALT-AND-ASK on provenance)" % (what, path))
+    try:
+        return json.load(open(path, encoding="utf-8"))
+    except Exception as e:
+        halt("%s is not parseable JSON: %s (%s)" % (what, path, e))
+
+
+
+def _release_manifest():
+    """Dynamic weekly authority: board, store and round move together after every apply."""
+    boot = _read_json(BOOT, "release manifest (expected_boot)")
+    missing = [k for k in ("board", "store", "as_of_round", "release_version")
+               if boot.get(k) in (None, "")]
+    check("release manifest has current board/store/round/version", not missing,
+          "missing: %s" % (missing or "none"))
+    if missing:
+        halt("release manifest lacks current weekly identity fields: %s" % missing)
+    return boot
+
+
+def _expected_board_short():
+    try:
+        return str(json.load(open(BOOT, encoding="utf-8")).get("board", ""))[:8]
+    except Exception:
+        return "unknown"
+
+
+def _gate_token(curve_doc):
+    """The first whitespace token of a curve file's self-declared 'gate' string is its pathway id
+    (e.g. 'RL_PVC2 (parallel of RL_PVCADOPT) ...' -> 'RL_PVC2'). Absent gate -> None (fails closed later)."""
+    g = str(curve_doc.get("gate", "")).strip()
+    return g.split()[0] if g else None
+
+
+# --------------------------------------------- release-active pick curve: deterministic + fail-closed (S5)
+def load_curve_contract():
+    """Read the EXPLICIT release-metadata contract (ui/release_pick_curve.json) and cross-check it against
+    the ACCEPTED release manifest (data/expected_boot.json, read-only): store + release_version must agree,
+    pin1 must be 3000, adopted_pathway must be KNOWN. Missing / unknown / conflicting -> HALT. This is the
+    single deterministic source of the release-active pathway: the config manifest pins RL_PVCADOPT but does
+    NOT carry the RL_PVC2 default-ON kill-switch, so the pathway cannot be read from the config alone."""
+    c = _read_json(CURVE_CONTRACT, "release pick-curve contract")
+    need = ("release_version", "adopted_pathway", "pick_curve_path",
+            "pick_curve_file_md5", "pick_curve_curve_md5", "curve_source_store_md5", "numeraire_pin1")
+    miss = [k for k in need if k not in c]
+    check("release pick-curve contract has all required fields", not miss, "missing: %s" % (miss or "none"))
+    if miss:
+        halt("release pick-curve contract is incomplete (missing %s) — cannot resolve the release-active "
+             "curve (HALT-AND-ASK)" % miss)
+    pathway = c["adopted_pathway"]
+    check("contract adopted_pathway is a known pathway", pathway in KNOWN_PATHWAYS,
+          "%s (known: %s)" % (pathway, sorted(KNOWN_PATHWAYS)))
+    if pathway not in KNOWN_PATHWAYS:
+        halt("UNKNOWN curve-selection: adopted_pathway '%s' is not a known pathway %s — refusing to guess "
+             "(HALT-AND-ASK)" % (pathway, sorted(KNOWN_PATHWAYS)))
+    boot = _release_manifest()
+    rv_ok = str(c["release_version"]) == str(boot.get("release_version"))
+    check("curve contract release_version == current release version", rv_ok,
+          "contract %s vs manifest %s" % (c["release_version"], boot.get("release_version")))
+    if not rv_ok:
+        halt("CONFLICTING curve-selection: contract release_version %s != release %s (HALT-AND-ASK)"
+             % (c["release_version"], boot.get("release_version")))
+    source_store = str(c["curve_source_store_md5"])
+    source_ok = len(source_store) == 32 and all(ch in "0123456789abcdef" for ch in source_store.lower())
+    check("curve contract carries a full immutable source-store identity", source_ok,
+          "curve source store %s" % source_store[:8])
+    if not source_ok:
+        halt("curve_source_store_md5 is not a full md5 identity (HALT-AND-ASK)")
+    pin_ok = int(c["numeraire_pin1"]) == 3000
+    check("contract numeraire pin1 == 3000", pin_ok, "pin1 = %s" % c["numeraire_pin1"])
+    if not pin_ok:
+        halt("contract numeraire pin1 != 3000 — numeraire drift; refusing to resolve a drifted ruler")
+    return c
+
+
+def resolve_release_curve(contract):
+    """Resolve the release-active engine pick curve DETERMINISTICALLY from the contract, cross-checking the
+    curve file's OWN self-declared identity: the filename the pathway must load, full-file md5, curve_md5,
+    gate token, and store binding. Any drift/conflict -> HALT. Returns {'curve': {pick:int}, 'gate','path',...}."""
+    pathway = contract["adopted_pathway"]
+    want_name = KNOWN_PATHWAYS[pathway]
+    got_name = os.path.basename(str(contract["pick_curve_path"]))
+    name_ok = got_name == want_name
+    check("contract pick_curve_path matches the adopted pathway", name_ok,
+          "%s expects %s, contract points at %s" % (pathway, want_name, got_name))
+    if not name_ok:
+        halt("CONFLICTING curve-selection: adopted_pathway %s must load %s but the contract points at %s "
+             "(e.g. L1b supplied while RL_PVC2 is active) — HALT-AND-ASK" % (pathway, want_name, got_name))
+    path = os.path.join(ENGINE_DIR, want_name)
+    doc = _read_json(path, "release-active engine curve %s" % want_name)
+    file_md5 = _md5_file(path)
+    md5_ok = file_md5 == str(contract["pick_curve_file_md5"])
+    check("release-active curve file md5 == contract", md5_ok,
+          "file %s vs contract %s" % (file_md5[:8], str(contract["pick_curve_file_md5"])[:8]))
+    if not md5_ok:
+        halt("CURVE DRIFT: %s md5 %s != contract %s — the engine curve file changed under the contract "
+             "(HALT-AND-ASK)" % (want_name, file_md5[:8], str(contract["pick_curve_file_md5"])[:8]))
+    cmd5_ok = str(doc.get("curve_md5")) == str(contract["pick_curve_curve_md5"])
+    check("release-active curve curve_md5 == contract", cmd5_ok,
+          "curve %s vs contract %s" % (doc.get("curve_md5"), contract["pick_curve_curve_md5"]))
+    if not cmd5_ok:
+        halt("CURVE DRIFT: %s curve_md5 %s != contract %s (HALT-AND-ASK)"
+             % (want_name, doc.get("curve_md5"), contract["pick_curve_curve_md5"]))
+    gate = _gate_token(doc)
+    gate_ok = gate == pathway
+    check("engine curve self-declares gate == adopted pathway", gate_ok,
+          "curve gate '%s' vs pathway '%s'" % (gate, pathway))
+    if not gate_ok:
+        halt("CONFLICTING curve-selection: %s self-declares gate '%s' != adopted pathway '%s' — refusing "
+             "to price on a curve from the wrong pathway (HALT-AND-ASK)" % (want_name, gate, pathway))
+    # If the curve self-declares a store binding it must equal the release store (v2 carries stamp.store_md5;
+    # L1b does not — an ABSENT binding is permitted, a PRESENT-and-WRONG one HALTs).
+    curve_store = str(((doc.get("stamp") or {}).get("store_md5")) or "")
+    if curve_store:
+        cs_ok = curve_store[:8] == str(contract["curve_source_store_md5"])[:8]
+        check("engine curve store binding == release store", cs_ok,
+              "curve %s vs release %s" % (curve_store[:8], str(contract["curve_source_store_md5"])[:8]))
+        if not cs_ok:
+            halt("CONFLICTING curve-selection: %s binds store %s != release store %s (HALT-AND-ASK)"
+                 % (want_name, curve_store[:8], str(contract["curve_source_store_md5"])[:8]))
+    if int(doc.get("pin", 0)) != 3000:
+        halt("release-active curve %s pin != 3000 — numeraire drift (HALT-AND-ASK)" % want_name)
+    eng = {int(k): int(v) for k, v in doc["curve"].items()}
+    return {"curve": eng, "gate": pathway, "path": "engine/rl_after/" + want_name,
+            "file_md5": file_md5, "curve_md5": str(doc.get("curve_md5")), "curve_source_store_md5": str(contract["curve_source_store_md5"])}
+
+
+# ---------------------------------------- board PVC == release-active curve (S5 stamp-assert, corrected)
+def assert_pvc(pvc, resolved):
+    """Cross-check the INSTALLED board's PVC against the release-active curve resolved above: full shared-pick
+    byte equality + pin1 + monotone. A board built on any OTHER pathway (e.g. an L1b / RL_PVC2=0 board while
+    the contract adopts RL_PVC2) fails this equality and HALTs. Same S5 doctrine, on the CORRECT curve."""
     if not pvc:
         halt("no PVC in the board bundle — cannot locate the canonical pick curve (HALT-AND-ASK)")
-    if not os.path.exists(ENGINE_CURVE):
-        halt("engine canonical curve file missing: %s (HALT-AND-ASK on provenance)" % ENGINE_CURVE)
-    doc = json.load(open(ENGINE_CURVE))
-    eng = {int(k): int(v) for k, v in doc["curve"].items()}
+    eng = resolved["curve"]
     shared = [k for k in pvc if k in eng]
     bytematch = bool(shared) and all(pvc[k] == eng[k] for k in shared)
-    check("PVC == engine pvc_curve_L1b.json (over %d shared picks)" % len(shared), bytematch)
+    check("board PVC == release-active %s (%s, over %d shared picks)"
+          % (resolved["path"], resolved["gate"], len(shared)), bytematch)
     if not bytematch:
-        halt("STALE-CURVE GUARD: the board bundle's PVC does not byte-match the engine's adopted "
-             "pvc_curve_L1b.json — provenance ambiguous (the S5 failure).  HALT-AND-ASK.")
+        halt("STALE-CURVE GUARD: the board's PVC does not byte-match the release-active curve %s "
+             "(%s, curve_md5 %s) — provenance ambiguous (the S5 failure). HALT-AND-ASK."
+             % (resolved["path"], resolved["gate"], resolved["curve_md5"]))
     check("PVC numeraire anchor pick1 == 3000", pvc.get(1) == 3000, "pick1 = %s" % pvc.get(1))
     if pvc.get(1) != 3000:
         halt("PVC pick1 != 3000 — numeraire drift; refusing to price picks against a drifted ruler")
@@ -380,10 +567,14 @@ DISPLAY = {
 }
 
 
-def main():
+def run():
     obj, stamp, pvc = load_board()
     players = obj.get("players", [])
-    pvc = assert_pvc(pvc)
+    # Curve provenance: resolve the release-active pick curve from the explicit contract (deterministic,
+    # fail-closed) BEFORE cross-checking the board PVC against it. Replaces the stale hardcoded L1b rule.
+    contract = load_curve_contract()
+    resolved = resolve_release_curve(contract)
+    pvc = assert_pvc(pvc, resolved)
 
     board_by_nkey = collections.defaultdict(list)
     for p in players:
@@ -403,8 +594,13 @@ def main():
     payload = {
         "stamp": {
             "board": stamp.get("board"), "engine": stamp.get("engine"), "store": stamp.get("store"),
-            "tag": stamp.get("tag"), "expectedBoard": EXPECTED_BOARD, "baseYear": BASE_YEAR,
-            "pvcSource": "engine/rl_after/pvc_curve_L1b.json (adopted; == rl_app_data PVC; pick1=3000)",
+            "tag": stamp.get("tag"), "expectedBoard": _expected_board_short(), "baseYear": BASE_YEAR,
+            "releaseVersion": contract.get("release_version"), "asOfRound": stamp.get("asOfRound"),
+            # Provenance of the release-active pick curve, resolved (never hardcoded) from the contract.
+            "pvcSource": "%s (%s composed pathway; adopted %s; == rl_app_data PVC; pick1=3000)"
+                         % (resolved["path"], resolved["gate"], contract.get("release_version")),
+            "pvcPathway": resolved["gate"], "pvcCurveMd5": resolved["curve_md5"],
+            "pvcCurveFileMd5": resolved["file_md5"], "releaseCurveContract": "ui/release_pick_curve.json",
             "pvcOk": True, "discount2027": PICK_FUTURE_DISCOUNT, "mult2027": 1.0 - PICK_FUTURE_DISCOUNT,
             "posture": "balanced (canonical; the only posture in this build)",
             "nPicks": len(picks), "nClubs": len(clubs), "generated": _now(),
@@ -421,13 +617,21 @@ def main():
     }
     _write(payload)
     _print_verdicts()
-    print("\n  CLEAN INGEST — %d picks priced, %d clubs.  Bundle: ui/data/club_valuation.js" %
-          (len(picks), len(clubs)))
+    print("\n  CLEAN INGEST — %d picks priced off %s (%s), %d clubs.  Bundle: ui/data/club_valuation.js"
+          % (len(picks), resolved["path"], resolved["gate"], len(clubs)))
     print("\n  TOP-3 CLUBS BY OVERALL VALUE:")
     for c in clubs[:3]:
         print("    %-18s overall %s  (players %s + picks %s)" %
               (c["display"], f"{c['overall']:,}", f"{c['totalPlayer']:,}", f"{c['totalPicks']:,}"))
     return 0
+
+
+def main():
+    try:
+        return run()
+    except HaltError as e:
+        _emit_halt(e.reason)
+        return 2
 
 
 if __name__ == "__main__":

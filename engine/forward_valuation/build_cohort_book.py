@@ -3,10 +3,22 @@ year by year (engine value() as-of each season via BASE_REF), plus a current-dis
 non-play empirical analysis. Run from rl_after:  PYTHONHASHSEED=0 python3 ../forward_valuation/build_cohort_book.py"""
 import os,sys,io,contextlib
 os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
-sys.path.insert(0,'/home/claude/rl_after')
+# provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after + the ambient
+# /home/claude/rl_workspace/forward_valuation/distribution_pricing.py path are REMOVED. rl_model resolves
+# through the configured environment; distribution_pricing loads from the canonically-resolved forward_valuation
+# (explicit RL_FV, else the RL_REPO checkout) — never an ambient workspace copy (fail-closed provenance).
+if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+    _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+    if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
 with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 import importlib.util,numpy as np
-spec=importlib.util.spec_from_file_location('dp','/home/claude/rl_workspace/forward_valuation/distribution_pricing.py')
+# CANONICAL FV SELECTION (fail-closed): the ONE resolver fv_provenance.resolve_fv (same as Guard 5; C2).
+try:
+    import fv_provenance as _FVP
+except Exception as _e:
+    raise SystemExit("build_cohort_book: the canonical resolver fv_provenance is not importable (%r) — cannot "
+                     "select the forward_valuation source (fail-closed; fv-provenance remediation)." % _e)
+spec=importlib.util.spec_from_file_location('dp',os.path.join(_FVP.resolve_fv(),'distribution_pricing.py'))
 dp=importlib.util.module_from_spec(spec)
 with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(dp)
 from openpyxl import Workbook

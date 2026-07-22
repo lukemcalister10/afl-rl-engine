@@ -1,0 +1,273 @@
+{
+ "_doc": "Job 4(a): national_draft_last_pick.json vs store MAX National ordinal per year. The file DECLARES basis = store MAX (database ND end). This verifies that claim row by row.",
+ "basis_declared_by_file": "store MAX National ordinal (database ND end); owner data law 2026-07-11",
+ "rows": [
+  {
+   "year": 2003,
+   "file_last_national_pick": 61,
+   "store_national_MAX": 61,
+   "store_national_COUNT": 61,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2004,
+   "file_last_national_pick": 63,
+   "store_national_MAX": 63,
+   "store_national_COUNT": 63,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2005,
+   "file_last_national_pick": 62,
+   "store_national_MAX": 62,
+   "store_national_COUNT": 62,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2006,
+   "file_last_national_pick": 77,
+   "store_national_MAX": 77,
+   "store_national_COUNT": 77,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2007,
+   "file_last_national_pick": 64,
+   "store_national_MAX": 64,
+   "store_national_COUNT": 64,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2008,
+   "file_last_national_pick": 76,
+   "store_national_MAX": 76,
+   "store_national_COUNT": 76,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2009,
+   "file_last_national_pick": 68,
+   "store_national_MAX": 68,
+   "store_national_COUNT": 68,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2010,
+   "file_last_national_pick": 93,
+   "store_national_MAX": 93,
+   "store_national_COUNT": 77,
+   "n_gaps": 16,
+   "gaps": [
+    4,
+    13,
+    18,
+    21,
+    31,
+    32,
+    39,
+    51,
+    58,
+    59,
+    61,
+    68,
+    69,
+    81,
+    87,
+    92
+   ],
+   "file_eq_store_max": true,
+   "file_eq_store_count": false
+  },
+  {
+   "year": 2011,
+   "file_last_national_pick": 89,
+   "store_national_MAX": 89,
+   "store_national_COUNT": 80,
+   "n_gaps": 9,
+   "gaps": [
+    12,
+    35,
+    39,
+    50,
+    55,
+    62,
+    67,
+    84,
+    87
+   ],
+   "file_eq_store_max": true,
+   "file_eq_store_count": false
+  },
+  {
+   "year": 2012,
+   "file_last_national_pick": 69,
+   "store_national_MAX": 69,
+   "store_national_COUNT": 69,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2013,
+   "file_last_national_pick": 61,
+   "store_national_MAX": 61,
+   "store_national_COUNT": 61,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2014,
+   "file_last_national_pick": 76,
+   "store_national_MAX": 76,
+   "store_national_COUNT": 76,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2015,
+   "file_last_national_pick": 67,
+   "store_national_MAX": 67,
+   "store_national_COUNT": 67,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2016,
+   "file_last_national_pick": 76,
+   "store_national_MAX": 76,
+   "store_national_COUNT": 76,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2017,
+   "file_last_national_pick": 75,
+   "store_national_MAX": 75,
+   "store_national_COUNT": 75,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2018,
+   "file_last_national_pick": 78,
+   "store_national_MAX": 78,
+   "store_national_COUNT": 78,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2019,
+   "file_last_national_pick": 65,
+   "store_national_MAX": 65,
+   "store_national_COUNT": 64,
+   "n_gaps": 1,
+   "gaps": [
+    35
+   ],
+   "file_eq_store_max": true,
+   "file_eq_store_count": false
+  },
+  {
+   "year": 2020,
+   "file_last_national_pick": 61,
+   "store_national_MAX": 61,
+   "store_national_COUNT": 61,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2021,
+   "file_last_national_pick": 64,
+   "store_national_MAX": 64,
+   "store_national_COUNT": 64,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2022,
+   "file_last_national_pick": 58,
+   "store_national_MAX": 58,
+   "store_national_COUNT": 58,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2023,
+   "file_last_national_pick": 64,
+   "store_national_MAX": 64,
+   "store_national_COUNT": 64,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2024,
+   "file_last_national_pick": 71,
+   "store_national_MAX": 71,
+   "store_national_COUNT": 71,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  },
+  {
+   "year": 2025,
+   "file_last_national_pick": 58,
+   "store_national_MAX": 58,
+   "store_national_COUNT": 58,
+   "n_gaps": 0,
+   "gaps": [],
+   "file_eq_store_max": true,
+   "file_eq_store_count": true
+  }
+ ],
+ "n_years": 23,
+ "n_mismatch_vs_store_max": 0,
+ "mismatch_years": [],
+ "years_with_gaps": [
+  2010,
+  2011,
+  2019
+ ]
+}

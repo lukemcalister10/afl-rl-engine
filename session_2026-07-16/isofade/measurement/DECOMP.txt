@@ -1,0 +1,51 @@
+GLOBAL raw_ev byte-identity: 2652/2652 identical; production MOVED on 0 rows
+
+=== 37-ROW DECOMPOSITION (young above-projection trims) — 37 rows ===
+player                pos     pk rawev==  iso_off   iso_on   isoR   off    on   numR  HALT?
+Aaron Cadman          KEY_FWD  1     YES   1.1610   1.0129  0.872  3356  2929  0.873     ok
+Connor MacDonald      GEN_FWD 26     YES   1.0661   1.0001  0.938  2624  2462  0.938     ok
+Errol Gulden          MID     34     YES   1.0253   1.0001  0.975  6076  5926  0.975     ok
+Murphy Reid           GEN_FWD 17     YES   1.0379   1.0015  0.965  4136  3991  0.965     ok
+Josh Rachele          GEN_FWD  6     YES   1.0567   1.0002  0.947  2243  2123  0.947     ok
+Harry Sheezel         MID      3     YES   1.0114   1.0002  0.989  8096  8006  0.989     ok
+Jake Bowey            GEN_DEF 22     YES   1.0238   1.0000  0.977  3605  3521  0.977     ok
+Paul Curtis           GEN_FWD 35     YES   1.0578   1.0001  0.945  1517  1435  0.946     ok
+Harvey Thomas         GEN_FWD 59     YES   1.0298   0.9990  0.970  2383  2312  0.970     ok
+Jake Soligo           MID     36     YES   1.0340   1.0001  0.967  2079  2011  0.967     ok
+Finn Callaghan        MID      3     YES   1.0114   1.0002  0.989  5727  5663  0.989     ok
+Jase Burgoyne         GEN_DEF 60     YES   1.0300   0.9998  0.971  2156  2092  0.970     ok
+Connor Idun           GEN_DEF 61     YES   1.0300   1.0000  0.971  2134  2071  0.970     ok
+Reuben Ginbey         KEY_DEF  9     YES   1.0221   1.0002  0.979  2873  2812  0.979     ok
+Lawson Humphries      GEN_DEF 63     YES   1.0320   0.9997  0.969  1868  1809  0.968     ok
+Ryley Sanders         MID      6     YES   1.0149   1.0004  0.986  4010  3953  0.986     ok
+Seth Campbell         GEN_FWD 62     YES   1.0579   0.9990  0.944  1013   957  0.945     ok
+Marcus Windhager      MID     47     YES   1.0319   1.0001  0.969  1816  1760  0.969     ok
+Archie Roberts        GEN_DEF 54     YES   1.0104   0.9995  0.989  5117  5062  0.989     ok
+Matthew Roberts       GEN_DEF 34     YES   1.0244   0.9997  0.976  1945  1898  0.976     ok
+Keidean Coleman       GEN_DEF 37     YES   1.0532   0.9999  0.949   932   885  0.950     ok
+Bailey Smith          MID      7     YES   1.0064   1.0000  0.994  5743  5706  0.994     ok
+Jagga Smith           MID      3     YES   1.0114   1.0029  0.992  3437  3408  0.992     ok
+Logan Morris          KEY_FWD 31     YES   1.0056   1.0003  0.995  3272  3254  0.994     ok
+Hayden Young          MID      7     YES   1.0064   1.0003  0.994  2650  2634  0.994     ok
+Milan Murdock         GEN_FWD 92     YES   0.9947   0.9751  0.980   811   796  0.982     ok
+Miles Bergman         GEN_DEF 14     YES   1.0155   1.0000  0.985   808   795  0.984     ok
+Hugo Garcia           MID     50     YES   1.0056   1.0008  0.995  2610  2598  0.995     ok
+Mitch Georgiades      KEY_FWD 18     YES   1.0068   1.0000  0.993  1413  1403  0.993     ok
+Shannon Neale         KEY_FWD 35     YES   1.0043   1.0002  0.996  2418  2409  0.996     ok
+Sam Davidson          GEN_FWD 51     YES   1.0320   1.0028  0.972   121   117  0.967     ok
+Billy Wilson          GEN_DEF 34     YES   1.0244   0.9971  0.973   276   272  0.986     ok
+Bailey J. Williams    RUC     35     YES   1.0000   0.9992  0.999  2134  2132  0.999     ok
+Kye Annand            KEY_DEF 90     YES   0.9747   0.9691  0.994   189   188  0.995     ok
+Max Hall              GEN_FWD 90     YES   0.9947   0.9944  1.000  2139  2138  1.000     ok
+Lewis Hayes           KEY_DEF 25     YES   1.0446   1.0082  0.965   360   359  0.997     ok
+Jai Serong            GEN_DEF 53     YES   1.0072   0.9987  0.992   116   115  0.991     ok
+
+VERDICT: 37 rows | production byte-identical on 37/37 | PASS — every delta is 100%% pick channel (raw_ev frozen)
+among production-frozen rows: median |numR - isoR| = 0.0002 (0 => value ratio IS the iso ratio; >0 => an iso-independent additive downstream layer, still not production)
+largest numR-vs-isoR gaps (inspect for a downstream additive layer, NOT production):
+  Lewis Hayes             numR 0.997 isoR 0.965 pos KEY_DEF pk 25 (raw_ev frozen: True)
+  Billy Wilson            numR 0.986 isoR 0.973 pos GEN_DEF pk 34 (raw_ev frozen: True)
+  Sam Davidson            numR 0.967 isoR 0.972 pos GEN_FWD pk 51 (raw_ev frozen: True)
+  Milan Murdock           numR 0.982 isoR 0.980 pos GEN_FWD pk 92 (raw_ev frozen: True)
+  Miles Bergman           numR 0.984 isoR 0.985 pos GEN_DEF pk 14 (raw_ev frozen: True)
+  Paul Curtis             numR 0.946 isoR 0.945 pos GEN_FWD pk 35 (raw_ev frozen: True)

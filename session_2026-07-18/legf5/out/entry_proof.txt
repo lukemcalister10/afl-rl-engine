@@ -1,0 +1,17 @@
+LEG F5 ENTRY PROOF (single-thread OPENBLAS/OMP/MKL/NUMEXPR=1)
+F4 exit ls-remote = a9570cb5d567300cc1969328018035e700f88963  STRICT (matched)
+Build tree = repo engine/rl_after @ a9570cb5 -> F5 workspace /home/claude/rl_ws_legf5/rl_after
+  store  rl_model_data.json  = 968de0c7   (== F4 anchor)
+  curve  pvc_curve_v2.json   = 56dd7a7b   (file) / payload self-stamp 89c14729   (== F4 anchor)
+F4 SEALS present + unmoved (F3/F4 cures are the floor):
+  r_pop  sha256_8 = c62b5ee8      s(age) sha256_8 = efe97ee3   (sealed_rate_pop.json @ a9570cb5)
+DETERMINISM (this container instance):
+  RL_LEGF=0 warm builds byte-identical, stable balanced md5 = 83a4b21d, Sum v = 750159
+  Filed 06d8af60 NOT byte-reproduced on this instance (container weather; F1 discriminator doctrine, item 347)
+  Weather lives ENTIRELY in the unedited F4 base: panel 9/10 within +/-3, Sheezel -95 (a container delta,
+  present BEFORE any F5 edit; rl_export.py byte-identical to a9570cb5 at entry)
+F5 INVARIANT (proved as a byte-exact DIFF vs the F4 base in THIS container -- established at EXIT):
+  RL_LEGF=0 chain: edited rl_export.py == original F4 rl_export.py  (balanced/Leg-E byte-exact)
+  k=0 phantom = NONE: RL_LEGF=1 balanced v == RL_LEGF=0 v, 0/804 diffs
+GATE INPUTS (F2 bridge_totals @ a9570cb5, realized league totals):
+  minus2 2024 = 770987   minus1 2025 = 771152   now 2026 = 752427   (~flat)

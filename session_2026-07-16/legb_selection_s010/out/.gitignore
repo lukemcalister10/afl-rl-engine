@@ -1,0 +1,5 @@
+# transient run scaffolding only; measurement deliverables + guard-verdict logs are tracked
+*.err
+PT_*.json
+gc_default.err
+gc_OFF.err

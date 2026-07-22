@@ -1,0 +1,16 @@
+{
+  "_doc": "Fixed release pick-curve provenance. The adopted curve remains the ruler across weekly score updates. Current board/store/round identity is read fail-closed from expected_boot and the stamped board bundle.",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "adopted_at_round": 14,
+  "adopted_pathway": "RL_PVC2",
+  "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
+  "pick_curve_file_md5": "56dd7a7bca4306d9224aec0ef52efa32",
+  "pick_curve_curve_md5": "89c14729",
+  "curve_source_store_md5": "968de0c7a0183ca3914165536f39607a",
+  "numeraire_pin1": 3000,
+  "supersedes": {
+    "pathway": "RL_PVCADOPT",
+    "pick_curve_path": "engine/rl_after/pvc_curve_L1b.json",
+    "note": "RL_PVC2 supersedes the prior L1b curve; stale-L1b overlays fail closed."
+  }
+}

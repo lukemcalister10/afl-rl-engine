@@ -9,13 +9,30 @@ Run: cd /home/claude/rl_after && PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL
      python3 ../forward_valuation/par_redesign.py
 """
 import sys,os,io,contextlib,copy,collections,numpy as np
-sys.path.insert(0,'/home/claude/rl_after'); sys.path.insert(0,'/home/claude/rl_workspace/forward_valuation')
+# rl_model resolves through the CONFIGURED engine/build environment (the canonical entry points put the
+# checked-out/verified engine/rl_after on PYTHONPATH), NOT a hardcoded /home/claude workspace path. If it is
+# not already importable, fall back to the EXPLICIT checkout (RL_REPO); never to an ambient workspace copy
+# (fail-closed provenance; fv-provenance remediation 2026-07-20).
+if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+    _rl_ra=os.path.join(os.environ['RL_REPO'],'engine','rl_after')
+    if os.path.isdir(_rl_ra): sys.path.insert(0,_rl_ra)
 import importlib.util
 def _L(n,p):
     s=importlib.util.spec_from_file_location(n,p); m=importlib.util.module_from_spec(s)
     with contextlib.redirect_stdout(io.StringIO()): s.loader.exec_module(m)
     return m
-_FV=os.environ.get('RL_FV','/home/claude/rl_workspace/forward_valuation')   # D10: parameterized (D8 mixed-pair root cause); default byte-identical
+# CANONICAL FV SELECTION (fail-closed): the ONE resolver fv_provenance.resolve_fv (same as Guard 5 and
+# wire_redesign — the loader and the guard cannot resolve differently; corrective C2).
+try:
+    import fv_provenance as _FVP
+except Exception as _e:
+    raise SystemExit("par_redesign: the canonical resolver fv_provenance is not importable (%r) — cannot "
+                     "select the forward_valuation source (fail-closed; fv-provenance remediation)." % _e)
+_FV=_FVP.resolve_fv()
+# FV-sibling bare imports (par_build's `import conditional_prior`) resolve from the SAME canonically-resolved
+# _FV — replacing the removed ambient `/home/claude/rl_workspace/forward_valuation` insert with the verified
+# checkout FV so no bare FV import can fall through to a stale workspace copy.
+if _FV not in sys.path: sys.path.insert(0,_FV)
 rd=_L('rd',os.path.join(_FV,'dist_redesign.py')); cp=rd.cp; dp=rd.dp; MA=cp.MA
 pb=_L('pb',os.path.join(_FV,'par_build.py')); F=pb.fit()
 with contextlib.redirect_stdout(io.StringIO()): import compute

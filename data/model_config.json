@@ -1,11 +1,11 @@
 {
-  "_doc": "MODEL CONFIG MANIFEST \u2014 the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
+  "_doc": "MODEL CONFIG MANIFEST — the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
   "version": "1.0",
   "date": "2026-07-09",
-  "baked_state": "BAKED v2.9 (engine 2030e5df / board 3dc19fbb / store 340a7a32)",
-  "config_sha256": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b",
+  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) — RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
+  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
   "excluded_infrastructure_vars": {
-    "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
+    "_note": "NOT model semantics — path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
     "RL_REPO": "checkout locator",
     "CLAUDE_PROJECT_DIR": "checkout locator",
     "RL_APP_DATA": "board output filename",
@@ -27,10 +27,8 @@
     "PAR_BW": "0.40",
     "PAR_MING": "6",
     "PAR_K": "30",
-    "RL_EXPO_F": "0.545",
     "RL_EXPO_INPROG_Y": "2026",
     "RL_LEVEL_RAMP": "14",
-    "RL_M3_FE": "0.58",
     "RL_M3_INPROG_Y": "2026",
     "RL_FORMDECL": "1",
     "RL_FWDRECAL": "1",
@@ -63,12 +61,26 @@
     "RL_AGE": "1",
     "RL_L5_PICKLESS": "1",
     "RL_AVAIL": "1",
-    "RL_LTI_RETURN": "1"
+    "RL_LTI_RETURN": "1",
+    "RL_PVC2": "1",
+    "RL_LEGE": "1",
+    "RL_LEGF": "1",
+    "RL_FLEX": "1",
+    "RL_CAPT": "1",
+    "RL_DAMP": "1",
+    "RL_EVW": "1",
+    "RL_ISOFADE": "1",
+    "RL_SAGE29": "1",
+    "RL_LSYM": "1",
+    "RL_EO2": "1",
+    "RL_ABSENCE": "1",
+    "RL_UNCOMP": "1",
+    "RL_UNCONSERVE": "0"
   },
   "var_notes": {
-    "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
+    "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) — inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
     "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
-    "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 \u00a736): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
+    "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 §36): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
     "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c",
     "_v2_9_levers": "RL_PVCADOPT / RL_MSD_POOL_EXCL / RL_DIAL14 / RL_AGE / RL_L5_PICKLESS are the v2.9 refit's five wired kill-switches (engine 7a07e369->2030e5df; REFIT_WIRING_PLAN_OF_RECORD L1/L4/L2/L3/L5). ALL default-ON ('1'); each =0 reverts its layer to base byte-exact (v2_9_refit_cert CERTIFICATION: all-OFF reproduces base). Pinned here at their default-ON value so config_sha256 covers the levers (BOOK-PARITY LAW: the config is part of the formula) and a lever flip moves the hash + is rejected as divergent in bake/gate mode. Manifest values == engine defaults, so pinning them changes NO board/book value (board 3dc19fbb / book d371a27c byte-identical).",
     "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
@@ -77,6 +89,9 @@
     "RL_AGE": "v2.9 L3 s(age) breakout-persistence slope; default ON (engine _merged_recover.py:224).",
     "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
     "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) — model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
-    "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) — model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off."
-  }
+    "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) — model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
+    "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
+    "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars — the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
+  },
+  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
 }

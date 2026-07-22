@@ -1,0 +1,371 @@
+{
+ "_doc": "Job 2 circularity: prior-share by football evidence at the end-of-yr1 derivation window (E_q[1]). The zero-evidence tautology's size = the E_q[1]==0 (pure V0 pole) count. Value-% split awaits item 204.",
+ "pool_sizes": {
+  "all_incurve": 2083,
+  "ND": 1448,
+  "RD": 635
+ },
+ "band_table_all": [
+  {
+   "band": "1-3",
+   "n": 63,
+   "ge90_count": 6,
+   "ge75_count": 21,
+   "ge50_count": 55,
+   "ge90_pct": 9.5,
+   "ge75_pct": 33.3,
+   "ge50_pct": 87.3,
+   "mean_pw1": 0.245,
+   "median_anchor_over_v0": 1.06
+  },
+  {
+   "band": "4-7",
+   "n": 82,
+   "ge90_count": 9,
+   "ge75_count": 41,
+   "ge50_count": 74,
+   "ge90_pct": 11.0,
+   "ge75_pct": 50.0,
+   "ge50_pct": 90.2,
+   "mean_pw1": 0.198,
+   "median_anchor_over_v0": 0.919
+  },
+  {
+   "band": "8-12",
+   "n": 104,
+   "ge90_count": 12,
+   "ge75_count": 66,
+   "ge50_count": 98,
+   "ge90_pct": 11.5,
+   "ge75_pct": 63.5,
+   "ge50_pct": 94.2,
+   "mean_pw1": 0.143,
+   "median_anchor_over_v0": 0.89
+  },
+  {
+   "band": "13-20",
+   "n": 164,
+   "ge90_count": 55,
+   "ge75_count": 129,
+   "ge50_count": 159,
+   "ge90_pct": 33.5,
+   "ge75_pct": 78.7,
+   "ge50_pct": 97.0,
+   "mean_pw1": 0.084,
+   "median_anchor_over_v0": 0.812
+  },
+  {
+   "band": "21-27",
+   "n": 146,
+   "ge90_count": 49,
+   "ge75_count": 115,
+   "ge50_count": 143,
+   "ge90_pct": 33.6,
+   "ge75_pct": 78.8,
+   "ge50_pct": 97.9,
+   "mean_pw1": 0.084,
+   "median_anchor_over_v0": 0.802
+  },
+  {
+   "band": "28-35",
+   "n": 164,
+   "ge90_count": 78,
+   "ge75_count": 142,
+   "ge50_count": 160,
+   "ge90_pct": 47.6,
+   "ge75_pct": 86.6,
+   "ge50_pct": 97.6,
+   "mean_pw1": 0.049,
+   "median_anchor_over_v0": 0.681
+  },
+  {
+   "band": "36-48",
+   "n": 271,
+   "ge90_count": 156,
+   "ge75_count": 232,
+   "ge50_count": 271,
+   "ge90_pct": 57.6,
+   "ge75_pct": 85.6,
+   "ge50_pct": 100.0,
+   "mean_pw1": 0.056,
+   "median_anchor_over_v0": 0.638
+  },
+  {
+   "band": "49-99",
+   "n": 1089,
+   "ge90_count": 728,
+   "ge75_count": 994,
+   "ge50_count": 1080,
+   "ge90_pct": 66.9,
+   "ge75_pct": 91.3,
+   "ge50_pct": 99.2,
+   "mean_pw1": 0.034,
+   "median_anchor_over_v0": 0.549
+  }
+ ],
+ "band_table_ND": [
+  {
+   "band": "1-3",
+   "n": 63,
+   "ge90_count": 6,
+   "ge75_count": 21,
+   "ge50_count": 55,
+   "ge90_pct": 9.5,
+   "ge75_pct": 33.3,
+   "ge50_pct": 87.3,
+   "mean_pw1": 0.245,
+   "median_anchor_over_v0": 1.06
+  },
+  {
+   "band": "4-7",
+   "n": 82,
+   "ge90_count": 9,
+   "ge75_count": 41,
+   "ge50_count": 74,
+   "ge90_pct": 11.0,
+   "ge75_pct": 50.0,
+   "ge50_pct": 90.2,
+   "mean_pw1": 0.198,
+   "median_anchor_over_v0": 0.919
+  },
+  {
+   "band": "8-12",
+   "n": 104,
+   "ge90_count": 12,
+   "ge75_count": 66,
+   "ge50_count": 98,
+   "ge90_pct": 11.5,
+   "ge75_pct": 63.5,
+   "ge50_pct": 94.2,
+   "mean_pw1": 0.143,
+   "median_anchor_over_v0": 0.89
+  },
+  {
+   "band": "13-20",
+   "n": 164,
+   "ge90_count": 55,
+   "ge75_count": 129,
+   "ge50_count": 159,
+   "ge90_pct": 33.5,
+   "ge75_pct": 78.7,
+   "ge50_pct": 97.0,
+   "mean_pw1": 0.084,
+   "median_anchor_over_v0": 0.812
+  },
+  {
+   "band": "21-27",
+   "n": 146,
+   "ge90_count": 49,
+   "ge75_count": 115,
+   "ge50_count": 143,
+   "ge90_pct": 33.6,
+   "ge75_pct": 78.8,
+   "ge50_pct": 97.9,
+   "mean_pw1": 0.084,
+   "median_anchor_over_v0": 0.802
+  },
+  {
+   "band": "28-35",
+   "n": 164,
+   "ge90_count": 78,
+   "ge75_count": 142,
+   "ge50_count": 160,
+   "ge90_pct": 47.6,
+   "ge75_pct": 86.6,
+   "ge50_pct": 97.6,
+   "mean_pw1": 0.049,
+   "median_anchor_over_v0": 0.681
+  },
+  {
+   "band": "36-48",
+   "n": 271,
+   "ge90_count": 156,
+   "ge75_count": 232,
+   "ge50_count": 271,
+   "ge90_pct": 57.6,
+   "ge75_pct": 85.6,
+   "ge50_pct": 100.0,
+   "mean_pw1": 0.056,
+   "median_anchor_over_v0": 0.638
+  },
+  {
+   "band": "49-99",
+   "n": 454,
+   "ge90_count": 282,
+   "ge75_count": 410,
+   "ge50_count": 450,
+   "ge90_pct": 62.1,
+   "ge75_pct": 90.3,
+   "ge50_pct": 99.1,
+   "mean_pw1": 0.038,
+   "median_anchor_over_v0": 0.55
+  }
+ ],
+ "totals_all": {
+  "n": 2083,
+  "ge90_pureV0pole": 1093,
+  "ge75": 1740,
+  "ge50": 2040
+ },
+ "cut_options": {
+  "A_delete_circle_at_entry": {
+   "rule": "Exclude E_q[1]==0 entrants (zero football evidence by end-yr1; anchor == pure V0 pole).",
+   "n_excluded": 1093,
+   "per_band": {
+    "1-3": 6,
+    "4-7": 9,
+    "8-12": 12,
+    "13-20": 55,
+    "21-27": 49,
+    "28-35": 78,
+    "36-48": 156,
+    "49-99": 728
+   },
+   "marginal_names_lowest_pick": [
+    [
+     "Jaeger O'Meara",
+     2011,
+     1,
+     1
+    ],
+    [
+     "Christian Petracca",
+     2014,
+     2,
+     2
+    ],
+    [
+     "Jagga Smith",
+     2024,
+     3,
+     3
+    ],
+    [
+     "Izak Rankine",
+     2018,
+     3,
+     3
+    ],
+    [
+     "Jack Martin",
+     2012,
+     3,
+     3
+    ],
+    [
+     "Xavier Ellis",
+     2005,
+     3,
+     3
+    ],
+    [
+     "Max King",
+     2018,
+     4,
+     4
+    ],
+    [
+     "Jarrod Pickett",
+     2014,
+     5,
+     5
+    ]
+   ]
+  },
+  "B_honest_calibration_end_yr4": {
+   "rule": "Re-anchor at end of career-yr4; keep only entrants with E_q[4]>=2 qualifying seasons (prior faded).",
+   "n_kept": 531,
+   "n_dropped": 1552,
+   "kept_per_band": {
+    "1-3": 54,
+    "4-7": 54,
+    "8-12": 56,
+    "13-20": 69,
+    "21-27": 51,
+    "28-35": 45,
+    "36-48": 54,
+    "49-99": 148
+   },
+   "marginal_near_2qual_bar": [
+    [
+     "Sam Clohesy",
+     2023,
+     67,
+     2.0
+    ],
+    [
+     "Joe Richards",
+     2022,
+     48,
+     2.0
+    ],
+    [
+     "James Jordon",
+     2018,
+     33,
+     2.0
+    ],
+    [
+     "Jack Ross",
+     2018,
+     43,
+     2.0
+    ],
+    [
+     "Jordon Butts",
+     2018,
+     98,
+     2.0
+    ],
+    [
+     "Brandon Starcevich",
+     2017,
+     18,
+     2.0
+    ],
+    [
+     "George Hewett",
+     2013,
+     32,
+     2.0
+    ],
+    [
+     "Darcy Byrne-Jones",
+     2013,
+     50,
+     2.0
+    ],
+    [
+     "James Sicily",
+     2013,
+     52,
+     2.0
+    ],
+    [
+     "Jesse Hogan",
+     2012,
+     5,
+     2.0
+    ],
+    [
+     "Jaeger O'Meara",
+     2011,
+     1,
+     2.0
+    ],
+    [
+     "Alex Johnson",
+     2010,
+     71,
+     2.0
+    ]
+   ]
+  },
+  "C_two_ends": {
+   "rule": "Entry end = pick pricing read directly for the E_q[1]==0 poles (no loop); evidence end = production of the E_q[4]>=2 survivors; PVC = the line between (NOTE item 1).",
+   "entry_pool_n": 1093,
+   "evidence_pool_n": 531
+  }
+ },
+ "caveat": "Exact value-% earned/prior decomposition is NOT yet computable: item-204 export (Leg B) not built. Evidence-at-anchor is the robust proxy; pw[1] and anchor/v0 are supporting, not a fitted split."
+}

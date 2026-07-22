@@ -1,5 +1,4 @@
 # GO-LIVE RUNBOOK — ROUND-SCORE INGESTION
-> **VERSION NOTE (item 369): the "v2.9 bake" reference below is historical — read as THE CURRENT CHAPTER'S bake, now v2.11 (BAKE_RUNBOOK_v2_11). The gating principle is unchanged: go-live is the final switch, thrown on the owner's word AFTER the bake ships.**
 ### Documentation, not activation. This page describes the LATER owner-worded job that turns weekly
 ### ingestion ON. The provision job (this module) ships with the switch OFF and writes nothing.
 

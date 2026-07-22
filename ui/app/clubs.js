@@ -117,7 +117,11 @@ MD.clubs = (function () {
     const tbody = fmt.el("tbody");
     sorted(cv.clubs || []).forEach(function (c, i) { tbody.appendChild(row(c, i + 1)); });
     table.appendChild(tbody);
-    page.appendChild(table);
+    // Wrap the wide sortable table so it scrolls WITHIN its own region on narrow screens — the document
+    // never overflows horizontally (display-only; the table markup + values are unchanged).
+    const tablewrap = fmt.el("div", "tablewrap");
+    tablewrap.appendChild(table);
+    page.appendChild(tablewrap);
 
     const foot = fmt.el("div", "cfoot");
     foot.textContent = "Non-Best-23 = Total Player Value − Best-23 (roster depth beyond the best XXIII). " +

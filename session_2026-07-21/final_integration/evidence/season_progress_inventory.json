@@ -1,0 +1,56 @@
+{
+  "r14_state": {
+    "season_year": 2026,
+    "season_total_rounds": 24,
+    "as_of_round": 14,
+    "calendar_progress": 0.58,
+    "exposure_pace": 0.545,
+    "exposure_derivation": {
+      "eligible_durable_players": 305,
+      "median_current_games": 12,
+      "denominator": 22.0,
+      "raw_ratio": 0.5454545454545454,
+      "released_value": 0.545,
+      "rounding": "round(., 3) then cap 1.0",
+      "scope_denominator": 11.0,
+      "durable_min_prior_games": 18
+    },
+    "source_store_md5": "968de0c7a0183ca3914165536f39607a",
+    "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+    "inprog_year": 2026,
+    "_doc": "AUTHORITATIVE DYNAMIC SEASON STATE. calendar_progress (scheduled-season elapsed) and exposure_pace (empirical durable-sample pace \u2014 NOT calendar) are DISTINCT and both DYNAMIC; the engine reads these values; the derivation policy is immutable (derivation_policy_id)."
+  },
+  "calendar_progression": {
+    "14": 0.58,
+    "15": 0.63,
+    "16": 0.67,
+    "17": 0.71,
+    "18": 0.75,
+    "19": 0.79,
+    "24": 1.0
+  },
+  "exposure_scope_examples": {
+    "3": 0.7272727272727273,
+    "6": 0.4545454545454546,
+    "9": 0.18181818181818177,
+    "11": 0.0,
+    "12": 0.0,
+    "20": 0.0
+  },
+  "engine_wired": true,
+  "policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+  "classification": {
+    "calendar_progress": "A live valuation semantic \u2014 DERIVED, dynamic release state",
+    "exposure_pace": "A live valuation semantic \u2014 DERIVED from the staged store, dynamic",
+    "RL_SEASON_ROUNDS": "B infra (ingestion sanity bound; inert)"
+  },
+  "derivation_policy": {
+    "calendar_formula": "round_half_up(100 * as_of_round / season_total_rounds) / 100",
+    "exposure_formula": "round(median(current_games where prior_games>=18) / 22, 3), cap 1.0",
+    "exposure_scope": "s = clip(1 - current_games / 11, 0, 1); s=0 (untouched) at >= 11 current games",
+    "EXPO_DURABLE_MIN": 18,
+    "EXPO_DEN": 22.0,
+    "EXPO_SCOPE_DEN": 11.0,
+    "EXPO_ROUND": 3
+  }
+}

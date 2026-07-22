@@ -81,7 +81,7 @@ def enforce(mode=None, halt=True):
     verify the manifest hash against the pinned boot identity, and return the canonical config hash.
     Outside bake/gate mode (no RL_CONFIG_MODE and no explicit mode) this is a NO-OP returning None."""
     mode = mode or os.environ.get('RL_CONFIG_MODE')
-    if mode not in ('bake', 'gate'):
+    if mode not in ('bake', 'gate', 'canonical'):   # 'canonical' = the fenced release board build (final integration 2026-07-21)
         return None
     root = repo_root()
     man = load(root)
@@ -111,7 +111,7 @@ def enforce(mode=None, halt=True):
     #      dev-shell red-path proof still RUNS the suite (→ B1 stamped INJECTED, non-zero, non-certifying exit)
     #      instead of dying here. See SHIP_GATES.md §RED-PATH TEST SEAM.
     _env_mode = os.environ.get('RL_CONFIG_MODE')
-    if _env_mode in ('bake', 'gate'):
+    if _env_mode in ('bake', 'gate', 'canonical'):
         for k, v in list(os.environ.items()):
             if k.startswith('SGC_'):
                 rejects.append("UNKNOWN gate-seam override %s=%r must not be set in a real %s run "

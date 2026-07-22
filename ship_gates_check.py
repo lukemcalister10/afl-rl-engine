@@ -75,6 +75,25 @@ os.environ['PYTHONPATH'] = ':'.join(sys.path[:3])          # subprocesses (B4 ex
 os.chdir(RA)
 import numpy as np
 SKIP = set(os.environ.get('SGC_SKIP', '').upper().split(',')) - {''}
+# ---- rev143 HYGIENE RIDER (Leg A 2026-07-16; items 149/151/169) — SGC_* env-LEAKAGE tripwire ----
+# SGC_* are ship_gates RED-PATH PROOF inputs (SGC_SKIP / SGC_B1_MATRIX / SGC_REPORT_DIR). An SGC_* inherited
+# from an orchestrator's environment silently redirected the report auto-write and tripped three builds. Two
+# one-shot fixes: (1) REJECT any UNRECOGNIZED SGC_* here (unhandled leakage HALTs — halt-not-warn); (2) the
+# report write is pinned IN-FENCE below (a leaked/foreign SGC_REPORT_DIR can never write outside the checkout).
+# No gate assertion, threshold or verdict is touched (SHIP_GATES §RED-PATH; the frozen suite 764a0d91 unamended).
+_SGC_OK = {'SGC_SKIP', 'SGC_B1_MATRIX', 'SGC_REPORT_DIR'}
+_sgc_leak = sorted(k for k in os.environ if k.startswith('SGC_') and k not in _SGC_OK)
+if _sgc_leak:
+    sys.exit('!! SHIP-GATES SGC LEAKAGE (rev143 rider): unrecognized SGC_* env %s — not ship_gates red-path '
+             'inputs; unset them (they must never leak in from a build orchestrator).' % _sgc_leak)
+def _subenv(**kw):
+    """rev143 rider (the actual three-build tripwire, items 149/151/169): the GATE-MODE regeneration
+    subprocesses (B1/B3 matrix, B4 export, gate1) must NOT inherit ship_gates' own SGC_* red-path inputs.
+    A leaked SGC_* into a gate-mode child (RL_CONFIG_MODE=gate set below) is rejected by config_manifest's
+    gate-seam scan and the child HALTs (exit 1) — the exact failure that tripped three builds. Strip every
+    SGC_* from the child env; ship_gates' SGC_* stay local to this process (report dir, B1 injection, skips)."""
+    e = {k: v for k, v in os.environ.items() if not k.startswith('SGC_')}
+    e.update(kw); return e
 HEAD = hashlib.md5(open('_merged_recover.py', 'rb').read()).hexdigest()[:8]
 STORE = hashlib.md5(open('rl_model_data.json', 'rb').read()).hexdigest()[:8]
 # ---- BINDING REPORTING RULES (Luke's word, D10 03/07/2026 — see BAKE_CHECKLIST.md §REPORTING) ----
@@ -272,7 +291,7 @@ if not ('B1' in SKIP and 'B3' in SKIP):
         else:
             import tempfile as _tf
             _mfd, CAND_MATRIX = _tf.mkstemp(prefix='s4_cand_', suffix='.json'); os.close(_mfd)
-            _menv = dict(os.environ, S4_MATRIX=CAND_MATRIX, RL_CONFIG_MODE='gate', RL_REPO=ROOT)
+            _menv = _subenv(S4_MATRIX=CAND_MATRIX, RL_CONFIG_MODE='gate', RL_REPO=ROOT)   # rev143: strip SGC_* from the gate-mode child
             _mrun = subprocess.run([sys.executable, 's4_matrix_M1v7.py'], cwd=RA, env=_menv,
                                    capture_output=True, text=True, timeout=1800)
         _meta = json.load(open(CAND_MATRIX)).get('__meta__', {}) if (CAND_MATRIX and os.path.exists(CAND_MATRIX)) else {}
@@ -426,7 +445,7 @@ try:
         import tempfile
         _fd, _cert_path = tempfile.mkstemp(prefix='gate1_cert_', suffix='.json')
         os.close(_fd); os.remove(_cert_path)                       # fresh path; the producer writes it this run
-        _env = dict(os.environ, GATE1_JSON=_cert_path, RL_REPO=ROOT)
+        _env = _subenv(GATE1_JSON=_cert_path, RL_REPO=ROOT)   # rev143: strip SGC_* from the child
         _r = subprocess.run([sys.executable, '_gate1_wf.py'], cwd=RA, env=_env,
                             capture_output=True, text=True, timeout=2400)
         if not os.path.exists(_cert_path):
@@ -535,7 +554,7 @@ try:
         # already sets RL_REPO=ROOT (above). Without it the override file was unresolvable from the workspace and
         # load_overrides() returned a SILENT [] (the S1 root cause): B4 then compared two override-LESS boards and
         # passed BLIND to the override. With the override now ON the shipped board, B4 must build WITH it to agree.
-        _b4env = dict(os.environ, RL_REPO=ROOT, RL_CONFIG_MODE='gate')
+        _b4env = _subenv(RL_REPO=ROOT, RL_CONFIG_MODE='gate')   # rev143: strip SGC_* from the gate-mode child
         r = subprocess.run([sys.executable, 'rl_export.py'], cwd=RA, env=_b4env, capture_output=True, text=True, timeout=1800)
         m_new = hashlib.md5(open(prev, 'rb').read()).hexdigest()[:8] if os.path.exists(prev) else 'MISSING'
         m_ship = hashlib.md5(open(shipped, 'rb').read()).hexdigest()[:8]
@@ -728,7 +747,14 @@ if B1_TABLE:      # the July-8 GATED row (bold) + the DEMOTED indexed SHAPE diag
     print('\nB1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):\n' + B1_TABLE)
 if B5_TABLE:      # Luke's ruling (02/07/2026, committed D7): the FLOOR-SAVES table prints on EVERY board run
     print('\nB5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):\n' + B5_TABLE)
-rep = os.path.join(ROOT, os.environ.get('SGC_REPORT_DIR', 'session_2026-07-02'), f'ship_gates_report_{HEAD}.md')
+_rep_dir = os.environ.get('SGC_REPORT_DIR', 'session_2026-07-02')
+# rev143 rider: keep the report IN-FENCE — a leaked/foreign (absolute or parent-escaping) SGC_REPORT_DIR wrote
+# reports outside the checkout and tripped three builds; resolve under ROOT and assert containment (halt else).
+_rep_abs = os.path.realpath(os.path.join(ROOT, _rep_dir)); _root_abs = os.path.realpath(ROOT)
+if _rep_abs != _root_abs and not _rep_abs.startswith(_root_abs + os.sep):
+    sys.exit('!! SHIP-GATES SGC_REPORT_DIR OUT OF FENCE (rev143 rider): %r resolves to %s, outside the checkout '
+             '%s — the gate report must be written in-fence.' % (_rep_dir, _rep_abs, _root_abs))
+rep = os.path.join(_rep_abs, f'ship_gates_report_{HEAD}.md')
 os.makedirs(os.path.dirname(rep), exist_ok=True)
 def _matcur(key):
     out = {}

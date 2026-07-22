@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "scope": "present board correction only",
+  "active": 804,
+  "present_changed_players": 18,
+  "present_total_delta": 5181,
+  "present_total_before": 755072,
+  "present_total_after": 760253,
+  "phoenix_gothard": {
+    "before": 410,
+    "after": 1852
+  },
+  "forward_lens_rows_changed_incidentally": 9,
+  "forward_lens_status": "not approved or repaired in this candidate; preserved work is on archive/r19-ui-forward-lens-work-2026-07-22",
+  "candidate_board_md5": "6f07f7cbe042f8e56426a01226c967c9",
+  "store_md5": "f37d9716648cfe4382b8c6a24c4f064f"
+}

@@ -1,0 +1,557 @@
+{
+ "_doc": "JOB 1 \u2014 peak-model _V4PVC feature migration snapshot->v2: MEASUREMENT (no engine change). The model pickle was trained on pvc_snapshot; v2 in the logPVC slot is train/serve skew.",
+ "n_active": 745,
+ "n_model_path": 655,
+ "feature_input_logPVC_shift": [
+  {
+   "pick": 1,
+   "snapshot": 3000.0,
+   "v2": 3000.0,
+   "dlog": 0.0
+  },
+  {
+   "pick": 2,
+   "snapshot": 2496.0,
+   "v2": 2779.0,
+   "dlog": 0.1074
+  },
+  {
+   "pick": 3,
+   "snapshot": 2241.0,
+   "v2": 2675.0,
+   "dlog": 0.177
+  },
+  {
+   "pick": 4,
+   "snapshot": 2076.0,
+   "v2": 2481.0,
+   "dlog": 0.1782
+  },
+  {
+   "pick": 5,
+   "snapshot": 1957.0,
+   "v2": 2247.0,
+   "dlog": 0.1382
+  },
+  {
+   "pick": 6,
+   "snapshot": 1864.0,
+   "v2": 1974.0,
+   "dlog": 0.0573
+  },
+  {
+   "pick": 7,
+   "snapshot": 1784.0,
+   "v2": 1822.0,
+   "dlog": 0.0211
+  },
+  {
+   "pick": 8,
+   "snapshot": 1695.0,
+   "v2": 1694.0,
+   "dlog": -0.0006
+  },
+  {
+   "pick": 9,
+   "snapshot": 1593.0,
+   "v2": 1624.0,
+   "dlog": 0.0193
+  },
+  {
+   "pick": 10,
+   "snapshot": 1482.0,
+   "v2": 1604.0,
+   "dlog": 0.0791
+  },
+  {
+   "pick": 11,
+   "snapshot": 1374.0,
+   "v2": 1565.0,
+   "dlog": 0.1302
+  },
+  {
+   "pick": 12,
+   "snapshot": 1266.0,
+   "v2": 1495.0,
+   "dlog": 0.1663
+  },
+  {
+   "pick": 13,
+   "snapshot": 1202.0,
+   "v2": 1396.0,
+   "dlog": 0.1496
+  },
+  {
+   "pick": 14,
+   "snapshot": 1141.0,
+   "v2": 1287.0,
+   "dlog": 0.1204
+  },
+  {
+   "pick": 15,
+   "snapshot": 1080.0,
+   "v2": 1204.0,
+   "dlog": 0.1087
+  },
+  {
+   "pick": 16,
+   "snapshot": 1011.0,
+   "v2": 1152.0,
+   "dlog": 0.1306
+  },
+  {
+   "pick": 17,
+   "snapshot": 939.0,
+   "v2": 1116.0,
+   "dlog": 0.1727
+  },
+  {
+   "pick": 18,
+   "snapshot": 871.0,
+   "v2": 1086.0,
+   "dlog": 0.2206
+  },
+  {
+   "pick": 19,
+   "snapshot": 807.0,
+   "v2": 1059.0,
+   "dlog": 0.2718
+  },
+  {
+   "pick": 20,
+   "snapshot": 748.0,
+   "v2": 1034.0,
+   "dlog": 0.3238
+  },
+  {
+   "pick": 21,
+   "snapshot": 698.0,
+   "v2": 1007.0,
+   "dlog": 0.3665
+  },
+  {
+   "pick": 22,
+   "snapshot": 658.0,
+   "v2": 980.0,
+   "dlog": 0.3983
+  },
+  {
+   "pick": 23,
+   "snapshot": 628.0,
+   "v2": 952.0,
+   "dlog": 0.416
+  },
+  {
+   "pick": 24,
+   "snapshot": 627.0,
+   "v2": 925.0,
+   "dlog": 0.3888
+  },
+  {
+   "pick": 25,
+   "snapshot": 625.0,
+   "v2": 900.0,
+   "dlog": 0.3646
+  },
+  {
+   "pick": 26,
+   "snapshot": 624.0,
+   "v2": 877.0,
+   "dlog": 0.3404
+  },
+  {
+   "pick": 27,
+   "snapshot": 622.0,
+   "v2": 857.0,
+   "dlog": 0.3205
+  },
+  {
+   "pick": 28,
+   "snapshot": 621.0,
+   "v2": 839.0,
+   "dlog": 0.3009
+  },
+  {
+   "pick": 29,
+   "snapshot": 619.0,
+   "v2": 824.0,
+   "dlog": 0.2861
+  },
+  {
+   "pick": 30,
+   "snapshot": 618.0,
+   "v2": 811.0,
+   "dlog": 0.2718
+  },
+  {
+   "pick": 31,
+   "snapshot": 616.0,
+   "v2": 798.0,
+   "dlog": 0.2589
+  },
+  {
+   "pick": 32,
+   "snapshot": 615.0,
+   "v2": 785.0,
+   "dlog": 0.2441
+  },
+  {
+   "pick": 33,
+   "snapshot": 602.0,
+   "v2": 772.0,
+   "dlog": 0.2487
+  },
+  {
+   "pick": 34,
+   "snapshot": 589.0,
+   "v2": 759.0,
+   "dlog": 0.2536
+  },
+  {
+   "pick": 35,
+   "snapshot": 576.0,
+   "v2": 745.0,
+   "dlog": 0.2573
+  },
+  {
+   "pick": 36,
+   "snapshot": 564.0,
+   "v2": 731.0,
+   "dlog": 0.2594
+  },
+  {
+   "pick": 37,
+   "snapshot": 557.0,
+   "v2": 717.0,
+   "dlog": 0.2525
+  },
+  {
+   "pick": 38,
+   "snapshot": 546.0,
+   "v2": 703.0,
+   "dlog": 0.2527
+  },
+  {
+   "pick": 39,
+   "snapshot": 535.0,
+   "v2": 690.0,
+   "dlog": 0.2544
+  },
+  {
+   "pick": 40,
+   "snapshot": 525.0,
+   "v2": 677.0,
+   "dlog": 0.2543
+  },
+  {
+   "pick": 41,
+   "snapshot": 514.0,
+   "v2": 664.0,
+   "dlog": 0.2561
+  },
+  {
+   "pick": 42,
+   "snapshot": 502.0,
+   "v2": 653.0,
+   "dlog": 0.263
+  },
+  {
+   "pick": 43,
+   "snapshot": 486.0,
+   "v2": 643.0,
+   "dlog": 0.2799
+  },
+  {
+   "pick": 44,
+   "snapshot": 470.0,
+   "v2": 633.0,
+   "dlog": 0.2977
+  },
+  {
+   "pick": 45,
+   "snapshot": 452.0,
+   "v2": 624.0,
+   "dlog": 0.3225
+  },
+  {
+   "pick": 46,
+   "snapshot": 438.0,
+   "v2": 616.0,
+   "dlog": 0.341
+  },
+  {
+   "pick": 47,
+   "snapshot": 424.0,
+   "v2": 609.0,
+   "dlog": 0.3621
+  },
+  {
+   "pick": 48,
+   "snapshot": 411.0,
+   "v2": 602.0,
+   "dlog": 0.3817
+  },
+  {
+   "pick": 49,
+   "snapshot": 399.0,
+   "v2": 596.0,
+   "dlog": 0.4013
+  },
+  {
+   "pick": 50,
+   "snapshot": 389.0,
+   "v2": 589.0,
+   "dlog": 0.4148
+  },
+  {
+   "pick": 51,
+   "snapshot": 378.0,
+   "v2": 583.0,
+   "dlog": 0.4333
+  },
+  {
+   "pick": 52,
+   "snapshot": 368.0,
+   "v2": 577.0,
+   "dlog": 0.4498
+  },
+  {
+   "pick": 53,
+   "snapshot": 357.0,
+   "v2": 572.0,
+   "dlog": 0.4714
+  },
+  {
+   "pick": 54,
+   "snapshot": 346.0,
+   "v2": 567.0,
+   "dlog": 0.4939
+  },
+  {
+   "pick": 55,
+   "snapshot": 333.0,
+   "v2": 562.0,
+   "dlog": 0.5234
+  },
+  {
+   "pick": 56,
+   "snapshot": 320.0,
+   "v2": 557.0,
+   "dlog": 0.5542
+  },
+  {
+   "pick": 57,
+   "snapshot": 306.0,
+   "v2": 553.0,
+   "dlog": 0.5918
+  },
+  {
+   "pick": 58,
+   "snapshot": 306.0,
+   "v2": 549.0,
+   "dlog": 0.5845
+  },
+  {
+   "pick": 59,
+   "snapshot": 306.0,
+   "v2": 545.0,
+   "dlog": 0.5772
+  },
+  {
+   "pick": 60,
+   "snapshot": 306.0,
+   "v2": 542.0,
+   "dlog": 0.5717
+  },
+  {
+   "pick": 61,
+   "snapshot": 306.0,
+   "v2": 539.0,
+   "dlog": 0.5661
+  },
+  {
+   "pick": 62,
+   "snapshot": 306.0,
+   "v2": 536.0,
+   "dlog": 0.5605
+  },
+  {
+   "pick": 63,
+   "snapshot": 306.0,
+   "v2": 533.0,
+   "dlog": 0.5549
+  },
+  {
+   "pick": 64,
+   "snapshot": 306.0,
+   "v2": 530.0,
+   "dlog": 0.5493
+  },
+  {
+   "pick": 65,
+   "snapshot": 306.0,
+   "v2": 528.0,
+   "dlog": 0.5455
+  },
+  {
+   "pick": 66,
+   "snapshot": 306.0,
+   "v2": 525.0,
+   "dlog": 0.5398
+  },
+  {
+   "pick": 67,
+   "snapshot": 306.0,
+   "v2": 523.0,
+   "dlog": 0.536
+  },
+  {
+   "pick": 68,
+   "snapshot": 306.0,
+   "v2": 520.0,
+   "dlog": 0.5302
+  },
+  {
+   "pick": 69,
+   "snapshot": 306.0,
+   "v2": 518.0,
+   "dlog": 0.5264
+  },
+  {
+   "pick": 70,
+   "snapshot": 306.0,
+   "v2": 516.0,
+   "dlog": 0.5225
+  }
+ ],
+ "peak_est_output_shift": {
+  "n_moved": 600,
+  "max_abs": 9.52,
+  "mean_abs": 1.726,
+  "max_rel_pct": 16.06,
+  "mean_rel_pct": 2.62,
+  "top_movers": [
+   {
+    "player": "Kieren Briggs",
+    "pe_snap": 98.47,
+    "pe_v2": 88.95,
+    "d": -9.52,
+    "d_pct": -9.67,
+    "ep": 34
+   },
+   {
+    "player": "Samson Ryan",
+    "pe_snap": 66.77,
+    "pe_v2": 57.55,
+    "d": -9.226,
+    "d_pct": -13.82,
+    "ep": 42
+   },
+   {
+    "player": "Max Gawn",
+    "pe_snap": 123.36,
+    "pe_v2": 114.71,
+    "d": -8.647,
+    "d_pct": -7.01,
+    "ep": 33
+   },
+   {
+    "player": "Joel Hamling",
+    "pe_snap": 53.47,
+    "pe_v2": 44.88,
+    "d": -8.587,
+    "d_pct": -16.06,
+    "ep": 44
+   },
+   {
+    "player": "Bailey J. Williams",
+    "pe_snap": 94.55,
+    "pe_v2": 86.3,
+    "d": -8.242,
+    "d_pct": -8.72,
+    "ep": 35
+   },
+   {
+    "player": "Maurice Rioli",
+    "pe_snap": 61.0,
+    "pe_v2": 52.86,
+    "d": -8.146,
+    "d_pct": -13.35,
+    "ep": 53
+   },
+   {
+    "player": "Jack Carroll",
+    "pe_snap": 61.92,
+    "pe_v2": 53.94,
+    "d": -7.976,
+    "d_pct": -12.88,
+    "ep": 43
+   },
+   {
+    "player": "Harrison Jones",
+    "pe_snap": 63.61,
+    "pe_v2": 55.7,
+    "d": -7.91,
+    "d_pct": -12.44,
+    "ep": 30
+   },
+   {
+    "player": "Harry Sharp",
+    "pe_snap": 62.48,
+    "pe_v2": 54.62,
+    "d": -7.869,
+    "d_pct": -12.59,
+    "ep": 45
+   },
+   {
+    "player": "Tom Doedee",
+    "pe_snap": 64.73,
+    "pe_v2": 72.46,
+    "d": 7.732,
+    "d_pct": 11.94,
+    "ep": 17
+   },
+   {
+    "player": "Brandon Walker",
+    "pe_snap": 66.61,
+    "pe_v2": 59.0,
+    "d": -7.616,
+    "d_pct": -11.43,
+    "ep": 52
+   },
+   {
+    "player": "Zac Taylor",
+    "pe_snap": 63.0,
+    "pe_v2": 55.67,
+    "d": -7.325,
+    "d_pct": -11.63,
+    "ep": 44
+   },
+   {
+    "player": "Jack Ross",
+    "pe_snap": 93.12,
+    "pe_v2": 85.99,
+    "d": -7.131,
+    "d_pct": -7.66,
+    "ep": 43
+   },
+   {
+    "player": "Justin McInerney",
+    "pe_snap": 90.41,
+    "pe_v2": 83.36,
+    "d": -7.045,
+    "d_pct": -7.79,
+    "ep": 44
+   },
+   {
+    "player": "Laitham Vandermeer",
+    "pe_snap": 52.24,
+    "pe_v2": 45.25,
+    "d": -6.995,
+    "d_pct": -13.39,
+    "ep": 37
+   }
+  ]
+ },
+ "verdict": "HOLD \u2014 the v2 feature moves peak_est for model-path players (train/serve skew: the pickle was fit on pvc_snapshot). Per R107.5 + memo-C the consumer HOLDS frozen; the retrain is the POST-BAKE FALLBACK, recorded, not executed here."
+}

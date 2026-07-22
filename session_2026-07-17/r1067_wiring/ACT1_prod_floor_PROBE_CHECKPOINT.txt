@@ -1,0 +1,24 @@
+ACT-1 prod_floor PROBE — CHECKPOINT HALT (R106.7 floor half). site named FROM THE CODE + empirical probe.
+
+SITE. Floor half = v_at_peak's `max(prod, MA.prod_floor(p,lens))` at distribution_pricing.py:269; the year-0
+number is prod_floor's k==0 term at rl_model.py:449 = `posval(cur+capt_prem(cur)-REPL[bnow])*21`, wt=1.0.
+
+ANSWER (a) year-0-scaling: the floor's remaining-season component is NOT season-scaled today — the WHOLE k==0
+present year is charged at full weight vs REPL[bnow] (no SEASON_PROG split). §1b introduces the split.
+ANSWER (b) age: age enters only via pa_=PEAK_AGE[bnow], frac(ag,pa_) and H=clamp((40-a)/3,1,3); the level path
+and horizon are keyed to PRESENT. §1b leaves both untouched — only the k==0 REPL bar splits. (both parked-as-design.)
+
+WIRING PLAN (3 sentences). (1) In rl_model.prod_floor, replace the k==0 posval with the exact pre-val blend
+sp*posval(base-REPL[bnow]) + (1-sp)*posval(base-REPL[lowbar]), lowbar=y0dpp_bar(p) and only when AGE_REF==BASE_REF
+(Now board). (2) Banked component (sp), years-1+ (k>=1), level path and horizon stay exactly as now — nothing else
+changes. (3) RL_FLEX=0 -> y0dpp_bar None -> byte-exact off; endpoint asserts sp=0 (whole year-0 vs low) / sp=1 (no-op).
+
+FENCE VERDICT. IN: rl_model.prod_floor (rl_model.py:441-450). OUT (halt trigger): the SHIPPED board
+(run_panel.sh -> _merged_recover.py::ev()) monkey-patches MA.prod_floor -> _merged_recover.py::_prod_floor_w4
+(:816-828), a DUPLICATE floor loop for PROVEN players (n>=PROVEN_N=4 & W4 ctx) that nets k==0 vs REPL[g] only
+(:826) — NOT §1b-aware. Non-proven players fall back to the base (in-fence) fn; build_cohort_book.py uses the base
+directly. Empirical: McKercher floor does NOT bind (projection 2108 >> floor 480); Jake Lloyd floor BINDS
+(value==floor==20) and he is proven (285 career games) — so a proven floor-binding DPP is exactly the case the
+out-of-fence W4 copy would miss. QUESTION: is base-path wiring sufficient (proven-DPP floor on the shipped board
+reported as a known gap) or does the fence extend to the one parallel edit in _merged_recover.py::_prod_floor_w4?
+Per item 281 I do NOT extend the fence myself — awaiting the owner's paste-back before job 3.

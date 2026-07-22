@@ -1,0 +1,12 @@
+L7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_L1b.json (pick1=3000, 99 picks, monotone, ÷F=1.0524 on players)
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 13 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+FUT-LABEL ASSERTION: PASS — 90 dual rows carry the true primary/alternate on the board
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 510 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+LEG F5 ENTRANT LAYER: RL_LEGF=0 — layer NOT emitted (Leg-E board byte-exact)
+exported active=804 cohort=1976 | mechanisms=7 categories analysed | board stamped src=968de0c7 (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1263, '11-20': 140, '21-30': 1902, '31-45': -173, '46-99': -140}
+CAT_BY_RANGE Open   : {'1-10': 82, '11-20': 7, '21-30': 74, '31-45': -25, '46-99': -7}

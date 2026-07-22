@@ -1,0 +1,8 @@
+=== PER-LENS TOTALS (F4 calibrated board, RL_LEGF=1) ===
+  -2       875732
+  -1       827140
+  now      752427
+  +1       686000
+  +2       635411
+  comp-controlled: forward -8.8% (was -19.6) | backward -9.0%
+  lensConservation spread_vs_now: {'+1': -3.08, '+2': -9.8, '-1': 10.3, '-2': 16.76, 'now': 0.0}

@@ -1,0 +1,47 @@
+# ============================================================================
+# ENV PIN — AFL RL engine build environment (env-pin, 2026-07-19; item 392)
+# ----------------------------------------------------------------------------
+# ROOT FIX for the cross-build board divergence (item 391): np.interp on the live
+# value path diverges >=1e-8 across DIFFERENT numpy WHEELS (a different compile of
+# numpy's compiled_base.c interp routine), amplifying past the ~1e-12 board flip
+# threshold and reordering the board RANK-UNSAFELY on a minority of containers.
+# np.interp does NOT call BLAS, so the amplifier lives in the numpy WHEEL itself.
+# The numpy 2.4.4 wheel also BUNDLES its OpenBLAS (numpy.libs/libscipy_openblas64_
+# -32a4b2a6.so), so hash-pinning the numpy wheel pins BOTH the compiled interp code
+# AND the BLAS in one artifact — the smallest complete pin.
+#
+# numpy below is THE determinism-critical pin. The rest of the compiled scientific
+# stack is pinned for a fully reproducible env (they cost nothing extra to pin).
+#
+# INSTALL (hash-verified, wheel-only — an sdist build would recompile numpy and
+# reintroduce the divergence, so --only-binary forbids it):
+#   pip install --require-hashes --only-binary=:all: -r requirements-lock.txt
+#
+# Platform: CPython 3.12 / manylinux x86_64 (the standard build container). The
+# hashes are for the cp312 manylinux_2_28 x86_64 wheels; a build on any other
+# platform HALTS (no matching hash) rather than silently using a divergent wheel.
+# Regenerate ONLY when the owner deliberately moves the build env (re-run the
+# board reproduction gate against 06d8af60 in the same change).
+# ============================================================================
+
+# --- DETERMINISM-CRITICAL: the np.interp amplifier + bundled OpenBLAS ---
+numpy==2.4.4 \
+    --hash=sha256:81f4a14bee47aec54f883e0cad2d73986640c1590eb9bfaaba7ad17394481e6e
+
+# --- compiled scientific stack (pinned for full env reproducibility) ---
+scipy==1.17.1 \
+    --hash=sha256:02ae3b274fde71c5e92ac4d54bc06c42d80e399fec704383dcd99b301df37458
+scikit-learn==1.8.0 \
+    --hash=sha256:a0bcfe4d0d14aec44921545fd2af2338c7471de9cb701f1da4c9d85906ab847a
+
+# --- scikit-learn runtime deps ---
+joblib==1.5.3 \
+    --hash=sha256:5fc3c5039fc5ca8c0276333a188bbd59d6b7ab37fe6632daa76bc7f9ec18e713
+threadpoolctl==3.6.0 \
+    --hash=sha256:43a0b8fd5a2928500110039e43a5eed8480b918967083ea48dc3ab9f13c4a7fb
+
+# --- spreadsheet I/O (not on the value path; pinned for a complete lock) ---
+openpyxl==3.1.5 \
+    --hash=sha256:5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2
+et-xmlfile==2.0.0 \
+    --hash=sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa

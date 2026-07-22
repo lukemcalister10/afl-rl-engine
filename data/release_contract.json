@@ -1,0 +1,72 @@
+{
+  "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "as_of_round": 19,
+  "switch_posture": {
+    "RL_PVC2": "1",
+    "RL_LEGE": "1",
+    "RL_LEGF": "1"
+  },
+  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+  "identities": {
+    "board": "6f07f7cbe042f8e56426a01226c967c9",
+    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "store": "f37d9716648cfe4382b8c6a24c4f064f",
+    "engine_head": "7c452715dc98ac42723834d08021e9d2",
+    "rl_model": "4f776e073ea50548ebe017cdb2f06368",
+    "fv": "6a9a520fa2f8b4051e889d324d905cff0a37e592232cd5e68f0e0d9bdfeeec35",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "band": "34faa8659cc8f19794f5cb9584fa19b2"
+  },
+  "pvc_provenance": {
+    "adopted_pathway": "RL_PVC2",
+    "curve_file": "pvc_curve_v2.json",
+    "curve_payload_md5": "89c14729",
+    "numeraire_pin1": 3000
+  },
+  "must_be_unset": [
+    "RL_UNCOMP_S",
+    "RL_LSYM_TAB",
+    "RL_V0SURF_REFIT"
+  ],
+  "present_lens_baseline": {
+    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "active": 804,
+    "present_value_total": 757608,
+    "note": "Round 19 owner-authorized D8 present-board correction candidate; forward-lens repair deferred."
+  },
+  "f5_entrant_reconciliation": {
+    "visible_1_64": 64617,
+    "residual_nd_tail": 4649,
+    "residual_mech": 14272,
+    "entrant_layer_pvc": 83538,
+    "seal": "a17aafed",
+    "reconciled": true,
+    "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
+  },
+  "season_metadata": {
+    "season_total_rounds": 24,
+    "as_of_round": 19,
+    "season_prog": 0.79,
+    "season_prog_config_twins": {
+      "RL_M3_FE": "0.58",
+      "RL_EXPO_F": "0.545",
+      "RL_M3_INPROG_Y": "2026",
+      "RL_EXPO_INPROG_Y": "2026"
+    },
+    "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
+    "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
+    "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
+    "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
+    "exposure_pace": 0.727,
+    "calendar_progress": 0.79,
+    "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
+    "season_year": 2026,
+    "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
+    "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
+    "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
+  },
+  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+  "contract_sha256": "f94a432f5176265e381b1734f263eeac9e1fd3fe08b0553b566a65b0e0f8c109"
+}

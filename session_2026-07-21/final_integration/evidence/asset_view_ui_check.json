@@ -1,0 +1,206 @@
+{
+  "ok": true,
+  "fails": 0,
+  "checks": [
+    {
+      "name": "390px · now: all 804 players render (no 60-cap)",
+      "ok": true,
+      "detail": "players=804"
+    },
+    {
+      "name": "390px · now: zero pick rows on the current ladder",
+      "ok": true,
+      "detail": "picks=0"
+    },
+    {
+      "name": "390px · now: last-ranked player present in DOM",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · now: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1: 868 combined rows (804 players + 64 picks)",
+      "ok": true,
+      "detail": "total=868"
+    },
+    {
+      "name": "390px · +1: exactly 64 pick rows",
+      "ok": true,
+      "detail": "picks=64"
+    },
+    {
+      "name": "390px · +1: 804 player rows",
+      "ok": true,
+      "detail": "players=804"
+    },
+    {
+      "name": "390px · +1: single value-descending ranking",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1: global ranks 1..868 contiguous",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1: picks interleaved among players by value (a player ranks above Pick 1)",
+      "ok": true,
+      "detail": "Pick1 rank=56 above=Aaron Cadman"
+    },
+    {
+      "name": "390px · +1: last pick \"2027 Draft Pick 64\" present in DOM",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1: last-ranked asset present (rank 868)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1: residual reconciliation panel present + reconciles",
+      "ok": true,
+      "detail": "panel ok"
+    },
+    {
+      "name": "390px · +1: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +2: 868 combined rows",
+      "ok": true,
+      "detail": "total=868"
+    },
+    {
+      "name": "390px · +2: exactly 64 pick rows",
+      "ok": true,
+      "detail": "picks=64"
+    },
+    {
+      "name": "390px · +2: last pick \"2028 Draft Pick 64\" present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +2: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px · +1 club filter removes anonymous picks",
+      "ok": true,
+      "detail": "picks=0"
+    },
+    {
+      "name": "390px · +1 clearing the filter restores 868 combined rows",
+      "ok": true,
+      "detail": "total=868"
+    },
+    {
+      "name": "1440px · now: all 804 players render (no 60-cap)",
+      "ok": true,
+      "detail": "players=804"
+    },
+    {
+      "name": "1440px · now: zero pick rows on the current ladder",
+      "ok": true,
+      "detail": "picks=0"
+    },
+    {
+      "name": "1440px · now: last-ranked player present in DOM",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · now: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1: 868 combined rows (804 players + 64 picks)",
+      "ok": true,
+      "detail": "total=868"
+    },
+    {
+      "name": "1440px · +1: exactly 64 pick rows",
+      "ok": true,
+      "detail": "picks=64"
+    },
+    {
+      "name": "1440px · +1: 804 player rows",
+      "ok": true,
+      "detail": "players=804"
+    },
+    {
+      "name": "1440px · +1: single value-descending ranking",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1: global ranks 1..868 contiguous",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1: picks interleaved among players by value (a player ranks above Pick 1)",
+      "ok": true,
+      "detail": "Pick1 rank=56 above=Aaron Cadman"
+    },
+    {
+      "name": "1440px · +1: last pick \"2027 Draft Pick 64\" present in DOM",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1: last-ranked asset present (rank 868)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1: residual reconciliation panel present + reconciles",
+      "ok": true,
+      "detail": "panel ok"
+    },
+    {
+      "name": "1440px · +1: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +2: 868 combined rows",
+      "ok": true,
+      "detail": "total=868"
+    },
+    {
+      "name": "1440px · +2: exactly 64 pick rows",
+      "ok": true,
+      "detail": "picks=64"
+    },
+    {
+      "name": "1440px · +2: last pick \"2028 Draft Pick 64\" present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +2: no document overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px · +1 club filter removes anonymous picks",
+      "ok": true,
+      "detail": "picks=0"
+    },
+    {
+      "name": "1440px · +1 clearing the filter restores 868 combined rows",
+      "ok": true,
+      "detail": "total=868"
+    }
+  ]
+}

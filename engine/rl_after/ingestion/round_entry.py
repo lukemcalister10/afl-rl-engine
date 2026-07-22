@@ -1,9 +1,10 @@
 """ROUND-ENTRY TOOL — the owner's weekly `name,score` paste -> resolved rows + stamped snapshot.
 
-DRY-RUN ONLY. This module reads the single source (`rl_model_data.json`) READ-ONLY and writes
-NOTHING to it. The store-write path is ABSENT BY DESIGN — turning ingestion ON is a separate
-owner-worded go-live job (docs/GO_LIVE_round_score_ingestion.md). Snapshots produced here are
-DERIVED artifacts (SSI): read-only, source-stamped, disposable.
+DRY-RUN ONLY at THIS layer. This module reads the single source (`rl_model_data.json`) READ-ONLY
+and writes NOTHING to it. The store-write is a SEPARATE, hard-gated, staged transaction
+(engine/rl_after/ingestion/staged_apply.py) that consumes the stamped snapshot produced here; that
+apply gate ships OFF (score_ingestor.APPLY_DEFAULT=False + env INGEST_SCORE_APPLY unset). Snapshots
+produced here are DERIVED artifacts (SSI): read-only, source-stamped, disposable.
 
 THE LAW (register item 305, owner ground-truth — verbatim):
     Input of record: a FootyWire weekly export, `name, score`, names identical to the DB, CURRENT
@@ -14,6 +15,23 @@ THE LAW (register item 305, owner ground-truth — verbatim):
     clash: any export name that does not cleanly resolve is a FLAGGED RESIDUE LINE for a one-tap
     owner confirm — NEVER a silent drop, NEVER attached to the wrong row, NEVER a new-row
     invention. A scoring player not yet in the DB is residue (ask), never a guess.
+
+SNAPSHOT IDENTITY (2026-07-20 hardening, JOB 2). A snapshot is now a self-verifying transaction
+authorization. It carries, beyond the resolved rows:
+    * source_store_md5_full  — the FULL 32-char md5 of the store it was resolved against (the apply
+                               refuses unless the LIVE store still hashes to this — a stale snapshot
+                               cannot apply to a moved store);
+    * source_store_md5       — the 8-char short md5 (display only; kept for backward compat);
+    * round / season_year    — the (round, season) the triples belong to;
+    * stable player IDs      — the identity of record for each resolved row (never a fuzzy name);
+    * exact scores           — the round score, verbatim;
+    * module identity        — snapshot_schema_version + module_code_md5 + per-file module_identity
+                               (the behaviour-defining code that produced it);
+    * content_hash           — a deterministic md5 over the snapshot's own canonical bytes (with the
+                               content_hash field itself excluded), so any post-hoc edit is detected
+                               before apply.
+Backward compatibility: a v1 snapshot (no schema version / no full md5 / no content hash) still
+loads and shows; the STRONG checks the apply enforces only pass for a v2 snapshot re-stamped here.
 
 SCOPE: identity resolution over the active pool + aggregation into a stamped per-round snapshot.
 No valuation, no board math, no pricing, no store write. The active pool is read live so a
@@ -44,6 +62,10 @@ DEFAULT_SEASON_YEAR = 2026               # live season; == rl_model.py BASE_REF 
 SCORE_DECIMALS = 1                        # FootyWire scores are integers/1dp; snapshot rounds to 1dp
 _NEAR_MATCH_N = 4                         # nearest candidates surfaced on a residue line
 _NEAR_MATCH_CUTOFF = 0.6                  # difflib ratio floor for a "near-match" suggestion
+
+# snapshot schema version: v1 = original (short store md5, no content hash); v2 = strong identity.
+SNAPSHOT_SCHEMA_VERSION = 2
+_CONTENT_HASH_FIELD = 'content_hash'      # excluded from its own hash input
 
 # resolution status codes (this tool's active-pool view)
 RESOLVED   = 'RESOLVED'                   # exactly one ACTIVE exact-name match
@@ -260,14 +282,31 @@ def _to_score(raw, ref):
 
 
 # ---- code / store stamping (SSI) -----------------------------------------------------------
+def _md5_hex(b):
+    return hashlib.md5(b).hexdigest()
+
+
 def _md5_bytes(b):
-    return hashlib.md5(b).hexdigest()[:8]
+    return _md5_hex(b)[:8]
 
 
 def md5_of_file(path):
+    """SHORT (8-char) md5 of a file — display + backward-compatible identity."""
     try:
         with open(path, 'rb') as f:
             return _md5_bytes(f.read())
+    except OSError:
+        return None
+
+
+def md5_of_file_full(path):
+    """FULL (32-char) md5 of a file — the strong store-identity the apply gates on (JOB 2)."""
+    try:
+        h = hashlib.md5()
+        with open(path, 'rb') as f:
+            for chunk in iter(lambda: f.read(1 << 16), b''):
+                h.update(chunk)
+        return h.hexdigest()
     except OSError:
         return None
 
@@ -283,6 +322,13 @@ def module_code_md5():
         except OSError:
             parts.append(b'')
     return _md5_bytes(b"\x00".join(parts))
+
+
+def module_identity():
+    """Per-file behaviour-defining code identity (JOB 2 'module/version identity'): the short md5 of
+    each source that shapes a snapshot, keyed by role. Auditable and stable; a code change here moves
+    module_code_md5 too, so a snapshot produced by different code is visibly a different snapshot."""
+    return {'round_entry': md5_of_file(_THIS_SRC), 'id_resolver': md5_of_file(_RESOLVER_SRC)}
 
 
 # ---- the round entry: resolve a whole body -------------------------------------------------
@@ -312,30 +358,85 @@ class RoundEntry:
         resolved.sort(key=lambda r: r.key or '')
         return resolved, residue
 
-    # -- snapshot (SSI-conformant, deterministic) --------------------------------------------
+    # -- snapshot (SSI-conformant, deterministic, self-verifying) ----------------------------
     def build_snapshot(self, resolved, generated_at, skipped=None):
-        """A DERIVED, read-only, source-stamped snapshot. Deterministic given identical inputs
-        (including `generated_at`, which the caller supplies explicitly)."""
+        """A DERIVED, read-only, source-stamped snapshot carrying STRONG identity (JOB 2).
+
+        Deterministic given identical inputs (including `generated_at`, which the caller supplies
+        explicitly). The snapshot stamps BOTH the short and the full store md5, the module/version
+        identity, and — last — a content_hash over its own canonical bytes so any later edit is
+        caught before an apply touches the store.
+        """
         skipped = skipped or []
         rows = sorted((r.as_dict() for r in resolved), key=lambda d: d['key'] or '')
         skips = sorted((s if isinstance(s, dict) else s.as_dict() for s in skipped),
                        key=lambda d: (d.get('name') or '').lower())
-        return {
+        snap = {
             'kind': 'round_entry_snapshot',
+            'snapshot_schema_version': SNAPSHOT_SCHEMA_VERSION,
             'round': self.round,
             'season_year': self.season_year,
             'generated_at': generated_at,
-            'source_store_md5': md5_of_file(self.store_path),
+            'source_store_md5': md5_of_file(self.store_path),           # short, display
+            'source_store_md5_full': md5_of_file_full(self.store_path),  # full, the strong gate
             'module_code_md5': module_code_md5(),
+            'module_identity': module_identity(),
             'resolved': rows,
             'skipped': skips,
             'counts': {'resolved': len(rows), 'skipped': len(skips), 'residue_open': 0},
         }
+        snap[_CONTENT_HASH_FIELD] = compute_content_hash(snap)
+        return snap
 
 
 def snapshot_bytes(snapshot):
     """Canonical, byte-deterministic serialization of a snapshot (sort_keys, fixed indent, ascii)."""
     return (json.dumps(snapshot, sort_keys=True, indent=2, ensure_ascii=True) + '\n').encode('utf-8')
+
+
+def compute_content_hash(snapshot):
+    """Deterministic md5 over the snapshot's canonical bytes with the content_hash field EXCLUDED.
+
+    The hash is over exactly the fields that carry meaning (identity + rows + counts), serialized
+    canonically, so it is stable across re-serialization and independent of key order. Excluding the
+    content_hash field lets the value be embedded in the same object it authenticates."""
+    body = {k: v for k, v in snapshot.items() if k != _CONTENT_HASH_FIELD}
+    return _md5_hex(snapshot_bytes(body))
+
+
+def load_snapshot(path):
+    """Load a snapshot JSON from disk. Raises OSError/json errors to the caller (loud)."""
+    with open(path) as f:
+        return json.load(f)
+
+
+def verify_snapshot(snapshot):
+    """Verify a snapshot's self-consistency. Returns (ok: bool, reason: str).
+
+    v2 (has content_hash): recompute and compare — any post-hoc edit fails.
+    v1 (no content_hash):  ok=True with reason 'legacy-v1-no-content-hash' (backward compatible; the
+                           STRONG apply path additionally requires v2, so a v1 snapshot cannot silently
+                           apply — the caller decides). A malformed v2 (content_hash present but wrong)
+                           always fails.
+    """
+    if not isinstance(snapshot, dict) or snapshot.get('kind') != 'round_entry_snapshot':
+        return False, 'not a round_entry_snapshot'
+    if _CONTENT_HASH_FIELD not in snapshot:
+        return True, 'legacy-v1-no-content-hash'
+    got = snapshot.get(_CONTENT_HASH_FIELD)
+    want = compute_content_hash(snapshot)
+    if got != want:
+        return False, 'content_hash mismatch (got %s, want %s) — snapshot was edited after stamping' % (
+            (got or '')[:12], want[:12])
+    return True, 'ok'
+
+
+def is_strong(snapshot):
+    """True iff the snapshot carries the v2 strong identity the apply gate requires."""
+    return (isinstance(snapshot, dict)
+            and snapshot.get('snapshot_schema_version', 1) >= 2
+            and bool(snapshot.get('source_store_md5_full'))
+            and _CONTENT_HASH_FIELD in snapshot)
 
 
 # ---- the residue file (human-first; the single edit the owner makes) -----------------------

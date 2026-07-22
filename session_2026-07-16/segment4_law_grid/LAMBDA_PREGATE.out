@@ -1,0 +1,50 @@
+workspace store md5: b1fd0bce  (expect b1fd0bce)
+workspace engine md5: 20822c7b  (v1.2 edited)
+--- rho_axis_v12.py ---
+{
+ "gate": 0.95,
+ "verdict": "HALT",
+ "lambda_v12": 0.8086,
+ "ci_v12": [
+  0.68,
+  0.9678
+ ],
+ "n_v12": 112,
+ "decay_d": 0.5,
+ "ynow": 2026,
+ "xcheck_max_abs": 0.0,
+ "xcheck_n": 112,
+ "reproduced": {
+  "floor10 (v1.1, games>=10)": {
+   "lambda": 0.8957,
+   "ci": [
+    0.7771,
+    1.0085
+   ],
+   "n": 112,
+   "expect": 0.8957,
+   "expect_n": 112
+  },
+  "floor6  (v1.1, games>=6)": {
+   "lambda": 0.9942,
+   "ci": [
+    0.9837,
+    1.0001
+   ],
+   "n": 114,
+   "expect": 0.9942,
+   "expect_n": 114
+  },
+  "v12_gxr (THE LAW: games\u00d7recency d=0.50)": {
+   "lambda": 0.8086,
+   "ci": [
+    0.68,
+    0.9678
+   ],
+   "n": 112,
+   "expect": null,
+   "expect_n": null
+  }
+ },
+ "population": 804
+}

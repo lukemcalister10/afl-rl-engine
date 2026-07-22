@@ -1,0 +1,308 @@
+{
+ "gate": 0.95,
+ "sample_n": 116,
+ "years_back_observed": [
+  0,
+  21
+ ],
+ "proven_pop": {
+  "GEN_FWD": 69,
+  "MID": 93,
+  "KEY_DEF": 42,
+  "GEN_DEF": 86,
+  "KEY_FWD": 39,
+  "RUC": 19
+ },
+ "candidates": [
+  {
+   "kernel": "geom d=0.10",
+   "lambda": 0.9276,
+   "ci": [
+    0.7467,
+    1.1245
+   ],
+   "n": 107,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 1e-21,
+   "sam_darcy": {
+    "rho_num": 17.89,
+    "rho": 3.937
+   },
+   "darcy_moore": {
+    "rho_num": -21.9,
+    "rho": -2.198
+   },
+   "rho_den": {
+    "GEN_FWD": 9.52,
+    "MID": 17.56,
+    "KEY_DEF": 9.96,
+    "GEN_DEF": 13.52,
+    "KEY_FWD": 4.54,
+    "RUC": 12.15
+   }
+  },
+  {
+   "kernel": "geom d=0.15",
+   "lambda": 0.9328,
+   "ci": [
+    0.7495,
+    1.1424
+   ],
+   "n": 107,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 4.99e-18,
+   "sam_darcy": {
+    "rho_num": 18.7,
+    "rho": 3.158
+   },
+   "darcy_moore": {
+    "rho_num": -17.71,
+    "rho": -1.912
+   },
+   "rho_den": {
+    "GEN_FWD": 9.23,
+    "MID": 17.88,
+    "KEY_DEF": 9.26,
+    "GEN_DEF": 13.54,
+    "KEY_FWD": 5.92,
+    "RUC": 13.86
+   }
+  },
+  {
+   "kernel": "geom d=0.20",
+   "lambda": 0.8811,
+   "ci": [
+    0.7475,
+    1.0309
+   ],
+   "n": 108,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 2.1e-15,
+   "sam_darcy": {
+    "rho_num": 19.21,
+    "rho": 3.395
+   },
+   "darcy_moore": {
+    "rho_num": -14.32,
+    "rho": -1.746
+   },
+   "rho_den": {
+    "GEN_FWD": 8.1,
+    "MID": 18.02,
+    "KEY_DEF": 8.2,
+    "GEN_DEF": 13.66,
+    "KEY_FWD": 5.66,
+    "RUC": 12.21
+   }
+  },
+  {
+   "kernel": "geom d=0.25",
+   "lambda": 0.9225,
+   "ci": [
+    0.7824,
+    1.0786
+   ],
+   "n": 111,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 2.27e-13,
+   "sam_darcy": {
+    "rho_num": 19.47,
+    "rho": 2.938
+   },
+   "darcy_moore": {
+    "rho_num": -11.45,
+    "rho": -1.586
+   },
+   "rho_den": {
+    "GEN_FWD": 7.61,
+    "MID": 18.07,
+    "KEY_DEF": 7.22,
+    "GEN_DEF": 12.65,
+    "KEY_FWD": 6.63,
+    "RUC": 11.0
+   }
+  },
+  {
+   "kernel": "gauss h=0.8",
+   "lambda": 0.9326,
+   "ci": [
+    0.7738,
+    1.0791
+   ],
+   "n": 109,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 5.55e-300,
+   "sam_darcy": {
+    "rho_num": 20.15,
+    "rho": 3.835
+   },
+   "darcy_moore": {
+    "rho_num": -17.0,
+    "rho": -2.03
+   },
+   "rho_den": {
+    "GEN_FWD": 8.5,
+    "MID": 17.71,
+    "KEY_DEF": 8.37,
+    "GEN_DEF": 14.01,
+    "KEY_FWD": 5.25,
+    "RUC": 11.41
+   }
+  },
+  {
+   "kernel": "gauss h=1.0",
+   "lambda": 1.0086,
+   "ci": [
+    0.8439,
+    1.2188
+   ],
+   "n": 113,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 2.99e-192,
+   "sam_darcy": {
+    "rho_num": 21.79,
+    "rho": 3.663
+   },
+   "darcy_moore": {
+    "rho_num": -12.03,
+    "rho": -2.136
+   },
+   "rho_den": {
+    "GEN_FWD": 7.71,
+    "MID": 17.51,
+    "KEY_DEF": 5.63,
+    "GEN_DEF": 13.32,
+    "KEY_FWD": 5.95,
+    "RUC": 14.84
+   }
+  },
+  {
+   "kernel": "gauss h=1.3",
+   "lambda": 0.9062,
+   "ci": [
+    0.7982,
+    1.0344
+   ],
+   "n": 113,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 4.7e-114,
+   "sam_darcy": {
+    "rho_num": 22.15,
+    "rho": 3.494
+   },
+   "darcy_moore": {
+    "rho_num": -7.82,
+    "rho": -1.379
+   },
+   "rho_den": {
+    "GEN_FWD": 7.01,
+    "MID": 18.19,
+    "KEY_DEF": 5.67,
+    "GEN_DEF": 12.43,
+    "KEY_FWD": 6.34,
+    "RUC": 18.11
+   }
+  },
+  {
+   "kernel": "soft-shoulder 1.5/0.5",
+   "lambda": 0.8078,
+   "ci": [
+    0.7283,
+    0.9003
+   ],
+   "n": 112,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 1.15e-17,
+   "sam_darcy": {
+    "rho_num": 21.15,
+    "rho": 2.524
+   },
+   "darcy_moore": {
+    "rho_num": -3.52,
+    "rho": -0.81
+   },
+   "rho_den": {
+    "GEN_FWD": 6.19,
+    "MID": 17.99,
+    "KEY_DEF": 4.34,
+    "GEN_DEF": 10.23,
+    "KEY_FWD": 8.38,
+    "RUC": 19.56
+   }
+  },
+  {
+   "kernel": "[anchor] geom d=0.50 (v1.2 law)",
+   "lambda": 0.8086,
+   "ci": [
+    0.68,
+    0.9678
+   ],
+   "n": 112,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": 4.77e-07,
+   "sam_darcy": {
+    "rho_num": 18.56,
+    "rho": 2.342
+   },
+   "darcy_moore": {
+    "rho_num": -1.12,
+    "rho": -0.274
+   },
+   "rho_den": {
+    "GEN_FWD": 5.98,
+    "MID": 18.81,
+    "KEY_DEF": 4.09,
+    "GEN_DEF": 10.34,
+    "KEY_FWD": 7.92,
+    "RUC": 18.71
+   }
+  },
+  {
+   "kernel": "[anchor] floor6 recent-2 (v1.1)",
+   "lambda": 0.9942,
+   "ci": [
+    0.9837,
+    1.0001
+   ],
+   "n": 114,
+   "assert_positive": true,
+   "assert_Lrecency_nonincreasing": true,
+   "strictly_decreasing": true,
+   "min_pergame_weight": null,
+   "sam_darcy": {
+    "rho_num": 21.95,
+    "rho": 3.264
+   },
+   "darcy_moore": {
+    "rho_num": 2.35,
+    "rho": 0.283
+   },
+   "rho_den": {
+    "GEN_FWD": 6.27,
+    "MID": 17.48,
+    "KEY_DEF": 8.3,
+    "GEN_DEF": 12.85,
+    "KEY_FWD": 6.73,
+    "RUC": 15.3
+   }
+  }
+ ]
+}

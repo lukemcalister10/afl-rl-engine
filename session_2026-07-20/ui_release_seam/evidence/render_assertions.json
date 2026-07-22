@@ -1,0 +1,82 @@
+[
+  {
+    "name": "desktop: NO integrity alarm / fail-closed screen",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: version v2.11-rc1 rendered",
+    "ok": true,
+    "detail": "board v2.11-rc1 · engine 904722cd · store 968de0c7 · board i"
+  },
+  {
+    "name": "desktop: board id 06d8af60 rendered",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: normal board renders (player ladder)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: Clubs nav reachable",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: club valuation renders (no HALT)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: held picks render (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: as-of Round 14 rendered (public tier)",
+    "ok": true,
+    "detail": "Round 14 · 2026"
+  },
+  {
+    "name": "mobile: NO integrity alarm / fail-closed screen",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: version v2.11-rc1 rendered",
+    "ok": true,
+    "detail": "board v2.11-rc1 · engine 904722cd · store 968de0c7 · board i"
+  },
+  {
+    "name": "mobile: board id 06d8af60 rendered",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: normal board renders (player ladder)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: Clubs nav reachable",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: club valuation renders (no HALT)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: held picks render (club focused on board)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: as-of Round 14 rendered (public tier)",
+    "ok": true,
+    "detail": "Round 14 · 2026"
+  }
+]

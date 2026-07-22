@@ -1,0 +1,58 @@
+{
+ "basis": "POPULATION (owner-ruled): r_pop(a)=Sum realized_next / Sum v per age-transition over the committed -2/-1/now boards, INCLUDING exiters realized residual (off-board=0, busts full weight R107.3); den-weighted 3pt MA + PAVA non-increasing a>=24 (rule 7). Measured ONCE, sealed, NOT iterated against any backtest.",
+ "law": "MEMO_LEGF v1.3 \u00a72.ix (owner item 359)",
+ "name": "F4_L_SYMMETRY_population_rate",
+ "r_model_undamped": {
+  "18": 0.9899,
+  "20": 0.8377,
+  "22": 0.7841,
+  "24": 0.7969,
+  "26": 0.823,
+  "28": 0.7959,
+  "30": 0.7399,
+  "32": 0.7312,
+  "34": 0.778,
+  "36": 0.8887,
+  "38": 0.9538,
+  "40": 1.0
+ },
+ "r_pop": {
+  "18": 1.0016,
+  "20": 1.0007,
+  "22": 0.9777,
+  "24": 0.9073,
+  "26": 0.7886,
+  "28": 0.7886,
+  "30": 0.7886,
+  "32": 0.7886,
+  "34": 0.7886,
+  "36": 0.7886,
+  "38": 0.6591
+ },
+ "r_pop_sha256_8": "c62b5ee8",
+ "s": {
+  "18": 0.0,
+  "20": 0.0,
+  "22": 0.0,
+  "24": 0.048,
+  "26": 0.5988,
+  "28": 0.6053,
+  "30": 0.5988,
+  "32": 0.426,
+  "34": 1.0,
+  "36": 1.0,
+  "38": 1.0,
+  "40": 1.0
+ },
+ "s_derivation": "s(a) = the geometric-blend coefficient bisected in-process so the DAMPED median(vP1/v) per draft-year age == the sealed r_pop(a) (24-iter bisection; clamped [0,1], no blend amplification). Deterministic solution of the sealed rate constraint (Reid); NOT iterated against any backtest.",
+ "s_sha256_8": "efe97ee3",
+ "stamp": {
+  "board_balanced_md5": "06d8af60",
+  "curve_file_md5": "56dd7a7b",
+  "store_md5": "968de0c7"
+ },
+ "supersedes": {
+  "basis": "survivor-only (v1.2); retained as DIAGNOSTIC report only",
+  "seal": "ef1970db"
+ }
+}

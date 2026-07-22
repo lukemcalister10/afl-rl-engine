@@ -1,0 +1,409 @@
+{
+ "_doc": "item-256 ledgers (positional-rank tie-break) + named rows. prev 9829d01a -> candidate 270a2c5f.",
+ "ledger1_movement": {
+  "n_active_movers": 22,
+  "rows": [
+   {
+    "name": "Flynn Riley",
+    "grp": "RUC",
+    "pk": 90,
+    "v_prev": 412,
+    "v_new": 620,
+    "dv": 208,
+    "rank_prev": 427,
+    "rank_new": 322,
+    "d_rank": -105
+   },
+   {
+    "name": "Caleb May",
+    "grp": "RUC",
+    "pk": 90,
+    "v_prev": 412,
+    "v_new": 620,
+    "dv": 208,
+    "rank_prev": 426,
+    "rank_new": 321,
+    "d_rank": -105
+   },
+   {
+    "name": "Alex Van Wyk",
+    "grp": "RUC",
+    "pk": 90,
+    "v_prev": 412,
+    "v_new": 620,
+    "dv": 208,
+    "rank_prev": 425,
+    "rank_new": 320,
+    "d_rank": -105
+   },
+   {
+    "name": "Max Mapley",
+    "grp": "RUC",
+    "pk": 90,
+    "v_prev": 412,
+    "v_new": 620,
+    "dv": 208,
+    "rank_prev": 428,
+    "rank_new": 323,
+    "d_rank": -105
+   },
+   {
+    "name": "Patrick Carr",
+    "grp": "RUC",
+    "pk": 92,
+    "v_prev": 412,
+    "v_new": 620,
+    "dv": 208,
+    "rank_prev": 429,
+    "rank_new": 324,
+    "d_rank": -105
+   },
+   {
+    "name": "Jaime Uhr-Henry",
+    "grp": "RUC",
+    "pk": 92,
+    "v_prev": 318,
+    "v_new": 480,
+    "dv": 162,
+    "rank_prev": 489,
+    "rank_new": 393,
+    "d_rank": -96
+   },
+   {
+    "name": "Joe Pike",
+    "grp": "RUC",
+    "pk": 82,
+    "v_prev": 318,
+    "v_new": 480,
+    "dv": 162,
+    "rank_prev": 490,
+    "rank_new": 394,
+    "d_rank": -96
+   },
+   {
+    "name": "Aiden Riddle",
+    "grp": "RUC",
+    "pk": 74,
+    "v_prev": 318,
+    "v_new": 480,
+    "dv": 162,
+    "rank_prev": 488,
+    "rank_new": 392,
+    "d_rank": -96
+   },
+   {
+    "name": "Oscar Steene",
+    "grp": "RUC",
+    "pk": 92,
+    "v_prev": 262,
+    "v_new": 344,
+    "dv": 82,
+    "rank_prev": 539,
+    "rank_new": 471,
+    "d_rank": -68
+   },
+   {
+    "name": "Max Heath",
+    "grp": "RUC",
+    "pk": 90,
+    "v_prev": 150,
+    "v_new": 212,
+    "dv": 62,
+    "rank_prev": 624,
+    "rank_new": 581,
+    "d_rank": -43
+   },
+   {
+    "name": "Vigo Visentini",
+    "grp": "RUC",
+    "pk": 70,
+    "v_prev": 271,
+    "v_new": 326,
+    "dv": 55,
+    "rank_prev": 533,
+    "rank_new": 485,
+    "d_rank": -48
+   },
+   {
+    "name": "Logan Smith",
+    "grp": "RUC",
+    "pk": 71,
+    "v_prev": 426,
+    "v_new": 477,
+    "dv": 51,
+    "rank_prev": 416,
+    "rank_new": 396,
+    "d_rank": -20
+   },
+   {
+    "name": "Alex Dodson",
+    "grp": "RUC",
+    "pk": 53,
+    "v_prev": 449,
+    "v_new": 489,
+    "dv": 40,
+    "rank_prev": 403,
+    "rank_new": 383,
+    "d_rank": -20
+   },
+   {
+    "name": "Iliro Smit",
+    "grp": "RUC",
+    "pk": 90,
+    "v_prev": 271,
+    "v_new": 308,
+    "dv": 37,
+    "rank_prev": 532,
+    "rank_new": 497,
+    "d_rank": -35
+   },
+   {
+    "name": "Jacob Molier",
+    "grp": "RUC",
+    "pk": 52,
+    "v_prev": 458,
+    "v_new": 494,
+    "dv": 36,
+    "rank_prev": 396,
+    "rank_new": 379,
+    "d_rank": -17
+   },
+   {
+    "name": "Lachlan Smith",
+    "grp": "RUC",
+    "pk": 47,
+    "v_prev": 697,
+    "v_new": 705,
+    "dv": 8,
+    "rank_prev": 299,
+    "rank_new": 297,
+    "d_rank": -2
+   },
+   {
+    "name": "Nick Madden",
+    "grp": "RUC",
+    "pk": 92,
+    "v_prev": 1490,
+    "v_new": 1495,
+    "dv": 5,
+    "rank_prev": 169,
+    "rank_new": 168,
+    "d_rank": -1
+   },
+   {
+    "name": "Max Knobel",
+    "grp": "RUC",
+    "pk": 42,
+    "v_prev": 487,
+    "v_new": 492,
+    "dv": 5,
+    "rank_prev": 378,
+    "rank_new": 381,
+    "d_rank": 3
+   },
+   {
+    "name": "Will Green",
+    "grp": "RUC",
+    "pk": 16,
+    "v_prev": 649,
+    "v_new": 651,
+    "dv": 2,
+    "rank_prev": 311,
+    "rank_new": 311,
+    "d_rank": 0
+   },
+   {
+    "name": "Toby Conway",
+    "grp": "RUC",
+    "pk": 24,
+    "v_prev": 563,
+    "v_new": 562,
+    "dv": -1,
+    "rank_prev": 346,
+    "rank_new": 352,
+    "d_rank": 6
+   },
+   {
+    "name": "Harry Barnett",
+    "grp": "RUC",
+    "pk": 23,
+    "v_prev": 626,
+    "v_new": 625,
+    "dv": -1,
+    "rank_prev": 317,
+    "rank_new": 317,
+    "d_rank": 0
+   },
+   {
+    "name": "Rhys Stanley",
+    "grp": "RUC",
+    "pk": 47,
+    "v_prev": 36,
+    "v_new": 37,
+    "dv": 1,
+    "rank_prev": 750,
+    "rank_new": 749,
+    "d_rank": -1
+   }
+  ]
+ },
+ "ledger2_value_up_rank_down": {
+  "n": 1,
+  "tie_break": "POSITIONAL rank (grp,name secondary key)",
+  "rows": [
+   {
+    "name": "Max Knobel",
+    "grp": "RUC",
+    "pk": 42,
+    "v_prev": 487,
+    "v_new": 492,
+    "dv": 5,
+    "rank_prev": 378,
+    "rank_new": 381,
+    "d_rank": 3
+   }
+  ]
+ },
+ "named_rows": {
+  "Marcus Bontempelli": {
+   "v_prev": 3897,
+   "v_new": 3897,
+   "dv": 0,
+   "rank_prev": 28,
+   "rank_new": 28
+  },
+  "Harley Reid": {
+   "v_prev": 3348,
+   "v_new": 3348,
+   "dv": 0,
+   "rank_prev": 48,
+   "rank_new": 48
+  },
+  "Ryley Sanders": {
+   "v_prev": 3668,
+   "v_new": 3668,
+   "dv": 0,
+   "rank_prev": 38,
+   "rank_new": 38
+  },
+  "Max Gawn": {
+   "v_prev": 3416,
+   "v_new": 3416,
+   "dv": 0,
+   "rank_prev": 46,
+   "rank_new": 46
+  },
+  "Christian Petracca": {
+   "v_prev": 2955,
+   "v_new": 2955,
+   "dv": 0,
+   "rank_prev": 59,
+   "rank_new": 59
+  },
+  "Harry Sheezel": {
+   "v_prev": 7964,
+   "v_new": 7964,
+   "dv": 0,
+   "rank_prev": 3,
+   "rank_new": 3
+  },
+  "Nick Daicos": {
+   "v_prev": 8017,
+   "v_new": 8017,
+   "dv": 0,
+   "rank_prev": 2,
+   "rank_new": 2
+  }
+ },
+ "two_largest_young_movers": [
+  {
+   "name": "Flynn Riley",
+   "v_prev": 412,
+   "v_new": 620,
+   "dv": 208
+  },
+  {
+   "name": "Caleb May",
+   "v_prev": 412,
+   "v_new": 620,
+   "dv": 208
+  }
+ ],
+ "top10_picks_L1b_to_v2": [
+  {
+   "pick": 1,
+   "L1b": 3000,
+   "v2": 3000,
+   "dv": 0
+  },
+  {
+   "pick": 2,
+   "L1b": 3000,
+   "v2": 2779,
+   "dv": -221
+  },
+  {
+   "pick": 3,
+   "L1b": 2817,
+   "v2": 2675,
+   "dv": -142
+  },
+  {
+   "pick": 4,
+   "L1b": 2732,
+   "v2": 2481,
+   "dv": -251
+  },
+  {
+   "pick": 5,
+   "L1b": 2365,
+   "v2": 2247,
+   "dv": -118
+  },
+  {
+   "pick": 6,
+   "L1b": 1755,
+   "v2": 1974,
+   "dv": 219
+  },
+  {
+   "pick": 7,
+   "L1b": 1739,
+   "v2": 1822,
+   "dv": 83
+  },
+  {
+   "pick": 8,
+   "L1b": 1739,
+   "v2": 1694,
+   "dv": -45
+  },
+  {
+   "pick": 9,
+   "L1b": 1707,
+   "v2": 1624,
+   "dv": -83
+  },
+  {
+   "pick": 10,
+   "L1b": 1657,
+   "v2": 1604,
+   "dv": -53
+  }
+ ],
+ "held_pick_band_mean": {
+  "1-3": 2818,
+  "13-20": 1167,
+  "21-27": 928,
+  "28-35": 792,
+  "36-48": 659,
+  "4-7": 2131,
+  "49-99": 512,
+  "8-12": 1596
+ },
+ "posture_2027_discounts": {
+  "balanced": 0.1,
+  "contender": 0.15,
+  "rebuilder": 0.05
+ }
+}

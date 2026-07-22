@@ -1,0 +1,15 @@
+R106.7 job-1 — TWO OWNER DATA CORRECTIONS (stable-ID edit; SOURCE store; item 296/269)
+base store md5 0efdc5d6... -> corrected 968de0c7...  | net byte delta 0 | rows 2652==2652
+
+ROWS CHANGED: 2 (EXPECT exactly 2)
+
+* Colby McKercher  [afl-player-v1-ec36ae407a5d9b9384e1]
+    eligibilities: 'G-DEF,G-FWD'  ->  'G-DEF,MID'
+
+* Jake Lloyd  [afl-player-v1-797837193a7c4b847d81]
+    eligibilities: 'MID,G-FWD'  ->  'G-DEF,G-FWD'
+
+VALIDATE-OR-HALT (both rows):
+  token vocab hyphenated/comma-joined/no-spaces: OK
+  present_position in collapsed set: McKercher MID in {GEN_DEF,MID}; Jake Lloyd GEN_DEF in {GEN_DEF,GEN_FWD}: OK
+  every OTHER field byte-equal, every OTHER row byte-equal: OK (diff = 2 rows, elig field only)

@@ -1,0 +1,32 @@
+{
+  "_doc": "LEG E posture preset vectors — SEALED per MEMO_LEGE v1.0 §6.2 (SEAL FIRST). These are STRAWMEN at the owner's R104.4 sketch; PROPOSED, ruled by [OWNER] at the movers report. Balanced is the canonical profile and is NEVER tuned (it alone gates/bakes/seals).",
+  "seal_date": "2026-07-18",
+  "base": "a90052add8570c014626196cc2e3e13eece02548",
+  "dial_family": "LENS discount-rate d over the D5 dial (rl_model.py:414); production stream year-k weight = 1/(1+d)**k",
+  "postures": {
+    "balanced": {
+      "prod_discount_d": 0.14,
+      "pick2027_discount": 0.10,
+      "owner_ruled": true,
+      "note": "canonical; d = LENS['bal'] (RL_DIAL14 default). Byte-exact board 06d8af60. NEVER tuned."
+    },
+    "contender": {
+      "prod_discount_d": 0.18,
+      "pick2027_discount": 0.15,
+      "owner_ruled": false,
+      "note": "STRAWMAN. owner sketch 0.14->0.18-0.20 (future discount UP => now/near-term weight UP). sealed at 0.18 (low end). ratified at movers report."
+    },
+    "rebuilder": {
+      "prod_discount_d": 0.10,
+      "pick2027_discount": 0.05,
+      "owner_ruled": false,
+      "note": "STRAWMAN. owner sketch 0.14->~0.10 (future discount DOWN => future weight UP). ratified at movers report."
+    }
+  },
+  "pick2027_discounts_binding": {
+    "source": "acceptance_v1_21.json leg_d_placeholders.posture_2027_discounts (R104.5 + audit #6, BINDING)",
+    "balanced": 0.10, "contender": 0.15, "rebuilder": 0.05,
+    "law": "applied ONCE, final step, per posture; the lens fut dial must not touch a pick asset a second time (composition law, memo §4)"
+  },
+  "horizons": {"balanced_board": 0, "lens": [0, 1, 2], "note": "k=0 reproduces the balanced board byte-exact (LENS-PROJECTION invariant)"}
+}

@@ -1,0 +1,15 @@
+LEG F4 ENTRY PROOF (single-thread OPENBLAS/OMP/MKL/NUMEXPR=1; read-only diagnosis)
+F3 exit ls-remote = bccc23145e154f5b83385ffe8c06a54beab09030  STRICT (matched)
+Build tree = repo engine/rl_after @ bccc231 (F3 self-consistent; workspace bake-pin lacks Leg-B _UNCOMP):
+  store  rl_model_data.json  = 968de0c7  (== F3 anchor)
+  curve  pvc_curve_v2.json   = 56dd7a7b  (== F3 anchor)
+  rl_model.py                = cc626d7d  (== F3 stamp)
+DORMANCY INVARIANT (RL_LEGF=0 vs RL_LEGF=1, RL_LEGE=1 RL_PVC2=1):
+  v    byte-identical 804/804   PASS
+  vM1  byte-identical 804/804   PASS
+  vM2  byte-identical 804/804   PASS
+  vP1  differ 639 rows  (F3 forward cure active, forward-only)  => k=0/backward DORMANT
+RESIDUAL OF RECORD reproduced (faithful, <0.5pt container noise):
+  comp-controlled  fwd -19.6% (rec -19.9)  back -9.1% (rec -9.0)
+  backtest -1->now pred 558568 vs 752427 = -25.8% OUT (F3 filed 556300)
+  gradient  developing -18.2 / mid -18.0 / veteran -24.8  (EXIT -18.5/-18.3/-25.0)

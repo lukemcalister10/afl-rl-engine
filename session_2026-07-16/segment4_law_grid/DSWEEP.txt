@@ -1,0 +1,13 @@
+=== λ_ρ(d) — games×recency, ALL games>0 seasons (the v1.2 law; d=0.5 is THE construction) ===
+  d=0.30 : λ=0.8611 CI=[0.7534,0.9743] n=111 < gate
+  d=0.40 : λ=0.8317 CI=[0.7220,0.9505] n=112 < gate
+  d=0.50 : λ=0.8086 CI=[0.6800,0.9678] n=112 < gate
+  d=0.60 : λ=0.7190 CI=[0.6115,0.8514] n=110 < gate
+  d=0.72 : λ=0.7314 CI=[0.5829,0.9292] n=110 < gate
+=== λ_ρ(d) — games×recency, RECENT-2 games>0 seasons only (horizon-capped) ===
+  d=0.30 cap2 : λ=0.9720 CI=[0.8234,1.1256] n=111 >=gate
+  d=0.50 cap2 : λ=0.9236 CI=[0.8300,1.0002] n=113 < gate
+  d=0.72 cap2 : λ=0.9083 CI=[0.8342,0.9769] n=113 < gate
+=== λ_ρ(d) — games×recency, RECENT-3 games>0 seasons only ===
+  d=0.50 cap3 : λ=0.8230 CI=[0.7364,0.9177] n=112 < gate
+  d=0.72 cap3 : λ=0.8004 CI=[0.6994,0.9229] n=112 < gate

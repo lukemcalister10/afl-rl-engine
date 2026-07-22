@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "n_pass": 12,
+  "n": 12,
+  "scratch_board_md5": "2fe266756da3b7fb98eef38f4602c3b5",
+  "canonical_store_unchanged": true,
+  "checks": [
+    {
+      "check": "scratch board regenerated through Round 15",
+      "pass": true,
+      "detail": "rounds=[14, 15]"
+    },
+    {
+      "check": "regenerated board: exactly 64 visible 2027 picks",
+      "pass": true,
+      "detail": "64"
+    },
+    {
+      "check": "regenerated board: exactly 64 visible 2028 picks",
+      "pass": true,
+      "detail": "64"
+    },
+    {
+      "check": "regenerated board: picks labelled + PVC-valued (2027 Draft Pick 1 == PVC[1] 3000)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "regenerated board: +1 F5 reconciliation exact (64617+4649+14272=83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "regenerated board: +2 F5 reconciliation exact (64617+4649+14272=83538)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "regenerated board: F5 phantomTotals entrant layer still 83538",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "regenerated scratch UI bundle carries the 64-pick ladder (no manual post-processing)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "regenerated board: 804 active rows preserved",
+      "pass": true,
+      "detail": "804"
+    },
+    {
+      "check": "canonical store byte-identical (968de0c7 untouched)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "canonical board byte-identical (2ab73a6f untouched)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "real-store apply gate OFF after the scratch run",
+      "pass": true,
+      "detail": "APPLY_DEFAULT=False INGEST_SCORE_APPLY=None"
+    }
+  ]
+}

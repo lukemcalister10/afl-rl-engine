@@ -1,0 +1,20 @@
+# item-221 production-value-level blend — frozen-estimator grid (RL_UNCOMP inert)
+s=OFF   beta=0.6219 CI=[0.4836,0.7899] width=0.3063 n=116 | pt>=0.85:False CI_1.0:False width<=0.35:True n>=120:False
+s=0.45  beta=0.4891 CI=[0.3962,0.6064] width=0.2102 n=116 | pt>=0.85:False CI_1.0:False width<=0.35:True n>=120:False
+s=0.50  beta=0.4718 CI=[0.3787,0.5730] width=0.1944 n=116 | pt>=0.85:False CI_1.0:False width<=0.35:True n>=120:False
+s=0.55  beta=0.4548 CI=[0.3608,0.5551] width=0.1943 n=116 | pt>=0.85:False CI_1.0:False width<=0.35:True n>=120:False
+s=0.60  beta=0.4374 CI=[0.3433,0.5346] width=0.1913 n=116 | pt>=0.85:False CI_1.0:False width<=0.35:True n>=120:False
+
+# elasticity of each axis vs realised output (proven-27+, n=116)
+beta[ ev (=beta_c)           vs o ] = 0.6219  CI=[0.4836,0.7899]  n=116
+beta[ price6 (production)    vs o ] = 0.6107  CI=[0.4658,0.8030]  n=116
+beta[ level_now (rho axis)   vs o ] = 0.1236  CI=[0.1062,0.1437]  n=116
+
+# V_ref_b (median price6 per pos, value scale)
+=== RL_UNCOMP_L2 DIAGNOSTIC (item 221): s=0.5500 | production-value blend over 347 proven (RL_UNCOMP inert) ===
+    GEN_DEF  L_ref=  78.91 V_ref_b(price6)=    595.1 (n=86)
+    GEN_FWD  L_ref=  67.15 V_ref_b(price6)=    190.5 (n=68)
+    KEY_DEF  L_ref=  66.74 V_ref_b(price6)=    378.5 (n=42)
+    KEY_FWD  L_ref=  65.70 V_ref_b(price6)=    627.9 (n=39)
+    MID      L_ref=  88.89 V_ref_b(price6)=   1475.2 (n=93)
+    RUC      L_ref=  85.56 V_ref_b(price6)=   1491.9 (n=19)

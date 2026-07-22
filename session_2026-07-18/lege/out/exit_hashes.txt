@@ -1,0 +1,6 @@
+LEG E EXIT HASHES — captured this session (7f77973)
+engine: rl_model cc626d7d _merged 6ad07bb2
+RL_LEGE=0 RL_PVC2=1 -> board 06d8af60   expect 06d8af60   PASS
+RL_LEGE=0 RL_PVC2=0 -> board 9829d01a   expect 9829d01a   PASS
+RL_LEGE=1 RL_PVC2=1 -> board d85901af   expect candidate   (candidate)
+store md5 (HARD-OUT): 968de0c7  expect 968de0c7

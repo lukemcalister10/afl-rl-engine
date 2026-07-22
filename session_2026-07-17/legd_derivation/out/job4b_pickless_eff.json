@@ -1,0 +1,100 @@
+{
+ "_doc": "Job 4(b): pickless mechanism pick-equivalents (_eff) \u2014 current values, provenance, flex-sensitivity.",
+ "derivation": "pooled _nv_bwd realised value -> _pick_equiv inverted vs FROZEN v3.4 _natcv34 -> PICKEQ -> _eff; consumed as min(_eff, KMAX=70). rl_model.py:813-843.",
+ "PICKEQ": {
+  "SSP": 92,
+  "MSD": 90,
+  "UNR": 92,
+  "IRE": 92,
+  "PDS": 92,
+  "PDA": 92,
+  "PDN": 92
+ },
+ "mech_stats": {
+  "SSP": {
+   "name": "SSP / pre-season supp.",
+   "n": 31,
+   "played_n": 16,
+   "cutoff": 2022,
+   "hit_rate": 51.6,
+   "pooled_value": 2,
+   "pick_equiv": 92,
+   "mean_career_avg": 65.0,
+   "mean_career_games": 32.5
+  },
+  "MSD": {
+   "name": "Mid-Season",
+   "n": 44,
+   "played_n": 17,
+   "cutoff": 2021,
+   "hit_rate": 38.6,
+   "pooled_value": 2,
+   "pick_equiv": 90,
+   "mean_career_avg": 64.7,
+   "mean_career_games": 25.5
+  },
+  "UNR": {
+   "name": "Unregistered",
+   "n": 46,
+   "played_n": 13,
+   "cutoff": 2021,
+   "hit_rate": 28.3,
+   "pooled_value": 2,
+   "pick_equiv": 92,
+   "mean_career_avg": 66.1,
+   "mean_career_games": 27.9
+  },
+  "IRE": {
+   "name": "Ireland",
+   "n": 48,
+   "played_n": 13,
+   "cutoff": 2021,
+   "hit_rate": 27.1,
+   "pooled_value": 2,
+   "pick_equiv": 92,
+   "mean_career_avg": 68.5,
+   "mean_career_games": 28.3
+  },
+  "PDS": {
+   "name": "Post-draft Scholarship",
+   "n": 21,
+   "played_n": 4,
+   "cutoff": 2021,
+   "hit_rate": 19.0,
+   "pooled_value": 1,
+   "pick_equiv": 92,
+   "mean_career_avg": 64.0,
+   "mean_career_games": 10.1
+  },
+  "PDA": {
+   "name": "Post-draft Academy",
+   "n": 38,
+   "played_n": 10,
+   "cutoff": 2021,
+   "hit_rate": 26.3,
+   "pooled_value": 2,
+   "pick_equiv": 92,
+   "mean_career_avg": 67.8,
+   "mean_career_games": 25.4
+  },
+  "PDN": {
+   "name": "Post-draft Next-Gen",
+   "n": 24,
+   "played_n": 4,
+   "cutoff": 2021,
+   "hit_rate": 16.7,
+   "pooled_value": 1,
+   "pick_equiv": 92,
+   "mean_career_avg": 69.0,
+   "mean_career_games": 12.8
+  }
+ },
+ "flex_sensitivity": {
+  "input_that_flex_could_move": "pooled realised value reads gfut(p)=future_position (ev/_nv_bwd)",
+  "frozen_inputs": "_natcv34 inversion curve is FROZEN v3.4; PATH_ALPHA fixed \u2014 flex does NOT touch these",
+  "n_pickless": 283,
+  "n_pickless_flex_touched": 0,
+  "flex_touched_rows": [],
+  "verdict": "NO pickless player carries a flex future-position write => the flex-era store leaves every pickless _eff UNCHANGED"
+ }
+}

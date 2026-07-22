@@ -1,0 +1,9663 @@
+{
+  "kind": "weekly_pos_rank_history",
+  "players": {
+    "aaron-cadman": {
+      "by_round": {
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 5
+      },
+      "name": "Aaron Cadman",
+      "stable_player_id": null
+    },
+    "aaron-naughton": {
+      "by_round": {
+        "14": 13,
+        "15": 17,
+        "16": 16,
+        "17": 19,
+        "18": 18,
+        "19": 19
+      },
+      "name": "Aaron Naughton",
+      "stable_player_id": null
+    },
+    "adam-cerra": {
+      "by_round": {
+        "14": 82,
+        "15": 85,
+        "16": 86,
+        "17": 83,
+        "18": 81,
+        "19": 83
+      },
+      "name": "Adam Cerra",
+      "stable_player_id": null
+    },
+    "adam-saad": {
+      "by_round": {
+        "14": 65,
+        "15": 66,
+        "16": 68,
+        "17": 70,
+        "18": 67,
+        "19": 69
+      },
+      "name": "Adam Saad",
+      "stable_player_id": null
+    },
+    "adam-sweid": {
+      "by_round": {
+        "14": 36,
+        "15": 37,
+        "16": 37,
+        "17": 38,
+        "18": 41,
+        "19": 44
+      },
+      "name": "Adam Sweid",
+      "stable_player_id": null
+    },
+    "adam-treloar": {
+      "by_round": {
+        "14": 111,
+        "15": 113,
+        "16": 115,
+        "17": 113,
+        "18": 114,
+        "19": 116
+      },
+      "name": "Adam Treloar",
+      "stable_player_id": null
+    },
+    "aidan-corr": {
+      "by_round": {
+        "14": 80,
+        "15": 80,
+        "16": 80,
+        "17": 80,
+        "18": 80,
+        "19": 80
+      },
+      "name": "Aidan Corr",
+      "stable_player_id": null
+    },
+    "aidan-johnson": {
+      "by_round": {
+        "14": 91,
+        "15": 91,
+        "16": 90,
+        "17": 90,
+        "18": 90,
+        "19": 90
+      },
+      "name": "Aidan Johnson",
+      "stable_player_id": null
+    },
+    "aidan-schubert": {
+      "by_round": {
+        "14": 41,
+        "15": 40,
+        "16": 41,
+        "17": 43,
+        "18": 45,
+        "19": 46
+      },
+      "name": "Aidan Schubert",
+      "stable_player_id": null
+    },
+    "aiden-riddle": {
+      "by_round": {
+        "14": 39,
+        "15": 38,
+        "16": 39,
+        "17": 39,
+        "18": 39,
+        "19": 39
+      },
+      "name": "Aiden Riddle",
+      "stable_player_id": null
+    },
+    "alex-davies": {
+      "by_round": {
+        "14": 131,
+        "15": 132,
+        "16": 129,
+        "17": 128,
+        "18": 130,
+        "19": 127
+      },
+      "name": "Alex Davies",
+      "stable_player_id": null
+    },
+    "alex-dodson": {
+      "by_round": {
+        "14": 38,
+        "15": 37,
+        "16": 38,
+        "17": 38,
+        "18": 38,
+        "19": 38
+      },
+      "name": "Alex Dodson",
+      "stable_player_id": null
+    },
+    "alex-neal-bullen": {
+      "by_round": {
+        "14": 43,
+        "15": 43,
+        "16": 42,
+        "17": 46,
+        "18": 51,
+        "19": 53
+      },
+      "name": "Alex Neal-Bullen",
+      "stable_player_id": null
+    },
+    "alex-pearce": {
+      "by_round": {
+        "14": 84,
+        "15": 84,
+        "16": 84,
+        "17": 84,
+        "18": 84,
+        "19": 84
+      },
+      "name": "Alex Pearce",
+      "stable_player_id": null
+    },
+    "alex-van-wyk": {
+      "by_round": {
+        "14": 29,
+        "15": 29,
+        "16": 29,
+        "17": 29,
+        "18": 30,
+        "19": 30
+      },
+      "name": "Alex Van Wyk",
+      "stable_player_id": null
+    },
+    "aliir-aliir": {
+      "by_round": {
+        "14": 18,
+        "15": 17,
+        "16": 17,
+        "17": 19,
+        "18": 18,
+        "19": 20
+      },
+      "name": "Aliir Aliir",
+      "stable_player_id": null
+    },
+    "alix-tauru": {
+      "by_round": {
+        "14": 13,
+        "15": 13,
+        "16": 13,
+        "17": 13,
+        "18": 13,
+        "19": 12
+      },
+      "name": "Alix Tauru",
+      "stable_player_id": null
+    },
+    "andrew-brayshaw": {
+      "by_round": {
+        "14": 38,
+        "15": 37,
+        "16": 35,
+        "17": 34,
+        "18": 33,
+        "19": 34
+      },
+      "name": "Andrew Brayshaw",
+      "stable_player_id": null
+    },
+    "andrew-mcgrath": {
+      "by_round": {
+        "14": 45,
+        "15": 45,
+        "16": 44,
+        "17": 43,
+        "18": 44,
+        "19": 44
+      },
+      "name": "Andrew McGrath",
+      "stable_player_id": null
+    },
+    "andy-moniz-wakefield": {
+      "by_round": {
+        "14": 154,
+        "15": 155,
+        "16": 156,
+        "17": 156,
+        "18": 157,
+        "19": 157
+      },
+      "name": "Andy Moniz-Wakefield",
+      "stable_player_id": null
+    },
+    "angus-anderson": {
+      "by_round": {
+        "14": 160,
+        "15": 160,
+        "16": 160,
+        "17": 164,
+        "18": 164,
+        "19": 161
+      },
+      "name": "Angus Anderson",
+      "stable_player_id": null
+    },
+    "angus-clarke": {
+      "by_round": {
+        "14": 62,
+        "15": 61,
+        "16": 63,
+        "17": 63,
+        "18": 61,
+        "19": 60
+      },
+      "name": "Angus Clarke",
+      "stable_player_id": null
+    },
+    "angus-hastie": {
+      "by_round": {
+        "14": 102,
+        "15": 116,
+        "16": 117,
+        "17": 118,
+        "18": 98,
+        "19": 99
+      },
+      "name": "Angus Hastie",
+      "stable_player_id": null
+    },
+    "angus-sheldrick": {
+      "by_round": {
+        "14": 104,
+        "15": 106,
+        "16": 104,
+        "17": 99,
+        "18": 99,
+        "19": 102
+      },
+      "name": "Angus Sheldrick",
+      "stable_player_id": null
+    },
+    "anthony-caminiti": {
+      "by_round": {
+        "14": 29,
+        "15": 29,
+        "16": 30,
+        "17": 24,
+        "18": 23,
+        "19": 26
+      },
+      "name": "Anthony Caminiti",
+      "stable_player_id": null
+    },
+    "archer-day-wicks": {
+      "by_round": {
+        "14": 65,
+        "15": 64,
+        "16": 64,
+        "17": 63,
+        "18": 67,
+        "19": 64
+      },
+      "name": "Archer Day-Wicks",
+      "stable_player_id": null
+    },
+    "archer-reid": {
+      "by_round": {
+        "14": 35,
+        "15": 35,
+        "16": 35,
+        "17": 35,
+        "18": 34,
+        "19": 35
+      },
+      "name": "Archer Reid",
+      "stable_player_id": null
+    },
+    "archie-ludowyke": {
+      "by_round": {
+        "14": 58,
+        "15": 58,
+        "16": 57,
+        "17": 57,
+        "18": 57,
+        "19": 58
+      },
+      "name": "Archie Ludowyke",
+      "stable_player_id": null
+    },
+    "archie-may": {
+      "by_round": {
+        "14": 49,
+        "15": 48,
+        "16": 49,
+        "17": 49,
+        "18": 50,
+        "19": 51
+      },
+      "name": "Archie May",
+      "stable_player_id": null
+    },
+    "archie-perkins": {
+      "by_round": {
+        "14": 81,
+        "15": 80,
+        "16": 80,
+        "17": 75,
+        "18": 81,
+        "19": 80
+      },
+      "name": "Archie Perkins",
+      "stable_player_id": null
+    },
+    "archie-roberts": {
+      "by_round": {
+        "14": 2,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 2,
+        "19": 2
+      },
+      "name": "Archie Roberts",
+      "stable_player_id": null
+    },
+    "arthur-jones": {
+      "by_round": {
+        "14": 138,
+        "15": 132,
+        "16": 131,
+        "17": 128,
+        "18": 128,
+        "19": 120
+      },
+      "name": "Arthur Jones",
+      "stable_player_id": null
+    },
+    "asher-eastham": {
+      "by_round": {
+        "14": 101,
+        "15": 101,
+        "16": 101,
+        "17": 103,
+        "18": 104,
+        "19": 104
+      },
+      "name": "Asher Eastham",
+      "stable_player_id": null
+    },
+    "ashton-moir": {
+      "by_round": {
+        "14": 83,
+        "15": 86,
+        "16": 90,
+        "17": 92,
+        "18": 93,
+        "19": 91
+      },
+      "name": "Ashton Moir",
+      "stable_player_id": null
+    },
+    "avery-thomas": {
+      "by_round": {
+        "14": 78,
+        "15": 78,
+        "16": 78,
+        "17": 78,
+        "18": 80,
+        "19": 82
+      },
+      "name": "Avery Thomas",
+      "stable_player_id": null
+    },
+    "bailey-banfield": {
+      "by_round": {
+        "14": 170,
+        "15": 171,
+        "16": 171,
+        "17": 171,
+        "18": 172,
+        "19": 172
+      },
+      "name": "Bailey Banfield",
+      "stable_player_id": null
+    },
+    "bailey-dale": {
+      "by_round": {
+        "14": 19,
+        "15": 19,
+        "16": 17,
+        "17": 14,
+        "18": 14,
+        "19": 13
+      },
+      "name": "Bailey Dale",
+      "stable_player_id": null
+    },
+    "bailey-humphrey": {
+      "by_round": {
+        "14": 10,
+        "15": 12,
+        "16": 13,
+        "17": 12,
+        "18": 13,
+        "19": 14
+      },
+      "name": "Bailey Humphrey",
+      "stable_player_id": null
+    },
+    "bailey-laurie": {
+      "by_round": {
+        "14": 151,
+        "15": 150,
+        "16": 149,
+        "17": 149,
+        "18": 148,
+        "19": 147
+      },
+      "name": "Bailey Laurie",
+      "stable_player_id": null
+    },
+    "bailey-macdonald": {
+      "by_round": {
+        "14": 132,
+        "15": 131,
+        "16": 134,
+        "17": 131,
+        "18": 130,
+        "19": 127
+      },
+      "name": "Bailey Macdonald",
+      "stable_player_id": null
+    },
+    "bailey-scott": {
+      "by_round": {
+        "14": 187,
+        "15": 188,
+        "16": 186,
+        "17": 188,
+        "18": 187,
+        "19": 189
+      },
+      "name": "Bailey Scott",
+      "stable_player_id": null
+    },
+    "bailey-smith": {
+      "by_round": {
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 7,
+        "19": 7
+      },
+      "name": "Bailey Smith",
+      "stable_player_id": null
+    },
+    "bailey-williams-wb": {
+      "by_round": {
+        "14": 67,
+        "15": 68,
+        "16": 67,
+        "17": 68,
+        "18": 78,
+        "19": 63
+      },
+      "name": "Bailey Williams",
+      "stable_player_id": null
+    },
+    "bailey-williams-wc": {
+      "by_round": {
+        "14": 7,
+        "15": 7,
+        "16": 7,
+        "17": 7,
+        "18": 9,
+        "19": 10
+      },
+      "name": "Bailey J. Williams",
+      "stable_player_id": null
+    },
+    "balyn-o-brien": {
+      "by_round": {
+        "14": 107,
+        "15": 111,
+        "16": 111,
+        "17": 112,
+        "18": 114,
+        "19": 107
+      },
+      "name": "Balyn O'Brien",
+      "stable_player_id": null
+    },
+    "bayley-fritsch": {
+      "by_round": {
+        "14": 108,
+        "15": 129,
+        "16": 129,
+        "17": 109,
+        "18": 109,
+        "19": 103
+      },
+      "name": "Bayley Fritsch",
+      "stable_player_id": null
+    },
+    "beau-addinsall": {
+      "by_round": {
+        "14": 86,
+        "15": 84,
+        "16": 83,
+        "17": 79,
+        "18": 77,
+        "19": 79
+      },
+      "name": "Beau Addinsall",
+      "stable_player_id": null
+    },
+    "beau-mccreery": {
+      "by_round": {
+        "14": 99,
+        "15": 105,
+        "16": 108,
+        "17": 102,
+        "18": 113,
+        "19": 102
+      },
+      "name": "Beau McCreery",
+      "stable_player_id": null
+    },
+    "ben-ainsworth": {
+      "by_round": {
+        "14": 84,
+        "15": 83,
+        "16": 57,
+        "17": 64,
+        "18": 80,
+        "19": 79
+      },
+      "name": "Ben Ainsworth",
+      "stable_player_id": null
+    },
+    "ben-camporeale": {
+      "by_round": {
+        "14": 147,
+        "15": 148,
+        "16": 145,
+        "17": 144,
+        "18": 144,
+        "19": 145
+      },
+      "name": "Ben Camporeale",
+      "stable_player_id": null
+    },
+    "ben-jepson": {
+      "by_round": {
+        "14": 191,
+        "15": 191,
+        "16": 191,
+        "17": 191,
+        "18": 191,
+        "19": 191
+      },
+      "name": "Ben Jepson",
+      "stable_player_id": null
+    },
+    "ben-keays": {
+      "by_round": {
+        "14": 60,
+        "15": 54,
+        "16": 62,
+        "17": 60,
+        "18": 48,
+        "19": 52
+      },
+      "name": "Ben Keays",
+      "stable_player_id": null
+    },
+    "ben-king": {
+      "by_round": {
+        "14": 53,
+        "15": 62,
+        "16": 63,
+        "17": 58,
+        "18": 66,
+        "19": 63
+      },
+      "name": "Ben King",
+      "stable_player_id": null
+    },
+    "ben-long": {
+      "by_round": {
+        "14": 167,
+        "15": 168,
+        "16": 168,
+        "17": 167,
+        "18": 169,
+        "19": 167
+      },
+      "name": "Ben Long",
+      "stable_player_id": null
+    },
+    "ben-mckay": {
+      "by_round": {
+        "14": 82,
+        "15": 82,
+        "16": 82,
+        "17": 81,
+        "18": 81,
+        "19": 81
+      },
+      "name": "Ben McKay",
+      "stable_player_id": null
+    },
+    "ben-miller": {
+      "by_round": {
+        "14": 17,
+        "15": 15,
+        "16": 15,
+        "17": 17,
+        "18": 17,
+        "19": 17
+      },
+      "name": "Ben Miller",
+      "stable_player_id": null
+    },
+    "ben-murphy": {
+      "by_round": {
+        "14": 108,
+        "15": 112,
+        "16": 112,
+        "17": 113,
+        "18": 115,
+        "19": 116
+      },
+      "name": "Ben Murphy",
+      "stable_player_id": null
+    },
+    "benny-barrett": {
+      "by_round": {
+        "14": 125,
+        "15": 124,
+        "16": 122,
+        "17": 122,
+        "18": 118,
+        "19": 121
+      },
+      "name": "Benny Barrett",
+      "stable_player_id": null
+    },
+    "billy-cootee": {
+      "by_round": {
+        "14": 179,
+        "15": 179,
+        "16": 179,
+        "17": 178,
+        "18": 177,
+        "19": 177
+      },
+      "name": "Billy Cootee",
+      "stable_player_id": null
+    },
+    "billy-dowling": {
+      "by_round": {
+        "14": 130,
+        "15": 128,
+        "16": 128,
+        "17": 125,
+        "18": 120,
+        "19": 123
+      },
+      "name": "Billy Dowling",
+      "stable_player_id": null
+    },
+    "billy-frampton": {
+      "by_round": {
+        "14": 68,
+        "15": 67,
+        "16": 61,
+        "17": 73,
+        "18": 72,
+        "19": 73
+      },
+      "name": "Billy Frampton",
+      "stable_player_id": null
+    },
+    "billy-wilson": {
+      "by_round": {
+        "14": 112,
+        "15": 120,
+        "16": 121,
+        "17": 122,
+        "18": 124,
+        "19": 125
+      },
+      "name": "Billy Wilson",
+      "stable_player_id": null
+    },
+    "blake-acres": {
+      "by_round": {
+        "14": 178,
+        "15": 142,
+        "16": 150,
+        "17": 149,
+        "18": 147,
+        "19": 156
+      },
+      "name": "Blake Acres",
+      "stable_player_id": null
+    },
+    "blake-hardwick": {
+      "by_round": {
+        "14": 88,
+        "15": 95,
+        "16": 92,
+        "17": 85,
+        "18": 82,
+        "19": 68
+      },
+      "name": "Blake Hardwick",
+      "stable_player_id": null
+    },
+    "blake-howes": {
+      "by_round": {
+        "14": 100,
+        "15": 103,
+        "16": 101,
+        "17": 98,
+        "18": 101,
+        "19": 98
+      },
+      "name": "Blake Howes",
+      "stable_player_id": null
+    },
+    "blake-thredgold": {
+      "by_round": {
+        "14": 31,
+        "15": 30,
+        "16": 30,
+        "17": 31,
+        "18": 31,
+        "19": 30
+      },
+      "name": "Blake Thredgold",
+      "stable_player_id": null
+    },
+    "bo-allan": {
+      "by_round": {
+        "14": 47,
+        "15": 46,
+        "16": 45,
+        "17": 42,
+        "18": 42,
+        "19": 41
+      },
+      "name": "Bo Allan",
+      "stable_player_id": null
+    },
+    "bobby-hill": {
+      "by_round": {
+        "14": 152,
+        "15": 152,
+        "16": 153,
+        "17": 153,
+        "18": 153,
+        "19": 152
+      },
+      "name": "Bobby Hill",
+      "stable_player_id": null
+    },
+    "bodhi-uwland": {
+      "by_round": {
+        "14": 9,
+        "15": 7,
+        "16": 6,
+        "17": 4,
+        "18": 4,
+        "19": 5
+      },
+      "name": "Bodhi Uwland",
+      "stable_player_id": null
+    },
+    "bodie-ryan": {
+      "by_round": {
+        "14": 94,
+        "15": 99,
+        "16": 99,
+        "17": 95,
+        "18": 97,
+        "19": 102
+      },
+      "name": "Bodie Ryan",
+      "stable_player_id": null
+    },
+    "bradley-close": {
+      "by_round": {
+        "14": 171,
+        "15": 172,
+        "16": 172,
+        "17": 172,
+        "18": 167,
+        "19": 171
+      },
+      "name": "Bradley Close",
+      "stable_player_id": null
+    },
+    "bradley-hill": {
+      "by_round": {
+        "14": 32,
+        "15": 28,
+        "16": 28,
+        "17": 25,
+        "18": 23,
+        "19": 23
+      },
+      "name": "Bradley Hill",
+      "stable_player_id": null
+    },
+    "brady-hough": {
+      "by_round": {
+        "14": 96,
+        "15": 97,
+        "16": 96,
+        "17": 99,
+        "18": 96,
+        "19": 100
+      },
+      "name": "Brady Hough",
+      "stable_player_id": null
+    },
+    "braeden-campbell": {
+      "by_round": {
+        "14": 87,
+        "15": 91,
+        "16": 87,
+        "17": 88,
+        "18": 90,
+        "19": 92
+      },
+      "name": "Braeden Campbell",
+      "stable_player_id": null
+    },
+    "brandon-starcevich": {
+      "by_round": {
+        "14": 158,
+        "15": 158,
+        "16": 159,
+        "17": 158,
+        "18": 158,
+        "19": 159
+      },
+      "name": "Brandon Starcevich",
+      "stable_player_id": null
+    },
+    "brandon-walker": {
+      "by_round": {
+        "14": 138,
+        "15": 138,
+        "16": 139,
+        "17": 140,
+        "18": 142,
+        "19": 143
+      },
+      "name": "Brandon Walker",
+      "stable_player_id": null
+    },
+    "brandon-zerk-thatcher": {
+      "by_round": {
+        "14": 56,
+        "15": 55,
+        "16": 58,
+        "17": 66,
+        "18": 66,
+        "19": 71
+      },
+      "name": "Brandon Zerk-Thatcher",
+      "stable_player_id": null
+    },
+    "brayden-cook": {
+      "by_round": {
+        "14": 98,
+        "15": 90,
+        "16": 114,
+        "17": 117,
+        "18": 111,
+        "19": 96
+      },
+      "name": "Brayden Cook",
+      "stable_player_id": null
+    },
+    "brayden-fiorini": {
+      "by_round": {
+        "14": 152,
+        "15": 152,
+        "16": 152,
+        "17": 151,
+        "18": 149,
+        "19": 148
+      },
+      "name": "Brayden Fiorini",
+      "stable_player_id": null
+    },
+    "brayden-george": {
+      "by_round": {
+        "14": 74,
+        "15": 72,
+        "16": 73,
+        "17": 72,
+        "18": 75,
+        "19": 73
+      },
+      "name": "Brayden George",
+      "stable_player_id": null
+    },
+    "brayden-maynard": {
+      "by_round": {
+        "14": 51,
+        "15": 50,
+        "16": 49,
+        "17": 54,
+        "18": 58,
+        "19": 59
+      },
+      "name": "Brayden Maynard",
+      "stable_player_id": null
+    },
+    "brennan-cox": {
+      "by_round": {
+        "14": 37,
+        "15": 36,
+        "16": 35,
+        "17": 34,
+        "18": 40,
+        "19": 39
+      },
+      "name": "Brennan Cox",
+      "stable_player_id": null
+    },
+    "brent-daniels": {
+      "by_round": {
+        "14": 21,
+        "15": 23,
+        "16": 23,
+        "17": 23,
+        "18": 22,
+        "19": 22
+      },
+      "name": "Brent Daniels",
+      "stable_player_id": null
+    },
+    "brodie-grundy": {
+      "by_round": {
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3
+      },
+      "name": "Brodie Grundy",
+      "stable_player_id": null
+    },
+    "brodie-kemp": {
+      "by_round": {
+        "14": 36,
+        "15": 36,
+        "16": 32,
+        "17": 33,
+        "18": 36,
+        "19": 38
+      },
+      "name": "Brodie Kemp",
+      "stable_player_id": null
+    },
+    "brody-mihocek": {
+      "by_round": {
+        "14": 101,
+        "15": 101,
+        "16": 101,
+        "17": 101,
+        "18": 101,
+        "19": 101
+      },
+      "name": "Brody Mihocek",
+      "stable_player_id": null
+    },
+    "bruce-reville": {
+      "by_round": {
+        "14": 183,
+        "15": 183,
+        "16": 184,
+        "17": 184,
+        "18": 182,
+        "19": 182
+      },
+      "name": "Bruce Reville",
+      "stable_player_id": null
+    },
+    "buku-khamis": {
+      "by_round": {
+        "14": 76,
+        "15": 76,
+        "16": 77,
+        "17": 75,
+        "18": 77,
+        "19": 75
+      },
+      "name": "Buku Khamis",
+      "stable_player_id": null
+    },
+    "caiden-cleary": {
+      "by_round": {
+        "14": 50,
+        "15": 47,
+        "16": 53,
+        "17": 49,
+        "18": 47,
+        "19": 48
+      },
+      "name": "Caiden Cleary",
+      "stable_player_id": null
+    },
+    "caleb-daniel": {
+      "by_round": {
+        "14": 41,
+        "15": 37,
+        "16": 31,
+        "17": 30,
+        "18": 33,
+        "19": 34
+      },
+      "name": "Caleb Daniel",
+      "stable_player_id": null
+    },
+    "caleb-graham": {
+      "by_round": {
+        "14": 78,
+        "15": 78,
+        "16": 78,
+        "17": 78,
+        "18": 78,
+        "19": 78
+      },
+      "name": "Caleb Graham",
+      "stable_player_id": null
+    },
+    "caleb-lewis": {
+      "by_round": {
+        "14": 82,
+        "15": 82,
+        "16": 82,
+        "17": 81,
+        "18": 81,
+        "19": 76
+      },
+      "name": "Caleb Lewis",
+      "stable_player_id": null
+    },
+    "caleb-may": {
+      "by_round": {
+        "14": 30,
+        "15": 30,
+        "16": 30,
+        "17": 30,
+        "18": 31,
+        "19": 31
+      },
+      "name": "Caleb May",
+      "stable_player_id": null
+    },
+    "caleb-serong": {
+      "by_round": {
+        "14": 12,
+        "15": 14,
+        "16": 14,
+        "17": 14,
+        "18": 14,
+        "19": 13
+      },
+      "name": "Caleb Serong",
+      "stable_player_id": null
+    },
+    "caleb-windsor": {
+      "by_round": {
+        "14": 66,
+        "15": 65,
+        "16": 66,
+        "17": 68,
+        "18": 68,
+        "19": 70
+      },
+      "name": "Caleb Windsor",
+      "stable_player_id": null
+    },
+    "callum-ah-chee": {
+      "by_round": {
+        "14": 144,
+        "15": 143,
+        "16": 143,
+        "17": 141,
+        "18": 141,
+        "19": 139
+      },
+      "name": "Callum Ah Chee",
+      "stable_player_id": null
+    },
+    "callum-brown-ire": {
+      "by_round": {
+        "14": 175,
+        "15": 178,
+        "16": 177,
+        "17": 179,
+        "18": 159,
+        "19": 153
+      },
+      "name": "Callum M. Brown",
+      "stable_player_id": null
+    },
+    "callum-coleman-jones": {
+      "by_round": {
+        "14": 97,
+        "15": 98,
+        "16": 97,
+        "17": 97,
+        "18": 97,
+        "19": 97
+      },
+      "name": "Callum Coleman-Jones",
+      "stable_player_id": null
+    },
+    "callum-mills": {
+      "by_round": {
+        "14": 28,
+        "15": 27,
+        "16": 22,
+        "17": 21,
+        "18": 20,
+        "19": 16
+      },
+      "name": "Callum Mills",
+      "stable_player_id": null
+    },
+    "callum-wilkie": {
+      "by_round": {
+        "14": 1,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 1,
+        "19": 2
+      },
+      "name": "Callum Wilkie",
+      "stable_player_id": null
+    },
+    "calsher-dear": {
+      "by_round": {
+        "14": 32,
+        "15": 31,
+        "16": 31,
+        "17": 31,
+        "18": 30,
+        "19": 32
+      },
+      "name": "Calsher Dear",
+      "stable_player_id": null
+    },
+    "cameron-mackenzie": {
+      "by_round": {
+        "14": 58,
+        "15": 56,
+        "16": 47,
+        "17": 61,
+        "18": 65,
+        "19": 66
+      },
+      "name": "Cameron Mackenzie",
+      "stable_player_id": null
+    },
+    "cameron-nairn": {
+      "by_round": {
+        "14": 33,
+        "15": 32,
+        "16": 32,
+        "17": 34,
+        "18": 34,
+        "19": 34
+      },
+      "name": "Cameron Nairn",
+      "stable_player_id": null
+    },
+    "cameron-rayner": {
+      "by_round": {
+        "14": 57,
+        "15": 57,
+        "16": 49,
+        "17": 37,
+        "18": 36,
+        "19": 37
+      },
+      "name": "Cameron Rayner",
+      "stable_player_id": null
+    },
+    "cameron-zurhaar": {
+      "by_round": {
+        "14": 105,
+        "15": 114,
+        "16": 119,
+        "17": 127,
+        "18": 115,
+        "19": 116
+      },
+      "name": "Cameron Zurhaar",
+      "stable_player_id": null
+    },
+    "campbell-chesser": {
+      "by_round": {
+        "14": 143,
+        "15": 143,
+        "16": 143,
+        "17": 143,
+        "18": 141,
+        "19": 143
+      },
+      "name": "Campbell Chesser",
+      "stable_player_id": null
+    },
+    "campbell-gray": {
+      "by_round": {
+        "14": 53,
+        "15": 52,
+        "16": 50,
+        "17": 51,
+        "18": 52,
+        "19": 52
+      },
+      "name": "Campbell Gray",
+      "stable_player_id": null
+    },
+    "campbell-lake": {
+      "by_round": {
+        "14": 120,
+        "15": 120,
+        "16": 121,
+        "17": 131,
+        "18": 134,
+        "19": 109
+      },
+      "name": "Campbell Lake",
+      "stable_player_id": null
+    },
+    "chad-warner": {
+      "by_round": {
+        "14": 35,
+        "15": 34,
+        "16": 31,
+        "17": 32,
+        "18": 31,
+        "19": 31
+      },
+      "name": "Chad Warner",
+      "stable_player_id": null
+    },
+    "changkuoth-jiath": {
+      "by_round": {
+        "14": 166,
+        "15": 167,
+        "16": 167,
+        "17": 161,
+        "18": 163,
+        "19": 164
+      },
+      "name": "Changkuoth Jiath",
+      "stable_player_id": null
+    },
+    "charlie-ballard": {
+      "by_round": {
+        "14": 62,
+        "15": 62,
+        "16": 67,
+        "17": 63,
+        "18": 63,
+        "19": 62
+      },
+      "name": "Charlie Ballard",
+      "stable_player_id": null
+    },
+    "charlie-banfield": {
+      "by_round": {
+        "14": 103,
+        "15": 103,
+        "16": 105,
+        "17": 108,
+        "18": 109,
+        "19": 109
+      },
+      "name": "Charlie Banfield",
+      "stable_player_id": null
+    },
+    "charlie-cameron": {
+      "by_round": {
+        "14": 86,
+        "15": 84,
+        "16": 81,
+        "17": 83,
+        "18": 82,
+        "19": 81
+      },
+      "name": "Charlie Cameron",
+      "stable_player_id": null
+    },
+    "charlie-comben": {
+      "by_round": {
+        "14": 22,
+        "15": 18,
+        "16": 18,
+        "17": 15,
+        "18": 19,
+        "19": 18
+      },
+      "name": "Charlie Comben",
+      "stable_player_id": null
+    },
+    "charlie-curnow": {
+      "by_round": {
+        "14": 25,
+        "15": 24,
+        "16": 24,
+        "17": 14,
+        "18": 11,
+        "19": 17
+      },
+      "name": "Charlie Curnow",
+      "stable_player_id": null
+    },
+    "charlie-edwards": {
+      "by_round": {
+        "14": 106,
+        "15": 109,
+        "16": 107,
+        "17": 107,
+        "18": 106,
+        "19": 107
+      },
+      "name": "Charlie Edwards",
+      "stable_player_id": null
+    },
+    "charlie-nicholls": {
+      "by_round": {
+        "14": 62,
+        "15": 60,
+        "16": 60,
+        "17": 60,
+        "18": 60,
+        "19": 61
+      },
+      "name": "Charlie Nicholls",
+      "stable_player_id": null
+    },
+    "charlie-spargo": {
+      "by_round": {
+        "14": 164,
+        "15": 165,
+        "16": 165,
+        "17": 164,
+        "18": 165,
+        "19": 163
+      },
+      "name": "Charlie Spargo",
+      "stable_player_id": null
+    },
+    "charlie-west": {
+      "by_round": {
+        "14": 51,
+        "15": 50,
+        "16": 51,
+        "17": 51,
+        "18": 52,
+        "19": 52
+      },
+      "name": "Charlie West",
+      "stable_player_id": null
+    },
+    "chayce-jones": {
+      "by_round": {
+        "14": 171,
+        "15": 171,
+        "16": 170,
+        "17": 170,
+        "18": 171,
+        "19": 169
+      },
+      "name": "Chayce Jones",
+      "stable_player_id": null
+    },
+    "chris-scerri": {
+      "by_round": {
+        "14": 69,
+        "15": 67,
+        "16": 71,
+        "17": 73,
+        "18": 76,
+        "19": 74
+      },
+      "name": "Chris Scerri",
+      "stable_player_id": null
+    },
+    "christian-moraes": {
+      "by_round": {
+        "14": 92,
+        "15": 94,
+        "16": 94,
+        "17": 91,
+        "18": 92,
+        "19": 93
+      },
+      "name": "Christian Moraes",
+      "stable_player_id": null
+    },
+    "christian-petracca": {
+      "by_round": {
+        "14": 34,
+        "15": 38,
+        "16": 44,
+        "17": 42,
+        "18": 48,
+        "19": 50
+      },
+      "name": "Christian Petracca",
+      "stable_player_id": null
+    },
+    "christian-salem": {
+      "by_round": {
+        "14": 72,
+        "15": 74,
+        "16": 73,
+        "17": 75,
+        "18": 75,
+        "19": 74
+      },
+      "name": "Christian Salem",
+      "stable_player_id": null
+    },
+    "cillian-bourke": {
+      "by_round": {
+        "14": 92,
+        "15": 93,
+        "16": 97,
+        "17": 96,
+        "18": 99,
+        "19": 103
+      },
+      "name": "Cillian Bourke",
+      "stable_player_id": null
+    },
+    "cillian-burke": {
+      "by_round": {
+        "14": 135,
+        "15": 137,
+        "16": 138,
+        "17": 139,
+        "18": 138,
+        "19": 139
+      },
+      "name": "Cillian Burke",
+      "stable_player_id": null
+    },
+    "clay-hall": {
+      "by_round": {
+        "14": 120,
+        "15": 122,
+        "16": 126,
+        "17": 129,
+        "18": 133,
+        "19": 137
+      },
+      "name": "Clay Hall",
+      "stable_player_id": null
+    },
+    "clayton-oliver": {
+      "by_round": {
+        "14": 44,
+        "15": 47,
+        "16": 45,
+        "17": 43,
+        "18": 41,
+        "19": 42
+      },
+      "name": "Clayton Oliver",
+      "stable_player_id": null
+    },
+    "cody-anderson": {
+      "by_round": {
+        "14": 106,
+        "15": 106,
+        "16": 105,
+        "17": 107,
+        "18": 108,
+        "19": 108
+      },
+      "name": "Cody Anderson",
+      "stable_player_id": null
+    },
+    "cody-angove": {
+      "by_round": {
+        "14": 116,
+        "15": 116,
+        "16": 116,
+        "17": 115,
+        "18": 117,
+        "19": 122
+      },
+      "name": "Cody Angove",
+      "stable_player_id": null
+    },
+    "cody-curtin": {
+      "by_round": {
+        "14": 39,
+        "15": 38,
+        "16": 37,
+        "17": 40,
+        "18": 40,
+        "19": 41
+      },
+      "name": "Cody Curtin",
+      "stable_player_id": null
+    },
+    "cody-weightman": {
+      "by_round": {
+        "14": 64,
+        "15": 66,
+        "16": 72,
+        "17": 88,
+        "18": 89,
+        "19": 92
+      },
+      "name": "Cody Weightman",
+      "stable_player_id": null
+    },
+    "colby-mckercher": {
+      "by_round": {
+        "14": 20,
+        "15": 20,
+        "16": 20,
+        "17": 19,
+        "18": 20,
+        "19": 19
+      },
+      "name": "Colby McKercher",
+      "stable_player_id": null
+    },
+    "connor-budarick": {
+      "by_round": {
+        "14": 124,
+        "15": 124,
+        "16": 124,
+        "17": 124,
+        "18": 123,
+        "19": 124
+      },
+      "name": "Connor Budarick",
+      "stable_player_id": null
+    },
+    "connor-idun": {
+      "by_round": {
+        "14": 23,
+        "15": 22,
+        "16": 23,
+        "17": 16,
+        "18": 18,
+        "19": 17
+      },
+      "name": "Connor Idun",
+      "stable_player_id": null
+    },
+    "connor-macdonald": {
+      "by_round": {
+        "14": 11,
+        "15": 10,
+        "16": 10,
+        "17": 11,
+        "18": 8,
+        "19": 8
+      },
+      "name": "Connor MacDonald",
+      "stable_player_id": null
+    },
+    "connor-o-sullivan": {
+      "by_round": {
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3
+      },
+      "name": "Connor O'Sullivan",
+      "stable_player_id": null
+    },
+    "connor-rozee": {
+      "by_round": {
+        "14": 33,
+        "15": 33,
+        "16": 34,
+        "17": 35,
+        "18": 36,
+        "19": 37
+      },
+      "name": "Connor Rozee",
+      "stable_player_id": null
+    },
+    "conor-mckenna": {
+      "by_round": {
+        "14": 180,
+        "15": 179,
+        "16": 179,
+        "17": 178,
+        "18": 178,
+        "19": 179
+      },
+      "name": "Conor McKenna",
+      "stable_player_id": null
+    },
+    "conor-nash": {
+      "by_round": {
+        "14": 149,
+        "15": 149,
+        "16": 146,
+        "17": 145,
+        "18": 143,
+        "19": 144
+      },
+      "name": "Conor Nash",
+      "stable_player_id": null
+    },
+    "conor-stone": {
+      "by_round": {
+        "14": 145,
+        "15": 144,
+        "16": 145,
+        "17": 145,
+        "18": 147,
+        "19": 145
+      },
+      "name": "Conor Stone",
+      "stable_player_id": null
+    },
+    "cooper-bell": {
+      "by_round": {
+        "14": 43,
+        "15": 43,
+        "16": 42,
+        "17": 42,
+        "18": 43,
+        "19": 43
+      },
+      "name": "Cooper Bell",
+      "stable_player_id": null
+    },
+    "cooper-duff-tytler": {
+      "by_round": {
+        "14": 14,
+        "15": 14,
+        "16": 15,
+        "17": 16,
+        "18": 16,
+        "19": 15
+      },
+      "name": "Cooper Duff-Tytler",
+      "stable_player_id": null
+    },
+    "cooper-harvey": {
+      "by_round": {
+        "14": 135,
+        "15": 134,
+        "16": 133,
+        "17": 136,
+        "18": 52,
+        "19": 41
+      },
+      "name": "Cooper Harvey",
+      "stable_player_id": null
+    },
+    "cooper-hynes": {
+      "by_round": {
+        "14": 84,
+        "15": 80,
+        "16": 80,
+        "17": 76,
+        "18": 76,
+        "19": 80
+      },
+      "name": "Cooper Hynes",
+      "stable_player_id": null
+    },
+    "cooper-lord": {
+      "by_round": {
+        "14": 146,
+        "15": 147,
+        "16": 148,
+        "17": 150,
+        "18": 151,
+        "19": 154
+      },
+      "name": "Cooper Lord",
+      "stable_player_id": null
+    },
+    "cooper-sharman": {
+      "by_round": {
+        "14": 37,
+        "15": 41,
+        "16": 39,
+        "17": 42,
+        "18": 38,
+        "19": 43
+      },
+      "name": "Cooper Sharman",
+      "stable_player_id": null
+    },
+    "cooper-simpson": {
+      "by_round": {
+        "14": 118,
+        "15": 117,
+        "16": 116,
+        "17": 116,
+        "18": 113,
+        "19": 111
+      },
+      "name": "Cooper Simpson",
+      "stable_player_id": null
+    },
+    "cooper-trembath": {
+      "by_round": {
+        "14": 17,
+        "15": 10,
+        "16": 10,
+        "17": 8,
+        "18": 8,
+        "19": 7
+      },
+      "name": "Cooper Trembath",
+      "stable_player_id": null
+    },
+    "corey-durdin": {
+      "by_round": {
+        "14": 157,
+        "15": 153,
+        "16": 151,
+        "17": 150,
+        "18": 151,
+        "19": 151
+      },
+      "name": "Corey Durdin",
+      "stable_player_id": null
+    },
+    "corey-wagner": {
+      "by_round": {
+        "14": 159,
+        "15": 159,
+        "16": 160,
+        "17": 159,
+        "18": 159,
+        "19": 158
+      },
+      "name": "Corey Wagner",
+      "stable_player_id": null
+    },
+    "corey-warner": {
+      "by_round": {
+        "14": 150,
+        "15": 148,
+        "16": 148,
+        "17": 148,
+        "18": 147,
+        "19": 145
+      },
+      "name": "Corey Warner",
+      "stable_player_id": null
+    },
+    "dan-houston": {
+      "by_round": {
+        "14": 42,
+        "15": 42,
+        "16": 39,
+        "17": 41,
+        "18": 40,
+        "19": 39
+      },
+      "name": "Dan Houston",
+      "stable_player_id": null
+    },
+    "dane-rampe": {
+      "by_round": {
+        "14": 173,
+        "15": 172,
+        "16": 173,
+        "17": 174,
+        "18": 175,
+        "19": 176
+      },
+      "name": "Dane Rampe",
+      "stable_player_id": null
+    },
+    "daniel-annable": {
+      "by_round": {
+        "14": 54,
+        "15": 53,
+        "16": 54,
+        "17": 57,
+        "18": 61,
+        "19": 61
+      },
+      "name": "Daniel Annable",
+      "stable_player_id": null
+    },
+    "daniel-butler": {
+      "by_round": {
+        "14": 177,
+        "15": 177,
+        "16": 178,
+        "17": 177,
+        "18": 179,
+        "19": 178
+      },
+      "name": "Daniel Butler",
+      "stable_player_id": null
+    },
+    "daniel-curtin": {
+      "by_round": {
+        "14": 45,
+        "15": 46,
+        "16": 46,
+        "17": 45,
+        "18": 46,
+        "19": 48
+      },
+      "name": "Daniel Curtin",
+      "stable_player_id": null
+    },
+    "daniel-mcstay": {
+      "by_round": {
+        "14": 94,
+        "15": 92,
+        "16": 95,
+        "17": 91,
+        "18": 87,
+        "19": 88
+      },
+      "name": "Daniel McStay",
+      "stable_player_id": null
+    },
+    "daniel-rioli": {
+      "by_round": {
+        "14": 60,
+        "15": 60,
+        "16": 58,
+        "17": 59,
+        "18": 59,
+        "19": 61
+      },
+      "name": "Daniel Rioli",
+      "stable_player_id": null
+    },
+    "daniel-turner": {
+      "by_round": {
+        "14": 12,
+        "15": 12,
+        "16": 12,
+        "17": 9,
+        "18": 9,
+        "19": 11
+      },
+      "name": "Daniel Turner",
+      "stable_player_id": null
+    },
+    "dante-visentini": {
+      "by_round": {
+        "14": 22,
+        "15": 23,
+        "16": 23,
+        "17": 23,
+        "18": 23,
+        "19": 19
+      },
+      "name": "Dante Visentini",
+      "stable_player_id": null
+    },
+    "darcy-byrne-jones": {
+      "by_round": {
+        "14": 98,
+        "15": 87,
+        "16": 93,
+        "17": 86,
+        "18": 84,
+        "19": 84
+      },
+      "name": "Darcy Byrne-Jones",
+      "stable_player_id": null
+    },
+    "darcy-cameron": {
+      "by_round": {
+        "14": 13,
+        "15": 13,
+        "16": 13,
+        "17": 16,
+        "18": 16,
+        "19": 17
+      },
+      "name": "Darcy Cameron",
+      "stable_player_id": null
+    },
+    "darcy-fogarty": {
+      "by_round": {
+        "14": 59,
+        "15": 55,
+        "16": 47,
+        "17": 36,
+        "18": 37,
+        "19": 28
+      },
+      "name": "Darcy Fogarty",
+      "stable_player_id": null
+    },
+    "darcy-fort": {
+      "by_round": {
+        "14": 54,
+        "15": 54,
+        "16": 54,
+        "17": 54,
+        "18": 54,
+        "19": 54
+      },
+      "name": "Darcy Fort",
+      "stable_player_id": null
+    },
+    "darcy-gardiner": {
+      "by_round": {
+        "14": 83,
+        "15": 83,
+        "16": 83,
+        "17": 83,
+        "18": 83,
+        "19": 82
+      },
+      "name": "Darcy Gardiner",
+      "stable_player_id": null
+    },
+    "darcy-jones": {
+      "by_round": {
+        "14": 16,
+        "15": 17,
+        "16": 17,
+        "17": 18,
+        "18": 19,
+        "19": 20
+      },
+      "name": "Darcy Jones",
+      "stable_player_id": null
+    },
+    "darcy-moore": {
+      "by_round": {
+        "14": 54,
+        "15": 54,
+        "16": 52,
+        "17": 54,
+        "18": 54,
+        "19": 54
+      },
+      "name": "Darcy Moore",
+      "stable_player_id": null
+    },
+    "darcy-parish": {
+      "by_round": {
+        "14": 70,
+        "15": 72,
+        "16": 72,
+        "17": 87,
+        "18": 110,
+        "19": 110
+      },
+      "name": "Darcy Parish",
+      "stable_player_id": null
+    },
+    "darcy-wilmot": {
+      "by_round": {
+        "14": 4,
+        "15": 4,
+        "16": 5,
+        "17": 5,
+        "18": 6,
+        "19": 7
+      },
+      "name": "Darcy Wilmot",
+      "stable_player_id": null
+    },
+    "darcy-wilson": {
+      "by_round": {
+        "14": 9,
+        "15": 7,
+        "16": 7,
+        "17": 6,
+        "18": 6,
+        "19": 5
+      },
+      "name": "Darcy Wilson",
+      "stable_player_id": null
+    },
+    "darragh-joyce": {
+      "by_round": {
+        "14": 92,
+        "15": 92,
+        "16": 92,
+        "17": 92,
+        "18": 92,
+        "19": 92
+      },
+      "name": "Darragh Joyce",
+      "stable_player_id": null
+    },
+    "dayne-zorko": {
+      "by_round": {
+        "14": 40,
+        "15": 41,
+        "16": 41,
+        "17": 40,
+        "18": 41,
+        "19": 42
+      },
+      "name": "Dayne Zorko",
+      "stable_player_id": null
+    },
+    "deven-robertson": {
+      "by_round": {
+        "14": 161,
+        "15": 161,
+        "16": 162,
+        "17": 161,
+        "18": 159,
+        "19": 158
+      },
+      "name": "Deven Robertson",
+      "stable_player_id": null
+    },
+    "dion-prestia": {
+      "by_round": {
+        "14": 137,
+        "15": 145,
+        "16": 156,
+        "17": 156,
+        "18": 163,
+        "19": 166
+      },
+      "name": "Dion Prestia",
+      "stable_player_id": null
+    },
+    "dougal-howard": {
+      "by_round": {
+        "14": 75,
+        "15": 75,
+        "16": 75,
+        "17": 76,
+        "18": 75,
+        "19": 74
+      },
+      "name": "Dougal Howard",
+      "stable_player_id": null
+    },
+    "dylan-moore": {
+      "by_round": {
+        "14": 17,
+        "15": 19,
+        "16": 20,
+        "17": 22,
+        "18": 21,
+        "19": 21
+      },
+      "name": "Dylan Moore",
+      "stable_player_id": null
+    },
+    "dylan-patterson": {
+      "by_round": {
+        "14": 48,
+        "15": 49,
+        "16": 50,
+        "17": 44,
+        "18": 45,
+        "19": 45
+      },
+      "name": "Dylan Patterson",
+      "stable_player_id": null
+    },
+    "dylan-stephens": {
+      "by_round": {
+        "14": 136,
+        "15": 126,
+        "16": 118,
+        "17": 121,
+        "18": 124,
+        "19": 130
+      },
+      "name": "Dylan Stephens",
+      "stable_player_id": null
+    },
+    "dyson-sharp": {
+      "by_round": {
+        "14": 63,
+        "15": 63,
+        "16": 63,
+        "17": 64,
+        "18": 62,
+        "19": 58
+      },
+      "name": "Dyson Sharp",
+      "stable_player_id": null
+    },
+    "eamonn-armstrong": {
+      "by_round": {
+        "14": 130,
+        "15": 130,
+        "16": 130,
+        "17": 130,
+        "18": 132,
+        "19": 132
+      },
+      "name": "Eamonn Armstrong",
+      "stable_player_id": null
+    },
+    "ed-langdon": {
+      "by_round": {
+        "14": 64,
+        "15": 75,
+        "16": 75,
+        "17": 73,
+        "18": 64,
+        "19": 70
+      },
+      "name": "Ed Langdon",
+      "stable_player_id": null
+    },
+    "ed-richards": {
+      "by_round": {
+        "14": 27,
+        "15": 31,
+        "16": 32,
+        "17": 31,
+        "18": 28,
+        "19": 25
+      },
+      "name": "Ed Richards",
+      "stable_player_id": null
+    },
+    "edward-allan": {
+      "by_round": {
+        "14": 124,
+        "15": 117,
+        "16": 112,
+        "17": 109,
+        "18": 105,
+        "19": 100
+      },
+      "name": "Edward Allan",
+      "stable_player_id": null
+    },
+    "elijah-hewett": {
+      "by_round": {
+        "14": 99,
+        "15": 100,
+        "16": 101,
+        "17": 102,
+        "18": 100,
+        "19": 103
+      },
+      "name": "Elijah Hewett",
+      "stable_player_id": null
+    },
+    "elijah-hollands": {
+      "by_round": {
+        "14": 28,
+        "15": 29,
+        "16": 30,
+        "17": 31,
+        "18": 32,
+        "19": 32
+      },
+      "name": "Elijah Hollands",
+      "stable_player_id": null
+    },
+    "elijah-tsatas": {
+      "by_round": {
+        "14": 73,
+        "15": 74,
+        "16": 73,
+        "17": 73,
+        "18": 73,
+        "19": 77
+      },
+      "name": "Elijah Tsatas",
+      "stable_player_id": null
+    },
+    "elliot-himmelberg": {
+      "by_round": {
+        "14": 89,
+        "15": 89,
+        "16": 88,
+        "17": 89,
+        "18": 89,
+        "19": 89
+      },
+      "name": "Elliott Himmelberg",
+      "stable_player_id": null
+    },
+    "elliot-yeo": {
+      "by_round": {
+        "14": 112,
+        "15": 114,
+        "16": 122,
+        "17": 148,
+        "18": 161,
+        "19": 170
+      },
+      "name": "Elliot Yeo",
+      "stable_player_id": null
+    },
+    "eric-hipwood": {
+      "by_round": {
+        "14": 90,
+        "15": 90,
+        "16": 89,
+        "17": 93,
+        "18": 92,
+        "19": 92
+      },
+      "name": "Eric Hipwood",
+      "stable_player_id": null
+    },
+    "errol-gulden": {
+      "by_round": {
+        "14": 7,
+        "15": 7,
+        "16": 9,
+        "17": 10,
+        "18": 9,
+        "19": 9
+      },
+      "name": "Errol Gulden",
+      "stable_player_id": null
+    },
+    "esava-ratugolea": {
+      "by_round": {
+        "14": 74,
+        "15": 72,
+        "16": 72,
+        "17": 72,
+        "18": 71,
+        "19": 69
+      },
+      "name": "Esava Ratugolea",
+      "stable_player_id": null
+    },
+    "ethan-read": {
+      "by_round": {
+        "14": 21,
+        "15": 21,
+        "16": 20,
+        "17": 23,
+        "18": 28,
+        "19": 27
+      },
+      "name": "Ethan Read",
+      "stable_player_id": null
+    },
+    "ewan-mackinlay": {
+      "by_round": {
+        "14": 156,
+        "15": 162,
+        "16": 160,
+        "17": 160,
+        "18": 160,
+        "19": 158
+      },
+      "name": "Ewan Mackinlay",
+      "stable_player_id": null
+    },
+    "finlay-macrae": {
+      "by_round": {
+        "14": 173,
+        "15": 173,
+        "16": 171,
+        "17": 171,
+        "18": 172,
+        "19": 171
+      },
+      "name": "Finlay Macrae",
+      "stable_player_id": null
+    },
+    "finn-callaghan": {
+      "by_round": {
+        "14": 8,
+        "15": 9,
+        "16": 8,
+        "17": 7,
+        "18": 8,
+        "19": 8
+      },
+      "name": "Finn Callaghan",
+      "stable_player_id": null
+    },
+    "finn-maginness": {
+      "by_round": {
+        "14": 165,
+        "15": 166,
+        "16": 166,
+        "17": 165,
+        "18": 166,
+        "19": 164
+      },
+      "name": "Finn Maginness",
+      "stable_player_id": null
+    },
+    "finn-o-sullivan": {
+      "by_round": {
+        "14": 29,
+        "15": 24,
+        "16": 26,
+        "17": 30,
+        "18": 29,
+        "19": 30
+      },
+      "name": "Finn O'Sullivan",
+      "stable_player_id": null
+    },
+    "finnbar-maley": {
+      "by_round": {
+        "14": 76,
+        "15": 77,
+        "16": 76,
+        "17": 78,
+        "18": 77,
+        "19": 81
+      },
+      "name": "Finnbar Maley",
+      "stable_player_id": null
+    },
+    "finnegan-davis": {
+      "by_round": {
+        "14": 85,
+        "15": 88,
+        "16": 84,
+        "17": 87,
+        "18": 87,
+        "19": 89
+      },
+      "name": "Finnegan Davis",
+      "stable_player_id": null
+    },
+    "flynn-perez": {
+      "by_round": {
+        "14": 172,
+        "15": 173,
+        "16": 172,
+        "17": 172,
+        "18": 171,
+        "19": 171
+      },
+      "name": "Flynn Perez",
+      "stable_player_id": null
+    },
+    "flynn-riley": {
+      "by_round": {
+        "14": 31,
+        "15": 31,
+        "16": 31,
+        "17": 31,
+        "18": 28,
+        "19": 29
+      },
+      "name": "Flynn Riley",
+      "stable_player_id": null
+    },
+    "flynn-young": {
+      "by_round": {
+        "14": 179,
+        "15": 180,
+        "16": 180,
+        "17": 180,
+        "18": 180,
+        "19": 180
+      },
+      "name": "Flynn Young",
+      "stable_player_id": null
+    },
+    "francis-evans": {
+      "by_round": {
+        "14": 113,
+        "15": 109,
+        "16": 106,
+        "17": 95,
+        "18": 90,
+        "19": 85
+      },
+      "name": "Francis Evans",
+      "stable_player_id": null
+    },
+    "fred-rodriguez": {
+      "by_round": {
+        "14": 134,
+        "15": 137,
+        "16": 136,
+        "17": 134,
+        "18": 135,
+        "19": 133
+      },
+      "name": "Fred Rodriguez",
+      "stable_player_id": null
+    },
+    "george-hewett": {
+      "by_round": {
+        "14": 68,
+        "15": 62,
+        "16": 61,
+        "17": 53,
+        "18": 54,
+        "19": 62
+      },
+      "name": "George Hewett",
+      "stable_player_id": null
+    },
+    "george-stevens": {
+      "by_round": {
+        "14": 148,
+        "15": 138,
+        "16": 137,
+        "17": 136,
+        "18": 137,
+        "19": 135
+      },
+      "name": "George Stevens",
+      "stable_player_id": null
+    },
+    "george-wardlaw": {
+      "by_round": {
+        "14": 32,
+        "15": 32,
+        "16": 33,
+        "17": 33,
+        "18": 32,
+        "19": 32
+      },
+      "name": "George Wardlaw",
+      "stable_player_id": null
+    },
+    "griffin-logue": {
+      "by_round": {
+        "14": 71,
+        "15": 71,
+        "16": 71,
+        "17": 70,
+        "18": 69,
+        "19": 68
+      },
+      "name": "Griffin Logue",
+      "stable_player_id": null
+    },
+    "gryan-miers": {
+      "by_round": {
+        "14": 15,
+        "15": 15,
+        "16": 16,
+        "17": 15,
+        "18": 15,
+        "19": 15
+      },
+      "name": "Gryan Miers",
+      "stable_player_id": null
+    },
+    "hamish-davis": {
+      "by_round": {
+        "14": 94,
+        "15": 96,
+        "16": 93,
+        "17": 90,
+        "18": 91,
+        "19": 92
+      },
+      "name": "Hamish Davis",
+      "stable_player_id": null
+    },
+    "harley-barker": {
+      "by_round": {
+        "14": 107,
+        "15": 108,
+        "16": 106,
+        "17": 105,
+        "18": 103,
+        "19": 105
+      },
+      "name": "Harley Barker",
+      "stable_player_id": null
+    },
+    "harley-reid": {
+      "by_round": {
+        "14": 30,
+        "15": 28,
+        "16": 30,
+        "17": 26,
+        "18": 24,
+        "19": 24
+      },
+      "name": "Harley Reid",
+      "stable_player_id": null
+    },
+    "harris-andrews": {
+      "by_round": {
+        "14": 10,
+        "15": 10,
+        "16": 10,
+        "17": 11,
+        "18": 10,
+        "19": 9
+      },
+      "name": "Harris Andrews",
+      "stable_player_id": null
+    },
+    "harrison-coe": {
+      "by_round": {
+        "14": 52,
+        "15": 52,
+        "16": 51,
+        "17": 51,
+        "18": 51,
+        "19": 51
+      },
+      "name": "Harrison Coe",
+      "stable_player_id": null
+    },
+    "harrison-himmelberg": {
+      "by_round": {
+        "14": 89,
+        "15": 90,
+        "16": 85,
+        "17": 83,
+        "18": 76,
+        "19": 77
+      },
+      "name": "Harrison Himmelberg",
+      "stable_player_id": null
+    },
+    "harrison-jones": {
+      "by_round": {
+        "14": 69,
+        "15": 66,
+        "16": 77,
+        "17": 76,
+        "18": 79,
+        "19": 78
+      },
+      "name": "Harrison Jones",
+      "stable_player_id": null
+    },
+    "harrison-oliver": {
+      "by_round": {
+        "14": 69,
+        "15": 71,
+        "16": 70,
+        "17": 69,
+        "18": 63,
+        "19": 66
+      },
+      "name": "Harrison Oliver",
+      "stable_player_id": null
+    },
+    "harrison-petty": {
+      "by_round": {
+        "14": 70,
+        "15": 70,
+        "16": 70,
+        "17": 68,
+        "18": 68,
+        "19": 65
+      },
+      "name": "Harrison Petty",
+      "stable_player_id": null
+    },
+    "harrison-ramm": {
+      "by_round": {
+        "14": 48,
+        "15": 44,
+        "16": 43,
+        "17": 43,
+        "18": 44,
+        "19": 41
+      },
+      "name": "Harrison Ramm",
+      "stable_player_id": null
+    },
+    "harry-armstrong": {
+      "by_round": {
+        "14": 34,
+        "15": 34,
+        "16": 34,
+        "17": 34,
+        "18": 33,
+        "19": 34
+      },
+      "name": "Harry Armstrong",
+      "stable_player_id": null
+    },
+    "harry-barnett": {
+      "by_round": {
+        "14": 28,
+        "15": 28,
+        "16": 28,
+        "17": 28,
+        "18": 29,
+        "19": 28
+      },
+      "name": "Harry Barnett",
+      "stable_player_id": null
+    },
+    "harry-charleson": {
+      "by_round": {
+        "14": 116,
+        "15": 115,
+        "16": 115,
+        "17": 111,
+        "18": 112,
+        "19": 113
+      },
+      "name": "Harry Charleson",
+      "stable_player_id": null
+    },
+    "harry-cunningham": {
+      "by_round": {
+        "14": 177,
+        "15": 177,
+        "16": 177,
+        "17": 177,
+        "18": 177,
+        "19": 177
+      },
+      "name": "Harry Cunningham",
+      "stable_player_id": null
+    },
+    "harry-dean": {
+      "by_round": {
+        "14": 7,
+        "15": 7,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 5
+      },
+      "name": "Harry Dean",
+      "stable_player_id": null
+    },
+    "harry-demattia": {
+      "by_round": {
+        "14": 135,
+        "15": 134,
+        "16": 131,
+        "17": 130,
+        "18": 131,
+        "19": 126
+      },
+      "name": "Harry DeMattia",
+      "stable_player_id": null
+    },
+    "harry-edwards": {
+      "by_round": {
+        "14": 67,
+        "15": 68,
+        "16": 69,
+        "17": 65,
+        "18": 65,
+        "19": 66
+      },
+      "name": "Harry Edwards",
+      "stable_player_id": null
+    },
+    "harry-kyle": {
+      "by_round": {
+        "14": 53,
+        "15": 52,
+        "16": 52,
+        "17": 50,
+        "18": 48,
+        "19": 48
+      },
+      "name": "Harry Kyle",
+      "stable_player_id": null
+    },
+    "harry-mckay": {
+      "by_round": {
+        "14": 10,
+        "15": 11,
+        "16": 9,
+        "17": 9,
+        "18": 13,
+        "19": 13
+      },
+      "name": "Harry McKay",
+      "stable_player_id": null
+    },
+    "harry-morrison": {
+      "by_round": {
+        "14": 188,
+        "15": 186,
+        "16": 188,
+        "17": 185,
+        "18": 189,
+        "19": 185
+      },
+      "name": "Harry Morrison",
+      "stable_player_id": null
+    },
+    "harry-o-farrell": {
+      "by_round": {
+        "14": 21,
+        "15": 22,
+        "16": 20,
+        "17": 20,
+        "18": 21,
+        "19": 22
+      },
+      "name": "Harry O'Farrell",
+      "stable_player_id": null
+    },
+    "harry-perryman": {
+      "by_round": {
+        "14": 127,
+        "15": 133,
+        "16": 136,
+        "17": 133,
+        "18": 136,
+        "19": 136
+      },
+      "name": "Harry Perryman",
+      "stable_player_id": null
+    },
+    "harry-rowston": {
+      "by_round": {
+        "14": 119,
+        "15": 121,
+        "16": 119,
+        "17": 120,
+        "18": 119,
+        "19": 121
+      },
+      "name": "Harry Rowston",
+      "stable_player_id": null
+    },
+    "harry-schoenberg": {
+      "by_round": {
+        "14": 185,
+        "15": 184,
+        "16": 182,
+        "17": 183,
+        "18": 184,
+        "19": 183
+      },
+      "name": "Harry Schoenberg",
+      "stable_player_id": null
+    },
+    "harry-sharp": {
+      "by_round": {
+        "14": 132,
+        "15": 110,
+        "16": 110,
+        "17": 110,
+        "18": 138,
+        "19": 142
+      },
+      "name": "Harry Sharp",
+      "stable_player_id": null
+    },
+    "harry-sheezel": {
+      "by_round": {
+        "14": 2,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1
+      },
+      "name": "Harry Sheezel",
+      "stable_player_id": null
+    },
+    "harvey-gallagher": {
+      "by_round": {
+        "14": 131,
+        "15": 132,
+        "16": 132,
+        "17": 134,
+        "18": 134,
+        "19": 135
+      },
+      "name": "Harvey Gallagher",
+      "stable_player_id": null
+    },
+    "harvey-harrison": {
+      "by_round": {
+        "14": 154,
+        "15": 155,
+        "16": 152,
+        "17": 151,
+        "18": 150,
+        "19": 150
+      },
+      "name": "Harvey Harrison",
+      "stable_player_id": null
+    },
+    "harvey-johnston": {
+      "by_round": {
+        "14": 104,
+        "15": 107,
+        "16": 107,
+        "17": 107,
+        "18": 107,
+        "19": 108
+      },
+      "name": "Harvey Johnston",
+      "stable_player_id": null
+    },
+    "harvey-langford": {
+      "by_round": {
+        "14": 46,
+        "15": 42,
+        "16": 41,
+        "17": 46,
+        "18": 45,
+        "19": 46
+      },
+      "name": "Harvey Langford",
+      "stable_player_id": null
+    },
+    "harvey-thomas": {
+      "by_round": {
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 8,
+        "18": 12,
+        "19": 12
+      },
+      "name": "Harvey Thomas",
+      "stable_player_id": null
+    },
+    "hayden-mclean": {
+      "by_round": {
+        "14": 44,
+        "15": 43,
+        "16": 43,
+        "17": 37,
+        "18": 43,
+        "19": 55
+      },
+      "name": "Hayden McLean",
+      "stable_player_id": null
+    },
+    "hayden-young": {
+      "by_round": {
+        "14": 40,
+        "15": 44,
+        "16": 53,
+        "17": 55,
+        "18": 57,
+        "19": 56
+      },
+      "name": "Hayden Young",
+      "stable_player_id": null
+    },
+    "heath-chapman": {
+      "by_round": {
+        "14": 70,
+        "15": 73,
+        "16": 66,
+        "17": 71,
+        "18": 72,
+        "19": 78
+      },
+      "name": "Heath Chapman",
+      "stable_player_id": null
+    },
+    "henry-hustwaite": {
+      "by_round": {
+        "14": 150,
+        "15": 151,
+        "16": 149,
+        "17": 147,
+        "18": 145,
+        "19": 147
+      },
+      "name": "Henry Hustwaite",
+      "stable_player_id": null
+    },
+    "henry-smith": {
+      "by_round": {
+        "14": 86,
+        "15": 86,
+        "16": 86,
+        "17": 84,
+        "18": 83,
+        "19": 84
+      },
+      "name": "Henry Smith",
+      "stable_player_id": null
+    },
+    "hudson-o-keeffe": {
+      "by_round": {
+        "14": 63,
+        "15": 64,
+        "16": 66,
+        "17": 67,
+        "18": 69,
+        "19": 69
+      },
+      "name": "Hudson O'Keeffe",
+      "stable_player_id": null
+    },
+    "hugh-bond": {
+      "by_round": {
+        "14": 122,
+        "15": 123,
+        "16": 123,
+        "17": 123,
+        "18": 121,
+        "19": 120
+      },
+      "name": "Hugh Bond",
+      "stable_player_id": null
+    },
+    "hugh-boxshall": {
+      "by_round": {
+        "14": 95,
+        "15": 98,
+        "16": 96,
+        "17": 94,
+        "18": 89,
+        "19": 91
+      },
+      "name": "Hugh Boxshall",
+      "stable_player_id": null
+    },
+    "hugh-davies": {
+      "by_round": {
+        "14": 49,
+        "15": 48,
+        "16": 45,
+        "17": 45,
+        "18": 46,
+        "19": 45
+      },
+      "name": "Hugh Davies",
+      "stable_player_id": null
+    },
+    "hugh-mccluggage": {
+      "by_round": {
+        "14": 57,
+        "15": 59,
+        "16": 60,
+        "17": 62,
+        "18": 63,
+        "19": 67
+      },
+      "name": "Hugh McCluggage",
+      "stable_player_id": null
+    },
+    "hugo-garcia": {
+      "by_round": {
+        "14": 41,
+        "15": 40,
+        "16": 40,
+        "17": 36,
+        "18": 34,
+        "19": 35
+      },
+      "name": "Hugo Garcia",
+      "stable_player_id": null
+    },
+    "hugo-hall-kahan": {
+      "by_round": {
+        "14": 139,
+        "15": 96,
+        "16": 105,
+        "17": 106,
+        "18": 108,
+        "19": 90
+      },
+      "name": "Hugo Hall-Kahan",
+      "stable_player_id": null
+    },
+    "hugo-mikunda": {
+      "by_round": {
+        "14": 62,
+        "15": 62,
+        "16": 63,
+        "17": 61,
+        "18": 66,
+        "19": 68
+      },
+      "name": "Hugo Mikunda",
+      "stable_player_id": null
+    },
+    "hugo-ralphsmith": {
+      "by_round": {
+        "14": 184,
+        "15": 185,
+        "16": 183,
+        "17": 181,
+        "18": 183,
+        "19": 184
+      },
+      "name": "Hugo Ralphsmith",
+      "stable_player_id": null
+    },
+    "hunter-clark": {
+      "by_round": {
+        "14": 155,
+        "15": 154,
+        "16": 153,
+        "17": 152,
+        "18": 153,
+        "19": 154
+      },
+      "name": "Hunter Clark",
+      "stable_player_id": null
+    },
+    "hunter-holmes": {
+      "by_round": {
+        "14": 110,
+        "15": 112,
+        "16": 111,
+        "17": 112,
+        "18": 113,
+        "19": 114
+      },
+      "name": "Hunter Holmes",
+      "stable_player_id": null
+    },
+    "hussien-el-achkar": {
+      "by_round": {
+        "14": 52,
+        "15": 48,
+        "16": 60,
+        "17": 58,
+        "18": 62,
+        "19": 63
+      },
+      "name": "Hussien El Achkar",
+      "stable_player_id": null
+    },
+    "iliro-smit": {
+      "by_round": {
+        "14": 50,
+        "15": 49,
+        "16": 49,
+        "17": 49,
+        "18": 49,
+        "19": 48
+      },
+      "name": "Iliro Smit",
+      "stable_player_id": null
+    },
+    "indy-cotton": {
+      "by_round": {
+        "14": 109,
+        "15": 113,
+        "16": 113,
+        "17": 114,
+        "18": 116,
+        "19": 117
+      },
+      "name": "Indy Cotton",
+      "stable_player_id": null
+    },
+    "isaac-cumming": {
+      "by_round": {
+        "14": 152,
+        "15": 152,
+        "16": 157,
+        "17": 157,
+        "18": 156,
+        "19": 152
+      },
+      "name": "Isaac Cumming",
+      "stable_player_id": null
+    },
+    "isaac-heeney": {
+      "by_round": {
+        "14": 14,
+        "15": 16,
+        "16": 15,
+        "17": 16,
+        "18": 19,
+        "19": 21
+      },
+      "name": "Isaac Heeney",
+      "stable_player_id": null
+    },
+    "isaac-kako": {
+      "by_round": {
+        "14": 22,
+        "15": 21,
+        "16": 25,
+        "17": 26,
+        "18": 26,
+        "19": 25
+      },
+      "name": "Isaac Kako",
+      "stable_player_id": null
+    },
+    "isaac-keeler": {
+      "by_round": {
+        "14": 54,
+        "15": 57,
+        "16": 58,
+        "17": 62,
+        "18": 63,
+        "19": 65
+      },
+      "name": "Isaac Keeler",
+      "stable_player_id": null
+    },
+    "isaac-quaynor": {
+      "by_round": {
+        "14": 75,
+        "15": 62,
+        "16": 74,
+        "17": 74,
+        "18": 73,
+        "19": 81
+      },
+      "name": "Isaac Quaynor",
+      "stable_player_id": null
+    },
+    "isaiah-dudley": {
+      "by_round": {
+        "14": 145,
+        "15": 140,
+        "16": 145,
+        "17": 145,
+        "18": 142,
+        "19": 138
+      },
+      "name": "Isaiah Dudley",
+      "stable_player_id": null
+    },
+    "izak-rankine": {
+      "by_round": {
+        "14": 4,
+        "15": 4,
+        "16": 5,
+        "17": 7,
+        "18": 5,
+        "19": 6
+      },
+      "name": "Izak Rankine",
+      "stable_player_id": null
+    },
+    "jack-bowes": {
+      "by_round": {
+        "14": 169,
+        "15": 175,
+        "16": 172,
+        "17": 172,
+        "18": 173,
+        "19": 172
+      },
+      "name": "Jack Bowes",
+      "stable_player_id": null
+    },
+    "jack-buckley": {
+      "by_round": {
+        "14": 24,
+        "15": 24,
+        "16": 23,
+        "17": 23,
+        "18": 25,
+        "19": 25
+      },
+      "name": "Jack Buckley",
+      "stable_player_id": null
+    },
+    "jack-buller": {
+      "by_round": {
+        "14": 92,
+        "15": 93,
+        "16": 91,
+        "17": 92,
+        "18": 91,
+        "19": 91
+      },
+      "name": "Jack Buller",
+      "stable_player_id": null
+    },
+    "jack-carroll": {
+      "by_round": {
+        "14": 177,
+        "15": 178,
+        "16": 178,
+        "17": 176,
+        "18": 176,
+        "19": 175
+      },
+      "name": "Jack Carroll",
+      "stable_player_id": null
+    },
+    "jack-crisp": {
+      "by_round": {
+        "14": 114,
+        "15": 119,
+        "16": 109,
+        "17": 114,
+        "18": 116,
+        "19": 117
+      },
+      "name": "Jack Crisp",
+      "stable_player_id": null
+    },
+    "jack-dalton": {
+      "by_round": {
+        "14": 41,
+        "15": 40,
+        "16": 38,
+        "17": 36,
+        "18": 37,
+        "19": 39
+      },
+      "name": "Jack Dalton",
+      "stable_player_id": null
+    },
+    "jack-darling": {
+      "by_round": {
+        "14": 65,
+        "15": 72,
+        "16": 68,
+        "17": 74,
+        "18": 74,
+        "19": 82
+      },
+      "name": "Jack Darling",
+      "stable_player_id": null
+    },
+    "jack-ginnivan": {
+      "by_round": {
+        "14": 13,
+        "15": 13,
+        "16": 11,
+        "17": 13,
+        "18": 10,
+        "19": 10
+      },
+      "name": "Jack Ginnivan",
+      "stable_player_id": null
+    },
+    "jack-graham": {
+      "by_round": {
+        "14": 123,
+        "15": 124,
+        "16": 124,
+        "17": 137,
+        "18": 136,
+        "19": 139
+      },
+      "name": "Jack Graham",
+      "stable_player_id": null
+    },
+    "jack-gunston": {
+      "by_round": {
+        "14": 23,
+        "15": 23,
+        "16": 23,
+        "17": 30,
+        "18": 25,
+        "19": 31
+      },
+      "name": "Jack Gunston",
+      "stable_player_id": null
+    },
+    "jack-henderson": {
+      "by_round": {
+        "14": 181,
+        "15": 181,
+        "16": 181,
+        "17": 181,
+        "18": 181,
+        "19": 181
+      },
+      "name": "Jack Henderson",
+      "stable_player_id": null
+    },
+    "jack-henry": {
+      "by_round": {
+        "14": 58,
+        "15": 61,
+        "16": 59,
+        "17": 60,
+        "18": 61,
+        "19": 58
+      },
+      "name": "Jack Henry",
+      "stable_player_id": null
+    },
+    "jack-higgins": {
+      "by_round": {
+        "14": 109,
+        "15": 116,
+        "16": 113,
+        "17": 117,
+        "18": 129,
+        "19": 128
+      },
+      "name": "Jack Higgins",
+      "stable_player_id": null
+    },
+    "jack-hutchinson": {
+      "by_round": {
+        "14": 182,
+        "15": 182,
+        "16": 187,
+        "17": 186,
+        "18": 185,
+        "19": 186
+      },
+      "name": "Jack Hutchinson",
+      "stable_player_id": null
+    },
+    "jack-ison": {
+      "by_round": {
+        "14": 47,
+        "15": 46,
+        "16": 45,
+        "17": 41,
+        "18": 40,
+        "19": 42
+      },
+      "name": "Jack Ison",
+      "stable_player_id": null
+    },
+    "jack-lukosius": {
+      "by_round": {
+        "14": 18,
+        "15": 19,
+        "16": 21,
+        "17": 22,
+        "18": 31,
+        "19": 33
+      },
+      "name": "Jack Lukosius",
+      "stable_player_id": null
+    },
+    "jack-martin": {
+      "by_round": {
+        "14": 139,
+        "15": 137,
+        "16": 137,
+        "17": 137,
+        "18": 136,
+        "19": 134
+      },
+      "name": "Jack Martin",
+      "stable_player_id": null
+    },
+    "jack-ough": {
+      "by_round": {
+        "14": 141,
+        "15": 140,
+        "16": 138,
+        "17": 127,
+        "18": 118,
+        "19": 118
+      },
+      "name": "Jack Ough",
+      "stable_player_id": null
+    },
+    "jack-payne": {
+      "by_round": {
+        "14": 63,
+        "15": 63,
+        "16": 60,
+        "17": 58,
+        "18": 59,
+        "19": 60
+      },
+      "name": "Jack Payne",
+      "stable_player_id": null
+    },
+    "jack-ross": {
+      "by_round": {
+        "14": 49,
+        "15": 50,
+        "16": 48,
+        "17": 49,
+        "18": 50,
+        "19": 49
+      },
+      "name": "Jack Ross",
+      "stable_player_id": null
+    },
+    "jack-scrimshaw": {
+      "by_round": {
+        "14": 128,
+        "15": 129,
+        "16": 128,
+        "17": 128,
+        "18": 131,
+        "19": 131
+      },
+      "name": "Jack Scrimshaw",
+      "stable_player_id": null
+    },
+    "jack-silvagni": {
+      "by_round": {
+        "14": 25,
+        "15": 23,
+        "16": 22,
+        "17": 21,
+        "18": 24,
+        "19": 24
+      },
+      "name": "Jack Silvagni",
+      "stable_player_id": null
+    },
+    "jack-sinclair": {
+      "by_round": {
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 8,
+        "18": 9,
+        "19": 9
+      },
+      "name": "Jack Sinclair",
+      "stable_player_id": null
+    },
+    "jack-steele": {
+      "by_round": {
+        "14": 64,
+        "15": 66,
+        "16": 67,
+        "17": 67,
+        "18": 64,
+        "19": 65
+      },
+      "name": "Jack Steele",
+      "stable_player_id": null
+    },
+    "jack-viney": {
+      "by_round": {
+        "14": 142,
+        "15": 141,
+        "16": 140,
+        "17": 142,
+        "18": 139,
+        "19": 141
+      },
+      "name": "Jack Viney",
+      "stable_player_id": null
+    },
+    "jack-watkins": {
+      "by_round": {
+        "14": 194,
+        "15": 194,
+        "16": 194,
+        "17": 194,
+        "18": 194,
+        "19": 194
+      },
+      "name": "Jack Watkins",
+      "stable_player_id": null
+    },
+    "jack-whitlock": {
+      "by_round": {
+        "14": 24,
+        "15": 25,
+        "16": 22,
+        "17": 21,
+        "18": 22,
+        "19": 21
+      },
+      "name": "Jack Whitlock",
+      "stable_player_id": null
+    },
+    "jack-williams": {
+      "by_round": {
+        "14": 47,
+        "15": 44,
+        "16": 44,
+        "17": 47,
+        "18": 47,
+        "19": 50
+      },
+      "name": "Jack Williams",
+      "stable_player_id": null
+    },
+    "jackson-archer": {
+      "by_round": {
+        "14": 150,
+        "15": 149,
+        "16": 151,
+        "17": 150,
+        "18": 151,
+        "19": 148
+      },
+      "name": "Jackson Archer",
+      "stable_player_id": null
+    },
+    "jackson-macrae": {
+      "by_round": {
+        "14": 158,
+        "15": 168,
+        "16": 168,
+        "17": 168,
+        "18": 169,
+        "19": 167
+      },
+      "name": "Jackson Macrae",
+      "stable_player_id": null
+    },
+    "jackson-mead": {
+      "by_round": {
+        "14": 158,
+        "15": 161,
+        "16": 162,
+        "17": 163,
+        "18": 163,
+        "19": 162
+      },
+      "name": "Jackson Mead",
+      "stable_player_id": null
+    },
+    "jacob-farrow": {
+      "by_round": {
+        "14": 14,
+        "15": 13,
+        "16": 12,
+        "17": 11,
+        "18": 11,
+        "19": 11
+      },
+      "name": "Jacob Farrow",
+      "stable_player_id": null
+    },
+    "jacob-hopper": {
+      "by_round": {
+        "14": 168,
+        "15": 170,
+        "16": 169,
+        "17": 169,
+        "18": 170,
+        "19": 168
+      },
+      "name": "Jacob Hopper",
+      "stable_player_id": null
+    },
+    "jacob-konstanty": {
+      "by_round": {
+        "14": 93,
+        "15": 81,
+        "16": 85,
+        "17": 101,
+        "18": 102,
+        "19": 96
+      },
+      "name": "Jacob Konstanty",
+      "stable_player_id": null
+    },
+    "jacob-molier": {
+      "by_round": {
+        "14": 36,
+        "15": 36,
+        "16": 37,
+        "17": 37,
+        "18": 37,
+        "19": 37
+      },
+      "name": "Jacob Molier",
+      "stable_player_id": null
+    },
+    "jacob-moss": {
+      "by_round": {
+        "14": 74,
+        "15": 74,
+        "16": 73,
+        "17": 71,
+        "18": 71,
+        "19": 71
+      },
+      "name": "Jacob Moss",
+      "stable_player_id": null
+    },
+    "jacob-newton": {
+      "by_round": {
+        "14": 118,
+        "15": 117,
+        "16": 114,
+        "17": 116,
+        "18": 114,
+        "19": 114
+      },
+      "name": "Jacob Newton",
+      "stable_player_id": null
+    },
+    "jacob-van-rooyen": {
+      "by_round": {
+        "14": 31,
+        "15": 26,
+        "16": 26,
+        "17": 18,
+        "18": 9,
+        "19": 9
+      },
+      "name": "Jacob Van Rooyen",
+      "stable_player_id": null
+    },
+    "jacob-wehr": {
+      "by_round": {
+        "14": 169,
+        "15": 168,
+        "16": 168,
+        "17": 168,
+        "18": 168,
+        "19": 168
+      },
+      "name": "Jacob Wehr",
+      "stable_player_id": null
+    },
+    "jacob-weitering": {
+      "by_round": {
+        "14": 15,
+        "15": 16,
+        "16": 16,
+        "17": 16,
+        "18": 16,
+        "19": 16
+      },
+      "name": "Jacob Weitering",
+      "stable_player_id": null
+    },
+    "jade-gresham": {
+      "by_round": {
+        "14": 161,
+        "15": 160,
+        "16": 157,
+        "17": 157,
+        "18": 156,
+        "19": 157
+      },
+      "name": "Jade Gresham",
+      "stable_player_id": null
+    },
+    "jaeger-o-meara": {
+      "by_round": {
+        "14": 163,
+        "15": 163,
+        "16": 164,
+        "17": 163,
+        "18": 162,
+        "19": 160
+      },
+      "name": "Jaeger O'Meara",
+      "stable_player_id": null
+    },
+    "jagga-smith": {
+      "by_round": {
+        "14": 26,
+        "15": 22,
+        "16": 19,
+        "17": 18,
+        "18": 16,
+        "19": 17
+      },
+      "name": "Jagga Smith",
+      "stable_player_id": null
+    },
+    "jai-culley": {
+      "by_round": {
+        "14": 181,
+        "15": 181,
+        "16": 181,
+        "17": 180,
+        "18": 181,
+        "19": 180
+      },
+      "name": "Jai Culley",
+      "stable_player_id": null
+    },
+    "jai-murray": {
+      "by_round": {
+        "14": 81,
+        "15": 79,
+        "16": 77,
+        "17": 80,
+        "18": 80,
+        "19": 81
+      },
+      "name": "Jai Murray",
+      "stable_player_id": null
+    },
+    "jai-newcombe": {
+      "by_round": {
+        "14": 16,
+        "15": 13,
+        "16": 13,
+        "17": 13,
+        "18": 13,
+        "19": 16
+      },
+      "name": "Jai Newcombe",
+      "stable_player_id": null
+    },
+    "jai-saxena": {
+      "by_round": {
+        "14": 94,
+        "15": 95,
+        "16": 94,
+        "17": 96,
+        "18": 98,
+        "19": 98
+      },
+      "name": "Jai Saxena",
+      "stable_player_id": null
+    },
+    "jai-serong": {
+      "by_round": {
+        "14": 136,
+        "15": 136,
+        "16": 137,
+        "17": 137,
+        "18": 137,
+        "19": 138
+      },
+      "name": "Jai Serong",
+      "stable_player_id": null
+    },
+    "jaime-uhr-henry": {
+      "by_round": {
+        "14": 40,
+        "15": 39,
+        "16": 40,
+        "17": 40,
+        "18": 40,
+        "19": 40
+      },
+      "name": "Jaime Uhr-Henry",
+      "stable_player_id": null
+    },
+    "jake-bowey": {
+      "by_round": {
+        "14": 7,
+        "15": 9,
+        "16": 9,
+        "17": 9,
+        "18": 7,
+        "19": 4
+      },
+      "name": "Jake Bowey",
+      "stable_player_id": null
+    },
+    "jake-kolodjashnij": {
+      "by_round": {
+        "14": 85,
+        "15": 85,
+        "16": 85,
+        "17": 85,
+        "18": 85,
+        "19": 85
+      },
+      "name": "Jake Kolodjashnij",
+      "stable_player_id": null
+    },
+    "jake-lever": {
+      "by_round": {
+        "14": 29,
+        "15": 26,
+        "16": 26,
+        "17": 32,
+        "18": 26,
+        "19": 26
+      },
+      "name": "Jake Lever",
+      "stable_player_id": null
+    },
+    "jake-lloyd": {
+      "by_round": {
+        "14": 141,
+        "15": 141,
+        "16": 149,
+        "17": 141,
+        "18": 145,
+        "19": 150
+      },
+      "name": "Jake Lloyd",
+      "stable_player_id": null
+    },
+    "jake-melksham": {
+      "by_round": {
+        "14": 96,
+        "15": 97,
+        "16": 94,
+        "17": 95,
+        "18": 94,
+        "19": 93
+      },
+      "name": "Jake Melksham",
+      "stable_player_id": null
+    },
+    "jake-riccardi": {
+      "by_round": {
+        "14": 57,
+        "15": 56,
+        "16": 54,
+        "17": 54,
+        "18": 55,
+        "19": 54
+      },
+      "name": "Jake Riccardi",
+      "stable_player_id": null
+    },
+    "jake-rogers": {
+      "by_round": {
+        "14": 37,
+        "15": 38,
+        "16": 39,
+        "17": 39,
+        "18": 42,
+        "19": 43
+      },
+      "name": "Jake Rogers",
+      "stable_player_id": null
+    },
+    "jake-soligo": {
+      "by_round": {
+        "14": 47,
+        "15": 51,
+        "16": 51,
+        "17": 52,
+        "18": 53,
+        "19": 55
+      },
+      "name": "Jake Soligo",
+      "stable_player_id": null
+    },
+    "jake-stringer": {
+      "by_round": {
+        "14": 129,
+        "15": 142,
+        "16": 141,
+        "17": 114,
+        "18": 122,
+        "19": 119
+      },
+      "name": "Jake Stringer",
+      "stable_player_id": null
+    },
+    "jake-waterman": {
+      "by_round": {
+        "14": 11,
+        "15": 12,
+        "16": 13,
+        "17": 15,
+        "18": 17,
+        "19": 14
+      },
+      "name": "Jake Waterman",
+      "stable_player_id": null
+    },
+    "jakob-ryan": {
+      "by_round": {
+        "14": 105,
+        "15": 106,
+        "16": 106,
+        "17": 105,
+        "18": 105,
+        "19": 106
+      },
+      "name": "Jakob Ryan",
+      "stable_player_id": null
+    },
+    "jamarra-ugle-hagan": {
+      "by_round": {
+        "14": 55,
+        "15": 54,
+        "16": 55,
+        "17": 56,
+        "18": 56,
+        "19": 56
+      },
+      "name": "Jamarra Ugle-Hagan",
+      "stable_player_id": null
+    },
+    "james-barrat": {
+      "by_round": {
+        "14": 38,
+        "15": 37,
+        "16": 38,
+        "17": 39,
+        "18": 39,
+        "19": 38
+      },
+      "name": "James Barrat",
+      "stable_player_id": null
+    },
+    "james-blanck": {
+      "by_round": {
+        "14": 87,
+        "15": 88,
+        "16": 88,
+        "17": 88,
+        "18": 88,
+        "19": 88
+      },
+      "name": "James Blanck",
+      "stable_player_id": null
+    },
+    "james-borlase": {
+      "by_round": {
+        "14": 36,
+        "15": 31,
+        "16": 24,
+        "17": 24,
+        "18": 27,
+        "19": 32
+      },
+      "name": "James Borlase",
+      "stable_player_id": null
+    },
+    "james-jordon": {
+      "by_round": {
+        "14": 165,
+        "15": 165,
+        "16": 161,
+        "17": 160,
+        "18": 157,
+        "19": 163
+      },
+      "name": "James Jordon",
+      "stable_player_id": null
+    },
+    "james-leake": {
+      "by_round": {
+        "14": 99,
+        "15": 101,
+        "16": 102,
+        "17": 102,
+        "18": 103,
+        "19": 105
+      },
+      "name": "James Leake",
+      "stable_player_id": null
+    },
+    "james-o-donnell": {
+      "by_round": {
+        "14": 28,
+        "15": 28,
+        "16": 28,
+        "17": 27,
+        "18": 29,
+        "19": 27
+      },
+      "name": "James O'Donnell",
+      "stable_player_id": null
+    },
+    "james-peatling": {
+      "by_round": {
+        "14": 75,
+        "15": 75,
+        "16": 79,
+        "17": 71,
+        "18": 70,
+        "19": 71
+      },
+      "name": "James Peatling",
+      "stable_player_id": null
+    },
+    "james-rowbottom": {
+      "by_round": {
+        "14": 91,
+        "15": 97,
+        "16": 89,
+        "17": 96,
+        "18": 96,
+        "19": 101
+      },
+      "name": "James Rowbottom",
+      "stable_player_id": null
+    },
+    "james-sicily": {
+      "by_round": {
+        "14": 22,
+        "15": 25,
+        "16": 24,
+        "17": 25,
+        "18": 29,
+        "19": 28
+      },
+      "name": "James Sicily",
+      "stable_player_id": null
+    },
+    "james-trezise": {
+      "by_round": {
+        "14": 126,
+        "15": 128,
+        "16": 129,
+        "17": 129,
+        "18": 129,
+        "19": 130
+      },
+      "name": "James Trezise",
+      "stable_player_id": null
+    },
+    "james-tunstill": {
+      "by_round": {
+        "14": 174,
+        "15": 176,
+        "16": 177,
+        "17": 174,
+        "18": 175,
+        "19": 174
+      },
+      "name": "James Tunstill",
+      "stable_player_id": null
+    },
+    "james-worpel": {
+      "by_round": {
+        "14": 129,
+        "15": 129,
+        "16": 128,
+        "17": 126,
+        "18": 128,
+        "19": 123
+      },
+      "name": "James Worpel",
+      "stable_player_id": null
+    },
+    "jamie-cripps": {
+      "by_round": {
+        "14": 166,
+        "15": 167,
+        "16": 167,
+        "17": 166,
+        "18": 168,
+        "19": 165
+      },
+      "name": "Jamie Cripps",
+      "stable_player_id": null
+    },
+    "jamie-elliott": {
+      "by_round": {
+        "14": 168,
+        "15": 169,
+        "16": 169,
+        "17": 168,
+        "18": 170,
+        "19": 168
+      },
+      "name": "Jamie Elliott",
+      "stable_player_id": null
+    },
+    "jaren-carr": {
+      "by_round": {
+        "14": 92,
+        "15": 94,
+        "16": 93,
+        "17": 94,
+        "18": 96,
+        "19": 93
+      },
+      "name": "Jaren Carr",
+      "stable_player_id": null
+    },
+    "jarman-impey": {
+      "by_round": {
+        "14": 63,
+        "15": 64,
+        "16": 65,
+        "17": 65,
+        "18": 65,
+        "19": 54
+      },
+      "name": "Jarman Impey",
+      "stable_player_id": null
+    },
+    "jarrod-berry": {
+      "by_round": {
+        "14": 125,
+        "15": 125,
+        "16": 134,
+        "17": 138,
+        "18": 142,
+        "19": 146
+      },
+      "name": "Jarrod Berry",
+      "stable_player_id": null
+    },
+    "jarrod-witts": {
+      "by_round": {
+        "14": 43,
+        "15": 50,
+        "16": 52,
+        "17": 52,
+        "18": 52,
+        "19": 52
+      },
+      "name": "Jarrod Witts",
+      "stable_player_id": null
+    },
+    "jase-burgoyne": {
+      "by_round": {
+        "14": 18,
+        "15": 16,
+        "16": 19,
+        "17": 19,
+        "18": 19,
+        "19": 18
+      },
+      "name": "Jase Burgoyne",
+      "stable_player_id": null
+    },
+    "jason-horne-francis": {
+      "by_round": {
+        "14": 15,
+        "15": 12,
+        "16": 11,
+        "17": 11,
+        "18": 11,
+        "19": 10
+      },
+      "name": "Jason Horne-Francis",
+      "stable_player_id": null
+    },
+    "jaspa-fletcher": {
+      "by_round": {
+        "14": 17,
+        "15": 20,
+        "16": 15,
+        "17": 17,
+        "18": 12,
+        "19": 15
+      },
+      "name": "Jaspa Fletcher",
+      "stable_player_id": null
+    },
+    "jasper-alger": {
+      "by_round": {
+        "14": 70,
+        "15": 79,
+        "16": 76,
+        "17": 80,
+        "18": 77,
+        "19": 76
+      },
+      "name": "Jasper Alger",
+      "stable_player_id": null
+    },
+    "jaxon-artemis": {
+      "by_round": {
+        "14": 93,
+        "15": 94,
+        "16": 98,
+        "17": 97,
+        "18": 100,
+        "19": 101
+      },
+      "name": "Jaxon Artemis",
+      "stable_player_id": null
+    },
+    "jaxon-prior": {
+      "by_round": {
+        "14": 82,
+        "15": 82,
+        "16": 86,
+        "17": 91,
+        "18": 95,
+        "19": 93
+      },
+      "name": "Jaxon Prior",
+      "stable_player_id": null
+    },
+    "jay-polkinghorne": {
+      "by_round": {
+        "14": 88,
+        "15": 90,
+        "16": 87,
+        "17": 89,
+        "18": 91,
+        "19": 82
+      },
+      "name": "Jay Polkinghorne",
+      "stable_player_id": null
+    },
+    "jayden-laverde": {
+      "by_round": {
+        "14": 32,
+        "15": 35,
+        "16": 34,
+        "17": 37,
+        "18": 37,
+        "19": 44
+      },
+      "name": "Jayden Laverde",
+      "stable_player_id": null
+    },
+    "jayden-nguyen": {
+      "by_round": {
+        "14": 84,
+        "15": 83,
+        "16": 82,
+        "17": 82,
+        "18": 81,
+        "19": 80
+      },
+      "name": "Jayden Nguyen",
+      "stable_player_id": null
+    },
+    "jayden-short": {
+      "by_round": {
+        "14": 32,
+        "15": 32,
+        "16": 37,
+        "17": 38,
+        "18": 38,
+        "19": 40
+      },
+      "name": "Jayden Short",
+      "stable_player_id": null
+    },
+    "jed-adams": {
+      "by_round": {
+        "14": 52,
+        "15": 51,
+        "16": 49,
+        "17": 50,
+        "18": 51,
+        "19": 51
+      },
+      "name": "Jed Adams",
+      "stable_player_id": null
+    },
+    "jed-bews": {
+      "by_round": {
+        "14": 167,
+        "15": 166,
+        "16": 165,
+        "17": 166,
+        "18": 166,
+        "19": 167
+      },
+      "name": "Jed Bews",
+      "stable_player_id": null
+    },
+    "jed-walter": {
+      "by_round": {
+        "14": 22,
+        "15": 15,
+        "16": 14,
+        "17": 20,
+        "18": 20,
+        "19": 23
+      },
+      "name": "Jed Walter",
+      "stable_player_id": null
+    },
+    "jedd-busslinger": {
+      "by_round": {
+        "14": 23,
+        "15": 25,
+        "16": 27,
+        "17": 29,
+        "18": 22,
+        "19": 21
+      },
+      "name": "Jedd Busslinger",
+      "stable_player_id": null
+    },
+    "jeremy-cameron": {
+      "by_round": {
+        "14": 15,
+        "15": 20,
+        "16": 19,
+        "17": 29,
+        "18": 29,
+        "19": 30
+      },
+      "name": "Jeremy Cameron",
+      "stable_player_id": null
+    },
+    "jeremy-howe": {
+      "by_round": {
+        "14": 101,
+        "15": 86,
+        "16": 95,
+        "17": 100,
+        "18": 94,
+        "19": 95
+      },
+      "name": "Jeremy Howe",
+      "stable_player_id": null
+    },
+    "jeremy-sharp": {
+      "by_round": {
+        "14": 170,
+        "15": 172,
+        "16": 176,
+        "17": 177,
+        "18": 178,
+        "19": 178
+      },
+      "name": "Jeremy Sharp",
+      "stable_player_id": null
+    },
+    "jesse-dattoli": {
+      "by_round": {
+        "14": 51,
+        "15": 50,
+        "16": 51,
+        "17": 51,
+        "18": 53,
+        "19": 55
+      },
+      "name": "Jesse Dattoli",
+      "stable_player_id": null
+    },
+    "jesse-hogan": {
+      "by_round": {
+        "14": 50,
+        "15": 68,
+        "16": 65,
+        "17": 65,
+        "18": 64,
+        "19": 64
+      },
+      "name": "Jesse Hogan",
+      "stable_player_id": null
+    },
+    "jesse-mellor": {
+      "by_round": {
+        "14": 154,
+        "15": 154,
+        "16": 154,
+        "17": 154,
+        "18": 154,
+        "19": 153
+      },
+      "name": "Jesse Mellor",
+      "stable_player_id": null
+    },
+    "jesse-motlop": {
+      "by_round": {
+        "14": 122,
+        "15": 125,
+        "16": 124,
+        "17": 129,
+        "18": 124,
+        "19": 125
+      },
+      "name": "Jesse Motlop",
+      "stable_player_id": null
+    },
+    "jevan-phillipou": {
+      "by_round": {
+        "14": 44,
+        "15": 44,
+        "16": 47,
+        "17": 50,
+        "18": 49,
+        "19": 50
+      },
+      "name": "Jevan Phillipou",
+      "stable_player_id": null
+    },
+    "jhye-clark": {
+      "by_round": {
+        "14": 121,
+        "15": 123,
+        "16": 123,
+        "17": 122,
+        "18": 125,
+        "19": 111
+      },
+      "name": "Jhye Clark",
+      "stable_player_id": null
+    },
+    "jobe-shanahan": {
+      "by_round": {
+        "14": 16,
+        "15": 16,
+        "16": 18,
+        "17": 13,
+        "18": 10,
+        "19": 10
+      },
+      "name": "Jobe Shanahan",
+      "stable_player_id": null
+    },
+    "joe-berry": {
+      "by_round": {
+        "14": 25,
+        "15": 25,
+        "16": 21,
+        "17": 27,
+        "18": 27,
+        "19": 28
+      },
+      "name": "Joe Berry",
+      "stable_player_id": null
+    },
+    "joe-pike": {
+      "by_round": {
+        "14": 41,
+        "15": 40,
+        "16": 41,
+        "17": 41,
+        "18": 41,
+        "19": 41
+      },
+      "name": "Joe Pike",
+      "stable_player_id": null
+    },
+    "joe-richards": {
+      "by_round": {
+        "14": 31,
+        "15": 31,
+        "16": 26,
+        "17": 28,
+        "18": 29,
+        "19": 24
+      },
+      "name": "Joe Richards",
+      "stable_player_id": null
+    },
+    "joel-amartey": {
+      "by_round": {
+        "14": 88,
+        "15": 87,
+        "16": 96,
+        "17": 96,
+        "18": 95,
+        "19": 94
+      },
+      "name": "Joel Amartey",
+      "stable_player_id": null
+    },
+    "joel-cochran": {
+      "by_round": {
+        "14": 42,
+        "15": 40,
+        "16": 41,
+        "17": 41,
+        "18": 42,
+        "19": 42
+      },
+      "name": "Joel Cochran",
+      "stable_player_id": null
+    },
+    "joel-fitzgerald": {
+      "by_round": {
+        "14": 172,
+        "15": 174,
+        "16": 173,
+        "17": 175,
+        "18": 168,
+        "19": 176
+      },
+      "name": "Joel Fitzgerald",
+      "stable_player_id": null
+    },
+    "joel-freijah": {
+      "by_round": {
+        "14": 36,
+        "15": 36,
+        "16": 37,
+        "17": 40,
+        "18": 40,
+        "19": 45
+      },
+      "name": "Joel Freijah",
+      "stable_player_id": null
+    },
+    "joel-hamling": {
+      "by_round": {
+        "14": 86,
+        "15": 86,
+        "16": 86,
+        "17": 86,
+        "18": 86,
+        "19": 86
+      },
+      "name": "Joel Hamling",
+      "stable_player_id": null
+    },
+    "joel-jeffrey": {
+      "by_round": {
+        "14": 24,
+        "15": 14,
+        "16": 21,
+        "17": 24,
+        "18": 24,
+        "19": 24
+      },
+      "name": "Joel Jeffrey",
+      "stable_player_id": null
+    },
+    "john-noble": {
+      "by_round": {
+        "14": 10,
+        "15": 10,
+        "16": 11,
+        "17": 12,
+        "18": 13,
+        "19": 12
+      },
+      "name": "John Noble",
+      "stable_player_id": null
+    },
+    "jonty-faull": {
+      "by_round": {
+        "14": 26,
+        "15": 27,
+        "16": 28,
+        "17": 26,
+        "18": 26,
+        "19": 25
+      },
+      "name": "Jonty Faull",
+      "stable_player_id": null
+    },
+    "jordan-boyd": {
+      "by_round": {
+        "14": 176,
+        "15": 176,
+        "16": 176,
+        "17": 176,
+        "18": 176,
+        "19": 175
+      },
+      "name": "Jordan Boyd",
+      "stable_player_id": null
+    },
+    "jordan-clark": {
+      "by_round": {
+        "14": 5,
+        "15": 5,
+        "16": 4,
+        "17": 6,
+        "18": 5,
+        "19": 6
+      },
+      "name": "Jordan Clark",
+      "stable_player_id": null
+    },
+    "jordan-croft": {
+      "by_round": {
+        "14": 28,
+        "15": 33,
+        "16": 33,
+        "17": 32,
+        "18": 32,
+        "19": 29
+      },
+      "name": "Jordan Croft",
+      "stable_player_id": null
+    },
+    "jordan-dawson": {
+      "by_round": {
+        "14": 22,
+        "15": 25,
+        "16": 24,
+        "17": 23,
+        "18": 23,
+        "19": 23
+      },
+      "name": "Jordan Dawson",
+      "stable_player_id": null
+    },
+    "jordan-de-goey": {
+      "by_round": {
+        "14": 19,
+        "15": 16,
+        "16": 15,
+        "17": 16,
+        "18": 16,
+        "19": 16
+      },
+      "name": "Jordan De Goey",
+      "stable_player_id": null
+    },
+    "jordan-ridley": {
+      "by_round": {
+        "14": 43,
+        "15": 43,
+        "16": 43,
+        "17": 51,
+        "18": 50,
+        "19": 53
+      },
+      "name": "Jordan Ridley",
+      "stable_player_id": null
+    },
+    "jordon-butts": {
+      "by_round": {
+        "14": 91,
+        "15": 91,
+        "16": 91,
+        "17": 91,
+        "18": 91,
+        "19": 91
+      },
+      "name": "Jordon Butts",
+      "stable_player_id": null
+    },
+    "jordon-sweet": {
+      "by_round": {
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6
+      },
+      "name": "Jordon Sweet",
+      "stable_player_id": null
+    },
+    "josaia-delana": {
+      "by_round": {
+        "14": 102,
+        "15": 100,
+        "16": 99,
+        "17": 71,
+        "18": 72,
+        "19": 71
+      },
+      "name": "Josaia Delana",
+      "stable_player_id": null
+    },
+    "joseph-fonti": {
+      "by_round": {
+        "14": 61,
+        "15": 63,
+        "16": 56,
+        "17": 57,
+        "18": 56,
+        "19": 57
+      },
+      "name": "Joseph Fonti",
+      "stable_player_id": null
+    },
+    "josh-battle": {
+      "by_round": {
+        "14": 5,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6
+      },
+      "name": "Josh Battle",
+      "stable_player_id": null
+    },
+    "josh-daicos": {
+      "by_round": {
+        "14": 16,
+        "15": 18,
+        "16": 16,
+        "17": 18,
+        "18": 16,
+        "19": 20
+      },
+      "name": "Josh Daicos",
+      "stable_player_id": null
+    },
+    "josh-dolan": {
+      "by_round": {
+        "14": 73,
+        "15": 70,
+        "16": 74,
+        "17": 74,
+        "18": 64,
+        "19": 66
+      },
+      "name": "Josh Dolan",
+      "stable_player_id": null
+    },
+    "josh-draper": {
+      "by_round": {
+        "14": 26,
+        "15": 27,
+        "16": 29,
+        "17": 30,
+        "18": 30,
+        "19": 33
+      },
+      "name": "Josh Draper",
+      "stable_player_id": null
+    },
+    "josh-dunkley": {
+      "by_round": {
+        "14": 85,
+        "15": 82,
+        "16": 78,
+        "17": 75,
+        "18": 78,
+        "19": 73
+      },
+      "name": "Josh Dunkley",
+      "stable_player_id": null
+    },
+    "josh-gibcus": {
+      "by_round": {
+        "14": 57,
+        "15": 56,
+        "16": 55,
+        "17": 56,
+        "18": 57,
+        "19": 57
+      },
+      "name": "Josh Gibcus",
+      "stable_player_id": null
+    },
+    "josh-goater": {
+      "by_round": {
+        "14": 142,
+        "15": 140,
+        "16": 141,
+        "17": 143,
+        "18": 144,
+        "19": 144
+      },
+      "name": "Josh Goater",
+      "stable_player_id": null
+    },
+    "josh-lai": {
+      "by_round": {
+        "14": 95,
+        "15": 98,
+        "16": 91,
+        "17": 89,
+        "18": 86,
+        "19": 86
+      },
+      "name": "Josh Lai",
+      "stable_player_id": null
+    },
+    "josh-lindsay": {
+      "by_round": {
+        "14": 11,
+        "15": 11,
+        "16": 13,
+        "17": 13,
+        "18": 15,
+        "19": 14
+      },
+      "name": "Josh Lindsay",
+      "stable_player_id": null
+    },
+    "josh-rachele": {
+      "by_round": {
+        "14": 14,
+        "15": 14,
+        "16": 14,
+        "17": 14,
+        "18": 14,
+        "19": 13
+      },
+      "name": "Josh Rachele",
+      "stable_player_id": null
+    },
+    "josh-sinn": {
+      "by_round": {
+        "14": 117,
+        "15": 118,
+        "16": 119,
+        "17": 120,
+        "18": 120,
+        "19": 121
+      },
+      "name": "Josh Sinn",
+      "stable_player_id": null
+    },
+    "josh-smillie": {
+      "by_round": {
+        "14": 78,
+        "15": 78,
+        "16": 76,
+        "17": 77,
+        "18": 75,
+        "19": 82
+      },
+      "name": "Josh Smillie",
+      "stable_player_id": null
+    },
+    "josh-treacy": {
+      "by_round": {
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1
+      },
+      "name": "Josh Treacy",
+      "stable_player_id": null
+    },
+    "josh-ward": {
+      "by_round": {
+        "14": 55,
+        "15": 49,
+        "16": 49,
+        "17": 47,
+        "18": 44,
+        "19": 41
+      },
+      "name": "Josh Ward",
+      "stable_player_id": null
+    },
+    "josh-worrell": {
+      "by_round": {
+        "14": 6,
+        "15": 6,
+        "16": 7,
+        "17": 7,
+        "18": 8,
+        "19": 8
+      },
+      "name": "Josh Worrell",
+      "stable_player_id": null
+    },
+    "joshua-kelly": {
+      "by_round": {
+        "14": 118,
+        "15": 120,
+        "16": 121,
+        "17": 119,
+        "18": 121,
+        "19": 124
+      },
+      "name": "Joshua Kelly",
+      "stable_player_id": null
+    },
+    "joshua-weddle": {
+      "by_round": {
+        "14": 33,
+        "15": 36,
+        "16": 36,
+        "17": 36,
+        "18": 32,
+        "19": 29
+      },
+      "name": "Joshua Weddle",
+      "stable_player_id": null
+    },
+    "judd-mcvee": {
+      "by_round": {
+        "14": 114,
+        "15": 104,
+        "16": 94,
+        "17": 94,
+        "18": 92,
+        "19": 91
+      },
+      "name": "Judd McVee",
+      "stable_player_id": null
+    },
+    "judson-clarke": {
+      "by_round": {
+        "14": 142,
+        "15": 139,
+        "16": 140,
+        "17": 140,
+        "18": 140,
+        "19": 137
+      },
+      "name": "Judson Clarke",
+      "stable_player_id": null
+    },
+    "justin-mcinerney": {
+      "by_round": {
+        "14": 56,
+        "15": 57,
+        "16": 57,
+        "17": 60,
+        "18": 60,
+        "19": 60
+      },
+      "name": "Justin McInerney",
+      "stable_player_id": null
+    },
+    "jy-farrar": {
+      "by_round": {
+        "14": 100,
+        "15": 100,
+        "16": 99,
+        "17": 99,
+        "18": 99,
+        "19": 100
+      },
+      "name": "Jy Farrar",
+      "stable_player_id": null
+    },
+    "jy-simpkin": {
+      "by_round": {
+        "14": 90,
+        "15": 92,
+        "16": 98,
+        "17": 100,
+        "18": 90,
+        "19": 98
+      },
+      "name": "Jy Simpkin",
+      "stable_player_id": null
+    },
+    "jye-amiss": {
+      "by_round": {
+        "14": 19,
+        "15": 18,
+        "16": 25,
+        "17": 28,
+        "18": 27,
+        "19": 20
+      },
+      "name": "Jye Amiss",
+      "stable_player_id": null
+    },
+    "jye-caldwell": {
+      "by_round": {
+        "14": 72,
+        "15": 73,
+        "16": 82,
+        "17": 82,
+        "18": 83,
+        "19": 85
+      },
+      "name": "Jye Caldwell",
+      "stable_player_id": null
+    },
+    "kade-chandler": {
+      "by_round": {
+        "14": 24,
+        "15": 24,
+        "16": 24,
+        "17": 24,
+        "18": 24,
+        "19": 26
+      },
+      "name": "Kade Chandler",
+      "stable_player_id": null
+    },
+    "kai-lohmann": {
+      "by_round": {
+        "14": 54,
+        "15": 53,
+        "16": 48,
+        "17": 48,
+        "18": 44,
+        "19": 35
+      },
+      "name": "Kai Lohmann",
+      "stable_player_id": null
+    },
+    "kalani-white": {
+      "by_round": {
+        "14": 71,
+        "15": 70,
+        "16": 70,
+        "17": 69,
+        "18": 68,
+        "19": 68
+      },
+      "name": "Kalani White",
+      "stable_player_id": null
+    },
+    "kaleb-smith": {
+      "by_round": {
+        "14": 133,
+        "15": 135,
+        "16": 135,
+        "17": 136,
+        "18": 135,
+        "19": 137
+      },
+      "name": "Kaleb Smith",
+      "stable_player_id": null
+    },
+    "kane-farrell": {
+      "by_round": {
+        "14": 34,
+        "15": 35,
+        "16": 34,
+        "17": 34,
+        "18": 36,
+        "19": 37
+      },
+      "name": "Kane Farrell",
+      "stable_player_id": null
+    },
+    "kane-mcauliffe": {
+      "by_round": {
+        "14": 76,
+        "15": 76,
+        "16": 75,
+        "17": 72,
+        "18": 71,
+        "19": 76
+      },
+      "name": "Kane McAuliffe",
+      "stable_player_id": null
+    },
+    "karl-amon": {
+      "by_round": {
+        "14": 58,
+        "15": 56,
+        "16": 64,
+        "17": 64,
+        "18": 77,
+        "19": 79
+      },
+      "name": "Karl Amon",
+      "stable_player_id": null
+    },
+    "karl-worner": {
+      "by_round": {
+        "14": 73,
+        "15": 69,
+        "16": 62,
+        "17": 47,
+        "18": 47,
+        "19": 46
+      },
+      "name": "Karl Worner",
+      "stable_player_id": null
+    },
+    "kayle-gerreyn": {
+      "by_round": {
+        "14": 67,
+        "15": 65,
+        "16": 64,
+        "17": 64,
+        "18": 65,
+        "19": 66
+      },
+      "name": "Kayle Gerreyn",
+      "stable_player_id": null
+    },
+    "keidean-coleman": {
+      "by_round": {
+        "14": 55,
+        "15": 54,
+        "16": 53,
+        "17": 53,
+        "18": 52,
+        "19": 52
+      },
+      "name": "Keidean Coleman",
+      "stable_player_id": null
+    },
+    "keighton-matofai-forbes": {
+      "by_round": {
+        "14": 113,
+        "15": 110,
+        "16": 110,
+        "17": 110,
+        "18": 111,
+        "19": 112
+      },
+      "name": "Keighton Matofai-Forbes",
+      "stable_player_id": null
+    },
+    "kieren-briggs": {
+      "by_round": {
+        "14": 10,
+        "15": 9,
+        "16": 9,
+        "17": 10,
+        "18": 7,
+        "19": 8
+      },
+      "name": "Kieren Briggs",
+      "stable_player_id": null
+    },
+    "kobe-mcdonald": {
+      "by_round": {
+        "14": 110,
+        "15": 114,
+        "16": 114,
+        "17": 115,
+        "18": 117,
+        "19": 118
+      },
+      "name": "Kobe McDonald",
+      "stable_player_id": null
+    },
+    "koby-coulson": {
+      "by_round": {
+        "14": 126,
+        "15": 127,
+        "16": 125,
+        "17": 123,
+        "18": 127,
+        "19": 128
+      },
+      "name": "Koby Coulson",
+      "stable_player_id": null
+    },
+    "koby-evans": {
+      "by_round": {
+        "14": 48,
+        "15": 49,
+        "16": 50,
+        "17": 52,
+        "18": 54,
+        "19": 56
+      },
+      "name": "Koby Evans",
+      "stable_player_id": null
+    },
+    "koltyn-tholstrup": {
+      "by_round": {
+        "14": 36,
+        "15": 38,
+        "16": 38,
+        "17": 37,
+        "18": 37,
+        "19": 35
+      },
+      "name": "Koltyn Tholstrup",
+      "stable_player_id": null
+    },
+    "kye-annand": {
+      "by_round": {
+        "14": 65,
+        "15": 64,
+        "16": 65,
+        "17": 61,
+        "18": 60,
+        "19": 61
+      },
+      "name": "Kye Annand",
+      "stable_player_id": null
+    },
+    "kye-fincher": {
+      "by_round": {
+        "14": 130,
+        "15": 133,
+        "16": 132,
+        "17": 132,
+        "18": 132,
+        "19": 132
+      },
+      "name": "Kye Fincher",
+      "stable_player_id": null
+    },
+    "kyle-langford": {
+      "by_round": {
+        "14": 43,
+        "15": 42,
+        "16": 42,
+        "17": 44,
+        "18": 42,
+        "19": 48
+      },
+      "name": "Kyle Langford",
+      "stable_player_id": null
+    },
+    "kysaiah-pickett": {
+      "by_round": {
+        "14": 2,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 2,
+        "19": 1
+      },
+      "name": "Kysaiah Pickett",
+      "stable_player_id": null
+    },
+    "lachie-jaques": {
+      "by_round": {
+        "14": 56,
+        "15": 55,
+        "16": 54,
+        "17": 55,
+        "18": 54,
+        "19": 55
+      },
+      "name": "Lachie Jaques",
+      "stable_player_id": null
+    },
+    "lachie-neale": {
+      "by_round": {
+        "14": 53,
+        "15": 52,
+        "16": 55,
+        "17": 56,
+        "18": 49,
+        "19": 47
+      },
+      "name": "Lachie Neale",
+      "stable_player_id": null
+    },
+    "lachie-sullivan": {
+      "by_round": {
+        "14": 183,
+        "15": 183,
+        "16": 183,
+        "17": 183,
+        "18": 183,
+        "19": 182
+      },
+      "name": "Lachie Sullivan",
+      "stable_player_id": null
+    },
+    "lachie-whitfield": {
+      "by_round": {
+        "14": 13,
+        "15": 15,
+        "16": 14,
+        "17": 15,
+        "18": 17,
+        "19": 19
+      },
+      "name": "Lachie Whitfield",
+      "stable_player_id": null
+    },
+    "lachlan-ash": {
+      "by_round": {
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1
+      },
+      "name": "Lachlan Ash",
+      "stable_player_id": null
+    },
+    "lachlan-blakiston": {
+      "by_round": {
+        "14": 90,
+        "15": 90,
+        "16": 90,
+        "17": 90,
+        "18": 90,
+        "19": 89
+      },
+      "name": "Lachlan Blakiston",
+      "stable_player_id": null
+    },
+    "lachlan-bramble": {
+      "by_round": {
+        "14": 137,
+        "15": 136,
+        "16": 136,
+        "17": 142,
+        "18": 145,
+        "19": 149
+      },
+      "name": "Lachlan Bramble",
+      "stable_player_id": null
+    },
+    "lachlan-carmichael": {
+      "by_round": {
+        "14": 68,
+        "15": 70,
+        "16": 71,
+        "17": 72,
+        "18": 70,
+        "19": 72
+      },
+      "name": "Lachlan Carmichael",
+      "stable_player_id": null
+    },
+    "lachlan-cowan": {
+      "by_round": {
+        "14": 74,
+        "15": 65,
+        "16": 59,
+        "17": 60,
+        "18": 62,
+        "19": 65
+      },
+      "name": "Lachlan Cowan",
+      "stable_player_id": null
+    },
+    "lachlan-fogarty": {
+      "by_round": {
+        "14": 146,
+        "15": 146,
+        "16": 147,
+        "17": 146,
+        "18": 146,
+        "19": 144
+      },
+      "name": "Lachlan Fogarty",
+      "stable_player_id": null
+    },
+    "lachlan-gulbin": {
+      "by_round": {
+        "14": 76,
+        "15": 75,
+        "16": 79,
+        "17": 77,
+        "18": 79,
+        "19": 78
+      },
+      "name": "Lachlan Gulbin",
+      "stable_player_id": null
+    },
+    "lachlan-jones": {
+      "by_round": {
+        "14": 134,
+        "15": 134,
+        "16": 131,
+        "17": 132,
+        "18": 133,
+        "19": 133
+      },
+      "name": "Lachlan Jones",
+      "stable_player_id": null
+    },
+    "lachlan-mcandrew": {
+      "by_round": {
+        "14": 16,
+        "15": 17,
+        "16": 14,
+        "17": 14,
+        "18": 14,
+        "19": 15
+      },
+      "name": "Lachlan McAndrew",
+      "stable_player_id": null
+    },
+    "lachlan-mcneil": {
+      "by_round": {
+        "14": 178,
+        "15": 163,
+        "16": 163,
+        "17": 169,
+        "18": 172,
+        "19": 177
+      },
+      "name": "Lachlan McNeil",
+      "stable_player_id": null
+    },
+    "lachlan-schultz": {
+      "by_round": {
+        "14": 34,
+        "15": 34,
+        "16": 27,
+        "17": 33,
+        "18": 33,
+        "19": 33
+      },
+      "name": "Lachlan Schultz",
+      "stable_player_id": null
+    },
+    "lachlan-sholl": {
+      "by_round": {
+        "14": 153,
+        "15": 157,
+        "16": 158,
+        "17": 158,
+        "18": 156,
+        "19": 155
+      },
+      "name": "Lachlan Sholl",
+      "stable_player_id": null
+    },
+    "lachlan-smith": {
+      "by_round": {
+        "14": 26,
+        "15": 26,
+        "16": 25,
+        "17": 25,
+        "18": 25,
+        "19": 25
+      },
+      "name": "Lachlan Smith",
+      "stable_player_id": null
+    },
+    "lachlan-weller": {
+      "by_round": {
+        "14": 180,
+        "15": 180,
+        "16": 180,
+        "17": 179,
+        "18": 180,
+        "19": 179
+      },
+      "name": "Lachlan Weller",
+      "stable_player_id": null
+    },
+    "lachy-dovaston": {
+      "by_round": {
+        "14": 29,
+        "15": 30,
+        "16": 31,
+        "17": 30,
+        "18": 31,
+        "19": 31
+      },
+      "name": "Lachy Dovaston",
+      "stable_player_id": null
+    },
+    "laitham-vandermeer": {
+      "by_round": {
+        "14": 169,
+        "15": 170,
+        "16": 170,
+        "17": 170,
+        "18": 171,
+        "19": 169
+      },
+      "name": "Laitham Vandermeer",
+      "stable_player_id": null
+    },
+    "lance-collard": {
+      "by_round": {
+        "14": 85,
+        "15": 87,
+        "16": 88,
+        "17": 90,
+        "18": 92,
+        "19": 89
+      },
+      "name": "Lance Collard",
+      "stable_player_id": null
+    },
+    "latrelle-pickett": {
+      "by_round": {
+        "14": 40,
+        "15": 41,
+        "16": 43,
+        "17": 43,
+        "18": 45,
+        "19": 45
+      },
+      "name": "Latrelle Pickett",
+      "stable_player_id": null
+    },
+    "lawson-humphries": {
+      "by_round": {
+        "14": 26,
+        "15": 24,
+        "16": 26,
+        "17": 26,
+        "18": 26,
+        "19": 26
+      },
+      "name": "Lawson Humphries",
+      "stable_player_id": null
+    },
+    "leek-aleer": {
+      "by_round": {
+        "14": 51,
+        "15": 46,
+        "16": 46,
+        "17": 47,
+        "18": 47,
+        "19": 48
+      },
+      "name": "Leek Aleer",
+      "stable_player_id": null
+    },
+    "lennox-hoffman": {
+      "by_round": {
+        "14": 111,
+        "15": 109,
+        "16": 109,
+        "17": 109,
+        "18": 110,
+        "19": 110
+      },
+      "name": "Lennox Hoffman",
+      "stable_player_id": null
+    },
+    "leo-lombard": {
+      "by_round": {
+        "14": 23,
+        "15": 22,
+        "16": 22,
+        "17": 21,
+        "18": 17,
+        "19": 17
+      },
+      "name": "Leo Lombard",
+      "stable_player_id": null
+    },
+    "leon-kickett": {
+      "by_round": {
+        "14": 63,
+        "15": 63,
+        "16": 65,
+        "17": 67,
+        "18": 71,
+        "19": 75
+      },
+      "name": "Leon Kickett",
+      "stable_player_id": null
+    },
+    "levi-ashcroft": {
+      "by_round": {
+        "14": 31,
+        "15": 29,
+        "16": 29,
+        "17": 29,
+        "18": 30,
+        "19": 29
+      },
+      "name": "Levi Ashcroft",
+      "stable_player_id": null
+    },
+    "lewis-hayes": {
+      "by_round": {
+        "14": 45,
+        "15": 42,
+        "16": 40,
+        "17": 40,
+        "18": 41,
+        "19": 40
+      },
+      "name": "Lewis Hayes",
+      "stable_player_id": null
+    },
+    "lewis-melican": {
+      "by_round": {
+        "14": 79,
+        "15": 79,
+        "16": 79,
+        "17": 79,
+        "18": 79,
+        "19": 79
+      },
+      "name": "Lewis Melican",
+      "stable_player_id": null
+    },
+    "lewis-young": {
+      "by_round": {
+        "14": 64,
+        "15": 65,
+        "16": 64,
+        "17": 67,
+        "18": 67,
+        "19": 67
+      },
+      "name": "Lewis Young",
+      "stable_player_id": null
+    },
+    "liam-baker": {
+      "by_round": {
+        "14": 66,
+        "15": 67,
+        "16": 69,
+        "17": 66,
+        "18": 68,
+        "19": 76
+      },
+      "name": "Liam Baker",
+      "stable_player_id": null
+    },
+    "liam-duggan": {
+      "by_round": {
+        "14": 90,
+        "15": 89,
+        "16": 88,
+        "17": 93,
+        "18": 91,
+        "19": 88
+      },
+      "name": "Liam Duggan",
+      "stable_player_id": null
+    },
+    "liam-fawcett": {
+      "by_round": {
+        "14": 48,
+        "15": 46,
+        "16": 46,
+        "17": 48,
+        "18": 49,
+        "19": 49
+      },
+      "name": "Liam Fawcett",
+      "stable_player_id": null
+    },
+    "liam-henry": {
+      "by_round": {
+        "14": 148,
+        "15": 145,
+        "16": 144,
+        "17": 143,
+        "18": 143,
+        "19": 141
+      },
+      "name": "Liam Henry",
+      "stable_player_id": null
+    },
+    "liam-hetherton": {
+      "by_round": {
+        "14": 81,
+        "15": 80,
+        "16": 79,
+        "17": 77,
+        "18": 75,
+        "19": 74
+      },
+      "name": "Liam Hetherton",
+      "stable_player_id": null
+    },
+    "liam-mcmahon": {
+      "by_round": {
+        "14": 79,
+        "15": 79,
+        "16": 81,
+        "17": 80,
+        "18": 80,
+        "19": 80
+      },
+      "name": "Liam McMahon",
+      "stable_player_id": null
+    },
+    "liam-o-connell": {
+      "by_round": {
+        "14": 146,
+        "15": 147,
+        "16": 146,
+        "17": 146,
+        "18": 148,
+        "19": 151
+      },
+      "name": "Liam O'Connell",
+      "stable_player_id": null
+    },
+    "liam-puncher": {
+      "by_round": {
+        "14": 69,
+        "15": 69,
+        "16": 68,
+        "17": 62,
+        "18": 62,
+        "19": 63
+      },
+      "name": "Liam Puncher",
+      "stable_player_id": null
+    },
+    "liam-reidy": {
+      "by_round": {
+        "14": 51,
+        "15": 51,
+        "16": 50,
+        "17": 50,
+        "18": 50,
+        "19": 50
+      },
+      "name": "Liam Reidy",
+      "stable_player_id": null
+    },
+    "liam-ryan": {
+      "by_round": {
+        "14": 172,
+        "15": 173,
+        "16": 173,
+        "17": 173,
+        "18": 174,
+        "19": 172
+      },
+      "name": "Liam Ryan",
+      "stable_player_id": null
+    },
+    "liam-stocker": {
+      "by_round": {
+        "14": 160,
+        "15": 160,
+        "16": 161,
+        "17": 160,
+        "18": 160,
+        "19": 160
+      },
+      "name": "Liam Stocker",
+      "stable_player_id": null
+    },
+    "lincoln-mccarthy": {
+      "by_round": {
+        "14": 173,
+        "15": 174,
+        "16": 174,
+        "17": 175,
+        "18": 176,
+        "19": 175
+      },
+      "name": "Lincoln McCarthy",
+      "stable_player_id": null
+    },
+    "lloyd-meek": {
+      "by_round": {
+        "14": 17,
+        "15": 19,
+        "16": 18,
+        "17": 18,
+        "18": 15,
+        "19": 16
+      },
+      "name": "Lloyd Meek",
+      "stable_player_id": null
+    },
+    "logan-evans": {
+      "by_round": {
+        "14": 39,
+        "15": 40,
+        "16": 40,
+        "17": 39,
+        "18": 39,
+        "19": 38
+      },
+      "name": "Logan Evans",
+      "stable_player_id": null
+    },
+    "logan-mcdonald": {
+      "by_round": {
+        "14": 33,
+        "15": 32,
+        "16": 36,
+        "17": 38,
+        "18": 35,
+        "19": 37
+      },
+      "name": "Logan McDonald",
+      "stable_player_id": null
+    },
+    "logan-morris": {
+      "by_round": {
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4
+      },
+      "name": "Logan Morris",
+      "stable_player_id": null
+    },
+    "logan-smith": {
+      "by_round": {
+        "14": 42,
+        "15": 41,
+        "16": 42,
+        "17": 42,
+        "18": 42,
+        "19": 42
+      },
+      "name": "Logan Smith",
+      "stable_player_id": null
+    },
+    "louis-emmett": {
+      "by_round": {
+        "14": 21,
+        "15": 22,
+        "16": 22,
+        "17": 22,
+        "18": 22,
+        "19": 23
+      },
+      "name": "Louis Emmett",
+      "stable_player_id": null
+    },
+    "lucas-camporeale": {
+      "by_round": {
+        "14": 155,
+        "15": 153,
+        "16": 153,
+        "17": 152,
+        "18": 150,
+        "19": 150
+      },
+      "name": "Lucas Camporeale",
+      "stable_player_id": null
+    },
+    "lucca-grego": {
+      "by_round": {
+        "14": 106,
+        "15": 108,
+        "16": 108,
+        "17": 108,
+        "18": 109,
+        "19": 109
+      },
+      "name": "Lucca Grego",
+      "stable_player_id": null
+    },
+    "lukas-cooke": {
+      "by_round": {
+        "14": 66,
+        "15": 66,
+        "16": 66,
+        "17": 64,
+        "18": 64,
+        "19": 64
+      },
+      "name": "Lukas Cooke",
+      "stable_player_id": null
+    },
+    "luke-beecken": {
+      "by_round": {
+        "14": 189,
+        "15": 189,
+        "16": 189,
+        "17": 189,
+        "18": 188,
+        "19": 188
+      },
+      "name": "Luke Beecken",
+      "stable_player_id": null
+    },
+    "luke-cleary": {
+      "by_round": {
+        "14": 143,
+        "15": 145,
+        "16": 147,
+        "17": 148,
+        "18": 149,
+        "19": 146
+      },
+      "name": "Luke Cleary",
+      "stable_player_id": null
+    },
+    "luke-davies-uniacke": {
+      "by_round": {
+        "14": 21,
+        "15": 30,
+        "16": 23,
+        "17": 22,
+        "18": 22,
+        "19": 22
+      },
+      "name": "Luke Davies-Uniacke",
+      "stable_player_id": null
+    },
+    "luke-jackson": {
+      "by_round": {
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1
+      },
+      "name": "Luke Jackson",
+      "stable_player_id": null
+    },
+    "luke-kennedy": {
+      "by_round": {
+        "14": 140,
+        "15": 135,
+        "16": 133,
+        "17": 124,
+        "18": 120,
+        "19": 125
+      },
+      "name": "Luke Kennedy",
+      "stable_player_id": null
+    },
+    "luke-lloyd": {
+      "by_round": {
+        "14": 73,
+        "15": 71,
+        "16": 69,
+        "17": 68,
+        "18": 67,
+        "19": 67
+      },
+      "name": "Luke Lloyd",
+      "stable_player_id": null
+    },
+    "luke-mcdonald": {
+      "by_round": {
+        "14": 156,
+        "15": 156,
+        "16": 154,
+        "17": 154,
+        "18": 154,
+        "19": 155
+      },
+      "name": "Luke McDonald",
+      "stable_player_id": null
+    },
+    "luke-nankervis": {
+      "by_round": {
+        "14": 115,
+        "15": 102,
+        "16": 100,
+        "17": 101,
+        "18": 102,
+        "19": 85
+      },
+      "name": "Luke Nankervis",
+      "stable_player_id": null
+    },
+    "luke-parker": {
+      "by_round": {
+        "14": 37,
+        "15": 33,
+        "16": 32,
+        "17": 28,
+        "18": 27,
+        "19": 30
+      },
+      "name": "Luke Parker",
+      "stable_player_id": null
+    },
+    "luke-pedlar": {
+      "by_round": {
+        "14": 124,
+        "15": 121,
+        "16": 118,
+        "17": 119,
+        "18": 117,
+        "19": 118
+      },
+      "name": "Luke Pedlar",
+      "stable_player_id": null
+    },
+    "luke-ryan": {
+      "by_round": {
+        "14": 29,
+        "15": 29,
+        "16": 28,
+        "17": 32,
+        "18": 34,
+        "19": 33
+      },
+      "name": "Luke Ryan",
+      "stable_player_id": null
+    },
+    "luke-trainor": {
+      "by_round": {
+        "14": 14,
+        "15": 14,
+        "16": 14,
+        "17": 14,
+        "18": 14,
+        "19": 15
+      },
+      "name": "Luke Trainor",
+      "stable_player_id": null
+    },
+    "luke-urquhart": {
+      "by_round": {
+        "14": 157,
+        "15": 156,
+        "16": 155,
+        "17": 153,
+        "18": 152,
+        "19": 152
+      },
+      "name": "Luke Urquhart",
+      "stable_player_id": null
+    },
+    "luker-kentfield": {
+      "by_round": {
+        "14": 61,
+        "15": 49,
+        "16": 53,
+        "17": 55,
+        "18": 58,
+        "19": 57
+      },
+      "name": "Luker Kentfield",
+      "stable_player_id": null
+    },
+    "mabior-chol": {
+      "by_round": {
+        "14": 68,
+        "15": 67,
+        "16": 67,
+        "17": 52,
+        "18": 53,
+        "19": 53
+      },
+      "name": "Mabior Chol",
+      "stable_player_id": null
+    },
+    "mac-andrew": {
+      "by_round": {
+        "14": 2,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 2,
+        "19": 1
+      },
+      "name": "Mac Andrew",
+      "stable_player_id": null
+    },
+    "malakai-champion": {
+      "by_round": {
+        "14": 71,
+        "15": 68,
+        "16": 69,
+        "17": 69,
+        "18": 70,
+        "19": 69
+      },
+      "name": "Malakai Champion",
+      "stable_player_id": null
+    },
+    "malcolm-rosas": {
+      "by_round": {
+        "14": 147,
+        "15": 144,
+        "16": 156,
+        "17": 156,
+        "18": 155,
+        "19": 166
+      },
+      "name": "Malcolm Rosas",
+      "stable_player_id": null
+    },
+    "mani-liddy": {
+      "by_round": {
+        "14": 186,
+        "15": 187,
+        "16": 185,
+        "17": 187,
+        "18": 186,
+        "19": 187
+      },
+      "name": "Mani Liddy",
+      "stable_player_id": null
+    },
+    "marc-pittonet": {
+      "by_round": {
+        "14": 35,
+        "15": 42,
+        "16": 35,
+        "17": 34,
+        "18": 34,
+        "19": 34
+      },
+      "name": "Marc Pittonet",
+      "stable_player_id": null
+    },
+    "marcus-bontempelli": {
+      "by_round": {
+        "14": 19,
+        "15": 18,
+        "16": 18,
+        "17": 20,
+        "18": 18,
+        "19": 15
+      },
+      "name": "Marcus Bontempelli",
+      "stable_player_id": null
+    },
+    "marcus-herbert": {
+      "by_round": {
+        "14": 161,
+        "15": 162,
+        "16": 144,
+        "17": 153,
+        "18": 125,
+        "19": 123
+      },
+      "name": "Marcus Herbert",
+      "stable_player_id": null
+    },
+    "marcus-windhager": {
+      "by_round": {
+        "14": 60,
+        "15": 58,
+        "16": 58,
+        "17": 54,
+        "18": 56,
+        "19": 53
+      },
+      "name": "Marcus Windhager",
+      "stable_player_id": null
+    },
+    "mark-blicavs": {
+      "by_round": {
+        "14": 192,
+        "15": 193,
+        "16": 193,
+        "17": 192,
+        "18": 192,
+        "19": 192
+      },
+      "name": "Mark Blicavs",
+      "stable_player_id": null
+    },
+    "mark-keane": {
+      "by_round": {
+        "14": 6,
+        "15": 5,
+        "16": 7,
+        "17": 7,
+        "18": 8,
+        "19": 10
+      },
+      "name": "Mark Keane",
+      "stable_player_id": null
+    },
+    "mark-o-connor": {
+      "by_round": {
+        "14": 171,
+        "15": 170,
+        "16": 170,
+        "17": 170,
+        "18": 170,
+        "19": 170
+      },
+      "name": "Mark O'Connor",
+      "stable_player_id": null
+    },
+    "mason-cox": {
+      "by_round": {
+        "14": 103,
+        "15": 103,
+        "16": 103,
+        "17": 103,
+        "18": 103,
+        "19": 103
+      },
+      "name": "Mason Cox",
+      "stable_player_id": null
+    },
+    "mason-redman": {
+      "by_round": {
+        "14": 30,
+        "15": 31,
+        "16": 30,
+        "17": 31,
+        "18": 31,
+        "19": 31
+      },
+      "name": "Mason Redman",
+      "stable_player_id": null
+    },
+    "mason-wood": {
+      "by_round": {
+        "14": 117,
+        "15": 92,
+        "16": 91,
+        "17": 65,
+        "18": 61,
+        "19": 51
+      },
+      "name": "Mason Wood",
+      "stable_player_id": null
+    },
+    "massimo-d-ambrosio": {
+      "by_round": {
+        "14": 65,
+        "15": 68,
+        "16": 68,
+        "17": 70,
+        "18": 69,
+        "19": 69
+      },
+      "name": "Massimo D'Ambrosio",
+      "stable_player_id": null
+    },
+    "matt-carroll": {
+      "by_round": {
+        "14": 89,
+        "15": 91,
+        "16": 91,
+        "17": 89,
+        "18": 88,
+        "19": 90
+      },
+      "name": "Matt Carroll",
+      "stable_player_id": null
+    },
+    "matt-cottrell": {
+      "by_round": {
+        "14": 175,
+        "15": 169,
+        "16": 175,
+        "17": 182,
+        "18": 179,
+        "19": 181
+      },
+      "name": "Matt Cottrell",
+      "stable_player_id": null
+    },
+    "matt-duffy": {
+      "by_round": {
+        "14": 125,
+        "15": 126,
+        "16": 126,
+        "17": 126,
+        "18": 126,
+        "19": 126
+      },
+      "name": "Matt Duffy",
+      "stable_player_id": null
+    },
+    "matt-guelfi": {
+      "by_round": {
+        "14": 174,
+        "15": 175,
+        "16": 175,
+        "17": 174,
+        "18": 175,
+        "19": 174
+      },
+      "name": "Matt Guelfi",
+      "stable_player_id": null
+    },
+    "matt-hill": {
+      "by_round": {
+        "14": 127,
+        "15": 127,
+        "16": 125,
+        "17": 130,
+        "18": 131,
+        "19": 132
+      },
+      "name": "Matt Hill",
+      "stable_player_id": null
+    },
+    "matt-johnson-1": {
+      "by_round": {
+        "14": 108,
+        "15": 110,
+        "16": 113,
+        "17": 106,
+        "18": 104,
+        "19": 97
+      },
+      "name": "Matt Johnson",
+      "stable_player_id": null
+    },
+    "matt-owies": {
+      "by_round": {
+        "14": 182,
+        "15": 182,
+        "16": 182,
+        "17": 182,
+        "18": 182,
+        "19": 183
+      },
+      "name": "Matt Owies",
+      "stable_player_id": null
+    },
+    "matt-rowell": {
+      "by_round": {
+        "14": 18,
+        "15": 19,
+        "16": 21,
+        "17": 21,
+        "18": 21,
+        "19": 20
+      },
+      "name": "Matt Rowell",
+      "stable_player_id": null
+    },
+    "matt-whitlock": {
+      "by_round": {
+        "14": 52,
+        "15": 51,
+        "16": 52,
+        "17": 53,
+        "18": 48,
+        "19": 40
+      },
+      "name": "Matt Whitlock",
+      "stable_player_id": null
+    },
+    "mattaes-phillipou": {
+      "by_round": {
+        "14": 69,
+        "15": 71,
+        "16": 69,
+        "17": 66,
+        "18": 59,
+        "19": 54
+      },
+      "name": "Mattaes Phillipou",
+      "stable_player_id": null
+    },
+    "matthew-flynn": {
+      "by_round": {
+        "14": 25,
+        "15": 25,
+        "16": 26,
+        "17": 26,
+        "18": 26,
+        "19": 26
+      },
+      "name": "Matthew Flynn",
+      "stable_player_id": null
+    },
+    "matthew-jefferson": {
+      "by_round": {
+        "14": 45,
+        "15": 47,
+        "16": 48,
+        "17": 50,
+        "18": 51,
+        "19": 39
+      },
+      "name": "Matthew Jefferson",
+      "stable_player_id": null
+    },
+    "matthew-kennedy-1": {
+      "by_round": {
+        "14": 113,
+        "15": 104,
+        "16": 103,
+        "17": 111,
+        "18": 108,
+        "19": 99
+      },
+      "name": "Matthew Kennedy",
+      "stable_player_id": null
+    },
+    "matthew-leray": {
+      "by_round": {
+        "14": 133,
+        "15": 136,
+        "16": 135,
+        "17": 133,
+        "18": 134,
+        "19": 134
+      },
+      "name": "Matthew LeRay",
+      "stable_player_id": null
+    },
+    "matthew-roberts": {
+      "by_round": {
+        "14": 25,
+        "15": 23,
+        "16": 25,
+        "17": 23,
+        "18": 23,
+        "19": 25
+      },
+      "name": "Matthew Roberts",
+      "stable_player_id": null
+    },
+    "maurice-rioli-1": {
+      "by_round": {
+        "14": 149,
+        "15": 156,
+        "16": 164,
+        "17": 162,
+        "18": 162,
+        "19": 161
+      },
+      "name": "Maurice Rioli",
+      "stable_player_id": null
+    },
+    "max-beattie": {
+      "by_round": {
+        "14": 159,
+        "15": 158,
+        "16": 158,
+        "17": 158,
+        "18": 158,
+        "19": 159
+      },
+      "name": "Max Beattie",
+      "stable_player_id": null
+    },
+    "max-gawn": {
+      "by_round": {
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 5
+      },
+      "name": "Max Gawn",
+      "stable_player_id": null
+    },
+    "max-gruzewski": {
+      "by_round": {
+        "14": 66,
+        "15": 63,
+        "16": 62,
+        "17": 63,
+        "18": 62,
+        "19": 59
+      },
+      "name": "Max Gruzewski",
+      "stable_player_id": null
+    },
+    "max-hall": {
+      "by_round": {
+        "14": 8,
+        "15": 8,
+        "16": 9,
+        "17": 5,
+        "18": 7,
+        "19": 7
+      },
+      "name": "Max Hall",
+      "stable_player_id": null
+    },
+    "max-heath": {
+      "by_round": {
+        "14": 53,
+        "15": 53,
+        "16": 53,
+        "17": 53,
+        "18": 53,
+        "19": 53
+      },
+      "name": "Max Heath",
+      "stable_player_id": null
+    },
+    "max-holmes": {
+      "by_round": {
+        "14": 3,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4
+      },
+      "name": "Max Holmes",
+      "stable_player_id": null
+    },
+    "max-king-stk": {
+      "by_round": {
+        "14": 64,
+        "15": 61,
+        "16": 61,
+        "17": 61,
+        "18": 61,
+        "19": 62
+      },
+      "name": "Max King",
+      "stable_player_id": null
+    },
+    "max-king-syd": {
+      "by_round": {
+        "14": 87,
+        "15": 85,
+        "16": 84,
+        "17": 85,
+        "18": 87,
+        "19": 86
+      },
+      "name": "Maxwell King",
+      "stable_player_id": null
+    },
+    "max-knobel": {
+      "by_round": {
+        "14": 37,
+        "15": 35,
+        "16": 36,
+        "17": 36,
+        "18": 36,
+        "19": 36
+      },
+      "name": "Max Knobel",
+      "stable_player_id": null
+    },
+    "max-kondogiannis": {
+      "by_round": {
+        "14": 81,
+        "15": 81,
+        "16": 81,
+        "17": 81,
+        "18": 79,
+        "19": 75
+      },
+      "name": "Max Kondogiannis",
+      "stable_player_id": null
+    },
+    "max-mapley": {
+      "by_round": {
+        "14": 32,
+        "15": 32,
+        "16": 32,
+        "17": 32,
+        "18": 32,
+        "19": 32
+      },
+      "name": "Max Mapley",
+      "stable_player_id": null
+    },
+    "max-michalanney": {
+      "by_round": {
+        "14": 77,
+        "15": 77,
+        "16": 77,
+        "17": 77,
+        "18": 71,
+        "19": 71
+      },
+      "name": "Max Michalanney",
+      "stable_player_id": null
+    },
+    "max-ramsden": {
+      "by_round": {
+        "14": 80,
+        "15": 81,
+        "16": 80,
+        "17": 79,
+        "18": 78,
+        "19": 79
+      },
+      "name": "Max Ramsden",
+      "stable_player_id": null
+    },
+    "michael-frederick": {
+      "by_round": {
+        "14": 140,
+        "15": 149,
+        "16": 135,
+        "17": 138,
+        "18": 137,
+        "19": 130
+      },
+      "name": "Michael Frederick",
+      "stable_player_id": null
+    },
+    "michael-sellwood": {
+      "by_round": {
+        "14": 144,
+        "15": 148,
+        "16": 150,
+        "17": 144,
+        "18": 146,
+        "19": 134
+      },
+      "name": "Michael Sellwood",
+      "stable_player_id": null
+    },
+    "milan-murdock": {
+      "by_round": {
+        "14": 27,
+        "15": 26,
+        "16": 33,
+        "17": 45,
+        "18": 50,
+        "19": 49
+      },
+      "name": "Milan Murdock",
+      "stable_player_id": null
+    },
+    "miles-bergman": {
+      "by_round": {
+        "14": 59,
+        "15": 58,
+        "16": 60,
+        "17": 61,
+        "18": 57,
+        "19": 56
+      },
+      "name": "Miles Bergman",
+      "stable_player_id": null
+    },
+    "mitch-georgiades": {
+      "by_round": {
+        "14": 20,
+        "15": 22,
+        "16": 17,
+        "17": 17,
+        "18": 19,
+        "19": 18
+      },
+      "name": "Mitch Georgiades",
+      "stable_player_id": null
+    },
+    "mitch-mcgovern": {
+      "by_round": {
+        "14": 164,
+        "15": 164,
+        "16": 164,
+        "17": 165,
+        "18": 165,
+        "19": 165
+      },
+      "name": "Mitch McGovern",
+      "stable_player_id": null
+    },
+    "mitch-podhajski": {
+      "by_round": {
+        "14": 99,
+        "15": 99,
+        "16": 100,
+        "17": 100,
+        "18": 100,
+        "19": 99
+      },
+      "name": "Mitch Podhajski",
+      "stable_player_id": null
+    },
+    "mitch-zadow": {
+      "by_round": {
+        "14": 121,
+        "15": 123,
+        "16": 127,
+        "17": 133,
+        "18": 130,
+        "19": 135
+      },
+      "name": "Mitch Zadow",
+      "stable_player_id": null
+    },
+    "mitchell-edwards": {
+      "by_round": {
+        "14": 11,
+        "15": 11,
+        "16": 11,
+        "17": 11,
+        "18": 12,
+        "19": 12
+      },
+      "name": "Mitchell Edwards",
+      "stable_player_id": null
+    },
+    "mitchell-hinge": {
+      "by_round": {
+        "14": 79,
+        "15": 79,
+        "16": 80,
+        "17": 80,
+        "18": 83,
+        "19": 83
+      },
+      "name": "Mitchell Hinge",
+      "stable_player_id": null
+    },
+    "mitchell-knevitt": {
+      "by_round": {
+        "14": 164,
+        "15": 164,
+        "16": 165,
+        "17": 167,
+        "18": 165,
+        "19": 162
+      },
+      "name": "Mitchell Knevitt",
+      "stable_player_id": null
+    },
+    "mitchell-lewis": {
+      "by_round": {
+        "14": 42,
+        "15": 52,
+        "16": 56,
+        "17": 66,
+        "18": 54,
+        "19": 42
+      },
+      "name": "Mitchell Lewis",
+      "stable_player_id": null
+    },
+    "mitchell-marsh": {
+      "by_round": {
+        "14": 40,
+        "15": 39,
+        "16": 40,
+        "17": 41,
+        "18": 44,
+        "19": 45
+      },
+      "name": "Mitchell Marsh",
+      "stable_player_id": null
+    },
+    "mitchito-owens": {
+      "by_round": {
+        "14": 7,
+        "15": 7,
+        "16": 7,
+        "17": 7,
+        "18": 7,
+        "19": 8
+      },
+      "name": "Mitchito Owens",
+      "stable_player_id": null
+    },
+    "murphy-reid": {
+      "by_round": {
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 2
+      },
+      "name": "Murphy Reid",
+      "stable_player_id": null
+    },
+    "mykelti-lefau": {
+      "by_round": {
+        "14": 93,
+        "15": 94,
+        "16": 98,
+        "17": 98,
+        "18": 98,
+        "19": 98
+      },
+      "name": "Mykelti Lefau",
+      "stable_player_id": null
+    },
+    "nasiah-wanganeen-milera": {
+      "by_round": {
+        "14": 4,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3
+      },
+      "name": "Nasiah Wanganeen-Milera",
+      "stable_player_id": null
+    },
+    "nate-caddy": {
+      "by_round": {
+        "14": 12,
+        "15": 13,
+        "16": 12,
+        "17": 11,
+        "18": 12,
+        "19": 11
+      },
+      "name": "Nate Caddy",
+      "stable_player_id": null
+    },
+    "nathan-broad": {
+      "by_round": {
+        "14": 174,
+        "15": 174,
+        "16": 174,
+        "17": 173,
+        "18": 173,
+        "19": 173
+      },
+      "name": "Nathan Broad",
+      "stable_player_id": null
+    },
+    "nathan-o-driscoll": {
+      "by_round": {
+        "14": 96,
+        "15": 105,
+        "16": 99,
+        "17": 104,
+        "18": 107,
+        "19": 113
+      },
+      "name": "Nathan O'Driscoll",
+      "stable_player_id": null
+    },
+    "nathan-wardius": {
+      "by_round": {
+        "14": 123,
+        "15": 119,
+        "16": 116,
+        "17": 118,
+        "18": 116,
+        "19": 117
+      },
+      "name": "Nathan Wardius",
+      "stable_player_id": null
+    },
+    "ned-bowman": {
+      "by_round": {
+        "14": 59,
+        "15": 59,
+        "16": 59,
+        "17": 59,
+        "18": 63,
+        "19": 65
+      },
+      "name": "Ned Bowman",
+      "stable_player_id": null
+    },
+    "ned-long": {
+      "by_round": {
+        "14": 80,
+        "15": 81,
+        "16": 81,
+        "17": 78,
+        "18": 79,
+        "19": 74
+      },
+      "name": "Ned Long",
+      "stable_player_id": null
+    },
+    "ned-moyle": {
+      "by_round": {
+        "14": 12,
+        "15": 12,
+        "16": 12,
+        "17": 12,
+        "18": 10,
+        "19": 7
+      },
+      "name": "Ned Moyle",
+      "stable_player_id": null
+    },
+    "ned-reeves": {
+      "by_round": {
+        "14": 45,
+        "15": 44,
+        "16": 45,
+        "17": 44,
+        "18": 44,
+        "19": 44
+      },
+      "name": "Ned Reeves",
+      "stable_player_id": null
+    },
+    "neil-erasmus": {
+      "by_round": {
+        "14": 109,
+        "15": 101,
+        "16": 100,
+        "17": 101,
+        "18": 95,
+        "19": 87
+      },
+      "name": "Neil Erasmus",
+      "stable_player_id": null
+    },
+    "nic-newman": {
+      "by_round": {
+        "14": 50,
+        "15": 53,
+        "16": 55,
+        "17": 56,
+        "18": 53,
+        "19": 58
+      },
+      "name": "Nic Newman",
+      "stable_player_id": null
+    },
+    "nicholas-coffield": {
+      "by_round": {
+        "14": 157,
+        "15": 157,
+        "16": 155,
+        "17": 155,
+        "18": 155,
+        "19": 156
+      },
+      "name": "Nicholas Coffield",
+      "stable_player_id": null
+    },
+    "nicholas-holman": {
+      "by_round": {
+        "14": 176,
+        "15": 176,
+        "16": 176,
+        "17": 176,
+        "18": 177,
+        "19": 176
+      },
+      "name": "Nicholas Holman",
+      "stable_player_id": null
+    },
+    "nicholas-martin": {
+      "by_round": {
+        "14": 24,
+        "15": 23,
+        "16": 25,
+        "17": 24,
+        "18": 27,
+        "19": 27
+      },
+      "name": "Nicholas Martin",
+      "stable_player_id": null
+    },
+    "nick-blakey": {
+      "by_round": {
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3
+      },
+      "name": "Nick Blakey",
+      "stable_player_id": null
+    },
+    "nick-bryan": {
+      "by_round": {
+        "14": 24,
+        "15": 24,
+        "16": 24,
+        "17": 24,
+        "18": 24,
+        "19": 24
+      },
+      "name": "Nick Bryan",
+      "stable_player_id": null
+    },
+    "nick-daicos": {
+      "by_round": {
+        "14": 1,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 2,
+        "19": 2
+      },
+      "name": "Nick Daicos",
+      "stable_player_id": null
+    },
+    "nick-driscoll": {
+      "by_round": {
+        "14": 127,
+        "15": 128,
+        "16": 127,
+        "17": 125,
+        "18": 129,
+        "19": 129
+      },
+      "name": "Nick Driscoll",
+      "stable_player_id": null
+    },
+    "nick-haynes": {
+      "by_round": {
+        "14": 148,
+        "15": 150,
+        "16": 142,
+        "17": 135,
+        "18": 140,
+        "19": 141
+      },
+      "name": "Nick Haynes",
+      "stable_player_id": null
+    },
+    "nick-larkey": {
+      "by_round": {
+        "14": 38,
+        "15": 37,
+        "16": 38,
+        "17": 46,
+        "18": 39,
+        "19": 44
+      },
+      "name": "Nick Larkey",
+      "stable_player_id": null
+    },
+    "nick-madden": {
+      "by_round": {
+        "14": 14,
+        "15": 14,
+        "16": 16,
+        "17": 15,
+        "18": 18,
+        "19": 14
+      },
+      "name": "Nick Madden",
+      "stable_player_id": null
+    },
+    "nick-murray": {
+      "by_round": {
+        "14": 41,
+        "15": 38,
+        "16": 36,
+        "17": 38,
+        "18": 38,
+        "19": 37
+      },
+      "name": "Nick Murray",
+      "stable_player_id": null
+    },
+    "nick-vlastuin": {
+      "by_round": {
+        "14": 137,
+        "15": 143,
+        "16": 133,
+        "17": 147,
+        "18": 141,
+        "19": 153
+      },
+      "name": "Nick Vlastuin",
+      "stable_player_id": null
+    },
+    "nick-watson": {
+      "by_round": {
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3
+      },
+      "name": "Nick Watson",
+      "stable_player_id": null
+    },
+    "nikolas-cox": {
+      "by_round": {
+        "14": 70,
+        "15": 69,
+        "16": 72,
+        "17": 73,
+        "18": 72,
+        "19": 73
+      },
+      "name": "Nikolas Cox",
+      "stable_player_id": null
+    },
+    "noah-anderson": {
+      "by_round": {
+        "14": 9,
+        "15": 8,
+        "16": 7,
+        "17": 9,
+        "18": 10,
+        "19": 11
+      },
+      "name": "Noah Anderson",
+      "stable_player_id": null
+    },
+    "noah-answerth": {
+      "by_round": {
+        "14": 163,
+        "15": 163,
+        "16": 163,
+        "17": 163,
+        "18": 162,
+        "19": 162
+      },
+      "name": "Noah Answerth",
+      "stable_player_id": null
+    },
+    "noah-balta": {
+      "by_round": {
+        "14": 56,
+        "15": 53,
+        "16": 50,
+        "17": 39,
+        "18": 41,
+        "19": 47
+      },
+      "name": "Noah Balta",
+      "stable_player_id": null
+    },
+    "noah-chamberlain": {
+      "by_round": {
+        "14": 116,
+        "15": 111,
+        "16": 111,
+        "17": 112,
+        "18": 111,
+        "19": 112
+      },
+      "name": "Noah Chamberlain",
+      "stable_player_id": null
+    },
+    "noah-howes": {
+      "by_round": {
+        "14": 72,
+        "15": 73,
+        "16": 71,
+        "17": 70,
+        "18": 70,
+        "19": 70
+      },
+      "name": "Noah Howes",
+      "stable_player_id": null
+    },
+    "noah-long": {
+      "by_round": {
+        "14": 78,
+        "15": 82,
+        "16": 86,
+        "17": 91,
+        "18": 95,
+        "19": 95
+      },
+      "name": "Noah Long",
+      "stable_player_id": null
+    },
+    "noah-mraz": {
+      "by_round": {
+        "14": 39,
+        "15": 39,
+        "16": 39,
+        "17": 26,
+        "18": 15,
+        "19": 7
+      },
+      "name": "Noah Mraz",
+      "stable_player_id": null
+    },
+    "noah-roberts-thomson": {
+      "by_round": {
+        "14": 49,
+        "15": 51,
+        "16": 52,
+        "17": 53,
+        "18": 56,
+        "19": 57
+      },
+      "name": "Noah Roberts-Thomson",
+      "stable_player_id": null
+    },
+    "oisin-mullin": {
+      "by_round": {
+        "14": 175,
+        "15": 175,
+        "16": 175,
+        "17": 175,
+        "18": 174,
+        "19": 174
+      },
+      "name": "Oisin Mullin",
+      "stable_player_id": null
+    },
+    "oliver-florent": {
+      "by_round": {
+        "14": 54,
+        "15": 59,
+        "16": 61,
+        "17": 62,
+        "18": 69,
+        "19": 67
+      },
+      "name": "Oliver Florent",
+      "stable_player_id": null
+    },
+    "oliver-francou": {
+      "by_round": {
+        "14": 144,
+        "15": 144,
+        "16": 142,
+        "17": 135,
+        "18": 126,
+        "19": 119
+      },
+      "name": "Oliver Francou",
+      "stable_player_id": null
+    },
+    "oliver-griffin": {
+      "by_round": {
+        "14": 95,
+        "15": 96,
+        "16": 95,
+        "17": 97,
+        "18": 99,
+        "19": 99
+      },
+      "name": "Oliver Griffin",
+      "stable_player_id": null
+    },
+    "oliver-hannaford": {
+      "by_round": {
+        "14": 58,
+        "15": 58,
+        "16": 56,
+        "17": 56,
+        "18": 57,
+        "19": 58
+      },
+      "name": "Oliver Hannaford",
+      "stable_player_id": null
+    },
+    "oliver-hayes-brown": {
+      "by_round": {
+        "14": 48,
+        "15": 47,
+        "16": 48,
+        "17": 48,
+        "18": 47,
+        "19": 47
+      },
+      "name": "Oliver Hayes-Brown",
+      "stable_player_id": null
+    },
+    "oliver-henry": {
+      "by_round": {
+        "14": 141,
+        "15": 138,
+        "16": 138,
+        "17": 139,
+        "18": 139,
+        "19": 136
+      },
+      "name": "Oliver Henry",
+      "stable_player_id": null
+    },
+    "oliver-hollands": {
+      "by_round": {
+        "14": 35,
+        "15": 34,
+        "16": 35,
+        "17": 35,
+        "18": 35,
+        "19": 36
+      },
+      "name": "Oliver Hollands",
+      "stable_player_id": null
+    },
+    "oliver-wiltshire": {
+      "by_round": {
+        "14": 136,
+        "15": 135,
+        "16": 134,
+        "17": 135,
+        "18": 135,
+        "19": 133
+      },
+      "name": "Oliver Wiltshire",
+      "stable_player_id": null
+    },
+    "oliver-wines": {
+      "by_round": {
+        "14": 132,
+        "15": 130,
+        "16": 141,
+        "17": 141,
+        "18": 148,
+        "19": 138
+      },
+      "name": "Oliver Wines",
+      "stable_player_id": null
+    },
+    "ollie-dempsey": {
+      "by_round": {
+        "14": 59,
+        "15": 60,
+        "16": 62,
+        "17": 59,
+        "18": 52,
+        "19": 51
+      },
+      "name": "Ollie Dempsey",
+      "stable_player_id": null
+    },
+    "ollie-greeves": {
+      "by_round": {
+        "14": 128,
+        "15": 131,
+        "16": 130,
+        "17": 131,
+        "18": 123,
+        "19": 120
+      },
+      "name": "Ollie Greeves",
+      "stable_player_id": null
+    },
+    "ollie-lord": {
+      "by_round": {
+        "14": 85,
+        "15": 85,
+        "16": 84,
+        "17": 83,
+        "18": 84,
+        "19": 85
+      },
+      "name": "Ollie Lord",
+      "stable_player_id": null
+    },
+    "ollie-murphy": {
+      "by_round": {
+        "14": 50,
+        "15": 50,
+        "16": 47,
+        "17": 48,
+        "18": 48,
+        "19": 49
+      },
+      "name": "Ollie Murphy",
+      "stable_player_id": null
+    },
+    "oscar-adams": {
+      "by_round": {
+        "14": 151,
+        "15": 151,
+        "16": 152,
+        "17": 151,
+        "18": 152,
+        "19": 149
+      },
+      "name": "Oscar Adams",
+      "stable_player_id": null
+    },
+    "oscar-allen": {
+      "by_round": {
+        "14": 83,
+        "15": 84,
+        "16": 85,
+        "17": 82,
+        "18": 82,
+        "19": 83
+      },
+      "name": "Oscar Allen",
+      "stable_player_id": null
+    },
+    "oscar-berry": {
+      "by_round": {
+        "14": 72,
+        "15": 73,
+        "16": 73,
+        "17": 74,
+        "18": 73,
+        "19": 72
+      },
+      "name": "Oscar Berry",
+      "stable_player_id": null
+    },
+    "oscar-mcdonald": {
+      "by_round": {
+        "14": 81,
+        "15": 81,
+        "16": 81,
+        "17": 82,
+        "18": 82,
+        "19": 83
+      },
+      "name": "Oscar McDonald",
+      "stable_player_id": null
+    },
+    "oscar-ryan": {
+      "by_round": {
+        "14": 103,
+        "15": 105,
+        "16": 104,
+        "17": 104,
+        "18": 104,
+        "19": 104
+      },
+      "name": "Oscar Ryan",
+      "stable_player_id": null
+    },
+    "oscar-steene": {
+      "by_round": {
+        "14": 47,
+        "15": 45,
+        "16": 46,
+        "17": 47,
+        "18": 48,
+        "19": 49
+      },
+      "name": "Oscar Steene",
+      "stable_player_id": null
+    },
+    "oskar-baker": {
+      "by_round": {
+        "14": 170,
+        "15": 171,
+        "16": 171,
+        "17": 171,
+        "18": 173,
+        "19": 170
+      },
+      "name": "Oskar Baker",
+      "stable_player_id": null
+    },
+    "oskar-taylor": {
+      "by_round": {
+        "14": 57,
+        "15": 57,
+        "16": 57,
+        "17": 58,
+        "18": 60,
+        "19": 62
+      },
+      "name": "Oskar Taylor",
+      "stable_player_id": null
+    },
+    "paddy-cross": {
+      "by_round": {
+        "14": 155,
+        "15": 159,
+        "16": 159,
+        "17": 159,
+        "18": 161,
+        "19": 160
+      },
+      "name": "Paddy Cross",
+      "stable_player_id": null
+    },
+    "paddy-dow": {
+      "by_round": {
+        "14": 166,
+        "15": 166,
+        "16": 166,
+        "17": 165,
+        "18": 166,
+        "19": 164
+      },
+      "name": "Paddy Dow",
+      "stable_player_id": null
+    },
+    "patrick-carr": {
+      "by_round": {
+        "14": 33,
+        "15": 33,
+        "16": 33,
+        "17": 33,
+        "18": 33,
+        "19": 33
+      },
+      "name": "Patrick Carr",
+      "stable_player_id": null
+    },
+    "patrick-cripps": {
+      "by_round": {
+        "14": 71,
+        "15": 70,
+        "16": 64,
+        "17": 65,
+        "18": 67,
+        "19": 63
+      },
+      "name": "Patrick Cripps",
+      "stable_player_id": null
+    },
+    "patrick-dangerfield": {
+      "by_round": {
+        "14": 128,
+        "15": 147,
+        "16": 146,
+        "17": 115,
+        "18": 127,
+        "19": 140
+      },
+      "name": "Patrick Dangerfield",
+      "stable_player_id": null
+    },
+    "patrick-lipinski": {
+      "by_round": {
+        "14": 38,
+        "15": 36,
+        "16": 36,
+        "17": 32,
+        "18": 30,
+        "19": 30
+      },
+      "name": "Patrick Lipinski",
+      "stable_player_id": null
+    },
+    "patrick-retschko": {
+      "by_round": {
+        "14": 102,
+        "15": 99,
+        "16": 92,
+        "17": 88,
+        "18": 86,
+        "19": 78
+      },
+      "name": "Patrick Retschko",
+      "stable_player_id": null
+    },
+    "patrick-said": {
+      "by_round": {
+        "14": 103,
+        "15": 102,
+        "16": 102,
+        "17": 104,
+        "18": 105,
+        "19": 105
+      },
+      "name": "Patrick Said",
+      "stable_player_id": null
+    },
+    "patrick-snell": {
+      "by_round": {
+        "14": 55,
+        "15": 53,
+        "16": 51,
+        "17": 53,
+        "18": 53,
+        "19": 53
+      },
+      "name": "Patrick Snell",
+      "stable_player_id": null
+    },
+    "patrick-voss": {
+      "by_round": {
+        "14": 9,
+        "15": 9,
+        "16": 11,
+        "17": 12,
+        "18": 15,
+        "19": 16
+      },
+      "name": "Patrick Voss",
+      "stable_player_id": null
+    },
+    "paul-curtis": {
+      "by_round": {
+        "14": 20,
+        "15": 20,
+        "16": 19,
+        "17": 19,
+        "18": 20,
+        "19": 19
+      },
+      "name": "Paul Curtis",
+      "stable_player_id": null
+    },
+    "peter-ladhams": {
+      "by_round": {
+        "14": 46,
+        "15": 46,
+        "16": 44,
+        "17": 45,
+        "18": 45,
+        "19": 45
+      },
+      "name": "Peter Ladhams",
+      "stable_player_id": null
+    },
+    "peter-wright": {
+      "by_round": {
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 10,
+        "18": 14,
+        "19": 12
+      },
+      "name": "Peter Wright",
+      "stable_player_id": null
+    },
+    "phoenix-gothard": {
+      "by_round": {
+        "14": 61,
+        "15": 60,
+        "16": 58,
+        "17": 57,
+        "18": 60,
+        "19": 60
+      },
+      "name": "Phoenix Gothard",
+      "stable_player_id": null
+    },
+    "reece-torrent": {
+      "by_round": {
+        "14": 162,
+        "15": 162,
+        "16": 163,
+        "17": 162,
+        "18": 160,
+        "19": 157
+      },
+      "name": "Reece Torrent",
+      "stable_player_id": null
+    },
+    "reef-mcinnes": {
+      "by_round": {
+        "14": 77,
+        "15": 77,
+        "16": 76,
+        "17": 77,
+        "18": 76,
+        "19": 77
+      },
+      "name": "Reef McInnes",
+      "stable_player_id": null
+    },
+    "reilly-o-brien": {
+      "by_round": {
+        "14": 19,
+        "15": 18,
+        "16": 17,
+        "17": 17,
+        "18": 17,
+        "19": 18
+      },
+      "name": "Reilly O'Brien",
+      "stable_player_id": null
+    },
+    "reuben-ginbey": {
+      "by_round": {
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4
+      },
+      "name": "Reuben Ginbey",
+      "stable_player_id": null
+    },
+    "rhett-bazzo": {
+      "by_round": {
+        "14": 35,
+        "15": 34,
+        "16": 37,
+        "17": 36,
+        "18": 32,
+        "19": 28
+      },
+      "name": "Rhett Bazzo",
+      "stable_player_id": null
+    },
+    "rhyan-mansell": {
+      "by_round": {
+        "14": 133,
+        "15": 131,
+        "16": 139,
+        "17": 147,
+        "18": 149,
+        "19": 146
+      },
+      "name": "Rhyan Mansell",
+      "stable_player_id": null
+    },
+    "rhylee-west": {
+      "by_round": {
+        "14": 111,
+        "15": 112,
+        "16": 112,
+        "17": 113,
+        "18": 97,
+        "19": 113
+      },
+      "name": "Rhylee West",
+      "stable_player_id": null
+    },
+    "rhys-stanley": {
+      "by_round": {
+        "14": 55,
+        "15": 55,
+        "16": 55,
+        "17": 55,
+        "18": 55,
+        "19": 55
+      },
+      "name": "Rhys Stanley",
+      "stable_player_id": null
+    },
+    "rhys-unwin": {
+      "by_round": {
+        "14": 104,
+        "15": 104,
+        "16": 104,
+        "17": 106,
+        "18": 106,
+        "19": 106
+      },
+      "name": "Rhys Unwin",
+      "stable_player_id": null
+    },
+    "riak-andrew": {
+      "by_round": {
+        "14": 46,
+        "15": 45,
+        "16": 44,
+        "17": 44,
+        "18": 45,
+        "19": 46
+      },
+      "name": "Riak Andrew",
+      "stable_player_id": null
+    },
+    "ricky-mentha": {
+      "by_round": {
+        "14": 126,
+        "15": 126,
+        "16": 123,
+        "17": 123,
+        "18": 119,
+        "19": 122
+      },
+      "name": "Ricky Mentha",
+      "stable_player_id": null
+    },
+    "riley-bice": {
+      "by_round": {
+        "14": 83,
+        "15": 85,
+        "16": 89,
+        "17": 90,
+        "18": 88,
+        "19": 94
+      },
+      "name": "Riley Bice",
+      "stable_player_id": null
+    },
+    "riley-garcia": {
+      "by_round": {
+        "14": 119,
+        "15": 122,
+        "16": 126,
+        "17": 126,
+        "18": 125,
+        "19": 126
+      },
+      "name": "Riley Garcia",
+      "stable_player_id": null
+    },
+    "riley-hamilton": {
+      "by_round": {
+        "14": 67,
+        "15": 71,
+        "16": 77,
+        "17": 79,
+        "18": 84,
+        "19": 83
+      },
+      "name": "Riley Hamilton",
+      "stable_player_id": null
+    },
+    "riley-hardeman": {
+      "by_round": {
+        "14": 97,
+        "15": 100,
+        "16": 103,
+        "17": 103,
+        "18": 106,
+        "19": 114
+      },
+      "name": "Riley Hardeman",
+      "stable_player_id": null
+    },
+    "riley-onley": {
+      "by_round": {
+        "14": 139,
+        "15": 139,
+        "16": 139,
+        "17": 140,
+        "18": 138,
+        "19": 140
+      },
+      "name": "Riley Onley",
+      "stable_player_id": null
+    },
+    "riley-thilthorpe": {
+      "by_round": {
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3
+      },
+      "name": "Riley Thilthorpe",
+      "stable_player_id": null
+    },
+    "river-stevens": {
+      "by_round": {
+        "14": 107,
+        "15": 107,
+        "16": 107,
+        "17": 108,
+        "18": 110,
+        "19": 110
+      },
+      "name": "River Stevens",
+      "stable_player_id": null
+    },
+    "roan-steele": {
+      "by_round": {
+        "14": 190,
+        "15": 190,
+        "16": 190,
+        "17": 190,
+        "18": 190,
+        "19": 190
+      },
+      "name": "Roan Steele",
+      "stable_player_id": null
+    },
+    "rob-monahan": {
+      "by_round": {
+        "14": 129,
+        "15": 127,
+        "16": 127,
+        "17": 127,
+        "18": 127,
+        "19": 128
+      },
+      "name": "Rob Monahan",
+      "stable_player_id": null
+    },
+    "robert-hansen": {
+      "by_round": {
+        "14": 115,
+        "15": 118,
+        "16": 120,
+        "17": 121,
+        "18": 123,
+        "19": 127
+      },
+      "name": "Robert Hansen",
+      "stable_player_id": null
+    },
+    "rory-laird": {
+      "by_round": {
+        "14": 46,
+        "15": 47,
+        "16": 48,
+        "17": 48,
+        "18": 49,
+        "19": 50
+      },
+      "name": "Rory Laird",
+      "stable_player_id": null
+    },
+    "rory-lobb": {
+      "by_round": {
+        "14": 40,
+        "15": 59,
+        "16": 56,
+        "17": 52,
+        "18": 36,
+        "19": 35
+      },
+      "name": "Rory Lobb",
+      "stable_player_id": null
+    },
+    "rowan-marshall": {
+      "by_round": {
+        "14": 15,
+        "15": 15,
+        "16": 15,
+        "17": 13,
+        "18": 13,
+        "19": 13
+      },
+      "name": "Rowan Marshall",
+      "stable_player_id": null
+    },
+    "ryan-angwin": {
+      "by_round": {
+        "14": 138,
+        "15": 155,
+        "16": 151,
+        "17": 139,
+        "18": 140,
+        "19": 136
+      },
+      "name": "Ryan Angwin",
+      "stable_player_id": null
+    },
+    "ryan-byrnes": {
+      "by_round": {
+        "14": 140,
+        "15": 139,
+        "16": 140,
+        "17": 138,
+        "18": 139,
+        "19": 140
+      },
+      "name": "Ryan Byrnes",
+      "stable_player_id": null
+    },
+    "ryan-gardner": {
+      "by_round": {
+        "14": 88,
+        "15": 87,
+        "16": 87,
+        "17": 87,
+        "18": 87,
+        "19": 87
+      },
+      "name": "Ryan Gardner",
+      "stable_player_id": null
+    },
+    "ryan-lester": {
+      "by_round": {
+        "14": 20,
+        "15": 21,
+        "16": 25,
+        "17": 28,
+        "18": 34,
+        "19": 31
+      },
+      "name": "Ryan Lester",
+      "stable_player_id": null
+    },
+    "ryan-maric": {
+      "by_round": {
+        "14": 77,
+        "15": 77,
+        "16": 74,
+        "17": 74,
+        "18": 72,
+        "19": 75
+      },
+      "name": "Ryan Maric",
+      "stable_player_id": null
+    },
+    "ryda-luke": {
+      "by_round": {
+        "14": 96,
+        "15": 97,
+        "16": 96,
+        "17": 98,
+        "18": 100,
+        "19": 100
+      },
+      "name": "Ryda Luke",
+      "stable_player_id": null
+    },
+    "ryley-sanders": {
+      "by_round": {
+        "14": 23,
+        "15": 27,
+        "16": 28,
+        "17": 25,
+        "18": 26,
+        "19": 28
+      },
+      "name": "Ryley Sanders",
+      "stable_player_id": null
+    },
+    "saad-el-hawli": {
+      "by_round": {
+        "14": 168,
+        "15": 169,
+        "16": 169,
+        "17": 169,
+        "18": 169,
+        "19": 169
+      },
+      "name": "Saad El-Hawli",
+      "stable_player_id": null
+    },
+    "sam-allen": {
+      "by_round": {
+        "14": 101,
+        "15": 102,
+        "16": 102,
+        "17": 103,
+        "18": 101,
+        "19": 106
+      },
+      "name": "Sam Allen",
+      "stable_player_id": null
+    },
+    "sam-banks": {
+      "by_round": {
+        "14": 38,
+        "15": 39,
+        "16": 42,
+        "17": 45,
+        "18": 43,
+        "19": 47
+      },
+      "name": "Sam Banks",
+      "stable_player_id": null
+    },
+    "sam-berry": {
+      "by_round": {
+        "14": 28,
+        "15": 26,
+        "16": 27,
+        "17": 28,
+        "18": 25,
+        "19": 26
+      },
+      "name": "Sam Berry",
+      "stable_player_id": null
+    },
+    "sam-butler-1": {
+      "by_round": {
+        "14": 134,
+        "15": 133,
+        "16": 132,
+        "17": 134,
+        "18": 132,
+        "19": 131
+      },
+      "name": "Sam Butler",
+      "stable_player_id": null
+    },
+    "sam-clohesy": {
+      "by_round": {
+        "14": 156,
+        "15": 158,
+        "16": 157,
+        "17": 155,
+        "18": 153,
+        "19": 151
+      },
+      "name": "Sam Clohesy",
+      "stable_player_id": null
+    },
+    "sam-cumming": {
+      "by_round": {
+        "14": 51,
+        "15": 45,
+        "16": 42,
+        "17": 41,
+        "18": 39,
+        "19": 38
+      },
+      "name": "Sam Cumming",
+      "stable_player_id": null
+    },
+    "sam-darcy": {
+      "by_round": {
+        "14": 2,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 2,
+        "19": 2
+      },
+      "name": "Sam Darcy",
+      "stable_player_id": null
+    },
+    "sam-davidson": {
+      "by_round": {
+        "14": 131,
+        "15": 130,
+        "16": 130,
+        "17": 132,
+        "18": 133,
+        "19": 148
+      },
+      "name": "Sam Davidson",
+      "stable_player_id": null
+    },
+    "sam-de-koning": {
+      "by_round": {
+        "14": 16,
+        "15": 19,
+        "16": 19,
+        "17": 18,
+        "18": 20,
+        "19": 19
+      },
+      "name": "Sam De Koning",
+      "stable_player_id": null
+    },
+    "sam-draper": {
+      "by_round": {
+        "14": 20,
+        "15": 21,
+        "16": 20,
+        "17": 20,
+        "18": 20,
+        "19": 21
+      },
+      "name": "Sam Draper",
+      "stable_player_id": null
+    },
+    "sam-durham": {
+      "by_round": {
+        "14": 61,
+        "15": 61,
+        "16": 59,
+        "17": 48,
+        "18": 47,
+        "19": 43
+      },
+      "name": "Sam Durham",
+      "stable_player_id": null
+    },
+    "sam-flanders": {
+      "by_round": {
+        "14": 20,
+        "15": 21,
+        "16": 20,
+        "17": 22,
+        "18": 22,
+        "19": 22
+      },
+      "name": "Sam Flanders",
+      "stable_player_id": null
+    },
+    "sam-lalor": {
+      "by_round": {
+        "14": 17,
+        "15": 17,
+        "16": 17,
+        "17": 17,
+        "18": 17,
+        "19": 18
+      },
+      "name": "Sam Lalor",
+      "stable_player_id": null
+    },
+    "sam-marshall": {
+      "by_round": {
+        "14": 93,
+        "15": 93,
+        "16": 95,
+        "17": 92,
+        "18": 93,
+        "19": 94
+      },
+      "name": "Sam Marshall",
+      "stable_player_id": null
+    },
+    "sam-powell-pepper": {
+      "by_round": {
+        "14": 77,
+        "15": 77,
+        "16": 82,
+        "17": 81,
+        "18": 85,
+        "19": 84
+      },
+      "name": "Sam Powell-Pepper",
+      "stable_player_id": null
+    },
+    "sam-sturt": {
+      "by_round": {
+        "14": 160,
+        "15": 157,
+        "16": 155,
+        "17": 155,
+        "18": 154,
+        "19": 154
+      },
+      "name": "Sam Sturt",
+      "stable_player_id": null
+    },
+    "sam-switkowski": {
+      "by_round": {
+        "14": 162,
+        "15": 151,
+        "16": 150,
+        "17": 154,
+        "18": 164,
+        "19": 173
+      },
+      "name": "Sam Switkowski",
+      "stable_player_id": null
+    },
+    "sam-taylor": {
+      "by_round": {
+        "14": 8,
+        "15": 8,
+        "16": 9,
+        "17": 12,
+        "18": 12,
+        "19": 13
+      },
+      "name": "Sam Taylor",
+      "stable_player_id": null
+    },
+    "sam-walsh": {
+      "by_round": {
+        "14": 39,
+        "15": 39,
+        "16": 36,
+        "17": 38,
+        "18": 35,
+        "19": 33
+      },
+      "name": "Sam Walsh",
+      "stable_player_id": null
+    },
+    "sam-wicks": {
+      "by_round": {
+        "14": 165,
+        "15": 165,
+        "16": 166,
+        "17": 167,
+        "18": 167,
+        "19": 166
+      },
+      "name": "Sam Wicks",
+      "stable_player_id": null
+    },
+    "samson-ryan": {
+      "by_round": {
+        "14": 44,
+        "15": 43,
+        "16": 43,
+        "17": 43,
+        "18": 43,
+        "19": 43
+      },
+      "name": "Samson Ryan",
+      "stable_player_id": null
+    },
+    "samuel-collins": {
+      "by_round": {
+        "14": 19,
+        "15": 20,
+        "16": 21,
+        "17": 22,
+        "18": 23,
+        "19": 23
+      },
+      "name": "Samuel Collins",
+      "stable_player_id": null
+    },
+    "samuel-grlj": {
+      "by_round": {
+        "14": 48,
+        "15": 48,
+        "16": 50,
+        "17": 51,
+        "18": 51,
+        "19": 52
+      },
+      "name": "Samuel Grlj",
+      "stable_player_id": null
+    },
+    "samuel-swadling": {
+      "by_round": {
+        "14": 115,
+        "15": 107,
+        "16": 108,
+        "17": 97,
+        "18": 97,
+        "19": 89
+      },
+      "name": "Samuel Swadling",
+      "stable_player_id": null
+    },
+    "sandy-brock": {
+      "by_round": {
+        "14": 47,
+        "15": 47,
+        "16": 62,
+        "17": 59,
+        "18": 58,
+        "19": 59
+      },
+      "name": "Sandy Brock",
+      "stable_player_id": null
+    },
+    "scott-pendlebury": {
+      "by_round": {
+        "14": 117,
+        "15": 115,
+        "16": 120,
+        "17": 118,
+        "18": 122,
+        "19": 131
+      },
+      "name": "Scott Pendlebury",
+      "stable_player_id": null
+    },
+    "sean-darcy": {
+      "by_round": {
+        "14": 18,
+        "15": 16,
+        "16": 21,
+        "17": 21,
+        "18": 21,
+        "19": 22
+      },
+      "name": "Sean Darcy",
+      "stable_player_id": null
+    },
+    "seth-campbell": {
+      "by_round": {
+        "14": 26,
+        "15": 27,
+        "16": 29,
+        "17": 20,
+        "18": 25,
+        "19": 27
+      },
+      "name": "Seth Campbell",
+      "stable_player_id": null
+    },
+    "shadeau-brain": {
+      "by_round": {
+        "14": 149,
+        "15": 146,
+        "16": 148,
+        "17": 149,
+        "18": 150,
+        "19": 147
+      },
+      "name": "Shadeau Brain",
+      "stable_player_id": null
+    },
+    "shai-bolton": {
+      "by_round": {
+        "14": 7,
+        "15": 9,
+        "16": 8,
+        "17": 9,
+        "18": 9,
+        "19": 9
+      },
+      "name": "Shai Bolton",
+      "stable_player_id": null
+    },
+    "shannon-neale": {
+      "by_round": {
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6
+      },
+      "name": "Shannon Neale",
+      "stable_player_id": null
+    },
+    "shaun-mannagh": {
+      "by_round": {
+        "14": 45,
+        "15": 61,
+        "16": 61,
+        "17": 62,
+        "18": 39,
+        "19": 40
+      },
+      "name": "Shaun Mannagh",
+      "stable_player_id": null
+    },
+    "sid-draper": {
+      "by_round": {
+        "14": 83,
+        "15": 83,
+        "16": 84,
+        "17": 81,
+        "18": 82,
+        "19": 84
+      },
+      "name": "Sid Draper",
+      "stable_player_id": null
+    },
+    "steele-sidebottom": {
+      "by_round": {
+        "14": 176,
+        "15": 177,
+        "16": 174,
+        "17": 173,
+        "18": 174,
+        "19": 173
+      },
+      "name": "Steele Sidebottom",
+      "stable_player_id": null
+    },
+    "steely-green": {
+      "by_round": {
+        "14": 80,
+        "15": 88,
+        "16": 89,
+        "17": 87,
+        "18": 88,
+        "19": 111
+      },
+      "name": "Steely Green",
+      "stable_player_id": null
+    },
+    "stephen-coniglio": {
+      "by_round": {
+        "14": 167,
+        "15": 167,
+        "16": 167,
+        "17": 166,
+        "18": 167,
+        "19": 165
+      },
+      "name": "Stephen Coniglio",
+      "stable_player_id": null
+    },
+    "sullivan-robey": {
+      "by_round": {
+        "14": 42,
+        "15": 41,
+        "16": 39,
+        "17": 39,
+        "18": 37,
+        "19": 36
+      },
+      "name": "Sullivan Robey",
+      "stable_player_id": null
+    },
+    "tai-hayes": {
+      "by_round": {
+        "14": 79,
+        "15": 78,
+        "16": 83,
+        "17": 84,
+        "18": 86,
+        "19": 88
+      },
+      "name": "Tai Hayes",
+      "stable_player_id": null
+    },
+    "taj-hotton": {
+      "by_round": {
+        "14": 52,
+        "15": 54,
+        "16": 52,
+        "17": 50,
+        "18": 55,
+        "19": 57
+      },
+      "name": "Taj Hotton",
+      "stable_player_id": null
+    },
+    "talor-byrne": {
+      "by_round": {
+        "14": 56,
+        "15": 56,
+        "16": 46,
+        "17": 40,
+        "18": 38,
+        "19": 38
+      },
+      "name": "Talor Byrne",
+      "stable_player_id": null
+    },
+    "tanner-bruhn": {
+      "by_round": {
+        "14": 74,
+        "15": 64,
+        "16": 65,
+        "17": 58,
+        "18": 58,
+        "19": 59
+      },
+      "name": "Tanner Bruhn",
+      "stable_player_id": null
+    },
+    "taylor-goad": {
+      "by_round": {
+        "14": 23,
+        "15": 20,
+        "16": 19,
+        "17": 19,
+        "18": 19,
+        "19": 20
+      },
+      "name": "Taylor Goad",
+      "stable_player_id": null
+    },
+    "taylor-walker": {
+      "by_round": {
+        "14": 78,
+        "15": 76,
+        "16": 78,
+        "17": 85,
+        "18": 85,
+        "19": 86
+      },
+      "name": "Taylor Walker",
+      "stable_player_id": null
+    },
+    "tew-jiath": {
+      "by_round": {
+        "14": 119,
+        "15": 119,
+        "16": 118,
+        "17": 117,
+        "18": 118,
+        "19": 115
+      },
+      "name": "Tew Jiath",
+      "stable_player_id": null
+    },
+    "thomas-anastasopoulos": {
+      "by_round": {
+        "14": 72,
+        "15": 69,
+        "16": 70,
+        "17": 70,
+        "18": 73,
+        "19": 72
+      },
+      "name": "Tom Anastasopoulos",
+      "stable_player_id": null
+    },
+    "thomas-burton": {
+      "by_round": {
+        "14": 68,
+        "15": 65,
+        "16": 68,
+        "17": 68,
+        "18": 68,
+        "19": 67
+      },
+      "name": "Thomas Burton",
+      "stable_player_id": null
+    },
+    "thomas-liberatore": {
+      "by_round": {
+        "14": 50,
+        "15": 55,
+        "16": 56,
+        "17": 63,
+        "18": 66,
+        "19": 64
+      },
+      "name": "Thomas Liberatore",
+      "stable_player_id": null
+    },
+    "thomas-matthews": {
+      "by_round": {
+        "14": 39,
+        "15": 39,
+        "16": 40,
+        "17": 42,
+        "18": 46,
+        "19": 47
+      },
+      "name": "Thomas Matthews",
+      "stable_player_id": null
+    },
+    "thomas-sims": {
+      "by_round": {
+        "14": 27,
+        "15": 28,
+        "16": 29,
+        "17": 27,
+        "18": 24,
+        "19": 24
+      },
+      "name": "Thomas Sims",
+      "stable_player_id": null
+    },
+    "thomas-stewart": {
+      "by_round": {
+        "14": 44,
+        "15": 44,
+        "16": 46,
+        "17": 46,
+        "18": 46,
+        "19": 43
+      },
+      "name": "Thomas Stewart",
+      "stable_player_id": null
+    },
+    "tim-kelly": {
+      "by_round": {
+        "14": 87,
+        "15": 87,
+        "16": 88,
+        "17": 95,
+        "18": 102,
+        "19": 104
+      },
+      "name": "Tim Kelly",
+      "stable_player_id": null
+    },
+    "tim-membrey": {
+      "by_round": {
+        "14": 98,
+        "15": 95,
+        "16": 92,
+        "17": 88,
+        "18": 86,
+        "19": 77
+      },
+      "name": "Tim Membrey",
+      "stable_player_id": null
+    },
+    "tim-taranto": {
+      "by_round": {
+        "14": 43,
+        "15": 43,
+        "16": 43,
+        "17": 44,
+        "18": 43,
+        "19": 44
+      },
+      "name": "Tim Taranto",
+      "stable_player_id": null
+    },
+    "timothy-english": {
+      "by_round": {
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 5,
+        "18": 5,
+        "19": 4
+      },
+      "name": "Timothy English",
+      "stable_player_id": null
+    },
+    "tobie-travaglia": {
+      "by_round": {
+        "14": 71,
+        "15": 72,
+        "16": 72,
+        "17": 67,
+        "18": 66,
+        "19": 64
+      },
+      "name": "Tobie Travaglia",
+      "stable_player_id": null
+    },
+    "toby-bedford": {
+      "by_round": {
+        "14": 91,
+        "15": 89,
+        "16": 100,
+        "17": 86,
+        "18": 69,
+        "19": 87
+      },
+      "name": "Toby Bedford",
+      "stable_player_id": null
+    },
+    "toby-conway": {
+      "by_round": {
+        "14": 34,
+        "15": 34,
+        "16": 34,
+        "17": 35,
+        "18": 35,
+        "19": 35
+      },
+      "name": "Toby Conway",
+      "stable_player_id": null
+    },
+    "toby-greene": {
+      "by_round": {
+        "14": 30,
+        "15": 33,
+        "16": 34,
+        "17": 29,
+        "18": 28,
+        "19": 29
+      },
+      "name": "Toby Greene",
+      "stable_player_id": null
+    },
+    "toby-mcmullin": {
+      "by_round": {
+        "14": 110,
+        "15": 108,
+        "16": 109,
+        "17": 111,
+        "18": 112,
+        "19": 115
+      },
+      "name": "Toby McMullin",
+      "stable_player_id": null
+    },
+    "toby-murray": {
+      "by_round": {
+        "14": 75,
+        "15": 75,
+        "16": 74,
+        "17": 72,
+        "18": 73,
+        "19": 72
+      },
+      "name": "Toby Murray",
+      "stable_player_id": null
+    },
+    "toby-nankervis": {
+      "by_round": {
+        "14": 8,
+        "15": 8,
+        "16": 10,
+        "17": 8,
+        "18": 8,
+        "19": 9
+      },
+      "name": "Toby Nankervis",
+      "stable_player_id": null
+    },
+    "toby-pink": {
+      "by_round": {
+        "14": 89,
+        "15": 89,
+        "16": 89,
+        "17": 89,
+        "18": 89,
+        "19": 90
+      },
+      "name": "Toby Pink",
+      "stable_player_id": null
+    },
+    "toby-whan": {
+      "by_round": {
+        "14": 97,
+        "15": 98,
+        "16": 97,
+        "17": 99,
+        "18": 101,
+        "19": 101
+      },
+      "name": "Toby Whan",
+      "stable_player_id": null
+    },
+    "tobyn-murray": {
+      "by_round": {
+        "14": 55,
+        "15": 55,
+        "16": 55,
+        "17": 55,
+        "18": 59,
+        "19": 61
+      },
+      "name": "Tobyn Murray",
+      "stable_player_id": null
+    },
+    "todd-marshall": {
+      "by_round": {
+        "14": 87,
+        "15": 88,
+        "16": 87,
+        "17": 87,
+        "18": 88,
+        "19": 87
+      },
+      "name": "Todd Marshall",
+      "stable_player_id": null
+    },
+    "tom-atkins": {
+      "by_round": {
+        "14": 151,
+        "15": 150,
+        "16": 147,
+        "17": 157,
+        "18": 155,
+        "19": 142
+      },
+      "name": "Tom Atkins",
+      "stable_player_id": null
+    },
+    "tom-barrass": {
+      "by_round": {
+        "14": 34,
+        "15": 41,
+        "16": 63,
+        "17": 69,
+        "18": 70,
+        "19": 70
+      },
+      "name": "Tom Barrass",
+      "stable_player_id": null
+    },
+    "tom-blamires": {
+      "by_round": {
+        "14": 147,
+        "15": 142,
+        "16": 143,
+        "17": 142,
+        "18": 143,
+        "19": 142
+      },
+      "name": "Tom Blamires",
+      "stable_player_id": null
+    },
+    "tom-brown": {
+      "by_round": {
+        "14": 86,
+        "15": 80,
+        "16": 79,
+        "17": 79,
+        "18": 85,
+        "19": 87
+      },
+      "name": "Tom Brown",
+      "stable_player_id": null
+    },
+    "tom-cochrane": {
+      "by_round": {
+        "14": 90,
+        "15": 99,
+        "16": 98,
+        "17": 100,
+        "18": 103,
+        "19": 97
+      },
+      "name": "Tom Cochrane",
+      "stable_player_id": null
+    },
+    "tom-cole": {
+      "by_round": {
+        "14": 153,
+        "15": 153,
+        "16": 158,
+        "17": 164,
+        "18": 164,
+        "19": 163
+      },
+      "name": "Tom Cole",
+      "stable_player_id": null
+    },
+    "tom-de-koning": {
+      "by_round": {
+        "14": 9,
+        "15": 10,
+        "16": 8,
+        "17": 9,
+        "18": 11,
+        "19": 11
+      },
+      "name": "Tom De Koning",
+      "stable_player_id": null
+    },
+    "tom-doedee": {
+      "by_round": {
+        "14": 91,
+        "15": 92,
+        "16": 90,
+        "17": 92,
+        "18": 93,
+        "19": 96
+      },
+      "name": "Tom Doedee",
+      "stable_player_id": null
+    },
+    "tom-edwards": {
+      "by_round": {
+        "14": 95,
+        "15": 96,
+        "16": 93,
+        "17": 94,
+        "18": 93,
+        "19": 95
+      },
+      "name": "Tom Edwards",
+      "stable_player_id": null
+    },
+    "tom-green": {
+      "by_round": {
+        "14": 10,
+        "15": 11,
+        "16": 12,
+        "17": 12,
+        "18": 12,
+        "19": 12
+      },
+      "name": "Tom Green",
+      "stable_player_id": null
+    },
+    "tom-gross": {
+      "by_round": {
+        "14": 122,
+        "15": 118,
+        "16": 117,
+        "17": 116,
+        "18": 115,
+        "19": 115
+      },
+      "name": "Tom Gross",
+      "stable_player_id": null
+    },
+    "tom-hanily": {
+      "by_round": {
+        "14": 114,
+        "15": 113,
+        "16": 115,
+        "17": 124,
+        "18": 126,
+        "19": 129
+      },
+      "name": "Tom Hanily",
+      "stable_player_id": null
+    },
+    "tom-lynch-1": {
+      "by_round": {
+        "14": 84,
+        "15": 83,
+        "16": 83,
+        "17": 86,
+        "18": 96,
+        "19": 96
+      },
+      "name": "Tom Lynch",
+      "stable_player_id": null
+    },
+    "tom-mccarthy": {
+      "by_round": {
+        "14": 31,
+        "15": 30,
+        "16": 33,
+        "17": 33,
+        "18": 30,
+        "19": 32
+      },
+      "name": "Tom McCarthy",
+      "stable_player_id": null
+    },
+    "tom-mccartin": {
+      "by_round": {
+        "14": 11,
+        "15": 11,
+        "16": 11,
+        "17": 8,
+        "18": 7,
+        "19": 8
+      },
+      "name": "Tom McCartin",
+      "stable_player_id": null
+    },
+    "tom-mcdonald": {
+      "by_round": {
+        "14": 44,
+        "15": 49,
+        "16": 48,
+        "17": 49,
+        "18": 50,
+        "19": 50
+      },
+      "name": "Tom McDonald",
+      "stable_player_id": null
+    },
+    "tom-papley": {
+      "by_round": {
+        "14": 46,
+        "15": 45,
+        "16": 44,
+        "17": 47,
+        "18": 58,
+        "19": 54
+      },
+      "name": "Tom Papley",
+      "stable_player_id": null
+    },
+    "tom-powell": {
+      "by_round": {
+        "14": 12,
+        "15": 11,
+        "16": 12,
+        "17": 10,
+        "18": 11,
+        "19": 11
+      },
+      "name": "Tom Powell",
+      "stable_player_id": null
+    },
+    "tom-sparrow": {
+      "by_round": {
+        "14": 97,
+        "15": 89,
+        "16": 90,
+        "17": 84,
+        "18": 84,
+        "19": 72
+      },
+      "name": "Tom Sparrow",
+      "stable_player_id": null
+    },
+    "touk-miller": {
+      "by_round": {
+        "14": 62,
+        "15": 69,
+        "16": 70,
+        "17": 69,
+        "18": 74,
+        "19": 68
+      },
+      "name": "Touk Miller",
+      "stable_player_id": null
+    },
+    "trent-rivers": {
+      "by_round": {
+        "14": 21,
+        "15": 28,
+        "16": 29,
+        "17": 29,
+        "18": 28,
+        "19": 27
+      },
+      "name": "Trent Rivers",
+      "stable_player_id": null
+    },
+    "tristan-xerri": {
+      "by_round": {
+        "14": 2,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 2,
+        "19": 2
+      },
+      "name": "Tristan Xerri",
+      "stable_player_id": null
+    },
+    "ty-gallop": {
+      "by_round": {
+        "14": 30,
+        "15": 30,
+        "16": 27,
+        "17": 25,
+        "18": 21,
+        "19": 22
+      },
+      "name": "Ty Gallop",
+      "stable_player_id": null
+    },
+    "tyan-prindable": {
+      "by_round": {
+        "14": 105,
+        "15": 111,
+        "16": 110,
+        "17": 110,
+        "18": 112,
+        "19": 112
+      },
+      "name": "Tyan Prindable",
+      "stable_player_id": null
+    },
+    "tylah-williams": {
+      "by_round": {
+        "14": 53,
+        "15": 52,
+        "16": 54,
+        "17": 54,
+        "18": 55,
+        "19": 59
+      },
+      "name": "Tylah Williams",
+      "stable_player_id": null
+    },
+    "tylar-young": {
+      "by_round": {
+        "14": 60,
+        "15": 58,
+        "16": 54,
+        "17": 46,
+        "18": 49,
+        "19": 47
+      },
+      "name": "Tylar Young",
+      "stable_player_id": null
+    },
+    "tyler-brockman": {
+      "by_round": {
+        "14": 143,
+        "15": 141,
+        "16": 142,
+        "17": 144,
+        "18": 144,
+        "19": 143
+      },
+      "name": "Tyler Brockman",
+      "stable_player_id": null
+    },
+    "tyler-sonsie": {
+      "by_round": {
+        "14": 79,
+        "15": 86,
+        "16": 85,
+        "17": 85,
+        "18": 85,
+        "19": 86
+      },
+      "name": "Tyler Sonsie",
+      "stable_player_id": null
+    },
+    "tyler-welsh": {
+      "by_round": {
+        "14": 77,
+        "15": 78,
+        "16": 75,
+        "17": 75,
+        "18": 76,
+        "19": 75
+      },
+      "name": "Tyler Welsh",
+      "stable_player_id": null
+    },
+    "tyrell-dewar": {
+      "by_round": {
+        "14": 123,
+        "15": 125,
+        "16": 125,
+        "17": 125,
+        "18": 128,
+        "19": 129
+      },
+      "name": "Tyrell Dewar",
+      "stable_player_id": null
+    },
+    "tyson-stengle": {
+      "by_round": {
+        "14": 89,
+        "15": 91,
+        "16": 92,
+        "17": 93,
+        "18": 94,
+        "19": 90
+      },
+      "name": "Tyson Stengle",
+      "stable_player_id": null
+    },
+    "vigo-visentini": {
+      "by_round": {
+        "14": 49,
+        "15": 48,
+        "16": 47,
+        "17": 46,
+        "18": 46,
+        "19": 46
+      },
+      "name": "Vigo Visentini",
+      "stable_player_id": null
+    },
+    "wade-derksen": {
+      "by_round": {
+        "14": 73,
+        "15": 74,
+        "16": 74,
+        "17": 71,
+        "18": 74,
+        "19": 76
+      },
+      "name": "Wade Derksen",
+      "stable_player_id": null
+    },
+    "wayne-milera": {
+      "by_round": {
+        "14": 27,
+        "15": 26,
+        "16": 27,
+        "17": 27,
+        "18": 25,
+        "19": 23
+      },
+      "name": "Wayne Milera",
+      "stable_player_id": null
+    },
+    "wil-dawson": {
+      "by_round": {
+        "14": 33,
+        "15": 33,
+        "16": 32,
+        "17": 25,
+        "18": 28,
+        "19": 29
+      },
+      "name": "Wil Dawson",
+      "stable_player_id": null
+    },
+    "wil-parker": {
+      "by_round": {
+        "14": 162,
+        "15": 161,
+        "16": 162,
+        "17": 162,
+        "18": 161,
+        "19": 161
+      },
+      "name": "Wil Parker",
+      "stable_player_id": null
+    },
+    "wil-powell": {
+      "by_round": {
+        "14": 49,
+        "15": 48,
+        "16": 47,
+        "17": 49,
+        "18": 55,
+        "19": 49
+      },
+      "name": "Wil Powell",
+      "stable_player_id": null
+    },
+    "will-ashcroft": {
+      "by_round": {
+        "14": 11,
+        "15": 10,
+        "16": 10,
+        "17": 8,
+        "18": 6,
+        "19": 6
+      },
+      "name": "Will Ashcroft",
+      "stable_player_id": null
+    },
+    "will-brodie": {
+      "by_round": {
+        "14": 88,
+        "15": 88,
+        "16": 87,
+        "17": 86,
+        "18": 87,
+        "19": 88
+      },
+      "name": "Will Brodie",
+      "stable_player_id": null
+    },
+    "will-darcy": {
+      "by_round": {
+        "14": 30,
+        "15": 32,
+        "16": 33,
+        "17": 33,
+        "18": 33,
+        "19": 34
+      },
+      "name": "Will Darcy",
+      "stable_player_id": null
+    },
+    "will-day": {
+      "by_round": {
+        "14": 25,
+        "15": 21,
+        "16": 22,
+        "17": 27,
+        "18": 38,
+        "19": 39
+      },
+      "name": "Will Day",
+      "stable_player_id": null
+    },
+    "will-edwards": {
+      "by_round": {
+        "14": 59,
+        "15": 57,
+        "16": 53,
+        "17": 55,
+        "18": 55,
+        "19": 56
+      },
+      "name": "Will Edwards",
+      "stable_player_id": null
+    },
+    "will-graham": {
+      "by_round": {
+        "14": 18,
+        "15": 18,
+        "16": 18,
+        "17": 17,
+        "18": 18,
+        "19": 18
+      },
+      "name": "Will Graham",
+      "stable_player_id": null
+    },
+    "will-green": {
+      "by_round": {
+        "14": 27,
+        "15": 27,
+        "16": 27,
+        "17": 27,
+        "18": 27,
+        "19": 27
+      },
+      "name": "Will Green",
+      "stable_player_id": null
+    },
+    "will-hayes-b": {
+      "by_round": {
+        "14": 75,
+        "15": 74,
+        "16": 78,
+        "17": 76,
+        "18": 78,
+        "19": 77
+      },
+      "name": "Will Hayes",
+      "stable_player_id": null
+    },
+    "will-hayward": {
+      "by_round": {
+        "14": 98,
+        "15": 93,
+        "16": 67,
+        "17": 82,
+        "18": 83,
+        "19": 94
+      },
+      "name": "Will Hayward",
+      "stable_player_id": null
+    },
+    "will-lewis": {
+      "by_round": {
+        "14": 102,
+        "15": 102,
+        "16": 102,
+        "17": 102,
+        "18": 102,
+        "19": 102
+      },
+      "name": "Will Lewis",
+      "stable_player_id": null
+    },
+    "will-lorenz": {
+      "by_round": {
+        "14": 145,
+        "15": 146,
+        "16": 144,
+        "17": 146,
+        "18": 146,
+        "19": 149
+      },
+      "name": "Will Lorenz",
+      "stable_player_id": null
+    },
+    "will-mclachlan": {
+      "by_round": {
+        "14": 112,
+        "15": 115,
+        "16": 117,
+        "17": 120,
+        "18": 121,
+        "19": 124
+      },
+      "name": "Will McLachlan",
+      "stable_player_id": null
+    },
+    "will-setterfield": {
+      "by_round": {
+        "14": 67,
+        "15": 67,
+        "16": 71,
+        "17": 93,
+        "18": 94,
+        "19": 95
+      },
+      "name": "Will Setterfield",
+      "stable_player_id": null
+    },
+    "willem-drew": {
+      "by_round": {
+        "14": 100,
+        "15": 95,
+        "16": 97,
+        "17": 98,
+        "18": 98,
+        "19": 108
+      },
+      "name": "Willem Drew",
+      "stable_player_id": null
+    },
+    "willem-duursma": {
+      "by_round": {
+        "14": 13,
+        "15": 15,
+        "16": 16,
+        "17": 15,
+        "18": 15,
+        "19": 14
+      },
+      "name": "Willem Duursma",
+      "stable_player_id": null
+    },
+    "william-mccabe": {
+      "by_round": {
+        "14": 46,
+        "15": 45,
+        "16": 45,
+        "17": 45,
+        "18": 46,
+        "19": 36
+      },
+      "name": "William McCabe",
+      "stable_player_id": null
+    },
+    "xavier-bamert": {
+      "by_round": {
+        "14": 82,
+        "15": 76,
+        "16": 75,
+        "17": 78,
+        "18": 65,
+        "19": 62
+      },
+      "name": "Xavier Bamert",
+      "stable_player_id": null
+    },
+    "xavier-duursma": {
+      "by_round": {
+        "14": 159,
+        "15": 159,
+        "16": 159,
+        "17": 159,
+        "18": 158,
+        "19": 159
+      },
+      "name": "Xavier Duursma",
+      "stable_player_id": null
+    },
+    "xavier-lindsay": {
+      "by_round": {
+        "14": 15,
+        "15": 17,
+        "16": 18,
+        "17": 20,
+        "18": 21,
+        "19": 21
+      },
+      "name": "Xavier Lindsay",
+      "stable_player_id": null
+    },
+    "xavier-o-halloran": {
+      "by_round": {
+        "14": 163,
+        "15": 164,
+        "16": 161,
+        "17": 161,
+        "18": 157,
+        "19": 155
+      },
+      "name": "Xavier O'Halloran",
+      "stable_player_id": null
+    },
+    "xavier-taylor": {
+      "by_round": {
+        "14": 52,
+        "15": 51,
+        "16": 51,
+        "17": 52,
+        "18": 51,
+        "19": 51
+      },
+      "name": "Xavier Taylor",
+      "stable_player_id": null
+    },
+    "xavier-walsh": {
+      "by_round": {
+        "14": 61,
+        "15": 60,
+        "16": 57,
+        "17": 57,
+        "18": 56,
+        "19": 55
+      },
+      "name": "Xavier Walsh",
+      "stable_player_id": null
+    },
+    "zac-bailey": {
+      "by_round": {
+        "14": 5,
+        "15": 5,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4
+      },
+      "name": "Zac Bailey",
+      "stable_player_id": null
+    },
+    "zac-banch": {
+      "by_round": {
+        "14": 153,
+        "15": 154,
+        "16": 154,
+        "17": 152,
+        "18": 152,
+        "19": 156
+      },
+      "name": "Zac Banch",
+      "stable_player_id": null
+    },
+    "zac-fisher": {
+      "by_round": {
+        "14": 100,
+        "15": 103,
+        "16": 103,
+        "17": 105,
+        "18": 107,
+        "19": 107
+      },
+      "name": "Zac Fisher",
+      "stable_player_id": null
+    },
+    "zac-mccarthy": {
+      "by_round": {
+        "14": 60,
+        "15": 59,
+        "16": 59,
+        "17": 59,
+        "18": 59,
+        "19": 60
+      },
+      "name": "Zac McCarthy",
+      "stable_player_id": null
+    },
+    "zac-taylor": {
+      "by_round": {
+        "14": 66,
+        "15": 73,
+        "16": 66,
+        "17": 66,
+        "18": 74,
+        "19": 70
+      },
+      "name": "Zac Taylor",
+      "stable_player_id": null
+    },
+    "zac-walker": {
+      "by_round": {
+        "14": 121,
+        "15": 121,
+        "16": 120,
+        "17": 119,
+        "18": 119,
+        "19": 119
+      },
+      "name": "Zac Walker",
+      "stable_player_id": null
+    },
+    "zach-guthrie": {
+      "by_round": {
+        "14": 80,
+        "15": 84,
+        "16": 83,
+        "17": 84,
+        "18": 89,
+        "19": 97
+      },
+      "name": "Zach Guthrie",
+      "stable_player_id": null
+    },
+    "zach-reid": {
+      "by_round": {
+        "14": 9,
+        "15": 9,
+        "16": 8,
+        "17": 10,
+        "18": 11,
+        "19": 14
+      },
+      "name": "Zach Reid",
+      "stable_player_id": null
+    },
+    "zachary-merrett": {
+      "by_round": {
+        "14": 37,
+        "15": 35,
+        "16": 38,
+        "17": 37,
+        "18": 42,
+        "19": 40
+      },
+      "name": "Zachary Merrett",
+      "stable_player_id": null
+    },
+    "zachary-williams": {
+      "by_round": {
+        "14": 120,
+        "15": 122,
+        "16": 122,
+        "17": 121,
+        "18": 122,
+        "19": 122
+      },
+      "name": "Zachary Williams",
+      "stable_player_id": null
+    },
+    "zak-butters": {
+      "by_round": {
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 5
+      },
+      "name": "Zak Butters",
+      "stable_player_id": null
+    },
+    "zak-evans": {
+      "by_round": {
+        "14": 193,
+        "15": 192,
+        "16": 192,
+        "17": 193,
+        "18": 193,
+        "19": 193
+      },
+      "name": "Zak Evans",
+      "stable_player_id": null
+    },
+    "zak-johnson": {
+      "by_round": {
+        "14": 76,
+        "15": 76,
+        "16": 76,
+        "17": 76,
+        "18": 74,
+        "19": 73
+      },
+      "name": "Zak Johnson",
+      "stable_player_id": null
+    },
+    "zane-duursma": {
+      "by_round": {
+        "14": 35,
+        "15": 35,
+        "16": 35,
+        "17": 35,
+        "18": 35,
+        "19": 36
+      },
+      "name": "Zane Duursma",
+      "stable_player_id": null
+    },
+    "zane-peucker": {
+      "by_round": {
+        "14": 42,
+        "15": 42,
+        "16": 41,
+        "17": 44,
+        "18": 43,
+        "19": 46
+      },
+      "name": "Zane Peucker",
+      "stable_player_id": null
+    },
+    "zane-zakostelsky": {
+      "by_round": {
+        "14": 27,
+        "15": 29,
+        "16": 31,
+        "17": 35,
+        "18": 35,
+        "19": 36
+      },
+      "name": "Zane Zakostelsky",
+      "stable_player_id": null
+    },
+    "zeke-uwland": {
+      "by_round": {
+        "14": 12,
+        "15": 12,
+        "16": 10,
+        "17": 10,
+        "18": 10,
+        "19": 10
+      },
+      "name": "Zeke Uwland",
+      "stable_player_id": null
+    }
+  },
+  "rounds": [
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "schema_version": 1,
+  "season": 2026
+}

@@ -1,0 +1,40 @@
+=== MECHANISM PROOF SUMMARY — env-pin 2026-07-19 (item 392) ===
+Balanced board of record: RL_LEGE=0 RL_LEGF=0, THREADS=1, PYTHONHASHSEED=0, v0surf LOADED.
+Pinned board = 06d8af60 · n=804 · Sv=752427 · Sheezel=7964
+  top-6: Luke Jackson 8613 > Nick Daicos 8017 > Harry Sheezel 7964 > Tristan Xerri 7635
+         > Max Holmes 6932 > Josh Treacy 6713
+
+A) SYNTHETIC np.interp PERTURBATION (patch numpy.interp output by relative eps; reaches all 25+ sites).
+   The board md5 is over rl_app_data.json, which carries 6-dp float fields as well as the integer v.
+   --- coherent (out*=1+eps): all interp outputs biased one way ---
+     eps=0      -> 06d8af60  HOLDS   (pinned wheel)
+     eps=1e-7   -> 06d8af60  HOLDS
+     eps=3e-7   -> f20efa4d  DIVERGED   (board md5 flips here; float-field threshold ~3e-7)
+     eps=5e-7   -> f20efa4d  DIVERGED
+     eps=1e-6   -> 52386bbf  DIVERGED   (1 integer v mover: lachlan-mcandrew 1292->1293)
+     eps=1e-5   -> f5e6ee01  DIVERGED   (13 integer v movers)
+     eps=1e-4   -> 026c1b51  DIVERGED   (95 integer v movers)
+     eps=1e-3   -> e617ee39  DIVERGED   (400 integer v movers)  [coherent scaling preserves top order]
+   --- incoherent (out*=1 +/- eps, per-element sign = ULP jitter model; the faithful cross-build shape) ---
+     eps=1e-6   -> d8646b4c  DIVERGED   (2 integer v movers)
+     eps=1e-5   -> 0f157bce  DIVERGED   (8 integer v movers)
+     eps=1e-4   -> 32418d53  DIVERGED   (73 integer v movers)
+   CONCLUSION: np.interp IS a genuine board amplifier. A relative interp perturbation moves the board md5
+   (the gate artifact) at eps >= ~3e-7 and moves DISPLAYED integer values from eps ~1e-6 upward (into the
+   hundreds of rows) — i.e. at near-ties it is rank-unsafe, matching item 391. eps=0 (the pinned wheel)
+   holds 06d8af60 byte-exact.
+
+B) REAL different builds available on THIS container:
+     numpy 2.3.5 (different wheel/compile, same manylinux/gcc lineage) -> 06d8af60  HOLDS
+     numpy 2.4.4, forced no-FMA/no-AVX dispatch (NPY_DISABLE_CPU_FEATURES) -> interp bit-identical -> HOLDS
+   HONEST NOTE: I could NOT reproduce a REAL cross-build board flip on this container — every real build
+   variant available here (2.3.5, no-FMA) produces bit-identical interp and holds 06d8af60. This container
+   is a robust/majority container (consistent with item 391: same-lineage interp divergence ~1e-16 << the
+   flip threshold). The genuine cross-build flip (item 389) needs a wheel from a different build lineage,
+   which is exactly what the pin removes. The synthetic perturbation (A) is therefore the divergence handle
+   used to challenge the fix; it is not claimed to be the observed magnitude of the item-389 flip.
+
+C) WHY THE PIN IS SUFFICIENT (wheel_verify.txt): the pinned wheel sha256 == the lock, and the OpenBLAS
+   bundled inside it == the installed numpy.libs .so byte-for-byte. Installing the pin reproduces THIS
+   container's numpy binary + BLAS byte-for-byte on every container, so np.interp is bit-identical
+   everywhere => the board holds 06d8af60 across containers by construction.

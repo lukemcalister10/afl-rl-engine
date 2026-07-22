@@ -1,0 +1,106 @@
+
+=== FORWARD LENS +1 yr vs balanced-now (top-20 each; value credited via R103.3) ===
+  RISERS (production credited — pre-peak accrual):
+  player                    age     now   +1 yr       d      d%
+    James Leake              21     345     410     +65  +18.8%
+    Wade Derksen             25     118     158     +40  +33.9%
+    Oliver Hannaford         20     432     469     +37   +8.6%
+    Wil Parker               24      34      59     +25  +73.5%
+    Murphy Reid              20    3855    3876     +21   +0.5%
+    Brody Mihocek            33      11      23     +12 +109.1%
+    Will Lewis               27      10      15      +5  +50.0%
+    Lewis Hayes              22     359     359      +0   +0.0%
+    Scott Pendlebury         39     638     638      +0   +0.0%
+    Iliro Smit               21     308     308      +0   +0.0%
+    Vigo Visentini           21     326     326      +0   +0.0%
+    Zac Banch                23      66      66      +0   +0.0%
+    Paddy Dow                27     165     165      +0   +0.0%
+    Nicholas Coffield        27      53      53      +0   +0.0%
+    Patrick Dangerfield      37     129     129      +0   +0.0%
+    Stephen Coniglio         33     165     165      +0   +0.0%
+    Lachlan Weller           30      83      83      +0   +0.0%
+    Luke McDonald            31      53      53      +0   +0.0%
+    Jack Martin              32      96      96      +0   +0.0%
+    Jacob Hopper             29     124     124      +0   +0.0%
+  FALLERS (projected decline — L-SYMMETRY, same bar as improvement):
+    Jagga Smith              20    3512     924   -2588  -73.7%
+    Errol Gulden             24    5857    3964   -1893  -32.3%
+    Xavier Lindsay           20    2155     567   -1588  -73.7%
+    Taj Hotton               20    2071     536   -1535  -74.1%
+    Mitchell Edwards         21    1855     380   -1475  -79.5%
+    Will Day                 25    3585    2121   -1464  -40.8%
+    Nick Madden              22    1495     280   -1215  -81.3%
+    Max Holmes               24    6932    5725   -1207  -17.4%
+    Lachlan Ash              25    5372    4261   -1111  -20.7%
+    Zak Butters              26    6198    5091   -1107  -17.9%
+    Sam Lalor                20    4115    3013   -1102  -26.8%
+    Caleb Serong             25    4546    3453   -1093  -24.0%
+    Noah Anderson            25    5160    4079   -1081  -20.9%
+    Isaac Heeney             30    4242    3183   -1059  -25.0%
+    Finn Callaghan           23    5491    4445   -1046  -19.0%
+    Nick Blakey              26    4212    3189   -1023  -24.3%
+    Hayden Young             25    2732    1715   -1017  -37.2%
+    Nick Daicos              23    8017    7056    -961  -12.0%
+    Jason Horne-Francis      23    4127    3168    -959  -23.2%
+    Marcus Bontempelli       31    3897    2949    -948  -24.3%
+
+=== FORWARD LENS +2 yr vs balanced-now (top-20 each; value credited via R103.3) ===
+  RISERS (production credited — pre-peak accrual):
+  player                    age     now   +2 yr       d      d%
+    James Leake              21     345     410     +65  +18.8%
+    Wade Derksen             25     118     158     +40  +33.9%
+    Oliver Hannaford         20     432     468     +36   +8.3%
+    Brody Mihocek            33      11      21     +10  +90.9%
+    Wil Parker               24      34      40      +6  +17.6%
+    Paddy Dow                27     165     165      +0   +0.0%
+    Nicholas Coffield        27      53      53      +0   +0.0%
+    Patrick Dangerfield      37     129     129      +0   +0.0%
+    Stephen Coniglio         33     165     165      +0   +0.0%
+    Lachlan Weller           30      83      83      +0   +0.0%
+    Luke McDonald            31      53      53      +0   +0.0%
+    Jack Martin              32      96      96      +0   +0.0%
+    Jacob Hopper             29     124     124      +0   +0.0%
+    Liam Henry               25      83      83      +0   +0.0%
+    Hunter Clark             27      55      55      +0   +0.0%
+    Jaeger O'Meara           33     194     194      +0   +0.0%
+    Jamie Elliott            34      32      32      +0   +0.0%
+    Aidan Corr               32      49      49      +0   +0.0%
+    Mitch McGovern           32      28      28      +0   +0.0%
+    Callum Ah Chee           29      84      84      +0   +0.0%
+  FALLERS (projected decline — L-SYMMETRY, same bar as improvement):
+    Willem Duursma           19    4265    1086   -3179  -74.5%
+    Jagga Smith              20    3512     742   -2770  -78.9%
+    Nick Daicos              23    8017    5256   -2761  -34.4%
+    Errol Gulden             24    5857    3163   -2694  -46.0%
+    Max Holmes               24    6932    4510   -2422  -34.9%
+    Nasiah Wanganeen-Miler   23    6709    4312   -2397  -35.7%
+    Finn Callaghan           23    5491    3245   -2246  -40.9%
+    Lachlan Ash              25    5372    3142   -2230  -41.5%
+    Noah Anderson            25    5160    2951   -2209  -42.8%
+    Harry Sheezel            22    7964    5804   -2160  -27.1%
+    Josh Lindsay             19    2360     226   -2134  -90.4%
+    Zak Butters              26    6198    4107   -2091  -33.7%
+    Tristan Xerri            27    7635    5577   -2058  -27.0%
+    Caleb Serong             25    4546    2518   -2028  -44.6%
+    Josh Treacy              24    6713    4689   -2024  -30.2%
+    Luke Jackson             25    8613    6600   -2013  -23.4%
+    Brodie Grundy            32    4798    2791   -2007  -41.8%
+    Sullivan Robey           19    2640     633   -2007  -76.0%
+    Isaac Heeney             30    4242    2254   -1988  -46.9%
+    Bailey Smith             26    5861    3877   -1984  -33.9%
+
+=== POSTURE 2027-PICK DISCOUNTS (composition law §4; one application, BINDING) ===
+  discounts: {"balanced": 0.1, "contender": 0.15, "rebuilder": 0.05}
+  posture       pick1    pick2    pick3    pick5   pick10
+  FACE           3000     2779     2675     2247     1604
+  balanced       2700     2501     2408     2022     1444
+  contender      2550     2362     2274     1910     1363
+  rebuilder      2850     2640     2541     2135     1524
+
+=== NAMED LTI ROWS (memo §5; magnitude is an [OWNER] ruling at THIS report) ===
+  LTI truncation honoured: demonstrated form/games held at true-now (2026) under the forward lens.
+  player                    age     now      +1      +2
+    Connor Rozee             26    3068    2473    1888   LTI/avail row
+    Murphy Reid              20    3855    3876    3544   R103.6 watch row
+    Harley Reid              21    3348    2871    2234   R103.6 watch row
+    Zach Reid                24    1734    1314    1141   R103.6 watch row

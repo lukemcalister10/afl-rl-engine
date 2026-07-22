@@ -11,12 +11,25 @@ MD.config = {
      data/expected_boot.json 'board'; the refreshed board_view bundles carry srcmd5 3dc19fbb. Moved
      3dc19fbb -> 790136a3 (v2.10 CAPTAINCY BAKE, tag d14efaef: the L-CAPTAIN ruled captain curve lifts the
      guns + load-time re-normalisation; display-only for the UI — no value is computed here). The pin moves
-     with the tagged board, per the v1.1 base rule: bundles regenerate via extract_board_view.py from the tag. */
-  EXPECTED_BOARD: "790136a3",
+     with the tagged board, per the v1.1 base rule: bundles regenerate via extract_board_view.py from the tag.
+     Moved 790136a3 -> 06d8af60 (v2.11-rc1 RELEASE CANDIDATE, release/v2.11-rc1: the installed balanced board
+     of record data/expected_boot.json 'board' = full md5 06d8af60b679a12db07c064c60c065f9, RL_LEGE=0 RL_LEGF=0
+     RL_PVC2=1 on engine cc626d7d/904722cd, store 968de0c7; display-only for the UI — no value is computed here.
+     The seam authenticates working.stamp.board_md5[:8] == this id).
+     Moved 06d8af60 -> 2ab73a6f (FINAL INTEGRATION 2026-07-21, integration/v2.11-final-rc: the CANONICAL ENGINE
+     BUILD — rl_export.py under RL_PVC2=1 RL_LEGE=1 RL_LEGF=1 — reproduces this board from tracked code + the
+     canonical store + the sealed F5 input; NO diagnostic artifact is a build input. It equals accepted Board B
+     (1f10220c) on present v + vP1 + vP2 + row universe (0 diffs; Board B is an oracle only) and adds the owner-
+     facing visible future-draft asset ladder: 2027/2028 Draft Pick 1-64 at release-active PVC, RANKED among the
+     804 players in the +1/+2 lens; the two F5 residual aggregates sit in a separate reconciliation panel. Present
+     lens unchanged: 804 active, Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as
+     balanced_board_md5 lineage). Engine cc626d7d/904722cd, store 968de0c7, config 3a1e714f unchanged (rl_export
+     is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC). */
+  EXPECTED_BOARD: "6f07f7cb",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
-  DELTA_BASE_DEFAULT: "bake", // "bake" (a) today · flip to "round" (b) at go-live.
+  DELTA_BASE_DEFAULT: "round", // "bake" (a) today · flip to "round" (b) at go-live.
 
   /* ±1/2-yr board lens (completion-path requirement). Index 2 == now (BASE_YEAR).
      Maps to lens = [vM2, vM1, v, vP1, vP2] = ev @ 2024/2025/2026/2027/2028 (rl_export.py:66). */

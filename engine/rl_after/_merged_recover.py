@@ -3,6 +3,31 @@ import os,io,contextlib,copy,pickle,numpy as np
 import math as _math
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
+def _season_val(_key, _fb):
+    """DYNAMIC season-state value (calendar_progress|exposure_pace) from data/season_state.json (single
+    source; advances weekly).
+    FENCED (RL_CONFIG_MODE in bake|gate|canonical): HALT on any of unresolved/untrusted repo root,
+    missing file, malformed JSON, missing key, or a non-numeric / non-finite value. UNFENCED dev: fallback."""
+    import json as _j
+    _mode = (os.environ.get('RL_CONFIG_MODE') or '').strip().lower()
+    _fenced = _mode in ('bake', 'gate', 'canonical')
+    _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
+    if not _r:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): repo root unresolved "
+                               "(RL_REPO/CLAUDE_PROJECT_DIR unset) — cannot load authoritative season state" % _mode)
+        _r = '.'
+    _p = os.path.join(_r, 'data', 'season_state.json')
+    try:
+        _v = float(_j.load(open(_p))[_key])
+        if _v != _v or _v in (float('inf'), float('-inf')):
+            raise ValueError("non-finite %s=%r" % (_key, _v))
+        return _v
+    except Exception as _e:
+        if _fenced:
+            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
+                               % (_mode, _key, _p, _e)) from _e
+        return float(_fb)
 # ===== DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix) =====
 # PART 1 bisect finding: the FIRST cross-environment divergent bit is a BLAS-routed np.dot
 # (price6, below) — NOT the NW-smoother the register hypothesised. All 3 np.dot sites on the
@@ -78,7 +103,7 @@ PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec sp
 # judged only against games that were playable (R14/24 -> fE=0.58 at this cut; RL_M3_FE = the M2/M3
 # season-progress convention, one dial). Completed seasons are byte-identical (fE=1). G_ADQ (12, M1
 # proven-player recent-adequacy window) deliberately NOT prorated — outside the 6/10/14/22 enumeration.
-SEASON_FE=float(os.environ.get('RL_M3_FE','0.58'))
+SEASON_FE=_season_val('calendar_progress',0.58)   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state
 INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
 # ==== RL_AVAIL — LTI/AVAILABILITY LAYER (Chapter-3 2026-07-09; register-driven; touches register keys only) ==
 # Part 1 (current-season nerf, R-iv = season-state at the proration seam): for a register name out for the
@@ -183,6 +208,88 @@ def _ev_qual(p,Y):                                            # E_q: EFFECTIVE q
     return float(sum(1.0/(1.0+_math.exp(-(x['games']-_EVW_Q0)/_EVW_QW)) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y))
 def _ev_rec(Eq):  return float(Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK))        # recency trust Lo->Lc: 0 (unqualified: conservative career level) -> 1 (qualified: trust recent form)
 def _ev_est(Eq):  return float(Eq*Eq*Eq/(Eq*Eq*Eq+_EVW_EST*_EVW_EST*_EVW_EST))  # established weight Lc->est: 0 (thin) -> 1 (proven), centred at ~PROVEN_N seasons
+# ==== LEG F3 (§2.vi, MEMO_LEGF v1.1; supervisor ruling item 353) — FORM-ANCHOR CLOCK ================
+# The forward lens (rl_export sets MA._LENS_FORM => AGE_REF>BASE_REF) must carry the SAME pedigree/evidence
+# blend at the projected state, the pedigree weight decaying ONLY as PROJECTED EVIDENCE accrues — NOT as the
+# age/tenure clock advances (R103.3 / MEMO_LEGF v1.1 §2.vi; the item-352 "age erases pedigree" defect). This
+# context evaluates the pedigree-fade + tenure clocks at the FORM ANCHOR (BASE_REF) while the production/growth
+# path keeps AGE_REF. Gated on MA._LENS_FORM (the SAME signal b6/price6 use, :258/:265) — NOT on
+# AGE_REF!=BASE_REF, because the load-time V0-curve/ISO/backward builds run AGE_REF!=BASE_REF with _LENS_FORM
+# None and MUST stay byte-exact (they feed the k=0 board / the HARD-OUT V0 chain :1121-1171, never touched
+# here). k=0 / balanced / backward => _LENS_FORM None => pure no-op => byte-exact BY CONSTRUCTION (proven:
+# balanced RL_LEGE=0 => 06d8af60, edited==pristine). No new multiplier, no lens-only growth term (Reid) — it
+# REMOVES a lens-only clock PENALTY.
+import contextlib as _f3ctx
+_LEGF_ON=os.environ.get('RL_LEGF','1')!='0'   # LEG F3 gate (== the F1 phantom gate): the whole §2.vi projection cure rides RL_LEGF (default ON). RL_LEGF=0 => every F3 edit below is INERT => the pre-F3 Leg-E chain reproduces byte-exact (d85901af / 06d8af60 / 9829d01a), the directive's RL_LEGF=0 kill-switch proof.
+@_f3ctx.contextmanager
+def _form_anchor_clock():
+    _sv=MA.AGE_REF
+    if _LEGF_ON and getattr(MA,'_LENS_FORM',None) is not None and MA.AGE_REF!=MA.BASE_REF:
+        MA.AGE_REF=MA.BASE_REF
+    try: yield
+    finally: MA.AGE_REF=_sv
+def _fa_year(Y):
+    # the FORM-ANCHOR year for evidence/tenure clocks: BASE_REF (== MA._LENS_FORM) inside the forward lens,
+    # else the eval year Y. PR.tenure/nseas key on the YEAR ARGUMENT (not only AGE_REF), so re-keying the
+    # tenure clock on BASE_REF is done by passing _fa_year(Y). RL_LEGF=0 or k=0 => returns Y => identity.
+    lf=getattr(MA,'_LENS_FORM',None)
+    return lf if (_LEGF_ON and lf is not None) else Y
+# ==== LEG F4 (§2.vii/§2.ix, MEMO_LEGF v1.2/v1.3; owner rulings item 356/359) — THE L-SYMMETRY DAMPER =======
+# The forward lens over-declines the mid/veteran PRODUCTION cohorts (phi=0) ~2x their realized rate (the
+# item-354 residual: composition forward -19.9% vs realized backward -9.0%). F4 tempers the forward AGE_REF
+# advance of the TWO production-price age reads (the b6 demonstrated-level band :287-288 + the level_now
+# consumption :851) to the SAME players' MEASURED POPULATION backward-transition rate r_pop(age) — measured
+# on each committed -2/-1/now roster INCLUDING exiters' realized residual paths (busts full weight, R107.3),
+# so a single population rate carries exit risk and the F3 §2.iii retirement haircut RETIRES (v1.3 §2.ix, no
+# double-count). Geometric blend by the sealed s(age): x_used = x_form * (x_age/x_form)**s. s=1 => x_used ==
+# x_age (undamped, byte-exact); s in [0,1) tempers the advance toward the form anchor. FORWARD-ONLY (MA.
+# _LENS_FORM set AND AGE_REF>BASE_REF) + RL_LEGF-gated => k=0 / balanced / backward / RL_LEGF=0 => x_age==x_form
+# => x_used==x_age => the pre-F4 chain byte-exact BY CONSTRUCTION. Reid: the damper's ONLY content is the
+# sealed measured rate; s(age) is the deterministic coefficient reproducing r_pop(age), sealed beside it, never
+# iterated against a backtest. No cohort hand-tuning (per age-transition, smoothed rule 7). F3's cures are the floor.
+import json as _f4json
+_LSYM_ON=_LEGF_ON   # rides the F-leg RL_LEGF gate (default ON); RL_LEGF=0 => _LEGF_ON False => damper inert
+# THE SEALED RATE (measured ONCE on the committed -2/-1/now boards, sealed pre-render, NEVER iterated against a
+# backtest — MEMO_LEGF v1.3 §2.ix, owner item 359):
+#   r_pop(age) = value-weighted realized backward-transition rate per draft-year age, INCLUDING exiters'
+#                realized residuals (off-board=0, busts full weight R107.3); rule-7 smoothed. SEAL sha256_8 c62b5ee8.
+#   s(age)     = the geometric-blend coefficient bisected so the DAMPED median(vP1/v) per age == r_pop(age)
+#                (deterministic solution of the sealed-rate constraint; Reid — content IS the measured rate). SEAL sha256_8 efe97ee3.
+# Embedded literal (no external file — the seal ships IN the engine source; env RL_LSYM_TAB path overrides for
+# re-derivation only). s=1 => byte-exact undamped; forward-lens + RL_LEGF gated + k=0-inert (see _lsym_active).
+_LSYM_SEAL={'r_pop':{'18':1.0016,'20':1.0007,'22':0.9777,'24':0.9073,'26':0.7886,'28':0.7886,'30':0.7886,'32':0.7886,'34':0.7886,'36':0.7886,'38':0.6591},
+            's':{'18':0.0,'20':0.0,'22':0.0,'24':0.048,'26':0.5988,'28':0.6053,'30':0.5988,'32':0.426,'34':1.0,'36':1.0,'38':1.0,'40':1.0},
+            'r_pop_sha256_8':'c62b5ee8','s_sha256_8':'efe97ee3'}
+_LSYM_TAB=None
+if _LSYM_ON:
+    _ov=os.environ.get('RL_LSYM_TAB')                        # re-derivation override ONLY (calibration harness); default = the sealed literal
+    try: _LSYM_TAB=_f4json.load(open(_ov)) if _ov else _LSYM_SEAL
+    except Exception: _LSYM_TAB=_LSYM_SEAL
+def _lsym_active():
+    return (_LSYM_ON and _LSYM_TAB is not None
+            and getattr(MA,'_LENS_FORM',None) is not None and MA.AGE_REF!=MA.BASE_REF)  # forward lens only
+def _lsym_age(p):
+    # the age-at-START key, on the SAME draft-year basis r_pop was measured on the committed boards
+    # (round((asof-draft_year)+18.5)) so the sealed rate and the damper index the identical transition.
+    yr=p.get('year')
+    if yr is None: return MA._age_at(p,MA.BASE_REF) if hasattr(MA,'_age_at') else MA.age(p)
+    return int(round((MA.BASE_REF-int(yr))+18.5))
+def _lsym_s(a):
+    if _LSYM_TAB is None or a is None: return 1.0
+    st=_LSYM_TAB.get('s') or {}; ai=int(round(a))
+    if str(ai) in st: return float(st[str(ai)])
+    if not st: return 1.0
+    nk=min((int(k) for k in st),key=lambda x:abs(x-ai)); return float(st[str(nk)])
+def _lsym_blend(x_form,x_age,a):
+    # geometric temper of the AGE-REF advance toward the FORM anchor; s=1 => identity (x_age). Vector or scalar.
+    s=_lsym_s(a)
+    if s>=1.0 or x_form is None or x_age is None: return x_age
+    xf=np.asarray(x_form,dtype=float); xa=np.asarray(x_age,dtype=float)
+    with np.errstate(divide='ignore',invalid='ignore'):
+        r=np.where(xf>0.0, xa/xf, 1.0)
+        out=xf*np.power(np.clip(r,1e-9,None),s)
+    out=np.where(xf>0.0,out,xa)
+    return out if getattr(x_age,'ndim',0) else float(out)
 def _ev_pw(Eq):                                              # PEDIGREE-PAR weight: qualifying-gated, fading to the residual r by ~n=4 (T5)
     gate=Eq*Eq/(Eq*Eq+_EVW_GK*_EVW_GK)                       # ~0 for the unqualified (production carries them: A8/Tsatas) -> 1 as seasons qualify
     fade=_EVW_R+(1.0-_EVW_R)*_math.exp(-Eq/_EVW_TAU)         # the draft bar fades as real games pile up: reaches the residual r=0.11 by ~4 qualifying seasons (T5), NEVER 0 (R98.5)
@@ -196,7 +303,9 @@ def _lvlcurr(p,Y):                                            # steeper-recency 
     rows=[(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>0 and (cp.debutyr(p)-1)<x['year']<=Y]
     tw=sum(_wg(gm)*ld**max(0,Y-yr) for yr,gm,_ in rows)       # FIX 1: small-sample damping w(g)=g^2/(g+5.8) (RL_DAMP)
     return float(sum(_wg(gm)*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
-def _par_prior(p,Y): return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6))
+def _par_prior(p,Y):
+    with _form_anchor_clock(): _T=min(max(PR.tenure(p,_fa_year(Y)),1),6)   # LEG F3 §2.vi: the PEDIGREE PAR (the pedigree-fade "decay", pw·par in _coreM1) holds at the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick's draft pedigree does not fade just because the forward lens advanced his tenure a year. k=0 identity by construction.
+    return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),_T)
 def eff_ten(p,Y,base):                                        # developmental tenure off a CONTEXT base; proven keeps base exactly
     if _nqual(p,Y)>=PROVEN_N: return base                     # proven: original tenure (each call site passes its own base)
     return max(base, cp._age_asof(p,Y)-18)                    # thin career: max(base, age-18); 18-19yo debut -> ==base (Delta=0)
@@ -214,12 +323,12 @@ def _est_core(p,Y,L_old,Lc):                                  # ESTABLISHED (pre
 # here); it is left byte-identical so all-switches-off stays byte-exact. Verified dead before the wire.
 def _lvl_eff_core(p,Y):                                       # DORMANT twin of _coreM1 (superseded via the _inferM1 bind); kept in lock-step
     L_old=cp._lvl_eff_orig(p,Y)
-    if not _EVW:                                              # BASE: the four discrete regimes (RL_EVW=0 => byte-exact)
-        n=_nqual(p,Y)
-        if n==0: return L_old                                 # cameo/never-played: original (pole gate handles never-played)
-        Lc=_lvlcurr(p,Y)
-        if n>=PROVEN_N: return _est_core(p,Y,L_old,Lc)        # ESTABLISHED (n>=4 cliff)
-        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)       # thin ramp (c=n/4)
+    # OBITUARY (Leg A, iso evidence-fade build 2026-07-16; SSI/CORE rule 7 — delete, don't disable): the dead
+    # `if not _EVW:` discrete-regime branch (the pre-EVW four regimes — n==0 cameo -> L_old · thin ramp c=n/4 ·
+    # PROVEN_N n>=4 cliff -> _est_core) is DELETED here. It was UNREACHABLE: this whole `_lvl_eff_core` twin is
+    # DORMANT — never bound or called (ev() consumes cp._lvl_eff=_inferM1 -> _coreM1; see :210-214, "Verified
+    # dead before the wire"). The LIVE RL_EVW=0 byte-exact base path survives untouched in _coreM1 (:375). No
+    # output moves (the function is never invoked). Resurrection ref: git show <pre-LegA base>:_merged_recover.py.
     Lc=_lvlcurr(p,Y); Eq=_ev_qual(p,Y)                        # EVW: one continuous quantity E_q spans all four regimes
     Lrec=L_old + _ev_rec(Eq)*(Lc-L_old)                       # conservative -> recency, by qualification
     prod=(1.0-_ev_est(Eq))*Lrec + _ev_est(Eq)*_est_core(p,Y,L_old,Lc)  # recency/thin -> established, by evidence
@@ -254,15 +363,26 @@ def _feat_infer(p,Y):
     ten=eff_ten(p,Y, max(0,Y-(cp.debutyr(p)-1)))             # base = original _feat tenure
     return oh+[np.log(ep), cp._exposure(p,Y), ten, cp._lvl_eff(p,Y), age]
 # (inference rebind deferred to AFTER the isotonic guard builds on ORIGINAL features -> proven-flat stays Delta=0)
-def b6(p,Y=2026):
-    MA.BASE_REF=MA.AGE_REF=Y; MA._pe_clear()
+def _b6_core(p,Y):
+    MA.AGE_REF=Y; MA.BASE_REF=(MA._LENS_FORM if getattr(MA,'_LENS_FORM',None) is not None else Y); MA._pe_clear()   # LEG E projection law (R103.3): a forward lens sets MA._LENS_FORM (=the true-now form anchor, 2026) so AGE_REF>BASE_REF => _dev_advance CREDITS expected production (age+k through the map's own growth curve; no lens-only term, the Reid constraint). _LENS_FORM None (balanced/back path) => BASE_REF=AGE_REF=Y, byte-exact.
     with contextlib.redirect_stdout(io.StringIO()): b=np.asarray(cp.cond_prior_band(p,cm,Y))
     return np.append(b,max(float(q97m.predict(np.array([cp._feat(p,Y)]))[0]),b[4]))
+def b6(p,Y=2026):
+    b_age=_b6_core(p,Y)
+    # LEG F4 §2.vii: temper this band's AGE_REF advance to r_pop(age) — read #1 of the two granted sites.
+    if _lsym_active() and Y!=MA.BASE_REF:                     # forward lens only; k=0 (Y==BASE_REF) => skip (byte-exact)
+        _bf=MA.BASE_REF                                       # the form-anchor year (== _LENS_FORM)
+        a0=_lsym_age(p)   # draft-year age basis (matches r_pop)
+        if _lsym_s(a0)<1.0:                                   # s>=1 => no-op => skip the extra band build (byte-exact + fast)
+            b_form=_b6_core(p,_bf)                            # form-anchored band (AGE_REF held at BASE_REF; no future scoring rows => == the now band)
+            b_age=_lsym_blend(b_form,b_age,a0)
+            MA.AGE_REF=Y; MA.BASE_REF=_bf; MA._pe_clear()     # restore the forward-lens clock the caller set
+    return b_age
 def price6(p,bb,Y=2026):
     sav=dict(MA.REPL)
     try:
         for g in MA.REPL: MA.REPL[g]=sav[g]-rd.REPL_DROP.get(g,0)
-        MA.BASE_REF=MA.AGE_REF=Y; MA._pe_clear()
+        MA.AGE_REF=Y; MA.BASE_REF=(MA._LENS_FORM if getattr(MA,'_LENS_FORM',None) is not None else Y); MA._pe_clear()   # LEG E projection law (R103.3): form-anchor split (see b6). _LENS_FORM None => byte-exact base path.
         with contextlib.redirect_stdout(io.StringIO()): return float(dp.SCALE_DIST*_det_dot(WQ6,[dp.v_at_peak(p,float(L),'bal') for L in bb]))   # DETERMINISM FIX: order-fixed dot (was np.dot -> BLAS, CPU-dependent)
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
@@ -273,24 +393,108 @@ def par_pole(pos,pk,T):
     if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'GEN_FWD':0.93,'KEY_FWD':0.95,'GEN_DEF':1.08,'KEY_DEF':1.05,'RUC':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
+# ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
+# v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
+# added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
+# rho_out(p,pos)/RHO_DEN[pos]. ⟪v1.2 — WEIGHT, DON'T GATE (memo §2.1, register 240)⟫ rho_out = ρ_num =
+# GAMES-AND-RECENCY-WEIGHTED realised above-replacement output over EVERY season with games>0:
+# u_s=games_s·d^(Ynow−year_s), d=UNCOMP_DECAY(=0.25 ⟪v1.3 OWNER-SET R105.6⟫); ρ_num=Σ u_s·(avg_s−REPL[pos])/Σ u_s. NO season exclusion,
+# NO games floor, NO career-phase test (the v1.1 `_qualifying` predicate is DELETED — a never-shipped stub;
+# the hard floor manufactured 144 phantom rookies and the conditioned rule wiped real games, both MEASURED,
+# register 239). RHO_DEN[pos]=MEDIAN of this same ρ_num over the demonstrated-proven pop (numerator and
+# denominator share ONE law). RL_UNCOMP is INERT by default (UNCOMP_S_DEFAULT=None): the map + the s-gated
+# load-time reference build both short-circuit BEFORE rho_out. Onset ramp Delta=6.0 (memo §2.2) in the
+# realised-output measure's units; decay d=0.25 (⟪v1.3 OWNER-SET R105.6⟫) DECLARED next to Δ=6.0 in rl_model.py.
+_UC_VREFB={}          # V_ref_b[pos] = MEDIAN captain-free price6 (pr0) over the demonstrated-proven pop (load-time, s-gated)
+_UC_RHODEN={}         # RHO_DEN[pos] = MEDIAN rho_out over the demonstrated-proven pop (load-time, s-gated)
+_UC_C={}              # C[pos] = per-position production-side conservation renorm (load-time, s-gated)
+_UC_CAL={'on':False,'pr0':{},'v0p':{}}   # load-time conservation accumulator (Sum pr0, Sum v0p per pos; C==1 during accumulation)
+def rho_out(p, pos):
+    """ρ_num — GAMES-AND-RECENCY-WEIGHTED realised above-replacement output (memo §2.1 ⟪v1.2⟫, WEIGHT-DON'T-GATE).
+    Over EVERY season with games>0: u_s = games_s · d^(Ynow−year_s) with d=MA.UNCOMP_DECAY(=0.25 ⟪v1.3 OWNER-SET⟫), Ynow=2026;
+    ρ_num = Σ u_s·(avg_s − REPL[pos]) / Σ u_s. NO exclusion, NO games floor, NO career-phase test (register 240;
+    the v1.1 `_qualifying` predicate is DELETED — a never-shipped stub). An injury-shortened year contributes
+    exactly its games' worth (a 3-game season is 1/7th a 21-game season at equal recency — Docherty handled by
+    WEIGHT, not exclusion); a developing kid's early seasons count proportionally (no phantom rookies by
+    construction). Zero played seasons in the store => None (caller sets w=0; the map is identity there)."""
+    _num=0.0; _den=0.0
+    for x in p.get('scoring') or []:
+        _gm=x.get('games',0) or 0
+        if _gm<=0: continue                                       # games>0 only; NO other exclusion (the LAW)
+        _u=_gm*(MA.UNCOMP_DECAY**(2026-x['year']))                # season weight = games × recency (decay d per year back)
+        _num+=_u*(x['avg']-MA.REPL[pos]); _den+=_u
+    if _den<=0.0: return None                                     # no played season => zero-evidence identity (w=0)
+    return _num/_den                                              # weighted mean of (avg − REPL[pos]); RHO_DEN = its proven MEDIAN
+def _uncomp_prod(pr,p,Y,bb):
+    # INERT guard (RL_UNCOMP off / s unset / non-real / refs not built) => pr. Short-circuits BEFORE rho_out,
+    # so with RL_UNCOMP inert the ρ axis is never evaluated => board 8d90c9ac BYTE-EXACT (the A/B identity).
+    if not MA._UNCOMP or MA.UNCOMP_S is None or pr<=0.0 or not _isreal(p): return pr
+    pos=MA.gfut(p); Vb=_UC_VREFB.get(pos); Rden=_UC_RHODEN.get(pos)
+    if not Vb or not Rden or Vb<=0.0 or Rden<=0.0: return pr        # references not built (inert never reaches here)
+    _prev=MA._CAPT_OFF['on']; MA._CAPT_OFF['on']=True               # captain-off pass: recompute the CAPTAIN-FREE production
+    try:
+        with contextlib.redirect_stdout(io.StringIO()): pr0=price6(p,bb,Y)
+    finally: MA._CAPT_OFF['on']=_prev
+    if pr0 is None or pr0<=0.0: return pr
+    delta=pr-pr0                                                    # L-CAPTAIN increment, added back UNCHANGED (delta byte-identity self-test)
+    _ro=rho_out(p,pos)                                             # realised-output margin above REPL (avg-points)
+    if _ro is None or _ro<=0.0: return pr                          # zero qualifying seasons / sub-replacement => w=0 identity
+    ramp=1.0 if _ro>=MA.UNCOMP_DELTA else _ro/MA.UNCOMP_DELTA       # onset ramp (memo §2.2), realised-output units
+    _Eq=_ev_qual(p,Y); E=1.0-_math.exp(-_Eq/MA.UNCOMP_TAU) if _Eq>0.0 else 0.0   # saturating evidence weight in [0,1]
+    w=MA.UNCOMP_S*E*ramp
+    if w<=0.0: return pr
+    t=Vb*(_ro/Rden)                                                # V_ref_b * rho (kappa=1)
+    if t<=0.0: return pr
+    v0p=(pr0**(1.0-w))*(t**w)                                      # log-space blend of the CAPTAIN-FREE production toward the output-proportional target
+    if _UC_CAL['on']:                                             # load-time conservation calibration (C==1 here): accumulate Sum pr0, Sum v0p
+        _UC_CAL['pr0'][pos]=_UC_CAL['pr0'].get(pos,0.0)+pr0
+        _UC_CAL['v0p'][pos]=_UC_CAL['v0p'].get(pos,0.0)+v0p
+    _C=1.0 if MA._UNCONSERVE else _UC_C.get(pos,1.0)               # §3 per-position production-side renorm; RL_UNCONSERVE=1 => C≡1 (UNFUNDED measurement, item 256/257); OFF => C[pos] (shipped, byte-exact)
+    return _C*v0p+delta                                            # production-side renorm; captain delta additive & nominal
 def raw_ev(p,Y=2026):
-    pr=price6(p,b6(p,Y),Y); pos=MA.gfut(p); pk=MA.effpk(p); T=min(max(PR.tenure(p,Y),1),6)
-    et=min(max(eff_ten(p,Y, PR.tenure(p,Y)),1),6)                                     # STEP1: developmental tenure off original PR.tenure base
-    po,par=par_pole(pos,pk,T); a=MA.age(p)
-    wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
-    tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))          # pole-fade by DEVELOPMENTAL tenure
-    expgate=_expgate(p,Y)                                                             # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
-    w=wage*tfade*expgate
+    _bb=b6(p,Y); pr=price6(p,_bb,Y); pr=_uncomp_prod(pr,p,Y,_bb)   # LEG B v1.1 map at the production-value hook (inert unless RL_UNCOMP on + s set)
+    pos=MA.gfut(p); pk=MA.effpk(p)
+    with _form_anchor_clock():                                                        # LEG F3 §2.vi: the pedigree-pole fade keys on PROJECTED EVIDENCE (BASE_REF), not the advancing age/tenure clock (k=0 identity)
+        T=min(max(PR.tenure(p,_fa_year(Y)),1),6)
+        et=min(max(eff_ten(p,_fa_year(Y), PR.tenure(p,_fa_year(Y))),1),6)             # STEP1: developmental tenure off original PR.tenure base
+        po,par=par_pole(pos,pk,T); a=MA.age(p)
+        wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
+        tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
+        expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
+        w=wage*tfade*expgate
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
     return pr+w*recover(perf,par)*max(0.0,po-pr)
 # ===== (3) ISOTONIC PICK GUARD: per pos, monotone non-increasing in pick at par; correction factor =====
+# ==== LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (RL_ISOFADE; item 132, spec §3 Leg A) ====
+# (a) MONOTONIZE the multiplier: iso_corr = iso/raw is a monotone-non-increasing NUMERATOR over a
+#     NON-monotone denominator, so the RATIO is non-monotone — the Newcombe trough (pk19 0.882 < pk34
+#     1.000). Re-apply the house isotonic-non-increasing instrument to the MULTIPLIER itself, so no later
+#     pick carries a higher multiplier than an earlier one. Conserving (per-pos SigmaD~=0), two-directional.
+# (b) FADE per REAL player on the v2.10 evidence weight w=E_q (iso_eff below): full at zero evidence (the
+#     pick IS the information; V0 at Y=debutyr-1 has E_q=0 -> unchanged BY CONSTRUCTION), dissolving to 1.0
+#     as evidence saturates. DECLARED kill-switch, not a manifest dial: RL_ISOFADE=0 => original table +
+#     plain iso_corr at every site => v2.10 board 790136a3 byte-exact (config_sha256 UNMOVED).
+_ISOFADE=os.environ.get('RL_ISOFADE','1')!='0'               # kill-switch (G-ATTR separability): RL_ISOFADE=0 => v2.10 byte-exact. Declared exception, not a dial.
+_ISOFADE_TAU=_EVW_TAU                                         # =1.1: THE fade parameter — the pedigree-fade family rate (_ev_pw, :186-189) in effective-qualifying-season units; iso uses the residual-0 member exp(-w/tau).
+# _REAL/_isreal HOISTED here from ~130 lines below (seg-5 map-ON load-order fix, owner-authorized fence
+# amendment 2026-07-16; content BYTE-IDENTICAL to the original site): the ISO-table build just below calls
+# raw_ev(synth(...)) at MODULE LOAD, and with RL_UNCOMP ON the _uncomp_prod guard resolves _isreal — which
+# must therefore be defined BEFORE this point. MA.data is fully built and not mutated between here and there.
+_REAL=set(p['key'] for p in MA.data)
+def _isreal(p): return p.get('key') in _REAL
 PICKS=list(range(1,71)); ISO={}
 for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:
     raw=np.array([raw_ev(synth(pk,PR.par_at(pos,min(pk,cp.KMAX),4),pos)) for pk in PICKS])
     iso=IsotonicRegression(increasing=False).fit_transform(PICKS,raw)        # monotone non-increasing in pick#
     ISO[pos]=(np.array(PICKS),np.maximum(iso,raw*0)+ (iso-raw>=0)*(iso-raw))  # iso is the guarded floor; correction additive where iso>raw
-    ISO[pos]=(np.array(PICKS), iso/np.maximum(raw,1e-6))                       # multiplicative correction (>=1 where shallow under-priced)
+    fs=iso/np.maximum(raw,1e-6)                                                # multiplicative correction (>=1 where shallow under-priced)
+    if _ISOFADE: fs=IsotonicRegression(increasing=False).fit_transform(PICKS,fs)   # LEG A (a): monotonize the MULTIPLIER (the ratio is non-monotone even though the numerator is) — kills the Newcombe trough
+    ISO[pos]=(np.array(PICKS), fs)
 def iso_corr(pos,pk): xs,fs=ISO[pos]; return float(np.interp(min(pk,70),xs,fs))
+def iso_eff(p,Y=2026):                                        # LEG A (b): per-REAL-player EFFECTIVE iso — the pick tax faded on the v2.10 evidence weight w=E_q
+    base=iso_corr(MA.gfut(p),MA.effpk(p))
+    if not _ISOFADE or not _isreal(p): return base            # switch off, or a synth (structural scaffold; zero-evidence convention) => raw/monotonized table, unfaded
+    return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)
 for _pp in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
         for _T in range(1,7): par_pole(_pp,_pk,_T)
@@ -355,22 +559,17 @@ def _est(p,Y,Lo,Lc):                                          # ESTABLISHED leve
     sw=float(np.clip((drop-DOWN_TOL)/5,0,1)); return (1-sw)*Lo+sw*Lc*_agemult2(cp._age_asof(p,Y),Lc-MA.REPL.get(MA.gfut(p),0.0))
 def _coreM1(p,Y):
     Lo=cp._lvl_eff_orig(p,Y)
-    if not _EVW:
-        # ---- BASE: the four discrete regimes (RL_EVW=0 => byte-exact base board) ----
-        # D10 n==0 first-evidence f1 credit; multi-year n==0 (e.g. Tsatas: 4 list-years, no 10-game season)
-        # keeps the exposure-shrunk Lo path (injecting the 75%-par-prior n=1 asymptote was measured +940 on the
-        # Luke-ruled Tsatas A8 anchor and REJECTED). n>=4 established (_est); 1..3 thin ramp c=n/4.
-        n=_nqual(p,Y)
-        if n==0:
-            if Y!=INPROG_Y or any(x['games']>0 and x['year']<Y and (cp.debutyr(p)-1)<x['year'] for x in p['scoring']): return Lo
-            gy=sum(x['games'] for x in p['scoring'] if x['year']==Y and (cp.debutyr(p)-1)<x['year'])
-            f1=min(1.0, gy/max(1e-9,10.0*SEASON_FE))
-            if f1<=0.0: return Lo
-            return (1.0-f1)*Lo + f1*((1.0/PROVEN_N)*_lvlcurr(p,Y)+(1.0-1.0/PROVEN_N)*_par_prior(p,Y))
-        Lc=_lvlcurr(p,Y)
-        if n>=PROVEN_N: return _est(p,Y,Lo,Lc)
-        c=n/PROVEN_N; return c*Lc+(1-c)*_par_prior(p,Y)
-    # ---- CONTINUOUS EVIDENCE WEIGHT (default): ONE evidence quantity E_q spans all four regimes (item 65) ----
+    # OBITUARY (Leg B, un-compress build 2026-07-16; SSI/CORE rule 7 — delete, don't disable): the dead
+    # `if not _EVW:` discrete FOUR-REGIME branch (n==0 first-evidence f1 credit · n>=4 established _est ·
+    # 1..3 thin ramp c=n/4 · else Lo) is DELETED here. It was SUPERSEDED by the continuous evidence weight
+    # below (one E_q quantity spans all four regimes; item 65) and executed ONLY under RL_EVW=0. The
+    # shipped/live board runs RL_EVW=1 (default) and NEVER took this branch, so its deletion is BYTE-EXACT
+    # for the live board (verified: RL_UNCOMP-inert board == 8d90c9ac unchanged). Leg A retired the same
+    # branch in the DORMANT twin `_lvl_eff_core` (:~216) and its Task 4b listed-but-did-not-cut this LIVE
+    # copy; this completes that cut (directive §7 / spec §4 / PLAN §8). The unrelated live `if not _EVW:`
+    # one-liner in `_expgate` (:192) is OUT of scope and untouched. Resurrection ref (the deleted regimes):
+    #   git show d3f703f~1:engine/rl_after/_merged_recover.py  (the pre-Leg-B _coreM1 body).
+    # ---- CONTINUOUS EVIDENCE WEIGHT: ONE evidence quantity E_q spans all four regimes (item 65) ----
     # 10-game bar dissolved (E_q counts qualifying seasons continuously) · nqual ramp + PROVEN_N cliff replaced
     # by the production blend (Lo->Lc->est) + pedigree weight pw(E_q); the thin->established transition is
     # continuous so no cliff is left "at the top of the staircase". Unqualified (E_q~0: the A8/Tsatas trap)
@@ -417,8 +616,8 @@ def _v7(bb,p,Y):
 # copy is priced. (The shipped-board bug: rl_export exec'd a 2nd rl_model instance, so id(p) matched 0/805 and
 # every real-store layer was silently dropped, over-pricing ~2/3 of the board.) Synths (no 'key') never match;
 # copies carrying the same key resolve as real by construction. Keys verified non-null + unique across MA.data.
-_REAL=set(p['key'] for p in MA.data)
-def _isreal(p): return p.get('key') in _REAL
+# _REAL/_isreal are now DEFINED ABOVE (hoisted to just before the ISO-table build; seg-5 map-ON load-order
+# fix, owner-authorized). Original definition site was HERE; this block documents their keying, retained in place.
 _b6_pre_v7=b6
 def b6(p,Y=2026):
     bb=_b6_pre_v7(p,Y)
@@ -652,7 +851,7 @@ def _w4_ctx(p,Y):
     """Per-player form context for the recalibrated projection; None => byte-exact original path."""
     if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
-    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n}
+    ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n,'E':_ev_qual(p,Y)}   # LEG B: per-player evidence weight E for the un-compress map (sites 1-3; flat into projected years — no future store seasons)
     # Part-2 return haircut (RL_LTI_RETURN): apply the derived, net-of-aging return-season dip at the return
     # season k = ret_year - BASE_REF (decays to zero the next season = single k). Section-A out-names only;
     # young/speculative already ship h=0 (set on the record). SEPARABLE from Part 1 (own column lti_return_hc).
@@ -710,11 +909,13 @@ _proj_w4_0=MA.proj_from_peak
 def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
     ctx=_W4CTX['on']
     if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc)   # synths / lever-off: byte-exact original
-    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(a,pa); prod=0.0
+    _off=(MA.AGE_REF-MA.BASE_REF) if _LEGF_ON else 0     # LEG F3 §2.vi (ruling 353, still-implicated proj_from_peak): fwd-lens offset; 0 at k=0/balanced/backward OR RL_LEGF=0 => byte-exact ORIGINAL by construction
+    ah=a-_off if _off>0 else a           # form-anchored age SHAPE: the pedigree-driven projection curve-position + young-runway credit hold at BASE_REF, so growth flows through the ADVANCING level (lp from the band at AGE_REF; cur=level_now via _dev_advance) — the premium decays with PROJECTED EVIDENCE, not the age clock (Reid: same map at the projected evidence state; no new multiplier/growth term). k=0: _off=0 => ah==a => byte-exact.
+    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
-        ag=a+k
+        ag=ah+k
         if ag>38 or MA.frac(ag,pa)<0.42: break
         lev=lp*MA.frac(ag,pa)
         if ag<=pa: lev=max(lev,cl)
@@ -726,7 +927,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
         else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
     if g in('KEY_FWD','KEY_DEF'): prod*=1.05
-    runway=MA.clamp((25-a)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
+    runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
 MA.proj_from_peak=_proj_w4
 # The DEMONSTRATED-PRODUCTION FLOOR carries the same near-year certainty credit (proven branch only). Without
@@ -740,13 +941,29 @@ def _prod_floor_w4(p,lens='bal'):
     ctx=_W4CTX['on']
     if ctx is None or ctx.get('n',0)<PROVEN_N or not _W4FWD: return _prod_floor_w4_0(p,lens)
     g=MA.bnow(p); a=MA.age(p); pa_=MA.PEAK_AGE[g]; cur=MA.level_now(p)
+    if cur is not None and _lsym_active():                    # LEG F4 §2.vii read #2: temper the level_now (_dev_advance) roll to r_pop(age); k=0/backward/RL_LEGF=0 => inert (byte-exact). level_demo == form-anchored level (AGE_REF held); level_now == advanced.
+        cur=_lsym_blend(MA.level_demo(p),cur,_lsym_age(p))
     if cur is None: return 0
+    # ==== §1b FLOOR HALF (R106.7, DECISIONS v121 §1) — PROVEN-player shipped-board copy of MA.prod_floor's floor.
+    # ⚠ DUPLICATE-LOOP HAZARD (owner condition 4; fence extended by the Option-2 adjudication 2026-07-17): this is a
+    # PARALLEL copy of rl_model.prod_floor's loop (rl_model.py:441). The §1b k==0 split MUST stay IDENTICAL in
+    # BOTH — edit both or neither. Blend OUTSIDE the nonlinearity: TWO posval evaluations at k==0, sp·posval(vs
+    # present) + (1-sp)·posval(vs low), NEVER a blended bar inside one call. RL_FLEX=0 => y0dpp_bar None =>
+    # byte-exact. QUEUED HYGIENE (registered, NOT this build): option-3 delegation — this fn -> MA.prod_floor for
+    # bar resolution, removing the duplicate loop — carries a determinism-proof requirement.
+    lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
     d=MA.LENS[lens]; H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
         if k==0 and p.get('_avail_hc',0)>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-p['_avail_hc'])  # RL_AVAIL: register-driven present haircut (was _b2hc; R-B2HC retired)
-        prod+=_w4_W(k,ctx)*wt*MA.posval(lev+MA.capt_prem(lev)-MA.REPL[g])*21/((1+d)**k); k+=1
+        base=lev+MA.capt_prem(lev)
+        if k==0 and lowbar is not None:
+            sp=MA.SEASON_PROG                                 # banked (sp) vs present bar; remaining (1-sp) vs low bar
+            pv=sp*MA.posval(base-MA.REPL[g])+(1.0-sp)*MA.posval(base-MA.REPL[lowbar])
+        else:
+            pv=MA.posval(base-MA.REPL[g])
+        prod+=_w4_W(k,ctx)*wt*pv*21/((1+d)**k); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================
@@ -837,7 +1054,7 @@ def _kpf_prod_efv(p,Y,L=None):
     L pins an alternative demonstrated level (KPF REBALANCE T1: the SUSTAINED level LD prices the eD split)."""
     _B6PIN['L']=cp._lvl_eff(p,Y) if L is None else float(L)
     try:
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 1/6 (was iso_corr(gfut,effpk))
     finally: _B6PIN['L']=None
 # ===== helpers for delist + staleness =====
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
@@ -945,7 +1162,7 @@ def _build_ruc_ceiling():                                     # pick-neutral pro
     avs=list(np.linspace(15.0,150.0,46))
     def _sp(a):
         sp=synth(int(RUC_CEIL_REFPK),float(a),'RUC')
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_corr('RUC',MA.effpk(sp))
+        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_eff(sp)   # LEG A site 2/6 (synth: iso_eff returns the monotonized table unfaded — structural scaffold)
     ys=[_sp(a) for a in avs]
     for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
     _RUCCEIL['grid']=(np.array(avs),np.array(ys))
@@ -979,7 +1196,7 @@ def _v0_uncapped(p):                                          # zero-evidence ba
     if k not in _V0U:
         global cm,q97m
         _c,_q=cm,q97m; cm,q97m=_V0_CM,_V0_Q97
-        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_corr(MA.gfut(p),MA.effpk(p))
+        try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_eff(p,cp.debutyr(p)-1)   # LEG A site 3/6 (V0: Y=debutyr-1 => E_q=0 => fade=1 => full strength, unchanged BY CONSTRUCTION)
         finally: cm,q97m=_c,_q
     return _V0U[k]
 def _v0_raw(p):                                              # ASK1: uncapped V0 -> RUC prior cap (still pre-ASK2-guard)
@@ -1027,6 +1244,52 @@ _build_v0_guard()
 _BOARD_PATH  # (declared above, before _R_surf)
 _V0CURVE={}; _V0CURVE_META={}; _V0_GRIDPK=list(range(1,91)); _V0_LGRID=np.log(_V0_GRIDPK)
 def _ageR(p): return int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1))))
+# ==== LEG F6 — FREEZE _iso_dec (THE RESIDUAL WEATHER), 2026-07-18 (item 381; the SAME pattern owner-blessed
+#      for q97m 2026-07-14). WAS: _build_v0_curve() re-fit the V0 pick-curve surface (three isotonic surfaces
+#      via _iso_dec) at EVERY board/gate/panel import, over the REAL roster's _v0_raw. numpy's OpenBLAS is
+#      DYNAMIC_ARCH (a CPU-specific float kernel at runtime); on a mixed-CPU fleet the same commit produced a
+#      slightly different V0 surface per box -> the whole board shifted coherently (the balanced-board 06d8af60
+#      <-> 83a4b21d weather flip, Sheezel +/-95, item 380 diagnosis). q97m/cm are already frozen pickles and the
+#      NW kernels are order-fixed (_det_*); _iso_dec/_build_v0_curve was the ONE live fit left on the value path.
+#      NOW: the SHIPPED V0 surface is computed ONCE at a bake (session_2026-07-18/legf6/scripts/refit_v0surf.py),
+#      pickled to data/v0surf.pkl keyed by a DETERMINISTIC config signature, md5-pinned (data/expected_boot.json
+#      'v0surf'), asserted by boot_guard (Guard 5) on entry, and LOADED here — the shipped surface is NEVER
+#      fitted at board-build. The signature is a function of the ACTIVE PICK CURVE + roster geometry + the
+#      value-gate env ONLY (never _v0_raw values), so a weather box computes the SAME signature as a clean box
+#      and loads the SAME clean surface -> the flip is removed. A NON-shipped config (a kill switch: RL_PVC2=0,
+#      RL_EVW=0, RL_ISOFADE=0, RL_W4_RUC=0, ...) has a different signature, is NOT in the frozen set, and still
+#      FITS exactly as before -> every declared kill-switch stays byte-exact. Regenerate ONLY via the refit entry
+#      point (RL_V0SURF_REFIT=1 forces a fit + re-pin; a silent refit is the exact defect being frozen out).
+def _load_v0surf():
+    if os.environ.get('RL_V0SURF_REFIT')=='1': return {}     # the ONE refit entry point: fit from scratch, ignore any stale pickle
+    _cands=[os.environ.get('RL_V0SURF_PKL'), '/home/claude/v0surf.pkl',
+            os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '','data','v0surf.pkl')]
+    for _c in _cands:
+        if _c and os.path.exists(_c):
+            with open(_c,'rb') as _fh: return pickle.load(_fh)
+    raise SystemExit("v0surf FROZEN-LOAD HALT: no frozen v0surf pickle found (looked at RL_V0SURF_PKL, "
+                     "/home/claude/v0surf.pkl, <repo>/data/v0surf.pkl). Re-run bootstrap.sh to seed the workspace "
+                     "copy, or regenerate via session_2026-07-18/legf6/scripts/refit_v0surf.py at a bake. The "
+                     "engine NEVER fits the shipped V0 surface at build time (the exact defect the freeze removed).")
+_V0SURF=_load_v0surf()
+# Value-gate defaults, byte-for-byte the code defaults, so a build that SETS a gate to its default (gate mode's
+# config_manifest) signs identically to a build that leaves it UNSET (dev shell). LENS gates (RL_LEGF/RL_LEGE)
+# are DELIBERATELY excluded: they never touch the V0 surface, so RL_LEGF=0 must LOAD the SAME frozen surface
+# (the RL_LEGF=0 chain byte-exactness). The active pick curve already encodes RL_PVCADOPT/RL_PVC2/RL_PVCFIT.
+_V0SURF_GATES={'RL_RUC_PRIOR_CAP':'1.4','RL_W4_RUC':'1','RL_RUC_CEIL_HEAD':'0.80','RL_RUC_CEIL_REFPK':'72',
+    'RL_RUC_YRH':'0.35','RL_FORMDECL':'1','RL_M3_FE':'0.58','RL_DAMP':'1','RL_DAMP_K':'5.8','RL_EVW':'1',
+    'RL_MSD_POOL_EXCL':'1','RL_AGE':'1','RL_SAGE29':'1','RL_LSYM':'1','RL_EO2':'1','RL_ABSENCE':'1',
+    'RL_FWDRECAL':'1','RL_YOUNG':'1','RL_OVPX':'1','RL_KPFFIX':'1','RL_V7FORM':'1','RL_V7_FORM_W':'0.6',
+    'RL_W4_CRED':'0.17','RL_W4_KPFUP':'1.6','RL_W4_FADE':'0.60','RL_W4_OVPX':'1.0','RL_W4_KPFSH':'0.55',
+    'RL_W4_KPFSH_DEM':'0.70','RL_W4_KPFTOP':'0.4','RL_W4_KPFM0':'8.0','RL_W4_KPFMS':'16.0','RL_AVAIL':'1',
+    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1'}
+def _v0surf_sig(real):
+    import hashlib as _hl, json as _js
+    _curve=_PVC0 if '_PVC0' in globals() else MA.PVC          # the pick curve _v0_raw is actually reading right now
+    _payload={'pvc':sorted((int(k),int(v)) for k,v in _curve.items()),
+              'roster':sorted([str(MA.gfut(p)),_ageR(p),int(p.get('pick'))] for p in real),
+              'gates':{g:os.environ.get(g,d) for g,d in sorted(_V0SURF_GATES.items())}}
+    return _hl.md5(_js.dumps(_payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def _iso_dec(y): return list(map(float,IsotonicRegression(increasing=False,out_of_bounds='clip').fit(_V0_LGRID,y).predict(_V0_LGRID)))
 def _fit_pick_curve(pts,effn_min=35.0,h0=0.18,hmax=2.2):     # adaptive-bandwidth NW over log-pick -> isotonic non-increasing
     lx=np.array([a for a,_ in pts]); vy=np.array([b for _,b in pts]); grid=[]; meta_e=[]; meta_hmax=0
@@ -1063,13 +1326,26 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
 def _build_v0_curve():
     POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
     real=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None]
-    for pos in POS:
-        pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
-        grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
-    matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
-    matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
-    surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
+    _sig=_v0surf_sig(real)                                   # LEG F6: deterministic config signature (weather-invariant)
+    _frozen=_V0SURF.get(_sig) if isinstance(_V0SURF,dict) else None
+    if _frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1':
+        # ---- FROZEN LOAD (the shipped config): the _iso_dec residual weather is removed — LOAD the three
+        #      surfaces + their fit metas, NEVER re-fit. star()/np.interp/_V0CURVE below are UNCHANGED, so the
+        #      board is byte-identical to the clean fit by construction (freeze the OUTPUT, don't re-derive it).
+        c18=_frozen['c18']; surfN=_frozen['surfN']; surfR=_frozen['surfR']
+        _V0CURVE_META.update(_frozen.get('meta',{}))
+    else:
+        # ---- FIT PATH: the refit entry point (RL_V0SURF_REFIT=1), or a NON-shipped config (a kill switch) whose
+        #      signature is not in the frozen set — fits exactly as before the freeze, so every declared kill
+        #      switch (RL_PVC2=0 -> 9829d01a, RL_EVW=0, RL_ISOFADE=0, RL_W4_RUC=0, ...) stays byte-exact.
+        for pos in POS:
+            pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
+            grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
+        matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
+        matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
+        surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
     _V0CURVE_META['_c18']=c18; _V0CURVE_META['_surfN']=surfN; _V0CURVE_META['_surfR']=surfR
+    _V0CURVE_META['_v0surf_sig']=_sig; _V0CURVE_META['_v0surf_frozen']=(_frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1')
     def star(pos,ag,pick):
         lp=np.log(min(max(pick,1),90))
         if ag<=18: return float(np.interp(lp,_V0_LGRID,c18[pos]))
@@ -1122,7 +1398,7 @@ def _prod_path(p,Y):
     and the designed M3 pin-fade otherwise leave the evidence ramp non-monotone (B6 law: more games at
     the same rate never worth less). Centered, unit-mass, level-preserving; nobody outside the family
     is touched."""
-    e=raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p))
+    e=raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 4/6 — THE BOARD PATH (feeds ev())
     if not _first_evidence(p,Y): return e
     row=[x for x in p['scoring'] if x['year']==Y and x['games']>0]
     if not row: return e
@@ -1131,10 +1407,30 @@ def _prod_path(p,Y):
         for gg in (max(g0-1,1),g0,g0+1):
             if gg==g0: out.append(e); continue
             r['games']=gg
-            out.append(raw_ev(p,Y)*iso_corr(MA.gfut(p),MA.effpk(p)))
+            out.append(raw_ev(p,Y)*iso_eff(p,Y))   # LEG A site 5/6 (first-evidence games-axis smoothing)
     finally: r['games']=g0
     return float(np.mean(out))
 # ===== WIRED ev =====
+# D8 GRADED STALENESS — PRESENT BOARD CORRECTION (owner-authorized remediation, 2026-07-22).
+# Frozen 532-cell historical design; no current-board tuning and no named-player exception.
+_D8Q=[0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80]
+_D8G1=[0.25789,0.25789,0.25789,0.30834,0.36155,0.42112,0.49276,0.56996,0.59452]
+_D8G2=[0.0,0.00275,0.00275,0.04319,0.08776,0.13367,0.18032,0.20098,0.20408]
+def _staleness_grade(p,Y,pos):
+    """Evidence release for the stalled-one-season population at the evaluated evidence year."""
+    current=[x for x in p['scoring'] if x['year']==Y]
+    current_qual=any(x['games']>=6.0*_fEy(Y,p) for x in current)
+    if current_qual:
+        return 1.0
+    live=[x for x in current if x['games']>0]
+    if not live:
+        return 0.0
+    prior_qual=[x['year'] for x in p['scoring'] if x['year']<Y and x['games']>=6]
+    if not prior_qual:
+        return 0.0
+    qv=(live[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)
+    gap=Y-max(prior_qual)
+    return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
 def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
@@ -1164,13 +1460,16 @@ def ev(p,Y=2026):
                 e=_eP+W4_KPFSH_DEM*(min(e,_eD)-_eP)+W4_KPFSH*(e-max(_eD,_eP))
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
-    pos=MA.gfut(p); el=PR.tenure(p,Y); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
+    with _form_anchor_clock(): el=PR.tenure(p,_fa_year(Y))          # LEG F3 §2.vi: the staleness/tenure clock keys on the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick is NOT relabeled "stalled prospect" purely by the forward lens advancing the clock (item-352 155-mislabeled-exits defect). k=0 identity by construction.
+    pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         return round(sitout_ev(p,Y,e))
     keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = (4 if keyruc else 3)
-    if el>=onset and ns<=1:                                   # stalled: essentially no production after the window
+    if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
-        e=min(e, v0*frac)
+        cap=v0*frac
+        gr=_staleness_grade(p,Y,pos)
+        e=min(e, cap+gr*max(0.0,e-cap))
     elif el>=onset+2 and pr<0.55:                             # mediocre-for-years (played but never near par) -> decays too
         frac=0.45*max(0.3,1-0.08*(el-onset))*(1.5 if keyruc else 1.0)
         e=min(e, v0*frac)
@@ -1186,7 +1485,7 @@ def ev(p,Y=2026):
 # evaluation date (fE -> 1 as the season completes). RL_M3_FE=1 = kill-switch (byte-exact inert).
 # RE-REGISTERED ACCEPTANCE at this config (D7): A3 >= 0.75 (Luke's amended bar) with ZERO on-pace
 # collateral >2% and B-gates holding.
-M3_FE=float(os.environ.get('RL_M3_FE','0.58'))                # elapsed-season fraction; 1.0 -> lever off
+M3_FE=_season_val('calendar_progress',0.58)   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state                # elapsed-season fraction; 1.0 -> lever off
 M3_DEN=11.0                                                   # M2's evidence-replacement denominator (on-pace floor)
 _ev_click=ev                                                  # the full-click evaluation (M1+asc + M2 + caps)
 def _m3_s(p,Y):
@@ -1249,6 +1548,26 @@ if os.environ.get('RL_PVCADOPT','1')!='0':
     _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
     _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
     MA._pe_clear()
+# ===== LEG D ACT-2 (RL_PVC2): swap the ev-channel basis _PVC0 to the RE-DERIVED COMPOSED-PATHWAY curve
+#       pvc_curve_v2.json (owner ruling R1: PVC(p) = the YEAR-0 point of the fitted 2-D pick x career-year
+#       evidence-weighted NON-median trajectory surface; busts at REAL outcomes FULL WEIGHT, no survivor pool,
+#       no games floor, no threshold — L-SMOOTH / weight-don't-gate) + rebuild the V0 guard / V0 curve / RUC
+#       ceiling — an EXACT parallel of the RL_PVCADOPT recipe above, STACKED after it. Gate RL_PVC2 (default
+#       ON; a DECLARED kill-switch, NOT a manifest dial — config_sha256 UNMOVED, exactly as RL_EVW/RL_ISOFADE/
+#       RL_FLEX). RL_PVC2=0 => this block is SKIPPED => _PVC0 stays the L1b curve => board 9829d01a byte-exact
+#       (the kill-switch proof). The offline-derived, stamped artifact is LOADED here, never refit; the
+#       _iso_dec/_fit_pick_curve import-time chain is untouched (it is re-run by _build_v0_curve because a new
+#       _PVC0 moves its inputs — the same behaviour RL_PVCADOPT already carries, not a new import-time fit).
+if os.environ.get('RL_PVC2','1')!='0':
+    import json as _p2j
+    _V2J=_p2j.load(open('pvc_curve_v2.json'))
+    _V2CURVE={int(_k):int(_v) for _k,_v in _V2J['curve'].items()}
+    assert _V2CURVE[1]==3000, "RL_PVC2 numeraire: curve(1)=%r != 3000"%_V2CURVE[1]
+    assert all(_V2CURVE[_k]>_V2CURVE[_k+1] for _k in range(1,max(_V2CURVE))), "RL_PVC2 R104.9: strict descent violated"
+    _PVC0.clear(); _PVC0.update(_V2CURVE)
+    _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
+    _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
+    MA._pe_clear()
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
@@ -1260,6 +1579,51 @@ if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
         _PVCFIT_META['error']=repr(_e)
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
+
+# ==== LEG B v1.1 — UN-COMPRESS REFERENCE (V_ref_b + RHO_DEN) + PRODUCTION-SIDE CONSERVATION (C[pos]); LOAD-TIME
+# memo v1.1 §2.1/§3. Built AFTER ev() is defined + player attrs finalized, BEFORE the RL_AVAIL attribution
+# block so its ev()-diffs see the mapped surface. INERT unless RL_UNCOMP on AND s set (UNCOMP_S): the guard
+# leaves V_ref_b/RHO_DEN/C empty => _uncomp_prod returns pr => board 8d90c9ac BYTE-EXACT. ⟪v1.2⟫ with s set
+# this block now BUILDS the references: RHO_DEN[pos] = MEDIAN rho_out (the games×recency ρ_num, memo §2.1) over
+# the demonstrated-proven pop — numerator and denominator share ONE law (register 240). The v1.1 stub is gone.
+def _uncomp_scope(_p):                                        # valuation scope = active board population
+    return _isreal(_p) and not delisted(_p) and not _p.get('_retired')
+if MA._UNCOMP and MA.UNCOMP_S is not None:
+    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()              # pin MA's clock to the present (mirrors rl_export.py); level_now/ev = the 2026 surface
+    # (1) V_ref_b[pos] = MEDIAN captain-free price6 (pr0); RHO_DEN[pos] = MEDIAN rho_out; over the
+    #     DEMONSTRATED-PROVEN pop { gfut==pos, _nqual(_,2026) >= PROVEN_N(=4), in scope }.
+    _vb_pool={}; _rd_pool={}
+    for _p in MA.data:
+        if not _uncomp_scope(_p) or _nqual(_p,2026)<PROVEN_N: continue
+        _g=MA.gfut(_p)
+        if _g not in MA.REPL: continue
+        _prev=MA._CAPT_OFF['on']; MA._CAPT_OFF['on']=True
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                try: _pr0=price6(_p,b6(_p,2026),2026)
+                except Exception: _pr0=None
+        finally: MA._CAPT_OFF['on']=_prev
+        _ro=rho_out(_p,_g)                                    # ρ_num (games×recency, memo §2.1 ⟪v1.2⟫) — reached ONLY when s is set
+        if _pr0 and _pr0>0.0: _vb_pool.setdefault(_g,[]).append(float(_pr0))
+        if _ro and _ro>0.0: _rd_pool.setdefault(_g,[]).append(float(_ro))
+    for _g,_vals in _vb_pool.items(): _UC_VREFB[_g]=float(np.median(_vals))
+    for _g,_vals in _rd_pool.items(): _UC_RHODEN[_g]=float(np.median(_vals))
+    # (2) C[pos]: production-side conservation renorm (memo §3). ONE load-time pass over the valuation scope,
+    #     accumulate Sum(pr0), Sum(v0p) per pos via the hook (C==1 during accumulation); C=Sum(pr0)/Sum(v0p) so
+    #     the position's TOTAL captain-free production is unchanged by the map (pedigree/iso/captain nominal).
+    _UC_CAL['on']=True; _UC_CAL['pr0'].clear(); _UC_CAL['v0p'].clear()
+    with contextlib.redirect_stdout(io.StringIO()):
+        for _p in MA.data:
+            if not _uncomp_scope(_p): continue
+            try: ev(_p,2026)
+            except Exception: pass
+    _UC_CAL['on']=False
+    for _g,_s0 in _UC_CAL['pr0'].items():
+        _s0p=_UC_CAL['v0p'].get(_g,0.0); _UC_C[_g]=(_s0/_s0p) if _s0p>0.0 else 1.0
+    print("=== RL_UNCOMP v1.1 LEG B: map ON (s=%.4f Delta=%.1f) | V_ref_b/RHO_DEN/C over %d proven / scope-pop ==="
+          %(MA.UNCOMP_S,MA.UNCOMP_DELTA,sum(len(v) for v in _vb_pool.values())))
+    for _g in sorted(_UC_VREFB):
+        print("    %-8s V_ref_b=%8.1f RHO_DEN=%7.2f C=%.5f"%(_g,_UC_VREFB.get(_g,0.0),_UC_RHODEN.get(_g,0.0),_UC_C.get(_g,1.0)))
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The

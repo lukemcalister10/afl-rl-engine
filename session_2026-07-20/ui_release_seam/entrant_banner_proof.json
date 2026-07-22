@@ -1,0 +1,40 @@
+{
+  "_doc": "TEMP extraction of the read-only diagnostic candidate fixture (6720dfae) \u2014 schema/banner proof ONLY. NOT a bake, NOT a promotion; the candidate v-values are not approved. Fixture board md5=c5ccd667a4479e14b3a840ba98fb00ca (temporary pin).",
+  "entrant_banner_reads": {
+    "entrant_layer_pvc": 83538,
+    "expected_slots_per_year": 103.43,
+    "seal_sha256_8": "a17aafed"
+  },
+  "phantom_fields_present": {
+    "phantomLayer": [
+      "dict",
+      18
+    ],
+    "phantomPicks": [
+      "list",
+      164
+    ],
+    "phantomTotals": [
+      "dict",
+      3
+    ],
+    "lensPicks": [
+      "list",
+      60
+    ],
+    "lensConservation": [
+      "dict",
+      6
+    ]
+  },
+  "metadata_contract_from_boot": {
+    "releaseVersion": "v2.11",
+    "asOfRound": 14,
+    "tag_alias": "v2.11"
+  },
+  "board_identity": {
+    "srcmd5": "c5ccd667a4479e14b3a840ba98fb00ca",
+    "stamp_board": "c5ccd667a4479e14b3a840ba98fb00ca",
+    "equal": true
+  }
+}

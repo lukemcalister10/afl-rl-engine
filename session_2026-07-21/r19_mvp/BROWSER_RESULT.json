@@ -1,0 +1,19 @@
+{
+  "kind": "r19_mvp_browser_result",
+  "status": "PASS",
+  "working_round": 19,
+  "board": "92a8f3a0528e5668029ca8056a841821",
+  "store": "f37d9716648cfe4382b8c6a24c4f064f",
+  "profiles": ["desktop", "mobile"],
+  "checks": [
+    "working and public Round 19 labels",
+    "current rankings",
+    "previous-round movement default",
+    "future-pick rendering",
+    "Movers R15-R19",
+    "current club totals for 16 clubs and 160 held picks",
+    "club-total arithmetic and table render",
+    "no fail-closed screen",
+    "no horizontal document overflow"
+  ]
+}

@@ -1,0 +1,33 @@
+LEG F5 — PER-LENS TOTALS (RL_LEGF=1; §2.viii entrant layer; report-only, NOT a gate)
+seal a17aafed | entrant layer 83538 PVC (draft 69266 + mech 14272) | 103.4 slots/yr
+
+LEAGUE (per lens): withPhantom / withoutPhantom / delta
+  balanced (k=0)    with=  750159  without=  750159  delta=     +0
+  +1 (2027)         with=  769413  without=  685875  delta= +83538
+  +2 (2028)         with=  718802  without=  635264  delta= +83538
+
+per-lens conservation vs now (752427 filed / 750159 container):
+  +1 withPhantom=769413  vs now=750159  = +2.6%
+  +2 withPhantom=718802  vs now=750159  = -4.2%
+
+PER-CLUB (withPhantom / withoutPhantom / delta), +1 lens:
+  Adelaide                 with=  45863 without=  39514 delta= +6349
+  Brisbane                 with=  44018 without=  37790 delta= +6228
+  Carlton                  with=  33997 without=  27991 delta= +6006
+  Collingwood              with=  32461 without=  26694 delta= +5767
+  Essendon                 with=  48029 without=  42685 delta= +5344
+  Fremantle                with=  54081 without=  49123 delta= +4958
+  GWS                      with=  49541 without=  44780 delta= +4761
+  Geelong                  with=  42879 without=  38205 delta= +4674
+  Gold Coast               with=  49385 without=  44884 delta= +4501
+  Hawthorn                 with=  38776 without=  34255 delta= +4521
+  Melbourne                with=  36290 without=  32198 delta= +4092
+  North Melbourne          with=  50496 without=  46271 delta= +4225
+  Port Adelaide            with=  38304 without=  34348 delta= +3956
+  Richmond                 with=  38673 without=  34848 delta= +3825
+  St Kilda                 with=  46679 without=  42958 delta= +3721
+  Sydney                   with=  39003 without=  35354 delta= +3649
+  West Coast               with=  40026 without=  36541 delta= +3485
+  Western Bulldogs         with=  40904 without=  37436 delta= +3468
+
+  sum club +1 deltas = 83537  (== league +1 entrant 83538)

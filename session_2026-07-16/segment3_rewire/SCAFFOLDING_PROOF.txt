@@ -1,0 +1,41 @@
+# SEGMENT-3 PARTIAL-PROCEED (register 232) — RULE-INDEPENDENT SCAFFOLDING PROOFS (dev-shell, at head)
+# engine source = this branch head; workspace-seeded; pinned env (PYTHONHASHSEED=0 RL_GAMMA=0.85 ... PAR_RAMPS=22)
+
+## A/B kill-switch identity (the map ships INERT; UNCOMP_S_DEFAULT=None)
+DEFAULT (inert)  board md5 = 8d90c9ac   (expect 8d90c9ac)  BYTE-EXACT
+RL_UNCOMP=0      board md5 = 8d90c9ac   (expect 8d90c9ac)  BYTE-EXACT
+# neither build prints the "RL_UNCOMP v1.1 ... map ON" banner and neither raises — correct: inert, stub never reached.
+
+## Pluggable-predicate stub (the qualifying LAW awaits MEMO v1.2)
+_qualifying(p, season)  -> raises NotImplementedError            (one function, one call site: rho_out)
+rho_out(p, pos)         -> raises NotImplementedError            (its only caller; delegates to _qualifying)
+_uncomp_prod inert      -> returns pr UNCHANGED, never reaches rho_out/_qualifying (UNCOMP_S is None)
+
+## What is wired complete (rule-independent), EXCEPT the stubbed predicate:
+- six-site seg-2 posval wiring REMOVED -> pre-seg-2 originals (delete-don't-disable + obituary in rl_model.py)
+- captain-off pass: MA._CAPT_OFF true-zero; pr0 = captain-free price6; delta = pr - pr0 added back unchanged
+- the map at the hook _merged_recover.py raw_ev: v' = pr0^(1-w)*(V_ref_b*rho)^w, onset ramp Delta=6.0
+- C[pos] production-side conservation re-point (load-time calibration pass over the hook; s-gated)
+- V_ref_b (median captain-free pr0) + RHO_DEN (median rho_out) reference build (load-time; s-gated)
+- kill-switch RL_UNCOMP + dials retained (RL_ISOFADE pattern; config c2d233ae UNMOVED)
+
+## Predicate signature + call site (for the v1.2 hand-off):
+  def _qualifying(p, season) -> bool          # engine/rl_after/_merged_recover.py  (def) 
+  called once in: rho_out(p, pos)             # engine/rl_after/_merged_recover.py  season-selection comprehension
+  # v1.2 replaces ONLY the stub body; nothing else in the map moves.
+
+## Captain-off pass δ self-test (price6 level, no s, no map — the mechanism only)
+# pr_on = price6 (capt on) ; pr_off = price6 under MA._CAPT_OFF ; delta = pr_on - pr_off = L-CAPTAIN increment
+player                     pos       pr_on     pr_off      delta   restored_ok
+Max Gawn                 RUC       2889.00   2356.16    532.84     True
+Brodie Grundy            RUC       4241.50   3698.28    543.22     True
+Tristan Xerri            RUC       7278.98   6160.52   1118.46     True
+Zak Butters              MID       5769.16   5144.70    624.46     True
+Isaac Heeney             MID       3669.60   3256.94    412.66     True
+Marcus Bontempelli       MID       3339.00   2977.00    362.00     True
+Rhys Unwin               GEN_FWD    230.42    230.42      0.00  (sub-captain: delta~0)
+SELF-TEST: PASS — pr_off <= pr_on (captain removed), delta >= 0, delta==0 for a sub-captain player,
+captain-off deterministic and byte-restored (pr_on recomputed == pr_on). In the map, delta is added back
+UNCHANGED (v' = C*v0p + delta); when w<=0 the map returns pr (identity), so the L-CAPTAIN increment is
+preserved regardless of the production blend. The full pre/post-MAP delta identity runs once the map turns
+on (needs MEMO v1.2's predicate).

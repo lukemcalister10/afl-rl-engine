@@ -1,0 +1,116 @@
+{
+ "_doc": "Live run of the R104.9 check against the CURRENTLY SHIPPED curve (pvc_curve_L1b.json). Demonstrates the harness runs and that the shipped curve is NOT yet R104.9-clean.",
+ "shipped_curve": "engine/rl_after/pvc_curve_L1b.json",
+ "strict_descent": {
+  "rule": "curve(p+1) <= curve(p) - 1 for p=1..79 (R104.9; item 197); no plateaus unless owner-ruled",
+  "passed": false,
+  "n_violations": 15,
+  "violations": [
+   {
+    "p": 1,
+    "val_p": 3000,
+    "val_p1": 3000,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 7,
+    "val_p": 1739,
+    "val_p1": 1739,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 66,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 67,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 68,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 69,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 70,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 71,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 72,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 73,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 74,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 75,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 76,
+    "val_p": 343,
+    "val_p1": 343,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 78,
+    "val_p": 342,
+    "val_p1": 342,
+    "gap": 0,
+    "kind": "PLATEAU"
+   },
+   {
+    "p": 79,
+    "val_p": 342,
+    "val_p1": 342,
+    "gap": 0,
+    "kind": "PLATEAU"
+   }
+  ]
+ }
+}
