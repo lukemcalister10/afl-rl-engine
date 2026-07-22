@@ -8,6 +8,7 @@
      TIER 3 (never bakes; no value change). Pure view: reads the derived board READ-ONLY, computes no price.
      Dark-only (Q-THEME a). Renders from file:// and when served. -->
 <link rel="stylesheet" href="styles/matchday.css">
+<link rel="stylesheet" href="styles/mvp_fixes.css">
 </head>
 <body>
 <div id="root"></div>
@@ -19,8 +20,7 @@
 <script src="data/club_valuation.js"></script>
 <!-- v1.3 values-free position map (item 196(2); from ui/tools/extract_positions.py — no dollar value) -->
 <script src="app/positions_data.js"></script>
-<!-- weekly movers bundle (one report per committed round; from engine/rl_after/ingestion/round_movers.py).
-     Optional: absent until a round is applied; the Movers view fail-closes cleanly when it is missing. -->
+<!-- weekly movers bundle (one report per committed round; from engine/rl_after/ingestion/round_movers.py). -->
 <script src="data/movers.js"></script>
 
 <!-- app -->
@@ -35,6 +35,7 @@
 <script src="app/trade.js"></script>
 <script src="app/review.js"></script>
 <script src="app/movers.js"></script>
+<script src="app/mvp_fixes.js"></script>
 <script src="app/main.js"></script>
 </body>
 </html>
