@@ -17,7 +17,7 @@ Checks:
   (1) engine loads from the single store; derived active == 804 (was 805; taylor-adams retired 2026-07-12), keys unique
   (2) EXPORT PARITY (F1): board v == a freshly, independently recomputed engine gated ev(), key-for-key
   (3) BOOK PARITY  (F2): book cur == board v for every shared player
-  (4) DATA GROUND TRUTH: Kako 2025 23@55.2 / 2026 6@55.0 ; Bontempelli 13-season track regenerated == source
+  (4) DATA GROUND TRUTH: Kako 2025 23@55.2 / 2026 10@45.4 ; Bontempelli 13-season track regenerated == source
   (5) POSITION MODEL: store carries drafted/present/future single-valued columns; raw_multipos GONE
 """
 import io, os, re, sys, json, stat, contextlib, hashlib
@@ -125,7 +125,7 @@ check(len(kako)==1, "exactly one isaac-kako in the store")
 if kako:
     ksc={r['year']:(r['games'],r['avg']) for r in kako[0]['scoring']}
     check(ksc.get(2025)==(23,55.2), "Kako 2025 == 23 games @ 55.2 (owner ground truth); got %s"%(ksc.get(2025),))
-    check(ksc.get(2026)==(6,55.0),  "Kako 2026 == 6 games @ 55.0; got %s"%(ksc.get(2026),))
+    check(ksc.get(2026)==(10,45.4), "Kako 2026 == 10 games @ 45.4 (R15-19 entered: R16=11,R17=9,R18=47,R19=57, R15 DNP; prior 6@55.0=330 +124 =454/10); got %s"%(ksc.get(2026),))
 bont=[p for p in store if p['key']=='marcus-bontempelli']
 check(len(bont)==1, "exactly one marcus-bontempelli in the store")
 if bont:
