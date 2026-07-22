@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kinetic Matchday · Public round review</title>
+  <link rel="stylesheet" href="styles/kinetic.css">
+</head>
+<body data-page="review">
+  <div class="pitch-banner">Design pitch · invented figures · not the board · public trim only</div>
+  <nav class="site-nav" aria-label="Prototype navigation">
+    <a class="brand-lockup" href="index.html"><strong>Value<b>Board</b></strong><span>Kinetic Matchday<br>Profile 05</span></a>
+    <div class="nav-links">
+      <a data-nav="board" href="board_public.html">Board</a>
+      <a data-nav="player" href="player_card_public.html">Player</a>
+      <a data-nav="review" href="round_review_public.html">Round review</a>
+    </div>
+    <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Pause motion</button>
+  </nav>
+
+  <main>
+    <section class="hero review-hero">
+      <div class="hero-main">
+        <div class="hero-kicker">Movement report · round 19 versus round 18</div>
+        <h1 class="hero-title">Round<br><span class="outline">Review</span></h1>
+        <div class="hero-sub">
+          <p>A public explanation of what moved, by how much and in which direction. The interface is expressive; the movement language remains exact.</p>
+          <div class="hero-stamp">ROUND <b>19 · 2026</b><br>VS ROUND 18<br>ILLUSTRATION ONLY</div>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Round 19">
+        <span class="round-label">Review round</span>
+        <span class="round-no">19</span>
+        <div class="round-meta">MOVERS · RANKS · CONTEXT<br>PUBLIC PRESENTATION<br>NOT MODEL EVIDENCE</div>
+      </aside>
+    </section>
+
+    <div class="marquee-shell" aria-hidden="true">
+      <div class="marquee-track" data-marquee-track>
+        <div class="marquee-item"><span>227 PLAYERS UP</span><span class="dot">✦</span><span>193 PLAYERS DOWN</span><span class="dot">✦</span><span>384 STEADY / NOT GRADED</span><span class="dot">✦</span><span>BOARD +0.3%</span><span class="dot">✦</span></div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="review-summary">
+        <article class="review-stat up"><span class="ghost">↑</span><span class="label">Players up</span><div class="figure num">227</div></article>
+        <article class="review-stat down"><span class="ghost">↓</span><span class="label">Players down</span><div class="figure num">193</div></article>
+        <article class="review-stat"><span class="ghost">—</span><span class="label">Steady / not graded</span><div class="figure num">384</div></article>
+        <article class="review-stat up"><span class="ghost">%</span><span class="label">Board movement</span><div class="figure num">+0.3%</div></article>
+      </div>
+      <div class="section-head">
+        <h2 class="section-title">Biggest<br>moves</h2>
+        <div class="section-meta">Ranked by absolute value movement<br>direction and figure always printed</div>
+      </div>
+      <div class="mover-list" data-mover-list></div>
+    </section>
+  </main>
+  <footer class="prototype-footer">Public prototype · invented figures · motion can be paused · reduced-motion preference provides a static fallback</footer>
+  <script src="scripts/demo-data.js"></script><script src="scripts/kinetic.js"></script>
+</body>
+</html>
