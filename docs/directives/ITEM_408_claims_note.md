@@ -201,8 +201,58 @@ is the STOP-1-gated advance-repin (directive item 5) — `expected_boot.json`'s 
 
 ## 5. R19 balanced-board regeneration and STOP-1
 
-Filled by rebuild commit 4 ("ITEM 408: build R19 STOP-1 candidate evidence"). **No** balanced-board pin or
-artifact moves before the owner views the measured comparison and gives explicit STOP-1 approval.
+`[re-runnable]` **Candidate regenerated afresh** from the exact accepted R19 store + current engine/config, via
+`session_2026-07-22/item408_stop1/build_stop1_candidate.py`, which drives the existing disposable FV builder
+(`test_fv_provenance.py::_run_build`, `balanced=True`) in a throwaway staging copy. The candidate hash is
+**derived dynamically** (`md5(candidate board)`), never asserted to a pinned answer. The evidence script is
+scratch-only and writes only under `session_2026-07-22/item408_stop1/`.
+
+`[re-runnable]` **Real fences (GPT Sol review finding 3).** The builder hashes every protected artifact
+**before and after** the build, **aborts non-zero** if any changed, and **derives each fence flag from the
+measured before/after equality** (never hardcoded). Measured this run — all eight unchanged, so every fence is
+`False` **because the hashes prove no mutation**:
+
+| protected artifact | path | before = after md5 |
+|---|---|---|
+| canonical_board (board of record 6f07f7cb) | `data/rl_build/rl_app_data.json` | `6f07f7cbe042f8e56426a01226c967c9` |
+| expected_boot | `data/expected_boot.json` | `f4603e627096ea04a9dbf2b23f0cceff` |
+| release_contract | `data/release_contract.json` | `54ec77eb6c8d5a6c451604b034537130` |
+| curve_contract | `ui/release_pick_curve.json` | `676ad2b77612a4fbd4df3362b6f88fab` |
+| curve | `engine/rl_after/pvc_curve_v2.json` | `56dd7a7bca4306d9224aec0ef52efa32` |
+| per_entrant | `…/legd_derivation/out/per_entrant.json` | `40d7da7c7461024048fe48fcba5692ff` |
+| store (authoritative) | `engine/rl_after/rl_model_data.json` | `f37d9716648cfe4382b8c6a24c4f064f` |
+| score_ledger | `engine/rl_after/ingestion/applied_rounds_ledger.json` | `1d9faae56bc4896a1bf10f9289d45461` |
+
+`[re-runnable]` **Exact input identity recorded (finding 3)** in `STOP1_CANDIDATE.json` / `STOP1_REPORT.md`:
+generated at commit `517af20bc019a088ed29d6550bed45eb7e2a6156`; authoritative store `f37d9716`; rl_model
+`4f776e07`; forward-valuation identity `6a9a520f…`; distribution-pricing `dd19a234`; config-manifest identity
+`45b207c0…`; expected_boot `f4603e62`; release-contract `54ec77eb`; release-pick-curve `676ad2b7`;
+reference-vector `6565a4ef`; board-of-record `6f07f7cb`; pinned env py 3.12.3 / numpy 2.4.4 / scipy 1.17.1 /
+sklearn 1.8.0 / openpyxl 3.1.5, `PYTHONHASHSEED=0` + single-thread BLAS + `RL_PVC2=1/RL_LEGE=0/RL_LEGF=0`.
+
+`[re-runnable]` **Measured candidate identity** (freshly measured; the directive's prior figures were
+hypotheses, all confirmed): candidate board md5 `1373e82471a81064ef96820f3db065df`; active 804; total value
+760253; Harry Sheezel 9542.
+
+`[re-runnable]` **Comparison 1 — candidate vs historical balanced board `06d8af60` (the stale pin):** 804 vs
+804; sum 760253 vs 752427 (**Δ +7826**); Sheezel 9542 vs 7964 (**Δ +1578**); **723 movers**; 0 added/removed.
+Top mover `noah-mraz` 412→2198 (+1786).
+
+`[re-runnable]` **Comparison 2 — candidate vs board of record `6f07f7cb` (frozen; not replaced):** 804 vs 804;
+sum 760253 vs 760253 (**Δ 0**); Sheezel 9542 vs 9542 (**Δ 0**); **0 movers**; 0 added/removed.
+
+`[report-only]` **STOP-1 semantics (GPT Sol review finding 4).** Board of record `6f07f7cb` is **frozen** under
+the directive and is **not** replaced by this build or by STOP-1. Specifically, in the evidence:
+`candidate_vector_equals_board_of_record_vector = true` (the candidate's full active-player value vector equals
+the frozen board-of-record vector, 0 movers); `candidate_md5_is_board_of_record_md5 = false` (the candidate
+board artifact md5 `1373e824` is a distinct artifact, not the board-of-record md5 `6f07f7cb`);
+`stop1_replaces_board_of_record_6f07f7cb = false`. The **STOP-1 decision is whether to approve advancing the
+balanced/strict board pin from `06d8af60` to the candidate `1373e824`** and, after the owner's word, moving all
+dependent balanced-board / FV / reference identities atomically. This builder moves nothing.
+
+`[re-runnable]` **Deterministic.** Two clean scratch runs at the same checkout produced byte-identical outputs —
+candidate board, full 804-row value vector, `STOP1_CANDIDATE.json` (incl. all 723 movers, the input-identity
+block, and the measured protected before/after table), and `STOP1_REPORT.md` — md5-for-md5.
 
 ## 6. Advance-repin design
 

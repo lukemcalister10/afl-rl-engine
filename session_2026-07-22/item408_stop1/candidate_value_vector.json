@@ -1,0 +1,4828 @@
+{
+  "vector": [
+    {
+      "candidate": 2175,
+      "key": "aaron-cadman",
+      "released_6f07f7cb": 2175,
+      "strict_06d8af60": 2837
+    },
+    {
+      "candidate": 1407,
+      "key": "aaron-naughton",
+      "released_6f07f7cb": 1407,
+      "strict_06d8af60": 1680
+    },
+    {
+      "candidate": 1194,
+      "key": "adam-cerra",
+      "released_6f07f7cb": 1194,
+      "strict_06d8af60": 1179
+    },
+    {
+      "candidate": 614,
+      "key": "adam-saad",
+      "released_6f07f7cb": 614,
+      "strict_06d8af60": 669
+    },
+    {
+      "candidate": 579,
+      "key": "adam-sweid",
+      "released_6f07f7cb": 579,
+      "strict_06d8af60": 645
+    },
+    {
+      "candidate": 627,
+      "key": "adam-treloar",
+      "released_6f07f7cb": 627,
+      "strict_06d8af60": 723
+    },
+    {
+      "candidate": 49,
+      "key": "aidan-corr",
+      "released_6f07f7cb": 49,
+      "strict_06d8af60": 49
+    },
+    {
+      "candidate": 73,
+      "key": "aidan-johnson",
+      "released_6f07f7cb": 73,
+      "strict_06d8af60": 86
+    },
+    {
+      "candidate": 623,
+      "key": "aidan-schubert",
+      "released_6f07f7cb": 623,
+      "strict_06d8af60": 693
+    },
+    {
+      "candidate": 446,
+      "key": "aiden-riddle",
+      "released_6f07f7cb": 446,
+      "strict_06d8af60": 480
+    },
+    {
+      "candidate": 480,
+      "key": "alex-davies",
+      "released_6f07f7cb": 480,
+      "strict_06d8af60": 515
+    },
+    {
+      "candidate": 455,
+      "key": "alex-dodson",
+      "released_6f07f7cb": 455,
+      "strict_06d8af60": 489
+    },
+    {
+      "candidate": 442,
+      "key": "alex-neal-bullen",
+      "released_6f07f7cb": 442,
+      "strict_06d8af60": 534
+    },
+    {
+      "candidate": 38,
+      "key": "alex-pearce",
+      "released_6f07f7cb": 38,
+      "strict_06d8af60": 38
+    },
+    {
+      "candidate": 581,
+      "key": "alex-van-wyk",
+      "released_6f07f7cb": 581,
+      "strict_06d8af60": 620
+    },
+    {
+      "candidate": 1005,
+      "key": "aliir-aliir",
+      "released_6f07f7cb": 1005,
+      "strict_06d8af60": 1059
+    },
+    {
+      "candidate": 1527,
+      "key": "alix-tauru",
+      "released_6f07f7cb": 1527,
+      "strict_06d8af60": 1496
+    },
+    {
+      "candidate": 3002,
+      "key": "andrew-brayshaw",
+      "released_6f07f7cb": 3002,
+      "strict_06d8af60": 2836
+    },
+    {
+      "candidate": 1118,
+      "key": "andrew-mcgrath",
+      "released_6f07f7cb": 1118,
+      "strict_06d8af60": 1061
+    },
+    {
+      "candidate": 46,
+      "key": "andy-moniz-wakefield",
+      "released_6f07f7cb": 46,
+      "strict_06d8af60": 55
+    },
+    {
+      "candidate": 192,
+      "key": "angus-anderson",
+      "released_6f07f7cb": 192,
+      "strict_06d8af60": 253
+    },
+    {
+      "candidate": 761,
+      "key": "angus-clarke",
+      "released_6f07f7cb": 761,
+      "strict_06d8af60": 758
+    },
+    {
+      "candidate": 333,
+      "key": "angus-hastie",
+      "released_6f07f7cb": 333,
+      "strict_06d8af60": 303
+    },
+    {
+      "candidate": 809,
+      "key": "angus-sheldrick",
+      "released_6f07f7cb": 809,
+      "strict_06d8af60": 765
+    },
+    {
+      "candidate": 1077,
+      "key": "anthony-caminiti",
+      "released_6f07f7cb": 1077,
+      "strict_06d8af60": 1066
+    },
+    {
+      "candidate": 381,
+      "key": "archer-day-wicks",
+      "released_6f07f7cb": 381,
+      "strict_06d8af60": 343
+    },
+    {
+      "candidate": 842,
+      "key": "archer-reid",
+      "released_6f07f7cb": 842,
+      "strict_06d8af60": 871
+    },
+    {
+      "candidate": 354,
+      "key": "archie-ludowyke",
+      "released_6f07f7cb": 354,
+      "strict_06d8af60": 398
+    },
+    {
+      "candidate": 477,
+      "key": "archie-may",
+      "released_6f07f7cb": 477,
+      "strict_06d8af60": 482
+    },
+    {
+      "candidate": 298,
+      "key": "archie-perkins",
+      "released_6f07f7cb": 298,
+      "strict_06d8af60": 286
+    },
+    {
+      "candidate": 5006,
+      "key": "archie-roberts",
+      "released_6f07f7cb": 5006,
+      "strict_06d8af60": 5184
+    },
+    {
+      "candidate": 126,
+      "key": "arthur-jones",
+      "released_6f07f7cb": 126,
+      "strict_06d8af60": 98
+    },
+    {
+      "candidate": 187,
+      "key": "asher-eastham",
+      "released_6f07f7cb": 187,
+      "strict_06d8af60": 204
+    },
+    {
+      "candidate": 297,
+      "key": "ashton-moir",
+      "released_6f07f7cb": 297,
+      "strict_06d8af60": 278
+    },
+    {
+      "candidate": 501,
+      "key": "avery-thomas",
+      "released_6f07f7cb": 501,
+      "strict_06d8af60": 560
+    },
+    {
+      "candidate": 11,
+      "key": "bailey-banfield",
+      "released_6f07f7cb": 11,
+      "strict_06d8af60": 15
+    },
+    {
+      "candidate": 2377,
+      "key": "bailey-dale",
+      "released_6f07f7cb": 2377,
+      "strict_06d8af60": 2079
+    },
+    {
+      "candidate": 2121,
+      "key": "bailey-humphrey",
+      "released_6f07f7cb": 2121,
+      "strict_06d8af60": 2269
+    },
+    {
+      "candidate": 72,
+      "key": "bailey-laurie",
+      "released_6f07f7cb": 72,
+      "strict_06d8af60": 72
+    },
+    {
+      "candidate": 171,
+      "key": "bailey-macdonald",
+      "released_6f07f7cb": 171,
+      "strict_06d8af60": 122
+    },
+    {
+      "candidate": 33,
+      "key": "bailey-scott",
+      "released_6f07f7cb": 33,
+      "strict_06d8af60": 53
+    },
+    {
+      "candidate": 5882,
+      "key": "bailey-smith",
+      "released_6f07f7cb": 5882,
+      "strict_06d8af60": 5861
+    },
+    {
+      "candidate": 753,
+      "key": "bailey-williams-wb",
+      "released_6f07f7cb": 753,
+      "strict_06d8af60": 646
+    },
+    {
+      "candidate": 2037,
+      "key": "bailey-williams-wc",
+      "released_6f07f7cb": 2037,
+      "strict_06d8af60": 2184
+    },
+    {
+      "candidate": 272,
+      "key": "balyn-o-brien",
+      "released_6f07f7cb": 272,
+      "strict_06d8af60": 277
+    },
+    {
+      "candidate": 188,
+      "key": "bayley-fritsch",
+      "released_6f07f7cb": 188,
+      "strict_06d8af60": 188
+    },
+    {
+      "candidate": 1308,
+      "key": "beau-addinsall",
+      "released_6f07f7cb": 1308,
+      "strict_06d8af60": 1115
+    },
+    {
+      "candidate": 193,
+      "key": "beau-mccreery",
+      "released_6f07f7cb": 193,
+      "strict_06d8af60": 221
+    },
+    {
+      "candidate": 299,
+      "key": "ben-ainsworth",
+      "released_6f07f7cb": 299,
+      "strict_06d8af60": 278
+    },
+    {
+      "candidate": 327,
+      "key": "ben-camporeale",
+      "released_6f07f7cb": 327,
+      "strict_06d8af60": 359
+    },
+    {
+      "candidate": 11,
+      "key": "ben-jepson",
+      "released_6f07f7cb": 11,
+      "strict_06d8af60": 16
+    },
+    {
+      "candidate": 453,
+      "key": "ben-keays",
+      "released_6f07f7cb": 453,
+      "strict_06d8af60": 412
+    },
+    {
+      "candidate": 331,
+      "key": "ben-king",
+      "released_6f07f7cb": 331,
+      "strict_06d8af60": 428
+    },
+    {
+      "candidate": 32,
+      "key": "ben-long",
+      "released_6f07f7cb": 32,
+      "strict_06d8af60": 32
+    },
+    {
+      "candidate": 46,
+      "key": "ben-mckay",
+      "released_6f07f7cb": 46,
+      "strict_06d8af60": 46
+    },
+    {
+      "candidate": 1143,
+      "key": "ben-miller",
+      "released_6f07f7cb": 1143,
+      "strict_06d8af60": 1223
+    },
+    {
+      "candidate": 238,
+      "key": "ben-murphy",
+      "released_6f07f7cb": 238,
+      "strict_06d8af60": 277
+    },
+    {
+      "candidate": 125,
+      "key": "benny-barrett",
+      "released_6f07f7cb": 125,
+      "strict_06d8af60": 137
+    },
+    {
+      "candidate": 89,
+      "key": "billy-cootee",
+      "released_6f07f7cb": 89,
+      "strict_06d8af60": 89
+    },
+    {
+      "candidate": 192,
+      "key": "billy-dowling",
+      "released_6f07f7cb": 192,
+      "strict_06d8af60": 126
+    },
+    {
+      "candidate": 105,
+      "key": "billy-frampton",
+      "released_6f07f7cb": 105,
+      "strict_06d8af60": 173
+    },
+    {
+      "candidate": 849,
+      "key": "billy-wilson",
+      "released_6f07f7cb": 849,
+      "strict_06d8af60": 274
+    },
+    {
+      "candidate": 214,
+      "key": "blake-acres",
+      "released_6f07f7cb": 214,
+      "strict_06d8af60": 94
+    },
+    {
+      "candidate": 632,
+      "key": "blake-hardwick",
+      "released_6f07f7cb": 632,
+      "strict_06d8af60": 450
+    },
+    {
+      "candidate": 334,
+      "key": "blake-howes",
+      "released_6f07f7cb": 334,
+      "strict_06d8af60": 320
+    },
+    {
+      "candidate": 541,
+      "key": "blake-thredgold",
+      "released_6f07f7cb": 541,
+      "strict_06d8af60": 541
+    },
+    {
+      "candidate": 1193,
+      "key": "bo-allan",
+      "released_6f07f7cb": 1193,
+      "strict_06d8af60": 990
+    },
+    {
+      "candidate": 57,
+      "key": "bobby-hill",
+      "released_6f07f7cb": 57,
+      "strict_06d8af60": 67
+    },
+    {
+      "candidate": 3812,
+      "key": "bodhi-uwland",
+      "released_6f07f7cb": 3812,
+      "strict_06d8af60": 3199
+    },
+    {
+      "candidate": 329,
+      "key": "bodie-ryan",
+      "released_6f07f7cb": 329,
+      "strict_06d8af60": 366
+    },
+    {
+      "candidate": 29,
+      "key": "bradley-close",
+      "released_6f07f7cb": 29,
+      "strict_06d8af60": 29
+    },
+    {
+      "candidate": 1255,
+      "key": "bradley-hill",
+      "released_6f07f7cb": 1255,
+      "strict_06d8af60": 811
+    },
+    {
+      "candidate": 331,
+      "key": "brady-hough",
+      "released_6f07f7cb": 331,
+      "strict_06d8af60": 353
+    },
+    {
+      "candidate": 374,
+      "key": "braeden-campbell",
+      "released_6f07f7cb": 374,
+      "strict_06d8af60": 457
+    },
+    {
+      "candidate": 42,
+      "key": "brandon-starcevich",
+      "released_6f07f7cb": 42,
+      "strict_06d8af60": 42
+    },
+    {
+      "candidate": 94,
+      "key": "brandon-walker",
+      "released_6f07f7cb": 94,
+      "strict_06d8af60": 114
+    },
+    {
+      "candidate": 119,
+      "key": "brandon-zerk-thatcher",
+      "released_6f07f7cb": 119,
+      "strict_06d8af60": 247
+    },
+    {
+      "candidate": 899,
+      "key": "brayden-cook",
+      "released_6f07f7cb": 899,
+      "strict_06d8af60": 886
+    },
+    {
+      "candidate": 282,
+      "key": "brayden-fiorini",
+      "released_6f07f7cb": 282,
+      "strict_06d8af60": 321
+    },
+    {
+      "candidate": 317,
+      "key": "brayden-george",
+      "released_6f07f7cb": 317,
+      "strict_06d8af60": 319
+    },
+    {
+      "candidate": 782,
+      "key": "brayden-maynard",
+      "released_6f07f7cb": 782,
+      "strict_06d8af60": 939
+    },
+    {
+      "candidate": 372,
+      "key": "brennan-cox",
+      "released_6f07f7cb": 372,
+      "strict_06d8af60": 452
+    },
+    {
+      "candidate": 1376,
+      "key": "brent-daniels",
+      "released_6f07f7cb": 1376,
+      "strict_06d8af60": 1451
+    },
+    {
+      "candidate": 4295,
+      "key": "brodie-grundy",
+      "released_6f07f7cb": 4295,
+      "strict_06d8af60": 4798
+    },
+    {
+      "candidate": 720,
+      "key": "brodie-kemp",
+      "released_6f07f7cb": 720,
+      "strict_06d8af60": 852
+    },
+    {
+      "candidate": 11,
+      "key": "brody-mihocek",
+      "released_6f07f7cb": 11,
+      "strict_06d8af60": 11
+    },
+    {
+      "candidate": 72,
+      "key": "bruce-reville",
+      "released_6f07f7cb": 72,
+      "strict_06d8af60": 67
+    },
+    {
+      "candidate": 85,
+      "key": "buku-khamis",
+      "released_6f07f7cb": 85,
+      "strict_06d8af60": 85
+    },
+    {
+      "candidate": 501,
+      "key": "caiden-cleary",
+      "released_6f07f7cb": 501,
+      "strict_06d8af60": 486
+    },
+    {
+      "candidate": 1549,
+      "key": "caleb-daniel",
+      "released_6f07f7cb": 1549,
+      "strict_06d8af60": 1245
+    },
+    {
+      "candidate": 62,
+      "key": "caleb-graham",
+      "released_6f07f7cb": 62,
+      "strict_06d8af60": 75
+    },
+    {
+      "candidate": 207,
+      "key": "caleb-lewis",
+      "released_6f07f7cb": 207,
+      "strict_06d8af60": 219
+    },
+    {
+      "candidate": 581,
+      "key": "caleb-may",
+      "released_6f07f7cb": 581,
+      "strict_06d8af60": 620
+    },
+    {
+      "candidate": 4580,
+      "key": "caleb-serong",
+      "released_6f07f7cb": 4580,
+      "strict_06d8af60": 4546
+    },
+    {
+      "candidate": 1521,
+      "key": "caleb-windsor",
+      "released_6f07f7cb": 1521,
+      "strict_06d8af60": 1638
+    },
+    {
+      "candidate": 84,
+      "key": "callum-ah-chee",
+      "released_6f07f7cb": 84,
+      "strict_06d8af60": 84
+    },
+    {
+      "candidate": 56,
+      "key": "callum-brown-ire",
+      "released_6f07f7cb": 56,
+      "strict_06d8af60": 25
+    },
+    {
+      "candidate": 42,
+      "key": "callum-coleman-jones",
+      "released_6f07f7cb": 42,
+      "strict_06d8af60": 42
+    },
+    {
+      "candidate": 2301,
+      "key": "callum-mills",
+      "released_6f07f7cb": 2301,
+      "strict_06d8af60": 1822
+    },
+    {
+      "candidate": 3634,
+      "key": "callum-wilkie",
+      "released_6f07f7cb": 3634,
+      "strict_06d8af60": 3723
+    },
+    {
+      "candidate": 962,
+      "key": "calsher-dear",
+      "released_6f07f7cb": 962,
+      "strict_06d8af60": 973
+    },
+    {
+      "candidate": 1616,
+      "key": "cameron-mackenzie",
+      "released_6f07f7cb": 1616,
+      "strict_06d8af60": 1867
+    },
+    {
+      "candidate": 767,
+      "key": "cameron-nairn",
+      "released_6f07f7cb": 767,
+      "strict_06d8af60": 798
+    },
+    {
+      "candidate": 738,
+      "key": "cameron-rayner",
+      "released_6f07f7cb": 738,
+      "strict_06d8af60": 438
+    },
+    {
+      "candidate": 146,
+      "key": "cameron-zurhaar",
+      "released_6f07f7cb": 146,
+      "strict_06d8af60": 199
+    },
+    {
+      "candidate": 341,
+      "key": "campbell-chesser",
+      "released_6f07f7cb": 341,
+      "strict_06d8af60": 412
+    },
+    {
+      "candidate": 261,
+      "key": "campbell-gray",
+      "released_6f07f7cb": 261,
+      "strict_06d8af60": 272
+    },
+    {
+      "candidate": 178,
+      "key": "campbell-lake",
+      "released_6f07f7cb": 178,
+      "strict_06d8af60": 148
+    },
+    {
+      "candidate": 3192,
+      "key": "chad-warner",
+      "released_6f07f7cb": 3192,
+      "strict_06d8af60": 2929
+    },
+    {
+      "candidate": 29,
+      "key": "changkuoth-jiath",
+      "released_6f07f7cb": 29,
+      "strict_06d8af60": 26
+    },
+    {
+      "candidate": 162,
+      "key": "charlie-ballard",
+      "released_6f07f7cb": 162,
+      "strict_06d8af60": 221
+    },
+    {
+      "candidate": 707,
+      "key": "charlie-banfield",
+      "released_6f07f7cb": 707,
+      "strict_06d8af60": 818
+    },
+    {
+      "candidate": 295,
+      "key": "charlie-cameron",
+      "released_6f07f7cb": 295,
+      "strict_06d8af60": 267
+    },
+    {
+      "candidate": 1039,
+      "key": "charlie-comben",
+      "released_6f07f7cb": 1039,
+      "strict_06d8af60": 746
+    },
+    {
+      "candidate": 1574,
+      "key": "charlie-curnow",
+      "released_6f07f7cb": 1574,
+      "strict_06d8af60": 1247
+    },
+    {
+      "candidate": 731,
+      "key": "charlie-edwards",
+      "released_6f07f7cb": 731,
+      "strict_06d8af60": 754
+    },
+    {
+      "candidate": 341,
+      "key": "charlie-nicholls",
+      "released_6f07f7cb": 341,
+      "strict_06d8af60": 379
+    },
+    {
+      "candidate": 35,
+      "key": "charlie-spargo",
+      "released_6f07f7cb": 35,
+      "strict_06d8af60": 35
+    },
+    {
+      "candidate": 475,
+      "key": "charlie-west",
+      "released_6f07f7cb": 475,
+      "strict_06d8af60": 449
+    },
+    {
+      "candidate": 113,
+      "key": "chayce-jones",
+      "released_6f07f7cb": 113,
+      "strict_06d8af60": 113
+    },
+    {
+      "candidate": 315,
+      "key": "chris-scerri",
+      "released_6f07f7cb": 315,
+      "strict_06d8af60": 331
+    },
+    {
+      "candidate": 933,
+      "key": "christian-moraes",
+      "released_6f07f7cb": 933,
+      "strict_06d8af60": 926
+    },
+    {
+      "candidate": 2140,
+      "key": "christian-petracca",
+      "released_6f07f7cb": 2140,
+      "strict_06d8af60": 2955
+    },
+    {
+      "candidate": 563,
+      "key": "christian-salem",
+      "released_6f07f7cb": 563,
+      "strict_06d8af60": 598
+    },
+    {
+      "candidate": 326,
+      "key": "cillian-bourke",
+      "released_6f07f7cb": 326,
+      "strict_06d8af60": 380
+    },
+    {
+      "candidate": 107,
+      "key": "cillian-burke",
+      "released_6f07f7cb": 107,
+      "strict_06d8af60": 118
+    },
+    {
+      "candidate": 402,
+      "key": "clay-hall",
+      "released_6f07f7cb": 402,
+      "strict_06d8af60": 613
+    },
+    {
+      "candidate": 2534,
+      "key": "clayton-oliver",
+      "released_6f07f7cb": 2534,
+      "strict_06d8af60": 2549
+    },
+    {
+      "candidate": 179,
+      "key": "cody-anderson",
+      "released_6f07f7cb": 179,
+      "strict_06d8af60": 196
+    },
+    {
+      "candidate": 580,
+      "key": "cody-angove",
+      "released_6f07f7cb": 580,
+      "strict_06d8af60": 644
+    },
+    {
+      "candidate": 674,
+      "key": "cody-curtin",
+      "released_6f07f7cb": 674,
+      "strict_06d8af60": 720
+    },
+    {
+      "candidate": 224,
+      "key": "cody-weightman",
+      "released_6f07f7cb": 224,
+      "strict_06d8af60": 346
+    },
+    {
+      "candidate": 3950,
+      "key": "colby-mckercher",
+      "released_6f07f7cb": 3950,
+      "strict_06d8af60": 3824
+    },
+    {
+      "candidate": 186,
+      "key": "connor-budarick",
+      "released_6f07f7cb": 186,
+      "strict_06d8af60": 197
+    },
+    {
+      "candidate": 2299,
+      "key": "connor-idun",
+      "released_6f07f7cb": 2299,
+      "strict_06d8af60": 1985
+    },
+    {
+      "candidate": 2711,
+      "key": "connor-macdonald",
+      "released_6f07f7cb": 2711,
+      "strict_06d8af60": 2263
+    },
+    {
+      "candidate": 2894,
+      "key": "connor-o-sullivan",
+      "released_6f07f7cb": 2894,
+      "strict_06d8af60": 2962
+    },
+    {
+      "candidate": 2859,
+      "key": "connor-rozee",
+      "released_6f07f7cb": 2859,
+      "strict_06d8af60": 3068
+    },
+    {
+      "candidate": 12,
+      "key": "conor-mckenna",
+      "released_6f07f7cb": 12,
+      "strict_06d8af60": 11
+    },
+    {
+      "candidate": 339,
+      "key": "conor-nash",
+      "released_6f07f7cb": 339,
+      "strict_06d8af60": 344
+    },
+    {
+      "candidate": 86,
+      "key": "conor-stone",
+      "released_6f07f7cb": 86,
+      "strict_06d8af60": 86
+    },
+    {
+      "candidate": 325,
+      "key": "cooper-bell",
+      "released_6f07f7cb": 325,
+      "strict_06d8af60": 367
+    },
+    {
+      "candidate": 1588,
+      "key": "cooper-duff-tytler",
+      "released_6f07f7cb": 1588,
+      "strict_06d8af60": 1649
+    },
+    {
+      "candidate": 607,
+      "key": "cooper-harvey",
+      "released_6f07f7cb": 607,
+      "strict_06d8af60": 103
+    },
+    {
+      "candidate": 1256,
+      "key": "cooper-hynes",
+      "released_6f07f7cb": 1256,
+      "strict_06d8af60": 1173
+    },
+    {
+      "candidate": 723,
+      "key": "cooper-lord",
+      "released_6f07f7cb": 723,
+      "strict_06d8af60": 393
+    },
+    {
+      "candidate": 645,
+      "key": "cooper-sharman",
+      "released_6f07f7cb": 645,
+      "strict_06d8af60": 763
+    },
+    {
+      "candidate": 249,
+      "key": "cooper-simpson",
+      "released_6f07f7cb": 249,
+      "strict_06d8af60": 252
+    },
+    {
+      "candidate": 2046,
+      "key": "cooper-trembath",
+      "released_6f07f7cb": 2046,
+      "strict_06d8af60": 1536
+    },
+    {
+      "candidate": 58,
+      "key": "corey-durdin",
+      "released_6f07f7cb": 58,
+      "strict_06d8af60": 55
+    },
+    {
+      "candidate": 43,
+      "key": "corey-wagner",
+      "released_6f07f7cb": 43,
+      "strict_06d8af60": 42
+    },
+    {
+      "candidate": 74,
+      "key": "corey-warner",
+      "released_6f07f7cb": 74,
+      "strict_06d8af60": 79
+    },
+    {
+      "candidate": 1328,
+      "key": "dan-houston",
+      "released_6f07f7cb": 1328,
+      "strict_06d8af60": 1239
+    },
+    {
+      "candidate": 4,
+      "key": "dane-rampe",
+      "released_6f07f7cb": 4,
+      "strict_06d8af60": 12
+    },
+    {
+      "candidate": 1869,
+      "key": "daniel-annable",
+      "released_6f07f7cb": 1869,
+      "strict_06d8af60": 2058
+    },
+    {
+      "candidate": 20,
+      "key": "daniel-butler",
+      "released_6f07f7cb": 20,
+      "strict_06d8af60": 20
+    },
+    {
+      "candidate": 2367,
+      "key": "daniel-curtin",
+      "released_6f07f7cb": 2367,
+      "strict_06d8af60": 2501
+    },
+    {
+      "candidate": 111,
+      "key": "daniel-mcstay",
+      "released_6f07f7cb": 111,
+      "strict_06d8af60": 63
+    },
+    {
+      "candidate": 760,
+      "key": "daniel-rioli",
+      "released_6f07f7cb": 760,
+      "strict_06d8af60": 784
+    },
+    {
+      "candidate": 1736,
+      "key": "daniel-turner",
+      "released_6f07f7cb": 1736,
+      "strict_06d8af60": 1585
+    },
+    {
+      "candidate": 1011,
+      "key": "dante-visentini",
+      "released_6f07f7cb": 1011,
+      "strict_06d8af60": 914
+    },
+    {
+      "candidate": 465,
+      "key": "darcy-byrne-jones",
+      "released_6f07f7cb": 465,
+      "strict_06d8af60": 346
+    },
+    {
+      "candidate": 1275,
+      "key": "darcy-cameron",
+      "released_6f07f7cb": 1275,
+      "strict_06d8af60": 1561
+    },
+    {
+      "candidate": 1007,
+      "key": "darcy-fogarty",
+      "released_6f07f7cb": 1007,
+      "strict_06d8af60": 398
+    },
+    {
+      "candidate": 59,
+      "key": "darcy-fort",
+      "released_6f07f7cb": 59,
+      "strict_06d8af60": 81
+    },
+    {
+      "candidate": 45,
+      "key": "darcy-gardiner",
+      "released_6f07f7cb": 45,
+      "strict_06d8af60": 45
+    },
+    {
+      "candidate": 1496,
+      "key": "darcy-jones",
+      "released_6f07f7cb": 1496,
+      "strict_06d8af60": 1628
+    },
+    {
+      "candidate": 234,
+      "key": "darcy-moore",
+      "released_6f07f7cb": 234,
+      "strict_06d8af60": 257
+    },
+    {
+      "candidate": 707,
+      "key": "darcy-parish",
+      "released_6f07f7cb": 707,
+      "strict_06d8af60": 1460
+    },
+    {
+      "candidate": 3803,
+      "key": "darcy-wilmot",
+      "released_6f07f7cb": 3803,
+      "strict_06d8af60": 3869
+    },
+    {
+      "candidate": 2960,
+      "key": "darcy-wilson",
+      "released_6f07f7cb": 2960,
+      "strict_06d8af60": 2366
+    },
+    {
+      "candidate": 11,
+      "key": "darragh-joyce",
+      "released_6f07f7cb": 11,
+      "strict_06d8af60": 10
+    },
+    {
+      "candidate": 1159,
+      "key": "dayne-zorko",
+      "released_6f07f7cb": 1159,
+      "strict_06d8af60": 1248
+    },
+    {
+      "candidate": 202,
+      "key": "deven-robertson",
+      "released_6f07f7cb": 202,
+      "strict_06d8af60": 251
+    },
+    {
+      "candidate": 164,
+      "key": "dion-prestia",
+      "released_6f07f7cb": 164,
+      "strict_06d8af60": 472
+    },
+    {
+      "candidate": 87,
+      "key": "dougal-howard",
+      "released_6f07f7cb": 87,
+      "strict_06d8af60": 91
+    },
+    {
+      "candidate": 1399,
+      "key": "dylan-moore",
+      "released_6f07f7cb": 1399,
+      "strict_06d8af60": 1572
+    },
+    {
+      "candidate": 1076,
+      "key": "dylan-patterson",
+      "released_6f07f7cb": 1076,
+      "strict_06d8af60": 987
+    },
+    {
+      "candidate": 460,
+      "key": "dylan-stephens",
+      "released_6f07f7cb": 460,
+      "strict_06d8af60": 483
+    },
+    {
+      "candidate": 2034,
+      "key": "dyson-sharp",
+      "released_6f07f7cb": 2034,
+      "strict_06d8af60": 1708
+    },
+    {
+      "candidate": 152,
+      "key": "eamonn-armstrong",
+      "released_6f07f7cb": 152,
+      "strict_06d8af60": 165
+    },
+    {
+      "candidate": 614,
+      "key": "ed-langdon",
+      "released_6f07f7cb": 614,
+      "strict_06d8af60": 677
+    },
+    {
+      "candidate": 3512,
+      "key": "ed-richards",
+      "released_6f07f7cb": 3512,
+      "strict_06d8af60": 3431
+    },
+    {
+      "candidate": 849,
+      "key": "edward-allan",
+      "released_6f07f7cb": 849,
+      "strict_06d8af60": 562
+    },
+    {
+      "candidate": 784,
+      "key": "elijah-hewett",
+      "released_6f07f7cb": 784,
+      "strict_06d8af60": 841
+    },
+    {
+      "candidate": 842,
+      "key": "elijah-hollands",
+      "released_6f07f7cb": 842,
+      "strict_06d8af60": 872
+    },
+    {
+      "candidate": 1330,
+      "key": "elijah-tsatas",
+      "released_6f07f7cb": 1330,
+      "strict_06d8af60": 1402
+    },
+    {
+      "candidate": 92,
+      "key": "elliot-himmelberg",
+      "released_6f07f7cb": 92,
+      "strict_06d8af60": 121
+    },
+    {
+      "candidate": 112,
+      "key": "elliot-yeo",
+      "released_6f07f7cb": 112,
+      "strict_06d8af60": 703
+    },
+    {
+      "candidate": 61,
+      "key": "eric-hipwood",
+      "released_6f07f7cb": 61,
+      "strict_06d8af60": 89
+    },
+    {
+      "candidate": 5097,
+      "key": "errol-gulden",
+      "released_6f07f7cb": 5097,
+      "strict_06d8af60": 5857
+    },
+    {
+      "candidate": 127,
+      "key": "esava-ratugolea",
+      "released_6f07f7cb": 127,
+      "strict_06d8af60": 96
+    },
+    {
+      "candidate": 1039,
+      "key": "ethan-read",
+      "released_6f07f7cb": 1039,
+      "strict_06d8af60": 1365
+    },
+    {
+      "candidate": 46,
+      "key": "ewan-mackinlay",
+      "released_6f07f7cb": 46,
+      "strict_06d8af60": 59
+    },
+    {
+      "candidate": 109,
+      "key": "finlay-macrae",
+      "released_6f07f7cb": 109,
+      "strict_06d8af60": 109
+    },
+    {
+      "candidate": 5353,
+      "key": "finn-callaghan",
+      "released_6f07f7cb": 5353,
+      "strict_06d8af60": 5491
+    },
+    {
+      "candidate": 35,
+      "key": "finn-maginness",
+      "released_6f07f7cb": 35,
+      "strict_06d8af60": 35
+    },
+    {
+      "candidate": 3330,
+      "key": "finn-o-sullivan",
+      "released_6f07f7cb": 3330,
+      "strict_06d8af60": 3390
+    },
+    {
+      "candidate": 197,
+      "key": "finnbar-maley",
+      "released_6f07f7cb": 197,
+      "strict_06d8af60": 259
+    },
+    {
+      "candidate": 396,
+      "key": "finnegan-davis",
+      "released_6f07f7cb": 396,
+      "strict_06d8af60": 464
+    },
+    {
+      "candidate": 12,
+      "key": "flynn-perez",
+      "released_6f07f7cb": 12,
+      "strict_06d8af60": 13
+    },
+    {
+      "candidate": 610,
+      "key": "flynn-riley",
+      "released_6f07f7cb": 610,
+      "strict_06d8af60": 620
+    },
+    {
+      "candidate": 10,
+      "key": "flynn-young",
+      "released_6f07f7cb": 10,
+      "strict_06d8af60": 12
+    },
+    {
+      "candidate": 272,
+      "key": "francis-evans",
+      "released_6f07f7cb": 272,
+      "strict_06d8af60": 166
+    },
+    {
+      "candidate": 424,
+      "key": "fred-rodriguez",
+      "released_6f07f7cb": 424,
+      "strict_06d8af60": 494
+    },
+    {
+      "candidate": 1827,
+      "key": "george-hewett",
+      "released_6f07f7cb": 1827,
+      "strict_06d8af60": 1541
+    },
+    {
+      "candidate": 415,
+      "key": "george-stevens",
+      "released_6f07f7cb": 415,
+      "strict_06d8af60": 353
+    },
+    {
+      "candidate": 3123,
+      "key": "george-wardlaw",
+      "released_6f07f7cb": 3123,
+      "strict_06d8af60": 3104
+    },
+    {
+      "candidate": 131,
+      "key": "griffin-logue",
+      "released_6f07f7cb": 131,
+      "strict_06d8af60": 131
+    },
+    {
+      "candidate": 1961,
+      "key": "gryan-miers",
+      "released_6f07f7cb": 1961,
+      "strict_06d8af60": 1893
+    },
+    {
+      "candidate": 938,
+      "key": "hamish-davis",
+      "released_6f07f7cb": 938,
+      "strict_06d8af60": 923
+    },
+    {
+      "candidate": 753,
+      "key": "harley-barker",
+      "released_6f07f7cb": 753,
+      "strict_06d8af60": 753
+    },
+    {
+      "candidate": 3531,
+      "key": "harley-reid",
+      "released_6f07f7cb": 3531,
+      "strict_06d8af60": 3348
+    },
+    {
+      "candidate": 1871,
+      "key": "harris-andrews",
+      "released_6f07f7cb": 1871,
+      "strict_06d8af60": 1730
+    },
+    {
+      "candidate": 239,
+      "key": "harrison-coe",
+      "released_6f07f7cb": 239,
+      "strict_06d8af60": 254
+    },
+    {
+      "candidate": 547,
+      "key": "harrison-himmelberg",
+      "released_6f07f7cb": 547,
+      "strict_06d8af60": 443
+    },
+    {
+      "candidate": 203,
+      "key": "harrison-jones",
+      "released_6f07f7cb": 203,
+      "strict_06d8af60": 338
+    },
+    {
+      "candidate": 658,
+      "key": "harrison-oliver",
+      "released_6f07f7cb": 658,
+      "strict_06d8af60": 610
+    },
+    {
+      "candidate": 146,
+      "key": "harrison-petty",
+      "released_6f07f7cb": 146,
+      "strict_06d8af60": 155
+    },
+    {
+      "candidate": 332,
+      "key": "harrison-ramm",
+      "released_6f07f7cb": 332,
+      "strict_06d8af60": 322
+    },
+    {
+      "candidate": 880,
+      "key": "harry-armstrong",
+      "released_6f07f7cb": 880,
+      "strict_06d8af60": 877
+    },
+    {
+      "candidate": 615,
+      "key": "harry-barnett",
+      "released_6f07f7cb": 615,
+      "strict_06d8af60": 625
+    },
+    {
+      "candidate": 247,
+      "key": "harry-charleson",
+      "released_6f07f7cb": 247,
+      "strict_06d8af60": 269
+    },
+    {
+      "candidate": 1,
+      "key": "harry-cunningham",
+      "released_6f07f7cb": 1,
+      "strict_06d8af60": 3
+    },
+    {
+      "candidate": 2548,
+      "key": "harry-dean",
+      "released_6f07f7cb": 2548,
+      "strict_06d8af60": 2052
+    },
+    {
+      "candidate": 486,
+      "key": "harry-demattia",
+      "released_6f07f7cb": 486,
+      "strict_06d8af60": 488
+    },
+    {
+      "candidate": 146,
+      "key": "harry-edwards",
+      "released_6f07f7cb": 146,
+      "strict_06d8af60": 175
+    },
+    {
+      "candidate": 971,
+      "key": "harry-kyle",
+      "released_6f07f7cb": 971,
+      "strict_06d8af60": 924
+    },
+    {
+      "candidate": 1815,
+      "key": "harry-mckay",
+      "released_6f07f7cb": 1815,
+      "strict_06d8af60": 1853
+    },
+    {
+      "candidate": 45,
+      "key": "harry-morrison",
+      "released_6f07f7cb": 45,
+      "strict_06d8af60": 50
+    },
+    {
+      "candidate": 912,
+      "key": "harry-o-farrell",
+      "released_6f07f7cb": 912,
+      "strict_06d8af60": 861
+    },
+    {
+      "candidate": 130,
+      "key": "harry-perryman",
+      "released_6f07f7cb": 130,
+      "strict_06d8af60": 175
+    },
+    {
+      "candidate": 587,
+      "key": "harry-rowston",
+      "released_6f07f7cb": 587,
+      "strict_06d8af60": 614
+    },
+    {
+      "candidate": 56,
+      "key": "harry-schoenberg",
+      "released_6f07f7cb": 56,
+      "strict_06d8af60": 56
+    },
+    {
+      "candidate": 81,
+      "key": "harry-sharp",
+      "released_6f07f7cb": 81,
+      "strict_06d8af60": 105
+    },
+    {
+      "candidate": 9542,
+      "key": "harry-sheezel",
+      "released_6f07f7cb": 9542,
+      "strict_06d8af60": 7964
+    },
+    {
+      "candidate": 135,
+      "key": "harvey-gallagher",
+      "released_6f07f7cb": 135,
+      "strict_06d8af60": 135
+    },
+    {
+      "candidate": 60,
+      "key": "harvey-harrison",
+      "released_6f07f7cb": 60,
+      "strict_06d8af60": 60
+    },
+    {
+      "candidate": 268,
+      "key": "harvey-johnston",
+      "released_6f07f7cb": 268,
+      "strict_06d8af60": 282
+    },
+    {
+      "candidate": 2450,
+      "key": "harvey-langford",
+      "released_6f07f7cb": 2450,
+      "strict_06d8af60": 2487
+    },
+    {
+      "candidate": 2206,
+      "key": "harvey-thomas",
+      "released_6f07f7cb": 2206,
+      "strict_06d8af60": 2524
+    },
+    {
+      "candidate": 386,
+      "key": "hayden-mclean",
+      "released_6f07f7cb": 386,
+      "strict_06d8af60": 586
+    },
+    {
+      "candidate": 2056,
+      "key": "hayden-young",
+      "released_6f07f7cb": 2056,
+      "strict_06d8af60": 2732
+    },
+    {
+      "candidate": 546,
+      "key": "heath-chapman",
+      "released_6f07f7cb": 546,
+      "strict_06d8af60": 607
+    },
+    {
+      "candidate": 299,
+      "key": "henry-hustwaite",
+      "released_6f07f7cb": 299,
+      "strict_06d8af60": 342
+    },
+    {
+      "candidate": 157,
+      "key": "henry-smith",
+      "released_6f07f7cb": 157,
+      "strict_06d8af60": 157
+    },
+    {
+      "candidate": 258,
+      "key": "hudson-o-keeffe",
+      "released_6f07f7cb": 258,
+      "strict_06d8af60": 378
+    },
+    {
+      "candidate": 198,
+      "key": "hugh-bond",
+      "released_6f07f7cb": 198,
+      "strict_06d8af60": 222
+    },
+    {
+      "candidate": 941,
+      "key": "hugh-boxshall",
+      "released_6f07f7cb": 941,
+      "strict_06d8af60": 905
+    },
+    {
+      "candidate": 300,
+      "key": "hugh-davies",
+      "released_6f07f7cb": 300,
+      "strict_06d8af60": 305
+    },
+    {
+      "candidate": 1575,
+      "key": "hugh-mccluggage",
+      "released_6f07f7cb": 1575,
+      "strict_06d8af60": 1903
+    },
+    {
+      "candidate": 2951,
+      "key": "hugo-garcia",
+      "released_6f07f7cb": 2951,
+      "strict_06d8af60": 2641
+    },
+    {
+      "candidate": 387,
+      "key": "hugo-hall-kahan",
+      "released_6f07f7cb": 387,
+      "strict_06d8af60": 107
+    },
+    {
+      "candidate": 336,
+      "key": "hugo-mikunda",
+      "released_6f07f7cb": 336,
+      "strict_06d8af60": 392
+    },
+    {
+      "candidate": 47,
+      "key": "hugo-ralphsmith",
+      "released_6f07f7cb": 47,
+      "strict_06d8af60": 59
+    },
+    {
+      "candidate": 55,
+      "key": "hunter-clark",
+      "released_6f07f7cb": 55,
+      "strict_06d8af60": 55
+    },
+    {
+      "candidate": 647,
+      "key": "hunter-holmes",
+      "released_6f07f7cb": 647,
+      "strict_06d8af60": 732
+    },
+    {
+      "candidate": 394,
+      "key": "hussien-el-achkar",
+      "released_6f07f7cb": 394,
+      "strict_06d8af60": 481
+    },
+    {
+      "candidate": 310,
+      "key": "iliro-smit",
+      "released_6f07f7cb": 310,
+      "strict_06d8af60": 308
+    },
+    {
+      "candidate": 238,
+      "key": "indy-cotton",
+      "released_6f07f7cb": 238,
+      "strict_06d8af60": 277
+    },
+    {
+      "candidate": 61,
+      "key": "isaac-cumming",
+      "released_6f07f7cb": 61,
+      "strict_06d8af60": 70
+    },
+    {
+      "candidate": 3783,
+      "key": "isaac-heeney",
+      "released_6f07f7cb": 3783,
+      "strict_06d8af60": 4242
+    },
+    {
+      "candidate": 1079,
+      "key": "isaac-kako",
+      "released_6f07f7cb": 1079,
+      "strict_06d8af60": 1438
+    },
+    {
+      "candidate": 337,
+      "key": "isaac-keeler",
+      "released_6f07f7cb": 337,
+      "strict_06d8af60": 425
+    },
+    {
+      "candidate": 506,
+      "key": "isaac-quaynor",
+      "released_6f07f7cb": 506,
+      "strict_06d8af60": 579
+    },
+    {
+      "candidate": 86,
+      "key": "isaiah-dudley",
+      "released_6f07f7cb": 86,
+      "strict_06d8af60": 84
+    },
+    {
+      "candidate": 2940,
+      "key": "izak-rankine",
+      "released_6f07f7cb": 2940,
+      "strict_06d8af60": 3011
+    },
+    {
+      "candidate": 107,
+      "key": "jack-bowes",
+      "released_6f07f7cb": 107,
+      "strict_06d8af60": 123
+    },
+    {
+      "candidate": 725,
+      "key": "jack-buckley",
+      "released_6f07f7cb": 725,
+      "strict_06d8af60": 737
+    },
+    {
+      "candidate": 63,
+      "key": "jack-buller",
+      "released_6f07f7cb": 63,
+      "strict_06d8af60": 77
+    },
+    {
+      "candidate": 95,
+      "key": "jack-carroll",
+      "released_6f07f7cb": 95,
+      "strict_06d8af60": 95
+    },
+    {
+      "candidate": 615,
+      "key": "jack-crisp",
+      "released_6f07f7cb": 615,
+      "strict_06d8af60": 671
+    },
+    {
+      "candidate": 618,
+      "key": "jack-dalton",
+      "released_6f07f7cb": 618,
+      "strict_06d8af60": 576
+    },
+    {
+      "candidate": 195,
+      "key": "jack-darling",
+      "released_6f07f7cb": 195,
+      "strict_06d8af60": 367
+    },
+    {
+      "candidate": 2303,
+      "key": "jack-ginnivan",
+      "released_6f07f7cb": 2303,
+      "strict_06d8af60": 2064
+    },
+    {
+      "candidate": 386,
+      "key": "jack-graham",
+      "released_6f07f7cb": 386,
+      "strict_06d8af60": 572
+    },
+    {
+      "candidate": 970,
+      "key": "jack-gunston",
+      "released_6f07f7cb": 970,
+      "strict_06d8af60": 1284
+    },
+    {
+      "candidate": 4,
+      "key": "jack-henderson",
+      "released_6f07f7cb": 4,
+      "strict_06d8af60": 4
+    },
+    {
+      "candidate": 211,
+      "key": "jack-henry",
+      "released_6f07f7cb": 211,
+      "strict_06d8af60": 243
+    },
+    {
+      "candidate": 106,
+      "key": "jack-higgins",
+      "released_6f07f7cb": 106,
+      "strict_06d8af60": 186
+    },
+    {
+      "candidate": 40,
+      "key": "jack-hutchinson",
+      "released_6f07f7cb": 40,
+      "strict_06d8af60": 72
+    },
+    {
+      "candidate": 598,
+      "key": "jack-ison",
+      "released_6f07f7cb": 598,
+      "strict_06d8af60": 492
+    },
+    {
+      "candidate": 928,
+      "key": "jack-lukosius",
+      "released_6f07f7cb": 928,
+      "strict_06d8af60": 1467
+    },
+    {
+      "candidate": 96,
+      "key": "jack-martin",
+      "released_6f07f7cb": 96,
+      "strict_06d8af60": 96
+    },
+    {
+      "candidate": 615,
+      "key": "jack-ough",
+      "released_6f07f7cb": 615,
+      "strict_06d8af60": 427
+    },
+    {
+      "candidate": 176,
+      "key": "jack-payne",
+      "released_6f07f7cb": 176,
+      "strict_06d8af60": 219
+    },
+    {
+      "candidate": 2194,
+      "key": "jack-ross",
+      "released_6f07f7cb": 2194,
+      "strict_06d8af60": 2169
+    },
+    {
+      "candidate": 159,
+      "key": "jack-scrimshaw",
+      "released_6f07f7cb": 159,
+      "strict_06d8af60": 175
+    },
+    {
+      "candidate": 757,
+      "key": "jack-silvagni",
+      "released_6f07f7cb": 757,
+      "strict_06d8af60": 677
+    },
+    {
+      "candidate": 3322,
+      "key": "jack-sinclair",
+      "released_6f07f7cb": 3322,
+      "strict_06d8af60": 3306
+    },
+    {
+      "candidate": 1648,
+      "key": "jack-steele",
+      "released_6f07f7cb": 1648,
+      "strict_06d8af60": 1693
+    },
+    {
+      "candidate": 368,
+      "key": "jack-viney",
+      "released_6f07f7cb": 368,
+      "strict_06d8af60": 427
+    },
+    {
+      "candidate": 0,
+      "key": "jack-watkins",
+      "released_6f07f7cb": 0,
+      "strict_06d8af60": 2
+    },
+    {
+      "candidate": 1303,
+      "key": "jack-whitlock",
+      "released_6f07f7cb": 1303,
+      "strict_06d8af60": 1268
+    },
+    {
+      "candidate": 507,
+      "key": "jack-williams",
+      "released_6f07f7cb": 507,
+      "strict_06d8af60": 561
+    },
+    {
+      "candidate": 75,
+      "key": "jackson-archer",
+      "released_6f07f7cb": 75,
+      "strict_06d8af60": 75
+    },
+    {
+      "candidate": 139,
+      "key": "jackson-macrae",
+      "released_6f07f7cb": 139,
+      "strict_06d8af60": 258
+    },
+    {
+      "candidate": 38,
+      "key": "jackson-mead",
+      "released_6f07f7cb": 38,
+      "strict_06d8af60": 53
+    },
+    {
+      "candidate": 2545,
+      "key": "jacob-farrow",
+      "released_6f07f7cb": 2545,
+      "strict_06d8af60": 2245
+    },
+    {
+      "candidate": 124,
+      "key": "jacob-hopper",
+      "released_6f07f7cb": 124,
+      "strict_06d8af60": 124
+    },
+    {
+      "candidate": 200,
+      "key": "jacob-konstanty",
+      "released_6f07f7cb": 200,
+      "strict_06d8af60": 237
+    },
+    {
+      "candidate": 460,
+      "key": "jacob-molier",
+      "released_6f07f7cb": 460,
+      "strict_06d8af60": 494
+    },
+    {
+      "candidate": 248,
+      "key": "jacob-moss",
+      "released_6f07f7cb": 248,
+      "strict_06d8af60": 278
+    },
+    {
+      "candidate": 150,
+      "key": "jacob-newton",
+      "released_6f07f7cb": 150,
+      "strict_06d8af60": 149
+    },
+    {
+      "candidate": 1978,
+      "key": "jacob-van-rooyen",
+      "released_6f07f7cb": 1978,
+      "strict_06d8af60": 1057
+    },
+    {
+      "candidate": 21,
+      "key": "jacob-wehr",
+      "released_6f07f7cb": 21,
+      "strict_06d8af60": 21
+    },
+    {
+      "candidate": 1200,
+      "key": "jacob-weitering",
+      "released_6f07f7cb": 1200,
+      "strict_06d8af60": 1270
+    },
+    {
+      "candidate": 50,
+      "key": "jade-gresham",
+      "released_6f07f7cb": 50,
+      "strict_06d8af60": 50
+    },
+    {
+      "candidate": 194,
+      "key": "jaeger-o-meara",
+      "released_6f07f7cb": 194,
+      "strict_06d8af60": 194
+    },
+    {
+      "candidate": 4164,
+      "key": "jagga-smith",
+      "released_6f07f7cb": 4164,
+      "strict_06d8af60": 3512
+    },
+    {
+      "candidate": 262,
+      "key": "jai-culley",
+      "released_6f07f7cb": 262,
+      "strict_06d8af60": 78
+    },
+    {
+      "candidate": 1250,
+      "key": "jai-murray",
+      "released_6f07f7cb": 1250,
+      "strict_06d8af60": 1184
+    },
+    {
+      "candidate": 4215,
+      "key": "jai-newcombe",
+      "released_6f07f7cb": 4215,
+      "strict_06d8af60": 4125
+    },
+    {
+      "candidate": 197,
+      "key": "jai-saxena",
+      "released_6f07f7cb": 197,
+      "strict_06d8af60": 229
+    },
+    {
+      "candidate": 894,
+      "key": "jai-serong",
+      "released_6f07f7cb": 894,
+      "strict_06d8af60": 116
+    },
+    {
+      "candidate": 446,
+      "key": "jaime-uhr-henry",
+      "released_6f07f7cb": 446,
+      "strict_06d8af60": 480
+    },
+    {
+      "candidate": 3901,
+      "key": "jake-bowey",
+      "released_6f07f7cb": 3901,
+      "strict_06d8af60": 3347
+    },
+    {
+      "candidate": 37,
+      "key": "jake-kolodjashnij",
+      "released_6f07f7cb": 37,
+      "strict_06d8af60": 37
+    },
+    {
+      "candidate": 681,
+      "key": "jake-lever",
+      "released_6f07f7cb": 681,
+      "strict_06d8af60": 577
+    },
+    {
+      "candidate": 73,
+      "key": "jake-lloyd",
+      "released_6f07f7cb": 73,
+      "strict_06d8af60": 104
+    },
+    {
+      "candidate": 49,
+      "key": "jake-melksham",
+      "released_6f07f7cb": 49,
+      "strict_06d8af60": 49
+    },
+    {
+      "candidate": 388,
+      "key": "jake-riccardi",
+      "released_6f07f7cb": 388,
+      "strict_06d8af60": 403
+    },
+    {
+      "candidate": 587,
+      "key": "jake-rogers",
+      "released_6f07f7cb": 587,
+      "strict_06d8af60": 614
+    },
+    {
+      "candidate": 2071,
+      "key": "jake-soligo",
+      "released_6f07f7cb": 2071,
+      "strict_06d8af60": 2442
+    },
+    {
+      "candidate": 135,
+      "key": "jake-stringer",
+      "released_6f07f7cb": 135,
+      "strict_06d8af60": 127
+    },
+    {
+      "candidate": 1619,
+      "key": "jake-waterman",
+      "released_6f07f7cb": 1619,
+      "strict_06d8af60": 1850
+    },
+    {
+      "candidate": 279,
+      "key": "jakob-ryan",
+      "released_6f07f7cb": 279,
+      "strict_06d8af60": 280
+    },
+    {
+      "candidate": 361,
+      "key": "jamarra-ugle-hagan",
+      "released_6f07f7cb": 361,
+      "strict_06d8af60": 420
+    },
+    {
+      "candidate": 381,
+      "key": "james-barrat",
+      "released_6f07f7cb": 381,
+      "strict_06d8af60": 423
+    },
+    {
+      "candidate": 28,
+      "key": "james-blanck",
+      "released_6f07f7cb": 28,
+      "strict_06d8af60": 33
+    },
+    {
+      "candidate": 525,
+      "key": "james-borlase",
+      "released_6f07f7cb": 525,
+      "strict_06d8af60": 457
+    },
+    {
+      "candidate": 170,
+      "key": "james-jordon",
+      "released_6f07f7cb": 170,
+      "strict_06d8af60": 182
+    },
+    {
+      "candidate": 544,
+      "key": "james-leake",
+      "released_6f07f7cb": 544,
+      "strict_06d8af60": 345
+    },
+    {
+      "candidate": 605,
+      "key": "james-o-donnell",
+      "released_6f07f7cb": 605,
+      "strict_06d8af60": 592
+    },
+    {
+      "candidate": 1451,
+      "key": "james-peatling",
+      "released_6f07f7cb": 1451,
+      "strict_06d8af60": 1378
+    },
+    {
+      "candidate": 820,
+      "key": "james-rowbottom",
+      "released_6f07f7cb": 820,
+      "strict_06d8af60": 930
+    },
+    {
+      "candidate": 1763,
+      "key": "james-sicily",
+      "released_6f07f7cb": 1763,
+      "strict_06d8af60": 1995
+    },
+    {
+      "candidate": 163,
+      "key": "james-trezise",
+      "released_6f07f7cb": 163,
+      "strict_06d8af60": 181
+    },
+    {
+      "candidate": 96,
+      "key": "james-tunstill",
+      "released_6f07f7cb": 96,
+      "strict_06d8af60": 108
+    },
+    {
+      "candidate": 553,
+      "key": "james-worpel",
+      "released_6f07f7cb": 553,
+      "strict_06d8af60": 519
+    },
+    {
+      "candidate": 34,
+      "key": "jamie-cripps",
+      "released_6f07f7cb": 34,
+      "strict_06d8af60": 34
+    },
+    {
+      "candidate": 32,
+      "key": "jamie-elliott",
+      "released_6f07f7cb": 32,
+      "strict_06d8af60": 32
+    },
+    {
+      "candidate": 223,
+      "key": "jaren-carr",
+      "released_6f07f7cb": 223,
+      "strict_06d8af60": 245
+    },
+    {
+      "candidate": 869,
+      "key": "jarman-impey",
+      "released_6f07f7cb": 869,
+      "strict_06d8af60": 690
+    },
+    {
+      "candidate": 316,
+      "key": "jarrod-berry",
+      "released_6f07f7cb": 316,
+      "strict_06d8af60": 559
+    },
+    {
+      "candidate": 218,
+      "key": "jarrod-witts",
+      "released_6f07f7cb": 218,
+      "strict_06d8af60": 466
+    },
+    {
+      "candidate": 2280,
+      "key": "jase-burgoyne",
+      "released_6f07f7cb": 2280,
+      "strict_06d8af60": 2086
+    },
+    {
+      "candidate": 4884,
+      "key": "jason-horne-francis",
+      "released_6f07f7cb": 4884,
+      "strict_06d8af60": 4127
+    },
+    {
+      "candidate": 2314,
+      "key": "jaspa-fletcher",
+      "released_6f07f7cb": 2314,
+      "strict_06d8af60": 2093
+    },
+    {
+      "candidate": 313,
+      "key": "jasper-alger",
+      "released_6f07f7cb": 313,
+      "strict_06d8af60": 330
+    },
+    {
+      "candidate": 331,
+      "key": "jaxon-artemis",
+      "released_6f07f7cb": 331,
+      "strict_06d8af60": 380
+    },
+    {
+      "candidate": 372,
+      "key": "jaxon-prior",
+      "released_6f07f7cb": 372,
+      "strict_06d8af60": 497
+    },
+    {
+      "candidate": 281,
+      "key": "jay-polkinghorne",
+      "released_6f07f7cb": 281,
+      "strict_06d8af60": 261
+    },
+    {
+      "candidate": 302,
+      "key": "jayden-laverde",
+      "released_6f07f7cb": 302,
+      "strict_06d8af60": 528
+    },
+    {
+      "candidate": 508,
+      "key": "jayden-nguyen",
+      "released_6f07f7cb": 508,
+      "strict_06d8af60": 471
+    },
+    {
+      "candidate": 1269,
+      "key": "jayden-short",
+      "released_6f07f7cb": 1269,
+      "strict_06d8af60": 1603
+    },
+    {
+      "candidate": 262,
+      "key": "jed-adams",
+      "released_6f07f7cb": 262,
+      "strict_06d8af60": 273
+    },
+    {
+      "candidate": 26,
+      "key": "jed-bews",
+      "released_6f07f7cb": 26,
+      "strict_06d8af60": 26
+    },
+    {
+      "candidate": 1167,
+      "key": "jed-walter",
+      "released_6f07f7cb": 1167,
+      "strict_06d8af60": 1321
+    },
+    {
+      "candidate": 954,
+      "key": "jedd-busslinger",
+      "released_6f07f7cb": 954,
+      "strict_06d8af60": 742
+    },
+    {
+      "candidate": 993,
+      "key": "jeremy-cameron",
+      "released_6f07f7cb": 993,
+      "strict_06d8af60": 1591
+    },
+    {
+      "candidate": 359,
+      "key": "jeremy-howe",
+      "released_6f07f7cb": 359,
+      "strict_06d8af60": 308
+    },
+    {
+      "candidate": 84,
+      "key": "jeremy-sharp",
+      "released_6f07f7cb": 84,
+      "strict_06d8af60": 117
+    },
+    {
+      "candidate": 435,
+      "key": "jesse-dattoli",
+      "released_6f07f7cb": 435,
+      "strict_06d8af60": 483
+    },
+    {
+      "candidate": 319,
+      "key": "jesse-hogan",
+      "released_6f07f7cb": 319,
+      "strict_06d8af60": 464
+    },
+    {
+      "candidate": 261,
+      "key": "jesse-mellor",
+      "released_6f07f7cb": 261,
+      "strict_06d8af60": 304
+    },
+    {
+      "candidate": 114,
+      "key": "jesse-motlop",
+      "released_6f07f7cb": 114,
+      "strict_06d8af60": 144
+    },
+    {
+      "candidate": 464,
+      "key": "jevan-phillipou",
+      "released_6f07f7cb": 464,
+      "strict_06d8af60": 526
+    },
+    {
+      "candidate": 676,
+      "key": "jhye-clark",
+      "released_6f07f7cb": 676,
+      "strict_06d8af60": 613
+    },
+    {
+      "candidate": 1848,
+      "key": "jobe-shanahan",
+      "released_6f07f7cb": 1848,
+      "strict_06d8af60": 1588
+    },
+    {
+      "candidate": 1038,
+      "key": "joe-berry",
+      "released_6f07f7cb": 1038,
+      "strict_06d8af60": 1161
+    },
+    {
+      "candidate": 446,
+      "key": "joe-pike",
+      "released_6f07f7cb": 446,
+      "strict_06d8af60": 480
+    },
+    {
+      "candidate": 1088,
+      "key": "joe-richards",
+      "released_6f07f7cb": 1088,
+      "strict_06d8af60": 857
+    },
+    {
+      "candidate": 48,
+      "key": "joel-amartey",
+      "released_6f07f7cb": 48,
+      "strict_06d8af60": 136
+    },
+    {
+      "candidate": 330,
+      "key": "joel-cochran",
+      "released_6f07f7cb": 330,
+      "strict_06d8af60": 372
+    },
+    {
+      "candidate": 95,
+      "key": "joel-fitzgerald",
+      "released_6f07f7cb": 95,
+      "strict_06d8af60": 110
+    },
+    {
+      "candidate": 2497,
+      "key": "joel-freijah",
+      "released_6f07f7cb": 2497,
+      "strict_06d8af60": 2923
+    },
+    {
+      "candidate": 36,
+      "key": "joel-hamling",
+      "released_6f07f7cb": 36,
+      "strict_06d8af60": 36
+    },
+    {
+      "candidate": 1989,
+      "key": "joel-jeffrey",
+      "released_6f07f7cb": 1989,
+      "strict_06d8af60": 1949
+    },
+    {
+      "candidate": 2427,
+      "key": "john-noble",
+      "released_6f07f7cb": 2427,
+      "strict_06d8af60": 2646
+    },
+    {
+      "candidate": 1096,
+      "key": "jonty-faull",
+      "released_6f07f7cb": 1096,
+      "strict_06d8af60": 1090
+    },
+    {
+      "candidate": 8,
+      "key": "jordan-boyd",
+      "released_6f07f7cb": 8,
+      "strict_06d8af60": 9
+    },
+    {
+      "candidate": 3807,
+      "key": "jordan-clark",
+      "released_6f07f7cb": 3807,
+      "strict_06d8af60": 3740
+    },
+    {
+      "candidate": 1002,
+      "key": "jordan-croft",
+      "released_6f07f7cb": 1002,
+      "strict_06d8af60": 1081
+    },
+    {
+      "candidate": 3589,
+      "key": "jordan-dawson",
+      "released_6f07f7cb": 3589,
+      "strict_06d8af60": 3713
+    },
+    {
+      "candidate": 1774,
+      "key": "jordan-de-goey",
+      "released_6f07f7cb": 1774,
+      "strict_06d8af60": 1510
+    },
+    {
+      "candidate": 880,
+      "key": "jordan-ridley",
+      "released_6f07f7cb": 880,
+      "strict_06d8af60": 1190
+    },
+    {
+      "candidate": 12,
+      "key": "jordon-butts",
+      "released_6f07f7cb": 12,
+      "strict_06d8af60": 13
+    },
+    {
+      "candidate": 2696,
+      "key": "jordon-sweet",
+      "released_6f07f7cb": 2696,
+      "strict_06d8af60": 2484
+    },
+    {
+      "candidate": 324,
+      "key": "josaia-delana",
+      "released_6f07f7cb": 324,
+      "strict_06d8af60": 203
+    },
+    {
+      "candidate": 832,
+      "key": "joseph-fonti",
+      "released_6f07f7cb": 832,
+      "strict_06d8af60": 781
+    },
+    {
+      "candidate": 2241,
+      "key": "josh-battle",
+      "released_6f07f7cb": 2241,
+      "strict_06d8af60": 2416
+    },
+    {
+      "candidate": 2182,
+      "key": "josh-daicos",
+      "released_6f07f7cb": 2182,
+      "strict_06d8af60": 2145
+    },
+    {
+      "candidate": 364,
+      "key": "josh-dolan",
+      "released_6f07f7cb": 364,
+      "strict_06d8af60": 322
+    },
+    {
+      "candidate": 523,
+      "key": "josh-draper",
+      "released_6f07f7cb": 523,
+      "strict_06d8af60": 621
+    },
+    {
+      "candidate": 1385,
+      "key": "josh-dunkley",
+      "released_6f07f7cb": 1385,
+      "strict_06d8af60": 1168
+    },
+    {
+      "candidate": 215,
+      "key": "josh-gibcus",
+      "released_6f07f7cb": 215,
+      "strict_06d8af60": 245
+    },
+    {
+      "candidate": 94,
+      "key": "josh-goater",
+      "released_6f07f7cb": 94,
+      "strict_06d8af60": 104
+    },
+    {
+      "candidate": 436,
+      "key": "josh-lai",
+      "released_6f07f7cb": 436,
+      "strict_06d8af60": 358
+    },
+    {
+      "candidate": 2373,
+      "key": "josh-lindsay",
+      "released_6f07f7cb": 2373,
+      "strict_06d8af60": 2360
+    },
+    {
+      "candidate": 2194,
+      "key": "josh-rachele",
+      "released_6f07f7cb": 2194,
+      "strict_06d8af60": 1963
+    },
+    {
+      "candidate": 193,
+      "key": "josh-sinn",
+      "released_6f07f7cb": 193,
+      "strict_06d8af60": 260
+    },
+    {
+      "candidate": 1233,
+      "key": "josh-smillie",
+      "released_6f07f7cb": 1233,
+      "strict_06d8af60": 1324
+    },
+    {
+      "candidate": 6349,
+      "key": "josh-treacy",
+      "released_6f07f7cb": 6349,
+      "strict_06d8af60": 6713
+    },
+    {
+      "candidate": 2684,
+      "key": "josh-ward",
+      "released_6f07f7cb": 2684,
+      "strict_06d8af60": 2003
+    },
+    {
+      "candidate": 3603,
+      "key": "josh-worrell",
+      "released_6f07f7cb": 3603,
+      "strict_06d8af60": 3632
+    },
+    {
+      "candidate": 544,
+      "key": "joshua-kelly",
+      "released_6f07f7cb": 544,
+      "strict_06d8af60": 617
+    },
+    {
+      "candidate": 1685,
+      "key": "joshua-weddle",
+      "released_6f07f7cb": 1685,
+      "strict_06d8af60": 1578
+    },
+    {
+      "candidate": 380,
+      "key": "judd-mcvee",
+      "released_6f07f7cb": 380,
+      "strict_06d8af60": 270
+    },
+    {
+      "candidate": 90,
+      "key": "judson-clarke",
+      "released_6f07f7cb": 90,
+      "strict_06d8af60": 90
+    },
+    {
+      "candidate": 1920,
+      "key": "justin-mcinerney",
+      "released_6f07f7cb": 1920,
+      "strict_06d8af60": 1950
+    },
+    {
+      "candidate": 22,
+      "key": "jy-farrar",
+      "released_6f07f7cb": 22,
+      "strict_06d8af60": 26
+    },
+    {
+      "candidate": 870,
+      "key": "jy-simpkin",
+      "released_6f07f7cb": 870,
+      "strict_06d8af60": 945
+    },
+    {
+      "candidate": 1361,
+      "key": "jye-amiss",
+      "released_6f07f7cb": 1361,
+      "strict_06d8af60": 1451
+    },
+    {
+      "candidate": 1135,
+      "key": "jye-caldwell",
+      "released_6f07f7cb": 1135,
+      "strict_06d8af60": 1405
+    },
+    {
+      "candidate": 1064,
+      "key": "kade-chandler",
+      "released_6f07f7cb": 1064,
+      "strict_06d8af60": 1216
+    },
+    {
+      "candidate": 745,
+      "key": "kai-lohmann",
+      "released_6f07f7cb": 745,
+      "strict_06d8af60": 462
+    },
+    {
+      "candidate": 260,
+      "key": "kalani-white",
+      "released_6f07f7cb": 260,
+      "strict_06d8af60": 291
+    },
+    {
+      "candidate": 122,
+      "key": "kaleb-smith",
+      "released_6f07f7cb": 122,
+      "strict_06d8af60": 122
+    },
+    {
+      "candidate": 1455,
+      "key": "kane-farrell",
+      "released_6f07f7cb": 1455,
+      "strict_06d8af60": 1568
+    },
+    {
+      "candidate": 1347,
+      "key": "kane-mcauliffe",
+      "released_6f07f7cb": 1347,
+      "strict_06d8af60": 1357
+    },
+    {
+      "candidate": 546,
+      "key": "karl-amon",
+      "released_6f07f7cb": 546,
+      "strict_06d8af60": 816
+    },
+    {
+      "candidate": 1061,
+      "key": "karl-worner",
+      "released_6f07f7cb": 1061,
+      "strict_06d8af60": 591
+    },
+    {
+      "candidate": 311,
+      "key": "kayle-gerreyn",
+      "released_6f07f7cb": 311,
+      "strict_06d8af60": 347
+    },
+    {
+      "candidate": 889,
+      "key": "keidean-coleman",
+      "released_6f07f7cb": 889,
+      "strict_06d8af60": 885
+    },
+    {
+      "candidate": 249,
+      "key": "keighton-matofai-forbes",
+      "released_6f07f7cb": 249,
+      "strict_06d8af60": 273
+    },
+    {
+      "candidate": 2424,
+      "key": "kieren-briggs",
+      "released_6f07f7cb": 2424,
+      "strict_06d8af60": 1914
+    },
+    {
+      "candidate": 238,
+      "key": "kobe-mcdonald",
+      "released_6f07f7cb": 238,
+      "strict_06d8af60": 277
+    },
+    {
+      "candidate": 480,
+      "key": "koby-coulson",
+      "released_6f07f7cb": 480,
+      "strict_06d8af60": 558
+    },
+    {
+      "candidate": 429,
+      "key": "koby-evans",
+      "released_6f07f7cb": 429,
+      "strict_06d8af60": 491
+    },
+    {
+      "candidate": 1515,
+      "key": "koltyn-tholstrup",
+      "released_6f07f7cb": 1515,
+      "strict_06d8af60": 1492
+    },
+    {
+      "candidate": 174,
+      "key": "kye-annand",
+      "released_6f07f7cb": 174,
+      "strict_06d8af60": 188
+    },
+    {
+      "candidate": 441,
+      "key": "kye-fincher",
+      "released_6f07f7cb": 441,
+      "strict_06d8af60": 516
+    },
+    {
+      "candidate": 510,
+      "key": "kyle-langford",
+      "released_6f07f7cb": 510,
+      "strict_06d8af60": 667
+    },
+    {
+      "candidate": 4001,
+      "key": "kysaiah-pickett",
+      "released_6f07f7cb": 4001,
+      "strict_06d8af60": 3831
+    },
+    {
+      "candidate": 853,
+      "key": "lachie-jaques",
+      "released_6f07f7cb": 853,
+      "strict_06d8af60": 860
+    },
+    {
+      "candidate": 2390,
+      "key": "lachie-neale",
+      "released_6f07f7cb": 2390,
+      "strict_06d8af60": 2066
+    },
+    {
+      "candidate": 1,
+      "key": "lachie-sullivan",
+      "released_6f07f7cb": 1,
+      "strict_06d8af60": 1
+    },
+    {
+      "candidate": 2266,
+      "key": "lachie-whitfield",
+      "released_6f07f7cb": 2266,
+      "strict_06d8af60": 2274
+    },
+    {
+      "candidate": 5535,
+      "key": "lachlan-ash",
+      "released_6f07f7cb": 5535,
+      "strict_06d8af60": 5372
+    },
+    {
+      "candidate": 16,
+      "key": "lachlan-blakiston",
+      "released_6f07f7cb": 16,
+      "strict_06d8af60": 16
+    },
+    {
+      "candidate": 62,
+      "key": "lachlan-bramble",
+      "released_6f07f7cb": 62,
+      "strict_06d8af60": 101
+    },
+    {
+      "candidate": 578,
+      "key": "lachlan-carmichael",
+      "released_6f07f7cb": 578,
+      "strict_06d8af60": 640
+    },
+    {
+      "candidate": 662,
+      "key": "lachlan-cowan",
+      "released_6f07f7cb": 662,
+      "strict_06d8af60": 589
+    },
+    {
+      "candidate": 75,
+      "key": "lachlan-fogarty",
+      "released_6f07f7cb": 75,
+      "strict_06d8af60": 84
+    },
+    {
+      "candidate": 308,
+      "key": "lachlan-gulbin",
+      "released_6f07f7cb": 308,
+      "strict_06d8af60": 308
+    },
+    {
+      "candidate": 148,
+      "key": "lachlan-jones",
+      "released_6f07f7cb": 148,
+      "strict_06d8af60": 121
+    },
+    {
+      "candidate": 1448,
+      "key": "lachlan-mcandrew",
+      "released_6f07f7cb": 1448,
+      "strict_06d8af60": 1292
+    },
+    {
+      "candidate": 22,
+      "key": "lachlan-mcneil",
+      "released_6f07f7cb": 22,
+      "strict_06d8af60": 19
+    },
+    {
+      "candidate": 824,
+      "key": "lachlan-schultz",
+      "released_6f07f7cb": 824,
+      "strict_06d8af60": 796
+    },
+    {
+      "candidate": 225,
+      "key": "lachlan-sholl",
+      "released_6f07f7cb": 225,
+      "strict_06d8af60": 311
+    },
+    {
+      "candidate": 690,
+      "key": "lachlan-smith",
+      "released_6f07f7cb": 690,
+      "strict_06d8af60": 705
+    },
+    {
+      "candidate": 83,
+      "key": "lachlan-weller",
+      "released_6f07f7cb": 83,
+      "strict_06d8af60": 83
+    },
+    {
+      "candidate": 849,
+      "key": "lachy-dovaston",
+      "released_6f07f7cb": 849,
+      "strict_06d8af60": 863
+    },
+    {
+      "candidate": 32,
+      "key": "laitham-vandermeer",
+      "released_6f07f7cb": 32,
+      "strict_06d8af60": 32
+    },
+    {
+      "candidate": 228,
+      "key": "lance-collard",
+      "released_6f07f7cb": 228,
+      "strict_06d8af60": 274
+    },
+    {
+      "candidate": 576,
+      "key": "latrelle-pickett",
+      "released_6f07f7cb": 576,
+      "strict_06d8af60": 580
+    },
+    {
+      "candidate": 1946,
+      "key": "lawson-humphries",
+      "released_6f07f7cb": 1946,
+      "strict_06d8af60": 1848
+    },
+    {
+      "candidate": 283,
+      "key": "leek-aleer",
+      "released_6f07f7cb": 283,
+      "strict_06d8af60": 287
+    },
+    {
+      "candidate": 251,
+      "key": "lennox-hoffman",
+      "released_6f07f7cb": 251,
+      "strict_06d8af60": 275
+    },
+    {
+      "candidate": 1671,
+      "key": "leo-lombard",
+      "released_6f07f7cb": 1671,
+      "strict_06d8af60": 1390
+    },
+    {
+      "candidate": 315,
+      "key": "leon-kickett",
+      "released_6f07f7cb": 315,
+      "strict_06d8af60": 367
+    },
+    {
+      "candidate": 3368,
+      "key": "levi-ashcroft",
+      "released_6f07f7cb": 3368,
+      "strict_06d8af60": 3180
+    },
+    {
+      "candidate": 359,
+      "key": "lewis-hayes",
+      "released_6f07f7cb": 359,
+      "strict_06d8af60": 359
+    },
+    {
+      "candidate": 55,
+      "key": "lewis-melican",
+      "released_6f07f7cb": 55,
+      "strict_06d8af60": 56
+    },
+    {
+      "candidate": 146,
+      "key": "lewis-young",
+      "released_6f07f7cb": 146,
+      "strict_06d8af60": 191
+    },
+    {
+      "candidate": 554,
+      "key": "liam-baker",
+      "released_6f07f7cb": 554,
+      "strict_06d8af60": 655
+    },
+    {
+      "candidate": 407,
+      "key": "liam-duggan",
+      "released_6f07f7cb": 407,
+      "strict_06d8af60": 437
+    },
+    {
+      "candidate": 509,
+      "key": "liam-fawcett",
+      "released_6f07f7cb": 509,
+      "strict_06d8af60": 548
+    },
+    {
+      "candidate": 83,
+      "key": "liam-henry",
+      "released_6f07f7cb": 83,
+      "strict_06d8af60": 83
+    },
+    {
+      "candidate": 223,
+      "key": "liam-hetherton",
+      "released_6f07f7cb": 223,
+      "strict_06d8af60": 221
+    },
+    {
+      "candidate": 200,
+      "key": "liam-mcmahon",
+      "released_6f07f7cb": 200,
+      "strict_06d8af60": 224
+    },
+    {
+      "candidate": 66,
+      "key": "liam-o-connell",
+      "released_6f07f7cb": 66,
+      "strict_06d8af60": 86
+    },
+    {
+      "candidate": 157,
+      "key": "liam-puncher",
+      "released_6f07f7cb": 157,
+      "strict_06d8af60": 170
+    },
+    {
+      "candidate": 288,
+      "key": "liam-reidy",
+      "released_6f07f7cb": 288,
+      "strict_06d8af60": 298
+    },
+    {
+      "candidate": 29,
+      "key": "liam-ryan",
+      "released_6f07f7cb": 29,
+      "strict_06d8af60": 29
+    },
+    {
+      "candidate": 40,
+      "key": "liam-stocker",
+      "released_6f07f7cb": 40,
+      "strict_06d8af60": 40
+    },
+    {
+      "candidate": 24,
+      "key": "lincoln-mccarthy",
+      "released_6f07f7cb": 24,
+      "strict_06d8af60": 27
+    },
+    {
+      "candidate": 1383,
+      "key": "lloyd-meek",
+      "released_6f07f7cb": 1383,
+      "strict_06d8af60": 1231
+    },
+    {
+      "candidate": 1454,
+      "key": "logan-evans",
+      "released_6f07f7cb": 1454,
+      "strict_06d8af60": 1264
+    },
+    {
+      "candidate": 727,
+      "key": "logan-mcdonald",
+      "released_6f07f7cb": 727,
+      "strict_06d8af60": 956
+    },
+    {
+      "candidate": 3015,
+      "key": "logan-morris",
+      "released_6f07f7cb": 3015,
+      "strict_06d8af60": 3120
+    },
+    {
+      "candidate": 444,
+      "key": "logan-smith",
+      "released_6f07f7cb": 444,
+      "strict_06d8af60": 477
+    },
+    {
+      "candidate": 909,
+      "key": "louis-emmett",
+      "released_6f07f7cb": 909,
+      "strict_06d8af60": 917
+    },
+    {
+      "candidate": 276,
+      "key": "lucas-camporeale",
+      "released_6f07f7cb": 276,
+      "strict_06d8af60": 302
+    },
+    {
+      "candidate": 256,
+      "key": "lucca-grego",
+      "released_6f07f7cb": 256,
+      "strict_06d8af60": 280
+    },
+    {
+      "candidate": 154,
+      "key": "lukas-cooke",
+      "released_6f07f7cb": 154,
+      "strict_06d8af60": 188
+    },
+    {
+      "candidate": 34,
+      "key": "luke-beecken",
+      "released_6f07f7cb": 34,
+      "strict_06d8af60": 35
+    },
+    {
+      "candidate": 81,
+      "key": "luke-cleary",
+      "released_6f07f7cb": 81,
+      "strict_06d8af60": 87
+    },
+    {
+      "candidate": 3776,
+      "key": "luke-davies-uniacke",
+      "released_6f07f7cb": 3776,
+      "strict_06d8af60": 3721
+    },
+    {
+      "candidate": 8694,
+      "key": "luke-jackson",
+      "released_6f07f7cb": 8694,
+      "strict_06d8af60": 8613
+    },
+    {
+      "candidate": 542,
+      "key": "luke-kennedy",
+      "released_6f07f7cb": 542,
+      "strict_06d8af60": 433
+    },
+    {
+      "candidate": 277,
+      "key": "luke-lloyd",
+      "released_6f07f7cb": 277,
+      "strict_06d8af60": 284
+    },
+    {
+      "candidate": 53,
+      "key": "luke-mcdonald",
+      "released_6f07f7cb": 53,
+      "strict_06d8af60": 53
+    },
+    {
+      "candidate": 449,
+      "key": "luke-nankervis",
+      "released_6f07f7cb": 449,
+      "strict_06d8af60": 270
+    },
+    {
+      "candidate": 1666,
+      "key": "luke-parker",
+      "released_6f07f7cb": 1666,
+      "strict_06d8af60": 1462
+    },
+    {
+      "candidate": 142,
+      "key": "luke-pedlar",
+      "released_6f07f7cb": 142,
+      "strict_06d8af60": 142
+    },
+    {
+      "candidate": 1581,
+      "key": "luke-ryan",
+      "released_6f07f7cb": 1581,
+      "strict_06d8af60": 1799
+    },
+    {
+      "candidate": 1433,
+      "key": "luke-trainor",
+      "released_6f07f7cb": 1433,
+      "strict_06d8af60": 1413
+    },
+    {
+      "candidate": 268,
+      "key": "luke-urquhart",
+      "released_6f07f7cb": 268,
+      "strict_06d8af60": 294
+    },
+    {
+      "candidate": 357,
+      "key": "luker-kentfield",
+      "released_6f07f7cb": 357,
+      "strict_06d8af60": 380
+    },
+    {
+      "candidate": 419,
+      "key": "mabior-chol",
+      "released_6f07f7cb": 419,
+      "strict_06d8af60": 341
+    },
+    {
+      "candidate": 3865,
+      "key": "mac-andrew",
+      "released_6f07f7cb": 3865,
+      "strict_06d8af60": 3633
+    },
+    {
+      "candidate": 326,
+      "key": "malakai-champion",
+      "released_6f07f7cb": 326,
+      "strict_06d8af60": 325
+    },
+    {
+      "candidate": 33,
+      "key": "malcolm-rosas",
+      "released_6f07f7cb": 33,
+      "strict_06d8af60": 84
+    },
+    {
+      "candidate": 38,
+      "key": "mani-liddy",
+      "released_6f07f7cb": 38,
+      "strict_06d8af60": 55
+    },
+    {
+      "candidate": 569,
+      "key": "marc-pittonet",
+      "released_6f07f7cb": 569,
+      "strict_06d8af60": 505
+    },
+    {
+      "candidate": 4278,
+      "key": "marcus-bontempelli",
+      "released_6f07f7cb": 4278,
+      "strict_06d8af60": 3897
+    },
+    {
+      "candidate": 188,
+      "key": "marcus-herbert",
+      "released_6f07f7cb": 188,
+      "strict_06d8af60": 35
+    },
+    {
+      "candidate": 2091,
+      "key": "marcus-windhager",
+      "released_6f07f7cb": 2091,
+      "strict_06d8af60": 1813
+    },
+    {
+      "candidate": 7,
+      "key": "mark-blicavs",
+      "released_6f07f7cb": 7,
+      "strict_06d8af60": 11
+    },
+    {
+      "candidate": 1849,
+      "key": "mark-keane",
+      "released_6f07f7cb": 1849,
+      "strict_06d8af60": 2146
+    },
+    {
+      "candidate": 19,
+      "key": "mark-o-connor",
+      "released_6f07f7cb": 19,
+      "strict_06d8af60": 15
+    },
+    {
+      "candidate": 1,
+      "key": "mason-cox",
+      "released_6f07f7cb": 1,
+      "strict_06d8af60": 1
+    },
+    {
+      "candidate": 1652,
+      "key": "mason-redman",
+      "released_6f07f7cb": 1652,
+      "strict_06d8af60": 1651
+    },
+    {
+      "candidate": 455,
+      "key": "mason-wood",
+      "released_6f07f7cb": 455,
+      "strict_06d8af60": 152
+    },
+    {
+      "candidate": 1527,
+      "key": "massimo-d-ambrosio",
+      "released_6f07f7cb": 1527,
+      "strict_06d8af60": 1670
+    },
+    {
+      "candidate": 952,
+      "key": "matt-carroll",
+      "released_6f07f7cb": 952,
+      "strict_06d8af60": 950
+    },
+    {
+      "candidate": 74,
+      "key": "matt-cottrell",
+      "released_6f07f7cb": 74,
+      "strict_06d8af60": 107
+    },
+    {
+      "candidate": 172,
+      "key": "matt-duffy",
+      "released_6f07f7cb": 172,
+      "strict_06d8af60": 187
+    },
+    {
+      "candidate": 26,
+      "key": "matt-guelfi",
+      "released_6f07f7cb": 26,
+      "strict_06d8af60": 26
+    },
+    {
+      "candidate": 103,
+      "key": "matt-hill",
+      "released_6f07f7cb": 103,
+      "strict_06d8af60": 133
+    },
+    {
+      "candidate": 892,
+      "key": "matt-johnson-1",
+      "released_6f07f7cb": 892,
+      "strict_06d8af60": 741
+    },
+    {
+      "candidate": 1,
+      "key": "matt-owies",
+      "released_6f07f7cb": 1,
+      "strict_06d8af60": 2
+    },
+    {
+      "candidate": 3922,
+      "key": "matt-rowell",
+      "released_6f07f7cb": 3922,
+      "strict_06d8af60": 3992
+    },
+    {
+      "candidate": 677,
+      "key": "matt-whitlock",
+      "released_6f07f7cb": 677,
+      "strict_06d8af60": 444
+    },
+    {
+      "candidate": 2083,
+      "key": "mattaes-phillipou",
+      "released_6f07f7cb": 2083,
+      "strict_06d8af60": 1530
+    },
+    {
+      "candidate": 675,
+      "key": "matthew-flynn",
+      "released_6f07f7cb": 675,
+      "strict_06d8af60": 717
+    },
+    {
+      "candidate": 689,
+      "key": "matthew-jefferson",
+      "released_6f07f7cb": 689,
+      "strict_06d8af60": 576
+    },
+    {
+      "candidate": 865,
+      "key": "matthew-kennedy-1",
+      "released_6f07f7cb": 865,
+      "strict_06d8af60": 687
+    },
+    {
+      "candidate": 424,
+      "key": "matthew-leray",
+      "released_6f07f7cb": 424,
+      "strict_06d8af60": 497
+    },
+    {
+      "candidate": 1989,
+      "key": "matthew-roberts",
+      "released_6f07f7cb": 1989,
+      "strict_06d8af60": 1898
+    },
+    {
+      "candidate": 41,
+      "key": "maurice-rioli-1",
+      "released_6f07f7cb": 41,
+      "strict_06d8af60": 81
+    },
+    {
+      "candidate": 46,
+      "key": "max-beattie",
+      "released_6f07f7cb": 46,
+      "strict_06d8af60": 53
+    },
+    {
+      "candidate": 3372,
+      "key": "max-gawn",
+      "released_6f07f7cb": 3372,
+      "strict_06d8af60": 3416
+    },
+    {
+      "candidate": 353,
+      "key": "max-gruzewski",
+      "released_6f07f7cb": 353,
+      "strict_06d8af60": 366
+    },
+    {
+      "candidate": 2777,
+      "key": "max-hall",
+      "released_6f07f7cb": 2777,
+      "strict_06d8af60": 2395
+    },
+    {
+      "candidate": 722,
+      "key": "max-heath",
+      "released_6f07f7cb": 722,
+      "strict_06d8af60": 212
+    },
+    {
+      "candidate": 7194,
+      "key": "max-holmes",
+      "released_6f07f7cb": 7194,
+      "strict_06d8af60": 6932
+    },
+    {
+      "candidate": 334,
+      "key": "max-king-stk",
+      "released_6f07f7cb": 334,
+      "strict_06d8af60": 376
+    },
+    {
+      "candidate": 266,
+      "key": "max-king-syd",
+      "released_6f07f7cb": 266,
+      "strict_06d8af60": 266
+    },
+    {
+      "candidate": 491,
+      "key": "max-knobel",
+      "released_6f07f7cb": 491,
+      "strict_06d8af60": 492
+    },
+    {
+      "candidate": 559,
+      "key": "max-kondogiannis",
+      "released_6f07f7cb": 559,
+      "strict_06d8af60": 516
+    },
+    {
+      "candidate": 581,
+      "key": "max-mapley",
+      "released_6f07f7cb": 581,
+      "strict_06d8af60": 620
+    },
+    {
+      "candidate": 579,
+      "key": "max-michalanney",
+      "released_6f07f7cb": 579,
+      "strict_06d8af60": 569
+    },
+    {
+      "candidate": 202,
+      "key": "max-ramsden",
+      "released_6f07f7cb": 202,
+      "strict_06d8af60": 223
+    },
+    {
+      "candidate": 105,
+      "key": "michael-frederick",
+      "released_6f07f7cb": 105,
+      "strict_06d8af60": 95
+    },
+    {
+      "candidate": 148,
+      "key": "michael-sellwood",
+      "released_6f07f7cb": 148,
+      "strict_06d8af60": 87
+    },
+    {
+      "candidate": 475,
+      "key": "milan-murdock",
+      "released_6f07f7cb": 475,
+      "strict_06d8af60": 919
+    },
+    {
+      "candidate": 849,
+      "key": "miles-bergman",
+      "released_6f07f7cb": 849,
+      "strict_06d8af60": 795
+    },
+    {
+      "candidate": 1479,
+      "key": "mitch-georgiades",
+      "released_6f07f7cb": 1479,
+      "strict_06d8af60": 1393
+    },
+    {
+      "candidate": 28,
+      "key": "mitch-mcgovern",
+      "released_6f07f7cb": 28,
+      "strict_06d8af60": 28
+    },
+    {
+      "candidate": 23,
+      "key": "mitch-podhajski",
+      "released_6f07f7cb": 23,
+      "strict_06d8af60": 31
+    },
+    {
+      "candidate": 94,
+      "key": "mitch-zadow",
+      "released_6f07f7cb": 94,
+      "strict_06d8af60": 145
+    },
+    {
+      "candidate": 1915,
+      "key": "mitchell-edwards",
+      "released_6f07f7cb": 1915,
+      "strict_06d8af60": 1855
+    },
+    {
+      "candidate": 478,
+      "key": "mitchell-hinge",
+      "released_6f07f7cb": 478,
+      "strict_06d8af60": 555
+    },
+    {
+      "candidate": 178,
+      "key": "mitchell-knevitt",
+      "released_6f07f7cb": 178,
+      "strict_06d8af60": 192
+    },
+    {
+      "candidate": 646,
+      "key": "mitchell-lewis",
+      "released_6f07f7cb": 646,
+      "strict_06d8af60": 688
+    },
+    {
+      "candidate": 629,
+      "key": "mitchell-marsh",
+      "released_6f07f7cb": 629,
+      "strict_06d8af60": 698
+    },
+    {
+      "candidate": 2006,
+      "key": "mitchito-owens",
+      "released_6f07f7cb": 2006,
+      "strict_06d8af60": 2126
+    },
+    {
+      "candidate": 3998,
+      "key": "murphy-reid",
+      "released_6f07f7cb": 3998,
+      "strict_06d8af60": 3855
+    },
+    {
+      "candidate": 32,
+      "key": "mykelti-lefau",
+      "released_6f07f7cb": 32,
+      "strict_06d8af60": 70
+    },
+    {
+      "candidate": 7460,
+      "key": "nasiah-wanganeen-milera",
+      "released_6f07f7cb": 7460,
+      "strict_06d8af60": 6709
+    },
+    {
+      "candidate": 1820,
+      "key": "nate-caddy",
+      "released_6f07f7cb": 1820,
+      "strict_06d8af60": 1783
+    },
+    {
+      "candidate": 11,
+      "key": "nathan-broad",
+      "released_6f07f7cb": 11,
+      "strict_06d8af60": 11
+    },
+    {
+      "candidate": 658,
+      "key": "nathan-o-driscoll",
+      "released_6f07f7cb": 658,
+      "strict_06d8af60": 894
+    },
+    {
+      "candidate": 144,
+      "key": "nathan-wardius",
+      "released_6f07f7cb": 144,
+      "strict_06d8af60": 143
+    },
+    {
+      "candidate": 377,
+      "key": "ned-bowman",
+      "released_6f07f7cb": 377,
+      "strict_06d8af60": 419
+    },
+    {
+      "candidate": 1362,
+      "key": "ned-long",
+      "released_6f07f7cb": 1362,
+      "strict_06d8af60": 1233
+    },
+    {
+      "candidate": 2467,
+      "key": "ned-moyle",
+      "released_6f07f7cb": 2467,
+      "strict_06d8af60": 1686
+    },
+    {
+      "candidate": 384,
+      "key": "ned-reeves",
+      "released_6f07f7cb": 384,
+      "strict_06d8af60": 404
+    },
+    {
+      "candidate": 1031,
+      "key": "neil-erasmus",
+      "released_6f07f7cb": 1031,
+      "strict_06d8af60": 737
+    },
+    {
+      "candidate": 792,
+      "key": "nic-newman",
+      "released_6f07f7cb": 792,
+      "strict_06d8af60": 945
+    },
+    {
+      "candidate": 53,
+      "key": "nicholas-coffield",
+      "released_6f07f7cb": 53,
+      "strict_06d8af60": 53
+    },
+    {
+      "candidate": 24,
+      "key": "nicholas-holman",
+      "released_6f07f7cb": 24,
+      "strict_06d8af60": 24
+    },
+    {
+      "candidate": 3501,
+      "key": "nicholas-martin",
+      "released_6f07f7cb": 3501,
+      "strict_06d8af60": 3648
+    },
+    {
+      "candidate": 4091,
+      "key": "nick-blakey",
+      "released_6f07f7cb": 4091,
+      "strict_06d8af60": 4212
+    },
+    {
+      "candidate": 860,
+      "key": "nick-bryan",
+      "released_6f07f7cb": 860,
+      "strict_06d8af60": 807
+    },
+    {
+      "candidate": 8683,
+      "key": "nick-daicos",
+      "released_6f07f7cb": 8683,
+      "strict_06d8af60": 8017
+    },
+    {
+      "candidate": 473,
+      "key": "nick-driscoll",
+      "released_6f07f7cb": 473,
+      "strict_06d8af60": 552
+    },
+    {
+      "candidate": 100,
+      "key": "nick-haynes",
+      "released_6f07f7cb": 100,
+      "strict_06d8af60": 81
+    },
+    {
+      "candidate": 644,
+      "key": "nick-larkey",
+      "released_6f07f7cb": 644,
+      "strict_06d8af60": 739
+    },
+    {
+      "candidate": 1482,
+      "key": "nick-madden",
+      "released_6f07f7cb": 1482,
+      "strict_06d8af60": 1495
+    },
+    {
+      "candidate": 410,
+      "key": "nick-murray",
+      "released_6f07f7cb": 410,
+      "strict_06d8af60": 373
+    },
+    {
+      "candidate": 58,
+      "key": "nick-vlastuin",
+      "released_6f07f7cb": 58,
+      "strict_06d8af60": 116
+    },
+    {
+      "candidate": 3368,
+      "key": "nick-watson",
+      "released_6f07f7cb": 3368,
+      "strict_06d8af60": 3176
+    },
+    {
+      "candidate": 235,
+      "key": "nikolas-cox",
+      "released_6f07f7cb": 235,
+      "strict_06d8af60": 296
+    },
+    {
+      "candidate": 4830,
+      "key": "noah-anderson",
+      "released_6f07f7cb": 4830,
+      "strict_06d8af60": 5160
+    },
+    {
+      "candidate": 31,
+      "key": "noah-answerth",
+      "released_6f07f7cb": 31,
+      "strict_06d8af60": 31
+    },
+    {
+      "candidate": 549,
+      "key": "noah-balta",
+      "released_6f07f7cb": 549,
+      "strict_06d8af60": 413
+    },
+    {
+      "candidate": 158,
+      "key": "noah-chamberlain",
+      "released_6f07f7cb": 158,
+      "strict_06d8af60": 157
+    },
+    {
+      "candidate": 255,
+      "key": "noah-howes",
+      "released_6f07f7cb": 255,
+      "strict_06d8af60": 285
+    },
+    {
+      "candidate": 208,
+      "key": "noah-long",
+      "released_6f07f7cb": 208,
+      "strict_06d8af60": 300
+    },
+    {
+      "candidate": 2198,
+      "key": "noah-mraz",
+      "released_6f07f7cb": 2198,
+      "strict_06d8af60": 412
+    },
+    {
+      "candidate": 427,
+      "key": "noah-roberts-thomson",
+      "released_6f07f7cb": 427,
+      "strict_06d8af60": 487
+    },
+    {
+      "candidate": 11,
+      "key": "oisin-mullin",
+      "released_6f07f7cb": 11,
+      "strict_06d8af60": 11
+    },
+    {
+      "candidate": 657,
+      "key": "oliver-florent",
+      "released_6f07f7cb": 657,
+      "strict_06d8af60": 900
+    },
+    {
+      "candidate": 596,
+      "key": "oliver-francou",
+      "released_6f07f7cb": 596,
+      "strict_06d8af60": 410
+    },
+    {
+      "candidate": 197,
+      "key": "oliver-griffin",
+      "released_6f07f7cb": 197,
+      "strict_06d8af60": 229
+    },
+    {
+      "candidate": 419,
+      "key": "oliver-hannaford",
+      "released_6f07f7cb": 419,
+      "strict_06d8af60": 432
+    },
+    {
+      "candidate": 315,
+      "key": "oliver-hayes-brown",
+      "released_6f07f7cb": 315,
+      "strict_06d8af60": 330
+    },
+    {
+      "candidate": 91,
+      "key": "oliver-henry",
+      "released_6f07f7cb": 91,
+      "strict_06d8af60": 91
+    },
+    {
+      "candidate": 1485,
+      "key": "oliver-hollands",
+      "released_6f07f7cb": 1485,
+      "strict_06d8af60": 1555
+    },
+    {
+      "candidate": 102,
+      "key": "oliver-wiltshire",
+      "released_6f07f7cb": 102,
+      "strict_06d8af60": 102
+    },
+    {
+      "candidate": 394,
+      "key": "oliver-wines",
+      "released_6f07f7cb": 394,
+      "strict_06d8af60": 513
+    },
+    {
+      "candidate": 2122,
+      "key": "ollie-dempsey",
+      "released_6f07f7cb": 2122,
+      "strict_06d8af60": 1864
+    },
+    {
+      "candidate": 594,
+      "key": "ollie-greeves",
+      "released_6f07f7cb": 594,
+      "strict_06d8af60": 525
+    },
+    {
+      "candidate": 150,
+      "key": "ollie-lord",
+      "released_6f07f7cb": 150,
+      "strict_06d8af60": 169
+    },
+    {
+      "candidate": 282,
+      "key": "ollie-murphy",
+      "released_6f07f7cb": 282,
+      "strict_06d8af60": 289
+    },
+    {
+      "candidate": 75,
+      "key": "oscar-adams",
+      "released_6f07f7cb": 75,
+      "strict_06d8af60": 75
+    },
+    {
+      "candidate": 158,
+      "key": "oscar-allen",
+      "released_6f07f7cb": 158,
+      "strict_06d8af60": 191
+    },
+    {
+      "candidate": 107,
+      "key": "oscar-berry",
+      "released_6f07f7cb": 107,
+      "strict_06d8af60": 120
+    },
+    {
+      "candidate": 44,
+      "key": "oscar-mcdonald",
+      "released_6f07f7cb": 44,
+      "strict_06d8af60": 48
+    },
+    {
+      "candidate": 290,
+      "key": "oscar-ryan",
+      "released_6f07f7cb": 290,
+      "strict_06d8af60": 292
+    },
+    {
+      "candidate": 612,
+      "key": "oscar-steene",
+      "released_6f07f7cb": 612,
+      "strict_06d8af60": 344
+    },
+    {
+      "candidate": 31,
+      "key": "oskar-baker",
+      "released_6f07f7cb": 31,
+      "strict_06d8af60": 31
+    },
+    {
+      "candidate": 755,
+      "key": "oskar-taylor",
+      "released_6f07f7cb": 755,
+      "strict_06d8af60": 828
+    },
+    {
+      "candidate": 42,
+      "key": "paddy-cross",
+      "released_6f07f7cb": 42,
+      "strict_06d8af60": 60
+    },
+    {
+      "candidate": 165,
+      "key": "paddy-dow",
+      "released_6f07f7cb": 165,
+      "strict_06d8af60": 165
+    },
+    {
+      "candidate": 581,
+      "key": "patrick-carr",
+      "released_6f07f7cb": 581,
+      "strict_06d8af60": 620
+    },
+    {
+      "candidate": 1701,
+      "key": "patrick-cripps",
+      "released_6f07f7cb": 1701,
+      "strict_06d8af60": 1460
+    },
+    {
+      "candidate": 84,
+      "key": "patrick-dangerfield",
+      "released_6f07f7cb": 84,
+      "strict_06d8af60": 129
+    },
+    {
+      "candidate": 895,
+      "key": "patrick-lipinski",
+      "released_6f07f7cb": 895,
+      "strict_06d8af60": 610
+    },
+    {
+      "candidate": 1328,
+      "key": "patrick-retschko",
+      "released_6f07f7cb": 1328,
+      "strict_06d8af60": 829
+    },
+    {
+      "candidate": 183,
+      "key": "patrick-said",
+      "released_6f07f7cb": 183,
+      "strict_06d8af60": 201
+    },
+    {
+      "candidate": 244,
+      "key": "patrick-snell",
+      "released_6f07f7cb": 244,
+      "strict_06d8af60": 254
+    },
+    {
+      "candidate": 1576,
+      "key": "patrick-voss",
+      "released_6f07f7cb": 1576,
+      "strict_06d8af60": 1856
+    },
+    {
+      "candidate": 1530,
+      "key": "paul-curtis",
+      "released_6f07f7cb": 1530,
+      "strict_06d8af60": 1510
+    },
+    {
+      "candidate": 336,
+      "key": "peter-ladhams",
+      "released_6f07f7cb": 336,
+      "strict_06d8af60": 351
+    },
+    {
+      "candidate": 1820,
+      "key": "peter-wright",
+      "released_6f07f7cb": 1820,
+      "strict_06d8af60": 2047
+    },
+    {
+      "candidate": 1852,
+      "key": "phoenix-gothard",
+      "released_6f07f7cb": 1852,
+      "strict_06d8af60": 410
+    },
+    {
+      "candidate": 209,
+      "key": "reece-torrent",
+      "released_6f07f7cb": 209,
+      "strict_06d8af60": 216
+    },
+    {
+      "candidate": 77,
+      "key": "reef-mcinnes",
+      "released_6f07f7cb": 77,
+      "strict_06d8af60": 77
+    },
+    {
+      "candidate": 1115,
+      "key": "reilly-o-brien",
+      "released_6f07f7cb": 1115,
+      "strict_06d8af60": 1194
+    },
+    {
+      "candidate": 2597,
+      "key": "reuben-ginbey",
+      "released_6f07f7cb": 2597,
+      "strict_06d8af60": 2679
+    },
+    {
+      "candidate": 599,
+      "key": "rhett-bazzo",
+      "released_6f07f7cb": 599,
+      "strict_06d8af60": 464
+    },
+    {
+      "candidate": 74,
+      "key": "rhyan-mansell",
+      "released_6f07f7cb": 74,
+      "strict_06d8af60": 105
+    },
+    {
+      "candidate": 154,
+      "key": "rhylee-west",
+      "released_6f07f7cb": 154,
+      "strict_06d8af60": 171
+    },
+    {
+      "candidate": 37,
+      "key": "rhys-stanley",
+      "released_6f07f7cb": 37,
+      "strict_06d8af60": 37
+    },
+    {
+      "candidate": 182,
+      "key": "rhys-unwin",
+      "released_6f07f7cb": 182,
+      "strict_06d8af60": 200
+    },
+    {
+      "candidate": 297,
+      "key": "riak-andrew",
+      "released_6f07f7cb": 297,
+      "strict_06d8af60": 336
+    },
+    {
+      "candidate": 125,
+      "key": "ricky-mentha",
+      "released_6f07f7cb": 125,
+      "strict_06d8af60": 137
+    },
+    {
+      "candidate": 365,
+      "key": "riley-bice",
+      "released_6f07f7cb": 365,
+      "strict_06d8af60": 473
+    },
+    {
+      "candidate": 113,
+      "key": "riley-garcia",
+      "released_6f07f7cb": 113,
+      "strict_06d8af60": 149
+    },
+    {
+      "candidate": 278,
+      "key": "riley-hamilton",
+      "released_6f07f7cb": 278,
+      "strict_06d8af60": 334
+    },
+    {
+      "candidate": 317,
+      "key": "riley-hardeman",
+      "released_6f07f7cb": 317,
+      "strict_06d8af60": 353
+    },
+    {
+      "candidate": 376,
+      "key": "riley-onley",
+      "released_6f07f7cb": 376,
+      "strict_06d8af60": 438
+    },
+    {
+      "candidate": 4060,
+      "key": "riley-thilthorpe",
+      "released_6f07f7cb": 4060,
+      "strict_06d8af60": 4103
+    },
+    {
+      "candidate": 176,
+      "key": "river-stevens",
+      "released_6f07f7cb": 176,
+      "strict_06d8af60": 193
+    },
+    {
+      "candidate": 23,
+      "key": "roan-steele",
+      "released_6f07f7cb": 23,
+      "strict_06d8af60": 23
+    },
+    {
+      "candidate": 171,
+      "key": "rob-monahan",
+      "released_6f07f7cb": 171,
+      "strict_06d8af60": 175
+    },
+    {
+      "candidate": 113,
+      "key": "robert-hansen",
+      "released_6f07f7cb": 113,
+      "strict_06d8af60": 162
+    },
+    {
+      "candidate": 930,
+      "key": "rory-laird",
+      "released_6f07f7cb": 930,
+      "strict_06d8af60": 1027
+    },
+    {
+      "candidate": 470,
+      "key": "rory-lobb",
+      "released_6f07f7cb": 470,
+      "strict_06d8af60": 391
+    },
+    {
+      "candidate": 1853,
+      "key": "rowan-marshall",
+      "released_6f07f7cb": 1853,
+      "strict_06d8af60": 1364
+    },
+    {
+      "candidate": 410,
+      "key": "ryan-angwin",
+      "released_6f07f7cb": 410,
+      "strict_06d8af60": 441
+    },
+    {
+      "candidate": 107,
+      "key": "ryan-byrnes",
+      "released_6f07f7cb": 107,
+      "strict_06d8af60": 107
+    },
+    {
+      "candidate": 32,
+      "key": "ryan-gardner",
+      "released_6f07f7cb": 32,
+      "strict_06d8af60": 32
+    },
+    {
+      "candidate": 540,
+      "key": "ryan-lester",
+      "released_6f07f7cb": 540,
+      "strict_06d8af60": 905
+    },
+    {
+      "candidate": 1351,
+      "key": "ryan-maric",
+      "released_6f07f7cb": 1351,
+      "strict_06d8af60": 1357
+    },
+    {
+      "candidate": 197,
+      "key": "ryda-luke",
+      "released_6f07f7cb": 197,
+      "strict_06d8af60": 229
+    },
+    {
+      "candidate": 3392,
+      "key": "ryley-sanders",
+      "released_6f07f7cb": 3392,
+      "strict_06d8af60": 3668
+    },
+    {
+      "candidate": 21,
+      "key": "saad-el-hawli",
+      "released_6f07f7cb": 21,
+      "strict_06d8af60": 22
+    },
+    {
+      "candidate": 747,
+      "key": "sam-allen",
+      "released_6f07f7cb": 747,
+      "strict_06d8af60": 837
+    },
+    {
+      "candidate": 997,
+      "key": "sam-banks",
+      "released_6f07f7cb": 997,
+      "strict_06d8af60": 1302
+    },
+    {
+      "candidate": 3509,
+      "key": "sam-berry",
+      "released_6f07f7cb": 3509,
+      "strict_06d8af60": 3417
+    },
+    {
+      "candidate": 105,
+      "key": "sam-butler-1",
+      "released_6f07f7cb": 105,
+      "strict_06d8af60": 105
+    },
+    {
+      "candidate": 269,
+      "key": "sam-clohesy",
+      "released_6f07f7cb": 269,
+      "strict_06d8af60": 296
+    },
+    {
+      "candidate": 2822,
+      "key": "sam-cumming",
+      "released_6f07f7cb": 2822,
+      "strict_06d8af60": 2119
+    },
+    {
+      "candidate": 4820,
+      "key": "sam-darcy",
+      "released_6f07f7cb": 4820,
+      "strict_06d8af60": 4824
+    },
+    {
+      "candidate": 70,
+      "key": "sam-davidson",
+      "released_6f07f7cb": 70,
+      "strict_06d8af60": 117
+    },
+    {
+      "candidate": 1008,
+      "key": "sam-de-koning",
+      "released_6f07f7cb": 1008,
+      "strict_06d8af60": 1234
+    },
+    {
+      "candidate": 939,
+      "key": "sam-draper",
+      "released_6f07f7cb": 939,
+      "strict_06d8af60": 944
+    },
+    {
+      "candidate": 2529,
+      "key": "sam-durham",
+      "released_6f07f7cb": 2529,
+      "strict_06d8af60": 1787
+    },
+    {
+      "candidate": 2086,
+      "key": "sam-flanders",
+      "released_6f07f7cb": 2086,
+      "strict_06d8af60": 2070
+    },
+    {
+      "candidate": 4095,
+      "key": "sam-lalor",
+      "released_6f07f7cb": 4095,
+      "strict_06d8af60": 4115
+    },
+    {
+      "candidate": 915,
+      "key": "sam-marshall",
+      "released_6f07f7cb": 915,
+      "strict_06d8af60": 926
+    },
+    {
+      "candidate": 275,
+      "key": "sam-powell-pepper",
+      "released_6f07f7cb": 275,
+      "strict_06d8af60": 301
+    },
+    {
+      "candidate": 53,
+      "key": "sam-sturt",
+      "released_6f07f7cb": 53,
+      "strict_06d8af60": 53
+    },
+    {
+      "candidate": 29,
+      "key": "sam-switkowski",
+      "released_6f07f7cb": 29,
+      "strict_06d8af60": 49
+    },
+    {
+      "candidate": 1494,
+      "key": "sam-taylor",
+      "released_6f07f7cb": 1494,
+      "strict_06d8af60": 1979
+    },
+    {
+      "candidate": 3098,
+      "key": "sam-walsh",
+      "released_6f07f7cb": 3098,
+      "strict_06d8af60": 2763
+    },
+    {
+      "candidate": 27,
+      "key": "sam-wicks",
+      "released_6f07f7cb": 27,
+      "strict_06d8af60": 27
+    },
+    {
+      "candidate": 413,
+      "key": "samson-ryan",
+      "released_6f07f7cb": 413,
+      "strict_06d8af60": 453
+    },
+    {
+      "candidate": 855,
+      "key": "samuel-collins",
+      "released_6f07f7cb": 855,
+      "strict_06d8af60": 988
+    },
+    {
+      "candidate": 2103,
+      "key": "samuel-grlj",
+      "released_6f07f7cb": 2103,
+      "strict_06d8af60": 2422
+    },
+    {
+      "candidate": 985,
+      "key": "samuel-swadling",
+      "released_6f07f7cb": 985,
+      "strict_06d8af60": 655
+    },
+    {
+      "candidate": 235,
+      "key": "sandy-brock",
+      "released_6f07f7cb": 235,
+      "strict_06d8af60": 331
+    },
+    {
+      "candidate": 447,
+      "key": "scott-pendlebury",
+      "released_6f07f7cb": 447,
+      "strict_06d8af60": 638
+    },
+    {
+      "candidate": 920,
+      "key": "sean-darcy",
+      "released_6f07f7cb": 920,
+      "strict_06d8af60": 1208
+    },
+    {
+      "candidate": 1050,
+      "key": "seth-campbell",
+      "released_6f07f7cb": 1050,
+      "strict_06d8af60": 957
+    },
+    {
+      "candidate": 94,
+      "key": "shadeau-brain",
+      "released_6f07f7cb": 94,
+      "strict_06d8af60": 81
+    },
+    {
+      "candidate": 2393,
+      "key": "shai-bolton",
+      "released_6f07f7cb": 2393,
+      "strict_06d8af60": 2440
+    },
+    {
+      "candidate": 2153,
+      "key": "shannon-neale",
+      "released_6f07f7cb": 2153,
+      "strict_06d8af60": 2317
+    },
+    {
+      "candidate": 609,
+      "key": "shaun-mannagh",
+      "released_6f07f7cb": 609,
+      "strict_06d8af60": 511
+    },
+    {
+      "candidate": 1151,
+      "key": "sid-draper",
+      "released_6f07f7cb": 1151,
+      "strict_06d8af60": 1177
+    },
+    {
+      "candidate": 102,
+      "key": "steele-sidebottom",
+      "released_6f07f7cb": 102,
+      "strict_06d8af60": 102
+    },
+    {
+      "candidate": 160,
+      "key": "steely-green",
+      "released_6f07f7cb": 160,
+      "strict_06d8af60": 291
+    },
+    {
+      "candidate": 165,
+      "key": "stephen-coniglio",
+      "released_6f07f7cb": 165,
+      "strict_06d8af60": 165
+    },
+    {
+      "candidate": 2870,
+      "key": "sullivan-robey",
+      "released_6f07f7cb": 2870,
+      "strict_06d8af60": 2640
+    },
+    {
+      "candidate": 259,
+      "key": "tai-hayes",
+      "released_6f07f7cb": 259,
+      "strict_06d8af60": 300
+    },
+    {
+      "candidate": 2038,
+      "key": "taj-hotton",
+      "released_6f07f7cb": 2038,
+      "strict_06d8af60": 2071
+    },
+    {
+      "candidate": 734,
+      "key": "talor-byrne",
+      "released_6f07f7cb": 734,
+      "strict_06d8af60": 441
+    },
+    {
+      "candidate": 1963,
+      "key": "tanner-bruhn",
+      "released_6f07f7cb": 1963,
+      "strict_06d8af60": 1386
+    },
+    {
+      "candidate": 1011,
+      "key": "taylor-goad",
+      "released_6f07f7cb": 1011,
+      "strict_06d8af60": 914
+    },
+    {
+      "candidate": 145,
+      "key": "taylor-walker",
+      "released_6f07f7cb": 145,
+      "strict_06d8af60": 239
+    },
+    {
+      "candidate": 239,
+      "key": "tew-jiath",
+      "released_6f07f7cb": 239,
+      "strict_06d8af60": 244
+    },
+    {
+      "candidate": 319,
+      "key": "thomas-anastasopoulos",
+      "released_6f07f7cb": 319,
+      "strict_06d8af60": 323
+    },
+    {
+      "candidate": 337,
+      "key": "thomas-burton",
+      "released_6f07f7cb": 337,
+      "strict_06d8af60": 334
+    },
+    {
+      "candidate": 1683,
+      "key": "thomas-liberatore",
+      "released_6f07f7cb": 1683,
+      "strict_06d8af60": 2129
+    },
+    {
+      "candidate": 521,
+      "key": "thomas-matthews",
+      "released_6f07f7cb": 521,
+      "strict_06d8af60": 584
+    },
+    {
+      "candidate": 1108,
+      "key": "thomas-sims",
+      "released_6f07f7cb": 1108,
+      "strict_06d8af60": 1083
+    },
+    {
+      "candidate": 1119,
+      "key": "thomas-stewart",
+      "released_6f07f7cb": 1119,
+      "strict_06d8af60": 1108
+    },
+    {
+      "candidate": 774,
+      "key": "tim-kelly",
+      "released_6f07f7cb": 774,
+      "strict_06d8af60": 1030
+    },
+    {
+      "candidate": 205,
+      "key": "tim-membrey",
+      "released_6f07f7cb": 205,
+      "strict_06d8af60": 40
+    },
+    {
+      "candidate": 2499,
+      "key": "tim-taranto",
+      "released_6f07f7cb": 2499,
+      "strict_06d8af60": 2619
+    },
+    {
+      "candidate": 3680,
+      "key": "timothy-english",
+      "released_6f07f7cb": 3680,
+      "strict_06d8af60": 3682
+    },
+    {
+      "candidate": 697,
+      "key": "tobie-travaglia",
+      "released_6f07f7cb": 697,
+      "strict_06d8af60": 601
+    },
+    {
+      "candidate": 263,
+      "key": "toby-bedford",
+      "released_6f07f7cb": 263,
+      "strict_06d8af60": 248
+    },
+    {
+      "candidate": 562,
+      "key": "toby-conway",
+      "released_6f07f7cb": 562,
+      "strict_06d8af60": 562
+    },
+    {
+      "candidate": 1007,
+      "key": "toby-greene",
+      "released_6f07f7cb": 1007,
+      "strict_06d8af60": 859
+    },
+    {
+      "candidate": 148,
+      "key": "toby-mcmullin",
+      "released_6f07f7cb": 148,
+      "strict_06d8af60": 181
+    },
+    {
+      "candidate": 241,
+      "key": "toby-murray",
+      "released_6f07f7cb": 241,
+      "strict_06d8af60": 272
+    },
+    {
+      "candidate": 2151,
+      "key": "toby-nankervis",
+      "released_6f07f7cb": 2151,
+      "strict_06d8af60": 2112
+    },
+    {
+      "candidate": 15,
+      "key": "toby-pink",
+      "released_6f07f7cb": 15,
+      "strict_06d8af60": 19
+    },
+    {
+      "candidate": 197,
+      "key": "toby-whan",
+      "released_6f07f7cb": 197,
+      "strict_06d8af60": 229
+    },
+    {
+      "candidate": 401,
+      "key": "tobyn-murray",
+      "released_6f07f7cb": 401,
+      "strict_06d8af60": 461
+    },
+    {
+      "candidate": 112,
+      "key": "todd-marshall",
+      "released_6f07f7cb": 112,
+      "strict_06d8af60": 151
+    },
+    {
+      "candidate": 343,
+      "key": "tom-atkins",
+      "released_6f07f7cb": 343,
+      "strict_06d8af60": 337
+    },
+    {
+      "candidate": 120,
+      "key": "tom-barrass",
+      "released_6f07f7cb": 120,
+      "strict_06d8af60": 477
+    },
+    {
+      "candidate": 97,
+      "key": "tom-blamires",
+      "released_6f07f7cb": 97,
+      "strict_06d8af60": 82
+    },
+    {
+      "candidate": 433,
+      "key": "tom-brown",
+      "released_6f07f7cb": 433,
+      "strict_06d8af60": 464
+    },
+    {
+      "candidate": 199,
+      "key": "tom-cochrane",
+      "released_6f07f7cb": 199,
+      "strict_06d8af60": 252
+    },
+    {
+      "candidate": 30,
+      "key": "tom-cole",
+      "released_6f07f7cb": 30,
+      "strict_06d8af60": 68
+    },
+    {
+      "candidate": 1976,
+      "key": "tom-de-koning",
+      "released_6f07f7cb": 1976,
+      "strict_06d8af60": 1970
+    },
+    {
+      "candidate": 356,
+      "key": "tom-doedee",
+      "released_6f07f7cb": 356,
+      "strict_06d8af60": 393
+    },
+    {
+      "candidate": 48,
+      "key": "tom-edwards",
+      "released_6f07f7cb": 48,
+      "strict_06d8af60": 57
+    },
+    {
+      "candidate": 4584,
+      "key": "tom-green",
+      "released_6f07f7cb": 4584,
+      "strict_06d8af60": 4817
+    },
+    {
+      "candidate": 634,
+      "key": "tom-gross",
+      "released_6f07f7cb": 634,
+      "strict_06d8af60": 590
+    },
+    {
+      "candidate": 158,
+      "key": "tom-hanily",
+      "released_6f07f7cb": 158,
+      "strict_06d8af60": 165
+    },
+    {
+      "candidate": 48,
+      "key": "tom-lynch-1",
+      "released_6f07f7cb": 48,
+      "strict_06d8af60": 187
+    },
+    {
+      "candidate": 1592,
+      "key": "tom-mccarthy",
+      "released_6f07f7cb": 1592,
+      "strict_06d8af60": 1636
+    },
+    {
+      "candidate": 2073,
+      "key": "tom-mccartin",
+      "released_6f07f7cb": 2073,
+      "strict_06d8af60": 1666
+    },
+    {
+      "candidate": 269,
+      "key": "tom-mcdonald",
+      "released_6f07f7cb": 269,
+      "strict_06d8af60": 360
+    },
+    {
+      "candidate": 441,
+      "key": "tom-papley",
+      "released_6f07f7cb": 441,
+      "strict_06d8af60": 511
+    },
+    {
+      "candidate": 2207,
+      "key": "tom-powell",
+      "released_6f07f7cb": 2207,
+      "strict_06d8af60": 2247
+    },
+    {
+      "candidate": 1389,
+      "key": "tom-sparrow",
+      "released_6f07f7cb": 1389,
+      "strict_06d8af60": 887
+    },
+    {
+      "candidate": 1528,
+      "key": "touk-miller",
+      "released_6f07f7cb": 1528,
+      "strict_06d8af60": 1720
+    },
+    {
+      "candidate": 1889,
+      "key": "trent-rivers",
+      "released_6f07f7cb": 1889,
+      "strict_06d8af60": 2015
+    },
+    {
+      "candidate": 7552,
+      "key": "tristan-xerri",
+      "released_6f07f7cb": 7552,
+      "strict_06d8af60": 7635
+    },
+    {
+      "candidate": 1223,
+      "key": "ty-gallop",
+      "released_6f07f7cb": 1223,
+      "strict_06d8af60": 1062
+    },
+    {
+      "candidate": 671,
+      "key": "tyan-prindable",
+      "released_6f07f7cb": 671,
+      "strict_06d8af60": 755
+    },
+    {
+      "candidate": 419,
+      "key": "tylah-williams",
+      "released_6f07f7cb": 419,
+      "strict_06d8af60": 480
+    },
+    {
+      "candidate": 296,
+      "key": "tylar-young",
+      "released_6f07f7cb": 296,
+      "strict_06d8af60": 234
+    },
+    {
+      "candidate": 77,
+      "key": "tyler-brockman",
+      "released_6f07f7cb": 77,
+      "strict_06d8af60": 90
+    },
+    {
+      "candidate": 1084,
+      "key": "tyler-sonsie",
+      "released_6f07f7cb": 1084,
+      "strict_06d8af60": 1268
+    },
+    {
+      "candidate": 216,
+      "key": "tyler-welsh",
+      "released_6f07f7cb": 216,
+      "strict_06d8af60": 243
+    },
+    {
+      "candidate": 167,
+      "key": "tyrell-dewar",
+      "released_6f07f7cb": 167,
+      "strict_06d8af60": 209
+    },
+    {
+      "candidate": 228,
+      "key": "tyson-stengle",
+      "released_6f07f7cb": 228,
+      "strict_06d8af60": 254
+    },
+    {
+      "candidate": 328,
+      "key": "vigo-visentini",
+      "released_6f07f7cb": 328,
+      "strict_06d8af60": 326
+    },
+    {
+      "candidate": 80,
+      "key": "wade-derksen",
+      "released_6f07f7cb": 80,
+      "strict_06d8af60": 118
+    },
+    {
+      "candidate": 2025,
+      "key": "wayne-milera",
+      "released_6f07f7cb": 2025,
+      "strict_06d8af60": 1839
+    },
+    {
+      "candidate": 595,
+      "key": "wil-dawson",
+      "released_6f07f7cb": 595,
+      "strict_06d8af60": 498
+    },
+    {
+      "candidate": 33,
+      "key": "wil-parker",
+      "released_6f07f7cb": 33,
+      "strict_06d8af60": 34
+    },
+    {
+      "candidate": 958,
+      "key": "wil-powell",
+      "released_6f07f7cb": 958,
+      "strict_06d8af60": 967
+    },
+    {
+      "candidate": 6020,
+      "key": "will-ashcroft",
+      "released_6f07f7cb": 6020,
+      "strict_06d8af60": 4729
+    },
+    {
+      "candidate": 1007,
+      "key": "will-brodie",
+      "released_6f07f7cb": 1007,
+      "strict_06d8af60": 1019
+    },
+    {
+      "candidate": 488,
+      "key": "will-darcy",
+      "released_6f07f7cb": 488,
+      "strict_06d8af60": 549
+    },
+    {
+      "candidate": 2822,
+      "key": "will-day",
+      "released_6f07f7cb": 2822,
+      "strict_06d8af60": 3585
+    },
+    {
+      "candidate": 255,
+      "key": "will-edwards",
+      "released_6f07f7cb": 255,
+      "strict_06d8af60": 241
+    },
+    {
+      "candidate": 1569,
+      "key": "will-graham",
+      "released_6f07f7cb": 1569,
+      "strict_06d8af60": 1561
+    },
+    {
+      "candidate": 651,
+      "key": "will-green",
+      "released_6f07f7cb": 651,
+      "strict_06d8af60": 651
+    },
+    {
+      "candidate": 309,
+      "key": "will-hayes-b",
+      "released_6f07f7cb": 309,
+      "strict_06d8af60": 310
+    },
+    {
+      "candidate": 217,
+      "key": "will-hayward",
+      "released_6f07f7cb": 217,
+      "strict_06d8af60": 224
+    },
+    {
+      "candidate": 9,
+      "key": "will-lewis",
+      "released_6f07f7cb": 9,
+      "strict_06d8af60": 10
+    },
+    {
+      "candidate": 419,
+      "key": "will-lorenz",
+      "released_6f07f7cb": 419,
+      "strict_06d8af60": 409
+    },
+    {
+      "candidate": 137,
+      "key": "will-mclachlan",
+      "released_6f07f7cb": 137,
+      "strict_06d8af60": 170
+    },
+    {
+      "candidate": 910,
+      "key": "will-setterfield",
+      "released_6f07f7cb": 910,
+      "strict_06d8af60": 1632
+    },
+    {
+      "candidate": 723,
+      "key": "willem-drew",
+      "released_6f07f7cb": 723,
+      "strict_06d8af60": 841
+    },
+    {
+      "candidate": 4296,
+      "key": "willem-duursma",
+      "released_6f07f7cb": 4296,
+      "strict_06d8af60": 4265
+    },
+    {
+      "candidate": 757,
+      "key": "william-mccabe",
+      "released_6f07f7cb": 757,
+      "strict_06d8af60": 575
+    },
+    {
+      "candidate": 398,
+      "key": "xavier-bamert",
+      "released_6f07f7cb": 398,
+      "strict_06d8af60": 280
+    },
+    {
+      "candidate": 201,
+      "key": "xavier-duursma",
+      "released_6f07f7cb": 201,
+      "strict_06d8af60": 257
+    },
+    {
+      "candidate": 2119,
+      "key": "xavier-lindsay",
+      "released_6f07f7cb": 2119,
+      "strict_06d8af60": 2155
+    },
+    {
+      "candidate": 52,
+      "key": "xavier-o-halloran",
+      "released_6f07f7cb": 52,
+      "strict_06d8af60": 42
+    },
+    {
+      "candidate": 893,
+      "key": "xavier-taylor",
+      "released_6f07f7cb": 893,
+      "strict_06d8af60": 938
+    },
+    {
+      "candidate": 222,
+      "key": "xavier-walsh",
+      "released_6f07f7cb": 222,
+      "strict_06d8af60": 230
+    },
+    {
+      "candidate": 3000,
+      "key": "zac-bailey",
+      "released_6f07f7cb": 3000,
+      "strict_06d8af60": 2649
+    },
+    {
+      "candidate": 52,
+      "key": "zac-banch",
+      "released_6f07f7cb": 52,
+      "strict_06d8af60": 66
+    },
+    {
+      "candidate": 181,
+      "key": "zac-fisher",
+      "released_6f07f7cb": 181,
+      "strict_06d8af60": 208
+    },
+    {
+      "candidate": 342,
+      "key": "zac-mccarthy",
+      "released_6f07f7cb": 342,
+      "strict_06d8af60": 385
+    },
+    {
+      "candidate": 326,
+      "key": "zac-taylor",
+      "released_6f07f7cb": 326,
+      "strict_06d8af60": 342
+    },
+    {
+      "candidate": 220,
+      "key": "zac-walker",
+      "released_6f07f7cb": 220,
+      "strict_06d8af60": 240
+    },
+    {
+      "candidate": 354,
+      "key": "zach-guthrie",
+      "released_6f07f7cb": 354,
+      "strict_06d8af60": 534
+    },
+    {
+      "candidate": 1461,
+      "key": "zach-reid",
+      "released_6f07f7cb": 1461,
+      "strict_06d8af60": 1734
+    },
+    {
+      "candidate": 2770,
+      "key": "zachary-merrett",
+      "released_6f07f7cb": 2770,
+      "strict_06d8af60": 2900
+    },
+    {
+      "candidate": 193,
+      "key": "zachary-williams",
+      "released_6f07f7cb": 193,
+      "strict_06d8af60": 244
+    },
+    {
+      "candidate": 6249,
+      "key": "zak-butters",
+      "released_6f07f7cb": 6249,
+      "strict_06d8af60": 6198
+    },
+    {
+      "candidate": 7,
+      "key": "zak-evans",
+      "released_6f07f7cb": 7,
+      "strict_06d8af60": 8
+    },
+    {
+      "candidate": 567,
+      "key": "zak-johnson",
+      "released_6f07f7cb": 567,
+      "strict_06d8af60": 574
+    },
+    {
+      "candidate": 742,
+      "key": "zane-duursma",
+      "released_6f07f7cb": 742,
+      "strict_06d8af60": 736
+    },
+    {
+      "candidate": 563,
+      "key": "zane-peucker",
+      "released_6f07f7cb": 563,
+      "strict_06d8af60": 573
+    },
+    {
+      "candidate": 465,
+      "key": "zane-zakostelsky",
+      "released_6f07f7cb": 465,
+      "strict_06d8af60": 620
+    },
+    {
+      "candidate": 2720,
+      "key": "zeke-uwland",
+      "released_6f07f7cb": 2720,
+      "strict_06d8af60": 2334
+    }
+  ]
+}
