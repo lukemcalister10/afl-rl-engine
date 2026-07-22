@@ -27,6 +27,7 @@ jobs:
         with:
           name: item408-prestop-transport
           path: .item408_apply/part.*
+          include-hidden-files: true
           if-no-files-found: error
 
       - name: Reconstruct and diagnose patch
