@@ -90,7 +90,53 @@ Notes:
 
 ## 3. R1 frozen-ruler STAMP re-scope
 
-Filled by rebuild commit 3 ("ITEM 408: re-scope frozen-ruler STAMP provenance").
+`[re-runnable]` **Owner ruling R1 = C implemented.** The later Leg-D STAMP assertion in
+`engine/rl_after/one_source_selftest.py` no longer compares the frozen curve's `stamp.store_md5` to the current
+weekly **live** store (`md5(rl_model_data.json)[:8]`). At R19 the live store is `f37d9716`, which no longer
+equals the frozen source store `968de0c7`; the old assertion would re-alarm on every weekly store advance even
+though the pick curve is a **frozen ruler**. The re-scope asserts the curve's **true immutable provenance**
+instead (HALT-not-warn):
+
+1. `ui/release_pick_curve.json` exists and is parseable;
+2. the contract is byte-untouched — `md5 == 676ad2b77612a4fbd4df3362b6f88fab`;
+3. the contract's `curve_source_store_md5 == 968de0c7a0183ca3914165536f39607a`;
+4. `pvc_curve_v2.json` `stamp.store_md5 == contract.curve_source_store_md5[:8]` (the stamp's stored 8-char form
+   → `968de0c7`);
+5. `pvc_curve_v2.json` `stamp.per_entrant_md5 == 40d7da7c`;
+6. the curve file bytes match the contract's `pick_curve_file_md5` (`md5(pvc_curve_v2.json) == 56dd7a7b…`);
+7. (additive) the curve payload `curve_md5 == contract.pick_curve_curve_md5` (`89c14729`).
+
+`[re-runnable]` **Validated against the real frozen artifacts** (pinned venv 3.12.3): the block returns all-PASS
+with a `0` verdict on the untouched tree, and each independent tamper — contract bytes, contract
+`curve_source_store_md5`, stamp `store_md5`, stamp `per_entrant_md5` — flips a check and drives the self-test's
+`sys.exit(1)` (`one_source_selftest.py` line 380: `sys.exit(1 if FAIL else 0)`), preserving HALT-not-warn. The
+full `one_source_selftest.py` additionally needs a board bootstrap + vendored `unidecode` to reach this block;
+that bootstrap is identical at base and post-rebuild, so the STAMP re-scope is the only behavioural change.
+
+`[re-runnable]` **Git-history verification — DISCREPANCY REPORTED.** The directive states this STAMP assertion
+"was introduced at commit `2e49963`". **`2e49963` does not exist in this repository** (`git cat-file -t` → "Not
+a valid object name"; unreachable from any ref). By `git log -S"_boot_store"` and `git blame` it was introduced
+at commit **`15a9abd`** ("leg F5: §2.viii ENTRANT LAYER + §2.x CONSERVATION GATE (MEMO_LEGF v1.3)",
+2026-07-19), an ancestor of base `83ed3bb`. Recorded as a discrepancy for supervisor adjudication.
+
+`[re-runnable]` **Confirmed NOT one of the five SSI guards.** GUARD 1/2/3/4/5 are defined at lines ~40–79
+(GUARD 4 runs separately). The STAMP assertion sits inside the later `if _pvc2_on:` Leg-D block (file comment
+line ~328: "The one instrument for the Leg-D curve … HALT-not-warn: any FAIL -> sys.exit(1)"). It is a later
+Leg-D self-test check, as the ruling requires.
+
+`[re-runnable]` **GPT Sol review finding 5 applied:** the R1 comment "\"re-derivation due\" in the
+register/checklist" is corrected to "\"re-derivation due\" in the claims note/checklist" — comment-only; the
+register (`docs/OPEN_ITEMS_REGISTER.md`) remains byte-identical to `83ed3bb`.
+
+`[re-runnable]` **`BAKE_CHECKLIST.md`** receives one narrow additive binding rule: every future store bake must
+explicitly answer the curve question — re-derive and re-adopt the ruler under separate owner release authority,
+or expressly re-affirm the frozen ruler and its original provenance (`968de0c7` / `40d7da7c`, byte-bound to
+`ui/release_pick_curve.json`). No other checklist step changes.
+
+`[report-only]` **True `RL_PVCFIT` re-adoption remains a future, separate owner release and is NOT performed by
+ITEM 408.** "Re-derivation due" (live store ≠ frozen curve source store) is a lifecycle note, not curve
+corruption. Per the directive it lives in **this claims note** (and the BAKE_CHECKLIST rule), **not** in
+`docs/OPEN_ITEMS_REGISTER.md` — the register is the supervisor's pen and is left byte-identical to `83ed3bb`.
 
 ## 4. Negative controls and the resolver blind review
 
