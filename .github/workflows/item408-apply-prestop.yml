@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - tmp/item408-prestop-apply
+  pull_request:
 
 permissions:
   contents: write
