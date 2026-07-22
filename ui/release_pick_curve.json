@@ -1,16 +1,16 @@
 {
-  "_doc": "EXPLICIT, FAIL-CLOSED RELEASE-METADATA CONTRACT for the club-valuation overlay's pick curve (ui/tools/ingest_inputs.py). The accepted release configuration (data/model_config.json) now pins RL_PVC2=1 explicitly (final integration 2026-07-21 audit-addendum closure); this contract additionally declares the release-active pick-curve pathway (belt-and-suspenders) and cross-checks it against the manifest + engine curve identity. ingest_inputs.py resolves the release-active pick curve DETERMINISTICALLY from this file, cross-checks it against the accepted release (store + release_version from data/expected_boot.json) and the engine curve file's own self-declared gate/identity, and cross-checks the installed board's PVC against the resolved curve. Missing, unknown, or conflicting selection HALTs (never guesses). It recomputes NO value: a pick price is a mean over the resolved engine curve; player values are the stamped board 'v'. Do not hand-edit outside a release pick-curve change.",
+  "_doc": "Fixed release pick-curve provenance. The adopted curve remains the ruler across weekly score updates. Current board/store/round identity is read fail-closed from expected_boot and the stamped board bundle.",
   "release_version": "v2.11-final-rc1-PROVISIONAL",
-  "as_of_round": 14,
+  "adopted_at_round": 14,
   "adopted_pathway": "RL_PVC2",
   "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
   "pick_curve_file_md5": "56dd7a7bca4306d9224aec0ef52efa32",
   "pick_curve_curve_md5": "89c14729",
-  "store_md5": "968de0c7a0183ca3914165536f39607a",
+  "curve_source_store_md5": "968de0c7a0183ca3914165536f39607a",
   "numeraire_pin1": 3000,
   "supersedes": {
     "pathway": "RL_PVCADOPT",
     "pick_curve_path": "engine/rl_after/pvc_curve_L1b.json",
-    "note": "The prior v2.9 L1b adopt curve. RL_PVC2 (default ON) supersedes it and loads pvc_curve_v2.json into _PVC0; RL_PVC2=0 would fall back to L1b (board 9829d01a). Recorded so a stale-L1b overlay fails closed instead of silently pricing on the superseded curve."
+    "note": "RL_PVC2 supersedes the prior L1b curve; stale-L1b overlays fail closed."
   }
 }

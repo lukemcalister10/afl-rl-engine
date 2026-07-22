@@ -212,7 +212,7 @@
       var rel = st.release || null;
       return {
         board: (rel && rel.board) || st.srcmd5 || st.board,
-        store: (rel && rel.store) || st.store,
+        store: (rel && rel.store) || st.store_md5 || st.store,
         release: rel,
       };
     }

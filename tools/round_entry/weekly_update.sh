@@ -50,4 +50,17 @@ fi
 export PYTHONPATH="$REPO/engine/rl_after:$RL_VENDOR${PYTHONPATH:+:$PYTHONPATH}"
 
 PY="${PYTHON:-python3}"
-exec "$PY" "$REPO/tools/round_entry/round_entry.py" "$@"
+set +e
+"$PY" "$REPO/tools/round_entry/round_entry.py" "$@"
+RC=$?
+set -e
+if [ "$RC" -ne 0 ]; then
+  exit "$RC"
+fi
+
+# Refresh current club totals after every successful operation that can move/rebuild the weekly board.
+case "${1:-}" in
+  apply|run|catchup|finalize|repair)
+    "$PY" "$REPO/ui/tools/ingest_inputs.py"
+    ;;
+esac

@@ -172,12 +172,98 @@ def test_prestaging_refusals():
 
 def main():
     tests = [test_snapshot_identity, test_bridge_preserves_score_meaning,
-             test_gate_off_by_default, test_prestaging_refusals]
+             test_gate_off_by_default, test_prestaging_refusals,
+             test_movers_zero_report_seed_reanchors_to_first_report,
+             test_movers_populated_bundle_never_reanchors,
+             test_finalized_status_clears_stale_failure]
     print("weekly-updater fast tests:")
     for t in tests:
         t()
     print("ALL FAST TESTS PASS")
     return 0
+
+
+
+def _mini_report(round_n, before_board, after_board, before_store, after_store, txn='txn'):
+    return {
+        'kind': 'weekly_movers_report', 'schema_version': 1,
+        'season': 2026, 'submitted_round': int(round_n), 'previous_round': int(round_n) - 1,
+        'source_store_md5_before': before_store, 'source_store_md5_after': after_store,
+        'board_md5_before': before_board, 'board_md5_after': after_board,
+        'txn_id': txn,
+        'release_identity': {
+            'release_version': 'v-test', 'balanced_board_md5': 'balanced',
+            'engine_head': 'engine', 'rl_model': 'model', 'fv': 'fv',
+            'config': 'config', 'register': 'register',
+            'board': after_board, 'store': after_store, 'as_of_round': int(round_n),
+        },
+        'views': {'played_count': 0, 'dnp_count': 0}, 'players': [], 'player_count': 0,
+    }
+
+
+def test_movers_zero_report_seed_reanchors_to_first_report():
+    import round_movers as MV
+    d = tempfile.mkdtemp(prefix='wkut_mv_')
+    try:
+        path = os.path.join(d, 'movers.js')
+        stale = {'kind': 'matchday_movers_bundle', 'schema_version': 1, 'rounds': [], 'reports': {},
+                 'baseline': {'as_of_round': 14, 'board': 'stale-board', 'store': 'stale-store',
+                              'release_identity': {'release_version': 'v-test', 'balanced_board_md5': 'balanced',
+                                                   'engine_head': 'engine', 'rl_model': 'model', 'fv': 'fv',
+                                                   'config': 'config', 'register': 'register',
+                                                   'board': 'stale-board', 'store': 'stale-store',
+                                                   'as_of_round': 14}},
+                 'integrity': {'board_chain_ok': True, 'baseline_anchor_ok': True, 'rounds': []}}
+        MV.write_bundle(path, stale)
+        report = _mini_report(15, 'pre-board', 'post-board', 'pre-store', 'post-store')
+        res = MV.accumulate_bundle(path, report)
+        bundle = MV.load_bundle(path)
+        assert res['baseline_anchor_ok'] is True
+        assert bundle['baseline']['as_of_round'] == 14
+        assert bundle['baseline']['board'] == 'pre-board'
+        assert bundle['baseline']['store'] == 'pre-store'
+        brel = bundle['baseline']['release_identity']
+        assert brel['release_version'] == report['release_identity']['release_version']
+        assert brel['balanced_board_md5'] == report['release_identity']['balanced_board_md5']
+        assert brel['as_of_round'] == 14 and brel['board'] == 'pre-board' and brel['store'] == 'pre-store'
+        print("  test_movers_zero_report_seed_reanchors_to_first_report PASS")
+    finally:
+        shutil.rmtree(d, ignore_errors=True)
+
+
+def test_movers_populated_bundle_never_reanchors():
+    import round_movers as MV
+    d = tempfile.mkdtemp(prefix='wkut_mv_')
+    try:
+        path = os.path.join(d, 'movers.js')
+        r15 = _mini_report(15, 'b14', 'b15', 's14', 's15', txn='t15')
+        MV.accumulate_bundle(path, r15)
+        before = MV.load_bundle(path)['baseline']
+        r16 = _mini_report(16, 'b15', 'b16', 's15', 's16', txn='t16')
+        res = MV.accumulate_bundle(path, r16)
+        after = MV.load_bundle(path)['baseline']
+        assert res['baseline_anchor_ok'] is True
+        assert after == before
+        assert after['board'] == 'b14' and after['store'] == 's14' and after['as_of_round'] == 14
+        print("  test_movers_populated_bundle_never_reanchors PASS")
+    finally:
+        shutil.rmtree(d, ignore_errors=True)
+
+
+def test_finalized_status_clears_stale_failure():
+    import round_finalize as RF
+    d = tempfile.mkdtemp(prefix='wkut_fin_')
+    try:
+        fin = RF.RoundFinalizer(d)
+        fin._set_status(15, RF.FINALIZATION_INCOMPLETE, failure='old failure')
+        fin._set_status(15, RF.FINALIZED, failure=None)
+        entry = fin.entry(15)
+        assert entry['status'] == RF.FINALIZED
+        assert entry.get('failure') is None
+        assert 'failure' not in entry
+        print("  test_finalized_status_clears_stale_failure PASS")
+    finally:
+        shutil.rmtree(d, ignore_errors=True)
 
 
 if __name__ == '__main__':
