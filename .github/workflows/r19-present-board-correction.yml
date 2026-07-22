@@ -1,0 +1,185 @@
+name: R19 Present Board Correction
+
+on:
+  push:
+    branches:
+      - candidate/r19-present-board-correction
+    paths:
+      - .github/workflows/r19-present-board-correction.yml
+      - tools/remediation/apply_present_staleness_fix.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r19-present-board-correction
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      BASE_SHA: 0156ec445c29789f5dc7b79adca53e632a9da7f3
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      RL_FV: ${{ github.workspace }}/engine/forward_valuation
+      RL_VENV: ${{ github.workspace }}/../rl_venv312
+      PYTHONHASHSEED: "0"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact Round 19 starting point
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "candidate/r19-present-board-correction"
+          git merge-base --is-ancestor "$BASE_SHA" HEAD
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          assert md5('data/rl_build/rl_app_data.json')=='92a8f3a0528e5668029ca8056a841821'
+          assert md5('engine/rl_after/rl_model_data.json')=='f37d9716648cfe4382b8c6a24c4f064f'
+          assert md5('engine/rl_after/_merged_recover.py')=='dc7e34b0d50470897af237c638236868'
+          b=json.load(open('data/expected_boot.json'))
+          assert b['board']=='92a8f3a0528e5668029ca8056a841821' and b['as_of_round']==19
+          PY
+
+      - name: Apply present-only correction
+        run: |
+          set -euo pipefail
+          mkdir -p session_2026-07-22/present_board_correction
+          python3 tools/remediation/apply_present_staleness_fix.py | tee session_2026-07-22/present_board_correction/source_patch.json
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Provision pinned deterministic engine
+        run: |
+          set -euo pipefail
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"; ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+          sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+          bash setup_env.sh
+          export PATH="$RL_VENV/bin:$PATH"
+          mkdir -p /home/claude/rl_vendor /home/claude/rl_build
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+          for f in cm_400.pkl q97m.pkl v0surf.pkl; do [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true; done
+          cp -f data/rl_build/rl_app_data.json /home/claude/rl_build/rl_app_data.json
+          bash bootstrap.sh
+
+      - name: Build corrected board
+        run: |
+          set -euo pipefail
+          export PATH="$RL_VENV/bin:$PATH"
+          export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+          export RL_CONFIG_MODE=bake
+          cd /home/claude/rl_workspace/rl_after
+          "$RL_VENV/bin/python" rl_export.py > /tmp/present-board-build.log 2>&1 || { tail -100 /tmp/present-board-build.log; exit 1; }
+          test -s rl_app_data.json
+          md5sum rl_app_data.json
+
+      - name: Validate only the requested present correction
+        run: |
+          set -euo pipefail
+          git fetch origin archive/r19-ui-forward-lens-work-2026-07-22:refs/remotes/origin/archive/r19-ui-forward-lens-work-2026-07-22
+          git show origin/archive/r19-ui-forward-lens-work-2026-07-22:session_2026-07-22/staleness_graded_anchor_fix/candidate_board.json > /tmp/full_fix_reference.json
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          base=json.load(open('data/rl_build/rl_app_data.json'))
+          cand=json.load(open('/home/claude/rl_workspace/rl_after/rl_app_data.json'))
+          ref=json.load(open('/tmp/full_fix_reference.json'))
+          rows=lambda o:o['active'] if isinstance(o,dict) else o
+          b={p['key']:p for p in rows(base)}; c={p['key']:p for p in rows(cand)}; r={p['key']:p for p in rows(ref)}
+          assert len(b)==len(c)==len(r)==804 and set(b)==set(c)==set(r)
+          changed=[k for k in c if int(c[k]['v'])!=int(b[k]['v'])]
+          assert len(changed)==18, len(changed)
+          assert sum(int(c[k]['v'])-int(b[k]['v']) for k in c)==5181
+          assert all(int(c[k]['v'])==int(r[k]['v']) for k in c), 'present vector differs from independently validated full candidate'
+          assert int(c['phoenix-gothard']['v'])==1852
+          lens_changed=sum(1 for k in c if c[k].get('vP1')!=b[k].get('vP1') or c[k].get('vP2')!=b[k].get('vP2'))
+          out={
+            'status':'PASS','scope':'present board correction only','active':804,
+            'present_changed_players':len(changed),'present_total_delta':5181,
+            'present_total_before':sum(int(p['v']) for p in b.values()),
+            'present_total_after':sum(int(p['v']) for p in c.values()),
+            'phoenix_gothard':{'before':b['phoenix-gothard']['v'],'after':c['phoenix-gothard']['v']},
+            'forward_lens_rows_changed_incidentally':lens_changed,
+            'forward_lens_status':'not approved or repaired in this candidate; preserved work is on archive/r19-ui-forward-lens-work-2026-07-22',
+            'candidate_board_md5':hashlib.md5(pathlib.Path('/home/claude/rl_workspace/rl_after/rl_app_data.json').read_bytes()).hexdigest(),
+            'store_md5':hashlib.md5(pathlib.Path('engine/rl_after/rl_model_data.json').read_bytes()).hexdigest(),
+          }
+          pathlib.Path('session_2026-07-22/present_board_correction/summary.json').write_text(json.dumps(out,indent=2)+'\n')
+          print(json.dumps(out,indent=2))
+          PY
+
+      - name: Promote candidate artifacts on this branch only
+        run: |
+          set -euo pipefail
+          cp /home/claude/rl_workspace/rl_after/rl_app_data.json data/rl_build/rl_app_data.json
+          python3 - <<'PY'
+          import hashlib,json,pathlib,re
+          boardp=pathlib.Path('data/rl_build/rl_app_data.json')
+          board=hashlib.md5(boardp.read_bytes()).hexdigest()
+          store=hashlib.md5(pathlib.Path('engine/rl_after/rl_model_data.json').read_bytes()).hexdigest()
+          src={'derived':'rl_app_data.json','own_md5':board,'source':'rl_model_data.json','source_md5':store,'tier':1}
+          pathlib.Path('data/rl_build/rl_app_data.json.srcmd5').write_text(json.dumps(src)+'\n')
+          boot=json.load(open('data/expected_boot.json')); boot['board']=board
+          pathlib.Path('data/expected_boot.json').write_text(json.dumps(boot,indent=2)+'\n')
+          contract=json.load(open('data/release_contract.json'))
+          contract['identities']['board']=board
+          contract['present_lens_baseline']['present_value_total']=757608
+          contract['present_lens_baseline']['note']='Round 19 owner-authorized D8 present-board correction candidate; forward-lens repair deferred.'
+          contract.pop('contract_sha256',None)
+          body={k:v for k,v in contract.items() if k not in ('contract_sha256','_doc')}
+          contract['contract_sha256']=hashlib.sha256(json.dumps(body,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          pathlib.Path('data/release_contract.json').write_text(json.dumps(contract,indent=2)+'\n')
+          cfg=pathlib.Path('ui/app/config.js'); text=cfg.read_text()
+          text,n=re.subn(r'EXPECTED_BOARD: "[0-9a-f]{8}"',f'EXPECTED_BOARD: "{board[:8]}"',text,count=1)
+          assert n==1
+          cfg.write_text(text)
+          PY
+          python3 ui/tools/extract_board_view.py
+          python3 ui/tools/ingest_inputs.py
+
+      - name: Verify candidate consistency
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 - <<'PY'
+          import hashlib,json,pathlib,release_contract
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          b=json.load(open('data/expected_boot.json')); c=json.load(open('data/release_contract.json'))
+          assert b['board']==md5('data/rl_build/rl_app_data.json')
+          assert b['store']==md5('engine/rl_after/rl_model_data.json')=='f37d9716648cfe4382b8c6a24c4f064f'
+          assert b['engine_head']==md5('engine/rl_after/_merged_recover.py')
+          assert c['identities']['board']==b['board'] and c['identities']['engine_head']==b['engine_head']
+          assert c['contract_sha256']==release_contract.contract_hash(c)
+          assert json.load(open('session_2026-07-22/present_board_correction/summary.json'))['status']=='PASS'
+          print('candidate identity PASS',b['board'],b['engine_head'])
+          PY
+          "$RL_VENV/bin/python" -m pytest -q ui/tests/test_club_valuation_current.py
+          node --check ui/data/board_view_working.js
+          node --check ui/data/board_view_public.js
+          node --check ui/data/club_valuation.js
+
+      - name: Commit candidate
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add engine/rl_after/_merged_recover.py data/expected_boot.json data/release_contract.json \
+            data/rl_build/rl_app_data.json data/rl_build/rl_app_data.json.srcmd5 \
+            ui/app/config.js ui/data/board_view_working.js ui/data/board_view_public.js ui/data/club_valuation.js \
+            session_2026-07-22/present_board_correction
+          git commit -m "candidate: correct Round 19 present-board staleness"
+          git push origin HEAD:candidate/r19-present-board-correction
