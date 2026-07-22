@@ -25,7 +25,7 @@ MD.config = {
      lens unchanged: 804 active, Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as
      balanced_board_md5 lineage). Engine cc626d7d/904722cd, store 968de0c7, config 3a1e714f unchanged (rl_export
      is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC). */
-  EXPECTED_BOARD: "92a8f3a0",
+  EXPECTED_BOARD: "6f07f7cb",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
