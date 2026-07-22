@@ -1,0 +1,67 @@
+name: R19 Candidate UI
+
+on:
+  push:
+    branches:
+      - model/r19-staleness-graded-anchor-fix
+    paths:
+      - .github/workflows/r19-candidate-ui.yml
+      - ui/index.html
+      - ui/app/main.js
+      - ui/app/mvp_fixes.js
+      - ui/styles/mvp_fixes.css
+      - tools/remediation/r19_candidate_ui_browser.js
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify preserved Round 19 product identities
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          assert md5('data/rl_build/rl_app_data.json')=='92a8f3a0528e5668029ca8056a841821'
+          assert md5('engine/rl_after/rl_model_data.json')=='f37d9716648cfe4382b8c6a24c4f064f'
+          b=json.load(open('data/expected_boot.json'))
+          assert b['as_of_round']==19 and b['board']=='92a8f3a0528e5668029ca8056a841821'
+          assert b['store']=='f37d9716648cfe4382b8c6a24c4f064f'
+          PY
+
+      - name: JavaScript syntax checks
+        run: |
+          set -euo pipefail
+          node --check ui/app/mvp_fixes.js
+          node --check ui/app/main.js
+          node --check tools/remediation/r19_candidate_ui_browser.js
+
+      - name: Install browser runtime
+        run: |
+          set -euo pipefail
+          PLAYWRIGHT_DIR="$RUNNER_TEMP/r19-candidate-playwright"
+          mkdir -p "$PLAYWRIGHT_DIR"
+          cd "$PLAYWRIGHT_DIR"
+          npm init -y >/dev/null
+          npm install --no-save playwright@1 >/dev/null
+          npx playwright install chromium --with-deps
+
+      - name: Run desktop and mobile browser validation
+        env:
+          NODE_PATH: ${{ runner.temp }}/r19-candidate-playwright/node_modules
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 -d ui >/tmp/r19-candidate-ui-server.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:4173/ >/dev/null
+          node tools/remediation/r19_candidate_ui_browser.js
