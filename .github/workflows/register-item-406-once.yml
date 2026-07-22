@@ -1,6 +1,9 @@
 name: Register item 406 once
 
 on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/register-item-406-once.yml]
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
