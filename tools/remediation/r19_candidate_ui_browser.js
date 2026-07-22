@@ -17,9 +17,9 @@ const profiles = [
     await page.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
     await page.locator('.row.working').first().waitFor({ state: 'attached', timeout: 15000 });
 
-    const tabs = await page.locator('.tabs button').allTextContents();
-    assert(!tabs.some(x => x.trim() === 'ROUND REVIEW'), profile.name + ': redundant Round Review tab remains');
-    assert(tabs.some(x => x.trim() === 'MOVERS'), profile.name + ': Movers tab missing');
+    const tabs = (await page.locator('.tabs button').allTextContents()).map(x => x.trim().toUpperCase());
+    assert(!tabs.includes('ROUND REVIEW'), profile.name + ': redundant Round Review tab remains');
+    assert(tabs.includes('MOVERS'), profile.name + ': Movers tab missing');
 
     const teamFacts = await page.evaluate(() => {
       const ps = window.__MATCHDAY_WORKING__.players;
@@ -58,7 +58,7 @@ const profiles = [
 
     await page.evaluate(() => MD.go('review'));
     await page.locator('.moverBaseRound').waitFor({ state: 'visible', timeout: 10000 });
-    assert(await page.getByRole('button', { name: 'Movers', exact: true }).getAttribute('class') === 'on',
+    assert((await page.getByRole('button', { name: 'Movers', exact: true }).getAttribute('class') || '').split(/\s+/).includes('on'),
       profile.name + ': stale review route did not resolve to Movers');
 
     await page.evaluate(() => MD.go('card', 'phoenix-gothard'));
