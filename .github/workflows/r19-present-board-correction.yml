@@ -148,8 +148,8 @@ jobs:
           assert n==1
           cfg.write_text(text)
           PY
-          python3 ui/tools/extract_board_view.py
-          python3 ui/tools/ingest_inputs.py
+          "$RL_VENV/bin/python" ui/tools/extract_board_view.py
+          "$RL_VENV/bin/python" ui/tools/ingest_inputs.py
 
       - name: Verify candidate consistency
         run: |
