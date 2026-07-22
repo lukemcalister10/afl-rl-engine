@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kinetic Matchday · Public board</title>
+  <link rel="stylesheet" href="styles/kinetic.css">
+</head>
+<body data-page="board">
+  <div class="pitch-banner">Design pitch · invented figures · not the board · public trim only</div>
+  <nav class="site-nav" aria-label="Prototype navigation">
+    <a class="brand-lockup" href="index.html"><strong>Value<b>Board</b></strong><span>Kinetic Matchday<br>Profile 05</span></a>
+    <div class="nav-links">
+      <a data-nav="board" href="board_public.html">Board</a>
+      <a data-nav="player" href="player_card_public.html">Player</a>
+      <a data-nav="review" href="round_review_public.html">Round review</a>
+    </div>
+    <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Pause motion</button>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-kicker">Player values · public index</div>
+        <h1 class="hero-title">The<br><span class="outline">Board</span></h1>
+        <div class="hero-sub">
+          <p>One public ranking of player value. Full names, tabular figures and signed movement stay stable while the framing carries the kinetic energy.</p>
+          <div class="hero-stamp">ROUND <b>19 · 2026</b><br>804 ACTIVE PLAYERS<br>MOVEMENT VS ROUND 18</div>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Round 19">
+        <span class="round-label">As of round</span>
+        <span class="round-no">19</span>
+        <div class="round-meta">PUBLIC TRIM<br>VALUES · RANKS · MOVEMENT<br>ILLUSTRATION ONLY</div>
+      </aside>
+    </section>
+
+    <div class="marquee-shell" aria-hidden="true">
+      <div class="marquee-track" data-marquee-track>
+        <div class="marquee-item"><span>804 ACTIVE PLAYERS</span><span class="dot">✦</span><span>BOARD TOTAL 752,427</span><span class="dot">✦</span><span>64 +1 PICKS</span><span class="dot">✦</span><span>64 +2 PICKS</span><span class="dot">✦</span></div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Top<br>of market</h2>
+        <div class="section-meta">Illustrative public data<br>signed movement, never colour alone</div>
+      </div>
+      <div class="filter-row" aria-label="Board filters">
+        <button class="filter-button is-active" type="button" data-board-filter="all" aria-pressed="true">All players</button>
+        <button class="filter-button" type="button" data-board-filter="def" aria-pressed="false">Defenders</button>
+        <button class="filter-button" type="button" data-board-filter="mid" aria-pressed="false">Midfielders</button>
+        <button class="filter-button" type="button" data-board-filter="ruc" aria-pressed="false">Rucks</button>
+        <button class="filter-button" type="button" data-board-filter="fwd" aria-pressed="false">Forwards</button>
+        <span class="filter-count num" data-filter-count>SHOWING 8 / 8</span>
+      </div>
+      <div class="board-columns" aria-hidden="true">
+        <span>Rank</span><span>Player</span><span>Position</span><span class="right">Value</span><span>Relative scale</span><span class="right">Round move</span>
+      </div>
+      <div class="board-list" data-board-list></div>
+    </section>
+  </main>
+  <footer class="prototype-footer">Public prototype · invented figures · no IDs, rules, provenance internals or value computation · motion can be paused</footer>
+  <script src="scripts/demo-data.js"></script><script src="scripts/kinetic.js"></script>
+</body>
+</html>
