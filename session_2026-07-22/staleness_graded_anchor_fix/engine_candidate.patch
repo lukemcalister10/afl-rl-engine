@@ -1,0 +1,47 @@
+diff --git a/engine/rl_after/_merged_recover.py b/engine/rl_after/_merged_recover.py
+index b7fd883..5e5e42c 100644
+--- a/engine/rl_after/_merged_recover.py
++++ b/engine/rl_after/_merged_recover.py
+@@ -1411,6 +1411,26 @@ def _prod_path(p,Y):
+     finally: r['games']=g0
+     return float(np.mean(out))
+ # ===== WIRED ev =====
++# D8 GRADED STALENESS RELEASE (owner-authorized remediation, 2026-07-22).
++# Frozen 532-cell historical design; no current-board tuning and no named-player exception.
++_D8Q=[0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80]
++_D8G1=[0.25789,0.25789,0.25789,0.30834,0.36155,0.42112,0.49276,0.56996,0.59452]
++_D8G2=[0.0,0.00275,0.00275,0.04319,0.08776,0.13367,0.18032,0.20098,0.20408]
++def _staleness_grade(p,Y,pos):
++    """Evidence release for the stalled-one-season population at evidence year Y."""
++    current=[x for x in p['scoring'] if x['year']==Y]
++    current_qual=any(x['games']>=6.0*_fEy(Y,p) for x in current)
++    if current_qual:
++        return 1.0
++    live=[x for x in current if x['games']>0]
++    if not live:
++        return 0.0
++    prior_qual=[x['year'] for x in p['scoring'] if x['year']<Y and x['games']>=6]
++    if not prior_qual:
++        return 0.0
++    qv=(live[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)
++    gap=Y-max(prior_qual)
++    return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
+ def ev(p,Y=2026):
+     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
+     if delisted(p): return round(0.02*v0_start(p))
+@@ -1445,9 +1465,13 @@ def ev(p,Y=2026):
+     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
+         return round(sitout_ev(p,Y,e))
+     keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = (4 if keyruc else 3)
+-    if el>=onset and ns<=1:                                   # stalled: essentially no production after the window
++    if el>=onset and ns<=1:                                   # stalled: D8 graded release by true-now evidence
+         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
+-        e=min(e, v0*frac)
++        cap=v0*frac
++        # Forward lens law: form/evidence is anchored to true-now by Leg E. Asking for a future
++        # valuation year must not look for unknowable future scoring rows and silently set grade=0.
++        gr=_staleness_grade(p,_fa_year(Y),pos)
++        e=min(e, cap+gr*max(0.0,e-cap))
+     elif el>=onset+2 and pr<0.55:                             # mediocre-for-years (played but never near par) -> decays too
+         frac=0.45*max(0.3,1-0.08*(el-onset))*(1.5 if keyruc else 1.0)
+         e=min(e, v0*frac)

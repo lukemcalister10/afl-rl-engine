@@ -1,0 +1,20 @@
+key,name,position,afl_club,affl_team,before,after,delta,before_rank,after_rank,before_plus1,after_plus1,delta_plus1,before_plus2,after_plus2,delta_plus2,after_plus1_minus_present,after_plus2_minus_plus1,stalled_fire_population,grade_now,forward_anchor_year_plus1,forward_anchor_year_plus2,grade_plus1,grade_plus2,current_games,current_average,tenure,qualifying_seasons,cap_onset
+angus-hastie,Angus Hastie,GEN_DEF,St Kilda,Richmond Tigers,333,333,0,458,466,157,222,65,157,168,11,-111,-54,False,,,,,,5.0,45.6,3,2,3
+ashton-moir,Ashton Moir,GEN_FWD,Carlton,St Kilda Saints,224,297,73,542,498,176,225,49,176,200,24,-72,-25,True,0.41969,2026,2026,0.41969,0.41969,2.0,46.0,3,1,3
+billy-dowling,Billy Dowling,GEN_FWD,Adelaide,Essendon Bombers,124,192,68,634,583,121,181,60,121,188,67,-11,7,True,0.1883,2026,2026,0.1883,0.1883,1.0,51.0,4,1,3
+billy-wilson,Billy Wilson,GEN_DEF,Carlton,Western Bulldogs,174,849,675,592,268,155,869,714,155,912,757,20,43,True,1.0,2026,2026,1.0,1.0,10.0,72.0,3,1,3
+cooper-lord,Cooper Lord,MID,Carlton,Western Bulldogs,226,723,497,540,298,96,632,536,96,603,507,-91,-29,True,0.59452,2026,2026,0.59452,0.59452,4.0,76.78,3,1,3
+isaac-keeler,Isaac Keeler,KEY_FWD,St Kilda,Hawthorn Hawks,313,337,24,479,460,210,220,10,199,199,0,-117,-21,True,0.35231,2026,2026,0.35231,0.35231,2.0,39.5,4,1,4
+jai-culley,Jai Culley,MID,Melbourne,Western Bulldogs,78,262,184,687,521,77,229,152,77,211,134,-33,-18,True,1.0,2026,2026,1.0,1.0,7.0,63.2,5,1,3
+jai-serong,Jai Serong,GEN_DEF,Sydney,North Melbourne Kangaroos,116,894,778,639,256,116,867,751,116,849,733,-27,-18,True,1.0,2026,2026,1.0,1.0,17.0,73.65,5,1,3
+james-leake,James Leake,GEN_DEF,GWS,Hawthorn Hawks,282,544,262,498,366,410,410,0,410,410,0,-134,0,True,1.0,2026,2026,1.0,1.0,5.0,53.6,3,1,3
+max-heath,Max Heath,RUC,Melbourne,Sydney Swans,210,722,512,555,300,208,663,455,208,637,429,-59,-26,True,1.0,2026,2026,1.0,1.0,7.0,51.4,6,1,4
+oscar-steene,Oscar Steene,RUC,Collingwood,Adelaide Crows,310,612,302,483,333,275,572,297,275,543,268,-40,-29,True,1.0,2026,2026,1.0,1.0,8.0,51.6,4,1,4
+phoenix-gothard,Phoenix Gothard,GEN_FWD,GWS,Hawthorn Hawks,410,1852,1442,415,135,367,1890,1523,367,1944,1577,38,54,True,1.0,2026,2026,1.0,1.0,15.0,68.78,3,1,3
+riley-hardeman,Riley Hardeman,GEN_DEF,North Melbourne,Sydney Swans,247,317,70,528,483,177,234,57,177,216,39,-83,-18,True,0.25789,2026,2026,0.25789,0.25789,4.0,37.75,3,1,3
+sandy-brock,Sandy Brock,KEY_DEF,West Coast,Sydney Swans,201,235,34,563,544,199,211,12,199,214,15,-24,3,True,0.42196,2026,2026,0.42196,0.42196,4.0,44.5,5,1,4
+shadeau-brain,Shadeau Brain,GEN_DEF,Brisbane,Essendon Bombers,80,94,14,685,671,78,80,2,68,68,0,-14,-12,True,0.17663,2026,2026,0.17663,0.17663,2.0,54.5,4,1,3
+tom-hanily,Tom Hanily,GEN_FWD,Sydney,Richmond Tigers,106,158,52,654,611,72,103,31,72,97,25,-55,-6,True,0.44972,2026,2026,0.44972,0.44972,4.0,47.5,3,1,3
+will-edwards,Will Edwards,KEY_DEF,Sydney,Essendon Bombers,220,255,35,547,530,220,258,38,220,248,28,3,-10,True,1.0,2026,2026,1.0,1.0,11.0,55.63,4,1,4
+will-lorenz,Will Lorenz,MID,Port Adelaide,Richmond Tigers,281,419,138,501,419,182,274,92,182,271,89,-145,-3,True,0.42015,2026,2026,0.42015,0.42015,1.0,52.0,3,1,3
+will-mclachlan,Will McLachlan,GEN_FWD,Brisbane,Free agents,116,137,21,640,630,83,98,15,83,98,15,-39,0,True,0.25789,2026,2026,0.25789,0.25789,1.0,28.0,3,1,3

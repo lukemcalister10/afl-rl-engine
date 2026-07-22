@@ -1,0 +1,805 @@
+key,name,position,afl_club,affl_team,before,after,delta,before_rank,after_rank,before_plus1,after_plus1,delta_plus1,before_plus2,after_plus2,delta_plus2,after_plus1_minus_present,after_plus2_minus_plus1,stalled_fire_population,grade_now,forward_anchor_year_plus1,forward_anchor_year_plus2,grade_plus1,grade_plus2,current_games,current_average,tenure,qualifying_seasons,cap_onset
+aaron-cadman,Aaron Cadman,KEY_FWD,GWS,Richmond Tigers,2175,2175,0,102,102,2442,2442,0,2072,2072,0,267,-370,False,,,,,,13.0,70.25,4,4,4
+aaron-naughton,Aaron Naughton,KEY_FWD,Western Bulldogs,Sydney Swans,1407,1407,0,178,179,1207,1207,0,945,945,0,-200,-262,False,,,,,,18.0,67.55,9,9,4
+adam-cerra,Adam Cerra,MID,Carlton,Adelaide Crows,1194,1194,0,201,202,1097,1097,0,856,856,0,-97,-241,False,,,,,,14.0,81.35,9,9,3
+adam-saad,Adam Saad,GEN_DEF,Carlton,Geelong Cats,614,614,0,326,331,400,400,0,255,255,0,-214,-145,False,,,,,,3.0,75.0,12,11,3
+adam-sweid,Adam Sweid,GEN_FWD,Fremantle,Sydney Swans,579,579,0,344,350,579,579,0,579,579,0,0,0,False,,,,,,0,,1,0,3
+adam-treloar,Adam Treloar,MID,Western Bulldogs,West Coast Eagles,627,627,0,320,325,229,229,0,214,214,0,-398,-15,False,,,,,,5.0,53.8,15,14,3
+aidan-corr,Aidan Corr,KEY_DEF,North Melbourne,Geelong Cats,49,49,0,722,722,49,49,0,49,49,0,0,0,False,,,,,,11.0,53.99,14,11,4
+aidan-johnson,Aidan Johnson,KEY_FWD,Melbourne,Free agents,73,73,0,696,696,58,58,0,58,58,0,-15,0,False,,,,,,1.0,34.0,2,0,4
+aidan-schubert,Aidan Schubert,KEY_FWD,Hawthorn,Fremantle Dockers,623,623,0,321,326,623,623,0,623,623,0,0,0,False,,,,,,0,,1,0,4
+aiden-riddle,Aiden Riddle,RUC,Fremantle,Fremantle Dockers,446,446,0,395,402,446,446,0,446,446,0,0,0,False,,,,,,0,,2,0,4
+alex-davies,Alex Davies,MID,Gold Coast,Western Bulldogs,480,480,0,377,384,391,391,0,361,361,0,-89,-30,False,,,,,,6.0,64.8,6,5,3
+alex-dodson,Alex Dodson,RUC,St Kilda,Hawthorn Hawks,455,455,0,390,397,435,435,0,435,435,0,-20,0,False,,,,,,0,,2,0,4
+alex-neal-bullen,Alex Neal-Bullen,GEN_FWD,Adelaide,West Coast Eagles,442,442,0,399,406,324,324,0,235,235,0,-118,-89,False,,,,,,17.0,71.69,12,11,3
+alex-pearce,Alex Pearce,KEY_DEF,Fremantle,Geelong Cats,38,38,0,742,742,38,38,0,38,38,0,0,0,False,,,,,,16.0,50.37,13,10,4
+alex-van-wyk,Alex Van Wyk,RUC,Port Adelaide,Adelaide Crows,581,581,0,339,345,581,581,0,581,581,0,0,0,False,,,,,,0,,1,0,4
+aliir-aliir,Aliir Aliir,KEY_DEF,Port Adelaide,North Melbourne Kangaroos,1005,1005,0,231,232,809,809,0,655,655,0,-196,-154,False,,,,,,18.0,83.1,13,10,4
+alix-tauru,Alix Tauru,KEY_DEF,St Kilda,Western Bulldogs,1527,1527,0,163,164,1423,1423,0,1327,1327,0,-104,-96,False,,,,,,8.0,41.9,2,2,4
+andrew-brayshaw,Andrew Brayshaw,MID,Fremantle,St Kilda Saints,3002,3002,0,57,57,2756,2756,0,2418,2418,0,-246,-338,False,,,,,,18.0,99.53,9,9,3
+andrew-mcgrath,Andrew McGrath,GEN_DEF,Essendon,Geelong Cats,1118,1118,0,209,210,931,931,0,723,723,0,-187,-208,False,,,,,,15.0,80.81,10,10,3
+andy-moniz-wakefield,Andy Moniz-Wakefield,GEN_DEF,Melbourne,West Coast Eagles,46,46,0,728,728,31,31,0,31,31,0,-15,0,True,0.0,2026,2026,0.0,0.0,2.0,29.5,5,1,3
+angus-anderson,Angus Anderson,MID,Collingwood,North Melbourne Kangaroos,192,192,0,579,582,138,138,0,138,138,0,-54,0,False,,,,,,10.0,57.05,1,1,3
+angus-clarke,Angus Clarke,GEN_DEF,Essendon,Carlton Blues,761,761,0,280,283,706,706,0,680,680,0,-55,-26,False,,,,,,2.0,57.0,2,1,3
+angus-hastie,Angus Hastie,GEN_DEF,St Kilda,Richmond Tigers,333,333,0,458,466,157,222,65,157,168,11,-111,-54,False,,,,,,5.0,45.6,3,2,3
+angus-sheldrick,Angus Sheldrick,MID,Sydney,Western Bulldogs,809,809,0,274,277,760,760,0,708,708,0,-49,-52,False,,,,,,17.0,68.11,5,3,3
+anthony-caminiti,Anthony Caminiti,KEY_FWD,St Kilda,Collingwood Magpies,1077,1077,0,216,217,649,649,0,608,608,0,-428,-41,False,,,,,,15.0,45.43,4,4,4
+archer-day-wicks,Archer Day-Wicks,GEN_FWD,Essendon,Adelaide Crows,381,381,0,429,436,333,333,0,280,280,0,-48,-53,False,,,,,,16.0,49.28,2,1,3
+archer-reid,Archer Reid,KEY_FWD,West Coast,Melbourne Demons,842,842,0,269,272,698,698,0,620,620,0,-144,-78,False,,,,,,6.0,37.3,3,2,4
+archie-ludowyke,Archie Ludowyke,KEY_FWD,Adelaide,Fremantle Dockers,354,354,0,445,452,354,354,0,354,354,0,0,0,False,,,,,,0,,1,0,4
+archie-may,Archie May,KEY_FWD,Essendon,Western Bulldogs,477,477,0,380,387,458,458,0,432,432,0,-19,-26,False,,,,,,10.0,47.8,2,2,4
+archie-perkins,Archie Perkins,GEN_FWD,Essendon,Melbourne Demons,298,298,0,490,497,278,278,0,262,262,0,-20,-16,False,,,,,,13.0,57.07,6,6,3
+archie-roberts,Archie Roberts,MID,Essendon,St Kilda Saints,5006,5006,0,14,14,5233,5233,0,5361,5361,0,227,128,False,,,,,,16.0,102.28,3,2,3
+arthur-jones,Arthur Jones,GEN_FWD,Western Bulldogs,Adelaide Crows,126,126,0,631,636,101,101,0,87,87,0,-25,-14,False,,,,,,13.0,55.87,5,2,3
+asher-eastham,Asher Eastham,GEN_FWD,Gold Coast,Free agents,187,187,0,582,586,187,187,0,187,187,0,0,0,False,,,,,,0,,2,0,3
+ashton-moir,Ashton Moir,GEN_FWD,Carlton,St Kilda Saints,224,297,73,542,498,176,225,49,176,200,24,-72,-25,True,0.41969,2026,2026,0.41969,0.41969,2.0,46.0,3,1,3
+avery-thomas,Avery Thomas,GEN_DEF,Gold Coast,Melbourne Demons,501,501,0,372,379,501,501,0,501,501,0,0,0,False,,,,,,0,,1,0,3
+bailey-banfield,Bailey Banfield,GEN_DEF,Fremantle,St Kilda Saints,11,11,0,787,787,4,4,0,3,3,0,-7,-1,False,,,,,,0,,9,7,3
+bailey-dale,Bailey Dale,GEN_DEF,Western Bulldogs,Geelong Cats,2377,2377,0,86,86,2155,2155,0,1778,1778,0,-222,-377,False,,,,,,17.0,103.3,12,11,3
+bailey-humphrey,Bailey Humphrey,MID,Gold Coast,Western Bulldogs,2121,2121,0,107,107,2099,2099,0,2033,2033,0,-22,-66,False,,,,,,15.0,63.2,4,4,3
+bailey-laurie,Bailey Laurie,GEN_FWD,Melbourne,Free agents,72,72,0,698,698,40,40,0,40,40,0,-32,0,False,,,,,,11.0,47.7,6,2,3
+bailey-macdonald,Bailey Macdonald,GEN_DEF,Hawthorn,Western Bulldogs,171,171,0,595,598,115,115,0,105,105,0,-56,-10,False,,,,,,8.0,54.12,4,2,3
+bailey-scott,Bailey Scott,MID,North Melbourne,Free agents,33,33,0,752,752,33,33,0,33,33,0,0,0,False,,,,,,1.0,82.0,8,6,3
+bailey-smith,Bailey Smith,MID,Geelong,Geelong Cats,5882,5882,0,10,10,5512,5512,0,4963,4963,0,-370,-549,False,,,,,,17.0,120.97,8,7,3
+bailey-williams-wb,Bailey Williams,GEN_DEF,Western Bulldogs,Collingwood Magpies,753,753,0,285,288,610,610,0,455,455,0,-143,-155,False,,,,,,12.0,86.08,11,11,3
+bailey-williams-wc,Bailey J. Williams,RUC,West Coast,Sydney Swans,2037,2037,0,118,118,1749,1749,0,1583,1583,0,-288,-166,False,,,,,,13.0,90.62,8,6,4
+balyn-o-brien,Balyn O'Brien,GEN_DEF,Port Adelaide,Free agents,272,272,0,507,513,272,272,0,272,272,0,0,0,False,,,,,,1.0,30.0,1,0,3
+bayley-fritsch,Bayley Fritsch,GEN_FWD,Melbourne,Geelong Cats,188,188,0,580,584,112,112,0,67,67,0,-76,-45,False,,,,,,16.0,69.17,9,9,3
+beau-addinsall,Beau Addinsall,MID,Gold Coast,Fremantle Dockers,1308,1308,0,191,192,1308,1308,0,1308,1308,0,0,0,False,,,,,,5.0,56.6,1,1,3
+beau-mccreery,Beau McCreery,GEN_FWD,Collingwood,West Coast Eagles,193,193,0,576,579,181,181,0,168,168,0,-12,-13,False,,,,,,17.0,62.74,6,6,3
+ben-ainsworth,Ben Ainsworth,GEN_FWD,Carlton,Brisbane Lions,299,299,0,488,495,163,163,0,122,122,0,-136,-41,False,,,,,,18.0,69.64,10,10,3
+ben-camporeale,Ben Camporeale,MID,Carlton,Fremantle Dockers,327,327,0,466,474,327,327,0,327,327,0,0,0,False,,,,,,0,,2,0,3
+ben-jepson,Ben Jepson,MID,Gold Coast,Free agents,11,11,0,788,788,13,13,0,10,10,0,2,-3,False,,,,,,4.0,43.25,2,0,3
+ben-keays,Ben Keays,GEN_FWD,Adelaide,Adelaide Crows,453,453,0,392,399,357,357,0,245,245,0,-96,-112,False,,,,,,18.0,70.84,11,9,3
+ben-king,Ben King,KEY_FWD,Gold Coast,Sydney Swans,331,331,0,460,468,254,254,0,201,201,0,-77,-53,False,,,,,,18.0,58.86,8,7,4
+ben-long,Ben Long,GEN_FWD,Gold Coast,Richmond Tigers,32,32,0,755,755,32,32,0,32,32,0,0,0,False,,,,,,16.0,57.95,10,9,3
+ben-mckay,Ben McKay,KEY_DEF,Essendon,West Coast Eagles,46,46,0,729,729,46,46,0,46,46,0,0,0,False,,,,,,14.0,49.95,11,7,4
+ben-miller,Ben Miller,KEY_DEF,Richmond,Sydney Swans,1143,1143,0,206,207,948,948,0,688,688,0,-195,-260,False,,,,,,17.0,74.13,9,5,4
+ben-murphy,Ben Murphy,GEN_DEF,Brisbane,North Melbourne Kangaroos,238,238,0,533,540,238,238,0,238,238,0,0,0,False,,,,,,0,,1,0,3
+benny-barrett,Benny Barrett,GEN_FWD,Port Adelaide,Free agents,125,125,0,632,637,125,125,0,125,125,0,0,0,False,,,,,,0,,2,0,3
+billy-cootee,Billy Cootee,MID,Sydney,Essendon Bombers,89,89,0,673,675,80,80,0,74,74,0,-9,-6,False,,,,,,4.0,36.0,1,0,3
+billy-dowling,Billy Dowling,GEN_FWD,Adelaide,Essendon Bombers,124,192,68,634,583,121,181,60,121,188,67,-11,7,True,0.1883,2026,2026,0.1883,0.1883,1.0,51.0,4,1,3
+billy-frampton,Billy Frampton,KEY_DEF,Collingwood,Brisbane Lions,105,105,0,655,656,59,59,0,41,41,0,-46,-18,False,,,,,,18.0,63.94,12,6,4
+billy-wilson,Billy Wilson,GEN_DEF,Carlton,Western Bulldogs,174,849,675,592,268,155,869,714,155,912,757,20,43,True,1.0,2026,2026,1.0,1.0,10.0,72.0,3,1,3
+blake-acres,Blake Acres,MID,Carlton,Brisbane Lions,214,214,0,553,558,115,115,0,71,71,0,-99,-44,False,,,,,,5.0,76.4,13,12,3
+blake-hardwick,Blake Hardwick,GEN_DEF,Hawthorn,Port Adelaide Power,632,632,0,318,323,481,481,0,345,345,0,-151,-136,False,,,,,,18.0,81.0,11,10,3
+blake-howes,Blake Howes,GEN_DEF,Melbourne,Essendon Bombers,334,334,0,456,464,308,308,0,286,286,0,-26,-22,False,,,,,,18.0,64.97,5,3,3
+blake-thredgold,Blake Thredgold,KEY_DEF,North Melbourne,Fremantle Dockers,541,541,0,362,369,541,541,0,541,541,0,0,0,False,,,,,,0,,1,0,4
+bo-allan,Bo Allan,GEN_DEF,West Coast,Melbourne Demons,1193,1193,0,202,203,1102,1102,0,1021,1021,0,-91,-81,False,,,,,,15.0,57.06,2,2,3
+bobby-hill,Bobby Hill,GEN_FWD,Collingwood,West Coast Eagles,57,57,0,711,711,39,39,0,39,39,0,-18,0,False,,,,,,0,,8,5,3
+bodhi-uwland,Bodhi Uwland,GEN_DEF,Gold Coast,Port Adelaide Power,3812,3812,0,34,34,3862,3862,0,3881,3881,0,50,19,False,,,,,,18.0,100.56,5,3,3
+bodie-ryan,Bodie Ryan,GEN_DEF,Hawthorn,Collingwood Magpies,329,329,0,464,472,287,287,0,287,287,0,-42,0,False,,,,,,4.0,37.88,3,0,3
+bradley-close,Bradley Close,GEN_FWD,Geelong,Geelong Cats,29,29,0,763,763,15,15,0,11,11,0,-14,-4,False,,,,,,11.0,46.91,7,7,3
+bradley-hill,Bradley Hill,GEN_FWD,St Kilda,Port Adelaide Power,1255,1255,0,196,197,1105,1105,0,967,967,0,-150,-138,False,,,,,,18.0,91.48,15,14,3
+brady-hough,Brady Hough,GEN_DEF,West Coast,Essendon Bombers,331,331,0,461,469,297,297,0,275,275,0,-34,-22,False,,,,,,18.0,55.94,5,5,3
+braeden-campbell,Braeden Campbell,GEN_DEF,Sydney,Essendon Bombers,374,374,0,434,441,297,297,0,282,282,0,-77,-15,False,,,,,,1.0,65.0,6,5,3
+brandon-starcevich,Brandon Starcevich,GEN_DEF,Brisbane,Melbourne Demons,42,42,0,736,736,42,42,0,42,42,0,0,0,False,,,,,,6.0,54.83,9,7,3
+brandon-walker,Brandon Walker,GEN_DEF,Fremantle,Port Adelaide Power,94,94,0,667,668,66,66,0,60,60,0,-28,-6,False,,,,,,1.0,38.0,6,4,3
+brandon-zerk-thatcher,Brandon Zerk-Thatcher,KEY_DEF,Essendon,Free agents,119,119,0,638,642,58,58,0,48,48,0,-61,-10,False,,,,,,3.0,39.67,9,6,4
+brayden-cook,Brayden Cook,MID,Adelaide,North Melbourne Kangaroos,899,899,0,253,254,819,819,0,778,778,0,-80,-41,False,,,,,,18.0,73.94,6,3,3
+brayden-fiorini,Brayden Fiorini,MID,Essendon,Brisbane Lions,282,282,0,497,505,294,294,0,171,171,0,12,-123,False,,,,,,2.0,57.5,11,8,3
+brayden-george,Brayden George,GEN_FWD,North Melbourne,Richmond Tigers,317,317,0,474,482,317,317,0,317,317,0,0,0,False,,,,,,0,,4,0,3
+brayden-maynard,Brayden Maynard,GEN_DEF,Collingwood,North Melbourne Kangaroos,782,782,0,277,280,625,625,0,433,433,0,-157,-192,False,,,,,,16.0,85.41,12,12,3
+brennan-cox,Brennan Cox,KEY_DEF,Fremantle,Sydney Swans,372,372,0,435,442,329,329,0,258,258,0,-43,-71,False,,,,,,15.0,66.47,10,10,4
+brent-daniels,Brent Daniels,GEN_FWD,GWS,Essendon Bombers,1376,1376,0,183,184,1214,1214,0,966,966,0,-162,-248,False,,,,,,9.0,83.76,9,8,3
+brodie-grundy,Brodie Grundy,RUC,Sydney,St Kilda Saints,4295,4295,0,21,21,3954,3954,0,3530,3530,0,-341,-424,False,,,,,,17.0,120.88,14,14,4
+brodie-kemp,Brodie Kemp,KEY_FWD,Carlton,Geelong Cats,720,720,0,296,301,548,548,0,434,434,0,-172,-114,False,,,,,,18.0,62.45,7,3,4
+brody-mihocek,Brody Mihocek,KEY_FWD,Melbourne,Brisbane Lions,11,11,0,789,789,25,25,0,22,22,0,14,-3,False,,,,,,10.0,55.3,9,9,4
+bruce-reville,Bruce Reville,MID,Brisbane,North Melbourne Kangaroos,72,72,0,699,699,69,69,0,65,65,0,-3,-4,False,,,,,,17.0,64.01,3,3,3
+buku-khamis,Buku Khamis,KEY_DEF,Western Bulldogs,Brisbane Lions,85,85,0,677,679,50,50,0,42,42,0,-35,-8,False,,,,,,18.0,57.26,8,4,4
+caiden-cleary,Caiden Cleary,GEN_FWD,Sydney,Carlton Blues,501,501,0,373,380,405,405,0,335,335,0,-96,-70,False,,,,,,8.0,51.75,3,2,3
+caleb-daniel,Caleb Daniel,GEN_DEF,North Melbourne,Port Adelaide Power,1549,1549,0,160,161,1359,1359,0,1054,1054,0,-190,-305,False,,,,,,18.0,96.14,12,12,3
+caleb-graham,Caleb Graham,KEY_DEF,Gold Coast,Free agents,62,62,0,703,703,42,42,0,32,32,0,-20,-10,False,,,,,,0,,8,3,4
+caleb-lewis,Caleb Lewis,KEY_FWD,Gold Coast,Free agents,207,207,0,558,562,207,207,0,207,207,0,0,0,False,,,,,,1.0,24.0,2,0,4
+caleb-may,Caleb May,RUC,Western Bulldogs,Melbourne Demons,581,581,0,340,346,581,581,0,581,581,0,0,0,False,,,,,,0,,1,0,4
+caleb-serong,Caleb Serong,MID,Fremantle,Western Bulldogs,4580,4580,0,19,19,4006,4006,0,3438,3438,0,-574,-568,False,,,,,,15.0,100.2,7,7,3
+caleb-windsor,Caleb Windsor,MID,Melbourne,Western Bulldogs,1521,1521,0,165,166,1483,1483,0,1427,1427,0,-38,-56,False,,,,,,16.0,59.8,3,3,3
+callum-ah-chee,Callum Ah Chee,GEN_FWD,Adelaide,Geelong Cats,84,84,0,678,680,84,84,0,84,84,0,0,0,False,,,,,,4.0,50.3,11,9,3
+callum-brown-ire,Callum M. Brown,GEN_FWD,GWS,St Kilda Saints,56,56,0,712,712,38,38,0,29,29,0,-18,-9,False,,,,,,13.0,56.09,8,5,3
+callum-coleman-jones,Callum Coleman-Jones,KEY_FWD,North Melbourne,Free agents,42,42,0,737,737,42,42,0,42,42,0,0,0,False,,,,,,5.0,35.24,9,4,4
+callum-mills,Callum Mills,GEN_DEF,Sydney,Collingwood Magpies,2301,2301,0,91,91,2060,2060,0,1784,1784,0,-241,-276,False,,,,,,17.0,100.23,11,11,3
+callum-wilkie,Callum Wilkie,KEY_DEF,St Kilda,North Melbourne Kangaroos,3634,3634,0,40,40,3376,3376,0,3035,3035,0,-258,-341,False,,,,,,18.0,108.15,8,8,4
+calsher-dear,Calsher Dear,KEY_FWD,Hawthorn,Collingwood Magpies,962,962,0,238,239,855,855,0,807,807,0,-107,-48,False,,,,,,5.0,53.44,3,3,4
+cameron-mackenzie,Cameron Mackenzie,MID,Hawthorn,Western Bulldogs,1616,1616,0,152,153,1595,1595,0,1547,1547,0,-21,-48,False,,,,,,16.0,72.95,4,4,3
+cameron-nairn,Cameron Nairn,GEN_FWD,Hawthorn,Hawthorn Hawks,767,767,0,279,282,702,702,0,702,702,0,-65,0,False,,,,,,3.0,42.8,1,0,3
+cameron-rayner,Cameron Rayner,GEN_FWD,Brisbane,Geelong Cats,738,738,0,290,293,564,564,0,339,339,0,-174,-225,False,,,,,,18.0,71.01,9,8,3
+cameron-zurhaar,Cameron Zurhaar,GEN_FWD,North Melbourne,Richmond Tigers,146,146,0,618,622,73,73,0,52,52,0,-73,-21,False,,,,,,18.0,66.11,10,8,3
+campbell-chesser,Campbell Chesser,MID,Carlton,Essendon Bombers,341,341,0,450,457,227,227,0,204,204,0,-114,-23,False,,,,,,3.0,62.7,5,2,3
+campbell-gray,Campbell Gray,KEY_DEF,Richmond,Carlton Blues,261,261,0,516,523,257,257,0,278,278,0,-4,21,False,,,,,,9.0,47.0,3,1,4
+campbell-lake,Campbell Lake,GEN_FWD,St Kilda,Richmond Tigers,178,178,0,588,592,170,170,0,170,170,0,-8,0,False,,,,,,5.0,59.8,1,1,3
+chad-warner,Chad Warner,MID,Sydney,North Melbourne Kangaroos,3192,3192,0,53,53,2831,2831,0,2522,2522,0,-361,-309,False,,,,,,18.0,93.65,7,6,3
+changkuoth-jiath,Changkuoth Jiath,GEN_DEF,Melbourne,Western Bulldogs,29,29,0,764,764,21,21,0,12,12,0,-8,-9,False,,,,,,11.0,66.56,9,6,3
+charlie-ballard,Charlie Ballard,KEY_DEF,Gold Coast,Carlton Blues,162,162,0,603,606,109,109,0,80,80,0,-53,-29,False,,,,,,6.0,43.17,9,8,4
+charlie-banfield,Charlie Banfield,MID,St Kilda,Melbourne Demons,707,707,0,297,302,618,618,0,618,618,0,-89,0,False,,,,,,3.0,54.3,1,0,3
+charlie-cameron,Charlie Cameron,GEN_FWD,Brisbane,Sydney Swans,295,295,0,493,501,200,200,0,175,175,0,-95,-25,False,,,,,,18.0,73.79,13,13,3
+charlie-comben,Charlie Comben,KEY_DEF,North Melbourne,St Kilda Saints,1039,1039,0,221,222,896,896,0,709,709,0,-143,-187,False,,,,,,17.0,67.65,7,4,4
+charlie-curnow,Charlie Curnow,KEY_FWD,Carlton,Adelaide Crows,1574,1574,0,158,159,1233,1233,0,932,932,0,-341,-301,False,,,,,,17.0,73.99,11,9,4
+charlie-edwards,Charlie Edwards,MID,Adelaide,Hawthorn Hawks,731,731,0,292,295,669,669,0,669,669,0,-62,0,False,,,,,,2.0,47.5,3,0,3
+charlie-nicholls,Charlie Nicholls,KEY_FWD,Fremantle,Hawthorn Hawks,341,341,0,451,458,341,341,0,341,341,0,0,0,False,,,,,,0,,2,0,4
+charlie-spargo,Charlie Spargo,GEN_FWD,Melbourne,Port Adelaide Power,35,35,0,748,748,35,35,0,35,35,0,0,0,False,,,,,,14.0,50.25,9,8,3
+charlie-west,Charlie West,KEY_FWD,Collingwood,Western Bulldogs,475,475,0,381,388,415,415,0,415,415,0,-60,0,False,,,,,,3.0,33.67,2,0,4
+chayce-jones,Chayce Jones,MID,Adelaide,Free agents,113,113,0,642,644,113,113,0,113,113,0,0,0,False,,,,,,3.0,47.3,8,6,3
+chris-scerri,Chris Scerri,GEN_FWD,Fremantle,Richmond Tigers,315,315,0,476,485,268,268,0,226,226,0,-47,-42,False,,,,,,7.0,47.6,1,1,3
+christian-moraes,Christian Moraes,MID,Port Adelaide,Richmond Tigers,933,933,0,245,246,830,830,0,731,731,0,-103,-99,False,,,,,,8.0,51.26,2,2,3
+christian-petracca,Christian Petracca,MID,Gold Coast,West Coast Eagles,2140,2140,0,105,105,1734,1734,0,1345,1345,0,-406,-389,False,,,,,,16.0,101.85,12,11,3
+christian-salem,Christian Salem,GEN_DEF,Melbourne,Port Adelaide Power,563,563,0,350,356,367,367,0,286,286,0,-196,-81,False,,,,,,5.0,76.8,13,13,3
+cillian-bourke,Cillian Bourke,GEN_DEF,Essendon,Free agents,326,326,0,467,475,326,326,0,326,326,0,0,0,False,,,,,,0,,1,0,3
+cillian-burke,Cillian Burke,GEN_DEF,Geelong,Port Adelaide Power,107,107,0,649,651,107,107,0,107,107,0,0,0,False,,,,,,0,,2,0,3
+clay-hall,Clay Hall,MID,West Coast,Collingwood Magpies,402,402,0,418,425,194,194,0,194,194,0,-208,0,True,0.0,2026,2026,0.0,0.0,0,,3,1,3
+clayton-oliver,Clayton Oliver,MID,GWS,North Melbourne Kangaroos,2534,2534,0,76,76,2257,2257,0,1851,1851,0,-277,-406,False,,,,,,18.0,107.29,11,11,3
+cody-anderson,Cody Anderson,GEN_FWD,Hawthorn,Free agents,179,179,0,587,591,179,179,0,179,179,0,0,0,False,,,,,,0,,2,0,3
+cody-angove,Cody Angove,MID,GWS,Hawthorn Hawks,580,580,0,343,349,496,496,0,490,490,0,-84,-6,False,,,,,,0,,2,0,3
+cody-curtin,Cody Curtin,KEY_FWD,Brisbane,St Kilda Saints,674,674,0,306,311,562,562,0,562,562,0,-112,0,False,,,,,,4.0,29.8,1,0,4
+cody-weightman,Cody Weightman,GEN_FWD,Western Bulldogs,Collingwood Magpies,224,224,0,543,549,142,142,0,108,108,0,-82,-34,False,,,,,,5.0,50.6,7,5,3
+colby-mckercher,Colby McKercher,MID,North Melbourne,Richmond Tigers,3950,3950,0,30,30,4081,4081,0,4127,4127,0,131,46,False,,,,,,18.0,81.11,3,3,3
+connor-budarick,Connor Budarick,GEN_DEF,Western Bulldogs,Brisbane Lions,186,186,0,583,587,143,143,0,88,88,0,-43,-55,False,,,,,,12.0,74.62,7,5,3
+connor-idun,Connor Idun,GEN_DEF,GWS,North Melbourne Kangaroos,2299,2299,0,92,92,2062,2062,0,1858,1858,0,-237,-204,False,,,,,,18.0,91.7,8,6,3
+connor-macdonald,Connor MacDonald,GEN_FWD,Hawthorn,Richmond Tigers,2711,2711,0,70,70,2688,2688,0,2543,2543,0,-23,-145,False,,,,,,18.0,85.02,5,5,3
+connor-o-sullivan,Connor O'Sullivan,KEY_DEF,Geelong,Western Bulldogs,2894,2894,0,62,62,3068,3068,0,3185,3185,0,174,117,False,,,,,,18.0,72.62,3,2,4
+connor-rozee,Connor Rozee,MID,Port Adelaide,Adelaide Crows,2859,2859,0,64,64,2948,2948,0,2473,2473,0,89,-475,False,,,,,,2.0,80.0,8,7,3
+conor-mckenna,Conor McKenna,GEN_FWD,Brisbane,St Kilda Saints,12,12,0,784,784,7,7,0,4,4,0,-5,-3,False,,,,,,12.0,58.39,12,8,3
+conor-nash,Conor Nash,MID,Hawthorn,Sydney Swans,339,339,0,452,459,219,219,0,128,128,0,-120,-91,False,,,,,,10.0,79.1,10,7,3
+conor-stone,Conor Stone,GEN_DEF,GWS,Brisbane Lions,86,86,0,675,677,48,48,0,48,48,0,-38,0,False,,,,,,7.0,57.57,6,2,3
+cooper-bell,Cooper Bell,KEY_DEF,Gold Coast,Free agents,325,325,0,470,478,325,325,0,325,325,0,0,0,False,,,,,,0,,2,0,4
+cooper-duff-tytler,Cooper Duff-Tytler,KEY_FWD,West Coast,Fremantle Dockers,1588,1588,0,154,155,1613,1613,0,1617,1617,0,25,4,False,,,,,,11.0,48.45,1,1,4
+cooper-harvey,Cooper Harvey,GEN_FWD,North Melbourne,Richmond Tigers,607,607,0,330,336,570,570,0,581,581,0,-37,11,False,,,,,,6.0,75.5,4,2,3
+cooper-hynes,Cooper Hynes,MID,Western Bulldogs,Fremantle Dockers,1256,1256,0,195,196,1141,1141,0,1033,1033,0,-115,-108,False,,,,,,16.0,48.89,2,2,3
+cooper-lord,Cooper Lord,MID,Carlton,Western Bulldogs,226,723,497,540,298,96,632,536,96,603,507,-91,-29,True,0.59452,2026,2026,0.59452,0.59452,4.0,76.78,3,1,3
+cooper-sharman,Cooper Sharman,KEY_FWD,St Kilda,Adelaide Crows,645,645,0,315,320,627,627,0,613,613,0,-18,-14,False,,,,,,18.0,62.86,6,5,4
+cooper-simpson,Cooper Simpson,GEN_DEF,Fremantle,Richmond Tigers,249,249,0,524,532,221,221,0,207,207,0,-28,-14,False,,,,,,0,,3,0,3
+cooper-trembath,Cooper Trembath,KEY_FWD,North Melbourne,Richmond Tigers,2046,2046,0,116,116,2243,2243,0,2569,2569,0,197,326,False,,,,,,18.0,64.91,2,1,4
+corey-durdin,Corey Durdin,GEN_FWD,Carlton,Port Adelaide Power,58,58,0,709,709,55,55,0,53,53,0,-3,-2,False,,,,,,18.0,55.71,6,5,3
+corey-wagner,Corey Wagner,GEN_DEF,Fremantle,Sydney Swans,43,43,0,735,735,29,29,0,29,29,0,-14,0,False,,,,,,12.0,69.2,11,5,3
+corey-warner,Corey Warner,GEN_FWD,Sydney,Melbourne Demons,74,74,0,693,693,51,51,0,29,29,0,-23,-22,False,,,,,,5.0,40.2,5,3,3
+dan-houston,Dan Houston,GEN_DEF,Collingwood,St Kilda Saints,1328,1328,0,189,190,1115,1115,0,891,891,0,-213,-224,False,,,,,,18.0,88.17,11,10,3
+dane-rampe,Dane Rampe,GEN_DEF,Sydney,Brisbane Lions,4,4,0,798,798,4,4,0,4,4,0,0,0,False,,,,,,11.0,61.73,14,14,3
+daniel-annable,Daniel Annable,MID,Brisbane,Fremantle Dockers,1869,1869,0,133,133,1789,1789,0,1789,1789,0,-80,0,False,,,,,,1.0,40.0,1,0,3
+daniel-butler,Daniel Butler,GEN_FWD,St Kilda,Free agents,20,20,0,780,780,20,20,0,20,20,0,0,0,False,,,,,,7.0,33.4,12,10,3
+daniel-curtin,Daniel Curtin,MID,Adelaide,Melbourne Demons,2367,2367,0,88,88,2373,2373,0,2359,2359,0,6,-14,False,,,,,,11.0,66.16,3,3,3
+daniel-mcstay,Daniel McStay,KEY_FWD,Collingwood,Brisbane Lions,111,111,0,647,649,88,88,0,59,59,0,-23,-29,False,,,,,,18.0,61.63,13,12,4
+daniel-rioli,Daniel Rioli,GEN_DEF,Gold Coast,Collingwood Magpies,760,760,0,281,284,602,602,0,453,453,0,-158,-149,False,,,,,,14.0,82.54,11,11,3
+daniel-turner,Daniel Turner,KEY_DEF,Melbourne,West Coast Eagles,1736,1736,0,143,144,1739,1739,0,1762,1762,0,3,23,False,,,,,,15.0,77.61,6,3,4
+dante-visentini,Dante Visentini,RUC,Port Adelaide,Adelaide Crows,1011,1011,0,225,226,921,921,0,881,881,0,-90,-40,False,,,,,,10.0,51.08,5,2,4
+darcy-byrne-jones,Darcy Byrne-Jones,GEN_DEF,Port Adelaide,Port Adelaide Power,465,465,0,385,392,273,273,0,200,200,0,-192,-73,False,,,,,,18.0,82.88,13,11,3
+darcy-cameron,Darcy Cameron,RUC,Collingwood,West Coast Eagles,1275,1275,0,193,194,1203,1203,0,965,965,0,-72,-238,False,,,,,,17.0,86.16,10,7,4
+darcy-fogarty,Darcy Fogarty,KEY_FWD,Adelaide,Port Adelaide Power,1007,1007,0,228,229,851,851,0,680,680,0,-156,-171,False,,,,,,12.0,73.48,9,8,4
+darcy-fort,Darcy Fort,RUC,Geelong,Collingwood Magpies,59,59,0,708,708,33,33,0,33,33,0,-26,0,False,,,,,,17.0,71.37,8,4,4
+darcy-gardiner,Darcy Gardiner,KEY_DEF,Brisbane,Geelong Cats,45,45,0,732,732,45,45,0,45,45,0,0,0,False,,,,,,9.0,53.01,13,12,4
+darcy-jones,Darcy Jones,GEN_FWD,GWS,Essendon Bombers,1496,1496,0,167,168,1521,1521,0,1557,1557,0,25,36,False,,,,,,0,,4,2,3
+darcy-moore,Darcy Moore,KEY_DEF,Collingwood,Essendon Bombers,234,234,0,537,545,132,132,0,91,91,0,-102,-41,False,,,,,,4.0,33.5,12,11,4
+darcy-parish,Darcy Parish,MID,Essendon,Collingwood Magpies,707,707,0,298,303,510,510,0,297,297,0,-197,-213,False,,,,,,14.0,84.04,11,10,3
+darcy-wilmot,Darcy Wilmot,GEN_DEF,Brisbane,Hawthorn Hawks,3803,3803,0,36,36,3749,3749,0,3659,3659,0,-54,-90,False,,,,,,18.0,93.26,5,4,3
+darcy-wilson,Darcy Wilson,GEN_FWD,St Kilda,Western Bulldogs,2960,2960,0,59,59,3067,3067,0,3178,3178,0,107,111,False,,,,,,17.0,85.0,3,3,3
+darragh-joyce,Darragh Joyce,KEY_DEF,Brisbane,Free agents,11,11,0,790,790,6,6,0,7,7,0,-5,1,True,0.20343,2026,2026,0.20343,0.20343,3.0,54.0,10,1,4
+dayne-zorko,Dayne Zorko,GEN_DEF,Brisbane,Port Adelaide Power,1159,1159,0,204,205,1155,1155,0,1086,1086,0,-4,-69,False,,,,,,9.0,101.88,15,15,3
+deven-robertson,Deven Robertson,MID,West Coast,Melbourne Demons,202,202,0,561,565,151,151,0,77,77,0,-51,-74,False,,,,,,4.0,84.5,7,3,3
+dion-prestia,Dion Prestia,MID,Richmond,Sydney Swans,164,164,0,601,604,107,107,0,107,107,0,-57,0,False,,,,,,13.0,75.9,16,16,3
+dougal-howard,Dougal Howard,KEY_DEF,St Kilda,Port Adelaide Power,87,87,0,674,676,46,46,0,32,32,0,-41,-14,False,,,,,,6.0,54.5,12,9,4
+dylan-moore,Dylan Moore,GEN_FWD,Hawthorn,Hawthorn Hawks,1399,1399,0,179,180,1307,1307,0,1048,1048,0,-92,-259,False,,,,,,17.0,70.16,9,7,3
+dylan-patterson,Dylan Patterson,GEN_DEF,Gold Coast,Melbourne Demons,1076,1076,0,217,218,1076,1076,0,1076,1076,0,0,0,False,,,,,,3.0,36.0,1,0,3
+dylan-stephens,Dylan Stephens,MID,North Melbourne,Essendon Bombers,460,460,0,388,395,360,360,0,230,230,0,-100,-130,False,,,,,,18.0,75.26,7,7,3
+dyson-sharp,Dyson Sharp,MID,Essendon,Fremantle Dockers,2034,2034,0,119,119,1969,1969,0,1938,1938,0,-65,-31,False,,,,,,10.0,57.47,1,1,3
+eamonn-armstrong,Eamonn Armstrong,GEN_DEF,St Kilda,Hawthorn Hawks,152,152,0,612,616,152,152,0,152,152,0,0,0,False,,,,,,0,,2,0,3
+ed-langdon,Ed Langdon,GEN_DEF,Melbourne,Sydney Swans,614,614,0,327,332,416,416,0,249,249,0,-198,-167,False,,,,,,18.0,83.37,12,11,3
+ed-richards,Ed Richards,MID,Western Bulldogs,St Kilda Saints,3512,3512,0,44,44,3178,3178,0,2803,2803,0,-334,-375,False,,,,,,17.0,105.54,9,8,3
+edward-allan,Edward Allan,MID,Collingwood,Richmond Tigers,849,849,0,266,269,778,778,0,712,712,0,-71,-66,False,,,,,,13.0,65.08,4,2,3
+elijah-hewett,Elijah Hewett,MID,West Coast,Melbourne Demons,784,784,0,276,279,658,658,0,588,588,0,-126,-70,False,,,,,,6.0,45.67,4,3,3
+elijah-hollands,Elijah Hollands,GEN_FWD,Carlton,Essendon Bombers,842,842,0,270,273,719,719,0,677,677,0,-123,-42,False,,,,,,6.0,65.0,6,3,3
+elijah-tsatas,Elijah Tsatas,MID,Essendon,Melbourne Demons,1330,1330,0,188,189,1166,1166,0,1129,1129,0,-164,-37,False,,,,,,6.0,82.5,4,2,3
+elliot-himmelberg,Elliott Himmelberg,KEY_FWD,Adelaide,Free agents,92,92,0,670,672,48,48,0,41,41,0,-44,-7,False,,,,,,0,,10,5,4
+elliot-yeo,Elliot Yeo,MID,West Coast,North Melbourne Kangaroos,112,112,0,645,647,39,39,0,39,39,0,-73,0,False,,,,,,16.0,71.93,15,13,3
+eric-hipwood,Eric Hipwood,KEY_FWD,Brisbane,Brisbane Lions,61,61,0,705,705,47,47,0,46,46,0,-14,-1,False,,,,,,5.0,47.8,11,11,4
+errol-gulden,Errol Gulden,MID,Sydney,Carlton Blues,5097,5097,0,13,13,4815,4815,0,4631,4631,0,-282,-184,False,,,,,,6.0,98.0,6,6,3
+esava-ratugolea,Esava Ratugolea,KEY_DEF,Port Adelaide,Adelaide Crows,127,127,0,630,635,127,127,0,114,114,0,0,-13,False,,,,,,8.0,64.5,10,8,4
+ethan-read,Ethan Read,KEY_FWD,Gold Coast,St Kilda Saints,1039,1039,0,222,223,983,983,0,867,867,0,-56,-116,False,,,,,,11.0,46.76,3,2,4
+ewan-mackinlay,Ewan Mackinlay,GEN_FWD,Port Adelaide,Richmond Tigers,46,46,0,730,730,41,41,0,35,35,0,-5,-6,False,,,,,,14.0,52.99,2,1,3
+finlay-macrae,Finlay Macrae,MID,West Coast,Geelong Cats,109,109,0,648,650,61,61,0,61,61,0,-48,0,False,,,,,,0,,6,2,3
+finn-callaghan,Finn Callaghan,MID,GWS,Melbourne Demons,5353,5353,0,12,12,5267,5267,0,5063,5063,0,-86,-204,False,,,,,,18.0,99.42,5,4,3
+finn-maginness,Finn Maginness,GEN_FWD,Hawthorn,Free agents,35,35,0,749,749,35,35,0,35,35,0,0,0,False,,,,,,5.0,55.0,7,5,3
+finn-o-sullivan,Finn O'Sullivan,MID,North Melbourne,Collingwood Magpies,3330,3330,0,51,51,3438,3438,0,3684,3684,0,108,246,False,,,,,,14.0,77.76,2,2,3
+finnbar-maley,Finnbar Maley,KEY_FWD,Adelaide,Geelong Cats,197,197,0,569,572,124,124,0,116,116,0,-73,-8,False,,,,,,5.0,45.6,3,2,4
+finnegan-davis,Finnegan Davis,GEN_DEF,GWS,Carlton Blues,396,396,0,421,428,396,396,0,396,396,0,0,0,False,,,,,,0,,1,0,3
+flynn-perez,Flynn Perez,GEN_DEF,Hawthorn,Brisbane Lions,12,12,0,785,785,10,10,0,9,9,0,-2,-1,False,,,,,,7.0,50.14,1,2,3
+flynn-riley,Flynn Riley,RUC,Carlton,Adelaide Crows,610,610,0,328,334,610,610,0,610,610,0,0,0,False,,,,,,1.0,80.0,1,0,4
+flynn-young,Flynn Young,GEN_FWD,Carlton,Free agents,10,10,0,793,793,6,6,0,6,6,0,-4,0,False,,,,,,3.0,44.0,2,1,3
+francis-evans,Francis Evans,GEN_FWD,Carlton,St Kilda Saints,272,272,0,508,514,211,211,0,153,153,0,-61,-58,False,,,,,,16.0,68.13,7,4,3
+fred-rodriguez,Fred Rodriguez,MID,West Coast,Carlton Blues,424,424,0,407,414,424,424,0,424,424,0,0,0,False,,,,,,0,,1,0,3
+george-hewett,George Hewett,MID,Carlton,Port Adelaide Power,1827,1827,0,137,138,1510,1510,0,1192,1192,0,-317,-318,False,,,,,,13.0,99.61,13,11,3
+george-stevens,George Stevens,MID,Geelong,St Kilda Saints,415,415,0,412,420,363,363,0,363,363,0,-52,0,False,,,,,,2.0,62.0,3,0,3
+george-wardlaw,George Wardlaw,MID,North Melbourne,Richmond Tigers,3123,3123,0,54,54,3129,3129,0,3137,3137,0,6,8,False,,,,,,13.0,84.3,4,4,3
+griffin-logue,Griffin Logue,KEY_DEF,North Melbourne,Richmond Tigers,131,131,0,628,633,101,101,0,84,84,0,-30,-17,False,,,,,,11.0,55.1,10,7,4
+gryan-miers,Gryan Miers,GEN_FWD,Geelong,Brisbane Lions,1961,1961,0,127,127,1839,1839,0,1578,1578,0,-122,-261,False,,,,,,10.0,80.99,9,8,3
+hamish-davis,Hamish Davis,MID,West Coast,Collingwood Magpies,938,938,0,244,245,878,878,0,803,803,0,-60,-75,False,,,,,,17.0,56.79,2,2,3
+harley-barker,Harley Barker,MID,Geelong,Fremantle Dockers,753,753,0,286,289,753,753,0,753,753,0,0,0,False,,,,,,0,,1,0,3
+harley-reid,Harley Reid,MID,West Coast,Melbourne Demons,3531,3531,0,43,43,3661,3661,0,3711,3711,0,130,50,False,,,,,,18.0,90.22,3,3,3
+harris-andrews,Harris Andrews,KEY_DEF,Brisbane,Collingwood Magpies,1871,1871,0,132,132,1588,1588,0,1359,1359,0,-283,-229,False,,,,,,15.0,87.56,12,12,4
+harrison-coe,Harrison Coe,RUC,Collingwood,Port Adelaide Power,239,239,0,531,538,239,239,0,239,239,0,0,0,False,,,,,,0,,1,0,4
+harrison-himmelberg,Harrison Himmelberg,GEN_DEF,GWS,Sydney Swans,547,547,0,357,363,404,404,0,248,248,0,-143,-156,False,,,,,,18.0,75.41,11,10,3
+harrison-jones,Harrison Jones,KEY_FWD,Essendon,Free agents,203,203,0,560,564,129,129,0,81,81,0,-74,-48,False,,,,,,4.0,40.75,7,4,4
+harrison-oliver,Harrison Oliver,GEN_DEF,GWS,Hawthorn Hawks,658,658,0,309,314,602,602,0,602,602,0,-56,0,False,,,,,,5.0,39.0,2,1,3
+harrison-petty,Harrison Petty,KEY_DEF,Melbourne,Geelong Cats,146,146,0,619,623,101,101,0,69,69,0,-45,-32,False,,,,,,14.0,61.2,9,7,4
+harrison-ramm,Harrison Ramm,KEY_DEF,Port Adelaide,Adelaide Crows,332,332,0,459,467,304,304,0,304,304,0,-28,0,False,,,,,,2.0,17.5,2,0,4
+harry-armstrong,Harry Armstrong,KEY_FWD,Richmond,Hawthorn Hawks,880,880,0,258,260,786,786,0,704,704,0,-94,-82,False,,,,,,3.0,19.3,2,1,4
+harry-barnett,Harry Barnett,RUC,West Coast,Free agents,615,615,0,323,328,563,563,0,563,563,0,-52,0,False,,,,,,0,,4,0,4
+harry-charleson,Harry Charleson,GEN_DEF,Carlton,North Melbourne Kangaroos,247,247,0,527,535,247,247,0,247,247,0,0,0,False,,,,,,0,,2,0,3
+harry-cunningham,Harry Cunningham,GEN_DEF,Sydney,Free agents,1,1,0,800,800,0,0,0,0,0,0,-1,0,False,,,,,,11.0,57.2,15,13,3
+harry-dean,Harry Dean,KEY_DEF,Carlton,Hawthorn Hawks,2548,2548,0,74,74,2702,2702,0,3052,3052,0,154,350,False,,,,,,14.0,59.85,1,1,4
+harry-demattia,Harry DeMattia,MID,Collingwood,Carlton Blues,486,486,0,376,383,486,486,0,486,486,0,0,0,False,,,,,,0,,3,0,3
+harry-edwards,Harry Edwards,KEY_DEF,West Coast,St Kilda Saints,146,146,0,620,624,102,102,0,68,68,0,-44,-34,False,,,,,,2.0,11.5,8,4,4
+harry-kyle,Harry Kyle,GEN_DEF,Sydney,Fremantle Dockers,971,971,0,236,237,888,888,0,888,888,0,-83,0,False,,,,,,4.0,49.35,1,0,3
+harry-mckay,Harry McKay,KEY_FWD,Carlton,St Kilda Saints,1815,1815,0,140,141,1652,1652,0,1175,1175,0,-163,-477,False,,,,,,16.0,74.23,11,9,4
+harry-morrison,Harry Morrison,MID,Hawthorn,St Kilda Saints,45,45,0,733,733,28,28,0,28,28,0,-17,0,False,,,,,,8.0,66.75,10,9,3
+harry-o-farrell,Harry O'Farrell,KEY_DEF,Carlton,Sydney Swans,912,912,0,250,251,918,918,0,934,934,0,6,16,False,,,,,,0,,2,1,4
+harry-perryman,Harry Perryman,GEN_DEF,Collingwood,Brisbane Lions,130,130,0,629,634,80,80,0,55,55,0,-50,-25,False,,,,,,14.0,68.31,10,10,3
+harry-rowston,Harry Rowston,MID,GWS,Carlton Blues,587,587,0,337,343,454,454,0,387,387,0,-133,-67,False,,,,,,7.0,59.17,4,3,3
+harry-schoenberg,Harry Schoenberg,MID,Adelaide,Adelaide Crows,56,56,0,713,713,56,56,0,56,56,0,0,0,False,,,,,,5.0,47.8,7,5,3
+harry-sharp,Harry Sharp,GEN_FWD,Brisbane,Brisbane Lions,81,81,0,683,685,71,71,0,65,65,0,-10,-6,False,,,,,,18.0,63.99,6,3,3
+harry-sheezel,Harry Sheezel,MID,North Melbourne,Carlton Blues,9542,9542,0,1,1,9847,9847,0,9999,9999,0,305,152,False,,,,,,18.0,124.9,4,4,3
+harvey-gallagher,Harvey Gallagher,GEN_DEF,Western Bulldogs,Richmond Tigers,135,135,0,626,631,84,84,0,58,58,0,-51,-26,True,0.00275,2026,2026,0.00275,0.00275,3.0,38.0,4,1,3
+harvey-harrison,Harvey Harrison,GEN_FWD,Collingwood,West Coast Eagles,60,60,0,707,707,42,42,0,24,24,0,-18,-18,False,,,,,,6.0,43.83,5,2,3
+harvey-johnston,Harvey Johnston,GEN_DEF,West Coast,Melbourne Demons,268,268,0,511,517,172,172,0,155,155,0,-96,-17,False,,,,,,6.0,40.0,3,2,3
+harvey-langford,Harvey Langford,MID,Melbourne,Fremantle Dockers,2450,2450,0,81,81,2448,2448,0,2570,2570,0,-2,122,False,,,,,,18.0,65.95,2,2,3
+harvey-thomas,Harvey Thomas,MID,GWS,Brisbane Lions,2206,2206,0,97,97,2224,2224,0,2256,2256,0,18,32,False,,,,,,17.0,81.82,3,3,3
+hayden-mclean,Hayden McLean,KEY_FWD,Sydney,Richmond Tigers,386,386,0,426,433,293,293,0,210,210,0,-93,-83,False,,,,,,7.0,60.4,8,7,4
+hayden-young,Hayden Young,MID,Fremantle,Essendon Bombers,2056,2056,0,115,115,1648,1648,0,1338,1338,0,-408,-310,False,,,,,,9.0,83.56,7,6,3
+heath-chapman,Heath Chapman,GEN_DEF,Fremantle,Sydney Swans,546,546,0,358,364,521,521,0,510,510,0,-25,-11,False,,,,,,18.0,69.35,6,5,3
+henry-hustwaite,Henry Hustwaite,MID,Hawthorn,Richmond Tigers,299,299,0,489,496,247,247,0,195,195,0,-52,-52,False,,,,,,1.0,59.0,4,0,3
+henry-smith,Henry Smith,KEY_FWD,Brisbane,Hawthorn Hawks,157,157,0,608,612,156,156,0,156,156,0,-1,0,False,,,,,,0,,6,0,4
+hudson-o-keeffe,Hudson O'Keeffe,KEY_FWD,Carlton,Western Bulldogs,258,258,0,520,527,176,176,0,176,176,0,-82,0,False,,,,,,3.0,29.7,4,0,4
+hugh-bond,Hugh Bond,GEN_DEF,Adelaide,Fremantle Dockers,198,198,0,568,571,130,130,0,100,100,0,-68,-30,False,,,,,,7.0,54.0,4,2,3
+hugh-boxshall,Hugh Boxshall,MID,St Kilda,Melbourne Demons,941,941,0,242,243,853,853,0,764,764,0,-88,-89,False,,,,,,5.0,48.6,2,2,3
+hugh-davies,Hugh Davies,KEY_DEF,Fremantle,Hawthorn Hawks,300,300,0,487,494,283,283,0,274,274,0,-17,-9,False,,,,,,0,,4,0,4
+hugh-mccluggage,Hugh McCluggage,MID,Brisbane,Western Bulldogs,1575,1575,0,157,158,1346,1346,0,1101,1101,0,-229,-245,False,,,,,,11.0,71.2,10,10,3
+hugo-garcia,Hugo Garcia,MID,St Kilda,West Coast Eagles,2951,2951,0,60,60,3114,3114,0,3165,3165,0,163,51,False,,,,,,18.0,93.17,3,3,3
+hugo-hall-kahan,Hugo Hall-Kahan,GEN_DEF,Adelaide,Collingwood Magpies,387,387,0,425,432,514,514,0,597,597,0,127,83,False,,,,,,6.0,76.5,1,1,3
+hugo-mikunda,Hugo Mikunda,GEN_FWD,North Melbourne,Richmond Tigers,336,336,0,454,462,336,336,0,336,336,0,0,0,False,,,,,,0,,1,0,3
+hugo-ralphsmith,Hugo Ralphsmith,MID,Richmond,Port Adelaide Power,47,47,0,727,727,35,35,0,34,34,0,-12,-1,False,,,,,,8.0,52.63,7,6,3
+hunter-clark,Hunter Clark,GEN_DEF,St Kilda,Hawthorn Hawks,55,55,0,714,714,55,55,0,55,55,0,0,0,False,,,,,,4.0,62.28,9,8,3
+hunter-holmes,Hunter Holmes,MID,Geelong,Fremantle Dockers,647,647,0,313,318,647,647,0,647,647,0,0,0,False,,,,,,0,,1,0,3
+hussien-el-achkar,Hussien El Achkar,GEN_FWD,Essendon,Western Bulldogs,394,394,0,422,429,357,357,0,328,328,0,-37,-29,False,,,,,,6.0,37.47,1,1,3
+iliro-smit,Iliro Smit,RUC,Collingwood,Carlton Blues,310,310,0,482,490,310,310,0,310,310,0,0,0,False,,,,,,0,,3,0,4
+indy-cotton,Indy Cotton,GEN_DEF,Adelaide,Hawthorn Hawks,238,238,0,534,541,238,238,0,238,238,0,0,0,False,,,,,,0,,1,0,3
+isaac-cumming,Isaac Cumming,GEN_DEF,Adelaide,North Melbourne Kangaroos,61,61,0,706,706,39,39,0,39,39,0,-22,0,False,,,,,,11.0,67.97,10,6,3
+isaac-heeney,Isaac Heeney,MID,Sydney,West Coast Eagles,3783,3783,0,37,37,3241,3241,0,2712,2712,0,-542,-529,False,,,,,,16.0,117.92,12,12,3
+isaac-kako,Isaac Kako,GEN_FWD,Essendon,Western Bulldogs,1079,1079,0,215,216,1039,1039,0,965,965,0,-40,-74,False,,,,,,10.0,45.4,2,2,3
+isaac-keeler,Isaac Keeler,KEY_FWD,St Kilda,Hawthorn Hawks,313,337,24,479,460,210,220,10,199,199,0,-117,-21,True,0.35231,2026,2026,0.35231,0.35231,2.0,39.5,4,1,4
+isaac-quaynor,Isaac Quaynor,GEN_DEF,Collingwood,Brisbane Lions,506,506,0,371,378,398,398,0,252,252,0,-108,-146,False,,,,,,16.0,75.18,8,7,3
+isaiah-dudley,Isaiah Dudley,GEN_FWD,Fremantle,Carlton Blues,86,86,0,676,678,80,80,0,70,70,0,-6,-10,False,,,,,,18.0,57.4,2,2,3
+izak-rankine,Izak Rankine,GEN_FWD,Adelaide,Geelong Cats,2940,2940,0,61,61,2736,2736,0,2367,2367,0,-204,-369,False,,,,,,15.0,89.4,8,7,3
+jack-bowes,Jack Bowes,MID,Geelong,Brisbane Lions,107,107,0,650,652,107,107,0,107,107,0,0,0,False,,,,,,9.0,65.3,10,9,3
+jack-buckley,Jack Buckley,KEY_DEF,GWS,Collingwood Magpies,725,725,0,294,297,583,583,0,421,421,0,-142,-162,False,,,,,,9.0,62.6,9,5,4
+jack-buller,Jack Buller,KEY_FWD,Collingwood,Fremantle Dockers,63,63,0,702,702,55,55,0,51,51,0,-8,-4,False,,,,,,10.0,34.88,4,2,4
+jack-carroll,Jack Carroll,GEN_DEF,St Kilda,Adelaide Crows,95,95,0,665,666,83,83,0,73,73,0,-12,-10,False,,,,,,12.0,61.1,6,2,3
+jack-crisp,Jack Crisp,MID,Collingwood,North Melbourne Kangaroos,615,615,0,324,329,301,301,0,282,282,0,-314,-19,False,,,,,,18.0,87.08,15,14,3
+jack-dalton,Jack Dalton,GEN_FWD,Hawthorn,Fremantle Dockers,618,618,0,322,327,565,565,0,565,565,0,-53,0,False,,,,,,4.0,53.5,1,0,3
+jack-darling,Jack Darling,KEY_FWD,North Melbourne,North Melbourne Kangaroos,195,195,0,574,577,174,174,0,160,160,0,-21,-14,False,,,,,,17.0,66.3,16,16,4
+jack-ginnivan,Jack Ginnivan,GEN_FWD,Collingwood,North Melbourne Kangaroos,2303,2303,0,90,90,2207,2207,0,2129,2129,0,-96,-78,False,,,,,,17.0,83.43,6,5,3
+jack-graham,Jack Graham,MID,West Coast,Port Adelaide Power,386,386,0,427,434,217,217,0,152,152,0,-169,-65,False,,,,,,9.0,72.56,10,9,3
+jack-gunston,Jack Gunston,KEY_FWD,Hawthorn,St Kilda Saints,970,970,0,237,238,857,857,0,746,746,0,-113,-111,False,,,,,,12.0,79.51,17,15,4
+jack-henderson,Jack Henderson,GEN_FWD,Melbourne,Free agents,4,4,0,799,799,3,3,0,3,3,0,-1,0,False,,,,,,0,,2,0,3
+jack-henry,Jack Henry,KEY_DEF,Geelong,Geelong Cats,211,211,0,554,559,172,172,0,127,127,0,-39,-45,False,,,,,,13.0,59.0,10,9,4
+jack-higgins,Jack Higgins,GEN_FWD,St Kilda,Geelong Cats,106,106,0,653,655,85,85,0,53,53,0,-21,-32,False,,,,,,12.0,65.25,9,9,3
+jack-hutchinson,Jack Hutchinson,MID,West Coast,Melbourne Demons,40,40,0,740,740,27,27,0,25,25,0,-13,-2,False,,,,,,5.0,44.8,3,3,3
+jack-ison,Jack Ison,GEN_FWD,Carlton,Fremantle Dockers,598,598,0,333,339,618,618,0,576,576,0,20,-42,False,,,,,,7.0,50.65,1,1,3
+jack-lukosius,Jack Lukosius,KEY_FWD,Port Adelaide,Essendon Bombers,928,928,0,247,248,711,711,0,568,568,0,-217,-143,False,,,,,,8.0,67.03,8,8,4
+jack-martin,Jack Martin,GEN_FWD,Geelong,Brisbane Lions,96,96,0,663,664,96,96,0,96,96,0,0,0,False,,,,,,15.0,59.19,14,12,3
+jack-ough,Jack Ough,MID,GWS,Western Bulldogs,615,615,0,325,330,615,615,0,615,615,0,0,0,False,,,,,,3.0,60.33,2,0,3
+jack-payne,Jack Payne,KEY_DEF,Brisbane,Brisbane Lions,176,176,0,590,594,147,147,0,120,120,0,-29,-27,False,,,,,,0,,9,5,4
+jack-ross,Jack Ross,MID,Richmond,Collingwood Magpies,2194,2194,0,99,99,1907,1907,0,1635,1635,0,-287,-272,False,,,,,,13.0,97.82,8,8,3
+jack-scrimshaw,Jack Scrimshaw,GEN_DEF,Hawthorn,Essendon Bombers,159,159,0,605,608,79,79,0,55,55,0,-80,-24,False,,,,,,6.0,61.8,10,8,3
+jack-silvagni,Jack Silvagni,KEY_DEF,St Kilda,Collingwood Magpies,757,757,0,282,285,652,652,0,494,494,0,-105,-158,False,,,,,,18.0,72.41,11,9,4
+jack-sinclair,Jack Sinclair,GEN_DEF,St Kilda,Port Adelaide Power,3322,3322,0,52,52,2843,2843,0,2422,2422,0,-479,-421,False,,,,,,14.0,113.2,12,12,3
+jack-steele,Jack Steele,MID,Melbourne,Port Adelaide Power,1648,1648,0,150,151,1298,1298,0,990,990,0,-350,-308,False,,,,,,18.0,98.14,12,12,3
+jack-viney,Jack Viney,MID,Melbourne,North Melbourne Kangaroos,368,368,0,437,444,514,514,0,362,362,0,146,-152,False,,,,,,0,,14,13,3
+jack-watkins,Jack Watkins,MID,Port Adelaide,Adelaide Crows,0,0,0,804,804,0,0,0,0,0,0,0,0,False,,,,,,9.0,39.6,1,1,3
+jack-whitlock,Jack Whitlock,KEY_FWD,Port Adelaide,Fremantle Dockers,1303,1303,0,192,193,1265,1265,0,1235,1235,0,-38,-30,False,,,,,,18.0,53.49,2,1,4
+jack-williams,Jack Williams,KEY_FWD,West Coast,Melbourne Demons,507,507,0,370,377,451,451,0,415,415,0,-56,-36,False,,,,,,7.0,51.15,5,4,4
+jackson-archer,Jackson Archer,GEN_DEF,North Melbourne,Free agents,75,75,0,690,690,52,52,0,29,29,0,-23,-23,True,0.0,2026,2026,0.0,0.0,0,,5,1,3
+jackson-macrae,Jackson Macrae,MID,St Kilda,St Kilda Saints,139,139,0,625,629,119,119,0,119,119,0,-20,0,False,,,,,,10.0,70.06,14,14,3
+jackson-mead,Jackson Mead,GEN_FWD,Port Adelaide,North Melbourne Kangaroos,38,38,0,743,743,38,38,0,38,38,0,0,0,False,,,,,,9.0,49.0,7,5,3
+jacob-farrow,Jacob Farrow,GEN_DEF,Essendon,Fremantle Dockers,2545,2545,0,75,75,2835,2835,0,3513,3513,0,290,678,False,,,,,,15.0,72.67,1,1,3
+jacob-hopper,Jacob Hopper,MID,Richmond,Sydney Swans,124,124,0,635,639,124,124,0,124,124,0,0,0,False,,,,,,12.0,66.3,11,11,3
+jacob-konstanty,Jacob Konstanty,GEN_FWD,North Melbourne,Collingwood Magpies,200,200,0,565,568,167,167,0,131,131,0,-33,-36,False,,,,,,10.0,46.64,4,2,3
+jacob-molier,Jacob Molier,RUC,Geelong,St Kilda Saints,460,460,0,389,396,460,460,0,460,460,0,0,0,False,,,,,,0,,2,0,4
+jacob-moss,Jacob Moss,KEY_FWD,Port Adelaide,Fremantle Dockers,248,248,0,526,534,248,248,0,248,248,0,0,0,False,,,,,,0,,2,0,4
+jacob-newton,Jacob Newton,GEN_FWD,West Coast,Melbourne Demons,150,150,0,613,617,119,119,0,119,119,0,-31,0,False,,,,,,3.0,27.7,2,0,3
+jacob-van-rooyen,Jacob Van Rooyen,KEY_FWD,Melbourne,Essendon Bombers,1978,1978,0,124,124,1570,1570,0,1555,1555,0,-408,-15,False,,,,,,18.0,70.61,5,4,4
+jacob-wehr,Jacob Wehr,GEN_DEF,Port Adelaide,Geelong Cats,21,21,0,778,778,11,11,0,11,11,0,-10,0,False,,,,,,14.0,45.88,6,4,3
+jacob-weitering,Jacob Weitering,KEY_DEF,Carlton,St Kilda Saints,1200,1200,0,200,201,1078,1078,0,835,835,0,-122,-243,False,,,,,,10.0,77.5,11,11,4
+jade-gresham,Jade Gresham,GEN_FWD,Essendon,Geelong Cats,50,50,0,721,721,50,50,0,50,50,0,0,0,False,,,,,,7.0,48.6,11,10,3
+jaeger-o-meara,Jaeger O'Meara,MID,Fremantle,Brisbane Lions,194,194,0,575,578,194,194,0,194,194,0,0,0,False,,,,,,6.0,63.37,15,12,3
+jagga-smith,Jagga Smith,MID,Carlton,Fremantle Dockers,4164,4164,0,24,24,4376,4376,0,4756,4756,0,212,380,False,,,,,,17.0,83.83,2,1,3
+jai-culley,Jai Culley,MID,Melbourne,Western Bulldogs,78,262,184,687,521,77,229,152,77,211,134,-33,-18,True,1.0,2026,2026,1.0,1.0,7.0,63.2,5,1,3
+jai-murray,Jai Murray,MID,Gold Coast,Fremantle Dockers,1250,1250,0,197,198,1294,1294,0,1197,1197,0,44,-97,False,,,,,,6.0,54.5,1,1,3
+jai-newcombe,Jai Newcombe,MID,Hawthorn,West Coast Eagles,4215,4215,0,23,23,4148,4148,0,4010,4010,0,-67,-138,False,,,,,,18.0,101.07,6,6,3
+jai-saxena,Jai Saxena,GEN_FWD,Collingwood,West Coast Eagles,197,197,0,570,573,197,197,0,197,197,0,0,0,False,,,,,,0,,1,0,3
+jai-serong,Jai Serong,GEN_DEF,Sydney,North Melbourne Kangaroos,116,894,778,639,256,116,867,751,116,849,733,-27,-18,True,1.0,2026,2026,1.0,1.0,17.0,73.65,5,1,3
+jaime-uhr-henry,Jaime Uhr-Henry,RUC,Hawthorn,Free agents,446,446,0,396,403,446,446,0,446,446,0,0,0,False,,,,,,0,,2,0,4
+jake-bowey,Jake Bowey,GEN_DEF,Melbourne,West Coast Eagles,3901,3901,0,32,32,3834,3834,0,3762,3762,0,-67,-72,False,,,,,,10.0,102.52,6,6,3
+jake-kolodjashnij,Jake Kolodjashnij,KEY_DEF,Geelong,Port Adelaide Power,37,37,0,745,745,37,37,0,37,37,0,0,0,False,,,,,,11.0,48.93,13,11,4
+jake-lever,Jake Lever,KEY_DEF,Melbourne,Collingwood Magpies,681,681,0,302,307,525,525,0,402,402,0,-156,-123,False,,,,,,17.0,74.27,12,12,4
+jake-lloyd,Jake Lloyd,GEN_DEF,Sydney,Geelong Cats,73,73,0,697,697,24,24,0,23,23,0,-49,-1,False,,,,,,18.0,68.78,14,13,3
+jake-melksham,Jake Melksham,KEY_FWD,Melbourne,Free agents,49,49,0,723,723,49,49,0,49,49,0,0,0,False,,,,,,6.0,42.02,17,16,4
+jake-riccardi,Jake Riccardi,KEY_FWD,GWS,Port Adelaide Power,388,388,0,424,431,299,299,0,204,204,0,-89,-95,False,,,,,,9.0,61.4,7,6,4
+jake-rogers,Jake Rogers,GEN_FWD,Gold Coast,Melbourne Demons,587,587,0,338,344,437,437,0,358,358,0,-150,-79,False,,,,,,5.0,51.6,3,3,3
+jake-soligo,Jake Soligo,MID,Adelaide,Carlton Blues,2071,2071,0,114,114,1955,1955,0,1846,1846,0,-116,-109,False,,,,,,16.0,69.81,5,5,3
+jake-stringer,Jake Stringer,GEN_FWD,GWS,Brisbane Lions,135,135,0,627,632,86,86,0,86,86,0,-49,0,False,,,,,,18.0,68.48,14,14,3
+jake-waterman,Jake Waterman,KEY_FWD,West Coast,West Coast Eagles,1619,1619,0,151,152,1441,1441,0,1183,1183,0,-178,-258,False,,,,,,18.0,76.55,10,9,4
+jakob-ryan,Jakob Ryan,GEN_DEF,Collingwood,West Coast Eagles,279,279,0,502,508,277,277,0,267,267,0,-2,-10,False,,,,,,0,,4,0,3
+jamarra-ugle-hagan,Jamarra Ugle-Hagan,KEY_FWD,Gold Coast,Brisbane Lions,361,361,0,440,447,294,294,0,269,269,0,-67,-25,False,,,,,,3.0,26.0,6,3,4
+james-barrat,James Barrat,KEY_DEF,St Kilda,North Melbourne Kangaroos,381,381,0,430,437,381,381,0,381,381,0,0,0,False,,,,,,0,,2,0,4
+james-blanck,James Blanck,KEY_DEF,Hawthorn,Free agents,28,28,0,767,767,16,16,0,16,16,0,-12,0,False,,,,,,0,,5,2,4
+james-borlase,James Borlase,KEY_DEF,Adelaide,Fremantle Dockers,525,525,0,364,371,524,524,0,537,537,0,-1,13,False,,,,,,13.0,63.71,6,2,4
+james-jordon,James Jordon,MID,Sydney,Adelaide Crows,170,170,0,597,600,107,107,0,77,77,0,-63,-30,False,,,,,,18.0,63.14,8,6,3
+james-leake,James Leake,GEN_DEF,GWS,Hawthorn Hawks,282,544,262,498,366,410,410,0,410,410,0,-134,0,True,1.0,2026,2026,1.0,1.0,5.0,53.6,3,1,3
+james-o-donnell,James O'Donnell,KEY_DEF,Western Bulldogs,Richmond Tigers,605,605,0,331,337,590,590,0,578,578,0,-15,-12,False,,,,,,14.0,60.43,4,4,4
+james-peatling,James Peatling,MID,Adelaide,Collingwood Magpies,1451,1451,0,175,176,1407,1407,0,1369,1369,0,-44,-38,False,,,,,,18.0,86.33,6,5,3
+james-rowbottom,James Rowbottom,MID,Sydney,Sydney Swans,820,820,0,273,276,619,619,0,476,476,0,-201,-143,False,,,,,,18.0,72.95,8,8,3
+james-sicily,James Sicily,GEN_DEF,Hawthorn,Geelong Cats,1763,1763,0,142,143,1463,1463,0,1234,1234,0,-300,-229,False,,,,,,17.0,97.46,13,10,3
+james-trezise,James Trezise,GEN_DEF,Richmond,Western Bulldogs,163,163,0,602,605,157,157,0,150,150,0,-6,-7,False,,,,,,14.0,64.29,4,3,3
+james-tunstill,James Tunstill,MID,Brisbane,Free agents,96,96,0,664,665,67,67,0,51,51,0,-29,-16,True,1.0,2026,2026,1.0,1.0,10.0,48.1,5,1,3
+james-worpel,James Worpel,MID,Geelong,Port Adelaide Power,553,553,0,355,361,459,459,0,262,262,0,-94,-197,False,,,,,,7.0,76.29,9,9,3
+jamie-cripps,Jamie Cripps,GEN_FWD,West Coast,Free agents,34,34,0,750,750,34,34,0,34,34,0,0,0,False,,,,,,5.0,50.0,16,15,3
+jamie-elliott,Jamie Elliott,GEN_FWD,Collingwood,Brisbane Lions,32,32,0,756,756,32,32,0,32,32,0,0,0,False,,,,,,11.0,60.5,15,13,3
+jaren-carr,Jaren Carr,GEN_FWD,Fremantle,Port Adelaide Power,223,223,0,544,550,223,223,0,223,223,0,0,0,False,,,,,,0,,2,0,3
+jarman-impey,Jarman Impey,GEN_DEF,Hawthorn,Collingwood Magpies,869,869,0,261,263,656,656,0,525,525,0,-213,-131,False,,,,,,15.0,88.3,13,12,3
+jarrod-berry,Jarrod Berry,MID,Brisbane,Sydney Swans,316,316,0,475,484,222,222,0,132,132,0,-94,-90,False,,,,,,13.0,74.85,10,10,3
+jarrod-witts,Jarrod Witts,RUC,Gold Coast,Port Adelaide Power,218,218,0,549,554,200,200,0,186,186,0,-18,-14,False,,,,,,12.0,74.09,15,12,4
+jase-burgoyne,Jase Burgoyne,GEN_DEF,Port Adelaide,Essendon Bombers,2280,2280,0,93,93,2329,2329,0,2339,2339,0,49,10,False,,,,,,18.0,86.05,5,4,3
+jason-horne-francis,Jason Horne-Francis,MID,Port Adelaide,Geelong Cats,4884,4884,0,15,15,4790,4790,0,4609,4609,0,-94,-181,False,,,,,,17.0,100.36,5,5,3
+jaspa-fletcher,Jaspa Fletcher,GEN_DEF,Brisbane,Adelaide Crows,2314,2314,0,89,89,2312,2312,0,2237,2237,0,-2,-75,False,,,,,,18.0,70.96,4,4,3
+jasper-alger,Jasper Alger,GEN_FWD,Richmond,Carlton Blues,313,313,0,480,488,250,250,0,214,214,0,-63,-36,False,,,,,,8.0,52.53,2,1,3
+jaxon-artemis,Jaxon Artemis,GEN_DEF,Essendon,Hawthorn Hawks,331,331,0,462,470,331,331,0,331,331,0,0,0,False,,,,,,1.0,31.0,1,0,3
+jaxon-prior,Jaxon Prior,GEN_DEF,Brisbane,Fremantle Dockers,372,372,0,436,443,276,276,0,191,191,0,-96,-85,False,,,,,,17.0,69.01,7,4,3
+jay-polkinghorne,Jay Polkinghorne,GEN_FWD,Geelong,Fremantle Dockers,281,281,0,500,507,281,281,0,281,281,0,0,0,False,,,,,,1.0,46.0,2,0,3
+jayden-laverde,Jayden Laverde,KEY_DEF,Essendon,West Coast Eagles,302,302,0,486,493,198,198,0,139,139,0,-104,-59,False,,,,,,16.0,67.88,12,11,4
+jayden-nguyen,Jayden Nguyen,GEN_DEF,GWS,Free agents,508,508,0,369,376,311,311,0,311,311,0,-197,0,False,,,,,,5.0,42.6,2,1,3
+jayden-short,Jayden Short,GEN_DEF,Richmond,Port Adelaide Power,1269,1269,0,194,195,1074,1074,0,790,790,0,-195,-284,False,,,,,,16.0,91.82,12,11,3
+jed-adams,Jed Adams,KEY_DEF,Melbourne,Melbourne Demons,262,262,0,515,522,251,251,0,251,251,0,-11,0,False,,,,,,0,,4,0,4
+jed-bews,Jed Bews,GEN_DEF,Geelong,Free agents,26,26,0,770,770,26,26,0,26,26,0,0,0,False,,,,,,0,,15,10,3
+jed-walter,Jed Walter,KEY_FWD,Gold Coast,Melbourne Demons,1167,1167,0,203,204,1140,1140,0,1051,1051,0,-27,-89,False,,,,,,13.0,49.65,3,3,4
+jedd-busslinger,Jedd Busslinger,KEY_DEF,Western Bulldogs,Essendon Bombers,954,954,0,240,241,892,892,0,887,887,0,-62,-5,False,,,,,,6.0,71.5,4,2,4
+jeremy-cameron,Jeremy Cameron,KEY_FWD,Geelong,North Melbourne Kangaroos,993,993,0,234,235,857,857,0,654,654,0,-136,-203,False,,,,,,16.0,73.52,15,15,4
+jeremy-howe,Jeremy Howe,GEN_DEF,Collingwood,Port Adelaide Power,359,359,0,441,448,348,348,0,348,348,0,-11,0,False,,,,,,14.0,83.93,16,15,3
+jeremy-sharp,Jeremy Sharp,MID,Fremantle,Collingwood Magpies,84,84,0,679,681,52,52,0,52,52,0,-32,0,False,,,,,,2.0,55.0,7,4,3
+jesse-dattoli,Jesse Dattoli,GEN_FWD,Sydney,Collingwood Magpies,435,435,0,403,410,380,380,0,380,380,0,-55,0,False,,,,,,0,,2,0,3
+jesse-hogan,Jesse Hogan,KEY_FWD,GWS,Port Adelaide Power,319,319,0,472,480,220,220,0,165,165,0,-99,-55,False,,,,,,9.0,55.73,14,12,4
+jesse-mellor,Jesse Mellor,MID,Geelong,Geelong Cats,261,261,0,517,524,261,261,0,261,261,0,0,0,False,,,,,,0,,1,0,3
+jesse-motlop,Jesse Motlop,GEN_FWD,Carlton,Adelaide Crows,114,114,0,641,643,68,68,0,58,58,0,-46,-10,False,,,,,,0,,5,4,3
+jevan-phillipou,Jevan Phillipou,GEN_FWD,Sydney,Fremantle Dockers,464,464,0,387,394,464,464,0,464,464,0,0,0,False,,,,,,0,,1,0,3
+jhye-clark,Jhye Clark,MID,Geelong,Geelong Cats,676,676,0,304,309,473,473,0,402,402,0,-203,-71,False,,,,,,4.0,59.03,4,2,3
+jobe-shanahan,Jobe Shanahan,KEY_FWD,West Coast,Western Bulldogs,1848,1848,0,136,137,1935,1935,0,2057,2057,0,87,122,False,,,,,,18.0,60.69,2,2,4
+joe-berry,Joe Berry,GEN_FWD,Port Adelaide,Adelaide Crows,1038,1038,0,223,224,1005,1005,0,945,945,0,-33,-60,False,,,,,,18.0,57.46,2,2,3
+joe-pike,Joe Pike,RUC,Geelong,North Melbourne Kangaroos,446,446,0,397,404,446,446,0,446,446,0,0,0,False,,,,,,0,,2,0,4
+joe-richards,Joe Richards,GEN_FWD,Port Adelaide,Adelaide Crows,1088,1088,0,213,214,1008,1008,0,801,801,0,-80,-207,False,,,,,,18.0,82.49,4,3,3
+joel-amartey,Joel Amartey,KEY_FWD,Sydney,Collingwood Magpies,48,48,0,724,724,47,47,0,37,37,0,-1,-10,False,,,,,,15.0,54.0,9,6,4
+joel-cochran,Joel Cochran,KEY_DEF,Collingwood,Hawthorn Hawks,330,330,0,463,471,330,330,0,330,330,0,0,0,False,,,,,,0,,2,0,4
+joel-fitzgerald,Joel Fitzgerald,MID,Melbourne,Sydney Swans,95,95,0,666,667,91,91,0,91,91,0,-4,0,False,,,,,,5.0,63.4,1,1,3
+joel-freijah,Joel Freijah,MID,Western Bulldogs,Western Bulldogs,2497,2497,0,79,79,2529,2529,0,2551,2551,0,32,22,False,,,,,,18.0,74.52,3,3,3
+joel-hamling,Joel Hamling,KEY_DEF,Sydney,Free agents,36,36,0,747,747,36,36,0,36,36,0,0,0,False,,,,,,6.0,47.32,15,7,4
+joel-jeffrey,Joel Jeffrey,GEN_DEF,Gold Coast,North Melbourne Kangaroos,1989,1989,0,122,122,1960,1960,0,1956,1956,0,-29,-4,False,,,,,,17.0,78.36,6,4,3
+john-noble,John Noble,GEN_DEF,Gold Coast,Sydney Swans,2427,2427,0,82,82,2185,2185,0,1904,1904,0,-242,-281,False,,,,,,18.0,102.12,8,7,3
+jonty-faull,Jonty Faull,KEY_FWD,Richmond,Carlton Blues,1096,1096,0,212,213,976,976,0,871,871,0,-120,-105,False,,,,,,10.0,35.0,2,2,4
+jordan-boyd,Jordan Boyd,GEN_DEF,Carlton,Free agents,8,8,0,795,795,4,4,0,3,3,0,-4,-1,False,,,,,,2.0,66.0,6,3,3
+jordan-clark,Jordan Clark,GEN_DEF,Fremantle,West Coast Eagles,3807,3807,0,35,35,3368,3368,0,2953,2953,0,-439,-415,False,,,,,,18.0,94.37,8,7,3
+jordan-croft,Jordan Croft,KEY_FWD,Western Bulldogs,Hawthorn Hawks,1002,1002,0,232,233,881,881,0,791,791,0,-121,-90,False,,,,,,13.0,38.82,3,1,4
+jordan-dawson,Jordan Dawson,MID,Adelaide,West Coast Eagles,3589,3589,0,42,42,3207,3207,0,2731,2731,0,-382,-476,False,,,,,,15.0,113.47,11,8,3
+jordan-de-goey,Jordan De Goey,GEN_FWD,Collingwood,North Melbourne Kangaroos,1774,1774,0,141,142,1530,1530,0,1216,1216,0,-244,-314,False,,,,,,17.0,92.2,12,12,3
+jordan-ridley,Jordan Ridley,GEN_DEF,Essendon,Adelaide Crows,880,880,0,259,261,685,685,0,528,528,0,-195,-157,False,,,,,,6.0,71.33,10,8,3
+jordon-butts,Jordon Butts,KEY_DEF,Adelaide,Fremantle Dockers,12,12,0,786,786,10,10,0,10,10,0,-2,0,False,,,,,,9.0,53.4,8,6,4
+jordon-sweet,Jordon Sweet,RUC,Port Adelaide,St Kilda Saints,2696,2696,0,71,71,2434,2434,0,2178,2178,0,-262,-256,False,,,,,,17.0,101.38,8,4,4
+josaia-delana,Josaia Delana,GEN_FWD,GWS,St Kilda Saints,324,324,0,471,479,233,233,0,233,233,0,-91,0,False,,,,,,5.0,31.8,2,1,3
+joseph-fonti,Joseph Fonti,GEN_DEF,GWS,St Kilda Saints,832,832,0,271,274,837,837,0,869,869,0,5,32,False,,,,,,17.0,73.99,3,2,3
+josh-battle,Josh Battle,KEY_DEF,St Kilda,West Coast Eagles,2241,2241,0,95,95,2090,2090,0,1842,1842,0,-151,-248,False,,,,,,16.0,87.58,10,9,4
+josh-daicos,Josh Daicos,GEN_DEF,Collingwood,Brisbane Lions,2182,2182,0,101,101,2000,2000,0,1679,1679,0,-182,-321,False,,,,,,18.0,95.52,10,8,3
+josh-dolan,Josh Dolan,GEN_FWD,Western Bulldogs,Hawthorn Hawks,364,364,0,439,446,304,304,0,256,256,0,-60,-48,False,,,,,,6.0,44.97,2,2,3
+josh-draper,Josh Draper,KEY_DEF,Fremantle,Essendon Bombers,523,523,0,365,372,383,383,0,341,341,0,-140,-42,False,,,,,,0,,4,2,4
+josh-dunkley,Josh Dunkley,MID,Brisbane,Geelong Cats,1385,1385,0,181,182,1181,1181,0,909,909,0,-204,-272,False,,,,,,18.0,90.45,11,11,3
+josh-gibcus,Josh Gibcus,KEY_DEF,Richmond,Carlton Blues,215,215,0,552,557,151,151,0,139,139,0,-64,-12,True,0.20408,2026,2026,0.20408,0.20408,1.0,56.0,5,1,4
+josh-goater,Josh Goater,GEN_DEF,North Melbourne,Hawthorn Hawks,94,94,0,668,669,66,66,0,51,51,0,-28,-15,True,0.18834,2026,2026,0.18834,0.18834,3.0,56.33,5,1,3
+josh-lai,Josh Lai,GEN_DEF,Port Adelaide,Fremantle Dockers,436,436,0,402,409,372,372,0,325,325,0,-64,-47,False,,,,,,13.0,58.67,2,1,3
+josh-lindsay,Josh Lindsay,GEN_DEF,West Coast,St Kilda Saints,2373,2373,0,87,87,2787,2787,0,3644,3644,0,414,857,False,,,,,,12.0,74.3,1,1,3
+josh-rachele,Josh Rachele,GEN_FWD,Adelaide,Fremantle Dockers,2194,2194,0,100,100,2156,2156,0,2032,2032,0,-38,-124,False,,,,,,18.0,79.96,5,5,3
+josh-sinn,Josh Sinn,GEN_DEF,Port Adelaide,Essendon Bombers,193,193,0,577,580,109,109,0,92,92,0,-84,-17,False,,,,,,0,,5,2,3
+josh-smillie,Josh Smillie,MID,Richmond,Carlton Blues,1233,1233,0,198,199,1233,1233,0,1233,1233,0,0,0,False,,,,,,0,,2,0,3
+josh-treacy,Josh Treacy,KEY_FWD,Fremantle,West Coast Eagles,6349,6349,0,7,7,6377,6377,0,5882,5882,0,28,-495,False,,,,,,18.0,97.88,6,5,4
+josh-ward,Josh Ward,MID,Hawthorn,Essendon Bombers,2684,2684,0,72,72,2604,2604,0,2486,2486,0,-80,-118,False,,,,,,18.0,82.77,5,5,3
+josh-worrell,Josh Worrell,GEN_DEF,Adelaide,West Coast Eagles,3603,3603,0,41,41,3191,3191,0,2803,2803,0,-412,-388,False,,,,,,18.0,96.71,7,4,3
+joshua-kelly,Joshua Kelly,MID,GWS,Adelaide Crows,544,544,0,360,367,655,655,0,495,495,0,111,-160,False,,,,,,0,,13,12,3
+joshua-weddle,Joshua Weddle,GEN_DEF,Hawthorn,Richmond Tigers,1685,1685,0,145,146,1709,1709,0,1710,1710,0,24,1,False,,,,,,14.0,74.14,4,4,3
+judd-mcvee,Judd McVee,GEN_DEF,Fremantle,Richmond Tigers,380,380,0,431,438,344,344,0,318,318,0,-36,-26,False,,,,,,17.0,61.72,5,4,3
+judson-clarke,Judson Clarke,GEN_FWD,Richmond,Collingwood Magpies,90,90,0,672,674,62,62,0,36,36,0,-28,-26,True,0.0,2026,2026,0.0,0.0,0,,5,1,3
+justin-mcinerney,Justin McInerney,MID,Sydney,Carlton Blues,1920,1920,0,129,129,1657,1657,0,1402,1402,0,-263,-255,False,,,,,,13.0,91.8,8,7,3
+jy-farrar,Jy Farrar,KEY_FWD,Gold Coast,Free agents,22,22,0,776,776,11,11,0,9,9,0,-11,-2,False,,,,,,2.0,32.0,7,4,4
+jy-simpkin,Jy Simpkin,MID,North Melbourne,Collingwood Magpies,870,870,0,260,262,629,629,0,427,427,0,-241,-202,False,,,,,,18.0,80.78,10,10,3
+jye-amiss,Jye Amiss,KEY_FWD,Fremantle,Collingwood Magpies,1361,1361,0,185,186,1071,1071,0,1073,1073,0,-290,2,False,,,,,,18.0,69.43,5,4,4
+jye-caldwell,Jye Caldwell,MID,Essendon,Brisbane Lions,1135,1135,0,207,208,908,908,0,768,768,0,-227,-140,False,,,,,,14.0,76.65,8,6,3
+kade-chandler,Kade Chandler,GEN_FWD,Melbourne,Western Bulldogs,1064,1064,0,218,219,927,927,0,748,748,0,-137,-179,False,,,,,,18.0,78.47,8,4,3
+kai-lohmann,Kai Lohmann,GEN_FWD,Brisbane,Collingwood Magpies,745,745,0,288,291,740,740,0,674,674,0,-5,-66,False,,,,,,18.0,67.95,5,4,3
+kalani-white,Kalani White,KEY_FWD,Melbourne,Essendon Bombers,260,260,0,518,525,260,260,0,260,260,0,0,0,False,,,,,,0,,1,0,4
+kaleb-smith,Kaleb Smith,GEN_DEF,Richmond,Free agents,122,122,0,636,640,75,75,0,67,67,0,-47,-8,True,0.0,2026,2026,0.0,0.0,0,,4,1,3
+kane-farrell,Kane Farrell,GEN_DEF,Port Adelaide,Essendon Bombers,1455,1455,0,173,174,1299,1299,0,1061,1061,0,-156,-238,False,,,,,,13.0,86.48,9,8,3
+kane-mcauliffe,Kane McAuliffe,MID,Richmond,Carlton Blues,1347,1347,0,187,188,1308,1308,0,1299,1299,0,-39,-9,False,,,,,,9.0,74.03,3,2,3
+karl-amon,Karl Amon,GEN_DEF,Hawthorn,St Kilda Saints,546,546,0,359,365,411,411,0,323,323,0,-135,-88,False,,,,,,15.0,80.5,13,12,3
+karl-worner,Karl Worner,GEN_DEF,Fremantle,North Melbourne Kangaroos,1061,1061,0,219,220,1070,1070,0,1098,1098,0,9,28,False,,,,,,18.0,82.64,5,2,3
+kayle-gerreyn,Kayle Gerreyn,KEY_FWD,Essendon,Fremantle Dockers,311,311,0,481,489,311,311,0,311,311,0,0,0,False,,,,,,0,,2,0,4
+keidean-coleman,Keidean Coleman,GEN_DEF,Brisbane,Melbourne Demons,889,889,0,257,259,664,664,0,499,499,0,-225,-165,False,,,,,,12.0,77.8,7,4,3
+keighton-matofai-forbes,Keighton Matofai-Forbes,GEN_DEF,Geelong,Free agents,249,249,0,525,533,249,249,0,249,249,0,0,0,False,,,,,,0,,2,0,3
+kieren-briggs,Kieren Briggs,RUC,GWS,Adelaide Crows,2424,2424,0,83,83,2234,2234,0,1989,1989,0,-190,-245,False,,,,,,14.0,88.71,8,4,4
+kobe-mcdonald,Kobe McDonald,GEN_DEF,St Kilda,Hawthorn Hawks,238,238,0,535,542,238,238,0,238,238,0,0,0,False,,,,,,0,,1,0,3
+koby-coulson,Koby Coulson,MID,Gold Coast,Carlton Blues,480,480,0,378,385,480,480,0,480,480,0,0,0,False,,,,,,0,,1,0,3
+koby-evans,Koby Evans,GEN_FWD,Brisbane,Free agents,429,429,0,405,412,429,429,0,429,429,0,0,0,False,,,,,,0,,1,0,3
+koltyn-tholstrup,Koltyn Tholstrup,GEN_DEF,Melbourne,Collingwood Magpies,1515,1515,0,166,167,1499,1499,0,1486,1486,0,-16,-13,False,,,,,,18.0,69.95,3,3,3
+kye-annand,Kye Annand,KEY_DEF,Richmond,Carlton Blues,174,174,0,593,596,167,167,0,167,167,0,-7,0,False,,,,,,6.0,57.5,1,1,4
+kye-fincher,Kye Fincher,MID,St Kilda,Hawthorn Hawks,441,441,0,400,407,441,441,0,441,441,0,0,0,False,,,,,,0,,1,0,3
+kyle-langford,Kyle Langford,KEY_FWD,Essendon,St Kilda Saints,510,510,0,367,374,331,331,0,255,255,0,-179,-76,False,,,,,,15.0,68.17,12,12,4
+kysaiah-pickett,Kysaiah Pickett,GEN_FWD,Melbourne,Richmond Tigers,4001,4001,0,28,28,3694,3694,0,3347,3347,0,-307,-347,False,,,,,,18.0,99.13,7,7,3
+lachie-jaques,Lachie Jaques,GEN_DEF,Western Bulldogs,Melbourne Demons,853,853,0,265,267,793,793,0,774,774,0,-60,-19,False,,,,,,8.0,59.8,2,1,3
+lachie-neale,Lachie Neale,MID,Brisbane,Sydney Swans,2390,2390,0,85,85,1737,1737,0,1466,1466,0,-653,-271,False,,,,,,18.0,110.89,15,15,3
+lachie-sullivan,Lachie Sullivan,GEN_FWD,Collingwood,Free agents,1,1,0,801,801,1,1,0,1,1,0,0,0,False,,,,,,1.0,41.0,3,2,3
+lachie-whitfield,Lachie Whitfield,GEN_DEF,GWS,North Melbourne Kangaroos,2266,2266,0,94,94,1989,1989,0,1651,1651,0,-277,-338,False,,,,,,15.0,104.28,14,14,3
+lachlan-ash,Lachlan Ash,GEN_DEF,GWS,Melbourne Demons,5535,5535,0,11,11,4878,4878,0,4247,4247,0,-657,-631,False,,,,,,18.0,103.63,7,7,3
+lachlan-blakiston,Lachlan Blakiston,KEY_DEF,Essendon,West Coast Eagles,16,16,0,782,782,15,15,0,13,13,0,-1,-2,False,,,,,,16.0,50.76,2,2,4
+lachlan-bramble,Lachlan Bramble,GEN_FWD,Western Bulldogs,Collingwood Magpies,62,62,0,704,704,55,55,0,52,52,0,-7,-3,False,,,,,,18.0,59.85,6,6,3
+lachlan-carmichael,Lachlan Carmichael,GEN_DEF,Western Bulldogs,Hawthorn Hawks,578,578,0,346,352,578,578,0,578,578,0,0,0,False,,,,,,0,,1,0,3
+lachlan-cowan,Lachlan Cowan,GEN_DEF,Carlton,Essendon Bombers,662,662,0,308,313,645,645,0,630,630,0,-17,-15,False,,,,,,17.0,64.99,4,4,3
+lachlan-fogarty,Lachlan Fogarty,GEN_FWD,Carlton,Free agents,75,75,0,691,691,47,47,0,42,42,0,-28,-5,False,,,,,,2.0,47.0,9,6,3
+lachlan-gulbin,Lachlan Gulbin,GEN_FWD,Gold Coast,Sydney Swans,308,308,0,485,492,262,262,0,221,221,0,-46,-41,False,,,,,,8.0,45.0,2,1,3
+lachlan-jones,Lachlan Jones,GEN_DEF,Port Adelaide,Adelaide Crows,148,148,0,615,619,140,140,0,132,132,0,-8,-8,False,,,,,,16.0,59.57,6,6,3
+lachlan-mcandrew,Lachlan McAndrew,RUC,Adelaide,Brisbane Lions,1448,1448,0,176,177,1429,1429,0,1468,1468,0,-19,39,False,,,,,,18.0,87.69,2,1,4
+lachlan-mcneil,Lachlan McNeil,GEN_FWD,Western Bulldogs,Free agents,22,22,0,777,777,20,20,0,19,19,0,-2,-1,False,,,,,,10.0,55.02,6,6,3
+lachlan-schultz,Lachlan Schultz,GEN_FWD,Fremantle,Adelaide Crows,824,824,0,272,275,715,715,0,527,527,0,-109,-188,False,,,,,,16.0,78.34,8,8,3
+lachlan-sholl,Lachlan Sholl,MID,Adelaide,Free agents,225,225,0,541,548,110,110,0,83,83,0,-115,-27,False,,,,,,0,,8,5,3
+lachlan-smith,Lachlan Smith,RUC,Western Bulldogs,Collingwood Magpies,690,690,0,300,305,631,631,0,631,631,0,-59,0,False,,,,,,2.0,53.0,3,0,4
+lachlan-weller,Lachlan Weller,MID,Gold Coast,Brisbane Lions,83,83,0,681,683,83,83,0,83,83,0,0,0,False,,,,,,11.0,74.6,12,11,3
+lachy-dovaston,Lachy Dovaston,GEN_FWD,North Melbourne,Fremantle Dockers,849,849,0,267,270,803,803,0,745,745,0,-46,-58,False,,,,,,6.0,38.5,1,1,3
+laitham-vandermeer,Laitham Vandermeer,GEN_FWD,Western Bulldogs,Free agents,32,32,0,757,757,32,32,0,32,32,0,0,0,False,,,,,,1.0,46.0,8,6,3
+lance-collard,Lance Collard,GEN_FWD,St Kilda,Hawthorn Hawks,228,228,0,538,546,179,179,0,142,142,0,-49,-37,True,0.0,2026,2026,0.0,0.0,0,,3,1,3
+latrelle-pickett,Latrelle Pickett,GEN_FWD,Melbourne,Collingwood Magpies,576,576,0,347,353,423,423,0,352,352,0,-153,-71,False,,,,,,14.0,38.91,1,1,3
+lawson-humphries,Lawson Humphries,GEN_DEF,Geelong,Geelong Cats,1946,1946,0,128,128,2025,2025,0,2067,2067,0,79,42,False,,,,,,17.0,83.45,3,3,3
+leek-aleer,Leek Aleer,KEY_DEF,GWS,Port Adelaide Power,283,283,0,496,504,233,233,0,212,212,0,-50,-21,False,,,,,,7.0,57.57,5,3,4
+lennox-hoffman,Lennox Hoffman,GEN_DEF,Geelong,St Kilda Saints,251,251,0,523,531,251,251,0,251,251,0,0,0,False,,,,,,0,,2,0,3
+leo-lombard,Leo Lombard,GEN_FWD,Gold Coast,Fremantle Dockers,1671,1671,0,147,148,1625,1625,0,1580,1580,0,-46,-45,False,,,,,,18.0,61.54,2,1,3
+leon-kickett,Leon Kickett,GEN_FWD,Fremantle,Free agents,315,315,0,477,486,315,315,0,315,315,0,0,0,False,,,,,,0,,1,0,3
+levi-ashcroft,Levi Ashcroft,MID,Brisbane,Essendon Bombers,3368,3368,0,49,49,3432,3432,0,3616,3616,0,64,184,False,,,,,,18.0,73.68,2,2,3
+lewis-hayes,Lewis Hayes,KEY_DEF,Essendon,Western Bulldogs,359,359,0,442,449,359,359,0,344,344,0,0,-15,False,,,,,,0,,4,0,4
+lewis-melican,Lewis Melican,KEY_DEF,Sydney,Brisbane Lions,55,55,0,715,715,31,31,0,22,22,0,-24,-9,False,,,,,,9.0,62.0,12,8,4
+lewis-young,Lewis Young,KEY_DEF,Carlton,Carlton Blues,146,146,0,621,625,99,99,0,71,71,0,-47,-28,False,,,,,,8.0,52.52,10,7,4
+liam-baker,Liam Baker,GEN_DEF,West Coast,Carlton Blues,554,554,0,354,360,438,438,0,304,304,0,-116,-134,False,,,,,,17.0,69.73,9,8,3
+liam-duggan,Liam Duggan,GEN_DEF,West Coast,Adelaide Crows,407,407,0,417,424,288,288,0,164,164,0,-119,-124,False,,,,,,18.0,78.49,12,12,3
+liam-fawcett,Liam Fawcett,KEY_FWD,Richmond,Carlton Blues,509,509,0,368,375,394,394,0,366,366,0,-115,-28,False,,,,,,7.0,36.29,3,1,4
+liam-henry,Liam Henry,GEN_FWD,St Kilda,Essendon Bombers,83,83,0,682,684,83,83,0,83,83,0,0,0,False,,,,,,8.0,44.38,7,6,3
+liam-hetherton,Liam Hetherton,KEY_FWD,Sydney,St Kilda Saints,223,223,0,545,551,223,223,0,223,223,0,0,0,False,,,,,,0,,1,0,4
+liam-mcmahon,Liam McMahon,KEY_FWD,Essendon,Free agents,200,200,0,566,569,167,167,0,154,154,0,-33,-13,True,0.0,2026,2026,0.0,0.0,0,,6,1,4
+liam-o-connell,Liam O'Connell,GEN_DEF,St Kilda,West Coast Eagles,66,66,0,701,701,43,43,0,38,38,0,-23,-5,False,,,,,,8.0,51.0,3,2,3
+liam-puncher,Liam Puncher,KEY_DEF,Collingwood,North Melbourne Kangaroos,157,157,0,609,613,157,157,0,157,157,0,0,0,False,,,,,,3.0,39.0,1,0,4
+liam-reidy,Liam Reidy,RUC,Carlton,Western Bulldogs,288,288,0,495,503,227,227,0,218,218,0,-61,-9,False,,,,,,4.0,64.28,4,0,4
+liam-ryan,Liam Ryan,GEN_FWD,St Kilda,Melbourne Demons,29,29,0,765,765,29,29,0,29,29,0,0,0,False,,,,,,13.0,52.42,9,8,3
+liam-stocker,Liam Stocker,GEN_DEF,St Kilda,Free Agents,40,40,0,741,741,40,40,0,40,40,0,0,0,False,,,,,,13.0,45.91,8,6,3
+lincoln-mccarthy,Lincoln McCarthy,GEN_FWD,Brisbane,Essendon Bombers,24,24,0,772,772,20,20,0,20,20,0,-4,0,False,,,,,,8.0,57.8,15,8,3
+lloyd-meek,Lloyd Meek,RUC,Hawthorn,Carlton Blues,1383,1383,0,182,183,1212,1212,0,1013,1013,0,-171,-199,False,,,,,,18.0,74.4,9,6,4
+logan-evans,Logan Evans,GEN_DEF,Port Adelaide,Sydney Swans,1454,1454,0,174,175,1595,1595,0,1699,1699,0,141,104,False,,,,,,18.0,75.93,3,3,3
+logan-mcdonald,Logan McDonald,KEY_FWD,Sydney,Essendon Bombers,727,727,0,293,296,707,707,0,651,651,0,-20,-56,False,,,,,,16.0,62.06,6,5,4
+logan-morris,Logan Morris,KEY_FWD,Brisbane,Sydney Swans,3015,3015,0,56,56,3188,3188,0,3458,3458,0,173,270,False,,,,,,17.0,74.23,3,3,4
+logan-smith,Logan Smith,RUC,GWS,Fremantle Dockers,444,444,0,398,405,444,444,0,444,444,0,0,0,False,,,,,,0,,2,0,4
+louis-emmett,Louis Emmett,KEY_FWD,Western Bulldogs,Adelaide Crows,909,909,0,252,253,722,722,0,722,722,0,-187,0,False,,,,,,5.0,32.8,1,1,4
+lucas-camporeale,Lucas Camporeale,MID,Carlton,Fremantle Dockers,276,276,0,505,511,241,241,0,241,241,0,-35,0,False,,,,,,0,,2,0,3
+lucca-grego,Lucca Grego,GEN_DEF,West Coast,Melbourne Demons,256,256,0,521,528,245,245,0,245,245,0,-11,0,False,,,,,,0,,2,0,3
+lukas-cooke,Lukas Cooke,KEY_DEF,Melbourne,Adelaide Crows,154,154,0,610,614,147,147,0,147,147,0,-7,0,False,,,,,,1.0,26.0,1,0,4
+luke-beecken,Luke Beecken,MID,Brisbane,Port Adelaide Power,34,34,0,751,751,33,33,0,33,33,0,-1,0,False,,,,,,0,,3,0,3
+luke-cleary,Luke Cleary,GEN_DEF,Western Bulldogs,Sydney Swans,81,81,0,684,686,56,56,0,37,37,0,-25,-19,True,0.25789,2026,2026,0.25789,0.25789,2.0,23.0,5,1,3
+luke-davies-uniacke,Luke Davies-Uniacke,MID,North Melbourne,Richmond Tigers,3776,3776,0,38,38,3445,3445,0,3075,3075,0,-331,-370,False,,,,,,18.0,108.77,9,9,3
+luke-jackson,Luke Jackson,RUC,Fremantle,St Kilda Saints,8694,8694,0,2,2,8604,8604,0,8066,8066,0,-90,-538,False,,,,,,18.0,119.19,7,7,4
+luke-kennedy,Luke Kennedy,MID,Western Bulldogs,North Melbourne Kangaroos,542,542,0,361,368,519,519,0,519,519,0,-23,0,False,,,,,,4.0,37.25,2,0,3
+luke-lloyd,Luke Lloyd,KEY_DEF,Brisbane,Free agents,277,277,0,504,510,277,277,0,277,277,0,0,0,False,,,,,,0,,3,0,4
+luke-mcdonald,Luke McDonald,GEN_DEF,North Melbourne,Geelong Cats,53,53,0,716,716,53,53,0,53,53,0,0,0,False,,,,,,17.0,66.96,13,13,3
+luke-nankervis,Luke Nankervis,GEN_DEF,Adelaide,Western Bulldogs,449,449,0,393,400,426,426,0,404,404,0,-23,-22,False,,,,,,12.0,66.23,5,3,3
+luke-parker,Luke Parker,GEN_DEF,North Melbourne,North Melbourne Kangaroos,1666,1666,0,148,149,1464,1464,0,1257,1257,0,-202,-207,False,,,,,,18.0,105.18,16,16,3
+luke-pedlar,Luke Pedlar,GEN_FWD,Adelaide,Essendon Bombers,142,142,0,624,628,79,79,0,79,79,0,-63,0,False,,,,,,10.0,44.3,6,3,3
+luke-ryan,Luke Ryan,GEN_DEF,Fremantle,West Coast Eagles,1581,1581,0,155,156,1340,1340,0,1063,1063,0,-241,-277,False,,,,,,17.0,90.98,10,10,3
+luke-trainor,Luke Trainor,KEY_DEF,Richmond,Carlton Blues,1433,1433,0,177,178,1404,1404,0,1381,1381,0,-29,-23,False,,,,,,7.0,56.4,2,2,4
+luke-urquhart,Luke Urquhart,MID,North Melbourne,Melbourne Demons,268,268,0,512,518,268,268,0,268,268,0,0,0,False,,,,,,0,,2,0,3
+luker-kentfield,Luker Kentfield,KEY_FWD,Melbourne,Carlton Blues,357,357,0,443,450,327,327,0,327,327,0,-30,0,False,,,,,,3.0,32.33,3,0,4
+mabior-chol,Mabior Chol,KEY_FWD,Hawthorn,Collingwood Magpies,419,419,0,409,416,334,334,0,230,230,0,-85,-104,False,,,,,,13.0,67.5,11,8,4
+mac-andrew,Mac Andrew,KEY_DEF,Gold Coast,Western Bulldogs,3865,3865,0,33,33,3774,3774,0,3678,3678,0,-91,-96,False,,,,,,18.0,87.32,5,4,4
+malakai-champion,Malakai Champion,GEN_FWD,West Coast,Melbourne Demons,326,326,0,468,476,275,275,0,227,227,0,-51,-48,False,,,,,,8.0,38.4,2,1,3
+malcolm-rosas,Malcolm Rosas,GEN_FWD,Sydney,Melbourne Demons,33,33,0,753,753,25,25,0,17,17,0,-8,-8,False,,,,,,14.0,55.37,7,4,3
+mani-liddy,Mani Liddy,MID,Port Adelaide,North Melbourne Kangaroos,38,38,0,744,744,25,25,0,25,25,0,-13,0,False,,,,,,0,,2,1,3
+marc-pittonet,Marc Pittonet,RUC,Carlton,Sydney Swans,569,569,0,348,354,415,415,0,351,351,0,-154,-64,False,,,,,,15.0,80.65,12,7,4
+marcus-bontempelli,Marcus Bontempelli,MID,Western Bulldogs,West Coast Eagles,4278,4278,0,22,22,3610,3610,0,2961,2961,0,-668,-649,False,,,,,,18.0,121.94,13,13,3
+marcus-herbert,Marcus Herbert,GEN_DEF,West Coast,Essendon Bombers,188,188,0,581,585,180,180,0,180,180,0,-8,0,False,,,,,,5.0,73.8,1,1,3
+marcus-windhager,Marcus Windhager,MID,St Kilda,Western Bulldogs,2091,2091,0,110,110,2017,2017,0,1913,1913,0,-74,-104,False,,,,,,18.0,80.04,5,5,3
+mark-blicavs,Mark Blicavs,MID,Geelong,Geelong Cats,7,7,0,796,796,6,6,0,6,6,0,-1,0,False,,,,,,14.0,64.16,15,14,3
+mark-keane,Mark Keane,KEY_DEF,Adelaide,Adelaide Crows,1849,1849,0,135,136,1759,1759,0,1710,1710,0,-90,-49,False,,,,,,5.0,71.4,4,3,4
+mark-o-connor,Mark O'Connor,GEN_DEF,Geelong,Brisbane Lions,19,19,0,781,781,11,11,0,8,8,0,-8,-3,False,,,,,,15.0,66.78,10,8,3
+mason-cox,Mason Cox,KEY_FWD,Fremantle,Geelong Cats,1,1,0,802,802,1,1,0,1,1,0,0,0,False,,,,,,11.0,43.98,12,11,4
+mason-redman,Mason Redman,GEN_DEF,Essendon,Collingwood Magpies,1652,1652,0,149,150,1408,1408,0,1174,1174,0,-244,-234,False,,,,,,11.0,92.69,11,8,3
+mason-wood,Mason Wood,GEN_FWD,St Kilda,Port Adelaide Power,455,455,0,391,398,404,404,0,367,367,0,-51,-37,False,,,,,,17.0,75.04,14,12,3
+massimo-d-ambrosio,Massimo D'Ambrosio,MID,Hawthorn,Geelong Cats,1527,1527,0,164,165,1518,1518,0,1485,1485,0,-9,-33,False,,,,,,18.0,77.39,5,5,3
+matt-carroll,Matt Carroll,MID,Carlton,Western Bulldogs,952,952,0,241,242,897,897,0,843,843,0,-55,-54,False,,,,,,10.0,68.0,3,2,3
+matt-cottrell,Matt Cottrell,MID,Carlton,Adelaide Crows,74,74,0,694,694,22,22,0,21,21,0,-52,-1,False,,,,,,7.0,63.86,8,6,3
+matt-duffy,Matt Duffy,GEN_DEF,Carlton,North Melbourne Kangaroos,172,172,0,594,597,172,172,0,172,172,0,0,0,False,,,,,,0,,2,0,3
+matt-guelfi,Matt Guelfi,GEN_FWD,Essendon,Free agents,26,26,0,771,771,26,26,0,26,26,0,0,0,False,,,,,,3.0,36.0,9,8,3
+matt-hill,Matt Hill,GEN_FWD,Hawthorn,Free agents,103,103,0,658,659,103,103,0,103,103,0,0,0,False,,,,,,2.0,24.0,2,0,3
+matt-johnson-1,Matt Johnson,MID,Fremantle,Carlton Blues,892,892,0,256,258,832,832,0,779,779,0,-60,-53,False,,,,,,17.0,67.21,5,4,3
+matt-owies,Matt Owies,GEN_FWD,Carlton,Free agents,1,1,0,803,803,1,1,0,1,1,0,0,0,False,,,,,,3.0,48.7,8,5,3
+matt-rowell,Matt Rowell,MID,Gold Coast,Collingwood Magpies,3922,3922,0,31,31,3515,3515,0,2998,2998,0,-407,-517,False,,,,,,13.0,96.26,7,6,3
+matt-whitlock,Matt Whitlock,KEY_FWD,North Melbourne,Adelaide Crows,677,677,0,303,308,619,619,0,619,619,0,-58,0,False,,,,,,2.0,34.0,2,0,4
+mattaes-phillipou,Mattaes Phillipou,MID,St Kilda,Brisbane Lions,2083,2083,0,112,112,2038,2038,0,2013,2013,0,-45,-25,False,,,,,,16.0,70.36,4,4,3
+matthew-flynn,Matthew Flynn,RUC,West Coast,Sydney Swans,675,675,0,305,310,505,505,0,374,374,0,-170,-131,False,,,,,,4.0,73.5,11,4,4
+matthew-jefferson,Matthew Jefferson,KEY_FWD,Melbourne,Carlton Blues,689,689,0,301,306,617,617,0,555,555,0,-72,-62,False,,,,,,11.0,52.19,4,2,4
+matthew-kennedy-1,Matthew Kennedy,MID,Western Bulldogs,St Kilda Saints,865,865,0,262,264,656,656,0,440,440,0,-209,-216,False,,,,,,18.0,87.03,11,10,3
+matthew-leray,Matthew LeRay,MID,Hawthorn,Hawthorn Hawks,424,424,0,408,415,424,424,0,424,424,0,0,0,False,,,,,,0,,1,0,3
+matthew-roberts,Matthew Roberts,GEN_DEF,Sydney,Carlton Blues,1989,1989,0,123,123,2040,2040,0,2058,2058,0,51,18,False,,,,,,14.0,74.11,5,4,3
+maurice-rioli-1,Maurice Rioli,GEN_FWD,Richmond,Sydney Swans,41,41,0,739,739,29,29,0,24,24,0,-12,-5,False,,,,,,9.0,47.92,6,5,3
+max-beattie,Max Beattie,GEN_FWD,Hawthorn,Carlton Blues,46,46,0,731,731,46,46,0,46,46,0,0,0,False,,,,,,0,,1,0,3
+max-gawn,Max Gawn,RUC,Melbourne,North Melbourne Kangaroos,3372,3372,0,48,48,3129,3129,0,2859,2859,0,-243,-270,False,,,,,,18.0,126.12,17,14,4
+max-gruzewski,Max Gruzewski,KEY_FWD,GWS,Essendon Bombers,353,353,0,447,454,280,280,0,236,236,0,-73,-44,False,,,,,,9.0,51.31,4,2,4
+max-hall,Max Hall,MID,St Kilda,Western Bulldogs,2777,2777,0,67,67,2711,2711,0,2675,2675,0,-66,-36,False,,,,,,18.0,90.51,3,2,3
+max-heath,Max Heath,RUC,Melbourne,Sydney Swans,210,722,512,555,300,208,663,455,208,637,429,-59,-26,True,1.0,2026,2026,1.0,1.0,7.0,51.4,6,1,4
+max-holmes,Max Holmes,MID,Geelong,Geelong Cats,7194,7194,0,6,6,7130,7130,0,6873,6873,0,-64,-257,False,,,,,,18.0,114.77,6,6,3
+max-king-stk,Max King,KEY_FWD,St Kilda,Hawthorn Hawks,334,334,0,457,465,237,237,0,177,177,0,-97,-60,False,,,,,,0,,8,5,4
+max-king-syd,Maxwell King,GEN_FWD,Sydney,Richmond Tigers,266,266,0,513,519,266,266,0,266,266,0,0,0,False,,,,,,0,,1,0,3
+max-knobel,Max Knobel,RUC,Gold Coast,Fremantle Dockers,491,491,0,374,381,491,491,0,491,491,0,0,0,False,,,,,,0,,4,0,4
+max-kondogiannis,Max Kondogiannis,GEN_DEF,Essendon,Hawthorn Hawks,559,559,0,353,359,549,549,0,480,480,0,-10,-69,False,,,,,,6.0,41.57,1,1,3
+max-mapley,Max Mapley,RUC,Melbourne,Sydney Swans,581,581,0,341,347,581,581,0,581,581,0,0,0,False,,,,,,0,,1,0,4
+max-michalanney,Max Michalanney,GEN_DEF,Adelaide,Carlton Blues,579,579,0,345,351,558,558,0,530,530,0,-21,-28,False,,,,,,18.0,62.74,4,4,3
+max-ramsden,Max Ramsden,KEY_FWD,Hawthorn,Hawthorn Hawks,202,202,0,562,566,117,117,0,117,117,0,-85,0,False,,,,,,2.0,40.5,5,0,4
+michael-frederick,Michael Frederick,GEN_FWD,Fremantle,Port Adelaide Power,105,105,0,656,657,75,75,0,57,57,0,-30,-18,False,,,,,,13.0,65.4,7,7,3
+michael-sellwood,Michael Sellwood,GEN_DEF,Western Bulldogs,Brisbane Lions,148,148,0,616,620,120,120,0,109,109,0,-28,-11,False,,,,,,17.0,59.46,2,1,3
+milan-murdock,Milan Murdock,GEN_FWD,West Coast,Richmond Tigers,475,475,0,382,389,334,334,0,291,291,0,-141,-43,False,,,,,,14.0,71.36,1,1,3
+miles-bergman,Miles Bergman,GEN_DEF,Port Adelaide,Brisbane Lions,849,849,0,268,271,683,683,0,480,480,0,-166,-203,False,,,,,,11.0,69.71,7,6,3
+mitch-georgiades,Mitch Georgiades,KEY_FWD,Port Adelaide,North Melbourne Kangaroos,1479,1479,0,171,172,1347,1347,0,1184,1184,0,-132,-163,False,,,,,,16.0,71.43,7,6,4
+mitch-mcgovern,Mitch McGovern,GEN_DEF,Carlton,Geelong Cats,28,28,0,768,768,28,28,0,28,28,0,0,0,False,,,,,,18.0,65.16,12,10,3
+mitch-podhajski,Mitch Podhajski,KEY_FWD,Collingwood,Hawthorn Hawks,23,23,0,774,774,22,22,0,22,22,0,-1,0,False,,,,,,2.0,48.5,1,0,4
+mitch-zadow,Mitch Zadow,GEN_FWD,Port Adelaide,Port Adelaide Power,94,94,0,669,670,90,90,0,90,90,0,-4,0,False,,,,,,4.0,39.5,1,0,3
+mitchell-edwards,Mitchell Edwards,RUC,Geelong,Western Bulldogs,1915,1915,0,130,130,1753,1753,0,1678,1678,0,-162,-75,False,,,,,,14.0,51.7,3,1,4
+mitchell-hinge,Mitchell Hinge,GEN_DEF,Adelaide,Collingwood Magpies,478,478,0,379,386,272,272,0,203,203,0,-206,-69,False,,,,,,1.0,44.0,10,4,3
+mitchell-knevitt,Mitchell Knevitt,MID,Geelong,Richmond Tigers,178,178,0,589,593,105,105,0,92,92,0,-73,-13,False,,,,,,2.0,54.0,5,2,3
+mitchell-lewis,Mitchell Lewis,KEY_FWD,Hawthorn,North Melbourne Kangaroos,646,646,0,314,319,508,508,0,415,415,0,-138,-93,False,,,,,,18.0,69.75,10,7,4
+mitchell-marsh,Mitchell Marsh,KEY_FWD,Adelaide,Hawthorn Hawks,629,629,0,319,324,629,629,0,629,629,0,0,0,False,,,,,,0,,1,0,4
+mitchito-owens,Mitchito Owens,KEY_FWD,St Kilda,Western Bulldogs,2006,2006,0,121,121,1456,1456,0,1425,1425,0,-550,-31,False,,,,,,15.0,67.02,5,5,4
+murphy-reid,Murphy Reid,GEN_FWD,Fremantle,Fremantle Dockers,3998,3998,0,29,29,4397,4397,0,4578,4578,0,399,181,False,,,,,,18.0,89.01,2,2,3
+mykelti-lefau,Mykelti Lefau,KEY_FWD,Richmond,Carlton Blues,32,32,0,758,758,29,29,0,26,26,0,-3,-3,False,,,,,,16.0,53.46,3,2,4
+nasiah-wanganeen-milera,Nasiah Wanganeen-Milera,MID,St Kilda,Brisbane Lions,7460,7460,0,5,5,7576,7576,0,7182,7182,0,116,-394,False,,,,,,14.0,112.65,5,5,3
+nate-caddy,Nate Caddy,KEY_FWD,Essendon,Essendon Bombers,1820,1820,0,138,139,1810,1810,0,1846,1846,0,-10,36,False,,,,,,16.0,58.5,3,3,4
+nathan-broad,Nathan Broad,GEN_DEF,Richmond,Richmond Tigers,11,11,0,791,791,11,11,0,11,11,0,0,0,False,,,,,,17.0,63.29,11,10,3
+nathan-o-driscoll,Nathan O'Driscoll,MID,Fremantle,Essendon Bombers,658,658,0,310,315,617,617,0,576,576,0,-41,-41,False,,,,,,11.0,72.07,6,4,3
+nathan-wardius,Nathan Wardius,GEN_FWD,GWS,Western Bulldogs,144,144,0,623,627,144,144,0,144,144,0,0,0,False,,,,,,0,,3,0,3
+ned-bowman,Ned Bowman,GEN_FWD,Sydney,Free agents,377,377,0,432,439,377,377,0,377,377,0,0,0,False,,,,,,0,,2,0,3
+ned-long,Ned Long,MID,Collingwood,Brisbane Lions,1362,1362,0,184,185,1296,1296,0,1234,1234,0,-66,-62,False,,,,,,16.0,69.98,5,3,3
+ned-moyle,Ned Moyle,RUC,Gold Coast,St Kilda Saints,2467,2467,0,80,80,2522,2522,0,2643,2643,0,55,121,False,,,,,,11.0,87.85,6,2,4
+ned-reeves,Ned Reeves,RUC,Hawthorn,Richmond Tigers,384,384,0,428,435,257,257,0,216,216,0,-127,-41,False,,,,,,14.0,68.4,8,3,4
+neil-erasmus,Neil Erasmus,MID,Fremantle,Essendon Bombers,1031,1031,0,224,225,981,981,0,930,930,0,-50,-51,False,,,,,,18.0,68.75,5,3,3
+nic-newman,Nic Newman,GEN_DEF,Carlton,West Coast Eagles,792,792,0,275,278,584,584,0,521,521,0,-208,-63,False,,,,,,15.0,87.13,12,8,3
+nicholas-coffield,Nicholas Coffield,GEN_DEF,Western Bulldogs,West Coast Eagles,53,53,0,717,717,53,53,0,53,53,0,0,0,False,,,,,,10.0,59.59,9,6,3
+nicholas-holman,Nicholas Holman,GEN_FWD,Gold Coast,Free agents,24,24,0,773,773,24,24,0,24,24,0,0,0,False,,,,,,6.0,46.33,13,10,3
+nicholas-martin,Nicholas Martin,MID,Essendon,Melbourne Demons,3501,3501,0,46,46,3918,3918,0,3781,3781,0,417,-137,False,,,,,,0,,5,4,3
+nick-blakey,Nick Blakey,GEN_DEF,Sydney,Collingwood Magpies,4091,4091,0,26,26,3676,3676,0,3145,3145,0,-415,-531,False,,,,,,18.0,98.17,8,8,3
+nick-bryan,Nick Bryan,RUC,Essendon,Western Bulldogs,860,860,0,263,265,751,751,0,574,574,0,-109,-177,False,,,,,,10.0,67.32,7,2,4
+nick-daicos,Nick Daicos,MID,Collingwood,North Melbourne Kangaroos,8683,8683,0,3,3,8874,8874,0,8481,8481,0,191,-393,False,,,,,,17.0,119.16,5,5,3
+nick-driscoll,Nick Driscoll,MID,Geelong,Port Adelaide Power,473,473,0,383,390,473,473,0,473,473,0,0,0,False,,,,,,0,,1,0,3
+nick-haynes,Nick Haynes,GEN_DEF,Carlton,West Coast Eagles,100,100,0,661,662,93,93,0,89,89,0,-7,-4,False,,,,,,14.0,74.23,15,15,3
+nick-larkey,Nick Larkey,KEY_FWD,North Melbourne,Brisbane Lions,644,644,0,316,321,534,534,0,440,440,0,-110,-94,False,,,,,,18.0,67.46,10,8,4
+nick-madden,Nick Madden,RUC,GWS,Hawthorn Hawks,1482,1482,0,170,171,1121,1121,0,1121,1121,0,-361,0,False,,,,,,4.0,79.0,4,0,4
+nick-murray,Nick Murray,KEY_DEF,Adelaide,Fremantle Dockers,410,410,0,414,422,375,375,0,363,363,0,-35,-12,False,,,,,,10.0,70.97,6,6,4
+nick-vlastuin,Nick Vlastuin,GEN_DEF,Richmond,St Kilda Saints,58,58,0,710,710,51,51,0,51,51,0,-7,0,False,,,,,,17.0,69.55,14,14,3
+nick-watson,Nick Watson,GEN_FWD,Hawthorn,West Coast Eagles,3368,3368,0,50,50,3473,3473,0,3578,3578,0,105,105,False,,,,,,15.0,85.5,3,3,3
+nikolas-cox,Nikolas Cox,KEY_FWD,Essendon,Essendon Bombers,235,235,0,536,543,197,197,0,175,175,0,-38,-22,False,,,,,,7.0,51.97,6,4,4
+noah-anderson,Noah Anderson,MID,Gold Coast,Richmond Tigers,4830,4830,0,16,16,4415,4415,0,3798,3798,0,-415,-617,False,,,,,,17.0,104.9,7,7,3
+noah-answerth,Noah Answerth,GEN_DEF,Brisbane,St Kilda Saints,31,31,0,760,760,31,31,0,31,31,0,0,0,False,,,,,,10.0,53.88,8,6,3
+noah-balta,Noah Balta,KEY_FWD,Richmond,Adelaide Crows,549,549,0,356,362,436,436,0,345,345,0,-113,-91,False,,,,,,17.0,65.55,9,8,4
+noah-chamberlain,Noah Chamberlain,GEN_FWD,Sydney,St Kilda Saints,158,158,0,606,609,158,158,0,158,158,0,0,0,False,,,,,,0,,1,0,3
+noah-howes,Noah Howes,KEY_FWD,Collingwood,Essendon Bombers,255,255,0,522,529,255,255,0,255,255,0,0,0,False,,,,,,0,,2,0,4
+noah-long,Noah Long,GEN_FWD,West Coast,Free agents,208,208,0,557,561,96,96,0,73,73,0,-112,-23,False,,,,,,0,,4,3,3
+noah-mraz,Noah Mraz,KEY_DEF,Hawthorn,Melbourne Demons,2198,2198,0,98,98,2198,2198,0,2198,2198,0,0,0,False,,,,,,3.0,85.0,2,0,4
+noah-roberts-thomson,Noah Roberts-Thomson,GEN_FWD,Richmond,Carlton Blues,427,427,0,406,413,373,373,0,373,373,0,-54,0,False,,,,,,3.0,38.7,1,0,3
+oisin-mullin,Oisin Mullin,GEN_DEF,Geelong,Geelong Cats,11,11,0,792,792,10,10,0,10,10,0,-1,0,False,,,,,,18.0,59.73,5,4,3
+oliver-florent,Oliver Florent,GEN_DEF,Carlton,Sydney Swans,657,657,0,311,316,517,517,0,375,375,0,-140,-142,False,,,,,,18.0,82.28,10,10,3
+oliver-francou,Oliver Francou,MID,West Coast,Fremantle Dockers,596,596,0,334,340,596,596,0,596,596,0,0,0,False,,,,,,3.0,80.0,1,0,3
+oliver-griffin,Oliver Griffin,GEN_FWD,North Melbourne,Essendon Bombers,197,197,0,571,574,197,197,0,197,197,0,0,0,False,,,,,,0,,1,0,3
+oliver-hannaford,Oliver Hannaford,GEN_FWD,GWS,Melbourne Demons,419,419,0,410,417,469,469,0,468,468,0,50,-1,False,,,,,,5.0,28.2,2,1,3
+oliver-hayes-brown,Oliver Hayes-Brown,RUC,Richmond,Brisbane Lions,315,315,0,478,487,318,318,0,318,318,0,3,0,False,,,,,,7.0,49.6,3,1,4
+oliver-henry,Oliver Henry,GEN_FWD,Geelong,Brisbane Lions,91,91,0,671,673,69,69,0,65,65,0,-22,-4,False,,,,,,17.0,55.87,6,6,3
+oliver-hollands,Oliver Hollands,GEN_DEF,Carlton,Sydney Swans,1485,1485,0,169,170,1481,1481,0,1450,1450,0,-4,-31,False,,,,,,11.0,70.58,4,4,3
+oliver-wiltshire,Oliver Wiltshire,GEN_FWD,Geelong,Port Adelaide Power,102,102,0,659,660,77,77,0,73,73,0,-25,-4,True,1.0,2026,2026,1.0,1.0,10.0,45.98,3,1,3
+oliver-wines,Oliver Wines,MID,Port Adelaide,St Kilda Saints,394,394,0,423,430,282,282,0,181,181,0,-112,-101,False,,,,,,14.0,81.72,14,14,3
+ollie-dempsey,Ollie Dempsey,MID,Geelong,Geelong Cats,2122,2122,0,106,106,2112,2112,0,2031,2031,0,-10,-81,False,,,,,,18.0,82.72,5,3,3
+ollie-greeves,Ollie Greeves,MID,Hawthorn,Hawthorn Hawks,594,594,0,336,342,594,594,0,594,594,0,0,0,False,,,,,,2.0,55.5,1,0,3
+ollie-lord,Ollie Lord,KEY_FWD,Port Adelaide,West Coast Eagles,150,150,0,614,618,115,115,0,105,105,0,-35,-10,False,,,,,,1.0,41.0,6,3,4
+ollie-murphy,Ollie Murphy,KEY_DEF,Fremantle,St Kilda Saints,282,282,0,499,506,282,282,0,282,282,0,0,0,False,,,,,,0,,3,0,4
+oscar-adams,Oscar Adams,GEN_DEF,Gold Coast,Melbourne Demons,75,75,0,692,692,52,52,0,30,30,0,-23,-22,False,,,,,,13.0,45.24,5,2,3
+oscar-allen,Oscar Allen,KEY_FWD,West Coast,Carlton Blues,158,158,0,607,610,107,107,0,89,89,0,-51,-18,False,,,,,,7.0,54.4,9,7,4
+oscar-berry,Oscar Berry,KEY_DEF,Melbourne,Free agents,107,107,0,651,653,107,107,0,107,107,0,0,0,False,,,,,,0,,1,0,4
+oscar-mcdonald,Oscar McDonald,KEY_DEF,Fremantle,Free agents,44,44,0,734,734,33,33,0,33,33,0,-11,0,False,,,,,,5.0,62.8,12,7,4
+oscar-ryan,Oscar Ryan,GEN_DEF,Adelaide,Adelaide Crows,290,290,0,494,502,290,290,0,290,290,0,0,0,False,,,,,,0,,3,0,3
+oscar-steene,Oscar Steene,RUC,Collingwood,Adelaide Crows,310,612,302,483,333,275,572,297,275,543,268,-40,-29,True,1.0,2026,2026,1.0,1.0,8.0,51.6,4,1,4
+oskar-baker,Oskar Baker,GEN_FWD,Western Bulldogs,Brisbane Lions,31,31,0,761,761,31,31,0,31,31,0,0,0,False,,,,,,9.0,52.2,9,5,3
+oskar-taylor,Oskar Taylor,GEN_DEF,GWS,Hawthorn Hawks,755,755,0,284,287,755,755,0,755,755,0,0,0,False,,,,,,0,,1,0,3
+paddy-cross,Paddy Cross,GEN_FWD,Melbourne,Richmond Tigers,42,42,0,738,738,30,30,0,30,30,0,-12,0,False,,,,,,8.0,49.04,1,1,3
+paddy-dow,Paddy Dow,MID,St Kilda,Brisbane Lions,165,165,0,599,602,165,165,0,165,165,0,0,0,False,,,,,,0,,9,5,3
+patrick-carr,Patrick Carr,RUC,Richmond,Free agents,581,581,0,342,348,581,581,0,581,581,0,0,0,False,,,,,,0,,1,0,4
+patrick-cripps,Patrick Cripps,MID,Carlton,Port Adelaide Power,1701,1701,0,144,145,1398,1398,0,1121,1121,0,-303,-277,False,,,,,,18.0,98.44,13,12,3
+patrick-dangerfield,Patrick Dangerfield,GEN_FWD,Geelong,Port Adelaide Power,84,84,0,680,682,84,84,0,84,84,0,0,0,False,,,,,,15.0,64.86,19,18,3
+patrick-lipinski,Patrick Lipinski,GEN_FWD,Collingwood,Collingwood Magpies,895,895,0,254,255,675,675,0,549,549,0,-220,-126,False,,,,,,17.0,77.93,10,9,3
+patrick-retschko,Patrick Retschko,MID,Geelong,Carlton Blues,1328,1328,0,190,191,1373,1373,0,1592,1592,0,45,219,False,,,,,,13.0,70.75,2,1,3
+patrick-said,Patrick Said,GEN_FWD,St Kilda,Free agents,183,183,0,584,588,183,183,0,183,183,0,0,0,False,,,,,,0,,2,0,3
+patrick-snell,Patrick Snell,KEY_DEF,Sydney,Hawthorn Hawks,244,244,0,529,536,244,244,0,244,244,0,0,0,False,,,,,,0,,3,0,4
+patrick-voss,Patrick Voss,KEY_FWD,Fremantle,Fremantle Dockers,1576,1576,0,156,157,1578,1578,0,1568,1568,0,2,-10,False,,,,,,17.0,68.75,5,3,4
+paul-curtis,Paul Curtis,GEN_FWD,North Melbourne,Richmond Tigers,1530,1530,0,161,162,1516,1516,0,1391,1391,0,-14,-125,False,,,,,,15.0,72.75,5,5,3
+peter-ladhams,Peter Ladhams,RUC,Sydney,St Kilda Saints,336,336,0,455,463,181,181,0,160,160,0,-155,-21,False,,,,,,2.0,72.0,10,5,4
+peter-wright,Peter Wright,KEY_FWD,Essendon,Port Adelaide Power,1820,1820,0,139,140,1552,1552,0,1261,1261,0,-268,-291,False,,,,,,13.0,83.23,12,10,4
+phoenix-gothard,Phoenix Gothard,GEN_FWD,GWS,Hawthorn Hawks,410,1852,1442,415,135,367,1890,1523,367,1944,1577,38,54,True,1.0,2026,2026,1.0,1.0,15.0,68.78,3,1,3
+reece-torrent,Reece Torrent,MID,Brisbane,Free agents,209,209,0,556,560,209,209,0,209,209,0,0,0,False,,,,,,0,,3,0,3
+reef-mcinnes,Reef McInnes,KEY_DEF,Collingwood,North Melbourne Kangaroos,77,77,0,688,688,43,43,0,43,43,0,-34,0,False,,,,,,0,,6,2,4
+reilly-o-brien,Reilly O'Brien,RUC,Adelaide,Geelong Cats,1115,1115,0,210,211,882,882,0,728,728,0,-233,-154,False,,,,,,1.0,8.0,12,7,4
+reuben-ginbey,Reuben Ginbey,KEY_DEF,West Coast,Melbourne Demons,2597,2597,0,73,73,2696,2696,0,2654,2654,0,99,-42,False,,,,,,13.0,73.4,4,4,4
+rhett-bazzo,Rhett Bazzo,KEY_DEF,West Coast,Carlton Blues,599,599,0,332,338,540,540,0,513,513,0,-59,-27,False,,,,,,9.0,64.12,5,4,4
+rhyan-mansell,Rhyan Mansell,GEN_FWD,Richmond,St Kilda Saints,74,74,0,695,695,60,60,0,58,58,0,-14,-2,False,,,,,,5.0,57.4,6,5,3
+rhylee-west,Rhylee West,GEN_FWD,Western Bulldogs,North Melbourne Kangaroos,154,154,0,611,615,117,117,0,90,90,0,-37,-27,False,,,,,,17.0,62.99,8,5,3
+rhys-stanley,Rhys Stanley,RUC,Geelong,Geelong Cats,37,37,0,746,746,37,37,0,37,37,0,0,0,False,,,,,,1.0,95.0,18,15,4
+rhys-unwin,Rhys Unwin,GEN_FWD,Essendon,Free agents,182,182,0,585,589,159,159,0,159,159,0,-23,0,False,,,,,,0,,2,0,3
+riak-andrew,Riak Andrew,KEY_DEF,Sydney,Port Adelaide Power,297,297,0,491,499,297,297,0,297,297,0,0,0,False,,,,,,0,,2,0,4
+ricky-mentha,Ricky Mentha,GEN_FWD,Melbourne,Western Bulldogs,125,125,0,633,638,125,125,0,125,125,0,0,0,False,,,,,,0,,2,0,3
+riley-bice,Riley Bice,GEN_DEF,Sydney,Collingwood Magpies,365,365,0,438,445,299,299,0,276,276,0,-66,-23,False,,,,,,16.0,79.05,2,2,3
+riley-garcia,Riley Garcia,GEN_FWD,Western Bulldogs,Essendon Bombers,113,113,0,643,645,51,51,0,29,29,0,-62,-22,False,,,,,,0,,7,4,3
+riley-hamilton,Riley Hamilton,GEN_FWD,GWS,Free agents,278,278,0,503,509,278,278,0,278,278,0,0,0,False,,,,,,3.0,38.0,1,0,3
+riley-hardeman,Riley Hardeman,GEN_DEF,North Melbourne,Sydney Swans,247,317,70,528,483,177,234,57,177,216,39,-83,-18,True,0.25789,2026,2026,0.25789,0.25789,4.0,37.75,3,1,3
+riley-onley,Riley Onley,MID,Melbourne,Geelong Cats,376,376,0,433,440,376,376,0,376,376,0,0,0,False,,,,,,0,,1,0,3
+riley-thilthorpe,Riley Thilthorpe,KEY_FWD,Adelaide,Melbourne Demons,4060,4060,0,27,27,4033,4033,0,3776,3776,0,-27,-257,False,,,,,,15.0,73.6,6,6,4
+river-stevens,River Stevens,GEN_FWD,North Melbourne,Free agents,176,176,0,591,595,176,176,0,176,176,0,0,0,False,,,,,,0,,2,0,3
+roan-steele,Roan Steele,MID,Collingwood,North Melbourne Kangaroos,23,23,0,775,775,20,20,0,19,19,0,-3,-1,False,,,,,,15.0,54.36,2,1,3
+rob-monahan,Rob Monahan,GEN_DEF,Carlton,Free agents,171,171,0,596,599,171,171,0,171,171,0,0,0,False,,,,,,0,,3,0,3
+robert-hansen,Robert Hansen,GEN_FWD,North Melbourne,West Coast Eagles,113,113,0,644,646,49,49,0,38,38,0,-64,-11,False,,,,,,0,,4,2,3
+rory-laird,Rory Laird,GEN_DEF,Adelaide,North Melbourne Kangaroos,930,930,0,246,247,635,635,0,556,556,0,-295,-79,False,,,,,,15.0,88.03,15,14,3
+rory-lobb,Rory Lobb,KEY_DEF,Western Bulldogs,Port Adelaide Power,470,470,0,384,391,339,339,0,300,300,0,-131,-39,False,,,,,,15.0,72.5,13,12,4
+rowan-marshall,Rowan Marshall,RUC,St Kilda,Port Adelaide Power,1853,1853,0,134,134,1711,1711,0,1475,1475,0,-142,-236,False,,,,,,17.0,90.66,10,9,4
+ryan-angwin,Ryan Angwin,MID,GWS,Hawthorn Hawks,410,410,0,416,423,384,384,0,352,352,0,-26,-32,False,,,,,,15.0,66.53,6,3,3
+ryan-byrnes,Ryan Byrnes,GEN_DEF,St Kilda,Adelaide Crows,107,107,0,652,654,58,58,0,39,39,0,-49,-19,False,,,,,,10.0,59.32,7,6,3
+ryan-gardner,Ryan Gardner,KEY_DEF,Western Bulldogs,Free agents,32,32,0,759,759,32,32,0,32,32,0,0,0,False,,,,,,1.0,25.0,11,4,4
+ryan-lester,Ryan Lester,KEY_DEF,Brisbane,Sydney Swans,540,540,0,363,370,474,474,0,424,424,0,-66,-50,False,,,,,,14.0,75.57,16,14,4
+ryan-maric,Ryan Maric,MID,West Coast,St Kilda Saints,1351,1351,0,186,187,1303,1303,0,1239,1239,0,-48,-64,False,,,,,,10.0,65.44,4,4,3
+ryda-luke,Ryda Luke,GEN_FWD,Fremantle,Free agents,197,197,0,572,575,197,197,0,197,197,0,0,0,False,,,,,,0,,1,0,3
+ryley-sanders,Ryley Sanders,MID,Western Bulldogs,Sydney Swans,3392,3392,0,47,47,3531,3531,0,3593,3593,0,139,62,False,,,,,,16.0,91.82,3,3,3
+saad-el-hawli,Saad El-Hawli,GEN_DEF,Essendon,North Melbourne Kangaroos,21,21,0,779,779,16,16,0,15,15,0,-5,-1,False,,,,,,8.0,53.35,3,2,3
+sam-allen,Sam Allen,MID,West Coast,Sydney Swans,747,747,0,287,290,747,747,0,747,747,0,0,0,False,,,,,,0,,1,0,3
+sam-banks,Sam Banks,GEN_DEF,Richmond,Carlton Blues,997,997,0,233,234,965,965,0,943,943,0,-32,-22,False,,,,,,13.0,69.04,5,4,3
+sam-berry,Sam Berry,MID,Adelaide,Sydney Swans,3509,3509,0,45,45,3400,3400,0,3283,3283,0,-109,-117,False,,,,,,18.0,99.02,6,5,3
+sam-butler-1,Sam Butler,GEN_FWD,Hawthorn,Richmond Tigers,105,105,0,657,658,72,72,0,52,52,0,-33,-20,False,,,,,,7.0,51.7,5,4,3
+sam-clohesy,Sam Clohesy,MID,Gold Coast,Sydney Swans,269,269,0,509,515,242,242,0,229,229,0,-27,-13,False,,,,,,9.0,65.33,3,3,3
+sam-cumming,Sam Cumming,MID,Richmond,Carlton Blues,2822,2822,0,65,65,2884,2884,0,3062,3062,0,62,178,False,,,,,,12.0,65.34,1,1,3
+sam-darcy,Sam Darcy,KEY_FWD,Western Bulldogs,Adelaide Crows,4820,4820,0,17,17,5340,5340,0,5156,5156,0,520,-184,False,,,,,,6.0,81.8,5,3,4
+sam-davidson,Sam Davidson,GEN_FWD,Western Bulldogs,Brisbane Lions,70,70,0,700,700,63,63,0,53,53,0,-7,-10,False,,,,,,11.0,50.31,2,2,3
+sam-de-koning,Sam De Koning,KEY_DEF,Geelong,Geelong Cats,1008,1008,0,227,228,903,903,0,701,701,0,-105,-202,False,,,,,,17.0,67.69,7,5,4
+sam-draper,Sam Draper,RUC,Brisbane,North Melbourne Kangaroos,939,939,0,243,244,634,634,0,534,534,0,-305,-100,False,,,,,,17.0,73.94,10,6,4
+sam-durham,Sam Durham,MID,Essendon,West Coast Eagles,2529,2529,0,77,77,2430,2430,0,2373,2373,0,-99,-57,False,,,,,,17.0,89.23,6,6,3
+sam-flanders,Sam Flanders,MID,St Kilda,Adelaide Crows,2086,2086,0,111,111,2334,2334,0,2036,2036,0,248,-298,False,,,,,,12.0,95.7,7,6,3
+sam-lalor,Sam Lalor,MID,Richmond,Carlton Blues,4095,4095,0,25,25,4186,4186,0,4473,4473,0,91,287,False,,,,,,8.0,79.89,2,2,3
+sam-marshall,Sam Marshall,MID,Brisbane,Western Bulldogs,915,915,0,249,250,758,758,0,642,642,0,-157,-116,False,,,,,,2.0,63.5,2,1,3
+sam-powell-pepper,Sam Powell-Pepper,GEN_FWD,Port Adelaide,Adelaide Crows,275,275,0,506,512,119,119,0,86,86,0,-156,-33,False,,,,,,0,,10,8,3
+sam-sturt,Sam Sturt,GEN_FWD,Fremantle,Free agents,53,53,0,718,718,53,53,0,53,53,0,0,0,False,,,,,,0,,8,2,3
+sam-switkowski,Sam Switkowski,GEN_FWD,Fremantle,Sydney Swans,29,29,0,766,766,18,18,0,18,18,0,-11,0,False,,,,,,18.0,59.89,9,7,3
+sam-taylor,Sam Taylor,KEY_DEF,GWS,North Melbourne Kangaroos,1494,1494,0,168,169,1234,1234,0,1041,1041,0,-260,-193,False,,,,,,7.0,65.43,9,8,4
+sam-walsh,Sam Walsh,MID,Carlton,Brisbane Lions,3098,3098,0,55,55,2784,2784,0,2402,2402,0,-314,-382,False,,,,,,18.0,100.53,8,8,3
+sam-wicks,Sam Wicks,GEN_DEF,Sydney,Collingwood Magpies,27,27,0,769,769,18,18,0,10,10,0,-9,-8,False,,,,,,15.0,65.47,8,7,3
+samson-ryan,Samson Ryan,RUC,Richmond,West Coast Eagles,413,413,0,413,421,355,355,0,356,356,0,-58,1,False,,,,,,3.0,51.3,6,2,4
+samuel-collins,Samuel Collins,KEY_DEF,Gold Coast,St Kilda Saints,855,855,0,264,266,652,652,0,482,482,0,-203,-170,False,,,,,,18.0,79.54,11,9,4
+samuel-grlj,Samuel Grlj,MID,Richmond,Collingwood Magpies,2103,2103,0,109,109,2013,2013,0,1931,1931,0,-90,-82,False,,,,,,16.0,54.42,1,1,3
+samuel-swadling,Samuel Swadling,MID,Collingwood,Essendon Bombers,985,985,0,235,236,985,985,0,985,985,0,0,0,False,,,,,,5.0,59.0,1,1,3
+sandy-brock,Sandy Brock,KEY_DEF,West Coast,Sydney Swans,201,235,34,563,544,199,211,12,199,214,15,-24,3,True,0.42196,2026,2026,0.42196,0.42196,4.0,44.5,5,1,4
+scott-pendlebury,Scott Pendlebury,MID,Collingwood,North Melbourne Kangaroos,447,447,0,394,401,447,447,0,447,447,0,0,0,False,,,,,,13.0,85.92,21,21,3
+sean-darcy,Sean Darcy,RUC,Fremantle,Collingwood Magpies,920,920,0,248,249,782,782,0,689,689,0,-138,-93,False,,,,,,7.0,60.5,10,10,4
+seth-campbell,Seth Campbell,GEN_FWD,Richmond,St Kilda Saints,1050,1050,0,220,221,1100,1100,0,1150,1150,0,50,50,False,,,,,,18.0,72.4,4,3,3
+shadeau-brain,Shadeau Brain,GEN_DEF,Brisbane,Essendon Bombers,80,94,14,685,671,78,80,2,68,68,0,-14,-12,True,0.17663,2026,2026,0.17663,0.17663,2.0,54.5,4,1,3
+shai-bolton,Shai Bolton,GEN_FWD,Fremantle,St Kilda Saints,2393,2393,0,84,84,2121,2121,0,1870,1870,0,-272,-251,False,,,,,,17.0,96.74,10,9,3
+shannon-neale,Shannon Neale,KEY_FWD,Geelong,Geelong Cats,2153,2153,0,103,103,2146,2146,0,2080,2080,0,-7,-66,False,,,,,,18.0,76.36,6,3,4
+shaun-mannagh,Shaun Mannagh,GEN_FWD,Geelong,West Coast Eagles,609,609,0,329,335,467,467,0,342,342,0,-142,-125,False,,,,,,17.0,74.41,3,3,3
+sid-draper,Sid Draper,MID,Adelaide,Melbourne Demons,1151,1151,0,205,206,925,925,0,793,793,0,-226,-132,False,,,,,,0,,2,1,3
+steele-sidebottom,Steele Sidebottom,MID,Collingwood,West Coast Eagles,102,102,0,660,661,102,102,0,102,102,0,0,0,False,,,,,,16.0,64.06,18,18,3
+steely-green,Steely Green,GEN_FWD,Richmond,Sydney Swans,160,160,0,604,607,150,150,0,124,124,0,-10,-26,False,,,,,,17.0,51.85,4,3,3
+stephen-coniglio,Stephen Coniglio,MID,GWS,Port Adelaide Power,165,165,0,600,603,165,165,0,165,165,0,0,0,False,,,,,,16.0,67.69,15,15,3
+sullivan-robey,Sullivan Robey,MID,Essendon,Fremantle Dockers,2870,2870,0,63,63,2935,2935,0,3046,3046,0,65,111,False,,,,,,13.0,61.94,1,1,3
+tai-hayes,Tai Hayes,GEN_FWD,Brisbane,Hawthorn Hawks,259,259,0,519,526,259,259,0,259,259,0,0,0,False,,,,,,0,,1,0,3
+taj-hotton,Taj Hotton,MID,Richmond,Hawthorn Hawks,2038,2038,0,117,117,1829,1829,0,1784,1784,0,-209,-45,False,,,,,,5.0,62.8,2,2,3
+talor-byrne,Talor Byrne,GEN_FWD,Carlton,Western Bulldogs,734,734,0,291,294,735,735,0,697,697,0,1,-38,False,,,,,,12.0,50.8,1,1,3
+tanner-bruhn,Tanner Bruhn,MID,Geelong,Brisbane Lions,1963,1963,0,126,126,1863,1863,0,1787,1787,0,-100,-76,False,,,,,,15.0,81.51,6,5,3
+taylor-goad,Taylor Goad,RUC,North Melbourne,Richmond Tigers,1011,1011,0,226,227,968,968,0,968,968,0,-43,0,False,,,,,,2.0,43.5,3,0,4
+taylor-walker,Taylor Walker,KEY_FWD,Adelaide,Geelong Cats,145,145,0,622,626,136,136,0,136,136,0,-9,0,False,,,,,,12.0,63.83,19,17,4
+tew-jiath,Tew Jiath,GEN_DEF,Collingwood,Hawthorn Hawks,239,239,0,532,539,229,229,0,229,229,0,-10,0,False,,,,,,0,,3,0,3
+thomas-anastasopoulos,Tom Anastasopoulos,GEN_FWD,Port Adelaide,Free agents,319,319,0,473,481,292,292,0,292,292,0,-27,0,False,,,,,,2.0,40.5,3,0,3
+thomas-burton,Thomas Burton,GEN_FWD,Richmond,Carlton Blues,337,337,0,453,461,268,268,0,268,268,0,-69,0,False,,,,,,5.0,39.4,1,1,3
+thomas-liberatore,Thomas Liberatore,MID,Western Bulldogs,West Coast Eagles,1683,1683,0,146,147,1438,1438,0,1206,1206,0,-245,-232,False,,,,,,7.0,98.69,16,14,3
+thomas-matthews,Thomas Matthews,GEN_FWD,Melbourne,Melbourne Demons,521,521,0,366,373,521,521,0,521,521,0,0,0,False,,,,,,0,,1,0,3
+thomas-sims,Thomas Sims,KEY_FWD,Richmond,Hawthorn Hawks,1108,1108,0,211,212,1021,1021,0,942,942,0,-87,-79,False,,,,,,0,,2,1,4
+thomas-stewart,Thomas Stewart,GEN_DEF,Geelong,Port Adelaide Power,1119,1119,0,208,209,875,875,0,763,763,0,-244,-112,False,,,,,,16.0,92.21,10,10,3
+tim-kelly,Tim Kelly,MID,West Coast,St Kilda Saints,774,774,0,278,281,513,513,0,320,320,0,-261,-193,False,,,,,,16.0,88.96,9,9,3
+tim-membrey,Tim Membrey,KEY_FWD,St Kilda,Port Adelaide Power,205,205,0,559,563,132,132,0,113,113,0,-73,-19,False,,,,,,14.0,65.12,14,12,4
+tim-taranto,Tim Taranto,MID,Richmond,West Coast Eagles,2499,2499,0,78,78,2236,2236,0,1917,1917,0,-263,-319,False,,,,,,16.0,105.12,10,10,3
+timothy-english,Timothy English,RUC,Western Bulldogs,Adelaide Crows,3680,3680,0,39,39,3432,3432,0,3008,3008,0,-248,-424,False,,,,,,12.0,100.83,10,9,4
+tobie-travaglia,Tobie Travaglia,GEN_DEF,St Kilda,Melbourne Demons,697,697,0,299,304,565,565,0,468,468,0,-132,-97,False,,,,,,3.0,43.67,2,1,3
+toby-bedford,Toby Bedford,GEN_FWD,GWS,Brisbane Lions,263,263,0,514,520,200,200,0,166,166,0,-63,-34,False,,,,,,14.0,69.32,8,5,3
+toby-conway,Toby Conway,RUC,Geelong,Essendon Bombers,562,562,0,352,358,494,494,0,494,494,0,-68,0,False,,,,,,0,,5,0,4
+toby-greene,Toby Greene,GEN_FWD,GWS,North Melbourne Kangaroos,1007,1007,0,229,230,879,879,0,773,773,0,-128,-106,False,,,,,,17.0,84.92,15,15,3
+toby-mcmullin,Toby McMullin,GEN_FWD,GWS,Melbourne Demons,148,148,0,617,621,86,86,0,63,63,0,-62,-23,False,,,,,,6.0,35.7,4,3,3
+toby-murray,Toby Murray,KEY_FWD,Adelaide,Adelaide Crows,241,241,0,530,537,182,182,0,173,173,0,-59,-9,False,,,,,,10.0,49.56,3,1,4
+toby-nankervis,Toby Nankervis,RUC,Richmond,West Coast Eagles,2151,2151,0,104,104,1900,1900,0,1606,1606,0,-251,-294,False,,,,,,7.0,103.57,13,11,4
+toby-pink,Toby Pink,KEY_DEF,North Melbourne,Free agents,15,15,0,783,783,18,18,0,16,16,0,3,-2,False,,,,,,5.0,58.8,10,2,4
+toby-whan,Toby Whan,GEN_FWD,Fremantle,Richmond Tigers,197,197,0,573,576,197,197,0,197,197,0,0,0,False,,,,,,0,,1,0,3
+tobyn-murray,Tobyn Murray,GEN_FWD,Fremantle,West Coast Eagles,401,401,0,419,426,401,401,0,401,401,0,0,0,False,,,,,,0,,1,0,3
+todd-marshall,Todd Marshall,KEY_FWD,Port Adelaide,Adelaide Crows,112,112,0,646,648,75,75,0,68,68,0,-37,-7,False,,,,,,10.0,50.2,10,8,4
+tom-atkins,Tom Atkins,MID,Geelong,Port Adelaide Power,343,343,0,448,455,212,212,0,127,127,0,-131,-85,False,,,,,,18.0,80.58,8,8,3
+tom-barrass,Tom Barrass,KEY_DEF,Hawthorn,Brisbane Lions,120,120,0,637,641,104,104,0,80,80,0,-16,-24,False,,,,,,14.0,62.12,13,11,4
+tom-blamires,Tom Blamires,GEN_DEF,North Melbourne,Richmond Tigers,97,97,0,662,663,97,97,0,111,111,0,0,14,False,,,,,,13.0,68.23,1,1,3
+tom-brown,Tom Brown,GEN_DEF,Richmond,Carlton Blues,433,433,0,404,411,413,413,0,401,401,0,-20,-12,False,,,,,,13.0,68.47,5,3,3
+tom-cochrane,Tom Cochrane,GEN_FWD,Port Adelaide,Essendon Bombers,199,199,0,567,570,166,166,0,166,166,0,-33,0,False,,,,,,3.0,30.67,2,0,3
+tom-cole,Tom Cole,GEN_DEF,West Coast,Port Adelaide Power,30,30,0,762,762,30,30,0,30,30,0,0,0,False,,,,,,12.0,53.7,11,8,3
+tom-de-koning,Tom De Koning,RUC,St Kilda,Essendon Bombers,1976,1976,0,125,125,1869,1869,0,1623,1623,0,-107,-246,False,,,,,,14.0,76.2,9,7,4
+tom-doedee,Tom Doedee,GEN_DEF,Brisbane,Free agents,356,356,0,444,451,213,213,0,133,133,0,-143,-80,False,,,,,,0,,11,5,3
+tom-edwards,Tom Edwards,KEY_FWD,Essendon,Free agents,48,48,0,725,725,39,39,0,38,38,0,-9,-1,False,,,,,,7.0,47.0,2,1,4
+tom-green,Tom Green,MID,GWS,Essendon Bombers,4584,4584,0,18,18,4811,4811,0,3900,3900,0,227,-911,False,,,,,,0,,7,6,3
+tom-gross,Tom Gross,MID,West Coast,Melbourne Demons,634,634,0,317,322,543,543,0,444,444,0,-91,-99,False,,,,,,1.0,33.0,2,1,3
+tom-hanily,Tom Hanily,GEN_FWD,Sydney,Richmond Tigers,106,158,52,654,611,72,103,31,72,97,25,-55,-6,True,0.44972,2026,2026,0.44972,0.44972,4.0,47.5,3,1,3
+tom-lynch-1,Tom Lynch,KEY_FWD,Richmond,Adelaide Crows,48,48,0,726,726,48,48,0,48,48,0,0,0,False,,,,,,10.0,54.75,16,14,4
+tom-mccarthy,Tom McCarthy,GEN_DEF,West Coast,Melbourne Demons,1592,1592,0,153,154,1474,1474,0,1401,1401,0,-118,-73,False,,,,,,17.0,90.81,2,2,3
+tom-mccartin,Tom McCartin,KEY_DEF,Sydney,Sydney Swans,2073,2073,0,113,113,1878,1878,0,1692,1692,0,-195,-186,False,,,,,,15.0,88.1,9,9,4
+tom-mcdonald,Tom McDonald,KEY_DEF,Melbourne,Geelong Cats,269,269,0,510,516,213,213,0,196,196,0,-56,-17,False,,,,,,5.0,58.2,16,15,4
+tom-papley,Tom Papley,GEN_FWD,Sydney,Geelong Cats,441,441,0,401,408,288,288,0,183,183,0,-153,-105,False,,,,,,13.0,72.14,11,11,3
+tom-powell,Tom Powell,MID,North Melbourne,Carlton Blues,2207,2207,0,96,96,2068,2068,0,1991,1991,0,-139,-77,False,,,,,,8.0,67.6,6,6,3
+tom-sparrow,Tom Sparrow,MID,Melbourne,Sydney Swans,1389,1389,0,180,181,1115,1115,0,983,983,0,-274,-132,False,,,,,,18.0,90.55,8,6,3
+touk-miller,Touk Miller,MID,Gold Coast,Geelong Cats,1528,1528,0,162,163,1188,1188,0,930,930,0,-340,-258,False,,,,,,18.0,93.08,12,12,3
+trent-rivers,Trent Rivers,GEN_DEF,Melbourne,Western Bulldogs,1889,1889,0,131,131,1563,1563,0,1202,1202,0,-326,-361,False,,,,,,11.0,80.86,7,7,3
+tristan-xerri,Tristan Xerri,RUC,North Melbourne,Sydney Swans,7552,7552,0,4,4,7180,7180,0,6460,6460,0,-372,-720,False,,,,,,14.0,115.14,9,6,4
+ty-gallop,Ty Gallop,KEY_FWD,Brisbane,Adelaide Crows,1223,1223,0,199,200,1223,1223,0,1248,1248,0,0,25,False,,,,,,16.0,57.0,2,2,4
+tyan-prindable,Tyan Prindable,MID,Collingwood,Fremantle Dockers,671,671,0,307,312,671,671,0,671,671,0,0,0,False,,,,,,0,,1,0,3
+tylah-williams,Tylah Williams,GEN_FWD,West Coast,Melbourne Demons,419,419,0,411,418,419,419,0,419,419,0,0,0,False,,,,,,0,,1,0,3
+tylar-young,Tylar Young,KEY_DEF,West Coast,Richmond Tigers,296,296,0,492,500,294,294,0,291,291,0,-2,-3,False,,,,,,18.0,65.63,4,4,4
+tyler-brockman,Tyler Brockman,GEN_FWD,West Coast,Free Agents,77,77,0,689,689,57,57,0,49,49,0,-20,-8,False,,,,,,0,,6,4,3
+tyler-sonsie,Tyler Sonsie,MID,Richmond,Essendon Bombers,1084,1084,0,214,215,1024,1024,0,970,970,0,-60,-54,False,,,,,,12.0,69.48,5,4,3
+tyler-welsh,Tyler Welsh,KEY_FWD,Adelaide,Melbourne Demons,216,216,0,551,556,216,216,0,216,216,0,0,0,False,,,,,,0,,2,0,4
+tyrell-dewar,Tyrell Dewar,GEN_DEF,West Coast,Melbourne Demons,167,167,0,598,601,82,82,0,63,63,0,-85,-19,False,,,,,,0,,4,2,3
+tyson-stengle,Tyson Stengle,GEN_FWD,Richmond,St Kilda Saints,228,228,0,539,547,101,101,0,69,69,0,-127,-32,False,,,,,,0,,10,5,3
+vigo-visentini,Vigo Visentini,RUC,Essendon,Carlton Blues,328,328,0,465,473,328,328,0,300,300,0,0,-28,False,,,,,,0,,3,0,4
+wade-derksen,Wade Derksen,KEY_DEF,Carlton,Western Bulldogs,80,80,0,686,687,70,70,0,70,70,0,-10,0,True,1.0,2026,2026,1.0,1.0,8.0,52.75,5,1,4
+wayne-milera,Wayne Milera,GEN_DEF,Adelaide,Sydney Swans,2025,2025,0,120,120,1801,1801,0,1555,1555,0,-224,-246,False,,,,,,16.0,103.53,11,8,3
+wil-dawson,Wil Dawson,KEY_DEF,North Melbourne,Collingwood Magpies,595,595,0,335,341,463,463,0,398,398,0,-132,-65,False,,,,,,6.0,29.37,3,1,4
+wil-parker,Wil Parker,GEN_DEF,Collingwood,Western Bulldogs,33,33,0,754,754,59,59,0,41,41,0,26,-18,True,1.0,2026,2026,1.0,1.0,5.0,42.4,3,1,3
+wil-powell,Wil Powell,GEN_DEF,Gold Coast,Adelaide Crows,958,958,0,239,240,827,827,0,623,623,0,-131,-204,False,,,,,,16.0,79.6,9,9,3
+will-ashcroft,Will Ashcroft,MID,Brisbane,Carlton Blues,6020,6020,0,9,9,6062,6062,0,5983,5983,0,42,-79,False,,,,,,18.0,102.42,4,4,3
+will-brodie,Will Brodie,MID,Port Adelaide,Brisbane Lions,1007,1007,0,230,231,675,675,0,352,352,0,-332,-323,False,,,,,,1.0,67.0,10,3,3
+will-darcy,Will Darcy,KEY_DEF,Western Bulldogs,Fremantle Dockers,488,488,0,375,382,488,488,0,488,488,0,0,0,False,,,,,,0,,1,0,4
+will-day,Will Day,MID,Hawthorn,Richmond Tigers,2822,2822,0,66,66,2303,2303,0,2032,2032,0,-519,-271,False,,,,,,6.0,94.67,7,6,3
+will-edwards,Will Edwards,KEY_DEF,Sydney,Essendon Bombers,220,255,35,547,530,220,258,38,220,248,28,3,-10,True,1.0,2026,2026,1.0,1.0,11.0,55.63,4,1,4
+will-graham,Will Graham,MID,Gold Coast,Hawthorn Hawks,1569,1569,0,159,160,1523,1523,0,1490,1490,0,-46,-33,False,,,,,,11.0,59.4,3,3,3
+will-green,Will Green,RUC,Sydney,Essendon Bombers,651,651,0,312,317,651,651,0,651,651,0,0,0,False,,,,,,0,,3,0,4
+will-hayes-b,Will Hayes,GEN_FWD,Collingwood,West Coast Eagles,309,309,0,484,491,241,241,0,211,211,0,-68,-30,False,,,,,,6.0,36.3,2,1,3
+will-hayward,Will Hayward,GEN_FWD,Carlton,Adelaide Crows,217,217,0,550,555,117,117,0,85,85,0,-100,-32,False,,,,,,17.0,68.18,10,10,3
+will-lewis,Will Lewis,KEY_FWD,Western Bulldogs,Sydney Swans,9,9,0,794,794,8,8,0,8,8,0,-1,0,False,,,,,,11.0,46.93,1,1,4
+will-lorenz,Will Lorenz,MID,Port Adelaide,Richmond Tigers,281,419,138,501,419,182,274,92,182,271,89,-145,-3,True,0.42015,2026,2026,0.42015,0.42015,1.0,52.0,3,1,3
+will-mclachlan,Will McLachlan,GEN_FWD,Brisbane,Free agents,116,137,21,640,630,83,98,15,83,98,15,-39,0,True,0.25789,2026,2026,0.25789,0.25789,1.0,28.0,3,1,3
+will-setterfield,Will Setterfield,MID,Essendon,Brisbane Lions,910,910,0,251,252,679,679,0,488,488,0,-231,-191,False,,,,,,6.0,86.67,10,7,3
+willem-drew,Willem Drew,MID,Port Adelaide,Adelaide Crows,723,723,0,295,299,570,570,0,390,390,0,-153,-180,False,,,,,,18.0,83.47,10,7,3
+willem-duursma,Willem Duursma,MID,West Coast,Fremantle Dockers,4296,4296,0,20,20,5008,5008,0,5597,5597,0,712,589,False,,,,,,16.0,83.18,1,1,3
+william-mccabe,William McCabe,KEY_FWD,Hawthorn,Hawthorn Hawks,757,757,0,283,286,724,724,0,724,724,0,-33,0,False,,,,,,4.0,31.75,3,0,4
+xavier-bamert,Xavier Bamert,GEN_FWD,Port Adelaide,Richmond Tigers,398,398,0,420,427,381,381,0,381,381,0,-17,0,False,,,,,,6.0,44.83,1,1,3
+xavier-duursma,Xavier Duursma,MID,Essendon,North Melbourne Kangaroos,201,201,0,564,567,146,146,0,90,90,0,-55,-56,False,,,,,,18.0,65.1,8,8,3
+xavier-lindsay,Xavier Lindsay,MID,Melbourne,Western Bulldogs,2119,2119,0,108,108,1995,1995,0,1925,1925,0,-124,-70,False,,,,,,5.0,70.6,2,2,3
+xavier-o-halloran,Xavier O'Halloran,GEN_FWD,GWS,Sydney Swans,52,52,0,719,719,42,42,0,42,42,0,-10,0,False,,,,,,10.0,57.0,8,6,3
+xavier-taylor,Xavier Taylor,GEN_DEF,Melbourne,Richmond Tigers,893,893,0,255,257,817,817,0,817,817,0,-76,0,False,,,,,,2.0,42.0,1,0,3
+xavier-walsh,Xavier Walsh,KEY_DEF,Port Adelaide,Free agents,222,222,0,546,552,222,222,0,222,222,0,0,0,False,,,,,,0,,3,0,4
+zac-bailey,Zac Bailey,GEN_FWD,Brisbane,North Melbourne Kangaroos,3000,3000,0,58,58,2756,2756,0,2435,2435,0,-244,-321,False,,,,,,17.0,99.01,9,9,3
+zac-banch,Zac Banch,GEN_FWD,North Melbourne,Free agents,52,52,0,720,720,66,66,0,46,46,0,14,-20,False,,,,,,3.0,39.67,2,0,3
+zac-fisher,Zac Fisher,GEN_FWD,North Melbourne,Port Adelaide Power,181,181,0,586,590,77,77,0,58,58,0,-104,-19,False,,,,,,1.0,46.0,10,9,3
+zac-mccarthy,Zac McCarthy,KEY_FWD,Collingwood,West Coast Eagles,342,342,0,449,456,342,342,0,342,342,0,0,0,False,,,,,,0,,1,0,4
+zac-taylor,Zac Taylor,GEN_FWD,Adelaide,Western Bulldogs,326,326,0,469,477,303,303,0,278,278,0,-23,-25,False,,,,,,16.0,59.47,5,3,3
+zac-walker,Zac Walker,GEN_DEF,Western Bulldogs,Free agents,220,220,0,548,553,220,220,0,220,220,0,0,0,False,,,,,,0,,2,0,3
+zach-guthrie,Zach Guthrie,GEN_DEF,Geelong,Geelong Cats,354,354,0,446,453,265,265,0,176,176,0,-89,-89,False,,,,,,18.0,70.37,10,8,3
+zach-reid,Zach Reid,KEY_DEF,Essendon,Hawthorn Hawks,1461,1461,0,172,173,1518,1518,0,1585,1585,0,57,67,False,,,,,,18.0,63.97,6,3,4
+zachary-merrett,Zachary Merrett,MID,Essendon,West Coast Eagles,2770,2770,0,68,68,2345,2345,0,1905,1905,0,-425,-440,False,,,,,,18.0,109.68,13,13,3
+zachary-williams,Zachary Williams,GEN_DEF,Carlton,St Kilda Saints,193,193,0,578,581,96,96,0,60,60,0,-97,-36,False,,,,,,9.0,77.3,14,12,3
+zak-butters,Zak Butters,MID,Port Adelaide,Geelong Cats,6249,6249,0,8,8,5794,5794,0,5311,5311,0,-455,-483,False,,,,,,17.0,121.04,8,8,3
+zak-evans,Zak Evans,MID,Gold Coast,Free agents,7,7,0,797,797,7,7,0,7,7,0,0,0,False,,,,,,0,,2,0,3
+zak-johnson,Zak Johnson,GEN_DEF,Essendon,Richmond Tigers,567,567,0,349,355,477,477,0,405,405,0,-90,-72,False,,,,,,5.0,54.2,2,2,3
+zane-duursma,Zane Duursma,GEN_FWD,North Melbourne,Richmond Tigers,742,742,0,289,292,686,686,0,561,561,0,-56,-125,False,,,,,,15.0,39.91,3,3,3
+zane-peucker,Zane Peucker,GEN_FWD,Richmond,Carlton Blues,563,563,0,351,357,563,563,0,563,563,0,0,0,False,,,,,,1.0,49.0,1,0,3
+zane-zakostelsky,Zane Zakostelsky,KEY_DEF,Brisbane,Fremantle Dockers,465,465,0,386,393,406,406,0,406,406,0,-59,0,False,,,,,,3.0,49.0,3,0,4
+zeke-uwland,Zeke Uwland,MID,Gold Coast,Fremantle Dockers,2720,2720,0,69,69,2739,2739,0,2701,2701,0,19,-38,False,,,,,,15.0,56.93,1,1,3
