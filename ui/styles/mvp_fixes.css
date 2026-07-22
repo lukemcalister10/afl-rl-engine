@@ -1,0 +1,18 @@
+/* Round 19 MVP review additions — uses existing Matchday tokens only. */
+.comparebar{align-items:flex-end}
+.roundpick{display:flex;flex-direction:column;gap:3px}
+.roundpick .lbl{font-size:9px}
+.roundpick select.boardsel{min-width:108px;margin:0}
+.roundhistory{border:1px solid var(--edge);background:var(--card);overflow-x:auto}
+.rhhead,.rhrow{display:grid;grid-template-columns:72px 100px 120px 120px 110px 100px;gap:10px;align-items:center;min-width:680px;padding:8px 12px}
+.rhhead{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--edge)}
+.rhrow{font-size:12px;border-bottom:1px solid rgba(35,41,54,.65)}
+.rhrow:last-child{border-bottom:0}
+.rhrow.latest{background:var(--volt-soft);box-shadow:inset 3px 0 0 var(--volt)}
+.rhrow span:not(:first-child),.rhhead span:not(:first-child){text-align:right}
+.rhrow .up{color:var(--up)}.rhrow .dn{color:var(--dn)}.rhrow .flat,.rhrow .na{color:var(--faint)}
+@media(max-width:720px){
+  .comparebar{align-items:stretch}
+  .roundpick{flex:1;min-width:120px}
+  .roundpick select.boardsel{width:100%}
+}
