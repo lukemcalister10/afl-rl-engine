@@ -13,11 +13,12 @@ The typography is also deliberately wider and calmer than Theme 05:
 - normal proportional body type rather than monospace everywhere;
 - stable rows and figures with glitch effects confined to decorative headlines.
 
-## Screen
+## Bundle
 
+- `cyberpunk_showcase.zip` — contains `showcase.html` and this README.
 - `showcase.html` — self-contained board, player profile and round review with internal navigation.
 
-Download `showcase.html` and open it directly. No server, webfont, package, stylesheet or script file is required.
+Download `cyberpunk_showcase.zip`, extract it, then open `showcase.html`. No server, webfont, package, stylesheet or script file is required.
 
 ## Isolation
 
