@@ -1,0 +1,163 @@
+name: R19 Graded Staleness Anchor Fix
+
+on:
+  push:
+    branches:
+      - model/r19-staleness-graded-anchor-fix
+    paths:
+      - .github/workflows/r19-staleness-graded-anchor-fix.yml
+      - tools/remediation/apply_staleness_graded_anchor_fix.py
+      - tools/remediation/compare_staleness_anchor_fix.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r19-staleness-graded-anchor-fix
+  cancel-in-progress: false
+
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      BASE_SHA: 0156ec445c29789f5dc7b79adca53e632a9da7f3
+      RL_REPO: ${{ github.workspace }}
+      CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      RL_FV: ${{ github.workspace }}/engine/forward_valuation
+      RL_VENV: ${{ github.workspace }}/../rl_venv312
+      PYTHONHASHSEED: "0"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+
+    steps:
+      - name: Checkout exact bounded branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify Round 19 baseline and scope
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "model/r19-staleness-graded-anchor-fix"
+          git merge-base --is-ancestor "$BASE_SHA" HEAD
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          assert md5('data/rl_build/rl_app_data.json')=='92a8f3a0528e5668029ca8056a841821'
+          assert md5('engine/rl_after/rl_model_data.json')=='f37d9716648cfe4382b8c6a24c4f064f'
+          b=json.load(open('data/expected_boot.json'))
+          assert b['as_of_round']==19 and b['board']=='92a8f3a0528e5668029ca8056a841821'
+          assert b['store']=='f37d9716648cfe4382b8c6a24c4f064f'
+          assert b['engine_head']=='dc7e34b0d50470897af237c638236868'
+          PY
+          git diff --name-only "$BASE_SHA"..HEAD | sort > /tmp/actual
+          cat > /tmp/allowed <<'EOF'
+          .github/workflows/r19-staleness-graded-anchor-fix.yml
+          tools/remediation/apply_staleness_graded_anchor_fix.py
+          tools/remediation/compare_staleness_anchor_fix.py
+          EOF
+          sed -i 's/^          //' /tmp/allowed
+          sort -o /tmp/allowed /tmp/allowed
+          diff -u /tmp/allowed /tmp/actual
+
+      - name: Apply bounded source candidate
+        run: |
+          set -euo pipefail
+          OUT=session_2026-07-22/staleness_graded_anchor_fix
+          mkdir -p "$OUT"
+          python3 tools/remediation/apply_staleness_graded_anchor_fix.py | tee "$OUT/source_patch.json"
+          git diff -- engine/rl_after/_merged_recover.py > "$OUT/engine_candidate.patch"
+          python3 - <<'PY'
+          import hashlib,json,pathlib,release_contract
+          b=json.load(open('data/expected_boot.json')); c=json.load(open('data/release_contract.json'))
+          e=hashlib.md5(pathlib.Path('engine/rl_after/_merged_recover.py').read_bytes()).hexdigest()
+          assert b['engine_head']==e and c['identities']['engine_head']==e
+          assert c['contract_sha256']==release_contract.contract_hash(c)
+          print('candidate source pins coherent',e)
+          PY
+
+      - name: Pin Python 3.12.3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Ensure python3.12 on PATH
+        run: |
+          set -euo pipefail
+          if ! command -v python3.12 >/dev/null 2>&1; then
+            PYBIN="$(dirname "$(command -v python)")"
+            ln -s "$PYBIN/python" "$PYBIN/python3.12"
+          fi
+
+      - name: Provision pinned deterministic engine
+        run: |
+          set -euo pipefail
+          sudo mkdir -p /home/claude && sudo chown -R "$USER":"$USER" /home/claude
+          bash setup_env.sh
+          export PATH="$RL_VENV/bin:$PATH"
+          "$RL_VENV/bin/python" - <<'PY'
+          import sys,numpy,scipy,sklearn,openpyxl
+          got=(sys.version.split()[0],numpy.__version__,scipy.__version__,sklearn.__version__,openpyxl.__version__)
+          assert got==('3.12.3','2.4.4','1.17.1','1.8.0','3.1.5'),got
+          PY
+          mkdir -p /home/claude/rl_vendor /home/claude/rl_build
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+          for f in cm_400.pkl q97m.pkl v0surf.pkl; do [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true; done
+          cp -f data/rl_build/rl_app_data.json /home/claude/rl_build/rl_app_data.json
+          bash bootstrap.sh
+
+      - name: Build candidate board
+        run: |
+          set -euo pipefail
+          export PATH="$RL_VENV/bin:$PATH"
+          export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+          export RL_CONFIG_MODE=bake
+          cd /home/claude/rl_workspace/rl_after
+          "$RL_VENV/bin/python" rl_export.py > /tmp/anchor_fix_build.log 2>&1 || { tail -100 /tmp/anchor_fix_build.log; exit 1; }
+          test -s rl_app_data.json
+          md5sum rl_app_data.json
+
+      - name: Compare all present and forward values
+        run: |
+          set -euo pipefail
+          OUT=session_2026-07-22/staleness_graded_anchor_fix
+          "$RL_VENV/bin/python" tools/remediation/compare_staleness_anchor_fix.py \
+            --baseline data/rl_build/rl_app_data.json \
+            --candidate /home/claude/rl_workspace/rl_after/rl_app_data.json \
+            --workspace /home/claude/rl_workspace/rl_after \
+            --out "$OUT" | tee "$OUT/validation.log"
+          python3 - <<'PY'
+          import json
+          s=json.load(open('session_2026-07-22/staleness_graded_anchor_fix/summary.json'))
+          assert s['status']=='PASS'
+          assert s['baseline_board_md5']=='92a8f3a0528e5668029ca8056a841821'
+          assert s['store_md5']=='f37d9716648cfe4382b8c6a24c4f064f'
+          assert s['active_players']==804
+          assert s['forward_grade_anchor_year']==2026
+          assert s['forward_grade_matches_present_for_all_fire_players'] is True
+          print('anchor-fix candidate PASS',s['phoenix_gothard'])
+          PY
+
+      - name: Prove production product state unchanged
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,pathlib
+          md5=lambda p:hashlib.md5(pathlib.Path(p).read_bytes()).hexdigest()
+          assert md5('data/rl_build/rl_app_data.json')=='92a8f3a0528e5668029ca8056a841821'
+          assert md5('engine/rl_after/rl_model_data.json')=='f37d9716648cfe4382b8c6a24c4f064f'
+          PY
+          git checkout -- engine/rl_after/_merged_recover.py data/expected_boot.json data/release_contract.json
+
+      - name: Commit evidence only
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add session_2026-07-22/staleness_graded_anchor_fix
+          git commit -m "evidence: test forward-anchor correction for graded staleness"
+          git push origin HEAD:model/r19-staleness-graded-anchor-fix
