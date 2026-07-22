@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   census:
-    if: startsWith(github.event.head_commit.message, 'Merge PR #143: run exact handover file census')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout handover branch with full history
@@ -24,7 +23,8 @@ jobs:
         run: |
           set -euo pipefail
           BASE=612d4c058560568b3d4d49ecd785759931885081
-          git cat-file -e "$BASE^{commit}" || git fetch --no-tags origin "$BASE"
+          git fetch --no-tags origin +refs/heads/checkpoint/pre-chatgpt-v2.11:refs/remotes/origin/checkpoint/pre-chatgpt-v2.11
+          test "$(git rev-parse refs/remotes/origin/checkpoint/pre-chatgpt-v2.11)" = "$BASE"
           mkdir -p docs
           {
             echo "# Exact command"
