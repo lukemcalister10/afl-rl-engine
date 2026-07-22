@@ -92,14 +92,20 @@ def main():
             if fire:
                 fire_keys.add(key)
                 grade_now = float(stale_grade(p, 2026, pos))
-                old_lens = g.get("_LENS_FORM")
-                g["_LENS_FORM"] = 2026
+                # _fa_year reads MA._LENS_FORM. The exporter's g is MA.__dict__, so setting a key in
+                # the exec environment would inspect a different object and falsely report no anchor.
+                had_lens = hasattr(MA, "_LENS_FORM")
+                old_lens = getattr(MA, "_LENS_FORM", None)
+                MA._LENS_FORM = 2026
                 try:
                     anchor_p1, anchor_p2 = int(fa_year(2027)), int(fa_year(2028))
                     grade_p1 = float(stale_grade(p, anchor_p1, pos))
                     grade_p2 = float(stale_grade(p, anchor_p2, pos))
                 finally:
-                    g["_LENS_FORM"] = old_lens
+                    if had_lens:
+                        MA._LENS_FORM = old_lens
+                    elif hasattr(MA, "_LENS_FORM"):
+                        delattr(MA, "_LENS_FORM")
                 if current_games == 0:
                     zero_live.add(key)
 
