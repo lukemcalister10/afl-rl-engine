@@ -11,6 +11,7 @@ on:
 permissions:
   contents: write
 
+# This harmless revision is merged solely to emit the normal main push that runs this one-shot job.
 jobs:
   register:
     runs-on: ubuntu-latest
