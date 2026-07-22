@@ -94,7 +94,64 @@ Filled by rebuild commit 3 ("ITEM 408: re-scope frozen-ruler STAMP provenance").
 
 ## 4. Negative controls and the resolver blind review
 
-Filled by rebuild commit 2 ("ITEM 408: restore additive fail-closed provenance controls").
+### 4.a BLIND REVIEW REQUIRED — `ui/tools/ingest_inputs.py`
+
+`[re-runnable]` **No production resolver change is required; `ui/tools/ingest_inputs.py` is left byte-identical
+to `83ed3bb`** (md5 `c743e097833963c4551d7efcd9fad7c050219ccf1af2c404df89c8493ba88853`). The discarded branch's
+12-line delta (7 add / 5 del) in `resolve_release_curve()` was comment + diagnostic-string wording only: the
+functional line `cs_ok = curve_store[:8] == str(contract["curve_source_store_md5"])[:8]` is unchanged context;
+the base already compared the curve stamp against the contract's frozen `curve_source_store_md5`. Verified live
+below (CASE3b). No guard weakened, nothing added.
+
+### 4.b Fail-closed controls — every case proves its SPECIFIC live guard
+
+`[re-runnable]` Controls live in `ui/tests/club_curve_provenance.test.py`; each invokes the **real production
+resolver** as a subprocess with `RL_UI_*` overrides into a scratch dir (production `club_valuation.js` never
+overwritten; production board/contract/boot/curve never mutated). Following GPT Sol review finding 1, **every**
+negative case (not only the restored ones) now asserts the exact live HALT reason via `halt_names(...)`, so a
+control cannot pass on a bare `halt` object or because an unrelated earlier guard fired.
+
+**Measured result (pinned venv 3.12.3): 35 checks, 33 pass.** The **18 fail-closed controls all pass**, each
+`rc=2` with its guard-specific reason:
+
+| Case | Tamper (scratch-only) | Guard reached | Live reason excerpt |
+|---|---|---|---|
+| CASE2a | contract points RL_PVC2 pathway at `pvc_curve_L1b.json` | resolve: name/pathway | `adopted_pathway RL_PVC2 must load pvc_curve_v2.json but … points at pvc_curve_L1b.json` |
+| CASE2b | board PVC = L1b curve under RL_PVC2 contract | assert_pvc: byte-match | `STALE-CURVE GUARD: the board's PVC does not byte-match …` |
+| CASE3a | contract `adopted_pathway = RL_BOGUS` | contract: known-pathway | `UNKNOWN curve-selection: adopted_pathway 'RL_BOGUS' is not a known pathway` |
+| CASE3b | contract `curve_source_store_md5 = deadbeef…` | resolve: store binding | `pvc_curve_v2.json binds store 968de0c7 != release store deadbeef` |
+| CASE3c | missing contract file | `_read_json` | `release pick-curve contract missing: …` |
+| CASE3d | temp engine curve, file bytes drift (values intact) | resolve: file-md5 | `CURVE DRIFT: pvc_curve_v2.json md5 … != contract … — the engine curve file changed` |
+| CASE4 | board stamp `board = aaaa…` | load_board: board-id ring fence | `board id mismatch — bundle aaaaaaaa != current release board 6f07f7cb (regenerate board_view)` |
+| CASE5a | board stamp `asOfRound = R18` (≠ R19) | load_board: round | `board round mismatch — bundle R18 != current release R19` |
+| CASE5b | temp expected_boot with `as_of_round` removed | `_release_manifest` | `release manifest lacks current weekly identity fields: ['as_of_round']` |
+| CASE7 | contract `release_version` | contract: version | `contract release_version v0-tampered != release v2.11-final-rc1-PROVISIONAL` |
+| CASE7 | contract `pick_curve_curve_md5` | resolve: curve-md5 | `CURVE DRIFT: pvc_curve_v2.json curve_md5 89c14729 != contract deadbeef` |
+| CASE7 | contract `numeraire_pin1 = 2999` | contract: pin1 | `contract numeraire pin1 != 3000 — numeraire drift` |
+| CASE7 | board stamp `store_md5`/`store` | load_board: store | `board store mismatch — bundle bbbbbbbb != current release store f37d9716` |
+| CASE7 | contract missing `adopted_pathway` | contract: completeness | `release pick-curve contract is incomplete (missing ['adopted_pathway'])` |
+| CASE8 | temp curve gate token → `RL_PVCADOPT` (file-md5 re-tracked) | resolve: gate/pathway | `pvc_curve_v2.json self-declares gate 'RL_PVCADOPT' != adopted pathway 'RL_PVC2'` |
+| CASE9 | temp curve top-level `pin = 2999` (file-md5 re-tracked) | resolve: engine-curve numeraire | `release-active curve pvc_curve_v2.json pin != 3000 — numeraire drift` |
+| CASE10 | temp curve + board PVC both `pick1 = 2999` (byte-match cleared) | assert_pvc: pick-1 | `PVC pick1 != 3000 — numeraire drift` |
+| CASE11 | temp curve + board PVC both lift pick 60 > pick 59 (byte-match + pick1 cleared) | assert_pvc: monotone | `PVC is not monotone non-increasing — not a valid pick ruler` |
+
+`[re-runnable]` **Finding-2 sweep completeness.** CASE8–CASE11 reach the four previously unswept production
+guards. Each uses a temp engine dir + temp contract via `temp_curve_and_contract()`, which re-tracks
+`pick_curve_file_md5` to the mutated file and keeps `pick_curve_curve_md5` mutually equal to the curve's own
+field, so the tamper clears the earlier name/file-md5/curve-md5 guards and the intended guard is the one that
+fires. CASE10/CASE11 additionally byte-match the temp board PVC to the temp engine curve so the assert_pvc
+byte-match (and, for CASE11, pick-1) guards clear first. `ui/tools/ingest_inputs.py` is not changed.
+
+`[re-runnable]` **Restoration proof (unchanged from prior review):** the base test file against the base
+resolver = 21/26, with CASE3b/5a/5b dead (`rc=0`, tampering keys the corrected resolver no longer reads). The
+rebuilt controls fire live against the byte-identical resolver.
+
+`[report-only]` **Negative-control result reported separately from CASE1 (finding 2).** All 18 fail-closed
+controls pass. The only two failing checks are **CASE1 positive-path** assertions that hardcode the historical
+R14 board id `2ab73a6f` and `asOfRound 14`; the base store is at **R19**, so both fail identically at base and
+post-rebuild. They are the CI-Guards / club-curve red of section 2. Re-aiming CASE1 at the manifest of record
+is the STOP-1-gated advance-repin (directive item 5) — `expected_boot.json`'s balanced-board pin is still
+`06d8af60` and may not move before owner approval — so it is out of this pre-STOP-1 rebuild's scope.
 
 ## 5. R19 balanced-board regeneration and STOP-1
 
