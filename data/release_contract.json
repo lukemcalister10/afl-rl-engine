@@ -10,7 +10,7 @@
   "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
   "identities": {
     "board": "6f07f7cbe042f8e56426a01226c967c9",
-    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "balanced_board_md5": "1373e82471a81064ef96820f3db065df",
     "store": "f37d9716648cfe4382b8c6a24c4f064f",
     "engine_head": "7c452715dc98ac42723834d08021e9d2",
     "rl_model": "4f776e073ea50548ebe017cdb2f06368",
@@ -30,10 +30,10 @@
     "RL_V0SURF_REFIT"
   ],
   "present_lens_baseline": {
-    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "balanced_board_md5": "1373e82471a81064ef96820f3db065df",
     "active": 804,
-    "present_value_total": 757608,
-    "note": "Round 19 owner-authorized D8 present-board correction candidate; forward-lens repair deferred."
+    "present_value_total": 760253,
+    "note": "ITEM 408 STOP-1 (owner-approved 2026-07-22): balanced/strict reference advanced 06d8af60->1373e824; present_value_total is the R19 candidate present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 6f07f7cb, 0 movers). Corrects the prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253). Board of record 6f07f7cb is NOT replaced; forward-lens repair deferred."
   },
   "f5_entrant_reconciliation": {
     "visible_1_64": 64617,
@@ -68,5 +68,5 @@
     "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
   },
   "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-  "contract_sha256": "f94a432f5176265e381b1734f263eeac9e1fd3fe08b0553b566a65b0e0f8c109"
+  "contract_sha256": "4fdf3c10cee885bd7f57f8ef41e8a9fb3ee7d837c768a8e438f6ab41e6d1600e"
 }

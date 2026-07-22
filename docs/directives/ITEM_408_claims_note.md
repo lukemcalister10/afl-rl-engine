@@ -254,6 +254,62 @@ dependent balanced-board / FV / reference identities atomically. This builder mo
 candidate board, full 804-row value vector, `STOP1_CANDIDATE.json` (incl. all 723 movers, the input-identity
 block, and the measured protected before/after table), and `STOP1_REPORT.md` — md5-for-md5.
 
+## 5.1 STOP-1 APPROVED AND EXECUTED (owner word 2026-07-22)
+
+`[owner-seen]` **Owner STOP-1 word of record (verbatim):** "I approve STOP-1 for ITEM 408. Advance the
+balanced/strict board pin from 06d8af60b679a12db07c064c60c065f9 to 1373e82471a81064ef96820f3db065df, and move
+all dependent balanced-board, FV aggregate and reference-vector identities atomically. Do not replace board of
+record 6f07f7cbe042f8e56426a01226c967c9. No merge, tag, release, deployment or score-write activation is
+authorised." Approval relayed by supervisor GPT Sol 5.6 on 2026-07-22.
+
+`[re-runnable]` **Pre-commit branch tip:** `ffd49047b8b0d9904dd7a69ea7019e67ee5830df` (verified == remote before
+edits; working tree clean; candidate rebuilt twice byte-identically: `1373e824` / 804 / 760253 / 9542 / 723
+movers vs 06d8af60 / 0 vs 6f07f7cb).
+
+`[re-runnable]` **The single atomic pin movement** (one fast-forward commit; every dependent identity moves
+together):
+
+| identity | file | 06d8af60 → 1373e824 |
+|---|---|---|
+| boot balanced pin | `data/expected_boot.json` `balanced_board_md5` | advanced |
+| boot panel note | `data/expected_boot.json` `panel` | re-pinned to R19 build-and-compare values (Daicos 8683, Bontempelli 4278, Sheezel 9542, Gawn 3372, Reid 3531, Ward 2684, Moore 234, Goad 1011, Smillie 1233, Green 651); distinguishes board of record 6f07f7cb from balanced/strict 1373e824 |
+| contract identity | `data/release_contract.json` `identities.balanced_board_md5` | advanced |
+| contract present-lens | `data/release_contract.json` `present_lens_baseline.balanced_board_md5` | advanced; `active` 804; `present_value_total` 757608 → **760253** (build-and-compare present-v sum; corrects a prior arithmetic inconsistency — see below) |
+| contract seal | `data/release_contract.json` `contract_sha256` | `f94a432f…` → `4fdf3c10cee885bd7f57f8ef41e8a9fb3ee7d837c768a8e438f6ab41e6d1600e` (recomputed via `release_contract.contract_hash`) |
+| FV accepted oracle | `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` `BOARD_MD5_GOOD` / `sum_v` / `sheezel` / ref path | `1373e824` / 760253 / 9542 / `reference_vector_1373e824.json` |
+| FV reference vector | `…/fixtures/reference_vector_1373e824.json` (new; md5 `4fcd55c9b5708e791be26e5e157b425e`) | 804 rows, sum 760253, Sheezel 9542; historical `reference_vector_06d8af60.json` preserved |
+| UI working bundle | `ui/data/board_view_working.js` | regenerated via `extract_board_view.py` from the **unchanged** canonical board; stamp `board_md5=6f07f7cb`, `balanced_board_md5=1373e824`, store `f37d9716`, `asOfRound 19` |
+
+`[re-runnable]` **present_value_total discrepancy (reported per directive B).** The established repository
+semantic for `present_value_total` is the raw present-v sum of the R19 present board, which for the candidate =
+**760253** (= board-of-record `6f07f7cb` present-v sum; = the present-board correction's own
+`present_total_after` in `session_2026-07-22/present_board_correction/summary.json`). This equals the directive's
+expected candidate sum (760253), so the directive's STOP condition ("if the established semantic produces a
+different value") is **not** triggered. The prior stored `757608` was a pre-existing arithmetic error (it added
+the +5181 D8 present-board delta to the FV present-lens baseline `752427` instead of the correction's present
+baseline `755072`; `752427+5181=757608`, whereas `755072+5181=760253`). This regeneration corrects it to the
+consistent `760253`.
+
+`[re-runnable]` **Board of record `6f07f7cb` byte-identical (NOT replaced):** `data/rl_build/rl_app_data.json`
+md5 `6f07f7cbe042f8e56426a01226c967c9` before and after; the authoritative store `f37d9716`, frozen curve
+`56dd7a7b`, curve contract `676ad2b7`, per-entrant `40d7da7c`, `model_config.json`, `season_state.json`, the
+score ledger, every workflow, and `docs/OPEN_ITEMS_REGISTER.md` are all byte-identical before/after (measured).
+
+`[re-runnable]` **Tests before commit (pinned venv 3.12.3):**
+- Candidate builder ×2 at `ffd49047` → byte-identical: `1373e824` / 804 / 760253 / 9542 / 723 movers vs 06d8af60 / 0 vs 6f07f7cb / `protected_all_unchanged: true`.
+- FV provenance suite → **RESULT 8/8 PASS**; `GREEN1_strict_board_1373e824_zero_movers` rc=0 md5=`1373e824` active=804 sumv=760253 sheezel=9542 vector_movers=0 vs `reference_vector_1373e824.json`; GREEN2 + RED1–RED6 (fail-closed paths) all pass, every RED reports `files_unchanged=True`.
+- Club-curve provenance → **18/18 fail-closed controls pass**; the only 2 failing checks are the pre-existing CASE1 positive-path historical hardcodes (`2ab73a6f` / `asOfRound 14`) — reported separately, not fixed here (directive item 5).
+- `release_contract.py check` → **PASS** (contract `4fdf3c10cee8`; identities + config + posture consistent).
+- `extract_board_view.py` → ring-fence OK; `board_view_working.js` stamp `board_md5=6f07f7cb`, `balanced_board_md5=1373e824`, `store=f37d9716`, `asOfRound=19`; `board_view_public.js` byte-identical.
+- `py_compile` on every modified `.py` → OK; `git diff --check` → clean.
+- Protected-artifact before/after fence → all byte-identical (board of record `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per-entrant `40d7da7c`, `model_config.json`, `season_state.json`, score ledger, all 4 workflows, `OPEN_ITEMS_REGISTER.md`); abort not triggered.
+
+`[re-runnable]` **No prohibited action:** no board-of-record/store/curve/per-entrant/`release_pick_curve.json`
+change; no model/valuation code change; no workflow change; no register change; no main merge; no branch merge;
+no tag/release/deploy; no score-write activation. STOP-1 **APPROVED AND EXECUTED**; **STOP-2 remains pending**;
+the claims-note final signature remains pending GPT Sol 5.6 final independent review (the mechanical builder
+does not sign).
+
 ## 6. Advance-repin design
 
 `[report-only]` Not performed in this mechanical rebuild. The round-advance scripted regeneration/repin design
@@ -268,7 +324,10 @@ exact-head red (section 2).
 
 ## Signature
 
-**Status: PENDING GPT Sol 5.6 INDEPENDENT REVIEW.**
+**Status: STOP-1 APPROVED (owner, 2026-07-22) AND EXECUTED; STOP-2 PENDING; claims-note signature PENDING GPT
+Sol 5.6 FINAL INDEPENDENT REVIEW.**
 
-The mechanical builder does not sign. GPT Sol 5.6 independently reviews the four rebuilt commits and their
-evidence and is the sole signer. The owner separately holds STOP-1 approval, pin/board movement, and merge.
+The mechanical builder does not sign. GPT Sol 5.6 independently reviews the four rebuilt commits plus the single
+STOP-1 atomic pin-advance commit and their evidence, and is the sole signer. The owner has given the STOP-1
+word (section 5.1); STOP-2 (final merge word) remains the owner's and is not sought here. No merge, tag,
+release, deployment or score-write activation has been performed.
