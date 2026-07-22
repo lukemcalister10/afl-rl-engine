@@ -24,7 +24,6 @@ jobs:
 
       - name: Reconstruct exact implementation patch
         env:
-          BASE: 83ed3bb1606b708af16a2ad90a26d63553de6789
           EXPECTED_FULL_SHA256: 05340b89a4888f32cb191b7a66b6bc5600189a7f8f2acb123f04eeb9d4afe8eb
           EXPECTED_IMPL_SHA256: fe0e398134cc747d2654be911fa8a0e97a5cacab99a3b35a2f53eb989fdd038f
         run: |
@@ -56,9 +55,8 @@ jobs:
           marker = 'diff --git a/docs/directives/ITEM_408_CLAIMS_NOTE.md b/docs/directives/ITEM_408_CLAIMS_NOTE.md\n'
           start = text.index(marker)
           end = text.index('\ndiff --git ', start + 1) + 1
-          impl_text = text[:start] + text[end:]
           impl = Path('/tmp/item408-impl.patch')
-          impl.write_text(impl_text, encoding='utf-8')
+          impl.write_text(text[:start] + text[end:], encoding='utf-8')
           impl_digest = hashlib.sha256(impl.read_bytes()).hexdigest()
           if impl_digest != os.environ['EXPECTED_IMPL_SHA256']:
               raise SystemExit(f'implementation patch sha256 {impl_digest} != expected')
@@ -66,35 +64,57 @@ jobs:
           print(f'implementation_patch_sha256={impl_digest}')
           PY
 
-      - name: Fast-forward implementation onto current evidence head
+      - name: Attempt normal fast-forward publication
         env:
           BASE: 83ed3bb1606b708af16a2ad90a26d63553de6789
           TARGET: ci/r19-provenance-migration
         run: |
-          set -euo pipefail
+          set +e
+          exec > >(tee /tmp/item408-publication.txt) 2>&1
+          set -x
           git fetch origin "$TARGET"
+          fetch_rc=$?
           git checkout --detach "origin/$TARGET"
+          checkout_rc=$?
           git merge-base --is-ancestor "$BASE" HEAD
+          ancestry_rc=$?
           parent="$(git rev-parse HEAD)"
-          git apply --check /tmp/item408-impl.patch
-          git apply /tmp/item408-impl.patch
+          git status --short
+          git apply --check --verbose /tmp/item408-impl.patch
+          apply_check_rc=$?
+          if [ "$apply_check_rc" -eq 0 ]; then
+            git apply /tmp/item408-impl.patch
+            apply_rc=$?
+          else
+            apply_rc=99
+          fi
           git diff --check
-          git add -A
-          git config user.name "afl-rl build-seat"
-          git config user.email "build-seat@users.noreply.github.com"
-          tree="$(git write-tree)"
-          commit="$(printf '%s\n' 'ci(item-408): prepare R19 provenance STOP-1' | git commit-tree "$tree" -p "$parent")"
-          git push origin "$commit:refs/heads/$TARGET"
-          {
-            echo "parent=$parent"
-            echo "published=$commit"
-            echo "base=$BASE"
-          } | tee /tmp/item408-publication.txt
+          diff_check_rc=$?
+          commit_rc=99
+          push_rc=99
+          commit=""
+          if [ "$fetch_rc" -eq 0 ] && [ "$checkout_rc" -eq 0 ] && [ "$ancestry_rc" -eq 0 ] && [ "$apply_rc" -eq 0 ] && [ "$diff_check_rc" -eq 0 ]; then
+            git add -A
+            git config user.name "afl-rl build-seat"
+            git config user.email "build-seat@users.noreply.github.com"
+            tree="$(git write-tree)"
+            commit="$(printf '%s\n' 'ci(item-408): prepare R19 provenance STOP-1' | git commit-tree "$tree" -p "$parent")"
+            commit_rc=$?
+            git push origin "$commit:refs/heads/$TARGET"
+            push_rc=$?
+          fi
+          set +x
+          printf 'fetch_rc=%s\ncheckout_rc=%s\nancestry_rc=%s\napply_check_rc=%s\napply_rc=%s\ndiff_check_rc=%s\ncommit_rc=%s\npush_rc=%s\nparent=%s\ncommit=%s\n' \
+            "$fetch_rc" "$checkout_rc" "$ancestry_rc" "$apply_check_rc" "$apply_rc" "$diff_check_rc" "$commit_rc" "$push_rc" "$parent" "$commit"
+          exit 0
 
-      - name: Upload publication receipt
+      - name: Upload publication diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: item408-prestop-publication
           path: /tmp/item408-publication.txt
           if-no-files-found: error
+
+      - name: Enforce successful publication
+        run: grep -qx 'push_rc=0' /tmp/item408-publication.txt
