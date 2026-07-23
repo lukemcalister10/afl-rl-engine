@@ -75,10 +75,12 @@ try {
   };
 
   // ---- the in-page acceptance suite ---------------------------------------------------------
-  // The SHIPPED production bundle is EMPTY, so we (a) prove the honest empty state renders on the real
-  // ship, then (b) inject a synthetic bundle whose lineage is anchored to the LOADED working board
-  // (window.__MATCHDAY_WORKING__.stamp.board) to exercise + screenshot the populated view. The
-  // synthetic bundle passes the new lineage check precisely because it is chained to the loaded app.
+  // The SHIPPED production bundle carries the OWNER-AUTHORISED R15-R19 history (ITEM 408 Items 6-7,
+  // Option A), bridged to the current accepted release by the owner-approved provenance transition
+  // (window.__MATCHDAY_TRANSITION__, from ui/data/movers_transition.js). We (a) prove the shipped bundle
+  // BRIDGES + renders under the current app (and fails closed without the transition), then (b) inject a
+  // synthetic same-lineage bundle anchored to the LOADED working board to exercise + screenshot the
+  // populated view directly (state 'ok', no transition needed since it is chained to the loaded app).
   const res = await evalJson(`
     const out = {};
     const MD = window.MD;
@@ -90,12 +92,25 @@ try {
     out.view_is_movers = MD.state.view === 'movers';
     out.has_masthead = !!document.querySelector('#root .app .mast');
 
-    // (A) SHIPPED bundle is EMPTY -> honest empty state (neutral panel), no alarm, no table
+    // (A) SHIPPED bundle is the OWNER-AUTHORISED R15-R19 history, BRIDGED to the current release by the
+    // owner-approved provenance transition -> the table renders (not empty, not an alarm); it FAILS
+    // CLOSED without the transition.
     const shipped = window.__MATCHDAY_MOVERS__;
     out.shipped_rounds = (shipped && shipped.rounds) || [];
-    out.empty_state_shown = !!document.querySelector('#root .app .moversempty');
-    out.empty_no_table = !document.querySelector('.movertable');
-    out.empty_not_alarm = !document.querySelector('#root .app .failclosed');
+    const _st = (window.__MATCHDAY_WORKING__ || {}).stamp || {};
+    const _rel = _st.release || null;
+    const shippedApp = {
+      board: (_rel && _rel.board) || _st.srcmd5 || _st.board, store: (_rel && _rel.store) || _st.store_md5 || _st.store,
+      balanced_board_md5: (_rel && _rel.balanced_board_md5) || _st.balanced_board_md5,
+      release_version: (_rel && _rel.release_version) || _st.releaseVersion || _st.tag,
+      engine_head: (_rel && _rel.engine_head) || _st.engine, register: (_rel && _rel.register) || _st.register,
+      as_of_round: (_rel && _rel.as_of_round != null) ? _rel.as_of_round : _st.asOfRound, release: _rel };
+    out.shipped_lineage = MD.movers.core.lineage(shipped, shippedApp, window.__MATCHDAY_TRANSITION__);
+    out.shipped_bridged = !!(out.shipped_lineage && out.shipped_lineage.ok && out.shipped_lineage.state === 'bridged');
+    out.shipped_table_shown = !!document.querySelector('.movertable');
+    out.shipped_not_empty = !document.querySelector('#root .app .moversempty');
+    out.shipped_not_alarm = !document.querySelector('#root .app .failclosed');
+    out.shipped_failclosed_without_transition = !MD.movers.core.lineage(shipped, shippedApp, null).ok;
 
     // (B) simulate the post-R19 state: ADD a release contract to the loaded app's stamp (WITHOUT
     // changing srcmd5 — the app's board ring-fence stays intact) and inject a synthetic bundle whose
@@ -199,8 +214,9 @@ try {
     ['MD.movers present', res.md_present],
     ['Movers is a native nav tab', res.nav_has_movers],
     ['clicking Movers sets the movers view', res.view_is_movers],
-    ['SHIPPED production bundle is EMPTY', Array.isArray(res.shipped_rounds) && res.shipped_rounds.length === 0],
-    ['empty bundle shows the honest empty state (neutral, not an alarm)', res.empty_state_shown && res.empty_not_alarm && res.empty_no_table],
+    ['SHIPPED production bundle carries the owner-authorised R15-R19 history', Array.isArray(res.shipped_rounds) && res.shipped_rounds.join(',') === '15,16,17,18,19'],
+    ['shipped bundle BRIDGES under the owner-approved transition (state=bridged, table renders, not empty/alarm)', res.shipped_bridged && res.shipped_table_shown && res.shipped_not_empty && res.shipped_not_alarm],
+    ['shipped bundle FAILS CLOSED without the provenance transition', res.shipped_failclosed_without_transition],
     ['synthetic bundle passes lineage when anchored to the loaded app', res.lineage && res.lineage.ok && res.lineage.state === 'ok'],
     ['Movers renders inside the existing app shell', res.in_app_shell && res.has_masthead],
     ['active nav tab uses existing styling', res.active_tab_styled],
@@ -237,8 +253,10 @@ try {
   await shot(1280, path.join(SHOTS, 'movers_desktop.png'), false);
   await shot(390, path.join(SHOTS, 'movers_mobile.png'), true);
 
-  // the honest EMPTY state (what the SHIPPED production bundle renders on a fresh baseline app): reset
-  // BOTH the loaded app release and the empty bundle baseline to a coherent baseline (as_of_round 14).
+  // the honest EMPTY state (what a fresh baseline app renders BEFORE any finalized round, using a
+  // SYNTHETIC empty bundle): reset BOTH the loaded app release and the empty bundle baseline to a
+  // coherent R14 baseline (as_of_round 14). This exercises the empty-state RENDERING; it does NOT assert
+  // the shipped production bundle is empty (it is not — it carries the owner-authorised R15-R19 history).
   await cmd('Runtime.evaluate', { expression:
     "(function(){var pad=function(s){s=String(s);while(s.length<32)s+='0';return s.slice(0,32);};" +
     "var base=pad('baseline'),st=pad('basestore');" +

@@ -7,6 +7,30 @@
 - **Exact rebuild base:** `83ed3bb1606b708af16a2ad90a26d63553de6789`
   (`origin/ci/harness-migration-r19-phase2-cand` tip — "harness(one-source): refresh Kako 2026 pin to 10 games @ 45.4")
 
+---
+
+## Owner ruling of record — ITEM 408 Items 6–7 (Option A), 2026-07-23
+
+`[owner-seen]` **Owner ruling (Option A), verbatim, relayed by GPT Sol 5.6:**
+
+> The authorised Round 15–19 recovery counts as genuine production Movers history. Retain the R15–R19
+> production Movers reports. Do not reset the production Movers bundle to empty. Preserve the historical
+> reports and implement a fail-closed provenance bridge to the current accepted release identity. No
+> historical report may be silently rewritten.
+
+This ruling **supersedes the item-6 builder conclusion that `ui/data/movers.js` must ship empty** (the
+Category 1 "unauthorised materialisation regression" verdict of §7.8, now **WITHDRAWN** — see §7.8 and
+§9). The R15–R19 production Movers bundle is **restored populated** and displayed under the current
+accepted release via a **separately-declared, owner-approved, fail-closed provenance transition**
+(`data/release_lineage.json` `release_transition`, mirrored to `ui/data/movers_transition.js`, enforced
+by `ui/app/movers.js core`). It is recorded in full in **§9** (the item-6 correction) and closed in **§7**.
+
+It does **not** authorise: a new score application; rewriting historical movements; altering the
+protected R19 store, board, ledger, histories or per-round movers reports; merging, tagging, releasing
+or deploying; or granting STOP-2. The shipped score-write gate stays **OFF**; STOP-2 remains
+exclusively owner-held and pending. (Working branch of record for this correction:
+`claude/item-408-fixture-repair-e2o53i` — see the push-target deviation in §7.0.)
+
 ## Evidence classes
 
 Every factual claim below is tagged exactly one of `[owner-seen]`, `[re-runnable]`, or `[report-only]`,
@@ -712,7 +736,18 @@ release metadata; FV provenance; balanced/strict sibling advancement integrated 
 Prescreen independently recomputes `data/rl_build/rl_app_data.json` md5 `6f07f7cb` == pin, and reports
 `expected_boot` unchanged and `run_panel.sh` pins unchanged (§8).
 
-### 7.8 `ui/data/movers.js` adjudication (supervisory concern) — **CATEGORY 1: unauthorised materialisation regression**
+### 7.8 `ui/data/movers.js` adjudication — **CATEGORY 1 VERDICT WITHDRAWN by owner ruling (Option A, 2026-07-23)**
+
+> **WITHDRAWN (owner ruling of record, top of note; §9).** The owner has ruled (Option A) that the
+> authorised Round 15–19 recovery **is** genuine production Movers history. The Category 1 "unauthorised
+> materialisation regression" verdict below is **withdrawn**: the populated R15–R19 bundle is **retained**
+> (restored byte-exact from `1606d134:ui/data/movers.js`, md5 `2e1edb45…`) and bridged to the current
+> accepted release by the owner-approved fail-closed provenance transition (§9). The empty-restore this
+> subsection defended (md5 `83bc7b8f…`) is reverted. The paragraphs below are preserved as the
+> **superseded** builder analysis; read §9 for the current, authoritative treatment.
+
+The original (now-withdrawn) analysis, for the record:
+
 This file **was changed** by this work (restored to empty). It is the UI **shipping** bundle, contractually
 required to remain empty until an owner-authorised real scoring apply — **not** a protected R19 scoring artifact.
 
@@ -740,8 +775,10 @@ required to remain empty until an owner-authorised real scoring apply — **not*
 - **not a protected artifact:** the protected per-round movers outputs `engine/rl_after/ingestion/movers/` are
   **byte-unchanged** (§7.7). The R19 store/board/ledger are byte-unchanged. `ui/data/movers.js` is a downstream
   UI presentation bundle only.
-- **Verdict:** the populated file is an **unauthorised materialisation regression** (category 1); the restore is
-  a faithful revert to the exact accepted-empty blob. Kept in Commit B; **no revert of that change**.
+- **Verdict (WITHDRAWN):** the original verdict — "the populated file is an unauthorised materialisation
+  regression (category 1)" — is **withdrawn** by the owner Option A ruling. The populated R15–R19 bundle is
+  the owner-authorised production Movers history; the empty-restore is reverted; the correct treatment is
+  the retained bundle + fail-closed provenance transition of **§9**.
 
 ## 8. Item-7 close candidate — four-suite + prescreen evidence (ITEM 408 item 7)
 
@@ -783,6 +820,109 @@ item-6 deliverable is complete and regression-free; the remaining Final Integrat
 out-of-scope R19-staleness blocker for the supervisor to route. This note is builder-generated evidence; the
 execution supervisor has not accepted it; STOP-2 is not granted; no merge, tag, release, deployment or
 score-write activation is authorised.
+
+---
+
+## 9. Owner-ruling Movers correction (ITEM 408 Items 6–7, Option A) — retained history + provenance bridge
+
+`[builder-generated evidence]` This section implements the owner Option A ruling (recorded verbatim at the
+top of this note). It **supersedes** the §7.8 empty-bundle conclusion. Authored by the `claude-code-builder`
+seat; NOT the cold blind review; no STOP-2; no merge/tag/release/deploy; score-write gate OFF.
+
+### 9.1 Restored production Movers history (owner-authorised)
+`[re-runnable]` `ui/data/movers.js` is restored **byte-exact** from `1606d13408f6ca45013e21faec2b3b6a9454f033:ui/data/movers.js`.
+
+| state | md5 | sha256 | rounds |
+|---|---|---|---|
+| before (obsolete empty R14-era blob, at feature tip `902bd435`) | `83bc7b8f977ad4c08082d6ea25bb9f5b` | `121378a4…` | `[]` |
+| after (owner-authorised recovery history) | `2e1edb4557509a5f057ec5e6e16b7178` | `9c6962c3a9bc86f7fe97548fb704c5ffd7bb728aceec16bb66938c7dec525a06` | `[15,16,17,18,19]` |
+
+Preserved exactly (verified): rounds 15–19; every player row (804/round); every score; every value/rank/pos-rank
+movement; before/after store + board identities; transaction ids (`txn_catchup_r15…r19`); original timestamps
+(`generated_at 2026-07-21T16:17:44Z`); each report's frozen governing identity (`v2.11-present-lens-baseline`,
+engine_head `dc7e34b0`, balanced `06d8af60`). The movements are **NOT** regenerated from the current board and
+the historical identities are **NOT** replaced with current identities.
+
+### 9.2 Historical board/store chain — exact + continuous (R14 → R19)
+`[re-runnable]` baseline R14 board `2ab73a6f` / store `968de0c7`, then per report `board_md5_before/after` +
+`source_store_md5_before/after`:
+
+| round | store before → after | board before → after |
+|---|---|---|
+| R15 | `968de0c7` → `692d6302` | `2ab73a6f` → `2fe26675` |
+| R16 | `692d6302` → `0b951852` | `2fe26675` → `8ad41708` |
+| R17 | `0b951852` → `c312eb5b` | `8ad41708` → `0308202f` |
+| R18 | `c312eb5b` → `64795076` | `0308202f` → `4323c448` |
+| R19 | `64795076` → **`f37d9716`** | `4323c448` → **`92a8f3a0`** |
+
+Continuous (each `before` == prior `after`; first `before` == baseline). The latest report **terminates at
+the accepted R19 materialised store `f37d9716`** (the current authoritative store) and the recovery's R19
+board `92a8f3a0`.
+
+### 9.3 The fail-closed provenance transition (exact source → destination)
+`[re-runnable]` The R15–R19 reports were generated under the earlier accepted **present-lens** release; the
+application has since advanced (accepted model + balanced-board identity changes, ITEM 408 STOP-1). The
+narrowest fail-closed mechanism that shows the historical reports under the **current** accepted release —
+without pretending they were generated under it and without rewriting any report — is a **separately-declared,
+owner-approved release transition**: canonical authority `data/release_lineage.json` `release_transition`,
+mirrored byte-consistent to `ui/data/movers_transition.js` (`window.__MATCHDAY_TRANSITION__`), enforced by
+`ui/app/movers.js core` (`bridge` / `matchAppToDest` / `sameId` / `reportsDigest`).
+
+| field | SOURCE (historical reports) | DESTINATION (current app) | moved? |
+|---|---|---|---|
+| release_version | `v2.11-present-lens-baseline` | `v2.11-final-rc1-PROVISIONAL` | **moved** |
+| balanced_board_md5 | `06d8af60…` | `1373e824…` | **moved** |
+| engine_head | `dc7e34b0…` | `7c452715…` | **moved** |
+| board | `92a8f3a0…` | `6f07f7cb…` | **moved** |
+| rl_model | `4f776e07…` | `4f776e07…` | unchanged |
+| fv | `6a9a520f…` | `6a9a520f…` | unchanged |
+| config | `45b207c0…` | `45b207c0…` | unchanged |
+| register | `652d83e8…` | `652d83e8…` | unchanged |
+| store | `f37d9716…` | `f37d9716…` | unchanged |
+
+The transition moves **exactly** the release presentation (release_version / balanced / engine_head / board);
+the underlying R19 **store and every model pin are identical** — a legitimate re-presentation of the SAME R19
+data, not a data change. SOURCE is derived from the R19 report's own identity + terminal board/store;
+DESTINATION is derived from `data/expected_boot.json`. Owner-approved (`owner_approved: true`,
+`owner_ruling_id: ITEM_408_items_6_7_option_A`).
+
+**Content anchor.** `applies_to.historical_reports_digest` =
+`sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d` — a SHA-256 over the canonical
+serialization of exactly the R15–R19 reports. Recomputed identically by `round_movers.canonical_reports_digest`
+(Python) and `ui/app/movers.js core.reportsDigest` (browser/node) — **cross-language verified equal**. ANY
+modification of a report (an identity field OR a player's movement value) changes the digest and fails closed.
+
+### 9.4 The twelve required properties (all satisfied)
+`[re-runnable]` (verified by `ui/tests/movers.test.js` 62/62 + `engine/rl_after/ingestion/test_movers_transition.py`
+25/25): (1) each report retains its original fixed + dynamic identity fields (byte-exact restore; no rewrite);
+(2) the R14→R19 board/store chain is exact + continuous (§9.2); (3) the latest report terminates at the accepted
+R19 board/store `92a8f3a0`/`f37d9716`; (4) a separately-declared owner-approved transition connects the historical
+release identity to the current application release identity; (5) it identifies exact source + destination
+identities (§9.3); (6) it cannot be inferred from similar data — the full owner-approved record is required, a
+matching store/board alone is insufficient; (7) an absent / partial / wrong / reversed / tampered transition
+fails closed; (8) a transition cannot authorise an unrelated lineage (SOURCE must match the reports exactly);
+(9) historical report contents cannot be modified without detection (per-report identity consistency + content
+digest); (10) future weekly reports append under the then-current governing identity without altering R15–R19
+(byte-for-byte + digest unchanged, proven via `accumulate_bundle`); (11) the browser displays R15–R19 when
+loaded against the current accepted application (`state: bridged`); (12) the score-write gate remains OFF
+(`APPLY_DEFAULT False`, no apply token; no score applied).
+
+### 9.5 Fail-closed negative controls (each proven)
+`[re-runnable]` `ui/tests/movers.test.js` + `test_movers_transition.py`: no transition → fail closed; wrong
+SOURCE → fail; wrong DESTINATION → fail; REVERSED (source↔destination) → fail; not owner-approved → fail;
+modified historical report **identity** → fail (per-report consistency + digest); modified player **movement**
+data → fail (digest); modified board/store **chain** → fail; **unrelated release lineage** → fail (source
+mismatch); current-application board ≠ destination → fail. Positive: owner-approved transition ⇒ `state:
+bridged`; current application identity == transition destination; future append preserves R15–R19 byte-for-byte.
+No wildcard / "accept any previous release" path was added; generic lineage validation was **not** weakened.
+
+### 9.6 No historical report rewritten; no score applied; protected artifacts untouched
+`[re-runnable]` The restored bundle is byte-identical to `1606d134:ui/data/movers.js`; the reports are read-only
+data the transition anchors, never regenerated. Protected artifacts are byte-unchanged by this correction
+(measured before/after — see §F close table): R19 store `f37d9716`, board of record `6f07f7cb`, balanced/strict
+`1373e824`, per-round movers outputs `engine/rl_after/ingestion/movers/`, score ledger, histories. `movers.js`
+(the UI shipping bundle) and the new transition files are the only production-data changes; the score-write gate
+is OFF and **no score was applied**.
 
 ---
 

@@ -44,6 +44,150 @@
       return { ok: true };
     },
 
+    /* ---- owner-approved release-transition bridge (ITEM 408 Items 6-7, Option A) ---------------
+       The R15-R19 production reports were generated under an EARLIER accepted release. When the loaded
+       application has since advanced to a DIFFERENT current release, the bundle's terminal identity no
+       longer equals the loaded release, so the generic lineage check fails closed. A historical bundle
+       may still be displayed under the current release ONLY via a SEPARATELY-DECLARED, owner-approved
+       provenance transition (window.__MATCHDAY_TRANSITION__ / data/release_lineage.json
+       `release_transition`) whose SOURCE matches the reports EXACTLY, whose DESTINATION matches the
+       loaded application EXACTLY, whose covered rounds == the bundle's rounds, and whose content digest
+       matches the reports byte-for-byte. Absent / partial / wrong / reversed / tampered -> fail closed.
+       This never weakens generic lineage validation, adds no wildcard, and treats no matching-board-alone
+       as sufficient — the full owner-approved record is required. */
+
+    /* The identity fields a transition must bind end-to-end (fixed pins + the dynamic board/store). */
+    TRANSITION_ID_FIELDS: ["release_version", "balanced_board_md5", "engine_head", "rl_model", "fv",
+                           "config", "register", "board", "store"],
+
+    /* Exact equality over a field set (transition SOURCE vs the reports' terminal identity). */
+    sameId: function (a, b, fields) {
+      a = a || {}; b = b || {};
+      for (var i = 0; i < fields.length; i++) {
+        var k = fields[i];
+        if (a[k] == null || b[k] == null || a[k] !== b[k]) return { ok: false, field: k, a: a[k], b: b[k] };
+      }
+      return { ok: true };
+    },
+
+    /* Deterministic canonical JSON: recursively key-sorted, arrays in order, compact. Mirrors the
+       Python emitter round_movers.canonical_reports_digest so both compute the identical digest. */
+    canonJSON: function (v) {
+      if (v === null || typeof v !== "object") return JSON.stringify(v);
+      if (Array.isArray(v)) { var a = []; for (var i = 0; i < v.length; i++) a.push(core.canonJSON(v[i])); return "[" + a.join(",") + "]"; }
+      var ks = Object.keys(v).sort(), p = [];
+      for (var j = 0; j < ks.length; j++) p.push(JSON.stringify(ks[j]) + ":" + core.canonJSON(v[ks[j]]));
+      return "{" + p.join(",") + "}";
+    },
+
+    /* Synchronous pure-JS SHA-256 (identical in browser + node; verified against node crypto and the
+       standard test vectors). Returns lowercase hex. */
+    sha256hex: function (ascii) {
+      function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
+      var K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+        0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+        0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+        0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+        0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+        0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+        0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+        0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+      var H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+      var bytes = [], i, c;
+      for (i = 0; i < ascii.length; i++) {
+        c = ascii.charCodeAt(i);
+        if (c < 0x80) bytes.push(c);
+        else if (c < 0x800) bytes.push(0xc0 | (c >> 6), 0x80 | (c & 0x3f));
+        else if (c < 0xd800 || c >= 0xe000) bytes.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 0x3f), 0x80 | (c & 0x3f));
+        else { i++; var c2 = ascii.charCodeAt(i); var cp = 0x10000 + (((c & 0x3ff) << 10) | (c2 & 0x3ff));
+          bytes.push(0xf0 | (cp >> 18), 0x80 | ((cp >> 12) & 0x3f), 0x80 | ((cp >> 6) & 0x3f), 0x80 | (cp & 0x3f)); }
+      }
+      var bitLen = bytes.length * 8;
+      bytes.push(0x80);
+      while (bytes.length % 64 !== 56) bytes.push(0);
+      var hi = Math.floor(bitLen / 0x100000000), lo = bitLen >>> 0;
+      bytes.push((hi >>> 24) & 0xff, (hi >>> 16) & 0xff, (hi >>> 8) & 0xff, hi & 0xff);
+      bytes.push((lo >>> 24) & 0xff, (lo >>> 16) & 0xff, (lo >>> 8) & 0xff, lo & 0xff);
+      var w = new Array(64), off, t;
+      for (off = 0; off < bytes.length; off += 64) {
+        for (t = 0; t < 16; t++)
+          w[t] = (bytes[off+t*4] << 24) | (bytes[off+t*4+1] << 16) | (bytes[off+t*4+2] << 8) | (bytes[off+t*4+3]);
+        for (t = 16; t < 64; t++) {
+          var s0 = rotr(7, w[t-15]) ^ rotr(18, w[t-15]) ^ (w[t-15] >>> 3);
+          var s1 = rotr(17, w[t-2]) ^ rotr(19, w[t-2]) ^ (w[t-2] >>> 10);
+          w[t] = (w[t-16] + s0 + w[t-7] + s1) | 0;
+        }
+        var a=H[0],b=H[1],cc=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+        for (t = 0; t < 64; t++) {
+          var S1 = rotr(6,e) ^ rotr(11,e) ^ rotr(25,e);
+          var ch = (e & f) ^ (~e & g);
+          var temp1 = (h + S1 + ch + K[t] + w[t]) | 0;
+          var S0 = rotr(2,a) ^ rotr(13,a) ^ rotr(22,a);
+          var maj = (a & b) ^ (a & cc) ^ (b & cc);
+          var temp2 = (S0 + maj) | 0;
+          h=g; g=f; f=e; e=(d + temp1)|0; d=cc; cc=b; b=a; a=(temp1 + temp2)|0;
+        }
+        H[0]=(H[0]+a)|0; H[1]=(H[1]+b)|0; H[2]=(H[2]+cc)|0; H[3]=(H[3]+d)|0;
+        H[4]=(H[4]+e)|0; H[5]=(H[5]+f)|0; H[6]=(H[6]+g)|0; H[7]=(H[7]+h)|0;
+      }
+      var hex = "";
+      for (i = 0; i < 8; i++) hex += ("00000000" + (H[i] >>> 0).toString(16)).slice(-8);
+      return hex;
+    },
+
+    /* `sha256:<hex>` over the canonical form of exactly {String(round): report} for `rounds` — the
+       content anchor that makes ANY report modification (identity OR player movement) fail closed. */
+    reportsDigest: function (bundle, rounds) {
+      var reports = (bundle || {}).reports || {}, sub = {}, rs = rounds || (bundle || {}).rounds || [];
+      for (var i = 0; i < rs.length; i++) { var k = String(rs[i]); sub[k] = reports[k]; }
+      return "sha256:" + core.sha256hex(core.canonJSON(sub));
+    },
+
+    /* The loaded application must EQUAL the transition DESTINATION. The app stamp exposes some ids in
+       full (board, store, balanced_board_md5, release_version) and some truncated (engine_head,
+       register); every field the app exposes must equal (full) or be a prefix of (truncated) the
+       declared destination. When the full release contract is present, all fixed pins must match. */
+    matchAppToDest: function (dest, appId) {
+      dest = dest || {}; appId = appId || {};
+      if (appId.board && dest.board !== appId.board) return { ok: false, field: "board" };
+      if (appId.store && dest.store !== appId.store) return { ok: false, field: "store" };
+      if (appId.balanced_board_md5 && dest.balanced_board_md5 !== appId.balanced_board_md5) return { ok: false, field: "balanced_board_md5" };
+      if (appId.release_version && dest.release_version !== appId.release_version) return { ok: false, field: "release_version" };
+      if (appId.engine_head && String(dest.engine_head || "").indexOf(appId.engine_head) !== 0) return { ok: false, field: "engine_head" };
+      if (appId.register && String(dest.register || "").indexOf(appId.register) !== 0) return { ok: false, field: "register" };
+      if (appId.release) { var sf = core.sameFixed(dest, appId.release); if (!sf.ok) return { ok: false, field: sf.field }; }
+      return { ok: true };
+    },
+
+    /* Fail-closed owner-approved provenance transition: bridges a historical bundle (SOURCE) to the
+       loaded current release (DESTINATION). */
+    bridge: function (bundle, histId, appId, transition) {
+      if (!transition) return { ok: false, why: "no owner-approved release transition — a historical Movers bundle cannot be shown under a different current release without one" };
+      if (transition.kind !== "movers_release_transition") return { ok: false, why: "release transition has an invalid kind" };
+      if (transition.owner_approved !== true) return { ok: false, why: "release transition is not owner-approved" };
+      var src = transition.source, dst = transition.destination, ap = transition.applies_to || {};
+      if (!src || !dst) return { ok: false, why: "release transition is missing its source/destination identity" };
+      // SOURCE must equal the bundle's historical terminal identity EXACTLY (an unrelated lineage, a
+      // wrong source, or a reversed transition all mismatch here).
+      var ss = core.sameId(src, histId, core.TRANSITION_ID_FIELDS);
+      if (!ss.ok) return { ok: false, why: "transition source != the historical reports at " + ss.field + " (" + String(ss.a).slice(0, 8) + " vs " + String(ss.b).slice(0, 8) + ")" };
+      if (src.as_of_round != null && histId.as_of_round != null && src.as_of_round !== histId.as_of_round)
+        return { ok: false, why: "transition source round " + src.as_of_round + " != latest report round " + histId.as_of_round };
+      // DESTINATION must equal the loaded current application.
+      var dm = core.matchAppToDest(dst, appId);
+      if (!dm.ok) return { ok: false, why: "transition destination != the loaded current application at " + dm.field };
+      // covered rounds == the bundle's historical rounds
+      var trounds = (ap.rounds || []).slice(), brounds = (bundle.rounds || []).slice();
+      if (trounds.length !== brounds.length) return { ok: false, why: "transition covers " + trounds.length + " rounds but the bundle has " + brounds.length };
+      for (var i = 0; i < trounds.length; i++) if (trounds[i] !== brounds[i]) return { ok: false, why: "transition rounds != bundle rounds at index " + i };
+      // CONTENT DIGEST: the reports must be byte-for-byte the ones the owner approved.
+      var want = String(ap.historical_reports_digest || "");
+      if (!want) return { ok: false, why: "release transition carries no historical_reports_digest" };
+      var got = core.reportsDigest(bundle, trounds);
+      if (got !== want) return { ok: false, why: "historical reports digest mismatch — a report was modified (" + got.slice(0, 22) + "… != " + want.slice(0, 22) + "…)" };
+      return { ok: true };
+    },
+
     /* Fail-closed LINEAGE anchoring of the WHOLE bundle against the CURRENT loaded application
        (corrective 2026-07-20, review directives D + E; owner ruling on balanced_board_md5). The bundle
        must sit on the SAME release lineage the working app is loaded at — validated against the FULL
@@ -61,9 +205,11 @@
        closed, it is not "empty". This is generic board/store/release lineage checking: balanced_board_md5
        is the fixed present-lens baseline anchor and the moving `board` field is the complete current
        artifact; it makes no assumption about final switch values or a final full-board hash.
-       `app` = {board, store, release} from the loaded working stamp. Absent app.release -> best-effort
-       "unanchored" (board/store/chain only); the browser always supplies the full contract. */
-    lineage: function (bundle, app) {
+       `app` = {board, store, release, ...} from the loaded working stamp. Absent app.release -> best-effort
+       "unanchored" (board/store/chain only); the browser always supplies the full contract. `transition`
+       is the owner-approved provenance transition (window.__MATCHDAY_TRANSITION__): required, and validated
+       fail-closed, ONLY when a populated bundle's terminal identity differs from the loaded release. */
+    lineage: function (bundle, app, transition) {
       if (!bundle || bundle.kind !== "matchday_movers_bundle") return { ok: false, state: "nobundle", why: "no movers bundle" };
       app = app || {};
       var appRel = app.release || null;
@@ -117,27 +263,56 @@
       if (bundle.integrity && bundle.integrity.baseline_anchor_ok === false)
         return { ok: false, state: "mismatch", why: "bundle does not anchor to the release baseline board" };
 
+      // every report carries the SAME fixed release identity as the first report (detects a single
+      // historical report's release identity being tampered — its own fixed pins would drift).
+      var refRel = (reports[String(rounds[0])] || {}).release_identity || {};
+      for (var v = 0; v < rounds.length; v++) {
+        var sfv = core.sameFixed((reports[String(rounds[v])] || {}).release_identity, refRel);
+        if (!sfv.ok) return { ok: false, state: "mismatch", why: "R" + rounds[v] + " release identity differs from R" + rounds[0] + " at " + sfv.field };
+      }
+
       var last = reports[String(rounds[rounds.length - 1])];
       var lastRel = last.release_identity || {};
-      // latest dynamic report vs the loaded CURRENT board + store
-      if (app.board && last.board_md5_after !== app.board)
-        return { ok: false, state: "mismatch", why: "latest report board " + String(last.board_md5_after).slice(0, 8) +
-                 " != loaded current board " + String(app.board).slice(0, 8) };
-      if (app.store && last.source_store_md5_after !== app.store)
-        return { ok: false, state: "mismatch", why: "latest report store " + String(last.source_store_md5_after).slice(0, 8) +
-                 " != loaded current store " + String(app.store).slice(0, 8) };
-      // as_of_round coherence
+      // as_of_round coherence (within the latest report)
       if (lastRel.as_of_round != null && lastRel.as_of_round !== last.submitted_round)
         return { ok: false, state: "mismatch", why: "latest report as_of_round " + lastRel.as_of_round + " != submitted round " + last.submitted_round };
+
+      // The bundle's historical TERMINAL identity (the SOURCE side of any release transition): the
+      // latest report's governing release + its committed terminal board/store.
+      var histId = {
+        release_version: lastRel.release_version, balanced_board_md5: lastRel.balanced_board_md5,
+        engine_head: lastRel.engine_head, rl_model: lastRel.rl_model, fv: lastRel.fv,
+        config: lastRel.config, register: lastRel.register,
+        board: last.board_md5_after, store: last.source_store_md5_after, as_of_round: last.submitted_round,
+      };
+
+      // DIRECT lineage: the terminal identity already equals the loaded release (SAME lineage; no
+      // transition needed). board/store must equal the loaded current; fixed pins + version + balanced
+      // must equal whatever the loaded app exposes.
+      var directBoard = !app.board || histId.board === app.board;
+      var directStore = !app.store || histId.store === app.store;
+      var directFixed = !appRel || core.sameFixed(lastRel, appRel).ok;
+      var directBalanced = !app.balanced_board_md5 || histId.balanced_board_md5 === app.balanced_board_md5;
+      var directVersion = !app.release_version || histId.release_version === app.release_version;
+      if (directBoard && directStore && directFixed && directBalanced && directVersion) {
+        if (appRel && appRel.as_of_round != null && lastRel.as_of_round != null && appRel.as_of_round !== lastRel.as_of_round)
+          return { ok: false, state: "mismatch", why: "loaded as_of_round " + appRel.as_of_round + " != latest report as_of_round " + lastRel.as_of_round };
+        return appRel ? { ok: true, state: "ok" } : { ok: true, state: "unanchored" };
+      }
+
+      // NOT the same lineage. Display is permitted ONLY via a SEPARATELY-DECLARED, owner-approved
+      // provenance transition whose SOURCE matches these reports EXACTLY, whose DESTINATION matches the
+      // loaded current application EXACTLY, and whose content digest is intact. Fail closed otherwise.
+      var appId = {
+        board: app.board, store: app.store, balanced_board_md5: app.balanced_board_md5,
+        release_version: app.release_version, engine_head: app.engine_head, register: app.register,
+        as_of_round: app.as_of_round, release: appRel,
+      };
+      var br = core.bridge(bundle, histId, appId, transition);
+      if (!br.ok) return { ok: false, state: "mismatch", why: br.why };
       if (appRel && appRel.as_of_round != null && lastRel.as_of_round != null && appRel.as_of_round !== lastRel.as_of_round)
         return { ok: false, state: "mismatch", why: "loaded as_of_round " + appRel.as_of_round + " != latest report as_of_round " + lastRel.as_of_round };
-      // all FIXED model identity pins + release_version match the loaded release
-      if (appRel) {
-        var sf = core.sameFixed(lastRel, appRel);
-        if (!sf.ok) return { ok: false, state: "mismatch", why: "release identity differs from the loaded release at " + sf.field };
-        return { ok: true, state: "ok" };
-      }
-      return { ok: true, state: "unanchored" };
+      return { ok: true, state: "bridged" };
     },
 
     /* Deterministic comparator: primary movement field (dir), then current value desc, then key asc. */
@@ -210,12 +385,23 @@
       var st = w && w.stamp;
       if (!st) return null;
       var rel = st.release || null;
+      // board/store/balanced/release_version are exposed in FULL by the stamp; engine_head/register may
+      // be truncated (the transition destination check tolerates a prefix). Prefer the full release
+      // contract (stamp.release) when present.
       return {
         board: (rel && rel.board) || st.srcmd5 || st.board,
         store: (rel && rel.store) || st.store_md5 || st.store,
+        balanced_board_md5: (rel && rel.balanced_board_md5) || st.balanced_board_md5,
+        release_version: (rel && rel.release_version) || st.releaseVersion || st.tag,
+        engine_head: (rel && rel.engine_head) || st.engine,
+        register: (rel && rel.register) || st.register,
+        as_of_round: (rel && rel.as_of_round != null) ? rel.as_of_round : st.asOfRound,
         release: rel,
       };
     }
+
+    /* The owner-approved provenance transition the browser loads alongside the working board + bundle. */
+    function transitionRecord() { return (typeof window !== "undefined" && window.__MATCHDAY_TRANSITION__) || null; }
 
     function availableRounds(b) { return (b && b.rounds) ? b.rounds.slice() : []; }
 
@@ -391,8 +577,10 @@
       MD.__moversHolder = holder;
       holder.innerHTML = "";
       const b = bundle();
-      // LINEAGE first: anchor the whole bundle to the loaded application before touching a report.
-      const lin = core.lineage(b, appIdentity());
+      // LINEAGE first: anchor the whole bundle to the loaded application before touching a report. A
+      // populated historical bundle on a DIFFERENT current release is bridged only by the owner-approved
+      // provenance transition (fail-closed inside core.lineage).
+      const lin = core.lineage(b, appIdentity(), transitionRecord());
       if (lin.state === "empty") { emptyState(holder, lin.why); return; }   // honest empty, not an alarm
       if (!lin.ok) { failState(holder, lin.why); return; }                  // out-of-lineage -> fail closed
       if (state.round == null) state.round = availableRounds(b)[availableRounds(b).length - 1];

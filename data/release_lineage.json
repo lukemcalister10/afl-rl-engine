@@ -13,5 +13,70 @@
   "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
   "_model_pins_source": "data/expected_boot.json (engine_head, rl_model, fv, config, register — fixed across weekly rounds; re-stamped only at a separately-approved valuation-changing release)",
   "_rc_note": "On RC integration (PR #127) this file is superseded by the RC manifest's verified release_version + balanced_board_md5 (and the final full-board pin once Leg E/F is accepted); the weekly updater copies those verified fields, it never synthesizes them.",
-  "_final_integration_2026_07_21": "RESOLVED in integration/v2.11-final-rc: the canonical switch-manifest closure (data/model_config.json now stamps all class-A switches incl. RL_PVC2/RL_LEGE/RL_LEGF=1 + data/release_contract.json), the Leg E/F forward-lens owner acceptance (Board B), and the final full-board regeneration + pinning (board 039ff8d4; expected_boot 'board') are all DONE. balanced_board_md5 06d8af60 STAYS the immutable present-lens baseline anchor — the final board preserves the present v + rankings exactly (0 movers). release_version below remains the present-lens-baseline lineage label; the governing release version is data/expected_boot.json 'release_version' (v2.11-final-rc1-PROVISIONAL)."
+  "_final_integration_2026_07_21": "RESOLVED in integration/v2.11-final-rc: the canonical switch-manifest closure (data/model_config.json now stamps all class-A switches incl. RL_PVC2/RL_LEGE/RL_LEGF=1 + data/release_contract.json), the Leg E/F forward-lens owner acceptance (Board B), and the final full-board regeneration + pinning (board 039ff8d4; expected_boot 'board') are all DONE. balanced_board_md5 06d8af60 STAYS the immutable present-lens baseline anchor — the final board preserves the present v + rankings exactly (0 movers). release_version below remains the present-lens-baseline lineage label; the governing release version is data/expected_boot.json 'release_version' (v2.11-final-rc1-PROVISIONAL).",
+  "release_transition": {
+    "_doc": "OWNER-APPROVED PROVENANCE TRANSITION (ITEM 408 Items 6-7, Option A; owner Luke McAlister via execution supervisor GPT Sol 5.6, 2026-07-23). The authorised Round 15-19 recovery is genuine production Movers history. These reports were generated under the earlier accepted PRESENT-LENS release (`source`); the application has since advanced to the current accepted release (`destination`). This record is the SEPARATELY-DECLARED, owner-approved bridge that lets the UI display the historical reports under the current release WITHOUT pretending they were generated under it, and WITHOUT rewriting any report. The browser validator (ui/app/movers.js core) requires this record — matching the historical reports EXACTLY on `source` and the loaded application EXACTLY on `destination`, with the reports' content digest intact — before it will display a historical bundle whose identity differs from the loaded release. Absent / partial / wrong / reversed / tampered => fail closed. It authorises NO score application (gate OFF), NO rewrite of history, and NO board-of-record / store / ledger / per-round-movers movement.",
+    "kind": "movers_release_transition",
+    "schema_version": 1,
+    "owner_approved": true,
+    "owner_ruling_id": "ITEM_408_items_6_7_option_A",
+    "owner_ruling": "The authorised Round 15-19 recovery counts as genuine production Movers history. Retain the R15-R19 production Movers reports; do not reset the production Movers bundle to empty; preserve the historical reports and implement a fail-closed provenance bridge to the current accepted release identity. No historical report may be silently rewritten.",
+    "authority": "Luke McAlister (owner) — sole STOP-1/STOP-2/merge authority; relayed by GPT Sol 5.6; recorded by the claude-code-builder build seat (no interpretive authority).",
+    "applies_to": {
+      "bundle": "ui/data/movers.js",
+      "rounds": [
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "historical_reports_digest": "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d",
+      "digest_algorithm": "sha256 over canonical JSON (recursively key-sorted; JS JSON.stringify number semantics, e.g. 59.0->\"59\") of {str(round): report} for `rounds`. Computed identically by engine/rl_after/ingestion/round_movers.canonical_reports_digest (Python) and ui/app/movers.js core.reportsDigest (browser/node)."
+    },
+    "source": {
+      "release_version": "v2.11-present-lens-baseline",
+      "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+      "engine_head": "dc7e34b0d50470897af237c638236868",
+      "rl_model": "4f776e073ea50548ebe017cdb2f06368",
+      "fv": "6a9a520fa2f8b4051e889d324d905cff0a37e592232cd5e68f0e0d9bdfeeec35",
+      "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+      "register": "652d83e87780e415a01a2de6d8b3cc57",
+      "board": "92a8f3a0528e5668029ca8056a841821",
+      "store": "f37d9716648cfe4382b8c6a24c4f064f",
+      "as_of_round": 19
+    },
+    "destination": {
+      "release_version": "v2.11-final-rc1-PROVISIONAL",
+      "balanced_board_md5": "1373e82471a81064ef96820f3db065df",
+      "engine_head": "7c452715dc98ac42723834d08021e9d2",
+      "rl_model": "4f776e073ea50548ebe017cdb2f06368",
+      "fv": "6a9a520fa2f8b4051e889d324d905cff0a37e592232cd5e68f0e0d9bdfeeec35",
+      "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+      "register": "652d83e87780e415a01a2de6d8b3cc57",
+      "board": "6f07f7cbe042f8e56426a01226c967c9",
+      "store": "f37d9716648cfe4382b8c6a24c4f064f",
+      "as_of_round": 19
+    },
+    "moved_by_transition": [
+      "release_version",
+      "balanced_board_md5",
+      "engine_head",
+      "board"
+    ],
+    "unchanged_across_transition": [
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "store"
+    ],
+    "invariants": {
+      "board_of_record_frozen": "6f07f7cbe042f8e56426a01226c967c9",
+      "store_unchanged": "f37d9716648cfe4382b8c6a24c4f064f",
+      "score_write_gate": "OFF",
+      "no_score_apply": true,
+      "historical_reports_immutable": true
+    }
+  }
 }

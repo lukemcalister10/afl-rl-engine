@@ -7,13 +7,15 @@ movers report. This script copies the RESULTING artifacts into the SESSION EVIDE
   * session_2026-07-20/live_scoring_catchup/movers_bundle_scratch.js   (the accumulated UI bundle)
   * session_2026-07-20/live_scoring_catchup/movers/                    (per-round movers_R{N}.json + .csv)
 
-IMPORTANT (corrective 2026-07-20, review directive A): this NO LONGER writes the production
-ui/data/movers.js. The production bundle SHIPS EMPTY (schema + release-baseline block only) until a
-real round is applied and finalized by the owner — a fresh Round-14 checkout must show the Movers view
-as unavailable / "no finalized round reports". These R15-R19 results are disposable scratch proof
-evidence (they begin from the superseded board 270a2c5f), NOT production state. This script also ASSERTS
-that the committed production bundle is still the empty initial bundle, so it can never re-introduce
-scratch data into production.
+IMPORTANT: this NEVER writes the production ui/data/movers.js. These R15-R19 results are DISPOSABLE
+scratch proof evidence on their OWN superseded lineage (they begin from the superseded board 270a2c5f),
+kept SEPARATE from production. The production bundle carries the OWNER-AUTHORISED R15-R19 recovery
+history (ITEM 408 Items 6-7, Option A — the recovery is genuine production Movers history, retained and
+bridged to the current accepted release by the owner-approved provenance transition; NOT reset to empty).
+This script ASSERTS that its scratch run did not touch production, that production still carries the
+owner-authorised R15-R19 history whose content digest matches the owner-approved provenance transition,
+and that the disposable scratch lineage stayed separate — so the scratch can never overwrite or erase
+the production history.
 
 Run:  python3 session_2026-07-20/live_scoring_catchup/generate_movers_bundle.py
 """
@@ -86,12 +88,29 @@ def main():
     assert obj['rounds'] == [15, 16, 17, 18, 19], obj['rounds']
     assert obj['integrity']['board_chain_ok'], "board-identity chain broken"
     assert obj['integrity'].get('baseline_anchor_ok'), "scratch bundle does not anchor to its baseline"
-    # ASSERT the production bundle is still the EMPTY initial bundle (never scratch data)
+    # ASSERT this scratch run did NOT touch production, and that production still carries the
+    # OWNER-AUTHORISED R15-R19 history (ITEM 408 Items 6-7, Option A). The scratch is DISPOSABLE evidence
+    # on its OWN superseded lineage (baseline board 270a2c5f); production is the recovery's own history
+    # (baseline board 2ab73a6f, terminating at the R19 store f37d9716) whose content digest is anchored by
+    # the owner-approved provenance transition. The scratch's existence must NEVER be used to erase or
+    # overwrite the production history.
     prod = MV.load_bundle(os.path.join(REPO, 'ui', 'data', 'movers.js'), repo_root=REPO)
-    assert prod['rounds'] == [], "production ui/data/movers.js must ship EMPTY (found %s)" % prod['rounds']
-    assert not prod.get('reports'), "production bundle must carry no reports"
-    print("PRODUCTION ui/data/movers.js is EMPTY (rounds=[]) — scratch evidence written to session paths only")
-    print("OK — R15-R19 movers evidence regenerated (scratch); production bundle untouched + empty")
+    assert prod['rounds'] == [15, 16, 17, 18, 19], \
+        "production must carry the owner-authorised R15-R19 history (found %s)" % prod['rounds']
+    trans_path = os.path.join(REPO, 'ui', 'data', 'movers_transition.js')
+    with open(trans_path) as tf:
+        ttext = tf.read()
+    trans = json.loads(ttext[ttext.index('{'):ttext.rindex('}') + 1])
+    prod_digest = MV.canonical_reports_digest(prod, [15, 16, 17, 18, 19])
+    assert trans.get('owner_approved') is True, "the provenance transition must be owner-approved"
+    assert trans['applies_to']['historical_reports_digest'] == prod_digest, \
+        "production movers content digest != owner-approved provenance transition (production may be corrupt)"
+    # the scratch (270a2c5f lineage) is a SEPARATE artifact and did not overwrite production history
+    assert prod['reports']['19']['board_md5_after'] != obj['reports']['19']['board_md5_after'], \
+        "the disposable scratch lineage must stay separate from the production history"
+    print("PRODUCTION ui/data/movers.js carries the owner-authorised R15-R19 history; digest %s matches "
+          "the owner-approved provenance transition; the disposable scratch stayed separate." % prod_digest)
+    print("OK — R15-R19 movers evidence regenerated (scratch); production history preserved + untouched")
     return 0
 
 

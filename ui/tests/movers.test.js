@@ -1,7 +1,9 @@
 /* UI — unit tests for the MOVERS view's pure logic (integrity, LINEAGE anchoring, sort, filters).
    Run:  node ui/tests/movers.test.js      (exit 0 = all pass, exit 1 = a failure)
    Exercises the EXACT dual-target functions the browser runs (ui/app/movers.js core). Validates the
-   committed PRODUCTION bundle (ui/data/movers.js — ships EMPTY) and the R15-R19 SCRATCH EVIDENCE bundle
+   committed PRODUCTION bundle (ui/data/movers.js — the owner-authorised R15-R19 history, ITEM 408 Items
+   6-7 Option A, bridged to the current accepted release by the owner-approved fail-closed provenance
+   transition ui/data/movers_transition.js) and the R15-R19 SCRATCH EVIDENCE bundle
    (session_2026-07-20/live_scoring_catchup/movers_bundle_scratch.js). Browser-integration + styling +
    player-link + screenshot evidence is produced by ui/tools/movers_ui_check.mjs (headless Chromium). */
 var M = require("../app/movers.js");
@@ -134,23 +136,102 @@ var s = core.summary(mkReport());
 eq([s.value_increase.key, s.value_decrease.key, s.rank_improve.key, s.rank_decline.key], ["a", "b", "a", "b"], "summary headline movers");
 
 function readBundle(p) { var t = fs.readFileSync(p, "utf8"); return JSON.parse(t.slice(t.indexOf("{"), t.lastIndexOf("}") + 1)); }
+function clone(o) { return JSON.parse(JSON.stringify(o)); }
 
-// ---- PRODUCTION bundle ships EMPTY (directive A) --------------------------------------------
+// ---- PRODUCTION bundle: owner-authorised R15-R19 history + fail-closed provenance transition ------
+// ITEM 408 Items 6-7, Option A (owner ruling): the authorised R15-R19 recovery is GENUINE production
+// Movers history — retained, NOT reset to empty — and displayed under the current accepted release via
+// a SEPARATELY-DECLARED, owner-approved provenance transition. Positive + negative controls below.
 var prodPath = path.join(__dirname, "..", "data", "movers.js");
-if (fs.existsSync(prodPath)) {
+var transPath = path.join(__dirname, "..", "data", "movers_transition.js");
+var workingPath = path.join(__dirname, "..", "data", "board_view_working.js");
+if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(workingPath)) {
   var prod = readBundle(prodPath);
-  eq(prod.rounds, [], "production ui/data/movers.js ships EMPTY (no finalized rounds)");
-  ok(prod.reports && Object.keys(prod.reports).length === 0, "production bundle carries no reports");
-  ok(prod.baseline && typeof prod.baseline.board === "string", "production bundle carries a release-baseline block");
-  ok(prod.baseline.release_identity && prod.baseline.release_identity.balanced_board_md5 === "06d8af60b679a12db07c064c60c065f9",
-     "production baseline carries the fixed present-lens baseline balanced_board_md5 (06d8af60)");
-  // honest empty state when the loaded app matches the baseline; fail-closed when it does not
-  var pApp = { board: prod.baseline.board, store: prod.baseline.store, release: prod.baseline.release_identity };
-  eq(core.lineage(prod, pApp).state, "empty", "production bundle renders the honest EMPTY state on its lineage");
-  eq(core.lineage(prod, { board: "06d8af60b679a12db07c064c60c065f9", store: "x", release: null }).state, "mismatch",
-     "production empty bundle fails closed when loaded against a different board");
+  var trans = readBundle(transPath);
+  var stamp = readBundle(workingPath).stamp;
+  // the loaded current application identity, exactly as ui/app/movers.js appIdentity() derives it
+  var rel = stamp.release || null;
+  var curApp = {
+    board: (rel && rel.board) || stamp.srcmd5 || stamp.board,
+    store: (rel && rel.store) || stamp.store_md5 || stamp.store,
+    balanced_board_md5: (rel && rel.balanced_board_md5) || stamp.balanced_board_md5,
+    release_version: (rel && rel.release_version) || stamp.releaseVersion || stamp.tag,
+    engine_head: (rel && rel.engine_head) || stamp.engine,
+    register: (rel && rel.register) || stamp.register,
+    as_of_round: (rel && rel.as_of_round != null) ? rel.as_of_round : stamp.asOfRound,
+    release: rel,
+  };
+
+  // POSITIVE — the populated production bundle carries exactly R15-R19
+  eq(prod.rounds, [15, 16, 17, 18, 19], "production ui/data/movers.js carries exactly R15-R19 (owner-authorised history)");
+  ok(prod.reports && Object.keys(prod.reports).length === 5, "production bundle carries five reports (one per round)");
+  // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
+  var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
+  [15, 16, 17, 18, 19].forEach(function (r) {
+    var rep = prod.reports[String(r)];
+    if (rep.board_md5_before !== prevB || rep.source_store_md5_before !== prevS) chainOk = false;
+    prevB = rep.board_md5_after; prevS = rep.source_store_md5_after;
+  });
+  ok(chainOk, "complete historical board/store chain R14->R19 is exact + continuous");
+  // the latest report terminates at the accepted R19 materialised store of the recovery
+  ok(prod.reports["19"].source_store_md5_after === "f37d9716648cfe4382b8c6a24c4f064f",
+     "latest report terminates at the accepted R19 store f37d9716 (recovery materialisation)");
+  // the transition is the owner-approved bridge and its content digest matches the restored reports
+  ok(trans.kind === "movers_release_transition" && trans.owner_approved === true,
+     "transition record is an owner-approved movers_release_transition");
+  eq(trans.applies_to.historical_reports_digest, core.reportsDigest(prod, [15, 16, 17, 18, 19]),
+     "transition digest matches the restored R15-R19 reports byte-for-byte (content anchor)");
+
+  // POSITIVE — the owner-approved transition permits the exact historical lineage under the current app
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
+     "owner-approved transition bridges R15-R19 to the current accepted release (state=bridged)");
+  // the current application identity EQUALS the transition destination
+  ok(core.matchAppToDest(trans.destination, curApp).ok, "current application identity == transition destination");
+
+  // NEGATIVE CONTROLS — each fails closed
+  ok(!core.lineage(prod, curApp, null).ok, "the same bundle WITHOUT the transition fails closed");
+  var tSrc = clone(trans); tSrc.source.balanced_board_md5 = "ffffffffffffffffffffffffffffffff";
+  ok(!core.lineage(prod, curApp, tSrc).ok, "wrong transition SOURCE fails closed");
+  var tDst = clone(trans); tDst.destination.board = "ffffffffffffffffffffffffffffffff";
+  ok(!core.lineage(prod, curApp, tDst).ok, "wrong transition DESTINATION fails closed");
+  var tRev = clone(trans); var sw = tRev.source; tRev.source = tRev.destination; tRev.destination = sw;
+  ok(!core.lineage(prod, curApp, tRev).ok, "REVERSED transition (source<->destination) fails closed");
+  var tNo = clone(trans); tNo.owner_approved = false;
+  ok(!core.lineage(prod, curApp, tNo).ok, "a transition that is not owner-approved fails closed");
+  var bId = clone(prod); bId.reports["18"].release_identity.engine_head = "deadbeefdeadbeefdeadbeefdeadbeef";
+  ok(!core.lineage(bId, curApp, trans).ok, "a modified historical report IDENTITY fails closed");
+  var bPl = clone(prod); bPl.reports["17"].players[3].value_change += 1;
+  ok(!core.lineage(bPl, curApp, trans).ok, "modified player MOVEMENT data fails closed (content digest)");
+  var bCh = clone(prod); bCh.reports["17"].board_md5_before = "deadbeef";
+  ok(!core.lineage(bCh, curApp, trans).ok, "a modified board/store CHAIN fails closed");
+  var bUn = clone(prod);
+  [15, 16, 17, 18, 19].forEach(function (r) { bUn.reports[String(r)].release_identity.balanced_board_md5 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; });
+  bUn.baseline.release_identity.balanced_board_md5 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+  ok(!core.lineage(bUn, curApp, trans).ok, "an UNRELATED release lineage fails closed (transition cannot authorise it)");
+  var appW = clone(curApp); appW.board = "ffffffffffffffffffffffffffffffff";
+  ok(!core.lineage(prod, appW, trans).ok, "current application board != transition destination fails closed");
+
+  // FUTURE APPEND — a next-round report appends under the then-current governing identity WITHOUT
+  // altering R15-R19 (the historical content digest is unchanged; the future report carries destination).
+  var digestBefore = core.reportsDigest(prod, [15, 16, 17, 18, 19]);
+  var appended = clone(prod);
+  var last19 = appended.reports["19"];
+  appended.reports["20"] = {
+    kind: "weekly_movers_report", submitted_round: 20, previous_round: 19,
+    board_md5_before: last19.board_md5_after, board_md5_after: "20b0ard00000000000000000000000000",
+    source_store_md5_before: last19.source_store_md5_after, source_store_md5_after: "20st0re00000000000000000000000000",
+    release_identity: clone(trans.destination), players: [], views: {}, player_count: 0,
+  };
+  appended.rounds = [15, 16, 17, 18, 19, 20];
+  eq(core.reportsDigest(appended, [15, 16, 17, 18, 19]), digestBefore,
+     "future report append preserves all R15-R19 reports byte-for-byte (historical digest unchanged)");
+  ok(appended.reports["20"].release_identity.release_version === trans.destination.release_version,
+     "the appended future report carries the then-current governing identity (destination)");
+
+  // NO score application: the movers module is pure view/lineage logic (no score-apply surface at all).
+  eq(Object.keys(M).sort(), ["core", "makeView"], "movers module exports only pure view logic (applies NO scores)");
 } else {
-  console.log("  [skip] production ui/data/movers.js not present");
+  console.log("  [skip] production movers bundle / transition / working board not present");
 }
 
 // ---- SCRATCH EVIDENCE bundle (R15-R19) — preserved under the session proof path -------------

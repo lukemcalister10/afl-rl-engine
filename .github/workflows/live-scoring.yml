@@ -146,6 +146,11 @@ jobs:
           set -euo pipefail
           node ui/tests/movers.test.js
 
+      - name: Movers provenance transition (owner-approved bridge; source/dest identity + content digest + append preservation; gate OFF)
+        run: |
+          set -euo pipefail
+          python3 engine/rl_after/ingestion/test_movers_transition.py
+
       - name: Movers acceptance proof (committed R15-R19 reports — one-per-round, chain, coverage, no-overwrite)
         run: |
           set -euo pipefail

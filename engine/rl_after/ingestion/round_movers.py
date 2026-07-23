@@ -36,6 +36,7 @@ Artifacts (finalization, re-derivable, OUTSIDE the store transaction):
 NO valuation, NO store write.
 """
 import csv
+import hashlib
 import io
 import json
 import os
@@ -49,6 +50,52 @@ SCHEMA_VERSION = 1
 POS_LABEL = {'MID': 'Mid', 'RUC': 'Ruck', 'KEY_FWD': 'Key Fwd', 'GEN_FWD': 'Fwd',
             'KEY_DEF': 'Key Def', 'GEN_DEF': 'Def'}
 BASELINE_ROUND = 14   # the accepted board-of-record round; no finalized transactions precede it
+
+
+# ---- canonical content digest of a set of movers reports -------------------------------------------
+# The provenance transition (data/release_lineage.json `release_transition` + ui/data/movers_transition.js,
+# validated in ui/app/movers.js `core`) anchors the historical R15-R19 reports by a SHA-256 over a
+# CANONICAL serialization of exactly those reports, so ANY modification of a report — an identity field
+# OR a player's movement value — is detected and fails closed. The canonicalization mirrors the browser
+# validator's JS `JSON.stringify` semantics EXACTLY (recursively key-sorted; integral floats emitted as
+# integers, e.g. 59.0 -> "59", as JS does) so the Python emitter and the browser/node validator compute
+# the IDENTICAL digest for the same reports. This is verified cross-language by test_movers_transition.py.
+def _js_number(x):
+    """Render a number as JS `JSON.stringify` does (an integral float loses its `.0`)."""
+    if isinstance(x, bool):
+        return 'true' if x else 'false'
+    if isinstance(x, int):
+        return str(x)
+    f = float(x)
+    if f == int(f) and abs(f) < 1e16:
+        return str(int(f))
+    return repr(f)
+
+
+def _js_canon(v):
+    """Deterministic canonical JSON matching the browser validator's `core.canonJSON`."""
+    if v is None:
+        return 'null'
+    if isinstance(v, bool):
+        return 'true' if v else 'false'
+    if isinstance(v, (int, float)):
+        return _js_number(v)
+    if isinstance(v, str):
+        return json.dumps(v, ensure_ascii=False)
+    if isinstance(v, list):
+        return '[' + ','.join(_js_canon(e) for e in v) + ']'
+    if isinstance(v, dict):
+        return '{' + ','.join(json.dumps(k, ensure_ascii=False) + ':' + _js_canon(v[k])
+                              for k in sorted(v.keys())) + '}'
+    raise TypeError('non-canonicalizable %r' % type(v))
+
+
+def canonical_reports_digest(bundle, rounds):
+    """`sha256:<hex>` over the canonical form of exactly {str(round): report} for `rounds`. Byte-for-byte
+    equal to the browser/node validator's `core.reportsDigest(bundle, rounds)`."""
+    reports = (bundle or {}).get('reports', {}) or {}
+    subset = {str(r): reports.get(str(r)) for r in rounds}
+    return 'sha256:' + hashlib.sha256(_js_canon(subset).encode('utf-8')).hexdigest()
 
 
 def _label_pos(code):
