@@ -1,6 +1,6 @@
 {
-  "passed": 28,
-  "total": 28,
+  "passed": 46,
+  "total": 46,
   "results": [
     {
       "name": "P1 R19 no-op reproduction: sibling rebuilds to 1373e824 / 804 / 760253 / 9542",
@@ -56,6 +56,21 @@
       "name": "P2 release_contract check PASS on the fully-advanced tree",
       "ok": true,
       "detail": ""
+    },
+    {
+      "name": "P2/#7 manifest target count == collected count",
+      "ok": true,
+      "detail": "manifest=15 collected=15 declared=15"
+    },
+    {
+      "name": "P2/#7 collected count == replacement-event count (== COMMIT_VERIFIED replaced)",
+      "ok": true,
+      "detail": "collected=15 replaced=15 commit_verified=15"
+    },
+    {
+      "name": "P2/#7 every final live target md5 == its validated staged payload",
+      "ok": true,
+      "detail": "staged_md5_entries=15 of 15"
     },
     {
       "name": "P3 injected sibling-GENERATION failure aborts pre-commit",
@@ -141,6 +156,81 @@
       "name": "P9 staged_apply.apply_snapshot folds in the sibling (_stage_sibling) \u2014 no launcher can bypass",
       "ok": true,
       "detail": ""
+    },
+    {
+      "name": "P10/#1 removing board_view_public before validation aborts pre-commit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P10/#1 NO live target changed",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P11/#2 removing a declared target before collection refuses (mandatory-target invariant)",
+      "ok": true,
+      "detail": "MANDATORY TARGET MISSING before commit: declared target 'sibling_reference_vecto"
+    },
+    {
+      "name": "P11/#2 NO partial commit \u2014 every live target unchanged",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P12/#3 reference-vector value corruption (board id retained) -> assert_current FAILS",
+      "ok": true,
+      "detail": "sibling set is INCOHERENT (['reference vector sum_v != sum(vector.values())']) \u2014 run `sibl"
+    },
+    {
+      "name": "P12/#3 verify names the reference-vector arithmetic invariant",
+      "ok": true,
+      "detail": "['reference vector sum_v != sum(vector.values())']"
+    },
+    {
+      "name": "P13/#4 FV-oracle active drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle active != contract present_lens active']"
+    },
+    {
+      "name": "P13/#4 FV-oracle sum drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sum_v != contract present_lens total']"
+    },
+    {
+      "name": "P13/#4 FV-oracle sheezel drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sheezel != reference vector Sheezel']"
+    },
+    {
+      "name": "P13/#4 FV-oracle reference-filename drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle reference-vector filename != regenerated reference vector']"
+    },
+    {
+      "name": "P14/#5 working board-view corruption fails the coherence gate",
+      "ok": true,
+      "detail": "['working balanced_board_md5 stamp != 1373e824']"
+    },
+    {
+      "name": "P14/#5 public board-view corruption fails the coherence gate",
+      "ok": true,
+      "detail": "['public rows disagree with working on name/value for 1 player(s)']"
+    },
+    {
+      "name": "P15/#6 view-only corruption makes the live gate STALE (not silently current)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P15/#6 standalone reconcile REPAIRS the view (changed, NOT a no-op)",
+      "ok": true,
+      "detail": "changed=True no_op=False"
+    },
+    {
+      "name": "P15/#6 the live gate is coherent again after repair",
+      "ok": true,
+      "detail": "fails=[]"
     }
   ]
 }

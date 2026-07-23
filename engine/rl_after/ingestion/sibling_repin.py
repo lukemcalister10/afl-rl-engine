@@ -52,6 +52,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -188,6 +189,87 @@ def _extract_fv_board_md5(fv_src):
     marker = "BOARD_MD5_GOOD = '"
     i = fv_src.index(marker) + len(marker)
     return fv_src[i:fv_src.index("'", i)]
+
+
+def _extract_fv_int(fv_src, field):
+    """Parse the FV oracle's `…get('<field>') == <int>` build-and-compare aggregate assertion."""
+    m = re.search(r"'%s'\)\s*==\s*(\d+)" % re.escape(field), fv_src)
+    if not m:
+        raise SiblingRepinError("FV oracle: `'%s') == <int>` assertion not found" % field)
+    return int(m.group(1))
+
+
+def _fv_oracle_aggregates(fv_src):
+    """The full build-and-compare tuple the FV oracle asserts — the accepted board id, the DERIVED active
+    count, the present-v sum, the Sheezel value and the regenerated reference-vector filename. A drift in
+    ANY of them (even with a correct board id) is therefore detectable (blocking correction 2)."""
+    md5 = _extract_fv_board_md5(fv_src)
+    ref = _reference_vector_name(md5)
+    return {"board_md5": md5, "active": _extract_fv_int(fv_src, "active"),
+            "sum_v": _extract_fv_int(fv_src, "sum_v"), "sheezel": _extract_fv_int(fv_src, "sheezel"),
+            "reference_vector": ref, "reference_vector_present": ref in fv_src}
+
+
+def _board_view_coherence(root, *, balanced_md5, canonical_board, store, as_of_round, release_version,
+                          canonical_active=None):
+    """Return a list of incoherence strings for the TWO board-view bundles under `root` (empty == coherent).
+    Covers the FULL board-view set (blocking correction 2):
+      - both working and public bundles exist and parse;
+      - the working stamp's balanced-board, canonical-board, store, round and release identities agree with
+        the supplied (staged manifest / built sibling) values;
+      - the public bundle's player count and name/value rows agree with the working bundle (and, when given,
+        the staged canonical board's active list);
+      - the public bundle remains LEAK-FREE — no player identity (key/stable_player_id), no provenance
+        stamp (srcmd5/store/board/balanced/register/guard5) — the two-tier UI law."""
+    wp = os.path.join(root, BOARD_VIEW_WORKING_REL)
+    pp = os.path.join(root, BOARD_VIEW_PUBLIC_REL)
+    fails = []
+    if not os.path.exists(wp):
+        fails.append("working board view missing")
+    if not os.path.exists(pp):
+        fails.append("public board view missing")
+    if fails:
+        return fails
+    try:
+        w = _parse_bundle(wp)
+    except (OSError, ValueError) as e:
+        return ["working board view unparseable: %s" % e]
+    try:
+        p = _parse_bundle(pp)
+    except (OSError, ValueError) as e:
+        return ["public board view unparseable: %s" % e]
+    st = w.get("stamp", {})
+    if st.get("balanced_board_md5") != balanced_md5:
+        fails.append("working balanced_board_md5 stamp != %s" % str(balanced_md5)[:8])
+    if str(st.get("board", ""))[:8] != str(canonical_board)[:8]:
+        fails.append("working canonical board stamp != %s" % str(canonical_board)[:8])
+    if str(st.get("store", ""))[:8] != str(store)[:8]:
+        fails.append("working store stamp != %s" % str(store)[:8])
+    if as_of_round is not None and st.get("asOfRound") != as_of_round:
+        fails.append("working asOfRound stamp %s != %s" % (st.get("asOfRound"), as_of_round))
+    if release_version is not None and st.get("releaseVersion") != release_version:
+        fails.append("working releaseVersion stamp %s != %s" % (st.get("releaseVersion"), release_version))
+    wr, pr = w.get("players", []), p.get("players", [])
+    if len(pr) != len(wr):
+        fails.append("public player count %d != working %d" % (len(pr), len(wr)))
+    else:
+        mism = sum(1 for a, b in zip(wr, pr) if a.get("name") != b.get("name") or a.get("v") != b.get("v"))
+        if mism:
+            fails.append("public rows disagree with working on name/value for %d player(s)" % mism)
+    if canonical_active is not None:
+        if len(pr) != len(canonical_active):
+            fails.append("public player count %d != canonical active %d" % (len(pr), len(canonical_active)))
+        else:
+            mism = sum(1 for a, b in zip(canonical_active, pr)
+                       if a.get("name") != b.get("name") or a.get("v") != b.get("v"))
+            if mism:
+                fails.append("public rows disagree with the canonical board for %d player(s)" % mism)
+    if any(k in (row or {}) for row in pr for k in ("key", "stable_player_id")):
+        fails.append("public bundle leaks a player identity (key/stable_player_id)")
+    if any(k in (p.get("stamp") or {}) for k in ("srcmd5", "store", "store_md5", "board", "board_md5",
+                                                 "balanced_board_md5", "register", "guard5")):
+        fails.append("public bundle stamp leaks provenance (srcmd5/store/board/register/guard5)")
+    return fails
 
 
 def _reference_vector_name(board_md5):
@@ -356,10 +438,38 @@ class RepinPlan:
         self.changed_map["fv_test"] = (cur_md5 != new_md5 or cur_active != new_active
                                        or cur_sumv != new_sumv or cur_sheez != new_sheez)
 
+        # --- board-view coherence (blocking correction 2): a view-only corruption (stale/tampered working
+        #     OR public bundle) must NOT read as a no-op. `changed` here forces a reconcile that regenerates
+        #     and re-commits both bundles even when the manifest/contract/FV board id are already current. ---
+        self.changed_map["board_view"] = bool(_board_view_coherence(
+            self.repo_root, balanced_md5=new_md5, canonical_board=boot.get("board"),
+            store=boot.get("store"), as_of_round=boot.get("as_of_round"),
+            release_version=boot.get("release_version")))
+
+        # --- sidecar coherence (blocking correction 2): a sidecar-only aggregate/reference/seal drift must
+        #     likewise force a repair, not a no-op. ---
+        want_sc = {"source_store_md5": sib["source_store_md5"], "balanced_board_md5": new_md5,
+                   "active": sib["active"], "present_value_total": sib["sum_v"],
+                   "harry_sheezel": sib["sheezel"], "reference_vector": _reference_vector_name(new_md5),
+                   "contract_sha256": self._contract_seal}
+        sc_live = None
+        scp = self._p(SIDECAR_REL)
+        if os.path.exists(scp):
+            try:
+                sc_live = _read_json(scp)
+            except (OSError, ValueError):
+                sc_live = None
+        self.changed_map["sidecar"] = (sc_live is None
+                                       or any(sc_live.get(k) != v for k, v in want_sc.items()))
+
         self.changed = any(self.changed_map.values())
 
     def changed_targets(self):
-        return {n: self.targets[n] for n, c in self.changed_map.items() if c}
+        # ONLY the file-byte targets carried in self.targets (manifest / release_contract / reference_vector
+        # / fv_test). The board_view + sidecar coherence flags also live in changed_map but are NOT
+        # pre-computed byte targets — reconcile regenerates the board view via extract_board_view and writes
+        # the sidecar from sidecar_doc — so they are committed separately and must be skipped here.
+        return {n: self.targets[n] for n, c in self.changed_map.items() if c and n in self.targets}
 
     def sidecar_doc(self, generated_at_commit=None):
         return {
@@ -535,7 +645,9 @@ class SiblingRepin:
             validation = self._validate_overlay(plan, overlay)
 
             commit_targets = dict(changed)
-            if plan.changed_map.get("manifest"):        # the balanced pin moved -> board view must update
+            # the balanced pin moved OR a view-only corruption was detected -> both board-view bundles are
+            # regenerated on the overlay and committed (blocking correction 2: view-only repair, not a no-op).
+            if plan.changed_map.get("manifest") or plan.changed_map.get("board_view"):
                 for name, rel in (("board_view_working", BOARD_VIEW_WORKING_REL),
                                   ("board_view_public", BOARD_VIEW_PUBLIC_REL)):
                     commit_targets[name] = (rel, _read_bytes(os.path.join(overlay, rel)))
@@ -736,32 +848,104 @@ class SiblingRepin:
         return {"current": True, "mode": "coherence"}
 
     def verify(self):
-        """Assert the LIVE siblings are internally coherent (no build): expected_boot / release_contract /
-        sidecar / reference-vector / FV-test all agree, and release_contract check passes."""
+        """Assert the LIVE siblings are internally coherent (no build) across the FULL sibling set
+        (blocking correction 2). Fails on:
+          - contract identities / present_lens balanced pin drift or a self-seal mismatch;
+          - reference vector: board-id drift, active != len(vector), sum_v != sum(vector.values()), OR
+            active/sum disagreement with the sealed present-lens (catches a value changed under a correct id);
+          - FV oracle: board-id, active, sum, Sheezel OR regenerated-reference-filename drift;
+          - EITHER board-view bundle stale/corrupt (working stamps, public parity, public leak-freedom);
+          - sidecar: store / balanced / active / total / Sheezel / reference-filename / contract-seal drift;
+          - release_contract check failing."""
         boot = _read_json(self._p(EXPECTED_BOOT_REL))
         contract = _read_json(self._p(RELEASE_CONTRACT_REL))
         bal = boot.get("balanced_board_md5")
         fails = []
-        if contract["identities"].get("balanced_board_md5") != bal:
+        ids = contract.get("identities", {})
+        plb = contract.get("present_lens_baseline", {})
+        if ids.get("balanced_board_md5") != bal:
             fails.append("contract identities.balanced_board_md5 != expected_boot")
-        if contract["present_lens_baseline"].get("balanced_board_md5") != bal:
+        if plb.get("balanced_board_md5") != bal:
             fails.append("contract present_lens_baseline.balanced_board_md5 != expected_boot")
         rc_tool = _load_module("sr_rc_verify", self._p(RELEASE_CONTRACT_TOOL_REL))
         if contract.get("contract_sha256") != rc_tool.contract_hash(contract):
             fails.append("contract self-seal mismatch")
-        ref = self._p(os.path.join(FV_FIX_REL, _reference_vector_name(str(bal))))
+        plb_active, plb_total = plb.get("active"), plb.get("present_value_total")
+
+        # reference vector — board id + internal arithmetic + agreement with the sealed present-lens.
+        ref_name = _reference_vector_name(str(bal))
+        ref = self._p(os.path.join(FV_FIX_REL, ref_name))
+        ref_sheezel = None
         if not os.path.exists(ref):
             fails.append("reference vector for %s missing" % str(bal)[:8])
-        elif _read_json(ref).get("board_md5") != bal:
-            fails.append("reference vector board_md5 != balanced pin")
+        else:
+            try:
+                rv = _read_json(ref)
+            except (OSError, ValueError) as e:
+                rv = None
+                fails.append("reference vector unparseable: %s" % e)
+            if rv is not None:
+                vec = rv.get("vector") or {}
+                ref_sheezel = vec.get("harry-sheezel")
+                if rv.get("board_md5") != bal:
+                    fails.append("reference vector board_md5 != balanced pin")
+                if rv.get("active") != len(vec):
+                    fails.append("reference vector active %s != len(vector) %d" % (rv.get("active"), len(vec)))
+                if rv.get("sum_v") != sum(int(x) for x in vec.values()):
+                    fails.append("reference vector sum_v != sum(vector.values())")
+                if rv.get("active") != plb_active:
+                    fails.append("reference vector active != contract present_lens active")
+                if rv.get("sum_v") != plb_total:
+                    fails.append("reference vector sum_v != contract present_lens total")
+
+        # FV oracle — board id + active + sum + Sheezel + regenerated reference filename.
         fv_src = open(self._p(FV_TEST_REL), encoding="utf-8").read()
-        if _extract_fv_board_md5(fv_src) != bal:
-            fails.append("FV test BOARD_MD5_GOOD != balanced pin")
+        try:
+            fo = _fv_oracle_aggregates(fv_src)
+            if fo["board_md5"] != bal:
+                fails.append("FV oracle BOARD_MD5_GOOD != balanced pin")
+            if fo["active"] != plb_active:
+                fails.append("FV oracle active != contract present_lens active")
+            if fo["sum_v"] != plb_total:
+                fails.append("FV oracle sum_v != contract present_lens total")
+            if ref_sheezel is not None and fo["sheezel"] != ref_sheezel:
+                fails.append("FV oracle sheezel != reference vector Sheezel")
+            if not fo["reference_vector_present"] or fo["reference_vector"] != ref_name:
+                fails.append("FV oracle reference-vector filename != regenerated reference vector")
+        except SiblingRepinError as e:
+            fails.append("FV oracle unreadable: %s" % e)
+
+        # both board-view bundles — working stamps + public parity + public leak-freedom.
+        try:
+            live_board = _read_json(self._p(BOARD_OF_RECORD_REL))
+            canon_active = live_board.get("active") if isinstance(live_board, dict) else live_board
+        except (OSError, ValueError):
+            canon_active = None
+        fails.extend(_board_view_coherence(
+            self.repo_root, balanced_md5=bal, canonical_board=boot.get("board"), store=boot.get("store"),
+            as_of_round=boot.get("as_of_round"), release_version=boot.get("release_version"),
+            canonical_active=canon_active))
+
+        # sidecar — full aggregate + contract seal.
         sc = self._load_sidecar()
         if not sc:
             fails.append("provenance sidecar missing")
-        elif sc.get("balanced_board_md5") != bal:
-            fails.append("sidecar balanced_board_md5 != expected_boot")
+        else:
+            if sc.get("source_store_md5") != _md5_file(self._p(STORE_REL)):
+                fails.append("sidecar source_store_md5 != current store")
+            if sc.get("balanced_board_md5") != bal:
+                fails.append("sidecar balanced_board_md5 != expected_boot")
+            if sc.get("active") != plb_active:
+                fails.append("sidecar active != contract present_lens active")
+            if sc.get("present_value_total") != plb_total:
+                fails.append("sidecar present_value_total != contract present_lens total")
+            if ref_sheezel is not None and sc.get("harry_sheezel") != ref_sheezel:
+                fails.append("sidecar harry_sheezel != reference vector Sheezel")
+            if sc.get("reference_vector") != ref_name:
+                fails.append("sidecar reference_vector filename != regenerated reference vector")
+            if sc.get("contract_sha256") != contract.get("contract_sha256"):
+                fails.append("sidecar contract_sha256 != live contract seal")
+
         env = dict(os.environ)
         env["RL_CONFIG_MODE"] = "gate"
         p = subprocess.run([sys.executable, self._p(RELEASE_CONTRACT_TOOL_REL), "check"],

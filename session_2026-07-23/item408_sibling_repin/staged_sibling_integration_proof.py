@@ -25,6 +25,17 @@ OFF (armed IN-PROCESS against a throwaway scratch only).
                                       (no literal 804).
   P9  launchers route through Python   weekly_update.sh, weekly_update.bat and round_entry.py all reach the same
                                       staged_apply transaction (the invariant cannot be bypassed by any launcher).
+
+Second blocking-correction controls (mandatory transaction targets + genuinely complete sibling coherence).
+The P1-P9 set (28 checks) is RETAINED; these are ADDED:
+  P2/#7  mandatory-target accounting    on the successful advance: manifest target count == collected count ==
+                                        replacement-event count; every final live md5 == its validated staged md5.
+  P10/#1 public dropped pre-validation  removing board_view_public before validation -> pre-commit refusal; no live change.
+  P11/#2 declared target dropped        removing any declared target before collection -> mandatory-target refusal; no partial commit.
+  P12/#3 reference value corruption      one refvec value changed (board id kept) -> assert_current fails on the arithmetic.
+  P13/#4 FV-oracle drift                 active / sum / Sheezel / reference-filename each drifted (board id kept) -> each fails its own invariant.
+  P14/#5 board-bundle corruption         working and public bundles each corrupted -> each fails the coherence gate.
+  P15/#6 view-only repair, not no-op     a view-only corruption -> standalone reconcile REPAIRS it (changed, not no_op).
 """
 import copy
 import json
@@ -100,6 +111,22 @@ def rc_check(scr):
                           capture_output=True, text=True, env=env, cwd=scr).returncode == 0
 
 
+def _bundle_io(path):
+    """Split a `window.__X__ = {...};` bundle into (prefix, obj, suffix) so a corruption round-trips."""
+    s = open(path, encoding="utf-8").read()
+    i, j = s.index("{"), s.rindex("}")
+    return s[:i], json.loads(s[i:j + 1]), s[j + 1:]
+
+
+def _bundle_write(path, pre, obj, suf):
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(pre + json.dumps(obj) + suf)
+
+
+def journal_events(txn_dir):
+    return [json.loads(l) for l in open(os.path.join(txn_dir, "journal.jsonl")) if l.strip()]
+
+
 # ================================================================================ P1
 def p1_noop_reproduction():
     sib = SR.build_sibling(REPO)
@@ -156,6 +183,28 @@ def p2_single_transaction_advance():
                "store" in tgt_names and "sibling_reference_vector" in tgt_names and "sibling_sidecar" in tgt_names,
                "targets=%d" % len(tgt_names))
         record("P2 release_contract check PASS on the fully-advanced tree", rc_check(scr))
+
+        # --- control #7 (2nd blocking correction): mandatory-target accounting on a successful advance ---
+        events = journal_events(res.txn_dir)
+        sc_ev = next((e for e in events if e.get("event") == "STAGED_COLLECTED"), None)
+        cv_ev = next((e for e in events if e.get("event") == "COMMIT_VERIFIED"), None)
+        n_replaced = sum(1 for e in events if e.get("event") == "REPLACED")
+        collected = sc_ev.get("collected") if sc_ev else None
+        record("P2/#7 manifest target count == collected count",
+               len(tgt_names) == collected == (sc_ev.get("declared") if sc_ev else None),
+               "manifest=%d collected=%s declared=%s" % (len(tgt_names), collected,
+                                                         sc_ev.get("declared") if sc_ev else None))
+        record("P2/#7 collected count == replacement-event count (== COMMIT_VERIFIED replaced)",
+               collected == n_replaced and cv_ev is not None and cv_ev.get("replaced") == n_replaced
+               and cv_ev.get("declared") == len(tgt_names),
+               "collected=%s replaced=%s commit_verified=%s" % (collected, n_replaced,
+                                                               cv_ev and cv_ev.get("replaced")))
+        smd5 = man.get("staged_md5") or {}
+        live_md5_ok = (bool(smd5) and len(smd5) == len(tgt_names)
+                       and all(smd5.get(t["name"]) == FI.md5(os.path.join(scr, t["live"]))
+                               for t in man["targets"]))
+        record("P2/#7 every final live target md5 == its validated staged payload",
+               live_md5_ok, "staged_md5_entries=%d of %d" % (len(smd5), len(tgt_names)))
     finally:
         shutil.rmtree(scr, ignore_errors=True)
 
@@ -329,6 +378,180 @@ def p9_launchers_route_through_python():
            "_stage_sibling" in open(os.path.join(REPO, "engine/rl_after/ingestion/staged_apply.py")).read())
 
 
+# ================================================================================ P10 (control #1)
+def p10_public_removed_before_validation():
+    """Remove board_view_public.js AFTER sibling staging but BEFORE validation -> pre-commit refusal
+    (the full-coherence staged validation now checks the public bundle), every live target unchanged."""
+    scr = sib_scratch("pubrm")
+    try:
+        before = state_of(scr, CANON_RELS + FIXED_SIB_RELS)
+        FI.arm()
+        raised = False
+        try:
+            ap = SA.StagedRoundApplier.for_repo(scr)
+            _orig = ap._stage_sibling
+            def wrapped(ws, *a, **k):
+                r = _orig(ws, *a, **k)
+                os.remove(os.path.join(ws, SR.BOARD_VIEW_PUBLIC_REL))
+                return r
+            ap._stage_sibling = wrapped
+            ap.apply_snapshot(snapshot_for(scr, 20), generated_at=GEN)
+        except (SA.StagedValidationError, RuntimeError):
+            raised = True
+        finally:
+            FI.disarm()
+        after = state_of(scr, CANON_RELS + FIXED_SIB_RELS)
+        changed = [k for k in before if before[k] != after[k]]
+        record("P10/#1 removing board_view_public before validation aborts pre-commit", raised)
+        record("P10/#1 NO live target changed", not changed and not new_reference_vectors(scr),
+               "changed=%s" % changed)
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+# ================================================================================ P11 (control #2)
+def p11_target_removed_before_collection():
+    """Remove one declared target from the validated workspace just before collection -> the mandatory-
+    target invariant refuses in _collect_staged (pre-commit); no partial commit."""
+    scr = sib_scratch("tgtrm")
+    try:
+        before = state_of(scr, CANON_RELS + FIXED_SIB_RELS)
+        FI.arm()
+        raised = False
+        msg = ""
+        try:
+            ap = SA.StagedRoundApplier.for_repo(scr)
+            _orig = ap._collect_staged
+            def wrapped(ws, txn_dir):
+                man = ap._read_txn_manifest(txn_dir) or {}
+                rel = next(t["live"] for t in man.get("targets", [])
+                           if t["name"] == "sibling_reference_vector")
+                os.remove(os.path.join(ws, rel))       # a declared target vanishes before collection
+                return _orig(ws, txn_dir)
+            ap._collect_staged = wrapped
+            ap.apply_snapshot(snapshot_for(scr, 20), generated_at=GEN)
+        except SA.StagedValidationError as e:
+            raised = "MANDATORY TARGET MISSING" in str(e)
+            msg = str(e).splitlines()[0][:80]
+        finally:
+            FI.disarm()
+        after = state_of(scr, CANON_RELS + FIXED_SIB_RELS)
+        changed = [k for k in before if before[k] != after[k]]
+        record("P11/#2 removing a declared target before collection refuses (mandatory-target invariant)",
+               raised, msg)
+        record("P11/#2 NO partial commit — every live target unchanged",
+               not changed and not new_reference_vectors(scr), "changed=%s" % changed)
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+# ================================================================================ P12 (control #3)
+def p12_reference_value_corruption():
+    """Corrupt ONE reference-vector player value while retaining its board id -> assert_current fails
+    (the reference vector's internal arithmetic no longer holds)."""
+    scr = sib_scratch("refval")
+    try:
+        refp = os.path.join(scr, SR.FV_FIX_REL, "reference_vector_%s.json" % PRE_BALANCED[:8])
+        rv = json.load(open(refp))
+        k = next(iter(rv["vector"]))
+        rv["vector"][k] = int(rv["vector"][k]) + 7            # board_md5 + stored sum_v retained
+        json.dump(rv, open(refp, "w"), indent=2)
+        raised = False
+        reason = ""
+        try:
+            SR.SiblingRepin(scr).assert_current()
+        except SR.SiblingStaleError as e:
+            raised = True
+            reason = str(e).splitlines()[0][:90]
+        v = SR.SiblingRepin(scr).verify()
+        record("P12/#3 reference-vector value corruption (board id retained) -> assert_current FAILS",
+               raised, reason)
+        record("P12/#3 verify names the reference-vector arithmetic invariant",
+               any("reference vector sum_v" in f for f in v["fails"]),
+               "%s" % [f for f in v["fails"] if "reference vector" in f][:1])
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+# ================================================================================ P13 (control #4)
+def p13_fv_oracle_corruptions():
+    """Corrupt the FV oracle's active count, sum, Sheezel value and reference filename INDEPENDENTLY while
+    retaining the board id -> each fails on its OWN invariant in the live coherence gate."""
+    scr = sib_scratch("fvorc")
+    try:
+        fvp = os.path.join(scr, SR.FV_TEST_REL)
+        pristine = open(fvp, encoding="utf-8").read()
+        cases = [
+            ("active", "'active') == 804", "'active') == 803", "FV oracle active"),
+            ("sum", "'sum_v') == 760253", "'sum_v') == 760252", "FV oracle sum_v"),
+            ("sheezel", "'sheezel') == 9542", "'sheezel') == 9541", "FV oracle sheezel"),
+            ("reference-filename", "reference_vector_1373e824.json", "reference_vector_deadbeef.json",
+             "FV oracle reference-vector filename"),
+        ]
+        for label, old, new, needle in cases:
+            open(fvp, "w", encoding="utf-8").write(pristine.replace(old, new))
+            v = SR.SiblingRepin(scr).verify()
+            record("P13/#4 FV-oracle %s drift (board id retained) fails on its invariant" % label,
+                   (not v["ok"]) and any(needle in f for f in v["fails"]),
+                   "%s" % [f for f in v["fails"] if needle in f][:1])
+            open(fvp, "w", encoding="utf-8").write(pristine)      # restore for per-case isolation
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+# ================================================================================ P14 (control #5)
+def p14_board_bundle_corruptions():
+    """Corrupt the working and public board bundles INDEPENDENTLY -> each fails the live coherence gate."""
+    scr = sib_scratch("bvwork")
+    try:
+        wp = os.path.join(scr, SR.BOARD_VIEW_WORKING_REL)
+        pre, obj, suf = _bundle_io(wp)
+        obj["stamp"]["balanced_board_md5"] = "0" * 32
+        _bundle_write(wp, pre, obj, suf)
+        v = SR.SiblingRepin(scr).verify()
+        record("P14/#5 working board-view corruption fails the coherence gate",
+               (not v["ok"]) and any("working balanced_board_md5 stamp" in f for f in v["fails"]),
+               "%s" % [f for f in v["fails"] if "working" in f][:1])
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+    scr = sib_scratch("bvpub")
+    try:
+        pp = os.path.join(scr, SR.BOARD_VIEW_PUBLIC_REL)
+        pre, obj, suf = _bundle_io(pp)
+        obj["players"][0]["v"] = int(obj["players"][0]["v"]) + 111
+        _bundle_write(pp, pre, obj, suf)
+        v = SR.SiblingRepin(scr).verify()
+        record("P14/#5 public board-view corruption fails the coherence gate",
+               (not v["ok"]) and any("public rows disagree" in f for f in v["fails"]),
+               "%s" % [f for f in v["fails"] if "public" in f][:1])
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+# ================================================================================ P15 (control #6)
+def p15_view_only_reconcile_repairs():
+    """A view-only corruption (pins/contract/FV board id all current) must NOT read as a no-op: standalone
+    reconcile REPAIRS the board view and reports changed, not no_op."""
+    scr = sib_scratch("viewrepair")
+    try:
+        wp = os.path.join(scr, SR.BOARD_VIEW_WORKING_REL)
+        pre, obj, suf = _bundle_io(wp)
+        obj["stamp"]["balanced_board_md5"] = "0" * 32
+        _bundle_write(wp, pre, obj, suf)
+        stale = SR.SiblingRepin(scr).verify()
+        res = SR.SiblingRepin(scr).reconcile(round_n=19)
+        healed = SR.SiblingRepin(scr).verify()
+        record("P15/#6 view-only corruption makes the live gate STALE (not silently current)",
+               not stale["ok"] and any("working" in f for f in stale["fails"]))
+        record("P15/#6 standalone reconcile REPAIRS the view (changed, NOT a no-op)",
+               res.get("changed") is True and res.get("no_op") is False,
+               "changed=%s no_op=%s" % (res.get("changed"), res.get("no_op")))
+        record("P15/#6 the live gate is coherent again after repair", healed["ok"],
+               "fails=%s" % healed["fails"][:1])
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
 def main():
     print("=" * 96)
     print("SINGLE-TRANSACTION SIBLING INTEGRATION PROOF (ITEM 408 item 5) — scratch only; gate OFF")
@@ -342,6 +565,12 @@ def main():
     p7_crash_recovery()
     p8_active_count_derived()
     p9_launchers_route_through_python()
+    p10_public_removed_before_validation()
+    p11_target_removed_before_collection()
+    p12_reference_value_corruption()
+    p13_fv_oracle_corruptions()
+    p14_board_bundle_corruptions()
+    p15_view_only_reconcile_repairs()
     npass = sum(1 for r in RESULTS if r["ok"])
     print("\n  " + "-" * 74)
     print("  RESULT: %d/%d PASS" % (npass, len(RESULTS)))

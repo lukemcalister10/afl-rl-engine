@@ -331,6 +331,33 @@ earlier commits are RETAINED in branch history (their build-and-compare module, 
 derivation, rollback machinery and proof harnesses are reused); **the two-step "same commit" / "lockstep" framing
 in those commits is WITHDRAWN** and is corrected by §6.b/§6.c below.
 
+`[re-runnable]` **Second blocking correction (execution-supervisor screening, 2026-07-23) — two residual
+fail-closed defects closed; the principal single-transaction architecture at `aa55e29` is UNCHANGED.** Applied as
+one additive fast-forward child of `aa55e29`; no existing commit amended, squashed or rewritten.
+
+1. **Every declared transaction target is now MANDATORY.** `staged_apply._collect_staged` and `_commit` previously
+   SKIPPED a declared target whose validated workspace payload was missing, so a 15-target manifest did not prove
+   all 15 were collected + replaced — a missing `board_view_public.js` / sidecar / reference vector could leave a
+   committed transaction with a stale dependent artifact. Corrected: once the target manifest is finalized, every
+   declared effective target MUST exist in the validated workspace — `_collect_staged` FAILS before backup or
+   commit if any is absent, asserts the collected set equals the manifest target set EXACTLY, and records each
+   target's validated staged md5 into the txn manifest; `_commit` never silently continues on a missing staged
+   payload (it raises an invariant violation → rollback, since commit has begun) and verifies each final live md5
+   equals its validated staged md5, journaling `COMMIT_VERIFIED`; `_backup_originals` journals each target as
+   backed-up-or-recorded-absent. Proven by §6.c controls P2/#7, P10/#1, P11/#2.
+2. **"Full coherence" now covers the FULL sibling set.** Staged validation (`staged_apply._validate_sibling_staged`)
+   and the live gate (`sibling_repin.verify` / `assert_current`) now assert, against the freshly-built sibling +
+   the staged/live canonical board: BOTH board-view bundles (working balanced / canonical-board / store / round /
+   release stamps; the public bundle's player count + name/value row parity with the canonical board and the
+   working bundle; public leak-freedom — the two-tier UI law); the reference vector (board id, `active ==
+   len(vector)`, `sum_v == sum(vector.values())`, the EXACT built vector, agreement with the sealed present-lens
+   active + total); the FV oracle (board id + DERIVED active + sum + Sheezel + regenerated reference-vector
+   filename); and the sidecar (store / balanced / active / total / Sheezel / reference-filename / contract-seal).
+   `RepinPlan.changed_map` now includes board-view and sidecar coherence, so a view-only or sidecar-only corruption
+   is REPAIRED by a standalone `reconcile` (reported changed) rather than returned as a no-op (a `changed_targets`
+   KeyError this exposed — board_view/sidecar are not byte-targets in `self.targets` — is fixed). Proven by §6.c
+   controls P12/#3–P15/#6.
+
 ### 6.a CASE1 re-aim (accepted separately)
 
 `[re-runnable]` `ui/tests/club_curve_provenance.test.py` CASE1's two positive-path assertions no longer hardcode
@@ -373,19 +400,28 @@ targets — `reference_vector_<md5>.json`, the FV test oracle, `board_view_{work
 `_collect_staged` / `_backup_originals` / `_commit` / `_restore_from_txn` / crash-recovery cover the canonical AND
 the sibling targets under ONE journal + ONE rollback/recovery boundary (a genuine R19→R20 advance commits a
 **15-target** set; `SIBLING_STAGED` precedes `COMMIT_BEGIN`, so there is NEVER an externally-committed store/board
-state with stale siblings). Staged sibling coherence is validated (`_validate_sibling_staged`: expected_boot /
-release_contract identities + present_lens / reference vector / FV oracle / board_view / self-seal) inside
-`_validate_staged` BEFORE any live replacement; a sibling build or validation failure aborts pre-commit with
-nothing live touched; a commit-phase fault rolls back BOTH canonical and sibling targets; an incomplete
-transaction blocks the next advance until `recover` runs. The score-write gate is untouched (no score apply).
+state with stale siblings). Every declared target is MANDATORY (2nd blocking correction): `_collect_staged`
+fail-closes before backup/commit on any missing target and asserts the collected set equals the manifest set
+exactly; `_commit` never silently skips a target and verifies each final live md5 == its validated staged md5
+(`COMMIT_VERIFIED`). Staged sibling coherence is validated across the FULL set (`_validate_sibling_staged`:
+expected_boot / release_contract identities + present_lens; the reference vector's id + internal arithmetic
+[`active == len(vector)`, `sum_v == sum(vector.values())`, exact built vector] + present-lens agreement; the FV
+oracle's id + derived active/sum/Sheezel + reference filename; BOTH board-view bundles' stamps + public
+parity + leak-freedom; the sidecar aggregate + seal; the contract self-seal) inside `_validate_staged` BEFORE any
+live replacement; a sibling build or validation failure aborts pre-commit with nothing live touched; a
+commit-phase fault rolls back BOTH canonical and sibling targets; an incomplete transaction blocks the next
+advance until `recover` runs. The score-write gate is untouched (no score apply).
 Because the invariant lives in the Python transaction that `tools/round_entry/round_entry.py` drives, EVERY
 launcher — `weekly_update.sh`, `weekly_update.bat`, direct CLI — inherits it automatically and none can bypass it;
 the shell preflight of the first integration is REMOVED (blocking-issues 1 + 2). The standalone
 `sibling_repin.py reconcile` remains a REPAIR tool (its own `.sibling_txn`); its `check` / `assert_current` gate now
-establishes FULL coherence (release_contract identities + present_lens, the reference vector, the FV oracle, the
-contract self-seal) AND refuses on any incomplete sibling transaction — not merely the sidecar source-store
-(blocking-issue 3). The FV-oracle re-aim derives the ACTIVE COUNT (and present-v sum + Sheezel) from the built
-vector — no literal `804` (blocking-issue 4).
+establishes FULL coherence (release_contract identities + present_lens; the reference vector's id + internal
+arithmetic + present-lens agreement; the FV oracle's id + active/sum/Sheezel + reference filename; BOTH board-view
+bundles + public leak-freedom; the sidecar aggregate + seal; the contract self-seal) AND refuses on any incomplete
+sibling transaction — not merely the sidecar source-store (blocking-issue 3, extended by the 2nd blocking
+correction). A view-only or sidecar-only corruption is now REPAIRED by `reconcile` (reported changed), not returned
+as a no-op. The FV-oracle re-aim derives the ACTIVE COUNT (and present-v sum + Sheezel) from the built vector —
+no literal `804` (blocking-issue 4).
 
 `[re-runnable]` **Pinned environment.** Every board build ran in the accepted pinned environment
 (`/root/rl_venv312`: Python 3.12.3 / numpy 2.4.4 / scipy 1.17.1 / scikit-learn 1.8.0 / openpyxl 3.1.5;
@@ -396,7 +432,7 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
 ### 6.c Evidence (all re-runnable; scratch/fixtures only; NO real score apply; gate OFF)
 
 `[re-runnable]` **Single-transaction integration** — `session_2026-07-23/item408_sibling_repin/staged_sibling_integration_proof.py`
-→ **28/28 PASS** (scratch only; gate armed IN-PROCESS against the scratch only):
+→ **46/46 PASS** (the original 28 checks RETAINED; 18 controls ADDED for the 2nd blocking correction; scratch only; gate armed IN-PROCESS against the scratch only):
 - **Current R19 no-op reproduction.** `build_sibling` on the LIVE tree rebuilds the sibling to `1373e824` / 804 /
   760253 / 9542; `sibling_repin.py reconcile` on the LIVE tree is a NO-OP (no pin moved), writing only the
   provenance sidecar — no existing committed file changed.
@@ -416,14 +452,46 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
 - **Active-count derived / launchers.** The FV-oracle re-aim asserts a synthetic sibling's active count `== 800`
   (derived from the built vector, no literal `804`); `weekly_update.sh` / `weekly_update.bat` / the round_entry CLI
   all route through `staged_apply.apply_snapshot` which folds in `_stage_sibling` — no launcher bypass.
+- **Mandatory targets + full sibling coherence (2nd blocking correction; the 18 added controls).** P2/#7: on the
+  successful R19→R20 advance, manifest target count == collected count == replacement-event count (15/15/15) and
+  every final live target md5 == its validated staged md5. P10/#1: dropping `board_view_public` after sibling
+  staging but before validation aborts pre-commit, no live target changed. P11/#2: dropping any one declared
+  target before collection refuses on the mandatory-target invariant, no partial commit. P12/#3: a reference-vector
+  player-value corruption (board id retained) fails `assert_current` on the arithmetic (`sum_v != sum(vector)`).
+  P13/#4: FV-oracle active / sum / Sheezel / reference-filename drifts (board id retained) each fail their OWN
+  invariant. P14/#5: working and public board-view corruptions each fail the coherence gate. P15/#6: a view-only
+  corruption is REPAIRED by standalone `reconcile` (reported changed, not a no-op) and the gate is coherent again
+  after — this control also surfaced and fixed a `changed_targets` KeyError (board_view/sidecar are coherence
+  flags, not byte-targets).
 
-`[re-runnable]` **Supporting suites (pinned env):** FV provenance **8/8 PASS** (GREEN1 reproduces `1373e824` / 804 /
-760253 / 9542 / 0 movers); `one_source_selftest.py` (CI Guards) **PASS**; club-curve CASE1 **35/35** (all 18
-negatives fail-closed); `release_contract check` **PASS** (seal `4fdf3c10cee8`); frozen artifacts at accepted md5s
-(board of record `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant
-`40d7da7c`). The standalone repair-tool + first-integration harnesses are retained: `sibling_repin_proof.py`
-**26/26** (build/derive/stage/validate/atomic-commit/rollback/idempotence/repair of the standalone `reconcile`) and
-`advance_chain_proof.py` **14/14** (the first-integration end-to-end).
+`[re-runnable]` **Supporting suites (re-run this container; pinned venv `/root/rl_venv312`):** FV provenance
+**8/8 PASS** (GREEN1 reproduces `1373e824` / 804 / 760253 / 9542 / 0 movers; RED2/RED3 halt fail-closed with the
+named FV loaded-path / checkout-drift reason); `one_source_selftest.py` (CI Guards) **PASS** (single source;
+guards 1-3; board==engine F1; book==board F2; frozen-ruler STAMP re-scope), run after the standard CI-Guards
+board+book bootstrap; club-curve CASE1 **35/35** (all 18 negatives fail-closed); `release_contract check` **PASS**
+(seal `4fdf3c10cee8`); `sibling_repin.py check` **CURRENT** and `check --full` **CURRENT** (build-and-compare
+rebuilds `1373e824`); `sibling_repin_proof.py` **26/26** (standalone reconcile build/derive/stage/validate/commit/
+rollback/idempotence/repair, incl. the `changed_targets` fix). Frozen artifacts at accepted md5s (board of record
+`6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant `40d7da7c`).
+
+`[report-only]` **`advance_chain_proof.py` is a RETAINED harness for the WITHDRAWN two-step design and now
+measures 11/14** (was reported 14/14). Its CHAIN(1)/CHAIN(2)/CHAIN(3) checks assert the pre-fold-in flow —
+`balanced_board_md5` STALE after `apply_snapshot`, the gate STALE, and a follow-up `reconcile` reporting changed.
+Under the folded-in architecture at `aa55e29` the sibling advances INSIDE the `staged_apply` transaction, so the
+siblings are NOT stale after an advance and the follow-up `reconcile` is a correct NO-OP — those three checks are
+obsolete. This is INDEPENDENT of the 2nd blocking correction: re-running the harness at CLEAN `aa55e29` (the two
+corrected modules stashed to their `aa55e29` bytes) yields the SAME 11/14 with identical failures
+(`new=e4687458` / `sumv=759783`), so the prior `14/14` was a stale carry-over from the two-step commit `99bccb2`.
+The AUTHORITATIVE end-to-end evidence for the folded-in design is the 46/46 single-transaction suite above. The
+harness file and its committed `ADVANCE_CHAIN_RESULTS.json` are left byte-unchanged (out of this correction's scope).
+
+`[report-only]` **Re-run environment reconstruction.** This container reconstructs the accepted pinned env:
+`/home/claude/rl_vendor` (vendored `unidecode`) restored from the repo's committed `vendor/`; suites run under
+`/root/rl_venv312` (py 3.12.3 / numpy 2.4.4 / scipy 1.17.1 / sklearn 1.8.0 / openpyxl 3.1.5), `PYTHONHASHSEED=0`,
+single-thread BLAS. FV provenance runs with `RL_VENDOR` UNSET — bake-mode config enforcement correctly rejects
+`RL_VENDOR` as an unknown model override, so `unidecode` is resolved via the FV builder's own `PYTHONPATH`, not
+that env var. `one_source_selftest.py` runs after the standard CI-Guards board+book bootstrap (`rl_export.py` +
+`s4_matrix_M1v7.py`, per `.github/workflows/ci-guards.yml`), with the repo root on `PYTHONPATH` for `fv_provenance`.
 
 `[report-only]` **Legacy weekly-updater proofs vs the R19 store.** `failure_injection_proof.py` (applies R15) and
 `two_round_proof.py` (R15→R16) now REFUSE at the dedup gate (`DuplicateRoundError`, `staged_apply.py` ~line 412 — a
