@@ -1,8 +1,8 @@
 {
   "ALL_PASS": true,
   "clean_apply": {
-    "board_after": "c5bd2446",
-    "board_before": "270a2c5f",
+    "board_after": "baf80bb4",
+    "board_before": "2ab73a6f",
     "board_moved": true,
     "guard5_green": true,
     "ledger_total": 5,
@@ -14,6 +14,7 @@
     "store_moved": true
   },
   "crash_recovery": {
+    "authority_round_coherent_after_recover": true,
     "child_crashed_after_first_replacement": true,
     "incomplete_detected": true,
     "mid_crash_board_stale_inconsistent": true,
@@ -22,9 +23,14 @@
     "no_dedup_entry_after_recover": true,
     "pass": true,
     "recover_restored_all_originals": true,
+    "rounds_after_recover": {
+      "expected_boot": 14,
+      "release_contract": 14,
+      "season_state": 14
+    },
     "txn_marked_recovered": true
   },
-  "elapsed_s": 526.3,
+  "elapsed_s": 1195.6,
   "gate_off_on_real_store": true,
   "gate_shipped": {
     "APPLY_DEFAULT": false,
@@ -32,6 +38,7 @@
   },
   "injection": {
     "after_board_generation": {
+      "authority_round_coherent_after": true,
       "expected_status": "ABORTED_PRECOMMIT",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -40,10 +47,16 @@
       "pass": true,
       "point": "after_board_generation",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ABORTED_PRECOMMIT"
     },
     "after_first_replacement": {
+      "authority_round_coherent_after": true,
       "expected_status": "ROLLED_BACK",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -52,10 +65,16 @@
       "pass": true,
       "point": "after_first_replacement",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ROLLED_BACK"
     },
     "after_subsequent_replacement": {
+      "authority_round_coherent_after": true,
       "expected_status": "ROLLED_BACK",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -64,10 +83,16 @@
       "pass": true,
       "point": "after_subsequent_replacement",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ROLLED_BACK"
     },
     "before_store_staging": {
+      "authority_round_coherent_after": true,
       "expected_status": "ABORTED_PRECOMMIT",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -76,10 +101,16 @@
       "pass": true,
       "point": "before_store_staging",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ABORTED_PRECOMMIT"
     },
     "during_board_generation": {
+      "authority_round_coherent_after": true,
       "expected_status": "ABORTED_PRECOMMIT",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -88,10 +119,34 @@
       "pass": true,
       "point": "during_board_generation",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
+      "txn_evidence_explains": true,
+      "txn_status": "ABORTED_PRECOMMIT"
+    },
+    "during_contract_staging": {
+      "authority_round_coherent_after": true,
+      "expected_status": "ABORTED_PRECOMMIT",
+      "fault_raised": true,
+      "files_byte_identical_after": true,
+      "no_dedup_entry": true,
+      "no_partial_board": true,
+      "pass": true,
+      "point": "during_contract_staging",
+      "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ABORTED_PRECOMMIT"
     },
     "during_ledger_staging": {
+      "authority_round_coherent_after": true,
       "expected_status": "ABORTED_PRECOMMIT",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -100,10 +155,16 @@
       "pass": true,
       "point": "during_ledger_staging",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ABORTED_PRECOMMIT"
     },
     "during_manifest_staging": {
+      "authority_round_coherent_after": true,
       "expected_status": "ABORTED_PRECOMMIT",
       "fault_raised": true,
       "files_byte_identical_after": true,
@@ -112,6 +173,11 @@
       "pass": true,
       "point": "during_manifest_staging",
       "rollback_journaled": true,
+      "rounds_after": {
+        "expected_boot": 14,
+        "release_contract": 14,
+        "season_state": 14
+      },
       "txn_evidence_explains": true,
       "txn_status": "ABORTED_PRECOMMIT"
     }

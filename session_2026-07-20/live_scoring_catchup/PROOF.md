@@ -2,7 +2,7 @@
 
 Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Round-14 state**. Gate armed in-process against the scratch only; the real store / RC / production UI are byte-untouched. One consolidated preflight + approval; every round is its own sequential staged transaction.
 
-## RESULT: **ALL PASS**  (551.1s)
+## RESULT: **ALL PASS**  (1287.9s)
 
 | proof | result |
 |---|---|
@@ -28,11 +28,11 @@ Owner's genuine R15-R19 files, applied on a **disposable copy of the accepted Ro
 ### Per-round store / board / history hashes (the sequential chain)
 | round | players | store | board | ledger | value-hist | rank-hist | pos-rank-hist | movers→UI |
 |---|---|---|---|---|---|---|---|---|
-| R15 | 318 | `968de0c7->692d6302` | `270a2c5f->10708265` | 318 | `1ec5b07f048f` | `9bbee088c49d` | `1c3ff3a3241b` | 804 |
-| R16 | 319 | `692d6302->0b951852` | `10708265->9cadb4a3` | 637 | `42bbc5b34eb2` | `ff3db990fa4e` | `13af85413d72` | 804 |
-| R17 | 410 | `0b951852->c312eb5b` | `9cadb4a3->674b3c3a` | 1047 | `d526cbad57a4` | `fc76e9e40e11` | `ea4697945c73` | 804 |
-| R18 | 406 | `c312eb5b->64795076` | `674b3c3a->4377574d` | 1453 | `25629905cf85` | `8d02a55e5d5b` | `a353b855b320` | 804 |
-| R19 | 405 | `64795076->f37d9716` | `4377574d->d3ae2462` | 1858 | `d69c308620c9` | `168c0960129d` | `9cdc15b8cc99` | 804 |
+| R15 | 318 | `968de0c7->692d6302` | `2ab73a6f->3dfad6e5` | 318 | `14c3aadea28a` | `b74e25f2629c` | `0e1ee4835e10` | 804 |
+| R16 | 319 | `692d6302->0b951852` | `3dfad6e5->c238cea3` | 637 | `664bcde75de9` | `0f54e39f740c` | `d38dd3b19c1c` | 804 |
+| R17 | 410 | `0b951852->c312eb5b` | `c238cea3->089d2c1e` | 1047 | `57e27dfafdc8` | `492fff3e43c7` | `282db1fe0d49` | 804 |
+| R18 | 406 | `c312eb5b->64795076` | `089d2c1e->629c3867` | 1453 | `d336fd6f1be4` | `842695f9c7f3` | `eb7aadf4c7d6` | 804 |
+| R19 | 405 | `64795076->f37d9716` | `629c3867->6f07f7cb` | 1858 | `6bf3784ed607` | `5d6a68762cd1` | `330b923be976` | 804 |
 
 Final histories carry rounds {'value': [14, 15, 16, 17, 18, 19], 'rank': [14, 15, 16, 17, 18, 19], 'pos_rank': [14, 15, 16, 17, 18, 19]} for value, overall-rank and positional-rank.
 

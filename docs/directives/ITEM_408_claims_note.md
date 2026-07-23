@@ -553,10 +553,236 @@ transaction's own `_regen_board_strict` output, and both advance together under 
 `expected_boot.panel` prose (board-of-record present values) is not a machine-checked sibling pin and is left to the
 owner-scoped panel note. Items 6 (Live Scoring) and 7 were NOT begun.
 
-## 7. Live Scoring diagnosis and repair
+## 7. Live Scoring diagnosis and repair (ITEM 408 item 6)
 
-`[report-only]` Not performed in this mechanical rebuild (directive work item 6). Recorded here only as an open
-exact-head red (section 2).
+`[builder-generated evidence]` This section and section 8 are **builder-generated evidence** authored by
+the `claude-code-builder` build seat. They are **NOT** the cold blind review; the execution supervisor
+(GPT Sol 5.6) has **not** accepted them; **STOP-2 has not been granted**; no merge, tag, release,
+deployment or score-write activation is authorised. The STOP-1 owner word (§5.1) and the GPT Sol 5.6
+STOP-1 review signature below are **UNCHANGED** and not reinterpreted.
+
+### 7.0 Branch, identity, deviations
+- Repository `lukemcalister10/afl-rl-engine`; exact starting SHA `1606d13408f6ca45013e21faec2b3b6a9454f033`.
+- Build seat: author == committer == `claude-code-builder <claude-code-builder@seam.local>` on every commit.
+- **DEVIATION — push target.** The directive names `ci/r19-provenance-migration` as the push target; this
+  session's harness constraint designates the feature branch `claude/item-408-fixture-repair-e2o53i` and
+  forbids pushing elsewhere without explicit permission (the operator declined to override). All work is
+  **based on the required tip `1606d134`** and pushed to the **feature branch**; `ci/r19-provenance-migration`
+  is left byte-untouched for the supervisor to promote.
+- **DEVIATION — side branch.** Directive §2 asks to delete remote `claude/item-408-item-5-continuation-hqmpm4`
+  (currently == `1606d134`, no unique commits). NOT performed (destructive shared-remote op left to the owner).
+  Command it would have used: `git push origin --delete claude/item-408-item-5-continuation-hqmpm4`. The branch
+  remains present on the remote.
+- **DEVIATION — commit trailers.** The harness default appends `Co-Authored-By: Claude …` / `Claude-Session`
+  trailers; these are OMITTED to match the repo's trailer-free build-seat convention and the directive's
+  single-build-seat provenance intent.
+
+### 7.1 Complete baseline red list (exact tip 1606d134, pinned env, BEFORE any edit)
+Env: `/root/rl_venv312` — Python 3.12.3; numpy 2.4.4 + bundled OpenBLAS `05c9f9eb89ee68a4b9d673…` (byte-exact
+to the pin); scipy 1.17.1; scikit-learn 1.8.0; openpyxl 3.1.5. `RL_VENDOR=/home/claude/rl_vendor`.
+
+| # | command | exit | elapsed | first natural failure |
+|---|---------|------|---------|-----------------------|
+| 1 | `test_weekly_updater.py` | 0 | 0.5s | PASS |
+| 2 | `test_catchup_preflight.py` | 0 | 0.2s | PASS |
+| 3 | `two_round_proof.py --write` | 1 | 1.3s | `round_apply.DuplicateRoundError: round already applied … 2026\|15` |
+| 4 | `catchup_proof.py --write` | 1 | 0.7s | `KeyError: 'players_applied'` (downstream of a dedup-refused apply) |
+| 5 | `node ui/tests/movers.test.js` | 1 | 0.3s | `MOVERS TESTS: 3 FAIL / 47` (production movers.js carries R15-19; test asserts EMPTY) |
+| 6 | `movers_proof.py --write` | 1 | 0.1s | `FAIL 0_production_empty_and_derived_identity` |
+| 7 | `failure_injection_proof.py --write` | 1 | 0.4s | `DuplicateRoundError … 2026\|15` |
+| 8 | `finalization_injection_proof.py --write` | 1 | 0.2s | `DuplicateRoundError … 2026\|16` |
+| 9 | `rc_manifest_compat_proof.py --write` | 0 | 0.0s | PASS |
+| 10 | `storewrite_proof.py --write` | 1 | 90.9s | `DuplicateRoundError … 2026\|15` |
+| 11 | `fv_provenance_proof.py --write` | 1 | 0.3s | `DuplicateRoundError … 2026\|15` |
+
+- **First natural failure of the set:** cmd 3, `two_round_proof.py`, `round_apply.DuplicateRoundError`.
+- **Live-file impact during the baseline run:** only `session_2026-07-20/live_scoring_catchup/movers_proof.json`
+  (a proof-evidence file) changed; **no canonical production file was touched**.
+
+### 7.2 Measured root cause (hypothesis CONFIRMED; fixture-only). Two defects, one over-materialisation.
+Both were introduced by commit `6e4c28c "Materialize verified Round 19 MVP state"`:
+
+1. **Fixture drift (dedup reds 3, 4, 7, 8, 10, 11).** Each Live Scoring proof builds a disposable scratch by
+   `copytree` of the CURRENT checkout, which at `1606d134` is materialised at **R19**:
+   `season_state`/`expected_boot` `as_of_round=19`; store `f37d9716…` (not R14 `968de0c7…`); board `6f07f7cb…`
+   (not R14 `2ab73a6f…`); `applied_rounds_ledger.json` = 1858 entries for rounds {15:318, 16:319, 17:410,
+   18:406, 19:405}. The proofs DECLARE an R14 baseline and apply R15/R16, which the **production
+   duplicate-round gate correctly refuses** as already-applied. Fixture drift — the disposable fixture no
+   longer reconstructs its declared R14 baseline — **not** a dedup defect. Confirmed: the R14 authority anchor
+   `93bd01af` carries store `968de0c7`, board `2ab73a6f`, `expected_boot.as_of_round=14`, and an EMPTY ledger.
+2. **Production movers regression (reds 5, 6).** The same commit flipped `ui/data/movers.js` from its EMPTY
+   bundle to carrying R15-19 reports, silently undoing the accepted "review directive A" corrective — see the
+   full movers adjudication in **§7.8**.
+
+Also measured (the failure hidden behind dedup): the item-5 sibling-integrated staged transaction
+(`staged_apply._prepare_workspace`, lines 706-710) copies three CURRENT source trees from the scratch root into
+the txn workspace — `session_2026-07-20/fv_provenance_remediation`, `ui`, `session_2026-07-17/legd_derivation`
+— but the shared `make_scratch` copied NONE; `generate_movers_bundle.py` patched only
+`ui/tools/extract_board_view.py` ad hoc.
+
+### 7.3 Repair (changed-file census + design)
+| file | kind | change |
+|---|---|---|
+| `engine/rl_after/ingestion/scratch_fixture.py` | fixture | +`materialize_r14()`, `install_sibling_support_trees()`, `_verify_r14()`, `_restamp_contract_code_identity()`, R14 authority constants (+`shutil`,`subprocess`) |
+| `session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py` | proof factory | `make_scratch()` → install sibling trees + `materialize_r14()` (used by two_round, catchup, finalization via `FI.`) |
+| `session_2026-07-20/weekly_updater_hardening/fv_provenance_proof.py` | proof factory | `make_scratch()` → install sibling trees + `materialize_r14()` (staged path) |
+| `session_2026-07-19/storewrite/storewrite_proof.py` | proof factory | `make_scratch()` → `materialize_r14()` (RoundApplier path; no sibling advance) |
+| `ui/data/movers.js` | production UI data | restored byte-exact to the accepted EMPTY bundle at `0e577f5` (see §7.8) |
+| `.github/workflows/live-scoring.yml` | CI | checkout `fetch-depth: 0` (R14 fixture reads exact historical git bytes) |
+| `engine/rl_after/ingestion/test_r14_fixture.py` | test (new) | fail-closed fixture tests + negative controls |
+| `engine/rl_after/ingestion/test_weekly_updater.py` | test | runs the R14 controls from the existing fast-tests step |
+
+**Historical R14 anchor:** `93bd01af86db00c169714652714a364bd2635764` (ancestor of `1606d134`). The helper reads
+EXACT git bytes; it never recreates historical JSON from memory and never copies historical source over current
+source.
+
+**Restored R14 dynamic state (exact anchor bytes):** `engine/rl_after/rl_model_data.json` (store `968de0c7`);
+`data/rl_build/rl_app_data.json` (board `2ab73a6f`) + `.srcmd5` sidecar; `data/expected_boot.json`
+(`as_of_round=14`); `data/season_state.json` (`as_of_round=14`, `source_store_md5=968de0c7`);
+`data/release_contract.json`; `engine/rl_after/ingestion/applied_rounds_ledger.json` (`applied==[]`).
+**Reproduced R14 absence (removed from scratch, PROVEN absent at the anchor):** value/rank/pos_rank histories,
+`finalization_state.json`, `finalization_journal.jsonl`, `sibling_repin_state.json`, `movers/`, `.weekly_txn/`.
+
+**Restored + verified R14 identities (in the disposable scratch):** store `968de0c7`; canonical board
+`2ab73a6f`; `expected_boot` `as_of_round=14`, store `968de0c7`, board `2ab73a6f`, `balanced_board_md5`
+`06d8af60`; `season_state as_of_round=14` bound to `968de0c7`; `release_contract as_of_round=14`, identities
+coherent, self-seal recomputes; ledger empty; `release_contract.verify(gate)` PASS.
+
+**Only stamped identity (line-by-line justification):** `engine_head` moves `dc7e34b0` (R14-era code) →
+`7c452715` (CURRENT `_merged_recover.py`) in both `expected_boot` and the contract, then re-seal — because the
+fixture runs the **current engine** (directive §7). Every immutable model input (`rl_model 4f776e07`, `fv
+6a9a520f`, `config 45b207c0`, `register 652d83e8`, `band 34faa865`, `q97m`, `v0surf`, …) is byte-coherent
+R14 == checkout and is left exactly as restored — **no silent immutable re-stamp**. No scoring aggregation,
+valuation, dedup, or gate code changed.
+
+### 7.4 Negative controls (`test_r14_fixture.py` — ALL PASS)
+1 unavailable anchor halts · 2 wrong R14 store md5 halts · 3 wrong R14 board md5 halts · 4 non-ancestor anchor
+halts · 5 R19 ledger cannot leak · 6 R19 finalization cannot leak · 7 R19 movers cannot leak · 15 missing
+sibling trees fail closed · 16 historical restore does not replace current source · 17 current immutable inputs
+stay current · 18 release-contract verifies on the restored R14 fixture. Controls 8-14 (genuine dedup refusal;
+gate OFF; canonical byte-stability; canonical+sibling advance under one txn; failure-injection / rollback /
+crash-recovery over the canonical+sibling set) are PRESERVED in
+`failure_injection_proof.py` / `finalization_injection_proof.py` / `two_round_proof.py` / `catchup_proof.py`
+and are green in §7.5.
+
+### 7.5 Item-6 acceptance — full Live Scoring set on the repaired R14 fixture — **ALL GREEN**
+| # | command | exit | elapsed | evidence |
+|---|---------|------|---------|----------|
+| 1 | `test_weekly_updater.py` (wired R14 controls) | 0 | 3s | — |
+| 2 | `test_catchup_preflight.py` | 0 | 0.2s | — |
+| 3 | `two_round_proof.py --write` | 0 | 942.6s | `live_scoring_two_round/proof.json` (baseline board 2ab73a6f) |
+| 4 | `catchup_proof.py --write` | 0 | 1288.0s | `live_scoring_catchup/proof.json` |
+| 5 | `node ui/tests/movers.test.js` | 0 | 0.2s | ALL 47 PASS |
+| 6 | `movers_proof.py --write` | 0 | 0.1s | `movers_proof.json` |
+| 7 | `failure_injection_proof.py --write` | 0 | 1195.9s | `weekly_updater_hardening/proof.json` |
+| 8 | `finalization_injection_proof.py --write` | 0 | 745.4s | `finalization_proof.json` |
+| 9 | `rc_manifest_compat_proof.py --write` | 0 | 0.0s | `rc_manifest_compat_proof.json` |
+| 10 | `storewrite_proof.py --write` | 0 | 666.6s | `storewrite/proof.json` |
+| 11 | `fv_provenance_proof.py --write` | 0 | 363.9s | `fv_proof.json` |
+
+Demonstrated: R15→R16 two-round; R15→R19 catch-up + restart/resume; genuine duplicate-execution refusal;
+failure injection; rollback; crash recovery; finalization recovery; movers integrity; history integrity;
+release metadata; FV provenance; balanced/strict sibling advancement integrated in the same transaction.
+
+### 7.6 Production dedup NOT weakened
+- Production files `round_apply.py`, `staged_apply.py`, `score_ingestor.py`, `applied_rounds_ledger.json` are
+  **byte-identical** before/after (git-clean). No ledger reset/delete/ignore path was added.
+- Negative control 5 proves an injected R15 ledger entry makes the R14 scratch fail closed; the
+  failure-injection re-send/stale acceptance proves a genuinely repeated snapshot still raises
+  `DuplicateRoundError`; a legitimate new round proceeds only on a clean R14 baseline.
+- **No test-only flag affects real-repo execution:** the shipped gate needs BOTH halves
+  (`score_ingestor.APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset); the real-store apply refuses
+  (`IngestionGatedError`); the proofs arm only in-process against scratch.
+
+### 7.7 Protected artifacts — before == after (git-clean vs 1606d134)
+| md5 | artifact |
+|---|---|
+| `f37d9716648cfe4382b8c6a24c4f064f` | `engine/rl_after/rl_model_data.json` (R19 store) |
+| `6f07f7cbe042f8e56426a01226c967c9` | `data/rl_build/rl_app_data.json` (R19 board of record) |
+| `1d9faae56bc4896a1bf10f9289d45461` | `applied_rounds_ledger.json` (real applied-round ledger) |
+| `7aa05ab7150d9fece71dd6920de79cf0` | `value_history.json` |
+| `d8b7a9d8efef54c70df33eb23aaada35` | `rank_history.json` |
+| `03ebeab3e0ea72f7545de46eda8c69a2` | `pos_rank_history.json` |
+| `a5d18fdbed570140198923357fbfd491` | `finalization_state.json` |
+| `3af05e5fda4238ecce247da1af845879` | `finalization_journal.jsonl` |
+| `56dd7a7bca4306d9224aec0ef52efa32` | `engine/rl_after/pvc_curve_v2.json` (adopted PVC curve) |
+| `40d7da7c7461024048fe48fcba5692ff` | `session_2026-07-17/legd_derivation/out/per_entrant.json` (per-entrant) |
+| `e8681864e4f02aed4f8bddc501ea8304` | `engine/rl_after/ingestion/movers/` (combined; protected per-round outputs) |
+
+Prescreen independently recomputes `data/rl_build/rl_app_data.json` md5 `6f07f7cb` == pin, and reports
+`expected_boot` unchanged and `run_panel.sh` pins unchanged (§8).
+
+### 7.8 `ui/data/movers.js` adjudication (supervisory concern) — **CATEGORY 1: unauthorised materialisation regression**
+This file **was changed** by this work (restored to empty). It is the UI **shipping** bundle, contractually
+required to remain empty until an owner-authorised real scoring apply — **not** a protected R19 scoring artifact.
+
+- **hash at base `1606d134`:** MD5 `2e1edb4557509a5f057ec5e6e16b7178` / SHA-256
+  `9c6962c3a9bc86f7fe97548fb704c5ffd7bb728aceec16bb66938c7dec525a06`; `rounds:[15,16,17,18,19]` (POPULATED).
+- **hash after repair:** MD5 `83bc7b8f977ad4c08082d6ea25bb9f5b` / SHA-256
+  `121378a438b5f1cb280b4da82c282a57d295bd26ea11b3cb9c72cda0ec2755fc`; `rounds:[]` (EMPTY).
+- **exact historical accepted-empty blob:** `0e577f5:ui/data/movers.js` — MD5 `83bc7b8f…` (byte-identical to
+  the restore); commit `0e577f5 "movers UI: generic full-identity lineage anchoring + empty bundle anchored to
+  the loaded app"`.
+- **exact commit that changed EMPTY → POPULATED:** `6e4c28c "Materialize verified Round 19 MVP state"`
+  (parent `6e4c28c^` had `rounds:[]`; `6e4c28c` has `rounds:[15,16,17,18,19]`).
+- **contracts/tests/docs requiring the shipped bundle EMPTY (four, independent):** (i) the file's own header
+  `"Ships EMPTY until real scoring is owner-applied … Do not hand-edit."`; (ii) `movers_proof.py` test 0
+  (`prod_empty = rounds==[] and not reports`); (iii) `generate_movers_bundle.py` line 91
+  `assert prod['rounds'] == []` + docstring "corrective 2026-07-20, review directive A: this NO LONGER writes
+  the production ui/data/movers.js"; (iv) `ui/tests/movers.test.js` line 142 `eq(prod.rounds, [], …)` under
+  "PRODUCTION bundle ships EMPTY (directive A)".
+- **restoring discards NO owner-authorised real score application:** (a) the scratch evidence bundle
+  `movers_bundle_scratch.js` still carries R15-19 — the movers **data** is preserved, not lost; (b) the shipped
+  score-write gate is OFF (`APPLY_DEFAULT=False`, `INGEST_SCORE_APPLY` unset); (c) **STOP-2 is owner-held and
+  not granted**, so no owner-authorised apply exists to discard; (d) `generate_movers_bundle.py` docstring: the
+  R15-19 are "disposable scratch proof evidence (they begin from the superseded board 270a2c5f), NOT production
+  state".
+- **not a protected artifact:** the protected per-round movers outputs `engine/rl_after/ingestion/movers/` are
+  **byte-unchanged** (§7.7). The R19 store/board/ledger are byte-unchanged. `ui/data/movers.js` is a downstream
+  UI presentation bundle only.
+- **Verdict:** the populated file is an **unauthorised materialisation regression** (category 1); the restore is
+  a faithful revert to the exact accepted-empty blob. Kept in Commit B; **no revert of that change**.
+
+## 8. Item-7 close candidate — four-suite + prescreen evidence (ITEM 408 item 7)
+
+Run end-to-end under the pinned env (workflow `run:` steps replicated: env + cwd + oracle fetches; `bootstrap.sh`
+reseeded `/home/claude/rl_workspace/rl_after` to engine `7c452715` and passed Guard 5). Generators were RUN — no
+committed evidence file was treated as a substitute.
+
+| suite | result | detail |
+|---|---|---|
+| **FV Provenance** | **GREEN** | `test_fv_provenance.py` → **8/8 PASS** |
+| **CI Guards** | **GREEN** | `rl_export.py`(bake) 0; `s4_matrix_M1v7.py`(bake) 0; `one_source_selftest.py` (GUARD 1/2/3/5) 0; `guard_correction_canary.py` (GUARD 4) 0; `run_panel.sh` **PASS 10/10**; `ruling_config_check.py` 0; `config_manifest.py check` (hash `45b207c0`) 0 |
+| **Live Scoring** | **GREEN** | all 11 commands green (§7.5) |
+| **Final Integration** | **RED (pre-existing R19 staleness; not item 6)** | GREEN: `extract_seam.test.py` **41/41**, `movers.test.js` **47/47** (fixed by §7.8), config/release/ruling/inventory/failclosed/season_state_fenced/release_seam/counting_rule/club_curve. RED: `invariant_proof.py` **27/33**, `season_progress_test.py` **19/20**, R14 season-state equality (`exposure_pace 0.727 ≠ 0.545`), `acceptance_matrix.py` (hard-fails: present-lens / forward-vector / draft-assets / f5 / scratch_r15_r19 / season_progress) |
+| **prescreen** | **GREEN** | `tools/seat/prescreen.sh claude/item-408-fixture-repair-e2o53i 1606d134` exit 0; board recompute `6f07f7cb` == pin; `expected_boot` unchanged; `run_panel.sh` pins unchanged; one informational FLAG (two added `os.environ.get` reads — `WK_SCRATCH_BASE`, `RL_CONFIG_MODE` — both in the new test file `test_r14_fixture.py`, test scaffolding mirroring the existing proofs' `WK_SCRATCH_BASE` pattern, not model semantics) |
+
+**The Final Integration reds are PROVEN pre-existing at clean `1606d134`.** A detached `git worktree` at
+`1606d134` (no repair) reproduces them identically: season-state equality exit 1 (`0.727 ≠ 0.545`);
+`season_progress` 19/20; `invariant_proof` 27/33; `acceptance_matrix` FAIL (7 hard-fails, incl.
+`16_trackB_tests`); `movers.test.js` 3 FAIL/47. Every failing file
+(`season_state.py`, `rl_model_data.json`, `invariant_proof.py`, `acceptance_matrix.py`,
+`season_progress_test.py`) is **byte-identical to `1606d134`** (untouched by this work). The reds are the
+**R19 store-advancement staleness** already recorded in this note (§5.1 / §6.c) and in the GPT Sol 5.6 STOP-1
+signature ("the suites are not yet all green, ordered work items 5–7 remain open"): R14-lens invariants
+(present-v / vP1 / vP2 vs the R14-era Board A/B oracles; R14 exposure derivation) measured against the
+**protected** R19 board/store. Resolving them requires updating those R14-lens oracles/expectations or moving
+the protected store/board — neither is item-6 fixture-repair work, and the store/board are protected.
+
+**Item-6 impact on Final Integration is strictly positive:** `movers.test.js` 3 FAIL → **47/47** and
+`acceptance_matrix.py` `16_trackB_tests` FAIL → **PASS**. Item 6 introduces **zero** new reds.
+
+### Status
+**ITEM 6: COMPLETE and GREEN** (full Live Scoring set + fail-closed fixture negative controls; production dedup
+unchanged; shipped score-write gate OFF; canonical R19 store/board/balanced byte-untouched; no real score
+applied). **ITEM 7: FV Provenance, CI Guards, Live Scoring and prescreen are GREEN; Final Integration is RED on
+PRE-EXISTING R19 store-advancement staleness** (proven pre-existing; outside item-6 scope; protected artifacts).
+
+Because not every required suite is green, this note **does NOT declare `READY FOR COLD BLIND REVIEW`**. The
+item-6 deliverable is complete and regression-free; the remaining Final Integration reds are the pre-existing,
+out-of-scope R19-staleness blocker for the supervisor to route. This note is builder-generated evidence; the
+execution supervisor has not accepted it; STOP-2 is not granted; no merge, tag, release, deployment or
+score-write activation is authorised.
 
 ---
 

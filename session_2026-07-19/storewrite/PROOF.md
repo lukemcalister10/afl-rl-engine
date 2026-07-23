@@ -2,13 +2,13 @@
 
 Writes **nothing** to the real store: the apply gate ships OFF (`APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset); apply() on the real store refused (`gate_off_on_real_store=True`). Every write below is on a throwaway scratch repo.
 
-## RESULT: **ALL PASS**  (516.2s)
+## RESULT: **ALL PASS**  (666.4s)
 
 ## A — scratch round-15 apply (write + regen + re-stamp + Guard 5)
 | field | value |
 |---|---|
 | store md5 | `968de0c7` → `15711cb3` (moved=True) |
-| board md5 | `1f10220c` → `cd45ddf5` (moved=True) |
+| board md5 | `32b0944f` → `dbf36338` (moved=True) |
 | players merged | 7 |
 | all fed players moved on board | True |
 | re-stamp coherent (store+board pins == written md5) | True |
@@ -70,10 +70,10 @@ Board value moves (fed players, `v` before → after):
 |---|---|
 | runs | 5 |
 | byte-stable run-to-run | True |
-| stable board md5 | `cd45ddf5` |
+| stable board md5 | `dbf36338` |
 | matches proof-A board | True |
 
-Per-run applied board md5s: `cd45ddf5, cd45ddf5, cd45ddf5, cd45ddf5, cd45ddf5`
+Per-run applied board md5s: `dbf36338, dbf36338, dbf36338, dbf36338, dbf36338`
 
 > Single-env determinism only (this container, PYTHONHASHSEED=0 + single-thread BLAS).
 > Cross-machine reproducibility is a separate item and is not attempted here.

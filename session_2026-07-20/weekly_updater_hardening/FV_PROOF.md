@@ -2,15 +2,15 @@
 
 Writes nothing to the real store (gate OFF: real-store apply refused = `True`).
 
-## RESULT: **ALL PASS**  (426.6s)
+## RESULT: **ALL PASS**  (363.8s)
 
-Generated at `2026-07-21T09:06:13Z` for proof run `local-0b64c61bc2f742e38d6dd2104aa7a087`
+Generated at `2026-07-23T13:17:41Z` for proof run `local-32b41bce3b4f4634acd6ae8e2c1e4f0a`
 
 ## RED — the audit's defect (stale `21d530bf` on the RL_FV default path)
 | check | value |
 |---|---|
-| ambient `/home/claude/rl_workspace/forward_valuation` distribution_pricing md5 | `` |
-| that IS the stale `21d530bf` | False |
+| ambient `/home/claude/rl_workspace/forward_valuation` distribution_pricing md5 | `21d530bf` |
+| that IS the stale `21d530bf` | True |
 | R1: provenance guard HALTS on the ambient module | True |
 | R1: provenance guard HALTS on unset RL_FV | True |
 | R2: full apply with FV mis-bound to ambient HALTS before generation | True |
@@ -23,7 +23,7 @@ Generated at `2026-07-21T09:06:13Z` for proof run `local-0b64c61bc2f742e38d6dd21
 ## GREEN — staged strict build
 | check | value |
 |---|---|
-| store `968de0c7` → `615bfe77`, board `0083c756` | applied |
+| store `968de0c7` → `615bfe77`, board `23e633d4` | applied |
 | distribution_pricing used (staged `dd19a234`, inside the staged repo) | `dd19a234` / True |
 | not the stale `21d530bf` | True |
 | RL_CONFIG_MODE=gate loaded the release manifest (config `45b207c03a8c`) | True |

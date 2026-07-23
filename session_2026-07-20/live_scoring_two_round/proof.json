@@ -101,7 +101,7 @@
     "txn_committed": true
   },
   "3_r15_board_regenerated": {
-    "board": "270a2c5f -> f58ac3e0",
+    "board": "2ab73a6f -> 06c578d1",
     "board_source_is_updated_store": true,
     "pass": true
   },
@@ -135,7 +135,7 @@
   },
   "7_r16_apply_atomic_fresh_process": {
     "applied_in_fresh_process": true,
-    "board": "f58ac3e0 -> f3cc9131",
+    "board": "06c578d1 -> c92fda2e",
     "guard5_green": true,
     "manifest_pins_coherent": true,
     "pass": true,
@@ -165,7 +165,7 @@
     "resend_r16_blocked": true
   },
   "ALL_PASS": true,
-  "elapsed_s": 404.8,
+  "elapsed_s": 942.4,
   "gate_off_real_store_refused": {
     "pass": true,
     "refused": true

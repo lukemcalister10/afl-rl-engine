@@ -2,15 +2,16 @@
 
 Writes **nothing** to the real store (gate ships OFF: `APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset; real-store apply refused = `True`). Every write below is on a throwaway scratch repo.
 
-## RESULT: **ALL PASS**  (526.3s)
+## RESULT: **ALL PASS**  (1195.6s)
 
-## Failure injection (7 points) — rollback leaves the scratch byte-identical
+## Failure injection (8 points) — rollback leaves the scratch byte-identical (incl season_state + release_contract)
 | injection point | files byte-identical | no dedup entry | no partial board | txn status | pass |
 |---|---|---|---|---|---|
 | `before_store_staging` | True | True | True | ABORTED_PRECOMMIT | ✅ |
 | `during_board_generation` | True | True | True | ABORTED_PRECOMMIT | ✅ |
 | `after_board_generation` | True | True | True | ABORTED_PRECOMMIT | ✅ |
 | `during_manifest_staging` | True | True | True | ABORTED_PRECOMMIT | ✅ |
+| `during_contract_staging` | True | True | True | ABORTED_PRECOMMIT | ✅ |
 | `during_ledger_staging` | True | True | True | ABORTED_PRECOMMIT | ✅ |
 | `after_first_replacement` | True | True | True | ROLLED_BACK | ✅ |
 | `after_subsequent_replacement` | True | True | True | ROLLED_BACK | ✅ |
@@ -29,7 +30,7 @@ Writes **nothing** to the real store (gate ships OFF: `APPLY_DEFAULT=False` + en
 ## Acceptance
 | case | result |
 |---|---|
-| clean apply: store `968de0c7`→`4a17ffb0`, board `270a2c5f`→`c5bd2446`, 5 players, Guard 5 GREEN, pins coherent | ✅ |
+| clean apply: store `968de0c7`→`4a17ffb0`, board `2ab73a6f`→`baf80bb4`, 5 players, Guard 5 GREEN, pins coherent | ✅ |
 | immediate re-send BLOCKED (dedup), files unchanged | ✅ |
 | stale snapshot BLOCKED (store md5 moved), files unchanged | ✅ |
 | altered snapshot hash BLOCKED | ✅ |

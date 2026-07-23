@@ -161,7 +161,7 @@
   "D_sequential": {
     "chain_all_applied_guard5": true,
     "each_round_full_artifacts": true,
-    "final_board": "d3ae24622dbb",
+    "final_board": "6f07f7cbe042",
     "final_store": "f37d9716648c",
     "history_rounds_final": {
       "pos_rank": [
@@ -192,7 +192,7 @@
     "pass": true,
     "per_round": [
       {
-        "board": "270a2c5f->10708265",
+        "board": "2ab73a6f->3dfad6e5",
         "history_rounds": [
           14,
           15
@@ -200,15 +200,15 @@
         "ledger_total": 318,
         "movers_ui_rows_injected": 804,
         "players_applied": 318,
-        "pos_rank_history_md5": "1c3ff3a3241b",
-        "rank_history_md5": "9bbee088c49d",
+        "pos_rank_history_md5": "0e1ee4835e10",
+        "rank_history_md5": "b74e25f2629c",
         "round": 15,
         "store": "968de0c7->692d6302",
         "txn": "txn_catchup_r15",
-        "value_history_md5": "1ec5b07f048f"
+        "value_history_md5": "14c3aadea28a"
       },
       {
-        "board": "10708265->9cadb4a3",
+        "board": "3dfad6e5->c238cea3",
         "history_rounds": [
           14,
           15,
@@ -217,15 +217,15 @@
         "ledger_total": 637,
         "movers_ui_rows_injected": 804,
         "players_applied": 319,
-        "pos_rank_history_md5": "13af85413d72",
-        "rank_history_md5": "ff3db990fa4e",
+        "pos_rank_history_md5": "d38dd3b19c1c",
+        "rank_history_md5": "0f54e39f740c",
         "round": 16,
         "store": "692d6302->0b951852",
         "txn": "txn_catchup_r16",
-        "value_history_md5": "42bbc5b34eb2"
+        "value_history_md5": "664bcde75de9"
       },
       {
-        "board": "9cadb4a3->674b3c3a",
+        "board": "c238cea3->089d2c1e",
         "history_rounds": [
           14,
           15,
@@ -235,15 +235,15 @@
         "ledger_total": 1047,
         "movers_ui_rows_injected": 804,
         "players_applied": 410,
-        "pos_rank_history_md5": "ea4697945c73",
-        "rank_history_md5": "fc76e9e40e11",
+        "pos_rank_history_md5": "282db1fe0d49",
+        "rank_history_md5": "492fff3e43c7",
         "round": 17,
         "store": "0b951852->c312eb5b",
         "txn": "txn_catchup_r17",
-        "value_history_md5": "d526cbad57a4"
+        "value_history_md5": "57e27dfafdc8"
       },
       {
-        "board": "674b3c3a->4377574d",
+        "board": "089d2c1e->629c3867",
         "history_rounds": [
           14,
           15,
@@ -254,15 +254,15 @@
         "ledger_total": 1453,
         "movers_ui_rows_injected": 804,
         "players_applied": 406,
-        "pos_rank_history_md5": "a353b855b320",
-        "rank_history_md5": "8d02a55e5d5b",
+        "pos_rank_history_md5": "eb7aadf4c7d6",
+        "rank_history_md5": "842695f9c7f3",
         "round": 18,
         "store": "c312eb5b->64795076",
         "txn": "txn_catchup_r18",
-        "value_history_md5": "25629905cf85"
+        "value_history_md5": "d336fd6f1be4"
       },
       {
-        "board": "4377574d->d3ae2462",
+        "board": "629c3867->6f07f7cb",
         "history_rounds": [
           14,
           15,
@@ -274,12 +274,12 @@
         "ledger_total": 1858,
         "movers_ui_rows_injected": 804,
         "players_applied": 405,
-        "pos_rank_history_md5": "9cdc15b8cc99",
-        "rank_history_md5": "168c0960129d",
+        "pos_rank_history_md5": "330b923be976",
+        "rank_history_md5": "5d6a68762cd1",
         "round": 19,
         "store": "64795076->f37d9716",
         "txn": "txn_catchup_r19",
-        "value_history_md5": "d69c308620c9"
+        "value_history_md5": "6bf3784ed607"
       }
     ],
     "rounds_applied": [
@@ -353,7 +353,7 @@
     "work_asof_before": 19,
     "working_board_stayed_R19": true
   },
-  "elapsed_s": 551.1,
+  "elapsed_s": 1287.9,
   "gate_off_real_store": true,
   "gate_off_real_store_pass": true,
   "gate_shipped": {
