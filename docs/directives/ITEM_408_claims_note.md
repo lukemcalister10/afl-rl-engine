@@ -11,8 +11,8 @@
 
 Every factual claim below is tagged exactly one of `[owner-seen]`, `[re-runnable]`, or `[report-only]`,
 per the directive. Prior seats' figures — including the directive's own hypotheses — are re-run before any
-build depends on them. This note does **not** assert final four-suite acceptance; the suites are not green and
-STOP-1 is unresolved.
+build depends on them. This note does not assert final four-suite acceptance; the suites are not yet all green.
+STOP-1 has been approved and executed; STOP-2 remains pending.
 
 ---
 
@@ -195,9 +195,10 @@ rebuilt controls fire live against the byte-identical resolver.
 `[report-only]` **Negative-control result reported separately from CASE1 (finding 2).** All 18 fail-closed
 controls pass. The only two failing checks are **CASE1 positive-path** assertions that hardcode the historical
 R14 board id `2ab73a6f` and `asOfRound 14`; the base store is at **R19**, so both fail identically at base and
-post-rebuild. They are the CI-Guards / club-curve red of section 2. Re-aiming CASE1 at the manifest of record
-is the STOP-1-gated advance-repin (directive item 5) — `expected_boot.json`'s balanced-board pin is still
-`06d8af60` and may not move before owner approval — so it is out of this pre-STOP-1 rebuild's scope.
+post-rebuild. They are the CI-Guards / club-curve red of section 2. At the pre-STOP-1 measurement point,
+`expected_boot.json` was still pinned to `06d8af60`, so re-aiming CASE1 was correctly outside the pre-STOP-1
+rebuild scope. STOP-1 has since advanced the balanced-board pin to `1373e824` in commit
+`348d0ff715d1a98f0ebc47d2a9cc2d32efde0d80`. Re-aiming CASE1 remains directive item 5 and has not been performed.
 
 ## 5. R19 balanced-board regeneration and STOP-1
 
@@ -324,10 +325,25 @@ exact-head red (section 2).
 
 ## Signature
 
-**Status: STOP-1 APPROVED (owner, 2026-07-22) AND EXECUTED; STOP-2 PENDING; claims-note signature PENDING GPT
-Sol 5.6 FINAL INDEPENDENT REVIEW.**
+**SIGNED — GPT Sol 5.6 final independent STOP-1 review, 2026-07-23.**
 
-The mechanical builder does not sign. GPT Sol 5.6 independently reviews the four rebuilt commits plus the single
-STOP-1 atomic pin-advance commit and their evidence, and is the sole signer. The owner has given the STOP-1
-word (section 5.1); STOP-2 (final merge word) remains the owner's and is not sought here. No merge, tag,
-release, deployment or score-write activation has been performed.
+`[re-runnable]` GPT Sol 5.6 independently reviewed the live remote branch at atomic STOP-1 commit
+`348d0ff715d1a98f0ebc47d2a9cc2d32efde0d80`. The branch resolves exactly to that commit; it is one fast-forward
+child of pre-STOP-1 tip `ffd49047b8b0d9904dd7a69ea7019e67ee5830df`; and its diff contains exactly the six
+authorised STOP-1 paths.
+
+The balanced/strict identity movement `06d8af60b679a12db07c064c60c065f9` → `1373e82471a81064ef96820f3db065df`
+is accepted. The dependent boot, release-contract, present-value aggregate, FV oracle/reference-vector and
+working UI identities move coherently. The release-contract seal independently recomputes to
+`4fdf3c10cee885bd7f57f8ef41e8a9fb3ee7d837c768a8e438f6ab41e6d1600e`.
+
+The board of record remains `6f07f7cbe042f8e56426a01226c967c9` and was not replaced. The authoritative store,
+frozen curve, curve contract, per-entrant artifact, score ledger, model/config/season state, workflows and
+open-items register are outside the changed-file set and remain untouched by the STOP-1 commit.
+
+Verdict: STOP-1 execution ACCEPTED.
+
+This signature is limited to the rebuilt pre-STOP-1 work and the atomic STOP-1 execution. It does not assert
+final four-suite acceptance: the suites are not yet all green, ordered work items 5–7 remain open, and the
+commit has no GitHub CI attestation. STOP-2 remains exclusively owner-held and pending. No merge, tag, release,
+deployment or score-write activation is authorised by this signature.
