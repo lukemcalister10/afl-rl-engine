@@ -29,8 +29,11 @@ Artifacts (finalization, re-derivable, OUTSIDE the store transaction):
   * ui/data/movers.js        — the Matchday UI movers bundle (window.__MATCHDAY_MOVERS__), an ACCUMULATED
                                bundle carrying a release-baseline block + each report's board-identity
                                chain + release identity so the UI can anchor lineage and fail-closed on
-                               a mismatched / incomplete / out-of-lineage report. SHIPS EMPTY (no
-                               finalized rounds) until real scoring is owner-applied.
+                               a mismatched / incomplete / out-of-lineage report. A fresh bundle
+                               INITIALIZES empty; under the owner Option A ruling (ITEM 408 Items 6-7) the
+                               committed ui/data/movers.js carries the authorised R15-R19 recovery history,
+                               displayed under the current accepted release via the fail-closed provenance
+                               transition (data/release_lineage.json release_transition; ui/app/movers.js).
   * ui/data/board_view_working.js — augmented in place with dRound / dRoundRank / dRoundPosRank per row.
 
 NO valuation, NO store write.

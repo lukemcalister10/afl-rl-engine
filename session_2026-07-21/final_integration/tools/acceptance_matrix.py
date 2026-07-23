@@ -125,9 +125,9 @@ def main():
       '14_club_valuation': {'status': 'PASS' if g('club_curve_provenance') else 'FAIL',
           'detail': 'PVC resolved fail-closed (RL_PVC2 pvc_curve_v2, curve_md5 89c14729), 160 held picks, 16 clubs, no stale/workbook substitution (26/26)'},
       '15_ui_proof': {'status': 'PASS' if av.get('ok') else 'PENDING',
-          'detail': 'current player-only, +1/+2 asset views, desktop+mobile, no overflow, empty Movers state (asset_view 26/26 + responsive 72/72)'},
+          'detail': 'current player-only, +1/+2 asset views, desktop+mobile, no overflow, owner-authorised populated R15-R19 Movers history displayed via the fail-closed provenance bridge (asset_view 26/26 + responsive 72/72)'},
       '16_trackB_tests': {'status': 'PASS' if (g('trackB_weekly_updater') and g('trackB_catchup_preflight') and g('trackB_movers')) else 'FAIL',
-          'detail': 'fast unit + preflight + movers (47); atomic/exactly-once/finalization/conflict/repair/lineage/gate-off proofs merged from a3d345b'},
+          'detail': 'fast unit + preflight + movers (62; incl. the owner-approved provenance-transition + fail-closed bridge controls); atomic/exactly-once/finalization/conflict/repair/lineage/gate-off proofs merged from a3d345b'},
       '17_scratch_r15_r19': {'status': ('PASS' if (catch.get('ALL_PASS') and canonical_store_unchanged) else ('RUNNING' if not catch else 'FAIL')),
           'detail': {'ALL_PASS': catch.get('ALL_PASS'), 'gate_off': catch.get('gate_off_real_store_pass'),
                      'sections': {k: (catch.get(k, {}) or {}).get('pass') for k in
@@ -142,7 +142,7 @@ def main():
                              'catch-up scratch SEPARATELY starts from the exact R14 store 968de0c7 (proven by '
                              'the catch proof on the R14 baseline board 2ab73a6f).'}},
       '18_ci': {'status': 'INFO', 'detail':
-          'workflows: ci-guards.yml, fv-provenance.yml, live-scoring.yml (Track B). Re-run on the pinned CI runner via the draft PR.'},
+          'workflows: ci-guards.yml, fv-provenance.yml, live-scoring.yml, final-integration.yml. Run on the pinned CI runner by the push-triggered branch workflows on claude/item-408-fixture-repair-e2o53i.'},
       '19_acceptance_summary': {'status': 'PASS', 'detail': 'this file'},
       # ---- supervisor corrections (2026-07-21) --------------------------------------------------------
       'S1_canonical_reproducibility': {'status': 'PASS' if cleanroom.get('ok') else 'FAIL',

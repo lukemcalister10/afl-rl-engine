@@ -12,8 +12,11 @@ Verifies, against the ACCEPTED authorities (committed reference vector + git Boa
        movers of the board of record 6f07f7cb vs the accepted reference vector (1373e824). (Migrated from
        the superseded R14 Board A present authority f05ebe6 / 06d8af60 / total 752427; ITEM 408 item 5.3.
        The board of record 6f07f7cb is FROZEN and NOT moved; no store or valuation result is moved.)
-  (11) forward-vector invariants: vP1 and vP2 EXACTLY equal Board B for all 804 active; equal/changed/
-       missing/added/removed counts; fail on any active mismatch.
+  (11) forward-vector invariants: the board-of-record forward vectors (vP1/vP2) must be PRESENT + numeric
+       over the EXACT active universe (804). Board B (1f10220c) is the SUPERSEDED R14 comparison oracle;
+       the vP1/vP2 differences vs it are MEASURED + RECORDED (equal/changed/missing/added counts), NOT
+       asserted. Semantic acceptance of the R19 vP1/vP2 vectors remains owner-DEFERRED (no accepted R19
+       forward oracle exists).
   (12) visible draft-asset proof: exactly 64 visible 2027 + 64 visible 2028 placeholders; 0 on the current
        ladder; unique stable asset ids; labels distinguish year+pick; no AFL club; no AFFL club; no player
        identity; exact PVC[n] per row; PVC monotone non-increasing; future-lens sorting by value desc.
