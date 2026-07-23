@@ -382,6 +382,18 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
   {md5, active 804, present_value_total 760253} + re-seal, a REGENERATED `reference_vector_1373e824.json`, the FV
   oracle, the board-view balanced stamp (board-of-record stamp unchanged), and the sidecar. `release_contract check`
   PASS afterward; board-of-record / store / curve / per_entrant BYTE-UNCHANGED by the repin.
+- **End-to-end round-advance chain (GENUINE store advance).** A scratch driven through a REAL R19→R20 store advance
+  by the accepted `staged_apply` transaction (armed IN-PROCESS against the scratch only; the shipped gate stays OFF)
+  moved the STORE (`f37d9716`→`bca1b291`) + CANONICAL BOARD of record (`6f07f7cb`→`49b0f2e2`) + expected_boot
+  store/board/round → R20, leaving `balanced_board_md5` STALE; the GATE reported STALE; then
+  `sibling_repin.reconcile` REBUILT the balanced sibling FROM THE NEW STORE to a NEW identity (`e4687458` ≠ the
+  pre-advance `1373e824`; active 804; present-v sum 759783 — it TRACKS the store) and moved the balanced pin, the
+  full FV reference vector, the manifest + contract identities + present_lens aggregate, the contract re-seal, the
+  FV oracle and the board_view stamp COHERENTLY (board_view board-of-record stamp = the ADVANCED board `49b0f2e2`);
+  `release_contract check` PASS on the fully-advanced tree; the repin did NOT touch the store / advanced board of
+  record / frozen artifacts (`moved=[]`); the gate then reported CURRENT. This proves the store, canonical board,
+  balanced sibling, full vector, manifest identities, release-contract identities/aggregate/seal and FV oracle all
+  move coherently, in lockstep — the accepted `staged_apply`/`round_finalize` machinery UNCHANGED.
 - **Fail-closed.** An injected sibling-GENERATION failure AND an injected pre-commit VALIDATION-phase fault each
   raise fail-closed → NO live target changed (aborted pre-commit).
 - **Rollback.** A fault mid-COMMIT (after a genuine replacement) → rollback restored EVERY expanded target
@@ -389,7 +401,8 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
 - **Idempotence + repair.** A second reconcile on a current tree is a NO-OP; a simulated crash (a `COMMITTING` txn +
   a partial live write) is RECOVERED (rolled back) on the next reconcile, leaving the tree coherent
   (`release_contract check` PASS).
-- Proof harness `session_2026-07-23/item408_sibling_repin/sibling_repin_proof.py` → **RESULT 26/26 PASS**.
+- Proof harnesses (`session_2026-07-23/item408_sibling_repin/`): `sibling_repin_proof.py` → **26/26 PASS**;
+  `advance_chain_proof.py` (end-to-end genuine store advance) → **14/14 PASS**.
 - Live suites unaffected by the item-5 change: club-curve **35/35** (18 negatives fail-closed); `release_contract
   check` PASS (seal `4fdf3c10cee8`, unchanged on the live no-op); frozen artifacts at accepted md5s (board of record
   `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant `40d7da7c`).

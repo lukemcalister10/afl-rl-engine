@@ -1,0 +1,76 @@
+{
+  "passed": 14,
+  "total": 14,
+  "results": [
+    {
+      "name": "CHAIN(1) staged_apply advanced the STORE",
+      "ok": true,
+      "detail": "f37d9716 -> bca1b291"
+    },
+    {
+      "name": "CHAIN(1) staged_apply regenerated the CANONICAL BOARD of record",
+      "ok": true,
+      "detail": "6f07f7cb -> 49b0f2e2"
+    },
+    {
+      "name": "CHAIN(1) expected_boot store/board/round advanced to R20",
+      "ok": true,
+      "detail": "round=20"
+    },
+    {
+      "name": "CHAIN(1) balanced_board_md5 is now STALE (unchanged by the store advance)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(2) gate reports STALE after the advance (siblings drifted from the new store)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) balanced SIBLING rebuilt from the NEW store (md5 changed, tracks the store)",
+      "ok": true,
+      "detail": "new=e4687458 pre=1373e824 active=804 sumv=759783"
+    },
+    {
+      "name": "CHAIN(3) full FV reference vector regenerated from the built sibling",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) manifest + contract identities + present_lens aggregate coherent with the sibling",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) release-contract RE-SEALED coherently (self-hash matches)",
+      "ok": true,
+      "detail": "seal=dc7740729e9e"
+    },
+    {
+      "name": "CHAIN(3) FV oracle re-aimed to the new sibling (BOARD_MD5_GOOD + aggregates + ref path)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) board_view balanced stamp advanced; board-of-record stamp = the ADVANCED board",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) release_contract check PASS on the fully-advanced tree",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) the repin did NOT touch the store / advanced board of record / frozen artifacts",
+      "ok": true,
+      "detail": "moved=[]"
+    },
+    {
+      "name": "CHAIN(4) gate reports CURRENT after the lockstep repin",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
