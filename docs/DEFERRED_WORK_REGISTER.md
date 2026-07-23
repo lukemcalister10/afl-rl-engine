@@ -44,6 +44,20 @@ Evidence labels used inside entries:
 |---|---|---|---:|---|
 | `VAL-001` | Possible double-conservatism for young proven elite scorers | PARKED | No | After v2.11 read-only release and live-scoring stabilization; before the next valuation-changing bake |
 | `AUD-001` | Independent read-only model architecture and calibration audit | PROPOSED | No | Owner launches a separate audit chat/workstream with the sealed read-only prompt |
+| `AUD-004` | Historical validation framework | OWNER-RULED | No | After Stage 1 and live-scoring stabilization, before the next material valuation-changing bake or any claim of predictive validation |
+| `AUD-005` | Empirical versus policy layers | OWNER-RULED | No | Future audit finds policy presented as empirical validation, or empirical mechanisms shielded from testing by being called policy |
+| `AUD-006` | Weighting and incomplete-career treatment | BLOCKED | No | AUD-004 establishes accepted origin-safe folds, data snapshots, and protocols |
+| `AUD-007` | Layer interactions and possible signal reuse | BLOCKED | No | AUD-004 is complete enough to support predeclared ablations |
+| `AUD-008` | Known-injury register | OWNER-RULED | No | After Stage 1, before material injury-layer recalibration, or if register-control failures are observed |
+| `AUD-009` | Captaincy premium | OWNER-RULED | No | Before the next captaincy-premium recalibration or when suitable data become available |
+| `AUD-010` | Structural constraints and floors | OWNER-RULED | No | After Stage 1, before changing any structural surface, threshold, floor, or constraint |
+| `AUD-011` | Player/pick common-currency calibration | PARKED | No | After Stage 1 and before the next material PVC or player-value scale change |
+| `AUD-012` | Threshold and discontinuity census | PARKED | No | Supervisor activates follow-up review or any threshold-changing implementation is proposed |
+| `AUD-013` | DPP valuation treatment | OWNER-RULED | No | Source-data anomaly, eligibility-rule change, or evidence that valid league combinations are rejected |
+| `AUD-014` | Experimental reproducibility | CLOSED | No | Closed; requirements remain operative through AUD-004 |
+| `AUD-015` | `surv` writer/consumer trace | PARKED | No | AUD-016 consumer and code-authority census or post-Stage-1 cleanup scope |
+| `AUD-016` | Canonical-code and dormant-path authority map | PARKED | No | Immediately after Stage 1 stabilization, or earlier only if supervisor explicitly activates the static census for review |
+| `AUD-017` | Transparent baselines | BLOCKED | No | AUD-004 origin-safe framework is frozen |
 
 ---
 
@@ -210,3 +224,505 @@ The audit return should include:
    - documentation/transparency only;
    - reject/no action.
 7. No repository writes and no claim that a finding is accepted until the owner rules.
+
+---
+
+## AUD-004 — Historical validation framework
+
+**Status:** OWNER-RULED
+**Domain:** historical validation / leakage control / model assurance
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** prerequisite framework for AUD-006, AUD-007, AUD-014, and AUD-017
+**Reopen trigger:** after Stage 1 and live-scoring stabilization, before the next material valuation-changing bake or any claim of predictive validation
+**Owner ruling so far:** the existing historical book is retrospective lifecycle reconstruction, not genuine origin-time validation
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Subsequent owner triage accepted the finding as an owner-ratified validation boundary and future framework requirement.
+
+### Verified observations
+
+**OWNER-RULED:** The existing historical book must be described as retrospective lifecycle reconstruction, not as genuine origin-time validation or validated predictive evidence.
+
+**REPORT-ONLY:** The audit concern is that historical or “walk-forward” presentation can overstate predictive assurance unless historical as-of data, frozen folds, eligibility rules, leakage controls, and immutable evaluation protocols exist.
+
+### Owner ruling and accepted design boundary
+
+The owner ruled that the existing book is preserved but must not be described as leakage-free, out-of-time, or validated predictive evidence. A separate origin-safe framework must be created later before testing model changes.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, or economic-policy change is authorized. This entry does not invalidate the operational board, does not complete origin-safe validation, and does not authorize any model change.
+
+### Required future diagnostic or implementation
+
+Define historical as-of datasets, frozen folds, eligibility rules, leakage controls, immutable evaluation protocols, and predeclared outcomes before testing model changes. The framework must prevent tuning after recognizable named-player outputs are inspected.
+
+### Reopening trigger and closure standard
+
+Reopen after Stage 1 and live-scoring stabilization, before the next material valuation-changing bake or any predictive-validation claim. Closure requires an owner-reviewed origin-safe protocol with reproducible fold artifacts, leakage controls, immutable evaluation artifacts, and explicit evidence that the protocol was followed.
+
+---
+
+## AUD-005 — Empirical versus policy layers
+
+**Status:** OWNER-RULED
+**Domain:** model governance / empirical evidence / economic policy
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** none
+**Reopen trigger:** a future audit finds owner policy presented as empirical validation, or empirical mechanisms shielded from testing by being called policy
+**Owner ruling so far:** the engine is intentionally hybrid
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage converted it into a standing documentation and audit-classification ruling.
+
+### Verified observations
+
+**OWNER-RULED:** Documentation and future audits must distinguish empirically estimated mechanisms, owner policy decisions, structural accounting rules, and defensive constraints.
+
+### Owner ruling and accepted design boundary
+
+The model is intentionally hybrid and is not required to make every component an empirical estimate. Owner policy decisions require owner authority and transparent separation from empirical performance claims.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, or economic-policy change is authorized. This entry does not imply every model component is an empirical estimate and does not allow predictive mechanisms to avoid testing merely by being labelled policy.
+
+### Required future diagnostic or implementation
+
+Future reports should label empirical estimates, owner policies, structural accounting rules, and defensive constraints separately, including incidence and regression-protection language where relevant.
+
+### Reopening trigger and closure standard
+
+Reopen if future documentation or audit evidence blurs these categories. Closure requires durable report language and owner/supervisor agreement that the distinction is preserved.
+
+---
+
+## AUD-006 — Weighting and incomplete-career treatment
+
+**Status:** BLOCKED
+**Domain:** historical estimation / weighting / censoring
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** blocked until the origin-safe AUD-004 framework exists
+**Reopen trigger:** AUD-004 establishes accepted origin-safe folds, data snapshots, and protocols
+**Owner ruling so far:** no weighting or incomplete-career change is authorized
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Triage blocked it behind AUD-004 because fair testing depends on origin-safe evidence.
+
+### Verified observations
+
+**HYPOTHESIS:** Observation weighting, incomplete careers, right-censoring, differing career lengths, and repeated player-season rows may affect estimation or evaluation. No preferred replacement has been established.
+
+### Owner ruling and accepted design boundary
+
+The current treatment is not rejected in advance. Weighting and incomplete-career methods may only be compared under predeclared origin-safe diagnostics.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, weighting method, incomplete-career treatment, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+After AUD-004 exists, compare predeclared row, player, career, fold, incomplete-career, right-censoring, and minimum-history treatments. Report overall and cohort-level results without selecting methods after recognizable player outputs are inspected.
+
+### Reopening trigger and closure standard
+
+Reopen when AUD-004 is accepted and frozen. Closure requires comparative origin-safe evidence and an owner ruling to retain or change the current treatment.
+
+---
+
+## AUD-007 — Layer interactions and possible signal reuse
+
+**Status:** BLOCKED
+**Domain:** player valuation / layer interaction / double counting
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** blocked until AUD-004 provides an origin-safe test framework
+**Reopen trigger:** AUD-004 is complete enough to support predeclared ablations
+**Owner ruling so far:** signal reuse is not automatically double counting
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage retained it as a future population-wide ablation question.
+
+### Verified observations
+
+**HYPOTHESIS:** Reliability, pedigree, optionality, availability, floors, and related layers may reuse some factual signals. That possibility does not by itself establish double counting.
+
+### Owner ruling and accepted design boundary
+
+**OWNER-RULED:** Signal reuse is not automatically erroneous. The question is whether predeclared ablations and population-wide outcomes show excessive amplification, cancellation, or non-defensible incremental contribution.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, layer removal, layer weakening, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+Use AUD-004 origin-safe folds to ablate relevant layers individually and in combinations, measuring incremental predictive contribution, value incidence, amplification, cancellation, and cohort effects while separating empirical layers from owner policy overlays.
+
+### Reopening trigger and closure standard
+
+Reopen when AUD-004 supplies an origin-safe test framework. Closure requires population-wide ablation evidence and owner ruling.
+
+---
+
+## AUD-008 — Known-injury register
+
+**Status:** OWNER-RULED
+**Domain:** availability / injury information / external-data governance
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** none
+**Reopen trigger:** after Stage 1, before material injury-layer recalibration, or if register-control failures are observed
+**Owner ruling so far:** retain the manual known-injury register
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage accepted the manual register as a retained external-information control.
+
+### Verified observations
+
+**OWNER-RULED:** The manual known-injury register is retained. It is an approved way to incorporate known information that score histories may not reveal promptly.
+
+### Owner ruling and accepted design boundary
+
+Do not authorize removal or replacement of the register. Future work is governance and interaction control, not an instruction to infer injuries through an LLM or ignore known confirmed information.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, injury-layer recalibration, register removal, register replacement, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+Improve provenance, expiry rules, review cadence, stale-entry detection, update authority, and interaction controls with other absence penalties or return-effect logic.
+
+### Reopening trigger and closure standard
+
+Reopen after Stage 1 before material injury-layer recalibration, or earlier if control failures are observed. Closure requires documented controls, interaction evidence, and owner approval.
+
+---
+
+## AUD-009 — Captaincy premium
+
+**Status:** OWNER-RULED
+**Domain:** captaincy / market-option valuation
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** AUD-004 origin-safe testing for future empirical review where applicable
+**Reopen trigger:** before the next captaincy-premium recalibration or when suitable data become available
+**Owner ruling so far:** retain captaincy as a transferable market-option premium
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage ratified the current architecture while preserving future calibration questions.
+
+### Verified observations
+
+**OWNER-RULED:** Captaincy is retained as a transferable market-option premium. Its value is not reduced merely because a current owner already has another captain-quality player.
+
+### Owner ruling and accepted design boundary
+
+The premium remains part of the architecture. Future review should examine convexity, threshold behavior, and scale under origin-safe testing, without treating the premium as pre-rejected.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, captaincy-premium change, captaincy-premium removal, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+Review convexity, threshold behavior, scale, and population incidence under a frozen protocol. Team-specific alternatives or volatility work remain deferred unless suitable data become available.
+
+### Reopening trigger and closure standard
+
+Reopen before any captaincy-premium recalibration or when suitable data become available. Closure requires population evidence and owner ruling.
+
+---
+
+## AUD-010 — Structural constraints and floors
+
+**Status:** OWNER-RULED
+**Domain:** structural constraints / monotonicity / smoothing
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** none
+**Reopen trigger:** after Stage 1, before changing any structural surface, threshold, floor, or constraint
+**Owner ruling so far:** retain justified structural constraints unless future evidence establishes a better treatment
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage ratified the design boundary for structural constraints.
+
+### Verified observations
+
+**OWNER-RULED:** A threshold, floor, monotonic constraint, band, or smoother is not automatically a defect. Justified structural constraints may be retained where noisy or sparse observations would otherwise produce incoherent ex-ante orderings.
+
+### Owner ruling and accepted design boundary
+
+Future diagnostics should not presume that unconstrained sample means or fully smooth alternatives are economically correct. Constraints remain acceptable unless better evidence and owner ruling support change.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, structural-constraint removal, threshold change, floor change, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+Measure redistribution, binding counts, discontinuities, cohort effects, value transferred between cohorts, and compensating-error risk. Compare feasible alternatives without presuming all constraints should be removed.
+
+### Reopening trigger and closure standard
+
+Reopen after Stage 1 before any structural surface, threshold, floor, or constraint change. Closure requires incidence evidence, counterfactual comparisons, exact-vector tests where implementation is proposed, and owner ruling.
+
+---
+
+## AUD-011 — Player/pick common-currency calibration
+
+**Status:** PARKED
+**Domain:** cross-asset valuation / PVC / common currency
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** owner-authorized diagnostic scope and sealed cohorts
+**Reopen trigger:** after Stage 1 and before the next material PVC or player-value scale change
+**Owner ruling so far:** independently validate common-currency calibration before changing PVC or player-value scale
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. It is recorded as PARKED because this directive supplied no evidence that an authorized diagnostic is genuinely active.
+
+### Verified observations
+
+**HYPOTHESIS:** The open question is whether release-active player values and PVC are calibrated in a defensible common currency. Discussion of the question is not evidence that a diagnostic is active.
+
+### Owner ruling and accepted design boundary
+
+**OWNER-RULED:** Common-currency calibration must be independently validated before changing PVC or the player-value scale.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, PVC scale, player-value scale, or economic-policy change is authorized. This entry does not presume the current PVC is wrong.
+
+### Required future diagnostic or implementation
+
+Future work should use untouched draft cohorts and a frozen design to examine pick-curve scale, early-versus-late allocation, pathway treatment, discounted realised player value, player/pick trade-equivalence implications, pick 1 = 3,000 as numeraire, and whether player outcomes map sensibly onto the player-value scale.
+
+### Reopening trigger and closure standard
+
+Reopen after Stage 1 before a material PVC or player-scale change, under an owner-authorized diagnostic scope. Closure requires an independent report and owner ruling.
+
+---
+
+## AUD-012 — Threshold and discontinuity census
+
+**Status:** PARKED
+**Domain:** thresholds / cliffs / implementation transparency
+**Current release impact:** non-blocking for Stage 1 unless separately reclassified based on new evidence; Current release blocker? No
+**Dependency:** supervisor disposition and future owner-authorized threshold review
+**Reopen trigger:** supervisor activates follow-up review or any threshold-changing implementation is proposed
+**Owner ruling so far:** hard boundaries are not automatically defects
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. A later static census is reported for immutable commit `03396bcf8cea8e3cb34b9005b92c5c7eaa490ccc`, but this register does not treat that static work as a completed runtime trace.
+
+### Verified observations
+
+**REPORT-ONLY:** A static threshold and discontinuity census exists for commit `03396bcf8cea8e3cb34b9005b92c5c7eaa490ccc`.
+
+**REPORT-ONLY:** The census did not complete a full runtime import trace because its environment lacked NumPy. Static reachability must not be represented as runtime binding.
+
+**OWNER-RULED:** Hard boundaries are not automatically defects. Season-level data, minimum evidence requirements, and explicit policy rules may justify discrete boundaries.
+
+### Owner ruling and accepted design boundary
+
+The objective is to identify avoidable cliffs while preserving justified discrete rules. Future review requires binding counts, population-wide counterfactuals, and exact-vector tests.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, threshold change, floor change, cap change, eligibility-boundary change, or economic-policy change is authorized. The census itself does not authorize threshold changes.
+
+### Required future diagnostic or implementation
+
+For each candidate threshold, distinguish static reachability from runtime binding, report file and line, mechanism and purpose, deliberate policy versus inherited implementation, values immediately below/at/above the threshold, absolute valuation effect, binding counts, affected cohorts, and population-wide counterfactuals. Any implementation proposal requires exact-vector tests.
+
+### Reopening trigger and closure standard
+
+Reopen if supervisor activates follow-up review or a threshold-changing implementation is proposed. Closure requires supervisor/owner disposition of the census, binding evidence where relevant, exact-vector tests for any proposed implementation, and owner ruling.
+
+---
+
+## AUD-013 — DPP valuation treatment
+
+**Status:** OWNER-RULED
+**Domain:** position eligibility / replacement bars / future-position uncertainty
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** none
+**Reopen trigger:** source-data anomaly, eligibility-rule change, or evidence that valid league combinations are rejected
+**Owner ruling so far:** DPP is value-add only
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage confirmed the intended DPP valuation treatment and eligibility law.
+
+### Verified observations
+
+**OWNER-RULED:** Current known eligibility uses the advantageous replacement bar. Future eligibility uses a probability-weighted advantageous bar. DPP is value-add only.
+
+**OWNER-RULED:** Key eligibility is locked. KEY_FWD includes the ability to occupy a general-forward slot, KEY_DEF includes the ability to occupy a general-defender slot, and RUC is a key eligibility. Owner-confirmed invalid key/general combinations remain invalid.
+
+### Owner ruling and accepted design boundary
+
+Do not reinterpret or change this policy. A less advantageous alternate eligibility should not reduce current-season value, while future advantageous eligibility is probability-weighted.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, DPP redesign, eligibility-policy change, trajectory-blending change, broad recalibration, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+Future work is limited to visible source-data error reporting and consistency checks if anomalies, rule changes, or rejected valid combinations appear.
+
+### Reopening trigger and closure standard
+
+Reopen on a source-data anomaly, eligibility-rule change, or evidence that valid league combinations are rejected. Closure requires visible error reporting and confirmation that valid combinations are handled consistently.
+
+---
+
+## AUD-014 — Experimental reproducibility
+
+**Status:** CLOSED
+**Domain:** experimental reproducibility
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** incorporated into AUD-004
+**Reopen trigger:** none as a separate project; use AUD-004 for operative origin-safe reproducibility requirements
+**Owner ruling so far:** documentation consolidation only
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage closed it as a separate register project because its requirements are incorporated into AUD-004.
+
+### Verified observations
+
+**OWNER-RULED:** The closure basis is incorporation into AUD-004. This does not mean origin-safe validation has been completed.
+
+### Owner ruling and accepted design boundary
+
+The reproducibility requirements remain operative through AUD-004, including frozen folds, frozen data, frozen fitted artifacts, artifact hashes, no silent refit on missing artifacts, declared reproducibility tolerance, and same-environment comparisons where practical.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, refit, artifact replacement, validation claim, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+No separate AUD-014 project remains. Any substantive reproducibility work proceeds through AUD-004.
+
+### Reopening trigger and closure standard
+
+Closed as documentation consolidation. If reproducibility work becomes active, it reopens under AUD-004, not as an independent implementation authorization.
+
+---
+
+## AUD-015 — `surv` writer/consumer trace
+
+**Status:** PARKED
+**Domain:** export schema / dormant logic
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** linked to AUD-016 and post-Stage-1 cleanup
+**Reopen trigger:** AUD-016 consumer and code-authority census or post-Stage-1 cleanup scope
+**Owner ruling so far:** do not revive a survival model without evidence and a material owner ruling
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. A later snapshot finding was reported for audited commit `03396bcf8cea8e3cb34b9005b92c5c7eaa490ccc` and is parked behind AUD-016.
+
+### Verified observations
+
+**VERIFIED for `03396bcf8cea8e3cb34b9005b92c5c7eaa490ccc` only:** at that audited commit, the exporter calculated a local survival-like value but exported `surv: 1.0`; current values and ranks did not depend on the exported field.
+
+**REPORT-ONLY:** Later PR #132 commits require a focused delta check before this snapshot finding is projected onto live state.
+
+### Owner ruling and accepted design boundary
+
+Do not revive a survival model without evidence and a material owner ruling. Do not mark this item closed before consumer tracing and safe removal or quarantine evidence exist.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, survival-model revival, field removal, UI change, exporter change, or economic-policy change is authorized. The snapshot finding must not be silently projected onto later PR #132 commits.
+
+### Required future diagnostic or implementation
+
+Trace all internal and external consumers, then remove or quarantine the false constant only with exact-vector and UI regression tests. Coordinate this with AUD-016's post-Stage-1 authority map.
+
+### Reopening trigger and closure standard
+
+Reopen under AUD-016 or a post-Stage-1 cleanup scope. Closure requires consumer tracing, safe removal or quarantine evidence, exact-vector tests, UI regression tests where relevant, and owner/supervisor closure.
+
+---
+
+## AUD-016 — Canonical-code and dormant-path authority map
+
+**Status:** PARKED
+**Domain:** code authority / duplicate implementation / maintainability
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** Stage 1 completion and owner/supervisor activation of cleanup scope
+**Reopen trigger:** immediately after Stage 1 stabilization, or earlier only if supervisor explicitly activates the static census for review
+**Owner ruling so far:** no deletion, consolidation, refactor, or valuation change is authorized now
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. A later static authority census is reported for immutable commit `03396bcf8cea8e3cb34b9005b92c5c7eaa490ccc`, but this register does not treat it as a completed runtime graph.
+
+### Verified observations
+
+**REPORT-ONLY:** A static authority census exists for commit `03396bcf8cea8e3cb34b9005b92c5c7eaa490ccc`.
+
+**REPORT-ONLY:** The full runtime graph was not executed because NumPy was unavailable. Module authority does not prove every function inside that module is live. Later PR #132 commits require a focused delta review. Several census risks were overstated because existing guards were not fully credited.
+
+### Owner ruling and accepted design boundary
+
+The item is PARKED because this directive supplies no evidence that the static census is explicitly still under active supervisory review. Any later cleanup must preserve exact accepted vectors and updater safety.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, deletion, consolidation, refactor, dormant-path removal, updater change, or economic-policy change is authorized. This item does not prove specific functions are live or dead without further authority mapping.
+
+### Required future diagnostic or implementation
+
+After Stage 1, produce a canonical authority map, trace imports and runtime reachability, identify genuinely dormant or duplicate paths, and plan removal or archival under bounded commits that preserve exact accepted vectors and updater safety.
+
+### Reopening trigger and closure standard
+
+Reopen immediately after Stage 1 stabilization, or earlier only if supervisor explicitly activates the static census for review. Closure requires accepted authority map, prioritized cleanup plan, exact-vector-preserving changes if any, updater-safety checks, and owner/supervisor closure.
+
+---
+
+## AUD-017 — Transparent baselines
+
+**Status:** BLOCKED
+**Domain:** predictive benchmarking / model complexity / incremental value
+**Current release impact:** non-blocking for Stage 1; Current release blocker? No
+**Dependency:** blocked until AUD-004 establishes the origin-safe framework
+**Reopen trigger:** AUD-004 origin-safe framework is frozen
+**Owner ruling so far:** baselines are benchmarks, not pre-authorized replacement engines
+
+### How the issue was identified
+
+**REPORT-ONLY:** This item arose from the independent read-only audit of immutable commit `ad9ab59c2ffe45df4ccd0ac9110c203ef6420bc0`. Owner triage blocked execution until AUD-004 provides origin-safe data and protocols.
+
+### Verified observations
+
+**OWNER-RULED:** Two deliberately simple, transparent baselines should be built for comparison after AUD-004. They are benchmarks, not replacement engines.
+
+### Owner ruling and accepted design boundary
+
+Baseline 0 should be a no-training persistence model. Baseline 1 should be a small transparent structured model with a frozen feature set. Neither baseline should become another complex engine.
+
+### What has not been concluded or authorized
+
+No production value, ranking, parameter, engine replacement, model-selection change, or economic-policy change is authorized.
+
+### Required future diagnostic or implementation
+
+After AUD-004, compare the transparent baselines, empirical core, and complete model against predeclared observable outcomes such as next-season average, next-season games, next-season total points, meaningful-season probability, multi-year cumulative production, and list survival where observable. Report owner economic overlays separately from empirical predictive improvement.
+
+### Reopening trigger and closure standard
+
+Reopen when the AUD-004 origin-safe framework is frozen. Closure requires a predeclared baseline protocol, reproducible results, and owner ruling on whether added complexity demonstrates sufficient incremental value.
