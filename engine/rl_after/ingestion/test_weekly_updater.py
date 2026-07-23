@@ -179,6 +179,10 @@ def main():
     print("weekly-updater fast tests:")
     for t in tests:
         t()
+    # ITEM 408 item 6 — fail-closed R14 disposable-fixture restoration + negative controls (run here so the
+    # existing Live Scoring workflow step exercises them; no workflow behaviour change beyond the checkout).
+    import test_r14_fixture
+    test_r14_fixture.run_all()
     print("ALL FAST TESTS PASS")
     return 0
 

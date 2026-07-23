@@ -56,6 +56,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # The disposable R14 fixture reconstructs its baseline from EXACT historical git bytes at the
+          # R14 authority anchor (93bd01af); full history is required or materialize_r14 fails closed.
+          fetch-depth: 0
 
       - name: Pin Python 3.12.3
         uses: actions/setup-python@v5
