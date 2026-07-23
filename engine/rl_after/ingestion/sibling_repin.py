@@ -327,26 +327,34 @@ class RepinPlan:
                 ref_changed = True
         self.changed_map["reference_vector"] = ref_changed
 
-        # --- FV test oracle constants (build-and-compare; anchored, fail-closed edits) ---
+        # --- FV test oracle constants (build-and-compare; anchored, fail-closed edits). EVERY generated
+        #     assertion/expectation is derived from the built artifact — the ACTIVE COUNT, the present-v sum
+        #     and the Sheezel value all come from the built sibling vector (never a literal 804). ---
         fv_src = open(self._p(FV_TEST_REL), encoding="utf-8").read()
         cur_md5 = _extract_fv_board_md5(fv_src)
         cur8 = cur_md5[:8]
         cur_ref = _reference_vector_name(cur_md5)
         cur_ref_doc = _read_json(self._p(os.path.join(FV_FIX_REL, cur_ref)))
+        cur_active = cur_ref_doc["active"]
         cur_sumv, cur_sheez = cur_ref_doc["sum_v"], cur_ref_doc["vector"].get("harry-sheezel")
+        new_active, new_sumv, new_sheez = sib["active"], sib["sum_v"], sib["sheezel"]
         new_src = fv_src
         new_src = _replace_required(new_src, cur_ref, ref_name, "reference filename")
         new_src = _replace_required(new_src, cur_md5, new_md5, "BOARD_MD5_GOOD/full md5")
         if cur8 != new8 and cur8 in new_src:                       # remaining 8-char refs (names/strings)
             new_src = new_src.replace(cur8, new8)
+        new_src = _replace_once(new_src, "'active') == %d" % cur_active,
+                                "'active') == %d" % new_active, "active aggregate")
         new_src = _replace_once(new_src, "'sum_v') == %d" % cur_sumv,
-                                "'sum_v') == %d" % sib["sum_v"], "sum_v aggregate")
+                                "'sum_v') == %d" % new_sumv, "sum_v aggregate")
         new_src = _replace_once(new_src, "'sheezel') == %d" % cur_sheez,
-                                "'sheezel') == %d" % sib["sheezel"], "sheezel aggregate")
-        new_src = _replace_required(new_src, "804/%d/%d" % (cur_sumv, cur_sheez),
-                                    "804/%d/%d" % (sib["sum_v"], sib["sheezel"]), "expect-string aggregate")
+                                "'sheezel') == %d" % new_sheez, "sheezel aggregate")
+        # the "(expect <md5>/<active>/<sum_v>/<sheezel>/0)" record + docstring triple — active derived too
+        new_src = _replace_required(new_src, "%d/%d/%d" % (cur_active, cur_sumv, cur_sheez),
+                                    "%d/%d/%d" % (new_active, new_sumv, new_sheez), "expect-string aggregate")
         self.targets["fv_test"] = (FV_TEST_REL, new_src.encode("utf-8"))
-        self.changed_map["fv_test"] = (cur_md5 != new_md5)
+        self.changed_map["fv_test"] = (cur_md5 != new_md5 or cur_active != new_active
+                                       or cur_sumv != new_sumv or cur_sheez != new_sheez)
 
         self.changed = any(self.changed_map.values())
 
@@ -695,22 +703,37 @@ class SiblingRepin:
                 and cur.get("balanced_board_md5") == boot.get("balanced_board_md5"))
 
     def assert_current(self, *, full=False):
-        """Raise SiblingStaleError if siblings are stale. `full` does an authoritative build-and-compare."""
-        if full:
-            sib = build_sibling(self.repo_root)
-            boot = _read_json(self._p(EXPECTED_BOOT_REL))
-            if sib["board_md5"] != boot.get("balanced_board_md5"):
-                raise SiblingStaleError("balanced sibling rebuilds to %s but the live pin is %s — a store "
-                                        "advance left the siblings stale; run `sibling_repin.py reconcile`"
-                                        % (sib["board_md5"][:8], str(boot.get("balanced_board_md5"))[:8]))
-            return {"current": True, "mode": "full", "balanced_board_md5": sib["board_md5"]}
+        """Raise SiblingStaleError unless the siblings are current AND fully coherent AND no sibling
+        transaction is incomplete. Establishes coherence beyond the sidecar source-store (blocking-issue-3):
+          (0) NO incomplete .sibling_txn (the next advance must not begin on an incomplete transaction);
+          (1) the sidecar's source-store == the current store AND its balanced pin == expected_boot;
+          (2) verify() — expected_boot / release_contract identities + present_lens / the reference vector /
+              the FV oracle / the sidecar all agree, the contract self-seal is valid, and release_contract
+              check passes (so a corrupted or partially-completed sibling set CANNOT pass the gate).
+        `full` additionally REBUILDS the sibling and compares (authoritative build-and-compare)."""
+        inc = self._incomplete_txns()
+        if inc:
+            raise SiblingStaleError("incomplete sibling transaction(s) present — recover/rollback before "
+                                    "any advance: %s" % [os.path.basename(t) for t in inc])
         if not self.is_current_fast():
             cur = self._load_sidecar()
             raise SiblingStaleError("sibling provenance sidecar is missing or stale vs the current store — "
                                     "the last advance did not repin the siblings; run "
                                     "`sibling_repin.py reconcile` (sidecar=%s)"
                                     % ("present" if cur else "MISSING"))
-        return {"current": True, "mode": "fast"}
+        v = self.verify()
+        if not v["ok"]:
+            raise SiblingStaleError("sibling set is INCOHERENT (%s) — run `sibling_repin.py reconcile`"
+                                    % v["fails"])
+        if full:
+            sib = build_sibling(self.repo_root)
+            bal = _read_json(self._p(EXPECTED_BOOT_REL)).get("balanced_board_md5")
+            if sib["board_md5"] != bal:
+                raise SiblingStaleError("balanced sibling rebuilds to %s but the live pin is %s — a store "
+                                        "advance left the siblings stale; run `sibling_repin.py reconcile`"
+                                        % (sib["board_md5"][:8], str(bal)[:8]))
+            return {"current": True, "mode": "full+coherence", "balanced_board_md5": sib["board_md5"]}
+        return {"current": True, "mode": "coherence"}
 
     def verify(self):
         """Assert the LIVE siblings are internally coherent (no build): expected_boot / release_contract /

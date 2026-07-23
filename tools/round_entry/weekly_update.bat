@@ -17,6 +17,12 @@ REM   set INGEST_SCORE_APPLY_ARMED=1
 REM   set INGEST_SCORE_APPLY=your-own-token
 REM   weekly_update.bat apply --round 15
 REM See tools\round_entry\README.md. Nothing is armed in the committed repo.
+REM
+REM ITEM 408 item 5 - the balanced/strict SIBLING advance-repin (balanced board + FV reference vector +
+REM every dependent pin/aggregate/seal/view) is folded INTO the Python round-advance transaction
+REM (engine\rl_after\ingestion\staged_apply.py::_stage_sibling), so it commits under the SAME transaction
+REM journal + rollback boundary as the store/board. This .bat forwards to the SAME round_entry.py the .sh
+REM and the direct CLI use, so it inherits that invariant automatically - no launcher can bypass it.
 setlocal
 set "HERE=%~dp0"
 pushd "%HERE%\..\.." >nul

@@ -315,10 +315,21 @@ does not sign).
 
 `[report-only]` **Status.** Directive item 5 (step 5 / R2 second half) has two halves — (a) re-aim club-curve
 CASE1 at the manifest of record by build-and-compare, and (b) script the sibling regeneration+repin into the
-round-advance path. Both are now implemented on `ci/r19-provenance-migration`. This section supersedes the prior
+round-advance path. Both are implemented on `ci/r19-provenance-migration`. This section supersedes the prior
 "not performed / owner-scoped" note: the owner authorised item 5 through the supervisor after STOP-1. STOP-1
 (sections 5 / 5.1) and the STOP-1 signature below are UNCHANGED and not reinterpreted. This builder signs nothing;
 the item-5 implementation and evidence are returned for independent review.
+
+`[report-only]` **Blocking correction (execution-supervisor screening, 2026-07-23).** The FIRST integration
+(commits `7d73e916` / `99bccb2`) placed the sibling repin as a SEPARATE step after `staged_apply` had already
+committed + finalized the store/board (a shell preflight gate + a post-advance `reconcile`). That is NOT the
+same transaction: it left an externally-committed store/board interval with stale siblings, and a `.bat` / direct
+CLI could bypass the shell gate. Per the supervisor's blocking correction the sibling generation/derivation/
+validation/target-movement is now folded INTO the accepted `staged_apply` Python round-advance transaction so the
+canonical store/board AND the sibling targets commit under ONE journal + ONE rollback/recovery boundary. The two
+earlier commits are RETAINED in branch history (their build-and-compare module, overlay validation, dependent-pin
+derivation, rollback machinery and proof harnesses are reused); **the two-step "same commit" / "lockstep" framing
+in those commits is WITHDRAWN** and is corrected by §6.b/§6.c below.
 
 ### 6.a CASE1 re-aim (accepted separately)
 
@@ -351,17 +362,30 @@ byte-for-byte on a mid-commit fault. It NEVER touches the board of record, store
 per_entrant or score ledger (all asserted byte-unchanged before/after every reconcile) and NEVER arms or reads the
 score-write gate (it applies NO scores).
 
-`[re-runnable]` **Gate — "no new store advance accepted while sibling identities remain stale"** (directive step 5
-requirement 5, OR branch). A cheap provenance sidecar `engine/rl_after/ingestion/sibling_repin_state.json` records
-the sibling's source-store md5. `sibling_repin.py check` REFUSES (exit 2) when the recorded source-store differs from
-the current store, or when the sidecar is missing. Scripted INTO the round-advance path
-`tools/round_entry/weekly_update.sh` (a named integration point that already chains `ingest_inputs.py`): a PREFLIGHT
-`check` refuses `apply|run|catchup` while siblings are stale, and a POST-advance `reconcile` repins the siblings in
-lockstep with the store advance. The accepted `staged_apply.py` / `round_finalize.py` transaction machinery is left
-BYTE-UNCHANGED — requirement 5's OR branch (the gate) was chosen over embedding a second heavy board build inside
-the atomic store transaction, to keep the diff minimal and mechanically attributable and to not destabilise the
-accepted, proven weekly-transaction machinery (directive fences: "minimal fail-closed path", "no opportunistic
-refactor").
+`[re-runnable]` **Single-transaction integration (the corrected design).** `staged_apply._stage_sibling`, called
+from `_staged_transaction` AFTER the store is merged and the season-state / canonical board / expected_boot /
+release_contract are staged and BEFORE validation + commit, builds the balanced/strict sibling from the SAME
+workspace's staged store (asserting the store it built from == the staged store), regenerates the full FV reference
+vector, and stages every dependent balanced/FV pin + present_lens aggregate + contract re-seal + FV oracle +
+board_view + provenance sidecar INTO THE WORKSPACE, on top of the restamped expected_boot / release_contract. The
+transaction's target set is EXTENDED (persisted in the txn manifest; `_txn_targets` reads it) with the new sibling
+targets — `reference_vector_<md5>.json`, the FV test oracle, `board_view_{working,public}.js`, the sidecar — so
+`_collect_staged` / `_backup_originals` / `_commit` / `_restore_from_txn` / crash-recovery cover the canonical AND
+the sibling targets under ONE journal + ONE rollback/recovery boundary (a genuine R19→R20 advance commits a
+**15-target** set; `SIBLING_STAGED` precedes `COMMIT_BEGIN`, so there is NEVER an externally-committed store/board
+state with stale siblings). Staged sibling coherence is validated (`_validate_sibling_staged`: expected_boot /
+release_contract identities + present_lens / reference vector / FV oracle / board_view / self-seal) inside
+`_validate_staged` BEFORE any live replacement; a sibling build or validation failure aborts pre-commit with
+nothing live touched; a commit-phase fault rolls back BOTH canonical and sibling targets; an incomplete
+transaction blocks the next advance until `recover` runs. The score-write gate is untouched (no score apply).
+Because the invariant lives in the Python transaction that `tools/round_entry/round_entry.py` drives, EVERY
+launcher — `weekly_update.sh`, `weekly_update.bat`, direct CLI — inherits it automatically and none can bypass it;
+the shell preflight of the first integration is REMOVED (blocking-issues 1 + 2). The standalone
+`sibling_repin.py reconcile` remains a REPAIR tool (its own `.sibling_txn`); its `check` / `assert_current` gate now
+establishes FULL coherence (release_contract identities + present_lens, the reference vector, the FV oracle, the
+contract self-seal) AND refuses on any incomplete sibling transaction — not merely the sidecar source-store
+(blocking-issue 3). The FV-oracle re-aim derives the ACTIVE COUNT (and present-v sum + Sheezel) from the built
+vector — no literal `804` (blocking-issue 4).
 
 `[re-runnable]` **Pinned environment.** Every board build ran in the accepted pinned environment
 (`/root/rl_venv312`: Python 3.12.3 / numpy 2.4.4 / scipy 1.17.1 / scikit-learn 1.8.0 / openpyxl 3.1.5;
@@ -371,47 +395,50 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
 
 ### 6.c Evidence (all re-runnable; scratch/fixtures only; NO real score apply; gate OFF)
 
-`[re-runnable]`
-- **Current R19 no-op reproduction.** `sibling_repin.py reconcile` on the LIVE tree rebuilt the sibling to
-  `1373e824` / 804 / 760253 / 9542, detected NO-OP (no pin moved), and wrote ONLY the provenance sidecar. No
-  existing committed file changed.
-- **Scratch coherent movement (real build).** A scratch whose balanced/strict + FV siblings were artificially STALE
-  (`06d8af60`) against the R19 store — with the accepted reference vector removed and the board-view stamp staled —
-  → reconcile REBUILT the sibling to `1373e824` from the SAME store and moved EVERY dependent pin/aggregate/reference/
-  seal/board-view coherently: `expected_boot.balanced_board_md5`, contract identities + present_lens
-  {md5, active 804, present_value_total 760253} + re-seal, a REGENERATED `reference_vector_1373e824.json`, the FV
-  oracle, the board-view balanced stamp (board-of-record stamp unchanged), and the sidecar. `release_contract check`
-  PASS afterward; board-of-record / store / curve / per_entrant BYTE-UNCHANGED by the repin.
-- **End-to-end round-advance chain (GENUINE store advance).** A scratch driven through a REAL R19→R20 store advance
-  by the accepted `staged_apply` transaction (armed IN-PROCESS against the scratch only; the shipped gate stays OFF)
-  moved the STORE (`f37d9716`→`bca1b291`) + CANONICAL BOARD of record (`6f07f7cb`→`49b0f2e2`) + expected_boot
-  store/board/round → R20, leaving `balanced_board_md5` STALE; the GATE reported STALE; then
-  `sibling_repin.reconcile` REBUILT the balanced sibling FROM THE NEW STORE to a NEW identity (`e4687458` ≠ the
-  pre-advance `1373e824`; active 804; present-v sum 759783 — it TRACKS the store) and moved the balanced pin, the
-  full FV reference vector, the manifest + contract identities + present_lens aggregate, the contract re-seal, the
-  FV oracle and the board_view stamp COHERENTLY (board_view board-of-record stamp = the ADVANCED board `49b0f2e2`);
-  `release_contract check` PASS on the fully-advanced tree; the repin did NOT touch the store / advanced board of
-  record / frozen artifacts (`moved=[]`); the gate then reported CURRENT. This proves the store, canonical board,
-  balanced sibling, full vector, manifest identities, release-contract identities/aggregate/seal and FV oracle all
-  move coherently, in lockstep — the accepted `staged_apply`/`round_finalize` machinery UNCHANGED.
-- **Fail-closed.** An injected sibling-GENERATION failure AND an injected pre-commit VALIDATION-phase fault each
-  raise fail-closed → NO live target changed (aborted pre-commit).
-- **Rollback.** A fault mid-COMMIT (after a genuine replacement) → rollback restored EVERY expanded target
-  byte-for-byte; the txn ends `ROLLED_BACK`.
-- **Idempotence + repair.** A second reconcile on a current tree is a NO-OP; a simulated crash (a `COMMITTING` txn +
-  a partial live write) is RECOVERED (rolled back) on the next reconcile, leaving the tree coherent
-  (`release_contract check` PASS).
-- Proof harnesses (`session_2026-07-23/item408_sibling_repin/`): `sibling_repin_proof.py` → **26/26 PASS**;
-  `advance_chain_proof.py` (end-to-end genuine store advance) → **14/14 PASS**.
-- Live suites unaffected by the item-5 change: club-curve **35/35** (18 negatives fail-closed); `release_contract
-  check` PASS (seal `4fdf3c10cee8`, unchanged on the live no-op); frozen artifacts at accepted md5s (board of record
-  `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant `40d7da7c`).
+`[re-runnable]` **Single-transaction integration** — `session_2026-07-23/item408_sibling_repin/staged_sibling_integration_proof.py`
+→ **28/28 PASS** (scratch only; gate armed IN-PROCESS against the scratch only):
+- **Current R19 no-op reproduction.** `build_sibling` on the LIVE tree rebuilds the sibling to `1373e824` / 804 /
+  760253 / 9542; `sibling_repin.py reconcile` on the LIVE tree is a NO-OP (no pin moved), writing only the
+  provenance sidecar — no existing committed file changed.
+- **Genuine R19→R20 advance under ONE transaction.** A scratch driven through a REAL store advance by
+  `staged_apply.apply_snapshot` moved the STORE (`f37d9716`→`18c5fea2`), the CANONICAL BOARD of record
+  (`6f07f7cb`→`36e61ea5`) and the BALANCED SIBLING (`1373e824`→`4f940581` — it TRACKS the new store) together, with
+  the full FV reference vector, expected_boot, release-contract identities + present_lens aggregate + re-seal, the
+  FV oracle and the board_view stamp all coherent; `SIBLING_STAGED` precedes `COMMIT_BEGIN` (NO externally-committed
+  stale-sibling interval); ONE txn manifest covers a **15-target** set (canonical + sibling); `release_contract
+  check` PASS on the fully-advanced tree.
+- **Fail-closed before commit.** An injected sibling-GENERATION failure AND an injected sibling-VALIDATION failure
+  each abort pre-commit → NO live target changed.
+- **Rollback across the single boundary.** A fault after the FIRST CANONICAL replacement, and a fault after a
+  SIBLING replacement, each roll back EVERY canonical + sibling target byte-for-byte.
+- **Crash recovery.** A COMMITTING crash (partial canonical + sibling writes) BLOCKS the next advance
+  (`IncompleteTransactionError`) and is RECOVERED (rolled back), restoring every target.
+- **Active-count derived / launchers.** The FV-oracle re-aim asserts a synthetic sibling's active count `== 800`
+  (derived from the built vector, no literal `804`); `weekly_update.sh` / `weekly_update.bat` / the round_entry CLI
+  all route through `staged_apply.apply_snapshot` which folds in `_stage_sibling` — no launcher bypass.
 
-`[report-only]` **Scope boundary.** The sibling-repin moves the machine-asserted balanced/strict + FV pins only; the
-board of record `6f07f7cb` is FROZEN and NOT touched (the store + canonical-board advance is the accepted
-`staged_apply` transaction's domain, which the sibling gate now protects). The descriptive `expected_boot.panel`
-prose (board-of-record present values) is not a machine-checked sibling pin and is left to the owner-scoped panel
-note. Items 6 (Live Scoring) and 7 were NOT begun.
+`[re-runnable]` **Supporting suites (pinned env):** FV provenance **8/8 PASS** (GREEN1 reproduces `1373e824` / 804 /
+760253 / 9542 / 0 movers); `one_source_selftest.py` (CI Guards) **PASS**; club-curve CASE1 **35/35** (all 18
+negatives fail-closed); `release_contract check` **PASS** (seal `4fdf3c10cee8`); frozen artifacts at accepted md5s
+(board of record `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant
+`40d7da7c`). The standalone repair-tool + first-integration harnesses are retained: `sibling_repin_proof.py`
+**26/26** (build/derive/stage/validate/atomic-commit/rollback/idempotence/repair of the standalone `reconcile`) and
+`advance_chain_proof.py` **14/14** (the first-integration end-to-end).
+
+`[report-only]` **Legacy weekly-updater proofs vs the R19 store.** `failure_injection_proof.py` (applies R15) and
+`two_round_proof.py` (R15→R16) now REFUSE at the dedup gate (`DuplicateRoundError`, `staged_apply.py` ~line 412 — a
+PRE-STAGING refusal, before any sibling code) because the accepted store advanced R14→R19 (ledger = rounds
+[15..19]). This is a pre-existing store-advancement staleness, independent of item 5 (the sibling integration lives
+in `_staged_transaction`, never reached by those R15/R16 applies). The APPLICABLE weekly-updater proof for the R19
+store is the single-transaction suite above (genuine R20 advance + fault injection + rollback + crash recovery
+through `staged_apply`). `failure_injection_proof.py` is left BYTE-UNCHANGED; the integration suite self-augments
+its scratch to be sibling-capable.
+
+`[report-only]` **Scope boundary.** The sibling regeneration moves the machine-asserted balanced/strict + FV pins
+only; the board of record `6f07f7cb` is FROZEN and NOT written by the sibling step (the canonical board is the
+transaction's own `_regen_board_strict` output, and both advance together under the one commit). The descriptive
+`expected_boot.panel` prose (board-of-record present values) is not a machine-checked sibling pin and is left to the
+owner-scoped panel note. Items 6 (Live Scoring) and 7 were NOT begun.
 
 ## 7. Live Scoring diagnosis and repair
 

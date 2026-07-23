@@ -50,23 +50,13 @@ fi
 export PYTHONPATH="$REPO/engine/rl_after:$RL_VENDOR${PYTHONPATH:+:$PYTHONPATH}"
 
 PY="${PYTHON:-python3}"
-SIBLING_REPIN="$REPO/engine/rl_after/ingestion/sibling_repin.py"
 
-# ITEM 408 item 5 — SIBLING GATE (preflight, fail-closed). The balanced/strict board + FV reference
-# vector are derived siblings of the ONE store; a weekly round advance must repin them in lockstep (see
-# the reconcile step below). This cheap check REFUSES a new store advance while the siblings are stale vs
-# the current store — i.e. if the previous advance's repin did not complete — until it is re-run.
-case "${1:-}" in
-  apply|run|catchup)
-    if ! "$PY" "$SIBLING_REPIN" check; then
-      echo "weekly_update: REFUSING to advance the store — the balanced/strict + FV siblings are STALE" >&2
-      echo "vs the current store (the prior advance did not repin them). Re-run (pinned env):" >&2
-      echo "  $PY engine/rl_after/ingestion/sibling_repin.py reconcile" >&2
-      exit 7
-    fi
-    ;;
-esac
-
+# ITEM 408 item 5 — the balanced/strict SIBLING advance-repin is folded INTO the Python round-advance
+# transaction (engine/rl_after/ingestion/staged_apply.py::_stage_sibling): a store advance regenerates the
+# sibling board + FV reference vector and moves every dependent pin/aggregate/seal/view UNDER THE SAME
+# transaction journal + rollback boundary as the store/board. The invariant therefore lives in the Python
+# transaction every launcher (.sh / .bat / direct CLI) drives via round_entry.py — NOT in this shell — so
+# no launcher can bypass it and there is never an externally-committed store/board state with stale siblings.
 set +e
 "$PY" "$REPO/tools/round_entry/round_entry.py" "$@"
 RC=$?
@@ -74,16 +64,6 @@ set -e
 if [ "$RC" -ne 0 ]; then
   exit "$RC"
 fi
-
-# ITEM 408 item 5 — advance-repin the balanced/strict SIBLING board + FV reference vector and move their
-# dependent pins/aggregates/seal in lockstep with the store advance (scripted, build-and-compare, staged,
-# atomic, fail-closed with rollback). A no-op when siblings are already current. A failure exits non-zero
-# and leaves the siblings stale, so the gate above blocks the next advance until it is resolved.
-case "${1:-}" in
-  apply|run|catchup)
-    "$PY" "$SIBLING_REPIN" reconcile
-    ;;
-esac
 
 # Refresh current club totals after every successful operation that can move/rebuild the weekly board.
 case "${1:-}" in

@@ -1,0 +1,146 @@
+{
+  "passed": 28,
+  "total": 28,
+  "results": [
+    {
+      "name": "P1 R19 no-op reproduction: sibling rebuilds to 1373e824 / 804 / 760253 / 9542",
+      "ok": true,
+      "detail": "md5=1373e824 active=804 sumv=760253 sheezel=9542"
+    },
+    {
+      "name": "P2 store advanced",
+      "ok": true,
+      "detail": "f37d9716->18c5fea2"
+    },
+    {
+      "name": "P2 canonical board advanced",
+      "ok": true,
+      "detail": "6f07f7cb->36e61ea5"
+    },
+    {
+      "name": "P2 expected_boot store/board/round advanced to R20",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 balanced SIBLING advanced + tracks the NEW store (md5 != pre-advance 1373e824)",
+      "ok": true,
+      "detail": "balanced=4f940581"
+    },
+    {
+      "name": "P2 contract identities + present_lens + reseal coherent with the sibling",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 FV reference vector regenerated + FV oracle re-aimed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 board_view balanced stamp advanced; board stamp = the advanced canonical board",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 SINGLE transaction: SIBLING_STAGED precedes COMMIT_BEGIN (no committed stale-sibling interval)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 ONE manifest target set covers canonical + sibling (one rollback boundary)",
+      "ok": true,
+      "detail": "targets=15"
+    },
+    {
+      "name": "P2 release_contract check PASS on the fully-advanced tree",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 injected sibling-GENERATION failure aborts pre-commit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 NO live target changed after a generation failure",
+      "ok": true,
+      "detail": "changed=[] newrv=[]"
+    },
+    {
+      "name": "P4 injected sibling-VALIDATION failure aborts pre-commit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 NO live target changed after a validation failure",
+      "ok": true,
+      "detail": "changed=[] newrv=[]"
+    },
+    {
+      "name": "P5 fault after the first canonical replacement raises",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P5 rollback restored ALL canonical + sibling targets",
+      "ok": true,
+      "detail": "still-changed=[] newrv=[]"
+    },
+    {
+      "name": "P6 fault after a sibling replacement raises",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 rollback restored ALL canonical + sibling targets",
+      "ok": true,
+      "detail": "still-changed=[] newrv=[]"
+    },
+    {
+      "name": "P7 crash left an INCOMPLETE transaction with a partial commit",
+      "ok": true,
+      "detail": "incomplete=1 partial=True"
+    },
+    {
+      "name": "P7 the next advance is BLOCKED while the transaction is incomplete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 recovery rolled back the expanded single transaction (all targets restored)",
+      "ok": true,
+      "detail": "still-changed=[]"
+    },
+    {
+      "name": "P8 FV-oracle active count DERIVED from the built vector (== 800, not a literal 804)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P8 sibling_repin FV-oracle edit has no literal 804 in its CODE (comments aside)",
+      "ok": true,
+      "detail": "code_has_804=False"
+    },
+    {
+      "name": "P9 weekly_update.sh routes through round_entry.py (the Python transaction)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 weekly_update.bat routes through round_entry.py (the Python transaction)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 the round_entry CLI drives staged_apply (StagedRoundApplier.apply_snapshot) \u2014 the invariant path",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 staged_apply.apply_snapshot folds in the sibling (_stage_sibling) \u2014 no launcher can bypass",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
