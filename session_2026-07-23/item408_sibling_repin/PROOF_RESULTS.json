@@ -1,0 +1,136 @@
+{
+  "passed": 26,
+  "total": 26,
+  "results": [
+    {
+      "name": "P1 reconcile changed + rebuilt sibling == accepted 1373e824",
+      "ok": true,
+      "detail": "built=1373e824 old=06d8af60"
+    },
+    {
+      "name": "P1 expected_boot.balanced_board_md5 advanced",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 contract identities.balanced_board_md5 advanced",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 contract present_lens_baseline advanced (md5+active+present_value_total)",
+      "ok": true,
+      "detail": "sumv=760253"
+    },
+    {
+      "name": "P1 contract re-sealed coherently (self-hash matches)",
+      "ok": true,
+      "detail": "seal=90ef66a81396"
+    },
+    {
+      "name": "P1 reference_vector_1373e824 regenerated + coherent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 FV test oracle re-aimed (BOARD_MD5_GOOD + aggregates + ref path)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 board_view balanced stamp advanced; board-of-record stamp unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 provenance sidecar records the new identity + source store",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 release_contract check PASS after repin",
+      "ok": true,
+      "detail": "RELEASE-CONTRACT CHECK: PASS  (contract 90ef66a81396; identities + config + posture consistent)"
+    },
+    {
+      "name": "P1 frozen artifacts byte-UNCHANGED by the repin (board-of-record/store/curve/per_entrant/...)",
+      "ok": true,
+      "detail": "moved=[]"
+    },
+    {
+      "name": "P1 gate reports CURRENT after repin (fast)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 sibling-generation failure raises fail-closed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 NO live target changed after a generation failure",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P2 frozen artifacts untouched",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 pre-commit validation-phase fault raises fail-closed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 NO live target changed (aborted pre-commit)",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P4 mid-commit fault raises",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 rollback restored EVERY target byte-for-byte",
+      "ok": true,
+      "detail": "still-changed=[]"
+    },
+    {
+      "name": "P4 txn ends ROLLED_BACK",
+      "ok": true,
+      "detail": "statuses=['ROLLED_BACK']"
+    },
+    {
+      "name": "P5 first reconcile moved the pins",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P5 second reconcile is a NO-OP (idempotent)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P5 no target bytes changed on the second reconcile",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P6 crash left an INCOMPLETE (COMMITTING) txn + a partial live write",
+      "ok": true,
+      "detail": "statuses=['COMMITTING'] partial=True"
+    },
+    {
+      "name": "P6 next reconcile recovered the incomplete txn",
+      "ok": true,
+      "detail": "recovered=['txn_19_1373e824']"
+    },
+    {
+      "name": "P6 tree is coherent after recovery + repin (release_contract check PASS)",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

@@ -311,10 +311,94 @@ no tag/release/deploy; no score-write activation. STOP-1 **APPROVED AND EXECUTED
 the claims-note final signature remains pending GPT Sol 5.6 final independent review (the mechanical builder
 does not sign).
 
-## 6. Advance-repin design
+## 6. Advance-repin (directive item 5) — IMPLEMENTED
 
-`[report-only]` Not performed in this mechanical rebuild. The round-advance scripted regeneration/repin design
-is directive work item 5, owner-scoped, out of the rebuild's hands.
+`[report-only]` **Status.** Directive item 5 (step 5 / R2 second half) has two halves — (a) re-aim club-curve
+CASE1 at the manifest of record by build-and-compare, and (b) script the sibling regeneration+repin into the
+round-advance path. Both are now implemented on `ci/r19-provenance-migration`. This section supersedes the prior
+"not performed / owner-scoped" note: the owner authorised item 5 through the supervisor after STOP-1. STOP-1
+(sections 5 / 5.1) and the STOP-1 signature below are UNCHANGED and not reinterpreted. This builder signs nothing;
+the item-5 implementation and evidence are returned for independent review.
+
+### 6.a CASE1 re-aim (accepted separately)
+
+`[re-runnable]` `ui/tests/club_curve_provenance.test.py` CASE1's two positive-path assertions no longer hardcode
+the historical Round-14 identity (`2ab73a6f` / `asOfRound 14`). They DERIVE the expected board id, round and
+release_version live from the authoritative current manifest `data/expected_boot.json` and assert the resolver's
+output stamp equals them (board `6f07f7cb`, R19, `v2.11-final-rc1-PROVISIONAL`) — the same manifest
+`ui/tools/ingest_inputs.py` ring-fences the board bundle against, so a clean CASE1 proves the resolved stamp equals
+the manifest, and the assertion re-aims automatically after any advance-repin. Fail-closed on any mismatch.
+Committed at `aecd719d20a2e5514e628aa2b750c9ea7e007665` (independently accepted). Club-curve suite **35/35** (was
+33/35); all **18 fail-closed negative controls preserved**.
+
+### 6.b Scripted sibling advance-repin (new)
+
+`[re-runnable]` New module `engine/rl_after/ingestion/sibling_repin.py` — the scripted, fail-closed, atomic,
+idempotent, rollback-safe advance-repin of the balanced/strict SIBLING board + FV reference vector. A `reconcile`:
+(1) rebuilds the balanced sibling from the SAME store/config/FV source as the round's canonical board (the accepted
+disposable FV builder `_run_build(balanced=True)`, `RL_PVC2=1/RL_LEGE=0/RL_LEGF=0`), asserting the store it built
+from equals the manifest's store pin; (2) regenerates the COMPLETE FV reference vector from the built board;
+(3) derives the identity + aggregates (board md5, active, present-v sum, sheezel, full vector) from the built
+artifacts — never a supplied constant; (4) if the derived identity already equals the live pins, NO-OP (idempotent);
+(5) else STAGES the coherent movement of `data/expected_boot.json` `balanced_board_md5`, `data/release_contract.json`
+`identities.balanced_board_md5` + `present_lens_baseline` {`balanced_board_md5`, `active`, `present_value_total`} +
+re-seal (`release_contract.contract_hash`), a regenerated `fixtures/reference_vector_<md5>.json`, the FV test oracle
+(`BOARD_MD5_GOOD` + aggregates + reference path), the `ui/data/board_view_{working,public}.js` balanced stamp, and a
+provenance sidecar; (6) VALIDATES the complete staged set on a throwaway OVERLAY (identity coherence across every
+target + the contract self-seal + `py_compile` + a fail-closed `release_contract.verify`) BEFORE any live
+replacement; (7) COMMITS by atomic `os.replace`, journaled, backing up every original; (8) ROLLS BACK every original
+byte-for-byte on a mid-commit fault. It NEVER touches the board of record, store, frozen curve, curve contract,
+per_entrant or score ledger (all asserted byte-unchanged before/after every reconcile) and NEVER arms or reads the
+score-write gate (it applies NO scores).
+
+`[re-runnable]` **Gate — "no new store advance accepted while sibling identities remain stale"** (directive step 5
+requirement 5, OR branch). A cheap provenance sidecar `engine/rl_after/ingestion/sibling_repin_state.json` records
+the sibling's source-store md5. `sibling_repin.py check` REFUSES (exit 2) when the recorded source-store differs from
+the current store, or when the sidecar is missing. Scripted INTO the round-advance path
+`tools/round_entry/weekly_update.sh` (a named integration point that already chains `ingest_inputs.py`): a PREFLIGHT
+`check` refuses `apply|run|catchup` while siblings are stale, and a POST-advance `reconcile` repins the siblings in
+lockstep with the store advance. The accepted `staged_apply.py` / `round_finalize.py` transaction machinery is left
+BYTE-UNCHANGED — requirement 5's OR branch (the gate) was chosen over embedding a second heavy board build inside
+the atomic store transaction, to keep the diff minimal and mechanically attributable and to not destabilise the
+accepted, proven weekly-transaction machinery (directive fences: "minimal fail-closed path", "no opportunistic
+refactor").
+
+`[re-runnable]` **Pinned environment.** Every board build ran in the accepted pinned environment
+(`/root/rl_venv312`: Python 3.12.3 / numpy 2.4.4 / scipy 1.17.1 / scikit-learn 1.8.0 / openpyxl 3.1.5;
+`PYTHONHASHSEED=0`, single-thread BLAS, `RL_PVC2=1/RL_LEGE=0/RL_LEGF=0`, bootstrap-seeded workspace, ENV-PIN
+byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces the accepted balanced board
+`1373e824` / 804 / 760253 / 9542 / 0 movers under this env.
+
+### 6.c Evidence (all re-runnable; scratch/fixtures only; NO real score apply; gate OFF)
+
+`[re-runnable]`
+- **Current R19 no-op reproduction.** `sibling_repin.py reconcile` on the LIVE tree rebuilt the sibling to
+  `1373e824` / 804 / 760253 / 9542, detected NO-OP (no pin moved), and wrote ONLY the provenance sidecar. No
+  existing committed file changed.
+- **Scratch coherent movement (real build).** A scratch whose balanced/strict + FV siblings were artificially STALE
+  (`06d8af60`) against the R19 store — with the accepted reference vector removed and the board-view stamp staled —
+  → reconcile REBUILT the sibling to `1373e824` from the SAME store and moved EVERY dependent pin/aggregate/reference/
+  seal/board-view coherently: `expected_boot.balanced_board_md5`, contract identities + present_lens
+  {md5, active 804, present_value_total 760253} + re-seal, a REGENERATED `reference_vector_1373e824.json`, the FV
+  oracle, the board-view balanced stamp (board-of-record stamp unchanged), and the sidecar. `release_contract check`
+  PASS afterward; board-of-record / store / curve / per_entrant BYTE-UNCHANGED by the repin.
+- **Fail-closed.** An injected sibling-GENERATION failure AND an injected pre-commit VALIDATION-phase fault each
+  raise fail-closed → NO live target changed (aborted pre-commit).
+- **Rollback.** A fault mid-COMMIT (after a genuine replacement) → rollback restored EVERY expanded target
+  byte-for-byte; the txn ends `ROLLED_BACK`.
+- **Idempotence + repair.** A second reconcile on a current tree is a NO-OP; a simulated crash (a `COMMITTING` txn +
+  a partial live write) is RECOVERED (rolled back) on the next reconcile, leaving the tree coherent
+  (`release_contract check` PASS).
+- Proof harness `session_2026-07-23/item408_sibling_repin/sibling_repin_proof.py` → **RESULT 26/26 PASS**.
+- Live suites unaffected by the item-5 change: club-curve **35/35** (18 negatives fail-closed); `release_contract
+  check` PASS (seal `4fdf3c10cee8`, unchanged on the live no-op); frozen artifacts at accepted md5s (board of record
+  `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant `40d7da7c`).
+
+`[report-only]` **Scope boundary.** The sibling-repin moves the machine-asserted balanced/strict + FV pins only; the
+board of record `6f07f7cb` is FROZEN and NOT touched (the store + canonical-board advance is the accepted
+`staged_apply` transaction's domain, which the sibling gate now protects). The descriptive `expected_boot.panel`
+prose (board-of-record present values) is not a machine-checked sibling pin and is left to the owner-scoped panel
+note. Items 6 (Live Scoring) and 7 were NOT begun.
 
 ## 7. Live Scoring diagnosis and repair
 
