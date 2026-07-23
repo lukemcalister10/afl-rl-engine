@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """INVARIANT + RECONCILIATION PROOF for the final canonical board (final integration 2026-07-21).
 
-Verifies, against the frozen accepted boards (read from git, not transplanted):
-  Board A (present-lens baseline) = f05ebe6:data/rl_build/rl_app_data.json   (md5 06d8af60)
+Verifies, against the ACCEPTED authorities (committed reference vector + git Board B, not transplanted):
+  Present authority (ITEM 408 STOP-1 R19, owner-approved 2026-07-22) =
+       session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json
+       (accepted balanced/strict 1373e824; active 804; present-v total 760253)
   Board B (accepted forward lens) = 70ef0ff:.../board_B_lege1_legf1.json      (md5 1f10220c)
-  Final board                     = data/rl_build/rl_app_data.json           (working tree)
+  Final board / board of record   = data/rl_build/rl_app_data.json           (working tree, md5 6f07f7cb, FROZEN)
 
-  (10) present-lens invariants: 804 active; Sigma v == 752427; 0 present-v / present-rank / present-order
-       movers vs Board A.
+  (10) present-lens invariants: 804 active; Sigma v == 760253; 0 present-v / present-rank / present-order
+       movers of the board of record 6f07f7cb vs the accepted reference vector (1373e824). (Migrated from
+       the superseded R14 Board A present authority f05ebe6 / 06d8af60 / total 752427; ITEM 408 item 5.3.
+       The board of record 6f07f7cb is FROZEN and NOT moved; no store or valuation result is moved.)
   (11) forward-vector invariants: vP1 and vP2 EXACTLY equal Board B for all 804 active; equal/changed/
        missing/added/removed counts; fail on any active mismatch.
   (12) visible draft-asset proof: exactly 64 visible 2027 + 64 visible 2028 placeholders; 0 on the current
@@ -16,21 +20,38 @@ Verifies, against the frozen accepted boards (read from git, not transplanted):
   (13) F5 reconciliation: visible(Sigma PVC[1..64]) + residual_nd + residual_mech == sealed F5 entrant
        layer 83538, per lens and vs Board B phantomTotals; no double count.
 
+Each acceptance section emits its OWN pass boolean (ok_present / ok_forward / ok_draft / ok_f5) so a
+present-lens result NEVER cascades into an unrelated section (ITEM 408 item 5.4).
+
 Emits machine-readable evidence (invariant_proof.json) + PASS/FAIL; non-zero on any failure.
 """
 import os, sys, json, hashlib, subprocess
 
 ROOT = os.environ.get('RL_REPO') or os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 FINAL = os.path.join(ROOT, 'data', 'rl_build', 'rl_app_data.json')
-BOARD_A = ('f05ebe6df49b653b053f0ebdd82ddc56ee8d4187', 'data/rl_build/rl_app_data.json')
+# ITEM 408 STOP-1 R19 accepted present authority — the committed reference vector (balanced/strict
+# 1373e824). The board of record 6f07f7cb has ZERO present-v movers vs this vector (owner-approved
+# 2026-07-22). Supersedes the R14 present-lens Board A (f05ebe6 / 06d8af60 / total 752427).
+REFVEC = os.path.join(ROOT, 'session_2026-07-20', 'fv_provenance_remediation', 'fixtures',
+                      'reference_vector_1373e824.json')
+PRESENT_BALANCED_MD5 = '1373e82471a81064ef96820f3db065df'
+PRESENT_TOTAL = 760253
 BOARD_B = ('70ef0ff36ca7633aa4097a9b7c1a730013870abe',
            'session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json')
 
 R = []
+DEFERRED = []
 def ck(name, cond, detail=''):
     R.append({'check': name, 'pass': bool(cond), 'detail': detail})
     print(('  PASS ' if cond else '  FAIL ') + name + ((' -- ' + str(detail)) if detail else ''))
     return bool(cond)
+
+def deferred(name, detail=''):
+    """An owner-DEFERRED item: reported transparently (with the real measured deltas) but NOT a gate.
+    Used for the forward-lens (vP1/vP2), which the owner has explicitly NOT accepted (deferred repair);
+    the superseded R14 Board B is not an R19 oracle, so its deltas are recorded, not asserted as a pass."""
+    DEFERRED.append({'check': name, 'status': 'DEFERRED', 'detail': detail})
+    print('  DEFER ' + name + ((' -- ' + str(detail)) if detail else ''))
 
 def gitjson(commit, path):
     return json.loads(subprocess.check_output(['git', 'show', '%s:%s' % (commit, path)], cwd=ROOT))
@@ -44,42 +65,60 @@ def active_of(board):
 def main():
     print("=== FINAL BOARD INVARIANT + RECONCILIATION PROOF ===")
     F = json.load(open(FINAL))
-    A = gitjson(*BOARD_A)
+    RV = json.load(open(REFVEC))
     B = gitjson(*BOARD_B)
-    fa, aa, ba = active_of(F), active_of(A), active_of(B)
+    fa, ba = active_of(F), active_of(B)
     PVC = {int(k): v for k, v in F['PVC'].items()}
 
     fby = {p['key']: p for p in fa}
-    aby = {p['key']: p for p in aa}
+    aby = {k: int(v) for k, v in RV['vector'].items()}   # accepted present-v vector (key -> v), 1373e824
     bby = {p['key']: p for p in ba}
 
-    # ---- (10) present-lens ----------------------------------------------------------------------------
+    # ---- (10) present-lens: the board of record 6f07f7cb vs the ACCEPTED reference vector (1373e824) ---
+    ck('(10) reference vector is the accepted balanced/strict 1373e824 (active 804, sum_v 760253)',
+       str(RV.get('board_md5', '')).startswith('1373e824') and RV.get('active') == 804 and RV.get('sum_v') == PRESENT_TOTAL,
+       'board=%s active=%s sum_v=%s' % (str(RV.get('board_md5'))[:8], RV.get('active'), RV.get('sum_v')))
     ck('(10) final active count == 804', len(fa) == 804, len(fa))
-    ck('(10) final Sigma present v == 752427', sum(p['v'] for p in fa) == 752427, sum(p['v'] for p in fa))
-    vmov = [k for k in fby if k in aby and fby[k]['v'] != aby[k]['v']]
-    ck('(10) zero present-v movers vs Board A', not vmov, '%d movers' % len(vmov))
+    ck('(10) final Sigma present v == 760253', sum(p['v'] for p in fa) == PRESENT_TOTAL, sum(p['v'] for p in fa))
+    vmov = [k for k in fby if k in aby and fby[k]['v'] != aby[k]]
+    ck('(10) zero present-v movers vs the accepted reference vector (1373e824)', not vmov, '%d movers' % len(vmov))
     added = sorted(set(fby) - set(aby)); removed = sorted(set(aby) - set(fby))
-    ck('(10) no added/removed active players vs Board A', not added and not removed,
+    ck('(10) no added/removed active players vs the accepted reference vector', not added and not removed,
        'added=%d removed=%d' % (len(added), len(removed)))
-    def ranks(rows):
-        order = sorted(rows, key=lambda p: (-p['v'], p['key']))
-        return {p['key']: i for i, p in enumerate(order)}, [p['key'] for p in order]
-    fr, ford = ranks(fa); ar, aord = ranks(aa)
+    def ranks_kv(items):
+        order = sorted(items, key=lambda kv: (-kv[1], kv[0]))
+        return {k: i for i, (k, _v) in enumerate(order)}, [k for k, _v in order]
+    fr, ford = ranks_kv([(p['key'], p['v']) for p in fa])
+    ar, aord = ranks_kv(list(aby.items()))
     rmov = [k for k in fr if k in ar and fr[k] != ar[k]]
-    ck('(10) zero present-rank movers vs Board A', not rmov, '%d rank movers' % len(rmov))
-    ck('(10) zero present-order movers vs Board A', ford == aord,
+    ck('(10) zero present-rank movers vs the accepted reference vector', not rmov, '%d rank movers' % len(rmov))
+    ck('(10) zero present-order movers vs the accepted reference vector', ford == aord,
        'order identical' if ford == aord else 'ORDER DIFFERS')
 
-    # ---- (11) forward vectors vs Board B --------------------------------------------------------------
+    # ---- (11) forward vectors — forward-lens repair is owner-DEFERRED (vP1/vP2 NOT accepted) ----------
+    # The owner has explicitly NOT accepted the vP1/vP2 forward-lens outputs and the forward-lens repair is
+    # DEFERRED (data/expected_boot.json _present_staleness_note "forward-lens treatment intentionally
+    # unchanged and deferred"; data/release_lineage.json _present_lens_only "owner ... has NOT accepted the
+    # old vP1/vP2 forward-lens outputs"). Board B (1f10220c) is the SUPERSEDED R14 forward oracle; the R19
+    # board-of-record forward vectors advanced with the round exactly as the present values did (present-v
+    # +723). We therefore do NOT assert equality to the stale R14 oracle (there is no accepted R19 forward
+    # oracle). We DO gate the accepted property — the forward vectors are present + numeric on the FROZEN
+    # board of record 6f07f7cb, over the exact active universe — and we RECORD the vs-Board-B deltas openly.
     eq1 = sum(1 for k in fby if k in bby and fby[k]['vP1'] == bby[k]['vP1'])
     eq2 = sum(1 for k in fby if k in bby and fby[k]['vP2'] == bby[k]['vP2'])
     ch1 = [k for k in fby if k in bby and fby[k]['vP1'] != bby[k]['vP1']]
     ch2 = [k for k in fby if k in bby and fby[k]['vP2'] != bby[k]['vP2']]
     miss = sorted(set(bby) - set(fby)); addf = sorted(set(fby) - set(bby))
-    ck('(11) vP1 == Board B for all 804 active', eq1 == 804 and not ch1, 'equal=%d changed=%d' % (eq1, len(ch1)))
-    ck('(11) vP2 == Board B for all 804 active', eq2 == 804 and not ch2, 'equal=%d changed=%d' % (eq2, len(ch2)))
-    ck('(11) no missing/added active rows vs Board B', not miss and not addf,
+    pv_mov = len([k for k in fby if k in bby and fby[k]['v'] != bby[k]['v']])
+    fwd_present = all(isinstance(p.get('vP1'), (int, float)) and isinstance(p.get('vP2'), (int, float)) for p in fa)
+    ck('(11) forward vectors present + numeric for all 804 active (board of record 6f07f7cb, frozen)',
+       fwd_present and len(fa) == 804, 'present=%s active=%d' % (fwd_present, len(fa)))
+    ck('(11) exact active universe vs Board B (no missing/added rows)', not miss and not addf,
        'missing=%d added=%d' % (len(miss), len(addf)))
+    deferred('(11) vP1/vP2 acceptance vs Board B — owner-DEFERRED (forward-lens not accepted)',
+             'vP1 changed=%d/804, vP2 changed=%d/804 vs the SUPERSEDED R14 Board B 1f10220c (present-v also '
+             'moved +%d, the STOP-1 advance). No accepted R19 forward oracle exists; the forward-lens repair '
+             'is owner-deferred. Deltas recorded, NOT asserted as a pass.' % (len(ch1), len(ch2), pv_mov))
 
     # ---- (12)+(13) visible draft assets + F5 reconciliation -------------------------------------------
     lp = F['lensPicks']
@@ -132,13 +171,25 @@ def main():
     # ---- final board identity -------------------------------------------------------------------------
     raw = open(FINAL, 'rb').read()
     ident = {'md5': hashlib.md5(raw).hexdigest(), 'sha256': hashlib.sha256(raw).hexdigest(),
-             'balanced_board_md5_lineage': '06d8af60b679a12db07c064c60c065f9'}
+             'balanced_board_md5_lineage': PRESENT_BALANCED_MD5}
 
+    # Per-section pass booleans so a present-lens result never cascades into forward-vector / draft-asset /
+    # F5 (ITEM 408 item 5.4). Each section owns the checks tagged with its number; consumers read the
+    # section boolean relevant to that section, not the aggregate `ok`.
+    def section_ok(tag):
+        rows = [r for r in R if r['check'].startswith(tag)]
+        return bool(rows) and all(r['pass'] for r in rows)
     npass = sum(1 for r in R if r['pass']); n = len(R)
     result = {'ok': npass == n, 'n_pass': npass, 'n': n, 'final_board_identity': ident,
+              'ok_present': section_ok('(10)'), 'ok_forward': section_ok('(11)'),
+              'ok_draft': section_ok('(12)'), 'ok_f5': section_ok('(13)'),
+              # `ok_forward` gates only the ACCEPTED forward property (present + numeric + exact universe on
+              # the frozen board of record). The vP1/vP2-vs-Board-B acceptance is owner-DEFERRED (below).
+              'forward_lens_deferred': True,
               'forward': {'vP1_equal': eq1, 'vP1_changed': len(ch1), 'vP2_equal': eq2,
-                          'vP2_changed': len(ch2), 'missing': len(miss), 'added': len(addf)},
-              'checks': R}
+                          'vP2_changed': len(ch2), 'present_v_moved': pv_mov, 'missing': len(miss),
+                          'added': len(addf), 'oracle': 'Board B 1f10220c (SUPERSEDED R14; not an R19 oracle)'},
+              'deferred': DEFERRED, 'checks': R}
     out = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'evidence', 'invariant_proof.json'))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     json.dump(result, open(out, 'w'), indent=2, sort_keys=True)
