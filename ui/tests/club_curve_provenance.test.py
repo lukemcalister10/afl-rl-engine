@@ -148,9 +148,25 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
     st = (b or {}).get("stamp", {})
     check(st.get("pvcPathway") == "RL_PVC2", "CASE1 resolved pathway == RL_PVC2", st.get("pvcPathway"))
     check(st.get("pvcCurveMd5") == "89c14729", "CASE1 resolved curve_md5 == 89c14729", st.get("pvcCurveMd5"))
-    check(str(st.get("board", ""))[:8] == "2ab73a6f", "CASE1 board id 2ab73a6f in stamp")
-    check(st.get("releaseVersion") == "v2.11-final-rc1-PROVISIONAL" and st.get("asOfRound") == 14,
-          "CASE1 stamp carries releaseVersion v2.11-final-rc1-PROVISIONAL + asOfRound 14")
+    # ITEM 408 item 5 — DERIVE CASE1's positive-path identity from the authoritative current release
+    # manifest (data/expected_boot.json), never the historical Round-14 hardcodes (board 2ab73a6f /
+    # asOfRound 14). ingest_inputs.py already ring-fences the board bundle + curve contract against this
+    # SAME manifest (board / as_of_round / store / release_version), so a clean CASE1 (rc==0) proves the
+    # RESOLVED stamp equals the manifest identity; asserting that equality against the live manifest
+    # re-aims this positive path automatically after any advance-repin, with no constant duplicated here.
+    manifest = json.load(open(REAL_BOOT, encoding="utf-8"))
+    man_board = str(manifest.get("board", ""))
+    man_round = manifest.get("as_of_round")
+    man_release = str(manifest.get("release_version", ""))
+    check(bool(man_board) and str(st.get("board", "")) == man_board,
+          "CASE1 stamp board id == current release manifest board %s (derived, not hardcoded)" % man_board[:8],
+          "stamp %s vs manifest %s" % (str(st.get("board", ""))[:8], man_board[:8]))
+    check(bool(man_release) and man_round is not None
+          and st.get("releaseVersion") == man_release and st.get("asOfRound") == man_round,
+          "CASE1 stamp releaseVersion + asOfRound == current release manifest %s / R%s (derived, not hardcoded)"
+          % (man_release, man_round),
+          "stamp %s / R%s vs manifest %s / R%s"
+          % (st.get("releaseVersion"), st.get("asOfRound"), man_release, man_round))
     for stale in ("790136a3", "v2.10", "pvc_curve_L1b", "b1fd0bce", "fc7045d6"):
         raw = json.dumps(b)
         check(stale not in raw, "CASE1 no stale token '%s' carried forward" % stale)
