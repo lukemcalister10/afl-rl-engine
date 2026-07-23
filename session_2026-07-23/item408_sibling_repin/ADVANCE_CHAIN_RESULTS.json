@@ -73,7 +73,7 @@
       "detail": "changed=[]"
     },
     {
-      "name": "CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant/ledger)",
+      "name": "CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant)",
       "ok": true,
       "detail": "moved=[]"
     }

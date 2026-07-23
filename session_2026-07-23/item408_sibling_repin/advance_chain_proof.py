@@ -179,7 +179,7 @@ def run():
         # -- (5) the non-advancing frozen artifacts never moved -------------------------------------------
         non_adv_after = {n: FI.md5(os.path.join(scr, r)) for n, r in NON_ADVANCING.items()}
         moved = [n for n in NON_ADVANCING if non_adv_before[n] != non_adv_after[n]]
-        record("CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant/ledger)",
+        record("CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant)",
                not moved, "moved=%s" % moved)
     finally:
         shutil.rmtree(scr, ignore_errors=True)
