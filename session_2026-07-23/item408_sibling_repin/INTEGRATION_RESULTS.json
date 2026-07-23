@@ -1,6 +1,6 @@
 {
-  "passed": 46,
-  "total": 46,
+  "passed": 60,
+  "total": 60,
   "results": [
     {
       "name": "P1 R19 no-op reproduction: sibling rebuilds to 1373e824 / 804 / 760253 / 9542",
@@ -133,7 +133,7 @@
       "detail": ""
     },
     {
-      "name": "P8 sibling_repin FV-oracle edit has no literal 804 in its CODE (comments aside)",
+      "name": "P8 sibling_repin FV-oracle re-aim has no literal 804 in its CODE (comments aside)",
       "ok": true,
       "detail": "code_has_804=False"
     },
@@ -231,6 +231,76 @@
       "name": "P15/#6 the live gate is coherent again after repair",
       "ok": true,
       "detail": "fails=[]"
+    },
+    {
+      "name": "P16/D1 no-build verify() MISSES the sum-preserving corruption (internal arithmetic intact)",
+      "ok": true,
+      "detail": "verify_ok=True"
+    },
+    {
+      "name": "P16/D1 authoritative check --full FAILS specifically on the EXACT-VECTOR mismatch",
+      "ok": true,
+      "detail": "full build-and-compare: EXACT-VECTOR MISMATCH \u2014 the live reference vector differs from the"
+    },
+    {
+      "name": "P17/D2 active drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle active != contract present_lens active']"
+    },
+    {
+      "name": "P17/D2 active drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 active drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    },
+    {
+      "name": "P17/D2 sum drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sum_v != contract present_lens total']"
+    },
+    {
+      "name": "P17/D2 sum drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 sum drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    },
+    {
+      "name": "P17/D2 sheezel drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sheezel != reference vector Sheezel']"
+    },
+    {
+      "name": "P17/D2 sheezel drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 sheezel drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    },
+    {
+      "name": "P17/D2 reference-filename drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle reference-vector filename != regenerated reference vector']"
+    },
+    {
+      "name": "P17/D2 reference-filename drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 reference-filename drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
     }
   ]
 }

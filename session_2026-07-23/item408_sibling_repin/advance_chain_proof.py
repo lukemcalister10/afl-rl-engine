@@ -1,28 +1,27 @@
 #!/usr/bin/env python3
-"""ITEM 408 item 5 — END-TO-END round-advance chain proof (scratch only; NO real store touched).
+"""ITEM 408 item 5 — END-TO-END round-advance chain proof (FOLDED-IN single-transaction design).
 
 Drives a GENUINE weekly store advance on a throwaway scratch via the accepted staged_apply transaction
-(armed IN-PROCESS against the scratch only — the shipped gate stays OFF), then runs sibling_repin so the
-store, canonical board of record, balanced/strict sibling, full FV reference vector, boot manifest
-identities, release-contract identities/aggregate/seal and the FV oracle all move COHERENTLY, in lockstep:
+(armed IN-PROCESS against the scratch only — the shipped gate stays OFF). Under the folded-in architecture
+the STORE, the CANONICAL BOARD of record AND the balanced/strict SIBLING (+ FV reference vector, boot
+manifest, release-contract identities/aggregate/seal, FV oracle, board-view stamp, sidecar) ALL advance
+INSIDE the ONE transaction (staged_apply._stage_sibling). So immediately after the advance:
 
-  1. staged_apply.apply_snapshot(R20)  -> advances the STORE + CANONICAL BOARD + expected_boot(store/board/
-     round) + release_contract(store/board/season); leaves balanced_board_md5 STALE (the pre-advance pin).
-  2. sibling_repin.check                -> reports STALE (the gate: siblings drifted from the new store).
-  3. sibling_repin.reconcile            -> rebuilds the balanced sibling FROM THE NEW STORE (build-and-
-     compare, a NEW md5 != the pre-advance 1373e824), regenerates the FV reference vector, and moves every
-     dependent balanced/FV pin + present_lens aggregate + contract re-seal + FV oracle + board_view stamp +
-     sidecar coherently. release_contract check PASSES. The canonical board of record (the advance's output)
-     is NOT touched by the repin.
-  4. sibling_repin.check                -> reports CURRENT.
+  1. staged_apply.apply_snapshot(R20)  -> STORE + CANONICAL BOARD advance; the balanced SIBLING advances in
+     the SAME transaction (tracks the new store); every dependent pin/vector/oracle/contract/view is coherent.
+  2. sibling_repin.check                -> CURRENT immediately (no separate repin step; nothing is stale).
+  3. sibling_repin.check --full         -> CURRENT (authoritative build-and-compare: the live reference vector
+     equals the freshly-rebuilt sibling vector EXACTLY).
+  4. sibling_repin.reconcile            -> a correct NO-OP (changed=False); no committed file moves.
 
-Reuses the proven failure_injection_proof.make_scratch (staged_apply-capable) + round_entry snapshot build.
-This exercises the accepted staged_apply/round_finalize machinery UNCHANGED; only sibling_repin is new.
+This SUPERSEDES the withdrawn two-step chain (advance -> stale -> separate reconcile): the sibling repin now
+lives INSIDE the staged_apply transaction, so there is never a post-advance stale interval. Reuses the proven
+failure_injection_proof.make_scratch (staged_apply-capable) + round_entry snapshot build.
 """
-import hashlib
 import json
 import os
 import shutil
+import subprocess
 import sys
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
@@ -39,6 +38,12 @@ R20 = 20
 PRE_BALANCED = "1373e82471a81064ef96820f3db065df"
 RESULTS = []
 
+# artifacts that must NEVER move even as the round advances. A genuine round apply advances the store, the
+# canonical board of record, the season-state (new-round calendar/exposure) and the score ledger (new triples)
+# — so those are excluded; only the curve, the curve contract and the committed per-entrant stay frozen.
+NON_ADVANCING = {n: r for n, r in SR.FROZEN_REL.items()
+                 if n not in ("store", "board_of_record", "score_ledger", "season_state")}
+
 
 def record(name, ok, detail=""):
     RESULTS.append({"name": name, "ok": bool(ok), "detail": detail})
@@ -46,14 +51,11 @@ def record(name, ok, detail=""):
 
 
 def augment_scratch(scr):
-    """FI.make_scratch gives a staged_apply-capable scratch; add what sibling_repin also needs."""
+    """FI.make_scratch gives a staged_apply-capable scratch; add what the folded-in sibling step needs."""
     for d in ("session_2026-07-20", "ui", "session_2026-07-17"):
         dst = os.path.join(scr, d)
         if not os.path.exists(dst):
             shutil.copytree(os.path.join(REPO, d), dst, symlinks=False)
-    for f in ("extract_board_view.py",):        # ensure ui/tools present (copied with ui/)
-        pass
-    # seed the provenance sidecar as CURRENT for the pre-advance store (as the live tree records it)
     live_side = os.path.join(REPO, SR.SIDECAR_REL)
     if os.path.exists(live_side):
         shutil.copy2(live_side, os.path.join(scr, SR.SIDECAR_REL))
@@ -74,24 +76,34 @@ def boot_of(scr):
 
 
 def rc_check(scr):
-    import subprocess
     env = dict(os.environ); env["RL_CONFIG_MODE"] = "gate"
     return subprocess.run([sys.executable, os.path.join(scr, SR.RELEASE_CONTRACT_TOOL_REL), "check"],
                           capture_output=True, text=True, env=env, cwd=scr).returncode == 0
 
 
+def committed_rels(scr, new_md5):
+    """Every committed live target we snapshot to prove a subsequent standalone reconcile is a NO-OP."""
+    return [rel for _n, rel in SA.TARGETS] + [
+        SR.FV_TEST_REL, SR.BOARD_VIEW_WORKING_REL, SR.BOARD_VIEW_PUBLIC_REL, SR.SIDECAR_REL,
+        os.path.join(SR.FV_FIX_REL, SR._reference_vector_name(new_md5))]
+
+
+def state_of(scr, rels):
+    return {r: (FI.md5(os.path.join(scr, r)) if os.path.exists(os.path.join(scr, r)) else None) for r in rels}
+
+
 def run():
     print("=" * 90)
-    print("SIBLING ADVANCE-REPIN — END-TO-END ROUND-ADVANCE CHAIN (scratch only; gate armed in-proc only)")
+    print("SIBLING ADVANCE-REPIN — FOLDED-IN SINGLE-TRANSACTION CHAIN (scratch only; gate armed in-proc only)")
     print("=" * 90)
     scr = FI.make_scratch("advchain")
     try:
         augment_scratch(scr)
         store_before = FI.md5(FI.store_path_of(scr))
         board_before = FI.md5(os.path.join(scr, SR.BOARD_OF_RECORD_REL))
-        boot0 = boot_of(scr)
+        non_adv_before = {n: FI.md5(os.path.join(scr, r)) for n, r in NON_ADVANCING.items()}
 
-        # -- (1) GENUINE store advance via the accepted staged_apply transaction ------------------
+        # -- (1) GENUINE advance via the accepted staged_apply transaction (folds in the sibling) --------
         snap = snapshot_for(scr, R20, n=40, base=88.0, step=1.3)
         FI.arm()
         try:
@@ -101,61 +113,74 @@ def run():
         store_after = FI.md5(FI.store_path_of(scr))
         board_after = FI.md5(os.path.join(scr, SR.BOARD_OF_RECORD_REL))
         boot1 = boot_of(scr)
-        record("CHAIN(1) staged_apply advanced the STORE", store_after != store_before,
-               "%s -> %s" % (store_before[:8], store_after[:8]))
-        record("CHAIN(1) staged_apply regenerated the CANONICAL BOARD of record",
-               board_after != board_before, "%s -> %s" % (board_before[:8], board_after[:8]))
-        record("CHAIN(1) expected_boot store/board/round advanced to R20",
-               boot1["store"] == store_after and boot1["board"] == board_after
-               and boot1["as_of_round"] == R20, "round=%s" % boot1.get("as_of_round"))
-        record("CHAIN(1) balanced_board_md5 is now STALE (unchanged by the store advance)",
-               boot1["balanced_board_md5"] == PRE_BALANCED)
-
-        # -- (2) the GATE detects the post-advance staleness --------------------------------------
-        sr = SR.SiblingRepin(scr)
-        stale_detected = not sr.is_current_fast()
-        record("CHAIN(2) gate reports STALE after the advance (siblings drifted from the new store)",
-               stale_detected)
-
-        # -- (3) sibling_repin moves the siblings in lockstep with the advance --------------------
-        frozen_before = {n: FI.md5(os.path.join(scr, r)) for n, r in SR.FROZEN_REL.items()}
-        rec = sr.reconcile(round_n=R20, generated_at_commit="ADVANCE-CHAIN")
-        boot2 = boot_of(scr)
         rc = json.load(open(os.path.join(scr, SR.RELEASE_CONTRACT_REL)))
         plb = rc["present_lens_baseline"]
-        new_md5 = rec["balanced_board_md5"]
+        new_md5 = boot1["balanced_board_md5"]
         refp = os.path.join(scr, SR.FV_FIX_REL, SR._reference_vector_name(new_md5))
         ref = json.load(open(refp)) if os.path.exists(refp) else {}
+        refvec = ref.get("vector", {})
         fv = open(os.path.join(scr, SR.FV_TEST_REL), encoding="utf-8").read()
+        fo = SR._fv_oracle_aggregates(fv)
         bvw = SR._parse_bundle(os.path.join(scr, SR.BOARD_VIEW_WORKING_REL))
         rct = SR._load_module("acrc", os.path.join(scr, SR.RELEASE_CONTRACT_TOOL_REL))
 
-        record("CHAIN(3) balanced SIBLING rebuilt from the NEW store (md5 changed, tracks the store)",
-               rec["changed"] and new_md5 != PRE_BALANCED and new_md5 == boot2["balanced_board_md5"],
-               "new=%s pre=%s active=%s sumv=%s" % (new_md5[:8], PRE_BALANCED[:8], rec["active"], rec["sum_v"]))
-        record("CHAIN(3) full FV reference vector regenerated from the built sibling",
-               ref.get("board_md5") == new_md5 and ref.get("active") == rec["active"]
-               and ref.get("sum_v") == rec["sum_v"] and ref.get("vector", {}).get("harry-sheezel") == rec["sheezel"])
-        record("CHAIN(3) manifest + contract identities + present_lens aggregate coherent with the sibling",
-               boot2["balanced_board_md5"] == new_md5 and rc["identities"]["balanced_board_md5"] == new_md5
-               and plb["balanced_board_md5"] == new_md5 and plb["active"] == rec["active"]
-               and plb["present_value_total"] == rec["sum_v"])
-        record("CHAIN(3) release-contract RE-SEALED coherently (self-hash matches)",
-               rc.get("contract_sha256") == rct.contract_hash(rc), "seal=%s" % str(rc.get("contract_sha256"))[:12])
-        record("CHAIN(3) FV oracle re-aimed to the new sibling (BOARD_MD5_GOOD + aggregates + ref path)",
-               SR._extract_fv_board_md5(fv) == new_md5 and SR._reference_vector_name(new_md5) in fv
-               and ("'sum_v') == %d" % rec["sum_v"]) in fv and ("'sheezel') == %d" % rec["sheezel"]) in fv)
-        record("CHAIN(3) board_view balanced stamp advanced; board-of-record stamp = the ADVANCED board",
+        record("CHAIN(1) staged_apply advanced the STORE", store_after != store_before,
+               "%s -> %s" % (store_before[:8], store_after[:8]))
+        record("CHAIN(1) staged_apply advanced the CANONICAL BOARD of record",
+               board_after != board_before, "%s -> %s" % (board_before[:8], board_after[:8]))
+        record("CHAIN(1) expected_boot store/board/round advanced to R20",
+               boot1["store"] == store_after and boot1["board"] == board_after and boot1["as_of_round"] == R20,
+               "round=%s" % boot1.get("as_of_round"))
+
+        # -- (2) the balanced SIBLING advanced IN THE SAME transaction; dependents coherent ---------------
+        record("CHAIN(2) balanced SIBLING advanced IN THE SAME TRANSACTION (tracks the new store)",
+               new_md5 != PRE_BALANCED, "%s -> %s" % (PRE_BALANCED[:8], new_md5[:8]))
+        record("CHAIN(2) FV reference vector coherent (board id + internal arithmetic + present-lens)",
+               ref.get("board_md5") == new_md5 and ref.get("active") == len(refvec)
+               and ref.get("sum_v") == sum(int(v) for v in refvec.values())
+               and ref.get("active") == plb["active"] and ref.get("sum_v") == plb["present_value_total"])
+        record("CHAIN(2) FV oracle re-aimed (board id + active + sum + Sheezel + reference filename)",
+               fo["board_md5"] == new_md5 and fo["active"] == plb["active"]
+               and fo["sum_v"] == plb["present_value_total"]
+               and fo["sheezel"] == refvec.get("harry-sheezel")
+               and fo["reference_vector"] == SR._reference_vector_name(new_md5))
+        record("CHAIN(2) contract identities + present_lens + reseal coherent with the sibling",
+               rc["identities"]["balanced_board_md5"] == new_md5 and plb["balanced_board_md5"] == new_md5
+               and rc.get("contract_sha256") == rct.contract_hash(rc))
+        record("CHAIN(2) board_view balanced stamp advanced; board-of-record stamp = the ADVANCED board",
                bvw["stamp"].get("balanced_board_md5") == new_md5
                and str(bvw["stamp"].get("board", ""))[:8] == board_after[:8])
-        record("CHAIN(3) release_contract check PASS on the fully-advanced tree", rc_check(scr))
-        frozen_after = {n: FI.md5(os.path.join(scr, r)) for n, r in SR.FROZEN_REL.items()}
-        record("CHAIN(3) the repin did NOT touch the store / advanced board of record / frozen artifacts",
-               frozen_before == frozen_after,
-               "moved=%s" % [n for n in frozen_before if frozen_before[n] != frozen_after[n]])
+        record("CHAIN(2) release_contract check PASS on the fully-advanced tree", rc_check(scr))
 
-        # -- (4) the gate now reports CURRENT -----------------------------------------------------
-        record("CHAIN(4) gate reports CURRENT after the lockstep repin", SR.SiblingRepin(scr).is_current_fast())
+        # -- (3) the gate is CURRENT IMMEDIATELY after the advance (no separate repin needed) -------------
+        sr = SR.SiblingRepin(scr)
+        record("CHAIN(3) fast gate CURRENT immediately after the advance", sr.is_current_fast())
+        record("CHAIN(3) ordinary verify() coherent immediately after the advance", sr.verify()["ok"])
+        full = None
+        try:
+            full = sr.assert_current(full=True)     # authoritative build-and-compare (rebuild + exact vector)
+        except SR.SiblingStaleError as e:
+            full = {"err": str(e)[:120]}
+        record("CHAIN(3) authoritative check --full CURRENT (build-and-compare, exact vector)",
+               isinstance(full, dict) and full.get("mode") == "full+build-and-compare"
+               and full.get("balanced_board_md5") == new_md5, "%s" % full)
+
+        # -- (4) a subsequent standalone reconcile is a correct NO-OP -------------------------------------
+        before = state_of(scr, committed_rels(scr, new_md5))
+        rec = sr.reconcile(round_n=R20)
+        after = state_of(scr, committed_rels(scr, new_md5))
+        changed_files = [k for k in before if before[k] != after[k]]
+        record("CHAIN(4) subsequent standalone reconcile is a NO-OP (changed=False)",
+               rec.get("no_op") is True and rec.get("changed") is False,
+               "no_op=%s changed=%s" % (rec.get("no_op"), rec.get("changed")))
+        record("CHAIN(4) the no-op reconcile moved NO committed file", not changed_files,
+               "changed=%s" % changed_files)
+
+        # -- (5) the non-advancing frozen artifacts never moved -------------------------------------------
+        non_adv_after = {n: FI.md5(os.path.join(scr, r)) for n, r in NON_ADVANCING.items()}
+        moved = [n for n in NON_ADVANCING if non_adv_before[n] != non_adv_after[n]]
+        record("CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant/ledger)",
+               not moved, "moved=%s" % moved)
     finally:
         shutil.rmtree(scr, ignore_errors=True)
 

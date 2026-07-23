@@ -167,24 +167,6 @@ def _load_module(name, path):
     return mod
 
 
-def _replace_once(text, old, new, what):
-    if old == new:
-        return text
-    c = text.count(old)
-    if c != 1:
-        raise SiblingRepinError("FV-oracle edit '%s': expected 1 occurrence of %r, found %d"
-                                % (what, old, c))
-    return text.replace(old, new)
-
-
-def _replace_required(text, old, new, what):
-    if old == new:
-        return text
-    if old not in text:
-        raise SiblingRepinError("FV-oracle edit '%s': token %r not present" % (what, old))
-    return text.replace(old, new)
-
-
 def _extract_fv_board_md5(fv_src):
     marker = "BOARD_MD5_GOOD = '"
     i = fv_src.index(marker) + len(marker)
@@ -199,15 +181,55 @@ def _extract_fv_int(fv_src, field):
     return int(m.group(1))
 
 
+def _extract_fv_ref_filename(fv_src):
+    """The `reference_vector_<8hex>.json` filename the FV oracle ACTUALLY references (parsed from the
+    source, not computed from BOARD_MD5_GOOD — so a filename-only drift is visible). Fail closed if the
+    filename is absent or ambiguous (more than one distinct name)."""
+    names = re.findall(r"reference_vector_[0-9a-fA-F]{8}\.json", fv_src)
+    uniq = sorted(set(names))
+    if not uniq:
+        raise SiblingRepinError("FV oracle: no reference_vector_<hex>.json filename present")
+    if len(uniq) != 1:
+        raise SiblingRepinError("FV oracle: ambiguous reference-vector filenames %s" % uniq)
+    return names[0]
+
+
 def _fv_oracle_aggregates(fv_src):
-    """The full build-and-compare tuple the FV oracle asserts — the accepted board id, the DERIVED active
-    count, the present-v sum, the Sheezel value and the regenerated reference-vector filename. A drift in
-    ANY of them (even with a correct board id) is therefore detectable (blocking correction 2)."""
+    """The full build-and-compare tuple the FV oracle ACTUALLY asserts — the accepted board id, the DERIVED
+    active count, the present-v sum, the Sheezel value and the actual referenced reference-vector filename.
+    Every value is parsed from the oracle source, so a drift in ANY of them (even with a correct board id,
+    and even when the reference vector itself is current) is detectable (final completion correction 2)."""
     md5 = _extract_fv_board_md5(fv_src)
-    ref = _reference_vector_name(md5)
     return {"board_md5": md5, "active": _extract_fv_int(fv_src, "active"),
             "sum_v": _extract_fv_int(fv_src, "sum_v"), "sheezel": _extract_fv_int(fv_src, "sheezel"),
-            "reference_vector": ref, "reference_vector_present": ref in fv_src}
+            "reference_vector": _extract_fv_ref_filename(fv_src)}
+
+
+def _repair_fv_oracle(fv_src, *, board_md5, active, sum_v, sheezel, ref_name):
+    """Regenerate the FV oracle so EVERY build-and-compare token equals the freshly-built DESIRED value,
+    anchored on the token STRUCTURE (not the current, possibly-corrupt value) — so a single corrupt
+    assertion is replaced even when the other tokens (and the reference vector) are already current, and an
+    UNCHANGED oracle round-trips byte-identical. Fail closed if any expected token is absent or not present
+    exactly once. Note: the short board id also appears in free-text (e.g. the GREEN1 record name), so any
+    remaining occurrences of the OLD short id are swept to the new one after the structural edits."""
+    def sub1(pattern, repl, what, src):
+        new, n = re.subn(pattern, lambda _m: repl, src)
+        if n != 1:
+            raise SiblingRepinError("FV-oracle repair '%s': expected exactly 1 structural match, found %d"
+                                    % (what, n))
+        return new
+    old8 = _extract_fv_board_md5(fv_src)[:8]
+    s = fv_src
+    s = sub1(r"BOARD_MD5_GOOD\s*=\s*'[0-9a-fA-F]{32}'", "BOARD_MD5_GOOD = '%s'" % board_md5, "BOARD_MD5_GOOD", s)
+    s = sub1(r"reference_vector_[0-9a-fA-F]{8}\.json", ref_name, "reference filename", s)
+    s = sub1(r"'active'\)\s*==\s*\d+", "'active') == %d" % active, "active assertion", s)
+    s = sub1(r"'sum_v'\)\s*==\s*\d+", "'sum_v') == %d" % sum_v, "sum_v assertion", s)
+    s = sub1(r"'sheezel'\)\s*==\s*\d+", "'sheezel') == %d" % sheezel, "sheezel assertion", s)
+    s = sub1(r"expect [0-9a-fA-F]{8}/\d+/\d+/\d+/0",
+             "expect %s/%d/%d/%d/0" % (board_md5[:8], active, sum_v, sheezel), "expect-string", s)
+    if old8 != board_md5[:8]:
+        s = s.replace(old8, board_md5[:8])       # sweep any remaining old short-id free-text refs
+    return s
 
 
 def _board_view_coherence(root, *, balanced_md5, canonical_board, store, as_of_round, release_version,
@@ -409,34 +431,22 @@ class RepinPlan:
                 ref_changed = True
         self.changed_map["reference_vector"] = ref_changed
 
-        # --- FV test oracle constants (build-and-compare; anchored, fail-closed edits). EVERY generated
-        #     assertion/expectation is derived from the built artifact — the ACTIVE COUNT, the present-v sum
-        #     and the Sheezel value all come from the built sibling vector (never a literal 804). ---
+        # --- FV test oracle (build-and-compare; STRUCTURAL, fail-closed edits). The current oracle is
+        #     PARSED from its ACTUAL assertion tokens (board id, active, sum_v, Sheezel, reference filename)
+        #     — NOT derived from the reference-vector document — so an FV-oracle-only drift (a wrong active /
+        #     sum / Sheezel / reference filename while the reference vector is already current) is DETECTED
+        #     as a change and the actual corrupt token is REPAIRED (final completion correction 2). Every
+        #     desired value is the built sibling's (no literal 804). An unchanged oracle round-trips
+        #     byte-identical. ---
         fv_src = open(self._p(FV_TEST_REL), encoding="utf-8").read()
-        cur_md5 = _extract_fv_board_md5(fv_src)
-        cur8 = cur_md5[:8]
-        cur_ref = _reference_vector_name(cur_md5)
-        cur_ref_doc = _read_json(self._p(os.path.join(FV_FIX_REL, cur_ref)))
-        cur_active = cur_ref_doc["active"]
-        cur_sumv, cur_sheez = cur_ref_doc["sum_v"], cur_ref_doc["vector"].get("harry-sheezel")
+        oracle = _fv_oracle_aggregates(fv_src)      # ACTUAL parsed board id + aggregates + reference filename
         new_active, new_sumv, new_sheez = sib["active"], sib["sum_v"], sib["sheezel"]
-        new_src = fv_src
-        new_src = _replace_required(new_src, cur_ref, ref_name, "reference filename")
-        new_src = _replace_required(new_src, cur_md5, new_md5, "BOARD_MD5_GOOD/full md5")
-        if cur8 != new8 and cur8 in new_src:                       # remaining 8-char refs (names/strings)
-            new_src = new_src.replace(cur8, new8)
-        new_src = _replace_once(new_src, "'active') == %d" % cur_active,
-                                "'active') == %d" % new_active, "active aggregate")
-        new_src = _replace_once(new_src, "'sum_v') == %d" % cur_sumv,
-                                "'sum_v') == %d" % new_sumv, "sum_v aggregate")
-        new_src = _replace_once(new_src, "'sheezel') == %d" % cur_sheez,
-                                "'sheezel') == %d" % new_sheez, "sheezel aggregate")
-        # the "(expect <md5>/<active>/<sum_v>/<sheezel>/0)" record + docstring triple — active derived too
-        new_src = _replace_required(new_src, "%d/%d/%d" % (cur_active, cur_sumv, cur_sheez),
-                                    "%d/%d/%d" % (new_active, new_sumv, new_sheez), "expect-string aggregate")
-        self.targets["fv_test"] = (FV_TEST_REL, new_src.encode("utf-8"))
-        self.changed_map["fv_test"] = (cur_md5 != new_md5 or cur_active != new_active
-                                       or cur_sumv != new_sumv or cur_sheez != new_sheez)
+        self.targets["fv_test"] = (FV_TEST_REL, _repair_fv_oracle(
+            fv_src, board_md5=new_md5, active=new_active, sum_v=new_sumv, sheezel=new_sheez,
+            ref_name=ref_name).encode("utf-8"))
+        self.changed_map["fv_test"] = (oracle["board_md5"] != new_md5 or oracle["reference_vector"] != ref_name
+                                       or oracle["active"] != new_active or oracle["sum_v"] != new_sumv
+                                       or oracle["sheezel"] != new_sheez)
 
         # --- board-view coherence (blocking correction 2): a view-only corruption (stale/tampered working
         #     OR public bundle) must NOT read as a no-op. `changed` here forces a reconcile that regenerates
@@ -589,10 +599,14 @@ class SiblingRepin:
             raise SiblingRepinError("overlay reference vector incoherent with built sibling")
 
         fv_src = open(os.path.join(overlay, FV_TEST_REL), encoding="utf-8").read()
-        if _extract_fv_board_md5(fv_src) != new_md5:
-            raise SiblingRepinError("overlay FV test BOARD_MD5_GOOD != built")
-        if _reference_vector_name(new_md5) not in fv_src:
-            raise SiblingRepinError("overlay FV test does not reference the regenerated vector")
+        fo = _fv_oracle_aggregates(fv_src)          # board id + active + sum + Sheezel + actual reference filename
+        if not (fo["board_md5"] == new_md5 and fo["active"] == plan.sib["active"]
+                and fo["sum_v"] == plan.sib["sum_v"] and fo["sheezel"] == plan.sib["sheezel"]
+                and fo["reference_vector"] == _reference_vector_name(new_md5)):
+            raise SiblingRepinError("overlay FV oracle aggregates/reference != built sibling "
+                                    "(board=%s active=%s sum=%s sheezel=%s ref=%s)"
+                                    % (fo["board_md5"][:8], fo["active"], fo["sum_v"], fo["sheezel"],
+                                       fo["reference_vector"]))
         subprocess.run([sys.executable, "-m", "py_compile", os.path.join(overlay, FV_TEST_REL)],
                        check=True, capture_output=True)
 
@@ -819,10 +833,13 @@ class SiblingRepin:
         transaction is incomplete. Establishes coherence beyond the sidecar source-store (blocking-issue-3):
           (0) NO incomplete .sibling_txn (the next advance must not begin on an incomplete transaction);
           (1) the sidecar's source-store == the current store AND its balanced pin == expected_boot;
-          (2) verify() — expected_boot / release_contract identities + present_lens / the reference vector /
-              the FV oracle / the sidecar all agree, the contract self-seal is valid, and release_contract
-              check passes (so a corrupted or partially-completed sibling set CANNOT pass the gate).
-        `full` additionally REBUILDS the sibling and compares (authoritative build-and-compare)."""
+          (2) verify() — ORDINARY (no-build) internal coherence: expected_boot / release_contract identities
+              + present_lens / the reference vector's internal arithmetic / the FV oracle / the sidecar all
+              agree, the contract self-seal is valid, and release_contract check passes.
+        `full` is the AUTHORITATIVE build-and-compare: it REBUILDS the sibling and compares the live reference
+        vector's COMPLETE vector mapping — plus active / total / Sheezel — against the freshly-rebuilt sibling,
+        so a SUM-PRESERVING corruption (e.g. player A +1, player B -1, with board id / active / total /
+        Sheezel unchanged) that the no-build internal-arithmetic gate cannot see is caught here."""
         inc = self._incomplete_txns()
         if inc:
             raise SiblingStaleError("incomplete sibling transaction(s) present — recover/rollback before "
@@ -844,7 +861,32 @@ class SiblingRepin:
                 raise SiblingStaleError("balanced sibling rebuilds to %s but the live pin is %s — a store "
                                         "advance left the siblings stale; run `sibling_repin.py reconcile`"
                                         % (sib["board_md5"][:8], str(bal)[:8]))
-            return {"current": True, "mode": "full+coherence", "balanced_board_md5": sib["board_md5"]}
+            # AUTHORITATIVE build-and-compare: the LIVE reference vector must equal the freshly-rebuilt one
+            # EXACTLY. A sum-preserving corruption leaves board id / active / total / Sheezel intact and passes
+            # the no-build gate, but the live vector then differs from the rebuilt vector.
+            refp = self._p(os.path.join(FV_FIX_REL, _reference_vector_name(sib["board_md5"])))
+            if not os.path.exists(refp):
+                raise SiblingStaleError("full build-and-compare: reference vector for %s missing"
+                                        % sib["board_md5"][:8])
+            live = _read_json(refp)
+            live_vec = live.get("vector") or {}
+            if live.get("active") != sib["active"]:
+                raise SiblingStaleError("full build-and-compare: live reference active %s != rebuilt %s"
+                                        % (live.get("active"), sib["active"]))
+            if live.get("sum_v") != sib["sum_v"]:
+                raise SiblingStaleError("full build-and-compare: live reference sum_v %s != rebuilt %s"
+                                        % (live.get("sum_v"), sib["sum_v"]))
+            if live_vec.get("harry-sheezel") != sib["sheezel"]:
+                raise SiblingStaleError("full build-and-compare: live reference Sheezel %s != rebuilt %s"
+                                        % (live_vec.get("harry-sheezel"), sib["sheezel"]))
+            if live_vec != sib["vector"]:
+                diff = sorted(k for k in set(live_vec) | set(sib["vector"])
+                              if live_vec.get(k) != sib["vector"].get(k))
+                raise SiblingStaleError(
+                    "full build-and-compare: EXACT-VECTOR MISMATCH — the live reference vector differs from "
+                    "the freshly-rebuilt sibling vector at %d key(s) (e.g. %s); a sum-preserving corruption the "
+                    "no-build gate cannot see — run `sibling_repin.py reconcile`" % (len(diff), diff[:3]))
+            return {"current": True, "mode": "full+build-and-compare", "balanced_board_md5": sib["board_md5"]}
         return {"current": True, "mode": "coherence"}
 
     def verify(self):
@@ -910,7 +952,7 @@ class SiblingRepin:
                 fails.append("FV oracle sum_v != contract present_lens total")
             if ref_sheezel is not None and fo["sheezel"] != ref_sheezel:
                 fails.append("FV oracle sheezel != reference vector Sheezel")
-            if not fo["reference_vector_present"] or fo["reference_vector"] != ref_name:
+            if fo["reference_vector"] != ref_name:
                 fails.append("FV oracle reference-vector filename != regenerated reference vector")
         except SiblingRepinError as e:
             fails.append("FV oracle unreadable: %s" % e)

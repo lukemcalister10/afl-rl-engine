@@ -358,6 +358,34 @@ one additive fast-forward child of `aa55e29`; no existing commit amended, squash
    KeyError this exposed — board_view/sidecar are not byte-targets in `self.targets` — is fixed). Proven by §6.c
    controls P12/#3–P15/#6.
 
+`[re-runnable]` **Final completion correction (execution-supervisor screening, 2026-07-23) — three narrow
+defects closed; still additive, no history rewritten.** Applied as one plain fast-forward child of `2e25ba6`.
+
+1. **The authoritative full check now compares the EXACT vector.** `assert_current(full=True)` previously
+   rebuilt the sibling but compared only the rebuilt board md5 to the balanced pin — so a SUM-PRESERVING
+   reference-vector corruption (player A +1, player B −1; board id / active / total / Sheezel unchanged) passed
+   both the no-build `verify()` (internal arithmetic intact) and the old full check. Corrected: `check --full`
+   now loads the LIVE reference vector and compares its COMPLETE `vector` mapping — plus active / total /
+   Sheezel — against the freshly-rebuilt sibling, failing with a specific EXACT-VECTOR mismatch reason. The
+   two gates are now clearly distinguished (see §6.b): ordinary no-build coherence (`verify()`) vs authoritative
+   build-and-compare (`check --full`, mode `full+build-and-compare`). Proven by §6.c control P16/D1.
+2. **Standalone `reconcile` now repairs FV-oracle-only drift.** `RepinPlan` previously derived the "current"
+   active/sum/Sheezel from the reference-vector DOCUMENT, so an FV-oracle-only corruption failed `verify()` but
+   `reconcile` reported a no-op. Corrected: the current oracle is PARSED from its ACTUAL assertion tokens (board
+   md5, active, sum, Sheezel, and the actual referenced reference-vector filename); `changed_map["fv_test"]`
+   compares those parsed values with the freshly-built desired values; and `_repair_fv_oracle` regenerates the
+   oracle STRUCTURALLY (anchored on token shape, fail-closed if any expected token is absent or not exactly
+   once) so a corrupt assertion is replaced even when the reference vector is already current, and an unchanged
+   oracle round-trips byte-identical. Proven by §6.c control P17/D2 (active / sum / Sheezel / reference-filename
+   each independently).
+3. **The obsolete two-step advance-chain proof is re-aimed to the folded-in design.** `advance_chain_proof.py`
+   and `ADVANCE_CHAIN_RESULTS.json` previously asserted the WITHDRAWN two-step flow (stale-after-advance) and
+   the committed result claimed 14/14. Re-aimed to the folded-in single-transaction design: the store, canonical
+   board and balanced sibling advance in ONE transaction; the gate is CURRENT immediately (fast + ordinary +
+   authoritative `check --full`); a subsequent standalone `reconcile` is a correct NO-OP; every dependent pin /
+   vector / oracle / contract / view is coherent; the non-advancing frozen artifacts are byte-unchanged. The
+   harness is now fully green and `ADVANCE_CHAIN_RESULTS.json` is regenerated (see §6.c).
+
 ### 6.a CASE1 re-aim (accepted separately)
 
 `[re-runnable]` `ui/tests/club_curve_provenance.test.py` CASE1's two positive-path assertions no longer hardcode
@@ -421,7 +449,18 @@ bundles + public leak-freedom; the sidecar aggregate + seal; the contract self-s
 sibling transaction — not merely the sidecar source-store (blocking-issue 3, extended by the 2nd blocking
 correction). A view-only or sidecar-only corruption is now REPAIRED by `reconcile` (reported changed), not returned
 as a no-op. The FV-oracle re-aim derives the ACTIVE COUNT (and present-v sum + Sheezel) from the built vector —
-no literal `804` (blocking-issue 4).
+no literal `804` (blocking-issue 4), and (final correction 2) it PARSES the actual oracle assertion tokens so an
+FV-oracle-only drift is detected and its actual corrupt token repaired even when the reference vector is current.
+
+`[re-runnable]` **Two distinct gates (final correction 1 — do NOT conflate them).** (a) ORDINARY no-build
+coherence — `sibling_repin.py verify` / `assert_current()` (mode `coherence`): internal agreement across
+expected_boot / release_contract identities + present_lens / the reference vector's internal arithmetic / the FV
+oracle / the sidecar, the contract self-seal, and `release_contract check`. It does NOT rebuild, so a
+SUM-PRESERVING reference-vector corruption (A +1 / B −1) is internally consistent and passes it. (b) AUTHORITATIVE
+build-and-compare — `sibling_repin.py check --full` / `assert_current(full=True)` (mode `full+build-and-compare`):
+rebuilds the sibling and compares the live reference vector's COMPLETE vector mapping + active + total + Sheezel
+against the freshly-rebuilt sibling, so the sum-preserving corruption fails here with an EXACT-VECTOR mismatch.
+The claims note does not present ordinary coherence as build-and-compare.
 
 `[re-runnable]` **Pinned environment.** Every board build ran in the accepted pinned environment
 (`/root/rl_venv312`: Python 3.12.3 / numpy 2.4.4 / scipy 1.17.1 / scikit-learn 1.8.0 / openpyxl 3.1.5;
@@ -432,7 +471,7 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
 ### 6.c Evidence (all re-runnable; scratch/fixtures only; NO real score apply; gate OFF)
 
 `[re-runnable]` **Single-transaction integration** — `session_2026-07-23/item408_sibling_repin/staged_sibling_integration_proof.py`
-→ **46/46 PASS** (the original 28 checks RETAINED; 18 controls ADDED for the 2nd blocking correction; scratch only; gate armed IN-PROCESS against the scratch only):
+→ **60/60 PASS** (the original 28 checks RETAINED; 18 controls added for the 2nd blocking correction; 14 more added for the final completion correction; scratch only; gate armed IN-PROCESS against the scratch only):
 - **Current R19 no-op reproduction.** `build_sibling` on the LIVE tree rebuilds the sibling to `1373e824` / 804 /
   760253 / 9542; `sibling_repin.py reconcile` on the LIVE tree is a NO-OP (no pin moved), writing only the
   provenance sidecar — no existing committed file changed.
@@ -463,6 +502,12 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
   corruption is REPAIRED by standalone `reconcile` (reported changed, not a no-op) and the gate is coherent again
   after — this control also surfaced and fixed a `changed_targets` KeyError (board_view/sidecar are coherence
   flags, not byte-targets).
+- **Authoritative full build-and-compare + FV-oracle-only repair (final correction; the 14 added controls).**
+  P16/D1: a SUM-PRESERVING reference-vector corruption (A +1 / B −1) passes the no-build `verify()` (internal
+  arithmetic intact) but `check --full` FAILS specifically on the EXACT-VECTOR mismatch (rebuild + complete-vector
+  compare). P17/D2 (×4 — active / sum / Sheezel / reference-filename, each independently): an FV-oracle-only drift
+  fails `verify()` on its OWN invariant; standalone `reconcile` reports changed=True (not a no-op) and REPAIRS the
+  actual corrupt token; `verify()` and `check --full` (mode `full+build-and-compare`) are green afterward.
 
 `[re-runnable]` **Supporting suites (re-run this container; pinned venv `/root/rl_venv312`):** FV provenance
 **8/8 PASS** (GREEN1 reproduces `1373e824` / 804 / 760253 / 9542 / 0 movers; RED2/RED3 halt fail-closed with the
@@ -474,16 +519,16 @@ rebuilds `1373e824`); `sibling_repin_proof.py` **26/26** (standalone reconcile b
 rollback/idempotence/repair, incl. the `changed_targets` fix). Frozen artifacts at accepted md5s (board of record
 `6f07f7cb`, store `f37d9716`, curve `56dd7a7b`, curve contract `676ad2b7`, per_entrant `40d7da7c`).
 
-`[report-only]` **`advance_chain_proof.py` is a RETAINED harness for the WITHDRAWN two-step design and now
-measures 11/14** (was reported 14/14). Its CHAIN(1)/CHAIN(2)/CHAIN(3) checks assert the pre-fold-in flow —
-`balanced_board_md5` STALE after `apply_snapshot`, the gate STALE, and a follow-up `reconcile` reporting changed.
-Under the folded-in architecture at `aa55e29` the sibling advances INSIDE the `staged_apply` transaction, so the
-siblings are NOT stale after an advance and the follow-up `reconcile` is a correct NO-OP — those three checks are
-obsolete. This is INDEPENDENT of the 2nd blocking correction: re-running the harness at CLEAN `aa55e29` (the two
-corrected modules stashed to their `aa55e29` bytes) yields the SAME 11/14 with identical failures
-(`new=e4687458` / `sumv=759783`), so the prior `14/14` was a stale carry-over from the two-step commit `99bccb2`.
-The AUTHORITATIVE end-to-end evidence for the folded-in design is the 46/46 single-transaction suite above. The
-harness file and its committed `ADVANCE_CHAIN_RESULTS.json` are left byte-unchanged (out of this correction's scope).
+`[re-runnable]` **`advance_chain_proof.py` re-aimed to the FOLDED-IN single-transaction design (final correction
+3) — 15/15 PASS**, `ADVANCE_CHAIN_RESULTS.json` regenerated. On a genuine R19→R20 scratch advance the store,
+canonical board of record and balanced sibling advance in ONE `staged_apply` transaction (CHAIN 1-2), every
+dependent pin / reference vector / FV oracle / contract identities+present_lens+seal / board-view is coherent, the
+gate is CURRENT IMMEDIATELY (fast + ordinary `verify` + authoritative `check --full` mode `full+build-and-compare`,
+CHAIN 3), a subsequent standalone `reconcile` is a correct NO-OP moving no committed file (CHAIN 4), and the
+non-advancing frozen artifacts — curve `56dd7a7b`, curve contract `676ad2b7`, per-entrant `40d7da7c` — are
+byte-unchanged (CHAIN 5; the store, board of record, season-state and score ledger legitimately advance with the
+round). The prior committed `14/14` asserted the WITHDRAWN two-step flow (stale-after-advance, from the two-step
+commit `99bccb2`) and was superseded; the harness no longer describes obsolete behaviour.
 
 `[report-only]` **Re-run environment reconstruction.** This container reconstructs the accepted pinned env:
 `/home/claude/rl_vendor` (vendored `unidecode`) restored from the repo's committed `vendor/`; suites run under

@@ -902,7 +902,7 @@ class StagedRoundApplier:
                 fails.append("staged FV oracle sum_v != built sibling sum_v")
             if fo['sheezel'] != sib['sheezel']:
                 fails.append("staged FV oracle sheezel != built sibling Sheezel")
-            if not fo['reference_vector_present'] or fo['reference_vector'] != ev['ref_name']:
+            if fo['reference_vector'] != ev['ref_name']:
                 fails.append("staged FV oracle reference-vector filename != regenerated reference vector")
         except SR.SiblingRepinError as e:
             fails.append("staged FV oracle unreadable: %s" % e)

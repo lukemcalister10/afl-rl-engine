@@ -36,6 +36,13 @@ The P1-P9 set (28 checks) is RETAINED; these are ADDED:
   P13/#4 FV-oracle drift                 active / sum / Sheezel / reference-filename each drifted (board id kept) -> each fails its own invariant.
   P14/#5 board-bundle corruption         working and public bundles each corrupted -> each fails the coherence gate.
   P15/#6 view-only repair, not no-op     a view-only corruption -> standalone reconcile REPAIRS it (changed, not no_op).
+
+Final completion controls (authoritative full build-and-compare + FV-oracle-only repair):
+  P16/D1 exact-vector full compare       a sum-preserving reference-vector corruption passes the no-build gate but
+                                        check --full (rebuild + complete-vector compare) fails on EXACT-VECTOR mismatch.
+  P17/D2 FV-oracle-only repair           active / sum / Sheezel / reference-filename oracle drift (reference vector
+                                        already current): verify() fails, reconcile REPAIRS (changed, not no-op),
+                                        verify() + check --full green afterward.
 """
 import copy
 import json
@@ -353,11 +360,13 @@ def p8_active_count_derived():
         fv_bytes = plan.targets["fv_test"][1].decode("utf-8")
         record("P8 FV-oracle active count DERIVED from the built vector (== 800, not a literal 804)",
                "'active') == 800" in fv_bytes and "'active') == 804" not in fv_bytes)
-        # confirm the source-code edit (CODE only, comments stripped) contains no hardcoded 804 literal
+        # confirm the FV-oracle re-aim CODE (comments stripped) contains no hardcoded 804 literal — every
+        # aggregate is derived from the built sibling. Covers the _compute fv_test block + _repair_fv_oracle.
         src = open(os.path.join(REPO, "engine", "rl_after", "ingestion", "sibling_repin.py"), encoding="utf-8").read()
-        block = src[src.index("cur_md5 = _extract_fv_board_md5(fv_src)"):src.index("self.targets[\"fv_test\"]")]
+        block = (src[src.index("def _repair_fv_oracle("):src.index("def _board_view_coherence(")]
+                 + src[src.index("oracle = _fv_oracle_aggregates(fv_src)"):src.index('self.changed_map["fv_test"]')])
         code_only = "\n".join(ln.split("#", 1)[0] for ln in block.splitlines())
-        record("P8 sibling_repin FV-oracle edit has no literal 804 in its CODE (comments aside)",
+        record("P8 sibling_repin FV-oracle re-aim has no literal 804 in its CODE (comments aside)",
                "804" not in code_only, "code_has_804=%s" % ("804" in code_only))
     finally:
         shutil.rmtree(scr, ignore_errors=True)
@@ -552,6 +561,76 @@ def p15_view_only_reconcile_repairs():
         shutil.rmtree(scr, ignore_errors=True)
 
 
+# ================================================================================ P16 (final correction 1)
+def p16_sum_preserving_vector_full_compare():
+    """A SUM-PRESERVING reference-vector corruption (player A +1, player B -1; board id, active, total and
+    Sheezel all unchanged) passes the no-build internal-arithmetic gate but MUST fail the authoritative
+    `check --full`, which rebuilds the sibling and compares the COMPLETE vector."""
+    scr = sib_scratch("sumpreserve")
+    try:
+        refp = os.path.join(scr, SR.FV_FIX_REL, "reference_vector_%s.json" % PRE_BALANCED[:8])
+        rv = json.load(open(refp))
+        keys = list(rv["vector"])
+        a, b = keys[0], keys[1]
+        rv["vector"][a] = int(rv["vector"][a]) + 1
+        rv["vector"][b] = int(rv["vector"][b]) - 1        # sum-preserving; active/total/Sheezel unchanged
+        json.dump(rv, open(refp, "w"), indent=2)
+        v = SR.SiblingRepin(scr).verify()
+        record("P16/D1 no-build verify() MISSES the sum-preserving corruption (internal arithmetic intact)",
+               v["ok"], "verify_ok=%s" % v["ok"])
+        reason = ""
+        try:
+            SR.SiblingRepin(scr).assert_current(full=True)
+        except SR.SiblingStaleError as e:
+            reason = str(e).splitlines()[0]
+        record("P16/D1 authoritative check --full FAILS specifically on the EXACT-VECTOR mismatch",
+               "EXACT-VECTOR MISMATCH" in reason, reason[:90])
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+# ================================================================================ P17 (final correction 2)
+def p17_fv_oracle_only_reconcile_repairs():
+    """FV-oracle-only drift (a wrong active / sum / Sheezel / reference filename while the reference vector
+    is already current): for EACH, verify() fails on its named invariant, standalone reconcile reports
+    changed=True (NOT a no-op) and REPAIRS the actual corrupt token, and verify() + check --full are green
+    afterward."""
+    cases = [
+        ("active", "'active') == 804", "'active') == 803", "FV oracle active", "'active') == 804"),
+        ("sum", "'sum_v') == 760253", "'sum_v') == 760252", "FV oracle sum_v", "'sum_v') == 760253"),
+        ("sheezel", "'sheezel') == 9542", "'sheezel') == 9541", "FV oracle sheezel", "'sheezel') == 9542"),
+        ("reference-filename", "reference_vector_1373e824.json", "reference_vector_deadbeef.json",
+         "FV oracle reference-vector filename", "reference_vector_1373e824.json"),
+    ]
+    for label, old, new, needle, repaired_token in cases:
+        scr = sib_scratch("fvonly_%s" % label.split("-")[0])
+        try:
+            fvp = os.path.join(scr, SR.FV_TEST_REL)
+            src = open(fvp, encoding="utf-8").read()
+            open(fvp, "w", encoding="utf-8").write(src.replace(old, new))
+            v = SR.SiblingRepin(scr).verify()
+            record("P17/D2 %s drift: verify() fails on its invariant" % label,
+                   (not v["ok"]) and any(needle in f for f in v["fails"]),
+                   "%s" % [f for f in v["fails"] if needle in f][:1])
+            res = SR.SiblingRepin(scr).reconcile(round_n=19)
+            after = open(fvp, encoding="utf-8").read()
+            v2 = SR.SiblingRepin(scr).verify()
+            record("P17/D2 %s drift: reconcile REPAIRS it (changed, not a no-op) + verify() green" % label,
+                   res.get("changed") is True and res.get("no_op") is False
+                   and repaired_token in after and new not in after and v2["ok"],
+                   "changed=%s no_op=%s repaired=%s verify=%s"
+                   % (res.get("changed"), res.get("no_op"), repaired_token in after, v2["ok"]))
+            full = None
+            try:
+                full = SR.SiblingRepin(scr).assert_current(full=True)
+            except SR.SiblingStaleError as e:
+                full = {"err": str(e)[:100]}
+            record("P17/D2 %s drift: check --full green afterward" % label,
+                   isinstance(full, dict) and full.get("mode") == "full+build-and-compare", "%s" % full)
+        finally:
+            shutil.rmtree(scr, ignore_errors=True)
+
+
 def main():
     print("=" * 96)
     print("SINGLE-TRANSACTION SIBLING INTEGRATION PROOF (ITEM 408 item 5) — scratch only; gate OFF")
@@ -571,6 +650,8 @@ def main():
     p13_fv_oracle_corruptions()
     p14_board_bundle_corruptions()
     p15_view_only_reconcile_repairs()
+    p16_sum_preserving_vector_full_compare()
+    p17_fv_oracle_only_reconcile_repairs()
     npass = sum(1 for r in RESULTS if r["ok"])
     print("\n  " + "-" * 74)
     print("  RESULT: %d/%d PASS" % (npass, len(RESULTS)))

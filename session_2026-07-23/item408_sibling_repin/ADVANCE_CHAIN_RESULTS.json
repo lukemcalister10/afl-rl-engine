@@ -1,6 +1,6 @@
 {
-  "passed": 14,
-  "total": 14,
+  "passed": 15,
+  "total": 15,
   "results": [
     {
       "name": "CHAIN(1) staged_apply advanced the STORE",
@@ -8,7 +8,7 @@
       "detail": "f37d9716 -> bca1b291"
     },
     {
-      "name": "CHAIN(1) staged_apply regenerated the CANONICAL BOARD of record",
+      "name": "CHAIN(1) staged_apply advanced the CANONICAL BOARD of record",
       "ok": true,
       "detail": "6f07f7cb -> 49b0f2e2"
     },
@@ -18,59 +18,64 @@
       "detail": "round=20"
     },
     {
-      "name": "CHAIN(1) balanced_board_md5 is now STALE (unchanged by the store advance)",
+      "name": "CHAIN(2) balanced SIBLING advanced IN THE SAME TRANSACTION (tracks the new store)",
+      "ok": true,
+      "detail": "1373e824 -> e4687458"
+    },
+    {
+      "name": "CHAIN(2) FV reference vector coherent (board id + internal arithmetic + present-lens)",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(2) gate reports STALE after the advance (siblings drifted from the new store)",
+      "name": "CHAIN(2) FV oracle re-aimed (board id + active + sum + Sheezel + reference filename)",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(3) balanced SIBLING rebuilt from the NEW store (md5 changed, tracks the store)",
-      "ok": true,
-      "detail": "new=e4687458 pre=1373e824 active=804 sumv=759783"
-    },
-    {
-      "name": "CHAIN(3) full FV reference vector regenerated from the built sibling",
+      "name": "CHAIN(2) contract identities + present_lens + reseal coherent with the sibling",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(3) manifest + contract identities + present_lens aggregate coherent with the sibling",
+      "name": "CHAIN(2) board_view balanced stamp advanced; board-of-record stamp = the ADVANCED board",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(3) release-contract RE-SEALED coherently (self-hash matches)",
-      "ok": true,
-      "detail": "seal=dc7740729e9e"
-    },
-    {
-      "name": "CHAIN(3) FV oracle re-aimed to the new sibling (BOARD_MD5_GOOD + aggregates + ref path)",
+      "name": "CHAIN(2) release_contract check PASS on the fully-advanced tree",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(3) board_view balanced stamp advanced; board-of-record stamp = the ADVANCED board",
+      "name": "CHAIN(3) fast gate CURRENT immediately after the advance",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(3) release_contract check PASS on the fully-advanced tree",
+      "name": "CHAIN(3) ordinary verify() coherent immediately after the advance",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "CHAIN(3) the repin did NOT touch the store / advanced board of record / frozen artifacts",
+      "name": "CHAIN(3) authoritative check --full CURRENT (build-and-compare, exact vector)",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': 'e4687458b5aba4a8d6c5c5d16a88a6ae'}"
+    },
+    {
+      "name": "CHAIN(4) subsequent standalone reconcile is a NO-OP (changed=False)",
+      "ok": true,
+      "detail": "no_op=True changed=False"
+    },
+    {
+      "name": "CHAIN(4) the no-op reconcile moved NO committed file",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant/ledger)",
       "ok": true,
       "detail": "moved=[]"
-    },
-    {
-      "name": "CHAIN(4) gate reports CURRENT after the lockstep repin",
-      "ok": true,
-      "detail": ""
     }
   ]
 }
