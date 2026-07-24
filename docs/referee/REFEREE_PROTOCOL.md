@@ -1,4 +1,4 @@
-# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · v1.0 FREEZE CANDIDATE · design seat · 2026-07-24 · NOT FROZEN — awaiting owner F4 word only · DIALS 1–9 RULED · TWIN FILED · SEQUENTIAL CONTROL + NARROWED BINDING CLAIM PER F3v3
+# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · v1.0 · design seat · 2026-07-24 · FROZEN (owner F4 word "F4 Frozen", 2026-07-24, supervisor channel; register v407) · AUD-004 SPECIFICATION OF RECORD · DIALS 1–9 RULED · TWIN FILED · SEQUENTIAL CONTROL + NARROWED BINDING CLAIM PER F3v3
 
 CONFORMANCE EDIT OF RECORD (pen-applied 2026-07-24): the two §7 lines the F3 v0.9 verification
 required (§7.5, §7.9) were corrected by the supervisor pen using the reviewer's exact wording;
