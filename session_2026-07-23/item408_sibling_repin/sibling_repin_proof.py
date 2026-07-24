@@ -36,11 +36,14 @@ import shutil
 import sys
 import tempfile
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 ING = os.path.join(REPO, "engine", "rl_after", "ingestion")
+sys.path.insert(0, HERE)
 sys.path.insert(0, ING)
 import sibling_repin as SR          # noqa: E402
 import scratch_fixture as SF        # noqa: E402
+import proof_out                    # noqa: E402  (external result-JSON contract; register v432 note 6)
 
 STALE_MD5 = "06d8af60b679a12db07c064c60c065f9"    # the pre-STOP-1 balanced pin (a valid earlier identity)
 ACCEPTED_MD5 = "1373e82471a81064ef96820f3db065df"
@@ -375,9 +378,10 @@ def main():
     npass = sum(1 for r in RESULTS if r["ok"])
     print("\n  " + "-" * 70)
     print("  RESULT: %d/%d PASS" % (npass, len(RESULTS)))
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "PROOF_RESULTS.json")
-    with open(out, "w") as f:
-        json.dump({"passed": npass, "total": len(RESULTS), "results": RESULTS}, f, indent=2)
+    # Register v432 note 6: write the result JSON OUTSIDE the Git working tree (fail-closed on write error).
+    out = proof_out.write_result(__file__, "PROOF_RESULTS.json",
+                                 {"passed": npass, "total": len(RESULTS), "results": RESULTS})
+    print("  results written OUTSIDE the checkout: %s" % out)
     return 0 if npass == len(RESULTS) else 1
 
 

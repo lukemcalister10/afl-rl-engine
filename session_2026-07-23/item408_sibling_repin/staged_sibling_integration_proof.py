@@ -45,20 +45,24 @@ Final completion controls (authoritative full build-and-compare + FV-oracle-only
                                         verify() + check --full green afterward.
 """
 import copy
+import hashlib
 import json
 import os
 import shutil
 import subprocess
 import sys
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 ING = os.path.join(REPO, "engine", "rl_after", "ingestion")
+sys.path.insert(0, HERE)
 sys.path.insert(0, ING)
 sys.path.insert(0, os.path.join(REPO, "session_2026-07-20", "weekly_updater_hardening"))
 import sibling_repin as SR                 # noqa: E402
 import staged_apply as SA                  # noqa: E402
 import round_entry as RE                   # noqa: E402
 import failure_injection_proof as FI       # noqa: E402
+import proof_out                           # noqa: E402  (external result-JSON contract; register v432)
 
 GEN = "2026-07-23T00:00:00Z"
 PRE_BALANCED = "1373e82471a81064ef96820f3db065df"
@@ -100,6 +104,52 @@ def new_reference_vectors(scr):
     return sorted(f for f in os.listdir(d) if f.startswith("reference_vector_")
                   and f != "reference_vector_%s.json" % PRE_BALANCED[:8]
                   and f != "reference_vector_06d8af60.json")
+
+
+def _vector_hash(vector):
+    """Deterministic hash of a complete present-value vector (order-independent)."""
+    return hashlib.sha256(json.dumps(vector, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def coherent_baseline(scr):
+    """Register v432: this harness DELIBERATELY creates a non-R19 (materialize_r14) scratch. Under the
+    CURRENT engine that scratch rebuilds the R14 store to its OWN balanced board (a scratch-relative truth,
+    NOT the R19 board 1373e824 / sum 760253 / Sheezel 9542). So reconcile the fresh scratch to that truth
+    and return the scratch-relative baseline every P12/P16/P17 case derives its expectations from — no
+    hardcoded R19 literal. Fails closed if the reconciled baseline is not internally coherent."""
+    boot = _read_json(scr, SR.EXPECTED_BOOT_REL)
+    round_n = boot.get("as_of_round")
+    sr = SR.SiblingRepin(scr)
+    res = sr.reconcile(round_n=round_n)          # build the sibling from THIS scratch -> repin every dependent
+    v = sr.verify()
+    bal = res["balanced_board_md5"]
+    ref_name = SR._reference_vector_name(bal)
+    ref = _read_json(scr, os.path.join(SR.FV_FIX_REL, ref_name))
+    fo = SR._fv_oracle_aggregates(open(os.path.join(scr, SR.FV_TEST_REL), encoding="utf-8").read())
+    sc = _read_json(scr, SR.SIDECAR_REL)
+    vec = ref.get("vector", {})
+    return {
+        "ok": v["ok"], "fails": v["fails"], "round_n": round_n,
+        "balanced_board_md5": bal, "active": res["active"], "sum_v": res["sum_v"],
+        "sheezel": res["sheezel"], "reference_vector": ref_name, "vector": vec,
+        "vector_hash": _vector_hash(vec), "fv_oracle": fo, "sidecar": sc,
+    }
+
+
+def _read_json(scr, rel):
+    with open(os.path.join(scr, rel), encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _fv_token_int(scr, field):
+    """Parse the FV oracle's `…get('<field>') == <int>` assertion value from the scratch (numeric, not a
+    substring-presence test)."""
+    return SR._extract_fv_int(open(os.path.join(scr, SR.FV_TEST_REL), encoding="utf-8").read(), field)
+
+
+def _fv_token_ref(scr):
+    """Parse the FV oracle's ACTUAL referenced reference_vector_<8hex>.json filename from the scratch."""
+    return SR._extract_fv_ref_filename(open(os.path.join(scr, SR.FV_TEST_REL), encoding="utf-8").read())
 
 
 def snapshot_for(scr, rnd, n=30, base=90.0, step=1.1):
@@ -457,10 +507,16 @@ def p11_target_removed_before_collection():
 # ================================================================================ P12 (control #3)
 def p12_reference_value_corruption():
     """Corrupt ONE reference-vector player value while retaining its board id -> assert_current fails
-    (the reference vector's internal arithmetic no longer holds)."""
+    (the reference vector's internal arithmetic no longer holds). Register v432: the setup first reconciles
+    the deliberate R14 scratch to its OWN coherent baseline, then corrupts the SCRATCH-RELATIVE reference
+    vector (not a hardcoded R19 filename), so the injected arithmetic defect is the FIRST and named failure."""
     scr = sib_scratch("refval")
     try:
-        refp = os.path.join(scr, SR.FV_FIX_REL, "reference_vector_%s.json" % PRE_BALANCED[:8])
+        base = coherent_baseline(scr)
+        record("P12/#3 baseline scratch is internally coherent before the mutation",
+               base["ok"], "balanced=%s active=%s sum=%s fails=%s"
+               % (base["balanced_board_md5"][:8], base["active"], base["sum_v"], base["fails"][:1]))
+        refp = os.path.join(scr, SR.FV_FIX_REL, base["reference_vector"])   # the scratch's OWN reference vector
         rv = json.load(open(refp))
         k = next(iter(rv["vector"]))
         rv["vector"][k] = int(rv["vector"][k]) + 7            # board_md5 + stored sum_v retained
@@ -561,23 +617,37 @@ def p15_view_only_reconcile_repairs():
         shutil.rmtree(scr, ignore_errors=True)
 
 
+def _full_check(scr):
+    """assert_current(full=True) as a value: the coherence dict on success, or an {'err':...} dict on stale."""
+    try:
+        return SR.SiblingRepin(scr).assert_current(full=True)
+    except SR.SiblingStaleError as e:
+        return {"err": str(e).splitlines()[0][:120]}
+
+
 # ================================================================================ P16 (final correction 1)
 def p16_sum_preserving_vector_full_compare():
     """A SUM-PRESERVING reference-vector corruption (player A +1, player B -1; board id, active, total and
     Sheezel all unchanged) passes the no-build internal-arithmetic gate but MUST fail the authoritative
-    `check --full`, which rebuilds the sibling and compares the COMPLETE vector."""
+    `check --full`, which rebuilds the sibling and compares the COMPLETE vector. Register v432: the baseline
+    is the scratch's OWN reconciled truth (no R19 literal); the two perturbed keys are NON-Sheezel keys."""
     scr = sib_scratch("sumpreserve")
     try:
-        refp = os.path.join(scr, SR.FV_FIX_REL, "reference_vector_%s.json" % PRE_BALANCED[:8])
+        base = coherent_baseline(scr)
+        record("P16/D1 baseline scratch is internally coherent before the mutation", base["ok"],
+               "balanced=%s active=%s sum=%s vhash=%s fails=%s"
+               % (base["balanced_board_md5"][:8], base["active"], base["sum_v"], base["vector_hash"][:12],
+                  base["fails"][:1]))
+        refp = os.path.join(scr, SR.FV_FIX_REL, base["reference_vector"])   # the scratch's OWN reference vector
         rv = json.load(open(refp))
-        keys = list(rv["vector"])
+        keys = [k for k in rv["vector"] if k != "harry-sheezel"]            # never perturb the Sheezel key
         a, b = keys[0], keys[1]
         rv["vector"][a] = int(rv["vector"][a]) + 1
         rv["vector"][b] = int(rv["vector"][b]) - 1        # sum-preserving; active/total/Sheezel unchanged
         json.dump(rv, open(refp, "w"), indent=2)
         v = SR.SiblingRepin(scr).verify()
         record("P16/D1 no-build verify() MISSES the sum-preserving corruption (internal arithmetic intact)",
-               v["ok"], "verify_ok=%s" % v["ok"])
+               v["ok"], "verify_ok=%s fails=%s" % (v["ok"], v["fails"][:1]))
         reason = ""
         try:
             SR.SiblingRepin(scr).assert_current(full=True)
@@ -590,45 +660,100 @@ def p16_sum_preserving_vector_full_compare():
 
 
 # ================================================================================ P17 (final correction 2)
+def _p17_int_case(label, field, needle):
+    """FV-oracle-only INT-aggregate drift (active / sum / Sheezel). The baseline is the scratch's OWN
+    reconciled truth; corrupt ONLY the selected token to (current - 1) parsed from that scratch (never a
+    hardcoded R19 literal); verify() fails on the token's named invariant; reconcile REPAIRS it to the
+    scratch's freshly-rebuilt truth; the PARSED repaired token equals the rebuilt sibling AND the regenerated
+    reference vector; verify() + authoritative check --full are green."""
+    scr = sib_scratch("fvonly_%s" % label)
+    try:
+        base = coherent_baseline(scr)
+        record("P17/D2 %s drift: baseline scratch is internally coherent before the mutation" % label,
+               base["ok"], "balanced=%s active=%s sum=%s sheezel=%s vhash=%s"
+               % (base["balanced_board_md5"][:8], base["active"], base["sum_v"], base["sheezel"],
+                  base["vector_hash"][:12]))
+        fvp = os.path.join(scr, SR.FV_TEST_REL)
+        cur = _fv_token_int(scr, field)                                   # DISCOVERED current (correct) token
+        good, bad = "'%s') == %d" % (field, cur), "'%s') == %d" % (field, cur - 1)
+        src = open(fvp, encoding="utf-8").read()                          # read BEFORE truncating the file
+        with open(fvp, "w", encoding="utf-8") as f:
+            f.write(src.replace(good, bad, 1))
+        v = SR.SiblingRepin(scr).verify()
+        record("P17/D2 %s drift: verify() fails on its named invariant" % label,
+               (not v["ok"]) and any(needle in f for f in v["fails"]),
+               "%s" % [f for f in v["fails"] if needle in f][:1])
+        res = SR.SiblingRepin(scr).reconcile(round_n=base["round_n"])     # build -> derive -> repair
+        repaired = _fv_token_int(scr, field)                             # PARSE the repaired token (numeric)
+        ref = _read_json(scr, os.path.join(SR.FV_FIX_REL, SR._reference_vector_name(res["balanced_board_md5"])))
+        rebuilt = {"active": res["active"], "sum_v": res["sum_v"], "sheezel": res["sheezel"]}[field]
+        refval = {"active": ref["active"], "sum_v": ref["sum_v"],
+                  "sheezel": ref["vector"].get("harry-sheezel")}[field]
+        ref_arith = (ref["sum_v"] == sum(int(x) for x in ref["vector"].values()))
+        after = open(fvp, encoding="utf-8").read()
+        v2 = SR.SiblingRepin(scr).verify()
+        record("P17/D2 %s drift: reconcile REPAIRS to the SCRATCH's rebuilt truth "
+               "(parsed == rebuilt == reference; changed, not no-op) + verify() green" % label,
+               res.get("changed") is True and res.get("no_op") is False
+               and repaired == rebuilt == refval and ref_arith and (bad not in after) and v2["ok"],
+               "repaired=%s rebuilt=%s ref=%s ref_arith=%s corrupt_absent=%s changed=%s no_op=%s verify=%s"
+               % (repaired, rebuilt, refval, ref_arith, bad not in after, res.get("changed"),
+                  res.get("no_op"), v2["ok"]))
+        full = _full_check(scr)
+        record("P17/D2 %s drift: authoritative check --full green afterward (full+build-and-compare)" % label,
+               isinstance(full, dict) and full.get("mode") == "full+build-and-compare"
+               and full.get("balanced_board_md5") == res["balanced_board_md5"], "%s" % full)
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
+def _p17_reffile_case():
+    """FV-oracle-only reference-FILENAME drift. Corrupt the oracle's referenced filename to a definitely-wrong
+    name (distinct from the scratch's regenerated filename); reconcile REPAIRS it to the scratch-relative
+    regenerated filename derived from the rebuilt board id (never a hardcoded R19 filename)."""
+    label = "reference-filename"
+    scr = sib_scratch("fvonly_reffile")
+    try:
+        base = coherent_baseline(scr)
+        record("P17/D2 %s drift: baseline scratch is internally coherent before the mutation" % label,
+               base["ok"], "balanced=%s ref=%s" % (base["balanced_board_md5"][:8], base["reference_vector"]))
+        fvp = os.path.join(scr, SR.FV_TEST_REL)
+        cur_name = _fv_token_ref(scr)                                     # DISCOVERED current (correct) filename
+        bad_name = "reference_vector_deadbeef.json"                       # definitely wrong, distinct from scratch
+        assert bad_name != cur_name, "corruption filename collided with the scratch's own filename"
+        src = open(fvp, encoding="utf-8").read()                          # read BEFORE truncating the file
+        with open(fvp, "w", encoding="utf-8") as f:
+            f.write(src.replace(cur_name, bad_name))
+        v = SR.SiblingRepin(scr).verify()
+        record("P17/D2 %s drift: verify() fails on its named invariant" % label,
+               (not v["ok"]) and any("FV oracle reference-vector filename" in f for f in v["fails"]),
+               "%s" % [f for f in v["fails"] if "reference-vector filename" in f][:1])
+        res = SR.SiblingRepin(scr).reconcile(round_n=base["round_n"])
+        repaired_name = _fv_token_ref(scr)                               # PARSE the repaired filename
+        want_name = SR._reference_vector_name(res["balanced_board_md5"])  # scratch-relative regenerated name
+        after = open(fvp, encoding="utf-8").read()
+        v2 = SR.SiblingRepin(scr).verify()
+        record("P17/D2 %s drift: reconcile REPAIRS to the regenerated SCRATCH-RELATIVE filename "
+               "(changed, not no-op) + verify() green" % label,
+               res.get("changed") is True and res.get("no_op") is False
+               and repaired_name == want_name and (bad_name not in after) and v2["ok"],
+               "repaired=%s want=%s corrupt_absent=%s changed=%s no_op=%s verify=%s"
+               % (repaired_name, want_name, bad_name not in after, res.get("changed"), res.get("no_op"),
+                  v2["ok"]))
+        full = _full_check(scr)
+        record("P17/D2 %s drift: authoritative check --full green afterward (full+build-and-compare)" % label,
+               isinstance(full, dict) and full.get("mode") == "full+build-and-compare", "%s" % full)
+    finally:
+        shutil.rmtree(scr, ignore_errors=True)
+
+
 def p17_fv_oracle_only_reconcile_repairs():
-    """FV-oracle-only drift (a wrong active / sum / Sheezel / reference filename while the reference vector
-    is already current): for EACH, verify() fails on its named invariant, standalone reconcile reports
-    changed=True (NOT a no-op) and REPAIRS the actual corrupt token, and verify() + check --full are green
-    afterward."""
-    cases = [
-        ("active", "'active') == 804", "'active') == 803", "FV oracle active", "'active') == 804"),
-        ("sum", "'sum_v') == 760253", "'sum_v') == 760252", "FV oracle sum_v", "'sum_v') == 760253"),
-        ("sheezel", "'sheezel') == 9542", "'sheezel') == 9541", "FV oracle sheezel", "'sheezel') == 9542"),
-        ("reference-filename", "reference_vector_1373e824.json", "reference_vector_deadbeef.json",
-         "FV oracle reference-vector filename", "reference_vector_1373e824.json"),
-    ]
-    for label, old, new, needle, repaired_token in cases:
-        scr = sib_scratch("fvonly_%s" % label.split("-")[0])
-        try:
-            fvp = os.path.join(scr, SR.FV_TEST_REL)
-            src = open(fvp, encoding="utf-8").read()
-            open(fvp, "w", encoding="utf-8").write(src.replace(old, new))
-            v = SR.SiblingRepin(scr).verify()
-            record("P17/D2 %s drift: verify() fails on its invariant" % label,
-                   (not v["ok"]) and any(needle in f for f in v["fails"]),
-                   "%s" % [f for f in v["fails"] if needle in f][:1])
-            res = SR.SiblingRepin(scr).reconcile(round_n=19)
-            after = open(fvp, encoding="utf-8").read()
-            v2 = SR.SiblingRepin(scr).verify()
-            record("P17/D2 %s drift: reconcile REPAIRS it (changed, not a no-op) + verify() green" % label,
-                   res.get("changed") is True and res.get("no_op") is False
-                   and repaired_token in after and new not in after and v2["ok"],
-                   "changed=%s no_op=%s repaired=%s verify=%s"
-                   % (res.get("changed"), res.get("no_op"), repaired_token in after, v2["ok"]))
-            full = None
-            try:
-                full = SR.SiblingRepin(scr).assert_current(full=True)
-            except SR.SiblingStaleError as e:
-                full = {"err": str(e)[:100]}
-            record("P17/D2 %s drift: check --full green afterward" % label,
-                   isinstance(full, dict) and full.get("mode") == "full+build-and-compare", "%s" % full)
-        finally:
-            shutil.rmtree(scr, ignore_errors=True)
+    """Four independent FV-oracle-only drift cases (active / sum / Sheezel / reference filename), each on a
+    fresh coherent scratch-relative baseline, each expecting scratch-derived (not R19-literal) repair truth."""
+    _p17_int_case("active", "active", "FV oracle active")
+    _p17_int_case("sum", "sum_v", "FV oracle sum_v")
+    _p17_int_case("sheezel", "sheezel", "FV oracle sheezel")
+    _p17_reffile_case()
 
 
 def main():
@@ -655,9 +780,11 @@ def main():
     npass = sum(1 for r in RESULTS if r["ok"])
     print("\n  " + "-" * 74)
     print("  RESULT: %d/%d PASS" % (npass, len(RESULTS)))
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "INTEGRATION_RESULTS.json")
-    with open(out, "w") as f:
-        json.dump({"passed": npass, "total": len(RESULTS), "results": RESULTS}, f, indent=2)
+    # Register v432 note 6: write the result JSON OUTSIDE the Git working tree (fail-closed on write error);
+    # the assertion tally + process exit status remain authoritative.
+    out = proof_out.write_result(__file__, "INTEGRATION_RESULTS.json",
+                                 {"passed": npass, "total": len(RESULTS), "results": RESULTS})
+    print("  results written OUTSIDE the checkout: %s" % out)
     return 0 if npass == len(RESULTS) else 1
 
 

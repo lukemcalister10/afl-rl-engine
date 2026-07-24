@@ -495,7 +495,11 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
 ### 6.c Evidence (all re-runnable; scratch/fixtures only; NO real score apply; gate OFF)
 
 `[re-runnable]` **Single-transaction integration** — `session_2026-07-23/item408_sibling_repin/staged_sibling_integration_proof.py`
-→ **60/60 PASS** (the original 28 checks RETAINED; 18 controls added for the 2nd blocking correction; 14 more added for the final completion correction; scratch only; gate armed IN-PROCESS against the scratch only):
+→ **66/66 PASS** (register v432 corrected — see §13; the earlier **60/60** is SUPERSEDED: its P12/P16/P17 drift cases
+asserted STALE R19 literals against the deliberately non-R19 `materialize_r14` scratch, which the current engine
+rebuilds to its own balanced board `790df69e` / active 804 / present-v `757081` / Sheezel `7964`; the corrected cases
+derive every expected value from that scratch. Scratch only; gate armed IN-PROCESS against the scratch only; result
+JSON written OUTSIDE the checkout via `ITEM408_PROOF_OUT`):
 - **Current R19 no-op reproduction.** `build_sibling` on the LIVE tree rebuilds the sibling to `1373e824` / 804 /
   760253 / 9542; `sibling_repin.py reconcile` on the LIVE tree is a NO-OP (no pin moved), writing only the
   provenance sidecar — no existing committed file changed.
@@ -526,12 +530,20 @@ byte-exact numpy + bundled OpenBLAS `05c9f9eb`). FV provenance GREEN1 reproduces
   corruption is REPAIRED by standalone `reconcile` (reported changed, not a no-op) and the gate is coherent again
   after — this control also surfaced and fixed a `changed_targets` KeyError (board_view/sidecar are coherence
   flags, not byte-targets).
-- **Authoritative full build-and-compare + FV-oracle-only repair (final correction; the 14 added controls).**
-  P16/D1: a SUM-PRESERVING reference-vector corruption (A +1 / B −1) passes the no-build `verify()` (internal
-  arithmetic intact) but `check --full` FAILS specifically on the EXACT-VECTOR mismatch (rebuild + complete-vector
-  compare). P17/D2 (×4 — active / sum / Sheezel / reference-filename, each independently): an FV-oracle-only drift
-  fails `verify()` on its OWN invariant; standalone `reconcile` reports changed=True (not a no-op) and REPAIRS the
-  actual corrupt token; `verify()` and `check --full` (mode `full+build-and-compare`) are green afterward.
+- **Authoritative full build-and-compare + FV-oracle-only repair (final correction; scratch-relative — register
+  v432).** Each P16/P17 case first reconciles the deliberate R14 scratch to its OWN coherent baseline
+  (`coherent_baseline()` asserts internal coherence and returns the scratch's rebuilt balanced-board MD5 `790df69e`
+  / active 804 / present-v `757081` / Sheezel `7964` / complete vector + hash `508dd317e802…` / regenerated
+  reference-vector filename / parsed FV-oracle values / sidecar), then derives every expected value from that
+  scratch — never a hardcoded R19 literal. P16/D1: a SUM-PRESERVING reference-vector corruption (two NON-Sheezel
+  keys A +1 / B −1) passes the no-build `verify()` (internal arithmetic intact) but `check --full` FAILS
+  specifically on the EXACT-VECTOR mismatch (rebuild + complete-vector compare). P17/D2 (×4 — active / sum /
+  Sheezel / reference-filename, each on a fresh coherent scratch): the selected FV-oracle token is PARSED from the
+  scratch and corrupted to `current − 1` (or a definitely-wrong filename); `verify()` fails on the token's OWN named
+  invariant; standalone `reconcile` reports changed=True (not a no-op) and REPAIRS the token to the scratch's
+  freshly-rebuilt truth — the PARSED repaired token equals the rebuilt sibling AND the regenerated reference vector
+  (`repaired == rebuilt == reference`; reference `sum_v == sum(vector)`); `verify()` and `check --full` (mode
+  `full+build-and-compare`) are green afterward.
 
 `[re-runnable]` **Supporting suites (re-run this container; pinned venv `/root/rl_venv312`):** FV provenance
 **8/8 PASS** (GREEN1 reproduces `1373e824` / 804 / 760253 / 9542 / 0 movers; RED2/RED3 halt fail-closed with the
@@ -1231,6 +1243,75 @@ ok_forward_structure; rebuilt `6f07f7cb`); `invariant_proof.py` **33/33**; `seas
 (12/12 at 320px); `movers.test.js` **62/62**; `test_movers_transition.py` **25/25**; prescreen GREEN.
 Protected artifacts byte-unchanged; no score applied; gate OFF. Post-commit CI four-suite conclusions +
 confirmation every FI step executed are recorded in the hand-back.
+
+---
+
+## 13. Register v432 — staged sibling-integration harness reproduction repair
+
+`[re-runnable]` **Cold review found the staged sibling-integration harness reproducing `54/60`, not the cited
+`60/60` (§6.c).** Root cause: the harness DELIBERATELY builds a non-R19 scratch —
+`sib_scratch() → failure_injection_proof.make_scratch() → scratch_fixture.materialize_r14()` restores the R14
+dynamic baseline (store `968de0c7`, `expected_boot.balanced_board_md5 = 06d8af60`, sidecar absent). Under the
+CURRENT engine that scratch rebuilds the R14 store to its OWN balanced board —
+**`790df69e46c24ac5eecf50555ea2eb79` / active 804 / present-v sum `757081` / Sheezel `7964`** (deterministic;
+complete-vector hash `508dd317e80232d8c2ae3ba10a98f3ef0944a8d6171fd16478add24534e900c3`) — which is NEITHER the
+historical R14 balanced `06d8af60` (sum `752427`) NOR the R19 balanced `1373e824` (sum `760253`). The P16/P17
+(and one P12) drift cases asserted STALE **R19 literals** (`1373e824` / `760253` / `9542` /
+`reference_vector_1373e824.json`) against that R14-relative scratch, so their repair comparisons failed. **This is
+proof-assertion staleness, not a product-rebuild defect** — the product rebuild is deterministic and the accepted
+R19 present authority is untouched. (The earlier register-v431 run-order-pollution hypothesis was tested with a
+two-arm experiment: Arm A `staged alone` reproduced the same `54/60` on a pristine tree — pollution was NOT the
+cause — and advance-chain was `15/15`; v432 settled the R14-scratch diagnosis.)
+
+**Corrected assertion logic — scratch-relative truth; NO R19 literal, NO R19 reseed, NO production/valuation/
+board/store/pin change.** Each P12/P16/P17 case now first `reconcile`s the deliberate R14 scratch to its OWN
+coherent baseline (`coherent_baseline()` — asserts internal coherence BEFORE any mutation, and returns the
+scratch's rebuilt balanced-board MD5 / active / complete vector / vector hash / sum / Sheezel / regenerated
+reference-vector filename / parsed FV-oracle values / sidecar), then derives every expected value from that
+scratch:
+- **P16/D1** (sum-preserving exact-vector): two **NON-Sheezel** vector keys on the scratch's own reference vector
+  are perturbed `+1 / −1`; ordinary no-build `verify()` PASSES (internal arithmetic intact); authoritative
+  `assert_current(full=True)` FAILS specifically on the named **`EXACT-VECTOR MISMATCH`** (not a stale-sidecar
+  error, not a generic failure).
+- **P17/D2** (×4 — active / sum / Sheezel / reference-filename, each on a fresh coherent scratch): the selected
+  FV-oracle token is PARSED from the scratch and corrupted to `current − 1` (or a definitely-wrong filename);
+  `verify()` fails on that token's OWN named invariant; standalone `reconcile` reports `changed=True`,
+  `no_op=False` and REPAIRS the token; the **parsed** repaired token equals the freshly-rebuilt sibling AND the
+  regenerated reference vector (`repaired == rebuilt == reference`; reference `sum_v == sum(vector)`), the corrupt
+  value is absent, ordinary `verify()` is green and `assert_current(full=True)` is green in mode
+  `full+build-and-compare`. The principal assertion compares PARSED numeric/filename values — never a
+  substring-presence test, never a fixed R19 string.
+- **P12/#3** setup uses the same coherent baseline so its injected reference-vector arithmetic corruption
+  (`sum_v != sum(vector)`) is the first and named failure; the invariant is unchanged.
+
+**Proof-output hygiene (register v432 note 6).** The three harnesses previously wrote their result JSON INTO the
+tracked checkout (`INTEGRATION_RESULTS.json`, `ADVANCE_CHAIN_RESULTS.json`, `PROOF_RESULTS.json`). A shared helper
+`proof_out.py` now writes every result JSON OUTSIDE the Git working tree: `ITEM408_PROOF_OUT=<external dir>`
+overrides the default (a fresh external temp dir); an output path inside the checkout (a subdir OR the repo root)
+is REJECTED fail-closed; the write is atomic; the resolved external path is printed; a write failure exits
+non-zero; the assertion tally + exit status remain authoritative; the committed historical result JSONs are left
+byte-untouched (neither rewritten nor deleted). `proof_out_hygiene.test.py` proves external default,
+inside-checkout rejection, and that result writing modifies no tracked byte (**8/8**). After each corrected
+harness run the tracked checkout is `git status`-clean (no result JSON regenerated in-tree).
+
+**Corrected three-harness tallies (pinned venv `/root/rl_venv312`; py 3.12.3 / numpy 2.4.4 + byte-exact
+OpenBLAS; `PYTHONHASHSEED=0`; single-thread BLAS; gate OFF; result JSON external):**
+- `staged_sibling_integration_proof.py` → **66/66 PASS** (the prior `60/60` in §6.c is SUPERSEDED; +6 assertions
+  are the four P17 + P16 + P12 baseline-coherence checks). P12 **3/3**, P16 **3/3**, P17 **16/16**.
+- `advance_chain_proof.py` → **15/15 PASS**.
+- `sibling_repin_proof.py` → **26/26 PASS**.
+
+**No rebuild nondeterminism.** Two independent scratch rebuilds from the same immutable R14 seed produced
+byte-identical board MD5 `790df69e…`, complete vector hash `508dd317e802…`, active 804, sum `757081`, Sheezel
+`7964`, and byte-identical regenerated FV-oracle bytes (md5 `9f1715ad16989ea4b938428309509684`) and
+reference-vector bytes (md5 `037fc83789085529f58b17558a05a7a0`).
+
+**Protected artifacts byte-unchanged vs `a2c2747`** (git-verified empty diff): `rl_model_data.json`,
+`rl_app_data.json`, `expected_boot.json`, `release_contract.json`, `model_config.json`, `season_state.json`,
+`pvc_curve_v2.json`, `applied_rounds_ledger.json`, the value/rank/pos_rank histories, `per_entrant.json`,
+`ui/data/movers.js`, both board-view bundles, every `movers/movers_R*.json`. No production, valuation,
+board-building, store, pin or release-identity byte changed; forward-lens remains owner-DEFERRED. The changed
+surface is exactly: the three proof harnesses + `proof_out.py` + `proof_out_hygiene.test.py` + this note.
 
 ---
 

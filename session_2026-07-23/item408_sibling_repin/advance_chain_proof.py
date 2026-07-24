@@ -24,14 +24,17 @@ import shutil
 import subprocess
 import sys
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 ING = os.path.join(REPO, "engine", "rl_after", "ingestion")
+sys.path.insert(0, HERE)
 sys.path.insert(0, ING)
 sys.path.insert(0, os.path.join(REPO, "session_2026-07-20", "weekly_updater_hardening"))
 import sibling_repin as SR                 # noqa: E402
 import staged_apply as SA                  # noqa: E402
 import round_entry as RE                   # noqa: E402
 import failure_injection_proof as FI       # noqa: E402  (make_scratch, arm, disarm, md5, store_path_of)
+import proof_out                           # noqa: E402  (external result-JSON contract; register v432)
 
 GEN = "2026-07-23T00:00:00Z"
 R20 = 20
@@ -187,9 +190,10 @@ def run():
     npass = sum(1 for r in RESULTS if r["ok"])
     print("\n  " + "-" * 70)
     print("  RESULT: %d/%d PASS" % (npass, len(RESULTS)))
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ADVANCE_CHAIN_RESULTS.json")
-    with open(out, "w") as f:
-        json.dump({"passed": npass, "total": len(RESULTS), "results": RESULTS}, f, indent=2)
+    # Register v432 note 6: write the result JSON OUTSIDE the Git working tree (fail-closed on write error).
+    out = proof_out.write_result(__file__, "ADVANCE_CHAIN_RESULTS.json",
+                                 {"passed": npass, "total": len(RESULTS), "results": RESULTS})
+    print("  results written OUTSIDE the checkout: %s" % out)
     return 0 if npass == len(RESULTS) else 1
 
 
