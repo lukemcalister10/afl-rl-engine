@@ -1,4 +1,4 @@
-# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · DRAFT v0.8 · design seat · 2026-07-24 · NOT FROZEN · DIALS 1–9 RULED · TWIN FILED · PROSPECTIVE-DISPOSITIVE ARCHITECTURE
+# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · DRAFT v0.9 · design seat · 2026-07-24 · NOT FROZEN · DIALS 1–9 RULED · TWIN FILED · SEQUENTIAL CONTROL + NARROWED BINDING CLAIM PER F3v3
 
 Authored read-only at the ITEM 410 design seat against main `13b1618` (register v393). This seat makes
 no repo writes; the deliverable routes to the owner; the pen files.
@@ -38,9 +38,14 @@ the exception path and banded comparator are operative. DIAL-9 (RULED at registe
 word): PROSPECTIVE-DISPOSITIVE — the §7.12 vault read claims only the confirmation-era
 population with declared limits; the BINDING gate is the §7.13 PROSPECTIVE GATE: every
 scheduled panel extension scores the frozen confirmed core vs C0 under predeclared
-door-matched rules, failing units strip, adoption is staged and reversible. v0.8 encodes
-Dial-9, closes F3v2 findings 6, 10a, 11 and 15 as the reviewer specifies, and conforms the
-stale twin language. The same F3 seat verifies v0.8.
+door-matched rules, failing units strip, adoption is staged and reversible. v0.9 adopts the
+F3v3 reviewer-offered resolutions verbatim (F3_VERIFICATION_v0_8.md, register v404): sequential
+control by a declared maximum of prospective looks with per-look Bonferroni spend (finding 4),
+and the binding claim expressly limited to the accrued fixed prospective cohorts under
+player-sampling uncertainty with season-level checks descriptive (finding 7); stage status keys
+to the recipe hash and a strip resets the eligibility sequence (finding 3); the knot ledger and
+the three conformance items are corrected. Nothing else changes. The same F3 seat verifies
+v0.9.
 
 ## 1 · OBJECT AND STANDING
 One immutable adjudication instrument for the best-model race: identical folds, identical metrics,
@@ -62,7 +67,7 @@ peak-horizon read). Targets use complete seasons only; 2026 is excluded while li
 CONFIRMATION (Dial-6 — F3 finding 3; RULED "vault," owner word 2026-07-24):
 selection cutoffs = {2009,…,2019} for every head, one uniform window; confirmation cutoffs =
 everything later that each head reaches (W1 heads: 2020–2024; W3 heads: 2020–2022; W6 heads: none
-in-panel — their confirmation arrives via scheduled extensions, §7.12). Confirmation folds are
+in-panel — their confirmation arrives via scheduled extensions, §7.13). Confirmation folds are
 untouched until §7.12. Scheduled extension: each completed season appends one cutoff under these
 identical rules and bumps the panel version (§9.6) — a scheduled event, not an amendment.
 2.3 **Fold rule (F3 finding 2).** For each outer t: train = all data ≤ t; adjudication = targets
@@ -182,9 +187,10 @@ resolutions ≤ c where c = min{c : BinomCDF(c; N, α) ≥ 0.95} at the round-1 
 α = 0.05); margin = c − observed (REF-NULLCAL, HALT), repeated after any harness change. Under
 Dial-8 every selection-era statistic is EXPLORATORY, and under Dial-9 the §7.12 vault read
 claims only the fixed confirmation-era population — the BINDING gate is the §7.13 PROSPECTIVE
-GATE, whose sampling unit is future seasons as they complete: the honest answer to temporal
-dependence that neither eleven selection cutoffs nor three vault cutoffs can certify (F3v2,
-finding 7).
+GATE, whose evidence completes only after every selection and strip decision, and whose binding
+claims are expressly limited to the accrued fixed prospective cohorts under player-sampling
+uncertainty — season-level checks are descriptive (F3v3, finding 7, reviewer wording adopted
+verbatim).
 Every reported number carries its margin; the three narrowest margins lead every scorecard
 (rulebook Part 3). Anything unmeasurable is reported UNMEASURED — never assumed passing, never
 silently waived. Appendix A (W1 standing, 6.6667) and Appendix B (W3 functional 92.0;
@@ -315,7 +321,7 @@ TESTS (§7.9): each sealed candidate contributes one test per declared door, plu
 removal tests (F3 verification, finding 4); a Bonferroni tightening of the owner's CI90 base,
 never a loosening, retained as exploratory hygiene. AND, either door: no resolved-at-CI90 regression on
 M2, on M6, on M6W, or on the non-door member of {M4, M8}, pooled or within any declared slice
-(TALL-DEV per the §5.1 fallback); AND the §4 cutoff-robustness gate; AND every §7.10 structural
+(TALL-DEV per the §5.1 unmeasured disposition — blocked unless owner-waived); AND the §4 cutoff-robustness gate; AND every §7.10 structural
 gate green with measured margins; AND every binding metric measured — UNMEASURED blocks.
 Guardrail multiplicity is deliberately uncorrected: guardrails only veto, so more uncorrected
 chances to veto make admission strictly harder — conservative by direction.
@@ -432,8 +438,10 @@ any owner-worded follow-on race (panel-version bump).
 
 7.13 **THE PROSPECTIVE GATE — BINDING (Dial-9, RULED at register v402, owner word:
 prospective-dispositive; adoption staged and reversible).** The only binding inference in this
-protocol. Its sampling unit is future seasons as they complete — evidence no selection or
-strip decision can have touched, because it did not exist.
+protocol. Its evidence completes only after every selection and strip decision — untouched by
+construction — and its BINDING CLAIMS are expressly limited to the accrued fixed prospective
+cohorts under player-sampling uncertainty; season-level checks are descriptive (F3v3, finding
+7, reviewer wording adopted verbatim).
 (1) **Freeze at fork report.** PG-CORE and C0 freeze as RECIPES: ingredient set, functional
 forms and the per-fold refitting procedure — no new ingredients, no re-selection, ever;
 parameters refit on train ≤ t per the frozen recipe at each evaluation. Every PG-CORE unit
@@ -447,24 +455,40 @@ all such cutoffs accrued since the fork report, pooled.
 accrued W3-complete prospective cutoffs — and on M8 over accrued W6-complete cutoffs once any
 exist. Unit tests: removal ablations against each unit's OWN door metric on the accrued
 door-relevant cutoffs, PG-CORE-minus-unit jointly refit per the frozen recipe.
-(4) **Predeclared levels and accrual floor.** Core claim resolved at α = 0.05 one-sided on the
-pooled prospective set, paired player-clustered bootstrap per §4 — honestly labelled: early
-accruals are few and prospective power grows season by season; the seasons themselves are the
-independent draws no historical resampling could supply. Unit family at each extension:
-α_unit = 0.10 / K_p one-sided, K_p = units under prospective test at that extension. ACCRUAL
+(4) **Sequential control, predeclared levels, accrual floor (F3v3, finding 4 — reviewer fix
+adopted: declared maximum looks with per-look Bonferroni spend).** Of the reviewer's two
+offered regimes, per-look Bonferroni is adopted, and the reason it is the simpler one HERE is
+stated: a single predeclared terminal analysis would suspend all binding force until a fixed
+accrual horizon, unwinding the owner-ruled staged adoption of Dial-9, while Bonferroni across
+a declared maximum of looks is arithmetically trivial and leaves staging intact. L_MAX = 6
+prospective looks, one per scheduled extension, frozen (§12 ledger). Per look: the core claim
+tests at α_core = 0.05 / L_MAX one-sided on the pooled accrued set; the unit family tests at
+α_unit = 0.10 / (K_p · L_MAX) one-sided, K_p = units under prospective test at that look; B
+scales per §4, B = max(2,000, ⌈50/α⌉). The BINDING CLAIM at every look is expressly limited to
+the accrued fixed prospective cohorts under player-sampling uncertainty (finding 7); per-season
+splits and season-level consistency checks are reported DESCRIPTIVE, never gating. ACCRUAL
 FLOOR: MIN_PROS = 3 door-relevant prospective cutoffs must have accrued before any
 fail-to-confirm strip can fire; until then a unit's status is UNDER PROSPECTIVE TEST.
 Exception: a unit whose removal shows resolved door-metric IMPROVEMENT — resolved harm from
-the unit — strips immediately at any accrual.
-(5) **Strip and re-freeze.** A stripped unit leaves PG-CORE; the reduced recipe re-freezes and
-continues; its future evaluations occur on later extensions — data that does not exist at
+the unit — strips immediately at any accrual, at the same per-look α_unit. AFTER LOOK L_MAX:
+binding testing CLOSES; unit statuses finalize at the final look — a unit still unconfirmed
+with its accrual floor met strips; a unit whose floor never accrued within L_MAX (not
+reachable under the §2.2 cadence; recorded for completeness) reports UNRESOLVED to the owner.
+Later extensions score DESCRIPTIVELY only, and the §7.13(6) reversion monitor continues as a
+descriptive alarm — expressly non-inferential; flags raise, only the owner's word acts.
+(5) **Strip and re-freeze.** A stripped unit leaves PG-CORE; the reduced recipe re-freezes under a NEW
+RECIPE HASH and continues; its future evaluations occur on later extensions — data that does not exist at
 strip time, so no strip branch is ever assessed on the evidence that selected it (F3v2,
 finding 3, resolved at the binding layer by temporal ordering).
 (6) **Staged, reversible adoption (owner words; Law 10 untouched).** The gate stages
-ELIGIBILITY only; every adoption act is the owner's word under the seam pattern. STAGE 1
-eligibility: the core claim resolves on M4 at the first extension with ≥1 W3-complete
-prospective cutoff. STAGE 2 eligibility: the core claim holds resolved at two consecutive
-extensions. REVERSIBILITY: every owner-worded adoption release records its rollback target; if
+ELIGIBILITY only; every adoption act is the owner's word under the seam pattern. STAGE STATUS
+IS KEYED TO THE PG-CORE RECIPE HASH (F3v3, finding 3): every strip changes the hash and RESETS
+the eligibility sequence — the first qualifying result must come from an extension AFTER the
+strip; no result earned under a prior hash carries forward. STAGE 1 eligibility: the core
+claim resolves on M4, at the per-look level, at the first extension under the current hash
+with ≥1 W3-complete prospective cutoff — a one-cutoff Stage 1 binds only the claim as narrowed
+above, nothing broader. STAGE 2 eligibility: the core claim holds resolved at two consecutive
+extensions under the same hash. REVERSIBILITY: every owner-worded adoption release records its rollback target; if
 at any later extension the pooled core claim shows resolved harm — PG-CORE resolvedly losing
 to C0 on M4 — a REVERSION FLAG raises to the owner with the rollback path; a post-adoption
 unit strip raises a re-release flag. Flags raise; only the owner's word acts.
@@ -541,14 +565,16 @@ prospective evaluation, and M8/M6W confirmation-era additions land per §§7.12�
 
 ## 10 · FREEZE RULES
 Preconditions, in order: **F1** — the §11 compliance map verified line-by-line; **F2** — the owner
-rules Dials 1–5 (since extended: 1–8); **F2b** — the acceptance-twin L-SMOOTH amendment
+rules Dials 1–5 (since extended: 1–9); **F2b** — the acceptance-twin L-SMOOTH amendment
 worded and filed, else the §7.10 exception path and the §6 banded comparator stay struck;
 **F3** — one cold blind review of THIS protocol by a seat that is neither its
 author nor the harness implementer (Dial-5 confirms); **F4** — the owner's freeze word, recorded in
-the register. Status at v0.8: Dials 1–9 ruled; the twin amendment FILED (register v400; F2b CLOSED). F3v2
-findings 3, 4 and 7 resolve under Dial-9's prospective-dispositive architecture; 6, 10a, 11
-and 15 close by full specification; stale twin language conformed — the same F3 seat verifies
-v0.8; then F1 re-verification; F4 closes.
+the register. Status at v0.9: Dials 1–9 ruled; twin FILED (v400; F2b CLOSED). F3v3's two blockers close by
+reviewer-offered fixes adopted verbatim — per-look Bonferroni sequential control, and the
+binding claim limited to the accrued fixed prospective cohorts under player-sampling
+uncertainty; stage status keys to the recipe hash with strip-resets-sequence; the knot ledger
+and three conformance items are corrected. The same F3 seat verifies v0.9; then F1
+re-verification; F4 closes.
 After freeze: the rules of the game — folds, targets, metrics, slices, fences, budgets, bars,
 procedures — are immutable except by owner-worded amendment, version-bumped, effective only from
 the NEXT round, with all official results re-scored under the amended version so every number in
@@ -635,11 +661,11 @@ none may be cited as owner-worded): SUPPORT_MIN = 200 eligible cells; smoothness
 = 5% of fitted range; R_MAX = 6 rounds; class lifetime = 3 raced rounds; selection/confirmation
 boundary = 2019/2020; canaries ≥ 3; null-candidates ≥ 20; probability clip = 1e-4; B = max(2000,
 ⌈50/α⌉); bootstrap seed base = 20260724; NULLCAL N = 200 with pass bound c = min{c : BinomCDF(c; N, α)
-≥ 0.95} (c = 15 at α = 0.05); REF-FADE tolerance = the measured floor's CI90, nothing else; C0-smooth knots
-{21, 24, 27, 30}, boundary {18, 33}; M5 truncation = 6 seasons; capacity-dial default = grid
+≥ 0.95} (c = 15 at α = 0.05); REF-FADE tolerance = the measured floor's CI90, nothing else; C0-smooth rcs knots (20, 24, 28, 32), input clamp [18, 33]; M5 truncation = 6 seasons; capacity-dial default = grid
 median; LightGBM = 4.3.0 exactly; C3 no-inner rule: n_estimators = 300 fixed on the default grid
-cell (31, 0.03, 20); MIN_PROS = 3 door-relevant prospective cutoffs; adoption staging:
-Stage 1 = first resolved extension, Stage 2 = two consecutive extensions.
+cell (31, 0.03, 20); MIN_PROS = 3 door-relevant prospective cutoffs; L_MAX = 6 prospective looks; adoption staging, keyed to
+the recipe hash with strip-resets-sequence: Stage 1 = first resolved extension under the
+current hash, Stage 2 = two consecutive under the same hash.
 
 ## APPENDIX A · WORKED STANDING FIXTURE (REF-FIXTURE; harness must reproduce bit-exactly)
 One cutoff, W1, five eligible cells. Realized means r = (90, 80, 70, 60, 50); realized games
