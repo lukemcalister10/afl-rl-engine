@@ -89,3 +89,28 @@ touch the frozen forecast-core referee (no protocol amendment needed for it). Ro
 experiments in the extraction workbook; findings return as owner reads that seed the
 pricing-layer design deliverable. His original ITEM 409 instinct (the floor is too convex against
 solid non-elite players; +2 above replacement is not −10 below) is the sealed context.
+
+
+## AMENDMENT 2 · pen-filed 2026-07-24 (owner rulings via the 411 execution seat, recorded on issue #146; charter correction)
+**Charter correction, owned by the pen.** The ADDITIVE SCHEMA section asserted "drafted-never-played
+players are absent from the store" as the rationale for a required per-year draft-size reference
+table. Direct store inspection (seat-verified; Flynn Perez evidence: 2019 ND pick 35, store carries
+only his 2025 SSP re-entry under the one-row/later-entry policy) shows that claim was OVERBROAD —
+the pen inferred it without inspecting the store, a verify-before-recording violation in the
+charter's own drafting. Withdrawn.
+**Owner rulings of record (2026-07-24, owner-in-chat at the 411 seat; issue #146):**
+- The model-facing draft order is CONTINUOUS WITHIN EACH YEAR×STREAM GROUP: `stream_pick` is the
+  compressed entrant order, exactly the integer sequence 1..N per populated group — not the raw
+  AFL selection number. Gap-compression edits are lawful under this convention.
+- PSD is CONSOLIDATED INTO RD, treated as the first rookie selection(s); no PSD rows remain.
+- Matt Maguire is REMOVED ("should never have been in the store"). Aiden O'Driscoll is GDEF.
+- Position edits are owner-authored historical corrections; the manifest reason may be populated
+  CLASS-WIDE as "historical position classification was wrong; corrected by owner review".
+**Consequences.** (1) `stream_pick` is redefined per the ruling above; the edit-law distinction is
+sharpened: POSITION fields are historical record (knowable-at-the-time binds); PICK fields are a
+model-facing convention under owner authority (the convention, applied consistently, is the law —
+still as-of-entry information, so referee origin-safety is unaffected). (2) With 1..N continuity
+validated per group, per-group N is DERIVABLE from the store; the per-year reference table becomes
+OPTIONAL (owner's choice) rather than required — R-ERA context reads off max-pick per group.
+(3) The seat's validated continuity result (every populated group exactly 1..N, no gaps, no
+duplicates; 2026 MSD: Hall-Kahan 10, Cooke 11) is the acceptance shape for the manifest.
