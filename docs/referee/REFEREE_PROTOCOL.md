@@ -1,4 +1,4 @@
-# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · DRAFT v0.7 · design seat · 2026-07-24 · NOT FROZEN · DIALS 1–8 RULED · TWIN AMENDMENT WORDED · SPEC-COMPLETION PER F3 VERIFICATION
+# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · DRAFT v0.8 · design seat · 2026-07-24 · NOT FROZEN · DIALS 1–9 RULED · TWIN FILED · PROSPECTIVE-DISPOSITIVE ARCHITECTURE
 
 Authored read-only at the ITEM 410 design seat against main `13b1618` (register v393). This seat makes
 no repo writes; the deliverable routes to the owner; the pen files.
@@ -33,10 +33,14 @@ on Law 3 (L-SMOOTH), recorded at §12 and encoded at §7.10 and §6. F3 verifica
 FAIL. v0.6 closes the reviewer-specified spec-completion set and encodes DIAL-8 (RULED at
 register v399, owner word): SELECTION IS EXPLORATORY, CONFIRMATION IS DISPOSITIVE — failed
 confirmation strips the unit; provisional M8 units are barred from adoption artifacts until
-confirmed. The acceptance-twin L-SMOOTH amendment is WORDED (owner words "Twin line
-approved," 2026-07-24, this channel); F2b closes on the pen's filing of the one-line twin
-edit, which activates the §7.10 exception path and the §6 banded comparator. The same F3 seat
-verifies v0.7.
+confirmed. The acceptance-twin L-SMOOTH amendment is FILED (register v400; Law 10 act; F2b CLOSED) —
+the exception path and banded comparator are operative. DIAL-9 (RULED at register v402, owner
+word): PROSPECTIVE-DISPOSITIVE — the §7.12 vault read claims only the confirmation-era
+population with declared limits; the BINDING gate is the §7.13 PROSPECTIVE GATE: every
+scheduled panel extension scores the frozen confirmed core vs C0 under predeclared
+door-matched rules, failing units strip, adoption is staged and reversible. v0.8 encodes
+Dial-9, closes F3v2 findings 6, 10a, 11 and 15 as the reviewer specifies, and conforms the
+stale twin language. The same F3 seat verifies v0.8.
 
 ## 1 · OBJECT AND STANDING
 One immutable adjudication instrument for the best-model race: identical folds, identical metrics,
@@ -147,8 +151,9 @@ set — one cutoff, one vote.
   seasons s ∈ W6 of the realized seasonal mean; cell weight = games in that arg-max season
   (weight-don't-gate). Predicted peak, REACH-WEIGHTED (F3 verification, finding 6): sort the
   window's seasons by μ descending as μ_(1) ≥ … ≥ μ_(6) with play probabilities P_(j); then
-  predicted peak = Σ_j μ_(j) · P_(j) · Π_{i<j}(1 − P_(i)) / (1 − Π_{s∈W6}(1 − P_s)) — the exact
-  expected realized peak under the frozen independence convention. A season the contestant says
+  predicted peak = Σ_j μ_(j) · P_(j) · Π_{i<j}(1 − P_(i)) / (1 − Π_{s∈W6}(1 − P_s))  — the expected
+  maximum of the emitted conditional means under the frozen independence convention (F3v2,
+  finding 6 note). A season the contestant says
   is barely reachable contributes almost nothing regardless of its conditional mean: the remote-
   peak route is closed mechanically, and M6W binds window survival beside the door. If all
   P_s = 0, predicted peak := 0 and the cell ranks bottom. BINDING FORM = STANDING ONLY; the
@@ -175,9 +180,11 @@ coverage. Null calibration, numeric criterion (finding 7): before round 1 the ha
 N = 200 sealed null perturbations of C0 through the identical pipeline; PASS iff observed
 resolutions ≤ c where c = min{c : BinomCDF(c; N, α) ≥ 0.95} at the round-1 α (c = 15 at
 α = 0.05); margin = c − observed (REF-NULLCAL, HALT), repeated after any harness change. Under
-Dial-8 every selection-era statistic is EXPLORATORY; the sole binding inference in this
-protocol is the §7.12 dispositive confirmation event — a fresh-era, single-touch test, which is
-the honest answer to selection-era dependence that eleven cutoffs cannot certify.
+Dial-8 every selection-era statistic is EXPLORATORY, and under Dial-9 the §7.12 vault read
+claims only the fixed confirmation-era population — the BINDING gate is the §7.13 PROSPECTIVE
+GATE, whose sampling unit is future seasons as they complete: the honest answer to temporal
+dependence that neither eleven selection cutoffs nor three vault cutoffs can certify (F3v2,
+finding 7).
 Every reported number carries its margin; the three narrowest margins lead every scorecard
 (rulebook Part 3). Anything unmeasurable is reported UNMEASURED — never assumed passing, never
 silently waived. Appendix A (W1 standing, 6.6667) and Appendix B (W3 functional 92.0;
@@ -229,16 +236,24 @@ every contestant, identically.
 
 ## 6 · CONTESTANTS
 - **C0 · BENCHMARK (Dial-7 — RULED, owner words 2026-07-24: smooth it, and test that the
-  smoothing actually helps).** Two ingredients: one recency λ and an age-drift term as a SMOOTH
-  age curve, FULLY FROZEN (F3 verification, finding 10): natural cubic spline in age, interior
-  knots {21, 24, 27, 30}, boundary knots {18, 33}, constant extrapolation outside [18, 33] —
-  the fitted value at 33 is the asymptote REF-FADE reads — exactly four free coefficients, no
-  penalty, fit by closed-form weighted least squares (weight = games) on train cells per fold.
-  Two conforming implementers cannot diverge. C0-smooth seeds the governed core. BASELINE CERTIFICATION (owner-directed): at
+  smoothing actually helps).** Two ingredients, FROZEN TO THE DESIGN MATRIX (F3v2, finding 10a).
+  LEVEL: L_i(t) = Σ_{s≤t} e^(−λ(t−s))·g_s·m_s / Σ_{s≤t} e^(−λ(t−s))·g_s (g, m = season games
+  and mean); λ on the frozen grid {0.05, 0.10, …, 0.60}. DRIFT: drift(a) = c₁ + c₂·a′ +
+  c₃·X₁(a′) + c₄·X₂(a′), a′ = clamp(a, 18, 33) — constant extrapolation by input clamping; the
+  value at a′ = 33 is the asymptote REF-FADE reads — with the unnormalized restricted-cubic-
+  spline basis on knots k = (20, 24, 28, 32), coefficient order exactly as written:
+  X_j(a′) = (a′−k_j)₊³ − (a′−k₃)₊³·(k₄−k_j)/(k₄−k₃) + (a′−k₄)₊³·(k₃−k_j)/(k₄−k₃), j ∈ {1, 2}.
+  Exactly four coefficients. FIT, deterministic per fold: the model predicts mean_{t+1} =
+  L_i(t) + drift(age at t+1); for each grid λ, L is computed and (c₁..c₄) solve closed-form
+  weighted least squares of (mean_{t+1} − L_i(t)) on the basis, weight = games_{t+1}, over
+  train transition cells; the reported (λ, c₁..c₄) is the grid minimizer of the weighted
+  objective, ties to the smaller λ. The response and the joint λ–drift relationship are thereby
+  fixed; Appendix B.4 pins the basis numerically. Two conforming implementers cannot diverge. C0-smooth seeds the governed core. BASELINE CERTIFICATION (owner-directed): at
   round 0, before any candidate scoring, C0-smooth races C0-banded — the four-entry step table on the
   frozen bands {≤22, 23–26, 27–29, 30+}, values refit per fold; present under the owner's Law-3
-  interpretive read as a declared, measured exception, operative on the pen's filing of the
-  worded §12 twin amendment (F2b); certification comparator only, never seed, never adoptable — paired, full
+  interpretive read as a declared, measured exception, operative — the worded twin
+  amendment is FILED (register v400; F2b CLOSED); certification comparator only, never seed,
+  never adoptable — paired, full
   §4 suite, selection folds only, sealed and logged. The owner's stated expectation is on
   record: the curve should outperform the brackets. If C0-banded resolvedly beats C0-smooth on
   the headline at CI90, the race pauses and the owner is notified before proceeding — the seed
@@ -344,17 +359,22 @@ NUMERIC GATES:
   adjacent-grid step ≤ 5% of fitted range (Law 3 on estimators); margin = largest step share.
   Exception path (per the owner's Law-3 interpretive read, §12): an UNDECLARED step beyond the
   bound HALTs; a mechanism may instead REGISTER a declared discontinuity — story stated, step
-  measured and reported as the margin — and race as a flagged exception. The exception path is WORDED
-  (owner, "Twin line approved," 2026-07-24) and becomes operative when the pen's §12 twin edit
-  lands on main (F2b); until that filing, the twin's plain text governs and every discontinuity
-  beyond the bound HALTs.
-- **REF-FADE** — the true L-SAGE-FADE predicates, per fold (F3 verification, finding 15).
-  MEASURED FLOOR := the realized games-weighted mean production of train cells aged ≥ 33, all
-  positions pooled. Three sub-predicates on the candidate: F-1 DECLINE — the fitted age effect
-  is monotone non-increasing over ages ≥ 30 (margin = max positive adjacent step); F-2 NEVER
-  BELOW — the games-weighted mean PREDICTION over train cells aged ≥ 33 is ≥ floor × (1 − 0.15)
-  (margin = distance above the bound); F-3 NEVER PROPPED — the same mean prediction is ≤ floor
-  × (1 + 0.15) (margin = distance below the bound). The ±15% band is a seat-set constant (§12).
+  measured and reported as the margin — and race as a flagged exception. The exception path is
+  OPERATIVE — the owner-worded twin amendment is FILED (register v400; F2b CLOSED); the twin
+  and this protocol now state one rule.
+- **REF-FADE** — the L-SAGE-FADE predicates on TOTAL FITTED PREDICTIONS, per fold (owner
+  routing word 2026-07-24; F3v2, finding 15). MEASURED FLOOR := the realized games-weighted
+  mean production of train cells aged ≥ 33, all positions pooled, with its player-clustered
+  bootstrap CI90 [floor_lo, floor_hi] — the floor's measured CI is the ONLY tolerance anywhere
+  in this gate. F-1 DECLINE: per-age-year games-weighted mean TOTAL predictions over train
+  cells are monotone non-increasing across ages 30, 31, 32, 33+ (margin = max positive
+  adjacent step; no band). F-2 NEVER BELOW: EVERY individual total prediction for a train cell
+  aged ≥ 33 is ≥ floor_lo (margin = min over cells of prediction − floor_lo). F-3 TOWARD, NOT
+  PROPPED: the pooled games-weighted mean total prediction over train cells aged ≥ 33 lies
+  inside [floor_lo, floor_hi] (margin = distance to the violated bound). ESCALATION CLAUSE
+  (owner word): if round-0 or certification measurement shows these strict predicates
+  unworkable — for example, C0 itself cannot pass — the seat escalates to the owner with the
+  measurements; the predicates never silently loosen.
 - **REF-MANIFEST** — provenance rows missing = 0; margin = 0 − missing.
 - **REF-CANARY** — canaries halted − canaries shipped = 0; margin = that difference.
 - **REF-FIXTURE** — max absolute deviation across Appendices A–B = 0 exactly; margin = the
@@ -382,33 +402,75 @@ round — the passing candidate leading by the same key; every other passer flag
 PASSED-NOT-ADMITTED and auto-reseals next round, consuming no new budget and counting in the
 next round's family. The joint refit after admission produces the next round-start core; the
 backward pass then runs. No tie ever resolves by seat discretion.
-7.12 **Confirmation — DISPOSITIVE (Dial-8 — RULED at register v399, owner word: selection
-exploratory, confirmation dispositive · vault per Dial-6).** Selection assembles; confirmation
-decides. All binding inference in this protocol lives in this single sealed event. At stop, ONE
-predeclared batch — its complete run list sealed before the vault opens, deterministic given
-the rules below, no adaptive iteration, one touch:
-(1) **Core claim.** C0, assembled C2 and C1R scored on confirmation folds, paired; the claim =
-C2 vs C0 headline gain, resolved at α = 0.05 one-sided.
-(2) **Ingredient ablations.** For each admitted unit k of K: core-minus-k (jointly refit on
-train only) scored on confirmation folds. Unit k CONFIRMS iff its removal resolvedly harms the
-headline at level 0.10/K one-sided — family-wise false-confirmation ≤ 0.10 across units.
-(3) **STRIP RULE (owner word).** Every unit that fails to confirm is STRIPPED. The CONFIRMED
-CORE = C2 minus stripped units, jointly refit on train, scored on confirmation folds within the
-same sealed batch — the batch's run list includes every strip-outcome branch, so no second
-touch ever occurs.
-(4) **PROVISIONAL M8 UNITS (owner word).** Peak-door units have no in-panel confirmation folds:
-they are neither confirmed nor stripped; they carry PROVISIONAL–AWAITING-EXTENSION and are
-BARRED from every adoption artifact until scheduled extensions supply confirmation-era peak
-windows, at which point they confirm or strip by rule (2) applied to the extension folds. The
-fork report presents two cores: the ADOPTION-ELIGIBLE core (confirmed units only) and the
-TRACKING core (confirmed + provisional), never conflated.
-(5) **FAILURE CONSEQUENCES, frozen.** If the confirmed core does not resolvedly beat C0 on
-confirmation — or the effect reverses sign, which is flagged in its own right — the rebuild
-lane's product is a NULL RESULT, stated plainly in the fork report; no adoption candidate
-issues from it; the owner rules next steps. A confirmed core that beats C0 carries exactly the
-claim its evidence supports: confirmed on untouched folds at the stated levels.
-After the event, confirmation folds retire into selection for any owner-worded follow-on race
-(panel-version bump).
+7.12 **The vault read — ERA-SCOPED (Dial-8 · Dial-9, RULED at register v402: the vault claims
+only the confirmation-era population).** Selection assembles; the vault housekeeps; the
+prospective gate (§7.13) decides. At stop, ONE sealed batch, run list sealed before the vault
+opens, one physical touch:
+(1) **Era scores.** C0, assembled C2 and C1R scored on confirmation folds, paired.
+(2) **Door-matched ingredient ablations (F3v2, finding 6).** Each admitted unit k is tested by
+removal against ITS OWN door metric — M4-door units on M4. M8-door units have no in-panel W6
+confirmation folds: they pass to §7.13 as PROVISIONAL, untested here. A unit CONFIRMS-IN-ERA
+iff its removal resolvedly harms its door metric at 0.10/K one-sided.
+(3) **STRIP (Dial-8, owner word).** Units failing (2) are stripped. PG-CORE (the
+prospective-gate core) = C2 minus stripped units, jointly refit on train.
+(4) **SCOPE OF EVERY CLAIM (Dial-9; F3v2, findings 3, 4, 7).** Every statistic in this section
+is a claim about the FIXED confirmation-era population — the 2020-onward cutoff cohorts —
+under player-resampling uncertainty only. DECLARED LIMIT L-U2: no inference to future seasons
+is made or implied by the vault. DECLARED LIMIT L-U3: the post-strip PG-CORE's era score vs C0
+(reported at α = 0.05, descriptive) is computed on the folds that selected the strip branch —
+one of up to 2^K branches — and is therefore labelled BRANCH-SELECTED, carries no multiplicity
+claim, and decides nothing. The branch circularity the F3 seat identified is real; it is
+broken at the binding layer, where §7.13 scores the frozen PG-CORE on seasons that did not
+exist when the branch was chosen.
+(5) **NULL RESULT.** If assembled C2 fails to resolvedly beat C0 in-era, or the effect
+reverses sign (flagged in its own right), the fork report says so plainly; no PG-CORE issues;
+the owner rules next steps.
+(6) **Fork report.** Presents the ADOPTION-ELIGIBLE core (era-confirmed units only) and the
+TRACKING core (plus provisional M8 units), never conflated. Adoption eligibility beyond the
+fork report belongs to §7.13. After the event, confirmation folds retire into selection for
+any owner-worded follow-on race (panel-version bump).
+
+7.13 **THE PROSPECTIVE GATE — BINDING (Dial-9, RULED at register v402, owner word:
+prospective-dispositive; adoption staged and reversible).** The only binding inference in this
+protocol. Its sampling unit is future seasons as they complete — evidence no selection or
+strip decision can have touched, because it did not exist.
+(1) **Freeze at fork report.** PG-CORE and C0 freeze as RECIPES: ingredient set, functional
+forms and the per-fold refitting procedure — no new ingredients, no re-selection, ever;
+parameters refit on train ≤ t per the frozen recipe at each evaluation. Every PG-CORE unit
+carries its door label (M4-door / M8-door); M8-door units carry PROVISIONAL status and remain
+barred from adoption artifacts until confirmed here (Dial-8).
+(2) **Cadence.** Each scheduled panel extension (completed season S; §9.6) creates the newly
+completed prospective cutoffs: t = S−1 (W1), t = S−3 (W3), t = S−6 (W6/M8). Each cutoff is
+claimed once, at the extension that completes it; the prospective evidence set at any moment =
+all such cutoffs accrued since the fork report, pooled.
+(3) **Door-matched scoring (F3v2, finding 6).** Core claim: PG-CORE vs C0, paired, on M4 over
+accrued W3-complete prospective cutoffs — and on M8 over accrued W6-complete cutoffs once any
+exist. Unit tests: removal ablations against each unit's OWN door metric on the accrued
+door-relevant cutoffs, PG-CORE-minus-unit jointly refit per the frozen recipe.
+(4) **Predeclared levels and accrual floor.** Core claim resolved at α = 0.05 one-sided on the
+pooled prospective set, paired player-clustered bootstrap per §4 — honestly labelled: early
+accruals are few and prospective power grows season by season; the seasons themselves are the
+independent draws no historical resampling could supply. Unit family at each extension:
+α_unit = 0.10 / K_p one-sided, K_p = units under prospective test at that extension. ACCRUAL
+FLOOR: MIN_PROS = 3 door-relevant prospective cutoffs must have accrued before any
+fail-to-confirm strip can fire; until then a unit's status is UNDER PROSPECTIVE TEST.
+Exception: a unit whose removal shows resolved door-metric IMPROVEMENT — resolved harm from
+the unit — strips immediately at any accrual.
+(5) **Strip and re-freeze.** A stripped unit leaves PG-CORE; the reduced recipe re-freezes and
+continues; its future evaluations occur on later extensions — data that does not exist at
+strip time, so no strip branch is ever assessed on the evidence that selected it (F3v2,
+finding 3, resolved at the binding layer by temporal ordering).
+(6) **Staged, reversible adoption (owner words; Law 10 untouched).** The gate stages
+ELIGIBILITY only; every adoption act is the owner's word under the seam pattern. STAGE 1
+eligibility: the core claim resolves on M4 at the first extension with ≥1 W3-complete
+prospective cutoff. STAGE 2 eligibility: the core claim holds resolved at two consecutive
+extensions. REVERSIBILITY: every owner-worded adoption release records its rollback target; if
+at any later extension the pooled core claim shows resolved harm — PG-CORE resolvedly losing
+to C0 on M4 — a REVERSION FLAG raises to the owner with the rollback path; a post-adoption
+unit strip raises a re-release flag. Flags raise; only the owner's word acts.
+(7) **Ledger.** Every extension's prospective scorecard — accrued cutoffs, K_p, levels,
+margins, strips, stage status, flags — files in the referee ledger under the extension's
+panel version.
 
 ## 8 · THE CEILING AND THE INTERACTION MAP
 8.1 **Spec, fully frozen (F3 verification, finding 11).** Implementation: LightGBM **4.3.0
@@ -423,7 +485,12 @@ min_child_samples ∈ {20, 50}; all remaining parameters fixed, not defaulted si
 max_depth=-1, min_child_weight=1e-3, min_split_gain=0.0, lambda_l1=0.0, lambda_l2=0.0,
 bagging_fraction=1.0, bagging_freq=0, feature_fraction=1.0, use_missing=True,
 zero_as_missing=False, deterministic=True, force_row_wise=True, num_threads=1,
-seed = bagging_seed = feature_fraction_seed = 20260724 + fold-index. Features = the frozen
+seed = bagging_seed = feature_fraction_seed = 20260724 + fold-index. NO-INNER-VALIDATION
+RULE (F3v2, finding 11): on outer folds where the head has no §2.3 inner-eligible cutoff (W1
+at t = 2009; W3 at t ≤ 2011; W6 at t ≤ 2014), early stopping is DISABLED, n_estimators is
+FIXED at 300, and the grid collapses to its §2.3 default cell — num_leaves = 31,
+learning_rate = 0.03, min_child_samples = 20, the grid medians, lower on even — with the fold
+flagged DEFAULT-TUNED. Features = the frozen
 §3.1 manifest, all origin-safe; position enters as the §5.1 frozen groups via
 categorical_feature, declared in the manifest. Deliberately unconstrained by estimator-shape
 laws — which is exactly why REF-CEIL bars its outputs from adoption artifacts forever.
@@ -469,7 +536,8 @@ referee results.
 9.6 **Panel versioning (F3 finding 17).** A scheduled extension bumps the PANEL VERSION.
 Before any post-extension round: C0, C3, the current C2 and C1R re-run on the new version.
 Admissions stand as history under their panel version; all forward comparisons and the fork
-report cite current-version numbers only; M8/M6W confirmation additions land per §7.12.
+report cite current-version numbers only; each extension also fires the §7.13
+prospective evaluation, and M8/M6W confirmation-era additions land per §§7.12–7.13.
 
 ## 10 · FREEZE RULES
 Preconditions, in order: **F1** — the §11 compliance map verified line-by-line; **F2** — the owner
@@ -477,9 +545,10 @@ rules Dials 1–5 (since extended: 1–8); **F2b** — the acceptance-twin L-SMO
 worded and filed, else the §7.10 exception path and the §6 banded comparator stay struck;
 **F3** — one cold blind review of THIS protocol by a seat that is neither its
 author nor the harness implementer (Dial-5 confirms); **F4** — the owner's freeze word, recorded in
-the register. Status at v0.7: Dials 1–8 ruled; the twin amendment WORDED (owner, 2026-07-24) — F2b closes
-on the pen's filing of the one-line edit. The reviewer's spec-completion set is encoded — the
-same F3 seat verifies v0.7; then F1 re-verification; F4 closes.
+the register. Status at v0.8: Dials 1–9 ruled; the twin amendment FILED (register v400; F2b CLOSED). F3v2
+findings 3, 4 and 7 resolve under Dial-9's prospective-dispositive architecture; 6, 10a, 11
+and 15 close by full specification; stale twin language conformed — the same F3 seat verifies
+v0.8; then F1 re-verification; F4 closes.
 After freeze: the rules of the game — folds, targets, metrics, slices, fences, budgets, bars,
 procedures — are immutable except by owner-worded amendment, version-bumped, effective only from
 the NEXT round, with all official results re-scored under the amended version so every number in
@@ -547,24 +616,30 @@ one owner word and is NOT in force.
   (owner word, register v399, 2026-07-24). Encoded §7.12: failed confirmation STRIPS the unit;
   provisional M8 units are BARRED from adoption artifacts until confirmed; selection-era
   statistics are exploratory hygiene, never binding claims (§§7.5, 7.9, §4).
+- **Dial-9 · Binding architecture — RULED: PROSPECTIVE-DISPOSITIVE** (owner word, register
+  v402, 2026-07-24). The §7.12 vault read claims only the confirmation-era population with its
+  declared limits stated (L-U2, L-U3); the BINDING gate is §7.13: every scheduled panel
+  extension scores the frozen PG-CORE vs C0 under predeclared door-matched rules; failing
+  units strip; adoption is staged and reversible — eligibility mechanical, every adoption act
+  the owner's word (Law 10).
 
-TWIN AMENDMENT — WORDED (owner words "Twin line approved," 2026-07-24, this channel; Law 10a
-satisfied; the pen files the edit). acceptance_v2_0.json, gate L-SMOOTH, one line:
-CURRENT — "check": "no value discontinuities across age/evidence/position"
-PROPOSED — "check": "no undeclared value discontinuities across age/evidence/position; a
-discontinuity is lawful only if registered before scoring with its step measured and reported
-as a margin"
-The word is given. F2b closes when the pen's twin edit lands on main, activating §7.10's
-exception path and §6's banded comparator; until that filing, the current plain text governs.
+TWIN AMENDMENT — FILED (owner words "Twin line approved," 2026-07-24, this channel; Law 10
+act executed by the pen at register v400; F2b CLOSED). acceptance_v2_0.json, gate L-SMOOTH,
+the governing line as filed on main:
+"check": "no undeclared value discontinuities across age/evidence/position; a discontinuity
+is lawful only if registered before scoring with its step measured and reported as a margin"
+Filed and live on main; §7.10's exception path and §6's banded comparator are operative.
 
 SEAT-SET CONSTANTS LEDGER (the Dial-3 delegation pattern; each figure moves on one owner word,
 none may be cited as owner-worded): SUPPORT_MIN = 200 eligible cells; smoothness/WDG step bound
 = 5% of fitted range; R_MAX = 6 rounds; class lifetime = 3 raced rounds; selection/confirmation
 boundary = 2019/2020; canaries ≥ 3; null-candidates ≥ 20; probability clip = 1e-4; B = max(2000,
 ⌈50/α⌉); bootstrap seed base = 20260724; NULLCAL N = 200 with pass bound c = min{c : BinomCDF(c; N, α)
-≥ 0.95} (c = 15 at α = 0.05); REF-FADE band = ±15% of the measured floor; C0-smooth knots
+≥ 0.95} (c = 15 at α = 0.05); REF-FADE tolerance = the measured floor's CI90, nothing else; C0-smooth knots
 {21, 24, 27, 30}, boundary {18, 33}; M5 truncation = 6 seasons; capacity-dial default = grid
-median; LightGBM = 4.3.0 exactly.
+median; LightGBM = 4.3.0 exactly; C3 no-inner rule: n_estimators = 300 fixed on the default grid
+cell (31, 0.03, 20); MIN_PROS = 3 door-relevant prospective cutoffs; adoption staging:
+Stage 1 = first resolved extension, Stage 2 = two consecutive extensions.
 
 ## APPENDIX A · WORKED STANDING FIXTURE (REF-FIXTURE; harness must reproduce bit-exactly)
 One cutoff, W1, five eligible cells. Realized means r = (90, 80, 70, 60, 50); realized games
@@ -586,5 +661,9 @@ Predicted peak = 150·0.01 + 100·(0.99·0.9) + 90·(0.99·0.1·1.0) = 1.5 + 89.
 remote-peak route. Any harness not returning 99.51 HALTs.
 **B.3 · D3 identity test.** With ingredient B constructed as an exact duplicate of A inside
 the core, the harness must return contribution(A | S) = 0 exactly, per the §5.2 formula.
+**B.4 · C0-smooth basis rows (F3v2, finding 10a).** Knots (20, 24, 28, 32), unnormalized
+restricted-cubic-spline basis per §6, coefficient order (1, a′, X₁, X₂): at a′ = 26 the row is
+exactly (1, 26, 216, 8); at a′ = 33 the row is exactly (1, 33, 1824, 480). Any harness not
+reproducing both rows bit-exactly HALTs (REF-FIXTURE).
 
 *Design seat, ITEM 410 · returns to the owner; the pen files.*
