@@ -1,4 +1,9 @@
-# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · DRAFT v0.9 · design seat · 2026-07-24 · NOT FROZEN · DIALS 1–9 RULED · TWIN FILED · SEQUENTIAL CONTROL + NARROWED BINDING CLAIM PER F3v3
+# ITEM 410 — ORIGIN-SAFE REFEREE PROTOCOL (AUD-004 ACTIVATION) · v1.0 FREEZE CANDIDATE · design seat · 2026-07-24 · NOT FROZEN — awaiting owner F4 word only · DIALS 1–9 RULED · TWIN FILED · SEQUENTIAL CONTROL + NARROWED BINDING CLAIM PER F3v3
+
+CONFORMANCE EDIT OF RECORD (pen-applied 2026-07-24): the two §7 lines the F3 v0.9 verification
+required (§7.5, §7.9) were corrected by the supervisor pen using the reviewer's exact wording;
+no other character changed from the design seat's v0.9. F3 verdict: PASS WITH AMENDMENTS —
+with this edit, F1 PASS · F2 closed · F3 closed. F4 (owner freeze word) is the only open gate.
 
 Authored read-only at the ITEM 410 design seat against main `13b1618` (register v393). This seat makes
 no repo writes; the deliverable routes to the owner; the pen files.
@@ -314,7 +319,7 @@ untouchable until §7.12. Any admission-deciding run must be a full joint refit 
 HALT).
 7.5 **Admission bar (Dial-2 — RULED: CI90 base · peak door — RULED OPEN · Dial-8 — RULED:
 selection admissions are EXPLORATORY; owner words 2026-07-24).** A selection admission
-assembles the candidate core; it binds nothing — every binding claim waits for §7.12.
+assembles the candidate core; it binds nothing — every binding claim waits for §7.13, after the §7.12 vault read.
 Admission = resolved gain at level α_r on the headline M4 **or** on M8 (standing form, pooled)
 — the peak door — where α_r = 0.05 / m_r one-sided and m_r = the round's enumerated family of
 TESTS (§7.9): each sealed candidate contributes one test per declared door, plus the scheduled
@@ -351,7 +356,7 @@ is enumerated in the ledger BEFORE scoring: m_r = Σ over sealed candidates of t
 door-tests, plus scheduled backward removals. Every adjudication-outcome access is logged; the
 screening ban keeps screening out of the family entirely. Under Dial-8 this per-round regime is
 EXPLORATORY HYGIENE, not the race's inferential claim: the round cap and lifetime re-entry caps
-bound the exploration, and the single binding family is §7.12's dispositive confirmation event.
+bound the exploration, and the single binding family is §7.13's prospective gate.
 7.10 **Structural gates, enumerated with predicates and margins (F3 verification, finding
 15).** Numeric gates emit PASS/FAIL with a measured value and margin; identity gates are
 expressly non-numeric predicates (present/absent, match/mismatch); a missing emission from
