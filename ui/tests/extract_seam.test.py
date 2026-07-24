@@ -26,9 +26,16 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 EXTRACT = os.path.join(REPO, "ui", "tools", "extract_board_view.py")
 STORE = os.path.join(REPO, "engine", "rl_after", "rl_model_data.json")
-# The diagnostic candidate is READ (never merged) straight from the recovery commit as a schema fixture.
-CAND_COMMIT = "6720dfae438ec4eef87a956d63ee4468c05105f4"
-CAND_PATH = "recovery_artifacts/v2.11/post_legf_candidate/rl_app_data.json"
+# The seam is exercised against a COMMITTED, self-contained schema fixture — NO git / network / remote-branch
+# access at test time. The fixture is a reduced, byte-for-byte-authentic slice of the recovery board that used
+# to be read at runtime via `git show`; that source commit is dangling in GitHub's object DB and unreachable
+# from any advertised branch/tag (Actions fetch-depth:0 cannot supply it), which made the runtime read
+# non-portable. Provenance (source commit / path / blob SHA + "reduced schema fixture, not a production board
+# or accepted valuation oracle") is recorded in the fixture's own `_fixture_provenance` block:
+#   source commit 6720dfae438ec4eef87a956d63ee4468c05105f4
+#   source path   recovery_artifacts/v2.11/post_legf_candidate/rl_app_data.json
+#   source blob   e119b9e34bf3ff1e415a41d8150034e437e25d62
+FIXTURE = os.path.join(HERE, "fixtures", "extract_seam_legf_schema.json")
 
 fails = 0
 n = 0
@@ -81,21 +88,21 @@ def write_boot(path, board_md5, store_md5, release_version="__OMIT__", as_of_rou
 def main():
     print("v2.11 UI/RELEASE-SEAM — extractor proof (temp board + temp boot; fail-closed)\n  " + "-" * 66)
 
-    # ---- stage the read-only candidate fixture as a TEMPORARY board -------------------------------
-    fixture = subprocess.run(
-        ["git", "show", "%s:%s" % (CAND_COMMIT, CAND_PATH)],
-        cwd=REPO, capture_output=True, text=True)
-    check(fixture.returncode == 0 and fixture.stdout.strip().startswith("{"),
-          "read diagnostic candidate fixture from %s (schema fixture only, NOT merged)" % CAND_COMMIT[:8])
-    if fixture.returncode != 0:
-        print("  cannot read fixture; aborting")
+    # ---- load the COMMITTED schema fixture, staged as a TEMPORARY board (no git / no network) ------
+    check(os.path.exists(FIXTURE),
+          "read committed schema fixture %s (schema fixture only, NOT a production board)" % os.path.relpath(FIXTURE, REPO))
+    if not os.path.exists(FIXTURE):
+        print("  fixture missing; aborting")
         return 1
-    src_doc = json.loads(fixture.stdout)
+    fixture_text = open(FIXTURE).read()
+    src_doc = json.loads(fixture_text)
+    check(isinstance(src_doc, dict) and isinstance(src_doc.get("active"), list) and len(src_doc["active"]) > 0,
+          "committed fixture is a valid board (non-empty active list)")
     store_md5 = md5_file(STORE)
 
     tmp = tempfile.mkdtemp(prefix="seam_")
     src_path = os.path.join(tmp, "rl_app_data.json")
-    open(src_path, "w").write(fixture.stdout)
+    open(src_path, "w").write(fixture_text)
     board_md5 = md5_file(src_path)
 
     # ==== SCENARIO A — full Leg-F board, boot carries release_version + as_of_round =================

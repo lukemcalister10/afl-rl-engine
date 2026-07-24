@@ -1,0 +1,3653 @@
+{
+ "_fixture_provenance": {
+  "what": "REDUCED SCHEMA FIXTURE for ui/tests/extract_seam.test.py — exercises the extract_board_view.py UI/release seam. NOT a production board and NOT an accepted valuation oracle.",
+  "source_commit": "6720dfae438ec4eef87a956d63ee4468c05105f4",
+  "source_path": "recovery_artifacts/v2.11/post_legf_candidate/rl_app_data.json",
+  "source_blob_sha1": "e119b9e34bf3ff1e415a41d8150034e437e25d62",
+  "derivation": "Authentic byte-for-byte slices of the source board's extractor-relevant keys (active[:30], back[:5], picks[:5], PVC full, lensPicks[:8], lensConservation full, phantomLayer[:3 clubs], phantomPicks[:8], phantomTotals[_meta+league+clubs(kept 3)], BASE_YEAR). The ~40 engine-parameter keys the extractor never reads are dropped. No value is fabricated or recomputed. The sealed phantomTotals._meta (entrant_layer_pvc 83538, expected_slots_per_year 103.43, seal_sha256_8 a17aafed) is preserved verbatim.",
+  "reason": "The source commit 6720dfae is dangling in GitHub's object DB and is NOT reachable from any advertised branch/tag; Actions fetch-depth:0 cannot supply it, so the test's runtime `git show` was non-portable. This committed fixture removes that dependency (no git/network at test time)."
+ },
+ "BASE_YEAR": 2026,
+ "active": [
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": "Father-Son",
+   "cg": 107,
+   "club": "Collingwood",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 4,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 106,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "nick-daicos",
+   "levers": {
+    "L1": 0,
+    "L2": 45,
+    "L3": 0,
+    "L4": -26,
+    "L5": 0
+   },
+   "ln": 114.495823,
+   "lnNull": false,
+   "lns": 114.82524,
+   "losd": 0.13606,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Nick Daicos",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 4,
+   "pn": 120.507908,
+   "ps": 120.507908,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 90.7,
+     "s": 1
+    },
+    {
+     "a": 116.3,
+     "s": 2
+    },
+    {
+     "a": 117.2,
+     "s": 3
+    },
+    {
+     "a": 116.5,
+     "s": 4
+    },
+    {
+     "a": 111.9,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 8014,
+   "vM1": 8870,
+   "vM2": 8767,
+   "vP1": 8116,
+   "vP2": 7658,
+   "vPrev": 8050,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 25,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 132,
+   "club": "Fremantle",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 3,
+   "fut": [
+    [
+     "RUC",
+     1.0
+    ]
+   ],
+   "g": 131,
+   "gf": "RUC",
+   "grp": "RUC",
+   "h26": true,
+   "key": "luke-jackson",
+   "levers": {
+    "L1": 0,
+    "L2": 41,
+    "L3": 10,
+    "L4": 0,
+    "L5": 0
+   },
+   "ln": 117.817016,
+   "lnNull": false,
+   "lns": 112.566447,
+   "losd": 0.084455,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Luke Jackson",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 3,
+   "pn": 120.572198,
+   "ps": 120.572198,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 58.2,
+     "s": 1
+    },
+    {
+     "a": 72.1,
+     "s": 2
+    },
+    {
+     "a": 82.9,
+     "s": 3
+    },
+    {
+     "a": 97.9,
+     "s": 4
+    },
+    {
+     "a": 94.5,
+     "s": 5
+    },
+    {
+     "a": 113.5,
+     "s": 6
+    },
+    {
+     "a": 120.8,
+     "s": 7
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 8611,
+   "vM1": 8197,
+   "vM2": 5734,
+   "vP1": 8612,
+   "vP2": 7951,
+   "vPrev": 7800,
+   "vRaw": null,
+   "yr": 2019
+  },
+  {
+   "P": 1.0,
+   "age": 22,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 80,
+   "club": "North Melbourne",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 3,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 79,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "harry-sheezel",
+   "levers": {
+    "L1": 0,
+    "L2": 60,
+    "L3": 0,
+    "L4": 28,
+    "L5": 0
+   },
+   "ln": 114.523893,
+   "lnNull": false,
+   "lns": 111.567742,
+   "losd": 0.306779,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Harry Sheezel",
+   "pedDecay": 0.555556,
+   "pedOnly": false,
+   "pk": 3,
+   "pn": 113.271259,
+   "ps": 113.271259,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 99.5,
+     "s": 1
+    },
+    {
+     "a": 118.0,
+     "s": 2
+    },
+    {
+     "a": 107.3,
+     "s": 3
+    },
+    {
+     "a": 115.4,
+     "s": 4
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 7869,
+   "vM1": 7263,
+   "vM2": 8533,
+   "vP1": 8129,
+   "vP2": 8127,
+   "vPrev": 8116,
+   "vRaw": null,
+   "yr": 2022
+  },
+  {
+   "P": 1.0,
+   "age": 24,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 93,
+   "club": "Fremantle",
+   "cvx": 1.0,
+   "draft": "Rookie",
+   "ep": 66,
+   "fut": [
+    [
+     "KEY_FWD",
+     1.0
+    ]
+   ],
+   "g": 92,
+   "gf": "KEY_FWD",
+   "grp": "KEY_FWD",
+   "h26": true,
+   "key": "josh-treacy",
+   "levers": {
+    "L1": 0,
+    "L2": 18,
+    "L3": 147,
+    "L4": 86,
+    "L5": 0
+   },
+   "ln": 101.072667,
+   "lnNull": false,
+   "lns": 88.614007,
+   "losd": 0.209232,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Josh Treacy",
+   "pedDecay": 0.111111,
+   "pedOnly": false,
+   "pk": 5,
+   "pn": 99.610287,
+   "ps": 99.610287,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 44.2,
+     "s": 1
+    },
+    {
+     "a": 45.5,
+     "s": 2
+    },
+    {
+     "a": 56.5,
+     "s": 3
+    },
+    {
+     "a": 84.2,
+     "s": 4
+    },
+    {
+     "a": 78.4,
+     "s": 5
+    },
+    {
+     "a": 103.6,
+     "s": 6
+    }
+   ],
+   "ty": "RD",
+   "unpl": false,
+   "v": 6713,
+   "vM1": 4437,
+   "vM2": 4303,
+   "vP1": 6749,
+   "vP2": 6155,
+   "vPrev": 6299,
+   "vRaw": null,
+   "yr": 2020
+  },
+  {
+   "P": 1.0,
+   "age": 27,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 86,
+   "club": "North Melbourne",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 71,
+   "fut": [
+    [
+     "RUC",
+     1.0
+    ]
+   ],
+   "g": 85,
+   "gf": "RUC",
+   "grp": "RUC",
+   "h26": true,
+   "key": "tristan-xerri",
+   "levers": {
+    "L1": 0,
+    "L2": 7,
+    "L3": -163,
+    "L4": 86,
+    "L5": 0
+   },
+   "ln": 122.645228,
+   "lnNull": false,
+   "lns": 122.045098,
+   "losd": 0.008015,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Tristan Xerri",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 71,
+   "pn": 117.263118,
+   "ps": 117.263118,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 49.5,
+     "s": 3
+    },
+    {
+     "a": 38.2,
+     "s": 4
+    },
+    {
+     "a": 71.4,
+     "s": 5
+    },
+    {
+     "a": 72.9,
+     "s": 6
+    },
+    {
+     "a": 119.9,
+     "s": 7
+    },
+    {
+     "a": 127.0,
+     "s": 8
+    },
+    {
+     "a": 122.5,
+     "s": 9
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 7633,
+   "vM1": 7659,
+   "vM2": 7151,
+   "vP1": 7465,
+   "vP2": 6724,
+   "vPrev": 6649,
+   "vRaw": null,
+   "yr": 2017
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 2,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 96,
+   "club": "St Kilda",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 11,
+   "fut": [
+    [
+     "MID",
+     0.25
+    ],
+    [
+     "GEN_DEF",
+     0.75
+    ]
+   ],
+   "g": 95,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "nasiah-wanganeen-milera",
+   "levers": {
+    "L1": 0,
+    "L2": 40,
+    "L3": 37,
+    "L4": -3,
+    "L5": 0
+   },
+   "ln": 106.527673,
+   "lnNull": false,
+   "lns": 107.171025,
+   "losd": 0.13606,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Nasiah Wanganeen-Milera",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 11,
+   "pn": 109.193011,
+   "ps": 109.193011,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 51.8,
+     "s": 1
+    },
+    {
+     "a": 85.2,
+     "s": 2
+    },
+    {
+     "a": 100.9,
+     "s": 3
+    },
+    {
+     "a": 115.0,
+     "s": 4
+    },
+    {
+     "a": 106.2,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 6689,
+   "vM1": 7826,
+   "vM2": 5665,
+   "vP1": 6684,
+   "vP2": 6304,
+   "vPrev": 6607,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 24,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 4,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 116,
+   "club": "Geelong",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 21,
+   "fut": [
+    [
+     "MID",
+     0.6
+    ],
+    [
+     "GEN_DEF",
+     0.4
+    ]
+   ],
+   "g": 115,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "max-holmes",
+   "levers": {
+    "L1": 0,
+    "L2": 11,
+    "L3": 192,
+    "L4": -1,
+    "L5": 0
+   },
+   "ln": 114.463,
+   "lnNull": false,
+   "lns": 109.890909,
+   "losd": 0.050089,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Max Holmes",
+   "pedDecay": 0.111111,
+   "pedOnly": false,
+   "pk": 21,
+   "pn": 109.576211,
+   "ps": 109.576211,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 44.9,
+     "s": 1
+    },
+    {
+     "a": 68.5,
+     "s": 2
+    },
+    {
+     "a": 79.8,
+     "s": 3
+    },
+    {
+     "a": 100.3,
+     "s": 4
+    },
+    {
+     "a": 112.4,
+     "s": 5
+    },
+    {
+     "a": 115.5,
+     "s": 6
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 6929,
+   "vM1": 7038,
+   "vM2": 5348,
+   "vP1": 6859,
+   "vP2": 6530,
+   "vPrev": 6270,
+   "vRaw": null,
+   "yr": 2020
+  },
+  {
+   "P": 1.0,
+   "age": 26,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 140,
+   "club": "Geelong",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 7,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 139,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "bailey-smith",
+   "levers": {
+    "L1": 0,
+    "L2": -16,
+    "L3": -31,
+    "L4": -40,
+    "L5": 0
+   },
+   "ln": 119.491851,
+   "lnNull": false,
+   "lns": 116.962409,
+   "losd": 0.003993,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Bailey Smith",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 7,
+   "pn": 116.943233,
+   "ps": 116.943233,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 75.6,
+     "s": 1
+    },
+    {
+     "a": 91.9,
+     "s": 2
+    },
+    {
+     "a": 89.9,
+     "s": 3
+    },
+    {
+     "a": 98.3,
+     "s": 4
+    },
+    {
+     "a": 80.3,
+     "s": 5
+    },
+    {
+     "a": 116.4,
+     "s": 7
+    },
+    {
+     "a": 122.4,
+     "s": 8
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 5858,
+   "vM1": 6035,
+   "vM2": 2473,
+   "vP1": 5530,
+   "vP2": 4868,
+   "vPrev": 5605,
+   "vRaw": null,
+   "yr": 2018
+  },
+  {
+   "P": 1.0,
+   "age": 25,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 141,
+   "club": "Gold Coast",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 2,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 140,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "noah-anderson",
+   "levers": {
+    "L1": 0,
+    "L2": -1,
+    "L3": 0,
+    "L4": -2,
+    "L5": 0
+   },
+   "ln": 107.845616,
+   "lnNull": false,
+   "lns": 109.770382,
+   "losd": 0.01542,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Noah Anderson",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 2,
+   "pn": 114.840755,
+   "ps": 114.840755,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 76.6,
+     "s": 1
+    },
+    {
+     "a": 83.6,
+     "s": 2
+    },
+    {
+     "a": 100.4,
+     "s": 3
+    },
+    {
+     "a": 104.9,
+     "s": 4
+    },
+    {
+     "a": 106.7,
+     "s": 5
+    },
+    {
+     "a": 113.4,
+     "s": 6
+    },
+    {
+     "a": 108.1,
+     "s": 7
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 5157,
+   "vM1": 6711,
+   "vM2": 5912,
+   "vP1": 4683,
+   "vP2": 3953,
+   "vPrev": 4765,
+   "vRaw": null,
+   "yr": 2019
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 84,
+   "club": "GWS",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 3,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 84,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "finn-callaghan",
+   "levers": {
+    "L1": 0,
+    "L2": 32,
+    "L3": 358,
+    "L4": 4,
+    "L5": 0
+   },
+   "ln": 99.640485,
+   "lnNull": false,
+   "lns": 99.402632,
+   "losd": 0.13606,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Finn Callaghan",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 3,
+   "pn": 110.07825,
+   "ps": 110.07825,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 55.4,
+     "s": 1
+    },
+    {
+     "a": 71.8,
+     "s": 2
+    },
+    {
+     "a": 80.2,
+     "s": 3
+    },
+    {
+     "a": 111.6,
+     "s": 4
+    },
+    {
+     "a": 101.1,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 5489,
+   "vM1": 6051,
+   "vM2": 3435,
+   "vP1": 5413,
+   "vP2": 5166,
+   "vPrev": 5443,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 21,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 41,
+   "club": "Essendon",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 54,
+   "fut": [
+    [
+     "MID",
+     0.3
+    ],
+    [
+     "GEN_DEF",
+     0.7
+    ]
+   ],
+   "g": 40,
+   "gf": "MID",
+   "grp": "GEN_DEF",
+   "h26": true,
+   "key": "archie-roberts",
+   "levers": {
+    "L1": 0,
+    "L2": 38,
+    "L3": 0,
+    "L4": 1,
+    "L5": 0
+   },
+   "ln": 101.848484,
+   "lnNull": false,
+   "lns": 95.19962,
+   "losd": 0.5684,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Archie Roberts",
+   "pedDecay": 0.777778,
+   "pedOnly": false,
+   "pk": 54,
+   "pn": 101.148967,
+   "ps": 101.148967,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 78.5,
+     "s": 1
+    },
+    {
+     "a": 83.7,
+     "s": 2
+    },
+    {
+     "a": 105.6,
+     "s": 3
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 5182,
+   "vM1": 3136,
+   "vM2": 1214,
+   "vP1": 5456,
+   "vP2": 5635,
+   "vPrev": 4577,
+   "vRaw": null,
+   "yr": 2023
+  },
+  {
+   "P": 1.0,
+   "age": 26,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 2,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 152,
+   "club": "Port Adelaide",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 12,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 151,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "zak-butters",
+   "levers": {
+    "L1": 0,
+    "L2": -10,
+    "L3": -63,
+    "L4": -1,
+    "L5": 0
+   },
+   "ln": 120.849822,
+   "lnNull": false,
+   "lns": 119.395114,
+   "losd": 0.003993,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Zak Butters",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 12,
+   "pn": 113.426304,
+   "ps": 113.426304,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 60.5,
+     "s": 1
+    },
+    {
+     "a": 85.8,
+     "s": 2
+    },
+    {
+     "a": 79.6,
+     "s": 3
+    },
+    {
+     "a": 96.2,
+     "s": 4
+    },
+    {
+     "a": 111.9,
+     "s": 5
+    },
+    {
+     "a": 112.9,
+     "s": 6
+    },
+    {
+     "a": 121.0,
+     "s": 7
+    },
+    {
+     "a": 122.2,
+     "s": 8
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 6196,
+   "vM1": 6906,
+   "vM2": 7387,
+   "vP1": 5738,
+   "vP2": 5167,
+   "vPrev": 6060,
+   "vRaw": null,
+   "yr": 2018
+  },
+  {
+   "P": 1.0,
+   "age": 25,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 138,
+   "club": "GWS",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 4,
+   "fut": [
+    [
+     "GEN_DEF",
+     1.0
+    ]
+   ],
+   "g": 138,
+   "gf": "GEN_DEF",
+   "grp": "GEN_DEF",
+   "h26": true,
+   "key": "lachlan-ash",
+   "levers": {
+    "L1": 0,
+    "L2": 11,
+    "L3": 111,
+    "L4": -3,
+    "L5": 0
+   },
+   "ln": 104.621333,
+   "lnNull": false,
+   "lns": 102.075796,
+   "losd": 0.01542,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Lachlan Ash",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 4,
+   "pn": 107.892754,
+   "ps": 107.892754,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 59.7,
+     "s": 1
+    },
+    {
+     "a": 69.9,
+     "s": 2
+    },
+    {
+     "a": 60.9,
+     "s": 3
+    },
+    {
+     "a": 84.6,
+     "s": 4
+    },
+    {
+     "a": 82.9,
+     "s": 5
+    },
+    {
+     "a": 107.9,
+     "s": 6
+    },
+    {
+     "a": 105.8,
+     "s": 7
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 5372,
+   "vM1": 5957,
+   "vM2": 2873,
+   "vP1": 4877,
+   "vP2": 4100,
+   "vPrev": 5188,
+   "vRaw": null,
+   "yr": 2019
+  },
+  {
+   "P": 1.0,
+   "age": 24,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 5,
+   "bk": false,
+   "brodieBase": false,
+   "cat": "Academy",
+   "cg": 105,
+   "club": "Sydney",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 34,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 105,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": false,
+   "key": "errol-gulden",
+   "levers": {
+    "L1": 0,
+    "L2": 22,
+    "L3": 0,
+    "L4": 39,
+    "L5": 0
+   },
+   "ln": 105.569937,
+   "lnNull": false,
+   "lns": 107.626027,
+   "losd": 0.050089,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Errol Gulden",
+   "pedDecay": 0.111111,
+   "pedOnly": false,
+   "pk": 34,
+   "pn": 107.636801,
+   "ps": 107.636801,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 75.8,
+     "s": 1
+    },
+    {
+     "a": 84.4,
+     "s": 2
+    },
+    {
+     "a": 112.1,
+     "s": 3
+    },
+    {
+     "a": 106.5,
+     "s": 4
+    },
+    {
+     "a": 104.7,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 5854,
+   "vM1": 6013,
+   "vM2": 6724,
+   "vP1": 5312,
+   "vP2": 5117,
+   "vPrev": 5983,
+   "vRaw": null,
+   "yr": 2020
+  },
+  {
+   "P": 1.0,
+   "age": 24,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 89,
+   "club": "Adelaide",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 2,
+   "fut": [
+    [
+     "KEY_FWD",
+     1.0
+    ]
+   ],
+   "g": 89,
+   "gf": "KEY_FWD",
+   "grp": "KEY_FWD",
+   "h26": true,
+   "key": "riley-thilthorpe",
+   "levers": {
+    "L1": 0,
+    "L2": 27,
+    "L3": 0,
+    "L4": 3,
+    "L5": 0
+   },
+   "ln": 78.088852,
+   "lnNull": false,
+   "lns": 83.966667,
+   "losd": 0.209232,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Riley Thilthorpe",
+   "pedDecay": 0.111111,
+   "pedOnly": false,
+   "pk": 2,
+   "pn": 93.109317,
+   "ps": 93.109317,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 60.5,
+     "s": 1
+    },
+    {
+     "a": 57.9,
+     "s": 2
+    },
+    {
+     "a": 59.4,
+     "s": 3
+    },
+    {
+     "a": 76.4,
+     "s": 4
+    },
+    {
+     "a": 97.8,
+     "s": 5
+    },
+    {
+     "a": 73.9,
+     "s": 6
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4103,
+   "vM1": 6652,
+   "vM2": 2980,
+   "vP1": 3866,
+   "vP2": 3588,
+   "vPrev": 3819,
+   "vRaw": null,
+   "yr": 2020
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 62,
+   "club": "Gold Coast",
+   "cvx": 1.0,
+   "draft": "Post-Draft - Academy",
+   "ep": 92,
+   "fut": [
+    [
+     "GEN_DEF",
+     1.0
+    ]
+   ],
+   "g": 61,
+   "gf": "GEN_DEF",
+   "grp": "GEN_DEF",
+   "h26": true,
+   "key": "bodhi-uwland",
+   "levers": {
+    "L1": 0,
+    "L2": 17,
+    "L3": 0,
+    "L4": 40,
+    "L5": 0
+   },
+   "ln": 95.431053,
+   "lnNull": false,
+   "lns": 85.480333,
+   "losd": 0.13606,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": "PDA",
+   "name": "Bodhi Uwland",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": null,
+   "pn": 103.891733,
+   "ps": 103.891733,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 73.0,
+     "s": 3
+    },
+    {
+     "a": 76.2,
+     "s": 4
+    },
+    {
+     "a": 99.7,
+     "s": 5
+    }
+   ],
+   "ty": "PDA",
+   "unpl": false,
+   "v": 3199,
+   "vM1": 1685,
+   "vM2": 86,
+   "vP1": 3283,
+   "vP2": 3320,
+   "vPrev": 3176,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 22,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": "Father-Son",
+   "cg": 72,
+   "club": "Brisbane",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 2,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 71,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "will-ashcroft",
+   "levers": {
+    "L1": 0,
+    "L2": 51,
+    "L3": 0,
+    "L4": -8,
+    "L5": 0
+   },
+   "ln": 93.639682,
+   "lnNull": false,
+   "lns": 96.865204,
+   "losd": 0.306779,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Will Ashcroft",
+   "pedDecay": 0.555556,
+   "pedOnly": false,
+   "pk": 2,
+   "pn": 106.627822,
+   "ps": 106.627822,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 84.5,
+     "s": 1
+    },
+    {
+     "a": 88.5,
+     "s": 2
+    },
+    {
+     "a": 103.2,
+     "s": 3
+    },
+    {
+     "a": 93.9,
+     "s": 4
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4727,
+   "vM1": 5712,
+   "vM2": 4204,
+   "vP1": 4745,
+   "vP2": 4648,
+   "vPrev": 5156,
+   "vRaw": null,
+   "yr": 2022
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 93,
+   "club": "Port Adelaide",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 1,
+   "fut": [
+    [
+     "MID",
+     0.75
+    ],
+    [
+     "GEN_FWD",
+     0.25
+    ]
+   ],
+   "g": 92,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "jason-horne-francis",
+   "levers": {
+    "L1": 0,
+    "L2": 21,
+    "L3": 148,
+    "L4": 7,
+    "L5": 0
+   },
+   "ln": 95.107968,
+   "lnNull": false,
+   "lns": 94.214079,
+   "losd": 0.13606,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Jason Horne-Francis",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 1,
+   "pn": 104.04418,
+   "ps": 104.04418,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 63.4,
+     "s": 1
+    },
+    {
+     "a": 77.3,
+     "s": 2
+    },
+    {
+     "a": 98.2,
+     "s": 3
+    },
+    {
+     "a": 94.5,
+     "s": 4
+    },
+    {
+     "a": 95.7,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4044,
+   "vM1": 4447,
+   "vM2": 4742,
+   "vP1": 3979,
+   "vP2": 3815,
+   "vPrev": 3996,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 32,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 4,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 255,
+   "club": "Sydney",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 22,
+   "fut": [
+    [
+     "RUC",
+     1.0
+    ]
+   ],
+   "g": 254,
+   "gf": "RUC",
+   "grp": "RUC",
+   "h26": true,
+   "key": "brodie-grundy",
+   "levers": {
+    "L1": 0,
+    "L2": -36,
+    "L3": -22,
+    "L4": 12,
+    "L5": 0
+   },
+   "ln": 125.467131,
+   "lnNull": false,
+   "lns": 121.07055,
+   "losd": 1e-06,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Brodie Grundy",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 22,
+   "pn": 123.776423,
+   "ps": 123.776423,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 74.0,
+     "s": 1
+    },
+    {
+     "a": 62.9,
+     "s": 2
+    },
+    {
+     "a": 90.6,
+     "s": 3
+    },
+    {
+     "a": 95.7,
+     "s": 4
+    },
+    {
+     "a": 97.2,
+     "s": 5
+    },
+    {
+     "a": 130.4,
+     "s": 6
+    },
+    {
+     "a": 130.9,
+     "s": 7
+    },
+    {
+     "a": 118.4,
+     "s": 8
+    },
+    {
+     "a": 115.2,
+     "s": 9
+    },
+    {
+     "a": 103.5,
+     "s": 10
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4797,
+   "vM1": 5080,
+   "vM2": 3220,
+   "vP1": 4394,
+   "vP2": 3743,
+   "vPrev": 3959,
+   "vRaw": null,
+   "yr": 2012
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.7272727272727273,
+   "avail_nerf": -621,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": "Father-Son",
+   "cg": 51,
+   "club": "Western Bulldogs",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 2,
+   "fut": [
+    [
+     "KEY_FWD",
+     1.0
+    ]
+   ],
+   "g": 51,
+   "gf": "KEY_FWD",
+   "grp": "KEY_FWD",
+   "h26": true,
+   "key": "sam-darcy",
+   "levers": {
+    "L1": 0,
+    "L2": 58,
+    "L3": 0,
+    "L4": -4,
+    "L5": 0
+   },
+   "ln": 86.967362,
+   "lnNull": false,
+   "lns": 86.412632,
+   "losd": 0.428292,
+   "lti_reg": {
+    "L": 0.7273,
+    "designations": [
+     "2026"
+    ],
+    "flags": [],
+    "out": true,
+    "ret_year": 2027,
+    "return_arm": true,
+    "section": "A"
+   },
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Sam Darcy",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 2,
+   "pn": 85.867426,
+   "ps": 85.867426,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 51.8,
+     "s": 1
+    },
+    {
+     "a": 79.0,
+     "s": 3
+    },
+    {
+     "a": 95.7,
+     "s": 4
+    },
+    {
+     "a": 81.8,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4824,
+   "vM1": 6443,
+   "vM2": 4346,
+   "vP1": 5294,
+   "vP2": 5111,
+   "vPrev": 4013,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 21,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 48,
+   "club": "Western Bulldogs",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 6,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 47,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "ryley-sanders",
+   "levers": {
+    "L1": 0,
+    "L2": 53,
+    "L3": 0,
+    "L4": -14,
+    "L5": 0
+   },
+   "ln": 90.993318,
+   "lnNull": false,
+   "lns": 82.107224,
+   "losd": 0.5684,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Ryley Sanders",
+   "pedDecay": 0.777778,
+   "pedOnly": false,
+   "pk": 6,
+   "pn": 105.15111,
+   "ps": 105.15111,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 62.9,
+     "s": 1
+    },
+    {
+     "a": 70.4,
+     "s": 2
+    },
+    {
+     "a": 95.7,
+     "s": 3
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 3586,
+   "vM1": 2433,
+   "vM2": 2416,
+   "vP1": 3805,
+   "vP2": 3878,
+   "vPrev": 4129,
+   "vRaw": null,
+   "yr": 2023
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 78,
+   "club": "Gold Coast",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 5,
+   "fut": [
+    [
+     "KEY_DEF",
+     1.0
+    ]
+   ],
+   "g": 77,
+   "gf": "KEY_DEF",
+   "grp": "KEY_DEF",
+   "h26": true,
+   "key": "mac-andrew",
+   "levers": {
+    "L1": 0,
+    "L2": 36,
+    "L3": 0,
+    "L4": 4,
+    "L5": 0
+   },
+   "ln": 82.226667,
+   "lnNull": false,
+   "lns": 76.399023,
+   "losd": 0.428292,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Mac Andrew",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 5,
+   "pn": 90.711035,
+   "ps": 90.711035,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 47.2,
+     "s": 1
+    },
+    {
+     "a": 54.5,
+     "s": 2
+    },
+    {
+     "a": 73.7,
+     "s": 3
+    },
+    {
+     "a": 70.0,
+     "s": 4
+    },
+    {
+     "a": 86.0,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 3633,
+   "vM1": 2637,
+   "vM2": 2853,
+   "vP1": 3560,
+   "vP2": 3487,
+   "vPrev": 3691,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 21,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 56,
+   "club": "Hawthorn",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 5,
+   "fut": [
+    [
+     "GEN_FWD",
+     1.0
+    ]
+   ],
+   "g": 55,
+   "gf": "GEN_FWD",
+   "grp": "GEN_FWD",
+   "h26": true,
+   "key": "nick-watson",
+   "levers": {
+    "L1": 0,
+    "L2": 44,
+    "L3": 0,
+    "L4": 5,
+    "L5": 0
+   },
+   "ln": 81.806375,
+   "lnNull": false,
+   "lns": 73.879038,
+   "losd": 0.5684,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Nick Watson",
+   "pedDecay": 0.777778,
+   "pedOnly": false,
+   "pk": 5,
+   "pn": 92.425069,
+   "ps": 92.425069,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 67.3,
+     "s": 1
+    },
+    {
+     "a": 64.0,
+     "s": 2
+    },
+    {
+     "a": 85.2,
+     "s": 3
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 3176,
+   "vM1": 2430,
+   "vM2": 3364,
+   "vP1": 3286,
+   "vP2": 3392,
+   "vPrev": 3720,
+   "vRaw": null,
+   "yr": 2023
+  },
+  {
+   "P": 1.0,
+   "age": 21,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 3,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 54,
+   "club": "St Kilda",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 18,
+   "fut": [
+    [
+     "GEN_FWD",
+     1.0
+    ]
+   ],
+   "g": 53,
+   "gf": "GEN_FWD",
+   "grp": "GEN_FWD",
+   "h26": true,
+   "key": "darcy-wilson",
+   "levers": {
+    "L1": 0,
+    "L2": 24,
+    "L3": 0,
+    "L4": 33,
+    "L5": 0
+   },
+   "ln": 77.72075,
+   "lnNull": false,
+   "lns": 71.67594,
+   "losd": 0.5684,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Darcy Wilson",
+   "pedDecay": 0.777778,
+   "pedOnly": false,
+   "pk": 18,
+   "pn": 93.680936,
+   "ps": 93.680936,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 65.3,
+     "s": 1
+    },
+    {
+     "a": 61.9,
+     "s": 2
+    },
+    {
+     "a": 80.7,
+     "s": 3
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 2366,
+   "vM1": 1621,
+   "vM2": 1925,
+   "vP1": 2484,
+   "vP2": 2607,
+   "vPrev": 2457,
+   "vRaw": null,
+   "yr": 2023
+  },
+  {
+   "P": 1.0,
+   "age": 25,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 2,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 137,
+   "club": "Fremantle",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 8,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 137,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "caleb-serong",
+   "levers": {
+    "L1": 0,
+    "L2": 0,
+    "L3": 0,
+    "L4": 26,
+    "L5": 0
+   },
+   "ln": 106.682202,
+   "lnNull": false,
+   "lns": 106.870139,
+   "losd": 0.01542,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Caleb Serong",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 8,
+   "pn": 107.127644,
+   "ps": 107.127644,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 81.1,
+     "s": 1
+    },
+    {
+     "a": 82.9,
+     "s": 2
+    },
+    {
+     "a": 93.1,
+     "s": 3
+    },
+    {
+     "a": 111.2,
+     "s": 4
+    },
+    {
+     "a": 115.7,
+     "s": 5
+    },
+    {
+     "a": 107.5,
+     "s": 6
+    },
+    {
+     "a": 101.1,
+     "s": 7
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4544,
+   "vM1": 6281,
+   "vM2": 7549,
+   "vP1": 4000,
+   "vP2": 3295,
+   "vPrev": 4702,
+   "vRaw": null,
+   "yr": 2019
+  },
+  {
+   "P": 1.0,
+   "age": 19,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": "Father-Son",
+   "cg": 10,
+   "club": "Carlton",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 3,
+   "fut": [
+    [
+     "KEY_DEF",
+     1.0
+    ]
+   ],
+   "g": 10,
+   "gf": "KEY_DEF",
+   "grp": "KEY_DEF",
+   "h26": true,
+   "key": "harry-dean",
+   "levers": {
+    "L1": 0,
+    "L2": 91,
+    "L3": 0,
+    "L4": -1,
+    "L5": 0
+   },
+   "ln": 56.6,
+   "lnNull": false,
+   "lns": 56.6,
+   "losd": 1.0,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Harry Dean",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": 3,
+   "pn": 83.107072,
+   "ps": 83.107072,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 56.6,
+     "s": 1
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 2052,
+   "vM1": 1306,
+   "vM2": 1306,
+   "vP1": 2099,
+   "vP2": 2304,
+   "vPrev": 2073,
+   "vRaw": null,
+   "yr": 2025
+  },
+  {
+   "P": 1.0,
+   "age": 19,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 12,
+   "club": "West Coast",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 1,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 12,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "willem-duursma",
+   "levers": {
+    "L1": 0,
+    "L2": 106,
+    "L3": 0,
+    "L4": 30,
+    "L5": 0
+   },
+   "ln": 86.4,
+   "lnNull": false,
+   "lns": 86.4,
+   "losd": 1.0,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Willem Duursma",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": 1,
+   "pn": 101.543779,
+   "ps": 101.543779,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 86.4,
+     "s": 1
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4263,
+   "vM1": 3880,
+   "vM2": 3880,
+   "vP1": 5030,
+   "vP2": 5660,
+   "vPrev": 4430,
+   "vRaw": null,
+   "yr": 2025
+  },
+  {
+   "P": 1.0,
+   "age": 30,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 1,
+   "bk": false,
+   "brodieBase": false,
+   "cat": "Academy",
+   "cg": 236,
+   "club": "Sydney",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 4,
+   "fut": [
+    [
+     "MID",
+     0.8
+    ],
+    [
+     "GEN_FWD",
+     0.2
+    ]
+   ],
+   "g": 235,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "isaac-heeney",
+   "levers": {
+    "L1": 0,
+    "L2": -46,
+    "L3": 0,
+    "L4": -13,
+    "L5": 0
+   },
+   "ln": 120.513869,
+   "lnNull": false,
+   "lns": 114.175817,
+   "losd": 3e-06,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Isaac Heeney",
+   "pedDecay": 0.0,
+   "pedOnly": false,
+   "pk": 4,
+   "pn": 117.614156,
+   "ps": 117.614156,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 68.6,
+     "s": 1
+    },
+    {
+     "a": 82.1,
+     "s": 2
+    },
+    {
+     "a": 96.7,
+     "s": 3
+    },
+    {
+     "a": 96.1,
+     "s": 4
+    },
+    {
+     "a": 94.0,
+     "s": 5
+    },
+    {
+     "a": 94.0,
+     "s": 6
+    },
+    {
+     "a": 84.6,
+     "s": 7
+    },
+    {
+     "a": 97.5,
+     "s": 8
+    },
+    {
+     "a": 84.1,
+     "s": 9
+    },
+    {
+     "a": 115.0,
+     "s": 10
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4240,
+   "vM1": 3347,
+   "vM2": 3910,
+   "vP1": 3590,
+   "vP2": 2901,
+   "vPrev": 3981,
+   "vRaw": null,
+   "yr": 2014
+  },
+  {
+   "P": 1.0,
+   "age": 23,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 3,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 97,
+   "club": "Brisbane",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 16,
+   "fut": [
+    [
+     "GEN_DEF",
+     1.0
+    ]
+   ],
+   "g": 96,
+   "gf": "GEN_DEF",
+   "grp": "GEN_DEF",
+   "h26": true,
+   "key": "darcy-wilmot",
+   "levers": {
+    "L1": 0,
+    "L2": 32,
+    "L3": 455,
+    "L4": 5,
+    "L5": 0
+   },
+   "ln": 93.109212,
+   "lnNull": false,
+   "lns": 88.021972,
+   "losd": 0.13606,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Darcy Wilmot",
+   "pedDecay": 0.333333,
+   "pedOnly": false,
+   "pk": 16,
+   "pn": 98.481627,
+   "ps": 98.481627,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 70.3,
+     "s": 2
+    },
+    {
+     "a": 81.0,
+     "s": 3
+    },
+    {
+     "a": 86.8,
+     "s": 4
+    },
+    {
+     "a": 95.2,
+     "s": 5
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 3869,
+   "vM1": 3163,
+   "vM2": 2527,
+   "vP1": 3827,
+   "vP2": 3742,
+   "vPrev": 3967,
+   "vRaw": null,
+   "yr": 2021
+  },
+  {
+   "P": 1.0,
+   "age": 20,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 0,
+   "bk": false,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 18,
+   "club": "Richmond",
+   "cvx": 1.0,
+   "draft": "National",
+   "ep": 1,
+   "fut": [
+    [
+     "MID",
+     0.25
+    ],
+    [
+     "GEN_FWD",
+     0.75
+    ]
+   ],
+   "g": 18,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": true,
+   "key": "sam-lalor",
+   "levers": {
+    "L1": 0,
+    "L2": 71,
+    "L3": 0,
+    "L4": 20,
+    "L5": 0
+   },
+   "ln": 74.069484,
+   "lnNull": false,
+   "lns": 69.816,
+   "losd": 0.852144,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Sam Lalor",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": 1,
+   "pn": 98.116358,
+   "ps": 98.116358,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 55.2,
+     "s": 1
+    },
+    {
+     "a": 81.3,
+     "s": 2
+    }
+   ],
+   "ty": "ND",
+   "unpl": false,
+   "v": 4039,
+   "vM1": 3429,
+   "vM2": 3880,
+   "vP1": 4081,
+   "vP2": 4347,
+   "vPrev": 3574,
+   "vRaw": null,
+   "yr": 2024
+  }
+ ],
+ "back": [
+  {
+   "P": 1.0,
+   "age": 20,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": true,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 0,
+   "club": "Geelong",
+   "cvx": 1.0,
+   "draft": "Rookie",
+   "ep": 76,
+   "fut": [
+    [
+     "MID",
+     1.0
+    ]
+   ],
+   "g": 0,
+   "gf": "MID",
+   "grp": "MID",
+   "h26": false,
+   "key": "xavier-ivisic",
+   "levers": null,
+   "ln": null,
+   "lnNull": true,
+   "lns": null,
+   "losd": 0.852144,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Xavier Ivisic",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": 5,
+   "pn": 76.234158,
+   "ps": 76.234158,
+   "surv": 1.0,
+   "track": [],
+   "ty": "RD",
+   "unpl": false,
+   "v": 10,
+   "vM1": 10,
+   "vM2": 10,
+   "vP1": 10,
+   "vP2": 10,
+   "vPrev": null,
+   "vRaw": null,
+   "yr": 2024
+  },
+  {
+   "P": 1.0,
+   "age": 20,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": true,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 0,
+   "club": "Sydney",
+   "cvx": 1.0,
+   "draft": "Rookie",
+   "ep": 78,
+   "fut": [
+    [
+     "GEN_DEF",
+     1.0
+    ]
+   ],
+   "g": 0,
+   "gf": "GEN_DEF",
+   "grp": "GEN_DEF",
+   "h26": false,
+   "key": "blake-leidler",
+   "levers": null,
+   "ln": null,
+   "lnNull": true,
+   "lns": null,
+   "losd": 0.852144,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": null,
+   "name": "Blake Leidler",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": 7,
+   "pn": 69.470833,
+   "ps": 69.470833,
+   "surv": 1.0,
+   "track": [],
+   "ty": "RD",
+   "unpl": false,
+   "v": 11,
+   "vM1": 11,
+   "vM2": 11,
+   "vP1": 11,
+   "vP2": 11,
+   "vPrev": null,
+   "vRaw": null,
+   "yr": 2024
+  },
+  {
+   "P": 1.0,
+   "age": 28,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": true,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 1,
+   "club": "St Kilda",
+   "cvx": 1.0,
+   "draft": "SSP",
+   "ep": 92,
+   "fut": [
+    [
+     "RUC",
+     1.0
+    ]
+   ],
+   "g": 1,
+   "gf": "RUC",
+   "grp": "RUC",
+   "h26": false,
+   "key": "harry-boyd",
+   "levers": null,
+   "ln": null,
+   "lnNull": true,
+   "lns": null,
+   "losd": 1.0,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": "SSP",
+   "name": "Harry Boyd",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": null,
+   "pn": 76.983743,
+   "ps": 76.983743,
+   "surv": 1.0,
+   "track": [],
+   "ty": "SSP",
+   "unpl": false,
+   "v": 6,
+   "vM1": 6,
+   "vM2": 6,
+   "vP1": 6,
+   "vP2": 6,
+   "vPrev": null,
+   "vRaw": null,
+   "yr": 2024
+  },
+  {
+   "P": 1.0,
+   "age": 22,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": true,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 14,
+   "club": "Carlton",
+   "cvx": 1.0,
+   "draft": "SSP",
+   "ep": 92,
+   "fut": [
+    [
+     "GEN_FWD",
+     1.0
+    ]
+   ],
+   "g": 14,
+   "gf": "GEN_FWD",
+   "grp": "GEN_FWD",
+   "h26": false,
+   "key": "will-white",
+   "levers": null,
+   "ln": 39.6,
+   "lnNull": false,
+   "lns": 39.6,
+   "losd": 0.852144,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": "SSP",
+   "name": "Will White",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": null,
+   "pn": 42.789358,
+   "ps": 42.789358,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 39.6,
+     "s": 1
+    }
+   ],
+   "ty": "SSP",
+   "unpl": false,
+   "v": 6,
+   "vM1": 6,
+   "vM2": 6,
+   "vP1": 6,
+   "vP2": 6,
+   "vPrev": null,
+   "vRaw": null,
+   "yr": 2024
+  },
+  {
+   "P": 1.0,
+   "age": 21,
+   "avail_hc": 0.0,
+   "avail_nerf": 0,
+   "band": 7,
+   "bk": true,
+   "brodieBase": false,
+   "cat": null,
+   "cg": 4,
+   "club": "Essendon",
+   "cvx": 1.0,
+   "draft": "Mid-Season",
+   "ep": 90,
+   "fut": [
+    [
+     "GEN_FWD",
+     1.0
+    ]
+   ],
+   "g": 4,
+   "gf": "GEN_FWD",
+   "grp": "GEN_FWD",
+   "h26": false,
+   "key": "oskar-smartt",
+   "levers": null,
+   "ln": 24.8,
+   "lnNull": false,
+   "lns": 24.8,
+   "losd": 1.0,
+   "lti_reg": null,
+   "lti_return_hc": 0.0,
+   "mech": "MSD",
+   "name": "Oskar Smartt",
+   "pedDecay": 1.0,
+   "pedOnly": false,
+   "pk": 17,
+   "pn": 42.865774,
+   "ps": 42.865774,
+   "surv": 1.0,
+   "track": [
+    {
+     "a": 24.8,
+     "s": 1
+    }
+   ],
+   "ty": "MSD",
+   "unpl": false,
+   "v": 9,
+   "vM1": 9,
+   "vM2": 9,
+   "vP1": 9,
+   "vP2": 9,
+   "vPrev": null,
+   "vRaw": null,
+   "yr": 2025
+  }
+ ],
+ "picks": [
+  {
+   "n": 1,
+   "v": 3000
+  },
+  {
+   "n": 2,
+   "v": 2779
+  },
+  {
+   "n": 3,
+   "v": 2675
+  },
+  {
+   "n": 4,
+   "v": 2481
+  },
+  {
+   "n": 5,
+   "v": 2247
+  }
+ ],
+ "PVC": {
+  "1": 3000,
+  "10": 1604,
+  "11": 1565,
+  "12": 1495,
+  "13": 1396,
+  "14": 1287,
+  "15": 1204,
+  "16": 1152,
+  "17": 1116,
+  "18": 1086,
+  "19": 1059,
+  "2": 2779,
+  "20": 1034,
+  "21": 1007,
+  "22": 980,
+  "23": 952,
+  "24": 925,
+  "25": 900,
+  "26": 877,
+  "27": 857,
+  "28": 839,
+  "29": 824,
+  "3": 2675,
+  "30": 811,
+  "31": 798,
+  "32": 785,
+  "33": 772,
+  "34": 759,
+  "35": 745,
+  "36": 731,
+  "37": 717,
+  "38": 703,
+  "39": 690,
+  "4": 2481,
+  "40": 677,
+  "41": 664,
+  "42": 653,
+  "43": 643,
+  "44": 633,
+  "45": 624,
+  "46": 616,
+  "47": 609,
+  "48": 602,
+  "49": 596,
+  "5": 2247,
+  "50": 589,
+  "51": 583,
+  "52": 577,
+  "53": 572,
+  "54": 567,
+  "55": 562,
+  "56": 557,
+  "57": 553,
+  "58": 549,
+  "59": 545,
+  "6": 1974,
+  "60": 542,
+  "61": 539,
+  "62": 536,
+  "63": 533,
+  "64": 530,
+  "65": 528,
+  "66": 525,
+  "67": 523,
+  "68": 520,
+  "69": 518,
+  "7": 1822,
+  "70": 516,
+  "71": 513,
+  "72": 511,
+  "73": 509,
+  "74": 507,
+  "75": 505,
+  "76": 503,
+  "77": 501,
+  "78": 498,
+  "79": 496,
+  "8": 1694,
+  "80": 494,
+  "81": 492,
+  "82": 489,
+  "83": 487,
+  "84": 485,
+  "85": 483,
+  "86": 481,
+  "87": 478,
+  "88": 477,
+  "89": 475,
+  "9": 1624,
+  "90": 473,
+  "91": 472,
+  "92": 470,
+  "93": 469,
+  "94": 468,
+  "95": 467,
+  "96": 466,
+  "97": 465,
+  "98": 464,
+  "99": 463
+ },
+ "lensPicks": [
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 1,
+   "v": 3000
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 2,
+   "v": 2779
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 3,
+   "v": 2675
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 4,
+   "v": 2481
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 5,
+   "v": 2247
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 6,
+   "v": 1974
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 7,
+   "v": 1822
+  },
+  {
+   "cls": "2026-EOY-ND",
+   "kind": "phantom_pick",
+   "labelYear": 2027,
+   "lens": 1,
+   "n": 8,
+   "v": 1694
+  }
+ ],
+ "lensConservation": {
+  "+1": {
+   "lensYear": 2027,
+   "nPicks": 30,
+   "nPlayers": 804,
+   "picks": 43266,
+   "players": 685885,
+   "total": 729151
+  },
+  "+2": {
+   "lensYear": 2028,
+   "nPicks": 30,
+   "nPlayers": 804,
+   "picks": 43266,
+   "players": 635275,
+   "total": 678541
+  },
+  "-1": {
+   "lensYear": 2025,
+   "nPicks": 0,
+   "nPlayers": 1002,
+   "picks": 0,
+   "players": 827786,
+   "total": 827786
+  },
+  "-2": {
+   "lensYear": 2024,
+   "nPicks": 0,
+   "nPlayers": 1002,
+   "picks": 0,
+   "players": 876358,
+   "total": 876358
+  },
+  "_meta": {
+   "basis": "PVC face value on future picks; no future-discount dial (deferred, item 12)",
+   "principle": "year-0 continuity: value converts, does not vanish (item 12)",
+   "report_only": true,
+   "spread_vs_now": {
+    "+1": -2.8,
+    "+2": -9.55,
+    "-1": 10.35,
+    "-2": 16.82,
+    "now": 0.0
+   }
+  },
+  "now": {
+   "lensYear": 2026,
+   "nPicks": 0,
+   "nPlayers": 804,
+   "picks": 0,
+   "players": 750171,
+   "total": 750171
+  }
+ },
+ "phantomLayer": {
+  "Adelaide": {
+   "1": {
+    "delta": 6349.045911111112,
+    "draftSlots": 4.429,
+    "draftValue": 5556,
+    "entrantValue": 6349,
+    "freeSlots": 1.683,
+    "freeValue": 793,
+    "intake": [
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 1,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 3000
+     },
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 19,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 1059
+     },
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 37,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 717
+     },
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 55,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 562
+     },
+     {
+      "club": "Adelaide",
+      "count": 0.4286,
+      "effpk": 73,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 509
+     },
+     {
+      "club": "Adelaide",
+      "count": 0.6984,
+      "effpk": 90,
+      "kind": "free",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 473
+     },
+     {
+      "club": "Adelaide",
+      "count": 0.9841,
+      "effpk": 92,
+      "kind": "free",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 470
+     }
+    ],
+    "retained": 45,
+    "retainedSum": 39514,
+    "withPhantom": 45863.04591111111,
+    "withoutPhantom": 39514
+   },
+   "2": {
+    "delta": 6349.045911111112,
+    "draftSlots": 4.429,
+    "draftValue": 5556,
+    "entrantValue": 6349,
+    "freeSlots": 1.683,
+    "freeValue": 793,
+    "intake": [
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 1,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 3000
+     },
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 19,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 1059
+     },
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 37,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 717
+     },
+     {
+      "club": "Adelaide",
+      "count": 1.0,
+      "effpk": 55,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 562
+     },
+     {
+      "club": "Adelaide",
+      "count": 0.4286,
+      "effpk": 73,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 509
+     },
+     {
+      "club": "Adelaide",
+      "count": 0.6984,
+      "effpk": 90,
+      "kind": "free",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 473
+     },
+     {
+      "club": "Adelaide",
+      "count": 0.9841,
+      "effpk": 92,
+      "kind": "free",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 470
+     }
+    ],
+    "retained": 45,
+    "retainedSum": 36316,
+    "withPhantom": 42665.04591111111,
+    "withoutPhantom": 36316
+   }
+  },
+  "Brisbane": {
+   "1": {
+    "delta": 6228.038611111115,
+    "draftSlots": 4.714,
+    "draftValue": 5435,
+    "entrantValue": 6228,
+    "freeSlots": 1.683,
+    "freeValue": 793,
+    "intake": [
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 2,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 2779
+     },
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 20,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 1034
+     },
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 38,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 703
+     },
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 56,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 557
+     },
+     {
+      "club": "Brisbane",
+      "count": 0.7143,
+      "effpk": 74,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 507
+     },
+     {
+      "club": "Brisbane",
+      "count": 0.6984,
+      "effpk": 90,
+      "kind": "free",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 473
+     },
+     {
+      "club": "Brisbane",
+      "count": 0.9841,
+      "effpk": 92,
+      "kind": "free",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 470
+     }
+    ],
+    "retained": 45,
+    "retainedSum": 37790,
+    "withPhantom": 44018.038611111115,
+    "withoutPhantom": 37790
+   },
+   "2": {
+    "delta": 6228.038611111115,
+    "draftSlots": 4.714,
+    "draftValue": 5435,
+    "entrantValue": 6228,
+    "freeSlots": 1.683,
+    "freeValue": 793,
+    "intake": [
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 2,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 2779
+     },
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 20,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 1034
+     },
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 38,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 703
+     },
+     {
+      "club": "Brisbane",
+      "count": 1.0,
+      "effpk": 56,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 557
+     },
+     {
+      "club": "Brisbane",
+      "count": 0.7143,
+      "effpk": 74,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 507
+     },
+     {
+      "club": "Brisbane",
+      "count": 0.6984,
+      "effpk": 90,
+      "kind": "free",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 473
+     },
+     {
+      "club": "Brisbane",
+      "count": 0.9841,
+      "effpk": 92,
+      "kind": "free",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 470
+     }
+    ],
+    "retained": 45,
+    "retainedSum": 35494,
+    "withPhantom": 41722.038611111115,
+    "withoutPhantom": 35494
+   }
+  },
+  "Carlton": {
+   "1": {
+    "delta": 6006.445511111109,
+    "draftSlots": 4.571,
+    "draftValue": 5214,
+    "entrantValue": 6006,
+    "freeSlots": 1.683,
+    "freeValue": 793,
+    "intake": [
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 3,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 2675
+     },
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 21,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 1007
+     },
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 39,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 690
+     },
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 57,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 553
+     },
+     {
+      "club": "Carlton",
+      "count": 0.5714,
+      "effpk": 75,
+      "kind": "draft",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 505
+     },
+     {
+      "club": "Carlton",
+      "count": 0.6984,
+      "effpk": 90,
+      "kind": "free",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 473
+     },
+     {
+      "club": "Carlton",
+      "count": 0.9841,
+      "effpk": 92,
+      "kind": "free",
+      "labelYear": 2027,
+      "lens": 1,
+      "phantom": true,
+      "v": 470
+     }
+    ],
+    "retained": 49,
+    "retainedSum": 27991,
+    "withPhantom": 33997.44551111111,
+    "withoutPhantom": 27991
+   },
+   "2": {
+    "delta": 6006.445511111109,
+    "draftSlots": 4.571,
+    "draftValue": 5214,
+    "entrantValue": 6006,
+    "freeSlots": 1.683,
+    "freeValue": 793,
+    "intake": [
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 3,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 2675
+     },
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 21,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 1007
+     },
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 39,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 690
+     },
+     {
+      "club": "Carlton",
+      "count": 1.0,
+      "effpk": 57,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 553
+     },
+     {
+      "club": "Carlton",
+      "count": 0.5714,
+      "effpk": 75,
+      "kind": "draft",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 505
+     },
+     {
+      "club": "Carlton",
+      "count": 0.6984,
+      "effpk": 90,
+      "kind": "free",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 473
+     },
+     {
+      "club": "Carlton",
+      "count": 0.9841,
+      "effpk": 92,
+      "kind": "free",
+      "labelYear": 2028,
+      "lens": 2,
+      "phantom": true,
+      "v": 470
+     }
+    ],
+    "retained": 49,
+    "retainedSum": 25596,
+    "withPhantom": 31602.44551111111,
+    "withoutPhantom": 25596
+   }
+  }
+ },
+ "phantomPicks": [
+  {
+   "count": 1.0,
+   "effpk": 1,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 3000,
+   "value": 3000
+  },
+  {
+   "count": 1.0,
+   "effpk": 2,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 2779,
+   "value": 2779
+  },
+  {
+   "count": 1.0,
+   "effpk": 3,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 2675,
+   "value": 2675
+  },
+  {
+   "count": 1.0,
+   "effpk": 4,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 2481,
+   "value": 2481
+  },
+  {
+   "count": 1.0,
+   "effpk": 5,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 2247,
+   "value": 2247
+  },
+  {
+   "count": 1.0,
+   "effpk": 6,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 1974,
+   "value": 1974
+  },
+  {
+   "count": 1.0,
+   "effpk": 7,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 1822,
+   "value": 1822
+  },
+  {
+   "count": 1.0,
+   "effpk": 8,
+   "kind": "draft",
+   "labelYear": 2027,
+   "lens": 1,
+   "phantom": true,
+   "v": 1694,
+   "value": 1694
+  }
+ ],
+ "phantomTotals": {
+  "_meta": {
+   "basis": "per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer",
+   "draft_pvc": 69266,
+   "entrant_layer_pvc": 83538,
+   "exit_model": "exit risk carried by r_pop (§2.ix, F4 — incl exiters residuals); no §2.iii haircut, no double-count",
+   "expected_slots_per_year": 103.43,
+   "gates": false,
+   "k0_phantom": "none",
+   "law": "MEMO_LEGF v1.3 §2.viii (owner item 359): FULL expected annual intake at v2-curve PVC per effective pick",
+   "mech_pvc": 14272,
+   "note": "draft slots priced off PVC per effective pick (v2 curve, GROSS); mechanisms at PICKEQ 90/92; no wide/decile bins (CORE rule 7); sealed from intake history, NOT tuned against the §2.x gate",
+   "per_lens": "each forward lens carries ONE annual entrant class on top of the r_pop-retained roster; +2 is the marginal-annual view and runs slightly under now (declared caveat, item-12 lens-conservation)",
+   "pickeq": {
+    "IRE": 92,
+    "MSD": 90,
+    "PDA": 92,
+    "PDN": 92,
+    "PDS": 92,
+    "SSP": 92,
+    "UNR": 92
+   },
+   "report_only": true,
+   "seal_sha256_8": "a17aafed",
+   "sealed_structure": "session_2026-07-18/legf5/sealed_entrant_structure.json"
+  },
+  "league": {
+   "0": {
+    "delta": 0,
+    "draftValue": 0,
+    "entrantValue": 0,
+    "freeValue": 0,
+    "withPhantom": 750171,
+    "withoutPhantom": 750171
+   },
+   "1": {
+    "delta": 83538,
+    "draftValue": 69266,
+    "entrantValue": 83538,
+    "freeValue": 14272,
+    "withPhantom": 769423,
+    "withoutPhantom": 685885
+   },
+   "2": {
+    "delta": 83538,
+    "draftValue": 69266,
+    "entrantValue": 83538,
+    "freeValue": 14272,
+    "withPhantom": 718813,
+    "withoutPhantom": 635275
+   }
+  },
+  "clubs": {
+   "Adelaide": {
+    "0": {
+     "delta": 0,
+     "nPlayers": 45,
+     "withPhantom": 44254,
+     "withoutPhantom": 44254
+    },
+    "1": {
+     "delta": 6349.045911111112,
+     "nPlayers": 45,
+     "withPhantom": 45863.04591111111,
+     "withoutPhantom": 39514
+    },
+    "2": {
+     "delta": 6349.045911111112,
+     "nPlayers": 45,
+     "withPhantom": 42665.04591111111,
+     "withoutPhantom": 36316
+    }
+   },
+   "Brisbane": {
+    "0": {
+     "delta": 0,
+     "nPlayers": 45,
+     "withPhantom": 41160,
+     "withoutPhantom": 41160
+    },
+    "1": {
+     "delta": 6228.038611111115,
+     "nPlayers": 45,
+     "withPhantom": 44018.038611111115,
+     "withoutPhantom": 37790
+    },
+    "2": {
+     "delta": 6228.038611111115,
+     "nPlayers": 45,
+     "withPhantom": 41722.038611111115,
+     "withoutPhantom": 35494
+    }
+   },
+   "Carlton": {
+    "0": {
+     "delta": 0,
+     "nPlayers": 49,
+     "withPhantom": 32115,
+     "withoutPhantom": 32115
+    },
+    "1": {
+     "delta": 6006.445511111109,
+     "nPlayers": 49,
+     "withPhantom": 33997.44551111111,
+     "withoutPhantom": 27991
+    },
+    "2": {
+     "delta": 6006.445511111109,
+     "nPlayers": 49,
+     "withPhantom": 31602.44551111111,
+     "withoutPhantom": 25596
+    }
+   }
+  }
+ }
+}
