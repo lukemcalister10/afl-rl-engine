@@ -55,3 +55,37 @@ a design seat): stream-aware pathway/pick-band slices + R-ERA context availabili
 cheap while nothing is scored, priced in re-scoring after round 0. 4. Panel builder and harness
 read the stream fields from day one. 5. The pricing-layer rebuild (charter §4) prices the two
 streams as separate entrant distributions — R-STREAMS lands there natively.
+
+
+## AMENDMENT 1 · pen-filed 2026-07-24 (owner words, supervisor channel)
+**Correction class clarified (owner: "it'd be a correction, not hindsight").** The pass contains
+TWO edit classes: (a) CORRECTIONS to existing fields (picks, positions, player rows) — these DO
+move the current board and lenses, deliberately; the guard is ATTRIBUTABILITY, not immobility:
+at the bake, every board delta must trace to a manifest row, and ZERO unattributed movement is
+the release assertion the owner views. (b) NEW stream fields — move nothing in the current world;
+feed the panel, harness, and pricing rebuild. "Foundation-level change is the point" (owner):
+wild shifts in draft-pick valuations or positional history are expected OUTPUTS of the rebuild
+reading corrected truth — the manifest is what makes them auditable rather than mysterious.
+
+**ITEM 411 EXECUTION SEAT (owner-directed).** A fresh GPT Sol instance stewards this job under
+the standing Sol-family charter (docs/directives/SEAT_CHARTER_sol.md — all carve-outs apply:
+no owner-word attestation, no self-review, CI never commits, seat-authored commits via Code
+hands, signs as what it is). Scope: (1) direct Code hands to EXTRACT the current store to
+spreadsheet form for the owner — one row per player, all authored fields, plus per-season
+production, current value, games, age, pathway, and replacement-relevant aggregates so the owner
+can prototype pricing experiments in the same workbook; read-only, no repo writes beyond the
+exported artifact routed to the owner; (2) RECEIVE the owner's edited workbook, validate it
+against this schema, and compile the CHANGE MANIFEST (player, field, old, new, reason) with a
+population-impact report (percentile/replacement shifts from removals/additions); (3) PLAN the
+post-408 bake: sequencing, assertions (manifest-attributability, stream-field inertness),
+board-delta preview for the owner's viewing, protocol-amendment trigger. HARD FENCE: no store
+byte moves until ITEM 408 merges and the owner words the restructure release; store AUTHORSHIP
+is the owner's alone — the seat validates and stages, never edits content.
+
+**Pricing experiments (owner read, sealed).** The owner will experiment with LOWERING REPLACEMENT
+BARS and ADDING CONVEXITY around them. This is PRICING-LAYER design — the owner-ruled layer, the
+carried named question (bars + production→SCAR mapping never directly validated) — and does NOT
+touch the frozen forecast-core referee (no protocol amendment needed for it). Route: the owner
+experiments in the extraction workbook; findings return as owner reads that seed the
+pricing-layer design deliverable. His original ITEM 409 instinct (the floor is too convex against
+solid non-elite players; +2 above replacement is not −10 below) is the sealed context.
