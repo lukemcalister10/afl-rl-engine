@@ -1065,9 +1065,13 @@ no extractor assertion weakened or removed). No protected artifact changed; no s
 post-repair CI four-suite conclusions on the final SHA are recorded in the hand-back / §8.3 (this note is
 updated once CI attaches to the new tip).
 
-`[re-runnable]` **Post-§10 CI (SHA `5acbccf`):** CI Guards **success**, FV Provenance **success**, Live
-Scoring **success**; Final Integration advanced PAST extract_seam (step 13 UI seams + step 14 asset-view UI
-both green) and surfaced a SECOND, different first-natural failure — see §11.
+`[re-runnable]` **Post-§10 CI (SHA `5acbccf`):** CI Guards **success**, FV Provenance **success**; Live
+Scoring run [`30060925224`](https://github.com/lukemcalister10/afl-rl-engine/actions/runs/30060925224) was
+**cancelled / superseded** (a newer push started before it finished). It completed the five-round catch-up
+and the Movers checks but was **cancelled during the failure-injection step**, so it **cannot** be cited as
+an authoritative full-suite green. Final Integration advanced PAST extract_seam (step 13 UI seams + step 14
+asset-view UI both green) and surfaced a SECOND, different first-natural failure — see §11. (The
+correction supersedes the earlier "Live Scoring success" wording for `5acbccf`.)
 
 ---
 
@@ -1129,6 +1133,104 @@ first-five-name assertion already exercises the long hyphenated name at 320px an
 `movers.test.js` **62/62**; `test_movers_transition.py` **25/25**. Protected artifacts byte-unchanged; no
 score applied; gate OFF. Post-repair CI four-suite conclusions + confirmation that every Final Integration
 step executed are recorded in the hand-back.
+
+---
+
+## 12. Final Integration clean-room present-oracle migration (authorised R1-refined; supervisor ruling 2026-07-24)
+
+`[re-runnable]` Authored by `claude-code-builder` under GPT Sol 5.6 (execution supervisor). Authorises no
+valuation, scoring, model, board, store, provenance-policy or protected-artifact change; no score applied;
+gate OFF. **No present, forward, board, store or engine value moves.** This applies the already-ratified
+ITEM 408 owner deferral consistently to the clean-room proof; it does **not** accept the current `vP1`/`vP2`
+values.
+
+### 12.1 Third Final Integration first-natural failure (SHA `044a34e`)
+With the responsive repair (§11) merged, Final Integration on `044a34e` cleared steps 1–16 (incl. step 12
+present-vs-`reference_vector_1373e824` + forward DEFERRED, step 13 `extract_seam` 42/42, step 14 asset-view
+40/40, step 15 responsive **72/72**, step 16 bootstrap) and failed for the first time at **step 17
+"Clean-room engine rebuild-equality"** (`build_final_board.py`). Steps 18–21 (R14 generated-bundle equality,
+R15 ladder survival, R14→R19 season advance, acceptance matrix) were **skipped**.
+
+### 12.2 Root cause — stale Board B semantic gate
+`build_final_board.py` gated the rebuilt board's `present v` + `vP1` + `vP2` on **semantic equality** to
+"**Board B**" (`git 70ef0ff:session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json`, blob
+`290b7953`), a **frozen R14 forward-lens snapshot that does not exist at HEAD** and predates the accepted
+release transition (board of record `6f07f7cb` / balanced `1373e824`). The rebuilt board reproduces
+BYTE-IDENTICAL to its own committed board of record `6f07f7cb` (checks 3/4 PASS), but no longer equals the
+obsolete Board B: **723/804** present-`v`, **684/804** `vP1`, **674/804** `vP2` rows differ. The `(0 diffs)`
+in the pre-migration log was the check's static NAME, not a computed count. `build_final_board.py` is
+byte-identical from the ITEM 408 base `902bd435` → HEAD and the board of record is byte-identical
+base→HEAD, so this stale gate would have failed on **every** ITEM 408 SHA; it was simply never reached
+before (FI died at step 13, then step 15). Same stale-oracle class as the present-lens Board A →
+`reference_vector_1373e824` migration (§8.1).
+
+### 12.3 Supervisor ruling (R1, refined; 2026-07-24)
+The accepted gates remain fully gating and unchanged: (1) clean bootstrap, (2) canonical build succeeds,
+(3) rebuilt board byte-identical to the committed board of record, (4) regenerated working+public bundles
+byte-identical. The stale Board B semantic gate is migrated: **present** `v` gates independently against
+`reference_vector_1373e824.json`; **forward** semantic equality to Board B remains **owner-DEFERRED**;
+Board B may remain only as a **historical diagnostic** for `vP1`/`vP2` whose differences are **measured and
+reported, not asserted as a pass and not used to fail the tool**.
+
+### 12.4 Implementation — `build_final_board.py`
+`[re-runnable]` The result separates accepted gates from the deferred comparison:
+- **`ok_rebuild`** — checks (1)–(4) unchanged (byte-identical board `6f07f7cb` + working/public bundles).
+- **`ok_present`** (PRESENT ORACLE, gating) — loads `reference_vector_1373e824.json` from the committed
+  checkout (NOT derived from the rebuilt board, NOT Board B); **fail-closed** unless its authority metadata
+  is exact (`board_md5` begins `1373e824`, `active` 804, `sum_v` 760253); requires the rebuilt active key
+  set to equal the reference key set exactly and every rebuilt `v` to equal the reference exactly; reports
+  added/removed/mismatching keys.
+- **`ok_forward_structure`** (gating) — `vP1` & `vP2` present + numeric for all 804 rebuilt rows, and the
+  historical Board B key universe equals the rebuilt universe. A missing/non-numeric forward vector or a
+  row-universe mismatch is a **hard failure**.
+- **`forward_lens_deferred: true`** + **`forward_comparison`** — the Board B `vP1`/`vP2` semantic deltas,
+  labelled DEFERRED / historical R14 / not an accepted R19 oracle / not a gating success; **measured, never
+  a PASS, never a failure trigger.**
+- **overall `ok`** = `ok_rebuild ∧ ok_present ∧ ok_forward_structure` (accepted gating only).
+
+### 12.5 Measured DEFERRED forward comparison (recorded, non-gating)
+| metric | equal | changed | keys +/− |
+|---|---|---|---|
+| `vP1` vs Board B (`70ef0ff`) | 120 / 804 | 684 / 804 | +0 / −0 |
+| `vP2` vs Board B (`70ef0ff`) | 130 / 804 | 674 / 804 | +0 / −0 |
+
+Labelled DEFERRED (historical R14 forward diagnostic; no accepted R19 forward oracle). Not asserted as a
+pass; the tool does not fail on it.
+
+### 12.6 Documentation alignment (this ruling)
+Updated: `build_final_board.py` module docstring; the FI workflow step-17 name + the Board-B fetch step
+name/comments + the checkout comment (`final-integration.yml`); `acceptance_matrix.py` `S1` clean-room
+description; `FINAL_INTEGRATION_REPORT.md` §7 row 11 (→ **DEFERRED**) + §13 `S1` clean-room paragraph; and
+the Live-Scoring `5acbccf` correction (§10 CI block). `invariant_proof.py` already treats forward vs Board B
+as DEFERRED (§8.1/§8.2) — unchanged.
+
+### 12.7 Corrected Live Scoring conclusions
+- **SHA `5acbccf`** — Live Scoring run `30060925224` was **cancelled/superseded** during failure-injection
+  (five-round catch-up + Movers completed); **not** authoritative full-suite green (corrected in the §10 CI
+  block above).
+- **SHA `044a34e`** — Live Scoring run
+  [`30062881268`](https://github.com/lukemcalister10/afl-rl-engine/actions/runs/30062881268) completed
+  **success** (all 22 steps), but is **superseded for final acceptance** by this commit's SHA.
+
+### 12.8 Residual pre-existing staleness — FLAGGED, NOT changed (honours "do not broaden")
+These carry pre-existing staleness from the EARLIER ITEM 408 migrations (present-lens → reference vector;
+populated Movers) that is NOT part of this clean-room ruling and is superseded by the machine-readable
+evidence; left untouched to avoid broadening into unrelated historical-document cleanup, and recommended for a
+future documentation-contract pass:
+- `FINAL_INTEGRATION_REPORT.md` §7 rows 10 (present `Σv=752427` vs Board A), 15 ("empty Movers"), 16
+  ("47 movers"), and §12 Limitations (superseded board `039ff8d4` / "empty Movers" narrative).
+- `ui/app/config.js` lines 21–25 (release-lineage comment: "equals Board B on present v + vP1 + vP2, 0 diffs"
+  and "present-lens Σv=752427 vs Board A") — a historical UI provenance block; **not** byte-/hash-asserted by
+  any test; not in this ruling's named set.
+
+### 12.9 Local validation + result
+`[re-runnable]` `build_final_board.py` **overall_ok=True** (gating 10/10 — ok_rebuild ∧ ok_present ∧
+ok_forward_structure; rebuilt `6f07f7cb`); `invariant_proof.py` **33/33**; `season_progress_test.py`
+**25/25**; `acceptance_matrix.py` **OVERALL PASS** (hard_fail=none; `11_forward_vector_invariants` DEFERRED);
+`extract_seam.test.py` **42/42**; `asset_view_ui_check.mjs` **40/40**; `responsive_layout.test.mjs` **72/72**
+(12/12 at 320px); `movers.test.js` **62/62**; `test_movers_transition.py` **25/25**; prescreen GREEN.
+Protected artifacts byte-unchanged; no score applied; gate OFF. Post-commit CI four-suite conclusions +
+confirmation every FI step executed are recorded in the hand-back.
 
 ---
 

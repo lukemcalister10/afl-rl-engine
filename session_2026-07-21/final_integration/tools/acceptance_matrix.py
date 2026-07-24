@@ -147,8 +147,13 @@ def main():
       # ---- supervisor corrections (2026-07-21) --------------------------------------------------------
       'S1_canonical_reproducibility': {'status': 'PASS' if cleanroom.get('ok') else 'FAIL',
           'detail': 'clean-room: engine build reproduces the committed board of record %s BYTE-IDENTICAL + '
-                    'bundles byte-identical; Board B is an oracle only (no diagnostic build input). '
-                    'cleanroom_repro.json %s' % (str(boot.get('board'))[:8], '(ok)' if cleanroom.get('ok') else 'FAIL')},
+                    'bundles byte-identical (ok_rebuild); present v gated against the committed accepted '
+                    'reference_vector_1373e824 — active 804, Sigma v 760253, exact key-set + per-row v '
+                    '(ok_present, NOT derived from the rebuilt board, NOT Board B); vP1/vP2 present+numeric '
+                    'for all 804 + Board B key universe matches (ok_forward_structure). The Board B (70ef0ff) '
+                    'vP1/vP2 SEMANTIC comparison is owner-DEFERRED — historical R14 diagnostic, MEASURED not '
+                    'asserted, never a build input. overall ok = accepted gating only. cleanroom_repro.json %s'
+                    % (str(boot.get('board'))[:8], '(ok)' if cleanroom.get('ok') else 'FAIL')},
       'S2_season_progress': {'status': 'PASS' if (g('season_progress') and season) else 'FAIL',
           'detail': 'season-state is DYNAMIC + DERIVED (season_state.json: calendar_progress + exposure_pace, '
                     'policy_id 39938f68) and advances weekly; the R14 season-state expectation (exposure_pace '

@@ -30,25 +30,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Oracle reads need real history: invariant_proof.py + the clean-room driver do
-          # `git show 70ef0ff:…` (Board B), the R14 season-state step does `git show 93bd01af:…` (the R14
-          # anchor store). A shallow checkout (the default depth 1) has neither. (The superseded R14 Board A
-          # f05ebe6 is no longer read — present-lens migrated to the committed reference_vector_1373e824.)
+          # History reads need real depth: invariant_proof.py + the clean-room driver do
+          # `git show 70ef0ff:…` (Board B — now the DEFERRED forward diagnostic only, vP1/vP2 MEASURED not
+          # gating), the R14 season-state step does `git show 93bd01af:…` (the R14 anchor store). A shallow
+          # checkout (the default depth 1) has neither. (The superseded R14 Board A f05ebe6 is no longer read;
+          # present-lens is gated against the committed reference_vector_1373e824 in BOTH tools.)
           fetch-depth: 0
 
-      - name: Fetch the Board B diagnostic commit (oracle only; never a build input)
+      - name: Fetch the Board B historical forward-diagnostic commit (comparison only; never a build input)
         run: |
           set -euo pipefail
           # Board B (70ef0ff) is the tip of origin/codex/establish-forward-lens-acceptance and is NOT an
           # ancestor of this branch, so fetch-depth:0 alone will not pull it. Fetch the immutable SHA so
-          # `git show 70ef0ff:…` resolves for the comparison oracle. It is read-only — not transplanted,
-          # not a build input — and the board_B JSON is deliberately absent from this branch's tree.
+          # `git show 70ef0ff:…` resolves for the DEFERRED forward diagnostic (vP1/vP2 deltas — MEASURED,
+          # not gating; present-lens is gated against the committed reference_vector_1373e824, not Board B).
+          # It is read-only — not transplanted, not a build input — and the board_B JSON is deliberately
+          # absent from this branch's tree.
           # Fetch by SHA (advertised branch tip); fall back to the branch ref if SHA-want is disabled.
           BOARD_B_SHA=70ef0ff36ca7633aa4097a9b7c1a730013870abe
           git fetch --no-tags origin "$BOARD_B_SHA" \
             || git fetch --no-tags origin +refs/heads/codex/establish-forward-lens-acceptance:refs/remotes/origin/codex/establish-forward-lens-acceptance
           git cat-file -e "$BOARD_B_SHA":session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json
-          echo "Board B (70ef0ff) oracle blob is resolvable"
+          echo "Board B (70ef0ff) forward-diagnostic blob is resolvable"
 
       - name: Pin Python 3.12.3
         uses: actions/setup-python@v5
@@ -129,7 +132,7 @@ jobs:
       - name: Bootstrap workspace (Guard 5)
         run: RL_VENDOR="$PWD/vendor" bash bootstrap.sh
 
-      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; Board B oracle)
+      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present v vs reference_vector_1373e824; Board B forward DEFERRED)
         run: python3 session_2026-07-21/final_integration/tools/build_final_board.py
 
       - name: Round-14 season-state derivation equality + generated-bundle equality
