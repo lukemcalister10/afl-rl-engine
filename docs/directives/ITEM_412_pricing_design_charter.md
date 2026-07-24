@@ -1,7 +1,7 @@
-# ITEM 412 — PRICING-LAYER DESIGN SEAT CHARTER · DRAFT, PENDING COLD REVIEW · pen-filed 2026-07-24
+# ITEM 412 — PRICING-LAYER DESIGN SEAT CHARTER · COLD-REVIEWED (FIT WITH CORRECTIONS, applied) · pen-filed 2026-07-24
 Seat: a fresh Fable chat, owner-in-chat (the 409/410 pattern) — the pricing layer is the
 OWNER-RULED layer, so his reads land first-hand. Read-only everywhere; no repo writes; deliverables
-route to the owner; the pen files. Maximum effort setting (irreversibility rule, v-register).
+route to the owner; the pen files. Run at maximum effort — plain seat instruction from the pen, no register citation claimed.
 
 ## THE TWO LAYERS (owner's words, sealed v441)
 "How well can we project future performance — the modelling. And how do we value performance —
@@ -14,11 +14,11 @@ the referee, the race, or the store.
   shape EMPIRICAL with the positional POOL as its asymptote; boundary-of-signal measured, owner's
   prior 64, divergence returns to him with numbers. POOL = ND 65+, post-draft categories, RD —
   shared value by drafted position. SSP/MSD = pool-until-evidence: assigned pool value,
-  individual observation lanes, owner expectation on record (likely at-or-beneath pool).
-- v409/v390-392: the owner's convexity instinct — the replacement floor is too convex against
+  individual observation lanes, owner expectation on record (v439 verbatim: he imagines they will fall beneath the pool in value).
+- v385 + the ITEM 409 memo: the owner's convexity instinct — the replacement floor is too convex against
   solid non-elite players; +2 above replacement ≠ −10 below; cheap floor players free budget
   (team-level value). He will experiment with LOWER bars and CONVEXITY AROUND them in his
-  workbook; his findings arrive as sealed reads.
+  workbook; his findings arrive as sealed reads (v409 for the workbook-experiment authorization; v391 separately for the priors-raced discipline this seat applies to the 64 boundary).
 - The carried NAMED QUESTION (memo → charter → v394): replacement bars and the production→SCAR
   mapping have NEVER been directly validated. Designing what "valid" even means for them is this
   seat's core deliverable.

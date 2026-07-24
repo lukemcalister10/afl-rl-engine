@@ -1,19 +1,23 @@
-# POST-408 EXECUTION PACK — THREE DIRECTIVES · DRAFT, PENDING COLD REVIEW · pen 2026-07-24
+# POST-408 EXECUTION PACK — THREE DIRECTIVES · COLD-REVIEWED (FIT WITH CORRECTIONS, applied; finding-7 owner word pending) · pen 2026-07-24
 All pins marked ⟨MERGE⟩ are set by the pen when ITEM 408 merges. Each directive cites register
 rulings rather than restating them (SSI); the register is authoritative on every cited version.
 On approval these split into three filed directives.
 
 ## D1 · ITEM 411 BAKE RELEASE (fires first post-merge)
 Seat: Codex-411 directs Code hands; one writer. Base: ⟨MERGE⟩ main.
-1. Apply the owner's validated package (issue #146 chain; seat-revalidated incl. the
-   percentile/replacement supplement) through the item-5 atomic advance machinery: store bytes,
-   additive stream fields, and every sibling pin move in ONE transaction.
+0. FIRING PRECONDITION: Codex-411's independent validation of the package AND the
+   percentile/replacement supplement is of record (v435/v440) — this directive does not fire
+   without it.
+1. STAGE, do not land: produce the full bake as staged evidence — store bytes, additive stream
+   fields, every sibling pin — via the item-5 machinery in build-and-compare mode; NO pin bakes,
+   no live target moves at this step.
 2. Release assertions (v409/v437): every board delta traces to a manifest row — ZERO unattributed
    movement — expect a FULL incumbent repricing (positions/picks feed V0/lens/cohort); stream
-   fields inert to legacy readers; protected artifacts (frozen curve, per_entrant) byte-untouched;
+   fields inert to legacy readers; protected artifacts (frozen curve, curve contract, per_entrant) byte-untouched;
    all four suites green post-bake from fresh bootstrap.
-3. STOP: the owner views the board delta + attribution evidence + impact report, then his express
-   restructure-release word (v435). Manifest + bake plan file beside the release. No word, no bake.
+3. STOP: the owner views the staged board delta + attribution evidence + impact report FIRST;
+   the atomic transaction LANDS only on his express restructure-release word (v435; the v382-R2
+   view-before-bake pattern). Manifest + bake plan file beside the release. No word, no bake.
 
 ## D2 · FORWARD-LENS ADVANCE INTEGRATION (develops in parallel, merges after D1; HARD DEADLINE:
 before the R20 bake per the binding v422 expiry — the R20 advance may not run without it)
@@ -41,4 +45,4 @@ F3 reviewer. Base: ⟨MERGE+BAKE⟩ main; PANEL VERSION pins here, on the correc
    §6) — which PAUSES for the owner if the brackets resolvedly win.
 PRE-REQ carried: the v1.1 amendment (stream-aware pathway/pick slices per v438/v439: ND 1–64
 bands · POOL · SSP · MSD, × position) — exact wording drafted for the owner's word before this
-directive fires; an amendment is owner-only (Law 10) and re-triggers nothing else pre-scoring.
+directive fires; an amendment is owner-only under the frozen protocol's own §10 freeze rules and the v407 freeze terms, and is free pre-scoring (§10's next-round-effective + full re-score is vacuous before round 0, per v408).
