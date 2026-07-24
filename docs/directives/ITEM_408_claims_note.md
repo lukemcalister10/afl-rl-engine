@@ -1065,6 +1065,71 @@ no extractor assertion weakened or removed). No protected artifact changed; no s
 post-repair CI four-suite conclusions on the final SHA are recorded in the hand-back / §8.3 (this note is
 updated once CI attaches to the new tip).
 
+`[re-runnable]` **Post-§10 CI (SHA `5acbccf`):** CI Guards **success**, FV Provenance **success**, Live
+Scoring **success**; Final Integration advanced PAST extract_seam (step 13 UI seams + step 14 asset-view UI
+both green) and surfaced a SECOND, different first-natural failure — see §11.
+
+---
+
+## 11. Final Integration responsive-UI 320px repair (authorised narrow responsive-UI acceptance repair)
+
+`[re-runnable]` Authored by `claude-code-builder` under GPT Sol 5.6; authorises no valuation, scoring, model,
+board, store, provenance-policy or protected-artifact change.
+
+### 11.1 Second Final Integration first-natural failure
+With extract_seam repaired (§10), Final Integration on SHA `5acbccf` cleared step 13 (UI seams;
+`extract_seam` 42/42) and step 14 (unified asset-view UI 40/40) and failed at **step 15
+`ui/tests/responsive_layout.test.mjs`** (run `30060925214`). Steps 16–21 (bootstrap, clean-room rebuild,
+generated-bundle equality, R15 ladder survival, R14→R19 season advance, acceptance matrix) were **skipped**.
+
+### 11.2 Exact 320px symptom
+`71/72` responsive assertions passed; per-width `320:11/12 360:12/12 390:12/12 430:12/12 720:12/12
+1440:12/12`. The single failure: at the **320px** viewport the Board view's 5th-ranked player name
+**"Nasiah Wanganeen-Milera"** (a long hyphenated real name) rendered in **3 text lines** in the ~171px
+condensed uppercase name column — the assertion `names render in <= 2 text lines` requires ≤2. It is a
+**Board**-view typography issue, not Movers. Reproduced locally byte-for-byte (playwright-core 1.47.2 +
+`chromium_headless_shell`): `1L 1L 1L 1L 3L`.
+
+### 11.3 Proof the defect pre-dated ITEM 408
+`[re-runnable]` `ui/styles/matchday.css`, `ui/data/board_view_working.js`, `ui/data/board_view_public.js`
+and `ui/tests/responsive_layout.test.mjs` are **byte-identical from the ITEM 408 base `902bd435` through
+`5acbccf`** (`git diff 902bd435 5acbccf -- <path>` empty for each). No ITEM 408 commit touched the board
+typography, board data or the responsive test; this repair is the FIRST edit to `matchday.css`. The defect
+was latent — never *reached* in CI before, because Final Integration previously failed at earlier steps
+(extract_seam, R14/present-lens oracle reds).
+
+### 11.4 The CSS repair (measured; generic; narrowest)
+`[re-runnable]` A single `@media(max-width:360px)` block reducing ONLY the board name element at the two
+smallest phone widths:
+```
+@media(max-width:360px){
+  .row.working .nm,.row.public .nm{font-size:15px;letter-spacing:0}
+}
+```
+Placed after the existing `max-width:560px` block so it wins at ≤360px by source order. **Measured** (320px,
+playwright-core): `letter-spacing:0` alone → still 3 lines; **`font-size:16px→15px` + `letter-spacing:.02em→0`
+→ 2 lines** (the narrowest combination that works). It changes **nothing** at ≥390px (normal mobile) or
+desktop, is **name-generic** (no Nasiah special-case, no `<wbr>`, no per-name rule), keeps the **full name**
+(no truncation / ellipsis / hiding), does not touch the board data, and introduces no horizontal document
+overflow. Name column width stays 171px (≥50px). All other required fields (rank/name/club/value/movement,
+nav reachability, containment) preserved. The existing real-board assertion is **NOT** weakened, removed or
+special-cased, and the assertion count stays **72** (no synthetic assertion added — the existing real-board
+first-five-name assertion already exercises the long hyphenated name at 320px and is the regression guard).
+
+### 11.5 Before / after responsive results
+| | 320px | 360 | 390 | 430 | 720 | 1440 | total |
+|---|---|---|---|---|---|---|---|
+| before (5acbccf) | 11/12 (Nasiah `3L`) | 12/12 | 12/12 | 12/12 | 12/12 | 12/12 | **71/72** |
+| after (this repair) | **12/12** (Nasiah `2L`) | 12/12 | 12/12 | 12/12 | 12/12 | 12/12 | **72/72** |
+
+### 11.6 Local validation + result
+`[re-runnable]` `responsive_layout.test.mjs` **72/72** (12/12 at 320px); `asset_view_ui_check.mjs` **40/40**
+(no regression from the CSS); `extract_seam.test.py` **42/42**; `invariant_proof.py` **33/33**;
+`season_progress_test.py` **25/25**; `acceptance_matrix.py` **OVERALL PASS** (forward-lens DEFERRED);
+`movers.test.js` **62/62**; `test_movers_transition.py` **25/25**. Protected artifacts byte-unchanged; no
+score applied; gate OFF. Post-repair CI four-suite conclusions + confirmation that every Final Integration
+step executed are recorded in the hand-back.
+
 ---
 
 ## Signature

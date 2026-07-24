@@ -289,6 +289,16 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   .mast .stamp{overflow-wrap:anywhere}
 }
 
+/* board — smallest phones (<=360px): at 320px the condensed uppercase name column is only ~171px, where a
+   long hyphenated real name ("Nasiah Wanganeen-Milera") wraps to 3 lines. A measured, NAME-GENERIC
+   reduction — 1px smaller name (16->15px) + zero letter-spacing (.02em->0) — fits any such name in <=2
+   lines with the FULL name intact: no truncation, no ellipsis, no name-specific <wbr>, no board-data edit,
+   no document overflow. Scoped to the smallest phone widths only; >=390px (normal mobile) and desktop keep
+   the 16px/.02em name. (Placed after the max-width:560px block so it wins at <=360px by source order.) */
+@media(max-width:360px){
+  .row.working .nm,.row.public .nm{font-size:15px;letter-spacing:0}
+}
+
 /* club valuation: the wide sortable table scrolls WITHIN its own region at ANY width narrower than the
    table, so the DOCUMENT never overflows horizontally (no-op on wide desktops where the table fits). */
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
