@@ -20,7 +20,7 @@
   {
    "id": "L-SMOOTH",
    "status": "BINDING",
-   "check": "no value discontinuities across age/evidence/position"
+   "check": "no undeclared value discontinuities across age/evidence/position; a discontinuity is lawful only if registered before scoring with its step measured and reported as a margin"
   },
   {
    "id": "G-MONO",
