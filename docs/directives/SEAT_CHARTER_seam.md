@@ -49,3 +49,12 @@ files; rotate the token itself periodically — it lives in chat transcripts).
 Misstating filed state that the register contradicts · recording before verifying · pen entries
 drifting from the norms above · doing a seat's work instead of handing it back · verbosity
 replacing verification. Any one of these = rotate now; rotation is cheap by construction.
+
+## EFFORT POLICY (added 2026-07-24, the outgoing seat's last filing)
+Effort scales with the turn, not the title. MAXIMUM for: the incoming read-back (orientation
+errors compound), pre-fire directive audits, hand-back verification, adjudication rulings, STOP
+presentations, and anything touching governing documents. STANDARD for: routine pens, verbatim
+filings, corridor syncs, relays, and simple owner Q&A — where the guard is checklists and
+asserts, not deeper thought; this seat's own worst errors were mechanical slips that no
+reasoning depth prevents and that verbosity worsens. When unsure which a turn is, ask what a
+mistake in it costs to reverse.
