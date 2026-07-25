@@ -1,10 +1,10 @@
-# POST-408 EXECUTION PACK — THREE DIRECTIVES · COLD-REVIEWED (FIT WITH CORRECTIONS, applied; finding-7 owner word pending) · pen 2026-07-24
-All pins marked ⟨MERGE⟩ are set by the pen when ITEM 408 merges. Each directive cites register
+# POST-408 EXECUTION PACK — THREE DIRECTIVES · COLD-REVIEWED, CORRECTED, PINNED — LIVE (finding-7 ruled v443) · pen 2026-07-24
+All ⟨MERGE⟩ pins are SET: main @ 1a2b1933a663492c05c6a20b6be0f497655ddb48 (the ITEM 408 merge commit, four suites green attempt-1, register v452). This pack is the filed directive set of record. Each directive cites register
 rulings rather than restating them (SSI); the register is authoritative on every cited version.
 On approval these split into three filed directives.
 
 ## D1 · ITEM 411 BAKE RELEASE (fires first post-merge)
-Seat: Codex-411 directs Code hands; one writer. Base: ⟨MERGE⟩ main.
+Seat: Codex-411 directs Code hands; one writer. Base: main @ 1a2b1933 (pinned).
 0. FIRING PRECONDITION: Codex-411's independent validation of the package AND the
    percentile/replacement supplement is of record (v435/v440) — this directive does not fire
    without it.
@@ -21,7 +21,7 @@ Seat: Codex-411 directs Code hands; one writer. Base: ⟨MERGE⟩ main.
 
 ## D2 · FORWARD-LENS ADVANCE INTEGRATION (develops in parallel, merges after D1; HARD DEADLINE:
 before the R20 bake per the binding v422 expiry — the R20 advance may not run without it)
-Seat: Codex-408-successor directs Code hands. Base: ⟨MERGE⟩, rebased over D1 at completion.
+Seat: supervisor-408 (v447) directs Code hands. Base: main @ 1a2b1933 (pinned), rebased over D1 at completion.
 1. The +1/+2 projection view (vP1/vP2) regenerates from the live model + live store inside the
    same atomic advance transaction, as a mandatory sibling (the v422 ruling: "the projection view
    should always match the live/current board") — oracle + bundle + tests refreshed per advance,
@@ -33,7 +33,7 @@ Seat: Codex-408-successor directs Code hands. Base: ⟨MERGE⟩, rebased over D1
 
 ## D3 · REFEREE HARNESS BUILD (fires after D1 + the v1.1 amendment word)
 Seat: a fresh Code build seat under a Codex supervisor; implementer ≠ the protocol's author ≠ its
-F3 reviewer. Base: ⟨MERGE+BAKE⟩ main; PANEL VERSION pins here, on the corrected two-stream store
+F3 reviewer. Base: main at the post-D1-bake tip (pin set at bake); PANEL VERSION pins here, on the corrected two-stream store
 (v415 ordering).
 1. Implement docs/referee/REFEREE_PROTOCOL.md v1.0 EXACTLY — the frozen text governs over any
    preference; ambiguities return to the owner as amendment drafts, never as implementer choices.
