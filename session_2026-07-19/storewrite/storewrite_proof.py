@@ -90,7 +90,8 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'session_2026-07-18', 'legf5'),
                     os.path.join(dst, 'session_2026-07-18', 'legf5'))
     import scratch_fixture as _SF        # coherent engine identities for the fixture's Guard 5
-    _SF.stamp_release_identities(dst)
+    # ITEM 408 item 6: reconstruct the accepted R14 baseline (RoundApplier path — no sibling advance here).
+    _SF.materialize_r14(dst, REPO)
     return dst
 
 

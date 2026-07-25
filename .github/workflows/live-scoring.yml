@@ -56,6 +56,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # The disposable R14 fixture reconstructs its baseline from EXACT historical git bytes at the
+          # R14 authority anchor (93bd01af); full history is required or materialize_r14 fails closed.
+          fetch-depth: 0
 
       - name: Pin Python 3.12.3
         uses: actions/setup-python@v5
@@ -141,6 +145,11 @@ jobs:
         run: |
           set -euo pipefail
           node ui/tests/movers.test.js
+
+      - name: Movers provenance transition (owner-approved bridge; source/dest identity + content digest + append preservation; gate OFF)
+        run: |
+          set -euo pipefail
+          python3 engine/rl_after/ingestion/test_movers_transition.py
 
       - name: Movers acceptance proof (committed R15-R19 reports — one-per-round, chain, coverage, no-overwrite)
         run: |

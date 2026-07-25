@@ -17,7 +17,7 @@ Checks:
   (1) engine loads from the single store; derived active == 804 (was 805; taylor-adams retired 2026-07-12), keys unique
   (2) EXPORT PARITY (F1): board v == a freshly, independently recomputed engine gated ev(), key-for-key
   (3) BOOK PARITY  (F2): book cur == board v for every shared player
-  (4) DATA GROUND TRUTH: Kako 2025 23@55.2 / 2026 6@55.0 ; Bontempelli 13-season track regenerated == source
+  (4) DATA GROUND TRUTH: Kako 2025 23@55.2 / 2026 10@45.4 ; Bontempelli 13-season track regenerated == source
   (5) POSITION MODEL: store carries drafted/present/future single-valued columns; raw_multipos GONE
 """
 import io, os, re, sys, json, stat, contextlib, hashlib
@@ -125,7 +125,7 @@ check(len(kako)==1, "exactly one isaac-kako in the store")
 if kako:
     ksc={r['year']:(r['games'],r['avg']) for r in kako[0]['scoring']}
     check(ksc.get(2025)==(23,55.2), "Kako 2025 == 23 games @ 55.2 (owner ground truth); got %s"%(ksc.get(2025),))
-    check(ksc.get(2026)==(6,55.0),  "Kako 2026 == 6 games @ 55.0; got %s"%(ksc.get(2026),))
+    check(ksc.get(2026)==(10,45.4), "Kako 2026 == 10 games @ 45.4 (R15-19 entered: R16=11,R17=9,R18=47,R19=57, R15 DNP; prior 6@55.0=330 +124 =454/10); got %s"%(ksc.get(2026),))
 bont=[p for p in store if p['key']=='marcus-bontempelli']
 check(len(bont)==1, "exactly one marcus-bontempelli in the store")
 if bont:
@@ -353,9 +353,35 @@ if _pvc2_on:
     _v2=json.load(open(hp('pvc_curve_v2.json')))
     _v2c={int(k):int(v) for k,v in _v2['curve'].items()}
     check(all(_p0i[k]==_v2c[k] for k in range(1,100)), "_PVC0 == pvc_curve_v2.json (the loaded ev-channel basis is the derived curve)")
-    # stamp-assert-not-stale: the curve carries the store md5 it was derived on (S5 never repeats)
-    _boot_store=hashlib.md5(open(hp('rl_model_data.json'),'rb').read()).hexdigest()[:8]
-    check(_v2.get('stamp',{}).get('store_md5')==_boot_store, "STAMP not stale: pvc_curve_v2 store_md5=%s == boot store %s"%(_v2.get('stamp',{}).get('store_md5'),_boot_store))
+    # ITEM 408 / owner R1=C — pvc_curve_v2 is a FROZEN RULER, not a derivative of the weekly live store.
+    # This is a later self-test invariant (introduced after the five SSI guards), NOT Guard 1/2/3/4/5.
+    # HALT-not-warn on the TRUE immutable provenance: the curve stamp binds the contract's frozen source
+    # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
+    # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
+    _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
+    _contract_md5='676ad2b77612a4fbd4df3362b6f88fab'
+    _curve_source_store='968de0c7a0183ca3914165536f39607a'
+    _per_entrant_md5='40d7da7c'
+    if not _curve_contract_path or not os.path.exists(_curve_contract_path):
+        check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
+    else:
+        _cc=json.load(open(_curve_contract_path))
+        _cc_md5=hashlib.md5(open(_curve_contract_path,'rb').read()).hexdigest()
+        _stamp=_v2.get('stamp',{})
+        check(_cc_md5==_contract_md5,
+              "FROZEN-RULER contract byte-untouched: md5=%s (expected %s)"%(_cc_md5,_contract_md5))
+        check(str(_cc.get('curve_source_store_md5'))==_curve_source_store,
+              "FROZEN-RULER contract source store == %s (got %s)"%(_curve_source_store[:8],str(_cc.get('curve_source_store_md5'))[:8]))
+        check(str(_stamp.get('store_md5'))==str(_cc.get('curve_source_store_md5'))[:8],
+              "FROZEN-RULER curve stamp store=%s == contract curve_source_store=%s"%(
+                  _stamp.get('store_md5'),str(_cc.get('curve_source_store_md5'))[:8]))
+        check(str(_stamp.get('per_entrant_md5'))==_per_entrant_md5,
+              "FROZEN-RULER curve stamp per_entrant=%s == %s"%(_stamp.get('per_entrant_md5'),_per_entrant_md5))
+        _curve_file_md5=hashlib.md5(open(hp('pvc_curve_v2.json'),'rb').read()).hexdigest()
+        check(str(_cc.get('pick_curve_file_md5'))==_curve_file_md5,
+              "FROZEN-RULER curve bytes == contract file md5 %s"%_curve_file_md5[:8])
+        check(str(_cc.get('pick_curve_curve_md5'))==str(_v2.get('curve_md5')),
+              "FROZEN-RULER curve payload md5=%s == contract"%_v2.get('curve_md5'))
     check(_v2.get('numeraire_pin1_3000') is True and _v2.get('r104_9_strict_descent') is True, "curve artifact self-declares pin(1)=3000 + strict descent")
     # posture discounts EXACT (BINDING; acceptance leg_d_placeholders.posture_2027_discounts)
     if os.path.exists(board_path):

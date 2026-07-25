@@ -6,7 +6,7 @@ builds the board in a fresh disposable staging copy of the checkout, with a cont
 the outcome. Runs locally and on a clean CI runner (.github/workflows/fv-provenance.yml).
 
 Scenarios (audit's §7 red/green standard):
-  GREEN 1  strict canonical build (RL_FV=checkout, balanced config)         -> board 06d8af60, 804/752427/7964, 0 movers
+  GREEN 1  strict canonical build (RL_FV=checkout, balanced config)         -> board 1373e824, 804/760253/9542, 0 movers
   GREEN 2  provenance record emitted before export                          -> RL_FV, resolved dir, FV identity,
                                                                                dp path+hash, rl_model path+hash,
                                                                                config_manifest path+identity
@@ -38,7 +38,7 @@ FIX = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'fix
 CLAUDE = '/home/claude'
 AMBIENT_FV = os.path.join(CLAUDE, 'rl_workspace', 'forward_valuation')   # the FORMER RL_FV default (the hole)
 RL_AFTER_LINK = os.path.join(CLAUDE, 'rl_after')                        # the FORMER hardcoded rl_model path
-BOARD_MD5_GOOD = '06d8af60b679a12db07c064c60c065f9'
+BOARD_MD5_GOOD = '1373e82471a81064ef96820f3db065df'   # ITEM 408 STOP-1 (owner-approved 2026-07-22): accepted R19 balanced/strict board (advanced from 06d8af60)
 BAD_PREFIX = 'd7a95e8d'
 STALE_DP = os.path.join(FIX, 'distribution_pricing.stale_21d530bf.py')
 
@@ -143,10 +143,10 @@ def green1():
     r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
     ok = (r['rc'] == 0 and r['board_md5'] == BOARD_MD5_GOOD)
     facts = _board_facts(r['board_path']) if r['board_path'] else {}
-    ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 752427 and facts.get('sheezel') == 7964
+    ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 760253 and facts.get('sheezel') == 9542
     # C5: compare the COMPLETE active-player value vector against the accepted reference — require ZERO movers.
     movers = None
-    ref_path = os.path.join(FIX, 'reference_vector_06d8af60.json')
+    ref_path = os.path.join(FIX, 'reference_vector_1373e824.json')
     if r['board_path'] and os.path.exists(ref_path):
         ref = json.load(open(ref_path))['vector']
         built = {p['key']: p['v'] for p in json.loads(open(r['board_path'], 'rb').read())['active']}
@@ -155,8 +155,8 @@ def green1():
         only_ref = set(ref) - set(built); only_built = set(built) - set(ref)
         ok = ok and len(movers) == 0 and not only_ref and not only_built and len(both) == 804
     _tail = '' if ok else '  ::STDERR_TAIL:: ' + ' | '.join((r['stderr'] or '').strip().splitlines()[-4:])
-    record('GREEN1_strict_board_06d8af60_zero_movers', ok,
-           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s (expect 06d8af60/804/752427/7964/0)%s"
+    record('GREEN1_strict_board_1373e824_zero_movers', ok,
+           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s (expect 1373e824/804/760253/9542/0)%s"
            % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'),
               (len(movers) if movers is not None else '?'), _tail))
     shutil.rmtree(r['base'], ignore_errors=True)
@@ -198,7 +198,7 @@ def red1():
     files_unchanged = (before == after)
     ok = stale_here and is_good and not_bad and files_unchanged
     record('RED1_stale_ambient_ignored', ok,
-           "stale_seeded=%s board=%s (must be 06d8af60, never d7a95e8d) files_unchanged=%s"
+           "stale_seeded=%s board=%s (must be 1373e824, never d7a95e8d) files_unchanged=%s"
            % (stale_here, r['board_md5'], files_unchanged))
     shutil.rmtree(r['base'], ignore_errors=True)
 

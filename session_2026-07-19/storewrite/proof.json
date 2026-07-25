@@ -2,8 +2,8 @@
   "ALL_PASS": true,
   "A_scratch_apply": {
     "all_fed_players_moved": true,
-    "board_md5_after": "cd45ddf5",
-    "board_md5_before": "1f10220c",
+    "board_md5_after": "dbf36338",
+    "board_md5_before": "32b0944f",
     "board_moved": true,
     "guard5_green": true,
     "ledger_after": 7,
@@ -61,19 +61,19 @@
   },
   "D_single_env_stability": {
     "board_md5s": [
-      "cd45ddf5",
-      "cd45ddf5",
-      "cd45ddf5",
-      "cd45ddf5",
-      "cd45ddf5"
+      "dbf36338",
+      "dbf36338",
+      "dbf36338",
+      "dbf36338",
+      "dbf36338"
     ],
     "byte_stable": true,
     "matches_proofA_board": true,
     "pass": true,
     "runs": 5,
-    "stable_md5": "cd45ddf5"
+    "stable_md5": "dbf36338"
   },
-  "elapsed_s": 516.2,
+  "elapsed_s": 666.4,
   "feed_players": 7,
   "gate_off_on_real_store": true,
   "gate_shipped": {

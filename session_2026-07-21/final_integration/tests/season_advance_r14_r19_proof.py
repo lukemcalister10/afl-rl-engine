@@ -36,6 +36,8 @@ import release_contract as RCON   # noqa: E402
 
 GEN = "2026-07-21T05:00:00Z"
 EXPECT_CAL = {14: 0.58, 15: 0.63, 16: 0.67, 17: 0.71, 18: 0.75, 19: 0.79}
+# The DISPOSABLE scratch's R14 baseline board (materialize_r14 reconstructs it from the R14 anchor). This
+# is the R14 board of record, NOT the current board of record 6f07f7cb (which this proof leaves untouched).
 CANON_BOARD = '2ab73a6fed1f06fc8eecc2ce597c2aec'
 OUT = os.path.abspath(os.path.join(HERE, '..', 'evidence', 'season_advance_r14_r19.json'))
 R = []
@@ -155,8 +157,11 @@ def main():
     # no stale R14 state after R15+; calendar strictly increases
     cals = [r['calendar_progress'] for r in ROWS]
     ck('calendar_progress strictly increases R14..R19 (no stale round)', all(cals[i] < cals[i+1] for i in range(len(cals)-1)), cals)
-    ck('canonical store byte-identical (968de0c7 untouched)', md5(real_store) == store_before)
-    ck('canonical board byte-identical (2ab73a6f untouched)', md5(real_board) == board_before)
+    # The REAL canonical store/board (the current R19 store f37d9716 + board of record 6f07f7cb) must be
+    # byte-unchanged by this disposable scratch advance. Labels derive from the measured identity (no stale
+    # R14 hardcode); the disposable scratch's OWN R14 baseline is the separate 2ab73a6f/968de0c7 above.
+    ck('canonical store byte-identical (current R19 store %s untouched)' % store_before[:8], md5(real_store) == store_before)
+    ck('canonical board byte-identical (board of record %s untouched)' % board_before[:8], md5(real_board) == board_before)
     ck('real-store apply gate OFF after the scratch run', not SI._apply_enabled())
     write()
 

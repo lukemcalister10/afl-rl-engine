@@ -83,7 +83,7 @@ Override hooks `RL_UNCOMP_S / RL_LSYM_TAB / RL_V0SURF_REFIT` are declared **must
 | 08 | Fail-closed tests (missing/ambient-only/contradictory/unknown/stale/missing-contract/conflicting-PVC) | **PASS** 15/15 |
 | 09 | Final board identity (md5/sha256/blob/sidecar/config) | **PASS** |
 | 10 | Present-lens invariants: 804 active; Σv=752427; 0 present-v/rank/order movers vs Board A | **PASS** |
-| 11 | Forward-vector invariants: vP1 & vP2 == Board B for all 804 (equal 804/804, changed 0, missing/added 0) | **PASS** |
+| 11 | Forward-vector invariants: vP1 & vP2 present + numeric for all 804 + Board B key universe matches (structure gated). Semantic vP1/vP2 equality to the superseded R14 Board B is owner-DEFERRED — deltas MEASURED, never asserted as a pass (no accepted R19 forward oracle) | **DEFERRED** |
 | 12 | Visible draft assets: 64 (2027) + 64 (2028), 0 on current ladder, unique ids, PVC equality, monotone, sorted | **PASS** 32/32 + UI 26/26 |
 | 13 | F5 reconciliation: 64617 + 4649 + 14272 = **83538** per lens; no double-count vs sealed phantomTotals | **PASS** |
 | 14 | Club valuation: PVC fail-closed (RL_PVC2, curve_md5 89c14729), 160 held picks, 16 clubs | **PASS** 26/26 |
@@ -149,10 +149,15 @@ preserved as present-lens lineage.
 **S1 — Canonical reproducibility (no diagnostic build input).** The final board is now produced by the
 CANONICAL ENGINE BUILD: `rl_export.py` (RL_LEGF=1 block) emits the visible future-draft ladder + F5
 reconciliation directly. `build_final_board.py` is repurposed into the clean-room reproduction driver.
-Clean-room proof `cleanroom_repro.json` **9/9**: bootstrap re-sync from checkout → engine build → rebuilt
-board BYTE-IDENTICAL to the committed board → bundles byte-identical → Board B (`70ef0ff`) as an ORACLE only
-(0 diffs on present v / vP1 / vP2 / universe). No `git show` of a diagnostic, no other branch/commit, is a
-build input.
+Clean-room proof `cleanroom_repro.json` gates on the ACCEPTED properties only (ITEM 408 present-oracle
+migration 2026-07-24): bootstrap re-sync from checkout → canonical engine build → rebuilt board
+BYTE-IDENTICAL to the committed board of record `6f07f7cb` → working/public bundles byte-identical
+(`ok_rebuild`); present `v` gated against the committed accepted reference vector `reference_vector_1373e824`
+(active 804, Σv 760253, exact key-set + per-row `v` — `ok_present`, NOT derived from the rebuilt board and
+NOT Board B); vP1/vP2 present + numeric for all 804 and the Board B key universe matches
+(`ok_forward_structure`). The Board B (`70ef0ff`) vP1/vP2 SEMANTIC comparison is owner-DEFERRED (no accepted
+R19 forward oracle): the deltas are MEASURED and recorded, never asserted as a pass and never used to fail
+the tool. No `git show` of a diagnostic, no other branch/commit, is a build input.
 
 **S2 — Season-progress authority.** Investigated + classified + tested (`season_progress_inventory.json`,
 `season_progress_test.py` **11/11**). Finding: valuation season progress is the FROZEN literal

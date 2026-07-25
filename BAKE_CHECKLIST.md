@@ -49,6 +49,11 @@ Steps run IN ORDER; any step failing stops the ritual (subject to the SHIP_GATES
       unless `RL_ALLOW_PVCFIT_BOARD=1` marks an explicitly non-bakeable experiment. A board baked with the fit on
       (as `bcd81363` was, before this remediation) is R3-non-compliant — verify the shipped board embeds the
       frozen v3.4 pick curve, never the fitted candidate curve. Assert the committed default is `0`; STOP if not.
+- [ ] **ITEM 408 FROZEN-RULER LIFECYCLE (owner R1=C, 2026-07-22):** weekly live-store movement does
+      **not** re-derive or re-pin the adopted PVC. Assert `pvc_curve_v2.json` remains byte-bound to
+      `ui/release_pick_curve.json`, source store `968de0c7`, and per-entrant evidence `40d7da7c`. A true
+      `RL_PVCFIT` re-adoption is a separately owner-released bake job: re-derive the complete evidence and curve,
+      obtain the owner board read, then move curve + source/evidence contract + board/release pins atomically.
 - [ ] `setup_env.sh` gate PASSes (pins: Python 3.12.3 · numpy 2.4.4 · scipy 1.17.1 · sklearn 1.8.0 · openpyxl 3.1.5).
 - [ ] Expected values reproduce byte-exact under the pins: Maric ev(2026)=1409, Langdon ev(2026)=593 (or the
       candidate's recorded successors), PANEL_EXPECTED 10/10. Off-pin numbers are not acceptance evidence.

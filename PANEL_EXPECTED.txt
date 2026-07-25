@@ -1,26 +1,26 @@
-FIXED PANEL — LEG A iso-evidence-fade candidate (NUMÉRAIRE), 2026-07-16; engine a83c9f6d, store b1fd0bce,
-rl_model f79fc740, config c2d233aec104 (UNMOVED), board 8d90c9ac. L7 NUMÉRAIRE stands: every displayed
-value = round(ev/1.0524), pick-1 = 3000. RL_ISOFADE default ON: iso_corr(pos,pk) fades on the v2.10
-evidence weight w=E_q (iso_eff = 1 + (iso_corr-1)*exp(-w/1.1)) and the ISO multiplier is monotonized
-non-increasing in pick. RL_ISOFADE=0 reproduces the v2.10 CAPTAINCY board 790136a3 BYTE-EXACT (proven).
-Every EV below equals the shipped board (data/rl_build/rl_app_data.json md5 8d90c9ac, ship_gates B4
-byte-agree, == board 'v' for all 10) and reproduces deterministically (round(ev/1.0524)).
+FIXED PANEL — R19 BOARD OF RECORD (owner T1 ruling 2026-07-22). board 6f07f7cbe042f8e56426a01226c967c9,
+engine_head 7c452715, store f37d9716, rl_model 4f776e07, config 45b207c0 (UNMOVED), as_of_round 19.
+L7 NUMÉRAIRE stands: every displayed value = round(ev/1.0524), pick-1 = 3000. Every EV below equals the
+shipped board 'v' (data/rl_build/rl_app_data.json, md5 6f07f7cb; rebuilt fresh via rl_export.py, byte-exact,
+parity gate 804/804 == gated ev(), eps=0) and reproduces deterministically as round(ev/1.0524).
 
-player                pos       pk  ns     EV   note (raw ×1.0524 value in brackets)
-Nick Daicos           MID        4 106   8140   proven star                (raw 8567)
-Marcus Bontempelli    MID        4 271   3625   proven; combined anchor    (raw 3815)
-Harry Sheezel         MID        3  79   8006   proven young               (raw 8426)
-Max Gawn              RUC       33 260   3138   proven ruck; pk33 penalty dissolves (raw 3302)
-Harley Reid           MID        1  52   3468   first-year value, pk1      (raw 3650)
-Josh Ward             MID        7  79   2004   moderate pedigree          (raw 2109)
-Darcy Moore           KEY_DEF    8 199    257   decliner the shed fired on (raw 270)
-Taylor Goad           RUC       20   1    917   sat-out ruck               (raw 965)
-Josh Smillie          MID        7   0   1285   sat-out mid                (raw 1352)
-Will Green            RUC       16   0    657   sat-out ruck               (raw 691)
+player                    pk      EV      raw   note
+Nick Daicos                4    8683            proven star
+Marcus Bontempelli         4    4278            proven; combined anchor
+Harry Sheezel              3    9542            proven young
+Max Gawn                  33    3372            proven ruck
+Harley Reid                1    3531            first-year value, pk1
+Josh Ward                  7    2684            moderate pedigree
+Darcy Moore                8     234            decliner
+Taylor Goad               20    1011            sat-out ruck
+Josh Smillie               7    1233            sat-out mid
+Will Green                16     651            sat-out ruck
 
-PROVENANCE: re-pins the v2.10 CAPTAINCY panel (board 790136a3: Daicos 8049 Bont 3585 Sheezel 8096 Gawn
-2574 Reid 3467 Ward 2016 Moore 264 Goad 875 Smillie 1279 Green 660) forward onto the LEG A candidate
-board 8d90c9ac. The change is entirely the iso evidence-fade + ISO monotonization (RL_ISOFADE, default ON):
-Gawn 2574->3138 (his proven-ruck pk33 iso penalty dissolves), Daicos ->8140; Sheezel/Reid/Ward drift a few
-percent as early-pick premiums fade toward 1.0. Production (raw_ev) is byte-identical to v2.10 for every
-player — the movement is 100% the pick channel. Pick-1 = 3000 permanent. RL_ISOFADE=0 => board 790136a3 byte-exact.
+PROVENANCE: re-pins the panel from the SUPERSEDED LEG-A board 8d90c9ac (values 8140/3625/8006/3138/3468/
+2004/257/917/1285/657) forward onto the R19 BOARD OF RECORD 6f07f7cb (owner T1 ruling 2026-07-22 — the
+panel asserts the board of record, i.e. what the harness builds in gate mode with the current season_state).
+The board of record differs from the balanced/present-lens board 06d8af60 (panel 8017/3897/7964/3416/3348/
+2003/257/914/1324/651) by the owner-authorised 2026-07-22 D8 GRADED-STALENESS present-board correction:
+proven players' present-v lifts (Daicos/Sheezel/Bontempelli/Ward up), sat-out Will Green (651) is unchanged
+and is the only row identical across the two boards. Forward-lens treatment intentionally unchanged/deferred.
+Rebuild to verify: bash bootstrap.sh && bash run_panel.sh  (expect PASS 10/10 against these values).

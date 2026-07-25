@@ -2,7 +2,7 @@
 
 Writes **nothing** to the real store (gate ships OFF: `APPLY_DEFAULT=False` + env `INGEST_SCORE_APPLY` unset; real-store apply refused = `True`). Round 16 is applied in a **fresh process** after a full stop; the scratch `expected_boot.json` is stamped coherent with the scratch engine (release identities supplied to the fixture).
 
-## RESULT: **ALL PASS**  (404.8s)
+## RESULT: **ALL PASS**  (942.4s)
 
 | # | proof | result |
 |---|---|---|
@@ -28,9 +28,9 @@ Writes **nothing** to the real store (gate ships OFF: `APPLY_DEFAULT=False` + en
 
 ### Store / board / history hashes (the sequential chain)
 ```
-R14 (fixture baseline) store 968de0c7  board 270a2c5f
-R15 apply              store 66cc4879  board f58ac3e0   value/rank rounds [14, 15]
-R16 apply              store 9c88c550  board f3cc9131   value/rank rounds [14, 15, 16]
+R14 (fixture baseline) store 968de0c7  board 2ab73a6f
+R15 apply              store 66cc4879  board 06c578d1   value/rank rounds [14, 15]
+R16 apply              store 9c88c550  board c92fda2e   value/rank rounds [14, 15, 16]
 ```
 
 > Single-env, scratch-only. No cross-run/cross-machine numerical-identity verdict is claimed — the board is validated for structure, source-stamp/pin coherence, Guard-5 pins, player universe and history integrity, under the accepted fail-closed forward-valuation path.

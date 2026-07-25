@@ -1,0 +1,124 @@
+{
+  "event": "push",
+  "excluded_event": "pull_request",
+  "head_sha": "a0df29c6ebf911a31cb517294786593c5000c0f6",
+  "runs": {
+    "CI Guards": {
+      "conclusion": "failure",
+      "event": "push",
+      "head_branch": "ci/r19-provenance-migration",
+      "head_sha": "a0df29c6ebf911a31cb517294786593c5000c0f6",
+      "html_url": "https://github.com/lukemcalister10/afl-rl-engine/actions/runs/29930019510",
+      "jobs": [
+        {
+          "conclusion": "failure",
+          "failed_steps": [
+            {
+              "conclusion": "failure",
+              "name": "Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)",
+              "number": 9
+            }
+          ],
+          "failure_signal_lines": [
+            "LOG DOWNLOAD ERROR: <HTTPError 401: 'Server failed to authenticate the request. Please refer to the information in the www-authenticate header.'>"
+          ],
+          "job_id": 88957042796,
+          "log_file": "CI_Guards-guards.log",
+          "name": "guards",
+          "status": "completed"
+        }
+      ],
+      "run_id": 29930019510,
+      "run_number": 1190,
+      "status": "completed"
+    },
+    "FV Provenance": {
+      "conclusion": "failure",
+      "event": "push",
+      "head_branch": "ci/r19-provenance-migration",
+      "head_sha": "a0df29c6ebf911a31cb517294786593c5000c0f6",
+      "html_url": "https://github.com/lukemcalister10/afl-rl-engine/actions/runs/29930019626",
+      "jobs": [
+        {
+          "conclusion": "failure",
+          "failed_steps": [
+            {
+              "conclusion": "failure",
+              "name": "FV provenance red/green suite (strict board 06d8af60 + fail-closed red paths)",
+              "number": 9
+            }
+          ],
+          "failure_signal_lines": [
+            "LOG DOWNLOAD ERROR: <HTTPError 401: 'Server failed to authenticate the request. Please refer to the information in the www-authenticate header.'>"
+          ],
+          "job_id": 88957042072,
+          "log_file": "FV_Provenance-fv-provenance.log",
+          "name": "fv-provenance",
+          "status": "completed"
+        }
+      ],
+      "run_id": 29930019626,
+      "run_number": 289,
+      "status": "completed"
+    },
+    "Final Integration": {
+      "conclusion": "failure",
+      "event": "push",
+      "head_branch": "ci/r19-provenance-migration",
+      "head_sha": "a0df29c6ebf911a31cb517294786593c5000c0f6",
+      "html_url": "https://github.com/lukemcalister10/afl-rl-engine/actions/runs/29930019442",
+      "jobs": [
+        {
+          "conclusion": "failure",
+          "failed_steps": [
+            {
+              "conclusion": "failure",
+              "name": "Season-state \u2014 derivation, wiring, behaviour, stale rejection + FENCED reads halt (req 1/2/4/5/7)",
+              "number": 11
+            }
+          ],
+          "failure_signal_lines": [
+            "LOG DOWNLOAD ERROR: <HTTPError 401: 'Server failed to authenticate the request. Please refer to the information in the www-authenticate header.'>"
+          ],
+          "job_id": 88956964141,
+          "log_file": "Final_Integration-final-integration.log",
+          "name": "final-integration",
+          "status": "completed"
+        }
+      ],
+      "run_id": 29930019442,
+      "run_number": 220,
+      "status": "completed"
+    },
+    "Live Scoring Updater": {
+      "conclusion": "failure",
+      "event": "push",
+      "head_branch": "ci/r19-provenance-migration",
+      "head_sha": "a0df29c6ebf911a31cb517294786593c5000c0f6",
+      "html_url": "https://github.com/lukemcalister10/afl-rl-engine/actions/runs/29930019353",
+      "jobs": [
+        {
+          "conclusion": "failure",
+          "failed_steps": [
+            {
+              "conclusion": "failure",
+              "name": "Sequential two-round proof (R15 -> R16, history integrity, restart, UI, no-prod-touch)",
+              "number": 12
+            }
+          ],
+          "failure_signal_lines": [
+            "LOG DOWNLOAD ERROR: <HTTPError 401: 'Server failed to authenticate the request. Please refer to the information in the www-authenticate header.'>"
+          ],
+          "job_id": 88956963837,
+          "log_file": "Live_Scoring_Updater-live-scoring.log",
+          "name": "live-scoring",
+          "status": "completed"
+        }
+      ],
+      "run_id": 29930019353,
+      "run_number": 262,
+      "status": "completed"
+    }
+  },
+  "schema": "item-408-exact-head-diagnosis-v1"
+}

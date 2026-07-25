@@ -1,0 +1,306 @@
+{
+  "passed": 60,
+  "total": 60,
+  "results": [
+    {
+      "name": "P1 R19 no-op reproduction: sibling rebuilds to 1373e824 / 804 / 760253 / 9542",
+      "ok": true,
+      "detail": "md5=1373e824 active=804 sumv=760253 sheezel=9542"
+    },
+    {
+      "name": "P2 store advanced",
+      "ok": true,
+      "detail": "f37d9716->18c5fea2"
+    },
+    {
+      "name": "P2 canonical board advanced",
+      "ok": true,
+      "detail": "6f07f7cb->36e61ea5"
+    },
+    {
+      "name": "P2 expected_boot store/board/round advanced to R20",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 balanced SIBLING advanced + tracks the NEW store (md5 != pre-advance 1373e824)",
+      "ok": true,
+      "detail": "balanced=4f940581"
+    },
+    {
+      "name": "P2 contract identities + present_lens + reseal coherent with the sibling",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 FV reference vector regenerated + FV oracle re-aimed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 board_view balanced stamp advanced; board stamp = the advanced canonical board",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 SINGLE transaction: SIBLING_STAGED precedes COMMIT_BEGIN (no committed stale-sibling interval)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 ONE manifest target set covers canonical + sibling (one rollback boundary)",
+      "ok": true,
+      "detail": "targets=15"
+    },
+    {
+      "name": "P2 release_contract check PASS on the fully-advanced tree",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P2/#7 manifest target count == collected count",
+      "ok": true,
+      "detail": "manifest=15 collected=15 declared=15"
+    },
+    {
+      "name": "P2/#7 collected count == replacement-event count (== COMMIT_VERIFIED replaced)",
+      "ok": true,
+      "detail": "collected=15 replaced=15 commit_verified=15"
+    },
+    {
+      "name": "P2/#7 every final live target md5 == its validated staged payload",
+      "ok": true,
+      "detail": "staged_md5_entries=15 of 15"
+    },
+    {
+      "name": "P3 injected sibling-GENERATION failure aborts pre-commit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 NO live target changed after a generation failure",
+      "ok": true,
+      "detail": "changed=[] newrv=[]"
+    },
+    {
+      "name": "P4 injected sibling-VALIDATION failure aborts pre-commit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 NO live target changed after a validation failure",
+      "ok": true,
+      "detail": "changed=[] newrv=[]"
+    },
+    {
+      "name": "P5 fault after the first canonical replacement raises",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P5 rollback restored ALL canonical + sibling targets",
+      "ok": true,
+      "detail": "still-changed=[] newrv=[]"
+    },
+    {
+      "name": "P6 fault after a sibling replacement raises",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 rollback restored ALL canonical + sibling targets",
+      "ok": true,
+      "detail": "still-changed=[] newrv=[]"
+    },
+    {
+      "name": "P7 crash left an INCOMPLETE transaction with a partial commit",
+      "ok": true,
+      "detail": "incomplete=1 partial=True"
+    },
+    {
+      "name": "P7 the next advance is BLOCKED while the transaction is incomplete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 recovery rolled back the expanded single transaction (all targets restored)",
+      "ok": true,
+      "detail": "still-changed=[]"
+    },
+    {
+      "name": "P8 FV-oracle active count DERIVED from the built vector (== 800, not a literal 804)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P8 sibling_repin FV-oracle re-aim has no literal 804 in its CODE (comments aside)",
+      "ok": true,
+      "detail": "code_has_804=False"
+    },
+    {
+      "name": "P9 weekly_update.sh routes through round_entry.py (the Python transaction)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 weekly_update.bat routes through round_entry.py (the Python transaction)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 the round_entry CLI drives staged_apply (StagedRoundApplier.apply_snapshot) \u2014 the invariant path",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 staged_apply.apply_snapshot folds in the sibling (_stage_sibling) \u2014 no launcher can bypass",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P10/#1 removing board_view_public before validation aborts pre-commit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P10/#1 NO live target changed",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P11/#2 removing a declared target before collection refuses (mandatory-target invariant)",
+      "ok": true,
+      "detail": "MANDATORY TARGET MISSING before commit: declared target 'sibling_reference_vecto"
+    },
+    {
+      "name": "P11/#2 NO partial commit \u2014 every live target unchanged",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "P12/#3 reference-vector value corruption (board id retained) -> assert_current FAILS",
+      "ok": true,
+      "detail": "sibling set is INCOHERENT (['reference vector sum_v != sum(vector.values())']) \u2014 run `sibl"
+    },
+    {
+      "name": "P12/#3 verify names the reference-vector arithmetic invariant",
+      "ok": true,
+      "detail": "['reference vector sum_v != sum(vector.values())']"
+    },
+    {
+      "name": "P13/#4 FV-oracle active drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle active != contract present_lens active']"
+    },
+    {
+      "name": "P13/#4 FV-oracle sum drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sum_v != contract present_lens total']"
+    },
+    {
+      "name": "P13/#4 FV-oracle sheezel drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sheezel != reference vector Sheezel']"
+    },
+    {
+      "name": "P13/#4 FV-oracle reference-filename drift (board id retained) fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle reference-vector filename != regenerated reference vector']"
+    },
+    {
+      "name": "P14/#5 working board-view corruption fails the coherence gate",
+      "ok": true,
+      "detail": "['working balanced_board_md5 stamp != 1373e824']"
+    },
+    {
+      "name": "P14/#5 public board-view corruption fails the coherence gate",
+      "ok": true,
+      "detail": "['public rows disagree with working on name/value for 1 player(s)']"
+    },
+    {
+      "name": "P15/#6 view-only corruption makes the live gate STALE (not silently current)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "P15/#6 standalone reconcile REPAIRS the view (changed, NOT a no-op)",
+      "ok": true,
+      "detail": "changed=True no_op=False"
+    },
+    {
+      "name": "P15/#6 the live gate is coherent again after repair",
+      "ok": true,
+      "detail": "fails=[]"
+    },
+    {
+      "name": "P16/D1 no-build verify() MISSES the sum-preserving corruption (internal arithmetic intact)",
+      "ok": true,
+      "detail": "verify_ok=True"
+    },
+    {
+      "name": "P16/D1 authoritative check --full FAILS specifically on the EXACT-VECTOR mismatch",
+      "ok": true,
+      "detail": "full build-and-compare: EXACT-VECTOR MISMATCH \u2014 the live reference vector differs from the"
+    },
+    {
+      "name": "P17/D2 active drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle active != contract present_lens active']"
+    },
+    {
+      "name": "P17/D2 active drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 active drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    },
+    {
+      "name": "P17/D2 sum drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sum_v != contract present_lens total']"
+    },
+    {
+      "name": "P17/D2 sum drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 sum drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    },
+    {
+      "name": "P17/D2 sheezel drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle sheezel != reference vector Sheezel']"
+    },
+    {
+      "name": "P17/D2 sheezel drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 sheezel drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    },
+    {
+      "name": "P17/D2 reference-filename drift: verify() fails on its invariant",
+      "ok": true,
+      "detail": "['FV oracle reference-vector filename != regenerated reference vector']"
+    },
+    {
+      "name": "P17/D2 reference-filename drift: reconcile REPAIRS it (changed, not a no-op) + verify() green",
+      "ok": true,
+      "detail": "changed=True no_op=False repaired=True verify=True"
+    },
+    {
+      "name": "P17/D2 reference-filename drift: check --full green afterward",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': '1373e82471a81064ef96820f3db065df'}"
+    }
+  ]
+}

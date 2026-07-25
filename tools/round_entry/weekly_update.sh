@@ -50,6 +50,13 @@ fi
 export PYTHONPATH="$REPO/engine/rl_after:$RL_VENDOR${PYTHONPATH:+:$PYTHONPATH}"
 
 PY="${PYTHON:-python3}"
+
+# ITEM 408 item 5 — the balanced/strict SIBLING advance-repin is folded INTO the Python round-advance
+# transaction (engine/rl_after/ingestion/staged_apply.py::_stage_sibling): a store advance regenerates the
+# sibling board + FV reference vector and moves every dependent pin/aggregate/seal/view UNDER THE SAME
+# transaction journal + rollback boundary as the store/board. The invariant therefore lives in the Python
+# transaction every launcher (.sh / .bat / direct CLI) drives via round_entry.py — NOT in this shell — so
+# no launcher can bypass it and there is never an externally-committed store/board state with stale siblings.
 set +e
 "$PY" "$REPO/tools/round_entry/round_entry.py" "$@"
 RC=$?

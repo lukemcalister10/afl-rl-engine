@@ -1,12 +1,21 @@
 {
-  "0_production_empty_and_derived_identity": {
+  "0_production_populated_and_provenance_bridge": {
     "no_hardcoded_v2_10_tag": true,
     "pass": true,
-    "production_empty": true,
-    "production_rounds": [],
+    "production_populated": true,
+    "production_reports_digest": "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d",
+    "production_rounds": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
     "release_versions": [
       "v2.11-present-lens-baseline"
-    ]
+    ],
+    "transition_digest_matches": true,
+    "transition_owner_approved": true
   },
   "1_one_report_per_round": {
     "pass": true,

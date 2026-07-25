@@ -1,0 +1,81 @@
+{
+  "passed": 15,
+  "total": 15,
+  "results": [
+    {
+      "name": "CHAIN(1) staged_apply advanced the STORE",
+      "ok": true,
+      "detail": "f37d9716 -> bca1b291"
+    },
+    {
+      "name": "CHAIN(1) staged_apply advanced the CANONICAL BOARD of record",
+      "ok": true,
+      "detail": "6f07f7cb -> 49b0f2e2"
+    },
+    {
+      "name": "CHAIN(1) expected_boot store/board/round advanced to R20",
+      "ok": true,
+      "detail": "round=20"
+    },
+    {
+      "name": "CHAIN(2) balanced SIBLING advanced IN THE SAME TRANSACTION (tracks the new store)",
+      "ok": true,
+      "detail": "1373e824 -> e4687458"
+    },
+    {
+      "name": "CHAIN(2) FV reference vector coherent (board id + internal arithmetic + present-lens)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(2) FV oracle re-aimed (board id + active + sum + Sheezel + reference filename)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(2) contract identities + present_lens + reseal coherent with the sibling",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(2) board_view balanced stamp advanced; board-of-record stamp = the ADVANCED board",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(2) release_contract check PASS on the fully-advanced tree",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) fast gate CURRENT immediately after the advance",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) ordinary verify() coherent immediately after the advance",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "CHAIN(3) authoritative check --full CURRENT (build-and-compare, exact vector)",
+      "ok": true,
+      "detail": "{'current': True, 'mode': 'full+build-and-compare', 'balanced_board_md5': 'e4687458b5aba4a8d6c5c5d16a88a6ae'}"
+    },
+    {
+      "name": "CHAIN(4) subsequent standalone reconcile is a NO-OP (changed=False)",
+      "ok": true,
+      "detail": "no_op=True changed=False"
+    },
+    {
+      "name": "CHAIN(4) the no-op reconcile moved NO committed file",
+      "ok": true,
+      "detail": "changed=[]"
+    },
+    {
+      "name": "CHAIN(5) non-advancing frozen artifacts byte-unchanged (curve/curve_contract/per_entrant)",
+      "ok": true,
+      "detail": "moved=[]"
+    }
+  ]
+}

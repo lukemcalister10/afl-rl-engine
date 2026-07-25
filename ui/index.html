@@ -22,6 +22,9 @@
 <!-- weekly movers bundle (one report per committed round; from engine/rl_after/ingestion/round_movers.py).
      Optional: absent until a round is applied; the Movers view fail-closes cleanly when it is missing. -->
 <script src="data/movers.js"></script>
+<!-- owner-approved Movers provenance transition (ITEM 408 Items 6-7, Option A; mirrors data/release_lineage.json
+     `release_transition`). Bridges the historical R15-R19 reports to the current accepted release, fail-closed. -->
+<script src="data/movers_transition.js"></script>
 
 <!-- app -->
 <script src="app/config.js"></script>

@@ -107,10 +107,13 @@ jobs:
         # PR #81, so E0 was not inherited) — DIAGNOSTIC OUTPUT ONLY, changes no step logic and no verdict:
         # print the md5 of the board THIS run built (rl_export.py output from the build step above) so CI's
         # board identity is visible in the log, printed BEFORE the panel so it appears even on a panel failure.
-        # A2 proof = this printed md5 on the AMD runner == the bake-box md5. Board of record = the v2.10
-        # FINAL-INTEGRATION board of record = 2ab73a6fed1f06fc8eecc2ce597c2aec (v2.11-final-rc; supersedes 790136a3 / 06d8af60).
+        # A2 proof = this printed md5 on the AMD runner == the bake-box md5. A2 cross-machine leg is DEFERRED
+        # (no second arch; owner ruling 2026-07-22) -> UNMEASURED; the single-machine re-derivation stands.
+        # Board of record = the R19 board 6f07f7cbe042f8e56426a01226c967c9 (== data/expected_boot.json "board";
+        # freshly rebuilt from store f37d9716 / engine 7c452715 via rl_export.py, byte-exact; supersedes the
+        # pre-R19 final-integration pin 2ab73a6fed1f06fc8eecc2ce597c2aec).
         run: |
-          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (final-integration board of record = 2ab73a6fed1f06fc8eecc2ce597c2aec)"
+          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (R19 board of record = 6f07f7cbe042f8e56426a01226c967c9)"
           bash run_panel.sh
 
       - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"

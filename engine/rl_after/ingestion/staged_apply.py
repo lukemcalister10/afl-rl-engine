@@ -522,6 +522,27 @@ class StagedRoundApplier:
             self._journal(txn_dir, 'CONTRACT_STAGED', as_of_round=int(snapshot['round']),
                           contract_sha256=_new_csha[:12], store=staged_store_md5[:8], board=staged_board_md5[:8])
 
+            # (c3) SIBLING (ITEM 408 item 5): build the balanced/strict sibling board from the SAME staged
+            #      store/config/staged FV source, regenerate the full FV reference vector, and STAGE every
+            #      dependent balanced/FV pin + present_lens aggregate + contract re-seal + FV oracle + board-
+            #      view + sidecar INTO THE WORKSPACE (on top of the restamped expected_boot / contract), so
+            #      they commit under THIS transaction's SINGLE journal + rollback boundary. Fail-closed HERE,
+            #      before any live replacement. No score apply; the board of record is not touched. The
+            #      transaction's target set is extended with the new sibling targets (persisted in the
+            #      manifest) so _collect_staged / _backup_originals / _commit / rollback / recovery cover them.
+            self._fault('during_sibling_staging')
+            sib_targets = self._stage_sibling(ws, txn_dir, int(snapshot['round']),
+                                              staged_store_md5, generated_at)
+            man = self._read_txn_manifest(txn_dir) or {}
+            man['targets'] = [{'name': n, 'live': rel} for n, rel in list(TARGETS) + sib_targets]
+            man.setdefault('pre_apply_present', {}).update(
+                {n: os.path.exists(os.path.join(self.repo_root, rel)) for n, rel in sib_targets})
+            man['sibling'] = {'balanced_board_md5': self._sib_ev['sib']['board_md5'],
+                              'active': self._sib_ev['sib']['active'], 'sum_v': self._sib_ev['sib']['sum_v'],
+                              'sheezel': self._sib_ev['sib']['sheezel'],
+                              'reference_vector': self._sib_ev['ref_name']}
+            self._write_manifest(txn_dir, man)
+
             # (d) UPDATE the workspace ledger with the exact snapshot triples
             self._fault('during_ledger_staging')
             wsl = load_ledger(wsapp.ledger_path)
@@ -598,7 +619,7 @@ class StagedRoundApplier:
         man = self._read_txn_manifest(txn_dir) or {}
         present = man.get('pre_apply_present') or {}
         restored = []
-        for name, rel in TARGETS:
+        for name, rel in self._txn_targets(txn_dir):
             ob = os.path.join(orig_dir, name)
             live = os.path.join(self.repo_root, rel)
             if os.path.exists(ob):
@@ -618,19 +639,36 @@ class StagedRoundApplier:
         return self._restore_from_txn(txn_dir)
 
     def _commit(self, txn_dir, staged_paths):
-        self._journal(txn_dir, 'COMMIT_BEGIN', order=[n for n, _ in TARGETS])
-        for i, (name, rel) in enumerate(TARGETS):
+        eff_targets = self._txn_targets(txn_dir)
+        man = self._read_txn_manifest(txn_dir) or {}
+        staged_md5 = man.get('staged_md5') or {}
+        self._journal(txn_dir, 'COMMIT_BEGIN', order=[n for n, _ in eff_targets])
+        replaced = 0
+        for i, (name, rel) in enumerate(eff_targets):
             src = staged_paths.get(name)
             if src is None:
-                continue
+                # MANDATORY-TARGET INVARIANT: a declared target with no staged payload must NEVER be
+                # silently skipped mid-commit — that would leave a stale live artifact. Commit has begun
+                # (status COMMITTING), so raising here rolls back every original via _handle_failure.
+                raise StagedValidationError(
+                    "INVARIANT VIOLATION during commit: declared target %r has no staged payload — rolling "
+                    "back (a silent skip would leave a stale dependent artifact)." % name)
             live = os.path.join(self.repo_root, rel)
             _clear_ro(live)
             _atomic_place(src, live)
-            self._journal(txn_dir, 'REPLACED', target=name)
+            live_md5 = _md5_file_full(live)
+            if staged_md5.get(name) and live_md5 != staged_md5[name]:
+                raise StagedValidationError(
+                    "post-replace md5 mismatch for %r: live %s != validated staged %s — rolling back."
+                    % (name, live_md5[:8], staged_md5[name][:8]))
+            replaced += 1
+            self._journal(txn_dir, 'REPLACED', target=name, final_md5=live_md5[:12])
             if i == 0:
                 self._fault('after_first_replacement')
             else:
                 self._fault('after_subsequent_replacement')
+        # every declared target was replaced and each final live md5 matched its validated staged payload.
+        self._journal(txn_dir, 'COMMIT_VERIFIED', replaced=replaced, declared=len(eff_targets))
 
     # -- workspace build (a full repo-shaped copy; mirrors the proven storewrite scratch) -------
     def _build_workspace(self, txn_dir):
@@ -651,7 +689,8 @@ class StagedRoundApplier:
             _src = os.path.join(R, f)
             if os.path.exists(_src):
                 shutil.copyfile(_src, os.path.join(wsra, f))
-        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'season_state.py'):
+        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py',
+                  'season_state.py', 'release_contract.py'):
             _src = os.path.join(R, f)
             if os.path.exists(_src):
                 shutil.copyfile(_src, os.path.join(ws, f))
@@ -659,6 +698,16 @@ class StagedRoundApplier:
         legf5 = os.path.join('session_2026-07-18', 'legf5')
         if os.path.isdir(os.path.join(R, legf5)):
             shutil.copytree(os.path.join(R, legf5), os.path.join(ws, legf5))
+        # ITEM 408 item 5 — the balanced/strict SIBLING advance-repin runs INSIDE this transaction
+        # (_stage_sibling): it builds the sibling from THIS workspace's staged store via the accepted FV
+        # builder (session_2026-07-20/fv_provenance_remediation) + regenerates the board-view via ui/tools,
+        # and re-seals the release_contract with the ws-root release_contract.py copied above. Copied so the
+        # sibling is built + staged from the SAME staged store/config/FV source as the canonical board.
+        for rel in (os.path.join('session_2026-07-20', 'fv_provenance_remediation'), 'ui',
+                    os.path.join('session_2026-07-17', 'legd_derivation')):
+            src = os.path.join(R, rel)
+            if os.path.isdir(src):
+                shutil.copytree(src, os.path.join(ws, rel))
         return ws
 
     def _ws_applier(self, ws):
@@ -723,6 +772,177 @@ class StagedRoundApplier:
         m = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(m)
         return m
+
+    # -- ITEM 408 item 5: the SIBLING advance-repin, folded INTO this transaction ----------------
+    def _sibling_module(self):
+        """Import the balanced/strict SIBLING advance-repin helpers (reusable planning/derivation/
+        validation). The module's standalone `reconcile` is a REPAIR tool; here we use only its
+        build-and-compare helpers so the sibling commits under THIS transaction's single journal."""
+        import importlib.util
+        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sibling_repin.py')
+        spec = importlib.util.spec_from_file_location('sibling_repin_txn', p)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        return m
+
+    def _sibling_regen_board_view(self, ws):
+        """Regenerate ws/ui/data/board_view_{working,public}.js from the ws board + the ws expected_boot
+        (which, at this point, carries the advanced balanced pin) via the accepted ui/tools extractor."""
+        ev = os.path.join(ws, 'ui', 'tools', 'extract_board_view.py')
+        if not os.path.exists(ev):
+            raise StagedValidationError("sibling: ui/tools/extract_board_view.py missing from the workspace")
+        env = {k: v for k, v in os.environ.items() if not (k.startswith('RL_') or k.startswith('PAR_'))}
+        env['RL_UI_SRC'] = os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json')
+        env['RL_UI_BOOT'] = os.path.join(ws, 'data', 'expected_boot.json')
+        env['RL_UI_STORE'] = os.path.join(ws, 'engine', 'rl_after', 'rl_model_data.json')
+        env['RL_UI_OUT_DIR'] = os.path.join(ws, 'ui', 'data')
+        r = subprocess.run([sys.executable, ev], capture_output=True, text=True, env=env)
+        if r.returncode != 0:
+            raise StagedValidationError("sibling board_view regen FAILED rc=%s :: %s"
+                                        % (r.returncode, (r.stderr or '')[-500:]))
+
+    def _stage_sibling(self, ws, txn_dir, round_n, staged_store_md5, generated_at):
+        """Build the balanced/strict SIBLING board from the SAME staged store/config/staged FV source as
+        the canonical board, regenerate the FULL FV reference vector, and STAGE every dependent balanced/
+        FV pin, aggregate, oracle, seal and view INTO THE WORKSPACE (on top of the already-restamped
+        expected_boot / release_contract). Returns the list of NEW sibling live targets (name, repo-rel)
+        to append to this transaction's target set. Fail-closed: any build/derive failure raises HERE,
+        before any live replacement. Does NO score apply; never touches the board of record."""
+        SR = self._sibling_module()
+        sib = SR.build_sibling(ws)      # balanced board from THIS workspace's staged store
+        if sib['source_store_md5'] != staged_store_md5:
+            raise StagedValidationError(
+                "sibling built from store %s != staged store %s — refusing to stage a sibling off a "
+                "different store" % (sib['source_store_md5'][:8], staged_store_md5[:8]))
+        plan = SR.RepinPlan(ws, sib, round_n=round_n)     # reads ws restamped expected_boot / release_contract
+        # overlay the balanced pin + present_lens + re-seal onto the restamped ws manifest/contract, and
+        # write the regenerated reference vector + re-aimed FV oracle into the workspace.
+        for _name, (rel, data) in plan.targets.items():
+            SR._atomic_write_bytes(os.path.join(ws, rel), data)
+        self._sibling_regen_board_view(ws)      # board_view now carries the advanced balanced stamp
+        sidecar = plan.sidecar_doc(generated_at)
+        SR._atomic_write_bytes(os.path.join(ws, SR.SIDECAR_REL), SR._dumps_sidecar(sidecar))
+        self._sib_ev = {'sib': sib, 'plan_new_md5': plan.new_md5, 'ref_name': SR._reference_vector_name(sib['board_md5'])}
+        self._journal(txn_dir, 'SIBLING_STAGED', balanced_board_md5=sib['board_md5'], active=sib['active'],
+                      sum_v=sib['sum_v'], sheezel=sib['sheezel'], reference_vector=self._sib_ev['ref_name'])
+        # NEW live targets (expected_boot + release_contract are ALREADY canonical TARGETS and now carry
+        # the sibling mods in the ws, so they commit with the canonical set — do NOT duplicate them here).
+        return [
+            ('sibling_reference_vector', os.path.join(SR.FV_FIX_REL, self._sib_ev['ref_name'])),
+            ('sibling_fv_test', SR.FV_TEST_REL),
+            ('sibling_board_view_working', SR.BOARD_VIEW_WORKING_REL),
+            ('sibling_board_view_public', SR.BOARD_VIEW_PUBLIC_REL),
+            ('sibling_sidecar', SR.SIDECAR_REL),
+        ]
+
+    def _validate_sibling_staged(self, ws, staged_board_md5):
+        """Assert the STAGED sibling set is FULLY coherent BEFORE any live replacement (ITEM 408 item 5,
+        2nd blocking correction — "full coherence" must cover the FULL sibling set). Returns [] on success
+        or a list of failure strings. Establishes, against the freshly-built sibling + the staged canonical
+        board:
+          - expected_boot / release_contract identities + present_lens balanced pin + contract self-seal;
+          - the reference vector: board id, active == len(vector), sum_v == sum(vector.values()), the EXACT
+            built vector, and agreement with the contract present-lens active + total;
+          - the FV oracle: board id, DERIVED active count, present-v sum, Sheezel value and the regenerated
+            reference-vector filename (and it still compiles);
+          - BOTH board-view bundles exist + parse; the working stamp's balanced / canonical-board / store /
+            round / release identities agree with the staged manifest + the advanced canonical board; the
+            public bundle's player count + name/value rows agree with the staged canonical board and the
+            working bundle and it remains LEAK-FREE;
+          - the sidecar: store / balanced / active / total / Sheezel / reference-filename / contract-seal."""
+        SR = self._sibling_module()
+        ev = getattr(self, '_sib_ev', None)
+        if not ev:
+            return ["sibling was not staged"]
+        sib = ev['sib']
+        md5 = sib['board_md5']
+        fails = []
+        boot = json.load(open(os.path.join(ws, 'data', 'expected_boot.json')))
+        if boot.get('balanced_board_md5') != md5:
+            fails.append("staged expected_boot.balanced_board_md5 != built sibling")
+        con = json.load(open(os.path.join(ws, 'data', 'release_contract.json')))
+        rct = SR._load_module('sr_txn_rc', os.path.join(ws, SR.RELEASE_CONTRACT_TOOL_REL))
+        ids = con.get('identities', {})
+        plb = con.get('present_lens_baseline', {})
+        if ids.get('balanced_board_md5') != md5:
+            fails.append("staged contract identities.balanced_board_md5 != built sibling")
+        if not (plb.get('balanced_board_md5') == md5 and plb.get('active') == sib['active']
+                and plb.get('present_value_total') == sib['sum_v']):
+            fails.append("staged contract present_lens_baseline incoherent with the built sibling")
+        if con.get('contract_sha256') != rct.contract_hash(con):
+            fails.append("staged contract self-seal mismatch (sibling re-seal failed)")
+
+        # reference vector: id + internal arithmetic + EXACT built vector + present-lens agreement.
+        refp = os.path.join(ws, SR.FV_FIX_REL, ev['ref_name'])
+        if not os.path.exists(refp):
+            fails.append("staged reference vector missing")
+        else:
+            rv = json.load(open(refp))
+            vec = rv.get('vector') or {}
+            if rv.get('board_md5') != md5:
+                fails.append("staged reference vector board_md5 != built sibling")
+            if rv.get('active') != len(vec):
+                fails.append("staged reference vector active != len(vector)")
+            if rv.get('sum_v') != sum(int(x) for x in vec.values()):
+                fails.append("staged reference vector sum_v != sum(vector.values())")
+            if vec != sib['vector']:
+                fails.append("staged reference vector is not the EXACT built sibling vector")
+            if rv.get('active') != plb.get('active') or rv.get('sum_v') != plb.get('present_value_total'):
+                fails.append("staged reference vector active/sum != contract present-lens active/total")
+
+        # FV oracle: board id + DERIVED active + sum + Sheezel + regenerated reference filename (+ compiles).
+        fv_src = open(os.path.join(ws, SR.FV_TEST_REL), encoding='utf-8').read()
+        try:
+            fo = SR._fv_oracle_aggregates(fv_src)
+            if fo['board_md5'] != md5:
+                fails.append("staged FV oracle BOARD_MD5_GOOD != built sibling")
+            if fo['active'] != sib['active']:
+                fails.append("staged FV oracle active != built sibling active")
+            if fo['sum_v'] != sib['sum_v']:
+                fails.append("staged FV oracle sum_v != built sibling sum_v")
+            if fo['sheezel'] != sib['sheezel']:
+                fails.append("staged FV oracle sheezel != built sibling Sheezel")
+            if fo['reference_vector'] != ev['ref_name']:
+                fails.append("staged FV oracle reference-vector filename != regenerated reference vector")
+        except SR.SiblingRepinError as e:
+            fails.append("staged FV oracle unreadable: %s" % e)
+        cc = subprocess.run([sys.executable, '-m', 'py_compile', os.path.join(ws, SR.FV_TEST_REL)],
+                            capture_output=True, text=True)
+        if cc.returncode != 0:
+            fails.append("staged FV test does not compile after re-aim")
+
+        # both board-view bundles: working stamps (balanced / advanced-canonical / store / round / release)
+        # + public/working + public/canonical parity + public leak-freedom.
+        try:
+            staged_board = json.load(open(os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json')))
+            canon_active = staged_board.get('active') if isinstance(staged_board, dict) else staged_board
+        except (OSError, ValueError):
+            canon_active = None
+        fails.extend(SR._board_view_coherence(
+            ws, balanced_md5=md5, canonical_board=staged_board_md5, store=boot.get('store'),
+            as_of_round=boot.get('as_of_round'), release_version=boot.get('release_version'),
+            canonical_active=canon_active))
+
+        # sidecar: full aggregate + contract seal.
+        try:
+            sc = json.load(open(os.path.join(ws, SR.SIDECAR_REL)))
+        except (OSError, ValueError) as e:
+            sc = None
+            fails.append("staged sibling sidecar unreadable: %s" % e)
+        if sc is not None:
+            if sc.get('source_store_md5') != boot.get('store'):
+                fails.append("staged sidecar source_store_md5 != staged store")
+            if sc.get('balanced_board_md5') != md5:
+                fails.append("staged sidecar balanced_board_md5 != built sibling")
+            if sc.get('active') != sib['active'] or sc.get('present_value_total') != sib['sum_v']:
+                fails.append("staged sidecar active/total != built sibling")
+            if sc.get('harry_sheezel') != sib['sheezel']:
+                fails.append("staged sidecar Sheezel != built sibling")
+            if sc.get('reference_vector') != ev['ref_name']:
+                fails.append("staged sidecar reference_vector filename != regenerated reference vector")
+            if sc.get('contract_sha256') != con.get('contract_sha256'):
+                fails.append("staged sidecar contract_sha256 != staged contract seal")
+        return fails
 
     def _strict_regen_env(self, ws):
         """A STRICT, fail-closed environment for the staged board build. It (1) binds RL_FV to the
@@ -969,6 +1189,12 @@ class StagedRoundApplier:
         except AssertionError as e:
             fails.append("staged release-contract verify FAILED (fail-closed): %s" % str(e)[:400])
 
+        # (vii-d) SIBLING coherence (ITEM 408 item 5): the staged balanced/strict + FV sibling set agrees
+        #         with the built sibling across expected_boot / release_contract identities + present_lens /
+        #         the regenerated reference vector / the re-aimed FV oracle / board_view stamps / the
+        #         sidecar, and the contract self-seal is valid — all BEFORE any live replacement.
+        fails.extend(self._validate_sibling_staged(ws, staged_board_md5))
+
         if fails:
             raise StagedValidationError("STAGED validation failed:\n  - " + "\n  - ".join(fails))
 
@@ -1213,29 +1439,72 @@ class StagedRoundApplier:
         ev.update(md5s)
         return ev
 
+    def _txn_targets(self, txn_dir):
+        """This transaction's EFFECTIVE target list (name, repo-rel) — the canonical TARGETS plus any
+        sibling targets appended during staging, read from the durable manifest so crash-recovery restores
+        the SAME expanded set. Falls back to the canonical TARGETS if the manifest has none yet."""
+        man = self._read_txn_manifest(txn_dir) or {}
+        ts = man.get('targets')
+        if ts:
+            return [(t['name'], t['live']) for t in ts]
+        return list(TARGETS)
+
     def _collect_staged(self, ws, txn_dir):
-        """Copy the validated workspace outputs into txn/staged (same FS as live) and md5-verify each
-        copy is byte-identical to the validated workspace output — the staged bytes ARE what was
-        validated. Returns {name: staged_path}."""
-        staged = {}
-        for name, _rel in TARGETS:
-            srcp = self._ws_target_path(ws, name)
+        """Copy the validated workspace outputs into txn/staged (same FS as live) and md5-verify each copy
+        is byte-identical to the validated workspace output — the staged bytes ARE what was validated.
+        Covers the canonical AND the sibling targets. Returns {name: staged_path}.
+
+        MANDATORY-TARGET INVARIANT (ITEM 408 item 5, 2nd blocking correction): once the transaction target
+        manifest is finalized, EVERY declared effective target must exist in the validated workspace and be
+        collected. A declared target whose workspace source is MISSING is an invariant violation — raise
+        HERE, BEFORE any backup or commit (nothing live is touched), rather than silently skip it (a silent
+        skip would let a 15-target manifest commit while leaving a stale board_view_public / sidecar /
+        reference vector live). The collected staged set is then asserted to equal the manifest target set
+        EXACTLY, and each target's validated staged md5 is recorded so _commit can prove the final live md5
+        matches it."""
+        eff = self._txn_targets(txn_dir)
+        staged, staged_md5 = {}, {}
+        for name, rel in eff:
+            srcp = os.path.join(ws, rel)
             if not os.path.exists(srcp):
-                continue
+                raise StagedValidationError(
+                    "MANDATORY TARGET MISSING before commit: declared target %r (%s) has no validated "
+                    "workspace payload — refusing to collect an incomplete target set (a silent skip would "
+                    "leave a committed transaction with a stale dependent artifact)." % (name, rel))
             dstp = os.path.join(txn_dir, 'staged', name)
             shutil.copyfile(srcp, dstp)
-            if _md5_file_full(dstp) != _md5_file_full(srcp):
+            smd5 = _md5_file_full(dstp)
+            if smd5 != _md5_file_full(srcp):
                 raise StagedValidationError("staged copy of %s does not match the validated output" % name)
             staged[name] = dstp
-        self._journal(txn_dir, 'STAGED_COLLECTED', targets=sorted(staged))
+            staged_md5[name] = smd5
+        declared = {name for name, _rel in eff}
+        if set(staged) != declared:
+            raise StagedValidationError(
+                "collected staged-target set != declared manifest target set (mandatory-target invariant): "
+                "collected=%s declared=%s" % (sorted(staged), sorted(declared)))
+        man = self._read_txn_manifest(txn_dir) or {}
+        man['staged_md5'] = staged_md5
+        self._write_manifest(txn_dir, man)
+        self._journal(txn_dir, 'STAGED_COLLECTED', targets=sorted(staged),
+                      collected=len(staged), declared=len(declared))
         return staged
 
     def _backup_originals(self, txn_dir):
         orig = os.path.join(txn_dir, 'originals')
-        for name, rel in TARGETS:
+        backed_up, absent = [], []
+        for name, rel in self._txn_targets(txn_dir):
             live = os.path.join(self.repo_root, rel)
             if os.path.exists(live):
                 shutil.copyfile(live, os.path.join(orig, name))
+                backed_up.append(name)
+            else:
+                # a target created by THIS apply (absent pre-apply) is recorded absent so rollback/recovery
+                # REMOVES it rather than "restoring" it — every declared target is either backed up or
+                # recorded absent (mandatory-target invariant evidence).
+                absent.append(name)
+        self._journal(txn_dir, 'ORIGINALS_BACKED_UP_DETAIL', backed_up=sorted(backed_up), absent=sorted(absent))
+        return {'backed_up': backed_up, 'absent': absent}
 
     def _prune_committed_payload(self, txn_dir):
         """On success keep manifest.json + journal.jsonl as the permanent record; drop the heavy

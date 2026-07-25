@@ -3,12 +3,14 @@
 Validates the DURABLE movers artifacts — the accumulated SCRATCH EVIDENCE bundle
 (session_.../movers_bundle_scratch.js) + the per-round session movers/movers_R{N}.json/.csv — against
 the owner's movers acceptance criteria (2026-07-20). These are produced by generate_movers_bundle.py
-from the five-round catch-up on a disposable Round-14 copy and PRESERVED under the session proof paths
-(the production ui/data/movers.js ships EMPTY — checked here). This proof re-reads them from disk (a
-restart) and checks:
+from the five-round catch-up on a disposable Round-14 copy and PRESERVED under the session proof paths.
+The PRODUCTION ui/data/movers.js carries the OWNER-AUTHORISED R15-R19 history (ITEM 408 Items 6-7,
+Option A), bridged to the current accepted release by the owner-approved provenance transition — checked
+here (§0). This proof re-reads them from disk (a restart) and checks:
 
-  0. the PRODUCTION ui/data/movers.js ships EMPTY (no finalized rounds; a fresh baseline app renders the
-     honest empty state), and release identities are DERIVED (no hardcoded v2.10 tag);
+  0. the PRODUCTION ui/data/movers.js carries the owner-authorised R15-R19 history, its content digest
+     matches the owner-approved provenance transition (ui/data/movers_transition.js), and release
+     identities are DERIVED (no hardcoded v2.10 tag);
 
   1. exactly ONE movers report per committed round (R15..R19), no duplicate round;
   2. each report's baseline is the immediately prior committed round;
@@ -34,7 +36,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 BUNDLE = os.path.join(HERE, 'movers_bundle_scratch.js')          # the R15-R19 scratch evidence bundle
-PROD_BUNDLE = os.path.join(REPO, 'ui', 'data', 'movers.js')      # ships EMPTY
+PROD_BUNDLE = os.path.join(REPO, 'ui', 'data', 'movers.js')      # owner-authorised R15-R19 history (Option A)
 MOVERS_DIR = os.path.join(HERE, 'movers')
 ROUNDS = [15, 16, 17, 18, 19]
 
@@ -76,9 +78,21 @@ def main(argv):
     bundle = load_bundle(BUNDLE)
     reports = bundle.get('reports', {})
 
-    # 0: production bundle ships EMPTY + release identity is DERIVED (no hardcoded v2.10 tag)
+    # 0: production bundle carries the OWNER-AUTHORISED R15-R19 history bridged by the owner-approved
+    #    provenance transition (ITEM 408 Items 6-7, Option A — the recovery is genuine production history,
+    #    NOT reset to empty), and release identities are DERIVED (no hardcoded v2.10 tag). The transition's
+    #    content digest must match the production reports byte-for-byte (fail-closed anchor).
     prod = load_bundle(PROD_BUNDLE) if os.path.exists(PROD_BUNDLE) else {'rounds': None}
-    prod_empty = prod.get('rounds') == [] and not prod.get('reports')
+    trans_path = os.path.join(REPO, 'ui', 'data', 'movers_transition.js')
+    trans = load_bundle(trans_path) if os.path.exists(trans_path) else {}
+    ing = os.path.join(REPO, 'engine', 'rl_after', 'ingestion')
+    if ing not in sys.path:
+        sys.path.insert(0, ing)
+    import round_movers as MV
+    prod_populated = prod.get('rounds') == ROUNDS and len(prod.get('reports') or {}) == len(ROUNDS)
+    trans_owner_approved = trans.get('kind') == 'movers_release_transition' and trans.get('owner_approved') is True
+    prod_digest = MV.canonical_reports_digest(prod, ROUNDS) if prod_populated else None
+    digest_matches = bool(trans.get('applies_to', {}).get('historical_reports_digest') == prod_digest)
     no_hardcoded_tag = True
     rel_versions = set()
     for r in ROUNDS:
@@ -87,10 +101,12 @@ def main(argv):
             no_hardcoded_tag = False
         if 'release_version' in rel:
             rel_versions.add(rel.get('release_version'))
-    report['0_production_empty_and_derived_identity'] = {
-        'production_rounds': prod.get('rounds'), 'production_empty': prod_empty,
+    report['0_production_populated_and_provenance_bridge'] = {
+        'production_rounds': prod.get('rounds'), 'production_populated': prod_populated,
+        'transition_owner_approved': trans_owner_approved, 'production_reports_digest': prod_digest,
+        'transition_digest_matches': digest_matches,
         'no_hardcoded_v2_10_tag': no_hardcoded_tag, 'release_versions': sorted(rel_versions),
-        'pass': prod_empty and no_hardcoded_tag and bool(rel_versions)}
+        'pass': prod_populated and trans_owner_approved and digest_matches and no_hardcoded_tag and bool(rel_versions)}
 
     # 1: one report per committed round, no duplicate
     one_per_round = bundle.get('rounds') == ROUNDS and all(str(r) in reports for r in ROUNDS)
@@ -191,14 +207,14 @@ def main(argv):
     csvs = [f for f in (os.listdir(MOVERS_DIR) if os.path.isdir(MOVERS_DIR) else []) if f.endswith('.csv')]
     report['csv_reports'] = {'files': sorted(csvs), 'pass': len(csvs) == 5}
 
-    order = ['0_production_empty_and_derived_identity',
+    order = ['0_production_populated_and_provenance_bridge',
              '1_one_report_per_round', '2_baseline_is_prior_round', '3_unique_full_coverage',
              '4_deltas_recompute_and_chain', '5_deterministic_views', '6_dnp_represented',
              '7_no_extra_reports', '8_restart_preserves', '9_no_silent_overwrite', 'csv_reports']
     all_pass = all(report[k]['pass'] for k in order)
     report['ALL_PASS'] = all_pass
 
-    print("\n==== MOVERS ACCEPTANCE PROOF (R15-R19 evidence; production ships empty) ====")
+    print("\n==== MOVERS ACCEPTANCE PROOF (R15-R19 evidence; production carries the owner-authorised history) ====")
     for k in order:
         print("  [%s] %s" % ('PASS' if report[k]['pass'] else 'FAIL', k))
     print("==== %s ====" % ('ALL PASS' if all_pass else 'FAIL'))

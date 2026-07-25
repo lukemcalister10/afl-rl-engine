@@ -86,8 +86,9 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'data'), os.path.join(dst, 'data'))
     shutil.copytree(os.path.join(REPO, 'session_2026-07-18', 'legf5'),
                     os.path.join(dst, 'session_2026-07-18', 'legf5'))
-    SF.stamp_release_identities(dst)     # coherent engine identities for the fixture's Guard 5
-    return dst
+    SF.install_sibling_support_trees(dst, REPO)   # ITEM 408 item 5: balanced/strict sibling trees (centralised)
+    SF.materialize_r14(dst, REPO)                 # ITEM 408 item 6: reconstruct the accepted R14 baseline
+    return dst                                    # (materialize_r14 stamps engine identities + fail-closed verifies R14)
 
 
 def store_path_of(scr):
