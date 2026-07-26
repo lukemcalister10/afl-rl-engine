@@ -532,7 +532,10 @@ class StagedRoundApplier:
             #      manifest) so _collect_staged / _backup_originals / _commit / rollback / recovery cover them.
             self._fault('during_sibling_staging')
             sib_targets = self._stage_sibling(ws, txn_dir, int(snapshot['round']),
-                                              staged_store_md5, generated_at)
+                                              staged_store_md5, generated_at,
+                                              staged_board_md5=staged_board_md5,
+                                              canonical_manifest_loaded=bool(
+                                                  fv_ev.get('config_mode_gate_loaded')))
             man = self._read_txn_manifest(txn_dir) or {}
             man['targets'] = [{'name': n, 'live': rel} for n, rel in list(TARGETS) + sib_targets]
             man.setdefault('pre_apply_present', {}).update(
@@ -801,7 +804,8 @@ class StagedRoundApplier:
             raise StagedValidationError("sibling board_view regen FAILED rc=%s :: %s"
                                         % (r.returncode, (r.stderr or '')[-500:]))
 
-    def _stage_sibling(self, ws, txn_dir, round_n, staged_store_md5, generated_at):
+    def _stage_sibling(self, ws, txn_dir, round_n, staged_store_md5, generated_at,
+                       staged_board_md5=None, canonical_manifest_loaded=False):
         """Build the balanced/strict SIBLING board from the SAME staged store/config/staged FV source as
         the canonical board, regenerate the FULL FV reference vector, and STAGE every dependent balanced/
         FV pin, aggregate, oracle, seal and view INTO THE WORKSPACE (on top of the already-restamped
@@ -809,7 +813,15 @@ class StagedRoundApplier:
         to append to this transaction's target set. Fail-closed: any build/derive failure raises HERE,
         before any live replacement. Does NO score apply; never touches the board of record."""
         SR = self._sibling_module()
-        sib = SR.build_sibling(ws)      # balanced board from THIS workspace's staged store
+        # PRESENT lens: the balanced/strict board from THIS workspace's staged store (posture unchanged).
+        # FORWARD lens: derived from the canonical board this transaction ALREADY built under the config of
+        # record (RL_CONFIG_MODE=gate), rather than building a byte-identical second one — see
+        # SR.attach_forward_from_board, which re-verifies the authorities, requires proof the manifest was
+        # loaded, and pins the exact board md5 it is allowed to read.
+        sib = SR.build_sibling(ws, with_forward=False)
+        SR.attach_forward_from_board(
+            sib, ws, os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json'),
+            staged_board_md5, manifest_loaded=canonical_manifest_loaded)
         if sib['source_store_md5'] != staged_store_md5:
             raise StagedValidationError(
                 "sibling built from store %s != staged store %s — refusing to stage a sibling off a "

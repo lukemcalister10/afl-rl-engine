@@ -409,6 +409,49 @@ def build_forward_view(repo_root, install_board_to=None):
         os.environ.update(saved)
 
 
+def attach_forward_from_board(sib, repo_root, board_path, expect_md5, *, manifest_loaded):
+    """Attach the forward view derived from a canonical board THIS CALLER ALREADY BUILT under the config of
+    record, instead of building a second identical one.
+
+    Used only by the weekly advance transaction, which builds its canonical board with RL_CONFIG_MODE=gate
+    (config_manifest.enforce clears ambient and loads data/model_config.json) — the same manifest-loaded
+    posture build_forward_view establishes for itself. Rebuilding it inside the same transaction produces a
+    byte-identical artifact at the cost of a full board build; measured on the Live Scoring suite that
+    duplication pushed the run from 80 minutes to the 90-minute workflow cap.
+
+    This is NOT transcription. The board being read is a FRESH build made by THIS transaction from the
+    staged store; the caller must prove it was manifest-loaded and must name the md5 it expects, and both
+    are fail-closed here. The authorities of record are re-verified, the cohort is still asserted, and the
+    derived forward view is still gated on rebuild-and-compare everywhere else (verify / check --full)."""
+    repo_root = os.path.abspath(repo_root)
+    authorities = FL.verify_authorities(repo_root)      # STOP on any authority mismatch
+    if not manifest_loaded:
+        raise SiblingBuildError(
+            "refusing to derive the forward view from a canonical board that did not report loading the "
+            "config manifest — the posture may have resolved from code defaults (ITEM 408 D2)")
+    if not os.path.exists(board_path):
+        raise SiblingBuildError("canonical board missing for the forward view: %s" % board_path)
+    got = _md5_file(board_path)
+    if got != expect_md5:
+        raise SiblingBuildError("canonical board for the forward view is %s but the transaction staged %s"
+                                % (got[:8], str(expect_md5)[:8]))
+    board = _read_json(board_path)
+    present = {p["key"]: int(p["v"]) for p in board["active"]}
+    if set(present) != set(sib["vector"]):
+        d = sorted(set(present) ^ set(sib["vector"]))
+        raise SiblingRepinError(
+            "forward (config-of-record) cohort differs from the present (balanced/strict) cohort at %d "
+            "key(s) (e.g. %s) — G-COHORT; refusing to stage two universes as one advance" % (len(d), d[:3]))
+    auth = dict(authorities)
+    auth["ambient_cleared"] = []       # not applicable: the board was built by the transaction itself
+    auth["config_manifest_loaded"] = True
+    auth["source"] = "the transaction's own gate-mode canonical build (no second rebuild)"
+    sib["forward"] = FL.derive_forward(board, got, present_vector=present)
+    sib["forward_board_md5"] = got
+    sib["forward_authorities"] = auth
+    return sib
+
+
 def build_sibling(repo_root, with_forward=True):
     """Rebuild the balanced/strict SIBLING board from repo_root's store/config/FV source via the accepted
     disposable FV builder (RL_PVC2=1/RL_LEGE=0/RL_LEGF=0) — UNCHANGED: this posture is the present-lens
