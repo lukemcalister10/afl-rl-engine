@@ -822,13 +822,25 @@ class StagedRoundApplier:
         self._sibling_regen_board_view(ws)      # board_view now carries the advanced balanced stamp
         sidecar = plan.sidecar_doc(generated_at)
         SR._atomic_write_bytes(os.path.join(ws, SR.SIDECAR_REL), SR._dumps_sidecar(sidecar))
-        self._sib_ev = {'sib': sib, 'plan_new_md5': plan.new_md5, 'ref_name': SR._reference_vector_name(sib['board_md5'])}
+        self._sib_ev = {'sib': sib, 'plan_new_md5': plan.new_md5,
+                        'ref_name': SR._reference_vector_name(sib['board_md5']),
+                        # ITEM 408 D2 — the forward-lens sibling's two live targets, keyed to THIS round's
+                        # own board identity (never a historical id).
+                        'fwd_name': SR.FL.forward_vector_name(sib['board_md5']),
+                        'fwd_oracle': SR.FL.forward_oracle_name(sib['board_md5'])}
+        fwd = sib['forward']
         self._journal(txn_dir, 'SIBLING_STAGED', balanced_board_md5=sib['board_md5'], active=sib['active'],
-                      sum_v=sib['sum_v'], sheezel=sib['sheezel'], reference_vector=self._sib_ev['ref_name'])
+                      sum_v=sib['sum_v'], sheezel=sib['sheezel'], reference_vector=self._sib_ev['ref_name'],
+                      forward_vector=self._sib_ev['fwd_name'], forward_oracle=self._sib_ev['fwd_oracle'],
+                      forward_vector_sha256=fwd['vector_sha256'],
+                      forward_p1_total=fwd['lenses']['+1']['sum'],
+                      forward_p2_total=fwd['lenses']['+2']['sum'])
         # NEW live targets (expected_boot + release_contract are ALREADY canonical TARGETS and now carry
         # the sibling mods in the ws, so they commit with the canonical set — do NOT duplicate them here).
         return [
             ('sibling_reference_vector', os.path.join(SR.FV_FIX_REL, self._sib_ev['ref_name'])),
+            ('sibling_forward_vector', os.path.join(SR.FV_FIX_REL, self._sib_ev['fwd_name'])),
+            ('sibling_forward_oracle', os.path.join(SR.FORWARD_ORACLE_DIR_REL, self._sib_ev['fwd_oracle'])),
             ('sibling_fv_test', SR.FV_TEST_REL),
             ('sibling_board_view_working', SR.BOARD_VIEW_WORKING_REL),
             ('sibling_board_view_public', SR.BOARD_VIEW_PUBLIC_REL),
@@ -910,6 +922,44 @@ class StagedRoundApplier:
                             capture_output=True, text=True)
         if cc.returncode != 0:
             fails.append("staged FV test does not compile after re-aim")
+
+        # FORWARD-LENS SIBLING (ITEM 408 D2): the staged forward view must exist under THIS round's board id,
+        # be internally continuous (LENS-PROJECTION / G-Y0), be EXACTLY the freshly built forward view
+        # (build-and-compare, never a stored literal), share the present lens's cohort (G-COHORT), and be
+        # gated by its regenerated oracle, which must itself compile and RUN green against it. Any failure
+        # here is a PRE-COMMIT refusal: the whole transaction aborts and no live target moves.
+        fwdp = os.path.join(ws, SR.FV_FIX_REL, ev['fwd_name'])
+        if not os.path.exists(fwdp):
+            fails.append("staged forward reference vector missing")
+        else:
+            try:
+                fwd_doc = json.load(open(fwdp, encoding='utf-8'))
+            except (OSError, ValueError) as e:
+                fwd_doc = None
+                fails.append("staged forward reference vector unparseable: %s" % e)
+            if fwd_doc is not None:
+                if fwd_doc.get('board_md5') != md5:
+                    fails.append("staged forward reference vector board_md5 != built sibling")
+                fails.extend("staged %s" % f for f in SR.FL.continuity_fails(fwd_doc))
+                fails.extend("staged %s" % f for f in
+                             SR.FL.compare_to_built(fwd_doc, sib['forward']))
+                fails.extend("staged %s" % f for f in SR.FL.cohort_fails(fwd_doc, sib['vector']))
+                orcp = os.path.join(ws, SR.FORWARD_ORACLE_DIR_REL, ev['fwd_oracle'])
+                if not os.path.exists(orcp):
+                    fails.append("staged forward oracle missing")
+                else:
+                    fails.extend("staged %s" % f for f in
+                                 SR.FL.oracle_fails(open(orcp, encoding='utf-8').read(), fwd_doc))
+                    oc = subprocess.run([sys.executable, '-m', 'py_compile', orcp],
+                                        capture_output=True, text=True)
+                    if oc.returncode != 0:
+                        fails.append("staged forward oracle does not compile after regeneration")
+                    else:
+                        orun = subprocess.run([sys.executable, orcp], capture_output=True, text=True)
+                        if orun.returncode != 0:
+                            fails.append("staged forward oracle RUN failed rc=%s :: %s"
+                                         % (orun.returncode,
+                                            (orun.stdout + orun.stderr).strip()[-200:]))
 
         # both board-view bundles: working stamps (balanced / advanced-canonical / store / round / release)
         # + public/working + public/canonical parity + public leak-freedom.

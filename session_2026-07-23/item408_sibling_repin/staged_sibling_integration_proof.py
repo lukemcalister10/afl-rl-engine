@@ -541,25 +541,55 @@ def p12_reference_value_corruption():
 # ================================================================================ P13 (control #4)
 def p13_fv_oracle_corruptions():
     """Corrupt the FV oracle's active count, sum, Sheezel value and reference filename INDEPENDENTLY while
-    retaining the board id -> each fails on its OWN invariant in the live coherence gate."""
+    retaining the board id -> each fails on its OWN invariant in the live coherence gate.
+
+    ITEM 408 D2 §4 REPAIR (issue #157; the v448 carry, repaired exactly as register v432 repaired
+    P12/P16/P17): this case previously injected its corruptions by string-replacing the R19 LITERALS
+    `'active') == 804`, `'sum_v') == 760253`, `'sheezel') == 9542` and `reference_vector_1373e824.json`.
+    That is a wrong-frame assertion — this harness DELIBERATELY builds a non-R19 scratch
+    (`materialize_r14`), so those literals were the LIVE TREE's values, not the scratch's, and they matched
+    only while the tree is still R19. The moment the tree leaves R19 (the R20 advance) `str.replace` matches
+    nothing, NO corruption is injected, and the control silently degrades into a test of an unmutated file.
+    Repaired to SCRATCH-RELATIVE truth: the scratch is first reconciled to its OWN coherent baseline, every
+    "correct" token is DISCOVERED by parsing that scratch's own oracle, and the corruption is `correct - 1`
+    (or a filename provably distinct from the scratch's own). Two guards make a silent no-op impossible: the
+    pre-mutation baseline must be internally coherent, and each mutation must actually change the bytes."""
     scr = sib_scratch("fvorc")
     try:
+        base = coherent_baseline(scr)
+        record("P13/#4 baseline scratch is internally coherent before the mutations", base["ok"],
+               "balanced=%s active=%s sum=%s sheezel=%s ref=%s fails=%s"
+               % (base["balanced_board_md5"][:8], base["active"], base["sum_v"], base["sheezel"],
+                  base["reference_vector"], base["fails"][:1]))
         fvp = os.path.join(scr, SR.FV_TEST_REL)
         pristine = open(fvp, encoding="utf-8").read()
+        fo = base["fv_oracle"]                     # PARSED from the scratch's OWN reconciled oracle
+        bad_ref = "reference_vector_deadbeef.json"
+        assert bad_ref != fo["reference_vector"], "corruption filename collided with the scratch's own"
         cases = [
-            ("active", "'active') == 804", "'active') == 803", "FV oracle active"),
-            ("sum", "'sum_v') == 760253", "'sum_v') == 760252", "FV oracle sum_v"),
-            ("sheezel", "'sheezel') == 9542", "'sheezel') == 9541", "FV oracle sheezel"),
-            ("reference-filename", "reference_vector_1373e824.json", "reference_vector_deadbeef.json",
-             "FV oracle reference-vector filename"),
+            ("active", "'active') == %d" % fo["active"], "'active') == %d" % (fo["active"] - 1),
+             "FV oracle active"),
+            ("sum", "'sum_v') == %d" % fo["sum_v"], "'sum_v') == %d" % (fo["sum_v"] - 1),
+             "FV oracle sum_v"),
+            ("sheezel", "'sheezel') == %d" % fo["sheezel"], "'sheezel') == %d" % (fo["sheezel"] - 1),
+             "FV oracle sheezel"),
+            ("reference-filename", fo["reference_vector"], bad_ref, "FV oracle reference-vector filename"),
         ]
         for label, old, new, needle in cases:
-            open(fvp, "w", encoding="utf-8").write(pristine.replace(old, new))
+            mutated = pristine.replace(old, new)
+            # FAIL-CLOSED on the exact defect this repair removes: a corruption that did not land is a RED,
+            # never a quiet pass on an unmutated file.
+            injected = (mutated != pristine)
+            open(fvp, "w", encoding="utf-8").write(mutated)
             v = SR.SiblingRepin(scr).verify()
             record("P13/#4 FV-oracle %s drift (board id retained) fails on its invariant" % label,
-                   (not v["ok"]) and any(needle in f for f in v["fails"]),
-                   "%s" % [f for f in v["fails"] if needle in f][:1])
+                   injected and (not v["ok"]) and any(needle in f for f in v["fails"]),
+                   "injected=%s (%s -> %s) %s"
+                   % (injected, old, new, [f for f in v["fails"] if needle in f][:1]))
             open(fvp, "w", encoding="utf-8").write(pristine)      # restore for per-case isolation
+        healed = SR.SiblingRepin(scr).verify()
+        record("P13/#4 the scratch is coherent again once every case is restored", healed["ok"],
+               "fails=%s" % healed["fails"][:1])
     finally:
         shutil.rmtree(scr, ignore_errors=True)
 
@@ -596,21 +626,47 @@ def p14_board_bundle_corruptions():
 # ================================================================================ P15 (control #6)
 def p15_view_only_reconcile_repairs():
     """A view-only corruption (pins/contract/FV board id all current) must NOT read as a no-op: standalone
-    reconcile REPAIRS the board view and reports changed, not no_op."""
+    reconcile REPAIRS the board view and reports changed, not no_op.
+
+    ITEM 408 D2 §4 REPAIR (issue #157; the v448 carry, repaired exactly as register v432 repaired
+    P12/P16/P17). Two defects of the same stale-literal class are removed:
+      (a) `reconcile(round_n=19)` hardcoded the R19 round number onto a scratch this harness deliberately
+          materialises at R14. The round now comes from the SCRATCH's OWN boot manifest.
+      (b) the corruption was applied to an UNRECONCILED scratch, whose pins/contract/oracle were still the
+          live tree's R19 values while its store was R14. `changed=True` was therefore over-determined —
+          the reconcile had a whole stale sibling set to repair — so the case never actually demonstrated
+          the property in its own name ("view-ONLY"). The scratch is now first reconciled to its OWN
+          coherent baseline and PROVEN to be a no-op in that state, so the subsequent `changed=True` is
+          attributable to the view corruption ALONE; the balanced pin is asserted UNMOVED across the repair,
+          which is what makes the repair view-only rather than an ordinary advance."""
     scr = sib_scratch("viewrepair")
     try:
+        base = coherent_baseline(scr)
+        record("P15/#6 baseline scratch is internally coherent before the mutation", base["ok"],
+               "balanced=%s round=%s fails=%s"
+               % (base["balanced_board_md5"][:8], base["round_n"], base["fails"][:1]))
+        quiet = SR.SiblingRepin(scr).reconcile(round_n=base["round_n"])
+        record("P15/#6 the coherent baseline is a NO-OP (so any later `changed` is the view's doing)",
+               quiet.get("changed") is False and quiet.get("no_op") is True,
+               "changed=%s no_op=%s" % (quiet.get("changed"), quiet.get("no_op")))
+
         wp = os.path.join(scr, SR.BOARD_VIEW_WORKING_REL)
         pre, obj, suf = _bundle_io(wp)
         obj["stamp"]["balanced_board_md5"] = "0" * 32
         _bundle_write(wp, pre, obj, suf)
         stale = SR.SiblingRepin(scr).verify()
-        res = SR.SiblingRepin(scr).reconcile(round_n=19)
+        res = SR.SiblingRepin(scr).reconcile(round_n=base["round_n"])     # the SCRATCH's own round
         healed = SR.SiblingRepin(scr).verify()
         record("P15/#6 view-only corruption makes the live gate STALE (not silently current)",
-               not stale["ok"] and any("working" in f for f in stale["fails"]))
+               not stale["ok"] and any("working" in f for f in stale["fails"]),
+               "%s" % [f for f in stale["fails"] if "working" in f][:1])
         record("P15/#6 standalone reconcile REPAIRS the view (changed, NOT a no-op)",
                res.get("changed") is True and res.get("no_op") is False,
                "changed=%s no_op=%s" % (res.get("changed"), res.get("no_op")))
+        record("P15/#6 the repair is VIEW-ONLY — the balanced pin did not move across it",
+               res.get("balanced_board_md5") == base["balanced_board_md5"],
+               "before=%s after=%s" % (base["balanced_board_md5"][:8],
+                                       str(res.get("balanced_board_md5"))[:8]))
         record("P15/#6 the live gate is coherent again after repair", healed["ok"],
                "fails=%s" % healed["fails"][:1])
     finally:
