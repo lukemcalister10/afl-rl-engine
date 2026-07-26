@@ -36,6 +36,7 @@ board md5, taken from the manifest of record's own build. There is no R19 (or an
 """
 import hashlib
 import json
+import os
 import re
 
 # The two forward lenses, in fixed order. k=0 (balanced/present) is deliberately excluded: that lens IS the
@@ -45,9 +46,110 @@ FORWARD_LENSES = (("+1", "vP1", 1, 2027), ("+2", "vP2", 2, 2028))
 # The conservation-row keys carried out of the built board's own lensConservation diagnostic.
 _CONSERVATION_KEYS = ("lensYear", "nPicks", "nPlayers", "picks", "players", "total")
 
+# --------------------------------------------------------------------------- authorities of record
+# Repo-relative paths of the authorities the config-of-record forward build rests on. Every value taken
+# from them is read and CROSS-CHECKED between independent records at build time — none is hardcoded here.
+MODEL_CONFIG_REL = "data/model_config.json"
+RELEASE_CONTRACT_REL_ = "data/release_contract.json"
+EXPECTED_BOOT_REL_ = "data/expected_boot.json"
+BOARD_OF_RECORD_REL_ = "data/rl_build/rl_app_data.json"
+F5_SEALED_INPUT_REL = "session_2026-07-18/legf5/sealed_entrant_structure.json"
+
+# The mode that makes config_manifest.enforce() clear ambient model env, reject unknown/divergent overrides
+# and LOAD the manifest authoritatively. This is how the posture is obtained — never from code defaults,
+# even where the defaults coincide (coincidence today is not provenance; the ad9ab59 defect is exactly what
+# happens when live semantics resolve from unstamped defaults).
+FORWARD_CONFIG_MODE = "canonical"
+
 
 class ForwardLensError(RuntimeError):
     """Any fail-closed condition in the forward-lens sibling (derive / serialize / parse / compare)."""
+
+
+class ForwardAuthorityError(ForwardLensError):
+    """An authority of record is missing, unsealed or inconsistent. This is a STOP, never a substitution:
+    the forward view is not built, nothing is regenerated, and the condition is reported upward."""
+
+
+def f5_seal_of(struct):
+    """Recompute the sealed-entrant-structure seal exactly as the engine does (rl_export.py §2.viii)."""
+    chk = {k: v for k, v in struct.items() if k != "seal_sha256_8"}
+    return hashlib.sha256(json.dumps(chk, sort_keys=True,
+                                     separators=(",", ":")).encode()).hexdigest()[:8]
+
+
+def verify_authorities(repo_root, env=None):
+    """Verify — BEFORE any forward build — every authority the config-of-record posture rests on. Returns a
+    provenance dict on success; raises ForwardAuthorityError (a STOP) on any mismatch.
+
+    Nothing here is asserted against a literal in this file. Each value is cross-checked between two or more
+    independent records, so this cannot pass merely by agreeing with a constant someone typed:
+      config seal      model_config.config_sha256 == release_contract.config_sha256 == expected_boot.config
+      switch posture   release_contract.switch_posture == the manifest's own vars
+      override hooks   release_contract.must_be_unset are actually UNSET in the build environment
+      F5 sealed input  RECOMPUTED seal == the file's stored seal == the seal stamped on the board of record
+    """
+    env = os.environ if env is None else env
+    root = os.path.abspath(repo_root)
+
+    def _load(rel):
+        p = os.path.join(root, rel)
+        if not os.path.exists(p):
+            raise ForwardAuthorityError("authority of record missing: %s" % rel)
+        try:
+            with open(p, encoding="utf-8") as f:
+                return json.load(f)
+        except ValueError as e:
+            raise ForwardAuthorityError("authority of record unparseable: %s (%s)" % (rel, e))
+
+    man, con, boot, f5 = (_load(MODEL_CONFIG_REL), _load(RELEASE_CONTRACT_REL_),
+                          _load(EXPECTED_BOOT_REL_), _load(F5_SEALED_INPUT_REL))
+    fails = []
+
+    man_seal, con_seal, boot_seal = man.get("config_sha256"), con.get("config_sha256"), boot.get("config")
+    if not (man_seal and man_seal == con_seal == boot_seal):
+        fails.append("config seal disagreement: model_config=%s release_contract=%s expected_boot=%s"
+                     % (str(man_seal)[:12], str(con_seal)[:12], str(boot_seal)[:12]))
+
+    posture = con.get("switch_posture") or {}
+    cvars = man.get("vars") or {}
+    if not posture:
+        fails.append("release_contract carries no switch_posture — the config of record is undeclared")
+    for k, v in sorted(posture.items()):
+        if k not in cvars:
+            fails.append("switch_posture %s is not a manifest var" % k)
+        elif str(cvars[k]) != str(v):
+            fails.append("switch_posture %s=%r != manifest %r" % (k, v, cvars[k]))
+
+    for k in (con.get("must_be_unset") or []):
+        if k in env:
+            fails.append("override hook %s is SET (%r) but the release contract declares it must_be_unset"
+                         % (k, env[k]))
+
+    recomputed, stored = f5_seal_of(f5), f5.get("seal_sha256_8")
+    try:
+        bor_meta = ((_load(BOARD_OF_RECORD_REL_).get("phantomTotals") or {}).get("_meta") or {})
+        board_seal = bor_meta.get("seal_sha256_8")
+    except ForwardAuthorityError:
+        board_seal = None
+    if recomputed != stored:
+        fails.append("F5 sealed input SEAL DRIFT: recomputed %s != stored %s — the sealed entrant structure "
+                     "has been edited; re-seal from intake history (never substitute, never regenerate here)"
+                     % (recomputed, stored))
+    elif board_seal is not None and board_seal != stored:
+        fails.append("F5 sealed input seal %s != the seal stamped on the board of record %s"
+                     % (stored, board_seal))
+
+    if fails:
+        raise ForwardAuthorityError("CONFIG OF RECORD NOT ESTABLISHED — refusing to build the forward "
+                                    "view:\n  - " + "\n  - ".join(fails))
+
+    return {"config_sha256": man_seal,
+            "switch_posture": {k: str(v) for k, v in posture.items()},
+            "must_be_unset": list(con.get("must_be_unset") or []),
+            "f5_seal_sha256_8": stored, "f5_sealed_input": F5_SEALED_INPUT_REL,
+            "board_of_record_md5": boot.get("board"), "store_md5": boot.get("store"),
+            "config_mode": FORWARD_CONFIG_MODE}
 
 
 # --------------------------------------------------------------------------- naming

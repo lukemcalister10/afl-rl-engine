@@ -373,3 +373,36 @@ def materialize_r14(scratch_root, repo_root):
     _verify_r14(scratch_root)
     return {'anchor': R14_ANCHOR, 'engine_head': pins['engine_head'], 'rl_model': pins['rl_model'],
             'store_md5': R14_STORE_MD5, 'board_md5': R14_BOARD_MD5, 'as_of_round': R14_AS_OF_ROUND}
+
+
+def align_to_config_of_record(scratch_root):
+    """Bring a SCRATCH's canonical board of record under the CONFIG OF RECORD and restamp the scratch's own
+    manifest to it. Returns the resulting canonical board md5.
+
+    WHY THIS EXISTS (ITEM 408 D2, owner ruling v471). The +1/+2 forward sibling is keyed to the CANONICAL
+    board — the view the owner actually sees — and its conformance gate requires that board to be the
+    config-of-record build of the tree's own store. That is precisely the state a real advance leaves
+    behind: staged_apply builds the canonical board with RL_CONFIG_MODE=gate (config_manifest.enforce
+    clears ambient and loads data/model_config.json) and restamps expected_boot to it.
+
+    `materialize_r14` deliberately reconstructs a scratch from HISTORICAL git bytes, whose board predates
+    the current manifest. Without this step such a scratch is a state no advance could ever produce, and
+    the forward gate would (correctly) refuse it. This function does NOT relax the gate: the board is
+    REBUILT under the manifest, never relabelled, and the gate still compares a fresh build to the manifest.
+    """
+    import importlib.util
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sibling_repin.py')
+    spec = importlib.util.spec_from_file_location('sr_align_%s' % _md5(p)[:8], p)
+    SR = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(SR)
+
+    fwd = SR.build_forward_view(scratch_root)
+    boot_p = os.path.join(scratch_root, 'data', 'expected_boot.json')
+    raw = open(boot_p, 'rb').read()
+    old = str(json.loads(raw).get('board'))
+    new = fwd['board_md5']
+    if old != new:
+        _make_writable(boot_p)
+        with open(boot_p, 'wb') as f:
+            f.write(raw.replace(old.encode(), new.encode()).replace(old[:8].encode(), new[:8].encode()))
+    return new

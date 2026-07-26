@@ -47,6 +47,7 @@ sys.path.insert(0, os.path.join(REPO, "session_2026-07-23", "item408_sibling_rep
 import sibling_repin as SR                 # noqa: E402
 import forward_lens as FL                  # noqa: E402
 import failure_injection_proof as FI       # noqa: E402
+import scratch_fixture as SF              # noqa: E402
 import proof_out                           # noqa: E402
 
 RESULTS = []
@@ -72,12 +73,17 @@ def sib_scratch(tag):
         src = os.path.join(REPO, rel)
         if os.path.isdir(src) and not os.path.exists(os.path.join(base, rel)):
             shutil.copytree(src, os.path.join(base, rel))
+    # Every case below plans or reconciles the forward sibling, which is keyed to the CANONICAL board and
+    # gated on it. Align the scratch's canonical board to the config of record ONCE here so each case starts
+    # from a state a real advance could actually produce (see SF.align_to_config_of_record).
+    SF.align_to_config_of_record(base)
     return base
 
 
 def coherent_baseline(scr):
     """Reconcile the deliberately non-R19 scratch to its OWN coherent truth and return the SCRATCH-RELATIVE
     baseline every case derives its expectations from (register v432; no R19 literal anywhere)."""
+    canon = SF.align_to_config_of_record(scr)
     boot = json.load(open(os.path.join(scr, SR.EXPECTED_BOOT_REL), encoding="utf-8"))
     round_n = boot.get("as_of_round")
     sr = SR.SiblingRepin(scr)
@@ -86,9 +92,10 @@ def coherent_baseline(scr):
     bal = res["balanced_board_md5"]
     return {
         "ok": v["ok"], "fails": v["fails"], "round_n": round_n, "balanced_board_md5": bal,
-        "forward_vector": FL.forward_vector_name(bal), "forward_oracle": FL.forward_oracle_name(bal),
-        "forward_rel": os.path.join(SR.FV_FIX_REL, FL.forward_vector_name(bal)),
-        "oracle_rel": os.path.join(SR.FORWARD_ORACLE_DIR_REL, FL.forward_oracle_name(bal)),
+        "canonical_board_md5": canon,
+        "forward_vector": FL.forward_vector_name(canon), "forward_oracle": FL.forward_oracle_name(canon),
+        "forward_rel": os.path.join(SR.FV_FIX_REL, FL.forward_vector_name(canon)),
+        "oracle_rel": os.path.join(SR.FORWARD_ORACLE_DIR_REL, FL.forward_oracle_name(canon)),
     }
 
 
@@ -407,10 +414,68 @@ def d11_determinism(scr, base):
            "len=%d/%d" % (len(o1), len(o2)))
 
 
+# ================================================================================ D0 CONFORMANCE GATE
+def d0_conformance_gate():
+    """OWNER RULING v471 §4 — THE CONFORMANCE GATE. Runs FIRST, on the LIVE checkout, on an UNCHANGED store.
+
+    The forward view regenerated under the CONFIG OF RECORD must equal the SHIPPED forward view EXACTLY,
+    per player — never aggregate-only. Sums agreeing while individual values differ is a FAIL, so the FULL
+    vector is asserted on both lenses. This is what proves the regenerated view IS the owner's view rather
+    than a plausible neighbour of it.
+
+    If it fails, nothing downstream is meaningful: the harness STOPS here and reports. The build is never
+    tuned until the number comes out right — a conformance gate that gets adjusted until it passes is
+    worthless."""
+    auth = FL.verify_authorities(REPO)      # STOP on any authority mismatch (seals / posture / must_be_unset)
+    record("D0 authorities of record verified (config seal, switch posture, must_be_unset, F5 seal)",
+           True, "config=%s posture=%s f5_seal=%s must_be_unset=%s"
+           % (auth["config_sha256"][:12], auth["switch_posture"], auth["f5_seal_sha256_8"],
+              auth["must_be_unset"]))
+
+    store_now = SR._md5_file(os.path.join(REPO, SR.STORE_REL))
+    record("D0 the store is UNCHANGED vs the manifest of record (the gate's precondition)",
+           store_now == auth["store_md5"],
+           "store=%s manifest=%s" % (store_now[:8], str(auth["store_md5"])[:8]))
+
+    fwd = SR.build_forward_view(REPO)       # the config-of-record rebuild
+    shipped_p = os.path.join(REPO, SR.BOARD_OF_RECORD_REL)
+    shipped_md5 = SR._md5_file(shipped_p)
+    record("D0 the config-of-record rebuild reproduces the SHIPPED board identity",
+           fwd["board_md5"] == shipped_md5 == auth["board_of_record_md5"],
+           "rebuilt=%s shipped=%s manifest=%s" % (fwd["board_md5"][:8], shipped_md5[:8],
+                                                  str(auth["board_of_record_md5"])[:8]))
+
+    shipped = json.load(open(shipped_p, encoding="utf-8"))
+    sa = {p["key"]: p for p in shipped["active"]}
+    doc = fwd["forward"]
+    all_ok = True
+    for lbl, fld, _k, _y in FL.FORWARD_LENSES:
+        vec = doc["lenses"][lbl]["vector"]
+        cohort = set(vec) == set(sa)
+        diffs = sorted(k for k in sa if int(sa[k][fld]) != vec.get(k)) if cohort else ["<cohort mismatch>"]
+        ok = cohort and not diffs
+        all_ok = all_ok and ok
+        record("D0 CONFORMANCE %s lens: regenerated == shipped %s for EVERY player (not aggregate-only)"
+               % (lbl, fld), ok,
+               "cohort_identical=%s per_player_diffs=%d sum=%d/%d%s"
+               % (cohort, 0 if ok else len(diffs), doc["lenses"][lbl]["sum"],
+                  sum(int(p[fld]) for p in shipped["active"]),
+                  "" if ok else " e.g. %s" % diffs[:3]))
+        cons = doc["lenses"][lbl]["conservation"]
+        cons_ok = all(cons[k] == shipped["lensConservation"][lbl][k] for k in cons)
+        all_ok = all_ok and cons_ok
+        record("D0 CONFORMANCE %s conservation row == the shipped board's own lensConservation row" % lbl,
+               cons_ok, "%s" % cons)
+    if not all_ok:
+        raise SystemExit("D0 CONFORMANCE GATE FAILED — stopping before any changed-data case (v471 §4)")
+    return doc
+
+
 def main():
     print("=" * 96)
     print("ITEM 408 · D2 — FORWARD-LENS ADVANCE INTEGRATION PROOF (scratch only; gate OFF; no live moves)")
     print("=" * 96)
+    d0_conformance_gate()
     d10_no_hardcoded_board_id()
     base, scr = d1_d2_plan_and_regenerate()
     try:

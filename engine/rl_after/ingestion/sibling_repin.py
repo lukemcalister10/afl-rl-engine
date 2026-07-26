@@ -21,9 +21,13 @@ WHAT A `reconcile` DOES:
        - data/release_contract.json              identities.balanced_board_md5 + present_lens_baseline
                                                   {balanced_board_md5, active, present_value_total} + re-seal
        - fixtures/reference_vector_<md5>.json     regenerated from the built board
-       - fixtures/forward_vector_<md5>.json       the +1/+2 FORWARD-LENS view, regenerated from the SAME
-                                                  built board (ITEM 408 D2 — mandatory sibling)
-       - test_forward_lens_<md5>.py               the forward oracle, regenerated in full per advance
+       - fixtures/forward_vector_<board>.json     the +1/+2 FORWARD-LENS view (ITEM 408 D2 — mandatory
+                                                  sibling). Rebuilt under the CONFIG OF RECORD and keyed to
+                                                  the CANONICAL board of record, because the projection view
+                                                  that must track the live board is THE VIEW THE OWNER SEES
+                                                  (owner ruling v471) — not the balanced/strict posture,
+                                                  which stays the present-lens baseline anchor.
+       - test_forward_lens_<board>.py             the forward oracle, regenerated in full per advance
        - test_fv_provenance.py                    BOARD_MD5_GOOD + aggregates + reference path
        - ui/data/board_view_{working,public}.js   regenerated via extract_board_view (picks up the pin)
        - engine/rl_after/ingestion/sibling_repin_state.json   provenance sidecar (the cheap gate's record)
@@ -325,45 +329,105 @@ def _reference_vector_doc(sib, round_n=None):
 
 
 # --------------------------------------------------------------------------- the sibling build
-def build_sibling(repo_root):
-    """Rebuild the balanced/strict SIBLING board from repo_root's store/config/FV source via the accepted
-    disposable FV builder (RL_PVC2=1/RL_LEGE=0/RL_LEGF=0). Returns a derived-identity dict. Fail-closed on
-    a non-zero build. Writes NOTHING under repo_root (the builder stages into a throwaway dir)."""
-    repo_root = os.path.abspath(repo_root)
+def _run_sibling_build(repo_root, *, balanced, config_mode=None):
+    """Run the accepted disposable FV builder against repo_root and return (result, board). Writes NOTHING
+    under repo_root (the builder stages into a throwaway dir). The caller owns cleanup of result['base']."""
     fv_test = os.path.join(repo_root, FV_TEST_REL)
     if not os.path.exists(fv_test):
         raise SiblingBuildError("FV builder missing: %s" % fv_test)
+    mod = _load_module("sibling_fv_builder_%s" % _md5_bytes(repo_root.encode())[:8], fv_test)
+    if os.path.abspath(mod.REPO) != repo_root:
+        raise SiblingBuildError("FV builder resolved REPO %s != %s" % (mod.REPO, repo_root))
+    return mod._run_build({}, rl_fv=os.path.join(repo_root, FORWARD_VALUATION_REL),
+                          config_mode=config_mode, balanced=balanced)
+
+
+def build_forward_view(repo_root):
+    """Build the board under the CONFIG OF RECORD and derive the +1/+2 forward view from it.
+
+    OWNER RULING v471: the projection view that must always match the live board is THE VIEW THE OWNER
+    ACTUALLY SEES. That view is produced by the canonical engine build, not by the balanced/strict sibling
+    posture. So this build:
+
+      - verifies every authority of record FIRST (config seal agreement across manifest/contract/boot, the
+        declared switch posture, the must_be_unset override hooks, and the F5 sealed input's RECOMPUTED
+        seal). Any mismatch is a STOP — reported, never substituted, never regenerated around;
+      - runs with NO ambient RL_PVC2/RL_LEGE/RL_LEGF set (`balanced=False` sets none of them) and with
+        RL_CONFIG_MODE=canonical, so `config_manifest.enforce()` CLEARS ambient model env, REJECTS unknown
+        or divergent overrides, and LOADS the posture from data/model_config.json. The posture is therefore
+        obtained from the manifest of record, never from code defaults — even though the manifest's values
+        equal the defaults today. Coincidence is not provenance (the ad9ab59 defect).
+
+    This does NOT change the present-lens sibling's posture: build_sibling still builds the balanced/strict
+    board at RL_PVC2=1/RL_LEGE=0/RL_LEGF=0, which is the immutable present-lens baseline anchor."""
+    repo_root = os.path.abspath(repo_root)
+    authorities = FL.verify_authorities(repo_root)     # STOP on any authority mismatch
+    result = None
+    try:
+        result = _run_sibling_build(repo_root, balanced=False, config_mode=FL.FORWARD_CONFIG_MODE)
+        if result.get("rc") != 0 or not result.get("board_path"):
+            tail = " | ".join((result.get("stderr") or "").strip().splitlines()[-4:])
+            raise SiblingBuildError("config-of-record forward board build failed: rc=%s :: %s"
+                                    % (result.get("rc"), tail))
+        board = _read_json(result["board_path"])
+        md5 = result["board_md5"]
+        present = {p["key"]: int(p["v"]) for p in board["active"]}
+        return {
+            "board_md5": md5,
+            "forward": FL.derive_forward(board, md5, present_vector=present),
+            "authorities": authorities,
+            "active_keys": sorted(present),
+        }
+    finally:
+        if result and result.get("base") and os.path.isdir(result["base"]):
+            shutil.rmtree(result["base"], ignore_errors=True)
+
+
+def build_sibling(repo_root, with_forward=True):
+    """Rebuild the balanced/strict SIBLING board from repo_root's store/config/FV source via the accepted
+    disposable FV builder (RL_PVC2=1/RL_LEGE=0/RL_LEGF=0) — UNCHANGED: this posture is the present-lens
+    baseline anchor and is not the forward view's posture. Then, unless `with_forward` is False, build the
+    FORWARD view separately under the CONFIG OF RECORD (see build_forward_view) and attach it.
+
+    Returns a derived-identity dict. Fail-closed on a non-zero build. Writes NOTHING under repo_root."""
+    repo_root = os.path.abspath(repo_root)
     store_md5 = _md5_file(os.path.join(repo_root, STORE_REL))
     prev = os.environ.get("RL_REPO")
     os.environ["RL_REPO"] = repo_root
     result = None
     try:
-        mod = _load_module("sibling_fv_builder_%s" % _md5_bytes(repo_root.encode())[:8], fv_test)
-        if os.path.abspath(mod.REPO) != repo_root:
-            raise SiblingBuildError("FV builder resolved REPO %s != %s" % (mod.REPO, repo_root))
-        result = mod._run_build({}, rl_fv=os.path.join(repo_root, FORWARD_VALUATION_REL), balanced=True)
+        result = _run_sibling_build(repo_root, balanced=True)
         if result.get("rc") != 0 or not result.get("board_path"):
             tail = " | ".join((result.get("stderr") or "").strip().splitlines()[-4:])
             raise SiblingBuildError("sibling board build failed: rc=%s :: %s" % (result.get("rc"), tail))
         board = _read_json(result["board_path"])
         active = board["active"]
         vector = {p["key"]: int(p["v"]) for p in active}
-        # ITEM 408 D2: the FORWARD (+1/+2) view is derived from the SAME built board object as the present
-        # vector — one build, one truth. Fail-closed: a board that cannot yield a coherent forward view
-        # aborts the build here, BEFORE anything is staged (LENS-PROJECTION / G-COHORT / G-Y0).
-        forward = FL.derive_forward(board, result["board_md5"], present_vector=vector)
         prov = result.get("prov") or {}
-        return {
+        sib = {
             "board_md5": result["board_md5"],
             "active": len(active),
             "sum_v": sum(int(p["v"]) for p in active),
             "sheezel": vector.get("harry-sheezel"),
             "vector": vector,
-            "forward": forward,
             "source_store_md5": store_md5,
             "fv_identity": prov.get("fv_identity"),
             "rl_model_md5": prov.get("rl_model_md5"),
         }
+        if with_forward:
+            fwd = build_forward_view(repo_root)
+            # G-COHORT across postures: the forward view and the present lens must see ONE cohort. The two
+            # boards are built under different switch postures, so this is a real assertion, not a tautology.
+            if set(fwd["active_keys"]) != set(vector):
+                d = sorted(set(fwd["active_keys"]) ^ set(vector))
+                raise SiblingRepinError(
+                    "forward (config-of-record) cohort differs from the present (balanced/strict) cohort at "
+                    "%d key(s) (e.g. %s) — G-COHORT; refusing to stage two universes as one advance"
+                    % (len(d), d[:3]))
+            sib["forward"] = fwd["forward"]
+            sib["forward_board_md5"] = fwd["board_md5"]
+            sib["forward_authorities"] = fwd["authorities"]
+        return sib
     finally:
         if result and result.get("base") and os.path.isdir(result["base"]):
             shutil.rmtree(result["base"], ignore_errors=True)
@@ -386,6 +450,7 @@ class RepinPlan:
         self.targets = {}          # name -> (repo_rel_path, new_bytes)
         self.changed_map = {}      # name -> bool
         self.live_balanced = None
+        self.forward_md5 = None      # the CANONICAL board-of-record id the forward view is keyed to
         self._contract_seal = None
         self._compute()
 
@@ -450,9 +515,11 @@ class RepinPlan:
                 ref_changed = True
         self.changed_map["reference_vector"] = ref_changed
 
-        # --- FORWARD-LENS SIBLING (ITEM 408 D2). The +1/+2 projection view is a MANDATORY member of this
-        #     plan's target set, derived from the SAME freshly-built board as the present reference vector
-        #     and keyed to the round's OWN board identity (no historical id anywhere). Two targets:
+        # --- FORWARD-LENS SIBLING (ITEM 408 D2, re-integrated under owner ruling v471). The +1/+2 projection
+        #     view is a MANDATORY member of this plan's target set. It is built under the CONFIG OF RECORD
+        #     (manifest-loaded, ambient cleared) because the view that must always match the live board is
+        #     THE VIEW THE OWNER ACTUALLY SEES — so its identity is the CANONICAL board of record, not the
+        #     balanced/strict present-lens board. Two targets:
         #       forward_vector — the derived forward reference vector (the reference)
         #       forward_oracle — the regenerated forward oracle/test (the oracle that gates it)
         #     `changed` is semantic on BOTH: a forward-only drift (correct manifest/contract/FV pins, stale
@@ -466,7 +533,25 @@ class RepinPlan:
                 "sibling identity carries no 'forward' key — refusing to plan an advance that would leave "
                 "the projection view behind (ITEM 408 D2)")
         fwd = sib["forward"]
-        fwd_name = FL.forward_vector_name(new_md5)
+        fwd_md5 = sib.get("forward_board_md5") or fwd.get("board_md5")
+
+        # --- THE CONFORMANCE GATE (owner ruling v471 §4), enforced inside the transaction on every plan /
+        #     reconcile / check. The forward view rebuilt under the config of record must BE the board of
+        #     record — not a plausible neighbour of it. On an unchanged store that is the SHIPPED board; on
+        #     an advance it is the freshly staged canonical board (this manifest is the staged one by then).
+        #     Per-player equality is established downstream by rebuild-and-compare; this is the identity
+        #     assertion that makes the artifact the owner's view rather than someone else's. ---
+        board_of_record = boot.get("board")
+        if fwd_md5 != board_of_record:
+            raise SiblingRepinError(
+                "CONFORMANCE GATE FAILED — the forward view rebuilt under the config of record produced "
+                "board %s but the manifest of record pins the board at %s. The regenerated forward view is "
+                "NOT the view the owner sees; refusing to stage it. This is a STOP: do not tune the build "
+                "until the number agrees (owner ruling v471 §4)."
+                % (str(fwd_md5)[:8], str(board_of_record)[:8]))
+
+        self.forward_md5 = fwd_md5
+        fwd_name = FL.forward_vector_name(fwd_md5)
         fwd_rel = os.path.join(FV_FIX_REL, fwd_name)
         fwd_doc = FL.forward_vector_doc(fwd, self.round_n)
         self.targets["forward_vector"] = (fwd_rel, FL.dumps_forward_vector(fwd_doc))
@@ -479,7 +564,7 @@ class RepinPlan:
                 fwd_changed = True
         self.changed_map["forward_vector"] = fwd_changed
 
-        orc_name = FL.forward_oracle_name(new_md5)
+        orc_name = FL.forward_oracle_name(fwd_md5)
         orc_rel = os.path.join(FORWARD_ORACLE_DIR_REL, orc_name)
         orc_src = FL.render_forward_oracle(fwd)
         self.targets["forward_oracle"] = (orc_rel, orc_src.encode("utf-8"))
@@ -528,6 +613,7 @@ class RepinPlan:
                    "harry_sheezel": sib["sheezel"], "reference_vector": _reference_vector_name(new_md5),
                    "contract_sha256": self._contract_seal,
                    # ITEM 408 D2 forward-lens provenance (the cheap gate's forward record)
+                   "forward_board_md5": fwd_md5,
                    "forward_vector": fwd_name, "forward_oracle": orc_name,
                    "forward_vector_sha256": fwd["vector_sha256"],
                    "forward_p1_total": fwd["lenses"]["+1"]["sum"],
@@ -567,8 +653,9 @@ class RepinPlan:
             "generated_at_commit": generated_at_commit,
             # ITEM 408 D2 — the forward-lens sibling's provenance, recorded beside the present lens's so the
             # cheap gate covers it and a forward-only lag is visible without a rebuild.
-            "forward_vector": FL.forward_vector_name(self.new_md5),
-            "forward_oracle": FL.forward_oracle_name(self.new_md5),
+            "forward_board_md5": self.forward_md5,
+            "forward_vector": FL.forward_vector_name(self.forward_md5),
+            "forward_oracle": FL.forward_oracle_name(self.forward_md5),
             "forward_vector_sha256": self.sib["forward"]["vector_sha256"],
             "forward_p1_total": self.sib["forward"]["lenses"]["+1"]["sum"],
             "forward_p2_total": self.sib["forward"]["lenses"]["+2"]["sum"],
@@ -693,7 +780,8 @@ class SiblingRepin:
         #     RUN green against the staged reference. Raised HERE, before any live replacement — so a bad
         #     forward view aborts the whole transaction pre-commit and ZERO targets move. ---
         fwd_built = plan.sib["forward"]
-        fwd_path = os.path.join(overlay, FV_FIX_REL, FL.forward_vector_name(new_md5))
+        fwd_md5 = plan.forward_md5
+        fwd_path = os.path.join(overlay, FV_FIX_REL, FL.forward_vector_name(fwd_md5))
         if not os.path.exists(fwd_path):
             raise SiblingRepinError("overlay forward reference vector for %s missing" % new_md5[:8])
         fwd_live = _read_json(fwd_path)
@@ -706,7 +794,7 @@ class SiblingRepin:
         ch = FL.cohort_fails(fwd_live, ref["vector"])
         if ch:
             raise SiblingRepinError("overlay forward view cohort: %s" % ch[:2])
-        orc_path = os.path.join(overlay, FORWARD_ORACLE_DIR_REL, FL.forward_oracle_name(new_md5))
+        orc_path = os.path.join(overlay, FORWARD_ORACLE_DIR_REL, FL.forward_oracle_name(fwd_md5))
         if not os.path.exists(orc_path):
             raise SiblingRepinError("overlay forward oracle for %s missing" % new_md5[:8])
         of = FL.oracle_fails(open(orc_path, encoding="utf-8").read(), fwd_live)
@@ -999,7 +1087,8 @@ class SiblingRepin:
             # gate it on REBUILD-AND-COMPARE, never on a stored literal. A sum-preserving forward corruption
             # leaves every forward aggregate and the conservation row intact and passes the no-build gate;
             # it is caught only by comparing the complete live forward vectors to the freshly rebuilt ones.
-            fwdp = self._p(os.path.join(FV_FIX_REL, FL.forward_vector_name(sib["board_md5"])))
+            fwd_md5 = sib.get("forward_board_md5") or sib["forward"]["board_md5"]
+            fwdp = self._p(os.path.join(FV_FIX_REL, FL.forward_vector_name(fwd_md5)))
             if not os.path.exists(fwdp):
                 raise SiblingStaleError("full build-and-compare: forward reference vector for %s missing — "
                                         "the forward lens did not advance with the board; run "
@@ -1011,7 +1100,7 @@ class SiblingRepin:
             if fwd_fails:
                 raise SiblingStaleError("full build-and-compare: FORWARD LENS STALE OR CORRUPT — %s "
                                         "(run `sibling_repin.py reconcile`)" % fwd_fails[:2])
-            orcp = self._p(os.path.join(FORWARD_ORACLE_DIR_REL, FL.forward_oracle_name(sib["board_md5"])))
+            orcp = self._p(os.path.join(FORWARD_ORACLE_DIR_REL, FL.forward_oracle_name(fwd_md5)))
             if not os.path.exists(orcp):
                 raise SiblingStaleError("full build-and-compare: forward oracle for %s missing"
                                         % sib["board_md5"][:8])
@@ -1098,7 +1187,8 @@ class SiblingRepin:
         # the round's OWN board id, is internally continuous (LENS-PROJECTION / G-Y0), shares the present
         # lens's cohort (G-COHORT), and its regenerated oracle agrees with it token for token. A stale or
         # tampered forward view can therefore never sit quietly beside a current present lens.
-        fwd_name = FL.forward_vector_name(str(bal))
+        fwd_md5 = str(boot.get("board"))
+        fwd_name = FL.forward_vector_name(fwd_md5)
         fwd_path = self._p(os.path.join(FV_FIX_REL, fwd_name))
         fwd_doc = None
         if not os.path.exists(fwd_path):
@@ -1109,12 +1199,12 @@ class SiblingRepin:
             except (OSError, ValueError) as e:
                 fails.append("forward reference vector unparseable: %s" % e)
             if fwd_doc is not None:
-                if fwd_doc.get("board_md5") != bal:
-                    fails.append("forward reference vector board_md5 != balanced pin")
+                if fwd_doc.get("board_md5") != fwd_md5:
+                    fails.append("forward reference vector board_md5 != the canonical board of record")
                 fails.extend(FL.continuity_fails(fwd_doc))
                 if rv is not None and isinstance(rv.get("vector"), dict):
                     fails.extend(FL.cohort_fails(fwd_doc, rv["vector"]))
-        orc_name = FL.forward_oracle_name(str(bal))
+        orc_name = FL.forward_oracle_name(fwd_md5)
         orc_path = self._p(os.path.join(FORWARD_ORACLE_DIR_REL, orc_name))
         if not os.path.exists(orc_path):
             fails.append("forward oracle %s missing" % orc_name)
@@ -1155,6 +1245,8 @@ class SiblingRepin:
             if sc.get("contract_sha256") != contract.get("contract_sha256"):
                 fails.append("sidecar contract_sha256 != live contract seal")
             # forward-lens provenance in the sidecar (ITEM 408 D2)
+            if sc.get("forward_board_md5") != fwd_md5:
+                fails.append("sidecar forward_board_md5 != the canonical board of record")
             if sc.get("forward_vector") != fwd_name:
                 fails.append("sidecar forward_vector filename != regenerated forward vector")
             if sc.get("forward_oracle") != orc_name:
@@ -1196,8 +1288,9 @@ def _cli(argv=None):
                           "sum_v": sib["sum_v"], "sheezel": sib["sheezel"],
                           "live_balanced_board_md5": plan.live_balanced, "changed": plan.changed,
                           "changed_map": plan.changed_map,
-                          "forward": {"vector": FL.forward_vector_name(plan.new_md5),
-                                      "oracle": FL.forward_oracle_name(plan.new_md5),
+                          "forward": {"board_md5": plan.forward_md5,
+                                      "vector": FL.forward_vector_name(plan.forward_md5),
+                                      "oracle": FL.forward_oracle_name(plan.forward_md5),
                                       "vector_sha256": fwd["vector_sha256"],
                                       "p1_sum": fwd["lenses"]["+1"]["sum"],
                                       "p2_sum": fwd["lenses"]["+2"]["sum"],

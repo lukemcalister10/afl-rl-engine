@@ -826,12 +826,17 @@ class StagedRoundApplier:
                         'ref_name': SR._reference_vector_name(sib['board_md5']),
                         # ITEM 408 D2 — the forward-lens sibling's two live targets, keyed to THIS round's
                         # own board identity (never a historical id).
-                        'fwd_name': SR.FL.forward_vector_name(sib['board_md5']),
-                        'fwd_oracle': SR.FL.forward_oracle_name(sib['board_md5'])}
+                        'fwd_md5': sib['forward_board_md5'],
+                        'fwd_name': SR.FL.forward_vector_name(sib['forward_board_md5']),
+                        'fwd_oracle': SR.FL.forward_oracle_name(sib['forward_board_md5'])}
         fwd = sib['forward']
         self._journal(txn_dir, 'SIBLING_STAGED', balanced_board_md5=sib['board_md5'], active=sib['active'],
                       sum_v=sib['sum_v'], sheezel=sib['sheezel'], reference_vector=self._sib_ev['ref_name'],
                       forward_vector=self._sib_ev['fwd_name'], forward_oracle=self._sib_ev['fwd_oracle'],
+                      forward_board_md5=sib['forward_board_md5'],
+                      forward_config_sha256=sib['forward_authorities']['config_sha256'],
+                      forward_switch_posture=sib['forward_authorities']['switch_posture'],
+                      forward_f5_seal=sib['forward_authorities']['f5_seal_sha256_8'],
                       forward_vector_sha256=fwd['vector_sha256'],
                       forward_p1_total=fwd['lenses']['+1']['sum'],
                       forward_p2_total=fwd['lenses']['+2']['sum'])
@@ -928,6 +933,15 @@ class StagedRoundApplier:
         # (build-and-compare, never a stored literal), share the present lens's cohort (G-COHORT), and be
         # gated by its regenerated oracle, which must itself compile and RUN green against it. Any failure
         # here is a PRE-COMMIT refusal: the whole transaction aborts and no live target moves.
+        # CONFORMANCE GATE (owner ruling v471 §4) inside the transaction: the forward view was rebuilt under
+        # the CONFIG OF RECORD, and that rebuild must reproduce THIS transaction's staged canonical board
+        # exactly. If it does not, the forward artifacts describe some other board than the one being
+        # advanced — a pre-commit refusal, never a tuned build.
+        if ev.get('fwd_md5') != staged_board_md5:
+            fails.append("CONFORMANCE GATE: config-of-record forward rebuild produced board %s != the staged "
+                         "canonical board %s — the forward view is not the view being shipped"
+                         % (str(ev.get('fwd_md5'))[:8], str(staged_board_md5)[:8]))
+
         fwdp = os.path.join(ws, SR.FV_FIX_REL, ev['fwd_name'])
         if not os.path.exists(fwdp):
             fails.append("staged forward reference vector missing")
@@ -938,8 +952,8 @@ class StagedRoundApplier:
                 fwd_doc = None
                 fails.append("staged forward reference vector unparseable: %s" % e)
             if fwd_doc is not None:
-                if fwd_doc.get('board_md5') != md5:
-                    fails.append("staged forward reference vector board_md5 != built sibling")
+                if fwd_doc.get('board_md5') != staged_board_md5:
+                    fails.append("staged forward reference vector board_md5 != the staged canonical board")
                 fails.extend("staged %s" % f for f in SR.FL.continuity_fails(fwd_doc))
                 fails.extend("staged %s" % f for f in
                              SR.FL.compare_to_built(fwd_doc, sib['forward']))

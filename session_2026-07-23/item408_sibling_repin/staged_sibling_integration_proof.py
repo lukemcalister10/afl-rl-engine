@@ -62,6 +62,7 @@ import sibling_repin as SR                 # noqa: E402
 import staged_apply as SA                  # noqa: E402
 import round_entry as RE                   # noqa: E402
 import failure_injection_proof as FI       # noqa: E402
+import scratch_fixture as SF               # noqa: E402  (ITEM 408 D2 config-of-record alignment)
 import proof_out                           # noqa: E402  (external result-JSON contract; register v432)
 
 GEN = "2026-07-23T00:00:00Z"
@@ -92,6 +93,12 @@ def sib_scratch(tag):
         src = os.path.join(REPO, rel)
         if os.path.isdir(src) and not os.path.exists(os.path.join(base, rel)):
             shutil.copytree(src, os.path.join(base, rel))
+    # ITEM 408 D2 (owner ruling v471): the forward sibling is keyed to the CANONICAL board and gated on it.
+    # This scratch is materialised at R14 from historical git bytes, whose board predates the current
+    # manifest — a state no advance could produce. Rebuild its canonical board under the CONFIG OF RECORD
+    # and restamp the scratch's own manifest, so every case starts where a real advance would leave it.
+    # The gate is NOT relaxed: the board is rebuilt, never relabelled.
+    SF.align_to_config_of_record(base)
     return base
 
 
@@ -416,10 +423,15 @@ def p8_active_count_derived():
                                "conservation": {"lensYear": _yr, "nPicks": 0, "nPlayers": 800,
                                                 "picks": 0, "players": _s, "total": _s},
                                "vector": _fvec}
-        fwd = {"board_md5": "a" * 32, "active": 800, "lenses": fl_lenses}
+        # the FORWARD view is keyed to the scratch's CANONICAL board of record — the conformance gate is a
+        # real assertion here, satisfied by construction rather than bypassed; the PRESENT-lens synthetic
+        # board id stays 'a'*32 so the FV-oracle derivation check below remains meaningful.
+        canon_md5 = json.load(open(os.path.join(scr, SR.EXPECTED_BOOT_REL)))["board"]
+        fwd = {"board_md5": canon_md5, "active": 800, "lenses": fl_lenses}
         fwd["vector_sha256"] = SR.FL.vector_seal(fl_lenses)
         sib = {"board_md5": "a" * 32, "active": 800, "sum_v": sum(vec.values()),
                "sheezel": vec.get("harry-sheezel", 9542), "vector": vec, "forward": fwd,
+               "forward_board_md5": canon_md5,
                "source_store_md5": FI.md5(os.path.join(scr, SR.STORE_REL)),
                "fv_identity": None, "rl_model_md5": None}
         plan = SR.RepinPlan(scr, sib, round_n=20)
