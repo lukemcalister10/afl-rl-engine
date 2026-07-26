@@ -211,12 +211,14 @@ def d3_d4_atomicity():
 
 # ================================================================================ D5-D8 negative controls
 def _tamper(scr, base, mutate, label, needle, *, full=False, expect_red=True):
-    """Restore the pristine forward pair, apply `mutate`, run the shipped CLI gate, restore again."""
-    fwdp = os.path.join(scr, base["forward_rel"])
-    orcp = os.path.join(scr, base["oracle_rel"])
-    pris_f, pris_o = open(fwdp, "rb").read(), open(orcp, "rb").read()
+    """Apply `mutate` to the forward artifact set, run the SHIPPED CLI gate exactly as an operator would,
+    then restore every touched file byte-for-byte so each case is independent."""
+    paths = {"fwd": os.path.join(scr, base["forward_rel"]),
+             "orc": os.path.join(scr, base["oracle_rel"]),
+             "sidecar": os.path.join(scr, SR.SIDECAR_REL)}
+    pristine = {k: open(p, "rb").read() for k, p in paths.items()}
     try:
-        mutate(fwdp, orcp)
+        mutate(paths["fwd"], paths["orc"], paths["sidecar"])
         args = ("check", "--full") if full else ("check",)
         rc, out = cli(scr, *args)
         named = needle in out
@@ -225,12 +227,12 @@ def _tamper(scr, base, mutate, label, needle, *, full=False, expect_red=True):
                                                     if out.strip() else ""))
         return rc, out
     finally:
-        open(fwdp, "wb").write(pris_f)
-        open(orcp, "wb").write(pris_o)
+        for k, p in paths.items():
+            open(p, "wb").write(pristine[k])
 
 
 def d5_d8_negative_controls(scr, base):
-    def bump_p1_value(fwdp, _orcp):
+    def bump_p1_value(fwdp, _orcp, _scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         k = sorted(d["lenses"]["+1"]["vector"])[0]
         d["lenses"]["+1"]["vector"][k] = int(d["lenses"]["+1"]["vector"][k]) + 7   # sum now disagrees
@@ -239,7 +241,7 @@ def d5_d8_negative_controls(scr, base):
             "D5 tampered forward REFERENCE (one +1 value) -> HALT, rc!=0, names the G-Y0 sum invariant",
             "forward view: +1 sum")
 
-    def bump_p1_aggregate(fwdp, _orcp):
+    def bump_p1_aggregate(fwdp, _orcp, _scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         d["lenses"]["+1"]["sum"] = int(d["lenses"]["+1"]["sum"]) + 1
         open(fwdp, "w", encoding="utf-8").write(json.dumps(d, indent=2, sort_keys=True))
@@ -247,7 +249,7 @@ def d5_d8_negative_controls(scr, base):
             "D5 tampered forward REFERENCE aggregate (+1 sum) -> HALT, rc!=0, named",
             "forward view: +1 sum")
 
-    def break_seal(fwdp, _orcp):
+    def break_seal(fwdp, _orcp, _scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         d["vector_sha256"] = "0" * 64
         open(fwdp, "w", encoding="utf-8").write(json.dumps(d, indent=2, sort_keys=True))
@@ -255,7 +257,7 @@ def d5_d8_negative_controls(scr, base):
             "D5 tampered forward REFERENCE seal (vector_sha256) -> HALT, rc!=0, names the seal invariant",
             "vector_sha256 seal != recomputed seal")
 
-    def drop_a_key(fwdp, _orcp):
+    def drop_a_key(fwdp, _orcp, _scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         k = sorted(d["lenses"]["+2"]["vector"])[0]
         del d["lenses"]["+2"]["vector"][k]
@@ -265,7 +267,7 @@ def d5_d8_negative_controls(scr, base):
             "D5 a player dropped from the +2 lens -> HALT, rc!=0, names LENS-PROJECTION/G-COHORT",
             "LENS-PROJECTION")
 
-    def tamper_oracle_sum(_fwdp, orcp):
+    def tamper_oracle_sum(_fwdp, orcp, _scp):
         s = open(orcp, encoding="utf-8").read()
         cur = FL.forward_oracle_aggregates(s)["sum_p1"]
         new = s.replace("!= %d:" % cur, "!= %d:" % (cur - 1))
@@ -275,7 +277,7 @@ def d5_d8_negative_controls(scr, base):
             "D6 tampered forward ORACLE (+1 sum token) -> HALT, rc!=0, names the oracle-vs-reference invariant",
             "forward oracle +1 sum != forward reference +1 sum")
 
-    def tamper_oracle_id(_fwdp, orcp):
+    def tamper_oracle_id(_fwdp, orcp, _scp):
         s = open(orcp, encoding="utf-8").read()
         cur = FL.forward_oracle_aggregates(s)["board_md5"]
         open(orcp, "w", encoding="utf-8").write(
@@ -284,7 +286,7 @@ def d5_d8_negative_controls(scr, base):
             "D6 tampered forward ORACLE board id -> HALT, rc!=0, named",
             "forward oracle FORWARD_BOARD_MD5_GOOD != forward reference board_md5")
 
-    def tamper_oracle_seal(_fwdp, orcp):
+    def tamper_oracle_seal(_fwdp, orcp, _scp):
         s = open(orcp, encoding="utf-8").read()
         cur = FL.forward_oracle_aggregates(s)["vector_sha256"]
         open(orcp, "w", encoding="utf-8").write(
@@ -295,11 +297,14 @@ def d5_d8_negative_controls(scr, base):
 
     # --- D7: the strongest forward tamper — sum-preserving AND fully self-consistent. Two players' +1
     #     values are swapped in magnitude (A +1, B -1) so active / sum / Sheezel / the conservation row are
-    #     ALL unchanged; the document is then RESEALED and the oracle's seal token is updated to match. The
-    #     artifact set is now internally perfect and disagrees with reality only. Nothing short of rebuilding
-    #     the board and comparing the complete vector can see it — which is precisely why `check --full`
-    #     must be build-and-compare and never a stored-literal check. ---
-    def sum_preserving(fwdp, orcp):
+    #     ALL unchanged; the document is then RESEALED and BOTH other records of that seal — the forward
+    #     oracle and the provenance sidecar — are updated to match. (The first run of this control proved
+    #     the forward view is defended by THREE independent seals, not one: resealing only the reference and
+    #     the oracle still red on `sidecar forward_vector_sha256 != forward reference seal`.) With all three
+    #     agreeing, the artifact set is internally perfect and disagrees with reality only. Nothing short of
+    #     rebuilding the board and comparing the complete vector can see it — which is precisely why
+    #     `check --full` must be build-and-compare and never a stored-literal check. ---
+    def sum_preserving(fwdp, orcp, scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         vec = d["lenses"]["+1"]["vector"]
         keys = [k for k in sorted(vec) if k != "harry-sheezel"]
@@ -310,10 +315,15 @@ def d5_d8_negative_controls(scr, base):
         new_seal = FL.vector_seal(d["lenses"])
         d["vector_sha256"] = new_seal                 # reseal the reference…
         open(fwdp, "w", encoding="utf-8").write(json.dumps(d, indent=2, sort_keys=True))
-        s = open(orcp, encoding="utf-8").read()       # …and re-aim the oracle at the new seal
+        s = open(orcp, encoding="utf-8").read()       # …re-aim the oracle at the new seal…
         s2 = s.replace(old_seal, new_seal)
         assert s2 != s, "oracle seal token not found — the control did not fire on a live key name"
         open(orcp, "w", encoding="utf-8").write(s2)
+        sc = json.load(open(scp, encoding="utf-8"))   # …and the sidecar's third record of it
+        assert sc.get("forward_vector_sha256") == old_seal, \
+            "sidecar forward_vector_sha256 is not the live key the resolver reads"
+        sc["forward_vector_sha256"] = new_seal
+        open(scp, "wb").write(SR._dumps_sidecar(sc))
     _tamper(scr, base, sum_preserving,
             "D7 sum-preserving forward corruption is INVISIBLE to the no-build gate (verify stays green)",
             "SIBLING CHECK: CURRENT", expect_red=False)
@@ -322,7 +332,7 @@ def d5_d8_negative_controls(scr, base):
             "EXACT-FORWARD-VECTOR MISMATCH", full=True)
 
     # --- D8: coverage discrimination — the control must fire on keys the resolver ACTUALLY reads ---
-    def touch_unread_field(fwdp, _orcp):
+    def touch_unread_field(fwdp, _orcp, _scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         d["_doc"] = "PROSE CHANGED BY THE COVERAGE CONTROL — not a key any resolver reads"
         open(fwdp, "w", encoding="utf-8").write(json.dumps(d, indent=2, sort_keys=True))
@@ -330,7 +340,7 @@ def d5_d8_negative_controls(scr, base):
             "D8 a field the resolver does NOT read leaves the gate GREEN (the control is discriminating)",
             "SIBLING CHECK: CURRENT", expect_red=False)
 
-    def touch_read_field(fwdp, _orcp):
+    def touch_read_field(fwdp, _orcp, _scp):
         d = json.load(open(fwdp, encoding="utf-8"))
         d["lenses"]["+2"]["conservation"]["players"] = int(
             d["lenses"]["+2"]["conservation"]["players"]) + 3
