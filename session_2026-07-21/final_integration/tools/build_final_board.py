@@ -14,9 +14,9 @@ ONLY tracked code + the canonical store + the approved sealed F5 input on THIS h
   4. run the release extraction (extract_board_view.py) + club-valuation ingest and assert the rebuilt
      board-view + public bundles are byte-identical to the committed ones (declared byte-canonical);
   5. PRESENT ORACLE (gating): compare the rebuilt board's present v to the ACCEPTED balanced/strict
-     reference vector reference_vector_1373e824.json (committed; the SAME authority invariant_proof.py
+     reference vector reference_vector_5546f278.json (committed; the SAME authority invariant_proof.py
      gates against; NEVER derived from the rebuilt board, and NOT Board B). Fail-closed on the reference
-     vector's authority metadata (board 1373e824 / active 804 / Sigma v 760253); require the rebuilt active
+     vector's authority metadata (board 5546f278 / active 804 / Sigma v 764021); require the rebuilt active
      key set to equal the reference key set exactly and every rebuilt v to equal the reference exactly.
      FORWARD (structure gating): vP1/vP2 present + numeric for all 804 rebuilt rows and the historical
      Board B key universe matches the rebuilt universe. The Board B forward SEMANTIC comparison (vP1/vP2)
@@ -38,13 +38,14 @@ import os, sys, json, hashlib, subprocess, shutil, tempfile
 ROOT = os.environ.get('RL_REPO') or os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 WS = '/home/claude/rl_workspace/rl_after'
 VENDOR = '/home/claude/rl_vendor'
-# PRESENT-LENS ORACLE (accepted, ITEM 408 STOP-1): the committed balanced/strict reference vector 1373e824 —
-# the SAME authority invariant_proof.py gates against. Loaded from the checkout; NEVER derived from the
-# rebuilt board.
-REF_VECTOR = 'session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json'
-PRESENT_BALANCED_MD5 = '1373e82471a81064ef96820f3db065df'
+# PRESENT-LENS ORACLE (accepted, ITEM 411 D1; owner rulings v467 + v469): the committed balanced/strict
+# reference vector 5546f278 — the SAME authority invariant_proof.py gates against. Loaded from the
+# checkout; NEVER derived from the rebuilt board. Supersedes the ITEM 408 STOP-1 authority 1373e824
+# (total 760253). These stay LITERALS on purpose: they are the drift sentinel.
+REF_VECTOR = 'session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json'
+PRESENT_BALANCED_MD5 = '5546f278788196c680a987c26e4f0150'
 PRESENT_ACTIVE = 804
-PRESENT_TOTAL = 760253
+PRESENT_TOTAL = 764021
 # Board B is retained ONLY as a historical R14 forward diagnostic (vP1/vP2) — never a present oracle, never a
 # gating pass. Its semantic equality is owner-DEFERRED (no accepted R19 forward oracle).
 BOARD_B = ('70ef0ff36ca7633aa4097a9b7c1a730013870abe',
@@ -125,14 +126,15 @@ def main():
         F = json.load(open(built))
         fa = {p['key']: p for p in F['active']}
 
-        # (5-present) PRESENT ORACLE (gating) — rebuilt present v vs the ACCEPTED reference vector 1373e824.
+        # (5-present) PRESENT ORACLE (gating) — rebuilt present v vs the ACCEPTED reference vector.
         # Loaded from the committed checkout; the present oracle is NEVER derived from the rebuilt board and is
         # NOT Board B. Fail closed on the reference vector's authority metadata.
         RV = json.load(open(os.path.join(ROOT, REF_VECTOR)))
         rv_ident = str(RV.get('board_md5', ''))
-        rv_auth = ((rv_ident == PRESENT_BALANCED_MD5 or rv_ident.startswith('1373e824'))
+        rv_auth = ((rv_ident == PRESENT_BALANCED_MD5 or rv_ident.startswith(PRESENT_BALANCED_MD5[:8]))
                    and RV.get('active') == PRESENT_ACTIVE and RV.get('sum_v') == PRESENT_TOTAL)
-        ok_p_auth = ck('(5-present) reference vector authority is the accepted 1373e824 (active 804, Sigma v 760253) [fail-closed]',
+        ok_p_auth = ck('(5-present) reference vector authority is the accepted %s (active %d, Sigma v %d) [fail-closed]'
+                       % (PRESENT_BALANCED_MD5[:8], PRESENT_ACTIVE, PRESENT_TOTAL),
                        rv_auth, 'board_md5=%s active=%s sum_v=%s' % (rv_ident[:12], RV.get('active'), RV.get('sum_v')))
         rvec = {k: int(v) for k, v in RV['vector'].items()} if rv_auth else {}
         present_added = sorted(set(fa) - set(rvec))     # rebuilt keys absent from the reference vector

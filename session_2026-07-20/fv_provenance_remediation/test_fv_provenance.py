@@ -6,7 +6,7 @@ builds the board in a fresh disposable staging copy of the checkout, with a cont
 the outcome. Runs locally and on a clean CI runner (.github/workflows/fv-provenance.yml).
 
 Scenarios (audit's §7 red/green standard):
-  GREEN 1  strict canonical build (RL_FV=checkout, balanced config)         -> board 5546f278, 804/760253/9542, 0 movers
+  GREEN 1  strict canonical build (RL_FV=checkout, balanced config)         -> board 5546f278, 804/764021/9631, 0 movers
   GREEN 2  provenance record emitted before export                          -> RL_FV, resolved dir, FV identity,
                                                                                dp path+hash, rl_model path+hash,
                                                                                config_manifest path+identity

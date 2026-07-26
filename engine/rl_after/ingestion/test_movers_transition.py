@@ -9,8 +9,9 @@ the same facts the browser validator (ui/app/movers.js core) enforces:
     ui/data/movers_transition.js) is structurally complete and owner-approved;
   * its SOURCE equals the historical R15-R19 reports' terminal identity EXACTLY, and its DESTINATION
     equals the CURRENT accepted release manifest (data/expected_boot.json) EXACTLY — derived, not typed;
-  * exactly release_version / balanced_board_md5 / engine_head / board move; rl_model / fv / config /
-    register / store are unchanged across the transition;
+  * exactly release_version / balanced_board_md5 / engine_head / board / store move; rl_model / fv /
+    config / register are unchanged across the transition (ITEM 411 D1 restatement under owner rulings
+    v467 + v469 — the D1 transition legitimately moves the store; see the note at the check itself);
   * the historical reports' CONTENT DIGEST (sha256 over the canonical reports) recomputed in Python
     equals the digest the transition declares AND equals the browser/node validator's digest — so any
     report modification (identity OR player movement) is detected cross-language;
@@ -98,13 +99,27 @@ def run_all():
     _ck(all(dst[k] == man[k] for k in ID_FIELDS), 'transition DESTINATION == data/expected_boot.json manifest')
     _ck(dst.get('as_of_round') == eb.get('as_of_round') == 19, 'transition destination round == manifest round 19')
 
-    # ---- exactly the expected fields move; the rest are unchanged (same store + model pins) ----
+    # ---- exactly the expected fields move; the rest are unchanged (same model pins) ----
+    # OWNER-RULED SEMANTIC RESTATEMENT (owner rulings v467 + v469, 2026-07-26; ITEM 411 directive D1).
+    # These two expectations PREVIOUSLY asserted:
+    #     moved == ['release_version', 'balanced_board_md5', 'engine_head', 'board']
+    #     set(['rl_model', 'fv', 'config', 'register', 'store']).issubset(unchanged)
+    # i.e. the store did NOT move. That was TRUE of the ITEM 408 items 6-7 transition. The ITEM 411 D1
+    # transition is a DIFFERENT transition which legitimately moves the store (f37d9716 -> c120cfd5,
+    # attributed row-by-row in the ITEM 411 change manifest), so `store` moves from the unchanged set to
+    # the moved set. Owner word verbatim (v467): "Ruled: yes — the D1 transition legitimately moves the
+    # store; restate the lineage record and its test to describe the new transition."
+    # THE LITERALS ARE DELIBERATELY RETAINED AS LITERALS (seam ruling; v464 P1 precedent). They are the
+    # DRIFT SENTINEL: a test that read its expected sets from the record under test (release_lineage.json
+    # / movers_transition.js) would pass by construction and could never catch an unauthorised identity
+    # move. The check below separately proves the record SELF-DECLARES the same sets, so the literal and
+    # the artifact are cross-checked against each other rather than either deriving from the other.
     moved = [k for k in ID_FIELDS if src[k] != dst[k]]
     unchanged = [k for k in ID_FIELDS if src[k] == dst[k]]
-    _ck(moved == ['release_version', 'balanced_board_md5', 'engine_head', 'board'],
-        'exactly release_version/balanced_board_md5/engine_head/board move across the transition')
-    _ck(set(['rl_model', 'fv', 'config', 'register', 'store']).issubset(set(unchanged)),
-        'rl_model/fv/config/register/store are UNCHANGED across the transition (same R19 data)')
+    _ck(moved == ['release_version', 'balanced_board_md5', 'engine_head', 'board', 'store'],
+        'exactly release_version/balanced_board_md5/engine_head/board/store move across the transition')
+    _ck(set(['rl_model', 'fv', 'config', 'register']).issubset(set(unchanged)),
+        'rl_model/fv/config/register are UNCHANGED across the transition (same R19 model pins)')
     _ck(trans.get('moved_by_transition') == moved and set(trans.get('unchanged_across_transition')) == set(unchanged),
         'the transition self-declares the moved/unchanged field sets correctly')
 
