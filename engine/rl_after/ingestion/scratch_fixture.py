@@ -376,33 +376,65 @@ def materialize_r14(scratch_root, repo_root):
 
 
 def align_to_config_of_record(scratch_root):
-    """Bring a SCRATCH's canonical board of record under the CONFIG OF RECORD and restamp the scratch's own
-    manifest to it. Returns the resulting canonical board md5.
+    """INSTALL the config-of-record canonical board into a SCRATCH and restamp every pin that names it.
+    Returns the resulting canonical board md5.
 
     WHY THIS EXISTS (ITEM 408 D2, owner ruling v471). The +1/+2 forward sibling is keyed to the CANONICAL
     board — the view the owner actually sees — and its conformance gate requires that board to be the
-    config-of-record build of the tree's own store. That is precisely the state a real advance leaves
-    behind: staged_apply builds the canonical board with RL_CONFIG_MODE=gate (config_manifest.enforce
-    clears ambient and loads data/model_config.json) and restamps expected_boot to it.
+    config-of-record build of the tree's own store. That is exactly the state a real advance leaves behind:
+    staged_apply builds the canonical board with RL_CONFIG_MODE=gate (config_manifest.enforce clears
+    ambient and loads data/model_config.json) and restamps expected_boot to it.
 
     `materialize_r14` deliberately reconstructs a scratch from HISTORICAL git bytes, whose board predates
-    the current manifest. Without this step such a scratch is a state no advance could ever produce, and
-    the forward gate would (correctly) refuse it. This function does NOT relax the gate: the board is
-    REBUILT under the manifest, never relabelled, and the gate still compares a fresh build to the manifest.
-    """
+    the current manifest, so without this step the scratch is a state no advance could ever produce.
+
+    The board is REBUILT AND WRITTEN, never merely relabelled: the rebuilt artifact replaces
+    data/rl_build/rl_app_data.json, its derived-stamp sidecar is refreshed, and expected_boot.board plus
+    release_contract.identities.board are moved to the rebuilt id (with the contract re-sealed). Restamping
+    the pin without installing the artifact would leave the manifest naming a board that is not on disk —
+    the extract_board_view ring-fence catches exactly that, and did.
+
+    Nothing about the conformance GATE is relaxed: the gate still compares a fresh build to the manifest."""
     import importlib.util
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sibling_repin.py')
     spec = importlib.util.spec_from_file_location('sr_align_%s' % _md5(p)[:8], p)
     SR = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(SR)
 
-    fwd = SR.build_forward_view(scratch_root)
+    board_p = os.path.join(scratch_root, 'data', 'rl_build', 'rl_app_data.json')
+    _make_writable(board_p)
+    fwd = SR.build_forward_view(scratch_root, install_board_to=board_p)
+    new = fwd['board_md5']
+
+    # the derived-stamp sidecar must name the artifact actually on disk
+    side = board_p + '.srcmd5'
+    if os.path.exists(side):
+        _make_writable(side)
+        with open(side) as f:
+            st = json.load(f)
+        st['own_md5'] = new
+        st['source_md5'] = _md5(os.path.join(scratch_root, 'engine', 'rl_after', 'rl_model_data.json'))
+        with open(side, 'w') as f:
+            json.dump(st, f, sort_keys=True)
+
     boot_p = os.path.join(scratch_root, 'data', 'expected_boot.json')
     raw = open(boot_p, 'rb').read()
     old = str(json.loads(raw).get('board'))
-    new = fwd['board_md5']
     if old != new:
         _make_writable(boot_p)
         with open(boot_p, 'wb') as f:
             f.write(raw.replace(old.encode(), new.encode()).replace(old[:8].encode(), new[:8].encode()))
+        cp = os.path.join(scratch_root, 'data', 'release_contract.json')
+        if os.path.exists(cp):
+            with open(cp) as f:
+                c = json.load(f)
+            if isinstance(c.get('identities'), dict) and 'board' in c['identities']:
+                c['identities']['board'] = new
+                c.pop('contract_sha256', None)
+                c['contract_sha256'] = _contract_seal(c)
+                _make_writable(cp)
+                tmp = cp + '.tmp_align'
+                with open(tmp, 'w') as f:
+                    json.dump(c, f, indent=2)
+                os.replace(tmp, cp)
     return new

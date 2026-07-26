@@ -342,7 +342,7 @@ def _run_sibling_build(repo_root, *, balanced, config_mode=None):
                           config_mode=config_mode, balanced=balanced)
 
 
-def build_forward_view(repo_root):
+def build_forward_view(repo_root, install_board_to=None):
     """Build the board under the CONFIG OF RECORD and derive the +1/+2 forward view from it.
 
     OWNER RULING v471: the projection view that must always match the live board is THE VIEW THE OWNER
@@ -382,6 +382,8 @@ def build_forward_view(repo_root):
                                     % (result.get("rc"), tail))
         board = _read_json(result["board_path"])
         md5 = result["board_md5"]
+        if install_board_to:      # scratch alignment: install the REBUILT artifact, never a relabel
+            shutil.copyfile(result["board_path"], install_board_to)
         present = {p["key"]: int(p["v"]) for p in board["active"]}
         auth = dict(authorities)
         auth["ambient_cleared"] = sorted(k for k in saved if k != "RL_REPO")
