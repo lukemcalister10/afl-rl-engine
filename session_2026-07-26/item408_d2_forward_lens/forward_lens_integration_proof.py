@@ -387,14 +387,18 @@ def d10_no_hardcoded_board_id():
             hits.append("%s carries a bare 32-hex identity literal %s" % (rel, m[:8]))
     record("D10 no hardcoded historical board id (or any bare md5 identity) in the new forward path",
            not hits, "hits=%s" % hits[:3])
-    # every forward identity is keyed to the manifest of record's own board id
+    # every forward identity is keyed to the CANONICAL board of record (the owner's view), read from the
+    # manifest — never to the balanced/strict present-lens pin, and never to a literal.
     boot = json.load(open(os.path.join(REPO, SR.EXPECTED_BOOT_REL), encoding="utf-8"))
-    bal = boot.get("balanced_board_md5")
-    record("D10 forward filenames derive from the manifest of record, not a literal",
-           FL.forward_vector_name(bal) == "forward_vector_%s.json" % bal[:8]
-           and FL.forward_oracle_name(bal) == "test_forward_lens_%s.py" % bal[:8],
-           "manifest balanced=%s -> %s / %s" % (bal[:8], FL.forward_vector_name(bal),
-                                                FL.forward_oracle_name(bal)))
+    canon, bal = boot.get("board"), boot.get("balanced_board_md5")
+    record("D10 forward filenames derive from the manifest's CANONICAL board, not a literal and not the "
+           "balanced pin",
+           FL.forward_vector_name(canon) == "forward_vector_%s.json" % canon[:8]
+           and FL.forward_oracle_name(canon) == "test_forward_lens_%s.py" % canon[:8]
+           and canon != bal
+           and FL.forward_vector_name(canon) != FL.forward_vector_name(bal),
+           "manifest board=%s -> %s / %s  (balanced pin %s is deliberately NOT used)"
+           % (canon[:8], FL.forward_vector_name(canon), FL.forward_oracle_name(canon), bal[:8]))
 
 
 # ================================================================================ D11 determinism

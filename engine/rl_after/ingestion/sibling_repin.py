@@ -363,7 +363,18 @@ def build_forward_view(repo_root):
     repo_root = os.path.abspath(repo_root)
     authorities = FL.verify_authorities(repo_root)     # STOP on any authority mismatch
     result = None
+    # CLEAN-ROOM POSTURE. A canonical/gate build must not inherit ANY ambient RL_*/PAR_* dev-shell or
+    # infrastructure override: config_manifest.enforce() fail-closes on unknown overrides such as RL_VENDOR
+    # (a class-B infra var used by bootstrap.sh and never by the build — vendored offline deps are found via
+    # PYTHONPATH, not RL_VENDOR). This mirrors the project's own canonical release-board builder exactly
+    # (session_2026-07-21/final_integration/tools/build_final_board.py step 2). Only RL_REPO is re-set; the
+    # builder supplies RL_FV and RL_CONFIG_MODE. Everything cleared is RECORDED in the returned provenance,
+    # so an ambient override is visible in the evidence rather than silently dropped.
+    saved = {k: v for k, v in os.environ.items() if k.startswith(("RL_", "PAR_"))}
     try:
+        for k in saved:
+            os.environ.pop(k, None)
+        os.environ["RL_REPO"] = repo_root
         result = _run_sibling_build(repo_root, balanced=False, config_mode=FL.FORWARD_CONFIG_MODE)
         if result.get("rc") != 0 or not result.get("board_path"):
             tail = " | ".join((result.get("stderr") or "").strip().splitlines()[-4:])
@@ -372,15 +383,28 @@ def build_forward_view(repo_root):
         board = _read_json(result["board_path"])
         md5 = result["board_md5"]
         present = {p["key"]: int(p["v"]) for p in board["active"]}
+        auth = dict(authorities)
+        auth["ambient_cleared"] = sorted(k for k in saved if k != "RL_REPO")
+        auth["config_manifest_loaded"] = ("config manifest (%s mode) LOADED" % FL.FORWARD_CONFIG_MODE) in (
+            result.get("stdout") or "")
+        if not auth["config_manifest_loaded"]:
+            raise SiblingBuildError(
+                "the config-of-record forward build did NOT report loading the config manifest in %s mode — "
+                "the posture may have resolved from code defaults; refusing the result"
+                % FL.FORWARD_CONFIG_MODE)
         return {
             "board_md5": md5,
             "forward": FL.derive_forward(board, md5, present_vector=present),
-            "authorities": authorities,
+            "authorities": auth,
             "active_keys": sorted(present),
         }
     finally:
         if result and result.get("base") and os.path.isdir(result["base"]):
             shutil.rmtree(result["base"], ignore_errors=True)
+        for k in list(os.environ):
+            if k.startswith(("RL_", "PAR_")) and k not in saved:
+                os.environ.pop(k, None)
+        os.environ.update(saved)
 
 
 def build_sibling(repo_root, with_forward=True):
