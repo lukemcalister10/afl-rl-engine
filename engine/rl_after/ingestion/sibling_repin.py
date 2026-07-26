@@ -1045,6 +1045,8 @@ class SiblingRepin:
         ref_name = _reference_vector_name(str(bal))
         ref = self._p(os.path.join(FV_FIX_REL, ref_name))
         ref_sheezel = None
+        rv = None            # bound unconditionally: the forward G-COHORT check below reads it, and a
+                             # MISSING present reference vector must yield a named fail, never a NameError.
         if not os.path.exists(ref):
             fails.append("reference vector for %s missing" % str(bal)[:8])
         else:
