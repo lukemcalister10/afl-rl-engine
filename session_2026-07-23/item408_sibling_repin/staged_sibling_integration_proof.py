@@ -402,14 +402,50 @@ def p8_active_count_derived():
         # a SYNTHETIC sibling with a DIFFERENT active count + md5 (drop 4 players) — proves the FV-oracle
         # edit derives the active count from the built vector, not a literal 804.
         vec = dict(list(rv["vector"].items())[:800])
+        # ITEM 408 D2: the synthetic sibling must also carry a synthetic FORWARD view — the forward lens is
+        # now a MANDATORY member of the plan's target set, so an identity without one is (correctly) refused.
+        # The forward values are deliberately NOT the present values, so "derived from the built view" is
+        # distinguishable from "copied from the present vector".
+        fl_lenses = {}
+        for _lbl, _fld, _k, _yr in SR.FL.FORWARD_LENSES:
+            _div = 2 if _k == 1 else 3
+            _fvec = {kk: int(vv) // _div for kk, vv in vec.items()}
+            _s = sum(_fvec.values())
+            fl_lenses[_lbl] = {"field": _fld, "lensYear": _yr, "offset": _k, "sum": _s,
+                               "sheezel": _fvec.get("harry-sheezel"),
+                               "conservation": {"lensYear": _yr, "nPicks": 0, "nPlayers": 800,
+                                                "picks": 0, "players": _s, "total": _s},
+                               "vector": _fvec}
+        fwd = {"board_md5": "a" * 32, "active": 800, "lenses": fl_lenses}
+        fwd["vector_sha256"] = SR.FL.vector_seal(fl_lenses)
         sib = {"board_md5": "a" * 32, "active": 800, "sum_v": sum(vec.values()),
-               "sheezel": vec.get("harry-sheezel", 9542), "vector": vec,
+               "sheezel": vec.get("harry-sheezel", 9542), "vector": vec, "forward": fwd,
                "source_store_md5": FI.md5(os.path.join(scr, SR.STORE_REL)),
                "fv_identity": None, "rl_model_md5": None}
         plan = SR.RepinPlan(scr, sib, round_n=20)
         fv_bytes = plan.targets["fv_test"][1].decode("utf-8")
         record("P8 FV-oracle active count DERIVED from the built vector (== 800, not a literal 804)",
                "'active') == 800" in fv_bytes and "'active') == 804" not in fv_bytes)
+        # the same derivation discipline on the FORWARD sibling: every forward literal tracks the synthetic
+        # 800-row build, and both forward filenames are keyed to the synthetic board id (never 1373e824).
+        fwd_bytes = plan.targets["forward_vector"][1].decode("utf-8")
+        orc_bytes = plan.targets["forward_oracle"][1].decode("utf-8")
+        want_p1 = fl_lenses["+1"]["sum"]
+        record("P8 forward view + oracle DERIVED from the built forward view (active 800, sums synthetic)",
+               ('"active": 800' in fwd_bytes) and ("doc.get('active') != 800" in orc_bytes)
+               and ("!= %d" % want_p1) in orc_bytes and "804" not in orc_bytes.split("FORWARD ORACLE OK")[0],
+               "forward_vector=%s forward_oracle=%s p1_sum=%d"
+               % (plan.targets["forward_vector"][0].rsplit("/", 1)[-1],
+                  plan.targets["forward_oracle"][0].rsplit("/", 1)[-1], want_p1))
+        # MANDATORY: an identity with NO forward view must be refused by name, not skipped and not crashed.
+        nof = {k: v for k, v in sib.items() if k != "forward"}
+        refused, why = False, ""
+        try:
+            SR.RepinPlan(scr, nof, round_n=20)
+        except SR.SiblingRepinError as e:
+            refused, why = True, str(e).splitlines()[0][:110]
+        record("P8 a sibling identity with NO forward view is REFUSED (the forward lens is mandatory)",
+               refused, why)
         # confirm the FV-oracle re-aim CODE (comments stripped) contains no hardcoded 804 literal — every
         # aggregate is derived from the built sibling. Covers the _compute fv_test block + _repair_fv_oracle.
         src = open(os.path.join(REPO, "engine", "rl_after", "ingestion", "sibling_repin.py"), encoding="utf-8").read()

@@ -457,6 +457,14 @@ class RepinPlan:
         #       forward_oracle — the regenerated forward oracle/test (the oracle that gates it)
         #     `changed` is semantic on BOTH: a forward-only drift (correct manifest/contract/FV pins, stale
         #     or tampered forward view) must force a reconcile, never read as a no-op. ---
+        # MANDATORY, and fail-closed about it: a sibling identity that carries no forward view cannot be
+        # planned. Silently skipping the forward targets here would reintroduce exactly the lag this work
+        # exists to remove, so the absence is an error with a name, never a KeyError and never a no-op.
+        if "forward" not in sib or not isinstance(sib.get("forward"), dict):
+            raise SiblingRepinError(
+                "the +1/+2 forward-lens view is a MANDATORY sibling of this transaction, but the supplied "
+                "sibling identity carries no 'forward' key — refusing to plan an advance that would leave "
+                "the projection view behind (ITEM 408 D2)")
         fwd = sib["forward"]
         fwd_name = FL.forward_vector_name(new_md5)
         fwd_rel = os.path.join(FV_FIX_REL, fwd_name)
