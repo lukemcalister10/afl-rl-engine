@@ -35,13 +35,20 @@ complete handover — no chat history required, ever.
    PLAIN READ opens every message; rulings one sentence each with recommendation + reversal
    condition; asks lead with the word; owner to-dos in DO:/WHY:.
 
-## ROTATION PROTOCOL (mirrors v387; rotate at clean boundaries or on ANY degradation sign)
-Incoming seat, first acts in order: (1) read this charter; (2) read the register header on main
-IN FULL — it is the complete current state: every open item, seat, ruling, and thread; (3) read
-the seat charters under docs/directives/ and the frozen docs/referee/REFEREE_PROTOCOL.md header;
-(4) independently verify live state (main tip, open branches, in-flight workflow runs) with its
-own commands; (5) READ-BACK to the owner — current position across all threads in its own words —
-and hold for the owner's confirmation before any push. Outgoing-seat summaries are [report-only].
+## ROTATION PROTOCOL (amended 2026-07-27 by owner direction; rotate at clean boundaries or on ANY degradation sign)
+Incoming seat, first acts in order: (1) read this charter; (2) read **docs/CURRENT_STATE.md IN FULL**
+— ~15KB: the governing test, the named hazard classes, current position on every thread, the owner's
+priorities, and what is parked; (3) read ONLY the register sections your first task touches, via the
+version pointers CURRENT_STATE gives you; (4) independently verify live state (main tip, open
+branches, in-flight runs) with your own commands; (5) READ-BACK to the owner — current position in
+your own words — and hold for confirmation before any push.
+
+**THE FULL-HEADER READ IS RETIRED.** It cost 75–100k tokens, the header now exceeds 320KB, and it was
+breaking incoming seats before they started. The register remains the record and wins on any
+disagreement with CURRENT_STATE.md; it is read BY POINTER, never front-to-back. Same for the other
+seat charters and the frozen REFEREE_PROTOCOL header — read them when a task reaches them.
+**The pen REPLACES CURRENT_STATE.md Part B WHOLESALE at every pen** — a derived copy kept in sync by
+hand goes stale silently. Outgoing-seat summaries are [report-only].
 The owner re-provides the pen token to the incoming seat directly (tokens never persist in
 files; rotate the token itself periodically — it lives in chat transcripts).
 
