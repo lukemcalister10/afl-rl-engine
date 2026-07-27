@@ -173,9 +173,12 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
     prevB = rep.board_md5_after; prevS = rep.source_store_md5_after;
   });
   ok(chainOk, "complete historical board/store chain R14->R19 is exact + continuous");
-  // the latest report terminates at the accepted R19 materialised store of the recovery
+  // the latest report terminates at the R19 materialised store of the recovery. f37d9716 was the
+  // ACCEPTED store when these reports were materialised; ITEM 411 D1 landed 2026-07-27 and the accepted
+  // store is now c120cfd5. The historical reports are immutable, so this terminus is unchanged history
+  // and the literal stays as the drift sentinel.
   ok(prod.reports["19"].source_store_md5_after === "f37d9716648cfe4382b8c6a24c4f064f",
-     "latest report terminates at the accepted R19 store f37d9716 (recovery materialisation)");
+     "latest report terminates at the R19 recovery-materialised store f37d9716 (history; superseded as the accepted store by ITEM 411 D1 c120cfd5)");
   // the transition is the owner-approved bridge and its content digest matches the restored reports
   ok(trans.kind === "movers_release_transition" && trans.owner_approved === true,
      "transition record is an owner-approved movers_release_transition");

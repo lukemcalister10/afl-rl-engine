@@ -95,10 +95,10 @@ def main():
       '02_implementation_branch': {'status': 'PASS', 'detail':
           'claude/item-408-fixture-repair-e2o53i (ITEM 408 Items 6-7 owner-ruling correction; additive commits D/E/F)'},
       '03_integrated_source_heads': {'status': 'PASS', 'detail':
-          'ITEM 408 STOP-1 R19 remains the ACCEPTED state until landing (balanced/strict 1373e824, board of '
-          'record 6f07f7cb, store f37d9716). ITEM 411 D1 STAGES the candidate balanced/strict 5546f278, board '
-          'fa172ac1, store c120cfd5 — STAGED, NOT accepted: the owner landing word is pending, and on landing '
-          'the D1 candidate supersedes the 408 state above (same pattern as invariants.superseded_408_era); '
+          'ITEM 411 D1 IS the ACCEPTED state, LANDED 2026-07-27 on the owner landing word (balanced/strict '
+          '5546f278, board of record fa172ac1, store c120cfd5). ITEM 408 STOP-1 R19 (balanced/strict 1373e824, '
+          'board of record 6f07f7cb, store f37d9716) was the accepted state until that landing and is now '
+          'SUPERSEDED, its truth preserved as history (same pattern as invariants.superseded_408_era); '
           'Board B diagnostic 70ef0ff is a SUPERSEDED R14 forward oracle (source, not transplanted)'},
       '07_canonical_manifest_posture': {'status': 'PASS' if g('config_manifest') and g('release_contract') else 'FAIL',
           'detail': 'model_config.json pins RL_PVC2=1 RL_LEGE=1 RL_LEGF=1 (+ all class-A); release_contract switch_posture bound; config_sha256 45b207c0'},
