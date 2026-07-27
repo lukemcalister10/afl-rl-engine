@@ -70,9 +70,9 @@ def main():
        and str(st.get('source_store_md5', '')).startswith('968de0c7'))
     # the CURRENT R19 store derives the CURRENT accepted R19 season state (exposure 0.727, calendar 0.79)
     st19 = S.derive(19, cur_store, season_year=2026, season_total_rounds=24)
-    ck('(a) R19 (current store f37d9716) exposure_pace == 0.727, calendar_progress == 0.79',
+    ck('(a) R19 (current store c120cfd5) exposure_pace == 0.727, calendar_progress == 0.79',
        st19['exposure_pace'] == 0.727 and st19['calendar_progress'] == 0.79
-       and str(st19.get('source_store_md5', '')).startswith('f37d9716'))
+       and str(st19.get('source_store_md5', '')).startswith('c120cfd5'))
     prog = {r: S.calendar_progress(r, 24) for r in (14, 15, 16, 17, 18, 19, 24)}
     ck('(a) calendar advances R15..R19 -> 0.63/0.67/0.71/0.75/0.79, final -> 1.00',
        [prog[r] for r in (14, 15, 16, 17, 18, 19, 24)] == [0.58, 0.63, 0.67, 0.71, 0.75, 0.79, 1.0], prog)

@@ -2,16 +2,18 @@
 """INVARIANT + RECONCILIATION PROOF for the final canonical board (final integration 2026-07-21).
 
 Verifies, against the ACCEPTED authorities (committed reference vector + git Board B, not transplanted):
-  Present authority (ITEM 408 STOP-1 R19, owner-approved 2026-07-22) =
-       session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json
-       (accepted balanced/strict 1373e824; active 804; present-v total 760253)
+  Present authority (ITEM 411 D1 R19, owner rulings v467 + v469 2026-07-26) =
+       session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json
+       (accepted balanced/strict 5546f278; active 804; present-v total 764021)
   Board B (accepted forward lens) = 70ef0ff:.../board_B_lege1_legf1.json      (md5 1f10220c)
-  Final board / board of record   = data/rl_build/rl_app_data.json           (working tree, md5 6f07f7cb, FROZEN)
+  Final board / board of record   = data/rl_build/rl_app_data.json           (working tree, md5 fa172ac1)
 
-  (10) present-lens invariants: 804 active; Sigma v == 760253; 0 present-v / present-rank / present-order
-       movers of the board of record 6f07f7cb vs the accepted reference vector (1373e824). (Migrated from
-       the superseded R14 Board A present authority f05ebe6 / 06d8af60 / total 752427; ITEM 408 item 5.3.
-       The board of record 6f07f7cb is FROZEN and NOT moved; no store or valuation result is moved.)
+  (10) present-lens invariants: 804 active; Sigma v == 764021; 0 present-v / present-rank /
+       present-order movers of the board of record fa172ac1 vs the accepted reference vector
+       (5546f278). (Migrated from the superseded ITEM 408 STOP-1 authority 1373e824 / total 760253,
+       itself migrated from the R14 Board A f05ebe6 / 06d8af60 / total 752427. The ITEM 411 D1
+       restructure transaction legitimately MOVES the store f37d9716->c120cfd5 and, by deterministic
+       regeneration, the board 6f07f7cb->fa172ac1; the present authority advances with them.)
   (11) forward-vector invariants: the board-of-record forward vectors (vP1/vP2) must be PRESENT + numeric
        over the EXACT active universe (804). Board B (1f10220c) is the SUPERSEDED R14 comparison oracle;
        the vP1/vP2 differences vs it are MEASURED + RECORDED (equal/changed/missing/added counts), NOT
@@ -32,13 +34,17 @@ import os, sys, json, hashlib, subprocess
 
 ROOT = os.environ.get('RL_REPO') or os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 FINAL = os.path.join(ROOT, 'data', 'rl_build', 'rl_app_data.json')
-# ITEM 408 STOP-1 R19 accepted present authority — the committed reference vector (balanced/strict
-# 1373e824). The board of record 6f07f7cb has ZERO present-v movers vs this vector (owner-approved
-# 2026-07-22). Supersedes the R14 present-lens Board A (f05ebe6 / 06d8af60 / total 752427).
+# ITEM 411 D1 R19 accepted present authority — the committed reference vector (balanced/strict
+# 5546f278). The board of record fa172ac1 has ZERO present-v movers vs this vector (owner rulings
+# v467 + v469, 2026-07-26). Supersedes the ITEM 408 STOP-1 authority (1373e824 / total 760253), which
+# in turn superseded the R14 present-lens Board A (f05ebe6 / 06d8af60 / total 752427).
+# These stay LITERALS on purpose: they are the drift sentinel. Reading them from the boot manifest or
+# the board under test would make this proof pass by construction.
 REFVEC = os.path.join(ROOT, 'session_2026-07-20', 'fv_provenance_remediation', 'fixtures',
-                      'reference_vector_1373e824.json')
-PRESENT_BALANCED_MD5 = '1373e82471a81064ef96820f3db065df'
-PRESENT_TOTAL = 760253
+                      'reference_vector_5546f278.json')
+PRESENT_BALANCED_MD5 = '5546f278788196c680a987c26e4f0150'
+PRESENT_TOTAL = 764021
+PRESENT_ACTIVE = 804
 BOARD_B = ('70ef0ff36ca7633aa4097a9b7c1a730013870abe',
            'session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json')
 
@@ -74,17 +80,18 @@ def main():
     PVC = {int(k): v for k, v in F['PVC'].items()}
 
     fby = {p['key']: p for p in fa}
-    aby = {k: int(v) for k, v in RV['vector'].items()}   # accepted present-v vector (key -> v), 1373e824
+    aby = {k: int(v) for k, v in RV['vector'].items()}   # accepted present-v vector (key -> v)
     bby = {p['key']: p for p in ba}
 
-    # ---- (10) present-lens: the board of record 6f07f7cb vs the ACCEPTED reference vector (1373e824) ---
-    ck('(10) reference vector is the accepted balanced/strict 1373e824 (active 804, sum_v 760253)',
-       str(RV.get('board_md5', '')).startswith('1373e824') and RV.get('active') == 804 and RV.get('sum_v') == PRESENT_TOTAL,
+    # ---- (10) present-lens: the board of record vs the ACCEPTED reference vector ------------
+    ck('(10) reference vector is the accepted balanced/strict %s (active %d, sum_v %d)'
+       % (PRESENT_BALANCED_MD5[:8], PRESENT_ACTIVE, PRESENT_TOTAL),
+       str(RV.get('board_md5', '')).startswith(PRESENT_BALANCED_MD5[:8]) and RV.get('active') == PRESENT_ACTIVE and RV.get('sum_v') == PRESENT_TOTAL,
        'board=%s active=%s sum_v=%s' % (str(RV.get('board_md5'))[:8], RV.get('active'), RV.get('sum_v')))
-    ck('(10) final active count == 804', len(fa) == 804, len(fa))
-    ck('(10) final Sigma present v == 760253', sum(p['v'] for p in fa) == PRESENT_TOTAL, sum(p['v'] for p in fa))
+    ck('(10) final active count == %d' % PRESENT_ACTIVE, len(fa) == PRESENT_ACTIVE, len(fa))
+    ck('(10) final Sigma present v == %d' % PRESENT_TOTAL, sum(p['v'] for p in fa) == PRESENT_TOTAL, sum(p['v'] for p in fa))
     vmov = [k for k in fby if k in aby and fby[k]['v'] != aby[k]]
-    ck('(10) zero present-v movers vs the accepted reference vector (1373e824)', not vmov, '%d movers' % len(vmov))
+    ck('(10) zero present-v movers vs the accepted reference vector (%s)' % PRESENT_BALANCED_MD5[:8], not vmov, '%d movers' % len(vmov))
     added = sorted(set(fby) - set(aby)); removed = sorted(set(aby) - set(fby))
     ck('(10) no added/removed active players vs the accepted reference vector', not added and not removed,
        'added=%d removed=%d' % (len(added), len(removed)))
@@ -106,7 +113,7 @@ def main():
     # board-of-record forward vectors advanced with the round exactly as the present values did (present-v
     # +723). We therefore do NOT assert equality to the stale R14 oracle (there is no accepted R19 forward
     # oracle). We DO gate the accepted property — the forward vectors are present + numeric on the FROZEN
-    # board of record 6f07f7cb, over the exact active universe — and we RECORD the vs-Board-B deltas openly.
+    # board of record (ITEM 411 D1), over the exact active universe — and we RECORD the vs-Board-B deltas openly.
     eq1 = sum(1 for k in fby if k in bby and fby[k]['vP1'] == bby[k]['vP1'])
     eq2 = sum(1 for k in fby if k in bby and fby[k]['vP2'] == bby[k]['vP2'])
     ch1 = [k for k in fby if k in bby and fby[k]['vP1'] != bby[k]['vP1']]
@@ -114,8 +121,9 @@ def main():
     miss = sorted(set(bby) - set(fby)); addf = sorted(set(fby) - set(bby))
     pv_mov = len([k for k in fby if k in bby and fby[k]['v'] != bby[k]['v']])
     fwd_present = all(isinstance(p.get('vP1'), (int, float)) and isinstance(p.get('vP2'), (int, float)) for p in fa)
-    ck('(11) forward vectors present + numeric for all 804 active (board of record 6f07f7cb, frozen)',
-       fwd_present and len(fa) == 804, 'present=%s active=%d' % (fwd_present, len(fa)))
+    ck('(11) forward vectors present + numeric for all %d active (board of record; its md5 is '
+       'emitted in this proof\'s identity footer)' % PRESENT_ACTIVE,
+       fwd_present and len(fa) == PRESENT_ACTIVE, 'present=%s active=%d' % (fwd_present, len(fa)))
     ck('(11) exact active universe vs Board B (no missing/added rows)', not miss and not addf,
        'missing=%d added=%d' % (len(miss), len(addf)))
     deferred('(11) vP1/vP2 acceptance vs Board B — owner-DEFERRED (forward-lens not accepted)',
