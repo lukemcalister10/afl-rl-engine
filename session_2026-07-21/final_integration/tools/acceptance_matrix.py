@@ -76,7 +76,7 @@ def main():
         blob = None
     boot = jload(os.path.join(ROOT, 'data', 'expected_boot.json'), {})
 
-    # CURRENT canonical store-unchanged guard: derive the expected canonical store from the accepted
+    # CURRENT canonical store-unchanged guard: derive the expected canonical store from the boot
     # manifest (expected_boot.store = the R19 store c120cfd5) and assert the live store is byte-unchanged
     # against it (ITEM 408 5.5). This is the SAME derive-from-manifest pattern section 09 uses for the
     # board. The disposable catch-up scratch's R14 start (exact store 968de0c7) is proven SEPARATELY by the
@@ -141,7 +141,7 @@ def main():
                      'canonical_store_unchanged': canonical_store_unchanged,
                      'scratch_baseline_board': (catch.get('D_sequential', {}) or {}).get('baseline_board'),
                      'note': 'the CURRENT canonical store (expected_boot.store = c120cfd5, R19) is byte-unchanged '
-                             '(derived from the accepted manifest, not a hardcoded R14 pin). The disposable '
+                             '(derived from the boot manifest, not a hardcoded R14 pin). The disposable '
                              'catch-up scratch SEPARATELY starts from the exact R14 store 968de0c7 (proven by '
                              'the catch proof on the R14 baseline board 2ab73a6f).'}},
       '18_ci': {'status': 'INFO', 'detail':
