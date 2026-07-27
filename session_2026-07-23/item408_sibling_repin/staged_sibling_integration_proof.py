@@ -62,6 +62,7 @@ import sibling_repin as SR                 # noqa: E402
 import staged_apply as SA                  # noqa: E402
 import round_entry as RE                   # noqa: E402
 import failure_injection_proof as FI       # noqa: E402
+import scratch_fixture as SF               # noqa: E402  (ITEM 408 D2 config-of-record alignment)
 import proof_out                           # noqa: E402  (external result-JSON contract; register v432)
 
 GEN = "2026-07-23T00:00:00Z"
@@ -92,6 +93,12 @@ def sib_scratch(tag):
         src = os.path.join(REPO, rel)
         if os.path.isdir(src) and not os.path.exists(os.path.join(base, rel)):
             shutil.copytree(src, os.path.join(base, rel))
+    # ITEM 408 D2 (owner ruling v471): the forward sibling is keyed to the CANONICAL board and gated on it.
+    # This scratch is materialised at R14 from historical git bytes, whose board predates the current
+    # manifest — a state no advance could produce. Rebuild its canonical board under the CONFIG OF RECORD
+    # and restamp the scratch's own manifest, so every case starts where a real advance would leave it.
+    # The gate is NOT relaxed: the board is rebuilt, never relabelled.
+    SF.align_to_config_of_record(base)
     return base
 
 
@@ -402,14 +409,55 @@ def p8_active_count_derived():
         # a SYNTHETIC sibling with a DIFFERENT active count + md5 (drop 4 players) — proves the FV-oracle
         # edit derives the active count from the built vector, not a literal 804.
         vec = dict(list(rv["vector"].items())[:800])
+        # ITEM 408 D2: the synthetic sibling must also carry a synthetic FORWARD view — the forward lens is
+        # now a MANDATORY member of the plan's target set, so an identity without one is (correctly) refused.
+        # The forward values are deliberately NOT the present values, so "derived from the built view" is
+        # distinguishable from "copied from the present vector".
+        fl_lenses = {}
+        for _lbl, _fld, _k, _yr in SR.FL.FORWARD_LENSES:
+            _div = 2 if _k == 1 else 3
+            _fvec = {kk: int(vv) // _div for kk, vv in vec.items()}
+            _s = sum(_fvec.values())
+            fl_lenses[_lbl] = {"field": _fld, "lensYear": _yr, "offset": _k, "sum": _s,
+                               "sheezel": _fvec.get("harry-sheezel"),
+                               "conservation": {"lensYear": _yr, "nPicks": 0, "nPlayers": 800,
+                                                "picks": 0, "players": _s, "total": _s},
+                               "vector": _fvec}
+        # the FORWARD view is keyed to the scratch's CANONICAL board of record — the conformance gate is a
+        # real assertion here, satisfied by construction rather than bypassed; the PRESENT-lens synthetic
+        # board id stays 'a'*32 so the FV-oracle derivation check below remains meaningful.
+        canon_md5 = json.load(open(os.path.join(scr, SR.EXPECTED_BOOT_REL)))["board"]
+        fwd = {"board_md5": canon_md5, "active": 800, "lenses": fl_lenses}
+        fwd["vector_sha256"] = SR.FL.vector_seal(fl_lenses)
         sib = {"board_md5": "a" * 32, "active": 800, "sum_v": sum(vec.values()),
-               "sheezel": vec.get("harry-sheezel", 9542), "vector": vec,
+               "sheezel": vec.get("harry-sheezel", 9542), "vector": vec, "forward": fwd,
+               "forward_board_md5": canon_md5,
                "source_store_md5": FI.md5(os.path.join(scr, SR.STORE_REL)),
                "fv_identity": None, "rl_model_md5": None}
         plan = SR.RepinPlan(scr, sib, round_n=20)
         fv_bytes = plan.targets["fv_test"][1].decode("utf-8")
         record("P8 FV-oracle active count DERIVED from the built vector (== 800, not a literal 804)",
                "'active') == 800" in fv_bytes and "'active') == 804" not in fv_bytes)
+        # the same derivation discipline on the FORWARD sibling: every forward literal tracks the synthetic
+        # 800-row build, and both forward filenames are keyed to the synthetic board id (never 1373e824).
+        fwd_bytes = plan.targets["forward_vector"][1].decode("utf-8")
+        orc_bytes = plan.targets["forward_oracle"][1].decode("utf-8")
+        want_p1 = fl_lenses["+1"]["sum"]
+        record("P8 forward view + oracle DERIVED from the built forward view (active 800, sums synthetic)",
+               ('"active": 800' in fwd_bytes) and ("doc.get('active') != 800" in orc_bytes)
+               and ("!= %d" % want_p1) in orc_bytes and "804" not in orc_bytes.split("FORWARD ORACLE OK")[0],
+               "forward_vector=%s forward_oracle=%s p1_sum=%d"
+               % (plan.targets["forward_vector"][0].rsplit("/", 1)[-1],
+                  plan.targets["forward_oracle"][0].rsplit("/", 1)[-1], want_p1))
+        # MANDATORY: an identity with NO forward view must be refused by name, not skipped and not crashed.
+        nof = {k: v for k, v in sib.items() if k != "forward"}
+        refused, why = False, ""
+        try:
+            SR.RepinPlan(scr, nof, round_n=20)
+        except SR.SiblingRepinError as e:
+            refused, why = True, str(e).splitlines()[0][:110]
+        record("P8 a sibling identity with NO forward view is REFUSED (the forward lens is mandatory)",
+               refused, why)
         # confirm the FV-oracle re-aim CODE (comments stripped) contains no hardcoded 804 literal — every
         # aggregate is derived from the built sibling. Covers the _compute fv_test block + _repair_fv_oracle.
         src = open(os.path.join(REPO, "engine", "rl_after", "ingestion", "sibling_repin.py"), encoding="utf-8").read()
@@ -541,25 +589,55 @@ def p12_reference_value_corruption():
 # ================================================================================ P13 (control #4)
 def p13_fv_oracle_corruptions():
     """Corrupt the FV oracle's active count, sum, Sheezel value and reference filename INDEPENDENTLY while
-    retaining the board id -> each fails on its OWN invariant in the live coherence gate."""
+    retaining the board id -> each fails on its OWN invariant in the live coherence gate.
+
+    ITEM 408 D2 §4 REPAIR (issue #157; the v448 carry, repaired exactly as register v432 repaired
+    P12/P16/P17): this case previously injected its corruptions by string-replacing the R19 LITERALS
+    `'active') == 804`, `'sum_v') == 760253`, `'sheezel') == 9542` and `reference_vector_1373e824.json`.
+    That is a wrong-frame assertion — this harness DELIBERATELY builds a non-R19 scratch
+    (`materialize_r14`), so those literals were the LIVE TREE's values, not the scratch's, and they matched
+    only while the tree is still R19. The moment the tree leaves R19 (the R20 advance) `str.replace` matches
+    nothing, NO corruption is injected, and the control silently degrades into a test of an unmutated file.
+    Repaired to SCRATCH-RELATIVE truth: the scratch is first reconciled to its OWN coherent baseline, every
+    "correct" token is DISCOVERED by parsing that scratch's own oracle, and the corruption is `correct - 1`
+    (or a filename provably distinct from the scratch's own). Two guards make a silent no-op impossible: the
+    pre-mutation baseline must be internally coherent, and each mutation must actually change the bytes."""
     scr = sib_scratch("fvorc")
     try:
+        base = coherent_baseline(scr)
+        record("P13/#4 baseline scratch is internally coherent before the mutations", base["ok"],
+               "balanced=%s active=%s sum=%s sheezel=%s ref=%s fails=%s"
+               % (base["balanced_board_md5"][:8], base["active"], base["sum_v"], base["sheezel"],
+                  base["reference_vector"], base["fails"][:1]))
         fvp = os.path.join(scr, SR.FV_TEST_REL)
         pristine = open(fvp, encoding="utf-8").read()
+        fo = base["fv_oracle"]                     # PARSED from the scratch's OWN reconciled oracle
+        bad_ref = "reference_vector_deadbeef.json"
+        assert bad_ref != fo["reference_vector"], "corruption filename collided with the scratch's own"
         cases = [
-            ("active", "'active') == 804", "'active') == 803", "FV oracle active"),
-            ("sum", "'sum_v') == 760253", "'sum_v') == 760252", "FV oracle sum_v"),
-            ("sheezel", "'sheezel') == 9542", "'sheezel') == 9541", "FV oracle sheezel"),
-            ("reference-filename", "reference_vector_1373e824.json", "reference_vector_deadbeef.json",
-             "FV oracle reference-vector filename"),
+            ("active", "'active') == %d" % fo["active"], "'active') == %d" % (fo["active"] - 1),
+             "FV oracle active"),
+            ("sum", "'sum_v') == %d" % fo["sum_v"], "'sum_v') == %d" % (fo["sum_v"] - 1),
+             "FV oracle sum_v"),
+            ("sheezel", "'sheezel') == %d" % fo["sheezel"], "'sheezel') == %d" % (fo["sheezel"] - 1),
+             "FV oracle sheezel"),
+            ("reference-filename", fo["reference_vector"], bad_ref, "FV oracle reference-vector filename"),
         ]
         for label, old, new, needle in cases:
-            open(fvp, "w", encoding="utf-8").write(pristine.replace(old, new))
+            mutated = pristine.replace(old, new)
+            # FAIL-CLOSED on the exact defect this repair removes: a corruption that did not land is a RED,
+            # never a quiet pass on an unmutated file.
+            injected = (mutated != pristine)
+            open(fvp, "w", encoding="utf-8").write(mutated)
             v = SR.SiblingRepin(scr).verify()
             record("P13/#4 FV-oracle %s drift (board id retained) fails on its invariant" % label,
-                   (not v["ok"]) and any(needle in f for f in v["fails"]),
-                   "%s" % [f for f in v["fails"] if needle in f][:1])
+                   injected and (not v["ok"]) and any(needle in f for f in v["fails"]),
+                   "injected=%s (%s -> %s) %s"
+                   % (injected, old, new, [f for f in v["fails"] if needle in f][:1]))
             open(fvp, "w", encoding="utf-8").write(pristine)      # restore for per-case isolation
+        healed = SR.SiblingRepin(scr).verify()
+        record("P13/#4 the scratch is coherent again once every case is restored", healed["ok"],
+               "fails=%s" % healed["fails"][:1])
     finally:
         shutil.rmtree(scr, ignore_errors=True)
 
@@ -596,21 +674,47 @@ def p14_board_bundle_corruptions():
 # ================================================================================ P15 (control #6)
 def p15_view_only_reconcile_repairs():
     """A view-only corruption (pins/contract/FV board id all current) must NOT read as a no-op: standalone
-    reconcile REPAIRS the board view and reports changed, not no_op."""
+    reconcile REPAIRS the board view and reports changed, not no_op.
+
+    ITEM 408 D2 §4 REPAIR (issue #157; the v448 carry, repaired exactly as register v432 repaired
+    P12/P16/P17). Two defects of the same stale-literal class are removed:
+      (a) `reconcile(round_n=19)` hardcoded the R19 round number onto a scratch this harness deliberately
+          materialises at R14. The round now comes from the SCRATCH's OWN boot manifest.
+      (b) the corruption was applied to an UNRECONCILED scratch, whose pins/contract/oracle were still the
+          live tree's R19 values while its store was R14. `changed=True` was therefore over-determined —
+          the reconcile had a whole stale sibling set to repair — so the case never actually demonstrated
+          the property in its own name ("view-ONLY"). The scratch is now first reconciled to its OWN
+          coherent baseline and PROVEN to be a no-op in that state, so the subsequent `changed=True` is
+          attributable to the view corruption ALONE; the balanced pin is asserted UNMOVED across the repair,
+          which is what makes the repair view-only rather than an ordinary advance."""
     scr = sib_scratch("viewrepair")
     try:
+        base = coherent_baseline(scr)
+        record("P15/#6 baseline scratch is internally coherent before the mutation", base["ok"],
+               "balanced=%s round=%s fails=%s"
+               % (base["balanced_board_md5"][:8], base["round_n"], base["fails"][:1]))
+        quiet = SR.SiblingRepin(scr).reconcile(round_n=base["round_n"])
+        record("P15/#6 the coherent baseline is a NO-OP (so any later `changed` is the view's doing)",
+               quiet.get("changed") is False and quiet.get("no_op") is True,
+               "changed=%s no_op=%s" % (quiet.get("changed"), quiet.get("no_op")))
+
         wp = os.path.join(scr, SR.BOARD_VIEW_WORKING_REL)
         pre, obj, suf = _bundle_io(wp)
         obj["stamp"]["balanced_board_md5"] = "0" * 32
         _bundle_write(wp, pre, obj, suf)
         stale = SR.SiblingRepin(scr).verify()
-        res = SR.SiblingRepin(scr).reconcile(round_n=19)
+        res = SR.SiblingRepin(scr).reconcile(round_n=base["round_n"])     # the SCRATCH's own round
         healed = SR.SiblingRepin(scr).verify()
         record("P15/#6 view-only corruption makes the live gate STALE (not silently current)",
-               not stale["ok"] and any("working" in f for f in stale["fails"]))
+               not stale["ok"] and any("working" in f for f in stale["fails"]),
+               "%s" % [f for f in stale["fails"] if "working" in f][:1])
         record("P15/#6 standalone reconcile REPAIRS the view (changed, NOT a no-op)",
                res.get("changed") is True and res.get("no_op") is False,
                "changed=%s no_op=%s" % (res.get("changed"), res.get("no_op")))
+        record("P15/#6 the repair is VIEW-ONLY — the balanced pin did not move across it",
+               res.get("balanced_board_md5") == base["balanced_board_md5"],
+               "before=%s after=%s" % (base["balanced_board_md5"][:8],
+                                       str(res.get("balanced_board_md5"))[:8]))
         record("P15/#6 the live gate is coherent again after repair", healed["ok"],
                "fails=%s" % healed["fails"][:1])
     finally:
