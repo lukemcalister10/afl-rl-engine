@@ -17,7 +17,8 @@
   "release_transition": {
     "_doc": "OWNER-APPROVED PROVENANCE TRANSITION (ITEM 408 Items 6-7, Option A; owner Luke McAlister via execution supervisor GPT Sol 5.6, 2026-07-23). The authorised Round 15-19 recovery is genuine production Movers history. These reports were generated under the earlier accepted PRESENT-LENS release (`source`); the application has since advanced to the current accepted release (`destination`). This record is the SEPARATELY-DECLARED, owner-approved bridge that lets the UI display the historical reports under the current release WITHOUT pretending they were generated under it, and WITHOUT rewriting any report. The browser validator (ui/app/movers.js core) requires this record — matching the historical reports EXACTLY on `source` and the loaded application EXACTLY on `destination`, with the reports' content digest intact — before it will display a historical bundle whose identity differs from the loaded release. Absent / partial / wrong / reversed / tampered => fail closed. It authorises NO score application (gate OFF), NO rewrite of history, and NO ledger / per-round-movers movement. The store and board DO move across this ITEM 411 D1 transition — the declared restructure edit pass, attributed row-by-row in the ITEM 411 change manifest — which is why this record is RESTATED to describe the new transition rather than reused unchanged; the superseded 408-era invariants are preserved as history under `invariants.superseded_408_era`.",
     "kind": "movers_release_transition",
-    "schema_version": 1,
+    "schema_version": 2,
+    "_schema_version_note": "BUMPED 1 -> 2 by ITEM 411 D1 (Amendment 5). The ITEM 411 D1 restatement changed the TYPE of `owner_ruling_id` from a single string to a list of strings; a consumer written against v1 would read a list where it expected a str. That type change must not ship under an unbumped version, so the version is advanced with it. No field was removed and no other type changed. Consumer-safety was re-verified at the bump: nothing in the tree validates or branches on `release_transition.schema_version` (ui/app/movers.js reads kind / owner_approved / source / destination / applies_to only); every other schema_version assertion in the tree is on the UNRELATED `weekly_movers_report` / `matchday_movers_bundle` schemas.",
     "owner_approved": true,
     "owner_ruling_id": [
       "ITEM_408_items_6_7_option_A",
@@ -78,7 +79,14 @@
       "store_moved_by_transition": {
         "from": "f37d9716648cfe4382b8c6a24c4f064f",
         "to": "c120cfd54a83449e7485d209419b9cf8",
-        "attributed_via": "ITEM 411 change manifest (10,493 rows)"
+        "attributed_via": "ITEM 411 change manifest (10,493 rows)",
+        "attributed_rows_decomposition": {
+          "total_rows": 10493,
+          "field_edits": 10444,
+          "removals": 1,
+          "draft_year_reference_values": 48,
+          "_note": "v473 decomposition of the 10,493 attributed manifest rows: 10,444 field edits + 1 removal + 48 draft-year reference values = 10,493. Recorded as adjacent detail; `attributed_via` above is unchanged."
+        }
       },
       "board_moved_by_transition": {
         "from": "6f07f7cbe042f8e56426a01226c967c9",

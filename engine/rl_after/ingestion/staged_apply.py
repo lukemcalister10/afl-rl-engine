@@ -84,6 +84,16 @@ TARGETS = (
     # store/board/expected_boot/season_state, so a successful round can never leave the contract on a stale
     # round, a stale store/board pin, or a stale season fraction. (release_lineage.json is the IMMUTABLE
     # present-lens baseline and is deliberately NOT a target — it must not move when a weekly round advances.)
+    # SCOPE of that immutability claim (ITEM 411 D1): it is asserted about THE WEEKLY-ROUND PATH, and on that
+    # path it is unconditionally true — staged_apply never targets release_lineage.json, so no weekly round
+    # can move any part of it. Within the file, distinguish two regions:
+    #   * the TOP-LEVEL present-lens baseline (release_version + balanced_board_md5 = 06d8af60) — a permanent
+    #     immutable anchor with a LIVE consumer: round_movers._release_baseline() reads it every round and
+    #     hard-errors if it is absent. Nothing may move it, here or anywhere.
+    #   * the `release_transition` block — restated by ITEM 411 D1 under owner ruling, as a deliberate
+    #     out-of-band records change. That restatement is NOT a weekly-round write and does not touch the
+    #     top-level baseline above; it is the reason "release_lineage.json never changes" is true of this
+    #     path but is not a claim about the file for all time.
     ('release_contract', os.path.join('data', 'release_contract.json')),
     ('ledger',  os.path.join('engine', 'rl_after', 'ingestion', 'applied_rounds_ledger.json')),
     ('value_history', os.path.join('engine', 'rl_after', 'ingestion', 'value_history.json')),
@@ -516,6 +526,13 @@ class StagedRoundApplier:
             #      board, refresh season_metadata (calendar/exposure/policy/round), recompute contract_sha256.
             #      The atomic commit therefore moves store/board/expected_boot/season_state AND the release
             #      contract to the SAME round; release_lineage.json (immutable present-lens baseline) is untouched.
+            #      SCOPED (ITEM 411 D1): "untouched" is a statement about THIS weekly-round transaction, and it
+            #      holds unconditionally — release_lineage.json is not among the commit targets, so neither its
+            #      top-level baseline (release_version + balanced_board_md5 = 06d8af60, the anchor
+            #      round_movers._release_baseline() depends on) nor its `release_transition` block is written
+            #      here. The `release_transition` block WAS restated out-of-band by ITEM 411 D1 under owner
+            #      ruling; that is a records change on a different path and leaves the top-level baseline — the
+            #      part this transaction's invariants actually rest on — permanently immutable.
             self._fault('during_contract_staging')
             _rc = self._release_contract_module()
             _new_csha = _rc.restamp_dynamic(ws, int(snapshot['round']), staged_store_md5, staged_board_md5, _ss_new)

@@ -40,7 +40,11 @@ WS = '/home/claude/rl_workspace/rl_after'
 VENDOR = '/home/claude/rl_vendor'
 # PRESENT-LENS ORACLE (accepted, ITEM 411 D1; owner rulings v467 + v469): the committed balanced/strict
 # reference vector 5546f278 — the SAME authority invariant_proof.py gates against. Loaded from the
-# checkout; NEVER derived from the rebuilt board. Supersedes the ITEM 408 STOP-1 authority 1373e824
+# checkout; NEVER derived from the rebuilt board. ("the rebuilt board" = the FINAL board this tool
+# rebuilds below. The vector's own _doc says it was regenerated from the SIBLING board built by
+# sibling_repin.py — a DIFFERENT artifact, distinct by design per seam ruling v476, preserving the old
+# world's two-artifact structure. Both statements are true of different boards; no contradiction.)
+# Supersedes the ITEM 408 STOP-1 authority 1373e824
 # (total 760253). These stay LITERALS on purpose: they are the drift sentinel.
 REF_VECTOR = 'session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json'
 PRESENT_BALANCED_MD5 = '5546f278788196c680a987c26e4f0150'

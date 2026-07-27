@@ -34,7 +34,7 @@ jobs:
           # `git show 70ef0ff:…` (Board B — now the DEFERRED forward diagnostic only, vP1/vP2 MEASURED not
           # gating), the R14 season-state step does `git show 93bd01af:…` (the R14 anchor store). A shallow
           # checkout (the default depth 1) has neither. (The superseded R14 Board A f05ebe6 is no longer read;
-          # present-lens is gated against the committed reference_vector_1373e824 in BOTH tools.)
+          # present-lens is gated against the committed reference_vector_5546f278 in BOTH tools.)
           fetch-depth: 0
 
       - name: Fetch the Board B historical forward-diagnostic commit (comparison only; never a build input)
@@ -43,7 +43,7 @@ jobs:
           # Board B (70ef0ff) is the tip of origin/codex/establish-forward-lens-acceptance and is NOT an
           # ancestor of this branch, so fetch-depth:0 alone will not pull it. Fetch the immutable SHA so
           # `git show 70ef0ff:…` resolves for the DEFERRED forward diagnostic (vP1/vP2 deltas — MEASURED,
-          # not gating; present-lens is gated against the committed reference_vector_1373e824, not Board B).
+          # not gating; present-lens is gated against the committed reference_vector_5546f278, not Board B).
           # It is read-only — not transplanted, not a build input — and the board_B JSON is deliberately
           # absent from this branch's tree.
           # Fetch by SHA (advertised branch tip); fall back to the branch ref if SHA-want is disabled.
@@ -111,7 +111,7 @@ jobs:
           python3 session_2026-07-21/final_integration/tests/season_progress_test.py
           python3 session_2026-07-21/final_integration/tests/season_state_fenced_test.py
 
-      - name: Present / forward invariants + F5 reconciliation (present vs reference_vector_1373e824; forward-lens DEFERRED)
+      - name: Present / forward invariants + F5 reconciliation (present vs reference_vector_5546f278; forward-lens DEFERRED)
         run: python3 session_2026-07-21/final_integration/tools/invariant_proof.py
 
       - name: UI seams (extract / release / counting / club-curve / movers)
@@ -132,7 +132,7 @@ jobs:
       - name: Bootstrap workspace (Guard 5)
         run: RL_VENDOR="$PWD/vendor" bash bootstrap.sh
 
-      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present v vs reference_vector_1373e824; Board B forward DEFERRED)
+      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present v vs reference_vector_5546f278; Board B forward DEFERRED)
         run: python3 session_2026-07-21/final_integration/tools/build_final_board.py
 
       - name: Round-14 season-state derivation equality + generated-bundle equality

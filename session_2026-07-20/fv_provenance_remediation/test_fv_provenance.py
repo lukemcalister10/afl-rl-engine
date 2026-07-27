@@ -38,7 +38,7 @@ FIX = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'fix
 CLAUDE = '/home/claude'
 AMBIENT_FV = os.path.join(CLAUDE, 'rl_workspace', 'forward_valuation')   # the FORMER RL_FV default (the hole)
 RL_AFTER_LINK = os.path.join(CLAUDE, 'rl_after')                        # the FORMER hardcoded rl_model path
-BOARD_MD5_GOOD = '5546f278788196c680a987c26e4f0150'   # ITEM 408 STOP-1 (owner-approved 2026-07-22): accepted R19 balanced/strict board (advanced from 06d8af60)
+BOARD_MD5_GOOD = '5546f278788196c680a987c26e4f0150'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
 BAD_PREFIX = 'd7a95e8d'
 STALE_DP = os.path.join(FIX, 'distribution_pricing.stale_21d530bf.py')
 

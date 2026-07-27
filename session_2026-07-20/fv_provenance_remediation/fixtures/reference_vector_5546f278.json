@@ -1,5 +1,5 @@
 {
-  "_doc": "R19 balanced/strict FV reference vector \u2014 regenerated from the freshly built sibling board by sibling_repin.py (ITEM 408 item 5, build-and-compare). vector[key]=present-v.",
+  "_doc": "R19 balanced/strict FV reference vector \u2014 regenerated from the freshly built sibling board by sibling_repin.py (ITEM 408 item 5, build-and-compare). vector[key]=present-v. DISTINCT BUILDS BY DESIGN (seam ruling v476): the SIBLING board named here (built by sibling_repin.py, the source this vector was regenerated from) and the FINAL board that build_final_board.py rebuilds in its clean room are two SEPARATE artifacts \u2014 preserving the old world's exact two-artifact structure. So this vector being derived from the sibling board and build_final_board.py's rule that the reference is NEVER derived from the rebuilt board are both true of different boards, and are not in conflict.",
   "active": 804,
   "board_md5": "5546f278788196c680a987c26e4f0150",
   "sum_v": 764021,
