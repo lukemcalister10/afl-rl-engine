@@ -818,10 +818,15 @@ class StagedRoundApplier:
         # record (RL_CONFIG_MODE=gate), rather than building a byte-identical second one — see
         # SR.attach_forward_from_board, which re-verifies the authorities, requires proof the manifest was
         # loaded, and pins the exact board md5 it is allowed to read.
+        # v482 hardening: `manifest_loaded` is threaded WITH the mode it was proven in. This transaction
+        # builds at RL_CONFIG_MODE=gate (_regen_staged_board sets env['RL_CONFIG_MODE'] = 'gate') and the
+        # boolean below was derived by matching THAT mode's own literal, 'config manifest (gate mode)
+        # LOADED', in the build's stdout. Naming the mode here keeps the evidence record from flattening a
+        # gate-mode proof and a canonical-mode proof into one unqualified True; the callee fences the name.
         sib = SR.build_sibling(ws, with_forward=False)
         SR.attach_forward_from_board(
             sib, ws, os.path.join(ws, 'data', 'rl_build', 'rl_app_data.json'),
-            staged_board_md5, manifest_loaded=canonical_manifest_loaded)
+            staged_board_md5, manifest_loaded=canonical_manifest_loaded, config_mode='gate')
         if sib['source_store_md5'] != staged_store_md5:
             raise StagedValidationError(
                 "sibling built from store %s != staged store %s — refusing to stage a sibling off a "

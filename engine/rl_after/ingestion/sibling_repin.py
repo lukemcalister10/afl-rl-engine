@@ -107,6 +107,14 @@ FROZEN_REL = {
 SCHEMA_VERSION = 1
 _TERMINAL = ("COMMITTED", "ROLLED_BACK", "ABORTED_PRECOMMIT")
 
+# ITEM 408 D2 hardening (register v482) — the fenced set of config-of-record build modes, RESTATED from
+# config_manifest.enforce() at the repository ROOT (config_manifest.py:84), which admits ONLY these three
+# and treats every member identically; the SGC_* gate-seam scan at :114 fences its ambient _env_mode to the
+# same three. Restated rather than imported because config_manifest exposes the fence only as an inline
+# literal inside enforce(), and D2 does not touch that file. A caller that cannot NAME one of these has not
+# proven a fenced build, and attach_forward_from_board refuses it.
+FENCED_CONFIG_MODES = ('bake', 'gate', 'canonical')
+
 
 class SiblingRepinError(RuntimeError):
     """Any fail-closed condition in the advance-repin (build/derive/validate/commit)."""
@@ -409,7 +417,7 @@ def build_forward_view(repo_root, install_board_to=None):
         os.environ.update(saved)
 
 
-def attach_forward_from_board(sib, repo_root, board_path, expect_md5, *, manifest_loaded):
+def attach_forward_from_board(sib, repo_root, board_path, expect_md5, *, manifest_loaded, config_mode):
     """Attach the forward view derived from a canonical board THIS CALLER ALREADY BUILT under the config of
     record, instead of building a second identical one.
 
@@ -422,13 +430,30 @@ def attach_forward_from_board(sib, repo_root, board_path, expect_md5, *, manifes
     This is NOT transcription. The board being read is a FRESH build made by THIS transaction from the
     staged store; the caller must prove it was manifest-loaded and must name the md5 it expects, and both
     are fail-closed here. The authorities of record are re-verified, the cohort is still asserted, and the
-    derived forward view is still gated on rebuild-and-compare everywhere else (verify / check --full)."""
+    derived forward view is still gated on rebuild-and-compare everywhere else (verify / check --full).
+
+    HARDENING (register v482): `manifest_loaded` alone is an UNQUALIFIED boolean, and the two call sites of
+    the forward derivation prove DIFFERENT LITERALS — the gate path at build_forward_view matches
+    "config manifest (canonical mode) LOADED", while the weekly advance transaction matches
+    "config manifest (gate mode) LOADED" (staged_apply.py:1129). Flattening both into a bare True loses not
+    merely WHICH mode was proven but the fact that the two sites verify different strings. The caller must
+    therefore NAME the mode whose LOADED literal it matched, that name is fenced to FENCED_CONFIG_MODES
+    (mirroring the fail-closed derivation at build_forward_view), and the evidence record stores the proven
+    mode instead of an unconditional True. A future caller that cannot name a fenced mode FAILS CLOSED here
+    rather than asserting a manifest-loaded posture it never established."""
     repo_root = os.path.abspath(repo_root)
     authorities = FL.verify_authorities(repo_root)      # STOP on any authority mismatch
+    if config_mode not in FENCED_CONFIG_MODES:
+        raise SiblingBuildError(
+            "refusing to derive the forward view from a board built under an UNFENCED config mode %r — "
+            "config_manifest.enforce() admits only %s, and a mode outside that set is a build whose posture "
+            "was never manifest-loaded (ITEM 408 D2 hardening, register v482)"
+            % (config_mode, ", ".join(FENCED_CONFIG_MODES)))
     if not manifest_loaded:
         raise SiblingBuildError(
             "refusing to derive the forward view from a canonical board that did not report loading the "
-            "config manifest — the posture may have resolved from code defaults (ITEM 408 D2)")
+            "config manifest in %s mode — the posture may have resolved from code defaults (ITEM 408 D2)"
+            % config_mode)
     if not os.path.exists(board_path):
         raise SiblingBuildError("canonical board missing for the forward view: %s" % board_path)
     got = _md5_file(board_path)
@@ -444,8 +469,10 @@ def attach_forward_from_board(sib, repo_root, board_path, expect_md5, *, manifes
             "key(s) (e.g. %s) — G-COHORT; refusing to stage two universes as one advance" % (len(d), d[:3]))
     auth = dict(authorities)
     auth["ambient_cleared"] = []       # not applicable: the board was built by the transaction itself
-    auth["config_manifest_loaded"] = True
-    auth["source"] = "the transaction's own gate-mode canonical build (no second rebuild)"
+    # v482: record WHICH fenced mode was proven, not an unqualified True. Both fences above have already
+    # fail-closed by here, so this names a mode the caller actually evidenced from its build's own stdout.
+    auth["config_manifest_loaded"] = config_mode
+    auth["source"] = ("the transaction's own %s-mode canonical build (no second rebuild)" % config_mode)
     sib["forward"] = FL.derive_forward(board, got, present_vector=present)
     sib["forward_board_md5"] = got
     sib["forward_authorities"] = auth
