@@ -178,7 +178,8 @@ MD.card = (function () {
           " · " + (p.pk ? "Pick " + p.pk : "no pick") + " · " + (p.yr || "—") + " " + fmt.esc(p.ty || "") + "</div>" +
         // item 1: both clubs, labelled, on the card head.
         '<div class="clubs"><span><b>AFL</b> ' + fmt.esc(p.afl_club || p.club || "—") + "</span>" +
-          '<span><b>AFFL</b> ' + fmt.esc(fmt.club(p.affl_team)) + "</span></div>" +
+          '<span title="' + fmt.esc(MD.ownership.titleOf(p)) + '"><b>AFFL</b> ' +
+            fmt.esc(MD.ownership.labelOf(p)) + "</span></div>" +
         '<div class="cstamp">board <b>' + st.tag + "</b> · engine <b>" + st.engine + "</b> · store <b>" + st.store +
           '</b><span class="badge">guard 5 pass</span></div>' +
       "</div><div class=\"body\">" +
@@ -246,7 +247,8 @@ MD.card = (function () {
         '<div class="id">' + fmt.esc(p.pos) +
           " · " + (p.pk ? "Pick " + p.pk : "no pick") + " · " + (p.yr || "—") + " " + fmt.esc(p.ty || "") + "</div>" +
         '<div class="clubs"><span><b>AFL</b> ' + fmt.esc(p.afl_club || p.club || "—") + "</span>" +
-          '<span><b>AFFL</b> ' + fmt.esc(fmt.club(p.affl_team)) + "</span></div>" +
+          '<span title="' + fmt.esc(MD.ownership.titleOf(p)) + '"><b>AFFL</b> ' +
+            fmt.esc(MD.ownership.labelOf(p)) + "</span></div>" +
       "</div><div class=\"body\">" +
         '<div class="statrow">' +
           '<div><div class="k">Value</div><div class="v volt num">' + fmt.n(MD.dispVal(p)) + "</div></div>" +

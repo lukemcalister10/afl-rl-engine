@@ -1,0 +1,174 @@
+POSITION CROSS-REFERENCE — the owner's sheet vs the store
+===============================================================================
+A REPORT, NOT A WRITE.  Nothing was changed.  No store byte, no board byte, no sheet byte.
+Produced for #232.  Positions ride the BATCHED lane; acting on any of this is the owner's call.
+
+BASIS — every count below names this denominator
+  sheet A  docs/inputs/AFFL_Future_Positioning.csv    804 rows  primary + alternate future position
+  sheet B  docs/inputs/AFFL_Player_Locations.csv      804 rows  'Position/s' eligibility list
+  store    engine/rl_after/rl_model_data.json        2651 rows, of which 804 carry a stable_player_id
+  map      ui/app/positions_data.js                   804 players (generated FROM sheet B)
+  join     stable_player_id.  Sheet B has no id, so it joins by name through sheet A's id.
+           Exact keys throughout — never a substring, never a first-match.
+
+THE VOCABULARY MAP — stated FIRST, because a diff count without it is worthless.
+There are THREE vocabularies here, not two.  A previous pass compared board codes against store
+codes and reported 556 false differences.
+
+    sheet        store        board
+    G-DEF        GDEF         GEN_DEF
+    K-DEF        KDEF         KEY_DEF
+    G-FWD        GFWD         GEN_FWD
+    K-FWD        KFWD         KEY_FWD
+    MID          MID          MID
+    RUCK         RUC          RUC
+
+  Spelling notes — reported, not settled; the spelling is the owner's:
+   · the ruck is RUCK in the sheets' main columns and RUC in three cells (sheet A alternate x1,
+     sheet B x2).  Both are mapped to the store's RUC.
+   · the store carries future_position == 'DEF' on 136 of its 2,651 rows.  'DEF' is in neither the
+     sheet vocabulary nor the board's and is ambiguous between GDEF and KDEF.  All 136 are rows
+     WITHOUT a stable_player_id — none of the 804 active players — so none enters any count below.
+
+===============================================================================
+DIFF 1 — sheet A primary_future_position  vs  store future_position
+  compared 804 of 804 sheet A rows (all join)
+    AGREE   804
+    DIFFER  0
+
+DIFF 2 — sheet A alternate_position  vs  store alternate_position
+  compared 804 of 804 sheet A rows
+    AGREE   803
+    DIFFER  1
+      Nick Driscoll                  sheet=G-FWD   mapped=GFWD    store=(none)
+
+DIFF 3 — sheet B 'Position/s'  vs  the shipped ui/app/positions_data.js
+  This is the comparison sheet B actually supports: positions_data.js is GENERATED from that
+  column, so the question it answers is whether the shipped map is current against the sheet.
+  compared 804 of 804
+    DIFFER  0 — the shipped position map is exactly current against the owner's sheet.
+
+===============================================================================
+A COMPARISON THAT LOOKS OBVIOUS AND IS WRONG — recorded so it is not re-derived
+
+  Comparing sheet B's 'Position/s' against the store's {present_position, alternate_position}
+  yields 381 differences of 804.  THAT NUMBER IS MEANINGLESS.  The two are different concepts:
+  'Position/s' is an unordered ELIGIBILITY LIST (a player may carry three or four codes), while
+  the store pair is a present assignment plus AT MOST ONE alternate.  Sheet B's first-listed code
+  equals the store's present_position for only 531 of 804, so the list is not even ordered
+  present-first.  This is the 556 defect in a new costume: same shape, different pair of columns.
+
+  The owner's sheets carry NO present_position column at all, so there is nothing in them to
+  compare against store.present_position.  Stating that gap rather than inventing a comparison.
+
+===============================================================================
+THE ONE FINDING WORTH THE OWNER'S TIME
+
+  The store assigns a present or alternate position that the sheet does not list as eligible at all,
+  for 97 of the 804 active players.  Where the store's pair IS within the sheet's list (707 of 804)
+  there is nothing to reconcile — a narrower assignment inside a wider eligibility is not a conflict.
+  These 97 are the real signal: the two sources disagree about what the player can play.
+
+  player                         sheet eligibility        store present+alt not eligible
+  Adam Cerra                     MID                      GDEF,MID         GDEF
+  Adam Sweid                     MID                      GFWD             GFWD
+  Alex Dodson                    KFWD                     KFWD,RUC         RUC
+  Andy Moniz-Wakefield           GDEF                     GFWD             GFWD
+  Angus Anderson                 MID                      GFWD,MID         GFWD
+  Bailey Banfield                GDEF                     GFWD             GFWD
+  Bayley Fritsch                 GFWD                     GFWD,KFWD        KFWD
+  Blake Hardwick                 GDEF                     GDEF,GFWD        GFWD
+  Braeden Campbell               GFWD                     GDEF,GFWD        GDEF
+  Brayden Maynard                GDEF                     GDEF,KDEF        KDEF
+  Brodie Kemp                    GFWD,KFWD                KDEF,KFWD        KDEF
+  Caiden Cleary                  GFWD                     GFWD,MID         MID
+  Callum Coleman-Jones           RUC                      KFWD             KFWD
+  Cody Angove                    GFWD                     GFWD,MID         MID
+  Colby McKercher                GDEF,GFWD                GDEF,MID         MID
+  Conor McKenna                  GFWD                     GDEF             GDEF
+  Conor Stone                    GDEF                     GFWD             GFWD
+  Cooper Hynes                   GFWD                     GFWD,MID         MID
+  Dane Rampe                     GDEF                     KDEF             KDEF
+  Daniel Curtin                  MID                      KDEF,MID         KDEF
+  Darcy Gardiner                 GDEF,KFWD                KDEF             KDEF
+  Dayne Zorko                    GDEF                     MID              MID
+  Dyson Sharp                    MID                      GFWD,MID         GFWD
+  Ed Langdon                     GDEF,GFWD                MID              MID
+  Elijah Hewett                  MID                      GFWD,MID         GFWD
+  Finn Maginness                 GFWD                     MID              MID
+  Fred Rodriguez                 GFWD                     MID              MID
+  Harry Sharp                    GFWD                     MID              MID
+  Harvey Gallagher               GDEF                     GFWD             GFWD
+  Hayden Young                   MID                      GFWD,MID         GFWD
+  Hunter Clark                   MID                      GDEF             GDEF
+  Indy Cotton                    GFWD                     GDEF             GDEF
+  Isaac Cumming                  MID                      GDEF             GDEF
+  Isaac Heeney                   MID                      GFWD,MID         GFWD
+  Jack Bowes                     MID                      GDEF,MID         GDEF
+  Jack Crisp                     MID                      GDEF             GDEF
+  Jack Dalton                    MID                      GFWD             GFWD
+  Jack Ison                      MID                      GFWD             GFWD
+  Jack Scrimshaw                 GDEF                     GDEF,KDEF        KDEF
+  Jack Silvagni                  GDEF,KDEF                KFWD             KFWD
+  Jacob Moss                     GDEF,KDEF                KFWD             KFWD
+  Jake Lever                     GDEF                     KDEF             KDEF
+  Jake Lloyd                     GFWD,MID                 GDEF,GFWD        GDEF
+  Jake Stringer                  GFWD                     GFWD,KFWD        KFWD
+  James Rowbottom                MID                      GFWD,MID         GFWD
+  James Sicily                   GDEF                     GDEF,KDEF        KDEF
+  Jayden Nguyen                  GDEF                     GDEF,GFWD        GFWD
+  Jeremy Howe                    GDEF                     GDEF,KDEF        KDEF
+  Jesse Mellor                   GFWD                     MID              MID
+  Jevan Phillipou                MID                      GFWD             GFWD
+  Joel Cochran                   GDEF                     KDEF             KDEF
+  Jordan Ridley                  GDEF                     GDEF,KDEF        KDEF
+  Josh Daicos                    GDEF                     MID              MID
+  Josh Worrell                   GDEF                     KDEF             KDEF
+  Jy Farrar                      GFWD,KFWD                GDEF             GDEF
+  Karl Amon                      GDEF                     MID              MID
+  Kayle Gerreyn                  RUC                      KFWD             KFWD
+  Koby Evans                     MID                      GFWD             GFWD
+  Lachie Whitfield               GDEF                     MID              MID
+  Lewis Hayes                    GDEF                     KDEF             KDEF
+  Lukas Cooke                    GDEF                     KDEF             KDEF
+  Luke Kennedy                   MID                      GFWD,MID         GFWD
+  Luke Nankervis                 MID                      GDEF             GDEF
+  Luke Trainor                   GDEF                     KDEF             KDEF
+  Marcus Bontempelli             MID                      GFWD,MID         GFWD
+  Marcus Herbert                 MID                      GDEF             GDEF
+  Mark Blicavs                   MID,RUC                  KDEF             KDEF
+  Matt Hill                      GDEF                     GFWD             GFWD
+  Max Holmes                     MID                      GDEF,MID         GDEF
+  Mitch McGovern                 GDEF,GFWD                GFWD,KFWD        KFWD
+  Nicholas Coffield              GDEF                     GDEF,KDEF        KDEF
+  Nick Driscoll                  GFWD                     MID              MID
+  Noah Roberts-Thomson           MID                      GFWD             GFWD
+  Oliver Hannaford               MID                      GFWD             GFWD
+  Ollie Greeves                  MID                      GFWD,MID         GFWD
+  Oskar Baker                    GDEF,GFWD                MID              MID
+  Patrick Dangerfield            GFWD                     MID              MID
+  Reuben Ginbey                  GDEF                     KDEF             KDEF
+  Rory Lobb                      GDEF,KDEF                KFWD             KFWD
+  Ryan Byrnes                    GDEF                     MID              MID
+  Ryan Lester                    GDEF                     KDEF             KDEF
+  Saad El-Hawli                  MID                      GDEF             GDEF
+  Sam Flanders                   GDEF,GFWD                GDEF,MID         MID
+  Sam Wicks                      GDEF                     GFWD             GFWD
+  Taj Hotton                     GFWD                     GFWD,MID         MID
+  Tanner Bruhn                   MID                      GDEF,MID         GDEF
+  Thomas Burton                  MID                      GFWD             GFWD
+  Toby McMullin                  MID                      GFWD             GFWD
+  Toby Whan                      MID                      GFWD             GFWD
+  Tom Cole                       GDEF                     GDEF,GFWD        GFWD
+  Tom De Koning                  RUC                      KFWD,RUC         KFWD
+  Tom Doedee                     GDEF                     GDEF,KDEF        KDEF
+  Tyrell Dewar                   GDEF,MID                 GFWD             GFWD
+  William McCabe                 GDEF,KDEF                KDEF,KFWD        KFWD
+  Xavier Bamert                  MID                      GFWD             GFWD
+  Xavier Walsh                   GFWD,KFWD                KDEF             KDEF
+  Zachary Merrett                MID                      GDEF,MID         GDEF
+
+===============================================================================
+WHAT THIS IS NOT
+  Not a correction, not applied, not a recommendation about any player's position.  Positions feed
+  valuation: changing one costs an engine run, a board move and one history column.  Handed over.

@@ -17,6 +17,10 @@
 <script src="data/board_view_public.js"></script>
 <!-- club-valuation bundle (picks priced + per-club summary; from ui/tools/ingest_inputs.py, VALIDATE-OR-HALT) -->
 <script src="data/club_valuation.js"></script>
+<!-- #232 LIVE-lane ownership sidecar (same command as the bundle above; from docs/inputs/AFFL_Player_Locations.csv).
+     Overrides the board's stored affl_team; the store remains the fallback. A trade costs an edit, not an
+     engine run. Optional: absent = every row falls back to the store, which is the pre-#232 behaviour. -->
+<script src="data/ownership.js"></script>
 <!-- v1.3 values-free position map (item 196(2); from ui/tools/extract_positions.py — no dollar value) -->
 <script src="app/positions_data.js"></script>
 <!-- weekly movers bundle (one report per committed round; from engine/rl_after/ingestion/round_movers.py).
@@ -31,6 +35,7 @@
 <script src="app/format.js"></script>
 <script src="app/counting.js"></script>
 <script src="app/seam.js"></script>
+<script src="app/ownership.js"></script>
 <script src="app/club_totals.js"></script>
 <script src="app/history.js"></script>
 <script src="app/pocket.js"></script>
