@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v10 · supervisor pen · 2026-07-28, register v517
+# CURRENT STATE — the incoming-seat read · v11 · supervisor pen · 2026-07-28, register v519
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,7 +109,12 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate as of 2026-07-28, register v513, main after `69e8458`.*
+*Replaced wholesale each pen. Accurate as of 2026-07-28, register v519, written against main `144cd33`
+(this pen lands on top of it).*
+
+**Reading the figures below:** anything marked *seam-verified* was re-derived by the seam from the
+artifact. Everything else is the reporting seat's own measurement, named so you can weigh it. Where it
+matters, re-run rather than inherit.
 
 ## WHAT THE CURRENT WORK IS FOR — read this before you touch the model
 
@@ -120,174 +125,166 @@ any pen error reaching main restores the per-entry word.
 > the referee project which comes next, and 412. This is about establishing a correct baseline with our
 > new information to compare to.
 
-**So: the method is held constant. Only the data and the separation change.** If you find yourself
-improving a calculation, you have left the job — that improvement belongs to the referee project or to
-ITEM 412, and it goes back to the owner.
+**The method is held constant. Only the data and the separation change.** If you find yourself improving
+a calculation, you have left the job.
 
-This is the drift that has cost this project the most. A seat reads "baseline", sees a defect, and fixes
-it — and now the baseline is not comparable to anything, which was its entire purpose. **The known
-defects are to be reported, not repaired.** The `× 0.6` blend ceiling stays. The isotonic step stays. The
-low-sample pooling that pulls RUC toward the pooled average stays. They are the thing being replicated.
+This is the costliest drift here: a seat reads "baseline", sees a defect, fixes it — and the baseline is
+no longer comparable to anything, which was its entire purpose. **Known defects are reported, not
+repaired.** The `× 0.6` blend ceiling stays, the isotonic step stays, the low-sample pooling stays. They
+are the thing being replicated.
 
-**Sequence of record:** baseline (#217 + #225) → the referee project → ITEM 412.
+**Sequence:** baseline (#217 → #225 → owner adoption) → the referee project → ITEM 412.
 
-## THE PRICING STRUCTURE — ruled, now law, engine still to follow
+## THE PRICING STRUCTURE — ruled, and law since 2026-07-28
 
-**The national curve stops at pick 64.** Everything past 64 enters a **pool**: ND 65+, all rookie
-draft, all post-draft selections. Valued **by position**; **order of selection is irrelevant** inside
-the pool. SSP and MSD are valued at the pool but tracked separately.
+**The national curve covers picks 1–64.** Everything past 64 enters a **pool**: ND 65+, all rookie draft,
+all post-draft selections. Valued **by position**; **order of selection carries no value** inside it.
+SSP and MSD are pool-valued but tracked separately.
 
-| | rows |
-|---|---|
-| ND curve, picks 1–64 | 1,448 |
-| pool (121 ND 65+ · 924 RD/post-draft) | 1,045 |
-| SSP · MSD (pool-valued, tracked apart) | 52 · 106 |
+**There is no price for pick 70.** If you are asking what a pick past 64 is worth, you have reverted.
 
-**There is no price for pick 70.** A player taken there is priced from the pool by position, not from
-a curve. If you are asking what a pick past 64 is worth, you have reverted to the old model.
+`RULEBOOK.md` v2.1 law 4 (G-MONO) scopes strict descent to picks 1–64; the pool is outside it. Twin
+`acceptance_v2_0.json` v2.1 matches. **No further rulebook change is needed to implement the split.**
 
-**This is now law.** `docs/RULEBOOK.md` v2.1, law 4 (G-MONO), amended by owner word 2026-07-28 with
-exact wording pre-filed: the national pick curve covers 1–64 and descends across that domain, pick 1 =
-3000; selections past 64 are not on the curve. Twin `docs/acceptance_v2_0.json` v2.1 matches. **No
-further amendment is needed to implement the split** — the rule was written when the curve ran to 99,
-and the amendment scoped it rather than weakened it.
+**The owner has stated this ten times and it has been lost ten times — never in comprehension, always at
+the point where someone turned it into instructions.** A directive must carry his requirement verbatim
+and state acceptance as a **property of the result**, not a list of lines to edit. A wrong edit can
+satisfy a line list; it cannot satisfy an outcome test.
 
-**Why seats keep reverting, and it is not comprehension.** The old structure is implemented in the
-code, in every artifact shaped 1–99, in the tests, and across the register; the new structure lives in
-owner rulings, this page and now the rulebook. A seat reads code and artifacts, so it rebuilds the old
-model from what is in front of it. **The ruling loses to the code.** That is why the engine change now
-comes before further measurement.
+## THE CRITICAL FACT ABOUT THE CURVE — get this wrong and you will misread everything
 
-Do not conflate two layers: `_PVC0`/`draftval` price by pick with no position argument, but
-`iso_corr(pos, pk)` takes both and `_v0_curve_assert` asserts V0* is a function of `(pos, ageR, pick)`.
-**The engine already prices by position.** The pool needs one index, not a new capability.
+**The shipped pick curve is a LOADED ARTIFACT, not the in-engine fit.** `rl_export.py` loads
+`pvc_curve_v2.json` and `PVC` *is* that artifact. Nothing in the engine writes it. `_merged_recover.py:1537`
+records **owner ruling R3 of 2026-07-09** holding the in-engine fit out of the bake — experiments only,
+with a bake guard refusing to write a bakeable board with the fit on.
+
+**So cleaning the fit cannot move a shipped price.** The seam wasted a cycle asserting otherwise. The
+prices on the board today are still the pre-split numbers. **Only #225 produces a replacement, and
+adopting it is an owner act. The baseline does not yet exist.**
+
+Two layers, routinely conflated: `_PVC0`/`draftval` price by pick and are position-blind, but
+`iso_corr(pos, pk)` takes both and V0 is asserted a function of `(pos, ageR, pick)`. **The engine already
+prices by position.**
+
+**V0 is not an outcome measure.** It is a function of position, age band and pick only — it carries no
+information about whether a player ever played. A mean of V0 describes a population's entry slots and
+ages, never what those players became. This produced a false finding twice: the pool's never-played mean
+(612.41) sits *above* its played mean (550.29) purely because the never-played group skews younger and
+V0 reads youth as runway.
 
 ## IN FLIGHT
 
 | | |
 |---|---|
-| **Engine split · #217** | **FIRED and UNGATED.** `docs/directives/PRIORITY_1_engine_split_implementation.md`. Fresh cold seat. **The only job in flight that writes the store or board.** |
-| **UI card + navigation** | **FIRED.** `docs/directives/PRIORITY_UI_card_and_navigation.md`. Ten #139 items in three clusters — the player card's weekly history, the Public navigation defects, and the tab tidy-up. UI only; no overlap with #217. |
-| **#208** | **CLOSED.** R20 finalised, from/to tab, all three closing tasks landed (`411735f`). |
-| **#207** | **CLOSED.** Stage 1 measurement landed at `462256f`. Adoption is stage 2 and is the owner's call. |
-| **ITEM 412** | Ruled slice folded back into build work. Retains the open design questions. |
+| **#217 · engine split** | Split + pool-row exclusion implemented and seam-verified (`a94f26d`). **Not merged.** Now rebuilding the `v0surf` frozen surface, deleting its silent fallback, and re-measuring every figure on it. Then it lands. |
+| **#225 · stage 2** | Fired, queued behind #217. Derives the ND 1–64 curve and the pool level from scratch. Apples for apples. |
+| **#231 · hand-pins** | Fired, fresh seat. Four defects of one shape — see below. |
+| **#232 · ownership sidecar** | Fired, fresh seat. Makes a daily trade cost an edit rather than an engine run. |
+| **ITEM 412** | Owner's, off-seat. Retains the open design questions. |
 
-## Round 20 and the Movers tab — landed
+## The exclusion — what #217 has done and what it does not fix
 
-R20 is FINALIZED on main at `59d740c` (head `9897c78` — **not** `3a18ea2`). The tab is a from/to
-comparison over eight points: 14 · 15 · 16 · 17 · 18 · 19 · `Post R19 Redesign 1` · 20, all present in
-all three histories at 804 rows each.
+**On #217's branch `a94f26d`, not on `main` — do not grep `main` for it.**
+`_teaches_curve(p) = _in_pvc(p) and not is_pool(p)` at `rl_model.py:275`, applied at the three ±4 windows
+and the V0 kernel path, with non-vacuity wired into the selftest and proven both directions. The seat
+reports 771 pool rows excluded and 1,201 teachers remaining, with the V0 path landing on exactly 1,448 —
+which matches the ND 1–64 count in the table above, reached independently. `_grp` stays `'RD'`; `hist`
+untouched. Shipped curve truncated 99 → 64 with picks 1–64 byte-identical (seam-verified).
 
-The out-of-round point is a **string id** in `by_round` plus a `columns` register, deliberately kept
-out of the int `rounds` list so anything that int-coerces it is unaffected. Board `fa172ac1` was
-recovered from git (blob at `8ecf8f8`, md5 verified) and read as a snapshot, not re-derived.
+**The contamination was real:** picks 61–64 went 286/284/284/284 → 235 once excluded. It reached the board
+through the V0 surface, not the shipped curve.
 
-**The default view changed meaning, deliberately.** R20's report compares against the point immediately
-before the round, not R19, so the restructure is no longer reported as round 20's own effect — 758
-movers the old way, 681 the honest way.
+**Beware the slide-up.** `_pvc_eff` slides pool rows *below* 65 into vacated slots, so picks 58–60 each
+carried 67 pool rows. The lowest fully clean pick was 57. "Picks 1–60 are clean" was false.
 
-**Five checks were removed, not four.** The fifth was the rule requiring every report to carry an
-identical release identity — same false premise as the chain, and it would have fail-closed the tab
-permanently. Owner-approved. Accepted cost: the content-tamper digest went with it. One assert replaced
-them all — the newest stored point matches the live board — proven non-vacuous both directions.
+## The `v0surf` defect — a missing halt, not fake data
 
-**Standing rule, CORRECTED 2026-07-28 by owner direction — the earlier wording was wrong.** A history
-column is written **once per landed change, not once per board rebuild.** A board may be rebuilt four or
-five times inside one piece of work; those intermediate states are working builds, not comparison points,
-and giving each one a column fills the dropdown with noise. **Do not ask for a label mid-job.** When the
-change lands, one column, one owner-set label — ask then, and never invent one.
+`data/v0surf.pkl` is a lookup table computed once at a bake and frozen so every build reads identical
+values. Its config signature includes the pick curve, so the split moved it and **the engine silently
+recomputed at build time instead of halting.** The values are the right calculation at the wrong time —
+what they are not is reproducible, and reproducibility is the whole purpose of a baseline.
 
-The whole current baseline effort — the split, the pool-row exclusion, the `v0surf` rebuild, #225's
-derivation and the owner's adoption — is **one change and gets one column.**
+**Every figure #217 has reported is measured on the refit surface**, including all board hashes and mover
+counts. Precedent to replicate: the sibling `q97m` pickle had its fit path deleted so it halts.
 
-## #208's three closing tasks — all landed
+## #231 — four defects of one shape, and one of them took the app down
 
-1. **The four-surface panel re-pin is gone** — `run_panel.sh`, the `expected_boot.json` `panel` key, the
-   narrative and the CI gate. `PANEL_EXPECTED.txt` untouched. **Guard 5 kept** — it asserts store /
-   rl_model / fv identity and has fired in anger. `run_panel.sh` now reports; Guard 5 judges. A board move
-   no longer costs a hand re-pin.
-2. **The Bailey Williams override is round-scoped to R15–R19, not deleted** — new `applies_to_rounds`
-   field plus a scope check in `round_catchup.py`. Scoped rather than retired because those fixtures
-   genuinely do list both players under one display name and the catch-up proofs re-run them; deleting
-   would have misattributed historical rounds silently. Re-measured on store `e3aaba77`: zero display
-   names shared by two or more of the 804 active players. Callum Brown stays unscoped.
-3. **Movers schema 1 → 2.** R15–R19 keep v1 and integer predecessors; the bundle holds both versions,
-   each self-describing. Nothing in the tree branches on `schema_version`.
+**A value a human must retype when something moves, or a check that cannot notice it is wrong.**
 
-## Integration hazard — read this before merging any seat branch
+1. **`EXPECTED_BOARD`** pinned `fa172ac1` while the board was `8a38cca4` — two moves behind — so
+   `ringFence()` rejected the board and **every tab rendered the fail-closed panel.** Fixed at `6d8f910`;
+   retiring the hand-pin is now commissioned.
+2. **`release_seam.test.js` builds its fixtures from that pin**, so it passed straight through the
+   outage. Vacuity, guarding the thing that broke.
+3. **`bootstrap_env.sh` invokes bare `python3`** against a cp312-pinned lock. Has cost two seats.
+4. **The env-pin guard** checks the numpy version string and OpenBLAS hash, both identical across the
+   cp311/cp312 builds, so it cannot detect the swap it exists to detect.
 
-**A rebase-merge rewrites SHAs.** A branch that keeps building on its already-merged history presents
-those commits again under their original ids, so the merge base rewinds past them and every touched file
-looks like an independent edit on both sides. Both seat branches hit this: #208 conflicted on eight files,
-and #207 appeared to rewrite ten files it had never opened.
+## Landed this cycle
 
-**`git diff main..branch` on a stale-based branch is not a statement of what that branch changed.** Diff
-against the branch's own merge base. The fix is `git rebase --onto origin/main <old-tip>`, then verify the
-replayed diff is byte-identical to the original before pushing.
+- **R20 finalised**; Movers is a from/to comparison over eight points (`14`…`20` plus
+  `post-r19-redesign-1`). The board-identity chain, its integrity flag and the provenance bridge are gone.
+- **#222 · thirteen #139 items** (`6d8f910`): the card's weekly history, the Public navigation defects,
+  the tab tidy-up, and club totals summing in the browser — **all 16 clubs had been wrong by up to
+  +1,853.** Round review retired; Movers is the weekly-review surface.
+- **#208's three closing tasks**: panel re-pin retired, Bailey Williams override round-scoped to R15–R19,
+  movers schema bumped to 2.
+- **#207 stage 1** measurement preserved at `session_2026-07-28/item207_stage1/`, pinned to store
+  `c120cfd5` — **re-run before adopting anything from it.**
+- **RULEBOOK v2.1** — G-MONO scoped, Law-10, owner-signed.
+- Issues closed: #207, #208, #138 (obsolete), #205 (was done, never closed).
 
-## #207 — what stands, and what it is pinned to
+## Standing rules set or corrected this cycle
 
-Withdrawn and carried nowhere: the scratch-board figures (18 movers, mean −15.2, pick-asset sum −1,381).
-They were measured on a 493→459 descending tail that was never ruled; the artifact is deleted.
+- **One history column per landed change, not per board rebuild.** A board moves several times inside one
+  piece of work; a column each fills the dropdown with noise. **Do not ask for a label mid-job.** The
+  whole baseline effort is one change and gets one column — `Post R19 Redesign 2` when it lands.
+- **Whenever the board moves outside a round, a column is still written** — at the landing, not the build.
+- **Screen by re-running, never by reading.** Three seam errors this cycle came from inferring off a file
+  read. Every count names its denominator.
 
-Standing, each naming its basis: `curve_nd_1_64.json` — 64 entries, domain 1–64, pin 3000, strictly
-decreasing, no pool entries (seam-verified). Rookie share of kernel weight on store `c120cfd5` — 30.3%
-at national pick 64, 0.0/0.8/17.0% at 40/50/60; the bandwidth never grows and PAVA never fires, so the
-reach is log-pick proximity, not adaptation; rookies sit 77.3 **below** national at 59–64 and 26.8
-**above** at 65–70, so inside the boundary the blend depresses the fit by 13.7 points (−2.5%) at pick 64
-and the upward propping lives in the band the split removes anyway. Bust priors on a 1,793-player
-window, pool as one value per position, 27.9–33.5, grand mean 29.8. The 0.6 ceiling at 18.9 as written
-vs 35.5 uncompressed — 1.88×, binding for five of six positions.
+## Known-bad data, shipped, not this cycle's to fix
 
-**Every one of those is pinned to store `c120cfd5`, and the store has moved to `e3aaba77` with R20.
-Re-run before adopting anything.** Not measured and waiting on the engine change: the pool's board
-effect and the 1–64 curve's, since a board needs both sides priced.
+**The movers bundle carries its own `dnp` flag and it is wrong.** It marks 486 of 804 players "did not
+play" in R15 — a round where only ~414 could play and 318 were recorded — so roughly 96 who played are
+flagged as not having. It is "absent from the score map" dressed as a football fact. #222 correctly
+declined to use it.
 
-## Housing — corrected
-
-**The seam can merge its own PRs.** The housing note says merges land under the owner's auth; that
-describes whose credentials the merge runs under, not who may click it. PRs #213, #214 and #215 were
-rebase-merged by this seat directly. **Stop sending merges to the owner.** Direct push to main is still
-classifier-blocked, so docs pens still go branch → PR → rebase-merge. Ref deletion remains proxy-forbidden.
+**The baked pick prices in `ui/data/club_valuation.js` go stale when #225 lands.** #222 left them because
+a pick's price comes from the curve rather than the board — sound then, expiring soon. #232 recommends;
+the owner decides.
 
 ## Owner acts outstanding
 
-1. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-2. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-3. Referee harness scope — a fresh seat, owner-scheduled.
-4. Stage 2 adoption of anything from #207 — his call, and it comes after the engine change.
-
-**Issue list, tidied 2026-07-28.** #139 items 1 and 4 are done — item 4 is the arbitrary-Movers-comparison
-feature, built by #208. **#139 stays open; its other 21 items stand.** #138 closed as obsolete (it specified
-a replay of a tab that was replaced instead, and its gate names a board three generations back). #205 closed
-as completed (landed as PR #210). Held out of the UI bundle deliberately: item 7 needs an open 412 answer and
-a store field that does not exist, and item 8 changes shape once #217 lands, because picks past 64 are no
-longer priced on the curve.
-
-## Seats
-
-| | |
-|---|---|
-| **seam + pen** | Four errors this session, all owner- or hook-caught, none reaching the product: staged another seat's product files onto the seam branch during a verification checkout; said the engine could not price by position after reading only the pick ladder; said nothing needed relaxing on strict descent without reading the rulebook; checked whether a curve tail was flat instead of asking why it had a tail. **All four are the same fault — reading what implements the system instead of what commissions it.** Artifact verification held: every hash, count, diff and ancestry check it ran itself has stood. |
-| **#207 · #208** | Both closing. Engine-split seat opens fresh and cold. |
+1. **Adopt or reject #225's derived values** when they arrive. Separate release, own word.
+2. **The label for the baseline column** when the whole effort lands.
+3. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
+4. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+5. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+6. Referee harness scope — a fresh seat, owner-scheduled.
 
 ## Parked — do not start
 
 Track D (five items, none touching the product) · the conservation gate (`gate_f5.py` cannot be wired as
-written) · `test_club_valuation_current.py` CI wiring — it guards a file that bakes a sum a browser
-computes instantly.
+written) · #139 items 6, 7 and 19 (eligibility and forward-lens work — ITEM 412 territory, and item 7
+needs a store field that does not exist) · #139 item 8 (changes shape once #217 lands).
 
 ## Environment carries
 
 - Containers **shallow-clone by default** — `git fetch --unshallow` before any ancestry claim.
-- **`bootstrap_env.sh` invokes bare `python3`** while the lock pins the cp312 wheel. `live-scoring.yml`
-  already solves this by discovering `python3.12` by name; the local bootstrap never got the same
-  treatment. **One-line fix, has now cost two seats.** Never bypass the pin.
-- The env-pin guard hashes the bundled OpenBLAS but **not** the numpy binary where `np.interp` lives.
-- **`sibling_repin` rewrites history every board move** — #208 restored the two `5546f278` references it
-  had overwritten, and it will overwrite them again next time.
-- The register header is **one ~347KB line**. `head` on it dumps the whole file — read it with a script
-  that windows around a match, never with `head` or `cat`.
+- **Integration hazard, hit by three branches in one day.** A rebase-merge rewrites SHAs, so a branch that
+  keeps building on already-merged history presents those commits again under their original ids; the
+  merge base rewinds past them and every touched file reads as an independent edit on both sides. Fix with
+  `git rebase --onto origin/main <old-tip>`, then **verify the replayed diff is byte-identical** before
+  pushing. **`git diff main..branch` on a stale-based branch is not a statement of what that branch
+  changed** — diff against the branch's own merge base.
+- **The seam can merge its own PRs.** The housing note describes whose credentials the merge runs under,
+  not who may click it. Direct push to main is still classifier-blocked, so pens go branch → PR →
+  rebase-merge. Ref deletion remains proxy-forbidden.
+- **`sibling_repin` rewrites history every board move** — it overwrote two `5546f278` references, #208
+  restored them, and it will do it again.
+- The register header is **one ~375KB line**. Read it with a script that windows around a match — never
+  `head` or `cat`.
 - The Actions API can exceed per-call output caps; spill to a file and parse.
 
 ---
