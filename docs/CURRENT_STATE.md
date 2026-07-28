@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v7 · supervisor pen · 2026-07-28, register v512
+# CURRENT STATE — the incoming-seat read · v8 · supervisor pen · 2026-07-28, register v513
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,7 +109,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate as of 2026-07-28, register v512, main `462256f`.*
+*Replaced wholesale each pen. Accurate as of 2026-07-28, register v513, main after `69e8458`.*
 
 ## THE PRICING STRUCTURE — ruled, now law, engine still to follow
 
@@ -146,7 +146,8 @@ Do not conflate two layers: `_PVC0`/`draftval` price by pick with no position ar
 
 | | |
 |---|---|
-| **Engine split · #217** | **FIRED and UNGATED.** `docs/directives/PRIORITY_1_engine_split_implementation.md`. Fresh cold seat. #208's three closing tasks have landed, so **it may move the board.** The only live seat. |
+| **Engine split · #217** | **FIRED and UNGATED.** `docs/directives/PRIORITY_1_engine_split_implementation.md`. Fresh cold seat. **The only job in flight that writes the store or board.** |
+| **UI card + navigation** | **FIRED.** `docs/directives/PRIORITY_UI_card_and_navigation.md`. Ten #139 items in three clusters — the player card's weekly history, the Public navigation defects, and the tab tidy-up. UI only; no overlap with #217. |
 | **#208** | **CLOSED.** R20 finalised, from/to tab, all three closing tasks landed (`411735f`). |
 | **#207** | **CLOSED.** Stage 1 measurement landed at `462256f`. Adoption is stage 2 and is the owner's call. |
 | **ITEM 412** | Ruled slice folded back into build work. Retains the open design questions. |
@@ -229,6 +230,13 @@ classifier-blocked, so docs pens still go branch → PR → rebase-merge. Ref de
 2. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
 3. Referee harness scope — a fresh seat, owner-scheduled.
 4. Stage 2 adoption of anything from #207 — his call, and it comes after the engine change.
+
+**Issue list, tidied 2026-07-28.** #139 items 1 and 4 are done — item 4 is the arbitrary-Movers-comparison
+feature, built by #208. **#139 stays open; its other 21 items stand.** #138 closed as obsolete (it specified
+a replay of a tab that was replaced instead, and its gate names a board three generations back). #205 closed
+as completed (landed as PR #210). Held out of the UI bundle deliberately: item 7 needs an open 412 answer and
+a store field that does not exist, and item 8 changes shape once #217 lands, because picks past 64 are no
+longer priced on the curve.
 
 ## Seats
 
