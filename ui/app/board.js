@@ -36,7 +36,7 @@ MD.board = (function () {
     // #139 item 5: canonical club key (the board bundle is already extractor-normalised, so this is
     // uniformity of the join key rather than a fix here — the duplicate bites on the Movers bundle).
     (MD.seam.working.players || []).forEach(function (p) {
-      const c = MD.canonClub(p.affl_team); if (c) set[c] = 1;
+      const c = MD.canonClub(MD.ownership.clubOf(p)); if (c) set[c] = 1;   // #232: live ownership
     });
     return Object.keys(set).sort();
   }
@@ -46,7 +46,9 @@ MD.board = (function () {
     const m = {};
     pool.forEach(function (r) {
       if (MD.isPickAsset(r.p)) return;   // anonymous future picks have no AFFL club — never in ΣSCAR / club ranks
-      const c = MD.canonClub(r.p.affl_team) || "—";
+      // #232: live ownership. A public row the name bridge cannot identify resolves to null and lands
+      // in the "—" bucket — excluded from every club's ΣSCAR rather than counted into a wrong one.
+      const c = MD.canonClub(MD.ownership.clubOf(r.p)) || "—";
       if (!m[c]) m[c] = { club: c, sigma: 0, n: 0 };
       m[c].sigma += r.val; m[c].n += 1;
     });
@@ -307,7 +309,9 @@ MD.board = (function () {
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
       // item 1: AFL club + AFFL club, listed per player (AFFL is the team-context lens focus, so it leads
       // in volt; AFL is the muted sub-line). Display-only strings from the bundle; "—" when absent.
-      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(fmt.club(p.affl_team)) + "</span>" +
+      // #232: the AFFL club is the live sidecar's, falling back to the board's stored value.
+      '<span class="club"><span class="affl" title="' + fmt.esc(MD.ownership.titleOf(p)) + '">' +
+        fmt.esc(MD.ownership.labelOf(p)) + "</span>" +
         '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) +
@@ -351,7 +355,12 @@ MD.board = (function () {
       // working row does — AFFL leading, AFL as the muted sub-line. This is ownership information the
       // public tier already ships in its own bundle (board_view_public.js carries affl_team/afl_club);
       // it was simply never rendered.
-      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(fmt.club(p.affl_team)) + "</span>" +
+      // #232: a public row carries NO key, so ownership is resolved by bridging its display name to a
+      // working-board key. If that bridge cannot identify the row, MD.ownership refuses and this shows
+      // "⚠ unverified" rather than the board's stored club — because with the sidecar live we cannot
+      // claim the stored club is current, and a wrong club shown confidently is the defect.
+      '<span class="club"><span class="affl" title="' + fmt.esc(MD.ownership.titleOf(p)) + '">' +
+        fmt.esc(MD.ownership.labelOf(p)) + "</span>" +
         '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) + move;
@@ -667,7 +676,7 @@ MD.board = (function () {
        the figures are sums of values the public board already prints, and the Clubs comparison table is
        already public, so this exposes no new field — it makes the destination match the click. */
     if (s.tier === "public" && clubFilter) {
-      pool = pool.filter(function (r) { return (MD.canonClub(r.p.affl_team) || "—") === clubFilter; });
+      pool = pool.filter(function (r) { return (MD.canonClub(MD.ownership.clubOf(r.p)) || "—") === clubFilter; });
       const summary = clubSummary(clubFilter);
       if (summary) container.appendChild(summary);
       const clear = fmt.el("div", "clubclear");
@@ -679,7 +688,7 @@ MD.board = (function () {
 
     // item 2: filter to a single AFFL club (working tier).
     if (s.tier === "working" && clubFilter) {
-      pool = pool.filter(function (r) { return (MD.canonClub(r.p.affl_team) || "—") === clubFilter; });
+      pool = pool.filter(function (r) { return (MD.canonClub(MD.ownership.clubOf(r.p)) || "—") === clubFilter; });
       // #139 item 11: the comparison-page metrics lead the club page, before any player row.
       const summary = clubSummary(clubFilter);
       if (summary) container.appendChild(summary);
@@ -695,7 +704,7 @@ MD.board = (function () {
       // grouped: club headers ranked by ΣSCAR, EVERY player for every club (owner ruling: no truncation).
       clubAgg(pool).forEach(function (c) {
         rowsEl.appendChild(clubHeader(c, clubRanks[c.club]));
-        const mine = pool.filter(function (r) { return (MD.canonClub(r.p.affl_team) || "—") === c.club; });
+        const mine = pool.filter(function (r) { return (MD.canonClub(MD.ownership.clubOf(r.p)) || "—") === c.club; });
         mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
       });
     } else {

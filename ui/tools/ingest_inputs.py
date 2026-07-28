@@ -16,7 +16,10 @@ from the pick workbook (Raw Value / Value (counted) / Pick Values tab) are NEVER
 
 Run:  python3 ui/tools/ingest_inputs.py         (exit 0 = clean bundle written; exit 2 = HALT)
 """
-import csv, json, os, sys, collections, hashlib, datetime
+import csv, json, os, sys, collections, hashlib, datetime, zipfile
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xlsx_read          # stdlib-only .xlsx reader (#232) — see its module docstring for why
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # repo root
 # Production paths are the defaults; each may be redirected via an env var so a FIXTURE run (a temp board
@@ -33,6 +36,19 @@ CURVE_CONTRACT = os.environ.get("RL_UI_CURVE_CONTRACT", os.path.join(ROOT, "ui",
 # The accepted release manifest — read STRICTLY READ-ONLY for the store + release_version cross-check.
 BOOT = os.environ.get("RL_UI_BOOT", os.path.join(ROOT, "data", "expected_boot.json"))
 OUT = os.environ.get("RL_UI_OUT", os.path.join(UI_DATA, "club_valuation.js"))
+# #232 — the LIVE-lane ownership sidecar. Second output of the SAME command: one edit to the owner's
+# sheet, one run, both bundles. Kept a separate file because club_valuation.js is the picks bundle and
+# #222 deliberately narrowed the UI to read it for picks only; folding ownership back into it would undo
+# that narrowing for no gain.
+#
+# The default FOLLOWS `OUT` rather than pointing at ui/data/ unconditionally. Every fixture harness here
+# redirects RL_UI_OUT to a temp path to keep production untouched — club_curve_provenance.test.py says so
+# in its own docstring — and it drives dozens of DELIBERATE halts. A second output anchored to ui/data/
+# would have those halts overwrite the production sidecar with a halted, empty one; it did exactly that
+# once before this line existed. Deriving the path means redirecting the bundle redirects the sidecar,
+# and no existing harness has to learn about a file that did not exist when it was written.
+OUT_OWNERSHIP = os.environ.get(
+    "RL_UI_OUT_OWNERSHIP", os.path.join(os.path.dirname(os.path.abspath(OUT)), "ownership.js"))
 
 EXPECTED_BOARD = None      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
 PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
@@ -87,6 +103,16 @@ def _emit_halt(reason):
         "clubs": [], "picksByTeam": {}, "notes": notes,
     }
     _write(payload)
+    # #232: the sidecar fails closed on the SAME halt. A half-written live lane is worse than none —
+    # it would show a traded player's new club on the board while the picks overlay refused, which is
+    # the "one player, two clubs" state this job exists to prevent.
+    _write_ownership({
+        "stamp": {"expectedBoard": _expected_board_short(), "generated": _now(),
+                  "lane": "live — ownership only; positions are batched and are NOT in this file"},
+        "halt": {"reason": reason},
+        "byKey": {}, "stableIdByKey": {}, "overriding": [],
+    })
+    print("  The ownership sidecar refuses on the same halt (ui/data/ownership.js).")
 
 
 def _now():
@@ -323,23 +349,29 @@ def price_pick(pvc, lo, hi, year):
 
 # ----------------------------------------------------------------------------------------- the picks
 def load_picks(pvc, affl_teams):
-    try:
-        import openpyxl
-    except ImportError:
-        halt("openpyxl not available — cannot read AFFL_Pick_Locations.xlsx")
+    # #232: read with the STDLIB reader, not openpyxl. The live lane is "edit the sheet, run one
+    # command" — a lane that halts wherever a third-party wheel is absent is not an edit path, and it
+    # halted exactly that way on a bare seat. ui/tools/xlsx_read.py reproduces the openpyxl typing and
+    # refuses (rather than returning None) on an uncached formula or a cached error.
     path = os.path.join(INPUTS, "AFFL_Pick_Locations.xlsx")
     if not os.path.exists(path):
         halt("pick workbook missing: %s" % path)
-    import warnings
-    warnings.filterwarnings("ignore")
-    wb = openpyxl.load_workbook(path, data_only=True)
+    try:
+        sheets = xlsx_read.sheet_names(path)
+        ladder_rows = xlsx_read.rows(path, "Ladder") if "Ladder" in sheets else []
+        picks_rows = xlsx_read.rows(path, "Picks") if "Picks" in sheets else None
+    except xlsx_read.XlsxCellError as e:
+        halt("UNREADABLE CELL in AFFL_Pick_Locations.xlsx — %s" % e)
+    except xlsx_read.XlsxStructureError as e:
+        halt("AFFL_Pick_Locations.xlsx is not shaped like a workbook — %s" % e)
+    except zipfile.BadZipFile:
+        halt("AFFL_Pick_Locations.xlsx is not a readable .xlsx (not a zip container)")
 
     # --- Ladder: the 2027 multiplier cell (read + reconcile against R104.5's governing 0.10) ---
     mult = None
-    if "Ladder" in wb.sheetnames:
-        for row in wb["Ladder"].iter_rows(values_only=True):
-            if row and row[0] and str(row[0]).startswith("2027 value multiplier"):
-                mult = row[1]
+    for row in ladder_rows:
+        if row and row[0] and str(row[0]).startswith("2027 value multiplier"):
+            mult = row[1]
     governing = round(1.0 - PICK_FUTURE_DISCOUNT, 6)
     agree = mult is not None and abs(float(mult) - governing) < 1e-6
     check("ladder 2027 multiplier reconciles to R104.5 balanced (1-0.10=0.90)", agree,
@@ -349,10 +381,10 @@ def load_picks(pvc, affl_teams):
              "reconcile the sheet or the ruling (HALT-AND-FLAG, never silently pick)" % (mult, governing))
 
     # --- Picks ledger ---
-    if "Picks" not in wb.sheetnames:
+    if picks_rows is None:
         halt("pick workbook has no 'Picks' sheet")
     picks = []
-    for i, row in enumerate(wb["Picks"].iter_rows(values_only=True)):
+    for i, row in enumerate(picks_rows):
         if i < 2 or row[0] is None:   # rows 0-1 are title+header
             continue
         pid, yr, rnd, orig, owner, lo, hi = row[0], row[1], row[2], row[3], row[4], row[5], row[6]
@@ -417,7 +449,7 @@ def load_picks(pvc, affl_teams):
 
 
 # ---------------------------------------------------------------- the CSV validations (name -> id)
-def validate_csvs(board_by_nkey):
+def validate_csvs(board_by_nkey, affl_teams):
     loc, lenc = readcsv(os.path.join(INPUTS, "AFFL_Player_Locations.csv"))
     pos, penc = readcsv(os.path.join(INPUTS, "AFFL_Future_Positioning.csv"))
     loc_rows = [r for r in loc[1:] if r and r[0]]
@@ -482,10 +514,39 @@ def validate_csvs(board_by_nkey):
     check("authored CSV ownership agrees with the stamped board affl_team", not mismatch,
           "%d mismatch(es)%s" % (len(mismatch), ("" if not mismatch else ": " + str(mismatch[:5]))))
     if mismatch:
-        notes.append("CSV ownership differs from the stamped board for %d player(s); the board rides "
-                     "one bake behind for player club-moves (pick trades update on re-ingest). "
-                     "First few: %s" % (len(mismatch), mismatch[:5]))
-    return loc_enc_note(lenc, penc)
+        # #232: this is no longer "the board rides one bake behind". The sidecar below carries the
+        # authored ownership straight to the browser, so these ARE the live overrides — the board is
+        # simply the fallback for anything the sheet does not name. Recorded, never halted.
+        notes.append("sidecar overrides the stamped board for %d player(s) — this is the live lane "
+                     "working, not a defect. First few: %s" % (len(mismatch), mismatch[:5]))
+
+    # ---- the ownership sidecar's rows (#232) ----------------------------------------------------
+    # Every club the sheet names must be one the board already spells, or MD.canonClub would pass the
+    # unknown spelling through verbatim and silently split one club into two. Halt rather than ship that.
+    club_set = set(affl_teams) | {FREE_AGENTS}
+    unknown = sorted({normt(r[1]) for r in loc_rows if normt(r[1]) not in club_set})
+    check("every AFFL Team in Player_Locations.csv is a known club spelling", not unknown,
+          "unknown: %s" % (unknown or "none"))
+    if unknown:
+        halt("AFFL Team value(s) %s are not one of the %d board club spellings (+%s) — fix the "
+             "spelling; an unknown club would split silently in the UI" % (unknown, len(affl_teams), FREE_AGENTS))
+
+    own = {}
+    for r in loc_rows:
+        bp = board_by_nkey.get(nkey(r[0]))
+        if not bp:
+            continue                      # already halted above if unmatched; defensive
+        pos_rows = pos_by.get(nkey(r[0])) or []
+        own[bp[0]["key"]] = {
+            "club": normt(r[1]),
+            "name": bp[0]["name"],
+            "stableId": pos_rows[0][0] if pos_rows else None,
+        }
+    check("ownership sidecar rows built from the authored sheet", True,
+          "%d player(s) authored" % len(own))
+
+    loc_enc_note(lenc, penc)
+    return own
 
 
 def loc_enc_note(lenc, penc):
@@ -552,6 +613,19 @@ def _write(payload):
         f.write(body)
 
 
+def _write_ownership(payload):
+    body = ("// GENERATED by ui/tools/ingest_inputs.py — the #232 LIVE-lane ownership sidecar.\n"
+            "// DO NOT hand-edit; it is rewritten from docs/inputs/AFFL_Player_Locations.csv on every\n"
+            "// run (see ui/HOW_TO_UPDATE_INPUTS.md).  Ownership is PRESENTATION data: it is not read\n"
+            "// anywhere in the valuation path, so a trade costs an edit and a reload, never an engine\n"
+            "// run.  The sidecar OVERRIDES; the store's affl_team remains the fallback for any player\n"
+            "// the sheet does not name.  Positions are NOT here and never will be — they feed\n"
+            "// valuation and ride the batched lane.\n"
+            "window.__OWNERSHIP__ = " + json.dumps(payload, ensure_ascii=False, sort_keys=True) + ";\n")
+    with open(OUT_OWNERSHIP, "w", encoding="utf-8") as f:
+        f.write(body)
+
+
 def _print_verdicts():
     print("\n  VALIDATION VERDICTS")
     print("  " + "-" * 72)
@@ -587,7 +661,7 @@ def run():
                          if p.get("affl_team") and p["affl_team"] != FREE_AGENTS})
     check("AFFL club count", True, "%d clubs (+ Free Agents pool)" % len(affl_teams))
 
-    validate_csvs(board_by_nkey)
+    own = validate_csvs(board_by_nkey, affl_teams)
     picks = load_picks(pvc, affl_teams)
     clubs, picks_by_team = build_clubs(players, picks, affl_teams)
 
@@ -616,9 +690,34 @@ def run():
                         for t in picks_by_team},
     }
     _write(payload)
+
+    # ---- the LIVE-lane ownership sidecar (#232) --------------------------------------------------
+    # Counted against the board so the summary states what actually differs, not how many rows exist.
+    board_own = {p["key"]: p.get("affl_team") for p in players if p.get("key")}
+    diffs = sorted(k for k, v in own.items() if board_own.get(k) != v["club"])
+    _write_ownership({
+        "stamp": {
+            "generated": _now(),
+            "source": "docs/inputs/AFFL_Player_Locations.csv",
+            "board": stamp.get("board"), "store": stamp.get("store"),
+            "expectedBoard": _expected_board_short(), "asOfRound": stamp.get("asOfRound"),
+            "nAuthored": len(own), "nOverriding": len(diffs), "nBoardPlayers": len(board_own),
+            "lane": "live — ownership only; positions are batched and are NOT in this file",
+        },
+        "halt": None,
+        "byKey": {k: v["club"] for k, v in own.items()},
+        "stableIdByKey": {k: v["stableId"] for k, v in own.items() if v["stableId"]},
+        "overriding": diffs,
+    })
+    check("ownership sidecar written", True,
+          "%d authored of %d board players · %d actually override the store"
+          % (len(own), len(board_own), len(diffs)))
+
     _print_verdicts()
     print("\n  CLEAN INGEST — %d picks priced off %s (%s), %d clubs.  Bundle: ui/data/club_valuation.js"
           % (len(picks), resolved["path"], resolved["gate"], len(clubs)))
+    print("  LIVE SIDECAR   — %d players authored, %d overriding the store.  Bundle: ui/data/ownership.js"
+          % (len(own), len(diffs)))
     print("\n  TOP-3 CLUBS BY OVERALL VALUE:")
     for c in clubs[:3]:
         print("    %-18s overall %s  (players %s + picks %s)" %

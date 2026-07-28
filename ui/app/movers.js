@@ -23,6 +23,19 @@
     return /^free agents$/i.test(raw) ? "Free Agents" : raw;
   }
 
+  /* #232 — a mover row's AFFL club, resolved DUAL-TARGET on the same pattern as canonTeam above.
+     In the browser this defers to MD.ownership, so the row shows the LIVE sidecar's club with the
+     board's stored affl_team as the fallback. Under node the pure-logic tests load this file with
+     `require`: there is no MD, no board and no sidecar, so the row's own affl_team is all there is and
+     is exactly what those filter tests mean by "his club".
+     Why override at all on a historical view: the movers bundle's ownership is NOT a record of who owned
+     him at the time. round_movers.py:279 builds it by copying the store's CURRENT affl_team at bake
+     time, with no round dimension — so keeping it preserves a stale copy, not history. */
+  function ownClub(p) {
+    var o = (typeof window !== "undefined" && window.MD && window.MD.ownership) || null;
+    return o ? o.clubOf(p) : (p ? p.affl_team : null);
+  }
+
   /* ---- pure, dual-target logic (unit-tested under node) ------------------------------------ */
   var core = {
     /* Fail-closed integrity of ONE report: it must carry a committed board identity, a unique + full
@@ -421,7 +434,12 @@
       return players.filter(function (p) {
         // #139 item 5: match on the CANONICAL club key. The stored reports carry both authored
         // spellings of the Free-Agents pool, so an exact-string match selected only part of it.
-        if (f.club && (canonTeam(p.affl_team) || "—") !== (canonTeam(f.club) || "—")) return false;
+        // #232: ownership comes from the live sidecar, not the row's baked affl_team. The movers
+        // bundle's ownership is NOT history — round_movers.py:279 builds it by copying the store's
+        // CURRENT affl_team at bake time, with no round dimension, so it was never "his club as at
+        // R15". Keeping it would preserve a stale copy, not a record. Every mover row is keyed, so
+        // this resolves without the name bridge.
+        if (f.club && (canonTeam(ownClub(p)) || "—") !== (canonTeam(f.club) || "—")) return false;
         if (f.pos && p.pos !== f.pos) return false;
         if (f.status === "played" && !p.played) return false;
         if (f.status === "dnp" && p.played) return false;
@@ -573,7 +591,7 @@
       // #139 item 5: key the dropdown by the CANONICAL club name so the two authored spellings of the
       // Free-Agents pool collapse to one entry that selects the whole pool.
       const clubs = {}; (report.players || []).forEach(function (p) {
-        const c = canonTeam(p.affl_team); if (c) clubs[c] = 1;
+        const c = canonTeam(ownClub(p)); if (c) clubs[c] = 1;   // #232: live ownership
       });
       const csel = fmt.el("select", "boardsel");
       csel.appendChild(new Option("All clubs", ""));
@@ -653,7 +671,8 @@
         r.innerHTML =
           '<div class="mr rank num">' + fmt.n(p.cur_rank) + "</div>" +
           '<div class="mr who"><span class="nm">' + fmt.esc(p.name) + "</span>" +
-            '<span class="sub">' + fmt.esc(p.pos || "—") + " · " + fmt.esc(fmt.club(p.affl_team || p.club || "—")) + "</span></div>" +
+            '<span class="sub">' + fmt.esc(p.pos || "—") + " · " +
+              fmt.esc(ownClub(p) ? MD.ownership.labelOf(p) : fmt.club(p.club || "—")) + "</span></div>" +
           '<div class="mr pdn">' + (p.played
               ? '<span class="pill up">PLAYED ' + fmt.n(p.score) + "</span>"
               : '<span class="pill na">DNP</span>') + "</div>" +

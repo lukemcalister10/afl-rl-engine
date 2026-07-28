@@ -62,7 +62,7 @@ MD.clubTotals = (function () {
     const rosterBy = {};
     (w.players || []).forEach(function (p) {
       if (MD.isPickAsset(p)) return;
-      const t = MD.canonClub(p.affl_team);
+      const t = MD.canonClub(MD.ownership.clubOf(p));   // #232: sidecar overrides, store falls back
       if (!t || isFree(t)) return;
       (rosterBy[t] = rosterBy[t] || []).push(p);
     });

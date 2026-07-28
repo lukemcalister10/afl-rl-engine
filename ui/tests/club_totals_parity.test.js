@@ -39,11 +39,13 @@ function loadUI(mutate) {
     "ui/data/board_view_working.js",
     "ui/data/board_view_public.js",
     "ui/data/club_valuation.js",
+    "ui/data/ownership.js",        // #232 live-lane sidecar — club_totals now resolves through it
     "ui/app/positions_data.js",
     "ui/app/config.js",
     "ui/app/format.js",
     "ui/app/counting.js",
     "ui/app/seam.js",
+    "ui/app/ownership.js",
     "ui/app/club_totals.js",
   ];
   files.forEach(function (f) {
@@ -173,17 +175,36 @@ check(movedTotals !== baseTotals, "moving a player's value CHANGES the computed 
 const brokenDiffs = diffs(ui.clubs, oracleClubs(board.players, cvBundle.picksByTeam || {}, { broken: true }));
 check(brokenDiffs.length > 0, "a deliberately wrong Best-23 greedy is REJECTED (the check can fail)");
 
-/* -------------------------------------------------------------------- the staleness this replaced */
-const baked = cvBundle.clubs || [];
-const bakedByTeam = {};
-baked.forEach(function (c) { bakedByTeam[c.team] = c; });
-const stale = ui.clubs.filter(function (c) {
-  const b = bakedByTeam[c.team];
-  return b && b.totalPlayer !== c.totalPlayer;
+/* ------------------------------------------------------ the baked totals must not be consulted at all
+   This assertion used to read `stale.length > 0` — "the baked club_valuation.js totals ARE stale against
+   the live board". That was true when written and is a FACT ABOUT A MOMENT, not an invariant: it holds
+   only while nobody re-runs the ingest, and it failed the moment #232 regenerated the bundle against the
+   current board. A guard that goes red when you correctly refresh an input is guarding the wrong thing.
+
+   The durable property it was reaching for is that the browser does not READ those baked totals. So
+   assert that directly: corrupt every baked club total and require the computation to be unmoved. This
+   cannot pass vacuously — if MD.clubTotals ever consulted the baked block again, the corruption would
+   show up immediately. It is also strictly stronger than the staleness check, which could only ever
+   observe that two numbers happened to differ. */
+const corrupted = loadUI(function (c) {
+  (c.window.__CLUB_VALUATION__.clubs || []).forEach(function (cl) {
+    cl.totalPlayer = -1; cl.top5 = -1; cl.top10 = -1;
+    cl.best23 = -1; cl.nonBest23 = -1; cl.overall = -1; cl.nRoster = -1;
+  });
 });
-check(stale.length > 0,
-  "the baked club_valuation.js totals ARE stale against the live board (" + stale.length +
-  "/16 clubs differ) — the reason this computation moved to the browser");
+const corruptedUI = corrupted.MD.clubTotals.compute();
+const unmoved = JSON.stringify(corruptedUI.clubs.map(function (c) {
+  return [c.team, c.totalPlayer, c.top5, c.top10, c.best23, c.nonBest23, c.nRoster];
+}));
+const original = JSON.stringify(ui.clubs.map(function (c) {
+  return [c.team, c.totalPlayer, c.top5, c.top10, c.best23, c.nonBest23, c.nRoster];
+}));
+check(unmoved === original,
+  "corrupting every baked club total in club_valuation.js changes NOTHING — the browser computes the "
+  + "player side from the board and never reads the baked block");
+check(ui.clubs.length > 0 && ui.clubs.some(function (c) { return c.totalPlayer > 0; }),
+  "…and the computation is non-empty, so that assertion is not passing over an empty club list",
+  ui.clubs.length + " clubs");
 
 console.log("-".repeat(72));
 console.log((fail ? "FAIL " : "") + pass + "/" + (pass + fail) + " passed");

@@ -42,7 +42,7 @@ MD.pocket = (function () {
 
     const byTeamPos = {}, unlisted = {};
     (MD.seam.working && MD.seam.working.players || []).forEach(function (p) {
-      const t = MD.canonClub(p.affl_team);          // #139 item 5: one key per club
+      const t = MD.canonClub(MD.ownership.clubOf(p));  // #139 item 5: one key per club · #232: live ownership
       if (!t || MD.clubTotals.isFree(t)) return;
       if (!byTeamPos[t]) byTeamPos[t] = {};
       const codes = POS && POS.byKey ? POS.byKey[p.key] : null;
