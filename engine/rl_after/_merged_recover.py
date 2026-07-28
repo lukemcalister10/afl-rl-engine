@@ -1330,8 +1330,11 @@ def _build_v0_curve():
     # log(RECORDED pick). `type=='ND'` alone no longer means "on the national curve": a national selection at
     # 65+ is POOL under the ruling, and admitting it here lets a pool outcome teach the V0 pick surface through
     # the back door, exactly as the +/-4 builders did. Same gate as every other fit site.
-    real=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None
-          and not MA.is_pool(p)]
+    # Registered at k=0 (whole-population sample, not per-pick) so the Addendum-1 check watches the ACTUAL list
+    # this kernel fit consumes rather than re-deriving it — see _curve_sample in rl_model.
+    real=MA._curve_sample('v0_kernel',0,
+         [p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None
+          and not MA.is_pool(p)])
     _sig=_v0surf_sig(real)                                   # LEG F6: deterministic config signature (weather-invariant)
     _frozen=_V0SURF.get(_sig) if isinstance(_V0SURF,dict) else None
     _refit_declared=os.environ.get('RL_V0SURF_REFIT')=='1'

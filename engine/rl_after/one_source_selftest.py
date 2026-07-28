@@ -350,23 +350,28 @@ check(sorted(_p0i)==list(range(1,_ND_LAST+1))+[_POOL],
 # ADDENDUM 1 (owner, 2026-07-28): NO POOL ROW MAY TEACH THE NATIONAL CURVE. Removing the chaining fixed where a
 # pool entrant SITS; this asserts his outcome does not train the fit. Collapsing the pool to one index at 65 put
 # every pool row inside the +/-4 sampling window of picks 61-64 at once, so without this the contamination is
-# CONCENTRATED at the boundary rather than removed. Checked at every fit site, on the site's own predicate.
-_hist=MA.hist; _data=MA.data
-_sites={
- 'build_pvc/build_pvc_v34/_natcv34 (+/-4 on _epk)':
-    lambda k: [p for p in _hist if MA._teaches_curve(p) and abs(MA._epk(p)-k)<=4],
- '_natcv (+/-4 on RAW pick)':
-    lambda k: [p for p in _data if p['_grp']=='ND' and not MA.is_pool(p) and (p['pick'] or 99)
-               and abs((p['pick'] or 99)-k)<=4 and p['pos'] in MA.GRP],
-}
-for _nm,_sel in _sites.items():
-    _dirty=[(k,sum(1 for p in _sel(k) if MA.is_pool(p))) for k in range(1,_ND_LAST+1)]
+# CONCENTRATED at the boundary rather than removed.
+#
+# THIS CHECK OBSERVES; IT DOES NOT RE-DERIVE. The previous version re-implemented the builders' filter here and
+# asserted on its own copy, so it only ever tested the shared helper — the seam broke the exclusion at _natcv's
+# own line and at the build_pvc call site and the suite stayed GREEN both times. Now every fit site registers the
+# ACTUAL row list it sampled (rl_model._curve_sample), and this reads those recorded populations. Break the
+# exclusion at any ONE site and that site's own sample carries pool rows, so it fails BY NAME.
+_SAMPLES=MA._CURVE_SAMPLES
+# (a) every expected site must have registered — deleting a registration must not buy silence.
+_missing=[s for s in MA.CURVE_FIT_SITES if s not in _SAMPLES]
+check(not _missing, "ADDENDUM 1: every curve fit site registered its sample (missing: %s)"%_missing)
+# (b) per site, on the rows THAT SITE actually sampled: no pool row anywhere on the national curve.
+for _site in MA.CURVE_FIT_SITES:
+    _obs=_SAMPLES.get(_site) or {}
+    if not _obs:
+        check(False, "ADDENDUM 1: fit site '%s' registered NO sample — cannot be verified"%_site); continue
+    _dirty=sorted((k,sum(1 for p in rows if MA.is_pool(p))) for k,rows in _obs.items())
     _dirty=[(k,n) for k,n in _dirty if n]
-    check(not _dirty, "ADDENDUM 1: no pool row carries weight at any pick 1..%d — %s (contaminated picks: %s)"
-          %(_ND_LAST,_nm,_dirty[:6]))
-_v0real=[p for p in _data if p.get('type')=='ND' and p.get('pick') is not None and not MA.is_pool(p)]
-check(not any(MA.is_pool(p) for p in _v0real),
-      "ADDENDUM 1: no pool row in the V0 kernel pick-curve fit (n=%d teaching rows)"%len(_v0real))
+    _n=sum(len(r) for r in _obs.values())
+    check(not _dirty,
+          "ADDENDUM 1: fit site '%s' sampled NO pool row on the national curve (%d rows observed across %d picks; "
+          "contaminated picks: %s)"%(_site,_n,len(_obs),_dirty[:6]))
 # ENTRY CLOSURE (owner's named tautology, made safe): a zero-evidence entrant's evidence-free V0 basis is the
 # pick-prior scaffold draftval, which == _PVC0[pick] == the loaded curve. Definitionally equal; the curve's
 # content comes from OUTCOMES (derived from realized trajectories), so pricing a zero-evidence entrant leaks
