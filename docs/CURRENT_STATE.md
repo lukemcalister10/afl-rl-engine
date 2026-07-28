@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v13 · supervisor pen · 2026-07-28, register v521
+# CURRENT STATE — the incoming-seat read · v14 · supervisor pen · 2026-07-28, register v522
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,188 +109,281 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate as of 2026-07-28, register v519, written against main `144cd33`
-(this pen lands on top of it).*
+*Replaced wholesale each pen. Accurate as of 2026-07-28, register v522, written against main `3d31692`.*
 
-**Reading the figures below:** anything marked *seam-verified* was re-derived by the seam from the
-artifact. Everything else is the reporting seat's own measurement, named so you can weigh it. Where it
-matters, re-run rather than inherit.
+**Reading the figures below:** anything marked *seam-verified* was re-derived by the seam from the artifact
+by re-running, not by reading. Everything else is the reporting seat's own measurement, named so you can
+weigh it. Where it matters, re-run rather than inherit.
 
-## WHAT THE CURRENT WORK IS FOR — read this before you touch the model
+## THE ONE THING GATING EVERYTHING — read this first
+
+**The owner is rebuilding positional data for every player-season from scratch.** Nothing derives a value
+until that lands. This is not a delay to work around; it is the fix that four separate threads all turned
+out to need.
+
+**Why.** The store's positions disagree with the owner's own eligibility in ways that reach valuation, and
+every attempt to shortcut it has produced a partial answer. The owner's words: *"This issue and trying to
+shortcut it has gone on for too long and that is the only way to fix it for good."*
+
+**The four-field model, owner's words 2026-07-28 — this is the specification:**
+
+> **Drafted position:** what bucket their career performance as a whole goes to credit, value wise.
+> **Career position:** the position they played for most of their career — so the position that their career
+> historical performance is attributed to and measured against for replacement reasons.
+> **Future position:** the position they will play from this point forward. For modelling their performance
+> in the future.
+> Eligibility is a different layer and projects what replacement bar they would be measured against for the
+> current and future seasons (for the future eligibility blend).
+
+Career position resolves to **per-season eligibility**, sourced rather than judged — SuperCoach assigns it,
+so it is data, not 416 arguable calls. The owner is collecting DEF/MID/RUCK/FWD plus an `is_key` flag, which
+generates exactly the six model codes, with per-player overrides for the career-long borderline cases.
+
+**Three of the four already exist in the engine:** drafted is `pos`, future position is `_futpos`/`gfut()`,
+the future blend is `futblend()`, already wired at `proj_from_peak(…, fut=futblend(p))`. Only per-season
+eligibility is new.
+
+**Size of the data job, seam-verified:** **11,264 player-season records across 1,924 store rows carrying
+scoring, seasons 2005–2026**, flat at ~600–670 records a year from 2011. **Not** the 804 active board — the
+fit trains on the full cohort, and the retired players are precisely who populates the older seasons.
+
+**Decide before collecting, not after:** what happens to a player-season with no eligibility recorded. A
+silent fallback to drafted position puts you back where you started for exactly the seasons you could not
+source, and it will not announce itself. Exclude, halt, or a named default — any is defensible; silence is not.
+
+**And state the vocabulary before any count.** Four spellings of six positions are live: the owner's sheet
+(`G-DEF`), the store (`GDEF`), the board (`GEN_DEF`), and SuperCoach's. This has produced phantom findings
+twice — 556 differences once, and #232 caught itself at 73 last night.
+
+## WHAT THE CURRENT WORK IS FOR — unchanged and still binding
 
 **Owner's words, 2026-07-28:**
 
 > Right now, we are doing apples for apples conversion of the new store and ND/RD/Pool split into the
-> current system. Anything else would be redefining HOW we model or HOW we value, which is the job of
-> the referee project which comes next, and 412. This is about establishing a correct baseline with our
-> new information to compare to.
+> current system. Anything else would be redefining HOW we model or HOW we value, which is the job of the
+> referee project which comes next, and 412. This is about establishing a correct baseline with our new
+> information to compare to.
 
-**The method is held constant. Only the data and the separation change.** If you find yourself improving
-a calculation, you have left the job.
+**The method is held constant. Only the data and the separation change.** The `× 0.6` blend ceiling stays,
+the isotonic step stays, the low-sample pooling stays. Known defects are reported, not repaired.
 
-This is the costliest drift here: a seat reads "baseline", sees a defect, fixes it — and the baseline is
-no longer comparable to anything, which was its entire purpose. **Known defects are reported, not
-repaired.** The `× 0.6` blend ceiling stays, the isotonic step stays, the low-sample pooling stays. They
-are the thing being replicated.
-
-**Sequence:** baseline (#217 → #225 → owner adoption) → the referee project → ITEM 412.
+**Sequence:** positional rebuild → re-derive (#225's successor) → owner adoption → the referee project → ITEM 412.
 
 ## THE PRICING STRUCTURE — ruled, and law since 2026-07-28
 
-**The national curve covers picks 1–64.** Everything past 64 enters a **pool**: ND 65+, all rookie draft,
-all post-draft selections. Valued **by position**; **order of selection carries no value** inside it.
-SSP and MSD are pool-valued but tracked separately.
+**The national curve covers picks 1–64.** Everything past 64 enters a **pool**: ND 65+, all rookie draft, all
+post-draft selections. Valued **by position**; order of selection carries no value inside it. SSP and MSD are
+pool-valued but tracked separately.
 
 **There is no price for pick 70.** If you are asking what a pick past 64 is worth, you have reverted.
 
-`RULEBOOK.md` v2.1 law 4 (G-MONO) scopes strict descent to picks 1–64; the pool is outside it. Twin
-`acceptance_v2_0.json` v2.1 matches. **No further rulebook change is needed to implement the split.**
+`RULEBOOK.md` v2.1 law 4 (G-MONO) scopes strict descent to picks 1–64; the pool is outside it. **No further
+rulebook change is needed.**
 
-**The owner has stated this ten times and it has been lost ten times — never in comprehension, always at
-the point where someone turned it into instructions.** A directive must carry his requirement verbatim
-and state acceptance as a **property of the result**, not a list of lines to edit. A wrong edit can
-satisfy a line list; it cannot satisfy an outcome test.
-
-## THE CRITICAL FACT ABOUT THE CURVE — get this wrong and you will misread everything
+## THE CRITICAL FACT ABOUT THE CURVE
 
 **The shipped pick curve is a LOADED ARTIFACT, not the in-engine fit.** `rl_export.py` loads
-`pvc_curve_v2.json` and `PVC` *is* that artifact. Nothing in the engine writes it. `_merged_recover.py:1537`
-records **owner ruling R3 of 2026-07-09** holding the in-engine fit out of the bake — experiments only,
-with a bake guard refusing to write a bakeable board with the fit on.
+`pvc_curve_v2.json` and `PVC` *is* that artifact. `_merged_recover.py:1537` records **owner ruling R3 of
+2026-07-09** holding the in-engine fit out of the bake, with a bake guard enforcing it.
 
-**So cleaning the fit cannot move a shipped price.** The seam wasted a cycle asserting otherwise. The
-prices on the board today are still the pre-split numbers. **Only #225 produces a replacement, and
-adopting it is an owner act. The baseline does not yet exist.**
+**So cleaning the fit cannot move a shipped price.** The prices on the board today are still pre-split. The
+baseline does not exist until the re-derivation lands and the owner adopts it.
 
-Two layers, routinely conflated: `_PVC0`/`draftval` price by pick and are position-blind, but
-`iso_corr(pos, pk)` takes both and V0 is asserted a function of `(pos, ageR, pick)`. **The engine already
-prices by position.**
+**This ruling has now caused two seam errors, not one.** The second is recorded under the #241 scope error below.
 
-**V0 is not an outcome measure.** It is a function of position, age band and pick only — it carries no
-information about whether a player ever played. A mean of V0 describes a population's entry slots and
-ages, never what those players became. This produced a false finding twice: the pool's never-played mean
-(612.41) sits *above* its played mean (550.29) purely because the never-played group skews younger and
-V0 reads youth as runway.
+## THE POSITION-BAR DEFECT — found 2026-07-28, not yet fixed
+
+**The fit measures a player's career against his DRAFTED position's replacement bar, while the board prices
+him against the position he PLAYED.** Same player, same career, two currencies.
+
+**The engine already states the correct rule** at `rl_model.py:69`: *"drafted+developed a MID → feeds the MID
+pool; plays FWD now → valued as a forward."* The board honours it. The fit does not.
+
+**Owner's words:** *"It would make no sense for Moore to offer his owner that value, but then when we look
+back and value him, nerf that value."*
+
+Seam-verified: Dylan Moore, drafted MID pick 66, played GEN_FWD, career top-two 95.55 — contributes **15.47**
+against the MID bar where the played bar gives **24.65**. **113 of 804 active players are drafted into one bar
+and played into another; 68 would score better on the bar they played.**
+
+**#241 was drafted to fix this and was NEVER FIRED, because the seam scoped it wrong.** See below. The
+corrected site map is #225's, filed on that issue, and it is what a fix must cover.
+
+## THE #241 SCOPE ERROR — the seam's, and it is the documented one repeating
+
+The seam scoped the fix at `_nv_bwd` and `peakval`. Those feed `build_pvc`/`build_pvc_v34`/`_natcv34` — **the
+in-engine fit that R3 holds out of the bake.** They cannot reach a shipped price. The seam named the two sites
+that do not matter and missed the sites that do.
+
+**#225 caught it and mapped it properly.** Its map, filed on #225 and organised by whether a site reaches `ev()`:
+
+| group | what |
+|---|---|
+| **A** | eight value-path sites — `_explicit_peak` :608, `_v4_feats` :626, `_v4_draft_feat` :636, `_v4_spike_guard` :638, `los_decay`, `_role_decay_hc`, and the `PEAK_AGE`/`SPIKE_CAP` reads at :413/:433 |
+| **B** | two build-on-one-axis-read-on-the-other cases — `BPK`/`MIX` and `_grpoffP`, where fixing the lookup without rebuilding the table leaves the mismatch and the table still reads clean |
+| **C** | three in-engine/export sites R3 holds out of the bake |
+
+Plus a **"not a defect, do not fix"** list for `bnow` and `grp3`, because an over-eager enumeration breaks
+`bnow`'s deliberate fallback to drafted.
+
+Seam-verified independently: `peak_est` reads `g=gfut(p)` then `cohort_peak(g,…)` while `BPK`/`MIX` are built
+on `GRP[p['pos']]`; and `w=clamp(games/45,0,1)` puts **77.8%** of a 10-game player's peak estimate on the
+drafted-position floor.
+
+**Lesson for the record: the seam enumerated one axis. That is hazard 7, and it is the same shape as the
+"three fit sites when there were five" error of two weeks ago.**
 
 ## IN FLIGHT
 
+**Nothing.** All four seats have stood down. The positional rebuild is the owner's and off-seat.
+
 | | |
 |---|---|
-| **#217 · engine split** | Split + pool-row exclusion implemented and seam-verified (`a94f26d`). **Not merged.** Now rebuilding the `v0surf` frozen surface, deleting its silent fallback, and re-measuring every figure on it. Then it lands. |
-| **#225 · stage 2** | Fired, queued behind #217. Derives the ND 1–64 curve and the pool level from scratch. Apples for apples. |
-| **#231 · hand-pins** | Fired, fresh seat. Four defects of one shape — see below. |
-| **#232 · ownership sidecar** | Fired, fresh seat. Makes a daily trade cost an edit rather than an engine run. |
-| **ITEM 412** | Owner's, off-seat. Retains the open design questions. |
-
-## The exclusion — what #217 has done and what it does not fix
-
-**On #217's branch `a94f26d`, not on `main` — do not grep `main` for it.**
-`_teaches_curve(p) = _in_pvc(p) and not is_pool(p)` at `rl_model.py:275`, applied at the three ±4 windows
-and the V0 kernel path, with non-vacuity wired into the selftest and proven both directions. The seat
-reports 771 pool rows excluded and 1,201 teachers remaining, with the V0 path landing on exactly 1,448 —
-which matches the ND 1–64 count in the table above, reached independently. `_grp` stays `'RD'`; `hist`
-untouched. Shipped curve truncated 99 → 64 with picks 1–64 byte-identical (seam-verified).
-
-**The contamination was real:** picks 61–64 went 286/284/284/284 → 235 once excluded. It reached the board
-through the V0 surface, not the shipped curve.
-
-**Beware the slide-up.** `_pvc_eff` slides pool rows *below* 65 into vacated slots, so picks 58–60 each
-carried 67 pool rows. The lowest fully clean pick was 57. "Picks 1–60 are clean" was false.
-
-## The `v0surf` defect — a missing halt, not fake data
-
-`data/v0surf.pkl` is a lookup table computed once at a bake and frozen so every build reads identical
-values. Its config signature includes the pick curve, so the split moved it and **the engine silently
-recomputed at build time instead of halting.** The values are the right calculation at the wrong time —
-what they are not is reproducible, and reproducibility is the whole purpose of a baseline.
-
-**Every figure #217 has reported is measured on the refit surface**, including all board hashes and mover
-counts. Precedent to replicate: the sibling `q97m` pickle had its fit path deleted so it halts.
-
-## #231 — four defects of one shape, and one of them took the app down
-
-**A value a human must retype when something moves, or a check that cannot notice it is wrong.**
-
-1. **`EXPECTED_BOARD`** pinned `fa172ac1` while the board of record was `8a38cca4`, so `ringFence()`
-   rejected the board and **every tab rendered the fail-closed panel.** Fixed at `6d8f910`; retiring the
-   hand-pin is now commissioned. **Provenance, seam-measured — it is worse for process than for
-   duration:** the pin had tracked the board correctly at every previous move. It went stale when R20's
-   board landed on `main` at `fef7f69` and was corrected hours later at `6d8f910`, both on 2026-07-28.
-   **One board move, not two, and the seam caused it** by merging a board move without checking the pin
-   that guards it. That is the argument for retiring the pin, not against it.
-2. **`release_seam.test.js` builds its fixtures from that pin**, so it passed straight through the
-   outage. Vacuity, guarding the thing that broke.
-3. **`bootstrap_env.sh` invokes bare `python3`** against a cp312-pinned lock. Has cost two seats.
-4. **The env-pin guard** checks the numpy version string and OpenBLAS hash, both identical across the
-   cp311/cp312 builds, so it cannot detect the swap it exists to detect.
+| **#217 · engine split** | **LANDED** `6634221`. Split, pool-row exclusion at five fit sites, v0surf frozen with the silent fallback deleted. |
+| **#231 · hand-pins** | **LANDED** `e3dc0be`. Four repairs plus a fifth instance, each shown failing. |
+| **#232 · ownership sidecar** | **LANDED** `4ee1716`. A trade now costs an edit. |
+| **#239 · FV Provenance** | **LANDED** `3d31692`. CI signal restored. |
+| **#225 · derivation** | Candidate values delivered at `a5e7537`, **superseded** — they ride the old positional basis. The method, the both-directions check and the site map survive. |
+| **#241 · position bar** | Drafted, **never fired**, scope was wrong. |
+| **ITEM 412** | Owner's, off-seat. |
 
 ## Landed this cycle
 
-- **R20 finalised**; Movers is a from/to comparison over eight points (`14`…`20` plus
-  `post-r19-redesign-1`). The board-identity chain, its integrity flag and the provenance bridge are gone.
-- **#222 · thirteen #139 items** (`6d8f910`): the card's weekly history, the Public navigation defects,
-  the tab tidy-up, and club totals summing in the browser — **all 16 clubs had been wrong by up to
-  +1,853.** Round review retired; Movers is the weekly-review surface.
-- **#208's three closing tasks**: panel re-pin retired, Bailey Williams override round-scoped to R15–R19,
-  movers schema bumped to 2.
-- **#207 stage 1** measurement preserved at `session_2026-07-28/item207_stage1/`, pinned to store
-  `c120cfd5` — **re-run before adopting anything from it.**
-- **RULEBOOK v2.1** — G-MONO scoped, Law-10, owner-signed.
-- Issues closed: #207, #208, #138 (obsolete), #205 (was done, never closed).
+- **#217** — the ruled split in the engine. Pool rows no longer teach the national curve, gated at all five fit
+  sites with the check **observing what each site actually sampled** rather than re-deriving it. Seam-verified:
+  breaking any one site alone fails the suite by name, and deleting a registration fails too. Board `750446d7`
+  reproduced **byte-exact on a different container** — the cross-box evidence the implementing seat could not
+  produce for itself. v0surf: 0 fits on a shipped build, HALT on an unknown signature, exactly 2 surfaces on a
+  declared refit.
+- **#231** — `EXPECTED_BOARD` **deleted, not re-pointed**; the fence reads the board of record from the bundle's
+  own stamp. Its test split into a per-run invariant and a separate `adoption_gate.test.js` that is *not* wired
+  into CI. `bootstrap_env.sh` discovers `python3.12` by name. The env-pin guard reads the dist-info WHEEL tag.
+  Plus `extract_positions.py`, which had been halting on a three-moves-stale pin. Seam-verified by perturbation:
+  tampering the bundle reds the test **and** kills the app together — which is what did not happen during the outage.
+- **#232** — ownership and pick holdings on a live lane. One edit, one command, no engine run. openpyxl **removed**
+  rather than satisfied (stdlib zip+xml, halts on an uncached cell). All 19 read sites migrated; the public tier
+  bridges name→key and **fails closed** to `⚠ unverified` rather than guessing. Seam-verified: store, both board
+  bundles and movers byte-identical; a raw-field read anywhere reds the suite.
+- **#239** — all four FV Provenance failures were **one assertion at four sites**. GREEN2 gated on four conjuncts
+  and printed three. Replaced the board proxy with live-computed `distribution_pricing_md5` / `rl_model_md5`
+  comparisons, which name the mechanism instead of inferring it. **No board id in any gating check**, so nothing
+  to edit when the board moves. 8/8 green in CI, verified from the run's own uploaded artifact.
 
-## Standing rules set or corrected this cycle
+## Corrections to the record — the register wins, and it was wrong on two counts
 
-- **One history column per landed change, not per board rebuild.** A board moves several times inside one
-  piece of work; a column each fills the dropdown with noise. **Do not ask for a label mid-job.** The
-  whole baseline effort is one change and gets one column — `Post R19 Redesign 2` when it lands.
-- **Whenever the board moves outside a round, a column is still written** — at the landing, not the build.
-- **Screen by re-running, never by reading.** Three seam errors this cycle came from inferring off a file
-  read. Every count names its denominator.
+- **The `dnp` "known-bad data" entry is WITHDRAWN.** It claimed 87–92 players who *played* carry `dnp: true` in
+  R15. **They did not play — their clubs had byes.** Seam-verified: R15 recorded 318 and R16 **319**, against
+  405–410 in complete rounds; 4 teams × ~22 ≈ 88, two consecutive rounds short by the same amount. The count was
+  real; the reading of it was invented — a figure against a denominator it had not earned, which is the fault the
+  register elsewhere warns about. The flag is factually correct. **This does not prove the flag sound**; it means
+  nobody has shown it wrong. #222's decision not to use it stands on its own reasoning.
+  **One residual, one line:** the Movers tab's `DNP` pill does not distinguish "on a bye" from "omitted". The
+  player card already sidesteps it — `history.js` deliberately refuses the bundle flag and recomputes from coverage.
+- **The Kako selftest red is NOT a data defect and is NOT FIXED.** The anchor was typed when R19 was the latest
+  round; R20 was applied, Kako scored 32, nothing re-typed it. Arithmetic: 10 @ 45.4 = 454, +32 = 486, ÷11 = 44.18,
+  exactly what the store holds. **It fell through a commissioning gap of the seam's making** — the seam called it
+  "a fifth item" for #231 while #231 independently found `extract_positions.py` and called that "the fifth instance".
+  Two different things, one label. **Still live at `one_source_selftest.py:128`. Re-commission it.** Fix by
+  round-scoping the anchor, not by retyping the number — precedent is #208 round-scoping the Bailey Williams
+  override. It is an *owner ground-truth* anchor, so it must not derive its expectation from the store.
+- **#225's pool-artifact finding was overstated.** It reported that the artifact cannot carry per-position pool
+  values, measuring `pool_value` (a position-blind scalar) and `iso_corr` (3.9%). Seam-verified against the frozen
+  V0 surface: **at pick 65 the per-position values span 446.5 (GEN_FWD) to 798.8 (RUC) — 78.9%**, comfortably more
+  than the 57% the evidence asks for. V0 is a lookup keyed `(gfut, ageR, pick)`, not a scalar times a correction.
+  The owner caught this. #225 has marked its §5 withdrawn rather than deleted.
+- **The seam's own denominator error, third of the session:** it sized the positional data job at 4,257 records by
+  filtering to the 804 active board, when the fit trains on the full cohort and the true figure is **11,264**. It
+  then told the owner 2006–2014 was 4% of the data when it is **31.8%**. The owner caught it.
 
-## Known-bad data, shipped, not this cycle's to fix
+## CI — restored to one working signal, and read it correctly
 
-**The movers bundle carries its own `dnp` flag and it is wrong.** It marks 486 of 804 players "did not
-play" in R15, a round that recorded 318 scores. Complete rounds R17–R20 recorded 410/406/405/410, so the
-tracked population that plays a full round is **405–410** — the 804 includes players no round would
-select. Against R15's 318 that puts **87–92 players who played carrying `dnp: true`.** It is "absent from the score map" dressed as a football fact. #222 correctly
-declined to use it.
+**FV Provenance is green.** The other three — Final Integration, CI Guards, Live Scoring, and their `proof-*`
+jobs — **were already red at `144cd33` and `df1b1cc`, before any of this cycle's work.** They are not attributable
+to #217, #231, #232 or #239 and nobody has been commissioned to fix them.
 
-**The baked pick prices in `ui/data/club_valuation.js` go stale when #225 lands.** #222 left them because
-a pick's price comes from the curve rather than the board — sound then, expiring soon. #232 recommends;
-the owner decides.
+**The seam broke FV Provenance by merging #217 without checking CI**, taking the signal from one-quarter working
+to zero. #239 restored it. **Check the checks before merging** — that is now a standing act, not advice.
+
+A PR will show ~1 of 20 green. That is the correct current state, not a failure of the branch under review.
+
+## Known-bad, shipped, not commissioned
+
+- **`RESULTS.json` is a committed false success signal.** It sits in the tree claiming `pass: 8/8` from the
+  `06d8af60` era, and the workflow uploads whatever is on disk if a run cannot write it. Hazard class 4. Reported
+  by #239, untouched because it was not asked for.
+- **The baked pick prices in `ui/data/club_valuation.js` go stale when the curve moves.** #232 recommends computing
+  them in the browser from the shipped curve, on #222's precedent. Owner decides; not urgent until the curve lands.
+- **The dead baked-clubs block** in the same file — nothing reads it, and the parity test proves corrupting it
+  changes nothing. A few lines whenever someone is in that file.
+- **`extract_positions.py` regeneration is stamp-only** — seam-verified content-identical, provenance `06d8af60` →
+  `8a38cca4`. Not committed, deliberately, to stay out of #232's lane. Safe to regenerate whenever.
 
 ## Owner acts outstanding
 
-1. **Adopt or reject #225's derived values** when they arrive. Separate release, own word.
-2. **The label for the baseline column** when the whole effort lands.
-3. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
-4. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-5. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-6. Referee harness scope — a fresh seat, owner-scheduled.
+1. **The positional data.** Everything waits on it.
+2. **Adopt or reject the derived values** when the re-derivation lands. Separate release, own word.
+3. **The label for the baseline column** when the whole effort lands — one column, not one per board move.
+4. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
+5. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+6. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+7. Referee harness scope — a fresh seat, owner-scheduled.
+
+## For the referee project, filed not started
+
+- **The four-field positional model** above, in the owner's words.
+- **Eligibility should set the replacement bar, and today it cannot for single-eligibility players.**
+  `y0dpp_bar` returns `None` below two eligibilities, so present position wins by default. Seam-verified: Reuben
+  Ginbey is `present=KDEF`, `eligibilities=G-DEF`, so his season is floored against **KEY_DEF 68.4** where his
+  eligibility implies **GEN_DEF 78.3** — an easier bar by 9.9. **159 of 804 have a bar mismatch; 62 are
+  single-eligibility where no mechanism can engage; 36 of those get an easier bar.** Largest gaps −11.7.
+  **Not measured: whether the floor binds, and what value actually moves.** That is 62 players whose bar comes
+  from the wrong concept — *not* 36 players known to be overvalued. Sizing it is one build and would scope the
+  referee work.
+- **The 7 live DPP data-error rows** where present position is not in the collapsed eligibility set at all:
+  Dewar, Flanders, Baker, **Langford**, **McGovern**, Langdon, Blicavs. Report-only, build continues.
+- **97 of 804** where the store assigns a position the owner's sheet does not list as eligible — **57 outright,
+  40 an extra**. #232's report at `session_2026-07-28/item232/position_crossref.txt`. Superseded by the rebuild,
+  but it is the thread that surfaced all of this.
 
 ## Parked — do not start
 
-Track D (five items, none touching the product) · the conservation gate (`gate_f5.py` cannot be wired as
-written) · #139 items 6, 7 and 19 (eligibility and forward-lens work — ITEM 412 territory, and item 7
-needs a store field that does not exist) · #139 item 8 (changes shape once #217 lands).
+Track D (five items) · the conservation gate (`gate_f5.py` cannot be wired as written) · #139 items 6, 7 and 19
+(eligibility and forward-lens — ITEM 412 territory) · #139 item 8 · the three pre-existing red workflows.
+
+## Standing norms set or corrected this cycle
+
+- **Check the checks before merging.** The seam's own miss, now a standing act.
+- **Use hands freely for read-only work** — enumeration, search, register pointer reads. That is what keeps a
+  seat's context healthy and it should be the default. **But do not delegate a load-bearing measurement and
+  report it as yours** — re-run the claim first; a hand's report is a hypothesis until reproduced.
+  **Never run engine builds in parallel:** every build imports from the single workspace at
+  `/home/claude/rl_workspace` and concurrent runs clobber each other. Fan out on reading, serialise on running.
+- **When you write a ratio, name the population both numbers come from and check they are the same population.**
+  Stated at v521 and violated by the seam twice more the same day.
+- **A guard that always fails is the same defect as one that cannot.** #231's first fix asserted
+  bundle-equals-manifest, which #217's deliberate hold made permanently red. Split by lifetime: per-run invariants
+  in the suite, release conditions at the adoption step.
 
 ## Environment carries
 
 - Containers **shallow-clone by default** — `git fetch --unshallow` before any ancestry claim.
-- **Integration hazard, hit by three branches in one day.** A rebase-merge rewrites SHAs, so a branch that
-  keeps building on already-merged history presents those commits again under their original ids; the
-  merge base rewinds past them and every touched file reads as an independent edit on both sides. Fix with
-  `git rebase --onto origin/main <old-tip>`, then **verify the replayed diff is byte-identical** before
-  pushing. **`git diff main..branch` on a stale-based branch is not a statement of what that branch
-  changed** — diff against the branch's own merge base.
-- **The seam can merge its own PRs.** The housing note describes whose credentials the merge runs under,
-  not who may click it. Direct push to main is still classifier-blocked, so pens go branch → PR →
-  rebase-merge. Ref deletion remains proxy-forbidden.
-- **`sibling_repin` rewrites history every board move** — it overwrote two `5546f278` references, #208
-  restored them, and it will do it again.
-- The register header is **one ~375KB line**. Read it with a script that windows around a match — never
-  `head` or `cat`.
+- **Bare `python3` is 3.11 against a cp312-pinned lock, and system pip is PEP 668-blocked.** `bootstrap.sh`
+  honours `RL_VENV`: build a 3.12 venv, `pip install --require-hashes --only-binary=:all: -r requirements-lock.txt`,
+  then `RL_VENV=<venv> bash bootstrap.sh`. Do not patch the script or weaken the pin. #231 repaired the script's
+  discovery; the venv is still needed here.
+- **`v0surf` HALTs on an unknown config signature. That is the design.** Regenerate deliberately via
+  `refit_v0surf.py --bake`. Do not restore a fallback or widen the accepted set.
+  Its clean-instance precondition tests a **pre-split, unreachable** board — it cannot be evaluated. Say so; do
+  not substitute.
+- **Rebase hazard:** a rebase-merge rewrites SHAs, so `git diff main..branch` on a stale-based branch is not a
+  statement of what that branch changed. Diff against the branch's own merge base, and verify the replayed diff
+  byte-identical before pushing.
+- **`sibling_repin` rewrites pins on every board move** and raises unless six structural tokens each match exactly
+  once. Anything written into its targets must survive it — #239 verified this by running its parser and repair.
+- The register header is **one ~387KB line**. Read it with a script that windows around a match — never `head` or `cat`.
 - The Actions API can exceed per-call output caps; spill to a file and parse.
+- **The seam can merge its own PRs.** Direct push to main is classifier-blocked, so pens go branch → PR →
+  rebase-merge. Ref deletion remains proxy-forbidden.
 
 ---
 
