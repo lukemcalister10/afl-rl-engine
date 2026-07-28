@@ -5,12 +5,24 @@ Proves the fail-closed forward-valuation / rl_model / config provenance fix end-
 builds the board in a fresh disposable staging copy of the checkout, with a controlled environment, and asserts
 the outcome. Runs locally and on a clean CI runner (.github/workflows/fv-provenance.yml).
 
+NO GATING CHECK HERE NAMES A BOARD ID (2026-07-28, issue #239). Four of them used to, and #217's pricing
+split — which legitimately moved the board and correctly held the reference because nothing is adopted —
+turned all four red at once (4/8) while every property they exist to prove still held. The board was
+standing in for "a normal build happened". The properties are asserted directly instead, against md5s
+computed live from the checkout, so nothing here goes stale when the board moves at #225 or at adoption.
+
+The accepted-board content comparison DOES need a board identity and keeps its pin, but it is opt-in and
+does not gate:  python3 test_fv_provenance.py --board-oracle
+
 Scenarios (audit's §7 red/green standard):
-  GREEN 1  strict canonical build (RL_FV=checkout, balanced config)         -> board 4939d740, 804/764021/9631, 0 movers
+  GREEN 1  strict canonical build (RL_FV=checkout, balanced config)         -> the loaded forward-valuation
+                                                                               and rl_model are byte-identical
+                                                                               to this checkout
   GREEN 2  provenance record emitted before export                          -> RL_FV, resolved dir, FV identity,
                                                                                dp path+hash, rl_model path+hash,
                                                                                config_manifest path+identity
-  RED 1    stale 21d530bf at the FORMER ambient workspace path              -> ignored (checkout selected); never d7a95e8d
+  RED 1    stale 21d530bf at the FORMER ambient workspace path              -> ignored: the loaded dp is the
+                                                                               checkout's, not the stale fixture
   RED 2    explicit RL_FV pointed at a stale tree (dp 21d530bf)             -> Guard 5 loaded-path HALT before generation
   RED 3    a DIFFERENT imported FV source drifts (conditional_prior.py)     -> Guard 5 checkout HALT (whole set protected)
   RED 4    missing / mismatched config_manifest in bake mode               -> HALT before board (no silent continue)
@@ -132,6 +144,61 @@ def _board_facts(path):
             'sheezel': a.get('harry-sheezel', {}).get('v')}
 
 
+# ---- WHAT THE PROVENANCE CHECKS ASSERT, AND WHY IT IS NOT A BOARD ID -------------------------------
+# Until 2026-07-28 four checks (GREEN1, GREEN2, RED1, RED5) gated on `board_md5 == BOARD_MD5_GOOD`. The
+# board id was standing in for "a normal build happened", so when #217's pricing split legitimately moved
+# the board all four went red at once — 4/8 — while every property they exist to prove still held. The
+# board is EVIDENCE, not the property.
+#
+# The properties are observable directly, in the provenance record the build emits, against md5s computed
+# LIVE from the checkout at test time. Nothing below is pinned, so none of it goes stale when the board
+# moves at #225 or at adoption.
+def _realpath(p):
+    return os.path.realpath(p) if p else ''
+
+
+def _under(child, parent):
+    """True when `child` is `parent` or sits beneath it. A real path test — the retired-path check used
+    substring containment, which both false-positives on a sibling like /home/claude/rl_after_old and
+    silently returns None when the path is empty."""
+    c, p = _realpath(child), _realpath(parent)
+    if not c or not p:
+        return False
+    return c == p or c.startswith(p.rstrip(os.sep) + os.sep)
+
+
+def _fv_selection(prov):
+    """Was the CHECKED-OUT forward-valuation the thing actually loaded? Answered from the emitted record
+    against the live checkout, never against a remembered value."""
+    p = prov or {}
+    want_dir = os.path.join(REPO, 'engine', 'forward_valuation')
+    live_dp = _md5(os.path.join(want_dir, 'distribution_pricing.py'))
+    stale_dp = _md5(STALE_DP) if os.path.exists(STALE_DP) else None
+    got_dp = p.get('distribution_pricing_md5')
+    return {'dir_ok': _realpath(p.get('resolved_fv_dir')) == _realpath(want_dir),
+            'dp_ok': bool(got_dp) and got_dp == live_dp,
+            'dp_is_stale': bool(got_dp) and got_dp == stale_dp,
+            'got_dp': (got_dp or '')[:8], 'live_dp': live_dp[:8],
+            'resolved': p.get('resolved_fv_dir')}
+
+
+def _rl_model_selection(prov):
+    """Was the VERIFIED rl_model used — the checkout's bytes, not something planted on a retired path?"""
+    p = prov or {}
+    live = _md5(os.path.join(REPO, 'engine', 'rl_after', 'rl_model.py'))
+    got = p.get('rl_model_md5')
+    path = p.get('rl_model_path') or ''
+    return {'md5_ok': bool(got) and got == live, 'path': path,
+            'not_retired': bool(path) and not _under(path, RL_AFTER_LINK),
+            'got': (got or '')[:8], 'live': live[:8]}
+
+
+def _built(r):
+    """A canonical build completed and wrote a board. Replaces `board_md5 == <pin>` as the green control:
+    it says the build succeeded without saying which board this month's engine produces."""
+    return r['rc'] == 0 and r['board_md5'] is not None
+
+
 RESULTS = []
 def record(name, ok, detail):
     RESULTS.append({'name': name, 'ok': bool(ok), 'detail': detail})
@@ -140,6 +207,42 @@ def record(name, ok, detail):
 
 # ============================ GREEN 1 — strict canonical build + full-vector zero movers ============================
 def green1():
+    """The green control: an explicit RL_FV=checkout build succeeds and demonstrably loaded the checkout.
+
+    It no longer asserts WHICH board comes out. That was the stand-in for "a normal build happened", and it
+    made this check a hostage to every legitimate engine change. What it proves now is stronger and is the
+    thing the suite is actually for: the forward-valuation that got loaded is the one in this checkout,
+    byte-for-byte, and the rl_model with it."""
+    r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
+    fv, rlm = _fv_selection(r['prov']), _rl_model_selection(r['prov'])
+    built = _built(r)
+    ok = built and fv['dir_ok'] and fv['dp_ok'] and not fv['dp_is_stale'] and rlm['md5_ok']
+    _tail = '' if ok else '  ::STDERR_TAIL:: ' + ' | '.join((r['stderr'] or '').strip().splitlines()[-4:])
+    record('GREEN1_checkout_fv_selected', ok,
+           "built=%s(rc=%s board=%s) fv_dir_is_checkout=%s loaded_dp=%s/checkout_dp=%s dp_is_stale_fixture=%s "
+           "loaded_rl_model=%s/checkout_rl_model=%s%s"
+           % (built, r['rc'], (r['board_md5'] or '')[:8], fv['dir_ok'], fv['got_dp'], fv['live_dp'],
+              fv['dp_is_stale'], rlm['got'], rlm['live'], _tail))
+    shutil.rmtree(r['base'], ignore_errors=True)
+    return r
+
+
+# ==================== BOARD-CONTENT ORACLE — opt-in, NOT one of the gating checks ====================
+def board_oracle():
+    """Does the canonical build still reproduce the ACCEPTED board, value for value?
+
+    This one genuinely cannot be expressed without a board identity: "has any player's value moved since
+    the accepted reference" has no meaning except against a specific accepted board, and the reference
+    vector is that board. So it keeps its pin — and it is deliberately NOT in the gating list, because its
+    expected answer is *false* for the whole of a baseline effort. #217's split moved the board on purpose
+    and #225 will move it again; a check that reads "red" throughout is the shape issue #231 removed.
+
+    Run it when the answer is supposed to be yes:  python3 test_fv_provenance.py --board-oracle
+
+    The pinned tokens below (BOARD_MD5_GOOD, the reference filename, the three aggregates and the
+    expect-string) are ALSO the six structural anchors sibling_repin._repair_fv_oracle rewrites on every
+    board move, and it raises SiblingRepinError unless each matches exactly once. Do not delete or
+    duplicate them — removing the pin from this file breaks the machine that maintains it."""
     r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
     ok = (r['rc'] == 0 and r['board_md5'] == BOARD_MD5_GOOD)
     facts = _board_facts(r['board_path']) if r['board_path'] else {}
@@ -154,11 +257,15 @@ def green1():
         movers = [k for k in both if ref[k] != built[k]]
         only_ref = set(ref) - set(built); only_built = set(built) - set(ref)
         ok = ok and len(movers) == 0 and not only_ref and not only_built and len(both) == 804
-    _tail = '' if ok else '  ::STDERR_TAIL:: ' + ' | '.join((r['stderr'] or '').strip().splitlines()[-4:])
-    record('GREEN1_strict_board_4939d740_zero_movers', ok,
-           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s (expect 4939d740/804/767198/9655/0)%s"
+    else:
+        # The reference must exist or this proves nothing — previously its absence silently skipped the
+        # whole vector comparison and the check still passed on the aggregates alone.
+        ok = False
+        movers = None
+    record('ORACLE_accepted_board_zero_movers', ok,
+           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect 4939d740/804/767198/9655/0)"
            % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'),
-              (len(movers) if movers is not None else '?'), _tail))
+              (len(movers) if movers is not None else '?'), os.path.exists(ref_path)))
     shutil.rmtree(r['base'], ignore_errors=True)
     return r
 
@@ -171,12 +278,19 @@ def green2():
             'distribution_pricing_path', 'distribution_pricing_md5', 'rl_model_path', 'rl_model_md5',
             'config_manifest_path', 'config_manifest_identity']
     present = all(p.get(k) for k in need)
+    missing = [k for k in need if not p.get(k)]
     matched = (p.get('fv_identity') == p.get('fv_identity_expected'))
     marker = 'PROVENANCE ' in (r['stderr'] or '')
-    ok = present and matched and marker and r['board_md5'] == BOARD_MD5_GOOD
+    built = _built(r)
+    # EVERY conjunct below appears in the record string. The previous version gated on four conditions and
+    # printed three, so when it failed on the unprinted one it reported all-True and failed anyway — which
+    # cost a full diagnosis cycle before anyone could see the cause. A check must name its own failure.
+    ok = present and matched and marker and built
     record('GREEN2_provenance_record', ok,
-           "all_fields=%s fv_identity==pin=%s stderr_marker=%s (fv=%s dp=%s rlm=%s cfg=%s)"
-           % (present, matched, marker, (p.get('fv_identity') or '')[:8],
+           "all_fields=%s%s fv_identity==expected=%s stderr_marker=%s built=%s(rc=%s board=%s) "
+           "(fv=%s dp=%s rlm=%s cfg=%s)"
+           % (present, ('' if present else ' missing=%s' % ','.join(missing)), matched, marker,
+              built, r['rc'], (r['board_md5'] or '')[:8], (p.get('fv_identity') or '')[:8],
               (p.get('distribution_pricing_md5') or '')[:8], (p.get('rl_model_md5') or '')[:8],
               (p.get('config_manifest_identity') or '')[:8]))
     shutil.rmtree(r['base'], ignore_errors=True)
@@ -193,13 +307,20 @@ def red1():
     # canonical build with RL_FV UNSET -> must resolve to the CHECKOUT, ignoring the stale ambient copy
     r = _run_build({}, rl_fv=None)
     after = _snapshot_guarded()
-    not_bad = (r['board_md5'] != None and not str(r['board_md5']).startswith(BAD_PREFIX))
-    is_good = (r['board_md5'] == BOARD_MD5_GOOD)
+    fv = _fv_selection(r['prov'])
+    # The property is "the stale ambient module was NOT the one loaded", and the provenance record answers
+    # that directly: the loaded distribution_pricing is byte-identical to the checkout's and is not the
+    # stale fixture. That is the mechanism itself, where the old board-id comparison was an inference from
+    # a downstream artifact — and unlike the board id, neither value moves when the engine changes.
+    not_bad = (r['board_md5'] is not None and not str(r['board_md5']).startswith(BAD_PREFIX))
     files_unchanged = (before == after)
-    ok = stale_here and is_good and not_bad and files_unchanged
+    ok = (stale_here and _built(r) and fv['dir_ok'] and fv['dp_ok']
+          and not fv['dp_is_stale'] and not_bad and files_unchanged)
     record('RED1_stale_ambient_ignored', ok,
-           "stale_seeded=%s board=%s (must be 4939d740, never d7a95e8d) files_unchanged=%s"
-           % (stale_here, r['board_md5'], files_unchanged))
+           "stale_seeded=%s built=%s(rc=%s) loaded_dp=%s/checkout_dp=%s dp_is_stale_fixture=%s "
+           "fv_dir_is_checkout=%s board=%s never_%s=%s files_unchanged=%s"
+           % (stale_here, _built(r), r['rc'], fv['got_dp'], fv['live_dp'], fv['dp_is_stale'],
+              fv['dir_ok'], (r['board_md5'] or '')[:8], BAD_PREFIX, not_bad, files_unchanged))
     shutil.rmtree(r['base'], ignore_errors=True)
 
 
@@ -352,15 +473,18 @@ def red5():
         # canonical build; rl_model must resolve from the verified staging/checkout, NOT /home/claude/rl_after
         r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
         after = _snapshot_guarded()
-        prov = r['prov'] or {}
-        rlm_path = prov.get('rl_model_path') or ''
-        not_foreign = (os.path.abspath(RL_AFTER_LINK) not in os.path.abspath(rlm_path)) if rlm_path else None
-        # strongest proof: the build SUCCEEDED with the good board (a crashing foreign import would have failed it)
-        ok = (r['board_md5'] == BOARD_MD5_GOOD and 'provenance breach' not in (r['stderr'] or '')
-              and not_foreign and (before == after))
+        rlm = _rl_model_selection(r['prov'])
+        no_breach = 'provenance breach' not in (r['stderr'] or '')
+        # Strongest proof: the build SUCCEEDED at all. The planted rl_model raises on import, so any build
+        # that completes did not import it — that holds whatever board the engine currently produces, which
+        # is why this no longer compares a board id. Additionally the record must name a verified rl_model
+        # (checkout bytes) that does not sit under the retired path.
+        ok = (_built(r) and no_breach and rlm['not_retired'] and rlm['md5_ok'] and (before == after))
         record('RED5_retired_rl_after_path_ignored', ok,
-               "board=%s rl_model_path=%s (not /home/claude/rl_after=%s) files_unchanged=%s"
-               % (r['board_md5'], rlm_path, not_foreign, before == after))
+               "built=%s(rc=%s board=%s) no_breach_on_stderr=%s rl_model_path=%s not_under_%s=%s "
+               "loaded_rl_model=%s/checkout_rl_model=%s files_unchanged=%s"
+               % (_built(r), r['rc'], (r['board_md5'] or '')[:8], no_breach, rlm['path'] or '<none>',
+                  RL_AFTER_LINK, rlm['not_retired'], rlm['got'], rlm['live'], before == after))
         shutil.rmtree(r['base'], ignore_errors=True)
     finally:
         try: os.remove(foreign)
@@ -414,12 +538,21 @@ def red6():
 
 
 def main():
+    # The gating suite asserts PROVENANCE properties only — none of them names a board id, so the suite
+    # does not need editing when the board moves at #225 or at adoption. `--board-oracle` additionally runs
+    # the accepted-board content comparison, whose expected answer is only "yes" once a board is adopted.
+    oracle = '--board-oracle' in sys.argv[1:]
     print("=" * 90)
     print("FORWARD-VALUATION PROVENANCE RED/GREEN SUITE   repo=%s" % REPO)
     print("  pinned fv identity: %s" % json.load(open(os.path.join(REPO, 'data', 'expected_boot.json'))).get('fv'))
+    print("  mode: provenance%s" % (" + accepted-board oracle" if oracle else
+                                    "  (board-content oracle NOT run — pass --board-oracle)"))
     print("=" * 90)
     os.makedirs(CLAUDE, exist_ok=True)
-    for fn in (green1, green2, red1, red2, red3, red4, red5, red6):
+    checks = (green1, green2, red1, red2, red3, red4, red5, red6)
+    if oracle:
+        checks = checks + (board_oracle,)
+    for fn in checks:
         try:
             fn()
         except Exception as e:
