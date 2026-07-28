@@ -23,3 +23,12 @@
 {"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 19}
 {"event": "STATUS", "round": 19, "status": "FINALIZED"}
 {"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R19.json", "round": 19}
+{"board_md5_after": "8a38cca44f53152090cb3df3f78bd47e", "event": "CORE_COMMITTED", "reconciled": false, "round": 20, "txn_id": "txn_catchup_r20"}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZATION_INCOMPLETE"}
+{"event": "FINALIZATION_INCOMPLETE", "round": 20, "why": "validation failed: movers bundle board-identity chain broken"}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZATION_INCOMPLETE"}
+{"event": "FINALIZATION_INCOMPLETE", "round": 20, "why": "validation failed: movers bundle board-identity chain broken"}

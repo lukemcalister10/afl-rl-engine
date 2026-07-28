@@ -13,14 +13,15 @@
     {
       "name": "Bailey Williams",
       "rule": "by_round_score",
-      "reason": "Owner ruling 2026-07-20: two active players share the display name 'Bailey Williams', disambiguated by (round, score) so each listed score reaches the correct STABLE KEY; the two never collapse. bailey-williams-wb = Bailey Williams — AFL club Western Bulldogs (afl_club); AFFL ownership team Collingwood Magpies (affl_team): R18=55, R19=137. bailey-williams-wc = Bailey J. Williams — AFL club West Coast (afl_club); AFFL ownership team Sydney Swans (affl_team): R16=67, R17=82, R18=100, R19=84. (The AFL clubs are Western Bulldogs and West Coast; Collingwood and Sydney are the AFFL ownership teams, not the players' clubs.)",
+      "reason": "Owner ruling 2026-07-20: two active players share the display name 'Bailey Williams', disambiguated by (round, score) so each listed score reaches the correct STABLE KEY; the two never collapse. bailey-williams-wb = Bailey Williams — AFL club Western Bulldogs (afl_club); AFFL ownership team Collingwood Magpies (affl_team): R18=55, R19=137. bailey-williams-wc = Bailey J. Williams — AFL club West Coast (afl_club); AFFL ownership team Sydney Swans (affl_team): R16=67, R17=82, R18=100, R19=84. (The AFL clubs are Western Bulldogs and West Coast; Collingwood and Sydney are the AFFL ownership teams, not the players' clubs.)  ||  R20 ADDENDUM (owner ruling 2026-07-28, ITEM 208): R20=87 -> bailey-williams-wb added. The R20 export writes the two players APART ('Bailey Williams' 87 and 'Bailey J. Williams' 80), matching the store display names exactly, so the bare ActivePoolResolver resolves both unaided; this rule intercepts the name BEFORE the resolver (round_catchup.py:85-92) and therefore HALTED R20 as override-unmapped until this line was added. The seam has since measured that ZERO display names in the store are shared by two active players — the collision this rule patches was a FootyWire export artifact that the owner's current export no longer produces. This mapping therefore carries a STANDING COST (one hand-added line per round, forever) with no remaining justification. Retiring or round-scoping this rule is filed as the first act after R20 lands (owner word 2026-07-28); it is sequenced behind R20 only because changing course mid-flight costs more than it saves.",
       "map": {
         "16|67": "bailey-williams-wc",
         "17|82": "bailey-williams-wc",
         "18|100": "bailey-williams-wc",
         "18|55": "bailey-williams-wb",
         "19|137": "bailey-williams-wb",
-        "19|84": "bailey-williams-wc"
+        "19|84": "bailey-williams-wc",
+        "20|87": "bailey-williams-wb"
       }
     }
   ]

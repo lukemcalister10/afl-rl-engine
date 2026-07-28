@@ -1,0 +1,805 @@
+key,name,club,affl_team,pos,previous_round,current_round,played,score,prev_value,cur_value,value_change,value_change_pct,prev_rank,cur_rank,rank_change,prev_pos_rank,cur_pos_rank,pos_rank_change
+aaron-cadman,Aaron Cadman,GWS,Richmond Tigers,Key Fwd,19,20,PLAYED,47.0,2175,1842,-333,-15.31,102,136,-34,5,9,-4
+aaron-naughton,Aaron Naughton,Western Bulldogs,Sydney Swans,Key Fwd,19,20,PLAYED,81.0,1407,1450,43,3.06,178,178,0,19,20,-1
+adam-cerra,Adam Cerra,Carlton,Adelaide Crows,Mid,19,20,PLAYED,53.0,1194,1099,-95,-7.96,201,219,-18,83,93,-10
+adam-saad,Adam Saad,Carlton,Geelong Cats,Def,19,20,DNP,DNP,614,601,-13,-2.12,326,333,-7,69,65,4
+adam-sweid,Adam Sweid,Fremantle,Sydney Swans,Fwd,19,20,DNP,DNP,579,555,-24,-4.15,344,359,-15,44,44,0
+adam-treloar,Adam Treloar,Western Bulldogs,West Coast Eagles,Mid,19,20,DNP,DNP,627,615,-12,-1.91,320,327,-7,116,127,-11
+aidan-corr,Aidan Corr,North Melbourne,Geelong Cats,Key Def,19,20,PLAYED,69.0,49,51,2,4.08,722,719,3,80,82,-2
+aidan-johnson,Aidan Johnson,Melbourne,Free agents,Key Fwd,19,20,DNP,DNP,73,68,-5,-6.85,696,702,-6,90,91,-1
+aidan-schubert,Aidan Schubert,Hawthorn,Fremantle Dockers,Key Fwd,19,20,DNP,DNP,623,572,-51,-8.19,321,350,-29,46,46,0
+aiden-riddle,Aiden Riddle,Fremantle,Fremantle Dockers,Ruck,19,20,DNP,DNP,446,439,-7,-1.57,395,403,-8,39,42,-3
+alex-davies,Alex Davies,Gold Coast,Western Bulldogs,Mid,19,20,DNP,DNP,480,477,-3,-0.62,377,392,-15,127,139,-12
+alex-dodson,Alex Dodson,St Kilda,Hawthorn Hawks,Ruck,19,20,DNP,DNP,455,454,-1,-0.22,390,399,-9,38,40,-2
+alex-neal-bullen,Alex Neal-Bullen,Adelaide,West Coast Eagles,Fwd,19,20,PLAYED,65.0,442,420,-22,-4.98,399,410,-11,53,54,-1
+alex-pearce,Alex Pearce,Fremantle,Geelong Cats,Key Def,19,20,PLAYED,54.0,38,39,1,2.63,742,741,1,84,86,-2
+alex-van-wyk,Alex Van Wyk,Port Adelaide,Adelaide Crows,Ruck,19,20,DNP,DNP,581,573,-8,-1.38,339,346,-7,30,32,-2
+aliir-aliir,Aliir Aliir,Port Adelaide,North Melbourne Kangaroos,Key Def,19,20,PLAYED,66.0,1005,969,-36,-3.58,231,245,-14,20,22,-2
+alix-tauru,Alix Tauru,St Kilda,Western Bulldogs,Key Def,19,20,DNP,DNP,1527,1558,31,2.03,163,161,2,12,13,-1
+andrew-brayshaw,Andrew Brayshaw,Fremantle,St Kilda Saints,Mid,19,20,PLAYED,91.0,3002,3108,106,3.53,57,59,-2,34,34,0
+andrew-mcgrath,Andrew McGrath,Essendon,Geelong Cats,Def,19,20,PLAYED,78.0,1118,1132,14,1.25,209,212,-3,44,38,6
+andy-moniz-wakefield,Andy Moniz-Wakefield,Melbourne,West Coast Eagles,Fwd,19,20,DNP,DNP,46,46,0,0.0,728,729,-1,157,156,1
+angus-anderson,Angus Anderson,Collingwood,North Melbourne Kangaroos,Mid,19,20,PLAYED,57.0,192,204,12,6.25,579,565,14,161,169,-8
+angus-clarke,Angus Clarke,Essendon,Carlton Blues,Def,19,20,PLAYED,53.0,761,797,36,4.73,280,280,0,60,53,7
+angus-hastie,Angus Hastie,St Kilda,Richmond Tigers,Def,19,20,DNP,DNP,333,332,-1,-0.3,458,459,-1,99,91,8
+angus-sheldrick,Angus Sheldrick,Sydney,Western Bulldogs,Mid,19,20,DNP,DNP,809,809,0,0.0,274,279,-5,102,111,-9
+anthony-caminiti,Anthony Caminiti,St Kilda,Collingwood Magpies,Key Fwd,19,20,PLAYED,51.0,1077,1085,8,0.74,216,222,-6,26,27,-1
+archer-day-wicks,Archer Day-Wicks,Essendon,Adelaide Crows,Fwd,19,20,PLAYED,37.0,381,389,8,2.1,429,424,5,64,60,4
+archer-reid,Archer Reid,West Coast,Melbourne Demons,Key Fwd,19,20,DNP,DNP,842,851,9,1.07,269,270,-1,35,36,-1
+archie-ludowyke,Archie Ludowyke,Adelaide,Fremantle Dockers,Key Fwd,19,20,DNP,DNP,354,310,-44,-12.43,445,488,-43,58,63,-5
+archie-may,Archie May,Essendon,Western Bulldogs,Key Fwd,19,20,DNP,DNP,477,518,41,8.6,380,375,5,51,51,0
+archie-perkins,Archie Perkins,Essendon,Melbourne Demons,Fwd,19,20,DNP,DNP,298,302,4,1.34,490,491,-1,80,78,2
+archie-roberts,Archie Roberts,Essendon,St Kilda Saints,Def,19,20,PLAYED,79.0,5006,4942,-64,-1.28,14,16,-2,2,2,0
+arthur-jones,Arthur Jones,Western Bulldogs,Adelaide Crows,Fwd,19,20,PLAYED,42.0,126,127,1,0.79,631,635,-4,120,124,-4
+asher-eastham,Asher Eastham,Gold Coast,Free agents,Fwd,19,20,DNP,DNP,187,183,-4,-2.14,582,588,-6,104,104,0
+ashton-moir,Ashton Moir,Carlton,St Kilda Saints,Fwd,19,20,DNP,DNP,224,295,71,31.7,542,496,46,91,80,11
+avery-thomas,Avery Thomas,Gold Coast,Melbourne Demons,Def,19,20,DNP,DNP,501,483,-18,-3.59,372,388,-16,82,78,4
+bailey-banfield,Bailey Banfield,Fremantle,St Kilda Saints,Fwd,19,20,DNP,DNP,11,43,32,290.91,787,735,52,172,160,12
+bailey-dale,Bailey Dale,Western Bulldogs,Geelong Cats,Def,19,20,DNP,DNP,2377,2376,-1,-0.04,86,89,-3,13,14,-1
+bailey-humphrey,Bailey Humphrey,Gold Coast,Western Bulldogs,Fwd,19,20,PLAYED,89.0,2121,2325,204,9.62,107,91,16,14,11,3
+bailey-laurie,Bailey Laurie,Melbourne,Free agents,Fwd,19,20,PLAYED,61.0,72,70,-2,-2.78,698,700,-2,147,148,-1
+bailey-macdonald,Bailey Macdonald,Hawthorn,Western Bulldogs,Def,19,20,PLAYED,49.0,171,162,-9,-5.26,595,613,-18,127,122,5
+bailey-scott,Bailey Scott,North Melbourne,Free agents,Mid,19,20,PLAYED,13.0,33,30,-3,-9.09,752,765,-13,189,206,-17
+bailey-smith,Bailey Smith,Geelong,Geelong Cats,Mid,19,20,PLAYED,96.0,5882,5942,60,1.02,10,10,0,7,7,0
+bailey-williams-wb,Bailey Williams,Western Bulldogs,Collingwood Magpies,Def,19,20,PLAYED,87.0,753,771,18,2.39,285,289,-4,63,57,6
+bailey-williams-wc,Bailey J. Williams,West Coast,Sydney Swans,Ruck,19,20,PLAYED,80.0,2037,2057,20,0.98,118,111,7,10,10,0
+balyn-o-brien,Balyn O'Brien,Port Adelaide,Free agents,Def,19,20,PLAYED,1.0,272,300,28,10.29,507,493,14,107,99,8
+bayley-fritsch,Bayley Fritsch,Melbourne,Geelong Cats,Fwd,19,20,PLAYED,96.0,188,246,58,30.85,580,528,52,103,86,17
+beau-addinsall,Beau Addinsall,Gold Coast,Fremantle Dockers,Mid,19,20,PLAYED,62.0,1308,1364,56,4.28,191,187,4,79,81,-2
+beau-mccreery,Beau McCreery,Collingwood,West Coast Eagles,Fwd,19,20,PLAYED,72.0,193,194,1,0.52,576,572,4,102,96,6
+ben-ainsworth,Ben Ainsworth,Carlton,Brisbane Lions,Fwd,19,20,PLAYED,69.0,299,312,13,4.35,488,482,6,79,74,5
+ben-camporeale,Ben Camporeale,Carlton,Fremantle Dockers,Mid,19,20,DNP,DNP,327,290,-37,-11.31,466,498,-32,145,159,-14
+ben-jepson,Ben Jepson,Gold Coast,Free agents,Mid,19,20,DNP,DNP,11,11,0,0.0,788,788,0,191,209,-18
+ben-keays,Ben Keays,Adelaide,Adelaide Crows,Fwd,19,20,PLAYED,55.0,453,443,-10,-2.21,392,402,-10,52,51,1
+ben-king,Ben King,Gold Coast,Sydney Swans,Key Fwd,19,20,PLAYED,61.0,331,341,10,3.02,460,455,5,63,59,4
+ben-long,Ben Long,Gold Coast,Richmond Tigers,Fwd,19,20,PLAYED,40.0,32,31,-1,-3.12,755,759,-4,167,166,1
+ben-mckay,Ben McKay,Essendon,West Coast Eagles,Key Def,19,20,PLAYED,36.0,46,48,2,4.35,729,723,6,81,83,-2
+ben-miller,Ben Miller,Richmond,Sydney Swans,Key Def,19,20,DNP,DNP,1143,1145,2,0.17,206,208,-2,17,18,-1
+ben-murphy,Ben Murphy,Brisbane,North Melbourne Kangaroos,Def,19,20,DNP,DNP,238,232,-6,-2.52,533,543,-10,116,110,6
+benny-barrett,Benny Barrett,Port Adelaide,Free agents,Fwd,19,20,DNP,DNP,125,124,-1,-0.8,632,637,-5,121,125,-4
+billy-cootee,Billy Cootee,Sydney,Essendon Bombers,Mid,19,20,PLAYED,53.0,89,74,-15,-16.85,673,696,-23,177,193,-16
+billy-dowling,Billy Dowling,Adelaide,Essendon Bombers,Fwd,19,20,DNP,DNP,124,192,68,54.84,634,578,56,123,98,25
+billy-frampton,Billy Frampton,Collingwood,Brisbane Lions,Key Def,19,20,PLAYED,51.0,105,92,-13,-12.38,655,670,-15,73,73,0
+billy-wilson,Billy Wilson,Carlton,Western Bulldogs,Def,19,20,PLAYED,87.0,174,915,741,425.86,592,257,335,125,46,79
+blake-acres,Blake Acres,Carlton,Brisbane Lions,Mid,19,20,PLAYED,92.0,214,244,30,14.02,553,532,21,156,165,-9
+blake-hardwick,Blake Hardwick,Hawthorn,Port Adelaide Power,Def,19,20,PLAYED,95.0,632,670,38,6.01,318,313,5,68,62,6
+blake-howes,Blake Howes,Melbourne,Essendon Bombers,Def,19,20,PLAYED,71.0,334,332,-2,-0.6,456,460,-4,98,92,6
+blake-thredgold,Blake Thredgold,North Melbourne,Fremantle Dockers,Key Def,19,20,DNP,DNP,541,562,21,3.88,362,354,8,30,30,0
+bo-allan,Bo Allan,West Coast,Melbourne Demons,Def,19,20,PLAYED,48.0,1193,1185,-8,-0.67,202,201,1,41,36,5
+bobby-hill,Bobby Hill,Collingwood,West Coast Eagles,Fwd,19,20,DNP,DNP,57,46,-11,-19.3,711,730,-19,152,157,-5
+bodhi-uwland,Bodhi Uwland,Gold Coast,Port Adelaide Power,Def,19,20,PLAYED,78.0,3812,3794,-18,-0.47,34,36,-2,5,5,0
+bodie-ryan,Bodie Ryan,Hawthorn,Collingwood Magpies,Def,19,20,DNP,DNP,329,322,-7,-2.13,464,471,-7,102,94,8
+bradley-close,Bradley Close,Geelong,Geelong Cats,Fwd,19,20,PLAYED,86.0,29,31,2,6.9,763,760,3,171,167,4
+bradley-hill,Bradley Hill,St Kilda,Port Adelaide Power,Mid,19,20,PLAYED,114.0,1255,830,-425,-33.86,196,276,-80,23,109,-86
+brady-hough,Brady Hough,West Coast,Essendon Bombers,Def,19,20,PLAYED,91.0,331,361,30,9.06,461,441,20,100,86,14
+braeden-campbell,Braeden Campbell,Sydney,Essendon Bombers,Def,19,20,PLAYED,84.0,374,332,-42,-11.23,434,461,-27,92,93,-1
+brandon-starcevich,Brandon Starcevich,Brisbane,Melbourne Demons,Def,19,20,PLAYED,45.0,42,43,1,2.38,736,736,0,159,143,16
+brandon-walker,Brandon Walker,Fremantle,Port Adelaide Power,Def,19,20,DNP,DNP,94,90,-4,-4.26,667,672,-5,143,135,8
+brandon-zerk-thatcher,Brandon Zerk-Thatcher,Essendon,Free agents,Key Def,19,20,PLAYED,30.0,119,86,-33,-27.73,638,679,-41,71,75,-4
+brayden-cook,Brayden Cook,Adelaide,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,899,901,2,0.22,253,262,-9,96,106,-10
+brayden-fiorini,Brayden Fiorini,Essendon,Brisbane Lions,Mid,19,20,DNP,DNP,282,278,-4,-1.42,497,508,-11,148,160,-12
+brayden-george,Brayden George,North Melbourne,Richmond Tigers,Fwd,19,20,DNP,DNP,317,314,-3,-0.95,474,481,-7,73,73,0
+brayden-maynard,Brayden Maynard,Collingwood,North Melbourne Kangaroos,Def,19,20,PLAYED,59.0,782,640,-142,-18.16,277,321,-44,59,64,-5
+brennan-cox,Brennan Cox,Fremantle,Sydney Swans,Key Def,19,20,DNP,DNP,372,376,4,1.08,435,435,0,39,39,0
+brent-daniels,Brent Daniels,GWS,Essendon Bombers,Fwd,19,20,DNP,DNP,1376,1392,16,1.16,183,185,-2,22,20,2
+brodie-grundy,Brodie Grundy,Sydney,St Kilda Saints,Ruck,19,20,PLAYED,135.0,4295,4377,82,1.91,21,21,0,3,3,0
+brodie-kemp,Brodie Kemp,Carlton,Geelong Cats,Key Fwd,19,20,PLAYED,68.0,720,735,15,2.08,296,297,-1,38,38,0
+brody-mihocek,Brody Mihocek,Melbourne,Brisbane Lions,Key Fwd,19,20,DNP,DNP,11,10,-1,-9.09,789,791,-2,101,100,1
+bruce-reville,Bruce Reville,Brisbane,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,72,73,1,1.39,699,697,2,182,194,-12
+buku-khamis,Buku Khamis,Western Bulldogs,Brisbane Lions,Key Def,19,20,PLAYED,76.0,85,181,96,112.94,677,594,83,75,61,14
+caiden-cleary,Caiden Cleary,Sydney,Carlton Blues,Fwd,19,20,DNP,DNP,501,496,-5,-1.0,373,381,-8,48,48,0
+caleb-daniel,Caleb Daniel,North Melbourne,Port Adelaide Power,Def,19,20,PLAYED,87.0,1549,1511,-38,-2.45,160,166,-6,34,30,4
+caleb-graham,Caleb Graham,Gold Coast,Free agents,Key Def,19,20,DNP,DNP,62,61,-1,-1.61,703,708,-5,78,80,-2
+caleb-lewis,Caleb Lewis,Gold Coast,Free agents,Key Fwd,19,20,PLAYED,1.0,207,193,-14,-6.76,558,575,-17,76,82,-6
+caleb-may,Caleb May,Western Bulldogs,Melbourne Demons,Ruck,19,20,DNP,DNP,581,573,-8,-1.38,340,347,-7,31,33,-2
+caleb-serong,Caleb Serong,Fremantle,Western Bulldogs,Mid,19,20,PLAYED,118.0,4580,4691,111,2.42,19,18,1,13,12,1
+caleb-windsor,Caleb Windsor,Melbourne,Western Bulldogs,Mid,19,20,DNP,DNP,1521,1552,31,2.04,165,162,3,70,73,-3
+callum-ah-chee,Callum Ah Chee,Adelaide,Geelong Cats,Fwd,19,20,DNP,DNP,84,86,2,2.38,678,680,-2,139,140,-1
+callum-brown-ire,Callum M. Brown,GWS,St Kilda Saints,Fwd,19,20,PLAYED,30.0,56,51,-5,-8.93,712,720,-8,153,153,0
+callum-coleman-jones,Callum Coleman-Jones,North Melbourne,Free agents,Key Fwd,19,20,DNP,DNP,42,39,-3,-7.14,737,742,-5,97,96,1
+callum-mills,Callum Mills,Sydney,Collingwood Magpies,Def,19,20,PLAYED,88.0,2301,2229,-72,-3.13,91,97,-6,16,15,1
+callum-wilkie,Callum Wilkie,St Kilda,North Melbourne Kangaroos,Key Def,19,20,PLAYED,81.0,3634,3599,-35,-0.96,40,43,-3,2,4,-2
+calsher-dear,Calsher Dear,Hawthorn,Collingwood Magpies,Key Fwd,19,20,DNP,DNP,962,971,9,0.94,238,244,-6,32,33,-1
+cameron-mackenzie,Cameron Mackenzie,Hawthorn,Western Bulldogs,Mid,19,20,PLAYED,111.0,1616,2001,385,23.82,152,120,32,66,62,4
+cameron-nairn,Cameron Nairn,Hawthorn,Hawthorn Hawks,Fwd,19,20,DNP,DNP,767,735,-32,-4.17,279,298,-19,34,36,-2
+cameron-rayner,Cameron Rayner,Brisbane,Geelong Cats,Fwd,19,20,PLAYED,87.0,738,870,132,17.89,290,268,22,37,30,7
+cameron-zurhaar,Cameron Zurhaar,North Melbourne,Richmond Tigers,Fwd,19,20,PLAYED,62.0,146,143,-3,-2.05,618,626,-8,116,118,-2
+campbell-chesser,Campbell Chesser,Carlton,Essendon Bombers,Mid,19,20,DNP,DNP,341,352,11,3.23,450,449,1,143,154,-11
+campbell-gray,Campbell Gray,Richmond,Carlton Blues,Key Def,19,20,DNP,DNP,261,261,0,0.0,516,520,-4,52,53,-1
+campbell-lake,Campbell Lake,St Kilda,Richmond Tigers,Fwd,19,20,DNP,DNP,178,172,-6,-3.37,588,603,-15,109,110,-1
+chad-warner,Chad Warner,Sydney,North Melbourne Kangaroos,Mid,19,20,PLAYED,125.0,3192,3355,163,5.11,53,50,3,31,29,2
+changkuoth-jiath,Changkuoth Jiath,Melbourne,Western Bulldogs,Def,19,20,DNP,DNP,29,29,0,0.0,764,768,-4,164,150,14
+charlie-ballard,Charlie Ballard,Gold Coast,Carlton Blues,Key Def,19,20,PLAYED,37.0,162,84,-78,-48.15,603,682,-79,62,76,-14
+charlie-banfield,Charlie Banfield,St Kilda,Melbourne Demons,Mid,19,20,DNP,DNP,707,667,-40,-5.66,297,314,-17,109,123,-14
+charlie-cameron,Charlie Cameron,Brisbane,Sydney Swans,Fwd,19,20,PLAYED,69.0,295,288,-7,-2.37,493,500,-7,81,81,0
+charlie-comben,Charlie Comben,North Melbourne,St Kilda Saints,Key Def,19,20,PLAYED,72.0,1039,1012,-27,-2.6,221,236,-15,18,21,-3
+charlie-curnow,Charlie Curnow,Carlton,Adelaide Crows,Key Fwd,19,20,PLAYED,68.0,1574,1592,18,1.14,158,154,4,17,16,1
+charlie-edwards,Charlie Edwards,Adelaide,Hawthorn Hawks,Mid,19,20,DNP,DNP,731,741,10,1.37,292,294,-2,107,117,-10
+charlie-nicholls,Charlie Nicholls,Fremantle,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,341,285,-56,-16.42,451,503,-52,61,65,-4
+charlie-spargo,Charlie Spargo,Melbourne,Port Adelaide Power,Fwd,19,20,PLAYED,40.0,35,35,0,0.0,748,750,-2,163,163,0
+charlie-west,Charlie West,Collingwood,Western Bulldogs,Key Fwd,19,20,PLAYED,37.0,475,574,99,20.84,381,344,37,52,45,7
+chayce-jones,Chayce Jones,Adelaide,Free agents,Def,19,20,DNP,DNP,113,106,-7,-6.19,642,653,-11,169,129,40
+chris-scerri,Chris Scerri,Fremantle,Richmond Tigers,Fwd,19,20,DNP,DNP,315,315,0,0.0,476,479,-3,74,71,3
+christian-moraes,Christian Moraes,Port Adelaide,Richmond Tigers,Mid,19,20,PLAYED,77.0,933,950,17,1.82,245,248,-3,93,103,-10
+christian-petracca,Christian Petracca,Gold Coast,West Coast Eagles,Mid,19,20,PLAYED,82.0,2140,2045,-95,-4.44,105,113,-8,50,58,-8
+christian-salem,Christian Salem,Melbourne,Port Adelaide Power,Def,19,20,DNP,DNP,563,541,-22,-3.91,350,363,-13,74,73,1
+cillian-bourke,Cillian Bourke,Essendon,Free agents,Def,19,20,DNP,DNP,326,318,-8,-2.45,467,476,-9,103,96,7
+cillian-burke,Cillian Burke,Geelong,Port Adelaide Power,Def,19,20,DNP,DNP,107,106,-1,-0.93,649,654,-5,139,130,9
+clay-hall,Clay Hall,West Coast,Collingwood Magpies,Mid,19,20,DNP,DNP,402,347,-55,-13.68,418,450,-32,137,155,-18
+clayton-oliver,Clayton Oliver,GWS,North Melbourne Kangaroos,Mid,19,20,PLAYED,114.0,2534,2570,36,1.42,76,78,-2,42,43,-1
+cody-anderson,Cody Anderson,Hawthorn,Free agents,Fwd,19,20,DNP,DNP,179,177,-2,-1.12,587,598,-11,108,108,0
+cody-angove,Cody Angove,GWS,Hawthorn Hawks,Mid,19,20,DNP,DNP,580,563,-17,-2.93,343,353,-10,122,130,-8
+cody-curtin,Cody Curtin,Brisbane,St Kilda Saints,Key Fwd,19,20,DNP,DNP,674,653,-21,-3.12,306,319,-13,41,41,0
+cody-weightman,Cody Weightman,Western Bulldogs,Collingwood Magpies,Fwd,19,20,PLAYED,61.0,224,213,-11,-4.91,543,561,-18,92,94,-2
+colby-mckercher,Colby McKercher,North Melbourne,Richmond Tigers,Mid,19,20,PLAYED,66.0,3950,3965,15,0.38,30,28,2,19,18,1
+connor-budarick,Connor Budarick,Western Bulldogs,Brisbane Lions,Def,19,20,DNP,DNP,186,182,-4,-2.15,583,590,-7,124,117,7
+connor-idun,Connor Idun,GWS,North Melbourne Kangaroos,Def,19,20,PLAYED,111.0,2299,2424,125,5.44,92,86,6,17,13,4
+connor-macdonald,Connor MacDonald,Hawthorn,Richmond Tigers,Fwd,19,20,PLAYED,94.0,2711,2816,105,3.87,70,68,2,8,7,1
+connor-o-sullivan,Connor O'Sullivan,Geelong,Western Bulldogs,Key Def,19,20,PLAYED,102.0,2894,2909,15,0.52,62,63,-1,3,5,-2
+connor-rozee,Connor Rozee,Port Adelaide,Adelaide Crows,Mid,19,20,DNP,DNP,2859,2858,-1,-0.03,64,67,-3,37,39,-2
+conor-mckenna,Conor McKenna,Brisbane,St Kilda Saints,Def,19,20,PLAYED,29.0,12,2,-10,-83.33,784,799,-15,179,160,19
+conor-nash,Conor Nash,Hawthorn,Sydney Swans,Mid,19,20,DNP,DNP,339,343,4,1.18,452,453,-1,144,156,-12
+conor-stone,Conor Stone,GWS,Brisbane Lions,Fwd,19,20,PLAYED,15.0,86,87,1,1.16,675,676,-1,145,139,6
+cooper-bell,Cooper Bell,Gold Coast,Free agents,Key Def,19,20,DNP,DNP,325,323,-2,-0.62,470,469,1,43,43,0
+cooper-duff-tytler,Cooper Duff-Tytler,West Coast,Fremantle Dockers,Key Fwd,19,20,DNP,DNP,1588,1569,-19,-1.2,154,158,-4,15,17,-2
+cooper-harvey,Cooper Harvey,North Melbourne,Richmond Tigers,Fwd,19,20,PLAYED,58.0,607,636,29,4.78,330,324,6,41,38,3
+cooper-hynes,Cooper Hynes,Western Bulldogs,Fremantle Dockers,Mid,19,20,PLAYED,33.0,1256,1272,16,1.27,195,196,-1,80,87,-7
+cooper-lord,Cooper Lord,Carlton,Western Bulldogs,Mid,19,20,PLAYED,91.0,226,1135,909,402.21,540,210,330,154,91,63
+cooper-sharman,Cooper Sharman,St Kilda,Adelaide Crows,Key Fwd,19,20,DNP,DNP,645,652,7,1.09,315,320,-5,43,42,1
+cooper-simpson,Cooper Simpson,Fremantle,Richmond Tigers,Def,19,20,DNP,DNP,249,246,-3,-1.2,524,529,-5,111,106,5
+cooper-trembath,Cooper Trembath,North Melbourne,Richmond Tigers,Key Fwd,19,20,PLAYED,57.0,2046,2054,8,0.39,116,112,4,7,6,1
+corey-durdin,Corey Durdin,Carlton,Port Adelaide Power,Fwd,19,20,PLAYED,77.0,58,67,9,15.52,709,703,6,151,149,2
+corey-wagner,Corey Wagner,Fremantle,Sydney Swans,Def,19,20,PLAYED,68.0,43,42,-1,-2.33,735,738,-3,158,144,14
+corey-warner,Corey Warner,Sydney,Melbourne Demons,Fwd,19,20,DNP,DNP,74,76,2,2.7,693,690,3,145,143,2
+dan-houston,Dan Houston,Collingwood,St Kilda Saints,Def,19,20,PLAYED,60.0,1328,1121,-207,-15.59,189,213,-24,39,39,0
+dane-rampe,Dane Rampe,Sydney,Brisbane Lions,Key Def,19,20,PLAYED,40.0,4,35,31,775.0,798,751,47,176,89,87
+daniel-annable,Daniel Annable,Brisbane,Fremantle Dockers,Mid,19,20,DNP,DNP,1869,1703,-166,-8.88,133,149,-16,61,69,-8
+daniel-butler,Daniel Butler,St Kilda,Free agents,Fwd,19,20,PLAYED,28.0,20,21,1,5.0,780,779,1,178,177,1
+daniel-curtin,Daniel Curtin,Adelaide,Melbourne Demons,Mid,19,20,PLAYED,94.0,2367,2443,76,3.21,88,83,5,48,46,2
+daniel-mcstay,Daniel McStay,Collingwood,Brisbane Lions,Key Fwd,19,20,PLAYED,128.0,111,234,123,110.81,647,542,105,88,72,16
+daniel-rioli,Daniel Rioli,Gold Coast,Collingwood Magpies,Def,19,20,PLAYED,65.0,760,726,-34,-4.47,281,300,-19,61,59,2
+daniel-turner,Daniel Turner,Melbourne,West Coast Eagles,Key Def,19,20,DNP,DNP,1736,1741,5,0.29,143,145,-2,11,12,-1
+dante-visentini,Dante Visentini,Port Adelaide,Adelaide Crows,Ruck,19,20,PLAYED,83.0,1011,1147,136,13.45,225,207,18,19,18,1
+darcy-byrne-jones,Darcy Byrne-Jones,Port Adelaide,Port Adelaide Power,Def,19,20,PLAYED,64.0,465,413,-52,-11.18,385,415,-30,84,82,2
+darcy-cameron,Darcy Cameron,Collingwood,West Coast Eagles,Ruck,19,20,PLAYED,154.0,1275,1550,275,21.57,193,164,29,17,15,2
+darcy-fogarty,Darcy Fogarty,Adelaide,Port Adelaide Power,Key Fwd,19,20,DNP,DNP,1007,1027,20,1.99,228,227,1,28,28,0
+darcy-fort,Darcy Fort,Geelong,Collingwood Magpies,Ruck,19,20,PLAYED,64.0,59,54,-5,-8.47,708,714,-6,54,54,0
+darcy-gardiner,Darcy Gardiner,Brisbane,Geelong Cats,Key Def,19,20,DNP,DNP,45,47,2,4.44,732,727,5,82,84,-2
+darcy-jones,Darcy Jones,GWS,Essendon Bombers,Fwd,19,20,DNP,DNP,1496,1428,-68,-4.55,167,181,-14,20,19,1
+darcy-moore,Darcy Moore,Collingwood,Essendon Bombers,Key Def,19,20,DNP,DNP,234,232,-2,-0.85,537,544,-7,54,56,-2
+darcy-parish,Darcy Parish,Essendon,Collingwood Magpies,Mid,19,20,DNP,DNP,707,714,7,0.99,298,304,-6,110,119,-9
+darcy-wilmot,Darcy Wilmot,Brisbane,Hawthorn Hawks,Def,19,20,PLAYED,65.0,3803,3642,-161,-4.23,36,40,-4,7,7,0
+darcy-wilson,Darcy Wilson,St Kilda,Western Bulldogs,Fwd,19,20,PLAYED,123.0,2960,3348,388,13.11,59,52,7,5,4,1
+darragh-joyce,Darragh Joyce,Brisbane,Free agents,Key Def,19,20,DNP,DNP,11,10,-1,-9.09,790,792,-2,92,95,-3
+dayne-zorko,Dayne Zorko,Brisbane,Port Adelaide Power,Mid,19,20,PLAYED,123.0,1159,1156,-3,-0.26,204,204,0,42,88,-46
+deven-robertson,Deven Robertson,West Coast,Melbourne Demons,Mid,19,20,DNP,DNP,202,194,-8,-3.96,561,573,-12,158,172,-14
+dion-prestia,Dion Prestia,Richmond,Sydney Swans,Mid,19,20,PLAYED,87.0,164,173,9,5.49,601,600,1,166,175,-9
+dougal-howard,Dougal Howard,St Kilda,Port Adelaide Power,Key Def,19,20,DNP,DNP,87,87,0,0.0,674,677,-3,74,74,0
+dylan-moore,Dylan Moore,Hawthorn,Hawthorn Hawks,Fwd,19,20,PLAYED,91.0,1399,1373,-26,-1.86,179,186,-7,21,21,0
+dylan-patterson,Dylan Patterson,Gold Coast,Melbourne Demons,Def,19,20,PLAYED,42.0,1076,1134,58,5.39,217,211,6,45,37,8
+dylan-stephens,Dylan Stephens,North Melbourne,Essendon Bombers,Mid,19,20,PLAYED,78.0,460,492,32,6.96,388,385,3,130,136,-6
+dyson-sharp,Dyson Sharp,Essendon,Fremantle Dockers,Mid,19,20,PLAYED,115.0,2034,2492,458,22.52,119,80,39,58,44,14
+eamonn-armstrong,Eamonn Armstrong,St Kilda,Hawthorn Hawks,Def,19,20,DNP,DNP,152,150,-2,-1.32,612,623,-11,132,125,7
+ed-langdon,Ed Langdon,Melbourne,Sydney Swans,Mid,19,20,PLAYED,70.0,614,404,-210,-34.2,327,419,-92,70,145,-75
+ed-richards,Ed Richards,Western Bulldogs,St Kilda Saints,Mid,19,20,PLAYED,149.0,3512,3750,238,6.78,44,37,7,25,21,4
+edward-allan,Edward Allan,Collingwood,Richmond Tigers,Mid,19,20,PLAYED,61.0,849,840,-9,-1.06,266,273,-7,100,108,-8
+elijah-hewett,Elijah Hewett,West Coast,Melbourne Demons,Mid,19,20,DNP,DNP,784,780,-4,-0.51,276,288,-12,103,114,-11
+elijah-hollands,Elijah Hollands,Carlton,Essendon Bombers,Fwd,19,20,DNP,DNP,842,845,3,0.36,270,272,-2,32,32,0
+elijah-tsatas,Elijah Tsatas,Essendon,Melbourne Demons,Mid,19,20,DNP,DNP,1330,1327,-3,-0.23,188,191,-3,77,84,-7
+elliot-himmelberg,Elliott Himmelberg,Adelaide,Free agents,Key Fwd,19,20,DNP,DNP,92,89,-3,-3.26,670,674,-4,89,89,0
+elliot-yeo,Elliot Yeo,West Coast,North Melbourne Kangaroos,Mid,19,20,PLAYED,52.0,112,86,-26,-23.21,645,681,-36,170,189,-19
+eric-hipwood,Eric Hipwood,Brisbane,Brisbane Lions,Key Fwd,19,20,PLAYED,30.0,61,44,-17,-27.87,705,733,-28,92,95,-3
+errol-gulden,Errol Gulden,Sydney,Carlton Blues,Mid,19,20,PLAYED,147.0,5097,5376,279,5.47,13,13,0,9,9,0
+esava-ratugolea,Esava Ratugolea,Port Adelaide,Adelaide Crows,Key Def,19,20,DNP,DNP,127,117,-10,-7.87,630,643,-13,69,70,-1
+ethan-read,Ethan Read,Gold Coast,St Kilda Saints,Key Fwd,19,20,DNP,DNP,1039,1002,-37,-3.56,222,237,-15,27,30,-3
+ewan-mackinlay,Ewan Mackinlay,Port Adelaide,Richmond Tigers,Fwd,19,20,DNP,DNP,46,46,0,0.0,730,731,-1,158,158,0
+finlay-macrae,Finlay Macrae,West Coast,Geelong Cats,Mid,19,20,DNP,DNP,109,111,2,1.83,648,648,0,171,182,-11
+finn-callaghan,Finn Callaghan,GWS,Melbourne Demons,Mid,19,20,PLAYED,86.0,5353,5455,102,1.91,12,12,0,8,8,0
+finn-maginness,Finn Maginness,Hawthorn,Free agents,Mid,19,20,DNP,DNP,35,35,0,0.0,749,752,-3,164,203,-39
+finn-o-sullivan,Finn O'Sullivan,North Melbourne,Collingwood Magpies,Mid,19,20,PLAYED,50.0,3330,3346,16,0.48,51,54,-3,30,31,-1
+finnbar-maley,Finnbar Maley,Adelaide,Geelong Cats,Key Fwd,19,20,PLAYED,20.0,197,332,135,68.53,569,462,107,81,60,21
+finnegan-davis,Finnegan Davis,GWS,Carlton Blues,Def,19,20,DNP,DNP,396,387,-9,-2.27,421,427,-6,89,83,6
+flynn-perez,Flynn Perez,Hawthorn,Brisbane Lions,Def,19,20,DNP,DNP,12,11,-1,-8.33,785,789,-4,171,155,16
+flynn-riley,Flynn Riley,Carlton,Adelaide Crows,Ruck,19,20,DNP,DNP,610,604,-6,-0.98,328,330,-2,29,30,-1
+flynn-young,Flynn Young,Carlton,Free agents,Fwd,19,20,DNP,DNP,10,9,-1,-10.0,793,794,-1,180,178,2
+francis-evans,Francis Evans,Carlton,St Kilda Saints,Fwd,19,20,PLAYED,116.0,272,468,196,72.06,508,395,113,85,49,36
+fred-rodriguez,Fred Rodriguez,West Coast,Carlton Blues,Mid,19,20,DNP,DNP,424,372,-52,-12.26,407,437,-30,133,152,-19
+george-hewett,George Hewett,Carlton,Port Adelaide Power,Mid,19,20,PLAYED,108.0,1827,1888,61,3.34,137,132,5,62,66,-4
+george-stevens,George Stevens,Geelong,St Kilda Saints,Mid,19,20,DNP,DNP,415,403,-12,-2.89,412,420,-8,135,146,-11
+george-wardlaw,George Wardlaw,North Melbourne,Richmond Tigers,Mid,19,20,DNP,DNP,3123,3153,30,0.96,54,57,-3,32,33,-1
+griffin-logue,Griffin Logue,North Melbourne,Richmond Tigers,Key Def,19,20,PLAYED,59.0,131,126,-5,-3.82,628,636,-8,68,67,1
+gryan-miers,Gryan Miers,Geelong,Brisbane Lions,Fwd,19,20,PLAYED,52.0,1961,1928,-33,-1.68,127,127,0,15,14,1
+hamish-davis,Hamish Davis,West Coast,Collingwood Magpies,Mid,19,20,PLAYED,55.0,938,949,11,1.17,244,249,-5,92,104,-12
+harley-barker,Harley Barker,Geelong,Fremantle Dockers,Mid,19,20,DNP,DNP,753,748,-5,-0.66,286,293,-7,105,116,-11
+harley-reid,Harley Reid,West Coast,Melbourne Demons,Mid,19,20,PLAYED,87.0,3531,3574,43,1.22,43,44,-1,24,23,1
+harris-andrews,Harris Andrews,Brisbane,Collingwood Magpies,Key Def,19,20,PLAYED,107.0,1871,1915,44,2.35,132,129,3,9,10,-1
+harrison-coe,Harrison Coe,Collingwood,Port Adelaide Power,Ruck,19,20,DNP,DNP,239,239,0,0.0,531,538,-7,51,52,-1
+harrison-himmelberg,Harrison Himmelberg,GWS,Sydney Swans,Def,19,20,PLAYED,88.0,547,560,13,2.38,357,355,2,77,70,7
+harrison-jones,Harrison Jones,Essendon,Free agents,Key Fwd,19,20,DNP,DNP,203,205,2,0.99,560,563,-3,78,78,0
+harrison-oliver,Harrison Oliver,GWS,Hawthorn Hawks,Def,19,20,DNP,DNP,658,662,4,0.61,309,316,-7,66,63,3
+harrison-petty,Harrison Petty,Melbourne,Geelong Cats,Key Def,19,20,PLAYED,114.0,146,191,45,30.82,619,581,38,65,59,6
+harrison-ramm,Harrison Ramm,Port Adelaide,Adelaide Crows,Key Def,19,20,DNP,DNP,332,340,8,2.41,459,456,3,41,41,0
+harry-armstrong,Harry Armstrong,Richmond,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,880,994,114,12.95,258,241,17,34,32,2
+harry-barnett,Harry Barnett,West Coast,Free agents,Ruck,19,20,DNP,DNP,615,616,1,0.16,323,326,-3,28,29,-1
+harry-charleson,Harry Charleson,Carlton,North Melbourne Kangaroos,Def,19,20,DNP,DNP,247,243,-4,-1.62,527,534,-7,113,107,6
+harry-cunningham,Harry Cunningham,Sydney,Free agents,Def,19,20,DNP,DNP,1,1,0,0.0,800,801,-1,177,161,16
+harry-dean,Harry Dean,Carlton,Hawthorn Hawks,Key Def,19,20,PLAYED,56.0,2548,2509,-39,-1.53,74,79,-5,5,7,-2
+harry-demattia,Harry DeMattia,Collingwood,Carlton Blues,Mid,19,20,DNP,DNP,486,478,-8,-1.65,376,391,-15,126,138,-12
+harry-edwards,Harry Edwards,West Coast,St Kilda Saints,Key Def,19,20,DNP,DNP,146,143,-3,-2.05,620,627,-7,66,66,0
+harry-kyle,Harry Kyle,Sydney,Fremantle Dockers,Def,19,20,PLAYED,60.0,971,1077,106,10.92,236,223,13,48,41,7
+harry-mckay,Harry McKay,Carlton,St Kilda Saints,Key Fwd,19,20,DNP,DNP,1815,1832,17,0.94,140,139,1,13,10,3
+harry-morrison,Harry Morrison,Hawthorn,St Kilda Saints,Mid,19,20,PLAYED,89.0,45,54,9,20.0,733,715,18,185,197,-12
+harry-o-farrell,Harry O'Farrell,Carlton,Sydney Swans,Key Def,19,20,DNP,DNP,912,927,15,1.64,250,253,-3,22,23,-1
+harry-perryman,Harry Perryman,Collingwood,Brisbane Lions,Def,19,20,PLAYED,55.0,130,120,-10,-7.69,629,641,-12,136,127,9
+harry-rowston,Harry Rowston,GWS,Carlton Blues,Mid,19,20,PLAYED,59.0,587,640,53,9.03,337,322,15,121,125,-4
+harry-schoenberg,Harry Schoenberg,Adelaide,Adelaide Crows,Mid,19,20,DNP,DNP,56,56,0,0.0,713,711,2,183,196,-13
+harry-sharp,Harry Sharp,Brisbane,Brisbane Lions,Mid,19,20,PLAYED,45.0,81,62,-19,-23.46,683,706,-23,142,195,-53
+harry-sheezel,Harry Sheezel,North Melbourne,Carlton Blues,Mid,19,20,PLAYED,132.0,9542,9655,113,1.18,1,1,0,1,1,0
+harvey-gallagher,Harvey Gallagher,Western Bulldogs,Richmond Tigers,Fwd,19,20,DNP,DNP,135,133,-2,-1.48,626,632,-6,135,121,14
+harvey-harrison,Harvey Harrison,Collingwood,West Coast Eagles,Fwd,19,20,PLAYED,45.0,60,61,1,1.67,707,709,-2,150,151,-1
+harvey-johnston,Harvey Johnston,West Coast,Melbourne Demons,Def,19,20,PLAYED,37.0,268,250,-18,-6.72,511,524,-13,108,103,5
+harvey-langford,Harvey Langford,Melbourne,Fremantle Dockers,Mid,19,20,PLAYED,50.0,2450,2428,-22,-0.9,81,85,-4,46,47,-1
+harvey-thomas,Harvey Thomas,GWS,Brisbane Lions,Fwd,19,20,PLAYED,44.0,2206,2167,-39,-1.77,97,100,-3,12,12,0
+hayden-mclean,Hayden McLean,Sydney,Richmond Tigers,Key Fwd,19,20,PLAYED,42.0,386,353,-33,-8.55,426,447,-21,55,58,-3
+hayden-young,Hayden Young,Fremantle,Essendon Bombers,Mid,19,20,DNP,DNP,2056,2026,-30,-1.46,115,115,0,56,59,-3
+heath-chapman,Heath Chapman,Fremantle,Sydney Swans,Def,19,20,PLAYED,44.0,546,483,-63,-11.54,358,389,-31,78,79,-1
+henry-hustwaite,Henry Hustwaite,Hawthorn,Richmond Tigers,Mid,19,20,DNP,DNP,299,274,-25,-8.36,489,512,-23,147,161,-14
+henry-smith,Henry Smith,Brisbane,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,157,140,-17,-10.83,608,629,-21,84,87,-3
+hudson-o-keeffe,Hudson O'Keeffe,Carlton,Western Bulldogs,Key Fwd,19,20,DNP,DNP,258,246,-12,-4.65,520,530,-10,69,70,-1
+hugh-bond,Hugh Bond,Adelaide,Fremantle Dockers,Def,19,20,DNP,DNP,198,193,-5,-2.53,568,576,-8,120,115,5
+hugh-boxshall,Hugh Boxshall,St Kilda,Melbourne Demons,Mid,19,20,PLAYED,97.0,941,996,55,5.84,242,240,2,91,100,-9
+hugh-davies,Hugh Davies,Fremantle,Hawthorn Hawks,Key Def,19,20,DNP,DNP,300,310,10,3.33,487,489,-2,45,44,1
+hugh-mccluggage,Hugh McCluggage,Brisbane,Western Bulldogs,Mid,19,20,PLAYED,149.0,1575,1746,171,10.86,157,144,13,67,68,-1
+hugo-garcia,Hugo Garcia,St Kilda,West Coast Eagles,Mid,19,20,PLAYED,80.0,2951,2966,15,0.51,60,62,-2,35,35,0
+hugo-hall-kahan,Hugo Hall-Kahan,Adelaide,Collingwood Magpies,Def,19,20,PLAYED,54.0,387,235,-152,-39.28,425,541,-116,90,109,-19
+hugo-mikunda,Hugo Mikunda,North Melbourne,Richmond Tigers,Fwd,19,20,DNP,DNP,336,331,-5,-1.49,454,464,-10,68,67,1
+hugo-ralphsmith,Hugo Ralphsmith,Richmond,Port Adelaide Power,Mid,19,20,PLAYED,18.0,47,44,-3,-6.38,727,734,-7,184,200,-16
+hunter-clark,Hunter Clark,St Kilda,Hawthorn Hawks,Def,19,20,PLAYED,56.0,55,56,1,1.82,714,712,2,154,140,14
+hunter-holmes,Hunter Holmes,Geelong,Fremantle Dockers,Mid,19,20,DNP,DNP,647,576,-71,-10.97,313,343,-30,114,129,-15
+hussien-el-achkar,Hussien El Achkar,Essendon,Western Bulldogs,Fwd,19,20,PLAYED,46.0,394,400,6,1.52,422,422,0,63,59,4
+iliro-smit,Iliro Smit,Collingwood,Carlton Blues,Ruck,19,20,DNP,DNP,310,312,2,0.65,482,483,-1,48,50,-2
+indy-cotton,Indy Cotton,Adelaide,Hawthorn Hawks,Def,19,20,DNP,DNP,238,232,-6,-2.52,534,545,-11,117,111,6
+isaac-cumming,Isaac Cumming,Adelaide,North Melbourne Kangaroos,Def,19,20,PLAYED,69.0,61,62,1,1.64,706,707,-1,152,138,14
+isaac-heeney,Isaac Heeney,Sydney,West Coast Eagles,Mid,19,20,PLAYED,86.0,3783,3547,-236,-6.24,37,45,-8,21,24,-3
+isaac-kako,Isaac Kako,Essendon,Western Bulldogs,Fwd,19,20,PLAYED,32.0,1079,1161,82,7.6,215,202,13,25,22,3
+isaac-keeler,Isaac Keeler,St Kilda,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,313,279,-34,-10.86,479,506,-27,65,67,-2
+isaac-quaynor,Isaac Quaynor,Collingwood,Brisbane Lions,Def,19,20,PLAYED,96.0,506,587,81,16.01,371,336,35,81,66,15
+isaiah-dudley,Isaiah Dudley,Fremantle,Carlton Blues,Fwd,19,20,PLAYED,78.0,86,106,20,23.26,676,655,21,138,130,8
+izak-rankine,Izak Rankine,Adelaide,Geelong Cats,Fwd,19,20,PLAYED,101.0,2940,3006,66,2.24,61,61,0,6,6,0
+jack-bowes,Jack Bowes,Geelong,Brisbane Lions,Mid,19,20,DNP,DNP,107,103,-4,-3.74,650,658,-8,172,184,-12
+jack-buckley,Jack Buckley,GWS,Collingwood Magpies,Key Def,19,20,DNP,DNP,725,731,6,0.83,294,299,-5,25,26,-1
+jack-buller,Jack Buller,Collingwood,Fremantle Dockers,Key Fwd,19,20,DNP,DNP,63,64,1,1.59,702,705,-3,91,92,-1
+jack-carroll,Jack Carroll,St Kilda,Adelaide Crows,Mid,19,20,DNP,DNP,95,97,2,2.11,665,666,-1,175,186,-11
+jack-crisp,Jack Crisp,Collingwood,North Melbourne Kangaroos,Def,19,20,PLAYED,72.0,615,719,104,16.91,324,303,21,117,60,57
+jack-dalton,Jack Dalton,Hawthorn,Fremantle Dockers,Fwd,19,20,DNP,DNP,618,613,-5,-0.81,322,328,-6,39,39,0
+jack-darling,Jack Darling,North Melbourne,North Melbourne Kangaroos,Key Fwd,19,20,PLAYED,67.0,195,199,4,2.05,574,569,5,82,80,2
+jack-ginnivan,Jack Ginnivan,Collingwood,North Melbourne Kangaroos,Fwd,19,20,PLAYED,88.0,2303,2361,58,2.52,90,90,0,10,10,0
+jack-graham,Jack Graham,West Coast,Port Adelaide Power,Mid,19,20,DNP,DNP,386,378,-8,-2.07,427,434,-7,139,150,-11
+jack-gunston,Jack Gunston,Hawthorn,St Kilda Saints,Key Fwd,19,20,PLAYED,119.0,970,1161,191,19.69,237,203,34,31,24,7
+jack-henderson,Jack Henderson,Melbourne,Free agents,Fwd,19,20,DNP,DNP,4,4,0,0.0,799,798,1,181,179,2
+jack-henry,Jack Henry,Geelong,Geelong Cats,Key Def,19,20,PLAYED,72.0,211,241,30,14.22,554,536,18,58,55,3
+jack-higgins,Jack Higgins,St Kilda,Geelong Cats,Fwd,19,20,PLAYED,78.0,106,132,26,24.53,653,633,20,128,122,6
+jack-hutchinson,Jack Hutchinson,West Coast,Melbourne Demons,Mid,19,20,DNP,DNP,40,38,-2,-5.0,740,743,-3,186,201,-15
+jack-ison,Jack Ison,Carlton,Fremantle Dockers,Fwd,19,20,DNP,DNP,598,606,8,1.34,333,329,4,42,40,2
+jack-lukosius,Jack Lukosius,Port Adelaide,Essendon Bombers,Key Fwd,19,20,DNP,DNP,928,935,7,0.75,247,251,-4,33,35,-2
+jack-martin,Jack Martin,Geelong,Brisbane Lions,Fwd,19,20,DNP,DNP,96,97,1,1.04,663,667,-4,134,136,-2
+jack-ough,Jack Ough,GWS,Western Bulldogs,Mid,19,20,PLAYED,29.0,615,704,89,14.47,325,308,17,118,120,-2
+jack-payne,Jack Payne,Brisbane,Brisbane Lions,Key Def,19,20,DNP,DNP,176,168,-8,-4.55,590,607,-17,60,64,-4
+jack-ross,Jack Ross,Richmond,Collingwood Magpies,Mid,19,20,PLAYED,95.0,2194,2230,36,1.64,99,96,3,49,51,-2
+jack-scrimshaw,Jack Scrimshaw,Hawthorn,Essendon Bombers,Def,19,20,DNP,DNP,159,154,-5,-3.14,605,618,-13,131,123,8
+jack-silvagni,Jack Silvagni,St Kilda,Collingwood Magpies,Key Fwd,19,20,PLAYED,97.0,757,954,197,26.02,282,247,35,24,34,-10
+jack-sinclair,Jack Sinclair,St Kilda,Port Adelaide Power,Def,19,20,DNP,DNP,3322,3321,-1,-0.03,52,55,-3,9,8,1
+jack-steele,Jack Steele,Melbourne,Port Adelaide Power,Mid,19,20,PLAYED,94.0,1648,1647,-1,-0.06,150,151,-1,65,70,-5
+jack-viney,Jack Viney,Melbourne,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,368,359,-9,-2.45,437,442,-5,141,153,-12
+jack-watkins,Jack Watkins,Port Adelaide,Adelaide Crows,Mid,19,20,PLAYED,84.0,0,0,0,,804,804,0,194,211,-17
+jack-whitlock,Jack Whitlock,Port Adelaide,Fremantle Dockers,Key Fwd,19,20,PLAYED,28.0,1303,1320,17,1.3,192,192,0,21,22,-1
+jack-williams,Jack Williams,West Coast,Melbourne Demons,Key Fwd,19,20,PLAYED,64.0,507,527,20,3.94,370,372,-2,50,50,0
+jackson-archer,Jackson Archer,North Melbourne,Free agents,Def,19,20,DNP,DNP,75,76,1,1.33,690,691,-1,148,137,11
+jackson-macrae,Jackson Macrae,St Kilda,St Kilda Saints,Mid,19,20,DNP,DNP,139,140,1,0.72,625,630,-5,167,180,-13
+jackson-mead,Jackson Mead,Port Adelaide,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,38,37,-1,-2.63,743,747,-4,162,202,-40
+jacob-farrow,Jacob Farrow,Essendon,Fremantle Dockers,Def,19,20,PLAYED,77.0,2545,2640,95,3.73,75,74,1,11,10,1
+jacob-hopper,Jacob Hopper,Richmond,Sydney Swans,Mid,19,20,DNP,DNP,124,113,-11,-8.87,635,644,-9,168,181,-13
+jacob-konstanty,Jacob Konstanty,North Melbourne,Collingwood Magpies,Fwd,19,20,DNP,DNP,200,187,-13,-6.5,565,587,-22,96,103,-7
+jacob-molier,Jacob Molier,Geelong,St Kilda Saints,Ruck,19,20,DNP,DNP,460,459,-1,-0.22,389,397,-8,37,39,-2
+jacob-moss,Jacob Moss,Port Adelaide,Fremantle Dockers,Key Fwd,19,20,DNP,DNP,248,219,-29,-11.69,526,552,-26,71,75,-4
+jacob-newton,Jacob Newton,West Coast,Melbourne Demons,Fwd,19,20,DNP,DNP,150,151,1,0.67,613,621,-8,114,115,-1
+jacob-van-rooyen,Jacob Van Rooyen,Melbourne,Essendon Bombers,Key Fwd,19,20,PLAYED,36.0,1978,1905,-73,-3.69,124,131,-7,9,8,1
+jacob-wehr,Jacob Wehr,Port Adelaide,Geelong Cats,Def,19,20,DNP,DNP,21,21,0,0.0,778,780,-2,168,152,16
+jacob-weitering,Jacob Weitering,Carlton,St Kilda Saints,Key Def,19,20,DNP,DNP,1200,1203,3,0.25,200,198,2,16,17,-1
+jade-gresham,Jade Gresham,Essendon,Geelong Cats,Fwd,19,20,DNP,DNP,50,49,-1,-2.0,721,721,0,157,154,3
+jaeger-o-meara,Jaeger O'Meara,Fremantle,Brisbane Lions,Mid,19,20,DNP,DNP,194,196,2,1.03,575,571,4,160,171,-11
+jagga-smith,Jagga Smith,Carlton,Fremantle Dockers,Mid,19,20,PLAYED,130.0,4164,4285,121,2.91,24,22,2,17,15,2
+jai-culley,Jai Culley,Melbourne,Western Bulldogs,Mid,19,20,DNP,DNP,78,264,186,238.46,687,519,168,180,163,17
+jai-murray,Jai Murray,Gold Coast,Fremantle Dockers,Mid,19,20,PLAYED,50.0,1250,1343,93,7.44,197,190,7,81,83,-2
+jai-newcombe,Jai Newcombe,Hawthorn,West Coast Eagles,Mid,19,20,PLAYED,110.0,4215,4218,3,0.07,23,23,0,16,16,0
+jai-saxena,Jai Saxena,Collingwood,West Coast Eagles,Fwd,19,20,DNP,DNP,197,191,-6,-3.05,570,582,-12,98,99,-1
+jai-serong,Jai Serong,Sydney,North Melbourne Kangaroos,Def,19,20,PLAYED,57.0,116,889,773,666.38,639,264,375,138,48,90
+jaime-uhr-henry,Jaime Uhr-Henry,Hawthorn,Free agents,Ruck,19,20,DNP,DNP,446,439,-7,-1.57,396,404,-8,40,43,-3
+jake-bowey,Jake Bowey,Melbourne,West Coast Eagles,Def,19,20,PLAYED,99.0,3901,3942,41,1.05,32,31,1,4,4,0
+jake-kolodjashnij,Jake Kolodjashnij,Geelong,Port Adelaide Power,Key Def,19,20,DNP,DNP,37,38,1,2.7,745,744,1,85,87,-2
+jake-lever,Jake Lever,Melbourne,Collingwood Magpies,Key Def,19,20,PLAYED,87.0,681,736,55,8.08,302,296,6,26,25,1
+jake-lloyd,Jake Lloyd,Sydney,Geelong Cats,Def,19,20,PLAYED,58.0,73,59,-14,-19.18,697,710,-13,150,139,11
+jake-melksham,Jake Melksham,Melbourne,Free agents,Fwd,19,20,DNP,DNP,49,48,-1,-2.04,723,724,-1,93,155,-62
+jake-riccardi,Jake Riccardi,GWS,Port Adelaide Power,Key Fwd,19,20,DNP,DNP,388,387,-1,-0.26,424,428,-4,54,54,0
+jake-rogers,Jake Rogers,Gold Coast,Melbourne Demons,Fwd,19,20,DNP,DNP,587,582,-5,-0.85,338,340,-2,43,43,0
+jake-soligo,Jake Soligo,Adelaide,Carlton Blues,Mid,19,20,PLAYED,61.0,2071,1915,-156,-7.53,114,130,-16,55,65,-10
+jake-stringer,Jake Stringer,GWS,Brisbane Lions,Fwd,19,20,PLAYED,70.0,135,138,3,2.22,627,631,-4,119,120,-1
+jake-waterman,Jake Waterman,West Coast,West Coast Eagles,Key Fwd,19,20,PLAYED,27.0,1619,1351,-268,-16.55,151,189,-38,14,21,-7
+jakob-ryan,Jakob Ryan,Collingwood,West Coast Eagles,Def,19,20,DNP,DNP,279,277,-2,-0.72,502,509,-7,106,101,5
+jamarra-ugle-hagan,Jamarra Ugle-Hagan,Gold Coast,Brisbane Lions,Key Fwd,19,20,DNP,DNP,361,354,-7,-1.94,440,446,-6,56,57,-1
+james-barrat,James Barrat,St Kilda,North Melbourne Kangaroos,Key Def,19,20,DNP,DNP,381,387,6,1.57,430,429,1,38,38,0
+james-blanck,James Blanck,Hawthorn,Free agents,Key Def,19,20,DNP,DNP,28,26,-2,-7.14,767,772,-5,88,91,-3
+james-borlase,James Borlase,Adelaide,Fremantle Dockers,Key Def,19,20,PLAYED,61.0,525,534,9,1.71,364,370,-6,32,32,0
+james-jordon,James Jordon,Sydney,Adelaide Crows,Mid,19,20,PLAYED,45.0,170,164,-6,-3.53,597,609,-12,163,177,-14
+james-leake,James Leake,GWS,Hawthorn Hawks,Def,19,20,DNP,DNP,282,539,257,91.13,498,366,132,105,75,30
+james-o-donnell,James O'Donnell,Western Bulldogs,Richmond Tigers,Key Def,19,20,PLAYED,92.0,605,586,-19,-3.14,331,337,-6,27,28,-1
+james-peatling,James Peatling,Adelaide,Collingwood Magpies,Mid,19,20,PLAYED,44.0,1451,1439,-12,-0.83,175,180,-5,71,78,-7
+james-rowbottom,James Rowbottom,Sydney,Sydney Swans,Mid,19,20,PLAYED,132.0,820,998,178,21.71,273,239,34,101,99,2
+james-sicily,James Sicily,Hawthorn,Geelong Cats,Def,19,20,PLAYED,110.0,1763,1861,98,5.56,142,133,9,28,23,5
+james-trezise,James Trezise,Richmond,Western Bulldogs,Def,19,20,DNP,DNP,163,165,2,1.23,602,608,-6,130,121,9
+james-tunstill,James Tunstill,Brisbane,Free agents,Mid,19,20,PLAYED,58.0,96,105,9,9.38,664,656,8,174,183,-9
+james-worpel,James Worpel,Geelong,Port Adelaide Power,Mid,19,20,PLAYED,67.0,553,490,-63,-11.39,355,386,-31,123,137,-14
+jamie-cripps,Jamie Cripps,West Coast,Free agents,Fwd,19,20,DNP,DNP,34,37,3,8.82,750,748,2,165,162,3
+jamie-elliott,Jamie Elliott,Collingwood,Brisbane Lions,Fwd,19,20,DNP,DNP,32,31,-1,-3.12,756,761,-5,168,168,0
+jaren-carr,Jaren Carr,Fremantle,Port Adelaide Power,Fwd,19,20,DNP,DNP,223,215,-8,-3.59,544,559,-15,93,93,0
+jarman-impey,Jarman Impey,Hawthorn,Collingwood Magpies,Def,19,20,PLAYED,148.0,869,1104,235,27.04,261,215,46,54,40,14
+jarrod-berry,Jarrod Berry,Brisbane,Sydney Swans,Mid,19,20,PLAYED,62.0,316,324,8,2.53,475,468,7,146,158,-12
+jarrod-witts,Jarrod Witts,Gold Coast,Port Adelaide Power,Ruck,19,20,DNP,DNP,218,219,1,0.46,549,553,-4,52,53,-1
+jase-burgoyne,Jase Burgoyne,Port Adelaide,Essendon Bombers,Def,19,20,PLAYED,69.0,2280,2225,-55,-2.41,93,98,-5,18,16,2
+jason-horne-francis,Jason Horne-Francis,Port Adelaide,Geelong Cats,Mid,19,20,PLAYED,135.0,4884,5255,371,7.6,15,14,1,10,10,0
+jaspa-fletcher,Jaspa Fletcher,Brisbane,Adelaide Crows,Def,19,20,PLAYED,121.0,2314,2623,309,13.35,89,75,14,15,11,4
+jasper-alger,Jasper Alger,Richmond,Carlton Blues,Fwd,19,20,DNP,DNP,313,315,2,0.64,480,480,0,76,72,4
+jaxon-artemis,Jaxon Artemis,Essendon,Hawthorn Hawks,Def,19,20,PLAYED,43.0,331,339,8,2.42,462,457,5,101,90,11
+jaxon-prior,Jaxon Prior,Brisbane,Fremantle Dockers,Def,19,20,PLAYED,70.0,372,381,9,2.42,436,430,6,93,84,9
+jay-polkinghorne,Jay Polkinghorne,Geelong,Fremantle Dockers,Fwd,19,20,PLAYED,53.0,281,334,53,18.86,500,458,42,82,66,16
+jayden-laverde,Jayden Laverde,Essendon,West Coast Eagles,Key Def,19,20,PLAYED,63.0,302,294,-8,-2.65,486,497,-11,44,46,-2
+jayden-nguyen,Jayden Nguyen,GWS,Free agents,Def,19,20,DNP,DNP,508,515,7,1.38,369,377,-8,80,77,3
+jayden-short,Jayden Short,Richmond,Port Adelaide Power,Def,19,20,PLAYED,92.0,1269,1278,9,0.71,194,194,0,40,33,7
+jed-adams,Jed Adams,Melbourne,Melbourne Demons,Key Def,19,20,DNP,DNP,262,267,5,1.91,515,517,-2,51,51,0
+jed-bews,Jed Bews,Geelong,Free agents,Def,19,20,DNP,DNP,26,29,3,11.54,770,769,1,167,151,16
+jed-walter,Jed Walter,Gold Coast,Melbourne Demons,Key Fwd,19,20,PLAYED,49.0,1167,1148,-19,-1.63,203,206,-3,23,25,-2
+jedd-busslinger,Jedd Busslinger,Western Bulldogs,Essendon Bombers,Key Def,19,20,PLAYED,72.0,954,1024,70,7.34,240,228,12,21,19,2
+jeremy-cameron,Jeremy Cameron,Geelong,North Melbourne Kangaroos,Key Fwd,19,20,DNP,DNP,993,999,6,0.6,234,238,-4,30,31,-1
+jeremy-howe,Jeremy Howe,Collingwood,Port Adelaide Power,Def,19,20,PLAYED,84.0,359,358,-1,-0.28,441,443,-2,95,87,8
+jeremy-sharp,Jeremy Sharp,Fremantle,Collingwood Magpies,Mid,19,20,DNP,DNP,84,76,-8,-9.52,679,692,-13,178,192,-14
+jesse-dattoli,Jesse Dattoli,Sydney,Collingwood Magpies,Fwd,19,20,DNP,DNP,435,410,-25,-5.75,403,417,-14,55,58,-3
+jesse-hogan,Jesse Hogan,GWS,Port Adelaide Power,Key Fwd,19,20,DNP,DNP,319,321,2,0.63,472,473,-1,64,62,2
+jesse-mellor,Jesse Mellor,Geelong,Geelong Cats,Mid,19,20,DNP,DNP,261,229,-32,-12.26,517,549,-32,153,167,-14
+jesse-motlop,Jesse Motlop,Carlton,Adelaide Crows,Fwd,19,20,DNP,DNP,114,107,-7,-6.14,641,652,-11,125,129,-4
+jevan-phillipou,Jevan Phillipou,Sydney,Fremantle Dockers,Fwd,19,20,DNP,DNP,464,459,-5,-1.08,387,398,-11,50,50,0
+jhye-clark,Jhye Clark,Geelong,Geelong Cats,Mid,19,20,PLAYED,73.0,676,781,105,15.53,304,287,17,111,113,-2
+jobe-shanahan,Jobe Shanahan,West Coast,Western Bulldogs,Key Fwd,19,20,PLAYED,23.0,1848,1810,-38,-2.06,136,140,-4,10,11,-1
+joe-berry,Joe Berry,Port Adelaide,Adelaide Crows,Fwd,19,20,PLAYED,19.0,1038,1013,-25,-2.41,223,235,-12,28,26,2
+joe-pike,Joe Pike,Geelong,North Melbourne Kangaroos,Ruck,19,20,DNP,DNP,446,439,-7,-1.57,397,405,-8,41,44,-3
+joe-richards,Joe Richards,Port Adelaide,Adelaide Crows,Fwd,19,20,DNP,DNP,1088,1102,14,1.29,213,218,-5,24,23,1
+joel-amartey,Joel Amartey,Sydney,Collingwood Magpies,Key Fwd,19,20,DNP,DNP,48,48,0,0.0,724,725,-1,94,93,1
+joel-cochran,Joel Cochran,Collingwood,Hawthorn Hawks,Key Def,19,20,DNP,DNP,330,328,-2,-0.61,463,466,-3,42,42,0
+joel-fitzgerald,Joel Fitzgerald,Melbourne,Sydney Swans,Mid,19,20,PLAYED,60.0,95,87,-8,-8.42,666,678,-12,176,188,-12
+joel-freijah,Joel Freijah,Western Bulldogs,Western Bulldogs,Mid,19,20,PLAYED,92.0,2497,2665,168,6.73,79,72,7,45,42,3
+joel-hamling,Joel Hamling,Sydney,Free agents,Key Def,19,20,DNP,DNP,36,38,2,5.56,747,745,2,86,88,-2
+joel-jeffrey,Joel Jeffrey,Gold Coast,North Melbourne Kangaroos,Def,19,20,PLAYED,75.0,1989,1987,-2,-0.1,122,122,0,24,20,4
+john-noble,John Noble,Gold Coast,Sydney Swans,Def,19,20,PLAYED,47.0,2427,2147,-280,-11.54,82,101,-19,12,17,-5
+jonty-faull,Jonty Faull,Richmond,Carlton Blues,Key Fwd,19,20,DNP,DNP,1096,1198,102,9.31,212,199,13,25,23,2
+jordan-boyd,Jordan Boyd,Carlton,Free agents,Def,19,20,DNP,DNP,8,7,-1,-12.5,795,796,-1,175,159,16
+jordan-clark,Jordan Clark,Fremantle,West Coast Eagles,Def,19,20,PLAYED,66.0,3807,3678,-129,-3.39,35,39,-4,6,6,0
+jordan-croft,Jordan Croft,Western Bulldogs,Hawthorn Hawks,Key Fwd,19,20,PLAYED,46.0,1002,1020,18,1.8,232,232,0,29,29,0
+jordan-dawson,Jordan Dawson,Adelaide,West Coast Eagles,Mid,19,20,PLAYED,89.0,3589,3415,-174,-4.85,42,49,-7,23,28,-5
+jordan-de-goey,Jordan De Goey,Collingwood,North Melbourne Kangaroos,Mid,19,20,PLAYED,65.0,1774,1086,-688,-38.78,141,220,-79,16,94,-78
+jordan-ridley,Jordan Ridley,Essendon,Adelaide Crows,Def,19,20,DNP,DNP,880,883,3,0.34,259,266,-7,53,50,3
+jordon-butts,Jordon Butts,Adelaide,Fremantle Dockers,Key Def,19,20,DNP,DNP,12,12,0,0.0,786,787,-1,91,94,-3
+jordon-sweet,Jordon Sweet,Port Adelaide,St Kilda Saints,Ruck,19,20,PLAYED,78.0,2696,2611,-85,-3.15,71,76,-5,6,6,0
+josaia-delana,Josaia Delana,GWS,St Kilda Saints,Fwd,19,20,DNP,DNP,324,318,-6,-1.85,471,477,-6,71,69,2
+joseph-fonti,Joseph Fonti,GWS,St Kilda Saints,Def,19,20,PLAYED,57.0,832,794,-38,-4.57,271,281,-10,57,54,3
+josh-battle,Josh Battle,St Kilda,West Coast Eagles,Key Def,19,20,PLAYED,85.0,2241,2261,20,0.89,95,95,0,6,8,-2
+josh-daicos,Josh Daicos,Collingwood,Brisbane Lions,Mid,19,20,PLAYED,63.0,2182,2147,-35,-1.6,101,102,-1,20,53,-33
+josh-dolan,Josh Dolan,Western Bulldogs,Hawthorn Hawks,Fwd,19,20,PLAYED,85.0,364,414,50,13.74,439,413,26,66,55,11
+josh-draper,Josh Draper,Fremantle,Essendon Bombers,Key Def,19,20,DNP,DNP,523,500,-23,-4.4,365,380,-15,33,34,-1
+josh-dunkley,Josh Dunkley,Brisbane,Geelong Cats,Mid,19,20,PLAYED,91.0,1385,1395,10,0.72,181,183,-2,73,79,-6
+josh-gibcus,Josh Gibcus,Richmond,Carlton Blues,Key Def,19,20,DNP,DNP,215,205,-10,-4.65,552,564,-12,57,58,-1
+josh-goater,Josh Goater,North Melbourne,Hawthorn Hawks,Def,19,20,PLAYED,40.0,94,94,0,0.0,668,668,0,144,133,11
+josh-lai,Josh Lai,Port Adelaide,Fremantle Dockers,Def,19,20,PLAYED,94.0,436,538,102,23.39,402,367,35,86,76,10
+josh-lindsay,Josh Lindsay,West Coast,St Kilda Saints,Def,19,20,DNP,DNP,2373,2433,60,2.53,87,84,3,14,12,2
+josh-rachele,Josh Rachele,Adelaide,Fremantle Dockers,Fwd,19,20,PLAYED,55.0,2194,2114,-80,-3.65,100,108,-8,13,13,0
+josh-sinn,Josh Sinn,Port Adelaide,Essendon Bombers,Def,19,20,DNP,DNP,193,182,-11,-5.7,577,591,-14,121,118,3
+josh-smillie,Josh Smillie,Richmond,Carlton Blues,Mid,19,20,DNP,DNP,1233,1110,-123,-9.98,198,214,-16,82,92,-10
+josh-treacy,Josh Treacy,Fremantle,West Coast Eagles,Key Fwd,19,20,PLAYED,41.0,6349,6027,-322,-5.07,7,9,-2,1,1,0
+josh-ward,Josh Ward,Hawthorn,Essendon Bombers,Mid,19,20,PLAYED,122.0,2684,2721,37,1.38,72,71,1,41,41,0
+josh-worrell,Josh Worrell,Adelaide,West Coast Eagles,Key Def,19,20,PLAYED,104.0,3603,3895,292,8.1,41,33,8,8,3,5
+joshua-kelly,Joshua Kelly,GWS,Adelaide Crows,Mid,19,20,DNP,DNP,544,536,-8,-1.47,360,369,-9,124,132,-8
+joshua-weddle,Joshua Weddle,Hawthorn,Richmond Tigers,Def,19,20,PLAYED,68.0,1685,1651,-34,-2.02,145,150,-5,29,25,4
+judd-mcvee,Judd McVee,Fremantle,Richmond Tigers,Def,19,20,PLAYED,52.0,380,379,-1,-0.26,431,433,-2,91,85,6
+judson-clarke,Judson Clarke,Richmond,Collingwood Magpies,Fwd,19,20,DNP,DNP,90,90,0,0.0,672,673,-1,137,138,-1
+justin-mcinerney,Justin McInerney,Sydney,Carlton Blues,Mid,19,20,DNP,DNP,1920,1931,11,0.57,129,126,3,60,64,-4
+jy-farrar,Jy Farrar,Gold Coast,Free agents,Def,19,20,DNP,DNP,22,9,-13,-59.09,776,795,-19,100,158,-58
+jy-simpkin,Jy Simpkin,North Melbourne,Collingwood Magpies,Mid,19,20,PLAYED,129.0,870,983,113,12.99,260,242,18,98,101,-3
+jye-amiss,Jye Amiss,Fremantle,Collingwood Magpies,Key Fwd,19,20,PLAYED,121.0,1361,1713,352,25.86,185,148,37,20,15,5
+jye-caldwell,Jye Caldwell,Essendon,Brisbane Lions,Mid,19,20,DNP,DNP,1135,1145,10,0.88,207,209,-2,85,90,-5
+kade-chandler,Kade Chandler,Melbourne,Western Bulldogs,Fwd,19,20,PLAYED,56.0,1064,1066,2,0.19,218,224,-6,26,24,2
+kai-lohmann,Kai Lohmann,Brisbane,Collingwood Magpies,Fwd,19,20,PLAYED,80.0,745,787,42,5.64,288,285,3,35,34,1
+kalani-white,Kalani White,Melbourne,Essendon Bombers,Key Fwd,19,20,DNP,DNP,260,232,-28,-10.77,518,546,-28,68,73,-5
+kaleb-smith,Kaleb Smith,Richmond,Free agents,Def,19,20,DNP,DNP,122,124,2,1.64,636,638,-2,137,126,11
+kane-farrell,Kane Farrell,Port Adelaide,Essendon Bombers,Def,19,20,DNP,DNP,1455,1453,-2,-0.14,173,176,-3,37,32,5
+kane-mcauliffe,Kane McAuliffe,Richmond,Carlton Blues,Mid,19,20,DNP,DNP,1347,1357,10,0.74,187,188,-1,76,82,-6
+karl-amon,Karl Amon,Hawthorn,St Kilda Saints,Mid,19,20,DNP,DNP,546,429,-117,-21.43,359,406,-47,79,141,-62
+karl-worner,Karl Worner,Fremantle,North Melbourne Kangaroos,Def,19,20,PLAYED,74.0,1061,1065,4,0.38,219,225,-6,46,42,4
+kayle-gerreyn,Kayle Gerreyn,Essendon,Fremantle Dockers,Key Fwd,19,20,DNP,DNP,311,256,-55,-17.68,481,522,-41,66,69,-3
+keidean-coleman,Keidean Coleman,Brisbane,Melbourne Demons,Def,19,20,DNP,DNP,889,899,10,1.12,257,263,-6,52,47,5
+keighton-matofai-forbes,Keighton Matofai-Forbes,Geelong,Free agents,Def,19,20,DNP,DNP,249,249,0,0.0,525,526,-1,112,105,7
+kieren-briggs,Kieren Briggs,GWS,Adelaide Crows,Ruck,19,20,DNP,DNP,2424,2484,60,2.48,83,81,2,8,7,1
+kobe-mcdonald,Kobe McDonald,St Kilda,Hawthorn Hawks,Def,19,20,DNP,DNP,238,232,-6,-2.52,535,547,-12,118,112,6
+koby-coulson,Koby Coulson,Gold Coast,Carlton Blues,Mid,19,20,DNP,DNP,480,421,-59,-12.29,378,409,-31,128,142,-14
+koby-evans,Koby Evans,Brisbane,Free agents,Fwd,19,20,DNP,DNP,429,425,-4,-0.93,405,408,-3,56,53,3
+koltyn-tholstrup,Koltyn Tholstrup,Melbourne,Collingwood Magpies,Def,19,20,PLAYED,76.0,1515,1590,75,4.95,166,155,11,35,28,7
+kye-annand,Kye Annand,Richmond,Carlton Blues,Key Def,19,20,PLAYED,55.0,174,173,-1,-0.57,593,601,-8,61,63,-2
+kye-fincher,Kye Fincher,St Kilda,Hawthorn Hawks,Mid,19,20,DNP,DNP,441,388,-53,-12.02,400,425,-25,132,148,-16
+kyle-langford,Kyle Langford,Essendon,St Kilda Saints,Fwd,19,20,DNP,DNP,510,300,-210,-41.18,367,494,-127,48,79,-31
+kysaiah-pickett,Kysaiah Pickett,Melbourne,Richmond Tigers,Fwd,19,20,PLAYED,74.0,4001,3871,-130,-3.25,28,34,-6,1,2,-1
+lachie-jaques,Lachie Jaques,Western Bulldogs,Melbourne Demons,Def,19,20,DNP,DNP,853,874,21,2.46,265,267,-2,55,51,4
+lachie-neale,Lachie Neale,Brisbane,Sydney Swans,Mid,19,20,PLAYED,84.0,2390,2295,-95,-3.97,85,93,-8,47,49,-2
+lachie-sullivan,Lachie Sullivan,Collingwood,Free agents,Fwd,19,20,DNP,DNP,1,1,0,0.0,801,802,-1,182,180,2
+lachie-whitfield,Lachie Whitfield,GWS,North Melbourne Kangaroos,Mid,19,20,PLAYED,85.0,2266,2015,-251,-11.08,94,116,-22,19,60,-41
+lachlan-ash,Lachlan Ash,GWS,Melbourne Demons,Def,19,20,PLAYED,106.0,5535,5535,0,0.0,11,11,0,1,1,0
+lachlan-blakiston,Lachlan Blakiston,Essendon,West Coast Eagles,Key Def,19,20,PLAYED,48.0,16,16,0,0.0,782,783,-1,89,92,-3
+lachlan-bramble,Lachlan Bramble,Western Bulldogs,Collingwood Magpies,Fwd,19,20,PLAYED,102.0,62,83,21,33.87,704,684,20,149,142,7
+lachlan-carmichael,Lachlan Carmichael,Western Bulldogs,Hawthorn Hawks,Def,19,20,DNP,DNP,578,569,-9,-1.56,346,351,-5,72,69,3
+lachlan-cowan,Lachlan Cowan,Carlton,Essendon Bombers,Def,19,20,PLAYED,96.0,662,792,130,19.64,308,283,25,65,55,10
+lachlan-fogarty,Lachlan Fogarty,Carlton,Free agents,Fwd,19,20,DNP,DNP,75,71,-4,-5.33,691,699,-8,144,147,-3
+lachlan-gulbin,Lachlan Gulbin,Gold Coast,Sydney Swans,Fwd,19,20,DNP,DNP,308,312,4,1.3,485,484,1,78,75,3
+lachlan-jones,Lachlan Jones,Port Adelaide,Adelaide Crows,Def,19,20,PLAYED,50.0,148,152,4,2.7,615,620,-5,133,124,9
+lachlan-mcandrew,Lachlan McAndrew,Adelaide,Brisbane Lions,Ruck,19,20,PLAYED,92.0,1448,1460,12,0.83,176,175,1,15,17,-2
+lachlan-mcneil,Lachlan McNeil,Western Bulldogs,Free agents,Fwd,19,20,DNP,DNP,22,22,0,0.0,777,778,-1,177,176,1
+lachlan-schultz,Lachlan Schultz,Fremantle,Adelaide Crows,Fwd,19,20,DNP,DNP,824,834,10,1.21,272,275,-3,33,33,0
+lachlan-sholl,Lachlan Sholl,Adelaide,Free agents,Mid,19,20,DNP,DNP,225,216,-9,-4.0,541,558,-17,155,168,-13
+lachlan-smith,Lachlan Smith,Western Bulldogs,Collingwood Magpies,Ruck,19,20,DNP,DNP,690,709,19,2.75,300,305,-5,25,26,-1
+lachlan-weller,Lachlan Weller,Gold Coast,Brisbane Lions,Mid,19,20,DNP,DNP,83,81,-2,-2.41,681,687,-6,179,191,-12
+lachy-dovaston,Lachy Dovaston,North Melbourne,Fremantle Dockers,Fwd,19,20,DNP,DNP,849,851,2,0.24,267,271,-4,31,31,0
+laitham-vandermeer,Laitham Vandermeer,Western Bulldogs,Free agents,Fwd,19,20,DNP,DNP,32,31,-1,-3.12,757,762,-5,169,169,0
+lance-collard,Lance Collard,St Kilda,Hawthorn Hawks,Fwd,19,20,DNP,DNP,228,219,-9,-3.95,538,554,-16,89,90,-1
+latrelle-pickett,Latrelle Pickett,Melbourne,Collingwood Magpies,Fwd,19,20,PLAYED,21.0,576,583,7,1.22,347,339,8,45,42,3
+lawson-humphries,Lawson Humphries,Geelong,Geelong Cats,Def,19,20,PLAYED,81.0,1946,1927,-19,-0.98,128,128,0,26,22,4
+leek-aleer,Leek Aleer,GWS,Port Adelaide Power,Key Def,19,20,DNP,DNP,283,279,-4,-1.41,496,507,-11,48,49,-1
+lennox-hoffman,Lennox Hoffman,Geelong,St Kilda Saints,Def,19,20,DNP,DNP,251,250,-1,-0.4,523,525,-2,110,104,6
+leo-lombard,Leo Lombard,Gold Coast,Fremantle Dockers,Fwd,19,20,PLAYED,27.0,1671,1490,-181,-10.83,147,168,-21,17,18,-1
+leon-kickett,Leon Kickett,Fremantle,Free agents,Fwd,19,20,DNP,DNP,315,307,-8,-2.54,477,490,-13,75,77,-2
+levi-ashcroft,Levi Ashcroft,Brisbane,Essendon Bombers,Mid,19,20,PLAYED,64.0,3368,3349,-19,-0.56,49,51,-2,29,30,-1
+lewis-hayes,Lewis Hayes,Essendon,Western Bulldogs,Key Def,19,20,DNP,DNP,359,372,13,3.62,442,438,4,40,40,0
+lewis-melican,Lewis Melican,Sydney,Brisbane Lions,Key Def,19,20,DNP,DNP,55,55,0,0.0,715,713,2,79,81,-2
+lewis-young,Lewis Young,Carlton,Carlton Blues,Key Def,19,20,PLAYED,98.0,146,178,32,21.92,621,597,24,67,62,5
+liam-baker,Liam Baker,West Coast,Carlton Blues,Def,19,20,DNP,DNP,554,560,6,1.08,354,356,-2,76,71,5
+liam-duggan,Liam Duggan,West Coast,Adelaide Crows,Def,19,20,PLAYED,64.0,407,356,-51,-12.53,417,445,-28,88,88,0
+liam-fawcett,Liam Fawcett,Richmond,Carlton Blues,Key Fwd,19,20,DNP,DNP,509,496,-13,-2.55,368,382,-14,49,52,-3
+liam-henry,Liam Henry,St Kilda,Essendon Bombers,Fwd,19,20,DNP,DNP,83,84,1,1.2,682,683,-1,141,141,0
+liam-hetherton,Liam Hetherton,Sydney,St Kilda Saints,Key Fwd,19,20,DNP,DNP,223,204,-19,-8.52,545,566,-21,74,79,-5
+liam-mcmahon,Liam McMahon,Essendon,Free agents,Key Fwd,19,20,DNP,DNP,200,194,-6,-3.0,566,574,-8,80,81,-1
+liam-o-connell,Liam O'Connell,St Kilda,West Coast Eagles,Def,19,20,PLAYED,27.0,66,37,-29,-43.94,701,749,-48,151,146,5
+liam-puncher,Liam Puncher,Collingwood,North Melbourne Kangaroos,Key Def,19,20,PLAYED,36.0,157,108,-49,-31.21,609,651,-42,63,72,-9
+liam-reidy,Liam Reidy,Carlton,Western Bulldogs,Ruck,19,20,DNP,DNP,288,282,-6,-2.08,495,505,-10,50,51,-1
+liam-ryan,Liam Ryan,St Kilda,Melbourne Demons,Fwd,19,20,PLAYED,57.0,29,29,0,0.0,765,770,-5,172,171,1
+liam-stocker,Liam Stocker,St Kilda,Free Agents,Def,19,20,PLAYED,72.0,40,41,1,2.5,741,740,1,160,145,15
+lincoln-mccarthy,Lincoln McCarthy,Brisbane,Essendon Bombers,Fwd,19,20,DNP,DNP,24,24,0,0.0,772,775,-3,175,174,1
+lloyd-meek,Lloyd Meek,Hawthorn,Carlton Blues,Ruck,19,20,PLAYED,102.0,1383,1547,164,11.86,182,165,17,16,16,0
+logan-evans,Logan Evans,Port Adelaide,Sydney Swans,Def,19,20,PLAYED,72.0,1454,1475,21,1.44,174,172,2,38,31,7
+logan-mcdonald,Logan McDonald,Sydney,Essendon Bombers,Key Fwd,19,20,PLAYED,54.0,727,706,-21,-2.89,293,307,-14,37,39,-2
+logan-morris,Logan Morris,Brisbane,Sydney Swans,Key Fwd,19,20,PLAYED,76.0,3015,3087,72,2.39,56,60,-4,4,4,0
+logan-smith,Logan Smith,GWS,Fremantle Dockers,Ruck,19,20,DNP,DNP,444,448,4,0.9,398,401,-3,42,41,1
+louis-emmett,Louis Emmett,Western Bulldogs,Adelaide Crows,Ruck,19,20,DNP,DNP,909,915,6,0.66,252,258,-6,23,23,0
+lucas-camporeale,Lucas Camporeale,Carlton,Fremantle Dockers,Mid,19,20,DNP,DNP,276,246,-30,-10.87,505,531,-26,150,164,-14
+lucca-grego,Lucca Grego,West Coast,Melbourne Demons,Def,19,20,DNP,DNP,256,254,-2,-0.78,521,523,-2,109,102,7
+lukas-cooke,Lukas Cooke,Melbourne,Adelaide Crows,Key Def,19,20,PLAYED,61.0,154,163,9,5.84,610,610,0,64,65,-1
+luke-beecken,Luke Beecken,Brisbane,Port Adelaide Power,Mid,19,20,DNP,DNP,34,29,-5,-14.71,751,771,-20,188,207,-19
+luke-cleary,Luke Cleary,Western Bulldogs,Sydney Swans,Def,19,20,DNP,DNP,81,81,0,0.0,684,688,-4,146,136,10
+luke-davies-uniacke,Luke Davies-Uniacke,North Melbourne,Richmond Tigers,Mid,19,20,PLAYED,73.0,3776,3463,-313,-8.29,38,47,-9,22,26,-4
+luke-jackson,Luke Jackson,Fremantle,St Kilda Saints,Ruck,19,20,PLAYED,94.0,8694,8532,-162,-1.86,2,3,-1,1,1,0
+luke-kennedy,Luke Kennedy,Western Bulldogs,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,542,521,-21,-3.87,361,374,-13,125,134,-9
+luke-lloyd,Luke Lloyd,Brisbane,Free agents,Key Fwd,19,20,DNP,DNP,277,283,6,2.17,504,504,0,67,66,1
+luke-mcdonald,Luke McDonald,North Melbourne,Geelong Cats,Def,19,20,DNP,DNP,53,54,1,1.89,716,716,0,155,141,14
+luke-nankervis,Luke Nankervis,Adelaide,Western Bulldogs,Def,19,20,PLAYED,77.0,449,454,5,1.11,393,400,-7,85,81,4
+luke-parker,Luke Parker,North Melbourne,North Melbourne Kangaroos,Mid,19,20,PLAYED,91.0,1666,1486,-180,-10.8,148,170,-22,30,74,-44
+luke-pedlar,Luke Pedlar,Adelaide,Essendon Bombers,Fwd,19,20,DNP,DNP,142,143,1,0.7,624,628,-4,118,119,-1
+luke-ryan,Luke Ryan,Fremantle,West Coast Eagles,Def,19,20,PLAYED,94.0,1581,1565,-16,-1.01,155,160,-5,33,29,4
+luke-trainor,Luke Trainor,Richmond,Carlton Blues,Key Def,19,20,PLAYED,55.0,1433,1467,34,2.37,177,173,4,15,14,1
+luke-urquhart,Luke Urquhart,North Melbourne,Melbourne Demons,Mid,19,20,DNP,DNP,268,240,-28,-10.45,512,537,-25,152,166,-14
+luker-kentfield,Luker Kentfield,Melbourne,Carlton Blues,Key Fwd,19,20,DNP,DNP,357,357,0,0.0,443,444,-1,57,56,1
+mabior-chol,Mabior Chol,Hawthorn,Collingwood Magpies,Key Fwd,19,20,PLAYED,57.0,419,370,-49,-11.69,409,439,-30,53,55,-2
+mac-andrew,Mac Andrew,Gold Coast,Western Bulldogs,Key Def,19,20,PLAYED,95.0,3865,3957,92,2.38,33,29,4,1,1,0
+malakai-champion,Malakai Champion,West Coast,Melbourne Demons,Fwd,19,20,DNP,DNP,326,330,4,1.23,468,465,3,69,68,1
+malcolm-rosas,Malcolm Rosas,Sydney,Melbourne Demons,Fwd,19,20,PLAYED,18.0,33,30,-3,-9.09,753,766,-13,166,170,-4
+mani-liddy,Mani Liddy,Port Adelaide,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,38,35,-3,-7.89,744,753,-9,187,204,-17
+marc-pittonet,Marc Pittonet,Carlton,Sydney Swans,Ruck,19,20,PLAYED,66.0,569,541,-28,-4.92,348,364,-16,34,37,-3
+marcus-bontempelli,Marcus Bontempelli,Western Bulldogs,West Coast Eagles,Mid,19,20,PLAYED,99.0,4278,4172,-106,-2.48,22,25,-3,15,17,-2
+marcus-herbert,Marcus Herbert,West Coast,Essendon Bombers,Def,19,20,PLAYED,134.0,188,916,728,387.23,581,255,326,123,45,78
+marcus-windhager,Marcus Windhager,St Kilda,Western Bulldogs,Mid,19,20,PLAYED,73.0,2091,2105,14,0.67,110,109,1,53,56,-3
+mark-blicavs,Mark Blicavs,Geelong,Geelong Cats,Key Def,19,20,PLAYED,59.0,7,119,112,1600.0,796,642,154,192,69,123
+mark-keane,Mark Keane,Adelaide,Adelaide Crows,Key Def,19,20,DNP,DNP,1849,1784,-65,-3.52,135,141,-6,10,11,-1
+mark-o-connor,Mark O'Connor,Geelong,Brisbane Lions,Def,19,20,PLAYED,69.0,19,20,1,5.26,781,781,0,170,153,17
+mason-cox,Mason Cox,Fremantle,Geelong Cats,Key Fwd,19,20,PLAYED,76.0,1,2,1,100.0,802,800,2,103,101,2
+mason-redman,Mason Redman,Essendon,Collingwood Magpies,Def,19,20,PLAYED,76.0,1652,1594,-58,-3.51,149,153,-4,31,27,4
+mason-wood,Mason Wood,St Kilda,Port Adelaide Power,Fwd,19,20,PLAYED,97.0,455,512,57,12.53,391,378,13,51,46,5
+massimo-d-ambrosio,Massimo D'Ambrosio,Hawthorn,Geelong Cats,Mid,19,20,PLAYED,67.0,1527,1586,59,3.86,164,157,7,69,71,-2
+matt-carroll,Matt Carroll,Carlton,Western Bulldogs,Mid,19,20,DNP,DNP,952,963,11,1.16,241,246,-5,90,102,-12
+matt-cottrell,Matt Cottrell,Carlton,Adelaide Crows,Mid,19,20,PLAYED,42.0,74,49,-25,-33.78,694,722,-28,181,198,-17
+matt-duffy,Matt Duffy,Carlton,North Melbourne Kangaroos,Def,19,20,DNP,DNP,172,170,-2,-1.16,594,605,-11,126,120,6
+matt-guelfi,Matt Guelfi,Essendon,Free agents,Fwd,19,20,DNP,DNP,26,25,-1,-3.85,771,773,-2,174,172,2
+matt-hill,Matt Hill,Hawthorn,Free agents,Fwd,19,20,DNP,DNP,103,101,-2,-1.94,658,661,-3,132,134,-2
+matt-johnson-1,Matt Johnson,Fremantle,Carlton Blues,Mid,19,20,PLAYED,127.0,892,1055,163,18.27,256,226,30,97,96,1
+matt-owies,Matt Owies,Carlton,Free agents,Fwd,19,20,DNP,DNP,1,1,0,0.0,803,803,0,183,181,2
+matt-rowell,Matt Rowell,Gold Coast,Collingwood Magpies,Mid,19,20,PLAYED,92.0,3922,3946,24,0.61,31,30,1,20,19,1
+matt-whitlock,Matt Whitlock,North Melbourne,Adelaide Crows,Key Fwd,19,20,PLAYED,15.0,677,559,-118,-17.43,303,358,-55,40,47,-7
+mattaes-phillipou,Mattaes Phillipou,St Kilda,Brisbane Lions,Mid,19,20,PLAYED,102.0,2083,2290,207,9.94,112,94,18,54,50,4
+matthew-flynn,Matthew Flynn,West Coast,Sydney Swans,Ruck,19,20,DNP,DNP,675,674,-1,-0.15,305,312,-7,26,27,-1
+matthew-jefferson,Matthew Jefferson,Melbourne,Carlton Blues,Key Fwd,19,20,PLAYED,9.0,689,487,-202,-29.32,301,387,-86,39,53,-14
+matthew-kennedy-1,Matthew Kennedy,Western Bulldogs,St Kilda Saints,Mid,19,20,PLAYED,55.0,865,752,-113,-13.06,262,291,-29,99,115,-16
+matthew-leray,Matthew LeRay,Hawthorn,Hawthorn Hawks,Mid,19,20,DNP,DNP,424,373,-51,-12.03,408,436,-28,134,151,-17
+matthew-roberts,Matthew Roberts,Sydney,Carlton Blues,Def,19,20,PLAYED,69.0,1989,1996,7,0.35,123,121,2,25,19,6
+maurice-rioli-1,Maurice Rioli,Richmond,Sydney Swans,Fwd,19,20,DNP,DNP,41,42,1,2.44,739,739,0,161,161,0
+max-beattie,Max Beattie,Hawthorn,Carlton Blues,Fwd,19,20,DNP,DNP,46,45,-1,-2.17,731,732,-1,159,159,0
+max-gawn,Max Gawn,Melbourne,North Melbourne Kangaroos,Ruck,19,20,PLAYED,112.0,3372,3347,-25,-0.74,48,53,-5,5,5,0
+max-gruzewski,Max Gruzewski,GWS,Essendon Bombers,Key Fwd,19,20,PLAYED,70.0,353,548,195,55.24,447,361,86,59,48,11
+max-hall,Max Hall,St Kilda,Western Bulldogs,Fwd,19,20,PLAYED,90.0,2777,2807,30,1.08,67,69,-2,7,8,-1
+max-heath,Max Heath,Melbourne,Sydney Swans,Ruck,19,20,DNP,DNP,210,723,513,244.29,555,301,254,53,25,28
+max-holmes,Max Holmes,Geelong,Geelong Cats,Mid,19,20,DNP,DNP,7194,7269,75,1.04,6,6,0,4,4,0
+max-king-stk,Max King,St Kilda,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,334,332,-2,-0.6,457,463,-6,62,61,1
+max-king-syd,Maxwell King,Sydney,Richmond Tigers,Fwd,19,20,DNP,DNP,266,271,5,1.88,513,514,-1,86,83,3
+max-knobel,Max Knobel,Gold Coast,Fremantle Dockers,Ruck,19,20,DNP,DNP,491,495,4,0.81,374,383,-9,36,38,-2
+max-kondogiannis,Max Kondogiannis,Essendon,Hawthorn Hawks,Def,19,20,PLAYED,15.0,559,541,-18,-3.22,353,365,-12,75,74,1
+max-mapley,Max Mapley,Melbourne,Sydney Swans,Ruck,19,20,DNP,DNP,581,573,-8,-1.38,341,348,-7,32,34,-2
+max-michalanney,Max Michalanney,Adelaide,Carlton Blues,Def,19,20,PLAYED,59.0,579,560,-19,-3.28,345,357,-12,71,72,-1
+max-ramsden,Max Ramsden,Hawthorn,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,202,192,-10,-4.95,562,579,-17,79,83,-4
+michael-frederick,Michael Frederick,Fremantle,Port Adelaide Power,Fwd,19,20,PLAYED,70.0,105,111,6,5.71,656,649,7,130,128,2
+michael-sellwood,Michael Sellwood,Western Bulldogs,Brisbane Lions,Def,19,20,PLAYED,94.0,148,200,52,35.14,616,568,48,134,114,20
+milan-murdock,Milan Murdock,West Coast,Richmond Tigers,Fwd,19,20,PLAYED,59.0,475,347,-128,-26.95,382,451,-69,49,63,-14
+miles-bergman,Miles Bergman,Port Adelaide,Brisbane Lions,Def,19,20,PLAYED,69.0,849,830,-19,-2.24,268,277,-9,56,52,4
+mitch-georgiades,Mitch Georgiades,Port Adelaide,North Melbourne Kangaroos,Key Fwd,19,20,PLAYED,71.0,1479,1489,10,0.68,171,169,2,18,19,-1
+mitch-mcgovern,Mitch McGovern,Carlton,Geelong Cats,Key Fwd,19,20,PLAYED,63.0,28,238,210,750.0,768,540,228,165,71,94
+mitch-podhajski,Mitch Podhajski,Collingwood,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,23,16,-7,-30.43,774,784,-10,99,98,1
+mitch-zadow,Mitch Zadow,Port Adelaide,Port Adelaide Power,Fwd,19,20,PLAYED,35.0,94,76,-18,-19.15,669,693,-24,135,144,-9
+mitchell-edwards,Mitchell Edwards,Geelong,Western Bulldogs,Ruck,19,20,PLAYED,52.0,1915,2013,98,5.12,130,118,12,12,12,0
+mitchell-hinge,Mitchell Hinge,Adelaide,Collingwood Magpies,Def,19,20,DNP,DNP,478,469,-9,-1.88,379,394,-15,83,80,3
+mitchell-knevitt,Mitchell Knevitt,Geelong,Richmond Tigers,Mid,19,20,DNP,DNP,178,170,-8,-4.49,589,606,-17,162,176,-14
+mitchell-lewis,Mitchell Lewis,Hawthorn,North Melbourne Kangaroos,Key Fwd,19,20,DNP,DNP,646,661,15,2.32,314,317,-3,42,40,2
+mitchell-marsh,Mitchell Marsh,Adelaide,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,629,579,-50,-7.95,319,341,-22,45,44,1
+mitchito-owens,Mitchito Owens,St Kilda,Western Bulldogs,Key Fwd,19,20,PLAYED,67.0,2006,2010,4,0.2,121,119,2,8,7,1
+murphy-reid,Murphy Reid,Fremantle,Fremantle Dockers,Fwd,19,20,PLAYED,99.0,3998,4192,194,4.85,29,24,5,2,1,1
+mykelti-lefau,Mykelti Lefau,Richmond,Carlton Blues,Key Fwd,19,20,PLAYED,52.0,32,32,0,0.0,758,756,2,98,97,1
+nasiah-wanganeen-milera,Nasiah Wanganeen-Milera,St Kilda,Brisbane Lions,Mid,19,20,PLAYED,194.0,7460,8136,676,9.06,5,4,1,3,3,0
+nate-caddy,Nate Caddy,Essendon,Essendon Bombers,Key Fwd,19,20,PLAYED,63.0,1820,1771,-49,-2.69,138,142,-4,11,12,-1
+nathan-broad,Nathan Broad,Richmond,Richmond Tigers,Def,19,20,PLAYED,83.0,11,11,0,0.0,791,790,1,173,156,17
+nathan-o-driscoll,Nathan O'Driscoll,Fremantle,Essendon Bombers,Mid,19,20,PLAYED,81.0,658,694,36,5.47,310,310,0,113,121,-8
+nathan-wardius,Nathan Wardius,GWS,Western Bulldogs,Fwd,19,20,DNP,DNP,144,146,2,1.39,623,624,-1,117,116,1
+ned-bowman,Ned Bowman,Sydney,Free agents,Fwd,19,20,DNP,DNP,377,364,-13,-3.45,432,440,-8,65,62,3
+ned-long,Ned Long,Collingwood,Brisbane Lions,Mid,19,20,PLAYED,47.0,1362,1274,-88,-6.46,184,195,-11,74,86,-12
+ned-moyle,Ned Moyle,Gold Coast,St Kilda Saints,Ruck,19,20,PLAYED,47.0,2467,2131,-336,-13.62,80,104,-24,7,9,-2
+ned-reeves,Ned Reeves,Hawthorn,Richmond Tigers,Ruck,19,20,DNP,DNP,384,388,4,1.04,428,426,2,44,46,-2
+neil-erasmus,Neil Erasmus,Fremantle,Essendon Bombers,Mid,19,20,PLAYED,62.0,1031,1024,-7,-0.68,224,229,-5,87,97,-10
+nic-newman,Nic Newman,Carlton,West Coast Eagles,Def,19,20,DNP,DNP,792,792,0,0.0,275,284,-9,58,56,2
+nicholas-coffield,Nicholas Coffield,Western Bulldogs,West Coast Eagles,Def,19,20,PLAYED,82.0,53,54,1,1.89,717,717,0,156,142,14
+nicholas-holman,Nicholas Holman,Gold Coast,Free agents,Fwd,19,20,DNP,DNP,24,25,1,4.17,773,774,-1,176,173,3
+nicholas-martin,Nicholas Martin,Essendon,Melbourne Demons,Mid,19,20,DNP,DNP,3501,3503,2,0.06,46,46,0,27,25,2
+nick-blakey,Nick Blakey,Sydney,Collingwood Magpies,Def,19,20,PLAYED,97.0,4091,3988,-103,-2.52,26,27,-1,3,3,0
+nick-bryan,Nick Bryan,Essendon,Western Bulldogs,Ruck,19,20,DNP,DNP,860,835,-25,-2.91,263,274,-11,24,24,0
+nick-daicos,Nick Daicos,Collingwood,North Melbourne Kangaroos,Mid,19,20,PLAYED,144.0,8683,8990,307,3.54,3,2,1,2,2,0
+nick-driscoll,Nick Driscoll,Geelong,Port Adelaide Power,Mid,19,20,DNP,DNP,473,418,-55,-11.63,383,412,-29,129,143,-14
+nick-haynes,Nick Haynes,Carlton,West Coast Eagles,Def,19,20,PLAYED,74.0,100,101,1,1.0,661,662,-1,141,131,10
+nick-larkey,Nick Larkey,North Melbourne,Brisbane Lions,Key Fwd,19,20,PLAYED,52.0,644,633,-11,-1.71,316,325,-9,44,43,1
+nick-madden,Nick Madden,GWS,Hawthorn Hawks,Ruck,19,20,PLAYED,88.0,1482,1833,351,23.68,170,138,32,14,14,0
+nick-murray,Nick Murray,Adelaide,Fremantle Dockers,Key Def,19,20,PLAYED,58.0,410,420,10,2.44,414,411,3,37,37,0
+nick-vlastuin,Nick Vlastuin,Richmond,St Kilda Saints,Def,19,20,PLAYED,122.0,58,109,51,87.93,710,650,60,153,128,25
+nick-watson,Nick Watson,Hawthorn,West Coast Eagles,Fwd,19,20,PLAYED,102.0,3368,3638,270,8.02,50,41,9,3,3,0
+nikolas-cox,Nikolas Cox,Essendon,Essendon Bombers,Mid,19,20,PLAYED,24.0,235,174,-61,-25.96,536,599,-63,73,174,-101
+noah-anderson,Noah Anderson,Gold Coast,Richmond Tigers,Mid,19,20,PLAYED,125.0,4830,5126,296,6.13,16,15,1,11,11,0
+noah-answerth,Noah Answerth,Brisbane,St Kilda Saints,Def,19,20,PLAYED,28.0,31,31,0,0.0,760,763,-3,162,148,14
+noah-balta,Noah Balta,Richmond,Adelaide Crows,Key Def,19,20,DNP,DNP,549,516,-33,-6.01,356,376,-20,47,33,14
+noah-chamberlain,Noah Chamberlain,Sydney,St Kilda Saints,Fwd,19,20,DNP,DNP,158,160,2,1.27,606,615,-9,112,112,0
+noah-howes,Noah Howes,Collingwood,Essendon Bombers,Key Fwd,19,20,DNP,DNP,255,222,-33,-12.94,522,551,-29,70,74,-4
+noah-long,Noah Long,West Coast,Free agents,Fwd,19,20,DNP,DNP,208,193,-15,-7.21,557,577,-20,95,97,-2
+noah-mraz,Noah Mraz,Hawthorn,Melbourne Demons,Key Def,19,20,PLAYED,82.0,2198,3940,1742,79.25,98,32,66,7,2,5
+noah-roberts-thomson,Noah Roberts-Thomson,Richmond,Carlton Blues,Fwd,19,20,DNP,DNP,427,429,2,0.47,406,407,-1,57,52,5
+oisin-mullin,Oisin Mullin,Geelong,Geelong Cats,Def,19,20,PLAYED,24.0,11,10,-1,-9.09,792,793,-1,174,157,17
+oliver-florent,Oliver Florent,Carlton,Sydney Swans,Mid,19,20,PLAYED,97.0,657,667,10,1.52,311,315,-4,67,124,-57
+oliver-francou,Oliver Francou,West Coast,Fremantle Dockers,Mid,19,20,PLAYED,46.0,596,528,-68,-11.41,334,371,-37,119,133,-14
+oliver-griffin,Oliver Griffin,North Melbourne,Essendon Bombers,Fwd,19,20,DNP,DNP,197,191,-6,-3.05,571,583,-12,99,100,-1
+oliver-hannaford,Oliver Hannaford,GWS,Melbourne Demons,Fwd,19,20,DNP,DNP,419,413,-6,-1.43,410,416,-6,58,57,1
+oliver-hayes-brown,Oliver Hayes-Brown,Richmond,Brisbane Lions,Ruck,19,20,DNP,DNP,315,323,8,2.54,478,470,8,47,47,0
+oliver-henry,Oliver Henry,Geelong,Brisbane Lions,Fwd,19,20,PLAYED,82.0,91,91,0,0.0,671,671,0,136,137,-1
+oliver-hollands,Oliver Hollands,Carlton,Sydney Swans,Mid,19,20,DNP,DNP,1485,1482,-3,-0.2,169,171,-2,36,75,-39
+oliver-wiltshire,Oliver Wiltshire,Geelong,Port Adelaide Power,Fwd,19,20,PLAYED,78.0,102,99,-3,-2.94,659,664,-5,133,135,-2
+oliver-wines,Oliver Wines,Port Adelaide,St Kilda Saints,Mid,19,20,PLAYED,77.0,394,381,-13,-3.3,423,431,-8,138,149,-11
+ollie-dempsey,Ollie Dempsey,Geelong,Geelong Cats,Mid,19,20,PLAYED,58.0,2122,2128,6,0.28,106,105,1,51,54,-3
+ollie-greeves,Ollie Greeves,Hawthorn,Hawthorn Hawks,Mid,19,20,PLAYED,48.0,594,549,-45,-7.58,336,360,-24,120,131,-11
+ollie-lord,Ollie Lord,Port Adelaide,West Coast Eagles,Key Fwd,19,20,DNP,DNP,150,151,1,0.67,614,622,-8,85,86,-1
+ollie-murphy,Ollie Murphy,Fremantle,St Kilda Saints,Key Def,19,20,DNP,DNP,282,288,6,2.13,499,501,-2,49,48,1
+oscar-adams,Oscar Adams,Gold Coast,Melbourne Demons,Key Def,19,20,DNP,DNP,75,76,1,1.33,692,694,-2,149,79,70
+oscar-allen,Oscar Allen,West Coast,Carlton Blues,Key Fwd,19,20,DNP,DNP,158,158,0,0.0,607,617,-10,83,85,-2
+oscar-berry,Oscar Berry,Melbourne,Free agents,Key Def,19,20,DNP,DNP,107,122,15,14.02,651,640,11,72,68,4
+oscar-mcdonald,Oscar McDonald,Fremantle,Free agents,Key Def,19,20,PLAYED,57.0,44,43,-1,-2.27,734,737,-3,83,85,-2
+oscar-ryan,Oscar Ryan,Adelaide,Adelaide Crows,Def,19,20,DNP,DNP,290,287,-3,-1.03,494,502,-8,104,100,4
+oscar-steene,Oscar Steene,Collingwood,Adelaide Crows,Ruck,19,20,DNP,DNP,310,603,293,94.52,483,331,152,49,31,18
+oskar-baker,Oskar Baker,Western Bulldogs,Brisbane Lions,Mid,19,20,DNP,DNP,31,31,0,0.0,761,764,-3,170,205,-35
+oskar-taylor,Oskar Taylor,GWS,Hawthorn Hawks,Def,19,20,DNP,DNP,755,752,-3,-0.4,284,292,-8,62,58,4
+paddy-cross,Paddy Cross,Melbourne,Richmond Tigers,Fwd,19,20,PLAYED,44.0,42,32,-10,-23.81,738,757,-19,160,165,-5
+paddy-dow,Paddy Dow,St Kilda,Brisbane Lions,Mid,19,20,DNP,DNP,165,163,-2,-1.21,599,611,-12,164,178,-14
+patrick-carr,Patrick Carr,Richmond,Free agents,Ruck,19,20,DNP,DNP,581,573,-8,-1.38,342,349,-7,33,35,-2
+patrick-cripps,Patrick Cripps,Carlton,Port Adelaide Power,Mid,19,20,PLAYED,126.0,1701,1835,134,7.88,144,137,7,63,67,-4
+patrick-dangerfield,Patrick Dangerfield,Geelong,Port Adelaide Power,Mid,19,20,PLAYED,42.0,84,82,-2,-2.38,680,685,-5,140,190,-50
+patrick-lipinski,Patrick Lipinski,Collingwood,Collingwood Magpies,Fwd,19,20,PLAYED,75.0,895,912,17,1.9,254,260,-6,30,28,2
+patrick-retschko,Patrick Retschko,Geelong,Carlton Blues,Mid,19,20,PLAYED,49.0,1328,1318,-10,-0.75,190,193,-3,78,85,-7
+patrick-said,Patrick Said,St Kilda,Free agents,Fwd,19,20,DNP,DNP,183,182,-1,-0.55,584,592,-8,105,105,0
+patrick-snell,Patrick Snell,Sydney,Hawthorn Hawks,Key Def,19,20,DNP,DNP,244,247,3,1.23,529,527,2,53,54,-1
+patrick-voss,Patrick Voss,Fremantle,Fremantle Dockers,Key Fwd,19,20,PLAYED,82.0,1576,1754,178,11.29,156,143,13,16,13,3
+paul-curtis,Paul Curtis,North Melbourne,Richmond Tigers,Fwd,19,20,PLAYED,71.0,1530,1503,-27,-1.76,161,167,-6,19,17,2
+peter-ladhams,Peter Ladhams,Sydney,St Kilda Saints,Ruck,19,20,DNP,DNP,336,322,-14,-4.17,455,472,-17,45,48,-3
+peter-wright,Peter Wright,Essendon,Port Adelaide Power,Key Fwd,19,20,PLAYED,65.0,1820,1729,-91,-5.0,139,146,-7,12,14,-2
+phoenix-gothard,Phoenix Gothard,GWS,Hawthorn Hawks,Fwd,19,20,DNP,DNP,410,1859,1449,353.41,415,134,281,60,15,45
+reece-torrent,Reece Torrent,Brisbane,Free agents,Mid,19,20,DNP,DNP,209,191,-18,-8.61,556,584,-28,157,173,-16
+reef-mcinnes,Reef McInnes,Collingwood,North Melbourne Kangaroos,Key Def,19,20,DNP,DNP,77,80,3,3.9,688,689,-1,77,78,-1
+reilly-o-brien,Reilly O'Brien,Adelaide,Geelong Cats,Ruck,19,20,DNP,DNP,1115,1104,-11,-0.99,210,216,-6,18,19,-1
+reuben-ginbey,Reuben Ginbey,West Coast,Melbourne Demons,Key Def,19,20,DNP,DNP,2597,2599,2,0.08,73,77,-4,4,6,-2
+rhett-bazzo,Rhett Bazzo,West Coast,Carlton Blues,Key Def,19,20,PLAYED,65.0,599,584,-15,-2.5,332,338,-6,28,29,-1
+rhyan-mansell,Rhyan Mansell,Richmond,St Kilda Saints,Fwd,19,20,PLAYED,46.0,74,66,-8,-10.81,695,704,-9,146,150,-4
+rhylee-west,Rhylee West,Western Bulldogs,North Melbourne Kangaroos,Fwd,19,20,PLAYED,85.0,154,217,63,40.91,611,557,54,113,92,21
+rhys-stanley,Rhys Stanley,Geelong,Geelong Cats,Ruck,19,20,DNP,DNP,37,38,1,2.7,746,746,0,55,55,0
+rhys-unwin,Rhys Unwin,Essendon,Free agents,Fwd,19,20,DNP,DNP,182,181,-1,-0.55,585,595,-10,106,106,0
+riak-andrew,Riak Andrew,Sydney,Port Adelaide Power,Key Def,19,20,DNP,DNP,297,289,-8,-2.69,491,499,-8,46,47,-1
+ricky-mentha,Ricky Mentha,Melbourne,Western Bulldogs,Fwd,19,20,DNP,DNP,125,124,-1,-0.8,633,639,-6,122,126,-4
+riley-bice,Riley Bice,Sydney,Collingwood Magpies,Def,19,20,PLAYED,53.0,365,312,-53,-14.52,438,485,-47,94,97,-3
+riley-garcia,Riley Garcia,Western Bulldogs,Essendon Bombers,Fwd,19,20,DNP,DNP,113,112,-1,-0.88,643,647,-4,126,127,-1
+riley-hamilton,Riley Hamilton,GWS,Free agents,Fwd,19,20,PLAYED,28.0,278,269,-9,-3.24,503,516,-13,83,84,-1
+riley-hardeman,Riley Hardeman,North Melbourne,Sydney Swans,Def,19,20,DNP,DNP,247,311,64,25.91,528,486,42,114,98,16
+riley-onley,Riley Onley,Melbourne,Geelong Cats,Mid,19,20,DNP,DNP,376,328,-48,-12.77,433,467,-34,140,157,-17
+riley-thilthorpe,Riley Thilthorpe,Adelaide,Melbourne Demons,Key Fwd,19,20,PLAYED,76.0,4060,4076,16,0.39,27,26,1,3,3,0
+river-stevens,River Stevens,North Melbourne,Free agents,Fwd,19,20,DNP,DNP,176,173,-3,-1.7,591,602,-11,110,109,1
+roan-steele,Roan Steele,Collingwood,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,23,23,0,0.0,775,777,-2,190,208,-18
+rob-monahan,Rob Monahan,Carlton,Free agents,Def,19,20,DNP,DNP,171,172,1,0.58,596,604,-8,128,119,9
+robert-hansen,Robert Hansen,North Melbourne,West Coast Eagles,Fwd,19,20,DNP,DNP,113,105,-8,-7.08,644,657,-13,127,131,-4
+rory-laird,Rory Laird,Adelaide,North Melbourne Kangaroos,Def,19,20,DNP,DNP,930,929,-1,-0.11,246,252,-6,50,44,6
+rory-lobb,Rory Lobb,Western Bulldogs,Port Adelaide Power,Key Fwd,19,20,PLAYED,63.0,470,538,68,14.47,384,368,16,35,49,-14
+rowan-marshall,Rowan Marshall,St Kilda,Port Adelaide Power,Ruck,19,20,DNP,DNP,1853,1858,5,0.27,134,135,-1,13,13,0
+ryan-angwin,Ryan Angwin,GWS,Hawthorn Hawks,Mid,19,20,PLAYED,82.0,410,493,83,20.24,416,384,32,136,135,1
+ryan-byrnes,Ryan Byrnes,St Kilda,Adelaide Crows,Mid,19,20,PLAYED,70.0,107,89,-18,-16.82,652,675,-23,140,187,-47
+ryan-gardner,Ryan Gardner,Western Bulldogs,Free agents,Key Def,19,20,DNP,DNP,32,33,1,3.12,759,755,4,87,90,-3
+ryan-lester,Ryan Lester,Brisbane,Sydney Swans,Key Def,19,20,PLAYED,77.0,540,544,4,0.74,363,362,1,31,31,0
+ryan-maric,Ryan Maric,West Coast,St Kilda Saints,Mid,19,20,PLAYED,84.0,1351,1452,101,7.48,186,177,9,75,77,-2
+ryda-luke,Ryda Luke,Fremantle,Free agents,Fwd,19,20,DNP,DNP,197,191,-6,-3.05,572,585,-13,100,101,-1
+ryley-sanders,Ryley Sanders,Western Bulldogs,Sydney Swans,Mid,19,20,PLAYED,78.0,3392,3429,37,1.09,47,48,-1,28,27,1
+saad-el-hawli,Saad El-Hawli,Essendon,North Melbourne Kangaroos,Def,19,20,DNP,DNP,21,20,-1,-4.76,779,782,-3,169,154,15
+sam-allen,Sam Allen,West Coast,Sydney Swans,Mid,19,20,DNP,DNP,747,686,-61,-8.17,287,311,-24,106,122,-16
+sam-banks,Sam Banks,Richmond,Carlton Blues,Def,19,20,PLAYED,83.0,997,1195,198,19.86,233,200,33,47,35,12
+sam-berry,Sam Berry,Adelaide,Sydney Swans,Mid,19,20,PLAYED,116.0,3509,3611,102,2.91,45,42,3,26,22,4
+sam-butler-1,Sam Butler,Hawthorn,Richmond Tigers,Fwd,19,20,DNP,DNP,105,102,-3,-2.86,657,660,-3,131,133,-2
+sam-clohesy,Sam Clohesy,Gold Coast,Sydney Swans,Mid,19,20,DNP,DNP,269,270,1,0.37,509,515,-6,151,162,-11
+sam-cumming,Sam Cumming,Richmond,Carlton Blues,Mid,19,20,PLAYED,82.0,2822,2906,84,2.98,65,65,0,38,37,1
+sam-darcy,Sam Darcy,Western Bulldogs,Adelaide Crows,Key Fwd,19,20,DNP,DNP,4820,4826,6,0.12,17,17,0,2,2,0
+sam-davidson,Sam Davidson,Western Bulldogs,Brisbane Lions,Fwd,19,20,PLAYED,58.0,70,72,2,2.86,700,698,2,148,146,2
+sam-de-koning,Sam De Koning,Geelong,Geelong Cats,Key Def,19,20,DNP,DNP,1008,1021,13,1.29,227,230,-3,19,20,-1
+sam-draper,Sam Draper,Brisbane,North Melbourne Kangaroos,Ruck,19,20,PLAYED,68.0,939,916,-23,-2.45,243,256,-13,21,22,-1
+sam-durham,Sam Durham,Essendon,West Coast Eagles,Mid,19,20,PLAYED,73.0,2529,2455,-74,-2.93,77,82,-5,43,45,-2
+sam-flanders,Sam Flanders,St Kilda,Adelaide Crows,Mid,19,20,DNP,DNP,2086,2083,-3,-0.14,111,110,1,22,57,-35
+sam-lalor,Sam Lalor,Richmond,Carlton Blues,Mid,19,20,PLAYED,37.0,4095,3868,-227,-5.54,25,35,-10,18,20,-2
+sam-marshall,Sam Marshall,Brisbane,Western Bulldogs,Mid,19,20,DNP,DNP,915,861,-54,-5.9,249,269,-20,94,107,-13
+sam-powell-pepper,Sam Powell-Pepper,Port Adelaide,Adelaide Crows,Fwd,19,20,DNP,DNP,275,272,-3,-1.09,506,513,-7,84,82,2
+sam-sturt,Sam Sturt,Fremantle,Free agents,Fwd,19,20,DNP,DNP,53,53,0,0.0,718,718,0,154,152,2
+sam-switkowski,Sam Switkowski,Fremantle,Sydney Swans,Fwd,19,20,PLAYED,47.0,29,24,-5,-17.24,766,776,-10,173,175,-2
+sam-taylor,Sam Taylor,GWS,North Melbourne Kangaroos,Key Def,19,20,PLAYED,45.0,1494,1449,-45,-3.01,168,179,-11,13,15,-2
+sam-walsh,Sam Walsh,Carlton,Brisbane Lions,Mid,19,20,PLAYED,125.0,3098,3215,117,3.78,55,56,-1,33,32,1
+sam-wicks,Sam Wicks,Sydney,Collingwood Magpies,Fwd,19,20,DNP,DNP,27,103,76,281.48,769,659,110,166,132,34
+samson-ryan,Samson Ryan,Richmond,West Coast Eagles,Ruck,19,20,DNP,DNP,413,401,-12,-2.91,413,421,-8,43,45,-2
+samuel-collins,Samuel Collins,Gold Coast,St Kilda Saints,Key Def,19,20,PLAYED,57.0,855,794,-61,-7.13,264,282,-18,23,24,-1
+samuel-grlj,Samuel Grlj,Richmond,Collingwood Magpies,Mid,19,20,PLAYED,40.0,2103,1947,-156,-7.42,109,124,-15,52,63,-11
+samuel-swadling,Samuel Swadling,Collingwood,Essendon Bombers,Mid,19,20,DNP,DNP,985,914,-71,-7.21,235,259,-24,89,105,-16
+sandy-brock,Sandy Brock,West Coast,Sydney Swans,Key Def,19,20,PLAYED,46.0,201,265,64,31.84,563,518,45,59,52,7
+scott-pendlebury,Scott Pendlebury,Collingwood,North Melbourne Kangaroos,Mid,19,20,PLAYED,94.0,447,471,24,5.37,394,393,1,131,140,-9
+sean-darcy,Sean Darcy,Fremantle,Collingwood Magpies,Ruck,19,20,DNP,DNP,920,926,6,0.65,248,254,-6,22,21,1
+seth-campbell,Seth Campbell,Richmond,St Kilda Saints,Fwd,19,20,PLAYED,34.0,1050,983,-67,-6.38,220,243,-23,27,27,0
+shadeau-brain,Shadeau Brain,Brisbane,Essendon Bombers,Def,19,20,DNP,DNP,80,93,13,16.25,685,669,16,147,134,13
+shai-bolton,Shai Bolton,Fremantle,St Kilda Saints,Fwd,19,20,PLAYED,77.0,2393,2399,6,0.25,84,88,-4,9,9,0
+shannon-neale,Shannon Neale,Geelong,Geelong Cats,Key Fwd,19,20,PLAYED,104.0,2153,2307,154,7.15,103,92,11,6,5,1
+shaun-mannagh,Shaun Mannagh,Geelong,West Coast Eagles,Fwd,19,20,PLAYED,97.0,609,704,95,15.6,329,309,20,40,37,3
+sid-draper,Sid Draper,Adelaide,Melbourne Demons,Mid,19,20,DNP,DNP,1151,1152,1,0.09,205,205,0,84,89,-5
+steele-sidebottom,Steele Sidebottom,Collingwood,West Coast Eagles,Mid,19,20,PLAYED,90.0,102,98,-4,-3.92,660,665,-5,173,185,-12
+steely-green,Steely Green,Richmond,Sydney Swans,Fwd,19,20,DNP,DNP,160,162,2,1.25,604,614,-10,111,111,0
+stephen-coniglio,Stephen Coniglio,GWS,Port Adelaide Power,Mid,19,20,PLAYED,118.0,165,163,-2,-1.21,600,612,-12,165,179,-14
+sullivan-robey,Sullivan Robey,Essendon,Fremantle Dockers,Mid,19,20,PLAYED,59.0,2870,2909,39,1.36,63,64,-1,36,36,0
+tai-hayes,Tai Hayes,Brisbane,Hawthorn Hawks,Fwd,19,20,DNP,DNP,259,244,-15,-5.79,519,533,-14,88,87,1
+taj-hotton,Taj Hotton,Richmond,Hawthorn Hawks,Mid,19,20,PLAYED,43.0,2038,2168,130,6.38,117,99,18,57,52,5
+talor-byrne,Talor Byrne,Carlton,Western Bulldogs,Fwd,19,20,PLAYED,123.0,734,903,169,23.02,291,261,30,38,29,9
+tanner-bruhn,Tanner Bruhn,Geelong,Brisbane Lions,Mid,19,20,PLAYED,112.0,1963,2123,160,8.15,126,107,19,59,55,4
+taylor-goad,Taylor Goad,North Melbourne,Richmond Tigers,Ruck,19,20,DNP,DNP,1011,1015,4,0.4,226,233,-7,20,20,0
+taylor-walker,Taylor Walker,Adelaide,Geelong Cats,Key Fwd,19,20,PLAYED,92.0,145,215,70,48.28,622,560,62,86,76,10
+tew-jiath,Tew Jiath,Collingwood,Hawthorn Hawks,Def,19,20,DNP,DNP,239,239,0,0.0,532,539,-7,115,108,7
+thomas-anastasopoulos,Tom Anastasopoulos,Port Adelaide,Free agents,Fwd,19,20,DNP,DNP,319,317,-2,-0.63,473,478,-5,72,70,2
+thomas-burton,Thomas Burton,Richmond,Carlton Blues,Fwd,19,20,DNP,DNP,337,343,6,1.78,453,454,-1,67,65,2
+thomas-liberatore,Thomas Liberatore,Western Bulldogs,West Coast Eagles,Mid,19,20,PLAYED,86.0,1683,1566,-117,-6.95,146,159,-13,64,72,-8
+thomas-matthews,Thomas Matthews,Melbourne,Melbourne Demons,Fwd,19,20,DNP,DNP,521,512,-9,-1.73,366,379,-13,47,47,0
+thomas-sims,Thomas Sims,Richmond,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,1108,1104,-4,-0.36,211,217,-6,24,26,-2
+thomas-stewart,Thomas Stewart,Geelong,Port Adelaide Power,Def,19,20,PLAYED,123.0,1119,1237,118,10.55,208,197,11,43,34,9
+tim-kelly,Tim Kelly,West Coast,St Kilda Saints,Mid,19,20,PLAYED,103.0,774,820,46,5.94,278,278,0,104,110,-6
+tim-membrey,Tim Membrey,St Kilda,Port Adelaide Power,Key Fwd,19,20,PLAYED,65.0,205,207,2,0.98,559,562,-3,77,77,0
+tim-taranto,Tim Taranto,Richmond,West Coast Eagles,Mid,19,20,PLAYED,74.0,2499,2403,-96,-3.84,78,87,-9,44,48,-4
+timothy-english,Timothy English,Western Bulldogs,Adelaide Crows,Ruck,19,20,PLAYED,95.0,3680,3688,8,0.22,39,38,1,4,4,0
+tobie-travaglia,Tobie Travaglia,St Kilda,Melbourne Demons,Def,19,20,PLAYED,45.0,697,707,10,1.43,299,306,-7,64,61,3
+toby-bedford,Toby Bedford,GWS,Brisbane Lions,Fwd,19,20,PLAYED,54.0,263,242,-21,-7.98,514,535,-21,87,88,-1
+toby-conway,Toby Conway,Geelong,Essendon Bombers,Ruck,19,20,DNP,DNP,562,564,2,0.36,352,352,0,35,36,-1
+toby-greene,Toby Greene,GWS,North Melbourne Kangaroos,Fwd,19,20,DNP,DNP,1007,1021,14,1.39,229,231,-2,29,25,4
+toby-mcmullin,Toby McMullin,GWS,Melbourne Demons,Fwd,19,20,DNP,DNP,148,144,-4,-2.7,617,625,-8,115,117,-2
+toby-murray,Toby Murray,Adelaide,Adelaide Crows,Key Fwd,19,20,PLAYED,34.0,241,276,35,14.52,530,510,20,72,68,4
+toby-nankervis,Toby Nankervis,Richmond,West Coast Eagles,Ruck,19,20,PLAYED,97.0,2151,2145,-6,-0.28,104,103,1,9,8,1
+toby-pink,Toby Pink,North Melbourne,Free agents,Key Def,19,20,DNP,DNP,15,15,0,0.0,783,786,-3,90,93,-3
+toby-whan,Toby Whan,Fremantle,Richmond Tigers,Fwd,19,20,DNP,DNP,197,191,-6,-3.05,573,586,-13,101,102,-1
+tobyn-murray,Tobyn Murray,Fremantle,West Coast Eagles,Fwd,19,20,DNP,DNP,401,381,-20,-4.99,419,432,-13,61,61,0
+todd-marshall,Todd Marshall,Port Adelaide,Adelaide Crows,Key Fwd,19,20,PLAYED,51.0,112,113,1,0.89,646,645,1,87,88,-1
+tom-atkins,Tom Atkins,Geelong,Port Adelaide Power,Mid,19,20,PLAYED,103.0,343,410,67,19.53,448,418,30,142,144,-2
+tom-barrass,Tom Barrass,Hawthorn,Brisbane Lions,Key Def,19,20,PLAYED,52.0,120,113,-7,-5.83,637,646,-9,70,71,-1
+tom-blamires,Tom Blamires,North Melbourne,Richmond Tigers,Def,19,20,DNP,DNP,97,101,4,4.12,662,663,-1,142,132,10
+tom-brown,Tom Brown,Richmond,Carlton Blues,Def,19,20,PLAYED,99.0,433,577,144,33.26,404,342,62,87,67,20
+tom-cochrane,Tom Cochrane,Port Adelaide,Essendon Bombers,Fwd,19,20,DNP,DNP,199,198,-1,-0.5,567,570,-3,97,95,2
+tom-cole,Tom Cole,West Coast,Port Adelaide Power,Def,19,20,PLAYED,94.0,30,30,0,0.0,762,767,-5,163,149,14
+tom-de-koning,Tom De Koning,St Kilda,Essendon Bombers,Ruck,19,20,PLAYED,104.0,1976,2031,55,2.78,125,114,11,11,11,0
+tom-doedee,Tom Doedee,Brisbane,Free agents,Def,19,20,DNP,DNP,356,353,-3,-0.84,444,448,-4,96,89,7
+tom-edwards,Tom Edwards,Essendon,Free agents,Key Fwd,19,20,DNP,DNP,48,69,21,43.75,725,701,24,95,90,5
+tom-green,Tom Green,GWS,Essendon Bombers,Mid,19,20,DNP,DNP,4584,4565,-19,-0.41,18,19,-1,12,13,-1
+tom-gross,Tom Gross,West Coast,Melbourne Demons,Mid,19,20,DNP,DNP,634,637,3,0.47,317,323,-6,115,126,-11
+tom-hanily,Tom Hanily,Sydney,Richmond Tigers,Fwd,19,20,DNP,DNP,106,154,48,45.28,654,619,35,129,114,15
+tom-lynch-1,Tom Lynch,Richmond,Adelaide Crows,Key Fwd,19,20,PLAYED,55.0,48,48,0,0.0,726,726,0,96,94,2
+tom-mccarthy,Tom McCarthy,West Coast,Melbourne Demons,Def,19,20,PLAYED,96.0,1592,1595,3,0.19,153,152,1,32,26,6
+tom-mccartin,Tom McCartin,Sydney,Sydney Swans,Key Def,19,20,PLAYED,59.0,2073,1982,-91,-4.39,113,123,-10,8,9,-1
+tom-mcdonald,Tom McDonald,Melbourne,Geelong Cats,Key Def,19,20,PLAYED,47.0,269,182,-87,-32.34,510,593,-83,50,60,-10
+tom-papley,Tom Papley,Sydney,Geelong Cats,Fwd,19,20,PLAYED,94.0,441,524,83,18.82,401,373,28,54,45,9
+tom-powell,Tom Powell,North Melbourne,Carlton Blues,Mid,19,20,DNP,DNP,2207,2014,-193,-8.74,96,117,-21,11,61,-50
+tom-sparrow,Tom Sparrow,Melbourne,Sydney Swans,Mid,19,20,PLAYED,83.0,1389,1394,5,0.36,180,184,-4,72,80,-8
+touk-miller,Touk Miller,Gold Coast,Geelong Cats,Mid,19,20,PLAYED,79.0,1528,1462,-66,-4.32,162,174,-12,68,76,-8
+trent-rivers,Trent Rivers,Melbourne,Western Bulldogs,Def,19,20,PLAYED,67.0,1889,1719,-170,-9.0,131,147,-16,27,24,3
+tristan-xerri,Tristan Xerri,North Melbourne,Sydney Swans,Ruck,19,20,PLAYED,77.0,7552,7428,-124,-1.64,4,5,-1,2,2,0
+ty-gallop,Ty Gallop,Brisbane,Adelaide Crows,Key Fwd,19,20,PLAYED,80.0,1223,1551,328,26.82,199,163,36,22,18,4
+tyan-prindable,Tyan Prindable,Collingwood,Fremantle Dockers,Mid,19,20,DNP,DNP,671,600,-71,-10.58,307,334,-27,112,128,-16
+tylah-williams,Tylah Williams,West Coast,Melbourne Demons,Fwd,19,20,DNP,DNP,419,414,-5,-1.19,411,414,-3,59,56,3
+tylar-young,Tylar Young,West Coast,Richmond Tigers,Key Def,19,20,PLAYED,72.0,296,298,2,0.68,492,495,-3,47,45,2
+tyler-brockman,Tyler Brockman,West Coast,Free Agents,Fwd,19,20,DNP,DNP,77,76,-1,-1.3,689,695,-6,143,145,-2
+tyler-sonsie,Tyler Sonsie,Richmond,Essendon Bombers,Mid,19,20,PLAYED,57.0,1084,1086,2,0.18,214,221,-7,86,95,-9
+tyler-welsh,Tyler Welsh,Adelaide,Melbourne Demons,Key Fwd,19,20,DNP,DNP,216,192,-24,-11.11,551,580,-29,75,84,-9
+tyrell-dewar,Tyrell Dewar,West Coast,Melbourne Demons,Fwd,19,20,DNP,DNP,167,159,-8,-4.79,598,616,-18,129,113,16
+tyson-stengle,Tyson Stengle,Richmond,St Kilda Saints,Fwd,19,20,DNP,DNP,228,226,-2,-0.88,539,550,-11,90,89,1
+vigo-visentini,Vigo Visentini,Essendon,Carlton Blues,Ruck,19,20,DNP,DNP,328,319,-9,-2.74,465,475,-10,46,49,-3
+wade-derksen,Wade Derksen,Carlton,Western Bulldogs,Key Def,19,20,PLAYED,72.0,80,82,2,2.5,686,686,0,76,77,-1
+wayne-milera,Wayne Milera,Adelaide,Sydney Swans,Def,19,20,PLAYED,80.0,2025,1942,-83,-4.1,120,125,-5,23,21,2
+wil-dawson,Wil Dawson,North Melbourne,Collingwood Magpies,Key Def,19,20,DNP,DNP,595,595,0,0.0,335,335,0,29,27,2
+wil-parker,Wil Parker,Collingwood,Western Bulldogs,Def,19,20,DNP,DNP,33,32,-1,-3.03,754,758,-4,161,147,14
+wil-powell,Wil Powell,Gold Coast,Adelaide Crows,Def,19,20,PLAYED,40.0,958,936,-22,-2.3,239,250,-11,49,43,6
+will-ashcroft,Will Ashcroft,Brisbane,Carlton Blues,Mid,19,20,PLAYED,137.0,6020,6224,204,3.39,9,8,1,6,6,0
+will-brodie,Will Brodie,Port Adelaide,Brisbane Lions,Mid,19,20,DNP,DNP,1007,1014,7,0.7,230,234,-4,88,98,-10
+will-darcy,Will Darcy,Western Bulldogs,Fremantle Dockers,Key Def,19,20,DNP,DNP,488,483,-5,-1.02,375,390,-15,34,35,-1
+will-day,Will Day,Hawthorn,Richmond Tigers,Mid,19,20,PLAYED,100.0,2822,2895,73,2.59,66,66,0,39,38,1
+will-edwards,Will Edwards,Sydney,Essendon Bombers,Key Def,19,20,PLAYED,47.0,220,275,55,25.0,547,511,36,56,50,6
+will-graham,Will Graham,Gold Coast,Hawthorn Hawks,Fwd,19,20,DNP,DNP,1569,1590,21,1.34,159,156,3,18,16,2
+will-green,Will Green,Sydney,Essendon Bombers,Ruck,19,20,DNP,DNP,651,658,7,1.08,312,318,-6,27,28,-1
+will-hayes-b,Will Hayes,Collingwood,West Coast Eagles,Fwd,19,20,DNP,DNP,309,311,2,0.65,484,487,-3,77,76,1
+will-hayward,Will Hayward,Carlton,Adelaide Crows,Fwd,19,20,PLAYED,76.0,217,219,2,0.92,550,555,-5,94,91,3
+will-lewis,Will Lewis,Western Bulldogs,Sydney Swans,Key Fwd,19,20,DNP,DNP,9,16,7,77.78,794,785,9,102,99,3
+will-lorenz,Will Lorenz,Port Adelaide,Richmond Tigers,Mid,19,20,DNP,DNP,281,399,118,41.99,501,423,78,149,147,2
+will-mclachlan,Will McLachlan,Brisbane,Free agents,Fwd,19,20,DNP,DNP,116,131,15,12.93,640,634,6,124,123,1
+will-setterfield,Will Setterfield,Essendon,Brisbane Lions,Mid,19,20,PLAYED,63.0,910,786,-124,-13.63,251,286,-35,95,112,-17
+willem-drew,Willem Drew,Port Adelaide,Adelaide Crows,Mid,19,20,PLAYED,74.0,723,721,-2,-0.28,295,302,-7,108,118,-10
+willem-duursma,Willem Duursma,West Coast,Fremantle Dockers,Mid,19,20,PLAYED,55.0,4296,4410,114,2.65,20,20,0,14,14,0
+william-mccabe,William McCabe,Hawthorn,Hawthorn Hawks,Key Fwd,19,20,DNP,DNP,757,738,-19,-2.51,283,295,-12,36,37,-1
+xavier-bamert,Xavier Bamert,Port Adelaide,Richmond Tigers,Fwd,19,20,PLAYED,18.0,398,344,-54,-13.57,420,452,-32,62,64,-2
+xavier-duursma,Xavier Duursma,Essendon,North Melbourne Kangaroos,Mid,19,20,DNP,DNP,201,203,2,1.0,564,567,-3,159,170,-11
+xavier-lindsay,Xavier Lindsay,Melbourne,Western Bulldogs,Def,19,20,DNP,DNP,2119,2124,5,0.24,108,106,2,21,18,3
+xavier-o-halloran,Xavier O'Halloran,GWS,Sydney Swans,Mid,19,20,PLAYED,103.0,52,47,-5,-9.62,719,728,-9,155,199,-44
+xavier-taylor,Xavier Taylor,Melbourne,Richmond Tigers,Def,19,20,DNP,DNP,893,888,-5,-0.56,255,265,-10,51,49,2
+xavier-walsh,Xavier Walsh,Port Adelaide,Free agents,Key Def,19,20,DNP,DNP,222,230,8,3.6,546,548,-2,55,57,-2
+zac-bailey,Zac Bailey,Brisbane,North Melbourne Kangaroos,Fwd,19,20,PLAYED,126.0,3000,3148,148,4.93,58,58,0,4,5,-1
+zac-banch,Zac Banch,North Melbourne,Free agents,Fwd,19,20,PLAYED,34.0,52,35,-17,-32.69,720,754,-34,156,164,-8
+zac-fisher,Zac Fisher,North Melbourne,Port Adelaide Power,Fwd,19,20,DNP,DNP,181,180,-1,-0.55,586,596,-10,107,107,0
+zac-mccarthy,Zac McCarthy,Collingwood,West Coast Eagles,Key Fwd,19,20,DNP,DNP,342,302,-40,-11.7,449,492,-43,60,64,-4
+zac-taylor,Zac Taylor,Adelaide,Western Bulldogs,Fwd,19,20,PLAYED,35.0,326,257,-69,-21.17,469,521,-52,70,85,-15
+zac-walker,Zac Walker,Western Bulldogs,Free agents,Def,19,20,DNP,DNP,220,219,-1,-0.45,548,556,-8,119,113,6
+zach-guthrie,Zach Guthrie,Geelong,Geelong Cats,Def,19,20,PLAYED,81.0,354,320,-34,-9.6,446,474,-28,97,95,2
+zach-reid,Zach Reid,Essendon,Hawthorn Hawks,Key Def,19,20,PLAYED,43.0,1461,1402,-59,-4.04,172,182,-10,14,16,-2
+zachary-merrett,Zachary Merrett,Essendon,West Coast Eagles,Mid,19,20,PLAYED,101.0,2770,2753,-17,-0.61,68,70,-2,40,40,0
+zachary-williams,Zachary Williams,Carlton,St Kilda Saints,Def,19,20,DNP,DNP,193,183,-10,-5.18,578,589,-11,122,116,6
+zak-butters,Zak Butters,Port Adelaide,Geelong Cats,Mid,19,20,DNP,DNP,6249,6314,65,1.04,8,7,1,5,5,0
+zak-evans,Zak Evans,Gold Coast,Free agents,Mid,19,20,DNP,DNP,7,7,0,0.0,797,797,0,193,210,-17
+zak-johnson,Zak Johnson,Essendon,Richmond Tigers,Def,19,20,DNP,DNP,567,574,7,1.23,349,345,4,73,68,5
+zane-duursma,Zane Duursma,North Melbourne,Richmond Tigers,Fwd,19,20,DNP,DNP,742,757,15,2.02,289,290,-1,36,35,1
+zane-peucker,Zane Peucker,Richmond,Carlton Blues,Fwd,19,20,PLAYED,32.0,563,602,39,6.93,351,332,19,46,41,5
+zane-zakostelsky,Zane Zakostelsky,Brisbane,Fremantle Dockers,Key Def,19,20,DNP,DNP,465,466,1,0.22,386,396,-10,36,36,0
+zeke-uwland,Zeke Uwland,Gold Coast,Fremantle Dockers,Def,19,20,PLAYED,28.0,2720,2643,-77,-2.83,69,73,-4,10,9,1
