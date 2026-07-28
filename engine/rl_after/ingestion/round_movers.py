@@ -45,6 +45,13 @@ import json
 import os
 
 try:
+    from . import out_of_round_column as OOC
+except (ImportError, ValueError):    # allow direct-script / non-package execution
+    import sys as _sys
+    _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import out_of_round_column as OOC   # type: ignore
+
+try:
     from . import round_history as RH
 except (ImportError, ValueError):
     import round_history as RH  # type: ignore
@@ -218,17 +225,33 @@ def inject_release_contract(working_path, repo_root, as_of_round):
 
 
 # ---- the report -----------------------------------------------------------------------------------
+def point_key(point):
+    """The `by_round` key for a comparison point. An integer round keeps its plain numeric key; an
+    out-of-round column (see out_of_round_column.py) is already a string id and is used verbatim.
+
+    Rounds are NOT the only comparison points any more — the board also moves outside a round (the
+    D1/D2 restructure; later the re-derivation and ITEM 412) — so a point is addressed by id, never by
+    arithmetic on a round number."""
+    if isinstance(point, str) and not point.lstrip('-').isdigit():
+        return point
+    return str(int(point))
+
+
 def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at=None,
-                 release_identity_override=None):
-    """Build the full movers report for a committed round from the two committed boards (via histories).
+                 release_identity_override=None, from_point=None):
+    """Build the full movers report for a committed round, comparing two STORED points in the histories.
 
     `played` maps stable key -> submitted score for players LISTED this round (a score of 0 is a
     legitimate played score); a key absent from it is DNP. `evidence` carries the transaction's
     store/board md5 before/after + txn id (from the applier result). `release_identity_override`, when
     given, is the round's FROZEN governing identity (used by a historical repair so the rebuilt report
-    keeps its original release/board/store identity instead of the current manifest's)."""
+    keeps its original release/board/store identity instead of the current manifest's).
+
+    `from_point` is the point compared FROM. It defaults to `round_n - 1`, which is the previous round
+    and reproduces the historical behaviour byte-for-byte. It may also be an out-of-round column id, so
+    the producer can diff any two stored points rather than only consecutive rounds."""
     round_n = int(round_n)
-    prev_round = round_n - 1
+    prev_round = (round_n - 1) if from_point is None else from_point
     played = played or {}
     ing = os.path.join(repo_root, 'engine', 'rl_after', 'ingestion')
     vh = _load(os.path.join(ing, 'value_history.json'))
@@ -244,7 +267,7 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
     season = int(vh.get('season', 2026))
 
     def by_round(hist, key, rnd):
-        return (hist.get('players', {}).get(key, {}).get('by_round', {}) or {}).get(str(int(rnd)))
+        return (hist.get('players', {}).get(key, {}).get('by_round', {}) or {}).get(point_key(rnd))
 
     players = []
     for p in active:
@@ -487,15 +510,130 @@ def _baseline_from_report(report):
             'release_identity': _baseline_release_identity_from_report(report)}
 
 
+def _repo_root_of(bundle_path):
+    """repo root from `<repo>/ui/data/movers.js`."""
+    return os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(bundle_path))))
+
+
+def previous_point(repo_root, round_n):
+    """The id of the stored point IMMEDIATELY BEFORE `round_n`, which is what that round moved from.
+
+    Usually `round_n - 1`. But when the board moved outside a round since the last round — the D1/D2
+    restructure before round 20, and the re-derivation and ITEM 412 later — the point immediately
+    before is that out-of-round column, not the previous round. Comparing a round against the previous
+    ROUND in that situation silently reports the restructure's effect as the round's own."""
+    ing = os.path.join(repo_root, 'engine', 'rl_after', 'ingestion')
+    vh = _load(os.path.join(ing, 'value_history.json'))
+    points = OOC.selectable_points(vh)
+    ids = [p['id'] for p in points]
+    try:
+        idx = ids.index(str(int(round_n)))
+    except ValueError:
+        return int(round_n) - 1
+    return ids[idx - 1] if idx > 0 else (int(round_n) - 1)
+
+
+def build_points_block(repo_root):
+    """The from/to comparison data: every stored point, and every player's value at each point.
+
+    Returns (points, values). `points` is the dropdown list in display order — numbered rounds plus
+    out-of-round columns. `values` is {key: {name, club, affl_team, pos, posCode, byPoint:{id:{v,rank,
+    pos_rank}}}}. The browser subtracts two points; nothing here is a delta, so adding a point never
+    invalidates a stored comparison and there is no chain to keep continuous."""
+    ing = os.path.join(repo_root, 'engine', 'rl_after', 'ingestion')
+    vh = _load(os.path.join(ing, 'value_history.json'))
+    rh = _load(os.path.join(ing, 'rank_history.json'))
+    ph = _load(os.path.join(ing, 'pos_rank_history.json'))
+    board = _load(os.path.join(repo_root, 'data', 'rl_build', 'rl_app_data.json'))
+    store_rows = _load(os.path.join(repo_root, 'engine', 'rl_after', 'rl_model_data.json'))
+    affl_by_key = {r.get('key'): r.get('affl_team') for r in store_rows if r.get('key')}
+    club_by_key = {r.get('key'): r.get('afl_club') for r in store_rows if r.get('key')}
+    active = board['active'] if isinstance(board, dict) else board
+    meta = {p.get('key'): p for p in active if p.get('key')}
+
+    points = OOC.selectable_points(vh)
+    ids = [p['id'] for p in points]
+    values = {}
+    for key, entry in sorted((vh.get('players') or {}).items()):
+        vbr = entry.get('by_round') or {}
+        rbr = ((rh.get('players') or {}).get(key) or {}).get('by_round') or {}
+        pbr = ((ph.get('players') or {}).get(key) or {}).get('by_round') or {}
+        by_point = {}
+        for pid in ids:
+            if pid in vbr or pid in rbr or pid in pbr:
+                by_point[pid] = {'v': vbr.get(pid), 'rank': rbr.get(pid), 'pos_rank': pbr.get(pid)}
+        if not by_point:
+            continue
+        m = meta.get(key) or {}
+        values[key] = {
+            'name': entry.get('name') or m.get('name'),
+            'club': club_by_key.get(key) or m.get('club'),
+            'affl_team': affl_by_key.get(key),
+            'pos': _label_pos(m.get('grp') or m.get('gf')),
+            'posCode': m.get('grp') or m.get('gf'),
+            'byPoint': by_point,
+        }
+    return points, values
+
+
+def model_changes(repo_root):
+    """The boundaries at which the MODEL changed, so the tab can label a range that spans one.
+
+    An out-of-round column exists precisely because the board moved without a round being applied —
+    that is a model change by definition — so each one contributes a boundary between the point before
+    it and itself. `ui/data/movers_transition.js` is the owner-approved record of such a move and is
+    consulted for the board ids; it is READ here, never enforced. It stays the register of these
+    moments rather than a gate."""
+    ing = os.path.join(repo_root, 'engine', 'rl_after', 'ingestion')
+    vh = _load(os.path.join(ing, 'value_history.json'))
+    points = OOC.selectable_points(vh)
+    ids = [p['id'] for p in points]
+
+    declared = {}
+    tpath = os.path.join(repo_root, 'ui', 'data', 'movers_transition.js')
+    if os.path.exists(tpath):
+        try:
+            with open(tpath) as f:
+                text = f.read()
+            i, j = text.index('{'), text.rindex('}')
+            tr = json.loads(text[i:j + 1])
+            # keyed by the board the move LANDED on — that is the out-of-round column's own board
+            declared[(tr.get('destination') or {}).get('board')] = tr
+        except (OSError, ValueError):
+            declared = {}
+
+    out = []
+    for idx, p in enumerate(points):
+        if p['kind'] != 'out_of_round' or idx == 0:
+            continue
+        prev = points[idx - 1]
+        tr = declared.get(p.get('board'))
+        out.append({
+            'between': [prev['id'], p['id']],
+            'label': p['label'],
+            'to_board': p.get('board'),
+            'owner_approved_record': bool(tr),
+            'owner_ruling_id': (tr or {}).get('owner_ruling_id'),
+        })
+    return out
+
+
 def accumulate_bundle(path, report, repo_root=None):
     """Add/replace this round's report in the UI bundle. A round already present with a DIFFERENT
     governing identity (txn/board/store/round) is a CONFLICT: the bundle is left BYTE-UNCHANGED (the
     report is NOT assigned and nothing is written), returning overwrite_conflict=True. A same-identity
     round is an idempotent replace.
 
-    The bundle carries a release-baseline block; the board-identity chain must (a) begin at the
-    baseline board and (b) be continuous (report[n].board_md5_before == report[n-1].board_md5_after).
-    Returns {'path', 'overwrite_conflict', 'chain_ok', 'baseline_anchor_ok'}."""
+    NO CHAIN. The board-identity chain (report[n].board_md5_before == report[n-1].board_md5_after) and
+    its `integrity.board_chain_ok` flag were REMOVED on the owner's word, 2026-07-28. The chain assumed
+    the board only ever moves by applying a round. It does not — the ITEM 411 D1 / ITEM 408 D2
+    restructure moved it, and the re-derivation and ITEM 412 will each move it again — so the chain
+    broke correctly at round 20 and would break again every time. The Movers tab is a FROM/TO
+    comparison now: a comparison that names its own two endpoints needs no chain to be trustworthy.
+    Removed rather than loosened, because a check that cannot fail is worse than no check.
+
+    What replaces it is one assert, in `round_finalize`: the newest stored point matches the live
+    board. Returns {'path', 'overwrite_conflict', 'wrote'}."""
     existed = os.path.exists(path)
     # A missing bundle or a pre-seeded ZERO-REPORT bundle is an unconsumed seed: when the first real
     # report is accumulated, anchor the immutable baseline to that report's ACTUAL pre-apply identity.
@@ -508,33 +646,19 @@ def accumulate_bundle(path, report, repo_root=None):
         pid = report_identity(prior)
         if _identity_complete(pid) and pid != report_identity(report):
             # CONFLICT — do NOT assign reports[rnd]=report; do NOT write. Leave every existing byte intact.
-            return {'path': path, 'overwrite_conflict': True, 'wrote': False,
-                    'chain_ok': (bundle.get('integrity') or {}).get('board_chain_ok'),
-                    'baseline_anchor_ok': (bundle.get('integrity') or {}).get('baseline_anchor_ok')}
+            return {'path': path, 'overwrite_conflict': True, 'wrote': False}
     first_real_report = not reports
     reports[rnd] = report
     bundle['rounds'] = sorted(int(r) for r in reports)
     if first_real_report or not bundle.get('baseline'):
         first = reports[str(bundle['rounds'][0])]
         bundle['baseline'] = _baseline_from_report(first)
-    baseline = bundle.get('baseline') or {}
-    base_board = baseline.get('board')
-    # board-identity chain: report[n].board_md5_before must equal report[n-1].board_md5_after,
-    # and the FIRST report must attach to the release baseline board.
-    chain_ok = True
-    baseline_anchor_ok = True
-    for idx, r in enumerate(bundle['rounds']):
-        rep = reports[str(r)]
-        prevr = reports.get(str(r - 1))
-        if prevr and rep.get('board_md5_before') and rep['board_md5_before'] != prevr.get('board_md5_after'):
-            chain_ok = False
-        if idx == 0 and base_board and rep.get('board_md5_before') and rep['board_md5_before'] != base_board:
-            baseline_anchor_ok = False
-    bundle['integrity'] = {'board_chain_ok': chain_ok, 'baseline_anchor_ok': baseline_anchor_ok,
-                           'overwrite_conflict_last_write': False, 'rounds': bundle['rounds']}
+    # the from/to comparison data: every stored point + every player's value at each of them
+    bundle['points'], bundle['values'] = build_points_block(repo_root or _repo_root_of(path))
+    bundle['model_changes'] = model_changes(repo_root or _repo_root_of(path))
+    bundle.pop('integrity', None)          # the chain flag is gone, not set to True
     write_bundle(path, bundle)
-    return {'path': path, 'overwrite_conflict': False, 'wrote': True,
-            'chain_ok': chain_ok, 'baseline_anchor_ok': baseline_anchor_ok}
+    return {'path': path, 'overwrite_conflict': False, 'wrote': True}
 
 
 def inject_working(path, report):

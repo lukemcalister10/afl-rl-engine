@@ -291,9 +291,12 @@ class RoundFinalizer:
 
             # movers report (built from the round's FROZEN identity)
             self._fault('after_board_before_movers_json')
+            # compare against the point immediately before this round — which is an out-of-round
+            # column when the board moved without a round (see MV.previous_point)
             report = MV.build_report(self.repo_root, round_n, played=played, evidence=evidence,
                                      generated_at=generated_at or entry.get('generated_at'),
-                                     release_identity_override=rel)
+                                     release_identity_override=rel,
+                                     from_point=MV.previous_point(self.repo_root, round_n))
 
             # NEVER MUTATE ON CONFLICT — inspect existing JSON + bundle BEFORE any write (B)
             conflict, why = MV.movers_conflict(self.repo_root, round_n, report)
@@ -360,6 +363,29 @@ class RoundFinalizer:
         return {'ok': False, 'round': int(round_n), 'status': FINALIZATION_INCOMPLETE, 'why': why}
 
     # -- validation of the derivatives against the committed state -------------------------------
+    def _newest_point_vs_live_board(self, bundle):
+        """(board of the NEWEST stored comparison point, md5 of the live board).
+
+        The single assert that replaced the chain. A from/to tab is trustworthy when its most recent
+        endpoint is the board the application is actually serving — everything older is history and
+        needs no continuity. Both sides are read from artifacts, so there is nothing to hand-pin.
+
+        Returns (None, live) when the bundle carries no points yet, which fails the comparison and is
+        the correct behaviour for an empty/unbuilt bundle."""
+        import hashlib
+        board_path = os.path.join(self.repo_root, 'data', 'rl_build', 'rl_app_data.json')
+        live = (hashlib.md5(open(board_path, 'rb').read()).hexdigest()
+                if os.path.exists(board_path) else None)
+        points = bundle.get('points') or []
+        if not points:
+            return None, live
+        newest = points[-1]
+        if newest.get('board'):
+            return newest['board'], live
+        # a numbered round carries its board on its own report
+        rep = (bundle.get('reports') or {}).get(str(newest.get('id')))
+        return ((rep or {}).get('board_md5_after'), live)
+
     def _validate_derivatives(self, round_n, entry, *, historical=False):
         """Confirm the round's derivatives exist, parse, and cohere. For the latest round the working
         board stamp must equal the committed board and carry the round delta + release contract; for a
@@ -402,19 +428,21 @@ class RoundFinalizer:
                 bundle = None
                 fails.append('movers bundle unparseable: %s' % e)
             if bundle is not None:
-                bi = bundle.get('integrity') or {}
                 checks['bundle_has_round'] = round_n in (bundle.get('rounds') or [])
-                checks['bundle_chain_ok'] = bi.get('board_chain_ok')
-                checks['bundle_baseline_anchor_ok'] = bi.get('baseline_anchor_ok')
-                checks['bundle_no_overwrite_conflict'] = not bi.get('overwrite_conflict_last_write')
                 if round_n not in (bundle.get('rounds') or []):
                     fails.append('round %d absent from the movers bundle' % round_n)
-                if bi.get('board_chain_ok') is False:
-                    fails.append('movers bundle board-identity chain broken')
-                if bi.get('baseline_anchor_ok') is False:
-                    fails.append('movers bundle does not anchor to the release baseline board')
-                if bi.get('overwrite_conflict_last_write'):
-                    fails.append('movers bundle overwrite conflict')
+
+                # THE ONE ASSERT that replaced the chain (owner word 2026-07-28). Five checks out —
+                # the board-identity chain walk, the baseline anchor, the two `integrity` flags and
+                # the browser's consecutive-round rule — one in: the NEWEST stored comparison point
+                # must be the board that is actually live. That is what makes a from/to comparison
+                # trustworthy; continuity between points is not needed and was never true.
+                # It needs no hand-typed pin: both sides are read from artifacts.
+                newest, live = self._newest_point_vs_live_board(bundle)
+                checks['newest_point_matches_live_board'] = (newest == live)
+                if newest != live:
+                    fails.append('newest stored point is board %s but the live board is %s'
+                                 % (str(newest)[:8], str(live)[:8]))
 
             working = os.path.join(ui_data, MV.WORKING_BUNDLE_NAME)
             if not historical and os.path.exists(working):

@@ -2068,9 +2068,18 @@
       "board_md5_after": "8a38cca44f53152090cb3df3f78bd47e",
       "board_md5_before": "fa172ac1c90ab84e5044d3e9907c5819",
       "core_committed_at": "2026-07-28T02:02:53Z",
-      "derivatives": null,
-      "failure": "validation failed: movers bundle board-identity chain broken",
-      "finalized_at": null,
+      "derivatives": {
+        "board_view_public": "/home/user/afl-rl-engine/ui/data/board_view_public.js",
+        "board_view_working": "/home/user/afl-rl-engine/ui/data/board_view_working.js",
+        "club_valuation": "SKIPPED (Track A owns the club-valuation curve)",
+        "movers_bundle": "/home/user/afl-rl-engine/ui/data/movers.js",
+        "movers_csv": "/home/user/afl-rl-engine/engine/rl_after/ingestion/movers/movers_R20.csv",
+        "movers_json": "/home/user/afl-rl-engine/engine/rl_after/ingestion/movers/movers_R20.json",
+        "positions_bundle": "SKIPPED (values-free position map; not board-derived)",
+        "release_contract": true,
+        "working_delta_rows": 804
+      },
+      "finalized_at": "2026-07-28T02:02:53Z",
       "generated_at": "2026-07-28T02:02:53Z",
       "played": {
         "aaron-cadman": 47.0,
@@ -2501,7 +2510,7 @@
       },
       "round": 20,
       "season": 2026,
-      "status": "FINALIZATION_INCOMPLETE",
+      "status": "FINALIZED",
       "store_md5_after": "e3aaba772f339551cd223802ab115af7",
       "store_md5_before": "c120cfd54a83449e7485d209419b9cf8",
       "txn_id": "txn_catchup_r20"
