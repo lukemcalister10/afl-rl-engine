@@ -201,3 +201,95 @@ without saying which is which.
 never-established players entered as **0.0**. A pool player who never played is a bust and counts as
 one. That zero is the survivorship fix and it is the reason the outcome measure does not suffer the
 inversion above.
+
+---
+
+# ADDENDUM 2 — 2026-07-28, seam pre-fire audit after #217 landed. Amends by addition; nothing above is edited.
+
+#217 merged to `main` at `6634221`. The sequencing precondition in the header is **satisfied** — the split
+and Addendum 1's exclusion are on `main` and this job is clear to start. Five things in the body are now
+stale, and the first would send you backwards.
+
+## 1 · THE `v0surf` HALT IS THE DESIGN. IT IS NOT A FAULT, AND YOU WILL HIT IT.
+
+The Rules section says the pickle is stale and *"the engine silently falls through to a refit path."*
+**That is no longer true and must not be acted on.** #217 regenerated and re-pinned the pickle and
+**deleted the silent fallback**. An unknown config signature now **HALTs**, naming its own signature and
+the regeneration command.
+
+**You will trigger this halt**, because changing the fit population changes the signature. That is
+correct behaviour reporting itself, not a defect to route around. **Do not restore a fallback, do not
+widen the accepted-signature set, and do not treat the halt as a blocker to be removed.** Regenerate
+deliberately:
+
+    RL_V0SURF_REFIT=1 RL_BAKE_V0SURF=1 python3 session_2026-07-18/legf6/scripts/refit_v0surf.py --bake
+
+The bake freezes **every** surface a build fits, not just the shipped one — `_build_v0_curve` runs three
+times per build, and the old pickle froze only the last, so the first two always live-fitted.
+
+The signature attribution in the body is also wrong and was corrected by #217: pristine `main` computed
+`90a937e7`, which was *also* absent from the pickle — **`main` was already on the refit path before the
+split existed.** The real chain is `90a937e7 → d702e463 → 76498b5a`. The split did not cause the
+fallthrough; it revealed it.
+
+## 2 · THE EXCLUSION CHECK ALREADY EXISTS. ONE DIRECTION OF IT.
+
+The body tells you to prove no pool row contributes at picks 1–64 and to show the check failing. **Do not
+build that — it is on `main` and it is the instrument you inherit.** Five fit sites register the actual
+row list they sample (`build_pvc`, `build_pvc_v34`, `_natcv`, `_natcv34`, `v0_kernel`) and the selftest
+inspects those recorded populations rather than recomputing them, so a correct helper cannot mask a
+broken call site. Seam-verified: breaking any one site alone fails the suite naming that site, and
+deleting a registration fails too.
+
+Note when reading a failure: `_natcv` windows on the **raw pick** while the others window on the slid
+`_pvc_eff`, so they produce genuinely different contamination profiles.
+
+**What does NOT exist is the other direction.** §B requires the exclusion to run both ways and the check
+to prove both. Only *"no pool row teaches the national curve"* is built. **"No national 1–64 row
+contributes to the pool level" is yours**, to the same standard: it must fail, by name, when lifted.
+
+## 3 · THE POOL POPULATION FIGURES IN THE BODY ARE WITHDRAWN NUMBERS.
+
+`575.89 / 612.41 / 550.29` were measured on the refit surface and #217 restated them on the frozen
+surface: **580.04 / 618.31 / 553.12** (n unchanged at 763 / 297 / 429). Quote the frozen-surface figures.
+**The conclusion is unaffected and still binds** — the inversion holds, never-played still sits above
+played, so no pedigree mean may set the level.
+
+## 4 · THE ENVIRONMENT, CONCRETELY — THIS HAS COST THREE SEATS.
+
+The known fault is real and measured live: bare `python3` resolves to **3.11** while
+`requirements-lock.txt` pins the **cp312** wheel, and system pip is PEP 668-blocked. Do not weaken the
+pin. What works, verified by the seam in this container:
+
+    python3.12 -m venv <venv> && <venv>/bin/python -m pip install --require-hashes \
+        --only-binary=:all: -r requirements-lock.txt
+    RL_VENV=<venv> bash bootstrap.sh          # bootstrap.sh honours RL_VENV; do not patch it
+
+`bootstrap.sh` already prefers `$RL_VENV/bin` on PATH, so the pinned env is used without editing
+anything. #231 is repairing the script itself; until it lands, use the above.
+
+## 5 · REGENERATING `v0surf` VS THE "NOTHING RE-PINNED" FENCE — RULED.
+
+The body says *"Nothing is adopted, baked, re-pinned or released here."* Regenerating `v0surf` re-pins it
+in `data/expected_boot.json`, so read literally the fence and the halt trap you between them.
+
+**Seam ruling, reversible by one owner sentence:** regenerate and re-pin **in your own working tree and
+on your own branch** — that is a working necessity and is not adoption. **Do not land it on `main`, do
+not move the board of record, do not touch the shipped UI bundles.** The fence's intent is that nothing
+this job produces becomes the shipped baseline without the owner's separate word, and that intent is
+untouched by a local re-pin.
+
+Also, from #217's close-out: `refit_v0surf.py`'s clean-instance precondition tests *balanced board ==
+`06d8af60`*, which is **pre-split and unreachable**. You cannot satisfy it as written. State what
+cleanliness evidence you do have — intra-box determinism across repeated refits, and board reproduction
+against a known reference — and say plainly that the literal precondition could not be evaluated. Do not
+manufacture a substitute and call it satisfied.
+
+## 6 · COORDINATION
+
+#231 is in flight and also touches `data/expected_boot.json` and `bootstrap_env.sh`. Neither of you lands
+to `main` without the seam sequencing it. Flag it rather than resolving a conflict yourself.
+
+**Everything in the body and Addendum 1 that is not corrected above still stands** — in particular the
+owner's specification at the top, apples-for-apples with the method held constant, and the fence on what
+you may decide.
