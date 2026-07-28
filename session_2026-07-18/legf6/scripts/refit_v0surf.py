@@ -49,11 +49,18 @@ def _engine_surfaces():
     with contextlib.redirect_stdout(io.StringIO()):
         exec(open(eng).read().split('print("=== AFTER')[0], g)
     META = g['_V0CURVE_META']
-    c18 = META['_c18']; surfN = META['_surfN']; surfR = META['_surfR']; sig = META['_v0surf_sig']
-    # the fit metas _v0_curve_assert() and reports read back on the LOAD path (ages etc.)
-    meta = {k: v for k, v in META.items()
-            if k in ('mature_nonRUC', 'mature_RUC') or (isinstance(k, tuple) and k and k[0] == 'age18')}
-    return sig, {'c18': c18, 'surfN': surfN, 'surfR': surfR, 'meta': meta}
+    sig = META['_v0surf_sig']                       # the FINAL (shipped) signature
+    # 2026-07-28: freeze EVERY surface the build fits, not only the last. _build_v0_curve runs three times per
+    # build — at import, then after each of the RL_PVCADOPT and RL_PVC2 swaps of _PVC0 — and the signature covers
+    # _PVC0, so those calls carry DIFFERENT signatures. Freezing only the final one left the first two falling
+    # through to a live fit on every build, which is why the freeze never removed the fit from the value path
+    # and why the staleness went unnoticed. _V0SURF_BUILT collects them all.
+    built = dict(g.get('_V0SURF_BUILT') or {})
+    if sig not in built:                            # defensive: the shipped surface must always be present
+        built[sig] = {'c18': META['_c18'], 'surfN': META['_surfN'], 'surfR': META['_surfR'],
+                      'meta': {k: v for k, v in META.items()
+                               if k in ('mature_nonRUC', 'mature_RUC') or (isinstance(k, tuple) and k and k[0] == 'age18')}}
+    return sig, built
 
 def main(argv):
     root = _repo_root()
@@ -67,13 +74,16 @@ def main(argv):
     for a in argv[1:]:
         if a in ('--verify', '--bake'): mode = a
 
-    sig, surfaces = _engine_surfaces()
-    payload = {sig: surfaces}
+    sig, payload = _engine_surfaces()
     blob = pickle.dumps(payload, protocol=pickle.DEFAULT_PROTOCOL)
     new_md5 = _md5_bytes(blob)
+    _s = payload[sig]
     print("refit_v0surf: shipped-config signature %s | %d age18 pos, surfN %d ages, surfR %d ages | new md5 %s | "
-          "committed pin %s" % (sig[:12], len(surfaces['c18']), len(surfaces['surfN']), len(surfaces['surfR']),
-                                new_md5, pinned))
+          "committed pin %s" % (sig[:12], len(_s['c18']), len(_s['surfN']), len(_s['surfR']), new_md5, pinned))
+    print("  surfaces frozen: %d (every surface this build fits, so a normal build performs NO fit at all)"
+          % len(payload))
+    for _k in sorted(payload):
+        print("    %s%s" % (_k, '   <- shipped' if _k == sig else ''))
 
     if mode == '--verify':
         same = (new_md5 == pinned)

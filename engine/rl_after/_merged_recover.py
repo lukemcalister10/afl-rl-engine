@@ -1323,6 +1323,7 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
         for ag in ages: run=min(run,surf[ag][i]); surf[ag][i]=run
     _V0CURVE_META[label]=dict(n=len(pts),min_effn=float(mine),grid_at_hmax=hmaxhit,ages=ages)
     return surf
+_V0SURF_BUILT={}          # sig -> surfaces, for every surface a build fits; the bake freezes all of them
 def _build_v0_curve():
     POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
     # ADDENDUM 1 (owner, 2026-07-28): this is the kernel-weighted pick-curve path — _fit_pick_curve over
@@ -1333,22 +1334,52 @@ def _build_v0_curve():
           and not MA.is_pool(p)]
     _sig=_v0surf_sig(real)                                   # LEG F6: deterministic config signature (weather-invariant)
     _frozen=_V0SURF.get(_sig) if isinstance(_V0SURF,dict) else None
-    if _frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1':
+    _refit_declared=os.environ.get('RL_V0SURF_REFIT')=='1'
+    if _frozen is not None and not _refit_declared:
         # ---- FROZEN LOAD (the shipped config): the _iso_dec residual weather is removed — LOAD the three
         #      surfaces + their fit metas, NEVER re-fit. star()/np.interp/_V0CURVE below are UNCHANGED, so the
         #      board is byte-identical to the clean fit by construction (freeze the OUTPUT, don't re-derive it).
         c18=_frozen['c18']; surfN=_frozen['surfN']; surfR=_frozen['surfR']
         _V0CURVE_META.update(_frozen.get('meta',{}))
+    elif not _refit_declared:
+        # ---- HALT. THE SILENT FALLBACK IS DELETED (owner, 2026-07-28), matching the sibling q97m freeze above:
+        #      "A silent refit is the exact defect being fixed: there is deliberately no fit path left here."
+        #      v0surf kept a fallback that quietly fitted whenever the signature was not in the frozen set, and
+        #      that silence is why the freeze went INERT UNNOTICED — main's shipped config already computed a
+        #      signature absent from the pickle, so the fleet had been live-fitting the value path with no
+        #      warning. Reproducibility is the entire purpose of the freeze, and a fallback that fits on a miss
+        #      cannot deliver it. An unknown config is now a HALT, not a quiet refit.
+        #      A DECLARED refit is still available and is the only way to fit: set RL_V0SURF_REFIT=1. That is
+        #      what refit_v0surf.py does, and it is how a kill-switch experiment (RL_PVC2=0, RL_EVW=0, ...) is
+        #      run now — the refit becomes visible and deliberate instead of implicit.
+        raise SystemExit(
+            "v0surf FROZEN-SIGNATURE HALT: this build's config signature %s is NOT in data/v0surf.pkl "
+            "(frozen: %s).\n"
+            "  The engine will NOT silently re-fit the V0 pick-curve surface — that silent fallback was removed "
+            "(owner word 2026-07-28), for the same reason q97m has no fit path: a silent refit makes the board "
+            "unreproducible across CPU/BLAS kernels, and it hides a freeze that has gone stale.\n"
+            "  If the config CHANGED deliberately (a split, an exclusion, a curve move), regenerate and re-pin:\n"
+            "      RL_V0SURF_REFIT=1 RL_BAKE_V0SURF=1 python3 session_2026-07-18/legf6/scripts/refit_v0surf.py "
+            "--bake      (on a clean instance)\n"
+            "  If you are running a declared kill-switch experiment, set RL_V0SURF_REFIT=1 to fit explicitly."
+            %(_sig, ', '.join(sorted(_V0SURF.keys())) if isinstance(_V0SURF,dict) else '<none>'))
     else:
-        # ---- FIT PATH: the refit entry point (RL_V0SURF_REFIT=1), or a NON-shipped config (a kill switch) whose
-        #      signature is not in the frozen set — fits exactly as before the freeze, so every declared kill
-        #      switch (RL_PVC2=0 -> 9829d01a, RL_EVW=0, RL_ISOFADE=0, RL_W4_RUC=0, ...) stays byte-exact.
+        # ---- THE ONE COMMITTED REFIT PATH, and it must be DECLARED (RL_V0SURF_REFIT=1). refit_v0surf.py drives
+        #      it to produce the artifact, so the frozen surface and its regeneration stay a single source.
         for pos in POS:
             pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
             grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
         matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
         matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
         surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
+        # Record THIS signature's surfaces so the bake can freeze EVERY surface a shipped build produces, not
+        # just the last one. _build_v0_curve runs three times per build — once at import, then again after each
+        # of the RL_PVCADOPT and RL_PVC2 swaps of _PVC0 — and the signature covers _PVC0, so the three calls have
+        # three DIFFERENT signatures. The old pickle held only the final one, so the first two calls always fell
+        # through to the live fit. That is why the freeze never actually removed the fit from the value path.
+        _V0SURF_BUILT[_sig]={'c18':c18,'surfN':surfN,'surfR':surfR,
+                             'meta':{k:v for k,v in _V0CURVE_META.items()
+                                     if k in ('mature_nonRUC','mature_RUC') or (isinstance(k,tuple) and k and k[0]=='age18')}}
     _V0CURVE_META['_c18']=c18; _V0CURVE_META['_surfN']=surfN; _V0CURVE_META['_surfR']=surfR
     _V0CURVE_META['_v0surf_sig']=_sig; _V0CURVE_META['_v0surf_frozen']=(_frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1')
     def star(pos,ag,pick):

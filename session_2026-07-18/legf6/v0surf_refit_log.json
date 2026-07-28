@@ -7,5 +7,23 @@
     "old_pin": null,
     "new_md5": "3af2b7258b8c8c596c4184617f99d3ca",
     "note": "FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)"
+  },
+  {
+    "ts_utc": "2026-07-28T08:29:21Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "76498b5a7a7a80db17f5bb9748ff1492",
+    "old_md5": "3af2b7258b8c8c596c4184617f99d3ca",
+    "old_pin": "3af2b7258b8c8c596c4184617f99d3ca",
+    "new_md5": "feadea279d9db7334976e1795176a718",
+    "note": "FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)"
+  },
+  {
+    "ts_utc": "2026-07-28T08:34:10Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "76498b5a7a7a80db17f5bb9748ff1492",
+    "old_md5": "feadea279d9db7334976e1795176a718",
+    "old_pin": "feadea279d9db7334976e1795176a718",
+    "new_md5": "5b02f33b061d01502ae5a85ee6c06ea1",
+    "note": "FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)"
   }
 ]
