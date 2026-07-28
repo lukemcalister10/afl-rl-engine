@@ -102,7 +102,12 @@ jobs:
           cd /home/claude/rl_workspace/rl_after
           python3 guard_correction_canary.py
 
-      - name: Panel 10/10 (run_panel.sh, + Guard 5 on entry)
+      - name: Guard 5 on entry + panel printed (run_panel.sh)
+        # THE 10/10 PANEL ASSERTION WAS REMOVED 2026-07-28 (owner word, ITEM 208). This step no longer
+        # gates on ten hand-typed values — that check blocked every landing, needed a four-surface hand
+        # re-pin whenever the board moved, and never caught a defect across R15-R20. What still gates
+        # here is Guard 5 (store / rl_model / fv identity), which run_panel.sh runs on entry and which
+        # HAS fired in anger. The ten rows are printed for the log.
         # E0 (ci-env-pin, ported here 2026-07-14 — the determinism branch forked from a base that predates
         # PR #81, so E0 was not inherited) — DIAGNOSTIC OUTPUT ONLY, changes no step logic and no verdict:
         # print the md5 of the board THIS run built (rl_export.py output from the build step above) so CI's
@@ -115,7 +120,10 @@ jobs:
         # 6f07f7cbe042f8e56426a01226c967c9 (store f37d9716), which itself superseded the pre-R19
         # final-integration pin 2ab73a6fed1f06fc8eecc2ce597c2aec.
         run: |
-          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (R19 board of record = fa172ac1c90ab84e5044d3e9907c5819)"
+          # Diagnostic only. The expected value is NOT typed here — data/expected_boot.json "board" is
+          # the pin and Guard 5 asserts against it, so this line cannot go stale the way the old
+          # hand-typed "board of record = ..." suffix did (it still said R19 after R20 landed).
+          echo "BOARD_MD5(built this run) = $(md5sum /home/claude/rl_workspace/rl_after/rl_app_data.json | cut -d' ' -f1)   (pinned: $(python3 -c "import json;print(json.load(open('data/expected_boot.json'))['board'])"))"
           bash run_panel.sh
 
       - name: "RULING-CONFIG assertion (R3: RL_PVCFIT=0 default + export bake-guard)"

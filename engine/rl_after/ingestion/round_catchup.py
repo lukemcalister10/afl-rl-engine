@@ -85,6 +85,14 @@ class IdentityOverrides:
         o = self._by_name.get(name)
         if o is None:
             return None, 'not_overridden'
+        # ROUND SCOPE (owner word 2026-07-28). An override may declare the rounds it applies to.
+        # Outside that scope the name is NOT overridden and goes to the live resolver like any other.
+        # This exists because an override written for a collision in one export can outlive the
+        # collision: the Bailey Williams rule was needed while FootyWire wrote both players under one
+        # display name, and became a per-round tax the moment the export started writing them apart.
+        scope = o.get('applies_to_rounds')
+        if scope is not None and int(round_n) not in scope:
+            return None, 'not_overridden'
         if o['rule'] == 'map_all':
             return o['stable_key'], 'map_all'
         if o['rule'] == 'by_round_score':

@@ -18517,7 +18517,7 @@
     "rl_model": "4f776e073ea50548ebe017cdb2f06368",
     "store": "e3aaba772f339551cd223802ab115af7"
   },
-  "schema_version": 1,
+  "schema_version": 2,
   "season": 2026,
   "source_store_md5_after": "e3aaba772f339551cd223802ab115af7",
   "source_store_md5_before": "c120cfd54a83449e7485d209419b9cf8",

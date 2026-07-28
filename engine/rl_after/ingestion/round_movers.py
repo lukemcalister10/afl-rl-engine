@@ -56,7 +56,23 @@ try:
 except (ImportError, ValueError):
     import round_history as RH  # type: ignore
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+SCHEMA_VERSION_NOTE = (
+    "BUMPED 1 -> 2 by ITEM 208 (owner word 2026-07-28), following the ITEM 411 D1 precedent that a TYPE "
+    "change must not ship under an unbumped version. "
+    "REPORT: `previous_round` changed from a NUMBER to a STRING point id. It is no longer always "
+    "`submitted_round - 1`: a round is compared against the point immediately before it, which is an "
+    "out-of-round column when the board moved without a round being applied (e.g. round 20's "
+    "previous_round is the string 'post-r19-redesign-1', not 19). A consumer written against v1 would "
+    "read a string where it expected an int. "
+    "BUNDLE: gained `points`, `values` and `model_changes` (the from/to comparison data), and LOST "
+    "`integrity` — the board-identity chain flag was removed with the chain itself, so a v1 consumer "
+    "reading `integrity.board_chain_ok` now finds nothing rather than a stale True. "
+    "No field changed type silently and none was renamed. Consumer safety re-verified at the bump: "
+    "nothing in the tree validates or branches on either schema_version — the only readers construct "
+    "fixtures. Reports written under v1 (R15-R19) are NOT rewritten; they keep `schema_version: 1` and "
+    "their integer `previous_round`, so the owner-approved historical_reports_digest is unchanged. A "
+    "bundle therefore legitimately holds reports of both versions, each self-describing.")
 POS_LABEL = {'MID': 'Mid', 'RUC': 'Ruck', 'KEY_FWD': 'Key Fwd', 'GEN_FWD': 'Fwd',
             'KEY_DEF': 'Key Def', 'GEN_DEF': 'Def'}
 BASELINE_ROUND = 14   # the accepted board-of-record round; no finalized transactions precede it
@@ -657,6 +673,10 @@ def accumulate_bundle(path, report, repo_root=None):
     bundle['points'], bundle['values'] = build_points_block(repo_root or _repo_root_of(path))
     bundle['model_changes'] = model_changes(repo_root or _repo_root_of(path))
     bundle.pop('integrity', None)          # the chain flag is gone, not set to True
+    # the BUNDLE's own version moves with its shape. Individual reports keep the version they were
+    # written under — R15-R19 stay at 1 and are never rewritten (their digest is owner-anchored).
+    bundle['schema_version'] = SCHEMA_VERSION
+    bundle['_schema_version_note'] = SCHEMA_VERSION_NOTE
     write_bundle(path, bundle)
     return {'path': path, 'overwrite_conflict': False, 'wrote': True}
 
