@@ -431,10 +431,22 @@ if _pvc2_on:
           %(MA.ND_CURVE_LAST,abs(_nd_r),_nd_n,len(_ndk)))
     if _plk:
         _pl_r,_pl_n=_gy0(_plk)
-        print("  UNMEASURED  G-Y0 POOL leg: comp-weighted mean V0 sits %+.3f%% vs the carried-over pool level "
-              "%d (n=%d). NOT a curve fit and NOT gated: the pool's LEVEL is an open owner decision (ITEM 412 / "
-              "#207 stage 2). Pool mean V0 = %.1f. Reported, not waived, not tuned."
+        print("  UNMEASURED  G-Y0 POOL leg: comp-weighted mean v0_start sits %+.3f%% vs the carried-over pool "
+              "level %d (n=%d, mean %.1f). REPORTED, NOT GATED, and NOT a licence to move the level."
               %(_pl_r,_p0i[MA.POOL_PICK],_pl_n,sum(_byp[MA.POOL_PICK])/len(_byp[MA.POOL_PICK])))
+        print("              READ THIS BEFORE ACTING ON THAT NUMBER — it is NOT evidence the pool is priced low:")
+        print("                - it is a mean of v0_start, a ZERO-EVIDENCE PEDIGREE projection, not of realised output;")
+        print("                - within this population that projection is INVERTED: among matured pool entrants the")
+        print("                  players who NEVER PLAYED A GAME score HIGHER on it (612.4, n=297) than those who did")
+        print("                  (550.3, n=429). A quantity where busts outscore contributors cannot set an entry level;")
+        print("                - it exceeds the value of the LAST NATIONAL PICK (curve[%d]=%d), which no pool entry"%(MA.ND_CURVE_LAST,_p0i[MA.ND_CURVE_LAST]))
+        print("                  level can coherently do — the pool sits BELOW the curve, by construction;")
+        print("                - the population is NOT the ruled pool: this leg admits only ND 65+ and RD, and drops")
+        print("                  every MSD/SSP/IRE/UNR/PDA/PDN/PDS row (331 of 1,094 in the 2004-2024 window);")
+        print("                - and it is ~7.5% downstream of the level itself (measured by perturbation), so part of")
+        print("                  any 'gap' closes itself when the level moves.")
+        print("              Setting the pool's level needs a REALISED-OUTCOME basis (#207 stage 2 / ITEM 412) and is")
+        print("              the owner's call. Not tuned here, and not to be tuned from this figure.")
     print("       (G-Y0 owner-viewing per-pick residual curve: session_2026-07-17/legd_derivation/out/gy0_residual_curve_v2.json — REPORT-ONLY)")
 else:
     print("  NOTE  RL_PVC2=0 (L1b base path): v2-specific asserts skipped; ENTRY CLOSURE above holds either way.")
