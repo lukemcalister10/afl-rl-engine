@@ -36,3 +36,7 @@
 {"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
 {"event": "STATUS", "round": 20, "status": "FINALIZED"}
 {"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R20.json", "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R20.json", "round": 20}

@@ -1,8 +1,9 @@
 #!/bin/bash
-# Reproduce the fixed panel. OFFLINE-safe (vendored unidecode on PYTHONPATH).
-set -euo pipefail   # SUITE HYGIENE 2026-07-13: the panel is a gate; its exit code must be the authority,
-                    # not a printed string. pipefail + the panel's own sys.exit below make a crash or a
-                    # computed FAIL exit non-zero instead of silently reporting nothing. (SHIP_GATES §HARNESS)
+# Print the panel cross-section, and run Guard 5 on entry. OFFLINE-safe (vendored unidecode on PYTHONPATH).
+# The ten-row hand-typed re-pin was REMOVED 2026-07-28 (owner word) — see the note at the PANEL list below.
+set -euo pipefail   # SUITE HYGIENE 2026-07-13: exit code is the authority, not a printed string.
+                    # pipefail + the explicit sys.exit below make a crash exit non-zero instead of
+                    # silently reporting nothing. (SHIP_GATES §HARNESS)
 HERE=$(cd "$(dirname "$0")" && pwd)
 WS=/home/claude/rl_workspace/rl_after
 # GUARD 5 (boot-store): HALT before the engine loads if the workspace store/head is not the checked-out,
@@ -26,8 +27,9 @@ export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_
 export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
 rm -f /tmp/inspect.py
 # SUITE HYGIENE 2026-07-13: stderr NO LONGER discarded (a hidden traceback is silence, and silence is a
-# red) — callers that don't want warnings already filter them (`| grep -v Warning`). The heredoc ends with
-# an explicit sys.exit so the EXIT CODE, not the printed "PASS/FAIL" string, is the panel's authority.
+# red) — callers that don't want warnings already filter them (`| grep -v Warning`). The heredoc still
+# ends with an explicit sys.exit so the EXIT CODE is the authority, but as of 2026-07-28 the only thing
+# it can report is a structural break (a named player missing from the board), never a moved value.
 python3 - << 'PY'
 import io,contextlib,config_manifest
 # CONFIG-MANIFEST v2.9 COMPLETION: gate mode — clear ambient model env + load data/model_config.json BEFORE
@@ -40,11 +42,30 @@ MA=g['MA'];ev=g['ev'];nseas=g['nseas']
 _F=1.0524   # L7 numéraire divisor (baked 2026-07-13): the panel shows round(ev/F) so the 10 named read in the numéraire (pick-1=3000), consistent with the shipped board.
 def find(nm):
     c=[p for p in MA.data if nm.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]; return c[0] if c else None
-PANEL=[('Nick Daicos',8990),('Marcus Bontempelli',4172),('Harry Sheezel',9655),('Max Gawn',3347),('Harley Reid',3574),('Josh Ward',2721),('Darcy Moore',232),('Taylor Goad',1015),('Josh Smillie',1110),('Will Green',658)]   # ITEM 208 R20 PANEL RE-PIN to the board of record 8a38cca4 (owner word 2026-07-28; round 20 applied AND finalized). balanced/strict 4939d740, store e3aaba77, engine_head 7c452715, config 45b207c0, as_of_round 20. Values = round(ev/1.0524), pick-1=3000, DERIVED from the regenerated board (data/rl_build/rl_app_data.json, md5 8a38cca4) via run_panel.sh — never typed. Round 20 moved 9 of the 10: Daicos 8765->8990, Bontempelli 4318->4172, Sheezel 9631->9655, Gawn 3405->3347, Reid 3563->3574, Ward 2710->2721, Moore 236->232, Goad 1021->1015, Smillie 1125->1110; Will Green 658 unchanged (sat out). SUPERSEDES, truth preserved as history: the ITEM 411 D1 panel pinned to board of record fa172ac1 (balanced/strict 5546f278, store c120cfd5, as_of_round 19) read 8765/4318/9631/3405/3563/2710/236/1021/1125/658; it in turn superseded the ITEM 408 STOP-1 R19 panel pinned to 6f07f7cb (store f37d9716, balanced/strict 1373e824, owner T1 ruling 2026-07-22) reading 8683/4278/9542/3372/3531/2684/234/1011/1233/651, and the balanced-board panel (06d8af60: 8017/3897/7964/3416/3348/2003/257/914/1324/651).
-ok=True; print("%-22s%8s%8s"%('player','EV(num)','EXPECT'))
-for nm,exp in PANEL:
-    p=find(nm); v=int(round(ev(p)/_F)) if p else None; m='' if v==exp else '  <-- MISMATCH'; ok=ok and v==exp
-    print("  %-20s%8s%8d%s"%(nm[:20],v,exp,m))
-print("\nRESULT:", "PASS 10/10" if ok else "FAIL")
-import sys as _sys; _sys.exit(0 if ok else 1)   # exit code IS the verdict (SUITE HYGIENE 2026-07-13)
+# THE TEN HAND-TYPED EXPECTED VALUES WERE REMOVED 2026-07-28, on the owner's word.
+#
+# They compared ten typed numbers against the derived board and exited non-zero on any difference.
+# Across R15-R20 the check never once caught a defect: every failure it produced was a board that had
+# legitimately moved, and the remedy was always to re-type the ten numbers across four surfaces (this
+# line, the expected_boot.json panel block, that block's narrative, and the regenerated UI bundle).
+# It blocked every landing and cost a hand re-pin each time — upkeep exceeding return, which is this
+# project's stated test for removing a guard rather than keeping it.
+#
+# KEPT: Guard 5 on entry (line 16), which asserts the store / rl_model / fv identity and HAS fired in
+# anger — including mid-job on 2026-07-28, catching a stale workspace store and naming its own remedy.
+# The ten rows are still PRINTED because seeing them is useful. There is no typed expectation and no
+# 10/10 verdict: this script reports, Guard 5 judges.
+PANEL=['Nick Daicos','Marcus Bontempelli','Harry Sheezel','Max Gawn','Harley Reid','Josh Ward','Darcy Moore','Taylor Goad','Josh Smillie','Will Green']
+print("%-22s%10s"%('player','EV(num)'))
+missing=[]
+for nm in PANEL:
+    p=find(nm); v=int(round(ev(p)/_F)) if p else None
+    if p is None: missing.append(nm)
+    print("  %-20s%10s"%(nm[:20],v))
+# The only failure left is STRUCTURAL: a named player absent from the board entirely. That is a broken
+# board rather than a moved one, and it needs no typed value to detect.
+if missing:
+    print("\nRESULT: FAIL - not on the board: " + ", ".join(missing))
+    import sys as _sys; _sys.exit(1)
+print("\nRESULT: panel printed (derived; no hand-typed pin - Guard 5 above is the gate)")
 PY
