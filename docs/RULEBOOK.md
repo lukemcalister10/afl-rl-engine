@@ -1,4 +1,7 @@
-# THE RULEBOOK — v2.0 · 2026-07-22 · OWNER-SIGNED (in chat, 2026-07-22)
+# THE RULEBOOK — v2.1 · 2026-07-28 · OWNER-SIGNED (in chat, 2026-07-22; amended 2026-07-28)
+### Amendment v2.1 (owner word, exact wording pre-filed and approved 2026-07-28): law 4 G-MONO
+### scoped to the national pick curve, picks 1–64. Pool selections past 64 are valued by
+### position and are not on the curve, so no ordering applies to them. No other law changed.
 ### Replaces CONSTRAINTS v1.19 + acceptance v1.21 as the single governing document.
 ### Twin: docs/acceptance_v2_0.json. Predecessors archived at the 2026-07-22 seam.
 
@@ -9,8 +12,10 @@
 2. **SILENCE IS A RED.** A check that produces no verdict has failed, not passed.
 3. **NO CLIFFS (L-SMOOTH).** Value moves smoothly across age, evidence, and position;
    no wide-bin jumps, no discontinuities a player could fall off.
-4. **THE CURVE DESCENDS (G-MONO).** The pick curve is strictly decreasing; pick 1 = 3000
-   exactly.
+4. **THE CURVE DESCENDS (G-MONO).** The national pick curve covers picks 1–64 and is
+   strictly decreasing across that domain; pick 1 = 3000 exactly. Selections past pick 64
+   are not on the curve — they enter the pool and are valued by position, where order of
+   selection carries no value and no ordering is required or implied.
 5. **SYMMETRY (L-SYMMETRY).** Upside and downside evidence move value by the same
    machinery; no one-directional levers.
 6. **AGE FADES (L-SAGE-FADE / A-FADE, direction-only).** Veterans decline toward the

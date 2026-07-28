@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v5 · supervisor pen · 2026-07-28, register v510
+# CURRENT STATE — the incoming-seat read · v6 · supervisor pen · 2026-07-28, register v511
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,9 +109,9 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate as of 2026-07-28, register v510, main `a7dc1b4`.*
+*Replaced wholesale each pen. Accurate as of 2026-07-28, register v511, main after `dd6bad1`.*
 
-## THE PRICING STRUCTURE — owner-ruled, and the engine still does not implement it
+## THE PRICING STRUCTURE — ruled, now law, engine still to follow
 
 **The national curve stops at pick 64.** Everything past 64 enters a **pool**: ND 65+, all rookie
 draft, all post-draft selections. Valued **by position**; **order of selection is irrelevant** inside
@@ -124,121 +124,105 @@ the pool. SSP and MSD are valued at the pool but tracked separately.
 | SSP · MSD (pool-valued, tracked apart) | 52 · 106 |
 
 **There is no price for pick 70.** A player taken there is priced from the pool by position, not from
-a curve. If you find yourself asking what a pick past 64 is worth, you have reverted to the old model.
+a curve. If you are asking what a pick past 64 is worth, you have reverted to the old model.
 
-**Read this before you touch anything in this area.** The owner has ruled this seven or eight times
-and seats keep returning questions that assume picks past 64 are priced. The reason is not that the
-ruling is unclear. The old structure is implemented in the code, in every artifact shaped 1–99, in the
-tests, and across the register; the new structure lives in owner rulings and this page. A seat doing
-work reads code and artifacts, so it rebuilds the old model from the material in front of it. **The
-ruling loses to the code, because the code is what you are looking at.** That is why the engine change
-below now comes before any further measurement.
+**This is now law.** `docs/RULEBOOK.md` v2.1, law 4 (G-MONO), amended by owner word 2026-07-28 with
+exact wording pre-filed: the national pick curve covers 1–64 and descends across that domain, pick 1 =
+3000; selections past 64 are not on the curve. Twin `docs/acceptance_v2_0.json` v2.1 matches. **No
+further amendment is needed to implement the split** — the rule was written when the curve ran to 99,
+and the amendment scoped it rather than weakened it.
 
-Two things are position-blind and two are not, and conflating them has cost this project real time:
-`_PVC0`/`draftval` price by pick with no position argument — but `iso_corr(pos, pk)` takes both, and
-`_v0_curve_assert` asserts V0* is a function of `(pos, ageR, pick)`. **The engine already prices by
-position.** The pool needs one index, not a new capability.
+**Why seats keep reverting, and it is not comprehension.** The old structure is implemented in the
+code, in every artifact shaped 1–99, in the tests, and across the register; the new structure lives in
+owner rulings, this page and now the rulebook. A seat reads code and artifacts, so it rebuilds the old
+model from what is in front of it. **The ruling loses to the code.** That is why the engine change now
+comes before further measurement.
 
-## THE PRIORITY — the engine change
-
-Remove the chaining at `rl_model.py:209` and `:215`, end the curve at 64, give the pool one index so
-the existing position layer prices it. Owner-agreed as the thing that comes first, because after it no
-seat can rediscover the old structure.
-
-**It must not run concurrently with #208.** It re-prices every player and moves the board — the exact
-out-of-round board move that broke the movers chain. #208's from/to work is the prerequisite that makes
-the board safe to move.
-
-**Do not re-derive `national_draft_last_pick.json`**; lines 209 and 215 are its only consumers and both
-are being removed.
-
-**G-MONO.** `docs/RULEBOOK.md` §4 says *"the pick curve is strictly decreasing; pick 1 = 3000 exactly."*
-That is law, not code — the engine's own assert (`rl_export.py:137`) is only non-increasing. Under the
-ruled structure the pick curve is 1–64 and descends, and the pool is not a pick curve, so **G-MONO is
-satisfied as written and no amendment is needed.** The owner has been offered that reading and it is his
-to confirm. Any Law-10 act still needs his exact wording and explicit word.
+Do not conflate two layers: `_PVC0`/`draftval` price by pick with no position argument, but
+`iso_corr(pos, pk)` takes both and `_v0_curve_assert` asserts V0* is a function of `(pos, ageR, pick)`.
+**The engine already prices by position.** The pool needs one index, not a new capability.
 
 ## IN FLIGHT
 
 | | |
 |---|---|
-| **#208 · R20 + Movers** | Directive `docs/directives/PRIORITY_4_movers_from_to.md` on main at `a7dc1b4`. The tab becomes a from/to comparison; the chain is deleted, not repaired; R20 finalises with it. **`3a18ea2` must not merge as a finished round** — its committed `movers.js` already carries R20 stamped `board_chain_ok: false`. |
-| **#207 · stage 1** | Returned. Measurement-only discipline held. Both of its stage-2 blockers were wrong (see below) and its scratch-board figures name a structure the owner did not rule. To be re-tasked: hand back what stands alone, leave the pool's board effect to the engine change. |
-| **ITEM 412** | Its ruled slice folded back into build work. See below. |
+| **Engine split** | **FIRED.** `docs/directives/PRIORITY_1_engine_split_implementation.md`, main `dd6bad1`. Fresh cold seat, not #207 and not #208. Reads in now; **does not move the board** until #208's three closing tasks land. |
+| **#208** | R20 landed and finalised. Three closing tasks remain, then it rotates. |
+| **#207** | Done. Retracted its own bad figures on correction. May rotate; nothing outstanding. |
+| **ITEM 412** | Ruled slice folded back into build work. Retains the open design questions. |
 
-## The Movers tab — what was ruled and why
+## Round 20 and the Movers tab — landed
 
-The chain required each round to start from the board the previous round finished on. That holds only
-if the board never moves except through a round, and it now permanently does not. Rather than patch it,
-the tab becomes **from/to**: two dropdowns, any two stored points compared on request. Each comparison
-names its own endpoints, so it needs no chain, no integrity flag and no provenance bridge.
+R20 is FINALIZED on main at `59d740c` (head `9897c78` — **not** `3a18ea2`). The tab is a from/to
+comparison over eight points: 14 · 15 · 16 · 17 · 18 · 19 · `Post R19 Redesign 1` · 20, all present in
+all three histories at 804 rows each.
 
-Verified facts behind the ruling: `value_history`, `rank_history` and `pos_rank_history` each hold
-**804 players across rounds 14–20**, so nothing needs deriving to compare round to round; the browser
-(`ui/app/movers.js`) enforced the same continuity independently, so "accept the break and finalise
-anyway" was never available; and the `92a8f3a0 → fa172ac1` jump already had an owner-approved record in
-`movers_transition.js`, which is why a synthetic bundle entry was withdrawn.
+The out-of-round point is a **string id** in `by_round` plus a `columns` register, deliberately kept
+out of the int `rounds` list so anything that int-coerces it is unaffected. Board `fa172ac1` was
+recovered from git (blob at `8ecf8f8`, md5 verified) and read as a snapshot, not re-derived.
 
-Standing rule that comes out of it: **whenever the board moves outside a round, write a history column
-at that point.** The first is labelled `Post R19 Redesign 1` — owner-set, verbatim. The re-derivation
-and 412 each add one. `movers_transition.js` is kept as the register of those moments; its enforcement
-is removed.
+**The default view changed meaning, deliberately.** R20's report compares against the point immediately
+before the round, not R19, so the restructure is no longer reported as round 20's own effect — 758
+movers the old way, 681 the honest way.
 
-## ITEM 412 — what folded back and what did not
+**Five checks were removed, not four.** The fifth was the rule requiring every report to carry an
+identical release identity — same false premise as the chain, and it would have fail-closed the tab
+permanently. Owner-approved. Accepted cost: the content-tamper digest went with it. One assert replaced
+them all — the newest stored point matches the live board — proven non-vacuous both directions.
 
-412 is a read-only design seat producing three documents. Its structure spec listed pool construction,
-but **the owner has since ruled the pool's construction himself**, so that slice is implementation and
-folds into build work now.
+**Standing rule:** whenever the board moves outside a round, write a history column at that point. The
+label is owner-set; ask, do not invent.
 
-**412 retains:** the pricing validation design (G-MONO, CONSERVATION, L-CAPTAIN, LENS-PROJECTION, G-Y0,
-G-COHORT bind at that layer), curve family, era handling, observation-lane mechanics, the replacement
-bar re-keyed from position to eligibility, and the future-eligibility instrument that does not exist as
-a field.
+## #208's three closing tasks
 
-**Fence on whoever implements:** build exactly what is ruled and decide nothing else. Anything you find
-yourself *choosing* is 412's and goes back to the owner.
+1. **Remove the four-surface panel re-pin — do this first.** Hand-typed, blocks every landing, has never
+   caught anything, and it charged again this round at ten surfaces derived twice. Once gone, a board
+   move no longer needs a hand re-pin, which the engine job depends on.
+2. **Retire or round-scope the Bailey Williams override.** It intercepts the display name before the
+   resolver and maps `(round|score)` to a stable key. It **halted R20** until a line was hand-added and
+   will halt every round forever. Its justification is gone: the current export writes the two players
+   apart, and no store display name is shared by two active players.
+3. **Bump the movers report `schema_version`.** `previous_round` changed from int to string; the v467
+   precedent bumps on a type change.
 
-## The priors — recovered, recalculation not yet trustworthy
+## #207 — what stands, and what it is pinned to
 
-The producer was a one-off `/tmp/bustprior.py` plus `FORWARD_MODEL_V3_STATUS.md`, neither ever
-committed. The recipe is in the register at v509: best-3 season average over ≥6-game seasons with
-never-established players entered as **0.0**, debut cohorts 2006–2020, `IsotonicRegression(increasing=False)`
-on effective pick, fitted pooled and per-position, blended `w = min(n_pos/200, 1) × 0.6`.
+Withdrawn and carried nowhere: the scratch-board figures (18 movers, mean −15.2, pick-asset sum −1,381).
+They were measured on a 493→459 descending tail that was never ruled; the artifact is deleted.
 
-#207 has recalculated them, but on the wrong tail shape. Its prior values, rookie-share percentages and
-the findings that the bandwidth never grows and PAVA never fires are **on the seat's word only** — the
-seam did not re-run the fit. Treat them as unverified until re-run under the ruled structure.
+Standing, each naming its basis: `curve_nd_1_64.json` — 64 entries, domain 1–64, pin 3000, strictly
+decreasing, no pool entries (seam-verified). Rookie share of kernel weight on store `c120cfd5` — 30.3%
+at national pick 64, 0.0/0.8/17.0% at 40/50/60; the bandwidth never grows and PAVA never fires, so the
+reach is log-pick proximity, not adaptation; rookies sit 77.3 **below** national at 59–64 and 26.8
+**above** at 65–70, so inside the boundary the blend depresses the fit by 13.7 points (−2.5%) at pick 64
+and the upward propping lives in the band the split removes anyway. Bust priors on a 1,793-player
+window, pool as one value per position, 27.9–33.5, grand mean 29.8. The 0.6 ceiling at 18.9 as written
+vs 35.5 uncompressed — 1.88×, binding for five of six positions.
 
-Known defect, still standing: the `× 0.6` is a hard ceiling with no stated basis, and it binds for five
-of six positions, so above n=200 sample size stops mattering.
+**Every one of those is pinned to store `c120cfd5`, and the store has moved to `e3aaba77` with R20.
+Re-run before adopting anything.** Not measured and waiting on the engine change: the pool's board
+effect and the 1–64 curve's, since a board needs both sides priced.
 
-## Priority 5 — the ceremony worth removing
+## Housing — corrected
 
-Four guards fired in anger in one R20 round: identity resolution, `round_finalize` chain validation, the
-env pin, and Guard 5. Only the boot pins, the dedup ledger, the dry-run and `movers_conflict` merely
-re-armed. **The four-surface panel re-pin is the one to delete** — hand-typed, blocks every landing, has
-never caught anything. Owner-agreed.
-
-## Closed this cycle
-
-- **PR #212** — the from/to directive, merged `a7dc1b4`.
-- **ITEM 411 D1** `efaaa7fc` · **ITEM 408 D2** `265bdab` — landed, issues #151/#157 closed.
-- **#205 CI parallelisation** — PR #210 merged. **86m12 → 19m16, 4.47×.**
+**The seam can merge its own PRs.** The housing note says merges land under the owner's auth; that
+describes whose credentials the merge runs under, not who may click it. PRs #213, #214 and #215 were
+rebase-merged by this seat directly. **Stop sending merges to the owner.** Direct push to main is still
+classifier-blocked, so docs pens still go branch → PR → rebase-merge. Ref deletion remains proxy-forbidden.
 
 ## Owner acts outstanding
 
-1. **Confirm the G-MONO reading** above — his law, his call, and it decides whether a Law-10 amendment
-   is needed at all.
-2. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-3. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-4. Referee harness scope — a fresh seat, owner-scheduled.
+1. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+2. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+3. Referee harness scope — a fresh seat, owner-scheduled.
+4. Stage 2 adoption of anything from #207 — his call, and it comes after the engine change.
 
 ## Seats
 
 | | |
 |---|---|
 | **seam + pen** | Four errors this session, all owner- or hook-caught, none reaching the product: staged another seat's product files onto the seam branch during a verification checkout; said the engine could not price by position after reading only the pick ladder; said nothing needed relaxing on strict descent without reading the rulebook; checked whether a curve tail was flat instead of asking why it had a tail. **All four are the same fault — reading what implements the system instead of what commissions it.** Artifact verification held: every hash, count, diff and ancestry check it ran itself has stood. |
-| **#207 · #208** | Live, one job each. |
+| **#207 · #208** | Both closing. Engine-split seat opens fresh and cold. |
 
 ## Parked — do not start
 
@@ -251,13 +235,11 @@ computes instantly.
 - Containers **shallow-clone by default** — `git fetch --unshallow` before any ancestry claim.
 - **`bootstrap_env.sh` invokes bare `python3`** while the lock pins the cp312 wheel. `live-scoring.yml`
   already solves this by discovering `python3.12` by name; the local bootstrap never got the same
-  treatment. **One-line fix, has now cost two seats.** Never bypass the pin — a different numpy wheel
-  silently reorders the board.
+  treatment. **One-line fix, has now cost two seats.** Never bypass the pin.
 - The env-pin guard hashes the bundled OpenBLAS but **not** the numpy binary where `np.interp` lives.
-- **`sibling_repin` rewrites history every round** — it blanket-replaced `5546f278` in all three
-  occurrences in `expected_boot.json`, including inside a clause reading "truth preserved as history".
-  Narrative only, no executable reader. Repair in place when that narrative is next rewritten.
-- The register header is **one 340KB line**. `head` on it dumps the whole file — read it with a script
+- **`sibling_repin` rewrites history every board move** — #208 restored the two `5546f278` references it
+  had overwritten, and it will overwrite them again next time.
+- The register header is **one ~347KB line**. `head` on it dumps the whole file — read it with a script
   that windows around a match, never with `head` or `cat`.
 - The Actions API can exceed per-call output caps; spill to a file and parse.
 
