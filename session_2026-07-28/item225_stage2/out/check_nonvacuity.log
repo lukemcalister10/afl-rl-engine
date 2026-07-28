@@ -1,0 +1,119 @@
+STORE e3aaba77   surface FROZEN (76498b5a)
+
+--- THE PRODUCTION DERIVATION (exclusion IN, both directions) ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+==============================================================================
+NON-VACUITY — cross one population at a time. Each MUST fail, naming that site and kind.
+The 'pooling' rows are the ones a sampled-rows check cannot see.
+==============================================================================
+
+--- BROKEN: nd_curve [sample] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  FAIL  site 'nd_curve' [sample]: no POOL row among the 2087 keys it consumed  <-- 761 found, e.g. ['aaron-bruce', 'aaron-hall', 'aaron-joseph', 'aaron-mullett']
+  FAIL  site 'nd_curve' [pooling]: no POOL row among the 2087 keys it consumed  <-- 761 found, e.g. ['aaron-bruce', 'aaron-hall', 'aaron-joseph', 'aaron-mullett']
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+--- BROKEN: nd_curve [pooling] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  FAIL  site 'nd_curve' [pooling]: no POOL row among the 2087 keys it consumed  <-- 761 found, e.g. ['aaron-bruce', 'aaron-hall', 'aaron-joseph', 'aaron-mullett']
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+--- BROKEN: priors_ND_1_64 [sample] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  FAIL  site 'priors_ND_1_64' [sample]: no POOL row among the 1769 keys it consumed  <-- 818 found, e.g. ['aaron-bruce', 'aaron-hall', 'aaron-joseph', 'aaron-mullett']
+  FAIL  site 'priors_ND_1_64' [pooling]: no POOL row among the 1769 keys it consumed  <-- 818 found, e.g. ['aaron-bruce', 'aaron-hall', 'aaron-joseph', 'aaron-mullett']
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+--- BROKEN: priors_ND_1_64 [pooling] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  FAIL  site 'priors_ND_1_64' [pooling]: no POOL row among the 1769 keys it consumed  <-- 818 found, e.g. ['aaron-bruce', 'aaron-hall', 'aaron-joseph', 'aaron-mullett']
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+--- BROKEN: pool_level [sample] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  FAIL  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 2420 keys it consumed  <-- 1326 found, e.g. ['aaron-black', 'aaron-cadman', 'aaron-cornelius', 'aaron-francis']
+  FAIL  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 2420 keys it consumed  <-- 1326 found, e.g. ['aaron-black', 'aaron-cadman', 'aaron-cornelius', 'aaron-francis']
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+--- BROKEN: pool_level [pooling] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  FAIL  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 2420 keys it consumed  <-- 1326 found, e.g. ['aaron-black', 'aaron-cadman', 'aaron-cornelius', 'aaron-francis']
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  PASS  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 818 keys it consumed
+
+--- BROKEN: priors_POOL [sample] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  FAIL  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 1769 keys it consumed  <-- 951 found, e.g. ['aaron-black', 'aaron-cornelius', 'aaron-francis', 'aaron-kite']
+  FAIL  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 1769 keys it consumed  <-- 951 found, e.g. ['aaron-black', 'aaron-cornelius', 'aaron-francis', 'aaron-kite']
+
+--- BROKEN: priors_POOL [pooling] ---
+  PASS  every fit site registered BOTH its sample and its pooling population (missing: [])
+  PASS  site 'nd_curve' [sample]: no POOL row among the 1326 keys it consumed
+  PASS  site 'nd_curve' [pooling]: no POOL row among the 1326 keys it consumed
+  PASS  site 'priors_ND_1_64' [sample]: no POOL row among the 951 keys it consumed
+  PASS  site 'priors_ND_1_64' [pooling]: no POOL row among the 951 keys it consumed
+  PASS  site 'pool_level' [sample]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'pool_level' [pooling]: no NATIONAL 1-64 row among the 1094 keys it consumed
+  PASS  site 'priors_POOL' [sample]: no NATIONAL 1-64 row among the 818 keys it consumed
+  FAIL  site 'priors_POOL' [pooling]: no NATIONAL 1-64 row among the 1769 keys it consumed  <-- 951 found, e.g. ['aaron-black', 'aaron-cornelius', 'aaron-francis', 'aaron-kite']
+
+==============================================================================
+NON-VACUITY SUMMARY
+site               kind      failed?    failed BY NAME?
+nd_curve           sample    YES        YES
+nd_curve           pooling   YES        YES
+priors_ND_1_64     sample    YES        YES
+priors_ND_1_64     pooling   YES        YES
+pool_level         sample    YES        YES
+pool_level         pooling   YES        YES
+priors_POOL        sample    YES        YES
+priors_POOL        pooling   YES        YES
+==============================================================================
+RESULT: PASS — the check fails, by name, on every crossed population, in both directions and through the pooling term
