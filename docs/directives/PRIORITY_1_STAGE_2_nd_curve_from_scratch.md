@@ -122,3 +122,82 @@ value per position rather than an ordering. That should be sufficient; if it isn
 On the issue. Lead with whether the requirement at the top of this directive is met — no pool row
 teaching the national curve, positions as newly assigned, current store, fitted not adjusted — and the
 evidence for each. Then the numbers. Then anything you found yourself choosing rather than deriving.
+
+---
+
+# ADDENDUM 1 — 2026-07-28, owner-directed. Amends by addition; nothing above is edited.
+
+## A · APPLES FOR APPLES. Replicate the method exactly. Change only the data and the separation.
+
+**Owner's words, 2026-07-28:**
+
+> We should be looking to replicate the old system for now, so however it handled 'low sample'
+> positions like ruck — should be replicated. It is an apples for apples replication, except it is
+> based off the new data entirely. So the new store. The new separation. But within that information,
+> the way it's calculated is the same.
+
+**This overrides part of the body above, and the part it overrides was my error.** The body asks you to
+"report the fit with and without the ceiling and say which you recommend." That invites a **method
+change**, and no method change is wanted. Do not make one and do not recommend one.
+
+**Keep, unchanged:**
+
+- **The `× 0.6` blend ceiling and the `min(n_pos/200, 1)` pooling weight.** This *is* the old system's
+  low-sample handling — it is how RUC at 208 samples gets pulled toward the pooled average rather than
+  trusting a thin cell. Replacing it would be a different model, not a replication.
+- **The isotonic step on the ND curve**, as constructed today.
+- Every other construction choice: target definition, cohort window, weighting, era handling.
+
+**Change, and only these:**
+
+- **The data** — the current store, not `c120cfd5`.
+- **The separation** — two populations, per §B below.
+- **The position assignments** — as they now stand, which is a consequence of the new data, not a method
+  change.
+
+**The two known defects are still to be REPORTED, not acted on.** State the measured effect of the
+`× 0.6` ceiling (spread at pick 1 with and without, and which positions bind) and whether your
+construction inherits the noise-set plateau widths from `increasing=False` on raw pick. Those are
+observations for a later owner decision. **Do not fix them in this job.** An acceptance criterion for
+this job is that a reader can attribute every difference from the old numbers to the data or the
+separation — never to a method you changed.
+
+## B · TWO FITS, TWO POPULATIONS, NOTHING CROSSING
+
+The body says "national-draft rows only", which is correct for the curve and silent on the pool. Stated
+in full, because this is the whole point of the split:
+
+| | trained on | never sees |
+|---|---|---|
+| **ND curve, picks 1–64** | national draftees at picks 1–64 | any rookie, pre-season or pickless row |
+| **The pool level, per position** | pool entrants — ND 65+, rookie draft, pre-season draft, pickless mechanisms | any national row at picks 1–64 |
+
+**This is not one fit with the rookies deleted. It is two fits.** A rookie's outcome shapes the pool's
+price and never touches a national pick. A national draftee's outcome shapes the curve and never touches
+the pool. The exclusion runs **both ways**, and the check must prove both directions.
+
+SSP and MSD are valued at the pool but tracked separately, so they can become their own pools later.
+
+## C · V0 IS NOT THE INSTRUMENT FOR THE POOL'S LEVEL. OUTCOMES ARE.
+
+This is the trap #217 mapped, stated so it cannot be walked into again.
+
+`v0_start` is **a function of position, age band and pick only** — the engine's own
+`_v0_curve_assert` (i) asserts exactly that. **It carries no information about whether a player ever
+played.** It is the value of the slot a player came from, not a judgement about the player.
+
+That is why the pool's mean `v0_start` is higher for players who never played a senior game (612.41,
+n=297) than for those who played at least one (550.29, n=429): the never-played group skews **younger**
+— drafted at 18, delisted at 20 — and V0 reads youth as runway. The pool players who did play skew
+mature-age, taken at 22–24 because they were ready, so their slot value is lower. **The inversion is an
+age-composition artifact, not a signal about quality.**
+
+So: **a mean of V0 over a population is a statement about that population's entry slots and ages. It is
+never a statement about what those players turned out to be worth.** Do not set the pool's level from
+one, do not sanity-check against one, and do not report a V0 mean beside an outcome-derived level
+without saying which is which.
+
+**The pool's level comes from realised outcomes on the same footing as the bust priors**, with
+never-established players entered as **0.0**. A pool player who never played is a bust and counts as
+one. That zero is the survivorship fix and it is the reason the outcome measure does not suffer the
+inversion above.
