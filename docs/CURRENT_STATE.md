@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v6 · supervisor pen · 2026-07-28, register v511
+# CURRENT STATE — the incoming-seat read · v7 · supervisor pen · 2026-07-28, register v512
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,7 +109,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate as of 2026-07-28, register v511, main after `dd6bad1`.*
+*Replaced wholesale each pen. Accurate as of 2026-07-28, register v512, main `462256f`.*
 
 ## THE PRICING STRUCTURE — ruled, now law, engine still to follow
 
@@ -146,9 +146,9 @@ Do not conflate two layers: `_PVC0`/`draftval` price by pick with no position ar
 
 | | |
 |---|---|
-| **Engine split** | **FIRED.** `docs/directives/PRIORITY_1_engine_split_implementation.md`, main `dd6bad1`. Fresh cold seat, not #207 and not #208. Reads in now; **does not move the board** until #208's three closing tasks land. |
-| **#208** | R20 landed and finalised. Three closing tasks remain, then it rotates. |
-| **#207** | Done. Retracted its own bad figures on correction. May rotate; nothing outstanding. |
+| **Engine split · #217** | **FIRED and UNGATED.** `docs/directives/PRIORITY_1_engine_split_implementation.md`. Fresh cold seat. #208's three closing tasks have landed, so **it may move the board.** The only live seat. |
+| **#208** | **CLOSED.** R20 finalised, from/to tab, all three closing tasks landed (`411735f`). |
+| **#207** | **CLOSED.** Stage 1 measurement landed at `462256f`. Adoption is stage 2 and is the owner's call. |
 | **ITEM 412** | Ruled slice folded back into build work. Retains the open design questions. |
 
 ## Round 20 and the Movers tab — landed
@@ -173,17 +173,30 @@ them all — the newest stored point matches the live board — proven non-vacuo
 **Standing rule:** whenever the board moves outside a round, write a history column at that point. The
 label is owner-set; ask, do not invent.
 
-## #208's three closing tasks
+## #208's three closing tasks — all landed
 
-1. **Remove the four-surface panel re-pin — do this first.** Hand-typed, blocks every landing, has never
-   caught anything, and it charged again this round at ten surfaces derived twice. Once gone, a board
-   move no longer needs a hand re-pin, which the engine job depends on.
-2. **Retire or round-scope the Bailey Williams override.** It intercepts the display name before the
-   resolver and maps `(round|score)` to a stable key. It **halted R20** until a line was hand-added and
-   will halt every round forever. Its justification is gone: the current export writes the two players
-   apart, and no store display name is shared by two active players.
-3. **Bump the movers report `schema_version`.** `previous_round` changed from int to string; the v467
-   precedent bumps on a type change.
+1. **The four-surface panel re-pin is gone** — `run_panel.sh`, the `expected_boot.json` `panel` key, the
+   narrative and the CI gate. `PANEL_EXPECTED.txt` untouched. **Guard 5 kept** — it asserts store /
+   rl_model / fv identity and has fired in anger. `run_panel.sh` now reports; Guard 5 judges. A board move
+   no longer costs a hand re-pin.
+2. **The Bailey Williams override is round-scoped to R15–R19, not deleted** — new `applies_to_rounds`
+   field plus a scope check in `round_catchup.py`. Scoped rather than retired because those fixtures
+   genuinely do list both players under one display name and the catch-up proofs re-run them; deleting
+   would have misattributed historical rounds silently. Re-measured on store `e3aaba77`: zero display
+   names shared by two or more of the 804 active players. Callum Brown stays unscoped.
+3. **Movers schema 1 → 2.** R15–R19 keep v1 and integer predecessors; the bundle holds both versions,
+   each self-describing. Nothing in the tree branches on `schema_version`.
+
+## Integration hazard — read this before merging any seat branch
+
+**A rebase-merge rewrites SHAs.** A branch that keeps building on its already-merged history presents
+those commits again under their original ids, so the merge base rewinds past them and every touched file
+looks like an independent edit on both sides. Both seat branches hit this: #208 conflicted on eight files,
+and #207 appeared to rewrite ten files it had never opened.
+
+**`git diff main..branch` on a stale-based branch is not a statement of what that branch changed.** Diff
+against the branch's own merge base. The fix is `git rebase --onto origin/main <old-tip>`, then verify the
+replayed diff is byte-identical to the original before pushing.
 
 ## #207 — what stands, and what it is pinned to
 
