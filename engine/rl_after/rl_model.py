@@ -273,6 +273,25 @@ def _epk(p):    return p.get('_pvc_eff', effpk(p))         # slid effective pick
 # forward valuation. He simply stops teaching the national curve.
 # ============================================================================================================
 def _teaches_curve(p): return _in_pvc(p) and not is_pool(p)
+# ---- THE OBSERVED SAMPLE (2026-07-28, after the seam broke two fit sites without the suite noticing) --------
+# The first version of the Addendum-1 check RE-IMPLEMENTED the builders' filter inside the selftest and asserted
+# on its own copy. That only ever tested the shared helper: break the exclusion at ONE site — _natcv's own line,
+# or the build_pvc call site — and the re-implementation still returned a clean set, so the suite stayed green
+# while the curve was being taught by pool rows. A check that cannot fail is how a contaminated curve reaches
+# the baseline unnoticed, and #225 works in these same sites and has been told to rely on this check.
+#
+# So the check no longer re-derives anything. Each fit site REGISTERS THE ACTUAL ROW LIST IT SAMPLED, and the
+# selftest inspects those recorded populations. Remove the exclusion at any single site and that site's own
+# recorded sample contains pool rows, so the assertion fails for that site by name. The selftest also asserts
+# the full set of expected sites is present, so deleting a registration is itself a failure.
+_CURVE_SAMPLES={}
+def _curve_sample(site,k,rows):
+    """Register the rows a curve builder is about to consume, and return them unchanged. Records only picks on
+    the national curve (k<=ND_CURVE_LAST) — the domain where a pool row is a contamination — so this is bounded.
+    Stores references to the builder's own list: it observes, it does not copy or recompute."""
+    if k is not None and k<=ND_CURVE_LAST: _CURVE_SAMPLES.setdefault(site,{})[k]=rows
+    return rows
+CURVE_FIT_SITES=('build_pvc','build_pvc_v34','_natcv','_natcv34','v0_kernel')   # every site that fits/samples the curve
 def _rw(y):                                  # v2.1: equal weighting (recency shown immaterial; reverted by request)
     return 1.0
 BPK={}; POOL={}; MIX={}
@@ -714,7 +733,8 @@ def _ce(vals,al):
 def build_pvc(alpha):
     raw=[float('nan')]*99
     for _k in range(1,100):
-        vs=[peakval(p) for p in hist if _teaches_curve(p) and abs(_epk(p)-_k)<=4]   # ADDENDUM 1: pool rows do not teach the curve
+        vs=[peakval(p) for p in _curve_sample('build_pvc',_k,                       # ADDENDUM 1: pool rows do not teach the curve;
+            [p for p in hist if _teaches_curve(p) and abs(_epk(p)-_k)<=4])]         # registered so the check watches THIS list
         if vs: raw[_k-1]=_ce(vs,alpha)
     for _i in range(99):
         if raw[_i]!=raw[_i]: raw[_i]=raw[_i-1] if _i else 5000.0
@@ -769,7 +789,8 @@ def build_pvc_v34():
     N=99
     raw=[float('nan')]*N                                          # 1. raw band value, new measure, tiered alpha, +-4
     for k in range(1,N+1):
-        vs=[_nv_bwd(p) for p in hist if _teaches_curve(p) and abs(_epk(p)-k)<=4]   # ADDENDUM 1: pool rows do not teach the curve
+        vs=[_nv_bwd(p) for p in _curve_sample('build_pvc_v34',k,                    # ADDENDUM 1: pool rows do not teach the curve;
+            [p for p in hist if _teaches_curve(p) and abs(_epk(p)-k)<=4])]          # registered so the check watches THIS list
         if vs: raw[k-1]=_ce0(vs,_alpha_pvc(k))
     for i in range(N):
         if raw[i]!=raw[i]: raw[i]=raw[i-1] if i else 0.0
@@ -984,13 +1005,15 @@ _natcv=[None]*100     # LEGACY national curve, retained for the export panel abo
 for _k in range(1,100):
     # ADDENDUM 1: `_grp=='ND'` is NOT sufficient any more — a national selection at 65+ is POOL, and this site
     # windows on the RAW pick, so ND picks 65-68 would still land inside +/-4 of picks 61-64. Gate on is_pool.
-    _vs=[realized_cv(p) for p in data if p['_grp']=='ND' and not is_pool(p) and (p['pick'] or 99) and abs((p['pick'] or 99)-_k)<=4 and p['pos'] in GRP]
+    _vs=[realized_cv(p) for p in _curve_sample('_natcv',_k,                         # ADDENDUM 1: registered sample
+        [p for p in data if p['_grp']=='ND' and not is_pool(p) and (p['pick'] or 99) and abs((p['pick'] or 99)-_k)<=4 and p['pos'] in GRP])]
     if _vs: _natcv[_k]=_ce(_vs,ALPHA)
 for _k in range(1,100):
     if _natcv[_k] is None: _natcv[_k]=_natcv[_k-1] if _k>1 and _natcv[_k-1] else 300.0
 _natcv34=[None]*100   # v3.4 (Luke cont.12): pathways measured backward THE SAME WAY as picks -- _nv_bwd (posval-VOR
 for _k in range(1,100):   # on best2, busts->0) + tiered alpha, inverted against the v3.4 per-pick national curve (NOT legacy realized_cv).
-    _vs=[_nv_bwd(p) for p in hist if _teaches_curve(p) and abs(_epk(p)-_k)<=4]   # ADDENDUM 1: pool rows do not teach the curve
+    _vs=[_nv_bwd(p) for p in _curve_sample('_natcv34',_k,                           # ADDENDUM 1: pool rows do not teach the curve;
+        [p for p in hist if _teaches_curve(p) and abs(_epk(p)-_k)<=4])]              # registered so the check watches THIS list
     if _vs: _natcv34[_k]=_ce(_vs,_alpha_pvc(_k))
 for _k in range(1,100):
     if _natcv34[_k] is None: _natcv34[_k]=_natcv34[_k-1] if _k>1 and _natcv34[_k-1] else _natcv34[1]
