@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v3 · supervisor pen · 2026-07-28, register v508
+# CURRENT STATE — the incoming-seat read · v4 · supervisor pen · 2026-07-28, register v509
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,160 +109,126 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate as of 2026-07-28, register v508, main `85e39ee`.*
+*Replaced wholesale each pen. Accurate as of 2026-07-28, register v509, main `cd869b1`.*
 
-## WHAT THE OWNER WANTS — read this first, and work on these
+## THE PRICING STRUCTURE — owner-ruled 2026-07-28, and it governs everything below
 
-Given directly 2026-07-27, in his order. **Nothing outside this list should be started without his
-word.**
+**The national curve stops at pick 64.** Everything past 64 enters a **rookie pool**: ND 65+, all
+rookie draft, all post-draft selections. Valued **by position**; **order of selection is irrelevant**
+inside the pool. SSP and MSD are valued at the pool but tracked separately so they may become their
+own pools as data accumulates.
 
-1. **Recalculate everything derived from the old store.** V0, the pick curve, priors, age curves —
-   all fitted on the pre-restructure world. **Nothing downstream is trustworthy until this is
-   re-derived, and nobody has measured what changed.** → **STAGE 1 IS FIRED**, see below.
-2. **Establish the referee and optimise the model to beat the blind challenger.** The protocol is
-   frozen and ready; **the harness that runs the scoring has never been built.** That is the only
-   blocker. Build it *after* (1) or it scores against stale priors.
-3. **ITEM 412 pricing** — **the owner is working this himself** (2026-07-28). Do not seat it.
-4. **Round 20 scores + live local updating.** → **FIRED**, see below. The one time-sensitive item.
-5. **Run the engine locally without the bake ceremony.** Owner ruling: **after (2)**. *Partly already
-   true:* the score-apply gate arms by environment alone — no code edit — see the R20 directive §1.
-6. **Off-season transformation spec** — new positions, draftees entering, ageing, retirements. The
-   46-line runbook at `docs/archive/pre-mvp-2026-07/SPEC_SEASON_ROLLOVER_v1_2026-07-16.md` predates
-   the restructure and knows nothing of the stream split. A starting point, not a spec.
+| | rows |
+|---|---|
+| ND curve, picks 1–64 | 1,448 |
+| rookie pool (121 ND 65+ · 924 RD/post-draft) | 1,045 |
+| SSP · MSD (pool-valued, tracked apart) | 52 · 106 |
 
-## IN FLIGHT — three streams, deliberately concurrent
+This is ITEM 412's sealed structure reaching the engine, which had never implemented it.
+`rl_model.py:209` and `:215` still chain rookies onto the national draft — that is what is being
+removed. **Do not re-derive `national_draft_last_pick.json`**; those two lines are its only consumers.
 
-**The rule that makes them safe: stage 1 is PINNED, R20 is the only writer.**
+Owner ruling of the same date: **D1's ND densification is correct** (the store is the authority; the
+table is the stale side), and **Matt Maguire's removal was intended**.
 
-| stream | seat | touches | state |
-|---|---|---|---|
-| **Priority 1 · stage 1** — measure what the restructure moved | fresh execution supervisor | nothing; read-only, pinned to `85e39ee` / store `c120cfd5` | directive filed: `docs/directives/PRIORITY_1_STAGE_1_fit_measurement.md` |
-| **Priority 4 · R20 go-live** — apply round 20 | fresh execution supervisor | **the store, board and boot pins** | directive filed: `docs/directives/PRIORITY_4_R20_go_live.md`. Needs the owner's score file + `INGEST_SCORE_APPLY` token |
-| **#205 · CI parallelisation** | supervisor-408 (held through execution) | `.github/workflows/live-scoring.yml` only | **FIRED 2026-07-28.** Audited, Addendum 1 filed |
-| ITEM 412 pricing | **the owner** | — | his own work, off-seat |
+## IN FLIGHT
 
-Stage 1 must not re-read `main` after its pinned checkout. R20 may move the store freely underneath
-it. Neither waits for the other. #205 collides with nothing and makes R20's test cycle ~4× faster if
-it lands first.
+| | |
+|---|---|
+| **#207 · stage 1** | Returned once, re-tasked. Recalculating bust priors on the new store and re-fitting the curve under the new structure. Was pinned to store `c120cfd5`; the store has since moved and its figures stay valid for the store they name. |
+| **#208 · R20** | **Applied, not finalized.** Store `c120cfd5 → e3aaba77`, board `fa172ac1 → 8a38cca4`, 410 players. Phase two refused on a real finding (below). Awaiting the restructure-entry fix. **`3a18ea2` must not be merged as a finished round.** |
+| **ITEM 412** | The owner's own work, off-seat. |
 
-## What stage 1 already knows before it starts
+## The movers chain break — #208's live blocker
 
-Traced to the artifact by the seam, 2026-07-28 — the directive carries the detail.
+The bundle requires `report[n].board_md5_before == report[n-1].board_md5_after`. R15–R19 is continuous
+(`2ab73a6f → 2fe26675 → 8ad41708 → 0308202f → 4323c448 → 92a8f3a0`) and R20 attaches at `fa172ac1`.
+**D1/D2 rebuilt the board without a round apply**, and the invariant assumes the board only ever moves
+through rounds. `repair()` and `finalize_round(force=True)` fail identically and write nothing — there
+is no code path that writes FINALIZED with a broken chain, deliberately.
 
-- **It is nine artifacts, not four.** `boot_guard.py:223` names five (`q97m`, `v0surf`, `peak_model`,
-  `pvc_snapshot`, `bust_prior`); `band`/`cm_400.pkl` is pinned too; and `pvc_curve_v2.json`,
-  `params.json` and `national_draft_last_pick.json` are **not pinned at all**, so nothing halts when
-  they go stale.
-- **The pick curve declares its own source store as `968de0c7`** — the 17 July store. It was already
-  stale before D1.
-- **D1 moved the `store` and `board` pins in `expected_boot.json` and left `v0surf` untouched.** The
-  board of record `fa172ac1` was built with the old V0 surface on the new store.
-- **The priors and the age curves carry no provenance record and have no identified producer.** The
-  priors are an *input* to the peak model, so the chain has an unknown root. If nothing regenerates
-  them, that is the finding.
-- **The peak model and `pvc_snapshot.json` are one action.** `build_peak_model_v4.py` co-emits the
-  snapshot; the freeze is a coupling rule, not a bar on re-deriving. Owner ruling 2026-07-28: they are
-  re-derived together.
-- **The stream split exists in the store and not in the engine.** `draft_stream` / `stream_pick` /
-  `stream_year` are populated and nothing reads them; the boundary still comes from
-  `national_draft_last_pick.json`, last touched 11 July.
-- **Measured store delta across D1:** `pick` 679 · `drafted_position` 538 · `present_position` 499 ·
-  `future_position` 1, over 572 distinct players, plus four new fields across 8,711 rows;
-  1,733 + 8,711 = 10,444 field edits, matching the filed bijection exactly. *The register's "1,035
-  position and 615 pick changes" is a v437 roadmap estimate filed before the transform ran.*
-- **The pick-vs-player join test PASSES on the national draft** — 2021 1.37 · 2022 1.00 · 2023 1.18 ·
-  2024 1.00 · 2025 0.90. No entry discontinuity. **An earlier seam version of this test was wrong**:
-  it priced mid-season-draft picks off the national curve and produced a false 0.17. `PICKLESS`
-  excludes MSD/SSP and `rl_model.py:218` says so directly. Filter on `type` before comparing anything
-  to a pick price.
+**Owner ruling:** generate the jump `92a8f3a0 → fa172ac1` as its own bundle entry, labelled the D1/D2
+restructure rather than a round. Both boards exist and the machinery already computes movers between
+two boards. The board will move outside a round again — the re-derivation will do it, and so will 412.
+
+## The priors — recovered, and being recalculated
+
+Believed unre-derivable; they are not. The producer was a one-off `/tmp/bustprior.py` plus
+`FORWARD_MODEL_V3_STATUS.md`, **neither ever committed on any ref**. The recipe is recorded in full in
+the register at v509. In short: target is best-3 season average over ≥6-game seasons with
+never-established players entered as **0.0** (that zero is the survivorship fix); debut cohorts
+2006–2020; `IsotonicRegression(increasing=False)` on effective pick, fitted pooled and per-position,
+blended `w = min(n_pos/200, 1) × 0.6`.
+
+**Both of its axes moved**: 538 players changed drafted position, 338 inside its own training window,
+crossing strata. New shape — ND 1–64 as written; pool the same target and blend with **no isotonic
+step**, because with order irrelevant there is no pick to regress on. One value per position.
+
+Two defects, neither flagged at derivation: the `× 0.6` is a hard ceiling with no stated basis (every
+prior is ≥40% pooled — the suspected cause of a real ~19-point top-of-draft spread compressing to ~8),
+and `increasing=False` on raw pick gives plateau widths set by noise.
+
+## The propping mechanism — the model of record
+
+`fit_year0` grows an adaptive bandwidth until it finds 35 effective observations and weights by
+Gaussian distance in log-pick. **It is stream-blind.** Where national thins the kernel reaches
+furthest, into rookie observations sitting above national at the same pick; `monotone_strict` then runs
+PAVA, which propagates that lift backward. **Strict descent is the fix, so comparing final curves
+cannot see it** — the seam and #207 both did that and both concluded wrongly. Measure the raw fit and
+the rookie share of kernel weight.
+
+Structural fact independent of the above: ND effective picks run 1–80, rookies 62–99. Picks 1–60 are
+**0% rookie**, 81–99 are **100% rookie**. Past pick 80 the national draft has no observations at all.
+
+## Priority 5 evidence — it points the opposite way to the assumption
+
+**Four guards fired in anger in one R20 round**: identity resolution, `round_finalize` chain validation,
+the env pin, and Guard 5. Only the boot pins, the dedup ledger, the dry-run and `movers_conflict` merely
+re-armed. **The ceremony worth removing is the four-surface panel re-pin** — hand-typed, blocks every
+landing, has never caught anything.
 
 ## Closed this cycle
 
-- **ITEM 411 · D1 store restructure — LANDED** at `efaaa7fc`, true two-parent. Store
-  `f37d9716 → c120cfd5`, board `6f07f7cb → fa172ac1`. 2,651 players. Class-(c) defects: zero.
-  Issue #151 closed; `ci/item-411-d1-staging` deleted. *History: v408–v508.*
-- **ITEM 408 · D2 forward-lens integration — LANDED** at `265bdab`, true two-parent, tree `c12650ec`.
-  Issue #157 closed; `ci/item-408-d2-staging` deleted. *History: v422, v443, v448, v461–v508.*
-- **Terminal CI for both:** all four suites green attempt-1 on tip `40a3da7`, every step success, zero
-  skipped. The merge commits' own runs were cancelled by supersession, not red — `cancel-in-progress`
-  keyed on the ref, three pushes inside 52 minutes. No workflow reads `docs/`, so the tip's product
-  tree is byte-identical to the D2 merge and the tip run is valid evidence for both (v481).
-- **live-scoring timeout raised 90 → 180** (`85e39ee`). It had been running at 86m12 against a 90m
-  ceiling — 3m48 of margin — because D1 grew the store 18.2% and every proof slowed 3–7%.
+- **ITEM 411 D1** `efaaa7fc` · **ITEM 408 D2** `265bdab` — both landed, issues #151/#157 closed, both
+  staging branches deleted.
+- **#205 CI parallelisation** — PR #210 merged. **86m12 → 19m16, 4.47×.** §5 discharged on artifact
+  check-sets, not conclusions. `live-scoring.yml` timeout raised 90 → 180.
+- **supervisor-408** rotated on a clean boundary. **supervisor-411** rotated earlier.
 
-## ITEM 410 — referee · FROZEN, HARNESS UNBUILT
+## Owner acts outstanding
 
-`docs/referee/REFEREE_PROTOCOL.md` v1.0 FROZEN (owner word, v407). **v1.1 amendment drafted** at
-`docs/referee/AMENDMENT_v1_1_DRAFT.md`, awaiting the owner's word. The harness is owner priority 2.
-*History: v390–v407, v472.*
-
-## Owner words of record — the unchallengeable set
-
-| word | v |
-|---|---|
-| Express restructure-release word — buys staging only | v461 |
-| The D1 transition legitimately moves the store | v467 |
-| Widened restatement authorization | v469 |
-| Amendment 5 GO | v481 |
-| Token seal `ITEM_411_D1_restatement_v467` | v487 |
-| The three-way architecture: position / current eligibility / future positioning | v499 · v500 |
-| "future can follow present" | v503 |
-| "Relaxed" — v483 standing authority restored | v507 |
-| Viewing discharged; **"let's fire D1"** — the second word | v507 |
-| Rotate 408 · scope conservation as its own job | v507 |
-| The re-key is scoped **current season only** | v507 |
-| **The governing test** and the six priorities | 2026-07-27 |
-| Fire #205 · stage 1 and R20 both start · parallelise · 412 is his own | 2026-07-28 |
-| `pvc_snapshot` is re-derived with the rest, not held frozen | 2026-07-28 |
-
-## Outstanding owner acts
-
-1. **The R20 score file and the `INGEST_SCORE_APPLY` token** — blocks priority 4. Nothing else does.
-2. **v1.1 amendment word** — draft filed, one read.
-3. **What #146 is for now** — he has commented on the issue; the purpose statement is still open.
-   Its body inverted at D1: it says not to populate `draft_stream`/`stream_pick`/`stream_year`/
-   `pick_correction_note` "unless they already exist", and they now do, on 2,651 players.
-4. **G-MONO rulebook + twin wording** — later, with 412. Law-10: exact wording pre-filed.
-5. *Optional:* revoke the unused ceremony PAT. Off-repo, owner-attested only.
+1. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified against the
+   store, one read. Optional dial: make RD its own observation row inside POOL (693 players).
+2. **#146** — parked by owner ruling until 412 needs a canvas. Its body inverted at D1; do not execute
+   as written.
+3. Referee harness scope — a fresh Fable seat, owner-scheduled.
 
 ## Seats
 
-| seat | state |
+| | |
 |---|---|
-| **seam + pen** | seated 2026-07-27. Rotates on a **verification-accuracy slip**. Disclosed this cycle: one wrong finding — priced MSD picks off the national curve and reported a false entry discontinuity; owner-caught. Artifact verification (hashes, counts, merges, ancestry) held throughout. |
-| **supervisor-408** | held through #205 by seam ruling; rotate after it executes, or on any degradation sign. Disclosed one enumeration error (seven writers vs eight), root-caused and addended by itself. |
-| **supervisor-411** | **rotated out 2026-07-28**, clean boundary, ITEM 411 closed, queue empty. |
-| **stage-1 seat** | to be seated, fresh, cold |
-| **R20 seat** | to be seated, fresh, cold |
-
-Live seat depths are deliberately **not** recorded here. **Capability maps vary per environment and
-are re-tested per seat, never inherited.**
+| **seam + pen** | **Rotating now on a verification-accuracy slip.** Six errors this session, all owner- or seat-caught, none reaching the product. Two families: reading what *describes* the system instead of what *commissions* it, and stating a figure without pinning its basis or population. Artifact verification held throughout. **Distrust any scope or figure it asserted without naming what it read; rely on anything it hashed or re-derived.** |
+| **#207 · #208** | Live, fresh, one job each. |
 
 ## Parked — do not start
 
-- **Track D**, five items, all in *test harnesses*, none touching the engine or board. **None can stop
-  the project working.**
-- **Conservation gate.** `gate_f5.py` cannot be wired as written — its input board exists nowhere in
-  the tree, its path and epoch are hardcoded, its comparison side is a static July file. The law is
-  reusable; the file is not. Placement, *seam ruling not owner word*: inside the advance transaction,
-  before commit. Scheduled before ITEM 412's pricing work. Figures: entrant intake 83,538
-  (69,266 + 14,272, seal `a17aafed`); realised totals 770,987 / 771,152 / 752,427; band −1.2% / +1.7%.
-- **`test_club_valuation_current.py` is not wired into CI.** Seam ruling: leave it. It guards a file
-  that bakes a sum a browser computes instantly, and the owner's ruling on that fault is to stop
-  baking the sum, not to guard it. Revisit only if someone is in that code for another reason.
+Track D (five items, none touching the product) · the conservation gate (`gate_f5.py` cannot be wired
+as written; scheduled behind 412) · `test_club_valuation_current.py` CI wiring (seam ruling: leave it —
+it guards a file that bakes a sum a browser computes instantly).
 
 ## Environment carries
 
-- Containers **shallow-clone by default**. `git fetch --unshallow` before any ancestry claim.
-- **The numpy pin is deterministic per container, not intermittent.** `bootstrap.sh` asserts a sha256
-  of the OpenBLAS bundled inside the numpy 2.4.4 wheel; an environment either matches or never will.
-  Fix by running `bootstrap_env.sh` (needs PyPI reachable), never by bypassing. Different wheels
-  compile `np.interp` differently — ~1e-8 divergence against a ~1e-12 board flip threshold — so an
-  unpinned wheel silently reorders the board. This guard prevents a *wrong* board.
-- Run **`bootstrap.sh`**, not `setup_env.sh` alone — `unidecode` is vendored and seeded by bootstrap.
-  **Exception:** `live-scoring.yml` deliberately does not run `bootstrap.sh` (legacy Guard 5 would red
-  on register item 399's stale engine pins); it seeds the dependency itself.
-- The Actions API can exceed per-call output caps; spill to a file and parse rather than re-pulling.
+- Containers **shallow-clone by default** — `git fetch --unshallow` before any ancestry claim.
+- **`bootstrap_env.sh` invokes bare `python3`** while the lock pins the cp312 wheel. Containers vary;
+  this one defaulted to 3.11 with `/usr/bin/python3.12` present. `live-scoring.yml` already solves it by
+  discovering `python3.12` by name — the local bootstrap never got the same treatment. **One-line fix,
+  has now cost two seats.** Never bypass the pin: a different numpy wheel silently reorders the board.
+- The env-pin guard hashes the bundled OpenBLAS but **not** the numpy binary where `np.interp` lives,
+  so it cannot tell the two wheels apart — the exact thing it exists to catch.
+- **`sibling_repin` rewrites history every round** — it blanket-replaced `5546f278` in all three
+  occurrences in `expected_boot.json`, including inside the clause reading "truth preserved as history".
+  Narrative only, no executable reader. Repair in place when that narrative is next rewritten.
+- The Actions API can exceed per-call output caps; spill to a file and parse.
 
 ---
 
