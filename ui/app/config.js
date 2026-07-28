@@ -2,40 +2,25 @@
 window.MD = window.MD || {};
 
 MD.config = {
-  /* Ring-fence: the UI refuses to render any board whose md5 head != this expected board id
-     (md5(rl_app_data.json) == the pinned board id; the UI analogue of Guard 5, fail-closed).
-     Moved 9ecbe0fa -> de4baef9 (ID-primary migration 2026-07-12) -> 81e48293 (v2.9 BAKE 2026-07-13:
-     L7 numéraire re-base + adopted-curve repoint + Brodie owner override) -> 3dc19fbb (ITEM 20 store-
-     identity job 2026-07-13: afl_club import + club-display repoint + bramble +1; display-only board
-     move, engine ev() unchanged). The UI board pin tracks the shipped board, same as
-     data/expected_boot.json 'board'; the refreshed board_view bundles carry srcmd5 3dc19fbb. Moved
-     3dc19fbb -> 790136a3 (v2.10 CAPTAINCY BAKE, tag d14efaef: the L-CAPTAIN ruled captain curve lifts the
-     guns + load-time re-normalisation; display-only for the UI — no value is computed here). The pin moves
-     with the tagged board, per the v1.1 base rule: bundles regenerate via extract_board_view.py from the tag.
-     Moved 790136a3 -> 06d8af60 (v2.11-rc1 RELEASE CANDIDATE, release/v2.11-rc1: the installed balanced board
-     of record data/expected_boot.json 'board' = full md5 06d8af60b679a12db07c064c60c065f9, RL_LEGE=0 RL_LEGF=0
-     RL_PVC2=1 on engine cc626d7d/904722cd, store 968de0c7; display-only for the UI — no value is computed here.
-     The seam authenticates working.stamp.board_md5[:8] == this id).
-     Moved 06d8af60 -> 2ab73a6f (FINAL INTEGRATION 2026-07-21, integration/v2.11-final-rc: the CANONICAL ENGINE
-     BUILD — rl_export.py under RL_PVC2=1 RL_LEGE=1 RL_LEGF=1 — reproduces this board from tracked code + the
-     canonical store + the sealed F5 input; NO diagnostic artifact is a build input. It equals accepted Board B
-     (1f10220c) on present v + vP1 + vP2 + row universe (0 diffs; Board B is an oracle only) and adds the owner-
-     facing visible future-draft asset ladder: 2027/2028 Draft Pick 1-64 at release-active PVC, RANKED among the
-     804 players in the +1/+2 lens; the two F5 residual aggregates sit in a separate reconciliation panel. Present
-     lens unchanged: 804 active, Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as
-     balanced_board_md5 lineage). Engine cc626d7d/904722cd, store 968de0c7, config 3a1e714f unchanged (rl_export
-     is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC).
-     Moved fa172ac1 -> 8a38cca4 (#222, 2026-07-28): ROUND 20 FINALISED. The board moved twice after the
-     pin was last set — the ITEM 411 restructure (-> fa172ac1) and then R20 (-> 8a38cca4) — and the
-     bundles regenerated with it (411735f / eb602b9) while this constant did not. The mismatch made
-     ringFence() reject the shipped board, so EVERY tab rendered the fail-closed panel and the app was
-     dead on main. Re-pinned to the board of record: data/expected_boot.json 'board' ==
-     md5(data/rl_build/rl_app_data.json) == 8a38cca44f53152090cb3df3f78bd47e, which is what both
-     board_view bundles carry. This RE-POINTS the guard at the shipped board; it does not weaken it —
-     a wrong or unstamped board still fails closed. NOTE: this pin is hand-maintained and must be moved
-     by hand on every board move. It is the same shape as the four-surface panel re-pin #208 retired and
-     the club totals this job moves to the browser; retiring it is a guard decision, not this job's. */
-  EXPECTED_BOARD: "8a38cca4",
+  /* EXPECTED_BOARD IS GONE — retired 2026-07-28 by owner word (issue #231), and nothing replaces it here.
+
+     It was a hand-typed copy of the shipped board id, and on 2026-07-28 it killed the app. R20's board
+     reached main at fef7f69; this constant did not follow; ringFence() rejected the shipped board and
+     EVERY tab rendered the fail-closed panel. One board move was enough. It was corrected hours later at
+     6d8f910, but the shape was the defect, not the lapse: a value a human has to retype whenever
+     something moves will eventually not be retyped.
+
+     The ring-fence keeps its job and loses that failure mode. It now reads the BOARD OF RECORD out of the
+     working bundle's own stamp (`stamp.board`), which extract_board_view.py copies verbatim from
+     data/expected_boot.json 'board' and asserts against the artifact md5 at generation time. Two values
+     with different provenance — one computed from the board's bytes, one declared by the manifest — and
+     neither of them typed by hand. See ringFence() in seam.js.
+
+     What authenticates staleness is ui/tests/release_seam.test.js, which reads data/expected_boot.json
+     directly: the browser cannot open the manifest from file://, but the test can, so drift between the
+     shipped bundle and the board of record is caught in the repo rather than in the user's face.
+
+     DO NOT reintroduce a board id in this file. */
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
