@@ -23,23 +23,43 @@ MD.seam = (function () {
   /* index players by key + precompute board rank (by current value, descending). */
   function indexed() {
     const players = (working.players || []).slice();
-    const byKey = {};
-    players.forEach(function (p) { byKey[p.key] = p; });
-    return { players: players, byKey: byKey };
+    const byKey = {}, byName = {}, nameDupes = {};
+    players.forEach(function (p) {
+      byKey[p.key] = p;
+      // #139 item 16: the public bundle is a sanitised view of the SAME 804 players but carries no
+      // `key`, so a public row joins to its profile by display name. Ambiguous names are recorded and
+      // deliberately NOT joined — opening the wrong player's card is worse than opening none. Measured
+      // on store e3aaba77: zero display names are shared by two or more of the 804 active players.
+      if (p.name == null) return;
+      if (Object.prototype.hasOwnProperty.call(byName, p.name)) { nameDupes[p.name] = 1; }
+      else { byName[p.name] = p.key; }
+    });
+    Object.keys(nameDupes).forEach(function (n) { delete byName[n]; });
+    return { players: players, byKey: byKey, byName: byName, nameDupes: Object.keys(nameDupes) };
   }
 
   /* club-valuation overlay (item 178(2)/(3)): the picks + per-club summary emitted by the deterministic
      VALIDATE-OR-HALT ingest (ui/tools/ingest_inputs.py).  Null if the bundle is absent; carries `.halt`
      (a {reason, verdicts}) when the ingest refused — the overlay features fail-closed to that message
      while the board itself still renders. */
-  const club = window.__CLUB_VALUATION__ || null;
-  function clubHalt() { return club && club.halt ? club.halt : null; }
-  function picksFor(afflTeamLong) { return (club && club.picksByTeam && club.picksByTeam[afflTeamLong]) || []; }
+  /* #139 item 21 (owner ruling 2026-07-28): this bundle is now read for its PICKS ONLY. Its baked
+     per-club totals are no longer a source of truth anywhere in the UI — they are recomputed live from
+     the board by MD.clubTotals, because a baked sum goes stale on every board move and twice did.
+     Deliberately exposed as `clubBundle`, not `club`: the old name read like "the club data", and any
+     code reaching for it now has to say that it wants the raw ingest bundle. */
+  const clubBundle = window.__CLUB_VALUATION__ || null;
+  function clubHalt() { return clubBundle && clubBundle.halt ? clubBundle.halt : null; }
+  function picksFor(afflTeamLong) {
+    if (!clubBundle || !clubBundle.picksByTeam) return [];
+    // canonical join key — the picks ledger and the board must agree on one spelling per club.
+    const t = MD.canonClub(afflTeamLong);
+    return clubBundle.picksByTeam[t] || clubBundle.picksByTeam[afflTeamLong] || [];
+  }
 
   return {
     working: working,
     public: pub,
-    club: club,
+    clubBundle: clubBundle,
     clubHalt: clubHalt,
     picksFor: picksFor,
     ringFence: ringFence,
@@ -57,8 +77,9 @@ MD.dispVal = function (p) {
 
 /* shared UI state */
 MD.state = {
-  view: "board",                       // board | card | trade | review
+  view: "board",                       // board | clubs | card | trade | movers  (#139 item 2: review retired)
   tier: "working",                     // working | public
+  nav: [],                             // #139 item 15: universal-Back location stack (see main.js)
   lens: MD.config.LENS_DEFAULT,        // 0..4  (index 2 == now)
   deltaBase: MD.config.DELTA_BASE_DEFAULT, // bake | round
   slugs: false,                        // debug affordance (working only)

@@ -10,7 +10,6 @@ window.MD = window.MD || {};
 MD.pocket = (function () {
   const fmt = MD.fmt, C = MD.counting;
   const POS = window.__CLUB_POSITIONS__ || null;
-  const FREE = "Free Agents";
 
   // the 7 pocket metrics, in the owner's order.
   const METRICS = [
@@ -29,9 +28,11 @@ MD.pocket = (function () {
      totalPlayer is built from — so Σ(positions) == totalPlayer exactly (the % denominator is clean). */
   function compute() {
     if (_cache) return _cache;
-    const cv = MD.seam.club;
-    if (!cv || cv.halt || !cv.clubs || !cv.clubs.length) return null;
-    const clubs = cv.clubs;
+    // #139 item 21: the 7 metrics now come from MD.clubTotals — computed live off the stamped board —
+    // instead of club_valuation.js's baked (and twice-stale) totals. Same figures, same `v`, no bake.
+    const ct = MD.clubTotals.compute();
+    if (!ct || !ct.clubs.length) return null;
+    const clubs = ct.clubs;
     const nClubs = clubs.length;
 
     const avg = {};
@@ -41,8 +42,8 @@ MD.pocket = (function () {
 
     const byTeamPos = {}, unlisted = {};
     (MD.seam.working && MD.seam.working.players || []).forEach(function (p) {
-      const t = p.affl_team;
-      if (!t || t === FREE) return;
+      const t = MD.canonClub(p.affl_team);          // #139 item 5: one key per club
+      if (!t || MD.clubTotals.isFree(t)) return;
       if (!byTeamPos[t]) byTeamPos[t] = {};
       const codes = POS && POS.byKey ? POS.byKey[p.key] : null;
       const val = p.v;                                   // board value; matches club_valuation totals
@@ -58,7 +59,8 @@ MD.pocket = (function () {
     });
 
     _cache = { clubs: clubs, byTeam: {}, avg: avg, byTeamPos: byTeamPos, posAvg: posAvg,
-               unlisted: unlisted, nClubs: nClubs, stamp: cv.stamp || {} };
+               unlisted: unlisted, nClubs: nClubs,
+               picksAvailable: ct.picksAvailable, playerSource: ct.playerSource, picksSource: ct.picksSource };
     clubs.forEach(function (c) { _cache.byTeam[c.team] = c; });
     return _cache;
   }
@@ -77,12 +79,18 @@ MD.pocket = (function () {
 
   function metricRows(club, agg) {
     let h = "";
+    // When the picks overlay is halted or absent there is no pick value to add, so Picks and Overall
+    // are UNAVAILABLE, not zero — printing 0 would understate every club by its whole pick holding and
+    // would read as a real figure. The player-side metrics stand on their own and still render.
+    const noPicks = !agg.picksAvailable;
+    const denom = noPicks ? club.totalPlayer : club.overall;
     METRICS.forEach(function (m) {
+      const unavailable = noPicks && (m.key === "totalPicks" || m.key === "overall");
       const v = club[m.key] || 0;
       h += '<tr><td class="pk-lbl">' + fmt.esc(m.label) + "</td>" +
-        '<td class="num pk-abs">' + fmt.n(v) + "</td>" +
-        '<td class="num pk-pct">' + pct(v, club.overall) + "</td>" +
-        '<td class="num">' + vsAvg(v, agg.avg[m.key]) + "</td></tr>";
+        '<td class="num pk-abs">' + (unavailable ? "<small>unavailable</small>" : fmt.n(v)) + "</td>" +
+        '<td class="num pk-pct">' + (unavailable ? "—" : pct(v, denom)) + "</td>" +
+        '<td class="num">' + (unavailable ? "—" : vsAvg(v, agg.avg[m.key])) + "</td></tr>";
     });
     return h;
   }
@@ -132,7 +140,9 @@ MD.pocket = (function () {
       "owner rule, collapse-first — a Key listing absorbs its General counterpart (Key-Fwd absorbs " +
       "Gen-Fwd, Key-Def absorbs Gen-Def; the General token is slot eligibility, not a second position). " +
       "After that collapse a player counts 1 to his position, a DPP player 0.5 to each, except a DPP " +
-      "midfielder (the non-mid counts 1, the mid 0). Best-23 is the existing exact greedy." +
+      "midfielder (the non-mid counts 1, the mid 0). Best-23 is the existing exact greedy, run here " +
+      "over the live board. Player value, Top-5/10, Best-23 and Non-Best-23 are computed in the browser " +
+      "from the stamped board; Picks are the ingest's PVC band prices." +
       "</div>";
     return head + block1 + block2 + foot;
   }

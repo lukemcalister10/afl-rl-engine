@@ -41,9 +41,45 @@ MD.fmt = {
   club: function (name) {
     if (name == null) return "—";
     const m = (MD.config && MD.config.CLUB_DISPLAY) || {};
-    return m[name] || name;
+    const c = MD.canonClub(name);
+    return m[c] || c;
   },
 };
+
+/* #139 item 5 — the duplicate "Free agents" category, CANONICALISED FOR DISPLAY AND FILTERING ONLY.
+   The duplicate does NOT originate in the UI: the authored store carries two spellings of one AFFL
+   bucket — 73 rows `Free agents` and 2 rows `Free Agents` (tyler-brockman, liam-stocker). Store
+   authorship is the owner's alone and this job has no store authority, so nothing is fixed at source.
+
+   ui/tools/extract_board_view.py already folds the two spellings for the BOARD bundles, so the board
+   and the player card never showed the duplicate. `ui/data/movers.js` does NOT: it carries 511 rows
+   spelled `Free agents` and 14 spelled `Free Agents`, so the Movers club filter listed the pool TWICE
+   and each entry selected only part of it. That is the live defect this closes.
+
+   The canonical spelling is not invented here and is not hardcoded: it is READ from the board bundle,
+   whose team names the extractor has already normalised. A name that matches a board team
+   case-insensitively resolves to the board's spelling; anything else passes through trimmed and
+   verbatim. So a future case-variant of any club folds automatically, and a genuinely unknown club is
+   never silently renamed into a different one. Built lazily on first call — format.js loads before
+   seam.js, and this only ever runs at render time. */
+MD.canonClub = (function () {
+  let index = null;
+  function build() {
+    const m = {};
+    const w = (typeof MD.seam !== "undefined" && MD.seam && MD.seam.working) || null;
+    ((w && w.players) || []).forEach(function (p) {
+      if (p && p.affl_team) m[String(p.affl_team).trim().toLowerCase()] = String(p.affl_team).trim();
+    });
+    return m;
+  }
+  return function (name) {
+    if (name == null) return null;
+    const raw = String(name).trim().replace(/\s+/g, " ");
+    if (!raw) return null;
+    if (index === null) index = build();
+    return index[raw.toLowerCase()] || raw;
+  };
+})();
 
 /* Pick-asset guard (owner ruling, register v16 item 14): the current board is a PLAYER RANKING.
    A pick-asset row is a draft-pick line, not a player. Display-only test used to keep the current /

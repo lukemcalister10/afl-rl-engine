@@ -50,7 +50,7 @@ MD.clubs = (function () {
     return tr;
   }
 
-  function row(c, rank) {
+  function row(c, rank, picksAvailable) {
     const tr = fmt.el("tr");
     tr.appendChild(fmt.el("td", "rk num", String(rank)));
     const club = fmt.el("td", "club");
@@ -71,7 +71,10 @@ MD.clubs = (function () {
     club.appendChild(open);
     tr.appendChild(club);
     COLS.forEach(function (col) {
-      tr.appendChild(fmt.el("td", "num " + col.cls, fmt.n(c[col.key])));
+      // Picks and Overall are UNAVAILABLE (never 0) when the picks overlay is halted or absent —
+      // a printed 0 would understate the club by its entire pick holding and read as a real figure.
+      const na = !picksAvailable && (col.key === "totalPicks" || col.key === "overall");
+      tr.appendChild(fmt.el("td", "num " + col.cls, na ? "<small>n/a</small>" : fmt.n(c[col.key])));
     });
     return tr;
   }
@@ -79,32 +82,35 @@ MD.clubs = (function () {
   function render(container) {
     container.innerHTML = "";
     const page = fmt.el("div", "clubspage");
-    const cv = MD.seam.club;
+    // #139 item 21: the player-side totals are computed HERE, in the browser, off the stamped board —
+    // they are no longer read from the baked (and twice-stale) club_valuation.js.
+    const ct = MD.clubTotals.compute();
     const halt = MD.seam.clubHalt();
 
     const intro = fmt.el("div", "cintro");
-    if (!cv) {
-      intro.innerHTML = '<span class="halt">Club-valuation bundle absent.</span> Run ' +
-        "<b>python3 ui/tools/ingest_inputs.py</b> to generate <b>ui/data/club_valuation.js</b> " +
-        "(see ui/HOW_TO_UPDATE_INPUTS.md).";
-      page.appendChild(intro);
-      container.appendChild(page);
-      return;
-    }
-    if (halt) {
-      intro.innerHTML = '<span class="halt">■ Overlay HALTED by the ingest.</span> ' +
-        fmt.esc(halt.reason) + " — nothing is guessed; fix the input and re-run the ingest.";
+    if (!ct) {
+      intro.innerHTML = '<span class="halt">Board bundle absent.</span> The club table is computed from ' +
+        "the stamped board, so there is nothing to rank until <b>ui/data/board_view_working.js</b> loads.";
       page.appendChild(intro);
       container.appendChild(page);
       return;
     }
 
-    const st = cv.stamp || {};
+    const ps = ct.playerSource || {};
     intro.innerHTML =
-      "<b>" + fmt.n((cv.clubs || []).length) + " AFFL clubs</b> ranked by Overall Value " +
-      "(players + held picks). Player value is the stamped board <b>" + fmt.esc(st.tag || "") +
-      "</b>; picks priced off the canonical PVC (2027 × " + fmt.esc(String(st.mult2027 != null ? st.mult2027 : 0.9)) +
-      ", balanced). <b>Best-23</b> = the best positionally-compliant XVIII " +
+      "<b>" + fmt.n(ct.clubs.length) + " AFFL clubs</b> ranked by Overall Value " +
+      "(players + held picks). <b>Player value, Top-5/10, Best-23 and Non-Best-23 are summed in your " +
+      "browser from the board on screen</b> — board <b>" + fmt.esc(String(ps.board || "").slice(0, 8)) +
+      "</b>, round <b>" + fmt.esc(String(ps.asOfRound != null ? ps.asOfRound : "—")) +
+      "</b> — so they cannot fall behind the board the way a generated file can. " +
+      (ct.picksAvailable
+        ? "Picks are the ingest's canonical-PVC band prices (2027 × " +
+          fmt.esc(String((ct.picksSource || {}).mult2027 != null ? ct.picksSource.mult2027 : 0.9)) +
+          ", balanced) — a pick's price comes from the curve, not from the board, so it is not re-summable here."
+        : '<span class="halt">Picks unavailable</span> — ' +
+          fmt.esc((halt && halt.reason) || "the club-valuation bundle is absent") +
+          ". Picks and Overall show <b>n/a</b> rather than 0; the player-side columns are unaffected.") +
+      " <b>Best-23</b> = the best positionally-compliant XVIII " +
       "(2 K-DEF · 4 G-DEF · 5 MID · 4 G-FWD · 2 K-FWD · 1 RUC) by board value + 5 best-remaining bench. " +
       "Every column sortable; click a club to open its board view. " +
       "<small>(The AFFL league is 16 clubs + a Free-Agents pool; Free Agents is a pool, not a club, so it is not ranked.)</small>";
@@ -115,7 +121,7 @@ MD.clubs = (function () {
     thead.appendChild(header());
     table.appendChild(thead);
     const tbody = fmt.el("tbody");
-    sorted(cv.clubs || []).forEach(function (c, i) { tbody.appendChild(row(c, i + 1)); });
+    sorted(ct.clubs).forEach(function (c, i) { tbody.appendChild(row(c, i + 1, ct.picksAvailable)); });
     table.appendChild(tbody);
     // Wrap the wide sortable table so it scrolls WITHIN its own region on narrow screens — the document
     // never overflows horizontally (display-only; the table markup + values are unchanged).
@@ -125,7 +131,8 @@ MD.clubs = (function () {
 
     const foot = fmt.el("div", "cfoot");
     foot.textContent = "Non-Best-23 = Total Player Value − Best-23 (roster depth beyond the best XXIII). " +
-      "Pure view — no value is recomputed; picks and player values share one currency (pick 1 = 3000).";
+      "Pure view — no value is recomputed. These are sums, top-Ns and a positional selection over the " +
+      "board's own figures; picks and player values share one currency (pick 1 = 3000).";
     page.appendChild(foot);
     container.appendChild(page);
   }

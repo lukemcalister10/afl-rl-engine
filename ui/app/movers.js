@@ -7,6 +7,22 @@
 (function (root) {
   "use strict";
 
+  /* #139 item 5 — the canonical AFFL club key, resolved DUAL-TARGET.
+     In the browser this defers to MD.canonClub, which derives the canonical spelling from the board
+     bundle (see ui/app/format.js) — that is the shipping path. Under node the pure-logic tests load
+     this file with `require` and there is no MD global and no board, so a local fallback applies the
+     same fold the extractor applies (`ui/tools/extract_board_view.py` norm_club): trim, collapse
+     internal whitespace, and treat the Free-Agents pool's two authored spellings as one. Both paths
+     agree on the case this item is about; neither ever renames one club into a different one. */
+  function canonTeam(name) {
+    var g = (typeof window !== "undefined" && window.MD && window.MD.canonClub) || null;
+    if (g) return g(name);
+    if (name == null) return null;
+    var raw = String(name).trim().replace(/\s+/g, " ");
+    if (!raw) return null;
+    return /^free agents$/i.test(raw) ? "Free Agents" : raw;
+  }
+
   /* ---- pure, dual-target logic (unit-tested under node) ------------------------------------ */
   var core = {
     /* Fail-closed integrity of ONE report: it must carry a committed board identity, a unique + full
@@ -403,7 +419,9 @@
     filter: function (players, f) {
       f = f || {};
       return players.filter(function (p) {
-        if (f.club && (p.affl_team || "—") !== f.club) return false;
+        // #139 item 5: match on the CANONICAL club key. The stored reports carry both authored
+        // spellings of the Free-Agents pool, so an exact-string match selected only part of it.
+        if (f.club && (canonTeam(p.affl_team) || "—") !== (canonTeam(f.club) || "—")) return false;
         if (f.pos && p.pos !== f.pos) return false;
         if (f.status === "played" && !p.played) return false;
         if (f.status === "dnp" && p.played) return false;
@@ -552,7 +570,11 @@
       const row = fmt.el("div", "strip moversfilters");
       row.appendChild(fmt.el("span", "lbl", "Filter"));
       // club
-      const clubs = {}; (report.players || []).forEach(function (p) { if (p.affl_team) clubs[p.affl_team] = 1; });
+      // #139 item 5: key the dropdown by the CANONICAL club name so the two authored spellings of the
+      // Free-Agents pool collapse to one entry that selects the whole pool.
+      const clubs = {}; (report.players || []).forEach(function (p) {
+        const c = canonTeam(p.affl_team); if (c) clubs[c] = 1;
+      });
       const csel = fmt.el("select", "boardsel");
       csel.appendChild(new Option("All clubs", ""));
       Object.keys(clubs).sort().forEach(function (c) { const o = new Option(fmt.club(c), c); if (c === state.club) o.selected = true; csel.appendChild(o); });

@@ -24,8 +24,18 @@ MD.config = {
      804 players in the +1/+2 lens; the two F5 residual aggregates sit in a separate reconciliation panel. Present
      lens unchanged: 804 active, Σv=752427, 0 present-v/rank/order movers vs Board A 06d8af60 (preserved as
      balanced_board_md5 lineage). Engine cc626d7d/904722cd, store 968de0c7, config 3a1e714f unchanged (rl_export
-     is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC). */
-  EXPECTED_BOARD: "fa172ac1",
+     is not a pinned engine identity). Display-only for the UI. PROVISIONAL final-RC).
+     Moved fa172ac1 -> 8a38cca4 (#222, 2026-07-28): ROUND 20 FINALISED. The board moved twice after the
+     pin was last set — the ITEM 411 restructure (-> fa172ac1) and then R20 (-> 8a38cca4) — and the
+     bundles regenerated with it (411735f / eb602b9) while this constant did not. The mismatch made
+     ringFence() reject the shipped board, so EVERY tab rendered the fail-closed panel and the app was
+     dead on main. Re-pinned to the board of record: data/expected_boot.json 'board' ==
+     md5(data/rl_build/rl_app_data.json) == 8a38cca44f53152090cb3df3f78bd47e, which is what both
+     board_view bundles carry. This RE-POINTS the guard at the shipped board; it does not weaken it —
+     a wrong or unstamped board still fails closed. NOTE: this pin is hand-maintained and must be moved
+     by hand on every board move. It is the same shape as the four-surface panel re-pin #208 retired and
+     the club totals this job moves to the browser; retiring it is a guard decision, not this job's. */
+  EXPECTED_BOARD: "8a38cca4",
 
   /* Q-DELTA-BASE (owner-worded 2026-07-12): the toggle is BUILT; default = (a) last accepted bake NOW.
      "default flips to (b) previous-round AT GO-LIVE" — ship the flip as THIS ONE LINE, not a rebuild. */
