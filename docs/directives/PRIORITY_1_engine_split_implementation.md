@@ -92,3 +92,94 @@ Movers tab can compare across it. The column's label is owner-set — ask for it
 On the issue. State: that lines 209 and 215 are gone and what replaced them; the curve's last pick; the
 pool index and the per-position values it produces; the board before and after; the history column you
 wrote and its label; and any point at which you had to choose something rather than implement it.
+
+---
+
+# ADDENDUM 1 — 2026-07-28. URGENT. Owner-directed. Amends by addition; nothing above is edited.
+
+## THE DEFECT — this directive was insufficient, and the gap is mine
+
+The body above says "remove the chaining at `rl_model.py:209` and `:215`". That removes where a pool
+entrant **sits**. It does not remove whether his outcome **teaches the national curve**. Those are two
+different things and the directive named only the first.
+
+**Owner's specification, given 2026-07-28 and now binding on this job:**
+
+> ND pick 64 can only be valued from the outcomes of players who were **drafted in the national
+> draft**. Rookies cannot bleed value into the national curve — not by chaining, and not by
+> contributing observations to the fit. Positions are the newly assigned ones. The values are derived
+> from scratch on current information, not adjusted from an inherited curve.
+
+He has stated this repeatedly and it has been acknowledged repeatedly and not implemented. It is the
+whole point of the split. **A curve that still learns from rookie outcomes makes this job pointless.**
+
+## WHY THE ONE-INDEX POOL MADE THIS WORSE, NOT BETTER
+
+The fit cohort at `rl_model.py:245` is unchanged: `_grp in ('ND','RD')`. The curve builders draw
+observations within **±4 effective picks** of each pick (`build_pvc`, `build_pvc_v34`, and the third
+site — the `abs(_epk(p)-k)<=4` filters).
+
+Every pool entrant now sits at exactly `POOL_PICK = 65`. So **every rookie-draft row is within ±4 of
+picks 61, 62, 63 and 64** — all four on the curve. Previously they were spread from roughly 62 to 99
+and their weight at pick 64 was diluted across many picks. Collapsing them to one index adjacent to the
+boundary concentrates all of them at the last four picks.
+
+**The evidence that this is live: `curve[64]` is still 530 — identical to the pre-split curve.** Picks
+1–60 are clean, because no pool row is within ±4 of them. Picks 61–64 are not.
+
+## WHAT TO CHANGE
+
+**Exclude every pool row from every pick-curve builder.** The mechanism already exists and you already
+wrote the helper: the builders' filter becomes `_in_pvc(p) and not is_pool(p)`. `_pvc_exclude` was
+built for exactly this — it drops a player from the curve builders **only**, leaving him in the cohort
+for `BASEPK_REG`, establishment and forward valuation. So a rookie is still valued as a player and
+still appears on the board; he simply no longer teaches the national curve.
+
+Apply it at every site that fits or samples the curve — the three `abs(_epk(p)-k)<=4` windows and any
+kernel-weighted path (`fit_year0` and anything it feeds). Do not fix one and leave the others; that is
+the duplicated-assertion class.
+
+**`_grp` may stay `'RD'`.** You were right that it governs cohort membership rather than price. Do not
+re-scope `hist`. Gate the **curve builders**, not the cohort.
+
+## THE CHECK — and it must be able to fail
+
+Prove that **no pool row carries any weight at any pick 1–64**, at every fit site, and show the check
+failing when the exclusion is removed. A check that cannot fail is the vacuity class this project has
+caught repeatedly. State the count of rows excluded and the count remaining, each naming its
+population.
+
+Then report `curve[61]` through `curve[64]` before and after the exclusion. If they do not move, say so
+and stop — because that would mean the exclusion did not take.
+
+## THE BOARD MOVE IS WITHDRAWN UNTIL THIS LANDS
+
+The board you have rebuilt (`8a38cca4 → 3664689a`, 534 of 804 moved) is built on a curve whose last
+four picks still learn from rookie outcomes. **Do not move it further and do not seek the history
+column label yet.** Re-derive with the exclusion in, then come back.
+
+## TWO THINGS FROM YOUR HAND-BACK, CARRIED FORWARD
+
+**The 528 question is settled and you settled it.** The perturbation test was the right instrument —
+levels 400/528/700 giving ratios 1.4056/1.0907/0.8354 shows the 9.07% is not an identity, and your
+population finding is the decisive part: 318 of 763 rows never played a senior game and are carried at
+full weight, and among matured entrants the never-played mean (612.41, n=297) sits **above** the played
+mean (550.29, n=429). A quantity where failures outscore contributors cannot be an entry level. **Do
+not rule from it, and the level stays at the carried 528 as an acknowledged placeholder.** Recording
+the caveat beside the number in the selftest was the right call.
+
+Also noted: the leg admits only ND 65+ and RD, dropping 331 of the 1,094 ruled pool rows in that
+window — so it does not measure the ruled pool either. Another reason it cannot set the level.
+
+**The `v0surf` finding blocks shipping and must not be lost.** The frozen pickle's config signature
+includes the pick curve, so the split moved it (`a610237e → d702e463`) and the engine has silently
+fallen through to the refit path — a path the design reserves for kill-switches. Every board figure you
+have reported is built on a refit surface, not the frozen one. Regenerate via `refit_v0surf.py` at a
+bake before any of this ships, and say plainly in the hand-back which of your figures were measured on
+the refit surface.
+
+## WHAT IS STILL NOT YOURS
+
+The pool's level, the curve family, how the boundary is measured, and the from-scratch re-derivation —
+that last one is now its own job and follows this one. Your fence was right and it held. The failure
+was that nobody had commissioned the derivation behind it.
