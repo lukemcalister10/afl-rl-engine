@@ -122,12 +122,21 @@ jobs:
           node    ui/tests/counting_rule.test.js
           python3 ui/tests/club_curve_provenance.test.py
           node    ui/tests/movers.test.js
+          python3 ui/tests/test_club_valuation_current.py
+          node    ui/tests/club_totals_parity.test.js
 
       - name: UI — unified 868-asset ranking, no row caps, residual panel (Chromium)
         run: node session_2026-07-21/final_integration/tools/asset_view_ui_check.mjs
 
       - name: UI — responsive layout (Chromium, all widths)
         run: node ui/tests/responsive_layout.test.mjs
+
+      # #139 items 3/5/9/11/12/13/14/15/16/17/18/21 (issue #222). Guards the two things that would fail
+      # SILENTLY: the card claiming a player missed a game the feed never covered, and the browser-side
+      # club totals drifting from the ingest's own arithmetic. Both read live data — no hand-pinned
+      # hashes, no per-round re-pinning.
+      - name: UI — #222 item acceptance (Chromium)
+        run: node ui/tests/ui_222_items.test.mjs
 
       - name: Bootstrap workspace (Guard 5)
         run: RL_VENDOR="$PWD/vendor" bash bootstrap.sh

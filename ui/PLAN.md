@@ -24,7 +24,7 @@
 condensed caps for names/labels, mono tabular figures. Signature devices: the **segmented ten-block power
 bar** (a block = a decile of the top price; no continuous rail), **movement pills always signed**, override
 = an **outlined OWNER RULE chip**. LOCK amendments retained: **full names everywhere** (wrap, never clip),
-**comma digit grouping** on every value ("3,462"). Trade desk + round review are translated from the
+**comma digit grouping** on every value ("3,462"). The trade desk is translated from the
 DESIGN_DIRECTION mockups **into the Matchday visual language** (the old cockpit palette is superseded).
 
 ## DATA SEAM (read-only; the UI never re-values — SSI/§7 pure-view doctrine)
@@ -49,13 +49,25 @@ The v2.8 export does **not** carry two §7.3 "NEW export fields":
 Both are one-line engine-side export additions (OUT of this fence) — flagged in the RETURN, not worked around.
 
 ## VIEWS (primary)
-1. **Board — working**: identity stamp + guard badges · anchor pins (real reads; Gawn>Briggs verifiable) ·
-   OWNER OVERRIDE tags · Δ-base toggle (bake default) · **±1/2-yr lens toggle** · debug/slugs toggle · power bars.
-2. **Board — public**: sanitised trim, movement-vs-previous-round scheme, no internals.
+1. **AFFL Rankings — working** (renamed from "Board", #139 item 13): identity stamp + guard badges · anchor
+   pins (real reads; Gawn>Briggs verifiable) · OWNER OVERRIDE tags · Δ-base toggle (bake default) ·
+   **±1/2-yr lens toggle** · debug/slugs toggle · power bars. A club page opens with the **club profile
+   summary** — the comparison-page metrics, each with its rank (#139 item 11).
+2. **AFFL Rankings — public**: sanitised trim, movement-vs-previous-round scheme, no internals, plus the
+   **AFFL/AFL club** per row (#139 item 9). Player rows open the player's profile and club pages honour the
+   club filter (#139 items 16 and 12).
 3. **Player card — working / public**: value/rank · attribution waterfall ("Why the price is what it is") ·
-   **year-lens trajectory** (the five real lens values) · round-by-round from `track` · owner-rule line item.
+   **year-lens trajectory** (the five real lens values) · recent form from `track` · owner-rule line item ·
+   the **weekly history** across all eight stored points (#139 item 3) — value, rank and positional rank are
+   complete for every tracked player, while the score column shows a score where one was recorded, a blank
+   where it was not, and **DNP only on rounds proven completely fed**.
 4. **Trade desk**: players + picks in one SCAR currency (picks off `PVC`) · **plain-language verdict sentence**.
-5. **Round review**: reserved/greyed in the Matchday look (blocked on the Phase-3 weekly loop).
+5. **Movers**: the weekly-review surface (from/to comparison over the stored points).
+   *(The "Round review" tab was retired on 2026-07-28 by owner word — #139 item 2. It never rendered a real
+   round; Movers is the weekly-review surface.)*
+
+Navigation is **universal Back** (#139 item 15): the Back control returns to the actual previous product
+page — including club → player and player → club — and restores the board's own filter state with it.
 
 ## FENCE CHECK
 IN: `ui/**` only — all new, disjoint from engine/store/gates; reads derived artifacts READ-ONLY.

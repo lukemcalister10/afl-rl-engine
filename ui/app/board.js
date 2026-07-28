@@ -33,7 +33,11 @@ MD.board = (function () {
   /* AFFL clubs present in the working board, alphabetical (for the filter control). */
   function afflClubs() {
     const set = {};
-    (MD.seam.working.players || []).forEach(function (p) { if (p.affl_team) set[p.affl_team] = 1; });
+    // #139 item 5: canonical club key (the board bundle is already extractor-normalised, so this is
+    // uniformity of the join key rather than a fix here — the duplicate bites on the Movers bundle).
+    (MD.seam.working.players || []).forEach(function (p) {
+      const c = MD.canonClub(p.affl_team); if (c) set[c] = 1;
+    });
     return Object.keys(set).sort();
   }
 
@@ -42,7 +46,7 @@ MD.board = (function () {
     const m = {};
     pool.forEach(function (r) {
       if (MD.isPickAsset(r.p)) return;   // anonymous future picks have no AFFL club — never in ΣSCAR / club ranks
-      const c = r.p.affl_team || "—";
+      const c = MD.canonClub(r.p.affl_team) || "—";
       if (!m[c]) m[c] = { club: c, sigma: 0, n: 0 };
       m[c].sigma += r.val; m[c].n += 1;
     });
@@ -138,6 +142,52 @@ MD.board = (function () {
     return el;
   }
 
+  /* #139 item 11 — THE CLUB PROFILE SUMMARY. A club page (the board filtered to one AFFL club) now
+     OPENS with the same metrics the Clubs comparison page ranks on — Overall · Player · Picks · Top-5 ·
+     Top-10 · Best-23 · Non-Best-23 — each with the club's rank on that metric, before any player row.
+     Previously you had to go back to the Clubs tab to see any of it.
+
+     The figures come from MD.clubTotals, so they are summed live off the stamped board and are the same
+     numbers the Clubs table and the pocket profile show — one computation, three surfaces. They are
+     deliberately NOT the banner's ΣSCAR: that is a sum over the *currently filtered, lens-adjusted*
+     pool and moves with the position filter and the board lens, which is the right figure for "what am
+     I looking at" and the wrong one for "how does this club compare". */
+  const SUMMARY_METRICS = [
+    { key: "overall", label: "Overall", tip: "players + held picks" },
+    { key: "totalPlayer", label: "Player value", tip: "sum of every player on the list" },
+    { key: "totalPicks", label: "Picks value", tip: "held draft picks at the canonical PVC" },
+    { key: "top5", label: "Top-5", tip: "the five most valuable players" },
+    { key: "top10", label: "Top-10", tip: "the ten most valuable players" },
+    { key: "best23", label: "Best-23", tip: "best positionally-compliant XVIII + 5 bench" },
+    { key: "nonBest23", label: "Non-Best-23", tip: "roster depth beyond the best XXIII" },
+  ];
+
+  function clubSummary(teamLong) {
+    const ct = MD.clubTotals.compute();
+    if (!ct) return null;
+    const c = MD.clubTotals.byTeam(teamLong);
+    if (!c) return null;                       // Free-Agents pool / unknown club → no ranked profile
+    const el = fmt.el("div", "clubsummary");
+    let cells = "";
+    SUMMARY_METRICS.forEach(function (m) {
+      const na = !ct.picksAvailable && (m.key === "totalPicks" || m.key === "overall");
+      const rank = na ? null : MD.clubTotals.rankOf(c.team, m.key);
+      cells +=
+        '<div class="csm" title="' + fmt.esc(m.tip) + '">' +
+          '<div class="csm-k">' + fmt.esc(m.label) + "</div>" +
+          '<div class="csm-v num">' + (na ? "<small>n/a</small>" : fmt.n(c[m.key])) + "</div>" +
+          '<div class="csm-r">' + (rank ? "rank " + rank + " of " + ct.clubs.length : "—") + "</div>" +
+        "</div>";
+    });
+    el.innerHTML =
+      '<div class="csm-head"><span class="csm-name">' + fmt.esc(c.display || fmt.club(c.team)) + "</span>" +
+        '<span class="csm-sub">club profile · ' + fmt.n(c.nRoster) + " players · " +
+        (ct.picksAvailable ? fmt.n(c.nPicks) + " held picks" : "picks unavailable") +
+        " · ranked against " + ct.clubs.length + " clubs</span></div>" +
+      '<div class="csm-grid">' + cells + "</div>";
+    return el;
+  }
+
   /* item 178(2): the held-picks panel for a single filtered club — each pick listed with its band and
      its PVC-priced value (from the ingest). Rendered under the roster when "picks included" is on.
      item 194 (UI v1.2.1): display-only ordering + layout. Picks are sorted VALUE DESC (tie-break
@@ -202,6 +252,8 @@ MD.board = (function () {
     } else {
       el.innerHTML =
         '<span class="h r">#</span><span class="h">Player</span><span class="h">Pos</span>' +
+        // #139 item 9: the AFFL/AFL club column now appears on the public tier too.
+        '<span class="h">Club <small>AFFL · AFL</small></span>' +
         '<span class="h r">Value</span><span class="h">vs top</span><span class="h r">Movement</span>';
     }
     return el;
@@ -265,23 +317,56 @@ MD.board = (function () {
     return b;
   }
 
-  function publicRow(r, maxV) {
+  function publicRow(r, maxV, byKey) {
     const p = r.p;
     // item 7 (de-clunk): ONE movement instance, correctly aligned. The old row emitted two "steady"
     // pills (value-move + rank-move) into a 6-column grid, so the seventh cell wrapped under the name —
     // the duplicated "steady" the owner flagged. Collapsed to a single movement-vs-previous-round pill
     // (rank movement rides its tooltip); the row now emits exactly its grid's columns.
-    const move = p.dRound == null
-      ? '<span class="pill flat" title="Movement vs previous round — value and rank both publish with the ' +
-        'weekly loop (Phase 3). Nothing fake shown until then.">— steady</span>'
-      : '<span class="pill ' + fmt.cls(p.dRound) + '" title="movement vs previous round">' + fmt.signed(p.dRound) + "</span>";
+    /* The public BUNDLE carries a `dRound` key but every one of its 804 values is null, while the
+       working bundle has all 804 populated — `ui/tools/extract_board_view.py` does not carry the field
+       across into the public tier. So this row printed "— steady" for every player no matter how far he
+       had moved, under a tooltip saying movement "publishes with the weekly loop": the weekly loop has
+       landed, and the figure exists. Since the public card (card.js) reads its movement from the indexed
+       working record, leaving the row on the empty bundle field would have the same player reading
+       "steady" on the board and "▼ −356" on his own card. Movement is public by the tier's own
+       definition — the banner reads "values · ranks · movement" — so the row reads it from the same
+       place the card does. Nothing new is exposed; the root cause is noted in the hand-back. */
+    const dRound = p.dRound != null ? p.dRound
+      : (function () {
+          const k = p.key || (byKey && byKey.byName && byKey.byName[p.name]);
+          const w = k && byKey && byKey.byKey ? byKey.byKey[k] : null;
+          return w ? w.dRound : null;
+        })();
+    const move = dRound == null
+      ? '<span class="pill flat" title="No previous-round movement is published for this player. ' +
+        'Nothing fake is shown.">— steady</span>'
+      : '<span class="pill ' + fmt.cls(dRound) + '" title="movement vs previous round">' + fmt.signed(dRound) + "</span>";
     const b = fmt.el("button", "row public");
     b.innerHTML =
       '<span class="rank num">' + r.rank + "</span>" +
       '<span class="nm">' + fmt.esc(p.name) + "</span>" +
       '<span class="pos">' + fmt.esc(p.pos) + "</span>" +
+      // #139 item 9: Public rankings now carry the AFFL team alongside the player, the same way the
+      // working row does — AFFL leading, AFL as the muted sub-line. This is ownership information the
+      // public tier already ships in its own bundle (board_view_public.js carries affl_team/afl_club);
+      // it was simply never rendered.
+      '<span class="club"><span class="affl" title="AFFL club">' + fmt.esc(fmt.club(p.affl_team)) + "</span>" +
+        '<span class="afl" title="AFL club">' + fmt.esc(p.afl_club || "—") + "</span></span>" +
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) + move;
+    // #139 item 16: clicking a player in Public opens that player's profile. The working row has always
+    // done this; the public row simply had no handler, so a tap did nothing. The card key is the working
+    // bundle's key — the public bundle carries no `key`, so the row joins on name to the working index
+    // (the public tier is a sanitised VIEW of the same 804 players, not a different population).
+    const key = p.key || (byKey && byKey.byName && byKey.byName[p.name]);
+    if (key) {
+      b.addEventListener("click", function () { MD.go("card", key); });
+    } else {
+      // No join → no navigation, and the row says so rather than pretending to be clickable.
+      b.classList.add("noprofile");
+      b.title = "No player profile is joinable for this row.";
+    }
     return b;
   }
 
@@ -558,7 +643,8 @@ MD.board = (function () {
     strip(container);
     if (s.tier === "working") phantomBanner(container);   // LEG F1: phantom (+1/+2) / retrospective (−1/−2) view, empty-state safe
 
-    const byKey = MD.seam.indexed().byKey;
+    const idx = MD.seam.indexed();
+    const byKey = idx.byKey;
     let pool = rows(s.tier);
     const maxV = maxVal(pool);              // global board top (share-of-top-price reference), pre-filter
     if (s.tier === "working" && onlyReads) {
@@ -574,9 +660,29 @@ MD.board = (function () {
     const clubRanks = {};
     if (s.tier === "working") clubAgg(pool).forEach(function (c, i) { clubRanks[c.club] = i + 1; });
 
+    /* #139 item 12 — THE PUBLIC CLUB-PROFILE DEFECT. Opening a club from the Clubs page set the club
+       filter and routed to the board, but the filter was only ever APPLIED on the working tier, so a
+       public visitor landed on the unfiltered all-player list — the club they picked silently ignored.
+       The filter now applies on both tiers. Public sees the club's players and the same club summary;
+       the figures are sums of values the public board already prints, and the Clubs comparison table is
+       already public, so this exposes no new field — it makes the destination match the click. */
+    if (s.tier === "public" && clubFilter) {
+      pool = pool.filter(function (r) { return (MD.canonClub(r.p.affl_team) || "—") === clubFilter; });
+      const summary = clubSummary(clubFilter);
+      if (summary) container.appendChild(summary);
+      const clear = fmt.el("div", "clubclear");
+      clear.innerHTML = '<button type="button">← all players</button>' +
+        '<span class="lbl">showing ' + fmt.esc(fmt.club(clubFilter)) + " only</span>";
+      clear.firstChild.addEventListener("click", function () { focusClub(null, false); render(container); });
+      container.appendChild(clear);
+    }
+
     // item 2: filter to a single AFFL club (working tier).
     if (s.tier === "working" && clubFilter) {
-      pool = pool.filter(function (r) { return (r.p.affl_team || "—") === clubFilter; });
+      pool = pool.filter(function (r) { return (MD.canonClub(r.p.affl_team) || "—") === clubFilter; });
+      // #139 item 11: the comparison-page metrics lead the club page, before any player row.
+      const summary = clubSummary(clubFilter);
+      if (summary) container.appendChild(summary);
       const ca = clubAgg(pool)[0];
       if (ca) container.appendChild(clubBanner(ca, clubRanks[clubFilter], clubRanks));
     }
@@ -589,14 +695,14 @@ MD.board = (function () {
       // grouped: club headers ranked by ΣSCAR, EVERY player for every club (owner ruling: no truncation).
       clubAgg(pool).forEach(function (c) {
         rowsEl.appendChild(clubHeader(c, clubRanks[c.club]));
-        const mine = pool.filter(function (r) { return (r.p.affl_team || "—") === c.club; });
+        const mine = pool.filter(function (r) { return (MD.canonClub(r.p.affl_team) || "—") === c.club; });
         mine.forEach(function (r) { rowsEl.appendChild(workingRow(r, maxV, byKey)); });
       });
     } else {
       // owner ruling: EVERY matching row renders — no top-60 cap, no hidden rows (players + ranked picks).
       pool.forEach(function (r) {
         rowsEl.appendChild(r.pick ? pickRow(r, maxV)
-          : (s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV)));
+          : (s.tier === "working" ? workingRow(r, maxV, byKey) : publicRow(r, maxV, idx)));
       });
     }
     // item 178(2): a single filtered club with "picks included" lists its held picks under the roster.
@@ -624,12 +730,27 @@ MD.board = (function () {
   /* item 178(3): the team-summary page links a club row into its filtered board view. Sets the
      team-lens filter (and turns picks on) before the router switches to the board. */
   function focusClub(afflTeamLong, withPicks) {
-    clubFilter = afflTeamLong || null;
+    clubFilter = MD.canonClub(afflTeamLong) || null;
     groupByClub = false;
     if (withPicks && !MD.seam.clubHalt()) picksIncluded = true;
   }
 
+  /* #139 item 15 — universal Back. The board's filter state lives in this module's closure, so a Back
+     that only restored MD.state would return you to "the board" but not to THE BOARD YOU WERE ON: the
+     club you had open, the position lens, whether picks were showing. These let the router snapshot and
+     restore the whole visible board, so club → player → Back lands on the club page again. */
+  function snapshot() {
+    return { clubFilter: clubFilter, groupByClub: groupByClub, posFilter: posFilter,
+             picksIncluded: picksIncluded, onlyReads: onlyReads };
+  }
+  function restore(s) {
+    if (!s) return;
+    clubFilter = s.clubFilter; groupByClub = s.groupByClub; posFilter = s.posFilter;
+    picksIncluded = s.picksIncluded; onlyReads = s.onlyReads;
+  }
+
   // retroFor exposed so the release-seam test can exercise the EXACT retrospective identity check
   // the UI runs (same doctrine as counting.js). Pure view; reads no DOM.
-  return { render: render, focusClub: focusClub, retroFor: retroFor };
+  return { render: render, focusClub: focusClub, retroFor: retroFor,
+           snapshot: snapshot, restore: restore };
 })();

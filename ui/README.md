@@ -30,9 +30,17 @@ fetch/CORS). Dark-only by ruling (**Q-THEME a**).
   from the board), **`OWNER OVERRIDE` tags**, the **Δ-base toggle**, the **±1/2-yr board lens**, a **My reads**
   filter, a **debug/slugs** toggle, and the segmented ten-block power bar. Public tier is the sanitised trim.
 - **Player card** (working / public) — value/rank, the **“why the price is what it is” waterfall**, the
-  **value-by-year ±2-yr lens trajectory** (real), the **recent-form** season line (real), reserved round history.
+  **value-by-year ±2-yr lens trajectory** (real), the **recent-form** season line (real), and the **weekly
+  history** over all eight stored points (#139 item 3). Value, rank and positional rank are complete for
+  every tracked player at every point and carry no participation caveat. The score column does not: a score
+  is shown where one was recorded and the cell is left **blank** where none was, because the early
+  catch-up feeds were partial — **“DNP” is printed only for a round proven completely fed** (every AFL club
+  present at full-side strength), and never for a round whose data was simply not collected. The
+  out-of-round restructure point shows value and rank movement labelled a **model change**, never a score.
 - **Trade desk** — players + picks in **one SCAR currency** (picks off the PVC), the **verdict sentence**.
-- **Round review** — reserved in the Matchday look (blocked on the Phase-3 weekly loop; renders nothing fake).
+- **Movers** — the weekly-review surface (from/to comparison across the stored points).
+  *(The "Round review" tab was retired 2026-07-28 by owner word — #139 item 2 — along with `app/review.js`.
+  It never rendered a real round; Movers is the weekly-review surface.)*
 
 ## Data seam (read-only)
 `tools/extract_board_view.py` reads `data/rl_build/rl_app_data.json` and `data/expected_boot.json` **strictly

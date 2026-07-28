@@ -67,7 +67,8 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 /* ---- item 4: column headings (grid-aligned to the row templates) ---- */
 .rowhead{display:grid;gap:12px;align-items:end;padding:14px 16px 6px;border-bottom:1px solid var(--edge)}
 .rowhead.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
-.rowhead.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
+/* #139 item 9: the public tier gained the AFFL·AFL club column, so its template gains a track. */
+.rowhead.public{grid-template-columns:52px 1fr 82px 154px 92px 130px 120px}
 .rowhead .h{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);line-height:1.2}
 .rowhead .h.r{text-align:right}
 .rowhead .h.c{text-align:center}
@@ -78,8 +79,12 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
   padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
 .row.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 74px}
-.row.public{grid-template-columns:52px 1fr 82px 92px 130px 120px}
+.row.public{grid-template-columns:52px 1fr 82px 154px 92px 130px 120px}
 .row:hover{background:var(--card-2);border-color:#2c3446}
+/* #139 item 16: a public row with no joinable profile is not a navigation target and must not pretend
+   to be one — it keeps its data but loses the click affordance. */
+.row.public.noprofile{cursor:default}
+.row.public.noprofile:hover{background:var(--card);border-color:var(--edge)}
 .row .rank{font-family:var(--cond);font-weight:900;font-size:24px;color:var(--faint);text-align:right}
 .row .pin{text-align:center;font-size:15px}
 .pinf{color:var(--volt)} .pinh{color:var(--volt);opacity:.45}
@@ -223,10 +228,79 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .translator b{color:var(--dim);font-family:var(--cond);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
 .translator p{margin:6px 0 0;font-size:12px;line-height:1.6}
 
-/* ---- round review (reserved) ---- */
-.summary{display:flex;gap:26px;flex-wrap:wrap;padding:14px 2px;border-bottom:1px solid var(--edge);
-  font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:12px}
-.summary b{color:var(--faint);font-size:15px;display:block;font-family:var(--cond);letter-spacing:.04em}
+/* (#139 item 2: the "round review (reserved)" .summary block is retired with the tab it styled — the
+   only element that carried the class lived in the deleted ui/app/review.js.) */
+
+/* ---- #139 item 14: the active tab's title + subtitle, beneath the masthead ---- */
+.viewtitle{margin:16px 2px 4px}
+.viewtitle h1{margin:0;font-family:var(--cond);font-weight:900;font-size:26px;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--text);line-height:1.1}
+.viewtitle p{margin:3px 0 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint)}
+
+/* ---- #139 item 15: the universal Back control ---- */
+.backnav{display:flex;align-items:center;margin-right:10px}
+.backnav button{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--card-2);border:1px solid var(--edge);color:var(--dim);
+  padding:7px 13px;cursor:pointer}
+.backnav button:hover{border-color:var(--volt);color:var(--volt)}
+
+/* ---- #139 item 11: the club profile summary that heads a club page ---- */
+.clubsummary{margin:12px 0 6px;border:1px solid var(--edge);background:var(--card);padding:14px 16px}
+.csm-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.csm-name{font-family:var(--cond);font-weight:900;font-size:21px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--text)}
+.csm-sub{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+.csm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:10px 14px}
+.csm{border-left:2px solid var(--edge);padding-left:10px}
+.csm-k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint)}
+.csm-v{font-family:var(--cond);font-weight:900;font-size:19px;color:var(--text);line-height:1.25}
+.csm-r{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.csm:first-child{border-left-color:var(--volt)}
+.csm:first-child .csm-v{color:var(--volt)}
+
+/* ---- #139 item 12: the public tier's "showing one club" clear control ---- */
+.clubclear{display:flex;align-items:center;gap:12px;margin:8px 0}
+.clubclear button{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--card-2);border:1px solid var(--edge);color:var(--dim);
+  padding:6px 12px;cursor:pointer}
+.clubclear button:hover{border-color:var(--volt);color:var(--volt)}
+.clubclear .lbl{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+/* ---- #139 item 3: the player card's weekly history ---- */
+.histwrap{margin-top:8px;overflow-x:auto}          /* wide table scrolls in its own region, never the page */
+.histtbl{width:100%;border-collapse:collapse;font-size:12px;min-width:34rem}
+.histtbl th{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);text-align:left;padding:6px 8px;
+  border-bottom:1px solid var(--edge);white-space:nowrap}
+.histtbl th.num,.histtbl td.num{text-align:right}
+.histtbl td{padding:7px 8px;border-bottom:1px solid var(--edge);color:var(--text);
+  font-family:var(--mono);white-space:nowrap}
+.histtbl tbody tr:hover{background:var(--card-2)}
+.histtbl .hpt{font-family:var(--cond);font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--dim);white-space:normal}
+/* the out-of-round restructure point is visibly not a week of football */
+.histtbl tr.hmodel{background:rgba(200,240,74,.045)}
+.histtbl tr.hmodel .hpt{color:var(--volt)}
+.mctag{display:inline-block;margin-left:8px;font-family:var(--cond);font-weight:700;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);
+  padding:1px 6px;cursor:help}
+.hm{font-family:var(--mono);font-size:11px}
+.hm.up{color:var(--up)} .hm.dn{color:var(--dn)} .hm.flat,.hm.na{color:var(--faint)}
+/* a score that exists; a proven DNP; and a blank that makes no claim either way */
+.histtbl .hsc{font-variant-numeric:tabular-nums}
+.histtbl .dnp{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.1em;
+  color:var(--faint);border:1px solid var(--edge);padding:1px 6px;cursor:help}
+.histtbl .unrec{color:var(--faint);cursor:help}
+.histnote{margin-top:10px;font-size:11px;line-height:1.8;color:var(--faint);
+  border-left:2px solid var(--edge);padding-left:12px}
+.histnote b{color:var(--dim)}
+
+@media(max-width:560px){
+  .histtbl{font-size:11px}
+  .histtbl th,.histtbl td{padding:6px 6px}
+}
 
 /* ---- fail-closed (ring-fence rejection) ---- */
 .failclosed{max-width:640px;margin:60px auto;border:1px solid var(--alarm);background:var(--alarm-soft);padding:28px 30px}
@@ -239,7 +313,7 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 @media(max-width:920px){
   /* narrow: keep name · club · value · Δ (club is now first-class); pos/meta/bar fold away */
   .row.working{grid-template-columns:40px 20px 1fr 120px 84px 96px}
-  .row.public{grid-template-columns:42px 1fr 96px 120px}
+  .row.public{grid-template-columns:42px 1fr 120px 96px 120px}   /* + club (item 9) */
   .row .pos,.row .meta,.vline{display:none}
   .rowhead{display:none} /* headings track the wide grid; the narrow layout collapses columns */
   .desk{grid-template-columns:1fr}
@@ -271,11 +345,12 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   /* board — public tier: rank | name (two rows) | value over movement. */
   .row.public{
     grid-template-columns:28px minmax(0,1fr) auto;
-    grid-template-areas:"rank name val" "rank name pill";
+    grid-template-areas:"rank name val" "rank club pill";   /* + club (item 9), as the working tier */
     gap:2px 10px;padding:10px 12px;align-items:center;
   }
   .row.public .rank{grid-area:rank;font-size:20px}
   .row.public .nm{grid-area:name;min-width:0;font-size:16px;line-height:1.12;overflow-wrap:break-word}
+  .row.public .club{grid-area:club;min-width:0}
   .row.public .val{grid-area:val;font-size:17px;align-self:end}
   .row.public .pill{grid-area:pill;justify-self:end;align-self:start}
 
