@@ -115,3 +115,57 @@ distinguished "no score recorded" from "did not play", and on which rounds you s
 indicator at all; how the restructure point is labelled; that all three navigation paths work in
 Public; which Public/Working parity gaps you closed and which you deliberately left, with the reason;
 and confirmation that no store byte moved.
+
+---
+
+# ADDENDUM 1 — 2026-07-28, owner-directed. Amends by addition; nothing above is edited.
+
+## A · The coverage denominator — a correction to this directive, not to the seat
+
+The body above says a played indicator "may only be shown for rounds with full coverage" and lists the
+score-map sizes without naming what they are a fraction **of**. That was ambiguous and it read as though
+the bar were 804. It is not, and the #222 seat was right to challenge it rather than build on it.
+
+**804 is the whole tracked league. A round only selects about 414 players** (18 teams × 23). So:
+
+| point | score map | reading |
+|---|---|---|
+| `14` | **none at all** | the baseline the histories start from. **Score cell is always blank.** |
+| `15` · `16` | 318 · 319 | **partial feed.** Absence means *not recorded*. No played indicator. |
+| `17`–`20` | 410 · 406 · 405 · 410 | **complete rounds.** Absence means *did not play*. |
+| `post-r19-redesign-1` | none — not a round | value and rank movement only, labelled a model change. |
+
+**So the played/DNP indicator IS buildable, for R17–R20 only.** #139 item 3 is not partly unbuildable.
+Verify the per-round map sizes against the number of players actually selected that round — not against
+804 — and say in the hand-back which rounds you judged complete and on what basis.
+
+## B · Club totals move to the browser (#139 item 21, and the standing ruling behind it)
+
+`ui/data/club_valuation.js` bakes each club's total into a generated file. It was last regenerated on
+2026-07-27 for the ITEM 411 restructure; **the board has moved twice since — the restructure and then
+round 20 — and the file did not move with it. The club totals in the app are currently a round stale.**
+
+Item 21 frames the choice as "integrate the refresh into finalisation, or restrict operation to the
+wrapper". **Neither. Owner ruling 2026-07-28: compute the totals in the browser and stop baking the
+sum.** This is the standing ruling in `CURRENT_STATE.md` Part A applied to the case that produced it —
+*do not fix the symptom of a thing that should not exist.* A browser sums a club's players instantly;
+a generated file has to be remembered, and it has now been forgotten twice.
+
+Scope: compute from the board bundle the page already loads. Remove the baked totals as a source of
+truth. **This is a UI change — you write no store byte and no board byte.** If `club_valuation.js`
+carries anything that is *not* a re-summable total (pick prices evaluated over bands, for instance),
+say so and leave that part alone rather than deleting it; report what you found either way.
+
+## C · Two more #139 items, folded in because they are in your files already
+
+- **Item 9 — Public board shows AFFL team information.** Public rankings display ownership/team
+  information alongside player information. `ui/app/board.js`, the same file as items 12 and 16.
+- **Item 11 — Club profile summary.** Each club page opens with the comparison-page metrics before the
+  player list. `ui/app/clubs.js`, the same file as item 12 and the club-totals work.
+
+That makes thirteen items. They are still three clusters in the same three files.
+
+## D · Still out of scope
+
+Unchanged: #139 items 6, 7, 8 and 19, and anything touching the store, board, engine, curve or pricing.
+Item 8 in particular waits on #217 — picks past 64 are no longer priced on the curve.
