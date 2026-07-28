@@ -256,6 +256,23 @@ for _p in hist:
         _e=effpk(_p); _p['_pvc_eff']=_e-sum(1 for _x in _pvc_excl_eff[_p['year']] if _x<_e)
 def _in_pvc(p): return not p.get('_pvc_exclude')          # PVC-curve pool membership (forward board unaffected)
 def _epk(p):    return p.get('_pvc_eff', effpk(p))         # slid effective pick, curve attribution only
+# ============================================================================================================
+# THE SPLIT, ADDENDUM 1 (owner, 2026-07-28) — WHO IS ALLOWED TO TEACH THE NATIONAL CURVE.
+#
+#   "ND pick 64 can only be valued from the outcomes of players who were DRAFTED IN THE NATIONAL DRAFT.
+#    Rookies cannot bleed value into the national curve — not by chaining, and not by contributing
+#    observations to the fit."
+#
+# Removing the chaining fixed where a pool entrant SITS. It did not stop his outcome TEACHING the curve.
+# Worse: collapsing the pool to ONE index at 65 CONCENTRATED the contamination, because every builder samples
+# within +/-4 effective picks, so every pool row landed on picks 61-64 at once instead of spreading to 99.
+#
+# This is the single gate. Use it at EVERY site that fits or samples the pick curve — fixing one and leaving
+# the others is the duplicated-assertion class. It gates the BUILDERS ONLY: _grp stays 'RD', hist is not
+# re-scoped, so a pool player is still valued, still on the board, still in BASEPK_REG / establishment /
+# forward valuation. He simply stops teaching the national curve.
+# ============================================================================================================
+def _teaches_curve(p): return _in_pvc(p) and not is_pool(p)
 def _rw(y):                                  # v2.1: equal weighting (recency shown immaterial; reverted by request)
     return 1.0
 BPK={}; POOL={}; MIX={}
@@ -697,7 +714,7 @@ def _ce(vals,al):
 def build_pvc(alpha):
     raw=[float('nan')]*99
     for _k in range(1,100):
-        vs=[peakval(p) for p in hist if _in_pvc(p) and abs(_epk(p)-_k)<=4]
+        vs=[peakval(p) for p in hist if _teaches_curve(p) and abs(_epk(p)-_k)<=4]   # ADDENDUM 1: pool rows do not teach the curve
         if vs: raw[_k-1]=_ce(vs,alpha)
     for _i in range(99):
         if raw[_i]!=raw[_i]: raw[_i]=raw[_i-1] if _i else 5000.0
@@ -752,7 +769,7 @@ def build_pvc_v34():
     N=99
     raw=[float('nan')]*N                                          # 1. raw band value, new measure, tiered alpha, +-4
     for k in range(1,N+1):
-        vs=[_nv_bwd(p) for p in hist if _in_pvc(p) and abs(_epk(p)-k)<=4]
+        vs=[_nv_bwd(p) for p in hist if _teaches_curve(p) and abs(_epk(p)-k)<=4]   # ADDENDUM 1: pool rows do not teach the curve
         if vs: raw[k-1]=_ce0(vs,_alpha_pvc(k))
     for i in range(N):
         if raw[i]!=raw[i]: raw[i]=raw[i-1] if i else 0.0
@@ -965,13 +982,15 @@ def realized_cv(p):   # LEGACY helper, retained ONLY for rl_export's father-son/
     _g=GRP[p['pos']]; return float(val(proj_from_peak(_g,pk,PEAK_AGE[_g],pk,'bal')))
 _natcv=[None]*100     # LEGACY national curve, retained for the export panel above; the PATHWAY board now uses _natcv34
 for _k in range(1,100):
-    _vs=[realized_cv(p) for p in data if p['_grp']=='ND' and (p['pick'] or 99) and abs((p['pick'] or 99)-_k)<=4 and p['pos'] in GRP]
+    # ADDENDUM 1: `_grp=='ND'` is NOT sufficient any more — a national selection at 65+ is POOL, and this site
+    # windows on the RAW pick, so ND picks 65-68 would still land inside +/-4 of picks 61-64. Gate on is_pool.
+    _vs=[realized_cv(p) for p in data if p['_grp']=='ND' and not is_pool(p) and (p['pick'] or 99) and abs((p['pick'] or 99)-_k)<=4 and p['pos'] in GRP]
     if _vs: _natcv[_k]=_ce(_vs,ALPHA)
 for _k in range(1,100):
     if _natcv[_k] is None: _natcv[_k]=_natcv[_k-1] if _k>1 and _natcv[_k-1] else 300.0
 _natcv34=[None]*100   # v3.4 (Luke cont.12): pathways measured backward THE SAME WAY as picks -- _nv_bwd (posval-VOR
 for _k in range(1,100):   # on best2, busts->0) + tiered alpha, inverted against the v3.4 per-pick national curve (NOT legacy realized_cv).
-    _vs=[_nv_bwd(p) for p in hist if _in_pvc(p) and abs(_epk(p)-_k)<=4]
+    _vs=[_nv_bwd(p) for p in hist if _teaches_curve(p) and abs(_epk(p)-_k)<=4]   # ADDENDUM 1: pool rows do not teach the curve
     if _vs: _natcv34[_k]=_ce(_vs,_alpha_pvc(_k))
 for _k in range(1,100):
     if _natcv34[_k] is None: _natcv34[_k]=_natcv34[_k-1] if _k>1 and _natcv34[_k-1] else _natcv34[1]

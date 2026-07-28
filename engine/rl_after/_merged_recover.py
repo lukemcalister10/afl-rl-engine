@@ -1325,7 +1325,12 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
     return surf
 def _build_v0_curve():
     POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
-    real=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None]
+    # ADDENDUM 1 (owner, 2026-07-28): this is the kernel-weighted pick-curve path — _fit_pick_curve over
+    # log(RECORDED pick). `type=='ND'` alone no longer means "on the national curve": a national selection at
+    # 65+ is POOL under the ruling, and admitting it here lets a pool outcome teach the V0 pick surface through
+    # the back door, exactly as the +/-4 builders did. Same gate as every other fit site.
+    real=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None
+          and not MA.is_pool(p)]
     _sig=_v0surf_sig(real)                                   # LEG F6: deterministic config signature (weather-invariant)
     _frozen=_V0SURF.get(_sig) if isinstance(_V0SURF,dict) else None
     if _frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1':
