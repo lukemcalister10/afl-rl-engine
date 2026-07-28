@@ -1543,7 +1543,17 @@ def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runti
 #       Verified: board sum +0.179%, anchors byte-identical, knobel 402→505. Candidate ONLY (non-bakeable path).
 if os.environ.get('RL_PVCADOPT','1')!='0':
     import json as _l1j
-    _L1CURVE={int(_k):int(_v) for _k,_v in _l1j.load(open('pvc_curve_L1b.json'))['curve'].items()}
+    _L1DOC=_l1j.load(open('pvc_curve_L1b.json'))
+    _L1CURVE={int(_k):int(_v) for _k,_v in _L1DOC['curve'].items()}
+    if 'pool_value' in _L1DOC: _L1CURVE[MA.POOL_PICK]=int(_L1DOC['pool_value'])
+    # THE SPLIT: domain-restrict this basis to 1..64 + the pool index. strict=False deliberately — the L1b curve
+    # carries two plateaus (picks 1-2 and 7-8) so it is non-increasing but NOT strictly decreasing, and it is a
+    # TRANSIENT basis: the RL_PVC2 block below overwrites _PVC0 before anything ships. Where L1b would actually
+    # BE the shipped curve (RL_PVC2=0), rl_export asserts G-MONO strictly and HALTS on exactly those plateaus.
+    # legacy_domain=True: pvc_curve_L1b.json is the SUPERSEDED artifact and still sits on disk at its original
+    # 1-99 domain. It is the one declared exception to the refuse-an-over-long-ladder rule; its entries past the
+    # pool index are dropped here, and it is superseded a few lines below anyway.
+    _L1CURVE=MA._split_ladder(_L1CURVE,'RL_PVCADOPT L1b curve',strict=False,legacy_domain=True)
     _PVC0.clear(); _PVC0.update(_L1CURVE)
     _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
     _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
@@ -1562,8 +1572,11 @@ if os.environ.get('RL_PVC2','1')!='0':
     import json as _p2j
     _V2J=_p2j.load(open('pvc_curve_v2.json'))
     _V2CURVE={int(_k):int(_v) for _k,_v in _V2J['curve'].items()}
-    assert _V2CURVE[1]==3000, "RL_PVC2 numeraire: curve(1)=%r != 3000"%_V2CURVE[1]
-    assert all(_V2CURVE[_k]>_V2CURVE[_k+1] for _k in range(1,max(_V2CURVE))), "RL_PVC2 R104.9: strict descent violated"
+    if 'pool_value' in _V2J: _V2CURVE[MA.POOL_PICK]=int(_V2J['pool_value'])
+    # THE SPLIT: the ev-channel basis _PVC0 is the national curve 1..64 plus ONE pool entry. _split_ladder
+    # asserts the numeraire and G-MONO strict descent across the curve domain, so the two asserts that stood
+    # here are kept — they now bite over 1..64 instead of 1..99, which is the domain the law governs.
+    _V2CURVE=MA._split_ladder(_V2CURVE,'RL_PVC2 v2 curve')
     _PVC0.clear(); _PVC0.update(_V2CURVE)
     _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
     _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()

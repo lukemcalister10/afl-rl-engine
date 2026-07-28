@@ -156,7 +156,25 @@ def _age_at(p,ref): return max(ref-by(p), 18+(ref-_cycle_year(p)))
 def age(p): return _age_at(p,AGE_REF)
 def debut(p): return p['year'] if p['type']=='MSD' else p['year']+1   # ONLY MSD (mid-season) debuts in its draft_year; ND/RD/SSP AND post-draft signings (PDA/PDN/PDS/IRE/UNR) are off-season -> debut year+1 (fixes 2025 post-draft first-years leaking onto the -1 backward board)
 def seasons(p): return max(1,AGE_REF-debut(p))
-def effpk(p): return p.get('_eff', min(99, (p['pick'] or 60)))
+# ============================================================================================================
+# THE PRICING SPLIT — owner ruling, and RULEBOOK v2.1 law 4 (G-MONO) as amended 2026-07-28.
+#
+#   The national pick curve covers picks 1-64 and descends across that domain; pick 1 = 3000.
+#   EVERYTHING PAST 64 ENTERS THE POOL: national 65+, the whole rookie draft, the pre-season draft, and every
+#   pickless mechanism (SSP/MSD/IRE/UNR/PDA/PDN/PDS). The pool is valued BY POSITION, and ORDER OF SELECTION
+#   CARRIES NO VALUE INSIDE IT.
+#
+#   THERE IS NO PRICE FOR PICK 70. Every pool entrant sits at ONE index (POOL_PICK). The per-position value
+#   comes from the position layer that already exists — iso_corr(pos, pk) — not from where in the pool he went.
+#   One index + that layer == one value per position, which is exactly the ruling.
+#
+#   So: no player's price may vary with a selection number above 64. If you find an _eff above POOL_PICK, or a
+#   curve entry past ND_CURVE_LAST, the old 1-99 ladder has come back.
+# ============================================================================================================
+ND_CURVE_LAST=64          # last pick ON the national curve
+POOL_PICK=65              # THE pool index — one index for every pool entrant, priced by position
+def effpk(p): return p.get('_eff', POOL_PICK if not p.get('pick') or p['pick']>ND_CURVE_LAST else p['pick'])
+def is_pool(p): return bool(p.get('_pool')) or effpk(p)>=POOL_PICK
 def bandof(pk):
     for i,(lo,hi) in enumerate(BANDS):
         if lo<=pk<=hi: return i
@@ -204,17 +222,25 @@ for _y in set(_NDC_count)|set(_NDLAST):
 for _p in data:
     _p['_eyr']=_p['year']
     if _p['type']=='ND':
-        _p['_ft']=True; _p['_grp']='ND'; _p['_eff']=min(99,_p['pick'] or 99)
+        # THE SPLIT (owner ruling, RULEBOOK v2.1 law 4): the national curve covers picks 1-64. A national
+        # selection at 65 or deeper is NOT on the curve — it enters the pool with every other pool entrant.
+        _pk=_p['pick'] or 0
+        if 1<=_pk<=ND_CURVE_LAST: _p['_ft']=True; _p['_grp']='ND'; _p['_eff']=_pk
+        else:                     _p['_ft']=True; _p['_grp']='ND'; _p['_eff']=POOL_PICK; _p['_pool']=True
     elif _p['type']=='RD':
-        _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=min(99,_NDC.get(_p['year'],75)+(_p['pick'] or 15))
-    elif _p['type']=='PSD':                                   # PICK-CORRECTION (c) 2026-07-11: Pre-Season Draft
-        # chains AFTER national BEFORE rookie (owner ruling): PSD _eff = last_national_pick + psd_slot. Treated
-        # as a chained first-time draftee (_grp='RD') so it sits in the chained pools like a rookie. (The
-        # rookie-offset-by-per-year-PSD-count refinement is deferred — authoritative PSD sizes not verifiable
-        # this build; only web-verified PSD rows are split out, all cap at KMAX=70 so board impact is nil.)
-        _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=min(99,_NDC.get(_p['year'],75)+(_p['pick'] or 15))
-    else:                                                     # pickless entry mechanism
-        _p['_ft']=False; _p['_grp']=_p['type']; _p['_eff']=75   # placeholder; replaced by pick-equivalent after PVC
+        # THE SPLIT: the rookie draft is pool. The chain onto the national ladder (_eff = last_national_pick +
+        # their_pick) is REMOVED — it priced a rookie by his selection order, which the ruling says carries no
+        # value. _grp is left at 'RD' deliberately: it governs COHORT membership (hist/BASEPK_REG/establishment/
+        # forward valuation), not price, and re-scoping the training cohort is an ITEM 412 question, not this job's.
+        _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=POOL_PICK; _p['_pool']=True
+    elif _p['type']=='PSD':                                   # Pre-Season Draft
+        # THE SPLIT: PSD is a post-national selection, so it is pool. The chain removed with the rookie one above
+        # (was: _eff = last_national_pick + psd_slot). Order within the PSD carries no value.
+        _p['_ft']=True; _p['_grp']='RD'; _p['_eff']=POOL_PICK; _p['_pool']=True
+    else:                                                     # pickless entry mechanism (SSP/MSD/IRE/UNR/PD*)
+        # THE SPLIT: pickless mechanisms are pool. Previously a placeholder 75, then overwritten by the
+        # PICK-EQUIVALENT (PICKEQ, 90/92) below — both indices ABOVE 64, i.e. the old model. Now the pool index.
+        _p['_ft']=False; _p['_grp']=_p['type']; _p['_eff']=POOL_PICK; _p['_pool']=True
 # cohort = national draft + first-time RD only (the ND and its extension). MSD/SSP are separate drafts, excluded here.
 hist=[p for p in data if p.get('_ft') and p.get('_grp') in ('ND','RD') and 2003<=p['year']<=2021 and p['pos'] in GRP]  # 2003 lower bound (Luke cont.12): folds in the 2003-2005 cohorts; scores comparable at matched experience (no era drift), only ~1% miss a pre-2005 debut season
 # --- PVC-pool-only exclusion + slide-up (Luke): players flagged _pvc_exclude are dropped from the PICK-CURVE builders
@@ -786,11 +812,51 @@ PVC=_deplateau(PVC)
 #       import fit above still runs and is byte-exact when off. peak-model _V4PVC (:515) is NOT wired here
 #       (job 1 HOLD: train/serve skew, retrain = post-bake fallback).
 _PVC2M=PVC
+def _split_ladder(raw, what, strict=True, legacy_domain=False):
+    """THE SPLIT. Take a raw pick->value map and return the ruled ladder: the national curve over 1..64, plus
+    ONE entry at POOL_PICK carrying the pool's single position-blind level. Nothing past POOL_PICK survives, so
+    no lookup can ever return a value indexed to a selection number above 64 (RULEBOOK v2.1 law 4).
+
+    The DOMAIN restriction is unconditional — it is the ruling, and it applies to every ladder the engine builds.
+    G-MONO (strict descent) is asserted with strict=True, which is every ladder that SHIPS. It is relaxed only
+    for a TRANSIENT intermediate basis that is overwritten before anything is written — see the RL_PVCADOPT L1b
+    load, which _PVC2/_PVC0 replaces a few lines later. That is a scope judgement about where the law bites, not
+    a weakening of it: the shipped curve is asserted strictly in rl_export, unconditionally.
+    The pool is exempt from monotonicity BY THE RULING, not by leniency — it is one value, not an ordering, so
+    'descending' is not a property it can have."""
+    # REFUSE an over-long domain rather than silently truncating it. This is the direction that matters: a
+    # ladder still carrying entries past the pool index IS the old 1-99 model, and quietly dropping them would
+    # let it come back unnoticed — the exact failure this job exists to end. legacy_domain=True is the single
+    # declared exception, for the SUPERSEDED L1b artifact which is still on disk at its original 1-99 domain.
+    _over=sorted(_k for _k in raw if _k>POOL_PICK)
+    assert legacy_domain or not _over, \
+        "%s: ladder carries %d entries past the pool index %d (%s...) — there is no price for a pick above %d. "\
+        "The 1-99 ladder has come back; restrict the artifact's domain rather than relying on a silent truncation."\
+        %(what,len(_over),POOL_PICK,_over[:6],ND_CURVE_LAST)
+    nd={_k:int(_v) for _k,_v in raw.items() if _k<=ND_CURVE_LAST}
+    assert min(nd)==1 and max(nd)==ND_CURVE_LAST and len(nd)==ND_CURVE_LAST, \
+        "%s: national curve must cover exactly 1..%d, got %d entries %s..%s"%(what,ND_CURVE_LAST,len(nd),min(nd),max(nd))
+    assert nd[1]==3000, "%s numeraire: curve(1)=%r != 3000"%(what,nd[1])
+    if strict:
+        _bad=[_k for _k in range(1,ND_CURVE_LAST) if not nd[_k]>nd[_k+1]]
+        assert not _bad, "%s G-MONO: national curve 1..%d is not STRICTLY decreasing — %d plateau(s) at picks %s"%(
+            what,ND_CURVE_LAST,len(_bad),_bad[:8])
+    else:
+        assert all(nd[_k]>=nd[_k+1] for _k in range(1,ND_CURVE_LAST)), \
+            "%s: transient basis is not even non-increasing over 1..%d"%(what,ND_CURVE_LAST)
+    _pool=raw.get(POOL_PICK)
+    assert _pool is not None, "%s: no pool level (expected 'pool_value', or an entry at %d)"%(what,POOL_PICK)
+    nd[POOL_PICK]=int(_pool)
+    return nd
 if os.environ.get('RL_PVC2','1')!='0':
-    _V2M={int(_k):int(_v) for _k,_v in json.load(open('pvc_curve_v2.json'))['curve'].items()}
-    assert _V2M[1]==3000, "RL_PVC2 numeraire: v2 curve(1)=%r != 3000"%_V2M[1]
-    assert all(_V2M[_k]>_V2M[_k+1] for _k in range(1,max(_V2M))), "RL_PVC2 R104.9: v2 strict descent violated"
-    _PVC2M=_V2M
+    _V2DOC=json.load(open('pvc_curve_v2.json'))
+    _V2RAW={int(_k):int(_v) for _k,_v in _V2DOC['curve'].items()}
+    if 'pool_value' in _V2DOC: _V2RAW[POOL_PICK]=int(_V2DOC['pool_value'])
+    _PVC2M=_split_ladder(_V2RAW,'RL_PVC2 v2 curve')
+else:
+    # THE SPLIT applies to the kill-switch path too. A ladder that still runs to 99 behind a flag is still the
+    # old model on disk, and the next seat reads flags as readily as defaults.
+    _PVC2M=_split_ladder(PVC,'v3.4 import fit (RL_PVC2=0)')
 # JOB 5 (RL_PVC2): GLOBAL PRODUCER SWAP — the module-level PVC now IS the migrated curve, so the RESIDUAL
 # v3.4 readers below (the print-only value->pick-label `pe()` :1108-1110 and the `PVC:` diagnostic :1117)
 # read v2 too. Leaf consumers (unpl_eq/pedestal) already read _PVC2M so there is no double-move; the
@@ -939,10 +1005,18 @@ for _t in PICKLESS:
         'pooled_value':round(_pl),'pick_equiv':eq,
         'mean_career_avg':round(float(np.mean([pkbest(p) for p in played])),1) if played else None,
         'mean_career_games':round(float(np.mean([p['games'] for p in _coh])),1)}
-# assign the mechanism pick-equivalent as the pedigree anchor for those players (production still differentiates them)
+# THE SPLIT: the mechanism PICK-EQUIVALENT no longer anchors these players. It mapped each pickless pathway's
+# pooled value onto the 1-99 ladder (SSP 92, MSD 90 — both past 64), which is precisely the old model: a pickless
+# entrant priced off a pick number. Pickless mechanisms are POOL, set to POOL_PICK in the classification loop
+# above, and differentiated by POSITION through iso_corr — not by a pseudo-pick.
+# PICKEQ / MECH_STATS are still COMPUTED, because the pooled-value and hit-rate columns they carry are a
+# measurement surface the UI reads; but 'pick_equiv' is dropped from MECH_STATS so no consumer can render a
+# pick number above 64 as a price. Nothing assigns _eff from PICKEQ any more.
 for p in data+extra:
-    if p['type'] in PICKEQ: p['_eff']=PICKEQ[p['type']]
-print('PICK-EQUIVALENTS:',{ _MECH_NAME.get(k,k):v for k,v in sorted(PICKEQ.items(),key=lambda x:x[1])})
+    if p['type'] in PICKEQ: p['_eff']=POOL_PICK; p['_pool']=True
+for _ms in MECH_STATS.values(): _ms.pop('pick_equiv',None)
+print('PICKLESS MECHANISMS -> POOL (index %d); pooled values:'%POOL_PICK,
+      { _MECH_NAME.get(k,k):MECH_STATS[k]['pooled_value'] for k in sorted(PICKEQ) })
 
 # ==== ESTABLISHMENT-P (ported from compute.py 2026-06-21 -> SINGLE SOURCE OF TRUTH; the BOARD now applies it).
 # The consuming machinery (PROD_GATE + the min(decay,Pz) line in value()) was already here but inert with P_HOOK=None.
@@ -1010,8 +1084,10 @@ _L5_PICKLESS=os.environ.get('RL_L5_PICKLESS','1')!='0'   # v2.9 L5: complete the
 for _p in data:
     _o=PRESENT_ID_OVERRIDES.get(_p.get('player'))
     if _o:
-        _p['type'],_p['year']=_o; _p['_grp']=_o[0]; _p['_eff']=PICKEQ[_o[0]]
-        if _L5_PICKLESS and _o[0]=='SSP': _p['pick']=None; _p['_pickless']=True   # drop retained pick capital (Perez 35 / McAndrew 12; Keane already None). _eff=92 SSP pedestal UNTOUCHED (L6 STOP).
+        # THE SPLIT: these four re-enter through a pickless pathway (SSP/MSD), so they are POOL. Was the PICKEQ
+        # pedestal (_eff=92 for SSP, 90 for MSD) — pick indices past 64, i.e. the old model.
+        _p['type'],_p['year']=_o; _p['_grp']=_o[0]; _p['_eff']=POOL_PICK; _p['_pool']=True
+        if _L5_PICKLESS and _o[0]=='SSP': _p['pick']=None; _p['_pickless']=True   # drop retained pick capital (Perez 35 / McAndrew 12; Keane already None). The pedestal is now the pool index, not 92.
 
 # AVAILABILITY PRESENT HAIRCUT (present component, Now board only). The k=0 present-year level is scaled by
 # (1 - _avail_hc). The SOURCE of _avail_hc is the LTI REGISTER (Chapter-3 2026-07-09, RL_AVAIL layer set in
