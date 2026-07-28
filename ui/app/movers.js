@@ -10,7 +10,12 @@
   /* ---- pure, dual-target logic (unit-tested under node) ------------------------------------ */
   var core = {
     /* Fail-closed integrity of ONE report: it must carry a committed board identity, a unique + full
-       active-player set, a release identity, and (in the bundle) a coherent board-identity chain. */
+       active-player set, and a release identity.
+
+       NO CHAIN. The board-identity chain check was REMOVED here on the owner's word, 2026-07-28. It
+       assumed the board only moves by applying a round; the D1/D2 restructure moved it without one,
+       and the re-derivation and ITEM 412 will each do so again. The tab is a from/to comparison now
+       and a comparison that names its own endpoints needs no chain. Removed, not loosened. */
     integrity: function (report, bundle) {
       if (!report || report.kind !== "weekly_movers_report") return { ok: false, why: "no movers report" };
       var players = report.players || [];
@@ -23,8 +28,6 @@
         return { ok: false, why: "board identity does not match the committed board" };
       if (!report.board_md5_after) return { ok: false, why: "missing committed board id" };
       if (!report.release_identity) return { ok: false, why: "missing release identity" };
-      if (bundle && bundle.integrity && bundle.integrity.board_chain_ok === false)
-        return { ok: false, why: "board-identity chain broken between rounds" };
       return { ok: true };
     },
 
@@ -159,34 +162,20 @@
       return { ok: true };
     },
 
-    /* Fail-closed owner-approved provenance transition: bridges a historical bundle (SOURCE) to the
-       loaded current release (DESTINATION). */
-    bridge: function (bundle, histId, appId, transition) {
-      if (!transition) return { ok: false, why: "no owner-approved release transition — a historical Movers bundle cannot be shown under a different current release without one" };
-      if (transition.kind !== "movers_release_transition") return { ok: false, why: "release transition has an invalid kind" };
-      if (transition.owner_approved !== true) return { ok: false, why: "release transition is not owner-approved" };
-      var src = transition.source, dst = transition.destination, ap = transition.applies_to || {};
-      if (!src || !dst) return { ok: false, why: "release transition is missing its source/destination identity" };
-      // SOURCE must equal the bundle's historical terminal identity EXACTLY (an unrelated lineage, a
-      // wrong source, or a reversed transition all mismatch here).
-      var ss = core.sameId(src, histId, core.TRANSITION_ID_FIELDS);
-      if (!ss.ok) return { ok: false, why: "transition source != the historical reports at " + ss.field + " (" + String(ss.a).slice(0, 8) + " vs " + String(ss.b).slice(0, 8) + ")" };
-      if (src.as_of_round != null && histId.as_of_round != null && src.as_of_round !== histId.as_of_round)
-        return { ok: false, why: "transition source round " + src.as_of_round + " != latest report round " + histId.as_of_round };
-      // DESTINATION must equal the loaded current application.
-      var dm = core.matchAppToDest(dst, appId);
-      if (!dm.ok) return { ok: false, why: "transition destination != the loaded current application at " + dm.field };
-      // covered rounds == the bundle's historical rounds
-      var trounds = (ap.rounds || []).slice(), brounds = (bundle.rounds || []).slice();
-      if (trounds.length !== brounds.length) return { ok: false, why: "transition covers " + trounds.length + " rounds but the bundle has " + brounds.length };
-      for (var i = 0; i < trounds.length; i++) if (trounds[i] !== brounds[i]) return { ok: false, why: "transition rounds != bundle rounds at index " + i };
-      // CONTENT DIGEST: the reports must be byte-for-byte the ones the owner approved.
-      var want = String(ap.historical_reports_digest || "");
-      if (!want) return { ok: false, why: "release transition carries no historical_reports_digest" };
-      var got = core.reportsDigest(bundle, trounds);
-      if (got !== want) return { ok: false, why: "historical reports digest mismatch — a report was modified (" + got.slice(0, 22) + "… != " + want.slice(0, 22) + "…)" };
-      return { ok: true };
-    },
+    /* `bridge()` WAS HERE and was REMOVED on the owner's word, 2026-07-28.
+
+       It enforced the owner-approved provenance transition as a GATE: a historical bundle could only
+       be displayed under a different current release if the transition's source matched the reports
+       exactly, its destination matched the loaded app exactly, its covered rounds equalled the
+       bundle's rounds, and a sha256 over the reports matched. Every one of those clauses assumes a
+       fixed consecutive series that never gains a point — so it fails the moment the board moves
+       outside a round, which is now expected rather than exceptional.
+
+       `ui/data/movers_transition.js` IS NOT DELETED. It remains owner-approved and is now READ, not
+       enforced: `round_movers.model_changes()` consults it to mark which boundaries between stored
+       points are model changes, so the tab can LABEL a from/to range that spans one. It becomes the
+       register of those moments. Future out-of-round board moves add an entry to it. A label never
+       blocks a comparison. */
 
     /* Fail-closed LINEAGE anchoring of the WHOLE bundle against the CURRENT loaded application
        (corrective 2026-07-20, review directives D + E; owner ruling on balanced_board_md5). The bundle
@@ -247,29 +236,24 @@
             rel.balanced_board_md5 !== baseline.release_identity.balanced_board_md5)
           return { ok: false, state: "mismatch", why: "R" + rounds[b] + " carries a different balanced_board_md5 than the baseline" };
       }
-      // board AND store continuity + sequential rounds
-      for (var i = 1; i < rounds.length; i++) {
-        var cur = reports[String(rounds[i])], prev = reports[String(rounds[i - 1])];
-        if (!cur || !prev) return { ok: false, state: "mismatch", why: "a report is missing from the round chain" };
-        if (cur.board_md5_before !== prev.board_md5_after)
-          return { ok: false, state: "mismatch", why: "board-identity chain break before R" + rounds[i] };
-        if (cur.source_store_md5_before !== prev.source_store_md5_after)
-          return { ok: false, state: "mismatch", why: "store-identity chain break before R" + rounds[i] };
-        if (cur.previous_round !== cur.submitted_round - 1)
-          return { ok: false, state: "mismatch", why: "non-sequential rounds at R" + rounds[i] };
-      }
-      if (bundle.integrity && bundle.integrity.board_chain_ok === false)
-        return { ok: false, state: "mismatch", why: "bundle declares a broken board chain" };
-      if (bundle.integrity && bundle.integrity.baseline_anchor_ok === false)
-        return { ok: false, state: "mismatch", why: "bundle does not anchor to the release baseline board" };
+      // NO CONTINUITY LOOP. The consecutive board/store chain and the `previous_round == round - 1`
+      // rule were REMOVED here on the owner's word, 2026-07-28, along with the two `integrity` flags.
+      // They policed a fixed consecutive series. The board moves outside a round (the D1/D2
+      // restructure did; the re-derivation and ITEM 412 will), so a chain can only be true until the
+      // next such move. What replaces them is a single assert enforced at finalisation — the newest
+      // stored comparison point is the live board — plus the fact that a from/to comparison states
+      // its own two endpoints. Every report below is still checked for its own integrity.
 
-      // every report carries the SAME fixed release identity as the first report (detects a single
-      // historical report's release identity being tampered — its own fixed pins would drift).
-      var refRel = (reports[String(rounds[0])] || {}).release_identity || {};
-      for (var v = 0; v < rounds.length; v++) {
-        var sfv = core.sameFixed((reports[String(rounds[v])] || {}).release_identity, refRel);
-        if (!sfv.ok) return { ok: false, state: "mismatch", why: "R" + rounds[v] + " release identity differs from R" + rounds[0] + " at " + sfv.field };
-      }
+      // REMOVED with the chain (2026-07-28), and NOT in the directive's enumerated list — recorded in
+      // the hand-back. This required every report to carry an IDENTICAL fixed release identity to the
+      // first. That is the same "one unchanging release across a fixed consecutive series" assumption
+      // the chain made, and it is false for the same reason: the engine changed at D2, so R15's
+      // engine_head (dc7e34b0) legitimately differs from R20's (7c452715). Left in place it fail-closes
+      // the whole tab forever — it was survivable before ONLY because bridge() existed to work around
+      // it, and bridge() is gone. A report keeping its OWN governing identity is deliberate
+      // (round_movers.py:23); requiring them all to match contradicts that and contradicts labelling
+      // model changes at all. Per-report integrity is still checked by core.integrity, and currency is
+      // covered by the one assert below.
 
       var last = reports[String(rounds[rounds.length - 1])];
       var lastRel = last.release_identity || {};
@@ -300,19 +284,103 @@
         return appRel ? { ok: true, state: "ok" } : { ok: true, state: "unanchored" };
       }
 
-      // NOT the same lineage. Display is permitted ONLY via a SEPARATELY-DECLARED, owner-approved
-      // provenance transition whose SOURCE matches these reports EXACTLY, whose DESTINATION matches the
-      // loaded current application EXACTLY, and whose content digest is intact. Fail closed otherwise.
-      var appId = {
-        board: app.board, store: app.store, balanced_board_md5: app.balanced_board_md5,
-        release_version: app.release_version, engine_head: app.engine_head, register: app.register,
-        as_of_round: app.as_of_round, release: appRel,
-      };
-      var br = core.bridge(bundle, histId, appId, transition);
-      if (!br.ok) return { ok: false, state: "mismatch", why: br.why };
-      if (appRel && appRel.as_of_round != null && lastRel.as_of_round != null && appRel.as_of_round !== lastRel.as_of_round)
-        return { ok: false, state: "mismatch", why: "loaded as_of_round " + appRel.as_of_round + " != latest report as_of_round " + lastRel.as_of_round };
+      // NOT the same lineage as the loaded release. That is now EXPECTED, not exceptional: historical
+      // reports were generated under earlier releases and the board moves outside rounds. The
+      // owner-approved transition is no longer consulted as a gate (see the note where `bridge()`
+      // used to be) — it is read by the producer to LABEL model-change ranges.
+      //
+      // THE ONE ASSERT, browser side, mirroring round_finalize._newest_point_vs_live_board: the
+      // NEWEST stored point must be the board the application is actually serving. Everything older
+      // is history and needs no continuity. This is what keeps the removal from being a blanket
+      // "always ok" — an out-of-date or foreign bundle still fails closed here.
+      if (app.board) {
+        var pts = core.points(bundle);
+        var newestBoard = null;
+        if (pts.length) {
+          var np = pts[pts.length - 1];
+          newestBoard = np.board || ((reports[String(np.id)] || {}).board_md5_after) || null;
+        } else {
+          newestBoard = histId.board;
+        }
+        if (newestBoard !== app.board)
+          return { ok: false, state: "mismatch", why: "newest stored point is board " +
+                   String(newestBoard).slice(0, 8) + " but the loaded board is " + String(app.board).slice(0, 8) };
+      }
       return { ok: true, state: "bridged" };
+    },
+
+    /* ---- FROM/TO comparison (owner word 2026-07-28) -------------------------------------------
+       Every stored point — numbered rounds plus out-of-round columns — is selectable as either end.
+       Deltas are computed here from `bundle.values`, never stored, so adding a point can never
+       invalidate an existing comparison and there is nothing to keep continuous. */
+
+    points: function (bundle) { return ((bundle || {}).points || []).slice(); },
+
+    /* Does the selected range cross a board move that happened outside a round? If so the tab must
+       SAY so — part of the difference is the model, not the players. A label, never a gate. */
+    spansModelChange: function (bundle, fromId, toId) {
+      var pts = core.points(bundle), ids = pts.map(function (p) { return p.id; });
+      var a = ids.indexOf(String(fromId)), b = ids.indexOf(String(toId));
+      if (a < 0 || b < 0) return [];
+      var lo = Math.min(a, b), hi = Math.max(a, b), out = [];
+      var changes = (bundle || {}).model_changes || [];
+      for (var i = 0; i < changes.length; i++) {
+        var bd = changes[i].between || [];
+        var x = ids.indexOf(String(bd[0])), y = ids.indexOf(String(bd[1]));
+        if (x >= lo && y <= hi && x >= 0 && y >= 0) out.push(changes[i]);
+      }
+      return out;
+    },
+
+    /* A report-shaped object for any two stored points, so every view/sort/filter below works
+       unchanged. When the range exactly reproduces a STORED round report, that report is returned
+       as-is — it carries the played/score facts, which a bare value diff cannot know. */
+    compare: function (bundle, fromId, toId) {
+      bundle = bundle || {};
+      var stored = (bundle.reports || {})[String(toId)];
+      if (stored && String(stored.previous_round) === String(fromId)) return stored;
+
+      var values = bundle.values || {}, players = [];
+      for (var key in values) {
+        if (!Object.prototype.hasOwnProperty.call(values, key)) continue;
+        var rec = values[key], bp = rec.byPoint || {};
+        var a = bp[String(fromId)], b = bp[String(toId)];
+        if (!a || !b) continue;
+        var dv = (a.v != null && b.v != null) ? (b.v - a.v) : null;
+        players.push({
+          key: key, name: rec.name, club: rec.club, affl_team: rec.affl_team,
+          pos: rec.pos, posCode: rec.posCode,
+          played: null, dnp: false, score: null,
+          prev_value: a.v, cur_value: b.v, value_change: dv,
+          value_change_pct: (dv != null && a.v) ? Math.round(dv / a.v * 10000) / 100 : null,
+          prev_rank: a.rank, cur_rank: b.rank,
+          rank_change: (a.rank != null && b.rank != null) ? (a.rank - b.rank) : null,
+          prev_pos_rank: a.pos_rank, cur_pos_rank: b.pos_rank,
+          pos_rank_change: (a.pos_rank != null && b.pos_rank != null) ? (a.pos_rank - b.pos_rank) : null,
+        });
+      }
+      players.sort(function (x, y) { return x.key < y.key ? -1 : x.key > y.key ? 1 : 0; });
+
+      function rankView(field, desc) {
+        var e = players.filter(function (p) { return p[field] != null; });
+        e.sort(function (x, y) {
+          var d = desc ? y[field] - x[field] : x[field] - y[field];
+          if (d) return d;
+          var cv = (y.cur_value || 0) - (x.cur_value || 0);
+          return cv || (x.key < y.key ? -1 : 1);
+        });
+        return e.slice(0, 50).map(function (p) { return p.key; });
+      }
+      return {
+        kind: "weekly_movers_report", synthetic: true,
+        submitted_round: toId, previous_round: fromId,
+        players: players, player_count: players.length,
+        views: {
+          value_risers: rankView("value_change", true), value_fallers: rankView("value_change", false),
+          rank_risers: rankView("rank_change", true), rank_fallers: rankView("rank_change", false),
+          played_count: null, dnp_count: null,
+        },
+      };
     },
 
     /* Deterministic comparator: primary movement field (dir), then current value desc, then key asc. */
@@ -373,7 +441,7 @@
   /* ---- browser view ------------------------------------------------------------------------ */
   function makeView(MD) {
     var fmt = MD.fmt;
-    var state = { round: null, view: "value_risers", club: null, pos: null, status: null, sort: null, dir: "desc" };
+    var state = { round: null, from: null, to: null, view: "value_risers", club: null, pos: null, status: null, sort: null, dir: "desc" };
 
     function bundle() { return (typeof window !== "undefined" && window.__MATCHDAY_MOVERS__) || null; }
 
@@ -447,15 +515,26 @@
 
     function roundSelect(b, report) {
       const wrap = fmt.el("div", "strip moversbar");
-      wrap.appendChild(fmt.el("span", "lbl", "Mover report"));
-      const sel = fmt.el("select", "boardsel");
-      availableRounds(b).forEach(function (r) {
-        const o = fmt.el("option", "", "Round " + r + " vs " + (r - 1));
-        o.value = String(r); if (r === report.submitted_round) o.selected = true;
-        sel.appendChild(o);
-      });
-      sel.addEventListener("change", function () { state.round = parseInt(sel.value, 10); state.sort = null; render(MD.__moversHolder); });
-      wrap.appendChild(sel);
+      const pts = core.points(b);
+
+      // TWO dropdowns — compare any two stored points. Rounds and out-of-round columns (e.g. the
+      // post-restructure board) are equally selectable; the tab no longer assumes a fixed series.
+      function pointSel(which, selected) {
+        const sel = fmt.el("select", "boardsel");
+        pts.forEach(function (p) {
+          const o = fmt.el("option", "", p.label);
+          o.value = String(p.id); if (String(p.id) === String(selected)) o.selected = true;
+          sel.appendChild(o);
+        });
+        sel.addEventListener("change", function () {
+          state[which] = sel.value; state.sort = null; render(MD.__moversHolder);
+        });
+        return sel;
+      }
+      wrap.appendChild(fmt.el("span", "lbl", "From"));
+      wrap.appendChild(pointSel("from", state.from));
+      wrap.appendChild(fmt.el("span", "lbl", "To"));
+      wrap.appendChild(pointSel("to", state.to));
 
       // view toggle (value risers/fallers, rank risers/fallers, all)
       const seg = fmt.el("div", "seg");
@@ -583,11 +662,31 @@
       const lin = core.lineage(b, appIdentity(), transitionRecord());
       if (lin.state === "empty") { emptyState(holder, lin.why); return; }   // honest empty, not an alarm
       if (!lin.ok) { failState(holder, lin.why); return; }                  // out-of-lineage -> fail closed
-      if (state.round == null) state.round = availableRounds(b)[availableRounds(b).length - 1];
-      const report = reportFor(b, state.round);
-      const intg = core.integrity(report, b);
-      if (!intg.ok) { failState(holder, intg.why); return; }
+      // FROM/TO defaults: the two most recent stored points, so ordinary use is unchanged.
+      const pts = core.points(b);
+      if (pts.length >= 2) {
+        if (state.to == null) state.to = pts[pts.length - 1].id;
+        if (state.from == null) state.from = pts[pts.length - 2].id;
+      } else if (pts.length === 1) {
+        if (state.to == null) state.to = pts[0].id;
+        if (state.from == null) state.from = pts[0].id;
+      }
+      const report = core.compare(b, state.from, state.to);
+      // A synthetic comparison carries no committed-report identity; only a STORED report is checked.
+      if (!report.synthetic) {
+        const intg = core.integrity(report, b);
+        if (!intg.ok) { failState(holder, intg.why); return; }
+      } else if (!report.players.length) {
+        failState(holder, "no players are recorded at both selected points"); return;
+      }
       holder.appendChild(roundSelect(b, report));
+      const spans = core.spansModelChange(b, state.from, state.to);
+      if (spans.length) {
+        const names = spans.map(function (s) { return s.label; }).join(", ");
+        holder.appendChild(fmt.el("div", "note modelchange",
+          "This range spans " + fmt.esc(names) + " — a change to the model itself, not to the players. " +
+          "Part of every difference below comes from that redesign rather than from football."));
+      }
       holder.appendChild(metaStrip(report));
       holder.appendChild(summaryCards(report));
       holder.appendChild(filterBar(report));

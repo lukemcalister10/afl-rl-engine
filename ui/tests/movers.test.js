@@ -55,7 +55,6 @@ function mkBundle(over) {
     kind: "matchday_movers_bundle", rounds: [15, 16],
     baseline: { as_of_round: 14, board: "B0", store: "S0", release_identity: mkRel(14, "B0", "S0") },
     reports: { "15": rep(15, "B0", "B1", "S0", "S1"), "16": rep(16, "B1", "B2", "S1", "S2") },
-    integrity: { board_chain_ok: true, baseline_anchor_ok: true, rounds: [15, 16] },
   };
   return Object.assign(b, over || {});
 }
@@ -64,12 +63,11 @@ var APP = mkApp(16, "B2", "S2");   // loaded app: current board B2, store S2, on
 console.log("MOVERS-VIEW TESTS\n  " + "-".repeat(60));
 
 // integrity: valid passes; each failure mode fail-closes
-ok(core.integrity(mkReport(), { integrity: { board_chain_ok: true } }).ok, "valid report passes integrity");
+ok(core.integrity(mkReport()).ok, "valid report passes integrity");
 ok(!core.integrity(null).ok, "null report fails closed");
 ok(!core.integrity(mkReport({ board_md5_after: null })).ok, "missing committed board id fails closed");
 ok(!core.integrity(mkReport({ release_identity: null })).ok, "missing release identity fails closed");
 ok(!core.integrity(mkReport({ integrity: { board_after_matches_committed: false } })).ok, "board mismatch fails closed");
-ok(!core.integrity(mkReport(), { integrity: { board_chain_ok: false } }).ok, "broken board chain fails closed");
 var dup = mkReport(); dup.players = dup.players.concat([dup.players[0]]);
 ok(!core.integrity(dup).ok, "duplicate player rows fail closed");
 
@@ -84,14 +82,17 @@ var emptyDf = { kind: "matchday_movers_bundle", rounds: [], reports: {}, baselin
 var eMis = core.lineage(emptyDf, mkApp(14, "06d8af60", "otherstore"));
 ok(!eMis.ok && eMis.state === "mismatch", "empty 270a2c5f bundle vs a different baseline board fails closed (not empty state)");
 // same board, WRONG store (current-store mismatch)
-ok(!core.lineage(mkBundle(), mkApp(16, "B2", "SXX")).ok, "same board but wrong current store fails closed");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "SXX")).ok, "same newest board, differing store: displayed (transition is no longer a gate)");
 // same board/store, WRONG release_version
-ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { release_version: "v9.9" })).ok, "same board/store but wrong release_version fails closed");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "S2", { release_version: "v9.9" })).ok, "differing release_version: displayed (enforcement removed)");
 // WRONG engine / fv / config / register
-ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { engine_head: "deadbeef" })).ok, "wrong engine_head fails closed");
-ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { fv: "deadbeef" })).ok, "wrong fv fails closed");
-ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { config: "deadbeef" })).ok, "wrong config fails closed");
-ok(!core.lineage(mkBundle(), mkApp(16, "B2", "S2", { register: "deadbeef" })).ok, "wrong register fails closed");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "S2", { engine_head: "deadbeef" })).ok, "differing engine_head: displayed (enforcement removed)");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "S2", { fv: "deadbeef" })).ok, "differing fv: displayed (enforcement removed)");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "S2", { config: "deadbeef" })).ok, "differing config: displayed (enforcement removed)");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "S2", { register: "deadbeef" })).ok, "differing register: displayed (enforcement removed)");
+// THE ONE ASSERT that replaced all of the above — non-vacuity, both directions:
+ok(!core.lineage(mkBundle(), mkApp(16, "BXX", "S2")).ok, "ONE ASSERT: newest stored point != loaded board fails closed");
+ok(core.lineage(mkBundle(), mkApp(16, "B2", "S2")).ok, "ONE ASSERT: newest stored point == loaded board passes");
 // a report carrying a DIFFERENT balanced_board_md5 than the fixed baseline
 var badBB = mkBundle(); badBB.reports["16"].release_identity.balanced_board_md5 = "ffffffff";
 ok(!core.lineage(badBB, APP).ok, "a report with a different balanced_board_md5 fails closed");
@@ -102,9 +103,9 @@ var badBaseS = mkBundle(); badBaseS.reports["15"].source_store_md5_before = "ZZZ
 ok(!core.lineage(badBaseS, APP).ok, "baseline store-anchor break fails closed");
 // board / store chain breaks
 var chainBreak = mkBundle(); chainBreak.reports["16"].board_md5_before = "XXX";
-ok(!core.lineage(chainBreak, APP).ok, "board-identity chain break fails closed");
+ok(core.lineage(chainBreak, APP).ok, "a board-identity discontinuity is DISPLAYED, not rejected (chain removed 2026-07-28)");
 var storeBreak = mkBundle(); storeBreak.reports["16"].source_store_md5_before = "XXX";
-ok(!core.lineage(storeBreak, APP).ok, "store-identity chain break fails closed");
+ok(core.lineage(storeBreak, APP).ok, "a store-identity discontinuity is DISPLAYED, not rejected (chain removed 2026-07-28)");
 // latest report board / store must equal the loaded current board / store
 ok(!core.lineage(mkBundle(), mkApp(16, "OTHER_BOARD", "S2")).ok, "latest report board != loaded current board fails closed");
 // as_of_round coherence
@@ -112,7 +113,7 @@ var badAsof = mkBundle(); badAsof.reports["16"].release_identity.as_of_round = 1
 ok(!core.lineage(badAsof, APP).ok, "incoherent as_of_round fails closed");
 // non-sequential rounds
 var gap = mkBundle(); gap.reports["16"].previous_round = 14;
-ok(!core.lineage(gap, APP).ok, "non-sequential previous_round fails closed");
+ok(core.lineage(gap, APP).ok, "non-sequential points are DISPLAYED — from/to needs no consecutive series");
 
 // deterministic sort + tie-break (primary field, then cur_value desc, then key asc)
 eq(core.viewRows(mkReport(), "value_risers", {}).map(function (p) { return p.key; }), ["a", "d", "c", "b"], "value risers order");
@@ -163,8 +164,8 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   };
 
   // POSITIVE — the populated production bundle carries exactly R15-R19
-  eq(prod.rounds, [15, 16, 17, 18, 19], "production ui/data/movers.js carries exactly R15-R19 (owner-authorised history)");
-  ok(prod.reports && Object.keys(prod.reports).length === 5, "production bundle carries five reports (one per round)");
+  eq(prod.rounds, [15, 16, 17, 18, 19, 20], "production ui/data/movers.js carries R15-R20");
+  ok(prod.reports && Object.keys(prod.reports).length === 6, "production bundle carries six reports (one per round)");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
@@ -185,34 +186,32 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   eq(trans.applies_to.historical_reports_digest, core.reportsDigest(prod, [15, 16, 17, 18, 19]),
      "transition digest matches the restored R15-R19 reports byte-for-byte (content anchor)");
 
-  // POSITIVE — the owner-approved transition permits the exact historical lineage under the current app
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
-     "owner-approved transition bridges R15-R19 to the current accepted release (state=bridged)");
-  // the current application identity EQUALS the transition destination
-  ok(core.matchAppToDest(trans.destination, curApp).ok, "current application identity == transition destination");
+  // POSITIVE — the bundle displays under the current app. The transition is NO LONGER A GATE
+  // (owner word 2026-07-28): it is read by the producer to LABEL model-change ranges, and the record
+  // itself is untouched and still owner-approved. It is passed here only to prove it is ignored.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
+     "bundle displays under the current app without any transition gate");
+  ok(core.lineage(prod, curApp, null).ok, "the same bundle WITHOUT a transition also displays (gate removed)");
+  // the app has ADVANCED PAST the transition destination — that record now describes a historical
+  // boundary (R19 -> the restructure board fa172ac1), not the current release.
+  ok(!core.matchAppToDest(trans.destination, curApp).ok,
+     "app has advanced past the transition destination — the record is history, not the current release");
+  ok(trans.destination.board === "fa172ac1c90ab84e5044d3e9907c5819",
+     "transition destination is the restructure board — the boundary the tab labels");
 
-  // NEGATIVE CONTROLS — each fails closed
-  ok(!core.lineage(prod, curApp, null).ok, "the same bundle WITHOUT the transition fails closed");
-  var tSrc = clone(trans); tSrc.source.balanced_board_md5 = "ffffffffffffffffffffffffffffffff";
-  ok(!core.lineage(prod, curApp, tSrc).ok, "wrong transition SOURCE fails closed");
-  var tDst = clone(trans); tDst.destination.board = "ffffffffffffffffffffffffffffffff";
-  ok(!core.lineage(prod, curApp, tDst).ok, "wrong transition DESTINATION fails closed");
-  var tRev = clone(trans); var sw = tRev.source; tRev.source = tRev.destination; tRev.destination = sw;
-  ok(!core.lineage(prod, curApp, tRev).ok, "REVERSED transition (source<->destination) fails closed");
-  var tNo = clone(trans); tNo.owner_approved = false;
-  ok(!core.lineage(prod, curApp, tNo).ok, "a transition that is not owner-approved fails closed");
-  var bId = clone(prod); bId.reports["18"].release_identity.engine_head = "deadbeefdeadbeefdeadbeefdeadbeef";
-  ok(!core.lineage(bId, curApp, trans).ok, "a modified historical report IDENTITY fails closed");
-  var bPl = clone(prod); bPl.reports["17"].players[3].value_change += 1;
-  ok(!core.lineage(bPl, curApp, trans).ok, "modified player MOVEMENT data fails closed (content digest)");
-  var bCh = clone(prod); bCh.reports["17"].board_md5_before = "deadbeef";
-  ok(!core.lineage(bCh, curApp, trans).ok, "a modified board/store CHAIN fails closed");
-  var bUn = clone(prod);
-  [15, 16, 17, 18, 19].forEach(function (r) { bUn.reports[String(r)].release_identity.balanced_board_md5 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; });
-  bUn.baseline.release_identity.balanced_board_md5 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-  ok(!core.lineage(bUn, curApp, trans).ok, "an UNRELATED release lineage fails closed (transition cannot authorise it)");
+  // THE MODEL-CHANGE LABEL replaced the gate: the boundary is declared in the bundle, not enforced.
+  ok((prod.model_changes || []).length === 1 &&
+     prod.model_changes[0].between[0] === "19" &&
+     prod.model_changes[0].between[1] === "post-r19-redesign-1" &&
+     prod.model_changes[0].owner_approved_record === true,
+     "model change declared between R19 and the restructure point, anchored to the owner-approved record");
+  ok(core.spansModelChange(prod, "19", "20").length === 1, "a range spanning the restructure is LABELLED");
+  ok(core.spansModelChange(prod, "post-r19-redesign-1", "20").length === 0, "a range inside one model is not");
+
+  // WHAT STILL FAILS CLOSED — the one assert, both directions (non-vacuity).
+  ok(core.lineage(prod, curApp, trans).ok, "ONE ASSERT: newest stored point == loaded board passes");
   var appW = clone(curApp); appW.board = "ffffffffffffffffffffffffffffffff";
-  ok(!core.lineage(prod, appW, trans).ok, "current application board != transition destination fails closed");
+  ok(!core.lineage(prod, appW, trans).ok, "ONE ASSERT: newest stored point != loaded board fails closed");
 
   // FUTURE APPEND — a next-round report appends under the then-current governing identity WITHOUT
   // altering R15-R19 (the historical content digest is unchanged; the future report carries destination).
@@ -242,8 +241,6 @@ var scratchPath = path.join(__dirname, "..", "..", "session_2026-07-20", "live_s
 if (fs.existsSync(scratchPath)) {
   var sb = readBundle(scratchPath);
   eq(sb.rounds, [15, 16, 17, 18, 19], "scratch evidence bundle carries R15-R19");
-  ok(sb.integrity.board_chain_ok, "scratch evidence board-identity chain coherent");
-  ok(sb.integrity.baseline_anchor_ok, "scratch evidence anchors to its own baseline board");
   // full-identity lineage passes against ITS OWN loaded app (the last committed scratch board/store/release)
   var lastRep = sb.reports[String(sb.rounds[sb.rounds.length - 1])];
   var sApp = { board: lastRep.board_md5_after, store: lastRep.source_store_md5_after, release: lastRep.release_identity };
