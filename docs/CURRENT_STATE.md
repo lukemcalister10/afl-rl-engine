@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v15 · supervisor pen · 2026-07-28, register v523
+# CURRENT STATE — the incoming-seat read · v15 · supervisor pen · 2026-07-28, register v524
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,8 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-28, register v523, against main `4fe4781`.*
+*Replaced wholesale each pen. Accurate 2026-07-28, register v524, written against main `eadee53` — this
+pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
 reporting seat's own measurement. Where it matters, re-run rather than inherit.*
@@ -195,7 +196,7 @@ Seam-verified: Dylan Moore contributes **15.47** against the MID bar where the p
 
 **#241 was drafted to fix this, was never fired, and its scope was wrong** — the seam named `_nv_bwd` and
 `peakval`, which R3 holds out of the bake, and missed the value path. **#225 filed the corrected site map on
-issue #225: eight value-path sites, two build-on-one-axis-read-on-the-other cases, three R3-held sites, and a
+issue #225 (closed — the map is still readable there): eight value-path sites, two build-on-one-axis-read-on-the-other cases, three R3-held sites, and a
 "do not fix these" list.** That map is the record. #241 is closed with the error stated on it.
 
 The fix happens once, when the positional data lands, covering all sites on both axes — a one-bar-per-player
