@@ -116,6 +116,9 @@ level_stable=g['level_stable']; seasons=g['seasons']; srel=g['srel']; peak_est=g
 basepk_c=g['basepk_c']; bandof=g['bandof']; survival=g['survival']; track_delta=g['track_delta']
 los_decay=g['los_decay']; clamp=g['clamp']; hist=g['hist']; pkbest=g['pkbest']; PEAK_AGE=g['PEAK_AGE']
 PVC=g['PVC']; SCALE=g['SCALE']; debut=g['debut']; data=g['data']; BANDS=g['BANDS']; NB=len(BANDS)
+# THE SPLIT: the ruled boundary, the single pool index, and the shared ladder builder all come from rl_model,
+# so the export cannot disagree with the engine about where the curve ends.
+ND_CURVE_LAST=g['ND_CURVE_LAST']; POOL_PICK=g['POOL_PICK']; _split_ladder=g['_split_ladder']; is_pool=g['is_pool']
 # ==== (f) L7 NUMÉRAIRE — ADOPTED-CURVE REPOINT (register item 26 / S5; owner "Rebase, 3000 is it.") ======
 # The board ships in the NUMÉRAIRE (pick 1 = 3000). Two coupled DISPLAY-LAYER moves; the engine ev() is
 # untouched (store/engine/config frozen — this is a value-presentation re-base, not a valuation change):
@@ -132,11 +135,24 @@ _NUM=json.load(open('pick_redenomination.json')); _F=_NUM['factor']
 _pvc_art='pvc_curve_v2.json' if os.environ.get('RL_PVC2','1')!='0' else 'pvc_curve_L1b.json'
 _adopted_doc=json.load(open(_pvc_art))
 _ADOPTED={int(k):int(v) for k,v in _adopted_doc['curve'].items()}
+if 'pool_value' in _adopted_doc: _ADOPTED[POOL_PICK]=int(_adopted_doc['pool_value'])
+# THE SPLIT (RULEBOOK v2.1 law 4): the shipped ladder is the national curve 1..64 plus ONE pool entry.
+# The previous assert here was `>=` — NON-INCREASING — which is WEAKER than the law and would have let a
+# plateaued curve ship. G-MONO says STRICTLY decreasing, and it is now asserted that way, over the domain the
+# law actually governs (1..64). The pool is exempt BY THE RULING, not by leniency: it is one value, so there is
+# no ordering for a monotonicity rule to bite on. Both facts are asserted, so neither can drift silently.
+_ADOPTED=_split_ladder(_ADOPTED,'L7 adopted curve (%s)'%_pvc_art,
+                       legacy_domain=(_pvc_art=='pvc_curve_L1b.json'))   # only the superseded L1b may still be 1-99
 assert _ADOPTED.get(1)==3000, 'L7 HALT: adopted_curve[1] != 3000 (%s)'%_pvc_art
-_akeys=sorted(_ADOPTED)
-assert all(_ADOPTED[_akeys[i]]>=_ADOPTED[_akeys[i+1]] for i in range(len(_akeys)-1)), 'L7 HALT: adopted curve not monotone non-increasing'
-PVC={k:_ADOPTED[k] for k in PVC if k in _ADOPTED}                 # shipped PVC IS the adopted curve (the stamped pvc_curve artifact)
-print('L7 ADOPTED-CURVE REPOINT: shipped PVC = %s (pick1=%d, %d picks, monotone, ÷F=%.4f on players)'%(_pvc_art,PVC[1],len(PVC),_F))
+_nd_keys=[k for k in sorted(_ADOPTED) if k<=ND_CURVE_LAST]
+assert _nd_keys==list(range(1,ND_CURVE_LAST+1)), 'L7 HALT: national curve is not exactly 1..%d (%s)'%(ND_CURVE_LAST,_pvc_art)
+assert all(_ADOPTED[_nd_keys[i]]>_ADOPTED[_nd_keys[i+1]] for i in range(len(_nd_keys)-1)), \
+    'L7 HALT (G-MONO): national curve 1..%d is not STRICTLY decreasing'%ND_CURVE_LAST
+assert max(_ADOPTED)==POOL_PICK, \
+    'L7 HALT: ladder carries an index past the pool (%d) — there is no price for a pick above %d'%(max(_ADOPTED),ND_CURVE_LAST)
+PVC={k:_ADOPTED[k] for k in _ADOPTED}                             # shipped PVC IS the adopted ladder: curve 1..64 + the pool index
+print('L7 ADOPTED-CURVE REPOINT: shipped PVC = %s (pick1=%d, national curve 1-%d strictly decreasing, pool index %d = %d, ÷F=%.4f on players)'
+      %(_pvc_art,PVC[1],ND_CURVE_LAST,POOL_PICK,PVC[POOL_PICK],_F))
 # ==== (g) NUMÉRAIRE ASSERT — UNCONDITIONAL STANDING LAW (register v30 item 17; L7 baked 2026-07-13) =======
 # "PICK 1 = 3000 IS THE NUMÉRAIRE." The dormant legacy (×1.0524, factor≠1.0) branch is RETIRED at the bake:
 # no pre-L7 path remains, so the assert is UNCONDITIONAL — a shipped board with pick-1 ≠ 3000 HALTS, always.
@@ -335,11 +351,16 @@ def cat_of(p):
     if 'Academy' in c: return 'Academy'
     if 'Next Gen' in c: return 'Next Gen'
     return 'Open'
-RANGES=[(1,10),(11,20),(21,30),(31,45),(46,99)]
+# THE SPLIT: the bid-category bands are NATIONAL pick bands, so they stop at 64. The old last band was 46-99,
+# which after the split would have swept the entire pool into a bucket labelled by a pick number that no longer
+# prices anything. The pool gets its OWN bucket, labelled 'Pool' — not a range, because it is not an ordering.
+RANGES=[(1,10),(11,20),(21,30),(31,45),(46,ND_CURVE_LAST)]
+POOL_LABEL='Pool'
 def rlabel(pk):
+    if pk>ND_CURVE_LAST: return POOL_LABEL
     for lo,hi in RANGES:
-        if lo<=pk<=hi: return '%d-%d'%(lo,hi if hi<99 else 99)
-    return '46-99'
+        if lo<=pk<=hi: return '%d-%d'%(lo,hi)
+    return POOL_LABEL
 # matured cohort: national + rookie picks, drafted 2008-2023, who played a senior game.
 # MATURITY FLOOR (time-based): a career is only judged once it's had 3+ seasons to develop. We do NOT
 # use "played a 10+ game season" as the gate, because realized_cv reads a young player's current
@@ -363,9 +384,9 @@ def overshoot(p):  # realised value minus what an OPEN pick at the same effectiv
 CAT_BY_RANGE={}
 for cat in ['Open','Father-Son','Academy','Next Gen']:
     row={}
-    for lo,hi in RANGES:
+    for lo,hi in RANGES+[(POOL_PICK,POOL_PICK)]:            # national bands 1..64, then the pool as its own bucket
         grp=[p for p in matured if cat_of(p)==cat and lo<=EP(p)<=hi]
-        key='%d-%d'%(lo,hi if hi<99 else 99)
+        key=POOL_LABEL if lo==POOL_PICK else '%d-%d'%(lo,hi)
         if not grp: row[key]=None; continue
         played=[p for p in grp if pkbest(p) is not None]
         row[key]={'n':len(grp),'hit':round(100*len(played)/len(grp)),
@@ -389,8 +410,12 @@ for cat in ['Father-Son','Academy','Next Gen']:
     rows.sort(key=lambda r:-r['mean_over'])
     CAT_BY_CLUB[cat]=rows
 
-# ===== ANALYTICS B: entry mechanisms (pickless) -> outcomes + pick-equivalent (from the model) =====
-MECH=sorted(MECH_STATS.values(), key=lambda m:m['pick_equiv'])
+# ===== ANALYTICS B: entry mechanisms (pickless) -> outcomes =====
+# THE SPLIT: was sorted by 'pick_equiv', the pathway's pooled value mapped onto the 1-99 pick ladder (SSP 92,
+# MSD 90). Those are prices indexed to a selection number past 64, which the ruling abolished, so the field is
+# gone from MECH_STATS. Ordered by POOLED VALUE instead — the same ranking the pick-equivalent was a proxy for,
+# stated directly and in the units it was actually measured in. Every one of these pathways is POOL.
+MECH=sorted(MECH_STATS.values(), key=lambda m:-m['pooled_value'])
 
 # ---- standard curve/projector exports (ported; cohort defs use real ND+RD) ----
 ftcoh=[p for p in data if p.get('_ft') and p.get('_grp') in ('ND','RD') and 2008<=p['year']<=2021 and p['pos'] in GRP]
@@ -546,7 +571,11 @@ out={'active':active,'back':back,'cohort':coh,
      'BUST_BAND':{str(k):v for k,v in g['BUST_BAND'].items()},'GRACE':g['GRACE'],'LOS_C':g['LOS_C'],'LOS_P':g['LOS_P'],
      'CAPT_THRESH':g['CAPT_THRESH'],'CAPT_GAIN':g['CAPT_GAIN'],'CAPT_EXP':g['CAPT_EXP'],'CAPT_CAP':g['CAPT_CAP'],
      'ALPHA':g['ALPHA'],'CURVE_H':g['CURVE_H'],'LENS':g['LENS'],'SEASON_PROG':g['SEASON_PROG'],
-     'PICKEQ':PICKEQ,'MECH':MECH,'TYPEOFF':TYPEOFF,'CAT_BY_RANGE':CAT_BY_RANGE,'CAT_BY_CLUB':CAT_BY_CLUB,'RANGES':['%d-%d'%(lo,hi if hi<99 else 99) for lo,hi in RANGES],
+     # THE SPLIT: 'PICKEQ' is NO LONGER EXPORTED. It mapped each pickless pathway onto the 1-99 pick ladder
+     # (SSP 92, MSD 90) — pick indices past 64 shipped inside the board itself. Nothing in ui/ reads it (checked);
+     # MECH still carries each pathway's pooled value, which is the measurement that was actually wanted.
+     'MECH':MECH,'TYPEOFF':TYPEOFF,'CAT_BY_RANGE':CAT_BY_RANGE,'CAT_BY_CLUB':CAT_BY_CLUB,
+     'RANGES':['%d-%d'%(lo,hi) for lo,hi in RANGES]+[POOL_LABEL],
      **TILT,'SCALE':round(SCALE,5),'PVC':{str(k):v for k,v in PVC.items()},
      'BASE_YEAR':2026,                                                  # board view N maps to draft year BASE_YEAR+N
      'intake':int(round(105000/_F)),                                   # Luke ground-truth entry+1 class value ~105000 (×1.0524 world); L7-rebased to the numéraire so it stays comparable with the (now-numéraire) pick-sum it supersedes. Supersedes the durable pick-sum (under-counts vs the convex board value).
@@ -638,13 +667,27 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _PVCMAX = max(PVC)
     def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
     # -- §2.viii THE SEALED ENTRANT SLOT STRUCTURE: expected per-year occupancy per effective pick ----------
-    # draft = ND + RD/PSD chained onto the national draft; mech = pickless at PICKEQ (90/92). Each priced at
-    # the v2-curve PVC of its effective pick (GROSS). The sealed counts are the frozen measurement; the price
-    # is re-read from the stamped curve here (identical v2 curve, so the total re-derives to the sealed 83,538).
-    _lf_draft = sorted(((int(_e), _c, _lf_pvc(_e)) for _e, _c in _lf_struct['draft_occupancy'].items()),
-                       key=lambda t: t[0])                   # [(effpk, expected slots/yr, pvc)] natural draft order
-    _lf_mech = sorted(((int(_e), _c, _lf_pvc(_e)) for _e, _c in _lf_struct['mech_occupancy'].items()),
-                      key=lambda t: t[0])                    # [(effpk 90/92, expected slots/yr, pvc)]
+    # The sealed COUNTS are the frozen measurement and are NOT touched here — the seal above still verifies.
+    # THE SPLIT changes only how they are BUCKETED for rendering. The sealed structure was built under the old
+    # model: draft slots ran out past the national end on the RD/PSD chain (effective picks into the 80s) and
+    # mechanisms sat at PICKEQ 90/92. Pricing them per-slot was already collapsing to one value — _PVCMAX is now
+    # the pool index, so _lf_pvc() returns the pool level for every one of them — but each row still CARRIED an
+    # effpk past 64, which renders as "the price of pick 82". Under the ruling no such thing exists.
+    # So: national slots 1..64 keep their own rows; every slot past 64 is summed into ONE pool row at POOL_PICK.
+    # Occupancy is conserved exactly (asserted below), and the layer's total PVC is unchanged by the regrouping.
+    def _lf_bucket(_occ):
+        _nd = {}; _pool_c = 0.0
+        for _e, _c in _occ.items():
+            _e = int(_e)
+            if _e <= ND_CURVE_LAST: _nd[_e] = _nd.get(_e, 0.0) + _c
+            else:                   _pool_c += _c
+        _rows = sorted(((_e, _c, _lf_pvc(_e)) for _e, _c in _nd.items()), key=lambda t: t[0])
+        if _pool_c: _rows.append((POOL_PICK, _pool_c, _lf_pvc(POOL_PICK)))
+        assert abs(sum(_c for _, _c, _ in _rows) - sum(float(_c) for _c in _occ.values())) < 1e-9, \
+            'LEG F5: pool regrouping lost occupancy'
+        return _rows
+    _lf_draft = _lf_bucket(_lf_struct['draft_occupancy'])     # [(pick 1..64 | POOL_PICK, slots/yr, pvc)]
+    _lf_mech = _lf_bucket(_lf_struct['mech_occupancy'])       # pickless mechanisms are ALL pool -> one row
     _lf_draft_pvc = sum(_c * _p for _e, _c, _p in _lf_draft)
     _lf_mech_pvc = sum(_c * _p for _e, _c, _p in _lf_mech)
     _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~83,538)

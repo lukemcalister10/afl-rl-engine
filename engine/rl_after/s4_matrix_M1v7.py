@@ -82,7 +82,9 @@ for p in players:
     sat=(C+1 not in played) and bool(played)
     if sat and p.get('type') in INCURVE and 2004<=C<=2024: nsat+=1
     rec[id(p)]=dict(player=p['player'],key=p.get('key'),pos=(MA.GRP.get(p.get('pos')) or MA.gfut(p)),cpos=MA.gfut(p),sw=bool(MA.GRP.get(p.get('pos')) and MA.GRP.get(p.get('pos'))!=MA.gfut(p)),type=p.get('type'),pick=MA.effpk(p),pickless=bool(p.get('_pickless')),
-                    year=C,cat=p.get('_cat'),draftval=round(MA.PVC[min(MA.effpk(p),70)]) if not p.get('_pickless') else None,
+                    # THE SPLIT: clamp to the POOL index, not the stale KMAX literal 70. The ladder now ends at
+                    # POOL_PICK, so min(effpk,70) would have been a KeyError waiting on any effpk of 66-70.
+                    year=C,cat=p.get('_cat'),draftval=round(MA.PVC[min(MA.effpk(p),MA.POOL_PICK)]) if not p.get('_pickless') else None,
                     yrs=yrs,Vpath=Vpath,Ppath=Ppath,cur=ASOF.get((id(p),2026)),anchor=anchor,old_anchor=old_anchor,
                     sat_out_yr1=sat,retired_now=rn,incurve=(p.get('type') in INCURVE))
 _book_out=os.environ.get('S4_MATRIX','s4_matrix.json')
@@ -153,6 +155,9 @@ print(f"  sat out draft Yr1: {nsat} players ({round(100*nsat/len(elig))}% of cur
 print(f"  over-valuation when anchored at first-played vs real Yr1: total={round(sum(deltas))} SCAR, mean=+{round(np.mean(deltas))}, median=+{round(np.median(deltas))}")
 old_sum=sum(v['old_anchor'] for v in elig if v['old_anchor']); new_sum=sum(v['anchor'] for v in elig if v['anchor'])
 print(f"  whole-pool anchor sum: buggy={round(old_sum)} -> fixed={round(new_sum)}  ({round(100*(old_sum-new_sum)/old_sum,1)}% lower overall)")
-for lo,hi in [(1,20),(21,40),(41,80)]:
+# THE SPLIT: report-only bands. The last band was 41-80 — a label past the end of the curve. National bands now
+# stop at 64 and the pool is reported as itself, since selection order inside it carries no value.
+for lo,hi,_lab in [(1,20,'picks 1-20'),(21,40,'picks 21-40'),(41,MA.ND_CURVE_LAST,'picks 41-%d'%MA.ND_CURVE_LAST),
+                   (MA.POOL_PICK,MA.POOL_PICK,'pool')]:
     s=[v for v in sat if lo<=v['pick']<=hi]
-    if s: print(f"  picks {lo}-{hi}: {len(s)} sat-out, mean over-val +{round(np.mean([v['old_anchor']-v['anchor'] for v in s]))} ({round(100*np.mean([(v['old_anchor']-v['anchor'])/v['anchor'] for v in s]))}% of real Yr1)")
+    if s: print(f"  {_lab}: {len(s)} sat-out, mean over-val +{round(np.mean([v['old_anchor']-v['anchor'] for v in s]))} ({round(100*np.mean([(v['old_anchor']-v['anchor'])/v['anchor'] for v in s]))}% of real Yr1)")

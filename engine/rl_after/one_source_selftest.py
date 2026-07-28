@@ -329,13 +329,24 @@ print("=== (9) LEG D ACT-2 — PVC RE-DERIVATION gates + ENTRY CLOSURE (RL_PVC2;
 # structural and holds for whichever curve is loaded. HALT-not-warn: any FAIL -> sys.exit(1) below.
 _pvc2_on = os.environ.get('RL_PVC2','1')!='0'
 _PVC0=g['_PVC0']; _v0s=g['v0_start']; _dval=g['draftval']
-# R104.9 strict descent on the LIVE ev-channel basis (== the loaded curve): curve(p+1) <= curve(p)-1, p=1..79
+# THE SPLIT (RULEBOOK v2.1 law 4). This check was shaped to the old model in BOTH its domain and its reach: it
+# built _PVC0 over range(1,100) and asserted strict descent for p=1..79 — i.e. it demanded an ORDERING over
+# picks that the ruling says carry no order, and it read 34 indices past the end of the curve. It now asserts
+# over the domain the law governs, 1..64, and asserts the split itself: the ladder ends at the pool index.
+_ND_LAST=MA.ND_CURVE_LAST; _POOL=MA.POOL_PICK
 def _sd_viol(cur):
-    return [p for p in range(1,80) if not (cur.get(p+1,cur.get(min(p+1,99))) <= cur.get(p,cur.get(min(p,99))) - 1)]
-_p0i={k:int(round(_PVC0[k])) for k in range(1,100)}
+    return [p for p in range(1,_ND_LAST) if not (cur[p+1] <= cur[p] - 1)]
+_p0i={k:int(round(_PVC0[k])) for k in sorted(_PVC0)}
 _viol=_sd_viol(_p0i)
-check(len(_viol)==0, "R104.9 strict descent on _PVC0 (p=1..79, no plateaus): %d violation(s) %s"%(len(_viol),_viol[:6]))
+check(len(_viol)==0, "G-MONO strict descent on the national curve _PVC0 (p=1..%d, no plateaus): %d violation(s) %s"%(_ND_LAST,len(_viol),_viol[:6]))
 check(_p0i[1]==3000, "numeraire: _PVC0(1)==3000 (got %d)"%_p0i[1])
+# THE SPLIT, asserted directly: the national curve is exactly 1..64 and the only thing past it is the ONE pool
+# index. If either fails, the 1-99 ladder has come back and picks past 64 are being priced again.
+check(sorted(k for k in _p0i if k<=_ND_LAST)==list(range(1,_ND_LAST+1)),
+      "split: national curve covers exactly 1..%d"%_ND_LAST)
+check(max(_p0i)==_POOL, "split: ladder ends at the pool index %d (got %d) — there is no price for a pick past %d"%(_POOL,max(_p0i),_ND_LAST))
+check(sorted(_p0i)==list(range(1,_ND_LAST+1))+[_POOL],
+      "split: ladder is the national curve 1..%d plus exactly one pool entry, no other index"%_ND_LAST)
 # ENTRY CLOSURE (owner's named tautology, made safe): a zero-evidence entrant's evidence-free V0 basis is the
 # pick-prior scaffold draftval, which == _PVC0[pick] == the loaded curve. Definitionally equal; the curve's
 # content comes from OUTCOMES (derived from realized trajectories), so pricing a zero-evidence entrant leaks
@@ -352,14 +363,21 @@ if _zero:
 if _pvc2_on:
     _v2=json.load(open(hp('pvc_curve_v2.json')))
     _v2c={int(k):int(v) for k,v in _v2['curve'].items()}
-    check(all(_p0i[k]==_v2c[k] for k in range(1,100)), "_PVC0 == pvc_curve_v2.json (the loaded ev-channel basis is the derived curve)")
+    # THE SPLIT: the artifact is now the national curve 1..64 plus a separate 'pool_value', so this comparison
+    # walks the artifact's own domain instead of a hardcoded range(1,100) — which after the split read 35 keys
+    # past the end of the curve and raised KeyError rather than reporting anything.
+    check(all(_p0i[k]==_v2c[k] for k in _v2c), "_PVC0 curve == pvc_curve_v2.json over its %d-entry domain 1..%d"%(len(_v2c),max(_v2c)))
+    check(_p0i[MA.POOL_PICK]==int(_v2['pool_value']), "_PVC0 pool index %d == pvc_curve_v2.json pool_value (%s)"%(MA.POOL_PICK,_v2.get('pool_value')))
     # ITEM 408 / owner R1=C — pvc_curve_v2 is a FROZEN RULER, not a derivative of the weekly live store.
     # This is a later self-test invariant (introduced after the five SSI guards), NOT Guard 1/2/3/4/5.
     # HALT-not-warn on the TRUE immutable provenance: the curve stamp binds the contract's frozen source
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='676ad2b77612a4fbd4df3362b6f88fab'
+    _contract_md5='1410fbd7222156d62468a2488f2e8392'   # RE-PINNED at THE SPLIT (2026-07-28): the contract was re-issued when the adopted
+    # curve's DOMAIN went 1-99 -> 1-64 + pool. Values over 1-64 are byte-identical; the pin moves because the
+    # contract file records the new domain, the pool index and the supersession. Curve SOURCE store and
+    # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins must NOT move.
     _curve_source_store='968de0c7a0183ca3914165536f39607a'
     _per_entrant_md5='40d7da7c'
     if not _curve_contract_path or not os.path.exists(_curve_contract_path):
@@ -388,14 +406,35 @@ if _pvc2_on:
         _bd=json.load(open(board_path)); _pd=_bd.get('posture_2027_discounts')
         check(_pd=={'balanced':0.10,'contender':0.15,'rebuilder':0.05}, "R104.5 posture discounts EXACT {0.10/0.15/0.05} in the board (got %s)"%_pd)
     # G-Y0 POOLED HARD gate: |comp-weighted mean day-after V0 - curve| <= 2%
+    # THE SPLIT separates this into two measurements that used to be one, because after the ruling they mean
+    # different things and only ONE of them is this gate's subject:
+    #   (a) THE NATIONAL CURVE, picks 1-64. This is the per-pick curve fit the 2% tolerance was calibrated for.
+    #       It is STILL GATED HARD at 2%, unchanged. If the split had damaged the curve, this is where it shows.
+    #   (b) THE POOL, one index. This is NOT a curve fit — it asks how well ONE number fits every pool entrant,
+    #       and its answer is a direct function of the pool's LEVEL, which the owner has not yet ruled. The
+    #       engine currently carries the pre-split artifact's own value at index 65, because inventing a level
+    #       here would be settling ITEM 412 / #207 stage-2 adoption by side effect. So the pool leg is REPORTED
+    #       WITH ITS NUMBER and marked UNMEASURED — per RULEBOOK Part 3, never assumed passing, never silently
+    #       waived. It is deliberately NOT gated at a tolerance calibrated for something else, and it is
+    #       deliberately NOT tuned to pass: tuning it IS the owner's decision, taken without him.
     from collections import defaultdict as _dd
     _byp=_dd(list)
     for _p in _pool:
         with contextlib.redirect_stdout(io.StringIO()): _byp[MA.effpk(_p)].append(_v0s(_p))
-    _num=sum(len(_byp[k])*(sum(_byp[k])/len(_byp[k]) - _p0i[min(k,99)]) for k in _byp)
-    _den=sum(len(_byp[k])*_p0i[min(k,99)] for k in _byp)
-    _pooled=abs(100.0*_num/_den)
-    check(_pooled<=2.0, "G-Y0 pooled |comp-weighted mean V0 - curve| = %.3f%% <= 2%% HARD"%_pooled)
+    def _gy0(_keys):
+        _n=sum(len(_byp[k])*(sum(_byp[k])/len(_byp[k]) - _p0i[k]) for k in _keys)
+        _d=sum(len(_byp[k])*_p0i[k] for k in _keys)
+        return (100.0*_n/_d if _d else float('nan')), sum(len(_byp[k]) for k in _keys)
+    _ndk=[k for k in _byp if k<=MA.ND_CURVE_LAST]; _plk=[k for k in _byp if k>MA.ND_CURVE_LAST]
+    _nd_r,_nd_n=_gy0(_ndk)
+    check(abs(_nd_r)<=2.0, "G-Y0 NATIONAL CURVE 1-%d |comp-weighted mean V0 - curve| = %.3f%% <= 2%% HARD (n=%d over %d picks)"
+          %(MA.ND_CURVE_LAST,abs(_nd_r),_nd_n,len(_ndk)))
+    if _plk:
+        _pl_r,_pl_n=_gy0(_plk)
+        print("  UNMEASURED  G-Y0 POOL leg: comp-weighted mean V0 sits %+.3f%% vs the carried-over pool level "
+              "%d (n=%d). NOT a curve fit and NOT gated: the pool's LEVEL is an open owner decision (ITEM 412 / "
+              "#207 stage 2). Pool mean V0 = %.1f. Reported, not waived, not tuned."
+              %(_pl_r,_p0i[MA.POOL_PICK],_pl_n,sum(_byp[MA.POOL_PICK])/len(_byp[MA.POOL_PICK])))
     print("       (G-Y0 owner-viewing per-pick residual curve: session_2026-07-17/legd_derivation/out/gy0_residual_curve_v2.json — REPORT-ONLY)")
 else:
     print("  NOTE  RL_PVC2=0 (L1b base path): v2-specific asserts skipped; ENTRY CLOSURE above holds either way.")
