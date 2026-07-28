@@ -1,11 +1,11 @@
 {
- "version": "2.0",
- "date": "2026-07-22",
+ "version": "2.1",
+ "date": "2026-07-28",
  "status": "OFFICIAL",
  "supersedes": [
   "acceptance_v1_21.json"
  ],
- "regenerated_from": "RULEBOOK.md v2.0 (owner-signed 2026-07-22)",
+ "regenerated_from": "RULEBOOK.md v2.1 (owner-signed 2026-07-22; law 4 amended 2026-07-28)",
  "laws": [
   {
    "id": "ONE-SOURCE",
@@ -25,7 +25,7 @@
   {
    "id": "G-MONO",
    "status": "BINDING",
-   "check": "pick curve strictly decreasing",
+   "check": "national pick curve (picks 1-64) strictly decreasing; selections past 64 are pool-valued by position, unordered",
    "pick1_equals": 3000
   },
   {
@@ -80,7 +80,7 @@
   }
  ],
  "dated_reads": {
-  "status": "ALL RETIRED by owner 2026-07-22 \u2014 'they've done their job'",
+  "status": "ALL RETIRED by owner 2026-07-22 — 'they've done their job'",
   "retired": [
    "A-BONT",
    "A-GAWN",
