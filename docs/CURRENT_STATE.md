@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v15 · supervisor pen · 2026-07-28, register v524
+# CURRENT STATE — the incoming-seat read · v17 · supervisor pen · 2026-07-28, register v525
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-28, register v524, written against main `eadee53` — this
+*Replaced wholesale each pen. Accurate 2026-07-28, register v525, written against main `a22be828` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -206,54 +206,54 @@ fix does not extend to a per-season bar.
 
 | | |
 |---|---|
-| **#244 · CI diagnosis** | **DIAGNOSE ONLY, fixes nothing.** Why are Final Integration, CI Guards and Live Scoring red, and are they worth keeping? Deleting a workflow is an allowed finding. |
-| **#245 · two stale signals** | The Kako ground-truth anchor (the last red in the selftest) and a committed `RESULTS.json` claiming `8/8`. |
+| **#245 · two stale signals** | The Kako ground-truth anchor (the last red in the selftest) and a committed `RESULTS.json` claiming `8/8`. Its anchor fix is also the only visible blocker on CI Guards — see CI below. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
-Closed this cycle: #217, #231, #232, #239 (all landed), #225 (delivered, superseded), #241 (never fired).
+Closed this cycle: #217, #231, #232, #239 (all landed), #225 (delivered, superseded), #241 (never fired),
+**#244 (diagnosis delivered, seam-verified, merged `a22be828`)**.
 
-## LANDED THIS CYCLE
+## CI — CORRECTED RECORD. Five causes, and the wall of red already cost one real catch
 
-- **#217 · engine split** `6634221` — the ruled split; pool rows excluded at all five fit sites, with the
-  check **observing each site's actual sampled rows** rather than re-deriving them. `v0surf` frozen and its
-  silent refit fallback deleted. Seam-verified: breaking any one site alone fails by name; board `750446d7`
-  reproduced **byte-exact on a second container**.
-- **#231 · hand-pins** `e3dc0be` — `EXPECTED_BOARD` **deleted, not re-pointed**; the fence reads the bundle's
-  own stamp. Test split into a per-run invariant plus a non-CI `adoption_gate`. `bootstrap_env.sh` finds
-  `python3.12` by name; the env-pin guard reads the dist-info WHEEL tag. Seam-verified: tampering the bundle
-  reds the test **and** kills the app together — which is what did not happen during the outage.
-- **#232 · ownership sidecar** `4ee1716` — **a trade now costs an edit**: one command, no engine run. openpyxl
-  removed rather than satisfied. All 19 read sites migrated; the public tier bridges name→key and **fails
-  closed**. Seam-verified: store, both board bundles and movers byte-identical.
-- **#239 · FV Provenance** `3d31692` — all four failures were **one assertion at four sites**; GREEN2 gated on
-  four conjuncts and printed three. Board proxy replaced with live-computed provenance md5s. **No board id in
-  any gating check.** 8/8 green.
+**The "red for a week" premise was WRONG.** All three workflows were **green at `a7dc1b4a`, 04:25:55Z
+on 2026-07-28** — and at the five commits before it. First reds: **05:07:43Z** (`59d740ca` — CI Guards and
+Final Integration) and **05:47:15Z** (`69e84580` — Live Scoring). They went red **during the R20 go-live**,
+hours before this was written. Seam-verified: all five runs re-pulled from the Actions API. Also corrected:
+`CI_MIGRATION_DIAGNOSIS.md` (repo root, 2026-07-22) had already diagnosed the *R19-era* reds — overtaken,
+but the repo was never a blank page. And *cancelled* cells in old CI tables are concurrency cancellations —
+no verdict either way.
 
-## CORRECTIONS TO THE RECORD
+**The full diagnosis is `session_2026-07-28/item244/CI_DIAGNOSIS.md`** (merged `a22be828`). Five causes:
 
-- **The `dnp` "known-bad" entry is WITHDRAWN.** It claimed 87–92 players who *played* carry `dnp: true` in
-  R15. They did not play — their clubs had byes. Seam-verified: R15 recorded 318 and R16 **319**, against
-  405–410 in complete rounds. Two consecutive rounds short by the same amount is a structural cause. The count
-  was real; the reading was invented. **This does not prove the flag sound** — only that nobody has shown it
-  wrong. Residual, one line: the Movers `DNP` pill does not distinguish bye from omission.
-- **#225's pool-artifact finding was overstated**, caught by the owner. The frozen V0 surface carries a
-  **78.9%** positional spread at pick 65 (GEN_FWD 446.5 → RUC 798.8) against the 57% the evidence asks for —
-  V0 is a lookup keyed `(gfut, ageR, pick)`, not a scalar times a correction. §5 marked withdrawn on the branch.
-- **The seam made three denominator errors in one session**, all caught by others: "two board moves", "96
-  players", and sizing the positional job at 4,257 records by filtering to the active board when the true
-  figure is 11,264. **When you write a ratio, name the population both numbers come from and check they are
-  the same population.**
+| # | cause | hits | class |
+|---|---|---|---|
+| 1 | Kako R19 anchor, `one_source_selftest.py:128` | CI Guards | stale constant — **#245's job** |
+| 2 | season-state R19 constants `0.727`/`c120cfd5` at **TWO sites**: `season_progress_test.py:73-75` AND `final-integration.yml:154` | Final Integration | stale constant, hazard 2 — fixing the test alone leaves the workflow red |
+| 3 | `_repo_root_of` regression from `eb602b9` (`round_movers.py:529-531`) | live-scoring-light | real defect — **test harness only**: both production callers (`round_movers.py:747`, `round_finalize.py:314`) pass `repo_root=` explicitly, seam-read |
+| 4 | v0surf frozen-signature HALT on a third, staged-build signature `65b9fbaf` (cause undetermined) | all six `proof-*` jobs | the design working — they structurally **cannot pass** as wired |
+| 5 | **release-contract drift at #217** | Final Integration | real inconsistency — see below |
 
-## CI — one working signal, read it correctly
+**Cause 5 is the finding that matters.** Seam re-derived both pin files at six commits: `release_contract.json`
+and `expected_boot.json` were byte-consistent through the entire R20 go-live and **diverged only at `6634221`
+(#217)**. Final Integration flagged it on the landing commit — into a wall of red, so nobody saw it. That is
+the merged-against-no-signal failure mode, measured. **Neither file is lying**, seam-verified: the tree's
+committed board `data/rl_build/rl_app_data.json` **is** `750446d7` (matches `expected_boot`), while the
+shipped UI bundle stamps `8a38cca4` (matches the contract) — and #217's own note says the board move is
+deliberately not made. The gate asserts tree == release, #217 deliberately put the tree ahead of the release,
+so **Final Integration stays red until adoption unless the owner rules otherwise**. The drift also disables
+FAIL (e), the positive control proving Final Integration's fail-closed checks are non-vacuous.
 
-**`fv-provenance` is green.** The other three — Final Integration, CI Guards, Live Scoring and their `proof-*`
-jobs — **were already red at `144cd33`, before this cycle's work**. Nobody has ever diagnosed why; #244 is
-doing that now.
+**What greens when.** CI Guards: #245's anchor fix clears the only *visible* red (steps 8–10 hold two guards
+nobody has run — the correction canary and Guard 5/`run_panel.sh` need a full build). Final Integration:
+contract decision → cause 2 at both sites → unmeasured beyond (`extract_seam.test.py` is 42/42). Live
+Scoring: cause 3 for the light job; the six proofs need a v0surf/scoping decision, not a code fix.
 
-**The seam broke `fv-provenance` by merging #217 without checking CI**, taking the signal from one-quarter
-working to zero. **Check the checks before merging** is now a standing act. A PR showing ~1 of 20 green is the
-correct current state, not a failure of the branch under review.
+**No deletion finding.** Nothing fits "red for weeks, nobody noticed, caught nothing" — two of the three
+caught real problems within hours of them landing. #244's recommendation, held for owner word: **de-scope
+the six `proof-*` jobs off every-push, keep `live-scoring-light`**.
+
+**`fv-provenance` stays green** (repaired under #239) and is still the only fully working signal.
+**Check the checks before merging** remains standing.
 
 ## KNOWN-BAD, NOT COMMISSIONED
 
@@ -262,16 +262,25 @@ correct current state, not a failure of the branch under review.
   curve lands.
 - **The dead baked-clubs block** in the same file — nothing reads it, corrupting it changes nothing.
 - **`extract_positions.py` regeneration is stamp-only** — seam-verified content-identical. Safe whenever.
+- **The `_repo_root_of` fallback** (cause 3 above) — real regression, breaks only the test harness's
+  no-argument path.
+- **A hidden red behind live-scoring-light's halt:** the Movers acceptance proof fails
+  `0_production_populated_and_provenance_bridge` — 1 of 11 checks, never reported by CI (hazard 9).
 
 ## OWNER ACTS OUTSTANDING
 
 1. **The positional data.** Everything waits on it.
-2. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
-3. **The baseline column label** when the whole effort lands. One column, not one per board move.
-4. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
-5. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-6. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-7. Referee harness scope — a fresh seat, owner-scheduled.
+2. **The release-contract decision** — accept Final Integration red until adoption, or commission a small
+   change so the gate distinguishes "candidate deliberately held" from drift. #244 calls this the single
+   cheapest move that restores signal before the rebuild lands against near-zero CI.
+3. **The six `proof-*` jobs** — de-scope off every-push (recommended), bake the third v0surf signature
+   (first determine *why* the staged build produces it), or leave them red.
+4. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
+5. **The baseline column label** when the whole effort lands. One column, not one per board move.
+6. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
+7. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+8. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+9. Referee harness scope — a fresh seat, owner-scheduled.
 
 ## FILED FOR THE REFEREE PROJECT — not started
 
@@ -303,6 +312,8 @@ Track D · the conservation gate (`gate_f5.py` cannot be wired as written) · #1
   bundle-equals-manifest, which #217's deliberate hold made permanently red. Split by lifetime: per-run
   invariants in the suite, release conditions at the adoption step.
 - **Every count names its denominator.**
+- **A cancelled CI run is not a red.** Concurrency cancellations carry no verdict; reading them as failures
+  helped the "red for a week" premise survive unexamined.
 
 ## ENVIRONMENT CARRIES
 
