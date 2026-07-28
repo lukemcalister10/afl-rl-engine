@@ -158,6 +158,22 @@ The CI parallelisation job (#205) is also in flight and touches only
 - Arm by environment only. `APPLY_DEFAULT` stays `False` in the tree.
 - No prediction of the resulting CI map. Read the terminal map after it is terminal, step-level.
 
+## 5b · RECORD WHICH GUARDS ACTUALLY FIRED — this feeds the owner's priority 5
+
+His priority 5 is running the engine locally without the bake ceremony. That decision should rest on
+evidence from a real round, not on argument. **Costs you nothing: the job runs anyway.**
+
+For every gate this round passes through, record one line: **did it fire, or did it just re-arm?**
+
+- **Fired** = it refused, halted, or caught something that was actually wrong.
+- **Re-armed** = it moved because the round moved, and you updated it so it would pass.
+
+Cover at least: Guard 5 / the boot pins · the staged-transaction validate list · the dedup ledger ·
+identity resolution · `movers_conflict` · the ten-row panel · the release contract · each CI suite.
+
+A gate that has never fired in anger across R15–R19 and does not fire at R20 is an evidence-based
+candidate for dropping from the weekly loop. **Do not drop anything.** Record it and hand it back.
+
 ## 6 · RETURN
 
 To the seam, with: the environment check; the dry-run proof result; the preview's exceptions and
