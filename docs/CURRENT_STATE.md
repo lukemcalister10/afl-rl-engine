@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v11 · supervisor pen · 2026-07-28, register v519
+# CURRENT STATE — the incoming-seat read · v12 · supervisor pen · 2026-07-28, register v520
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -211,9 +211,13 @@ counts. Precedent to replicate: the sibling `q97m` pickle had its fit path delet
 
 **A value a human must retype when something moves, or a check that cannot notice it is wrong.**
 
-1. **`EXPECTED_BOARD`** pinned `fa172ac1` while the board was `8a38cca4` — two moves behind — so
-   `ringFence()` rejected the board and **every tab rendered the fail-closed panel.** Fixed at `6d8f910`;
-   retiring the hand-pin is now commissioned.
+1. **`EXPECTED_BOARD`** pinned `fa172ac1` while the board of record was `8a38cca4`, so `ringFence()`
+   rejected the board and **every tab rendered the fail-closed panel.** Fixed at `6d8f910`; retiring the
+   hand-pin is now commissioned. **Provenance, seam-measured — it is worse for process than for
+   duration:** the pin had tracked the board correctly at every previous move. It went stale when R20's
+   board landed on `main` at `fef7f69` and was corrected hours later at `6d8f910`, both on 2026-07-28.
+   **One board move, not two, and the seam caused it** by merging a board move without checking the pin
+   that guards it. That is the argument for retiring the pin, not against it.
 2. **`release_seam.test.js` builds its fixtures from that pin**, so it passed straight through the
    outage. Vacuity, guarding the thing that broke.
 3. **`bootstrap_env.sh` invokes bare `python3`** against a cp312-pinned lock. Has cost two seats.
