@@ -1,8 +1,11 @@
 # DIRECTIVE — Implement the ruled pricing split in the engine
 
-**Status:** DRAFT — owner word pending. **This one writes the store and the board.**
+**Status:** FIRED — owner word 2026-07-28. **This one writes the store and the board.**
 **Seat:** one fresh execution supervisor, cold, directing hands. Not #207 and not #208.
-**Sequencing:** MUST NOT run while #208 is live. See below — this is not a formality.
+**Sequencing:** read in and prepare now; **do not move the board** until #208's three closing tasks
+have landed — the schema-version bump, the Bailey Williams override retirement, and the removal of the
+four-surface panel re-pin. The panel one matters to you directly: until it is gone, every board move
+costs a hand-typed re-pin across four surfaces, and this job moves the board.
 
 ---
 
