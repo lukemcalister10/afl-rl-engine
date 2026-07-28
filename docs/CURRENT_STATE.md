@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v12 · supervisor pen · 2026-07-28, register v520
+# CURRENT STATE — the incoming-seat read · v13 · supervisor pen · 2026-07-28, register v521
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -250,8 +250,9 @@ counts. Precedent to replicate: the sibling `q97m` pickle had its fit path delet
 ## Known-bad data, shipped, not this cycle's to fix
 
 **The movers bundle carries its own `dnp` flag and it is wrong.** It marks 486 of 804 players "did not
-play" in R15 — a round where only ~414 could play and 318 were recorded — so roughly 96 who played are
-flagged as not having. It is "absent from the score map" dressed as a football fact. #222 correctly
+play" in R15, a round that recorded 318 scores. Complete rounds R17–R20 recorded 410/406/405/410, so the
+tracked population that plays a full round is **405–410** — the 804 includes players no round would
+select. Against R15's 318 that puts **87–92 players who played carrying `dnp: true`.** It is "absent from the score map" dressed as a football fact. #222 correctly
 declined to use it.
 
 **The baked pick prices in `ui/data/club_valuation.js` go stale when #225 lands.** #222 left them because
