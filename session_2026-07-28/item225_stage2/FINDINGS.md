@@ -4,8 +4,13 @@
 **Store:** `e3aaba77` — the store as it stands, not `c120cfd5`. Named beside every figure below.
 **Surface:** the **frozen** v0surf, signature `76498b5a`, `frozen=True`. Every figure in §1–§5 is
 measured on it. §6 is the scratch-board run and names its own surfaces.
-**Base:** `main` at `7cfde99`, taken in first, `git fetch --unshallow` done (1,262 commits, no
-`.git/shallow`).
+**Base:** derived on `main` `7cfde99`, `git fetch --unshallow` done (1,262 commits, no
+`.git/shallow`). **Rebased onto `main` `4ee1716`** (#231 `71f06cb`/`ff0ed3e`/`e3dc0be`, #232
+`4ee1716`) with the replayed diff verified **byte-identical**. Re-checked rather than assumed: none
+of this job's inputs moved — `git diff --name-only` over the range touches only `bootstrap_env.sh`,
+UI, tests and #232's sidecar, and a bootstrap re-run on the new base reproduces store `e3aaba77`
+and engine `444831d5` with Guard 5 green. **Every figure below stands on the new base without
+re-running.**
 **Nothing here is adopted.** These are candidate values with their basis. Adoption is the owner's
 and is a separate release with its own word.
 
@@ -379,11 +384,16 @@ push back.
 
 ## 8 · Environment and process notes
 
-- **The `bootstrap_env.sh` fault is live and cost this seat time before Addendum 2 §4 resolved it:**
-  bare `python3` is **3.11.15**, the lock pins **cp312**, system pip is PEP 668-blocked. The
-  Addendum 2 route works — `python3.12 -m venv`, `--require-hashes --only-binary=:all:`, then
-  `RL_VENV=… bash bootstrap.sh`. `bootstrap.sh` not patched, pin not weakened. **#231 is repairing
-  this; flagged, not resolved here.**
+- **The `bootstrap_env.sh` fault, and its repair — re-checked after #231 landed.** The derivation was
+  produced before #231; the fault was live then (bare `python3` = **3.11.15**, lock pins **cp312**,
+  system pip PEP 668-blocked) and Addendum 2 §4's route was used: `python3.12 -m venv`,
+  `--require-hashes --only-binary=:all:`, then `RL_VENV=… bash bootstrap.sh`. `bootstrap.sh` not
+  patched, pin not weakened.
+  **#231 has since landed (`ff0ed3e`) and its fix is sound, verified here rather than assumed:**
+  the script now reports `interpreter: python3.12 (3.12.3)` — the real fault, discovering the
+  interpreter by name — and then **exits 1** against this container's PEP 668-blocked system 3.12,
+  claiming no success. It fails closed rather than falsely succeeding, which is the right shape.
+  A caller still needs a venv, so Addendum 2 §4's route remains what works here.
 - **A stale remediation message, reported not fixed.** The `v0surf FROZEN-LOAD HALT` says *"Re-run
   bootstrap.sh to seed the workspace copy"*. `bootstrap.sh` does not copy `v0surf.pkl` anywhere —
   the load resolves it through `RL_REPO`/`CLAUDE_PROJECT_DIR`. A seat following the halt's own advice
