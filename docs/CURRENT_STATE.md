@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v8 · supervisor pen · 2026-07-28, register v513
+# CURRENT STATE — the incoming-seat read · v9 · supervisor pen · 2026-07-28, register v516
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,6 +110,26 @@ any pen error reaching main restores the per-entry word.
 # PART B — CURRENT STATE
 
 *Replaced wholesale each pen. Accurate as of 2026-07-28, register v513, main after `69e8458`.*
+
+## WHAT THE CURRENT WORK IS FOR — read this before you touch the model
+
+**Owner's words, 2026-07-28:**
+
+> Right now, we are doing apples for apples conversion of the new store and ND/RD/Pool split into the
+> current system. Anything else would be redefining HOW we model or HOW we value, which is the job of
+> the referee project which comes next, and 412. This is about establishing a correct baseline with our
+> new information to compare to.
+
+**So: the method is held constant. Only the data and the separation change.** If you find yourself
+improving a calculation, you have left the job — that improvement belongs to the referee project or to
+ITEM 412, and it goes back to the owner.
+
+This is the drift that has cost this project the most. A seat reads "baseline", sees a defect, and fixes
+it — and now the baseline is not comparable to anything, which was its entire purpose. **The known
+defects are to be reported, not repaired.** The `× 0.6` blend ceiling stays. The isotonic step stays. The
+low-sample pooling that pulls RUC toward the pooled average stays. They are the thing being replicated.
+
+**Sequence of record:** baseline (#217 + #225) → the referee project → ITEM 412.
 
 ## THE PRICING STRUCTURE — ruled, now law, engine still to follow
 
