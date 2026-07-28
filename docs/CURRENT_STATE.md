@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v9 · supervisor pen · 2026-07-28, register v516
+# CURRENT STATE — the incoming-seat read · v10 · supervisor pen · 2026-07-28, register v517
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~18KB instead of the
 register header's 325KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -191,8 +191,14 @@ identical release identity — same false premise as the chain, and it would hav
 permanently. Owner-approved. Accepted cost: the content-tamper digest went with it. One assert replaced
 them all — the newest stored point matches the live board — proven non-vacuous both directions.
 
-**Standing rule:** whenever the board moves outside a round, write a history column at that point. The
-label is owner-set; ask, do not invent.
+**Standing rule, CORRECTED 2026-07-28 by owner direction — the earlier wording was wrong.** A history
+column is written **once per landed change, not once per board rebuild.** A board may be rebuilt four or
+five times inside one piece of work; those intermediate states are working builds, not comparison points,
+and giving each one a column fills the dropdown with noise. **Do not ask for a label mid-job.** When the
+change lands, one column, one owner-set label — ask then, and never invent one.
+
+The whole current baseline effort — the split, the pool-row exclusion, the `v0surf` rebuild, #225's
+derivation and the owner's adoption — is **one change and gets one column.**
 
 ## #208's three closing tasks — all landed
 
