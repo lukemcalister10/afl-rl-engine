@@ -56,7 +56,7 @@ const setTier = async (t) => { await page.evaluate(t2 => { MD.state.tier = t2; M
 /* ------------------------------------------------------------------ the app renders at all */
 section('PREREQUISITE — the board ring-fence');
 check(await page.locator('.failclosed').count() === 0,
-  'the app renders (the EXPECTED_BOARD pin matches the shipped board)');
+  'the app renders (the shipped bundle matches its board of record)');
 check(await page.locator('.rows .row').count() === 804, 'the working board renders all 804 players');
 
 /* ------------------------------------------------------------------ CLUSTER 3: tabs and labels */

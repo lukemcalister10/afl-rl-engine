@@ -13,7 +13,18 @@ MD.seam = (function () {
     // Authenticate the INSTALLED WORKING BOARD only — `board_md5` (not the store, not the balanced
     // reference). `srcmd5` is the temporary identical alias read for un-regenerated bundles.
     const head = String(working.stamp.board_md5 || working.stamp.srcmd5 || "").slice(0, 8);
-    const want = MD.config.EXPECTED_BOARD;
+    // The BOARD OF RECORD, and NOT a hand-typed constant (see config.js — the pin that used to live
+    // there killed the app on 2026-07-28). extract_board_view.py copies data/expected_boot.json 'board'
+    // into the stamp verbatim, so this is the manifest's own answer travelling with the bundle. `head`
+    // is computed from the board artifact's bytes; `want` is declared by the manifest — a bundle whose
+    // contents don't match what the manifest says it is still fails closed.
+    const want = String(working.stamp.board || "").slice(0, 8);
+    // A bundle carrying NO board of record cannot be authenticated, so it does not get the benefit of
+    // the doubt. Fail closed — an unauthenticated board must look broken, because it is. (Without this
+    // an unstamped bundle would compare "" !== "" and sail through as ok.)
+    if (!/^[0-9a-f]{8}$/.test(want)) {
+      return { ok: false, why: "board of record missing from bundle stamp", got: head, want: want };
+    }
     if (head !== want) {
       return { ok: false, why: "board id mismatch", got: head, want: want };
     }

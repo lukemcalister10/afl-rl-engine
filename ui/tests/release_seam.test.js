@@ -76,12 +76,49 @@ console.log("v2.11 UI/RELEASE-SEAM — UI proof (real config.js / seam.js / main
 
 // ================= ring-fence (seam.js) — UI refuses a mismatched board =========================
 (function () {
-  // config.js pins the expected board id; the fence compares the working stamp's md5 head to it.
+  /* WHY THIS BLOCK LOOKS THE WAY IT DOES. Until 2026-07-28 it opened with
+         var WANT = cfgCtx.MD.config.EXPECTED_BOARD;
+     and built every fixture from that pin. So when the pin pointed at the wrong board, the fixtures
+     pointed at the wrong board too, the fence agreed with itself, and this file reported 23/23 green
+     for the entire outage it existed to catch — while ringFence() was rejecting the real shipped board
+     and every tab in the app rendered the fail-closed panel. A test that draws its expectation from the
+     thing under test cannot fail.
+
+     Both identities below now come from OUTSIDE the app's own configuration: the board of record is read
+     from data/expected_boot.json, and the shipped identity is read from the generated bundle. A
+     disagreement between the manifest, the bundle and the fence is now a red. */
+  var TAIL = "deadbeefdeadbeefdeadbeef";
+  var WRONG = "0badc0de";
+
+  var BOOT = JSON.parse(fs.readFileSync(
+    path.join(__dirname, "..", "..", "data", "expected_boot.json"), "utf8"));
+  var RECORD = String(BOOT.board || "").slice(0, 8);
+  check(/^[0-9a-f]{8}$/.test(RECORD),
+    "board of record read from data/expected_boot.json 'board'", "got " + RECORD);
+
+  // ---- STALENESS: the shipped bundle against the manifest -----------------------------------------
+  // The browser cannot open the manifest from file://, so the fence cannot make this comparison at
+  // runtime. The test can, and this is the check that would have gone red during the outage.
+  var bundleSrc = fs.readFileSync(
+    path.join(__dirname, "..", "data", "board_view_working.js"), "utf8");
+  var SHIPPED = JSON.parse(bundleSrc.slice(bundleSrc.indexOf("{"), bundleSrc.lastIndexOf("}") + 1));
+  var shippedMd5 = String(SHIPPED.stamp.board_md5 || SHIPPED.stamp.srcmd5 || "").slice(0, 8);
+  var shippedRecord = String(SHIPPED.stamp.board || "").slice(0, 8);
+  check(shippedMd5 === RECORD,
+    "shipped bundle board_md5 == the board of record (catches a stale bundle)",
+    "bundle " + shippedMd5 + " vs manifest " + RECORD);
+  check(shippedRecord === RECORD,
+    "shipped bundle carries the board of record in stamp.board (what the fence authenticates against)",
+    "bundle " + shippedRecord + " vs manifest " + RECORD);
+
+  // ---- the retired pin must not come back ----------------------------------------------------------
   var cfgCtx = makeCtx();
   load(cfgCtx, "config.js");
-  var WANT = cfgCtx.MD.config.EXPECTED_BOARD;
-  var TAIL = "deadbeefdeadbeefdeadbeef";
-  check(/^[0-9a-f]{8}$/.test(WANT), "config.EXPECTED_BOARD is an 8-hex board pin", "got " + WANT);
+  check(cfgCtx.MD.config.EXPECTED_BOARD === undefined,
+    "config.js carries NO hand-typed EXPECTED_BOARD pin (retired, issue #231)",
+    "got " + JSON.stringify(cfgCtx.MD.config.EXPECTED_BOARD));
+  check(appSrc("seam.js").indexOf("EXPECTED_BOARD") < 0,
+    "seam.js reads no EXPECTED_BOARD constant");
 
   function fence(working) {
     var ctx = makeCtx({ __MATCHDAY_WORKING__: working });
@@ -91,23 +128,44 @@ console.log("v2.11 UI/RELEASE-SEAM — UI proof (real config.js / seam.js / main
   }
 
   // ring-fence authenticates the INSTALLED WORKING BOARD only: board_md5 (|| srcmd5 alias)
-  check(fence({ stamp: { board_md5: WANT + TAIL } }).ok === true,
+  check(fence({ stamp: { board: RECORD + TAIL, board_md5: RECORD + TAIL } }).ok === true,
     "ring-fence ACCEPTS a bundle keyed by board_md5");
-  check(fence({ stamp: { srcmd5: WANT + TAIL } }).ok === true,
+  check(fence({ stamp: { board: RECORD + TAIL, srcmd5: RECORD + TAIL } }).ok === true,
     "ring-fence ACCEPTS a legacy bundle keyed only by the srcmd5 alias");
+
   // the ring-fence uses BOARD identity only — a matching store/balanced but wrong board is refused
-  var wrongBoard = fence({ stamp: { board_md5: "0badc0de" + TAIL, store_md5: WANT + TAIL,
-    balanced_board_md5: WANT + TAIL } });
-  check(wrongBoard.ok === false && wrongBoard.got === "0badc0de" && wrongBoard.want === WANT,
+  var wrongBoard = fence({ stamp: { board: RECORD + TAIL, board_md5: WRONG + TAIL,
+    store_md5: RECORD + TAIL, balanced_board_md5: RECORD + TAIL } });
+  check(wrongBoard.ok === false && wrongBoard.got === WRONG && wrongBoard.want === RECORD,
     "ring-fence keys on board identity ONLY (store/balanced do not authenticate it)", JSON.stringify(wrongBoard));
 
-  var bad = fence({ stamp: { board_md5: "0badc0de" + TAIL } });
+  var bad = fence({ stamp: { board: RECORD + TAIL, board_md5: WRONG + TAIL } });
   check(bad.ok === false && bad.why === "board id mismatch",
-    "ring-fence REFUSES a mismatched board (fail-closed)", JSON.stringify(bad));
-  check(bad.got === "0badc0de" && bad.want === WANT,
+    "ring-fence REFUSES a board that disagrees with the board of record (fail-closed)", JSON.stringify(bad));
+  check(bad.got === WRONG && bad.want === RECORD,
     "ring-fence reports got/want for the fail-closed screen");
 
+  // the fence's expectation TRACKS THE BUNDLE'S board of record — it is not a constant anywhere.
+  // Feed a bundle declaring a different board of record and `want` must move with it.
+  var moved = fence({ stamp: { board: WRONG + TAIL, board_md5: RECORD + TAIL } });
+  check(moved.ok === false && moved.want === WRONG && moved.got === RECORD,
+    "ring-fence's expectation comes from the bundle's board of record, not a pin", JSON.stringify(moved));
+
+  // a bundle with NO board of record cannot be authenticated -> fail closed, never a silent pass
+  var unstamped = fence({ stamp: { board_md5: RECORD + TAIL } });
+  check(unstamped.ok === false && unstamped.why === "board of record missing from bundle stamp",
+    "ring-fence REFUSES a bundle carrying no board of record", JSON.stringify(unstamped));
+  var emptyBoth = fence({ stamp: {} });
+  check(emptyBoth.ok === false,
+    "ring-fence REFUSES a stamp with neither identity (no ''===''  silent pass)", JSON.stringify(emptyBoth));
+
   check(fence(null).ok === false, "ring-fence REFUSES a missing working bundle");
+
+  // ---- THE REAL SHIPPED BUNDLE, through the real fence ---------------------------------------------
+  // Exercises the actual generated artifact rather than a fixture: this is the assertion whose failure
+  // means the app is dead on main.
+  check(fence(SHIPPED).ok === true,
+    "the REAL shipped bundle passes the ring-fence (the app renders)", JSON.stringify(fence(SHIPPED)));
 })();
 
 // ==== retrospective seam (board.js) — real F2 contract: store_md5 AND balanced_board_md5 ==========
