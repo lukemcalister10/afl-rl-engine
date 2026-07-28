@@ -270,7 +270,24 @@ change and a silently contaminated prior.
 
 ---
 
-## 5 · A structural finding the owner needs before adoption
+## 5 · ~~A structural finding the owner needs before adoption~~ — **WITHDRAWN**
+
+> **WITHDRAWN 2026-07-28, seam-corrected. This finding was overstated and the section below is
+> wrong.** It argued the artifact could not express per-position pool values because
+> `iso_corr(pos,65)` spans only 3.9%. The seam re-derived it: **the V0 surface already carries a
+> 78.9% positional spread at the pool index**, so the artifact *can* express per-position values.
+>
+> The error was measuring the wrong object. `iso_corr` is the multiplicative correction table, but
+> the position differentiation lives in the V0 surface itself, which is keyed
+> `(gfut, ageR, pick)` — `_merged_recover.py:1191`, a line this seat had already read without
+> connecting it.
+>
+> Kept in place rather than deleted, because the register is append-only in spirit and a reader of
+> the issue thread needs to find what was withdrawn. **The other two adoption findings (§3's
+> more-pooled priors, and the drafted/played keying below) are unaffected.**
+
+### The withdrawn text follows.
+
 
 The directive asks for **one value per position** in the pool, applied by the position layer
 `iso_corr`. The artifact and the engine currently carry **one position-blind scalar** —
@@ -361,6 +378,41 @@ the register records it handing deep pool entrants a ~14% uplift before any age 
 derived level removes that. **Whether it is the right level is the owner's call, not this job's.**
 
 ---
+
+## 6b · THE DRAFTED-vs-PLAYED DEFECT, AND WHAT IT MEANS FOR THE VALUES ABOVE
+
+**Added 2026-07-28, after the values were delivered. Read this before using any per-position figure.**
+
+`GRP[p['pos']]` is the **drafted** position; `gfut(p)` is the **settled/played** position, and the
+board prices on `gfut`. A set of sites read the drafted one. The full site map — three groups, by
+whether they reach `ev()` — is filed on issue #225 and is the durable record; it is a fact about
+the code and survives any data change.
+
+**What it does NOT touch.** The ND curve and the pool SCAR level here are built from `v0_start` and
+`ev()`, and both key on played position (`_v0key` at `_merged_recover.py:1191`; `player_raw` calls
+`proj_from_peak(gfut(p), …)`). Neither `_nv_bwd` nor `peakval` — the two sites first scoped for the
+fix — is reachable from this job's fit path; they feed the in-engine fit that R3 holds out of the
+bake.
+
+**What it does touch.** Four sites on the value path key on drafted position and reach `peak_est`,
+hence `ev()`, hence the `v0`/`vpath` this job fitted on: `_explicit_peak` (`:608`), `_v4_feats`
+(`:626`), `_v4_draft_feat` (`:636`), `_v4_spike_guard` (`:638`). `peak_est` blends
+`(1−w)·_explicit_peak + w·v4pe` with `w = clamp(games/45,0,1)`, so a 10-game reassigned player takes
+**77.8%** of his peak estimate from his drafted position's floor. Plus `BPK`/`MIX` (`:301`–`:303`),
+where `BASEPK_REG` is *built* on drafted and *read* on played.
+
+**And this seat's own figures are keyed on played position.** The evidence matrix recorded
+`pos = MA.gfut(p)`, so every per-position number above — the pool levels and the recalculated bust
+priors — is grouped by **played** position, while the shipped `_v4_bp` reads `_BUSTPT[GRP[p['pos']]]`,
+i.e. **drafted**. That is arguably the correct side of the defect, but **it means the recalculated
+priors are not strictly apples-for-apples with the shipped ones**, and the acceptance test this job
+was held to — every difference attributable to the data or the separation — does not cleanly hold
+for them.
+
+**Standing status of the values in this document:** superseded. The positional basis is being
+rebuilt from sourced historical eligibility per player-season, so the `gfut` values everything here
+is keyed on are themselves being replaced. The re-derivation is a fresh seat's, working from this
+record. What survives is the method, the two-directions check, the site map, and the populations.
 
 ## 7 · What was chosen rather than derived
 
