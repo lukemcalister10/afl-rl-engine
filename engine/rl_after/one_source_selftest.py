@@ -28,6 +28,17 @@ def check(cond, msg):
     print(("  PASS " if cond else "  FAIL ")+msg)
     if not cond: FAIL.append(msg)
 
+def stale(msg):
+    """An owner anchor whose round window has been outrun.
+
+    This is a FAILURE — an anchor that quietly stops checking once its scope lapses is a guard that has
+    switched itself off, which is the defect class this file is full of. But it is reported as STALE
+    rather than as a value mismatch, because the number was never wrong: it described the rounds it was
+    typed for, and the store moved past them. The fix is an owner re-anchor, not a re-typed literal, and
+    the message has to say so or the next seat "corrects" it and restarts the same clock."""
+    print("  STALE "+msg)
+    FAIL.append("STALE: "+msg)
+
 HERE=os.path.dirname(os.path.abspath(__file__))
 def hp(*p): return os.path.join(HERE,*p)
 
@@ -122,10 +133,61 @@ print("=== (4) DATA GROUND TRUTH: Kako + Bontempelli regenerated from source ===
 store=json.load(open(hp('rl_model_data.json')))
 kako=[p for p in store if p['key']=='isaac-kako']
 check(len(kako)==1, "exactly one isaac-kako in the store")
+# ---- OWNER GROUND-TRUTH ANCHORS, ROUND-SCOPED ---------------------------------------------------
+# An anchor is a figure the OWNER states, checked against the store. It is deliberately hand-typed and
+# must NEVER be derived from the store — an anchor that read its own expectation from the thing it
+# checks would pass on any corruption, which is the whole reason it exists.
+#
+# But a CURRENT-SEASON anchor is only true for the rounds it was measured over, and this one proved it:
+# `2026 == (10, 45.4)` was typed when R19 was the latest round. R20 was applied, Kako scored 32, and
+# nothing re-typed it — 454 + 32 = 486, / 11 = 44.18, exactly what the store now holds. The figure was
+# never wrong. Re-typing it would just wind the same clock up again and it would break at R21.
+#
+# So each anchor carries the round window it describes, the shape #208 gave the Bailey Williams override
+# (`applies_to_rounds`). Where this deliberately DIFFERS from that precedent: an out-of-scope override
+# simply does not apply and the general path handles the row, so nothing is lost. An out-of-scope anchor
+# leaves NOTHING checking the store. So lapsing is not a quiet no-op here — it is announced as STALE and
+# it fails, and the only thing that clears it is an owner re-anchor.
+# (If the owner ever wants lapsed anchors to warn instead of fail, `stale()` is the single place to change.)
+KAKO_ANCHORS = [
+    # year, (games, avg), last round the figure covers (None == completed season, cannot move), provenance
+    (2025, (23, 55.2), None,
+     "completed season — no round scope; it is final and cannot go stale"),
+    (2026, (10, 45.4), 19,
+     "R15-19 entered: R16=11, R17=9, R18=47, R19=57, R15 DNP; prior 6@55.0=330 +124 = 454/10"),
+]
+
+def _as_of_round():
+    """The round the CHECKOUT is at, read from data/expected_boot.json.
+
+    Deliberately the release manifest and not the store: the store is what the anchors check, so taking
+    the scope from it would let a store that had silently advanced also silently widen the window that
+    is supposed to catch it."""
+    if not _repo:
+        return None
+    try:
+        return json.load(open(os.path.join(_repo, 'data', 'expected_boot.json'))).get('as_of_round')
+    except Exception:
+        return None
+
 if kako:
     ksc={r['year']:(r['games'],r['avg']) for r in kako[0]['scoring']}
-    check(ksc.get(2025)==(23,55.2), "Kako 2025 == 23 games @ 55.2 (owner ground truth); got %s"%(ksc.get(2025),))
-    check(ksc.get(2026)==(10,45.4), "Kako 2026 == 10 games @ 45.4 (R15-19 entered: R16=11,R17=9,R18=47,R19=57, R15 DNP; prior 6@55.0=330 +124 =454/10); got %s"%(ksc.get(2026),))
+    _round=_as_of_round()
+    # No round -> no scope decision can be made, and passing anyway would be the silent-guard failure
+    # this block exists to prevent. Fail closed and say which input is missing.
+    check(_round is not None,
+          "as_of_round readable from data/expected_boot.json (owner anchors are scoped by it)")
+    for _yr, _want, _thru, _prov in KAKO_ANCHORS:
+        _got=ksc.get(_yr)
+        if _thru is not None and _round is not None and _round > _thru:
+            stale("Kako %d anchor covers rounds through R%d, the store is at R%d — the anchor is out of "
+                  "date, not wrong. Owner re-anchor required. anchor=%s store=%s (%s)"
+                  %(_yr, _thru, _round, _want, _got, _prov))
+        else:
+            check(_got==_want,
+                  "Kako %d == %d games @ %s (owner ground truth%s); got %s"
+                  %(_yr, _want[0], _want[1],
+                    '' if _thru is None else ', covers rounds through R%d'%_thru, _got))
 bont=[p for p in store if p['key']=='marcus-bontempelli']
 check(len(bont)==1, "exactly one marcus-bontempelli in the store")
 if bont:

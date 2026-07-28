@@ -54,6 +54,9 @@ BOARD_MD5_GOOD = '4939d74082219e84c4f4a33a096c1ec8'   # ITEM 411 D1 (owner rulin
 BAD_PREFIX = 'd7a95e8d'
 STALE_DP = os.path.join(FIX, 'distribution_pricing.stale_21d530bf.py')
 
+# The run verdict. NOT committed (see .gitignore) and removed before the first check runs — see main().
+RESULTS_PATH = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'RESULTS.json')
+
 # ---- provenance-relevant production files whose bytes must NOT change across any red path ----
 _GUARDED = ['data/expected_boot.json', 'boot_guard.py', 'fv_provenance.py',
             'engine/forward_valuation/distribution_pricing.py', 'engine/rl_after/rl_export.py',
@@ -549,6 +552,23 @@ def main():
                                     "  (board-content oracle NOT run — pass --board-oracle)"))
     print("=" * 90)
     os.makedirs(CLAUDE, exist_ok=True)
+
+    # THE VERDICT MUST NEVER OUTLIVE THE RUN THAT WROTE IT.
+    # RESULTS.json used to be committed, carrying `pass: 8/8` from the 06d8af60 era, and
+    # fv-provenance.yml uploads whatever is on disk (`if: always()`, `if-no-files-found: ignore`) while
+    # the write below used to sit in a bare `except: pass`. So a run that died early, or whose write
+    # failed, published a green verdict for a suite that had not passed — a false success signal sitting
+    # in the tree. Deleting it here, BEFORE any check runs, means the only file that can ever be uploaded
+    # is one this run wrote. Absence uploads nothing, and absence cannot be mistaken for a pass.
+    try:
+        os.remove(RESULTS_PATH)
+    except FileNotFoundError:
+        pass
+    except OSError as e:
+        print("  [FAIL] could not clear the previous RESULTS.json (%r) — refusing to run, because a "
+              "stale verdict could be uploaded as this run's." % (e,))
+        sys.exit(1)
+
     checks = (green1, green2, red1, red2, red3, red4, red5, red6)
     if oracle:
         checks = checks + (board_oracle,)
@@ -561,15 +581,21 @@ def main():
     npass = sum(1 for r in RESULTS if r['ok'])
     print("=" * 90)
     print("RESULT: %d/%d PASS" % (npass, len(RESULTS)))
-    # durable results artifact
-    out = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'RESULTS.json')
+    # Durable results artifact. The write is NO LONGER swallowed: a run that cannot record its own
+    # verdict does not get to exit 0, because "succeeded but left no evidence" is the same false-success
+    # shape as the stale committed file this replaced.
+    wrote = True
     try:
-        json.dump({'pass': npass, 'total': len(RESULTS), 'results': RESULTS,
-                   'fv_pin': json.load(open(os.path.join(REPO, 'data', 'expected_boot.json'))).get('fv')},
-                  open(out, 'w'), indent=2)
-    except Exception:
-        pass
-    sys.exit(0 if npass == len(RESULTS) else 1)
+        with open(RESULTS_PATH, 'w') as fh:
+            json.dump({'pass': npass, 'total': len(RESULTS), 'results': RESULTS,
+                       'fv_pin': json.load(open(os.path.join(REPO, 'data', 'expected_boot.json'))).get('fv')},
+                      fh, indent=2)
+    except Exception as e:
+        wrote = False
+        print("  [FAIL] RESULTS.json could not be written: %r" % (e,))
+        print("         No artifact will be uploaded, so nothing can read this run as a pass — but the")
+        print("         run itself is now a FAILURE, because it has no durable record of what it proved.")
+    sys.exit(0 if (npass == len(RESULTS) and wrote) else 1)
 
 
 if __name__ == '__main__':

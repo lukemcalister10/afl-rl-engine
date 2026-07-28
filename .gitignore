@@ -6,3 +6,7 @@ session_2026-07-13/v2_9_refit_cert/out/
 # q97m follow-up: large reproducible board JSONs (analysis + hashes are committed instead)
 session_2026-07-14/q97m_followup/P3_crossenv/board*.json
 session_2026-07-14/q97m_followup/A1_PROOF/legB_tag_board.json
+# FV provenance run verdict — written per run, never committed. It was committed once, carrying
+# `pass: 8/8` from the 06d8af60 era, and fv-provenance.yml uploads whatever is on disk, so a run that
+# failed to write published a green result for a suite that had not passed (issue #239 follow-up).
+session_2026-07-20/fv_provenance_remediation/RESULTS.json
