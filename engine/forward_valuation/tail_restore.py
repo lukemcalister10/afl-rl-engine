@@ -1,7 +1,7 @@
 """NAMESPACE SPINE (post ONE-price, D4 2026-07-02).
 
 HISTORY: this module held the cont.27 TAIL-RESTORATION (empirical p70/p90 upper-tail restore for pre-debut
-MID/KEY_FWD/GEN_DEF) and the cont.27 WIRE-IN ROUTER production_value() (pre-debut par-path / RUC
+MID/KPF/SD) and the cont.27 WIRE-IN ROUTER production_value() (pre-debut par-path / RUCK
 scorer-borrow pool / established rd.redesign_value) — the function that priced the traded board. Luke's
 ONE-price ruling (02/07/2026, in writing) DELETED the board valuation path: the board renders engine ev().
 Per deleted layer see BOARD_LAYERS_OBITUARY.md (magnitudes, rationale, deletion commit, resurrection refs).

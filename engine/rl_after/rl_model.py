@@ -57,14 +57,14 @@ for _p in data:
 # ------------------------------------------------------------------------------------------------
 PEAK=P['PEAK']; PEAK_AGE=P['PEAK_AGE']; pm_pos=PMD['pm_pos']; pm_band={int(k):v for k,v in PMD['pm_band'].items()}; BANDS=PMD['bands']; NB=len(BANDS)
 AGE_CURVE={g:{int(a):f for a,f in c.items()} for g,c in P.get('AGE_CURVE',{}).items()}   # per-position empirical age curve (Phase-2 dev projection only; present value() untouched)
-def _smooth_tail(c):                                   # enforce monotonic non-increasing post-peak + >=1%/yr continued decline (kills thin-tail plateaus/blips, e.g. RUC holding flat at 35)
+def _smooth_tail(c):                                   # enforce monotonic non-increasing post-peak + >=1%/yr continued decline (kills thin-tail plateaus/blips, e.g. RUCK holding flat at 35)
     if not c: return c
     pk=max(c,key=c.get); out=dict(c)
     for a in sorted(c):
         if a>pk: out[a]=min(c[a], out[a-1]-0.010)
     return out
 AGE_CURVE={g:_smooth_tail(c) for g,c in AGE_CURVE.items()}
-GRP={'MID':'MID','RUC':'RUC','GFWD':'GEN_FWD','KFWD':'KEY_FWD','GDEF':'GEN_DEF','DEF':'GEN_DEF','KDEF':'KEY_DEF'}
+GRP={'MID':'MID','RUCK':'RUCK','SF':'SF','KPF':'KPF','SD':'SD','KPD':'KPD'}   # ITEM 262: identity since the store now speaks the engine's own vocabulary. Kept as the dispatch boundary, NOT redundant. The pre-262 'SD'->'SD' back-catalogue alias is retired: all 136 rows were migrated to SD.
 # A player's CAREER/draft position (p['pos']) drives his contribution to the cohort curves.
 # An optional p['_pos_now'] is his CURRENT position and drives only his own active valuation
 # (e.g. Dangerfield: drafted+developed a MID -> feeds the MID pool; plays FWD now -> valued as a forward).
@@ -100,25 +100,25 @@ def futstreams(p):
     return [(pri,1.0-q),(GRP.get(ap) or pri,q)]
 # ==== §1b — THE CURRENT-SEASON DPP LAW (item 275, BINDING; RL_FLEX-gated) — the eligibility-collapse helper.
 # A player's OFFICIAL current-season dual positions (the store `eligibilities`, collapsed per R105.1: a
-# KEY-listed position DROPS its matching GEN — K-FWD absorbs G-FWD, K-DEF absorbs G-DEF; <=2 remain) apply to
+# KEY-listed position DROPS its matching GEN — KPF absorbs SF, KPD absorbs SD; <=2 remain) apply to
 # the YEAR-0 LEG ONLY. The year-0 REMAINING-SEASON component nets vs whichever post-collapse bar is MORE
 # VALUABLE for him (the LOWER REPL); the banked component + the level path stay keyed to present (bnow). The
 # SEASON_PROG-scaled blend itself is done at v_at_peak (before val(); item 281). Here we only resolve the bar.
-_ELIG_MAP={'MID':'MID','RUC':'RUC','RUCK':'RUC','G-FWD':'GEN_FWD','K-FWD':'KEY_FWD','G-DEF':'GEN_DEF','K-DEF':'KEY_DEF'}
+_ELIG_MAP={'MID':'MID','RUCK':'RUCK','SF':'SF','KPF':'KPF','SD':'SD','KPD':'KPD'}   # ITEM 262: identity — `eligibilities` no longer uses a separate hyphenated spelling. Kept so _collapse_elig still validates its input.
 def _collapse_elig(elig):
     if not elig: return set()
     s={_ELIG_MAP.get(t.strip().upper()) for t in elig.split(',') if t.strip()}
     s.discard(None)
-    if 'KEY_FWD' in s: s.discard('GEN_FWD')      # R105.1: K-X absorbs G-X (a K-DEF also listed G-DEF is NOT a DPP)
-    if 'KEY_DEF' in s: s.discard('GEN_DEF')
+    if 'KPF' in s: s.discard('SF')      # R105.1: K-X absorbs G-X (a KPD also listed SD is NOT a DPP)
+    if 'KPD' in s: s.discard('SD')
     return s
 # ==== item-284 (DECISIONS v121) — DPP DATA-ERROR classes. Same-line K/G is the SILENT R105.1 listing-artifact
 # collapse above (no flag). The FOUR cross-class combos and present_position ∉ the collapsed set are DATA ERRORS:
 # the row is treated SINGLE-POSITION for §1b (y0dpp_bar -> None, NO dual bar), REPORTED BY NAME (the registry
 # below -> a committed named-row artifact, not a log line), and the build CONTINUES — never a halt. SILENCE IS A
 # RED: y0dpp_bar always resolves (a bar or None) and every error row lands in the registry with a verdict.
-_CROSS_CLASS={frozenset({'KEY_DEF','GEN_FWD'}),frozenset({'KEY_FWD','GEN_DEF'}),
-              frozenset({'RUC','GEN_FWD'}),frozenset({'RUC','GEN_DEF'})}
+_CROSS_CLASS={frozenset({'KPD','SF'}),frozenset({'KPF','SD'}),
+              frozenset({'RUCK','SF'}),frozenset({'RUCK','SD'})}
 _DPP_DATA_ERRORS={}                              # stable_player_id -> dict(player,reason,collapsed,present); deduped
 def _flag_dpp_error(p,es,reason):
     sid=p.get('stable_player_id') or ('name:'+(p.get('player') or '?'))
@@ -140,8 +140,8 @@ def y0dpp_bar(p):
 # The rest entered with NO national slot -> their _eff (pick-equivalent) is derived empirically AFTER the PVC is built.
 PICKLESS={'SSP','MSD','IRE','UNR','PDA','PDN','PDS'}
 PMAX=0.25
-BETA_POS={'MID':1.10,'GEN_DEF':0.84,'GEN_FWD':0.98,'KEY_FWD':0.92,'KEY_DEF':0.63,'RUC':0.95}
-ICPT_POS={'MID':4.08,'GEN_DEF':1.92,'GEN_FWD':2.40,'KEY_FWD':1.58,'KEY_DEF':0.06,'RUC':2.79}
+BETA_POS={'MID':1.10,'SD':0.84,'SF':0.98,'KPF':0.92,'KPD':0.63,'RUCK':0.95}
+ICPT_POS={'MID':4.08,'SD':1.92,'SF':2.40,'KPF':1.58,'KPD':0.06,'RUCK':2.79}
 BUST_BAND={int(k):v for k,v in PMD['BUST_BAND'].items()}
 def norm(n): return " ".join(re.sub(r"[^a-z ]"," ",unidecode(n).lower()).split())
 def slug(n): return re.sub(r"[^a-z0-9]+","-",unidecode(n).lower()).strip('-')
@@ -360,7 +360,7 @@ _CAPT_OFF={'on':False}   # LEG B seg-3 captain-off pass: force capt_prem->0 to r
 def capt_prem(lev):
     if _CAPT_OFF['on']: return 0.0
     return _capt_ruled(lev) if _CAPT else _capt_saturating(lev)
-GRACE={'KEY_FWD':2.5,'KEY_DEF':2.5,'RUC':2.5,'MID':1.0,'GEN_DEF':1.0,'GEN_FWD':1.0}
+GRACE={'KPF':2.5,'KPD':2.5,'RUCK':2.5,'MID':1.0,'SD':1.0,'SF':1.0}
 LOS_C=0.16; LOS_P=1.82                 # progressive: gentle yr2 ~.85, steepening (yr3~.57 yr4~.31 yr5~.16)
 def los(p): return AGE_REF-p['year']
 def los_decay(p):
@@ -375,7 +375,7 @@ def level_stable(p):
         w=RW_S.get(r['year'],0)
         if w and r['games']>=2: n+=r['avg']*r['games']*w; d+=r['games']*w
     return n/d if d else None
-SPIKE_CAP={'KEY_DEF':0.60}             # position cap on improving-form confidence (default 0.83). KEY_DEF spikes empirically revert (study: ~0.55 retention vs ~0.84 elsewhere); back-test-validated. Knob: other positions overridable for research.
+SPIKE_CAP={'KPD':0.60}             # position cap on improving-form confidence (default 0.83). KPD spikes empirically revert (study: ~0.55 retention vs ~0.84 elsewhere); back-test-validated. Knob: other positions overridable for research.
 ROLE_HC_MAX=0.07                       # role-decay: max level haircut to a past-peak veteran whose current role+output have collapsed (filtered <3g season). Tuned so an O'Brien-class case lands ~1/3 down on value.
 _SG={}
 def _season_games():                   # games of the season leader in BASE_REF (season-progress proxy); robust as the year fills in
@@ -431,7 +431,7 @@ def level_demo(p):                     # demonstrated form at BASE_REF (the true
     _cfloor=min(lg,18)/(min(lg,18)+_pmass) if (min(lg,18)+_pmass)>0 else 0.0
     if growth>=0:                                            # improving: trust the rise but temper (don't fully chase a partial-season jump)
         conf=base*(1.0+growth/40.0); cap=SPIKE_CAP.get(GRP[p['pos']],0.83)
-        _gg=gfut(p)                                          # DPP STRIP: settled-future eligibility lifts the spike cap (was the dual-leg lift; Serong KDEF now-MID -> 0.83)
+        _gg=gfut(p)                                          # DPP STRIP: settled-future eligibility lifts the spike cap (was the dual-leg lift; Serong KPD now-MID -> 0.83)
         if _gg: cap=max(cap,SPIKE_CAP.get(_gg,0.83))
         conf=max(conf,_cfloor)                               # recency-floor (binds only when the recent season is under-trusted vs the prior)
     elif old:                                                # older decline: likely real -> trust recent
@@ -460,7 +460,7 @@ def latest_avg(p):
     sl=sorted([r for r in p['scoring'] if r['games']>=4],key=lambda r:r['year']); return sl[-1]['avg'] if sl else None
 def best2(p):
     d=debut(p); s=sorted([r['avg'] for r in p['scoring'] if r['games']>=7 and r['year']>=d],reverse=True)[:2]; return float(np.mean(s)) if s else 0
-REPL={'MID':80.1,'GEN_DEF':78.3,'RUC':78.5,'KEY_DEF':68.4,'GEN_FWD':70.9,'KEY_FWD':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, GDEF/MID 50/50 @4.16/5.20, KDEF@2.0, GFWD@4.0, KFWD@2.0, RUC@1.64  [BAKE 2026-07-04: KEY_FWD REPL-1, 67.8->66.8, owner dial]
+REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
 DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
 def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
 KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','0.85'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
@@ -556,7 +556,7 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         base=lev+capt_prem(lev)
         if k==0: prod+=posval(base-REPL[g0])*21/((1+d)**k)
         else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/((1+d)**k)
-    if g in('KEY_FWD','KEY_DEF'): prod*=1.05
+    if g in('KPF','KPD'): prod*=1.05
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
     return prod
 def prod_floor(p,lens='bal'):
@@ -592,16 +592,16 @@ def prod_floor(p,lens='bal'):
 # Feeds BOTH production (player_raw->proj_from_peak) and the pedestal's `relative`. Lazy-loaded: needs sklearn at
 # BUILD time only (shipped board is static HTML). Late-binds PVC (built at line ~503, after this def).
 _V4MODEL=None; _BUSTPT=None; _V4PVC=None
-_POSI={'MID':0,'GEN_DEF':1,'GEN_FWD':2,'KEY_DEF':3,'KEY_FWD':4,'RUC':5}
-V4_SPIKE_RETAIN={'KEY_DEF':0.69}   # cont.20: pull v4 spike-excess toward baseline for UNCONFIRMED KEY_DEF spikes (v4 over-trusts +0.28; level_now SPIKE_CAP can't reach the projection). Dial-able; KEY_FWD off by default.
+_POSI={'MID':0,'SD':1,'SF':2,'KPD':3,'KPF':4,'RUCK':5}
+V4_SPIKE_RETAIN={'KPD':0.69}   # cont.20: pull v4 spike-excess toward baseline for UNCONFIRMED KPD spikes (v4 over-trusts +0.28; level_now SPIKE_CAP can't reach the projection). Dial-able; KPF off by default.
 # cont.20: EXPLICIT unproven-floor (researched position x pick x tenure expected peak). Beats v4 on OUT-OF-SAMPLE
 # GROUP calibration (4.8 vs 6.0 weighted cell bias) — v4 systematically OVER-projects piners (MID +12, generals +5).
 # Blended into peak_est by games-played weight: unproven -> explicit floor; proven -> v4 (form). NOT double-count:
 # one peak estimate blended (not summed), and prod_floor independently protects demonstrated production.
-EXP_PEAK_BASE={'MID':60.5,'GEN_DEF':56.9,'GEN_FWD':49.6,'KEY_DEF':51.1,'KEY_FWD':44.7,'RUC':66.6}  # T=1 expected peak by pos (realised piner means)
-EXP_RETAIN={  # position-specific pining decay normalized to T1 (smoothed monotone from realised outcomes): RUC/KEY_DEF slow-burn, MID/fwds steeper
- 'RUC':[1.00,0.95,0.91,0.85],'KEY_DEF':[1.00,0.95,0.95,0.93],'MID':[1.00,0.92,0.83,0.65],
- 'GEN_DEF':[1.00,0.96,0.92,0.88],'GEN_FWD':[1.00,0.90,0.88,0.83],'KEY_FWD':[1.00,0.95,0.85,0.80]}
+EXP_PEAK_BASE={'MID':60.5,'SD':56.9,'SF':49.6,'KPD':51.1,'KPF':44.7,'RUCK':66.6}  # T=1 expected peak by pos (realised piner means)
+EXP_RETAIN={  # position-specific pining decay normalized to T1 (smoothed monotone from realised outcomes): RUCK/KPD slow-burn, MID/fwds steeper
+ 'RUCK':[1.00,0.95,0.91,0.85],'KPD':[1.00,0.95,0.95,0.93],'MID':[1.00,0.92,0.83,0.65],
+ 'SD':[1.00,0.96,0.92,0.88],'SF':[1.00,0.90,0.88,0.83],'KPF':[1.00,0.95,0.85,0.80]}
 EXP_PICK_SLOPE=-10.72; EXP_LOGREF=4.0073   # expected peak vs (log effpk - logref); negative = deeper pick projects lower
 EXP_BLEND_GAMES=45.0    # career games at which v4 (form) fully replaces the explicit floor (dial-able knob)
 def _explicit_peak(p,Y):
@@ -634,7 +634,7 @@ def _v4_feats(p,Y):
     return [np.log(_V4PVC[str(ep)]),ep,_POSI[pos],b2 or 0,b1 or 0,recent,la,lg,gg,nss,maxg,early,slope,ysb,_v4_age(p,Y),T,_v4_bp(pos,ep)]
 def _v4_draft_feat(p):
     pos=GRP[p['pos']]; ep=min(effpk(p),70); return [np.log(_V4PVC[str(ep)]),ep,_POSI[pos],0,0,0,0,0,0,0,0,0,0,0,_v4_age(p,debut(p)-1),0,_v4_bp(pos,ep)]
-def _v4_spike_guard(p,Y,pe):           # KEY_DEF spike caution on the PROJECTION (level_now SPIKE_CAP is a separate path)
+def _v4_spike_guard(p,Y,pe):           # KPD spike caution on the PROJECTION (level_now SPIKE_CAP is a separate path)
     r=V4_SPIKE_RETAIN.get(GRP.get(p['pos']))
     if not r: return pe
     ss=sorted([x for x in p['scoring'] if x['year']<=Y and x['games']>=6],key=lambda x:x['year'])
@@ -951,7 +951,7 @@ def established(p):                     # v3.4 establishment definition: 50 care
     cg=sum(r['games'] for r in p['scoring']); bg=max([r['games'] for r in p['scoring']],default=0)
     return cg>=50 and bg>=11
 def grp3(p):
-    _g=GRP.get(p['pos']); return 'RUC' if _g=='RUC' else ('KEY' if _g in('KEY_DEF','KEY_FWD') else 'GEN')
+    _g=GRP.get(p['pos']); return 'RUCK' if _g=='RUCK' else ('KEY' if _g in('KPD','KPF') else 'GEN')
 def _durable(p):
     ys=sorted(r['year'] for r in p['scoring'] if r['games']>=16)
     return any((y+1) in ys for y in ys)
@@ -961,7 +961,7 @@ def _recent_starter(p):
     return g25>=16 or g26>=9
 def brodie_sig(p):                      # Brodie role-reliability cut (ported onto the board 2026-06-21, was compute.py-only):
     ln=level_now(p)                     # non-ruck, 5+ seasons, NOT a recent starter, NEVER durable, level>=80 -> value x0.5
-    return (grp3(p)!='RUC' and seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and ln is not None and ln>=80)
+    return (grp3(p)!='RUCK' and seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and ln is not None and ln>=80)
 def value(p,lens='bal'):
     _pd={'balanced':'bal'}.get(lens,lens)   # LEG E: the POSTURE production dial. 'balanced'->'bal' (the exact byte-exact path); 'contender'/'rebuilder' price the SAME streams at their own discount d (weight-don't-gate); 'bal'/'now'/'fut' unchanged. Pedigree pedestals (unpl_eq/pedestal) are NOT re-discounted — a posture re-weights production STREAMS, not the pick pedestal.
     ep=effpk(p); b=bandof(ep); decu=los_decay(p)
@@ -976,7 +976,7 @@ def value(p,lens='bal'):
     prod_v=val(player_raw(p,_pd))*surv                        # LEG E: production priced at the posture dial (was hard-'bal'); balanced=='bal'=byte-exact
     relative=clamp((peak_est(p)/max(basepk_c(g,ep),40.0))**2.2, 0.40, 3.0)
     # out_tilt CUT (cont.21): audited redundant with v4 — corr(out_tilt_sig, realised-v4)=-0.05, marginal R2=+0.001, coef after v4=-0.04. Same form double-count as the removed survival(). relative stays at the v4 pedigree multiplier.
-    if g in('RUC','KEY_FWD','KEY_DEF') and age(p)<=22 and relative<1.0:   # v3.4 relative-floor: young key-pos debut can't drag the pedestal below the clean pick baseline; YEAR-SCALED (more chances seen -> less lift)
+    if g in('RUCK','KPF','KPD') and age(p)<=22 and relative<1.0:   # v3.4 relative-floor: young key-pos debut can't drag the pedestal below the clean pick baseline; YEAR-SCALED (more chances seen -> less lift)
         _sc={1:1.0,2:0.8,3:0.5,4:0.2}.get(2026-p['year'],0.0); relative=relative+_sc*(1.0-relative)
     decay=max(0.0,1-(seasons(p)-1)/4.5)
     decay_eff = decay if Pz is None else min(decay, Pz)   # v3.4: establishment-P only ever PULLS DOWN (min) on the pedigree track; established players P=1 -> min=decay, untouched

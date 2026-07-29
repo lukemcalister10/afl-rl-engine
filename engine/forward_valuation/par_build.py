@@ -5,7 +5,7 @@ par(pos, pick, tenure) = level_pos(log-pick)  +  ramp_pos(tenure)     [additive;
   - "on the park" = games_at_tenure >= f * base_play_rate(pos,tenure)   (base-rate-relative, NOT flat >=6g)
   - level: local-LINEAR kernel regression over log(pick), tricube, bandwidth H_LOGPICK
   - ramp: fit SEPARATELY per position via additive backfitting (shares strength across both axes),
-          then SHRUNK toward the global ramp via n/(n+k) for thin positions (RUC/KPP)
+          then SHRUNK toward the global ramp via n/(n+k) for thin positions (RUCK/KPP)
   - cohort: DRAFT 2003-2018 (locked Decision A)
 
 Run: cd /home/claude/rl_after && PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RECENCY_DECAY=0.72 \
@@ -31,7 +31,7 @@ MIN_GAMES  = float(os.environ.get('PAR_MING', '6'))     # par gate = flat >=6g a
 SHRINK_K   = float(os.environ.get('PAR_K',     '30'))    # ramp shrinkage n/(n+k) toward global
 TEN_MAX    = 6
 DRAFT_LO, DRAFT_HI = 2003, 2018
-GROUPS = ['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']
+GROUPS = ['MID','SD','SF','KPD','KPF','RUCK']
 EVAL_PICKS = [1,3,5,8,12,20,30,45,60]
 
 def draftyr(p): return CP.debutyr(p) - 1
@@ -166,7 +166,7 @@ def fit():
         if lf is None: level_grid[g] = None; continue
         raw = [loclin(np.log(pk), lf[0], lf[1], H_LOGPICK) for pk in PKGRID]
         ys = np.array([r[0] for r in raw]); es = np.array([max(r[1],0.5) for r in raw])
-        ok = np.isfinite(ys)                               # nan-fill empty cells (e.g. RUC pk3) before isotonic
+        ok = np.isfinite(ys)                               # nan-fill empty cells (e.g. RUCK pk3) before isotonic
         if ok.any() and not ok.all():
             ys = np.interp(np.arange(len(ys)), np.where(ok)[0], ys[ok])
         ys_mono = _pava(ys, es, increasing=False)          # non-increasing in pick
@@ -245,7 +245,7 @@ if __name__ == '__main__':
 
     print("\n=== E. assembled par(pos,pick,tenure) — sample cells ===")
     print("  pos        pk |  yr1   yr2   yr3   yr4   yr5")
-    for g,pk in [('MID',7),('MID',1),('GEN_DEF',14),('KEY_DEF',8),('KEY_FWD',4),('RUC',20),('GEN_FWD',12)]:
+    for g,pk in [('MID',7),('MID',1),('SD',14),('KPD',8),('KPF',4),('RUCK',20),('SF',12)]:
         print(f"  {g:9s} {pk:2d} | " + " ".join(f"{par_at(F,g,pk,T):5.1f}" for T in range(1,6)))
 
     print("\n=== F. ANCHOR RECONCILIATION — MID yr1, picks 1-8 should ~= 66 (cont.26 §2) ===")

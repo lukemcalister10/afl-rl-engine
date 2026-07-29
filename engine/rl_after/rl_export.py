@@ -296,7 +296,7 @@ def player_rec(p):
             'levers':_levers_by_key.get(p['key']),                   # per-lever G-ATTR cumulative deltas {L1,L4,L2,L3,L5} (sum == v-vPrev); None if attribution sidecar absent
             'P':1.0,   # establishment prob, FROZEN (draft-cohort property, not the SuperCoach toggle); 1.0 = established/inert
             'pedOnly':bool(p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly'))),   # pure-pedigree no-P case (genuine pre-debut); in-window 0-game players are NOT pedOnly -> they get P
-            'brodieBase':bool(seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and (level_now(p) is not None) and level_now(p)>=80),  # Brodie signal minus the RUC bit (JS applies RUC exemption live)
+            'brodieBase':bool(seasons(p)>=5 and not _durable(p) and not _recent_starter(p) and (level_now(p) is not None) and level_now(p)>=80),  # Brodie signal minus the RUCK bit (JS applies RUCK exemption live)
             'cat':p.get('_cat'),'draft':p.get('_draft'),'club':p.get('afl_club') or p.get('_draft_club'),'mech':mech}
             # (d) shipped `club` = the CURRENT AFL club (afl_club, imported item 20b), with a _draft_club fall-back
             # for retired back-catalogue rows that carry no current club (never in the active player-ranking the

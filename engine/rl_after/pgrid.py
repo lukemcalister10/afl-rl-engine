@@ -1,6 +1,6 @@
 """Smoothed, position-aware establishment surface (2026-06-18 redesign; decoupled from rl_model 2026-06-21).
 Replaces the coarse hand-banded grid + credibility blend. Monotone (rises in games, falls in years);
-KEY/RUC keep OWN shapes partially pooled toward GEN by sample size. Year-ordinal = season number
+KEY/RUCK keep OWN shapes partially pooled toward GEN by sample size. Year-ordinal = season number
 (1 = debut season). The caller INJECTS data via build(data, GRP, debut) -> no rl_model import (was a cycle)."""
 import numpy as _np
 
@@ -18,7 +18,7 @@ def band(G):
     if G<41: return 6
     return 7
 def ybucket(Y): return min(max(int(Y),1),NY)
-POOL_K = 10.0          # KEY/RUC own-weight = n/(n+K)
+POOL_K = 10.0          # KEY/RUCK own-weight = n/(n+K)
 FLOOR_41 = 0.93        # 41+ cumulative games => essentially established
 
 def _wpava(vals,wts,incr=True):
@@ -52,13 +52,13 @@ def build(data, GRP, debut):
     """Build the establishment surface from the MATURE cohort (ND/RD, debut<=2019) in the caller's data."""
     global GRID,_XK,_GRIDx,_BUILT
     def grp3(p):
-        g=GRP.get(p['pos']); return 'RUC' if g=='RUC' else ('KEY' if g in('KEY_DEF','KEY_FWD') else 'GEN')
+        g=GRP.get(p['pos']); return 'RUCK' if g=='RUCK' else ('KEY' if g in('KPD','KPF') else 'GEN')
     def est(p):
         cg=sum(r['games'] for r in p['scoring']); bg=max([r['games'] for r in p['scoring']],default=0)
         return cg>=50 and bg>=11
     def gthru(p,S):
         d=debut(p); return sum(r['games'] for r in p['scoring'] if d<=r['year']<d+S)
-    _raw={g:[[[0,0] for _ in range(NB)] for _ in range(NY)] for g in ('GEN','KEY','RUC')}
+    _raw={g:[[[0,0] for _ in range(NB)] for _ in range(NY)] for g in ('GEN','KEY','RUCK')}
     _bgames=[[0.0,0] for _ in range(NB)]
     for p in data:
         if p['pos'] not in GRP: continue
@@ -73,7 +73,7 @@ def build(data, GRP, debut):
         W=[[float(_raw[g3][y][b][1]) for b in range(NB)] for y in range(NY)]
         return M,W
     _gM,_gW=_mat('GEN'); GEN=_smooth(_gM,_gW); GRID={'GEN':GEN}
-    for g3 in ('KEY','RUC'):
+    for g3 in ('KEY','RUCK'):
         M,W=_mat(g3); MP=[[0.0]*NB for _ in range(NY)]; WP=[[0.0]*NB for _ in range(NY)]
         for y in range(NY):
             for b in range(NB):

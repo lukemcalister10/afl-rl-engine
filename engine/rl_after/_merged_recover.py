@@ -129,8 +129,8 @@ def _fEy(Y,p=None):
     return 1.0
 def _playable(p,Y):                                           # full-season-equivalent games playable since debut
     return cp.SEASON*(max(0,Y-cp.debutyr(p))+(_fEy(Y,p) if Y>=cp.debutyr(p) else 0.0))
-# STEP-3 CALIBRATION WIRED 2026-06-30 (candidate): per-group LDECAY + FLAT_TOL (KEY / GEN / MID+RUC)
-def _ldg(pos): return 'KEY' if pos in ('KEY_FWD','KEY_DEF') else ('GEN' if pos in ('GEN_FWD','GEN_DEF') else 'MR')
+# STEP-3 CALIBRATION WIRED 2026-06-30 (candidate): per-group LDECAY + FLAT_TOL (KEY / GEN / MID+RUCK)
+def _ldg(pos): return 'KEY' if pos in ('KPF','KPD') else ('GEN' if pos in ('SF','SD') else 'MR')
 LDECAY_G={'KEY':0.40,'GEN':0.35,'MR':0.225}; FLAT_TOL_G={'KEY':10.3,'GEN':12.0,'MR':14.0}
 # DECLINER SHED 2026-06-30 (candidate): DERIVED from realised forward output of established decliners (drop>3).
 #   recovery~0 beyond ~3 SC drop (forward stays at declined current); age accelerates forward BELOW current.
@@ -147,7 +147,7 @@ DOWN_TOL=3.0   # down-side hold band (data: recovery~0 beyond ~3); ASYMMETRIC vs
 #   _agemult(age) + UP-ONLY credit bump _fbump(age,lcr): bump = kernel-smoothed E[max(0, r - _agemult(age))]
 #   (2-D adaptive Gaussian bw grown to eff-n>=35 per node; all cells eff-n>=40 so the declared thin-cell
 #   shrink-to-1D-prior stayed inert), isotonic non-decreasing in lcr / non-increasing in age; positions POOLED
-#   (predecessor: position ~uniform; RUC thinnest — DECLARED).
+#   (predecessor: position ~uniform; RUCK thinnest — DECLARED).
 #   SINGLE-LEVER SAFETY: (i) lcr<=0 -> byte-exact _agemult (every below-replacement fader still falls; e.g.
 #   Coniglio/Adams/Blicavs Δ=0); (ii) up-only -> the curve never sheds MORE than the age baseline (no down-mover);
 #   (iii) reached ONLY on the shed down-branch, so every non-shed player is Δ=0 by construction.
@@ -391,7 +391,7 @@ _POLE={}
 def par_pole(pos,pk,T):
     k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)))
     if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
-    _SCALE={'MID':1.19,'GEN_FWD':0.93,'KEY_FWD':0.95,'GEN_DEF':1.08,'KEY_DEF':1.05,'RUC':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
+    _SCALE={'MID':1.19,'SF':0.93,'KPF':0.95,'SD':1.08,'KPD':1.05,'RUCK':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
 # ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
 # v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
@@ -458,7 +458,7 @@ def raw_ev(p,Y=2026):
         T=min(max(PR.tenure(p,_fa_year(Y)),1),6)
         et=min(max(eff_ten(p,_fa_year(Y), PR.tenure(p,_fa_year(Y))),1),6)             # STEP1: developmental tenure off original PR.tenure base
         po,par=par_pole(pos,pk,T); a=MA.age(p)
-        wage=0.0 if pos=='RUC' else float(np.clip(1-((a or 21)-20)/6,0,1))
+        wage=0.0 if pos=='RUCK' else float(np.clip(1-((a or 21)-20)/6,0,1))
         tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
         w=wage*tfade*expgate
@@ -483,7 +483,7 @@ _ISOFADE_TAU=_EVW_TAU                                         # =1.1: THE fade p
 _REAL=set(p['key'] for p in MA.data)
 def _isreal(p): return p.get('key') in _REAL
 PICKS=list(range(1,71)); ISO={}
-for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:
+for pos in ['MID','SF','KPF','SD','KPD','RUCK']:
     raw=np.array([raw_ev(synth(pk,PR.par_at(pos,min(pk,cp.KMAX),4),pos)) for pk in PICKS])
     iso=IsotonicRegression(increasing=False).fit_transform(PICKS,raw)        # monotone non-increasing in pick#
     ISO[pos]=(np.array(PICKS),np.maximum(iso,raw*0)+ (iso-raw>=0)*(iso-raw))  # iso is the guarded floor; correction additive where iso>raw
@@ -495,7 +495,7 @@ def iso_eff(p,Y=2026):                                        # LEG A (b): per-R
     base=iso_corr(MA.gfut(p),MA.effpk(p))
     if not _ISOFADE or not _isreal(p): return base            # switch off, or a synth (structural scaffold; zero-evidence convention) => raw/monotonized table, unfaded
     return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)
-for _pp in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF','RUC']:   # STEP1: FREEZE pole table on ORIGINAL features
+for _pp in ['MID','SF','KPF','SD','KPD','RUCK']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
         for _T in range(1,7): par_pole(_pp,_pk,_T)
 # ==== M1 + v7-asc (BAKE CANDIDATE v2, D7 02/07/2026 — Luke-ruled config; NOT baked until Luke's bake word) ====
@@ -611,7 +611,7 @@ def _v7(bb,p,Y):
             asc=asc+(1.0-asc)*_phi
     bb[5]=m+asc*(bb[5]-m); return bb
 # STABLE-KEY REAL-membership (F1 fix 2026-07-05, Luke one-source rewire). The _REAL gate decides which players
-# receive the engine's real-store layers (RUC prior cap :317/:492, v7 age-taper :198, B5 floor :552). It is now
+# receive the engine's real-store layers (RUCK prior cap :317/:492, v7 age-taper :198, B5 floor :552). It is now
 # keyed on the STABLE player key, NOT id(p) -- so the layers fire regardless of which module instance or object
 # copy is priced. (The shipped-board bug: rl_export exec'd a 2nd rl_model instance, so id(p) matched 0/805 and
 # every real-store layer was silently dropped, over-pricing ~2/3 of the board.) Synths (no 'key') never match;
@@ -754,7 +754,7 @@ cp._age_asof=_m3_age_asof; MA.age=_m3_age; PR.tenure=_m3_ten; cp._feat=_m3_feat
 # RUNWAY (the survivor reward is not priced forward into year 1), and the established mid-cohort is over-
 # weighted between them. RECALIBRATION = a FORM-CONDITIONED (never age-keyed) weight W(k) on the year-k term:
 #   PROVEN (nqual>=4):  W(k) = 1 + CRED·kpf_up·g(m)·dur·sh·c_near(k)  −  FADE·(1−g(m))·h_far(k)
-#   then ×(1 − OVPX·ovpx)   [deep-pick GEN_FWD 41-70 over-optimism compress — the ONE owner-agreed #43 flag;
+#   then ×(1 − OVPX·ovpx)   [deep-pick SF 41-70 over-optimism compress — the ONE owner-agreed #43 flag;
 #                            MID 1-3 (2.09) deliberately NOT touched — stays FLAGGED for owner ruling]
 # with m = Lc − REPL[pos] (the same conditioning variable as the #45 shed), g(m)=clip((m−6)/22,0,1),
 # dur = games(Y−2..Y)/28 clipped, sh = 1−clip((Lo−Lc−3)/5,0,1) (decline gate, mirrors the shed switch),
@@ -787,9 +787,9 @@ W4_CRED=float(os.environ.get('RL_W4_CRED','0.17'))        # proven-elite present
 W4_KPFUP=float(os.environ.get('RL_W4_KPFUP','1.6'))       # KPF reward multiplier on the margin credit (low-REPL bar leverage)
 W4_FADE=float(os.environ.get('RL_W4_FADE','0.60'))        # moderate-margin established far-year fade (the funding leg; age-ramped 23->26 so young proven keep their prime years)
 W4_OVPX=float(os.environ.get('RL_W4_OVPX','1.0'))         # global scale on the deep-pick over-optimism compress (per-pos depths below)
-W4_OVPX_D={'GEN_FWD':0.12,'GEN_DEF':0.09,'MID':0.07}      # #43-measured deep-pick (41-70) coverage excess: 2.14 / 1.70 / 1.55 -> partial, data-earned compress; smooth in pick 38->46, thin-career only. MID 1-3 (2.09) NOT touched (owner-flagged).
+W4_OVPX_D={'SF':0.12,'SD':0.09,'MID':0.07}      # #43-measured deep-pick (41-70) coverage excess: 2.14 / 1.70 / 1.55 -> partial, data-earned compress; smooth in pick 38->46, thin-career only. MID 1-3 (2.09) NOT touched (owner-flagged).
 W4_KPFSH=float(os.environ.get('RL_W4_KPFSH','0.55'))      # established-KPF LOOSE-residual retention (the slice ABOVE all demonstration since the 2026-07-09 rebalance; was the whole residual)
-# ==== KPF REBALANCE 2026-07-09 (pre-bake, owner-directed) — three KEY_FWD-scoped reshapes ==================
+# ==== KPF REBALANCE 2026-07-09 (pre-bake, owner-directed) — three KPF-scoped reshapes ==================
 # OWNER RULING (verbatim): "slightly reducing the valuation of speculative key forwards, and slightly raising
 # the valuation of production, especially the ones who are top tier scorers". Mechanisms, never per-player.
 # (T1) DEMONSTRATION-KEYED RETENTION: the KPFFIX compress no longer treats the whole above-eP residual as
@@ -801,17 +801,17 @@ W4_KPFSH=float(os.environ.get('RL_W4_KPFSH','0.55'))      # established-KPF LOOS
 #   because eD already prices LD through the engine's age/horizon machinery — DECLARED double-count
 #   avoidance). The slice BEYOND all demonstration keeps the settled T1-shape 0.55 (measured loose:
 #   E[max(fwd−LD,0)]=2.06 vs 4.2-4.6 beyond current). Never touches young/speculative (gates unchanged).
-# (T2) TOP-TIER PRODUCTION REWARD (the concave regime, KEY_FWD cells): (i) the credit ramp for KEY_FWD keys
+# (T2) TOP-TIER PRODUCTION REWARD (the concave regime, KPF cells): (i) the credit ramp for KPF keys
 #   on dm = max(m, LD−REPL) — sustained demonstrated margin, so a recency-dipped top-tier scorer is not
 #   zeroed — with the regime start/span rescaled by the measured KPF spread leverage (CV spread-ratio
 #   6.57/4.17 = 1.575, the SETTLED #9 measurement that motivated KPFFIX): 10/1.575=6.35, 20/1.575=12.70.
 #   (ii) a top-tier segment on the reward multiplier: kpfup(dm) = W4_KPFUP + KPFTOP·clip((dm−8)/16, 0, 1) —
 #   the regime stays concave (saturating), the plateau rises for genuine top-tier scorers (saturation ≈ the
-#   established-KPF 90th-pctile dm). (iii) PARTIAL-PROVEN KPF top-tier credit: a KEY_FWD with 2≤nqual<4 and
+#   established-KPF 90th-pctile dm). (iii) PARTIAL-PROVEN KPF top-tier credit: a KPF with 2≤nqual<4 and
 #   top-tier SUSTAINED demonstration earns the same credit scaled c=n/PROVEN_N (the engine's standing
 #   partial-evidence convention), NO fade (F-YOUNG: the fade never reaches the young). One-season wonders
 #   (nqual<2 or <2 high-games seasons) earn nothing — demonstration-earned only.
-# (T3) SPECULATIVE TRIM: the L1c young credit's KEY_FWD cell intensity is scaled RL_YCRED_KPF=0.92 (slight,
+# (T3) SPECULATIVE TRIM: the L1c young credit's KPF cell intensity is scaled RL_YCRED_KPF=0.92 (slight,
 #   owner's word; denominator cost measured and reported in the build artifacts). Lives on the RL_YOUNG lever.
 # KILL-SWITCHES: T1+T2 ride RL_KPFFIX (=0 ⇒ legacy flat-0.55 compress shape? NO — =0 ⇒ NO compress and the
 #   legacy m-keyed ramp + flat KPFUP, byte-exact to the pre-rebalance KPFFIX-off path); T3 rides RL_YOUNG.
@@ -858,7 +858,7 @@ def _w4_ctx(p,Y):
     _rh=p.get('_lti_ret_hc',0.0)
     if _LTI_RETURN_ON and _rh>0:
         ctx['ret_hc']=float(_rh); ctx['ret_k']=int(p.get('_lti_ret_year',2027))-int(Y)   # k offset from THIS eval year (deterministic; not global BASE_REF)
-    _kpf_reb=_W4KPF and pos=='KEY_FWD'                         # KPF REBALANCE T2 coordinates active
+    _kpf_reb=_W4KPF and pos=='KPF'                         # KPF REBALANCE T2 coordinates active
     _partial=False
     if _kpf_reb and 2<=n<PROVEN_N:                             # partial-proven KPF: top-tier sustained demonstration only
         _LDp=_kpf_LD(p,Y)
@@ -893,10 +893,10 @@ def _w4_ctx(p,Y):
 def _w4_W(k,ctx):
     W=1.0
     if _W4FWD and ctx.get('cw',0.0)>0.0:
-            # KPF REBALANCE T2: kpfup(dm) = base + top-tier segment (KEY_FWD under RL_KPFFIX only); the
+            # KPF REBALANCE T2: kpfup(dm) = base + top-tier segment (KPF under RL_KPFFIX only); the
             # credit scales by cw (1.0 proven; n/4 partial-proven KPF). The FADE stays PROVEN-gated — the
             # funding leg never reaches a partial-proven young KPF (F-YOUNG).
-            up=W4_CRED*((W4_KPFUP+W4_KPFTOP*ctx.get('kt',0.0)) if (_W4KPF and ctx['pos']=='KEY_FWD') else 1.0)
+            up=W4_CRED*((W4_KPFUP+W4_KPFTOP*ctx.get('kt',0.0)) if (_W4KPF and ctx['pos']=='KPF') else 1.0)
             W+=ctx['cw']*up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
             if ctx.get('n',0)>=PROVEN_N:
                 W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
@@ -926,7 +926,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         Wk=_w4_W(k,ctx)
         if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
         else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
-    if g in('KEY_FWD','KEY_DEF'): prod*=1.05
+    if g in('KPF','KPD'): prod*=1.05
     runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
 MA.proj_from_peak=_proj_w4
@@ -988,15 +988,15 @@ MA.prod_floor=_prod_floor_w4
 # C+2 ≤ T (derive_ycred.py, committed) — the credit applied at year T uses data ≤ T. Years before the first
 # table (min 2 observable classes, 2007) earn ZERO credit — declared conservatism, leak-free.
 # CLIP R ≥ 0: fix direction = raise year-1, NEVER cut young/survivors/denominator members; measured-negative
-# stretches (GEN_FWD/played, RUC/sat — census tension report) are reported, not shipped as cuts.
-# SCOPE: real in-curve (ND/RD) picked store players — synths carry no key and delegate byte-exact; the RUC
+# stretches (SF/played, RUCK/sat — census tension report) are reported, not shipped as cuts.
+# SCOPE: real in-curve (ND/RD) picked store players — synths carry no key and delegate byte-exact; the RUCK
 # prior cap (ASK1) still binds ABOVE the credited V0 where hot (declared: the cap is out-of-scope machinery;
 # capped rucks keep the cap — visible in the Goad/Green named-player rows of the owner w-table).
 # KILL-SWITCH: RL_YOUNG (existing family member, meaning re-pointed to L1c; the old runway leg is DELETED
 # above, never stacked). RL_YOUNG=0 ⇒ multiplier is EXACTLY 1.0 ⇒ byte-exact; ALL-OFF ⇒ byte-exact v2.5.
 # Table absent while RL_YOUNG=1 ⇒ HALT (halt-not-warn, guard-family behavior).
 _YC_W=float(os.environ.get('RL_YCRED_W','0.9'))               # owner dial: fraction of the measured re-rating paid forward — OWNER-RULED 0.9 (2026-07-08, on the W-TABLE; 0.7 was the pre-ruling shipped default)
-_YC_KPF=float(os.environ.get('RL_YCRED_KPF','0.92'))          # KPF REBALANCE T3 (2026-07-09): SLIGHT speculative-KPF trim — KEY_FWD cell intensity ×0.92 (owner's "slight"; F-YOUNG honored — no wipe; denominator cost measured in the build artifacts). Rides RL_YOUNG.
+_YC_KPF=float(os.environ.get('RL_YCRED_KPF','0.92'))          # KPF REBALANCE T3 (2026-07-09): SLIGHT speculative-KPF trim — KPF cell intensity ×0.92 (owner's "slight"; F-YOUNG honored — no wipe; denominator cost measured in the build artifacts). Rides RL_YOUNG.
 _YC_TAB=None; _YC_LGRID=None; _YC_G0=46.0; _YC_TMIN=2007; _YC_TMAX=2026
 if _W4YNG:
     import json as _ycjson
@@ -1035,7 +1035,7 @@ def _ycred_mult(p,Y):
     Rs=float(np.interp(lp,_YC_LGRID,row['1'])); Rp=float(np.interp(lp,_YC_LGRID,row['0']))
     s=min(g/6.0,1.0)                                          # smooth sat->played blend over the first 6 games (no first-game cliff)
     R=max((1.0-s)*Rs+s*Rp,0.0)                                # clip >= 0 (fix direction; tension reported in the census)
-    if MA.gfut(p)=='KEY_FWD': R*=_YC_KPF                      # T3 KPF REBALANCE: slight KEY_FWD cell-intensity trim (continuous — a pure scale introduces no cliff on any axis)
+    if MA.gfut(p)=='KPF': R*=_YC_KPF                      # T3 KPF REBALANCE: slight KPF cell-intensity trim (continuous — a pure scale introduces no cliff on any axis)
     phi=(1.0-g/_YC_G0)**2                                     # full at zero evidence; C1 landing at G0
     return 1.0+_YC_W*R*phi
 _raw_ev_w4_0=raw_ev
@@ -1085,13 +1085,13 @@ def nseas_pro(p,Y=2026):                                      # D10: qualificati
 #     information — Luke 2d). A lambda-side quality term was tested and NOT supported at finest
 #     resolution (partial tau +0.04, non-monotone across q bins, n=364) — DECLARED, not wired.
 #   POSITION BASIS preserved end-to-end: V0 and e_full both carry the band's position adjustment;
-#     classes RUC/KPP/nonKPP for R_SIT only, with the RUC retention SHAPE pooled with KPP (thin bimodal
-#     slice, n=270 cells) scaled to RUC's own measured d1-2 level x1.065 — DECLARED pooling.
-# D13 ASK3 03/07/2026 — R_SIT (depth-only, per class, RUC-shape-pooled-with-KPP) is SUPERSEDED by the
+#     classes RUCK/KPP/nonKPP for R_SIT only, with the RUCK retention SHAPE pooled with KPP (thin bimodal
+#     slice, n=270 cells) scaled to RUCK's own measured d1-2 level x1.065 — DECLARED pooling.
+# D13 ASK3 03/07/2026 — R_SIT (depth-only, per class, RUCK-shape-pooled-with-KPP) is SUPERSEDED by the
 # continuous log-pick x depth surface R_SURF below (obituary E4: BOARD_LAYERS_OBITUARY.md). The old table
 # VIOLATED Luke's signed law (nonKPP rose d3->d5 .410->.437; KPP rose d5->d6 .253->.266 — a sitter gained
 # value by sitting). Resurrection ref: git show af1fc6aa's _merged_recover.py. Old table (for the record):
-#   R_SIT={'nonKPP':[.429,.404,.410,.432,.437,.424],'KPP':[.468,.380,.325,.278,.253,.266],'RUC':[.674,.547,.503,.472,.435,.435]}
+#   R_SIT={'nonKPP':[.429,.404,.410,.432,.437,.424],'KPP':[.468,.380,.325,.278,.253,.266],'RUCK':[.674,.547,.503,.472,.435,.435]}
 # ===== RETENTION SURFACE (D13 ASK3) — re-derived at finest supported resolution =====
 # R(cls, log-pick, depth) = kernel-smoothed sit-out realization r=O/V0 (winsor 2.0, Gaussian bw grown until
 # eff-n>=35) / same-depth all-draftee daEV norm (per class; strips survivor selection, rises 0.44->1.11 w/
@@ -1103,7 +1103,7 @@ def nseas_pro(p,Y=2026):                                      # D10: qualificati
 # preserves depth-monotonicity (convex comb of non-increasing vectors). Deep KPP d4-6 pooled (thin, DECLARED).
 R_SURF={'nonKPP':{5:[0.547,0.446,0.446,0.446,0.446,0.314], 15:[0.707,0.479,0.479,0.479,0.479,0.307], 30:[0.649,0.436,0.422,0.414,0.414,0.303], 50:[0.549,0.388,0.345,0.239,0.164,0.164]},
         'KPP':{5:[0.660,0.487,0.387,0.194,0.183,0.183], 15:[0.694,0.427,0.273,0.136,0.136,0.136], 30:[0.632,0.383,0.286,0.180,0.172,0.172], 50:[0.642,0.407,0.351,0.334,0.334,0.329]},
-        'RUC':{5:[1.000,0.715,0.670,0.562,0.535,0.467], 15:[0.851,0.597,0.597,0.520,0.520,0.468], 30:[0.830,0.616,0.616,0.607,0.540,0.469], 50:[0.781,0.594,0.594,0.594,0.541,0.470]}}
+        'RUCK':{5:[1.000,0.715,0.670,0.562,0.535,0.467], 15:[0.851,0.597,0.597,0.520,0.520,0.468], 30:[0.830,0.616,0.616,0.607,0.540,0.469], 50:[0.781,0.594,0.594,0.594,0.541,0.470]}}
 _RS_KNOTS=[5,15,30,50]; _RS_LOGK=[np.log(k) for k in _RS_KNOTS]
 # _BOARD_PATH: True on the live board render (present/forward valuation). The BACKTEST/WALK-FORWARD harnesses
 # set g['_BOARD_PATH']=False after exec so Luke's D14 board-only laws (KPP retention floor O1 below; V0 curve
@@ -1116,7 +1116,7 @@ def _R_surf(cls,pick,tau):                                   # interp over log-p
     # ==== D14 ASK2 (03/07/2026) — KPP RETENTION FLOOR (SIGNED OWNER OVERRIDE O1, Luke verbatim: "if it's lower,
     # it's carried so it can never be the lowest ... I can't see KPPs losing value for sitting at a faster rate
     # than non KPPs"). Wired KPP sit-out retention surface := pointwise MAX(KPP, nonKPP) at every (log-pick,depth).
-    # Comparator = nonKPP ONLY (RUC EXCLUDED — own capped machinery; supervisor spec, stated to Luke pre-fire).
+    # Comparator = nonKPP ONLY (RUCK EXCLUDED — own capped machinery; supervisor spec, stated to Luke pre-fire).
     # BOARD PATH ONLY (O1 scope). max() of two isotonic-non-increasing-in-depth vectors is non-increasing (re-
     # verified numerically in _v0_curve_assert). OWNER-SET where the floor binds, data-derived elsewhere. Governance:
     # docs/process/OWNER_OVERRIDES.md O1; obituary/registration BOARD_LAYERS_OBITUARY.md.
@@ -1124,10 +1124,10 @@ def _R_surf(cls,pick,tau):                                   # interp over log-p
         dvn=_dv_surf('nonKPP',lp); dv=[max(a,b) for a,b in zip(dv,dvn)]
     return float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+dv))
 LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
-def _sitout_cls(pos): return 'RUC' if pos=='RUC' else ('KPP' if pos in ('KEY_FWD','KEY_DEF') else 'nonKPP')
-# ==== ASK1 (D13 03/07/2026): RUC PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
+def _sitout_cls(pos): return 'RUCK' if pos=='RUCK' else ('KPP' if pos in ('KPF','KPD') else 'nonKPP')
+# ==== ASK1 (D13 03/07/2026): RUCK PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
 # dial RL_RUC_PRIOR_CAP; DEFAULT 1.73 = the class's own ND-ruck median V0/PVC (Luke's inclination, D13 ASK1:
-# "I'd be inclined to just cap ruck prior at the 1.73 median"). Sits at the raw_ev/band level (for RUC wage=0
+# "I'd be inclined to just cap ruck prior at the 1.73 median"). Sits at the raw_ev/band level (for RUCK wage=0
 # so raw_ev==the band price) so it flows into V0, the sit-out blend, the floor and the prior-dominated
 # production path — NOT a display-stage V0 clamp (D12: Emmett's board value is blend-fed by the prior). Scope:
 # REAL rucks only (synth ISO/POLE tables untouched). The pure prior V0 is capped unconditionally (min binds
@@ -1148,7 +1148,7 @@ RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default 
 #   keep the prior cap (RUC_PRIOR_CAP x PVC). V0 draft-prior/floor SCAFFOLD byte-identical (PR #44 scope).
 # W4 EXTENSION — YOUNG-RUCK HEADROOM as a SMOOTH function of pick x age (owner's wide-band objection to the
 # audit's hard pk1-20 cell; #43 measured the young-ruck convexity coverage 0.61-0.73 = the one genuinely
-# UNDER-priced young pocket, while RUC 21-40 is over (1.59) so the fade is OUT by pick ~30):
+# UNDER-priced young pocket, while RUCK 21-40 is over (1.59) so the fade is OUT by pick ~30):
 #   _ruc_head_mult(p) = 1 + YRH * interp(pk,[1,4,18,30],[0.7,1,1,0]) * clip((25-age)/4,0,1)
 # applied to BOTH cap paths (production ceiling AND the no-production prior cap) so the fade has no cliff in
 # pick, age, or the production/no-production seam. YRH dial: RL_RUC_YRH (default 0.35); RL_W4_RUC=0 -> byte-
@@ -1161,7 +1161,7 @@ _RUCCEIL={}; _RUCCEIL_META={}
 def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: era-adj peak avg -> ruck price
     avs=list(np.linspace(15.0,150.0,46))
     def _sp(a):
-        sp=synth(int(RUC_CEIL_REFPK),float(a),'RUC')
+        sp=synth(int(RUC_CEIL_REFPK),float(a),'RUCK')
         with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_eff(sp)   # LEG A site 2/6 (synth: iso_eff returns the monotonized table unfaded — structural scaffold)
     ys=[_sp(a) for a in avs]
     for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
@@ -1181,7 +1181,7 @@ def _ruc_ceiling(p,Y=2026):                                   # production-deriv
     if 'grid' not in _RUCCEIL: _build_ruc_ceiling()
     xg,yg=_RUCCEIL['grid']; return RUC_CEIL_HEAD*float(np.interp(s,xg,yg))*_ruc_head_mult(p,Y)
 def _ruc_prior_cap(p,v):                                      # V0 PRIOR SCAFFOLD cap — PR #44 kept this byte-identical; W4 DELIBERATELY extends it with the smooth young-pick headroom (the #43 under-priced pocket lives in the V0-anchored sit-out young rucks: Goad/Green class), draft-age keyed
-    return min(v, RUC_PRIOR_CAP*draftval(p)*_ruc_head_v0(p)) if (_isreal(p) and MA.gfut(p)=='RUC') else v
+    return min(v, RUC_PRIOR_CAP*draftval(p)*_ruc_head_v0(p)) if (_isreal(p) and MA.gfut(p)=='RUCK') else v
 _V0C={}; _V0U={}
 _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
                               # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
@@ -1189,7 +1189,7 @@ _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time mo
                               # zero-evidence start value stays fold-stable instead of reading prior-training
                               # variance as phantom leakage at T0/T1 cells.
 def _v0key(p): return (p.get('player'),p.get('year'),p.get('pick'),p.get('type'),p.get('dob'),MA.gfut(p),MA.effpk(p))
-def _v0_uncapped(p):                                          # zero-evidence band start value — NO ruc cap, NO guard (RUC gate + guard-build use this)
+def _v0_uncapped(p):                                          # zero-evidence band start value — NO ruc cap, NO guard (RUCK gate + guard-build use this)
     # cache key = STABLE CONTENT, not id(p): harnesses that deepcopy players (gate1 truncations) recycle
     # memory addresses; V0's inputs are all draft-time content -> same content, same V0.
     k=_v0key(p)
@@ -1199,7 +1199,7 @@ def _v0_uncapped(p):                                          # zero-evidence ba
         try: _V0U[k]=raw_ev(p,cp.debutyr(p)-1)*iso_eff(p,cp.debutyr(p)-1)   # LEG A site 3/6 (V0: Y=debutyr-1 => E_q=0 => fade=1 => full strength, unchanged BY CONSTRUCTION)
         finally: cm,q97m=_c,_q
     return _V0U[k]
-def _v0_raw(p):                                              # ASK1: uncapped V0 -> RUC prior cap (still pre-ASK2-guard)
+def _v0_raw(p):                                              # ASK1: uncapped V0 -> RUCK prior cap (still pre-ASK2-guard)
     k=_v0key(p)
     if k not in _V0C: _V0C[k]=_ruc_prior_cap(p,_v0_uncapped(p))
     return _V0C[k]
@@ -1231,10 +1231,10 @@ _build_v0_guard()
 # NON-INCREASING in pick. Pick bands are diagnostic slices only, never derivation bins (binding statistics rule).
 # CELLS at the finest resolution the sample supports (census in session_2026-07-03/d14):
 #   TIER 1 — age<=18 per position (6 cells; 1408/1571 players): adaptive Gaussian bandwidth grown until local
-#     eff-n>=35 at every pick, then isotonic. RUC is its OWN age18 curve (fitted on capped V0s).
+#     eff-n>=35 at every pick, then isotonic. RUCK is its OWN age18 curve (fitted on capped V0s).
 #   TIER 2 — mature (draft-age>=19; 163 players): every exact (pos x age) cell is eff-n<35 even at max bandwidth
 #     -> R1 pooling. Mature V0 is age-dominated and position-washed in-sample (position spread << age spread), so
-#     the 5 non-RUC positions POOL into one age-resolved surface V0*(age,log-pick) [DECLARED]; RUC mature keeps
+#     the 5 non-RUCK positions POOL into one age-resolved surface V0*(age,log-pick) [DECLARED]; RUCK mature keeps
 #     its own (thin) cell. Fit is 2D-kernel over (draft-age, log-pick), then isotonic-non-increasing in pick AND
 #     non-increasing in draft-age (older draftee never starts above a younger one, same pick) — so mature entrants
 #     stay LAWFULLY DIFFERENTIATED from age-18 and by age. eff-n growth/shortfalls recorded in _V0CURVE_META (R1).
@@ -1325,7 +1325,7 @@ def _fit_mature(pts,label,effn_min=35.0,ha0=1.2,hamax=8.0,hp0=0.18,hpmax=2.2):  
     return surf
 _V0SURF_BUILT={}          # sig -> surfaces, for every surface a build fits; the bake freezes all of them
 def _build_v0_curve():
-    POS=['MID','KEY_FWD','KEY_DEF','GEN_FWD','GEN_DEF','RUC']; c18={}
+    POS=['MID','KPF','KPD','SF','SD','RUCK']; c18={}
     # ADDENDUM 1 (owner, 2026-07-28): this is the kernel-weighted pick-curve path — _fit_pick_curve over
     # log(RECORDED pick). `type=='ND'` alone no longer means "on the national curve": a national selection at
     # 65+ is POOL under the ruling, and admitting it here lets a pool outcome teach the V0 pick surface through
@@ -1372,8 +1372,8 @@ def _build_v0_curve():
         for pos in POS:
             pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
             grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
-        matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUC' and _ageR(p)>=19]
-        matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUC'      and _ageR(p)>=19]
+        matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUCK' and _ageR(p)>=19]
+        matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUCK'      and _ageR(p)>=19]
         surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
         # Record THIS signature's surfaces so the bake can freeze EVERY surface a shipped build produces, not
         # just the last one. _build_v0_curve runs three times per build — once at import, then again after each
@@ -1388,7 +1388,7 @@ def _build_v0_curve():
     def star(pos,ag,pick):
         lp=np.log(min(max(pick,1),90))
         if ag<=18: return float(np.interp(lp,_V0_LGRID,c18[pos]))
-        surf=surfR if pos=='RUC' else surfN; return float(np.interp(lp,_V0_LGRID,surf[min(max(ag,19),30)]))
+        surf=surfR if pos=='RUCK' else surfN; return float(np.interp(lp,_V0_LGRID,surf[min(max(ag,19),30)]))
     _V0CURVE_META['_star']=star
     for p in real: _V0CURVE[_v0key(p)]=star(MA.gfut(p),_ageR(p),p.get('pick'))
 _build_v0_curve()
@@ -1474,17 +1474,17 @@ def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
-    if _isreal(p) and MA.gfut(p)=='RUC':                  # W4/PR#44: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling (RL_W4_RUC=0 -> v2.5 1.4xPVC cap)
+    if _isreal(p) and MA.gfut(p)=='RUCK':                  # W4/PR#44: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling (RL_W4_RUC=0 -> v2.5 1.4xPVC cap)
         _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*draftval(p)); _v0u=_v0_uncapped(p)  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth);
         if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=ceil (already low) -> byte-exact
     # W4 KPF (RL_KPFFIX): compress the ESTABLISHED-KPF loose residual only — SETTLED #9 / PR #42 T1-shape.
     # KPFs bunch near the lowest REPL bar (66.8) and the curve levers tiny production gaps into huge value gaps
-    # (CV spread-ratio 6.57 vs MID 4.17). For an established (nqual>=4, age>=24) KEY_FWD, any price ABOVE the
+    # (CV spread-ratio 6.57 vs MID 4.17). For an established (nqual>=4, age>=24) KPF, any price ABOVE the
     # engine's own price of his DEMONSTRATED level (eP, band pinned at _lvl_eff — same context, so the W4 margin
     # credit survives inside eP) is band/prior looseness, not output: e' = eP + KPFSH·(e−eP). Young/speculative
     # KPFs (nqual<4 or age<24) are NEVER touched — the Darcy/Duff-Tytler ceiling is protected by construction;
     # the reward leg (above-REPL margin credit ×KPFUP) lives in _w4_W. No blunt group compression.
-    if _W4KPF and _isreal(p) and MA.gfut(p)=='KEY_FWD':
+    if _W4KPF and _isreal(p) and MA.gfut(p)=='KPF':
         _nk=_nqual(p,Y); _ak=cp._age_asof(p,Y)
         if _nk>=PROVEN_N and _ak is not None and _ak>=24.0:
             _eP=_kpf_prod_efv(p,Y)
@@ -1503,7 +1503,7 @@ def ev(p,Y=2026):
     pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         return round(sitout_ev(p,Y,e))
-    keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = (4 if keyruc else 3)
+    keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
         cap=v0*frac
@@ -1570,14 +1570,14 @@ def ev(p,Y=2026):
 # spec's loclin-at-pick-1), isotonic non-increasing, re-anchored to pick1 = RL_PICK1 (3000).
 # SCOPE (deliberate, declared): the fitted curve re-prices the PICK side (the board's trade currency) and
 # display/advisory consumers (A13/A14, book draftval column). PLAYER pricing does NOT read it back:
-# `draftval` — the RUC prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
+# `draftval` — the RUCK prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
 # PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
 # declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
 _W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
 _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
 def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
 # ===== v2.9 L1(b): swap the ev-channel basis _PVC0 to the L1b smoothed derived curve (pin 3000) + rebuild the
-#       V0 guard / V0 curve / RUC ceiling grid — verbatim the l1_adopt_sim option-(b) recipe. Gate RL_PVCADOPT
+#       V0 guard / V0 curve / RUCK ceiling grid — verbatim the l1_adopt_sim option-(b) recipe. Gate RL_PVCADOPT
 #       (default ON); RL_PVCADOPT=0 ⇒ block skipped ⇒ _PVC0 stays the frozen v3.4 ruler ⇒ base board byte-exact.
 #       Verified: board sum +0.179%, anchors byte-identical, knobel 402→505. Candidate ONLY (non-bakeable path).
 if os.environ.get('RL_PVCADOPT','1')!='0':
@@ -1600,7 +1600,7 @@ if os.environ.get('RL_PVCADOPT','1')!='0':
 # ===== LEG D ACT-2 (RL_PVC2): swap the ev-channel basis _PVC0 to the RE-DERIVED COMPOSED-PATHWAY curve
 #       pvc_curve_v2.json (owner ruling R1: PVC(p) = the YEAR-0 point of the fitted 2-D pick x career-year
 #       evidence-weighted NON-median trajectory surface; busts at REAL outcomes FULL WEIGHT, no survivor pool,
-#       no games floor, no threshold — L-SMOOTH / weight-don't-gate) + rebuild the V0 guard / V0 curve / RUC
+#       no games floor, no threshold — L-SMOOTH / weight-don't-gate) + rebuild the V0 guard / V0 curve / RUCK
 #       ceiling — an EXACT parallel of the RL_PVCADOPT recipe above, STACKED after it. Gate RL_PVC2 (default
 #       ON; a DECLARED kill-switch, NOT a manifest dial — config_sha256 UNMOVED, exactly as RL_EVW/RL_ISOFADE/
 #       RL_FLEX). RL_PVC2=0 => this block is SKIPPED => _PVC0 stays the L1b curve => board 9829d01a byte-exact
@@ -1748,13 +1748,13 @@ if _AVAIL_ON:
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}
-reason={'Ronin O':'delisted, 0g -> ~0','Will Martyn':'delisted, 0g -> ~0','Sam Philp':'delisted, 0g -> ~0','Oscar Ryan':'stalled 0g ten3 -> 1/4 draft','Tew Jiath':'stalled 0g ten3 -> 1/4 draft','Jakob Ryan':'stalled 0g ten4 -> notch below 1/4','Harrison Jones':'mediocre 7yr KEY_FWD -> decayed','Keidean Coleman':'career-maker, holds','Dylan Stephens':'declined MID, should fall below Coleman'}
+reason={'Ronin O':'delisted, 0g -> ~0','Will Martyn':'delisted, 0g -> ~0','Sam Philp':'delisted, 0g -> ~0','Oscar Ryan':'stalled 0g ten3 -> 1/4 draft','Tew Jiath':'stalled 0g ten3 -> 1/4 draft','Jakob Ryan':'stalled 0g ten4 -> notch below 1/4','Harrison Jones':'mediocre 7yr KPF -> decayed','Keidean Coleman':'career-maker, holds','Dylan Stephens':'declined MID, should fall below Coleman'}
 for nm in before:
     p=find(nm)
     if not p: continue
     print(f"{p['player'][:22]:22s}{MA.gfut(p):8s}{MA.effpk(p):3d}{nseas(p):3d}{PR.tenure(p,2026):4d}{('Y' if delisted(p) else '-'):>5s}{draftval(p):6.0f}{before[nm]:7d}{ev(p):7d}  {reason[nm]}")
 print("\n=== MONOTONICITY + deep-pick AFTER ===")
-for pos in ['KEY_FWD','MID']:
+for pos in ['KPF','MID']:
     for pk in [1,2,3,20,60]:
         sp=synth(pk,PR.par_at(pos,min(pk,cp.KMAX),4),pos); print(f"  {pos:8s} pk{pk:2d} @par -> {ev(sp)}", end='')
     print()
@@ -1777,8 +1777,8 @@ def recent_ratio(p,Y=2026):
 print("\n  RECENT ratio (last-2 avg / par):")
 for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman','Oscar Ryan']:
     p=find(nm); print(f"    {nm:16s} recent_ratio={recent_ratio(p):.2f}")
-print("\n=== GATE1 (wired) MID/KEY_FWD by tenure ===")
-for pos in ['MID','KEY_FWD','GEN_DEF']:
+print("\n=== GATE1 (wired) MID/KPF by tenure ===")
+for pos in ['MID','KPF','SD']:
     refs=[p for p in MA.data if MA.gfut(p)==pos and p.get('type')=='ND' and p.get('pick') and 2012<=p['year']<=2019 and nseas(p)>=4 and not delisted(p)][:14]
     ser={}
     for k in range(0,6):

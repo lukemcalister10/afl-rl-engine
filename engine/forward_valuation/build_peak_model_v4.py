@@ -12,7 +12,7 @@ import numpy as np
 from sklearn.ensemble import HistGradientBoostingRegressor
 MA.P_HOOK=None; MA.PROD_GATE='off'
 allp=[p for p in MA.data if MA.GRP.get(p['pos'])]
-POSI={'MID':0,'GEN_DEF':1,'GEN_FWD':2,'KEY_DEF':3,'KEY_FWD':4,'RUC':5}
+POSI={'MID':0,'SD':1,'SF':2,'KPD':3,'KPF':4,'RUCK':5}
 DOB=json.load(open('/home/claude/rl_workspace/forward_valuation/dob_corrected.json')); PT=json.load(open('/home/claude/rl_workspace/forward_valuation/bust_prior_table.json'))
 SEASON=22  # reference full home-and-away
 def bp(pos,pick): return PT[pos][str(min(max(int(round(pick)),1),70))]
@@ -62,7 +62,7 @@ for p in allp:
             if t is not None: Xte.append(feats(p,Y)); yte.append(t)
 print('forward-peak R2 (out-of-sample, target now >=Y w/ completeness weight): %.3f'%r2(m.predict(np.array(Xte)),np.array(yte)))
 print('\nsurvivorship (draft proj late picks>30):')
-for pos in ['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']:
+for pos in ['MID','SD','SF','KPD','KPF','RUCK']:
     pl=[p for p in allp if MA.GRP[p['pos']]==pos and MA.effpk(p)>30 and 2006<=MA.debut(p)<=2018]
     act=np.mean([best([x for x in p['scoring']],3) or 0 for p in pl]); dr=np.mean([m.predict([draft_feat(p)])[0] for p in pl])
     print('  %-9s actual %.1f draft-proj %.1f (%+.0f%%)'%(pos,act,dr,100*(dr-act)/max(act,1)))
