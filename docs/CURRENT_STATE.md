@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v21 · supervisor pen · 2026-07-29, register v529
+# CURRENT STATE — the incoming-seat read · v22 · supervisor pen · 2026-07-29, register v530
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v529, written against main `41285aa` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v530, written against main `50d5506` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -121,6 +121,19 @@ reporting seat's own measurement. Where it matters, re-run rather than inherit.*
 **The owner is rebuilding positional data for every player-season from scratch. No value is derived until
 that lands.** Four separate threads turned out to need it. His words: *"This issue and trying to shortcut
 it has gone on for too long and that is the only way to fix it for good."*
+
+**2026-07-29: the sheet is FINISHED, not yet landed.** Per-season eligibility (FWD/DEF/RUC/MID plus DPP
+variants) against every store season, plus a player-level `is_key` column. The owner confirmed the model
+collapse: current/future position is ONE field — the **modelling position** (where he plays from today,
+used to project output; priced against current-season eligibility now, the eligibility blend later) — and a
+separate career-position field is redundant because per-season eligibility *is* the career record. **Ruled
+with it: the position vocabulary is REPLACED with new canonical names rather than merged to a variant** —
+K-FWD→**KPF**, K-DEF→**KPD**, G-DEF→**SD**, G-FWD→**SF**, MID→**MID**, RUC/RUCK→**RUCK** — precisely so any
+un-migrated site fails visibly instead of half-matching; the rename rides WITH the data landing, one
+migration. **Two questions the owner still owes one line each:** does player-level `is_key` apply to every
+season of the career (a tall who played general before becoming key would get the key bar for those
+seasons); and the blank-cell rule — a season with no eligibility recorded must fail loudly or carry an
+explicit marked default, never silently fall back to drafted position.
 
 **The four-field model — owner's words, 2026-07-28, the specification:**
 
@@ -206,7 +219,7 @@ fix does not extend to a per-season bar.
 
 | | |
 |---|---|
-| **Kako R20 re-anchor** | **Owner word given 2026-07-29: "Kako 11 games at 44.18", through R20** — relayed by the owner directly to the #245 seat's chat, which types it into `KAKO_ANCHORS` with `through_round: 20`. One line; on landing, CI Guards should go fully green (its run log shows every other check passing). |
+| **positional sheet landing** | Owner's, off-seat: route the finished sheet in. The re-derivation directive drafts against it (spec + rename map above). |
 | **#256 · finish the CI restore** | **FIRED by owner word 2026-07-29 ("Happy to commission it").** Part A: `invariant_proof.py`'s released-baseline equality checks move to the adoption step (structural invariants stay per-push; every check kept, moved, or explicitly retired — none silently dropped), proven both ways. Part B: the `_repo_root_of` regression — a root that cannot resolve fails loudly, never synthesizes from `/`; `live-scoring-light` green with production outputs byte-unmoved. Outcome: all four workflows green on a main push, or a report naming what surfaced next. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
@@ -248,8 +261,14 @@ only that exact pair is excused, an undeclared mismatch HALTs exactly as before,
 survives adoption is itself a rejection. Seam re-ran all three failure directions. FAIL (e) is resolved
 (`season_progress_test` 31/31).
 
-**What greens when.** CI Guards: the owner's re-anchor word is given — one line lands and it should go
-fully green (its run log shows every other check passing). Final Integration: the gate and season anchors
+**What greens when.** **CI Guards is GREEN on main** — the owner's R20 re-anchor landed at `50d5506`
+(guards success on both event runs of `764cf6e`, seam-parsed), and it un-skipped four guards that had not
+executed since the anchor went stale, including the ~7-minute correction canary. By design it will report
+STALE again at R21 and name the owner act. **Integration near-miss, recorded as a live hazard:** the
+seat's first re-anchor branch sat on pre-rebase-merge history, and merging it would have silently reverted
+#251's landing and three pens — caught only by diffing the branch against current main before merging
+(1,867 deletion lines where a 6-line change belonged). After any rebase-merge, a long-lived seat branch
+must be recreated from `origin/main` by cherry-pick; `git cherry` proves what is genuinely new. Final Integration: the gate and season anchors
 now pass; **it halts at `invariant_proof.py`, 22/33** — hard-coded released-baseline totals
 (`PRESENT_TOTAL 764021`, F5 `83538`/`4649`/`14272`, zero movers demanded) measured against the held
 candidate board (`771772`, 749 movers — the ruled split working). Pre-existing, seat-verified identical on
@@ -336,6 +355,13 @@ Track D · the conservation gate (`gate_f5.py` cannot be wired as written) · #1
   full PR/CI/merge cycle; (3) **delegate the reading half of verification to hands** (report ingestion, log
   pulling, bulk byte-comparison) and re-run inline only the two or three measurements that would change a
   decision. The verify-before-record norm is unchanged — this is about *where* the reading happens.
+- **Check-the-checks is scoped by what the diff can move** (owner word 2026-07-29): a docs-only pen whose
+  structural asserts prove the diff merges immediately — no CI wait; a code diff waits on exactly the
+  checks it can move. Sub-agents: owner supports Opus 5 hands for anything safe to delegate, and directives
+  to supervisors say so explicitly.
+- **Every fired directive is handed to the owner as a paste-ready relay in chat** — the seam states model
+  and effort only when deviating from Opus 5 at default; silence means no deviation. Chats are called by
+  the owner's names for them, not by the current issue number — one chat has carried #231/#239/#245.
 
 ## ENVIRONMENT CARRIES
 
