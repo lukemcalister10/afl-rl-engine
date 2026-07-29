@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v28 · supervisor pen · 2026-07-29, register v536
+# CURRENT STATE — the incoming-seat read · v29 · supervisor pen · 2026-07-29, register v537
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v536, written against main `63f20ed` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v537, written against main `d480564` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 ## THE INCOMING SEAT'S FIRST TWO TASKS
@@ -175,6 +175,14 @@ bar) vs 24.65 (played bar). **The corrected site map is on closed issue #225**: 
 sites, two build-on-one-axis-read-on-the-other cases, three R3-held sites, and a do-not-fix list.
 After #262, each season's output is measured against that season's eligibility bar.
 
+**IN SCOPE FOR THE RE-DERIVATION, owner-confirmed 2026-07-29 (this was half-parked under the referee
+filings and nearly mis-scoped):** the CURRENT and FUTURE season pricing bar comes from **eligibility**,
+not present position — the spec's own sentence. Owner's example: Elliot Yeo is priced today as a pure MID
+though he carries forward eligibility; going forward he prices as a forward for the current season. The
+mechanism defect this cures is recorded (present position wins by default when the bar cannot engage —
+the Ginbey case); the per-season data is what makes the fix possible. Only deeper redefinitions — how
+bars are constructed, convexity, replacement levels — stay with the referee project.
+
 **Three curve-input rulings (owner words sealed at v533):** Jeremy Cameron, Dylan Shiel and Adam
 Treloar are **included** — the sheet assigns each a notional pick (12 / 4 / 14, 2011 ND); transcribed
 as given. Paddy McCartin and Tom Boyd are **excluded force-majeure and every player in their drafts
@@ -218,9 +226,10 @@ rehearsal set — run deliberately, once, when the engine changes).
 
 ## FILED FOR THE REFEREE PROJECT / PARKED — do not start
 
-Referee filings (pointers in the register): the four-field model above; eligibility-sets-the-bar
-(`y0dpp_bar` returns `None` below two eligibilities — 159 of 804 bar-mismatched, 62 single-eligibility;
-sizing unmeasured); 7 live DPP data-error rows (report-only); the 97-of-804 position crossref (superseded
+Referee filings (pointers in the register): the four-field model above; the deeper bar-construction
+questions ONLY — *eligibility-sets-the-bar itself moved INTO the re-derivation scope by owner word
+2026-07-29, see the spec section* (the `y0dpp_bar` mechanism numbers: 159 of 804 bar-mismatched, 62
+single-eligibility, sizing unmeasured); 7 live DPP data-error rows (report-only); the 97-of-804 position crossref (superseded
 by #262 but the originating thread). Parked: Track D · the conservation gate (`gate_f5.py` cannot be
 wired as written) · #139 items 6, 7, 8, 19 · **#146 (body inverted at D1 — do not execute as written)**.
 
