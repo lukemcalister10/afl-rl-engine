@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v29 · supervisor pen · 2026-07-29, register v537
+# CURRENT STATE — the incoming-seat read · v30 · supervisor pen · 2026-07-29, register v538
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,149 +110,103 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v537, written against main `d480564` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v538, written against main `3df3a859` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
-## THE INCOMING SEAT'S FIRST TWO TASKS
+## WHAT JUST LANDED
 
-1. **Draft the re-derivation directive** for pre-fire audit — the next job after #262 lands, the
-   biggest of the sequence. Every input is sealed: the spec section below; the eight-site value-path
-   map on **closed issue #225** (still readable there); the three curve rulings below; and the output
-   the owner needs — a new candidate board beside the current one, every mover attributed, for his
-   adoption word. **Method held constant** (owner, 2026-07-28: *"apples for apples conversion... Anything
-   else would be redefining HOW we model or HOW we value, which is the job of the referee project which
-   comes next, and 412"*). The ×0.6 ceiling, isotonic step and low-sample pooling all stay.
-2. **Verify #262's hand-back when it arrives.** Check by re-running: the two-stage proof (rename alone
-   = zero value/rank movers; the owner's ~60 deliberate position edits then applied, every mover
-   attributed); the rename's zero-live-hits sweep for old vocabulary; sibling re-pins in the landing
-   commit — store, `engine_head`, `rl_model`, `fv` identities, **including the `held_candidates`
-   candidate md5s in `release_contract.json`**; and CI green except Final Integration's one known red.
-   Before merging any long-lived seat branch, diff it against current `main` first — see the
-   cherry-pick rule under Environment.
+**#262 is merged** (PR #272, rebase-merge): the vocabulary is KPF/KPD/SD/SF/MID/RUCK repo-wide;
+**11,264 of 11,264 per-season eligibility rows** are in the store; store `e3aaba77` → `5d6e56d0`, board
+`750446d7` → `3d4e2e50` — byte-identical to the rename-only board, zero value/rank movers across 103,146
+cells, proven seat-local and by CI's cross-environment rebuild. v0surf was refit twice through the declared
+`RL_V0SURF_REFIT` lane; the frozen set is now `8faa737b`/`b08a5a7e`. **The 62 position-field edits are
+DEFERRED to #271** (owner word, Addendum 5 R3-1; the write-then-revert history is preserved in the branch).
+The complete ruling record is **#262 Addenda 1–7** — read them before touching anything near the landing.
 
-## THE ONE THING GATING EVERYTHING: #262, IN EXECUTION
+## THE INCOMING SEAT'S FIRST TASKS
 
-The owner's per-season positional data — **11,264 player-seasons across 1,924 scoring rows of 2,651
-store records, seat-verified 1:1 against the sheet** — is landing now. **Read issue #262 in full:
-body, Addendum 1 (STOP-and-ask: any sheet ambiguity goes to the owner as rows-plus-question, the seat
-never guesses), Addendum 2 (the owner's complete nine-ruling set, including a ~24-player per-season
-key table that supersedes the blanket `is_key` flag for those named), and the seam pre-fire audit.**
-Settled — do not re-litigate:
+1. **Fire #271 on the owner's word.** The re-derivation directive is FILED and seam pre-fire AUDITED (both
+   on issue #271). The audit's two corrections bind: only the CURRENT-season bar moves to eligibility (the
+   future blend stays referee-era), and **the candidate is the branch** — fully self-consistent with its own
+   re-pins, never merged until the owner's adoption word. Two v0surf re-bakes are expected (stage A: the 62
+   edits; stage B: the derivation). Attribution baseline is `3d4e2e50`. The owner's fire word should also
+   settle the pool statistic (SCAR default). The executing seat is fresh and cold.
+2. **Verify #271's hand-back by re-running only what decides:** stage-A movers = exactly the 62 edits'
+   footprint; the both-directions exclusion checks (including the pooling-term channel) shown failing when
+   lifted; the candidate branch self-consistent (its CI green modulo knowns); no shipped identity moved on
+   `main`. Diff any long-lived branch against current `main` before merging it.
 
-- The landing is value-neutral except the owner's deliberate position edits, proven in two stages.
-- Vocabulary is **replaced** repo-wide with the owner's new names — **KPF / KPD / SD / SF / MID /
-  RUCK** — so any missed site fails visibly. DPP order is semantic: FWD→DEF→RUCK→MID.
-- All ruckmen are key-position players: a DPP season containing RUCK renders its FWD/DEF component
-  KPF/KPD regardless of flag; pure RUCK has no key variant.
-- The 16 ownership changes route through the **#232 ownership sidecar command**, not store edits.
-- The 727 zero-season busts get **no synthetic rows**; they count via draft records at the curve fit
-  (ruling R1: busts full weight, no games floor, non-median fit — no survivor bias by design).
-- The seat still owes the owner the Q3 review lists (9 key-flagged KDEF + 4 GFWD future-position rows).
+**Sequence: land (#262 ✓) → re-derive (#271, fire-ready) → owner adoption → referee project (#270 opens
+it) → ITEM 412.** The adoption commit is: merge the candidate + migrate the UI pair + delete the
+`held_candidates` declarations + the baseline column label — and it REOPENS the owner's live ingest lane.
 
-**Sequence: land (#262) → re-derive → owner adoption → referee project → ITEM 412.**
+## CI — three of four green; the last red, precisely
 
-## THE SPEC THE RE-DERIVATION EXECUTES
+Final Integration is red on **`club_curve_provenance` alone** (9/35, same count as before the landing, the
+mechanism verified different: most cases now halt on the board-id ring-fence — bundle `8a38cca4` vs release
+board `3d4e2e50`, declared in `held_candidates` — with the old no-price-for-pick-70 assertion unreachable
+behind it). It resolves at adoption. The counting-rule suite (24/24) still asserts OLD vocabulary and
+passes, because it tests the deliberately-lagging UI pair — it flips at adoption. CASE1's `checked=0` red
+is **anti-vacuous** (a coverage clause, `club_curve_provenance.test.py:186`), not the vacuity class.
+Standing behaviours unchanged: Kako store anchor STALE at R21 by design; `invariant_proof.py --adoption`
+is the adoption lane; the six `proof-*` jobs are manual-dispatch only.
 
-**The four-field model — owner's words, 2026-07-28:**
+## OWNER ACTS OUTSTANDING
 
-> **Drafted position:** what bucket their career performance as a whole goes to credit, value wise.
-> **Career position:** the position they played for most of their career — so the position that their career
-> historical performance is attributed to and measured against for replacement reasons.
-> **Future position:** the position they will play from this point forward. For modelling their performance
-> in the future.
-> Eligibility is a different layer and projects what replacement bar they would be measured against for the
-> current and future seasons (for the future eligibility blend).
+1. **Fire word for #271** (+ pool statistic: SCAR unless he says otherwise).
+2. Clicks: delete branch `claude/issue-262-supervision-hjmixs` · close #262.
+3. **The 16 trades** (R4-1): edit `docs/inputs/AFFL_Player_Locations.csv` via his own lane whenever;
+   `ownership.js` catches up at adoption. Accepted caveat: a round baked pre-adoption carries stale teams
+   for the 16 (`round_movers.py:279`); self-corrects after.
+4. #269's three shaping questions (the `+250*` asterisk · the 2027 blend's ⅓ anchor · round-5 zero vs half).
+5. v1.1 referee amendment — one read: `docs/referee/AMENDMENT_v1_1_DRAFT.md`.
+6. Real-iPhone check of `ui/index.html` (#139 item 22).
+7. Adoption era: adoption word + baseline column label · the baked-pick-prices decision.
+8. Repo hygiene go-word: measured 2026-07-29 — 129MB/2,252 files; ~52MB zero-reference archive candidates;
+   ~8.5MB of session evidence is CI-wired and excepted by name (enumeration in the seam session record).
 
-Confirmed 2026-07-29: career position resolves to the per-season eligibility data (#262); current and
-future collapse into one **modelling position** — where he plays from today, projected output priced
-against current-season eligibility now and the eligibility blend later. Drafted position is only the
-credit bucket for draft grading.
+## FILED / PARKED — do not start
 
-**The defect this fixes:** the fit measures careers against the DRAFTED position's bar while the board
-prices the position PLAYED (`rl_model.py:69` states the correct rule; the board honours it, the fit
-does not). Seam-verified: 113 of 804 split-bar, 68 better on the played bar, Dylan Moore 15.47 (MID
-bar) vs 24.65 (played bar). **The corrected site map is on closed issue #225**: eight value-path
-sites, two build-on-one-axis-read-on-the-other cases, three R3-held sites, and a do-not-fix list.
-After #262, each season's output is measured against that season's eligibility bar.
+**#269** clubs-tab re-valuation (owner spec verbatim; supersedes #139 item 8; fires on its own directive).
+**#270** free-hit value — the referee project's opening question (report-only market study first
+deliverable; until then the "working system" is today's bars, carried unchanged). **UI wave** (#139 items
+2–5, 9–18): draft post-adoption to avoid churning the fenced UI pair; the owner picks items. **#146** (body
+inverted at D1 — do not execute as written). #139 items 6, 7, 19 parked; item 8 superseded by #269. Track D
+· the conservation gate (`gate_f5.py` cannot be wired as written) · the deeper bar-construction questions
+(referee).
 
-**IN SCOPE FOR THE RE-DERIVATION, owner-confirmed 2026-07-29 (this was half-parked under the referee
-filings and nearly mis-scoped):** the CURRENT and FUTURE season pricing bar comes from **eligibility**,
-not present position — the spec's own sentence. Owner's example: Elliot Yeo is priced today as a pure MID
-though he carries forward eligibility; going forward he prices as a forward for the current season. The
-mechanism defect this cures is recorded (present position wins by default when the bar cannot engage —
-the Ginbey case); the per-season data is what makes the fix possible. Only deeper redefinitions — how
-bars are constructed, convexity, replacement levels — stay with the referee project.
+## KNOWN CARRIES
 
-**Three curve-input rulings (owner words sealed at v533):** Jeremy Cameron, Dylan Shiel and Adam
-Treloar are **included** — the sheet assigns each a notional pick (12 / 4 / 14, 2011 ND); transcribed
-as given. Paddy McCartin and Tom Boyd are **excluded force-majeure and every player in their drafts
-slides up one pick** — verbatim reasoning at v533. Both are named exceptions to R1, not a method change.
+**1,271 of 1,924 scoring players lack a 2026 row** — each lands an eligibility-less season on first
+appearance until #271 fixes BOTH season-row writers (`round_apply.py:182` and the independent
+`merged_entry` construction in `staged_apply.py:178-185` / `score_ingestor.py:224-228`). The owner's live
+ingest lane (`ingest_inputs.py`) is **fail-closed under the hold by design** (board-id ring-fence) and
+reopens at adoption. `affl_team` is legacy-with-one-reader (`round_movers.py:279`); retiring it is an owner
+act. Carried by ruling R4-2, rewritten at #271's bake: the stale `sig 76498b5a` prose in
+`one_source_selftest.py` and the `_build_book_xlsx.py:157` label. Definitive residual old-vocab enumeration
+(Addendum 7): six frozen movers round bundles + the ycred prose note + the xlsx label — era data and prose,
+none functional.
 
-**The ruled pricing structure (law since 2026-07-28):** the national curve covers **picks 1–64 only**;
-everything past is a **pool** — ND 65+, all rookie draft, all post-draft — valued by position, order
-carrying no value; SSP and MSD pool-valued, tracked separately. **There is no price for pick 70.**
-`RULEBOOK.md` v2.1 law 4 already scopes this.
-
-**The fact that has cost two seam cycles:** the shipped curve is a **loaded artifact**
-(`pvc_curve_v2.json`, loaded by `rl_export.py`), held out of the bake by owner ruling **R3 of
-2026-07-09** (`_merged_recover.py:1537`, bake guard enforcing). Cleaning any in-engine fit moves
-nothing shipped. The app shows the **released pre-split board**; #217's split board sits in the tree
-as a **declared held candidate** (`release_contract.json` `held_candidates`: three identities, both
-sides pinned, only that exact pair excused; an undeclared mismatch still HALTs; the declaration is
-deleted in the adoption commit and a surviving one is itself a rejection).
-
-## CI — three of four green; what the last red means
-
-**FV Provenance, CI Guards, Live Scoring: GREEN.** Final Integration is red on
-**`club_curve_provenance` alone** (9/35): the engine carries the ruled 1–64 curve while the shipped
-bundle correctly lags pre-split per the hold — its "every pick priced from the curve" proof cannot
-hold while there is no price for pick 70. It resolves at re-derivation/adoption. **Do not regenerate
-the frozen UI bundles to clear it.** Standing behaviours: the Kako store anchor reports **STALE at
-R21** and names the owner act (by design — a small recurring owner touch, not a defect);
-`invariant_proof.py --adoption` is the adoption-step lane (released-baseline equality lives there,
-structural checks per-push); the six `proof-*` jobs are **manual-dispatch only** (they are the weekly
-rehearsal set — run deliberately, once, when the engine changes).
-
-## OWNER ACTS OUTSTANDING (none urgent)
-
-1. Review #262's Q3 lists when the seat sends them.
-2. **v1.1 referee amendment** — one read: `docs/referee/AMENDMENT_v1_1_DRAFT.md`.
-3. **Baked pick prices** — browser-computed vs a mandatory adoption step; matters at curve adoption.
-4. **Repo hygiene** (owner-raised 2026-07-29): a `main` ZIP is ~44MB and extraction is slow — identify
-   what a working copy actually needs and clean stale files. One candidate job, after the landing era.
-5. Branch delete-clicks (cosmetic) · real-iPhone check of `ui/index.html` (unproven; #139 item 22).
-6. **Adoption word + the baseline column label**, when the re-derivation lands. One column per landed
-   change, not one per rebuild.
-
-## FILED FOR THE REFEREE PROJECT / PARKED — do not start
-
-Referee filings (pointers in the register): the four-field model above; the deeper bar-construction
-questions ONLY — *eligibility-sets-the-bar itself moved INTO the re-derivation scope by owner word
-2026-07-29, see the spec section* (the `y0dpp_bar` mechanism numbers: 159 of 804 bar-mismatched, 62
-single-eligibility, sizing unmeasured); 7 live DPP data-error rows (report-only); the 97-of-804 position crossref (superseded
-by #262 but the originating thread). Parked: Track D · the conservation gate (`gate_f5.py` cannot be
-wired as written) · #139 items 6, 7, 8, 19 · **#146 (body inverted at D1 — do not execute as written)**.
-
-## RUNNING THIS SEAT WELL — learned the expensive way this cycle, owner-endorsed
+## RUNNING THIS SEAT WELL — learned the expensive way, owner-endorsed
 
 - **Verify hand-backs by re-running only the two or three measurements that would change a decision**;
-  delegate the reading (report ingestion, log pulls, bulk byte-compares) to hands. Fifteen inline checks
-  where three decide is how the last seat burned half its context in a day.
+  delegate the reading (report ingestion, log pulls, bulk byte-compares) to hands.
 - **Never pull raw GitHub API payloads into context** — spill to a file and parse, every time.
-- **One register pen per boundary**, not per event. Docs-only pens **merge immediately** — their
-  pre-commit structural asserts are the guard and a docs diff moves no workflow. Code diffs wait on
-  exactly the checks they can move, no more.
-- **Every fired directive is handed to the owner as a paste-ready relay in chat**; state model/effort
-  only when deviating from Opus 5 at default. Call chats by the owner's names, not issue numbers.
-- **Report in plain breakdowns**: what happened, what the owner must know or decide, with context.
-  Lead with the outcome. No register-dialect. `DO:/WHY:` is retired by owner word.
-- **Owner words seal promptly and on the issue first** — chat carries no authority; the pen follows at
-  the boundary. A cancelled CI run is not a red. A guard that always fails is the same defect as one
-  that cannot — split by lifetime. Every count names its denominator. Hands freely for reading; never
-  delegate a load-bearing measurement; never run engine builds in parallel.
-- **Check your own test can fail before believing it.** This cycle's seam caught three of its own broken
-  test methods (a pipe's `$?`, bytes-vs-characters, tampering a field the gate never owned) — each
-  looked like a finding until the method was checked. Effort scales with what a mistake costs to reverse.
+- **One register pen per boundary**, not per event. Docs-only pens **merge immediately** on their
+  structural asserts. Code diffs wait on exactly the checks they can move.
+- **Every fired directive is handed to the owner as a paste-ready relay in chat**; state model/effort only
+  when deviating from Opus 5 at default. Call chats by the owner's names, not issue numbers.
+- **Report in plain breakdowns**: what happened, what the owner must know or decide, with context. Lead
+  with the outcome. No register-dialect.
+- **Owner words seal promptly and on the issue first** — chat carries no authority; the pen follows at the
+  boundary. A cancelled CI run is not a red. Every count names its denominator. Hands freely for reading;
+  never delegate a load-bearing measurement; never run engine builds in parallel.
+- **Check your own test can fail before believing it.** This cycle added two concrete instances: a
+  mid-batch `git fetch` silently repoints FETCH_HEAD — **verify against explicit refs
+  (`origin/<branch>`), never FETCH_HEAD** (this seat measured main believing it was the branch; caught
+  because the failures were too perfect) — and **hyphenated vocabulary patterns need word boundaries**
+  (`K-DEF` matches RANK-DEFICIENT; the spelling-phantom class's third occurrence).
+- Effort scales with what a mistake costs to reverse.
 
 ## ENVIRONMENT CARRIES
 
@@ -260,24 +214,22 @@ wired as written) · #139 items 6, 7, 8, 19 · **#146 (body inverted at D1 — d
 - **Bare `python3` is 3.11 against a cp312-pinned lock; system pip is PEP 668-blocked.** Build a 3.12
   venv, `pip install --require-hashes --only-binary=:all: -r requirements-lock.txt`, then
   `RL_VENV=<venv> bash bootstrap.sh`. Do not weaken the pin.
-- **`v0surf` HALTs on an unknown config signature — that is the design.** Never restore a fallback or
-  widen the frozen set; a halt is a finding.
+- **`v0surf` HALTs on an unknown config signature — that is the design.** The ONE regeneration lane is
+  `RL_V0SURF_REFIT=1` at a deliberate bake. Never restore a fallback or widen the frozen set.
 - **After any rebase-merge, a long-lived seat branch must be recreated from `origin/main` by
-  cherry-pick** — rebase-merges rewrite SHAs, so a stale-based branch's snapshot diff silently reverts
-  landed work (one nearly reverted #251 plus three pens; caught only by diffing against `main` before
-  merging). `git cherry` proves what is genuinely new. **Always diff a PR against current `main` before
-  merging it.**
-- **`sibling_repin` rewrites pins on every board move** and raises unless six structural tokens each
-  match exactly once. `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` is a live
-  build input inside a session directory — session-archive exemptions must except it.
-- The register header is **one ~400KB line** — read by pointer with a windowing script, never `head`
-  or `cat`. The Actions API exceeds output caps — spill to a file and parse.
+  cherry-pick** — rebase-merges rewrite SHAs. `git cherry` proves what is genuinely new. **Always diff a
+  PR against current `main` before merging it.**
+- **`sibling_repin` rewrites pins on every board move** and raises unless six structural tokens each match
+  exactly once. `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` is a live build input
+  inside a session directory — session-archive exemptions must except it (the CI-wired session set is
+  enumerated in the 2026-07-29 hygiene audit).
+- The register header is **one ~400KB line** — read by pointer with a windowing script, never `head` or
+  `cat`. The Actions API exceeds output caps — spill to a file and parse.
 - **Pens**: branch → PR → rebase-merge; the seam merges its own PRs; ref deletion is owner-only.
-  Mechanics: bump the version digit in the line-1 stamp (`supervisor pen · vNNN date · PEN:`) and
-  insert `· SEAM vNNN (date) — <entry>` immediately before the trailing `· prior: ITEM 407`. Assert
-  pre-commit: line count unchanged, byte growth equals entry bytes, single stamp, every prior entry
-  intact, docs-only diff — and **measure in one unit**; the line's byte and character lengths differ
-  by thousands.
+  Mechanics: bump the version digit in the line-1 stamp (`supervisor pen · vNNN date · PEN:`) and insert
+  `· SEAM vNNN (date) — <entry>` immediately before the trailing `· prior: ITEM 407`. Assert pre-commit:
+  line count unchanged, byte growth equals entry bytes, single stamp, every prior entry intact, docs-only
+  diff — and **measure in one unit**; the line's byte and character lengths differ by thousands.
 
 ---
 
