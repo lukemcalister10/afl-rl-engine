@@ -33,7 +33,7 @@ BW0, BWMAX, EFFN_MIN = 1.5, 6.0, 35.0
 
 def _cls(p):
     pos = p.get('future_position') or p.get('present_position') or p.get('drafted_position') or ''
-    return 'RUC' if pos == 'RUC' else ('KPP' if pos in ('KEY_FWD', 'KEY_DEF') else 'nonKPP')
+    return 'RUCK' if pos == 'RUCK' else ('KPP' if pos in ('KPF', 'KPD') else 'nonKPP')
 
 
 def _rows(p):

@@ -50,7 +50,7 @@ def trend(p,Y):
     l3=[s[2] for s in qs(p,Y)][-3:]; return (l3[-1]-l3[0]) if len(l3)>=2 else 0.0
 def meang(p,Y):
     s=qs(p,Y); return float(np.mean([x[1] for x in s])) if s else 0.0
-Y=2026; POS6=('MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC'); rows=[]
+Y=2026; POS6=('MID','SD','SF','KPD','KPF','RUCK'); rows=[]
 for p in MA.data:
     if MA.gfut(p) not in POS6 or delisted(p) or g['nseas'](p,Y)<2: continue   # v7 applies to EXPERIENCED players only
     try: cur=price(p,Y,band_at(p,Y,ORIG),WQ6)
@@ -108,7 +108,7 @@ def hrow(ws,txt):
 def trow(ws,vals,bold=False):
     ws.append(vals)
     for j in range(1,len(vals)+1): ss.cell(ss.max_row,j).font=Font(name=F,bold=bold,size=10)
-hrow(ss,'COMBINED M1 + refined-v7  vs  CURRENT   (606 players, outfield+RUC, cur>=200)')
+hrow(ss,'COMBINED M1 + refined-v7  vs  CURRENT   (606 players, outfield+RUCK, cur>=200)')
 ss.append(['Source: RL engine head 8aed420a, store 644d1254; combined = M1 level + refined-v7 band; NOTHING baked (prototype).'])
 ss.append(['SCOPE: experienced players only (>=2 seasons). Pre-debut/rookies priced via the pedigree path (v7 not applied) -> unproven value protected per the Harley-Reid guardrail.'])
 ss.append([]); trow(ss,['Overall','mean','median','p5','p25','p75','p90','down>2%','flat','up>2%'],True)
@@ -153,10 +153,10 @@ for r in Acohort:
     fs.cell(fs.max_row,8).number_format='0.0%'; fs.cell(fs.max_row,5).number_format='+0.0'; fs.cell(fs.max_row,6).number_format='+0.0'
 fs.append([]); frow(f'({len(Acohort)} players)')
 fs.append([])
-frow('FLAG B — KEY_FWD over-compression (-17.9 mean) — RESOLVED: very likely NOT a bug',True,'1F3864')
+frow('FLAG B — KPF over-compression (-17.9 mean) — RESOLVED: very likely NOT a bug',True,'1F3864')
 frow('Decomposition: these low-value KEY_FWDs have value almost entirely in the upper-band CEILING (q90/q97).',False,'808080')
 frow('Both cB (body) and asc (tail) bite the ceiling -> -60% (Cox body-27%+tail-33%; McMahon n0/cB0 all -58% is tail).',False,'808080')
-frow('cB-cap barely helps (KEY_FWD -17.9 -> -16.6). It is v7 shaving speculative ceiling value (Ed Richards principle).',False,'808080')
+frow('cB-cap barely helps (KPF -17.9 -> -16.6). It is v7 shaving speculative ceiling value (Ed Richards principle).',False,'808080')
 frow('Established valuable key fwds NOT hit (Wright -4.3, Gunston +0). Recommendation: keep asc; accept speculative shaves.',False,'808080')
 fs.append([])
 frow('SCOPE — v7 applies to EXPERIENCED players (>=2 seasons) only. Pre-debut/rookies are priced via the pedigree path,',False,'808080')

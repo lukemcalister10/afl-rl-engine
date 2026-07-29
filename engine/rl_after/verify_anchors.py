@@ -17,8 +17,8 @@ cm=rd.build(); MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
 def f(nm):
     c=[p for p in MA.players if nm.lower() in p['player'].lower()]; return c[0] if c else None
 # Post-SOFT-FLOOR anchors (cont.25, REFRESHED 2026-06-28 for uniform REPL -3). Proven players have w=0; young high-picks floored:
-#   Zeke Uwland (GEN_DEF pk2, general games-floor) 1518; Jed Walter (KEY_FWD pk3, KPP year-floor) 1087;
-#   Jonty Faull (KEY_FWD pk14, KPP year-floor) 757. Mechanism = SOFT FLOOR in dist_redesign.py; see UNRESOLVED U25-A.
+#   Zeke Uwland (SD pk2, general games-floor) 1518; Jed Walter (KPF pk3, KPP year-floor) 1087;
+#   Jonty Faull (KPF pk14, KPP year-floor) 757. Mechanism = SOFT FLOOR in dist_redesign.py; see UNRESOLVED U25-A.
 EXPECT={'Nick Daicos':7089,'Marcus Bontempelli':3163,'Christian Petracca':3087,'Tom McCarthy':2666,
         'Jeremy Cameron':1132,'Max Gawn':2567,'Nick Madden':1508,'Toby Conway':1051,'Lachlan McAndrew':1719,
         'Mark Keane':2349,'Riley Bice':786,'Zeke Uwland':1518,'Jed Walter':1087,'Jonty Faull':757}

@@ -35,7 +35,7 @@ def v7(p,Y):
 # broad sample: outfield players with >=2 qual seasons and a non-trivial current value
 Y=2026; rows=[]
 for p in MA.data:
-    if MA.gfut(p) not in ('MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD'): continue
+    if MA.gfut(p) not in ('MID','SD','SF','KPD','KPF'): continue
     if g['nseas'](p,Y)<2 or g['delisted'](p): continue
     c=cur(p,Y)
     if c<300: continue

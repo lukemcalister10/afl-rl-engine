@@ -13,7 +13,7 @@
         "pick": 4,
         "year": 2018,
         "_draft_club": "St Kilda",
-        "drafted_position": "KFWD"
+        "drafted_position": "KPF"
       },
       "b": {
         "key": "max-king-syd",
@@ -23,7 +23,7 @@
         "pick": 49,
         "year": 2025,
         "_draft_club": "Sydney",
-        "drafted_position": "GFWD"
+        "drafted_position": "SF"
       },
       "distinct_fields": ["player", "_by", "_bd", "pick", "year", "_draft_club"]
     }

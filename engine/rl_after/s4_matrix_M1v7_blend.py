@@ -59,7 +59,7 @@ print("[FIX] M1 + refined-v7 injected (level bind + band wrap, real players only
 # ==== PART A PROTOTYPE: +0.1 retain raise (PLACEHOLDER, pending re-derivation) + smooth w-blend (replaces the ns==0 cliff) ====
 raw_ev=g['raw_ev']; iso_corr=g['iso_corr']; nseas=g['nseas']; draftval=g['draftval']
 _sitout_cls=g['_sitout_cls']; PR=g['PR']; bestlvl=g['bestlvl']
-RETAIN_RAISED={'RUC':[0.95,0.95,0.84,0.72,0.61,0.50],'KPP':[0.80,0.80,0.70,0.60,0.50,0.40],'nonKPP':[0.60,0.60,0.52,0.45,0.38,0.30]}
+RETAIN_RAISED={'RUCK':[0.95,0.95,0.84,0.72,0.61,0.50],'KPP':[0.80,0.80,0.70,0.60,0.50,0.40],'nonKPP':[0.60,0.60,0.52,0.45,0.38,0.30]}
 G_FULL=44.0; WSHAPE=1.3   # principled convex EVIDENCE ramp; small at few games (real k-games->reliability ramp not yet derived, see Part C.8)
 def _cgames(p,Y): return sum(x['games'] for x in p['scoring'] if x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
 def _wramp(G): return float(np.clip(G/G_FULL,0.0,1.0))**WSHAPE
@@ -73,7 +73,7 @@ def ev_blend(p,Y=2026):
     if ns==0:
         return round((1-w)*anchor + w*e)                       # SMOOTH sit-out: few games lift OFF the anchor (removes the 4==0 cliff)
     e=(1-w)*anchor + w*e                                        # continuity across the 6g boundary; veterans w->1 => pure production
-    keyruc = pos in ('KEY_FWD','KEY_DEF','RUC'); onset = 4 if keyruc else 3
+    keyruc = pos in ('KPF','KPD','RUCK'); onset = 4 if keyruc else 3
     if el>=onset and ns<=1:
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0); e=min(e, dv*frac)
     elif el>=onset+2 and pr<0.55:

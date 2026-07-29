@@ -108,6 +108,19 @@ def remap_csv_field(s):
 STORE_POSITION_FIELDS = ('drafted_position', 'present_position', 'future_position',
                          'alternate_position')
 
+# The one prose field in the store carrying old vocabulary. Owner ruling R2-4 (#262 Addendum 4):
+# rewrite it in the rename pass — "The note exists only to keep Aiden distinct from Nathan
+# O'Driscoll; the relabel doesn't touch that purpose." With this edit the store carries zero
+# old-vocabulary hits and needs no enumerated exemption.
+# Keyed by player `key` and matched in full, so it cannot silently hit a different row.
+STORE_PROSE_REWRITES = {
+    'aiden-o-driscoll': {
+        'pick_correction_note': (
+            'Historical position corrected to GDEF by owner ruling.',
+            'Historical position corrected to SD by owner ruling.'),
+    },
+}
+
 # JSON files whose position tokens are dispatch keys/values the engine reads.
 JSON_DATA_FILES = [
     'engine/rl_after/params.json',
@@ -115,6 +128,12 @@ JSON_DATA_FILES = [
     'engine/rl_after/bust_prior_table.json',
     'engine/rl_after/lti_return_table.json',
     'engine/rl_after/ycred_table.json',
+    # A LIVE PINNED EXPECTATION, not a frozen record. The collision sentry pins the drafted
+    # position of the two separately-keyed Max Kings so an identity bleed between them is
+    # caught. Its purpose is telling them apart, which the relabel does not touch — so the
+    # pinned values must move with the store or the sentry reds on the rename itself.
+    # one_source_selftest caught this; the build trace could not, because it is a test.
+    'engine/rl_after/collision_sentry.json',
 ]
 
 # Python/JS sources whose position tokens are literals the engine dispatches on.
@@ -140,6 +159,26 @@ CODE_FILES = [
     'engine/forward_valuation/par_build.py',
     'engine/forward_valuation/par_redesign.py',
     'engine/forward_valuation/tail_restore.py',
+    # TESTS AND GATES — acceptance criterion 2 names "store, engine, board data, UI, tests".
+    # None of these appear in a board-build trace because they are the harness, not the build;
+    # they were added after one_source_selftest.py failed on its own old-spelling fixtures.
+    'engine/rl_after/one_source_selftest.py',
+    'engine/rl_after/verify_anchors.py',
+    'ship_gates_check.py',
+    # further live engine sources carrying position literals
+    'engine/rl_after/_flags_support.py',
+    'engine/rl_after/_gate1.py',
+    'engine/rl_after/_gate1_wf.py',
+    'engine/rl_after/_p2b_divergence.py',
+    'engine/rl_after/_comb_book.py',
+    'engine/rl_after/_build_book_xlsx.py',
+    'engine/rl_after/_langdon_decomp.py',
+    'engine/rl_after/_ov_angleB.py',
+    'engine/rl_after/_engine_block_v23.js',
+    'engine/rl_after/derive_lti_return.py',
+    'engine/rl_after/s4_matrix_M1v7_blend.py',
+    'engine/rl_after/s4_matrix_M1v7_retainonly.py',
+    'engine/rl_after/ingestion/round_movers.py',
 ]
 
 # The two translation tables in rl_model.py collapse to identity maps under the rename,
@@ -245,6 +284,15 @@ def stage1_store(check):
             p['eligibilities'] = remap_csv_field(old)
             if p['eligibilities'] != old:
                 counts[('eligibilities', old, p['eligibilities'])] += 1
+        for fld, (was, now) in STORE_PROSE_REWRITES.get(p.get('key'), {}).items():
+            if p.get(fld) == was:
+                p[fld] = now
+                counts[(fld + ' [R2-4 prose]', was, now)] += 1
+            elif p.get(fld) == now:
+                pass                      # already applied; the pass is idempotent
+            else:
+                raise SystemExit('HALT: %s.%s is %r, not the text R2-4 rules on — stop and '
+                                 'look' % (p.get('key'), fld, p.get(fld)))
     if not check:
         # PROVEN byte-exact: json.dumps(obj) on the UNMODIFIED store reproduces the file
         # md5 e3aaba77 exactly, so this encoder is the one that wrote it. Anything other

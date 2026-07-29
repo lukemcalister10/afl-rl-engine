@@ -27,7 +27,7 @@ for nm,p in [('Jeffrey',J),('Powell',Pw),('Bruhn',B)]:
             print(f"    {yy}: {type(e).__name__}")
 
 print("\n\n=== (b2) RUNWAY: forward age-curve fraction (frac of peak by future year) ===")
-for nm,p in [('Jeffrey(GEN_DEF,24)',J),('Parish(MID,29)',P)]:
+for nm,p in [('Jeffrey(SD,24)',J),('Parish(MID,29)',P)]:
     g0=MA.gfut(p); a=MA.age(p); pa=PEAK_AGE[g0]
     fs=[frac(a+k,pa) for k in range(11)]
     eff_years=sum(f for f in fs if f>=0.42)

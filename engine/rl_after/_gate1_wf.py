@@ -52,7 +52,7 @@ for D in range(2014,2019):
 setmodels(is_cm,is_q97)
 print("\n=== WITHIN-PLAYER value-by-tenure, % of PAR-value (leakage-guarded WF vs in-sample IS) ===")
 print("  future-GOOD should sit near/above 100 early & flat; BUST below & staying low; watch for violent yr0/1 moves")
-for pos in ['MID','GEN_FWD','KEY_FWD','GEN_DEF','KEY_DEF']:
+for pos in ['MID','SF','KPF','SD','KPD']:
     for tag in ['GOOD','BUST']:
         n=len(agg.get((pos,'WF',tag),{}).get(1,[]))
         if n<4: continue

@@ -213,7 +213,7 @@ check(not _multi, "present/future positions are single-valued (no list legs); of
 # future_position is in the position vocab; (b) at most ONE alternate per row (single-valued, never a list —
 # the "<=1 alternate" law); (c) blend params register-consistent (alternate in vocab, 0<p_dual<=100,
 # alternate != primary; alt/p_dual set together). GUARD CHANGE, named for the cold audit. SILENCE IS A RED.
-_VOCAB=set(MA.GRP)   # the engine's OWN position vocab (incl. the 'DEF'->GEN_DEF legacy alias on back-catalogue rows)
+_VOCAB=set(MA.GRP)   # the engine's OWN position vocab (incl. the 'SD'->SD legacy alias on back-catalogue rows)
 _futbad=[p['key'] for p in store if p.get('future_position') and p.get('future_position') not in _VOCAB]
 check(not _futbad, "flex: every future_position in vocab; offenders=%s"%_futbad[:5])
 _altlist=[p['key'] for p in store if isinstance(p.get('alternate_position'),list)]
@@ -366,13 +366,13 @@ def _fix(elig,present,drafted=None):     # minimal row exercising bnow/_collapse
     dp=drafted or present
     return {'eligibilities':elig,'present_position':present,'drafted_position':dp,'pos':dp,
             '_pos_now':(present if present!=dp else None),'player':'FIXTURE','stable_player_id':'fixture'}
-for _e,_pr in [('K-DEF,G-FWD','KDEF'),('K-FWD,G-DEF','KFWD'),('RUCK,G-FWD','RUC'),('RUCK,G-DEF','RUC')]:
+for _e,_pr in [('KPD,SF','KPD'),('KPF,SD','KPF'),('RUCK,SF','RUCK'),('RUCK,SD','RUCK')]:
     check(_y0(_fix(_e,_pr)) is None,
           "item-284 fixture: cross-class %s (present %s, collapsed %s) -> single-position (y0dpp_bar None)"%(_e,_pr,sorted(_col(_e))))
-check(_y0(_fix('G-DEF,G-FWD','MID','MID')) is None,
-      "item-284 fixture: present-not-in-set G-DEF,G-FWD present MID -> single-position (y0dpp_bar None)")
-check(_y0(_fix('MID,G-FWD','MID','MID'))=='GEN_FWD',
-      "item-284 fixture: VALID MID,G-FWD present MID resolves a bar (GEN_FWD) — verdict produced")
+check(_y0(_fix('SD,SF','MID','MID')) is None,
+      "item-284 fixture: present-not-in-set SD,SF present MID -> single-position (y0dpp_bar None)")
+check(_y0(_fix('MID,SF','MID','MID'))=='SF',
+      "item-284 fixture: VALID MID,SF present MID resolves a bar (SF) — verdict produced")
 _errs=[]
 for _p in MA.data:
     _es=_col(_p.get('eligibilities'))
