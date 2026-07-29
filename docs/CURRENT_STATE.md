@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v25 · supervisor pen · 2026-07-29, register v533
+# CURRENT STATE — the incoming-seat read · v26 · supervisor pen · 2026-07-29, register v534
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v533, written against main `92d62cc` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v534, written against main `8f17841` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -182,8 +182,8 @@ have left the job.
 
 **Three curve-input rulings for the RE-DERIVATION, owner words 2026-07-29** (they cannot move the shipped
 curve — R3 holds it): (1) **Jeremy Cameron, Dylan Shiel and Adam Treloar are INCLUDED in the PVC going
-forward** — all three entered by GWS-concession paths; *the pick/pathway each credits to needs one owner
-line each at re-derivation directive time*. (2) **Paddy McCartin and Tom Boyd are EXCLUDED, and every
+forward** — the sheet itself assigns each a notional draft pick (where they would have gone if
+draft-eligible); transcribed as given, no special handling, the open detail is CLOSED. (2) **Paddy McCartin and Tom Boyd are EXCLUDED, and every
 player in their drafts slides up one pick to cover** — owner's words: *"those players were pick 1 KPF
 busts, so heavily bias the pool against them, however one retired early with depression, and another with
 concussion issues. It's a force majeure situation, so I am ruling that it shouldn't reflect on the KPF
@@ -234,7 +234,7 @@ fix does not extend to a per-season bar.
 | | |
 |---|---|
 | **positional sheet landing** | Owner's, off-seat: route the finished sheet in. The re-derivation directive drafts against it (spec + rename map above). |
-| **#262 · land the positional data** | **FILED, NOT FIRED — fires on owner word; the owner attaches the sheet to the executing chat.** Transcribes per-season eligibility into the store under the three sealed rulings, replaces the vocabulary everywhere (KPF/KPD/SD/SF/MID/RUCK), value-invariance proven by relabel-aware diff, sibling re-pins (including the held_candidates candidate md5s) in the same commit. No re-derivation, no curve, no UI bundle regeneration. Gets a seam pre-fire audit response on the issue before firing. |
+| **#262 · land the positional data** | **Addendum 1 filed: STOP-and-ask on ANY sheet ambiguity — the seat brings the owner the rows and the question, holds for the ruling, never guesses.** **FILED, NOT FIRED — fires on owner word; the owner attaches the sheet to the executing chat.** Transcribes per-season eligibility into the store under the three sealed rulings, replaces the vocabulary everywhere (KPF/KPD/SD/SF/MID/RUCK), value-invariance proven by relabel-aware diff, sibling re-pins (including the held_candidates candidate md5s) in the same commit. No re-derivation, no curve, no UI bundle regeneration. Gets a seam pre-fire audit response on the issue before firing. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
