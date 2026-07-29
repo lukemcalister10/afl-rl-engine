@@ -49,9 +49,9 @@
     {
       "field": "store",
       "release": "e3aaba772f339551cd223802ab115af7",
-      "candidate": "e4580f07f3318ed9ae326132cc11ac72",
+      "candidate": "5d6e56d05f5e7d9eb8460bd1d07bca6e",
       "declared_by": "#262",
-      "reason": "The ruled vocabulary replacement (K-FWD/KFWD/KEY_FWD -> KPF, K-DEF/KDEF/KEY_DEF -> KPD, G-DEF/GDEF/GEN_DEF -> SD, G-FWD/GFWD/GEN_FWD -> SF, RUC/RUCK -> RUCK, and the pre-262 DEF->GEN_DEF back-catalogue alias resolved to SD) rewrote every position value in engine/rl_after/rl_model_data.json: 6,365 field values across drafted/present/future/alternate_position and the eligibilities string, plus one prose correction note under owner ruling R2-4. NO other store field moved and no scoring array was touched - verified field-by-field against the pre-migration store. The store and the release were previously in agreement, so this is a NEW declaration rather than a re-stamp: the shipped bundle still speaks the pre-262 vocabulary per the #217 hold. Cleared at owner adoption, in the same commit that re-stamps identities.store and removes this declaration."
+      "reason": "The ruled vocabulary replacement (K-FWD/KFWD/KEY_FWD -> KPF, K-DEF/KDEF/KEY_DEF -> KPD, G-DEF/GDEF/GEN_DEF -> SD, G-FWD/GFWD/GEN_FWD -> SF, RUC/RUCK -> RUCK, and the pre-262 DEF->GEN_DEF back-catalogue alias resolved to SD) rewrote every position value in engine/rl_after/rl_model_data.json: 6,365 field values across drafted/present/future/alternate_position and the eligibilities string, plus one prose correction note under owner ruling R2-4, plus the new per-season eligibility key on all 11,264 scoring records (owner ruling R3-1 DEFERRED the 62 position-field edits to the re-derivation job, so the position fields themselves are byte-identical to pre-262 modulo the vocabulary relabel). NO other store field moved and no scoring array was touched - verified field-by-field against the pre-migration store. The store and the release were previously in agreement, so this is a NEW declaration rather than a re-stamp: the shipped bundle still speaks the pre-262 vocabulary per the #217 hold. Cleared at owner adoption, in the same commit that re-stamps identities.store and removes this declaration."
     },
     {
       "field": "fv",
@@ -106,5 +106,5 @@
     "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
   },
   "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-  "contract_sha256": "e0bd26e804e02937300eb6ba7bc9153043e0feaae8a97a45b96629921660ff04"
+  "contract_sha256": "85b027f33a38cda183e642b837e030161d780c677f71171a4bf177b2e0488c7d"
 }

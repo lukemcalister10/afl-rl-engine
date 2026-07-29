@@ -553,10 +553,59 @@ def stage2(check):
     return 0
 
 
+def revert62(check):
+    """Owner ruling R3-1: the 62 position-field edits DEFER to the re-derivation job, which
+    applies them as its first act with every mover attributed there. This amends Addendum 2 Q1's
+    "land them" by owner word.
+
+    Restores the four edited player-level fields to their stage-1 (post-rename, pre-edit) values,
+    taken from the committed stage-1 store, and keeps everything stage 2 added that stays:
+    the per-season `pos` eligibility and the R2-4 O'Driscoll note.
+
+    The stage-2 write is deliberately NOT rewritten out of history — history is the record."""
+    import subprocess
+    ref = os.environ.get('ITEM262_STAGE1_REF', 'HEAD~1')
+    raw = subprocess.run(['git', '-C', REPO, 'show',
+                          '%s:engine/rl_after/rl_model_data.json' % ref],
+                         capture_output=True, text=True)
+    if raw.returncode != 0:
+        raise SystemExit('HALT: cannot read the stage-1 store at %s' % ref)
+    stage1 = {p['key']: p for p in json.loads(raw.stdout)}
+    with open(STORE) as f:
+        store = json.load(f)
+    if len(stage1) != len(store):
+        raise SystemExit('HALT: stage-1 store %d records vs current %d'
+                         % (len(stage1), len(store)))
+    reverted = collections.Counter(); rows = []
+    kept_pos = 0
+    for p in store:
+        s1 = stage1.get(p['key'])
+        if s1 is None:
+            raise SystemExit('HALT: %s absent from the stage-1 store' % p['key'])
+        for fld in SHEET_EDIT_FIELDS:
+            if p.get(fld) != s1.get(fld):
+                rows.append((p['player'], fld, p.get(fld), s1.get(fld)))
+                reverted[fld] += 1
+                if not check:
+                    if fld in s1: p[fld] = s1[fld]
+                    else: p.pop(fld, None)
+        kept_pos += sum(1 for r in (p.get('scoring') or []) if 'pos' in r)
+    if not check:
+        with open(STORE, 'w') as f:
+            json.dump(store, f)
+    print('\n-- R3-1 revert: %d field values restored to stage 1 --' % sum(reverted.values()))
+    print('   by field:', dict(reverted))
+    print('   per-season `pos` keys KEPT: %d' % kept_pos)
+    if not check:
+        print('   store md5 after revert: %s'
+              % hashlib.md5(open(STORE,'rb').read()).hexdigest())
+    return 0
+
+
 # ------------------------------------------------------------------- driver
 
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] not in ('stage1', 'stage2'):
+    if len(sys.argv) < 2 or sys.argv[1] not in ('stage1', 'stage2', 'revert62'):
         print(__doc__); return 2
     stage, check = sys.argv[1], '--check' in sys.argv
     print('ITEM 262 %s%s' % (stage, '  [--check, writing nothing]' if check else ''))
@@ -582,8 +631,10 @@ def main():
         if not check:
             print('\nstore md5 after: %s'
                   % hashlib.md5(open(STORE,'rb').read()).hexdigest())
-    else:
+    elif stage == 'stage2':
         return stage2(check)
+    else:
+        return revert62(check)
     return 0
 
 
