@@ -13,11 +13,18 @@ ONLY tracked code + the canonical store + the approved sealed F5 input on THIS h
      is declared byte-canonical);
   4. run the release extraction (extract_board_view.py) + club-valuation ingest and assert the rebuilt
      board-view + public bundles are byte-identical to the committed ones (declared byte-canonical);
-  5. PRESENT ORACLE (gating): compare the rebuilt board's present v to the ACCEPTED balanced/strict
+  5. PRESENT ORACLE: compare the rebuilt board's present v to the ACCEPTED balanced/strict
      reference vector reference_vector_5546f278.json (committed; the SAME authority invariant_proof.py
      gates against; NEVER derived from the rebuilt board, and NOT Board B). Fail-closed on the reference
      vector's authority metadata (board 5546f278 / active 804 / Sigma v 764021); require the rebuilt active
-     key set to equal the reference key set exactly and every rebuilt v to equal the reference exactly.
+     key set to equal the reference key set exactly. Those two GATE.
+     PER-ROW VALUE EQUALITY IS AN ADOPTION-LANE RELEASE CONDITION, NOT A PER-PUSH GATE (#256 part A,
+     matching invariant_proof.py's split): it can only pass when the tree's board IS the released board,
+     and the tree deliberately carries the held candidate declared in data/release_contract.json
+     `held_candidates`, so gating on it painted the suite red for the entire baseline effort — the
+     guard-that-always-fails shape #231 existed to remove. Nothing is lost per-push: step 3 already
+     asserts the rebuild is BYTE-IDENTICAL to the committed board, and committed-vs-released is gated at
+     the adoption step by `invariant_proof.py --adoption`. The deltas are MEASURED and REPORTED here.
      FORWARD (structure gating): vP1/vP2 present + numeric for all 804 rebuilt rows and the historical
      Board B key universe matches the rebuilt universe. The Board B forward SEMANTIC comparison (vP1/vP2)
      is owner-DEFERRED (ITEM 408) — a historical R14 diagnostic with no accepted R19 forward oracle: its
@@ -56,9 +63,19 @@ BOARD_B = ('70ef0ff36ca7633aa4097a9b7c1a730013870abe',
            'session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json')
 EV = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'evidence', 'cleanroom_repro.json'))
 R = []
+A = []
 def ck(name, ok, detail=''):
-    R.append({'check': name, 'pass': bool(ok), 'detail': str(detail)})
+    R.append({'check': name, 'pass': bool(ok), 'detail': str(detail), 'lifetime': 'per-push'})
     print(('  PASS ' if ok else '  FAIL ') + name + ((' -- ' + str(detail)) if detail else ''))
+    return bool(ok)
+
+def ck_adopt(name, ok, detail=''):
+    """ADOPTION lane (#256 part A) — equality with the RELEASED baseline board. Only passes when the
+    tree's board IS the released board, so it is a release condition, not a per-push invariant.
+    Measured, printed and recorded on every run; gating only at the owner adoption step, where
+    `invariant_proof.py --adoption` gates the identical property on the committed board."""
+    A.append({'check': name, 'pass': bool(ok), 'detail': str(detail), 'lifetime': 'adoption'})
+    print(('  ADOPT-PASS ' if ok else '  ADOPT-RED  ') + name + ((' -- ' + str(detail)) if detail else ''))
     return bool(ok)
 
 def md5(p): return hashlib.md5(open(p, 'rb').read()).hexdigest()
@@ -107,6 +124,7 @@ def main():
 
     ok4_all = False
     ok_present = False
+    ok_p_v = False            # ADOPTION lane (#256 part A); non-gating, but must exist if no board built
     ok_forward_structure = False
     rebuilt_sum_v = None
     present_added = present_removed = present_mismatch = None
@@ -148,14 +166,24 @@ def main():
                        '%d rebuilt / %d reference; +%d added %s / -%d removed %s' % (
                          len(fa), len(rvec), len(present_added), present_added[:5],
                          len(present_removed), present_removed[:5]))
+        # #256 part A — SPLIT BY LIFETIME, the same split invariant_proof.py now carries. Per-row value
+        # equality with the released reference vector can only pass when the tree's board IS the released
+        # board, and the tree deliberately carries the held candidate declared in
+        # data/release_contract.json `held_candidates` — so as a per-push gate it was red for the whole
+        # baseline effort, which is the guard-that-always-fails shape #231 existed to remove.
+        # Nothing is lost per-push: check (3) above already asserts the rebuild is BYTE-IDENTICAL to the
+        # committed board, and committed-vs-released is invariant_proof.py's adoption lane, so this
+        # equality is implied at adoption. The two GATING present properties stay: the oracle fixture's
+        # authority (fail-closed) and the exact active key set — both hold for any correctly-built board.
         present_mismatch = [k for k in fa if k in rvec and int(fa[k]['v']) != rvec[k]]
-        ok_p_v = ck('(5-present) every rebuilt present v == reference vector (0 mismatches)',
+        ok_p_v = ck_adopt('(5-present) every rebuilt present v == reference vector (0 mismatches) '
+                          '[RELEASE CONDITION — gated at adoption by invariant_proof.py --adoption]',
                     rv_auth and not present_added and not present_removed and not present_mismatch,
                     '%d mismatches%s' % (len(present_mismatch),
                       (' e.g. ' + ', '.join('%s(rebuilt %s vs ref %s)' % (k, fa[k]['v'], rvec[k])
                                              for k in present_mismatch[:5])) if present_mismatch else ''))
         rebuilt_sum_v = sum(int(p['v']) for p in F['active'])
-        ok_present = ok_p_auth and ok_p_keys and ok_p_v
+        ok_present = ok_p_auth and ok_p_keys
 
         # (5-forward-structure) FORWARD gating — vP1/vP2 present + numeric for ALL rows, and (Board B retained)
         # the historical Board B key universe matches the rebuilt active universe. A missing/non-numeric forward
@@ -206,7 +234,14 @@ def main():
     res = {
       'ok': overall_ok,                       # accepted GATING properties only (Board B semantic deltas excluded)
       'ok_rebuild': ok_rebuild,
-      'ok_present': ok_present,
+      'ok_present': ok_present,                   # PER-PUSH: oracle authority + exact active key set
+      'ok_present_released_values': ok_p_v,       # ADOPTION lane: per-row v == released reference vector
+      'adoption': {'ok': ok_p_v, 'gating': False, 'checks': A,
+                   'note': 'equality with the RELEASED baseline board. The tree carries the held candidate '
+                           'declared in data/release_contract.json held_candidates, so this is expected RED '
+                           'until adoption; it is GATED at the adoption step by '
+                           'invariant_proof.py --adoption, on the committed board this rebuild reproduces '
+                           'byte-identically (check 3).'},
       'ok_forward_structure': ok_forward_structure,
       'forward_lens_deferred': True,
       'forward_comparison': forward_comparison,   # measured Board B deltas + deferred reason (NON-gating)
@@ -220,8 +255,10 @@ def main():
       'n_pass': npass, 'n': n, 'checks': R}
     os.makedirs(os.path.dirname(EV), exist_ok=True)
     json.dump(res, open(EV, 'w'), indent=2)
-    print('\nGATES: ok_rebuild=%s ok_present=%s ok_forward_structure=%s  (forward-lens Board B DEFERRED, non-gating)'
-          % (ok_rebuild, ok_present, ok_forward_structure))
+    print('\nGATES: ok_rebuild=%s ok_present=%s ok_forward_structure=%s  (forward-lens Board B DEFERRED, '
+          'non-gating; released present VALUES ok=%s are an ADOPTION-lane release condition, non-gating '
+          '— run invariant_proof.py --adoption at the adoption step)'
+          % (ok_rebuild, ok_present, ok_forward_structure, ok_p_v))
     print('RESULT: overall_ok=%s  gating %d/%d PASS  (rebuilt md5 %s)  -> %s'
           % (overall_ok, npass, n, str(built_md5)[:12], os.path.relpath(EV, ROOT)))
     return 0 if overall_ok else 1

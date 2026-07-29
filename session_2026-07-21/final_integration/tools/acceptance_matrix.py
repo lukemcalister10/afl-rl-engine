@@ -110,9 +110,17 @@ def main():
            'config': boot.get('config'), 'store': boot.get('store')}},
       # Each section reads its OWN section boolean from invariant_proof.json (ok_present / ok_forward /
       # ok_draft / ok_f5) so a present-lens result never cascades into an unrelated section (ITEM 408 5.4).
+      # #256 part A: invariant_proof.py now runs two lanes. `ok_present` / `ok_f5` are the PER-PUSH
+      # (structural) lane and are what these sections gate on; the released-baseline EQUALITY checks moved
+      # to the adoption lane (`adoption.*`), reported here so the distance stays visible and is never
+      # mistaken for a pass. Expected RED until the owner adopts the re-derived board.
       '10_present_lens_invariants': {'status': 'PASS' if invp.get('ok_present') else 'FAIL',
-          'detail': '804 active; Σv=764021; 0 present-v/rank/order movers of the board of record fa172ac1 vs '
-                    'the accepted reference vector 5546f278 (invariant_proof.json ok_present)'},
+          'detail': {'per_push': '804 active + exact active key set vs the accepted reference vector '
+                                 '5546f278, and the vector fixture\'s own authority (invariant_proof.json '
+                                 'ok_present) — structural, true of whatever board the tree carries',
+                     'adoption': 'Σv=764021 and 0 present-v/rank/order movers vs 5546f278 — a RELEASE '
+                                 'CONDITION, gated by invariant_proof.py --adoption at the adoption step',
+                     'adoption_ok': (invp.get('adoption') or {}).get('ok_present')}},
       '11_forward_vector_invariants': {'status': 'DEFERRED' if invp.get('ok_forward') else 'FAIL',
           'detail': {'reason': 'forward-lens (vP1/vP2) repair is owner-DEFERRED and NOT accepted '
                      '(expected_boot _present_staleness_note; release_lineage _present_lens_only). Board B '
@@ -124,7 +132,12 @@ def main():
       '12_visible_draft_assets': {'status': 'PASS' if (invp.get('ok_draft') and av.get('ok')) else ('PARTIAL' if invp.get('ok_draft') else 'FAIL'),
           'detail': '64+64 visible picks, 0 on current ladder, unique ids, PVC equality, monotone, sorted (data + UI 26/26)'},
       '13_f5_reconciliation': {'status': 'PASS' if invp.get('ok_f5') else 'FAIL',
-          'detail': 'visible 64617 + residual_nd 4649 + residual_mech 14272 = 83538 per lens; no double-count vs sealed phantomTotals'},
+          'detail': {'per_push': 'visible == ΣPVC[1..64] == declared, and visible + residual_nd + '
+                                 'residual_mech closes on the board\'s OWN F5 entrant layer, which must equal '
+                                 'draft+mech and the sealed phantomTotals layer; no double-count',
+                     'adoption': 'the RELEASED magnitudes 64617 / 4649 / 14272 / 83538 and the Board B '
+                                 'phantom-layer equality — gated by invariant_proof.py --adoption',
+                     'adoption_ok': (invp.get('adoption') or {}).get('ok_f5')}},
       '14_club_valuation': {'status': 'PASS' if g('club_curve_provenance') else 'FAIL',
           'detail': 'PVC resolved fail-closed (RL_PVC2 pvc_curve_v2, curve_md5 89c14729), 160 held picks, 16 clubs, no stale/workbook substitution (26/26)'},
       '15_ui_proof': {'status': 'PASS' if av.get('ok') else 'PENDING',
@@ -151,8 +164,10 @@ def main():
       'S1_canonical_reproducibility': {'status': 'PASS' if cleanroom.get('ok') else 'FAIL',
           'detail': 'clean-room: engine build reproduces the committed board of record %s BYTE-IDENTICAL + '
                     'bundles byte-identical (ok_rebuild); present v gated against the committed accepted '
-                    'reference_vector_5546f278 — active 804, Sigma v 764021, exact key-set + per-row v '
-                    '(ok_present, NOT derived from the rebuilt board, NOT Board B); vP1/vP2 present+numeric '
+                    'reference_vector_5546f278 — fixture authority (active 804, Sigma v 764021) + exact '
+                    'key-set GATE (ok_present, NOT derived from the rebuilt board, NOT Board B); per-row v '
+                    'equality is the ADOPTION lane (ok_present_released_values), measured not gated per push '
+                    '— #256 part A; vP1/vP2 present+numeric '
                     'for all 804 + Board B key universe matches (ok_forward_structure). The Board B (70ef0ff) '
                     'vP1/vP2 SEMANTIC comparison is owner-DEFERRED — historical R14 diagnostic, MEASURED not '
                     'asserted, never a build input. overall ok = accepted gating only. cleanroom_repro.json %s'

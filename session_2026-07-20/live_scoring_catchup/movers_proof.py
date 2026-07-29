@@ -89,7 +89,16 @@ def main(argv):
     if ing not in sys.path:
         sys.path.insert(0, ing)
     import round_movers as MV
-    prod_populated = prod.get('rounds') == ROUNDS and len(prod.get('reports') or {}) == len(ROUNDS)
+    # #256: this used to demand production hold EXACTLY [15..19] and exactly five reports. That is not a
+    # property of the history bridge -- it is a freeze on the production round count, and it went red the
+    # moment R20 was applied (production now carries [15..20]). What this section exists to prove is that
+    # the owner-authorised R15-R19 history is STILL THERE and unaltered, so: production must CONTAIN every
+    # one of those rounds with a report each, and the byte-exact digest anchor below keeps the teeth --
+    # reset-to-empty fails containment, and any edit to those five reports fails the digest.
+    prod_rounds = prod.get('rounds') or []
+    prod_reports = prod.get('reports') or {}
+    prod_populated = (all(r in prod_rounds for r in ROUNDS)
+                      and all(str(r) in prod_reports for r in ROUNDS))
     trans_owner_approved = trans.get('kind') == 'movers_release_transition' and trans.get('owner_approved') is True
     prod_digest = MV.canonical_reports_digest(prod, ROUNDS) if prod_populated else None
     digest_matches = bool(trans.get('applies_to', {}).get('historical_reports_digest') == prod_digest)

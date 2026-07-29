@@ -1,185 +1,292 @@
 {
+  "adoption": {
+    "checks": [
+      {
+        "check": "(10) final Sigma present v == 764021",
+        "detail": 771772,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(10) zero present-v movers vs the accepted reference vector (5546f278)",
+        "detail": "749 movers",
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(10) zero present-rank movers vs the accepted reference vector",
+        "detail": "758 rank movers",
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(10) zero present-order movers vs the accepted reference vector",
+        "detail": "ORDER DIFFERS",
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) lens +1: Sigma PVC[1..64] == 64617 (RELEASED curve)",
+        "detail": 64617,
+        "lifetime": "adoption",
+        "pass": true
+      },
+      {
+        "check": "(13) lens +1: F5 entrant layer == 83538 (RELEASED)",
+        "detail": 85403,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) lens +1: residual_nd == draft_pvc(69266) - 64617 == 4649 (RELEASED)",
+        "detail": 4795,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) lens +1: residual_mech == mech_pvc == 14272 (RELEASED)",
+        "detail": 15991,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) lens +2: Sigma PVC[1..64] == 64617 (RELEASED curve)",
+        "detail": 64617,
+        "lifetime": "adoption",
+        "pass": true
+      },
+      {
+        "check": "(13) lens +2: F5 entrant layer == 83538 (RELEASED)",
+        "detail": 85403,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) lens +2: residual_nd == draft_pvc(69266) - 64617 == 4649 (RELEASED)",
+        "detail": 4795,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) lens +2: residual_mech == mech_pvc == 14272 (RELEASED)",
+        "detail": 15991,
+        "lifetime": "adoption",
+        "pass": false
+      },
+      {
+        "check": "(13) final board carries Board B phantomPicks/phantomLayer/phantomTotals unchanged",
+        "detail": "entrant_layer=85403 vs 83538; phantomPicks 130 vs Board B 164",
+        "lifetime": "adoption",
+        "pass": false
+      }
+    ],
+    "gating": false,
+    "n": 13,
+    "n_pass": 2,
+    "note": "equality with the RELEASED baseline board. The tree carries the held candidate declared in data/release_contract.json held_candidates, so this lane is expected RED until the owner adopts. Run as a gate with `invariant_proof.py --adoption` at the adoption step.",
+    "ok": false,
+    "ok_f5": false,
+    "ok_present": false
+  },
   "checks": [
+    {
+      "check": "(10) reference vector is the accepted balanced/strict 5546f278 (active 804, sum_v 764021)",
+      "detail": "board=5546f278 active=804 sum_v=764021",
+      "lifetime": "per-push",
+      "pass": true
+    },
     {
       "check": "(10) final active count == 804",
       "detail": 804,
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(10) final Sigma present v == 752427",
-      "detail": 752427,
-      "pass": true
-    },
-    {
-      "check": "(10) zero present-v movers vs Board A",
-      "detail": "0 movers",
-      "pass": true
-    },
-    {
-      "check": "(10) no added/removed active players vs Board A",
+      "check": "(10) no added/removed active players vs the accepted reference vector",
       "detail": "added=0 removed=0",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(10) zero present-rank movers vs Board A",
-      "detail": "0 rank movers",
+      "check": "(11) forward vectors present + numeric for all 804 active (board of record; its md5 is emitted in this proof's identity footer)",
+      "detail": "present=True active=804",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(10) zero present-order movers vs Board A",
-      "detail": "order identical",
-      "pass": true
-    },
-    {
-      "check": "(11) vP1 == Board B for all 804 active",
-      "detail": "equal=804 changed=0",
-      "pass": true
-    },
-    {
-      "check": "(11) vP2 == Board B for all 804 active",
-      "detail": "equal=804 changed=0",
-      "pass": true
-    },
-    {
-      "check": "(11) no missing/added active rows vs Board B",
+      "check": "(11) exact active universe vs Board B (no missing/added rows)",
       "detail": "missing=0 added=0",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) exactly 64 visible 2027 national-draft placeholders (+1)",
       "detail": 64,
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) exactly 64 visible 2028 national-draft placeholders (+2)",
       "detail": 64,
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) all visible labelYear correct (2027/2028)",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) zero visible future placeholders on the current player ladder",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) unique stable asset ids",
       "detail": "128 ids 128 unique",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) labels distinguish year + pick number",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) no AFL club / no AFFL club on any visible pick",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) no accidental player identity (no key join; kind/asset == pick)",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) exact PVC equality for every visible pick (v == PVC[n])",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) release-active PVC monotone non-increasing over 1..64",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) visible picks sorted by value desc (both lenses)",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(12) lensPicks carries ONLY the 64 rankable visible picks per lens (no residual rows in the ranking)",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +1: visible == Sigma PVC[1..64] == 64617",
-      "detail": 64617,
+      "check": "(13) lens +1: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64",
+      "detail": "visible=64617 sumPVC=64617 declared=64617",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +1: visible + residual == 83538 (F5 entrant layer)",
-      "detail": 83538,
+      "check": "(13) lens +1: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer)",
+      "detail": "parts=85403 declared=85403 total=85403 draft+mech=85403 phantom=85403",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +1: residual_nd == draft_pvc(69266) - 64617 == 4649",
-      "detail": 4649,
+      "check": "(13) lens +1: residual_nd == f5_draft_pvc - visible_1_64",
+      "detail": "residual_nd=4795 draft_pvc=69412 - visible=64617",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +1: residual_mech == mech_pvc == 14272",
-      "detail": 14272,
+      "check": "(13) lens +1: residual_mech == f5_mech_pvc == phantomTotals mech_pvc",
+      "detail": "residual_mech=15991 f5_mech=15991 phantom_mech=15991",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) lens +1: draftAssetTotals reconciled_to_f5",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +2: visible == Sigma PVC[1..64] == 64617",
-      "detail": 64617,
+      "check": "(13) lens +2: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64",
+      "detail": "visible=64617 sumPVC=64617 declared=64617",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +2: visible + residual == 83538 (F5 entrant layer)",
-      "detail": 83538,
+      "check": "(13) lens +2: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer)",
+      "detail": "parts=85403 declared=85403 total=85403 draft+mech=85403 phantom=85403",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +2: residual_nd == draft_pvc(69266) - 64617 == 4649",
-      "detail": 4649,
+      "check": "(13) lens +2: residual_nd == f5_draft_pvc - visible_1_64",
+      "detail": "residual_nd=4795 draft_pvc=69412 - visible=64617",
+      "lifetime": "per-push",
       "pass": true
     },
     {
-      "check": "(13) lens +2: residual_mech == mech_pvc == 14272",
-      "detail": 14272,
+      "check": "(13) lens +2: residual_mech == f5_mech_pvc == phantomTotals mech_pvc",
+      "detail": "residual_mech=15991 f5_mech=15991 phantom_mech=15991",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) lens +2: draftAssetTotals reconciled_to_f5",
       "detail": "",
+      "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) Board B sealed entrant layer == 83538 (draft 69266 + mech 14272)",
       "detail": "",
-      "pass": true
-    },
-    {
-      "check": "(13) final board carries Board B phantomPicks/phantomLayer/phantomTotals unchanged",
-      "detail": "",
+      "lifetime": "per-push",
       "pass": true
     }
   ],
+  "deferred": [
+    {
+      "check": "(11) vP1/vP2 acceptance vs Board B \u2014 owner-DEFERRED (forward-lens not accepted)",
+      "detail": "vP1 changed=783/804, vP2 changed=781/804 vs the SUPERSEDED R14 Board B 1f10220c (present-v also moved +789, the STOP-1 advance). No accepted R19 forward oracle exists; the forward-lens repair is owner-deferred. Deltas recorded, NOT asserted as a pass.",
+      "status": "DEFERRED"
+    }
+  ],
   "final_board_identity": {
-    "balanced_board_md5_lineage": "06d8af60b679a12db07c064c60c065f9",
-    "md5": "2ab73a6fed1f06fc8eecc2ce597c2aec",
-    "sha256": "0026c3f82e6bb5558e70163a7136d0e8e0dd7ffd409aeb9b33b89e5e7ab5b65f"
+    "balanced_board_md5_lineage": "5546f278788196c680a987c26e4f0150",
+    "md5": "750446d74e7c5d6edeb132168db53259",
+    "sha256": "f8d68be7a5abe1020bfd71b5087f67b03c4a79daf98c86e3ab6fc6983fdd83fb"
   },
   "forward": {
     "added": 0,
     "missing": 0,
-    "vP1_changed": 0,
-    "vP1_equal": 804,
-    "vP2_changed": 0,
-    "vP2_equal": 804
+    "oracle": "Board B 1f10220c (SUPERSEDED R14; not an R19 oracle)",
+    "present_v_moved": 789,
+    "vP1_changed": 783,
+    "vP1_equal": 21,
+    "vP2_changed": 781,
+    "vP2_equal": 23
   },
-  "n": 33,
-  "n_pass": 33,
-  "ok": true
+  "forward_lens_deferred": true,
+  "mode": "per-push",
+  "n": 28,
+  "n_pass": 28,
+  "ok": true,
+  "ok_draft": true,
+  "ok_f5": true,
+  "ok_forward": true,
+  "ok_present": true
 }

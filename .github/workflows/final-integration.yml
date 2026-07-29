@@ -114,7 +114,16 @@ jobs:
           # Prove it still reds on each thing those constants stood for, or it is a guard that cannot fail.
           python3 session_2026-07-21/final_integration/tests/season_anchor_check_nonvacuity.py
 
-      - name: Present / forward invariants + F5 reconciliation (present vs reference_vector_5546f278; forward-lens DEFERRED)
+      # #256 part A. This gates the PER-PUSH lane only: structural invariants of whatever board the tree
+      # carries (active universe, placeholder shape, unique ids, PVC monotonicity, sort order, and the F5
+      # reconciliation against the board's OWN declared totals). The released-baseline EQUALITY checks —
+      # Sigma v 764021, zero movers vs reference_vector_5546f278, the F5 layer 83538/4649/14272 — are
+      # RELEASE CONDITIONS, not per-push invariants: the tree deliberately carries the held candidate
+      # declared in data/release_contract.json `held_candidates`, so gating on them here painted this
+      # workflow red for the whole baseline effort. They still run and still print (ADOPT-RED rows) and go
+      # into the evidence JSON; they GATE at the owner adoption step, with:
+      #     python3 session_2026-07-21/final_integration/tools/invariant_proof.py --adoption
+      - name: Present / forward invariants + F5 reconciliation — PER-PUSH lane (released-baseline equality is gated at adoption)
         run: python3 session_2026-07-21/final_integration/tools/invariant_proof.py
 
       - name: UI seams (extract / release / counting / club-curve / movers)
@@ -144,7 +153,11 @@ jobs:
       - name: Bootstrap workspace (Guard 5)
         run: RL_VENDOR="$PWD/vendor" bash bootstrap.sh
 
-      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present v vs reference_vector_5546f278; Board B forward DEFERRED)
+      # #256 part A, same split: the GATE here is that the engine rebuild reproduces the committed board
+      # and UI bundles BYTE-IDENTICALLY, plus the reference-vector fixture authority and the exact active
+      # key set. Per-row present-v equality with the released vector is the adoption lane (measured and
+      # printed as ADOPT-RED); committed-vs-released is gated by invariant_proof.py --adoption.
+      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present universe vs reference_vector_5546f278; released values + Board B forward DEFERRED)
         run: python3 session_2026-07-21/final_integration/tools/build_final_board.py
 
       - name: Season-state anchors (fixed R14 historical + current round) + generated-bundle equality

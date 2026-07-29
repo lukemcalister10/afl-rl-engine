@@ -6,11 +6,11 @@
     "B": 19,
     "C": 2
   },
-  "n_reads": 155,
+  "n_reads": 159,
   "n_vars": 82,
   "ok": true,
   "root": "/home/user/afl-rl-engine",
-  "surface_file_count": 84,
+  "surface_file_count": 89,
   "unclassified": [],
   "vars": [
     {
@@ -120,7 +120,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 281
+          "line": 343
         }
       ],
       "var": "RL_CAPT"
@@ -148,7 +148,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 440
+          "line": 502
         }
       ],
       "var": "RL_DIAL14"
@@ -204,7 +204,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 295
+          "line": 311
         },
         {
           "default": "1",
@@ -293,7 +293,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 1009
+          "line": 1125
         }
       ],
       "var": "RL_L5_PICKLESS"
@@ -307,17 +307,17 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 171
+          "line": 187
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 185
+          "line": 201
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 447
+          "line": 509
         }
       ],
       "var": "RL_LEGE"
@@ -336,12 +336,12 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 185
+          "line": 201
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 625
+          "line": 654
         }
       ],
       "var": "RL_LEGF"
@@ -535,27 +535,27 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1539
+          "line": 1610
         },
         {
           "default": "1",
           "file": "engine/rl_after/one_source_selftest.py",
-          "line": 330
+          "line": 392
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 132
+          "line": 135
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 560
+          "line": 589
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 789
+          "line": 889
         }
       ],
       "var": "RL_PVC2"
@@ -569,7 +569,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1522
+          "line": 1583
         }
       ],
       "var": "RL_PVCADOPT"
@@ -583,7 +583,7 @@
         {
           "default": "0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1515
+          "line": 1576
         },
         {
           "default": "<expr:<default>>",
@@ -705,7 +705,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 423
+          "line": 485
         }
       ],
       "var": "RL_UNCOMP"
@@ -719,7 +719,7 @@
         {
           "default": null,
           "file": "engine/rl_after/rl_model.py",
-          "line": 428
+          "line": 490
         }
       ],
       "var": "RL_UNCOMP_S"
@@ -733,7 +733,7 @@
         {
           "default": "0",
           "file": "engine/rl_after/rl_model.py",
-          "line": 430
+          "line": 492
         }
       ],
       "var": "RL_UNCONSERVE"
@@ -752,12 +752,12 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1331
+          "line": 1340
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1348
+          "line": 1387
         }
       ],
       "var": "RL_V0SURF_REFIT"
@@ -995,7 +995,7 @@
         {
           "default": "rl_app_data.json",
           "file": "engine/rl_after/one_source_selftest.py",
-          "line": 94
+          "line": 105
         },
         {
           "default": "rl_app_data.json",
@@ -1005,7 +1005,7 @@
         {
           "default": "rl_app_data.json",
           "file": "engine/rl_after/s4_matrix_M1v7.py",
-          "line": 122
+          "line": 124
         }
       ],
       "var": "RL_APP_DATA"
@@ -1064,12 +1064,12 @@
         {
           "default": null,
           "file": "release_contract.py",
-          "line": 83
+          "line": 151
         },
         {
           "default": null,
           "file": "release_contract.py",
-          "line": 96
+          "line": 164
         }
       ],
       "var": "RL_CONFIG_MODE"
@@ -1160,7 +1160,7 @@
         {
           "default": null,
           "file": "engine/rl_after/one_source_selftest.py",
-          "line": 45
+          "line": 56
         },
         {
           "default": null,
@@ -1170,7 +1170,7 @@
         {
           "default": ".",
           "file": "engine/rl_after/rl_export.py",
-          "line": 629
+          "line": 658
         },
         {
           "default": null,
@@ -1253,6 +1253,26 @@
           "line": 17
         },
         {
+          "default": "<required>",
+          "file": "engine/rl_after/ingestion/sibling_repin.py",
+          "line": 385
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/ingestion/sibling_repin.py",
+          "line": 491
+        },
+        {
+          "default": "<required>",
+          "file": "engine/rl_after/ingestion/sibling_repin.py",
+          "line": 492
+        },
+        {
+          "default": "<required>",
+          "file": "engine/rl_after/ingestion/sibling_repin.py",
+          "line": 533
+        },
+        {
           "default": null,
           "file": "boot_guard.py",
           "line": 32
@@ -1295,7 +1315,7 @@
         {
           "default": null,
           "file": "release_contract.py",
-          "line": 34
+          "line": 51
         },
         {
           "default": null,
@@ -1319,7 +1339,7 @@
         {
           "default": "<expr:DEFAULT_SEASON_ROUNDS>",
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 241
+          "line": 251
         }
       ],
       "var": "RL_SEASON_ROUNDS"
@@ -1333,7 +1353,7 @@
         {
           "default": "<expr:os.path.join(UI_DATA, \"board_view_working.js\">",
           "file": "ui/tools/ingest_inputs.py",
-          "line": 28
+          "line": 31
         }
       ],
       "var": "RL_UI_BOARD_BUNDLE"
@@ -1352,7 +1372,7 @@
         {
           "default": "<expr:os.path.join(ROOT, \"data\", \"expected_boot.json\">",
           "file": "ui/tools/ingest_inputs.py",
-          "line": 34
+          "line": 37
         }
       ],
       "var": "RL_UI_BOOT"
@@ -1366,7 +1386,7 @@
         {
           "default": "<expr:os.path.join(ROOT, \"ui\", \"release_pick_curve.json\">",
           "file": "ui/tools/ingest_inputs.py",
-          "line": 32
+          "line": 35
         }
       ],
       "var": "RL_UI_CURVE_CONTRACT"
@@ -1380,7 +1400,7 @@
         {
           "default": "<expr:os.path.join(ROOT, \"engine\", \"rl_after\">",
           "file": "ui/tools/ingest_inputs.py",
-          "line": 30
+          "line": 33
         }
       ],
       "var": "RL_UI_ENGINE_DIR"
@@ -1394,7 +1414,7 @@
         {
           "default": "<expr:os.path.join(ROOT, \"docs\", \"inputs\">",
           "file": "ui/tools/ingest_inputs.py",
-          "line": 26
+          "line": 29
         }
       ],
       "var": "RL_UI_INPUTS"
@@ -1408,7 +1428,7 @@
         {
           "default": "<expr:os.path.join(UI_DATA, \"club_valuation.js\">",
           "file": "ui/tools/ingest_inputs.py",
-          "line": 35
+          "line": 38
         }
       ],
       "var": "RL_UI_OUT"
@@ -1483,17 +1503,17 @@
         {
           "default": null,
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 698
+          "line": 767
         },
         {
           "default": "/home/claude/rl_vendor",
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 1098
+          "line": 1422
         },
         {
           "default": "/home/claude/rl_vendor",
           "file": "engine/rl_after/ingestion/staged_apply.py",
-          "line": 1150
+          "line": 1474
         }
       ],
       "var": "RL_VENDOR"
