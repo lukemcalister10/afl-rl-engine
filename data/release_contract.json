@@ -24,6 +24,30 @@
     "curve_payload_md5": "89c14729",
     "numeraire_pin1": 3000
   },
+  "held_candidates": [
+    {
+      "field": "board",
+      "release": "8a38cca44f53152090cb3df3f78bd47e",
+      "candidate": "750446d74e7c5d6edeb132168db53259",
+      "declared_by": "#217",
+      "reason": "The ruled pricing split (national curve 1-64, everything past 64 into the pool) rebuilt the board in the tree. The board move is deliberately NOT made: no balanced reference, no UI bundles, no history column - one column is written per LANDED change, and this baseline effort gets its single column when the whole of it lands. The shipped UI bundle still stamps the released board. Cleared at owner adoption, in the same commit that re-stamps identities.board and removes this declaration."
+    },
+    {
+      "field": "engine_head",
+      "release": "7c452715dc98ac42723834d08021e9d2",
+      "candidate": "444831d5402a8ef173e2ca7721d50387",
+      "declared_by": "#217",
+      "reason": "engine/rl_after/_merged_recover.py carries the split + Addendum-1 fit-site changes that produced the held candidate board. Same hold, same adoption commit."
+    },
+    {
+      "field": "rl_model",
+      "release": "4f776e073ea50548ebe017cdb2f06368",
+      "candidate": "eb1e065a398a08615eca6088050c3163",
+      "declared_by": "#217",
+      "reason": "engine/rl_after/rl_model.py carries the same split work. Same hold, same adoption commit."
+    }
+  ],
+  "_held_candidates_doc": "#251 part A, owner ruling 2026-07-29. A DECLARED held candidate is a field where the TREE deliberately runs ahead of what is RELEASED. Each entry pins BOTH sides, so only that exact pair is excused; move either side and the gate HALTs again. An UNDECLARED mismatch HALTs exactly as before. These declarations live inside the contract, so contract_sha256 covers them - one cannot be added without re-stamping. AT ADOPTION: re-stamp identities.<field> to the candidate value and DELETE that entry in the same commit. Removal is self-enforcing, not a convention: once the two sides agree, a surviving declaration excuses nothing and is itself a rejection naming the field.",
   "must_be_unset": [
     "RL_UNCOMP_S",
     "RL_LSYM_TAB",
@@ -68,5 +92,5 @@
     "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
   },
   "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-  "contract_sha256": "26d962e072cf64e06d56c3b3a598dd1d0328b0955af0999b299c570b7776fb7d"
+  "contract_sha256": "826de2871971895c4f1797baf3e69146727302b2f2da7970ae5ad9ed10c6c9e9"
 }

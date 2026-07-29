@@ -175,6 +175,105 @@ def main():
         ok('stale identity pin halts', halts(lambda: RC.verify('gate', t5, halt=True)))
         r(); shutil.rmtree(t5, ignore_errors=True)
 
+        # --- DECLARED HELD CANDIDATE (#251 part A) ----------------------------------------------------
+        # The tree may deliberately run ahead of the release (#217 committed the pricing-split board and
+        # engine without releasing them). A hold must be an EXPLICIT DECLARATION that pins BOTH sides; an
+        # undeclared mismatch, a declaration that has stopped describing the state, an anonymous one, or one
+        # smuggled in without re-stamping the contract must all still HALT. Proven in both directions.
+        def held_fixture(decls, boot_board='99998888', restamp=True):
+            """Fixture whose expected_boot board is moved to `boot_board` (the tree runs ahead), carrying
+            the given held_candidates declarations."""
+            t = tempfile.mkdtemp()
+            # restamp=True: the declaration is part of the contract make_fixture hashes (the honest route).
+            # restamp=False: the contract is stamped WITHOUT the declaration, which is then edited in after
+            # the fact — the smuggling route, which contract_sha256 must catch.
+            make_fixture(t, contract_over=({'held_candidates': decls} if restamp else None))
+            b = json.load(open(os.path.join(t, 'data', 'expected_boot.json')))
+            b['board'] = boot_board
+            json.dump(b, open(os.path.join(t, 'data', 'expected_boot.json'), 'w'))
+            if not restamp:
+                cp = os.path.join(t, 'data', 'release_contract.json')
+                cj = json.load(open(cp))
+                cj['held_candidates'] = decls        # contract_sha256 deliberately left on the old body
+                json.dump(cj, open(cp, 'w'))
+            return t
+
+        GOOD = [{'field': 'board', 'release': 'aaaa1111', 'candidate': '99998888',
+                 'declared_by': '#217', 'reason': 'board deliberately committed ahead of the release'}]
+
+        # (1) POSITIVE — a correctly declared hold VERIFIES CLEAN. Without this the negatives below are
+        #     vacuous: every one of them would "halt" simply because the fixture is drifted.
+        t10 = held_fixture(GOOD)
+        r = with_env(RL_REPO=t10, RL_CONFIG_MODE='gate')
+        ok('DECLARED held candidate verifies clean (positive control)',
+           not halts(lambda: RC.verify('gate', t10, halt=True)))
+        r(); shutil.rmtree(t10, ignore_errors=True)
+
+        # (2) the SAME drift with NO declaration still HALTS (this is today's red, unchanged)
+        t11 = held_fixture([])
+        r = with_env(RL_REPO=t11, RL_CONFIG_MODE='gate')
+        ok('the same mismatch UNDECLARED still halts', halts(lambda: RC.verify('gate', t11, halt=True)))
+        r(); shutil.rmtree(t11, ignore_errors=True)
+
+        # (3) a hold on `board` does NOT excuse a mismatch on any OTHER pinned identity
+        t12 = held_fixture(GOOD)
+        b = json.load(open(os.path.join(t12, 'data', 'expected_boot.json')))
+        b['engine_head'] = 'tampered0'
+        json.dump(b, open(os.path.join(t12, 'data', 'expected_boot.json'), 'w'))
+        r = with_env(RL_REPO=t12, RL_CONFIG_MODE='gate')
+        ok('a declared board hold does NOT excuse an undeclared engine_head mismatch',
+           halts(lambda: RC.verify('gate', t12, halt=True)))
+        r(); shutil.rmtree(t12, ignore_errors=True)
+
+        # (4) the declaration pins the CANDIDATE too — the tree moving to a third identity re-HALTs
+        t13 = held_fixture(GOOD, boot_board='7777aaaa')
+        r = with_env(RL_REPO=t13, RL_CONFIG_MODE='gate')
+        ok('the tree moving off the declared candidate re-halts',
+           halts(lambda: RC.verify('gate', t13, halt=True)))
+        r(); shutil.rmtree(t13, ignore_errors=True)
+
+        # (5) ADOPTION IS SELF-ENFORCING: once both sides agree, a leftover declaration is itself a reject,
+        #     so the adoption commit cannot forget to remove it.
+        t14 = tempfile.mkdtemp()
+        make_fixture(t14, contract_over={'held_candidates': [dict(GOOD[0], candidate='aaaa1111')]})
+        r = with_env(RL_REPO=t14, RL_CONFIG_MODE='gate')
+        ok('a declaration left behind after adoption halts', halts(lambda: RC.verify('gate', t14, halt=True)))
+        r(); shutil.rmtree(t14, ignore_errors=True)
+
+        # (6) a hold may not be ANONYMOUS — it must state why
+        t15 = held_fixture([{k: v for k, v in GOOD[0].items() if k != 'reason'}])
+        r = with_env(RL_REPO=t15, RL_CONFIG_MODE='gate')
+        ok('a hold with no stated reason halts', halts(lambda: RC.verify('gate', t15, halt=True)))
+        r(); shutil.rmtree(t15, ignore_errors=True)
+
+        # (7) a hold on a field the gate does not bind cannot be used to widen the excuse
+        t16 = held_fixture(GOOD + [{'field': 'not_an_identity', 'release': 'x', 'candidate': 'y',
+                                    'reason': 'smuggled'}])
+        r = with_env(RL_REPO=t16, RL_CONFIG_MODE='gate')
+        ok('a hold on an unbound field halts', halts(lambda: RC.verify('gate', t16, halt=True)))
+        r(); shutil.rmtree(t16, ignore_errors=True)
+
+        # (8) TAMPER: a declaration added without re-stamping contract_sha256 halts on the self-hash, so a
+        #     hold cannot be slipped into a released contract.
+        t17 = held_fixture(GOOD, restamp=False)
+        r = with_env(RL_REPO=t17, RL_CONFIG_MODE='gate')
+        ok('a declaration added without re-stamping contract_sha256 halts',
+           halts(lambda: RC.verify('gate', t17, halt=True)))
+        r(); shutil.rmtree(t17, ignore_errors=True)
+
+        # (9) restamp_dynamic drops the hold on the fields it re-pins, and keeps the others
+        t18 = held_fixture(GOOD + [{'field': 'engine_head', 'release': 'cccc3333', 'candidate': 'eng-new',
+                                    'reason': 'engine held with the board'}])
+        RC.restamp_dynamic(t18, 14, 'newstore', 'newboard',
+                           {'calendar_progress': SS.calendar_progress(14, 24), 'exposure_pace': 0.545,
+                            'derivation_policy_id': SS.policy_id(), 'season_year': 2026,
+                            'season_total_rounds': 24})
+        _after = json.load(open(os.path.join(t18, 'data', 'release_contract.json')))
+        _fields = [d['field'] for d in _after.get('held_candidates', [])]
+        ok('restamp_dynamic drops the re-pinned board hold and keeps the engine_head hold',
+           _fields == ['engine_head'] and _after['identities']['board'] == 'newboard', str(_fields))
+        shutil.rmtree(t18, ignore_errors=True)
+
         # --- conflicting PVC provenance (unknown pathway) HALTS ----------------------------------------
         t6 = tempfile.mkdtemp()
         make_fixture(t6, contract_over={'pvc_provenance': {'adopted_pathway': 'RL_MYSTERY',
