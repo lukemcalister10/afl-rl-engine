@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v22 · supervisor pen · 2026-07-29, register v530
+# CURRENT STATE — the incoming-seat read · v23 · supervisor pen · 2026-07-29, register v531
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v530, written against main `50d5506` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v531, written against main `6b98cd4` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -130,10 +130,14 @@ separate career-position field is redundant because per-season eligibility *is* 
 with it: the position vocabulary is REPLACED with new canonical names rather than merged to a variant** —
 K-FWD→**KPF**, K-DEF→**KPD**, G-DEF→**SD**, G-FWD→**SF**, MID→**MID**, RUC/RUCK→**RUCK** — precisely so any
 un-migrated site fails visibly instead of half-matching; the rename rides WITH the data landing, one
-migration. **Two questions the owner still owes one line each:** does player-level `is_key` apply to every
-season of the career (a tall who played general before becoming key would get the key bar for those
-seasons); and the blank-cell rule — a season with no eligibility recorded must fail loudly or carry an
-explicit marked default, never silently fall back to drafted position.
+migration. **Both open questions are ANSWERED, owner words 2026-07-29:** (1) the season data is plain
+FWD/DEF/MID/RUCK from SuperCoach; `is_key` is the league's overlay and applies as a **blanket rule** to
+every FWD/DEF season of that player's career — with **Harrison Himmelberg the one named exception,
+per-season-categorised in the sheet itself** (Key Forward and General Defender seasons). (2) Every
+training season has a position; only a **bust absent from the training data** falls to drafted position —
+an explicit bounded default, not a silent fallback. The sheet routes to the LANDING seat when fired, not
+to the seam — the landing directive makes the seat prove it mechanically (full coverage, exact vocabulary,
+overlay with Himmelberg differing, marked bust-default, counts reconciling to the 11,264).
 
 **The four-field model — owner's words, 2026-07-28, the specification:**
 
