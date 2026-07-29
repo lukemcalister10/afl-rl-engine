@@ -46,7 +46,7 @@ Bailey Williams,Collingwood Magpies,"G-DEF,MID",WB
 Balyn O'Brien,Free agents,G-DEF,
 Bayley Fritsch,Geelong Cats,G-FWD,MEL
 Beau Addinsall,Fremantle Dockers,MID,GCS
-Beau McCreery,West Coast Eagles,G-FWD,COL
+Beau McCreery,Sydney Swans,G-FWD,COL
 Ben Ainsworth,Brisbane Lions,G-FWD,CAR
 Ben Camporeale,Fremantle Dockers,MID,CAR
 Ben Jepson,Free agents,MID,
@@ -80,14 +80,14 @@ Brayden Cook,North Melbourne Kangaroos,"MID,G-FWD",ADE
 Brayden Fiorini,Brisbane Lions,MID,ESS
 Brayden George,Richmond Tigers,G-FWD,NM
 Brayden Maynard,North Melbourne Kangaroos,G-DEF,COL
-Brennan Cox,Sydney Swans,"G-DEF,K-DEF",FRE
+Brennan Cox,West Coast Eagles,"G-DEF,K-DEF",FRE
 Brent Daniels,Essendon Bombers,"G-FWD,MID",GWS
 Brodie Grundy,St Kilda Saints,RUCK,SYD
 Brodie Kemp,Geelong Cats,"G-FWD,K-FWD",CAR
 Brody Mihocek,Brisbane Lions,"G-FWD,K-FWD",MEL
 Bruce Reville,North Melbourne Kangaroos,MID,BRI
 Buku Khamis,Brisbane Lions,"G-DEF,G-FWD,K-FWD,K-DEF",WB
-Caiden Cleary,Carlton Blues,G-FWD,SYD
+Caiden Cleary,Richmond Tigers,G-FWD,SYD
 Caleb Daniel,Port Adelaide Power,G-DEF,NM
 Caleb Graham,Free agents,"K-DEF,G-DEF",
 Caleb Lewis,Free agents,"K-FWD,G-FWD",
@@ -158,7 +158,7 @@ Daniel Butler,Free agents,G-FWD,
 Daniel Curtin,Melbourne Demons,MID,ADE
 Daniel McStay,Brisbane Lions,"G-FWD,K-FWD",COL
 Daniel Rioli,Collingwood Magpies,G-DEF,GCS
-Daniel Turner,West Coast Eagles,"G-DEF,K-DEF",MEL
+Daniel Turner,Sydney Swans,"G-DEF,K-DEF",MEL
 Dante Visentini,Adelaide Crows,"RUCK,G-FWD,K-FWD",PA
 Darcy Byrne-Jones,Port Adelaide Power,"G-FWD,G-DEF",PA
 Darcy Cameron,West Coast Eagles,RUCK,COL
@@ -180,7 +180,7 @@ Dylan Patterson,Melbourne Demons,G-DEF,GCS
 Dylan Stephens,Essendon Bombers,MID,NM
 Dyson Sharp,Fremantle Dockers,MID,ESS
 Eamonn Armstrong,Hawthorn Hawks,G-DEF,STK
-Ed Langdon,Sydney Swans,"G-DEF,G-FWD",MEL
+Ed Langdon,West Coast Eagles,"G-DEF,G-FWD",MEL
 Ed Richards,St Kilda Saints,MID,WB
 Edward Allan,Richmond Tigers,MID,COL
 Elijah Hewett,Melbourne Demons,MID,WCE
@@ -288,7 +288,7 @@ Jack Payne,Brisbane Lions,"G-DEF,K-DEF",BRI
 Jack Ross,Collingwood Magpies,"MID,G-FWD",RIC
 Jack Scrimshaw,Essendon Bombers,G-DEF,HAW
 Jack Silvagni,Collingwood Magpies,"G-DEF,K-DEF",STK
-Jack Sinclair,Port Adelaide Power,G-DEF,STK
+Jack Sinclair,Western Bulldogs,G-DEF,STK
 Jack Steele,Port Adelaide Power,MID,MEL
 Jack Viney,North Melbourne Kangaroos,MID,MEL
 Jack Watkins,Adelaide Crows,"MID,G-FWD",PA
@@ -311,7 +311,7 @@ Jaeger O'Meara,Brisbane Lions,MID,FRE
 Jagga Smith,Fremantle Dockers,"MID,G-FWD",CAR
 Jai Culley,Western Bulldogs,MID,MEL
 Jai Murray,Fremantle Dockers,MID,GCS
-Jai Newcombe,West Coast Eagles,MID,HAW
+Jai Newcombe,Sydney Swans,MID,HAW
 Jai Saxena,West Coast Eagles,G-FWD,COL
 Jai Serong,North Melbourne Kangaroos,"G-DEF,K-DEF",SYD
 Jaime Uhr-Henry,Free agents,RUCK,
@@ -320,7 +320,7 @@ Jake Kolodjashnij,Port Adelaide Power,"G-DEF,K-DEF",GEE
 Jake Lever,Collingwood Magpies,G-DEF,MEL
 Jake Lloyd,Geelong Cats,"MID,G-FWD",SYD
 Jake Melksham,Free agents,"K-FWD,G-FWD",
-Jake Riccardi,Port Adelaide Power,"RUCK,G-FWD,K-FWD",GWS
+Jake Riccardi,Western Bulldogs,"RUCK,G-FWD,K-FWD",GWS
 Jake Rogers,Melbourne Demons,G-FWD,GCS
 Jake Soligo,Carlton Blues,"MID,G-FWD",ADE
 Jake Stringer,Brisbane Lions,G-FWD,GWS
@@ -352,7 +352,7 @@ Jasper Alger,Carlton Blues,G-FWD,RIC
 Jaxon Artemis,Hawthorn Hawks,G-DEF,ESS
 Jaxon Prior,Fremantle Dockers,G-DEF,ESS
 Jay Polkinghorne,Fremantle Dockers,"G-FWD,K-FWD",GEE
-Jayden Laverde,West Coast Eagles,"G-DEF,K-DEF",GWS
+Jayden Laverde,Sydney Swans,"G-DEF,K-DEF",GWS
 Jayden Nguyen,Free agents,G-DEF,
 Jayden Short,Port Adelaide Power,G-DEF,RIC
 Jed Adams,Melbourne Demons,"G-DEF,K-DEF",MEL
@@ -434,8 +434,8 @@ Kye Annand,Carlton Blues,"K-DEF,G-DEF",RIC
 Kye Fincher,Hawthorn Hawks,"G-DEF,MID",STK
 Kyle Langford,St Kilda Saints,"G-FWD,K-FWD,MID",ESS
 Kysaiah Pickett,Richmond Tigers,"MID,G-FWD",MEL
-Lachie Jaques,Melbourne Demons,G-DEF,
-Lachie Neale,Sydney Swans,MID,BRI
+Lachie Jaques,Melbourne Demons,G-DEF,WB
+Lachie Neale,West Coast Eagles,MID,BRI
 Lachie Sullivan,Free agents,G-FWD,
 Lachie Whitfield,North Melbourne Kangaroos,G-DEF,GWS
 Lachlan Ash,Melbourne Demons,G-DEF,GWS
@@ -444,7 +444,7 @@ Lachlan Bramble,Collingwood Magpies,"G-DEF,G-FWD",WB
 Lachlan Carmichael,Hawthorn Hawks,"G-DEF,MID",WB
 Lachlan Cowan,Essendon Bombers,G-DEF,CAR
 Lachlan Fogarty,Free agents,G-FWD,
-Lachlan Gulbin,Sydney Swans,G-FWD,GCS
+Lachlan Gulbin,West Coast Eagles,G-FWD,GCS
 Lachlan Jones,Adelaide Crows,G-DEF,PA
 Lachlan McAndrew,Brisbane Lions,RUCK,ADE
 Lachlan McNeil,Free agents,G-FWD,
@@ -473,7 +473,7 @@ Liam Hetherton,St Kilda Saints,"G-FWD,K-FWD",SYD
 Liam McMahon,Free agents,"K-FWD,G-FWD",
 Liam O'Connell,West Coast Eagles,G-DEF,STK
 Liam Puncher,North Melbourne Kangaroos,K-DEF,COL
-Liam Reidy,Western Bulldogs,"RUCK,G-FWD,K-FWD",CAR
+Liam Reidy,Port Adelaide Power,"RUCK,G-FWD,K-FWD",CAR
 Liam Ryan,Melbourne Demons,G-FWD,STK
 Liam Stocker,Free Agents,G-DEF,STK
 Lincoln McCarthy,Essendon Bombers,"G-FWD,G-DEF",BRI
@@ -508,7 +508,7 @@ Mani Liddy,North Melbourne Kangaroos,MID,PA
 Marc Pittonet,Sydney Swans,RUCK,CAR
 Marcus Bontempelli,West Coast Eagles,MID,WB
 Marcus Herbert,Essendon Bombers,MID,WCE
-Marcus Windhager,Western Bulldogs,"MID,G-DEF",STK
+Marcus Windhager,Port Adelaide Power,"MID,G-DEF",STK
 Mark Blicavs,Geelong Cats,"RUCK,MID",GEE
 Mark Keane,Adelaide Crows,"G-DEF,K-DEF",ADE
 Mark O'Connor,Brisbane Lions,"G-DEF,MID",GEE
@@ -665,7 +665,7 @@ Saad El-Hawli,North Melbourne Kangaroos,MID,ESS
 Sam Allen,Sydney Swans,"MID,G-FWD",WCE
 Sam Banks,Carlton Blues,"G-DEF,MID",RIC
 Sam Berry,Sydney Swans,MID,ADE
-Sam Butler,Richmond Tigers,"MID,G-FWD",HAW
+Sam Butler,Carlton Blues,"MID,G-FWD",HAW
 Sam Clohesy,Sydney Swans,MID,GCS
 Sam Cumming,Carlton Blues,MID,RIC
 Sam Darcy,Adelaide Crows,"G-FWD,K-FWD",WB
@@ -693,7 +693,7 @@ Seth Campbell,St Kilda Saints,G-FWD,RIC
 Shadeau Brain,Essendon Bombers,G-DEF,BRI
 Shai Bolton,St Kilda Saints,"MID,G-FWD",FRE
 Shannon Neale,Geelong Cats,"G-FWD,K-FWD",GEE
-Shaun Mannagh,West Coast Eagles,G-FWD,GEE
+Shaun Mannagh,Sydney Swans,G-FWD,GEE
 Sid Draper,Melbourne Demons,"MID,G-FWD",ADE
 Steele Sidebottom,West Coast Eagles,MID,COL
 Steely Green,Sydney Swans,G-FWD,RIC
@@ -741,11 +741,11 @@ Tom Gross,Melbourne Demons,"MID,G-FWD",WCE
 Tom Hanily,Richmond Tigers,G-FWD,SYD
 Tom Lynch,Adelaide Crows,"G-FWD,K-FWD",RIC
 Tom McCarthy,Melbourne Demons,G-DEF,WCE
-Tom McCartin,Sydney Swans,"G-DEF,K-DEF",SYD
+Tom McCartin,West Coast Eagles,"G-DEF,K-DEF",SYD
 Tom McDonald,Geelong Cats,"G-DEF,K-DEF",MEL
 Tom Papley,Geelong Cats,G-FWD,SYD
 Tom Powell,Carlton Blues,"MID,G-FWD",NM
-Tom Sparrow,Sydney Swans,"G-FWD,MID",MEL
+Tom Sparrow,West Coast Eagles,"G-FWD,MID",MEL
 Touk Miller,Geelong Cats,"MID,G-FWD",GCS
 Trent Rivers,Western Bulldogs,G-DEF,MEL
 Tristan Xerri,Sydney Swans,RUCK,NM
@@ -759,7 +759,7 @@ Tyler Welsh,Melbourne Demons,"G-FWD,K-FWD",ADE
 Tyrell Dewar,Melbourne Demons,"G-DEF,MID",WCE
 Tyson Stengle,St Kilda Saints,G-FWD,GEE
 Vigo Visentini,Carlton Blues,RUCK,ESS
-Wade Derksen,Western Bulldogs,"G-DEF,K-DEF",CAR
+Wade Derksen,Port Adelaide Power,"G-DEF,K-DEF",CAR
 Wayne Milera,Sydney Swans,G-DEF,ADE
 Wil Dawson,Collingwood Magpies,"G-DEF,K-DEF",NM
 Wil Parker,Western Bulldogs,G-DEF,COL
