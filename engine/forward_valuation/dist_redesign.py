@@ -36,7 +36,7 @@ REPL_DROP_PTS = float(os.environ.get('RL_REPL_DROP','3'))   # acquirable-replace
 # Per-group split (fwd -4 / other -2) REVERTED to uniform -3 (Luke, 2026-06-28): the DPP strip removes the forward-eligibility
 # basis for the forward-specific extra. PLACEHOLDER -> re-validate the drop per position on the clean single-position base.
 # NOTE: legacy env RL_REPL_DROP_FWD / RL_REPL_DROP_OTHER are now INERT (ignored); set RL_REPL_DROP to override.
-REPL_DROP = {g: REPL_DROP_PTS for g in ['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']}  # engine price6() applies this
+REPL_DROP = {g: REPL_DROP_PTS for g in ['MID','SD','SF','KPD','KPF','RUCK']}  # engine price6() applies this
 # around dp.v_at_peak (MA.REPL lowered, saved/restored). 0 = netting against the unmodified replacement bar.
 
 def _price_repl(p, band, scale, lens):                      # REPL-adjusted E[v] over a band (shared netting utility)

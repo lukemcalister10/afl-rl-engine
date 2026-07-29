@@ -38,8 +38,8 @@ pb=_L('pb',os.path.join(_FV,'par_build.py')); F=pb.fit()
 with contextlib.redirect_stdout(io.StringIO()): import compute
 MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
 SEASON_PROG=getattr(MA,'SEASON_PROG',0.58); CUR_ROUNDS=round(SEASON_PROG*22)
-GROUPS=['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']
-MULT={'MID':1.10,'GEN_DEF':1.04,'GEN_FWD':1.0,'KEY_DEF':1.0,'KEY_FWD':0.86,'RUC':1.0}
+GROUPS=['MID','SD','SF','KPD','KPF','RUCK']
+MULT={'MID':1.10,'SD':1.04,'SF':1.0,'KPD':1.0,'KPF':0.86,'RUCK':1.0}
 
 RAMP        = float(os.environ.get('PAR_RAMPS','22').split(',')[0])  # confidence ramp (level feature only now). DEFAULT 14->22 (2026-07-09 gate-integrity fix c): 22 is the official env (START_HERE §2; every gate/panel script exports PAR_RAMPS=22) and START_HERE calls 14 wrong. par_redesign is a STANDALONE mock (nothing wired into engine value()), so a clean-shell run now matches the official environment; the board/book path never reads PAR_RAMPS (the engine confidence ramp is RL_LEVEL_RAMP).
 BETA_MARGIN = 0.08    # cap sits this far below the lowest per-position par-production ratio
@@ -47,7 +47,7 @@ BETA_MARGIN = 0.08    # cap sits this far below the lowest per-position par-prod
 # near the replacement cliff (real check: Quaynor/Chapman/Bergman ~370-720), so they need a much lower floor than
 # scorers. TWO tiers: scorers ~0.5, defenders ~0.28. *** TRIGGER: if >~2 tiers are needed (e.g. KPP wants its own),
 # ABANDON beta x PVC and switch to a realized-level floor -- position-specific beta IS that idea at lower fidelity. ***
-BETA_POS = {'MID':0.50,'GEN_FWD':0.50,'KEY_FWD':0.50,'RUC':0.50,'GEN_DEF':0.28,'KEY_DEF':0.28}  # KPP=watch-item
+BETA_POS = {'MID':0.50,'SF':0.50,'KPF':0.50,'RUCK':0.50,'SD':0.28,'KPD':0.28}  # KPP=watch-item
 # band-space non-play tilt caps (Fork B guardrail):
 TILT_CAP    = 0.60    # p50 may fall at most this fraction of the (p50-p10) gap
 WIDEN_K     = 0.60    # p10 extends down by WIDEN_K * shortfall * (p50-p10)   (fat-left)
@@ -154,7 +154,7 @@ if __name__=='__main__':
         c=[p for p in MA.players if MA.GRP.get(p['pos']) and MA.gfut(p)==g and (p.get('pick') or p.get('_ft')) and MA.level_now(p) is not None]
         return c[0] if c else None
     ratios={}
-    for g in ['MID','KEY_FWD','RUC','GEN_DEF']:
+    for g in ['MID','KPF','RUCK','SD']:
         base=find_pos(g)
         if base is None: print(f"  {g}: no native player"); continue
         for pk in [3,8,15,25]:
@@ -163,7 +163,7 @@ if __name__=='__main__':
             b=band5(q,cm); pr=priceband(q,b); pv=PVCm(g,pk); r=pr/pv; ratios[(g,pk)]=r
             print(f"  {g:9s} {pk:4d}  {plv:5.1f}   {pr:7.0f}   {pv:7.0f}     {r:.2f}   band[{b[0]:.0f}/{b[2]:.0f}/{b[4]:.0f}]")
     # beta from the binding (lowest) ratio among RELIABLE cells (drop pk3 KPP thin cells)
-    rel={k:v for k,v in ratios.items() if not (k[0] in ('KEY_FWD','KEY_DEF') and k[1]<=3)}
+    rel={k:v for k,v in ratios.items() if not (k[0] in ('KPF','KPD') and k[1]<=3)}
     beta=max(0.1, min(rel.values())-BETA_MARGIN) if rel else 0.5
     print(f"  -> binding (reliable) ratio {min(rel.values()):.2f}; single-beta cap = {beta:.2f}  (vs cont.25 0.85) -- NB ratio is pick-dependent, see structure")
     def floorval(pos,pick): return BETA_POS.get(pos,0.5)*PVCm(pos,pick)   # POSITION-SPECIFIC

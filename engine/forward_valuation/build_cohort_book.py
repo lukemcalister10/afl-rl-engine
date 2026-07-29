@@ -217,7 +217,7 @@ r+=1; ws.cell(r,1,'BY YEAR-1 PLAY STATUS x POSITION').font=BOLD; r+=1
 for j,h in enumerate(['Played yr1?','Position','n','mean eventual val','mean PVC','median val÷PVC','hit-rate'],1): ws.cell(r,j,h)
 style_hdr(ws,r,7); r+=1
 for pl in [True,False]:
-    for g in ['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']:
+    for g in ['MID','SD','SF','KPD','KPF','RUCK']:
         grp_rows=[p for p in RES if played(p,1)==pl and grp(p)==g]
         n,mv,mp,mr,hr=summarise(grp_rows)
         if n==0: continue

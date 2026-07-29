@@ -43,7 +43,7 @@ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 from sklearn.ensemble import GradientBoostingRegressor
 
 Q=[0.10,0.30,0.50,0.70,0.90]
-GROUPS=['MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC']
+GROUPS=['MID','SD','SF','KPD','KPF','RUCK']
 GIDX={g:i for i,g in enumerate(GROUPS)}
 KMAX=70
 SEASON=22
