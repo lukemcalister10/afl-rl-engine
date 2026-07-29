@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v23 · supervisor pen · 2026-07-29, register v531
+# CURRENT STATE — the incoming-seat read · v24 · supervisor pen · 2026-07-29, register v532
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v531, written against main `6b98cd4` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v532, written against main `726d3c3` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -224,7 +224,7 @@ fix does not extend to a per-season bar.
 | | |
 |---|---|
 | **positional sheet landing** | Owner's, off-seat: route the finished sheet in. The re-derivation directive drafts against it (spec + rename map above). |
-| **#256 · finish the CI restore** | **FIRED by owner word 2026-07-29 ("Happy to commission it").** Part A: `invariant_proof.py`'s released-baseline equality checks move to the adoption step (structural invariants stay per-push; every check kept, moved, or explicitly retired — none silently dropped), proven both ways. Part B: the `_repo_root_of` regression — a root that cannot resolve fails loudly, never synthesizes from `/`; `live-scoring-light` green with production outputs byte-unmoved. Outcome: all four workflows green on a main push, or a report naming what surfaced next. |
+| **#262 · land the positional data** | **FILED, NOT FIRED — fires on owner word; the owner attaches the sheet to the executing chat.** Transcribes per-season eligibility into the store under the three sealed rulings, replaces the vocabulary everywhere (KPF/KPD/SD/SF/MID/RUCK), value-invariance proven by relabel-aware diff, sibling re-pins (including the held_candidates candidate md5s) in the same commit. No re-derivation, no curve, no UI bundle regeneration. Gets a seam pre-fire audit response on the issue before firing. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
@@ -265,7 +265,17 @@ only that exact pair is excused, an undeclared mismatch HALTs exactly as before,
 survives adoption is itself a rejection. Seam re-ran all three failure directions. FAIL (e) is resolved
 (`season_progress_test` 31/31).
 
-**What greens when.** **CI Guards is GREEN on main** — the owner's R20 re-anchor landed at `50d5506`
+**What greens when — 2026-07-29 evening state: THREE OF FOUR ARE GREEN** (FV Provenance, CI Guards,
+Live Scoring — the light job's first green since `eb602b9`, cause 3 fixed under #256 with
+`RepoRootUnresolved` raised by name; the six proofs are manual-only). **Final Integration is red on
+exactly one thing: `club_curve_provenance`, 9/35** — the engine curve is the ruled 1–64 split while the
+shipped bundle correctly lags pre-split per the #217 hold, so its "every pick priced from the curve"
+proof cannot hold while there is no price for pick 70. Pre-existing, seat-verified identical on stock
+main, and **it genuinely waits for the re-derivation era — do not "fix" it by regenerating UI bundles the
+hold deliberately freezes.** #256 also split `invariant_proof.py`/`build_final_board.py` by lifetime:
+per-push structural (28/28, exit 0 on the held tree) vs `--adoption` release conditions (exit 1 on the
+held tree, correctly), seam re-run with true exit codes after catching its own pipeline-`$?` slip.
+**CI Guards is GREEN on main** — the owner's R20 re-anchor landed at `50d5506`
 (guards success on both event runs of `764cf6e`, seam-parsed), and it un-skipped four guards that had not
 executed since the anchor went stale, including the ~7-minute correction canary. By design it will report
 STALE again at R21 and name the owner act. **Integration near-miss, recorded as a live hazard:** the
