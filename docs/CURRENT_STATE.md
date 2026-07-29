@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v17 · supervisor pen · 2026-07-28, register v525
+# CURRENT STATE — the incoming-seat read · v18 · supervisor pen · 2026-07-29, register v526
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-28, register v525, written against main `a22be828` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v526, written against main `7557d12` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -207,6 +207,7 @@ fix does not extend to a per-season bar.
 | | |
 |---|---|
 | **#245 · two stale signals** | The Kako ground-truth anchor (the last red in the selftest) and a committed `RESULTS.json` claiming `8/8`. Its anchor fix is also the only visible blocker on CI Guards — see CI below. |
+| **#251 · restore the CI signal** | **FILED, NOT FIRED — fires on owner word after #245 lands.** Three parts, both owner-ruled 2026-07-29: the release-contract gate learns a *declared* held candidate (undeclared mismatch still HALTs); the six `proof-*` jobs move to manual trigger (`live-scoring-light` stays on push); the R19 season constants fixed at both sites following #245's anchor pattern. Outcome test: Final Integration + CI Guards green, Live Scoring green via the light job — or a report naming what else surfaced. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
@@ -249,8 +250,13 @@ contract decision → cause 2 at both sites → unmeasured beyond (`extract_seam
 Scoring: cause 3 for the light job; the six proofs need a v0surf/scoping decision, not a code fix.
 
 **No deletion finding.** Nothing fits "red for weeks, nobody noticed, caught nothing" — two of the three
-caught real problems within hours of them landing. #244's recommendation, held for owner word: **de-scope
-the six `proof-*` jobs off every-push, keep `live-scoring-light`**.
+caught real problems within hours of them landing. **Both open decisions were RULED 2026-07-29** — gate
+learns a declared hold, proof jobs off every-push — and are commissioned as **#251** (filed, not fired).
+The six `proof-*` jobs, for the record: each is a full weekly-update rehearsal in a scratch workspace
+(two-round, catch-up, crash injection mid-run and mid-finalization, store writes, FV provenance). Built as
+one-off proofs for the weekly-updater work; their future use is a deliberate one-shot rehearsal when the
+positional rebuild changes the engine — which is why #251 keeps them runnable by hand rather than deleting
+them.
 
 **`fv-provenance` stays green** (repaired under #239) and is still the only fully working signal.
 **Check the checks before merging** remains standing.
@@ -270,17 +276,13 @@ the six `proof-*` jobs off every-push, keep `live-scoring-light`**.
 ## OWNER ACTS OUTSTANDING
 
 1. **The positional data.** Everything waits on it.
-2. **The release-contract decision** — accept Final Integration red until adoption, or commission a small
-   change so the gate distinguishes "candidate deliberately held" from drift. #244 calls this the single
-   cheapest move that restores signal before the rebuild lands against near-zero CI.
-3. **The six `proof-*` jobs** — de-scope off every-push (recommended), bake the third v0surf signature
-   (first determine *why* the staged build produces it), or leave them red.
-4. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
-5. **The baseline column label** when the whole effort lands. One column, not one per board move.
-6. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
-7. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-8. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-9. Referee harness scope — a fresh seat, owner-scheduled.
+2. **Fire #251 when #245 lands** — one word. Both decisions inside it are already ruled.
+3. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
+4. **The baseline column label** when the whole effort lands. One column, not one per board move.
+5. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
+6. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+7. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+8. Referee harness scope — a fresh seat, owner-scheduled.
 
 ## FILED FOR THE REFEREE PROJECT — not started
 
@@ -314,6 +316,9 @@ Track D · the conservation gate (`gate_f5.py` cannot be wired as written) · #1
 - **Every count names its denominator.**
 - **A cancelled CI run is not a red.** Concurrency cancellations carry no verdict; reading them as failures
   helped the "red for a week" premise survive unexamined.
+- **Report to the owner in plain breakdowns** (owner word 2026-07-29): what the agents did, what he needs to
+  know or decide, with context — nothing verbose or dense, no register dialect. The charter's `DO:/WHY:`
+  format is retired on the same word.
 
 ## ENVIRONMENT CARRIES
 
@@ -330,6 +335,11 @@ Track D · the conservation gate (`gate_f5.py` cannot be wired as written) · #1
 - **`sibling_repin` rewrites pins on every board move** and raises unless six structural tokens each match
   exactly once. Anything written into its targets must survive it.
 - The register header is **one ~395KB line** — read by pointer, never `head` or `cat`.
+- **Pen mechanics, so no seat re-derives them:** a pen bumps the version digit in the line-1 stamp
+  (`supervisor pen · vNNN date · PEN:`) and inserts `· SEAM vNNN (date) — <entry>` immediately before the
+  trailing `· prior: ITEM 407`. Assert before commit: line count unchanged, byte growth equals entry bytes,
+  single stamp, every prior `vNNN (date)` entry intact, docs-only diff. Measure in one unit — the line is
+  multi-byte UTF-8, so its byte length and character length differ by thousands.
 - The Actions API can exceed per-call output caps; spill to a file and parse.
 - **The seam can merge its own PRs.** Direct push to main is classifier-blocked, so pens go branch → PR →
   rebase-merge. Ref deletion is proxy-forbidden.
