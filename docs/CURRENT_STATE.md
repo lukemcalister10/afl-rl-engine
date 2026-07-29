@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v19 · supervisor pen · 2026-07-29, register v527
+# CURRENT STATE — the incoming-seat read · v20 · supervisor pen · 2026-07-29, register v528
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v527, written against main `8073dcd` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v528, written against main `d8462c8` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -206,14 +206,17 @@ fix does not extend to a per-season bar.
 
 | | |
 |---|---|
-| **#251 · restore the CI signal** | **FIRED by owner 2026-07-29.** Three parts, owner-ruled: the release-contract gate learns a *declared* held candidate (undeclared mismatch still HALTs); the six `proof-*` jobs move to manual trigger (`live-scoring-light` stays on push); the R19 season constants fixed at both sites following #245's anchor pattern — now on main at `one_source_selftest.py` (`KAKO_ANCHORS` + `stale()`), pointer commented on the issue. Outcome test: Final Integration + CI Guards green, Live Scoring green via the light job — or a report naming what else surfaced. |
+| **Kako R20 re-anchor** | **Owner word given 2026-07-29: "Kako 11 games at 44.18", through R20** — relayed by the owner directly to the #245 seat's chat, which types it into `KAKO_ANCHORS` with `through_round: 20`. One line; on landing, CI Guards should go fully green (its run log shows every other check passing). |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
 Closed this cycle: #217, #231, #232, #239 (all landed), #225 (delivered, superseded), #241 (never fired),
 **#244 (diagnosis delivered, seam-verified, merged `a22be828`)**, **#245 (landed `8073dcd`, seam-verified:
 the Kako anchor is round-scoped and fails legibly when outrun; a run verdict can no longer outlive its
-run — exit 0 requires all-pass AND a written verdict)**.
+run — exit 0 requires all-pass AND a written verdict)**, **#251 (landed `d8462c8`, seam-verified: the
+release gate understands a declared held candidate and still HALTs on anything undeclared — three tamper
+directions re-run by the seam; the six proof jobs moved byte-exact to a manual workflow; one season-anchor
+definition at both former constant sites, 32/32 + 11/11 + 31/31 re-run)**.
 
 ## CI — CORRECTED RECORD. Five causes, and the wall of red already cost one real catch
 
@@ -235,21 +238,25 @@ no verdict either way.
 | 4 | v0surf frozen-signature HALT on a third, staged-build signature `65b9fbaf` (cause undetermined) | all six `proof-*` jobs | the design working — they structurally **cannot pass** as wired |
 | 5 | **release-contract drift at #217** | Final Integration | real inconsistency — see below |
 
-**Cause 5 is the finding that matters.** Seam re-derived both pin files at six commits: `release_contract.json`
-and `expected_boot.json` were byte-consistent through the entire R20 go-live and **diverged only at `6634221`
-(#217)**. Final Integration flagged it on the landing commit — into a wall of red, so nobody saw it. That is
-the merged-against-no-signal failure mode, measured. **Neither file is lying**, seam-verified: the tree's
-committed board `data/rl_build/rl_app_data.json` **is** `750446d7` (matches `expected_boot`), while the
-shipped UI bundle stamps `8a38cca4` (matches the contract) — and #217's own note says the board move is
-deliberately not made. The gate asserts tree == release, #217 deliberately put the tree ahead of the release,
-so **Final Integration stays red until adoption unless the owner rules otherwise**. The drift also disables
-FAIL (e), the positive control proving Final Integration's fail-closed checks are non-vacuous.
+**Cause 5 is RESOLVED by #251's Part A** — and two details of the original diagnosis were corrected by that
+seat and re-verified by the seam: **three identities were drifted, not one** (board, engine_head, rl_model —
+all the same #217 hold, all now declared), and **divergence began at `4156d66`**, four commits before
+`6634221`, in the same #217 series (v525 said "only at 6634221" from a six-commit sample — corrected).
+The contract now carries an explicit `held_candidates` declaration: each entry pins both sides and a reason,
+only that exact pair is excused, an undeclared mismatch HALTs exactly as before, and a declaration that
+survives adoption is itself a rejection. Seam re-ran all three failure directions. FAIL (e) is resolved
+(`season_progress_test` 31/31).
 
-**What greens when.** CI Guards: #245 landed — its only red is now a **self-describing STALE line awaiting
-the owner's R20 re-anchor** (store holds 11 games @ 44.18 through R20); on that word it should go fully
-green — the run log shows every other check passing (seam-read from job 90440140917). Final Integration:
-#251's Parts A and C → unmeasured beyond (`extract_seam.test.py` is 42/42). Live Scoring: cause 3 for the
-light job; the six proofs move to manual trigger under #251's Part B.
+**What greens when.** CI Guards: the owner's re-anchor word is given — one line lands and it should go
+fully green (its run log shows every other check passing). Final Integration: the gate and season anchors
+now pass; **it halts at `invariant_proof.py`, 22/33** — hard-coded released-baseline totals
+(`PRESENT_TOTAL 764021`, F5 `83538`/`4649`/`14272`, zero movers demanded) measured against the held
+candidate board (`771772`, 749 movers — the ruled split working). Pre-existing, seat-verified identical on
+stock main; confirmed from the run's own log by the seam. **Owner decision — same lifetime problem Part A
+just solved**: split-by-lifetime says released-baseline equality is a release condition and belongs at the
+adoption step, not the per-push suite. Live Scoring: `live-scoring-light` red on cause 3 — **corrected
+blast radius: it fails CI's own run path too** (`accumulate_bundle` never reads `RL_REPO`; only an explicit
+`repo_root=` argument helps, and the CI test caller doesn't pass one). The six proofs are manual-only now.
 
 **No deletion finding.** Nothing fits "red for weeks, nobody noticed, caught nothing" — two of the three
 caught real problems within hours of them landing. **Both open decisions were RULED 2026-07-29** — gate
@@ -270,23 +277,27 @@ them.
   curve lands.
 - **The dead baked-clubs block** in the same file — nothing reads it, corrupting it changes nothing.
 - **`extract_positions.py` regeneration is stamp-only** — seam-verified content-identical. Safe whenever.
-- **The `_repo_root_of` fallback** (cause 3 above) — real regression, breaks only the test harness's
-  no-argument path.
+- **The `_repo_root_of` fallback** (cause 3 above) — real regression, and it breaks CI's own
+  `live-scoring-light` run, not only the local no-argument path (#251 correction). Commissioning is owner
+  decision 3 above.
 - **A hidden red behind live-scoring-light's halt:** the Movers acceptance proof fails
   `0_production_populated_and_provenance_bridge` — 1 of 11 checks, never reported by CI (hazard 9).
 
 ## OWNER ACTS OUTSTANDING
 
 1. **The positional data.** Everything waits on it.
-2. **Re-anchor Kako 2026** — state the figure (store holds **11 games @ 44.18, covering through R20**) and
-   a seat types it into `KAKO_ANCHORS` with `through_round: 20`. One line; clears the last red in
-   CI Guards. The anchor is owner ground truth — the word must be the owner's.
-3. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
-4. **The baseline column label** when the whole effort lands. One column, not one per board move.
-5. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
-6. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-7. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-8. Referee harness scope — a fresh seat, owner-scheduled.
+2. **The `invariant_proof.py` decision** — its released-baseline equality checks (11 of 33) stay red for
+   the whole baseline effort as written. Move them to the adoption step (recommended — the
+   split-by-lifetime norm), or extend the held-candidates declaration to cover them. Small job either way.
+3. **Whether to commission the cause-3 fix** — `_repo_root_of` breaks `live-scoring-light` in CI itself,
+   not just the local harness. One-function job in `round_movers.py` ingestion code; it is the only thing
+   between the light job and green.
+4. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
+5. **The baseline column label** when the whole effort lands. One column, not one per board move.
+6. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
+7. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+8. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+9. Referee harness scope — a fresh seat, owner-scheduled.
 
 ## FILED FOR THE REFEREE PROJECT — not started
 
