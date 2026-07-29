@@ -4,8 +4,11 @@ supervisor 2nd review). Replaces the earlier frozen-literal test: calendar progr
 pace are now DYNAMIC, DERIVED, and DISTINCT, read by the engine from data/season_state.json.
 
 Proves:
-  (a) R14 derivation reproduces the approved values EXACTLY from the accepted store (calendar 0.58, exposure
-      0.545) and calendar advances R15..R19 -> 0.63/0.67/0.71/0.75/0.79, final -> 1.00;
+  (a) the two season-state anchors, via their single definition in season_anchor_check.py (#251 part C):
+      the FIXED R14 historical anchor reproduces the approved values EXACTLY from the immutable R14 anchor
+      store (calendar 0.58, exposure 0.545), and the CURRENT-ROUND anchor — round from the manifest,
+      expectation from the committed stamp, re-derived from the live store, no hand-typed value — holds.
+      Calendar advances R15..R19 -> 0.63/0.67/0.71/0.75/0.79, final -> 1.00;
   (b) the engine READS the dynamic values (SEASON_PROG / EXPO_F / _SFE rerouted to season_state; the frozen
       literal + the RL_M3_FE/RL_EXPO_F env reads are gone);
   (c) BEHAVIOUR — the exposure lever's evidence-replacement scope s=clip(1-g/11,0,1): a 6-game current sample
@@ -18,25 +21,17 @@ Proves:
 
 No parameter is tuned; no approved vector is altered. `python3 season_progress_test.py` -> PASS/FAIL.
 """
-import os, sys, re, json, tempfile, subprocess, importlib.util
+import os, sys, re, json, tempfile, importlib.util
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 sys.path.insert(0, ROOT)
+sys.path.insert(0, HERE)
 import season_state as S  # noqa: E402
-
-# The R14 season-state expectation (exposure_pace 0.545) is derived from the EXACT R14 historical store
-# bytes at the accepted R14 authority anchor (NOT from the current R19 store, which advanced to f37d9716
-# and derives the current R19 exposure pace 0.727). ITEM 408 item 5.1.
-R14_ANCHOR = '93bd01af86db00c169714652714a364bd2635764'
-
-def _r14_anchor_store():
-    """Materialize the exact R14 store bytes (git blob at the R14 anchor) to a temp file; md5 968de0c7."""
-    p = os.path.join(tempfile.mkdtemp(prefix='r14_store_'), 'rl_model_data.json')
-    with open(p, 'wb') as f:
-        f.write(subprocess.check_output(
-            ['git', 'show', '%s:engine/rl_after/rl_model_data.json' % R14_ANCHOR], cwd=ROOT))
-    return p
+# The season-state anchors have ONE executable definition (#251 part C). This file and
+# .github/workflows/final-integration.yml both call in there rather than each carrying their own copy of
+# the assertion — the duplicate was why fixing one site left the other red.
+import season_anchor_check as A  # noqa: E402
 RC = None
 try:
     _spec = importlib.util.spec_from_file_location('rc', os.path.join(ROOT, 'release_contract.py'))
@@ -59,20 +54,18 @@ def main():
     print('=== SEASON-STATE derivation + engine wiring + behaviour ===')
     cur_store = os.path.join(ROOT, 'engine', 'rl_after', 'rl_model_data.json')
 
-    # (a) R14 derivation + progression. The R14 expectation is derived from the EXACT R14 anchor store
-    # (968de0c7 @ 93bd01af), NOT the current R19 store — that store advanced R14->R19 and now derives the
-    # current R19 exposure pace (0.727). Deriving the R14 expectation from the R19 store was the stale bug.
-    st = S.derive(14, _r14_anchor_store(), season_year=2026, season_total_rounds=24)
-    ck('(a) R14 calendar_progress == 0.58 (derived)', st['calendar_progress'] == 0.58)
-    ck('(a) R14 exposure_pace == 0.545 (from the exact R14 anchor store 968de0c7: 305 durable, median 12, 12/22)',
-       st['exposure_pace'] == 0.545 and st['exposure_derivation']['eligible_durable_players'] == 305
-       and st['exposure_derivation']['median_current_games'] == 12
-       and str(st.get('source_store_md5', '')).startswith('968de0c7'))
-    # the CURRENT R19 store derives the CURRENT accepted R19 season state (exposure 0.727, calendar 0.79)
-    st19 = S.derive(19, cur_store, season_year=2026, season_total_rounds=24)
-    ck('(a) R19 (current store c120cfd5) exposure_pace == 0.727, calendar_progress == 0.79',
-       st19['exposure_pace'] == 0.727 and st19['calendar_progress'] == 0.79
-       and str(st19.get('source_store_md5', '')).startswith('c120cfd5'))
+    # (a) The two season-state anchors, from their single definition (season_anchor_check.py):
+    #   - the FIXED R14 historical anchor (0.58 / 0.545 from the immutable anchor store 968de0c7 @ 93bd01af),
+    #   - the CURRENT-ROUND anchor, whose round comes from the manifest and whose expectation is the
+    #     committed stamp re-derived from the live store. It carries no hand-typed current-round value, so
+    #     it survives the next round application without anyone retyping a number (#251 part C). What it
+    #     replaced was `R19 ... == 0.727 / 0.79 / store c120cfd5`, typed at R19 and stale the moment R20
+    #     was applied — and typed a second time in final-integration.yml, so fixing one left the other red.
+    anchor_checks, anchor_states = A.run(ROOT)
+    for name, passed, detail in anchor_checks:
+        ck('(a) ' + name, passed, detail)
+    st = anchor_states['r14']
+    st_cur = anchor_states['current']
     prog = {r: S.calendar_progress(r, 24) for r in (14, 15, 16, 17, 18, 19, 24)}
     ck('(a) calendar advances R15..R19 -> 0.63/0.67/0.71/0.75/0.79, final -> 1.00',
        [prog[r] for r in (14, 15, 16, 17, 18, 19, 24)] == [0.58, 0.63, 0.67, 0.71, 0.75, 0.79, 1.0], prog)
@@ -184,7 +177,7 @@ def main():
 
     npass = sum(1 for x in R if x['pass']); n = len(R)
     out = os.path.abspath(os.path.join(HERE, '..', 'evidence', 'season_progress_inventory.json'))
-    inv = {'r14_state': st, 'r19_current_state': st19, 'calendar_progression': prog,
+    inv = {'r14_state': st, 'current_round_state': st_cur, 'calendar_progression': prog,
            'exposure_scope_examples': {g: scope(g) for g in (3, 6, 9, 11, 12, 20)},
            'engine_wired': True, 'policy_id': S.policy_id(),
            'classification': {'calendar_progress': 'A live valuation semantic — DERIVED, dynamic release state',

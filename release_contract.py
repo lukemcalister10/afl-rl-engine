@@ -25,6 +25,23 @@ import os, sys, json, hashlib
 
 CANON_MODES = ('bake', 'gate', 'canonical')
 CONTRACT_PATH = ('data', 'release_contract.json')
+# A DECLARED held candidate (#251 part A, owner ruling 2026-07-29). The tree can legitimately carry a new
+# board/engine ahead of what is RELEASED — #217 committed the pricing-split board and engine deliberately
+# without releasing them. Before this, the gate could not tell that from a genuine drift, so it HALTed on
+# an intentional state and hid every later failure behind a permanent red.
+#
+# The hold is an EXPLICIT DECLARATION, never a pattern the gate infers. Each entry names the field, the
+# identity that is RELEASED (== contract identities[field]) and the identity the TREE carries (==
+# expected_boot[field]), plus a reason. Only that exact pair is excused: move either side and the
+# declaration no longer describes the state, so the gate HALTs again. An UNDECLARED mismatch HALTs exactly
+# as it always did.
+#
+# REMOVAL AT ADOPTION IS SELF-ENFORCING. When the contract is re-stamped to the adopted identity the two
+# sides agree, and a declaration that excuses nothing is itself a rejection ("the hold is over") — so the
+# adoption commit cannot leave the declaration behind. restamp_dynamic() drops the declarations for the
+# fields it re-pins for the same reason.
+HELD_KEY = 'held_candidates'
+HELD_REQUIRED = ('field', 'release', 'candidate', 'reason')
 # class-A override hooks whose canonical value is ABSENT (setting one would repoint/refit/re-table the
 # board). Declared here AND in the contract's must_be_unset; both enforce reject-if-set in a canonical build.
 DEFAULT_MUST_UNSET = ('RL_UNCOMP_S', 'RL_LSYM_TAB', 'RL_V0SURF_REFIT')
@@ -74,6 +91,57 @@ def _fail(mode, rejects, halt):
     if halt:
         raise SystemExit(msg)
     raise AssertionError(msg)
+
+
+def held_declarations(contract, rejects=None):
+    """Parse + STRUCTURALLY validate the declared held candidates. Returns {field: declaration}.
+
+    A malformed, anonymous, duplicated or unbindable declaration is a rejection, never a silent skip — a
+    declaration is the one thing in this file that can stop a HALT, so it fails closed on its own shape.
+    Passing `rejects` collects the reasons; omitting it just returns the well-formed subset."""
+    out, seen = {}, set()
+    rj = rejects if rejects is not None else []
+    decls = contract.get(HELD_KEY)
+    if decls is None:
+        return out
+    if not isinstance(decls, list):
+        rj.append("%s must be a LIST of declarations, got %s" % (HELD_KEY, type(decls).__name__))
+        return out
+    ids = contract.get('identities') or {}
+    for i, d in enumerate(decls):
+        where = "%s[%d]" % (HELD_KEY, i)
+        if not isinstance(d, dict):
+            rj.append("%s is not an object — a hold must name field/release/candidate/reason" % where)
+            continue
+        missing = [k for k in HELD_REQUIRED if not str(d.get(k) or '').strip()]
+        if missing:
+            rj.append("%s is missing %s — a hold must be explicit and must state WHY" % (where, missing))
+            continue
+        f = str(d['field'])
+        if f in seen:
+            rj.append("%s declares field %r twice (ambiguous hold)" % (where, f))
+            continue
+        seen.add(f)
+        if f not in ids:
+            rj.append("%s declares field %r, which is not a bound release identity (%s) — a hold can only"
+                      " excuse an identity the gate actually binds" % (where, f, sorted(ids)))
+            continue
+        if str(d['release']) == str(d['candidate']):
+            rj.append("%s declares field %r held with release == candidate (%s) — that excuses nothing"
+                      % (where, f, str(d['release'])[:12]))
+            continue
+        if str(ids[f]) != str(d['release']):
+            rj.append("%s declares the released %s as %s but the contract pins %s — the declaration does not"
+                      " describe this contract" % (where, f, str(d['release'])[:12], str(ids[f])[:12]))
+            continue
+        out[f] = d
+    return out
+
+
+def format_held(field, decl):
+    return ("HELD CANDIDATE (declared): %s — released %s, tree carries %s — %s%s"
+            % (field, str(decl['release'])[:12], str(decl['candidate'])[:12], decl['reason'],
+               (" [%s]" % decl['declared_by']) if decl.get('declared_by') else ''))
 
 
 def require_canonical(mode=None, halt=True):
@@ -133,15 +201,34 @@ def verify(mode=None, root=None, halt=True):
         elif str(mvars[k]) != str(v):
             rejects.append("switch_posture %s=%r contradicts manifest %r" % (k, v, mvars[k]))
 
-    # (5) release identities must equal the expected_boot pins (stale identity pin)
+    # (5) release identities must equal the expected_boot pins (stale identity pin), EXCEPT where the
+    #     contract explicitly DECLARES that field as a held candidate: the tree carries a new identity that
+    #     is deliberately not released yet. A declared hold reports as its own named status; an UNDECLARED
+    #     mismatch HALTs exactly as before. See HELD_KEY above.
     idmap = contract.get('identities') or {}
+    declared = held_declarations(contract, rejects)
+    held = []
     for field, want in idmap.items():
         have = boot.get(field)
+        decl = declared.get(field)
         if have is None:
             rejects.append("contract identity %s has no expected_boot pin to bind against" % field)
-        elif str(have) != str(want):
-            rejects.append("contract identity %s=%s != expected_boot %s (stale pin)"
-                           % (field, str(want)[:12], str(have)[:12]))
+        elif str(have) == str(want):
+            if decl is not None:
+                rejects.append("%s declares %s held (released %s / candidate %s) but the release and the tree"
+                               " now AGREE on %s — the hold is OVER. Remove the declaration in the same commit"
+                               " that re-stamps the contract at adoption."
+                               % (HELD_KEY, field, str(decl['release'])[:12], str(decl['candidate'])[:12],
+                                  str(have)[:12]))
+        elif decl is not None and str(decl['candidate']) == str(have):
+            held.append((field, decl))
+        elif decl is not None:
+            rejects.append("%s declares %s held against candidate %s but the tree carries %s — an identity"
+                           " moved since the hold was declared; re-declare it or re-stamp the contract"
+                           % (HELD_KEY, field, str(decl['candidate'])[:12], str(have)[:12]))
+        else:
+            rejects.append("contract identity %s=%s != expected_boot %s (stale pin; an INTENTIONAL hold must"
+                           " be declared in %s)" % (field, str(want)[:12], str(have)[:12], HELD_KEY))
 
     # (6) PVC provenance coherence (single, known pathway; numeraire pinned)
     pv = contract.get('pvc_provenance') or {}
@@ -256,6 +343,10 @@ def verify(mode=None, root=None, halt=True):
 
     if rejects:
         _fail(mode, rejects, halt)
+    # The release verified. Any declared hold is REPORTED BY NAME so a held release state is visible in
+    # every build log rather than being indistinguishable from a fully-adopted one.
+    for field, decl in held:
+        print("  " + format_held(field, decl))
     return contract.get('contract_sha256')
 
 
@@ -271,6 +362,11 @@ def restamp_dynamic(root, as_of_round, store_md5, board_md5, season_state):
     and the immutable engine/rl_model/fv/register/band identities. The immutable present-lens baseline
     (data/release_lineage.json) is NEVER touched here.
 
+    Any held_candidates declaration for a field this re-pins (store / board) is DROPPED: re-pinning the
+    released identity to the freshly-staged one ends the hold on that field by definition, and a leftover
+    declaration would then excuse nothing and reject (see HELD_KEY). Declarations on fields this does NOT
+    re-pin (engine_head / rl_model / fv / ...) are preserved, because the hold on them still stands.
+
     Written atomically to the SAME path (os.replace); returns the new contract_sha256. Called by the Track B
     staged transaction against the WORKSPACE contract so the atomic commit moves store/board/expected_boot/
     season_state AND the release contract to the SAME round."""
@@ -278,6 +374,7 @@ def restamp_dynamic(root, as_of_round, store_md5, board_md5, season_state):
     with open(cp) as f:
         c = json.load(f)
     aor = int(as_of_round)
+    REPINNED = ('store', 'board')
     cal = float(season_state['calendar_progress'])
     c['as_of_round'] = aor
     ids = c.setdefault('identities', {})
@@ -291,6 +388,13 @@ def restamp_dynamic(root, as_of_round, store_md5, board_md5, season_state):
     sm['derivation_policy_id'] = season_state['derivation_policy_id']
     sm['season_year'] = int(season_state['season_year'])
     sm['season_total_rounds'] = int(season_state['season_total_rounds'])
+    if isinstance(c.get(HELD_KEY), list):
+        kept = [d for d in c[HELD_KEY]
+                if not (isinstance(d, dict) and str(d.get('field')) in REPINNED)]
+        if kept:
+            c[HELD_KEY] = kept
+        else:
+            c.pop(HELD_KEY, None)
     c.pop('contract_sha256', None)
     c['contract_sha256'] = contract_hash(c)
     tmp = cp + '.tmp_restamp'
@@ -307,11 +411,15 @@ if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'check':
         # assert the contract is internally + externally consistent (as a canonical build would), non-zero on fail.
         os.environ.setdefault('RL_CONFIG_MODE', 'gate')
+        print("RELEASE-CONTRACT CHECK")
         try:
             h = verify('gate', _root, halt=False)
         except AssertionError as e:
             print("RELEASE-CONTRACT CHECK: FAILED" + str(e)); sys.exit(1)
-        print("RELEASE-CONTRACT CHECK: PASS  (contract %s; identities + config + posture consistent)" % str(h)[:12])
+        _n = len(held_declarations(load(_root)))
+        print("RELEASE-CONTRACT CHECK: PASS  (contract %s; identities + config + posture consistent%s)"
+              % (str(h)[:12], "; %d DECLARED held candidate%s above — the release is NOT fully adopted"
+                 % (_n, '' if _n == 1 else 's') if _n else ''))
         sys.exit(0)
     # default: print the contract hash + a short summary
     try:

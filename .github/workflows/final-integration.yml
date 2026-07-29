@@ -110,6 +110,9 @@ jobs:
           set -euo pipefail
           python3 session_2026-07-21/final_integration/tests/season_progress_test.py
           python3 session_2026-07-21/final_integration/tests/season_state_fenced_test.py
+          # #251 part C: the current-round anchor replaced three hand-typed constants with a re-derivation.
+          # Prove it still reds on each thing those constants stood for, or it is a guard that cannot fail.
+          python3 session_2026-07-21/final_integration/tests/season_anchor_check_nonvacuity.py
 
       - name: Present / forward invariants + F5 reconciliation (present vs reference_vector_5546f278; forward-lens DEFERRED)
         run: python3 session_2026-07-21/final_integration/tools/invariant_proof.py
@@ -144,14 +147,17 @@ jobs:
       - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present v vs reference_vector_5546f278; Board B forward DEFERRED)
         run: python3 session_2026-07-21/final_integration/tools/build_final_board.py
 
-      - name: Round-14 season-state derivation equality + generated-bundle equality
+      - name: Season-state anchors (fixed R14 historical + current round) + generated-bundle equality
         run: |
           set -euo pipefail
-          # The R14 expectation (calendar 0.58 + exposure 0.545) derives from the EXACT R14 anchor store
-          # (968de0c7 @ 93bd01af), NOT the current R19 store — that store advanced R14->R19 and derives the
-          # current R19 season state (calendar 0.79 + exposure 0.727). ITEM 408 item 5.1.
-          git show 93bd01af86db00c169714652714a364bd2635764:engine/rl_after/rl_model_data.json > /tmp/r14_store.json
-          python3 -c "import season_state as S; r14=S.derive(14,'/tmp/r14_store.json'); assert r14['calendar_progress']==0.58 and r14['exposure_pace']==0.545 and str(r14['source_store_md5']).startswith('968de0c7'), r14; cur=S.derive(19,'engine/rl_after/rl_model_data.json'); assert cur['calendar_progress']==0.79 and cur['exposure_pace']==0.727 and str(cur['source_store_md5']).startswith('c120cfd5'), cur; print('R14 anchor-store 0.58/0.545 + R19 current-store 0.79/0.727 season-state equality OK')"
+          # #251 part C. This step used to carry its OWN inline copy of the season-state assertion, with the
+          # R19 answer (calendar 0.79 / exposure 0.727 / store c120cfd5) hand-typed a second time. R20 was
+          # applied, the store legitimately moved, and fixing the copy in season_progress_test.py would have
+          # left this one red — hazard class 2. There is now ONE executable definition and both sites call it.
+          # The fixed R14 anchor (0.58/0.545 from the immutable store 968de0c7 @ 93bd01af, ITEM 408 item 5.1)
+          # is unchanged; the current-round anchor takes its round from the manifest and its expectation from
+          # the committed stamp, so it survives the next round application with nothing to retype.
+          python3 session_2026-07-21/final_integration/tests/season_anchor_check.py
           # extract must reproduce the committed UI bundles byte-for-byte.
           cp ui/data/board_view_working.js /tmp/w.js; cp ui/data/board_view_public.js /tmp/p.js
           python3 ui/tools/extract_board_view.py >/dev/null
