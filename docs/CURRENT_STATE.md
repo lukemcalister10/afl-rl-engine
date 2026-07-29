@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v18 · supervisor pen · 2026-07-29, register v526
+# CURRENT STATE — the incoming-seat read · v19 · supervisor pen · 2026-07-29, register v527
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v526, written against main `7557d12` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v527, written against main `8073dcd` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -206,13 +206,14 @@ fix does not extend to a per-season bar.
 
 | | |
 |---|---|
-| **#245 · two stale signals** | The Kako ground-truth anchor (the last red in the selftest) and a committed `RESULTS.json` claiming `8/8`. Its anchor fix is also the only visible blocker on CI Guards — see CI below. |
-| **#251 · restore the CI signal** | **FILED, NOT FIRED — fires on owner word after #245 lands.** Three parts, both owner-ruled 2026-07-29: the release-contract gate learns a *declared* held candidate (undeclared mismatch still HALTs); the six `proof-*` jobs move to manual trigger (`live-scoring-light` stays on push); the R19 season constants fixed at both sites following #245's anchor pattern. Outcome test: Final Integration + CI Guards green, Live Scoring green via the light job — or a report naming what else surfaced. |
+| **#251 · restore the CI signal** | **FIRED by owner 2026-07-29.** Three parts, owner-ruled: the release-contract gate learns a *declared* held candidate (undeclared mismatch still HALTs); the six `proof-*` jobs move to manual trigger (`live-scoring-light` stays on push); the R19 season constants fixed at both sites following #245's anchor pattern — now on main at `one_source_selftest.py` (`KAKO_ANCHORS` + `stale()`), pointer commented on the issue. Outcome test: Final Integration + CI Guards green, Live Scoring green via the light job — or a report naming what else surfaced. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
 Closed this cycle: #217, #231, #232, #239 (all landed), #225 (delivered, superseded), #241 (never fired),
-**#244 (diagnosis delivered, seam-verified, merged `a22be828`)**.
+**#244 (diagnosis delivered, seam-verified, merged `a22be828`)**, **#245 (landed `8073dcd`, seam-verified:
+the Kako anchor is round-scoped and fails legibly when outrun; a run verdict can no longer outlive its
+run — exit 0 requires all-pass AND a written verdict)**.
 
 ## CI — CORRECTED RECORD. Five causes, and the wall of red already cost one real catch
 
@@ -244,10 +245,11 @@ deliberately not made. The gate asserts tree == release, #217 deliberately put t
 so **Final Integration stays red until adoption unless the owner rules otherwise**. The drift also disables
 FAIL (e), the positive control proving Final Integration's fail-closed checks are non-vacuous.
 
-**What greens when.** CI Guards: #245's anchor fix clears the only *visible* red (steps 8–10 hold two guards
-nobody has run — the correction canary and Guard 5/`run_panel.sh` need a full build). Final Integration:
-contract decision → cause 2 at both sites → unmeasured beyond (`extract_seam.test.py` is 42/42). Live
-Scoring: cause 3 for the light job; the six proofs need a v0surf/scoping decision, not a code fix.
+**What greens when.** CI Guards: #245 landed — its only red is now a **self-describing STALE line awaiting
+the owner's R20 re-anchor** (store holds 11 games @ 44.18 through R20); on that word it should go fully
+green — the run log shows every other check passing (seam-read from job 90440140917). Final Integration:
+#251's Parts A and C → unmeasured beyond (`extract_seam.test.py` is 42/42). Live Scoring: cause 3 for the
+light job; the six proofs move to manual trigger under #251's Part B.
 
 **No deletion finding.** Nothing fits "red for weeks, nobody noticed, caught nothing" — two of the three
 caught real problems within hours of them landing. **Both open decisions were RULED 2026-07-29** — gate
@@ -276,7 +278,9 @@ them.
 ## OWNER ACTS OUTSTANDING
 
 1. **The positional data.** Everything waits on it.
-2. **Fire #251 when #245 lands** — one word. Both decisions inside it are already ruled.
+2. **Re-anchor Kako 2026** — state the figure (store holds **11 games @ 44.18, covering through R20**) and
+   a seat types it into `KAKO_ANCHORS` with `through_round: 20`. One line; clears the last red in
+   CI Guards. The anchor is owner ground truth — the word must be the owner's.
 3. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
 4. **The baseline column label** when the whole effort lands. One column, not one per board move.
 5. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
