@@ -36,7 +36,7 @@ function projFromPeak(g,lp,a,cur,L,g0,fut,preHc){const pa=PEAK_AGE[g],d=LENS[L];
   for(let k=0;k<18;k++){const ag=a+k;if(ag>38||frac(ag,pa)<0.42)break;let lev=lp*frac(ag,pa);if(ag<=pa)lev=Math.max(lev,cl);if(k==0)lev=Math.max(lev,cl);if(k==0&&preHc>0)lev*=(1-preHc);const base=lev+captPrem(lev);
     if(k==0)prod+=posval(base-REPL[g0])*21/Math.pow(1+d,k);
     else{let s=0;for(const fp of fut)s+=fp[1]*posval(base-REPL[fp[0]]);prod+=s*21/Math.pow(1+d,k);}}
-  if(g=='KEY_FWD'||g=='KEY_DEF')prod*=1.05;const runway=clamp((25-a)/6,0,1),elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1);return prod*(1+runway*elite*PMAX);}
+  if(g=='KPF'||g=='KPD')prod*=1.05;const runway=clamp((25-a)/6,0,1),elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1);return prod*(1+runway*elite*PMAX);}
 const val=r=>r>0?r2e(SCALE*Math.pow(r,GAMMA)):0;
 function pickRaw(k){const b=bandof(k);let s=0;const m=MIX[String(b)];for(const gg in m){if(m[gg]>0)s+=m[gg]*projFromPeak(gg,basepkC(gg,k),19,null,'bal');}return s*(1-(BUST_BAND[String(b)]!=null?BUST_BAND[String(b)]:0.15));}
 function peakvalC(c){return c.pkbest!=null?val(projFromPeak(c.grp,c.pkbest,PEAK_AGE[c.grp],c.pkbest,'bal'))*c.relc:val(pickRaw(c.ep))*0.25;}
@@ -77,7 +77,7 @@ function valuePlayer(p,lens){const ep=p.ep,decu=p.losd,df=debutFactor(p),ped=PVC
   const gf=p.ovr||p.gf||p.grp, g0=p.ovr||p.grp, fut=p.ovr?[[p.ovr,1]]:(p.fut||[[gf,1]]);
   const prod_v=val(projFromPeak(gf,p.pn,p.age,p.ln,'bal',g0,fut,p.b2hc||0))*p.surv;
   let relative=clamp(relC(gf,ep,p.pn)*outTilt(p,gf,ep),0.40,3.0);
-  if((gf==='RUC'||gf==='KEY_FWD'||gf==='KEY_DEF')&&p.age<=22&&relative<1.0){   // v3.4 relative-floor (young key-pos), now mirrored in JS
+  if((gf==='RUCK'||gf==='KPF'||gf==='KPD')&&p.age<=22&&relative<1.0){   // v3.4 relative-floor (young key-pos), now mirrored in JS
     const sc=({1:1.0,2:0.8,3:0.5,4:0.2})[2026-p.yr]||0; relative=relative+sc*(1.0-relative);}
   const pedestal=ped*relative*p.surv*Math.min(p.pedDecay,P);    // GATE 1: pedigree pedestal decay floored by P
   const pf=prodFloor(p); let prod_full=Math.max(prod_v,pf);
@@ -86,7 +86,7 @@ function valuePlayer(p,lens){const ep=p.ep,decu=p.losd,df=debutFactor(p),ped=PVC
     const fully=P*prod_full+(1-P)*gfloor; prod_full=prod_full/3+2*fully/3;
   }
   let res=Math.max(prod_full,pedestal);
-  if(p.brodieBase&&grpOf(p)!=='RUC')res*=0.5;                   // Brodie role-reliability cut (RUC exemption applied live on toggle)
+  if(p.brodieBase&&grpOf(p)!=='RUCK')res*=0.5;                   // Brodie role-reliability cut (RUCK exemption applied live on toggle)
   return r2e(res*lensTilt(p,lens)*(p.cvx||1));}
 const atDefault=()=>CAPT_THRESH===CAPT0&&ALPHA===ALPHA0&&CURVE_H===CURVE_H0&&Object.keys(REPL0).every(k=>REPL[k]===REPL0[k]);
 function recompute(lens){

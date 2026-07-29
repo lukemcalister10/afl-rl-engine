@@ -55,7 +55,7 @@ def meang(p,Y):
     S=qseas(p,Y); return float(np.mean([s[1] for s in S])) if S else 0.0
 
 Y=2026; rows=[]
-POS6=('MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC')
+POS6=('MID','SD','SF','KPD','KPF','RUCK')
 for p in MA.data:
     if MA.gfut(p) not in POS6 or delisted(p): continue
     try:
@@ -66,7 +66,7 @@ for p in MA.data:
     Lo=cp._lvl_eff_orig(p,Y); Lc=_lvlcurr(p,Y); N=Y-cp.debutyr(p)+1
     rows.append(dict(nm=p['player'],pos=MA.gfut(p),cur=cur,comb=comb,d=100*(comb-cur)/cur,
         gap=Lc-Lo,n=_nqual(p,Y),N=N,mg=meang(p,Y),tr=trend(p,Y),age=cp._age_asof(p,Y),fired=(_infer_M1(p,Y)>Lo+0.05 and _nqual(p,Y)>=PROVEN_N and Lc>=Lo)))
-print(f"priced {len(rows)} players (outfield+RUC, cur>=200)\n")
+print(f"priced {len(rows)} players (outfield+RUCK, cur>=200)\n")
 D=np.array([r['d'] for r in rows])
 print(f"=== OVERALL COMB% distribution ===  mean {D.mean():+.1f}  median {np.median(D):+.1f}")
 for q in [5,10,25,50,75,90,95]: print(f"  p{q:2d}: {np.percentile(D,q):+6.1f}", end="")

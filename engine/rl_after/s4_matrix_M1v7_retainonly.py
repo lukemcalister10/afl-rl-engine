@@ -57,7 +57,7 @@ def _b6fix(p,Y=2026):
 cp._lvl_eff=_inferM1; g['b6']=_b6fix
 print("[FIX] M1 + refined-v7 injected (level bind + band wrap, real players only); nothing baked",flush=True)
 # ==== DECOMPOSITION: +0.1 retain raise ONLY (hard cliff kept, NO w-blend) — isolates the sit-out lift ====
-g['SITOUT_RETAIN']={'RUC':[0.95,0.95,0.84,0.72,0.61,0.50],'KPP':[0.80,0.80,0.70,0.60,0.50,0.40],'nonKPP':[0.60,0.60,0.52,0.45,0.38,0.30]}
+g['SITOUT_RETAIN']={'RUCK':[0.95,0.95,0.84,0.72,0.61,0.50],'KPP':[0.80,0.80,0.70,0.60,0.50,0.40],'nonKPP':[0.60,0.60,0.52,0.45,0.38,0.30]}
 print("[DECOMP] retain +0.1 ONLY (no blend)",flush=True)
 # WALK-FORWARD as-of value matrix (UNCHANGED — values are correct; only the indexing was wrong)
 ASOF={}

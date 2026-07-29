@@ -73,8 +73,8 @@ SCHEMA_VERSION_NOTE = (
     "fixtures. Reports written under v1 (R15-R19) are NOT rewritten; they keep `schema_version: 1` and "
     "their integer `previous_round`, so the owner-approved historical_reports_digest is unchanged. A "
     "bundle therefore legitimately holds reports of both versions, each self-describing.")
-POS_LABEL = {'MID': 'Mid', 'RUC': 'Ruck', 'KEY_FWD': 'Key Fwd', 'GEN_FWD': 'Fwd',
-            'KEY_DEF': 'Key Def', 'GEN_DEF': 'Def'}
+POS_LABEL = {'MID': 'Mid', 'RUCK': 'Ruck', 'KPF': 'Key Fwd', 'SF': 'Fwd',
+            'KPD': 'Key Def', 'SD': 'Def'}
 BASELINE_ROUND = 14   # the accepted board-of-record round; no finalized transactions precede it
 
 

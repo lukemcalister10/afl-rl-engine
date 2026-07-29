@@ -16,7 +16,7 @@ def realized_prod(p):
 live=[p for p in MA.data if p.get('type')=='ND' and MA.GRP.get(p.get('pos')) and not (p.get('_retired') or (p.get('_last_listed') and p['_last_listed']<2026)) and p.get('scoring')]
 print(f"live native n={len(live)}")
 print("=== engine VALUE by tenure (normalised to position yr3-4 median=100); flat = early-career value priced consistently ===")
-for pos in ['MID','KEY_FWD','GEN_FWD','KEY_DEF','GEN_DEF','RUC']:
+for pos in ['MID','KPF','SF','KPD','SD','RUCK']:
     grp={}
     for p in live:
         if MA.gfut(p)!=pos: continue

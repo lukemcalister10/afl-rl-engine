@@ -4,7 +4,7 @@
 # Requires the bootstrap layout (/home/claude/...) + pinned env (setup_env.sh). One engine load per process.
 # SCRIPTING NOTES honoured: EXACT full-name matching (no substrings; ambiguity -> ERROR, never a silent pick);
 # line-ball = +/-20%; A13/A14 staged PENDING until the PVC stage; A6 kernel-smoothed pick-matching with the thin
-# RUC slice pooled deliberately (yrs 1-3 together); [DC] tags carried into output for failure triage.
+# RUCK slice pooled deliberately (yrs 1-3 together); [DC] tags carried into output for failure triage.
 # THRESHOLD REGISTER (updated 2026-07-02, DIRECTIVE 2, Luke's rulings turns 09-10):
 #   A6 kernel bw 0.6 on log-pick — RATIFIED (via Luke's delegation to supervisor, 02/07/2026).
 #   B1 rule — RE-SCRIPTED per Luke: PASS = pooled cohort value rises from draft to a peak by yr4-5 (yr6
@@ -199,7 +199,7 @@ try:
          '; '.join(f'{nm}={v:.0f} (floor {fl})' for nm, v, fl in vals) + ' [SCAR floors — RE-BASE if PVC re-levels]')
 except LookupError as ex:
     gate('A5', False, 'ERROR', str(ex))
-# A6 — yrs 1-3 (drafted 2023-2025, pooled deliberately: thin RUC slice), kernel-smoothed pick-matched MID medians
+# A6 — yrs 1-3 (drafted 2023-2025, pooled deliberately: thin RUCK slice), kernel-smoothed pick-matched MID medians
 def cohort(grp):
     out = []
     for p in MA.data:
@@ -208,7 +208,7 @@ def cohort(grp):
         if MA.gfut(p) == grp and (2026 - int(p.get('year') or 0)) in (1, 2, 3):
             out.append((math.log(float(MA.effpk(p))), EV[id(p)]))
     return out
-rucs, mids = cohort('RUC'), cohort('MID')
+rucs, mids = cohort('RUCK'), cohort('MID')
 if len(rucs) >= 3 and len(mids) >= 10:
     mx = np.array([x for x, _ in mids]); mv = np.array([v for _, v in mids])
     def ksm(x, bw=0.6):
@@ -217,9 +217,9 @@ if len(rucs) >= 3 and len(mids) >= 10:
     med_ruc = float(np.median([v for _, v in rucs]))
     med_mid = float(np.median([ksm(x) for x, _ in rucs]))
     gate('A6', False, 'PASS' if med_ruc <= med_mid else 'FAIL',
-         f'yr1-3 RUC median={med_ruc:.0f} (n={len(rucs)}, pooled — thin slice) vs pick-matched MID kernel median={med_mid:.0f} (n={len(mids)}, bw=0.6 log-pick, RATIFIED 02/07)')
+         f'yr1-3 RUCK median={med_ruc:.0f} (n={len(rucs)}, pooled — thin slice) vs pick-matched MID kernel median={med_mid:.0f} (n={len(mids)}, bw=0.6 log-pick, RATIFIED 02/07)')
 else:
-    gate('A6', False, 'ERROR', f'thin cohorts: RUC n={len(rucs)} MID n={len(mids)}')
+    gate('A6', False, 'ERROR', f'thin cohorts: RUCK n={len(rucs)} MID n={len(mids)}')
 # A7 — position poles hold. AMENDED 2026-07-05 (Luke, owner-authorised in writing): the 2026-07-05 DPP strip
 # (final consolidation) DELETED the multi-position _fut weighted-blend from engine + store (0/2652 records carry
 # _fut). A7's protected-pole read is re-pointed from the stripped p.get('_fut')-dominant label to the live single
@@ -229,7 +229,7 @@ else:
 # See CHANGELOG 2026-07-05 (frozen-suite amendment) + SHIP_GATES.md A7.
 try:
     ok, det = True, []
-    for nm, dom, grp in [('Ryan Maric', 'MID', 'MID'), ('Ed Langdon', 'GDEF', 'GEN_DEF')]:
+    for nm, dom, grp in [('Ryan Maric', 'MID', 'MID'), ('Ed Langdon', 'SD', 'SD')]:
         p, err = byname(nm)
         if err: raise LookupError(err)
         lab = p.get('future_position')            # AMENDED 2026-07-05: was sorted(p['_fut'])-dominant; _fut blend stripped by the DPP consolidation

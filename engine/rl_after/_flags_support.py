@@ -54,7 +54,7 @@ Y=2026
 print("=== FLAG A cohort: established (n>=4), trend>=+8, level gap<5  (M1 holds, v7 crushes) ===")
 A=[]
 for p in MA.data:
-    if MA.gfut(p) not in ('MID','GEN_DEF','GEN_FWD','KEY_DEF','KEY_FWD','RUC') or delisted(p): continue
+    if MA.gfut(p) not in ('MID','SD','SF','KPD','KPF','RUCK') or delisted(p): continue
     Lo=cp._lvl_eff_orig(p,Y); Lc=_lvlcurr(p,Y); n=_nqual(p,Y); t=tr(p,Y)
     if not (n>=PROVEN_N and t>=8 and (Lc-Lo)<5): continue
     cur=price(p,Y,band_at(p,Y,ORIG),WQ6)
@@ -65,17 +65,17 @@ for d,nm,pos,a,n,gp,t,cur in sorted(A):
     print(f"  {nm:22s}{pos:>8s} age{a:.0f} n{n} gap{gp:+4.1f} trend{t:+5.1f} cur{cur:5.0f}   COMB {d:+6.1f}%")
 print(f"  ({len(A)} players) -- apply your reads: which of these are genuinely improving vs a plateau with a noisy up-tick?")
 
-# ---------- FLAG B: KEY_FWD + KEY_DEF crush cohort + cB-cap lever ----------
-print("\n=== FLAG B: KEY_FWD + KEY_DEF -- current vs cB capped at 0.35 / 0.30 ===")
+# ---------- FLAG B: KPF + KPD crush cohort + cB-cap lever ----------
+print("\n=== FLAG B: KPF + KPD -- current vs cB capped at 0.35 / 0.30 ===")
 K=[]
 for p in MA.data:
-    if MA.gfut(p) not in ('KEY_FWD','KEY_DEF') or delisted(p): continue
+    if MA.gfut(p) not in ('KPF','KPD') or delisted(p): continue
     cur=price(p,Y,band_at(p,Y,ORIG),WQ6)
     if cur<200: continue
     bm=band_at(p,Y,_infer)
     comb=price(p,Y,v7c(bm,p,Y),WQ6); c35=price(p,Y,v7c(bm,p,Y,cap=0.35),WQ6); c30=price(p,Y,v7c(bm,p,Y,cap=0.30),WQ6)
     K.append((100*(comb-cur)/cur,100*(c35-cur)/cur,100*(c30-cur)/cur,p['player'],MA.gfut(p),cur))
-for pos in ('KEY_FWD','KEY_DEF'):
+for pos in ('KPF','KPD'):
     sub=[k for k in K if k[4]==pos]
     print(f"  {pos}: n={len(sub)}  mean COMB {np.mean([k[0] for k in sub]):+.1f}  | cap0.35 {np.mean([k[1] for k in sub]):+.1f}  | cap0.30 {np.mean([k[2] for k in sub]):+.1f}")
 print("  worst KEY crushes (COMB / cap0.35 / cap0.30):")
