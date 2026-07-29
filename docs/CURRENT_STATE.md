@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v20 · supervisor pen · 2026-07-29, register v528
+# CURRENT STATE — the incoming-seat read · v21 · supervisor pen · 2026-07-29, register v529
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v528, written against main `d8462c8` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v529, written against main `41285aa` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -207,6 +207,7 @@ fix does not extend to a per-season bar.
 | | |
 |---|---|
 | **Kako R20 re-anchor** | **Owner word given 2026-07-29: "Kako 11 games at 44.18", through R20** — relayed by the owner directly to the #245 seat's chat, which types it into `KAKO_ANCHORS` with `through_round: 20`. One line; on landing, CI Guards should go fully green (its run log shows every other check passing). |
+| **#256 · finish the CI restore** | **FIRED by owner word 2026-07-29 ("Happy to commission it").** Part A: `invariant_proof.py`'s released-baseline equality checks move to the adoption step (structural invariants stay per-push; every check kept, moved, or explicitly retired — none silently dropped), proven both ways. Part B: the `_repo_root_of` regression — a root that cannot resolve fails loudly, never synthesizes from `/`; `live-scoring-light` green with production outputs byte-unmoved. Outcome: all four workflows green on a main push, or a report naming what surfaced next. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
@@ -286,18 +287,12 @@ them.
 ## OWNER ACTS OUTSTANDING
 
 1. **The positional data.** Everything waits on it.
-2. **The `invariant_proof.py` decision** — its released-baseline equality checks (11 of 33) stay red for
-   the whole baseline effort as written. Move them to the adoption step (recommended — the
-   split-by-lifetime norm), or extend the held-candidates declaration to cover them. Small job either way.
-3. **Whether to commission the cause-3 fix** — `_repo_root_of` breaks `live-scoring-light` in CI itself,
-   not just the local harness. One-function job in `round_movers.py` ingestion code; it is the only thing
-   between the light job and green.
-4. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
-5. **The baseline column label** when the whole effort lands. One column, not one per board move.
-6. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
-7. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
-8. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
-9. Referee harness scope — a fresh seat, owner-scheduled.
+2. **Adopt or reject the derived values** when the re-derivation lands — separate release, own word.
+3. **The baseline column label** when the whole effort lands. One column, not one per board move.
+4. **The baked pick prices** — browser-computed, or a mandatory step of curve adoption.
+5. **v1.1 referee amendment** — draft at `docs/referee/AMENDMENT_v1_1_DRAFT.md`, verified, one read.
+6. **#146** — parked until 412 needs a canvas. Its body inverted at D1; do not execute as written.
+7. Referee harness scope — a fresh seat, owner-scheduled.
 
 ## FILED FOR THE REFEREE PROJECT — not started
 
@@ -334,6 +329,13 @@ Track D · the conservation gate (`gate_f5.py` cannot be wired as written) · #1
 - **Report to the owner in plain breakdowns** (owner word 2026-07-29): what the agents did, what he needs to
   know or decide, with context — nothing verbose or dense, no register dialect. The charter's `DO:/WHY:`
   format is retired on the same word.
+- **Seam context economy — three rules learned the expensive way this cycle** (the seat burned its own
+  context in one day; owner raised it 2026-07-29): (1) **never pull raw GitHub API payloads into context** —
+  every Actions/PR lookup goes through a spill-to-file + parse, or to a hand that returns the conclusion;
+  (2) **one register pen per working session** at a natural boundary, not one per event — each pen costs a
+  full PR/CI/merge cycle; (3) **delegate the reading half of verification to hands** (report ingestion, log
+  pulling, bulk byte-comparison) and re-run inline only the two or three measurements that would change a
+  decision. The verify-before-record norm is unchanged — this is about *where* the reading happens.
 
 ## ENVIRONMENT CARRIES
 
