@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v24 · supervisor pen · 2026-07-29, register v532
+# CURRENT STATE — the incoming-seat read · v25 · supervisor pen · 2026-07-29, register v533
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v532, written against main `726d3c3` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v533, written against main `92d62cc` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -179,6 +179,16 @@ low-sample pooling all stay. Known defects are reported, not repaired. If you ar
 have left the job.
 
 **Sequence:** positional rebuild → re-derive → owner adoption → referee project → ITEM 412.
+
+**Three curve-input rulings for the RE-DERIVATION, owner words 2026-07-29** (they cannot move the shipped
+curve — R3 holds it): (1) **Jeremy Cameron, Dylan Shiel and Adam Treloar are INCLUDED in the PVC going
+forward** — all three entered by GWS-concession paths; *the pick/pathway each credits to needs one owner
+line each at re-derivation directive time*. (2) **Paddy McCartin and Tom Boyd are EXCLUDED, and every
+player in their drafts slides up one pick to cover** — owner's words: *"those players were pick 1 KPF
+busts, so heavily bias the pool against them, however one retired early with depression, and another with
+concussion issues. It's a force majeure situation, so I am ruling that it shouldn't reflect on the KPF
+values."* Discretionary and sealed. (3) Context for both: ruling R1 stands — the fit is busts-full-weight,
+no games floor, non-median; these two rulings are named exceptions to it, not a change of method.
 
 ## THE RULED PRICING STRUCTURE — law since 2026-07-28
 
