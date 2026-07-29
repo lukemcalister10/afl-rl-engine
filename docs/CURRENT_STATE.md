@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v30 · supervisor pen · 2026-07-29, register v538
+# CURRENT STATE — the incoming-seat read · v31 · supervisor pen · 2026-07-29, register v539
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,102 +110,112 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v538, written against main `3df3a859` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v539, written against main `0b105d9` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
-## WHAT JUST LANDED
+## THE ONE LIVE SEAT: #271 STAGE B, IN EXECUTION
 
-**#262 is merged** (PR #272, rebase-merge): the vocabulary is KPF/KPD/SD/SF/MID/RUCK repo-wide;
-**11,264 of 11,264 per-season eligibility rows** are in the store; store `e3aaba77` → `5d6e56d0`, board
-`750446d7` → `3d4e2e50` — byte-identical to the rename-only board, zero value/rank movers across 103,146
-cells, proven seat-local and by CI's cross-environment rebuild. v0surf was refit twice through the declared
-`RL_V0SURF_REFIT` lane; the frozen set is now `8faa737b`/`b08a5a7e`. **The 62 position-field edits are
-DEFERRED to #271** (owner word, Addendum 5 R3-1; the write-then-revert history is preserved in the branch).
-The complete ruling record is **#262 Addenda 1–7** — read them before touching anything near the landing.
+The re-derivation is mid-flight on branch `claude/issue-271-re-derivation-3b6jc6`. **Stage A is complete
+and seam-verified** at `12b4cf7`: the deferred 62 edits applied (store `5d6e56d0`→`265f55d5`), the
+expected v0surf re-bake through the declared lane (`4cfc0b99`→`19d085a2`), board `3d4e2e50`→`dca21c91`;
+535 value / 681 rank movers of 804, decomposed 53 edited-row + 382 gfut-cohort + 100 re-bake with zero
+unexplained; the control arm reproduced the prior surface byte-identically AND was shown able to fail.
+Seam re-measured independently: exactly 62 fields across 54 of 2,651 rows, nothing outside the four edit
+fields; zero engine-source changes; pins re-pointed; `held_candidates` 5 declarations re-pinned, never
+deleted. **Stage B is running**: per-season bar re-measurement · Q-A current-bar eligibility wiring ·
+Group A/B site moves per #225's map · curve refit under the Q-B whole-draft slide · pool level on SCAR ·
+the season-row writer fix (both writers) · the R4-2 stale-prose rewrites. **Read #271 in full before
+touching anything near it**: body, audit, and Addenda 1–3 (the six rulings, the owner's Q-B amendment,
+the stage-A verification + the par_build ruling: `par_build.py` stays untouched — an attribution channel
+to name, not a site to fix).
 
 ## THE INCOMING SEAT'S FIRST TASKS
 
-1. **Fire #271 on the owner's word.** The re-derivation directive is FILED and seam pre-fire AUDITED (both
-   on issue #271). The audit's two corrections bind: only the CURRENT-season bar moves to eligibility (the
-   future blend stays referee-era), and **the candidate is the branch** — fully self-consistent with its own
-   re-pins, never merged until the owner's adoption word. Two v0surf re-bakes are expected (stage A: the 62
-   edits; stage B: the derivation). Attribution baseline is `3d4e2e50`. The owner's fire word should also
-   settle the pool statistic (SCAR default). The executing seat is fresh and cold.
-2. **Verify #271's hand-back by re-running only what decides:** stage-A movers = exactly the 62 edits'
-   footprint; the both-directions exclusion checks (including the pooling-term channel) shown failing when
-   lifted; the candidate branch self-consistent (its CI green modulo knowns); no shipped identity moved on
-   `main`. Diff any long-lived branch against current `main` before merging it.
+1. **Verify #271's stage-B/hand-back by re-running only what decides:** both-directions exclusion checks
+   (including the pooling-term channel) shown failing when lifted; the control arms (stage-B control must
+   reproduce stage A's surface byte-identically); the attribution table's consistency (every mover naming
+   a mechanism from {62 edits · per-season bar · current-bar wiring · curve data/separation · pool
+   level}, zero unexplained); the candidate branch fully self-consistent (own pins, own CI green modulo
+   knowns); **no shipped identity moved on `main`**. Diff the branch against current `main` before any
+   merge conversation. The candidate is the BRANCH — it merges only at the owner's adoption word.
+2. **Then the adoption era:** draft the adoption runbook FROM the candidate's actual identities (never
+   before). The adoption commit = merge + UI pair migration (bundles + reading source together) + delete
+   all 5 `held_candidates` declarations (a survivor is itself a rejection) + the owner's baseline column
+   label + it REOPENS the owner's live ingest lane and flips Final Integration green and the counting-rule
+   suite to the new vocabulary.
 
-**Sequence: land (#262 ✓) → re-derive (#271, fire-ready) → owner adoption → referee project (#270 opens
-it) → ITEM 412.** The adoption commit is: merge the candidate + migrate the UI pair + delete the
-`held_candidates` declarations + the baseline column label — and it REOPENS the owner's live ingest lane.
+**Sequence: land (#262 ✓) → re-derive (#271: stage A ✓, stage B live) → owner adoption → referee project
+(#270) → ITEM 412.**
 
-## CI — three of four green; the last red, precisely
+## CI
 
-Final Integration is red on **`club_curve_provenance` alone** (9/35, same count as before the landing, the
-mechanism verified different: most cases now halt on the board-id ring-fence — bundle `8a38cca4` vs release
-board `3d4e2e50`, declared in `held_candidates` — with the old no-price-for-pick-70 assertion unreachable
-behind it). It resolves at adoption. The counting-rule suite (24/24) still asserts OLD vocabulary and
-passes, because it tests the deliberately-lagging UI pair — it flips at adoption. CASE1's `checked=0` red
-is **anti-vacuous** (a coverage clause, `club_curve_provenance.test.py:186`), not the vacuity class.
-Standing behaviours unchanged: Kako store anchor STALE at R21 by design; `invariant_proof.py --adoption`
-is the adoption lane; the six `proof-*` jobs are manual-dispatch only.
+Three of four green on `main`; Final Integration red on `club_curve_provenance` alone (9/35,
+ring-fence-first mechanism, declared, resolves at adoption). The #271 branch runs its own CI against its
+own pins. The counting-rule suite (24/24) still asserts OLD vocabulary and passes — it tests the
+deliberately-lagging UI pair; flips at adoption. CASE1's `checked=0` red is anti-vacuous (coverage
+clause). Kako anchor STALE at R21 by design; `proof-*` jobs manual-dispatch only.
+
+## THE FHV EVIDENCE BASE (filed this pen)
+
+`docs/referee/FHV_MARKET_STUDY_2026-07-29.md` — the #270 opening deliverable, seam-verified. Headlines:
+389 free-mechanism entrants ever; whole-cohort median 0 / mean 178 vs listed-survivors 240/466 (the
+survivor effect: 2–3x on means, mature medians all 0); 528 cleared by 8% ever; 250 = survivors' median;
+150 ≈ the honest mature mean (193); MSD order signal ≈ nil so ONE constant (or one per window) suffices —
+no per-access schedule; PSD structurally invisible (data law excludes redrafts). **Referee sequencing
+recommendation: the FHV definitional ruling (expectation view recommended, ≈190 single-constant or
+~352/277/97 per window) lands BEFORE #276 fires.**
 
 ## OWNER ACTS OUTSTANDING
 
-1. **Fire word for #271** (+ pool statistic: SCAR unless he says otherwise).
-2. Clicks: delete branch `claude/issue-262-supervision-hjmixs` · close #262.
-3. **The 16 trades** (R4-1): edit `docs/inputs/AFFL_Player_Locations.csv` via his own lane whenever;
-   `ownership.js` catches up at adoption. Accepted caveat: a round baked pre-adoption carries stale teams
-   for the 16 (`round_movers.py:279`); self-corrects after.
-4. #269's three shaping questions (the `+250*` asterisk · the 2027 blend's ⅓ anchor · round-5 zero vs half).
-5. v1.1 referee amendment — one read: `docs/referee/AMENDMENT_v1_1_DRAFT.md`.
-6. Real-iPhone check of `ui/index.html` (#139 item 22).
-7. Adoption era: adoption word + baseline column label · the baked-pick-prices decision.
-8. Repo hygiene go-word: measured 2026-07-29 — 129MB/2,252 files; ~52MB zero-reference archive candidates;
-   ~8.5MB of session evidence is CI-wired and excepted by name (enumeration in the seam session record).
+1. **Adoption word + baseline column label** when the candidate lands (plus the baked-pick-prices
+   decision). 2. Post-adoption fire words: **#274** (UI wave) · **#275** (hygiene; six-item bucket-b
+   ballot at execution) · **#276** (clubs tab; collectibles Q5 displacement one-way? · Q6 rank basis +
+   delta baseline artifact · optional FHV substitution for the 250). 3. **Referee era:** the FHV
+   definitional ruling above; the v1.1 amendment read (`docs/referee/AMENDMENT_v1_1_DRAFT.md`).
+4. Real-iPhone check (#139 item 22) — parked by owner word.
 
 ## FILED / PARKED — do not start
 
-**#269** clubs-tab re-valuation (owner spec verbatim; supersedes #139 item 8; fires on its own directive).
-**#270** free-hit value — the referee project's opening question (report-only market study first
-deliverable; until then the "working system" is today's bars, carried unchanged). **UI wave** (#139 items
-2–5, 9–18): draft post-adoption to avoid churning the fenced UI pair; the owner picks items. **#146** (body
-inverted at D1 — do not execute as written). #139 items 6, 7, 19 parked; item 8 superseded by #269. Track D
-· the conservation gate (`gate_f5.py` cannot be wired as written) · the deeper bar-construction questions
-(referee).
+#274 UI wave 1 · #275 hygiene · #276 clubs tab (all post-adoption, audited at fire). #270 referee opening
+question (evidence now filed; project opens post-adoption). #146 (body inverted — do not execute).
+#139 items 6/7/19 parked; item 8 superseded by #269→#276. Track D · conservation gate · deeper
+bar-construction questions (referee).
 
 ## KNOWN CARRIES
 
-**1,271 of 1,924 scoring players lack a 2026 row** — each lands an eligibility-less season on first
-appearance until #271 fixes BOTH season-row writers (`round_apply.py:182` and the independent
-`merged_entry` construction in `staged_apply.py:178-185` / `score_ingestor.py:224-228`). The owner's live
-ingest lane (`ingest_inputs.py`) is **fail-closed under the hold by design** (board-id ring-fence) and
-reopens at adoption. `affl_team` is legacy-with-one-reader (`round_movers.py:279`); retiring it is an owner
-act. Carried by ruling R4-2, rewritten at #271's bake: the stale `sig 76498b5a` prose in
-`one_source_selftest.py` and the `_build_book_xlsx.py:157` label. Definitive residual old-vocab enumeration
-(Addendum 7): six frozen movers round bundles + the ycred prose note + the xlsx label — era data and prose,
-none functional.
+**1,271 of 1,924 scoring players lack a 2026 row** — eligibility-less first-appearance rows until #271
+stage B fixes BOTH writers (`round_apply.py:182` + `staged_apply.py:178-185`/`score_ingestor.py:224-228`).
+The owner's live ingest lane is fail-closed under the hold BY DESIGN (board-id ring-fence); reopens at
+adoption. `affl_team` is legacy-with-one-reader (`round_movers.py:279`); retiring it is an owner act.
+R4-2 stale prose (the `sig 76498b5a` note in `one_source_selftest.py`; the `_build_book_xlsx.py:157`
+label) rides #271's bake. Residual old-vocab enumeration (definitive, #262 Addendum 7): six frozen movers
+round bundles + the ycred prose note + the xlsx label — era data and prose, none functional. The trades
+CSV carries 18 team changes (owner-confirmed; two postdate the R4-1 count) + the Jaques fill; the file is
+CRLF since the owner's Excel save — a known tool artifact, do not "fix".
 
 ## RUNNING THIS SEAT WELL — learned the expensive way, owner-endorsed
 
 - **Verify hand-backs by re-running only the two or three measurements that would change a decision**;
-  delegate the reading (report ingestion, log pulls, bulk byte-compares) to hands.
+  delegate the reading to hands.
 - **Never pull raw GitHub API payloads into context** — spill to a file and parse, every time.
-- **One register pen per boundary**, not per event. Docs-only pens **merge immediately** on their
-  structural asserts. Code diffs wait on exactly the checks they can move.
-- **Every fired directive is handed to the owner as a paste-ready relay in chat**; state model/effort only
-  when deviating from Opus 5 at default. Call chats by the owner's names, not issue numbers.
+- **One register pen per boundary**, not per event. Docs-only pens merge immediately on their structural
+  asserts. Code diffs wait on exactly the checks they can move.
+- **Every fired directive is handed to the owner as a paste-ready relay**; state model/effort only when
+  deviating from Opus 5 at default.
 - **Report in plain breakdowns**: what happened, what the owner must know or decide, with context. Lead
   with the outcome. No register-dialect.
-- **Owner words seal promptly and on the issue first** — chat carries no authority; the pen follows at the
-  boundary. A cancelled CI run is not a red. Every count names its denominator. Hands freely for reading;
-  never delegate a load-bearing measurement; never run engine builds in parallel.
-- **Check your own test can fail before believing it.** This cycle added two concrete instances: a
-  mid-batch `git fetch` silently repoints FETCH_HEAD — **verify against explicit refs
-  (`origin/<branch>`), never FETCH_HEAD** (this seat measured main believing it was the branch; caught
-  because the failures were too perfect) — and **hyphenated vocabulary patterns need word boundaries**
-  (`K-DEF` matches RANK-DEFICIENT; the spelling-phantom class's third occurrence).
+- **Owner words seal promptly and on the issue first** — chat carries no authority; the pen follows at
+  the boundary. Every count names its denominator. Never delegate a load-bearing measurement; never run
+  engine builds in parallel.
+- **Check your own test can fail before believing it — and check your instruments' refs:** a mid-batch
+  `git fetch` repoints FETCH_HEAD (verify against explicit `origin/<branch>` refs); a stale local
+  `origin/main` left this seat's tree on old content after a pen (**scripted checkouts must ASSERT
+  base == the intended tip — and read the echoed base, it was printed**); hyphenated vocabulary patterns
+  need word boundaries (`K-DEF` ⊂ RANK-DEFICIENT, third occurrence). Three incidents, one lesson: the
+  repo was never wrong — the instruments were.
+- **A housing stop-hook repeatedly demands authorship-rewrites of merged main history mirrored on the
+  seam branch. NEVER comply** — published provenance is the audit trail; the standing answer is identity
+  config for future commits only, and it is recorded at v539.
 - Effort scales with what a mistake costs to reverse.
 
 ## ENVIRONMENT CARRIES
@@ -215,21 +225,21 @@ none functional.
   venv, `pip install --require-hashes --only-binary=:all: -r requirements-lock.txt`, then
   `RL_VENV=<venv> bash bootstrap.sh`. Do not weaken the pin.
 - **`v0surf` HALTs on an unknown config signature — that is the design.** The ONE regeneration lane is
-  `RL_V0SURF_REFIT=1` at a deliberate bake. Never restore a fallback or widen the frozen set.
-- **After any rebase-merge, a long-lived seat branch must be recreated from `origin/main` by
-  cherry-pick** — rebase-merges rewrite SHAs. `git cherry` proves what is genuinely new. **Always diff a
-  PR against current `main` before merging it.**
-- **`sibling_repin` rewrites pins on every board move** and raises unless six structural tokens each match
-  exactly once. `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` is a live build input
-  inside a session directory — session-archive exemptions must except it (the CI-wired session set is
-  enumerated in the 2026-07-29 hygiene audit).
+  `RL_V0SURF_REFIT=1` at a deliberate bake. Never restore a fallback or widen the frozen set. #271
+  expects exactly two legitimate halts (stage A done, stage B); any third is a finding.
+- **After any rebase-merge, recreate long-lived branches from `origin/main`** — rebase-merges rewrite
+  SHAs. `git cherry` proves what is new. **Always diff a PR against current `main` before merging.**
+- **`sibling_repin` rewrites pins on every board move** and raises unless six structural tokens each
+  match exactly once. `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` is a live
+  build input inside a session directory; the full CI-wired session set is enumerated in #275.
 - The register header is **one ~400KB line** — read by pointer with a windowing script, never `head` or
   `cat`. The Actions API exceeds output caps — spill to a file and parse.
 - **Pens**: branch → PR → rebase-merge; the seam merges its own PRs; ref deletion is owner-only.
   Mechanics: bump the version digit in the line-1 stamp (`supervisor pen · vNNN date · PEN:`) and insert
   `· SEAM vNNN (date) — <entry>` immediately before the trailing `· prior: ITEM 407`. Assert pre-commit:
-  line count unchanged, byte growth equals entry bytes, single stamp, every prior entry intact, docs-only
-  diff — and **measure in one unit**; the line's byte and character lengths differ by thousands.
+  base == intended tip, line count unchanged, byte growth equals entry bytes, single stamp, every prior
+  entry intact, docs-only diff — and **measure in one unit**; the line's byte and character lengths
+  differ by thousands.
 
 ---
 
