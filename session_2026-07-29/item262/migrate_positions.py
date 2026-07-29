@@ -349,6 +349,210 @@ def stage1_files(check):
     return report
 
 
+# ------------------------------------------------------------------ stage 2
+#
+# The Q5/Q6 per-season table, owner ruling 2026-07-29 + Addendum 3. "KEY until year X" means up
+# to AND INCLUDING X. Entries written "when FWD/DEF eligible" key off the season's own eligibility
+# rather than a year range.
+#
+# Each entry answers ONE question: for this player, in this season, is this FWD-or-DEF component
+# key or general? Returning None means "not named — fall through to the standing scope rule".
+_ALL = range(1900, 2100)
+
+def _years(*ys):
+    s = set()
+    for y in ys:
+        s.update(y if isinstance(y, (range, list, tuple, set)) else [y])
+    return s
+
+# name -> callable(year, comp) -> True (key) / False (general)
+Q56_TABLE = {
+    # position-conditional, not year-conditional
+    'Nick Blakey':        lambda y, c: c == 'FWD',          # FWD -> KPF, DEF -> SD
+    'Harrison Himmelberg':lambda y, c: c == 'FWD',          # R2-2: "Harry" = Harrison, src 1107
+    'Mitch McGovern':     lambda y, c: c == 'FWD',
+    'Jayden Laverde':     lambda y, c: c == 'DEF',          # FWD -> SF, DEF -> KPD
+    'Mark Blicavs':       lambda y, c: c == 'DEF',          # KEY when DEF eligible
+    'Andy Otten':         lambda y, c: c == 'DEF',          # KEY when DEF
+    # year-ranged, both FWD and DEF key in the named years
+    'James Sicily':       lambda y, c: y in _years(2020, range(2023, 2026)),
+    'Jordan Ridley':      lambda y, c: y in _years(range(2022, 2026)),
+    'Josh Worrell':       lambda y, c: y in _years(range(2024, 2026)),
+    'Jack Scrimshaw':     lambda y, c: y == 2025,
+    'Jake Melksham':      lambda y, c: y in _years(2025, 2026),
+    'Dane Rampe':         lambda y, c: y in _years(range(2017, 2025)),
+    'Mitchito Owens':     lambda y, c: y in _years(2024, 2026),
+    'Nick Haynes':        lambda y, c: y <= 2017,
+    'Mason Wood':         lambda y, c: y <= 2015,
+    'Jeremy Howe':        lambda y, c: y in _years(range(2020, 2026)),
+    'Kyle Langford':      lambda y, c: y in _years(2025, 2026),
+    'Reef McInnes':       lambda y, c: True,                # KEY for his whole career
+    'Ryan Lester':        lambda y, c: y in _years(2024, 2025),
+    'Jack Lukosius':      lambda y, c: y <= 2019 or y in _years(2023, 2024, 2026),
+    'Jai Serong':         lambda y, c: y <= 2026,
+    'Jake Lever':         lambda y, c: y <= 2025,
+    'Jy Farrar':          lambda y, c: y >= 2025,
+    # explicitly no key seasons
+    'Reuben Ginbey':      lambda y, c: False,               # key from FUTURE seasons only
+    'Ryan Maric':         lambda y, c: False,               # drafted key, never played it
+}
+
+# Addendum 3 R2-1: position-field overrides that differ from BOTH the store and the sheet.
+# Jake Lever is deliberately absent — his fields are already key-coded, so he contributes zero
+# stage-2 edits; his future-key status lives in the position fields, not in new season rows.
+R2_1_FIELD_OVERRIDES = {
+    'Ryan Lester':   {'present_position': 'SD',  'future_position': 'SD'},
+    'Jack Lukosius': {'present_position': 'SF',  'future_position': 'SF'},
+}
+
+# The sheet's explicit per-season spellings (Harrison Himmelberg only) map straight through.
+SHEET_EXPLICIT = {'KEY FWD': 'KPF', 'GEN DEF': 'SD', 'KEY DEF': 'KPD', 'GEN FWD': 'SF'}
+
+# Q4: any DPP season containing RUCK renders its FWD/DEF component key, regardless of flag.
+# SF/RUCK and SD/RUCK are not possible. Pure RUCK has no key variant.
+_SEASON_BASE = {'FWD', 'DEF', 'MID', 'RUCK'}
+
+
+def resolve_season(sheet_pos, player_name, is_key, year):
+    """One season's sheet Position -> the landed per-season eligibility, in the new vocabulary.
+    Raises on anything it does not recognise — it never guesses."""
+    if sheet_pos in SHEET_EXPLICIT:                      # rule 1: transcribe as given
+        return SHEET_EXPLICIT[sheet_pos], 'sheet-explicit'
+    parts = [p.strip() for p in str(sheet_pos).split('/')]
+    for p in parts:
+        if p not in _SEASON_BASE:
+            raise KeyError('unrecognised season position %r for %s %s'
+                           % (sheet_pos, player_name, year))
+    has_ruck = 'RUCK' in parts
+    out, why = [], set()
+    for c in parts:                                      # rule 5: sheet order preserved
+        if c == 'MID':
+            out.append('MID'); continue
+        if c == 'RUCK':
+            out.append('RUCK'); continue
+        if has_ruck:                                     # rule 3a: Q4 override wins
+            key, w = True, 'Q4-ruck'
+        elif player_name in Q56_TABLE:                   # rule 3b: the named table
+            key, w = bool(Q56_TABLE[player_name](year, c)), 'Q5/Q6-table'
+        elif is_key:                                     # rule 3c: blanket overlay
+            key, w = True, 'blanket'
+        else:
+            key, w = False, 'general'
+        out.append(('KPF' if c == 'FWD' else 'KPD') if key else ('SF' if c == 'FWD' else 'SD'))
+        why.add(w)
+    return '/'.join(out), '+'.join(sorted(why)) or 'plain'
+
+
+def _load_sheet():
+    import openpyxl, warnings
+    warnings.filterwarnings('ignore')
+    wb = openpyxl.load_workbook(SHEET, read_only=True, data_only=True)
+    it = wb['Players'].iter_rows(values_only=True); ph = list(next(it))
+    players = [dict(zip(ph, r)) for r in it]
+    players = [r for r in players if any(v is not None for v in r.values())]
+    it = wb['Scoring History'].iter_rows(values_only=True); sh = list(next(it))
+    seasons = [dict(zip(sh, r)) for r in it]
+    by = collections.defaultdict(list)
+    for s in seasons:
+        by[s['source_row']].append(s)
+    return players, by
+
+
+# Player-level fields the owner edited in the sheet. affl_team is DELIBERATELY ABSENT:
+# owner ruling Q2 routes those 16 trades through the #232 ownership sidecar, not the store.
+SHEET_EDIT_FIELDS = ('present_position', 'future_position', 'alternate_position', 'p_dual_stream')
+
+
+def stage2(check):
+    sheet, seasons_by_row = _load_sheet()
+    with open(STORE) as f:
+        store = json.load(f)
+    if len(sheet) != len(store):
+        raise SystemExit('HALT: sheet %d rows vs store %d' % (len(sheet), len(store)))
+    # The Players tab is NOT in source_row order — Shiel/Cameron/Treloar (the notional-pick
+    # trio, Addendum 2) sit above row 1. Index by source_row, never by sheet position.
+    sheet_by_row = {r['source_row']: r for r in sheet}
+    if len(sheet_by_row) != len(sheet):
+        raise SystemExit('HALT: duplicate source_row in the sheet')
+
+    edits, season_stats, why_stats = [], collections.Counter(), collections.Counter()
+    bust_default = []
+
+    for srow, p in enumerate(store, start=1):
+        s = sheet_by_row.get(srow)
+        if s is None:
+            raise SystemExit('HALT: store row %d has no sheet row' % srow)
+        if s['player'] != p['player']:
+            raise SystemExit('HALT: row %d name mismatch %r vs %r'
+                             % (srow, s['player'], p['player']))
+
+        # ---- (a) the owner's deliberate player-level edits, mapped through the vocabulary
+        for fld in SHEET_EDIT_FIELDS:
+            want = s.get(fld)
+            if fld != 'p_dual_stream' and want:
+                want = remap_token(want)
+            if fld == 'p_dual_stream' and want is not None:
+                want = int(want)
+            have = p.get(fld)
+            if have != want and not (have is None and want is None):
+                edits.append((srow, p['player'], fld, have, want, 'sheet'))
+                if not check:
+                    p[fld] = want
+
+        # ---- (b) Addendum 3 R2-1 overrides, which differ from BOTH store and sheet
+        for fld, want in R2_1_FIELD_OVERRIDES.get(p['player'], {}).items():
+            if p.get(fld) != want:
+                edits.append((srow, p['player'], fld, p.get(fld), want, 'R2-1'))
+                if not check:
+                    p[fld] = want
+
+        # ---- (c) the new per-season eligibility
+        rows = seasons_by_row.get(srow, [])
+        if len(rows) != len(p.get('scoring') or []):
+            raise SystemExit('HALT: %s has %d sheet seasons vs %d store seasons'
+                             % (p['player'], len(rows), len(p.get('scoring') or [])))
+        byyear = {r['year']: r for r in rows}
+        for rec in (p.get('scoring') or []):
+            sr = byyear.get(rec['year'])
+            if sr is None:
+                # the ruled bust default: no training-data season -> drafted position, MARKED.
+                # Owner ruling Q9 says this is vacuous; the branch exists so a future season
+                # without sheet data is marked rather than silently defaulted.
+                rec['pos'] = p['drafted_position']
+                rec['pos_src'] = 'drafted-default'
+                bust_default.append((p['player'], rec['year']))
+                continue
+            landed, why = resolve_season(sr['Position'], p['player'],
+                                         s.get('is_key?') == 'KEY', rec['year'])
+            if not check:
+                rec['pos'] = landed
+            season_stats[landed] += 1
+            why_stats[why] += 1
+
+    if not check:
+        with open(STORE, 'w') as f:
+            json.dump(store, f)
+
+    print('\n-- (a)+(b) player-level edits: %d --' % len(edits))
+    bysrc = collections.Counter(e[5] for e in edits)
+    byfld = collections.Counter(e[2] for e in edits)
+    print('   by source:', dict(bysrc), '  by field:', dict(byfld))
+    for srow, nm, fld, a, b, src in edits:
+        if src == 'R2-1':
+            print('   [R2-1] src=%-5d %-22s %-20s %s -> %s' % (srow, nm, fld, a, b))
+    print('\n-- (c) per-season eligibility: %d seasons --' % sum(season_stats.values()))
+    for k, v in sorted(season_stats.items(), key=lambda x: -x[1]):
+        print('   %-14s %6d' % (k, v))
+    print('\n   resolution path:')
+    for k, v in sorted(why_stats.items(), key=lambda x: -x[1]):
+        print('   %-22s %6d' % (k, v))
+    print('\n   bust-default seasons applied: %d %s'
+          % (len(bust_default), '(Q9: ruled vacuous)' if not bust_default else bust_default[:5]))
+    if not check:
+        print('\nstore md5 after: %s' % hashlib.md5(open(STORE,'rb').read()).hexdigest())
+    return 0
+
+
 # ------------------------------------------------------------------- driver
 
 def main():
@@ -379,9 +583,7 @@ def main():
             print('\nstore md5 after: %s'
                   % hashlib.md5(open(STORE,'rb').read()).hexdigest())
     else:
-        print('stage2 is HELD pending the owner ruling on Ryan Lester / Jake Lever / '
-              'Jack Lukosius (see OPEN_QUESTIONS_ROUND2.md R2-1).')
-        return 3
+        return stage2(check)
     return 0
 
 
