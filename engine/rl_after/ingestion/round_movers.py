@@ -526,9 +526,42 @@ def _baseline_from_report(report):
             'release_identity': _baseline_release_identity_from_report(report)}
 
 
+class RepoRootUnresolved(RuntimeError):
+    """No repo root could be found above a bundle path. Raised instead of guessing one."""
+
+
 def _repo_root_of(bundle_path):
-    """repo root from `<repo>/ui/data/movers.js`."""
-    return os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(bundle_path))))
+    """The repo root that owns `<repo>/ui/data/movers.js`, found by walking UP to a real one.
+
+    This used to walk up exactly three directories and return whatever it landed on, unchecked.
+    Handed a bundle that is not three deep inside a repo -- a temp directory in a test -- the walk ran
+    off the top of the filesystem and returned `/`, and the callers below then opened
+    `/engine/rl_after/ingestion/value_history.json` and died on a FileNotFoundError naming a path
+    nobody had ever configured. A synthesized root is worse than no root: it turns "you did not tell me
+    where the repo is" into "your repo is missing a file".
+
+    So: walk up from the bundle looking for the directory these callers actually read, and if there
+    isn't one, say so by name. For the documented layout the answer is unchanged -- `<repo>/ui/data`
+    and `<repo>/ui` do not carry `engine/rl_after/ingestion` and `<repo>` does, so the search stops on
+    the same directory the three-step walk produced.
+
+    Both production callers (`round_movers.write_round_outputs`, `round_finalize`) pass `repo_root=`
+    explicitly and never reach this; it is the fallback for callers that don't.
+    """
+    d = os.path.dirname(os.path.abspath(bundle_path))
+    tried = []
+    while True:
+        tried.append(d)
+        if os.path.isdir(os.path.join(d, 'engine', 'rl_after', 'ingestion')):
+            return d
+        parent = os.path.dirname(d)
+        if parent == d:
+            break
+        d = parent
+    raise RepoRootUnresolved(
+        'cannot resolve a repo root above %s -- no directory on the way up carries '
+        'engine/rl_after/ingestion (searched: %s). Pass repo_root= explicitly.'
+        % (os.path.abspath(bundle_path), ', '.join(tried)))
 
 
 def previous_point(repo_root, round_n):

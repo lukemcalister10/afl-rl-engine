@@ -21,6 +21,10 @@ import staged_apply as SA           # noqa: E402
 import score_ingestor as SI         # noqa: E402
 
 REAL_STORE = os.path.join(RA, 'rl_model_data.json')
+# The repo this checkout is, for the movers tests. `accumulate_bundle` builds the from/to comparison
+# block out of the repo's value_history.json, so it needs a repo root; the bundle itself lives in a
+# throwaway temp dir that is not inside one. Read-only -- same idiom as test_movers_transition.py:33.
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 
 
 def _mini_repo():
@@ -170,9 +174,33 @@ def test_prestaging_refusals():
         shutil.rmtree(d, ignore_errors=True)
 
 
+def test_repo_root_resolves_or_fails_loudly():
+    """#256 part B. `_repo_root_of` used to walk up exactly three directories and return whatever it
+    landed on, so a bundle outside a repo produced `/` and the caller opened `/engine/...`. Both
+    directions are asserted here: the documented layout still resolves to this repo, and a path that
+    is not inside a repo RAISES by name instead of synthesizing a root from `/`."""
+    import round_movers as MV
+    got = MV._repo_root_of(os.path.join(REPO, 'ui', 'data', 'movers.js'))
+    assert got == REPO, "documented layout must still resolve to the repo root: %s != %s" % (got, REPO)
+
+    d = tempfile.mkdtemp(prefix='wkut_root_')
+    try:
+        raised = None
+        try:
+            MV._repo_root_of(os.path.join(d, 'movers.js'))
+        except MV.RepoRootUnresolved as e:
+            raised = str(e)
+        assert raised is not None, "an unresolvable root must raise, not return a synthesized path"
+        assert 'cannot resolve a repo root' in raised and d in raised, raised
+        print("  test_repo_root_resolves_or_fails_loudly PASS")
+    finally:
+        shutil.rmtree(d, ignore_errors=True)
+
+
 def main():
     tests = [test_snapshot_identity, test_bridge_preserves_score_meaning,
              test_gate_off_by_default, test_prestaging_refusals,
+             test_repo_root_resolves_or_fails_loudly,
              test_movers_zero_report_seed_reanchors_to_first_report,
              test_movers_populated_bundle_never_reanchors,
              test_finalized_status_clears_stale_failure]
@@ -224,9 +252,14 @@ def test_movers_zero_report_seed_reanchors_to_first_report():
                  'integrity': {'board_chain_ok': True, 'baseline_anchor_ok': True, 'rounds': []}}
         MV.write_bundle(path, stale)
         report = _mini_report(15, 'pre-board', 'post-board', 'pre-store', 'post-store')
-        res = MV.accumulate_bundle(path, report)
+        res = MV.accumulate_bundle(path, report, repo_root=REPO)
         bundle = MV.load_bundle(path)
-        assert res['baseline_anchor_ok'] is True
+        # `eb602b9` removed the board-identity chain on the owner's word, and with it the
+        # `baseline_anchor_ok` flag this used to read off the return. The property under test is
+        # unchanged and is asserted on the bundle below; assert the write succeeded, and that the
+        # stale `integrity` block seeded above was DROPPED rather than carried forward as True.
+        assert res['wrote'] is True and res['overwrite_conflict'] is False
+        assert 'integrity' not in bundle
         assert bundle['baseline']['as_of_round'] == 14
         assert bundle['baseline']['board'] == 'pre-board'
         assert bundle['baseline']['store'] == 'pre-store'
@@ -245,12 +278,12 @@ def test_movers_populated_bundle_never_reanchors():
     try:
         path = os.path.join(d, 'movers.js')
         r15 = _mini_report(15, 'b14', 'b15', 's14', 's15', txn='t15')
-        MV.accumulate_bundle(path, r15)
+        MV.accumulate_bundle(path, r15, repo_root=REPO)
         before = MV.load_bundle(path)['baseline']
         r16 = _mini_report(16, 'b15', 'b16', 's15', 's16', txn='t16')
-        res = MV.accumulate_bundle(path, r16)
+        res = MV.accumulate_bundle(path, r16, repo_root=REPO)
         after = MV.load_bundle(path)['baseline']
-        assert res['baseline_anchor_ok'] is True
+        assert res['wrote'] is True and res['overwrite_conflict'] is False
         assert after == before
         assert after['board'] == 'b14' and after['store'] == 's14' and after['as_of_round'] == 14
         print("  test_movers_populated_bundle_never_reanchors PASS")
