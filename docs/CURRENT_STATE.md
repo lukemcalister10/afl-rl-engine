@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v26 · supervisor pen · 2026-07-29, register v534
+# CURRENT STATE — the incoming-seat read · v27 · supervisor pen · 2026-07-29, register v535
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~395KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -110,7 +110,7 @@ any pen error reaching main restores the per-entry word.
 
 # PART B — CURRENT STATE
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v534, written against main `8f17841` — this
+*Replaced wholesale each pen. Accurate 2026-07-29, register v535, written against main `39dc657` — this
 pen lands on top of it, so `main` will be one commit ahead. That is expected, not staleness.*
 
 *Figures marked **seam-verified** were re-derived by the seam by re-running. Everything else is the
@@ -234,7 +234,7 @@ fix does not extend to a per-season bar.
 | | |
 |---|---|
 | **positional sheet landing** | Owner's, off-seat: route the finished sheet in. The re-derivation directive drafts against it (spec + rename map above). |
-| **#262 · land the positional data** | **Addendum 1 filed: STOP-and-ask on ANY sheet ambiguity — the seat brings the owner the rows and the question, holds for the ruling, never guesses.** **FILED, NOT FIRED — fires on owner word; the owner attaches the sheet to the executing chat.** Transcribes per-season eligibility into the store under the three sealed rulings, replaces the vocabulary everywhere (KPF/KPD/SD/SF/MID/RUCK), value-invariance proven by relabel-aware diff, sibling re-pins (including the held_candidates candidate md5s) in the same commit. No re-derivation, no curve, no UI bundle regeneration. Gets a seam pre-fire audit response on the issue before firing. |
+| **#262 · land the positional data** | **FIRED 2026-07-29 and IN EXECUTION.** The seat's read-back raised nine questions before touching anything (stop-and-ask working); the owner ruled on all nine — **the complete ruling set is Addendum 2 on the issue**, including the per-season key table (~24 named players) that supersedes the blanket flag for them, the two-stage value proof (rename zero-movers, then the owner's 56 position edits with movers attributed), the 16 trades routed through the #232 ownership sidecar, and the DPP hierarchy FWD→DEF→RUCK→MID. Addendum 1: STOP-and-ask on any sheet ambiguity. **Originally: FILED, NOT FIRED — fires on owner word; the owner attaches the sheet to the executing chat.** Transcribes per-season eligibility into the store under the three sealed rulings, replaces the vocabulary everywhere (KPF/KPD/SD/SF/MID/RUCK), value-invariance proven by relabel-aware diff, sibling re-pins (including the held_candidates candidate md5s) in the same commit. No re-derivation, no curve, no UI bundle regeneration. Gets a seam pre-fire audit response on the issue before firing. |
 | **positional rebuild** | Owner's, off-seat. Everything waits on it. |
 | **ITEM 412** | Owner's, off-seat. |
 
