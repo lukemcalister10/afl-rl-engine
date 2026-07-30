@@ -1,0 +1,46 @@
+{
+ "owner_word": "#271 Addendum 12 (2026-07-29): \"clear the redundant backups.\"",
+ "basis": "The 62-edit set moved future_position onto the value already held in alternate_position, collapsing each dual stream to a degenerate alt==primary. The owner cleared the redundant backup. BOTH fields are cleared because one_source_selftest.py:225 requires (alt is None)==(p_dual is None) -- the backup stream is the PAIR, so clearing alternate_position alone would itself be a violation (\"alt/p_dual half-set\"). future_position is untouched.",
+ "sealed_set": "62 sheet/R2-1 edits + 3 owner-amended (2026-07-29)",
+ "rows": [
+  {
+   "key": "archie-roberts",
+   "player": "Archie Roberts",
+   "alternate_position": [
+    "SD",
+    null
+   ],
+   "p_dual_stream": [
+    70.0,
+    null
+   ],
+   "future_position": "SD"
+  },
+  {
+   "key": "max-hall",
+   "player": "Max Hall",
+   "alternate_position": [
+    "SF",
+    null
+   ],
+   "p_dual_stream": [
+    100.0,
+    null
+   ],
+   "future_position": "SF"
+  },
+  {
+   "key": "zachary-williams",
+   "player": "Zachary Williams",
+   "alternate_position": [
+    "SF",
+    null
+   ],
+   "p_dual_stream": [
+    50.0,
+    null
+   ],
+   "future_position": "SF"
+  }
+ ]
+}

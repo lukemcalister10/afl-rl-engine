@@ -185,6 +185,10 @@ class RoundApplier:
             else:
                 entry['avg'] = a.merged_entry['avg']
                 entry['games'] = a.merged_entry['games']
+                # ITEM 271 item 8: heal an eligibility-less row in place, but NEVER overwrite a landed
+                # `pos` — the store's own season eligibility is the record, not this round's restatement.
+                if entry.get('pos') is None and a.merged_entry.get('pos'):
+                    entry['pos'] = a.merged_entry['pos']
             merged += 1
         # atomic in-place rewrite — NO second copy, NO lookalike (SSI): a temp whose name does not
         # match the source glob (rl_model_data*.json) or the .bak/.stageN lookalike patterns, renamed

@@ -1,0 +1,5636 @@
+{
+ "denominator": 804,
+ "strict_pairs": 621,
+ "inversions": 269,
+ "rank_identity_holds": false,
+ "rows": [
+  {
+   "key": "harry-sheezel",
+   "name": "Harry Sheezel",
+   "grp": "SF",
+   "scar": 10079,
+   "vor": 12154
+  },
+  {
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "grp": "MID",
+   "scar": 9214,
+   "vor": 10951
+  },
+  {
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "grp": "RUCK",
+   "scar": 8735,
+   "vor": 10305
+  },
+  {
+   "key": "nasiah-wanganeen-milera",
+   "name": "Nasiah Wanganeen-Milera",
+   "grp": "SD",
+   "scar": 8375,
+   "vor": 9797
+  },
+  {
+   "key": "max-holmes",
+   "name": "Max Holmes",
+   "grp": "MID",
+   "scar": 7452,
+   "vor": 8558
+  },
+  {
+   "key": "tristan-xerri",
+   "name": "Tristan Xerri",
+   "grp": "RUCK",
+   "scar": 7414,
+   "vor": 8524
+  },
+  {
+   "key": "zak-butters",
+   "name": "Zak Butters",
+   "grp": "MID",
+   "scar": 6473,
+   "vor": 7219
+  },
+  {
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "grp": "MID",
+   "scar": 6380,
+   "vor": 7167
+  },
+  {
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "grp": "KPF",
+   "scar": 6157,
+   "vor": 6815
+  },
+  {
+   "key": "bailey-smith",
+   "name": "Bailey Smith",
+   "grp": "MID",
+   "scar": 6092,
+   "vor": 6732
+  },
+  {
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "grp": "SD",
+   "scar": 5682,
+   "vor": 6278
+  },
+  {
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan",
+   "grp": "MID",
+   "scar": 5592,
+   "vor": 6170
+  },
+  {
+   "key": "jason-horne-francis",
+   "name": "Jason Horne-Francis",
+   "grp": "SF",
+   "scar": 5554,
+   "vor": 6097
+  },
+  {
+   "key": "errol-gulden",
+   "name": "Errol Gulden",
+   "grp": "MID",
+   "scar": 5511,
+   "vor": 6044
+  },
+  {
+   "key": "noah-anderson",
+   "name": "Noah Anderson",
+   "grp": "MID",
+   "scar": 5257,
+   "vor": 5698
+  },
+  {
+   "key": "sam-darcy",
+   "name": "Sam Darcy",
+   "grp": "KPF",
+   "scar": 4929,
+   "vor": 5299
+  },
+  {
+   "key": "caleb-serong",
+   "name": "Caleb Serong",
+   "grp": "MID",
+   "scar": 4811,
+   "vor": 5149
+  },
+  {
+   "key": "tom-green",
+   "name": "Tom Green",
+   "grp": "MID",
+   "scar": 4682,
+   "vor": 4989
+  },
+  {
+   "key": "archie-roberts",
+   "name": "Archie Roberts",
+   "grp": "SD",
+   "scar": 4675,
+   "vor": 5001
+  },
+  {
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "grp": "SF",
+   "scar": 4573,
+   "vor": 4954
+  },
+  {
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "grp": "MID",
+   "scar": 4498,
+   "vor": 4863
+  },
+  {
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy",
+   "grp": "RUCK",
+   "scar": 4481,
+   "vor": 4675
+  },
+  {
+   "key": "murphy-reid",
+   "name": "Murphy Reid",
+   "grp": "SF",
+   "scar": 4305,
+   "vor": 4541
+  },
+  {
+   "key": "jai-newcombe",
+   "name": "Jai Newcombe",
+   "grp": "MID",
+   "scar": 4286,
+   "vor": 4521
+  },
+  {
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "grp": "MID",
+   "scar": 4278,
+   "vor": 4417
+  },
+  {
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "grp": "KPF",
+   "scar": 4164,
+   "vor": 4371
+  },
+  {
+   "key": "sam-lalor",
+   "name": "Sam Lalor",
+   "grp": "SF",
+   "scar": 4102,
+   "vor": 4367
+  },
+  {
+   "key": "nick-blakey",
+   "name": "Nick Blakey",
+   "grp": "SD",
+   "scar": 4094,
+   "vor": 4266
+  },
+  {
+   "key": "colby-mckercher",
+   "name": "Colby McKercher",
+   "grp": "SD",
+   "scar": 4073,
+   "vor": 4366
+  },
+  {
+   "key": "mac-andrew",
+   "name": "Mac Andrew",
+   "grp": "KPD",
+   "scar": 4054,
+   "vor": 4175
+  },
+  {
+   "key": "jake-bowey",
+   "name": "Jake Bowey",
+   "grp": "SD",
+   "scar": 4048,
+   "vor": 4222
+  },
+  {
+   "key": "matt-rowell",
+   "name": "Matt Rowell",
+   "grp": "MID",
+   "scar": 4046,
+   "vor": 4191
+  },
+  {
+   "key": "noah-mraz",
+   "name": "Noah Mraz",
+   "grp": "KPD",
+   "scar": 4006,
+   "vor": 4157
+  },
+  {
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "grp": "SF",
+   "scar": 3943,
+   "vor": 4076
+  },
+  {
+   "key": "bodhi-uwland",
+   "name": "Bodhi Uwland",
+   "grp": "SD",
+   "scar": 3883,
+   "vor": 4043
+  },
+  {
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "grp": "MID",
+   "scar": 3845,
+   "vor": 3941
+  },
+  {
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "grp": "SD",
+   "scar": 3783,
+   "vor": 3910
+  },
+  {
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "grp": "SD",
+   "scar": 3777,
+   "vor": 3889
+  },
+  {
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "grp": "RUCK",
+   "scar": 3776,
+   "vor": 3864
+  },
+  {
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "grp": "SD",
+   "scar": 3739,
+   "vor": 3880
+  },
+  {
+   "key": "nick-watson",
+   "name": "Nick Watson",
+   "grp": "SF",
+   "scar": 3710,
+   "vor": 3854
+  },
+  {
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "grp": "MID",
+   "scar": 3702,
+   "vor": 3861
+  },
+  {
+   "key": "callum-wilkie",
+   "name": "Callum Wilkie",
+   "grp": "KPD",
+   "scar": 3699,
+   "vor": 3686
+  },
+  {
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "grp": "SF",
+   "scar": 3686,
+   "vor": 3879
+  },
+  {
+   "key": "harley-reid",
+   "name": "Harley Reid",
+   "grp": "MID",
+   "scar": 3663,
+   "vor": 3778
+  },
+  {
+   "key": "isaac-heeney",
+   "name": "Isaac Heeney",
+   "grp": "MID",
+   "scar": 3637,
+   "vor": 3667
+  },
+  {
+   "key": "chad-warner",
+   "name": "Chad Warner",
+   "grp": "SF",
+   "scar": 3624,
+   "vor": 3724
+  },
+  {
+   "key": "nicholas-martin",
+   "name": "Nicholas Martin",
+   "grp": "SF",
+   "scar": 3573,
+   "vor": 3661
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "name": "Luke Davies-Uniacke",
+   "grp": "MID",
+   "scar": 3550,
+   "vor": 3598
+  },
+  {
+   "key": "jordan-dawson",
+   "name": "Jordan Dawson",
+   "grp": "MID",
+   "scar": 3502,
+   "vor": 3513
+  },
+  {
+   "key": "finn-o-sullivan",
+   "name": "Finn O'Sullivan",
+   "grp": "SD",
+   "scar": 3449,
+   "vor": 3637
+  },
+  {
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "grp": "RUCK",
+   "scar": 3426,
+   "vor": 3400
+  },
+  {
+   "key": "jack-sinclair",
+   "name": "Jack Sinclair",
+   "grp": "SD",
+   "scar": 3408,
+   "vor": 3397
+  },
+  {
+   "key": "darcy-wilson",
+   "name": "Darcy Wilson",
+   "grp": "SF",
+   "scar": 3407,
+   "vor": 3476
+  },
+  {
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "grp": "MID",
+   "scar": 3405,
+   "vor": 3590
+  },
+  {
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "grp": "MID",
+   "scar": 3296,
+   "vor": 3295
+  },
+  {
+   "key": "george-wardlaw",
+   "name": "George Wardlaw",
+   "grp": "MID",
+   "scar": 3215,
+   "vor": 3326
+  },
+  {
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "grp": "SF",
+   "scar": 3207,
+   "vor": 3175
+  },
+  {
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "grp": "MID",
+   "scar": 3187,
+   "vor": 3164
+  },
+  {
+   "key": "logan-morris",
+   "name": "Logan Morris",
+   "grp": "KPF",
+   "scar": 3158,
+   "vor": 3226
+  },
+  {
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "grp": "SF",
+   "scar": 3122,
+   "vor": 3216
+  },
+  {
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "grp": "SF",
+   "scar": 3063,
+   "vor": 3029
+  },
+  {
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "grp": "MID",
+   "scar": 3047,
+   "vor": 3153
+  },
+  {
+   "key": "hugo-garcia",
+   "name": "Hugo Garcia",
+   "grp": "MID",
+   "scar": 3038,
+   "vor": 3103
+  },
+  {
+   "key": "connor-o-sullivan",
+   "name": "Connor O'Sullivan",
+   "grp": "KPD",
+   "scar": 2974,
+   "vor": 2978
+  },
+  {
+   "key": "will-day",
+   "name": "Will Day",
+   "grp": "MID",
+   "scar": 2966,
+   "vor": 2962
+  },
+  {
+   "key": "connor-rozee",
+   "name": "Connor Rozee",
+   "grp": "SD",
+   "scar": 2930,
+   "vor": 2895
+  },
+  {
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "grp": "SF",
+   "scar": 2891,
+   "vor": 2913
+  },
+  {
+   "key": "connor-macdonald",
+   "name": "Connor MacDonald",
+   "grp": "SF",
+   "scar": 2869,
+   "vor": 2844
+  },
+  {
+   "key": "zachary-merrett",
+   "name": "Zachary Merrett",
+   "grp": "MID",
+   "scar": 2823,
+   "vor": 2726
+  },
+  {
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "grp": "SD",
+   "scar": 2769,
+   "vor": 2732
+  },
+  {
+   "key": "josh-ward",
+   "name": "Josh Ward",
+   "grp": "MID",
+   "scar": 2749,
+   "vor": 2765
+  },
+  {
+   "key": "sam-durham",
+   "name": "Sam Durham",
+   "grp": "SF",
+   "scar": 2710,
+   "vor": 2681
+  },
+  {
+   "key": "christian-petracca",
+   "name": "Christian Petracca",
+   "grp": "SF",
+   "scar": 2702,
+   "vor": 2609
+  },
+  {
+   "key": "jaspa-fletcher",
+   "name": "Jaspa Fletcher",
+   "grp": "SD",
+   "scar": 2683,
+   "vor": 2657
+  },
+  {
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "grp": "SD",
+   "scar": 2666,
+   "vor": 2632
+  },
+  {
+   "key": "clayton-oliver",
+   "name": "Clayton Oliver",
+   "grp": "MID",
+   "scar": 2636,
+   "vor": 2526
+  },
+  {
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "grp": "SF",
+   "scar": 2621,
+   "vor": 2661
+  },
+  {
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "grp": "MID",
+   "scar": 2609,
+   "vor": 2625
+  },
+  {
+   "key": "jack-ross",
+   "name": "Jack Ross",
+   "grp": "SF",
+   "scar": 2602,
+   "vor": 2530
+  },
+  {
+   "key": "jordon-sweet",
+   "name": "Jordon Sweet",
+   "grp": "RUCK",
+   "scar": 2576,
+   "vor": 2483
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "grp": "KPD",
+   "scar": 2567,
+   "vor": 2535
+  },
+  {
+   "key": "kieren-briggs",
+   "name": "Kieren Briggs",
+   "grp": "RUCK",
+   "scar": 2544,
+   "vor": 2491
+  },
+  {
+   "key": "max-hall",
+   "name": "Max Hall",
+   "grp": "SF",
+   "scar": 2542,
+   "vor": 2446
+  },
+  {
+   "key": "jack-ginnivan",
+   "name": "Jack Ginnivan",
+   "grp": "SF",
+   "scar": 2504,
+   "vor": 2433
+  },
+  {
+   "key": "bailey-williams-wc",
+   "name": "Bailey J. Williams",
+   "grp": "KPF",
+   "scar": 2493,
+   "vor": 2425
+  },
+  {
+   "key": "connor-idun",
+   "name": "Connor Idun",
+   "grp": "SD",
+   "scar": 2490,
+   "vor": 2412
+  },
+  {
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "grp": "MID",
+   "scar": 2470,
+   "vor": 2480
+  },
+  {
+   "key": "tim-taranto",
+   "name": "Tim Taranto",
+   "grp": "MID",
+   "scar": 2465,
+   "vor": 2338
+  },
+  {
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "grp": "SD",
+   "scar": 2463,
+   "vor": 2367
+  },
+  {
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "grp": "SF",
+   "scar": 2462,
+   "vor": 2447
+  },
+  {
+   "key": "reuben-ginbey",
+   "name": "Reuben Ginbey",
+   "grp": "SD",
+   "scar": 2458,
+   "vor": 2380
+  },
+  {
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "grp": "SF",
+   "scar": 2444,
+   "vor": 2312
+  },
+  {
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "grp": "SD",
+   "scar": 2439,
+   "vor": 2306
+  },
+  {
+   "key": "bailey-humphrey",
+   "name": "Bailey Humphrey",
+   "grp": "SF",
+   "scar": 2394,
+   "vor": 2386
+  },
+  {
+   "key": "touk-miller",
+   "name": "Touk Miller",
+   "grp": "SF",
+   "scar": 2370,
+   "vor": 2220
+  },
+  {
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "grp": "KPF",
+   "scar": 2357,
+   "vor": 2268
+  },
+  {
+   "key": "lachie-neale",
+   "name": "Lachie Neale",
+   "grp": "MID",
+   "scar": 2353,
+   "vor": 2202
+  },
+  {
+   "key": "rowan-marshall",
+   "name": "Rowan Marshall",
+   "grp": "KPF",
+   "scar": 2291,
+   "vor": 2156
+  },
+  {
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney",
+   "grp": "SF",
+   "scar": 2284,
+   "vor": 2180
+  },
+  {
+   "key": "jase-burgoyne",
+   "name": "Jase Burgoyne",
+   "grp": "SD",
+   "scar": 2281,
+   "vor": 2217
+  },
+  {
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "grp": "KPD",
+   "scar": 2273,
+   "vor": 2110
+  },
+  {
+   "key": "callum-mills",
+   "name": "Callum Mills",
+   "grp": "SD",
+   "scar": 2272,
+   "vor": 2130
+  },
+  {
+   "key": "josh-daicos",
+   "name": "Josh Daicos",
+   "grp": "SD",
+   "scar": 2268,
+   "vor": 2144
+  },
+  {
+   "key": "tom-powell",
+   "name": "Tom Powell",
+   "grp": "SF",
+   "scar": 2262,
+   "vor": 2175
+  },
+  {
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "grp": "SF",
+   "scar": 2245,
+   "vor": 2230
+  },
+  {
+   "key": "lachie-whitfield",
+   "name": "Lachie Whitfield",
+   "grp": "SD",
+   "scar": 2232,
+   "vor": 2073
+  },
+  {
+   "key": "harvey-thomas",
+   "name": "Harvey Thomas",
+   "grp": "SF",
+   "scar": 2217,
+   "vor": 2140
+  },
+  {
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "grp": "SD",
+   "scar": 2214,
+   "vor": 2147
+  },
+  {
+   "key": "ollie-dempsey",
+   "name": "Ollie Dempsey",
+   "grp": "MID",
+   "scar": 2211,
+   "vor": 2161
+  },
+  {
+   "key": "sam-flanders",
+   "name": "Sam Flanders",
+   "grp": "SF",
+   "scar": 2208,
+   "vor": 2100
+  },
+  {
+   "key": "john-noble",
+   "name": "John Noble",
+   "grp": "SD",
+   "scar": 2201,
+   "vor": 2056
+  },
+  {
+   "key": "toby-nankervis",
+   "name": "Toby Nankervis",
+   "grp": "RUCK",
+   "scar": 2197,
+   "vor": 2042
+  },
+  {
+   "key": "marcus-windhager",
+   "name": "Marcus Windhager",
+   "grp": "SD",
+   "scar": 2189,
+   "vor": 2108
+  },
+  {
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "grp": "SD",
+   "scar": 2184,
+   "vor": 2163
+  },
+  {
+   "key": "jake-soligo",
+   "name": "Jake Soligo",
+   "grp": "SF",
+   "scar": 2164,
+   "vor": 2069
+  },
+  {
+   "key": "josh-rachele",
+   "name": "Josh Rachele",
+   "grp": "SF",
+   "scar": 2150,
+   "vor": 2052
+  },
+  {
+   "key": "samuel-grlj",
+   "name": "Samuel Grlj",
+   "grp": "SD",
+   "scar": 2142,
+   "vor": 2134
+  },
+  {
+   "key": "cooper-trembath",
+   "name": "Cooper Trembath",
+   "grp": "KPF",
+   "scar": 2140,
+   "vor": 2044
+  },
+  {
+   "key": "ned-moyle",
+   "name": "Ned Moyle",
+   "grp": "RUCK",
+   "scar": 2119,
+   "vor": 2034
+  },
+  {
+   "key": "tom-de-koning",
+   "name": "Tom De Koning",
+   "grp": "RUCK",
+   "scar": 2078,
+   "vor": 2002
+  },
+  {
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "grp": "MID",
+   "scar": 2073,
+   "vor": 1985
+  },
+  {
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "grp": "MID",
+   "scar": 2064,
+   "vor": 2017
+  },
+  {
+   "key": "mitchito-owens",
+   "name": "Mitchito Owens",
+   "grp": "KPF",
+   "scar": 2056,
+   "vor": 1935
+  },
+  {
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "grp": "RUCK",
+   "scar": 2055,
+   "vor": 2116
+  },
+  {
+   "key": "matthew-roberts",
+   "name": "Matthew Roberts",
+   "grp": "SD",
+   "scar": 2042,
+   "vor": 1932
+  },
+  {
+   "key": "joel-jeffrey",
+   "name": "Joel Jeffrey",
+   "grp": "SD",
+   "scar": 2029,
+   "vor": 1936
+  },
+  {
+   "key": "wayne-milera",
+   "name": "Wayne Milera",
+   "grp": "SD",
+   "scar": 2003,
+   "vor": 1841
+  },
+  {
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "grp": "SD",
+   "scar": 1972,
+   "vor": 1878
+  },
+  {
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "grp": "SF",
+   "scar": 1964,
+   "vor": 1820
+  },
+  {
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard",
+   "grp": "SF",
+   "scar": 1963,
+   "vor": 1904
+  },
+  {
+   "key": "harris-andrews",
+   "name": "Harris Andrews",
+   "grp": "KPD",
+   "scar": 1961,
+   "vor": 1765
+  },
+  {
+   "key": "jacob-van-rooyen",
+   "name": "Jacob Van Rooyen",
+   "grp": "KPF",
+   "scar": 1951,
+   "vor": 1838
+  },
+  {
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "grp": "MID",
+   "scar": 1937,
+   "vor": 1758
+  },
+  {
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "grp": "KPD",
+   "scar": 1937,
+   "vor": 1768
+  },
+  {
+   "key": "nick-madden",
+   "name": "Nick Madden",
+   "grp": "RUCK",
+   "scar": 1932,
+   "vor": 1794
+  },
+  {
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "grp": "SD",
+   "scar": 1910,
+   "vor": 1739
+  },
+  {
+   "key": "daniel-annable",
+   "name": "Daniel Annable",
+   "grp": "MID",
+   "scar": 1890,
+   "vor": 1885
+  },
+  {
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "grp": "MID",
+   "scar": 1881,
+   "vor": 1704
+  },
+  {
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "grp": "KPF",
+   "scar": 1876,
+   "vor": 1746
+  },
+  {
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "grp": "KPF",
+   "scar": 1872,
+   "vor": 1710
+  },
+  {
+   "key": "jobe-shanahan",
+   "name": "Jobe Shanahan",
+   "grp": "KPF",
+   "scar": 1853,
+   "vor": 1792
+  },
+  {
+   "key": "patrick-voss",
+   "name": "Patrick Voss",
+   "grp": "KPF",
+   "scar": 1841,
+   "vor": 1728
+  },
+  {
+   "key": "mark-keane",
+   "name": "Mark Keane",
+   "grp": "KPD",
+   "scar": 1819,
+   "vor": 1667
+  },
+  {
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "grp": "SD",
+   "scar": 1815,
+   "vor": 1756
+  },
+  {
+   "key": "nate-caddy",
+   "name": "Nate Caddy",
+   "grp": "KPF",
+   "scar": 1812,
+   "vor": 1735
+  },
+  {
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "grp": "MID",
+   "scar": 1791,
+   "vor": 1623
+  },
+  {
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "grp": "SF",
+   "scar": 1790,
+   "vor": 1636
+  },
+  {
+   "key": "peter-wright",
+   "name": "Peter Wright",
+   "grp": "KPF",
+   "scar": 1767,
+   "vor": 1583
+  },
+  {
+   "key": "daniel-turner",
+   "name": "Daniel Turner",
+   "grp": "KPD",
+   "scar": 1767,
+   "vor": 1622
+  },
+  {
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "grp": "SD",
+   "scar": 1765,
+   "vor": 1732
+  },
+  {
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "grp": "SD",
+   "scar": 1759,
+   "vor": 1635
+  },
+  {
+   "key": "jye-amiss",
+   "name": "Jye Amiss",
+   "grp": "KPF",
+   "scar": 1753,
+   "vor": 1596
+  },
+  {
+   "key": "will-graham",
+   "name": "Will Graham",
+   "grp": "SF",
+   "scar": 1727,
+   "vor": 1700
+  },
+  {
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "grp": "SF",
+   "scar": 1722,
+   "vor": 1536
+  },
+  {
+   "key": "jack-steele",
+   "name": "Jack Steele",
+   "grp": "MID",
+   "scar": 1689,
+   "vor": 1503
+  },
+  {
+   "key": "joshua-weddle",
+   "name": "Joshua Weddle",
+   "grp": "SD",
+   "scar": 1689,
+   "vor": 1573
+  },
+  {
+   "key": "koltyn-tholstrup",
+   "name": "Koltyn Tholstrup",
+   "grp": "SF",
+   "scar": 1671,
+   "vor": 1589
+  },
+  {
+   "key": "luke-parker",
+   "name": "Luke Parker",
+   "grp": "SD",
+   "scar": 1670,
+   "vor": 1481
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "name": "Massimo D'Ambrosio",
+   "grp": "MID",
+   "scar": 1669,
+   "vor": 1569
+  },
+  {
+   "key": "cooper-duff-tytler",
+   "name": "Cooper Duff-Tytler",
+   "grp": "KPF",
+   "scar": 1638,
+   "vor": 1578
+  },
+  {
+   "key": "mason-redman",
+   "name": "Mason Redman",
+   "grp": "SD",
+   "scar": 1636,
+   "vor": 1462
+  },
+  {
+   "key": "tom-mccarthy",
+   "name": "Tom McCarthy",
+   "grp": "SD",
+   "scar": 1633,
+   "vor": 1451
+  },
+  {
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "grp": "KPF",
+   "scar": 1626,
+   "vor": 1458
+  },
+  {
+   "key": "luke-ryan",
+   "name": "Luke Ryan",
+   "grp": "SD",
+   "scar": 1608,
+   "vor": 1426
+  },
+  {
+   "key": "thomas-liberatore",
+   "name": "Thomas Liberatore",
+   "grp": "MID",
+   "scar": 1607,
+   "vor": 1412
+  },
+  {
+   "key": "leo-lombard",
+   "name": "Leo Lombard",
+   "grp": "SF",
+   "scar": 1603,
+   "vor": 1560
+  },
+  {
+   "key": "ty-gallop",
+   "name": "Ty Gallop",
+   "grp": "KPF",
+   "scar": 1598,
+   "vor": 1548
+  },
+  {
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "grp": "RUCK",
+   "scar": 1588,
+   "vor": 1403
+  },
+  {
+   "key": "alix-tauru",
+   "name": "Alix Tauru",
+   "grp": "KPF",
+   "scar": 1571,
+   "vor": 1460
+  },
+  {
+   "key": "caleb-daniel",
+   "name": "Caleb Daniel",
+   "grp": "SD",
+   "scar": 1551,
+   "vor": 1365
+  },
+  {
+   "key": "ned-long",
+   "name": "Ned Long",
+   "grp": "SF",
+   "scar": 1524,
+   "vor": 1394
+  },
+  {
+   "key": "paul-curtis",
+   "name": "Paul Curtis",
+   "grp": "SF",
+   "scar": 1522,
+   "vor": 1378
+  },
+  {
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades",
+   "grp": "KPF",
+   "scar": 1521,
+   "vor": 1363
+  },
+  {
+   "key": "logan-evans",
+   "name": "Logan Evans",
+   "grp": "SD",
+   "scar": 1506,
+   "vor": 1397
+  },
+  {
+   "key": "ryan-maric",
+   "name": "Ryan Maric",
+   "grp": "SD",
+   "scar": 1500,
+   "vor": 1434
+  },
+  {
+   "key": "darcy-jones",
+   "name": "Darcy Jones",
+   "grp": "SF",
+   "scar": 1494,
+   "vor": 1368
+  },
+  {
+   "key": "kane-farrell",
+   "name": "Kane Farrell",
+   "grp": "SD",
+   "scar": 1492,
+   "vor": 1336
+  },
+  {
+   "key": "luke-trainor",
+   "name": "Luke Trainor",
+   "grp": "SD",
+   "scar": 1482,
+   "vor": 1365
+  },
+  {
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "grp": "KPF",
+   "scar": 1482,
+   "vor": 1323
+  },
+  {
+   "key": "sam-taylor",
+   "name": "Sam Taylor",
+   "grp": "KPD",
+   "scar": 1479,
+   "vor": 1311
+  },
+  {
+   "key": "lloyd-meek",
+   "name": "Lloyd Meek",
+   "grp": "RUCK",
+   "scar": 1476,
+   "vor": 1324
+  },
+  {
+   "key": "james-peatling",
+   "name": "James Peatling",
+   "grp": "MID",
+   "scar": 1469,
+   "vor": 1326
+  },
+  {
+   "key": "isaac-kako",
+   "name": "Isaac Kako",
+   "grp": "SF",
+   "scar": 1462,
+   "vor": 1419
+  },
+  {
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "grp": "KPD",
+   "scar": 1434,
+   "vor": 1249
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew",
+   "grp": "RUCK",
+   "scar": 1432,
+   "vor": 1257
+  },
+  {
+   "key": "josh-dunkley",
+   "name": "Josh Dunkley",
+   "grp": "MID",
+   "scar": 1431,
+   "vor": 1242
+  },
+  {
+   "key": "jake-waterman",
+   "name": "Jake Waterman",
+   "grp": "KPF",
+   "scar": 1421,
+   "vor": 1250
+  },
+  {
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "grp": "SF",
+   "scar": 1420,
+   "vor": 1231
+  },
+  {
+   "key": "brent-daniels",
+   "name": "Brent Daniels",
+   "grp": "SF",
+   "scar": 1418,
+   "vor": 1237
+  },
+  {
+   "key": "kane-mcauliffe",
+   "name": "Kane McAuliffe",
+   "grp": "MID",
+   "scar": 1406,
+   "vor": 1344
+  },
+  {
+   "key": "joe-berry",
+   "name": "Joe Berry",
+   "grp": "SF",
+   "scar": 1397,
+   "vor": 1333
+  },
+  {
+   "key": "dylan-moore",
+   "name": "Dylan Moore",
+   "grp": "SF",
+   "scar": 1396,
+   "vor": 1223
+  },
+  {
+   "key": "jy-simpkin",
+   "name": "Jy Simpkin",
+   "grp": "SF",
+   "scar": 1389,
+   "vor": 1220
+  },
+  {
+   "key": "tim-kelly",
+   "name": "Tim Kelly",
+   "grp": "SF",
+   "scar": 1377,
+   "vor": 1202
+  },
+  {
+   "key": "bradley-hill",
+   "name": "Bradley Hill",
+   "grp": "SF",
+   "scar": 1371,
+   "vor": 1174
+  },
+  {
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas",
+   "grp": "MID",
+   "scar": 1362,
+   "vor": 1312
+  },
+  {
+   "key": "dan-houston",
+   "name": "Dan Houston",
+   "grp": "SD",
+   "scar": 1357,
+   "vor": 1180
+  },
+  {
+   "key": "patrick-retschko",
+   "name": "Patrick Retschko",
+   "grp": "MID",
+   "scar": 1348,
+   "vor": 1302
+  },
+  {
+   "key": "jai-murray",
+   "name": "Jai Murray",
+   "grp": "MID",
+   "scar": 1343,
+   "vor": 1324
+  },
+  {
+   "key": "jack-whitlock",
+   "name": "Jack Whitlock",
+   "grp": "KPF",
+   "scar": 1325,
+   "vor": 1260
+  },
+  {
+   "key": "beau-addinsall",
+   "name": "Beau Addinsall",
+   "grp": "MID",
+   "scar": 1321,
+   "vor": 1294
+  },
+  {
+   "key": "sam-draper",
+   "name": "Sam Draper",
+   "grp": "KPF",
+   "scar": 1307,
+   "vor": 1122
+  },
+  {
+   "key": "jayden-short",
+   "name": "Jayden Short",
+   "grp": "SD",
+   "scar": 1306,
+   "vor": 1120
+  },
+  {
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "grp": "SF",
+   "scar": 1306,
+   "vor": 1256
+  },
+  {
+   "key": "josh-smillie",
+   "name": "Josh Smillie",
+   "grp": "MID",
+   "scar": 1276,
+   "vor": 1276
+  },
+  {
+   "key": "thomas-stewart",
+   "name": "Thomas Stewart",
+   "grp": "SD",
+   "scar": 1271,
+   "vor": 1079
+  },
+  {
+   "key": "jonty-faull",
+   "name": "Jonty Faull",
+   "grp": "KPF",
+   "scar": 1255,
+   "vor": 1183
+  },
+  {
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "grp": "SD",
+   "scar": 1250,
+   "vor": 1049
+  },
+  {
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "grp": "KPD",
+   "scar": 1232,
+   "vor": 1042
+  },
+  {
+   "key": "dante-visentini",
+   "name": "Dante Visentini",
+   "grp": "KPF",
+   "scar": 1227,
+   "vor": 1164
+  },
+  {
+   "key": "sam-banks",
+   "name": "Sam Banks",
+   "grp": "SD",
+   "scar": 1225,
+   "vor": 1117
+  },
+  {
+   "key": "bo-allan",
+   "name": "Bo Allan",
+   "grp": "SD",
+   "scar": 1224,
+   "vor": 1130
+  },
+  {
+   "key": "sid-draper",
+   "name": "Sid Draper",
+   "grp": "SF",
+   "scar": 1204,
+   "vor": 1185
+  },
+  {
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "grp": "KPF",
+   "scar": 1187,
+   "vor": 987
+  },
+  {
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "grp": "SF",
+   "scar": 1184,
+   "vor": 1097
+  },
+  {
+   "key": "jed-walter",
+   "name": "Jed Walter",
+   "grp": "KPF",
+   "scar": 1174,
+   "vor": 1110
+  },
+  {
+   "key": "ben-miller",
+   "name": "Ben Miller",
+   "grp": "KPD",
+   "scar": 1171,
+   "vor": 997
+  },
+  {
+   "key": "cooper-lord",
+   "name": "Cooper Lord",
+   "grp": "MID",
+   "scar": 1169,
+   "vor": 1110
+  },
+  {
+   "key": "jye-caldwell",
+   "name": "Jye Caldwell",
+   "grp": "MID",
+   "scar": 1166,
+   "vor": 1001
+  },
+  {
+   "key": "andrew-mcgrath",
+   "name": "Andrew McGrath",
+   "grp": "SD",
+   "scar": 1160,
+   "vor": 1002
+  },
+  {
+   "key": "anthony-caminiti",
+   "name": "Anthony Caminiti",
+   "grp": "KPF",
+   "scar": 1155,
+   "vor": 1050
+  },
+  {
+   "key": "thomas-sims",
+   "name": "Thomas Sims",
+   "grp": "KPF",
+   "scar": 1151,
+   "vor": 1090
+  },
+  {
+   "key": "adam-treloar",
+   "name": "Adam Treloar",
+   "grp": "SF",
+   "scar": 1149,
+   "vor": 953
+  },
+  {
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson",
+   "grp": "SD",
+   "scar": 1137,
+   "vor": 1076
+  },
+  {
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "grp": "SD",
+   "scar": 1134,
+   "vor": 950
+  },
+  {
+   "key": "kade-chandler",
+   "name": "Kade Chandler",
+   "grp": "SF",
+   "scar": 1134,
+   "vor": 964
+  },
+  {
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "grp": "SF",
+   "scar": 1128,
+   "vor": 992
+  },
+  {
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "grp": "MID",
+   "scar": 1125,
+   "vor": 954
+  },
+  {
+   "key": "seth-campbell",
+   "name": "Seth Campbell",
+   "grp": "SF",
+   "scar": 1124,
+   "vor": 990
+  },
+  {
+   "key": "joe-richards",
+   "name": "Joe Richards",
+   "grp": "SF",
+   "scar": 1120,
+   "vor": 936
+  },
+  {
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "grp": "SD",
+   "scar": 1110,
+   "vor": 1017
+  },
+  {
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "grp": "KPD",
+   "scar": 1107,
+   "vor": 965
+  },
+  {
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "grp": "SD",
+   "scar": 1103,
+   "vor": 948
+  },
+  {
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "grp": "SF",
+   "scar": 1080,
+   "vor": 898
+  },
+  {
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "grp": "MID",
+   "scar": 1076,
+   "vor": 988
+  },
+  {
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "grp": "MID",
+   "scar": 1065,
+   "vor": 993
+  },
+  {
+   "key": "reilly-o-brien",
+   "name": "Reilly O'Brien",
+   "grp": "RUCK",
+   "scar": 1064,
+   "vor": 899
+  },
+  {
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston",
+   "grp": "SF",
+   "scar": 1061,
+   "vor": 986
+  },
+  {
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "grp": "KPF",
+   "scar": 1051,
+   "vor": 881
+  },
+  {
+   "key": "jordan-croft",
+   "name": "Jordan Croft",
+   "grp": "KPF",
+   "scar": 1051,
+   "vor": 962
+  },
+  {
+   "key": "jedd-busslinger",
+   "name": "Jedd Busslinger",
+   "grp": "KPD",
+   "scar": 1048,
+   "vor": 911
+  },
+  {
+   "key": "sam-de-koning",
+   "name": "Sam De Koning",
+   "grp": "KPD",
+   "scar": 1045,
+   "vor": 873
+  },
+  {
+   "key": "toby-greene",
+   "name": "Toby Greene",
+   "grp": "SF",
+   "scar": 1040,
+   "vor": 853
+  },
+  {
+   "key": "will-brodie",
+   "name": "Will Brodie",
+   "grp": "MID",
+   "scar": 1038,
+   "vor": 845
+  },
+  {
+   "key": "taylor-goad",
+   "name": "Taylor Goad",
+   "grp": "RUCK",
+   "scar": 1034,
+   "vor": 1023
+  },
+  {
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong",
+   "grp": "KPF",
+   "scar": 1031,
+   "vor": 968
+  },
+  {
+   "key": "ethan-read",
+   "name": "Ethan Read",
+   "grp": "KPF",
+   "scar": 1024,
+   "vor": 936
+  },
+  {
+   "key": "charlie-comben",
+   "name": "Charlie Comben",
+   "grp": "KPD",
+   "scar": 1023,
+   "vor": 853
+  },
+  {
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron",
+   "grp": "KPF",
+   "scar": 1021,
+   "vor": 830
+  },
+  {
+   "key": "hugh-boxshall",
+   "name": "Hugh Boxshall",
+   "grp": "MID",
+   "scar": 1019,
+   "vor": 968
+  },
+  {
+   "key": "calsher-dear",
+   "name": "Calsher Dear",
+   "grp": "KPF",
+   "scar": 1016,
+   "vor": 954
+  },
+  {
+   "key": "matt-carroll",
+   "name": "Matt Carroll",
+   "grp": "SD",
+   "scar": 1007,
+   "vor": 947
+  },
+  {
+   "key": "aliir-aliir",
+   "name": "Aliir Aliir",
+   "grp": "KPD",
+   "scar": 993,
+   "vor": 798
+  },
+  {
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "grp": "SD",
+   "scar": 984,
+   "vor": 881
+  },
+  {
+   "key": "christian-moraes",
+   "name": "Christian Moraes",
+   "grp": "SF",
+   "scar": 984,
+   "vor": 934
+  },
+  {
+   "key": "hamish-davis",
+   "name": "Hamish Davis",
+   "grp": "MID",
+   "scar": 974,
+   "vor": 924
+  },
+  {
+   "key": "louis-emmett",
+   "name": "Louis Emmett",
+   "grp": "RUCK",
+   "scar": 970,
+   "vor": 896
+  },
+  {
+   "key": "wil-powell",
+   "name": "Wil Powell",
+   "grp": "SD",
+   "scar": 956,
+   "vor": 780
+  },
+  {
+   "key": "rory-laird",
+   "name": "Rory Laird",
+   "grp": "SD",
+   "scar": 955,
+   "vor": 772
+  },
+  {
+   "key": "samuel-swadling",
+   "name": "Samuel Swadling",
+   "grp": "MID",
+   "scar": 953,
+   "vor": 901
+  },
+  {
+   "key": "sean-darcy",
+   "name": "Sean Darcy",
+   "grp": "RUCK",
+   "scar": 947,
+   "vor": 767
+  },
+  {
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell",
+   "grp": "KPD",
+   "scar": 932,
+   "vor": 853
+  },
+  {
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski",
+   "grp": "SF",
+   "scar": 928,
+   "vor": 760
+  },
+  {
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "grp": "SF",
+   "scar": 925,
+   "vor": 884
+  },
+  {
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman",
+   "grp": "SD",
+   "scar": 920,
+   "vor": 769
+  },
+  {
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "grp": "SF",
+   "scar": 915,
+   "vor": 830
+  },
+  {
+   "key": "jack-silvagni",
+   "name": "Jack Silvagni",
+   "grp": "KPD",
+   "scar": 906,
+   "vor": 730
+  },
+  {
+   "key": "jordan-ridley",
+   "name": "Jordan Ridley",
+   "grp": "SD",
+   "scar": 904,
+   "vor": 720
+  },
+  {
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor",
+   "grp": "SD",
+   "scar": 902,
+   "vor": 857
+  },
+  {
+   "key": "lachie-jaques",
+   "name": "Lachie Jaques",
+   "grp": "SD",
+   "scar": 891,
+   "vor": 815
+  },
+  {
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "grp": "SF",
+   "scar": 882,
+   "vor": 720
+  },
+  {
+   "key": "sam-marshall",
+   "name": "Sam Marshall",
+   "grp": "MID",
+   "scar": 876,
+   "vor": 830
+  },
+  {
+   "key": "archer-reid",
+   "name": "Archer Reid",
+   "grp": "KPF",
+   "scar": 872,
+   "vor": 788
+  },
+  {
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands",
+   "grp": "SF",
+   "scar": 864,
+   "vor": 730
+  },
+  {
+   "key": "lachlan-schultz",
+   "name": "Lachlan Schultz",
+   "grp": "SF",
+   "scar": 850,
+   "vor": 682
+  },
+  {
+   "key": "miles-bergman",
+   "name": "Miles Bergman",
+   "grp": "SD",
+   "scar": 849,
+   "vor": 704
+  },
+  {
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "grp": "MID",
+   "scar": 849,
+   "vor": 777
+  },
+  {
+   "key": "darcy-byrne-jones",
+   "name": "Darcy Byrne-Jones",
+   "grp": "SF",
+   "scar": 846,
+   "vor": 664
+  },
+  {
+   "key": "joseph-fonti",
+   "name": "Joseph Fonti",
+   "grp": "SD",
+   "scar": 840,
+   "vor": 730
+  },
+  {
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "grp": "MID",
+   "scar": 838,
+   "vor": 766
+  },
+  {
+   "key": "marcus-herbert",
+   "name": "Marcus Herbert",
+   "grp": "MID",
+   "scar": 837,
+   "vor": 656
+  },
+  {
+   "key": "nick-bryan",
+   "name": "Nick Bryan",
+   "grp": "RUCK",
+   "scar": 837,
+   "vor": 745
+  },
+  {
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "grp": "SD",
+   "scar": 820,
+   "vor": 715
+  },
+  {
+   "key": "samuel-collins",
+   "name": "Samuel Collins",
+   "grp": "KPD",
+   "scar": 814,
+   "vor": 635
+  },
+  {
+   "key": "nic-newman",
+   "name": "Nic Newman",
+   "grp": "SD",
+   "scar": 813,
+   "vor": 643
+  },
+  {
+   "key": "daniel-rioli",
+   "name": "Daniel Rioli",
+   "grp": "SD",
+   "scar": 808,
+   "vor": 646
+  },
+  {
+   "key": "angus-clarke",
+   "name": "Angus Clarke",
+   "grp": "SD",
+   "scar": 807,
+   "vor": 732
+  },
+  {
+   "key": "will-setterfield",
+   "name": "Will Setterfield",
+   "grp": "MID",
+   "scar": 806,
+   "vor": 645
+  },
+  {
+   "key": "kai-lohmann",
+   "name": "Kai Lohmann",
+   "grp": "SF",
+   "scar": 805,
+   "vor": 669
+  },
+  {
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "grp": "SD",
+   "scar": 791,
+   "vor": 627
+  },
+  {
+   "key": "cameron-nairn",
+   "name": "Cameron Nairn",
+   "grp": "SF",
+   "scar": 784,
+   "vor": 744
+  },
+  {
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett",
+   "grp": "MID",
+   "scar": 782,
+   "vor": 722
+  },
+  {
+   "key": "zane-duursma",
+   "name": "Zane Duursma",
+   "grp": "SF",
+   "scar": 779,
+   "vor": 739
+  },
+  {
+   "key": "william-mccabe",
+   "name": "William McCabe",
+   "grp": "KPD",
+   "scar": 775,
+   "vor": 713
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "grp": "MID",
+   "scar": 771,
+   "vor": 610
+  },
+  {
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "grp": "SD",
+   "scar": 767,
+   "vor": 603
+  },
+  {
+   "key": "oskar-taylor",
+   "name": "Oskar Taylor",
+   "grp": "SD",
+   "scar": 759,
+   "vor": 759
+  },
+  {
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "grp": "KPF",
+   "scar": 753,
+   "vor": 592
+  },
+  {
+   "key": "harley-barker",
+   "name": "Harley Barker",
+   "grp": "MID",
+   "scar": 749,
+   "vor": 749
+  },
+  {
+   "key": "charlie-edwards",
+   "name": "Charlie Edwards",
+   "grp": "SD",
+   "scar": 747,
+   "vor": 722
+  },
+  {
+   "key": "jack-buckley",
+   "name": "Jack Buckley",
+   "grp": "KPD",
+   "scar": 740,
+   "vor": 570
+  },
+  {
+   "key": "willem-drew",
+   "name": "Willem Drew",
+   "grp": "MID",
+   "scar": 736,
+   "vor": 579
+  },
+  {
+   "key": "darcy-parish",
+   "name": "Darcy Parish",
+   "grp": "MID",
+   "scar": 731,
+   "vor": 572
+  },
+  {
+   "key": "tobie-travaglia",
+   "name": "Tobie Travaglia",
+   "grp": "SD",
+   "scar": 728,
+   "vor": 646
+  },
+  {
+   "key": "kyle-langford",
+   "name": "Kyle Langford",
+   "grp": "KPF",
+   "scar": 727,
+   "vor": 563
+  },
+  {
+   "key": "jack-graham",
+   "name": "Jack Graham",
+   "grp": "SF",
+   "scar": 727,
+   "vor": 562
+  },
+  {
+   "key": "jack-ough",
+   "name": "Jack Ough",
+   "grp": "MID",
+   "scar": 724,
+   "vor": 690
+  },
+  {
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "grp": "KPF",
+   "scar": 720,
+   "vor": 610
+  },
+  {
+   "key": "max-heath",
+   "name": "Max Heath",
+   "grp": "KPF",
+   "scar": 720,
+   "vor": 652
+  },
+  {
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "grp": "SF",
+   "scar": 716,
+   "vor": 555
+  },
+  {
+   "key": "lachlan-smith",
+   "name": "Lachlan Smith",
+   "grp": "RUCK",
+   "scar": 716,
+   "vor": 678
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "grp": "MID",
+   "scar": 709,
+   "vor": 633
+  },
+  {
+   "key": "peter-ladhams",
+   "name": "Peter Ladhams",
+   "grp": "KPF",
+   "scar": 706,
+   "vor": 548
+  },
+  {
+   "key": "mitchell-marsh",
+   "name": "Mitchell Marsh",
+   "grp": "KPF",
+   "scar": 705,
+   "vor": 705
+  },
+  {
+   "key": "cody-curtin",
+   "name": "Cody Curtin",
+   "grp": "KPF",
+   "scar": 703,
+   "vor": 657
+  },
+  {
+   "key": "mitchell-lewis",
+   "name": "Mitchell Lewis",
+   "grp": "KPF",
+   "scar": 700,
+   "vor": 548
+  },
+  {
+   "key": "aidan-schubert",
+   "name": "Aidan Schubert",
+   "grp": "KPF",
+   "scar": 696,
+   "vor": 696
+  },
+  {
+   "key": "charlie-banfield",
+   "name": "Charlie Banfield",
+   "grp": "SF",
+   "scar": 694,
+   "vor": 667
+  },
+  {
+   "key": "sam-allen",
+   "name": "Sam Allen",
+   "grp": "SF",
+   "scar": 693,
+   "vor": 693
+  },
+  {
+   "key": "blake-hardwick",
+   "name": "Blake Hardwick",
+   "grp": "SD",
+   "scar": 692,
+   "vor": 536
+  },
+  {
+   "key": "cooper-sharman",
+   "name": "Cooper Sharman",
+   "grp": "KPF",
+   "scar": 689,
+   "vor": 544
+  },
+  {
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn",
+   "grp": "RUCK",
+   "scar": 689,
+   "vor": 530
+  },
+  {
+   "key": "harrison-oliver",
+   "name": "Harrison Oliver",
+   "grp": "SD",
+   "scar": 683,
+   "vor": 612
+  },
+  {
+   "key": "nick-larkey",
+   "name": "Nick Larkey",
+   "grp": "KPF",
+   "scar": 678,
+   "vor": 531
+  },
+  {
+   "key": "will-green",
+   "name": "Will Green",
+   "grp": "RUCK",
+   "scar": 672,
+   "vor": 672
+  },
+  {
+   "key": "cooper-harvey",
+   "name": "Cooper Harvey",
+   "grp": "SF",
+   "scar": 663,
+   "vor": 553
+  },
+  {
+   "key": "ollie-greeves",
+   "name": "Ollie Greeves",
+   "grp": "MID",
+   "scar": 663,
+   "vor": 618
+  },
+  {
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard",
+   "grp": "SD",
+   "scar": 657,
+   "vor": 503
+  },
+  {
+   "key": "jake-rogers",
+   "name": "Jake Rogers",
+   "grp": "SF",
+   "scar": 647,
+   "vor": 590
+  },
+  {
+   "key": "tom-gross",
+   "name": "Tom Gross",
+   "grp": "SF",
+   "scar": 644,
+   "vor": 591
+  },
+  {
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "grp": "MID",
+   "scar": 644,
+   "vor": 583
+  },
+  {
+   "key": "zak-johnson",
+   "name": "Zak Johnson",
+   "grp": "SD",
+   "scar": 644,
+   "vor": 577
+  },
+  {
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius",
+   "grp": "KPF",
+   "scar": 635,
+   "vor": 479
+  },
+  {
+   "key": "zane-peucker",
+   "name": "Zane Peucker",
+   "grp": "SF",
+   "scar": 633,
+   "vor": 599
+  },
+  {
+   "key": "latrelle-pickett",
+   "name": "Latrelle Pickett",
+   "grp": "SF",
+   "scar": 630,
+   "vor": 574
+  },
+  {
+   "key": "jack-dalton",
+   "name": "Jack Dalton",
+   "grp": "MID",
+   "scar": 630,
+   "vor": 573
+  },
+  {
+   "key": "harry-barnett",
+   "name": "Harry Barnett",
+   "grp": "RUCK",
+   "scar": 629,
+   "vor": 629
+  },
+  {
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "grp": "KPD",
+   "scar": 625,
+   "vor": 506
+  },
+  {
+   "key": "jack-ison",
+   "name": "Jack Ison",
+   "grp": "MID",
+   "scar": 623,
+   "vor": 548
+  },
+  {
+   "key": "adam-saad",
+   "name": "Adam Saad",
+   "grp": "SD",
+   "scar": 615,
+   "vor": 465
+  },
+  {
+   "key": "charlie-west",
+   "name": "Charlie West",
+   "grp": "KPF",
+   "scar": 612,
+   "vor": 566
+  },
+  {
+   "key": "matt-whitlock",
+   "name": "Matt Whitlock",
+   "grp": "KPF",
+   "scar": 609,
+   "vor": 575
+  },
+  {
+   "key": "tyan-prindable",
+   "name": "Tyan Prindable",
+   "grp": "MID",
+   "scar": 607,
+   "vor": 607
+  },
+  {
+   "key": "wil-dawson",
+   "name": "Wil Dawson",
+   "grp": "KPD",
+   "scar": 605,
+   "vor": 527
+  },
+  {
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "grp": "SD",
+   "scar": 601,
+   "vor": 460
+  },
+  {
+   "key": "adam-sweid",
+   "name": "Adam Sweid",
+   "grp": "MID",
+   "scar": 598,
+   "vor": 598
+  },
+  {
+   "key": "rhett-bazzo",
+   "name": "Rhett Bazzo",
+   "grp": "KPD",
+   "scar": 598,
+   "vor": 484
+  },
+  {
+   "key": "jack-crisp",
+   "name": "Jack Crisp",
+   "grp": "MID",
+   "scar": 592,
+   "vor": 445
+  },
+  {
+   "key": "tom-brown",
+   "name": "Tom Brown",
+   "grp": "SD",
+   "scar": 590,
+   "vor": 482
+  },
+  {
+   "key": "hunter-holmes",
+   "name": "Hunter Holmes",
+   "grp": "MID",
+   "scar": 584,
+   "vor": 584
+  },
+  {
+   "key": "lachlan-carmichael",
+   "name": "Lachlan Carmichael",
+   "grp": "SD",
+   "scar": 577,
+   "vor": 577
+  },
+  {
+   "key": "toby-conway",
+   "name": "Toby Conway",
+   "grp": "RUCK",
+   "scar": 577,
+   "vor": 577
+  },
+  {
+   "key": "max-michalanney",
+   "name": "Max Michalanney",
+   "grp": "SD",
+   "scar": 573,
+   "vor": 484
+  },
+  {
+   "key": "blake-thredgold",
+   "name": "Blake Thredgold",
+   "grp": "KPD",
+   "scar": 571,
+   "vor": 571
+  },
+  {
+   "key": "liam-baker",
+   "name": "Liam Baker",
+   "grp": "SD",
+   "scar": 571,
+   "vor": 429
+  },
+  {
+   "key": "christian-salem",
+   "name": "Christian Salem",
+   "grp": "SD",
+   "scar": 569,
+   "vor": 429
+  },
+  {
+   "key": "noah-balta",
+   "name": "Noah Balta",
+   "grp": "KPF",
+   "scar": 569,
+   "vor": 428
+  },
+  {
+   "key": "oliver-francou",
+   "name": "Oliver Francou",
+   "grp": "MID",
+   "scar": 565,
+   "vor": 511
+  },
+  {
+   "key": "max-kondogiannis",
+   "name": "Max Kondogiannis",
+   "grp": "SD",
+   "scar": 564,
+   "vor": 499
+  },
+  {
+   "key": "james-borlase",
+   "name": "James Borlase",
+   "grp": "KPD",
+   "scar": 564,
+   "vor": 439
+  },
+  {
+   "key": "cody-angove",
+   "name": "Cody Angove",
+   "grp": "SF",
+   "scar": 563,
+   "vor": 563
+  },
+  {
+   "key": "max-gruzewski",
+   "name": "Max Gruzewski",
+   "grp": "KPF",
+   "scar": 561,
+   "vor": 478
+  },
+  {
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "grp": "SD",
+   "scar": 561,
+   "vor": 420
+  },
+  {
+   "key": "oscar-steene",
+   "name": "Oscar Steene",
+   "grp": "KPF",
+   "scar": 560,
+   "vor": 498
+  },
+  {
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "grp": "RUCK",
+   "scar": 552,
+   "vor": 414
+  },
+  {
+   "key": "thomas-matthews",
+   "name": "Thomas Matthews",
+   "grp": "SF",
+   "scar": 551,
+   "vor": 551
+  },
+  {
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly",
+   "grp": "MID",
+   "scar": 549,
+   "vor": 408
+  },
+  {
+   "key": "josh-lai",
+   "name": "Josh Lai",
+   "grp": "SD",
+   "scar": 549,
+   "vor": 485
+  },
+  {
+   "key": "james-leake",
+   "name": "James Leake",
+   "grp": "SF",
+   "scar": 546,
+   "vor": 483
+  },
+  {
+   "key": "liam-reidy",
+   "name": "Liam Reidy",
+   "grp": "KPF",
+   "scar": 543,
+   "vor": 380
+  },
+  {
+   "key": "archer-day-wicks",
+   "name": "Archer Day-Wicks",
+   "grp": "SF",
+   "scar": 541,
+   "vor": 484
+  },
+  {
+   "key": "jack-williams",
+   "name": "Jack Williams",
+   "grp": "KPF",
+   "scar": 540,
+   "vor": 460
+  },
+  {
+   "key": "josh-draper",
+   "name": "Josh Draper",
+   "grp": "KPD",
+   "scar": 537,
+   "vor": 465
+  },
+  {
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "grp": "SF",
+   "scar": 534,
+   "vor": 477
+  },
+  {
+   "key": "tom-papley",
+   "name": "Tom Papley",
+   "grp": "SF",
+   "scar": 532,
+   "vor": 387
+  },
+  {
+   "key": "liam-fawcett",
+   "name": "Liam Fawcett",
+   "grp": "KPF",
+   "scar": 526,
+   "vor": 459
+  },
+  {
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "grp": "MID",
+   "scar": 525,
+   "vor": 486
+  },
+  {
+   "key": "zachary-williams",
+   "name": "Zachary Williams",
+   "grp": "SF",
+   "scar": 524,
+   "vor": 382
+  },
+  {
+   "key": "mason-wood",
+   "name": "Mason Wood",
+   "grp": "SF",
+   "scar": 522,
+   "vor": 383
+  },
+  {
+   "key": "max-knobel",
+   "name": "Max Knobel",
+   "grp": "RUCK",
+   "scar": 516,
+   "vor": 516
+  },
+  {
+   "key": "jayden-nguyen",
+   "name": "Jayden Nguyen",
+   "grp": "SD",
+   "scar": 510,
+   "vor": 455
+  },
+  {
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "grp": "MID",
+   "scar": 505,
+   "vor": 411
+  },
+  {
+   "key": "ryan-angwin",
+   "name": "Ryan Angwin",
+   "grp": "MID",
+   "scar": 503,
+   "vor": 430
+  },
+  {
+   "key": "jacob-molier",
+   "name": "Jacob Molier",
+   "grp": "RUCK",
+   "scar": 502,
+   "vor": 502
+  },
+  {
+   "key": "dion-prestia",
+   "name": "Dion Prestia",
+   "grp": "SF",
+   "scar": 502,
+   "vor": 359
+  },
+  {
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "grp": "SF",
+   "scar": 501,
+   "vor": 436
+  },
+  {
+   "key": "james-worpel",
+   "name": "James Worpel",
+   "grp": "MID",
+   "scar": 501,
+   "vor": 370
+  },
+  {
+   "key": "alex-dodson",
+   "name": "Alex Dodson",
+   "grp": "KPF",
+   "scar": 499,
+   "vor": 499
+  },
+  {
+   "key": "matthew-jefferson",
+   "name": "Matthew Jefferson",
+   "grp": "KPF",
+   "scar": 499,
+   "vor": 429
+  },
+  {
+   "key": "avery-thomas",
+   "name": "Avery Thomas",
+   "grp": "SD",
+   "scar": 494,
+   "vor": 494
+  },
+  {
+   "key": "jevan-phillipou",
+   "name": "Jevan Phillipou",
+   "grp": "MID",
+   "scar": 494,
+   "vor": 494
+  },
+  {
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "grp": "SD",
+   "scar": 493,
+   "vor": 396
+  },
+  {
+   "key": "hussien-el-achkar",
+   "name": "Hussien El Achkar",
+   "grp": "SF",
+   "scar": 492,
+   "vor": 436
+  },
+  {
+   "key": "will-darcy",
+   "name": "Will Darcy",
+   "grp": "KPF",
+   "scar": 491,
+   "vor": 491
+  },
+  {
+   "key": "alex-davies",
+   "name": "Alex Davies",
+   "grp": "MID",
+   "scar": 489,
+   "vor": 419
+  },
+  {
+   "key": "scott-pendlebury",
+   "name": "Scott Pendlebury",
+   "grp": "MID",
+   "scar": 484,
+   "vor": 350
+  },
+  {
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "grp": "SF",
+   "scar": 480,
+   "vor": 359
+  },
+  {
+   "key": "harry-demattia",
+   "name": "Harry DeMattia",
+   "grp": "MID",
+   "scar": 479,
+   "vor": 479
+  },
+  {
+   "key": "mitchell-hinge",
+   "name": "Mitchell Hinge",
+   "grp": "SD",
+   "scar": 479,
+   "vor": 366
+  },
+  {
+   "key": "archie-may",
+   "name": "Archie May",
+   "grp": "KPF",
+   "scar": 478,
+   "vor": 403
+  },
+  {
+   "key": "zane-zakostelsky",
+   "name": "Zane Zakostelsky",
+   "grp": "KPD",
+   "scar": 475,
+   "vor": 434
+  },
+  {
+   "key": "xavier-bamert",
+   "name": "Xavier Bamert",
+   "grp": "MID",
+   "scar": 470,
+   "vor": 411
+  },
+  {
+   "key": "noah-roberts-thomson",
+   "name": "Noah Roberts-Thomson",
+   "grp": "MID",
+   "scar": 469,
+   "vor": 439
+  },
+  {
+   "key": "oliver-hannaford",
+   "name": "Oliver Hannaford",
+   "grp": "MID",
+   "scar": 463,
+   "vor": 414
+  },
+  {
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis",
+   "grp": "MID",
+   "scar": 460,
+   "vor": 375
+  },
+  {
+   "key": "koby-evans",
+   "name": "Koby Evans",
+   "grp": "MID",
+   "scar": 458,
+   "vor": 458
+  },
+  {
+   "key": "thomas-burton",
+   "name": "Thomas Burton",
+   "grp": "MID",
+   "scar": 453,
+   "vor": 394
+  },
+  {
+   "key": "jesse-dattoli",
+   "name": "Jesse Dattoli",
+   "grp": "SF",
+   "scar": 450,
+   "vor": 450
+  },
+  {
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "grp": "SF",
+   "scar": 449,
+   "vor": 321
+  },
+  {
+   "key": "nick-murray",
+   "name": "Nick Murray",
+   "grp": "KPD",
+   "scar": 448,
+   "vor": 331
+  },
+  {
+   "key": "tylah-williams",
+   "name": "Tylah Williams",
+   "grp": "SF",
+   "scar": 447,
+   "vor": 447
+  },
+  {
+   "key": "kalani-white",
+   "name": "Kalani White",
+   "grp": "KPF",
+   "scar": 446,
+   "vor": 412
+  },
+  {
+   "key": "will-lorenz",
+   "name": "Will Lorenz",
+   "grp": "MID",
+   "scar": 439,
+   "vor": 410
+  },
+  {
+   "key": "archie-ludowyke",
+   "name": "Archie Ludowyke",
+   "grp": "KPF",
+   "scar": 434,
+   "vor": 434
+  },
+  {
+   "key": "koby-coulson",
+   "name": "Koby Coulson",
+   "grp": "MID",
+   "scar": 433,
+   "vor": 433
+  },
+  {
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "grp": "KPD",
+   "scar": 431,
+   "vor": 304
+  },
+  {
+   "key": "fred-rodriguez",
+   "name": "Fred Rodriguez",
+   "grp": "SF",
+   "scar": 429,
+   "vor": 391
+  },
+  {
+   "key": "nick-driscoll",
+   "name": "Nick Driscoll",
+   "grp": "SF",
+   "scar": 429,
+   "vor": 391
+  },
+  {
+   "key": "riley-onley",
+   "name": "Riley Onley",
+   "grp": "MID",
+   "scar": 426,
+   "vor": 387
+  },
+  {
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "grp": "SF",
+   "scar": 426,
+   "vor": 299
+  },
+  {
+   "key": "zac-mccarthy",
+   "name": "Zac McCarthy",
+   "grp": "KPF",
+   "scar": 422,
+   "vor": 422
+  },
+  {
+   "key": "josaia-delana",
+   "name": "Josaia Delana",
+   "grp": "SF",
+   "scar": 421,
+   "vor": 366
+  },
+  {
+   "key": "samson-ryan",
+   "name": "Samson Ryan",
+   "grp": "RUCK",
+   "scar": 420,
+   "vor": 357
+  },
+  {
+   "key": "tom-atkins",
+   "name": "Tom Atkins",
+   "grp": "MID",
+   "scar": 419,
+   "vor": 297
+  },
+  {
+   "key": "malakai-champion",
+   "name": "Malakai Champion",
+   "grp": "SF",
+   "scar": 418,
+   "vor": 365
+  },
+  {
+   "key": "tobyn-murray",
+   "name": "Tobyn Murray",
+   "grp": "SF",
+   "scar": 412,
+   "vor": 412
+  },
+  {
+   "key": "luker-kentfield",
+   "name": "Luker Kentfield",
+   "grp": "KPF",
+   "scar": 412,
+   "vor": 376
+  },
+  {
+   "key": "lachlan-gulbin",
+   "name": "Lachlan Gulbin",
+   "grp": "SF",
+   "scar": 411,
+   "vor": 357
+  },
+  {
+   "key": "george-stevens",
+   "name": "George Stevens",
+   "grp": "MID",
+   "scar": 410,
+   "vor": 378
+  },
+  {
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "grp": "SF",
+   "scar": 409,
+   "vor": 285
+  },
+  {
+   "key": "chris-scerri",
+   "name": "Chris Scerri",
+   "grp": "SF",
+   "scar": 407,
+   "vor": 353
+  },
+  {
+   "key": "leon-kickett",
+   "name": "Leon Kickett",
+   "grp": "SF",
+   "scar": 406,
+   "vor": 360
+  },
+  {
+   "key": "kye-fincher",
+   "name": "Kye Fincher",
+   "grp": "SD",
+   "scar": 401,
+   "vor": 401
+  },
+  {
+   "key": "mabior-chol",
+   "name": "Mabior Chol",
+   "grp": "KPF",
+   "scar": 397,
+   "vor": 276
+  },
+  {
+   "key": "jake-riccardi",
+   "name": "Jake Riccardi",
+   "grp": "KPF",
+   "scar": 396,
+   "vor": 282
+  },
+  {
+   "key": "jasper-alger",
+   "name": "Jasper Alger",
+   "grp": "SF",
+   "scar": 395,
+   "vor": 341
+  },
+  {
+   "key": "harrison-ramm",
+   "name": "Harrison Ramm",
+   "grp": "KPD",
+   "scar": 394,
+   "vor": 353
+  },
+  {
+   "key": "liam-hetherton",
+   "name": "Liam Hetherton",
+   "grp": "KPF",
+   "scar": 392,
+   "vor": 363
+  },
+  {
+   "key": "james-barrat",
+   "name": "James Barrat",
+   "grp": "KPF",
+   "scar": 391,
+   "vor": 391
+  },
+  {
+   "key": "ned-bowman",
+   "name": "Ned Bowman",
+   "grp": "SF",
+   "scar": 391,
+   "vor": 391
+  },
+  {
+   "key": "oliver-wines",
+   "name": "Oliver Wines",
+   "grp": "MID",
+   "scar": 391,
+   "vor": 274
+  },
+  {
+   "key": "matthew-leray",
+   "name": "Matthew LeRay",
+   "grp": "MID",
+   "scar": 390,
+   "vor": 390
+  },
+  {
+   "key": "jaxon-prior",
+   "name": "Jaxon Prior",
+   "grp": "SD",
+   "scar": 390,
+   "vor": 300
+  },
+  {
+   "key": "hayden-mclean",
+   "name": "Hayden McLean",
+   "grp": "KPF",
+   "scar": 387,
+   "vor": 276
+  },
+  {
+   "key": "judd-mcvee",
+   "name": "Judd McVee",
+   "grp": "SD",
+   "scar": 386,
+   "vor": 311
+  },
+  {
+   "key": "brennan-cox",
+   "name": "Brennan Cox",
+   "grp": "KPD",
+   "scar": 385,
+   "vor": 266
+  },
+  {
+   "key": "finnegan-davis",
+   "name": "Finnegan Davis",
+   "grp": "SD",
+   "scar": 382,
+   "vor": 382
+  },
+  {
+   "key": "lewis-hayes",
+   "name": "Lewis Hayes",
+   "grp": "SD",
+   "scar": 379,
+   "vor": 379
+  },
+  {
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "grp": "SF",
+   "scar": 377,
+   "vor": 296
+  },
+  {
+   "key": "charlie-nicholls",
+   "name": "Charlie Nicholls",
+   "grp": "KPF",
+   "scar": 373,
+   "vor": 373
+  },
+  {
+   "key": "jay-polkinghorne",
+   "name": "Jay Polkinghorne",
+   "grp": "KPF",
+   "scar": 373,
+   "vor": 345
+  },
+  {
+   "key": "brady-hough",
+   "name": "Brady Hough",
+   "grp": "SD",
+   "scar": 371,
+   "vor": 294
+  },
+  {
+   "key": "jack-viney",
+   "name": "Jack Viney",
+   "grp": "MID",
+   "scar": 369,
+   "vor": 257
+  },
+  {
+   "key": "will-hayes-b",
+   "name": "Will Hayes",
+   "grp": "SF",
+   "scar": 368,
+   "vor": 320
+  },
+  {
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe",
+   "grp": "SD",
+   "scar": 367,
+   "vor": 252
+  },
+  {
+   "key": "liam-duggan",
+   "name": "Liam Duggan",
+   "grp": "SD",
+   "scar": 365,
+   "vor": 249
+  },
+  {
+   "key": "flynn-riley",
+   "name": "Flynn Riley",
+   "grp": "RUCK",
+   "scar": 364,
+   "vor": 363
+  },
+  {
+   "key": "hugo-mikunda",
+   "name": "Hugo Mikunda",
+   "grp": "SF",
+   "scar": 362,
+   "vor": 362
+  },
+  {
+   "key": "tom-doedee",
+   "name": "Tom Doedee",
+   "grp": "SD",
+   "scar": 361,
+   "vor": 245
+  },
+  {
+   "key": "jaxon-artemis",
+   "name": "Jaxon Artemis",
+   "grp": "SD",
+   "scar": 358,
+   "vor": 320
+  },
+  {
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser",
+   "grp": "MID",
+   "scar": 357,
+   "vor": 307
+  },
+  {
+   "key": "clay-hall",
+   "name": "Clay Hall",
+   "grp": "MID",
+   "scar": 354,
+   "vor": 347
+  },
+  {
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan",
+   "grp": "KPF",
+   "scar": 353,
+   "vor": 287
+  },
+  {
+   "key": "milan-murdock",
+   "name": "Milan Murdock",
+   "grp": "SF",
+   "scar": 353,
+   "vor": 238
+  },
+  {
+   "key": "ben-king",
+   "name": "Ben King",
+   "grp": "KPF",
+   "scar": 349,
+   "vor": 249
+  },
+  {
+   "key": "balyn-o-brien",
+   "name": "Balyn O'Brien",
+   "grp": "SD",
+   "scar": 349,
+   "vor": 310
+  },
+  {
+   "key": "noah-howes",
+   "name": "Noah Howes",
+   "grp": "KPF",
+   "scar": 348,
+   "vor": 324
+  },
+  {
+   "key": "conor-nash",
+   "name": "Conor Nash",
+   "grp": "MID",
+   "scar": 348,
+   "vor": 241
+  },
+  {
+   "key": "kayle-gerreyn",
+   "name": "Kayle Gerreyn",
+   "grp": "RUCK",
+   "scar": 345,
+   "vor": 345
+  },
+  {
+   "key": "harrison-himmelberg",
+   "name": "Harrison Himmelberg",
+   "grp": "SD",
+   "scar": 344,
+   "vor": 238
+  },
+  {
+   "key": "bodie-ryan",
+   "name": "Bodie Ryan",
+   "grp": "SD",
+   "scar": 342,
+   "vor": 301
+  },
+  {
+   "key": "thomas-anastasopoulos",
+   "name": "Tom Anastasopoulos",
+   "grp": "SF",
+   "scar": 341,
+   "vor": 312
+  },
+  {
+   "key": "riley-bice",
+   "name": "Riley Bice",
+   "grp": "SD",
+   "scar": 340,
+   "vor": 238
+  },
+  {
+   "key": "blake-howes",
+   "name": "Blake Howes",
+   "grp": "SD",
+   "scar": 340,
+   "vor": 269
+  },
+  {
+   "key": "riley-hamilton",
+   "name": "Riley Hamilton",
+   "grp": "SF",
+   "scar": 340,
+   "vor": 296
+  },
+  {
+   "key": "angus-hastie",
+   "name": "Angus Hastie",
+   "grp": "SD",
+   "scar": 339,
+   "vor": 290
+  },
+  {
+   "key": "jake-lever",
+   "name": "Jake Lever",
+   "grp": "SD",
+   "scar": 339,
+   "vor": 239
+  },
+  {
+   "key": "max-king-stk",
+   "name": "Max King",
+   "grp": "KPF",
+   "scar": 338,
+   "vor": 253
+  },
+  {
+   "key": "brayden-george",
+   "name": "Brayden George",
+   "grp": "SF",
+   "scar": 337,
+   "vor": 337
+  },
+  {
+   "key": "joel-cochran",
+   "name": "Joel Cochran",
+   "grp": "SD",
+   "scar": 333,
+   "vor": 333
+  },
+  {
+   "key": "caleb-may",
+   "name": "Caleb May",
+   "grp": "RUCK",
+   "scar": 332,
+   "vor": 332
+  },
+  {
+   "key": "alex-van-wyk",
+   "name": "Alex Van Wyk",
+   "grp": "RUCK",
+   "scar": 332,
+   "vor": 332
+  },
+  {
+   "key": "max-mapley",
+   "name": "Max Mapley",
+   "grp": "RUCK",
+   "scar": 332,
+   "vor": 332
+  },
+  {
+   "key": "patrick-carr",
+   "name": "Patrick Carr",
+   "grp": "RUCK",
+   "scar": 332,
+   "vor": 332
+  },
+  {
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "grp": "MID",
+   "scar": 332,
+   "vor": 227
+  },
+  {
+   "key": "ned-reeves",
+   "name": "Ned Reeves",
+   "grp": "RUCK",
+   "scar": 330,
+   "vor": 256
+  },
+  {
+   "key": "cooper-bell",
+   "name": "Cooper Bell",
+   "grp": "KPF",
+   "scar": 329,
+   "vor": 329
+  },
+  {
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan",
+   "grp": "KPF",
+   "scar": 329,
+   "vor": 220
+  },
+  {
+   "key": "zach-guthrie",
+   "name": "Zach Guthrie",
+   "grp": "SD",
+   "scar": 327,
+   "vor": 222
+  },
+  {
+   "key": "cillian-bourke",
+   "name": "Cillian Bourke",
+   "grp": "SD",
+   "scar": 325,
+   "vor": 296
+  },
+  {
+   "key": "tylar-young",
+   "name": "Tylar Young",
+   "grp": "KPD",
+   "scar": 319,
+   "vor": 227
+  },
+  {
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "grp": "SF",
+   "scar": 319,
+   "vor": 215
+  },
+  {
+   "key": "riley-hardeman",
+   "name": "Riley Hardeman",
+   "grp": "SD",
+   "scar": 317,
+   "vor": 294
+  },
+  {
+   "key": "isaac-keeler",
+   "name": "Isaac Keeler",
+   "grp": "KPF",
+   "scar": 317,
+   "vor": 268
+  },
+  {
+   "key": "elliot-yeo",
+   "name": "Elliot Yeo",
+   "grp": "SF",
+   "scar": 316,
+   "vor": 209
+  },
+  {
+   "key": "hugh-davies",
+   "name": "Hugh Davies",
+   "grp": "KPD",
+   "scar": 314,
+   "vor": 314
+  },
+  {
+   "key": "finnbar-maley",
+   "name": "Finnbar Maley",
+   "grp": "KPF",
+   "scar": 312,
+   "vor": 260
+  },
+  {
+   "key": "jack-henry",
+   "name": "Jack Henry",
+   "grp": "KPF",
+   "scar": 310,
+   "vor": 204
+  },
+  {
+   "key": "archie-perkins",
+   "name": "Archie Perkins",
+   "grp": "SF",
+   "scar": 309,
+   "vor": 235
+  },
+  {
+   "key": "ashton-moir",
+   "name": "Ashton Moir",
+   "grp": "SF",
+   "scar": 305,
+   "vor": 282
+  },
+  {
+   "key": "jesse-mellor",
+   "name": "Jesse Mellor",
+   "grp": "SF",
+   "scar": 303,
+   "vor": 277
+  },
+  {
+   "key": "hudson-o-keeffe",
+   "name": "Hudson O'Keeffe",
+   "grp": "KPF",
+   "scar": 301,
+   "vor": 263
+  },
+  {
+   "key": "riak-andrew",
+   "name": "Riak Andrew",
+   "grp": "KPD",
+   "scar": 300,
+   "vor": 300
+  },
+  {
+   "key": "jayden-laverde",
+   "name": "Jayden Laverde",
+   "grp": "KPD",
+   "scar": 298,
+   "vor": 195
+  },
+  {
+   "key": "ben-camporeale",
+   "name": "Ben Camporeale",
+   "grp": "MID",
+   "scar": 297,
+   "vor": 297
+  },
+  {
+   "key": "max-king-syd",
+   "name": "Maxwell King",
+   "grp": "KPF",
+   "scar": 296,
+   "vor": 296
+  },
+  {
+   "key": "charlie-cameron",
+   "name": "Charlie Cameron",
+   "grp": "SF",
+   "scar": 295,
+   "vor": 192
+  },
+  {
+   "key": "oscar-ryan",
+   "name": "Oscar Ryan",
+   "grp": "SD",
+   "scar": 293,
+   "vor": 293
+  },
+  {
+   "key": "jacob-moss",
+   "name": "Jacob Moss",
+   "grp": "KPD",
+   "scar": 293,
+   "vor": 268
+  },
+  {
+   "key": "ollie-murphy",
+   "name": "Ollie Murphy",
+   "grp": "KPD",
+   "scar": 292,
+   "vor": 292
+  },
+  {
+   "key": "toby-murray",
+   "name": "Toby Murray",
+   "grp": "KPF",
+   "scar": 291,
+   "vor": 230
+  },
+  {
+   "key": "luke-lloyd",
+   "name": "Luke Lloyd",
+   "grp": "KPF",
+   "scar": 287,
+   "vor": 287
+  },
+  {
+   "key": "leek-aleer",
+   "name": "Leek Aleer",
+   "grp": "KPD",
+   "scar": 287,
+   "vor": 214
+  },
+  {
+   "key": "indy-cotton",
+   "name": "Indy Cotton",
+   "grp": "SF",
+   "scar": 287,
+   "vor": 257
+  },
+  {
+   "key": "ben-murphy",
+   "name": "Ben Murphy",
+   "grp": "SD",
+   "scar": 286,
+   "vor": 257
+  },
+  {
+   "key": "kobe-mcdonald",
+   "name": "Kobe McDonald",
+   "grp": "SD",
+   "scar": 286,
+   "vor": 257
+  },
+  {
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini",
+   "grp": "MID",
+   "scar": 285,
+   "vor": 186
+  },
+  {
+   "key": "lennox-hoffman",
+   "name": "Lennox Hoffman",
+   "grp": "SD",
+   "scar": 284,
+   "vor": 254
+  },
+  {
+   "key": "keighton-matofai-forbes",
+   "name": "Keighton Matofai-Forbes",
+   "grp": "SF",
+   "scar": 284,
+   "vor": 255
+  },
+  {
+   "key": "harry-charleson",
+   "name": "Harry Charleson",
+   "grp": "SD",
+   "scar": 284,
+   "vor": 254
+  },
+  {
+   "key": "jakob-ryan",
+   "name": "Jakob Ryan",
+   "grp": "SD",
+   "scar": 282,
+   "vor": 282
+  },
+  {
+   "key": "henry-hustwaite",
+   "name": "Henry Hustwaite",
+   "grp": "MID",
+   "scar": 279,
+   "vor": 267
+  },
+  {
+   "key": "oliver-hayes-brown",
+   "name": "Oliver Hayes-Brown",
+   "grp": "RUCK",
+   "scar": 279,
+   "vor": 238
+  },
+  {
+   "key": "will-edwards",
+   "name": "Will Edwards",
+   "grp": "KPD",
+   "scar": 279,
+   "vor": 208
+  },
+  {
+   "key": "sam-powell-pepper",
+   "name": "Sam Powell-Pepper",
+   "grp": "SF",
+   "scar": 278,
+   "vor": 181
+  },
+  {
+   "key": "tai-hayes",
+   "name": "Tai Hayes",
+   "grp": "SF",
+   "scar": 274,
+   "vor": 274
+  },
+  {
+   "key": "oliver-griffin",
+   "name": "Oliver Griffin",
+   "grp": "SF",
+   "scar": 272,
+   "vor": 237
+  },
+  {
+   "key": "jai-saxena",
+   "name": "Jai Saxena",
+   "grp": "SF",
+   "scar": 272,
+   "vor": 237
+  },
+  {
+   "key": "ryda-luke",
+   "name": "Ryda Luke",
+   "grp": "SF",
+   "scar": 272,
+   "vor": 237
+  },
+  {
+   "key": "toby-whan",
+   "name": "Toby Whan",
+   "grp": "MID",
+   "scar": 272,
+   "vor": 237
+  },
+  {
+   "key": "toby-bedford",
+   "name": "Toby Bedford",
+   "grp": "SF",
+   "scar": 272,
+   "vor": 179
+  },
+  {
+   "key": "jed-adams",
+   "name": "Jed Adams",
+   "grp": "KPD",
+   "scar": 271,
+   "vor": 271
+  },
+  {
+   "key": "campbell-gray",
+   "name": "Campbell Gray",
+   "grp": "KPD",
+   "scar": 271,
+   "vor": 187
+  },
+  {
+   "key": "sam-clohesy",
+   "name": "Sam Clohesy",
+   "grp": "MID",
+   "scar": 270,
+   "vor": 212
+  },
+  {
+   "key": "tom-cochrane",
+   "name": "Tom Cochrane",
+   "grp": "SF",
+   "scar": 270,
+   "vor": 232
+  },
+  {
+   "key": "sandy-brock",
+   "name": "Sandy Brock",
+   "grp": "KPD",
+   "scar": 267,
+   "vor": 192
+  },
+  {
+   "key": "tyler-welsh",
+   "name": "Tyler Welsh",
+   "grp": "KPF",
+   "scar": 266,
+   "vor": 266
+  },
+  {
+   "key": "zac-walker",
+   "name": "Zac Walker",
+   "grp": "KPD",
+   "scar": 264,
+   "vor": 246
+  },
+  {
+   "key": "xavier-walsh",
+   "name": "Xavier Walsh",
+   "grp": "KPF",
+   "scar": 263,
+   "vor": 235
+  },
+  {
+   "key": "zac-taylor",
+   "name": "Zac Taylor",
+   "grp": "SF",
+   "scar": 261,
+   "vor": 198
+  },
+  {
+   "key": "lucas-camporeale",
+   "name": "Lucas Camporeale",
+   "grp": "MID",
+   "scar": 257,
+   "vor": 257
+  },
+  {
+   "key": "harvey-johnston",
+   "name": "Harvey Johnston",
+   "grp": "SD",
+   "scar": 257,
+   "vor": 215
+  },
+  {
+   "key": "logan-smith",
+   "name": "Logan Smith",
+   "grp": "RUCK",
+   "scar": 255,
+   "vor": 255
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "name": "Jaime Uhr-Henry",
+   "grp": "RUCK",
+   "scar": 255,
+   "vor": 255
+  },
+  {
+   "key": "aiden-riddle",
+   "name": "Aiden Riddle",
+   "grp": "RUCK",
+   "scar": 255,
+   "vor": 255
+  },
+  {
+   "key": "joe-pike",
+   "name": "Joe Pike",
+   "grp": "RUCK",
+   "scar": 255,
+   "vor": 255
+  },
+  {
+   "key": "stephen-coniglio",
+   "name": "Stephen Coniglio",
+   "grp": "SF",
+   "scar": 255,
+   "vor": 169
+  },
+  {
+   "key": "tyson-stengle",
+   "name": "Tyson Stengle",
+   "grp": "SF",
+   "scar": 255,
+   "vor": 165
+  },
+  {
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "grp": "SF",
+   "scar": 252,
+   "vor": 160
+  },
+  {
+   "key": "patrick-snell",
+   "name": "Patrick Snell",
+   "grp": "KPF",
+   "scar": 251,
+   "vor": 251
+  },
+  {
+   "key": "lucca-grego",
+   "name": "Lucca Grego",
+   "grp": "SD",
+   "scar": 251,
+   "vor": 251
+  },
+  {
+   "key": "luke-urquhart",
+   "name": "Luke Urquhart",
+   "grp": "MID",
+   "scar": 251,
+   "vor": 251
+  },
+  {
+   "key": "cooper-simpson",
+   "name": "Cooper Simpson",
+   "grp": "SD",
+   "scar": 251,
+   "vor": 251
+  },
+  {
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "grp": "MID",
+   "scar": 251,
+   "vor": 160
+  },
+  {
+   "key": "deven-robertson",
+   "name": "Deven Robertson",
+   "grp": "SF",
+   "scar": 247,
+   "vor": 181
+  },
+  {
+   "key": "max-ramsden",
+   "name": "Max Ramsden",
+   "grp": "KPF",
+   "scar": 247,
+   "vor": 209
+  },
+  {
+   "key": "jai-culley",
+   "name": "Jai Culley",
+   "grp": "MID",
+   "scar": 245,
+   "vor": 198
+  },
+  {
+   "key": "tew-jiath",
+   "name": "Tew Jiath",
+   "grp": "SD",
+   "scar": 241,
+   "vor": 241
+  },
+  {
+   "key": "angus-anderson",
+   "name": "Angus Anderson",
+   "grp": "SF",
+   "scar": 240,
+   "vor": 181
+  },
+  {
+   "key": "lance-collard",
+   "name": "Lance Collard",
+   "grp": "SF",
+   "scar": 239,
+   "vor": 230
+  },
+  {
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "grp": "KPF",
+   "scar": 239,
+   "vor": 150
+  },
+  {
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "grp": "KPF",
+   "scar": 239,
+   "vor": 150
+  },
+  {
+   "key": "vigo-visentini",
+   "name": "Vigo Visentini",
+   "grp": "RUCK",
+   "scar": 237,
+   "vor": 237
+  },
+  {
+   "key": "iliro-smit",
+   "name": "Iliro Smit",
+   "grp": "RUCK",
+   "scar": 237,
+   "vor": 237
+  },
+  {
+   "key": "darcy-moore",
+   "name": "Darcy Moore",
+   "grp": "KPD",
+   "scar": 237,
+   "vor": 152
+  },
+  {
+   "key": "james-jordon",
+   "name": "James Jordon",
+   "grp": "SF",
+   "scar": 236,
+   "vor": 164
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "name": "Hugo Hall-Kahan",
+   "grp": "SD",
+   "scar": 234,
+   "vor": 152
+  },
+  {
+   "key": "noah-chamberlain",
+   "name": "Noah Chamberlain",
+   "grp": "KPF",
+   "scar": 227,
+   "vor": 198
+  },
+  {
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "grp": "KPF",
+   "scar": 226,
+   "vor": 144
+  },
+  {
+   "key": "jacob-newton",
+   "name": "Jacob Newton",
+   "grp": "SF",
+   "scar": 224,
+   "vor": 192
+  },
+  {
+   "key": "will-hayward",
+   "name": "Will Hayward",
+   "grp": "SF",
+   "scar": 224,
+   "vor": 140
+  },
+  {
+   "key": "jarrod-witts",
+   "name": "Jarrod Witts",
+   "grp": "RUCK",
+   "scar": 224,
+   "vor": 143
+  },
+  {
+   "key": "river-stevens",
+   "name": "River Stevens",
+   "grp": "SF",
+   "scar": 222,
+   "vor": 194
+  },
+  {
+   "key": "asher-eastham",
+   "name": "Asher Eastham",
+   "grp": "SF",
+   "scar": 222,
+   "vor": 194
+  },
+  {
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "grp": "SF",
+   "scar": 221,
+   "vor": 143
+  },
+  {
+   "key": "campbell-lake",
+   "name": "Campbell Lake",
+   "grp": "SF",
+   "scar": 220,
+   "vor": 165
+  },
+  {
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl",
+   "grp": "MID",
+   "scar": 220,
+   "vor": 166
+  },
+  {
+   "key": "caleb-lewis",
+   "name": "Caleb Lewis",
+   "grp": "KPF",
+   "scar": 219,
+   "vor": 182
+  },
+  {
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "grp": "KPF",
+   "scar": 219,
+   "vor": 138
+  },
+  {
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "grp": "SF",
+   "scar": 219,
+   "vor": 159
+  },
+  {
+   "key": "jaren-carr",
+   "name": "Jaren Carr",
+   "grp": "SF",
+   "scar": 218,
+   "vor": 218
+  },
+  {
+   "key": "buku-khamis",
+   "name": "Buku Khamis",
+   "grp": "KPF",
+   "scar": 217,
+   "vor": 149
+  },
+  {
+   "key": "tim-membrey",
+   "name": "Tim Membrey",
+   "grp": "KPF",
+   "scar": 212,
+   "vor": 130
+  },
+  {
+   "key": "jacob-konstanty",
+   "name": "Jacob Konstanty",
+   "grp": "SF",
+   "scar": 211,
+   "vor": 211
+  },
+  {
+   "key": "harrison-jones",
+   "name": "Harrison Jones",
+   "grp": "KPF",
+   "scar": 209,
+   "vor": 156
+  },
+  {
+   "key": "liam-mcmahon",
+   "name": "Liam McMahon",
+   "grp": "KPF",
+   "scar": 209,
+   "vor": 159
+  },
+  {
+   "key": "michael-sellwood",
+   "name": "Michael Sellwood",
+   "grp": "SD",
+   "scar": 208,
+   "vor": 155
+  },
+  {
+   "key": "xavier-duursma",
+   "name": "Xavier Duursma",
+   "grp": "MID",
+   "scar": 208,
+   "vor": 146
+  },
+  {
+   "key": "noah-long",
+   "name": "Noah Long",
+   "grp": "SF",
+   "scar": 206,
+   "vor": 181
+  },
+  {
+   "key": "patrick-said",
+   "name": "Patrick Said",
+   "grp": "SF",
+   "scar": 205,
+   "vor": 205
+  },
+  {
+   "key": "billy-dowling",
+   "name": "Billy Dowling",
+   "grp": "SF",
+   "scar": 205,
+   "vor": 185
+  },
+  {
+   "key": "rhys-unwin",
+   "name": "Rhys Unwin",
+   "grp": "SF",
+   "scar": 203,
+   "vor": 203
+  },
+  {
+   "key": "jack-darling",
+   "name": "Jack Darling",
+   "grp": "KPF",
+   "scar": 203,
+   "vor": 124
+  },
+  {
+   "key": "reece-torrent",
+   "name": "Reece Torrent",
+   "grp": "MID",
+   "scar": 202,
+   "vor": 202
+  },
+  {
+   "key": "cody-anderson",
+   "name": "Cody Anderson",
+   "grp": "SF",
+   "scar": 200,
+   "vor": 200
+  },
+  {
+   "key": "tom-hanily",
+   "name": "Tom Hanily",
+   "grp": "SF",
+   "scar": 200,
+   "vor": 171
+  },
+  {
+   "key": "beau-mccreery",
+   "name": "Beau McCreery",
+   "grp": "SF",
+   "scar": 199,
+   "vor": 130
+  },
+  {
+   "key": "hugh-bond",
+   "name": "Hugh Bond",
+   "grp": "SD",
+   "scar": 198,
+   "vor": 162
+  },
+  {
+   "key": "henry-smith",
+   "name": "Henry Smith",
+   "grp": "KPF",
+   "scar": 197,
+   "vor": 197
+  },
+  {
+   "key": "josh-gibcus",
+   "name": "Josh Gibcus",
+   "grp": "KPD",
+   "scar": 196,
+   "vor": 163
+  },
+  {
+   "key": "jaeger-o-meara",
+   "name": "Jaeger O'Meara",
+   "grp": "MID",
+   "scar": 196,
+   "vor": 196
+  },
+  {
+   "key": "jake-lloyd",
+   "name": "Jake Lloyd",
+   "grp": "SF",
+   "scar": 191,
+   "vor": 115
+  },
+  {
+   "key": "josh-sinn",
+   "name": "Josh Sinn",
+   "grp": "SD",
+   "scar": 186,
+   "vor": 145
+  },
+  {
+   "key": "tom-mcdonald",
+   "name": "Tom McDonald",
+   "grp": "KPD",
+   "scar": 186,
+   "vor": 113
+  },
+  {
+   "key": "eamonn-armstrong",
+   "name": "Eamonn Armstrong",
+   "grp": "SD",
+   "scar": 185,
+   "vor": 166
+  },
+  {
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald",
+   "grp": "SD",
+   "scar": 185,
+   "vor": 148
+  },
+  {
+   "key": "zac-fisher",
+   "name": "Zac Fisher",
+   "grp": "SF",
+   "scar": 185,
+   "vor": 112
+  },
+  {
+   "key": "kye-annand",
+   "name": "Kye Annand",
+   "grp": "KPD",
+   "scar": 181,
+   "vor": 124
+  },
+  {
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox",
+   "grp": "MID",
+   "scar": 177,
+   "vor": 137
+  },
+  {
+   "key": "mitchell-knevitt",
+   "name": "Mitchell Knevitt",
+   "grp": "MID",
+   "scar": 177,
+   "vor": 142
+  },
+  {
+   "key": "will-mclachlan",
+   "name": "Will McLachlan",
+   "grp": "SF",
+   "scar": 177,
+   "vor": 150
+  },
+  {
+   "key": "ricky-mentha",
+   "name": "Ricky Mentha",
+   "grp": "SF",
+   "scar": 176,
+   "vor": 154
+  },
+  {
+   "key": "benny-barrett",
+   "name": "Benny Barrett",
+   "grp": "SF",
+   "scar": 176,
+   "vor": 154
+  },
+  {
+   "key": "rob-monahan",
+   "name": "Rob Monahan",
+   "grp": "SD",
+   "scar": 176,
+   "vor": 160
+  },
+  {
+   "key": "nathan-wardius",
+   "name": "Nathan Wardius",
+   "grp": "SF",
+   "scar": 176,
+   "vor": 156
+  },
+  {
+   "key": "steely-green",
+   "name": "Steely Green",
+   "grp": "SF",
+   "scar": 175,
+   "vor": 152
+  },
+  {
+   "key": "jack-payne",
+   "name": "Jack Payne",
+   "grp": "KPD",
+   "scar": 173,
+   "vor": 106
+  },
+  {
+   "key": "paddy-dow",
+   "name": "Paddy Dow",
+   "grp": "MID",
+   "scar": 169,
+   "vor": 169
+  },
+  {
+   "key": "harrison-coe",
+   "name": "Harrison Coe",
+   "grp": "RUCK",
+   "scar": 167,
+   "vor": 133
+  },
+  {
+   "key": "james-trezise",
+   "name": "James Trezise",
+   "grp": "SD",
+   "scar": 167,
+   "vor": 121
+  },
+  {
+   "key": "luke-pedlar",
+   "name": "Luke Pedlar",
+   "grp": "SF",
+   "scar": 163,
+   "vor": 163
+  },
+  {
+   "key": "cameron-zurhaar",
+   "name": "Cameron Zurhaar",
+   "grp": "SF",
+   "scar": 162,
+   "vor": 96
+  },
+  {
+   "key": "oscar-allen",
+   "name": "Oscar Allen",
+   "grp": "KPF",
+   "scar": 161,
+   "vor": 104
+  },
+  {
+   "key": "harry-edwards",
+   "name": "Harry Edwards",
+   "grp": "KPD",
+   "scar": 161,
+   "vor": 109
+  },
+  {
+   "key": "matt-duffy",
+   "name": "Matt Duffy",
+   "grp": "KPD",
+   "scar": 160,
+   "vor": 141
+  },
+  {
+   "key": "jack-scrimshaw",
+   "name": "Jack Scrimshaw",
+   "grp": "SD",
+   "scar": 158,
+   "vor": 97
+  },
+  {
+   "key": "lachlan-jones",
+   "name": "Lachlan Jones",
+   "grp": "SD",
+   "scar": 156,
+   "vor": 111
+  },
+  {
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin",
+   "grp": "MID",
+   "scar": 155,
+   "vor": 148
+  },
+  {
+   "key": "ollie-lord",
+   "name": "Ollie Lord",
+   "grp": "KPF",
+   "scar": 154,
+   "vor": 116
+  },
+  {
+   "key": "lukas-cooke",
+   "name": "Lukas Cooke",
+   "grp": "KPD",
+   "scar": 151,
+   "vor": 113
+  },
+  {
+   "key": "tyrell-dewar",
+   "name": "Tyrell Dewar",
+   "grp": "SD",
+   "scar": 149,
+   "vor": 125
+  },
+  {
+   "key": "jackson-macrae",
+   "name": "Jackson Macrae",
+   "grp": "MID",
+   "scar": 143,
+   "vor": 127
+  },
+  {
+   "key": "harvey-gallagher",
+   "name": "Harvey Gallagher",
+   "grp": "SD",
+   "scar": 142,
+   "vor": 142
+  },
+  {
+   "key": "jake-stringer",
+   "name": "Jake Stringer",
+   "grp": "SF",
+   "scar": 142,
+   "vor": 93
+  },
+  {
+   "key": "jack-higgins",
+   "name": "Jack Higgins",
+   "grp": "SF",
+   "scar": 135,
+   "vor": 77
+  },
+  {
+   "key": "griffin-logue",
+   "name": "Griffin Logue",
+   "grp": "KPD",
+   "scar": 130,
+   "vor": 74
+  },
+  {
+   "key": "jacob-hopper",
+   "name": "Jacob Hopper",
+   "grp": "MID",
+   "scar": 130,
+   "vor": 130
+  },
+  {
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "grp": "SF",
+   "scar": 129,
+   "vor": 91
+  },
+  {
+   "key": "robert-hansen",
+   "name": "Robert Hansen",
+   "grp": "SF",
+   "scar": 127,
+   "vor": 103
+  },
+  {
+   "key": "matt-hill",
+   "name": "Matt Hill",
+   "grp": "SD",
+   "scar": 123,
+   "vor": 100
+  },
+  {
+   "key": "harry-perryman",
+   "name": "Harry Perryman",
+   "grp": "SD",
+   "scar": 123,
+   "vor": 70
+  },
+  {
+   "key": "kaleb-smith",
+   "name": "Kaleb Smith",
+   "grp": "SD",
+   "scar": 122,
+   "vor": 122
+  },
+  {
+   "key": "oliver-henry",
+   "name": "Oliver Henry",
+   "grp": "KPF",
+   "scar": 121,
+   "vor": 106
+  },
+  {
+   "key": "esava-ratugolea",
+   "name": "Esava Ratugolea",
+   "grp": "KPD",
+   "scar": 120,
+   "vor": 68
+  },
+  {
+   "key": "isaiah-dudley",
+   "name": "Isaiah Dudley",
+   "grp": "SF",
+   "scar": 119,
+   "vor": 80
+  },
+  {
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "grp": "KPD",
+   "scar": 116,
+   "vor": 65
+  },
+  {
+   "key": "riley-garcia",
+   "name": "Riley Garcia",
+   "grp": "SF",
+   "scar": 116,
+   "vor": 74
+  },
+  {
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "grp": "SF",
+   "scar": 116,
+   "vor": 72
+  },
+  {
+   "key": "jack-bowes",
+   "name": "Jack Bowes",
+   "grp": "MID",
+   "scar": 116,
+   "vor": 116
+  },
+  {
+   "key": "todd-marshall",
+   "name": "Todd Marshall",
+   "grp": "KPF",
+   "scar": 115,
+   "vor": 67
+  },
+  {
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "grp": "SF",
+   "scar": 114,
+   "vor": 63
+  },
+  {
+   "key": "james-tunstill",
+   "name": "James Tunstill",
+   "grp": "MID",
+   "scar": 111,
+   "vor": 89
+  },
+  {
+   "key": "nick-vlastuin",
+   "name": "Nick Vlastuin",
+   "grp": "SD",
+   "scar": 111,
+   "vor": 62
+  },
+  {
+   "key": "jesse-motlop",
+   "name": "Jesse Motlop",
+   "grp": "SF",
+   "scar": 110,
+   "vor": 101
+  },
+  {
+   "key": "sam-butler-1",
+   "name": "Sam Butler",
+   "grp": "SF",
+   "scar": 110,
+   "vor": 110
+  },
+  {
+   "key": "shadeau-brain",
+   "name": "Shadeau Brain",
+   "grp": "SD",
+   "scar": 110,
+   "vor": 96
+  },
+  {
+   "key": "finlay-macrae",
+   "name": "Finlay Macrae",
+   "grp": "SF",
+   "scar": 110,
+   "vor": 110
+  },
+  {
+   "key": "ryan-lester",
+   "name": "Ryan Lester",
+   "grp": "SD",
+   "scar": 106,
+   "vor": 58
+  },
+  {
+   "key": "steele-sidebottom",
+   "name": "Steele Sidebottom",
+   "grp": "MID",
+   "scar": 106,
+   "vor": 106
+  },
+  {
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "grp": "MID",
+   "scar": 105,
+   "vor": 105
+  },
+  {
+   "key": "jack-martin",
+   "name": "Jack Martin",
+   "grp": "SF",
+   "scar": 104,
+   "vor": 104
+  },
+  {
+   "key": "nick-haynes",
+   "name": "Nick Haynes",
+   "grp": "SD",
+   "scar": 103,
+   "vor": 56
+  },
+  {
+   "key": "liam-puncher",
+   "name": "Liam Puncher",
+   "grp": "KPD",
+   "scar": 102,
+   "vor": 73
+  },
+  {
+   "key": "tom-cole",
+   "name": "Tom Cole",
+   "grp": "SF",
+   "scar": 102,
+   "vor": 55
+  },
+  {
+   "key": "oliver-wiltshire",
+   "name": "Oliver Wiltshire",
+   "grp": "SF",
+   "scar": 101,
+   "vor": 101
+  },
+  {
+   "key": "jack-carroll",
+   "name": "Jack Carroll",
+   "grp": "SD",
+   "scar": 100,
+   "vor": 68
+  },
+  {
+   "key": "judson-clarke",
+   "name": "Judson Clarke",
+   "grp": "SF",
+   "scar": 98,
+   "vor": 98
+  },
+  {
+   "key": "mitch-zadow",
+   "name": "Mitch Zadow",
+   "grp": "SF",
+   "scar": 97,
+   "vor": 71
+  },
+  {
+   "key": "lachlan-bramble",
+   "name": "Lachlan Bramble",
+   "grp": "SF",
+   "scar": 97,
+   "vor": 52
+  },
+  {
+   "key": "josh-goater",
+   "name": "Josh Goater",
+   "grp": "SD",
+   "scar": 96,
+   "vor": 96
+  },
+  {
+   "key": "oscar-adams",
+   "name": "Oscar Adams",
+   "grp": "KPD",
+   "scar": 96,
+   "vor": 90
+  },
+  {
+   "key": "ryan-byrnes",
+   "name": "Ryan Byrnes",
+   "grp": "SD",
+   "scar": 96,
+   "vor": 62
+  },
+  {
+   "key": "tom-blamires",
+   "name": "Tom Blamires",
+   "grp": "SD",
+   "scar": 95,
+   "vor": 55
+  },
+  {
+   "key": "jack-buller",
+   "name": "Jack Buller",
+   "grp": "KPF",
+   "scar": 93,
+   "vor": 63
+  },
+  {
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "grp": "SD",
+   "scar": 93,
+   "vor": 67
+  },
+  {
+   "key": "oscar-berry",
+   "name": "Oscar Berry",
+   "grp": "KPD",
+   "scar": 92,
+   "vor": 62
+  },
+  {
+   "key": "callum-ah-chee",
+   "name": "Callum Ah Chee",
+   "grp": "SF",
+   "scar": 92,
+   "vor": 92
+  },
+  {
+   "key": "liam-henry",
+   "name": "Liam Henry",
+   "grp": "SF",
+   "scar": 92,
+   "vor": 92
+  },
+  {
+   "key": "cillian-burke",
+   "name": "Cillian Burke",
+   "grp": "SD",
+   "scar": 91,
+   "vor": 76
+  },
+  {
+   "key": "tom-edwards",
+   "name": "Tom Edwards",
+   "grp": "KPF",
+   "scar": 91,
+   "vor": 63
+  },
+  {
+   "key": "aidan-johnson",
+   "name": "Aidan Johnson",
+   "grp": "KPF",
+   "scar": 91,
+   "vor": 66
+  },
+  {
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield",
+   "grp": "SF",
+   "scar": 91,
+   "vor": 91
+  },
+  {
+   "key": "elliot-himmelberg",
+   "name": "Elliott Himmelberg",
+   "grp": "KPF",
+   "scar": 91,
+   "vor": 51
+  },
+  {
+   "key": "dougal-howard",
+   "name": "Dougal Howard",
+   "grp": "KPD",
+   "scar": 89,
+   "vor": 48
+  },
+  {
+   "key": "brandon-zerk-thatcher",
+   "name": "Brandon Zerk-Thatcher",
+   "grp": "KPD",
+   "scar": 89,
+   "vor": 51
+  },
+  {
+   "key": "conor-stone",
+   "name": "Conor Stone",
+   "grp": "SD",
+   "scar": 87,
+   "vor": 87
+  },
+  {
+   "key": "charlie-ballard",
+   "name": "Charlie Ballard",
+   "grp": "KPD",
+   "scar": 86,
+   "vor": 46
+  },
+  {
+   "key": "wade-derksen",
+   "name": "Wade Derksen",
+   "grp": "KPD",
+   "scar": 86,
+   "vor": 53
+  },
+  {
+   "key": "rhyan-mansell",
+   "name": "Rhyan Mansell",
+   "grp": "SF",
+   "scar": 86,
+   "vor": 53
+  },
+  {
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "grp": "SF",
+   "scar": 85,
+   "vor": 44
+  },
+  {
+   "key": "sam-davidson",
+   "name": "Sam Davidson",
+   "grp": "SF",
+   "scar": 82,
+   "vor": 82
+  },
+  {
+   "key": "corey-warner",
+   "name": "Corey Warner",
+   "grp": "SF",
+   "scar": 82,
+   "vor": 82
+  },
+  {
+   "key": "reef-mcinnes",
+   "name": "Reef McInnes",
+   "grp": "KPD",
+   "scar": 81,
+   "vor": 81
+  },
+  {
+   "key": "lachlan-weller",
+   "name": "Lachlan Weller",
+   "grp": "MID",
+   "scar": 81,
+   "vor": 81
+  },
+  {
+   "key": "joel-fitzgerald",
+   "name": "Joel Fitzgerald",
+   "grp": "MID",
+   "scar": 80,
+   "vor": 58
+  },
+  {
+   "key": "tyler-brockman",
+   "name": "Tyler Brockman",
+   "grp": "SF",
+   "scar": 80,
+   "vor": 56
+  },
+  {
+   "key": "luke-cleary",
+   "name": "Luke Cleary",
+   "grp": "SD",
+   "scar": 78,
+   "vor": 78
+  },
+  {
+   "key": "jeremy-sharp",
+   "name": "Jeremy Sharp",
+   "grp": "MID",
+   "scar": 77,
+   "vor": 60
+  },
+  {
+   "key": "bailey-laurie",
+   "name": "Bailey Laurie",
+   "grp": "SF",
+   "scar": 76,
+   "vor": 76
+  },
+  {
+   "key": "jackson-archer",
+   "name": "Jackson Archer",
+   "grp": "SD",
+   "scar": 75,
+   "vor": 75
+  },
+  {
+   "key": "harry-sharp",
+   "name": "Harry Sharp",
+   "grp": "SF",
+   "scar": 75,
+   "vor": 51
+  },
+  {
+   "key": "bruce-reville",
+   "name": "Bruce Reville",
+   "grp": "MID",
+   "scar": 74,
+   "vor": 48
+  },
+  {
+   "key": "lachlan-fogarty",
+   "name": "Lachlan Fogarty",
+   "grp": "SF",
+   "scar": 73,
+   "vor": 45
+  },
+  {
+   "key": "xavier-o-halloran",
+   "name": "Xavier O'Halloran",
+   "grp": "SF",
+   "scar": 72,
+   "vor": 45
+  },
+  {
+   "key": "caleb-graham",
+   "name": "Caleb Graham",
+   "grp": "KPD",
+   "scar": 72,
+   "vor": 44
+  },
+  {
+   "key": "corey-durdin",
+   "name": "Corey Durdin",
+   "grp": "SF",
+   "scar": 68,
+   "vor": 58
+  },
+  {
+   "key": "harvey-harrison",
+   "name": "Harvey Harrison",
+   "grp": "SF",
+   "scar": 67,
+   "vor": 67
+  },
+  {
+   "key": "billy-frampton",
+   "name": "Billy Frampton",
+   "grp": "KPD",
+   "scar": 67,
+   "vor": 40
+  },
+  {
+   "key": "callum-brown-ire",
+   "name": "Callum M. Brown",
+   "grp": "SF",
+   "scar": 67,
+   "vor": 38
+  },
+  {
+   "key": "sam-sturt",
+   "name": "Sam Sturt",
+   "grp": "SF",
+   "scar": 65,
+   "vor": 65
+  },
+  {
+   "key": "max-beattie",
+   "name": "Max Beattie",
+   "grp": "SF",
+   "scar": 62,
+   "vor": 41
+  },
+  {
+   "key": "lewis-melican",
+   "name": "Lewis Melican",
+   "grp": "KPD",
+   "scar": 59,
+   "vor": 29
+  },
+  {
+   "key": "jade-gresham",
+   "name": "Jade Gresham",
+   "grp": "SF",
+   "scar": 59,
+   "vor": 59
+  },
+  {
+   "key": "joel-amartey",
+   "name": "Joel Amartey",
+   "grp": "KPF",
+   "scar": 57,
+   "vor": 31
+  },
+  {
+   "key": "hunter-clark",
+   "name": "Hunter Clark",
+   "grp": "MID",
+   "scar": 57,
+   "vor": 57
+  },
+  {
+   "key": "harry-schoenberg",
+   "name": "Harry Schoenberg",
+   "grp": "SF",
+   "scar": 56,
+   "vor": 56
+  },
+  {
+   "key": "nicholas-coffield",
+   "name": "Nicholas Coffield",
+   "grp": "SD",
+   "scar": 55,
+   "vor": 55
+  },
+  {
+   "key": "darcy-fort",
+   "name": "Darcy Fort",
+   "grp": "RUCK",
+   "scar": 55,
+   "vor": 27
+  },
+  {
+   "key": "luke-mcdonald",
+   "name": "Luke McDonald",
+   "grp": "SD",
+   "scar": 55,
+   "vor": 55
+  },
+  {
+   "key": "harry-morrison",
+   "name": "Harry Morrison",
+   "grp": "MID",
+   "scar": 55,
+   "vor": 29
+  },
+  {
+   "key": "tom-lynch-1",
+   "name": "Tom Lynch",
+   "grp": "KPF",
+   "scar": 53,
+   "vor": 53
+  },
+  {
+   "key": "chayce-jones",
+   "name": "Chayce Jones",
+   "grp": "SD",
+   "scar": 53,
+   "vor": 53
+  },
+  {
+   "key": "jake-melksham",
+   "name": "Jake Melksham",
+   "grp": "KPF",
+   "scar": 53,
+   "vor": 53
+  },
+  {
+   "key": "aidan-corr",
+   "name": "Aidan Corr",
+   "grp": "KPD",
+   "scar": 52,
+   "vor": 52
+  },
+  {
+   "key": "eric-hipwood",
+   "name": "Eric Hipwood",
+   "grp": "KPF",
+   "scar": 51,
+   "vor": 51
+  },
+  {
+   "key": "mitch-podhajski",
+   "name": "Mitch Podhajski",
+   "grp": "KPF",
+   "scar": 49,
+   "vor": 31
+  },
+  {
+   "key": "zac-banch",
+   "name": "Zac Banch",
+   "grp": "SF",
+   "scar": 48,
+   "vor": 35
+  },
+  {
+   "key": "ben-mckay",
+   "name": "Ben McKay",
+   "grp": "KPD",
+   "scar": 48,
+   "vor": 48
+  },
+  {
+   "key": "darcy-gardiner",
+   "name": "Darcy Gardiner",
+   "grp": "KPD",
+   "scar": 48,
+   "vor": 48
+  },
+  {
+   "key": "callum-coleman-jones",
+   "name": "Callum Coleman-Jones",
+   "grp": "RUCK",
+   "scar": 48,
+   "vor": 48
+  },
+  {
+   "key": "ewan-mackinlay",
+   "name": "Ewan Mackinlay",
+   "grp": "SF",
+   "scar": 47,
+   "vor": 29
+  },
+  {
+   "key": "bobby-hill",
+   "name": "Bobby Hill",
+   "grp": "SF",
+   "scar": 47,
+   "vor": 41
+  },
+  {
+   "key": "maurice-rioli-1",
+   "name": "Maurice Rioli",
+   "grp": "SF",
+   "scar": 46,
+   "vor": 46
+  },
+  {
+   "key": "hugo-ralphsmith",
+   "name": "Hugo Ralphsmith",
+   "grp": "MID",
+   "scar": 45,
+   "vor": 34
+  },
+  {
+   "key": "andy-moniz-wakefield",
+   "name": "Andy Moniz-Wakefield",
+   "grp": "SD",
+   "scar": 44,
+   "vor": 31
+  },
+  {
+   "key": "oscar-mcdonald",
+   "name": "Oscar McDonald",
+   "grp": "KPD",
+   "scar": 44,
+   "vor": 34
+  },
+  {
+   "key": "isaac-cumming",
+   "name": "Isaac Cumming",
+   "grp": "MID",
+   "scar": 44,
+   "vor": 40
+  },
+  {
+   "key": "corey-wagner",
+   "name": "Corey Wagner",
+   "grp": "SD",
+   "scar": 43,
+   "vor": 29
+  },
+  {
+   "key": "brandon-starcevich",
+   "name": "Brandon Starcevich",
+   "grp": "SD",
+   "scar": 43,
+   "vor": 43
+  },
+  {
+   "key": "liam-o-connell",
+   "name": "Liam O'Connell",
+   "grp": "SD",
+   "scar": 42,
+   "vor": 29
+  },
+  {
+   "key": "liam-stocker",
+   "name": "Liam Stocker",
+   "grp": "SD",
+   "scar": 41,
+   "vor": 41
+  },
+  {
+   "key": "rhys-stanley",
+   "name": "Rhys Stanley",
+   "grp": "RUCK",
+   "scar": 40,
+   "vor": 40
+  },
+  {
+   "key": "jackson-mead",
+   "name": "Jackson Mead",
+   "grp": "MID",
+   "scar": 40,
+   "vor": 40
+  },
+  {
+   "key": "jack-hutchinson",
+   "name": "Jack Hutchinson",
+   "grp": "MID",
+   "scar": 39,
+   "vor": 27
+  },
+  {
+   "key": "bradley-close",
+   "name": "Bradley Close",
+   "grp": "SF",
+   "scar": 39,
+   "vor": 18
+  },
+  {
+   "key": "jamie-cripps",
+   "name": "Jamie Cripps",
+   "grp": "SF",
+   "scar": 39,
+   "vor": 39
+  },
+  {
+   "key": "alex-pearce",
+   "name": "Alex Pearce",
+   "grp": "KPD",
+   "scar": 39,
+   "vor": 39
+  },
+  {
+   "key": "mykelti-lefau",
+   "name": "Mykelti Lefau",
+   "grp": "KPF",
+   "scar": 38,
+   "vor": 19
+  },
+  {
+   "key": "finn-maginness",
+   "name": "Finn Maginness",
+   "grp": "SF",
+   "scar": 38,
+   "vor": 38
+  },
+  {
+   "key": "charlie-spargo",
+   "name": "Charlie Spargo",
+   "grp": "SF",
+   "scar": 38,
+   "vor": 38
+  },
+  {
+   "key": "jake-kolodjashnij",
+   "name": "Jake Kolodjashnij",
+   "grp": "KPD",
+   "scar": 38,
+   "vor": 38
+  },
+  {
+   "key": "paddy-cross",
+   "name": "Paddy Cross",
+   "grp": "SF",
+   "scar": 36,
+   "vor": 23
+  },
+  {
+   "key": "james-blanck",
+   "name": "James Blanck",
+   "grp": "KPD",
+   "scar": 36,
+   "vor": 22
+  },
+  {
+   "key": "jed-bews",
+   "name": "Jed Bews",
+   "grp": "SD",
+   "scar": 34,
+   "vor": 30
+  },
+  {
+   "key": "jamie-elliott",
+   "name": "Jamie Elliott",
+   "grp": "SF",
+   "scar": 33,
+   "vor": 33
+  },
+  {
+   "key": "oskar-baker",
+   "name": "Oskar Baker",
+   "grp": "SF",
+   "scar": 33,
+   "vor": 33
+  },
+  {
+   "key": "ben-long",
+   "name": "Ben Long",
+   "grp": "SF",
+   "scar": 33,
+   "vor": 33
+  },
+  {
+   "key": "ryan-gardner",
+   "name": "Ryan Gardner",
+   "grp": "KPD",
+   "scar": 33,
+   "vor": 33
+  },
+  {
+   "key": "laitham-vandermeer",
+   "name": "Laitham Vandermeer",
+   "grp": "SF",
+   "scar": 33,
+   "vor": 33
+  },
+  {
+   "key": "joel-hamling",
+   "name": "Joel Hamling",
+   "grp": "KPD",
+   "scar": 33,
+   "vor": 33
+  },
+  {
+   "key": "malcolm-rosas",
+   "name": "Malcolm Rosas",
+   "grp": "SF",
+   "scar": 32,
+   "vor": 21
+  },
+  {
+   "key": "noah-answerth",
+   "name": "Noah Answerth",
+   "grp": "SD",
+   "scar": 32,
+   "vor": 32
+  },
+  {
+   "key": "changkuoth-jiath",
+   "name": "Changkuoth Jiath",
+   "grp": "SD",
+   "scar": 31,
+   "vor": 14
+  },
+  {
+   "key": "bailey-scott",
+   "name": "Bailey Scott",
+   "grp": "MID",
+   "scar": 31,
+   "vor": 31
+  },
+  {
+   "key": "liam-ryan",
+   "name": "Liam Ryan",
+   "grp": "SF",
+   "scar": 31,
+   "vor": 31
+  },
+  {
+   "key": "mani-liddy",
+   "name": "Mani Liddy",
+   "grp": "MID",
+   "scar": 30,
+   "vor": 20
+  },
+  {
+   "key": "wil-parker",
+   "name": "Wil Parker",
+   "grp": "SD",
+   "scar": 27,
+   "vor": 17
+  },
+  {
+   "key": "sam-wicks",
+   "name": "Sam Wicks",
+   "grp": "SD",
+   "scar": 27,
+   "vor": 12
+  },
+  {
+   "key": "nicholas-holman",
+   "name": "Nicholas Holman",
+   "grp": "SF",
+   "scar": 27,
+   "vor": 27
+  },
+  {
+   "key": "lachlan-mcneil",
+   "name": "Lachlan McNeil",
+   "grp": "SF",
+   "scar": 26,
+   "vor": 16
+  },
+  {
+   "key": "jacob-wehr",
+   "name": "Jacob Wehr",
+   "grp": "SD",
+   "scar": 25,
+   "vor": 25
+  },
+  {
+   "key": "sam-switkowski",
+   "name": "Sam Switkowski",
+   "grp": "SF",
+   "scar": 25,
+   "vor": 10
+  },
+  {
+   "key": "lincoln-mccarthy",
+   "name": "Lincoln McCarthy",
+   "grp": "SF",
+   "scar": 25,
+   "vor": 21
+  },
+  {
+   "key": "jy-farrar",
+   "name": "Jy Farrar",
+   "grp": "KPF",
+   "scar": 24,
+   "vor": 11
+  },
+  {
+   "key": "roan-steele",
+   "name": "Roan Steele",
+   "grp": "MID",
+   "scar": 22,
+   "vor": 13
+  },
+  {
+   "key": "luke-beecken",
+   "name": "Luke Beecken",
+   "grp": "MID",
+   "scar": 21,
+   "vor": 13
+  },
+  {
+   "key": "daniel-butler",
+   "name": "Daniel Butler",
+   "grp": "SF",
+   "scar": 21,
+   "vor": 18
+  },
+  {
+   "key": "lachlan-blakiston",
+   "name": "Lachlan Blakiston",
+   "grp": "KPD",
+   "scar": 20,
+   "vor": 9
+  },
+  {
+   "key": "mark-o-connor",
+   "name": "Mark O'Connor",
+   "grp": "SD",
+   "scar": 20,
+   "vor": 9
+  },
+  {
+   "key": "saad-el-hawli",
+   "name": "Saad El-Hawli",
+   "grp": "SD",
+   "scar": 19,
+   "vor": 11
+  },
+  {
+   "key": "matt-guelfi",
+   "name": "Matt Guelfi",
+   "grp": "SF",
+   "scar": 19,
+   "vor": 16
+  },
+  {
+   "key": "jordon-butts",
+   "name": "Jordon Butts",
+   "grp": "KPD",
+   "scar": 17,
+   "vor": 7
+  },
+  {
+   "key": "toby-pink",
+   "name": "Toby Pink",
+   "grp": "KPD",
+   "scar": 17,
+   "vor": 8
+  },
+  {
+   "key": "will-lewis",
+   "name": "Will Lewis",
+   "grp": "KPF",
+   "scar": 16,
+   "vor": 8
+  },
+  {
+   "key": "darragh-joyce",
+   "name": "Darragh Joyce",
+   "grp": "KPD",
+   "scar": 13,
+   "vor": 6
+  },
+  {
+   "key": "bailey-banfield",
+   "name": "Bailey Banfield",
+   "grp": "SD",
+   "scar": 13,
+   "vor": 7
+  },
+  {
+   "key": "flynn-young",
+   "name": "Flynn Young",
+   "grp": "SF",
+   "scar": 11,
+   "vor": 8
+  },
+  {
+   "key": "brody-mihocek",
+   "name": "Brody Mihocek",
+   "grp": "KPF",
+   "scar": 11,
+   "vor": 4
+  },
+  {
+   "key": "flynn-perez",
+   "name": "Flynn Perez",
+   "grp": "SD",
+   "scar": 10,
+   "vor": 6
+  },
+  {
+   "key": "ben-jepson",
+   "name": "Ben Jepson",
+   "grp": "MID",
+   "scar": 10,
+   "vor": 6
+  },
+  {
+   "key": "oisin-mullin",
+   "name": "Oisin Mullin",
+   "grp": "SD",
+   "scar": 10,
+   "vor": 5
+  },
+  {
+   "key": "nathan-broad",
+   "name": "Nathan Broad",
+   "grp": "SD",
+   "scar": 10,
+   "vor": 4
+  },
+  {
+   "key": "mark-blicavs",
+   "name": "Mark Blicavs",
+   "grp": "RUCK",
+   "scar": 10,
+   "vor": 3
+  },
+  {
+   "key": "jack-watkins",
+   "name": "Jack Watkins",
+   "grp": "SF",
+   "scar": 9,
+   "vor": 4
+  },
+  {
+   "key": "conor-mckenna",
+   "name": "Conor McKenna",
+   "grp": "SF",
+   "scar": 9,
+   "vor": 3
+  },
+  {
+   "key": "jack-henderson",
+   "name": "Jack Henderson",
+   "grp": "SF",
+   "scar": 7,
+   "vor": 3
+  },
+  {
+   "key": "jordan-boyd",
+   "name": "Jordan Boyd",
+   "grp": "SD",
+   "scar": 7,
+   "vor": 3
+  },
+  {
+   "key": "zak-evans",
+   "name": "Zak Evans",
+   "grp": "MID",
+   "scar": 4,
+   "vor": 2
+  },
+  {
+   "key": "mason-cox",
+   "name": "Mason Cox",
+   "grp": "KPF",
+   "scar": 2,
+   "vor": 0
+  },
+  {
+   "key": "dane-rampe",
+   "name": "Dane Rampe",
+   "grp": "SD",
+   "scar": 2,
+   "vor": 1
+  },
+  {
+   "key": "lachie-sullivan",
+   "name": "Lachie Sullivan",
+   "grp": "SF",
+   "scar": 1,
+   "vor": 0
+  },
+  {
+   "key": "matt-owies",
+   "name": "Matt Owies",
+   "grp": "SF",
+   "scar": 1,
+   "vor": 0
+  },
+  {
+   "key": "harry-cunningham",
+   "name": "Harry Cunningham",
+   "grp": "SD",
+   "scar": 1,
+   "vor": 0
+  }
+ ]
+}

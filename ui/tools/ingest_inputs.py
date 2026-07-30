@@ -62,8 +62,9 @@ KNOWN_PATHWAYS = {
     "RL_PVCADOPT": "pvc_curve_L1b.json",  # prior v2.9 L1b adopt curve (superseded by RL_PVC2)
 }
 # Best-23 positional structure (item 178(3)); posCode vocab is the board's CURRENT posCode.
-SLOTS = [("KEY_DEF", 2), ("GEN_DEF", 4), ("MID", 5), ("GEN_FWD", 4), ("KEY_FWD", 2), ("RUC", 1)]
+SLOTS = [("KPD", 2), ("SD", 4), ("MID", 5), ("SF", 4), ("KPF", 2), ("RUCK", 1)]
 BENCH = 5
+TARGET = 23   # slots(18) + BENCH(5); the backfill fills to THIS
 FREE_AGENTS = "Free Agents"
 
 verdicts = []   # [(check, ok, detail)]
@@ -306,7 +307,12 @@ def resolve_release_curve(contract):
     if int(doc.get("pin", 0)) != 3000:
         halt("release-active curve %s pin != 3000 — numeraire drift (HALT-AND-ASK)" % want_name)
     eng = {int(k): int(v) for k, v in doc["curve"].items()}
-    return {"curve": eng, "gate": pathway, "path": "engine/rl_after/" + want_name,
+    # ITEM 271 Addendum 23 fix 1: publish the ruled POOL index alongside the curve. The split-era
+    # curve prices 1-64 only (RULEBOOK v2.1 law 4), and the pick workbook carries ranges past 64 —
+    # price_pick used to KeyError on them (latent since the split, masked by the ring-fence halt).
+    global _POOL_VALUE
+    _POOL_VALUE = int(doc["pool_value"]) if doc.get("pool_value") is not None else None
+    return {"curve": eng, "pool_value": _POOL_VALUE, "gate": pathway, "path": "engine/rl_after/" + want_name,
             "file_md5": file_md5, "curve_md5": str(doc.get("curve_md5")), "curve_source_store_md5": str(contract["curve_source_store_md5"])}
 
 
@@ -339,8 +345,20 @@ def assert_pvc(pvc, resolved):
 
 
 # ----------------------------------------------------------------------------------- price one pick
-def price_pick(pvc, lo, hi, year):
-    vals = [pvc[p] for p in range(lo, hi + 1)]
+_POOL_VALUE = None   # the ruled pool index value, published by resolve() from the release-active curve
+
+def price_pick(pvc, lo, hi, year, pool_value=None):
+    # THE RULED SPLIT (RULEBOOK v2.1 law 4): the national curve prices picks 1-64; EVERYTHING past 64
+    # is the pool at ONE index, valued at the curve artifact's committed pool_value. No new decision is
+    # taken here — both halves are read from the release-active artifact.
+    def _v(pk):
+        if pk in pvc: return pvc[pk]
+        _pv = pool_value if pool_value is not None else _POOL_VALUE
+        if _pv is None:
+            halt("pick %d is past the curve domain and the release-active curve publishes no "
+                 "pool_value — cannot price it (HALT-AND-ASK)" % pk)
+        return _pv
+    vals = [_v(p) for p in range(lo, hi + 1)]
     mean = sum(vals) / len(vals)
     if year == 2027:
         mean *= (1.0 - PICK_FUTURE_DISCOUNT)
@@ -581,7 +599,8 @@ def build_clubs(players, picks, affl_teams):
             picked = [p for p in roster if p["posCode"] == pos and id(p) not in used][:n]
             for p in picked:
                 used.add(id(p)); best23 += p["v"]; best23_keys.append(p["key"])
-        bench = [p for p in roster if id(p) not in used][:BENCH]
+        # BACKFILL STOPGAP (#271 Addendum 19, owner word 2026-07-30): the bench fills to the 23 TARGET rather than a fixed 5, so an UNFILLED positional slot no longer costs a club a place. Measured basis: Adelaide 3 grouped MIDs (ten dual covers) and Hawthorn 4 (six) -- an AXIS ARTIFACT, which is why counting the shortfall was rejected. STOPGAP pending #274, which replaces this with the ruled law: value-maximal 23 fillable from the ELIGIBILITIES column, DPP-optimised, on absolute board value.
+        bench = [p for p in roster if id(p) not in used][:TARGET - len(best23_keys)]
         for p in bench:
             used.add(id(p)); best23 += p["v"]; best23_keys.append(p["key"])
 

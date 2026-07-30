@@ -147,7 +147,13 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
           "CASE1 pick-count conservation: Sum per-club nPicks == 160")
     st = (b or {}).get("stamp", {})
     check(st.get("pvcPathway") == "RL_PVC2", "CASE1 resolved pathway == RL_PVC2", st.get("pvcPathway"))
-    check(st.get("pvcCurveMd5") == "89c14729", "CASE1 resolved curve_md5 == 89c14729", st.get("pvcCurveMd5"))
+    # ITEM 271 Addendum 23 fix 2: DERIVED from the release-active curve artifact, not hardcoded — the
+    # file's own curve_md5 field. The old literal "89c14729" was the PRE-SPLIT payload and went stale
+    # at #271's re-derivation. Deriving follows this test's own convention and cannot go stale again.
+    _live_curve_md5 = str(json.load(open(os.path.join(REAL_ENGINE, "pvc_curve_v2.json"))).get("curve_md5"))
+    check(st.get("pvcCurveMd5") == _live_curve_md5,
+          "CASE1 resolved curve_md5 == release-active curve_md5 (%s, derived)" % _live_curve_md5,
+          st.get("pvcCurveMd5"))
     # ITEM 408 item 5 — DERIVE CASE1's positive-path identity from the authoritative current release
     # manifest (data/expected_boot.json), never the historical Round-14 hardcodes (board 2ab73a6f /
     # asOfRound 14). ingest_inputs.py already ring-fences the board bundle + curve contract against this
@@ -175,11 +181,15 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
     sys.path.insert(0, os.path.join(REPO, "ui", "tools"))
     import ingest_inputs as ing  # noqa: E402  (imported for the pure price_pick, no path dependency)
     v2 = load_curve_values("pvc_curve_v2.json")
+    _live_pool_value = json.load(open(os.path.join(REAL_ENGINE, "pvc_curve_v2.json"))).get("pool_value")
     priced_ok = True
     sample = 0
     for team, picks in (b or {}).get("picksByTeam", {}).items():
         for p in picks:
-            expect = round(ing.price_pick(v2, p["low"], p["high"], p["year"]))
+            # ITEM 271 Addendum 23 fix 1 lockstep: the oracle recomputes the SAME quantity, so it must
+            # see the same ruled split. pool_value comes from the release-active artifact, one source.
+            expect = round(ing.price_pick(v2, p["low"], p["high"], p["year"],
+                                          pool_value=_live_pool_value))
             if expect != p["value"]:
                 priced_ok = False
             sample += 1

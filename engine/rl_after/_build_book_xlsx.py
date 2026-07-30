@@ -154,7 +154,7 @@ for r in Acohort:
 fs.append([]); frow(f'({len(Acohort)} players)')
 fs.append([])
 frow('FLAG B — KPF over-compression (-17.9 mean) — RESOLVED: very likely NOT a bug',True,'1F3864')
-frow('Decomposition: these low-value KEY_FWDs have value almost entirely in the upper-band CEILING (q90/q97).',False,'808080')
+frow('Decomposition: these low-value KPFs have value almost entirely in the upper-band CEILING (q90/q97).',False,'808080')
 frow('Both cB (body) and asc (tail) bite the ceiling -> -60% (Cox body-27%+tail-33%; McMahon n0/cB0 all -58% is tail).',False,'808080')
 frow('cB-cap barely helps (KPF -17.9 -> -16.6). It is v7 shaving speculative ceiling value (Ed Richards principle).',False,'808080')
 frow('Established valuable key fwds NOT hit (Wright -4.3, Gunston +0). Recommendation: keep asc; accept speculative shaves.',False,'808080')

@@ -41,8 +41,8 @@ def norm_club(name):
 
 # Position label map (engine codes -> owner-voice display; names/values first, jargon in brackets).
 POS = {
-    "MID": "Mid", "RUC": "Ruck", "KEY_FWD": "Key Fwd", "GEN_FWD": "Fwd",
-    "KEY_DEF": "Key Def", "GEN_DEF": "Def",
+    "MID": "Mid", "RUCK": "Ruck", "KPF": "Key Fwd", "SF": "Fwd",
+    "KPD": "Key Def", "SD": "Def",
 }
 
 

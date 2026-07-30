@@ -5,7 +5,7 @@
    THE COLLAPSE RULE (item 216, owner-worded, applied FIRST):
      a K-FWD listing ABSORBS a G-FWD listing; a K-DEF listing ABSORBS a G-DEF listing.  The general
      (G) token is slot ELIGIBILITY, never a second position (not a DPP).  So {G-FWD,K-FWD} is a plain
-     KEY_FWD; {G-DEF,K-DEF} a plain KEY_DEF; {G-FWD,K-FWD,MID} collapses to {K-FWD,MID}; a four-way
+     KPF; {G-DEF,K-DEF} a plain KPD; {G-FWD,K-FWD,MID} collapses to {K-FWD,MID}; a four-way
      {G-DEF,K-DEF,K-FWD,G-FWD} collapses to the DPP {K-DEF,K-FWD}.  After the collapse (and the item-2
      CSV corrections) NO ranked player carries 3+ effective positions — asserted by the committed test.
 
@@ -29,10 +29,10 @@
   "use strict";
 
   // the 6 canonical position rows (board posCode vocab, Best-23 order).
-  var POSITIONS = ["KEY_DEF", "GEN_DEF", "MID", "GEN_FWD", "KEY_FWD", "RUC"];
+  var POSITIONS = ["KPD", "SD", "MID", "SF", "KPF", "RUCK"];
   var LABELS = {
-    KEY_DEF: "Key Def", GEN_DEF: "Gen Def", MID: "Mid",
-    GEN_FWD: "Gen Fwd", KEY_FWD: "Key Fwd", RUC: "Ruck",
+    KPD: "Key Def", SD: "Gen Def", MID: "Mid",
+    SF: "Gen Fwd", KPF: "Key Fwd", RUCK: "Ruck",
   };
 
   /* THE COLLAPSE (item 216), applied first: dedup, then K absorbs its same-flank G.
@@ -42,8 +42,8 @@
     (codes || []).forEach(function (c) { if (c && !seen[c]) { seen[c] = 1; uniq.push(c); } });
     var set = {};
     uniq.forEach(function (c) { set[c] = 1; });
-    if (set.KEY_FWD) delete set.GEN_FWD;   // K-FWD absorbs G-FWD (G is eligibility, not a DPP)
-    if (set.KEY_DEF) delete set.GEN_DEF;   // K-DEF absorbs G-DEF
+    if (set.KPF) delete set.SF;   // K-FWD absorbs G-FWD (G is eligibility, not a DPP)
+    if (set.KPD) delete set.SD;   // K-DEF absorbs G-DEF
     return uniq.filter(function (c) { return set[c]; });
   }
 

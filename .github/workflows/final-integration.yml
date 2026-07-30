@@ -133,9 +133,12 @@ jobs:
           node    ui/tests/release_seam.test.js
           node    ui/tests/counting_rule.test.js
           python3 ui/tests/club_curve_provenance.test.py
-          node    ui/tests/movers.test.js
           python3 ui/tests/test_club_valuation_current.py
           node    ui/tests/club_totals_parity.test.js
+          # ITEM 271 Addendum 23 fix 3: movers.test.js LAST in this step. Its declared known-red (exactly
+          # two assertions: the no-gate lineage state + the R19-boundary anchor) was shadowing the tests
+          # below it. Pin unchanged. Steps 14-22 stay shadowed until #274 — declared.
+          node    ui/tests/movers.test.js
 
       - name: UI — unified 868-asset ranking, no row caps, residual panel (Chromium)
         run: node session_2026-07-21/final_integration/tools/asset_view_ui_check.mjs

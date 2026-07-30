@@ -58,7 +58,14 @@ def run(season_year=DEFAULT_SEASON_YEAR):
         entry = next((s for s in (r.get('scoring') or [])
                       if s.get('year') == season_year and s.get('games', 0) >= 1), None)
         if entry:
-            candidates.append((r, {'year': entry['year'], 'avg': entry['avg'], 'games': entry['games']}))
+            # ITEM 271 item 8: the expectation now carries `pos` when the store's season row does.
+            # This STRENGTHENS the oracle rather than relaxing it — the projection used to discard a
+            # key the store actually holds, so the round-trip of the season eligibility was untested.
+            # It is still built FROM the store row, never from the previewed output.
+            _e = {'year': entry['year'], 'avg': entry['avg'], 'games': entry['games']}
+            if entry.get('pos') is not None:
+                _e['pos'] = entry['pos']
+            candidates.append((r, _e))
 
     results = {'season_year': season_year, 'store_md5': _md5_of(_STORE),
                'sampled': len(candidates), 'passed': 0, 'failed': 0,

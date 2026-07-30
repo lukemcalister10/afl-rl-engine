@@ -14,7 +14,7 @@
     "scope_denominator": 11.0,
     "durable_min_prior_games": 18
   },
-  "source_store_md5": "5d6e56d05f5e7d9eb8460bd1d07bca6e",
+  "source_store_md5": "6b9d00a75ca88122c42da9189739916b",
   "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
   "inprog_year": 2026,
   "_doc": "AUTHORITATIVE DYNAMIC SEASON STATE. calendar_progress (scheduled-season elapsed) and exposure_pace (empirical durable-sample pace \u2014 NOT calendar) are DISTINCT and both DYNAMIC; the engine reads these values; the derivation policy is immutable (derivation_policy_id)."

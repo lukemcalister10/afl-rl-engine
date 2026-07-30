@@ -29,15 +29,16 @@
 
    BEST-23 is a positional SELECTION, not a sum, so it is reproduced here EXACTLY as the ingest does it
    (ui/tools/ingest_inputs.py build_clubs): roster sorted by board value descending, greedy fill of
-   2 KEY_DEF · 4 GEN_DEF · 5 MID · 4 GEN_FWD · 2 KEY_FWD · 1 RUC taking the highest-valued unused player
+   2 KPD · 4 SD · 5 MID · 4 SF · 2 KPF · 1 RUCK taking the highest-valued unused player
    for each slot, then the 5 best remaining as bench. Identical algorithm, identical input, identical
    tie-breaking (both sorts are stable over the same bundle order). ui/tests/club_totals_parity.test.js
    proves the two agree club-for-club and metric-for-metric on the live board. */
 window.MD = window.MD || {};
 
 MD.clubTotals = (function () {
-  const SLOTS = [["KEY_DEF", 2], ["GEN_DEF", 4], ["MID", 5], ["GEN_FWD", 4], ["KEY_FWD", 2], ["RUC", 1]];
+  const SLOTS = [["KPD", 2], ["SD", 4], ["MID", 5], ["SF", 4], ["KPF", 2], ["RUCK", 1]];
   const BENCH = 5;
+  const TARGET = 23;   // slots(18) + BENCH(5); the backfill fills to THIS, not to BENCH
   /* The Free-Agents pool is not a club: it is never ranked and never enters a league denominator
      (item 191). Matched on the CANONICAL key, so both authored spellings fold into the one pool. */
   const FREE_LC = "free agents";
@@ -80,7 +81,8 @@ MD.clubTotals = (function () {
           .slice(0, slot[1])
           .forEach(function (p) { used[p.key] = 1; best23 += p.v; best23Keys.push(p.key); });
       });
-      roster.filter(function (p) { return !used[p.key]; }).slice(0, BENCH)
+      /* BACKFILL STOPGAP (#271 Addendum 19, owner word 2026-07-30): the bench fills to the 23 TARGET rather than a fixed 5, so an UNFILLED positional slot no longer costs a club a place. Measured basis: Adelaide 3 grouped MIDs (ten dual covers) and Hawthorn 4 (six) -- an AXIS ARTIFACT, which is why counting the shortfall was rejected. STOPGAP pending #274, which replaces this with the ruled law: value-maximal 23 fillable from the ELIGIBILITIES column, DPP-optimised, on absolute board value. */
+      roster.filter(function (p) { return !used[p.key]; }).slice(0, TARGET - best23Keys.length)
         .forEach(function (p) { used[p.key] = 1; best23 += p.v; best23Keys.push(p.key); });
 
       const myPicks = picksByTeam[team] || [];

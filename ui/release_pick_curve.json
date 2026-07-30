@@ -1,28 +1,24 @@
 {
- "_doc": "Fixed release pick-curve provenance. The adopted curve remains the ruler across weekly score updates. Current board/store/round identity is read fail-closed from expected_boot and the stamped board bundle.",
+ "_doc": "Fixed release pick-curve provenance. The adopted curve remains the ruler across weekly score updates. Current board/store/round identity is read fail-closed from expected_boot and the stamped board bundle. RE-ISSUED at the #271 adoption (owner word 2026-07-30). The curve was DERIVED on store 265f55d5; the adopted store is 6b9d00a7, which differs only by the three Addendum-12 backup-stream clears \u2014 measured value-neutral (0 board movers), so the curve was NOT re-derived for them and curve_source_store_md5 correctly records the derivation store, not the release store.",
  "release_version": "v2.11-final-rc1-PROVISIONAL",
- "adopted_at_round": 14,
+ "adopted_at_round": 20,
  "adopted_pathway": "RL_PVC2",
  "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
- "pick_curve_file_md5": "1554b98e0a6c1198ebbd15c385e197ab",
- "pick_curve_curve_md5": "f14a6622",
- "curve_source_store_md5": "968de0c7a0183ca3914165536f39607a",
+ "pick_curve_file_md5": "6506d8b1ff89ea0a8ad15f10827f202b",
+ "pick_curve_curve_md5": "08ea9375",
+ "curve_source_store_md5": "265f55d568f35af33a3e27c0a7d7886a",
  "numeraire_pin1": 3000,
  "supersedes": {
-  "pathway": "RL_PVC2 (pre-split)",
+  "pathway": "RL_PVC2 (#262 landing, pre-#271)",
   "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
-  "pick_curve_file_md5": "56dd7a7bca4306d9224aec0ef52efa32",
-  "pick_curve_curve_md5": "89c14729",
-  "domain": "1-99 (99 entries)",
-  "note": "Pre-split adopted curve, domain 1-99. Superseded by the ruled 1-64 + pool split. The earlier RL_PVCADOPT/L1b supersession still holds: stale-L1b overlays fail closed.",
-  "supersedes": {
-   "pathway": "RL_PVCADOPT",
-   "pick_curve_path": "engine/rl_after/pvc_curve_L1b.json",
-   "note": "RL_PVC2 supersedes the prior L1b curve; stale-L1b overlays fail closed."
-  }
+  "pick_curve_file_md5": "1554b98e0a6c1198ebbd15c385e197ab",
+  "pick_curve_curve_md5": "f14a6622",
+  "curve_source_store_md5": "968de0c7a0183ca3914165536f39607a",
+  "note": "Superseded by the #271 re-derivation, adopted on the owner word of 2026-07-30 (\"30/7 rederivation for the label. Adopt.\"). Prior chain retained in git history."
  },
  "pick_curve_domain": "1-64 (national draft curve, 64 entries)",
  "pool_index": 65,
  "pool_value": 528,
- "split_note": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The contract is re-issued because the ADOPTED CURVE'S DOMAIN changed, not its values: the national curve now covers picks 1-64 and every selection past 64 enters the pool, valued by position with order of selection carrying no value. There is no price for pick 70. Values over 1-64 are BYTE-IDENTICAL to the superseded artifact; pool_value is that artifact's own value at index 65. No curve was refitted. A re-issue is correct here precisely because the contract exists to stop the curve moving SILENTLY - this move is ruled, declared, and recorded below."
+ "split_note": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The contract is re-issued because the ADOPTED CURVE'S DOMAIN changed, not its values: the national curve now covers picks 1-64 and every selection past 64 enters the pool, valued by position with order of selection carrying no value. There is no price for pick 70. Values over 1-64 are BYTE-IDENTICAL to the superseded artifact; pool_value is that artifact's own value at index 65. No curve was refitted. A re-issue is correct here precisely because the contract exists to stop the curve moving SILENTLY - this move is ruled, declared, and recorded below.",
+ "per_entrant_md5": "2f8b4bd4"
 }

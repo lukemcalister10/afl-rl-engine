@@ -173,6 +173,37 @@ class ScoreIngestor:
         self.round_decimals = round_decimals
         self.score_bounds = score_bounds
 
+    # -- the eligibility a season row carries (ITEM 271 item 8; #262 R3-4) ---------------------
+    # Every season row landed by #262 carries `pos` — that season's eligibility. The weekly ingest
+    # built new season rows WITHOUT it, so a player's first appearance in a season landed an
+    # eligibility-less row, and staged_apply's row-equality guard (:1327-1333) compares season dicts
+    # WHOLESALE, so a one-sided key can false-flag a changed season at a later round apply. Both
+    # writers now stamp it. Precedence, most specific first: the season row already in the store (a
+    # merge never invents a new eligibility), then the player's declared current-season
+    # `eligibilities`, then the most recent prior season's, then present_position. Ordered on the Q8
+    # semantic hierarchy FWD -> DEF -> RUCK -> MID and joined with '/', which is the spelling the
+    # landed season rows use (`eligibilities` uses ',').
+    _POS_ORDER = ('KPF', 'SF', 'KPD', 'SD', 'RUCK', 'MID')
+
+    def _season_pos(self, key, year):
+        row = self._key_to_row.get(key)
+        if not row:
+            return None
+        for s in (row.get('scoring') or []):
+            if s.get('year') == year and s.get('pos'):
+                return s['pos']
+        raw = row.get('eligibilities')
+        if not raw:
+            prior = [s for s in (row.get('scoring') or []) if s.get('pos') and s.get('year', 0) < year]
+            if prior:
+                return max(prior, key=lambda s: s['year'])['pos']
+            raw = row.get('present_position')
+        toks = {t.strip().upper() for t in str(raw or '').replace('/', ',').split(',') if t.strip()}
+        toks &= set(self._POS_ORDER)
+        if 'KPF' in toks: toks.discard('SF')          # R105.1: a KEY listing absorbs its matching GEN
+        if 'KPD' in toks: toks.discard('SD')
+        return '/'.join(g for g in self._POS_ORDER if g in toks) or None
+
     # -- current store season entry for (key, year), read-only -------------------------------
     def _before_entry(self, key, year):
         row = self._key_to_row.get(key)
@@ -180,7 +211,10 @@ class ScoreIngestor:
             return None
         for s in (row.get('scoring') or []):
             if s.get('year') == year:
-                return {'year': s['year'], 'avg': s['avg'], 'games': s['games']}
+                e = {'year': s['year'], 'avg': s['avg'], 'games': s['games']}
+                if s.get('pos') is not None:          # carry it, so a merge cannot silently drop it
+                    e['pos'] = s['pos']
+                return e
         return None
 
     def _mean(self, total, n):
@@ -217,7 +251,9 @@ class ScoreIngestor:
             played = [r for r in rlist if r.played]
             n = len(played)
             total = sum(r.score for r in played) if n else 0.0
+            spos = self._season_pos(key, season_year)          # ITEM 271 item 8
             batch_entry = {'year': season_year, 'avg': self._mean(total, n), 'games': n}
+            if spos: batch_entry['pos'] = spos
 
             before = self._before_entry(key, season_year)
             if not merge_with_store or before is None:
@@ -226,6 +262,8 @@ class ScoreIngestor:
                 mg = before['games'] + n
                 mtotal = before['avg'] * before['games'] + total
                 merged_entry = {'year': season_year, 'avg': self._mean(mtotal, mg), 'games': mg}
+                if before.get('pos') or spos:
+                    merged_entry['pos'] = before.get('pos') or spos
 
             anoms = self._anomalies(sid, key, player, row, season_year, rlist)
             all_anoms.extend(anoms)

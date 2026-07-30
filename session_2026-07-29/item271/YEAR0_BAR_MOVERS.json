@@ -1,0 +1,824 @@
+[
+ {
+  "key": "harry-sheezel",
+  "player": "Harry Sheezel",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "nasiah-wanganeen-milera",
+  "player": "Nasiah Wanganeen-Milera",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "jason-horne-francis",
+  "player": "Jason Horne-Francis",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "ryley-sanders",
+  "player": "Ryley Sanders",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "reuben-ginbey",
+  "player": "Reuben Ginbey",
+  "bar_before": "KPD",
+  "bar_after": "SD"
+ },
+ {
+  "key": "sam-lalor",
+  "player": "Sam Lalor",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "colby-mckercher",
+  "player": "Colby McKercher",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "jagga-smith",
+  "player": "Jagga Smith",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "finn-o-sullivan",
+  "player": "Finn O'Sullivan",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "mattaes-phillipou",
+  "player": "Mattaes Phillipou",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "bailey-williams-wc",
+  "player": "Bailey J. Williams",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "chad-warner",
+  "player": "Chad Warner",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "connor-rozee",
+  "player": "Connor Rozee",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "sid-draper",
+  "player": "Sid Draper",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "joel-freijah",
+  "player": "Joel Freijah",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "sam-flanders",
+  "player": "Sam Flanders",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "alix-tauru",
+  "player": "Alix Tauru",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "christian-petracca",
+  "player": "Christian Petracca",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jack-ross",
+  "player": "Jack Ross",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "nicholas-martin",
+  "player": "Nicholas Martin",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "sam-durham",
+  "player": "Sam Durham",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "sullivan-robey",
+  "player": "Sullivan Robey",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "samuel-grlj",
+  "player": "Samuel Grlj",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "rowan-marshall",
+  "player": "Rowan Marshall",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "dyson-sharp",
+  "player": "Dyson Sharp",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "xavier-lindsay",
+  "player": "Xavier Lindsay",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "justin-mcinerney",
+  "player": "Justin McInerney",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "tanner-bruhn",
+  "player": "Tanner Bruhn",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "taj-hotton",
+  "player": "Taj Hotton",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "tom-powell",
+  "player": "Tom Powell",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "louis-emmett",
+  "player": "Louis Emmett",
+  "bar_before": "KPF",
+  "bar_after": "RUCK"
+ },
+ {
+  "key": "luke-trainor",
+  "player": "Luke Trainor",
+  "bar_before": "KPD",
+  "bar_after": "SD"
+ },
+ {
+  "key": "caleb-windsor",
+  "player": "Caleb Windsor",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "koltyn-tholstrup",
+  "player": "Koltyn Tholstrup",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "ryan-maric",
+  "player": "Ryan Maric",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "oliver-hollands",
+  "player": "Oliver Hollands",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "bailey-humphrey",
+  "player": "Bailey Humphrey",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jake-soligo",
+  "player": "Jake Soligo",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jack-dalton",
+  "player": "Jack Dalton",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "marcus-herbert",
+  "player": "Marcus Herbert",
+  "bar_before": "SD",
+  "bar_after": "MID"
+ },
+ {
+  "key": "adam-sweid",
+  "player": "Adam Sweid",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "marcus-windhager",
+  "player": "Marcus Windhager",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "oliver-hannaford",
+  "player": "Oliver Hannaford",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "sam-allen",
+  "player": "Sam Allen",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "william-mccabe",
+  "player": "William McCabe",
+  "bar_before": "KPF",
+  "bar_after": "KPD"
+ },
+ {
+  "key": "cooper-hynes",
+  "player": "Cooper Hynes",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "will-graham",
+  "player": "Will Graham",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "james-barrat",
+  "player": "James Barrat",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "jevan-phillipou",
+  "player": "Jevan Phillipou",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "tom-sparrow",
+  "player": "Tom Sparrow",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jy-simpkin",
+  "player": "Jy Simpkin",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "tim-kelly",
+  "player": "Tim Kelly",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "harvey-thomas",
+  "player": "Harvey Thomas",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "koby-evans",
+  "player": "Koby Evans",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "cody-angove",
+  "player": "Cody Angove",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "kayle-gerreyn",
+  "player": "Kayle Gerreyn",
+  "bar_before": "KPF",
+  "bar_after": "RUCK"
+ },
+ {
+  "key": "lewis-hayes",
+  "player": "Lewis Hayes",
+  "bar_before": "KPD",
+  "bar_after": "SD"
+ },
+ {
+  "key": "charlie-edwards",
+  "player": "Charlie Edwards",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "luke-lloyd",
+  "player": "Luke Lloyd",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "james-leake",
+  "player": "James Leake",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "max-king-syd",
+  "player": "Maxwell King",
+  "bar_before": "SF",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "joel-cochran",
+  "player": "Joel Cochran",
+  "bar_before": "KPD",
+  "bar_after": "SD"
+ },
+ {
+  "key": "tyler-sonsie",
+  "player": "Tyler Sonsie",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "alex-dodson",
+  "player": "Alex Dodson",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "kye-fincher",
+  "player": "Kye Fincher",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "cooper-bell",
+  "player": "Cooper Bell",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "christian-moraes",
+  "player": "Christian Moraes",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jake-lever",
+  "player": "Jake Lever",
+  "bar_before": "KPD",
+  "bar_after": "SD"
+ },
+ {
+  "key": "jay-polkinghorne",
+  "player": "Jay Polkinghorne",
+  "bar_before": "SF",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "will-darcy",
+  "player": "Will Darcy",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "charlie-banfield",
+  "player": "Charlie Banfield",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "noah-chamberlain",
+  "player": "Noah Chamberlain",
+  "bar_before": "SF",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "toby-whan",
+  "player": "Toby Whan",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "jesse-mellor",
+  "player": "Jesse Mellor",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "zac-walker",
+  "player": "Zac Walker",
+  "bar_before": "SD",
+  "bar_after": "KPD"
+ },
+ {
+  "key": "indy-cotton",
+  "player": "Indy Cotton",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "fred-rodriguez",
+  "player": "Fred Rodriguez",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "nick-driscoll",
+  "player": "Nick Driscoll",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "patrick-snell",
+  "player": "Patrick Snell",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "jacob-moss",
+  "player": "Jacob Moss",
+  "bar_before": "KPF",
+  "bar_after": "KPD"
+ },
+ {
+  "key": "xavier-walsh",
+  "player": "Xavier Walsh",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "james-rowbottom",
+  "player": "James Rowbottom",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jhye-clark",
+  "player": "Jhye Clark",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "matt-hill",
+  "player": "Matt Hill",
+  "bar_before": "SF",
+  "bar_after": "SD"
+ },
+ {
+  "key": "xavier-bamert",
+  "player": "Xavier Bamert",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "matt-duffy",
+  "player": "Matt Duffy",
+  "bar_before": "SD",
+  "bar_after": "KPD"
+ },
+ {
+  "key": "keighton-matofai-forbes",
+  "player": "Keighton Matofai-Forbes",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jack-ison",
+  "player": "Jack Ison",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "angus-anderson",
+  "player": "Angus Anderson",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "ed-langdon",
+  "player": "Ed Langdon",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "tom-gross",
+  "player": "Tom Gross",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "noah-roberts-thomson",
+  "player": "Noah Roberts-Thomson",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "jack-watkins",
+  "player": "Jack Watkins",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "matt-carroll",
+  "player": "Matt Carroll",
+  "bar_before": "MID",
+  "bar_after": "SD"
+ },
+ {
+  "key": "toby-mcmullin",
+  "player": "Toby McMullin",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "thomas-burton",
+  "player": "Thomas Burton",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "darcy-byrne-jones",
+  "player": "Darcy Byrne-Jones",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "ned-long",
+  "player": "Ned Long",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "braeden-campbell",
+  "player": "Braeden Campbell",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jai-serong",
+  "player": "Jai Serong",
+  "bar_before": "SD",
+  "bar_after": "KPD"
+ },
+ {
+  "key": "sam-draper",
+  "player": "Sam Draper",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "jack-lukosius",
+  "player": "Jack Lukosius",
+  "bar_before": "SF",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "oscar-steene",
+  "player": "Oscar Steene",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "liam-reidy",
+  "player": "Liam Reidy",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "dante-visentini",
+  "player": "Dante Visentini",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "oliver-henry",
+  "player": "Oliver Henry",
+  "bar_before": "SF",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "luke-nankervis",
+  "player": "Luke Nankervis",
+  "bar_before": "SD",
+  "bar_after": "MID"
+ },
+ {
+  "key": "nikolas-cox",
+  "player": "Nikolas Cox",
+  "bar_before": "KPF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "tyrell-dewar",
+  "player": "Tyrell Dewar",
+  "bar_before": "SF",
+  "bar_after": "SD"
+ },
+ {
+  "key": "dion-prestia",
+  "player": "Dion Prestia",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "jack-henry",
+  "player": "Jack Henry",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "jack-graham",
+  "player": "Jack Graham",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "lewis-young",
+  "player": "Lewis Young",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "brayden-cook",
+  "player": "Brayden Cook",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "james-jordon",
+  "player": "James Jordon",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "connor-budarick",
+  "player": "Connor Budarick",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "peter-ladhams",
+  "player": "Peter Ladhams",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "finlay-macrae",
+  "player": "Finlay Macrae",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "elliot-yeo",
+  "player": "Elliot Yeo",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "harrison-petty",
+  "player": "Harrison Petty",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "buku-khamis",
+  "player": "Buku Khamis",
+  "bar_before": "KPD",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "stephen-coniglio",
+  "player": "Stephen Coniglio",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "max-heath",
+  "player": "Max Heath",
+  "bar_before": "RUCK",
+  "bar_after": "KPF"
+ },
+ {
+  "key": "jake-lloyd",
+  "player": "Jake Lloyd",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "deven-robertson",
+  "player": "Deven Robertson",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "isaac-cumming",
+  "player": "Isaac Cumming",
+  "bar_before": "SD",
+  "bar_after": "MID"
+ },
+ {
+  "key": "jackson-mead",
+  "player": "Jackson Mead",
+  "bar_before": "SF",
+  "bar_after": "MID"
+ },
+ {
+  "key": "hunter-clark",
+  "player": "Hunter Clark",
+  "bar_before": "SD",
+  "bar_after": "MID"
+ },
+ {
+  "key": "tom-cole",
+  "player": "Tom Cole",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "mitch-mcgovern",
+  "player": "Mitch McGovern",
+  "bar_before": "SD",
+  "bar_after": "SF"
+ },
+ {
+  "key": "bailey-banfield",
+  "player": "Bailey Banfield",
+  "bar_before": "SF",
+  "bar_after": "SD"
+ },
+ {
+  "key": "callum-coleman-jones",
+  "player": "Callum Coleman-Jones",
+  "bar_before": "KPF",
+  "bar_after": "RUCK"
+ },
+ {
+  "key": "matt-cottrell",
+  "player": "Matt Cottrell",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "mark-blicavs",
+  "player": "Mark Blicavs",
+  "bar_before": "MID",
+  "bar_after": "RUCK"
+ },
+ {
+  "key": "harry-schoenberg",
+  "player": "Harry Schoenberg",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "oskar-baker",
+  "player": "Oskar Baker",
+  "bar_before": "MID",
+  "bar_after": "SF"
+ },
+ {
+  "key": "joel-hamling",
+  "player": "Joel Hamling",
+  "bar_before": "KPF",
+  "bar_after": "KPD"
+ }
+]

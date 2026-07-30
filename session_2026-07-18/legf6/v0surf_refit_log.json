@@ -34,5 +34,24 @@
     "old_pin": "5b02f33b061d01502ae5a85ee6c06ea1",
     "new_md5": "4cfc0b994b22cb579bf19f5db0894005",
     "note": "FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)"
+  },
+  {
+    "ts_utc": "2026-07-29T08:21:36Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "85e57195189b6d4081ef7c270c572f06",
+    "old_md5": "4cfc0b994b22cb579bf19f5db0894005",
+    "old_pin": "4cfc0b994b22cb579bf19f5db0894005",
+    "new_md5": "19d085a20bb12882d2c0d9c9716a2a06",
+    "note": "FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)"
+  },
+  {
+    "ts_utc": "2026-07-29T14:13:51Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "b781ed253bff1a6f5de29fd26c2d7de9",
+    "old_md5": "19d085a20bb12882d2c0d9c9716a2a06",
+    "old_pin": "19d085a20bb12882d2c0d9c9716a2a06",
+    "new_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
   }
 ]

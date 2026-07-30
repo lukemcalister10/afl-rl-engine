@@ -29,56 +29,56 @@ function sum(o) { return Object.keys(o).reduce(function (s, k) { return s + o[k]
 console.log("COUNTING-RULE TESTS (items 196(2), 216 — collapse-first)\n  " + "-".repeat(60));
 
 // --- THE COLLAPSE (item 216): K absorbs its same-flank G, applied first ------------------------
-eqArr(C.collapse(["GEN_FWD", "KEY_FWD"]), ["KEY_FWD"],
-  "collapse: K-FWD absorbs G-FWD -> plain KEY_FWD");
-eqArr(C.collapse(["GEN_DEF", "KEY_DEF"]), ["KEY_DEF"],
-  "collapse: K-DEF absorbs G-DEF -> plain KEY_DEF");
-eqArr(C.collapse(["GEN_FWD", "KEY_FWD", "MID"]), ["KEY_FWD", "MID"],
+eqArr(C.collapse(["SF", "KPF"]), ["KPF"],
+  "collapse: K-FWD absorbs G-FWD -> plain KPF");
+eqArr(C.collapse(["SD", "KPD"]), ["KPD"],
+  "collapse: K-DEF absorbs G-DEF -> plain KPD");
+eqArr(C.collapse(["SF", "KPF", "MID"]), ["KPF", "MID"],
   "collapse: {G-FWD,K-FWD,MID} -> {K-FWD,MID} (Langford pattern)");
-eqArr(C.collapse(["GEN_DEF", "KEY_DEF", "KEY_FWD", "GEN_FWD"]), ["KEY_DEF", "KEY_FWD"],
+eqArr(C.collapse(["SD", "KPD", "KPF", "SF"]), ["KPD", "KPF"],
   "collapse: four-way swingman -> DPP {K-DEF,K-FWD}");
-eqArr(C.collapse(["RUC", "KEY_FWD", "GEN_FWD"]), ["RUC", "KEY_FWD"],
+eqArr(C.collapse(["RUCK", "KPF", "SF"]), ["RUCK", "KPF"],
   "collapse: {RUCK,K-FWD,G-FWD} -> DPP {RUC,K-FWD} (ruck swingman)");
-eqArr(C.collapse(["GEN_FWD"]), ["GEN_FWD"],
+eqArr(C.collapse(["SF"]), ["SF"],
   "collapse: a bare G-FWD (no K) is UNTOUCHED — G stands alone");
-eqArr(C.collapse(["KEY_DEF", "GEN_FWD"]), ["KEY_DEF", "GEN_FWD"],
+eqArr(C.collapse(["KPD", "SF"]), ["KPD", "SF"],
   "collapse: cross-flank K-DEF + G-FWD do NOT collapse (different flanks)");
 
 // --- the owner's verbatim cases, applied AFTER collapse ----------------------------------------
-eqWeights(C.positionWeights(["GEN_FWD"]), { GEN_FWD: 1 },
+eqWeights(C.positionWeights(["SF"]), { SF: 1 },
   "single position (non-mid) -> 1.0 to that position");
 eqWeights(C.positionWeights(["MID"]), { MID: 1 },
   "single position (MID-only) -> 1.0 to MID");
-eqWeights(C.positionWeights(["KEY_DEF", "KEY_FWD"]), { KEY_DEF: 0.5, KEY_FWD: 0.5 },
+eqWeights(C.positionWeights(["KPD", "KPF"]), { KPD: 0.5, KPF: 0.5 },
   "DPP, no mid -> 0.5 to each (Matt Whitlock, corrected pure-key)");
-eqWeights(C.positionWeights(["MID", "GEN_FWD"]), { GEN_FWD: 1, MID: 0 },
+eqWeights(C.positionWeights(["MID", "SF"]), { SF: 1, MID: 0 },
   "DPP-mid EXCEPTION -> non-mid counts 1, MID counts 0");
-eqWeights(C.positionWeights(["GEN_FWD", "MID"]), { GEN_FWD: 1, MID: 0 },
+eqWeights(C.positionWeights(["SF", "MID"]), { SF: 1, MID: 0 },
   "DPP-mid EXCEPTION (mid listed second) -> non-mid 1, MID 0");
 
 // --- one case per COLLAPSED pattern (the item-4 required set) ----------------------------------
-eqWeights(C.positionWeights(["RUC", "KEY_FWD", "GEN_FWD"]), { RUC: 0.5, KEY_FWD: 0.5 },
+eqWeights(C.positionWeights(["RUCK", "KPF", "SF"]), { RUCK: 0.5, KPF: 0.5 },
   "RUCK/K-FWD swingman: collapse then DPP -> RUC 0.5, K-FWD 0.5");
-eqWeights(C.positionWeights(["GEN_DEF", "KEY_DEF", "KEY_FWD", "GEN_FWD"]), { KEY_DEF: 0.5, KEY_FWD: 0.5 },
+eqWeights(C.positionWeights(["SD", "KPD", "KPF", "SF"]), { KPD: 0.5, KPF: 0.5 },
   "four-way swingman: collapse then DPP -> K-DEF 0.5, K-FWD 0.5");
-eqWeights(C.positionWeights(["GEN_FWD", "KEY_FWD", "MID"]), { KEY_FWD: 1, MID: 0 },
+eqWeights(C.positionWeights(["SF", "KPF", "MID"]), { KPF: 1, MID: 0 },
   "Langford (K-FWD/MID after collapse): DPP-mid exception -> K-FWD 1, MID 0");
-eqWeights(C.positionWeights(["GEN_DEF", "GEN_FWD"]), { GEN_DEF: 0.5, GEN_FWD: 0.5 },
+eqWeights(C.positionWeights(["SD", "SF"]), { SD: 0.5, SF: 0.5 },
   "corrected pure-general (Flanders/Baker/Langdon): DPP -> G-DEF 0.5, G-FWD 0.5");
 
 // --- invariants -------------------------------------------------------------------------------
-assert(approx(sum(C.positionWeights(["KEY_DEF", "KEY_FWD"])), 1), "weights sum to 1.0 (DPP)", "1", "see");
-assert(approx(sum(C.positionWeights(["MID", "GEN_FWD"])), 1), "weights sum to 1.0 (DPP-mid)", "1", "see");
-assert(approx(sum(C.positionWeights(["RUC", "KEY_FWD", "GEN_FWD"])), 1), "weights sum to 1.0 (collapsed swingman)", "1", "see");
+assert(approx(sum(C.positionWeights(["KPD", "KPF"])), 1), "weights sum to 1.0 (DPP)", "1", "see");
+assert(approx(sum(C.positionWeights(["MID", "SF"])), 1), "weights sum to 1.0 (DPP-mid)", "1", "see");
+assert(approx(sum(C.positionWeights(["RUCK", "KPF", "SF"])), 1), "weights sum to 1.0 (collapsed swingman)", "1", "see");
 assert(Object.keys(C.positionWeights([])).length === 0, "no position -> empty (unattributed)", "{}", "see");
-eqWeights(C.positionWeights(["GEN_FWD", "GEN_FWD"]), { GEN_FWD: 1 },
+eqWeights(C.positionWeights(["SF", "SF"]), { SF: 1 },
   "duplicate token collapses -> 1.0 (no double count)");
 
 // --- OBITUARY guard: a genuine 3+ post-collapse set is an INVARIANT VIOLATION (throws) ---------
 (function () {
   n++;
   var threw = false;
-  try { C.positionWeights(["KEY_DEF", "KEY_FWD", "MID"]); } catch (e) { threw = true; }
+  try { C.positionWeights(["KPD", "KPF", "MID"]); } catch (e) { threw = true; }
   report(threw, "3+ effective positions after collapse THROWS (equal-split generalisation is dead)",
     "throw", threw ? "threw" : "no throw");
 })();
@@ -87,10 +87,10 @@ eqWeights(C.positionWeights(["GEN_FWD", "GEN_FWD"]), { GEN_FWD: 1 },
 (function () {
   var roster = [
     { codes: ["MID"], v: 8000 },
-    { codes: ["KEY_DEF", "KEY_FWD"], v: 6000 },
-    { codes: ["MID", "GEN_DEF"], v: 4000 },
-    { codes: ["RUC", "KEY_FWD", "GEN_FWD"], v: 900 },
-    { codes: ["GEN_DEF", "KEY_DEF", "KEY_FWD", "GEN_FWD"], v: 1200 },
+    { codes: ["KPD", "KPF"], v: 6000 },
+    { codes: ["MID", "SD"], v: 4000 },
+    { codes: ["RUCK", "KPF", "SF"], v: 900 },
+    { codes: ["SD", "KPD", "KPF", "SF"], v: 1200 },
   ];
   var bucket = {}, total = 0;
   roster.forEach(function (r) { C.accumulate(bucket, r.codes, r.v); total += r.v; });

@@ -19,7 +19,7 @@
  "as_of_round": 20,
  "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
  "band": "34faa8659cc8f19794f5cb9584fa19b2",
- "board": "3d4e2e507053b66f3f4dc4cddd10aee4",
+ "board": "f2df6e0a2902f48e1df36f35493ba8c1",
  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
  "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
  "engine_head": "404e811353281843b065b3d75768bec0",
@@ -30,10 +30,10 @@
  "register": "652d83e87780e415a01a2de6d8b3cc57",
  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
  "release_version": "v2.11-final-rc1-PROVISIONAL",
- "rl_model": "293e21d6905eab4f2d0e8a2f0c2368eb",
- "store": "5d6e56d05f5e7d9eb8460bd1d07bca6e",
+ "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
+ "store": "6b9d00a75ca88122c42da9189739916b",
  "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
- "v0surf": "4cfc0b994b22cb579bf19f5db0894005",
+ "v0surf": "ce08c2d13ae7d9bd403c60cf58ea1660",
  "_panel_removed_note": "PANEL RE-PIN REMOVED 2026-07-28, owner word (ITEM 208). The ten-row panel block that lived here was one of four surfaces that had to be re-typed by hand every time the board moved. It never caught a defect across R15-R20 \u2014 every failure was a legitimately moved board \u2014 and it blocked every landing. run_panel.sh now PRINTS the ten rows derived from the board and asserts nothing about their values; Guard 5 (store / rl_model / fv identity) remains the gate on entry and has fired in anger. Nothing executable read this field: ui/tools/extract_board_view.py copied it into the UI stamp as text and no test or view asserted it. Historical panel values are preserved in git history and in the ITEM 208 hand-back on issue #208.",
  "_board_note_split": "Board re-derived under THE PRICING SPLIT + ADDENDUM 1, on a FROZEN v0surf surface (sig 76498b5a, pickle 2 surfaces, zero fits at build). National curve 1-64; everything past 64 is POOL at one index, valued by position; no pool row teaches the curve at any fit site. Store e3aaba77 UNCHANGED. THE BOARD MOVE IS NOT MADE HERE: no balanced reference, no UI bundles, and by owner correction 035bf11 NO history column - one column is written per LANDED change, not per rebuild, and this baseline effort gets its single column when the whole of it lands."
 }

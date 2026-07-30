@@ -1,0 +1,159 @@
+[
+ {
+  "key": "conor-stone",
+  "name": "Conor Stone",
+  "v_baseline": 87,
+  "v_stageA": 86,
+  "v_stageB_engine": 86,
+  "v_final": 87,
+  "channels": [
+   "stage_A",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "dylan-patterson",
+  "name": "Dylan Patterson",
+  "v_baseline": 1137,
+  "v_stageA": 1112,
+  "v_stageB_engine": 1133,
+  "v_final": 1137,
+  "channels": [
+   "stage_A",
+   "stageB_engine",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "finlay-macrae",
+  "name": "Finlay Macrae",
+  "v_baseline": 110,
+  "v_stageA": 107,
+  "v_stageB_engine": 107,
+  "v_final": 110,
+  "channels": [
+   "stage_A",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "harry-schoenberg",
+  "name": "Harry Schoenberg",
+  "v_baseline": 56,
+  "v_stageA": 55,
+  "v_stageB_engine": 56,
+  "v_final": 56,
+  "channels": [
+   "stage_A",
+   "stageB_engine"
+  ]
+ },
+ {
+  "key": "hunter-clark",
+  "name": "Hunter Clark",
+  "v_baseline": 57,
+  "v_stageA": 56,
+  "v_stageB_engine": 56,
+  "v_final": 57,
+  "channels": [
+   "stage_A",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "jaeger-o-meara",
+  "name": "Jaeger O'Meara",
+  "v_baseline": 196,
+  "v_stageA": 191,
+  "v_stageB_engine": 191,
+  "v_final": 196,
+  "channels": [
+   "stage_A",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "jake-kolodjashnij",
+  "name": "Jake Kolodjashnij",
+  "v_baseline": 38,
+  "v_stageA": 37,
+  "v_stageB_engine": 37,
+  "v_final": 38,
+  "channels": [
+   "stage_A",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "jeremy-sharp",
+  "name": "Jeremy Sharp",
+  "v_baseline": 77,
+  "v_stageA": 76,
+  "v_stageB_engine": 77,
+  "v_final": 77,
+  "channels": [
+   "stage_A",
+   "stageB_engine"
+  ]
+ },
+ {
+  "key": "joel-amartey",
+  "name": "Joel Amartey",
+  "v_baseline": 57,
+  "v_stageA": 55,
+  "v_stageB_engine": 57,
+  "v_final": 57,
+  "channels": [
+   "stage_A",
+   "stageB_engine"
+  ]
+ },
+ {
+  "key": "lachlan-weller",
+  "name": "Lachlan Weller",
+  "v_baseline": 81,
+  "v_stageA": 79,
+  "v_stageB_engine": 79,
+  "v_final": 81,
+  "channels": [
+   "stage_A",
+   "stageB_curve_pool"
+  ]
+ },
+ {
+  "key": "lukas-cooke",
+  "name": "Lukas Cooke",
+  "v_baseline": 151,
+  "v_stageA": 147,
+  "v_stageB_engine": 151,
+  "v_final": 151,
+  "channels": [
+   "stage_A",
+   "stageB_engine"
+  ]
+ },
+ {
+  "key": "roan-steele",
+  "name": "Roan Steele",
+  "v_baseline": 22,
+  "v_stageA": 21,
+  "v_stageB_engine": 22,
+  "v_final": 22,
+  "channels": [
+   "stage_A",
+   "stageB_engine"
+  ]
+ },
+ {
+  "key": "tom-blamires",
+  "name": "Tom Blamires",
+  "v_baseline": 95,
+  "v_stageA": 93,
+  "v_stageB_engine": 95,
+  "v_final": 95,
+  "channels": [
+   "stage_A",
+   "stageB_engine"
+  ]
+ }
+]

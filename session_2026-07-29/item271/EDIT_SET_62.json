@@ -1,0 +1,436 @@
+[
+ {
+  "key": "adam-treloar",
+  "player": "Adam Treloar",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "adam-treloar",
+  "player": "Adam Treloar",
+  "field": "future_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "andy-moniz-wakefield",
+  "player": "Andy Moniz-Wakefield",
+  "field": "present_position",
+  "from": "SF",
+  "to": "SD"
+ },
+ {
+  "key": "archie-roberts",
+  "player": "Archie Roberts",
+  "field": "future_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "bailey-banfield",
+  "player": "Bailey Banfield",
+  "field": "future_position",
+  "from": "SD",
+  "to": "SF"
+ },
+ {
+  "key": "bailey-humphrey",
+  "player": "Bailey Humphrey",
+  "field": "present_position",
+  "from": "SF",
+  "to": "MID"
+ },
+ {
+  "key": "bradley-hill",
+  "player": "Bradley Hill",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "chayce-jones",
+  "player": "Chayce Jones",
+  "field": "future_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "christian-petracca",
+  "player": "Christian Petracca",
+  "field": "p_dual_stream",
+  "from": 50.0,
+  "to": 70
+ },
+ {
+  "key": "conor-mckenna",
+  "player": "Conor McKenna",
+  "field": "present_position",
+  "from": "SD",
+  "to": "SF"
+ },
+ {
+  "key": "conor-stone",
+  "player": "Conor Stone",
+  "field": "present_position",
+  "from": "SF",
+  "to": "SD"
+ },
+ {
+  "key": "dane-rampe",
+  "player": "Dane Rampe",
+  "field": "present_position",
+  "from": "KPD",
+  "to": "SD"
+ },
+ {
+  "key": "dayne-zorko",
+  "player": "Dayne Zorko",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "ed-langdon",
+  "player": "Ed Langdon",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "finn-maginness",
+  "player": "Finn Maginness",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "harry-sharp",
+  "player": "Harry Sharp",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "harvey-gallagher",
+  "player": "Harvey Gallagher",
+  "field": "present_position",
+  "from": "SF",
+  "to": "SD"
+ },
+ {
+  "key": "harvey-thomas",
+  "player": "Harvey Thomas",
+  "field": "present_position",
+  "from": "SF",
+  "to": "MID"
+ },
+ {
+  "key": "jack-carroll",
+  "player": "Jack Carroll",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "jack-crisp",
+  "player": "Jack Crisp",
+  "field": "present_position",
+  "from": "SD",
+  "to": "MID"
+ },
+ {
+  "key": "jack-lukosius",
+  "player": "Jack Lukosius",
+  "field": "present_position",
+  "from": "KPF",
+  "to": "SF"
+ },
+ {
+  "key": "jack-lukosius",
+  "player": "Jack Lukosius",
+  "field": "future_position",
+  "from": "KPF",
+  "to": "SF"
+ },
+ {
+  "key": "jack-silvagni",
+  "player": "Jack Silvagni",
+  "field": "present_position",
+  "from": "KPF",
+  "to": "KPD"
+ },
+ {
+  "key": "jackson-mead",
+  "player": "Jackson Mead",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "jake-melksham",
+  "player": "Jake Melksham",
+  "field": "present_position",
+  "from": "SF",
+  "to": "KPF"
+ },
+ {
+  "key": "joel-hamling",
+  "player": "Joel Hamling",
+  "field": "present_position",
+  "from": "KPD",
+  "to": "KPF"
+ },
+ {
+  "key": "joel-hamling",
+  "player": "Joel Hamling",
+  "field": "future_position",
+  "from": "KPD",
+  "to": "KPF"
+ },
+ {
+  "key": "jordan-de-goey",
+  "player": "Jordan De Goey",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "josh-daicos",
+  "player": "Josh Daicos",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "josh-worrell",
+  "player": "Josh Worrell",
+  "field": "present_position",
+  "from": "KPD",
+  "to": "SD"
+ },
+ {
+  "key": "jy-farrar",
+  "player": "Jy Farrar",
+  "field": "present_position",
+  "from": "SD",
+  "to": "KPF"
+ },
+ {
+  "key": "karl-amon",
+  "player": "Karl Amon",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "kyle-langford",
+  "player": "Kyle Langford",
+  "field": "present_position",
+  "from": "SF",
+  "to": "KPF"
+ },
+ {
+  "key": "lachie-whitfield",
+  "player": "Lachie Whitfield",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "louis-emmett",
+  "player": "Louis Emmett",
+  "field": "present_position",
+  "from": "RUCK",
+  "to": "KPF"
+ },
+ {
+  "key": "luke-lloyd",
+  "player": "Luke Lloyd",
+  "field": "present_position",
+  "from": "KPF",
+  "to": "KPD"
+ },
+ {
+  "key": "luke-parker",
+  "player": "Luke Parker",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "mark-blicavs",
+  "player": "Mark Blicavs",
+  "field": "present_position",
+  "from": "KPD",
+  "to": "MID"
+ },
+ {
+  "key": "max-hall",
+  "player": "Max Hall",
+  "field": "future_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "mitch-mcgovern",
+  "player": "Mitch McGovern",
+  "field": "present_position",
+  "from": "KPF",
+  "to": "SD"
+ },
+ {
+  "key": "nikolas-cox",
+  "player": "Nikolas Cox",
+  "field": "present_position",
+  "from": "MID",
+  "to": "KPF"
+ },
+ {
+  "key": "noah-balta",
+  "player": "Noah Balta",
+  "field": "present_position",
+  "from": "KPD",
+  "to": "KPF"
+ },
+ {
+  "key": "oliver-florent",
+  "player": "Oliver Florent",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "oliver-hollands",
+  "player": "Oliver Hollands",
+  "field": "future_position",
+  "from": "SD",
+  "to": "MID"
+ },
+ {
+  "key": "oscar-adams",
+  "player": "Oscar Adams",
+  "field": "future_position",
+  "from": "SD",
+  "to": "KPD"
+ },
+ {
+  "key": "patrick-dangerfield",
+  "player": "Patrick Dangerfield",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "rory-lobb",
+  "player": "Rory Lobb",
+  "field": "present_position",
+  "from": "KPF",
+  "to": "KPD"
+ },
+ {
+  "key": "ryan-byrnes",
+  "player": "Ryan Byrnes",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "ryan-lester",
+  "player": "Ryan Lester",
+  "field": "present_position",
+  "from": "KPD",
+  "to": "SD"
+ },
+ {
+  "key": "ryan-lester",
+  "player": "Ryan Lester",
+  "field": "future_position",
+  "from": "KPD",
+  "to": "SD"
+ },
+ {
+  "key": "sam-wicks",
+  "player": "Sam Wicks",
+  "field": "present_position",
+  "from": "SF",
+  "to": "SD"
+ },
+ {
+  "key": "touk-miller",
+  "player": "Touk Miller",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "touk-miller",
+  "player": "Touk Miller",
+  "field": "future_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "tyrell-dewar",
+  "player": "Tyrell Dewar",
+  "field": "future_position",
+  "from": "SD",
+  "to": "SF"
+ },
+ {
+  "key": "will-graham",
+  "player": "Will Graham",
+  "field": "present_position",
+  "from": "SF",
+  "to": "MID"
+ },
+ {
+  "key": "will-graham",
+  "player": "Will Graham",
+  "field": "p_dual_stream",
+  "from": 70.0,
+  "to": 90
+ },
+ {
+  "key": "xavier-lindsay",
+  "player": "Xavier Lindsay",
+  "field": "present_position",
+  "from": "SD",
+  "to": "MID"
+ },
+ {
+  "key": "xavier-o-halloran",
+  "player": "Xavier O'Halloran",
+  "field": "present_position",
+  "from": "MID",
+  "to": "SF"
+ },
+ {
+  "key": "zachary-williams",
+  "player": "Zachary Williams",
+  "field": "present_position",
+  "from": "SD",
+  "to": "SF"
+ },
+ {
+  "key": "zachary-williams",
+  "player": "Zachary Williams",
+  "field": "future_position",
+  "from": "SD",
+  "to": "SF"
+ },
+ {
+  "key": "zeke-uwland",
+  "player": "Zeke Uwland",
+  "field": "future_position",
+  "from": "MID",
+  "to": "SD"
+ },
+ {
+  "key": "zeke-uwland",
+  "player": "Zeke Uwland",
+  "field": "alternate_position",
+  "from": "SD",
+  "to": "MID"
+ }
+]

@@ -117,10 +117,19 @@ def main(argv):
     if os.path.exists(prov_path):
         try: log = json.load(open(prov_path))
         except Exception: log = []
+    # ITEM 271 stage B: this note used to be a HARDCODED STRING asserting "computed on a clean instance
+    # (balanced board 06d8af60)" on EVERY entry -- including entries where that precondition was never
+    # evaluated. The balanced-board reference has been unreachable since the pricing split (#262 recorded the
+    # deviation and the owner accepted it), so the claim was false on its face for every post-split bake and
+    # the log could not be read as evidence. It now records what this run actually establishes, and says
+    # plainly that the precondition was not evaluated rather than asserting it was met.
     log.append({'ts_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
                 'artifact': 'data/v0surf.pkl', 'signature': sig,
                 'old_md5': old_file_md5, 'old_pin': pinned, 'new_md5': new_md5,
-                'note': 'FREEZE _iso_dec (LEG F6, item 381); computed on a clean instance (balanced board 06d8af60)'})
+                'precondition_balanced_board_06d8af60': 'NOT EVALUATED — unreachable since the pricing split',
+                'note': 'FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared '
+                        'RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; '
+                        'the substitute evidence for this bake is recorded in the job that ran it.'})
     with open(prov_path, 'w') as f: json.dump(log, f, indent=2); f.write('\n')
     print("BAKE WRITTEN: data/v0surf.pkl md5 %s -> %s ; re-pinned expected_boot.json 'v0surf' ; provenance -> "
           "session_2026-07-18/legf6/v0surf_refit_log.json" % (old_file_md5, new_md5))

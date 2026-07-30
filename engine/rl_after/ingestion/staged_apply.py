@@ -175,7 +175,9 @@ def preview_from_snapshot(snapshot, store):
                 "snapshot key %r (%s) is not present in the current store — snapshot does not match "
                 "this store" % (key, player))
         n = 1; total = score
-        batch_entry = {'year': season, 'avg': ing._mean(total, n), 'games': n}
+        spos = ing._season_pos(key, season)        # ITEM 271 item 8: this is the SECOND, independent writer of
+        batch_entry = {'year': season, 'avg': ing._mean(total, n), 'games': n}   # the same row — fixing only
+        if spos: batch_entry['pos'] = spos                                       # score_ingestor would leave it.
         before = ing._before_entry(key, season)
         if before is None:
             merged_entry = dict(batch_entry)
@@ -183,6 +185,8 @@ def preview_from_snapshot(snapshot, store):
             mg = before['games'] + n
             mtotal = before['avg'] * before['games'] + total
             merged_entry = {'year': season, 'avg': ing._mean(mtotal, mg), 'games': mg}
+            if before.get('pos') or spos:
+                merged_entry['pos'] = before.get('pos') or spos
         rlist = [RoundScore(player, rnd, score, True, source_ref="snapshot")]
         anoms = ing._anomalies(sid, key, player, row, season, rlist)
         anomalies.extend(anoms)

@@ -1,0 +1,362 @@
+[
+ {
+  "key": "nasiah-wanganeen-milera",
+  "player": "Nasiah Wanganeen-Milera",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "max-holmes",
+  "player": "Max Holmes",
+  "row_bar": "SD",
+  "column_bar": "MID"
+ },
+ {
+  "key": "jason-horne-francis",
+  "player": "Jason Horne-Francis",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "sam-lalor",
+  "player": "Sam Lalor",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "colby-mckercher",
+  "player": "Colby McKercher",
+  "row_bar": "SF",
+  "column_bar": "SD"
+ },
+ {
+  "key": "mattaes-phillipou",
+  "player": "Mattaes Phillipou",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "chad-warner",
+  "player": "Chad Warner",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "sam-flanders",
+  "player": "Sam Flanders",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "josh-rachele",
+  "player": "Josh Rachele",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "touk-miller",
+  "player": "Touk Miller",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "sam-durham",
+  "player": "Sam Durham",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "luke-parker",
+  "player": "Luke Parker",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "rowan-marshall",
+  "player": "Rowan Marshall",
+  "row_bar": "RUCK",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "joshua-weddle",
+  "player": "Joshua Weddle",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "peter-wright",
+  "player": "Peter Wright",
+  "row_bar": "RUCK",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "xavier-lindsay",
+  "player": "Xavier Lindsay",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "tom-powell",
+  "player": "Tom Powell",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "luke-trainor",
+  "player": "Luke Trainor",
+  "row_bar": "KPD",
+  "column_bar": "SD"
+ },
+ {
+  "key": "caleb-windsor",
+  "player": "Caleb Windsor",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "wil-powell",
+  "player": "Wil Powell",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "toby-greene",
+  "player": "Toby Greene",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "bo-allan",
+  "player": "Bo Allan",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "marcus-windhager",
+  "player": "Marcus Windhager",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "matthew-roberts",
+  "player": "Matthew Roberts",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "oliver-hannaford",
+  "player": "Oliver Hannaford",
+  "row_bar": "SF",
+  "column_bar": "MID"
+ },
+ {
+  "key": "will-graham",
+  "player": "Will Graham",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "tom-sparrow",
+  "player": "Tom Sparrow",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "harvey-thomas",
+  "player": "Harvey Thomas",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "lachlan-blakiston",
+  "player": "Lachlan Blakiston",
+  "row_bar": "RUCK",
+  "column_bar": "KPD"
+ },
+ {
+  "key": "sam-davidson",
+  "player": "Sam Davidson",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "jay-polkinghorne",
+  "player": "Jay Polkinghorne",
+  "row_bar": "SF",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "jhye-clark",
+  "player": "Jhye Clark",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "hugo-hall-kahan",
+  "player": "Hugo Hall-Kahan",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "sam-banks",
+  "player": "Sam Banks",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "oliver-florent",
+  "player": "Oliver Florent",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "josh-lai",
+  "player": "Josh Lai",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "campbell-gray",
+  "player": "Campbell Gray",
+  "row_bar": "RUCK",
+  "column_bar": "KPD"
+ },
+ {
+  "key": "jack-watkins",
+  "player": "Jack Watkins",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "matt-carroll",
+  "player": "Matt Carroll",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "kyle-langford",
+  "player": "Kyle Langford",
+  "row_bar": "MID",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "archer-day-wicks",
+  "player": "Archer Day-Wicks",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "hudson-o-keeffe",
+  "player": "Hudson O'Keeffe",
+  "row_bar": "RUCK",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "jai-serong",
+  "player": "Jai Serong",
+  "row_bar": "MID",
+  "column_bar": "KPD"
+ },
+ {
+  "key": "oliver-henry",
+  "player": "Oliver Henry",
+  "row_bar": "SF",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "luke-nankervis",
+  "player": "Luke Nankervis",
+  "row_bar": "SD",
+  "column_bar": "MID"
+ },
+ {
+  "key": "dion-prestia",
+  "player": "Dion Prestia",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "jack-henry",
+  "player": "Jack Henry",
+  "row_bar": "KPD",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "lewis-young",
+  "player": "Lewis Young",
+  "row_bar": "KPD",
+  "column_bar": "KPF"
+ },
+ {
+  "key": "james-jordon",
+  "player": "James Jordon",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "xavier-o-halloran",
+  "player": "Xavier O'Halloran",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "jack-carroll",
+  "player": "Jack Carroll",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "elliot-yeo",
+  "player": "Elliot Yeo",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "stephen-coniglio",
+  "player": "Stephen Coniglio",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "jake-lloyd",
+  "player": "Jake Lloyd",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "deven-robertson",
+  "player": "Deven Robertson",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "mitch-mcgovern",
+  "player": "Mitch McGovern",
+  "row_bar": "KPF",
+  "column_bar": "SF"
+ },
+ {
+  "key": "chayce-jones",
+  "player": "Chayce Jones",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "mark-o-connor",
+  "player": "Mark O'Connor",
+  "row_bar": "MID",
+  "column_bar": "SD"
+ },
+ {
+  "key": "harry-schoenberg",
+  "player": "Harry Schoenberg",
+  "row_bar": "MID",
+  "column_bar": "SF"
+ },
+ {
+  "key": "oskar-baker",
+  "player": "Oskar Baker",
+  "row_bar": "SD",
+  "column_bar": "SF"
+ }
+]

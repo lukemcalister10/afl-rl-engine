@@ -36,8 +36,8 @@ _spec.loader.exec_module(_ing)   # ingest_inputs.py has no top-level side effect
 nkey = _ing.nkey
 
 # CSV Position/s token -> board posCode vocabulary (6 canonical rows).
-TOK2CODE = {"K-DEF": "KEY_DEF", "G-DEF": "GEN_DEF", "MID": "MID",
-            "G-FWD": "GEN_FWD", "K-FWD": "KEY_FWD", "RUCK": "RUC", "RUC": "RUC"}
+TOK2CODE = {"K-DEF": "KPD", "G-DEF": "SD", "MID": "MID",
+            "G-FWD": "SF", "K-FWD": "KPF", "RUCK": "RUCK", "RUC": "RUCK"}
 
 
 def halt(msg):

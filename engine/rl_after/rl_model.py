@@ -68,11 +68,49 @@ GRP={'MID':'MID','RUCK':'RUCK','SF':'SF','KPF':'KPF','SD':'SD','KPD':'KPD'}   # 
 # A player's CAREER/draft position (p['pos']) drives his contribution to the cohort curves.
 # An optional p['_pos_now'] is his CURRENT position and drives only his own active valuation
 # (e.g. Dangerfield: drafted+developed a MID -> feeds the MID pool; plays FWD now -> valued as a forward).
-def bnow(p): return GRP.get(p.get('_pos_now')) or GRP[p['pos']]     # PRESENT position -> year-0 REPL bar
+def _pos_present(p): return GRP.get(p.get('_pos_now')) or GRP[p['pos']]   # the DECLARED present position (this was bnow pre-#271); gfut's fallback stays on this axis
+# ITEM 271 item 3, as narrowed by the seam audit's correction 1 and finally ruled at #271 Addendum 4: the YEAR-0
+# replacement bar is read from the `eligibilities` COLUMN -- the owner-maintained CURRENT declaration -- not from
+# present_position, and not from the 2026 season row. The column is NOW; a season row is THAT SEASON'S record, and
+# they are different questions with different sources (the column runs richer for young players: Lalor is SF,MID in
+# the column against MID in the row). Season rows remain the per-season FIT bars, 2026 included -- see _fit_bar.
+# This cures the recorded Ginbey mechanism, where present position won by default because the bar could not engage.
+# A dual declaration collapses under R105.1 (_collapse_elig, :108) and takes the pair's LOWER REPL -- the engine's
+# OWN existing eligibility law, the same rule y0dpp_bar applies at :137, which is why §1b RETIRES from the year-0
+# path by supersession: the bar now does at source, from the very column §1b always read, what §1b did partially.
+# §1b is superseded, NOT deleted -- its code is untouched. Empty column -> plain position (a future-record
+# fallback; zero rows exercise it today). THE FUTURE LEG DOES NOT MOVE (correction 1): gfut keeps _pos_present.
+def _elig_bar(p):
+    es=_collapse_elig(p.get('eligibilities'))
+    return min(es,key=lambda g:REPL[g]) if es else None
+def _decl_bar(p): return _elig_bar(p) or _pos_present(p)           # the CURRENT declaration's bar; empty column -> plain position
+# ITEM 271 item 2 + Addendum 6 — THE BAR FOR ANY SEASON, and the ONE source rule for every bar-taking use
+# (the per-season fit, the evidence matrix, career value feeding pick outcomes). Owner word: while the CURRENT
+# season is LIVE its bar comes from the eligibilities COLUMN, because the column is the live declaration and the
+# season row is only that season's record-so-far; the 2026 row's `pos` remains the sheet's record but sets NO bar
+# while the season runs. A CLOSED season (2025 and earlier) is settled, so it takes its OWN row. A closed season
+# with no row falls back to the column. This is the bar axis only -- the MODELLING-POSITION axis that drives the
+# curve family, peak and runway is gfut and is untouched by this helper.
+# LIVE_SEASON is a FIXED FACT ABOUT THE WORLD -- which season is currently being played -- and must NOT be
+# BASE_REF, which MOVES: the walk-forward re-values every player as-of 2003..2026 and the back/forward boards
+# re-anchor it. Keying off BASE_REF would make every as-of year "live" and read the column for all of them,
+# which is precisely what item 2 forbids -- a 2015 season would be measured on a 2026 declaration.
+LIVE_SEASON=2026
+def _fit_bar(p,Y):
+    if Y is None or Y>=LIVE_SEASON: return _decl_bar(p)            # the live season -> the column
+    r=next((x for x in p.get('scoring') or [] if x.get('year')==Y),None)
+    if r and r.get('pos'):
+        es=_collapse_elig(r['pos'].replace('/',','))               # season rows separate on '/', the column on ','
+        if es: return min(es,key=lambda g:REPL[g])
+    return _decl_bar(p)                                            # a closed season with no row -> the column
+# The year-0 bar IS the fit bar read at the season being valued. On the live board BASE_REF==LIVE_SEASON so this
+# is the column (Addendum 4); in the walk-forward BASE_REF is the as-of year, so each historical season is
+# measured against ITS OWN eligibility row -- which is what makes item 2 true in the fit rather than only stated.
+def bnow(p): return _fit_bar(p,BASE_REF)
 def gfut(p):                                  # SETTLED FUTURE position (single) -> drives curve/peak/runway + years-1+ REPL
     fp=p.get('_futpos')
-    if fp: return GRP.get(fp) or bnow(p)
-    return bnow(p)                            # no future_position (e.g. gate synths) -> present position
+    if fp: return GRP.get(fp) or _pos_present(p)
+    return _pos_present(p)                    # no future_position (e.g. gate synths) -> present position
 _FLEX=os.environ.get('RL_FLEX','1')!='0'       # LEG C kill-switch (RL_ISOFADE pattern): RL_FLEX=0 => single-position stubs => board byte-exact base. Declared exception, not a dial. Gates ALL of Leg C incl. §1b.
 def futblend(p):
     # DPP-STRIP base: the years-1+ leg is a SINGLE position (future_position). LEG C flex (RL_FLEX, §1 ruled
@@ -298,9 +336,9 @@ BPK={}; POOL={}; MIX={}
 from collections import Counter
 for b in range(NB):
     grp=[p for p in hist if bandof(effpk(p))==b]   # PICK-CORRECTION (a) 2026-07-11: band pools on the CHAINED effective pick (owner convention), was raw p['pick']. Removes rookie-at-raw contamination (Q2: 657 RD rows, 320 at raw<=20) from the one raw-pick channel on the live board; before/after cited in the eyeball list.
-    cc=Counter(GRP[p['pos']] for p in grp); MIX[b]={g:cc.get(g,0)/len(grp) for g in sorted(set(GRP.values()))}
+    cc=Counter(gfut(p) for p in grp); MIX[b]={g:cc.get(g,0)/len(grp) for g in sorted(set(GRP.values()))} # ITEM 271 item 4 GROUP B: the TABLE is REBUILT on the played axis (gfut), not the lookup renamed -- cohort_peak/basepk_c already READ it with gfut, so renaming the read alone would have left the two-axis mismatch in place and the build reading clean.
     for g in sorted(set(GRP.values())):
-        pw=[(pkbest(p),_rw(p['year'])) for p in grp if GRP[p['pos']]==g and pkbest(p) is not None]
+        pw=[(pkbest(p),_rw(p['year'])) for p in grp if gfut(p)==g and pkbest(p) is not None] # ITEM 271 item 4 GROUP B: the TABLE is REBUILT on the played axis (gfut), not the lookup renamed -- cohort_peak/basepk_c already READ it with gfut, so renaming the read alone would have left the two-axis mismatch in place and the build reading clean.
         if len(pw)>=4: BPK[(g,b)]=float(np.average([x[0] for x in pw],weights=[x[1] for x in pw]))
     aw=[(pkbest(p),_rw(p['year'])) for p in grp if pkbest(p) is not None]
     POOL[b]=float(np.average([x[0] for x in aw],weights=[x[1] for x in aw])) if aw else 75
@@ -364,7 +402,7 @@ GRACE={'KPF':2.5,'KPD':2.5,'RUCK':2.5,'MID':1.0,'SD':1.0,'SF':1.0}
 LOS_C=0.16; LOS_P=1.82                 # progressive: gentle yr2 ~.85, steepening (yr3~.57 yr4~.31 yr5~.16)
 def los(p): return AGE_REF-p['year']
 def los_decay(p):
-    g=GRP[p['pos']]; s=los(p); over=max(0.0,s-GRACE.get(g,1.0))
+    g=gfut(p); s=los(p); over=max(0.0,s-GRACE.get(g,1.0)) # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     return math.exp(-LOS_C*over**LOS_P)   # yr1 -> pick value (debut signal deferred to next version)
 # ---- model core ----
 STBL=False                                   # SCALE-anchor mode: project on a stable (v18-equivalent) basis
@@ -385,7 +423,7 @@ def _season_games():                   # games of the season leader in BASE_REF 
 def _role_decay_hc(p,baseline):        # O'Brien rule: a past-peak player who's been dropped on ability (role collapsed, output cratered), not injury
     if baseline is None: return 0.0
     if _season_games() < 7: return 0.0                            # dormant until the season-leader has 7 games (rounds 1-6 too noisy)
-    g=GRP[p['pos']]; a_=_age_at(p,BASE_REF)
+    g=gfut(p); a_=_age_at(p,BASE_REF) # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     if a_ < PEAK_AGE[g]+1: return 0.0                              # not past peak -> spares young cameos (McCabe/Hardeman etc.)
     cur=next((r for r in p['scoring'] if r['year']==BASE_REF),None)
     if not cur or not (1<=cur['games']<3): return 0.0             # only the filtered sub-3-game current season; >=3g already shows in level_demo
@@ -410,7 +448,7 @@ def level_demo(p):                     # demonstrated form at BASE_REF (the true
     for (y,a,gm) in qs[:-1]:
         w=(0.60**(ly-y))*min(gm,18)*(0.25 if gm<8 else 1.0); pn+=a*w; pd+=w   # prior: recency-weighted, tiny samples drowned
     prior=pn/pd if pd else la; growth=la-prior; base=lg/16.0
-    a_=_age_at(p,BASE_REF); pa_=PEAK_AGE[GRP[p['pos']]]; old=a_>pa_+3
+    a_=_age_at(p,BASE_REF); pa_=PEAK_AGE[gfut(p)]; old=a_>pa_+3 # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     proven=sum(1 for (y,a,gm) in qs if gm>=10)>=4
     if proven and not old:                                   # robust baseline: a one-year spike is as much an outlier as a one-year dip
         rc=sorted(a for (y,a,gm) in qs[-4:]); n=len(rc); med=rc[n//2] if n%2 else (rc[n//2-1]+rc[n//2])/2.0
@@ -430,7 +468,7 @@ def level_demo(p):                     # demonstrated form at BASE_REF (the true
     _pmass=sum((0.60**(ly-y))*min(gm,18) for (y,a,gm) in qs[:-1])
     _cfloor=min(lg,18)/(min(lg,18)+_pmass) if (min(lg,18)+_pmass)>0 else 0.0
     if growth>=0:                                            # improving: trust the rise but temper (don't fully chase a partial-season jump)
-        conf=base*(1.0+growth/40.0); cap=SPIKE_CAP.get(GRP[p['pos']],0.83)
+        conf=base*(1.0+growth/40.0); cap=SPIKE_CAP.get(gfut(p),0.83) # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
         _gg=gfut(p)                                          # DPP STRIP: settled-future eligibility lifts the spike cap (was the dual-leg lift; Serong KPD now-MID -> 0.83)
         if _gg: cap=max(cap,SPIKE_CAP.get(_gg,0.83))
         conf=max(conf,_cfloor)                               # recency-floor (binds only when the recent season is under-trusted vs the prior)
@@ -605,7 +643,7 @@ EXP_RETAIN={  # position-specific pining decay normalized to T1 (smoothed monoto
 EXP_PICK_SLOPE=-10.72; EXP_LOGREF=4.0073   # expected peak vs (log effpk - logref); negative = deeper pick projects lower
 EXP_BLEND_GAMES=45.0    # career games at which v4 (form) fully replaces the explicit floor (dial-able knob)
 def _explicit_peak(p,Y):
-    pos=GRP.get(p['pos'])
+    pos=gfut(p) # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     if pos not in EXP_PEAK_BASE: return None
     T=max(Y-debut(p)+1,1); ret=EXP_RETAIN[pos][min(T,4)-1]
     pe=EXP_PEAK_BASE[pos]*ret+EXP_PICK_SLOPE*(math.log(min(effpk(p),70))-EXP_LOGREF)
@@ -623,7 +661,7 @@ def _v4_best(ss,n):
 def _v4_age(p,Y):
     by=p.get('_by'); return (Y-by) if by else (Y-(debut(p)-18))
 def _v4_feats(p,Y):
-    d=debut(p); pos=GRP[p['pos']]; ep=min(effpk(p),70); T=Y-d+1
+    d=debut(p); pos=gfut(p); ep=min(effpk(p),70); T=Y-d+1 # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     sub=[x for x in p['scoring'] if x['year']<=Y]; gg=sum(x['games'] for x in sub); nss=len([x for x in sub if x['games']>=6])
     b2=_v4_best(sub,2); b1=_v4_best(sub,1); maxg=max([x['games'] for x in sub],default=0)
     rs=[x for x in sub if x['games']>=6][-2:]
@@ -633,9 +671,10 @@ def _v4_feats(p,Y):
     bestyr=max([x['year'] for x in sub if x['games']>=6 and x['avg']==(b1 or -1)],default=Y); ysb=Y-bestyr
     return [np.log(_V4PVC[str(ep)]),ep,_POSI[pos],b2 or 0,b1 or 0,recent,la,lg,gg,nss,maxg,early,slope,ysb,_v4_age(p,Y),T,_v4_bp(pos,ep)]
 def _v4_draft_feat(p):
-    pos=GRP[p['pos']]; ep=min(effpk(p),70); return [np.log(_V4PVC[str(ep)]),ep,_POSI[pos],0,0,0,0,0,0,0,0,0,0,0,_v4_age(p,debut(p)-1),0,_v4_bp(pos,ep)]
+    pos=gfut(p)  # ITEM 271 item 4 GROUP A
+    ep=min(effpk(p),70); return [np.log(_V4PVC[str(ep)]),ep,_POSI[pos],0,0,0,0,0,0,0,0,0,0,0,_v4_age(p,debut(p)-1),0,_v4_bp(pos,ep)]
 def _v4_spike_guard(p,Y,pe):           # KPD spike caution on the PROJECTION (level_now SPIKE_CAP is a separate path)
-    r=V4_SPIKE_RETAIN.get(GRP.get(p['pos']))
+    r=V4_SPIKE_RETAIN.get(gfut(p)) # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     if not r: return pe
     ss=sorted([x for x in p['scoring'] if x['year']<=Y and x['games']>=6],key=lambda x:x['year'])
     if len(ss)<3: return pe             # need 2 prior seasons (baseline) + the spike
@@ -1092,9 +1131,9 @@ def _pick_curveP(ep):                    # smooth monotone-interpolated establis
     return _pfitP[-1]
 _ovP=sum(established(p) for p in _cohP)/len(_cohP); _grpoffP={}     # position offset = group est rate / overall (capped)
 for _gv in set(GRP.values()):
-    _gg=[p for p in _cohP if GRP.get(p['pos'])==_gv]
+    _gg=[p for p in _cohP if gfut(p)==_gv] # ITEM 271 item 4 GROUP B: built AND applied on the played axis (gfut). Both sides move together; moving either alone leaves the sibling mismatch.
     _grpoffP[_gv]=(sum(established(p) for p in _gg)/len(_gg))/_ovP if _gg else 1.0
-def pick_prior(p): return float(np.clip(_pick_curveP(effpk(p))*_grpoffP.get(GRP.get(p['pos']),1.0),0.05,0.97))
+def pick_prior(p): return float(np.clip(_pick_curveP(effpk(p))*_grpoffP.get(gfut(p),1.0),0.05,0.97)) # ITEM 271 item 4 GROUP B: built AND applied on the played axis (gfut). Both sides move together; moving either alone leaves the sibling mismatch.
 _PATHK=12; _pfloorP=_pfitP[-1]; _pathpr={}                          # each pathway its own pool, shrunk to the late-pick floor when thin
 for _t in ['MSD','SSP','IRE','UNR','PDA','PDN','PDS']:
     _gp=[p for p in data if p.get('type')==_t and debut(p)<=2022 and p['pos'] in GRP]

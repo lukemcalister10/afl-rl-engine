@@ -1,0 +1,9034 @@
+{
+ "denominator": 804,
+ "baseline": "3d4e2e50",
+ "final_board": "f2df6e0a",
+ "channels": {
+  "stage_A_62_edits_and_bake1": 535,
+  "stage_B_bars_and_axis": 647,
+  "stage_B_curve_pool_bake2": 160,
+  "addendum_12_clears": 0
+ },
+ "total_movers": 770,
+ "unattributed": 0,
+ "addendum_12_note": "The three owner-worded clears (Addendum 12) move ZERO board values. A degenerate alt==primary dual already collapsed to the primary inside futblend, so removing it is value-neutral by construction. The board identity moves only because the dual-row LABEL count goes 90 -> 87. The three rows are attributed to this owner word, with a measured delta of 0.",
+ "rows": [
+  {
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "v_baseline": 1842,
+   "v_stageA": 1834,
+   "v_stageB_engine": 1876,
+   "v_final": 1876,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "v_baseline": 1449,
+   "v_stageA": 1449,
+   "v_stageB_engine": 1482,
+   "v_final": 1482,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "v_baseline": 1099,
+   "v_stageA": 1098,
+   "v_stageB_engine": 1125,
+   "v_final": 1125,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "adam-saad",
+   "name": "Adam Saad",
+   "v_baseline": 601,
+   "v_stageA": 602,
+   "v_stageB_engine": 615,
+   "v_final": 615,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "adam-sweid",
+   "name": "Adam Sweid",
+   "v_baseline": 545,
+   "v_stageA": 584,
+   "v_stageB_engine": 584,
+   "v_final": 598,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "adam-treloar",
+   "name": "Adam Treloar",
+   "v_baseline": 615,
+   "v_stageA": 1122,
+   "v_stageB_engine": 1149,
+   "v_final": 1149,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "aidan-corr",
+   "name": "Aidan Corr",
+   "v_baseline": 51,
+   "v_stageA": 51,
+   "v_stageB_engine": 51,
+   "v_final": 52,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "aidan-johnson",
+   "name": "Aidan Johnson",
+   "v_baseline": 69,
+   "v_stageA": 89,
+   "v_stageB_engine": 91,
+   "v_final": 91,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "aidan-schubert",
+   "name": "Aidan Schubert",
+   "v_baseline": 576,
+   "v_stageA": 680,
+   "v_stageB_engine": 680,
+   "v_final": 696,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "aiden-riddle",
+   "name": "Aiden Riddle",
+   "v_baseline": 449,
+   "v_stageA": 449,
+   "v_stageB_engine": 449,
+   "v_final": 255,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "alex-davies",
+   "name": "Alex Davies",
+   "v_baseline": 477,
+   "v_stageA": 478,
+   "v_stageB_engine": 489,
+   "v_final": 489,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "alex-dodson",
+   "name": "Alex Dodson",
+   "v_baseline": 487,
+   "v_stageA": 487,
+   "v_stageB_engine": 487,
+   "v_final": 499,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "v_baseline": 420,
+   "v_stageA": 416,
+   "v_stageB_engine": 426,
+   "v_final": 426,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "alex-van-wyk",
+   "name": "Alex Van Wyk",
+   "v_baseline": 570,
+   "v_stageA": 570,
+   "v_stageB_engine": 583,
+   "v_final": 332,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "aliir-aliir",
+   "name": "Aliir Aliir",
+   "v_baseline": 969,
+   "v_stageA": 967,
+   "v_stageB_engine": 993,
+   "v_final": 993,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "alix-tauru",
+   "name": "Alix Tauru",
+   "v_baseline": 1608,
+   "v_stageA": 1535,
+   "v_stageB_engine": 1571,
+   "v_final": 1571,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "v_baseline": 3107,
+   "v_stageA": 3104,
+   "v_stageB_engine": 3187,
+   "v_final": 3187,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "andrew-mcgrath",
+   "name": "Andrew McGrath",
+   "v_baseline": 1132,
+   "v_stageA": 1134,
+   "v_stageB_engine": 1160,
+   "v_final": 1160,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "andy-moniz-wakefield",
+   "name": "Andy Moniz-Wakefield",
+   "v_baseline": 45,
+   "v_stageA": 44,
+   "v_stageB_engine": 44,
+   "v_final": 44,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "angus-anderson",
+   "name": "Angus Anderson",
+   "v_baseline": 204,
+   "v_stageA": 205,
+   "v_stageB_engine": 240,
+   "v_final": 240,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "angus-clarke",
+   "name": "Angus Clarke",
+   "v_baseline": 789,
+   "v_stageA": 789,
+   "v_stageB_engine": 807,
+   "v_final": 807,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "angus-hastie",
+   "name": "Angus Hastie",
+   "v_baseline": 331,
+   "v_stageA": 331,
+   "v_stageB_engine": 339,
+   "v_final": 339,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "v_baseline": 818,
+   "v_stageA": 819,
+   "v_stageB_engine": 838,
+   "v_final": 838,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "anthony-caminiti",
+   "name": "Anthony Caminiti",
+   "v_baseline": 1140,
+   "v_stageA": 1130,
+   "v_stageB_engine": 1155,
+   "v_final": 1155,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "archer-day-wicks",
+   "name": "Archer Day-Wicks",
+   "v_baseline": 484,
+   "v_stageA": 528,
+   "v_stageB_engine": 541,
+   "v_final": 541,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "archer-reid",
+   "name": "Archer Reid",
+   "v_baseline": 851,
+   "v_stageA": 853,
+   "v_stageB_engine": 872,
+   "v_final": 872,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "archie-ludowyke",
+   "name": "Archie Ludowyke",
+   "v_baseline": 364,
+   "v_stageA": 425,
+   "v_stageB_engine": 425,
+   "v_final": 434,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "archie-may",
+   "name": "Archie May",
+   "v_baseline": 471,
+   "v_stageA": 468,
+   "v_stageB_engine": 478,
+   "v_final": 478,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "archie-perkins",
+   "name": "Archie Perkins",
+   "v_baseline": 302,
+   "v_stageA": 302,
+   "v_stageB_engine": 309,
+   "v_final": 309,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "archie-roberts",
+   "name": "Archie Roberts",
+   "v_baseline": 4941,
+   "v_stageA": 4565,
+   "v_stageB_engine": 4675,
+   "v_final": 4675,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "addendum_12_clear_value_neutral"
+   ]
+  },
+  {
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "v_baseline": 128,
+   "v_stageA": 126,
+   "v_stageB_engine": 129,
+   "v_final": 129,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "asher-eastham",
+   "name": "Asher Eastham",
+   "v_baseline": 202,
+   "v_stageA": 217,
+   "v_stageB_engine": 222,
+   "v_final": 222,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ashton-moir",
+   "name": "Ashton Moir",
+   "v_baseline": 296,
+   "v_stageA": 298,
+   "v_stageB_engine": 303,
+   "v_final": 305,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "avery-thomas",
+   "name": "Avery Thomas",
+   "v_baseline": 538,
+   "v_stageA": 483,
+   "v_stageB_engine": 483,
+   "v_final": 494,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "bailey-banfield",
+   "name": "Bailey Banfield",
+   "v_baseline": 42,
+   "v_stageA": 31,
+   "v_stageB_engine": 13,
+   "v_final": 13,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "v_baseline": 2376,
+   "v_stageA": 2379,
+   "v_stageB_engine": 2439,
+   "v_final": 2439,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bailey-humphrey",
+   "name": "Bailey Humphrey",
+   "v_baseline": 2324,
+   "v_stageA": 2250,
+   "v_stageB_engine": 2394,
+   "v_final": 2394,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bailey-laurie",
+   "name": "Bailey Laurie",
+   "v_baseline": 69,
+   "v_stageA": 74,
+   "v_stageB_engine": 74,
+   "v_final": 76,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald",
+   "v_baseline": 179,
+   "v_stageA": 181,
+   "v_stageB_engine": 185,
+   "v_final": 185,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bailey-scott",
+   "name": "Bailey Scott",
+   "v_baseline": 30,
+   "v_stageA": 30,
+   "v_stageB_engine": 30,
+   "v_final": 31,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "bailey-smith",
+   "name": "Bailey Smith",
+   "v_baseline": 5941,
+   "v_stageA": 5937,
+   "v_stageB_engine": 6092,
+   "v_final": 6092,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "v_baseline": 771,
+   "v_stageA": 773,
+   "v_stageB_engine": 791,
+   "v_final": 791,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bailey-williams-wc",
+   "name": "Bailey J. Williams",
+   "v_baseline": 2057,
+   "v_stageA": 2057,
+   "v_stageB_engine": 2493,
+   "v_final": 2493,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "balyn-o-brien",
+   "name": "Balyn O'Brien",
+   "v_baseline": 362,
+   "v_stageA": 341,
+   "v_stageB_engine": 349,
+   "v_final": 349,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "v_baseline": 246,
+   "v_stageA": 246,
+   "v_stageB_engine": 252,
+   "v_final": 252,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "beau-addinsall",
+   "name": "Beau Addinsall",
+   "v_baseline": 1407,
+   "v_stageA": 1291,
+   "v_stageB_engine": 1321,
+   "v_final": 1321,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "beau-mccreery",
+   "name": "Beau McCreery",
+   "v_baseline": 194,
+   "v_stageA": 194,
+   "v_stageB_engine": 199,
+   "v_final": 199,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "v_baseline": 312,
+   "v_stageA": 312,
+   "v_stageB_engine": 319,
+   "v_final": 319,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ben-camporeale",
+   "name": "Ben Camporeale",
+   "v_baseline": 290,
+   "v_stageA": 291,
+   "v_stageB_engine": 291,
+   "v_final": 297,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "v_baseline": 444,
+   "v_stageA": 439,
+   "v_stageB_engine": 449,
+   "v_final": 449,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ben-king",
+   "name": "Ben King",
+   "v_baseline": 341,
+   "v_stageA": 341,
+   "v_stageB_engine": 349,
+   "v_final": 349,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ben-long",
+   "name": "Ben Long",
+   "v_baseline": 32,
+   "v_stageA": 33,
+   "v_stageB_engine": 33,
+   "v_final": 33,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "ben-miller",
+   "name": "Ben Miller",
+   "v_baseline": 1145,
+   "v_stageA": 1144,
+   "v_stageB_engine": 1171,
+   "v_final": 1171,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ben-murphy",
+   "name": "Ben Murphy",
+   "v_baseline": 301,
+   "v_stageA": 279,
+   "v_stageB_engine": 286,
+   "v_final": 286,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "benny-barrett",
+   "name": "Benny Barrett",
+   "v_baseline": 161,
+   "v_stageA": 172,
+   "v_stageB_engine": 176,
+   "v_final": 176,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "v_baseline": 101,
+   "v_stageA": 103,
+   "v_stageB_engine": 103,
+   "v_final": 105,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "billy-dowling",
+   "name": "Billy Dowling",
+   "v_baseline": 191,
+   "v_stageA": 200,
+   "v_stageB_engine": 202,
+   "v_final": 205,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "billy-frampton",
+   "name": "Billy Frampton",
+   "v_baseline": 92,
+   "v_stageA": 92,
+   "v_stageB_engine": 67,
+   "v_final": 67,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "v_baseline": 962,
+   "v_stageA": 962,
+   "v_stageB_engine": 984,
+   "v_final": 984,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "v_baseline": 244,
+   "v_stageA": 244,
+   "v_stageB_engine": 251,
+   "v_final": 251,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "blake-hardwick",
+   "name": "Blake Hardwick",
+   "v_baseline": 670,
+   "v_stageA": 671,
+   "v_stageB_engine": 692,
+   "v_final": 692,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "blake-howes",
+   "name": "Blake Howes",
+   "v_baseline": 334,
+   "v_stageA": 333,
+   "v_stageB_engine": 340,
+   "v_final": 340,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "blake-thredgold",
+   "name": "Blake Thredgold",
+   "v_baseline": 562,
+   "v_stageA": 559,
+   "v_stageB_engine": 559,
+   "v_final": 571,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "bo-allan",
+   "name": "Bo Allan",
+   "v_baseline": 1184,
+   "v_stageA": 1196,
+   "v_stageB_engine": 1224,
+   "v_final": 1224,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bobby-hill",
+   "name": "Bobby Hill",
+   "v_baseline": 46,
+   "v_stageA": 46,
+   "v_stageB_engine": 47,
+   "v_final": 47,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bodhi-uwland",
+   "name": "Bodhi Uwland",
+   "v_baseline": 3782,
+   "v_stageA": 3789,
+   "v_stageB_engine": 3883,
+   "v_final": 3883,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bodie-ryan",
+   "name": "Bodie Ryan",
+   "v_baseline": 337,
+   "v_stageA": 334,
+   "v_stageB_engine": 341,
+   "v_final": 342,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "bradley-close",
+   "name": "Bradley Close",
+   "v_baseline": 38,
+   "v_stageA": 38,
+   "v_stageB_engine": 39,
+   "v_final": 39,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bradley-hill",
+   "name": "Bradley Hill",
+   "v_baseline": 830,
+   "v_stageA": 1340,
+   "v_stageB_engine": 1371,
+   "v_final": 1371,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brady-hough",
+   "name": "Brady Hough",
+   "v_baseline": 362,
+   "v_stageA": 362,
+   "v_stageB_engine": 371,
+   "v_final": 371,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "v_baseline": 331,
+   "v_stageA": 331,
+   "v_stageB_engine": 377,
+   "v_final": 377,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brandon-starcevich",
+   "name": "Brandon Starcevich",
+   "v_baseline": 44,
+   "v_stageA": 42,
+   "v_stageB_engine": 42,
+   "v_final": 43,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "v_baseline": 91,
+   "v_stageA": 91,
+   "v_stageB_engine": 93,
+   "v_final": 93,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brandon-zerk-thatcher",
+   "name": "Brandon Zerk-Thatcher",
+   "v_baseline": 86,
+   "v_stageA": 86,
+   "v_stageB_engine": 89,
+   "v_final": 89,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "v_baseline": 901,
+   "v_stageA": 901,
+   "v_stageB_engine": 1128,
+   "v_final": 1128,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini",
+   "v_baseline": 278,
+   "v_stageA": 278,
+   "v_stageB_engine": 285,
+   "v_final": 285,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brayden-george",
+   "name": "Brayden George",
+   "v_baseline": 308,
+   "v_stageA": 330,
+   "v_stageB_engine": 330,
+   "v_final": 337,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard",
+   "v_baseline": 640,
+   "v_stageA": 641,
+   "v_stageB_engine": 657,
+   "v_final": 657,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brennan-cox",
+   "name": "Brennan Cox",
+   "v_baseline": 376,
+   "v_stageA": 376,
+   "v_stageB_engine": 385,
+   "v_final": 385,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brent-daniels",
+   "name": "Brent Daniels",
+   "v_baseline": 1392,
+   "v_stageA": 1385,
+   "v_stageB_engine": 1418,
+   "v_final": 1418,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy",
+   "v_baseline": 4369,
+   "v_stageA": 4369,
+   "v_stageB_engine": 4481,
+   "v_final": 4481,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "v_baseline": 735,
+   "v_stageA": 735,
+   "v_stageB_engine": 753,
+   "v_final": 753,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "brody-mihocek",
+   "name": "Brody Mihocek",
+   "v_baseline": 10,
+   "v_stageA": 10,
+   "v_stageB_engine": 11,
+   "v_final": 11,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "bruce-reville",
+   "name": "Bruce Reville",
+   "v_baseline": 72,
+   "v_stageA": 72,
+   "v_stageB_engine": 74,
+   "v_final": 74,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "buku-khamis",
+   "name": "Buku Khamis",
+   "v_baseline": 197,
+   "v_stageA": 197,
+   "v_stageB_engine": 217,
+   "v_final": 217,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "v_baseline": 508,
+   "v_stageA": 522,
+   "v_stageB_engine": 534,
+   "v_final": 534,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "caleb-daniel",
+   "name": "Caleb Daniel",
+   "v_baseline": 1510,
+   "v_stageA": 1513,
+   "v_stageB_engine": 1551,
+   "v_final": 1551,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "caleb-graham",
+   "name": "Caleb Graham",
+   "v_baseline": 70,
+   "v_stageA": 70,
+   "v_stageB_engine": 72,
+   "v_final": 72,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "caleb-lewis",
+   "name": "Caleb Lewis",
+   "v_baseline": 205,
+   "v_stageA": 215,
+   "v_stageB_engine": 219,
+   "v_final": 219,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "caleb-may",
+   "name": "Caleb May",
+   "v_baseline": 586,
+   "v_stageA": 586,
+   "v_stageB_engine": 586,
+   "v_final": 332,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "caleb-serong",
+   "name": "Caleb Serong",
+   "v_baseline": 4691,
+   "v_stageA": 4687,
+   "v_stageB_engine": 4811,
+   "v_final": 4811,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "v_baseline": 1559,
+   "v_stageA": 1719,
+   "v_stageB_engine": 1765,
+   "v_final": 1765,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "callum-ah-chee",
+   "name": "Callum Ah Chee",
+   "v_baseline": 86,
+   "v_stageA": 90,
+   "v_stageB_engine": 90,
+   "v_final": 92,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "callum-brown-ire",
+   "name": "Callum M. Brown",
+   "v_baseline": 66,
+   "v_stageA": 66,
+   "v_stageB_engine": 67,
+   "v_final": 67,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "callum-coleman-jones",
+   "name": "Callum Coleman-Jones",
+   "v_baseline": 39,
+   "v_stageA": 47,
+   "v_stageB_engine": 47,
+   "v_final": 48,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "callum-mills",
+   "name": "Callum Mills",
+   "v_baseline": 2228,
+   "v_stageA": 2233,
+   "v_stageB_engine": 2272,
+   "v_final": 2272,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "callum-wilkie",
+   "name": "Callum Wilkie",
+   "v_baseline": 3614,
+   "v_stageA": 3606,
+   "v_stageB_engine": 3699,
+   "v_final": 3699,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "calsher-dear",
+   "name": "Calsher Dear",
+   "v_baseline": 1002,
+   "v_stageA": 993,
+   "v_stageB_engine": 1016,
+   "v_final": 1016,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "v_baseline": 2001,
+   "v_stageA": 2016,
+   "v_stageB_engine": 2064,
+   "v_final": 2064,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cameron-nairn",
+   "name": "Cameron Nairn",
+   "v_baseline": 737,
+   "v_stageA": 766,
+   "v_stageB_engine": 776,
+   "v_final": 784,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "v_baseline": 870,
+   "v_stageA": 861,
+   "v_stageB_engine": 882,
+   "v_final": 882,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cameron-zurhaar",
+   "name": "Cameron Zurhaar",
+   "v_baseline": 159,
+   "v_stageA": 159,
+   "v_stageB_engine": 162,
+   "v_final": 162,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser",
+   "v_baseline": 351,
+   "v_stageA": 350,
+   "v_stageB_engine": 357,
+   "v_final": 357,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "campbell-gray",
+   "name": "Campbell Gray",
+   "v_baseline": 266,
+   "v_stageA": 264,
+   "v_stageB_engine": 271,
+   "v_final": 271,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "campbell-lake",
+   "name": "Campbell Lake",
+   "v_baseline": 203,
+   "v_stageA": 216,
+   "v_stageB_engine": 220,
+   "v_final": 220,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "chad-warner",
+   "name": "Chad Warner",
+   "v_baseline": 3355,
+   "v_stageA": 3352,
+   "v_stageB_engine": 3624,
+   "v_final": 3624,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "changkuoth-jiath",
+   "name": "Changkuoth Jiath",
+   "v_baseline": 30,
+   "v_stageA": 30,
+   "v_stageB_engine": 31,
+   "v_final": 31,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "charlie-ballard",
+   "name": "Charlie Ballard",
+   "v_baseline": 84,
+   "v_stageA": 84,
+   "v_stageB_engine": 86,
+   "v_final": 86,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "charlie-banfield",
+   "name": "Charlie Banfield",
+   "v_baseline": 667,
+   "v_stageA": 669,
+   "v_stageB_engine": 689,
+   "v_final": 694,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "charlie-cameron",
+   "name": "Charlie Cameron",
+   "v_baseline": 288,
+   "v_stageA": 288,
+   "v_stageB_engine": 295,
+   "v_final": 295,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "charlie-comben",
+   "name": "Charlie Comben",
+   "v_baseline": 1012,
+   "v_stageA": 1012,
+   "v_stageB_engine": 1023,
+   "v_final": 1023,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "v_baseline": 1593,
+   "v_stageA": 1590,
+   "v_stageB_engine": 1626,
+   "v_final": 1626,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "charlie-edwards",
+   "name": "Charlie Edwards",
+   "v_baseline": 733,
+   "v_stageA": 725,
+   "v_stageB_engine": 740,
+   "v_final": 747,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "charlie-nicholls",
+   "name": "Charlie Nicholls",
+   "v_baseline": 314,
+   "v_stageA": 365,
+   "v_stageB_engine": 365,
+   "v_final": 373,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "charlie-spargo",
+   "name": "Charlie Spargo",
+   "v_baseline": 34,
+   "v_stageA": 37,
+   "v_stageB_engine": 37,
+   "v_final": 38,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "charlie-west",
+   "name": "Charlie West",
+   "v_baseline": 613,
+   "v_stageA": 598,
+   "v_stageB_engine": 610,
+   "v_final": 612,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "chayce-jones",
+   "name": "Chayce Jones",
+   "v_baseline": 110,
+   "v_stageA": 52,
+   "v_stageB_engine": 52,
+   "v_final": 53,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "chris-scerri",
+   "name": "Chris Scerri",
+   "v_baseline": 385,
+   "v_stageA": 398,
+   "v_stageB_engine": 407,
+   "v_final": 407,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "christian-moraes",
+   "name": "Christian Moraes",
+   "v_baseline": 950,
+   "v_stageA": 950,
+   "v_stageB_engine": 984,
+   "v_final": 984,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "christian-petracca",
+   "name": "Christian Petracca",
+   "v_baseline": 2044,
+   "v_stageA": 2080,
+   "v_stageB_engine": 2702,
+   "v_final": 2702,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "christian-salem",
+   "name": "Christian Salem",
+   "v_baseline": 541,
+   "v_stageA": 542,
+   "v_stageB_engine": 569,
+   "v_final": 569,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cillian-bourke",
+   "name": "Cillian Bourke",
+   "v_baseline": 347,
+   "v_stageA": 317,
+   "v_stageB_engine": 325,
+   "v_final": 325,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cillian-burke",
+   "name": "Cillian Burke",
+   "v_baseline": 98,
+   "v_stageA": 89,
+   "v_stageB_engine": 91,
+   "v_final": 91,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "clay-hall",
+   "name": "Clay Hall",
+   "v_baseline": 347,
+   "v_stageA": 347,
+   "v_stageB_engine": 352,
+   "v_final": 354,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "clayton-oliver",
+   "name": "Clayton Oliver",
+   "v_baseline": 2569,
+   "v_stageA": 2567,
+   "v_stageB_engine": 2636,
+   "v_final": 2636,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cody-anderson",
+   "name": "Cody Anderson",
+   "v_baseline": 182,
+   "v_stageA": 196,
+   "v_stageB_engine": 196,
+   "v_final": 200,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "cody-angove",
+   "name": "Cody Angove",
+   "v_baseline": 562,
+   "v_stageA": 550,
+   "v_stageB_engine": 550,
+   "v_final": 563,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "cody-curtin",
+   "name": "Cody Curtin",
+   "v_baseline": 664,
+   "v_stageA": 687,
+   "v_stageB_engine": 700,
+   "v_final": 703,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "v_baseline": 213,
+   "v_stageA": 214,
+   "v_stageB_engine": 219,
+   "v_final": 219,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "colby-mckercher",
+   "name": "Colby McKercher",
+   "v_baseline": 3964,
+   "v_stageA": 3958,
+   "v_stageB_engine": 4073,
+   "v_final": 4073,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "v_baseline": 178,
+   "v_stageA": 178,
+   "v_stageB_engine": 409,
+   "v_final": 409,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "connor-idun",
+   "name": "Connor Idun",
+   "v_baseline": 2424,
+   "v_stageA": 2429,
+   "v_stageB_engine": 2490,
+   "v_final": 2490,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "connor-macdonald",
+   "name": "Connor MacDonald",
+   "v_baseline": 2817,
+   "v_stageA": 2804,
+   "v_stageB_engine": 2869,
+   "v_final": 2869,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "connor-o-sullivan",
+   "name": "Connor O'Sullivan",
+   "v_baseline": 2908,
+   "v_stageA": 2913,
+   "v_stageB_engine": 2974,
+   "v_final": 2974,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "connor-rozee",
+   "name": "Connor Rozee",
+   "v_baseline": 2857,
+   "v_stageA": 2855,
+   "v_stageB_engine": 2930,
+   "v_final": 2930,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "conor-mckenna",
+   "name": "Conor McKenna",
+   "v_baseline": 2,
+   "v_stageA": 9,
+   "v_stageB_engine": 9,
+   "v_final": 9,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "conor-nash",
+   "name": "Conor Nash",
+   "v_baseline": 341,
+   "v_stageA": 341,
+   "v_stageB_engine": 348,
+   "v_final": 348,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cooper-bell",
+   "name": "Cooper Bell",
+   "v_baseline": 323,
+   "v_stageA": 321,
+   "v_stageB_engine": 321,
+   "v_final": 329,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "cooper-duff-tytler",
+   "name": "Cooper Duff-Tytler",
+   "v_baseline": 1582,
+   "v_stageA": 1601,
+   "v_stageB_engine": 1638,
+   "v_final": 1638,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cooper-harvey",
+   "name": "Cooper Harvey",
+   "v_baseline": 645,
+   "v_stageA": 647,
+   "v_stageB_engine": 663,
+   "v_final": 663,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "v_baseline": 1272,
+   "v_stageA": 1265,
+   "v_stageB_engine": 1306,
+   "v_final": 1306,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cooper-lord",
+   "name": "Cooper Lord",
+   "v_baseline": 1128,
+   "v_stageA": 1141,
+   "v_stageB_engine": 1169,
+   "v_final": 1169,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cooper-sharman",
+   "name": "Cooper Sharman",
+   "v_baseline": 673,
+   "v_stageA": 673,
+   "v_stageB_engine": 689,
+   "v_final": 689,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "cooper-simpson",
+   "name": "Cooper Simpson",
+   "v_baseline": 271,
+   "v_stageA": 245,
+   "v_stageB_engine": 245,
+   "v_final": 251,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "cooper-trembath",
+   "name": "Cooper Trembath",
+   "v_baseline": 2090,
+   "v_stageA": 2091,
+   "v_stageB_engine": 2140,
+   "v_final": 2140,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "corey-durdin",
+   "name": "Corey Durdin",
+   "v_baseline": 67,
+   "v_stageA": 67,
+   "v_stageB_engine": 68,
+   "v_final": 68,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "corey-wagner",
+   "name": "Corey Wagner",
+   "v_baseline": 42,
+   "v_stageA": 42,
+   "v_stageB_engine": 43,
+   "v_final": 43,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "corey-warner",
+   "name": "Corey Warner",
+   "v_baseline": 74,
+   "v_stageA": 80,
+   "v_stageB_engine": 80,
+   "v_final": 82,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "dan-houston",
+   "name": "Dan Houston",
+   "v_baseline": 1116,
+   "v_stageA": 1118,
+   "v_stageB_engine": 1357,
+   "v_final": 1357,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dane-rampe",
+   "name": "Dane Rampe",
+   "v_baseline": 35,
+   "v_stageA": 2,
+   "v_stageB_engine": 2,
+   "v_final": 2,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "daniel-annable",
+   "name": "Daniel Annable",
+   "v_baseline": 1791,
+   "v_stageA": 1846,
+   "v_stageB_engine": 1856,
+   "v_final": 1890,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "daniel-butler",
+   "name": "Daniel Butler",
+   "v_baseline": 19,
+   "v_stageA": 21,
+   "v_stageB_engine": 21,
+   "v_final": 21,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "v_baseline": 2452,
+   "v_stageA": 2550,
+   "v_stageB_engine": 2609,
+   "v_final": 2609,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "v_baseline": 234,
+   "v_stageA": 234,
+   "v_stageB_engine": 239,
+   "v_final": 239,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "daniel-rioli",
+   "name": "Daniel Rioli",
+   "v_baseline": 726,
+   "v_stageA": 728,
+   "v_stageB_engine": 808,
+   "v_final": 808,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "daniel-turner",
+   "name": "Daniel Turner",
+   "v_baseline": 1727,
+   "v_stageA": 1725,
+   "v_stageB_engine": 1767,
+   "v_final": 1767,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dante-visentini",
+   "name": "Dante Visentini",
+   "v_baseline": 1121,
+   "v_stageA": 1121,
+   "v_stageB_engine": 1227,
+   "v_final": 1227,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-byrne-jones",
+   "name": "Darcy Byrne-Jones",
+   "v_baseline": 413,
+   "v_stageA": 413,
+   "v_stageB_engine": 846,
+   "v_final": 846,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "v_baseline": 1548,
+   "v_stageA": 1548,
+   "v_stageB_engine": 1588,
+   "v_final": 1588,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "v_baseline": 1025,
+   "v_stageA": 1027,
+   "v_stageB_engine": 1051,
+   "v_final": 1051,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-fort",
+   "name": "Darcy Fort",
+   "v_baseline": 54,
+   "v_stageA": 54,
+   "v_stageB_engine": 55,
+   "v_final": 55,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-gardiner",
+   "name": "Darcy Gardiner",
+   "v_baseline": 47,
+   "v_stageA": 47,
+   "v_stageB_engine": 47,
+   "v_final": 48,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "darcy-jones",
+   "name": "Darcy Jones",
+   "v_baseline": 1428,
+   "v_stageA": 1460,
+   "v_stageB_engine": 1494,
+   "v_final": 1494,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-moore",
+   "name": "Darcy Moore",
+   "v_baseline": 232,
+   "v_stageA": 232,
+   "v_stageB_engine": 237,
+   "v_final": 237,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-parish",
+   "name": "Darcy Parish",
+   "v_baseline": 714,
+   "v_stageA": 713,
+   "v_stageB_engine": 731,
+   "v_final": 731,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "v_baseline": 3642,
+   "v_stageA": 3649,
+   "v_stageB_engine": 3739,
+   "v_final": 3739,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darcy-wilson",
+   "name": "Darcy Wilson",
+   "v_baseline": 3349,
+   "v_stageA": 3330,
+   "v_stageB_engine": 3407,
+   "v_final": 3407,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "darragh-joyce",
+   "name": "Darragh Joyce",
+   "v_baseline": 12,
+   "v_stageA": 12,
+   "v_stageB_engine": 13,
+   "v_final": 13,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "v_baseline": 1156,
+   "v_stageA": 1220,
+   "v_stageB_engine": 1250,
+   "v_final": 1250,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "deven-robertson",
+   "name": "Deven Robertson",
+   "v_baseline": 194,
+   "v_stageA": 195,
+   "v_stageB_engine": 247,
+   "v_final": 247,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dion-prestia",
+   "name": "Dion Prestia",
+   "v_baseline": 173,
+   "v_stageA": 173,
+   "v_stageB_engine": 502,
+   "v_final": 502,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dougal-howard",
+   "name": "Dougal Howard",
+   "v_baseline": 87,
+   "v_stageA": 87,
+   "v_stageB_engine": 89,
+   "v_final": 89,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dylan-moore",
+   "name": "Dylan Moore",
+   "v_baseline": 1371,
+   "v_stageA": 1365,
+   "v_stageB_engine": 1396,
+   "v_final": 1396,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "v_baseline": 491,
+   "v_stageA": 493,
+   "v_stageB_engine": 505,
+   "v_final": 505,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "v_baseline": 2493,
+   "v_stageA": 2488,
+   "v_stageB_engine": 2621,
+   "v_final": 2621,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "eamonn-armstrong",
+   "name": "Eamonn Armstrong",
+   "v_baseline": 196,
+   "v_stageA": 181,
+   "v_stageB_engine": 185,
+   "v_final": 185,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "v_baseline": 404,
+   "v_stageA": 567,
+   "v_stageB_engine": 1080,
+   "v_final": 1080,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "v_baseline": 3749,
+   "v_stageA": 3747,
+   "v_stageB_engine": 3845,
+   "v_final": 3845,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "v_baseline": 842,
+   "v_stageA": 829,
+   "v_stageB_engine": 849,
+   "v_final": 849,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett",
+   "v_baseline": 779,
+   "v_stageA": 764,
+   "v_stageB_engine": 782,
+   "v_final": 782,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands",
+   "v_baseline": 844,
+   "v_stageA": 845,
+   "v_stageB_engine": 864,
+   "v_final": 864,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas",
+   "v_baseline": 1327,
+   "v_stageA": 1331,
+   "v_stageB_engine": 1362,
+   "v_final": 1362,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "elliot-himmelberg",
+   "name": "Elliott Himmelberg",
+   "v_baseline": 89,
+   "v_stageA": 89,
+   "v_stageB_engine": 91,
+   "v_final": 91,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "elliot-yeo",
+   "name": "Elliot Yeo",
+   "v_baseline": 86,
+   "v_stageA": 86,
+   "v_stageB_engine": 316,
+   "v_final": 316,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "eric-hipwood",
+   "name": "Eric Hipwood",
+   "v_baseline": 44,
+   "v_stageA": 50,
+   "v_stageB_engine": 50,
+   "v_final": 51,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "errol-gulden",
+   "name": "Errol Gulden",
+   "v_baseline": 5375,
+   "v_stageA": 5372,
+   "v_stageB_engine": 5511,
+   "v_final": 5511,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "esava-ratugolea",
+   "name": "Esava Ratugolea",
+   "v_baseline": 117,
+   "v_stageA": 117,
+   "v_stageB_engine": 120,
+   "v_final": 120,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ethan-read",
+   "name": "Ethan Read",
+   "v_baseline": 1002,
+   "v_stageA": 1002,
+   "v_stageB_engine": 1024,
+   "v_final": 1024,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ewan-mackinlay",
+   "name": "Ewan Mackinlay",
+   "v_baseline": 45,
+   "v_stageA": 46,
+   "v_stageB_engine": 47,
+   "v_final": 47,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan",
+   "v_baseline": 5454,
+   "v_stageA": 5450,
+   "v_stageB_engine": 5592,
+   "v_final": 5592,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "finn-maginness",
+   "name": "Finn Maginness",
+   "v_baseline": 34,
+   "v_stageA": 37,
+   "v_stageB_engine": 37,
+   "v_final": 38,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "finn-o-sullivan",
+   "name": "Finn O'Sullivan",
+   "v_baseline": 3345,
+   "v_stageA": 3345,
+   "v_stageB_engine": 3449,
+   "v_final": 3449,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "finnbar-maley",
+   "name": "Finnbar Maley",
+   "v_baseline": 305,
+   "v_stageA": 305,
+   "v_stageB_engine": 312,
+   "v_final": 312,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "finnegan-davis",
+   "name": "Finnegan Davis",
+   "v_baseline": 407,
+   "v_stageA": 373,
+   "v_stageB_engine": 373,
+   "v_final": 382,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "flynn-riley",
+   "name": "Flynn Riley",
+   "v_baseline": 578,
+   "v_stageA": 578,
+   "v_stageB_engine": 590,
+   "v_final": 364,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "flynn-young",
+   "name": "Flynn Young",
+   "v_baseline": 10,
+   "v_stageA": 11,
+   "v_stageB_engine": 11,
+   "v_final": 11,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "v_baseline": 468,
+   "v_stageA": 468,
+   "v_stageB_engine": 480,
+   "v_final": 480,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "fred-rodriguez",
+   "name": "Fred Rodriguez",
+   "v_baseline": 416,
+   "v_stageA": 416,
+   "v_stageB_engine": 429,
+   "v_final": 429,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "v_baseline": 1888,
+   "v_stageA": 1887,
+   "v_stageB_engine": 1937,
+   "v_final": 1937,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "george-stevens",
+   "name": "George Stevens",
+   "v_baseline": 405,
+   "v_stageA": 400,
+   "v_stageB_engine": 407,
+   "v_final": 410,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "george-wardlaw",
+   "name": "George Wardlaw",
+   "v_baseline": 3152,
+   "v_stageA": 3148,
+   "v_stageB_engine": 3215,
+   "v_final": 3215,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "griffin-logue",
+   "name": "Griffin Logue",
+   "v_baseline": 126,
+   "v_stageA": 126,
+   "v_stageB_engine": 130,
+   "v_final": 130,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "v_baseline": 1928,
+   "v_stageA": 1919,
+   "v_stageB_engine": 1964,
+   "v_final": 1964,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hamish-davis",
+   "name": "Hamish Davis",
+   "v_baseline": 949,
+   "v_stageA": 951,
+   "v_stageB_engine": 974,
+   "v_final": 974,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harley-barker",
+   "name": "Harley Barker",
+   "v_baseline": 745,
+   "v_stageA": 731,
+   "v_stageB_engine": 731,
+   "v_final": 749,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "harley-reid",
+   "name": "Harley Reid",
+   "v_baseline": 3578,
+   "v_stageA": 3575,
+   "v_stageB_engine": 3663,
+   "v_final": 3663,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harris-andrews",
+   "name": "Harris Andrews",
+   "v_baseline": 1917,
+   "v_stageA": 1913,
+   "v_stageB_engine": 1961,
+   "v_final": 1961,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harrison-coe",
+   "name": "Harrison Coe",
+   "v_baseline": 163,
+   "v_stageA": 163,
+   "v_stageB_engine": 167,
+   "v_final": 167,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harrison-himmelberg",
+   "name": "Harrison Himmelberg",
+   "v_baseline": 560,
+   "v_stageA": 561,
+   "v_stageB_engine": 344,
+   "v_final": 344,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harrison-jones",
+   "name": "Harrison Jones",
+   "v_baseline": 205,
+   "v_stageA": 204,
+   "v_stageB_engine": 209,
+   "v_final": 209,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harrison-oliver",
+   "name": "Harrison Oliver",
+   "v_baseline": 661,
+   "v_stageA": 668,
+   "v_stageB_engine": 683,
+   "v_final": 683,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "v_baseline": 191,
+   "v_stageA": 191,
+   "v_stageB_engine": 226,
+   "v_final": 226,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harrison-ramm",
+   "name": "Harrison Ramm",
+   "v_baseline": 388,
+   "v_stageA": 386,
+   "v_stageB_engine": 394,
+   "v_final": 394,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong",
+   "v_baseline": 995,
+   "v_stageA": 1008,
+   "v_stageB_engine": 1031,
+   "v_final": 1031,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-barnett",
+   "name": "Harry Barnett",
+   "v_baseline": 620,
+   "v_stageA": 620,
+   "v_stageB_engine": 620,
+   "v_final": 629,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "harry-charleson",
+   "name": "Harry Charleson",
+   "v_baseline": 299,
+   "v_stageA": 277,
+   "v_stageB_engine": 284,
+   "v_final": 284,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "v_baseline": 2509,
+   "v_stageA": 2509,
+   "v_stageB_engine": 2567,
+   "v_final": 2567,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-demattia",
+   "name": "Harry DeMattia",
+   "v_baseline": 476,
+   "v_stageA": 468,
+   "v_stageB_engine": 468,
+   "v_final": 479,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "harry-edwards",
+   "name": "Harry Edwards",
+   "v_baseline": 157,
+   "v_stageA": 157,
+   "v_stageB_engine": 161,
+   "v_final": 161,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "v_baseline": 1097,
+   "v_stageA": 1084,
+   "v_stageB_engine": 1110,
+   "v_final": 1110,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "v_baseline": 1833,
+   "v_stageA": 1829,
+   "v_stageB_engine": 1872,
+   "v_final": 1872,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-morrison",
+   "name": "Harry Morrison",
+   "v_baseline": 53,
+   "v_stageA": 53,
+   "v_stageB_engine": 55,
+   "v_final": 55,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell",
+   "v_baseline": 937,
+   "v_stageA": 911,
+   "v_stageB_engine": 932,
+   "v_final": 932,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-perryman",
+   "name": "Harry Perryman",
+   "v_baseline": 120,
+   "v_stageA": 120,
+   "v_stageB_engine": 123,
+   "v_final": 123,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "v_baseline": 642,
+   "v_stageA": 630,
+   "v_stageB_engine": 644,
+   "v_final": 644,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-sharp",
+   "name": "Harry Sharp",
+   "v_baseline": 62,
+   "v_stageA": 73,
+   "v_stageB_engine": 75,
+   "v_final": 75,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harry-sheezel",
+   "name": "Harry Sheezel",
+   "v_baseline": 9653,
+   "v_stageA": 9647,
+   "v_stageB_engine": 10079,
+   "v_final": 10079,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harvey-gallagher",
+   "name": "Harvey Gallagher",
+   "v_baseline": 138,
+   "v_stageA": 138,
+   "v_stageB_engine": 138,
+   "v_final": 142,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "harvey-harrison",
+   "name": "Harvey Harrison",
+   "v_baseline": 61,
+   "v_stageA": 66,
+   "v_stageB_engine": 66,
+   "v_final": 67,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "harvey-johnston",
+   "name": "Harvey Johnston",
+   "v_baseline": 250,
+   "v_stageA": 251,
+   "v_stageB_engine": 257,
+   "v_final": 257,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "v_baseline": 2427,
+   "v_stageA": 2413,
+   "v_stageB_engine": 2470,
+   "v_final": 2470,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "harvey-thomas",
+   "name": "Harvey Thomas",
+   "v_baseline": 2167,
+   "v_stageA": 1973,
+   "v_stageB_engine": 2217,
+   "v_final": 2217,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hayden-mclean",
+   "name": "Hayden McLean",
+   "v_baseline": 377,
+   "v_stageA": 377,
+   "v_stageB_engine": 387,
+   "v_final": 387,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "v_baseline": 2026,
+   "v_stageA": 2025,
+   "v_stageB_engine": 2073,
+   "v_final": 2073,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "v_baseline": 483,
+   "v_stageA": 483,
+   "v_stageB_engine": 493,
+   "v_final": 493,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "henry-hustwaite",
+   "name": "Henry Hustwaite",
+   "v_baseline": 274,
+   "v_stageA": 273,
+   "v_stageB_engine": 275,
+   "v_final": 279,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "henry-smith",
+   "name": "Henry Smith",
+   "v_baseline": 165,
+   "v_stageA": 192,
+   "v_stageB_engine": 192,
+   "v_final": 197,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "hudson-o-keeffe",
+   "name": "Hudson O'Keeffe",
+   "v_baseline": 286,
+   "v_stageA": 295,
+   "v_stageB_engine": 301,
+   "v_final": 301,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hugh-bond",
+   "name": "Hugh Bond",
+   "v_baseline": 194,
+   "v_stageA": 193,
+   "v_stageB_engine": 198,
+   "v_final": 198,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hugh-boxshall",
+   "name": "Hugh Boxshall",
+   "v_baseline": 996,
+   "v_stageA": 996,
+   "v_stageB_engine": 1019,
+   "v_final": 1019,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hugh-davies",
+   "name": "Hugh Davies",
+   "v_baseline": 310,
+   "v_stageA": 307,
+   "v_stageB_engine": 307,
+   "v_final": 314,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "v_baseline": 1746,
+   "v_stageA": 1745,
+   "v_stageB_engine": 1791,
+   "v_final": 1791,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hugo-garcia",
+   "name": "Hugo Garcia",
+   "v_baseline": 2966,
+   "v_stageA": 2963,
+   "v_stageB_engine": 3038,
+   "v_final": 3038,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "name": "Hugo Hall-Kahan",
+   "v_baseline": 229,
+   "v_stageA": 228,
+   "v_stageB_engine": 234,
+   "v_final": 234,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hugo-mikunda",
+   "name": "Hugo Mikunda",
+   "v_baseline": 330,
+   "v_stageA": 353,
+   "v_stageB_engine": 353,
+   "v_final": 362,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "hugo-ralphsmith",
+   "name": "Hugo Ralphsmith",
+   "v_baseline": 44,
+   "v_stageA": 44,
+   "v_stageB_engine": 45,
+   "v_final": 45,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "hunter-holmes",
+   "name": "Hunter Holmes",
+   "v_baseline": 577,
+   "v_stageA": 570,
+   "v_stageB_engine": 570,
+   "v_final": 584,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "hussien-el-achkar",
+   "name": "Hussien El Achkar",
+   "v_baseline": 461,
+   "v_stageA": 481,
+   "v_stageB_engine": 492,
+   "v_final": 492,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "iliro-smit",
+   "name": "Iliro Smit",
+   "v_baseline": 399,
+   "v_stageA": 399,
+   "v_stageB_engine": 408,
+   "v_final": 237,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "indy-cotton",
+   "name": "Indy Cotton",
+   "v_baseline": 301,
+   "v_stageA": 279,
+   "v_stageB_engine": 287,
+   "v_final": 287,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "isaac-cumming",
+   "name": "Isaac Cumming",
+   "v_baseline": 62,
+   "v_stageA": 62,
+   "v_stageB_engine": 44,
+   "v_final": 44,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "isaac-heeney",
+   "name": "Isaac Heeney",
+   "v_baseline": 3547,
+   "v_stageA": 3544,
+   "v_stageB_engine": 3637,
+   "v_final": 3637,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "isaac-kako",
+   "name": "Isaac Kako",
+   "v_baseline": 1167,
+   "v_stageA": 1430,
+   "v_stageB_engine": 1462,
+   "v_final": 1462,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "isaac-keeler",
+   "name": "Isaac Keeler",
+   "v_baseline": 296,
+   "v_stageA": 311,
+   "v_stageB_engine": 317,
+   "v_final": 317,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "v_baseline": 587,
+   "v_stageA": 587,
+   "v_stageB_engine": 601,
+   "v_final": 601,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "isaiah-dudley",
+   "name": "Isaiah Dudley",
+   "v_baseline": 113,
+   "v_stageA": 117,
+   "v_stageB_engine": 119,
+   "v_final": 119,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "v_baseline": 3006,
+   "v_stageA": 2992,
+   "v_stageB_engine": 3063,
+   "v_final": 3063,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-bowes",
+   "name": "Jack Bowes",
+   "v_baseline": 105,
+   "v_stageA": 113,
+   "v_stageB_engine": 113,
+   "v_final": 116,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jack-buckley",
+   "name": "Jack Buckley",
+   "v_baseline": 723,
+   "v_stageA": 723,
+   "v_stageB_engine": 740,
+   "v_final": 740,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-buller",
+   "name": "Jack Buller",
+   "v_baseline": 91,
+   "v_stageA": 91,
+   "v_stageB_engine": 93,
+   "v_final": 93,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-carroll",
+   "name": "Jack Carroll",
+   "v_baseline": 96,
+   "v_stageA": 98,
+   "v_stageB_engine": 100,
+   "v_final": 100,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-crisp",
+   "name": "Jack Crisp",
+   "v_baseline": 719,
+   "v_stageA": 577,
+   "v_stageB_engine": 592,
+   "v_final": 592,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-dalton",
+   "name": "Jack Dalton",
+   "v_baseline": 617,
+   "v_stageA": 618,
+   "v_stageB_engine": 628,
+   "v_final": 630,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jack-darling",
+   "name": "Jack Darling",
+   "v_baseline": 199,
+   "v_stageA": 199,
+   "v_stageB_engine": 203,
+   "v_final": 203,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-ginnivan",
+   "name": "Jack Ginnivan",
+   "v_baseline": 2458,
+   "v_stageA": 2447,
+   "v_stageB_engine": 2504,
+   "v_final": 2504,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-graham",
+   "name": "Jack Graham",
+   "v_baseline": 378,
+   "v_stageA": 378,
+   "v_stageB_engine": 727,
+   "v_final": 727,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "v_baseline": 1162,
+   "v_stageA": 1160,
+   "v_stageB_engine": 1187,
+   "v_final": 1187,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-henderson",
+   "name": "Jack Henderson",
+   "v_baseline": 6,
+   "v_stageA": 6,
+   "v_stageB_engine": 7,
+   "v_final": 7,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-henry",
+   "name": "Jack Henry",
+   "v_baseline": 251,
+   "v_stageA": 251,
+   "v_stageB_engine": 310,
+   "v_final": 310,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-higgins",
+   "name": "Jack Higgins",
+   "v_baseline": 132,
+   "v_stageA": 132,
+   "v_stageB_engine": 135,
+   "v_final": 135,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-hutchinson",
+   "name": "Jack Hutchinson",
+   "v_baseline": 37,
+   "v_stageA": 37,
+   "v_stageB_engine": 39,
+   "v_final": 39,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-ison",
+   "name": "Jack Ison",
+   "v_baseline": 604,
+   "v_stageA": 610,
+   "v_stageB_engine": 623,
+   "v_final": 623,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius",
+   "v_baseline": 935,
+   "v_stageA": 376,
+   "v_stageB_engine": 635,
+   "v_final": 635,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-martin",
+   "name": "Jack Martin",
+   "v_baseline": 97,
+   "v_stageA": 102,
+   "v_stageB_engine": 102,
+   "v_final": 104,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jack-ough",
+   "name": "Jack Ough",
+   "v_baseline": 703,
+   "v_stageA": 707,
+   "v_stageB_engine": 722,
+   "v_final": 724,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jack-payne",
+   "name": "Jack Payne",
+   "v_baseline": 168,
+   "v_stageA": 168,
+   "v_stageB_engine": 173,
+   "v_final": 173,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-ross",
+   "name": "Jack Ross",
+   "v_baseline": 2230,
+   "v_stageA": 2228,
+   "v_stageB_engine": 2602,
+   "v_final": 2602,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-scrimshaw",
+   "name": "Jack Scrimshaw",
+   "v_baseline": 154,
+   "v_stageA": 154,
+   "v_stageB_engine": 158,
+   "v_final": 158,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-silvagni",
+   "name": "Jack Silvagni",
+   "v_baseline": 954,
+   "v_stageA": 883,
+   "v_stageB_engine": 906,
+   "v_final": 906,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-sinclair",
+   "name": "Jack Sinclair",
+   "v_baseline": 3318,
+   "v_stageA": 3325,
+   "v_stageB_engine": 3408,
+   "v_final": 3408,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-steele",
+   "name": "Jack Steele",
+   "v_baseline": 1647,
+   "v_stageA": 1646,
+   "v_stageB_engine": 1689,
+   "v_final": 1689,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-viney",
+   "name": "Jack Viney",
+   "v_baseline": 359,
+   "v_stageA": 359,
+   "v_stageB_engine": 369,
+   "v_final": 369,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-watkins",
+   "name": "Jack Watkins",
+   "v_baseline": 3,
+   "v_stageA": 3,
+   "v_stageB_engine": 9,
+   "v_final": 9,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-whitlock",
+   "name": "Jack Whitlock",
+   "v_baseline": 1310,
+   "v_stageA": 1294,
+   "v_stageB_engine": 1325,
+   "v_final": 1325,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jack-williams",
+   "name": "Jack Williams",
+   "v_baseline": 532,
+   "v_stageA": 527,
+   "v_stageB_engine": 540,
+   "v_final": 540,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jackson-archer",
+   "name": "Jackson Archer",
+   "v_baseline": 80,
+   "v_stageA": 73,
+   "v_stageB_engine": 73,
+   "v_final": 75,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jackson-macrae",
+   "name": "Jackson Macrae",
+   "v_baseline": 140,
+   "v_stageA": 140,
+   "v_stageB_engine": 143,
+   "v_final": 143,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jackson-mead",
+   "name": "Jackson Mead",
+   "v_baseline": 36,
+   "v_stageA": 39,
+   "v_stageB_engine": 39,
+   "v_final": 40,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "v_baseline": 2639,
+   "v_stageA": 2605,
+   "v_stageB_engine": 2666,
+   "v_final": 2666,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jacob-hopper",
+   "name": "Jacob Hopper",
+   "v_baseline": 120,
+   "v_stageA": 127,
+   "v_stageB_engine": 127,
+   "v_final": 130,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jacob-konstanty",
+   "name": "Jacob Konstanty",
+   "v_baseline": 187,
+   "v_stageA": 206,
+   "v_stageB_engine": 206,
+   "v_final": 211,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jacob-molier",
+   "name": "Jacob Molier",
+   "v_baseline": 489,
+   "v_stageA": 489,
+   "v_stageB_engine": 489,
+   "v_final": 502,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jacob-moss",
+   "name": "Jacob Moss",
+   "v_baseline": 263,
+   "v_stageA": 286,
+   "v_stageB_engine": 293,
+   "v_final": 293,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jacob-newton",
+   "name": "Jacob Newton",
+   "v_baseline": 195,
+   "v_stageA": 219,
+   "v_stageB_engine": 224,
+   "v_final": 224,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jacob-van-rooyen",
+   "name": "Jacob Van Rooyen",
+   "v_baseline": 1899,
+   "v_stageA": 1906,
+   "v_stageB_engine": 1951,
+   "v_final": 1951,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jacob-wehr",
+   "name": "Jacob Wehr",
+   "v_baseline": 24,
+   "v_stageA": 24,
+   "v_stageB_engine": 24,
+   "v_final": 25,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "v_baseline": 1204,
+   "v_stageA": 1201,
+   "v_stageB_engine": 1232,
+   "v_final": 1232,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jade-gresham",
+   "name": "Jade Gresham",
+   "v_baseline": 49,
+   "v_stageA": 58,
+   "v_stageB_engine": 58,
+   "v_final": 59,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "v_baseline": 4284,
+   "v_stageA": 4283,
+   "v_stageB_engine": 4573,
+   "v_final": 4573,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jai-culley",
+   "name": "Jai Culley",
+   "v_baseline": 240,
+   "v_stageA": 240,
+   "v_stageB_engine": 245,
+   "v_final": 245,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jai-murray",
+   "name": "Jai Murray",
+   "v_baseline": 1330,
+   "v_stageA": 1312,
+   "v_stageB_engine": 1343,
+   "v_final": 1343,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jai-newcombe",
+   "name": "Jai Newcombe",
+   "v_baseline": 4180,
+   "v_stageA": 4177,
+   "v_stageB_engine": 4286,
+   "v_final": 4286,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jai-saxena",
+   "name": "Jai Saxena",
+   "v_baseline": 248,
+   "v_stageA": 266,
+   "v_stageB_engine": 272,
+   "v_final": 272,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "v_baseline": 891,
+   "v_stageA": 891,
+   "v_stageB_engine": 1107,
+   "v_final": 1107,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "name": "Jaime Uhr-Henry",
+   "v_baseline": 437,
+   "v_stageA": 437,
+   "v_stageB_engine": 448,
+   "v_final": 255,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jake-bowey",
+   "name": "Jake Bowey",
+   "v_baseline": 3941,
+   "v_stageA": 3949,
+   "v_stageB_engine": 4048,
+   "v_final": 4048,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-lever",
+   "name": "Jake Lever",
+   "v_baseline": 737,
+   "v_stageA": 735,
+   "v_stageB_engine": 339,
+   "v_final": 339,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-lloyd",
+   "name": "Jake Lloyd",
+   "v_baseline": 60,
+   "v_stageA": 60,
+   "v_stageB_engine": 191,
+   "v_final": 191,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-melksham",
+   "name": "Jake Melksham",
+   "v_baseline": 48,
+   "v_stageA": 52,
+   "v_stageB_engine": 52,
+   "v_final": 53,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jake-riccardi",
+   "name": "Jake Riccardi",
+   "v_baseline": 387,
+   "v_stageA": 387,
+   "v_stageB_engine": 396,
+   "v_final": 396,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-rogers",
+   "name": "Jake Rogers",
+   "v_baseline": 583,
+   "v_stageA": 633,
+   "v_stageB_engine": 647,
+   "v_final": 647,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-soligo",
+   "name": "Jake Soligo",
+   "v_baseline": 1908,
+   "v_stageA": 1908,
+   "v_stageB_engine": 2164,
+   "v_final": 2164,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-stringer",
+   "name": "Jake Stringer",
+   "v_baseline": 138,
+   "v_stageA": 138,
+   "v_stageB_engine": 142,
+   "v_final": 142,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jake-waterman",
+   "name": "Jake Waterman",
+   "v_baseline": 1391,
+   "v_stageA": 1388,
+   "v_stageB_engine": 1421,
+   "v_final": 1421,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jakob-ryan",
+   "name": "Jakob Ryan",
+   "v_baseline": 307,
+   "v_stageA": 276,
+   "v_stageB_engine": 276,
+   "v_final": 282,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan",
+   "v_baseline": 354,
+   "v_stageA": 344,
+   "v_stageB_engine": 353,
+   "v_final": 353,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-barrat",
+   "name": "James Barrat",
+   "v_baseline": 387,
+   "v_stageA": 383,
+   "v_stageB_engine": 383,
+   "v_final": 391,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "james-borlase",
+   "name": "James Borlase",
+   "v_baseline": 551,
+   "v_stageA": 551,
+   "v_stageB_engine": 564,
+   "v_final": 564,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-jordon",
+   "name": "James Jordon",
+   "v_baseline": 164,
+   "v_stageA": 164,
+   "v_stageB_engine": 236,
+   "v_final": 236,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-leake",
+   "name": "James Leake",
+   "v_baseline": 544,
+   "v_stageA": 525,
+   "v_stageB_engine": 546,
+   "v_final": 546,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "v_baseline": 608,
+   "v_stageA": 611,
+   "v_stageB_engine": 625,
+   "v_final": 625,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-peatling",
+   "name": "James Peatling",
+   "v_baseline": 1441,
+   "v_stageA": 1439,
+   "v_stageB_engine": 1469,
+   "v_final": 1469,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "v_baseline": 998,
+   "v_stageA": 998,
+   "v_stageB_engine": 1420,
+   "v_final": 1420,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "v_baseline": 1861,
+   "v_stageA": 1863,
+   "v_stageB_engine": 1910,
+   "v_final": 1910,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-trezise",
+   "name": "James Trezise",
+   "v_baseline": 163,
+   "v_stageA": 163,
+   "v_stageB_engine": 167,
+   "v_final": 167,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-tunstill",
+   "name": "James Tunstill",
+   "v_baseline": 108,
+   "v_stageA": 108,
+   "v_stageB_engine": 111,
+   "v_final": 111,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "james-worpel",
+   "name": "James Worpel",
+   "v_baseline": 490,
+   "v_stageA": 490,
+   "v_stageB_engine": 501,
+   "v_final": 501,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jamie-cripps",
+   "name": "Jamie Cripps",
+   "v_baseline": 36,
+   "v_stageA": 38,
+   "v_stageB_engine": 38,
+   "v_final": 39,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jamie-elliott",
+   "name": "Jamie Elliott",
+   "v_baseline": 32,
+   "v_stageA": 33,
+   "v_stageB_engine": 33,
+   "v_final": 33,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "jaren-carr",
+   "name": "Jaren Carr",
+   "v_baseline": 213,
+   "v_stageA": 213,
+   "v_stageB_engine": 213,
+   "v_final": 218,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "v_baseline": 1104,
+   "v_stageA": 1106,
+   "v_stageB_engine": 1134,
+   "v_final": 1134,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "v_baseline": 324,
+   "v_stageA": 324,
+   "v_stageB_engine": 332,
+   "v_final": 332,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jarrod-witts",
+   "name": "Jarrod Witts",
+   "v_baseline": 219,
+   "v_stageA": 219,
+   "v_stageB_engine": 224,
+   "v_final": 224,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jase-burgoyne",
+   "name": "Jase Burgoyne",
+   "v_baseline": 2224,
+   "v_stageA": 2228,
+   "v_stageB_engine": 2281,
+   "v_final": 2281,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jason-horne-francis",
+   "name": "Jason Horne-Francis",
+   "v_baseline": 5250,
+   "v_stageA": 5246,
+   "v_stageB_engine": 5554,
+   "v_final": 5554,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jaspa-fletcher",
+   "name": "Jaspa Fletcher",
+   "v_baseline": 2622,
+   "v_stageA": 2622,
+   "v_stageB_engine": 2683,
+   "v_final": 2683,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jasper-alger",
+   "name": "Jasper Alger",
+   "v_baseline": 361,
+   "v_stageA": 386,
+   "v_stageB_engine": 395,
+   "v_final": 395,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jaxon-artemis",
+   "name": "Jaxon Artemis",
+   "v_baseline": 370,
+   "v_stageA": 350,
+   "v_stageB_engine": 358,
+   "v_final": 358,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jaxon-prior",
+   "name": "Jaxon Prior",
+   "v_baseline": 381,
+   "v_stageA": 381,
+   "v_stageB_engine": 390,
+   "v_final": 390,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jay-polkinghorne",
+   "name": "Jay Polkinghorne",
+   "v_baseline": 338,
+   "v_stageA": 362,
+   "v_stageB_engine": 371,
+   "v_final": 373,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jayden-laverde",
+   "name": "Jayden Laverde",
+   "v_baseline": 294,
+   "v_stageA": 294,
+   "v_stageB_engine": 298,
+   "v_final": 298,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jayden-nguyen",
+   "name": "Jayden Nguyen",
+   "v_baseline": 526,
+   "v_stageA": 499,
+   "v_stageB_engine": 510,
+   "v_final": 510,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jayden-short",
+   "name": "Jayden Short",
+   "v_baseline": 1270,
+   "v_stageA": 1273,
+   "v_stageB_engine": 1306,
+   "v_final": 1306,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jed-adams",
+   "name": "Jed Adams",
+   "v_baseline": 267,
+   "v_stageA": 264,
+   "v_stageB_engine": 264,
+   "v_final": 271,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jed-bews",
+   "name": "Jed Bews",
+   "v_baseline": 36,
+   "v_stageA": 33,
+   "v_stageB_engine": 34,
+   "v_final": 34,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jed-walter",
+   "name": "Jed Walter",
+   "v_baseline": 1148,
+   "v_stageA": 1148,
+   "v_stageB_engine": 1174,
+   "v_final": 1174,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jedd-busslinger",
+   "name": "Jedd Busslinger",
+   "v_baseline": 1025,
+   "v_stageA": 1024,
+   "v_stageB_engine": 1048,
+   "v_final": 1048,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron",
+   "v_baseline": 1000,
+   "v_stageA": 998,
+   "v_stageB_engine": 1021,
+   "v_final": 1021,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe",
+   "v_baseline": 358,
+   "v_stageA": 359,
+   "v_stageB_engine": 367,
+   "v_final": 367,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jesse-dattoli",
+   "name": "Jesse Dattoli",
+   "v_baseline": 407,
+   "v_stageA": 440,
+   "v_stageB_engine": 440,
+   "v_final": 450,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan",
+   "v_baseline": 321,
+   "v_stageA": 321,
+   "v_stageB_engine": 329,
+   "v_final": 329,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jesse-mellor",
+   "name": "Jesse Mellor",
+   "v_baseline": 295,
+   "v_stageA": 295,
+   "v_stageB_engine": 303,
+   "v_final": 303,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jesse-motlop",
+   "name": "Jesse Motlop",
+   "v_baseline": 109,
+   "v_stageA": 107,
+   "v_stageB_engine": 110,
+   "v_final": 110,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jevan-phillipou",
+   "name": "Jevan Phillipou",
+   "v_baseline": 449,
+   "v_stageA": 483,
+   "v_stageB_engine": 483,
+   "v_final": 494,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "v_baseline": 782,
+   "v_stageA": 858,
+   "v_stageB_engine": 925,
+   "v_final": 925,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jobe-shanahan",
+   "name": "Jobe Shanahan",
+   "v_baseline": 1811,
+   "v_stageA": 1810,
+   "v_stageB_engine": 1853,
+   "v_final": 1853,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joe-berry",
+   "name": "Joe Berry",
+   "v_baseline": 1014,
+   "v_stageA": 1365,
+   "v_stageB_engine": 1397,
+   "v_final": 1397,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joe-pike",
+   "name": "Joe Pike",
+   "v_baseline": 449,
+   "v_stageA": 449,
+   "v_stageB_engine": 449,
+   "v_final": 255,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "joe-richards",
+   "name": "Joe Richards",
+   "v_baseline": 1102,
+   "v_stageA": 1096,
+   "v_stageB_engine": 1120,
+   "v_final": 1120,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joel-cochran",
+   "name": "Joel Cochran",
+   "v_baseline": 328,
+   "v_stageA": 325,
+   "v_stageB_engine": 325,
+   "v_final": 333,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "joel-fitzgerald",
+   "name": "Joel Fitzgerald",
+   "v_baseline": 78,
+   "v_stageA": 78,
+   "v_stageB_engine": 80,
+   "v_final": 80,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "v_baseline": 2665,
+   "v_stageA": 2665,
+   "v_stageB_engine": 2891,
+   "v_final": 2891,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joel-hamling",
+   "name": "Joel Hamling",
+   "v_baseline": 38,
+   "v_stageA": 33,
+   "v_stageB_engine": 33,
+   "v_final": 33,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "joel-jeffrey",
+   "name": "Joel Jeffrey",
+   "v_baseline": 1987,
+   "v_stageA": 1990,
+   "v_stageB_engine": 2029,
+   "v_final": 2029,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "john-noble",
+   "name": "John Noble",
+   "v_baseline": 2143,
+   "v_stageA": 2147,
+   "v_stageB_engine": 2201,
+   "v_final": 2201,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jonty-faull",
+   "name": "Jonty Faull",
+   "v_baseline": 1198,
+   "v_stageA": 1227,
+   "v_stageB_engine": 1255,
+   "v_final": 1255,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "v_baseline": 3678,
+   "v_stageA": 3685,
+   "v_stageB_engine": 3777,
+   "v_final": 3777,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jordan-croft",
+   "name": "Jordan Croft",
+   "v_baseline": 1027,
+   "v_stageA": 1027,
+   "v_stageB_engine": 1051,
+   "v_final": 1051,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jordan-dawson",
+   "name": "Jordan Dawson",
+   "v_baseline": 3414,
+   "v_stageA": 3412,
+   "v_stageB_engine": 3502,
+   "v_final": 3502,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "v_baseline": 1087,
+   "v_stageA": 1684,
+   "v_stageB_engine": 1722,
+   "v_final": 1722,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jordan-ridley",
+   "name": "Jordan Ridley",
+   "v_baseline": 883,
+   "v_stageA": 883,
+   "v_stageB_engine": 904,
+   "v_final": 904,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jordon-sweet",
+   "name": "Jordon Sweet",
+   "v_baseline": 2511,
+   "v_stageA": 2511,
+   "v_stageB_engine": 2576,
+   "v_final": 2576,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josaia-delana",
+   "name": "Josaia Delana",
+   "v_baseline": 400,
+   "v_stageA": 411,
+   "v_stageB_engine": 421,
+   "v_final": 421,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joseph-fonti",
+   "name": "Joseph Fonti",
+   "v_baseline": 820,
+   "v_stageA": 820,
+   "v_stageB_engine": 840,
+   "v_final": 840,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "v_baseline": 2263,
+   "v_stageA": 2259,
+   "v_stageB_engine": 2273,
+   "v_final": 2273,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-daicos",
+   "name": "Josh Daicos",
+   "v_baseline": 2146,
+   "v_stageA": 2212,
+   "v_stageB_engine": 2268,
+   "v_final": 2268,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "v_baseline": 465,
+   "v_stageA": 489,
+   "v_stageB_engine": 501,
+   "v_final": 501,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-draper",
+   "name": "Josh Draper",
+   "v_baseline": 525,
+   "v_stageA": 525,
+   "v_stageB_engine": 537,
+   "v_final": 537,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-dunkley",
+   "name": "Josh Dunkley",
+   "v_baseline": 1395,
+   "v_stageA": 1394,
+   "v_stageB_engine": 1431,
+   "v_final": 1431,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-gibcus",
+   "name": "Josh Gibcus",
+   "v_baseline": 205,
+   "v_stageA": 191,
+   "v_stageB_engine": 196,
+   "v_final": 196,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-goater",
+   "name": "Josh Goater",
+   "v_baseline": 102,
+   "v_stageA": 94,
+   "v_stageB_engine": 94,
+   "v_final": 96,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "josh-lai",
+   "name": "Josh Lai",
+   "v_baseline": 535,
+   "v_stageA": 537,
+   "v_stageB_engine": 549,
+   "v_final": 549,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "v_baseline": 2432,
+   "v_stageA": 2407,
+   "v_stageB_engine": 2463,
+   "v_final": 2463,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-rachele",
+   "name": "Josh Rachele",
+   "v_baseline": 2114,
+   "v_stageA": 2101,
+   "v_stageB_engine": 2150,
+   "v_final": 2150,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-sinn",
+   "name": "Josh Sinn",
+   "v_baseline": 183,
+   "v_stageA": 182,
+   "v_stageB_engine": 186,
+   "v_final": 186,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-smillie",
+   "name": "Josh Smillie",
+   "v_baseline": 1177,
+   "v_stageA": 1245,
+   "v_stageB_engine": 1245,
+   "v_final": 1276,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "v_baseline": 6029,
+   "v_stageA": 6020,
+   "v_stageB_engine": 6157,
+   "v_final": 6157,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-ward",
+   "name": "Josh Ward",
+   "v_baseline": 2721,
+   "v_stageA": 2688,
+   "v_stageB_engine": 2749,
+   "v_final": 2749,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "v_baseline": 3894,
+   "v_stageA": 3691,
+   "v_stageB_engine": 3783,
+   "v_final": 3783,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly",
+   "v_baseline": 536,
+   "v_stageA": 535,
+   "v_stageB_engine": 549,
+   "v_final": 549,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "joshua-weddle",
+   "name": "Joshua Weddle",
+   "v_baseline": 1651,
+   "v_stageA": 1651,
+   "v_stageB_engine": 1689,
+   "v_final": 1689,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "judd-mcvee",
+   "name": "Judd McVee",
+   "v_baseline": 377,
+   "v_stageA": 377,
+   "v_stageB_engine": 386,
+   "v_final": 386,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "judson-clarke",
+   "name": "Judson Clarke",
+   "v_baseline": 88,
+   "v_stageA": 95,
+   "v_stageB_engine": 95,
+   "v_final": 98,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney",
+   "v_baseline": 1931,
+   "v_stageA": 1930,
+   "v_stageB_engine": 2284,
+   "v_final": 2284,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jy-farrar",
+   "name": "Jy Farrar",
+   "v_baseline": 11,
+   "v_stageA": 23,
+   "v_stageB_engine": 24,
+   "v_final": 24,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jy-simpkin",
+   "name": "Jy Simpkin",
+   "v_baseline": 982,
+   "v_stageA": 981,
+   "v_stageB_engine": 1389,
+   "v_final": 1389,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jye-amiss",
+   "name": "Jye Amiss",
+   "v_baseline": 1713,
+   "v_stageA": 1713,
+   "v_stageB_engine": 1753,
+   "v_final": 1753,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "jye-caldwell",
+   "name": "Jye Caldwell",
+   "v_baseline": 1144,
+   "v_stageA": 1143,
+   "v_stageB_engine": 1166,
+   "v_final": 1166,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kade-chandler",
+   "name": "Kade Chandler",
+   "v_baseline": 1116,
+   "v_stageA": 1108,
+   "v_stageB_engine": 1134,
+   "v_final": 1134,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kai-lohmann",
+   "name": "Kai Lohmann",
+   "v_baseline": 787,
+   "v_stageA": 787,
+   "v_stageB_engine": 805,
+   "v_final": 805,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kalani-white",
+   "name": "Kalani White",
+   "v_baseline": 398,
+   "v_stageA": 435,
+   "v_stageB_engine": 446,
+   "v_final": 446,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kaleb-smith",
+   "name": "Kaleb Smith",
+   "v_baseline": 130,
+   "v_stageA": 119,
+   "v_stageB_engine": 119,
+   "v_final": 122,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "kane-farrell",
+   "name": "Kane Farrell",
+   "v_baseline": 1453,
+   "v_stageA": 1456,
+   "v_stageB_engine": 1492,
+   "v_final": 1492,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kane-mcauliffe",
+   "name": "Kane McAuliffe",
+   "v_baseline": 1357,
+   "v_stageA": 1374,
+   "v_stageB_engine": 1406,
+   "v_final": 1406,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "v_baseline": 429,
+   "v_stageA": 547,
+   "v_stageB_engine": 561,
+   "v_final": 561,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "v_baseline": 1078,
+   "v_stageA": 1078,
+   "v_stageB_engine": 1103,
+   "v_final": 1103,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kayle-gerreyn",
+   "name": "Kayle Gerreyn",
+   "v_baseline": 289,
+   "v_stageA": 337,
+   "v_stageB_engine": 337,
+   "v_final": 345,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman",
+   "v_baseline": 899,
+   "v_stageA": 899,
+   "v_stageB_engine": 920,
+   "v_final": 920,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "keighton-matofai-forbes",
+   "name": "Keighton Matofai-Forbes",
+   "v_baseline": 299,
+   "v_stageA": 277,
+   "v_stageB_engine": 284,
+   "v_final": 284,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kieren-briggs",
+   "name": "Kieren Briggs",
+   "v_baseline": 2480,
+   "v_stageA": 2480,
+   "v_stageB_engine": 2544,
+   "v_final": 2544,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kobe-mcdonald",
+   "name": "Kobe McDonald",
+   "v_baseline": 301,
+   "v_stageA": 279,
+   "v_stageB_engine": 286,
+   "v_final": 286,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "koby-coulson",
+   "name": "Koby Coulson",
+   "v_baseline": 422,
+   "v_stageA": 424,
+   "v_stageB_engine": 424,
+   "v_final": 433,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "koby-evans",
+   "name": "Koby Evans",
+   "v_baseline": 417,
+   "v_stageA": 448,
+   "v_stageB_engine": 448,
+   "v_final": 458,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "koltyn-tholstrup",
+   "name": "Koltyn Tholstrup",
+   "v_baseline": 1605,
+   "v_stageA": 1560,
+   "v_stageB_engine": 1671,
+   "v_final": 1671,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kye-annand",
+   "name": "Kye Annand",
+   "v_baseline": 173,
+   "v_stageA": 176,
+   "v_stageB_engine": 181,
+   "v_final": 181,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kye-fincher",
+   "name": "Kye Fincher",
+   "v_baseline": 391,
+   "v_stageA": 392,
+   "v_stageB_engine": 392,
+   "v_final": 401,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "kyle-langford",
+   "name": "Kyle Langford",
+   "v_baseline": 299,
+   "v_stageA": 524,
+   "v_stageB_engine": 727,
+   "v_final": 727,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "v_baseline": 3872,
+   "v_stageA": 3854,
+   "v_stageB_engine": 3943,
+   "v_final": 3943,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachie-jaques",
+   "name": "Lachie Jaques",
+   "v_baseline": 869,
+   "v_stageA": 871,
+   "v_stageB_engine": 891,
+   "v_final": 891,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachie-neale",
+   "name": "Lachie Neale",
+   "v_baseline": 2295,
+   "v_stageA": 2293,
+   "v_stageB_engine": 2353,
+   "v_final": 2353,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachie-whitfield",
+   "name": "Lachie Whitfield",
+   "v_baseline": 2015,
+   "v_stageA": 2178,
+   "v_stageB_engine": 2232,
+   "v_final": 2232,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "v_baseline": 5534,
+   "v_stageA": 5544,
+   "v_stageB_engine": 5682,
+   "v_final": 5682,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-blakiston",
+   "name": "Lachlan Blakiston",
+   "v_baseline": 19,
+   "v_stageA": 19,
+   "v_stageB_engine": 20,
+   "v_final": 20,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-bramble",
+   "name": "Lachlan Bramble",
+   "v_baseline": 94,
+   "v_stageA": 94,
+   "v_stageB_engine": 97,
+   "v_final": 97,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-carmichael",
+   "name": "Lachlan Carmichael",
+   "v_baseline": 602,
+   "v_stageA": 564,
+   "v_stageB_engine": 564,
+   "v_final": 577,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "v_baseline": 804,
+   "v_stageA": 802,
+   "v_stageB_engine": 820,
+   "v_final": 820,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-fogarty",
+   "name": "Lachlan Fogarty",
+   "v_baseline": 71,
+   "v_stageA": 71,
+   "v_stageB_engine": 73,
+   "v_final": 73,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-gulbin",
+   "name": "Lachlan Gulbin",
+   "v_baseline": 384,
+   "v_stageA": 402,
+   "v_stageB_engine": 411,
+   "v_final": 411,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-jones",
+   "name": "Lachlan Jones",
+   "v_baseline": 152,
+   "v_stageA": 152,
+   "v_stageB_engine": 156,
+   "v_final": 156,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew",
+   "v_baseline": 1400,
+   "v_stageA": 1400,
+   "v_stageB_engine": 1432,
+   "v_final": 1432,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-mcneil",
+   "name": "Lachlan McNeil",
+   "v_baseline": 25,
+   "v_stageA": 25,
+   "v_stageB_engine": 26,
+   "v_final": 26,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-schultz",
+   "name": "Lachlan Schultz",
+   "v_baseline": 834,
+   "v_stageA": 830,
+   "v_stageB_engine": 850,
+   "v_final": 850,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl",
+   "v_baseline": 216,
+   "v_stageA": 216,
+   "v_stageB_engine": 220,
+   "v_final": 220,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lachlan-smith",
+   "name": "Lachlan Smith",
+   "v_baseline": 700,
+   "v_stageA": 700,
+   "v_stageB_engine": 711,
+   "v_final": 716,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston",
+   "v_baseline": 859,
+   "v_stageA": 1038,
+   "v_stageB_engine": 1061,
+   "v_final": 1061,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "laitham-vandermeer",
+   "name": "Laitham Vandermeer",
+   "v_baseline": 32,
+   "v_stageA": 33,
+   "v_stageB_engine": 33,
+   "v_final": 33,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "lance-collard",
+   "name": "Lance Collard",
+   "v_baseline": 220,
+   "v_stageA": 234,
+   "v_stageB_engine": 236,
+   "v_final": 239,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "latrelle-pickett",
+   "name": "Latrelle Pickett",
+   "v_baseline": 580,
+   "v_stageA": 616,
+   "v_stageB_engine": 630,
+   "v_final": 630,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "v_baseline": 1927,
+   "v_stageA": 1930,
+   "v_stageB_engine": 1972,
+   "v_final": 1972,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "leek-aleer",
+   "name": "Leek Aleer",
+   "v_baseline": 279,
+   "v_stageA": 280,
+   "v_stageB_engine": 287,
+   "v_final": 287,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lennox-hoffman",
+   "name": "Lennox Hoffman",
+   "v_baseline": 299,
+   "v_stageA": 277,
+   "v_stageB_engine": 284,
+   "v_final": 284,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "leo-lombard",
+   "name": "Leo Lombard",
+   "v_baseline": 1508,
+   "v_stageA": 1566,
+   "v_stageB_engine": 1603,
+   "v_final": 1603,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "leon-kickett",
+   "name": "Leon Kickett",
+   "v_baseline": 370,
+   "v_stageA": 396,
+   "v_stageB_engine": 406,
+   "v_final": 406,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "v_baseline": 3348,
+   "v_stageA": 3327,
+   "v_stageB_engine": 3405,
+   "v_final": 3405,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lewis-hayes",
+   "name": "Lewis Hayes",
+   "v_baseline": 372,
+   "v_stageA": 371,
+   "v_stageB_engine": 371,
+   "v_final": 379,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "lewis-melican",
+   "name": "Lewis Melican",
+   "v_baseline": 58,
+   "v_stageA": 58,
+   "v_stageB_engine": 59,
+   "v_final": 59,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "v_baseline": 178,
+   "v_stageA": 178,
+   "v_stageB_engine": 239,
+   "v_final": 239,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-baker",
+   "name": "Liam Baker",
+   "v_baseline": 558,
+   "v_stageA": 558,
+   "v_stageB_engine": 571,
+   "v_final": 571,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-duggan",
+   "name": "Liam Duggan",
+   "v_baseline": 356,
+   "v_stageA": 357,
+   "v_stageB_engine": 365,
+   "v_final": 365,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-fawcett",
+   "name": "Liam Fawcett",
+   "v_baseline": 517,
+   "v_stageA": 514,
+   "v_stageB_engine": 526,
+   "v_final": 526,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-henry",
+   "name": "Liam Henry",
+   "v_baseline": 84,
+   "v_stageA": 89,
+   "v_stageB_engine": 89,
+   "v_final": 92,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "liam-hetherton",
+   "name": "Liam Hetherton",
+   "v_baseline": 351,
+   "v_stageA": 383,
+   "v_stageB_engine": 392,
+   "v_final": 392,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-mcmahon",
+   "name": "Liam McMahon",
+   "v_baseline": 197,
+   "v_stageA": 205,
+   "v_stageB_engine": 208,
+   "v_final": 209,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "liam-o-connell",
+   "name": "Liam O'Connell",
+   "v_baseline": 41,
+   "v_stageA": 41,
+   "v_stageB_engine": 42,
+   "v_final": 42,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-puncher",
+   "name": "Liam Puncher",
+   "v_baseline": 101,
+   "v_stageA": 99,
+   "v_stageB_engine": 102,
+   "v_final": 102,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "liam-reidy",
+   "name": "Liam Reidy",
+   "v_baseline": 361,
+   "v_stageA": 361,
+   "v_stageB_engine": 570,
+   "v_final": 543,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "liam-ryan",
+   "name": "Liam Ryan",
+   "v_baseline": 30,
+   "v_stageA": 30,
+   "v_stageB_engine": 30,
+   "v_final": 31,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "liam-stocker",
+   "name": "Liam Stocker",
+   "v_baseline": 42,
+   "v_stageA": 40,
+   "v_stageB_engine": 40,
+   "v_final": 41,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "lincoln-mccarthy",
+   "name": "Lincoln McCarthy",
+   "v_baseline": 24,
+   "v_stageA": 24,
+   "v_stageB_engine": 25,
+   "v_final": 25,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lloyd-meek",
+   "name": "Lloyd Meek",
+   "v_baseline": 1441,
+   "v_stageA": 1441,
+   "v_stageB_engine": 1476,
+   "v_final": 1476,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "logan-evans",
+   "name": "Logan Evans",
+   "v_baseline": 1472,
+   "v_stageA": 1472,
+   "v_stageB_engine": 1506,
+   "v_final": 1506,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "v_baseline": 706,
+   "v_stageA": 704,
+   "v_stageB_engine": 720,
+   "v_final": 720,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "logan-morris",
+   "name": "Logan Morris",
+   "v_baseline": 3084,
+   "v_stageA": 3086,
+   "v_stageB_engine": 3158,
+   "v_final": 3158,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "logan-smith",
+   "name": "Logan Smith",
+   "v_baseline": 445,
+   "v_stageA": 445,
+   "v_stageB_engine": 449,
+   "v_final": 255,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "louis-emmett",
+   "name": "Louis Emmett",
+   "v_baseline": 916,
+   "v_stageA": 948,
+   "v_stageB_engine": 970,
+   "v_final": 970,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "lucas-camporeale",
+   "name": "Lucas Camporeale",
+   "v_baseline": 250,
+   "v_stageA": 250,
+   "v_stageB_engine": 250,
+   "v_final": 257,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "lucca-grego",
+   "name": "Lucca Grego",
+   "v_baseline": 268,
+   "v_stageA": 245,
+   "v_stageB_engine": 245,
+   "v_final": 251,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "luke-beecken",
+   "name": "Luke Beecken",
+   "v_baseline": 20,
+   "v_stageA": 20,
+   "v_stageB_engine": 21,
+   "v_final": 21,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-cleary",
+   "name": "Luke Cleary",
+   "v_baseline": 77,
+   "v_stageA": 76,
+   "v_stageB_engine": 76,
+   "v_final": 78,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "name": "Luke Davies-Uniacke",
+   "v_baseline": 3462,
+   "v_stageA": 3460,
+   "v_stageB_engine": 3550,
+   "v_final": 3550,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "v_baseline": 8521,
+   "v_stageA": 8521,
+   "v_stageB_engine": 8735,
+   "v_final": 8735,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "v_baseline": 523,
+   "v_stageA": 514,
+   "v_stageB_engine": 525,
+   "v_final": 525,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-lloyd",
+   "name": "Luke Lloyd",
+   "v_baseline": 283,
+   "v_stageA": 280,
+   "v_stageB_engine": 280,
+   "v_final": 287,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "luke-mcdonald",
+   "name": "Luke McDonald",
+   "v_baseline": 54,
+   "v_stageA": 53,
+   "v_stageB_engine": 53,
+   "v_final": 55,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis",
+   "v_baseline": 457,
+   "v_stageA": 457,
+   "v_stageB_engine": 460,
+   "v_final": 460,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-parker",
+   "name": "Luke Parker",
+   "v_baseline": 1485,
+   "v_stageA": 1631,
+   "v_stageB_engine": 1670,
+   "v_final": 1670,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-pedlar",
+   "name": "Luke Pedlar",
+   "v_baseline": 143,
+   "v_stageA": 160,
+   "v_stageB_engine": 160,
+   "v_final": 163,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "luke-ryan",
+   "name": "Luke Ryan",
+   "v_baseline": 1565,
+   "v_stageA": 1568,
+   "v_stageB_engine": 1608,
+   "v_final": 1608,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-trainor",
+   "name": "Luke Trainor",
+   "v_baseline": 1507,
+   "v_stageA": 1450,
+   "v_stageB_engine": 1482,
+   "v_final": 1482,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "luke-urquhart",
+   "name": "Luke Urquhart",
+   "v_baseline": 245,
+   "v_stageA": 245,
+   "v_stageB_engine": 245,
+   "v_final": 251,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "luker-kentfield",
+   "name": "Luker Kentfield",
+   "v_baseline": 395,
+   "v_stageA": 403,
+   "v_stageB_engine": 412,
+   "v_final": 412,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mabior-chol",
+   "name": "Mabior Chol",
+   "v_baseline": 388,
+   "v_stageA": 388,
+   "v_stageB_engine": 397,
+   "v_final": 397,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mac-andrew",
+   "name": "Mac Andrew",
+   "v_baseline": 3960,
+   "v_stageA": 3952,
+   "v_stageB_engine": 4054,
+   "v_final": 4054,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "malakai-champion",
+   "name": "Malakai Champion",
+   "v_baseline": 402,
+   "v_stageA": 409,
+   "v_stageB_engine": 418,
+   "v_final": 418,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "malcolm-rosas",
+   "name": "Malcolm Rosas",
+   "v_baseline": 31,
+   "v_stageA": 31,
+   "v_stageB_engine": 32,
+   "v_final": 32,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "v_baseline": 541,
+   "v_stageA": 541,
+   "v_stageB_engine": 552,
+   "v_final": 552,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "v_baseline": 4171,
+   "v_stageA": 4170,
+   "v_stageB_engine": 4278,
+   "v_final": 4278,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "marcus-herbert",
+   "name": "Marcus Herbert",
+   "v_baseline": 920,
+   "v_stageA": 922,
+   "v_stageB_engine": 837,
+   "v_final": 837,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "marcus-windhager",
+   "name": "Marcus Windhager",
+   "v_baseline": 2105,
+   "v_stageA": 2105,
+   "v_stageB_engine": 2189,
+   "v_final": 2189,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mark-blicavs",
+   "name": "Mark Blicavs",
+   "v_baseline": 119,
+   "v_stageA": 6,
+   "v_stageB_engine": 10,
+   "v_final": 10,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mark-keane",
+   "name": "Mark Keane",
+   "v_baseline": 1777,
+   "v_stageA": 1775,
+   "v_stageB_engine": 1819,
+   "v_final": 1819,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mason-redman",
+   "name": "Mason Redman",
+   "v_baseline": 1594,
+   "v_stageA": 1596,
+   "v_stageB_engine": 1636,
+   "v_final": 1636,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mason-wood",
+   "name": "Mason Wood",
+   "v_baseline": 513,
+   "v_stageA": 509,
+   "v_stageB_engine": 522,
+   "v_final": 522,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "name": "Massimo D'Ambrosio",
+   "v_baseline": 1632,
+   "v_stageA": 1632,
+   "v_stageB_engine": 1669,
+   "v_final": 1669,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-carroll",
+   "name": "Matt Carroll",
+   "v_baseline": 956,
+   "v_stageA": 984,
+   "v_stageB_engine": 1007,
+   "v_final": 1007,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "v_baseline": 48,
+   "v_stageA": 48,
+   "v_stageB_engine": 116,
+   "v_final": 116,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-duffy",
+   "name": "Matt Duffy",
+   "v_baseline": 165,
+   "v_stageA": 153,
+   "v_stageB_engine": 160,
+   "v_final": 160,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-guelfi",
+   "name": "Matt Guelfi",
+   "v_baseline": 17,
+   "v_stageA": 18,
+   "v_stageB_engine": 19,
+   "v_final": 19,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-hill",
+   "name": "Matt Hill",
+   "v_baseline": 116,
+   "v_stageA": 121,
+   "v_stageB_engine": 123,
+   "v_final": 123,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "v_baseline": 1053,
+   "v_stageA": 1052,
+   "v_stageB_engine": 1076,
+   "v_final": 1076,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-rowell",
+   "name": "Matt Rowell",
+   "v_baseline": 3945,
+   "v_stageA": 3942,
+   "v_stageB_engine": 4046,
+   "v_final": 4046,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matt-whitlock",
+   "name": "Matt Whitlock",
+   "v_baseline": 563,
+   "v_stageA": 596,
+   "v_stageB_engine": 604,
+   "v_final": 609,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "v_baseline": 2290,
+   "v_stageA": 2300,
+   "v_stageB_engine": 2462,
+   "v_final": 2462,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn",
+   "v_baseline": 673,
+   "v_stageA": 673,
+   "v_stageB_engine": 689,
+   "v_final": 689,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matthew-jefferson",
+   "name": "Matthew Jefferson",
+   "v_baseline": 487,
+   "v_stageA": 487,
+   "v_stageB_engine": 499,
+   "v_final": 499,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "v_baseline": 752,
+   "v_stageA": 751,
+   "v_stageB_engine": 771,
+   "v_final": 771,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "matthew-leray",
+   "name": "Matthew LeRay",
+   "v_baseline": 381,
+   "v_stageA": 381,
+   "v_stageB_engine": 381,
+   "v_final": 390,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "matthew-roberts",
+   "name": "Matthew Roberts",
+   "v_baseline": 1995,
+   "v_stageA": 1995,
+   "v_stageB_engine": 2042,
+   "v_final": 2042,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "maurice-rioli-1",
+   "name": "Maurice Rioli",
+   "v_baseline": 42,
+   "v_stageA": 45,
+   "v_stageB_engine": 45,
+   "v_final": 46,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "max-beattie",
+   "name": "Max Beattie",
+   "v_baseline": 52,
+   "v_stageA": 60,
+   "v_stageB_engine": 62,
+   "v_final": 62,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "v_baseline": 3343,
+   "v_stageA": 3343,
+   "v_stageB_engine": 3426,
+   "v_final": 3426,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-gruzewski",
+   "name": "Max Gruzewski",
+   "v_baseline": 549,
+   "v_stageA": 548,
+   "v_stageB_engine": 561,
+   "v_final": 561,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-hall",
+   "name": "Max Hall",
+   "v_baseline": 2823,
+   "v_stageA": 2484,
+   "v_stageB_engine": 2542,
+   "v_final": 2542,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "addendum_12_clear_value_neutral"
+   ]
+  },
+  {
+   "key": "max-heath",
+   "name": "Max Heath",
+   "v_baseline": 641,
+   "v_stageA": 641,
+   "v_stageB_engine": 720,
+   "v_final": 720,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-holmes",
+   "name": "Max Holmes",
+   "v_baseline": 7268,
+   "v_stageA": 7263,
+   "v_stageB_engine": 7452,
+   "v_final": 7452,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-king-stk",
+   "name": "Max King",
+   "v_baseline": 332,
+   "v_stageA": 332,
+   "v_stageB_engine": 338,
+   "v_final": 338,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-king-syd",
+   "name": "Maxwell King",
+   "v_baseline": 270,
+   "v_stageA": 290,
+   "v_stageB_engine": 290,
+   "v_final": 296,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "max-knobel",
+   "name": "Max Knobel",
+   "v_baseline": 508,
+   "v_stageA": 508,
+   "v_stageB_engine": 508,
+   "v_final": 516,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "max-kondogiannis",
+   "name": "Max Kondogiannis",
+   "v_baseline": 578,
+   "v_stageA": 552,
+   "v_stageB_engine": 564,
+   "v_final": 564,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-mapley",
+   "name": "Max Mapley",
+   "v_baseline": 586,
+   "v_stageA": 586,
+   "v_stageB_engine": 586,
+   "v_final": 332,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "max-michalanney",
+   "name": "Max Michalanney",
+   "v_baseline": 568,
+   "v_stageA": 560,
+   "v_stageB_engine": 573,
+   "v_final": 573,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "max-ramsden",
+   "name": "Max Ramsden",
+   "v_baseline": 233,
+   "v_stageA": 241,
+   "v_stageB_engine": 247,
+   "v_final": 247,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "v_baseline": 111,
+   "v_stageA": 111,
+   "v_stageB_engine": 114,
+   "v_final": 114,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "michael-sellwood",
+   "name": "Michael Sellwood",
+   "v_baseline": 197,
+   "v_stageA": 203,
+   "v_stageB_engine": 208,
+   "v_final": 208,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "milan-murdock",
+   "name": "Milan Murdock",
+   "v_baseline": 345,
+   "v_stageA": 345,
+   "v_stageB_engine": 353,
+   "v_final": 353,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "miles-bergman",
+   "name": "Miles Bergman",
+   "v_baseline": 830,
+   "v_stageA": 830,
+   "v_stageB_engine": 849,
+   "v_final": 849,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades",
+   "v_baseline": 1488,
+   "v_stageA": 1487,
+   "v_stageB_engine": 1521,
+   "v_final": 1521,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "v_baseline": 238,
+   "v_stageA": 29,
+   "v_stageB_engine": 85,
+   "v_final": 85,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitch-podhajski",
+   "name": "Mitch Podhajski",
+   "v_baseline": 29,
+   "v_stageA": 48,
+   "v_stageB_engine": 49,
+   "v_final": 49,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitch-zadow",
+   "name": "Mitch Zadow",
+   "v_baseline": 86,
+   "v_stageA": 94,
+   "v_stageB_engine": 97,
+   "v_final": 97,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "v_baseline": 2009,
+   "v_stageA": 2009,
+   "v_stageB_engine": 2055,
+   "v_final": 2055,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitchell-hinge",
+   "name": "Mitchell Hinge",
+   "v_baseline": 468,
+   "v_stageA": 468,
+   "v_stageB_engine": 479,
+   "v_final": 479,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitchell-knevitt",
+   "name": "Mitchell Knevitt",
+   "v_baseline": 169,
+   "v_stageA": 173,
+   "v_stageB_engine": 177,
+   "v_final": 177,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitchell-lewis",
+   "name": "Mitchell Lewis",
+   "v_baseline": 682,
+   "v_stageA": 684,
+   "v_stageB_engine": 700,
+   "v_final": 700,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mitchell-marsh",
+   "name": "Mitchell Marsh",
+   "v_baseline": 582,
+   "v_stageA": 689,
+   "v_stageB_engine": 689,
+   "v_final": 705,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "mitchito-owens",
+   "name": "Mitchito Owens",
+   "v_baseline": 2010,
+   "v_stageA": 2010,
+   "v_stageB_engine": 2056,
+   "v_final": 2056,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "murphy-reid",
+   "name": "Murphy Reid",
+   "v_baseline": 4193,
+   "v_stageA": 4208,
+   "v_stageB_engine": 4305,
+   "v_final": 4305,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "mykelti-lefau",
+   "name": "Mykelti Lefau",
+   "v_baseline": 37,
+   "v_stageA": 37,
+   "v_stageB_engine": 38,
+   "v_final": 38,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nasiah-wanganeen-milera",
+   "name": "Nasiah Wanganeen-Milera",
+   "v_baseline": 8134,
+   "v_stageA": 8129,
+   "v_stageB_engine": 8375,
+   "v_final": 8375,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nate-caddy",
+   "name": "Nate Caddy",
+   "v_baseline": 1770,
+   "v_stageA": 1771,
+   "v_stageB_engine": 1812,
+   "v_final": 1812,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "v_baseline": 693,
+   "v_stageA": 693,
+   "v_stageB_engine": 709,
+   "v_final": 709,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nathan-wardius",
+   "name": "Nathan Wardius",
+   "v_baseline": 161,
+   "v_stageA": 172,
+   "v_stageB_engine": 176,
+   "v_final": 176,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ned-bowman",
+   "name": "Ned Bowman",
+   "v_baseline": 357,
+   "v_stageA": 383,
+   "v_stageB_engine": 383,
+   "v_final": 391,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "ned-long",
+   "name": "Ned Long",
+   "v_baseline": 1266,
+   "v_stageA": 1266,
+   "v_stageB_engine": 1524,
+   "v_final": 1524,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ned-moyle",
+   "name": "Ned Moyle",
+   "v_baseline": 2074,
+   "v_stageA": 2074,
+   "v_stageB_engine": 2119,
+   "v_final": 2119,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ned-reeves",
+   "name": "Ned Reeves",
+   "v_baseline": 322,
+   "v_stageA": 322,
+   "v_stageB_engine": 330,
+   "v_final": 330,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "v_baseline": 1024,
+   "v_stageA": 1041,
+   "v_stageB_engine": 1065,
+   "v_final": 1065,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nic-newman",
+   "name": "Nic Newman",
+   "v_baseline": 792,
+   "v_stageA": 794,
+   "v_stageB_engine": 813,
+   "v_final": 813,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nicholas-coffield",
+   "name": "Nicholas Coffield",
+   "v_baseline": 54,
+   "v_stageA": 53,
+   "v_stageB_engine": 53,
+   "v_final": 55,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "nicholas-holman",
+   "name": "Nicholas Holman",
+   "v_baseline": 25,
+   "v_stageA": 27,
+   "v_stageB_engine": 27,
+   "v_final": 27,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "nicholas-martin",
+   "name": "Nicholas Martin",
+   "v_baseline": 3484,
+   "v_stageA": 3482,
+   "v_stageB_engine": 3573,
+   "v_final": 3573,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-blakey",
+   "name": "Nick Blakey",
+   "v_baseline": 3987,
+   "v_stageA": 3995,
+   "v_stageB_engine": 4094,
+   "v_final": 4094,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-bryan",
+   "name": "Nick Bryan",
+   "v_baseline": 817,
+   "v_stageA": 817,
+   "v_stageB_engine": 837,
+   "v_final": 837,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "v_baseline": 8988,
+   "v_stageA": 8982,
+   "v_stageB_engine": 9214,
+   "v_final": 9214,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-driscoll",
+   "name": "Nick Driscoll",
+   "v_baseline": 416,
+   "v_stageA": 416,
+   "v_stageB_engine": 429,
+   "v_final": 429,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-haynes",
+   "name": "Nick Haynes",
+   "v_baseline": 101,
+   "v_stageA": 101,
+   "v_stageB_engine": 103,
+   "v_final": 103,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-larkey",
+   "name": "Nick Larkey",
+   "v_baseline": 661,
+   "v_stageA": 663,
+   "v_stageB_engine": 678,
+   "v_final": 678,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-madden",
+   "name": "Nick Madden",
+   "v_baseline": 1897,
+   "v_stageA": 1897,
+   "v_stageB_engine": 1932,
+   "v_final": 1932,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-murray",
+   "name": "Nick Murray",
+   "v_baseline": 438,
+   "v_stageA": 438,
+   "v_stageB_engine": 448,
+   "v_final": 448,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-vlastuin",
+   "name": "Nick Vlastuin",
+   "v_baseline": 109,
+   "v_stageA": 109,
+   "v_stageB_engine": 111,
+   "v_final": 111,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nick-watson",
+   "name": "Nick Watson",
+   "v_baseline": 3638,
+   "v_stageA": 3625,
+   "v_stageB_engine": 3710,
+   "v_final": 3710,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox",
+   "v_baseline": 174,
+   "v_stageA": 178,
+   "v_stageB_engine": 177,
+   "v_final": 177,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "noah-anderson",
+   "name": "Noah Anderson",
+   "v_baseline": 5125,
+   "v_stageA": 5122,
+   "v_stageB_engine": 5257,
+   "v_final": 5257,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "noah-answerth",
+   "name": "Noah Answerth",
+   "v_baseline": 31,
+   "v_stageA": 31,
+   "v_stageB_engine": 31,
+   "v_final": 32,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "noah-balta",
+   "name": "Noah Balta",
+   "v_baseline": 516,
+   "v_stageA": 556,
+   "v_stageB_engine": 569,
+   "v_final": 569,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "noah-chamberlain",
+   "name": "Noah Chamberlain",
+   "v_baseline": 206,
+   "v_stageA": 221,
+   "v_stageB_engine": 227,
+   "v_final": 227,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "noah-howes",
+   "name": "Noah Howes",
+   "v_baseline": 306,
+   "v_stageA": 340,
+   "v_stageB_engine": 348,
+   "v_final": 348,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "noah-long",
+   "name": "Noah Long",
+   "v_baseline": 199,
+   "v_stageA": 200,
+   "v_stageB_engine": 206,
+   "v_final": 206,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "noah-mraz",
+   "name": "Noah Mraz",
+   "v_baseline": 3934,
+   "v_stageA": 3938,
+   "v_stageB_engine": 4004,
+   "v_final": 4006,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "noah-roberts-thomson",
+   "name": "Noah Roberts-Thomson",
+   "v_baseline": 437,
+   "v_stageA": 460,
+   "v_stageB_engine": 467,
+   "v_final": 469,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "v_baseline": 667,
+   "v_stageA": 751,
+   "v_stageB_engine": 767,
+   "v_final": 767,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-francou",
+   "name": "Oliver Francou",
+   "v_baseline": 548,
+   "v_stageA": 552,
+   "v_stageB_engine": 565,
+   "v_final": 565,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-griffin",
+   "name": "Oliver Griffin",
+   "v_baseline": 248,
+   "v_stageA": 266,
+   "v_stageB_engine": 272,
+   "v_final": 272,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-hannaford",
+   "name": "Oliver Hannaford",
+   "v_baseline": 413,
+   "v_stageA": 454,
+   "v_stageB_engine": 463,
+   "v_final": 463,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-hayes-brown",
+   "name": "Oliver Hayes-Brown",
+   "v_baseline": 274,
+   "v_stageA": 274,
+   "v_stageB_engine": 279,
+   "v_final": 279,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-henry",
+   "name": "Oliver Henry",
+   "v_baseline": 91,
+   "v_stageA": 105,
+   "v_stageB_engine": 121,
+   "v_final": 121,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "v_baseline": 1491,
+   "v_stageA": 1755,
+   "v_stageB_engine": 1815,
+   "v_final": 1815,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oliver-wiltshire",
+   "name": "Oliver Wiltshire",
+   "v_baseline": 98,
+   "v_stageA": 99,
+   "v_stageB_engine": 99,
+   "v_final": 101,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "oliver-wines",
+   "name": "Oliver Wines",
+   "v_baseline": 381,
+   "v_stageA": 381,
+   "v_stageB_engine": 391,
+   "v_final": 391,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ollie-dempsey",
+   "name": "Ollie Dempsey",
+   "v_baseline": 2174,
+   "v_stageA": 2170,
+   "v_stageB_engine": 2211,
+   "v_final": 2211,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ollie-greeves",
+   "name": "Ollie Greeves",
+   "v_baseline": 647,
+   "v_stageA": 648,
+   "v_stageB_engine": 663,
+   "v_final": 663,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ollie-lord",
+   "name": "Ollie Lord",
+   "v_baseline": 151,
+   "v_stageA": 151,
+   "v_stageB_engine": 154,
+   "v_final": 154,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ollie-murphy",
+   "name": "Ollie Murphy",
+   "v_baseline": 288,
+   "v_stageA": 285,
+   "v_stageB_engine": 285,
+   "v_final": 292,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "oscar-adams",
+   "name": "Oscar Adams",
+   "v_baseline": 80,
+   "v_stageA": 94,
+   "v_stageB_engine": 96,
+   "v_final": 96,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oscar-allen",
+   "name": "Oscar Allen",
+   "v_baseline": 158,
+   "v_stageA": 158,
+   "v_stageB_engine": 161,
+   "v_final": 161,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oscar-berry",
+   "name": "Oscar Berry",
+   "v_baseline": 93,
+   "v_stageA": 90,
+   "v_stageB_engine": 92,
+   "v_final": 92,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oscar-mcdonald",
+   "name": "Oscar McDonald",
+   "v_baseline": 43,
+   "v_stageA": 43,
+   "v_stageB_engine": 44,
+   "v_final": 44,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oscar-ryan",
+   "name": "Oscar Ryan",
+   "v_baseline": 318,
+   "v_stageA": 286,
+   "v_stageB_engine": 286,
+   "v_final": 293,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "oscar-steene",
+   "name": "Oscar Steene",
+   "v_baseline": 544,
+   "v_stageA": 544,
+   "v_stageB_engine": 560,
+   "v_final": 560,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "oskar-baker",
+   "name": "Oskar Baker",
+   "v_baseline": 32,
+   "v_stageA": 32,
+   "v_stageB_engine": 32,
+   "v_final": 33,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "oskar-taylor",
+   "name": "Oskar Taylor",
+   "v_baseline": 754,
+   "v_stageA": 741,
+   "v_stageB_engine": 741,
+   "v_final": 759,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "paddy-cross",
+   "name": "Paddy Cross",
+   "v_baseline": 35,
+   "v_stageA": 36,
+   "v_stageB_engine": 36,
+   "v_final": 36,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "paddy-dow",
+   "name": "Paddy Dow",
+   "v_baseline": 165,
+   "v_stageA": 165,
+   "v_stageB_engine": 165,
+   "v_final": 169,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "patrick-carr",
+   "name": "Patrick Carr",
+   "v_baseline": 586,
+   "v_stageA": 586,
+   "v_stageB_engine": 586,
+   "v_final": 332,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "v_baseline": 1834,
+   "v_stageA": 1833,
+   "v_stageB_engine": 1881,
+   "v_final": 1881,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield",
+   "v_baseline": 82,
+   "v_stageA": 89,
+   "v_stageB_engine": 89,
+   "v_final": 91,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski",
+   "v_baseline": 912,
+   "v_stageA": 907,
+   "v_stageB_engine": 928,
+   "v_final": 928,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "patrick-retschko",
+   "name": "Patrick Retschko",
+   "v_baseline": 1318,
+   "v_stageA": 1318,
+   "v_stageB_engine": 1348,
+   "v_final": 1348,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "patrick-said",
+   "name": "Patrick Said",
+   "v_baseline": 186,
+   "v_stageA": 200,
+   "v_stageB_engine": 200,
+   "v_final": 205,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "patrick-snell",
+   "name": "Patrick Snell",
+   "v_baseline": 246,
+   "v_stageA": 245,
+   "v_stageB_engine": 245,
+   "v_final": 251,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "patrick-voss",
+   "name": "Patrick Voss",
+   "v_baseline": 1791,
+   "v_stageA": 1799,
+   "v_stageB_engine": 1841,
+   "v_final": 1841,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "paul-curtis",
+   "name": "Paul Curtis",
+   "v_baseline": 1503,
+   "v_stageA": 1487,
+   "v_stageB_engine": 1522,
+   "v_final": 1522,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "peter-ladhams",
+   "name": "Peter Ladhams",
+   "v_baseline": 276,
+   "v_stageA": 276,
+   "v_stageB_engine": 706,
+   "v_final": 706,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "peter-wright",
+   "name": "Peter Wright",
+   "v_baseline": 1730,
+   "v_stageA": 1727,
+   "v_stageB_engine": 1767,
+   "v_final": 1767,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard",
+   "v_baseline": 1858,
+   "v_stageA": 1918,
+   "v_stageB_engine": 1963,
+   "v_final": 1963,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "reece-torrent",
+   "name": "Reece Torrent",
+   "v_baseline": 198,
+   "v_stageA": 198,
+   "v_stageB_engine": 198,
+   "v_final": 202,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "reef-mcinnes",
+   "name": "Reef McInnes",
+   "v_baseline": 80,
+   "v_stageA": 79,
+   "v_stageB_engine": 79,
+   "v_final": 81,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "reilly-o-brien",
+   "name": "Reilly O'Brien",
+   "v_baseline": 1038,
+   "v_stageA": 1038,
+   "v_stageB_engine": 1064,
+   "v_final": 1064,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "reuben-ginbey",
+   "name": "Reuben Ginbey",
+   "v_baseline": 2599,
+   "v_stageA": 2597,
+   "v_stageB_engine": 2458,
+   "v_final": 2458,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rhett-bazzo",
+   "name": "Rhett Bazzo",
+   "v_baseline": 584,
+   "v_stageA": 584,
+   "v_stageB_engine": 598,
+   "v_final": 598,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "v_baseline": 216,
+   "v_stageA": 216,
+   "v_stageB_engine": 221,
+   "v_final": 221,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rhys-unwin",
+   "name": "Rhys Unwin",
+   "v_baseline": 185,
+   "v_stageA": 199,
+   "v_stageB_engine": 199,
+   "v_final": 203,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "riak-andrew",
+   "name": "Riak Andrew",
+   "v_baseline": 296,
+   "v_stageA": 294,
+   "v_stageB_engine": 294,
+   "v_final": 300,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "ricky-mentha",
+   "name": "Ricky Mentha",
+   "v_baseline": 161,
+   "v_stageA": 172,
+   "v_stageB_engine": 176,
+   "v_final": 176,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "riley-bice",
+   "name": "Riley Bice",
+   "v_baseline": 333,
+   "v_stageA": 333,
+   "v_stageB_engine": 340,
+   "v_final": 340,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "riley-garcia",
+   "name": "Riley Garcia",
+   "v_baseline": 113,
+   "v_stageA": 113,
+   "v_stageB_engine": 116,
+   "v_final": 116,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "riley-hamilton",
+   "name": "Riley Hamilton",
+   "v_baseline": 329,
+   "v_stageA": 333,
+   "v_stageB_engine": 340,
+   "v_final": 340,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "riley-hardeman",
+   "name": "Riley Hardeman",
+   "v_baseline": 320,
+   "v_stageA": 310,
+   "v_stageB_engine": 315,
+   "v_final": 317,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "riley-onley",
+   "name": "Riley Onley",
+   "v_baseline": 416,
+   "v_stageA": 416,
+   "v_stageB_engine": 426,
+   "v_final": 426,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "v_baseline": 4077,
+   "v_stageA": 4070,
+   "v_stageB_engine": 4164,
+   "v_final": 4164,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "river-stevens",
+   "name": "River Stevens",
+   "v_baseline": 202,
+   "v_stageA": 217,
+   "v_stageB_engine": 222,
+   "v_final": 222,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rob-monahan",
+   "name": "Rob Monahan",
+   "v_baseline": 187,
+   "v_stageA": 171,
+   "v_stageB_engine": 176,
+   "v_final": 176,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "robert-hansen",
+   "name": "Robert Hansen",
+   "v_baseline": 121,
+   "v_stageA": 124,
+   "v_stageB_engine": 127,
+   "v_final": 127,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rory-laird",
+   "name": "Rory Laird",
+   "v_baseline": 929,
+   "v_stageA": 931,
+   "v_stageB_engine": 955,
+   "v_final": 955,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "v_baseline": 538,
+   "v_stageA": 444,
+   "v_stageB_engine": 431,
+   "v_final": 431,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "rowan-marshall",
+   "name": "Rowan Marshall",
+   "v_baseline": 1813,
+   "v_stageA": 1813,
+   "v_stageB_engine": 2291,
+   "v_final": 2291,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ryan-angwin",
+   "name": "Ryan Angwin",
+   "v_baseline": 493,
+   "v_stageA": 492,
+   "v_stageB_engine": 503,
+   "v_final": 503,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ryan-byrnes",
+   "name": "Ryan Byrnes",
+   "v_baseline": 89,
+   "v_stageA": 94,
+   "v_stageB_engine": 96,
+   "v_final": 96,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ryan-lester",
+   "name": "Ryan Lester",
+   "v_baseline": 544,
+   "v_stageA": 104,
+   "v_stageB_engine": 106,
+   "v_final": 106,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ryan-maric",
+   "name": "Ryan Maric",
+   "v_baseline": 1453,
+   "v_stageA": 1453,
+   "v_stageB_engine": 1500,
+   "v_final": 1500,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ryda-luke",
+   "name": "Ryda Luke",
+   "v_baseline": 248,
+   "v_stageA": 266,
+   "v_stageB_engine": 272,
+   "v_final": 272,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "v_baseline": 3432,
+   "v_stageA": 3433,
+   "v_stageB_engine": 3686,
+   "v_final": 3686,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-allen",
+   "name": "Sam Allen",
+   "v_baseline": 687,
+   "v_stageA": 676,
+   "v_stageB_engine": 676,
+   "v_final": 693,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "sam-banks",
+   "name": "Sam Banks",
+   "v_baseline": 1197,
+   "v_stageA": 1197,
+   "v_stageB_engine": 1225,
+   "v_final": 1225,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "v_baseline": 3611,
+   "v_stageA": 3608,
+   "v_stageB_engine": 3702,
+   "v_final": 3702,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-butler-1",
+   "name": "Sam Butler",
+   "v_baseline": 100,
+   "v_stageA": 107,
+   "v_stageB_engine": 107,
+   "v_final": 110,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "sam-clohesy",
+   "name": "Sam Clohesy",
+   "v_baseline": 262,
+   "v_stageA": 263,
+   "v_stageB_engine": 270,
+   "v_final": 270,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "v_baseline": 2910,
+   "v_stageA": 2978,
+   "v_stageB_engine": 3047,
+   "v_final": 3047,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-darcy",
+   "name": "Sam Darcy",
+   "v_baseline": 4827,
+   "v_stageA": 4818,
+   "v_stageB_engine": 4929,
+   "v_final": 4929,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-davidson",
+   "name": "Sam Davidson",
+   "v_baseline": 78,
+   "v_stageA": 80,
+   "v_stageB_engine": 80,
+   "v_final": 82,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "sam-de-koning",
+   "name": "Sam De Koning",
+   "v_baseline": 1021,
+   "v_stageA": 1021,
+   "v_stageB_engine": 1045,
+   "v_final": 1045,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-draper",
+   "name": "Sam Draper",
+   "v_baseline": 811,
+   "v_stageA": 811,
+   "v_stageB_engine": 1307,
+   "v_final": 1307,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-durham",
+   "name": "Sam Durham",
+   "v_baseline": 2439,
+   "v_stageA": 2437,
+   "v_stageB_engine": 2710,
+   "v_final": 2710,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-flanders",
+   "name": "Sam Flanders",
+   "v_baseline": 2082,
+   "v_stageA": 2081,
+   "v_stageB_engine": 2208,
+   "v_final": 2208,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-lalor",
+   "name": "Sam Lalor",
+   "v_baseline": 3867,
+   "v_stageA": 3866,
+   "v_stageB_engine": 4102,
+   "v_final": 4102,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-marshall",
+   "name": "Sam Marshall",
+   "v_baseline": 866,
+   "v_stageA": 855,
+   "v_stageB_engine": 876,
+   "v_final": 876,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-powell-pepper",
+   "name": "Sam Powell-Pepper",
+   "v_baseline": 272,
+   "v_stageA": 272,
+   "v_stageB_engine": 278,
+   "v_final": 278,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-sturt",
+   "name": "Sam Sturt",
+   "v_baseline": 53,
+   "v_stageA": 63,
+   "v_stageB_engine": 63,
+   "v_final": 65,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "sam-switkowski",
+   "name": "Sam Switkowski",
+   "v_baseline": 24,
+   "v_stageA": 24,
+   "v_stageB_engine": 25,
+   "v_final": 25,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-taylor",
+   "name": "Sam Taylor",
+   "v_baseline": 1448,
+   "v_stageA": 1449,
+   "v_stageB_engine": 1479,
+   "v_final": 1479,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "v_baseline": 3214,
+   "v_stageA": 3212,
+   "v_stageB_engine": 3296,
+   "v_final": 3296,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sam-wicks",
+   "name": "Sam Wicks",
+   "v_baseline": 103,
+   "v_stageA": 27,
+   "v_stageB_engine": 27,
+   "v_final": 27,
+   "channels": [
+    "stage_A"
+   ]
+  },
+  {
+   "key": "samson-ryan",
+   "name": "Samson Ryan",
+   "v_baseline": 410,
+   "v_stageA": 410,
+   "v_stageB_engine": 420,
+   "v_final": 420,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "samuel-collins",
+   "name": "Samuel Collins",
+   "v_baseline": 795,
+   "v_stageA": 793,
+   "v_stageB_engine": 814,
+   "v_final": 814,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "samuel-grlj",
+   "name": "Samuel Grlj",
+   "v_baseline": 2042,
+   "v_stageA": 2093,
+   "v_stageB_engine": 2142,
+   "v_final": 2142,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "samuel-swadling",
+   "name": "Samuel Swadling",
+   "v_baseline": 931,
+   "v_stageA": 932,
+   "v_stageB_engine": 953,
+   "v_final": 953,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sandy-brock",
+   "name": "Sandy Brock",
+   "v_baseline": 262,
+   "v_stageA": 262,
+   "v_stageB_engine": 267,
+   "v_final": 267,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "scott-pendlebury",
+   "name": "Scott Pendlebury",
+   "v_baseline": 470,
+   "v_stageA": 470,
+   "v_stageB_engine": 484,
+   "v_final": 484,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sean-darcy",
+   "name": "Sean Darcy",
+   "v_baseline": 926,
+   "v_stageA": 926,
+   "v_stageB_engine": 947,
+   "v_final": 947,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "seth-campbell",
+   "name": "Seth Campbell",
+   "v_baseline": 1095,
+   "v_stageA": 1098,
+   "v_stageB_engine": 1124,
+   "v_final": 1124,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "shadeau-brain",
+   "name": "Shadeau Brain",
+   "v_baseline": 115,
+   "v_stageA": 108,
+   "v_stageB_engine": 110,
+   "v_final": 110,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "v_baseline": 2399,
+   "v_stageA": 2389,
+   "v_stageB_engine": 2444,
+   "v_final": 2444,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "v_baseline": 2308,
+   "v_stageA": 2304,
+   "v_stageB_engine": 2357,
+   "v_final": 2357,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "v_baseline": 704,
+   "v_stageA": 700,
+   "v_stageB_engine": 716,
+   "v_final": 716,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sid-draper",
+   "name": "Sid Draper",
+   "v_baseline": 1150,
+   "v_stageA": 1148,
+   "v_stageB_engine": 1204,
+   "v_final": 1204,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "steele-sidebottom",
+   "name": "Steele Sidebottom",
+   "v_baseline": 99,
+   "v_stageA": 104,
+   "v_stageB_engine": 104,
+   "v_final": 106,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "steely-green",
+   "name": "Steely Green",
+   "v_baseline": 168,
+   "v_stageA": 171,
+   "v_stageB_engine": 175,
+   "v_final": 175,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "stephen-coniglio",
+   "name": "Stephen Coniglio",
+   "v_baseline": 165,
+   "v_stageA": 165,
+   "v_stageB_engine": 255,
+   "v_final": 255,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "v_baseline": 2908,
+   "v_stageA": 2984,
+   "v_stageB_engine": 3122,
+   "v_final": 3122,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tai-hayes",
+   "name": "Tai Hayes",
+   "v_baseline": 262,
+   "v_stageA": 268,
+   "v_stageB_engine": 268,
+   "v_final": 274,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "v_baseline": 2178,
+   "v_stageA": 2152,
+   "v_stageB_engine": 2245,
+   "v_final": 2245,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "v_baseline": 895,
+   "v_stageA": 894,
+   "v_stageB_engine": 915,
+   "v_final": 915,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "v_baseline": 2122,
+   "v_stageA": 2118,
+   "v_stageB_engine": 2214,
+   "v_final": 2214,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "taylor-goad",
+   "name": "Taylor Goad",
+   "v_baseline": 1013,
+   "v_stageA": 1013,
+   "v_stageB_engine": 1029,
+   "v_final": 1034,
+   "channels": [
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "v_baseline": 214,
+   "v_stageA": 215,
+   "v_stageB_engine": 219,
+   "v_final": 219,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tew-jiath",
+   "name": "Tew Jiath",
+   "v_baseline": 260,
+   "v_stageA": 236,
+   "v_stageB_engine": 236,
+   "v_final": 241,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "thomas-anastasopoulos",
+   "name": "Tom Anastasopoulos",
+   "v_baseline": 321,
+   "v_stageA": 334,
+   "v_stageB_engine": 339,
+   "v_final": 341,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "thomas-burton",
+   "name": "Thomas Burton",
+   "v_baseline": 437,
+   "v_stageA": 444,
+   "v_stageB_engine": 453,
+   "v_final": 453,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "thomas-liberatore",
+   "name": "Thomas Liberatore",
+   "v_baseline": 1566,
+   "v_stageA": 1565,
+   "v_stageB_engine": 1607,
+   "v_final": 1607,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "thomas-matthews",
+   "name": "Thomas Matthews",
+   "v_baseline": 501,
+   "v_stageA": 538,
+   "v_stageB_engine": 538,
+   "v_final": 551,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "thomas-sims",
+   "name": "Thomas Sims",
+   "v_baseline": 1105,
+   "v_stageA": 1124,
+   "v_stageB_engine": 1151,
+   "v_final": 1151,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "thomas-stewart",
+   "name": "Thomas Stewart",
+   "v_baseline": 1237,
+   "v_stageA": 1240,
+   "v_stageB_engine": 1271,
+   "v_final": 1271,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tim-kelly",
+   "name": "Tim Kelly",
+   "v_baseline": 820,
+   "v_stageA": 819,
+   "v_stageB_engine": 1377,
+   "v_final": 1377,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tim-membrey",
+   "name": "Tim Membrey",
+   "v_baseline": 207,
+   "v_stageA": 207,
+   "v_stageB_engine": 212,
+   "v_final": 212,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tim-taranto",
+   "name": "Tim Taranto",
+   "v_baseline": 2403,
+   "v_stageA": 2401,
+   "v_stageB_engine": 2465,
+   "v_final": 2465,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "v_baseline": 3682,
+   "v_stageA": 3682,
+   "v_stageB_engine": 3776,
+   "v_final": 3776,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tobie-travaglia",
+   "name": "Tobie Travaglia",
+   "v_baseline": 708,
+   "v_stageA": 711,
+   "v_stageB_engine": 728,
+   "v_final": 728,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-bedford",
+   "name": "Toby Bedford",
+   "v_baseline": 266,
+   "v_stageA": 266,
+   "v_stageB_engine": 272,
+   "v_final": 272,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-conway",
+   "name": "Toby Conway",
+   "v_baseline": 568,
+   "v_stageA": 568,
+   "v_stageB_engine": 568,
+   "v_final": 577,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "toby-greene",
+   "name": "Toby Greene",
+   "v_baseline": 1021,
+   "v_stageA": 1017,
+   "v_stageB_engine": 1040,
+   "v_final": 1040,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin",
+   "v_baseline": 149,
+   "v_stageA": 152,
+   "v_stageB_engine": 155,
+   "v_final": 155,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-murray",
+   "name": "Toby Murray",
+   "v_baseline": 284,
+   "v_stageA": 284,
+   "v_stageB_engine": 291,
+   "v_final": 291,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-nankervis",
+   "name": "Toby Nankervis",
+   "v_baseline": 2142,
+   "v_stageA": 2142,
+   "v_stageB_engine": 2197,
+   "v_final": 2197,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-pink",
+   "name": "Toby Pink",
+   "v_baseline": 16,
+   "v_stageA": 16,
+   "v_stageB_engine": 17,
+   "v_final": 17,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "toby-whan",
+   "name": "Toby Whan",
+   "v_baseline": 248,
+   "v_stageA": 266,
+   "v_stageB_engine": 272,
+   "v_final": 272,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tobyn-murray",
+   "name": "Tobyn Murray",
+   "v_baseline": 399,
+   "v_stageA": 403,
+   "v_stageB_engine": 403,
+   "v_final": 412,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "todd-marshall",
+   "name": "Todd Marshall",
+   "v_baseline": 113,
+   "v_stageA": 113,
+   "v_stageB_engine": 115,
+   "v_final": 115,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-atkins",
+   "name": "Tom Atkins",
+   "v_baseline": 410,
+   "v_stageA": 409,
+   "v_stageB_engine": 419,
+   "v_final": 419,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "v_baseline": 113,
+   "v_stageA": 113,
+   "v_stageB_engine": 116,
+   "v_final": 116,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-brown",
+   "name": "Tom Brown",
+   "v_baseline": 577,
+   "v_stageA": 577,
+   "v_stageB_engine": 590,
+   "v_final": 590,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-cochrane",
+   "name": "Tom Cochrane",
+   "v_baseline": 254,
+   "v_stageA": 264,
+   "v_stageB_engine": 270,
+   "v_final": 270,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-cole",
+   "name": "Tom Cole",
+   "v_baseline": 33,
+   "v_stageA": 30,
+   "v_stageB_engine": 102,
+   "v_final": 102,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-de-koning",
+   "name": "Tom De Koning",
+   "v_baseline": 2028,
+   "v_stageA": 2028,
+   "v_stageB_engine": 2078,
+   "v_final": 2078,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-doedee",
+   "name": "Tom Doedee",
+   "v_baseline": 353,
+   "v_stageA": 353,
+   "v_stageB_engine": 361,
+   "v_final": 361,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-edwards",
+   "name": "Tom Edwards",
+   "v_baseline": 89,
+   "v_stageA": 89,
+   "v_stageB_engine": 91,
+   "v_final": 91,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-green",
+   "name": "Tom Green",
+   "v_baseline": 4565,
+   "v_stageA": 4563,
+   "v_stageB_engine": 4682,
+   "v_final": 4682,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-gross",
+   "name": "Tom Gross",
+   "v_baseline": 637,
+   "v_stageA": 616,
+   "v_stageB_engine": 644,
+   "v_final": 644,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-hanily",
+   "name": "Tom Hanily",
+   "v_baseline": 181,
+   "v_stageA": 195,
+   "v_stageB_engine": 200,
+   "v_final": 200,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-lynch-1",
+   "name": "Tom Lynch",
+   "v_baseline": 48,
+   "v_stageA": 51,
+   "v_stageB_engine": 51,
+   "v_final": 53,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "tom-mccarthy",
+   "name": "Tom McCarthy",
+   "v_baseline": 1594,
+   "v_stageA": 1596,
+   "v_stageB_engine": 1633,
+   "v_final": 1633,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "v_baseline": 1984,
+   "v_stageA": 1980,
+   "v_stageB_engine": 1937,
+   "v_final": 1937,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-mcdonald",
+   "name": "Tom McDonald",
+   "v_baseline": 182,
+   "v_stageA": 182,
+   "v_stageB_engine": 186,
+   "v_final": 186,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-papley",
+   "name": "Tom Papley",
+   "v_baseline": 525,
+   "v_stageA": 519,
+   "v_stageB_engine": 532,
+   "v_final": 532,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-powell",
+   "name": "Tom Powell",
+   "v_baseline": 2015,
+   "v_stageA": 2011,
+   "v_stageB_engine": 2262,
+   "v_final": 2262,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "v_baseline": 1394,
+   "v_stageA": 1392,
+   "v_stageB_engine": 1790,
+   "v_final": 1790,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "touk-miller",
+   "name": "Touk Miller",
+   "v_baseline": 1462,
+   "v_stageA": 2316,
+   "v_stageB_engine": 2370,
+   "v_final": 2370,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "v_baseline": 1718,
+   "v_stageA": 1722,
+   "v_stageB_engine": 1759,
+   "v_final": 1759,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tristan-xerri",
+   "name": "Tristan Xerri",
+   "v_baseline": 7231,
+   "v_stageA": 7231,
+   "v_stageB_engine": 7414,
+   "v_final": 7414,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "ty-gallop",
+   "name": "Ty Gallop",
+   "v_baseline": 1563,
+   "v_stageA": 1562,
+   "v_stageB_engine": 1598,
+   "v_final": 1598,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tyan-prindable",
+   "name": "Tyan Prindable",
+   "v_baseline": 601,
+   "v_stageA": 593,
+   "v_stageB_engine": 593,
+   "v_final": 607,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "tylah-williams",
+   "name": "Tylah Williams",
+   "v_baseline": 407,
+   "v_stageA": 436,
+   "v_stageB_engine": 436,
+   "v_final": 447,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "tylar-young",
+   "name": "Tylar Young",
+   "v_baseline": 313,
+   "v_stageA": 313,
+   "v_stageB_engine": 319,
+   "v_final": 319,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tyler-brockman",
+   "name": "Tyler Brockman",
+   "v_baseline": 76,
+   "v_stageA": 79,
+   "v_stageB_engine": 80,
+   "v_final": 80,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "v_baseline": 1074,
+   "v_stageA": 1074,
+   "v_stageB_engine": 1184,
+   "v_final": 1184,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tyler-welsh",
+   "name": "Tyler Welsh",
+   "v_baseline": 224,
+   "v_stageA": 260,
+   "v_stageB_engine": 260,
+   "v_final": 266,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "tyrell-dewar",
+   "name": "Tyrell Dewar",
+   "v_baseline": 177,
+   "v_stageA": 146,
+   "v_stageB_engine": 149,
+   "v_final": 149,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "tyson-stengle",
+   "name": "Tyson Stengle",
+   "v_baseline": 249,
+   "v_stageA": 249,
+   "v_stageB_engine": 255,
+   "v_final": 255,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "vigo-visentini",
+   "name": "Vigo Visentini",
+   "v_baseline": 417,
+   "v_stageA": 417,
+   "v_stageB_engine": 417,
+   "v_final": 237,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "wade-derksen",
+   "name": "Wade Derksen",
+   "v_baseline": 84,
+   "v_stageA": 84,
+   "v_stageB_engine": 86,
+   "v_final": 86,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "wayne-milera",
+   "name": "Wayne Milera",
+   "v_baseline": 1942,
+   "v_stageA": 1946,
+   "v_stageB_engine": 2003,
+   "v_final": 2003,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "wil-dawson",
+   "name": "Wil Dawson",
+   "v_baseline": 624,
+   "v_stageA": 591,
+   "v_stageB_engine": 605,
+   "v_final": 605,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "wil-powell",
+   "name": "Wil Powell",
+   "v_baseline": 936,
+   "v_stageA": 938,
+   "v_stageB_engine": 956,
+   "v_final": 956,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "v_baseline": 6223,
+   "v_stageA": 6218,
+   "v_stageB_engine": 6380,
+   "v_final": 6380,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-brodie",
+   "name": "Will Brodie",
+   "v_baseline": 1014,
+   "v_stageA": 1014,
+   "v_stageB_engine": 1038,
+   "v_final": 1038,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-darcy",
+   "name": "Will Darcy",
+   "v_baseline": 479,
+   "v_stageA": 480,
+   "v_stageB_engine": 480,
+   "v_final": 491,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "will-day",
+   "name": "Will Day",
+   "v_baseline": 2895,
+   "v_stageA": 2891,
+   "v_stageB_engine": 2966,
+   "v_final": 2966,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-edwards",
+   "name": "Will Edwards",
+   "v_baseline": 273,
+   "v_stageA": 273,
+   "v_stageB_engine": 279,
+   "v_final": 279,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-graham",
+   "name": "Will Graham",
+   "v_baseline": 1590,
+   "v_stageA": 1639,
+   "v_stageB_engine": 1727,
+   "v_final": 1727,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-green",
+   "name": "Will Green",
+   "v_baseline": 659,
+   "v_stageA": 659,
+   "v_stageB_engine": 659,
+   "v_final": 672,
+   "channels": [
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "will-hayes-b",
+   "name": "Will Hayes",
+   "v_baseline": 344,
+   "v_stageA": 360,
+   "v_stageB_engine": 368,
+   "v_final": 368,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-hayward",
+   "name": "Will Hayward",
+   "v_baseline": 219,
+   "v_stageA": 219,
+   "v_stageB_engine": 224,
+   "v_final": 224,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-lewis",
+   "name": "Will Lewis",
+   "v_baseline": 12,
+   "v_stageA": 15,
+   "v_stageB_engine": 16,
+   "v_final": 16,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-lorenz",
+   "name": "Will Lorenz",
+   "v_baseline": 427,
+   "v_stageA": 429,
+   "v_stageB_engine": 437,
+   "v_final": 439,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "will-mclachlan",
+   "name": "Will McLachlan",
+   "v_baseline": 162,
+   "v_stageA": 172,
+   "v_stageB_engine": 177,
+   "v_final": 177,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "will-setterfield",
+   "name": "Will Setterfield",
+   "v_baseline": 786,
+   "v_stageA": 786,
+   "v_stageB_engine": 806,
+   "v_final": 806,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "willem-drew",
+   "name": "Willem Drew",
+   "v_baseline": 721,
+   "v_stageA": 720,
+   "v_stageB_engine": 736,
+   "v_final": 736,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "v_baseline": 4416,
+   "v_stageA": 4414,
+   "v_stageB_engine": 4498,
+   "v_final": 4498,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "william-mccabe",
+   "name": "William McCabe",
+   "v_baseline": 740,
+   "v_stageA": 759,
+   "v_stageB_engine": 773,
+   "v_final": 775,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "xavier-bamert",
+   "name": "Xavier Bamert",
+   "v_baseline": 436,
+   "v_stageA": 460,
+   "v_stageB_engine": 470,
+   "v_final": 470,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "xavier-duursma",
+   "name": "Xavier Duursma",
+   "v_baseline": 203,
+   "v_stageA": 203,
+   "v_stageB_engine": 208,
+   "v_final": 208,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "v_baseline": 2123,
+   "v_stageA": 2131,
+   "v_stageB_engine": 2184,
+   "v_final": 2184,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "xavier-o-halloran",
+   "name": "Xavier O'Halloran",
+   "v_baseline": 47,
+   "v_stageA": 70,
+   "v_stageB_engine": 72,
+   "v_final": 72,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor",
+   "v_baseline": 887,
+   "v_stageA": 881,
+   "v_stageB_engine": 893,
+   "v_final": 902,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "xavier-walsh",
+   "name": "Xavier Walsh",
+   "v_baseline": 262,
+   "v_stageA": 257,
+   "v_stageB_engine": 263,
+   "v_final": 263,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "v_baseline": 3149,
+   "v_stageA": 3134,
+   "v_stageB_engine": 3207,
+   "v_final": 3207,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zac-banch",
+   "name": "Zac Banch",
+   "v_baseline": 42,
+   "v_stageA": 47,
+   "v_stageB_engine": 48,
+   "v_final": 48,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zac-fisher",
+   "name": "Zac Fisher",
+   "v_baseline": 180,
+   "v_stageA": 180,
+   "v_stageB_engine": 185,
+   "v_final": 185,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zac-mccarthy",
+   "name": "Zac McCarthy",
+   "v_baseline": 354,
+   "v_stageA": 412,
+   "v_stageB_engine": 412,
+   "v_final": 422,
+   "channels": [
+    "stage_A",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "zac-taylor",
+   "name": "Zac Taylor",
+   "v_baseline": 258,
+   "v_stageA": 255,
+   "v_stageB_engine": 261,
+   "v_final": 261,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zac-walker",
+   "name": "Zac Walker",
+   "v_baseline": 280,
+   "v_stageA": 258,
+   "v_stageB_engine": 264,
+   "v_final": 264,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zach-guthrie",
+   "name": "Zach Guthrie",
+   "v_baseline": 319,
+   "v_stageA": 319,
+   "v_stageB_engine": 327,
+   "v_final": 327,
+   "channels": [
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "v_baseline": 1401,
+   "v_stageA": 1402,
+   "v_stageB_engine": 1434,
+   "v_final": 1434,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zachary-merrett",
+   "name": "Zachary Merrett",
+   "v_baseline": 2752,
+   "v_stageA": 2750,
+   "v_stageB_engine": 2823,
+   "v_final": 2823,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zachary-williams",
+   "name": "Zachary Williams",
+   "v_baseline": 183,
+   "v_stageA": 511,
+   "v_stageB_engine": 524,
+   "v_final": 524,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "addendum_12_clear_value_neutral"
+   ]
+  },
+  {
+   "key": "zak-butters",
+   "name": "Zak Butters",
+   "v_baseline": 6313,
+   "v_stageA": 6309,
+   "v_stageB_engine": 6473,
+   "v_final": 6473,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zak-johnson",
+   "name": "Zak Johnson",
+   "v_baseline": 616,
+   "v_stageA": 629,
+   "v_stageB_engine": 644,
+   "v_final": 644,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zane-duursma",
+   "name": "Zane Duursma",
+   "v_baseline": 751,
+   "v_stageA": 761,
+   "v_stageB_engine": 779,
+   "v_final": 779,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  },
+  {
+   "key": "zane-peucker",
+   "name": "Zane Peucker",
+   "v_baseline": 598,
+   "v_stageA": 619,
+   "v_stageB_engine": 627,
+   "v_final": 633,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "zane-zakostelsky",
+   "name": "Zane Zakostelsky",
+   "v_baseline": 467,
+   "v_stageA": 465,
+   "v_stageB_engine": 472,
+   "v_final": 475,
+   "channels": [
+    "stage_A",
+    "stageB_engine",
+    "stageB_curve_pool"
+   ]
+  },
+  {
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "v_baseline": 2646,
+   "v_stageA": 2706,
+   "v_stageB_engine": 2769,
+   "v_final": 2769,
+   "channels": [
+    "stage_A",
+    "stageB_engine"
+   ]
+  }
+ ]
+}

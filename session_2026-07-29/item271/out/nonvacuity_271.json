@@ -1,0 +1,129 @@
+{
+ "crossings": [
+  {
+   "crossing": "ND curve fit sampled over ND + POOL",
+   "site": "nd_curve",
+   "kind": "sample",
+   "ran": true,
+   "n_rows": 2418,
+   "violations": 1093,
+   "detected": true,
+   "examples": [
+    "Hamish Davis",
+    "Lennox Hoffman",
+    "River Stevens",
+    "Aidan Johnson"
+   ]
+  },
+  {
+   "crossing": "ND curve pooled term computed over ND + POOL",
+   "site": "nd_curve",
+   "kind": "pooling",
+   "ran": true,
+   "n_rows": 2418,
+   "violations": 1093,
+   "detected": true,
+   "examples": [
+    "Hamish Davis",
+    "Lennox Hoffman",
+    "River Stevens",
+    "Aidan Johnson"
+   ]
+  },
+  {
+   "crossing": "ND priors sampled over ND + POOL",
+   "site": "priors_ND_1_64",
+   "kind": "sample",
+   "ran": true,
+   "n_rows": 1767,
+   "violations": 817,
+   "detected": true,
+   "examples": [
+    "Lachlan Bramble",
+    "Patrick Walker",
+    "Malachy Carruthers",
+    "Jack Saunders"
+   ]
+  },
+  {
+   "crossing": "ND priors POOLED TERM over ND + POOL, sample left clean",
+   "site": "priors_ND_1_64",
+   "kind": "pooling",
+   "ran": true,
+   "n_rows": 1767,
+   "violations": 817,
+   "detected": true,
+   "examples": [
+    "Lachlan Bramble",
+    "Patrick Walker",
+    "Malachy Carruthers",
+    "Jack Saunders"
+   ]
+  },
+  {
+   "crossing": "pool level sampled over POOL + ND",
+   "site": "pool_level",
+   "kind": "sample",
+   "ran": true,
+   "n_rows": 2418,
+   "violations": 1325,
+   "detected": true,
+   "examples": [
+    "Sam Lalor",
+    "Finn O'Sullivan",
+    "Jagga Smith",
+    "Sid Draper"
+   ]
+  },
+  {
+   "crossing": "pool level pooled term computed over POOL + ND",
+   "site": "pool_level",
+   "kind": "pooling",
+   "ran": true,
+   "n_rows": 2418,
+   "violations": 1325,
+   "detected": true,
+   "examples": [
+    "Sam Lalor",
+    "Finn O'Sullivan",
+    "Jagga Smith",
+    "Sid Draper"
+   ]
+  },
+  {
+   "crossing": "pool priors sampled over POOL + ND",
+   "site": "priors_POOL",
+   "kind": "sample",
+   "ran": true,
+   "n_rows": 1767,
+   "violations": 950,
+   "detected": true,
+   "examples": [
+    "Jed Anderson",
+    "Jamarra Ugle-Hagan",
+    "Riley Thilthorpe",
+    "Will Phillips"
+   ]
+  },
+  {
+   "crossing": "pool priors POOLED TERM over POOL + ND, sample left clean",
+   "site": "priors_POOL",
+   "kind": "pooling",
+   "ran": true,
+   "n_rows": 1767,
+   "violations": 950,
+   "detected": true,
+   "examples": [
+    "Jed Anderson",
+    "Jamarra Ugle-Hagan",
+    "Riley Thilthorpe",
+    "Will Phillips"
+   ]
+  }
+ ],
+ "vacuity_demonstration": {
+  "sampled_rows_violations": 0,
+  "pooled_term_violations": 817,
+  "blend_floor": "1-w >= 0.40 of every prior"
+ }
+}
