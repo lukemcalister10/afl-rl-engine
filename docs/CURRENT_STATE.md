@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v32 · supervisor pen · 2026-07-29, register v540
+# CURRENT STATE — the incoming-seat read · v33 · supervisor pen · 2026-07-30, register v541
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -109,149 +109,127 @@ any pen error reaching main restores the per-entry word.
 ---
 
 # PART B — CURRENT STATE
+(v33 · supervisor pen · 2026-07-30, register v541 · replaced wholesale at the adoption pen)
 
-*Replaced wholesale each pen. Accurate 2026-07-29, register v540 (the handover pen — seam rotated at owner
-word), written against main `5c52f0e`; this pen lands on top, so `main` will be one commit ahead. Expected,
-not staleness.*
+## THE ERA: POST-ADOPTION. The 30/7 rederivation board is the live board. No seat is live.
+Owner word 2026-07-30 (#271 Addendum 14, verbatim): "30/7 rederivation for the label. Adopt." Live identities:
+store 6b9d00a7 · board f2df6e0a · curve file 6506d8b1 (payload 08ea9375; pre-stamp candidate id 3dabec04;
+pool_value 299; ui curve contract 432f0153, per_entrant 2f8b4bd4) · v0surf ce08c2d1 (frozen pair
+b781ed25/d071e743). ADOPTION EXECUTION FACTS, seam-verified: main = f60af6c (single commit on a86c725; A23 amend verified — three fix files only, identities byte-unchanged); bundle f2df6e0a-verified;
+contract a0620e0e/sha 0717287e — held_candidates EMPTY, held_checks = G-Y0 alone; boot pins = adopted identities;
+the 30/7 column live in all three histories + bundle; lineage register 2 entries (latest ITEM_271_Addendum_17),
+current slot = pure ITEM 408 mirror. FINAL CI at f60af6c: guards SUCCESS 0 FAIL / 1 HELD (G-Y0 3.035% under 3.500% ceiling) · FV Provenance SUCCESS · Final Integration FAILURE at step 13's LAST command only — within it: extract 42/42 · release 30/30 · counting 24/24 · club_curve_provenance 35/35 (WAS 24/35 — the split-era crash is dead) · club_valuation PASS (16 teams/160 picks) · parity 11/11 with the Best-23 can-fail lever proven IN CI · movers.test.js LAST at 2/58 = EXACTLY the pinned pair; steps 14-22+42-43 skipped, declared · Live Scoring FAILURE at step 12 on the SAME pinned pair, steps 13-15+31 skipped, declared. Measured by the seam directly (runs 30518162835/851/841/846) after two agent attempts died on server 529s — the spill-and-grep pattern held. A23: the split-era price_pick
+crash (KeyError:73, masked all era by the ring-fence halt) fixed under owner word AMEND — 65+ = pool_value. Movers: the 30/7 point + boundary landed via the R20 repair lane (A16); the three-way
+balanced_board_md5 anchor disagreement is DOCKETED TO HYGIENE (A17), not fixed.
+Sequence of record (owner-amended this cycle): land → re-derive → ADOPT (done) → SHAPE (#279) → referee (#270)
+→ ITEM 412. Every queued job fires on the owner's word only. Nothing is running.
 
-## THE ONE LIVE SEAT: #271 STAGE B, MID-DERIVATION — read issue #271 IN FULL (body, audit, ALL SEVEN addenda)
+## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
+Entries are PER RULED QUESTION; supersession is partial by nature.
+1. FHV definition → Option A: expectation view, single constant ≈190; survivor 250/528 REJECTED; per-window
+   (MSD 352/SSP 277/OTHER 97) = one-word upgrade. First consumer: #276's phantom. [#270, ruling comment]
+2. γ (SCAR vs VOR) → NO ruling until a derivation exists under BOTH systems, each with its own surface bake;
+   the #271 companion is mixed-denomination evidence of the leak only (canonical leak: 2.32% of strict pairs
+   invert; RL_GAMMA absent from the v0surf gates). Executes in #279. [#271 A7, A10; A13 for the canonical figure]
+3. G-Y0 (curve↔surface 2% HARD bar) → owner-accepted dated exception at 2.929% ruled / 3.035% guard; loud HELD;
+   do-not-exceed ceiling 3.50% = hard FAIL; record-removal = FAIL; resolves at #279 (bar re-set deliberately).
+   Sign structure: two-sided wobble, net −0.56% (curve below surface); it never measured the reality gap. [#271 A12/A13]
+4. Year-0/current bar source → the store's ELIGIBILITIES COLUMN (owner-maintained), dual → LOWER bar (R105.1);
+   season rows = closed seasons' bars; 2026 column supersedes its row in every bar-taking use. [#271 A4, A6]
+5. Future-leg blend → PERMANENTLY hand-set (future_position + alternate_position + p_dual_stream; LEG C law:
+   lower bar of the pair on the p_dual fraction; primary keys the arc). "Eligibility blend later" RETIRED from
+   the referee docket by owner word. [#270 retirement comment]
+6. §1b / y0dpp_bar → retired from year-0 by SUPERSESSION only (code untouched; fires 0/804 with column-keyed
+   bnow; resurrests at 86/804 if bnow reverts — proven by CF2). [#271 A4/A5; cf2 evidence]
+7. The 62-edit set → sealed as 62 + 3 owner-amended (2026-07-29): Roberts/Hall/Williams alternate+p_dual
+   pairs cleared (both halves = the unit, selftest invariant), measured board delta 0. [#271 A12, ADDENDUM12_CLEARS]
+8. The pick-curve tail → prices ~1.56× busts-included reality at 57–64 (honest ±7% at picks 1–24); mechanism =
+   evidence-weighting mutes bust votes where busts cluster + prior dominance at thin cells + curve→surface→curve
+   self-reference. REPORT-ONLY until #279/referee; the two knobs are γ=0.85 (sole live dampener) and the retired
+   CE dial (never carried into R1). [#270 evidence notes 1-2 + CE correction]
+9. Par teaching population → par_build keys ONE gfut per career; role migrants refile prime seasons under
+   destination roles (Berry +351 / Addinsall −116 the extremes; median ripple 0). Docketed for #279; fix =
+   per-season teaching (data now exists); interim = exclude pre-conversion seasons. [#279 ruling-sheet addition]
+10. Held mechanisms → held_candidates admits ONLY the 8 bound release identities (release_contract.py:126);
+    check-family holds live in sibling held_checks; every hold pins both sides, reports loudly, reverts to FAIL
+    on removal, and names its clearing act. A declaration consumed by two gates is verified against BOTH before
+    sealing. [#271 A11]
+11. Adoption-era CI, measured at f60af6c: guards green + G-Y0 HELD
+    (CORRECT, stays until #279); FV green; FI red at step 13's LAST command and Live Scoring red at step 12 —
+    BOTH being movers.test.js 2/58, the DECLARED
+    ADOPTION-CREATED KNOWN-RED (owner Option 1, A22), PINNED at exactly two named assertions; any third
+    failure in that file is NEW; FI steps 14-22 and LSU steps 13-15 are SHADOWED behind it until #274 — declared.
+    The 'bridged' half may self-resolve at R21 (unmeasured — check then). Proof workflows remain manual-dispatch.
+12. VOR/rank instruments → adjacent-pair inversion counts are TIE-SENSITIVE (305 shared-integer rows); use the
+    order-independent all-pairs count. [#271 A13]
+13. Best-23 selection → owner LAW (A19): the value-maximal 23 fillable from the ELIGIBILITIES column,
+    DPP-optimised (assignment, not first-fit), on ABSOLUTE BOARD VALUE. The live tab runs the DECLARED
+    adoption STOPGAP (top-up backfills unfilled slots) until #274's first item lands the selector — the
+    stopgap's presence is the removal marker. [#271 A19; #274 docket]
+14. The movers bundle → historical per-round reports are NEVER rewritten (each keeps its frozen era identity
+    and vocabulary — that is the record, not staleness). Out-of-round columns ARE represented: they become
+    selectable points + model-change boundaries at every derived-block rebuild (owner precedent:
+    post-r19-redesign-1; the 30/7 boundary per A16 — outcome in the era block above). ui/data/movers_transition.js
+    is GENERATED from data/release_lineage.json's release_transition (fail-closed bridge; never hand-edit;
+    ITEM 408 Option A governs). The owner WANTS landed changes visible as movers records — treat that as a
+    standing preference. [#271 A15/A16]
 
-The re-derivation runs on branch `claude/issue-271-re-derivation-3b6jc6` (tip `87721e4` at pen time — verify
-the current tip yourself). **Stage A is complete and seam-verified** at `12b4cf7`: the deferred 62 edits
-applied, v0surf re-baked through the declared lane, board `3d4e2e50`→`dca21c91`, 535/681 movers decomposed
-53 edited-row + 382 gfut-cohort + 100 re-bake, zero unexplained; seam re-measured the 62/54 field-exactness
-independently. **Stage B so far (seam-verified at `a2f5068`, Addendum 5):** year-0 bar re-keyed to the
-eligibility COLUMN (804/804 coverage, 186 dual; **137 of 804 bar movers**, per-player file committed);
-§1b/`y0dpp_bar` retired by supersession (0 of 804 fires, code untouched, all three callers verified
-`AGE_REF`-guarded); #225's Group A eight sites moved to the played axis; Group B REBUILT on it (never
-re-looked-up alone); Group C still drafted per the R3 hold; `par_build` untouched by ruling; both
-season-row writers now stamp eligibility (closes the 1,271-player future hole ON THE CANDIDATE — main
-keeps the hole until adoption). Latest commit applies the Addendum-6 fit-bar source rule.
-
-**The seven #271 addenda are the ruling map — the issue carries full text:**
-A1 six read-back rulings (Q-A eligibility feeds year-0 · Q-C windows carried · Q-D re-pin-never-delete ·
-Q-E control-arm proof) · A2 Q-B by owner word: WHOLE-draft slide, Daniel Butler (2014 ND 65) crosses into
-the fit at 64 and leaves the pool · A3 stage-A verification + `par_build` = attribution channel, not a fix
-site · A4 by owner word: the year-0 source is the eligibility COLUMN (the owner-maintained CURRENT-season
-record; the 73 column≠row players are benign by design — column = now, rows = that season) · A5 checkpoint
-accepted; the non-reproducing "113/804 split-bar" classified era-dependent (pre-landing store; Dylan Moore
-15.47/24.65 reproduces and is the load-bearing example); item-284 registry empties by construction
-(detector retired with the patch — a column-validity selftest is a filed later candidate) · A6 by owner
-word: **the column sources EVERY 2026 bar** — fit, evidence matrix, career value — rows only for closed
-seasons ≤2025 · A7 by owner word: a **VOR companion board (γ=1.0)** via the declared `RL_GAMMA` dual-column
-lane, report-only, same numeraire, divergence table required; **the SCAR board (γ=0.85) is the SOLE
-adoption candidate** (method constant); the γ ruling itself is referee-era.
-
-**Remaining in stage B:** per-season fit bars (A6 rule) → evidence matrix with the slide → curve refit
-(Cameron 12/Shiel 4/Treloar 14 in-sheet; McCartin/Boyd excluded, drafts slid) → pool level on SCAR
-(never-established at 0.0) → both-directions proofs INCLUDING the pooling-term channel, each shown failing
-when lifted → second bake with its control arm → the SCAR candidate with full attribution + VOR companion +
-divergence table.
-
-## THE INCOMING SEAT'S FIRST TASKS
-
-1. **Verify the #271 hand-back when it returns — re-run only what decides:** (a) the stage-B control arm
-   reproduced stage A's surface byte-identically before the moving bake; (b) both-directions exclusion
-   checks shown FAILING when lifted, pooling-term channel included; (c) attribution complete — every mover
-   names a mechanism from {62 edits · per-season bars · current-bar wiring (A4/A6) · curve data/separation
-   · pool level}, zero unexplained; (d) a 2026 bar spot-check on a column≠row player (e.g. sam-lalor:
-   column SF,MID → SF bar 70.9, NOT the row's MID); (e) Butler inside the ND fit sample and absent from
-   the pool, same membership in the exclusion checks; (f) the candidate branch fully self-consistent — own
-   `expected_boot` pins, `held_candidates` 5 declarations RE-PINNED never deleted, own CI green modulo
-   knowns; (g) VOR column on the same numeraire with its divergence table denominated; (h) diff the branch
-   against current `main` before any merge talk. **The candidate merges ONLY on the owner's adoption word.**
-2. **Then the adoption era:** draft the runbook FROM the candidate's actual identities, never before. The
-   adoption commit = merge + UI pair migration (bundles + reading source together) + DELETE all five
-   `held_candidates` declarations (a survivor is itself a rejection) + the owner's baseline column label —
-   and it REOPENS the owner's live ingest lane (fail-closed under the hold since the split) and flips Final
-   Integration green and the counting-rule suite to the new vocabulary.
-
-**Sequence: land (#262 ✓) → re-derive (#271: A ✓, B live) → owner adoption → referee project → ITEM 412.**
-
-## CI
-
-`main`: three of four green; Final Integration red on `club_curve_provenance` alone (9/35, ring-fence-first,
-declared, resolves at adoption). The candidate branch runs its own CI against its own pins. Counting-rule
-suite still asserts OLD vocabulary and passes (it tests the fenced UI pair; flips at adoption). CASE1's
-`checked=0` is anti-vacuous (a coverage clause). Kako anchor STALE at R21 by design. `proof-*` jobs are
-manual-dispatch only.
+## THE QUEUE — everything fires on an owner word; seam pre-fire audit at each fire
+- **#279 — the owner's baseline shaping step (his stated priority).** Seed rulings S1–S5 sealed in the filing +
+  the par item. Deliverables: minimal-vs-structural prototype pair on one matrix; strict SCAR/VOR dual derivation
+  (own surface bakes; RL_GAMMA enters the gates); ruled pick-value basis + explicit variance dial calibrated
+  against the conservation yardstick; v0 propagation; G-Y0 re-derived. Owner rules on evidence, never in advance.
+- **#274 — UI wave** (independent of #279 post-adoption; parallel seats possible with seam coordination). Three
+  pre-ruled/pre-scoped items: (1) ERA-SUCCESSION plumbing, first priority (A22: current transition + archive;
+  model_changes over all entries; both validators in lockstep; acceptance = movers 58/58 + the 30/7 flag true;
+  clears the declared known-red); (2) the Best-23 eligibility selector (A19 law; replaces the adoption stopgap);
+  (3) the over-free column (v − FHV live lens, below-free flag) — depends only on adoption + the ruled ≈190.
+- **#276 — clubs tab**: its 250 phantom takes the ruled FHV with one word at fire.
+- **#275 — hygiene**: needs the post-adoption green CI as its acceptance baseline. RETENTION LAW: files cited by
+  sealed records are protected from pruning (charter D2).
+- **#270 — referee project**: opens AFTER #279 delivers the shaped baseline; its docket already carries the FHV
+  ruling, the tail evidence, the γ evidence path, and the retired future-blend item.
+- #146 NEVER executes as written · #139 feeds the others · v1.1 amendment read = the owner's open parallel act
+  (docs/referee/AMENDMENT_v1_1_DRAFT.md).
 
 ## OWNER ACTS OUTSTANDING
+Fire words (#279/#274/#276/#275, any order — #279 stated priority) · the γ ruling (after #279's dual evidence)
+· the v1.1 read · branch-deletion clicks per convention.
 
-1. **Adoption word + baseline column label** when the candidate passes verification (+ the baked-pick-prices
-   decision). 2. Post-adoption fire words: **#274** UI wave · **#275** hygiene (six-item bucket-b ballot at
-   execution; `session_2026-07-15/captaincy` moved to the ballot — it holds LIVE law's derivation) ·
-   **#276** clubs tab (collectibles: Q5 displacement one-way? · Q6 rank basis + delta baseline · optional
-   FHV substitution for the 250 placeholder). 3. **Referee-era rulings, evidence ready:** the **γ ruling**
-   (SCAR 0.85 vs VOR) off the divergence table — pull the original SCAR-vs-VOR memo from the register to
-   sit beside it; the **FHV definitional ruling** (expectation view recommended: ≈190 single-constant or
-   ~352/277/97 per window — study at `docs/referee/FHV_MARKET_STUDY_2026-07-29.md`, sealed on #270); the
-   v1.1 amendment read (`docs/referee/AMENDMENT_v1_1_DRAFT.md`). 4. Real-iPhone check — parked by owner word.
-
-## FILED / PARKED — do not start
-
-#274 · #275 (+ its captaincy amendment) · #276 — all post-adoption, seam-audited at fire. #270 holds the
-filed FHV study. #146 body inverted — never execute as written. #139 items 6/7/19 parked, 8 superseded.
-Track D · conservation gate · deeper bar-construction (referee).
-
-## KNOWN CARRIES
-
-Owner live ingest lane fail-closed under the hold BY DESIGN; reopens at adoption. The 1,271-player
-season-row hole is CLOSED on the candidate, OPEN on `main` until adoption. `affl_team`
-legacy-with-one-reader (`round_movers.py:279`). Stale prose: the `sig 76498b5a` note in
-`one_source_selftest.py` (rides the #271 bake) and `expected_boot.json`'s `_captaincy_note` still saying
-"candidate, no bake" — **the L-CAPTAIN curve is in fact LIVE LAW** (R98.1, owner-ruled 2026-07-14, on by
-default at `rl_model.py:335-360`; note-trusting misclassified it once already). `_has26` disagrees with
-actual 2026 rows for 27 of 804 — read season rows, never the flag. The 73 column≠row players are BENIGN
-(sealed semantics: column = current-season eligibility, rows = per-season history; the column is a
-season-specific owner-maintained field — annual roll noted for the referee era). Residual old-vocab
-(definitive, #262 Addendum 7): six frozen movers bundles + ycred note — era data, none functional. The
-trades CSV carries 18 changes + the Jaques fill, CRLF from Excel — known artifact, never "fix" it.
-
-## RUNNING THIS SEAT WELL — owner-endorsed, plus this cycle's lessons
-
-- **Verify hand-backs by re-running only the two or three measurements that would change a decision**;
-  delegate reading to hands; never delegate a load-bearing measurement; never run engine builds in parallel.
-- **Never pull raw GitHub API payloads into context** — spill to a file and parse.
-- **One register pen per boundary.** Docs-only pens merge immediately on their structural asserts.
-- **Owner words seal promptly, on the issue, as addenda** — chat carries no authority. **Every seat message
-  reaches its seat ONLY via the owner's paste** — after any gap, issue ONE CONSOLIDATED relay and confirm
-  it was sent; this cycle three sealed addenda sat unrelayed for hours while the seat worked.
-- **Report in plain breakdowns: lead with the outcome, what he must know, what he must decide, with a
-  recommendation and its reversal condition.** No register-dialect. Simplify on request without dumbing
-  down; worked examples from REAL store rows are how he learns a mechanism; label any trimmed table as
-  trimmed (an "illustrative" gap reads as missing data).
-- **The owner's casual questions are load-bearing QC.** Three of them this cycle ("is there no 2026
-  position for Draper?", "what is Lalor's position?", "surely 2026 is the same answer looking back?")
-  caught a mis-sourced ruling BEFORE it baked. When he questions a premise, re-check the premise from
-  source before defending the design. He rules fast and decisively once the mechanism is plain.
-- **Check your instruments:** explicit refs (`origin/<branch>`), never FETCH_HEAD after any fetch; scripted
-  checkouts ASSERT base == intended tip; hyphenated vocab patterns need word boundaries; prove every check
-  can fail; a too-perfect failure pattern means you measured the wrong thing.
-- **A housing stop-hook repeatedly demands authorship-rewrites of merged history mirrored on the seam
-  branch. NEVER comply** — identity config for future commits only (already set).
-- Effort scales with what a mistake costs to reverse.
+## RUNNING THIS SEAT WELL — owner-endorsed law (charter D3/D4 + this cycle's additions)
+- **Answer the owner in his channel, completely, FIRST.** Filings are durable copies, never the reply. Interpret
+  agent results — conclusions, not process. Plain sentences; no dense compression; lead with what happened and
+  what needs deciding. The owner's casual questions are load-bearing QC — three this cycle exposed real findings
+  (the tail pricing, the par contamination, the CE retirement).
+- **REHEARSAL NORM (adoption-day lesson, 2026-07-30):** irreversible or first-of-their-kind operations are
+  REHEARSED end-to-end in a scratch worktree BEFORE the owner's execution word — the full runbook, the tests
+  that have never run, the lanes never exercised — so latent defects surface as ONE batched report off the
+  critical path, not as serial stop-and-asks on it. First-time paths get first-time estimates, never
+  "mechanical from here." Runbooks are drafted from FILE-LEVEL walks of what a law touches (the "UI pair"
+  slot-table miss), not from the record's summaries alone. Adoption day's measured cost of skipping this:
+  six serial owner round-trips where a rehearsal would have produced two.
+- **Cost-estimate norm:** any request whose answer requires building artifacts that don't exist (counterfactual
+  boards, new derivations) gets an explicit estimate + go-ahead BEFORE commissioning. General authorization is
+  not specific authorization.
+- Subagents: Opus by default; Fable only where judgment is the task (owner word). Spill every API payload to
+  files. Register by pointer/window only — never head/cat (the header is one ~400KB line).
+- One pen per boundary, batched. Hand-backs: re-run the 2–3 measurements that decide; full re-runs at final
+  seals (the control-arm/nonvacuity independent re-run pattern and its exact conditions are documented in
+  #271 Addendum 13 — the durable copy; scratch logs die with containers).
+- Instrument discipline, this cycle's additions to the standing set: assert loaders are NONEMPTY before trusting
+  their output (a silent empty load mis-bucketed a whole analysis); never trust a TRUNCATED diff-stat (tail -N
+  ate expected_boot and manufactured a false finding); prove every check can fail; state CI posture in every
+  seal; prefer order-independent metrics where ties exist.
+- Worktree pattern for scratch builds: detached worktree + minimal disclosed pin edits + env -i + PYTHONHASHSEED=0
+  + single-thread BLAS + pinned venv (route validated at hash level incl. OpenBLAS — conditions recorded in #271 A13). Never set
+  RL_V0SURF_REFIT/RL_BAKE outside the declared lane. Nothing scratch is ever committed.
 
 ## ENVIRONMENT CARRIES
+cp312 via RL_VENV (setup_env.sh → bootstrap_env.sh → bootstrap.sh; do not weaken the pin) · git fetch --unshallow
+before ancestry claims · no parallel engine builds without seam coordination · scripted checkouts assert their
+base · CRLF in the owner's CSV lane is a known Excel artifact, never "fixed".
 
-- Shallow clones by default: `git fetch --unshallow` before any ancestry claim. Bare `python3` is 3.11
-  against a cp312 lock — 3.12 venv via `RL_VENV`; never weaken the pin.
-- `v0surf` HALTs on unknown signatures BY DESIGN; the one lane is `RL_V0SURF_REFIT=1` at a deliberate bake.
-  #271 has one legitimate bake left (stage B); any other halt is a finding.
-- After any rebase-merge, recreate long-lived branches from `origin/main`; always diff a PR against current
-  `main` before merging. `sibling_repin` guards six structural tokens;
-  `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` is a live CI input.
-- The register header is one ~400KB line — window it (`grep -o '.\{0,N\}PATTERN.\{0,N\}'`), never head/cat.
-  The Actions API exceeds output caps — spill and parse.
-- **Pens:** branch → PR → rebase-merge under the owner's platform auth; the seam merges its own docs-only
-  pens; ref deletion is owner-click only. Mechanics: bump the line-1 stamp digit
-  (`supervisor pen · vNNN date · PEN:`), insert `· SEAM vNNN (date) — <entry>` immediately before the
-  trailing `· prior: ITEM 407`. Assert pre-commit: base == intended tip, line count unchanged, byte growth
-  == entry bytes, single stamp, chain intact, docs-only staged set. Commit author `supervisor-seat
-  <supervisor@seam.local>`.
-- Evidence lives on branches: #271's in `session_2026-07-29/item271/` on its branch; #225's on
-  `claude/issue-225-execution-nd0vtm` (never merged — fetch on demand).
-
----
-
-*Pointers name register versions. The register header on `main` is the record; this file is the map.*
+## THE INCOMING SEAM'S FIRST TASKS
+1. Verify live state with your own commands (main tip vs this pen; open PRs — expect none; the issue map above).
+2. Read-back to the owner in his channel; hold for confirmation before any push.
+3. Then idle until an owner fire word; audit the directive at fire per the charter.
