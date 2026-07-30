@@ -65,6 +65,13 @@ figure is 1.98%, not 2.32%. Denominator in both cases is strictly-ordered pairs 
 275 pairs tie under SCAR), the order-independent metric per Addendum 13's instrument note — adjacent-pair
 counts are tie-sensitive and are not used.
 
+**5. [PARTLY SUPERSEDED — see the ADDENDUM at the end of this file.]** The two consequences drawn below
+were reasoned from a *frozen* pick ladder held against a *moving* player side. That is not a like-for-like
+currency comparison. The retrospective pick curve has since been re-derived under both endpoints; the
+addendum carries the corrected picture and **reverses the sign** of the "picks get dearer" consequence. What
+stands from this finding: the *shipped* ladder is indeed γ-invariant, and the conclusion that γ does not
+meaningfully fix the tail also stands, but for a better-supported reason given in the addendum.
+
 **5. The shipped pick ladder does not move with γ at all.** Byte-identical in both columns, all 65 points
 (`[3000, 2767, 2693, … 571]`, pool 299), because the board ships the frozen adopted curve via the L7 repoint
 (`pvc_curve_v2.json`) and γ cannot reach it. Two consequences that matter for the ruling:
@@ -133,3 +140,130 @@ and never fitted, its serve path is γ-free (`GAMMA` appears only at `rl_model.p
 builder cannot run from the tree at all — its `dob_corrected.json` input is absent repo-wide, while
 `bust_prior_table.json` is committed. It becomes a live trap only if a later step deliberately retrains the
 peak model, which would need that missing input located first. Seam has docketed the retrain gap.
+
+---
+
+# ADDENDUM — the retrospective pick curve re-derived under both endpoints
+
+Added after the first seal, on seam direction: step 1's pick-side evidence was incomplete because the
+shipped ladder is frozen, so the original players-vs-picks comparison held a fixed pick side against a
+moving player side. Both sides now move in the same currency. This addendum supersedes finding 5's two
+consequences; everything else in this file stands.
+
+## Method, and what is held constant
+
+The retrospective curve is re-derived with `#271`'s derivation carried **verbatim** — `pava_ni` /
+`build_points` / `fit_year0` / `monotone_strict`, τ=0.12, nmin=35, `PW_FLOOR`=0.11, pin(1)=3000, the ×0.6
+blend ceiling, the min(n_pos/200,1) pooling weight, both windows (pool 2004–2024, priors 2006–2020). The
+prior *recipe* is untouched in both columns — the prior fix is step 2's work — so the two curves differ by γ
+alone. Each column is self-consistent in its prior source: the SCAR column reads the adopted surface
+(`v0surf_frozen: true`), the VOR column reads its own bake (`v0surf_frozen: false`, content `8990fed6`). No
+mixing.
+
+My script copies differ from `#271`'s originals by **three non-numerical lines** — output directory, output
+filename, and the statistic label now following `RL_GAMMA` rather than asserting `SCAR` unconditionally.
+Faithfulness proof: my copy reproduces Control A's payload exactly. The label edit is load-bearing — run
+unmodified, the VOR column's own metadata would have claimed `statistic: SCAR`.
+
+Measured cost, first-time path: evidence-matrix emit **198s (SCAR) / 202s (VOR)**; the fit itself **3s**.
+All eight both-directions checks PASS in both columns, 0 FAIL.
+
+## Controls — one passes, one cannot, and the difference is the finding
+
+| control | payload | verdict |
+|---|---|---|
+| Control A: `#271`'s committed matrix through its committed fit code | `08ea9375` | **reproduces the adopted curve exactly** — ladder 65,925, pool 299.3, 0 of 64 points differ |
+| SCAR re-derived on today's adopted store + adopted surface | `ec9192a2` | **does not reproduce** — ladder 67,401 (+2.24%), 63 of 64 points differ, pool 297.2 |
+| VOR re-derived on today's store + own bake | `85576b0f` | differs from SCAR, as it must |
+
+Only pick 1 matches in the SCAR row, because it is pinned at 3000.
+
+**The adopted shipped ladder is not reproducible from the store it ships with.** `pvc_curve_v2.json`'s own
+`derived_from` names store `265f55d5`; the adopted store is `6b9d00a7`. Attribution, by diffing the two
+matrices directly: the population is **identical** (2,646 records, 1,444 curve-teaching, zero keys added or
+removed) and the evidence weights are **byte-identical** (0 of 2,646 `pw` dicts differ), so neither the
+method nor the games data moved. The entire difference is in values — `v0` changed on 1,565 records (median
++12.4) and the walk-forward value path on 2,528 of 13,592 cells. That is the adoption's own effect on the
+prior surface and the value path. It is **not** the γ question: both γ columns sit on the same store, so the
+comparison below is clean. It does bear on step 4's propagation and the G-Y0 re-derivation, and it is
+reported here rather than fixed.
+
+## Both curves, side by side
+
+Full 64 points plus the pool in `out/curves_picks_279.csv`. By band, VOR as a ratio of SCAR:
+
+| band | 1-3 | 4-7 | 8-12 | 13-20 | 21-27 | 28-35 | 36-48 | 49-64 |
+|---|---|---|---|---|---|---|---|---|
+| VOR/SCAR | 1.007 | 0.991 | 0.967 | 0.946 | 0.936 | 0.922 | 0.912 | 0.902 |
+
+Ladder total 67,401 → 63,908 (−5.18%). Pool level 297.2 → 273.7 (−7.91%), on 1,093 pool rows of which 624
+never established, identical in both columns. Steepness pick1/pick64: 5.128 (SCAR) → 5.703 (VOR), +11%.
+
+**VOR steepens the pick curve in the same direction it steepens the player board.** The top of the draft
+holds its value; everything from pick 8 down loses, worst at the tail.
+
+## Corrected players-vs-picks, both sides in the same currency
+
+| | players | picks (re-derived ladder 1–64) | total | picks share |
+|---|---|---|---|---|
+| SCAR | 802,390 | 67,401 | 869,791 | 7.7491% |
+| VOR | 774,236 | 63,908 | 838,144 | 7.6249% |
+
+Players −3.51%, picks −5.18%, share **−0.124 points**.
+
+**The earlier "picks get dearer as a class under VOR" consequence is withdrawn, and its sign was wrong.**
+Picks get slightly *cheaper* as a class under VOR, because the pick side falls further than the player side
+once both are allowed to move. The superseded figure (8.1012% → 8.3876%) was an artifact of holding the
+frozen ladder against a moving player side.
+
+## The tail, measured against a moving denominator
+
+| | curve mean, picks 55–64 | own realised | ratio |
+|---|---|---|---|
+| SCAR | 591.3 | 362.2 | 1.633× |
+| VOR | 532.4 | 332.1 | 1.603× |
+
+Band n=194. The realised side falls 8.31% while the curve tail falls ~10%, so the overpricing ratio moves
+only **−1.80%**. **γ does not meaningfully fix the tail** — this was the original conclusion and it survives
+the correction, now on the proper basis: γ moves the curve and its evidence denominator nearly together.
+The tail remains step 2 and step 3's work.
+
+## Age-gradient decomposition
+
+At fixed current value, the γ-flip ratio by age band (`out/age_gradient_279.json`):
+
+| age | ≤21 | 22–24 | 25–27 | 28–30 | 31+ |
+|---|---|---|---|---|---|
+| VOR/SCAR | 0.939 | 0.865 | 0.799 | 0.766 | 0.778 |
+
+Denominator 804 of 804 active rows, zero excluded. "Fixed value" is 20 equal-count SCAR-value bins; the
+gradient is stable at 5, 20 and 40 bins (first cut used quintiles wide enough for the ratio to track value
+inside a bin — the finding survived tightening). It also survives removing value entirely via a quadratic fit
+in log(value): residual correlation with age −0.36, mean residual monotone +0.050 → −0.071 across the bands.
+So it is a genuine career-stage effect, not value composition.
+
+Mechanism, visible in the same numbers: the ratio is *not* a pure function of production
+(corr(log value, ratio) = 0.71; residual sd 0.108 against total sd 0.156), because value also flows through
+the γ-refit v0 surface. Young players lean on that prior, older players on realised production, so the
+currency choice reprices career stages differently rather than rescaling uniformly.
+
+## Files added by this addendum
+
+- `out/curves_compare_279.json` — both curves, controls, band table, corrected share, tail ratios, store-drift attribution.
+- `out/curves_picks_279.csv` — rewritten: adopted / re-derived SCAR / re-derived VOR per pick, plus the pool.
+- `out/derived_279_scar.json`, `out/derived_279_vor.json` — the two derivations as emitted.
+- `out/per_entrant_279_scar.json`, `out/per_entrant_279_vor.json` — the evidence matrices behind them.
+- `out/age_gradient_279.json` — the age panel with its robustness and can-fail proofs.
+- `scripts/emit_matrix_279.py`, `scripts/derive_279.py` — the carried copies; `scripts/compare_curves.py`, `scripts/age_gradient.py`.
+
+## Non-vacuity for this addendum
+
+The curve-equality check demonstrably reports both outcomes: Control A matches the adopted payload, the
+SCAR-on-current-store re-derivation does not. The age-gradient metric returns a flat gradient on a flat
+synthetic input and a non-flat one on the real input. The both-directions population checks pass 8/8 with 0
+FAIL in each column, and their published rule ("no POOL row among the keys the ND fit consumed", and the
+converse) is the same instrument that would name violators if any existed.
+
+One cosmetic wart, disclosed: `emit_matrix_279.py` prints `wrote out/per_entrant_271.json` regardless of the
+actual output path, because that filename is a literal inside its print statement. The real writes went to
+the parameterised paths — confirmed by the worktree staying clean and by the matrices' own `meta` stamps.

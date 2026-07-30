@@ -1,0 +1,108 @@
+{
+ "question": "at fixed current value, does the VOR/SCAR value ratio depend on age?",
+ "denominators": {
+  "n_active_both_boards": 804,
+  "n_used": 804,
+  "n_excluded_zero_or_negative_scar_value": 0
+ },
+ "age_bands": [
+  "<=21",
+  "22-24",
+  "25-27",
+  "28-30",
+  "31+"
+ ],
+ "primary_20_equal_count_value_bins": {
+  "<=21": {
+   "ratio": 0.9385,
+   "bins_covered": 16,
+   "n": 233
+  },
+  "22-24": {
+   "ratio": 0.8652,
+   "bins_covered": 20,
+   "n": 200
+  },
+  "25-27": {
+   "ratio": 0.7988,
+   "bins_covered": 20,
+   "n": 152
+  },
+  "28-30": {
+   "ratio": 0.7655,
+   "bins_covered": 20,
+   "n": 130
+  },
+  "31+": {
+   "ratio": 0.7778,
+   "bins_covered": 20,
+   "n": 89
+  }
+ },
+ "robustness_across_bin_counts": {
+  "5": {
+   "<=21": 0.9395,
+   "22-24": 0.873,
+   "25-27": 0.8024,
+   "28-30": 0.7554,
+   "31+": 0.7771
+  },
+  "20": {
+   "<=21": 0.9385,
+   "22-24": 0.8652,
+   "25-27": 0.7988,
+   "28-30": 0.7655,
+   "31+": 0.7778
+  },
+  "40": {
+   "<=21": 0.9405,
+   "22-24": 0.865,
+   "25-27": 0.7976,
+   "28-30": 0.7594,
+   "31+": 0.7824
+  }
+ },
+ "value_removed_residual_check": {
+  "method": "ratio minus quadratic fit in log(SCAR value); a pure value effect would leave no age signal",
+  "corr_logvalue_ratio": 0.7134,
+  "ratio_sd": 0.1555,
+  "residual_sd": 0.1084,
+  "corr_age_ratio": -0.4263,
+  "corr_age_residual": -0.3623,
+  "mean_residual_by_age_band": {
+   "<=21": {
+    "n": 233,
+    "mean_residual": 0.0495
+   },
+   "22-24": {
+    "n": 200,
+    "mean_residual": 0.0225
+   },
+   "25-27": {
+    "n": 152,
+    "mean_residual": -0.0193
+   },
+   "28-30": {
+    "n": 130,
+    "mean_residual": -0.0706
+   },
+   "31+": {
+    "n": 89,
+    "mean_residual": -0.044
+   }
+  }
+ },
+ "reading": "the gradient is monotone from <=21 down to 28-30 and holds at every bin count and after value is removed entirely, so it is a real career-stage effect, not value composition. Mechanism: the ratio is not a pure function of production (corr(log v, ratio)=0.71, residual sd 0.108 vs total 0.156), because value also flows through the gamma-refit v0 surface \u2014 young players lean on that prior, older players on realised production.",
+ "nonvacuity": {
+  "synthetic_flat_input": "a ratio identically 1.0 yields a flat gradient by construction",
+  "flat_expected": {
+   "<=21": 1.0,
+   "22-24": 1.0,
+   "25-27": 1.0,
+   "28-30": 1.0,
+   "31+": 1.0
+  },
+  "real_gradient_is_not_flat": true,
+  "metric_can_fail": true
+ }
+}

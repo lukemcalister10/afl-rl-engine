@@ -1,0 +1,656 @@
+{
+ "by_band": [
+  {
+   "band": "1-3",
+   "ratio": 1.0074,
+   "scar": 8594,
+   "vor": 8658
+  },
+  {
+   "band": "4-7",
+   "ratio": 0.9905,
+   "scar": 8776,
+   "vor": 8693
+  },
+  {
+   "band": "8-12",
+   "ratio": 0.967,
+   "scar": 8494,
+   "vor": 8214
+  },
+  {
+   "band": "13-20",
+   "ratio": 0.9455,
+   "scar": 9891,
+   "vor": 9352
+  },
+  {
+   "band": "21-27",
+   "ratio": 0.9359,
+   "scar": 6712,
+   "vor": 6282
+  },
+  {
+   "band": "28-35",
+   "ratio": 0.922,
+   "scar": 6473,
+   "vor": 5968
+  },
+  {
+   "band": "36-48",
+   "ratio": 0.9121,
+   "scar": 8852,
+   "vor": 8074
+  },
+  {
+   "band": "49-64",
+   "ratio": 0.902,
+   "scar": 9609,
+   "vor": 8667
+  }
+ ],
+ "controls": {
+  "adopted_payload": "08ea9375",
+  "controlA_committed_matrix_payload": "08ea9375",
+  "controlA_reproduces_adopted": true,
+  "scar_current_store_payload": "ec9192a2",
+  "scar_point_mismatches_vs_adopted": 63,
+  "scar_reproduces_adopted": false,
+  "vor_differs_from_scar": true,
+  "vor_payload": "85576b0f"
+ },
+ "curve_points": [
+  {
+   "adopted": 3000,
+   "pick": 1,
+   "scar": 3000,
+   "vor": 3000,
+   "vor_over_scar": 1.0
+  },
+  {
+   "adopted": 2767,
+   "pick": 2,
+   "scar": 2835,
+   "vor": 2871,
+   "vor_over_scar": 1.0127
+  },
+  {
+   "adopted": 2693,
+   "pick": 3,
+   "scar": 2759,
+   "vor": 2787,
+   "vor_over_scar": 1.0101
+  },
+  {
+   "adopted": 2469,
+   "pick": 4,
+   "scar": 2529,
+   "vor": 2538,
+   "vor_over_scar": 1.0036
+  },
+  {
+   "adopted": 2224,
+   "pick": 5,
+   "scar": 2277,
+   "vor": 2264,
+   "vor_over_scar": 0.9943
+  },
+  {
+   "adopted": 1971,
+   "pick": 6,
+   "scar": 2018,
+   "vor": 1979,
+   "vor_over_scar": 0.9807
+  },
+  {
+   "adopted": 1907,
+   "pick": 7,
+   "scar": 1952,
+   "vor": 1912,
+   "vor_over_scar": 0.9795
+  },
+  {
+   "adopted": 1783,
+   "pick": 8,
+   "scar": 1826,
+   "vor": 1778,
+   "vor_over_scar": 0.9737
+  },
+  {
+   "adopted": 1676,
+   "pick": 9,
+   "scar": 1716,
+   "vor": 1660,
+   "vor_over_scar": 0.9674
+  },
+  {
+   "adopted": 1657,
+   "pick": 10,
+   "scar": 1697,
+   "vor": 1640,
+   "vor_over_scar": 0.9664
+  },
+  {
+   "adopted": 1628,
+   "pick": 11,
+   "scar": 1667,
+   "vor": 1609,
+   "vor_over_scar": 0.9652
+  },
+  {
+   "adopted": 1551,
+   "pick": 12,
+   "scar": 1588,
+   "vor": 1527,
+   "vor_over_scar": 0.9616
+  },
+  {
+   "adopted": 1445,
+   "pick": 13,
+   "scar": 1480,
+   "vor": 1413,
+   "vor_over_scar": 0.9547
+  },
+  {
+   "adopted": 1341,
+   "pick": 14,
+   "scar": 1373,
+   "vor": 1303,
+   "vor_over_scar": 0.949
+  },
+  {
+   "adopted": 1263,
+   "pick": 15,
+   "scar": 1293,
+   "vor": 1222,
+   "vor_over_scar": 0.9451
+  },
+  {
+   "adopted": 1207,
+   "pick": 16,
+   "scar": 1235,
+   "vor": 1165,
+   "vor_over_scar": 0.9433
+  },
+  {
+   "adopted": 1160,
+   "pick": 17,
+   "scar": 1186,
+   "vor": 1118,
+   "vor_over_scar": 0.9427
+  },
+  {
+   "adopted": 1117,
+   "pick": 18,
+   "scar": 1143,
+   "vor": 1076,
+   "vor_over_scar": 0.9414
+  },
+  {
+   "adopted": 1081,
+   "pick": 19,
+   "scar": 1106,
+   "vor": 1042,
+   "vor_over_scar": 0.9421
+  },
+  {
+   "adopted": 1051,
+   "pick": 20,
+   "scar": 1075,
+   "vor": 1013,
+   "vor_over_scar": 0.9423
+  },
+  {
+   "adopted": 1022,
+   "pick": 21,
+   "scar": 1046,
+   "vor": 985,
+   "vor_over_scar": 0.9417
+  },
+  {
+   "adopted": 994,
+   "pick": 22,
+   "scar": 1017,
+   "vor": 957,
+   "vor_over_scar": 0.941
+  },
+  {
+   "adopted": 964,
+   "pick": 23,
+   "scar": 987,
+   "vor": 927,
+   "vor_over_scar": 0.9392
+  },
+  {
+   "adopted": 935,
+   "pick": 24,
+   "scar": 956,
+   "vor": 895,
+   "vor_over_scar": 0.9362
+  },
+  {
+   "adopted": 906,
+   "pick": 25,
+   "scar": 927,
+   "vor": 865,
+   "vor_over_scar": 0.9331
+  },
+  {
+   "adopted": 880,
+   "pick": 26,
+   "scar": 901,
+   "vor": 838,
+   "vor_over_scar": 0.9301
+  },
+  {
+   "adopted": 858,
+   "pick": 27,
+   "scar": 878,
+   "vor": 815,
+   "vor_over_scar": 0.9282
+  },
+  {
+   "adopted": 840,
+   "pick": 28,
+   "scar": 859,
+   "vor": 795,
+   "vor_over_scar": 0.9255
+  },
+  {
+   "adopted": 824,
+   "pick": 29,
+   "scar": 843,
+   "vor": 779,
+   "vor_over_scar": 0.9241
+  },
+  {
+   "adopted": 811,
+   "pick": 30,
+   "scar": 829,
+   "vor": 765,
+   "vor_over_scar": 0.9228
+  },
+  {
+   "adopted": 798,
+   "pick": 31,
+   "scar": 816,
+   "vor": 752,
+   "vor_over_scar": 0.9216
+  },
+  {
+   "adopted": 785,
+   "pick": 32,
+   "scar": 802,
+   "vor": 739,
+   "vor_over_scar": 0.9214
+  },
+  {
+   "adopted": 771,
+   "pick": 33,
+   "scar": 789,
+   "vor": 726,
+   "vor_over_scar": 0.9202
+  },
+  {
+   "adopted": 758,
+   "pick": 34,
+   "scar": 775,
+   "vor": 713,
+   "vor_over_scar": 0.92
+  },
+  {
+   "adopted": 744,
+   "pick": 35,
+   "scar": 760,
+   "vor": 699,
+   "vor_over_scar": 0.9197
+  },
+  {
+   "adopted": 730,
+   "pick": 36,
+   "scar": 746,
+   "vor": 685,
+   "vor_over_scar": 0.9182
+  },
+  {
+   "adopted": 716,
+   "pick": 37,
+   "scar": 732,
+   "vor": 671,
+   "vor_over_scar": 0.9167
+  },
+  {
+   "adopted": 703,
+   "pick": 38,
+   "scar": 719,
+   "vor": 658,
+   "vor_over_scar": 0.9152
+  },
+  {
+   "adopted": 691,
+   "pick": 39,
+   "scar": 706,
+   "vor": 646,
+   "vor_over_scar": 0.915
+  },
+  {
+   "adopted": 679,
+   "pick": 40,
+   "scar": 695,
+   "vor": 635,
+   "vor_over_scar": 0.9137
+  },
+  {
+   "adopted": 669,
+   "pick": 41,
+   "scar": 684,
+   "vor": 624,
+   "vor_over_scar": 0.9123
+  },
+  {
+   "adopted": 660,
+   "pick": 42,
+   "scar": 675,
+   "vor": 615,
+   "vor_over_scar": 0.9111
+  },
+  {
+   "adopted": 651,
+   "pick": 43,
+   "scar": 666,
+   "vor": 607,
+   "vor_over_scar": 0.9114
+  },
+  {
+   "adopted": 644,
+   "pick": 44,
+   "scar": 659,
+   "vor": 599,
+   "vor_over_scar": 0.909
+  },
+  {
+   "adopted": 637,
+   "pick": 45,
+   "scar": 652,
+   "vor": 593,
+   "vor_over_scar": 0.9095
+  },
+  {
+   "adopted": 631,
+   "pick": 46,
+   "scar": 645,
+   "vor": 586,
+   "vor_over_scar": 0.9085
+  },
+  {
+   "adopted": 625,
+   "pick": 47,
+   "scar": 639,
+   "vor": 580,
+   "vor_over_scar": 0.9077
+  },
+  {
+   "adopted": 619,
+   "pick": 48,
+   "scar": 634,
+   "vor": 575,
+   "vor_over_scar": 0.9069
+  },
+  {
+   "adopted": 614,
+   "pick": 49,
+   "scar": 628,
+   "vor": 569,
+   "vor_over_scar": 0.9061
+  },
+  {
+   "adopted": 609,
+   "pick": 50,
+   "scar": 623,
+   "vor": 564,
+   "vor_over_scar": 0.9053
+  },
+  {
+   "adopted": 604,
+   "pick": 51,
+   "scar": 618,
+   "vor": 559,
+   "vor_over_scar": 0.9045
+  },
+  {
+   "adopted": 600,
+   "pick": 52,
+   "scar": 613,
+   "vor": 555,
+   "vor_over_scar": 0.9054
+  },
+  {
+   "adopted": 595,
+   "pick": 53,
+   "scar": 609,
+   "vor": 550,
+   "vor_over_scar": 0.9031
+  },
+  {
+   "adopted": 591,
+   "pick": 54,
+   "scar": 605,
+   "vor": 546,
+   "vor_over_scar": 0.9025
+  },
+  {
+   "adopted": 588,
+   "pick": 55,
+   "scar": 601,
+   "vor": 542,
+   "vor_over_scar": 0.9018
+  },
+  {
+   "adopted": 584,
+   "pick": 56,
+   "scar": 598,
+   "vor": 539,
+   "vor_over_scar": 0.9013
+  },
+  {
+   "adopted": 582,
+   "pick": 57,
+   "scar": 595,
+   "vor": 536,
+   "vor_over_scar": 0.9008
+  },
+  {
+   "adopted": 579,
+   "pick": 58,
+   "scar": 593,
+   "vor": 534,
+   "vor_over_scar": 0.9005
+  },
+  {
+   "adopted": 577,
+   "pick": 59,
+   "scar": 591,
+   "vor": 532,
+   "vor_over_scar": 0.9002
+  },
+  {
+   "adopted": 576,
+   "pick": 60,
+   "scar": 589,
+   "vor": 531,
+   "vor_over_scar": 0.9015
+  },
+  {
+   "adopted": 574,
+   "pick": 61,
+   "scar": 588,
+   "vor": 529,
+   "vor_over_scar": 0.8997
+  },
+  {
+   "adopted": 573,
+   "pick": 62,
+   "scar": 587,
+   "vor": 528,
+   "vor_over_scar": 0.8995
+  },
+  {
+   "adopted": 572,
+   "pick": 63,
+   "scar": 586,
+   "vor": 527,
+   "vor_over_scar": 0.8993
+  },
+  {
+   "adopted": 571,
+   "pick": 64,
+   "scar": 585,
+   "vor": 526,
+   "vor_over_scar": 0.8991
+  }
+ ],
+ "curve_rows": {
+  "scar": 1325,
+  "vor": 1325
+ },
+ "ladder_totals": {
+  "adopted": 65925,
+  "scar": 67401,
+  "vor": 63908,
+  "vor_over_scar": 0.9482
+ },
+ "meta": {
+  "scar": {
+   "force_majeure": [
+    "paddy-mccartin",
+    "thomas-boyd"
+   ],
+   "gamma": "0.85",
+   "nd_curve_last": 64,
+   "slide_years": [
+    2013,
+    2014
+   ],
+   "statistic": "SCAR",
+   "store_md5": "6b9d00a7",
+   "v0surf_sig": "b781ed253bff1a6f5de29fd26c2d7de9",
+   "windows": {
+    "pool": [
+     2004,
+     2024
+    ],
+    "priors": [
+     2006,
+     2020
+    ]
+   }
+  },
+  "vor": {
+   "force_majeure": [
+    "paddy-mccartin",
+    "thomas-boyd"
+   ],
+   "gamma": "1.0",
+   "nd_curve_last": 64,
+   "slide_years": [
+    2013,
+    2014
+   ],
+   "statistic": "VOR",
+   "store_md5": "6b9d00a7",
+   "v0surf_sig": "b781ed253bff1a6f5de29fd26c2d7de9",
+   "windows": {
+    "pool": [
+     2004,
+     2024
+    ],
+    "priors": [
+     2006,
+     2020
+    ]
+   }
+  }
+ },
+ "nd_last_band": {
+  "scar": {
+   "band": "55-64",
+   "n": 194,
+   "realised_scar": 362.2
+  },
+  "vor": {
+   "band": "55-64",
+   "n": 194,
+   "realised_scar": 332.1
+  }
+ },
+ "pick_curve_steepness_pick1_over_pick64": {
+  "adopted": 5.254,
+  "scar": 5.128,
+  "vor": 5.703
+ },
+ "players_vs_picks_same_currency": {
+  "basis": "players = sum of active board value (804 rows both columns); picks = re-derived ladder total 1-64 under the SAME gamma. Both sides move; nothing frozen is held against a moving side.",
+  "picks_change_pct": -5.182,
+  "players_change_pct": -3.509,
+  "scar": {
+   "picks": 67401,
+   "picks_share_pct": 7.7491,
+   "players": 802390,
+   "total": 869791
+  },
+  "share_point_change": -0.1242,
+  "vor": {
+   "picks": 63908,
+   "picks_share_pct": 7.6249,
+   "players": 774236,
+   "total": 838144
+  }
+ },
+ "pool_level": {
+  "n_scar": 1093,
+  "n_vor": 1093,
+  "never_established_scar": 624,
+  "never_established_vor": 624,
+  "scar": 297.2,
+  "vor": 273.7,
+  "vor_over_scar": 0.9209
+ },
+ "store_drift_attribution": {
+  "adopted_derived_from_store": "265f55d5",
+  "attribution": {
+   "keys_added_or_removed": 0,
+   "n_records": 2646,
+   "n_teaches_curve": 1444,
+   "population_identical": true,
+   "pw_evidence_weight_dicts_differing": 0,
+   "v0_median_delta": 12.4,
+   "v0_records_changed": 1565,
+   "vpath_cells_changed": 2528,
+   "vpath_cells_compared": 13592
+  },
+  "controlA_on_committed_matrix": "reproduces adopted payload 08ea9375 exactly (fit code calibrated)",
+  "current_adopted_store": "6b9d00a7",
+  "finding": "the adopted shipped ladder is NOT reproducible from the store it ships with",
+  "reading": "population and evidence weights are byte-identical, so the move is entirely in values (the v0 prior from the surface and the walk-forward value path) \u2014 the adoption's own effect. Not the gamma question: both columns sit on the same store. Bears on step 4 propagation and G-Y0.",
+  "scar_on_current_store": "payload ec9192a2, 63 of 64 points differ, ladder 67401 vs 65925 (+2.24%)"
+ },
+ "superseded_note": "the earlier 8.1012% -> 8.3876% figure held a FROZEN ladder against a moving player side and is withdrawn; the figure above is the like-for-like one.",
+ "tail_overpricing_same_currency": {
+  "band": "55-64",
+  "band_n": 194,
+  "basis": "band curve mean / that column OWN realised (evidence side moves too)",
+  "ratio_change_pct": -1.8,
+  "reading": "both the curve tail and its realised denominator fall together, so the overpricing ratio barely moves: gamma does not meaningfully fix the tail",
+  "realised_change_pct": -8.31,
+  "scar": {
+   "curve_mean": 591.3,
+   "ratio": 1.6325,
+   "realised": 362.2
+  },
+  "vor": {
+   "curve_mean": 532.4,
+   "ratio": 1.6031,
+   "realised": 332.1
+  }
+ }
+}
