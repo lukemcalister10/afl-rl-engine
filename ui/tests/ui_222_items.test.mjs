@@ -302,10 +302,26 @@ const totals = await page.evaluate(() => {
     if (!t || MD.clubTotals.isFree(t)) return;
     live[t] = (live[t] || 0) + p.v;
   });
+  /* INDEPENDENCE FROM THE BAKED BLOCK, proven by perturbation rather than by staleness.
+     This used to assert `differsFromBaked === 16` — i.e. that the baked totals were WRONG for every
+     club, which was true only because ui/data/club_valuation.js had not been regenerated since before
+     the adoption. That made the check a hostage to a stale file: #283 regenerates the bundle as part of
+     making the store the single source of ownership, the baked totals became correct, and the
+     assertion inverted through no change in the behaviour it was meant to guard. A test that passes
+     only while something else is broken is not guarding anything.
+     The property actually wanted is INDEPENDENCE: the browser computes the player side from the board
+     and never reads the baked block. So corrupt every baked total in place and recompute — the answer
+     must not move. (club_totals_parity.test.js proves the same property head-on; this is its in-page
+     counterpart, and it stays true whether the bundle is fresh or stale.) */
+  const beforePerturb = ct.clubs.map(c => c.totalPlayer);
+  (window.__CLUB_VALUATION__.clubs || []).forEach(c => { c.totalPlayer = -999999; c.overall = -999999; });
+  const afterPerturb = MD.clubTotals.compute().clubs.map(c => c.totalPlayer);
   return {
     n: ct.clubs.length,
     matchesLiveBoard: ct.clubs.every(c => Math.abs(c.totalPlayer - live[c.team]) < 0.5),
-    differsFromBaked: ct.clubs.filter(c => baked[c.team] && baked[c.team].totalPlayer !== c.totalPlayer).length,
+    independentOfBaked: beforePerturb.length === afterPerturb.length
+      && beforePerturb.every((v, i) => v === afterPerturb[i]),
+    bakedWasReadable: Object.keys(baked).length === 16,
     picksKept: ct.clubs.every(c => c.totalPicks > 0),
     identities: ct.clubs.every(c => c.overall === c.totalPlayer + c.totalPicks &&
                                     c.totalPlayer === c.best23 + c.nonBest23),
@@ -315,9 +331,12 @@ const totals = await page.evaluate(() => {
 });
 check(totals.n === 16, 'item 21 — 16 clubs computed', String(totals.n));
 check(totals.matchesLiveBoard, 'item 21 — every club total equals the sum of its players ON THE LIVE BOARD');
-check(totals.differsFromBaked === 16,
-  'item 21 — and differs from the baked file for all 16 clubs (the staleness this removes)',
-  String(totals.differsFromBaked));
+check(totals.bakedWasReadable,
+  'item 21 — the baked block IS present and readable for all 16 clubs (so independence is a real test, '
+  + 'not one passing over an absent file)');
+check(totals.independentOfBaked,
+  'item 21 — and the computation is INDEPENDENT of it: corrupting every baked total changes nothing '
+  + '(the staleness this removes)');
 check(totals.picksKept, 'item 21 — the ingest\'s PVC band-priced picks are kept, not recomputed');
 check(totals.identities, 'item 21 — overall == player + picks and player == best23 + nonBest23');
 check(totals.boardPin === totals.stampPin, 'item 21 — the totals name the board they were summed from');

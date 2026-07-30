@@ -135,6 +135,13 @@ jobs:
           python3 ui/tests/club_curve_provenance.test.py
           python3 ui/tests/test_club_valuation_current.py
           node    ui/tests/club_totals_parity.test.js
+          # #283 — ownership single source. The store is the one source of `affl_team`; ui/data/ownership.js
+          # is a generated mirror rebuilt FROM it. These two gate the thing that was silently untrue before:
+          # that reader and oracle read the SAME field (proven by injecting divergence BOTH directions), that
+          # a stale or hand-edited mirror is REFUSED rather than honoured, and that the store write is
+          # exact-byte, key-joined, and diff-fenced to affl_team alone.
+          node    ui/tests/ownership_single_source.test.js
+          python3 ui/tests/ownership_store_apply.test.py
           # ITEM 271 Addendum 23 fix 3: movers.test.js LAST in this step. Its declared known-red (exactly
           # two assertions: the no-gate lineage state + the R19-boundary anchor) was shadowing the tests
           # below it. Pin unchanged. Steps 14-22 stay shadowed until #274 — declared.

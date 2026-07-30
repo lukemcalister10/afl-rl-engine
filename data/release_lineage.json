@@ -165,6 +165,37 @@
     "register"
    ],
    "_measured_note": "unchanged_across_transition is the MEASURED list. rl_model and fv DID move at this adoption (4f776e07->7349a1e4 and 6a9a520f->d10aa93e) \u2014 unlike the ITEM 408 transition, where both were unchanged. Stated explicitly per the ruling."
+  },
+  {
+   "_doc": "OUT-OF-ROUND OWNERSHIP STORE WRITE (#283). The owner's AFFL ownership CSV is couriered into the store's affl_team; the #232 sidecar becomes a generated mirror rebuilt FROM the store. Appended, not substituted: every prior entry is preserved verbatim. The BOARD DOES NOT MOVE \u2014 affl_team is not in the board of record (128 lensPicks keys, all null; the 804 active rows do not carry it), so this is an identity-only transition with no engine build. Per this register's own law an APPENDED entry is the shape prescribed for an out-of-round move.",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "OWNERSHIP_SINGLE_SOURCE_2026-07-30"
+   ],
+   "owner_ruling": "2026-07-30, owner ruling on #283: the store becomes the single source of ownership truth; the ingest writes the CSV's ownership into the store's affl_team (owner authorship by courier), and the #232 sidecar survives as a generated mirror rebuilt FROM the store, never independently authoritative.",
+   "authority": "Luke McAlister (owner) \u2014 sole merge authority; relayed by the seam on #283",
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "store": "6b9d00a75ca88122c42da9189739916b",
+    "as_of_round": 20
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "store": "81d2470440a80f72afea4405e94338c5",
+    "as_of_round": 20
+   },
+   "invariants": {
+    "store_moved_by_transition": {
+     "from": "6b9d00a75ca88122c42da9189739916b",
+     "to": "81d2470440a80f72afea4405e94338c5"
+    },
+    "board_unmoved_by_transition": "f2df6e0a2902f48e1df36f35493ba8c1",
+    "declares_no_landing_board": "this transition moves the STORE only; it is a pointer note to the boundary reader and must never supersede a board-boundary record (round_movers.model_changes)",
+    "fields_written": "affl_team only",
+    "engine_build": "none \u2014 affl_team is not read by ev() and is absent from the board of record"
+   }
   }
  ]
 }
