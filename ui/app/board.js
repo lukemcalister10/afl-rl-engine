@@ -160,7 +160,7 @@ MD.board = (function () {
     { key: "totalPicks", label: "Picks value", tip: "held draft picks at the canonical PVC" },
     { key: "top5", label: "Top-5", tip: "the five most valuable players" },
     { key: "top10", label: "Top-10", tip: "the ten most valuable players" },
-    { key: "best23", label: "Best-23", tip: "best positionally-compliant XVIII + 5 bench" },
+    { key: "best23", label: "Best-23", tip: "the most valuable legally-fieldable 23 — XVIII + 5 bench, chosen over each player's eligible positions" },
     { key: "nonBest23", label: "Non-Best-23", tip: "roster depth beyond the best XXIII" },
   ];
 

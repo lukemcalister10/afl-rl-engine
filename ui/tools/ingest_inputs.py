@@ -61,10 +61,12 @@ KNOWN_PATHWAYS = {
     "RL_PVC2": "pvc_curve_v2.json",       # v2.9+ composed pathway (the v2.11 adopted curve)
     "RL_PVCADOPT": "pvc_curve_L1b.json",  # prior v2.9 L1b adopt curve (superseded by RL_PVC2)
 }
-# Best-23 positional structure (item 178(3)); posCode vocab is the board's CURRENT posCode.
+# Best-23 positional structure (item 178(3)). Slot legality is drawn from the store's ELIGIBILITIES
+# column, carried on the board bundle as `elig` (#274 item 2 / #271 Addendum 19) — NOT from `posCode`,
+# which is the modelling axis and cannot see DPP.
 SLOTS = [("KPD", 2), ("SD", 4), ("MID", 5), ("SF", 4), ("KPF", 2), ("RUCK", 1)]
 BENCH = 5
-TARGET = 23   # slots(18) + BENCH(5); the backfill fills to THIS
+TARGET = 23   # the 18 positional slots + BENCH(5)
 FREE_AGENTS = "Free Agents"
 
 verdicts = []   # [(check, ok, detail)]
@@ -573,6 +575,85 @@ def loc_enc_note(lenc, penc):
 
 
 # -------------------------------------------------------------------------- per-club valuation
+def best23_of(roster):
+    """The value-maximal legal 23 (#271 Addendum 19). See the full note at MD.clubTotals.best23Of in
+    ui/app/club_totals.js — this is the SAME algorithm, transliterated line-for-line so the selection
+    itself (not merely its total) is reproducible across the two languages. Same node numbering, same
+    edge insertion order, same Bellman-Ford relaxation order, same strict-improvement rule.
+
+    Slots come from the store's ELIGIBILITIES column, DPP players are assignable to either eligible
+    slot, and the selection is an exact min-cost max-flow rather than a greedy: a greedy can spend a
+    dual-eligible player on a slot a single-eligible player could have filled and strand the slot only
+    that player covered. Returns (total, keys) with keys in roster order (descending v).
+    """
+    n = len(roster)
+    SRC = 0                                  # 1..len(SLOTS) are the slot nodes
+    BENCH_NODE = 1 + len(SLOTS)
+    P0 = BENCH_NODE + 1                      # P0 + j is player j
+    SINK = P0 + n
+    N = SINK + 1
+
+    e_from, e_to, e_cap, e_cost = [], [], [], []
+
+    def add_edge(u, v, c, w):
+        e_from.append(u); e_to.append(v); e_cap.append(c); e_cost.append(w)      # forward
+        e_from.append(v); e_to.append(u); e_cap.append(0); e_cost.append(-w)     # residual
+
+    for i, slot in enumerate(SLOTS):
+        add_edge(SRC, 1 + i, slot[1], 0)
+    add_edge(SRC, BENCH_NODE, BENCH, 0)
+    for j in range(n):
+        el = roster[j].get("elig") or []
+        for i, slot in enumerate(SLOTS):
+            if slot[0] in el:
+                add_edge(1 + i, P0 + j, 1, 0)
+    for j in range(n):
+        add_edge(BENCH_NODE, P0 + j, 1, 0)
+    sink_edge = []
+    for j in range(n):
+        sink_edge.append(len(e_cap)); add_edge(P0 + j, SINK, 1, -(roster[j].get("v") or 0))
+
+    E = len(e_cap)
+    INF = float("inf")
+    flow = 0
+    while flow < TARGET:
+        # Bellman-Ford over the residual graph, edges relaxed in INSERTION order and only on strict
+        # improvement, so the augmenting path is deterministic.
+        dist = [INF] * N
+        prev = [-1] * N
+        dist[SRC] = 0
+        for _ in range(N):
+            changed = False
+            for e in range(E):
+                if e_cap[e] <= 0:
+                    continue
+                u = e_from[e]
+                if dist[u] == INF:
+                    continue
+                nd = dist[u] + e_cost[e]
+                if nd < dist[e_to[e]]:
+                    dist[e_to[e]] = nd; prev[e_to[e]] = e; changed = True
+            if not changed:
+                break
+        if dist[SINK] == INF:
+            break                            # eligibility cannot fill another place — stop honestly
+        # every player->sink edge has capacity 1, so the bottleneck is always exactly one unit
+        v = SINK
+        while v != SRC:
+            e = prev[v]
+            e_cap[e] -= 1
+            e_cap[e ^ 1] += 1                # forward/residual are inserted as pairs
+            v = e_from[e]
+        flow += 1
+
+    total = 0
+    keys = []
+    for j in range(n):
+        if e_cap[sink_edge[j]] == 0:
+            total += (roster[j].get("v") or 0); keys.append(roster[j]["key"])
+    return total, keys
+
+
 def build_clubs(players, picks, affl_teams):
     picks_by_team = collections.defaultdict(list)
     for p in picks:
@@ -591,18 +672,8 @@ def build_clubs(players, picks, affl_teams):
         top5 = sum(p["v"] for p in roster[:5])
         top10 = sum(p["v"] for p in roster[:10])
 
-        # Best-23: greedy positional fill by highest board v per slot (CURRENT posCode), then best-5 bench.
-        used = set()
-        best23_keys = []
-        best23 = 0
-        for pos, n in SLOTS:
-            picked = [p for p in roster if p["posCode"] == pos and id(p) not in used][:n]
-            for p in picked:
-                used.add(id(p)); best23 += p["v"]; best23_keys.append(p["key"])
-        # BACKFILL STOPGAP (#271 Addendum 19, owner word 2026-07-30): the bench fills to the 23 TARGET rather than a fixed 5, so an UNFILLED positional slot no longer costs a club a place. Measured basis: Adelaide 3 grouped MIDs (ten dual covers) and Hawthorn 4 (six) -- an AXIS ARTIFACT, which is why counting the shortfall was rejected. STOPGAP pending #274, which replaces this with the ruled law: value-maximal 23 fillable from the ELIGIBILITIES column, DPP-optimised, on absolute board value.
-        bench = [p for p in roster if id(p) not in used][:TARGET - len(best23_keys)]
-        for p in bench:
-            used.add(id(p)); best23 += p["v"]; best23_keys.append(p["key"])
+        # Best-23: the ruled value-maximal legal 23 from the ELIGIBILITIES column (see best23_of).
+        best23, best23_keys = best23_of(roster)
 
         tp = [t for t in picks_by_team[team]]
         total_picks = sum(p["value"] for p in tp)

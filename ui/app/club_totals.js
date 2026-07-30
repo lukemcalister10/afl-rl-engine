@@ -28,11 +28,9 @@
    no board byte.
 
    BEST-23 is a positional SELECTION, not a sum, so it is reproduced here EXACTLY as the ingest does it
-   (ui/tools/ingest_inputs.py build_clubs): roster sorted by board value descending, greedy fill of
-   2 KPD · 4 SD · 5 MID · 4 SF · 2 KPF · 1 RUCK taking the highest-valued unused player
-   for each slot, then the 5 best remaining as bench. Identical algorithm, identical input, identical
-   tie-breaking (both sorts are stable over the same bundle order). ui/tests/club_totals_parity.test.js
-   proves the two agree club-for-club and metric-for-metric on the live board. */
+   (ui/tools/ingest_inputs.py build_clubs). ui/tests/club_totals_parity.test.js proves the two agree
+   club-for-club and metric-for-metric on the live board — see the selector's own note below for the law
+   it implements and why the greedy it replaced could not implement it. */
 window.MD = window.MD || {};
 
 MD.clubTotals = (function () {
@@ -45,6 +43,105 @@ MD.clubTotals = (function () {
 
   function isFree(canonName) {
     return String(canonName || "").toLowerCase() === FREE_LC;
+  }
+
+  /* ---------------------------------------------------------------- BEST-23: the value-maximal legal 23
+     THE LAW (#271 Addendum 19, owner words 2026-07-30): "Best 23 should be the best possible 23 a team
+     can fill based on their players eligible positions. Optimised, DPP can help." Metric, owner-corrected
+     in the same exchange: ABSOLUTE BOARD VALUE `v`. Slots are drawn from the store's ELIGIBILITIES column,
+     with DPP players assignable to EITHER eligible slot — an optimisation, explicitly not a first-fit.
+
+     WHAT THIS REPLACED, and why it had to be replaced rather than patched. The old selector filled slots
+     greedily by `posCode`, which is `grp` — the modelling/trajectory axis, one code per player. That axis
+     cannot see DPP at all, so clubs showed positional shortfalls they do not have: Adelaide 3 MID-grouped
+     against 5 MID slots while holding TEN dual-eligible covers (Rozee SD,MID v=2930 foremost); Hawthorn 4
+     against 5 with SIX (Graham SF,MID v=1727; Nairn; Edwards). Both are fully legal in eligibility terms —
+     the shortfall was an AXIS ARTIFACT, which is why "count the shortfall honestly" was rejected: it would
+     have displayed false information. The adoption-day fix was a declared STOPGAP (a top-up that backfilled
+     unfilled slots so no club lost a place); this is the ruled law that retires it.
+
+     WHY AN ASSIGNMENT AND NOT A GREEDY. A greedy over eligibility is still wrong, not merely imprecise: it
+     can spend a dual-eligible player on a slot that a single-eligible player could have filled, and strand
+     the slot only that player could have covered. Getting it right means solving the assignment, so this is
+     an exact MIN-COST MAX-FLOW: source -> each slot type (capacity = its slot count) and -> a bench node
+     (capacity 5); slot -> every player eligible for it; bench -> every player; player -> sink at cost -v.
+     A flow of 23 saturates the source, so it is exactly 18 legally-assigned players plus 5 bench, and
+     minimising cost maximises the summed board value. Optimal, not approximate.
+
+     PARITY IS BY TRANSLITERATION. This function, ingest_inputs.py `best23_of`, and the oracle inside
+     club_totals_parity.test.js are the SAME algorithm written three times, deliberately line-for-line:
+     same node numbering, same edge insertion order, same Bellman-Ford relaxation order, same
+     strict-improvement rule. That is what makes the selection itself — not just its total — reproducible
+     across languages, which matters because two different legal 23s can sum to the same number.
+
+     BENCH IS UNRESTRICTED, so which 18 of the 23 are "slot" and which 5 are "bench" is not unique (a
+     player can often swap between a bench place and a slot he is eligible for). The chosen SET is unique
+     under this algorithm; the partition is not, so no slot assignment is exposed — publishing an arbitrary
+     one would be inventing a fact.
+
+     Returns {total, keys} with `keys` in roster order (descending v). If eligibility genuinely cannot fill
+     the 18 slots the flow stops short and the club carries fewer than 23 — reported honestly, never
+     topped up. */
+  function best23Of(roster) {
+    const n = roster.length;
+    const SRC = 0;                          // 1..SLOTS.length are the slot nodes
+    const BENCH_NODE = 1 + SLOTS.length;
+    const P0 = BENCH_NODE + 1;              // P0 + j is player j
+    const SINK = P0 + n;
+    const N = SINK + 1;
+
+    const eFrom = [], eTo = [], eCap = [], eCost = [];
+    function addEdge(u, v, c, w) {
+      eFrom.push(u); eTo.push(v); eCap.push(c); eCost.push(w);      // forward
+      eFrom.push(v); eTo.push(u); eCap.push(0); eCost.push(-w);     // residual
+    }
+    for (let i = 0; i < SLOTS.length; i++) addEdge(SRC, 1 + i, SLOTS[i][1], 0);
+    addEdge(SRC, BENCH_NODE, BENCH, 0);
+    for (let j = 0; j < n; j++) {
+      const el = roster[j].elig || [];
+      for (let i = 0; i < SLOTS.length; i++) {
+        if (el.indexOf(SLOTS[i][0]) >= 0) addEdge(1 + i, P0 + j, 1, 0);
+      }
+    }
+    for (let j = 0; j < n; j++) addEdge(BENCH_NODE, P0 + j, 1, 0);
+    const sinkEdge = [];
+    for (let j = 0; j < n; j++) { sinkEdge.push(eCap.length); addEdge(P0 + j, SINK, 1, -(roster[j].v || 0)); }
+
+    const E = eCap.length;
+    const INF = Infinity;
+    let flow = 0;
+    while (flow < TARGET) {
+      // Bellman-Ford over the residual graph. Edges are relaxed in INSERTION order and only on strict
+      // improvement, so the predecessor tree — and therefore the augmenting path — is deterministic.
+      const dist = new Array(N).fill(INF), prev = new Array(N).fill(-1);
+      dist[SRC] = 0;
+      for (let pass = 0; pass < N; pass++) {
+        let changed = false;
+        for (let e = 0; e < E; e++) {
+          if (eCap[e] <= 0) continue;
+          const u = eFrom[e];
+          if (dist[u] === INF) continue;
+          const nd = dist[u] + eCost[e];
+          if (nd < dist[eTo[e]]) { dist[eTo[e]] = nd; prev[eTo[e]] = e; changed = true; }
+        }
+        if (!changed) break;
+      }
+      if (dist[SINK] === INF) break;        // eligibility cannot fill another place — stop honestly
+      // every player->sink edge has capacity 1, so the bottleneck is always exactly one unit
+      for (let v = SINK; v !== SRC; v = eFrom[prev[v]]) {
+        const e = prev[v];
+        eCap[e] -= 1;
+        eCap[e ^ 1] += 1;                   // forward/residual are inserted as pairs, so XOR 1 is the twin
+      }
+      flow += 1;
+    }
+
+    let total = 0;
+    const keys = [];
+    for (let j = 0; j < n; j++) {
+      if (eCap[sinkEdge[j]] === 0) { total += (roster[j].v || 0); keys.push(roster[j].key); }
+    }
+    return { total: total, keys: keys };
   }
 
   let _cache = null;
@@ -73,17 +170,9 @@ MD.clubTotals = (function () {
       const totalPlayer = roster.reduce(function (s, p) { return s + p.v; }, 0);
       const sumN = function (n) { return roster.slice(0, n).reduce(function (s, p) { return s + p.v; }, 0); };
 
-      // Best-23 — the ingest's exact greedy (see the header note).
-      const used = {}, best23Keys = [];
-      let best23 = 0;
-      SLOTS.forEach(function (slot) {
-        roster.filter(function (p) { return p.posCode === slot[0] && !used[p.key]; })
-          .slice(0, slot[1])
-          .forEach(function (p) { used[p.key] = 1; best23 += p.v; best23Keys.push(p.key); });
-      });
-      /* BACKFILL STOPGAP (#271 Addendum 19, owner word 2026-07-30): the bench fills to the 23 TARGET rather than a fixed 5, so an UNFILLED positional slot no longer costs a club a place. Measured basis: Adelaide 3 grouped MIDs (ten dual covers) and Hawthorn 4 (six) -- an AXIS ARTIFACT, which is why counting the shortfall was rejected. STOPGAP pending #274, which replaces this with the ruled law: value-maximal 23 fillable from the ELIGIBILITIES column, DPP-optimised, on absolute board value. */
-      roster.filter(function (p) { return !used[p.key]; }).slice(0, TARGET - best23Keys.length)
-        .forEach(function (p) { used[p.key] = 1; best23 += p.v; best23Keys.push(p.key); });
+      // Best-23 — the ruled value-maximal legal 23 (see best23Of's note); identical to the ingest's.
+      const sel = best23Of(roster);
+      const best23 = sel.total, best23Keys = sel.keys;
 
       const myPicks = picksByTeam[team] || [];
       const totalPicks = myPicks.reduce(function (s, p) { return s + p.value; }, 0);

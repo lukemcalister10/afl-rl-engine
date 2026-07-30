@@ -110,8 +110,14 @@ MD.clubs = (function () {
         : '<span class="halt">Picks unavailable</span> — ' +
           fmt.esc((halt && halt.reason) || "the club-valuation bundle is absent") +
           ". Picks and Overall show <b>n/a</b> rather than 0; the player-side columns are unaffected.") +
-      " <b>Best-23</b> = the best positionally-compliant XVIII " +
-      "(2 K-DEF · 4 G-DEF · 5 MID · 4 G-FWD · 2 K-FWD · 1 RUC) by board value + 5 best-remaining bench. " +
+      /* #274 item 2: this described the greedy that was replaced ("by board value + 5 best-remaining
+         bench"). It now describes the ruled selection (#271 Addendum 19) — the best 23 a club can
+         actually field, chosen by solving the assignment over each player's eligible positions rather
+         than filling slots in order, so a dual-position player is used wherever he is worth most. */
+      " <b>Best-23</b> = the most valuable 23 the club can legally field — the XVIII " +
+      "(2 K-DEF · 4 G-DEF · 5 MID · 4 G-FWD · 2 K-FWD · 1 RUC) plus 5 bench, chosen together so that " +
+      "every slot is filled by someone eligible for it and the total board value is the highest possible. " +
+      "Dual-position players count toward whichever slot makes the side strongest. " +
       "Every column sortable; click a club to open its board view. " +
       "<small>(The AFFL league is 16 clubs + a Free-Agents pool; Free Agents is a pool, not a club, so it is not ranked.)</small>";
     page.appendChild(intro);

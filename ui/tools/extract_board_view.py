@@ -70,10 +70,27 @@ def main():
     assert store_md5.startswith(want_store), (
         "STORE RING-FENCE FAIL: rl_model_data.json md5 %s != pinned store %s" % (store_md5[:8], want_store))
     affl_by_key = {}
+    # ---- #274 item 2: the ELIGIBILITIES column, carried through as a display/selection field --------
+    # The Best-23 law (#271 Addendum 19) selects on the store's ELIGIBILITIES column, with DPP players
+    # assignable to either eligible slot. The board (rl_app_data.json) carries only `grp` — the
+    # modelling/trajectory axis, one code per player — which cannot see DPP at all; that blindness is
+    # what produced the measured axis artifacts (Adelaide 3 MID-grouped against 5 slots with ten
+    # dual-eligible covers; Hawthorn 4 with six). So the column rides here, from the SAME read-only
+    # md5-verified store this function already opens for affl_team, and by the same doctrine: a display
+    # field, joined by key, that no valuation path reads.
+    #
+    # Emitted as a LIST of canonical slot codes, in the store's own order (the primary first), so the
+    # bundle carries the eligibility set rather than a string a consumer would have to re-split.
+    # Measured at the adopted store 6b9d00a7: 804 of 804 board players carry a non-empty column, every
+    # token is one of the six canonical slot codes (zero strays), lists are length 1 (618) or 2 (186 —
+    # the DPP players), and EVERY player's board posCode appears among his own eligibilities, so the
+    # eligibility set is a superset of the modelling axis and can never select a worse 23 than `grp`.
+    elig_by_key = {}
     for r in json.loads(store_raw):
         k = r.get("key")
         if k:
             affl_by_key[k] = norm_club(r.get("affl_team"))
+            elig_by_key[k] = [t.strip() for t in str(r.get("eligibilities") or "").split(",") if t.strip()]
 
     def row_working(p):
         # Full field set for the owner's working aid (identity-bearing).
@@ -82,6 +99,10 @@ def main():
             "name": p.get("name"),
             "pos": label_pos(p.get("grp") or p.get("gf")),
             "posCode": p.get("grp") or p.get("gf"),
+            # #274 item 2: the owner-maintained ELIGIBILITIES set (canonical slot codes). `posCode` above
+            # stays exactly what it was — the modelling axis — and keeps every use it already had; this is
+            # the SLOT-LEGALITY axis the Best-23 selector reads, and the two are deliberately separate.
+            "elig": elig_by_key.get(p.get("key")) or [],
             "club": p.get("club"),
             # item 1 (2026-07-15): AFL club + AFFL club listed per player. DISPLAY-ONLY strings — the AFL
             # club is the board's own `club`; the AFFL club is joined from the master store by key. No value
