@@ -92,6 +92,23 @@ MD.isPickAsset = function (p) {
   return false;
 };
 
+/* OVER-FREE LENS (#274 item 3; owner word 2026-07-29, durable spec in #279 seed ruling S-5).
+
+   `v − FHV`: what a player is worth ABOVE what the free-agent tier reasonably hands you for nothing.
+   FHV is the ruled constant (MD.config.FHV = 190; see the ruling note there). A player below it is a
+   standing delist candidate — the "below free" flag — because his place on the list costs more than it
+   returns against a free hit.
+
+   COMPUTED AT RENDER, EVERY TIME. Nothing is stored, nothing is re-pinned, no bundle carries it. Pass a
+   board value in, get the lens out; null in, null out, so a row without a value shows "—" rather than a
+   fabricated −190. `belowFree` is the flag; `overFree` is the figure. */
+MD.overFree = function (v) {
+  return (v == null) ? null : (v - MD.config.FHV);
+};
+MD.belowFree = function (v) {
+  return (v != null) && (v < MD.config.FHV);
+};
+
 /* value line (item 3 · owner-worded amendment to the Matchday LOCK, register item 163, 2026-07-15):
    a CONTINUOUS filling line, not ten segmented blocks. The colour spectrum is anchored to the TRACK
    (0..top price), and the unfilled remainder is masked, so the fill reveals the spectrum from the cool

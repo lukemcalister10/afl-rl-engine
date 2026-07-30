@@ -31,6 +31,30 @@ MD.config = {
   LENS_DEFAULT: 2,
   LENS_LABELS: ["−2 yr", "−1 yr", "Now", "+1 yr", "+2 yr"],
 
+  /* FREE-HIT VALUE — the ruled constant behind the "over free" lens (#274 item 3).
+
+     THE RULING (#270 FHV definitional ruling, owner word 2026-07-29: "Yes, option A"): free-hit value is
+     defined on the EXPECTATION view, as a SINGLE constant, working value ≈190. The survivor-conditioned
+     readings were rejected as definitions — 250 is the listed survivors' median and 528 (`pool_value`) is
+     cleared by 8% of entrants ever, and the study measured the survivor overstatement at 2–3× on means.
+     No per-access-position schedule: order within a window carries no usable signal (pooled rho ≈ −0.15).
+
+     THE INTEGER, with its denominators, fixed by this consumer as the ruling requires. The study's basis:
+     mature-cohort mean 193 (2015–23 entries, n=200, busts and departed counted at 0) and all-years mean
+     178 (n=389). 190 is taken because it is the constant the ruling itself carries as its working value,
+     and because each alternative has a defect the study names: 193's n=200 excludes in-flight recent
+     entrants, and 178's n=389 is cohort-age dominated (the study's own presentation guard). It also keeps
+     this consumer consistent with #276's phantom, which takes "the ruled FHV (≈190)" at its fire.
+
+     A LENS, NEVER A STORED FIGURE. `v − FHV` is computed at render, every time, and written nowhere: no
+     bundle field, no baked file, no re-pin. That is deliberate — a stored derived figure is exactly the
+     staleness that took the club totals out (see ui/app/club_totals.js). Changing this one number moves
+     the column and the below-free flag together and touches nothing else.
+
+     The per-window schedule (MSD ~352 / SSP ~277 / OTHER ~97) is the recorded upgrade path and is one
+     owner word away; nothing here blocks it. */
+  FHV: 190,
+
   /* item 178(1) CLUB-NAME WRAP FIX (owner-worded 2026-07-16): a DISPLAY-NAME MAP for exactly the three
      owner-named AFFL clubs whose full nicknames break two lines. DISPLAY-ONLY — the long name stays the
      join key everywhere (bundle affl_team, the picks-Owner join, the club-filter value); only the
