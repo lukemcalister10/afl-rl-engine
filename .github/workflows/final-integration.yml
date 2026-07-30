@@ -181,11 +181,34 @@ jobs:
           cmp /tmp/p.js ui/data/board_view_public.js
           echo "generated UI-bundle equality OK"
 
-      - name: Disposable R15 regeneration preserves the future ladder + F5 (gate OFF, canonical untouched)
-        run: RL_VENDOR="$PWD/vendor" python3 session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py
-
-      - name: R14-R19 sequential season-state advance (disposable; canonical untouched)
-        run: RL_VENDOR="$PWD/vendor" python3 session_2026-07-21/final_integration/tests/season_advance_r14_r19_proof.py
+      # RETIRED from CI by owner word 2026-07-30 (#274, as a named one-file extension of the adoption
+      # mop-up act). Two steps removed here:
+      #     Disposable R15 regeneration preserves the future ladder + F5   (r15_ladder_survival_proof.py)
+      #     R14-R19 sequential season-state advance                        (season_advance_r14_r19_proof.py)
+      #
+      # WHY. Their premise died at adoption. Both rewound a disposable scratch to the accepted R14 state and
+      # replayed the recorded rounds — but the engine doing the replaying is always the current checkout, so
+      # once the 30/7 rederivation moved `fv` (6a9a520f -> d10aa93e) the combination began exercising paths no
+      # real era ever ran: R14-era state driven through post-adoption code. Guard 5 refused it first, correctly.
+      # When #274 restated the claim so the replay declared itself honestly, the halt cleared and the replay
+      # ran on into engine/forward_valuation/par_build.py:176 — IndexError on a position group with zero
+      # teaching observations (POS built by list comprehension at :115, so an empty group is a shape-(0,)
+      # array indexed as 2-D). That is a real defect, but it is only reachable through this artificial
+      # pairing, and chasing it here would have meant editing engine valuation code to quieten a step whose
+      # premise no longer holds.
+      #
+      # THEIR LAST SERVICE, recorded because it was real: on the way out they unmasked the stale F5 seal —
+      # data/release_contract.json still carried the superseded entrant layer 83,538 while the adopted board
+      # served 77,611. That is now re-stamped (same act, previous commit). A guard earning its keep as it
+      # retires is worth writing down.
+      #
+      # WHAT REPLACES THEM: #139 item 20, the disposable NEXT-ROUND rehearsal — a replay whose premise is the
+      # era the tree is actually in. DOCKETED, deliberately NOT commissioned here.
+      #
+      # THE SCRIPTS STAY ON DISK, byte-untouched. This act unwires them from CI and nothing more: they are
+      # cited by sealed records, so deletion is hygiene's business under the retention law (charter D2), not
+      # this wave's. The par_build empty-group defect is NOT fixed here either — it rides #279's par
+      # per-season rework as a LOUD-HALT requirement: halt naming the empty group, never an IndexError.
 
       - name: Track B fast unit + acceptance matrix
         run: |
