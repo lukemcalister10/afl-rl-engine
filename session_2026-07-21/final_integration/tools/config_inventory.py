@@ -178,6 +178,7 @@ CLASSIFICATION = {
   # ---- Track B weekly-updater path (gate-OFF): infra/schedule controls, not board-valuation semantics ---
   'RL_VENDOR':       ('B','infra','/home/claude/rl_vendor', 'Track B updater vendor path (like RL_FV); staged_apply INFRA_ALLOW'),
   'RL_SEASON_ROUNDS':('B','infra', None,    'Track B updater season-round-count schedule control; not a valuation semantic; staged_apply INFRA_ALLOW'),
+  'RL_OSA_SKIP':     ('B','infra','0',      '#283 ownership-store-apply RE-ENTRY GUARD, not a semantic: the transaction runs ingest_inputs.py on its own overlay to produce the two mirrors, and that inner run must not recurse into a second transaction. Set ONLY by ownership_store_apply for that child process; unset on every owner/CI path, where the ingest performs the store apply as step 0. Reads no valuation input and changes no value.'),
   # ---- class C diagnostic/test/bake-tool/retired (off the canonical board-generation path) ------------
   'RL_WS':           ('C','diag', '/home/claude/rl_workspace/rl_after', 'refit_q97m workspace (bake tool only)'),
   'RL_BAKE_REFIT':   ('C','diag',  None,    'refit_q97m trigger (bake tool only; produced pickle md5-pinned)'),
