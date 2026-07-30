@@ -989,3 +989,120 @@ rather than stream-mates; per-stream fallback shares are printed so that is visi
 None run. This addendum is pure fits on the committed matrix — **no engine bake is involved**, so no bake-lane
 coordination applies. Posture inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green, and the
 declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
+
+---
+
+# SEVENTH ADDENDUM — the RULED DESIGN: control fitter + pooled numeraire, and the α table rebuilt on it
+
+**Ruled 2026-07-30:** fitter = **control** (shipped kernel + local-linear boundary correction, as built in the
+panel) · pin policy = **pooled numeraire** (plain PAVA at the head, no pick-1 override, strict descent, then one
+global factor s = 3000 / pooled-head; pick 1 published as a true unit). α stays parked at 1.0. The player-side
+×s is step-4 propagation and is **not** touched here.
+
+Cost: the ruled curve builds in **0.21s**; the six-schedule α table in **3.9s**. No engine run.
+
+## The ruled curve
+
+**Payload `e69a3f38`, ladder total 54,722**, against the superseded hard-set build's `7cb36a2c` / 55,828 —
+a fall of **1,106 (−1.98%)**.
+
+- **The factor s = 0.977688.** The pooled head measures **3068.46** pre-scale, so the curve is divided by
+  3068.46/3000 to publish pick 1 = 3000 as a genuine unit.
+- **Head pool = picks 1 and 2.** PAVA pooled them because the control fitter's raw pick 2 (3138.58) exceeds its
+  raw pick 1 (2995.56) — the same top-of-draft inversion all four panel arms produced independently.
+- **Recovered clipped mass = 137.93 pre-scale units** (68.46 at pick 1, 69.46 at pick 2): the hard set wrote
+  3000 and 2999 over a block PAVA had measured at 3068.46.
+
+**Where the recovery actually shows up, stated plainly because it is easy to misread.** It is *not* extra board
+units at the head — post-scale, the head pool lands on the same integers (3000, 2999) under either policy.
+Honouring the pooled measurement instead redefines the **unit**, which scales every pick below the head down by
+2.23%. So the recovery is expressed as the rest of the ladder becoming cheaper *relative to a correctly measured
+head*, and the ladder total falls rather than rises. That is the arithmetic of the ruling, not a defect in it.
+
+## Confirmation condition: head-anchor noise
+
+Commissioned to decide at step 4 whether the pooled numeraire stands or reverts. For each panel fitter, refit on
+each of the 5 folds and compare the dispersion of raw pick 1 against the dispersion of the PAVA-pooled head.
+
+| fitter | raw pick-1 sd | pooled-head sd | noise reduction | head-pool size by fold |
+|---|---|---|---|---|
+| **control (ruled)** | 56.10 | **27.29** | **+51.4%** | 1, 2, 2, 2, 2 |
+| loclin | 56.10 | 34.72 | +38.1% | 1, 3, 2, 3, 3 |
+| powerspine | 52.19 | 52.19 | 0.0% | 1, 1, 1, 1, 1 |
+| distfirst | 25.62 | 52.25 | **−103.9%** | 1, 2, 1, 2, 2 |
+
+**The evidence is strongly supportive under the ruled fitter and mixed across the panel.** Under `control` — the
+fitter that actually ships — the pooled head is **half as noisy** as raw pick 1 across folds, which is the case
+for the pooled numeraire. But pooled is quieter in only **2 of 4** arms, the mean noise reduction across all four
+is **−3.6%**, and under `distfirst` the pooled head is twice as noisy as raw pick 1.
+
+The mechanism behind the bad case is visible in the last column: when the head-pool size *switches* between folds
+(1 or 2 picks depending on the training sample), that switching injects its own variance. `powerspine` never
+pools (size 1 every fold), so its pooled head is identical to raw pick 1 by construction and the policy is a
+no-op for it.
+
+So the honest statement for step 4: **the confirmation condition passes on the ruled fitter and would not pass
+as a general claim about all fitters.** If the fitter ruling were ever revisited, this number would need
+revisiting with it.
+
+## Pool / MSD / SSP levels under the design
+
+Scaled by s to stay in the curve's currency; unscaled figures in the evidence file.
+
+| | n | level (×s) | 95% interval | median (unscaled) | never established | fallback |
+|---|---|---|---|---|---|---|
+| POOL | 1,005 | 234.3 | [206.4, 262.3] | **0.0** | 56.6% | 6.07% |
+| MSD | 44 | 296.4 | [87.0, 505.8] | 3.3 | 50.0% | 2.27% |
+| SSP | 31 | 333.4 | [81.8, 585.1] | 0.5 | 45.2% | 6.45% |
+
+The denominator warning from the sixth addendum stands and is repeated in the artifact: MSD and SSP rest on 44
+and 31 rows, not the store-level 106 and 52, so the intervals are wide and the medians are near zero. Read the
+interval.
+
+## The six-schedule α table, rebuilt under the ruled design
+
+α applied at the **estimator** level — `raw_α(p) = [control_fit(v^α)](p)^(1/α)` — so the dial reaches both
+halves of the control fitter. On the kernel half this reduces exactly to the engine's own `_ce0` form; at α=1 it
+returns the control fit unchanged, verified (`a1.0_flat` payload = `e69a3f38` = the ruled curve). Zero negative
+values needed clamping in any schedule.
+
+| schedule | s | pooled head | ladder | conservation | pick class ÷ numéraire | vs α=1 |
+|---|---|---|---|---|---|---|
+| flat 0.6 | 1.01815 | 2946.5 | 47,355 | 0.8309 | 14.785 | −14.24% |
+| flat 0.8 | 0.99719 | 3008.4 | 51,376 | 0.9203 | 16.125 | −6.47% |
+| **flat 1.0 (ruled)** | 0.97769 | 3068.5 | **54,722** | **0.9998** | **17.241** | 0.00% |
+| tiered 0.6→0.8 by 50 | 1.01788 | 2947.3 | 50,410 | 0.8847 | 15.803 | −8.34% |
+| linear 0.8→1.00 | 0.99700 | 3009.0 | 53,483 | 0.9583 | 16.828 | −2.40% |
+| linear 0.9→1.05 | 0.98712 | 3039.1 | 54,611 | 0.9883 | 17.204 | −0.21% |
+
+Full 64-point ladders in `out/alpha_ruled_ladders_279.csv`. Conservation is the unit-adjusted figure (each α has
+its own s, so the published ladder is in that α's unit; dividing s back out is what answers "did the dial slash
+the pick class against mean production"). The pick-class ÷ numéraire ratio is scale-invariant, so s cancels there
+entirely.
+
+**Two findings from the rebuild.**
+
+**1. The conservation trade is unchanged by the pin policy.** Unit-adjusted conservation comes out 0.8309 /
+0.9203 / 0.9998 / 0.8847 / 0.9583 / 0.9883, against 0.8312 / 0.9202 / 0.9980 / 0.8855 / 0.9585 / 0.9878 under
+the old hard set. Identical to three decimals. That is a clean separation: what the dial costs in conservation is
+a property of the dial, not of the pin.
+
+**2. The pooled numeraire materially reduces the post-pin penalty.** The pick-class cost of a downside dial
+falls from −17.66% to **−14.24%** at α=0.6, from −11.91% to −8.34% tiered, and from −4.19% to −2.40% at
+linear 0.8→1.00. The mechanism is visible in the s column: when the dial cuts the head, the pooled head falls
+below 3000, so **s rises above 1** and scales the ladder back up, partially offsetting. Under the old hard set
+that offset did not exist — pick 1 was simply forced back to 3000 and everything below kept its cut. So the
+ruling has already answered part of the objection raised against the dial in the fourth addendum.
+
+## Standing artifact
+
+`out/distfirst_decomposition_279.json` ships beside the curve as a **standing report-only artifact**, per the
+ruling: the full 64-pick establishment-rate curve and mean-value-given-established curve, with the identity
+stated (their product is the kernel mean exactly, verified to 2.27e-13, so it is the same price shown as two
+components, not an alternative price).
+
+## CI posture
+
+None run. Pure fits on the committed matrix — no engine bake, so no bake-lane coordination applies. Posture
+inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green, and the declared `movers.test.js`
+known-red at exactly 2 of 58 in Final Integration and Live Scoring.

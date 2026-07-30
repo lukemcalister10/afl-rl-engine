@@ -1,0 +1,411 @@
+{
+ "alpha_application": "raw_alpha(p) = [control_fit(v^alpha)](p)^(1/alpha) \u2014 the certainty-equivalent of the estimator, so the dial applies uniformly across BOTH halves of the control fitter. Reduces exactly to the engine _ce0 form on the kernel half; alpha=1 returns the control fit unchanged.",
+ "conservation_yardstick": {
+  "published_vs_unit_adjusted": "each alpha has its OWN s under the pooled numeraire, so the published ladder is in that alpha's unit. The unit-adjusted column divides it back out and is the figure that answers \"did the dial slash the pick class against mean production\". The pick-class-vs-numeraire ratio is scale-invariant, so s cancels there entirely.",
+  "total_mean_production_1_64_control_alpha1": 55979.7
+ },
+ "control_alpha1_reproduces_ruled_pooled_curve": "e69a3f38",
+ "fallback_share_pct": 5.931,
+ "first_fit_seconds": 0.172,
+ "nonvacuity": {
+  "s_varies_with_alpha": true,
+  "schedules_distinct": true,
+  "upside_schedule_exceeds_alpha1_somewhere": true
+ },
+ "ruled_design": {
+  "basis": "STRUCTURAL",
+  "class_cut": 2022,
+  "fitter": "control (kernel + local-linear boundary correction)",
+  "gamma": "1.0 VOR",
+  "pin_policy": "pooled numeraire (plain PAVA head, strict descent, global factor s)"
+ },
+ "schedules": {
+  "a0.6_flat": {
+   "CONSERVATION_published": 0.8459,
+   "CONSERVATION_unit_adjusted": 0.8309,
+   "PICK_CLASS_vs_alpha1_pct": -14.244,
+   "PICK_CLASS_vs_numeraire": 14.785,
+   "alpha_at": {
+    "1": 0.6,
+    "10": 0.6,
+    "2": 0.6,
+    "24": 0.6,
+    "32": 0.6,
+    "40": 0.6,
+    "50": 0.6,
+    "57": 0.6,
+    "64": 0.6
+   },
+   "curve": {
+    "1": 3000,
+    "10": 1384,
+    "2": 2999,
+    "24": 655,
+    "3": 2783,
+    "32": 481,
+    "40": 390,
+    "50": 248,
+    "57": 193,
+    "64": 131
+   },
+   "description": "flat 0.6",
+   "factor_s": 1.018146,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    17,
+    18
+   ],
+   "head_pool_picks": [
+    1,
+    2
+   ],
+   "ladder_2_to_64": 44355,
+   "ladder_total": 47355,
+   "n_forced_descent": 6,
+   "n_negative_clamped_before_inverse_power": 0,
+   "payload": "4185b719",
+   "pooled_head_pre_scale": 2946.53,
+   "published_pick1": 3000,
+   "raw_monotone_violations": 6,
+   "seconds": 0.021,
+   "vs_alpha1_by_pick": {
+    "1": 1.0,
+    "10": 0.9364,
+    "24": 0.8086,
+    "3": 0.9643,
+    "32": 0.7647,
+    "40": 0.7317,
+    "50": 0.6739,
+    "57": 0.6412,
+    "64": 0.5928
+   }
+  },
+  "a0.8_flat": {
+   "CONSERVATION_published": 0.9178,
+   "CONSERVATION_unit_adjusted": 0.9203,
+   "PICK_CLASS_vs_alpha1_pct": -6.47,
+   "PICK_CLASS_vs_numeraire": 16.1253,
+   "alpha_at": {
+    "1": 0.8,
+    "10": 0.8,
+    "2": 0.8,
+    "24": 0.8,
+    "32": 0.8,
+    "40": 0.8,
+    "50": 0.8,
+    "57": 0.8,
+    "64": 0.8
+   },
+   "curve": {
+    "1": 3000,
+    "10": 1435,
+    "2": 2999,
+    "24": 739,
+    "3": 2835,
+    "32": 564,
+    "40": 469,
+    "50": 314,
+    "57": 252,
+    "64": 179
+   },
+   "description": "flat 0.8",
+   "factor_s": 0.997192,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    17,
+    18,
+    19
+   ],
+   "head_pool_picks": [
+    1,
+    2
+   ],
+   "ladder_2_to_64": 48376,
+   "ladder_total": 51376,
+   "n_forced_descent": 7,
+   "n_negative_clamped_before_inverse_power": 0,
+   "payload": "0ce17fa0",
+   "pooled_head_pre_scale": 3008.45,
+   "published_pick1": 3000,
+   "raw_monotone_violations": 6,
+   "seconds": 0.02,
+   "vs_alpha1_by_pick": {
+    "1": 1.0,
+    "10": 0.9709,
+    "24": 0.9123,
+    "3": 0.9823,
+    "32": 0.8967,
+    "40": 0.8799,
+    "50": 0.8533,
+    "57": 0.8372,
+    "64": 0.81
+   }
+  },
+  "a1.0_flat": {
+   "CONSERVATION_published": 0.9775,
+   "CONSERVATION_unit_adjusted": 0.9998,
+   "PICK_CLASS_vs_alpha1_pct": 0.0,
+   "PICK_CLASS_vs_numeraire": 17.2407,
+   "alpha_at": {
+    "1": 1.0,
+    "10": 1.0,
+    "2": 1.0,
+    "24": 1.0,
+    "32": 1.0,
+    "40": 1.0,
+    "50": 1.0,
+    "57": 1.0,
+    "64": 1.0
+   },
+   "curve": {
+    "1": 3000,
+    "10": 1478,
+    "2": 2999,
+    "24": 810,
+    "3": 2886,
+    "32": 629,
+    "40": 533,
+    "50": 368,
+    "57": 301,
+    "64": 221
+   },
+   "description": "flat 1.0 \u2014 the ruled setting; returns the control fit unchanged",
+   "factor_s": 0.977688,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    12,
+    17,
+    18,
+    19
+   ],
+   "head_pool_picks": [
+    1,
+    2
+   ],
+   "ladder_2_to_64": 51722,
+   "ladder_total": 54722,
+   "n_forced_descent": 8,
+   "n_negative_clamped_before_inverse_power": 0,
+   "payload": "e69a3f38",
+   "pooled_head_pre_scale": 3068.46,
+   "published_pick1": 3000,
+   "raw_monotone_violations": 6,
+   "seconds": 0.0,
+   "vs_alpha1_by_pick": {
+    "1": 1.0,
+    "10": 1.0,
+    "24": 1.0,
+    "3": 1.0,
+    "32": 1.0,
+    "40": 1.0,
+    "50": 1.0,
+    "57": 1.0,
+    "64": 1.0
+   }
+  },
+  "lin_0.8_to_1.00_at64": {
+   "CONSERVATION_published": 0.9554,
+   "CONSERVATION_unit_adjusted": 0.9583,
+   "PICK_CLASS_vs_alpha1_pct": -2.395,
+   "PICK_CLASS_vs_numeraire": 16.8277,
+   "alpha_at": {
+    "1": 0.8,
+    "10": 0.8286,
+    "2": 0.8032,
+    "24": 0.873,
+    "32": 0.8984,
+    "40": 0.9238,
+    "50": 0.9556,
+    "57": 0.9778,
+    "64": 1.0
+   },
+   "curve": {
+    "1": 3000,
+    "10": 1446,
+    "2": 2999,
+    "24": 771,
+    "3": 2838,
+    "32": 603,
+    "40": 516,
+    "50": 362,
+    "57": 301,
+    "64": 226
+   },
+   "description": "linear 0.8 at pick 1 -> 1.00 at pick 64",
+   "factor_s": 0.996998,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    12,
+    17,
+    18,
+    19
+   ],
+   "head_pool_picks": [
+    1,
+    2
+   ],
+   "ladder_2_to_64": 50483,
+   "ladder_total": 53483,
+   "n_forced_descent": 8,
+   "n_negative_clamped_before_inverse_power": 0,
+   "payload": "533ce6d4",
+   "pooled_head_pre_scale": 3009.03,
+   "published_pick1": 3000,
+   "raw_monotone_violations": 6,
+   "seconds": 1.312,
+   "vs_alpha1_by_pick": {
+    "1": 1.0,
+    "10": 0.9783,
+    "24": 0.9519,
+    "3": 0.9834,
+    "32": 0.9587,
+    "40": 0.9681,
+    "50": 0.9837,
+    "57": 1.0,
+    "64": 1.0226
+   }
+  },
+  "lin_0.9_to_1.05_at64": {
+   "CONSERVATION_published": 0.9755,
+   "CONSERVATION_unit_adjusted": 0.9883,
+   "PICK_CLASS_vs_alpha1_pct": -0.215,
+   "PICK_CLASS_vs_numeraire": 17.2037,
+   "alpha_at": {
+    "1": 0.9,
+    "10": 0.9214,
+    "2": 0.9024,
+    "24": 0.9548,
+    "32": 0.9738,
+    "40": 0.9929,
+    "50": 1.0167,
+    "57": 1.0333,
+    "64": 1.05
+   },
+   "curve": {
+    "1": 3000,
+    "10": 1465,
+    "2": 2999,
+    "24": 799,
+    "3": 2863,
+    "32": 626,
+    "40": 536,
+    "50": 376,
+    "57": 312,
+    "64": 234
+   },
+   "description": "linear 0.9 -> 1.05; crosses 1.0, tail UPSIDE-weighted",
+   "factor_s": 0.987123,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    12,
+    17,
+    18,
+    19
+   ],
+   "head_pool_picks": [
+    1,
+    2
+   ],
+   "ladder_2_to_64": 51611,
+   "ladder_total": 54611,
+   "n_forced_descent": 8,
+   "n_negative_clamped_before_inverse_power": 0,
+   "payload": "66de1e44",
+   "pooled_head_pre_scale": 3039.13,
+   "published_pick1": 3000,
+   "raw_monotone_violations": 6,
+   "seconds": 1.337,
+   "vs_alpha1_by_pick": {
+    "1": 1.0,
+    "10": 0.9912,
+    "24": 0.9864,
+    "3": 0.992,
+    "32": 0.9952,
+    "40": 1.0056,
+    "50": 1.0217,
+    "57": 1.0365,
+    "64": 1.0588
+   }
+  },
+  "tiered_0.6_to_0.8_by50": {
+   "CONSERVATION_published": 0.9005,
+   "CONSERVATION_unit_adjusted": 0.8847,
+   "PICK_CLASS_vs_alpha1_pct": -8.337,
+   "PICK_CLASS_vs_numeraire": 15.8033,
+   "alpha_at": {
+    "1": 0.6,
+    "10": 0.6367,
+    "2": 0.6041,
+    "24": 0.6939,
+    "32": 0.7265,
+    "40": 0.7592,
+    "50": 0.8,
+    "57": 0.8,
+    "64": 0.8
+   },
+   "curve": {
+    "1": 3000,
+    "10": 1401,
+    "2": 2999,
+    "24": 704,
+    "3": 2787,
+    "32": 543,
+    "40": 462,
+    "50": 321,
+    "57": 257,
+    "64": 183
+   },
+   "description": "the engine's own _alpha_pvc: 0.6 at pick 1 -> 0.8 by pick 50, flat after",
+   "factor_s": 1.017878,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    17,
+    18
+   ],
+   "head_pool_picks": [
+    1,
+    2
+   ],
+   "ladder_2_to_64": 47410,
+   "ladder_total": 50410,
+   "n_forced_descent": 6,
+   "n_negative_clamped_before_inverse_power": 0,
+   "payload": "a9a3ab69",
+   "pooled_head_pre_scale": 2947.31,
+   "published_pick1": 3000,
+   "raw_monotone_violations": 6,
+   "seconds": 1.011,
+   "vs_alpha1_by_pick": {
+    "1": 1.0,
+    "10": 0.9479,
+    "24": 0.8691,
+    "3": 0.9657,
+    "32": 0.8633,
+    "40": 0.8668,
+    "50": 0.8723,
+    "57": 0.8538,
+    "64": 0.8281
+   }
+  }
+ },
+ "status": "REPORT-ONLY. alpha stays PARKED at 1.0; no ruling is implied by this table.",
+ "total_seconds": 3.87
+}

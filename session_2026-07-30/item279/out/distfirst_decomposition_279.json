@@ -1,0 +1,344 @@
+{
+ "bandwidth": "harness_pvc.bandwidth_at, shared policy (nmin=35, h in [0.10,0.60])",
+ "basis": {
+  "basis": "STRUCTURAL",
+  "class_cut": 2022,
+  "fallback_share_pct": 5.931,
+  "gamma": "1.0 VOR",
+  "n": 1197,
+  "store_md5": "6b9d00a7"
+ },
+ "by_pick": {
+  "1": {
+   "bandwidth": 0.6,
+   "establishment_rate": 0.9996,
+   "mean_value_given_established": 2987.6
+  },
+  "10": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9554,
+   "mean_value_given_established": 1563.4
+  },
+  "11": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9575,
+   "mean_value_given_established": 1595.3
+  },
+  "12": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9547,
+   "mean_value_given_established": 1582.6
+  },
+  "13": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9592,
+   "mean_value_given_established": 1438.8
+  },
+  "14": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9629,
+   "mean_value_given_established": 1244.0
+  },
+  "15": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.963,
+   "mean_value_given_established": 1104.8
+  },
+  "16": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9645,
+   "mean_value_given_established": 1054.0
+  },
+  "17": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9655,
+   "mean_value_given_established": 1063.9
+  },
+  "18": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9579,
+   "mean_value_given_established": 1093.6
+  },
+  "19": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9382,
+   "mean_value_given_established": 1115.4
+  },
+  "2": {
+   "bandwidth": 0.36,
+   "establishment_rate": 0.9999,
+   "mean_value_given_established": 3103.7
+  },
+  "20": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9114,
+   "mean_value_given_established": 1116.2
+  },
+  "21": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.8851,
+   "mean_value_given_established": 1095.1
+  },
+  "22": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.8633,
+   "mean_value_given_established": 1061.0
+  },
+  "23": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.8459,
+   "mean_value_given_established": 1025.6
+  },
+  "24": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.8311,
+   "mean_value_given_established": 996.4
+  },
+  "25": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.8173,
+   "mean_value_given_established": 975.5
+  },
+  "26": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.804,
+   "mean_value_given_established": 961.7
+  },
+  "27": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7913,
+   "mean_value_given_established": 951.9
+  },
+  "28": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7794,
+   "mean_value_given_established": 942.3
+  },
+  "29": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7681,
+   "mean_value_given_established": 930.2
+  },
+  "3": {
+   "bandwidth": 0.26,
+   "establishment_rate": 0.9998,
+   "mean_value_given_established": 2952.6
+  },
+  "30": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7569,
+   "mean_value_given_established": 914.4
+  },
+  "31": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7459,
+   "mean_value_given_established": 895.4
+  },
+  "32": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7354,
+   "mean_value_given_established": 875.0
+  },
+  "33": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7261,
+   "mean_value_given_established": 854.8
+  },
+  "34": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.719,
+   "mean_value_given_established": 836.2
+  },
+  "35": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7145,
+   "mean_value_given_established": 820.0
+  },
+  "36": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7127,
+   "mean_value_given_established": 806.2
+  },
+  "37": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.713,
+   "mean_value_given_established": 794.4
+  },
+  "38": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7145,
+   "mean_value_given_established": 783.7
+  },
+  "39": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.716,
+   "mean_value_given_established": 773.0
+  },
+  "4": {
+   "bandwidth": 0.2,
+   "establishment_rate": 0.9993,
+   "mean_value_given_established": 2510.5
+  },
+  "40": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7162,
+   "mean_value_given_established": 761.2
+  },
+  "41": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7143,
+   "mean_value_given_established": 747.6
+  },
+  "42": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7098,
+   "mean_value_given_established": 731.9
+  },
+  "43": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.7027,
+   "mean_value_given_established": 714.3
+  },
+  "44": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6935,
+   "mean_value_given_established": 695.4
+  },
+  "45": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6829,
+   "mean_value_given_established": 675.9
+  },
+  "46": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6716,
+   "mean_value_given_established": 656.7
+  },
+  "47": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6604,
+   "mean_value_given_established": 638.6
+  },
+  "48": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6498,
+   "mean_value_given_established": 622.3
+  },
+  "49": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6403,
+   "mean_value_given_established": 608.0
+  },
+  "5": {
+   "bandwidth": 0.16,
+   "establishment_rate": 0.9964,
+   "mean_value_given_established": 1981.9
+  },
+  "50": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6319,
+   "mean_value_given_established": 595.6
+  },
+  "51": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6246,
+   "mean_value_given_established": 585.0
+  },
+  "52": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6183,
+   "mean_value_given_established": 575.6
+  },
+  "53": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6128,
+   "mean_value_given_established": 567.1
+  },
+  "54": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6078,
+   "mean_value_given_established": 559.1
+  },
+  "55": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.6031,
+   "mean_value_given_established": 551.3
+  },
+  "56": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5986,
+   "mean_value_given_established": 543.6
+  },
+  "57": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5942,
+   "mean_value_given_established": 536.1
+  },
+  "58": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5897,
+   "mean_value_given_established": 528.7
+  },
+  "59": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5853,
+   "mean_value_given_established": 521.7
+  },
+  "6": {
+   "bandwidth": 0.14,
+   "establishment_rate": 0.9801,
+   "mean_value_given_established": 1588.1
+  },
+  "60": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5809,
+   "mean_value_given_established": 515.0
+  },
+  "61": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5765,
+   "mean_value_given_established": 508.9
+  },
+  "62": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5722,
+   "mean_value_given_established": 503.5
+  },
+  "63": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.568,
+   "mean_value_given_established": 498.8
+  },
+  "64": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.5641,
+   "mean_value_given_established": 494.9
+  },
+  "7": {
+   "bandwidth": 0.12,
+   "establishment_rate": 0.9454,
+   "mean_value_given_established": 1698.1
+  },
+  "8": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9218,
+   "mean_value_given_established": 1840.7
+  },
+  "9": {
+   "bandwidth": 0.1,
+   "establishment_rate": 0.9385,
+   "mean_value_given_established": 1644.0
+  }
+ },
+ "establishment_definition": "the matrix own classification: no season with games >= 6",
+ "headline": {
+  "cond_mean_pick1": 2987.6,
+  "cond_mean_pick64": 494.9,
+  "rate_pick1": 0.9996,
+  "rate_pick64": 0.5641,
+  "reading": "a pick 64 is cheap mainly because 44% never establish, not because those who do are worthless \u2014 an established pick-64 player is worth about 495. The same shape governs the pool levels, where the median is zero and the mean is carried by a minority."
+ },
+ "identity": "rate(p) x mean_given_established(p) == kernel mean(p), exactly, at a common bandwidth",
+ "status": "STANDING REPORT-ONLY ARTIFACT \u2014 ships beside the curve, per owner word 2026-07-30. Not a price.",
+ "what_it_is": "the distribution-first decomposition of the pick curve: at each pick, the ESTABLISHMENT RATE P(establishes | pick) and the MEAN VALUE GIVEN ESTABLISHED. Their product is the plain kernel mean by algebraic identity (verified to 2.27e-13), so this is not an alternative price \u2014 it is the same price, shown as its two components."
+}
