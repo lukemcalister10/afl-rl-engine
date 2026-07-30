@@ -1,0 +1,45 @@
+{
+ "a13_canonical_cross_check": {
+  "check": "reproduce the sealed A13 VOR-leak figure on this box",
+  "measured": "7496 of 322531 strict pairs = 2.3241%",
+  "reproduces": true,
+  "sealed_record": "7496 of 322531 strict pairs = 2.32%"
+ },
+ "board_reproduction": {
+  "check": "scratch board == adopted pin f2df6e0a",
+  "proven_able_to_fail": true,
+  "scar_reproduces": true,
+  "vor_differs_so_check_is_live": true
+ },
+ "player_key_intersection": {
+  "check": "players matched BY KEY, never by name substring (hazard class 13)",
+  "n_matched": 804,
+  "n_scar": 804,
+  "n_vor": 804,
+  "nonempty_assert": true,
+  "unmatched_either_side": []
+ },
+ "rank_all_pairs_metric": {
+  "check": "order-independent all-pairs inversion count (A13 instrument)",
+  "control_identical_input_inversions": 0,
+  "detects": true,
+  "expect": 0,
+  "expect_gt": 0,
+  "passes": true,
+  "perturbed_single_swap_inversions": 803
+ },
+ "shipped_ladder_equality": {
+  "can_report_false": true,
+  "check": "shipped pick ladder identical across gamma",
+  "proven_able_to_fail": true,
+  "result_true_for_real_inputs": true
+ },
+ "surface_refit_reproduction": {
+  "check": "v0surf refit payload == committed pin ce08c2d1",
+  "proven_able_to_fail": true,
+  "scar_refit_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+  "scar_reproduces_pin": true,
+  "vor_differs_so_check_is_live": true,
+  "vor_refit_md5": "8990fed6fe6a210ae8903055df0c2502"
+ }
+}

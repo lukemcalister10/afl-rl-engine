@@ -1,0 +1,724 @@
+{
+ "board_identities": {
+  "scar": "f2df6e0a2902f48e1df36f35493ba8c1",
+  "scar_frozen": "f2df6e0a2902f48e1df36f35493ba8c1",
+  "vor": "c8515acd32add73da406a2c96796c871",
+  "vor_mixed": "48e782b8b907e15514cc524d8de0a51a"
+ },
+ "conservation": {
+  "reading": "the pick ladder is frozen, so under VOR the player pool shrinks against an unchanged ladder and picks become dearer AS A CLASS",
+  "scar": {
+   "entrant_layer_pvc": 77611,
+   "lensYear": 2027,
+   "nPicks": 64,
+   "nPlayers": 804,
+   "picks_face": 65925,
+   "picks_share_pct": 8.1012,
+   "players_sum": 747840,
+   "total": 813765,
+   "visible_1_64": 65925
+  },
+  "vor": {
+   "entrant_layer_pvc": 77611,
+   "lensYear": 2027,
+   "nPicks": 64,
+   "nPlayers": 804,
+   "picks_face": 65925,
+   "picks_share_pct": 8.3876,
+   "players_sum": 720060,
+   "total": 785985,
+   "visible_1_64": 65925
+  }
+ },
+ "forced_refit_symmetry": {
+  "identical": true,
+  "meaning": "forcing the own-bake lane is not itself an artifact at 0.85",
+  "scar_forced_refit": "f2df6e0a2902f48e1df36f35493ba8c1",
+  "scar_frozen_load": "f2df6e0a2902f48e1df36f35493ba8c1"
+ },
+ "gammas": {
+  "scar": 0.85,
+  "scar_frozen": 0.85,
+  "vor": 1.0,
+  "vor_mixed": 1.0
+ },
+ "model_pick_value_gamma_responsive": {
+  "by_pick": {
+   "1": {
+    "ratio": 0.9048,
+    "raw": 1222.0732,
+    "scar": 1986,
+    "vor": 1797
+   },
+   "10": {
+    "ratio": 0.7701,
+    "raw": 416.8836,
+    "scar": 796,
+    "vor": 613
+   },
+   "11": {
+    "ratio": 0.7701,
+    "raw": 416.8836,
+    "scar": 796,
+    "vor": 613
+   },
+   "12": {
+    "ratio": 0.7701,
+    "raw": 416.8836,
+    "scar": 796,
+    "vor": 613
+   },
+   "13": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "14": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "15": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "16": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "17": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "18": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "19": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "2": {
+    "ratio": 0.9048,
+    "raw": 1222.0732,
+    "scar": 1986,
+    "vor": 1797
+   },
+   "20": {
+    "ratio": 0.6184,
+    "raw": 95.7814,
+    "scar": 228,
+    "vor": 141
+   },
+   "21": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "22": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "23": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "24": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "25": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "26": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "27": {
+    "ratio": 0.5652,
+    "raw": 53.1615,
+    "scar": 138,
+    "vor": 78
+   },
+   "28": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "29": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "3": {
+    "ratio": 0.9048,
+    "raw": 1222.0732,
+    "scar": 1986,
+    "vor": 1797
+   },
+   "30": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "31": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "32": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "33": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "34": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "35": {
+    "ratio": 0.5312,
+    "raw": 34.8154,
+    "scar": 96,
+    "vor": 51
+   },
+   "36": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "37": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "38": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "39": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "4": {
+    "ratio": 0.7907,
+    "raw": 498.8837,
+    "scar": 927,
+    "vor": 733
+   },
+   "40": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "41": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "42": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "43": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "44": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "45": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "46": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "47": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "48": {
+    "ratio": 0.4694,
+    "raw": 15.7758,
+    "scar": 49,
+    "vor": 23
+   },
+   "49": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "5": {
+    "ratio": 0.7907,
+    "raw": 498.8837,
+    "scar": 927,
+    "vor": 733
+   },
+   "50": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "51": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "52": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "53": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "54": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "55": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "56": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "57": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "58": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "59": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "6": {
+    "ratio": 0.7907,
+    "raw": 498.8837,
+    "scar": 927,
+    "vor": 733
+   },
+   "60": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "61": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "62": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "63": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "64": {
+    "ratio": 0.4634,
+    "raw": 12.9033,
+    "scar": 41,
+    "vor": 19
+   },
+   "7": {
+    "ratio": 0.7907,
+    "raw": 498.8837,
+    "scar": 927,
+    "vor": 733
+   },
+   "8": {
+    "ratio": 0.7701,
+    "raw": 416.8836,
+    "scar": 796,
+    "vor": 613
+   },
+   "9": {
+    "ratio": 0.7701,
+    "raw": 416.8836,
+    "scar": 796,
+    "vor": 613
+   }
+  },
+  "note": "val(pick_raw(k)) in board currency, BEFORE the frozen-ladder repoint. Band-resolved (8 bands), so picks inside a band share a value.",
+  "pool": {
+   "scar": {
+    "pick": 65,
+    "raw": 12.903272120708985,
+    "val": 41
+   },
+   "vor": {
+    "pick": 65,
+    "raw": 12.903272120708985,
+    "val": 19
+   }
+  },
+  "raw_production_identical_across_gamma": true
+ },
+ "own_surface_bake_effect": {
+  "boards_differ": true,
+  "max_abs_delta": 77,
+  "n_matched": 804,
+  "n_players_whose_value_changes": 177,
+  "pct_players_changed": 22.01,
+  "rank_movement_own_vs_mixed": {
+   "inversion_pct": 0.4134,
+   "inversions": 1333,
+   "n_pairs_strict_in_first": 322434,
+   "n_pairs_total": 322806,
+   "tie_collapse_pct": 0.0375,
+   "tie_collapses": 121
+  },
+  "sum_mixed": 777057,
+  "sum_own": 774236,
+  "vor_loaded_scar_surface_board": "48e782b8b907e15514cc524d8de0a51a",
+  "vor_own_surface_board": "c8515acd32add73da406a2c96796c871"
+ },
+ "players": {
+  "deciles_by_scar_rank": [
+   {
+    "decile": 1,
+    "n": 80,
+    "ratio": 1.0627,
+    "scar_mean": 4184.9,
+    "vor_mean": 4447.1
+   },
+   {
+    "decile": 2,
+    "n": 80,
+    "ratio": 0.9512,
+    "scar_mean": 2099.4,
+    "vor_mean": 1996.8
+   },
+   {
+    "decile": 3,
+    "n": 81,
+    "ratio": 0.903,
+    "scar_mean": 1326.4,
+    "vor_mean": 1197.7
+   },
+   {
+    "decile": 4,
+    "n": 80,
+    "ratio": 0.8668,
+    "scar_mean": 849.2,
+    "vor_mean": 736.1
+   },
+   {
+    "decile": 5,
+    "n": 81,
+    "ratio": 0.8528,
+    "scar_mean": 566.3,
+    "vor_mean": 482.9
+   },
+   {
+    "decile": 6,
+    "n": 80,
+    "ratio": 0.8342,
+    "scar_mean": 391.3,
+    "vor_mean": 326.4
+   },
+   {
+    "decile": 7,
+    "n": 80,
+    "ratio": 0.8322,
+    "scar_mean": 282.7,
+    "vor_mean": 235.3
+   },
+   {
+    "decile": 8,
+    "n": 81,
+    "ratio": 0.7819,
+    "scar_mean": 187.3,
+    "vor_mean": 146.4
+   },
+   {
+    "decile": 9,
+    "n": 80,
+    "ratio": 0.7389,
+    "scar_mean": 87.7,
+    "vor_mean": 64.8
+   },
+   {
+    "decile": 10,
+    "n": 81,
+    "ratio": 0.7497,
+    "scar_mean": 28.4,
+    "vor_mean": 21.3
+   }
+  ],
+  "n_matched": 804,
+  "n_scar": 804,
+  "n_vor": 804,
+  "scar": {
+   "max": 10079,
+   "mean": 998.0,
+   "median": 472.5,
+   "min": 1,
+   "p10": 53.0,
+   "p90": 2573.3,
+   "sum": 802390
+  },
+  "top20_by_scar": [
+   {
+    "key": "harry-sheezel",
+    "ratio": 1.2059,
+    "scar": 10079,
+    "vor": 12154
+   },
+   {
+    "key": "nick-daicos",
+    "ratio": 1.1885,
+    "scar": 9214,
+    "vor": 10951
+   },
+   {
+    "key": "luke-jackson",
+    "ratio": 1.1797,
+    "scar": 8735,
+    "vor": 10305
+   },
+   {
+    "key": "nasiah-wanganeen-milera",
+    "ratio": 1.1698,
+    "scar": 8375,
+    "vor": 9797
+   },
+   {
+    "key": "max-holmes",
+    "ratio": 1.1484,
+    "scar": 7452,
+    "vor": 8558
+   },
+   {
+    "key": "tristan-xerri",
+    "ratio": 1.1497,
+    "scar": 7414,
+    "vor": 8524
+   },
+   {
+    "key": "zak-butters",
+    "ratio": 1.1152,
+    "scar": 6473,
+    "vor": 7219
+   },
+   {
+    "key": "will-ashcroft",
+    "ratio": 1.1234,
+    "scar": 6380,
+    "vor": 7167
+   },
+   {
+    "key": "josh-treacy",
+    "ratio": 1.1069,
+    "scar": 6157,
+    "vor": 6815
+   },
+   {
+    "key": "bailey-smith",
+    "ratio": 1.1051,
+    "scar": 6092,
+    "vor": 6732
+   },
+   {
+    "key": "lachlan-ash",
+    "ratio": 1.1049,
+    "scar": 5682,
+    "vor": 6278
+   },
+   {
+    "key": "finn-callaghan",
+    "ratio": 1.1034,
+    "scar": 5592,
+    "vor": 6170
+   },
+   {
+    "key": "jason-horne-francis",
+    "ratio": 1.0978,
+    "scar": 5554,
+    "vor": 6097
+   },
+   {
+    "key": "errol-gulden",
+    "ratio": 1.0967,
+    "scar": 5511,
+    "vor": 6044
+   },
+   {
+    "key": "noah-anderson",
+    "ratio": 1.0839,
+    "scar": 5257,
+    "vor": 5698
+   },
+   {
+    "key": "sam-darcy",
+    "ratio": 1.0751,
+    "scar": 4929,
+    "vor": 5299
+   },
+   {
+    "key": "caleb-serong",
+    "ratio": 1.0703,
+    "scar": 4811,
+    "vor": 5149
+   },
+   {
+    "key": "tom-green",
+    "ratio": 1.0656,
+    "scar": 4682,
+    "vor": 4989
+   },
+   {
+    "key": "archie-roberts",
+    "ratio": 1.0697,
+    "scar": 4675,
+    "vor": 5001
+   },
+   {
+    "key": "jagga-smith",
+    "ratio": 1.0833,
+    "scar": 4573,
+    "vor": 4954
+   }
+  ],
+  "total_ratio_vor_over_scar": 0.9649,
+  "unmatched_scar": [],
+  "unmatched_vor": [],
+  "vor": {
+   "max": 12154,
+   "mean": 963.0,
+   "median": 395.0,
+   "min": 0,
+   "p10": 41.0,
+   "p90": 2515.5,
+   "sum": 774236
+  }
+ },
+ "rank_movement_nonvacuity": {
+  "control_identical_inversions": 0,
+  "control_passes(expect 0)": true,
+  "perturbed_detects(expect >0)": true,
+  "perturbed_one_swap_inversions": 803
+ },
+ "rank_movement_scar_vs_vor": {
+  "inversion_pct": 1.975,
+  "inversions": 6370,
+  "n_pairs_strict_in_first": 322531,
+  "n_pairs_total": 322806,
+  "tie_collapse_pct": 0.0989,
+  "tie_collapses": 319
+ },
+ "scales": {
+  "scar": 4.7192,
+  "scar_frozen": 4.7192,
+  "vor": 1.47027,
+  "vor_mixed": 1.47027
+ },
+ "shipped_pick_ladder": {
+  "identical_under_both_gamma": true,
+  "ladder_sum_1_64": 65925,
+  "n_points": 65,
+  "nonvacuity_check_can_fail": true,
+  "sample": {
+   "1": 3000,
+   "10": 1657,
+   "2": 2767,
+   "24": 935,
+   "3": 2693,
+   "40": 679,
+   "57": 582,
+   "64": 571,
+   "65": 299
+  },
+  "why": "board ships the frozen adopted curve (L7 repoint, pvc_curve_v2.json); gamma cannot reach it"
+ }
+}
