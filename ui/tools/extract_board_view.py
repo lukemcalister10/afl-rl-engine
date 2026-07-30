@@ -180,7 +180,7 @@ def main():
     phantom_totals = d.get("phantomTotals", {})
     # final integration 2026-07-21: the owner-facing visible future-draft asset ladder reconciliation summary
     # (draftAssetTotals: visible 2027/2028 Draft Pick 1-64 at PVC + labelled residual aggregates, reconciled
-    # to the sealed F5 entrant layer 83538). Working-tier ONLY; passed through verbatim (extractor recomputes
+    # to the sealed F5 entrant layer 77611, adopted). Working-tier ONLY; passed through verbatim (extractor recomputes
     # nothing). The visible pick rows themselves ride lensPicks (kind/asset "pick").
     draft_asset_totals = d.get("draftAssetTotals", {})
 

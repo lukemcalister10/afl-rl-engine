@@ -23,7 +23,8 @@ Verifies, against the ACCEPTED authorities (committed reference vector + git Boa
        ladder; unique stable asset ids; labels distinguish year+pick; no AFL club; no AFFL club; no player
        identity; exact PVC[n] per row; PVC monotone non-increasing; future-lens sorting by value desc.
   (13) F5 reconciliation: visible(Sigma PVC[1..64]) + residual_nd + residual_mech == sealed F5 entrant
-       layer 83538, per lens and vs Board B phantomTotals; no double count.
+       layer 77611 (the ADOPTED layer; re-stamped from 83538 by the #274 mop-up act), per lens and vs
+       Board B phantomTotals; no double count. Board B's own sealed layer remains 83538 -- history.
 
 Each acceptance section emits its OWN pass boolean (ok_present / ok_forward / ok_draft / ok_f5) so a
 present-lens result NEVER cascades into an unrelated section (ITEM 408 item 5.4).
@@ -32,7 +33,7 @@ TWO LANES, SPLIT BY LIFETIME (#256 part A, on the #231 `adoption_gate` precedent
 --------------------------------------------------------------------------------
 This proof used to run one set of 33 checks on every push, and eleven of them asserted EQUALITY WITH
 THE RELEASED BASELINE BOARD -- Sigma present v == 764021, zero movers against the accepted reference
-vector, the F5 layer at 83538/4649/14272. The tree deliberately carries the HELD CANDIDATE board
+vector, the F5 layer (then 83538/4649/14272, now the adopted 77611/2631/9055). The tree deliberately carries the HELD CANDIDATE board
 (750446d7: 771772, 749 movers -- the ruled ND/RD/pool split working, declared in
 `data/release_contract.json` `held_candidates`), so those eleven were red for the entire baseline
 effort. A guard that always fails is the same defect as one that cannot: it is exactly the shape #231
@@ -73,15 +74,17 @@ MOVED WHOLE TO ADOPTION (5):
   (13) final board carries Board B phantomPicks/phantomLayer/phantomTotals unchanged -- equality with
        the superseded oracle's phantom layer (the tree carries 130 phantomPicks against Board B's 164).
 SPLIT into a kept structural half + a moved released half (4 checks x 2 lenses = 8):
-  (13) visible == Sigma PVC[1..64] == 64617   -> per-push keeps `visible == Sigma PVC[1..64] ==
-       draftAssetTotals.visible_1_64` (internal consistency); `== 64617` is the released CURVE, adoption.
-  (13) visible + residual == 83538            -> per-push keeps the reconciliation against the board's
+  (13) visible == Sigma PVC[1..64] == 65925   -> per-push keeps `visible == Sigma PVC[1..64] ==
+       draftAssetTotals.visible_1_64` (internal consistency); `== 65925` is the released CURVE, adoption.
+  (13) visible + residual == 77611            -> per-push keeps the reconciliation against the board's
        OWN f5_entrant_layer_pvc / total, and STRENGTHENS it to tie draftAssetTotals to phantomTotals
-       (two independently produced blocks must agree); `== 83538` is the released layer, adoption.
-  (13) residual_nd == 4649                    -> per-push keeps `residual_nd == f5_draft_pvc -
-       visible_1_64`; `== 4649` is released, adoption.
-  (13) residual_mech == 14272                 -> per-push keeps `residual_mech == f5_mech_pvc ==
-       phantomTotals mech_pvc`; `== 14272` is released, adoption.
+       (two independently produced blocks must agree); `== 77611` is the released layer, adoption.
+  (13) residual_nd == 2631                    -> per-push keeps `residual_nd == f5_draft_pvc -
+       visible_1_64`; `== 2631` is released, adoption.
+  (13) residual_mech == 9055                  -> per-push keeps `residual_mech == f5_mech_pvc ==
+       phantomTotals mech_pvc`; `== 9055` is released, adoption.
+  (#274 mop-up: the four released magnitudes above moved 64617/83538/4649/14272 -> 65925/77611/2631/9055
+   when the 30/7 rederivation landed; the per-push structural halves are unchanged.)
 RETIRED: none.
   33 originals -> 28 per-push + 13 adoption = 41 rows (the 8 splits each produce two).
 
@@ -113,10 +116,26 @@ BOARD_B = ('70ef0ff36ca7633aa4097a9b7c1a730013870abe',
            'session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json')
 # The RELEASED F5 layer. Like the present-lens literals above these stay LITERALS on purpose -- they are
 # the drift sentinel -- but they are RELEASE CONDITIONS, so they gate in the adoption lane only.
-RELEASED_PVC_1_64 = 64617
-RELEASED_F5_ENTRANT = 83538
-RELEASED_RESIDUAL_ND = 4649
-RELEASED_RESIDUAL_MECH = 14272
+#
+# RE-STAMPED to the ADOPTED layer by the #274 adoption mop-up act (owner word 2026-07-30). The 30/7
+# rederivation moved the entrant layer and data/release_contract.json's f5_entrant_reconciliation block was
+# not re-stamped with it, so these released literals and the contract both still described the superseded
+# layer while the board served the adopted one. That divergence is exactly what the drift sentinel is for
+# and it is why it fired -- these values follow the contract, which is now the adopted 77,611.
+#
+#   component            superseded -> ADOPTED     derivation (engine/rl_after/rl_export.py)
+#   visible_1_64            64617   ->   65925     Sigma PVC[1..64] at release-active face value      (:777)
+#   residual_nd_tail         4649   ->    2631     draft_pvc - Sigma PVC[1..64]; picks 65+ tail       (:779)
+#   residual_mech           14272   ->    9055     Sigma slots x PVC over mech_occupancy, PICKEQ 90/92 (:780/:692)
+#   entrant_layer_pvc       83538   ->   77611     draft_pvc + mech_pvc                               (:693)
+#
+# 65925 + 2631 + 9055 == 77611, and the board asserts that itself as `reconciled_to_f5` at both lenses.
+# Board B's OWN sealed layer is still 83538 and is deliberately NOT touched below -- it is the historical
+# R14 forward diagnostic, not the adopted release.
+RELEASED_PVC_1_64 = 65925
+RELEASED_F5_ENTRANT = 77611
+RELEASED_RESIDUAL_ND = 2631
+RELEASED_RESIDUAL_MECH = 9055
 
 # --adoption: run the released-baseline lane as GATING (the owner adoption step). Default is per-push.
 ADOPTION = '--adoption' in sys.argv[1:]
@@ -286,7 +305,7 @@ def main():
         adopt('(13) lens +%d: F5 entrant layer == %d (RELEASED)' % (off, RELEASED_F5_ENTRANT),
               visible + res_nd + res_mech == RELEASED_F5_ENTRANT == dat['f5_entrant_layer_pvc'],
               visible + res_nd + res_mech)
-        adopt('(13) lens +%d: residual_nd == draft_pvc(69266) - 64617 == %d (RELEASED)' % (off, RELEASED_RESIDUAL_ND),
+        adopt('(13) lens +%d: residual_nd == draft_pvc(68556) - 65925 == %d (RELEASED)' % (off, RELEASED_RESIDUAL_ND),
               res_nd == RELEASED_RESIDUAL_ND, res_nd)
         adopt('(13) lens +%d: residual_mech == mech_pvc == %d (RELEASED)' % (off, RELEASED_RESIDUAL_MECH),
               res_mech == RELEASED_RESIDUAL_MECH, res_mech)
@@ -296,7 +315,11 @@ def main():
     ptm = B['phantomTotals']['_meta']
     ck('(13) Board B sealed entrant layer == 83538 (draft 69266 + mech 14272)',
        ptm['entrant_layer_pvc'] == 83538 and ptm['draft_pvc'] == 69266 and ptm['mech_pvc'] == 14272)
-    adopt('(13) final board carries Board B phantomPicks/phantomLayer/phantomTotals unchanged',
+    # #274 mop-up: the LABEL was "carries Board B phantomTotals unchanged", which stopped being true when the
+    # 30/7 rederivation moved the entrant layer (Board B 83538 -> adopted 77611). The CHECK is unchanged in
+    # substance -- the final board's layer must equal the RELEASED layer, and the phantomPicks population must
+    # still match Board B's -- so only the wording moves, to say what it actually asserts.
+    adopt('(13) final board entrant layer == the RELEASED layer, and phantomPicks population matches Board B',
           fptm.get('entrant_layer_pvc') == RELEASED_F5_ENTRANT
           and len(F.get('phantomPicks', [])) == len(B.get('phantomPicks', [])),
           'entrant_layer=%s vs %d; phantomPicks %d vs Board B %d'

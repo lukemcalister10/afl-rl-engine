@@ -10,8 +10,9 @@ with the store/board. For every boundary R14..R19 this records + asserts:
 
 Required (all asserted): R14 baseline == the approved canonical board (byte-identical); each later round
 ADVANCES calendar_progress (0.63/0.67/0.71/0.75/0.79); exposure_pace is freshly derived from that staged
-store; NO later board retains stale R14 season-state; all 804 players + 64+64 future picks survive; F5 exact
-(83538); canonical store/board untouched; real-store gate OFF. (Exactly-once/rollback/recovery/repair are
+store; NO later board retains stale R14 season-state; all 804 players + 64+64 future picks survive; F5
+CLOSES on each staged board's own sealed layer (#274 mop-up: was pinned to the era magnitude 83538);
+canonical store/board untouched; real-store gate OFF. (Exactly-once/rollback/recovery/repair are
 proven by the shared catch-up + failure-injection harnesses.)
 
 Writes incrementally to evidence/season_advance_r14_r19.json. Run:
@@ -95,18 +96,82 @@ def snap(scr, rnd):
             'picks_2027': len([p for p in lp if p['lens'] == 1]),
             'picks_2028': len([p for p in lp if p['lens'] == 2]),
             'f5_plus1': dat.get('+1', {}).get('f5_entrant_layer_pvc'),
+            # #274 mop-up: carry the components so F5 can be closed INTERNALLY per staged round instead of
+            # against one era's magnitude (see the assert below).
+            'f5_visible': dat.get('+1', {}).get('visible_1_64'),
+            'f5_res_nd': dat.get('+1', {}).get('residual_nd_tail'),
+            'f5_res_mech': dat.get('+1', {}).get('residual_mech'),
+            'f5_draft': dat.get('+1', {}).get('f5_draft_pvc'),
+            'f5_mech': dat.get('+1', {}).get('f5_mech_pvc'),
             'f5_reconciled': dat.get('+1', {}).get('reconciled_to_f5')}
 
 def write():
     json.dump({'ok': all(x['pass'] for x in R), 'rows': ROWS, 'checks': R}, open(OUT, 'w'), indent=2)
 
 ROWS = []
+
+def declare_replay_under_current_code(scr):
+    """#274 mop-up — THE DECLARED CLAIM of this proof, made explicit.
+
+    What this proof does, stated plainly: it REPLAYS R14-R19 HISTORY UNDER CURRENT CODE. The scratch is
+    rewound to the accepted R14 baseline and the recorded rounds are re-applied, but the engine doing the
+    applying is today's checkout. That was always true; it was never declared, and one assert silently
+    assumed the opposite.
+
+    THE ASSUMPTION THAT BROKE. `materialize_r14()` stamps the R14-era identities into the scratch manifest,
+    including the R14-era `fv`. Guard 5 then resolves its pinned `fv` through `fv_provenance.repo_root()`,
+    which walks up from the WORKSPACE copy (fv_provenance.py:34-40), so inside the scratch it reads the
+    rewound R14 pin -- and compares it against the only forward_valuation in the tree, which is today's.
+    While `fv` had not moved since R14 the two agreed by coincidence. The 30/7 rederivation moved it
+    (6a9a520f -> d10aa93e) and Guard 5 began refusing, correctly: it exists to stop a silent stale import.
+
+    THE RESTATEMENT. The historical stamp is asserted FIRST (so the rewind is still proven to have rewound)
+    and recorded under `_fv_replay_note` as history, then the manifest's live `fv` pin is set to the
+    CANONICAL checkout's pin -- the checkout the code actually comes from. Guard 5 keeps its full force: it
+    still refuses any forward_valuation that is not the pinned one, only now the pin is the one the imported
+    source is supposed to match. Nothing outside this throwaway scratch is touched; no committed record and
+    no historical value is rewritten.
+
+    Returns (historical_fv, canonical_fv).
+    """
+    mpath = os.path.join(scr, 'data', 'expected_boot.json')
+    m = json.load(open(mpath))
+    hist_fv = m.get('fv')
+    canon_fv = json.load(open(os.path.join(ROOT, 'data', 'expected_boot.json'))).get('fv')
+
+    # (1) the rewind really rewound: the scratch carries the HISTORICAL fv stamp, not today's.
+    ck('scratch is rewound to the historical baseline (its fv stamp is history, not the current pin)',
+       bool(hist_fv) and bool(canon_fv) and hist_fv != canon_fv,
+       'scratch fv=%s vs canonical fv=%s' % (str(hist_fv)[:8], str(canon_fv)[:8]))
+
+    m['_fv_replay_note'] = {
+        'claim': 'R14-R19 history replayed under CURRENT code',
+        'historical_fv_stamp': hist_fv,
+        'replayed_under_fv': canon_fv,
+        'why': ('the recorded rounds are historical; the engine replaying them is the current checkout, so '
+                'Guard 5 is anchored to the canonical pin. The historical stamp is preserved here as '
+                'history and is asserted above.'),
+        'ruling': '#274 adoption mop-up act, owner word 2026-07-30',
+    }
+    m['fv'] = canon_fv
+    with open(mpath, 'w') as f:
+        json.dump(m, f, indent=2)
+
+    # (2) the declared claim now holds: the pin the replay boots against IS the canonical one.
+    ck('replay declares its claim: Guard 5 anchored to the canonical fv pin (%s)' % str(canon_fv)[:8],
+       json.load(open(mpath)).get('fv') == canon_fv)
+    # (3) and the history is still legible in the scratch, not overwritten out of existence.
+    ck('the historical fv stamp is preserved as history in the scratch manifest',
+       json.load(open(mpath)).get('_fv_replay_note', {}).get('historical_fv_stamp') == hist_fv)
+    return hist_fv, canon_fv
+
 def main():
     print('=== R14-R19 SEQUENTIAL SEASON-STATE ADVANCE PROOF ===')
     real_store = os.path.join(RA, 'rl_model_data.json'); real_board = os.path.join(ROOT, 'data', 'rl_build', 'rl_app_data.json')
     store_before, board_before = md5(real_store), md5(real_board)
 
     scr = FI.make_scratch('seasonadv'); CP.install_ui(scr)
+    declare_replay_under_current_code(scr)   # #274: declare the claim before the replay boots
     # R14 baseline (before any apply): the scratch board == the approved canonical board, season-state R14
     base = snap(scr, 14); ROWS.append(base)
     ck('R14 baseline board == approved canonical 2ab73a6f (byte-identical)', base['board_md5'] == CANON_BOARD, base['board_md5'])
@@ -133,7 +198,16 @@ def main():
         ck('R%d board advanced (season-state re-priced; board md5 changed)' % rnd, row['board_md5'] != prev_board, row['board_md5'])
         ck('R%d 804 active + 64+64 future picks survive' % rnd,
            row['active'] == 804 and row['picks_2027'] == 64 and row['picks_2028'] == 64)
-        ck('R%d F5 reconciliation exact (83538)' % rnd, row['f5_plus1'] == 83538 and row['f5_reconciled'])
+        # #274 mop-up — RE-EXPRESSED. This asserted the era magnitude 83538, so a legitimate re-derivation
+        # (30/7: 83538 -> 77611) reddened a step whose actual question is "does each staged round preserve a
+        # closed F5?". That is a property of the staged board, not of a released number, so it now closes
+        # internally: visible + residuals == draft + mech == the board's own sealed layer. Released-magnitude
+        # equality lives in invariant_proof.py's adoption lane and is not re-asserted here.
+        ck('R%d F5 reconciliation closes internally (%s+%s+%s=%s)'
+           % (rnd, row['f5_visible'], row['f5_res_nd'], row['f5_res_mech'], row['f5_plus1']),
+           row['f5_visible'] is not None and row['f5_reconciled']
+           and row['f5_visible'] + row['f5_res_nd'] + row['f5_res_mech']
+               == row['f5_draft'] + row['f5_mech'] == row['f5_plus1'])
         # COHERENT AUTHORITY (supervisor 3rd review): expected_boot, season_state AND the release contract all
         # advanced to THIS round together; the contract's store/board pins == the new store/board; the contract
         # verifies fail-closed; and the real-store write gate stays OFF.

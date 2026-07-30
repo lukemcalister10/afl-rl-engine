@@ -95,7 +95,12 @@ async function ladder(page) {
          p1.data.some(d => d.pick && /Draft Pick 64(?!\d)/.test(d.name)));
       ck(`${width}px · +1: last-ranked asset present (rank 868)`, ranks1.includes(868));
       ck(`${width}px · +1: residual reconciliation panel present + reconciles`,
-         !!p1.recon && /= sealed F5 entrant layer 83,538 ✓/.test(p1.recon), p1.recon ? 'panel ok' : 'no panel');
+         // #274 mop-up: re-pinned 83,538 -> 77,611, the ADOPTED sealed layer. This assertion is what
+         // caught the divergence — the 30/7 rederivation moved the layer and
+         // data/release_contract.json's f5_entrant_reconciliation block was not re-stamped with it. Both
+         // now carry 77,611. The detail string reports the panel text so a future mismatch is legible.
+         !!p1.recon && /= sealed F5 entrant layer 77,611 ✓/.test(p1.recon),
+         p1.recon ? ('panel: ' + String(p1.recon).slice(-70)) : 'no panel');
       ck(`${width}px · +1: no document overflow`,
          await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
       await page.screenshot({ path: `${OUT}/unified_2027_${width}.png`, fullPage: false });

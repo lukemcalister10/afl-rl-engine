@@ -135,7 +135,8 @@ def main():
           'detail': {'per_push': 'visible == ΣPVC[1..64] == declared, and visible + residual_nd + '
                                  'residual_mech closes on the board\'s OWN F5 entrant layer, which must equal '
                                  'draft+mech and the sealed phantomTotals layer; no double-count',
-                     'adoption': 'the RELEASED magnitudes 64617 / 4649 / 14272 / 83538 and the Board B '
+                     'adoption': 'the RELEASED magnitudes 65925 / 2631 / 9055 / 77611 (re-stamped from '
+                                 '64617 / 4649 / 14272 / 83538 by the #274 mop-up act) and the Board B '
                                  'phantom-layer equality — gated by invariant_proof.py --adoption',
                      'adoption_ok': (invp.get('adoption') or {}).get('ok_f5')}},
       '14_club_valuation': {'status': 'PASS' if g('club_curve_provenance') else 'FAIL',
