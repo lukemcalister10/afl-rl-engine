@@ -7,6 +7,14 @@ the same facts the browser validator (ui/app/movers.js core) enforces:
 
   * the owner-approved transition (data/release_lineage.json `release_transition`, mirrored to
     ui/data/movers_transition.js) is structurally complete and owner-approved;
+  * ERA SUCCESSION (#274 item 1, under #271 Addenda 21/22): the mirror carries the current transition
+    PLUS the append-only `release_transition_register`, every entry of it, so EVERY out-of-round board
+    move — not just the system's first — reaches the reader with its own owner approval. The
+    whole-object strict equality this suite used to assert was itself the single-slot limit; it is
+    restated (not loosened) into per-part exactness, with the ITEM 408 record pinned BYTE-VERBATIM as
+    the mirror payload's prefix. The delivered outcome is asserted end-to-end against the shipped
+    bundle, with a non-vacuity demonstration that removing the register loses the newest boundary's
+    approval;
   * its SOURCE equals the historical R15-R19 reports' terminal identity EXACTLY, and its DESTINATION
     equals the CURRENT accepted release manifest (data/expected_boot.json) EXACTLY — derived, not typed;
   * exactly release_version / balanced_board_md5 / engine_head / board / store move; rl_model / fv /
@@ -37,6 +45,10 @@ import round_movers as MV            # noqa: E402
 import score_ingestor as SI          # noqa: E402
 
 ROUNDS = [15, 16, 17, 18, 19]
+# The append-only archive of out-of-round moves, mirrored alongside the current transition since
+# #274 item 1 (ERA SUCCESSION). Lives in data/release_lineage.json; projected into the js mirror by
+# ui/tools/generate_movers_transition.py.
+REGISTER_KEY = 'release_transition_register'
 FIXED = ['release_version', 'balanced_board_md5', 'engine_head', 'rl_model', 'fv', 'config', 'register']
 ID_FIELDS = FIXED + ['board', 'store']
 
@@ -77,7 +89,82 @@ def run_all():
     _ck(isinstance(trans, dict), 'data/release_lineage.json declares release_transition')
     _ck(trans.get('kind') == 'movers_release_transition' and trans.get('owner_approved') is True,
         'transition is an owner-approved movers_release_transition')
-    _ck(trans == trans_js, 'release_lineage.json release_transition == ui/data/movers_transition.js (consistent)')
+    # RESTATED at #274 item 1 (ERA SUCCESSION), in lockstep with the reader and the browser suite —
+    # the #271 A18 lesson: the oracle moves with the reader or the test stops checking anything.
+    #
+    # This asserted `trans == trans_js`, whole-object strict equality. That clause WAS the single-slot
+    # limitation: it made the mirror unable to carry anything but one transition, which is why the
+    # owner-approved #271/A17 record could not reach the reader and the 30/7 boundary displayed
+    # `owner_approved_record: false`. The mirror now carries the current transition PLUS the
+    # append-only register, so the equality is restated to the two facts it was standing in for:
+    #   (1) the transition is mirrored EXACTLY — the ITEM 408 record byte-for-byte, no drift, no edit;
+    #   (2) the register is mirrored EXACTLY too, so the reader sees every entry the lineage declares.
+    # Nothing is loosened: every byte of both is still pinned to the lineage record, and the mirror
+    # may carry NOTHING the lineage does not (asserted below), so a hand-edit still fails closed.
+    mirrored_trans = {k: v for k, v in trans_js.items() if k != REGISTER_KEY}
+    _ck(trans == mirrored_trans,
+        'release_lineage.json release_transition == ui/data/movers_transition.js (consistent)')
+    _ck(trans_js.get(REGISTER_KEY) == lineage.get(REGISTER_KEY),
+        'release_lineage.json %s == the mirror\'s register (era succession: ALL entries reach the reader)' % REGISTER_KEY)
+    _ck(set(trans_js) == set(trans) | {REGISTER_KEY},
+        'the mirror carries the transition keys plus the register and NOTHING else (zero authorship)')
+    # The register is APPEND-ONLY and the ITEM 408 record is never rewritten (#271 A17/A22): the
+    # transition's own serialization is a literal PREFIX of the mirror's payload. Asserted on bytes,
+    # not on parsed equality, because "preserved verbatim" is a claim about bytes.
+    with open(os.path.join(REPO, 'ui', 'data', 'movers_transition.js'), encoding='utf-8') as f:
+        _mirror_text = f.read()
+    _payload = _mirror_text[_mirror_text.index('{'):_mirror_text.rindex('}') + 1]
+    _trans_bytes = json.dumps(trans, ensure_ascii=False, separators=(',', ':'))
+    _ck(_payload.startswith(_trans_bytes[:-1]),
+        'the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload\'s prefix (never rewritten)')
+    # Every register entry that describes a move is owner-approved and names its ruling — the property
+    # era succession delivers. A pointer note (no destination) is not a record and is not held to it.
+    _reg_records = [e for e in (lineage.get(REGISTER_KEY) or [])
+                    if isinstance(e, dict) and (e.get('destination') or {}).get('board')]
+    _ck(len(_reg_records) >= 1, 'the register carries at least one transition record  (%d of %d entries)'
+        % (len(_reg_records), len(lineage.get(REGISTER_KEY) or [])))
+    _ck(all(e.get('owner_approved') is True and e.get('owner_ruling_id') for e in _reg_records),
+        'EVERY register record is owner-approved and names its ruling id')
+
+    # ---- ERA SUCCESSION, the delivered outcome: the reader reaches every record ----
+    # model_changes() is what turns a register entry into the boundary label the tab shows. Recomputed
+    # here from the live tree (not read off the bundle) and cross-checked against the SHIPPED bundle, so
+    # a reader change that never made it into the shipped bytes cannot pass. Before #274 the 30/7
+    # boundary read owner_approved_record False with a null ruling id — #271 A22's declared known-false
+    # flag. This is the assertion that clears it.
+    _live_mc = MV.model_changes(REPO)
+    _shipped_mc = prod.get('model_changes') or []
+    _ck(_live_mc == _shipped_mc,
+        'the shipped bundle\'s model_changes == what the live tree derives (reader and bundle in step)')
+    _ck(len(_shipped_mc) >= 2,
+        'more than one out-of-round boundary is carried end-to-end — the single-slot limit is gone  '
+        '(%d boundaries)' % len(_shipped_mc))
+    _ck(all(c.get('owner_approved_record') is True and c.get('owner_ruling_id') for c in _shipped_mc),
+        'EVERY out-of-round boundary reaches the reader owner-approved, naming its ruling id')
+    # NON-VACUITY, both directions: the check above must be able to FAIL. Drop the register from the
+    # mirror in a scratch copy and the newest boundary loses its approval — proving the assertion is
+    # carried by the register and is not true by construction.
+    _nv = tempfile.mkdtemp(prefix='movers_transition_nv_')
+    try:
+        shutil.copytree(os.path.join(REPO, 'ui'), os.path.join(_nv, 'ui'),
+                        ignore=shutil.ignore_patterns('screenshots', 'node_modules'))
+        shutil.copytree(os.path.join(REPO, 'engine'), os.path.join(_nv, 'engine'))
+        _p = os.path.join(_nv, 'ui', 'data', 'movers_transition.js')
+        with open(_p, encoding='utf-8') as f:
+            _t = f.read()
+        _stripped = copy.deepcopy(trans)          # the pre-#274 single-slot mirror shape
+        _hdr = _t[:_t.index('{')]
+        with open(_p, 'w', encoding='utf-8') as f:
+            f.write(_hdr + json.dumps(_stripped, ensure_ascii=False, separators=(',', ':')) + ';\n')
+        _degraded = MV.model_changes(_nv)
+        _ck(len(_degraded) == len(_live_mc) and
+            not all(c.get('owner_approved_record') is True for c in _degraded),
+            'NON-VACUITY: with the register removed the newest boundary LOSES its owner approval  '
+            '(approved %d of %d, vs %d of %d with it)'
+            % (sum(1 for c in _degraded if c.get('owner_approved_record')), len(_degraded),
+               sum(1 for c in _live_mc if c.get('owner_approved_record')), len(_live_mc)))
+    finally:
+        shutil.rmtree(_nv, ignore_errors=True)
     src, dst, ap = trans['source'], trans['destination'], trans['applies_to']
     _ck(all(src.get(k) for k in ID_FIELDS) and all(dst.get(k) for k in ID_FIELDS),
         'transition source + destination carry every id field (fixed pins + board + store)')

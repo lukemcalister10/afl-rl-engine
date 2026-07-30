@@ -632,7 +632,16 @@ def model_changes(repo_root):
     that is a model change by definition — so each one contributes a boundary between the point before
     it and itself. `ui/data/movers_transition.js` is the owner-approved record of such a move and is
     consulted for the board ids; it is READ here, never enforced. It stays the register of these
-    moments rather than a gate."""
+    moments rather than a gate.
+
+    ERA SUCCESSION (#274 item 1, under #271 Addenda 21/22). This used to read ONE transition — a single
+    JSON object keyed by its own destination board — so exactly one out-of-round move could ever carry
+    its owner approval through to the reader. Adoption executed the system's first real era succession
+    and the limitation became visible: the owner-approved #271/A17 record sat durably in the lineage
+    while the 30/7 boundary displayed `owner_approved_record: false`, a plumbing lag rather than an
+    approval question. It now reads EVERY entry the mirror carries — the current transition plus the
+    append-only `release_transition_register` — so each out-of-round column finds its own record.
+    Entries are keyed by the board the move LANDED on, which is the out-of-round column's own board."""
     ing = os.path.join(repo_root, 'engine', 'rl_after', 'ingestion')
     vh = _load(os.path.join(ing, 'value_history.json'))
     points = OOC.selectable_points(vh)
@@ -646,8 +655,16 @@ def model_changes(repo_root):
                 text = f.read()
             i, j = text.index('{'), text.rindex('}')
             tr = json.loads(text[i:j + 1])
-            # keyed by the board the move LANDED on — that is the out-of-round column's own board
-            declared[(tr.get('destination') or {}).get('board')] = tr
+            # The current transition first, then the register in order, so an APPENDED entry describing
+            # the same landing board supersedes an earlier one (the register is append-only, latest
+            # last). A register entry that carries no destination board is a pointer note, not a
+            # record — the ITEM 408 stub is one — and contributes nothing.
+            for entry in [tr] + list(tr.get('release_transition_register') or []):
+                if not isinstance(entry, dict):
+                    continue
+                board = (entry.get('destination') or {}).get('board')
+                if board:
+                    declared[board] = entry
         except (OSError, ValueError):
             declared = {}
 

@@ -96,6 +96,24 @@ MD.card = (function () {
     return '<td class="num hsc"><span class="unrec" title="' + fmt.esc(cell.why) + '">—</span></td>';
   }
 
+  /* The "model change" tooltip, per point. It used to be one hard-coded sentence naming the ITEM 411
+     restructure, written when that was the only out-of-round column in the system's life. The 30/7
+     rederivation added a second one, so the fixed text began telling the owner that the 30/7 column was
+     the ITEM 411 restructure — a wrong statement on a live surface. It now names the change the row
+     actually is, from the bundle's own model_changes entry (#274 item 1; display only — no value,
+     ordering or selection behaviour changes). */
+  function modelChangeWhy(r) {
+    const mc = r.modelChange || null;
+    const name = (mc && mc.label) || r.label || r.id || "a model change";
+    let why = "A model change, not a week of football: " + name + ". Value and rank move here because " +
+              "the model changed, not because anyone played.";
+    if (mc && mc.owner_approved_record) {
+      const ids = [].concat(mc.owner_ruling_id || []).filter(Boolean);
+      why += " This change is on the record as owner-approved" + (ids.length ? " (" + ids.join(", ") + ")" : "") + ".";
+    }
+    return why;
+  }
+
   function historySection(p) {
     const rows = MD.history.series(p.key);
     if (!rows || !rows.length) {
@@ -114,9 +132,7 @@ MD.card = (function () {
       body +=
         '<tr class="' + (isChange ? "hmodel" : "") + '">' +
           '<td class="hpt">' + fmt.esc(r.label || r.id) +
-            (isChange ? '<span class="mctag" title="' +
-              fmt.esc("A model change, not a week of football: the ITEM 411 restructure. Value and rank " +
-                      "move here because the model changed, not because anyone played.") +
+            (isChange ? '<span class="mctag" title="' + fmt.esc(modelChangeWhy(r)) +
               '">model change</span>' : "") + "</td>" +
           '<td class="num">' + fmt.n(r.v) + "</td>" +
           '<td class="num">' + movePill(r.dv) + "</td>" +
