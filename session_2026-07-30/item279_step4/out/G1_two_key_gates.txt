@@ -1,0 +1,9 @@
+# G1 — the signature gates, TWO named keys. Post-E2-amendment. 2026-07-30T23:32:40Z
+--- baseline: RL_GAMMA=1.0 RL_PICK1=3000 ---
+{"signature": "0c75bb6d829d4af06e42f66736cf7e92", "all_built_signatures": ["0589a2620e24e71a348988d27ab06154", "0c75bb6d829d4af06e42f66736cf7e92"], "RL_GAMMA": "1.0", "RL_PICK1": "3000", "RL_RUCK_TAX": "<unset>"}
+--- GAMMA flip: RL_GAMMA=0.85 RL_PICK1=3000 (must MOVE) ---
+{"signature": "707efc884d205527d7eb926ee0493b61", "all_built_signatures": ["5158e0be48fa43db2314f447201a31d6", "707efc884d205527d7eb926ee0493b61"], "RL_GAMMA": "0.85", "RL_PICK1": "3000", "RL_RUCK_TAX": "<unset>"}
+--- PICK1 flip: RL_GAMMA=1.0 RL_PICK1=3500, artifact pin moved with it (must MOVE) ---
+{"signature": "56c07f9fb752107e6f5443e25b2c00d7", "all_built_signatures": ["359cdcbf2ff4bec9ab37022c6c61993f", "56c07f9fb752107e6f5443e25b2c00d7"], "RL_GAMMA": "1.0", "RL_PICK1": "3500", "RL_RUCK_TAX": "<unset>"}
+--- NEGATIVE CONTROL: non-gate var RL_RUCK_TAX=0.99 (must NOT move) ---
+{"signature": "0c75bb6d829d4af06e42f66736cf7e92", "all_built_signatures": ["0589a2620e24e71a348988d27ab06154", "0c75bb6d829d4af06e42f66736cf7e92"], "RL_GAMMA": "1.0", "RL_PICK1": "3000", "RL_RUCK_TAX": "0.99"}
