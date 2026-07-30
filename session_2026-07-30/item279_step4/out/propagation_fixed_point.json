@@ -1,0 +1,38 @@
+{
+ "iter1": {
+  "CONSERVATION_published": 0.9757,
+  "CONSERVATION_unit_adjusted": 0.9998,
+  "PICK_CLASS_vs_alpha1_pct": 0.0,
+  "PICK_CLASS_vs_numeraire": 17.1687,
+  "description": "flat 1.0 \u2014 the ruled setting; returns the control fit unchanged",
+  "factor_s": 0.975872,
+  "ladder_2_to_64": 51506,
+  "ladder_total": 54506,
+  "n_forced_descent": 8,
+  "n_negative_clamped_before_inverse_power": 0,
+  "payload": "7cfca117",
+  "pooled_head_pre_scale": 3074.17,
+  "published_pick1": 3000,
+  "raw_monotone_violations": 8,
+  "seconds": 0.0,
+  "fallback_share_pct": 5.931
+ },
+ "iter2": {
+  "CONSERVATION_published": 0.9998,
+  "CONSERVATION_unit_adjusted": 0.9999,
+  "PICK_CLASS_vs_alpha1_pct": 0.0,
+  "PICK_CLASS_vs_numeraire": 17.118,
+  "description": "flat 1.0 \u2014 the ruled setting; returns the control fit unchanged",
+  "factor_s": 0.999968,
+  "ladder_2_to_64": 51354,
+  "ladder_total": 54354,
+  "n_forced_descent": 8,
+  "n_negative_clamped_before_inverse_power": 0,
+  "payload": "fd9e8b63",
+  "pooled_head_pre_scale": 3000.09,
+  "published_pick1": 3000,
+  "raw_monotone_violations": 8,
+  "seconds": 0.0,
+  "fallback_share_pct": 5.931
+ }
+}
