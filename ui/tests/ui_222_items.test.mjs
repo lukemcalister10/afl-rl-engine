@@ -324,6 +324,58 @@ check(totals.boardPin === totals.stampPin, 'item 21 — the totals name the boar
 const clubsIntro = await page.locator('.cintro').innerText();
 check(/browser/i.test(clubsIntro), 'item 21 — the Clubs page says the totals are summed in the browser');
 
+/* -------------------------------------------------- #274 item 3 — the over-free lens (v − FHV) */
+section('#274 item 3 — over free');
+await setTier('working'); await go('board');
+const OF = await page.evaluate(() => {
+  const rows = Array.from(document.querySelectorAll('.row.working'));
+  const cell = (r) => r.querySelector('.ofree');
+  const first = rows[0];
+  const val = (r) => Number(String(r.querySelector('.val').innerText).replace(/[^\d.-]/g, ''));
+  return {
+    fhv: MD.config.FHV,
+    cells: rows.filter(r => cell(r)).length,
+    rows: rows.length,
+    firstVal: val(first),
+    firstText: cell(first).innerText,
+    below: document.querySelectorAll('.row.working .ofree.belowfree').length,
+    // the flag must agree with the arithmetic on EVERY row, not just look plausible
+    flagAgrees: rows.every(r => (val(r) < MD.config.FHV) === cell(r).classList.contains('belowfree')),
+    // pure helpers, both directions
+    helperOk: MD.overFree(1000) === 1000 - MD.config.FHV && MD.overFree(null) === null &&
+              MD.belowFree(MD.config.FHV - 1) === true && MD.belowFree(MD.config.FHV) === false,
+    hasHeader: !!document.querySelector('.rowhead.working .ofree'),
+  };
+});
+check(OF.fhv === 190, 'item 3 — FHV is the ruled constant 190 (#270 Option A)', String(OF.fhv));
+check(OF.cells === OF.rows && OF.rows > 0,
+  'item 3 — every board row carries the over-free cell', OF.cells + '/' + OF.rows);
+check(OF.hasHeader, 'item 3 — the column is headed');
+check(OF.firstText.replace(/[^\d]/g, '') === String(OF.firstVal - OF.fhv),
+  'item 3 — the figure is exactly value − FHV', OF.firstText + ' vs ' + (OF.firstVal - OF.fhv));
+check(OF.flagAgrees, 'item 3 — the below-free flag agrees with the arithmetic on every row');
+check(OF.below > 0 && OF.below < OF.rows,
+  'NON-VACUITY: the flag fires on some rows and not others  (' + OF.below + ' of ' + OF.rows + ' below free)');
+check(OF.helperOk, 'item 3 — the lens helpers are pure: null in / null out, and the boundary is exclusive');
+
+/* NON-VACUITY the other way: move FHV and BOTH the column and the flag must move with it, proving one
+   constant drives both and neither is a stored figure. */
+const OF2 = await page.evaluate(() => {
+  const before = document.querySelectorAll('.row.working .ofree.belowfree').length;
+  MD.config.FHV = 100000;                       // in-page only; nothing is written anywhere
+  MD.go('board');
+  const rows = Array.from(document.querySelectorAll('.row.working'));
+  const after = document.querySelectorAll('.row.working .ofree.belowfree').length;
+  const text = rows[0].querySelector('.ofree').innerText;
+  MD.config.FHV = 190; MD.go('board');
+  return { before, after, total: rows.length, text };
+});
+check(OF2.after === OF2.total && OF2.after !== OF2.before,
+  'NON-VACUITY: raising FHV flags EVERY row below free — one constant drives the whole lens  (' +
+  OF2.before + ' -> ' + OF2.after + ' of ' + OF2.total + ')');
+check(/^−/.test(OF2.text), 'NON-VACUITY: and the figure itself follows FHV, so it is computed not stored',
+  OF2.text);
+
 /* ------------------------------------------------------------------ no runtime errors anywhere */
 section('RUNTIME');
 for (const v of ['board', 'clubs', 'card', 'trade', 'movers']) {

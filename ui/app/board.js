@@ -250,7 +250,14 @@ MD.board = (function () {
         '<span class="h r">#</span><span class="h c">★</span><span class="h">Player</span>' +
         '<span class="h">Pos</span><span class="h">Club <small>AFFL · AFL</small></span>' +
         '<span class="h r">Value</span><span class="h">vs top</span>' +
-        '<span class="h r">' + dh + '</span><span class="h r">Pick · Yr</span>';
+        '<span class="h r">' + dh + '</span>' +
+        /* #274 item 3: v − FHV, computed at render and stored nowhere. */
+        '<span class="h r ofree" title="' + fmt.esc(
+          "Over free = board value − free-hit value (" + MD.config.FHV + "). What this player is worth " +
+          "above what the free-agent tier reasonably gives you for nothing. A negative figure is a " +
+          "delist candidate: his place costs more than it returns against a free hit. Computed on the " +
+          "board on screen, never stored.") + '">Over free</span>' +
+        '<span class="h r">Pick · Yr</span>';
     } else {
       el.innerHTML =
         '<span class="h r">#</span><span class="h">Player</span><span class="h">Pos</span>' +
@@ -316,6 +323,17 @@ MD.board = (function () {
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) +
       deltaPill(p, r.val) +
+      /* #274 item 3 — the over-free lens, on the DISPLAYED value so it follows the board lens the way
+         every other figure on the row does. Computed here; nothing is stored. */
+      '<span class="ofree num' + (MD.belowFree(r.val) ? " belowfree" : "") + '" title="' + fmt.esc(
+        MD.belowFree(r.val)
+          ? "BELOW FREE — worth less than the free-hit value (" + MD.config.FHV + "), so a free agent is " +
+            "the better use of the place. A standing delist candidate."
+          : "Over free = value − " + MD.config.FHV + " (the ruled free-hit value).") + '">' +
+        /* NOT fmt.signed: its ▲/▼ arrows are the fixed grammar for MOVEMENT, and nothing has moved
+           here. A standing gap gets a plain sign. */
+        (r.val == null ? "—" : (MD.overFree(r.val) >= 0 ? "+" : "−") + fmt.n(Math.abs(MD.overFree(r.val)))) +
+        "</span>" +
       '<span class="meta">' + (p.pk ? "pk " + p.pk : "—") + " · ’" + String(p.yr || "").slice(2) + "</span>";
     b.addEventListener("click", function () { MD.go("card", p.key); });
     return b;
