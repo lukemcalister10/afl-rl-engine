@@ -431,3 +431,164 @@ owner has seen moves 21 RUCK players by a median 22 points, leaves the top 20 an
 does not change the board's shape. It does **not** bound the final board — step 2 changes the pick-value basis
 and step 3 adds the variance dial, and either can move far more than this. It also does not cover a peak-model
 retrain, which is excluded by design (channel 4) and docketed by the seam (channel 5).
+
+---
+
+# THIRD ADDENDUM — STEP 2: the minimal-vs-structural pick-basis prototype pair (VOR, γ=1.0)
+
+γ ruled VOR by owner word 2026-07-30. Everything here is VOR-denominated. α stays parked at 1.0 — no
+variance shaping in either prototype; that is step 3's question. The pool's ruled level lands at
+propagation, not here.
+
+**Matrix:** one evidence matrix for both prototypes — `out/per_entrant_279_vor.json`, store `6b9d00a7`,
+γ=1.0, own-bake surface (`v0surf_frozen: false`). Own-surface discipline unchanged.
+
+**Cost, measured before building the pair:** each prototype fit is **0.02–0.06s**; the whole pair including
+load is **2s wall**. Step 2 needs no engine run, no surface refit and no board rebuild, because both
+prototypes consume the matrix that already exists. This is the cheapest step in the job.
+
+**Control:** the harness's baseline path reproduces the step-1 VOR curve payload `85576b0f` exactly, which
+proves the harness's fit is the carried-verbatim one and that the only thing changing between runs is the
+year-0 contribution.
+
+## The finding that frames the whole step: the shipped curve is 99.975% its own prior
+
+`build_points` gives every entrant one year-0 point carrying `v0` — the **model's** year-0 estimate off the
+fitted surface — at weight 1.0, plus its realised path at tenure `k` with weight `es`. `fit_year0` then applies
+a time kernel `exp(-ty/τ)` with **τ=0.12**. Measured on the 1,325 curve-teaching rows in window:
+
+| | kernel mass | n points |
+|---|---|---|
+| prior (ty=0, the model's `v0`) | 1325.000 | 1,325 |
+| realised evidence (ty≥1) | 0.329 | 8,764 |
+
+**Realised evidence carries 0.0248% of the mass.** The time-kernel factors are 2.40e−4 at ty=1, 5.78e−8 at
+ty=2, 1.39e−11 at ty=3. So the "evidence-weighted" retrospective curve is, in practice, a smoothed re-reading
+of the v0 surface — and that surface is fit over `_v0_raw`, which reads the pick curve through
+`pedestal`/`unpl_eq`/`draftval`. Curve → surface → v0 → curve, with reality contributing a fortieth of one
+percent. That is the owner's S-1 objection, quantified: *"what the model expected of someone like him is
+ridiculous to consider when we have the evidence of what he actually did."*
+
+Note the asymmetry, confirmed at source: the **pool level** uses `realised_scar`, which has **no time kernel**
+and is pure evidence. So the shipped pick curve's head (1–64) is prior-driven while its pool level is
+evidence-driven. They are on different footings, and #270's tail finding — curve ≈1.56× realised at 57–64 — is
+exactly what that predicts.
+
+## The two prototypes
+
+Both change only what an entrant contributes as its year-0 point; `fit_year0`, `monotone_strict`, `pava_ni`,
+τ, nmin, `PW_FLOOR`, the pin(1)=3000 and both windows are carried verbatim.
+
+- **MINIMAL (S-1, re-weighting inside the current blend).** For a **concluded** career the year-0 slot carries
+  what he actually did (evidence-weighted realised value, busts at 0.0) instead of what the model predicted;
+  the prior is retired from concluded careers entirely, and their decayed evidence points go with it. Active
+  careers are untouched — the prior still stands in for their unwritten share. One point per entrant either
+  way, so the bandwidth/`effn` basis is unchanged.
+- **STRUCTURAL (S-2, completion over presumption).** Every entrant contributes a completed career value.
+  Concluded careers contribute their realised value. Active careers have their unwritten remainder completed
+  actuarially from concluded look-alikes, matched on settled position × tenure-so-far, with busts'
+  zero-remainders **included** in the stratum. The model prior survives only as an explicit, counted fallback.
+
+Population, of 1,325 curve-teaching rows in the 2004–2024 window: **830 concluded, 495 active, 316 never
+established**. Structural provenance: 830 own realised, **424 actuarially completed**, **71 prior fallback**
+(thin stratum, min n=20) — so the prior survives on 5.4% of rows, counted, against 100% of the year-0 mass in
+the baseline. 66 of 109 strata are usable.
+
+## Both curves, against the VOR baseline
+
+| pick | baseline | minimal | min/base | structural | str/base | str/min |
+|---|---|---|---|---|---|---|
+| 1 | 3000 | 3000 | 1.000 | 3000 | 1.000 | 1.000 |
+| 2 | 2871 | 2773 | 0.966 | 2999 | 1.045 | 1.082 |
+| 3 | 2787 | 2434 | 0.873 | 2905 | 1.042 | 1.194 |
+| 10 | 1640 | 1464 | 0.893 | 1516 | 0.924 | 1.036 |
+| 24 | 895 | 811 | 0.906 | 799 | 0.893 | 0.985 |
+| 32 | 739 | 601 | 0.813 | 644 | 0.871 | 1.072 |
+| 40 | 635 | 538 | 0.847 | 536 | 0.844 | 0.996 |
+| 50 | 564 | 393 | 0.697 | 372 | 0.660 | 0.947 |
+| 57 | 536 | 331 | 0.618 | 316 | 0.590 | 0.955 |
+| 64 | 526 | 295 | 0.561 | 276 | 0.525 | 0.936 |
+
+Ladder totals: baseline **63,908** → minimal **55,473** (0.868) → structural **55,536** (0.869).
+
+**Two things stand out.**
+
+1. **Both fixes cut the tail hard and leave the head alone.** Picks 50–64 fall to 0.53–0.70 of baseline; picks
+   1–3 barely move. Retiring the model prior from concluded careers is, by itself, most of a tail fix — which
+   is what the self-reference measurement predicts, since the tail is where busts cluster and where the prior
+   was doing the most work.
+2. **The two prototypes agree almost exactly.** Ladder ratio structural/minimal = **1.0011**. Per pick they sit
+   within ±5% from pick 10 down. The divergence — which S-2 defines as *the* measurement of the surviving
+   self-reference — is therefore **small below the top of the draft**. The structural fix buys materially more
+   only at picks 2–3 (+8% and +19% against minimal).
+
+## Honest limits of the prototypes, disclosed
+
+The structural fit is **noisier at the top**, and the raw fit says so: monotone violations in the raw
+1–64 curve are 0 (baseline), 3 (minimal), **6 (structural)**. Structural raw pick 2 (3121.6) exceeds raw pick 1
+(3041.0) — an inversion the carried `monotone_strict` pools away, which is why its pinned pick 2 lands at 2999
+against the 3000 pin. Those top two picks are **not separated by the data**; the isotonic step and the pin are
+doing it. `effn` at picks 1–3 is only 35–38, so the head is thin in every variant.
+
+Worth naming: the baseline has **zero** raw monotone violations precisely *because* it is fitting the model's
+own smooth prior. Once real evidence enters, the raw fit gets bumpy. The baseline's smoothness is a property of
+the self-reference, not of reality.
+
+A post-pin strict-descent guard was added to the prototype harness and **never fired** (0 forced points in all
+three runs), so no monotone structure in the tables above is manufactured by my code.
+
+## Par teaching population — evidence collected (report-only)
+
+`par_build.py` `gather()` keys `pos = MA.gfut(p)` once per player, so a role migrant refiles his entire career
+under his destination position. Measured on the same matrix, with three deliberately separated definitions
+because the loose one overstates:
+
+| definition | n | % of 11,209 season observations |
+|---|---|---|
+| (a) label string differs at all | 3,819 | 34.07% — **overstates**, counts `SF/MID` against settled `SF` |
+| (b) settled label present as one half of a dual | 1,673 | 14.93% — **not** contamination |
+| **(c) settled label absent from that season entirely** | **2,146** | **19.15% — the real figure** |
+
+786 of 2,646 players carry at least one strictly-foreign season. By destination: SD 30.14%, SF 23.17%, KPD
+15.63%, MID 14.23%, KPF 14.21%, RUCK 5.70%. Largest migrants are whole-career relabels — Luke Parker (settled
+SD, 16 of 16 seasons recorded MID or SF/MID), Dylan Grimes (settled SD, 15 of 15 recorded KPD), Michael Johnson
+(settled SD, 14 of 14 recorded KPD). Full list in `out/par_teaching_population_279.json`. Nothing changed; this
+is the evidence for the owner's ruling on which population teaches the par.
+
+## The Stanley observation — the basis work MAKES IT LIVE
+
+Docketed to this basis review as report-only unless the basis work made it live. It does.
+
+`ev()`'s ruck branch caps the production leg at `RUC_PRIOR_CAP*draftval(p)` = 1.4 × curve[effpk]. A basis change
+that cuts the curve tail tightens that cap, hardest where the cut is deepest. Mean cap ratio against baseline
+across the 54 rucks on the board:
+
+| | n | minimal/baseline | structural/baseline |
+|---|---|---|---|
+| ep ≥ 40 | 10 | **0.742** | **0.716** |
+| ep ≤ 20 | 4 | 0.951 | 0.959 |
+
+Rhys Stanley (ep 47): cap 812 → 610 (minimal) → 584 (structural). Established late-pick rucks are the exposed
+group — Gawn (ep 33) 1016 → 812, Briggs (ep 34) 998 → 788, Nankervis and Williams (ep 35) 979 → 774.
+
+**Limit, stated plainly:** this is *exposure*, not a measured repricing. Whether the cap actually binds for a
+given veteran depends on the run-time condition `_cpv < e <= _v0_uncapped`, which needs a board build under the
+ruled basis — and that build belongs to step 4's propagation, not step 2. Reported, not fixed.
+
+## Files
+
+- `out/proto_basis_279.json` — both prototypes, populations, provenance counts, raw/`effn` diagnostics, the divergence.
+- `out/proto_curves_full_279.json` — all three 64-point curves.
+- `out/par_teaching_population_279.json` — the par evidence with all three definitions.
+- `out/stanley_ruck_scaffold_279.json` — per-ruck cap exposure under each prototype.
+- `scripts/proto_basis.py` — the prototype harness.
+
+## Reversal condition (sealed, not yet run)
+
+After the basis ruling lands, the SCAR endpoint is re-derived once under the ruled basis. If the currency choice
+would flip, that STOPS before step 3 and returns to the owner.
+
+## CI posture
+
+None run; nothing in step 2 touches CI. Inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV
+green, and the declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.

@@ -1,0 +1,304 @@
+{
+ "by_destination_position_strict": {
+  "KPD": {
+   "pct": 15.63,
+   "seasons_filed": 1318,
+   "strictly_foreign": 206
+  },
+  "KPF": {
+   "pct": 14.21,
+   "seasons_filed": 1161,
+   "strictly_foreign": 165
+  },
+  "MID": {
+   "pct": 14.23,
+   "seasons_filed": 3254,
+   "strictly_foreign": 463
+  },
+  "RUCK": {
+   "pct": 5.7,
+   "seasons_filed": 754,
+   "strictly_foreign": 43
+  },
+  "SD": {
+   "pct": 30.14,
+   "seasons_filed": 2512,
+   "strictly_foreign": 757
+  },
+  "SF": {
+   "pct": 23.17,
+   "seasons_filed": 2210,
+   "strictly_foreign": 512
+  }
+ },
+ "candidate_fix": "file each season under the position RECORDED FOR THAT SEASON; interim cheaper option is to exclude pre-conversion seasons of late-career converts from the destination cohort",
+ "denominators": {
+  "players": 2646,
+  "season_observations": 11209
+ },
+ "largest_migrants": [
+  {
+   "games_total": 334,
+   "key": "luke-parker",
+   "season_position_mix": {
+    "MID": 13,
+    "SF/MID": 3
+   },
+   "seasons": 16,
+   "settled": "SD",
+   "strictly_foreign_seasons": 16
+  },
+  {
+   "games_total": 234,
+   "key": "dylan-grimes",
+   "season_position_mix": {
+    "KPD": 15
+   },
+   "seasons": 15,
+   "settled": "SD",
+   "strictly_foreign_seasons": 15
+  },
+  {
+   "games_total": 254,
+   "key": "jake-melksham",
+   "season_position_mix": {
+    "KPF": 2,
+    "MID": 6,
+    "SF": 7,
+    "SF/MID": 1
+   },
+   "seasons": 16,
+   "settled": "KPF",
+   "strictly_foreign_seasons": 14
+  },
+  {
+   "games_total": 233,
+   "key": "michael-johnson",
+   "season_position_mix": {
+    "KPD": 12,
+    "KPF/KPD": 2
+   },
+   "seasons": 14,
+   "settled": "SD",
+   "strictly_foreign_seasons": 14
+  },
+  {
+   "games_total": 305,
+   "key": "mitchell-duncan",
+   "season_position_mix": {
+    "MID": 10,
+    "SD": 2,
+    "SD/MID": 1,
+    "SF/MID": 3
+   },
+   "seasons": 16,
+   "settled": "SD",
+   "strictly_foreign_seasons": 13
+  },
+  {
+   "games_total": 197,
+   "key": "sam-gilbert",
+   "season_position_mix": {
+    "KPD": 11,
+    "KPD/MID": 1,
+    "KPF/KPD": 1
+   },
+   "seasons": 13,
+   "settled": "SD",
+   "strictly_foreign_seasons": 13
+  },
+  {
+   "games_total": 221,
+   "key": "ed-langdon",
+   "season_position_mix": {
+    "MID": 7,
+    "SF": 1,
+    "SF/MID": 4
+   },
+   "seasons": 12,
+   "settled": "SD",
+   "strictly_foreign_seasons": 12
+  },
+  {
+   "games_total": 314,
+   "key": "dayne-zorko",
+   "season_position_mix": {
+    "MID": 4,
+    "SD": 2,
+    "SD/MID": 1,
+    "SF/MID": 8
+   },
+   "seasons": 15,
+   "settled": "SD",
+   "strictly_foreign_seasons": 12
+  },
+  {
+   "games_total": 246,
+   "key": "danyle-pearce",
+   "season_position_mix": {
+    "MID": 11,
+    "SD/MID": 1,
+    "SF": 1,
+    "SF/MID": 1
+   },
+   "seasons": 14,
+   "settled": "SF",
+   "strictly_foreign_seasons": 12
+  },
+  {
+   "games_total": 177,
+   "key": "kyle-langford",
+   "season_position_mix": {
+    "KPF": 1,
+    "MID": 2,
+    "SF": 3,
+    "SF/MID": 6
+   },
+   "seasons": 12,
+   "settled": "KPF",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 215,
+   "key": "rory-lobb",
+   "season_position_mix": {
+    "KPD": 2,
+    "KPF": 5,
+    "KPF/RUCK": 3,
+    "RUCK": 3
+   },
+   "seasons": 13,
+   "settled": "KPD",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 145,
+   "key": "lachlan-plowman",
+   "season_position_mix": {
+    "KPD": 11
+   },
+   "seasons": 11,
+   "settled": "SD",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 186,
+   "key": "alex-sexton",
+   "season_position_mix": {
+    "MID": 3,
+    "SD": 2,
+    "SF": 5,
+    "SF/MID": 3,
+    "SF/SD": 1
+   },
+   "seasons": 14,
+   "settled": "SD",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 202,
+   "key": "benjamin-stratton",
+   "season_position_mix": {
+    "KPD": 11
+   },
+   "seasons": 11,
+   "settled": "SD",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 174,
+   "key": "jack-watts",
+   "season_position_mix": {
+    "KPF": 8,
+    "KPF/KPD": 2,
+    "KPF/MID": 1
+   },
+   "seasons": 11,
+   "settled": "SF",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 376,
+   "key": "patrick-dangerfield",
+   "season_position_mix": {
+    "MID": 11,
+    "SF": 1,
+    "SF/MID": 7
+   },
+   "seasons": 19,
+   "settled": "SF",
+   "strictly_foreign_seasons": 11
+  },
+  {
+   "games_total": 233,
+   "key": "touk-miller",
+   "season_position_mix": {
+    "MID": 10,
+    "SF/MID": 2
+   },
+   "seasons": 12,
+   "settled": "SF",
+   "strictly_foreign_seasons": 10
+  },
+  {
+   "games_total": 183,
+   "key": "zachary-williams",
+   "season_position_mix": {
+    "MID": 2,
+    "SD": 8,
+    "SF": 1,
+    "SF/SD": 2
+   },
+   "seasons": 13,
+   "settled": "SF",
+   "strictly_foreign_seasons": 10
+  },
+  {
+   "games_total": 286,
+   "key": "jeremy-howe",
+   "season_position_mix": {
+    "KPD": 6,
+    "SD": 5,
+    "SF": 4,
+    "SF/SD": 1
+   },
+   "seasons": 16,
+   "settled": "SD",
+   "strictly_foreign_seasons": 10
+  },
+  {
+   "games_total": 210,
+   "key": "karl-amon",
+   "season_position_mix": {
+    "MID": 7,
+    "SD": 2,
+    "SD/MID": 1,
+    "SF/MID": 2
+   },
+   "seasons": 12,
+   "settled": "SD",
+   "strictly_foreign_seasons": 9
+  }
+ ],
+ "mechanism": "engine/forward_valuation/par_build.py gather() keys pos = MA.gfut(p) ONCE per player, so a role migrant refiles his ENTIRE career under his destination position. Per-season position rows have existed since #262, so per-season filing is now buildable.",
+ "players_with_any_strictly_foreign_season": 786,
+ "question": "which population teaches the par surface (ruling to collect)",
+ "status": "REPORT-ONLY. Evidence collected for the owner ruling; nothing changed.",
+ "three_definitions": {
+  "a_loose_label_string_differs": {
+   "n": 3819,
+   "note": "OVERSTATES: counts dual labels like SF/MID against settled SF",
+   "pct": 34.07
+  },
+  "b_partial_settled_present_in_dual": {
+   "n": 1673,
+   "note": "NOT contamination",
+   "pct": 14.93
+  },
+  "c_strict_settled_absent_from_season": {
+   "n": 2146,
+   "note": "THE REAL FIGURE \u2014 the settled label appears nowhere in that season record",
+   "pct": 19.15
+  }
+ }
+}

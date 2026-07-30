@@ -1,0 +1,309 @@
+{
+ "IMPORTANT_LIMIT": "this is EXPOSURE, not a measured repricing. Whether the cap actually BINDS for a given veteran depends on the run-time condition _cpv < e <= _v0_uncapped, which needs a board build under the ruled basis. That build belongs to step 4 propagation, not step 2.",
+ "docket_status": "was REPORT-ONLY pending the basis review; the basis work MAKES IT LIVE (see verdict). Still not fixed here \u2014 reported for the ruling.",
+ "mean_cap_ratio": {
+  "ep_ge_40": {
+   "minimal_over_baseline": 0.7422,
+   "n": 10,
+   "structural_over_baseline": 0.7158
+  },
+  "ep_le_20": {
+   "minimal_over_baseline": 0.9512,
+   "n": 4,
+   "structural_over_baseline": 0.9592
+  }
+ },
+ "mechanism": "ev()'s ruck branch caps the production leg at RUC_PRIOR_CAP*draftval(p) = 1.4 * curve[effpk] (or _ruc_ceiling). A basis change that cuts the curve tail tightens that cap, hardest on late-pick and pool rucks.",
+ "n_active_rows": 804,
+ "n_rucks_on_board": 25,
+ "observation": "curve-derived ruck scaffolding brushing veterans (the Stanley observation)",
+ "per_ruck": [
+  {
+   "board_v": 10305,
+   "cap_baseline": 3901.8,
+   "cap_minimal": 3407.6,
+   "cap_structural": 4067.0,
+   "ep": 3,
+   "key": "luke-jackson",
+   "minimal_over_baseline": 0.8733,
+   "name": "Luke Jackson",
+   "structural_over_baseline": 1.0423
+  },
+  {
+   "board_v": 648,
+   "cap_baseline": 1631.0,
+   "cap_minimal": 1488.2,
+   "cap_structural": 1418.2,
+   "ep": 16,
+   "key": "will-green",
+   "minimal_over_baseline": 0.9124,
+   "name": "Will Green",
+   "structural_over_baseline": 0.8695
+  },
+  {
+   "board_v": 3864,
+   "cap_baseline": 1458.8,
+   "cap_minimal": 1481.2,
+   "cap_structural": 1408.4,
+   "ep": 19,
+   "key": "timothy-english",
+   "minimal_over_baseline": 1.0154,
+   "name": "Timothy English",
+   "structural_over_baseline": 0.9655
+  },
+  {
+   "board_v": 1010,
+   "cap_baseline": 1418.2,
+   "cap_minimal": 1423.8,
+   "cap_structural": 1360.8,
+   "ep": 20,
+   "key": "taylor-goad",
+   "minimal_over_baseline": 1.0039,
+   "name": "Taylor Goad",
+   "structural_over_baseline": 0.9595
+  },
+  {
+   "board_v": 4675,
+   "cap_baseline": 1339.8,
+   "cap_minimal": 1268.4,
+   "cap_structural": 1226.4,
+   "ep": 22,
+   "key": "brodie-grundy",
+   "minimal_over_baseline": 0.9467,
+   "name": "Brodie Grundy",
+   "structural_over_baseline": 0.9154
+  },
+  {
+   "board_v": 601,
+   "cap_baseline": 1297.8,
+   "cap_minimal": 1197.0,
+   "cap_structural": 1166.2,
+   "ep": 23,
+   "key": "harry-barnett",
+   "minimal_over_baseline": 0.9223,
+   "name": "Harry Barnett",
+   "structural_over_baseline": 0.8986
+  },
+  {
+   "board_v": 551,
+   "cap_baseline": 1253.0,
+   "cap_minimal": 1135.4,
+   "cap_structural": 1118.6,
+   "ep": 24,
+   "key": "toby-conway",
+   "minimal_over_baseline": 0.9061,
+   "name": "Toby Conway",
+   "structural_over_baseline": 0.8927
+  },
+  {
+   "board_v": 2002,
+   "cap_baseline": 1071.0,
+   "cap_minimal": 911.4,
+   "cap_structural": 974.4,
+   "ep": 30,
+   "key": "tom-de-koning",
+   "minimal_over_baseline": 0.851,
+   "name": "Tom De Koning",
+   "structural_over_baseline": 0.9098
+  },
+  {
+   "board_v": 2116,
+   "cap_baseline": 1034.6,
+   "cap_minimal": 841.4,
+   "cap_structural": 901.6,
+   "ep": 32,
+   "key": "mitchell-edwards",
+   "minimal_over_baseline": 0.8133,
+   "name": "Mitchell Edwards",
+   "structural_over_baseline": 0.8714
+  },
+  {
+   "board_v": 3400,
+   "cap_baseline": 1016.4,
+   "cap_minimal": 812.0,
+   "cap_structural": 865.2,
+   "ep": 33,
+   "key": "max-gawn",
+   "minimal_over_baseline": 0.7989,
+   "name": "Max Gawn",
+   "structural_over_baseline": 0.8512
+  },
+  {
+   "board_v": 2491,
+   "cap_baseline": 998.2,
+   "cap_minimal": 788.2,
+   "cap_structural": 831.6,
+   "ep": 34,
+   "key": "kieren-briggs",
+   "minimal_over_baseline": 0.7896,
+   "name": "Kieren Briggs",
+   "structural_over_baseline": 0.8331
+  },
+  {
+   "board_v": 2425,
+   "cap_baseline": 978.6,
+   "cap_minimal": 774.2,
+   "cap_structural": 806.4,
+   "ep": 35,
+   "key": "bailey-williams-wc",
+   "minimal_over_baseline": 0.7911,
+   "name": "Bailey J. Williams",
+   "structural_over_baseline": 0.824
+  },
+  {
+   "board_v": 2042,
+   "cap_baseline": 978.6,
+   "cap_minimal": 774.2,
+   "cap_structural": 806.4,
+   "ep": 35,
+   "key": "toby-nankervis",
+   "minimal_over_baseline": 0.7911,
+   "name": "Toby Nankervis",
+   "structural_over_baseline": 0.824
+  },
+  {
+   "board_v": 745,
+   "cap_baseline": 939.4,
+   "cap_minimal": 761.6,
+   "cap_structural": 777.0,
+   "ep": 37,
+   "key": "nick-bryan",
+   "minimal_over_baseline": 0.8107,
+   "name": "Nick Bryan",
+   "structural_over_baseline": 0.8271
+  },
+  {
+   "board_v": 767,
+   "cap_baseline": 921.2,
+   "cap_minimal": 760.2,
+   "cap_structural": 768.6,
+   "ep": 38,
+   "key": "sean-darcy",
+   "minimal_over_baseline": 0.8252,
+   "name": "Sean Darcy",
+   "structural_over_baseline": 0.8343
+  },
+  {
+   "board_v": 530,
+   "cap_baseline": 873.6,
+   "cap_minimal": 742.0,
+   "cap_structural": 736.4,
+   "ep": 41,
+   "key": "matthew-flynn",
+   "minimal_over_baseline": 0.8494,
+   "name": "Matthew Flynn",
+   "structural_over_baseline": 0.8429
+  },
+  {
+   "board_v": 482,
+   "cap_baseline": 861.0,
+   "cap_minimal": 726.6,
+   "cap_structural": 718.2,
+   "ep": 42,
+   "key": "max-knobel",
+   "minimal_over_baseline": 0.8439,
+   "name": "Max Knobel",
+   "structural_over_baseline": 0.8341
+  },
+  {
+   "board_v": 357,
+   "cap_baseline": 861.0,
+   "cap_minimal": 726.6,
+   "cap_structural": 718.2,
+   "ep": 42,
+   "key": "samson-ryan",
+   "minimal_over_baseline": 0.8439,
+   "name": "Samson Ryan",
+   "structural_over_baseline": 0.8341
+  },
+  {
+   "board_v": 663,
+   "cap_baseline": 812.0,
+   "cap_minimal": 610.4,
+   "cap_structural": 583.8,
+   "ep": 47,
+   "key": "lachlan-smith",
+   "minimal_over_baseline": 0.7517,
+   "name": "Lachlan Smith",
+   "structural_over_baseline": 0.719
+  },
+  {
+   "board_v": 38,
+   "cap_baseline": 812.0,
+   "cap_minimal": 610.4,
+   "cap_structural": 583.8,
+   "ep": 47,
+   "key": "rhys-stanley",
+   "minimal_over_baseline": 0.7517,
+   "name": "Rhys Stanley",
+   "structural_over_baseline": 0.719
+  },
+  {
+   "board_v": 1403,
+   "cap_baseline": 805.0,
+   "cap_minimal": 588.0,
+   "cap_structural": 558.6,
+   "ep": 48,
+   "key": "darcy-cameron",
+   "minimal_over_baseline": 0.7304,
+   "name": "Darcy Cameron",
+   "structural_over_baseline": 0.6939
+  },
+  {
+   "board_v": 414,
+   "cap_baseline": 789.6,
+   "cap_minimal": 550.2,
+   "cap_structural": 520.8,
+   "ep": 50,
+   "key": "marc-pittonet",
+   "minimal_over_baseline": 0.6968,
+   "name": "Marc Pittonet",
+   "structural_over_baseline": 0.6596
+  },
+  {
+   "board_v": 468,
+   "cap_baseline": 777.0,
+   "cap_minimal": 519.4,
+   "cap_structural": 492.8,
+   "ep": 52,
+   "key": "jacob-molier",
+   "minimal_over_baseline": 0.6685,
+   "name": "Jacob Molier",
+   "structural_over_baseline": 0.6342
+  },
+  {
+   "board_v": 467,
+   "cap_baseline": 770.0,
+   "cap_minimal": 506.8,
+   "cap_structural": 480.2,
+   "ep": 53,
+   "key": "alex-dodson",
+   "minimal_over_baseline": 0.6582,
+   "name": "Alex Dodson",
+   "structural_over_baseline": 0.6236
+  },
+  {
+   "board_v": 1164,
+   "cap_baseline": 754.6,
+   "cap_minimal": 473.2,
+   "cap_structural": 450.8,
+   "ep": 56,
+   "key": "dante-visentini",
+   "minimal_over_baseline": 0.6271,
+   "name": "Dante Visentini",
+   "structural_over_baseline": 0.5974
+  }
+ ],
+ "stanley": {
+  "board_v": 38,
+  "cap_baseline": 812.0,
+  "cap_minimal": 610.4,
+  "cap_structural": 583.8,
+  "ep": 47,
+  "key": "rhys-stanley",
+  "minimal_over_baseline": 0.7517,
+  "name": "Rhys Stanley",
+  "structural_over_baseline": 0.719
+ },
+ "verdict": "the scaffold falls ~26% at ep>=40 and only ~5% at ep<=20, so established late-pick rucks (Gawn ep33, Nankervis ep35, Briggs ep34, Williams ep35) face a materially tighter cap under either prototype."
+}
