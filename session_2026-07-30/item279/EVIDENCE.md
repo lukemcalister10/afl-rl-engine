@@ -592,3 +592,134 @@ would flip, that STOPS before step 3 and returns to the owner.
 
 None run; nothing in step 2 touches CI. Inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV
 green, and the declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
+
+---
+
+# FOURTH ADDENDUM — the RULED curve, the truncation backtest, the sealed reversal check, and step 3's α evidence
+
+**Rulings in force:** γ=1.0 VOR · basis = **STRUCTURAL** · **hard class cut at 2022** (the 2022 draft class is
+the last that teaches; 2023/24/25 out) · α **parked at 1.0** · par = per-season teaching, executing inside step
+4's propagation, not here · the pool's ruled level lands at propagation.
+
+**Cost, timed before the full pass:** the ruled derivation is **0.18s**, the reversal check **0.17s**, the whole
+pass including the backtest and all four α settings is **3s wall**. No engine run needed.
+
+**Carried verbatim:** `pava_ni`, `monotone_strict`, the pick-distance kernel, τ, nmin, `PW_FLOOR`, pin(1)=3000.
+**Disclosed departures, both owner-ruled:** the teaching window's upper bound moves 2024 → 2022, and the year-0
+contribution is the structural completed career value.
+
+## 1. The ruled curve
+
+Payload **`4fc40e91`**, ladder total **56,088**. Population after the class cut: **1,197 rows** (down from
+1,325 on the 2004–2024 window), of which **825 concluded, 372 active, 265 never established**.
+
+**Fallback share — asserted and reported, as required from here on:** **71 of 1,197 rows = 5.931%**, all of them
+thin-stratum; zero rows fell back for want of written seasons. Provenance: 825 own realised + 301 actuarially
+completed + 71 prior fallback, and the assert that those three sum to the population passes. So the model prior
+survives on under 6% of the teaching population, counted, against 100% of the year-0 kernel mass in the
+pre-ruling baseline.
+
+| pick | 1 | 2 | 3 | 5 | 10 | 24 | 32 | 40 | 50 | 57 | 64 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ruled | 3000 | 2999 | 2952 | 1975 | 1511 | 828 | 643 | 545 | 376 | 319 | 279 |
+
+Same top-of-draft caveat as step 2, and it has not improved: 6 raw monotone violations, `effn` 34.5–37.8 at
+picks 1–3, and pick 2 at 2999 is the isotonic step plus the pin rather than the data. My post-pin descent guard
+did not fire.
+
+## 2. Truncation backtest — report-only seal evidence
+
+Design: on **concluded careers only**, truncate the career to *d* written seasons, apply the structural
+completion with the player **left out of his own stratum**, and compare against his actual full realised value.
+Leave-one-out, so there is no self-prediction. Not a guard; does not re-open the class cut.
+
+| written depth | n | median abs error | median rel error | median abs rel error | p90 abs error | bias |
+|---|---|---|---|---|---|---|
+| 2 seasons | 612 | 160.0 | **+8.35%** | 27.16% | 807.6 | over-predicts |
+| 3 seasons | 553 | 129.6 | **+7.18%** | 20.83% | 719.2 | over-predicts |
+| 4 seasons | 475 | 121.7 | **+4.68%** | 17.14% | 647.9 | over-predicts |
+
+Two honest readings. The completion **improves monotonically with written depth** — median absolute relative
+error falls 27% → 21% → 17% — which is what a working actuarial completion should do. And it is **consistently
+optimistic**: a median +4.7% to +8.4% over-prediction at every depth. Since the completion supplies 301 of 1,197
+teaching rows (25.1%), that optimism is a small upward bias on the ruled curve, concentrated where active
+careers are shallow. Reported, not corrected.
+
+## 3. Sealed reversal check — the currency choice STANDS
+
+The SCAR endpoint re-derived once under the ruled basis (structural, ≤2022), own-surface discipline preserved
+per column: the SCAR matrix reads the adopted frozen surface (`v0surf_frozen: true`), the VOR matrix its own
+bake (`false`). Fallback share identical at 71/1,197 = 5.931% on both sides, so the comparison is not
+confounded by differing fallback.
+
+| | payload | ladder | steepness pick1/pick64 |
+|---|---|---|---|
+| SCAR, ruled basis | `32dc178b` | 58,072 | 9.646 |
+| VOR, ruled basis | `4fc40e91` | 56,088 | **10.753** |
+
+VOR/SCAR by band: 1–3 **1.023**, 4–7 1.006, 8–12 0.981, 13–20 0.954, 21–27 0.957, 28–35 0.940, 36–48 0.928,
+49–64 **0.904**. Ladder ratio 0.966.
+
+**The choice does not flip.** Under the ruled basis VOR still steepens the curve relative to SCAR (10.75 vs
+9.65) and still pays relatively more at the head than the tail (1.023 vs 0.904) — the same direction, and much
+the same magnitude, as the step-1 evidence the ruling rested on. No STOP is triggered; step 3 proceeds.
+
+## 4. Step-3 evidence: the α dial (α still parked at 1.0)
+
+α enters as a certainty-equivalent aggregator replacing the kernel-weighted mean inside the year-0 fit:
+`CE_α = (Σ W·v^α / Σ W)^(1/α)`. This is the kernel-weighted generalisation of the engine's **own** `_ce0`
+(`rl_model.py:815`), which floors busts at 0.0 — the code's own comment says the legacy `_ce` floor of 1.0 is
+wrong for busts, and S-3 requires busts at full weight, so `_ce0` is the correct form. The tiered candidate is
+the engine's own `_alpha_pvc(k) = 0.6 + (0.8−0.6)·min(k−1,49)/49` — 0.6 at pick 1 rising to 0.8 by pick 50, flat
+after. α=1 returns the mean exactly, so it reproduces the ruled curve `4fc40e91` by construction (verified).
+
+**Conservation yardstick (S-3):** total mean production over picks 1–64, honest mean with busts at full weight,
+is **56,198.1** board units — the α=1 raw fit summed. The yardstick is the post-pin ladder against that.
+
+| α setting | raw pick 1 | ladder 2–64 | vs honest mean | pick class ÷ numéraire | **conservation ratio** |
+|---|---|---|---|---|---|
+| 0.6 | 2853.6 | 43,712 | −17.85% | 14.57 | **0.8312** |
+| 0.8 | 2921.1 | 48,711 | −8.46% | 16.24 | **0.9202** |
+| **1.0** | 2986.5 | 53,088 | −0.23% | 17.70 | **0.9980** |
+| tiered 0.6→0.8 | 2853.6 | 46,763 | −12.12% | 15.59 | **0.8855** |
+
+Per-pick ratio against α=1 — the dial bites hardest at the tail, which is where the variance is:
+
+| pick | 3 | 10 | 24 | 32 | 40 | 50 | 64 |
+|---|---|---|---|---|---|---|---|
+| α=0.6 | 0.926 | 0.899 | 0.778 | 0.736 | 0.703 | 0.649 | 0.602 |
+| α=0.8 | 0.963 | 0.952 | 0.895 | 0.879 | 0.862 | 0.838 | 0.814 |
+| tiered | 0.928 | 0.911 | 0.836 | 0.831 | 0.833 | 0.838 | 0.814 |
+
+### The post-pin effect, measured at source rather than assumed
+
+Ruling-sheet item 3 requires the post-pin effect be shown, not assumed. Measured: `monotone_strict` does
+`fit[0] = PIN1` — it **hard-sets pick 1 to 3000 and does not rescale the ladder**. So α<1 cuts the raw value at
+every pick (pick 1 falls 2986.5 → 2853.6 at α=0.6), pick 1 is then forced back to 3000, and **picks 2–64 keep
+their cut with no compensating scale-up**.
+
+The consequence is the one the filing anticipated, and it is *larger* than a global rescale would produce, not
+smaller: because players scale with pick 1 (`BOARD_FACTOR = RL_PICK1/PVC[1]`), holding pick 1 at 3000 while
+cutting everything below it cheapens **picks as a class relative to players**. The `pick class ÷ numéraire`
+column above is that relative price: 17.70 at α=1 falling to 14.57 at α=0.6, a 17.7% cheapening of the pick
+class against players. That is a real relative-price change the owner would be buying with the dial, and it is
+the number to rule on alongside the shape.
+
+**Reading for the ruling:** α=1 conserves by construction (0.998). Every downside-weighted setting pays for its
+variance shaping out of the pick class — 8.5% at α=0.8, 12.1% tiered, 17.9% at α=0.6 — against total mean
+production. S-3's instruction is that the resisting of edge cases goes to smoothing and the explicit dial and
+never to the median as level, and that the ladder total must not be slashed against mean production. Those two
+pull against each other here, and the table is the trade.
+
+α remains parked at 1.0. α=1 staying at 1.0 is a legitimate outcome.
+
+## Files
+
+- `out/ruled_alpha_279.json` — the ruled curve with its asserted fallback share, the backtest, the reversal check, and all four α settings with the conservation yardstick.
+- `out/ruled_curves_279.json` — the ruled VOR curve and the SCAR reversal curve, 64 points each.
+- `scripts/ruled_and_alpha.py` — the harness.
+
+## CI posture
+
+None run; nothing here touches CI. Inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green,
+and the declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
