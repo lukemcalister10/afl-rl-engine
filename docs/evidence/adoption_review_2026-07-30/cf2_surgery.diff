@@ -1,0 +1,57 @@
+diff --git a/engine/rl_after/rl_model.py b/engine/rl_after/rl_model.py
+index 2293a70..c58578e 100644
+--- a/engine/rl_after/rl_model.py
++++ b/engine/rl_after/rl_model.py
+@@ -68,49 +68,11 @@ GRP={'MID':'MID','RUCK':'RUCK','SF':'SF','KPF':'KPF','SD':'SD','KPD':'KPD'}   #
+ # A player's CAREER/draft position (p['pos']) drives his contribution to the cohort curves.
+ # An optional p['_pos_now'] is his CURRENT position and drives only his own active valuation
+ # (e.g. Dangerfield: drafted+developed a MID -> feeds the MID pool; plays FWD now -> valued as a forward).
+-def _pos_present(p): return GRP.get(p.get('_pos_now')) or GRP[p['pos']]   # the DECLARED present position (this was bnow pre-#271); gfut's fallback stays on this axis
+-# ITEM 271 item 3, as narrowed by the seam audit's correction 1 and finally ruled at #271 Addendum 4: the YEAR-0
+-# replacement bar is read from the `eligibilities` COLUMN -- the owner-maintained CURRENT declaration -- not from
+-# present_position, and not from the 2026 season row. The column is NOW; a season row is THAT SEASON'S record, and
+-# they are different questions with different sources (the column runs richer for young players: Lalor is SF,MID in
+-# the column against MID in the row). Season rows remain the per-season FIT bars, 2026 included -- see _fit_bar.
+-# This cures the recorded Ginbey mechanism, where present position won by default because the bar could not engage.
+-# A dual declaration collapses under R105.1 (_collapse_elig, :108) and takes the pair's LOWER REPL -- the engine's
+-# OWN existing eligibility law, the same rule y0dpp_bar applies at :137, which is why §1b RETIRES from the year-0
+-# path by supersession: the bar now does at source, from the very column §1b always read, what §1b did partially.
+-# §1b is superseded, NOT deleted -- its code is untouched. Empty column -> plain position (a future-record
+-# fallback; zero rows exercise it today). THE FUTURE LEG DOES NOT MOVE (correction 1): gfut keeps _pos_present.
+-def _elig_bar(p):
+-    es=_collapse_elig(p.get('eligibilities'))
+-    return min(es,key=lambda g:REPL[g]) if es else None
+-def _decl_bar(p): return _elig_bar(p) or _pos_present(p)           # the CURRENT declaration's bar; empty column -> plain position
+-# ITEM 271 item 2 + Addendum 6 — THE BAR FOR ANY SEASON, and the ONE source rule for every bar-taking use
+-# (the per-season fit, the evidence matrix, career value feeding pick outcomes). Owner word: while the CURRENT
+-# season is LIVE its bar comes from the eligibilities COLUMN, because the column is the live declaration and the
+-# season row is only that season's record-so-far; the 2026 row's `pos` remains the sheet's record but sets NO bar
+-# while the season runs. A CLOSED season (2025 and earlier) is settled, so it takes its OWN row. A closed season
+-# with no row falls back to the column. This is the bar axis only -- the MODELLING-POSITION axis that drives the
+-# curve family, peak and runway is gfut and is untouched by this helper.
+-# LIVE_SEASON is a FIXED FACT ABOUT THE WORLD -- which season is currently being played -- and must NOT be
+-# BASE_REF, which MOVES: the walk-forward re-values every player as-of 2003..2026 and the back/forward boards
+-# re-anchor it. Keying off BASE_REF would make every as-of year "live" and read the column for all of them,
+-# which is precisely what item 2 forbids -- a 2015 season would be measured on a 2026 declaration.
+-LIVE_SEASON=2026
+-def _fit_bar(p,Y):
+-    if Y is None or Y>=LIVE_SEASON: return _decl_bar(p)            # the live season -> the column
+-    r=next((x for x in p.get('scoring') or [] if x.get('year')==Y),None)
+-    if r and r.get('pos'):
+-        es=_collapse_elig(r['pos'].replace('/',','))               # season rows separate on '/', the column on ','
+-        if es: return min(es,key=lambda g:REPL[g])
+-    return _decl_bar(p)                                            # a closed season with no row -> the column
+-# The year-0 bar IS the fit bar read at the season being valued. On the live board BASE_REF==LIVE_SEASON so this
+-# is the column (Addendum 4); in the walk-forward BASE_REF is the as-of year, so each historical season is
+-# measured against ITS OWN eligibility row -- which is what makes item 2 true in the fit rather than only stated.
+-def bnow(p): return _fit_bar(p,BASE_REF)
++def bnow(p): return GRP.get(p.get('_pos_now')) or GRP[p['pos']]     # PRESENT position -> year-0 REPL bar
+ def gfut(p):                                  # SETTLED FUTURE position (single) -> drives curve/peak/runway + years-1+ REPL
+     fp=p.get('_futpos')
+-    if fp: return GRP.get(fp) or _pos_present(p)
+-    return _pos_present(p)                    # no future_position (e.g. gate synths) -> present position
++    if fp: return GRP.get(fp) or bnow(p)
++    return bnow(p)                            # no future_position (e.g. gate synths) -> present position
+ _FLEX=os.environ.get('RL_FLEX','1')!='0'       # LEG C kill-switch (RL_ISOFADE pattern): RL_FLEX=0 => single-position stubs => board byte-exact base. Declared exception, not a dial. Gates ALL of Leg C incl. §1b.
+ def futblend(p):
+     # DPP-STRIP base: the years-1+ leg is a SINGLE position (future_position). LEG C flex (RL_FLEX, §1 ruled
