@@ -1,0 +1,536 @@
+{
+ "probe_ev_adopted": {
+  "PVC0_payload": "08ea9375",
+  "PVC2M_payload": "08ea9375",
+  "players": {
+   "adam-sweid": {
+    "ep": 25,
+    "ev_2026": 571,
+    "v0_start": 765.39,
+    "value_bal": 788
+   },
+   "aidan-schubert": {
+    "ep": 23,
+    "ev_2026": 671,
+    "v0_start": 893.14,
+    "value_bal": 841
+   },
+   "archie-ludowyke": {
+    "ep": 50,
+    "ev_2026": 414,
+    "v0_start": 568.19,
+    "value_bal": 536
+   },
+   "asher-eastham": {
+    "ep": 65,
+    "ev_2026": 204,
+    "v0_start": 477.21,
+    "value_bal": 225
+   },
+   "avery-thomas": {
+    "ep": 28,
+    "ev_2026": 472,
+    "v0_start": 638.61,
+    "value_bal": 729
+   },
+   "balyn-o-brien": {
+    "ep": 65,
+    "ev_2026": 326,
+    "v0_start": 409.27,
+    "value_bal": 287
+   },
+   "jacob-molier": {
+    "ep": 52,
+    "ev_2026": 506,
+    "v0_start": 791.69,
+    "value_bal": 515
+   },
+   "luke-jackson": {
+    "ep": 3,
+    "ev_2026": 10845,
+    "v0_start": 1517.52,
+    "value_bal": 7258
+   },
+   "max-knobel": {
+    "ep": 42,
+    "ev_2026": 527,
+    "v0_start": 879.92,
+    "value_bal": 398
+   },
+   "nick-daicos": {
+    "ep": 4,
+    "ev_2026": 11525,
+    "v0_start": 3501.4,
+    "value_bal": 10266
+   },
+   "will-green": {
+    "ep": 16,
+    "ev_2026": 698,
+    "v0_start": 1165.88,
+    "value_bal": 990
+   }
+  },
+  "v0surf_sig": "b781ed253bff"
+ },
+ "probe_ev_vor": {
+  "PVC0_payload": "85576b0f",
+  "PVC2M_payload": "85576b0f",
+  "players": {
+   "adam-sweid": {
+    "ep": 25,
+    "ev_2026": 571,
+    "v0_start": 765.39,
+    "value_bal": 753
+   },
+   "aidan-schubert": {
+    "ep": 23,
+    "ev_2026": 671,
+    "v0_start": 893.14,
+    "value_bal": 809
+   },
+   "archie-ludowyke": {
+    "ep": 50,
+    "ev_2026": 414,
+    "v0_start": 568.19,
+    "value_bal": 496
+   },
+   "asher-eastham": {
+    "ep": 65,
+    "ev_2026": 204,
+    "v0_start": 477.21,
+    "value_bal": 206
+   },
+   "avery-thomas": {
+    "ep": 28,
+    "ev_2026": 472,
+    "v0_start": 638.61,
+    "value_bal": 690
+   },
+   "balyn-o-brien": {
+    "ep": 65,
+    "ev_2026": 326,
+    "v0_start": 409.27,
+    "value_bal": 263
+   },
+   "jacob-molier": {
+    "ep": 52,
+    "ev_2026": 494,
+    "v0_start": 771.95,
+    "value_bal": 477
+   },
+   "luke-jackson": {
+    "ep": 3,
+    "ev_2026": 10845,
+    "v0_start": 1507.34,
+    "value_bal": 7258
+   },
+   "max-knobel": {
+    "ep": 42,
+    "ev_2026": 509,
+    "v0_start": 848.97,
+    "value_bal": 371
+   },
+   "nick-daicos": {
+    "ep": 4,
+    "ev_2026": 11525,
+    "v0_start": 3501.4,
+    "value_bal": 10266
+   },
+   "will-green": {
+    "ep": 16,
+    "ev_2026": 683,
+    "v0_start": 1140.28,
+    "value_bal": 956
+   }
+  },
+  "v0surf_sig": "2b633636839f"
+ },
+ "probe_value_adopted": {
+  "AGE_REF": 2026,
+  "PROD_GATE": "off",
+  "P_HOOK_is_none": true,
+  "curve_payload_in_use": "08ea9375",
+  "players": {
+   "adam-sweid": {
+    "PVC2M_at_ep": 906.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.87018,
+    "ep": 25,
+    "games": 0,
+    "gfut": "SF",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 788.3831,
+    "value_bal": 788
+   },
+   "aidan-schubert": {
+    "PVC2M_at_ep": 964.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.872475,
+    "ep": 23,
+    "games": 0,
+    "gfut": "KPF",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 841.066,
+    "value_bal": 841
+   },
+   "archie-ludowyke": {
+    "PVC2M_at_ep": 609.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.879509,
+    "ep": 50,
+    "games": 0,
+    "gfut": "KPF",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 535.6213,
+    "value_bal": 536
+   },
+   "asher-eastham": {
+    "PVC2M_at_ep": 299.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2025,
+    "debut_factor": 0.883273,
+    "ep": 65,
+    "games": 0,
+    "gfut": "SF",
+    "level_now": null,
+    "los_decay": 0.852144,
+    "seasons": 1,
+    "unpl_eq": 225.0501,
+    "value_bal": 225
+   },
+   "avery-thomas": {
+    "PVC2M_at_ep": 840.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.867473,
+    "ep": 28,
+    "games": 0,
+    "gfut": "SD",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 728.6774,
+    "value_bal": 729
+   },
+   "balyn-o-brien": {
+    "PVC2M_at_ep": 299.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.960166,
+    "ep": 65,
+    "games": 0,
+    "gfut": "SD",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 287.0896,
+    "value_bal": 287
+   },
+   "jacob-molier": {
+    "PVC2M_at_ep": 600.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2025,
+    "debut_factor": 0.858642,
+    "ep": 52,
+    "games": 0,
+    "gfut": "RUCK",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 515.185,
+    "value_bal": 515
+   },
+   "luke-jackson": {
+    "PVC2M_at_ep": 2693.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "C: production path (pedestal competes with prod_full)",
+    "debut": 2020,
+    "debut_factor": 1.0,
+    "ep": 3,
+    "games": 131,
+    "gfut": "RUCK",
+    "level_now": 115.37681586450296,
+    "los_decay": 0.084455,
+    "pedestal": 0.0,
+    "pedestal_binds": false,
+    "prod_floor": 3487,
+    "prod_full": 7258,
+    "prod_v": 7258,
+    "seasons": 6,
+    "unpl_eq": 227.4376,
+    "value_bal": 7258
+   },
+   "max-knobel": {
+    "PVC2M_at_ep": 660.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2023,
+    "debut_factor": 0.842377,
+    "ep": 42,
+    "games": 0,
+    "gfut": "RUCK",
+    "level_now": null,
+    "los_decay": 0.71558,
+    "seasons": 3,
+    "unpl_eq": 397.8404,
+    "value_bal": 398
+   },
+   "nick-daicos": {
+    "PVC2M_at_ep": 2469.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "C: production path (pedestal competes with prod_full)",
+    "debut": 2022,
+    "debut_factor": 1.0,
+    "ep": 4,
+    "games": 106,
+    "gfut": "MID",
+    "level_now": 119.67885625,
+    "los_decay": 0.13606,
+    "pedestal": 1427.7414,
+    "pedestal_binds": false,
+    "prod_floor": 4054,
+    "prod_full": 10266,
+    "prod_v": 10266,
+    "seasons": 4,
+    "unpl_eq": 335.9315,
+    "value_bal": 10266
+   },
+   "will-green": {
+    "PVC2M_at_ep": 1207.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2024,
+    "debut_factor": 0.858642,
+    "ep": 16,
+    "games": 0,
+    "gfut": "RUCK",
+    "level_now": null,
+    "los_decay": 0.955696,
+    "seasons": 2,
+    "unpl_eq": 990.4648,
+    "value_bal": 990
+   }
+  }
+ },
+ "probe_value_vor": {
+  "AGE_REF": 2026,
+  "PROD_GATE": "off",
+  "P_HOOK_is_none": true,
+  "curve_payload_in_use": "85576b0f",
+  "players": {
+   "adam-sweid": {
+    "PVC2M_at_ep": 865.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.87018,
+    "ep": 25,
+    "games": 0,
+    "gfut": "SF",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 752.7057,
+    "value_bal": 753
+   },
+   "aidan-schubert": {
+    "PVC2M_at_ep": 927.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.872475,
+    "ep": 23,
+    "games": 0,
+    "gfut": "KPF",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 808.7844,
+    "value_bal": 809
+   },
+   "archie-ludowyke": {
+    "PVC2M_at_ep": 564.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.879509,
+    "ep": 50,
+    "games": 0,
+    "gfut": "KPF",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 496.0434,
+    "value_bal": 496
+   },
+   "asher-eastham": {
+    "PVC2M_at_ep": 274.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2025,
+    "debut_factor": 0.883273,
+    "ep": 65,
+    "games": 0,
+    "gfut": "SF",
+    "level_now": null,
+    "los_decay": 0.852144,
+    "seasons": 1,
+    "unpl_eq": 206.2332,
+    "value_bal": 206
+   },
+   "avery-thomas": {
+    "PVC2M_at_ep": 795.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.867473,
+    "ep": 28,
+    "games": 0,
+    "gfut": "SD",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 689.6411,
+    "value_bal": 690
+   },
+   "balyn-o-brien": {
+    "PVC2M_at_ep": 274.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2026,
+    "debut_factor": 0.960166,
+    "ep": 65,
+    "games": 0,
+    "gfut": "SD",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 263.0854,
+    "value_bal": 263
+   },
+   "jacob-molier": {
+    "PVC2M_at_ep": 555.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2025,
+    "debut_factor": 0.858642,
+    "ep": 52,
+    "games": 0,
+    "gfut": "RUCK",
+    "level_now": null,
+    "los_decay": 1.0,
+    "seasons": 1,
+    "unpl_eq": 476.5462,
+    "value_bal": 477
+   },
+   "luke-jackson": {
+    "PVC2M_at_ep": 2787.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "C: production path (pedestal competes with prod_full)",
+    "debut": 2020,
+    "debut_factor": 1.0,
+    "ep": 3,
+    "games": 131,
+    "gfut": "RUCK",
+    "level_now": 115.37681586450296,
+    "los_decay": 0.084455,
+    "pedestal": 0.0,
+    "pedestal_binds": false,
+    "prod_floor": 3487,
+    "prod_full": 7258,
+    "prod_v": 7258,
+    "seasons": 6,
+    "unpl_eq": 235.3764,
+    "value_bal": 7258
+   },
+   "max-knobel": {
+    "PVC2M_at_ep": 615.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2023,
+    "debut_factor": 0.842377,
+    "ep": 42,
+    "games": 0,
+    "gfut": "RUCK",
+    "level_now": null,
+    "los_decay": 0.71558,
+    "seasons": 3,
+    "unpl_eq": 370.715,
+    "value_bal": 371
+   },
+   "nick-daicos": {
+    "PVC2M_at_ep": 2538.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "C: production path (pedestal competes with prod_full)",
+    "debut": 2022,
+    "debut_factor": 1.0,
+    "ep": 4,
+    "games": 106,
+    "gfut": "MID",
+    "level_now": 119.67885625,
+    "los_decay": 0.13606,
+    "pedestal": 1467.6418,
+    "pedestal_binds": false,
+    "prod_floor": 4054,
+    "prod_full": 10266,
+    "prod_v": 10266,
+    "seasons": 4,
+    "unpl_eq": 345.3196,
+    "value_bal": 10266
+   },
+   "will-green": {
+    "PVC2M_at_ep": 1165.0,
+    "_pedonly": false,
+    "_unplayed": false,
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "debut": 2024,
+    "debut_factor": 0.858642,
+    "ep": 16,
+    "games": 0,
+    "gfut": "RUCK",
+    "level_now": null,
+    "los_decay": 0.955696,
+    "seasons": 2,
+    "unpl_eq": 955.9996,
+    "value_bal": 956
+   }
+  }
+ }
+}

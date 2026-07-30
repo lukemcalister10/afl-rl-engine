@@ -1,0 +1,721 @@
+{
+ "LABEL": "ESTIMATE -- bounds the PURE-CURRENCY echo only. The shipped system still changes at step 2 (pick-value basis, S-1/S-2) and step 3 (variance dial). NOT a prediction of the final board.",
+ "age_profile_vor_over_scar": {
+  "22-24": {
+   "baseline": 0.8742,
+   "converged": 0.8723,
+   "n": 200,
+   "shift": -0.0019
+  },
+  "25-27": {
+   "baseline": 0.8065,
+   "converged": 0.8061,
+   "n": 152,
+   "shift": -0.0004
+  },
+  "28-30": {
+   "baseline": 0.7479,
+   "converged": 0.7479,
+   "n": 130,
+   "shift": 0.0
+  },
+  "31+": {
+   "baseline": 0.765,
+   "converged": 0.7648,
+   "n": 89,
+   "shift": -0.0002
+  },
+  "<=21": {
+   "baseline": 0.931,
+   "converged": 0.9276,
+   "n": 233,
+   "shift": -0.0034
+  }
+ },
+ "baseline": {
+  "board": "c8515acd32add73da406a2c96796c871",
+  "what": "the step-1 VOR board presented to the owner: gamma=1.0 with its own-bake surface, but curve inputs still the ADOPTED SCAR curve (08ea9375)"
+ },
+ "channel_8_branch_test": {
+  "boards_byte_identical": true,
+  "branch_A_v2_only_board": "7977d7e572d92e71ae0f15a00bd9bed2",
+  "branch_B_v2_plus_L1b_board": "7977d7e572d92e71ae0f15a00bd9bed2",
+  "but_it_IS_loaded": "a first attempt that wrote a bare 1-64 curve into L1b HALTED the build inside _split_ladder (\"no pool level\"), because L1b carries its pool level as curve entry 65 and has no pool_value field. That halt proves the artifact is genuinely loaded and validated at import: inert on values, not inert on load.",
+  "players_differing": 0,
+  "question": "does re-pointing the superseded pvc_curve_L1b.json change anything?",
+  "verdict": "INERT on values -- measured, not assumed. The v2 block overwrites _PVC0 after the L1b block, so L1b cannot reach player values."
+ },
+ "channels_2a_2b_proof": {
+  "board_price_identity": "board v == round(ev(p,2026) / 1.0524)  [L7 numeraire re-base]",
+  "curve_payload_seen_by_probe": {
+   "adopted": "08ea9375",
+   "vor": "85576b0f"
+  },
+  "mechanism": "ev() returns round(sitout_ev(p,Y,e)) for zero-season players -- V0-anchored, i.e. off the fitted surface, not off value()/unpl_eq. And ev() carries an explicit RUCK branch reading RUC_PRIOR_CAP*draftval(p) and _v0_uncapped(p), both off the adopted curve. No other position has a curve-reading branch in ev(). Hence the entire echo is RUCK: v0_start moved only for RUCK players, while the denser non-RUCK surface cells absorbed the curve shift under isotonic pooling.",
+  "per_player": {
+   "adam-sweid": {
+    "PVC2M_at_ep": {
+     "adopted": 906.0,
+     "vor": 865.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 25,
+    "ev_2026": {
+     "adopted": 571,
+     "vor": 571
+    },
+    "unpl_eq": {
+     "adopted": 788.3831,
+     "vor": 752.7057
+    },
+    "v0_start": {
+     "adopted": 765.39,
+     "vor": 765.39
+    },
+    "value_bal": {
+     "adopted": 788,
+     "vor": 753
+    }
+   },
+   "aidan-schubert": {
+    "PVC2M_at_ep": {
+     "adopted": 964.0,
+     "vor": 927.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 23,
+    "ev_2026": {
+     "adopted": 671,
+     "vor": 671
+    },
+    "unpl_eq": {
+     "adopted": 841.066,
+     "vor": 808.7844
+    },
+    "v0_start": {
+     "adopted": 893.14,
+     "vor": 893.14
+    },
+    "value_bal": {
+     "adopted": 841,
+     "vor": 809
+    }
+   },
+   "archie-ludowyke": {
+    "PVC2M_at_ep": {
+     "adopted": 609.0,
+     "vor": 564.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 50,
+    "ev_2026": {
+     "adopted": 414,
+     "vor": 414
+    },
+    "unpl_eq": {
+     "adopted": 535.6213,
+     "vor": 496.0434
+    },
+    "v0_start": {
+     "adopted": 568.19,
+     "vor": 568.19
+    },
+    "value_bal": {
+     "adopted": 536,
+     "vor": 496
+    }
+   },
+   "asher-eastham": {
+    "PVC2M_at_ep": {
+     "adopted": 299.0,
+     "vor": 274.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 65,
+    "ev_2026": {
+     "adopted": 204,
+     "vor": 204
+    },
+    "unpl_eq": {
+     "adopted": 225.0501,
+     "vor": 206.2332
+    },
+    "v0_start": {
+     "adopted": 477.21,
+     "vor": 477.21
+    },
+    "value_bal": {
+     "adopted": 225,
+     "vor": 206
+    }
+   },
+   "avery-thomas": {
+    "PVC2M_at_ep": {
+     "adopted": 840.0,
+     "vor": 795.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 28,
+    "ev_2026": {
+     "adopted": 472,
+     "vor": 472
+    },
+    "unpl_eq": {
+     "adopted": 728.6774,
+     "vor": 689.6411
+    },
+    "v0_start": {
+     "adopted": 638.61,
+     "vor": 638.61
+    },
+    "value_bal": {
+     "adopted": 729,
+     "vor": 690
+    }
+   },
+   "balyn-o-brien": {
+    "PVC2M_at_ep": {
+     "adopted": 299.0,
+     "vor": 274.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 65,
+    "ev_2026": {
+     "adopted": 326,
+     "vor": 326
+    },
+    "unpl_eq": {
+     "adopted": 287.0896,
+     "vor": 263.0854
+    },
+    "v0_start": {
+     "adopted": 409.27,
+     "vor": 409.27
+    },
+    "value_bal": {
+     "adopted": 287,
+     "vor": 263
+    }
+   },
+   "jacob-molier": {
+    "PVC2M_at_ep": {
+     "adopted": 600.0,
+     "vor": 555.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 52,
+    "ev_2026": {
+     "adopted": 506,
+     "vor": 494
+    },
+    "unpl_eq": {
+     "adopted": 515.185,
+     "vor": 476.5462
+    },
+    "v0_start": {
+     "adopted": 791.69,
+     "vor": 771.95
+    },
+    "value_bal": {
+     "adopted": 515,
+     "vor": 477
+    }
+   },
+   "luke-jackson": {
+    "PVC2M_at_ep": {
+     "adopted": 2693.0,
+     "vor": 2787.0
+    },
+    "branch": "C: production path (pedestal competes with prod_full)",
+    "ep": 3,
+    "ev_2026": {
+     "adopted": 10845,
+     "vor": 10845
+    },
+    "unpl_eq": {
+     "adopted": 227.4376,
+     "vor": 235.3764
+    },
+    "v0_start": {
+     "adopted": 1517.52,
+     "vor": 1507.34
+    },
+    "value_bal": {
+     "adopted": 7258,
+     "vor": 7258
+    }
+   },
+   "max-knobel": {
+    "PVC2M_at_ep": {
+     "adopted": 660.0,
+     "vor": 615.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 42,
+    "ev_2026": {
+     "adopted": 527,
+     "vor": 509
+    },
+    "unpl_eq": {
+     "adopted": 397.8404,
+     "vor": 370.715
+    },
+    "v0_start": {
+     "adopted": 879.92,
+     "vor": 848.97
+    },
+    "value_bal": {
+     "adopted": 398,
+     "vor": 371
+    }
+   },
+   "nick-daicos": {
+    "PVC2M_at_ep": {
+     "adopted": 2469.0,
+     "vor": 2538.0
+    },
+    "branch": "C: production path (pedestal competes with prod_full)",
+    "ep": 4,
+    "ev_2026": {
+     "adopted": 11525,
+     "vor": 11525
+    },
+    "unpl_eq": {
+     "adopted": 335.9315,
+     "vor": 345.3196
+    },
+    "v0_start": {
+     "adopted": 3501.4,
+     "vor": 3501.4
+    },
+    "value_bal": {
+     "adopted": 10266,
+     "vor": 10266
+    }
+   },
+   "will-green": {
+    "PVC2M_at_ep": {
+     "adopted": 1207.0,
+     "vor": 1165.0
+    },
+    "branch": "B: 0-game in window -> round(unpl_eq * Pz)",
+    "ep": 16,
+    "ev_2026": {
+     "adopted": 698,
+     "vor": 683
+    },
+    "unpl_eq": {
+     "adopted": 990.4648,
+     "vor": 955.9996
+    },
+    "v0_start": {
+     "adopted": 1165.88,
+     "vor": 1140.28
+    },
+    "value_bal": {
+     "adopted": 990,
+     "vor": 956
+    }
+   }
+  },
+  "question": "did channels 2a/2b actually CONSUME the swapped curve, or are they half-wired?",
+  "verdict": "FULLY WIRED. unpl_eq tracks the swapped curve for every probed player, so the small echo is NOT half-wiring. But value() is not the board price path: board v == round(ev(p,2026)/1.0524), verified to the digit on 5 of 5 spot checks."
+ },
+ "convergence": {
+  "board_identity_sequence": [
+   "c8515acd32add73da406a2c96796c871",
+   "32ec020af2a4c60baa3a6af29b0f065c",
+   "aa798cb1746ab5ea2eb9d21c784aaf1a",
+   "7977d7e572d92e71ae0f15a00bd9bed2"
+  ],
+  "curve_fixed_point": "reached at iteration 2 -- payload 817c0f5a reproduced exactly at iteration 3",
+  "curve_payload_sequence": [
+   "85576b0f",
+   "5c4f0df4",
+   "817c0f5a",
+   "817c0f5a"
+  ],
+  "ladder_sequence": [
+   63908,
+   63818,
+   63815,
+   63815
+  ],
+  "pool_sequence": [
+   273.7,
+   273.4,
+   273.4,
+   273.4
+  ],
+  "step_deltas": [
+   {
+    "board_identical": false,
+    "max_abs_delta": 28,
+    "players_moved": 21,
+    "step": "baseline->it1",
+    "total_change_pct": -0.0522
+   },
+   {
+    "board_identical": false,
+    "max_abs_delta": 2,
+    "players_moved": 18,
+    "step": "it1->it2",
+    "total_change_pct": -0.0028
+   },
+   {
+    "board_identical": false,
+    "max_abs_delta": 0,
+    "players_moved": 0,
+    "step": "it2->it3",
+    "total_change_pct": 0.0
+   }
+  ],
+  "v0surf_sig_sequence": [
+   "b781ed253bff",
+   "2b633636839f",
+   "76c1e4694e91",
+   "22f4f961e2d0"
+  ]
+ },
+ "echo_converged_vs_baseline": {
+  "all_movers_negative": true,
+  "max_abs_delta": 29,
+  "max_abs_delta_player": "alex-van-wyk",
+  "max_rank_shift": 27,
+  "median_abs_delta_of_movers": 22.0,
+  "median_signed_delta_all_804": 0.0,
+  "movers": [
+   {
+    "baseline": 332,
+    "converged": 303,
+    "delta": -29,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "alex-van-wyk",
+    "listed_grp": "RUCK",
+    "name": "Alex Van Wyk"
+   },
+   {
+    "baseline": 332,
+    "converged": 303,
+    "delta": -29,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "caleb-may",
+    "listed_grp": "RUCK",
+    "name": "Caleb May"
+   },
+   {
+    "baseline": 363,
+    "converged": 334,
+    "delta": -29,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "flynn-riley",
+    "listed_grp": "RUCK",
+    "name": "Flynn Riley"
+   },
+   {
+    "baseline": 332,
+    "converged": 303,
+    "delta": -29,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "max-mapley",
+    "listed_grp": "RUCK",
+    "name": "Max Mapley"
+   },
+   {
+    "baseline": 332,
+    "converged": 303,
+    "delta": -29,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "patrick-carr",
+    "listed_grp": "RUCK",
+    "name": "Patrick Carr"
+   },
+   {
+    "baseline": 380,
+    "converged": 352,
+    "delta": -28,
+    "ep": 65,
+    "games": 6,
+    "gfut": "RUCK",
+    "key": "liam-reidy",
+    "listed_grp": "KPF",
+    "name": "Liam Reidy"
+   },
+   {
+    "baseline": 255,
+    "converged": 232,
+    "delta": -23,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "aiden-riddle",
+    "listed_grp": "RUCK",
+    "name": "Aiden Riddle"
+   },
+   {
+    "baseline": 255,
+    "converged": 232,
+    "delta": -23,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "jaime-uhr-henry",
+    "listed_grp": "RUCK",
+    "name": "Jaime Uhr-Henry"
+   },
+   {
+    "baseline": 255,
+    "converged": 232,
+    "delta": -23,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "joe-pike",
+    "listed_grp": "RUCK",
+    "name": "Joe Pike"
+   },
+   {
+    "baseline": 255,
+    "converged": 232,
+    "delta": -23,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "logan-smith",
+    "listed_grp": "RUCK",
+    "name": "Logan Smith"
+   },
+   {
+    "baseline": 623,
+    "converged": 601,
+    "delta": -22,
+    "ep": 23,
+    "games": 2,
+    "gfut": "RUCK",
+    "key": "harry-barnett",
+    "listed_grp": "RUCK",
+    "name": "Harry Barnett"
+   },
+   {
+    "baseline": 237,
+    "converged": 216,
+    "delta": -21,
+    "ep": 65,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "iliro-smit",
+    "listed_grp": "RUCK",
+    "name": "Iliro Smit"
+   },
+   {
+    "baseline": 237,
+    "converged": 216,
+    "delta": -21,
+    "ep": 65,
+    "games": 2,
+    "gfut": "RUCK",
+    "key": "vigo-visentini",
+    "listed_grp": "RUCK",
+    "name": "Vigo Visentini"
+   },
+   {
+    "baseline": 571,
+    "converged": 551,
+    "delta": -20,
+    "ep": 24,
+    "games": 6,
+    "gfut": "RUCK",
+    "key": "toby-conway",
+    "listed_grp": "RUCK",
+    "name": "Toby Conway"
+   },
+   {
+    "baseline": 501,
+    "converged": 482,
+    "delta": -19,
+    "ep": 42,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "max-knobel",
+    "listed_grp": "RUCK",
+    "name": "Max Knobel"
+   },
+   {
+    "baseline": 663,
+    "converged": 648,
+    "delta": -15,
+    "ep": 16,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "will-green",
+    "listed_grp": "RUCK",
+    "name": "Will Green"
+   },
+   {
+    "baseline": 481,
+    "converged": 468,
+    "delta": -13,
+    "ep": 52,
+    "games": 0,
+    "gfut": "RUCK",
+    "key": "jacob-molier",
+    "listed_grp": "RUCK",
+    "name": "Jacob Molier"
+   },
+   {
+    "baseline": 479,
+    "converged": 467,
+    "delta": -12,
+    "ep": 53,
+    "games": 1,
+    "gfut": "RUCK",
+    "key": "alex-dodson",
+    "listed_grp": "KPF",
+    "name": "Alex Dodson"
+   },
+   {
+    "baseline": 1020,
+    "converged": 1010,
+    "delta": -10,
+    "ep": 20,
+    "games": 1,
+    "gfut": "RUCK",
+    "key": "taylor-goad",
+    "listed_grp": "RUCK",
+    "name": "Taylor Goad"
+   },
+   {
+    "baseline": 670,
+    "converged": 663,
+    "delta": -7,
+    "ep": 47,
+    "games": 2,
+    "gfut": "RUCK",
+    "key": "lachlan-smith",
+    "listed_grp": "RUCK",
+    "name": "Lachlan Smith"
+   },
+   {
+    "baseline": 39,
+    "converged": 38,
+    "delta": -1,
+    "ep": 47,
+    "games": 230,
+    "gfut": "RUCK",
+    "key": "rhys-stanley",
+    "listed_grp": "RUCK",
+    "name": "Rhys Stanley"
+   }
+  ],
+  "movers_by_settled_position_gfut": {
+   "RUCK": 21
+  },
+  "n_matched": 804,
+  "pct_moved": 2.61,
+  "players_moved": 21,
+  "rank_movement": {
+   "inversion_pct": 0.076,
+   "inversions": 245,
+   "n_pairs_strict_in_baseline": 322434,
+   "n_pairs_total": 322806,
+   "tie_collapses": 6
+  },
+  "top20_membership_unchanged": true,
+  "top20_order_unchanged": true,
+  "total_value": {
+   "baseline": 774236,
+   "change_pct": -0.055,
+   "converged": 773810
+  }
+ },
+ "method": {
+  "channels_NOT_repointed": {
+   "4_pvc_snapshot": "frozen by its own design note (train/serve skew) -- the seam-named exclusion",
+   "5_peak_model": "pinned frozen pickle b763f59e; serve path gamma-free; builder unrunnable (dob_corrected.json absent repo-wide)",
+   "6_q97m_cm400": "frozen by owner ruling, loaded never fitted",
+   "7_bust_prior": "not a curve channel: production-score units by position x pick (33.51-98.13), realised-derived"
+  },
+  "cost_per_iteration_seconds": {
+   "board": "126-140",
+   "fit": 3,
+   "matrix_emit": "175-188"
+  },
+  "iteration": "install curve -> reseed -> surface refit (gamma=1.0, RL_V0SURF_REFIT=1) -> board rebuild -> re-derive the curve from the new surface",
+  "lawful_channels_repointed": [
+   "1 pvc_curve_v2 -> _PVC0",
+   "1a draftval -> RUCK prior cap",
+   "1b V0 guard + surface rebuild",
+   "2 _PVC2M -> rl_model.PVC",
+   "2a unpl_eq",
+   "2b pedestal",
+   "3 curve -> v0 -> surface -> value"
+  ]
+ },
+ "nonvacuity": {
+  "channel_8_comparison_is_not_constant_true": "it reported byte-identical for the L1b branch, and the same board comparison reported 21 movers for the curve swap",
+  "convergence_metric_detects_change": "baseline->it1 moved 21 players; it2->it3 moved 0. Same metric, both outcomes.",
+  "fail_closed_guards": {
+   "derive_no_label": "HALT on CURVE_STATISTIC, in 0s",
+   "emit_no_vars": "HALT naming ITEM279_OUT and ITEM279_MATRIX_NAME, in 0s",
+   "emit_partial_config": "HALT naming only the missing ITEM279_MATRIX_NAME, in 0s",
+   "guards_pass_when_set": "iteration 3 ran to completion on the hardened scripts -- board 7977d7e5, matrix 3241310 bytes, fit 8/8 both-directions PASS"
+  },
+  "rank_metric": "returns 0 on identical input (proven in the first addendum); reports 245 here"
+ },
+ "zero_game_actives": {
+  "by_settled_position": {
+   "KPD": {
+    "moved": 0,
+    "n": 13
+   },
+   "KPF": {
+    "moved": 0,
+    "n": 12
+   },
+   "MID": {
+    "moved": 0,
+    "n": 22
+   },
+   "RUCK": {
+    "moved": 13,
+    "n": 14
+   },
+   "SD": {
+    "moved": 0,
+    "n": 20
+   },
+   "SF": {
+    "moved": 0,
+    "n": 30
+   }
+  },
+  "delta_distribution_of_movers": [
+   -29,
+   -29,
+   -29,
+   -29,
+   -29,
+   -23,
+   -23,
+   -23,
+   -23,
+   -21,
+   -19,
+   -15,
+   -13
+  ],
+  "denominator_note": "zero-game = board field g falsy; of 804 active rows",
+  "n": 111,
+  "n_moved": 13
+ }
+}

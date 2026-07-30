@@ -16,6 +16,13 @@ The two windows are CARRIED, not re-chosen (Q-C): the pool takes the curve's 200
 take the priors' own 2006-2020. Harmonising them would be a method change.
 """
 import os, sys, json, argparse
+
+# FAIL-CLOSED LABEL BINDING (#279 incident 2026-07-30): the statistic label must be stated, never
+# defaulted. Defaulting it to 'SCAR' meant a VOR derivation could stamp its own metadata SCAR — the
+# same silent-fallback defect class as the output-path default in the matrix emitter.
+if not os.environ.get('CURVE_STATISTIC'):
+    raise SystemExit("derive HALT: CURVE_STATISTIC must be set explicitly (e.g. SCAR or VOR). It is not "
+                     "defaulted, because a defaulted label once let a VOR column stamp itself SCAR.")
 import numpy as np
 from sklearn.isotonic import IsotonicRegression
 
@@ -254,7 +261,7 @@ def main():
         meta=dict(store_md5=meta['store_md5'], v0surf_sig=meta['v0surf_sig'],
                   force_majeure=meta['force_majeure'], slide_years=meta['slide_years'],
                   windows=dict(pool=[YR_LO, YR_HI], priors=[PRIOR_LO, PRIOR_HI]),
-                  statistic=os.environ.get('CURVE_STATISTIC','SCAR'), gamma=os.environ.get('RL_GAMMA','0.85'), nd_curve_last=ND_CURVE_LAST),
+                  statistic=os.environ['CURVE_STATISTIC'], gamma=os.environ.get('RL_GAMMA','unset'), nd_curve_last=ND_CURVE_LAST),
         curve=dict(grid=grid, raw=list(map(float, raw)), effn=list(map(float, effn)), integer=curve,
                    n_rows=len(ND), ladder_total=int(sum(curve))),
         pool=dict(n=len(POOL), never_established=sum(1 for r in POOL if never_established(r)),

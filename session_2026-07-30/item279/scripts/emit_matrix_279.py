@@ -31,12 +31,27 @@ READ-ONLY on the engine and on the store. Nothing here fits, decides, or writes 
 """
 import os, sys, io, contextlib, json, hashlib
 
+# FAIL-CLOSED OUTPUT BINDING (#279 incident 2026-07-30). This script previously DEFAULTED its output
+# directory and filename when the env vars were absent, and an `env -i` wrapper that forgot to whitelist
+# them silently wrote over a COMMITTED evidence file instead of the intended scratch path. A silent
+# default is the same defect class as a silent label fallback: the run looks successful and lands
+# somewhere nobody audited. Both are now required, and the check runs BEFORE the expensive ASOF loop so
+# a misconfigured run costs a second rather than three minutes.
+_REQUIRED = ('ITEM279_OUT', 'ITEM279_MATRIX_NAME')
+_missing = [v for v in _REQUIRED if not os.environ.get(v)]
+if _missing:
+    raise SystemExit(
+        "emit HALT: required output binding absent from the environment: %s.\n"
+        "  This script does NOT default its output path or filename — a silent default overwrote a\n"
+        "  committed evidence file once and must not be able to again. Set both explicitly, and if you\n"
+        "  are running under `env -i`, add them to the whitelist." % ", ".join(_missing))
+
 REPO = os.environ.get('RL_REPO', '/home/user/afl-rl-engine')
 sys.path.insert(0, REPO + '/vendor')
 os.chdir(REPO + '/engine/rl_after')
 sys.path.insert(0, '.')
 
-OUT = os.environ.get("ITEM279_OUT", REPO + "/session_2026-07-29/item271/out")
+OUT = os.environ["ITEM279_OUT"]          # fail-closed: asserted non-empty above
 os.makedirs(OUT, exist_ok=True)
 
 src = open('_merged_recover.py').read().split('print("=== AFTER')[0]
@@ -182,7 +197,7 @@ meta = dict(store_md5=STORE_MD5,
             nd_curve_last=MA.ND_CURVE_LAST, pool_pick=MA.POOL_PICK,
             force_majeure=sorted(FORCE_MAJEURE), slide_years=sorted(SLIDE_YEARS),
             n_records=len(recs))
-json.dump(dict(meta=meta, recs=recs), open(OUT + '/' + os.environ.get('ITEM279_MATRIX_NAME','per_entrant_271.json'), 'w'), indent=0)
+json.dump(dict(meta=meta, recs=recs), open(OUT + '/' + os.environ['ITEM279_MATRIX_NAME'], 'w'), indent=0)
 
 nd64 = [r for r in recs if r['teaches_curve']]
 pool = [r for r in recs if r['is_pool']]

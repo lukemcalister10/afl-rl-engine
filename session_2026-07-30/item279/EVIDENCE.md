@@ -267,3 +267,167 @@ converse) is the same instrument that would name violators if any existed.
 One cosmetic wart, disclosed: `emit_matrix_279.py` prints `wrote out/per_entrant_271.json` regardless of the
 actual output path, because that filename is a literal inside its print statement. The real writes went to
 the parameterised paths — confirmed by the worktree staying clean and by the matrices' own `meta` stamps.
+
+---
+
+# SECOND ADDENDUM — ESTIMATE: the VOR adoption echo on player values
+
+**This is an ESTIMATE and bounds one thing only: the pure-currency echo.** It answers "if VOR were fully
+adopted and its pick curve flowed back through the system, how far would player values move from the board
+already presented (`c8515acd`)?" It is **not** a prediction of the final board — the shipped system still
+changes at step 2 (pick-value basis, S-1/S-2) and step 3 (the variance dial). Nothing here rules anything.
+
+## The channel map — every path from the adopted pick curve to player values
+
+| # | channel | code path | full adoption re-points it? |
+|---|---|---|---|
+| 1 | curve → ev-channel basis | `pvc_curve_v2.json` → `_V2CURVE` → `_PVC0` (`_merged_recover:1612-1619`) | **YES** |
+| 1a | → RUCK prior cap / scaffold | `_PVC0` → `draftval(p)` (`:1578`) → `_ruc_prior_cap` | **YES** |
+| 1b | → V0 guard + V0 surface rebuild | `_build_v0_guard()`, `_build_v0_curve()` (`:1620-1621`) | **YES** |
+| 2 | curve → module PVC | `_V2RAW` → `_PVC2M` → `rl_model.PVC` (`rl_model:929-945`) | **YES** |
+| 2a | → pickless unplayed equivalent | `_PVC2M` → `unpl_eq` (`rl_model:1007`) | **YES** |
+| 2b | → pedigree pedestal | `_PVC2M` → `pedestal` (`rl_model:1022`) | **YES** |
+| 3 | curve → v0 → surface → value | `_v0_uncapped` = `raw_ev(...)` reads 2a/2b; the surface is fit over `_v0_raw`; `v0_start` feeds values | **YES — the feedback loop the convergence pass exists for** |
+| 4 | peak-model TRAIN-TIME PVC feature | `pvc_snapshot.json` → `_V4PVC` (`rl_model:657`), entering `_v4_feats` as `np.log(_V4PVC[ep])` | **NO — frozen by its own design note; re-pointing it is train/serve skew** |
+| 5 | the peak model itself | `peak_model_v4.pkl`, pinned `b763f59e` | **NO** — serve path γ-free (`GAMMA` only at `rl_model.py:504,731,734`); builder unrunnable, `dob_corrected.json` absent repo-wide. Retrain gap docketed by the seam |
+| 6 | frozen ceiling / cm models | `q97m.pkl`, `cm_400.pkl` | **NO** — frozen by owner ruling, loaded never fitted |
+| 7 | bust prior | `bust_prior_table.json` → `_v4_bp` | **NO — not a curve channel at all**: values are production-score units by position × pick (33.51–98.13), derived from realised outcomes |
+| 8 | superseded L1b artifact | `pvc_curve_L1b.json` → `_L1CURVE` → `_PVC0` (`:1585-1598`) | **AMBIGUOUS — both branches measured, see below** |
+
+The convergence pass re-points channels 1–3 and only those. Channel 4's exclusion is not a judgement call: the
+design note at `rl_model.py:657` states that feeding the live post-bake PVC there is train/serve skew, because
+`build_peak_model_v4.py` trained the pickle on the snapshot. Channels 5–7 do not carry the curve at all.
+
+**Channel 8 is the ambiguous one and is measured, not assumed.** That block loads the superseded L1b artifact
+into `_PVC0` and *does* rebuild the V0 guard and surface — but the v2 block runs after it and overwrites
+`_PVC0`, so under `RL_PVC2=1` (the default) it should be inert. Both branches were built: v2 only, and v2+L1b
+together. Result below.
+
+**One stale comment found on the way, reported not fixed.** `_merged_recover.py:1573` describes `draftval` as
+"FROZEN on the pre-fit v3.4 curve (`_PVC0`)". It is not: `draftval` closes over the `_PVC0` dict, and both the
+L1b and v2 blocks mutate that dict in place, so `draftval` tracks the adopted curve. Behaviour is correct —
+the RUCK scaffold *should* follow the adopted currency — but the comment would mislead a reader, and it is the
+single largest live channel in the measurement below.
+
+## The convergence pass
+
+Each iteration: install the curve into the adopted artifact (the one disclosed pin edit) → reseed → refit the
+surface at γ=1.0 (`RL_V0SURF_REFIT=1`) → rebuild the board → re-derive the curve from the new surface. Cost per
+iteration: board 126–140s, matrix emit 175–188s, fit 3s.
+
+| step | players moved (of 804) | max abs delta | total value |
+|---|---|---|---|
+| baseline → it1 | 21 | 28 | −0.052% |
+| it1 → it2 | 18 | 2 | −0.003% |
+| it2 → it3 | **0** | **0** | 0.000% |
+
+Board identities `c8515acd` → `32ec020a` → `aa798cb1` → `7977d7e5`. The last two carry **identical player
+values** and differ only in embedded curve metadata. The curve reached a **fixed point**: payload `817c0f5a`
+went in at iteration 3 and came back out as `817c0f5a`, ladder 63,815 → 63,815, pool 273.4 → 273.4. Ladder
+sequence 63,908 → 63,818 → 63,815 → 63,815. Surface signature moved every time the curve did
+(`b781ed25` → `2b633636` → `76c1e469` → `22f4f961`), which is worth noting against finding 1 of the first seal:
+the 37-gate signature is **not** insensitive in general — it hashes the curve and catches a curve change. It is
+blind to γ *specifically*, because γ enters only at `rl_model.py:504/731/734` and never touches the hashed
+payload.
+
+## The echo, converged, against `c8515acd`
+
+- **21 of 804 active players move** (2.61%); 783 do not move at all
+- median absolute delta of movers **22**, max **29** (Alex Van Wyk); median signed delta across all 804 is **0**
+- every mover moves **down**
+- total active value 774,236 → 773,810, **−0.055%**
+- rank movement **245 of 322,434 strictly-ordered pairs = 0.076%**, 6 tie-collapses, max rank shift 27 places
+- **top 20 unchanged in both membership and order**
+- age profile essentially static: ≤21 shifts −0.0034, 22–24 −0.0018, 25–27 −0.0003, 28–30 **0.0000**, 31+ −0.0003
+
+**Every one of the 21 movers has settled position (`gfut`) RUCK.** By position among the 111 zero-game actives:
+RUCK 13 of 14 moved; KPD 0 of 13, KPF 0 of 12, MID 0 of 22, SD 0 of 20, SF 0 of 30. Among the 693 played
+actives, 8 moved, all RUCK. Two movers are *listed* KPF but carry `gfut == RUCK`, which is the key the RUCK
+branch actually reads — a reminder that listed position and settled position are different fields.
+
+The largest movers sit at effective pick 65, the pool, because the pool level falls hardest (299 → 273, −8.7%).
+
+## Requirement 1: did channels 2a/2b actually consume the swapped curve?
+
+**Yes — fully wired, proven directly.** Instrumenting the same expressions `value()` uses, under each curve:
+
+| player | ep | `_PVC2M` at ep | `unpl_eq` | `value()` | `ev(2026)` | `v0_start` |
+|---|---|---|---|---|---|---|
+| adam-sweid | 25 | 906 → 865 | 788.4 → 752.7 | 788 → 753 | 571 → 571 | 765.39 → 765.39 |
+| aidan-schubert | 23 | 964 → 927 | 841.1 → 808.8 | 841 → 809 | 671 → 671 | 893.14 → 893.14 |
+| avery-thomas | 28 | 840 → 795 | 728.7 → 689.6 | 729 → 690 | 472 → 472 | 638.61 → 638.61 |
+| will-green (RUCK) | 16 | 1207 → 1165 | 990.5 → 956.0 | 990 → 956 | 698 → **683** | 1165.88 → **1140.28** |
+| max-knobel (RUCK) | 42 | 660 → 615 | 397.8 → 370.7 | 398 → 371 | 527 → **509** | 879.92 → **848.97** |
+
+So `unpl_eq` and `value()` move for **every** probed player: 2a/2b are not half-wired.
+
+**But `value()` is not the board price.** Board `v` = `round(ev(p,2026) / 1.0524)` — the L7 numéraire re-base —
+verified to the digit on 5 of 5 spot checks (sweid 571→543, green 698→663, knobel 527→501, thomas 472→448,
+ludowyke 414→393, each matching its board row). And `ev()` moved only for the RUCK players.
+
+**Mechanism, read out of `ev()` rather than inferred.** A zero-season player returns `round(sitout_ev(p,Y,e))`,
+which is V0-anchored — the price comes from `v0_start`, the fitted surface, not from `value()`/`unpl_eq`. And
+`ev()` carries an explicit RUCK branch reading `RUC_PRIOR_CAP*draftval(p)` (or `_ruc_ceiling`) and
+`_v0_uncapped(p)`, both off the adopted curve; no other position has a curve-reading branch there. That is why
+`v0_start` moved for the RUCK players and was *identical* for the non-RUCK ones: the denser non-RUCK surface
+(`surfN`) absorbed the curve shift under isotonic pooling, while the thinner RUCK surface (`surfR`) passed it
+through.
+
+So the small echo is neither half-wiring nor "domination by 1a". It is: the shipped board prices these rows
+through `ev()`, which for them is surface- and RUCK-cap-anchored, and the surface absorbs most of a small curve
+move.
+
+## Channel 8 (the ambiguous one): measured INERT on values, but genuinely loaded
+
+Both branches built at the converged curve. Branch A (v2 only) and branch B (v2 + L1b re-pointed) produce
+**byte-identical boards** — `7977d7e5` both — with 0 of 804 players differing. The v2 block overwrites `_PVC0`
+after the L1b block, so L1b cannot reach player values. Measured, not assumed.
+
+It is **not** inert on load, though, and the proof was accidental: a first attempt that wrote a bare 1–64 curve
+into L1b **halted the build** inside `_split_ladder` with "no pool level", because L1b has no `pool_value` field
+and carries its pool level as curve entry 65 (its domain is the declared legacy 1–99 exception). A silent
+artifact would not have stopped a build. So: loaded and validated at import, inert on values.
+
+## INCIDENT NOTE — two defects of mine in this pass, and the hardening
+
+**Incident 1 — silent path fallback overwrote a committed evidence file.** My iteration wrapper used `env -i`
+with an explicit whitelist and did not include `ITEM279_OUT` / `ITEM279_MATRIX_NAME`. The emitter defaulted, and
+wrote over the **worktree's** copy of `#271`'s committed `per_entrant_271.json`. Contained to scratch: the main
+checkout was verified untouched (`pvc_curve_v2.json` still `6506d8b1`, `per_entrant_271.json` still `2f8b4bd4`),
+the worktree was restored with `git checkout`, and nothing was committed. The same stripping would have
+defaulted `CURVE_STATISTIC`, letting the VOR column stamp its own metadata `SCAR` — the path fallback and the
+label fallback are one defect class, as the seam put it.
+
+**Hardening, and proof it fires.** Both scripts now fail closed, checked *above* the expensive ASOF loop so a
+misconfigured run costs a second rather than three minutes:
+
+- no vars → `emit HALT: required output binding absent: ITEM279_OUT, ITEM279_MATRIX_NAME` — 0s
+- only `ITEM279_OUT` set → HALT naming just `ITEM279_MATRIX_NAME` — 0s (partial config caught)
+- no label → `derive HALT: CURVE_STATISTIC must be set explicitly` — 0s
+- **non-vacuity:** iteration 3 ran to completion on the hardened scripts (board `7977d7e5`, matrix 3,241,310
+  bytes, fit 8/8 both-directions PASS), so the guards pass when the variables are set
+
+**Incident 2 — two wrong attributions of mine, corrected by measurement.** At iteration 1 I attributed the echo
+to channel 1a from board fields alone; that conclusion was right in substance but the reasoning was not, because
+board fields cannot distinguish the channels. I then reported that `value()` moving proved 2a/2b carried the
+echo; that was also wrong, because `value()` is not the board price path. Only the `ev()` instrumentation
+settled it. Both are recorded because the first addendum's method note says measurements decide, and twice in
+this pass I stated a mechanism ahead of measuring it.
+
+## Files added by this addendum
+
+- `out/echo_279_estimate.json` — every measurement above, with denominators, plus the channel map verdicts.
+- `out/echo_channels_279.json` — the raw probe dumps: `value()`/`unpl_eq` and `ev()`/`v0_start` under both curves.
+- `out/board_VOR_converged.json` — the converged board `7977d7e5`.
+- `out/derived_279_vor_converged.json` — the converged curve, payload `817c0f5a`, ladder 63,815, pool 273.4.
+- `scripts/install_curve.py`, `scripts/iterate.sh` — the convergence lane.
+- `scripts/probe_channels.py`, `scripts/probe_ev.py` — the channel instrumentation.
+- `scripts/emit_matrix_279.py`, `scripts/derive_279.py` — now carrying the fail-closed guards.
+
+## What this estimate does and does not bound
+
+It bounds the pure-currency echo: with the curve fully flowed back through the lawful channels, the board the
+owner has seen moves 21 RUCK players by a median 22 points, leaves the top 20 and the age profile alone, and
+does not change the board's shape. It does **not** bound the final board — step 2 changes the pick-value basis
+and step 3 adds the variance dial, and either can move far more than this. It also does not cover a peak-model
+retrain, which is excluded by design (channel 4) and docketed by the seam (channel 5).
