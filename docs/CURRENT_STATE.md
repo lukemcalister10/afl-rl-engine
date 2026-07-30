@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v33 · supervisor pen · 2026-07-30, register v541
+# CURRENT STATE — the incoming-seat read · v34 · supervisor pen · 2026-07-30, register v542
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -107,129 +107,114 @@ any pen error reaching main restores the per-entry word.
 **Ref deletion is proxy-forbidden to seats.** Branch deletes are an owner click. Do not retry it.
 
 ---
-
 # PART B — CURRENT STATE
-(v33 · supervisor pen · 2026-07-30, register v541 · replaced wholesale at the adoption pen)
+(v34 · supervisor pen · 2026-07-30, register v542 · replaced wholesale at the shaping-rulings pen)
 
-## THE ERA: POST-ADOPTION. The 30/7 rederivation board is the live board. No seat is live.
-Owner word 2026-07-30 (#271 Addendum 14, verbatim): "30/7 rederivation for the label. Adopt." Live identities:
-store 6b9d00a7 · board f2df6e0a · curve file 6506d8b1 (payload 08ea9375; pre-stamp candidate id 3dabec04;
-pool_value 299; ui curve contract 432f0153, per_entrant 2f8b4bd4) · v0surf ce08c2d1 (frozen pair
-b781ed25/d071e743). ADOPTION EXECUTION FACTS, seam-verified: main = f60af6c (single commit on a86c725; A23 amend verified — three fix files only, identities byte-unchanged); bundle f2df6e0a-verified;
-contract a0620e0e/sha 0717287e — held_candidates EMPTY, held_checks = G-Y0 alone; boot pins = adopted identities;
-the 30/7 column live in all three histories + bundle; lineage register 2 entries (latest ITEM_271_Addendum_17),
-current slot = pure ITEM 408 mirror. FINAL CI at f60af6c: guards SUCCESS 0 FAIL / 1 HELD (G-Y0 3.035% under 3.500% ceiling) · FV Provenance SUCCESS · Final Integration FAILURE at step 13's LAST command only — within it: extract 42/42 · release 30/30 · counting 24/24 · club_curve_provenance 35/35 (WAS 24/35 — the split-era crash is dead) · club_valuation PASS (16 teams/160 picks) · parity 11/11 with the Best-23 can-fail lever proven IN CI · movers.test.js LAST at 2/58 = EXACTLY the pinned pair; steps 14-22+42-43 skipped, declared · Live Scoring FAILURE at step 12 on the SAME pinned pair, steps 13-15+31 skipped, declared. Measured by the seam directly (runs 30518162835/851/841/846) after two agent attempts died on server 529s — the spill-and-grep pattern held. A23: the split-era price_pick
-crash (KeyError:73, masked all era by the ring-fence halt) fixed under owner word AMEND — 65+ = pool_value. Movers: the 30/7 point + boundary landed via the R20 repair lane (A16); the three-way
-balanced_board_md5 anchor disagreement is DOCKETED TO HYGIENE (A17), not fixed.
-Sequence of record (owner-amended this cycle): land → re-derive → ADOPT (done) → SHAPE (#279) → referee (#270)
-→ ITEM 412. Every queued job fires on the owner's word only. Nothing is running.
+## THE ERA: POST-ADOPTION, POST-UI-WAVE. Main is `fe672cb`; ALL FOUR WORKFLOWS ARE GREEN — the first
+all-green CI of the era. The #274 UI wave is MERGED (PR #282, rebase-merge, seven commits): era succession
+landed (movers 65/65, the 30/7 boundary owner-approved, the A22 known-red CLEARED), the A19 Best-23
+eligibility selector replaced the adoption stopgap (min-cost max-flow on the ELIGIBILITIES column; Adelaide/
+Hawthorn resolve exactly as A19 measured), the over-free lens ships at FHV=190 computed at render, the ten
+#139 display items verify green, and the adoption mop-up act re-stamped the F5 contract block to the adopted
+77,611 (components 65,925 + 2,631 + 9,055; contract sha now e87ee7ce, self-verified), fixed the ui contract's
+stale pool_value to 299 (its md5 now 11adecc8, FROZEN-RULER pin re-stamped in the same commit), restated the
+R14-rewind claim honestly, and RETIRED the two R14→R19 replay steps (premise died at adoption; forward
+replacement = #139 item 20, docketed not commissioned). The `movers.test.js` known-red era is OVER.
+**#279 — the shaping step — has currency, basis, fitter and pin policy SEALED on-issue; the α dial is the ONE open ruling.** No other seat live.
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Entries are PER RULED QUESTION; supersession is partial by nature.
-1. FHV definition → Option A: expectation view, single constant ≈190; survivor 250/528 REJECTED; per-window
-   (MSD 352/SSP 277/OTHER 97) = one-word upgrade. First consumer: #276's phantom. [#270, ruling comment]
-2. γ (SCAR vs VOR) → NO ruling until a derivation exists under BOTH systems, each with its own surface bake;
-   the #271 companion is mixed-denomination evidence of the leak only (canonical leak: 2.32% of strict pairs
-   invert; RL_GAMMA absent from the v0surf gates). Executes in #279. [#271 A7, A10; A13 for the canonical figure]
-3. G-Y0 (curve↔surface 2% HARD bar) → owner-accepted dated exception at 2.929% ruled / 3.035% guard; loud HELD;
-   do-not-exceed ceiling 3.50% = hard FAIL; record-removal = FAIL; resolves at #279 (bar re-set deliberately).
-   Sign structure: two-sided wobble, net −0.56% (curve below surface); it never measured the reality gap. [#271 A12/A13]
-4. Year-0/current bar source → the store's ELIGIBILITIES COLUMN (owner-maintained), dual → LOWER bar (R105.1);
-   season rows = closed seasons' bars; 2026 column supersedes its row in every bar-taking use. [#271 A4, A6]
-5. Future-leg blend → PERMANENTLY hand-set (future_position + alternate_position + p_dual_stream; LEG C law:
-   lower bar of the pair on the p_dual fraction; primary keys the arc). "Eligibility blend later" RETIRED from
-   the referee docket by owner word. [#270 retirement comment]
-6. §1b / y0dpp_bar → retired from year-0 by SUPERSESSION only (code untouched; fires 0/804 with column-keyed
-   bnow; resurrests at 86/804 if bnow reverts — proven by CF2). [#271 A4/A5; cf2 evidence]
-7. The 62-edit set → sealed as 62 + 3 owner-amended (2026-07-29): Roberts/Hall/Williams alternate+p_dual
-   pairs cleared (both halves = the unit, selftest invariant), measured board delta 0. [#271 A12, ADDENDUM12_CLEARS]
-8. The pick-curve tail → prices ~1.56× busts-included reality at 57–64 (honest ±7% at picks 1–24); mechanism =
-   evidence-weighting mutes bust votes where busts cluster + prior dominance at thin cells + curve→surface→curve
-   self-reference. REPORT-ONLY until #279/referee; the two knobs are γ=0.85 (sole live dampener) and the retired
-   CE dial (never carried into R1). [#270 evidence notes 1-2 + CE correction]
-9. Par teaching population → par_build keys ONE gfut per career; role migrants refile prime seasons under
-   destination roles (Berry +351 / Addinsall −116 the extremes; median ripple 0). Docketed for #279; fix =
-   per-season teaching (data now exists); interim = exclude pre-conversion seasons. [#279 ruling-sheet addition]
-10. Held mechanisms → held_candidates admits ONLY the 8 bound release identities (release_contract.py:126);
-    check-family holds live in sibling held_checks; every hold pins both sides, reports loudly, reverts to FAIL
-    on removal, and names its clearing act. A declaration consumed by two gates is verified against BOTH before
-    sealing. [#271 A11]
-11. Adoption-era CI, measured at f60af6c: guards green + G-Y0 HELD
-    (CORRECT, stays until #279); FV green; FI red at step 13's LAST command and Live Scoring red at step 12 —
-    BOTH being movers.test.js 2/58, the DECLARED
-    ADOPTION-CREATED KNOWN-RED (owner Option 1, A22), PINNED at exactly two named assertions; any third
-    failure in that file is NEW; FI steps 14-22 and LSU steps 13-15 are SHADOWED behind it until #274 — declared.
-    The 'bridged' half may self-resolve at R21 (unmeasured — check then). Proof workflows remain manual-dispatch.
-12. VOR/rank instruments → adjacent-pair inversion counts are TIE-SENSITIVE (305 shared-integer rows); use the
-    order-independent all-pairs count. [#271 A13]
-13. Best-23 selection → owner LAW (A19): the value-maximal 23 fillable from the ELIGIBILITIES column,
-    DPP-optimised (assignment, not first-fit), on ABSOLUTE BOARD VALUE. The live tab runs the DECLARED
-    adoption STOPGAP (top-up backfills unfilled slots) until #274's first item lands the selector — the
-    stopgap's presence is the removal marker. [#271 A19; #274 docket]
-14. The movers bundle → historical per-round reports are NEVER rewritten (each keeps its frozen era identity
-    and vocabulary — that is the record, not staleness). Out-of-round columns ARE represented: they become
-    selectable points + model-change boundaries at every derived-block rebuild (owner precedent:
-    post-r19-redesign-1; the 30/7 boundary per A16 — outcome in the era block above). ui/data/movers_transition.js
-    is GENERATED from data/release_lineage.json's release_transition (fail-closed bridge; never hand-edit;
-    ITEM 408 Option A governs). The owner WANTS landed changes visible as movers records — treat that as a
-    standing preference. [#271 A15/A16]
+Carried from v33 unchanged: FHV Option A (≈190, #270 ruling comment) · future-leg blend hand-set (#270
+retirement comment) · year-0 bar = ELIGIBILITIES column (#271 A4/A6) · §1b retired by supersession (#271
+A4/A5) · 62+3 edit set sealed (#271 A12) · held-mechanism law (#271 A11) · tie-sensitive instruments barred
+(#271 A13) · Best-23 = A19 law (NOW LIVE via #274 item 2) · movers/era-succession law (#271 A15/A16; the
+single-slot limit is FIXED by #274 item 1; the balanced_board_md5 three-way disagreement stays hygiene's,
+now with a loud tripwire) · **G-Y0 dated exception STANDS**: 2.929% ruled / 3.035% guard HELD / 3.50%
+ceiling = hard FAIL; resolves at step 4's re-derivation [#271 A12/A13]. NEW this cycle, on #279:
+N1. **Currency = VOR (γ=1.0)** ["ruling is VOR. Lock it in"]. Echo of full adoption bounded: 21 rucks ≤29
+    points via the ruck-cap channel alone; converged curve fixed point 817c0f5a; signature is curve-sensitive
+    but γ-blind (the silent case = γ-only flip; RL_GAMMA enters the gates at step 4). [#279 currency ruling]
+N2. **Basis = STRUCTURAL, teaching cut at class ≤2022, par = PER-SEASON teaching.** Concluded careers vote
+    full (825), actives completed from concluded look-alikes busts-included (372 active, 301 completed),
+    prior = counted thin-stratum fallback ONLY — a WATCHED NUMBER at every rebuild (5.93% at ruling). The
+    99.975% prior-share finding is why. Truncation backtest: MAE 27/21/17% at depths 2/3/4, consistently
+    optimistic (+4.7% at kept depths) — THE WATCH-ITEM if the curve ever reads generous. [#279 basis ruling]
+N3. **Fitter = CONTROL** (shipped kernel + local-linear boundary correction, >1%-mass-off-domain rule).
+    Panel evidence: held-out accuracy tied (medAE 377.1–377.4); the boundary fix wins picks 46–64 (~9% medAE;
+    signed error +8.5 vs the kernel's +21.2); byte-identical to shipped at picks 3–50. Distribution-first =
+    the kernel by algebraic identity (2.3e-13); its DECOMPOSITION (establishment rate × value-if-established)
+    is ADOPTED as a standing report-only artifact beside the curve. [#279 fitter ruling]
+N4. **Pin policy = POOLED NUMERAIRE, in principle.** The hard-set was an asymmetric CEILING (owner-caught):
+    all four fitters put raw pick 2 above raw pick 1; the pin clipped ~140 measured points. Ruled design: PAVA
+    pools the head honestly, then ONE global factor s = 3000/pooled-head re-denominates the WHOLE economy —
+    players included — so pick 1 = 3000 is true, not decreed; conservation is s-invariant. CONFIRMATION
+    CONDITION at step 4: the head-anchor noise measurement (pooled band vs raw pick 1, across fitters+folds)
+    = the adoption-time churn; one owner word reverts to the hard pin if disqualifying. Player-side ×s
+    executes at step 4 ONLY. [#279 fitter+pin ruling comment]
+N5. **Pool ≈ tail equivalence (measured, this cycle):** under the ruled basis the pool level is 239.7
+    [211,268] n=1,005 while picks 60–64's cohort earned 233 — statistically the same asset. The old
+    "pool sits below the curve by construction" prose was an OLD-BASIS fact; the descent asserts bite over
+    1–64 only, so nothing halts; one clarifying line lands in the law text at step 4. Priced denominators:
+    MSD 303 n=44 · SSP 341 n=31 (STORE stream counts 106/52 are census, not pricing populations); medians ~0
+    everywhere — the interval is the finding. These feed the FHV re-denomination word at #279's adoption.
+
+## THE α STOP — the one open ruling of the shaping step
+Six full ladders committed (α = 1.0/0.8/0.6, tiered 0.6→0.8, linear 0.8→1.00, linear 0.9→1.05), rebuilt on
+the ruled design at the stop. Conservation at α=1: 0.998 — every downside setting slashes total pick value
+(S-3's own bar); 0.9→1.05 is the only schedule paying above the honest mean at the tail (1.047× at 64,
+conserving 0.988) — the owner's star-chance theory as a knob, both readings filed without a lean. Inter-
+schedule differences at picks 1–3 are inside noise (effn 35–38). Seam recommendation on record: α=1.0.
 
 ## THE QUEUE — everything fires on an owner word; seam pre-fire audit at each fire
-- **#279 — the owner's baseline shaping step (his stated priority).** Seed rulings S1–S5 sealed in the filing +
-  the par item. Deliverables: minimal-vs-structural prototype pair on one matrix; strict SCAR/VOR dual derivation
-  (own surface bakes; RL_GAMMA enters the gates); ruled pick-value basis + explicit variance dial calibrated
-  against the conservation yardstick; v0 propagation; G-Y0 re-derived. Owner rules on evidence, never in advance.
-- **#274 — UI wave** (independent of #279 post-adoption; parallel seats possible with seam coordination). Three
-  pre-ruled/pre-scoped items: (1) ERA-SUCCESSION plumbing, first priority (A22: current transition + archive;
-  model_changes over all entries; both validators in lockstep; acceptance = movers 58/58 + the 30/7 flag true;
-  clears the declared known-red); (2) the Best-23 eligibility selector (A19 law; replaces the adoption stopgap);
-  (3) the over-free column (v − FHV live lens, below-free flag) — depends only on adoption + the ruled ≈190.
-- **#276 — clubs tab**: its 250 phantom takes the ruled FHV with one word at fire.
-- **#275 — hygiene**: needs the post-adoption green CI as its acceptance baseline. RETENTION LAW: files cited by
-  sealed records are protected from pruning (charter D2).
-- **#270 — referee project**: opens AFTER #279 delivers the shaped baseline; its docket already carries the FHV
-  ruling, the tail evidence, the γ evidence path, and the retired future-blend item.
-- #146 NEVER executes as written · #139 feeds the others · v1.1 amendment read = the owner's open parallel act
-  (docs/referee/AMENDMENT_v1_1_DRAFT.md).
+- **#279 step 4 (after the α word): PROPAGATION — the finale.** v0 surface refit under everything ruled ·
+  curve re-derived to coherence, G-Y0 re-set honestly · RL_GAMMA into the signature gates (closes the γ-only
+  blind spot) · the pool's ruled level ships · par per-season teaching (with the par_build LOUD-HALT
+  requirement — empty position group must halt naming the group, never IndexError; the #274 map found the
+  crash) · the player-side ×s rescale + the pin confirmation condition · the ruck-cap bite check (Stanley
+  812→610 exposure measured, binding unknown) · draftval stale comment fix · the law-text clarification
+  (digest N5). **REHEARSAL NORM APPLIES IN FULL:** first-of-a-kind runbook, rehearsed end-to-end in scratch
+  before any owner execution word. #279's adoption then re-denominates FHV (one word; evidence in digest N5).
+- **#283 — ownership single-source fix (FILED, ready):** store becomes truth, sidecar becomes generated
+  mirror, oracle unchanged; the owner's July-29 CSV (18 moves, currently NOT on the board) is the acceptance
+  fixture. The read-back must resolve the store-identity ripple lane (the crux; it's why #232 dodged the store).
+- **#275 — hygiene: UNBLOCKED** (all-four-green baseline now exists). Carries the balanced_board_md5 anchor
+  ruling and the RETENTION LAW (files cited by sealed records are protected — the adoption-review and item279
+  evidence trees are now in that class).
+- **#276 — clubs tab** (Q5/Q6 collectibles + optional FHV word at fire) · **#270 — referee** opens after #279
+  delivers · #146 never as written · #139 feeds the others (item 20 = the retired replay's successor) · v1.1
+  amendment read still outstanding (owner).
 
 ## OWNER ACTS OUTSTANDING
-Fire words (#279/#274/#276/#275, any order — #279 stated priority) · the γ ruling (after #279's dual evidence)
-· the v1.1 read · branch-deletion clicks per convention.
+The α word (then step 4 fires on a second word after rehearsal) · fire words #283/#275/#276 · the v1.1 read ·
+branch-delete clicks as they arise.
 
-## RUNNING THIS SEAT WELL — owner-endorsed law (charter D3/D4 + this cycle's additions)
-- **Answer the owner in his channel, completely, FIRST.** Filings are durable copies, never the reply. Interpret
-  agent results — conclusions, not process. Plain sentences; no dense compression; lead with what happened and
-  what needs deciding. The owner's casual questions are load-bearing QC — three this cycle exposed real findings
-  (the tail pricing, the par contamination, the CE retirement).
-- **REHEARSAL NORM (adoption-day lesson, 2026-07-30):** irreversible or first-of-their-kind operations are
-  REHEARSED end-to-end in a scratch worktree BEFORE the owner's execution word — the full runbook, the tests
-  that have never run, the lanes never exercised — so latent defects surface as ONE batched report off the
-  critical path, not as serial stop-and-asks on it. First-time paths get first-time estimates, never
-  "mechanical from here." Runbooks are drafted from FILE-LEVEL walks of what a law touches (the "UI pair"
-  slot-table miss), not from the record's summaries alone. Adoption day's measured cost of skipping this:
-  six serial owner round-trips where a rehearsal would have produced two.
-- **Cost-estimate norm:** any request whose answer requires building artifacts that don't exist (counterfactual
-  boards, new derivations) gets an explicit estimate + go-ahead BEFORE commissioning. General authorization is
-  not specific authorization.
-- Subagents: Opus by default; Fable only where judgment is the task (owner word). Spill every API payload to
-  files. Register by pointer/window only — never head/cat (the header is one ~400KB line).
-- One pen per boundary, batched. Hand-backs: re-run the 2–3 measurements that decide; full re-runs at final
-  seals (the control-arm/nonvacuity independent re-run pattern and its exact conditions are documented in
-  #271 Addendum 13 — the durable copy; scratch logs die with containers).
-- Instrument discipline, this cycle's additions to the standing set: assert loaders are NONEMPTY before trusting
-  their output (a silent empty load mis-bucketed a whole analysis); never trust a TRUNCATED diff-stat (tail -N
-  ate expected_boot and manufactured a false finding); prove every check can fail; state CI posture in every
-  seal; prefer order-independent metrics where ties exist.
-- Worktree pattern for scratch builds: detached worktree + minimal disclosed pin edits + env -i + PYTHONHASHSEED=0
-  + single-thread BLAS + pinned venv (route validated at hash level incl. OpenBLAS — conditions recorded in #271 A13). Never set
-  RL_V0SURF_REFIT/RL_BAKE outside the declared lane. Nothing scratch is ever committed.
+## RUNNING THIS SEAT WELL — owner-endorsed law (charter D3/D4 + both cycles' additions)
+- Answer the owner HERE, completely, FIRST; filings are durable copies, never the reply. Plain sentences.
+  His casual questions are load-bearing QC — this cycle they caught the frozen-ladder artifact in the γ
+  evidence, the pick-1 ceiling, and the pool≈tail collision. Treat every one as an instrument.
+- Cost-estimate norm before commissioning builds · rehearsal norm for first-of-a-kind lanes · subagents Opus
+  by default, one-writer discipline, screen by deterministic re-run · spill API payloads to files · register
+  by window only (the header is ONE ~450KB line) · every count NAMES ITS DENOMINATOR (store-census vs priced-
+  population bit twice this cycle) · prove every instrument can fail BEFORE trusting it (the judge was proven
+  able to fail before any fitter was scored; the emit scripts now HALT on missing whitelist vars — silent
+  defaulting is one defect class) · **NEVER present numbers not read from a committed artifact — the seam
+  itself fabricated two interpolated table columns this cycle, self-caught mid-message; read-verbatim is the
+  only guard** · medAE flatters low curves where medians are ~0: judge means with mean-targeting instruments
+  (signed error / RMSE) alongside · a held-out judge refuses mismatched fold fingerprints.
+- One pen per boundary, batched. Hand-backs: re-run the 2–3 measurements that decide; full content-level
+  verification at final seals (the #282 seal pattern: fence audit on the whole diff, CI via API not summary,
+  byte-level pin checks). Post-rebase-merge: re-verify main by CONTENT (rebase rewrites SHAs).
 
 ## ENVIRONMENT CARRIES
-cp312 via RL_VENV (setup_env.sh → bootstrap_env.sh → bootstrap.sh; do not weaken the pin) · git fetch --unshallow
-before ancestry claims · no parallel engine builds without seam coordination · scripted checkouts assert their
-base · CRLF in the owner's CSV lane is a known Excel artifact, never "fixed".
+cp312 via RL_VENV (do not weaken; container python3 is 3.11 — always the pinned interpreter) · git fetch
+--unshallow before ancestry claims · no parallel engine builds without seam coordination · detached-worktree
+discipline per #271 A13 (env -i with an EXPLICIT whitelist — the env -i path-stripping incident is the
+cautionary tale) · CRLF in the owner's CSV lane is a known Excel artifact, never "fixed" · GitHub rebase-merge
+rewrites SHAs: seal by content.
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands (main tip vs this pen; open PRs — expect none; the issue map above).
-2. Read-back to the owner in his channel; hold for confirmation before any push.
-3. Then idle until an owner fire word; audit the directive at fire per the charter.
+1. Verify live state with your own commands: main tip vs this pen (expect the v542 pen commit or a descendant);
+   open PRs (expect none, or the v542 pen PR itself pre-merge); the issue map above; all-four-green CI.
+2. The #279 seat holds at the α stop with ~630k context: its step-3 segment ends at the α ruling — verify its
+   final hand-back against the committed pack, then it rotates; STEP 4 GETS A FRESH SEAT with an opener built
+   from #279's body + the four ruling comments + this Part B's step-4 queue entry.
+3. Read-back to the owner in his channel; hold for confirmation before any push.
