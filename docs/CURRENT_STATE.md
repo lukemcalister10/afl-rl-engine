@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v34 · supervisor pen · 2026-07-30, register v542
+# CURRENT STATE — the incoming-seat read · v35 · supervisor pen · 2026-07-30, register v543
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,98 +108,117 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v34 · supervisor pen · 2026-07-30, register v542 · replaced wholesale at the shaping-rulings pen)
+(v35 · supervisor pen · 2026-07-30, register v543 · replaced wholesale at the α pen)
 
-## THE ERA: POST-ADOPTION, POST-UI-WAVE. Main is `fe672cb`; ALL FOUR WORKFLOWS ARE GREEN — the first
-all-green CI of the era. The #274 UI wave is MERGED (PR #282, rebase-merge, seven commits): era succession
-landed (movers 65/65, the 30/7 boundary owner-approved, the A22 known-red CLEARED), the A19 Best-23
-eligibility selector replaced the adoption stopgap (min-cost max-flow on the ELIGIBILITIES column; Adelaide/
-Hawthorn resolve exactly as A19 measured), the over-free lens ships at FHV=190 computed at render, the ten
-#139 display items verify green, and the adoption mop-up act re-stamped the F5 contract block to the adopted
-77,611 (components 65,925 + 2,631 + 9,055; contract sha now e87ee7ce, self-verified), fixed the ui contract's
-stale pool_value to 299 (its md5 now 11adecc8, FROZEN-RULER pin re-stamped in the same commit), restated the
-R14-rewind claim honestly, and RETIRED the two R14→R19 replay steps (premise died at adoption; forward
-replacement = #139 item 20, docketed not commissioned). The `movers.test.js` known-red era is OVER.
-**#279 — the shaping step — has currency, basis, fitter and pin policy SEALED on-issue; the α dial is the ONE open ruling.** No other seat live.
+## THE ERA: POST-ADOPTION, SHAPING RULINGS CLOSED. Main is `ba96ed2` (the v542 pen); ALL FOUR WORKFLOWS
+GREEN at the tip — the all-green baseline holds. **The #279 shaping step's ruling sheet is COMPLETE:
+currency VOR · basis STRUCTURAL/≤2022/par-per-season · fitter CONTROL · pin POOLED NUMERAIRE in principle ·
+α = 1.0.** The #279 execution seat is ROTATED, its final hand-back seam-verified clean (every commissioned
+figure recomputed from the committed pack at `9914c4d` on `claude/pre-referee-baseline-shaping-4ql38z`:
+payload hashes reproduced under the pack's own convention, fold sds recomputed exactly, evidence-tree-only
+diff). **STEP 4 — PROPAGATION — is the queue head: opener FILED on #279 (https://github.com/lukemcalister10/afl-rl-engine/issues/279#issuecomment-5132497378), fresh seat opens on
+the owner's paste; rehearsal norm in full before any execution word. The opener was COLD-SCREENED pre-filing
+(fresh-context Opus reviewer): three blockers found and folded — the comment-1 supersession (C1 real store
+fields `_retired`/`_last_listed`; C2 γ/pick-1 hard pins at build_peak_model_v4.py:8) entered the read order,
+and the draftval fix gained its locator (_merged_recover.py:1573).** #283 and #275 are FIRED the same day —
+three seats may run in parallel; the #283-before-step-4-bake sequencing rule is in both filings. No seat
+live at this pen.
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Carried from v33 unchanged: FHV Option A (≈190, #270 ruling comment) · future-leg blend hand-set (#270
+Carried from v34 unchanged: FHV Option A (≈190, #270 ruling comment) · future-leg blend hand-set (#270
 retirement comment) · year-0 bar = ELIGIBILITIES column (#271 A4/A6) · §1b retired by supersession (#271
 A4/A5) · 62+3 edit set sealed (#271 A12) · held-mechanism law (#271 A11) · tie-sensitive instruments barred
-(#271 A13) · Best-23 = A19 law (NOW LIVE via #274 item 2) · movers/era-succession law (#271 A15/A16; the
-single-slot limit is FIXED by #274 item 1; the balanced_board_md5 three-way disagreement stays hygiene's,
-now with a loud tripwire) · **G-Y0 dated exception STANDS**: 2.929% ruled / 3.035% guard HELD / 3.50%
-ceiling = hard FAIL; resolves at step 4's re-derivation [#271 A12/A13]. NEW this cycle, on #279:
-N1. **Currency = VOR (γ=1.0)** ["ruling is VOR. Lock it in"]. Echo of full adoption bounded: 21 rucks ≤29
-    points via the ruck-cap channel alone; converged curve fixed point 817c0f5a; signature is curve-sensitive
-    but γ-blind (the silent case = γ-only flip; RL_GAMMA enters the gates at step 4). [#279 currency ruling]
+(#271 A13) · Best-23 = A19 law (live via #274 item 2) · movers/era-succession law (#271 A15/A16; the
+single-slot limit FIXED by #274 item 1; the balanced_board_md5 three-way disagreement stays hygiene's, with
+its loud tripwire) · **G-Y0 dated exception STANDS until step 4 re-derives the bar honestly**: 2.929% ruled /
+3.035% held / 3.50% hard FAIL [#271 A12/A13]. The five #279 rulings:
+N1. **Currency = VOR (γ=1.0)** ["ruling is VOR. Lock it in"]. Adoption echo bounded: 21 rucks ≤29 points via
+    the ruck-cap channel alone; the signature is curve-sensitive but γ-blind — RL_GAMMA enters the gates at
+    step 4. [#279 currency ruling]
 N2. **Basis = STRUCTURAL, teaching cut at class ≤2022, par = PER-SEASON teaching.** Concluded careers vote
-    full (825), actives completed from concluded look-alikes busts-included (372 active, 301 completed),
-    prior = counted thin-stratum fallback ONLY — a WATCHED NUMBER at every rebuild (5.93% at ruling). The
-    99.975% prior-share finding is why. Truncation backtest: MAE 27/21/17% at depths 2/3/4, consistently
-    optimistic (+4.7% at kept depths) — THE WATCH-ITEM if the curve ever reads generous. [#279 basis ruling]
+    full; actives completed from concluded look-alikes busts-included; prior = counted thin-stratum fallback
+    ONLY — a WATCHED NUMBER at every rebuild (5.93% at ruling). Truncation backtest consistently optimistic
+    (+4.7% at kept depths) — THE WATCH-ITEM if the curve ever reads generous. [#279 basis ruling]
 N3. **Fitter = CONTROL** (shipped kernel + local-linear boundary correction, >1%-mass-off-domain rule).
-    Panel evidence: held-out accuracy tied (medAE 377.1–377.4); the boundary fix wins picks 46–64 (~9% medAE;
-    signed error +8.5 vs the kernel's +21.2); byte-identical to shipped at picks 3–50. Distribution-first =
-    the kernel by algebraic identity (2.3e-13); its DECOMPOSITION (establishment rate × value-if-established)
-    is ADOPTED as a standing report-only artifact beside the curve. [#279 fitter ruling]
-N4. **Pin policy = POOLED NUMERAIRE, in principle.** The hard-set was an asymmetric CEILING (owner-caught):
-    all four fitters put raw pick 2 above raw pick 1; the pin clipped ~140 measured points. Ruled design: PAVA
-    pools the head honestly, then ONE global factor s = 3000/pooled-head re-denominates the WHOLE economy —
-    players included — so pick 1 = 3000 is true, not decreed; conservation is s-invariant. CONFIRMATION
-    CONDITION at step 4: the head-anchor noise measurement (pooled band vs raw pick 1, across fitters+folds)
-    = the adoption-time churn; one owner word reverts to the hard pin if disqualifying. Player-side ×s
-    executes at step 4 ONLY. [#279 fitter+pin ruling comment]
-N5. **Pool ≈ tail equivalence (measured, this cycle):** under the ruled basis the pool level is 239.7
-    [211,268] n=1,005 while picks 60–64's cohort earned 233 — statistically the same asset. The old
-    "pool sits below the curve by construction" prose was an OLD-BASIS fact; the descent asserts bite over
-    1–64 only, so nothing halts; one clarifying line lands in the law text at step 4. Priced denominators:
-    MSD 303 n=44 · SSP 341 n=31 (STORE stream counts 106/52 are census, not pricing populations); medians ~0
-    everywhere — the interval is the finding. These feed the FHV re-denomination word at #279's adoption.
-
-## THE α STOP — the one open ruling of the shaping step
-Six full ladders committed (α = 1.0/0.8/0.6, tiered 0.6→0.8, linear 0.8→1.00, linear 0.9→1.05), rebuilt on
-the ruled design at the stop. Conservation at α=1: 0.998 — every downside setting slashes total pick value
-(S-3's own bar); 0.9→1.05 is the only schedule paying above the honest mean at the tail (1.047× at 64,
-conserving 0.988) — the owner's star-chance theory as a knob, both readings filed without a lean. Inter-
-schedule differences at picks 1–3 are inside noise (effn 35–38). Seam recommendation on record: α=1.0.
+    The distfirst DECOMPOSITION (establishment rate × value-if-established) is a standing report-only
+    artifact beside the curve. [#279 fitter ruling]
+N4. **Pin = POOLED NUMERAIRE, in principle.** PAVA pools the head honestly; ONE global factor
+    s = 3000/pooled-head re-denominates the WHOLE economy — players included, at step 4 only. The
+    CONFIRMATION CONDITION rides step 4 IN ITS HONEST FORM: passes on the ruled fitter (raw-pick-1 sd
+    56.10 → pooled-head sd 27.29) and would NOT survive as a general claim (quieter in 2 of 4 panel arms,
+    panel mean −3.6%; distfirst noisier — head-pool-size switching between folds); one owner word reverts
+    to the hard pin if the bake's churn measure disqualifies. [#279 fitter+pin ruling]
+N5. **Pool ≈ tail equivalence (measured):** under the ruled basis the pool level 239.7 [211,268] n=1,005 vs
+    picks 60–64's cohort 233 — statistically the same asset (the 233 is REGISTER-CARRIED with no committed
+    artifact behind it: step 4 re-measures the tail cohort with n and interval before the law line lands); the descent asserts bite over 1–64 only; one
+    law-text line lands at step 4. Priced denominators: MSD 303 n=44 · SSP 341 n=31 (STORE stream counts
+    106/52 are census, not pricing populations); medians ~0 — the interval is the finding. These feed the
+    FHV re-denomination word at #279's adoption. [#279 final segment report]
+N6. **α = 1.0** ["Agree with a=1. Let's lock it in"]. At the stop, α=1 IS the ruled curve: payload
+    `e69a3f38`, ladder 54,722, s = 0.977688 (pooled head 3068.46; recovered clipped mass 137.93 — expressed
+    as a UNIT change, not extra head units). Unit-adjusted conservation 0.9998 at α=1; every downside dial
+    taxes the pick class (−2.4 / −6.5 / −8.3 / −14.2%, softened by the pooled numeraire from
+    −4.2 / −8.2 / −11.9 / −17.7 hard-set); the upside lin 0.9→1.05 (1.0588× at pick 64, −0.2%) filed
+    without a lean, NOT taken. THE s-INVARIANCE READING (owner-confirmed, recorded in the ruling): the −2%
+    ladder fall is a unit change; the player-side ×s at step 4 preserves every pick-to-player relativity;
+    the ONE real relative move is the head vs picks 3–64 (~2.2% — the recovered clip, deliberate); until
+    step 4 lands, the new-unit ladder and the old-unit player values must NOT be read against each other.
+    SEAM CORRECTION on the pack, fix-by-addendum queued to step 4: "identical to three decimals" overstates
+    the α=1 conservation pair (0.9998 vs 0.9980, gap 0.0018; downside pairs ≤0.0008; the finding — dial
+    cost is a property of the dial, not the pin — stands). [#279 α ruling]
 
 ## THE QUEUE — everything fires on an owner word; seam pre-fire audit at each fire
-- **#279 step 4 (after the α word): PROPAGATION — the finale.** v0 surface refit under everything ruled ·
-  curve re-derived to coherence, G-Y0 re-set honestly · RL_GAMMA into the signature gates (closes the γ-only
-  blind spot) · the pool's ruled level ships · par per-season teaching (with the par_build LOUD-HALT
-  requirement — empty position group must halt naming the group, never IndexError; the #274 map found the
-  crash) · the player-side ×s rescale + the pin confirmation condition · the ruck-cap bite check (Stanley
-  812→610 exposure measured, binding unknown) · draftval stale comment fix · the law-text clarification
-  (digest N5). **REHEARSAL NORM APPLIES IN FULL:** first-of-a-kind runbook, rehearsed end-to-end in scratch
-  before any owner execution word. #279's adoption then re-denominates FHV (one word; evidence in digest N5).
-- **#283 — ownership single-source fix (FILED, ready):** store becomes truth, sidecar becomes generated
-  mirror, oracle unchanged; the owner's July-29 CSV (18 moves, currently NOT on the board) is the acceptance
-  fixture. The read-back must resolve the store-identity ripple lane (the crux; it's why #232 dodged the store).
-- **#275 — hygiene: UNBLOCKED** (all-four-green baseline now exists). Carries the balanced_board_md5 anchor
-  ruling and the RETENTION LAW (files cited by sealed records are protected — the adoption-review and item279
-  evidence trees are now in that class).
+- **#279 STEP 4 — PROPAGATION, the finale. NEXT; opener FILED (https://github.com/lukemcalister10/afl-rl-engine/issues/279#issuecomment-5132497378); the opener is the directive.**
+  Fresh execution seat opens on the owner's paste. Scope: v0 surface refit under everything ruled (reads the
+  ADOPTED store's per-season positions — per-position bust reality enters via the structural completions and
+  per-season par teaching; movers from that channel attributed like any other) · curve re-derived to
+  coherence (reference `e69a3f38`; recompute s at the bake; drift attributed, never silent) · G-Y0
+  re-derived honestly (the dated exception resolves) · RL_GAMMA into the signature gates (prove it can
+  fail) · the pool's ruled level ships (levels ×s: POOL 234.3 [206.4, 262.3] n=1,005 · MSD 296.4 n=44 ·
+  SSP 333.4 n=31) · par per-season with the par_build LOUD-HALT (empty group halts NAMING the group, never
+  IndexError) · player-side ×s + the pin confirmation condition (honest form, N4) · ruck-cap bite check
+  (Stanley 812→610 exposure, binding unknown; report only) · draftval stale comment fix · the pool≈tail
+  law-text line (N5) · the "three decimals" correction by addendum (N6). **REHEARSAL NORM IN FULL:**
+  runbook first, rehearsed END-TO-END in scratch (unbakeable by construction — RL_V0SURF_REFIT is on the
+  must-unset list) before any owner execution word; the seam audits the runbook pre-fire. Deliverable: an
+  attributed candidate beside the shipped state; a mover with no named cause is a HALT-and-report finding.
+  Adoption is the owner's separate act; adoption then re-denominates FHV (one word; evidence N5).
+- **#283 — ownership single-source fix: FIRED 2026-07-30 (owner word).** Store becomes truth, sidecar becomes
+  generated mirror, oracle unchanged; the owner's July-29 CSV (18 moves, currently NOT on the board) is the
+  acceptance fixture. Pre-fire audit PASSED on-issue; seat opener filed; seat opens on the owner's paste.
+  SEQUENCING RULE (binding): the store-write LANDS before step 4's rehearsal bake pins store identity, or
+  holds for post-adoption. The read-back must resolve the store-identity ripple lane (the crux; it's why
+  #232 dodged the store) and state the landing estimate vs step 4's bake.
+- **#275 — hygiene: FIRED 2026-07-30 (owner word).** Pre-fire audit PASSED on-issue with a BINDING SCOPE
+  AMENDMENT (ui/screenshots/issue_274 + docs/evidence/adoption_review_2026-07-30 + session_2026-07-29-onward
+  are MUST-KEEP by name — sealed-record-cited = retention-protected, charter D2); seat opener filed; seat
+  opens on the owner's paste. Deletions only; carries the balanced_board_md5 three-way docket (resolve or
+  re-docket, never silent-drop).
 - **#276 — clubs tab** (Q5/Q6 collectibles + optional FHV word at fire) · **#270 — referee** opens after #279
   delivers · #146 never as written · #139 feeds the others (item 20 = the retired replay's successor) · v1.1
   amendment read still outstanding (owner).
 
 ## OWNER ACTS OUTSTANDING
-The α word (then step 4 fires on a second word after rehearsal) · fire words #283/#275/#276 · the v1.1 read ·
-branch-delete clicks as they arise.
+Open the step-4 seat (paste the opener) · after rehearsal passes: the execution word · later: the adoption
+word + the FHV re-denomination word · fire words #283/#275/#276 · the v1.1 read · branch-delete clicks as they arise (the #274
+close click is DONE — closed by owner 2026-07-30 14:17Z).
 
 ## RUNNING THIS SEAT WELL — owner-endorsed law (charter D3/D4 + both cycles' additions)
 - Answer the owner HERE, completely, FIRST; filings are durable copies, never the reply. Plain sentences.
-  His casual questions are load-bearing QC — this cycle they caught the frozen-ladder artifact in the γ
-  evidence, the pick-1 ceiling, and the pool≈tail collision. Treat every one as an instrument.
+  His casual questions are load-bearing QC — they caught the frozen-ladder artifact, the pick-1 ceiling, the
+  pool≈tail collision, and (this pen) the s-invariance reading and the store-positional attribution channel.
+  Treat every one as an instrument.
 - Cost-estimate norm before commissioning builds · rehearsal norm for first-of-a-kind lanes · subagents Opus
   by default, one-writer discipline, screen by deterministic re-run · spill API payloads to files · register
   by window only (the header is ONE ~450KB line) · every count NAMES ITS DENOMINATOR (store-census vs priced-
-  population bit twice this cycle) · prove every instrument can fail BEFORE trusting it (the judge was proven
-  able to fail before any fitter was scored; the emit scripts now HALT on missing whitelist vars — silent
-  defaulting is one defect class) · **NEVER present numbers not read from a committed artifact — the seam
-  itself fabricated two interpolated table columns this cycle, self-caught mid-message; read-verbatim is the
-  only guard** · medAE flatters low curves where medians are ~0: judge means with mean-targeting instruments
-  (signed error / RMSE) alongside · a held-out judge refuses mismatched fold fingerprints.
+  population bit twice) · prove every instrument can fail BEFORE trusting it · **NEVER present numbers not
+  read from a committed artifact — a prior seam fabricated two interpolated table columns, self-caught;
+  read-verbatim is the only guard** · medAE flatters low curves where medians are ~0: judge means with
+  mean-targeting instruments (signed error / RMSE) alongside · a held-out judge refuses mismatched fold
+  fingerprints · REVIEW LANES by owner word 2026-07-30: Opus-subagent cold-screens of seam work are
+  standing-approved, AND the seam may review its own work when the owner asks for a double-check (pen
+  verifications included) — self-review on owner request is a permitted instrument, not a barred act; the
+  charter's implementer≠reviewer taint still governs seat work products and cold reviews.
 - One pen per boundary, batched. Hand-backs: re-run the 2–3 measurements that decide; full content-level
   verification at final seals (the #282 seal pattern: fence audit on the whole diff, CI via API not summary,
   byte-level pin checks). Post-rebase-merge: re-verify main by CONTENT (rebase rewrites SHAs).
@@ -208,13 +227,15 @@ branch-delete clicks as they arise.
 cp312 via RL_VENV (do not weaken; container python3 is 3.11 — always the pinned interpreter) · git fetch
 --unshallow before ancestry claims · no parallel engine builds without seam coordination · detached-worktree
 discipline per #271 A13 (env -i with an EXPLICIT whitelist — the env -i path-stripping incident is the
-cautionary tale) · CRLF in the owner's CSV lane is a known Excel artifact, never "fixed" · GitHub rebase-merge
-rewrites SHAs: seal by content.
+cautionary tale; loaders assert nonempty) · CRLF in the owner's CSV lane is a known Excel artifact, never
+"fixed" · GitHub rebase-merge rewrites SHAs: seal by content.
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip vs this pen (expect the v542 pen commit or a descendant);
-   open PRs (expect none, or the v542 pen PR itself pre-merge); the issue map above; all-four-green CI.
-2. The #279 seat holds at the α stop with ~630k context: its step-3 segment ends at the α ruling — verify its
-   final hand-back against the committed pack, then it rotates; STEP 4 GETS A FRESH SEAT with an opener built
-   from #279's body + the four ruling comments + this Part B's step-4 queue entry.
+1. Verify live state with your own commands: main tip vs this pen (expect the v543 pen commit or a
+   descendant); open PRs (expect none, or this pen's PR pre-merge); the issue map (#279 #283 #276 #275
+   #270 #269 #146 #139 open · #271 #274 closed); all four
+   workflows green at the tip.
+2. The step-4 seat: its READ-BACK lands as a #279 comment — the seam pre-fire audit happens there BEFORE the
+   owner fires anything. When its rehearsal hand-back arrives, verify the seam way: re-run the deciding
+   figures from committed artifacts, never from prose.
 3. Read-back to the owner in his channel; hold for confirmation before any push.
