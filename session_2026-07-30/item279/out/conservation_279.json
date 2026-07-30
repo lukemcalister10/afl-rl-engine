@@ -1,0 +1,107 @@
+{
+ "honest_mean_production_1_64": 56198.1,
+ "per_fitter": {
+  "control": {
+   "conservation": 0.9934,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    12,
+    17,
+    18,
+    19
+   ],
+   "head_1_3": [
+    3000,
+    2999,
+    2952
+   ],
+   "ladder_total": 55828,
+   "n_forced": 8,
+   "payload": "7cb36a2c",
+   "pick_class_vs_numeraire": 17.6093,
+   "raw_viol": 6,
+   "tail_57_64": [
+    307,
+    226
+   ]
+  },
+  "distfirst": {
+   "conservation": 0.998,
+   "forced_picks": [
+    2,
+    7,
+    8,
+    11,
+    12,
+    17,
+    18,
+    19
+   ],
+   "head_1_3": [
+    3000,
+    2999,
+    2952
+   ],
+   "ladder_total": 56088,
+   "n_forced": 8,
+   "payload": "4fc40e91",
+   "pick_class_vs_numeraire": 17.696,
+   "raw_viol": 6,
+   "tail_57_64": [
+    319,
+    279
+   ]
+  },
+  "loclin": {
+   "conservation": 1.0026,
+   "forced_picks": [
+    2,
+    3,
+    7,
+    8,
+    11,
+    12,
+    17,
+    18,
+    19
+   ],
+   "head_1_3": [
+    3000,
+    2999,
+    2998
+   ],
+   "ladder_total": 56345,
+   "n_forced": 9,
+   "payload": "2e44ad31",
+   "pick_class_vs_numeraire": 17.7817,
+   "raw_viol": 7,
+   "tail_57_64": [
+    307,
+    226
+   ]
+  },
+  "powerspine": {
+   "conservation": 1.0005,
+   "forced_picks": [
+    2
+   ],
+   "head_1_3": [
+    3000,
+    2999,
+    2952
+   ],
+   "ladder_total": 56226,
+   "n_forced": 1,
+   "payload": "29292004",
+   "pick_class_vs_numeraire": 17.742,
+   "raw_viol": 0,
+   "tail_57_64": [
+    312,
+    256
+   ]
+  }
+ }
+}

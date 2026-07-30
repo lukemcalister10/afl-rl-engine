@@ -1,0 +1,144 @@
+{
+ "DENOMINATOR_RECONCILIATION": {
+  "MSD": {
+   "pool_rows_under_ruled_class_cut": 44,
+   "pool_rows_window_2004_2024": 72,
+   "store_level_all_rows": 106
+  },
+  "SSP": {
+   "pool_rows_under_ruled_class_cut": 31,
+   "pool_rows_window_2004_2024": 43,
+   "store_level_all_rows": 52
+  },
+  "consequence": "the ruled MSD level rests on 44 rows and the ruled SSP level on 31 rows. Both 95% intervals below are correspondingly wide, and in both populations the MEDIAN structural value is near zero because roughly half never establish \u2014 so the level is a mean carried by a minority of the population. Read the interval, not the mean.",
+  "why": "the commissioning brief named MSD n=106 and SSP n=52. Those are the STORE-LEVEL entry-stream counts across all 2,651 rows (they match #279 amendment C3 exactly). They are NOT the n the ruled basis prices these levels on, and the difference is large enough that the uncertainty is WIDER than the brief assumed, not narrower."
+ },
+ "basis": {
+  "alpha": 1.0,
+  "basis": "STRUCTURAL completion",
+  "busts": "entered at ZERO",
+  "class_cut": 2022,
+  "gamma": "1.0 VOR",
+  "store_md5": "6b9d00a7",
+  "v0surf_sig": "b781ed253bff"
+ },
+ "completion_table": {
+  "built_from": "concluded POOL rows",
+  "n_strata": 95,
+  "n_strata_usable_at_min_20": 45
+ },
+ "disclosed_choice": "the actuarial completion table is built from concluded POOL rows and SHARED across the pool subsets. Within-stream tables at n=106 (MSD) and n=52 (SSP) would leave almost every active on the model prior, making the \"completion\" a prior in disguise. Cost: MSD/SSP actives are completed against pool-wide look-alikes, not stream-mates.",
+ "levels": {
+  "MSD": {
+   "FALLBACK_SHARE": {
+    "of": 44,
+    "rows": 1,
+    "share_pct": 2.27
+   },
+   "LEVEL_honest_mean_busts_at_zero": 303.2,
+   "UNCERTAINTY_NOTE": "SMALL SAMPLE \u2014 this level carries WIDE uncertainty and must not be read as a point estimate. The 95% interval on the mean is stated beside it; the relative standard error is 36.0%. Treat the interval, not the mean, as the finding.",
+   "by_entry_stream": {
+    "MSD": 44
+   },
+   "dispersion": {
+    "approx_95pct_interval_on_the_mean": [
+     89.0,
+     517.4
+    ],
+    "relative_se_pct": 36.0,
+    "sd": 724.9,
+    "standard_error_of_mean": 109.3
+   },
+   "median": 3.3,
+   "n": 44,
+   "never_established": 22,
+   "never_established_pct": 50.0,
+   "population": "MSD (mid-season draft)",
+   "provenance": {
+    "completed": 13,
+    "concluded_realised": 30,
+    "prior_fallback_thin": 1
+   }
+  },
+  "POOL": {
+   "FALLBACK_SHARE": {
+    "of": 1005,
+    "rows": 61,
+    "share_pct": 6.07
+   },
+   "LEVEL_honest_mean_busts_at_zero": 239.7,
+   "by_entry_stream": {
+    "IRE": 47,
+    "MSD": 44,
+    "ND": 113,
+    "PDA": 43,
+    "PDN": 33,
+    "PDS": 21,
+    "RD": 624,
+    "SSP": 31,
+    "UNR": 49
+   },
+   "dispersion": {
+    "approx_95pct_interval_on_the_mean": [
+     211.1,
+     268.2
+    ],
+    "relative_se_pct": 6.1,
+    "sd": 461.9,
+    "standard_error_of_mean": 14.6
+   },
+   "median": 0.0,
+   "n": 1005,
+   "never_established": 569,
+   "never_established_pct": 56.62,
+   "population": "POOL (all pool rows, <=2022)",
+   "provenance": {
+    "completed": 56,
+    "concluded_realised": 888,
+    "prior_fallback_thin": 61
+   }
+  },
+  "SSP": {
+   "FALLBACK_SHARE": {
+    "of": 31,
+    "rows": 2,
+    "share_pct": 6.45
+   },
+   "LEVEL_honest_mean_busts_at_zero": 341.0,
+   "UNCERTAINTY_NOTE": "SMALL SAMPLE \u2014 this level carries WIDE uncertainty and must not be read as a point estimate. The 95% interval on the mean is stated beside it; the relative standard error is 38.5%. Treat the interval, not the mean, as the finding.",
+   "by_entry_stream": {
+    "SSP": 31
+   },
+   "dispersion": {
+    "approx_95pct_interval_on_the_mean": [
+     83.6,
+     598.4
+    ],
+    "relative_se_pct": 38.5,
+    "sd": 731.2,
+    "standard_error_of_mean": 131.3
+   },
+   "median": 0.5,
+   "n": 31,
+   "never_established": 14,
+   "never_established_pct": 45.16,
+   "population": "SSP (supplemental selection period)",
+   "provenance": {
+    "completed": 9,
+    "concluded_realised": 20,
+    "prior_fallback_thin": 2
+   }
+  }
+ },
+ "nonvacuity": {
+  "busts_actually_enter_at_zero": "never_established counts are reported per population and are non-zero",
+  "levels_are_distinct": true,
+  "provenance_sums_to_population": true,
+  "small_n_flagged": true
+ },
+ "reference": {
+  "note": "the adopted artifact pvc_curve_v2.json carries pool_value 299, derived on the PRE-ruling basis and the 2004-2024 window; it is shown only for orientation and is not comparable line-for-line to the levels above",
+  "shipped_pool_value_in_adopted_curve": 299
+ },
+ "status": "REPORT-ONLY. These levels feed the eventual FHV re-denomination word at adoption; nothing is ruled today."
+}

@@ -1,0 +1,8637 @@
+{
+ "alpha": 1.0,
+ "basis": "structural, class cut 2022, VOR",
+ "can_fail_proof": {
+  "B_in_sane_range_0p2_to_3p0_0_or_1": 1,
+  "B_sane_range_hi": 3.0,
+  "B_sane_range_lo": 0.2,
+  "B_zeros_dropped_NOT_USED": 0.634555,
+  "B_zeros_kept_USED": 0.974034,
+  "IS_CONSTANT_across_picks_0_or_1": 0,
+  "P1_B_after": 0.974034,
+  "P1_B_before": 0.974034,
+  "P1_after_pick10": 1897.909,
+  "P1_after_pick32": 807.833,
+  "P1_after_pick64": 319.936,
+  "P1_before_pick10": 1518.328,
+  "P1_before_pick32": 646.266,
+  "P1_before_pick64": 255.949,
+  "P1_max_abs_change": 761.599,
+  "P1_median_after_over_before": 1.25,
+  "P1_scale_all_values_by": 1.25,
+  "P2_B_after": 1.493965,
+  "P2_B_before": 0.974034,
+  "P2_B_rose_0_or_1": 1,
+  "P2_after_pick40": 277.816,
+  "P2_after_pick64": 122.328,
+  "P2_before_pick40": 547.437,
+  "P2_before_pick64": 255.949,
+  "P2_halve_values_at_picks_33_to_64": 0.5,
+  "P2_max_abs_change": 270.104,
+  "P3_add_to_values_at_picks_1_to_10": 800.0,
+  "P3_after_pick1": 3846.303,
+  "P3_after_pick10": 2031.5,
+  "P3_after_pick64": 254.725,
+  "P3_before_pick1": 3046.397,
+  "P3_before_pick10": 1518.328,
+  "P3_before_pick64": 255.949,
+  "P3_max_abs_change": 806.95,
+  "RESPONDS_to_all_three_perturbations_0_or_1": 1,
+  "break_point_pick": 8,
+  "dropping_zeros_would_raise_spine40_by_pct": 48.247,
+  "fitted_coefficient_A": 16789.9591,
+  "fitted_exponent_B": 0.974034,
+  "n_distinct_raw_values": 64,
+  "n_picks": 64,
+  "n_zero_value_rows": 265,
+  "raw_max": 3046.397,
+  "raw_min": 255.949,
+  "raw_pick1_over_pick64_ratio": 11.9024,
+  "raw_spread_max_minus_min": 2790.448,
+  "raw_std_across_picks": 671.812,
+  "residual_bandwidth_used_max": 0.6,
+  "residual_bandwidth_used_min": 0.1,
+  "spine_pick40_zeros_dropped_NOT_USED": 684.817,
+  "spine_pick40_zeros_kept_USED": 461.943,
+  "spine_wls_r2_on_log_means": 0.78269
+ },
+ "description": "power-law spine A*pick^-B (WLS of log(per-pick mean) on log(pick), the 265 zero-value rows kept at full weight inside those means so the log of a zero is never taken) fitted on the SUB-RANGE picks 8-64 with BREAK POINT = 8 (first pick where the shipped bandwidth policy sits on its floor) and held FLAT at spine(8) below the break rather than extrapolated, plus additive residuals smoothed with the shipped bandwidth policy \u2014 RESIDUAL BANDWIDTH h(p) in log(pick) units, grown from hmin=0.10 in 0.02 steps until nmin=35 effective rows, capped hmax=0.60, realised as h=0.60/0.36/0.26/0.20/0.16/0.14/0.12 at picks 1-7 and h=0.10 at every pick 8-64 \u2014 then recombined, clipped at 0 and forced monotone non-increasing (PAVA on effective-n weights, then a 1.0-unit strict descent over plateaus) before the harness's pin; alpha=1, no CE aggregator",
+ "diagnostics": {
+  "A": 16789.95905671899,
+  "A_if_zero_rows_dropped_NOT_USED": 7114.9222,
+  "A_reported": 16789.9591,
+  "B": 0.974033968807139,
+  "B_if_zero_rows_dropped_NOT_USED": 0.634555,
+  "B_reported": 0.974034,
+  "break_point_pick": 8,
+  "curve_at": {
+   "1": 3046.397,
+   "10": 1518.328,
+   "2": 3045.397,
+   "24": 831.908,
+   "3": 2952.084,
+   "32": 646.266,
+   "40": 547.437,
+   "50": 377.139,
+   "57": 311.503,
+   "6": 1649.591,
+   "64": 255.949,
+   "8": 1647.591
+  },
+  "curve_max": 3046.397,
+  "curve_min": 255.949,
+  "curve_spread_max_minus_min": 2790.448,
+  "extrapolation_overshoot_at_pick1_multiple": 5.765,
+  "first_pick_at_bandwidth_floor": 8,
+  "fold_sized_80pct_A": 16660.073,
+  "fold_sized_80pct_B": 0.968357,
+  "fold_sized_80pct_bandwidth_at": {
+   "1": 0.6,
+   "10": 0.1,
+   "11": 0.1,
+   "2": 0.46,
+   "3": 0.32,
+   "32": 0.1,
+   "4": 0.24,
+   "5": 0.2,
+   "6": 0.16,
+   "64": 0.1,
+   "7": 0.14,
+   "8": 0.14,
+   "9": 0.12
+  },
+  "fold_sized_80pct_first_pick_at_bandwidth_floor": 10,
+  "fold_sized_80pct_n_rows": 957,
+  "forced_by_descent_enforcement": [
+   2
+  ],
+  "n_bins_all_zero_excluded": 0,
+  "n_forced": 1,
+  "n_pava_plateau_ties": 7,
+  "n_pick_bins": 57,
+  "n_picks_at_bandwidth_floor": 57,
+  "n_picks_clipped_at_zero": 0,
+  "n_picks_given_plateau_descent": 8,
+  "n_picks_moved_by_pava": 11,
+  "n_rows_in_spine_range": 1065,
+  "n_rows_trained_on": 1197,
+  "n_zero_value_rows_trained_on": 265,
+  "observed_mean_value_at_pick1": 2912.555,
+  "pre_pava_inversions": 6,
+  "raw_at": {
+   "1": 3046.4,
+   "10": 1518.33,
+   "2": 3045.4,
+   "24": 831.91,
+   "3": 2952.08,
+   "32": 646.27,
+   "40": 547.44,
+   "50": 377.14,
+   "57": 311.5,
+   "64": 255.95
+  },
+  "raw_monotone_violations": 0,
+  "raw_pick1_pre_pin": 3046.4,
+  "residual_bandwidth_at": {
+   "1": 0.6,
+   "10": 0.1,
+   "2": 0.36,
+   "24": 0.1,
+   "3": 0.26,
+   "32": 0.1,
+   "4": 0.2,
+   "40": 0.1,
+   "5": 0.16,
+   "50": 0.1,
+   "57": 0.1,
+   "6": 0.14,
+   "64": 0.1,
+   "7": 0.12,
+   "8": 0.1
+  },
+  "residual_bandwidth_hmax": 0.6,
+  "residual_bandwidth_hmin": 0.1,
+  "residual_bandwidth_nmin": 35.0,
+  "residual_bandwidth_policy": "H.bandwidth_at: hmin=0.10 -> hmax=0.60 in 0.02 steps until effective n >= 35",
+  "residual_bandwidth_used_max": 0.6,
+  "residual_bandwidth_used_min": 0.1,
+  "residual_mean_abs_at_pick": 129.7932,
+  "spine40_if_zeros_dropped_NOT_USED": 684.817,
+  "spine40_kept_zeros": 461.943,
+  "spine_at_break": 2215.181,
+  "spine_extension_below_break": "held flat at spine(8)",
+  "spine_extrapolated_to_pick1_not_used": 16789.959,
+  "spine_range": "8-64",
+  "strict_descent_gap_value_units": 1.0,
+  "wls_r2_on_log_means": 0.78269,
+  "wls_rmse_log_units": 0.284357,
+  "zero_row_handling": "265-style zero-value rows retained at full weight inside the per-pick arithmetic means; log is taken of the mean, never of a row"
+ },
+ "fitter": "powerspine",
+ "fold_predictions": [
+  {
+   "actual": 3071.768,
+   "fold": 0,
+   "key": "george-wardlaw",
+   "pick": 4,
+   "predicted": 2404.4418
+  },
+  {
+   "actual": 1131.6319,
+   "fold": 0,
+   "key": "jhye-clark",
+   "pick": 8,
+   "predicted": 1683.3186
+  },
+  {
+   "actual": 2367.088,
+   "fold": 0,
+   "key": "reuben-ginbey",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 1430.4425,
+   "fold": 0,
+   "key": "joshua-weddle",
+   "pick": 18,
+   "predicted": 1034.8378
+  },
+  {
+   "actual": 377.0246,
+   "fold": 0,
+   "key": "jacob-konstanty",
+   "pick": 20,
+   "predicted": 1032.8378
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "cooper-vickery",
+   "pick": 27,
+   "predicted": 807.4419
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "jakob-ryan",
+   "pick": 28,
+   "predicted": 788.7922
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "hugh-davies",
+   "pick": 33,
+   "predicted": 652.2162
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "tom-mccallum",
+   "pick": 36,
+   "predicted": 571.7394
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "caleb-mitchell",
+   "pick": 40,
+   "predicted": 540.9308
+  },
+  {
+   "actual": 349.955,
+   "fold": 0,
+   "key": "tom-emmett",
+   "pick": 41,
+   "predicted": 534.6031
+  },
+  {
+   "actual": 387.5149,
+   "fold": 0,
+   "key": "billy-dowling",
+   "pick": 43,
+   "predicted": 509.488
+  },
+  {
+   "actual": 340.406,
+   "fold": 0,
+   "key": "isaac-keeler",
+   "pick": 44,
+   "predicted": 490.8612
+  },
+  {
+   "actual": 298.1696,
+   "fold": 0,
+   "key": "cooper-harvey",
+   "pick": 56,
+   "predicted": 312.7469
+  },
+  {
+   "actual": 3328.9557,
+   "fold": 0,
+   "key": "sam-darcy",
+   "pick": 2,
+   "predicted": 2901.8832
+  },
+  {
+   "actual": 2235.7575,
+   "fold": 0,
+   "key": "mac-andrew",
+   "pick": 5,
+   "predicted": 2005.1223
+  },
+  {
+   "actual": 1061.8224,
+   "fold": 0,
+   "key": "neil-erasmus",
+   "pick": 10,
+   "predicted": 1480.2978
+  },
+  {
+   "actual": 5453.0033,
+   "fold": 0,
+   "key": "nasiah-wanganeen-milera",
+   "pick": 11,
+   "predicted": 1436.3041
+  },
+  {
+   "actual": 628.8696,
+   "fold": 0,
+   "key": "kai-lohmann",
+   "pick": 20,
+   "predicted": 1032.8378
+  },
+  {
+   "actual": 284.7246,
+   "fold": 0,
+   "key": "josh-goater",
+   "pick": 22,
+   "predicted": 948.8085
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "toby-conway",
+   "pick": 24,
+   "predicted": 871.1597
+  },
+  {
+   "actual": 253.9205,
+   "fold": 0,
+   "key": "jesse-motlop",
+   "pick": 27,
+   "predicted": 807.4419
+  },
+  {
+   "actual": 1278.1963,
+   "fold": 0,
+   "key": "tyler-sonsie",
+   "pick": 28,
+   "predicted": 788.7922
+  },
+  {
+   "actual": 707.9688,
+   "fold": 0,
+   "key": "sam-banks",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 435.9286,
+   "fold": 0,
+   "key": "judson-clarke",
+   "pick": 30,
+   "predicted": 744.5469
+  },
+  {
+   "actual": 1031.7922,
+   "fold": 0,
+   "key": "matthew-roberts",
+   "pick": 34,
+   "predicted": 620.5416
+  },
+  {
+   "actual": 475.5046,
+   "fold": 0,
+   "key": "rhett-bazzo",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 258.7166,
+   "fold": 0,
+   "key": "blake-howes",
+   "pick": 39,
+   "predicted": 544.9777
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "garrett-mcdonagh",
+   "pick": 50,
+   "predicted": 372.3224
+  },
+  {
+   "actual": 224.8912,
+   "fold": 0,
+   "key": "hugh-jackson",
+   "pick": 55,
+   "predicted": 320.6767
+  },
+  {
+   "actual": 800.6106,
+   "fold": 0,
+   "key": "dante-visentini",
+   "pick": 56,
+   "predicted": 312.7469
+  },
+  {
+   "actual": 568.5548,
+   "fold": 0,
+   "key": "jack-williams",
+   "pick": 57,
+   "predicted": 305.0245
+  },
+  {
+   "actual": 81.9833,
+   "fold": 0,
+   "key": "greg-clark",
+   "pick": 62,
+   "predicted": 269.4572
+  },
+  {
+   "actual": 789.5975,
+   "fold": 0,
+   "key": "archie-perkins",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 848.5728,
+   "fold": 0,
+   "key": "heath-chapman",
+   "pick": 14,
+   "predicted": 1190.1786
+  },
+  {
+   "actual": 272.879,
+   "fold": 0,
+   "key": "conor-stone",
+   "pick": 15,
+   "predicted": 1044.2634
+  },
+  {
+   "actual": 289.3385,
+   "fold": 0,
+   "key": "reef-mcinnes",
+   "pick": 24,
+   "predicted": 871.1597
+  },
+  {
+   "actual": 1719.9643,
+   "fold": 0,
+   "key": "sam-berry",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 326.9333,
+   "fold": 0,
+   "key": "seamus-mitchell",
+   "pick": 31,
+   "predicted": 716.5489
+  },
+  {
+   "actual": 479.1048,
+   "fold": 0,
+   "key": "charlie-lazzaro",
+   "pick": 38,
+   "predicted": 549.4953
+  },
+  {
+   "actual": 170.7466,
+   "fold": 0,
+   "key": "harry-sharp",
+   "pick": 45,
+   "predicted": 469.7027
+  },
+  {
+   "actual": 97.5,
+   "fold": 0,
+   "key": "tom-highmore",
+   "pick": 47,
+   "predicted": 425.8897
+  },
+  {
+   "actual": 195.9594,
+   "fold": 0,
+   "key": "tyler-brockman",
+   "pick": 48,
+   "predicted": 405.7649
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "cody-brand",
+   "pick": 55,
+   "predicted": 320.6767
+  },
+  {
+   "actual": 3028.5483,
+   "fold": 0,
+   "key": "lachlan-ash",
+   "pick": 4,
+   "predicted": 2404.4418
+  },
+  {
+   "actual": 949.3569,
+   "fold": 0,
+   "key": "dylan-stephens",
+   "pick": 5,
+   "predicted": 2005.1223
+  },
+  {
+   "actual": 1001.0,
+   "fold": 0,
+   "key": "fischer-mcasey",
+   "pick": 6,
+   "predicted": 1685.3186
+  },
+  {
+   "actual": 833.3141,
+   "fold": 0,
+   "key": "brodie-kemp",
+   "pick": 17,
+   "predicted": 1035.8378
+  },
+  {
+   "actual": 1347.5076,
+   "fold": 0,
+   "key": "mitch-georgiades",
+   "pick": 18,
+   "predicted": 1034.8378
+  },
+  {
+   "actual": 438.0111,
+   "fold": 0,
+   "key": "deven-robertson",
+   "pick": 22,
+   "predicted": 948.8085
+  },
+  {
+   "actual": 196.5715,
+   "fold": 0,
+   "key": "jackson-mead",
+   "pick": 25,
+   "predicted": 846.7066
+  },
+  {
+   "actual": 540.295,
+   "fold": 0,
+   "key": "harrison-jones",
+   "pick": 30,
+   "predicted": 744.5469
+  },
+  {
+   "actual": 3131.1768,
+   "fold": 0,
+   "key": "chad-warner",
+   "pick": 38,
+   "predicted": 549.4953
+  },
+  {
+   "actual": 504.2309,
+   "fold": 0,
+   "key": "trent-bianco",
+   "pick": 44,
+   "predicted": 490.8612
+  },
+  {
+   "actual": 226.1889,
+   "fold": 0,
+   "key": "ryan-byrnes",
+   "pick": 51,
+   "predicted": 359.08
+  },
+  {
+   "actual": 345.049,
+   "fold": 0,
+   "key": "trey-ruscoe",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 54.2454,
+   "fold": 0,
+   "key": "jy-farrar",
+   "pick": 59,
+   "predicted": 290.0616
+  },
+  {
+   "actual": 2507.8343,
+   "fold": 0,
+   "key": "izak-rankine",
+   "pick": 3,
+   "predicted": 2762.1848
+  },
+  {
+   "actual": 335.3529,
+   "fold": 0,
+   "key": "chayce-jones",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 4844.1253,
+   "fold": 0,
+   "key": "zak-butters",
+   "pick": 12,
+   "predicted": 1435.3041
+  },
+  {
+   "actual": 2641.3991,
+   "fold": 0,
+   "key": "jordan-clark",
+   "pick": 15,
+   "predicted": 1044.2634
+  },
+  {
+   "actual": 611.1087,
+   "fold": 0,
+   "key": "edward-mchenry",
+   "pick": 16,
+   "predicted": 1036.8378
+  },
+  {
+   "actual": 707.0401,
+   "fold": 0,
+   "key": "xavier-o-neill",
+   "pick": 28,
+   "predicted": 788.7922
+  },
+  {
+   "actual": 291.8392,
+   "fold": 0,
+   "key": "will-hamill",
+   "pick": 30,
+   "predicted": 744.5469
+  },
+  {
+   "actual": 284.76,
+   "fold": 0,
+   "key": "luke-foley",
+   "pick": 31,
+   "predicted": 716.5489
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "luke-valente",
+   "pick": 32,
+   "predicted": 685.1262
+  },
+  {
+   "actual": 1202.0442,
+   "fold": 0,
+   "key": "bailey-williams-wc",
+   "pick": 35,
+   "predicted": 592.9794
+  },
+  {
+   "actual": 365.0613,
+   "fold": 0,
+   "key": "jack-bytel",
+   "pick": 41,
+   "predicted": 534.6031
+  },
+  {
+   "actual": 625.4012,
+   "fold": 0,
+   "key": "nick-hind",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 416.5072,
+   "fold": 0,
+   "key": "lachlan-schultz",
+   "pick": 57,
+   "predicted": 305.0245
+  },
+  {
+   "actual": 540.8707,
+   "fold": 0,
+   "key": "lachlan-sholl",
+   "pick": 64,
+   "predicted": 257.6101
+  },
+  {
+   "actual": 242.6528,
+   "fold": 0,
+   "key": "liam-ryan",
+   "pick": 26,
+   "predicted": 826.2265
+  },
+  {
+   "actual": 1008.4054,
+   "fold": 0,
+   "key": "brent-daniels",
+   "pick": 27,
+   "predicted": 807.4419
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "oscar-clavarino",
+   "pick": 35,
+   "predicted": 592.9794
+  },
+  {
+   "actual": 1085.0,
+   "fold": 0,
+   "key": "brayden-crossley",
+   "pick": 52,
+   "predicted": 347.7465
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "ryley-stoddart",
+   "pick": 53,
+   "predicted": 337.8585
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "jake-patmore",
+   "pick": 58,
+   "predicted": 297.458
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "dom-barry",
+   "pick": 33,
+   "predicted": 652.2162
+  },
+  {
+   "actual": 237.9108,
+   "fold": 0,
+   "key": "kyron-hayden",
+   "pick": 61,
+   "predicted": 275.9975
+  },
+  {
+   "actual": 1430.3228,
+   "fold": 0,
+   "key": "will-brodie",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 861.2031,
+   "fold": 0,
+   "key": "todd-marshall",
+   "pick": 16,
+   "predicted": 1036.8378
+  },
+  {
+   "actual": 1067.3053,
+   "fold": 0,
+   "key": "sam-powell-pepper",
+   "pick": 18,
+   "predicted": 1034.8378
+  },
+  {
+   "actual": 2714.7871,
+   "fold": 0,
+   "key": "alex-witherden",
+   "pick": 23,
+   "predicted": 903.8652
+  },
+  {
+   "actual": 1643.4303,
+   "fold": 0,
+   "key": "brandan-parfitt",
+   "pick": 26,
+   "predicted": 826.2265
+  },
+  {
+   "actual": 1248.9575,
+   "fold": 0,
+   "key": "patrick-lipinski",
+   "pick": 28,
+   "predicted": 788.7922
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "joe-atley",
+   "pick": 32,
+   "predicted": 685.1262
+  },
+  {
+   "actual": 264.5693,
+   "fold": 0,
+   "key": "josh-rotham",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 1651.9645,
+   "fold": 0,
+   "key": "brennan-cox",
+   "pick": 41,
+   "predicted": 534.6031
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "kobe-mutch",
+   "pick": 42,
+   "predicted": 524.2758
+  },
+  {
+   "actual": 694.0,
+   "fold": 0,
+   "key": "harrison-macreadie",
+   "pick": 47,
+   "predicted": 425.8897
+  },
+  {
+   "actual": 402.4395,
+   "fold": 0,
+   "key": "dylan-clarke",
+   "pick": 62,
+   "predicted": 269.4572
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "pat-kerr",
+   "pick": 64,
+   "predicted": 257.6101
+  },
+  {
+   "actual": 6190.126,
+   "fold": 0,
+   "key": "clayton-oliver",
+   "pick": 4,
+   "predicted": 2404.4418
+  },
+  {
+   "actual": 871.7975,
+   "fold": 0,
+   "key": "aaron-francis",
+   "pick": 6,
+   "predicted": 1685.3186
+  },
+  {
+   "actual": 655.0219,
+   "fold": 0,
+   "key": "sam-weideman",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 1215.6688,
+   "fold": 0,
+   "key": "matthew-kennedy-1",
+   "pick": 13,
+   "predicted": 1358.8959
+  },
+  {
+   "actual": 1451.0689,
+   "fold": 0,
+   "key": "jade-gresham",
+   "pick": 18,
+   "predicted": 1034.8378
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "kieran-collins",
+   "pick": 26,
+   "predicted": 826.2265
+  },
+  {
+   "actual": 625.8958,
+   "fold": 0,
+   "key": "brayden-sier",
+   "pick": 32,
+   "predicted": 685.1262
+  },
+  {
+   "actual": 539.5363,
+   "fold": 0,
+   "key": "joshua-schoenfeld",
+   "pick": 34,
+   "predicted": 620.5416
+  },
+  {
+   "actual": 1388.0481,
+   "fold": 0,
+   "key": "marcus-adams",
+   "pick": 35,
+   "predicted": 592.9794
+  },
+  {
+   "actual": 1021.7365,
+   "fold": 0,
+   "key": "rhys-mathieson",
+   "pick": 39,
+   "predicted": 544.9777
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "mitch-king",
+   "pick": 42,
+   "predicted": 524.2758
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "aidyn-johnson",
+   "pick": 45,
+   "predicted": 469.7027
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "liam-hulett",
+   "pick": 46,
+   "predicted": 447.5662
+  },
+  {
+   "actual": 302.1617,
+   "fold": 0,
+   "key": "bailey-rice",
+   "pick": 49,
+   "predicted": 387.8383
+  },
+  {
+   "actual": 220.1699,
+   "fold": 0,
+   "key": "oleg-markov",
+   "pick": 50,
+   "predicted": 372.3224
+  },
+  {
+   "actual": 155.5515,
+   "fold": 0,
+   "key": "ryan-gardner",
+   "pick": 58,
+   "predicted": 297.458
+  },
+  {
+   "actual": 1186.9952,
+   "fold": 0,
+   "key": "paul-ahern",
+   "pick": 8,
+   "predicted": 1683.3186
+  },
+  {
+   "actual": 1080.0388,
+   "fold": 0,
+   "key": "lachlan-weller",
+   "pick": 13,
+   "predicted": 1358.8959
+  },
+  {
+   "actual": 666.031,
+   "fold": 0,
+   "key": "hugh-goddard",
+   "pick": 21,
+   "predicted": 1002.7745
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "tom-lamb",
+   "pick": 31,
+   "predicted": 716.5489
+  },
+  {
+   "actual": 502.6622,
+   "fold": 0,
+   "key": "connor-menadue",
+   "pick": 32,
+   "predicted": 685.1262
+  },
+  {
+   "actual": 248.8244,
+   "fold": 0,
+   "key": "ed-vickers-willis",
+   "pick": 35,
+   "predicted": 592.9794
+  },
+  {
+   "actual": 242.6896,
+   "fold": 0,
+   "key": "mitch-mcgovern",
+   "pick": 42,
+   "predicted": 524.2758
+  },
+  {
+   "actual": 508.5187,
+   "fold": 0,
+   "key": "cory-gregson",
+   "pick": 46,
+   "predicted": 447.5662
+  },
+  {
+   "actual": 643.5,
+   "fold": 0,
+   "key": "oscar-mcdonald",
+   "pick": 52,
+   "predicted": 347.7465
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "dean-gore",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 633.7,
+   "fold": 0,
+   "key": "dougal-howard",
+   "pick": 55,
+   "predicted": 320.6767
+  },
+  {
+   "actual": 350.6449,
+   "fold": 0,
+   "key": "jordan-cunico",
+   "pick": 57,
+   "predicted": 305.0245
+  },
+  {
+   "actual": 456.0,
+   "fold": 0,
+   "key": "clem-smith",
+   "pick": 58,
+   "predicted": 297.458
+  },
+  {
+   "actual": 340.393,
+   "fold": 0,
+   "key": "zaine-cordy",
+   "pick": 60,
+   "predicted": 282.8865
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "josh-watts",
+   "pick": 62,
+   "predicted": 269.4572
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "damien-cavka",
+   "pick": 63,
+   "predicted": 263.3163
+  },
+  {
+   "actual": 101.4856,
+   "fold": 0,
+   "key": "ahmed-saad",
+   "pick": 40,
+   "predicted": 540.9308
+  },
+  {
+   "actual": 6975.0844,
+   "fold": 0,
+   "key": "marcus-bontempelli",
+   "pick": 3,
+   "predicted": 2762.1848
+  },
+  {
+   "actual": 513.9852,
+   "fold": 0,
+   "key": "james-aish",
+   "pick": 6,
+   "predicted": 1685.3186
+  },
+  {
+   "actual": 1015.7156,
+   "fold": 0,
+   "key": "ben-lennon",
+   "pick": 11,
+   "predicted": 1436.3041
+  },
+  {
+   "actual": 2379.5459,
+   "fold": 0,
+   "key": "luke-dunstan",
+   "pick": 17,
+   "predicted": 1035.8378
+  },
+  {
+   "actual": 3898.8392,
+   "fold": 0,
+   "key": "matt-crouch",
+   "pick": 22,
+   "predicted": 948.8085
+  },
+  {
+   "actual": 876.6,
+   "fold": 0,
+   "key": "daniel-mcstay",
+   "pick": 24,
+   "predicted": 871.1597
+  },
+  {
+   "actual": 1516.5702,
+   "fold": 0,
+   "key": "trent-dumont",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "dayle-garlett",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "mitchell-harvey",
+   "pick": 44,
+   "predicted": 490.8612
+  },
+  {
+   "actual": 548.1,
+   "fold": 0,
+   "key": "james-sicily",
+   "pick": 51,
+   "predicted": 359.08
+  },
+  {
+   "actual": 547.2651,
+   "fold": 0,
+   "key": "mitch-honeychurch",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 1689.4,
+   "fold": 0,
+   "key": "lachie-whitfield",
+   "pick": 1,
+   "predicted": 2953.4552
+  },
+  {
+   "actual": 1469.0855,
+   "fold": 0,
+   "key": "sam-mayes",
+   "pick": 11,
+   "predicted": 1436.3041
+  },
+  {
+   "actual": 842.4443,
+   "fold": 0,
+   "key": "troy-menzel",
+   "pick": 14,
+   "predicted": 1190.1786
+  },
+  {
+   "actual": 987.9,
+   "fold": 0,
+   "key": "aidan-corr",
+   "pick": 18,
+   "predicted": 1034.8378
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "josh-simpson",
+   "pick": 21,
+   "predicted": 1002.7745
+  },
+  {
+   "actual": 1135.5,
+   "fold": 0,
+   "key": "brodie-grundy",
+   "pick": 22,
+   "predicted": 948.8085
+  },
+  {
+   "actual": 512.644,
+   "fold": 0,
+   "key": "ben-kennedy",
+   "pick": 23,
+   "predicted": 903.8652
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "spencer-white",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 578.7373,
+   "fold": 0,
+   "key": "james-stewart",
+   "pick": 30,
+   "predicted": 744.5469
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "mason-shaw",
+   "pick": 34,
+   "predicted": 620.5416
+  },
+  {
+   "actual": 495.091,
+   "fold": 0,
+   "key": "michael-close",
+   "pick": 36,
+   "predicted": 571.7394
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "liam-mcbean",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "jackson-ramsey",
+   "pick": 41,
+   "predicted": 534.6031
+  },
+  {
+   "actual": 344.9423,
+   "fold": 0,
+   "key": "brodie-murdoch",
+   "pick": 43,
+   "predicted": 509.488
+  },
+  {
+   "actual": 387.665,
+   "fold": 0,
+   "key": "matthew-mcdonough",
+   "pick": 45,
+   "predicted": 469.7027
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "joshua-prudden",
+   "pick": 53,
+   "predicted": 337.8585
+  },
+  {
+   "actual": 789.2179,
+   "fold": 0,
+   "key": "nicholas-graham",
+   "pick": 58,
+   "predicted": 297.458
+  },
+  {
+   "actual": 341.8829,
+   "fold": 0,
+   "key": "kaiden-brand",
+   "pick": 64,
+   "predicted": 257.6101
+  },
+  {
+   "actual": 2004.208,
+   "fold": 0,
+   "key": "dom-tyson",
+   "pick": 5,
+   "predicted": 2005.1223
+  },
+  {
+   "actual": 2583.9062,
+   "fold": 0,
+   "key": "brad-crouch",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "elliott-kavanagh",
+   "pick": 25,
+   "predicted": 846.7066
+  },
+  {
+   "actual": 388.1245,
+   "fold": 0,
+   "key": "henry-schade",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 1335.2674,
+   "fold": 0,
+   "key": "jack-newnes",
+   "pick": 46,
+   "predicted": 447.5662
+  },
+  {
+   "actual": 195.4763,
+   "fold": 0,
+   "key": "brendon-ah-chee",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "patrick-wearden",
+   "pick": 56,
+   "predicted": 312.7469
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "josh-tynan",
+   "pick": 61,
+   "predicted": 275.9975
+  },
+  {
+   "actual": 1295.1003,
+   "fold": 0,
+   "key": "brodie-smith",
+   "pick": 14,
+   "predicted": 1190.1786
+  },
+  {
+   "actual": 1064.4752,
+   "fold": 0,
+   "key": "isaac-smith",
+   "pick": 20,
+   "predicted": 1032.8378
+  },
+  {
+   "actual": 245.4481,
+   "fold": 0,
+   "key": "jed-lamb",
+   "pick": 23,
+   "predicted": 903.8652
+  },
+  {
+   "actual": 788.8178,
+   "fold": 0,
+   "key": "kieran-harper",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "patrick-mccarthy",
+   "pick": 36,
+   "predicted": 571.7394
+  },
+  {
+   "actual": 292.4373,
+   "fold": 0,
+   "key": "aaron-young",
+   "pick": 38,
+   "predicted": 549.4953
+  },
+  {
+   "actual": 473.9411,
+   "fold": 0,
+   "key": "mitchell-hallahan",
+   "pick": 40,
+   "predicted": 540.9308
+  },
+  {
+   "actual": 562.0,
+   "fold": 0,
+   "key": "luke-parker",
+   "pick": 42,
+   "predicted": 524.2758
+  },
+  {
+   "actual": 2199.8295,
+   "fold": 0,
+   "key": "steven-may",
+   "pick": 49,
+   "predicted": 387.8383
+  },
+  {
+   "actual": 1406.6,
+   "fold": 0,
+   "key": "anthony-morabito",
+   "pick": 4,
+   "predicted": 2404.4418
+  },
+  {
+   "actual": 2651.7383,
+   "fold": 0,
+   "key": "ben-cunnington",
+   "pick": 5,
+   "predicted": 2005.1223
+  },
+  {
+   "actual": 516.5495,
+   "fold": 0,
+   "key": "andrew-moore",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 840.9339,
+   "fold": 0,
+   "key": "jasper-mcmillan-pittard",
+   "pick": 16,
+   "predicted": 1036.8378
+  },
+  {
+   "actual": 617.7422,
+   "fold": 0,
+   "key": "daniel-menzel",
+   "pick": 17,
+   "predicted": 1035.8378
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "gerrick-weedon",
+   "pick": 22,
+   "predicted": 948.8085
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "callum-bartlett",
+   "pick": 27,
+   "predicted": 807.4419
+  },
+  {
+   "actual": 998.3,
+   "fold": 0,
+   "key": "max-gawn",
+   "pick": 33,
+   "predicted": 652.2162
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "joel-houghton",
+   "pick": 35,
+   "predicted": 592.9794
+  },
+  {
+   "actual": 888.8369,
+   "fold": 0,
+   "key": "jamie-macmillan",
+   "pick": 36,
+   "predicted": 571.7394
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "ayden-kennedy",
+   "pick": 40,
+   "predicted": 540.9308
+  },
+  {
+   "actual": 830.3392,
+   "fold": 0,
+   "key": "nathan-vardy",
+   "pick": 41,
+   "predicted": 534.6031
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "jesse-crichton",
+   "pick": 47,
+   "predicted": 425.8897
+  },
+  {
+   "actual": 152.7437,
+   "fold": 0,
+   "key": "trent-dennis-lane",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 148.625,
+   "fold": 0,
+   "key": "josh-cowan",
+   "pick": 55,
+   "predicted": 320.6767
+  },
+  {
+   "actual": 117.0408,
+   "fold": 0,
+   "key": "jeromey-webberley",
+   "pick": 60,
+   "predicted": 282.8865
+  },
+  {
+   "actual": 4869.3649,
+   "fold": 0,
+   "key": "nicholas-naitanui",
+   "pick": 2,
+   "predicted": 2901.8832
+  },
+  {
+   "actual": 595.8657,
+   "fold": 0,
+   "key": "james-strauss",
+   "pick": 19,
+   "predicted": 1033.8378
+  },
+  {
+   "actual": 281.295,
+   "fold": 0,
+   "key": "taylor-hunt",
+   "pick": 49,
+   "predicted": 387.8383
+  },
+  {
+   "actual": 631.461,
+   "fold": 0,
+   "key": "jordan-lisle",
+   "pick": 50,
+   "predicted": 372.3224
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "jordan-jones",
+   "pick": 52,
+   "predicted": 347.7465
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "alistair-smith",
+   "pick": 61,
+   "predicted": 275.9975
+  },
+  {
+   "actual": 1050.5796,
+   "fold": 0,
+   "key": "jarrad-grant",
+   "pick": 5,
+   "predicted": 2005.1223
+  },
+  {
+   "actual": 1877.2,
+   "fold": 0,
+   "key": "patrick-dangerfield",
+   "pick": 10,
+   "predicted": 1480.2978
+  },
+  {
+   "actual": 2017.6798,
+   "fold": 0,
+   "key": "harry-taylor",
+   "pick": 17,
+   "predicted": 1035.8378
+  },
+  {
+   "actual": 616.3123,
+   "fold": 0,
+   "key": "clayton-hinkley",
+   "pick": 24,
+   "predicted": 871.1597
+  },
+  {
+   "actual": 345.6639,
+   "fold": 0,
+   "key": "brett-meredith",
+   "pick": 26,
+   "predicted": 826.2265
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "matthew-westhoff",
+   "pick": 33,
+   "predicted": 652.2162
+  },
+  {
+   "actual": 571.3012,
+   "fold": 0,
+   "key": "steven-browne",
+   "pick": 36,
+   "predicted": 571.7394
+  },
+  {
+   "actual": 1943.733,
+   "fold": 0,
+   "key": "scott-thompson-1",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 453.4697,
+   "fold": 0,
+   "key": "myke-cook",
+   "pick": 38,
+   "predicted": 549.4953
+  },
+  {
+   "actual": 1103.5543,
+   "fold": 0,
+   "key": "christopher-mayne",
+   "pick": 40,
+   "predicted": 540.9308
+  },
+  {
+   "actual": 380.7389,
+   "fold": 0,
+   "key": "james-polkinghorne",
+   "pick": 41,
+   "predicted": 534.6031
+  },
+  {
+   "actual": 1461.2732,
+   "fold": 0,
+   "key": "cale-hooker",
+   "pick": 53,
+   "predicted": 337.8585
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "aaron-kite",
+   "pick": 63,
+   "predicted": 263.3163
+  },
+  {
+   "actual": 545.5,
+   "fold": 0,
+   "key": "taylor-walker",
+   "pick": 64,
+   "predicted": 257.6101
+  },
+  {
+   "actual": 5001.178,
+   "fold": 0,
+   "key": "joel-selwood",
+   "pick": 8,
+   "predicted": 1683.3186
+  },
+  {
+   "actual": 1169.1721,
+   "fold": 0,
+   "key": "james-frawley",
+   "pick": 13,
+   "predicted": 1358.8959
+  },
+  {
+   "actual": 747.8723,
+   "fold": 0,
+   "key": "shaun-hampson",
+   "pick": 18,
+   "predicted": 1034.8378
+  },
+  {
+   "actual": 780.6022,
+   "fold": 0,
+   "key": "albert-proud",
+   "pick": 23,
+   "predicted": 903.8652
+  },
+  {
+   "actual": 3606.8266,
+   "fold": 0,
+   "key": "todd-goldstein",
+   "pick": 38,
+   "predicted": 549.4953
+  },
+  {
+   "actual": 526.4464,
+   "fold": 0,
+   "key": "tim-houlihan",
+   "pick": 43,
+   "predicted": 509.488
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "daniel-currie",
+   "pick": 49,
+   "predicted": 387.8383
+  },
+  {
+   "actual": 2760.1694,
+   "fold": 0,
+   "key": "robert-gray",
+   "pick": 55,
+   "predicted": 320.6767
+  },
+  {
+   "actual": 417.6214,
+   "fold": 0,
+   "key": "garry-moss",
+   "pick": 56,
+   "predicted": 312.7469
+  },
+  {
+   "actual": 627.8948,
+   "fold": 0,
+   "key": "daniel-connors",
+   "pick": 58,
+   "predicted": 297.458
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "jarryd-allen",
+   "pick": 59,
+   "predicted": 290.0616
+  },
+  {
+   "actual": 4524.1931,
+   "fold": 0,
+   "key": "jarryd-roughead",
+   "pick": 2,
+   "predicted": 2901.8832
+  },
+  {
+   "actual": 325.5278,
+   "fold": 0,
+   "key": "tom-williams",
+   "pick": 6,
+   "predicted": 1685.3186
+  },
+  {
+   "actual": 708.2072,
+   "fold": 0,
+   "key": "jordan-russell",
+   "pick": 9,
+   "predicted": 1602.296
+  },
+  {
+   "actual": 559.4584,
+   "fold": 0,
+   "key": "danny-meyer",
+   "pick": 13,
+   "predicted": 1358.8959
+  },
+  {
+   "actual": 546.8528,
+   "fold": 0,
+   "key": "andrew-mcqualter",
+   "pick": 19,
+   "predicted": 1033.8378
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "fabian-deluca",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 1636.1346,
+   "fold": 0,
+   "key": "mark-lecras",
+   "pick": 39,
+   "predicted": 544.9777
+  },
+  {
+   "actual": 189.5788,
+   "fold": 0,
+   "key": "henry-slattery",
+   "pick": 45,
+   "predicted": 469.7027
+  },
+  {
+   "actual": 206.4707,
+   "fold": 0,
+   "key": "stephen-tiller",
+   "pick": 51,
+   "predicted": 359.08
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "benet-copping",
+   "pick": 55,
+   "predicted": 320.6767
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "toby-stribling",
+   "pick": 60,
+   "predicted": 282.8865
+  },
+  {
+   "actual": 2358.6161,
+   "fold": 0,
+   "key": "joshua-kennedy",
+   "pick": 4,
+   "predicted": 2404.4418
+  },
+  {
+   "actual": 668.7583,
+   "fold": 0,
+   "key": "beau-dowler",
+   "pick": 6,
+   "predicted": 1685.3186
+  },
+  {
+   "actual": 2684.6514,
+   "fold": 0,
+   "key": "paddy-ryder",
+   "pick": 7,
+   "predicted": 1684.3186
+  },
+  {
+   "actual": 1804.5725,
+   "fold": 0,
+   "key": "grant-birchall",
+   "pick": 14,
+   "predicted": 1190.1786
+  },
+  {
+   "actual": 572.0023,
+   "fold": 0,
+   "key": "wayde-mills",
+   "pick": 25,
+   "predicted": 846.7066
+  },
+  {
+   "actual": 576.5478,
+   "fold": 0,
+   "key": "ben-mckinley",
+   "pick": 29,
+   "predicted": 768.4015
+  },
+  {
+   "actual": 999.0358,
+   "fold": 0,
+   "key": "john-anthony",
+   "pick": 37,
+   "predicted": 557.5862
+  },
+  {
+   "actual": 514.5111,
+   "fold": 0,
+   "key": "jay-neagle",
+   "pick": 39,
+   "predicted": 544.9777
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "michael-west",
+   "pick": 52,
+   "predicted": 347.7465
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "hugh-minson",
+   "pick": 53,
+   "predicted": 337.8585
+  },
+  {
+   "actual": 0.0,
+   "fold": 0,
+   "key": "ryan-brabazon",
+   "pick": 54,
+   "predicted": 328.9602
+  },
+  {
+   "actual": 1766.8499,
+   "fold": 1,
+   "key": "mattaes-phillipou",
+   "pick": 10,
+   "predicted": 1591.5543
+  },
+  {
+   "actual": 1735.4301,
+   "fold": 1,
+   "key": "oliver-hollands",
+   "pick": 11,
+   "predicted": 1590.5543
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "charlie-clarke",
+   "pick": 24,
+   "predicted": 830.1492
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "coby-burgiel",
+   "pick": 29,
+   "predicted": 747.7297
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "james-van-es",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 266.0909,
+   "fold": 1,
+   "key": "toby-mcmullin",
+   "pick": 34,
+   "predicted": 654.7559
+  },
+  {
+   "actual": 229.0279,
+   "fold": 1,
+   "key": "harvey-gallagher",
+   "pick": 39,
+   "predicted": 610.6143
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "max-knobel",
+   "pick": 42,
+   "predicted": 559.2624
+  },
+  {
+   "actual": 222.5869,
+   "fold": 1,
+   "key": "hugh-bond",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 418.4343,
+   "fold": 1,
+   "key": "noah-long",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 1155.7237,
+   "fold": 1,
+   "key": "jed-anderson",
+   "pick": 16,
+   "predicted": 1011.8056
+  },
+  {
+   "actual": 235.1058,
+   "fold": 1,
+   "key": "sam-butler-1",
+   "pick": 23,
+   "predicted": 854.3646
+  },
+  {
+   "actual": 1401.7642,
+   "fold": 1,
+   "key": "connor-macdonald",
+   "pick": 26,
+   "predicted": 791.0225
+  },
+  {
+   "actual": 523.1637,
+   "fold": 1,
+   "key": "brady-hough",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 2276.1471,
+   "fold": 1,
+   "key": "mitchito-owens",
+   "pick": 33,
+   "predicted": 669.7096
+  },
+  {
+   "actual": 371.1271,
+   "fold": 1,
+   "key": "miller-bergman",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 174.8205,
+   "fold": 1,
+   "key": "harvey-harrison",
+   "pick": 52,
+   "predicted": 375.3117
+  },
+  {
+   "actual": 310.8706,
+   "fold": 1,
+   "key": "jai-serong",
+   "pick": 53,
+   "predicted": 365.5609
+  },
+  {
+   "actual": 1366.4697,
+   "fold": 1,
+   "key": "tanner-bruhn",
+   "pick": 12,
+   "predicted": 1567.1217
+  },
+  {
+   "actual": 2160.3286,
+   "fold": 1,
+   "key": "tom-powell",
+   "pick": 13,
+   "predicted": 1403.952
+  },
+  {
+   "actual": 595.0735,
+   "fold": 1,
+   "key": "finlay-macrae",
+   "pick": 20,
+   "predicted": 958.5494
+  },
+  {
+   "actual": 3918.8657,
+   "fold": 1,
+   "key": "max-holmes",
+   "pick": 21,
+   "predicted": 919.0952
+  },
+  {
+   "actual": 204.7732,
+   "fold": 1,
+   "key": "bailey-laurie",
+   "pick": 23,
+   "predicted": 854.3646
+  },
+  {
+   "actual": 837.2317,
+   "fold": 1,
+   "key": "joel-jeffrey",
+   "pick": 30,
+   "predicted": 729.6395
+  },
+  {
+   "actual": 254.8921,
+   "fold": 1,
+   "key": "liam-mcmahon",
+   "pick": 33,
+   "predicted": 669.7096
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "fraser-rosman",
+   "pick": 36,
+   "predicted": 635.382
+  },
+  {
+   "actual": 168.0267,
+   "fold": 1,
+   "key": "james-rowe",
+   "pick": 40,
+   "predicted": 597.145
+  },
+  {
+   "actual": 323.6794,
+   "fold": 1,
+   "key": "phoenix-spicer",
+   "pick": 44,
+   "predicted": 511.9114
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "joel-western",
+   "pick": 56,
+   "predicted": 336.4456
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "isiah-winder",
+   "pick": 59,
+   "predicted": 306.0077
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "cameron-fleeton",
+   "pick": 60,
+   "predicted": 296.0831
+  },
+  {
+   "actual": 4820.2073,
+   "fold": 1,
+   "key": "noah-anderson",
+   "pick": 2,
+   "predicted": 3007.1832
+  },
+  {
+   "actual": 6001.0963,
+   "fold": 1,
+   "key": "luke-jackson",
+   "pick": 3,
+   "predicted": 2901.6845
+  },
+  {
+   "actual": 599.0852,
+   "fold": 1,
+   "key": "liam-henry",
+   "pick": 9,
+   "predicted": 1594.706
+  },
+  {
+   "actual": 795.5403,
+   "fold": 1,
+   "key": "cody-weightman",
+   "pick": 15,
+   "predicted": 1058.9199
+  },
+  {
+   "actual": 787.7554,
+   "fold": 1,
+   "key": "cooper-stephens",
+   "pick": 16,
+   "predicted": 1011.8056
+  },
+  {
+   "actual": 206.4027,
+   "fold": 1,
+   "key": "finn-maginness",
+   "pick": 29,
+   "predicted": 747.7297
+  },
+  {
+   "actual": 546.4592,
+   "fold": 1,
+   "key": "charlie-comben",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "brock-smith",
+   "pick": 33,
+   "predicted": 669.7096
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "elijah-taylor",
+   "pick": 35,
+   "predicted": 643.6279
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "ronin-o-connor",
+   "pick": 41,
+   "predicted": 579.9006
+  },
+  {
+   "actual": 308.246,
+   "fold": 1,
+   "key": "noah-cumberland",
+   "pick": 42,
+   "predicted": 559.2624
+  },
+  {
+   "actual": 436.1408,
+   "fold": 1,
+   "key": "jake-riccardi",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 134.1578,
+   "fold": 1,
+   "key": "michael-frederick",
+   "pick": 60,
+   "predicted": 296.0831
+  },
+  {
+   "actual": 3732.4869,
+   "fold": 1,
+   "key": "bailey-smith",
+   "pick": 7,
+   "predicted": 1611.6224
+  },
+  {
+   "actual": 2467.0105,
+   "fold": 1,
+   "key": "nick-blakey",
+   "pick": 10,
+   "predicted": 1591.5543
+  },
+  {
+   "actual": 1351.4642,
+   "fold": 1,
+   "key": "jackson-hately",
+   "pick": 14,
+   "predicted": 1195.8123
+  },
+  {
+   "actual": 291.6593,
+   "fold": 1,
+   "key": "liam-stocker",
+   "pick": 19,
+   "predicted": 991.5384
+  },
+  {
+   "actual": 660.0835,
+   "fold": 1,
+   "key": "tom-sparrow",
+   "pick": 27,
+   "predicted": 776.2042
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "will-kelly",
+   "pick": 29,
+   "predicted": 747.7297
+  },
+  {
+   "actual": 121.7958,
+   "fold": 1,
+   "key": "laitham-vandermeer",
+   "pick": 37,
+   "predicted": 628.3556
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "irving-mosquito",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 1044.1048,
+   "fold": 1,
+   "key": "justin-mcinerney",
+   "pick": 44,
+   "predicted": 511.9114
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "ben-jarvis",
+   "pick": 48,
+   "predicted": 426.1171
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "fraser-turner",
+   "pick": 58,
+   "predicted": 316.1546
+  },
+  {
+   "actual": 1058.387,
+   "fold": 1,
+   "key": "connor-idun",
+   "pick": 61,
+   "predicted": 286.541
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "matthew-walker",
+   "pick": 63,
+   "predicted": 269.0974
+  },
+  {
+   "actual": 1185.4249,
+   "fold": 1,
+   "key": "paddy-dow",
+   "pick": 3,
+   "predicted": 2901.6845
+  },
+  {
+   "actual": 2802.4143,
+   "fold": 1,
+   "key": "adam-cerra",
+   "pick": 5,
+   "predicted": 1925.1827
+  },
+  {
+   "actual": 774.4816,
+   "fold": 1,
+   "key": "hunter-clark",
+   "pick": 7,
+   "predicted": 1611.6224
+  },
+  {
+   "actual": 861.8435,
+   "fold": 1,
+   "key": "jarrod-brander",
+   "pick": 13,
+   "predicted": 1403.952
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "matthew-ling",
+   "pick": 14,
+   "predicted": 1195.8123
+  },
+  {
+   "actual": 2247.6009,
+   "fold": 1,
+   "key": "sam-taylor",
+   "pick": 28,
+   "predicted": 762.7077
+  },
+  {
+   "actual": 529.8016,
+   "fold": 1,
+   "key": "bayley-fritsch",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 261.2041,
+   "fold": 1,
+   "key": "brayden-ainsworth",
+   "pick": 32,
+   "predicted": 688.3076
+  },
+  {
+   "actual": 223.5717,
+   "fold": 1,
+   "key": "jack-petruccelle",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "toby-wooller",
+   "pick": 41,
+   "predicted": 579.9006
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "connor-ballenden",
+   "pick": 43,
+   "predicted": 536.177
+  },
+  {
+   "actual": 263.2289,
+   "fold": 1,
+   "key": "hugh-dixon",
+   "pick": 44,
+   "predicted": 511.9114
+  },
+  {
+   "actual": 296.5417,
+   "fold": 1,
+   "key": "tyler-brown",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 344.0723,
+   "fold": 1,
+   "key": "jack-payne",
+   "pick": 54,
+   "predicted": 355.9937
+  },
+  {
+   "actual": 1417.741,
+   "fold": 1,
+   "key": "gryan-miers",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 411.1246,
+   "fold": 1,
+   "key": "ben-miller",
+   "pick": 62,
+   "predicted": 277.5135
+  },
+  {
+   "actual": 3500.2274,
+   "fold": 1,
+   "key": "tim-taranto",
+   "pick": 2,
+   "predicted": 3007.1832
+  },
+  {
+   "actual": 1030.0662,
+   "fold": 1,
+   "key": "jack-scrimshaw",
+   "pick": 7,
+   "predicted": 1611.6224
+  },
+  {
+   "actual": 911.7893,
+   "fold": 1,
+   "key": "oliver-florent",
+   "pick": 11,
+   "predicted": 1590.5543
+  },
+  {
+   "actual": 1302.0797,
+   "fold": 1,
+   "key": "jordan-gallucci",
+   "pick": 15,
+   "predicted": 1058.9199
+  },
+  {
+   "actual": 429.7336,
+   "fold": 1,
+   "key": "will-hayward",
+   "pick": 21,
+   "predicted": 919.0952
+  },
+  {
+   "actual": 2287.5445,
+   "fold": 1,
+   "key": "jordan-ridley",
+   "pick": 22,
+   "predicted": 883.3514
+  },
+  {
+   "actual": 490.0758,
+   "fold": 1,
+   "key": "cedric-cox",
+   "pick": 24,
+   "predicted": 830.1492
+  },
+  {
+   "actual": 900.8439,
+   "fold": 1,
+   "key": "willem-drew",
+   "pick": 33,
+   "predicted": 669.7096
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "declan-watson",
+   "pick": 34,
+   "predicted": 654.7559
+  },
+  {
+   "actual": 709.3777,
+   "fold": 1,
+   "key": "callum-brown",
+   "pick": 35,
+   "predicted": 643.6279
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "josh-williams",
+   "pick": 36,
+   "predicted": 635.382
+  },
+  {
+   "actual": 484.211,
+   "fold": 1,
+   "key": "esava-ratugolea",
+   "pick": 43,
+   "predicted": 536.177
+  },
+  {
+   "actual": 835.8,
+   "fold": 1,
+   "key": "darcy-cameron",
+   "pick": 48,
+   "predicted": 426.1171
+  },
+  {
+   "actual": 695.7657,
+   "fold": 1,
+   "key": "lewis-young",
+   "pick": 49,
+   "predicted": 410.5373
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "jacob-allison",
+   "pick": 55,
+   "predicted": 346.3295
+  },
+  {
+   "actual": 430.9757,
+   "fold": 1,
+   "key": "edward-phillips",
+   "pick": 56,
+   "predicted": 336.4456
+  },
+  {
+   "actual": 325.9775,
+   "fold": 1,
+   "key": "tom-williamson",
+   "pick": 60,
+   "predicted": 296.0831
+  },
+  {
+   "actual": 2341.6702,
+   "fold": 1,
+   "key": "jacob-weitering",
+   "pick": 1,
+   "predicted": 3008.1832
+  },
+  {
+   "actual": 529.99,
+   "fold": 1,
+   "key": "callum-ah-chee",
+   "pick": 8,
+   "predicted": 1610.6224
+  },
+  {
+   "actual": 1021.2,
+   "fold": 1,
+   "key": "harry-mckay",
+   "pick": 10,
+   "predicted": 1591.5543
+  },
+  {
+   "actual": 1017.0,
+   "fold": 1,
+   "key": "charlie-curnow",
+   "pick": 12,
+   "predicted": 1567.1217
+  },
+  {
+   "actual": 1036.573,
+   "fold": 1,
+   "key": "daniel-rioli",
+   "pick": 15,
+   "predicted": 1058.9199
+  },
+  {
+   "actual": 299.6162,
+   "fold": 1,
+   "key": "ben-mckay",
+   "pick": 21,
+   "predicted": 919.0952
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "kieran-lovell",
+   "pick": 22,
+   "predicted": 883.3514
+  },
+  {
+   "actual": 308.0953,
+   "fold": 1,
+   "key": "tom-cole",
+   "pick": 36,
+   "predicted": 635.382
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "harley-balic",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 363.0115,
+   "fold": 1,
+   "key": "brandon-white",
+   "pick": 40,
+   "predicted": 597.145
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "tyrone-leonardis",
+   "pick": 51,
+   "predicted": 385.6833
+  },
+  {
+   "actual": 843.3622,
+   "fold": 1,
+   "key": "jack-silvagni",
+   "pick": 53,
+   "predicted": 365.5609
+  },
+  {
+   "actual": 285.6818,
+   "fold": 1,
+   "key": "ben-crocker",
+   "pick": 64,
+   "predicted": 261.3537
+  },
+  {
+   "actual": 3948.3861,
+   "fold": 1,
+   "key": "isaac-heeney",
+   "pick": 3,
+   "predicted": 2901.6845
+  },
+  {
+   "actual": 728.0617,
+   "fold": 1,
+   "key": "nakia-cockatoo",
+   "pick": 10,
+   "predicted": 1591.5543
+  },
+  {
+   "actual": 1002.5867,
+   "fold": 1,
+   "key": "corey-ellis",
+   "pick": 12,
+   "predicted": 1567.1217
+  },
+  {
+   "actual": 932.0,
+   "fold": 1,
+   "key": "jayden-laverde",
+   "pick": 19,
+   "predicted": 991.5384
+  },
+  {
+   "actual": 3169.1642,
+   "fold": 1,
+   "key": "jack-steele",
+   "pick": 20,
+   "predicted": 958.5494
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "jack-hiscox",
+   "pick": 37,
+   "predicted": 628.3556
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "declan-hamilton",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 1109.0627,
+   "fold": 1,
+   "key": "billy-stretch",
+   "pick": 41,
+   "predicted": 579.9006
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "nathan-drummond",
+   "pick": 51,
+   "predicted": 385.6833
+  },
+  {
+   "actual": 945.1102,
+   "fold": 1,
+   "key": "darcy-lang",
+   "pick": 15,
+   "predicted": 1058.9199
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "michael-apeness",
+   "pick": 16,
+   "predicted": 1011.8056
+  },
+  {
+   "actual": 725.1,
+   "fold": 1,
+   "key": "jarman-impey",
+   "pick": 20,
+   "predicted": 958.5494
+  },
+  {
+   "actual": 1124.0554,
+   "fold": 1,
+   "key": "billy-hartung",
+   "pick": 23,
+   "predicted": 854.3646
+  },
+  {
+   "actual": 120.2092,
+   "fold": 1,
+   "key": "sean-lemmens",
+   "pick": 26,
+   "predicted": 791.0225
+  },
+  {
+   "actual": 1479.3633,
+   "fold": 1,
+   "key": "lewis-taylor",
+   "pick": 27,
+   "predicted": 776.2042
+  },
+  {
+   "actual": 609.0,
+   "fold": 1,
+   "key": "rory-lobb",
+   "pick": 28,
+   "predicted": 762.7077
+  },
+  {
+   "actual": 331.01,
+   "fold": 1,
+   "key": "malcolm-karpany",
+   "pick": 30,
+   "predicted": 729.6395
+  },
+  {
+   "actual": 334.8658,
+   "fold": 1,
+   "key": "jay-kennedy-harris",
+   "pick": 39,
+   "predicted": 610.6143
+  },
+  {
+   "actual": 712.0,
+   "fold": 1,
+   "key": "jake-kolodjashnij",
+   "pick": 40,
+   "predicted": 597.145
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "matthew-fuller",
+   "pick": 41,
+   "predicted": 579.9006
+  },
+  {
+   "actual": 699.1,
+   "fold": 1,
+   "key": "tom-barrass",
+   "pick": 42,
+   "predicted": 559.2624
+  },
+  {
+   "actual": 648.6,
+   "fold": 1,
+   "key": "aliir-aliir",
+   "pick": 43,
+   "predicted": 536.177
+  },
+  {
+   "actual": 500.9,
+   "fold": 1,
+   "key": "nicholas-holman",
+   "pick": 48,
+   "predicted": 426.1171
+  },
+  {
+   "actual": 574.1339,
+   "fold": 1,
+   "key": "orazio-fantasia",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 141.325,
+   "fold": 1,
+   "key": "sam-lloyd",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 545.5,
+   "fold": 1,
+   "key": "karl-amon",
+   "pick": 58,
+   "predicted": 316.1546
+  },
+  {
+   "actual": 321.5759,
+   "fold": 1,
+   "key": "jonathon-marsh",
+   "pick": 59,
+   "predicted": 306.0077
+  },
+  {
+   "actual": 280.6037,
+   "fold": 1,
+   "key": "jake-barrett",
+   "pick": 60,
+   "predicted": 296.0831
+  },
+  {
+   "actual": 608.4778,
+   "fold": 1,
+   "key": "lachlan-plowman",
+   "pick": 4,
+   "predicted": 2482.1189
+  },
+  {
+   "actual": 1198.4183,
+   "fold": 1,
+   "key": "jimmy-toumpas",
+   "pick": 6,
+   "predicted": 1612.6224
+  },
+  {
+   "actual": 1911.6,
+   "fold": 1,
+   "key": "jake-stringer",
+   "pick": 7,
+   "predicted": 1611.6224
+  },
+  {
+   "actual": 821.5249,
+   "fold": 1,
+   "key": "kristian-jaksch",
+   "pick": 15,
+   "predicted": 1058.9199
+  },
+  {
+   "actual": 1157.353,
+   "fold": 1,
+   "key": "nathan-hrovat",
+   "pick": 25,
+   "predicted": 808.9952
+  },
+  {
+   "actual": 550.9826,
+   "fold": 1,
+   "key": "tom-clurey",
+   "pick": 32,
+   "predicted": 688.3076
+  },
+  {
+   "actual": 301.7759,
+   "fold": 1,
+   "key": "kamdyn-mcintosh",
+   "pick": 35,
+   "predicted": 643.6279
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "mitchell-wilkins",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "dylan-van-unen",
+   "pick": 54,
+   "predicted": 355.9937
+  },
+  {
+   "actual": 387.9585,
+   "fold": 1,
+   "key": "martin-gleeson",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 3653.7,
+   "fold": 1,
+   "key": "stephen-coniglio",
+   "pick": 3,
+   "predicted": 2901.6845
+  },
+  {
+   "actual": 3043.7695,
+   "fold": 1,
+   "key": "chad-wingard",
+   "pick": 8,
+   "predicted": 1610.6224
+  },
+  {
+   "actual": 729.4,
+   "fold": 1,
+   "key": "nick-haynes",
+   "pick": 10,
+   "predicted": 1591.5543
+  },
+  {
+   "actual": 904.1759,
+   "fold": 1,
+   "key": "adam-tomlinson",
+   "pick": 15,
+   "predicted": 1058.9199
+  },
+  {
+   "actual": 558.1401,
+   "fold": 1,
+   "key": "liam-sumner",
+   "pick": 16,
+   "predicted": 1011.8056
+  },
+  {
+   "actual": 467.4118,
+   "fold": 1,
+   "key": "jackson-merrett",
+   "pick": 37,
+   "predicted": 628.3556
+  },
+  {
+   "actual": 569.2,
+   "fold": 1,
+   "key": "bradley-hill",
+   "pick": 42,
+   "predicted": 559.2624
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "tom-curran",
+   "pick": 49,
+   "predicted": 410.5373
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "jordan-lockyer",
+   "pick": 52,
+   "predicted": 375.3117
+  },
+  {
+   "actual": 558.8707,
+   "fold": 1,
+   "key": "jordan-murdoch",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "daniel-pearce",
+   "pick": 58,
+   "predicted": 316.1546
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "alex-woodward",
+   "pick": 62,
+   "predicted": 277.5135
+  },
+  {
+   "actual": 3237.9566,
+   "fold": 1,
+   "key": "andrew-gaff",
+   "pick": 4,
+   "predicted": 2482.1189
+  },
+  {
+   "actual": 713.4099,
+   "fold": 1,
+   "key": "ben-jacobs",
+   "pick": 16,
+   "predicted": 1011.8056
+  },
+  {
+   "actual": 1918.6544,
+   "fold": 1,
+   "key": "mitchell-wallis",
+   "pick": 17,
+   "predicted": 1008.4733
+  },
+  {
+   "actual": 604.715,
+   "fold": 1,
+   "key": "shaun-atley",
+   "pick": 18,
+   "predicted": 1007.4733
+  },
+  {
+   "actual": 984.9159,
+   "fold": 1,
+   "key": "matthew-watson-1",
+   "pick": 19,
+   "predicted": 991.5384
+  },
+  {
+   "actual": 2457.3442,
+   "fold": 1,
+   "key": "charlie-dixon",
+   "pick": 21,
+   "predicted": 919.0952
+  },
+  {
+   "actual": 2321.8849,
+   "fold": 1,
+   "key": "scott-lycett",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 335.6568,
+   "fold": 1,
+   "key": "ben-newton",
+   "pick": 37,
+   "predicted": 628.3556
+  },
+  {
+   "actual": 264.7939,
+   "fold": 1,
+   "key": "viv-michie",
+   "pick": 45,
+   "predicted": 487.7898
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "daniel-farmer",
+   "pick": 47,
+   "predicted": 444.2684
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "josh-mellington",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 509.2603,
+   "fold": 1,
+   "key": "alex-johnson",
+   "pick": 58,
+   "predicted": 316.1546
+  },
+  {
+   "actual": 460.4499,
+   "fold": 1,
+   "key": "gary-rohan",
+   "pick": 6,
+   "predicted": 1612.6224
+  },
+  {
+   "actual": 880.4378,
+   "fold": 1,
+   "key": "daniel-talia",
+   "pick": 13,
+   "predicted": 1403.952
+  },
+  {
+   "actual": 1663.9489,
+   "fold": 1,
+   "key": "ryan-bastinac",
+   "pick": 21,
+   "predicted": 919.0952
+  },
+  {
+   "actual": 416.4907,
+   "fold": 1,
+   "key": "travis-colyer",
+   "pick": 26,
+   "predicted": 791.0225
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "anthony-long",
+   "pick": 32,
+   "predicted": 688.3076
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "sam-grimley",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 351.6567,
+   "fold": 1,
+   "key": "marcus-davies",
+   "pick": 42,
+   "predicted": 559.2624
+  },
+  {
+   "actual": 295.5603,
+   "fold": 1,
+   "key": "matthew-dea",
+   "pick": 43,
+   "predicted": 536.177
+  },
+  {
+   "actual": 697.8054,
+   "fold": 1,
+   "key": "ryan-harwood",
+   "pick": 46,
+   "predicted": 464.9667
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "troy-taylor",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "justin-bollenhagen",
+   "pick": 51,
+   "predicted": 385.6833
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "rohan-kerr",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 251.8959,
+   "fold": 1,
+   "key": "ben-sinclair",
+   "pick": 59,
+   "predicted": 306.0077
+  },
+  {
+   "actual": 207.3245,
+   "fold": 1,
+   "key": "taylor-duryea",
+   "pick": 61,
+   "predicted": 286.541
+  },
+  {
+   "actual": 2462.8399,
+   "fold": 1,
+   "key": "hamish-hartlett",
+   "pick": 4,
+   "predicted": 2482.1189
+  },
+  {
+   "actual": 3511.4395,
+   "fold": 1,
+   "key": "michael-hurley",
+   "pick": 5,
+   "predicted": 1925.1827
+  },
+  {
+   "actual": 2252.9938,
+   "fold": 1,
+   "key": "daniel-rich",
+   "pick": 7,
+   "predicted": 1611.6224
+  },
+  {
+   "actual": 2065.4792,
+   "fold": 1,
+   "key": "jack-ziebell",
+   "pick": 9,
+   "predicted": 1594.706
+  },
+  {
+   "actual": 1329.8185,
+   "fold": 1,
+   "key": "tom-lynch",
+   "pick": 13,
+   "predicted": 1403.952
+  },
+  {
+   "actual": 440.493,
+   "fold": 1,
+   "key": "ashley-smith",
+   "pick": 36,
+   "predicted": 635.382
+  },
+  {
+   "actual": 1444.0824,
+   "fold": 1,
+   "key": "zachary-clarke",
+   "pick": 37,
+   "predicted": 628.3556
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "michael-still",
+   "pick": 55,
+   "predicted": 346.3295
+  },
+  {
+   "actual": 1641.9705,
+   "fold": 1,
+   "key": "lachlan-henderson",
+   "pick": 8,
+   "predicted": 1610.6224
+  },
+  {
+   "actual": 2229.9664,
+   "fold": 1,
+   "key": "jack-grimes",
+   "pick": 14,
+   "predicted": 1195.8123
+  },
+  {
+   "actual": 3251.4162,
+   "fold": 1,
+   "key": "alex-rance",
+   "pick": 18,
+   "predicted": 1007.4733
+  },
+  {
+   "actual": 2378.4609,
+   "fold": 1,
+   "key": "callan-ward",
+   "pick": 19,
+   "predicted": 991.5384
+  },
+  {
+   "actual": 1836.0783,
+   "fold": 1,
+   "key": "scott-selwood",
+   "pick": 22,
+   "predicted": 883.3514
+  },
+  {
+   "actual": 828.8956,
+   "fold": 1,
+   "key": "andy-otten",
+   "pick": 27,
+   "predicted": 776.2042
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "marlon-motlop",
+   "pick": 28,
+   "predicted": 762.7077
+  },
+  {
+   "actual": 1947.0008,
+   "fold": 1,
+   "key": "jack-steven",
+   "pick": 42,
+   "predicted": 559.2624
+  },
+  {
+   "actual": 68.593,
+   "fold": 1,
+   "key": "dennis-armfield",
+   "pick": 45,
+   "predicted": 487.7898
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "jarrad-boumann-1",
+   "pick": 47,
+   "predicted": 444.2684
+  },
+  {
+   "actual": 366.4102,
+   "fold": 1,
+   "key": "mitchell-farmer",
+   "pick": 48,
+   "predicted": 426.1171
+  },
+  {
+   "actual": 189.238,
+   "fold": 1,
+   "key": "tony-armstrong",
+   "pick": 55,
+   "predicted": 346.3295
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "adam-donohue",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 419.9852,
+   "fold": 1,
+   "key": "jaxson-barham",
+   "pick": 58,
+   "predicted": 316.1546
+  },
+  {
+   "actual": 645.9942,
+   "fold": 1,
+   "key": "scott-gumbleton",
+   "pick": 3,
+   "predicted": 2901.6845
+  },
+  {
+   "actual": 2620.6831,
+   "fold": 1,
+   "key": "travis-boak",
+   "pick": 6,
+   "predicted": 1612.6224
+  },
+  {
+   "actual": 3029.1816,
+   "fold": 1,
+   "key": "jack-riewoldt",
+   "pick": 14,
+   "predicted": 1195.8123
+  },
+  {
+   "actual": 253.6804,
+   "fold": 1,
+   "key": "nathan-djerrkura",
+   "pick": 26,
+   "predicted": 791.0225
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "brad-howard",
+   "pick": 28,
+   "predicted": 762.7077
+  },
+  {
+   "actual": 1185.5579,
+   "fold": 1,
+   "key": "chris-dawes",
+   "pick": 29,
+   "predicted": 747.7297
+  },
+  {
+   "actual": 789.2346,
+   "fold": 1,
+   "key": "eric-mackenzie",
+   "pick": 30,
+   "predicted": 729.6395
+  },
+  {
+   "actual": 309.3735,
+   "fold": 1,
+   "key": "mark-austin",
+   "pick": 36,
+   "predicted": 635.382
+  },
+  {
+   "actual": 279.0698,
+   "fold": 1,
+   "key": "alwyn-davey",
+   "pick": 37,
+   "predicted": 628.3556
+  },
+  {
+   "actual": 3154.2158,
+   "fold": 1,
+   "key": "tom-hawkins",
+   "pick": 2,
+   "predicted": 3007.1832
+  },
+  {
+   "actual": 626.9447,
+   "fold": 1,
+   "key": "brad-dick",
+   "pick": 44,
+   "predicted": 511.9114
+  },
+  {
+   "actual": 274.8353,
+   "fold": 1,
+   "key": "carl-peterson",
+   "pick": 60,
+   "predicted": 296.0831
+  },
+  {
+   "actual": 537.3729,
+   "fold": 1,
+   "key": "jake-neade",
+   "pick": 56,
+   "predicted": 336.4456
+  },
+  {
+   "actual": 49.7679,
+   "fold": 1,
+   "key": "steven-morris",
+   "pick": 53,
+   "predicted": 365.5609
+  },
+  {
+   "actual": 1513.9266,
+   "fold": 1,
+   "key": "richard-tambling",
+   "pick": 4,
+   "predicted": 2482.1189
+  },
+  {
+   "actual": 2581.1392,
+   "fold": 1,
+   "key": "jordan-lewis",
+   "pick": 7,
+   "predicted": 1611.6224
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "chris-egan",
+   "pick": 10,
+   "predicted": 1591.5543
+  },
+  {
+   "actual": 884.8915,
+   "fold": 1,
+   "key": "lynden-dunn",
+   "pick": 17,
+   "predicted": 1008.4733
+  },
+  {
+   "actual": 999.5555,
+   "fold": 1,
+   "key": "adam-pattison",
+   "pick": 18,
+   "predicted": 1007.4733
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "ryan-willits",
+   "pick": 21,
+   "predicted": 919.0952
+  },
+  {
+   "actual": 1161.0089,
+   "fold": 1,
+   "key": "nathan-van-berlo",
+   "pick": 27,
+   "predicted": 776.2042
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "pat-garner",
+   "pick": 30,
+   "predicted": 729.6395
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "chad-gibson",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 887.5678,
+   "fold": 1,
+   "key": "jarred-moore",
+   "pick": 34,
+   "predicted": 654.7559
+  },
+  {
+   "actual": 980.0823,
+   "fold": 1,
+   "key": "brent-prismall",
+   "pick": 35,
+   "predicted": 643.6279
+  },
+  {
+   "actual": 444.3451,
+   "fold": 1,
+   "key": "luke-mcguane",
+   "pick": 38,
+   "predicted": 620.6546
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "dean-limbach",
+   "pick": 49,
+   "predicted": 410.5373
+  },
+  {
+   "actual": 821.386,
+   "fold": 1,
+   "key": "simon-taylor",
+   "pick": 50,
+   "predicted": 397.229
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "adam-iacobucci",
+   "pick": 52,
+   "predicted": 375.3117
+  },
+  {
+   "actual": 2529.9598,
+   "fold": 1,
+   "key": "dale-thomas",
+   "pick": 2,
+   "predicted": 3007.1832
+  },
+  {
+   "actual": 1198.2956,
+   "fold": 1,
+   "key": "xavier-ellis",
+   "pick": 3,
+   "predicted": 2901.6845
+  },
+  {
+   "actual": 1692.3363,
+   "fold": 1,
+   "key": "shannon-hurn",
+   "pick": 13,
+   "predicted": 1403.952
+  },
+  {
+   "actual": 551.0896,
+   "fold": 1,
+   "key": "beau-muston",
+   "pick": 22,
+   "predicted": 883.3514
+  },
+  {
+   "actual": 844.9585,
+   "fold": 1,
+   "key": "trent-west",
+   "pick": 31,
+   "predicted": 709.0831
+  },
+  {
+   "actual": 415.8485,
+   "fold": 1,
+   "key": "matthew-spangher",
+   "pick": 34,
+   "predicted": 654.7559
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "stephen-owen",
+   "pick": 35,
+   "predicted": 643.6279
+  },
+  {
+   "actual": 683.6993,
+   "fold": 1,
+   "key": "sam-lonergan",
+   "pick": 47,
+   "predicted": 444.2684
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "justin-sweeney",
+   "pick": 62,
+   "predicted": 277.5135
+  },
+  {
+   "actual": 0.0,
+   "fold": 1,
+   "key": "benjamin-johnson-2019",
+   "pick": 57,
+   "predicted": 326.3526
+  },
+  {
+   "actual": 1566.5311,
+   "fold": 2,
+   "key": "aaron-cadman",
+   "pick": 1,
+   "predicted": 2980.7947
+  },
+  {
+   "actual": 5118.4843,
+   "fold": 2,
+   "key": "will-ashcroft",
+   "pick": 2,
+   "predicted": 2912.3802
+  },
+  {
+   "actual": 8338.9992,
+   "fold": 2,
+   "key": "harry-sheezel",
+   "pick": 3,
+   "predicted": 2662.0054
+  },
+  {
+   "actual": 589.2941,
+   "fold": 2,
+   "key": "jedd-busslinger",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 995.7256,
+   "fold": 2,
+   "key": "elijah-hewett",
+   "pick": 14,
+   "predicted": 1237.2019
+  },
+  {
+   "actual": 689.9138,
+   "fold": 2,
+   "key": "max-michalanney",
+   "pick": 17,
+   "predicted": 1060.1086
+  },
+  {
+   "actual": 685.6426,
+   "fold": 2,
+   "key": "edward-allan",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 576.3012,
+   "fold": 2,
+   "key": "max-gruzewski",
+   "pick": 22,
+   "predicted": 896.413
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "lewis-hayes",
+   "pick": 25,
+   "predicted": 741.9214
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "brayden-george",
+   "pick": 26,
+   "predicted": 711.0494
+  },
+  {
+   "actual": 625.8307,
+   "fold": 2,
+   "key": "lachlan-cowan",
+   "pick": 30,
+   "predicted": 644.2551
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "henry-hustwaite",
+   "pick": 37,
+   "predicted": 559.9071
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jed-adams",
+   "pick": 38,
+   "predicted": 551.365
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jack-o-sullivan",
+   "pick": 46,
+   "predicted": 433.5498
+  },
+  {
+   "actual": 250.343,
+   "fold": 2,
+   "key": "joe-richards",
+   "pick": 48,
+   "predicted": 403.0931
+  },
+  {
+   "actual": 201.4593,
+   "fold": 2,
+   "key": "bailey-macdonald",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "thomas-scully",
+   "pick": 53,
+   "predicted": 349.0553
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jayden-davey",
+   "pick": 54,
+   "predicted": 339.9076
+  },
+  {
+   "actual": 8142.0224,
+   "fold": 2,
+   "key": "nick-daicos",
+   "pick": 4,
+   "predicted": 2273.4025
+  },
+  {
+   "actual": 2084.3443,
+   "fold": 2,
+   "key": "josh-ward",
+   "pick": 7,
+   "predicted": 1648.974
+  },
+  {
+   "actual": 1158.6273,
+   "fold": 2,
+   "key": "jye-amiss",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 1939.3468,
+   "fold": 2,
+   "key": "ben-hobbs",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 272.6932,
+   "fold": 2,
+   "key": "leek-aleer",
+   "pick": 15,
+   "predicted": 1107.9091
+  },
+  {
+   "actual": 893.2059,
+   "fold": 2,
+   "key": "matt-johnson-1",
+   "pick": 21,
+   "predicted": 952.9614
+  },
+  {
+   "actual": 2255.9451,
+   "fold": 2,
+   "key": "jake-soligo",
+   "pick": 36,
+   "predicted": 568.5033
+  },
+  {
+   "actual": 284.8389,
+   "fold": 2,
+   "key": "james-tunstill",
+   "pick": 41,
+   "predicted": 517.597
+  },
+  {
+   "actual": 367.958,
+   "fold": 2,
+   "key": "josh-fahey",
+   "pick": 42,
+   "predicted": 502.4654
+  },
+  {
+   "actual": 194.5501,
+   "fold": 2,
+   "key": "zac-taylor",
+   "pick": 44,
+   "predicted": 468.2775
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "cooper-murley",
+   "pick": 49,
+   "predicted": 390.1216
+  },
+  {
+   "actual": 198.3169,
+   "fold": 2,
+   "key": "oscar-adams",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "eric-benning",
+   "pick": 54,
+   "predicted": 339.9076
+  },
+  {
+   "actual": 241.457,
+   "fold": 2,
+   "key": "jackson-archer",
+   "pick": 59,
+   "predicted": 293.9645
+  },
+  {
+   "actual": 1054.5575,
+   "fold": 2,
+   "key": "jase-burgoyne",
+   "pick": 60,
+   "predicted": 285.1586
+  },
+  {
+   "actual": 152.4606,
+   "fold": 2,
+   "key": "luke-cleary",
+   "pick": 61,
+   "predicted": 276.7373
+  },
+  {
+   "actual": 1010.3402,
+   "fold": 2,
+   "key": "jamarra-ugle-hagan",
+   "pick": 1,
+   "predicted": 2980.7947
+  },
+  {
+   "actual": 838.3093,
+   "fold": 2,
+   "key": "braeden-campbell",
+   "pick": 5,
+   "predicted": 1913.2358
+  },
+  {
+   "actual": 764.5757,
+   "fold": 2,
+   "key": "nikolas-cox",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 474.6579,
+   "fold": 2,
+   "key": "lachlan-jones",
+   "pick": 16,
+   "predicted": 1063.3497
+  },
+  {
+   "actual": 405.6476,
+   "fold": 2,
+   "key": "oliver-henry",
+   "pick": 18,
+   "predicted": 1056.8559
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "connor-downie",
+   "pick": 37,
+   "predicted": 559.9071
+  },
+  {
+   "actual": 191.6138,
+   "fold": 2,
+   "key": "jack-carroll",
+   "pick": 43,
+   "predicted": 485.8055
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "nick-stevens",
+   "pick": 49,
+   "predicted": 390.1216
+  },
+  {
+   "actual": 276.9218,
+   "fold": 2,
+   "key": "ollie-lord",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 2296.9317,
+   "fold": 2,
+   "key": "sam-flanders",
+   "pick": 11,
+   "predicted": 1596.925
+  },
+  {
+   "actual": 888.1501,
+   "fold": 2,
+   "key": "miles-bergman",
+   "pick": 14,
+   "predicted": 1237.2019
+  },
+  {
+   "actual": 839.4214,
+   "fold": 2,
+   "key": "sam-de-koning",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 343.5149,
+   "fold": 2,
+   "key": "dylan-williams",
+   "pick": 23,
+   "predicted": 837.6456
+  },
+  {
+   "actual": 453.0741,
+   "fold": 2,
+   "key": "jeremy-sharp",
+   "pick": 27,
+   "predicted": 689.2085
+  },
+  {
+   "actual": 1470.6902,
+   "fold": 2,
+   "key": "josh-worrell",
+   "pick": 28,
+   "predicted": 672.6656
+  },
+  {
+   "actual": 1420.8958,
+   "fold": 2,
+   "key": "trent-rivers",
+   "pick": 32,
+   "predicted": 615.6043
+  },
+  {
+   "actual": 459.2822,
+   "fold": 2,
+   "key": "jack-mahony",
+   "pick": 34,
+   "predicted": 589.1335
+  },
+  {
+   "actual": 184.9719,
+   "fold": 2,
+   "key": "francis-evans",
+   "pick": 40,
+   "predicted": 530.7677
+  },
+  {
+   "actual": 523.9212,
+   "fold": 2,
+   "key": "callum-jamieson",
+   "pick": 48,
+   "predicted": 403.0931
+  },
+  {
+   "actual": 155.9207,
+   "fold": 2,
+   "key": "riley-garcia",
+   "pick": 61,
+   "predicted": 276.7373
+  },
+  {
+   "actual": 4571.939,
+   "fold": 2,
+   "key": "sam-walsh",
+   "pick": 1,
+   "predicted": 2980.7947
+  },
+  {
+   "actual": 2762.2964,
+   "fold": 2,
+   "key": "tarryn-thomas",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 890.6088,
+   "fold": 2,
+   "key": "isaac-quaynor",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 215.8448,
+   "fold": 2,
+   "key": "xavier-o-halloran",
+   "pick": 22,
+   "predicted": 896.413
+  },
+  {
+   "actual": 1755.7876,
+   "fold": 2,
+   "key": "kieren-briggs",
+   "pick": 34,
+   "predicted": 589.1335
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "tom-joyce",
+   "pick": 40,
+   "predicted": 530.7677
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "connor-mcfadyen",
+   "pick": 42,
+   "predicted": 502.4654
+  },
+  {
+   "actual": 897.5664,
+   "fold": 2,
+   "key": "jack-ross",
+   "pick": 43,
+   "predicted": 485.8055
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jacob-kennerly",
+   "pick": 50,
+   "predicted": 378.5449
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "zac-foot",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 124.2444,
+   "fold": 2,
+   "key": "brett-bewley",
+   "pick": 59,
+   "predicted": 293.9645
+  },
+  {
+   "actual": 3525.8843,
+   "fold": 2,
+   "key": "luke-davies-uniacke",
+   "pick": 4,
+   "predicted": 2273.4025
+  },
+  {
+   "actual": 716.9151,
+   "fold": 2,
+   "key": "nicholas-coffield",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 2141.3157,
+   "fold": 2,
+   "key": "aaron-naughton",
+   "pick": 9,
+   "predicted": 1598.925
+  },
+  {
+   "actual": 470.8798,
+   "fold": 2,
+   "key": "aiden-bonar",
+   "pick": 11,
+   "predicted": 1596.925
+  },
+  {
+   "actual": 2012.6986,
+   "fold": 2,
+   "key": "zac-bailey",
+   "pick": 15,
+   "predicted": 1107.9091
+  },
+  {
+   "actual": 2001.1055,
+   "fold": 2,
+   "key": "ed-richards",
+   "pick": 16,
+   "predicted": 1063.3497
+  },
+  {
+   "actual": 258.8868,
+   "fold": 2,
+   "key": "brandon-starcevich",
+   "pick": 18,
+   "predicted": 1056.8559
+  },
+  {
+   "actual": 932.8743,
+   "fold": 2,
+   "key": "noah-balta",
+   "pick": 25,
+   "predicted": 741.9214
+  },
+  {
+   "actual": 320.0592,
+   "fold": 2,
+   "key": "charlie-spargo",
+   "pick": 29,
+   "predicted": 658.2886
+  },
+  {
+   "actual": 390.7006,
+   "fold": 2,
+   "key": "harrison-petty",
+   "pick": 37,
+   "predicted": 559.9071
+  },
+  {
+   "actual": 367.0516,
+   "fold": 2,
+   "key": "nathan-murphy",
+   "pick": 39,
+   "predicted": 541.9037
+  },
+  {
+   "actual": 358.4377,
+   "fold": 2,
+   "key": "andrew-mcpherson",
+   "pick": 40,
+   "predicted": 530.7677
+  },
+  {
+   "actual": 238.427,
+   "fold": 2,
+   "key": "ben-paton",
+   "pick": 46,
+   "predicted": 433.5498
+  },
+  {
+   "actual": 119.3997,
+   "fold": 2,
+   "key": "oskar-baker",
+   "pick": 48,
+   "predicted": 403.0931
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jordan-houlahan",
+   "pick": 49,
+   "predicted": 390.1216
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "tom-north",
+   "pick": 64,
+   "predicted": 254.6314
+  },
+  {
+   "actual": 2281.4357,
+   "fold": 2,
+   "key": "andrew-mcgrath",
+   "pick": 1,
+   "predicted": 2980.7947
+  },
+  {
+   "actual": 1273.6657,
+   "fold": 2,
+   "key": "ben-ainsworth",
+   "pick": 4,
+   "predicted": 2273.4025
+  },
+  {
+   "actual": 730.0637,
+   "fold": 2,
+   "key": "griffin-logue",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 876.9,
+   "fold": 2,
+   "key": "timothy-english",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 1988.7303,
+   "fold": 2,
+   "key": "shai-bolton",
+   "pick": 29,
+   "predicted": 658.2886
+  },
+  {
+   "actual": 397.8645,
+   "fold": 2,
+   "key": "joshua-begley",
+   "pick": 31,
+   "predicted": 629.9601
+  },
+  {
+   "actual": 52.8434,
+   "fold": 2,
+   "key": "mitchell-hannan",
+   "pick": 46,
+   "predicted": 433.5498
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "kale-kirby",
+   "pick": 50,
+   "predicted": 378.5449
+  },
+  {
+   "actual": 353.5113,
+   "fold": 2,
+   "key": "quinton-narkle",
+   "pick": 59,
+   "predicted": 293.9645
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "dion-johnstone",
+   "pick": 63,
+   "predicted": 261.4118
+  },
+  {
+   "actual": 825.5153,
+   "fold": 2,
+   "key": "josh-schache",
+   "pick": 2,
+   "predicted": 2912.3802
+  },
+  {
+   "actual": 3697.6078,
+   "fold": 2,
+   "key": "callum-mills",
+   "pick": 3,
+   "predicted": 2662.0054
+  },
+  {
+   "actual": 3481.4209,
+   "fold": 2,
+   "key": "darcy-parish",
+   "pick": 5,
+   "predicted": 1913.2358
+  },
+  {
+   "actual": 1023.2814,
+   "fold": 2,
+   "key": "wayne-milera",
+   "pick": 11,
+   "predicted": 1596.925
+  },
+  {
+   "actual": 887.787,
+   "fold": 2,
+   "key": "harrison-himmelberg",
+   "pick": 16,
+   "predicted": 1063.3497
+  },
+  {
+   "actual": 1077.3974,
+   "fold": 2,
+   "key": "ryan-burton",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 1133.4934,
+   "fold": 2,
+   "key": "brayden-fiorini",
+   "pick": 20,
+   "predicted": 1001.0151
+  },
+  {
+   "actual": 1946.0574,
+   "fold": 2,
+   "key": "ben-keays",
+   "pick": 24,
+   "predicted": 784.3966
+  },
+  {
+   "actual": 421.6114,
+   "fold": 2,
+   "key": "darcy-tucker",
+   "pick": 27,
+   "predicted": 689.2085
+  },
+  {
+   "actual": 1083.6141,
+   "fold": 2,
+   "key": "mason-redman",
+   "pick": 30,
+   "predicted": 644.2551
+  },
+  {
+   "actual": 455.1056,
+   "fold": 2,
+   "key": "riley-bonner",
+   "pick": 37,
+   "predicted": 559.9071
+  },
+  {
+   "actual": 894.5,
+   "fold": 2,
+   "key": "matthew-flynn",
+   "pick": 41,
+   "predicted": 517.597
+  },
+  {
+   "actual": 90.0,
+   "fold": 2,
+   "key": "shane-yarran",
+   "pick": 60,
+   "predicted": 285.1586
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "matthew-allen",
+   "pick": 61,
+   "predicted": 276.7373
+  },
+  {
+   "actual": 244.3822,
+   "fold": 2,
+   "key": "rupert-wills",
+   "pick": 62,
+   "predicted": 268.7971
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "yestin-eades",
+   "pick": 63,
+   "predicted": 261.4118
+  },
+  {
+   "actual": 833.6642,
+   "fold": 2,
+   "key": "caleb-marchbank",
+   "pick": 6,
+   "predicted": 1649.974
+  },
+  {
+   "actual": 1040.3,
+   "fold": 2,
+   "key": "jake-lever",
+   "pick": 14,
+   "predicted": 1237.2019
+  },
+  {
+   "actual": 309.2151,
+   "fold": 2,
+   "key": "sam-durdin",
+   "pick": 16,
+   "predicted": 1063.3497
+  },
+  {
+   "actual": 345.2618,
+   "fold": 2,
+   "key": "daniel-mckenzie",
+   "pick": 22,
+   "predicted": 896.413
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "harrison-wigg",
+   "pick": 34,
+   "predicted": 589.1335
+  },
+  {
+   "actual": 593.3,
+   "fold": 2,
+   "key": "alex-neal-bullen",
+   "pick": 39,
+   "predicted": 541.9037
+  },
+  {
+   "actual": 2508.973,
+   "fold": 2,
+   "key": "caleb-daniel",
+   "pick": 45,
+   "predicted": 450.626
+  },
+  {
+   "actual": 797.0,
+   "fold": 2,
+   "key": "marc-pittonet",
+   "pick": 49,
+   "predicted": 390.1216
+  },
+  {
+   "actual": 1173.1791,
+   "fold": 2,
+   "key": "ed-langdon",
+   "pick": 53,
+   "predicted": 349.0553
+  },
+  {
+   "actual": 625.1,
+   "fold": 2,
+   "key": "harris-andrews",
+   "pick": 59,
+   "predicted": 293.9645
+  },
+  {
+   "actual": 388.7,
+   "fold": 2,
+   "key": "daniel-butler",
+   "pick": 64,
+   "predicted": 254.6314
+  },
+  {
+   "actual": 3999.3798,
+   "fold": 2,
+   "key": "joshua-kelly",
+   "pick": 1,
+   "predicted": 2980.7947
+  },
+  {
+   "actual": 2168.1647,
+   "fold": 2,
+   "key": "kade-kolodjashnij",
+   "pick": 4,
+   "predicted": 2273.4025
+  },
+  {
+   "actual": 1010.2,
+   "fold": 2,
+   "key": "christian-salem",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 695.0022,
+   "fold": 2,
+   "key": "cameron-mccarthy",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 1294.2892,
+   "fold": 2,
+   "key": "zak-jones",
+   "pick": 14,
+   "predicted": 1237.2019
+  },
+  {
+   "actual": 5035.4103,
+   "fold": 2,
+   "key": "zachary-merrett",
+   "pick": 25,
+   "predicted": 741.9214
+  },
+  {
+   "actual": 519.6323,
+   "fold": 2,
+   "key": "nicholas-robertson",
+   "pick": 33,
+   "predicted": 601.7813
+  },
+  {
+   "actual": 859.1,
+   "fold": 2,
+   "key": "toby-nankervis",
+   "pick": 34,
+   "predicted": 589.1335
+  },
+  {
+   "actual": 419.459,
+   "fold": 2,
+   "key": "jarrad-jansen",
+   "pick": 35,
+   "predicted": 578.0597
+  },
+  {
+   "actual": 735.1,
+   "fold": 2,
+   "key": "alex-pearce",
+   "pick": 36,
+   "predicted": 568.5033
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "dylan-main",
+   "pick": 47,
+   "predicted": 417.5965
+  },
+  {
+   "actual": 1997.086,
+   "fold": 2,
+   "key": "tom-langdon",
+   "pick": 56,
+   "predicted": 321.5319
+  },
+  {
+   "actual": 1165.4499,
+   "fold": 2,
+   "key": "jonathan-o-rourke",
+   "pick": 2,
+   "predicted": 2912.3802
+  },
+  {
+   "actual": 1132.2,
+   "fold": 2,
+   "key": "jesse-hogan",
+   "pick": 5,
+   "predicted": 1913.2358
+  },
+  {
+   "actual": 4971.1831,
+   "fold": 2,
+   "key": "jackson-macrae",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 994.8,
+   "fold": 2,
+   "key": "nick-vlastuin",
+   "pick": 12,
+   "predicted": 1595.925
+  },
+  {
+   "actual": 614.4344,
+   "fold": 2,
+   "key": "timothy-broomhead",
+   "pick": 24,
+   "predicted": 784.3966
+  },
+  {
+   "actual": 425.4293,
+   "fold": 2,
+   "key": "nathan-wright",
+   "pick": 28,
+   "predicted": 672.6656
+  },
+  {
+   "actual": 413.6567,
+   "fold": 2,
+   "key": "tim-o-brien",
+   "pick": 31,
+   "predicted": 629.9601
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jason-ashby",
+   "pick": 38,
+   "predicted": 551.365
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "tom-temay",
+   "pick": 39,
+   "predicted": 541.9037
+  },
+  {
+   "actual": 573.3,
+   "fold": 2,
+   "key": "tim-membrey",
+   "pick": 49,
+   "predicted": 390.1216
+  },
+  {
+   "actual": 383.9039,
+   "fold": 2,
+   "key": "dean-kent",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 126.0557,
+   "fold": 2,
+   "key": "matt-jones",
+   "pick": 55,
+   "predicted": 330.753
+  },
+  {
+   "actual": 417.4887,
+   "fold": 2,
+   "key": "clay-cameron",
+   "pick": 60,
+   "predicted": 285.1586
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "sam-siggins",
+   "pick": 62,
+   "predicted": 268.7971
+  },
+  {
+   "actual": 599.6512,
+   "fold": 2,
+   "key": "matthew-dick",
+   "pick": 63,
+   "predicted": 261.4118
+  },
+  {
+   "actual": 1099.3583,
+   "fold": 2,
+   "key": "billy-longer",
+   "pick": 11,
+   "predicted": 1596.925
+  },
+  {
+   "actual": 4473.6014,
+   "fold": 2,
+   "key": "tom-mitchell",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 3548.1732,
+   "fold": 2,
+   "key": "taylor-adams",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 548.6993,
+   "fold": 2,
+   "key": "thomas-sheridan",
+   "pick": 22,
+   "predicted": 896.413
+  },
+  {
+   "actual": 998.0486,
+   "fold": 2,
+   "key": "clay-smith",
+   "pick": 23,
+   "predicted": 837.6456
+  },
+  {
+   "actual": 1104.3323,
+   "fold": 2,
+   "key": "sam-kerridge",
+   "pick": 32,
+   "predicted": 615.6043
+  },
+  {
+   "actual": 644.3,
+   "fold": 2,
+   "key": "joel-hamling",
+   "pick": 41,
+   "predicted": 517.597
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "daniel-markworth",
+   "pick": 44,
+   "predicted": 468.2775
+  },
+  {
+   "actual": 362.082,
+   "fold": 2,
+   "key": "jimmy-webster",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "matthew-arnot",
+   "pick": 63,
+   "predicted": 261.4118
+  },
+  {
+   "actual": 564.7759,
+   "fold": 2,
+   "key": "tom-downie",
+   "pick": 64,
+   "predicted": 254.6314
+  },
+  {
+   "actual": 4512.9819,
+   "fold": 2,
+   "key": "harley-bennell",
+   "pick": 2,
+   "predicted": 2912.3802
+  },
+  {
+   "actual": 1825.0381,
+   "fold": 2,
+   "key": "josh-caddy",
+   "pick": 7,
+   "predicted": 1648.974
+  },
+  {
+   "actual": 2626.9,
+   "fold": 2,
+   "key": "dion-prestia",
+   "pick": 9,
+   "predicted": 1598.925
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "lucas-cook",
+   "pick": 12,
+   "predicted": 1595.925
+  },
+  {
+   "actual": 611.3619,
+   "fold": 2,
+   "key": "sebastian-tape",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 639.3733,
+   "fold": 2,
+   "key": "billie-smedts",
+   "pick": 15,
+   "predicted": 1107.9091
+  },
+  {
+   "actual": 472.3081,
+   "fold": 2,
+   "key": "jake-batchelor",
+   "pick": 32,
+   "predicted": 615.6043
+  },
+  {
+   "actual": 335.4605,
+   "fold": 2,
+   "key": "ariel-steinberg",
+   "pick": 33,
+   "predicted": 601.7813
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "luke-mitchell",
+   "pick": 43,
+   "predicted": 485.8055
+  },
+  {
+   "actual": 320.4122,
+   "fold": 2,
+   "key": "alex-browne",
+   "pick": 50,
+   "predicted": 378.5449
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "dean-macdonald",
+   "pick": 52,
+   "predicted": 358.3569
+  },
+  {
+   "actual": 512.4326,
+   "fold": 2,
+   "key": "cameron-o-shea",
+   "pick": 53,
+   "predicted": 349.0553
+  },
+  {
+   "actual": 120.7782,
+   "fold": 2,
+   "key": "angus-dewar",
+   "pick": 56,
+   "predicted": 321.5319
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "tom-ledger",
+   "pick": 59,
+   "predicted": 293.9645
+  },
+  {
+   "actual": 2185.8189,
+   "fold": 2,
+   "key": "jack-trengove",
+   "pick": 2,
+   "predicted": 2912.3802
+  },
+  {
+   "actual": 4290.9633,
+   "fold": 2,
+   "key": "dustin-martin",
+   "pick": 3,
+   "predicted": 2662.0054
+  },
+  {
+   "actual": 1021.2,
+   "fold": 2,
+   "key": "jake-melksham",
+   "pick": 10,
+   "predicted": 1597.925
+  },
+  {
+   "actual": 626.4919,
+   "fold": 2,
+   "key": "christian-howard",
+   "pick": 15,
+   "predicted": 1107.9091
+  },
+  {
+   "actual": 741.2777,
+   "fold": 2,
+   "key": "luke-tapscott",
+   "pick": 18,
+   "predicted": 1056.8559
+  },
+  {
+   "actual": 778.1078,
+   "fold": 2,
+   "key": "benjamin-griffiths",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 4654.601,
+   "fold": 2,
+   "key": "nathan-fyfe",
+   "pick": 20,
+   "predicted": 1001.0151
+  },
+  {
+   "actual": 1153.3164,
+   "fold": 2,
+   "key": "dylan-roberton",
+   "pick": 48,
+   "predicted": 403.0931
+  },
+  {
+   "actual": 585.8498,
+   "fold": 2,
+   "key": "jack-fitzpatrick",
+   "pick": 49,
+   "predicted": 390.1216
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jordan-williams",
+   "pick": 56,
+   "predicted": 321.5319
+  },
+  {
+   "actual": 219.4959,
+   "fold": 2,
+   "key": "ben-nason",
+   "pick": 62,
+   "predicted": 268.7971
+  },
+  {
+   "actual": 864.34,
+   "fold": 2,
+   "key": "phil-davis",
+   "pick": 10,
+   "predicted": 1597.925
+  },
+  {
+   "actual": 1129.4075,
+   "fold": 2,
+   "key": "tom-swift",
+   "pick": 20,
+   "predicted": 1001.0151
+  },
+  {
+   "actual": 2791.3592,
+   "fold": 2,
+   "key": "jack-redden",
+   "pick": 25,
+   "predicted": 741.9214
+  },
+  {
+   "actual": 466.2987,
+   "fold": 2,
+   "key": "samuel-wright",
+   "pick": 27,
+   "predicted": 689.2085
+  },
+  {
+   "actual": 5629.8685,
+   "fold": 2,
+   "key": "dayne-beams",
+   "pick": 29,
+   "predicted": 658.2886
+  },
+  {
+   "actual": 234.2196,
+   "fold": 2,
+   "key": "jamie-bennell",
+   "pick": 35,
+   "predicted": 578.0597
+  },
+  {
+   "actual": 1272.6766,
+   "fold": 2,
+   "key": "matthew-broadbent",
+   "pick": 38,
+   "predicted": 551.365
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jarrad-blight",
+   "pick": 45,
+   "predicted": 450.626
+  },
+  {
+   "actual": 816.4,
+   "fold": 2,
+   "key": "rhys-stanley",
+   "pick": 47,
+   "predicted": 417.5965
+  },
+  {
+   "actual": 203.0245,
+   "fold": 2,
+   "key": "neville-jetta",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 627.494,
+   "fold": 2,
+   "key": "jarrad-redden",
+   "pick": 54,
+   "predicted": 339.9076
+  },
+  {
+   "actual": 2643.684,
+   "fold": 2,
+   "key": "ben-mcevoy",
+   "pick": 9,
+   "predicted": 1598.925
+  },
+  {
+   "actual": 2238.269,
+   "fold": 2,
+   "key": "bradley-ebert",
+   "pick": 13,
+   "predicted": 1442.4366
+  },
+  {
+   "actual": 491.4861,
+   "fold": 2,
+   "key": "addam-maric",
+   "pick": 21,
+   "predicted": 952.9614
+  },
+  {
+   "actual": 806.6774,
+   "fold": 2,
+   "key": "brendan-whitecross",
+   "pick": 29,
+   "predicted": 658.2886
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "tobias-thoolen",
+   "pick": 46,
+   "predicted": 433.5498
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "dean-putt",
+   "pick": 50,
+   "predicted": 378.5449
+  },
+  {
+   "actual": 1132.174,
+   "fold": 2,
+   "key": "bradd-dalziell",
+   "pick": 51,
+   "predicted": 368.0745
+  },
+  {
+   "actual": 1275.5921,
+   "fold": 2,
+   "key": "lachlan-hansen",
+   "pick": 4,
+   "predicted": 2273.4025
+  },
+  {
+   "actual": 1706.7705,
+   "fold": 2,
+   "key": "david-armitage",
+   "pick": 10,
+   "predicted": 1597.925
+  },
+  {
+   "actual": 355.8415,
+   "fold": 2,
+   "key": "nathan-brown",
+   "pick": 11,
+   "predicted": 1596.925
+  },
+  {
+   "actual": 527.8987,
+   "fold": 2,
+   "key": "james-sellar",
+   "pick": 15,
+   "predicted": 1107.9091
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "daniel-o-keefe",
+   "pick": 16,
+   "predicted": 1063.3497
+  },
+  {
+   "actual": 754.1457,
+   "fold": 2,
+   "key": "leroy-jetta",
+   "pick": 19,
+   "predicted": 1036.928
+  },
+  {
+   "actual": 535.1948,
+   "fold": 2,
+   "key": "gavin-urquhart",
+   "pick": 22,
+   "predicted": 896.413
+  },
+  {
+   "actual": 1323.0815,
+   "fold": 2,
+   "key": "brent-renouf",
+   "pick": 25,
+   "predicted": 741.9214
+  },
+  {
+   "actual": 947.0967,
+   "fold": 2,
+   "key": "jarryd-morton",
+   "pick": 34,
+   "predicted": 589.1335
+  },
+  {
+   "actual": 349.2861,
+   "fold": 2,
+   "key": "chris-schmidt",
+   "pick": 35,
+   "predicted": 578.0597
+  },
+  {
+   "actual": 363.1077,
+   "fold": 2,
+   "key": "james-hawksley",
+   "pick": 39,
+   "predicted": 541.9037
+  },
+  {
+   "actual": 3098.4238,
+   "fold": 2,
+   "key": "josh-p-kennedy",
+   "pick": 41,
+   "predicted": 517.597
+  },
+  {
+   "actual": 1786.1529,
+   "fold": 2,
+   "key": "bachar-houli",
+   "pick": 42,
+   "predicted": 502.4654
+  },
+  {
+   "actual": 228.1313,
+   "fold": 2,
+   "key": "brennan-stack",
+   "pick": 45,
+   "predicted": 450.626
+  },
+  {
+   "actual": 443.2719,
+   "fold": 2,
+   "key": "lindsay-thomas",
+   "pick": 53,
+   "predicted": 349.0553
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "matt-tyler",
+   "pick": 54,
+   "predicted": 339.9076
+  },
+  {
+   "actual": 367.4787,
+   "fold": 2,
+   "key": "tyson-goldsack",
+   "pick": 63,
+   "predicted": 261.4118
+  },
+  {
+   "actual": 648.6,
+   "fold": 2,
+   "key": "jamie-elliott",
+   "pick": 39,
+   "predicted": 541.9037
+  },
+  {
+   "actual": 3921.3834,
+   "fold": 2,
+   "key": "brett-deledio",
+   "pick": 1,
+   "predicted": 2980.7947
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "john-meesen",
+   "pick": 8,
+   "predicted": 1647.974
+  },
+  {
+   "actual": 1135.0903,
+   "fold": 2,
+   "key": "adam-thomson",
+   "pick": 12,
+   "predicted": 1595.925
+  },
+  {
+   "actual": 1210.5187,
+   "fold": 2,
+   "key": "cameron-wood",
+   "pick": 20,
+   "predicted": 1001.0151
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "jesse-wells",
+   "pick": 25,
+   "predicted": 741.9214
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "andrew-lee",
+   "pick": 33,
+   "predicted": 601.7813
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "james-ezard",
+   "pick": 36,
+   "predicted": 568.5033
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "damien-mccormack",
+   "pick": 40,
+   "predicted": 530.7677
+  },
+  {
+   "actual": 2279.6701,
+   "fold": 2,
+   "key": "ivan-maric",
+   "pick": 41,
+   "predicted": 517.597
+  },
+  {
+   "actual": 298.1899,
+   "fold": 2,
+   "key": "jayden-attard",
+   "pick": 47,
+   "predicted": 417.5965
+  },
+  {
+   "actual": 760.1728,
+   "fold": 2,
+   "key": "matthew-egan",
+   "pick": 57,
+   "predicted": 312.2676
+  },
+  {
+   "actual": 306.4928,
+   "fold": 2,
+   "key": "chris-bryan",
+   "pick": 62,
+   "predicted": 268.7971
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "anthony-raso",
+   "pick": 63,
+   "predicted": 261.4118
+  },
+  {
+   "actual": 925.9564,
+   "fold": 2,
+   "key": "marcus-drum",
+   "pick": 10,
+   "predicted": 1597.925
+  },
+  {
+   "actual": 775.7397,
+   "fold": 2,
+   "key": "danny-stanley",
+   "pick": 21,
+   "predicted": 952.9614
+  },
+  {
+   "actual": 723.1925,
+   "fold": 2,
+   "key": "garrick-ibbotson",
+   "pick": 26,
+   "predicted": 711.0494
+  },
+  {
+   "actual": 605.5221,
+   "fold": 2,
+   "key": "nick-lower",
+   "pick": 30,
+   "predicted": 644.2551
+  },
+  {
+   "actual": 3525.2877,
+   "fold": 2,
+   "key": "andrew-swallow",
+   "pick": 43,
+   "predicted": 485.8055
+  },
+  {
+   "actual": 224.2875,
+   "fold": 2,
+   "key": "kristin-thornton",
+   "pick": 50,
+   "predicted": 378.5449
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "phillip-raymond",
+   "pick": 57,
+   "predicted": 312.2676
+  },
+  {
+   "actual": 0.0,
+   "fold": 2,
+   "key": "austin-lucy",
+   "pick": 58,
+   "predicted": 303.0412
+  },
+  {
+   "actual": 769.0,
+   "fold": 2,
+   "key": "jonathan-giles",
+   "pick": 61,
+   "predicted": 276.7373
+  },
+  {
+   "actual": 1232.9952,
+   "fold": 3,
+   "key": "elijah-tsatas",
+   "pick": 5,
+   "predicted": 1980.1008
+  },
+  {
+   "actual": 2499.1571,
+   "fold": 3,
+   "key": "bailey-humphrey",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 653.9266,
+   "fold": 3,
+   "key": "harry-rowston",
+   "pick": 16,
+   "predicted": 1071.9639
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "harry-barnett",
+   "pick": 23,
+   "predicted": 948.041
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "olli-hotton",
+   "pick": 35,
+   "predicted": 588.3906
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "phoenix-foster",
+   "pick": 52,
+   "predicted": 346.4935
+  },
+  {
+   "actual": 258.0526,
+   "fold": 3,
+   "key": "steely-green",
+   "pick": 55,
+   "predicted": 317.1291
+  },
+  {
+   "actual": 4021.2365,
+   "fold": 3,
+   "key": "jason-horne-francis",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 3608.1022,
+   "fold": 3,
+   "key": "finn-callaghan",
+   "pick": 3,
+   "predicted": 2993.4131
+  },
+  {
+   "actual": 2046.9655,
+   "fold": 3,
+   "key": "darcy-wilmot",
+   "pick": 16,
+   "predicted": 1071.9639
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "james-willis",
+   "pick": 32,
+   "predicted": 648.2559
+  },
+  {
+   "actual": 196.0376,
+   "fold": 3,
+   "key": "corey-warner",
+   "pick": 40,
+   "predicted": 545.3005
+  },
+  {
+   "actual": 172.6866,
+   "fold": 3,
+   "key": "arthur-jones",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "arlo-draper",
+   "pick": 45,
+   "predicted": 459.9553
+  },
+  {
+   "actual": 1238.428,
+   "fold": 3,
+   "key": "marcus-windhager",
+   "pick": 47,
+   "predicted": 418.9599
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "flynn-kroeger",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "cooper-whyte",
+   "pick": 63,
+   "predicted": 256.2987
+  },
+  {
+   "actual": 3638.7877,
+   "fold": 3,
+   "key": "riley-thilthorpe",
+   "pick": 2,
+   "predicted": 3016.8306
+  },
+  {
+   "actual": 1640.9088,
+   "fold": 3,
+   "key": "will-phillips",
+   "pick": 3,
+   "predicted": 2993.4131
+  },
+  {
+   "actual": 1188.1354,
+   "fold": 3,
+   "key": "denver-grainger-barras",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 738.5507,
+   "fold": 3,
+   "key": "zach-reid",
+   "pick": 10,
+   "predicted": 1453.3978
+  },
+  {
+   "actual": 617.5982,
+   "fold": 3,
+   "key": "luke-pedlar",
+   "pick": 11,
+   "predicted": 1452.3978
+  },
+  {
+   "actual": 700.492,
+   "fold": 3,
+   "key": "alex-davies",
+   "pick": 17,
+   "predicted": 1070.9639
+  },
+  {
+   "actual": 457.069,
+   "fold": 3,
+   "key": "ryan-angwin",
+   "pick": 19,
+   "predicted": 1068.9639
+  },
+  {
+   "actual": 622.9582,
+   "fold": 3,
+   "key": "nathan-o-driscoll",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 852.5949,
+   "fold": 3,
+   "key": "caleb-poulter",
+   "pick": 32,
+   "predicted": 648.2559
+  },
+  {
+   "actual": 591.9003,
+   "fold": 3,
+   "key": "samson-ryan",
+   "pick": 42,
+   "predicted": 519.0161
+  },
+  {
+   "actual": 159.9034,
+   "fold": 3,
+   "key": "beau-mccreery",
+   "pick": 46,
+   "predicted": 438.8955
+  },
+  {
+   "actual": 196.5607,
+   "fold": 3,
+   "key": "maurice-rioli-1",
+   "pick": 53,
+   "predicted": 336.122
+  },
+  {
+   "actual": 575.3602,
+   "fold": 3,
+   "key": "luke-edwards",
+   "pick": 54,
+   "predicted": 326.3988
+  },
+  {
+   "actual": 53.7933,
+   "fold": 3,
+   "key": "jacob-wehr",
+   "pick": 61,
+   "predicted": 268.8504
+  },
+  {
+   "actual": 4157.5408,
+   "fold": 3,
+   "key": "matt-rowell",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 4400.2906,
+   "fold": 3,
+   "key": "tom-green",
+   "pick": 10,
+   "predicted": 1453.3978
+  },
+  {
+   "actual": 2628.3371,
+   "fold": 3,
+   "key": "will-day",
+   "pick": 13,
+   "predicted": 1289.8298
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "sam-philp",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 606.0385,
+   "fold": 3,
+   "key": "harry-schoenberg",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "will-gould",
+   "pick": 26,
+   "predicted": 814.3501
+  },
+  {
+   "actual": 686.428,
+   "fold": 3,
+   "key": "nick-bryan",
+   "pick": 37,
+   "predicted": 568.2194
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "jay-rantall",
+   "pick": 39,
+   "predicted": 554.0722
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "will-martyn",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 263.8558,
+   "fold": 3,
+   "key": "hugo-ralphsmith",
+   "pick": 45,
+   "predicted": 459.9553
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "sam-ramsay",
+   "pick": 46,
+   "predicted": 438.8955
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "louis-butler",
+   "pick": 52,
+   "predicted": 346.4935
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "bigoa-nyuon",
+   "pick": 53,
+   "predicted": 336.122
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "lachlan-johnson",
+   "pick": 62,
+   "predicted": 262.3135
+  },
+  {
+   "actual": 3653.2003,
+   "fold": 3,
+   "key": "connor-rozee",
+   "pick": 5,
+   "predicted": 1980.1008
+  },
+  {
+   "actual": 627.5291,
+   "fold": 3,
+   "key": "ben-king",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 657.2977,
+   "fold": 3,
+   "key": "riley-collier-dawkins",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "ely-smith",
+   "pick": 21,
+   "predicted": 1059.1707
+  },
+  {
+   "actual": 232.0109,
+   "fold": 3,
+   "key": "bobby-hill",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 1948.2888,
+   "fold": 3,
+   "key": "james-rowbottom",
+   "pick": 25,
+   "predicted": 852.6623
+  },
+  {
+   "actual": 305.171,
+   "fold": 3,
+   "key": "rhylee-west",
+   "pick": 26,
+   "predicted": 814.3501
+  },
+  {
+   "actual": 568.8626,
+   "fold": 3,
+   "key": "james-jordon",
+   "pick": 33,
+   "predicted": 624.2176
+  },
+  {
+   "actual": 688.1099,
+   "fold": 3,
+   "key": "jarrod-cameron",
+   "pick": 39,
+   "predicted": 554.0722
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "ben-cavarra",
+   "pick": 45,
+   "predicted": 459.9553
+  },
+  {
+   "actual": 77.9828,
+   "fold": 3,
+   "key": "matthew-parker",
+   "pick": 47,
+   "predicted": 418.9599
+  },
+  {
+   "actual": 201.2863,
+   "fold": 3,
+   "key": "noah-answerth",
+   "pick": 55,
+   "predicted": 317.1291
+  },
+  {
+   "actual": 85.1567,
+   "fold": 3,
+   "key": "marty-hore",
+   "pick": 56,
+   "predicted": 308.2061
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "luke-english",
+   "pick": 62,
+   "predicted": 262.3135
+  },
+  {
+   "actual": 1090.1977,
+   "fold": 3,
+   "key": "cameron-rayner",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 4581.412,
+   "fold": 3,
+   "key": "andrew-brayshaw",
+   "pick": 2,
+   "predicted": 3016.8306
+  },
+  {
+   "actual": 1717.6156,
+   "fold": 3,
+   "key": "jaidyn-stephenson",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 1396.4731,
+   "fold": 3,
+   "key": "wil-powell",
+   "pick": 19,
+   "predicted": 1068.9639
+  },
+  {
+   "actual": 1255.4799,
+   "fold": 3,
+   "key": "oscar-allen",
+   "pick": 21,
+   "predicted": 1059.1707
+  },
+  {
+   "actual": 381.3434,
+   "fold": 3,
+   "key": "lachlan-fogarty",
+   "pick": 22,
+   "predicted": 1003.3074
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "will-walker",
+   "pick": 23,
+   "predicted": 948.041
+  },
+  {
+   "actual": 375.6652,
+   "fold": 3,
+   "key": "patrick-naish",
+   "pick": 34,
+   "predicted": 604.0883
+  },
+  {
+   "actual": 593.4999,
+   "fold": 3,
+   "key": "charlie-constable",
+   "pick": 36,
+   "predicted": 576.7822
+  },
+  {
+   "actual": 615.3787,
+   "fold": 3,
+   "key": "sam-hayes",
+   "pick": 47,
+   "predicted": 418.9599
+  },
+  {
+   "actual": 362.5935,
+   "fold": 3,
+   "key": "mitchell-crowden",
+   "pick": 59,
+   "predicted": 283.3894
+  },
+  {
+   "actual": 1217.3426,
+   "fold": 3,
+   "key": "will-setterfield",
+   "pick": 5,
+   "predicted": 1980.1008
+  },
+  {
+   "actual": 1893.9313,
+   "fold": 3,
+   "key": "sam-petrevski-seton",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 1306.4911,
+   "fold": 3,
+   "key": "jack-bowes",
+   "pick": 10,
+   "predicted": 1453.3978
+  },
+  {
+   "actual": 2450.784,
+   "fold": 3,
+   "key": "jy-simpkin",
+   "pick": 12,
+   "predicted": 1404.7859
+  },
+  {
+   "actual": 1163.1091,
+   "fold": 3,
+   "key": "daniel-venables",
+   "pick": 13,
+   "predicted": 1289.8298
+  },
+  {
+   "actual": 1516.5298,
+   "fold": 3,
+   "key": "harry-perryman",
+   "pick": 14,
+   "predicted": 1144.971
+  },
+  {
+   "actual": 831.5637,
+   "fold": 3,
+   "key": "isaac-cumming",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 148.1199,
+   "fold": 3,
+   "key": "ben-long",
+   "pick": 25,
+   "predicted": 852.6623
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "sam-mclarty",
+   "pick": 30,
+   "predicted": 702.1719
+  },
+  {
+   "actual": 932.6,
+   "fold": 3,
+   "key": "sean-darcy",
+   "pick": 38,
+   "predicted": 561.2037
+  },
+  {
+   "actual": 1351.8207,
+   "fold": 3,
+   "key": "josh-battle",
+   "pick": 39,
+   "predicted": 554.0722
+  },
+  {
+   "actual": 399.036,
+   "fold": 3,
+   "key": "myles-poholke",
+   "pick": 44,
+   "predicted": 481.1305
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "jack-maibaum",
+   "pick": 45,
+   "predicted": 459.9553
+  },
+  {
+   "actual": 1343.94,
+   "fold": 3,
+   "key": "jack-graham",
+   "pick": 53,
+   "predicted": 336.122
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "lachlan-tiziani",
+   "pick": 54,
+   "predicted": 326.3988
+  },
+  {
+   "actual": 1326.1602,
+   "fold": 3,
+   "key": "josh-daicos",
+   "pick": 57,
+   "predicted": 299.5945
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "matthew-signorello",
+   "pick": 61,
+   "predicted": 268.8504
+  },
+  {
+   "actual": 995.7,
+   "fold": 3,
+   "key": "eric-hipwood",
+   "pick": 14,
+   "predicted": 1144.971
+  },
+  {
+   "actual": 970.7664,
+   "fold": 3,
+   "key": "tom-doedee",
+   "pick": 17,
+   "predicted": 1070.9639
+  },
+  {
+   "actual": 954.939,
+   "fold": 3,
+   "key": "luke-partington",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 140.6694,
+   "fold": 3,
+   "key": "corey-wagner",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 1266.4621,
+   "fold": 3,
+   "key": "blake-hardwick",
+   "pick": 44,
+   "predicted": 481.1305
+  },
+  {
+   "actual": 689.4318,
+   "fold": 3,
+   "key": "bailey-williams-wb",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 857.1524,
+   "fold": 3,
+   "key": "samuel-collins",
+   "pick": 54,
+   "predicted": 326.3988
+  },
+  {
+   "actual": 1465.7246,
+   "fold": 3,
+   "key": "tom-phillips",
+   "pick": 57,
+   "predicted": 299.5945
+  },
+  {
+   "actual": 230.1358,
+   "fold": 3,
+   "key": "declan-mountford",
+   "pick": 59,
+   "predicted": 283.3894
+  },
+  {
+   "actual": 2646.1017,
+   "fold": 3,
+   "key": "angus-brayshaw",
+   "pick": 2,
+   "predicted": 3016.8306
+  },
+  {
+   "actual": 1314.3688,
+   "fold": 3,
+   "key": "jarrod-pickett",
+   "pick": 4,
+   "predicted": 2549.776
+  },
+  {
+   "actual": 1957.6,
+   "fold": 3,
+   "key": "jordan-de-goey",
+   "pick": 5,
+   "predicted": 1980.1008
+  },
+  {
+   "actual": 944.9,
+   "fold": 3,
+   "key": "kyle-langford",
+   "pick": 17,
+   "predicted": 1070.9639
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "patrick-mckenna",
+   "pick": 23,
+   "predicted": 948.041
+  },
+  {
+   "actual": 676.6537,
+   "fold": 3,
+   "key": "lukas-webb",
+   "pick": 26,
+   "predicted": 814.3501
+  },
+  {
+   "actual": 719.9,
+   "fold": 3,
+   "key": "touk-miller",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 1701.5271,
+   "fold": 3,
+   "key": "brayden-maynard",
+   "pick": 29,
+   "predicted": 728.8496
+  },
+  {
+   "actual": 465.5856,
+   "fold": 3,
+   "key": "liam-dawson",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "matthew-goodyear",
+   "pick": 47,
+   "predicted": 418.9599
+  },
+  {
+   "actual": 269.2878,
+   "fold": 3,
+   "key": "teia-miles",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 227.9474,
+   "fold": 3,
+   "key": "jackson-nelson",
+   "pick": 50,
+   "predicted": 370.3873
+  },
+  {
+   "actual": 2652.682,
+   "fold": 3,
+   "key": "jack-billings",
+   "pick": 2,
+   "predicted": 3016.8306
+  },
+  {
+   "actual": 4065.1055,
+   "fold": 3,
+   "key": "patrick-cripps",
+   "pick": 12,
+   "predicted": 1404.7859
+  },
+  {
+   "actual": 995.895,
+   "fold": 3,
+   "key": "blake-acres",
+   "pick": 18,
+   "predicted": 1069.9639
+  },
+  {
+   "actual": 637.3923,
+   "fold": 3,
+   "key": "jack-leslie",
+   "pick": 19,
+   "predicted": 1068.9639
+  },
+  {
+   "actual": 886.8,
+   "fold": 3,
+   "key": "darcy-gardiner",
+   "pick": 21,
+   "predicted": 1059.1707
+  },
+  {
+   "actual": 1398.4973,
+   "fold": 3,
+   "key": "george-hewett",
+   "pick": 31,
+   "predicted": 674.8428
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "cameron-giles",
+   "pick": 38,
+   "predicted": 561.2037
+  },
+  {
+   "actual": 400.755,
+   "fold": 3,
+   "key": "riley-knight",
+   "pick": 45,
+   "predicted": 459.9553
+  },
+  {
+   "actual": 1521.4468,
+   "fold": 3,
+   "key": "ben-brown",
+   "pick": 46,
+   "predicted": 438.8955
+  },
+  {
+   "actual": 549.4,
+   "fold": 3,
+   "key": "darcy-byrne-jones",
+   "pick": 49,
+   "predicted": 384.6237
+  },
+  {
+   "actual": 2141.8,
+   "fold": 3,
+   "key": "jack-martin",
+   "pick": 3,
+   "predicted": 2993.4131
+  },
+  {
+   "actual": 378.1036,
+   "fold": 3,
+   "key": "taylor-garner",
+   "pick": 19,
+   "predicted": 1068.9639
+  },
+  {
+   "actual": 528.0925,
+   "fold": 3,
+   "key": "jackson-thurlow",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "tanner-smith",
+   "pick": 40,
+   "predicted": 545.3005
+  },
+  {
+   "actual": 165.0126,
+   "fold": 3,
+   "key": "harrison-marsh",
+   "pick": 47,
+   "predicted": 418.9599
+  },
+  {
+   "actual": 4257.6,
+   "fold": 3,
+   "key": "jaeger-o-meara",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 1924.8772,
+   "fold": 3,
+   "key": "jonathon-patton",
+   "pick": 2,
+   "predicted": 3016.8306
+  },
+  {
+   "actual": 675.3003,
+   "fold": 3,
+   "key": "will-hoskin-elliott",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 487.6586,
+   "fold": 3,
+   "key": "matthew-buntine",
+   "pick": 7,
+   "predicted": 1714.6741
+  },
+  {
+   "actual": 2576.6739,
+   "fold": 3,
+   "key": "devon-smith",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 412.4333,
+   "fold": 3,
+   "key": "bradley-mckenzie",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 545.9975,
+   "fold": 3,
+   "key": "josh-bootsma",
+   "pick": 27,
+   "predicted": 782.4568
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "murray-newman",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 327.5138,
+   "fold": 3,
+   "key": "todd-elton",
+   "pick": 31,
+   "predicted": 674.8428
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "fraser-mcinnes",
+   "pick": 34,
+   "predicted": 604.0883
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "alex-forster",
+   "pick": 35,
+   "predicted": 588.3906
+  },
+  {
+   "actual": 420.1744,
+   "fold": 3,
+   "key": "shane-kersten",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "jordan-kelly",
+   "pick": 47,
+   "predicted": 418.9599
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "nick-joyce",
+   "pick": 55,
+   "predicted": 317.1291
+  },
+  {
+   "actual": 460.1657,
+   "fold": 3,
+   "key": "jackson-paine",
+   "pick": 59,
+   "predicted": 283.3894
+  },
+  {
+   "actual": 1481.5513,
+   "fold": 3,
+   "key": "jared-polec",
+   "pick": 5,
+   "predicted": 1980.1008
+  },
+  {
+   "actual": 792.3726,
+   "fold": 3,
+   "key": "reece-conca",
+   "pick": 6,
+   "predicted": 1715.6741
+  },
+  {
+   "actual": 850.2594,
+   "fold": 3,
+   "key": "daniel-gorringe",
+   "pick": 10,
+   "predicted": 1453.3978
+  },
+  {
+   "actual": 1020.0,
+   "fold": 3,
+   "key": "tom-lynch-1",
+   "pick": 11,
+   "predicted": 1452.3978
+  },
+  {
+   "actual": 1150.2,
+   "fold": 3,
+   "key": "thomas-liberatore",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 750.4,
+   "fold": 3,
+   "key": "jamie-cripps",
+   "pick": 26,
+   "predicted": 814.3501
+  },
+  {
+   "actual": 874.8051,
+   "fold": 3,
+   "key": "patrick-karnezis",
+   "pick": 27,
+   "predicted": 782.4568
+  },
+  {
+   "actual": 846.5,
+   "fold": 3,
+   "key": "jack-darling",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 625.0,
+   "fold": 3,
+   "key": "ryan-lester",
+   "pick": 30,
+   "predicted": 702.1719
+  },
+  {
+   "actual": 480.359,
+   "fold": 3,
+   "key": "joshua-green",
+   "pick": 34,
+   "predicted": 604.0883
+  },
+  {
+   "actual": 608.4,
+   "fold": 3,
+   "key": "jeremy-howe",
+   "pick": 35,
+   "predicted": 588.3906
+  },
+  {
+   "actual": 428.6295,
+   "fold": 3,
+   "key": "george-horlin-smith",
+   "pick": 39,
+   "predicted": 554.0722
+  },
+  {
+   "actual": 802.4956,
+   "fold": 3,
+   "key": "jeremy-taylor",
+   "pick": 41,
+   "predicted": 533.7797
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "sam-crocker",
+   "pick": 44,
+   "predicted": 481.1305
+  },
+  {
+   "actual": 1036.0786,
+   "fold": 3,
+   "key": "alex-fasolo",
+   "pick": 46,
+   "predicted": 438.8955
+  },
+  {
+   "actual": 361.9404,
+   "fold": 3,
+   "key": "bradley-helbig",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "troy-davis",
+   "pick": 51,
+   "predicted": 357.798
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "jordan-schroder",
+   "pick": 55,
+   "predicted": 317.1291
+  },
+  {
+   "actual": 410.7999,
+   "fold": 3,
+   "key": "tom-derickx",
+   "pick": 63,
+   "predicted": 256.2987
+  },
+  {
+   "actual": 589.6146,
+   "fold": 3,
+   "key": "bradley-sheppard",
+   "pick": 7,
+   "predicted": 1714.6741
+  },
+  {
+   "actual": 1934.1684,
+   "fold": 3,
+   "key": "jordan-gysberts",
+   "pick": 11,
+   "predicted": 1452.3978
+  },
+  {
+   "actual": 1056.0467,
+   "fold": 3,
+   "key": "koby-stevens",
+   "pick": 23,
+   "predicted": 948.041
+  },
+  {
+   "actual": 1167.9132,
+   "fold": 3,
+   "key": "jake-carlisle",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 791.4852,
+   "fold": 3,
+   "key": "aaron-black",
+   "pick": 25,
+   "predicted": 852.6623
+  },
+  {
+   "actual": 2740.9267,
+   "fold": 3,
+   "key": "mitchell-duncan",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "nicholas-winmar",
+   "pick": 31,
+   "predicted": 674.8428
+  },
+  {
+   "actual": 558.1655,
+   "fold": 3,
+   "key": "david-astbury",
+   "pick": 34,
+   "predicted": 604.0883
+  },
+  {
+   "actual": 1240.6065,
+   "fold": 3,
+   "key": "sam-reid-syd",
+   "pick": 37,
+   "predicted": 568.2194
+  },
+  {
+   "actual": 319.1704,
+   "fold": 3,
+   "key": "sam-shaw",
+   "pick": 44,
+   "predicted": 481.1305
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "byron-sumner",
+   "pick": 53,
+   "predicted": 336.122
+  },
+  {
+   "actual": 332.6252,
+   "fold": 3,
+   "key": "jesse-o-brien",
+   "pick": 63,
+   "predicted": 256.2987
+  },
+  {
+   "actual": 546.0048,
+   "fold": 3,
+   "key": "josh-thomas",
+   "pick": 64,
+   "predicted": 250.8132
+  },
+  {
+   "actual": 1801.92,
+   "fold": 3,
+   "key": "jack-watts",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 2353.2574,
+   "fold": 3,
+   "key": "stephen-hill",
+   "pick": 3,
+   "predicted": 2993.4131
+  },
+  {
+   "actual": 2026.6527,
+   "fold": 3,
+   "key": "tyrone-vickery",
+   "pick": 8,
+   "predicted": 1713.6741
+  },
+  {
+   "actual": 419.5122,
+   "fold": 3,
+   "key": "hayden-ballantyne",
+   "pick": 21,
+   "predicted": 1059.1707
+  },
+  {
+   "actual": 1766.1625,
+   "fold": 3,
+   "key": "david-zaharakis",
+   "pick": 23,
+   "predicted": 948.041
+  },
+  {
+   "actual": 368.7715,
+   "fold": 3,
+   "key": "nicholas-suban",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 818.0,
+   "fold": 3,
+   "key": "jayden-post",
+   "pick": 26,
+   "predicted": 814.3501
+  },
+  {
+   "actual": 699.5563,
+   "fold": 3,
+   "key": "shaun-mckernan",
+   "pick": 28,
+   "predicted": 754.9479
+  },
+  {
+   "actual": 959.8924,
+   "fold": 3,
+   "key": "liam-shiels",
+   "pick": 34,
+   "predicted": 604.0883
+  },
+  {
+   "actual": 917.2027,
+   "fold": 3,
+   "key": "steven-motlop",
+   "pick": 39,
+   "predicted": 554.0722
+  },
+  {
+   "actual": 757.7712,
+   "fold": 3,
+   "key": "mitchell-banner",
+   "pick": 42,
+   "predicted": 519.0161
+  },
+  {
+   "actual": 3462.0949,
+   "fold": 3,
+   "key": "rory-sloane",
+   "pick": 44,
+   "predicted": 481.1305
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "nicholas-heyne",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 211.2241,
+   "fold": 3,
+   "key": "thomas-lee",
+   "pick": 59,
+   "predicted": 283.3894
+  },
+  {
+   "actual": 402.0853,
+   "fold": 3,
+   "key": "rohan-bail",
+   "pick": 63,
+   "predicted": 256.2987
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "rhys-o-keeffe",
+   "pick": 64,
+   "predicted": 250.8132
+  },
+  {
+   "actual": 3046.0268,
+   "fold": 3,
+   "key": "matthew-kreuzer",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 3020.3024,
+   "fold": 3,
+   "key": "trent-cotchin",
+   "pick": 2,
+   "predicted": 3016.8306
+  },
+  {
+   "actual": 1623.566,
+   "fold": 3,
+   "key": "chris-masten",
+   "pick": 3,
+   "predicted": 2993.4131
+  },
+  {
+   "actual": 2360.3635,
+   "fold": 3,
+   "key": "cale-morton",
+   "pick": 4,
+   "predicted": 2549.776
+  },
+  {
+   "actual": 908.1419,
+   "fold": 3,
+   "key": "patrick-veszpremi",
+   "pick": 11,
+   "predicted": 1452.3978
+  },
+  {
+   "actual": 4222.4655,
+   "fold": 3,
+   "key": "cyril-rioli",
+   "pick": 12,
+   "predicted": 1404.7859
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "tony-notte",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 881.1053,
+   "fold": 3,
+   "key": "tayte-pears",
+   "pick": 23,
+   "predicted": 948.041
+  },
+  {
+   "actual": 559.5162,
+   "fold": 3,
+   "key": "tom-collier",
+   "pick": 25,
+   "predicted": 852.6623
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "jarrhan-jacky",
+   "pick": 30,
+   "predicted": 702.1719
+  },
+  {
+   "actual": 461.6831,
+   "fold": 3,
+   "key": "john-mccarthy-1",
+   "pick": 31,
+   "predicted": 674.8428
+  },
+  {
+   "actual": 156.7888,
+   "fold": 3,
+   "key": "samuel-reid",
+   "pick": 35,
+   "predicted": 588.3906
+  },
+  {
+   "actual": 256.2951,
+   "fold": 3,
+   "key": "easton-wood",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 194.0821,
+   "fold": 3,
+   "key": "kyle-cheney",
+   "pick": 52,
+   "predicted": 346.4935
+  },
+  {
+   "actual": 1140.1621,
+   "fold": 3,
+   "key": "craig-bird",
+   "pick": 56,
+   "predicted": 308.2061
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "guy-o-keefe",
+   "pick": 60,
+   "predicted": 275.8877
+  },
+  {
+   "actual": 3436.551,
+   "fold": 3,
+   "key": "bryce-gibbs",
+   "pick": 1,
+   "predicted": 3017.8306
+  },
+  {
+   "actual": 1132.4156,
+   "fold": 3,
+   "key": "ben-reid",
+   "pick": 9,
+   "predicted": 1538.2674
+  },
+  {
+   "actual": 382.5542,
+   "fold": 3,
+   "key": "mitchell-brown",
+   "pick": 17,
+   "predicted": 1070.9639
+  },
+  {
+   "actual": 240.7419,
+   "fold": 3,
+   "key": "paul-stewart",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 994.4807,
+   "fold": 3,
+   "key": "shane-edwards",
+   "pick": 27,
+   "predicted": 782.4568
+  },
+  {
+   "actual": 2551.323,
+   "fold": 3,
+   "key": "kurt-tippett",
+   "pick": 33,
+   "predicted": 624.2176
+  },
+  {
+   "actual": 464.6492,
+   "fold": 3,
+   "key": "david-mackay",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 2962.9781,
+   "fold": 3,
+   "key": "ryan-griffen",
+   "pick": 3,
+   "predicted": 2993.4131
+  },
+  {
+   "actual": 5361.8408,
+   "fold": 3,
+   "key": "lance-franklin",
+   "pick": 5,
+   "predicted": 1980.1008
+  },
+  {
+   "actual": 1836.5267,
+   "fold": 3,
+   "key": "matthew-bate",
+   "pick": 15,
+   "predicted": 1072.9639
+  },
+  {
+   "actual": 290.2257,
+   "fold": 3,
+   "key": "tom-murphy",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "matthew-little",
+   "pick": 29,
+   "predicted": 728.8496
+  },
+  {
+   "actual": 474.5916,
+   "fold": 3,
+   "key": "luke-blackwell",
+   "pick": 42,
+   "predicted": 519.0161
+  },
+  {
+   "actual": 1067.2118,
+   "fold": 3,
+   "key": "jesse-smith",
+   "pick": 11,
+   "predicted": 1452.3978
+  },
+  {
+   "actual": 472.0513,
+   "fold": 3,
+   "key": "michael-newton",
+   "pick": 43,
+   "predicted": 501.2028
+  },
+  {
+   "actual": 1755.3087,
+   "fold": 3,
+   "key": "justin-sherman",
+   "pick": 44,
+   "predicted": 481.1305
+  },
+  {
+   "actual": 356.2105,
+   "fold": 3,
+   "key": "nathan-ablett",
+   "pick": 46,
+   "predicted": 438.8955
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "ben-eckermann",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 1335.3536,
+   "fold": 3,
+   "key": "chris-knights",
+   "pick": 53,
+   "predicted": 336.122
+  },
+  {
+   "actual": 811.06,
+   "fold": 3,
+   "key": "brad-moran",
+   "pick": 54,
+   "predicted": 326.3988
+  },
+  {
+   "actual": 402.4805,
+   "fold": 3,
+   "key": "james-gwilt",
+   "pick": 58,
+   "predicted": 291.3085
+  },
+  {
+   "actual": 1817.259,
+   "fold": 3,
+   "key": "shaun-higgins",
+   "pick": 11,
+   "predicted": 1452.3978
+  },
+  {
+   "actual": 670.3492,
+   "fold": 3,
+   "key": "max-bailey",
+   "pick": 18,
+   "predicted": 1069.9639
+  },
+  {
+   "actual": 1255.4002,
+   "fold": 3,
+   "key": "paul-bower",
+   "pick": 20,
+   "predicted": 1067.9639
+  },
+  {
+   "actual": 505.7445,
+   "fold": 3,
+   "key": "cleve-hughes",
+   "pick": 24,
+   "predicted": 897.4903
+  },
+  {
+   "actual": 234.9834,
+   "fold": 3,
+   "key": "dylan-addison",
+   "pick": 27,
+   "predicted": 782.4568
+  },
+  {
+   "actual": 1094.2748,
+   "fold": 3,
+   "key": "bernie-vince",
+   "pick": 32,
+   "predicted": 648.2559
+  },
+  {
+   "actual": 1361.1889,
+   "fold": 3,
+   "key": "sam-gilbert",
+   "pick": 33,
+   "predicted": 624.2176
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "jake-edwards",
+   "pick": 36,
+   "predicted": 576.7822
+  },
+  {
+   "actual": 561.7094,
+   "fold": 3,
+   "key": "travis-tuck",
+   "pick": 38,
+   "predicted": 561.2037
+  },
+  {
+   "actual": 1477.9345,
+   "fold": 3,
+   "key": "robert-warnock",
+   "pick": 42,
+   "predicted": 519.0161
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "alan-obst",
+   "pick": 46,
+   "predicted": 438.8955
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "matthew-laidlaw",
+   "pick": 48,
+   "predicted": 400.7882
+  },
+  {
+   "actual": 320.8106,
+   "fold": 3,
+   "key": "joel-patfull",
+   "pick": 51,
+   "predicted": 357.798
+  },
+  {
+   "actual": 1252.1735,
+   "fold": 3,
+   "key": "mathew-stokes",
+   "pick": 56,
+   "predicted": 308.2061
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "heath-neville",
+   "pick": 59,
+   "predicted": 283.3894
+  },
+  {
+   "actual": 0.0,
+   "fold": 3,
+   "key": "tim-hutchison",
+   "pick": 60,
+   "predicted": 275.8877
+  },
+  {
+   "actual": 1666.1512,
+   "fold": 4,
+   "key": "cameron-mackenzie",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 1855.2883,
+   "fold": 4,
+   "key": "jaspa-fletcher",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 544.9923,
+   "fold": 4,
+   "key": "matthew-jefferson",
+   "pick": 15,
+   "predicted": 1115.9308
+  },
+  {
+   "actual": 1013.4755,
+   "fold": 4,
+   "key": "darcy-jones",
+   "pick": 21,
+   "predicted": 938.4011
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "jaxon-binns",
+   "pick": 32,
+   "predicted": 599.3353
+  },
+  {
+   "actual": 479.2956,
+   "fold": 4,
+   "key": "alwyn-davey-1",
+   "pick": 45,
+   "predicted": 449.1763
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "harry-lemmey",
+   "pick": 47,
+   "predicted": 410.0397
+  },
+  {
+   "actual": 182.5045,
+   "fold": 4,
+   "key": "kaleb-smith",
+   "pick": 49,
+   "predicted": 378.6583
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "kyle-marshall",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 1648.8358,
+   "fold": 4,
+   "key": "josh-rachele",
+   "pick": 6,
+   "predicted": 1666.1084
+  },
+  {
+   "actual": 702.666,
+   "fold": 4,
+   "key": "josh-gibcus",
+   "pick": 9,
+   "predicted": 1556.521
+  },
+  {
+   "actual": 349.4936,
+   "fold": 4,
+   "key": "josh-sinn",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 597.5076,
+   "fold": 4,
+   "key": "campbell-chesser",
+   "pick": 14,
+   "predicted": 1269.5749
+  },
+  {
+   "actual": 419.471,
+   "fold": 4,
+   "key": "tom-brown",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 665.3258,
+   "fold": 4,
+   "key": "angus-sheldrick",
+   "pick": 18,
+   "predicted": 1039.2203
+  },
+  {
+   "actual": 1506.2003,
+   "fold": 4,
+   "key": "jacob-van-rooyen",
+   "pick": 19,
+   "predicted": 1035.3133
+  },
+  {
+   "actual": 419.2745,
+   "fold": 4,
+   "key": "mitchell-knevitt",
+   "pick": 25,
+   "predicted": 761.5867
+  },
+  {
+   "actual": 847.149,
+   "fold": 4,
+   "key": "paul-curtis",
+   "pick": 35,
+   "predicted": 545.0366
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "alistair-lord",
+   "pick": 46,
+   "predicted": 429.0171
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "lachie-rankin",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 224.9761,
+   "fold": 4,
+   "key": "taj-woewodin",
+   "pick": 64,
+   "predicted": 256.2758
+  },
+  {
+   "actual": 1415.0824,
+   "fold": 4,
+   "key": "logan-mcdonald",
+   "pick": 4,
+   "predicted": 2582.9776
+  },
+  {
+   "actual": 1040.7679,
+   "fold": 4,
+   "key": "elijah-hollands",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 1656.7219,
+   "fold": 4,
+   "key": "jake-bowey",
+   "pick": 22,
+   "predicted": 875.1301
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "blake-coleman",
+   "pick": 25,
+   "predicted": 761.5867
+  },
+  {
+   "actual": 552.41,
+   "fold": 4,
+   "key": "brayden-cook",
+   "pick": 26,
+   "predicted": 747.1649
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "matt-allison",
+   "pick": 27,
+   "predicted": 733.521
+  },
+  {
+   "actual": 4768.6749,
+   "fold": 4,
+   "key": "errol-gulden",
+   "pick": 34,
+   "predicted": 556.7918
+  },
+  {
+   "actual": 762.3326,
+   "fold": 4,
+   "key": "shannon-neale",
+   "pick": 35,
+   "predicted": 545.0366
+  },
+  {
+   "actual": 230.8492,
+   "fold": 4,
+   "key": "corey-durdin",
+   "pick": 39,
+   "predicted": 530.3442
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "josh-eyre",
+   "pick": 41,
+   "predicted": 516.6238
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "henry-smith",
+   "pick": 50,
+   "predicted": 366.7108
+  },
+  {
+   "actual": 294.6446,
+   "fold": 4,
+   "key": "brandon-walker",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "dominic-bedendo",
+   "pick": 57,
+   "predicted": 315.0682
+  },
+  {
+   "actual": 407.0271,
+   "fold": 4,
+   "key": "eddie-ford",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 2836.6199,
+   "fold": 4,
+   "key": "hayden-young",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 4953.3373,
+   "fold": 4,
+   "key": "caleb-serong",
+   "pick": 8,
+   "predicted": 1664.1084
+  },
+  {
+   "actual": 2016.7354,
+   "fold": 4,
+   "key": "kysaiah-pickett",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 700.0813,
+   "fold": 4,
+   "key": "thomson-dow",
+   "pick": 21,
+   "predicted": 938.4011
+  },
+  {
+   "actual": 797.8134,
+   "fold": 4,
+   "key": "keidean-coleman",
+   "pick": 36,
+   "predicted": 538.4026
+  },
+  {
+   "actual": 199.6648,
+   "fold": 4,
+   "key": "lachlan-gollant",
+   "pick": 47,
+   "predicted": 410.0397
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "cameron-taheny",
+   "pick": 49,
+   "predicted": 378.6583
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "ned-cahill",
+   "pick": 55,
+   "predicted": 328.932
+  },
+  {
+   "actual": 307.0201,
+   "fold": 4,
+   "key": "josh-morris",
+   "pick": 56,
+   "predicted": 322.2225
+  },
+  {
+   "actual": 242.2503,
+   "fold": 4,
+   "key": "jaxon-prior",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 392.9012,
+   "fold": 4,
+   "key": "leo-connolly",
+   "pick": 63,
+   "predicted": 264.7734
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "thomas-hutchesson",
+   "pick": 64,
+   "predicted": 256.2758
+  },
+  {
+   "actual": 1872.785,
+   "fold": 4,
+   "key": "jack-lukosius",
+   "pick": 2,
+   "predicted": 3091.3433
+  },
+  {
+   "actual": 1886.1905,
+   "fold": 4,
+   "key": "max-king-stk",
+   "pick": 4,
+   "predicted": 2582.9776
+  },
+  {
+   "actual": 1777.024,
+   "fold": 4,
+   "key": "jye-caldwell",
+   "pick": 11,
+   "predicted": 1524.0161
+  },
+  {
+   "actual": 564.6064,
+   "fold": 4,
+   "key": "sam-sturt",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 977.6346,
+   "fold": 4,
+   "key": "xavier-duursma",
+   "pick": 18,
+   "predicted": 1039.2203
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "jez-mclennan",
+   "pick": 23,
+   "predicted": 821.4653
+  },
+  {
+   "actual": 230.45,
+   "fold": 4,
+   "key": "thomas-berry",
+   "pick": 36,
+   "predicted": 538.4026
+  },
+  {
+   "actual": 345.7245,
+   "fold": 4,
+   "key": "curtis-taylor",
+   "pick": 46,
+   "predicted": 429.0171
+  },
+  {
+   "actual": 537.1558,
+   "fold": 4,
+   "key": "bailey-scott",
+   "pick": 49,
+   "predicted": 378.6583
+  },
+  {
+   "actual": 397.415,
+   "fold": 4,
+   "key": "jacob-koschitzke",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "aaron-nietschke",
+   "pick": 53,
+   "predicted": 341.8662
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "noah-gown",
+   "pick": 60,
+   "predicted": 290.859
+  },
+  {
+   "actual": 1109.7716,
+   "fold": 4,
+   "key": "lochie-o-brien",
+   "pick": 10,
+   "predicted": 1525.0161
+  },
+  {
+   "actual": 956.5641,
+   "fold": 4,
+   "key": "darcy-fogarty",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 1078.3597,
+   "fold": 4,
+   "key": "jack-higgins",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 399.2458,
+   "fold": 4,
+   "key": "callum-coleman-jones",
+   "pick": 20,
+   "predicted": 996.9426
+  },
+  {
+   "actual": 1345.1832,
+   "fold": 4,
+   "key": "tim-kelly",
+   "pick": 24,
+   "predicted": 784.1684
+  },
+  {
+   "actual": 1058.6,
+   "fold": 4,
+   "key": "tom-de-koning",
+   "pick": 30,
+   "predicted": 660.5955
+  },
+  {
+   "actual": 1010.1794,
+   "fold": 4,
+   "key": "tom-mccartin",
+   "pick": 33,
+   "predicted": 574.849
+  },
+  {
+   "actual": 876.3462,
+   "fold": 4,
+   "key": "charlie-ballard",
+   "pick": 42,
+   "predicted": 504.1263
+  },
+  {
+   "actual": 1543.0736,
+   "fold": 4,
+   "key": "james-worpel",
+   "pick": 45,
+   "predicted": 449.1763
+  },
+  {
+   "actual": 771.8206,
+   "fold": 4,
+   "key": "kane-farrell",
+   "pick": 51,
+   "predicted": 356.9546
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "connor-nutting",
+   "pick": 55,
+   "predicted": 328.932
+  },
+  {
+   "actual": 66.5298,
+   "fold": 4,
+   "key": "zac-giles-langdon",
+   "pick": 56,
+   "predicted": 322.2225
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "joel-garner",
+   "pick": 60,
+   "predicted": 290.859
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "nicholas-shipley",
+   "pick": 63,
+   "predicted": 264.7734
+  },
+  {
+   "actual": 3678.6783,
+   "fold": 4,
+   "key": "hugh-mccluggage",
+   "pick": 3,
+   "predicted": 3032.2886
+  },
+  {
+   "actual": 1287.6265,
+   "fold": 4,
+   "key": "jarrod-berry",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 825.2555,
+   "fold": 4,
+   "key": "zac-fisher",
+   "pick": 27,
+   "predicted": 733.521
+  },
+  {
+   "actual": 1981.1749,
+   "fold": 4,
+   "key": "thomas-stewart",
+   "pick": 40,
+   "predicted": 525.229
+  },
+  {
+   "actual": 546.1218,
+   "fold": 4,
+   "key": "elliot-himmelberg",
+   "pick": 51,
+   "predicted": 356.9546
+  },
+  {
+   "actual": 171.9281,
+   "fold": 4,
+   "key": "willie-rioli",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 317.2684,
+   "fold": 4,
+   "key": "cameron-polson",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 2114.0898,
+   "fold": 4,
+   "key": "jacob-hopper",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 567.1064,
+   "fold": 4,
+   "key": "david-cuningham",
+   "pick": 23,
+   "predicted": 821.4653
+  },
+  {
+   "actual": 4263.914,
+   "fold": 4,
+   "key": "josh-dunkley",
+   "pick": 25,
+   "predicted": 761.5867
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "alex-morgan",
+   "pick": 29,
+   "predicted": 690.549
+  },
+  {
+   "actual": 725.8656,
+   "fold": 4,
+   "key": "ryan-clarke",
+   "pick": 31,
+   "predicted": 628.895
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "mitchell-hibberd",
+   "pick": 33,
+   "predicted": 574.849
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "sam-skinner",
+   "pick": 47,
+   "predicted": 410.0397
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "mackenzie-willis",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 2526.16,
+   "fold": 4,
+   "key": "jordan-dawson",
+   "pick": 55,
+   "predicted": 328.932
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "kurt-mutimer",
+   "pick": 56,
+   "predicted": 322.2225
+  },
+  {
+   "actual": 4489.2634,
+   "fold": 4,
+   "key": "christian-petracca",
+   "pick": 1,
+   "predicted": 3092.3433
+  },
+  {
+   "actual": 1200.6,
+   "fold": 4,
+   "key": "darcy-moore",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 1021.2,
+   "fold": 4,
+   "key": "peter-wright",
+   "pick": 9,
+   "predicted": 1556.521
+  },
+  {
+   "actual": 1016.5599,
+   "fold": 4,
+   "key": "liam-duggan",
+   "pick": 11,
+   "predicted": 1524.0161
+  },
+  {
+   "actual": 627.7183,
+   "fold": 4,
+   "key": "jarrod-garlett",
+   "pick": 15,
+   "predicted": 1115.9308
+  },
+  {
+   "actual": 299.1175,
+   "fold": 4,
+   "key": "blaine-boekhorst",
+   "pick": 18,
+   "predicted": 1039.2203
+  },
+  {
+   "actual": 479.3027,
+   "fold": 4,
+   "key": "daniel-nielson",
+   "pick": 24,
+   "predicted": 784.1684
+  },
+  {
+   "actual": 1827.9569,
+   "fold": 4,
+   "key": "toby-mclean",
+   "pick": 25,
+   "predicted": 761.5867
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "dillon-viojo-rainbow",
+   "pick": 27,
+   "predicted": 733.521
+  },
+  {
+   "actual": 854.6359,
+   "fold": 4,
+   "key": "daniel-howe",
+   "pick": 30,
+   "predicted": 660.5955
+  },
+  {
+   "actual": 1582.9879,
+   "fold": 4,
+   "key": "connor-blakely",
+   "pick": 33,
+   "predicted": 574.849
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "james-rose",
+   "pick": 36,
+   "predicted": 538.4026
+  },
+  {
+   "actual": 601.1491,
+   "fold": 4,
+   "key": "jack-lonie",
+   "pick": 40,
+   "predicted": 525.229
+  },
+  {
+   "actual": 1475.3509,
+   "fold": 4,
+   "key": "bailey-dale",
+   "pick": 44,
+   "predicted": 469.3105
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "harry-dear",
+   "pick": 56,
+   "predicted": 322.2225
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "jayden-foster",
+   "pick": 61,
+   "predicted": 282.1904
+  },
+  {
+   "actual": 690.6928,
+   "fold": 4,
+   "key": "matthew-scharenberg",
+   "pick": 5,
+   "predicted": 2015.8595
+  },
+  {
+   "actual": 1035.7,
+   "fold": 4,
+   "key": "luke-mcdonald",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "nathan-freeman",
+   "pick": 9,
+   "predicted": 1556.521
+  },
+  {
+   "actual": 1891.9228,
+   "fold": 4,
+   "key": "dominic-sheed",
+   "pick": 10,
+   "predicted": 1525.0161
+  },
+  {
+   "actual": 903.9875,
+   "fold": 4,
+   "key": "tom-cutler",
+   "pick": 32,
+   "predicted": 599.3353
+  },
+  {
+   "actual": 216.8022,
+   "fold": 4,
+   "key": "jayden-hunt",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 240.4485,
+   "fold": 4,
+   "key": "brady-grey",
+   "pick": 53,
+   "predicted": 341.8662
+  },
+  {
+   "actual": 372.0271,
+   "fold": 4,
+   "key": "jonathan-freeman",
+   "pick": 55,
+   "predicted": 328.932
+  },
+  {
+   "actual": 1979.421,
+   "fold": 4,
+   "key": "joe-daniher",
+   "pick": 9,
+   "predicted": 1556.521
+  },
+  {
+   "actual": 3587.7423,
+   "fold": 4,
+   "key": "oliver-wines",
+   "pick": 10,
+   "predicted": 1525.0161
+  },
+  {
+   "actual": 2351.9604,
+   "fold": 4,
+   "key": "jack-viney",
+   "pick": 13,
+   "predicted": 1457.2914
+  },
+  {
+   "actual": 891.7222,
+   "fold": 4,
+   "key": "jesse-lonergan",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 187.2179,
+   "fold": 4,
+   "key": "dean-towers",
+   "pick": 26,
+   "predicted": 747.1649
+  },
+  {
+   "actual": 1064.7186,
+   "fold": 4,
+   "key": "marco-paparone",
+   "pick": 27,
+   "predicted": 733.521
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "max-duffy",
+   "pick": 42,
+   "predicted": 504.1263
+  },
+  {
+   "actual": 648.6,
+   "fold": 4,
+   "key": "mason-wood",
+   "pick": 44,
+   "predicted": 469.3105
+  },
+  {
+   "actual": 480.9982,
+   "fold": 4,
+   "key": "josh-saunders",
+   "pick": 46,
+   "predicted": 429.0171
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "brant-colledge",
+   "pick": 48,
+   "predicted": 393.108
+  },
+  {
+   "actual": 2242.7659,
+   "fold": 4,
+   "key": "lachlan-hunter",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 378.0812,
+   "fold": 4,
+   "key": "tim-sumner",
+   "pick": 59,
+   "predicted": 299.3131
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "adam-carter",
+   "pick": 61,
+   "predicted": 282.1904
+  },
+  {
+   "actual": 1289.6,
+   "fold": 4,
+   "key": "toby-greene",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 3295.2849,
+   "fold": 4,
+   "key": "sam-docherty",
+   "pick": 18,
+   "predicted": 1039.2203
+  },
+  {
+   "actual": 2123.5563,
+   "fold": 4,
+   "key": "brandon-ellis",
+   "pick": 21,
+   "predicted": 938.4011
+  },
+  {
+   "actual": 396.2893,
+   "fold": 4,
+   "key": "hayden-crozier",
+   "pick": 26,
+   "predicted": 747.1649
+  },
+  {
+   "actual": 1978.3615,
+   "fold": 4,
+   "key": "sebastian-ross",
+   "pick": 30,
+   "predicted": 660.5955
+  },
+  {
+   "actual": 737.8,
+   "fold": 4,
+   "key": "elliot-yeo",
+   "pick": 36,
+   "predicted": 538.4026
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "rory-taggert",
+   "pick": 45,
+   "predicted": 449.1763
+  },
+  {
+   "actual": 1826.8085,
+   "fold": 4,
+   "key": "michael-talia",
+   "pick": 48,
+   "predicted": 393.108
+  },
+  {
+   "actual": 862.0544,
+   "fold": 4,
+   "key": "mitchell-grigg",
+   "pick": 50,
+   "predicted": 366.7108
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "nathan-blee",
+   "pick": 60,
+   "predicted": 290.859
+  },
+  {
+   "actual": 2017.4856,
+   "fold": 4,
+   "key": "david-swallow",
+   "pick": 1,
+   "predicted": 3092.3433
+  },
+  {
+   "actual": 634.4449,
+   "fold": 4,
+   "key": "sam-day",
+   "pick": 3,
+   "predicted": 3032.2886
+  },
+  {
+   "actual": 3653.6595,
+   "fold": 4,
+   "key": "dyson-heppell",
+   "pick": 8,
+   "predicted": 1664.1084
+  },
+  {
+   "actual": 981.5074,
+   "fold": 4,
+   "key": "jayden-pitt",
+   "pick": 22,
+   "predicted": 875.1301
+  },
+  {
+   "actual": 1614.713,
+   "fold": 4,
+   "key": "cameron-guthrie",
+   "pick": 25,
+   "predicted": 761.5867
+  },
+  {
+   "actual": 639.9,
+   "fold": 4,
+   "key": "tom-mcdonald",
+   "pick": 54,
+   "predicted": 335.3731
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "kirk-ugle",
+   "pick": 60,
+   "predicted": 290.859
+  },
+  {
+   "actual": 1383.0762,
+   "fold": 4,
+   "key": "jarryd-lyons",
+   "pick": 61,
+   "predicted": 282.1904
+  },
+  {
+   "actual": 175.7553,
+   "fold": 4,
+   "key": "jacob-brennan",
+   "pick": 62,
+   "predicted": 273.4504
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "luke-davis",
+   "pick": 64,
+   "predicted": 256.2758
+  },
+  {
+   "actual": 1998.9613,
+   "fold": 4,
+   "key": "tom-scully",
+   "pick": 1,
+   "predicted": 3092.3433
+  },
+  {
+   "actual": 561.1258,
+   "fold": 4,
+   "key": "john-butcher",
+   "pick": 8,
+   "predicted": 1664.1084
+  },
+  {
+   "actual": 1228.6073,
+   "fold": 4,
+   "key": "kane-lucas",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 655.3663,
+   "fold": 4,
+   "key": "lewis-jetta",
+   "pick": 14,
+   "predicted": 1269.5749
+  },
+  {
+   "actual": 834.1,
+   "fold": 4,
+   "key": "jack-gunston",
+   "pick": 29,
+   "predicted": 690.549
+  },
+  {
+   "actual": 661.93,
+   "fold": 4,
+   "key": "jason-tutt",
+   "pick": 30,
+   "predicted": 660.5955
+  },
+  {
+   "actual": 2104.9649,
+   "fold": 4,
+   "key": "allen-christensen",
+   "pick": 39,
+   "predicted": 530.3442
+  },
+  {
+   "actual": 237.4183,
+   "fold": 4,
+   "key": "benjamin-stratton",
+   "pick": 45,
+   "predicted": 449.1763
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "brayden-norris",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "james-craig",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 2169.0633,
+   "fold": 4,
+   "key": "christopher-yarran",
+   "pick": 6,
+   "predicted": 1666.1084
+  },
+  {
+   "actual": 2234.5,
+   "fold": 4,
+   "key": "steele-sidebottom",
+   "pick": 11,
+   "predicted": 1524.0161
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "lewis-johnston",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 664.7311,
+   "fold": 4,
+   "key": "ayce-cordy",
+   "pick": 14,
+   "predicted": 1269.5749
+  },
+  {
+   "actual": 396.0851,
+   "fold": 4,
+   "key": "mitchell-brown-1",
+   "pick": 15,
+   "predicted": 1115.9308
+  },
+  {
+   "actual": 859.1522,
+   "fold": 4,
+   "key": "ryan-schoenmakers",
+   "pick": 16,
+   "predicted": 1041.9882
+  },
+  {
+   "actual": 541.9593,
+   "fold": 4,
+   "key": "sam-blease",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 2620.9429,
+   "fold": 4,
+   "key": "luke-shuey",
+   "pick": 18,
+   "predicted": 1039.2203
+  },
+  {
+   "actual": 825.2906,
+   "fold": 4,
+   "key": "jackson-trengove",
+   "pick": 22,
+   "predicted": 875.1301
+  },
+  {
+   "actual": 2744.9894,
+   "fold": 4,
+   "key": "daniel-hannebery",
+   "pick": 30,
+   "predicted": 660.5955
+  },
+  {
+   "actual": 639.269,
+   "fold": 4,
+   "key": "jordan-roughead",
+   "pick": 31,
+   "predicted": 628.895
+  },
+  {
+   "actual": 380.2398,
+   "fold": 4,
+   "key": "liam-jones",
+   "pick": 32,
+   "predicted": 599.3353
+  },
+  {
+   "actual": 485.8376,
+   "fold": 4,
+   "key": "thomas-gillies",
+   "pick": 33,
+   "predicted": 574.849
+  },
+  {
+   "actual": 1537.329,
+   "fold": 4,
+   "key": "mitch-robinson",
+   "pick": 40,
+   "predicted": 525.229
+  },
+  {
+   "actual": 556.4457,
+   "fold": 4,
+   "key": "todd-banfield",
+   "pick": 41,
+   "predicted": 516.6238
+  },
+  {
+   "actual": 1312.5796,
+   "fold": 4,
+   "key": "liam-anthony",
+   "pick": 43,
+   "predicted": 488.0522
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "luke-rounds",
+   "pick": 46,
+   "predicted": 429.0171
+  },
+  {
+   "actual": 1451.9904,
+   "fold": 4,
+   "key": "michael-walters",
+   "pick": 53,
+   "predicted": 341.8662
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "benjamin-bucovaz",
+   "pick": 56,
+   "predicted": 322.2225
+  },
+  {
+   "actual": 582.2061,
+   "fold": 4,
+   "key": "aaron-cornelius",
+   "pick": 57,
+   "predicted": 315.0682
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "nathan-o-keefe",
+   "pick": 58,
+   "predicted": 307.4175
+  },
+  {
+   "actual": 225.9615,
+   "fold": 4,
+   "key": "campbell-heath",
+   "pick": 60,
+   "predicted": 290.859
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "luke-lowden",
+   "pick": 62,
+   "predicted": 273.4504
+  },
+  {
+   "actual": 754.4105,
+   "fold": 4,
+   "key": "david-myers",
+   "pick": 6,
+   "predicted": 1666.1084
+  },
+  {
+   "actual": 1530.9892,
+   "fold": 4,
+   "key": "rhys-palmer",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 734.449,
+   "fold": 4,
+   "key": "robert-tarrant",
+   "pick": 15,
+   "predicted": 1115.9308
+  },
+  {
+   "actual": 1216.3976,
+   "fold": 4,
+   "key": "matthew-lobbe",
+   "pick": 16,
+   "predicted": 1041.9882
+  },
+  {
+   "actual": 701.6739,
+   "fold": 4,
+   "key": "levi-greenwood",
+   "pick": 32,
+   "predicted": 599.3353
+  },
+  {
+   "actual": 831.4,
+   "fold": 4,
+   "key": "dawson-simpson",
+   "pick": 34,
+   "predicted": 556.7918
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "darcy-daniher",
+   "pick": 39,
+   "predicted": 530.3442
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "scott-simpson",
+   "pick": 44,
+   "predicted": 469.3105
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "dan-mckenna",
+   "pick": 49,
+   "predicted": 378.6583
+  },
+  {
+   "actual": 336.5001,
+   "fold": 4,
+   "key": "matt-austin",
+   "pick": 54,
+   "predicted": 335.3731
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "josh-smith",
+   "pick": 59,
+   "predicted": 299.3131
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "tom-mcnamara",
+   "pick": 61,
+   "predicted": 282.1904
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "eljay-connors",
+   "pick": 62,
+   "predicted": 273.4504
+  },
+  {
+   "actual": 2003.0323,
+   "fold": 4,
+   "key": "matthew-leuenberger",
+   "pick": 5,
+   "predicted": 2015.8595
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "mitchell-thorp",
+   "pick": 7,
+   "predicted": 1665.1084
+  },
+  {
+   "actual": 1447.6158,
+   "fold": 4,
+   "key": "andrejs-everitt",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 1557.2358,
+   "fold": 4,
+   "key": "shaun-grigg",
+   "pick": 20,
+   "predicted": 996.9426
+  },
+  {
+   "actual": 706.1208,
+   "fold": 4,
+   "key": "tom-hislop",
+   "pick": 21,
+   "predicted": 938.4011
+  },
+  {
+   "actual": 1245.5343,
+   "fold": 4,
+   "key": "ricky-petterd",
+   "pick": 31,
+   "predicted": 628.895
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "clayton-collard",
+   "pick": 32,
+   "predicted": 599.3353
+  },
+  {
+   "actual": 386.7707,
+   "fold": 4,
+   "key": "nathan-krakouer",
+   "pick": 40,
+   "predicted": 525.229
+  },
+  {
+   "actual": 1345.7669,
+   "fold": 4,
+   "key": "colin-garland",
+   "pick": 46,
+   "predicted": 429.0171
+  },
+  {
+   "actual": 851.0405,
+   "fold": 4,
+   "key": "kyle-reimers",
+   "pick": 47,
+   "predicted": 410.0397
+  },
+  {
+   "actual": 370.8663,
+   "fold": 4,
+   "key": "will-schofield",
+   "pick": 50,
+   "predicted": 366.7108
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "clinton-benjamin",
+   "pick": 51,
+   "predicted": 356.9546
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "brock-o-brien",
+   "pick": 52,
+   "predicted": 348.8717
+  },
+  {
+   "actual": 424.4346,
+   "fold": 4,
+   "key": "simon-hogan",
+   "pick": 57,
+   "predicted": 315.0682
+  },
+  {
+   "actual": 762.1739,
+   "fold": 4,
+   "key": "josh-hill",
+   "pick": 61,
+   "predicted": 282.1904
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "isaac-weetra",
+   "pick": 62,
+   "predicted": 273.4504
+  },
+  {
+   "actual": 2839.0459,
+   "fold": 4,
+   "key": "nick-gill",
+   "pick": 64,
+   "predicted": 256.2758
+  },
+  {
+   "actual": 275.0,
+   "fold": 4,
+   "key": "dayne-zorko",
+   "pick": 38,
+   "predicted": 533.0774
+  },
+  {
+   "actual": 204.109,
+   "fold": 4,
+   "key": "luke-brown",
+   "pick": 33,
+   "predicted": 574.849
+  },
+  {
+   "actual": 1129.9482,
+   "fold": 4,
+   "key": "angus-monfries",
+   "pick": 16,
+   "predicted": 1041.9882
+  },
+  {
+   "actual": 929.9563,
+   "fold": 4,
+   "key": "dean-polo",
+   "pick": 22,
+   "predicted": 875.1301
+  },
+  {
+   "actual": 854.2482,
+   "fold": 4,
+   "key": "sean-rusling",
+   "pick": 26,
+   "predicted": 747.1649
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "adam-hartlett",
+   "pick": 28,
+   "predicted": 715.3042
+  },
+  {
+   "actual": 1060.3993,
+   "fold": 4,
+   "key": "matt-rosa",
+   "pick": 32,
+   "predicted": 599.3353
+  },
+  {
+   "actual": 3317.1798,
+   "fold": 4,
+   "key": "travis-cloke",
+   "pick": 23,
+   "predicted": 821.4653
+  },
+  {
+   "actual": 1169.3353,
+   "fold": 4,
+   "key": "mitch-morton",
+   "pick": 14,
+   "predicted": 1269.5749
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "paul-thomas",
+   "pick": 56,
+   "predicted": 322.2225
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "luke-forsyth",
+   "pick": 59,
+   "predicted": 299.3131
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "ben-schwarze",
+   "pick": 61,
+   "predicted": 282.1904
+  },
+  {
+   "actual": 3639.683,
+   "fold": 4,
+   "key": "marc-murphy",
+   "pick": 1,
+   "predicted": 3092.3433
+  },
+  {
+   "actual": 3276.9,
+   "fold": 4,
+   "key": "scott-pendlebury",
+   "pick": 5,
+   "predicted": 2015.8595
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "jarrad-oakley-nicholls",
+   "pick": 8,
+   "predicted": 1664.1084
+  },
+  {
+   "actual": 2489.5348,
+   "fold": 4,
+   "key": "mitch-clark",
+   "pick": 9,
+   "predicted": 1556.521
+  },
+  {
+   "actual": 1808.4624,
+   "fold": 4,
+   "key": "nathan-jones",
+   "pick": 12,
+   "predicted": 1523.0161
+  },
+  {
+   "actual": 761.4155,
+   "fold": 4,
+   "key": "travis-varcoe",
+   "pick": 15,
+   "predicted": 1115.9308
+  },
+  {
+   "actual": 1419.3625,
+   "fold": 4,
+   "key": "richard-douglas",
+   "pick": 16,
+   "predicted": 1041.9882
+  },
+  {
+   "actual": 488.9031,
+   "fold": 4,
+   "key": "darren-pfeiffer",
+   "pick": 17,
+   "predicted": 1040.2203
+  },
+  {
+   "actual": 611.5385,
+   "fold": 4,
+   "key": "courtenay-dempsey",
+   "pick": 19,
+   "predicted": 1035.3133
+  },
+  {
+   "actual": 693.6481,
+   "fold": 4,
+   "key": "ryan-cook",
+   "pick": 23,
+   "predicted": 821.4653
+  },
+  {
+   "actual": 369.0782,
+   "fold": 4,
+   "key": "matt-riggio",
+   "pick": 28,
+   "predicted": 715.3042
+  },
+  {
+   "actual": 0.0,
+   "fold": 4,
+   "key": "travis-casserly",
+   "pick": 40,
+   "predicted": 525.229
+  },
+  {
+   "actual": 793.9011,
+   "fold": 4,
+   "key": "rhan-hooper",
+   "pick": 41,
+   "predicted": 516.6238
+  },
+  {
+   "actual": 575.0163,
+   "fold": 4,
+   "key": "alipate-carlile",
+   "pick": 44,
+   "predicted": 469.3105
+  },
+  {
+   "actual": 571.4848,
+   "fold": 4,
+   "key": "ryan-gamble",
+   "pick": 45,
+   "predicted": 449.1763
+  },
+  {
+   "actual": 468.6784,
+   "fold": 4,
+   "key": "simon-buckley",
+   "pick": 49,
+   "predicted": 378.6583
+  },
+  {
+   "actual": 365.81,
+   "fold": 4,
+   "key": "clint-bartram",
+   "pick": 55,
+   "predicted": 328.932
+  }
+ ],
+ "folds": {
+  "fingerprint": "66d46e0103ce",
+  "k": 5,
+  "seed": 20260730
+ },
+ "ladder": [
+  3000,
+  2999,
+  2952,
+  2509,
+  1975,
+  1650,
+  1649,
+  1648,
+  1558,
+  1518,
+  1517,
+  1516,
+  1387,
+  1205,
+  1071,
+  1041,
+  1040,
+  1039,
+  1038,
+  1022,
+  974,
+  920,
+  872,
+  832,
+  801,
+  777,
+  757,
+  738,
+  718,
+  695,
+  671,
+  646,
+  623,
+  604,
+  589,
+  577,
+  569,
+  562,
+  556,
+  547,
+  536,
+  522,
+  504,
+  484,
+  464,
+  443,
+  423,
+  406,
+  390,
+  377,
+  366,
+  355,
+  346,
+  337,
+  329,
+  320,
+  312,
+  303,
+  294,
+  286,
+  278,
+  270,
+  263,
+  256
+ ],
+ "ladder_payload": "29292004",
+ "ladder_total": 56226,
+ "n_fold_predictions": 1197,
+ "provenance": {
+  "counts": {
+   "completed": 301,
+   "concluded_realised": 825,
+   "prior_fallback_thin": 71
+  },
+  "fallback_rows": 71,
+  "fallback_share_pct": 5.931,
+  "of_population": 1197
+ },
+ "schema": "pvc-panel-1"
+}

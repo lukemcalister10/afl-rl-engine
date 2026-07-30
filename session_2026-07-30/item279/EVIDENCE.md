@@ -827,3 +827,165 @@ corrected by any choice of α.
 
 None run; nothing here touches CI. Inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green,
 and the declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
+
+---
+
+# SIXTH ADDENDUM — the FOUR-FITTER PVC PANEL, plus pool / MSD / SSP levels
+
+**REPORT-ONLY. No fitter is adopted; α=1 throughout this experiment; nothing is ruled.** Built with four
+parallel subagents under one-writer discipline: I wrote the harness, the judge and every committed file, and
+**re-ran every subagent's fitter myself in the pinned environment before it entered the pack** — all four came
+back byte-identical to the subagent output.
+
+## Phase 1 — the shared harness, frozen before any fitter ran
+
+`panel/harness_pvc.py` fixes, once, for all four arms: the loader (asserts store `6b9d00a7`, surface
+`b781ed25`, and a non-empty population of exactly 1,197); the establishment definition, which is the matrix's
+**own** existing classification (no season with ≥6 games — 265 of 1,197) rather than a new one; the structural
+year-0 values under the ruled basis with the fallback share counted (**71 of 1,197 = 5.931%**); the folds; the
+single output schema, asserted at write time; and the pin/descent step carried verbatim.
+
+Folds are deterministic and identical for all four: **k=5, seed 20260730, fingerprint `66d46e0103ce`**, sizes
+240/240/239/239/239, byte-identical across re-runs. Every fitter reports the fingerprint and **the judge refuses
+to score a set whose fingerprints disagree**, and refuses if the fitters predicted different held-out rows.
+
+I also put the shipped kernel into the harness as the panel's shared reference, so "the current kernel" is
+unambiguous — and it reproduces the ruled ladder `4fc40e91` exactly. That reference was re-verified functionally
+before each judging step, as the tamper check on the frozen files.
+
+**The judge was proven able to fail before any fitter was trusted:** a perfect predictor scores RMSE 0.00, a
+constant 513.98, an inverted one 4201.60, with strict ordering and per-range perfect-is-zero. It asserts its own
+self-test and refuses to certify otherwise.
+
+## Phase 3 — the headline: the fitter choice does not move accuracy
+
+| fitter | ladder | payload | medAE | RMSE | med \|rel\| | conservation |
+|---|---|---|---|---|---|---|
+| ruled (shipped kernel) | 56,088 | `4fc40e91` | — | — | — | 0.9980 |
+| control (kernel + LL boundary) | 55,828 | `7cb36a2c` | 377.44 | 859.17 | 45.75% | 0.9934 |
+| loclin (local-linear throughout) | 56,345 | `2e44ad31` | 377.08 | 858.99 | 45.96% | 1.0026 |
+| powerspine (power spine + residuals) | 56,226 | `29292004` | 377.37 | 858.29 | 45.92% | 1.0005 |
+| distfirst (rate × conditional mean) | 56,088 | `4fc40e91` | 377.44 | 859.13 | 45.58% | 0.9980 |
+
+**All four are statistically indistinguishable.** Overall median absolute error spans 377.08–377.44 and RMSE
+858.29–859.17 across 1,197 held-out rows whose p90 absolute error is ~1,170. The spread between fitters is about
+0.4 against an error scale of 377 — three orders of magnitude smaller than the error itself. On held-out
+accuracy there is nothing to choose between them, and any ruling has to rest on other grounds.
+
+Full 64-point ladders for all four plus the incumbent are in `out/panel_ladders_279.csv`.
+
+## The one real signal: the tail is a kernel boundary artifact
+
+Median absolute error by pick range (n per range: 189 / 188 / 190 / 285 / 345):
+
+| fitter | 1–10 | 11–20 | 21–30 | 31–45 | **46–64** |
+|---|---|---|---|---|---|
+| control | **877.87** | 447.67 | 486.03 | 366.31 | **265.85** |
+| distfirst (= shipped kernel) | **877.87** | 447.67 | 486.03 | 366.31 | 291.15 |
+| loclin | 886.45 | 447.82 | 492.86 | 369.01 | **265.35** |
+| powerspine | 911.70 | **435.18** | 489.38 | 370.74 | 282.19 |
+
+At picks 46–64, on 345 rows, the **local-linear boundary treatment beats the kernel by about 9%** — 265.85 and
+265.35 against the shipped kernel's 291.15. That is out-of-sample confirmation of the boundary argument the
+control arm was built to test: the shipped kernel's window is one-sided at the pick-64 edge, borrows from
+higher-valued interior picks, and biases the tail **upward**. Part of the residual tail overpricing is a fitting
+artifact, not a basis problem.
+
+At picks 1–10 the ordering reverses and the kernel is best (877.87 against 886.45 and 911.70). So the control —
+kernel at the head, local-linear at the boundary zones — is the best-performing arm in **both** zones, and its
+ladder equalities make that visible: it equals the shipped kernel exactly at picks 3–50 and equals loclin
+exactly at picks 1–2 and 51–64 (verified).
+
+## Two structural findings the panel produced
+
+**1. The distribution-first arm is the kernel by algebraic identity — three price readings, not four.** I
+verified this myself, independently of the subagent's code: `max |rate × condmean − kernel_mean|` over picks
+1–64 is **2.27e-13**. Since `rate = ΣW·1{v>0}/ΣW` and `condmean = ΣW·v/ΣW·1{v>0}`, the indicator cancels and the
+product *is* the kernel mean whenever both components share a bandwidth. Its ladder payload is `4fc40e91` — the
+ruled curve. With a 1.5× conditional-mean bandwidth it deviates by up to 260, so the machinery is live; the
+common-bandwidth policy makes it degenerate. Its identical judge score must be read as **confirmation, not an
+independent second reading**. The subagent flagged this itself rather than presenting the match as a result.
+
+Its real contribution is the decomposition, which is new evidence:
+
+| pick | 1 | 10 | 24 | 40 | 64 |
+|---|---|---|---|---|---|
+| establishment rate | 0.9996 | 0.955 | 0.831 | 0.716 | **0.564** |
+| value if established | 2988 | 1563 | 996 | 761 | **495** |
+
+The late picks are cheap mainly because **44% never establish**; those who do are worth about 495. That is the
+same shape as the pool levels below, where the median is zero and the mean is carried by a minority.
+
+**2. Every arm is non-monotone at picks 1–3, independently.** All four raw fits put pick 2 or 3 above pick 1
+(loclin 3138.6 vs 2995.6; distfirst 3103.4 vs 2986.5; powerspine 3045.4 vs the 3000 pin). Four estimators
+disagreeing with monotonicity in the same place is a property of the data, not of any one smoother — effective n
+at picks 1–3 is only 34–38. The top of the draft is genuinely unresolved, and the pin is what separates picks 1
+and 2 in every arm.
+
+**Smoothness is where the arms genuinely differ**, and it is not an accuracy question:
+
+| | control | loclin | powerspine | distfirst |
+|---|---|---|---|---|
+| raw monotone violations | 6 | 7 | **0** | 6 |
+| picks forced by descent | 8 | 9 | **1** | 8 |
+
+`powerspine` hands over an already strictly-descending curve; its single forced pick is only because its raw
+pick 2 (3045.4) exceeds the 3000 pin. The other three need 6–7 violations pooled and 8–9 picks nudged. Against
+that, powerspine is the **worst** arm at picks 1–10 (911.70).
+
+## Two things that would be easy to misread
+
+**The positive signed error is arithmetic, not bias.** Every fitter shows a positive median signed error (+153
+to +340 by range). The structural values have mean 890.7 against median 559.5, with 22.1% exactly zero and
+67.2% below the mean. A **mean** fit on a right-skewed population must over-predict the median row. It is
+near-identical across all four and is not evidence of a biased fitter.
+
+**One disclosed comparability asymmetry.** No fitter pinned inside `fold_fit` — every arm's pick-1 held-out
+predictions sit in 2900–3100 rather than at 3000 — so the scores are comparable, and I checked this rather than
+assuming it. One asymmetry stands: `powerspine` monotonises its fold predictions (PAVA + descent) while the
+other three do not; median-by-pick non-monotone steps are 5 for powerspine against 10–11 for the others. That is
+part of what its method *is*, it is disclosed, and it should be read as a property of the arm rather than an
+unfair advantage.
+
+## Pool / MSD / SSP levels under the ruled basis — and a correction to the brief's denominators
+
+Honest mean, busts at zero, completions for actives, VOR, class cut 2022.
+
+| | n | level | 95% interval on the mean | median | never established | fallback |
+|---|---|---|---|---|---|---|
+| POOL | 1,005 | 239.7 | [211.1, 268.2] | **0.0** | 56.6% | 6.07% |
+| MSD | **44** | 303.2 | [89.0, 517.4] | 3.3 | 50.0% | 2.27% |
+| SSP | **31** | 341.0 | [83.6, 598.4] | 0.5 | 45.2% | 6.45% |
+
+**The brief named MSD n=106 and SSP n=52. Those are the store-level entry-stream counts across all 2,651 rows**
+— correct as such, and matching amendment C3 exactly — **but they are not what the ruled basis prices.** Under
+the class cut the ruled levels rest on **44** and **31** rows. The uncertainty is therefore **wider** than the
+brief assumed, not narrower: relative standard errors are 36.0% (MSD) and 38.5% (SSP), against 6.1% for the
+pool. The reconciliation chain is in the evidence file (store-level → 2004–2024 pool rows → ruled class cut:
+106 → 72 → 44 for MSD, 52 → 43 → 31 for SSP).
+
+And in every one of these populations the **median structural value is at or near zero** — 0.0, 3.3, 0.5 —
+because roughly half never establish. These levels are means carried by a minority. **Read the interval, not
+the mean.**
+
+One disclosed choice: the completion table is built from concluded **pool** rows and shared across the subsets.
+Within-stream tables at n=44 and n=31 would leave almost every active on the model prior, making the
+"completion" a prior in disguise. The cost is that MSD/SSP actives are completed against pool-wide look-alikes
+rather than stream-mates; per-stream fallback shares are printed so that is visible.
+
+**These levels feed the eventual FHV re-denomination word at adoption. Report-only today.**
+
+## Files
+
+- `out/panel_ladders_279.csv` — all four ladders plus the incumbent, 64 picks, with totals, conservation, raw violations and forced counts. **The side-by-side artifact.**
+- `out/panel_comparison_279.json` — the full comparison: harness provenance, judge self-test, error by range, conservation, disclosed parameters, ladder equalities.
+- `out/judge_279.json` — the judge's own output.
+- `out/conservation_279.json` — conservation and forced-descent lists per fitter.
+- `out/levels_pool_msd_ssp_279.json` — the levels with denominators, intervals and the reconciliation.
+- `panel/` — the frozen harness, runner, judge, the four fitter modules as run, and their result files.
+
+## CI posture
+
+None run. This addendum is pure fits on the committed matrix — **no engine bake is involved**, so no bake-lane
+coordination applies. Posture inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green, and the
+declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
