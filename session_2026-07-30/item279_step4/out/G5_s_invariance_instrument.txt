@@ -1,0 +1,7 @@
+committed: s=0.977688  pooled head=3068.4647  ladder=54722
+SINGLE application (ruled) relativities preserved: True   (0 of 12 moved)
+DOUBLE application (bug)   relativities preserved: False  (12 of 12 moved)
+     e.g. pick1/star: 0.428571 -> 0.438352  (x1.022822)
+
+NON-VACUITY: instrument passes the correct case and FAILS the named failure mode: True
+conservation s-invariance: 0.9998 -> 0.9998 (both sides rescale identically)
