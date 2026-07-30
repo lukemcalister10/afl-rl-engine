@@ -1,0 +1,4 @@
+gamma_0.85_BASE|{"signature": "5ae003199ab0077ea93c928ec01b84f4", "all_built_signatures": ["5ae003199ab0077ea93c928ec01b84f4", "d3c2c43cd772e7e5d38b88b8d973a268"], "RL_GAMMA": "0.85", "RL_PICK1": "3000", "RL_RUCK_TAX": "<unset>"}|68s
+gamma_1.0_VOR|{"signature": "93b4a680b933281888e6b75d971edd46", "all_built_signatures": ["93b4a680b933281888e6b75d971edd46", "f5a61c9704d7970ab58f678cec85f7ce"], "RL_GAMMA": "1.0", "RL_PICK1": "3000", "RL_RUCK_TAX": "<unset>"}|70s
+gamma_0.85_NEGCTL_ruck_tax|{"signature": "5ae003199ab0077ea93c928ec01b84f4", "all_built_signatures": ["5ae003199ab0077ea93c928ec01b84f4", "d3c2c43cd772e7e5d38b88b8d973a268"], "RL_GAMMA": "0.85", "RL_PICK1": "3000", "RL_RUCK_TAX": "0.99"}|68s
+gamma_0.85_PICK1_3500|{"signature": "5ae003199ab0077ea93c928ec01b84f4", "all_built_signatures": ["5ae003199ab0077ea93c928ec01b84f4", "d3c2c43cd772e7e5d38b88b8d973a268"], "RL_GAMMA": "0.85", "RL_PICK1": "3500", "RL_RUCK_TAX": "<unset>"}|71s

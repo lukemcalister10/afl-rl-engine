@@ -1,0 +1,167 @@
+{
+ "CURRENT_gfut": {
+  "obs_rows": 4215,
+  "raw_rows": 5556,
+  "dropped_unmappable": 0,
+  "by_group": {
+   "MID": 1260,
+   "SD": 971,
+   "SF": 896,
+   "KPD": 463,
+   "KPF": 387,
+   "RUCK": 238
+  },
+  "EMPTY_GROUPS": [],
+  "empty_cells_pos_x_tenure": [],
+  "n_empty_cells": 0,
+  "fit": "OK",
+  "par_delta_vs_current": {
+   "n_cells": 162,
+   "mean": 0.0,
+   "median": 0.0,
+   "max_abs": 0.0,
+   "pct_cells_moved": 0.0
+  },
+  "par_delta_sample": {
+   "MID|pick1|T1": 0.0,
+   "MID|pick1|T3": 0.0,
+   "MID|pick1|T6": 0.0,
+   "MID|pick3|T1": 0.0,
+   "MID|pick3|T3": 0.0,
+   "MID|pick3|T6": 0.0,
+   "MID|pick5|T1": 0.0,
+   "MID|pick5|T3": 0.0,
+   "MID|pick5|T6": 0.0,
+   "MID|pick8|T1": 0.0,
+   "MID|pick8|T3": 0.0,
+   "MID|pick8|T6": 0.0
+  }
+ },
+ "A_PRIMARY": {
+  "obs_rows": 4215,
+  "raw_rows": 5556,
+  "dropped_unmappable": 0,
+  "by_group": {
+   "MID": 1211,
+   "SD": 793,
+   "SF": 1052,
+   "KPD": 448,
+   "KPF": 506,
+   "RUCK": 205
+  },
+  "EMPTY_GROUPS": [],
+  "empty_cells_pos_x_tenure": [],
+  "n_empty_cells": 0,
+  "fit": "OK",
+  "par_delta_vs_current": {
+   "n_cells": 162,
+   "mean": 0.9237,
+   "median": 0.8571,
+   "max_abs": 8.1001,
+   "pct_cells_moved": 100.0
+  },
+  "par_delta_sample": {
+   "SD|pick5|T1": 8.1,
+   "SD|pick5|T6": 8.003,
+   "SF|pick1|T6": 6.377,
+   "SD|pick5|T3": 6.175,
+   "SF|pick1|T3": 5.768,
+   "SF|pick1|T1": 4.97,
+   "KPD|pick3|T6": -4.668,
+   "KPD|pick5|T6": -4.668,
+   "SD|pick1|T1": 4.41,
+   "SD|pick1|T6": 4.312,
+   "RUCK|pick3|T6": 4.193,
+   "KPD|pick12|T1": 4.045
+  }
+ },
+ "B_LOWER_REPL": {
+  "obs_rows": 4215,
+  "raw_rows": 5556,
+  "dropped_unmappable": 0,
+  "by_group": {
+   "MID": 1211,
+   "SD": 793,
+   "SF": 1052,
+   "KPD": 448,
+   "KPF": 506,
+   "RUCK": 205
+  },
+  "EMPTY_GROUPS": [],
+  "empty_cells_pos_x_tenure": [],
+  "n_empty_cells": 0,
+  "fit": "OK",
+  "par_delta_vs_current": {
+   "n_cells": 162,
+   "mean": 0.9237,
+   "median": 0.8571,
+   "max_abs": 8.1001,
+   "pct_cells_moved": 100.0
+  },
+  "par_delta_sample": {
+   "SD|pick5|T1": 8.1,
+   "SD|pick5|T6": 8.003,
+   "SF|pick1|T6": 6.377,
+   "SD|pick5|T3": 6.175,
+   "SF|pick1|T3": 5.768,
+   "SF|pick1|T1": 4.97,
+   "KPD|pick3|T6": -4.668,
+   "KPD|pick5|T6": -4.668,
+   "SD|pick1|T1": 4.41,
+   "SD|pick1|T6": 4.312,
+   "RUCK|pick3|T6": 4.193,
+   "KPD|pick12|T1": 4.045
+  }
+ },
+ "C_EXCLUDE_DUALS": {
+  "obs_rows": 3568,
+  "raw_rows": 4735,
+  "dropped_unmappable": 821,
+  "by_group": {
+   "MID": 1211,
+   "SD": 682,
+   "SF": 660,
+   "KPD": 438,
+   "KPF": 372,
+   "RUCK": 205
+  },
+  "EMPTY_GROUPS": [],
+  "empty_cells_pos_x_tenure": [],
+  "n_empty_cells": 0,
+  "fit": "OK",
+  "par_delta_vs_current": {
+   "n_cells": 162,
+   "mean": 0.4035,
+   "median": 0.5012,
+   "max_abs": 9.8261,
+   "pct_cells_moved": 100.0
+  },
+  "par_delta_sample": {
+   "SD|pick5|T6": 9.826,
+   "SD|pick5|T1": 8.328,
+   "SD|pick5|T3": 6.486,
+   "SF|pick12|T1": -5.061,
+   "SF|pick12|T6": -4.733,
+   "KPD|pick3|T6": -4.535,
+   "KPD|pick5|T6": -4.535,
+   "SD|pick1|T3": -4.211,
+   "RUCK|pick3|T6": 4.193,
+   "SD|pick8|T6": 4.123,
+   "SD|pick12|T6": 4.123,
+   "RUCK|pick45|T6": 4.027
+  }
+ },
+ "_meta": {
+  "cohort": "DRAFT 2003-2018 (par_build locked Decision A)",
+  "note": "par_build cohort window is 2003-2018 and is SEPARATE from the curve teaching class cut (<=2022). Not to be conflated.",
+  "REPL": {
+   "MID": 80.1,
+   "SD": 78.3,
+   "RUCK": 78.5,
+   "KPD": 68.4,
+   "SF": 70.9,
+   "KPF": 66.8
+  },
+  "store_md5_expected": "6b9d00a7"
+ }
+}
