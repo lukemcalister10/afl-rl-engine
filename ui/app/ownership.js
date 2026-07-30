@@ -1,14 +1,28 @@
-/* Matchday UI — AFFL OWNERSHIP, THE LIVE LANE (#232).
+/* Matchday UI — AFFL OWNERSHIP, THE LIVE LANE (#232, REDESIGNED BY #283).
 
-   WHY THIS EXISTS.  Ownership lived inside the store as `affl_team`, so reflecting a trade meant editing
-   the authored store and running the whole pipeline.  Trades happen daily in this league, so they simply
-   did not get reflected.  Ownership affects no player's value — `affl_team` appears nowhere in the
-   valuation path — so it has no business costing an engine run.  `ui/data/ownership.js` is written by
-   `ui/tools/ingest_inputs.py` straight from the owner's sheet; the browser reads it here.
+   WHY THIS EXISTS.  Ownership affects no player's value — `affl_team` appears nowhere in the valuation
+   path — so reflecting a trade has no business costing an engine run.  The owner edits
+   `docs/inputs/AFFL_Player_Locations.csv`, runs `ui/tools/ingest_inputs.py`, and reloads.
 
-   THE RULE: THE SIDECAR OVERRIDES, THE STORE FALLS BACK.  A player the sheet names takes the sidecar's
-   club; a player it does not name keeps the board's `affl_team`.  So the sidecar may be partial and fill
-   in over time, and nothing has to be deleted from the store — retiring that field is an owner act.
+   THE RULE (owner ruling 2026-07-30, #283): THE STORE IS THE SINGLE SOURCE; THIS SIDECAR IS A
+   GENERATED MIRROR.  The ingest couriers the owner's CSV into the store's `affl_team` and then rebuilds
+   `ui/data/ownership.js` FROM THE STORE in the same command.  The sidecar is never independently
+   authoritative — it cannot "override" anything, because it is downstream of the same field the clubs
+   parity oracle reads.  That is the whole point: reader and oracle are provably the same source and
+   cannot disagree.
+
+   WHAT REPLACED THE OLD RULE, AND WHY.  #232 shipped the inverse — "the sidecar OVERRIDES; the store's
+   affl_team remains the fallback" — on the premise that ownership was presentation data read nowhere in
+   a checked computation.  That premise died when club totals became a checked surface: the UI resolved
+   clubs through this sidecar while the parity oracle read the store, and the two agreed only by the
+   coincidence that no override existed.  The moment the owner's 2026-07-29 CSV was ingested, 18 of 804
+   players moved and the parity suite went red.  See ui/screenshots/issue_274/02_item2_FINDING_ownership.md.
+
+   HAND-EDITING IS BARRED, AND ENFORCED HERE.  A hand-edited or stale sidecar is refused by the pin check
+   in `active()` below, not merely discouraged by a comment.  #232 gated this file on presence, halt and
+   non-emptiness ONLY — never on its board/store pin — which is exactly why a pre-adoption sidecar
+   (expectedBoard 8a38cca4, store e3aaba77) was being HONOURED rather than ignored while the app ran on a
+   later board.  A mirror that does not name the identity it was generated from is not a mirror.
 
    POSITIONS ARE NOT HERE.  They feed valuation, so they ride the batched lane: engine run, board move,
    one history column.  If positions ever appear in this file, the live lane has become an engine trigger
@@ -30,11 +44,37 @@ MD.ownership = (function () {
 
   function halted() { return !!(side && side.halt); }
   function present() { return !!(side && side.byKey); }
-  /* ACTIVE means "this sidecar can override something". An absent or halted sidecar is not active, and
-     with nothing to override there is no divergence to refuse over — every row falls back to the store,
-     which is exactly the pre-#232 behaviour. */
+
+  /* THE PIN CHECK (#283, acceptance 4 — the hand-edit bar made real).
+     A generated mirror must name the identity it was generated FROM, and that identity must be the one
+     the app is loaded at. This compares the sidecar's stamped board + store against the working bundle's
+     — the check #232 never had. A stale sidecar (generated before the current adoption), a hand-edited
+     one, or one lifted from another tree fails here and the app falls back to the board's own
+     store-derived `affl_team` instead of honouring it.
+
+     Fail CLOSED but not silently: `status()` reports pinOk / pinWhy so the surface can say so. */
+  function pin() {
+    const st = (side && side.stamp) || {};
+    const w = ((MD.seam && MD.seam.working) || {}).stamp || {};
+    if (!st.store || !st.board) {
+      return { ok: false, why: "the sidecar carries no board/store pin, so it cannot be authenticated" };
+    }
+    if (w.store && st.store !== w.store) {
+      return { ok: false, why: "sidecar was generated from store " + String(st.store).slice(0, 8)
+                              + " but the app is loaded on store " + String(w.store).slice(0, 8) };
+    }
+    if (w.board && st.board !== w.board) {
+      return { ok: false, why: "sidecar was generated from board " + String(st.board).slice(0, 8)
+                              + " but the app is loaded on board " + String(w.board).slice(0, 8) };
+    }
+    return { ok: true, why: null };
+  }
+
+  /* ACTIVE means "this mirror is authenticated and usable". Absent, halted, empty, or failing the pin
+     check -> not active, and every row reads the board's own store-derived `affl_team`. Since #283 the
+     two are the same field, so an inactive mirror is a degraded display, never a wrong club. */
   function active() {
-    return present() && !halted() && Object.keys(side.byKey).length > 0;
+    return present() && !halted() && Object.keys(side.byKey).length > 0 && pin().ok;
   }
 
   /* Same normalisation as the ingest's nkey(): collapse whitespace, casefold. It resolves the five
@@ -145,15 +185,23 @@ MD.ownership = (function () {
   function status() {
     const st = (side && side.stamp) || {};
     const refusals = publicRefusals();
+    const pn = pin();
     return {
       present: present(),
       active: active(),
       halted: halted(),
       haltReason: halted() ? (side.halt.reason || "ingest refused") : null,
-      generated: st.generated || null,
+      /* #283: the mirror carries no wall clock — it is a pure function of the store, so its
+         provenance is the store identity it was generated from, and that is what makes
+         "regenerate and byte-compare" a real check rather than one that can never be an equality. */
+      generatedFromStore: st.generatedFromStore || null,
       source: st.source || null,
       nAuthored: st.nAuthored || 0,
+      /* #283: the mirror is downstream of the store, so a divergence from it is structurally
+         impossible. This stays 0 by construction and is reported as the invariant it now is. */
       nOverriding: (side && side.overriding && side.overriding.length) || 0,
+      pinOk: pn.ok,
+      pinWhy: pn.why,
       publicRefusals: refusals,
       nPublicRefused: refusals.length,
     };
@@ -166,6 +214,7 @@ MD.ownership = (function () {
     titleOf: titleOf,
     publicRefusals: publicRefusals,
     status: status,
+    pin: pin,
     REFUSED_LABEL: REFUSED_LABEL,
     _norm: norm,
   };
