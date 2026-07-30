@@ -1,0 +1,276 @@
+diff --git a/data/expected_boot.json b/data/expected_boot.json
+index 91f23bb..7e2be74 100644
+--- a/data/expected_boot.json
++++ b/data/expected_boot.json
+@@ -22,15 +22,15 @@
+  "board": "f2df6e0a2902f48e1df36f35493ba8c1",
+  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+  "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+- "engine_head": "404e811353281843b065b3d75768bec0",
+- "fv": "d10aa93e977a16a7a1c0543e0041a8876cf2912d90a9bb6f00657c31092d786b",
++ "engine_head": "3c7b0c3ccebdb52f35d28b1d12a259a2",
++ "fv": "28cfe2e63b44b50864c54c8466fc4ad7736a0b6386db9429d528ce28e6327299",
+  "peak_model": "b763f59e6a6b8aa20946211674e37259",
+  "pvc_snapshot": "735d2dec60cee285382a5d7a17c36a6f",
+  "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+- "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
++ "rl_model": "feb4ca0e7955e74bf19ed8af486c26ce",
+  "store": "81d2470440a80f72afea4405e94338c5",
+  "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+  "v0surf": "ce08c2d13ae7d9bd403c60cf58ea1660",
+diff --git a/engine/forward_valuation/build_peak_model_v4.py b/engine/forward_valuation/build_peak_model_v4.py
+index e61ab03..22a2c1f 100644
+--- a/engine/forward_valuation/build_peak_model_v4.py
++++ b/engine/forward_valuation/build_peak_model_v4.py
+@@ -5,7 +5,11 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ['RL_GAMMA']='0.85'; os.environ['RL_PICK1']='3000'
++# E1 (#279 step 4, amendment C2): these were HARD ASSIGNMENTS, so a bake that exported RL_GAMMA=1.0 for the
++# ruled VOR currency was silently overwritten back to 0.85 here and baked SCAR. setdefault preserves every
++# existing caller (nothing in the pinned config sets either var, so both still resolve to the same values and
++# the build is byte-identical) while letting a DECLARED currency/numeraire actually take effect.
++os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,json,pickle
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ import numpy as np
+diff --git a/engine/forward_valuation/par_build.py b/engine/forward_valuation/par_build.py
+index 3d0a636..edee23f 100644
+--- a/engine/forward_valuation/par_build.py
++++ b/engine/forward_valuation/par_build.py
+@@ -1,4 +1,11 @@
+-"""PAR estimator (U26-REDESIGN, step 1) — STANDALONE DIAGNOSTIC, nothing wired into the engine.
++"""PAR estimator (U26-REDESIGN, step 1) — ON THE ENGINE'S VALUE PATH. Not a diagnostic.
++
++E5 (#279 step 4, seam word Q3 2026-07-30): this docstring used to say "STANDALONE DIAGNOSTIC, nothing wired
++into the engine". That is FALSE and has been for some time. The live chain is
++  _merged_recover.py imports wire_redesign -> W.PR = par_redesign -> par_redesign runs pb.fit() from THIS file
++  -> _par_prior(p,Y) = PR.par_at(...) enters the value blend at _merged_recover.py:580, weighted by _ev_pw
++     with the pinned residual floor _EVW_R = 0.11.
++So a change here MOVES PLAYER VALUES. Treat it with value-path care; the prose, not the behaviour, was wrong.
+ 
+ par(pos, pick, tenure) = level_pos(log-pick)  +  ramp_pos(tenure)     [additive; ramp(yr1)=0]
+   - target = median recency-weighted level (_lvl_wt) among players ON THE PARK at that pos x tenure
+@@ -40,6 +47,34 @@ def season_row(p, Y):
+         if x['year'] == Y: return x
+     return None
+ 
++# ---- E3 (#279 step 4 item 6; the par ruling, owner word 2026-07-30 "Yes, per season") ------
++# The par surface used to key every observation by MA.gfut(p) — ONE label for a whole career — so a role
++# migrant's prime seasons refiled under his DESTINATION position and dragged up the young players anchored
++# in those cells (the Joe Berry +351 ripple). Each season now files under the position RECORDED FOR THAT
++# SEASON, which the store carries on every one of its 11,264 scoring rows (landed at #262).
++#
++# 1,874 of those rows (16.6%) record a DUAL position ('SF/MID', 'KPF/RUCK', ...), and GRP maps only the six
++# single positions, so the rule for duals must be STATED. PAR_DUAL_RULE is that statement — an OWNER word
++# (#279, pending at the time of writing), not a dial and not env-readable:
++#   'primary' — the primary component. futblend's own law: "The PRIMARY keys peak/curve/runway/key-premium".
++#   'lower'   — the pair's LOWER replacement bar; the eligibility-collapse law (R105.1 / _collapse_elig).
++#   'exclude' — dual seasons do not teach the par.
++# MEASURED at the step-4 rehearsal: 'primary' and 'lower' disagree on exactly 2 of 1,874 dual rows (the two
++# 'SF/KPD'), and neither reaches this cohort — so they produce a BYTE-IDENTICAL par surface here.
++PAR_DUAL_RULE = 'primary'
++
++def season_pos(r):
++    """The group a single season's observation teaches. None => this season does not teach."""
++    s = r.get('pos')
++    if not s: return None
++    if '/' not in s: return MA.GRP.get(s)
++    if PAR_DUAL_RULE == 'exclude': return None
++    a, b = s.split('/', 1)
++    ga, gb = MA.GRP.get(a), MA.GRP.get(b)
++    if PAR_DUAL_RULE == 'lower' and ga is not None and gb is not None:
++        return gb if MA.REPL.get(gb, float('inf')) < MA.REPL.get(ga, float('inf')) else ga
++    return ga if ga is not None else gb
++
+ # ---- 1. gather on-park observations: (pos, logpick, tenure, lvl, games) -------------------
+ def gather():
+     pool = [p for p in MA.data if MA.GRP.get(p.get('pos'))
+@@ -47,10 +82,12 @@ def gather():
+     # raw rows first (need base_play_rate before applying the gate)
+     raw = []  # (pos, pick, ten, Y, games, p)
+     for p in pool:
+-        pos = MA.gfut(p); pk = min(MA.effpk(p), CP.KMAX); d0 = draftyr(p)
++        pk = min(MA.effpk(p), CP.KMAX); d0 = draftyr(p)
+         for T in range(1, TEN_MAX+1):
+             Y = d0 + T; r = season_row(p, Y); g = r['games'] if r else 0
+             if g > 0:
++                pos = season_pos(r)                  # E3: PER-SEASON, not one career-long gfut label
++                if pos is None: continue             # only reachable under the 'exclude' rule
+                 raw.append((pos, pk, T, Y, g, p))
+     # base play rate = median games among players who PLAYED (g>0) at that pos x tenure
+     base = {}
+@@ -113,6 +150,20 @@ def loclin(x0, xs, ys, h):
+ def fit():
+     obs, base, raw = gather()
+     POS = {g: np.array([(x,T,lv) for (pos,x,T,lv) in obs if pos==g], dtype=float) for g in GROUPS}
++    # E3 LOUD HALT (#279 step 4 item 6). An empty group used to travel silently from here to the ramp step
++    # below, where POS[g] is shape (0,) and POS[g][:,1] raised a BARE IndexError naming nothing — a cohort
++    # or keying change that starved a position looked like an indexing bug. Halt here instead, NAMING the
++    # group, the cohort window, and what the gather actually produced.
++    _empty = [g for g in GROUPS if POS[g].size == 0]
++    if _empty:
++        raise SystemExit(
++            "par_build HALT: no on-park observations for position group(s) %s.\n"
++            "  cohort DRAFT %d-%d | tenure 1-%d | par gate >=%g games | dual rule '%s'\n"
++            "  gather() produced %d raw rows -> %d gated observations; per-group counts: %s\n"
++            "  A starved group cannot be fitted. Widen the cohort, relax the gate, or revisit the keying —\n"
++            "  do NOT drop the group silently."
++            % (', '.join(_empty), DRAFT_LO, DRAFT_HI, TEN_MAX, MIN_GAMES, PAR_DUAL_RULE,
++               len(raw), len(obs), {g: int(POS[g].shape[0]) for g in GROUPS}))
+     ramp = {g: np.zeros(TEN_MAX+1) for g in GROUPS}     # ramp[g][T], index 0 unused
+     # iterate
+     for _ in range(4):
+diff --git a/engine/forward_valuation/par_redesign.py b/engine/forward_valuation/par_redesign.py
+index 04dc123..8b96200 100644
+--- a/engine/forward_valuation/par_redesign.py
++++ b/engine/forward_valuation/par_redesign.py
+@@ -1,4 +1,10 @@
+-"""PAR-CENTRED REDESIGN — A/B/C built. STANDALONE mock; nothing wired into engine value().
++"""PAR-CENTRED REDESIGN — A/B/C built. ON THE ENGINE'S VALUE PATH via wire_redesign; NOT a standalone mock.
++
++E5 (#279 step 4, seam word Q3 2026-07-30): this docstring used to say "STANDALONE mock; nothing wired into
++engine value()". It is wired: _merged_recover.py imports wire_redesign, whose PR IS this module (:37), and
++_par_prior(p,Y) calls PR.par_at(...) inside the value blend at _merged_recover.py:580. The A/B/C legs below
++may well be mock; the module is not. (The PAR_RAMPS note further down still correctly says the BOARD/BOOK
++path never reads PAR_RAMPS — that is a statement about one env var, not about this module's wiring.)
+   A: floor beta DERIVED from per-position par-production / (PVC x mult), cap a margin below the lowest (not pinned).
+   B: non-play tilt lives in BAND space (p50 tilt + p10 widen, p90 PRESERVED). Level feature stays PURE par-centred.
+   C: tilt magnitude = base-rate-relative shortfall vs play-rate at position x tenure (tenure ramp emerges; rucks right).
+diff --git a/engine/rl_after/_merged_recover.py b/engine/rl_after/_merged_recover.py
+index ce09205..ffe9f6d 100644
+--- a/engine/rl_after/_merged_recover.py
++++ b/engine/rl_after/_merged_recover.py
+@@ -1282,7 +1282,20 @@ _V0SURF_GATES={'RL_RUC_PRIOR_CAP':'1.4','RL_W4_RUC':'1','RL_RUC_CEIL_HEAD':'0.80
+     'RL_FWDRECAL':'1','RL_YOUNG':'1','RL_OVPX':'1','RL_KPFFIX':'1','RL_V7FORM':'1','RL_V7_FORM_W':'0.6',
+     'RL_W4_CRED':'0.17','RL_W4_KPFUP':'1.6','RL_W4_FADE':'0.60','RL_W4_OVPX':'1.0','RL_W4_KPFSH':'0.55',
+     'RL_W4_KPFSH_DEM':'0.70','RL_W4_KPFTOP':'0.4','RL_W4_KPFM0':'8.0','RL_W4_KPFMS':'16.0','RL_AVAIL':'1',
+-    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1'}
++    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1',
++    # E2 (#279 step 4 item 4, extended by seam word F1 2026-07-30): TWO keys join the signature, both of them
++    # MEASURED silent-surface channels, not suspected ones.
++    #   RL_GAMMA — the signature was curve-sensitive but GAMMA-BLIND. Gamma scales value() (rl_model.py:504,
++    #     SCALE/val at :731/:734) without moving the pvc entries, so a SCAR<->VOR flip changed the fitted
++    #     surface while producing an IDENTICAL signature. Measured: 0.85 -> 5ae00319, 1.0 -> 93b4a680.
++    #   RL_PICK1 — added on measurement, AGAINST the reasoning first filed here. The superseded comment claimed
++    #     "RL_PICK1 moves the pvc entries, so the pvc leg already catches it". IT DOES NOT. `_v0surf_sig` reads
++    #     `_PVC0`, which is sourced from the PINNED adopted-curve artifact (pin(1)=3000 by construction), so
++    #     RL_PICK1 never reaches the pvc leg at all. Measured at the step-4 rehearsal: RL_PICK1 3000 -> 3500
++    #     left the signature IDENTICAL (5ae00319 both) while all three fitted surfaces moved (c18
++    #     eddccddb -> 6cb62db4, surfN a6e2fe36 -> 1f45ba1a). That measurement is this key's proven-can-fail.
++    # Defaults are the engine's own (rl_model.py:504 and :866).
++    'RL_GAMMA':'0.85', 'RL_PICK1':'3000'}
+ def _v0surf_sig(real):
+     import hashlib as _hl, json as _js
+     _curve=_PVC0 if '_PVC0' in globals() else MA.PVC          # the pick curve _v0_raw is actually reading right now
+@@ -1570,9 +1583,12 @@ def ev(p,Y=2026):
+ # spec's loclin-at-pick-1), isotonic non-increasing, re-anchored to pick1 = RL_PICK1 (3000).
+ # SCOPE (deliberate, declared): the fitted curve re-prices the PICK side (the board's trade currency) and
+ # display/advisory consumers (A13/A14, book draftval column). PLAYER pricing does NOT read it back:
+-# `draftval` — the RUCK prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
+-# PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
+-# declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
++# `draftval` — the RUCK prior-cap/scaffold basis — CLOSES OVER the `_PVC0` dict, and the L1b and v2 blocks
++# mutate that dict IN PLACE, so draftval TRACKS THE ADOPTED CURVE. (E4, #279 step 4 item 9: this comment used
++# to claim draftval was "FROZEN on the pre-fit v3.4 curve (_PVC0)". The behaviour is correct and unchanged —
++# only the description was wrong. The PR #44 V0-scaffold scope and the fit→board→fit note below still hold
++# for the FITTED candidate curve, which is what is held out.) Generated artifact: pvc_fit_candidate.json
++# (stamped with source + book id).
+ _W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
+ _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
+ def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
+diff --git a/engine/rl_after/rl_model.py b/engine/rl_after/rl_model.py
+index 2293a70..bbca5b3 100644
+--- a/engine/rl_after/rl_model.py
++++ b/engine/rl_after/rl_model.py
+@@ -856,15 +856,80 @@ def build_pvc_v34():
+     pvc=[v*SCALE_PVC for v in iso]                              #    used for the anchor only.)
+     for i in range(1,N): pvc[i]=min(pvc[i],pvc[i-1])             # 6. enforce non-increasing (plateaus allowed)
+     return {k:max(210,int(round(pvc[k-1]))) for k in range(1,N+1)}
++def _load_numeraire(p1, _path='pvc_curve_v2.json'):
++    """E6 (#279 step 4): read the ONE measured pooled head the whole economy re-denominates from.
++
++    FAIL-CLOSED BY DESIGN, both directions, because the failure this closes is SILENT one-sided scaling:
++      * ABSENCE PATH — an artifact with no `numeraire` block HALTS. It never falls back to the old
++        _P1/PVC[1] denominator, because that fallback is exactly the one-sided behaviour being removed and a
++        silent restoration of it would look like success. Every PRE-PROPAGATION artifact lacks the block, so
++        the edited engine and the candidate artifact are a PAIRED change that lands together.
++      * COHERENCE — s is recomputed from the block's own head and pin and compared to the block's published s.
++        A disagreeing RL_PICK1, or a doctored block, HALTS NAMING BOTH VALUES rather than scaling one side.
++    """
++    import json as _j, os as _o
++    if not _o.path.exists(_path):
++        raise SystemExit("E6 numeraire HALT: %s not found; the pooled head cannot be read." % _path)
++    _d = _j.load(open(_path))
++    _n = _d.get('numeraire')
++    if not isinstance(_n, dict):
++        raise SystemExit(
++            "E6 numeraire HALT: %s carries NO 'numeraire' block.\n"
++            "  The pooled-numeraire economy re-denominates picks and players from ONE measured head; without\n"
++            "  it the player side would silently fall back to the v3.4 pre-anchor head (the one-sided defect\n"
++            "  #279 step 4 removes). This is not a fallback condition — install the candidate artifact, which\n"
++            "  carries {'pooled_head_pre_scale', 's', 'published_pin'}." % _path)
++    for _k in ('pooled_head_pre_scale', 's', 'published_pin'):
++        if _n.get(_k) is None:
++            raise SystemExit("E6 numeraire HALT: 'numeraire' block in %s is missing '%s' (got %s)."
++                             % (_path, _k, sorted(_n)))
++    _H = float(_n['pooled_head_pre_scale']); _pub = float(_n['published_pin']); _s = float(_n['s'])
++    if _H <= 0:
++        raise SystemExit("E6 numeraire HALT: pooled_head_pre_scale must be > 0, got %r." % _H)
++    _recomputed = _pub / _H
++    if abs(_recomputed - _s) > 1e-9:
++        raise SystemExit(
++            "E6 numeraire COHERENCE HALT: the artifact's published s and its own head disagree.\n"
++            "  published s          = %.12f\n  recomputed %g/%g = %.12f\n  difference           = %.3e\n"
++            "  One of the two was edited without the other. Both sides of the economy scale from this number,\n"
++            "  so a disagreement here is a one-sided repricing waiting to happen."
++            % (_s, _pub, _H, _recomputed, abs(_recomputed - _s)))
++    if abs(_pub - p1) > 1e-9:
++        raise SystemExit(
++            "E6 numeraire COHERENCE HALT: RL_PICK1 disagrees with the artifact's published pin.\n"
++            "  RL_PICK1             = %.6f\n  artifact published_pin = %.6f\n"
++            "  The ladder was published against the artifact's pin; scaling players against a different pin\n"
++            "  would move the player side alone. Set RL_PICK1 to the artifact's pin, or re-derive the curve."
++            % (p1, _pub))
++    return {'H': _H, 's': _s, 'published_pin': _pub}
+ PVC=build_pvc_v34()
+-CURVE_H=1.0                            # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
++CURVE_H=1.0                          # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
+ PVC={k:max(210,int(round(v*CURVE_H))) for k,v in PVC.items()}
+-# ── PICK-1 ANCHOR (Luke, 2026-06-21): pick 1 = a fixed target; the WHOLE board (picks + players) scales to it.
+-#    Replaces the implicit "99th-pct player → 7000" anchor with an explicit, stable "pick 1 → RL_PICK1".
+-#    Everything scales linearly with SCALE, so one global factor preserves all relativities/trades.
++# ── PICK-1 ANCHOR (Luke, 2026-06-21), RE-ANCHORED TWO-SIDED by E6 (#279 step 4, seam word F3 2026-07-30).
++#
++#    WHAT THE OLD COMMENT CLAIMED, and what was actually measured at the step-4 rehearsal. It said "the WHOLE
++#    board (picks + players) scales to it ... one global factor preserves all relativities/trades". That was
++#    true when the v3.4 import fit WAS the shipped curve. It is not true now, and the measurement says so:
++#      * the player side takes _P1/PVC[1] where PVC[1] here is the v3.4 PRE-ANCHOR head — measured 4441, a
++#        curve that NO LONGER SHIPS. BOARD_FACTOR is therefore 3000/4441 = 0.675524, a real and load-bearing
++#        player scaling, not a no-op.
++#      * the pick side is overwritten downstream by the adopted artifact pvc_curve_v2.json (:928-945,
++#        PVC=_PVC2M), head 3000. The rescale on the next line never reaches the shipped curve.
++#    So the two sides are anchored on DIFFERENT CURVES and agree today only because RL_PICK1 and the artifact
++#    pin are both 3000 — a coincidence of the pin's value, not a property of the construction. Measured:
++#    RL_PICK1 3000->3500 moves SCALE 4.719196->5.505729 while the shipped PVC stays 3000/2767/571.
++#
++#    THE TWO-SIDED ACT. Under the pooled numeraire the derivation measures ONE pooled head H and publishes
++#    s = RL_PICK1/H; the installed ladder is already raw x s. The player side must take THE SAME s, applied to
++#    its own natural scale — NOT _P1/H, which would mix two different fits' currencies (H is the structural/VOR
++#    raw head; 4441 is the v3.4 kernel head; they are not commensurate). So:
++#        BOARD_FACTOR = (_P1 / PVC[1]) * s
++#    One measured head, one factor, both sides. s is read from the artifact's own `numeraire` block so H lives
++#    in exactly ONE place and the two sides cannot be re-derived independently.
+ _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
+-BOARD_FACTOR=_P1/PVC[1]; SCALE=SCALE*BOARD_FACTOR            # SCALE reassigned → val() (late-binding) scales players too
+-PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}
++_NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
++BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
++PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
+ # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
+ #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
+ #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.
