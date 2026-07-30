@@ -690,7 +690,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_mech = _lf_bucket(_lf_struct['mech_occupancy'])       # pickless mechanisms are ALL pool -> one row
     _lf_draft_pvc = sum(_c * _p for _e, _c, _p in _lf_draft)
     _lf_mech_pvc = sum(_c * _p for _e, _c, _p in _lf_mech)
-    _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~83,538)
+    _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~77,611 adopted)
     # -- per-club allocation (report-only; the §2.x gate is LEAGUE-level so the split is presentational):
     # draft slots round-robin across the 18 clubs in natural draft order; mechanisms split evenly. -----------
     _lf_clubs = sorted({r['club'] for r in active if r.get('club')})
@@ -774,7 +774,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
     # reconcile EXACTLY to the sealed F5 entrant layer. Player v/vP1/vP2 are untouched (this reads only PVC +
     # the already-computed forward columns + the sealed F5 draft/mech totals). RL_LEGF=0 => this block is
     # skipped and the pre-F5 30-pick lensPicks/lensConservation stand (kill-switch clean).
-    _PVC64 = sum(PVC[_n] for _n in range(1, 65))                     # Σ release-active PVC[1..64] = 64617
+    _PVC64 = sum(PVC[_n] for _n in range(1, 65))                     # Σ release-active PVC[1..64] = 65925 adopted
     _draft_r = round(_lf_draft_pvc); _mech_r = round(_lf_mech_pvc)   # sealed F5 draft / mech totals (PVC-face)
     _res_nd = _draft_r - _PVC64                                      # national-draft deep tail + partial occupancy
     _res_mech = _mech_r                                              # non-national-draft entry mechanisms

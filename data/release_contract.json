@@ -37,10 +37,10 @@
     "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 4939d740; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253)."
   },
   "f5_entrant_reconciliation": {
-    "visible_1_64": 64617,
-    "residual_nd_tail": 4649,
-    "residual_mech": 14272,
-    "entrant_layer_pvc": 83538,
+    "visible_1_64": 65925,
+    "residual_nd_tail": 2631,
+    "residual_mech": 9055,
+    "entrant_layer_pvc": 77611,
     "seal": "a17aafed",
     "reconciled": true,
     "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
@@ -95,5 +95,5 @@
     "baseline_column": "30/7 rederivation",
     "column_id": "rederivation-30-7"
   },
-  "contract_sha256": "0717287ec19a620e18b2d78fa6aecb433345259a285f96ca60a1131e52a43849"
+  "contract_sha256": "e87ee7ce0781dd9edfb8a44ec3a8f4833f2bbdece00fe4772604600e024f9037"
 }
