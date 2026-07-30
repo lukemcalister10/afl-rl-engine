@@ -112,17 +112,34 @@ const HIST = await page.evaluate(() => {
   const series = MD.history.series(key);
   return { cov, series, traceSize: MD.history.traceSize() };
 });
-check(HIST.series && HIST.series.length === 8, 'item 3 — the history has all eight points',
+/* RESTATED at #274 item 1. This read `=== 8` and was written when the R19 restructure was the only
+   out-of-round column. The 30/7 rederivation adoption added a ninth point, so the literal was stale the
+   moment adoption landed — it did not surface until #274 cleared the movers red that was SHADOWING
+   Final Integration steps 14-22. Measured at HEAD before the fix: the identical three failures, so this
+   is adoption-created and inherited, not caused by the era-succession work.
+   The literal stays a literal ON PURPOSE — it is the drift sentinel that made adoption's new column
+   visible at all. It moves by one every time a landed change adds a column, and that edit is the
+   point. */
+check(HIST.series && HIST.series.length === 9, 'item 3 — the history has all nine points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
 check(HIST.traceSize === 804, 'item 3 — the trace covers all 804 tracked players', String(HIST.traceSize));
 
-const modelPt = HIST.series.find(r => !r.isRound);
+const modelPts = HIST.series.filter(r => !r.isRound);
+const modelPt = modelPts[0];
 check(!!modelPt && modelPt.id === 'post-r19-redesign-1',
   'item 3 — the restructure point is present and flagged as not-a-round');
 check(modelPt && modelPt.score.state === 'not-a-round' && modelPt.v != null,
   'item 3 — the restructure carries value/rank movement but never a score');
+/* #274 item 1 — the adoption column is a point in its own right, and it must behave like one rather
+   than merely be tolerated by a loosened count. Named explicitly so a missing or mislabelled column
+   fails here instead of passing as "some non-round point". */
+check(modelPts.map(r => r.id).join(',') === 'post-r19-redesign-1,rederivation-30-7',
+  'item 3 — BOTH out-of-round columns are present, in order, flagged not-a-round',
+  modelPts.map(r => r.id).join(','));
+check(modelPts.every(r => r.score.state === 'not-a-round' && r.v != null),
+  'item 3 — every out-of-round column carries value/rank movement but never a score');
 
 // the honesty contract, asserted over EVERY player, not just one.
 const HONESTY = await page.evaluate(() => {
@@ -175,9 +192,11 @@ check(completeRounds.every(r => HONESTY.scoreByPoint[r] === HONESTY.cov.rounds[r
 await page.evaluate(() => MD.go('card', 'aaron-cadman'));
 await page.waitForTimeout(300);
 check(await page.locator('.histtbl').count() === 1, 'item 3 — the card renders the history table');
-check(await page.locator('.histtbl tbody tr').count() === 8, 'item 3 — eight rows, one per point');
-check(await page.locator('.histtbl .mctag').count() === 1,
-  'item 3 — the restructure row carries a "model change" tag');
+/* Both counts RESTATED at #274 item 1, same cause as the series length above: adoption added the 30/7
+   column, which is a ninth row and a SECOND model-change tag. Kept as literals — the drift sentinels. */
+check(await page.locator('.histtbl tbody tr').count() === 9, 'item 3 — nine rows, one per point');
+check(await page.locator('.histtbl .mctag').count() === 2,
+  'item 3 — BOTH out-of-round rows carry a "model change" tag (the restructure and the 30/7 rederivation)');
 check(await page.locator('.reserved:has-text("weekly-loop phase")').count() === 0,
   'item 3 — the "reserved · wired in the weekly-loop phase" placeholder is gone');
 const noteText = await page.locator('.histnote').innerText();

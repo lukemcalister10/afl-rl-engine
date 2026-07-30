@@ -189,8 +189,48 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // POSITIVE — the bundle displays under the current app. The transition is NO LONGER A GATE
   // (owner word 2026-07-28): it is read by the producer to LABEL model-change ranges, and the record
   // itself is untouched and still owner-approved. It is passed here only to prove it is ignored.
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
-     "bundle displays under the current app without any transition gate");
+  //
+  // RESTATED at #274 item 1 (owner word 2026-07-30, amending #271 A22's acceptance test). This
+  // asserted `[true, "ok"]`, written when the bundle's newest report was generated under the loaded
+  // release. Post-adoption the history predates the live release, so `lineage()` reports `bridged` —
+  // ok:true, the tab displays, which is the whole of what the 2026-07-28 law requires. `bridged` is
+  // the honest state, not a defect: it says "this bundle's history was made under an earlier release
+  // and is shown under the current one," which is exactly true.
+  //
+  // MEASURED, so the expectation is set on fact rather than hope (#271 A22 note 4 asked for this):
+  // the state does NOT self-resolve when R21 lands. `lineage()` requires every report's
+  // balanced_board_md5 to equal the bundle's frozen baseline anchor (06d8af60) AND, on the direct
+  // branch, the newest report's to equal the loaded app's (4939d740). Those cannot both hold while
+  // the two anchors disagree, and that disagreement is the three-way balanced_board_md5 item
+  // DOCKETED TO HYGIENE by #271 A17 — deliberately not fixed here. So this assertion is not waiting
+  // on R21; it states the post-adoption truth, and the docketed item stays loud below.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
+     "bundle displays under the current app, bridged — no transition gate (post-adoption: history predates the live release)");
+  // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
+  // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
+  var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
+  eq([core.lineage(prod, appForeign, trans).ok, core.lineage(prod, appForeign, trans).state],
+     [false, "mismatch"],
+     "NON-VACUITY: a bundle whose newest point is not the loaded board is refused, not bridged");
+  // and "ok" is still REACHABLE — proving `bridged` discriminates rather than being whatever this
+  // function now returns for everything. Loaded at the bundle's OWN terminal identity, the same
+  // bundle takes the direct branch and reads "ok".
+  var lastR = prod.reports[String(prod.rounds[prod.rounds.length - 1])];
+  var relOwn = lastR.release_identity;
+  var appOwn = { board: lastR.board_md5_after, store: lastR.source_store_md5_after,
+                 balanced_board_md5: relOwn.balanced_board_md5, release_version: relOwn.release_version,
+                 release: relOwn };
+  eq([core.lineage(prod, appOwn, trans).ok, core.lineage(prod, appOwn, trans).state], [true, "ok"],
+     "NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state");
+  // THE HYGIENE ITEM, STATED LOUDLY rather than silently absorbed (#271 A17; not this wave's fix):
+  // the bundle's frozen baseline anchor and the loaded app's balanced_board_md5 disagree, which is
+  // WHY the state above is bridged rather than ok. If this ever starts failing, the hygiene item has
+  // been resolved and the assertion above should be revisited.
+  ok(prod.baseline.release_identity.balanced_board_md5 !== curApp.balanced_board_md5,
+     "DOCKETED (hygiene, #271 A17): bundle baseline anchor " +
+     String(prod.baseline.release_identity.balanced_board_md5).slice(0, 8) +
+     " still disagrees with the loaded app's " + String(curApp.balanced_board_md5).slice(0, 8) +
+     " — the reason the state is bridged, not ok");
   ok(core.lineage(prod, curApp, null).ok, "the same bundle WITHOUT a transition also displays (gate removed)");
   // the app has ADVANCED PAST the transition destination — that record now describes a historical
   // boundary (R19 -> the restructure board fa172ac1), not the current release.
@@ -200,11 +240,28 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
      "transition destination is the restructure board — the boundary the tab labels");
 
   // THE MODEL-CHANGE LABEL replaced the gate: the boundary is declared in the bundle, not enforced.
-  ok((prod.model_changes || []).length === 1 &&
-     prod.model_changes[0].between[0] === "19" &&
-     prod.model_changes[0].between[1] === "post-r19-redesign-1" &&
-     prod.model_changes[0].owner_approved_record === true,
+  //
+  // RESTATED at #274 item 1 (ERA SUCCESSION). This asserted EXACTLY ONE boundary, which was true when
+  // the ITEM 408 restructure was the only out-of-round board move in the system's life. Adoption made
+  // a second one — the 30/7 rederivation column — so a fixed count of 1 is now a stale expectation
+  // rather than a property worth holding. What IS worth holding, and is asserted instead: EVERY
+  // out-of-round boundary is anchored to an owner-approved record. That is the property era succession
+  // exists to deliver, and it grows correctly with the register instead of pinning a number.
+  var mc = prod.model_changes || [];
+  ok(mc.length === 2, "two out-of-round boundaries are declared (the restructure and the 30/7 rederivation)  (got " + mc.length + ")");
+  ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
+     mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
+  ok(mc[1].between[0] === "20" && mc[1].between[1] === "rederivation-30-7" &&
+     mc[1].owner_approved_record === true,
+     "model change declared between R20 and the 30/7 rederivation, anchored to the owner-approved record");
+  // The 30/7 boundary names the ruling that approved it. Until #274 this read `false`/null — the
+  // declared plumbing lag of #271 A22 item 3, cleared by reading the whole register.
+  eq(mc[1].owner_ruling_id, ["ITEM_271_Addendum_17"],
+     "the 30/7 boundary carries its own owner ruling id (A22's known-false flag is cleared)");
+  // and EVERY boundary is approved — the property, stated once over all of them.
+  ok(mc.every(function (c) { return c.owner_approved_record === true && c.owner_ruling_id; }),
+     "EVERY declared out-of-round boundary is anchored to an owner-approved record");
   ok(core.spansModelChange(prod, "19", "20").length === 1, "a range spanning the restructure is LABELLED");
   ok(core.spansModelChange(prod, "post-r19-redesign-1", "20").length === 0, "a range inside one model is not");
 
