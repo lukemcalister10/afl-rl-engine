@@ -1,0 +1,262 @@
+{
+ "status": "REPORT-ONLY evidence addendum. alpha stays PARKED at 1.0; no ruling is implied.",
+ "basis": {
+  "gamma": "1.0 VOR",
+  "basis": "STRUCTURAL",
+  "class_cut": 2022,
+  "store_md5": "6b9d00a7",
+  "v0surf_sig": "b781ed253bff",
+  "v0surf_frozen": false
+ },
+ "population": {
+  "n": 1197,
+  "concluded": 825,
+  "active": 372
+ },
+ "FALLBACK_SHARE": {
+  "rows": 71,
+  "of": 1197,
+  "share_pct": 5.931,
+  "asserted": "provenance sums to population"
+ },
+ "ce_form": "CE_alpha = (sum(W*v^alpha)/sum(W))^(1/alpha), busts floored at 0.0 per the engine's own _ce0",
+ "conservation_yardstick": {
+  "total_mean_production_picks_1_64": 56198.1,
+  "mean_production_picks_2_64": 53211.6
+ },
+ "schedules": {
+  "a0.6_flat": {
+   "description": "flat 0.6 \u2014 most risk-averse of the filed set",
+   "alpha_at": {
+    "1": 0.6,
+    "2": 0.6,
+    "10": 0.6,
+    "24": 0.6,
+    "32": 0.6,
+    "40": 0.6,
+    "50": 0.6,
+    "57": 0.6,
+    "64": 0.6
+   },
+   "raw_at_pick1": 2853.6,
+   "pinned_pick1": 3000,
+   "pin_lift_on_pick1": 1.0513,
+   "post_pin_ladder_total": 46712,
+   "ladder_2_to_64": 43712,
+   "CONSERVATION_ratio_ladder_over_mean_production": 0.8312,
+   "ladder_2_64_vs_mean_production_2_64_pct": -17.853,
+   "PICK_CLASS_PRICE_vs_numeraire": 14.5707,
+   "PICK_CLASS_vs_alpha1_pct": -17.661,
+   "raw_monotone_violations": 6,
+   "forced_by_descent_enforcement": 0,
+   "payload": "315fd848",
+   "vs_alpha1_ratio_by_pick": {
+    "1": 1.0,
+    "3": 0.9262,
+    "10": 0.8994,
+    "24": 0.7778,
+    "32": 0.7356,
+    "40": 0.7028,
+    "50": 0.6489,
+    "57": 0.6207,
+    "64": 0.6022
+   }
+  },
+  "a0.8_flat": {
+   "description": "flat 0.8",
+   "alpha_at": {
+    "1": 0.8,
+    "2": 0.8,
+    "10": 0.8,
+    "24": 0.8,
+    "32": 0.8,
+    "40": 0.8,
+    "50": 0.8,
+    "57": 0.8,
+    "64": 0.8
+   },
+   "raw_at_pick1": 2921.1,
+   "pinned_pick1": 3000,
+   "pin_lift_on_pick1": 1.027,
+   "post_pin_ladder_total": 51711,
+   "ladder_2_to_64": 48711,
+   "CONSERVATION_ratio_ladder_over_mean_production": 0.9202,
+   "ladder_2_64_vs_mean_production_2_64_pct": -8.458,
+   "PICK_CLASS_PRICE_vs_numeraire": 16.237,
+   "PICK_CLASS_vs_alpha1_pct": -8.245,
+   "raw_monotone_violations": 6,
+   "forced_by_descent_enforcement": 0,
+   "payload": "cb53b3e8",
+   "vs_alpha1_ratio_by_pick": {
+    "1": 1.0,
+    "3": 0.9631,
+    "10": 0.9523,
+    "24": 0.8949,
+    "32": 0.8787,
+    "40": 0.8624,
+    "50": 0.8378,
+    "57": 0.8213,
+    "64": 0.8136
+   }
+  },
+  "a1.0_flat": {
+   "description": "flat 1.0 \u2014 the honest mean; the ruled curve",
+   "alpha_at": {
+    "1": 1.0,
+    "2": 1.0,
+    "10": 1.0,
+    "24": 1.0,
+    "32": 1.0,
+    "40": 1.0,
+    "50": 1.0,
+    "57": 1.0,
+    "64": 1.0
+   },
+   "raw_at_pick1": 2986.5,
+   "pinned_pick1": 3000,
+   "pin_lift_on_pick1": 1.0045,
+   "post_pin_ladder_total": 56088,
+   "ladder_2_to_64": 53088,
+   "CONSERVATION_ratio_ladder_over_mean_production": 0.998,
+   "ladder_2_64_vs_mean_production_2_64_pct": -0.232,
+   "PICK_CLASS_PRICE_vs_numeraire": 17.696,
+   "PICK_CLASS_vs_alpha1_pct": 0.0,
+   "raw_monotone_violations": 6,
+   "forced_by_descent_enforcement": 0,
+   "payload": "4fc40e91",
+   "vs_alpha1_ratio_by_pick": {
+    "1": 1.0,
+    "3": 1.0,
+    "10": 1.0,
+    "24": 1.0,
+    "32": 1.0,
+    "40": 1.0,
+    "50": 1.0,
+    "57": 1.0,
+    "64": 1.0
+   }
+  },
+  "tiered_0.6_to_0.8_by50": {
+   "description": "the engine's own _alpha_pvc: 0.6 at pick 1 -> 0.8 by pick 50, flat after",
+   "alpha_at": {
+    "1": 0.6,
+    "2": 0.6041,
+    "10": 0.6367,
+    "24": 0.6939,
+    "32": 0.7265,
+    "40": 0.7592,
+    "50": 0.8,
+    "57": 0.8,
+    "64": 0.8
+   },
+   "raw_at_pick1": 2853.6,
+   "pinned_pick1": 3000,
+   "pin_lift_on_pick1": 1.0513,
+   "post_pin_ladder_total": 49763,
+   "ladder_2_to_64": 46763,
+   "CONSERVATION_ratio_ladder_over_mean_production": 0.8855,
+   "ladder_2_64_vs_mean_production_2_64_pct": -12.119,
+   "PICK_CLASS_PRICE_vs_numeraire": 15.5877,
+   "PICK_CLASS_vs_alpha1_pct": -11.914,
+   "raw_monotone_violations": 6,
+   "forced_by_descent_enforcement": 0,
+   "payload": "06fe5d4d",
+   "vs_alpha1_ratio_by_pick": {
+    "1": 1.0,
+    "3": 0.9275,
+    "10": 0.9107,
+    "24": 0.8357,
+    "32": 0.8305,
+    "40": 0.833,
+    "50": 0.8378,
+    "57": 0.8213,
+    "64": 0.8136
+   }
+  },
+  "lin_0.8_to_1.00_at64": {
+   "description": "NEW: linear 0.8 at pick 1 -> 1.00 at pick 64",
+   "alpha_at": {
+    "1": 0.8,
+    "2": 0.8032,
+    "10": 0.8286,
+    "24": 0.873,
+    "32": 0.8984,
+    "40": 0.9238,
+    "50": 0.9556,
+    "57": 0.9778,
+    "64": 1.0
+   },
+   "raw_at_pick1": 2921.1,
+   "pinned_pick1": 3000,
+   "pin_lift_on_pick1": 1.027,
+   "post_pin_ladder_total": 53866,
+   "ladder_2_to_64": 50866,
+   "CONSERVATION_ratio_ladder_over_mean_production": 0.9585,
+   "ladder_2_64_vs_mean_production_2_64_pct": -4.408,
+   "PICK_CLASS_PRICE_vs_numeraire": 16.9553,
+   "PICK_CLASS_vs_alpha1_pct": -4.186,
+   "raw_monotone_violations": 6,
+   "forced_by_descent_enforcement": 0,
+   "payload": "0ac10cb0",
+   "vs_alpha1_ratio_by_pick": {
+    "1": 1.0,
+    "3": 0.9641,
+    "10": 0.9596,
+    "24": 0.9348,
+    "32": 0.9409,
+    "40": 0.9486,
+    "50": 0.9654,
+    "57": 0.9812,
+    "64": 1.0
+   }
+  },
+  "lin_0.9_to_1.05_at64": {
+   "description": "NEW: linear 0.9 at pick 1 -> 1.05 at pick 64 \u2014 crosses 1.0, tail UPSIDE-weighted",
+   "alpha_at": {
+    "1": 0.9,
+    "2": 0.9024,
+    "10": 0.9214,
+    "24": 0.9548,
+    "32": 0.9738,
+    "40": 0.9929,
+    "50": 1.0167,
+    "57": 1.0333,
+    "64": 1.05
+   },
+   "raw_at_pick1": 2954.0,
+   "pinned_pick1": 3000,
+   "pin_lift_on_pick1": 1.0156,
+   "post_pin_ladder_total": 55512,
+   "ladder_2_to_64": 52512,
+   "CONSERVATION_ratio_ladder_over_mean_production": 0.9878,
+   "ladder_2_64_vs_mean_production_2_64_pct": -1.315,
+   "PICK_CLASS_PRICE_vs_numeraire": 17.504,
+   "PICK_CLASS_vs_alpha1_pct": -1.085,
+   "raw_monotone_violations": 6,
+   "forced_by_descent_enforcement": 0,
+   "payload": "374182c9",
+   "vs_alpha1_ratio_by_pick": {
+    "1": 1.0,
+    "3": 0.9824,
+    "10": 0.9821,
+    "24": 0.9771,
+    "32": 0.986,
+    "40": 0.9963,
+    "50": 1.0133,
+    "57": 1.0251,
+    "64": 1.0466
+   }
+  }
+ },
+ "control": {
+  "alpha1_payload": "4fc40e91",
+  "ruled_curve_payload": "4fc40e91",
+  "alpha1_reproduces_ruled_curve": true
+ },
+ "nonvacuity": {
+  "schedules_are_distinct": true,
+  "n_schedules": 6,
+  "upside_schedule_exceeds_alpha1_somewhere": true
+ },
+ "seconds": 0.045
+}

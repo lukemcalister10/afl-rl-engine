@@ -723,3 +723,107 @@ pull against each other here, and the table is the trade.
 
 None run; nothing here touches CI. Inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green,
 and the declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
+
+---
+
+# FIFTH ADDENDUM — α SCHEDULE EVIDENCE, six settings, full 64-point ladders
+
+**REPORT-ONLY. α stays parked at 1.0. Nothing in this addendum implies or anticipates a ruling.**
+
+Owner viewing request before the α ruling: two additional per-pick linear schedules, on the same `_ce0`
+machinery and the same fit pipeline as the ruled curve, with **full 64-point ladders committed** for all six
+settings because the sampled tables in the fourth addendum are too coarse for a side-by-side.
+
+All six are derived on the ruled basis: structural completion, hard class cut at 2022, VOR (γ=1.0), own-surface
+discipline unchanged. Fallback share **71 of 1,197 = 5.931%**, provenance asserted to sum to population — the
+same population as the ruled curve, so the six ladders differ by α alone.
+
+**Control:** the flat α=1.0 schedule reproduces the ruled curve payload `4fc40e91` exactly. **Non-vacuity:** all
+six ladders are distinct, and the upside schedule does exceed α=1 at some picks (it would be a dead instrument
+if it could not).
+
+Cost: 2s for all six.
+
+## The six schedules
+
+| schedule | α at 1 | α at 64 | ladder total | conservation | pick class ÷ numéraire | vs α=1 |
+|---|---|---|---|---|---|---|
+| flat 0.6 | 0.60 | 0.60 | 46,712 | 0.8312 | 14.571 | −17.66% |
+| flat 0.8 | 0.80 | 0.80 | 51,711 | 0.9202 | 16.237 | −8.24% |
+| **flat 1.0 (ruled)** | 1.00 | 1.00 | **56,088** | **0.9980** | **17.696** | 0.00% |
+| tiered 0.6→0.8 by 50 | 0.60 | 0.80 | 49,763 | 0.8855 | 15.588 | −11.91% |
+| **NEW** linear 0.8→1.00 | 0.80 | 1.00 | 53,866 | 0.9585 | 16.955 | −4.19% |
+| **NEW** linear 0.9→1.05 | 0.90 | 1.05 | 55,512 | 0.9878 | 17.504 | −1.08% |
+
+Conservation is the post-pin ladder over total mean production across picks 1–64 (**56,198.1** board units,
+honest mean, busts at full weight). "Pick class ÷ numéraire" is Σ(picks 2–64) ÷ pick 1 — the relative price of
+the pick class against players, since players scale off pick 1.
+
+## Full ladders
+
+`out/alpha_ladders_279.csv` carries all 64 picks × 6 schedules side by side, plus the α actually applied at
+each pick for each schedule, and the three summary rows (ladder total, conservation, pick class ÷ numéraire).
+`out/alpha_ladders_full_279.json` carries the same ladders as arrays. Every ladder is 64 points, pinned at
+3000, strictly descending.
+
+Sampled every fourth pick for orientation only — the CSV is the artifact to read:
+
+| pick | 0.6 | 0.8 | **1.0** | tiered | 0.8→1.00 | 0.9→1.05 |
+|---|---|---|---|---|---|---|
+| 1 | 3000 | 3000 | **3000** | 3000 | 3000 | 3000 |
+| 4 | 2626 | 2755 | 2865 | 2632 | 2760 | 2818 |
+| 8 | 1955 | 2072 | 2170 | 1968 | 2081 | 2131 |
+| 16 | 1176 | 1268 | 1338 | 1201 | 1281 | 1315 |
+| 24 | 774 | 833 | 828 | 831 | 774 | 809 |
+| 32 | 473 | 566 | 643 | 534 | 605 | 634 |
+| 40 | 383 | 470 | 545 | 454 | 517 | 543 |
+| 48 | 279 | 340 | 400 | 340 | 379 | 400 |
+| 56 | 205 | 273 | 331 | 273 | 322 | 337 |
+| 64 | 168 | 227 | **279** | 227 | 279 | 292 |
+
+Two internal consistency checks worth noting: the tiered schedule's tail equals flat-0.8's exactly (227 at pick
+64), because tiered is flat at 0.8 beyond pick 50; and linear-0.8→1.00's tail equals α=1's exactly (279),
+because its α reaches 1.0 at pick 64 by construction. Both are what the constructions require.
+
+## What the two new schedules do that the filed four did not
+
+**Linear 0.8→1.00** is the cheapest visible haircut of the downside-weighted family: it costs **4.2%** of the
+pick class against **8.2%** for flat 0.8, because the discount unwinds toward the tail instead of applying
+uniformly. Its shape is the inverse of the tiered candidate — tiered is most risk-averse at the *top*, this is
+most risk-averse at the top too but releases the tail entirely.
+
+**Linear 0.9→1.05 is a different animal from the other five.** It is the only schedule that crosses α=1, so its
+tail is **upside-weighted**: it pays *more* than the honest mean from about pick 45 down — 1.013× at pick 50,
+1.025× at 57, 1.047× at 64 — while trimming the head by ~2%. The head trim and the tail lift very nearly cancel,
+which is why it conserves at 0.9878 while still reshaping the curve. It buys shape almost without paying for it
+in conservation terms.
+
+Two readings of that, both stated because they point opposite ways and the ruling is the owner's:
+
+- It is the schedule that most directly implements the owner's stated design theory — *"the option 'chance' of a
+  star is what people want, so pricing should factor that in more"* at the tail. An upside-weighted tail is
+  exactly that instrument.
+- It moves the tail **further above realised production**, and the tail is already the region `#270` measured at
+  ~1.56× busts-included reality on the old basis. The structural basis has since cut the tail roughly in half on
+  its own; this schedule would give some of that back. Whether that is desirable is a pricing preference, not a
+  correctness question — the owner's S-4 says the variance question is ruled explicitly, not inherited.
+
+## Unchanged limits
+
+Every schedule shares the ruled curve's top-of-draft weakness: 6 raw monotone violations in each, `effn` 34.5–37.8
+at picks 1–3, and pick 2 separated from pick 1 by the isotonic step and the pin rather than by the data. The
+post-pin descent guard did not fire on any of the six. The truncation backtest's optimism (median +4.7% to +8.4%
+depending on written depth, on the 301 completed rows of 1,197) sits underneath all six equally and is not
+corrected by any choice of α.
+
+## Files
+
+- `out/alpha_ladders_279.csv` — all six ladders, 64 picks, with per-pick α and the summary rows. **The side-by-side artifact.**
+- `out/alpha_ladders_full_279.json` — the same six ladders as arrays.
+- `out/alpha_schedules_279.json` — per-schedule metrics, conservation, pick-class effect, control and non-vacuity.
+- `scripts/alpha_schedules.py` — the harness.
+
+## CI posture
+
+None run; nothing here touches CI. Inherited from `f60af6c`: guards green with G-Y0 held at 3.035%, FV green,
+and the declared `movers.test.js` known-red at exactly 2 of 58 in Final Integration and Live Scoring.
