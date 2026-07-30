@@ -57,6 +57,33 @@ Misstating filed state that the register contradicts · recording before verifyi
 drifting from the norms above · doing a seat's work instead of handing it back · verbosity
 replacing verification. Any one of these = rotate now; rotation is cheap by construction.
 
+## AMENDMENTS OF 2026-07-29 (owner-directed; adopted after adversarial re-review at the owner's request)
+**Rotation.** (R1) Degradation signs are TRIGGER law: any one sign = rotate now, no cost arithmetic —
+a wavering seat armed with economics will argue for continuing. (R2) Scheduling absent signs IS
+economics: prefer clean boundaries, but never defer a warranted rotation to reach a distant one;
+rotation is affordable by construction. (R3) Cost asymmetry: seam rotations are cheap (state lives in
+documents); execution-seat rotations mid-derivation cost more — mitigate with tightly checklisted
+task segments, never with longer runs.
+**Onboarding.** (O1) Part B carries a RULING DIGEST per live issue — entries PER RULED QUESTION
+(addenda supersede each other partially, never cleanly), each citing its holding addendum. The digest
+is a MAP, never the law: any ruling a seat acts under is read VERBATIM from the primary record;
+superseded rulings are read in full only when auditing or re-ruling that thread. (O2) Lazy loading is
+the default for non-governing material — subagents spill to files, the seat reads the manifest and
+pulls sections on demand; the current task's governing documents are read in full. (O3) Part B size
+tripwire: past ~20KB the pen states in one line why the era needs the weight (a visibility device for
+the owner — the wholesale-rewrite rule remains the actual control).
+**Record and conduct.** (D1) Every addendum states in its header exactly what it supersedes and what
+stands. (D2) Measurements live in committed evidence files; prose points at them. Any file cited by a
+sealed record is RETENTION-PROTECTED from hygiene pruning. (D3) Owner-facing communication: answer in
+the owner's channel, completely, FIRST — filings are the durable copy, never the reply; interpret and
+present agent results (conclusions, not process); plain sentences, no dense compression; lead with
+what happened and what needs deciding. (D4) Economy: one pen per boundary, batched; the register by
+pointer and window only; API payloads spilled to files by subagents (Opus by default, Fable only
+where judgment is the task); hand-backs verified by the two or three measurements that decide, full
+re-runs reserved for final seals.
+**Untouchable at any context price:** the verbatim primary text of any law a seat acts under, and
+live state verified by the seat's own commands.
+
 ## EFFORT POLICY (added 2026-07-24, the outgoing seat's last filing)
 Effort scales with the turn, not the title. MAXIMUM for: the incoming read-back (orientation
 errors compound), pre-fire directive audits, hand-back verification, adjudication rulings, STOP
