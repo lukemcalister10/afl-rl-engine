@@ -1126,3 +1126,78 @@ hard-coded fallbacks + `rl_model.py:940`'s "SCALE stays frozen" override + `rl_e
 `105000/_F` disposition. Then re-run board + selftest and confirm F1 returns to green.
 
 **Then** the exit condition is met on one coherent tree, and L2's two window candidates can be measured.
+
+---
+
+# ADDENDUM F — the ruled numeraire applied; and a RETRACTION of my own red-1 framing.
+
+## F.1 — The numeraire primitive, as ruled (C.3 refinement)
+
+**The measured head is primitive** (seam ruling 2026-07-31). The artifact now carries:
+
+```
+pooled_head_pre_scale = 3068.4647              <- the lane-C MEASURED value, exactly
+s                     = 0.9776876364261254     <- DERIVED from it, full precision
+published_pin         = 3000.0                 == RL_PICK1
+E6 coherence |published_pin/H - s| = 0.000e+00   (tolerance 1e-9)
+```
+
+Coherence is exact **by construction**, not by tolerance — the point of making the head primitive. The
+6dp `0.977688` in the register and in the shaping artifact's own `factor_s` field is the **rounded
+presentation of this same s**, never the stored primitive. My back-derivation is reversed. Reversal
+condition: one owner word.
+
+**E6's block requirement, filed as the C.3 refinement:** three keys — `pooled_head_pre_scale`, `s`,
+`published_pin` — bound by `published_pin / pooled_head_pre_scale == s` to 1e-9, plus
+`published_pin == RL_PICK1`. C.3 named only `s`.
+
+## F.2 — TWO-VS-THREE SIGNATURE STATES: filed as TWO, on a second independent proof
+
+The chain under the ruled numeraire **built with NO refit re-run** (board 125s exit 0, book 191s exit 0, no
+frozen-signature HALT). The curve *values* were unchanged and only the numeraire block moved, so this
+confirms `_v0surf_sig` is keyed on the curve **values**, not on the artifact. Together with the earlier
+"surfaces frozen: 2 → build performs no fit", **C.3's "three signature states" is over-counted and the
+answer is TWO**, established twice, neither time by the tool's self-report.
+
+## F.3 — RETRACTION: red 1 was NOT a "numéraire denominator decision". I mis-framed it.
+
+I reported F1's 666 mismatches as needing an owner word on the numéraire denominator. **That was wrong, and
+the word was rightly not spent.**
+
+**F1 is INVARIANT to the value of the factor.** Both sides divide by the *same* `_F` read from the *same*
+file — `rl_export.py:177` `_nb = lambda x: int(round(x/_F))` writes the board, and
+`one_source_selftest.py:66` `_num` applies the identical transform to the recomputed ev. So
+`board[k] != _num(gated[k])` reduces to `ev_export[k] != ev_selftest[k]` **for any `_F` whatsoever**.
+Re-basing the factor cannot move this check by a single row.
+
+**Confirmed empirically:** the 6dp-`s` run and the full-precision-`s` run produced **identical mismatches —
+666 rows, same values** — exactly as F-invariance predicts.
+
+**What F1 is actually reporting** (harry-sheezel, worked):
+
+```
+board v written by rl_export = 11883   => the ev the EXPORT saw      = 12505.7
+ev the SELFTEST recomputed   = 10371   (raw, pre-divisor)
+disagreement                 = 1.2058x  (20.6%)
+```
+
+`ev()` is **order/state-dependent** — the selftest says so in its own comment (*"replicate the export's
+as-of sequence"*) and calls `ev(p,2026); ev(p,2024); ev(p,2025); ev(p,2027); ev(p,2028)` in that order to
+reproduce it. At baseline the replication matches for all 804. **Under the amended substrate it diverges
+for 666 of 804, by up to ~20%.** So either the substrate flip made `ev()`'s hidden state materially
+order-sensitive, or E6 changed the export's effective sequence.
+
+**This is a real finding, not outstanding paperwork**, and it is the sharpest thing the L1 rehearsal
+produced: a parity gate whose correctness depends on hand-replicating a call order, over a function with
+order-dependent state, on a stack about to be re-derived leg by leg. **It needs diagnosis before L1(c) is
+written, and it may be a defect rather than a re-base.** Docketed.
+
+**What L1(c) still legitimately owes** (unchanged, and separate from F1): the display factor IS stale
+against the moved SCALE (measured **4.613902**) for *display* purposes, plus its three hard-coded
+fallbacks, the `rl_model.py:940` override, and `rl_export.py:581`'s `105000/_F` disposition.
+
+## F.4 — STATE AT THIS ADDENDUM
+
+Selftest **95 PASS / 2 FAIL**: F1 (F.3, docketed for diagnosis) and G-Y0 **19.869%** (the substrate-flip
+waypoint, unchanged by the numeraire refinement to 3dp, as expected from a ~4e-7 relative move in `s`).
+All six FROZEN-RULER checks green. Sealed history untouched. Chain 434s.
