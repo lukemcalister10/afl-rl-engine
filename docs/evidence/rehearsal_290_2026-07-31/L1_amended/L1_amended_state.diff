@@ -1,5 +1,5 @@
 diff --git a/data/expected_boot.json b/data/expected_boot.json
-index 91f23bb..b2ad897 100644
+index 91f23bb..45b3779 100644
 --- a/data/expected_boot.json
 +++ b/data/expected_boot.json
 @@ -21,19 +21,19 @@
@@ -19,7 +19,7 @@ index 91f23bb..b2ad897 100644
   "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
   "release_version": "v2.11-final-rc1-PROVISIONAL",
 - "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
-+ "rl_model": "feb4ca0e7955e74bf19ed8af486c26ce",
++ "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
   "store": "81d2470440a80f72afea4405e94338c5",
   "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
 - "v0surf": "ce08c2d13ae7d9bd403c60cf58ea1660",
@@ -225,7 +225,7 @@ index d7fd100..39a44a4 100644
 + "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
  }
 diff --git a/data/release_contract.json b/data/release_contract.json
-index 7151a09..bec9ffb 100644
+index 7151a09..2cddd21 100644
 --- a/data/release_contract.json
 +++ b/data/release_contract.json
 @@ -1,99 +1,100 @@
@@ -246,7 +246,7 @@ index 7151a09..bec9ffb 100644
 +  "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
 +  "store": "81d2470440a80f72afea4405e94338c5",
 +  "engine_head": "3c7b0c3ccebdb52f35d28b1d12a259a2",
-+  "rl_model": "feb4ca0e7955e74bf19ed8af486c26ce",
++  "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
 +  "fv": "461c737b0b6d08f35f6207e654a5af0fc77377c80f401278b409022142a60747",
 +  "register": "652d83e87780e415a01a2de6d8b3cc57",
 +  "band": "34faa8659cc8f19794f5cb9584fa19b2"
@@ -550,7 +550,7 @@ index ce09205..ffe9f6d 100644
  _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
  def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
 diff --git a/engine/rl_after/one_source_selftest.py b/engine/rl_after/one_source_selftest.py
-index 5e2219b..1ba49c1 100644
+index 5e2219b..371330d 100644
 --- a/engine/rl_after/one_source_selftest.py
 +++ b/engine/rl_after/one_source_selftest.py
 @@ -487,7 +487,7 @@ if _pvc2_on:
@@ -558,7 +558,7 @@ index 5e2219b..1ba49c1 100644
      # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
      _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
 -    _contract_md5='11adecc85a24040e1a7fab193c3a0884'   # RE-PINNED by the #274 adoption mop-up act (owner word
-+    _contract_md5='3276af34e7cdeaef9ae64948a7b8d601'   # RE-PINNED by the #274 adoption mop-up act (owner word
++    _contract_md5='ca2f2e8793e8342fb5bceca34834212a'   # RE-PINNED by the #274 adoption mop-up act (owner word
      # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
      # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
      # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
@@ -576,7 +576,7 @@ index 5e2219b..1ba49c1 100644
          check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
      else:
 diff --git a/engine/rl_after/pvc_curve_v2.json b/engine/rl_after/pvc_curve_v2.json
-index 37d65ff..b6eaa26 100644
+index 37d65ff..f2afd46 100644
 --- a/engine/rl_after/pvc_curve_v2.json
 +++ b/engine/rl_after/pvc_curve_v2.json
 @@ -1,83 +1,83 @@
@@ -750,18 +750,27 @@ index 37d65ff..b6eaa26 100644
 \ No newline at end of file
 + "r104_9_strict_descent_scope": "the national curve domain 1-64 (63 strict steps, no plateaus). The pool index is one value, not an ordering, so no monotonicity applies to it.",
 + "numeraire": {
-+  "pooled_head_pre_scale": 3068.463558926774,
-+  "s": 0.977688,
++  "pooled_head_pre_scale": 3068.4647,
++  "s": 0.9776876364261254,
 +  "published_pin": 3000.0,
 +  "basis": "pooled",
-+  "_doc": "#279 ruled pooled numeraire: ONE measured pooled head H; the ladder publishes pin(1)=3000 via s = published_pin / H, and E6 scales BOTH sides by it. #290 L1(b) stop-point working substrate."
++  "_doc": "#279 ruled pooled numeraire. THE MEASURED HEAD IS PRIMITIVE (seam ruling 2026-07-31): pooled_head_pre_scale is the lane-C measured value 3068.4647 exactly, and s is DERIVED from it at full precision. The 6dp 0.977688 seen in the register and in the shaping artifact's own factor_s field is the ROUNDED PRESENTATION of this same s, never the stored primitive. E6 coherence (published_pin / pooled_head_pre_scale == s to 1e-9) holds BY CONSTRUCTION."
 + },
 + "_working_substrate_note": "#290 L1(b): this is the STOP-POINT curve installed as DECLARED WORKING SUBSTRATE. pool_value is the stop-point level and is RE-MEASURED at L6 on the converged fixed point. No figure taken between L1 and L6 is a landing figure."
 +}
 diff --git a/engine/rl_after/rl_model.py b/engine/rl_after/rl_model.py
-index 2293a70..bbca5b3 100644
+index 2293a70..f7814a5 100644
 --- a/engine/rl_after/rl_model.py
 +++ b/engine/rl_after/rl_model.py
+@@ -501,7 +501,7 @@ def best2(p):
+ REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
+ DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
+ def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
+-KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','0.85'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
++KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','1.0'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
+ S_SH=3.0
+ def comp(v): return v   # no compression (v2.0)
+ def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position value above replacement
 @@ -856,15 +856,80 @@ def build_pvc_v34():
      pvc=[v*SCALE_PVC for v in iso]                              #    used for the anchor only.)
      for i in range(1,N): pvc[i]=min(pvc[i],pvc[i-1])             # 6. enforce non-increasing (plateaus allowed)
@@ -893,7 +902,7 @@ index 9630d64..07312c9 100644
    }
  ]
 diff --git a/ui/release_pick_curve.json b/ui/release_pick_curve.json
-index 52f0473..35238c8 100644
+index 52f0473..3ac4ecf 100644
 --- a/ui/release_pick_curve.json
 +++ b/ui/release_pick_curve.json
 @@ -1,12 +1,12 @@
@@ -907,7 +916,7 @@ index 52f0473..35238c8 100644
 - "pick_curve_file_md5": "6506d8b1ff89ea0a8ad15f10827f202b",
 - "pick_curve_curve_md5": "08ea9375",
 - "curve_source_store_md5": "265f55d568f35af33a3e27c0a7d7886a",
-+ "pick_curve_file_md5": "65581b833aeb4b4c945a442cdc14ac1b",
++ "pick_curve_file_md5": "cdc50a2f500fc8c99a3b096d4bdd4421",
 + "pick_curve_curve_md5": "e69a3f38",
 + "curve_source_store_md5": "81d2470440a80f72afea4405e94338c5",
   "numeraire_pin1": 3000,

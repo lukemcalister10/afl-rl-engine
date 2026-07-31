@@ -1273,3 +1273,101 @@ is written.
 L1 remains **95 PASS / 2 FAIL**, unchanged: F1 (this addendum) and G-Y0 19.869% (waypoint). L1 does not
 exit. L2's candidates stay behind it. Costs this pass: probe runs 69s / 71s / 103s, all serial, all
 recorded — including the two invalid ones.
+
+---
+
+# ADDENDUM H — F1 SOLVED. An EIGHTH γ site. **L1 EXITS: 96 PASS / 1 FAIL (the accepted G-Y0 waypoint).**
+
+## H.1 — The deciding measurement, and its verdict
+
+Fresh processes, order-clean, three modes, each in its own process:
+
+| mode | mismatches vs the board |
+|---|---|
+| `single` — `ev(p,2026)` only, no replayed sequence | **666** |
+| `replay_selftest` — the gate as written | **666** |
+| `replay_export` — with `MA._LENS_FORM` toggled where it is actually read | **666** |
+| **agreement between all three modes (raw ev)** | **0 differences** |
+
+So: **`ev()` is NOT order-dependent** here, `_LENS_FORM` has **no effect** on the 2026 value, and the
+replication is **not** the defect. The `_LENS_FORM` hypothesis is now properly retired — by a valid test
+this time, against `MA`, where `getattr(MA,'_LENS_FORM',None)` actually reads it.
+
+**But the answer is neither branch of the decision rule.** One more measurement decided it:
+
+| recompute | mismatches |
+|---|---|
+| at the engine's γ default (how the gate runs today) | **666 of 804** |
+| at **γ=1.0** (how the bake-mode board was built) | **0 of 804** |
+
+## H.2 — THE CAUSE: an EIGHTH γ site — `rl_model.py:504`, the engine's OWN default
+
+```python
+GAMMA = float(os.environ.get('RL_GAMMA','0.85'))   # 0.85=SCAR(concave); 1.0=VOR(linear)
+```
+
+The board is built under `RL_CONFIG_MODE=bake`, which loads `model_config.json` → γ=1.0. The selftest runs
+**plainly** (`python3 one_source_selftest.py`, no bake mode, no env — `ci-guards.yml:97`), so it resolves γ
+from this line → **0.85**. At baseline manifest and default agreed (both 0.85) and F1 passed. Under L1 the
+manifest moved and **the default did not**, so the gate recomputed the whole board at SCAR while the board
+was VOR.
+
+**This site is in neither Addendum 3's seven, nor my runbook's, nor Addendum C's.** It is the most
+consequential of them: **every consumer that does not run in bake/gate mode silently prices at SCAR.** The
+seven sites are `setdefault`s in the *forward-valuation* modules and `run_panel.sh`; this is the *engine's*
+own default and it governs everything else.
+
+**Fixed:** `'0.85'` → `'1.0'`, `RL_PICK1` refs unmoved, `expected_boot.rl_model` re-stamped
+`feb4ca0e → 3b011802` with its `identities` mirror. `engine_head` unchanged (`_merged_recover.py` untouched).
+
+## H.3 — **G.5 IS WITHDRAWN.** The gate was right.
+
+My proposal to re-spec F1 to consume the export's published `_raw2026` would have made F1 pass **while
+leaving every non-bake consumer silently on SCAR**. The gate was not broken; it was **correctly detecting a
+real basis inconsistency**, exactly as designed. The seam's decision rule — *"do not re-spec the gate to
+trust it"* — is what kept this from being papered over, and the right answer turned out to be outside both
+of its branches.
+
+**This is the third thing I got wrong this rehearsal, and the most important**: I proposed weakening a gate
+that was working.
+
+## H.4 — L1 EXITS
+
+```
+bootstrap exit 0 · refit through the declared lane · board exit 0 · book exit 0
+selftest: 96 PASS / 1 FAIL
+  the single FAIL = G-Y0 19.869% vs the 3.500% ceiling — the ACCEPTED WAYPOINT
+  (the 2.000% bar judges the CONVERGED FIXED POINT at L6, not L1)
+```
+
+All six FROZEN-RULER checks green · F1 green · F2 green · Guard 5 green · sealed history untouched across
+every run of this rehearsal.
+
+**The "two declared expected reds" prediction was wrong in both directions:** the FROZEN-RULER pair went
+green (L1 moves those pins in-commit), and the reds that did appear were F1 (a real, now-fixed defect) and
+G-Y0 (the accepted waypoint).
+
+## H.5 — L5 DOCKET ENTRIES, by name
+
+1. **`rl_model.py:504` — the engine's own γ default**, and the general class: *a manifest value and a code
+   default that must agree, with nothing asserting that they do*. The re-derivation should assert
+   manifest-vs-default equality for every `RL_*` the manifest pins, or the next flip repeats this.
+2. **Bake-mode vs plain-mode basis divergence:** the board builds under the manifest, the gate runs under
+   code defaults. That asymmetry is invisible until the two disagree.
+3. **The unshared-namespace binding** (`rl_export.py:69` `g = MA.__dict__` vs `one_source_selftest.py:114`
+   `g` = the `_merged_recover` exec dict) — **not** the cause here, but a live footgun that cost two invalid
+   probes.
+4. **The curve payload hash recipe** — unwritten anywhere; mint the helper (Addendum E.5 finding 4).
+5. **The asymmetric identity-length convention** — 8-char stamp vs 32-char contract, one-sided `[:8]`
+   (Addendum E.5 finding 5).
+6. `ev()`'s hand-copied call sequence in F1 is **unnecessary** — all three modes agree — so the gate can be
+   simplified, but **only** as hygiene, never as a way to make a red go away.
+
+## H.6 — COSTS
+
+| act | measured |
+|---|---|
+| deciding measurement, 3 modes × own process | 80s + 102s + 104s |
+| γ=1.0 confirmation run | 82s |
+| selftest after the fix | 112s |
+| **cumulative L1 rehearsal** | ~6 full chains + 8 probe runs, all serial |
