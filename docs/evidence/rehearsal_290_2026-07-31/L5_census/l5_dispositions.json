@@ -375,8 +375,8 @@
   "l0_classes": [
    "STALE-ROOTED"
   ],
-  "disposition": "RE-DERIVED",
-  "evidence": "MA.REPL replacement bars move with the retrained band/peak substrate. NAMED GAP: the deriving script is absent from the repo (lane A) \u2014 the bars are carried, not regenerable. Escalated below."
+  "disposition": "CARRIED-NOT-REGENERABLE",
+  "evidence": "R-F sweep, 6 passes over all 43 refs and all history: the deriving script rl_replacement_derive.py is TRULY ABSENT, and the reason is that the v3.3 reform (2026-06-17) PREDATES this repo (first commit 2026-07-02). The bars are carried as values. CORRECTION to this census: I first wrote RE-DERIVED; a table that cannot be regenerated cannot be re-derived. See RF_REPL_SWEEP.md. HALT ARMED: any step needing to re-derive MA.REPL halts and reports (measured: nothing in L6 does)."
  },
  {
   "row": 30,
@@ -484,7 +484,7 @@
    "UNCLEAR"
   ],
   "disposition": "RE-DERIVED",
-  "evidence": "REPL_DROP_PTS=3 (RL_REPL_DROP) rides MA.REPL, row 29"
+  "evidence": "REPL_DROP_PTS=3 (RL_REPL_DROP) is a LIVE dial and re-derives \u2014 but it must NOT inherit a claim that the BARS re-derive: row 29 is CARRIED-NOT-REGENERABLE (R-F)"
  },
  {
   "row": 39,

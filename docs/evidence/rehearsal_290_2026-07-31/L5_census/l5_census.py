@@ -11,6 +11,10 @@ HOW A ROW IS DISPOSITIONED. Exactly one of:
                       accounted for without L5 claiming work it did not do.
   * one of the five widened L5 tokens, for rows no other leg reaches:
       RE-DERIVED · RETIRED-FROM-LIVE · RULED-EXEMPT · DOC-CORRECTED · DEFERRED-TO-ADOPTION
+  * CARRIED-NOT-REGENERABLE — a SIXTH token, and not mine: it is the seam's own word in ruling
+      R-F, for a value that is carried forward but cannot be regenerated from anything in this
+      repository. It arms a HALT: any step needing to re-derive that value halts and reports.
+      Exactly one row holds it (29, MA.REPL) — see RF_REPL_SWEEP.md for the six-pass sweep.
 
 **UNCLEAR IS NOT A DISPOSITION** (lane B's own instruction). Every row the lanes left UNCLEAR
 either resolves here by derivation record, or ESCALATES BY NAME into the escalations list.
@@ -99,9 +103,12 @@ put([25], 'RETIRED-FROM-LIVE', 'CE remnant: ALPHA=0.6 + legacy _ce(). alpha=1.0 
                                'CE aggregator is not on the ruled value path')
 put([26], 'RETIRED-FROM-LIVE', 'CE remnant: PVC_ALPHA_LO/HI=0.6,0.8 + _alpha_pvc() — same ruling, '
                                'alpha=1.0 throughout')
-put([29], 'RE-DERIVED', 'MA.REPL replacement bars move with the retrained band/peak substrate. '
-                        'NAMED GAP: the deriving script is absent from the repo (lane A) — the bars '
-                        'are carried, not regenerable. Escalated below.')
+put([29], 'CARRIED-NOT-REGENERABLE', 'R-F sweep, 6 passes over all 43 refs and all history: the '
+      'deriving script rl_replacement_derive.py is TRULY ABSENT, and the reason is that the v3.3 '
+      'reform (2026-06-17) PREDATES this repo (first commit 2026-07-02). The bars are carried as '
+      'values. CORRECTION to this census: I first wrote RE-DERIVED; a table that cannot be '
+      'regenerated cannot be re-derived. See RF_REPL_SWEEP.md. HALT ARMED: any step needing to '
+      're-derive MA.REPL halts and reports (measured: nothing in L6 does).')
 put([30], 'RE-DERIVED', 'EXP_PEAK_BASE / EXP_RETAIN / EXP_PICK_SLOPE floors sit on the value path and '
                         'move with the flipped substrate')
 put([47], 'RE-DERIVED', 'RUC_PRIOR_CAP=1.4 + _ruc_prior_cap/_ruc_ceil — the ruck-cap bite check folds here')
@@ -149,7 +156,7 @@ put([8], 'RULED-EXEMPT', 'params.json: engine parameters superseded by the confi
                          'L1 flip re-stamps')
 put([10], 'RE-DERIVED', 'ycred_table — credential table on the value path, moves with the substrate')
 put([31], 'RE-DERIVED', 'BETA_POS / ICPT_POS position intercepts — value path')
-put([38], 'RE-DERIVED', 'REPL_DROP_PTS=3 (RL_REPL_DROP) rides MA.REPL, row 29')
+put([38], 'RE-DERIVED', 'REPL_DROP_PTS=3 (RL_REPL_DROP) is a LIVE dial and re-derives — but it must NOT inherit a claim that the BARS re-derive: row 29 is CARRIED-NOT-REGENERABLE (R-F)')
 put([55], 'RE-DERIVED', 'the live LENS posture dials move with the flipped value path')
 put([62], 'RULED-EXEMPT', 'evidence-weight pins _EVW_R=0.11 etc are the blend weights the par surface '
                           'is read through — pinned by ruling, not re-derived here')

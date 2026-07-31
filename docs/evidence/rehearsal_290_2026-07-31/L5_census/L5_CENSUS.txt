@@ -6,7 +6,7 @@ L5 DIAL CENSUS — denominator is L0's own count
    RULED-EXEMPT            88    47.1%
    REACHED-BY-L1           26    13.9%
    REACHED-BY-L8           19    10.2%
-   RE-DERIVED              16     8.6%
+   RE-DERIVED              15     8.0%
    DOC-CORRECTED            8     4.3%
    RETIRED-FROM-LIVE        8     4.3%
    REACHED-BY-L4            6     3.2%
@@ -14,6 +14,7 @@ L5 DIAL CENSUS — denominator is L0's own count
    REACHED-BY-L7            5     2.7%
    DEFERRED-TO-ADOPTION     2     1.1%
    REACHED-BY-L2            2     1.1%
+   CARRIED-NOT-REGENERABLE   1     0.5%
    REACHED-BY-L3            1     0.5%
 
   RULED-EXEMPT splits — the token is one word for three situations:
