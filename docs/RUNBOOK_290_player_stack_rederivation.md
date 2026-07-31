@@ -1371,3 +1371,50 @@ G-Y0 (the accepted waypoint).
 | γ=1.0 confirmation run | 82s |
 | selftest after the fix | 112s |
 | **cumulative L1 rehearsal** | ~6 full chains + 8 probe runs, all serial |
+
+---
+
+# ADDENDUM I — the two closing rulings, and the seat boundary.
+
+## I.1 — The eighth γ site joins L1(a) formally, and its lesson is HAZARD 7 ON A NEW AXIS
+
+`rl_model.py:504` is now part of **L1(a)'s enumerated set**: eight sites, not seven.
+
+**The lesson generalises, and it is hazard class 7 (two-axis sibling sets) on an axis nobody had named:**
+
+> The seven sites **SET** the value (`setdefault` / `export`). `:504` **READS** it, with a fallback.
+> A census that enumerates only the writers misses the reader whose default silently disagrees.
+
+**Every future census in this job enumerates BOTH axes** — what sets a value, and what reads it with a
+default of its own. The existing hazard-7 formulation ("what READS the changed field *and* what STAMPS the
+moved identity") is the identity version of the same shape; this is the *configuration* version.
+
+## I.2 — L5 DOCKET HEADLINE, generalised as ruled
+
+> **For every `RL_*` the manifest pins, the landing asserts `manifest value == code default` — or removes
+> the default so the read fails loud.**
+
+A code default that silently disagrees with the manifest is a basis fork that only appears when the two
+diverge, i.e. exactly at a re-derivation. Both remedies are acceptable; the assertion is cheaper, the
+removal is stronger.
+
+## I.3 — G.5 stays withdrawn
+
+F1 remains **as specified**. It was right.
+
+## I.4 — CONTAINER STATE AT ROTATION
+
+- **Committed:** the runbook (Addenda A–I), `tools/preboot_assert.sh`, and all evidence under
+  `docs/evidence/rehearsal_290_2026-07-31/` — including L0's canonical-list artifacts and scripts, and
+  `L1_amended/` carrying the full L1-exit tree diff (`L1_amended_state.diff`, which includes the `:504`
+  move), the exit selftest, the faithful canary baseline, the refit log, `f1_decide.py`, and all four
+  deciding-measurement JSONs.
+- **NOT committed, and declared:** the scratch clone at
+  `<scratchpad>/rehearsal/repo` holds the L1-exit tree as **17 uncommitted working-tree changes**. It is
+  **captured in full** by `L1_amended_state.diff`. The clone itself is **ephemeral and void on container
+  reclaim** — nothing in it is a record.
+- **Declared VOID, never results:** the two overlapping engine runs of 2026-07-31 (the backgrounded canary
+  and the L1 selftest that shared the workspace), and the two invalid `_LENS_FORM` probes (wrong namespace).
+  All four are cited as void in Addenda B and G.
+- `/home/claude/rl_workspace` and `/home/claude/rl_build` hold build products of the L1-exit tree. They are
+  **regenerable by `bootstrap.sh` + the chain** and are not a record.
