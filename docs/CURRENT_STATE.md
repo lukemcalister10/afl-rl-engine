@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v39 · supervisor pen · 2026-07-31, register v547
+# CURRENT STATE — the incoming-seat read · v40 · supervisor pen · 2026-07-31, register v548
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,9 +108,10 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v39 · supervisor pen · 2026-07-31, register v547 · replaced wholesale at the handover pen; the outgoing seam rotated at owner word — this Part B is the handover artifact)
+(v40 · supervisor pen · 2026-07-31, register v548 · replaced wholesale at the communication pen; the outgoing seam rotates on the owner's word — this Part B is the handover artifact)
 
-## THE ERA: THE CONSISTENCY ERA — #290 IN REHEARSAL. Main is `c49ed30`+; all four workflows green.
+## THE ERA: THE CONSISTENCY ERA — #290 IN REHEARSAL. Main is the v548 pen or a descendant; all four
+workflows green at every content state.
 **#290 (the player-stack re-derivation) is FIRED into a FRESH seat** (owner word; branch
 `claude/seam-relay-step4-fp78jm`, which also carries the step-4 evidence cherry-picked forward,
 seam-verified byte-perfect at tree `e339b1e9`). Its read-back and runbook are AUDITED (PASS); the seat is
@@ -158,14 +159,20 @@ the rehearsal hand-back verifies) · paste #292's opener if not yet sent · late
 close clicks #283 #275 · branch deletes (HOLD `claude/step-4-execution-supervisor-g4edkc` until the seam
 confirms the evidence on main; others free) · the v1.1 read.
 
-## RUNNING THIS SEAT WELL — carried from v37 in full, plus: the owner's QC caught the DOB population gap
-(busts teach too) and the defect-span correction (65–80) this cycle — treat every casual question as an
-instrument · REASONING IS NOT EVIDENCE has four instances now; the rehearsal-validation clause and
-re-running are the guards · a filter answers only the question it was built from — the safe sweep for
-"what is missing" has no filter at all · **INGESTION LAW (owner-directed at the v547 rotation): the seam
-verifies DECIDING FIGURES, it does not ingest bulk — uploads, artifact dumps, and row-level validation go
-to subagents returning verdicts + the deciding numbers for seam re-check; Fable context is the system's
-scarcest resource.**
+## RUNNING THIS SEAT WELL — the charter's C1/C2/C3 (owner-directed 2026-07-31) govern; read them first
+- **C1 in practice:** the owner reads short, plain, prioritized messages — what happened, what he must
+  decide (question → options → recommendation, one line each). Hashes, line numbers, and dialect go in the
+  filings, surfaced only on request. His casual questions are load-bearing QC — they caught seven real
+  findings last cycle; treat each as an instrument.
+- **C2 in practice:** verify deciding figures yourself; delegate everything else. Cold-screen any directive
+  you author (a fresh-context Opus reviewer) before it fires — the screens caught three blockers twice.
+  Cost-estimate before commissioning builds. One writer per bake; no parallel engine builds; every subagent
+  conclusion re-verified by re-run before it enters the record.
+- The permanent guards: REASONING IS NOT EVIDENCE (four catches last cycle) · never present a number not
+  read from a committed artifact · every count names its denominator · a filter answers only the question it
+  was built from — sweep "what is missing" with no filter · prove every instrument can fail before trusting
+  it · one pen per boundary, batched · post-rebase-merge, verify main by CONTENT (tree ids are the clean
+  seal) · seal-cites-main (N12) before any branch delete.
 
 ## ENVIRONMENT CARRIES — carried from v37 in full, plus: `/home/claude/rl_workspace/` is the engine's
 CANONICAL runtime layout (bootstrap.sh:39-43) — never "fix" workspace paths; fresh containers provision via
@@ -173,7 +180,13 @@ CANONICAL runtime layout (bootstrap.sh:39-43) — never "fix" workspace paths; f
 the 1.0524 fallback has THREE sites (one_source_selftest:65 · s4_matrix:129 · guard_correction_canary:112) ·
 the two per_entrant files are never conflated (2f8b4bd4 = curve input, moves; 40d7da7c = byte-freeze, does
 not) · the DOB courier staging (302 rows, provenance per row) + both cross-check tables are DURABLE at
-`docs/evidence/dob_courier_2026-07-31/` — the courier input of record; the store is the destination truth.
+`docs/evidence/dob_courier_2026-07-31/` — the courier input of record; the store is the destination truth. ·
+**PEN MECHANICS** (so no seat re-derives them from diffs): the register is ONE header line; each pen (i)
+bumps the version stamp near char 88 (`· v54X 2026-07-31 · PEN:` → X+1), (ii) inserts its entry block
+immediately BEFORE ` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: file line count unchanged · growth
+== entry length · exactly one new `SEAM v54X` stamp · PRIOR count unchanged · docs-only diff; then Part B
+replaced wholesale, commit as `supervisor-seat <supervisor@seam.local>`, branch → PR → rebase-merge →
+re-verify main by content.
 
 ## THE INCOMING SEAM'S FIRST TASKS
 1. Verify live state with your own commands: main tip vs this pen; issues #290 #292 #279 #283 #275 #276
