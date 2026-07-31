@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v41 · supervisor pen · 2026-07-31, register v549
+# CURRENT STATE — the incoming-seat read · v42 · supervisor pen · 2026-07-31, register v550
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,19 +108,25 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v41 · supervisor pen · 2026-07-31, register v549 · replaced wholesale at the handover-QA pen; the outgoing seam rotates on the owner's word — this Part B is the handover artifact)
+(v42 · supervisor pen · 2026-07-31, register v550 · replaced wholesale at the consistency-era boundary pen: rotation complete, #292 landed, #290 amended — re-rehearsal pending its erratum)
 
-## THE ERA: THE CONSISTENCY ERA — #290 IN REHEARSAL. Main is the v549 pen or a descendant; all four
-workflows green at every content state.
-**#290 (the player-stack re-derivation) is FIRED into a FRESH seat** (owner word; branch
-`claude/seam-relay-step4-fp78jm`, which also carries the step-4 evidence cherry-picked forward,
-seam-verified byte-perfect at tree `e339b1e9`). Its read-back and runbook are AUDITED (PASS); the seat is
-**RELEASED TO REHEARSE L0–L8** per `docs/RUNBOOK_290_player_stack_rederivation.md` (on its branch).
-**#292 (trade-desk pricing split) is FIRED in parallel** — UI lane, seat opens on owner paste; the owner
-corrected the span at fire: 65–80, pick 65 being the pool level wearing an ordinal label. **The DOB courier
-act is FULLY CLEARED, 302/302** — staged, verified, executes inside #290's runbook. The old step-4 seat is
-ROTATED CLEAN; **its branch (`claude/step-4-execution-supervisor-g4edkc`) must NOT be deleted until the
-seam confirms the evidence has landed on main** (rides L0's first landing).
+## THE ERA: THE CONSISTENCY ERA — #292 LANDED · #290 AMENDED, RE-REHEARSING. Main is the v550 pen or a
+descendant; all four gating workflows green at every content state; `live-scoring-proofs` is
+workflow_dispatch-only (five workflow files, four gating — measured from the trigger map).
+**#292 (trade-desk pricing split) is DONE AND ON MAIN** — landed `ab68430`, tree content-verified against the
+seat's seal (`acd5ff61…`). Ordinals 1–64 plus ONE pool item (`{t:"pick", pool:true}`, trade.js-local),
+one-source read of the bundle's index-65, missing key ⇒ no pool item offered; the phantom ordinal is dead,
+proven before/after in `docs/evidence/trade_desk_pool_split_2026-07-31/`. The issue awaits the owner's close click.
+**#290 rehearsed and the rehearsal did its job by failing:** L0 done (denominator **187**), L1 NOT executable
+as filed — four defects, every one seam-verified at source; the owner **WITHHELD the EXECUTION word**.
+**ADDENDUM C** (the L1 amendment, `d755c42` on `claude/seam-relay-step4-fp78jm`) is seam-audited **PASS WITH
+TWO CONDITIONS**: (1) the appended `release_lineage` register entry re-homes **L7→L8/adoption** (its
+destination shape needs board/balanced_board_md5/release_version + `owner_approved` — L8/adoption identities
+and word); (2) the preboot pgrep assert **self-matches its invoking shell** (seam-reproduced false HALT) —
+fix the pattern or run from a script file, prove it can both fire and pass. Errata: stop-point head[5] =
+**1931** (1892 is the converged curve's). Seam rulings: **NO workspace lockfile** (serial rule + fixed assert
+suffice; reversal = a second violation despite a working assert); the `refit_v0surf --bake` cost stays
+flagged UNMEASURED — its measured line is mandatory in the next hand-back.
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
 Older standing law, each read verbatim before acting: FHV Option A ≈190 [#270 ruling comment] · Best-23 =
@@ -145,74 +151,91 @@ N9. FULL INTERNAL CONSISTENCY — live pricing inputs re-derive; sealed history 
     [#279 issuecomment-5137582245]
 N10. The SUBAGENT BOUNDARY LAW — measures fan out, writes are one seat; every subagent conclusion
     re-verified by re-run [#290 body + v545]
-New this era:
 N11. **THE BUST RULING** ["Pre window careers do not count… that pick was a bust"]: a pick prices what it
     bought FROM THERE — never-scored draftees teach as zero-outcome busts at full weight at the
     store-referenced pick; teach-as-zero is now RULED behavior; the censoring word narrows to one limb (the
     2003 class's SCORED careers). [#290 comment 5138401971]
-N12. **SEAL-CITES-MAIN (new standing rule, from a seam-owned miss):** a sealed record may only cite content
-    reachable from main; evidence lands before or with the seal that cites it; NO branch delete until the
-    seam confirms nothing sealed-cited lives only there. [#290 read-back audit]
+N12. **SEAL-CITES-MAIN (standing rule):** a sealed record may only cite content reachable from main;
+    evidence lands before or with the seal that cites it; NO branch delete until the seam confirms nothing
+    sealed-cited lives only there. [#290 read-back audit]
 N13. **YEAR-ONLY DOB word** (Kirkby/Looby: days contested across published sources; `_by` undisputed;
     seam-verified the engine consumes `_by` only — nothing reads `_bd`). Courier 302/302: 300 full dates +
     2 year-only, provenance stamped per row. [#290 comment 5138530044]
 
 ## THE QUEUE
-- **#290 — REHEARSING L0–L8.** Next STOP: after L0/L1 rehearsal evidence, the **L2 window presentation**
-  (censor-aware-2003 vs uniform-2004+ — measured both, owner words one; L3 HALTS until it lands, non-training
-  prep allowed). Then rehearsal completes → hand-back verified the seam way → **the EXECUTION word** → the
-  landing legs → candidate board → adoption (owner's separate act; FHV word + five SCAR→VOR relabels there).
-  Key runbook facts: three curve states (stop/iter1/converged — POOL 234.3 etc. are STOP-POINT figures;
-  L6 re-measures at convergence) · L1 lands as one commit or not at all (four re-stamp dependents; twelve
-  sealed-history non-movers) · L4 is a FIRST lawful in-repo build (copy-back with identity proofs;
-  training-store stamps mandatory; the age-source census is a hard acceptance) · the workspace absolute
-  paths are bootstrap's canonical layout, NOT dead paths.
-- **#292 — trade-desk split fix**, parallel UI seat (opens on owner paste; read-back → seam go → land;
-  merge order through the seam).
+- **#290 — L1 AMENDED, RE-REHEARSING.** Sequence: the erratum block (seam checks its text against the three
+  audit points on push — no full re-audit) → **L1 re-rehearsed to a GREEN BOOT** (the exit condition Addendum C
+  added; ≥2 attempts expected, ~7–9 min/cycle measured plus the unmeasured `--bake`) → the serial canary
+  baseline (>8 min, still owed) → **the L2 window presentation** (censor-aware-2003 vs uniform-2004+ —
+  measured both, owner words one; **L3 HALTS until it lands**, non-training prep allowed) → rehearsal
+  completes → hand-back verified the seam way → **the EXECUTION word** → the landing legs → candidate board →
+  adoption (owner's separate act; FHV word + five SCAR→VOR relabels there; **the appended lineage register
+  entry is authored at L8/adoption**, per the C-audit). Key runbook facts carried: three curve states
+  (stop/iter1/converged — POOL 234.3 etc. are STOP-POINT figures; L6 re-measures at convergence) · L1 one
+  commit or not at all, identity set per Addendum C.1 (the 8/8 `release_contract.identities` mirror) ·
+  field-level re-stamps only, the ten historical `45b207c0` occurrences provably unchanged · L4 first lawful
+  in-repo build (copy-back + identity proofs; training-store stamps; age-source census hard acceptance) ·
+  the workspace absolute paths are bootstrap's canonical layout.
 - **#276 clubs tab · #270 referee** — post-#290/adoption; the referee inherits the measured dockets
   (duals-teach-both · median-vs-mean ramp · truncation optimism). · #139 feeds · v1.1 read outstanding
   (13 screenshots held for it).
 
 ## OWNER ACTS OUTSTANDING
-The **L2 window word** (mid-rehearsal STOP, measured candidates presented) · the **EXECUTION word** (after
-the rehearsal hand-back verifies) · paste #292's opener if not yet sent · later: adoption + FHV + relabels ·
-close clicks #283 #275 · branch deletes (HOLD `claude/step-4-execution-supervisor-g4edkc` until the seam
-confirms the evidence on main; others free) · the v1.1 read.
+The **L2 window word** (mid-rehearsal STOP, after L1 re-rehearses green) · the **EXECUTION word** (after the
+full rehearsal hand-back verifies) · close clicks **#292 #283 #275** · branch deletes — **HOLD
+`claude/step-4-execution-supervisor-g4edkc`** (until evidence tree `e339b1e9` reaches main via L0) and
+**HOLD `claude/pre-referee-baseline-shaping-4ql38z`** (sole carrier of the stop-point curve artifact + both
+per_entrant arms until the L1 landing, N12); **FREE**: `claude/trade-desk-pricing-split-ui-44652r` (landed,
+fully contained in main) + the six measured-free at v550 (zero unique commits each) · later: adoption + FHV
++ relabels · the v1.1 read.
 
 ## RUNNING THIS SEAT WELL — the charter's C1/C2/C3 (owner-directed 2026-07-31) govern; read them first
 - **C1 in practice:** the owner reads short, plain, prioritized messages — what happened, what he must
   decide (question → options → recommendation, one line each). Hashes, line numbers, and dialect go in the
-  filings, surfaced only on request. His casual questions are load-bearing QC — they caught seven real
-  findings last cycle; treat each as an instrument.
-- **C2 in practice:** verify deciding figures yourself; delegate everything else. Cold-screen any directive
-  you author (a fresh-context Opus reviewer) before it fires — the screens caught three blockers twice.
-  Cost-estimate before commissioning builds. One writer per bake; no parallel engine builds; every subagent
-  conclusion re-verified by re-run before it enters the record.
-- The permanent guards: REASONING IS NOT EVIDENCE (four catches last cycle) · never present a number not
-  read from a committed artifact · every count names its denominator · a filter answers only the question it
-  was built from — sweep "what is missing" with no filter · prove every instrument can fail before trusting
-  it · one pen per boundary, batched · post-rebase-merge, verify main by CONTENT (tree ids are the clean
-  seal) · seal-cites-main (N12) before any branch delete.
+  filings, surfaced only on request. His casual questions are load-bearing QC.
+- **C2 in practice:** verify deciding figures yourself; delegate everything else; heavy payloads spill to
+  files and are windowed with jq/python, never ingested. This cycle's catches all came from measuring
+  rather than reading: the #292 stale clone (its "level with main" was v545), the C.2 lineage entry
+  mis-homed to L7 (the destination shape said L8/adoption), the preboot assert that HALTs on its own shell,
+  and the head[5] wrong-state transcription. **Probe the instruments a directive adds** — run the assert,
+  read the entry shape — before blessing them.
+- The permanent guards: REASONING IS NOT EVIDENCE · never present a number not read from a committed
+  artifact · every count names its denominator · a filter answers only the question it was built from —
+  sweep "what is missing" with no filter · prove every instrument can fail — **in both directions: an
+  assert that cannot pass is as vacuous as one that cannot fire** (the preboot assert, this cycle) · one pen
+  per boundary, batched · post-rebase-merge, verify main by CONTENT (tree ids are the clean seal — #292
+  landed exactly so) · seal-cites-main (N12) before any branch delete.
 
-## ENVIRONMENT CARRIES — carried from v37 in full, plus: `/home/claude/rl_workspace/` is the engine's
-CANONICAL runtime layout (bootstrap.sh:39-43) — never "fix" workspace paths; fresh containers provision via
-`bash setup_env.sh` then independent pin verification (5 pins; 3.12 asserted before any engine import) ·
-the 1.0524 fallback has THREE sites (one_source_selftest:65 · s4_matrix:129 · guard_correction_canary:112) ·
-the two per_entrant files are never conflated (2f8b4bd4 = curve input, moves; 40d7da7c = byte-freeze, does
-not) · the DOB courier staging (302 rows, provenance per row) + both cross-check tables are DURABLE at
-`docs/evidence/dob_courier_2026-07-31/` — the courier input of record; the store is the destination truth. ·
-**PEN MECHANICS** (so no seat re-derives them from diffs): the register is ONE header line; each pen (i)
-bumps the version stamp near char 88 (`· v54X 2026-07-31 · PEN:` → X+1), (ii) inserts its entry block
-immediately BEFORE ` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: file line count unchanged · growth
-== entry length · exactly one new `SEAM v54X` stamp · PRIOR count unchanged · docs-only diff; then Part B
-replaced wholesale, commit as `supervisor-seat <supervisor@seam.local>`, branch → PR → rebase-merge →
-re-verify main by content.
+## ENVIRONMENT CARRIES — carried from v41 in full, plus this cycle's: `/home/claude/rl_workspace/` is the
+engine's CANONICAL runtime layout (bootstrap.sh:39-43) — never "fix" workspace paths; it is also a SINGLE
+SHARED MUTABLE WORKSPACE with no interlock — every engine act runs strictly serially (N10; Addendum C.6's
+rule; no lockfile by seam ruling) · fresh containers provision via `bash setup_env.sh` then independent pin
+verification (5 pins; 3.12 asserted before any engine import) · the 1.0524 fallback has THREE sites
+(one_source_selftest:65 · s4_matrix:129 · guard_correction_canary:112) · the two per_entrant files are never
+conflated (2f8b4bd4 = curve input, moves; 40d7da7c = byte-freeze, does not) — and a SECOND never-conflate
+pair: `per_entrant_279_vor.json` **77eba4d3** (VOR arm, the stop-point input) vs `per_entrant_279_scar.json`
+**db8c934c** (SCAR arm), both on the shaping branch at `session_2026-07-30/item279/out/` · the stop-point
+curve artifact `ruled_curve_final_279.json` (payload `e69a3f38` · factor_s 0.977688 · Σ(1..64)=54,722 exact ·
+pick64 221) lives ONLY on `claude/pre-referee-baseline-shaping-4ql38z` until L1 lands it · the DOB courier
+staging (302 rows, provenance per row) is DURABLE at `docs/evidence/dob_courier_2026-07-31/` · **HAZARD:**
+`ui/tests/responsive_layout.test.mjs` writes into COMMITTED evidence `session_2026-07-20/ui_release_seam/
+evidence/` in place (OUT :33, writeFileSync :185) — never commit `-a` after running it · **PEN MECHANICS**
+(so no seat re-derives them): the register is ONE header line; each pen (i) bumps the version stamp near
+char 88 (`· v55X 2026-07-31 · PEN:` → X+1), (ii) inserts its entry block immediately BEFORE
+` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: file line count unchanged · growth == entry length ·
+exactly one new `SEAM v55X` stamp · PRIOR count unchanged · docs-only diff; then Part B replaced wholesale,
+commit as `supervisor-seat <supervisor@seam.local>`, branch → PR → rebase-merge → re-verify main by content.
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip vs this pen; issues #290 #292 #279 #283 #275 #276
-   #270 #269 #146 #139 open · #271 #274 closed; four workflows green; the #290 branch
-   `claude/seam-relay-step4-fp78jm` carries the evidence tree `e339b1e9` + the runbook.
-2. #290 is mid-rehearsal: its next post is either L0/L1 rehearsal evidence + the L2 window presentation
-   (verify the candidates' measurements the seam way, present to the owner for the window word) or a
-   rehearsal hand-back (verify, then the owner's execution word). The DOB courier staging note above.
+1. Verify live state with your own commands: main tip vs this pen (the v550 pen rides on `ab68430`, the
+   #292 landing); issues #290 #292 #279 #283 #275 #276 #270 #269 #146 #139 open (#292's work is DONE —
+   open only for the owner's close click) · #271 #274 closed · PR #297 merged; four gating workflows green;
+   the #290 branch `claude/seam-relay-step4-fp78jm` carries the runbook through Addendum C (`d755c42` or a
+   descendant) and the evidence tree `e339b1e9`.
+2. #290 is mid-cycle: the next post via the owner's paste is the **erratum** (check its text against the
+   audit's three points — the two conditions and the head[5] errata; no full re-audit) or the **L1
+   re-rehearsal hand-back** (verify the deciding figures by re-run: a green boot, the identity set moving
+   together, the ten historical occurrences unchanged) or, after that, the **L2 window presentation**
+   (verify both candidates' measurements from committed artifacts; the owner words the window; L3 is halted
+   until he does).
 3. Read-back to the owner in his channel; hold for confirmation before any push.
