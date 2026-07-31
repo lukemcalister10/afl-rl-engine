@@ -1,0 +1,61 @@
+CROSS-MACHINE BYTE-ASSERT — the frozen surface, loaded on two different CPUs
+#290, L2 seat, 2026-07-31. Unplanned: the container migrated hosts mid-session, which
+made the assert the seam names as a REDESIGN GOAL (ruling item 2) available for free.
+
+THE TWO MACHINES
+  host 1  Intel(R) Xeon(R) Processor @ 2.80GHz   numpy AVX-512 tiers: SKX, CLX
+  host 2  Intel(R) Xeon(R) Processor @ 2.10GHz   numpy AVX-512 tiers: SKX, CLX, CNL, ICL, SPR
+          family 6, model 207, stepping 2
+  Both:  python 3.12.3 | numpy 2.4.4 | bundled OpenBLAS byte-pin 05c9f9eb byte-exact on BOTH
+         (so the pin PASSES on both while the dispatch tier differs — the pin is not the guard)
+  Threading fixed on both: OMP/OPENBLAS/MKL_NUM_THREADS=1, PYTHONHASHSEED=0.
+
+TEST 1 — identical tree, frozen v0surf 84fb0cde LOADED (not refitted), E3 reverted so the
+         state is exactly the one host 1 measured.
+
+                                    host 1                            host 2
+  board rl_app_data.json md5   1432f5e4d6a2316ca1da8efc596b42af  1432f5e4d6a2316ca1da8efc596b42af
+  selftest full-output md5     8d769d42b38dc41f475a0eef30b9058e  8d769d42b38dc41f475a0eef30b9058e
+  selftest verdict             96 PASS / 1 FAIL                  96 PASS / 1 FAIL
+  G-Y0                         13.919%                           13.919%
+  board build                  120s / 110s                       81s
+  selftest                     88s / 91s                         65s
+
+  => BYTE-IDENTICAL. Not "same to 3dp" — the same bytes, board and all 97 check lines.
+
+TEST 2 — the L2 window measurement (E3 applied, window A), host 1 vs host 2:
+  substrate ............................ identical
+  censoring_check ...................... identical
+  candidate_A_censor_aware_2003 ........ identical
+  candidate_B_uniform_2004plus ......... identical
+  deltas ............................... identical
+  => every published L2 figure reproduces on a different CPU.
+
+WHAT THIS ESTABLISHES
+
+ 1. The engine's COMPUTE path is cross-CPU deterministic to the byte when the frozen
+    surface is supplied. The determinism work (item 380/381 + the order-fixed math.fsum
+    closed form in par_build.loclin) holds on a real two-machine test, not just the
+    one-box forced-ISA test its note records.
+
+ 2. The ONLY cross-machine sensitivity found anywhere in this chain is in the FITTING of
+    v0surf. That is precisely the act the freeze exists to remove.
+
+ 3. Therefore the ruling is validated by measurement: with data/v0surf.pkl committed as
+    bytes, L3-L8, L6's convergence and the landing are reproducible on any machine. The
+    gap was never the engine; it was that the artifact was not carried.
+
+ 4. It retro-confirms the attribution of G-Y0 19.869% vs 13.919% to the surface bytes,
+    since every other input is now PROVEN CPU-invariant rather than assumed to be.
+
+TEST 3 — AUDIT HOOK NON-VACUITY (ruling item 4), run on the instrument itself via
+         L2_AUDIT_CONTROL=1, not on a copy:
+
+  direction 1 (normal run)    v0surf_read=False  files=[]                    -> PORTABLE
+                              939 files opened and audited
+  direction 2 (control run    v0surf_read=True   files=[.../data/v0surf.pkl] -> NOT PORTABLE
+   deliberately opens the pkl)  937 files opened; the hook NAMES the path
+  direction 1 again (host 2)  v0surf_read=False  files=[]                    -> PORTABLE
+
+  => the hook can FIRE, it names the offending path, and the verdict flips. It is not
+     vacuous, and the PORTABLE verdict cited in the L2 filing is now earned.

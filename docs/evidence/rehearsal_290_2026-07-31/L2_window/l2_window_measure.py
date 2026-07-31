@@ -29,6 +29,15 @@ def _audit(event, args):
         except Exception: pass
 sys.addaudithook(_audit)
 
+# NON-VACUITY CONTROL (seam ruling 2026-07-31 item 4: prove the hook can FAIL before citing it).
+# L2_AUDIT_CONTROL=1 makes this process deliberately open the pkl. The audit must then catch it
+# and the verdict must flip to NOT PORTABLE. An audit that cannot fire is worth nothing.
+if os.environ.get('L2_AUDIT_CONTROL') == '1':
+    _ctl = os.path.join(os.environ['RL_REPO'], 'data', 'v0surf.pkl')
+    with open(_ctl, 'rb') as _f:
+        _f.read(16)
+    print('[CONTROL] deliberately opened %s — the audit MUST catch this' % _ctl)
+
 import numpy as np
 
 FV = os.environ['RL_FV']
