@@ -790,3 +790,166 @@ two window candidates → the halt.
 
 Also outstanding: `guard_correction_canary.py` needs a **serial** baseline run (>8 min), and the four CI
 workflows have not been exercised in this container.
+
+---
+
+# ADDENDUM C — THE L1 AMENDMENT. Supersedes §4's L1 and L6 leg text. (Seam GO, 2026-07-31; audits this before re-rehearsal.)
+
+Amends, never edits in place (v461). Folds Addendum B's defects B.2–B.5 plus B.6's process rule. **§4's L1
+and the v0surf clause of L6 are superseded by this addendum; everything else in §4 stands.**
+
+## C.0 — A REFINEMENT TO DEFECT 1, in fairness to the step-4 work
+
+Addendum B said the fv pin was missed. Precisely: **the step-4 E1–E6 diff already re-pins it** — its
+`expected_boot.json` hunk moves `fv` `d10aa93e`→`28cfe2e6` alongside `engine_head`, `rl_model` and `v0surf`.
+The mechanism was known to the *diff*. What omits it is the **directive text** (Addendum 3's dependent set)
+and **my runbook** — so an executor following the prose rather than the diff halts at Guard 5, which is what
+happened in rehearsal. My additional γ edits moved fv again (`c604f4fd`) past the diff's own re-pin, and
+nothing re-stamped it. The defect is real; the fix is well-precedented. Recorded so the step-4 seat is not
+credited with an omission that is the text's.
+
+## C.1 — THE COMPLETE L1 IDENTITY SET (hazard class 7: what READS the field, and what STAMPS it)
+
+`release_contract.identities` **mirrors eight `expected_boot` fields byte-for-byte** — measured: `board`,
+`balanced_board_md5`, `store`, `engine_head`, `rl_model`, `fv`, `register`, `band`. **Every pin that moves in
+`expected_boot` must move in `release_contract.identities` in the same commit.** This is the two-axis
+sibling set the standing hazard names, and neither Addendum 3 nor my §4 enumerated it.
+
+| identity | moves at | why |
+|---|---|---|
+| `model_config.json` `vars.RL_GAMMA` + `config_sha256` | L1(a) | the source of the flip |
+| `expected_boot.config` | L1(a) | config_sha carrier |
+| `release_contract.config_sha256` | L1(a) | config_sha carrier |
+| **`expected_boot.fv`** + **`release_contract.identities.fv`** | **L1(a)** | six of the seven γ sites are in `engine/forward_valuation`; `fv` hashes that source set — **one character moves it** |
+| `expected_boot.v0surf` | **L1(b)** | the re-bake (C.3) |
+| `expected_boot.engine_head` + `…identities.engine_head` | L1(b)/(c) | `_merged_recover.py` (E2/E4) and `rl_model.py` (E6) change |
+| `expected_boot.rl_model` + `…identities.rl_model` | L1(c) | `rl_model.py` changes |
+| `release_contract.pvc_provenance` + `contract_sha256` | L1(b) | the curve declaration |
+| `release_lineage.json` | **NOT AT L1** — see C.2 | |
+| `finalization_state.json` | **NOT AT L1 AT ALL** — see C.2 | |
+| `expected_boot.board` / `band` / `q97m` / `peak_model` / `pvc_snapshot` / `bust_prior` | later legs | board at L8; the fitted pins at L4 |
+
+**L1(a) acceptance additions:** `RL_PICK1` provably unmoved at all seven sites **and** in `model_config`
+(byte-diff scoped to the γ tokens); and **`fv` re-pinned to the post-edit value in the same commit**, proven
+by a clean `bootstrap.sh` exit 0.
+
+## C.2 — SEALED HISTORY: what must NOT be re-stamped, and the act that replaces it
+
+Measured occurrence map of `45b207c0` — **1 + 1 + 4 + 6**:
+
+- `expected_boot.json` `.config` — **1, live, moves.**
+- `release_contract.json` `.config_sha256` — **1, live, moves.**
+- `release_lineage.json` — **4**, all in `release_transition.source/destination.config` and
+  `release_transition_register[1].source/destination.config`. **None moves.** A `source.config` records what
+  the config *was*; re-stamping it asserts a past transition happened under γ=1.0.
+  **REPLACEMENT ACT:** a **new** `release_transition_register` entry, appended, in the register's own
+  existing shape (source identity set → destination identity set + owner word + `column_id`). It is authored
+  at **L7**, not L1, because the destination identities do not exist until the landing head. L1 leaves the
+  file untouched.
+- `finalization_state.json` — **6**, `rounds.15…20.release_identity.config`. **None moves at L1.** Rounds
+  15–19 are sealed production history. The round-20 tail is live but Addendum 3 routes it to **L5** as the
+  live-tail-vs-sealed-history boundary call, and `movers_R20.json`'s twin stale pins ride with it there.
+
+**Standing rule this establishes:** a config/identity re-stamp is a **FIELD-level** act, enumerated by JSON
+path. A file-level string replace is forbidden in this job. The L1 acceptance includes a diff review proving
+the ten historical occurrences are **unchanged**.
+
+## C.3 — L1(b) REWRITTEN: the curve installs WITH its v0surf re-bake, in one commit
+
+`data/v0surf.pkl` is **load-or-HALT** and **curve-keyed** — `_v0surf_sig` hashes `_PVC0` itself — so a curve
+move invalidates the frozen signature and the engine will not boot. Reproduced in rehearsal. Lane A's N1
+says the re-bake must ride in the same commit; §4 wrongly deferred it to L6.
+
+**L1(b), in order:**
+1. **Install the STOP-POINT curve `e69a3f38`** as working substrate — **not** the converged `fd9e8b63`.
+   Verified from `ruled_curve_final_279.json`: `factor_s` **0.977688**, **ladder Σ(1..64) = 54,722.0
+   exactly**, head `3000, 2999, 2886, 2453, 1892`, pick 64 = **221**. (The step-4 diff installs
+   `fd9e8b63` — ladder 54,354, pick 64 = 215 — which was converged against the **un-re-derived** player
+   stack that L1–L5 are about to change. Installing it would bake in a fixed point of the old world.)
+2. Curve artifact fields, all moving together: `curve` (1..64) · `curve_md5` · the **numeraire block**
+   carrying `s = 0.977688` · `pool_value` · `stamp.statistic` **SCAR → VOR** · `stamp.store_md5`
+   `265f55d5` → **`81d24704`** · `stamp.per_entrant_md5` `2f8b4bd4` → the stop-point input
+   (`session_2026-07-30/item279/out/per_entrant_279_vor.json`, md5 **`77eba4d3`** — measured; it is the VOR
+   arm, not the SCAR arm `db8c934c`, and the two must never be conflated).
+   **`pool_value` installs the stop-point level as declared WORKING SUBSTRATE and is re-measured at L6**
+   (seam word on D2). It is not a landing figure and is labelled so in the artifact.
+3. **THE v0surf RE-BAKE, same commit:**
+   `RL_V0SURF_REFIT=1 RL_BAKE_V0SURF=1 python3 session_2026-07-18/legf6/scripts/refit_v0surf.py --bake`
+   — **all THREE signature states frozen** (import-time, post-`RL_PVCADOPT` L1b-transient, post-`RL_PVC2`),
+   or the L1b pass fits live again; that exact defect is recorded at `refit_v0surf.py:56-60`. Then re-pin
+   `expected_boot.v0surf`.
+4. **E2** (the two-key v0surf signature, `_merged_recover.py`, seam word F1) lands here — it is the
+   signature machinery the re-bake depends on.
+5. **FROZEN-RULER same-commit set:** `one_source_selftest.py` `_contract_md5` (`:490`),
+   `_curve_source_store` (`:499`), `_per_entrant_md5` (`:500`) · `ui/release_pick_curve.json` payload md5,
+   file md5, `pool_value`, `per_entrant_md5`, `_doc` rewrite · `release_contract.pvc_provenance` +
+   `contract_sha256`. The `:497-498` *"must NOT move"* comment is **OVERRIDDEN BY THIS AUTHORITY**.
+6. **E4** (the `draftval` tracks-the-adopted-curve comment correction) rides here as disclosed prose.
+
+**L1(b) acceptance:** `bootstrap.sh` exit 0 and the selftest reaching its checks rather than halting on
+Guard 5 — i.e. **a green boot is L1's exit condition**, which §4 never stated.
+
+## C.4 — L6 REDUCED
+
+L6 keeps **only** the curve↔surface **convergence iteration** with G-Y0 measured each pass, and the L6
+**re-measurement of POOL / MSD / SSP at the converged fixed point**. The v0surf refit machinery moves to
+L1(b); if a later convergence pass moves the curve again, the refit is re-run **as part of that pass**, by
+the same same-commit rule.
+
+## C.5 — THE E1–E6 SPLIT, by leg (the diff is not leg-separable as shipped)
+
+All six E-numbers are present in the step-4 diff and it spans four legs. **It must be split before any part
+lands** (one column per landed change):
+
+| E | file(s) | what | leg |
+|---|---|---|---|
+| **E1** | `build_peak_model_v4.py` | hard-assign → `setdefault` for `RL_GAMMA`/`RL_PICK1` | **L1(a)** — this is what lets the γ flip take effect at all; the hard assign would silently overwrite 1.0 back to 0.85 and bake SCAR. *The build's other fixes — `range(1,100)`, the two broken reads, the copy-back — stay at L4.* |
+| **E2** | `_merged_recover.py` | two keys join the v0surf signature (seam word F1) | **L1(b)** |
+| **E3** | `par_build.py` | per-season par keying + `PAR_DUAL_RULE='primary'` + the loud empty-group HALT | **L2** |
+| **E4** | `_merged_recover.py` | `draftval` tracks-the-adopted-curve comment correction | **L1(b)** (disclosed prose) |
+| **E5** | `par_build.py`, `par_redesign.py` | two docstrings that falsely claimed "STANDALONE / nothing wired into the engine" when both are on the value path | **L5** DOC-CORRECTED |
+| **E6** | `rl_model.py` | `BOARD_FACTOR = (_P1/PVC[1]) × s`, the two-sided re-anchor (seam word F3) | **L1(c)** |
+
+**E3 carries a measured fact worth keeping:** `'primary'` and `'lower'` disagree on exactly **2 of 1,874**
+dual rows (both `SF/KPD`), and neither reaches the cohort — so the two rules produce a **byte-identical** par
+surface at this cohort. Q2 PRIMARY is ruled regardless; this is why the ruling is cheap here.
+
+## C.6 — THE SERIAL-ENGINE RULE (B.6) and the preboot assert
+
+`/home/claude/rl_workspace` is a **single shared mutable workspace with no interlock**, and
+`guard_correction_canary.py` rebuilds through it **with a deliberately edited store**. Two engine acts
+cannot overlap.
+
+**Rule.** Every engine act in this job — `bootstrap.sh`, `rl_export.py`, `s4_matrix_M1v7.py`,
+`one_source_selftest.py`, `guard_correction_canary.py`, `refit_v0surf.py`, `build_peak_model_v4.py`,
+`run_panel.sh` — runs **strictly serially**. No backgrounding, no parallel engine builds, ever (N10).
+
+**Preboot assert, added to every leg's precondition block** — run before seeding the workspace:
+
+```
+pgrep -f 'rl_export|s4_matrix|one_source_selftest|guard_correction_canary|refit_v0surf|build_peak_model|run_panel' \
+  && { echo "HALT: an engine process is live; the workspace is single-writer"; exit 1; }
+```
+
+**Interlock proposed** (cheap, and the standing test says price a guard's upkeep before adding it — this one
+is ~5 lines and prevents a whole class of void runs): `bootstrap.sh` writes `/home/claude/.rl_workspace.lock`
+carrying its pid and the seeding checkout path; every engine entry point asserts the lock names the tree it
+is about to read. **Not added unilaterally — offered for the seam's call**, since it touches a shared script.
+
+**Both rehearsal runs of 2026-07-31 remain VOID** and are cited as void, never as measurements.
+
+## C.7 — COST LINES
+
+| act | measured / estimated |
+|---|---|
+| Addendum C drafting (docs-only) | ~1 seat-hour, no compute |
+| **amended L1 cycle** — bootstrap + board + book + selftest | **~7–9 min compute** per attempt (measured components: 1.6s + 132s + 179s + 103s) |
+| **+ the v0surf re-bake now inside L1(b)** | **UNMEASURED** — `refit_v0surf.py --bake` has not been run in this container; it is the first new cost the amendment introduces |
+| serial canary baseline (still owed) | **>8 min**, unfinished at the void run |
+| L1 attempts expected before green | ≥2 (the identity set is wide; the first attempt prices the second) |
+
+## C.8 — WHAT ADDENDUM C DOES **NOT** CHANGE
+
+The acceptance set (§6) · the courier act (§5, cleared 302/302 per Addendum A) · the L2 HALT and its single
+censoring limb · L3–L5 and L7–L8 as filed · the rehearsal posture: **unbakeable, nothing lands, the L2
+window word and the EXECUTION word remain the owner's.**
