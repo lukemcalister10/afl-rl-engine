@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v40 · supervisor pen · 2026-07-31, register v548
+# CURRENT STATE — the incoming-seat read · v41 · supervisor pen · 2026-07-31, register v549
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,9 +108,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v40 · supervisor pen · 2026-07-31, register v548 · replaced wholesale at the communication pen; the outgoing seam rotates on the owner's word — this Part B is the handover artifact)
+(v41 · supervisor pen · 2026-07-31, register v549 · replaced wholesale at the handover-QA pen; the outgoing seam rotates on the owner's word — this Part B is the handover artifact)
 
-## THE ERA: THE CONSISTENCY ERA — #290 IN REHEARSAL. Main is the v548 pen or a descendant; all four
+## THE ERA: THE CONSISTENCY ERA — #290 IN REHEARSAL. Main is the v549 pen or a descendant; all four
 workflows green at every content state.
 **#290 (the player-stack re-derivation) is FIRED into a FRESH seat** (owner word; branch
 `claude/seam-relay-step4-fp78jm`, which also carries the step-4 evidence cherry-picked forward,
@@ -123,9 +123,29 @@ ROTATED CLEAN; **its branch (`claude/step-4-execution-supervisor-g4edkc`) must N
 seam confirms the evidence has landed on main** (rides L0's first landing).
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Carried from v37 unchanged: N1–N10 (the five shaping rulings + s-invariance · ownership single-source /
-exact-byte courier / both-literals sweep / join-by-key · F1/F3/Q1/Q2 · full-internal-consistency · the
-subagent boundary law). New:
+Older standing law, each read verbatim before acting: FHV Option A ≈190 [#270 ruling comment] · Best-23 =
+A19 law, live [#271 A19 / #274 item 2] · G-Y0 2.000% hard-bar law [data/release_contract held_checks + #271
+A12] · movers/era-succession law [#271 A15/A16] · deletion protections: sealed-cited (charter D2) + anything
+an outstanding owner read depends on [#275 audit, v544]. The era's rulings:
+N1. Currency = VOR γ=1.0 [#279 issuecomment-5129956044]
+N2. Basis = STRUCTURAL · class ≤2022 · par PER-SEASON; prior = counted thin-stratum fallback, a WATCHED
+    NUMBER with denominator [#279 issuecomment-5130411507]
+N3. Fitter = CONTROL; the distfirst decomposition is a standing report-only artifact [#279 issuecomment-5131746312]
+N4. Pin = POOLED NUMERAIRE in principle; the confirmation condition holds ONLY on the ruled fitter (honest
+    form); one owner word reverts to the hard pin [#279 issuecomment-5131746312]
+N5. Pool ≈ tail equivalence; the register-carried 233 has no committed artifact — re-measure with
+    denominator before the law line lands [#279 issuecomment-5131865182 + v543]
+N6. α = 1.0; curve e69a3f38; the s-invariance reading; the "three decimals" correction by addendum
+    [#279 issuecomment-5132136796]
+N7. Ownership single-source + exact-byte courier + both-literals repin sweep + join-by-key [#283 seal +
+    seam audits, on-issue]
+N8. F1 RL_PICK1 into the gates · F3 two-sided rescale from one pooled head · Q1 overwrite-with-logged-
+    history · Q2 dual rule = PRIMARY [#279 issuecomments 5133081878 / 5136920875 / 5137264158 / 5137016272]
+N9. FULL INTERNAL CONSISTENCY — live pricing inputs re-derive; sealed history stays; G-Y0 ≤2.000% real
+    [#279 issuecomment-5137582245]
+N10. The SUBAGENT BOUNDARY LAW — measures fan out, writes are one seat; every subagent conclusion
+    re-verified by re-run [#290 body + v545]
+New this era:
 N11. **THE BUST RULING** ["Pre window careers do not count… that pick was a bust"]: a pick prices what it
     bought FROM THERE — never-scored draftees teach as zero-outcome busts at full weight at the
     store-referenced pick; teach-as-zero is now RULED behavior; the censoring word narrows to one limb (the
