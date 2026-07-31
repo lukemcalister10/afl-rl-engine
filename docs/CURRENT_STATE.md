@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v43 · supervisor pen · 2026-07-31, register v551
+# CURRENT STATE — the incoming-seat read · v44 · supervisor pen · 2026-07-31, register v552
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,19 +108,17 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v43 · supervisor pen · 2026-07-31, register v551 · replaced wholesale at the L1-exit + double-rotation pen; the outgoing seam rotates on the owner's word — this Part B is the handover artifact)
+(v44 · supervisor pen · 2026-07-31, register v552 · replaced wholesale at the window-word + v0surf-freeze pen)
 
-## THE ERA: THE CONSISTENCY ERA — L1 EXITED · BOTH SEATS ROTATED AT THIS BOUNDARY. Main is the v551 pen
-or a descendant; four gating workflows green at every content state (`live-scoring-proofs` is dispatch-only;
-five files, four gating — measured from the trigger map).
-**#292 is DONE AND ON MAIN** (landed `ab68430`, tree content-verified against its seal; awaits the owner's
-close click). **#290 rehearsed L0 and L1 to exit under nine filed addenda (A–I)** on branch
-`claude/seam-relay-step4-fp78jm`, final tip `3cccb9d`, working tree clean, everything committed or declared
-void — seam-verified. **L1 exits 96 PASS / 1 FAIL** (the single red is the accepted G-Y0 waypoint 19.869%;
-the 2.000% bar judges the CONVERGED fixed point, not mid-leg). The outgoing #290 seat's handover
-(#290 comment 5139994403) carries its three self-caught faults deliberately — one shape: conclusions stated
-before testing. **A fresh #290 seat opens on the owner's paste** to measure **L2's two window candidates**.
-The **EXECUTION word remains WITHHELD** — it follows the full rehearsal hand-back, after L2–L8.
+## THE ERA: THE CONSISTENCY ERA — WINDOW A WORDED · L3 IN FLIGHT. Main is the v552 pen or a descendant; four
+gating workflows green at every content state (`live-scoring-proofs` is dispatch-only; five files, four gating).
+**#292 is DONE AND ON MAIN** (landed `ab68430`; awaits the owner's close click). **#290:** L0+L1 rehearsed to
+exit (96 PASS / 1 FAIL — the single red is the accepted G-Y0 waypoint; the 2.000% bar judges the CONVERGED
+fixed point). The record was carried forward by TRUE MERGE of `claude/seam-relay-step4-fp78jm` (frozen at
+`3cccb9d`, an ancestor forever) into the LIVE seat branch **`claude/player-stack-290-handoff-fubolo`** (merge
+`3d253c6`, pure-additive, proofs passed). **L2 was measured, presented at the HALT, and the owner worded
+WINDOW A** (N15). **v0surf is frozen as committed bytes** (N16) after the container finding. **L3 is open,
+baseline at `57bfea1`.** The **EXECUTION word remains WITHHELD** — it follows the full rehearsal hand-back.
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
 Older standing law, each read verbatim before acting: FHV Option A ≈190 [#270 ruling comment] · Best-23 =
@@ -156,80 +154,103 @@ N14. **THE NUMERAIRE PRIMITIVE (seam ruling, owner-reversible):** the MEASURED H
     `pooled_head_pre_scale = 3068.4647` exact, `s` full-precision DERIVED (0.9776876364…), `published_pin
     = 3000`; 6dp `0.977688` is presentation only; E6 coherence exact by construction (0.000e+00); E6's
     numeraire block carries all three keys bound to 1e-9. [#290 comments 5139486512 + Addendum F; v551 item 5]
+N15. **WINDOW WORD A** (owner, 2026-07-31): the par window is CENSOR-AWARE 2003 — the code's current window.
+    Censoring measured ABSENT (0 store scoring rows at Y2004; `gather()` skips absent seasons, never teaches
+    zero); tenure-1 identical under both windows (438 = 438). [#290 comments 5140668094 + 5141734922; v552]
+N16. **THE V0SURF FREEZE + YEAR-ZERO REDESIGN TRIGGER (seam, owner-directed):** the fitted surface travels as
+    BYTES — frozen `84fb0cde` / blob `2f4c3859` at `docs/evidence/rehearsal_290_2026-07-31/v0surf_frozen_
+    2026-07-31/` is the RULED SUBSTRATE for L3–L8, L6's convergence and the landing (`expected_boot.v0surf`
+    re-stamps inside the C.1 set). Every G-Y0 statement names the surface md5 it was measured on; waypoints
+    19.869% (predecessor container) and 13.919% (host 1/2) are container-bound; NO gate moves. The year-zero
+    REDESIGN is DECIDED work — spec: constrained tail · deterministic fit lane · cross-machine byte-assert;
+    TRIGGER = L6's converged G-Y0: fails the 2.000% law → fires immediately as the remedy (directive +
+    pre-fire audit); passes → rides the referee era beside #270. Engine compute is PROVEN cross-CPU
+    byte-deterministic once the surface is supplied. [v552 items 4–6; V0SURF_DIVERGENCE.md +
+    CROSS_MACHINE_ASSERT.txt + PROVENANCE.md at 57bfea1]
 
 ## THE QUEUE
-- **#290 — FRESH SEAT OPENS on the owner's paste; its task is L2's TWO WINDOW CANDIDATES** (censor-aware-2003
-  vs uniform-2004+): both measured — cell populations, gate classifications, surface deltas — presented at
-  the HALT; **the owner words the window; L3 never starts before it** (non-training prep allowed, A.1). Then
-  L3–L8 rehearsal → the full hand-back verified the seam way → **the EXECUTION word** → the landing legs →
-  candidate board → adoption (owner's separate act: adoption word · FHV word · five SCAR→VOR relabels · the
-  appended lineage register entry authored THERE, never earlier, never pre-drafted with placeholders).
-  Landing-critical facts a successor must hold: L1 lands as ONE commit under Addendum C.1's identity set
-  (the 8/8 `release_contract.identities` mirror; field-level re-stamps only; the ten historical `45b207c0`
-  occurrences provably unchanged) · the EIGHTH γ site `rl_model.py:504` (read-default axis) is in the L1(a)
-  set · the refit FOLLOWS E2 inside L1(b); L6 keeps only convergence + the POOL/MSD/SSP re-measurement ·
-  L1's exit = green boot AND green build lane · every engine act strictly serial behind
-  `tools/preboot_assert.sh` · costs: L1 chain 480s, `--bake` 71s, ci-guards-equivalent ≈17 min ·
-  L5 dockets by name: the payload-hash NAMED HELPER (recipe `md5(json.dumps(curve, sort_keys=True))`,
-  int ladder — seam-reproduced both identities) · manifest-vs-code-default equality asserted for EVERY
-  pinned `RL_*` · the `ev()` namespace finding · int-cast-vs-widen framed for L6 beside the re-measured pool.
-- **#276 clubs tab · #270 referee** — post-adoption · #139 feeds · v1.1 read outstanding (13 screenshots held).
+- **#290 — L3 IN FLIGHT** on the seat branch (`57bfea1`): carry the step-4 harness's ruled S-1/S-2 into the
+  live `conditional_prior` path (1,572 of 1,930 resolved careers are CONCLUDED = 81.45% and currently teach a
+  prior S-1 retires from them; the harness carries real store markers + counted fallback + sums-to-population
+  assert) · land bias-1 BOTH limbs — 64 true phantoms of 13,221 rows (0.484%; the other 214 pre-2005 rows are
+  draft-year zero-games BY DESIGN) AND the tenure offset (641 class rows over 106 players read one tenure year
+  older than 2004-class on identical evidence). **SEAM REQUIREMENT on the L3 hand-back: both limbs presented
+  MEASURED — treatment options with their prior-surface deltas — nothing chosen silently.** Then L4–L8 →
+  the full hand-back verified the seam way → **the EXECUTION word** → the landing legs → candidate board →
+  adoption (owner's separate act: adoption word · FHV word · five SCAR→VOR relabels · the appended lineage
+  register entry authored THERE, never earlier). Landing-critical facts a successor must hold: L1 lands as
+  ONE commit under Addendum C.1's identity set (the 8/8 `release_contract.identities` mirror; field-level
+  re-stamps only; the ten historical `45b207c0` occurrences provably unchanged) · **the landing ships the
+  frozen v0surf bytes** (`data/v0surf.pkl` ← `84fb0cde`) and re-stamps `expected_boot.v0surf` to it · the
+  EIGHTH γ site `rl_model.py:504` (read-default axis) is in the L1(a) set · the refit FOLLOWS E2 inside
+  L1(b); L6 keeps only convergence + the POOL/MSD/SSP re-measurement, and **its hand-back must state the
+  converged G-Y0 against N16's trigger explicitly** · every engine act strictly serial behind
+  `tools/preboot_assert.sh` · costs: L1 chain 480s, v0surf bake 66–71s (now never needed — bytes travel),
+  ci-guards-equivalent ≈17 min · L5 dockets by name: the payload-hash NAMED HELPER (recipe
+  `md5(json.dumps(curve, sort_keys=True))`, int ladder — seam-reproduced both identities) ·
+  manifest-vs-code-default equality asserted for EVERY pinned `RL_*` · the `ev()` namespace finding ·
+  int-cast-vs-widen framed for L6 beside the re-measured pool.
+- **#276 clubs tab · #270 referee** (also the year-zero redesign's home if L6 passes) — post-adoption ·
+  **#139 feeds** · v1.1 read outstanding (13 screenshots held).
 
 ## OWNER ACTS OUTSTANDING
-The **L2 window word** (at the halt, measured candidates presented) · the **EXECUTION word** (after the full
-rehearsal hand-back verifies) · close clicks **#292 #283 #275** · branch deletes — **HOLD
-`claude/step-4-execution-supervisor-g4edkc`** (until tree `e339b1e9` reaches main via L0's landing) ·
+The **EXECUTION word** (after the full rehearsal hand-back verifies) · close clicks **#292 #283 #275** ·
+branch deletes — **HOLD `claude/step-4-execution-supervisor-g4edkc`** (until tree `e339b1e9` reaches main) ·
 **HOLD `claude/pre-referee-baseline-shaping-4ql38z`** (sole carrier of the stop-point artifacts until L1
-lands them, N12) · **HOLD `claude/seam-relay-step4-fp78jm`** (the live #290 branch) · FREE:
-`claude/trade-desk-pricing-split-ui-44652r` + the six measured-free at v550 + the seam carrier branch ·
-later: adoption set · the v1.1 read.
+lands them, N12) · **HOLD `claude/seam-relay-step4-fp78jm`** (frozen ancestor of the live record at
+`3cccb9d`; its content is now contained in the seat branch's history, but the hold stands until the landing
+reaches main, N12) · FREE: `claude/trade-desk-pricing-split-ui-44652r` + the six measured-free at v550 +
+the seam carrier branches · later: adoption set · the v1.1 read.
 
 ## RUNNING THIS SEAT WELL — charter C1/C2/C3 AND THE M1–M3 TRIPWIRES (second 2026-07-31 block) govern; read them first
 - **M1:** an owner-facing reply longer than ~one screen is prima facie a C1 violation — verdict and decision
   in the reply, detail in the filings. **M2:** before every in-seat act ask: *deciding-figure re-run, ruling,
   or audit?* If no — delegate (searches, status reads, artifact location, bulk extraction are NEVER in-seat;
   Opus for mechanical, Fable where judgment is the task; every subagent conclusion re-verified by re-run).
-  **M3:** state your context posture in one line at every pen. The outgoing seam drifted on all three
-  DESPITE having read C1/C2 — principles lose to load; the tripwires exist because of it.
-- The owner's casual questions are load-bearing QC. This cycle's catches, all from measuring rather than
-  reading: the #292 stale clone · the C.2 lineage mis-homing (the entry shape said L8/adoption) · the
-  self-matching preboot assert (probe every instrument a directive adds — run it, both directions, before
-  blessing it) · the head[5] wrong-state transcription · the eighth γ site (hazard 7 on the CONFIGURATION
-  axis: what SETS a value and what READS it with a fallback are different censuses).
+  **M3:** state your context posture in one line at every pen.
+- The owner's casual questions are load-bearing QC. This cycle's catches: the owner's questions removed a
+  WASTED PINNED-REFIT step from the seam's own v0surf ruling (three iterations to final form — hold rulings
+  loosely under owner QC) · the seam's ruled-in reconstruction assert caught a container divergence that
+  matching signatures missed (`_v0surf_sig` keys on the INPUT — it cannot certify fitted bytes) · the #290
+  seat self-caught a raw-store stdlib read (`pos` is derived at engine load — measure engine-derived
+  quantities THROUGH the load path).
 - The permanent guards: REASONING IS NOT EVIDENCE · never present a number not read from a committed
   artifact · every count names its denominator · sweep "what is missing" with no filter · prove every
-  instrument can fail IN BOTH DIRECTIONS (an assert that cannot pass is as vacuous as one that cannot fire)
-  · one pen per boundary, batched · post-rebase-merge verify main by CONTENT · seal-cites-main before any
-  branch delete · never re-spec a gate to trust the thing it checks (the G.5 lesson — F1 was right).
+  instrument can fail IN BOTH DIRECTIONS · one pen per boundary, batched · post-rebase-merge verify main by
+  CONTENT · seal-cites-main before any branch delete · never re-spec a gate to trust the thing it checks.
 
-## ENVIRONMENT CARRIES — carried from v42 in full, plus this cycle's: `/home/claude/rl_workspace/` is
-bootstrap's CANONICAL layout AND a single shared mutable workspace — every engine act strictly serial behind
-`tools/preboot_assert.sh` (no lockfile, by seam ruling; reversal = a second violation despite a working
-assert) · provision `bash setup_env.sh` + independent 5-pin proof, 3.12 asserted · the 1.0524 fallback has
-THREE sites · TWO never-conflate per_entrant pairs: (2f8b4bd4 curve input / 40d7da7c byte-freeze) and
-(77eba4d3 VOR arm / db8c934c SCAR arm, both at `session_2026-07-30/item279/out/` on the SHAPING branch) ·
-the stop-point artifact `ruled_curve_final_279.json` (payload `e69a3f38` · factor_s 0.977688 presentation ·
-Σ(1..64)=54,722 · head […, 2886, 2453, **1931**] · pick64 221) lives ONLY on the shaping branch until L1
-lands it · the DOB courier durable at `docs/evidence/dob_courier_2026-07-31/` · **HAZARD:**
-`ui/tests/responsive_layout.test.mjs` writes into COMMITTED evidence (`:33`/`:185`) — never commit `-a`
-after running it · the #290 rehearsal evidence at `docs/evidence/rehearsal_290_2026-07-31/` (L0 rows +
-adjudication + the full L1-exit diff `L1_amended/L1_amended_state.diff`) · **PEN MECHANICS**: the register
-is ONE header line; each pen (i) bumps the stamp near char 88 (`· v55X 2026-07-31 · PEN:` → X+1), (ii)
-inserts its entry immediately BEFORE ` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: line count
+## ENVIRONMENT CARRIES — carried from v43 in full, plus this cycle's: **CONTAINERS CAN MIGRATE HOSTS
+MID-SESSION** — provenance names the MACHINE (CPU model + numpy dispatch tiers), never "this container" ·
+the frozen v0surf at `docs/evidence/rehearsal_290_2026-07-31/v0surf_frozen_2026-07-31/` (`84fb0cde` / blob
+`2f4c3859` / 49,758 bytes; PROVENANCE.md beside it) · the v0surf FIT is the chain's ONLY machine-sensitive
+act (engine compute cross-CPU byte-identical: board `1432f5e4`, selftest `8d769d42` on both hosts; the
+OpenBLAS byte-pin passes while dispatch differs — the pin is not the guard) · `l2_window_measure.py` carries
+`L2_AUDIT_CONTROL=1` (the non-vacuity control on the instrument itself; original blob `d7c8655` in history) ·
+the L2/L3 evidence under `docs/evidence/rehearsal_290_2026-07-31/` (`L2_window/`, `L3_baseline/`) · prior
+carries: `/home/claude/rl_workspace/` is bootstrap's CANONICAL layout AND a single shared mutable workspace —
+every engine act strictly serial behind `tools/preboot_assert.sh` · provision `bash setup_env.sh` +
+independent 5-pin proof, 3.12 asserted · the 1.0524 fallback has THREE sites · TWO never-conflate
+per_entrant pairs: (2f8b4bd4 curve input / 40d7da7c byte-freeze) and (77eba4d3 VOR arm / db8c934c SCAR arm,
+both at `session_2026-07-30/item279/out/` on the SHAPING branch) · the stop-point artifact
+`ruled_curve_final_279.json` (payload `e69a3f38` · factor_s 0.977688 presentation · Σ(1..64)=54,722 · head
+[…, 2886, 2453, **1931**] · pick64 221) lives ONLY on the shaping branch until L1 lands it · the DOB courier
+durable at `docs/evidence/dob_courier_2026-07-31/` · **HAZARD:** `ui/tests/responsive_layout.test.mjs`
+writes into COMMITTED evidence (`:33`/`:185`) — never commit `-a` after running it · **PEN MECHANICS**: the
+register is ONE header line; each pen (i) bumps the stamp near char 88 (`· v55X 2026-07-31 · PEN:` → X+1),
+(ii) inserts its entry immediately BEFORE ` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: line count
 unchanged · growth == entry length · exactly one new `SEAM v55X` stamp · PRIOR count unchanged · docs-only
 diff; then Part B replaced wholesale, commit as `supervisor-seat <supervisor@seam.local>`, branch → PR →
 rebase-merge → re-verify main by CONTENT.
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip = the v551 pen or a descendant; issues #290 #292 #279
+1. Verify live state with your own commands: main tip = the v552 pen or a descendant; issues #290 #292 #279
    #283 #275 #276 #270 #269 #146 #139 open (#292 done, open for the close click) · #271 #274 closed · PRs
-   #297–#299 merged, none open; four gating workflows green; the #290 branch at `3cccb9d` or a descendant
-   carrying the runbook with nine addenda A–I + the evidence trees (`e339b1e9` step-4 pack + the rehearsal
-   evidence); the three HOLD branches intact.
-2. #290's fresh seat opens on the owner's paste (opener already handed to him): it reads the record, reads
-   back on-issue, HOLDS for the seam's go via the owner's paste. When its L2 presentation arrives: verify
-   both candidates' measurements from committed artifacts (M2: delegate the sweep, re-run the deciding
-   figures yourself), then bring the owner the window decision simply — question, options, recommendation,
-   one line each. L3 stays halted until his word.
+   through the v552 pen's merged, none open; four gating workflows green; **the LIVE #290 record is the seat
+   branch `claude/player-stack-290-handoff-fubolo` at `57bfea1` or a descendant** (`3cccb9d` on
+   `…-fp78jm` is its frozen ancestor); the three HOLD branches intact; the frozen v0surf bytes verify
+   (`84fb0cde`).
+2. #290 is MID-L3. Its next hand-back arrives via the owner's paste: verify the S-1/S-2 carry-across and
+   BOTH bias-1 limbs presented measured (M2: delegate the sweep, re-run the deciding figures yourself);
+   after L6, check the converged G-Y0 against N16's redesign trigger and bring the owner the outcome simply.
 3. Read-back to the owner in his channel — short and simple per C1/M1 — then hold for confirmation before
    any push.
