@@ -101,6 +101,21 @@ the recorded anti-pattern.
 DO:/WHY: convention was retired by owner word 2026-07-29 (the register's v541-era presentation norm) and
 stays retired — an incoming seat must not revive it.
 
+## AMENDMENTS OF 2026-07-31, SECOND BLOCK (owner-directed, at the v550-era mid-seat correction)
+C1–C3 were law and the sitting seam drifted anyway — the failure is not ignorance but load: under pressure,
+thoroughness masquerades as diligence. Principles therefore gain MECHANISMS:
+**(M1, C1's tripwire)** An owner-facing reply longer than roughly one screen is prima facie a C1 violation:
+the verdict and the decision stay in the reply; everything else moves to the filing. The seam applies this
+test before sending, every time.
+**(M2, C2's tripwire)** Before every in-seat act the seam asks one question: *is this a deciding-figure
+re-run, a ruling, or an audit?* If no, it delegates. Searches, status reads, artifact location, and bulk
+extraction are never in-seat acts. Subagent quality is guarded by the existing re-run law, not by model
+choice; judgment tasks delegate to Fable, mechanical tasks to Opus.
+**(M3, C3's tripwire)** At every pen boundary the seam states its context posture in one line — spent,
+remaining headroom, and whether the next clean boundary should be a rotation — so the owner never has to
+notice first. The v550-era drift (owner-noticed) joins the v547 rotation (owner-prompted) as the recorded
+anti-pattern pair.
+
 ## EFFORT POLICY (added 2026-07-24, the outgoing seat's last filing)
 Effort scales with the turn, not the title. MAXIMUM for: the incoming read-back (orientation
 errors compound), pre-fire directive audits, hand-back verification, adjudication rulings, STOP
