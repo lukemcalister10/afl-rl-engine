@@ -953,3 +953,73 @@ is about to read. **Not added unilaterally — offered for the seam's call**, si
 The acceptance set (§6) · the courier act (§5, cleared 302/302 per Addendum A) · the L2 HALT and its single
 censoring limb · L3–L5 and L7–L8 as filed · the rehearsal posture: **unbakeable, nothing lands, the L2
 window word and the EXECUTION word remain the owner's.**
+
+---
+
+# ADDENDUM D — erratum + the two audit conditions. (Seam audit of C: PASS WITH TWO CONDITIONS, 2026-07-31.)
+
+Filed as a block, never in-place (v461). Addendum C stands as filed except where amended here.
+
+## D.1 — ERRATUM (prose only, no act changes)
+
+Addendum C.3 gives the stop-point curve's head as `3000, 2999, 2886, 2453, 1892`. **Position 5 is wrong.**
+Re-read from the committed artifact:
+
+| curve | head[1..5] | pick 64 |
+|---|---|---|
+| **stop-point `e69a3f38`** (L1(b)'s install) | `3000, 2999, 2886, 2453, ` **`1931`** | **221** |
+| converged `fd9e8b63` (NOT installed) | `3000, 2999, 2864, 2425, ` `1892` | 215 |
+
+**`1892` is the converged curve's value**, transcribed into the stop-point row — the two curves differ at
+positions 3, 4 and 5, and I carried one of them across. Everything C.3 *does* is unaffected: the install is
+still `e69a3f38`, `factor_s` 0.977688, **Σ(1..64) = 54,722.0**, pick 64 = 221. Recorded because a head
+string is exactly the kind of literal a later sweep would pin.
+
+## D.2 — CONDITION 1 (accepted): the lineage entry re-homes to L8/adoption
+
+C.2 put the appended `release_transition_register` entry at **L7**. The seam is right that this is too early:
+a register entry's `destination` requires `board`, `balanced_board_md5`, `release_version` **and
+`owner_approved`** — three identities and **an owner word** that exist only at **L8/adoption**.
+
+**Amended:** the appended lineage entry is authored at **L8/adoption**, not L7. **`release_lineage.json` is
+untouched at L1 AND at L7.** Its four historical `config` citations never move at any leg. This also means
+the entry cannot be pre-drafted with placeholders — an entry whose `owner_approved` is not yet true must not
+exist in the file at all.
+
+## D.3 — CONDITION 2 (accepted and discharged): the preboot assert was vacuous; it is now a script, proven both ways
+
+C.6's inline `pgrep -f` **self-matched its own invoking shell and fired with zero engine processes** —
+seam-reproduced, and I reproduced it too. Worse, the obvious bracket fix (`rl_ex[p]ort|…`) **also fires**,
+because the caller's command line still contains the unbracketed literal for `pgrep -f` to find. An assert
+that always fires is hazard class 5 (vacuity) wearing a safety costume: it cannot pass, so in practice it
+gets ignored, which is worse than not having it.
+
+**Replaced by `tools/preboot_assert.sh`** — a file, so the pattern never appears in the caller's command
+line; it additionally excludes its own pid, its parent, any `pgrep`, and anything named `preboot_assert`.
+
+**Non-vacuity proven in both directions, as the condition requires:**
+
+```
+DIRECTION 1 (zero engine processes)     -> "preboot assert PASS"                     exit 0
+DIRECTION 2 (two engine-named processes)-> "PREBOOT HALT: an engine process is live" exit 1
+                                            + it NAMES the pids and command lines
+DIRECTION 1 again, after cleanup        -> "preboot assert PASS"                     exit 0
+```
+
+**Every leg's precondition block now reads `bash tools/preboot_assert.sh || exit 1` before seeding the
+workspace.** This is the one non-docs file the runbook adds, and it exists because the condition asked for
+a script rather than an inline pattern.
+
+## D.4 — SEAM RULINGS RECORDED
+
+- **NO lockfile.** The serial rule plus the fixed assert suffice. My C.6 offer is withdrawn.
+  **Reversal condition, as ruled:** a second overlap violation *despite a working assert* re-opens it.
+- **The unmeasured `refit_v0surf.py --bake` cost is accepted flagged**, and **its measured line is
+  MANDATORY in the next hand-back.**
+- C's B.2–B.5 resolutions and the E1 re-homing are confirmed at source by the seam; they stand as filed.
+
+## D.5 — COST LINE
+
+| act | measured |
+|---|---|
+| Addendum D + the assert script, with both non-vacuity directions proven | ~20 min, negligible compute |
