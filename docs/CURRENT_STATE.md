@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v38 · supervisor pen · 2026-07-31, register v546
+# CURRENT STATE — the incoming-seat read · v39 · supervisor pen · 2026-07-31, register v547
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,7 +108,7 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v38 · supervisor pen · 2026-07-31, register v546 · replaced wholesale at the runbook pen)
+(v39 · supervisor pen · 2026-07-31, register v547 · replaced wholesale at the handover pen; the outgoing seam rotated at owner word — this Part B is the handover artifact)
 
 ## THE ERA: THE CONSISTENCY ERA — #290 IN REHEARSAL. Main is `c49ed30`+; all four workflows green.
 **#290 (the player-stack re-derivation) is FIRED into a FRESH seat** (owner word; branch
@@ -162,15 +162,18 @@ confirms the evidence on main; others free) · the v1.1 read.
 (busts teach too) and the defect-span correction (65–80) this cycle — treat every casual question as an
 instrument · REASONING IS NOT EVIDENCE has four instances now; the rehearsal-validation clause and
 re-running are the guards · a filter answers only the question it was built from — the safe sweep for
-"what is missing" has no filter at all.
+"what is missing" has no filter at all · **INGESTION LAW (owner-directed at the v547 rotation): the seam
+verifies DECIDING FIGURES, it does not ingest bulk — uploads, artifact dumps, and row-level validation go
+to subagents returning verdicts + the deciding numbers for seam re-check; Fable context is the system's
+scarcest resource.**
 
 ## ENVIRONMENT CARRIES — carried from v37 in full, plus: `/home/claude/rl_workspace/` is the engine's
 CANONICAL runtime layout (bootstrap.sh:39-43) — never "fix" workspace paths; fresh containers provision via
 `bash setup_env.sh` then independent pin verification (5 pins; 3.12 asserted before any engine import) ·
 the 1.0524 fallback has THREE sites (one_source_selftest:65 · s4_matrix:129 · guard_correction_canary:112) ·
 the two per_entrant files are never conflated (2f8b4bd4 = curve input, moves; 40d7da7c = byte-freeze, does
-not) · the DOB courier staging is at the seam scratchpad (302 rows, provenance per row) — it must be
-re-emitted from the owner's uploaded sheets if the seam rotates before the courier executes.
+not) · the DOB courier staging (302 rows, provenance per row) + both cross-check tables are DURABLE at
+`docs/evidence/dob_courier_2026-07-31/` — the courier input of record; the store is the destination truth.
 
 ## THE INCOMING SEAM'S FIRST TASKS
 1. Verify live state with your own commands: main tip vs this pen; issues #290 #292 #279 #283 #275 #276
