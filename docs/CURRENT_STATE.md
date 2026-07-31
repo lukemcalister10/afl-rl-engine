@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v36 · supervisor pen · 2026-07-30, register v544
+# CURRENT STATE — the incoming-seat read · v37 · supervisor pen · 2026-07-31, register v545
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,98 +108,79 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v36 · supervisor pen · 2026-07-30, register v544 · replaced wholesale at the three-landings pen)
+(v37 · supervisor pen · 2026-07-31, register v545 · replaced wholesale at the consistency pen)
 
-## THE ERA: POST-ADOPTION, SHAPING RULINGS CLOSED, TWO LANDINGS DOWN, PROPAGATION MID-FLIGHT. Main is
-`b306400`; ALL FOUR WORKFLOWS GREEN. Today's three landings: **#283 MERGED** — the store is now the single
-source of ownership truth (store `81d24704`; the owner's 18 July-29 moves live; sidecar = generated mirror,
-never authoritative; board `f2df6e0a` untouched by seam byte-proof). **#275 MERGED** — the tree HALVED
-(136→68.6MB, 2,310→1,432 files; 878 deletions, zero adds/mods; history never rewritten). **#279 STEP 4 is
-mid-flight**: rehearsal phase 1 verified (gates fired in anger), the bake gate is OPEN against store
-`81d24704`, and ONE runbook amendment is due before the bake-gated remainder. **The step — and the whole
-shaping era — is ONE owner word from done: the execution word.** Both landed seats are ROTATED clean.
+## THE ERA: THE CONSISTENCY ERA. Main is `ec1827e`; all four workflows green at every content state of
+2026-07-30. The shaping step's pick side is DONE AND CONVERGED (the ruled curve reaches its own fixed
+point, s→0.999968). Its coherence gate then measured the truth that set this era's work: **G-Y0 diverged
+3.035% → 11.224%** — the player-pricing stack (peak model · priors · par spine · v3.4 anchor · SCAR γ)
+still derives from superseded bases. **THE OWNER RULED FULL INTERNAL CONSISTENCY** (#279
+issuecomment-5137582245): every live pricing input rooted in the old store, the old curve, or a superseded
+method is re-derived; the referee receives a SOLID baseline. The CONSISTENCY INVENTORY is delivered and
+filed (`docs/evidence/consistency_inventory_2026-07-31/`, seam-verified, retention-protected). **#290 is
+FILED, NOT FIRED** — the player-stack re-derivation, the largest job of the era. The step-4 seat HOLDS as
+its default executor. #283 (ownership single-source) and #275 (tree halved) are MERGED, seats rotated.
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Carried unchanged from v35: FHV Option A (≈190) · future-leg blend hand-set · year-0 bar = ELIGIBILITIES ·
-§1b retired · 62+3 edit set sealed · held-mechanism law · tie-sensitive instruments barred · Best-23 = A19
-law (live) · movers/era-succession law · G-Y0 dated exception (2.929/3.035/3.50; 2.000% hard bar; retires AT
-ADOPTION, new exception = owner act) · the five #279 rulings N1–N5 (VOR · structural/≤2022/par-per-season ·
-control · pooled numeraire + honest confirmation condition · pool≈tail with the 233 re-measure requirement) ·
-N6 α=1.0 (curve e69a3f38, ladder 54,722, s=0.977688; the s-invariance reading; the "three decimals"
-correction by addendum). New:
-N7. **Ownership single-source law (#283, LANDED):** the store's `affl_team` is the ONE truth; the sidecar is
-    a generated mirror with a store-pin check (a wrong-store sidecar is refused); ownership rides the
-    appended release_transition entry lane, never a round apply. **EXACT-BYTE COURIER LAW:** the store takes
-    the owner's bytes verbatim — canonicalize for the mirror, never for the store. **REPIN SWEEP LAW
-    (standing, hazard class 7 on the identity axis):** sweep the OUTGOING literal AND the incoming — stale
-    bundles are invisible to a current-literal sweep. Join by KEY (five board players have store name-twins;
-    one was in the change set). [#283 seal + seam audits, on-issue]
-N8. **Step-4 mid-flight words (all on #279):** F1 — RL_PICK1 joins the signature gates (measured silent
-    surface channel; G3's self-falsification is the can-fail proof). F3 — the player-side ×s is TWO-SIDED:
-    picks and players from ONE measured pooled head in ONE act (the engine's rescale is one-sided in
-    practice — artifact pins picks, RL_PICK1 moves only players); G5 carries three negative controls
-    (double, pick-alone, player-alone). Q1 — the declared refit overwrites the pickle wholesale; freeze
-    history lives in `v0surf_refit_log.json` (amends the seam's word 3 — a recorded seam self-correction).
-    **Q2 (OWNER-RULED): dual-position seasons teach under their PRIMARY COMPONENT** [owner word "Primary.",
-    issuecomment-5137016272]; 0.5/0.5 examined and declined. REFEREE DOCKETS (report-only, in the step-4
-    seal watch-items): duals-teach-both · the median-vs-mean tenure-ramp gap.
+Carried from v36 unchanged: N1–N6 (VOR · structural/≤2022/per-season · control · pooled numeraire ·
+pool≈tail · α=1.0 with the s-invariance reading) · N7 (ownership single-source + exact-byte courier +
+repin-sweep-both-literals + join-by-key) · N8 (F1 RL_PICK1 in the gates · F3 two-sided from one pooled
+head · Q1 overwrite-with-logged-history · Q2 PRIMARY) · G-Y0 2.000% hard bar law · the hygiene standing
+constraint (nothing an outstanding owner read depends on is deleted). New:
+N9. **FULL INTERNAL CONSISTENCY (owner ruling 2026-07-30→31):** live pricing inputs re-derive under the
+    ruled philosophy; sealed history stays history; G-Y0 returns to a REAL ≤2.000% gate as the acceptance;
+    the seam's door-1 (exception + defer to referee) withdrawn as a seam correction against ruling-sheet
+    item 4 and S-1. The E6 corrected mechanism (BOARD_FACTOR = (_P1/PVC[1])×s, numeraire block, coherence
+    halts proven three ways) and the G3c finding (the two sides were anchored on DIFFERENT curves, agreeing
+    only by pin-value coincidence) are the design facts of record. [#279: the stop, the ruling, the
+    inventory comments]
+N10. **SUBAGENT BOUNDARY LAW (owner-endorsed):** if it MEASURES, the seam/seat may parallelize with Opus
+    subagents; if it WRITES, it is a seat with an owner word; one writer per bake; no parallel engine
+    builds; every subagent conclusion re-verified by re-run before entering the record. REASONING IS NOT
+    EVIDENCE — 2026-07-30 produced two self-falsifications (the seam's word-3 mechanism; the seat's
+    RL_PICK1 transitivity) and one shared misread (the no-op BOARD_FACTOR); the rehearsal-validation
+    clause caught all three. [#290 body + v545]
 
 ## THE QUEUE
-- **#279 STEP 4 — the ONLY live lane.** State: rehearsal phase 1 VERIFIED (evidence `6e0e55e`: G2 dead-key
-  halt in anger · G4 loud-halt vs bare IndexError · G5 12/12 both directions · cost 385s/cycle · Q2
-  candidates measured). Bake gate OPEN (store `81d24704`, main `b306400`-or-later, pinned tip named in the
-  before-picture). NEXT: one runbook amendment (F1 gate key + F3 two-sided design + Q1 overwrite + Q2
-  primary) → quick seam audit → bake-gated rehearsal remainder → hand-back verified the seam way → **THE
-  EXECUTION WORD** (the step's last). Then: candidate lands with the four-channel attribution ledger
-  (channel A = the shipped artifact's store-lag, +2.24%, already committed) · adoption is the owner's
-  separate act · adoption re-denominates FHV on one word (evidence N5) · #270 referee opens after delivery.
-- **#276 — clubs tab** (post-#279-adoption; Q5/Q6 collectibles + optional FHV word at fire) · **#270 —
-  referee** opens after #279 delivers, inheriting three report-only dockets (duals-teach-both · median-vs-
-  mean ramp · truncation-backtest optimism, the N2 watch-item) · #146 never as written · #139 feeds the
-  others · v1.1 amendment read still outstanding (owner) — and 13 PLAN_v1.1-cited screenshots are RETAINED
-  pending it (re-ballot at the next hygiene pass after the read).
+- **#290 — THE PLAYER-STACK RE-DERIVATION (FILED, NOT FIRED; the era's job).** Dependency-ordered legs
+  0–10 (before-picture+F5 real assertion · training-data provenance · priors under S-1/S-2 · par spine ·
+  v3.4 exorcism · γ propagation · curve artifact install · v0surf refit · curve↔surface CONVERGENCE ·
+  gates/seals · candidate board). Acceptance: G-Y0 ≤2.000% at the fixed point; every inventory
+  STALE-ROOTED row dispositioned; the closing both-literals sweep; training-store stamps mandatory;
+  rehearsal norm in full. **OPEN INPUT: the DOB source** (`dob_corrected.json` absent; owner hunting) —
+  the fire word follows the DOB answer + the seam pre-fire audit on #290. Default seat: the step-4 seat
+  continues (owner may word fresh); its branch `claude/step-4-execution-supervisor-g4edkc` carries the
+  converged curve, E6, and all gate evidence at `592c7a2`.
+- **Owner words in flight inside #290:** the par teaching-window word (candidates measured at rehearsal) ·
+  the trade-desk fix timing (live defect: picks 66–80 price at 0, pick 65 as ordinal — UI lane) · at
+  adoption: the FHV re-denomination word (three sites) + the five SCAR→VOR label relabels.
+- **#276 clubs tab · #270 referee** — post-#290/adoption, in that order; the referee inherits the
+  measured dockets (duals-teach-both · median-vs-mean ramp · truncation optimism). · #146 never as
+  written · #139 feeds the others · v1.1 read outstanding (13 screenshots held for it).
 
 ## OWNER ACTS OUTSTANDING
-The EXECUTION WORD (after the amendment audit + bake-gated rehearsal pass) · later: the adoption word + the
-FHV re-denomination word · close clicks on #283 and #275 (acceptance fulfilled, merged, seats rotated) ·
-branch-delete clicks (`claude/issue-283-supervisor-rrjyzw` · `claude/afl-rl-engine-275-audit-tp9akk` ·
-`claude/seam-authority-afl-rl-oseyxv` after this pen · the shaping branch stays — its evidence is
-retention-protected) · the v1.1 read.
+The DOB answer → the #290 fire word (after pre-fire audit) · the par-window word and trade-desk timing
+word (inside #290) · later: adoption word + FHV word · close clicks #283 #275 · branch deletes · the
+v1.1 read.
 
-## RUNNING THIS SEAT WELL — owner-endorsed law (charter D3/D4 + three cycles' additions)
-- Answer the owner HERE, completely, FIRST; filings are durable copies, never the reply. Plain sentences.
-  His casual questions are load-bearing QC — this cycle alone they caught the s-invariance framing, the
-  store-positional attribution channel, the 0.5/0.5 design question that surfaced the median-ramp docket,
-  and the b6 referee-read constraint. Treat every one as an instrument.
-- Cost-estimate norm before commissioning builds · rehearsal norm for first-of-a-kind lanes · subagents Opus
-  by default · spill API payloads to files · register by window only (ONE ~450KB line) · every count NAMES
-  ITS DENOMINATOR · prove every instrument can fail BEFORE trusting it · **NEVER present numbers not read
-  from a committed artifact** · medAE flatters low curves; judge means with mean-targeting instruments ·
-  REVIEW LANES by owner word 2026-07-30: Opus-subagent cold-screens of seam work standing-approved, AND the
-  seam may self-review when the owner asks (pen double-checks included); implementer≠reviewer still governs
-  seat work products · **REASONING IS NOT EVIDENCE — a seat's (or the seam's) mechanical claim enters a seal
-  only as a measurement; this cycle's two catches: the seam's word-3 pickle mechanism (code contradicted it)
-  and the seat's RL_PICK1 transitivity (its own probe falsified it).**
-- One pen per boundary, batched. Hand-backs: re-run the 2–3 measurements that decide; full content-level
-  verification at final seals. Post-rebase-merge: re-verify main by CONTENT — tree-object ids are the clean
-  content seal (the #275 pattern: the seat re-derives the expected tree at its rebased head; the merged main
-  tree must equal it byte-exactly).
+## RUNNING THIS SEAT WELL — carried from v36 in full (D3/D4 law, review lanes, read-verbatim,
+denominators, cost-estimate norm, one pen per boundary, content seals by tree id), plus: REASONING IS NOT
+EVIDENCE is now N10 law · the owner's casual questions remain the best instrument in the system — this
+cycle they caught the scope drift itself (full consistency was the filed intent; the seam's doors had
+narrowed it) and the 3/7 numeraire question that clarified the anchor layering for the record.
 
-## ENVIRONMENT CARRIES
-cp312 via RL_VENV (container python3 is 3.11 — always the pinned interpreter) · git fetch --unshallow before
-ancestry claims · no parallel engine builds without seam coordination · env -i ONLY with an explicit
-whitelist; loaders assert nonempty · CRLF in the owner's CSV lane is an Excel artifact, never "fixed" ·
-rebase-merge rewrites SHAs: seal by content (tree ids) · **repin sweeps run on the outgoing AND incoming
-literal (N7)** · **sibling_repin is KNOWN-REFUSING** (state pins a pre-adoption store; stale against two
-values; docketed to the next lawful sibling build — weekly lane or step 4; do NOT hand-stamp it) ·
-**deletion protection: sealed-record-cited files (charter D2) AND anything an outstanding owner read
-depends on (owner word 2026-07-30)**.
+## ENVIRONMENT CARRIES — carried from v36 in full (cp312/RL_VENV · unshallow · env -i whitelist · CRLF ·
+seal by content/tree ids · repin sweeps both literals · deletion protections), plus: sibling_repin
+resolves at #290 (its first lawful sibling build) · the config_sha re-stamp moves five artifacts in ONE
+commit · the two per_entrant files are never conflated (selftest 2f8b4bd4 = curve input; sibling_repin
+40d7da7c = byte-freeze).
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip vs this pen (expect the v544 pen commit or a
-   descendant); open PRs (none, or this pen's pre-merge); issues #279 #283 #275 #276 #270 #269 #146 #139
-   open (#283/#275 close on owner clicks) · #271 #274 closed; all four workflows green at the tip.
-2. Step 4 is mid-flight on `claude/step-4-execution-supervisor-g4edkc`: its runbook amendment lands on #279
-   for seam audit; then the bake-gated rehearsal remainder; verify its hand-back the seam way (re-run the
-   deciding figures from committed artifacts, never prose) before the owner's execution word.
+1. Verify live state with your own commands: main tip vs this pen (expect the v545 pen or a descendant);
+   open PRs (none, or this pen's pre-merge); issues #290 #279 #283 #275 #276 #270 #269 #146 #139 open
+   (#283/#275 await owner close clicks) · #271 #274 closed; four workflows green.
+2. #290 is the era: if unfired, the DOB answer gates the fire word — the pre-fire audit is yours to run
+   on #290 before the owner fires. If fired, the executing seat's read-back/runbook/rehearsal artifacts
+   are on #290 and its branch — verify hand-backs the seam way (re-run the deciding figures from
+   committed artifacts, never prose).
 3. Read-back to the owner in his channel; hold for confirmation before any push.
