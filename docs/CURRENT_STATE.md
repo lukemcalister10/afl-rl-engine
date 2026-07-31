@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v44 · supervisor pen · 2026-07-31, register v552
+# CURRENT STATE — the incoming-seat read · v45 · supervisor pen · 2026-07-31, register v553
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,17 +108,20 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v44 · supervisor pen · 2026-07-31, register v552 · replaced wholesale at the window-word + v0surf-freeze pen)
+(v45 · supervisor pen · 2026-07-31, register v553 · replaced wholesale at the L3 pen — BOTH SEATS ROTATED at
+this boundary; this Part B is the handover artifact)
 
-## THE ERA: THE CONSISTENCY ERA — WINDOW A WORDED · L3 IN FLIGHT. Main is the v552 pen or a descendant; four
-gating workflows green at every content state (`live-scoring-proofs` is dispatch-only; five files, four gating).
-**#292 is DONE AND ON MAIN** (landed `ab68430`; awaits the owner's close click). **#290:** L0+L1 rehearsed to
-exit (96 PASS / 1 FAIL — the single red is the accepted G-Y0 waypoint; the 2.000% bar judges the CONVERGED
-fixed point). The record was carried forward by TRUE MERGE of `claude/seam-relay-step4-fp78jm` (frozen at
-`3cccb9d`, an ancestor forever) into the LIVE seat branch **`claude/player-stack-290-handoff-fubolo`** (merge
-`3d253c6`, pure-additive, proofs passed). **L2 was measured, presented at the HALT, and the owner worded
-WINDOW A** (N15). **v0surf is frozen as committed bytes** (N16) after the container finding. **L3 is open,
-baseline at `57bfea1`.** The **EXECUTION word remains WITHHELD** — it follows the full rehearsal hand-back.
+## THE ERA: THE CONSISTENCY ERA — L3 LANDED (T1) · BOTH SEATS ROTATED. Main is the v553 pen or a descendant;
+four gating workflows green at every content state (`live-scoring-proofs` is dispatch-only; five files, four
+gating). **#292 is DONE AND ON MAIN** (`ab68430`; awaits the owner's close click). **#290:** the record's LIVE
+carrier is the seat branch **`claude/player-stack-290-handoff-fubolo`** at **`abf8f4c`** (fp78jm frozen at
+`3cccb9d`, an ancestor). L0–L3 are rehearsed and verified: window A applied · v0surf frozen as bytes (N16) ·
+the watched number re-based onto a committed input · **bias-1 landed as owner word T1, gates green 96/1,
+G-Y0 UNCHANGED at 13.919%** — T1 moves the pedigree prior, not the year-zero residual; the ≤2.000% closure is
+ENTIRELY L6's convergence job; do not read L3's green as progress toward it. **One L3 act remains and hands
+to the fresh seat: carrying S-1/S-2's structural completion into the derivation path** (scoped in the
+hand-back, deliberately not attempted at the tail of the outgoing seat). The **EXECUTION word remains
+WITHHELD** — it follows the full rehearsal hand-back after L4–L8.
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
 Older standing law, each read verbatim before acting: FHV Option A ≈190 [#270 ruling comment] · Best-23 =
@@ -167,90 +170,93 @@ N16. **THE V0SURF FREEZE + YEAR-ZERO REDESIGN TRIGGER (seam, owner-directed):** 
     pre-fire audit); passes → rides the referee era beside #270. Engine compute is PROVEN cross-CPU
     byte-deterministic once the surface is supplied. [v552 items 4–6; V0SURF_DIVERGENCE.md +
     CROSS_MACHINE_ASSERT.txt + PROVENANCE.md at 57bfea1]
+N17. **BIAS-1 = OWNER WORD T1** (2026-07-31): drop the 64 phantom rows (unobservable pre-2005 seasons taught
+    as zeros — known-false evidence); KEEP true tenure labels. Each tenure cell is taught only by classes
+    observable at that tenure (measured: exactly the owner's asked-for shape). The residual — the invisible
+    2004 season thins the 2003 class's cumulative features at each label — is a NAMED referee-era refinement,
+    not a defect left silently. The limbs interact (T3 ≠ T1+T2 for 804/804; aggregate sign flips), so any
+    revisit re-measures whole treatments, never sums limbs. [#290 comments 5142523045 + 5142798385; v553]
+
 
 ## THE QUEUE
-- **#290 — L3 IN FLIGHT** on the seat branch (`57bfea1`): carry the step-4 harness's ruled S-1/S-2 into the
-  live `conditional_prior` path (1,572 of 1,930 resolved careers are CONCLUDED = 81.45% and currently teach a
-  prior S-1 retires from them; the harness carries real store markers + counted fallback + sums-to-population
-  assert) · land bias-1 BOTH limbs — 64 true phantoms of 13,221 rows (0.484%; the other 214 pre-2005 rows are
-  draft-year zero-games BY DESIGN) AND the tenure offset (641 class rows over 106 players read one tenure year
-  older than 2004-class on identical evidence). **SEAM REQUIREMENT on the L3 hand-back: both limbs presented
-  MEASURED — treatment options with their prior-surface deltas — nothing chosen silently.** Then L4–L8 →
-  the full hand-back verified the seam way → **the EXECUTION word** → the landing legs → candidate board →
-  adoption (owner's separate act: adoption word · FHV word · five SCAR→VOR relabels · the appended lineage
-  register entry authored THERE, never earlier). Landing-critical facts a successor must hold: L1 lands as
-  ONE commit under Addendum C.1's identity set (the 8/8 `release_contract.identities` mirror; field-level
-  re-stamps only; the ten historical `45b207c0` occurrences provably unchanged) · **the landing ships the
-  frozen v0surf bytes** (`data/v0surf.pkl` ← `84fb0cde`) and re-stamps `expected_boot.v0surf` to it · the
-  EIGHTH γ site `rl_model.py:504` (read-default axis) is in the L1(a) set · the refit FOLLOWS E2 inside
-  L1(b); L6 keeps only convergence + the POOL/MSD/SSP re-measurement, and **its hand-back must state the
+- **#290 — FRESH EXECUTION SEAT OPENS on the owner's paste.** Opening order, ruled: (1) read-back on-issue,
+  HOLD for the seam's go via the owner's paste; (2) **annotate `L3_T1_applied/L3_T1_state.diff` with its BASE
+  commit `79ee8e5`** (seam-measured: full apply at the base → `data/v0surf.pkl` = `84fb0cde` exact; at later
+  tips the harness hunk duplicates the committed `af12049` re-pin — exclude it, same byte-exact result; or
+  regenerate at tip). THE LAW'S NEW CLAUSE: **a state diff names its base commit beside itself**; (3) the
+  **S-1/S-2 carry** — the structural-completion logic sits in `session_2026-07-30/item279_step4/scripts/
+  harness_pvc_REPINNED.py` (its input now committed as `nd_matrix_ruled.json`, md5 `a216e6e6`), the
+  derivation home is where L6 re-derives; (4) **L4–L8** → the full hand-back verified the seam way → **the
+  EXECUTION word** → the landing legs → candidate board → adoption (owner's separate act: adoption word ·
+  FHV word · five SCAR→VOR relabels · the lineage entry authored THERE, never earlier). Landing-critical
+  facts a successor must hold: L1 lands as ONE commit under Addendum C.1's identity set (8/8
+  `release_contract.identities` mirror; field-level re-stamps only; the ten historical `45b207c0`
+  occurrences provably unchanged) · **the landing ships the frozen v0surf bytes** (`data/v0surf.pkl` ←
+  `84fb0cde`) and re-stamps `expected_boot.v0surf` · **L3's T1 rides the landing set** (the
+  `conditional_prior.py` unobservable-season drop + derived `first_observable_season()`, captured in
+  `L3_T1_state.diff`) · the EIGHTH γ site `rl_model.py:504` is in the L1(a) set · the refit FOLLOWS E2
+  inside L1(b); **L6 keeps convergence + POOL/MSD/SSP re-measurement and its hand-back must state the
   converged G-Y0 against N16's trigger explicitly** · every engine act strictly serial behind
-  `tools/preboot_assert.sh` · costs: L1 chain 480s, v0surf bake 66–71s (now never needed — bytes travel),
-  ci-guards-equivalent ≈17 min · L5 dockets by name: the payload-hash NAMED HELPER (recipe
-  `md5(json.dumps(curve, sort_keys=True))`, int ladder — seam-reproduced both identities) ·
-  manifest-vs-code-default equality asserted for EVERY pinned `RL_*` · the `ev()` namespace finding ·
-  int-cast-vs-widen framed for L6 beside the re-measured pool.
-- **#276 clubs tab · #270 referee** (also the year-zero redesign's home if L6 passes) — post-adoption ·
-  **#139 feeds** · v1.1 read outstanding (13 screenshots held).
+  `tools/preboot_assert.sh` · costs: L1 chain 480s · prior fit ~37s · ci-guards-equivalent ≈17 min · L5
+  dockets: the payload-hash NAMED HELPER (`md5(json.dumps(curve, sort_keys=True))`, int ladder) ·
+  manifest-vs-code-default equality for EVERY pinned `RL_*` · the `ev()` namespace finding ·
+  int-cast-vs-widen framed for L6.
+- **#276 clubs tab · #270 referee** (home of the year-zero redesign if L6 passes, N16, and of bias-1's
+  cumulative-features refinement, N17) — post-adoption · **#139 feeds** · v1.1 read outstanding (13
+  screenshots held).
 
 ## OWNER ACTS OUTSTANDING
-The **EXECUTION word** (after the full rehearsal hand-back verifies) · close clicks **#292 #283 #275** ·
-branch deletes — **HOLD `claude/step-4-execution-supervisor-g4edkc`** (until tree `e339b1e9` reaches main) ·
-**HOLD `claude/pre-referee-baseline-shaping-4ql38z`** (sole carrier of the stop-point artifacts until L1
-lands them, N12) · **HOLD `claude/seam-relay-step4-fp78jm`** (frozen ancestor of the live record at
-`3cccb9d`; its content is now contained in the seat branch's history, but the hold stands until the landing
-reaches main, N12) · FREE: `claude/trade-desk-pricing-split-ui-44652r` + the six measured-free at v550 +
-the seam carrier branches · later: adoption set · the v1.1 read.
+Paste the fresh #290 seat's opener (the outgoing seat's handover comment #290 5142798385 + the seam's go) ·
+the **EXECUTION word** (only after the full rehearsal hand-back verifies) · close clicks **#292 #283 #275** ·
+branch deletes — **HOLD `claude/step-4-execution-supervisor-g4edkc`** (until `e339b1e9` reaches main) ·
+**HOLD `claude/pre-referee-baseline-shaping-4ql38z`** (sole carrier of the stop-point artifacts) · **HOLD
+`claude/seam-relay-step4-fp78jm`** (frozen ancestor at `3cccb9d`; N12 holds until the landing reaches main) ·
+FREE: as at v550 · later: adoption set · the v1.1 read.
 
-## RUNNING THIS SEAT WELL — charter C1/C2/C3 AND THE M1–M3 TRIPWIRES (second 2026-07-31 block) govern; read them first
-- **M1:** an owner-facing reply longer than ~one screen is prima facie a C1 violation — verdict and decision
-  in the reply, detail in the filings. **M2:** before every in-seat act ask: *deciding-figure re-run, ruling,
-  or audit?* If no — delegate (searches, status reads, artifact location, bulk extraction are NEVER in-seat;
-  Opus for mechanical, Fable where judgment is the task; every subagent conclusion re-verified by re-run).
-  **M3:** state your context posture in one line at every pen.
-- The owner's casual questions are load-bearing QC. This cycle's catches: the owner's questions removed a
-  WASTED PINNED-REFIT step from the seam's own v0surf ruling (three iterations to final form — hold rulings
-  loosely under owner QC) · the seam's ruled-in reconstruction assert caught a container divergence that
-  matching signatures missed (`_v0surf_sig` keys on the INPUT — it cannot certify fitted bytes) · the #290
-  seat self-caught a raw-store stdlib read (`pos` is derived at engine load — measure engine-derived
-  quantities THROUGH the load path).
+## RUNNING THIS SEAT WELL — charter C1/C2/C3 AND M1–M3 govern; read them first
+- **M1** one-screen replies, detail in filings · **M2** before every in-seat act: deciding-figure re-run,
+  ruling, or audit? — else delegate (searches/status/location/bulk NEVER in-seat) · **M3** context posture
+  in one line at every pen.
+- The owner's casual questions are load-bearing QC. This cycle's catches: his window-era censoring question
+  was answered PAR-scoped and the same hazard was later REAL in `build_cond_prior` — scope every "measured
+  absent" to its path · his "why refit v0surf at all?" removed a wasted step from the seam's own ruling ·
+  his bias-1 framing WAS the right treatment (T1) before any recommendation · the seam's round-trip re-run
+  caught the unnamed diff base the filing's own proof had missed. Verification catches drift the moment a
+  proof is re-run somewhere the prover didn't stand.
 - The permanent guards: REASONING IS NOT EVIDENCE · never present a number not read from a committed
   artifact · every count names its denominator · sweep "what is missing" with no filter · prove every
   instrument can fail IN BOTH DIRECTIONS · one pen per boundary, batched · post-rebase-merge verify main by
   CONTENT · seal-cites-main before any branch delete · never re-spec a gate to trust the thing it checks.
 
-## ENVIRONMENT CARRIES — carried from v43 in full, plus this cycle's: **CONTAINERS CAN MIGRATE HOSTS
-MID-SESSION** — provenance names the MACHINE (CPU model + numpy dispatch tiers), never "this container" ·
-the frozen v0surf at `docs/evidence/rehearsal_290_2026-07-31/v0surf_frozen_2026-07-31/` (`84fb0cde` / blob
-`2f4c3859` / 49,758 bytes; PROVENANCE.md beside it) · the v0surf FIT is the chain's ONLY machine-sensitive
-act (engine compute cross-CPU byte-identical: board `1432f5e4`, selftest `8d769d42` on both hosts; the
-OpenBLAS byte-pin passes while dispatch differs — the pin is not the guard) · `l2_window_measure.py` carries
-`L2_AUDIT_CONTROL=1` (the non-vacuity control on the instrument itself; original blob `d7c8655` in history) ·
-the L2/L3 evidence under `docs/evidence/rehearsal_290_2026-07-31/` (`L2_window/`, `L3_baseline/`) · prior
-carries: `/home/claude/rl_workspace/` is bootstrap's CANONICAL layout AND a single shared mutable workspace —
-every engine act strictly serial behind `tools/preboot_assert.sh` · provision `bash setup_env.sh` +
-independent 5-pin proof, 3.12 asserted · the 1.0524 fallback has THREE sites · TWO never-conflate
-per_entrant pairs: (2f8b4bd4 curve input / 40d7da7c byte-freeze) and (77eba4d3 VOR arm / db8c934c SCAR arm,
-both at `session_2026-07-30/item279/out/` on the SHAPING branch) · the stop-point artifact
-`ruled_curve_final_279.json` (payload `e69a3f38` · factor_s 0.977688 presentation · Σ(1..64)=54,722 · head
-[…, 2886, 2453, **1931**] · pick64 221) lives ONLY on the shaping branch until L1 lands it · the DOB courier
+## ENVIRONMENT CARRIES — carried from v44 in full, plus this cycle's: **A STATE DIFF NAMES ITS BASE** (the
+L3_T1 diff's base is `79ee8e5`; annotation is the successor's opening act) · the committed watched-number
+input `L3_watched_number/nd_matrix_ruled.json` (md5 `a216e6e6` · store `81d24704` · v0surf_sig `96d671c9…`;
+byte-invariant under T1) · the emitter for it writes `session_2026-07-29/item271/out/per_entrant_271.json`
+IN PLACE (live md5 `2f8b4bd4`, never-conflate pair, provenance-cited) — backup→emit→capture→restore with
+md5-proved restore is the ruled routing · `harness_pvc_REPINNED.py` pins are the FULL-CHAIN convention now;
+its three asserts are proven fail-capable · prior carries: **containers can migrate hosts mid-session** —
+provenance names the MACHINE · frozen v0surf at `docs/evidence/rehearsal_290_2026-07-31/
+v0surf_frozen_2026-07-31/` (`84fb0cde`/blob `2f4c3859`) · the v0surf FIT is the chain's only
+machine-sensitive act · `l2_window_measure.py` carries `L2_AUDIT_CONTROL=1` · `/home/claude/rl_workspace/`
+canonical AND shared-mutable — strictly serial behind `tools/preboot_assert.sh` · `bash setup_env.sh` +
+5-pin proof, 3.12 · the 1.0524 fallback has THREE sites · TWO never-conflate per_entrant pairs (2f8b4bd4
+curve input / 40d7da7c byte-freeze; 77eba4d3 VOR / db8c934c SCAR on the SHAPING branch) · the stop-point
+artifact `ruled_curve_final_279.json` lives ONLY on the shaping branch until L1 lands it · the DOB courier
 durable at `docs/evidence/dob_courier_2026-07-31/` · **HAZARD:** `ui/tests/responsive_layout.test.mjs`
-writes into COMMITTED evidence (`:33`/`:185`) — never commit `-a` after running it · **PEN MECHANICS**: the
-register is ONE header line; each pen (i) bumps the stamp near char 88 (`· v55X 2026-07-31 · PEN:` → X+1),
-(ii) inserts its entry immediately BEFORE ` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: line count
-unchanged · growth == entry length · exactly one new `SEAM v55X` stamp · PRIOR count unchanged · docs-only
-diff; then Part B replaced wholesale, commit as `supervisor-seat <supervisor@seam.local>`, branch → PR →
-rebase-merge → re-verify main by CONTENT.
+writes into COMMITTED evidence — never commit `-a` after running it · **PEN MECHANICS**: the register is ONE
+header line; each pen (i) bumps the stamp near char 88 (`· v55X 2026-07-31 · PEN:` → X+1), (ii) inserts its
+entry immediately BEFORE ` · SEAM v540 (2026-07-29)`, (iii) proves pre-commit: line count unchanged · growth
+== entry length · exactly one new `SEAM v55X` stamp · docs-only diff; then Part B replaced wholesale, commit
+as `supervisor-seat <supervisor@seam.local>`, branch → PR → rebase-merge → re-verify main by CONTENT.
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip = the v552 pen or a descendant; issues #290 #292 #279
-   #283 #275 #276 #270 #269 #146 #139 open (#292 done, open for the close click) · #271 #274 closed · PRs
-   through the v552 pen's merged, none open; four gating workflows green; **the LIVE #290 record is the seat
-   branch `claude/player-stack-290-handoff-fubolo` at `57bfea1` or a descendant** (`3cccb9d` on
-   `…-fp78jm` is its frozen ancestor); the three HOLD branches intact; the frozen v0surf bytes verify
-   (`84fb0cde`).
-2. #290 is MID-L3. Its next hand-back arrives via the owner's paste: verify the S-1/S-2 carry-across and
-   BOTH bias-1 limbs presented measured (M2: delegate the sweep, re-run the deciding figures yourself);
-   after L6, check the converged G-Y0 against N16's redesign trigger and bring the owner the outcome simply.
+1. Verify live state with your own commands: main tip = the v553 pen or a descendant; issues #290 #292 #279
+   #283 #275 #276 #270 #269 #146 #139 open · #271 #274 closed · no open PRs; four gating workflows green;
+   the #290 seat branch at `abf8f4c` or a descendant; the three HOLD branches intact; the frozen v0surf
+   verifies (`84fb0cde`).
+2. The fresh #290 seat opens on the owner's paste: audit its read-back (deciding figures re-run, M2), give
+   the go via the owner's paste, and hold it to the ruled opening order (diff-base annotation → S-1/S-2
+   carry → L4). After L6: check the converged G-Y0 against N16's trigger and bring the owner the outcome
+   simply.
 3. Read-back to the owner in his channel — short and simple per C1/M1 — then hold for confirmation before
    any push.
