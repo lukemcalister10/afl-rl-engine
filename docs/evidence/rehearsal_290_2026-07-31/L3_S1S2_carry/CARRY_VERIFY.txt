@@ -1,0 +1,37 @@
+preboot assert PASS — no engine process live; clear to seed the workspace
+==============================================================================
+A · ROUND TRIP — the carried lane vs the ruled stop-point curve
+==============================================================================
+matrix : session_2026-07-30/item279/out/per_entrant_279_vor.json
+md5    : 77eba4d308a27a881b36a5424d3bb389   (expect 77eba4d308a27a881b36a5424d3bb389)
+lane exit: 0
+  payload  got e69a3f38     want e69a3f38     MATCH
+  ladder   got 54722        want 54722        MATCH
+  s        got 0.977688     want 0.977688     MATCH
+  head     got 3068.4647    want 3068.4647    MATCH
+  VERDICT: ROUND TRIP PROVEN — the carried lane IS the lane that produced the ruled curve
+
+==============================================================================
+B · INTERLOCK — the pairing assert, proven able to fire, all four cells
+==============================================================================
+  ORIG harness + RULED mx      HALT (expect HALT) OK  matrix store 81d24704 != committed identity 6b9d00a7
+  REPIN harness + VOR mx       HALT (expect HALT) OK  matrix store 6b9d00a7 != committed identity 81d24704
+  ORIG harness + VOR mx        PASS (expect PASS) OK  ND=1197
+  REPIN harness + RULED mx     PASS (expect PASS) OK  ND=1197
+
+==============================================================================
+C · THE RULED SUBSTRATE — S-1/S-2, the watched number, and a FIRST-PASS candidate
+==============================================================================
+  substrate  : store 81d24704 · v0surf 96d671c952c8 · frozen True
+  counts     : {"completed": 301, "concluded_realised": 825, "prior_fallback_thin": 71}
+  sums assert: 825 + 301 + 71 = 1197 == 1197  OK
+  S-1        : 825 of 1197 = 68.9% concluded, realised at FULL weight, prior RETIRED
+  S-2        : 301 of 1197 = 25.1% actives completed actuarially from concluded look-alikes
+  WATCHED    : 71 of 1197 = 5.931% counted thin-stratum fallback
+  lane exit  : 0
+  payload    : 6dedc611        (stop-point was e69a3f38)
+  ladder     : 54532           (stop-point was 54722)
+  s          : 0.996218
+  head       : 3011.3898        (stop-point was 3068.4647)
+
+  WAYPOINT, NOT A LANDING FIGURE. One pass, not a fixed point. L6 converges.
