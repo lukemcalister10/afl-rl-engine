@@ -1,0 +1,12 @@
+# ADDITION 2 — ABSENCE PATH, transcript. #279 step 4 rehearsal, 2026-07-30T23:29:23Z
+# The artifact under test is the SHIPPED pvc_curve_v2.json (no numeraire block), verbatim.
+# artifact md5: 6506d8b1ff89ea0a8ad15f10827f202b
+# 'numeraire' present in artifact: False
+# command: python3 -c 'import rl_model'
+# ---------------- stdout/stderr ----------------
+E6 numeraire HALT: pvc_curve_v2.json carries NO 'numeraire' block.
+  The pooled-numeraire economy re-denominates picks and players from ONE measured head; without
+  it the player side would silently fall back to the v3.4 pre-anchor head (the one-sided defect
+  #279 step 4 removes). This is not a fallback condition — install the candidate artifact, which
+  carries {'pooled_head_pre_scale', 's', 'published_pin'}.
+# ---------------- exit code: 1 ----------------

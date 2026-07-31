@@ -1,0 +1,43 @@
+CROSS-CONTAINER BOARD MOVE at the L1-exit state — the ONLY differing input is data/v0surf.pkl
+  ref  = docs/evidence/.../L1_amended/f1_single_g10.json   (predecessor's container, v0surf e92e3885)
+  mine = f1_single_g10_container2.json                     (this container,          v0surf 84fb0cde)
+  both = ev(p,2026) at gamma=1.0, fresh process, order-clean, f1_decide.py 'single' mode
+  both equal their OWN board: F1 reported mismatches=0 in each container, so this compares BOARDS.
+
+MOVERS: 173 of 804 (21.52%)   direction: 7 up / 166 down
+  median |delta| 10.0 | max |delta| 79 | median |rel| 8.732% | max |rel| 16.667%
+  total ev 798003 -> 795167  (-0.3554%)
+
+WHERE THEY SIT — deciles by the record's ev (this is what distinguishes a v0-surface cause
+from generic float drift: drift would smear across the whole board, this does not)
+ decile   ev range           movers/n    max|rel|
+   1        2603-12506        1/80       0.23%
+   2        1593-2599         1/80       1.19%
+   3         975-1580         3/81       1.45%
+   4         601-975         17/80      10.12%
+   5         413-600         26/81      11.29%
+   6         281-408         27/80      12.77%
+   7         198-278         18/80      12.14%
+   8         104-198         19/81      16.67%
+   9          45-104         37/80      16.67%
+  10           0-44          24/81      16.67%
+
+  top half (402 players) unchanged : 354 of 402
+  highest-valued mover             : noah-mraz  4277 -> 4267 (-0.23%)   [top of board = 12506, unchanged]
+
+LARGEST ABSOLUTE MOVES
+  oskar-taylor                        781 ->      702      -79  -10.115%
+  blake-thredgold                     588 ->      522      -66  -11.224%
+  mitchell-marsh                      726 ->      665      -61   -8.402%
+  aidan-schubert                      716 ->      656      -60   -8.380%
+  adam-sweid                          615 ->      558      -57   -9.268%
+  lachlan-carmichael                  594 ->      537      -57   -9.596%
+  thomas-matthews                     567 ->      510      -57  -10.053%
+  will-darcy                          505 ->      448      -57  -11.287%
+  jevan-phillipou                     508 ->      457      -51  -10.039%
+  koby-evans                          472 ->      423      -49  -10.381%
+  tylah-williams                      460 ->      412      -48  -10.435%
+  avery-thomas                        508 ->      461      -47   -9.252%
+  james-barrat                        403 ->      357      -46  -11.414%
+  lewis-hayes                         390 ->      347      -43  -11.026%
+  archie-ludowyke                     447 ->      405      -42   -9.396%

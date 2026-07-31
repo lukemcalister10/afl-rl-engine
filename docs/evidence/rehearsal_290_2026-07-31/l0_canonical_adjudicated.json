@@ -1,0 +1,3333 @@
+{
+ "lane_rows_in": 209,
+ "merge_sets": 21,
+ "rows_merged_away": 22,
+ "CANONICAL_ROWS": 187,
+ "cross_lane_merges": 21,
+ "conflicts_to_resolve": [
+  "pvc_snapshot.json",
+  "pvc_fit_candidate.json",
+  "bust_prior_table.json",
+  "release_pick_curve.json:curve_source_store_md5",
+  "release_contract.json:pvc_provenance",
+  "release_contract.json:identities",
+  "release_contract.json:held_checks.ceiling_pct (LIVE gate input)",
+  "release_contract.json:present_lens_baseline",
+  "pick_redenomination.json:factor",
+  "A#40 `session_2026-07-18/legf6/` (PLAN, EXIT_PROOF, BASE_PROOF, out/proof.t",
+  "A#46 The live `LENS` posture dials",
+  "B#C2 Board source pin",
+  "B#D2 **Finalization state**",
+  "C#A9 club-valuation stamp"
+ ],
+ "deliberate_non_merges": [
+  [
+   "C#D6 vs B#C1",
+   "extract_board_view.py's docstring MENTIONS rl_app_data.json; it is a doc row in a different file. Hazard class 1 \u2014 right name, wrong file."
+  ],
+  [
+   "C#A9 vs release_pick_curve.json",
+   "club_valuation.js's stamp CITES the contract path; the row is the bundle stamp, not the contract."
+  ],
+  [
+   "B#A2 pool_value vs B#A1 curve",
+   "same file, different sibling set: the pool triplet is 3 files, the curve payload a different 3. Two work items."
+  ],
+  [
+   "B#A3 gy0_offline vs B#A1",
+   "fit-time diagnostics of the curve \u2014 HISTORICAL-SEALED measurements, not an input. Distinct disposition."
+  ],
+  [
+   "C#F4 vs C#F3",
+   "F4 is the DATED declaration record (HS); F3 is the live ceiling the gate READS (SR-executable). Different dispositions, so not one row."
+  ],
+  [
+   "B#E4 vs B#E3",
+   "E3 is the consumed occupancy COUNTS; E4 the file's embedded price totals, which are not consumed. Distinct."
+  ],
+  [
+   "B#C2 vs B#C1",
+   ".srcmd5 is a separate file certifying the board; its store side is RC while what it certifies is SR."
+  ]
+ ],
+ "rows": [
+  {
+   "key": "pvc_curve_v2.json:curve",
+   "lane_rows": [
+    "A#1",
+    "B#A1"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#1",
+     "B#A1"
+    ]
+   },
+   "conflict": false,
+   "row": 1
+  },
+  {
+   "key": "pvc_curve_L1b.json",
+   "lane_rows": [
+    "A#4",
+    "B#A4"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#4",
+     "B#A4"
+    ]
+   },
+   "conflict": false,
+   "row": 2
+  },
+  {
+   "key": "pvc_snapshot.json",
+   "lane_rows": [
+    "A#10",
+    "B#A6"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#10"
+    ],
+    "UNCLEAR": [
+     "B#A6"
+    ]
+   },
+   "conflict": true,
+   "row": 3
+  },
+  {
+   "key": "pvc_fit_candidate.json",
+   "lane_rows": [
+    "A#11",
+    "B#A5"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "NOT-LIVE": [
+     "A#11"
+    ],
+    "STALE-ROOTED": [
+     "B#A5"
+    ]
+   },
+   "conflict": true,
+   "row": 4
+  },
+  {
+   "key": "rl_model_data.json (THE store)",
+   "lane_rows": [
+    "A#12",
+    "B#B10"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#12",
+     "B#B10"
+    ]
+   },
+   "conflict": false,
+   "row": 5
+  },
+  {
+   "key": "national_draft_last_pick.json",
+   "lane_rows": [
+    "A#13",
+    "B#B6"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#13",
+     "B#B6"
+    ]
+   },
+   "conflict": false,
+   "row": 6
+  },
+  {
+   "key": "rl_passmark.json",
+   "lane_rows": [
+    "A#15",
+    "B#B4"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#15",
+     "B#B4"
+    ]
+   },
+   "conflict": false,
+   "row": 7
+  },
+  {
+   "key": "params.json",
+   "lane_rows": [
+    "A#16",
+    "B#B5"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#16",
+     "B#B5"
+    ]
+   },
+   "conflict": false,
+   "row": 8
+  },
+  {
+   "key": "bust_prior_table.json",
+   "lane_rows": [
+    "A#24",
+    "B#B2"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#24"
+    ],
+    "UNCLEAR": [
+     "B#B2"
+    ]
+   },
+   "conflict": true,
+   "row": 9
+  },
+  {
+   "key": "ycred_table.json",
+   "lane_rows": [
+    "A#41",
+    "B#B1"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#41",
+     "B#B1"
+    ]
+   },
+   "conflict": false,
+   "row": 10
+  },
+  {
+   "key": "lti_return_table.json",
+   "lane_rows": [
+    "A#42",
+    "B#B3"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#42",
+     "B#B3"
+    ]
+   },
+   "conflict": false,
+   "row": 11
+  },
+  {
+   "key": "season_state.json",
+   "lane_rows": [
+    "A#44",
+    "B#C11"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#44",
+     "B#C11"
+    ]
+   },
+   "conflict": false,
+   "row": 12
+  },
+  {
+   "key": "sealed_entrant_structure.json:counts",
+   "lane_rows": [
+    "A#47",
+    "B#E3"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#47",
+     "B#E3"
+    ]
+   },
+   "conflict": false,
+   "row": 13
+  },
+  {
+   "key": "collision_sentry.json",
+   "lane_rows": [
+    "A#62",
+    "B#B9"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#62",
+     "B#B9"
+    ]
+   },
+   "conflict": false,
+   "row": 14
+  },
+  {
+   "key": "release_pick_curve.json:curve_source_store_md5",
+   "lane_rows": [
+    "B#A8",
+    "C#B3"
+   ],
+   "merged": true,
+   "lanes": [
+    "B",
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#A8"
+    ],
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#B3"
+    ]
+   },
+   "conflict": true,
+   "row": 15
+  },
+  {
+   "key": "release_contract.json:pvc_provenance",
+   "lane_rows": [
+    "B#C4",
+    "C#F2"
+   ],
+   "merged": true,
+   "lanes": [
+    "B",
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C4"
+    ],
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#F2"
+    ]
+   },
+   "conflict": true,
+   "row": 16
+  },
+  {
+   "key": "release_contract.json:identities",
+   "lane_rows": [
+    "B#C5",
+    "C#F1"
+   ],
+   "merged": true,
+   "lanes": [
+    "B",
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C5"
+    ],
+    "RULED-CURRENT": [
+     "C#F1"
+    ]
+   },
+   "conflict": true,
+   "row": 17
+  },
+  {
+   "key": "release_contract.json:held_checks.ceiling_pct (LIVE gate input)",
+   "lane_rows": [
+    "B#C6",
+    "C#F3"
+   ],
+   "merged": true,
+   "lanes": [
+    "B",
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C6"
+    ],
+    "STALE-ROOTED": [
+     "C#F3"
+    ]
+   },
+   "conflict": true,
+   "row": 18
+  },
+  {
+   "key": "release_contract.json:f5_entrant_reconciliation",
+   "lane_rows": [
+    "B#C7",
+    "C#F5"
+   ],
+   "merged": true,
+   "lanes": [
+    "B",
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C7",
+     "C#F5"
+    ]
+   },
+   "conflict": false,
+   "row": 19
+  },
+  {
+   "key": "release_contract.json:present_lens_baseline",
+   "lane_rows": [
+    "B#C8",
+    "C#F6"
+   ],
+   "merged": true,
+   "lanes": [
+    "B",
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C8"
+    ],
+    "UNCLEAR": [
+     "C#F6"
+    ]
+   },
+   "conflict": true,
+   "row": 20
+  },
+  {
+   "key": "pick_redenomination.json:factor",
+   "lane_rows": [
+    "A#49",
+    "B#A7",
+    "C#E12"
+   ],
+   "merged": true,
+   "lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#49",
+     "B#A7"
+    ],
+    "UNCLEAR": [
+     "C#E12"
+    ]
+   },
+   "conflict": true,
+   "row": 21
+  },
+  {
+   "key": "A#2 `_PVC2M` \u2192 module-global `PVC` swap",
+   "lane_rows": [
+    "A#2"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#2"
+    ]
+   },
+   "conflict": false,
+   "row": 22
+  },
+  {
+   "key": "A#3 `_PVC0` \u2014 the ev-channel curve basis",
+   "lane_rows": [
+    "A#3"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#3"
+    ]
+   },
+   "conflict": false,
+   "row": 23
+  },
+  {
+   "key": "A#5 `build_pvc_v34()` import fit \u2192 `CURVE_H` \u2192 `_P1`/`BOARD_FACTOR` \u2192 **`S",
+   "lane_rows": [
+    "A#5"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#5"
+    ]
+   },
+   "conflict": false,
+   "row": 24
+  },
+  {
+   "key": "A#6 `ALPHA = 0.6` + legacy `_ce()`",
+   "lane_rows": [
+    "A#6"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#6"
+    ]
+   },
+   "conflict": false,
+   "row": 25
+  },
+  {
+   "key": "A#7 `PVC_ALPHA_LO, PVC_ALPHA_HI = 0.6, 0.8` + `_alpha_pvc(k)` + `PVC_REPL_",
+   "lane_rows": [
+    "A#7"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#7"
+    ]
+   },
+   "conflict": false,
+   "row": 26
+  },
+  {
+   "key": "A#8 Hard pick-1 num\u00e9raire assertion (three sites)",
+   "lane_rows": [
+    "A#8"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#8"
+    ]
+   },
+   "conflict": false,
+   "row": 27
+  },
+  {
+   "key": "A#9 `GAMMA` = **0.85 (SCAR)**",
+   "lane_rows": [
+    "A#9"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#9"
+    ]
+   },
+   "conflict": false,
+   "row": 28
+  },
+  {
+   "key": "A#14 `MA.REPL` replacement bars",
+   "lane_rows": [
+    "A#14"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#14"
+    ]
+   },
+   "conflict": false,
+   "row": 29
+  },
+  {
+   "key": "A#17 `EXP_PEAK_BASE` / `EXP_RETAIN` / `EXP_PICK_SLOPE=-10.72` / `EXP_LOGREF",
+   "lane_rows": [
+    "A#17"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#17"
+    ]
+   },
+   "conflict": false,
+   "row": 30
+  },
+  {
+   "key": "A#18 `BETA_POS` / `ICPT_POS`",
+   "lane_rows": [
+    "A#18"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#18"
+    ]
+   },
+   "conflict": false,
+   "row": 31
+  },
+  {
+   "key": "A#19 `par_build.fit()` \u2014 the PAR surface (level\u00d7pick + tenure ramp)",
+   "lane_rows": [
+    "A#19"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#19"
+    ]
+   },
+   "conflict": false,
+   "row": 32
+  },
+  {
+   "key": "A#20 `par_redesign.lvl_par` bound as `cp._lvl_eff`",
+   "lane_rows": [
+    "A#20"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#20"
+    ]
+   },
+   "conflict": false,
+   "row": 33
+  },
+  {
+   "key": "A#21 `data/cm_400.pkl` (md5 `34faa865`, pinned `expected_boot.band`)",
+   "lane_rows": [
+    "A#21"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#21"
+    ]
+   },
+   "conflict": false,
+   "row": 34
+  },
+  {
+   "key": "A#22 `data/q97m.pkl` (md5 `cfdc7321`, pinned `expected_boot.q97m`)",
+   "lane_rows": [
+    "A#22"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#22"
+    ]
+   },
+   "conflict": false,
+   "row": 35
+  },
+  {
+   "key": "A#23 `peak_model_v4.pkl` (md5 **`b763f59e`**, pinned `expected_boot.peak_mo",
+   "lane_rows": [
+    "A#23"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#23"
+    ]
+   },
+   "conflict": false,
+   "row": 36
+  },
+  {
+   "key": "A#25 `distribution_pricing.v_at_peak` + `SCALE_DIST=1.0`, `WQ`",
+   "lane_rows": [
+    "A#25"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#25"
+    ]
+   },
+   "conflict": false,
+   "row": 37
+  },
+  {
+   "key": "A#26 `REPL_DROP_PTS = 3` (`RL_REPL_DROP`)",
+   "lane_rows": [
+    "A#26"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#26"
+    ]
+   },
+   "conflict": false,
+   "row": 38
+  },
+  {
+   "key": "A#27 `conditional_prior` recency/exposure dials \u2014 `RECENCY_DECAY=0.72`, `LE",
+   "lane_rows": [
+    "A#27"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#27"
+    ]
+   },
+   "conflict": false,
+   "row": 39
+  },
+  {
+   "key": "A#28 `par_redesign.BASE_RATE`",
+   "lane_rows": [
+    "A#28"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "NOT-LIVE": [
+     "A#28"
+    ]
+   },
+   "conflict": false,
+   "row": 40
+  },
+  {
+   "key": "A#29 `par_redesign.BETA_POS` / `MULT` / `TILT_CAP` / `WIDEN_K` / `PVCm` / `",
+   "lane_rows": [
+    "A#29"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "NOT-LIVE": [
+     "A#29"
+    ]
+   },
+   "conflict": false,
+   "row": 41
+  },
+  {
+   "key": "A#30 `build_cohort_book.py`",
+   "lane_rows": [
+    "A#30"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "NOT-LIVE": [
+     "A#30"
+    ]
+   },
+   "conflict": false,
+   "row": 42
+  },
+  {
+   "key": "A#31 `tail_restore.py`",
+   "lane_rows": [
+    "A#31"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#31"
+    ]
+   },
+   "conflict": false,
+   "row": 43
+  },
+  {
+   "key": "A#32 `wire_redesign.build()` \u2014 the cm provider",
+   "lane_rows": [
+    "A#32"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#32"
+    ]
+   },
+   "conflict": false,
+   "row": 44
+  },
+  {
+   "key": "A#33 `draftval()` (engine-head rebind)",
+   "lane_rows": [
+    "A#33"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#33"
+    ]
+   },
+   "conflict": false,
+   "row": 45
+  },
+  {
+   "key": "A#34 V0 start-value chain \u2014 `_v0_uncapped`, `_v0_raw`, `_build_v0_guard`, `",
+   "lane_rows": [
+    "A#34"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#34"
+    ]
+   },
+   "conflict": false,
+   "row": 46
+  },
+  {
+   "key": "A#35 `RUC_PRIOR_CAP = 1.4` + `_ruc_prior_cap` / `_ruc_ceiling`",
+   "lane_rows": [
+    "A#35"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#35"
+    ]
+   },
+   "conflict": false,
+   "row": 47
+  },
+  {
+   "key": "A#36 `RUC_CEIL_REFPK = 72` (with `RUC_CEIL_HEAD=0.80`, `RUC_YRH=0.35`)",
+   "lane_rows": [
+    "A#36"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#36"
+    ]
+   },
+   "conflict": false,
+   "row": 48
+  },
+  {
+   "key": "A#37 `R_SURF` \u2014 sit-out retention surface",
+   "lane_rows": [
+    "A#37"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#37"
+    ]
+   },
+   "conflict": false,
+   "row": 49
+  },
+  {
+   "key": "A#38 `LAM_SIT`",
+   "lane_rows": [
+    "A#38"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#38"
+    ]
+   },
+   "conflict": false,
+   "row": 50
+  },
+  {
+   "key": "A#39 **`data/v0surf.pkl`** (md5 `ce08c2d1`, pinned `expected_boot.v0surf`) ",
+   "lane_rows": [
+    "A#39"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#39"
+    ]
+   },
+   "conflict": false,
+   "row": 51
+  },
+  {
+   "key": "A#40 `session_2026-07-18/legf6/` (PLAN, EXIT_PROOF, BASE_PROOF, out/proof.t",
+   "lane_rows": [
+    "A#40"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#40"
+    ],
+    "HISTORICAL-SEALED": [
+     "A#40"
+    ]
+   },
+   "conflict": true,
+   "row": 52
+  },
+  {
+   "key": "A#43 `LTI_REGISTER.md` (pinned `expected_boot.register = 652d83e8`) via `lt",
+   "lane_rows": [
+    "A#43"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#43"
+    ]
+   },
+   "conflict": false,
+   "row": 53
+  },
+  {
+   "key": "A#45 `posture_presets_v1.json` (md5 `c2e17c49`)",
+   "lane_rows": [
+    "A#45"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "A#45"
+    ]
+   },
+   "conflict": false,
+   "row": 54
+  },
+  {
+   "key": "A#46 The live `LENS` posture dials",
+   "lane_rows": [
+    "A#46"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#46"
+    ],
+    "UNCLEAR": [
+     "A#46"
+    ]
+   },
+   "conflict": true,
+   "row": 55
+  },
+  {
+   "key": "A#48 `_LSYM_SEAL` \u2014 `r_pop` (`c62b5ee8`) + `s` (`efe97ee3`)",
+   "lane_rows": [
+    "A#48"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#48"
+    ]
+   },
+   "conflict": false,
+   "row": 56
+  },
+  {
+   "key": "A#50 `LEG B un-compress` \u2014 `UNCOMP_S_DEFAULT=0.10`, `UNCOMP_DELTA=6.0`, `UN",
+   "lane_rows": [
+    "A#50"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#50"
+    ]
+   },
+   "conflict": false,
+   "row": 57
+  },
+  {
+   "key": "A#51 L-CAPTAIN curve \u2014 `LCAPT_BAR/M/W/G = 105.0/109.5/1.85/1.00`",
+   "lane_rows": [
+    "A#51"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#51"
+    ]
+   },
+   "conflict": false,
+   "row": 58
+  },
+  {
+   "key": "A#52 Retired saturating captain curve \u2014 `CAPT_GAIN/EXP/CAP`, `CAPT_THRESH=1",
+   "lane_rows": [
+    "A#52"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "NOT-LIVE": [
+     "A#52"
+    ]
+   },
+   "conflict": false,
+   "row": 59
+  },
+  {
+   "key": "A#53 `_ABS_EFF` absence age-effect curve + `_ABS_L_REF=75.0`, `_ABS_CAP=0.2",
+   "lane_rows": [
+    "A#53"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#53"
+    ]
+   },
+   "conflict": false,
+   "row": 60
+  },
+  {
+   "key": "A#54 Decliner-shed calibration \u2014 `LDECAY_G`, `FLAT_TOL_G`, `_AGEMULT_X/Y`, ",
+   "lane_rows": [
+    "A#54"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#54"
+    ]
+   },
+   "conflict": false,
+   "row": 61
+  },
+  {
+   "key": "A#55 Evidence-weight pins \u2014 `_EVW_R=0.11`, `_EVW_Q0/QW=11.0/1.1`, `_EVW_GK/",
+   "lane_rows": [
+    "A#55"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#55"
+    ]
+   },
+   "conflict": false,
+   "row": 62
+  },
+  {
+   "key": "A#56 `_L3_AY` s(age) persistence curve + `_SAGE29_VAL = 0.3793`",
+   "lane_rows": [
+    "A#56"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "A#56"
+    ]
+   },
+   "conflict": false,
+   "row": 63
+  },
+  {
+   "key": "A#57 W4 dial block \u2014 `W4_CRED/KPFUP/FADE/OVPX/KPFSH/KPFSH_DEM/KPFTOP`, `_KP",
+   "lane_rows": [
+    "A#57"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#57"
+    ]
+   },
+   "conflict": false,
+   "row": 64
+  },
+  {
+   "key": "A#58 `_natcv` / `_natcv34` / `PICKEQ` / `MECH_STATS`",
+   "lane_rows": [
+    "A#58"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "A#58"
+    ]
+   },
+   "conflict": false,
+   "row": 65
+  },
+  {
+   "key": "A#59 `_split_ladder` domain law \u2014 `ND_CURVE_LAST=64`, `POOL_PICK=65`",
+   "lane_rows": [
+    "A#59"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#59"
+    ]
+   },
+   "conflict": false,
+   "row": 66
+  },
+  {
+   "key": "A#60 `forward_lens.py` (ITEM 408 D2 sibling)",
+   "lane_rows": [
+    "A#60"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "A#60"
+    ]
+   },
+   "conflict": false,
+   "row": 67
+  },
+  {
+   "key": "A#61 Establishment-P surface \u2014 `pgrid.build(...)`, `pick_prior`, `P_estab`,",
+   "lane_rows": [
+    "A#61"
+   ],
+   "merged": false,
+   "lanes": [
+    "A"
+   ],
+   "classes": {
+    "NOT-LIVE": [
+     "A#61"
+    ]
+   },
+   "conflict": false,
+   "row": 68
+  },
+  {
+   "key": "B#A2 **Pool level**",
+   "lane_rows": [
+    "B#A2"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#A2"
+    ]
+   },
+   "conflict": false,
+   "row": 69
+  },
+  {
+   "key": "B#A3 Curve fit-time diagnostics",
+   "lane_rows": [
+    "B#A3"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#A3"
+    ]
+   },
+   "conflict": false,
+   "row": 70
+  },
+  {
+   "key": "B#B7 **Walk-forward book / matrix**",
+   "lane_rows": [
+    "B#B7"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#B7"
+    ]
+   },
+   "conflict": false,
+   "row": 71
+  },
+  {
+   "key": "B#B8 Export attribution sidecar",
+   "lane_rows": [
+    "B#B8"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#B8"
+    ]
+   },
+   "conflict": false,
+   "row": 72
+  },
+  {
+   "key": "B#C1 **Board of record**",
+   "lane_rows": [
+    "B#C1"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C1"
+    ]
+   },
+   "conflict": false,
+   "row": 73
+  },
+  {
+   "key": "B#C2 Board source pin",
+   "lane_rows": [
+    "B#C2"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C2"
+    ],
+    "RULED-CURRENT": [
+     "B#C2"
+    ]
+   },
+   "conflict": true,
+   "row": 74
+  },
+  {
+   "key": "B#C3 **Boot identity manifest**",
+   "lane_rows": [
+    "B#C3"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C3"
+    ]
+   },
+   "conflict": false,
+   "row": 75
+  },
+  {
+   "key": "B#C9 Release contract \u2014 season metadata",
+   "lane_rows": [
+    "B#C9"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "B#C9"
+    ]
+   },
+   "conflict": false,
+   "row": 76
+  },
+  {
+   "key": "B#C10 **Transition register**",
+   "lane_rows": [
+    "B#C10"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C10"
+    ]
+   },
+   "conflict": false,
+   "row": 77
+  },
+  {
+   "key": "B#C12 **Model config manifest**",
+   "lane_rows": [
+    "B#C12"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#C12"
+    ]
+   },
+   "conflict": false,
+   "row": 78
+  },
+  {
+   "key": "B#C13 Owner overrides",
+   "lane_rows": [
+    "B#C13"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "B#C13"
+    ]
+   },
+   "conflict": false,
+   "row": 79
+  },
+  {
+   "key": "B#C14 Book stability seal",
+   "lane_rows": [
+    "B#C14"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C14"
+    ]
+   },
+   "conflict": false,
+   "row": 80
+  },
+  {
+   "key": "B#C15 W4 candidate seal",
+   "lane_rows": [
+    "B#C15"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C15"
+    ]
+   },
+   "conflict": false,
+   "row": 81
+  },
+  {
+   "key": "B#C16 Report states register",
+   "lane_rows": [
+    "B#C16"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C16"
+    ]
+   },
+   "conflict": false,
+   "row": 82
+  },
+  {
+   "key": "B#C17 v2.5 gate comparator matrix",
+   "lane_rows": [
+    "B#C17"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C17"
+    ]
+   },
+   "conflict": false,
+   "row": 83
+  },
+  {
+   "key": "B#C18 Other baked/candidate matrices",
+   "lane_rows": [
+    "B#C18"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C18"
+    ]
+   },
+   "conflict": false,
+   "row": 84
+  },
+  {
+   "key": "B#C19 Gate snapshots",
+   "lane_rows": [
+    "B#C19"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C19"
+    ]
+   },
+   "conflict": false,
+   "row": 85
+  },
+  {
+   "key": "B#C20 Trajectory fit output",
+   "lane_rows": [
+    "B#C20"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#C20"
+    ]
+   },
+   "conflict": false,
+   "row": 86
+  },
+  {
+   "key": "B#D1 **Sibling repin sidecar**",
+   "lane_rows": [
+    "B#D1"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#D1"
+    ]
+   },
+   "conflict": false,
+   "row": 87
+  },
+  {
+   "key": "B#D2 **Finalization state**",
+   "lane_rows": [
+    "B#D2"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#D2"
+    ],
+    "HISTORICAL-SEALED": [
+     "B#D2"
+    ]
+   },
+   "conflict": true,
+   "row": 88
+  },
+  {
+   "key": "B#D3 Movers report R20",
+   "lane_rows": [
+    "B#D3"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#D3"
+    ]
+   },
+   "conflict": false,
+   "row": 89
+  },
+  {
+   "key": "B#D4 Movers reports R15\u2013R19",
+   "lane_rows": [
+    "B#D4"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#D4"
+    ]
+   },
+   "conflict": false,
+   "row": 90
+  },
+  {
+   "key": "B#D5 **Value history baseline**",
+   "lane_rows": [
+    "B#D5"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#D5"
+    ]
+   },
+   "conflict": false,
+   "row": 91
+  },
+  {
+   "key": "B#D6 Rank / pos-rank history",
+   "lane_rows": [
+    "B#D6"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#D6"
+    ]
+   },
+   "conflict": false,
+   "row": 92
+  },
+  {
+   "key": "B#D7 Applied-rounds ledger",
+   "lane_rows": [
+    "B#D7"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "B#D7"
+    ]
+   },
+   "conflict": false,
+   "row": 93
+  },
+  {
+   "key": "B#D8 Catch-up identity overrides",
+   "lane_rows": [
+    "B#D8"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "B#D8"
+    ]
+   },
+   "conflict": false,
+   "row": 94
+  },
+  {
+   "key": "B#D9 Ingestion proof",
+   "lane_rows": [
+    "B#D9"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#D9"
+    ]
+   },
+   "conflict": false,
+   "row": 95
+  },
+  {
+   "key": "B#D10 Weekly txn manifests",
+   "lane_rows": [
+    "B#D10"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#D10"
+    ]
+   },
+   "conflict": false,
+   "row": 96
+  },
+  {
+   "key": "B#D11 Finalization journal",
+   "lane_rows": [
+    "B#D11"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#D11"
+    ]
+   },
+   "conflict": false,
+   "row": 97
+  },
+  {
+   "key": "B#E1 Leg-D per-entrant table",
+   "lane_rows": [
+    "B#E1"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#E1"
+    ]
+   },
+   "conflict": false,
+   "row": 98
+  },
+  {
+   "key": "B#E2 **The curve's actual per-entrant input**",
+   "lane_rows": [
+    "B#E2"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "B#E2"
+    ]
+   },
+   "conflict": false,
+   "row": 99
+  },
+  {
+   "key": "B#E4 \u2026its embedded price totals",
+   "lane_rows": [
+    "B#E4"
+   ],
+   "merged": false,
+   "lanes": [
+    "B"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "B#E4"
+    ]
+   },
+   "conflict": false,
+   "row": 100
+  },
+  {
+   "key": "C#A1 working-bundle stamp",
+   "lane_rows": [
+    "C#A1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#A1"
+    ]
+   },
+   "conflict": false,
+   "row": 101
+  },
+  {
+   "key": "C#A2 **embedded pick ruler**",
+   "lane_rows": [
+    "C#A2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A2"
+    ]
+   },
+   "conflict": false,
+   "row": 102
+  },
+  {
+   "key": "C#A3 club-held pick faces",
+   "lane_rows": [
+    "C#A3"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A3"
+    ]
+   },
+   "conflict": false,
+   "row": 103
+  },
+  {
+   "key": "C#A4 forward-lens visible ladder",
+   "lane_rows": [
+    "C#A4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A4"
+    ]
+   },
+   "conflict": false,
+   "row": 104
+  },
+  {
+   "key": "C#A5 lens conservation figures",
+   "lane_rows": [
+    "C#A5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A5"
+    ]
+   },
+   "conflict": false,
+   "row": 105
+  },
+  {
+   "key": "C#A6 **F5 reconciliation totals**",
+   "lane_rows": [
+    "C#A6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#A6"
+    ]
+   },
+   "conflict": false,
+   "row": 106
+  },
+  {
+   "key": "C#A7 phantom entrant layer",
+   "lane_rows": [
+    "C#A7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A7"
+    ]
+   },
+   "conflict": false,
+   "row": 107
+  },
+  {
+   "key": "C#A8 public bundle",
+   "lane_rows": [
+    "C#A8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A8"
+    ]
+   },
+   "conflict": false,
+   "row": 108
+  },
+  {
+   "key": "C#A9 club-valuation stamp",
+   "lane_rows": [
+    "C#A9"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#A9"
+    ],
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A9"
+    ]
+   },
+   "conflict": true,
+   "row": 109
+  },
+  {
+   "key": "C#A10 **the 160 priced picks**",
+   "lane_rows": [
+    "C#A10"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#A10"
+    ]
+   },
+   "conflict": false,
+   "row": 110
+  },
+  {
+   "key": "C#A11 baked club totals",
+   "lane_rows": [
+    "C#A11"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#A11"
+    ]
+   },
+   "conflict": false,
+   "row": 111
+  },
+  {
+   "key": "C#A12 ownership mirror",
+   "lane_rows": [
+    "C#A12"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#A12"
+    ]
+   },
+   "conflict": false,
+   "row": 112
+  },
+  {
+   "key": "C#A13 position map",
+   "lane_rows": [
+    "C#A13"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#A13"
+    ]
+   },
+   "conflict": false,
+   "row": 113
+  },
+  {
+   "key": "C#A14 movers history (R15\u2013R19)",
+   "lane_rows": [
+    "C#A14"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#A14"
+    ]
+   },
+   "conflict": false,
+   "row": 114
+  },
+  {
+   "key": "C#A15 movers R20 report",
+   "lane_rows": [
+    "C#A15"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#A15"
+    ]
+   },
+   "conflict": false,
+   "row": 115
+  },
+  {
+   "key": "C#A16 movers current point",
+   "lane_rows": [
+    "C#A16"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#A16"
+    ]
+   },
+   "conflict": false,
+   "row": 116
+  },
+  {
+   "key": "C#A17 transition mirror",
+   "lane_rows": [
+    "C#A17"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#A17"
+    ]
+   },
+   "conflict": false,
+   "row": 117
+  },
+  {
+   "key": "C#B1 curve payload identity",
+   "lane_rows": [
+    "C#B1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#B1"
+    ]
+   },
+   "conflict": false,
+   "row": 118
+  },
+  {
+   "key": "C#B2 curve file identity",
+   "lane_rows": [
+    "C#B2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#B2"
+    ]
+   },
+   "conflict": false,
+   "row": 119
+  },
+  {
+   "key": "C#B4 **pool level (sibling 2 of 3)**",
+   "lane_rows": [
+    "C#B4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#B4"
+    ]
+   },
+   "conflict": false,
+   "row": 120
+  },
+  {
+   "key": "C#B5 numeraire",
+   "lane_rows": [
+    "C#B5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#B5"
+    ]
+   },
+   "conflict": false,
+   "row": 121
+  },
+  {
+   "key": "C#B6 per-entrant identity",
+   "lane_rows": [
+    "C#B6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#B6"
+    ]
+   },
+   "conflict": false,
+   "row": 122
+  },
+  {
+   "key": "C#B7 **contract self-description**",
+   "lane_rows": [
+    "C#B7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#B7"
+    ]
+   },
+   "conflict": false,
+   "row": 123
+  },
+  {
+   "key": "C#B8 pool re-stamp record",
+   "lane_rows": [
+    "C#B8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#B8"
+    ]
+   },
+   "conflict": false,
+   "row": 124
+  },
+  {
+   "key": "C#B9 split record + prior chain",
+   "lane_rows": [
+    "C#B9"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#B9"
+    ]
+   },
+   "conflict": false,
+   "row": 125
+  },
+  {
+   "key": "C#C1 **FHV / over-free lens constant**",
+   "lane_rows": [
+    "C#C1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#C1"
+    ]
+   },
+   "conflict": false,
+   "row": 126
+  },
+  {
+   "key": "C#C2 **FHV rationale comparator**",
+   "lane_rows": [
+    "C#C2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C2"
+    ]
+   },
+   "conflict": false,
+   "row": 127
+  },
+  {
+   "key": "C#C3 **the FHV upgrade path**",
+   "lane_rows": [
+    "C#C3"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C3"
+    ]
+   },
+   "conflict": false,
+   "row": 128
+  },
+  {
+   "key": "C#C4 delta-base default",
+   "lane_rows": [
+    "C#C4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "C#C4"
+    ]
+   },
+   "conflict": false,
+   "row": 129
+  },
+  {
+   "key": "C#C5 owner anchor manifest",
+   "lane_rows": [
+    "C#C5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "C#C5"
+    ]
+   },
+   "conflict": false,
+   "row": 130
+  },
+  {
+   "key": "C#C6 **currency label**",
+   "lane_rows": [
+    "C#C6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C6"
+    ]
+   },
+   "conflict": false,
+   "row": 131
+  },
+  {
+   "key": "C#C7 **\u03a3SCAR labels**",
+   "lane_rows": [
+    "C#C7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C7"
+    ]
+   },
+   "conflict": false,
+   "row": 132
+  },
+  {
+   "key": "C#C8 **trade-desk pick domain**",
+   "lane_rows": [
+    "C#C8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C8"
+    ]
+   },
+   "conflict": false,
+   "row": 133
+  },
+  {
+   "key": "C#C9 2027 discount literal",
+   "lane_rows": [
+    "C#C9"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#C9"
+    ]
+   },
+   "conflict": false,
+   "row": 134
+  },
+  {
+   "key": "C#C10 numeraire prose",
+   "lane_rows": [
+    "C#C10"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#C10"
+    ]
+   },
+   "conflict": false,
+   "row": 135
+  },
+  {
+   "key": "C#C11 stale board narrative",
+   "lane_rows": [
+    "C#C11"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C11"
+    ]
+   },
+   "conflict": false,
+   "row": 136
+  },
+  {
+   "key": "C#C12 name-uniqueness premise",
+   "lane_rows": [
+    "C#C12"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C12"
+    ]
+   },
+   "conflict": false,
+   "row": 137
+  },
+  {
+   "key": "C#C13 history-card scope note",
+   "lane_rows": [
+    "C#C13"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#C13"
+    ]
+   },
+   "conflict": false,
+   "row": 138
+  },
+  {
+   "key": "C#C14 counting / Best-23 structure",
+   "lane_rows": [
+    "C#C14"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#C14"
+    ]
+   },
+   "conflict": false,
+   "row": 139
+  },
+  {
+   "key": "C#D1 curve resolution",
+   "lane_rows": [
+    "C#D1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#D1"
+    ]
+   },
+   "conflict": false,
+   "row": 140
+  },
+  {
+   "key": "C#D2 numeraire halts",
+   "lane_rows": [
+    "C#D2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#D2"
+    ]
+   },
+   "conflict": false,
+   "row": 141
+  },
+  {
+   "key": "C#D3 posture discount",
+   "lane_rows": [
+    "C#D3"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#D3"
+    ]
+   },
+   "conflict": false,
+   "row": 142
+  },
+  {
+   "key": "C#D4 ledger shape expectations",
+   "lane_rows": [
+    "C#D4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#D4"
+    ]
+   },
+   "conflict": false,
+   "row": 143
+  },
+  {
+   "key": "C#D5 dead constant + stale comment",
+   "lane_rows": [
+    "C#D5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "UNCLEAR": [
+     "C#D5"
+    ]
+   },
+   "conflict": false,
+   "row": 144
+  },
+  {
+   "key": "C#D6 extractor docstring",
+   "lane_rows": [
+    "C#D6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#D6"
+    ]
+   },
+   "conflict": false,
+   "row": 145
+  },
+  {
+   "key": "C#D7 extractor logic",
+   "lane_rows": [
+    "C#D7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#D7"
+    ]
+   },
+   "conflict": false,
+   "row": 146
+  },
+  {
+   "key": "C#D8 movers baseline anchor",
+   "lane_rows": [
+    "C#D8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#D8"
+    ]
+   },
+   "conflict": false,
+   "row": 147
+  },
+  {
+   "key": "C#E1 **FROZEN-RULER contract byte pin**",
+   "lane_rows": [
+    "C#E1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#E1"
+    ]
+   },
+   "conflict": false,
+   "row": 148
+  },
+  {
+   "key": "C#E2 **derivation-store pin**",
+   "lane_rows": [
+    "C#E2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#E2"
+    ]
+   },
+   "conflict": false,
+   "row": 149
+  },
+  {
+   "key": "C#E3 **per-entrant pin**",
+   "lane_rows": [
+    "C#E3"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#E3"
+    ]
+   },
+   "conflict": false,
+   "row": 150
+  },
+  {
+   "key": "C#E4 **the \"must NOT move\" instruction**",
+   "lane_rows": [
+    "C#E4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#E4"
+    ]
+   },
+   "conflict": false,
+   "row": 151
+  },
+  {
+   "key": "C#E5 held-check gate for the four curve\u2194contract checks",
+   "lane_rows": [
+    "C#E5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#E5"
+    ]
+   },
+   "conflict": false,
+   "row": 152
+  },
+  {
+   "key": "C#E6 pool-index equality",
+   "lane_rows": [
+    "C#E6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#E6"
+    ]
+   },
+   "conflict": false,
+   "row": 153
+  },
+  {
+   "key": "C#E7 national-curve equality",
+   "lane_rows": [
+    "C#E7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#E7"
+    ]
+   },
+   "conflict": false,
+   "row": 154
+  },
+  {
+   "key": "C#E8 numeraire",
+   "lane_rows": [
+    "C#E8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#E8"
+    ]
+   },
+   "conflict": false,
+   "row": 155
+  },
+  {
+   "key": "C#E9 G-Y0 hard bar",
+   "lane_rows": [
+    "C#E9"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#E9"
+    ]
+   },
+   "conflict": false,
+   "row": 156
+  },
+  {
+   "key": "C#E10 G-Y0 ceiling read",
+   "lane_rows": [
+    "C#E10"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#E10"
+    ]
+   },
+   "conflict": false,
+   "row": 157
+  },
+  {
+   "key": "C#E11 population count",
+   "lane_rows": [
+    "C#E11"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#E11"
+    ]
+   },
+   "conflict": false,
+   "row": 158
+  },
+  {
+   "key": "C#E13 G-Y0 pool leg diagnostics",
+   "lane_rows": [
+    "C#E13"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#E13"
+    ]
+   },
+   "conflict": false,
+   "row": 159
+  },
+  {
+   "key": "C#F4 **G-Y0 declaration measurements**",
+   "lane_rows": [
+    "C#F4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#F4"
+    ]
+   },
+   "conflict": false,
+   "row": 160
+  },
+  {
+   "key": "C#F7 held-candidates doctrine",
+   "lane_rows": [
+    "C#F7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#F7"
+    ]
+   },
+   "conflict": false,
+   "row": 161
+  },
+  {
+   "key": "C#F8 contract seal",
+   "lane_rows": [
+    "C#F8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#F8"
+    ]
+   },
+   "conflict": false,
+   "row": 162
+  },
+  {
+   "key": "C#F9 adoption record",
+   "lane_rows": [
+    "C#F9"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#F9"
+    ]
+   },
+   "conflict": false,
+   "row": 163
+  },
+  {
+   "key": "C#G1 **club-totals parity oracle**",
+   "lane_rows": [
+    "C#G1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G1"
+    ]
+   },
+   "conflict": false,
+   "row": 164
+  },
+  {
+   "key": "C#G2 parity structural pins",
+   "lane_rows": [
+    "C#G2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G2"
+    ]
+   },
+   "conflict": false,
+   "row": 165
+  },
+  {
+   "key": "C#G3 parity docstring",
+   "lane_rows": [
+    "C#G3"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#G3"
+    ]
+   },
+   "conflict": false,
+   "row": 166
+  },
+  {
+   "key": "C#G4 **FHV pin**",
+   "lane_rows": [
+    "C#G4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "EXPECTED-TO-MOVE-AT-ADOPTION": [
+     "C#G4"
+    ]
+   },
+   "conflict": false,
+   "row": 167
+  },
+  {
+   "key": "C#G5 live-data structural pins",
+   "lane_rows": [
+    "C#G5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G5"
+    ]
+   },
+   "conflict": false,
+   "row": 168
+  },
+  {
+   "key": "C#G6 picks contract",
+   "lane_rows": [
+    "C#G6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G6"
+    ]
+   },
+   "conflict": false,
+   "row": 169
+  },
+  {
+   "key": "C#G7 baked-totals regression guard",
+   "lane_rows": [
+    "C#G7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G7"
+    ]
+   },
+   "conflict": false,
+   "row": 170
+  },
+  {
+   "key": "C#G8 curve-provenance positive path",
+   "lane_rows": [
+    "C#G8"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G8"
+    ]
+   },
+   "conflict": false,
+   "row": 171
+  },
+  {
+   "key": "C#G9 stale-token sentinels",
+   "lane_rows": [
+    "C#G9"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#G9"
+    ]
+   },
+   "conflict": false,
+   "row": 172
+  },
+  {
+   "key": "C#G10 **monotonicity tamper constant**",
+   "lane_rows": [
+    "C#G10"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#G10"
+    ]
+   },
+   "conflict": false,
+   "row": 173
+  },
+  {
+   "key": "C#G11 extractor seam fixture pins",
+   "lane_rows": [
+    "C#G11"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#G11"
+    ]
+   },
+   "conflict": false,
+   "row": 174
+  },
+  {
+   "key": "C#G12 fixture pool value",
+   "lane_rows": [
+    "C#G12"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#G12"
+    ]
+   },
+   "conflict": false,
+   "row": 175
+  },
+  {
+   "key": "C#G13 movers historical anchors",
+   "lane_rows": [
+    "C#G13"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#G13"
+    ]
+   },
+   "conflict": false,
+   "row": 176
+  },
+  {
+   "key": "C#G14 ring-fence seam",
+   "lane_rows": [
+    "C#G14"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G14"
+    ]
+   },
+   "conflict": false,
+   "row": 177
+  },
+  {
+   "key": "C#G15 adoption gate",
+   "lane_rows": [
+    "C#G15"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G15"
+    ]
+   },
+   "conflict": false,
+   "row": 178
+  },
+  {
+   "key": "C#G16 ownership refusal pin",
+   "lane_rows": [
+    "C#G16"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#G16"
+    ]
+   },
+   "conflict": false,
+   "row": 179
+  },
+  {
+   "key": "C#G17 counting / responsive / xlsx / sidecar tests",
+   "lane_rows": [
+    "C#G17"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#G17"
+    ]
+   },
+   "conflict": false,
+   "row": 180
+  },
+  {
+   "key": "C#H1 R14 fixture authority",
+   "lane_rows": [
+    "C#H1"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "HISTORICAL-SEALED": [
+     "C#H1"
+    ]
+   },
+   "conflict": false,
+   "row": 181
+  },
+  {
+   "key": "C#H2 R14 anti-staleness control",
+   "lane_rows": [
+    "C#H2"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#H2"
+    ]
+   },
+   "conflict": false,
+   "row": 182
+  },
+  {
+   "key": "C#H3 catch-up score pins",
+   "lane_rows": [
+    "C#H3"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#H3"
+    ]
+   },
+   "conflict": false,
+   "row": 183
+  },
+  {
+   "key": "C#H4 transition field lists",
+   "lane_rows": [
+    "C#H4"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#H4"
+    ]
+   },
+   "conflict": false,
+   "row": 184
+  },
+  {
+   "key": "C#H5 workflow UI-gate wiring",
+   "lane_rows": [
+    "C#H5"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#H5"
+    ]
+   },
+   "conflict": false,
+   "row": 185
+  },
+  {
+   "key": "C#H6 workflow prose",
+   "lane_rows": [
+    "C#H6"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "STALE-ROOTED": [
+     "C#H6"
+    ]
+   },
+   "conflict": false,
+   "row": 186
+  },
+  {
+   "key": "C#H7 one_source_selftest invocation",
+   "lane_rows": [
+    "C#H7"
+   ],
+   "merged": false,
+   "lanes": [
+    "C"
+   ],
+   "classes": {
+    "RULED-CURRENT": [
+     "C#H7"
+    ]
+   },
+   "conflict": false,
+   "row": 187
+  }
+ ]
+}
