@@ -1201,3 +1201,75 @@ fallbacks, the `rl_model.py:940` override, and `rl_export.py:581`'s `105000/_F` 
 Selftest **95 PASS / 2 FAIL**: F1 (F.3, docketed for diagnosis) and G-Y0 **19.869%** (the substrate-flip
 waypoint, unchanged by the numeraire refinement to 3dp, as expected from a ~4e-7 relative move in `s`).
 All six FROZEN-RULER checks green. Sealed history untouched. Chain 434s.
+
+---
+
+# ADDENDUM G — F1 diagnosis: two candidates eliminated, one test INVALIDATED, one structural cause found.
+
+## G.1 — ELIMINATED, proven: the numéraire factor
+
+F1 is **invariant to `_F`**. `rl_export.py:177` and `one_source_selftest.py:66` divide by the same `_F` from
+the same file, so the check reduces to `ev_export != ev_selftest` for any factor. Demonstrated twice: the
+6dp-`s` and full-precision-`s` runs produced **identical mismatches, 666 rows at identical values**.
+Corroborated independently by the seam (no baked `4.45` anywhere in engine, contract, boot, book builder or
+step-4 evidence). **The denominator question is dissolved; it was mine and it was wrong.**
+
+## G.2 — ELIMINATED: iteration source
+
+`rl_export.py:114` iterates `players = g['players']`; the selftest iterates `MA.players`. Same engine list,
+same order. Not the cause.
+
+## G.3 — **MY `_LENS_FORM` TEST WAS INVALID. The hypothesis is OPEN, not falsified.**
+
+I patched a selftest copy to set `g['_LENS_FORM']=2026` around the 2027/2028 calls, got the identical 666
+mismatches, and reported the hypothesis falsified. **That conclusion does not stand**, because the two
+harnesses bind `g` to **different namespaces**:
+
+| harness | binding | namespace |
+|---|---|---|
+| `rl_export.py:69` | `g = _ens['MA'].__dict__` | **`rl_model`'s** module dict |
+| `one_source_selftest.py:114` | `MA=g['MA']; ev=g['ev']` | the dict **`_merged_recover.py` was `exec`'d into** |
+
+So the export writes `_LENS_FORM` into `rl_model`'s namespace, and my probe wrote it into the
+`_merged_recover` exec namespace. **The probe set the flag somewhere the export does not**, which is why it
+changed nothing. A null result from a probe that never applied the treatment is **not** evidence of no
+effect — hazard class 5 wearing the other hat. The hypothesis returns to OPEN and must be re-tested against
+the correct namespace.
+
+**Recorded as my second self-falsification of this rehearsal** (after the D7 characterisation), and as the
+reason the standing law says re-run rather than reason.
+
+## G.4 — THE STRUCTURAL FINDING (candidate cause, needs confirmation)
+
+**The two harnesses do not share an engine-state namespace.** The export mutates `rl_model.__dict__`
+(`_LENS_FORM`, and at `:212` `BASE_REF`/`AGE_REF`/`_pe_clear()`); the selftest's replication runs against the
+`_merged_recover` exec dict. Any per-player state the export sets or clears in *its* `g` is therefore not
+necessarily the state the replication sees.
+
+That is a coherent mechanism for "matches all 804 at baseline, diverges on 666 under a new substrate": the
+namespaces agree on values only while the state that differs between them happens not to bite. **It also
+means the gate's whole replication strategy is built on an assumption it never asserts.**
+
+## G.5 — DISPOSITION PROPOSED for L1(c) (with its non-vacuity demonstration)
+
+**Fix the GATE, not the engine** — and stop re-deriving what the export already publishes. `rl_export.py:178`
+already keeps `_raw2026` — its own comment says it is retained *"for the order/ratio verification and the
+numéraire parity gate"*. The authoritative pre-rebase 2026 ev **already exists**; F1 re-computes it through a
+stateful function instead of consuming it.
+
+Proposed: the export publishes `_raw2026` alongside the board; F1 asserts `board[k] == _num(raw2026[k])` and
+additionally that the published raw set covers the active set key-for-key. That removes the hand-copied call
+sequence, the namespace assumption, and the order-dependence in one act.
+
+**Non-vacuity demonstration required either way:** doctor one published raw value and prove F1 fires naming
+that key; doctor the board and prove it fires naming that key. A parity gate that cannot fail on either side
+is not a parity gate.
+
+**Not implemented — proposed.** It changes a shipped gate's contract, so it wants the seam's word before it
+is written.
+
+## G.6 — STATE
+
+L1 remains **95 PASS / 2 FAIL**, unchanged: F1 (this addendum) and G-Y0 19.869% (waypoint). L1 does not
+exit. L2's candidates stay behind it. Costs this pass: probe runs 69s / 71s / 103s, all serial, all
+recorded — including the two invalid ones.
