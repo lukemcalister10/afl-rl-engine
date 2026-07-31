@@ -1,0 +1,22 @@
+diff        : docs/evidence/rehearsal_290_2026-07-31/L3_T1_applied/L3_T1_state.diff
+targets     : 18
+scanned     : 12 commits, first-parent from abf8f4c
+
+  abf8f4c  17/18 match · 1 mismatch · 0 absent  reject      #290 L3: T1 APPLIED (owner word) — gates green, watc
+  6128b20  17/18 match · 1 mismatch · 0 absent  reject      #290 L3 bias-1: both limbs measured, four treatments
+  af12049  17/18 match · 1 mismatch · 0 absent  reject      #290 L3: the watched number unblocked — matrix re-em
+  79ee8e5  18/18 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3: correct my own S-1 framing, and file a bloc
+  27da063  18/18 match · 0 mismatch · 0 absent  ADMISSIBLE  #290: merge main forward (v552/v44 pen — window word
+  57bfea1  18/18 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3 baseline: the before-picture under window wo
+  eaceacc  18/18 match · 0 mismatch · 0 absent  ADMISSIBLE  #290: FREEZE the ruled v0surf surface as bytes + the
+  90d65b3  18/18 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L2: both window candidates measured at the HALT
+  3d253c6  18/18 match · 0 mismatch · 0 absent  ADMISSIBLE  #290: merge the seat record forward — true merge of 
+  e73e6bf  17/18 match · 0 mismatch · 1 absent  reject      register v551 + CURRENT_STATE v43: L1-exit + double-
+  987a508  17/18 match · 0 mismatch · 1 absent  reject      charter amendment 2026-07-31 second block: M1-M3 mec
+  6081f8e  17/18 match · 0 mismatch · 1 absent  reject      register v550 + CURRENT_STATE v42: consistency-era b
+
+ADMISSIBLE SET: 6 of 12 scanned
+  newest 79ee8e5   oldest 3d253c6
+
+  This is an INTERVAL. The probe narrows; it does not recover.
+  The base of record comes from the generating act, recorded beside the diff.
