@@ -1,0 +1,46 @@
+{
+  "first_observable_season": 2005,
+  "n_trees": 400,
+  "board_population": 804,
+  "board_2003_class": 0,
+  "treatments": {
+    "T0_baseline": {
+      "limb1_drop_phantom": false,
+      "limb2_tenure_reanchor": false,
+      "training_rows": 13221,
+      "provenance": {
+        "kept": 13221
+      },
+      "fit_seconds": 36.7
+    },
+    "T1_limb1_drop_phantom": {
+      "limb1_drop_phantom": true,
+      "limb2_tenure_reanchor": false,
+      "training_rows": 13157,
+      "provenance": {
+        "kept": 13157,
+        "dropped_unobservable": 64
+      },
+      "fit_seconds": 36.7
+    },
+    "T2_limb2_tenure_reanchor": {
+      "limb1_drop_phantom": false,
+      "limb2_tenure_reanchor": true,
+      "training_rows": 13221,
+      "provenance": {
+        "kept": 13221
+      },
+      "fit_seconds": 37.5
+    },
+    "T3_both": {
+      "limb1_drop_phantom": true,
+      "limb2_tenure_reanchor": true,
+      "training_rows": 13157,
+      "provenance": {
+        "kept": 13157,
+        "dropped_unobservable": 64
+      },
+      "fit_seconds": 37.2
+    }
+  }
+}

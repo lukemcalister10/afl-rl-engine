@@ -1,0 +1,17 @@
+L3 BIAS-1 — ADDITIVITY TEST: is 'both limbs' the sum of the two limbs?
+  If the limbs were independent, T3 delta would equal T1 delta + T2 delta for every player.
+
+  players where T3 != T1+T2      : 804 of 804 (100.0%)
+  median |interaction residual|  : 0.7959
+  max    |interaction residual|  : 7.8973  (liam-fawcett)
+  sum of deltas: T1 -12.09 | T2 +40.24 | T1+T2 +28.15 | T3 ACTUAL -56.08
+
+  => THE LIMBS INTERACT. T3 is NOT the sum of T1 and T2 — the aggregate even flips sign
+     (+28.15 predicted by addition vs -56.08 measured). They cannot be decided independently.
+
+DETERMINISM CONTROL: T0 rebuilt in a fresh process -> bands BYTE-IDENTICAL, 0 of 804 differ.
+  So the fit-noise floor is exactly zero and every delta above is the limb, not the refit.
+
+TRAINING ROWS      T0 13221 | T1 13157 (-64) | T2 13221 (0) | T3 13157 (-64)
+FIT COST           ~37s per treatment, 400 trees x 5 quantiles; 3m16s for all four in one process
+BOARD              804 active; 2003-class members on the board: 0 (effect is INDIRECT, via the prior)
