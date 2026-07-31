@@ -1,0 +1,2548 @@
+{
+ "summary": {
+  "A": {
+   "rows": 62,
+   "by_class": {
+    "STALE-ROOTED": 34,
+    "NOT-LIVE": 6,
+    "RULED-CURRENT": 13,
+    "UNCLEAR": 9,
+    "HISTORICAL-SEALED": 2
+   }
+  },
+  "B": {
+   "rows": 53,
+   "by_class": {
+    "STALE-ROOTED": 22,
+    "HISTORICAL-SEALED": 20,
+    "UNCLEAR": 5,
+    "RULED-CURRENT": 8
+   }
+  },
+  "C": {
+   "rows": 94,
+   "by_class": {
+    "RULED-CURRENT": 37,
+    "EXPECTED-TO-MOVE-AT-ADOPTION": 20,
+    "STALE-ROOTED": 18,
+    "HISTORICAL-SEALED": 15,
+    "UNCLEAR": 5
+   }
+  }
+ },
+ "rows": [
+  {
+   "lane": "A",
+   "lane_id": "1",
+   "canonical_id": "A#1",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`pvc_curve_v2.json` \u2014 THE live national pick curve (file md5 `6506d8b1`, payload `08ea9375`)",
+   "path": "`engine/rl_after/pvc_curve_v2.json`; loaded `rl_model.py:929-932` and `_merged_recover.py:1610-1622`; re-loaded `rl_export.py:134-137`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pvc_curve_v2.json:69` (`source`), `:71` (`derived_from \u2026 store 265f55d5`), `:75` (`store_md5`), `:80` (`statistic: SCAR`), `:103` (`numeraire_pin1_3000`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "2",
+   "canonical_id": "A#2",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`_PVC2M` \u2192 module-global `PVC` swap",
+   "path": "`rl_model.py:891, 928-945` (`PVC=_PVC2M`)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:945`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "3",
+   "canonical_id": "A#3",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`_PVC0` \u2014 the ev-channel curve basis",
+   "path": "`_merged_recover.py:1577` (`_PVC0=dict(MA.PVC)`), overwritten `:1596` (L1b) then `:1619` (v2)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1619-1621`, signature read at `:1288`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "4",
+   "canonical_id": "A#4",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`pvc_curve_L1b.json` (md5 `26a034c2`, payload `645fce16`)",
+   "path": "`_merged_recover.py:1583-1598` under `RL_PVCADOPT` (default **1**)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pvc_curve_L1b.json` `source`/`derived_from`; `_merged_recover.py:1592-1595`; second signature key in `data/v0surf.pkl`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "5",
+   "canonical_id": "A#5",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`build_pvc_v34()` import fit \u2192 `CURVE_H` \u2192 `_P1`/`BOARD_FACTOR` \u2192 **`SCALE`**",
+   "path": "`rl_model.py:827-867` (fit), `:860-867` (anchor)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:801-810` (method block), `:852-856` (SCAR anchor), `:865-867`, and `:940` \u2014 *\"CURVE_H/BOARD_FACTOR/SCALE \u2026 are untouched \u2014 SCALE stays frozen\"*"
+  },
+  {
+   "lane": "A",
+   "lane_id": "6",
+   "canonical_id": "A#6",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`ALPHA = 0.6` + legacy `_ce()`",
+   "path": "`rl_model.py:769-771`; consumed `:852` (SCALE anchor), `:1049` (`_natcv`), `:1056` (`_natcv34`), `:1077` (`PICKEQ`)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:769` comment *\"risk-aversion dial for pick curve\"*"
+  },
+  {
+   "lane": "A",
+   "lane_id": "7",
+   "canonical_id": "A#7",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`PVC_ALPHA_LO, PVC_ALPHA_HI = 0.6, 0.8` + `_alpha_pvc(k)` + `PVC_REPL_BUF=0`",
+   "path": "`rl_model.py:812-819`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:804` (*\"RISK: tiered CE alpha PVC_ALPHA_LO->HI\"*), `:812`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "8",
+   "canonical_id": "A#8",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "Hard pick-1 num\u00e9raire assertion (three sites)",
+   "path": "`rl_model.py:916` (`assert nd[1]==3000`), `rl_export.py:145`, `rl_export.py:163-167` (`NUM\u00c9RAIRE HALT`, *\"UNCONDITIONAL standing law\"*)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:916`; `rl_export.py:163-167`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "9",
+   "canonical_id": "A#9",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`GAMMA` = **0.85 (SCAR)**",
+   "path": "`rl_model.py:504`; consumed by `SCALE` (`:731`) and `val()` (`:734`) \u2014 i.e. every player price",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:504` (*\"0.85=SCAR(concave); 1.0=VOR(linear)\"*); `data/model_config.json:20`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "10",
+   "canonical_id": "A#10",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`pvc_snapshot.json` (md5 `735d2dec`, pinned `expected_boot.pvc_snapshot`)",
+   "path": "`rl_model.py:657` (`_V4PVC`), consumed `:672`/`:675` (`np.log(_V4PVC[str(ep)])`)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:657` comment; `build_peak_model_v4.py:72-79`; file content (99 keys, `\"2\": 2496.0`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "11",
+   "canonical_id": "A#11",
+   "section": "A1 \u2014 The pick-curve install (rl_model.py + _merged_recover.py)",
+   "artifact": "`pvc_fit_candidate.json` (md5 `ce4e603d`)",
+   "path": "`_merged_recover.py:1625-1631` behind `RL_PVCFIT` (default **0**)",
+   "classes": [
+    "NOT-LIVE"
+   ],
+   "evidence": "`pvc_fit_candidate.json` `store_md5`/`candidate`; `_merged_recover.py:1576`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "12",
+   "canonical_id": "A#12",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`rl_model_data.json` \u2014 THE store (md5 `81d24704`)",
+   "path": "`rl_model.py:29`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "md5 computed = `81d24704`; `expected_boot.json` `store: 81d2470440a80f72afea4405e94338c5`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "13",
+   "canonical_id": "A#13",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`national_draft_last_pick.json` (md5 `35815ab1`) \u2192 `_NDC`",
+   "path": "`rl_model.py:253-259`; sole consumer `rl_export.py:518` (`_medNDC` \u2192 `TYPEOFF['RD']`)",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`national_draft_last_pick.json` `_provenance_summary`; `rl_model.py:269-277`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "14",
+   "canonical_id": "A#14",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`MA.REPL` replacement bars",
+   "path": "`rl_model.py:501`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:501`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "15",
+   "canonical_id": "A#15",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`rl_passmark.json` (md5 `93239011`) \u2014 `pm_pos`, `pm_band`, `bands`, `BAND_ANCHOR`, `BUST_BAND`",
+   "path": "`rl_model.py:29, 58, 183, 359`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "file has no `store_md5`/`source`/`date`; `git log -1` = `995474c` (a rename-only commit)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "16",
+   "canonical_id": "A#16",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`params.json` (md5 `453c1a26`) \u2014 `PEAK`, `PEAK_AGE`, `AGE_CURVE`",
+   "path": "`rl_model.py:29, 58-59`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "file has no stamp"
+  },
+  {
+   "lane": "A",
+   "lane_id": "17",
+   "canonical_id": "A#17",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`EXP_PEAK_BASE` / `EXP_RETAIN` / `EXP_PICK_SLOPE=-10.72` / `EXP_LOGREF=4.0073` / `EXP_BLEND_GAMES=45`",
+   "path": "`rl_model.py:639-650`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:635-644, 649`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "18",
+   "canonical_id": "A#18",
+   "section": "A2 \u2014 Store and structural inputs",
+   "artifact": "`BETA_POS` / `ICPT_POS`",
+   "path": "`rl_model.py:181-182`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:181-182` (bare literals)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "19",
+   "canonical_id": "A#19",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`par_build.fit()` \u2014 the PAR surface (level\u00d7pick + tenure ramp)",
+   "path": "`engine/forward_valuation/par_build.py:113-181`; run at import via `par_redesign.py:37` (`F=pb.fit()`)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`par_build.py:9` (cohort), `:33` (`DRAFT_LO/HI`), `:50` (`MA.gfut`), `:63` (`if g >= MIN_GAMES`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "20",
+   "canonical_id": "A#20",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`par_redesign.lvl_par` bound as `cp._lvl_eff`",
+   "path": "`wire_redesign.py:52` (`cp._lvl_eff = PR.lvl_par`), definition `par_redesign.py:110-113`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`wire_redesign.py:52`; `par_redesign.py:111`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "21",
+   "canonical_id": "A#21",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`data/cm_400.pkl` (md5 `34faa865`, pinned `expected_boot.band`)",
+   "path": "loaded `wire_redesign.py:50-54`; trained by `conditional_prior.build_cond_prior` via `dist_redesign.build()`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`conditional_prior.py:121,131`; `dist_redesign.py:50`; `wire_redesign.py:12-18`; `git log -1 data/cm_400.pkl` = `f4a4d34` 2026-07-02"
+  },
+  {
+   "lane": "A",
+   "lane_id": "22",
+   "canonical_id": "A#22",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`data/q97m.pkl` (md5 `cfdc7321`, pinned `expected_boot.q97m`)",
+   "path": "`_merged_recover.py:84-93`, consumed `:369` (`q97m.predict`)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:59-62, 74-93`; `git log -1 data/q97m.pkl` = `f14710d` 2026-07-14"
+  },
+  {
+   "lane": "A",
+   "lane_id": "23",
+   "canonical_id": "A#23",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`peak_model_v4.pkl` (md5 **`b763f59e`**, pinned `expected_boot.peak_model`) \u2014 **the frozen peak-model pickle the brief asked for**",
+   "path": "file `engine/rl_after/peak_model_v4.pkl`; loaded `rl_model.py:655`; builder `engine/forward_valuation/build_peak_model_v4.py`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`build_peak_model_v4.py:8, 30, 38, 53, 58`; `rl_model.py:664` (`pos=gfut(p) # ITEM 271`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "24",
+   "canonical_id": "A#24",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`bust_prior_table.json` (md5 `5942aa6a`, pinned `expected_boot.bust_prior`)",
+   "path": "`rl_model.py:656`, consumed `:658` (`_v4_bp`) \u2192 feature 17 of the v4 model",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`expected_boot.json._fitted_note`; `docs/RELEASE_CANDIDATE_v2_11.md:198`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "25",
+   "canonical_id": "A#25",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`distribution_pricing.v_at_peak` + `SCALE_DIST=1.0`, `WQ`",
+   "path": "`engine/forward_valuation/distribution_pricing.py:260-283, 36, 44`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`distribution_pricing.py:44`, `:273-278`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "26",
+   "canonical_id": "A#26",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`REPL_DROP_PTS = 3` (`RL_REPL_DROP`)",
+   "path": "`engine/forward_valuation/dist_redesign.py:35-39`; applied `:42-48` and `_merged_recover.py:384`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`dist_redesign.py:36-37` (`PLACEHOLDER -> re-validate`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "27",
+   "canonical_id": "A#27",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`conditional_prior` recency/exposure dials \u2014 `RECENCY_DECAY=0.72`, `LEVEL_RAMP=14`, `EXPO_DEN=11.0`",
+   "path": "`conditional_prior.py:71, 108, 87`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`conditional_prior.py:71, 108`; `:82-84` (the `EXPO_DEN` citation)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "28",
+   "canonical_id": "A#28",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`par_redesign.BASE_RATE`",
+   "path": "`par_redesign.py:76-88` (built at import)",
+   "classes": [
+    "NOT-LIVE"
+   ],
+   "evidence": "`par_redesign.py:78, 81`; `shortfall` call sites are `:183, 191, 212` (all in `__main__`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "29",
+   "canonical_id": "A#29",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`par_redesign.BETA_POS` / `MULT` / `TILT_CAP` / `WIDEN_K` / `PVCm` / `floorval`",
+   "path": "`par_redesign.py:42, 50-53, 134, 169`",
+   "classes": [
+    "NOT-LIVE"
+   ],
+   "evidence": "`par_redesign.py:139` (`if __name__=='__main__':`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "30",
+   "canonical_id": "A#30",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`build_cohort_book.py`",
+   "path": "`engine/forward_valuation/build_cohort_book.py`",
+   "classes": [
+    "NOT-LIVE"
+   ],
+   "evidence": "grep for `build_cohort_book` returns only the file itself"
+  },
+  {
+   "lane": "A",
+   "lane_id": "31",
+   "canonical_id": "A#31",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`tail_restore.py`",
+   "path": "`engine/forward_valuation/tail_restore.py:13-18`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`tail_restore.py:9-11`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "32",
+   "canonical_id": "A#32",
+   "section": "A3 \u2014 Par / conditional-prior / forward-valuation chain",
+   "artifact": "`wire_redesign.build()` \u2014 the cm provider",
+   "path": "`engine/rl_after/wire_redesign.py:43-63`; called `_merged_recover.py:49`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`wire_redesign.py:12-18, 52-54`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "33",
+   "canonical_id": "A#33",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "`draftval()` (engine-head rebind)",
+   "path": "`_merged_recover.py:1578` (`return float(_PVC0[...])`); the earlier `:1061` definition reading `MA.PVC` is superseded by the rebind",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1573` (*\"`draftval` \u2026 is FROZEN on the pre-fit v3.4 curve (`_PVC0`)\"*), `:1578`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "34",
+   "canonical_id": "A#34",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "V0 start-value chain \u2014 `_v0_uncapped`, `_v0_raw`, `_build_v0_guard`, `_build_v0_curve`",
+   "path": "`_merged_recover.py:1192-1245`, `1294+`; rebuilt at `:1597-1598` and `:1620-1621`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1199, 1225-1243`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "35",
+   "canonical_id": "A#35",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "`RUC_PRIOR_CAP = 1.4` + `_ruc_prior_cap` / `_ruc_ceiling`",
+   "path": "`_merged_recover.py:1138, 1178-1184`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1128-1138`, `:1180, 1184`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "36",
+   "canonical_id": "A#36",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "`RUC_CEIL_REFPK = 72` (with `RUC_CEIL_HEAD=0.80`, `RUC_YRH=0.35`)",
+   "path": "`_merged_recover.py:1157-1159`, used `:1164` (`synth(int(RUC_CEIL_REFPK), \u2026)`)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1158`; contrast `rl_model.py:212-213`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "37",
+   "canonical_id": "A#37",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "`R_SURF` \u2014 sit-out retention surface",
+   "path": "`_merged_recover.py:1104-1106`, `_R_surf` `:1114-1125`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1101`, `:1107`, `:1115`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "38",
+   "canonical_id": "A#38",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "`LAM_SIT`",
+   "path": "`_merged_recover.py:1126`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1069-1071`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "39",
+   "canonical_id": "A#39",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "**`data/v0surf.pkl`** (md5 `ce08c2d1`, pinned `expected_boot.v0surf`) \u2014 the year-0 surface freeze",
+   "path": "`_merged_recover.py:1263-1274` (`_load_v0surf`, load-or-HALT), signature `:1286-1292`, HALT `:1348-1366`; refit lane `session_2026-07-18/legf6/scripts/refit_v0surf.py`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`session_2026-07-18/legf6/v0surf_refit_log.json` (last entry); `_merged_recover.py:1288-1292`, `:1348-1366`; pickle keys verified"
+  },
+  {
+   "lane": "A",
+   "lane_id": "40",
+   "canonical_id": "A#40",
+   "section": "A4 \u2014 V0 / scaffold / sit-out (the `_PVC0`-rooted layer)",
+   "artifact": "`session_2026-07-18/legf6/` (PLAN, EXIT_PROOF, BASE_PROOF, out/proof.txt)",
+   "path": "`session_2026-07-18/legf6/*`",
+   "classes": [
+    "RULED-CURRENT",
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`session_2026-07-18/legf6/EXIT_PROOF.md` (Exit invariants); `scripts/refit_v0surf.py:18-30`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "41",
+   "canonical_id": "A#41",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`ycred_table.json` (md5 `123aa9dc`)",
+   "path": "`_merged_recover.py:1001-1008`, applied `:1023-1044` (`raw_ev(...) * _ycred_mult`) under `RL_YOUNG` (default **1**, HALT if absent)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`ycred_table.json` `doc` (INPUT paragraph) and `G0_basis`; `_merged_recover.py:1044`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "42",
+   "canonical_id": "A#42",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`lti_return_table.json` (md5 `6a4800e8`)",
+   "path": "`_merged_recover.py:1699-1712` under `RL_LTI_RETURN` (default **1**, HALT if absent)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`lti_return_table.json` `store_note`; `derive_lti_return.py:1-23`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "43",
+   "canonical_id": "A#43",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`LTI_REGISTER.md` (pinned `expected_boot.register = 652d83e8`) via `lti_register.py`",
+   "path": "`_merged_recover.py:1684-1693`; `lti_register.py`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`lti_register.py:3-6`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "44",
+   "canonical_id": "A#44",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`SEASON_PROG` / `SEASON_FE` / `EXPO_F` from `data/season_state.json`",
+   "path": "`rl_model.py:2-26, 946`; `_merged_recover.py:6-30, 106`; `conditional_prior.py:86, 109`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`rl_model.py:3-7, 946`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "45",
+   "canonical_id": "A#45",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`posture_presets_v1.json` (md5 `c2e17c49`)",
+   "path": "`session_2026-07-18/lege/posture_presets_v1.json` \u2014 referenced **only** as a comment at `rl_model.py:543`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`rl_model.py:543`; grep `posture_presets` \u2192 1 hit, a comment"
+  },
+  {
+   "lane": "A",
+   "lane_id": "46",
+   "canonical_id": "A#46",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "The live `LENS` posture dials",
+   "path": "`rl_model.py:540` (`bal: 0.14`), `:548-552` (`balanced/contender/rebuilder` under `RL_LEGE`, default 1)",
+   "classes": [
+    "RULED-CURRENT",
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:540, 550-551`; `posture_presets_v1.json` `owner_ruled: false`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "47",
+   "canonical_id": "A#47",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`sealed_entrant_structure.json` (seal `a17aafed`)",
+   "path": "`session_2026-07-18/legf5/sealed_entrant_structure.json`; loaded + seal-asserted `rl_export.py:657-666`; cross-checked `forward_lens.py:57` (`F5_SEALED_INPUT_REL`) and `f5_seal_of`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`sealed_entrant_structure.json` `stamp` + `pickeq`; `rl_export.py:663` (`== 'a17aafed'`)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "48",
+   "canonical_id": "A#48",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`_LSYM_SEAL` \u2014 `r_pop` (`c62b5ee8`) + `s` (`efe97ee3`)",
+   "path": "`_merged_recover.py:260-262`, used `:373-379` and `:283-292` under `RL_LEGF` (default 1)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:252-257, 260-262`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "49",
+   "canonical_id": "A#49",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`pick_redenomination.json` (md5 `2765f83d`) \u2014 `factor = 1.0524`",
+   "path": "`rl_export.py:132` (`_F=_NUM['factor']`), applied as the num\u00e9raire divisor on every displayed player value",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pick_redenomination.json` `factor_provenance`; `rl_export.py:130-132`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "50",
+   "canonical_id": "A#50",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`LEG B un-compress` \u2014 `UNCOMP_S_DEFAULT=0.10`, `UNCOMP_DELTA=6.0`, `UNCOMP_DECAY=0.25`, `UNCOMP_TAU=1.1` + the load-time `V_ref_b`/`RHO_DEN`/`C[pos]` build",
+   "path": "`rl_model.py:523-530`; references built `_merged_recover.py:1643-1678`; applied `:428-453`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`rl_model.py:527` (owner quote), `:525`; `_merged_recover.py:1643-1678`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "51",
+   "canonical_id": "A#51",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "L-CAPTAIN curve \u2014 `LCAPT_BAR/M/W/G = 105.0/109.5/1.85/1.00`",
+   "path": "`rl_model.py:373-400` (the brief's \":335-360\" \u2014 the block has since drifted to 373-400)",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`rl_model.py:373-380`; `expected_boot.json._captaincy_note`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "52",
+   "canonical_id": "A#52",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "Retired saturating captain curve \u2014 `CAPT_GAIN/EXP/CAP`, `CAPT_THRESH=107.4`, `CAPT_M/W`, `capt_bonus`",
+   "path": "`rl_model.py:382, 388-392, 531-537`",
+   "classes": [
+    "NOT-LIVE"
+   ],
+   "evidence": "`rl_model.py:382` (*\"RETIRED \u2026 reachable ONLY via RL_CAPT=0\"*)"
+  },
+  {
+   "lane": "A",
+   "lane_id": "53",
+   "canonical_id": "A#53",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`_ABS_EFF` absence age-effect curve + `_ABS_L_REF=75.0`, `_ABS_CAP=0.20`, `_ABS_FADE_K=5.8`",
+   "path": "`_merged_recover.py:649-670` under `RL_ABSENCE` (default 1)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:633-636, 663-665`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "54",
+   "canonical_id": "A#54",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "Decliner-shed calibration \u2014 `LDECAY_G`, `FLAT_TOL_G`, `_AGEMULT_X/Y`, `DOWN_TOL`, `_FB_Z`",
+   "path": "`_merged_recover.py:132-166` under `RL_FORMDECL` (default 1)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:132, 141-158`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "55",
+   "canonical_id": "A#55",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "Evidence-weight pins \u2014 `_EVW_R=0.11`, `_EVW_Q0/QW=11.0/1.1`, `_EVW_GK/EST/TAU=0.55/3.6/1.1`, `_DAMP_K=5.8`, `PROVEN_N=4`, `POLE_RAMP=22.0`",
+   "path": "`_merged_recover.py:100, 186, 204-210`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`_merged_recover.py:204-206`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "56",
+   "canonical_id": "A#56",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`_L3_AY` s(age) persistence curve + `_SAGE29_VAL = 0.3793`",
+   "path": "`_merged_recover.py:520-533` under `RL_AGE` / `RL_SAGE29` (both default 1)",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`_merged_recover.py:517, 522, 531`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "57",
+   "canonical_id": "A#57",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "W4 dial block \u2014 `W4_CRED/KPFUP/FADE/OVPX/KPFSH/KPFSH_DEM/KPFTOP`, `_KPF_M0/_KPF_MS`, `W4_OVPX_D`",
+   "path": "`_merged_recover.py:785-822`, `:790`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:790, 800, 828`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "58",
+   "canonical_id": "A#58",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`_natcv` / `_natcv34` / `PICKEQ` / `MECH_STATS`",
+   "path": "`rl_model.py:1039-1100`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_model.py:1043-1065, 1089-1098`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "59",
+   "canonical_id": "A#59",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`_split_ladder` domain law \u2014 `ND_CURVE_LAST=64`, `POOL_PICK=65`",
+   "path": "`rl_model.py:212-213, 892-927`; mirrored `rl_export.py:121, 143-152`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`rl_model.py:197-211, 917-923`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "60",
+   "canonical_id": "A#60",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`forward_lens.py` (ITEM 408 D2 sibling)",
+   "path": "`engine/rl_after/ingestion/forward_lens.py`; imported `ingestion/sibling_repin.py:73-76`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`forward_lens.py:33-35, 57, 78-82`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "61",
+   "canonical_id": "A#61",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "Establishment-P surface \u2014 `pgrid.build(...)`, `pick_prior`, `P_estab`, `P_HOOK`",
+   "path": "`rl_model.py:1102-1151`",
+   "classes": [
+    "NOT-LIVE"
+   ],
+   "evidence": "`rl_model.py:1151`, `:1014`, `:1021`; `rl_export.py:167`"
+  },
+  {
+   "lane": "A",
+   "lane_id": "62",
+   "canonical_id": "A#62",
+   "section": "A5 \u2014 Layers, seals and pinned tables consumed on the value path",
+   "artifact": "`collision_sentry.json`, `pvc_snapshot`/`peak_model` tier-2 read-only stamps (`single_source.lock_tier2`)",
+   "path": "`engine/rl_after/collision_sentry.json`; `rl_export.py:54`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`collision_sentry.json` `_doc`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "A1",
+   "canonical_id": "B#A1",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "**Shipped pick curve**",
+   "path": "`engine/rl_after/pvc_curve_v2.json` \u2192 `curve` (1\u201364), `curve_md5`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "file lines 69\u201396, 104; loaded `rl_export.py:135-138`, `_merged_recover.py:1614`, `rl_model.py:931`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "A2",
+   "canonical_id": "B#A2",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "**Pool level**",
+   "path": "`engine/rl_after/pvc_curve_v2.json` \u2192 `pool_value` = **299**",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pvc_curve_v2.json:104,108`; ruled level is 234.3, tree carries 299"
+  },
+  {
+   "lane": "B",
+   "lane_id": "A3",
+   "canonical_id": "B#A3",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "Curve fit-time diagnostics",
+   "path": "`pvc_curve_v2.json` \u2192 `gy0_offline` {pooled_abs_pct 0.257, mean_rel_pct 0.11}, `ladder_total` 65925, `pool_rows` 1093, `nd_curve_rows` 1325",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "measurements, not consumed as inputs; they document A1"
+  },
+  {
+   "lane": "B",
+   "lane_id": "A4",
+   "canonical_id": "B#A4",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "Superseded L1b curve",
+   "path": "`engine/rl_after/pvc_curve_L1b.json` \u2192 `curve` (1\u201399), `curve_md5` `645fce16`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_export.py:135` (`_pvc_art` branch), `_merged_recover.py:1585`; pre-split 1\u201399 domain, hard pick-1 pin"
+  },
+  {
+   "lane": "B",
+   "lane_id": "A5",
+   "canonical_id": "B#A5",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "Non-bakeable fit candidate",
+   "path": "`engine/rl_after/pvc_fit_candidate.json` \u2192 `curve` (1\u201399), `store_md5`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "file lines 103\u2013108; `_merged_recover.py:1625-1627`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "A6",
+   "canonical_id": "B#A6",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "Train-time PVC feature",
+   "path": "`engine/rl_after/pvc_snapshot.json` (bare 1\u201399 map, 3000/2496/2241/2076\u2026)",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:657`; `build_peak_model_v4.py:74-93`. It IS a live pricing input on a curve that is neither the ruled curve nor A1, but an explicit anti-skew law forbids re-pointing it alone \u2014 it can only move together with `peak_model_v4.pkl`. Needs an owner call."
+  },
+  {
+   "lane": "B",
+   "lane_id": "A7",
+   "canonical_id": "B#A7",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "Num\u00e9raire / v3.4 curve sidecar",
+   "path": "`engine/rl_after/pick_redenomination.json` \u2192 `factor` 1.0524, `frozen_v34_pvc_baked_v2_7` (1\u201399)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_export.py:132`, `s4_matrix_M1v7.py:129`, `one_source_selftest.py:65`. The `frozen_v34_pvc_baked_v2_7` values (3000/2501/2249/2085/1967/1875/1795/1706/1604/1492/1381/1270\u2026) are exactly the `draftval` column of the walk-forward book (row B7) \u2014 the v3.4 heads are still live through that path."
+  },
+  {
+   "lane": "B",
+   "lane_id": "A8",
+   "canonical_id": "B#A8",
+   "section": "A. Pick-curve artifacts (`engine/rl_after/`)",
+   "artifact": "Provenance contract mirror *(adjacent to lane, in `ui/`)*",
+   "path": "`ui/release_pick_curve.json` \u2192 `curve_source_store_md5`, `pool_value`, `per_entrant_md5`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "file lines 2, 9, 16, 21\u201324; pinned by `one_source_selftest.py:499-500` as `_curve_source_store='265f55d5\u2026'`, `_per_entrant_md5='2f8b4bd4'`, contract md5 `11adecc8\u2026` (verified on disk)"
+  },
+  {
+   "lane": "B",
+   "lane_id": "B1",
+   "canonical_id": "B#B1",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "Young-credit cell table",
+   "path": "`engine/rl_after/ycred_table.json` \u2192 `table`, `G0`, `grid_picks`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1003-1006` (HALT if absent). Its input is the s4_matrix book, whose `draftval` is the frozen v3.4 curve (B7) \u2192 old-curve-rooted. Also pre-split domain (1\u201390)."
+  },
+  {
+   "lane": "B",
+   "lane_id": "B2",
+   "canonical_id": "B#B2",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "Bust prior table",
+   "path": "`engine/rl_after/bust_prior_table.json` \u2192 per-position pick\u2192value, domain **1\u201370**",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:656`; `build_peak_model_v4.py:1,16`; `single_source.py:35`. Cannot be classified by basis because the file records none; the 1\u201370 domain predates THE SPLIT."
+  },
+  {
+   "lane": "B",
+   "lane_id": "B3",
+   "canonical_id": "B#B3",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "LTI return table",
+   "path": "`engine/rl_after/lti_return_table.json` \u2192 `age_surface`, `cap`, `leakcut`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`_merged_recover.py:1701-1704`. Old store `a2fbc9a0` (not in the current lineage at all) and a 2024 leak-cut against the ruled \u22642022 cut."
+  },
+  {
+   "lane": "B",
+   "lane_id": "B4",
+   "canonical_id": "B#B4",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "Pass-mark / band table",
+   "path": "`engine/rl_after/rl_passmark.json` \u2192 `pm_pos`, `pm_band`, `bands`, `BAND_ANCHOR`, `BUST_BAND`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:29` (`PMD=json.load(open('rl_passmark.json'))`). Unstamped; `[49,99]` band is a pre-split domain."
+  },
+  {
+   "lane": "B",
+   "lane_id": "B5",
+   "canonical_id": "B#B5",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "Peak / age-curve params",
+   "path": "`engine/rl_after/params.json` \u2192 `PEAK`, `PEAK_AGE`, `AGE_CURVE`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:29` (`P=json.load(open('params.json'))`)"
+  },
+  {
+   "lane": "B",
+   "lane_id": "B6",
+   "canonical_id": "B#B6",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "ND-end chaining table",
+   "path": "`engine/rl_after/national_draft_last_pick.json` \u2192 `last_national_pick`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`rl_model.py:253`. Basis is \"the store\" generically; the store has moved many times since 2026-07-11, so the pin cannot be verified. It is an *ordinal/identity* table, not a priced quantity \u2014 low blast radius."
+  },
+  {
+   "lane": "B",
+   "lane_id": "B7",
+   "canonical_id": "B#B7",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "**Walk-forward book / matrix**",
+   "path": "`engine/rl_after/s4_matrix_M1v7.json` (+ `_blend.json`, `_retainonly.json`), 2 649 rows, field `draftval`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "compare `s4_matrix_M1v7.json` `draftval` vs `pick_redenomination.json:frozen_v34_pvc_baked_v2_7`; consumers `one_source_selftest.py:139`, `s4_render_M1v7.py:5`, `ship_gates_check.py:295`, `verify/d15/book_hashcheck.py:106`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "B8",
+   "canonical_id": "B#B8",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "Export attribution sidecar",
+   "path": "`engine/rl_after/export_attribution.json` \u2192 `vPrev`, `levers`, `base_sum` 723075, `full_sum` 732725, n 804",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "file `source` field; `rl_export.py:269-274`, consumed at `rl_export.py` `player_rec` \u2192 `'vPrev'`, `'levers'`. **Display-only** by declaration (\"neither field feeds `v`\"), but the values ship on the board and are two engine-eras + several stores behind. Visible in `ui/data/board_view_working.js` (e.g. Sheezel `\"vPrev\":8116`)."
+  },
+  {
+   "lane": "B",
+   "lane_id": "B9",
+   "canonical_id": "B#B9",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "Collision sentry",
+   "path": "`engine/rl_after/collision_sentry.json` \u2192 `pairs`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`_doc`; basis-independent identity guard, not a pricing input"
+  },
+  {
+   "lane": "B",
+   "lane_id": "B10",
+   "canonical_id": "B#B10",
+   "section": "B. Position-layer, table and matrix artifacts (`engine/rl_after/`)",
+   "artifact": "**The store**",
+   "path": "`engine/rl_after/rl_model_data.json` (2 651 rows)",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "verified by `md5sum`; matches `expected_boot.json:store`, `release_contract.json:identities.store`, `season_state.json:source_store_md5`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C1",
+   "canonical_id": "B#C1",
+   "section": "C. `data/*.json`",
+   "artifact": "**Board of record**",
+   "path": "`data/rl_build/rl_app_data.json` \u2192 `PVC`, `picks`, `GAMMA`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`python3 -c` dump of `PVC`/`GAMMA`; the board is built on the SCAR \u03b3=0.85 basis and the stale curve `08ea9375`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C2",
+   "canonical_id": "B#C2",
+   "section": "C. `data/*.json`",
+   "artifact": "Board source pin",
+   "path": "`data/rl_build/rl_app_data.json.srcmd5`",
+   "classes": [
+    "STALE-ROOTED",
+    "RULED-CURRENT"
+   ],
+   "evidence": "the *store* pin is current; it certifies a board built on the stale curve, so the pin is honest and the board is not"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C3",
+   "canonical_id": "B#C3",
+   "section": "C. `data/*.json`",
+   "artifact": "**Boot identity manifest**",
+   "path": "`data/expected_boot.json` \u2192 `store`, `board`, `engine_head`, `rl_model`, `fv`, `config`, `band`, `register`, `balanced_board_md5`, `q97m`, `peak_model`, `pvc_snapshot`, `bust_prior`, `v0surf`, `as_of_round`, `release_version`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "The *id block* is internally coherent with the current store, but every pin it certifies (`board`, `engine_head`, `rl_model`, `fv`) belongs to a build whose curve is `08ea9375` and whose \u03b3 is 0.85. The `_notes` are HS (dated narrative, incl. the `e3aaba77` reference which is provenance-of-record, not a live pin). Re-derivation moves `board`/`engine_head`/`rl_model`/`fv` here."
+  },
+  {
+   "lane": "B",
+   "lane_id": "C4",
+   "canonical_id": "B#C4",
+   "section": "C. `data/*.json`",
+   "artifact": "**Release contract \u2014 pvc block**",
+   "path": "`data/release_contract.json` \u2192 `pvc_provenance`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "file lines 21\u201326. Points at the stale payload and pins the hard pick-1 anchor."
+  },
+  {
+   "lane": "B",
+   "lane_id": "C5",
+   "canonical_id": "B#C5",
+   "section": "C. `data/*.json`",
+   "artifact": "Release contract \u2014 identities",
+   "path": "`data/release_contract.json` \u2192 `identities`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "same reading as C3: current store, stale-curve build"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C6",
+   "canonical_id": "B#C6",
+   "section": "C. `data/*.json`",
+   "artifact": "**Release contract \u2014 held_checks G-Y0**",
+   "path": "`data/release_contract.json` \u2192 `held_checks[0].measured_at_declaration`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "file lines 72\u201391. These are measurements taken against the stage-B (SCAR / store `265f55d5`) fit. `n_ruled`=1325 equals `pvc_curve_v2.stamp.nd_curve_rows`=1325 \u2014 the declaration is welded to the stale fit population. `ceiling_pct` 3.50 is a live DO-NOT-EXCEED bar; a re-derivation invalidates the measured side while the bar keeps biting."
+  },
+  {
+   "lane": "B",
+   "lane_id": "C7",
+   "canonical_id": "B#C7",
+   "section": "C. `data/*.json`",
+   "artifact": "Release contract \u2014 F5 reconciliation",
+   "path": "`data/release_contract.json` \u2192 `f5_entrant_reconciliation`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`visible_1_64` 65925 is *exactly* `pvc_curve_v2.stamp.ladder_total` 65925 (verified: sum of the 64 curve values = 65925). This block is a measurement on the stale curve, carried inside a live contract covered by `contract_sha256`."
+  },
+  {
+   "lane": "B",
+   "lane_id": "C8",
+   "canonical_id": "B#C8",
+   "section": "C. `data/*.json`",
+   "artifact": "Release contract \u2014 present-lens baseline",
+   "path": "`data/release_contract.json` \u2192 `present_lens_baseline`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "dated narrative + a live baseline number measured on the stale-curve board"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C9",
+   "canonical_id": "B#C9",
+   "section": "C. `data/*.json`",
+   "artifact": "Release contract \u2014 season metadata",
+   "path": "`data/release_contract.json` \u2192 `season_metadata`, `season_state_policy_id`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "consistent with C11; policy id immutable and matches `season_state.json`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C10",
+   "canonical_id": "B#C10",
+   "section": "C. `data/*.json`",
+   "artifact": "**Transition register**",
+   "path": "`data/release_lineage.json` \u2192 `release_transition`, `release_transition_register[]`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "These are provenance-of-record citations of old stores \u2014 correctly historical, *not* live pricing inputs. The register is the clean model for how a stale id may legitimately appear in a live file."
+  },
+  {
+   "lane": "B",
+   "lane_id": "C11",
+   "canonical_id": "B#C11",
+   "section": "C. `data/*.json`",
+   "artifact": "Season state",
+   "path": "`data/season_state.json` \u2192 all",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "the only live-valuation data artifact in `data/` that is cleanly rooted on the current store and an immutable policy"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C12",
+   "canonical_id": "B#C12",
+   "section": "C. `data/*.json`",
+   "artifact": "**Model config manifest**",
+   "path": "`data/model_config.json` \u2192 `vars`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "the SCAR \u03b3=0.85 and the hard pick-1 pin \u2014 two named superseded items \u2014 are the *live* manifest values, sealed into the config hash that `expected_boot`, `release_contract` and every txn manifest assert on"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C13",
+   "canonical_id": "B#C13",
+   "section": "C. `data/*.json`",
+   "artifact": "Owner overrides",
+   "path": "`data/owner_overrides.json` \u2192 `overrides`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "basis-independent by construction"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C14",
+   "canonical_id": "B#C14",
+   "section": "C. `data/*.json`",
+   "artifact": "Book stability seal",
+   "path": "`data/book_stable_seal.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "a dated seal, no live reader found in `engine/**.py`; superseded by C3's `engine_head` `404e8113\u2026` and store `81d24704\u2026`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C15",
+   "canonical_id": "B#C15",
+   "section": "C. `data/*.json`",
+   "artifact": "W4 candidate seal",
+   "path": "`data/book_stable_seal_w4candidate.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "dated candidate artifact"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C16",
+   "canonical_id": "B#C16",
+   "section": "C. `data/*.json`",
+   "artifact": "Report states register",
+   "path": "`data/report_states.json` \u2192 `control`, `previous`, `states`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "read live at `ship_gates_check.py:103`, `s4_render_7147.py:10` \u2014 but by design a *named historical* comparator; naming an old state is the point"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C17",
+   "canonical_id": "B#C17",
+   "section": "C. `data/*.json`",
+   "artifact": "v2.5 gate comparator matrix",
+   "path": "`data/s4_matrix_baked_efea88e5.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`ship_gates_check.py:273` \u2014 comment states \"v2.5 comparator \u2014 NAMED, never 'current'\""
+  },
+  {
+   "lane": "B",
+   "lane_id": "C18",
+   "canonical_id": "B#C18",
+   "section": "C. `data/*.json`",
+   "artifact": "Other baked/candidate matrices",
+   "path": "`data/s4_matrix_{baked_7a07e369,baked_c47cb43d,control_8aed420a,gradedfix_efc15c6c,nogames,v2_4a134d05,v21_c8051893,v22_af1fc6aa}.json` (8 files)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "no live reader other than the C16/C17 named-comparator path"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C19",
+   "canonical_id": "B#C19",
+   "section": "C. `data/*.json`",
+   "artifact": "Gate snapshots",
+   "path": "`data/gates_snapshots/gates_*.json` (23 files)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`tools/seat/gates_score.py` reads them as snapshots by name"
+  },
+  {
+   "lane": "B",
+   "lane_id": "C20",
+   "canonical_id": "B#C20",
+   "section": "C. `data/*.json`",
+   "artifact": "Trajectory fit output",
+   "path": "`data/traj_out_2026-06-28.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "no reader found in the tree \u2014 orphan historical output"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D1",
+   "canonical_id": "B#D1",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "**Sibling repin sidecar**",
+   "path": "`engine/rl_after/ingestion/sibling_repin_state.json` \u2192 `source_store_md5`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "file lines 5, 6, 12, 19. Known-stale and confirmed: it pins `e3aaba77`, a board (`8a38cca4`) and a contract hash and an fv identity that the tree has all moved past."
+  },
+  {
+   "lane": "B",
+   "lane_id": "D2",
+   "canonical_id": "B#D2",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "**Finalization state**",
+   "path": "`engine/rl_after/ingestion/finalization_state.json` \u2192 `rounds[\"20\"]`",
+   "classes": [
+    "STALE-ROOTED",
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "the live tail points at board `8a38cca4` and store `e3aaba77`, both superseded by `f2df6e0a` / `81d24704`; the R15\u201319 records are sealed production history"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D3",
+   "canonical_id": "B#D3",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Movers report R20",
+   "path": "`engine/rl_after/ingestion/movers/movers_R20.json` \u2192 `source_store_md5_after`, `board_md5_after`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "same stale pair as D2; it is the *latest* bundle, i.e. the one a reader sees as \"now\""
+  },
+  {
+   "lane": "B",
+   "lane_id": "D4",
+   "canonical_id": "B#D4",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Movers reports R15\u2013R19",
+   "path": "`engine/rl_after/ingestion/movers/movers_R{15..19}.json` (+ `.csv`)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "protected by the `release_lineage` transition bridge (C10); explicitly `historical_reports_immutable: true`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D5",
+   "canonical_id": "B#D5",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "**Value history baseline**",
+   "path": "`engine/rl_after/ingestion/value_history.json` \u2192 `players[*].by_round`, `columns`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`round_movers.py:273,575,593,646`. Classified HS because the values are consumed only to compute *deltas and rank columns* \u2014 they never re-enter `v`. Flagged: the baseline the next round diffs against is on the stale basis, so a re-derivation will show as a one-off league-wide mover unless a new column is written for it (the standing preference in C10 entry 2: \"big moves get a movers snapshot when cheap; missed eras are never backfilled\")."
+  },
+  {
+   "lane": "B",
+   "lane_id": "D6",
+   "canonical_id": "B#D6",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Rank / pos-rank history",
+   "path": "`engine/rl_after/ingestion/rank_history.json`, `pos_rank_history.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`round_movers.py:274-275,594-595`; same reading as D5"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D7",
+   "canonical_id": "B#D7",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Applied-rounds ledger",
+   "path": "`engine/rl_after/ingestion/applied_rounds_ledger.json` \u2192 `applied[]`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "basis-independent; frozen by `sibling_repin.FROZEN_REL[\"score_ledger\"]`"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D8",
+   "canonical_id": "B#D8",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Catch-up identity overrides",
+   "path": "`engine/rl_after/ingestion/catchup_identity_overrides.json` \u2192 `overrides[]`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "basis-independent identity mapping"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D9",
+   "canonical_id": "B#D9",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Ingestion proof",
+   "path": "`engine/rl_after/ingestion/proof.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "a dated proof pinned to the store it was run against"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D10",
+   "canonical_id": "B#D10",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Weekly txn manifests",
+   "path": "`engine/rl_after/ingestion/.weekly_txn/txn_catchup_r{15..20}/manifest.json`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "sealed transaction history"
+  },
+  {
+   "lane": "B",
+   "lane_id": "D11",
+   "canonical_id": "B#D11",
+   "section": "D. Ingestion state artifacts (`engine/rl_after/ingestion/`)",
+   "artifact": "Finalization journal",
+   "path": "`engine/rl_after/ingestion/finalization_journal.jsonl`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "historical by construction"
+  },
+  {
+   "lane": "B",
+   "lane_id": "E1",
+   "canonical_id": "B#E1",
+   "section": "E. Session artifacts consumed at runtime",
+   "artifact": "Leg-D per-entrant table",
+   "path": "`session_2026-07-17/legd_derivation/out/per_entrant.json` (2 649 rows; on-disk md5 **`40d7da7c7461024048fe48fcba5692ff`**)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`sibling_repin.py:102`, and `:45` \"\u2026All are asserted byte-unchanged before/after every reconcile.\" **Important distinction:** this is a *freeze-guard target*, not a pricing input. It is also **not** the curve's derivation input \u2014 see E2."
+  },
+  {
+   "lane": "B",
+   "lane_id": "E2",
+   "canonical_id": "B#E2",
+   "section": "E. Session artifacts consumed at runtime",
+   "artifact": "**The curve's actual per-entrant input**",
+   "path": "`session_2026-07-29/item271/out/per_entrant_271.json` (`per_entrant_md5` **`2f8b4bd4`**)",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pvc_curve_v2.json:71,94-95`. This is the stale root. Note the naming trap: `one_source_selftest.py:500` pins `_per_entrant_md5='2f8b4bd4'` (this file) while `sibling_repin.py:102` freezes a *different* file (E1, `40d7da7c`) under the same word \"per_entrant\"."
+  },
+  {
+   "lane": "B",
+   "lane_id": "E3",
+   "canonical_id": "B#E3",
+   "section": "E. Session artifacts consumed at runtime",
+   "artifact": "**Sealed entrant slot structure**",
+   "path": "`session_2026-07-18/legf5/sealed_entrant_structure.json` \u2192 `draft_occupancy`, `mech_occupancy`, `pickeq`, `stamp`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`rl_export.py:659` (+ pin at `:751`), `forward_lens.py:56,106,150`. The **counts** are what is consumed and they were measured on store `968de0c7`, not `81d24704`. Occupancy runs past pick 64 (`'65': 0.5714`, `'66': 1.0`, \u2026) and `pickeq` still carries the mechanism pedestals 90/92 \u2014 a pre-split shape."
+  },
+  {
+   "lane": "B",
+   "lane_id": "E4",
+   "canonical_id": "B#E4",
+   "section": "E. Session artifacts consumed at runtime",
+   "artifact": "\u2026its embedded price totals",
+   "path": "same file \u2192 `entrant_pvc` {draft 69266, mech 14272, total 83538}, `mech_summary[*].pvc_each` (470/473), `round_counts[*].pvc`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`rl_export.py:645`: \"The sealed COUNTS are the frozen measurement and are NOT touched here\"; the engine re-prices via `_lf_pvc()` off the live `PVC`. These stale numbers are *not* consumed \u2014 but they no longer agree with the contract's `entrant_layer_pvc` 77611 (C7), so the file reads as internally contradictory."
+  },
+  {
+   "lane": "C",
+   "lane_id": "A1",
+   "canonical_id": "C#A1",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "working-bundle stamp",
+   "path": "`ui/data/board_view_working.js` \u2192 `stamp{board_md5, store_md5, balanced_board_md5, engine, register, config, releaseVersion, asOfRound}`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`extract_board_view.py:201-229` copies these verbatim from the manifest; `ui/tests/adoption_gate.test.js` passes today"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A2",
+   "canonical_id": "C#A2",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "**embedded pick ruler**",
+   "path": "`board_view_working.js` \u2192 `pvc` (65 entries: 1\u202664 + index 65)",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`rl_model.py:931` `if 'pool_value' in _V2DOC: _V2RAW[POOL_PICK]=int(_V2DOC['pool_value'])`; `pvc_curve_v2.json note` names the SCAR denomination"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A3",
+   "canonical_id": "C#A3",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "club-held pick faces",
+   "path": "`board_view_working.js` \u2192 `picks[]` (30 rows `{n,v}`: 3000, 2767, 2693 \u2026)",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "same artifact as A2"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A4",
+   "canonical_id": "C#A4",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "forward-lens visible ladder",
+   "path": "`board_view_working.js` \u2192 `lensPicks[]` (128 rows, \"2027/2028 Draft Pick 1-64\", `v`=PVC[n])",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`draftAssetTotals._meta` in the bundle"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A5",
+   "canonical_id": "C#A5",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "lens conservation figures",
+   "path": "`board_view_working.js` \u2192 `lensConservation` `{\"+1\":{picks:65925,\u2026},\"+2\":{picks:65925,\u2026}}` + `_meta.spread_vs_now {+1:1.42, +2:-4.92, -1:9.35, -2:16.17}`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "bundle field; consumed by `board.js`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A6",
+   "canonical_id": "C#A6",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "**F5 reconciliation totals**",
+   "path": "`board_view_working.js` \u2192 `draftAssetTotals[\"+1\"/\"+2\"]` `{visible_1_64: 65925, residual_nd_tail: 2631, residual_mech: 9055, f5_draft_pvc: 68556, entrant_layer_pvc: 77611, reconciled_to_f5: true}`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`ui/app/board.js:648-659` renders it; contract twin at F4 below"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A7",
+   "canonical_id": "C#A7",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "phantom entrant layer",
+   "path": "`board_view_working.js` \u2192 `phantomLayer[club][lens].intake[]` (`v`: 3000 / 1081 / 716 / 588 and **`kind:\"free\"`, `v:299`**), `phantomTotals._meta {draft_pvc:68556, mech_pvc:9055, entrant_layer_pvc:77611, expected_slots_per_year:103.43, pickeq{MSD:90, others:92}, seal_sha256_8:\"a17aafed\"}`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`_meta.law`: *\"FULL expected annual intake at v2-curve PVC per effective pick\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A8",
+   "canonical_id": "C#A8",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "public bundle",
+   "path": "`ui/data/board_view_public.js` \u2192 `stamp{baseYear,nPlayers:804,maxV:10079}` + 804 `v`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`extract_board_view.py row_public`; `docs/CURRENT_STATE.md` N8 F3"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A9",
+   "canonical_id": "C#A9",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "club-valuation stamp",
+   "path": "`ui/data/club_valuation.js` \u2192 `stamp{pvcCurveMd5:\"08ea9375\", pvcCurveFileMd5:\"6506d8b1\u2026\", pvcPathway:\"RL_PVC2\", pvcSource:\"\u2026pick1=3000\", releaseCurveContract:\"ui/release_pick_curve.json\", board:\"f2df6e0a\u2026\", store:\"81d24704\", mult2027:0.9, discount2027:0.1, generated:\"2026-07-30T16:11:50Z\"}`",
+   "classes": [
+    "RULED-CURRENT",
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`ingest_inputs.py:825-831`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A10",
+   "canonical_id": "C#A10",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "**the 160 priced picks**",
+   "path": "`ui/data/club_valuation.js` \u2192 `picksByTeam[team][] .value` (e.g. Adelaide `{\"band\":\"#9-11\", value:1654}`, `{\"band\":\"#79-80\", value:299}`)",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`club_totals.js:20-24` *\"a pick's value is the engine's canonical PVC evaluated over a band \u2026 which the browser cannot re-derive\"*; `ingest_inputs.py:378-393 price_pick`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A11",
+   "canonical_id": "C#A11",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "baked club totals",
+   "path": "`ui/data/club_valuation.js` \u2192 `clubs[].{best23,totalPlayer,top5,top10,overall,nonBest23}`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`ui/tests/test_club_valuation_current.py:65-83` greps `ui/app/*.js` for any read of those keys; `club_totals_parity.test.js:341-356` corrupts them all and requires the computation unmoved"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A12",
+   "canonical_id": "C#A12",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "ownership mirror",
+   "path": "`ui/data/ownership.js` \u2192 `byKey{}` + `stamp{generatedFromStore:\"81d2470440a80f72afea4405e94338c5\", sourceOfTruth:\"store\", board:\"f2df6e0a\u2026\"}`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "file header; `ui/app/ownership.js pin()` refuses a mirror not stamped at the loaded board/store"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A13",
+   "canonical_id": "C#A13",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "position map",
+   "path": "`ui/app/positions_data.js` \u2192 `byKey{}` + `stamp{board:\"f2df6e0a\u2026\", n:804, source:\"\u2026values-free\"}`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "file header: *\"NO dollar value is carried\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A14",
+   "canonical_id": "C#A14",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "movers history (R15\u2013R19)",
+   "path": "`ui/data/movers.js` \u2192 `reports[\"15\"..\"19\"]`, `baseline{as_of_round:14, board:\"2ab73a6f\u2026\", store:\"968de0c7\u2026\"}`, `values[key].byPoint[\"14\"..\"19\"]`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "movers/era-succession law; `points[]` records `kind:\"round\"` vs `\"out_of_round\"` per moment"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A15",
+   "canonical_id": "C#A15",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "movers R20 report",
+   "path": "`ui/data/movers.js` \u2192 `reports[\"20\"].release_identity{board:\"8a38cca4\u2026\", store:\"e3aaba77\u2026\", release_version:\"v2.11-present-lens-baseline\"}`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`points[]` entry `{\"id\":\"20\",\"kind\":\"round\"}`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A16",
+   "canonical_id": "C#A16",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "movers current point",
+   "path": "`ui/data/movers.js` \u2192 `points[]` last entry `{\"id\":\"rederivation-30-7\",\"kind\":\"out_of_round\",\"board\":\"f2df6e0a2902f48e1df36f35493ba8c1\"}` + `values[key].byPoint[\"rederivation-30-7\"]`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`ui_222_items.test.mjs:138` asserts the model-point list is exactly `post-r19-redesign-1,rederivation-30-7`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "A17",
+   "canonical_id": "C#A17",
+   "section": "A \u00b7 UI data bundles (`ui/data/`) \u2014 embedded values and stamps",
+   "artifact": "transition mirror",
+   "path": "`ui/data/movers_transition.js` \u2192 three `release_transition` entries ending `{source store 6b9d00a7 \u2192 destination store 81d2470440a80f72afea4405e94338c5, fields_written:\"affl_team only\"}`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "file header: *\"every content byte is the lineage record\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B1",
+   "canonical_id": "C#B1",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "curve payload identity",
+   "path": "`pick_curve_curve_md5: \"08ea9375\"`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`ingest_inputs.py:312-317`; `one_source_selftest.py:535-536`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B2",
+   "canonical_id": "C#B2",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "curve file identity",
+   "path": "`pick_curve_file_md5: \"6506d8b1ff89ea0a8ad15f10827f202b\"`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`ingest_inputs.py:306-311`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B3",
+   "canonical_id": "C#B3",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "**derivation store**",
+   "path": "`curve_source_store_md5: \"265f55d568f35af33a3e27c0a7d7886a\"`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`ingest_inputs.py:325-334`; `one_source_selftest.py:499`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B4",
+   "canonical_id": "C#B4",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "**pool level (sibling 2 of 3)**",
+   "path": "`pool_value: 299`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "see note N2 for the full triplet"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B5",
+   "canonical_id": "C#B5",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "numeraire",
+   "path": "`numeraire_pin1: 3000`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`ingest_inputs.py:283-286, 335-336, 363-365`; `CURRENT_STATE.md` N4/N6"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B6",
+   "canonical_id": "C#B6",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "per-entrant identity",
+   "path": "`per_entrant_md5: \"2f8b4bd4\"`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`one_source_selftest.py:500, 530-531`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B7",
+   "canonical_id": "C#B7",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "**contract self-description**",
+   "path": "`_doc`: *\"The curve was DERIVED on store 265f55d5; **the adopted store is 6b9d00a7**, which differs only by the three Addendum-12 backup-stream clears\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`data/expected_boot.json \"store\"`; `movers_transition.js` third entry records `6b9d00a7 \u2192 81d24704`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B8",
+   "canonical_id": "C#B8",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "pool re-stamp record",
+   "path": "`_pool_value_adoption_note` (528 \u2192 299, `stamp.prev_pool_value = 528`)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "B9",
+   "canonical_id": "C#B9",
+   "section": "B \u00b7 `ui/release_pick_curve.json` \u2014 the mirror / FROZEN-RULER contract",
+   "artifact": "split record + prior chain",
+   "path": "`split_note`, `supersedes{pick_curve_curve_md5:\"f14a6622\", curve_source_store_md5:\"968de0c7\u2026\"}`, `pre_split_curve_md5` context",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C1",
+   "canonical_id": "C#C1",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "**FHV / over-free lens constant**",
+   "path": "`ui/app/config.js:56` \u2014 `FHV: 190,`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`ui/app/format.js:105-110`; `board.js:254-259, 326-335`; `CURRENT_STATE.md` open-acts line"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C2",
+   "canonical_id": "C#C2",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "**FHV rationale comparator**",
+   "path": "`ui/app/config.js:38-39` \u2014 *\"250 is the listed survivors' median and **528 (`pool_value`)** is cleared by 8% of entrants ever\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pvc_curve_v2.json stamp.prev_pool_value: 528`; current `pool_value: 299`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C3",
+   "canonical_id": "C#C3",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "**the FHV upgrade path**",
+   "path": "`ui/app/config.js:54` \u2014 *\"The per-window schedule (MSD ~352 / SSP ~277 / OTHER ~97) is the recorded upgrade path and is one owner word away\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`docs/OPEN_ITEMS_REGISTER.md` v543: *\"levels \u00d7s POOL 234.3 [206.4,262.3] n=1,005 / MSD 296.4 n=44 / SSP 333.4 n=31\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C4",
+   "canonical_id": "C#C4",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "delta-base default",
+   "path": "`ui/app/config.js:27` \u2014 `DELTA_BASE_DEFAULT: \"round\", // \"bake\" (a) today \u00b7 flip to \"round\" (b) at go-live.`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C5",
+   "canonical_id": "C#C5",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "owner anchor manifest",
+   "path": "`ui/app/config.js:72-79` \u2014 `MD.anchors` (`bontempelli \"up \u226510%\" met`, `cameron \"up\" met`, `coniglio \"fades\" met`, `gawn \"clearly above Kieren Briggs\" met`)",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`config.js:83-90 MD.anchorStatus` \u2014 `verified:false` for every anchor without a `vs`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C6",
+   "canonical_id": "C#C6",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "**currency label**",
+   "path": "`ui/app/trade.js:1, 37, 157, 160, 163, 200` \u2014 *\"Players + picks in ONE **SCAR** currency\"*, `\"0 SCAR\"` / `\"+N SCAR\"` / `\"\u2212N SCAR\"`, footer *\"one currency: SCAR\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`pvc_curve_v2.json stamp.statistic: \"SCAR\"`; ruling N1 (VOR)"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C7",
+   "canonical_id": "C#C7",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "**\u03a3SCAR labels**",
+   "path": "`ui/app/board.js:117` (`'\u03a3 ' + fmt.n(c.sigma) + ' <small>SCAR</small>'`) and comments at `:8, :10, :44, :48, :105, :154, :686, :722`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C8",
+   "canonical_id": "C#C8",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "**trade-desk pick domain**",
+   "path": "`ui/app/trade.js:63` `for (let n = 1; n <= 80 \u2026)`, `:78` `\"type a pick number 1\u201380\u2026\"`, `:86` same, `:21-23 pickVal` = `pvc[String(n)] ?? 0`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "measured: `board_view_working.js pvc` has exactly 65 keys, max 65"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C9",
+   "canonical_id": "C#C9",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "2027 discount literal",
+   "path": "`ui/app/board.js:227` \u2014 `\"priced off the canonical PVC \u00b7 2027 \u00d7 0.90 (balanced)\"`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`ingest_inputs.py:54 PICK_FUTURE_DISCOUNT = 0.10`; `one_source_selftest.py:541` asserts `{balanced:0.10, contender:0.15, rebuilder:0.05}`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C10",
+   "canonical_id": "C#C10",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "numeraire prose",
+   "path": "`ui/app/clubs.js:133` \u2014 *\"picks and player values share one currency (pick 1 = 3000)\"*",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "B5"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C11",
+   "canonical_id": "C#C11",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "stale board narrative",
+   "path": "`ui/app/club_totals.js:5-7` \u2014 *\"generated 2026-07-27 against board fa172ac1 / store c120cfd5 \u2026 **the board has moved twice since** \u2014 the ITEM 411 restructure and then round 20 (board 8a38cca4, store e3aaba77)\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`data/expected_boot.json`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C12",
+   "canonical_id": "C#C12",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "name-uniqueness premise",
+   "path": "`ui/app/ownership.js:34` and `ui/app/seam.js:43` \u2014 *\"all 804 names are distinct **on store e3aaba77** \u2014 but that is DATA, not a guarantee\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`ownership.js:34-40`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C13",
+   "canonical_id": "C#C13",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "history-card scope note",
+   "path": "`ui/app/history.js:12` \u2014 *\"All 804 players carry a value \u2026 at every one of the **eight** points\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`movers.js points[]` has 9 entries; `ui_222_items.test.mjs:123` asserts `series.length === 9`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "C14",
+   "canonical_id": "C#C14",
+   "section": "C \u00b7 `ui/app/` \u2014 hard-coded pricing constants, thresholds, denominators, labels",
+   "artifact": "counting / Best-23 structure",
+   "path": "`ui/app/counting.js:38-39` (DPP 0.5 each), `ui/app/club_totals.js:37-39` (`SLOTS`, `BENCH 5`, `TARGET 23`), `history.js:56` `MIN_SIDE = 15`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`counting_rule.test.js`; `club_totals_parity.test.js:216-300`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D1",
+   "canonical_id": "C#D1",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "curve resolution",
+   "path": "`ui/tools/ingest_inputs.py:250-344`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`KNOWN_PATHWAYS` at `:60-63` maps pathway \u2192 filename only"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D2",
+   "canonical_id": "C#D2",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "numeraire halts",
+   "path": "`ingest_inputs.py:283-286` (contract), `:335-336` (engine curve doc), `:363-365` (board PVC)",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D3",
+   "canonical_id": "C#D3",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "posture discount",
+   "path": "`ingest_inputs.py:54` \u2014 `PICK_FUTURE_DISCOUNT = 0.10` + `:421-427` reconciles it against the workbook's own 2027 multiplier cell, HALT on disagreement",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`one_source_selftest.py:541`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D4",
+   "canonical_id": "C#D4",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "ledger shape expectations",
+   "path": "`ingest_inputs.py:440` `len(picks) == 160`; `:443-447` `1 <= lo <= 80 and 1 <= hi <= 80`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D5",
+   "canonical_id": "C#D5",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "dead constant + stale comment",
+   "path": "`ingest_inputs.py:53` \u2014 `EXPECTED_BOARD = None  # \u2026 balanced_board_md5 06d8af60 preserved as lineage`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`data/expected_boot.json balanced_board_md5`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D6",
+   "canonical_id": "C#D6",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "extractor docstring",
+   "path": "`ui/tools/extract_board_view.py:10` \u2014 *\"md5(rl_app_data.json) == the pinned board id (**9ecbe0fa\u2026**)\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`expected_boot.json \"tag\"` names `9ecbe0fa` as the v2.8 base"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D7",
+   "canonical_id": "C#D7",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "extractor logic",
+   "path": "`extract_board_view.py:53-276`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`:271` `assert srcmd5.startswith(boot.get(\"board\",\"\")[:8])`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "D8",
+   "canonical_id": "C#D8",
+   "section": "D \u00b7 `ui/tools/` \u2014 embedded expectations",
+   "artifact": "movers baseline anchor",
+   "path": "`ui/tools/ownership_store_apply.py:672` \u2014 `if lin.get(\"balanced_board_md5\") != \"06d8af60b679a12db07c064c60c065f9\"`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`ownership_store_apply.py:389` names it as the `round_movers._release_baseline()` anchor"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E1",
+   "canonical_id": "C#E1",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "**FROZEN-RULER contract byte pin**",
+   "path": "`:490` \u2014 `_contract_md5='11adecc85a24040e1a7fab193c3a0884'`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "in-file comment `:490-494` already documents the re-pin protocol: *\"Re-stamping it moves this md5, which is why the pin moves in the SAME commit\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E2",
+   "canonical_id": "C#E2",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "**derivation-store pin**",
+   "path": "`:499` \u2014 `_curve_source_store='265f55d568f35af33a3e27c0a7d7886a'`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "B3"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E3",
+   "canonical_id": "C#E3",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "**per-entrant pin**",
+   "path": "`:500` \u2014 `_per_entrant_md5='2f8b4bd4'`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "B6"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E4",
+   "canonical_id": "C#E4",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "**the \"must NOT move\" instruction**",
+   "path": "`:497-498` \u2014 *\"Curve SOURCE store and per_entrant are UNCHANGED below - nothing was re-derived, so those two pins **must NOT move**.\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E5",
+   "canonical_id": "C#E5",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "held-check gate for the four curve\u2194contract checks",
+   "path": "`:523-526` \u2014 `_held_curve=_held_check('FROZEN-RULER')`; a held check prints `HELD` instead of failing",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`release_contract.json:72-91`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E6",
+   "canonical_id": "C#E6",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "pool-index equality",
+   "path": "`:483` \u2014 `check(_p0i[MA.POOL_PICK]==int(_v2['pool_value']), \u2026)`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E7",
+   "canonical_id": "C#E7",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "national-curve equality",
+   "path": "`:482` \u2014 walks `_v2['curve']`'s own domain instead of a hard-coded `range(1,100)`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file comment records the KeyError this de-hardcoding fixed"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E8",
+   "canonical_id": "C#E8",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "numeraire",
+   "path": "`:430` \u2014 `check(_p0i[1]==3000, \u2026)`; `:537` \u2014 artifact self-declares `numeraire_pin1_3000` + `r104_9_strict_descent`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "B5"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E9",
+   "canonical_id": "C#E9",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "G-Y0 hard bar",
+   "path": "`:571` \u2014 `if abs(_nd_r)<=2.0:`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`CURRENT_STATE.md`: *\"2.000% hard bar\"* carried unchanged"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E10",
+   "canonical_id": "C#E10",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "G-Y0 ceiling read",
+   "path": "`:577-581` \u2014 `_ceil=float(_gy0_hold.get('ceiling_pct') or 0.0)`; `check(abs(_nd_r)<=_ceil, \u2026)`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "F3"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E11",
+   "canonical_id": "C#E11",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "population count",
+   "path": "`:118` \u2014 `check(len(active_keys)==804, \u2026)`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "matches every bundle's `nPlayers: 804`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E12",
+   "canonical_id": "C#E12",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "**num\u00e9raire display divisor**",
+   "path": "`:65` \u2014 `_F = json.load(open(hp('pick_redenomination.json')))['factor'] if os.path.exists(\u2026) else 1.0524`; used at `:134` and `:146` for the F1/F2 parity checks (`board v == round(engine ev / F)`)",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`pick_redenomination.json _doc` + `_provenance_summary`; `rl_export.py:130-132`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "E13",
+   "canonical_id": "C#E13",
+   "section": "E \u00b7 Gate \u2014 `engine/rl_after/one_source_selftest.py`",
+   "artifact": "G-Y0 pool leg diagnostics",
+   "path": "`:585-608` \u2014 the printed pool-leg block, explicitly `UNMEASURED`, with the era figures 618.3 / 553.1 / n=297 / n=429 and the frozen-signature note *\"the frozen signature is now b781ed25 over the ruled 1,093-row pool\"*",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "in-file `:595-600`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F1",
+   "canonical_id": "C#F1",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "release identities",
+   "path": "`identities{board:\"f2df6e0a\u2026\", store:\"81d2470440a80f72afea4405e94338c5\", balanced_board_md5:\"4939d740\u2026\", engine_head, rl_model, fv, register, band}`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "verified field-by-field"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F2",
+   "canonical_id": "C#F2",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "**PVC provenance**",
+   "path": "`pvc_provenance{adopted_pathway:\"RL_PVC2\", curve_file:\"pvc_curve_v2.json\", curve_payload_md5:\"08ea9375\", numeraire_pin1:3000}`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "B1"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F3",
+   "canonical_id": "C#F3",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "**G-Y0 do-not-exceed ceiling**",
+   "path": "`held_checks[0].ceiling_pct: 3.5`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`one_source_selftest.py:577-581`; `release_contract.json:78` `\"cleared_at\"`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F4",
+   "canonical_id": "C#F4",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "**G-Y0 declaration measurements**",
+   "path": "`held_checks[0].measured_at_declaration{guard_population_pct:3.035, ruled_population_pct:2.929, stage_A_pct:2.672, hard_bar_pct:2.0, n_guard:1326, n_ruled:1325}` + `reason` (MID +343.1 / KPF \u2212253.5 / SD \u2212158.9)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`one_source_selftest.py` reads only `ceiling_pct` and `diagnostic_map`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F5",
+   "canonical_id": "C#F5",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "**F5 entrant reconciliation**",
+   "path": "`f5_entrant_reconciliation{visible_1_64:65925, residual_nd_tail:2631, residual_mech:9055, entrant_layer_pvc:77611, seal:\"a17aafed\", reconciled:true, canonical_build:\"rl_export.py RL_LEGF=1\"}`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "A6; `board_view_working.js draftAssetTotals` carries the identical numbers"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F6",
+   "canonical_id": "C#F6",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "present-lens baseline",
+   "path": "`present_lens_baseline{balanced_board_md5:\"4939d740\u2026\", active:804, present_value_total:767198, note:\"\u2026 present_value_total **764021** is the LANDED present-v sum \u2026\"}`",
+   "classes": [
+    "UNCLEAR"
+   ],
+   "evidence": "`sibling_repin.py:587, 851, 1335`; `staged_apply.py:925, 945`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F7",
+   "canonical_id": "C#F7",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "held-candidates doctrine",
+   "path": "`_held_candidates_doc` (*\"AT ADOPTION: re-stamp identities.<field> \u2026 and DELETE that entry in the same commit\"*) + `held_checks` sibling mechanism",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`one_source_selftest.py:511-522` explains why `held_checks` is a sibling of `held_candidates`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F8",
+   "canonical_id": "C#F8",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "contract seal",
+   "path": "`contract_sha256: \"3ede10d3\u2026\"`",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`release_contract.py check`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "F9",
+   "canonical_id": "C#F9",
+   "section": "F \u00b7 Gate \u2014 `data/release_contract.json`",
+   "artifact": "adoption record",
+   "path": "`adopted{owner_word:\"2026-07-30 \u2014 \\\"30/7 rederivation for the label. Adopt.\\\"\", issue:\"#271\", column_id:\"rederivation-30-7\"}`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "matches `movers.js model_changes`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G1",
+   "canonical_id": "C#G1",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "**club-totals parity oracle**",
+   "path": "`ui/tests/club_totals_parity.test.js:80-165`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`:9-13` *\"the oracle is the ALGORITHM, not the artifact: \u2026 the baked file's own numbers cannot be the oracle, because they are stale\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G2",
+   "canonical_id": "C#G2",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "parity structural pins",
+   "path": "same file `:197-214, 280-306` \u2014 `clubs.length === 16`, 23 distinct per club, `overall == totalPlayer + totalPicks`, top-23 upper bound, `[\"Adelaide Crows\",\"Hawthorn Hawks\"]` axis-artifact cases",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G3",
+   "canonical_id": "C#G3",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "parity docstring",
+   "path": "same file `:7` \u2014 *\"generated against board fa172ac1; the board is now 8a38cca4\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "`expected_boot.json`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G4",
+   "canonical_id": "C#G4",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "**FHV pin**",
+   "path": "`ui/tests/ui_222_items.test.mjs:369` \u2014 `check(OF.fhv === 190, 'item 3 \u2014 FHV is the ruled constant 190 (#270 Option A)')`; `:389` \u2014 `MD.config.FHV = 190;` (restore after the non-vacuity mutation)",
+   "classes": [
+    "EXPECTED-TO-MOVE-AT-ADOPTION"
+   ],
+   "evidence": "`:355` reads `MD.config.FHV` correctly; only `:369`/`:389` hard-code"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G5",
+   "canonical_id": "C#G5",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "live-data structural pins",
+   "path": "`ui_222_items.test.mjs:60, 127, 225` (`804`), `:123` (`series.length === 9`), `:138` (`'post-r19-redesign-1,rederivation-30-7'`)",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "CI step comment: *\"Both read live data \u2014 no hand-pinned hashes, no per-round re-pinning\"* (`final-integration.yml:155-158`)"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G6",
+   "canonical_id": "C#G6",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "picks contract",
+   "path": "`ui/tests/test_club_valuation_current.py:44-63` \u2014 16 teams, 160 picks, `value > 0`, `year in (2026,2027)`, and the PVC identity read **from the stamp** (`stamp[\"pvcCurveMd5\"]`, not a literal)",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`:59-63`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G7",
+   "canonical_id": "C#G7",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "baked-totals regression guard",
+   "path": "`test_club_valuation_current.py:65-83` \u2014 greps every `ui/app/*.js` for a read of `clubs`/`totalPlayer`/`best23`/\u2026 on `clubBundle`/`__CLUB_VALUATION__`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G8",
+   "canonical_id": "C#G8",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "curve-provenance positive path",
+   "path": "`ui/tests/club_curve_provenance.test.py:153-155` (`_live_curve_md5` derived from the artifact), `:161-176` (board/round/release derived from `expected_boot`), `:184-192` (`_live_pool_value` derived from the artifact)",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`:150-160`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G9",
+   "canonical_id": "C#G9",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "stale-token sentinels",
+   "path": "`club_curve_provenance.test.py:176` \u2014 `for stale in (\"790136a3\", \"v2.10\", \"pvc_curve_L1b\", \"b1fd0bce\", \"fc7045d6\")`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G10",
+   "canonical_id": "C#G10",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "**monotonicity tamper constant**",
+   "path": "`club_curve_provenance.test.py:371` \u2014 `c[\"curve\"][\"60\"] = 600   # > pick 59 (545); pick 1 stays 3000; exactly one increase`",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "measured: `pvc_curve_v2.json curve` \u2014 59:577, 60:576, 64:571"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G11",
+   "canonical_id": "C#G11",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "extractor seam fixture pins",
+   "path": "`ui/tests/extract_seam.test.py:129-134` \u2014 `entrant_layer_pvc == 83538`, `expected_slots_per_year \u2248 103.43`, `seal_sha256_8 == \"a17aafed\"`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`:30-38` fixture provenance block"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G12",
+   "canonical_id": "C#G12",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "fixture pool value",
+   "path": "`ui/tests/fixtures/extract_seam_legf_schema.json:2785` \u2014 `\"65\": 528` (and a 1..99 PVC)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`pvc_curve_v2.json stamp.prev_pool_value: 528`"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G13",
+   "canonical_id": "C#G13",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "movers historical anchors",
+   "path": "`ui/tests/movers.test.js:181-182` (`f37d9716\u2026`), `:239` (`fa172ac1\u2026`), `:306-307` (`06d8af60\u2026`)",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G14",
+   "canonical_id": "C#G14",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "ring-fence seam",
+   "path": "`ui/tests/release_seam.test.js:92-172` \u2014 synthetic `GOOD/WRONG` ids + the **shipped** bundle read live (`:168-171`), plus negative assertions that `board.js` carries no `968de0c7`/`06d8af60` (`:218`) and no `\"v2.10\"`/`\"Round 17\"` literals",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "`:95-108` explains the deliberate scope limit"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G15",
+   "canonical_id": "C#G15",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "adoption gate",
+   "path": "`ui/tests/adoption_gate.test.js:35-65`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G16",
+   "canonical_id": "C#G16",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "ownership refusal pin",
+   "path": "`ui/tests/ownership_single_source.test.js:158-161` \u2014 `stamp.board = \"8a38cca44f53152090cb3df3f78bd47e\"; // the PRE-ADOPTION board`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "G17",
+   "canonical_id": "C#G17",
+   "section": "G \u00b7 `ui/tests/` \u2014 pinned expectations",
+   "artifact": "counting / responsive / xlsx / sidecar tests",
+   "path": "`counting_rule.test.js`, `responsive_layout.test.mjs`, `xlsx_read.test.py`, `ownership_sidecar.test.js`, `ownership_store_apply.test.py`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "scanned; no curve/store/level literal used as an expectation"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H1",
+   "canonical_id": "C#H1",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "R14 fixture authority",
+   "path": "`engine/rl_after/ingestion/scratch_fixture.py:93-97` \u2014 `R14_ANCHOR='93bd01af\u2026'`, `R14_STORE_MD5='968de0c7\u2026'`, `R14_BOARD_MD5='2ab73a6f\u2026'`, `R14_BALANCED_BOARD_MD5='06d8af60\u2026'`, `R14_AS_OF_ROUND=14`; asserted by `test_r14_fixture.py:84-92, 242-245`",
+   "classes": [
+    "HISTORICAL-SEALED"
+   ],
+   "evidence": "`:242-245` *\"store md5 %s != R14 **authority** %s\"*"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H2",
+   "canonical_id": "C#H2",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "R14 anti-staleness control",
+   "path": "`test_r14_fixture.py:253-254` \u2014 `assert boot['engine_head'] == cur` and `!= 'dc7e34b0\u2026'`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H3",
+   "canonical_id": "C#H3",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "catch-up score pins",
+   "path": "`test_catchup_preflight.py:62-67` \u2014 `bailey-williams-wc == 67 / 82 / 84`, `bailey-williams-wb == 55 / 137`; `EXPECT_LISTED` per round",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H4",
+   "canonical_id": "C#H4",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "transition field lists",
+   "path": "`test_movers_transition.py:52, 219-220` \u2014 `FIXED=[\u2026]`, `moved == ['release_version','balanced_board_md5','engine_head','board','store']`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H5",
+   "canonical_id": "C#H5",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "workflow UI-gate wiring",
+   "path": "`.github/workflows/final-integration.yml:129-148, 154, 161` and `live-scoring.yml:145`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "scanned all five workflows"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H6",
+   "canonical_id": "C#H6",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "workflow prose",
+   "path": "`final-integration.yml:120` \u2014 *\"Sigma v **764021**, zero movers vs reference_vector_5546f278, the F5 layer **83538/4649/14272**\"*; `ci-guards.yml:117-121` \u2014 *\"Board of record = the LANDED R19 board **fa172ac1**\u2026 store c120cfd5\"*",
+   "classes": [
+    "STALE-ROOTED"
+   ],
+   "evidence": "in-file"
+  },
+  {
+   "lane": "C",
+   "lane_id": "H7",
+   "canonical_id": "C#H7",
+   "section": "H \u00b7 `engine/rl_after/ingestion/test_*` and `.github/workflows`",
+   "artifact": "one_source_selftest invocation",
+   "path": "`ci-guards.yml:93-97`",
+   "classes": [
+    "RULED-CURRENT"
+   ],
+   "evidence": "in-file"
+  }
+ ]
+}

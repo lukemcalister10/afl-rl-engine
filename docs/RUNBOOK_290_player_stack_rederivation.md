@@ -645,3 +645,148 @@ Discharged since filing: the two DOB words (A.2) · the trade-desk timing word (
 Released to rehearse L0–L8: **unbakeable throughout** (no landing bake, no pin moved on this branch's
 product files, no adoption), **every gate fired in anger**, the **L2 candidates measured and presented at
 the halt**, **cost measured per leg**. Hand back for seam verification; the EXECUTION word follows.
+
+---
+
+# ADDENDUM B — REHEARSAL FINDINGS (L0 complete · L1 BLOCKED). The runbook is amended by these.
+
+Rehearsal run in a scratch clone (full history, `git fetch --unshallow` — hazard class 6 cleared),
+workspace seeded from the scratch tree, gates fired in anger. **L1 as filed is NOT EXECUTABLE.** Four
+defects, each reproduced at source, and one self-caught process violation.
+
+## B.0 — Costs measured (this container, cp312 pinned stack)
+
+| act | measured |
+|---|---|
+| `setup_env.sh` (idempotent re-prove) | ~1s |
+| `bootstrap.sh` + Guard 5 | **1.6s** |
+| `rl_export.py` (board build, `RL_CONFIG_MODE=bake`) | **132s** |
+| `s4_matrix_M1v7.py` (book build) | **179s** |
+| board + book together | **311s** (the record's "385s/cycle" is the right order; 311s is this container's) |
+| `one_source_selftest.py` — baseline, PASS | **103s** |
+| `one_source_selftest.py` — Guard-5-fail path | **143s** (a failing gate costs MORE than a passing one) |
+| `ruling_config_check.py` · `config_manifest.py check` | <1s each |
+| `guard_correction_canary.py` | **>8 min, did not finish** — it does a full rebuild with an edited store |
+
+**A full L1 cycle is therefore ~7–9 minutes** (bootstrap + board + book + selftest), before the canary.
+L6's convergence is N of these; at 3 passes that is ~25 minutes of pure compute, plus the refit.
+
+## B.1 — L0 IS DONE, and its denominator is **187**
+
+Acceptance 2's denominator: **187 canonical rows**, from 209 lane rows (A 62 · B **53** · C 94) less 22
+merged away across **21 adjudicated cross-lane merge sets**. Artifacts:
+`out/l0_rows_raw.json` · `out/l0_canonical_adjudicated.json`, with the merge table and the deliberate
+NON-merges published so each call can be argued with.
+
+**THE DEDUP IS NOT MECHANIZABLE — the runbook under-costed L0.** Three defensible mechanical rules gave
+three different denominators (130 merging on file; 207 merging on file+field; 6 vs 16 cross-lane candidates
+depending only on the file-detection rule). The lanes use incompatible row granularity — A is one dial per
+row, B one file-block per row, C one pin/field per row — so no regex resolves them. The cross-lane merges
+were adjudicated **by hand**. L0 is not "estimated hours, measurement-parallel"; it is careful seat work.
+
+**Lane B's count defect, resolved by derivation record.** Lane B has **53 table rows** (8+10+20+11+4), not
+the 47 its header and the INDEX claim. Its STALE-ROOTED count is **22 rows**, not 19: the enumeration's 22
+tokens and my extraction agree **exactly**, and the prose's "20 distinct artifacts" reconciles as 22 − 2
+merges (A1+A2 both `pvc_curve_v2.json`; C1+C2 both the board). So **19 is simply wrong; 22 rows / 20
+artifacts is right.** Lane A reproduces exactly (62 rows, all five class counts). Lane C reproduces at 94
+rows; its RC count reads 37 against an enumerated 36 because **A9 is dual-class** (RC for board+store,
+EXPECTED-TO-MOVE for curve identity) and lane C, unlike lanes A and B, does not document its dual-class
+handling.
+
+**The `pvc_fit_candidate` conflict, resolved.** Lane A row 11 says NOT-LIVE; lane B A5 says SR. Verified at
+source: `RL_PVCFIT='0'` in the manifest, the engine default resolves to 0 under owner ruling R3, and
+`rl_export.py` carries an active R3 BAKE GUARD refusing to write a bakeable board with the fit on. **Lane A
+is right for the live-pricing question**; lane B classified by basis without weighting liveness. Disposition
+**RETIRED-FROM-LIVE**, not RE-DERIVED. **14 further conflicts** are listed in the artifact for resolution.
+
+## B.2 — DEFECT 1 (blocking): L1(a) moves FIVE identities, not four
+
+**Six of the seven γ sites live in `engine/forward_valuation/`, and `expected_boot.fv` is a hash of that
+source set.** Proven in isolation on an otherwise untouched tree:
+
+```
+pinned fv                    : d10aa93e977a16a7
+fv identity, tree untouched  : d10aa93e977a16a7  MATCH
+fv identity, ONE gamma token : 4b8875a6533d1dea  DRIFT
+```
+
+A **single-character** γ edit moves the fv pin, and `bootstrap.sh`/Guard 5 then **refuse to boot** ("never
+boot on an unverified forward_valuation"). Addendum 3's dependent set — `expected_boot` · `release_contract`
+· `release_lineage` · `finalization_state` — enumerates the **config_sha** carriers correctly but misses
+that the γ edit independently moves a **different** pin. **L1(a)'s same-commit set is the config_sha four
+PLUS `expected_boot.fv`.** Reproduced end-to-end: bootstrap exit=1, Guard 5 HALT.
+
+## B.3 — DEFECT 2 (blocking): the config_sha re-stamp is a FIELD-level act, not a file-level one
+
+A file-level re-stamp of the four dependents **corrupts sealed history.** Measured occurrences of
+`45b207c0` at HEAD:
+
+| file | occurrences | what they are |
+|---|---|---|
+| `expected_boot.json` | 1 — `.config` | **live pin; moves** |
+| `release_contract.json` | 1 — `.config_sha256` | **live pin; moves** |
+| `release_lineage.json` | **4** — `release_transition.source/destination.config`, `register[1].source/destination.config` | **all historical citations; must NOT move.** A `source.config` records what the config *was*; re-stamping it claims a past transition happened under γ=1.0. The lawful act is a **new** register entry, not a re-stamp. |
+| `finalization_state.json` | **6** — `rounds.15…20.release_identity.config` | **rounds 15–19 are sealed production history; must NOT move.** Only the round-20 tail is live, and Addendum 3 routes that to L5 — so **nothing in this file moves at L1.** |
+
+I performed the naive replace, saw it move all ten, and reverted. **The "five-artifact one-commit re-stamp"
+is really two fields re-stamped, one file needing a different act (an appended lineage entry), and one file
+that does not move at L1 at all.**
+
+## B.4 — DEFECT 3 (blocking): the curve install cannot be separated from the v0surf refit
+
+L1(b) installs the curve; the runbook puts the v0surf refit at L6. **The engine will not boot in between.**
+Reproduced: with the curve moved, the selftest HALTs —
+
+```
+FAIL GUARD 5: checkout v0surf ce08c2d1 != pinned 84378086 … the FROZEN artifact and its pin are out of sync
+              v0surf LOAD-PATH MISMATCH … never boot on an unverified LOADED artifact
+```
+
+This is lane A's N1 blocker, live: `_v0surf_sig` hashes `_PVC0` itself, so any curve move invalidates the
+frozen signature. Lane A already says *"the re-bake must ride in the same commit"*; the runbook did not
+carry that into its leg order. **The v0surf refit is part of L1(b), not L6.** L6 keeps only the
+curve↔surface **convergence iteration**.
+
+## B.5 — DEFECT 4: the step-4 E1–E6 diff is not leg-separable, and installs the wrong curve for L1(b)
+
+The built diff applies cleanly at the current tip (every text patch; only the binary `v0surf.pkl`
+placeholder fails). But:
+
+1. **It installs the CONVERGED payload `fd9e8b63` (ladder 54,354, s=0.99997), not the stop-point
+   `e69a3f38`** that Addendum 3 names as L1(b)'s working substrate. That is the wrong direction: the
+   step-4 converged curve was converged against the **un-re-derived** player stack, which L1–L5 are about to
+   change. Verified from the artifact: `ruled_curve_final_279.json` carries `factor_s 0.977688`, payload
+   `e69a3f38`, **ladder sum 54,722.0 exactly**, head `3000, 2999, 2886, 2453, 1892`, pick 64 = 221.
+2. **It leaves `pool_value` at 299, `stamp.statistic` at `"SCAR"`, and `stamp.store_md5` at `265f55d5`** —
+   so the FROZEN-RULER set and the pool triplet are untouched. L1(b)'s enumerated same-commit set is real
+   additional work the diff does not contain.
+3. **It spans four legs**: E1 touches `build_peak_model_v4.py` (L4), E3 installs the per-season par with
+   `PAR_DUAL_RULE='primary'` (L2), E5 corrects two docstrings (L5), alongside L1(b)/(c). Under the
+   one-column-per-landed-change law it **must be split before any of it lands**.
+
+## B.6 — PROCESS: I violated the one-writer law, and the workspace makes it easy
+
+`/home/claude/rl_workspace` is a **single shared mutable workspace**. I backgrounded the baseline
+`guard_correction_canary.py` — which does a full rebuild **with a deliberately edited store** — and then
+re-seeded that same workspace for L1. Both runs are therefore **VOID** and are recorded as void, not as
+results. This is N10's *"one writer per bake; no parallel engine builds, ever"*, and the design gives no
+interlock: nothing warned me. **Amendment: every engine act in this job runs serially, and the runbook's
+standing per-leg gate gains a precondition — assert no other engine process is live before seeding.**
+
+## B.7 — Smaller corrections
+
+- **Two** documentation-only γ sites, not one: `par_build.py:18` and **`par_redesign.py:13`** (both `Run:`
+  lines). Line numbers drift once E1–E6 applies.
+- `distribution_pricing.py`'s setdefault is at **:28** (Addendum 3 cites :27).
+- Baseline G-Y0 confirmed live at **3.035%** against ceiling 3.500%, HELD against the 2.000% hard bar —
+  the selftest prints it every run, and it PASSES today.
+
+## B.8 — WHAT IS NOT REHEARSED, and why
+
+**L2–L8 are not rehearsed.** They cannot be, honestly: every one of them runs on the flipped substrate, and
+**L1 does not currently produce a bootable engine**. Rehearsing L2+ on a tree that halts at Guard 5 would
+measure nothing. The blocking order is: amend L1 per B.2–B.5 → re-rehearse L1 to a green boot → then L2's
+two window candidates → the halt.
+
+Also outstanding: `guard_correction_canary.py` needs a **serial** baseline run (>8 min), and the four CI
+workflows have not been exercised in this container.
