@@ -18,13 +18,38 @@ MD.trade = (function () {
     MD.state.trade.get.push({ t: "pick", n: 5 });
   }
 
+  /* THE RULED SPLIT (RULEBOOK v2.1 law 4) — the same law ui/tools/ingest_inputs.py:378 price_pick()
+     enforces on the ingest side, mirrored here rather than approximated. The national curve prices
+     picks 1–64 individually; EVERYTHING past 64 is THE POOL at ONE index, position-blind, "with order
+     of selection carrying no value". There is no ordinal pick 65, and no price for pick 70.
+     The shipped pvc bundle carries exactly 65 keys: 1–64 = the curve, index 65 = the committed pool
+     value. Both halves are READ from that artifact — no number is hard-coded here. */
+  const CURVE_MAX = 64;
+  const POOL_KEY = "65";
+  const POOL_LABEL = "Pool pick — position-blind level";
+
+  // the pool level, one-source read off the bundle. null => the bundle publishes none, so the desk
+  // offers no pool item rather than pricing one at a made-up figure (the ingest side HALTs here).
+  function poolVal() {
+    const pvc = MD.seam.working.pvc || {};
+    return pvc[POOL_KEY] != null ? pvc[POOL_KEY] : null;
+  }
+
+  // ordinals only, and only inside the curve's domain — index 65 is the pool and is never read as a pick.
   function pickVal(n) {
     const pvc = MD.seam.working.pvc || {};
+    if (!(n >= 1 && n <= CURVE_MAX)) return 0;
     return pvc[String(n)] != null ? pvc[String(n)] : 0;
   }
 
+  function pickItem(n) { return { t: "pick", n: n, label: "Pick " + n, val: pickVal(n) }; }
+  function poolItem() { return { t: "pick", pool: true, label: POOL_LABEL, val: poolVal() }; }
+
   function itemVal(it) {
-    if (it.t === "pick") return pickVal(it.n);
+    if (it.t === "pick") {
+      if (it.pool) { const pv = poolVal(); return pv != null ? pv : 0; }
+      return pickVal(it.n);
+    }
     const p = MD.seam.indexed().byKey[it.key];
     return p ? p.v : 0;
   }
@@ -34,14 +59,20 @@ MD.trade = (function () {
     return (MD.seam.working.stamp || {}).maxV || 1;
   }
 
-  /* nearest pick to a SCAR amount + a plain-language descriptor of that pick. */
+  /* nearest pick to a SCAR amount + a plain-language descriptor of that pick. Scans the SAME domain
+     the law rules — ordinals 1–64 only. Anything below pick 64's value is the pool, so it describes as
+     "a pool pick"; it never invents a phantom ordinal past the end of the curve. */
   function describePick(amount) {
     const pvc = MD.seam.working.pvc || {};
+    const floor = pvc[String(CURVE_MAX)];
+    if (floor != null && amount < floor) return "a pool pick";
     let best = null, bestD = Infinity;
-    Object.keys(pvc).forEach(function (k) {
-      const d = Math.abs(pvc[k] - amount);
-      if (d < bestD) { bestD = d; best = parseInt(k, 10); }
-    });
+    for (let n = 1; n <= CURVE_MAX; n++) {
+      const v = pvc[String(n)];
+      if (v == null) continue;
+      const d = Math.abs(v - amount);
+      if (d < bestD) { bestD = d; best = n; }
+    }
     if (best == null) return "a draft pick";
     const round = Math.ceil(best / 18);
     const within = ((best - 1) % 18) + 1;
@@ -51,8 +82,9 @@ MD.trade = (function () {
     return "a " + pos + " " + ord + "-round pick (≈ pick " + best + ")";
   }
 
-  /* item 6: match a query to picks (1–80, individually) + players (type-ahead by name).
-     numeric query -> the exact/prefix picks; text query -> player-name substring. */
+  /* item 6: match a query to picks (ordinals 1–64 individually, plus the ONE pool item) + players
+     (type-ahead by name). numeric query -> the exact/prefix ordinals AND the pool, because a number
+     past 64 IS the pool under law 4; text query -> "pool", or a player-name substring. */
   function matchItems(q) {
     q = String(q || "").trim().toLowerCase();
     const players = MD.seam.working.players || [];
@@ -63,9 +95,13 @@ MD.trade = (function () {
       return out;
     }
     if (/^\d+$/.test(q)) {
-      for (let n = 1; n <= 80 && out.length < 6; n++) {
-        if (String(n).indexOf(q) === 0) out.push({ t: "pick", n: n, label: "Pick " + n, val: pickVal(n) });
+      for (let n = 1; n <= CURVE_MAX && out.length < 6; n++) {
+        if (String(n).indexOf(q) === 0) out.push(pickItem(n));
       }
+      // typing "70" answers with the pool, not a phantom ordinal — that is what a pick past 64 is.
+      if (poolVal() != null) out.push(poolItem());
+    } else if (q && "pool pick".indexOf(q) === 0 && poolVal() != null) {
+      out.push(poolItem());
     }
     players.filter(function (pl) { return String(pl.name).toLowerCase().indexOf(q) !== -1; })
       .slice(0, 8)
@@ -78,7 +114,7 @@ MD.trade = (function () {
     const input = document.createElement("input");
     input.className = "tradesearch";
     input.type = "text";
-    input.setAttribute("placeholder", "add — search a player, or type a pick number 1–80…");
+    input.setAttribute("placeholder", "add — search a player, type a pick number 1–64, or “pool”…");
     const results = fmt.el("div", "results");
     results.style.display = "none";
 
@@ -86,7 +122,7 @@ MD.trade = (function () {
       const items = matchItems(input.value);
       results.innerHTML = "";
       if (!items.length) {
-        const none = fmt.el("div", "rnone", "no match — try a name, or a pick number 1–80");
+        const none = fmt.el("div", "rnone", "no match — try a name, a pick number 1–64, or “pool”");
         results.appendChild(none);
       }
       items.forEach(function (it) {
@@ -97,7 +133,7 @@ MD.trade = (function () {
         b.innerHTML = nm + '<span class="rv num">' + fmt.n(it.val) + "</span>";
         b.addEventListener("mousedown", function (e) {
           e.preventDefault(); // fire before the input blur so the pick registers
-          if (it.t === "pick") basket.push({ t: "pick", n: it.n });
+          if (it.t === "pick") basket.push(it.pool ? { t: "pick", pool: true } : { t: "pick", n: it.n });
           else basket.push({ t: "player", key: it.key });
           render(container);
         });
@@ -124,8 +160,8 @@ MD.trade = (function () {
       const row = fmt.el("div", "trow");
       let nm, meta = "";
       if (it.t === "pick") {
-        nm = '<span class="pickchip">Pick ' + it.n + "</span>";
-        meta = '<i>2026 ND</i>';
+        nm = '<span class="pickchip">' + (it.pool ? "Pool pick" : "Pick " + it.n) + "</span>";
+        meta = it.pool ? '<i>2026 ND · position-blind level</i>' : '<i>2026 ND</i>';
       } else {
         const pl = MD.seam.indexed().byKey[it.key];
         const pin = MD.anchors[it.key] ? ' <span class="tpin" title="carries your ★ read">★</span>' : "";
@@ -138,8 +174,9 @@ MD.trade = (function () {
       p.appendChild(row);
     });
     // item 6: a custom type-ahead combobox (replaces the bare <select>) — players are searchable and
-    // EVERY pick 1–80 is individually selectable by typing its number; the results dropdown is styled in
-    // the board's condensed type (requirement 3: dropdown font matched to the board type style).
+    // every ORDINAL pick 1–64 is individually selectable by typing its number, with the single pool item
+    // covering everything past 64; the results dropdown is styled in the board's condensed type
+    // (requirement 3: dropdown font matched to the board type style).
     p.appendChild(combo(side, basket, container));
 
     const tot = fmt.el("div", "ttotal");
@@ -197,7 +234,7 @@ MD.trade = (function () {
     container.appendChild(tr);
 
     const foot = fmt.el("footer", "foot");
-    foot.innerHTML = "one currency: SCAR · picks priced off the pick-value curve (PVC, stamped artifact) · verdict in plain language, figures alongside";
+    foot.innerHTML = "one currency: SCAR · picks priced off the pick-value curve (PVC, stamped artifact): ordinals 1–64, everything past 64 at the one pool level · verdict in plain language, figures alongside";
     container.appendChild(foot);
   }
 

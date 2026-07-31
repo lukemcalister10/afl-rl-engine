@@ -1,0 +1,45 @@
+{
+  "tag": "nonvac",
+  "bundle": {
+    "nKeys": 65,
+    "min": 1,
+    "max": 65,
+    "v64": 571,
+    "v65": 777
+  },
+  "queries": {
+    "7": [
+      {
+        "label": "Pick 7 2026 ND",
+        "val": "1,907"
+      },
+      {
+        "label": "Pool pick — position-blind level 2026 ND",
+        "val": "777"
+      }
+    ],
+    "65": [
+      {
+        "label": "Pool pick — position-blind level 2026 ND",
+        "val": "777"
+      }
+    ],
+    "70": [
+      {
+        "label": "Pool pick — position-blind level 2026 ND",
+        "val": "777"
+      }
+    ],
+    "pool": [
+      {
+        "label": "Pool pick — position-blind level 2026 ND",
+        "val": "777"
+      }
+    ]
+  },
+  "describe": {
+    "probeAmount": 777,
+    "verdictLineOnOpen": "You come out ahead by 407 — about a pool pick of value in your favour."
+  },
+  "pageErrors": []
+}
