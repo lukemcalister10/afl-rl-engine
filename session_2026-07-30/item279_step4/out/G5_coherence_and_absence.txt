@@ -1,0 +1,20 @@
+############ ADDITION 1 — COHERENCE ASSERT, three ways ############
+--- (a) COHERENT block: H=3068.4647, s=3000/H — must LOAD ---
+  Harry Sheezel        #1   val8828 ~pk1+  SF      pk 3 ND 
+  LOADED. BOARD_FACTOR=0.660451004  SCALE=4.613900  (s=0.977687636 applied)
+  old one-sided factor was 0.675524; new = 0.675524 * s = 0.660451463
+
+--- (b) DOCTORED s (block says 0.95, head says otherwise) — must HALT naming both ---
+E6 numeraire COHERENCE HALT: the artifact's published s and its own head disagree.
+  published s          = 0.950000000000
+  recomputed 3000/3068.46 = 0.977687636426
+  difference           = 2.769e-02
+  One of the two was edited without the other. Both sides of the economy scale from this number,
+  so a disagreement here is a one-sided repricing waiting to happen.
+
+--- (c) RL_PICK1 disagreeing with the published pin — must HALT naming both ---
+E6 numeraire COHERENCE HALT: RL_PICK1 disagrees with the artifact's published pin.
+  RL_PICK1             = 3500.000000
+  artifact published_pin = 3000.000000
+  The ladder was published against the artifact's pin; scaling players against a different pin
+  would move the player side alone. Set RL_PICK1 to the artifact's pin, or re-derive the curve.

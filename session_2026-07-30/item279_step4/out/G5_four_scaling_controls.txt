@@ -1,0 +1,16 @@
+factor s at the fixed point = 0.999970   (iteration 1 s = 0.975873, used for the bite demo)
+
+--- with fixed point s=0.999970 ---
+both sides from one H (RULED)                  GREEN   0/12 relativities moved
+PICK SIDE ALONE (artifact scaled)              RED    12/12 relativities moved
+PLAYER SIDE ALONE (SCALE only)                 RED    12/12 relativities moved
+DOUBLE application on players                  RED    12/12 relativities moved
+
+--- with iteration-1 s=0.975873 ---
+both sides from one H (RULED)                  GREEN   0/12 relativities moved
+PICK SIDE ALONE (artifact scaled)              RED    12/12 relativities moved
+PLAYER SIDE ALONE (SCALE only)                 RED    12/12 relativities moved
+DOUBLE application on players                  RED    12/12 relativities moved
+
+E6 no-op control (measured in the engine): BOARD_FACTOR at s=1.0 = 0.675523531 == 3000/4441 = 0.675523531
+E6 live control  (measured in the engine): BOARD_FACTOR at s=0.977688 = 0.660451004 == 0.675524*s
