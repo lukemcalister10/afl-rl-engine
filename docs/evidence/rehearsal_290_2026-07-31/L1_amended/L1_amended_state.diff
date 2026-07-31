@@ -1,0 +1,928 @@
+diff --git a/data/expected_boot.json b/data/expected_boot.json
+index 91f23bb..b2ad897 100644
+--- a/data/expected_boot.json
++++ b/data/expected_boot.json
+@@ -21,19 +21,19 @@
+  "band": "34faa8659cc8f19794f5cb9584fa19b2",
+  "board": "f2df6e0a2902f48e1df36f35493ba8c1",
+  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+- "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+- "engine_head": "404e811353281843b065b3d75768bec0",
+- "fv": "d10aa93e977a16a7a1c0543e0041a8876cf2912d90a9bb6f00657c31092d786b",
++ "config": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
++ "engine_head": "3c7b0c3ccebdb52f35d28b1d12a259a2",
++ "fv": "461c737b0b6d08f35f6207e654a5af0fc77377c80f401278b409022142a60747",
+  "peak_model": "b763f59e6a6b8aa20946211674e37259",
+  "pvc_snapshot": "735d2dec60cee285382a5d7a17c36a6f",
+  "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+- "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
++ "rl_model": "feb4ca0e7955e74bf19ed8af486c26ce",
+  "store": "81d2470440a80f72afea4405e94338c5",
+  "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+- "v0surf": "ce08c2d13ae7d9bd403c60cf58ea1660",
++ "v0surf": "e92e3885df24060aa90557ba20ba3612",
+  "_panel_removed_note": "PANEL RE-PIN REMOVED 2026-07-28, owner word (ITEM 208). The ten-row panel block that lived here was one of four surfaces that had to be re-typed by hand every time the board moved. It never caught a defect across R15-R20 \u2014 every failure was a legitimately moved board \u2014 and it blocked every landing. run_panel.sh now PRINTS the ten rows derived from the board and asserts nothing about their values; Guard 5 (store / rl_model / fv identity) remains the gate on entry and has fired in anger. Nothing executable read this field: ui/tools/extract_board_view.py copied it into the UI stamp as text and no test or view asserted it. Historical panel values are preserved in git history and in the ITEM 208 hand-back on issue #208.",
+  "_board_note_split": "Board re-derived under THE PRICING SPLIT + ADDENDUM 1, on a FROZEN v0surf surface (sig 76498b5a, pickle 2 surfaces, zero fits at build). National curve 1-64; everything past 64 is POOL at one index, valued by position; no pool row teaches the curve at any fit site. Store e3aaba77 UNCHANGED. THE BOARD MOVE IS NOT MADE HERE: no balanced reference, no UI bundles, and by owner correction 035bf11 NO history column - one column is written per LANDED change, not per rebuild, and this baseline effort gets its single column when the whole of it lands."
+ }
+diff --git a/data/model_config.json b/data/model_config.json
+index d7fd100..39a44a4 100644
+--- a/data/model_config.json
++++ b/data/model_config.json
+@@ -1,97 +1,97 @@
+ {
+-  "_doc": "MODEL CONFIG MANIFEST — the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
+-  "version": "1.0",
+-  "date": "2026-07-09",
+-  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) — RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
+-  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+-  "excluded_infrastructure_vars": {
+-    "_note": "NOT model semantics — path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
+-    "RL_REPO": "checkout locator",
+-    "CLAUDE_PROJECT_DIR": "checkout locator",
+-    "RL_APP_DATA": "board output filename",
+-    "RL_FV": "forward_valuation path (default byte-identical)",
+-    "RL_NO_OWNER_OVERRIDES": "display-only Brodie override toggle (out of scope; never touches a guarded value)",
+-    "RL_ALLOW_PVCFIT_BOARD": "R3 bake-write escape hatch (governed by the existing R3 bake guard + RULING-CONFIG)",
+-    "RL_CONFIG_MODE": "this manifest's own mode flag (bake|gate)",
+-    "RL_VENV": "pinned-venv path (setup_env.sh / SessionStart hook); not a model input",
+-    "PYTHONHASHSEED": "determinism (not RL_/PAR_-prefixed; set by the pinned env)"
+-  },
+-  "vars": {
+-    "RL_GAMMA": "0.85",
+-    "RL_PICK1": "3000",
+-    "RL_RUCK_TAX": "0.25",
+-    "RL_REPL_DROP": "3",
+-    "RL_RECENCY_DECAY": "0.72",
+-    "RL_PRIOR_TREES": "400",
+-    "PAR_RAMPS": "22",
+-    "PAR_BW": "0.40",
+-    "PAR_MING": "6",
+-    "PAR_K": "30",
+-    "RL_EXPO_INPROG_Y": "2026",
+-    "RL_LEVEL_RAMP": "14",
+-    "RL_M3_INPROG_Y": "2026",
+-    "RL_FORMDECL": "1",
+-    "RL_FWDRECAL": "1",
+-    "RL_YOUNG": "1",
+-    "RL_OVPX": "1",
+-    "RL_KPFFIX": "1",
+-    "RL_V7FORM": "1",
+-    "RL_V7_FORM_W": "0.6",
+-    "RL_W4_CRED": "0.17",
+-    "RL_W4_KPFUP": "1.6",
+-    "RL_W4_FADE": "0.60",
+-    "RL_W4_OVPX": "1.0",
+-    "RL_W4_KPFSH": "0.55",
+-    "RL_W4_KPFSH_DEM": "0.70",
+-    "RL_W4_KPFTOP": "0.4",
+-    "RL_W4_KPFM0": "8.0",
+-    "RL_W4_KPFMS": "16.0",
+-    "RL_YCRED_W": "0.9",
+-    "RL_YCRED_KPF": "0.92",
+-    "RL_RUC_PRIOR_CAP": "1.4",
+-    "RL_W4_RUC": "1",
+-    "RL_RUC_CEIL_HEAD": "0.80",
+-    "RL_RUC_CEIL_REFPK": "72",
+-    "RL_RUC_YRH": "0.35",
+-    "RL_PVCFIT": "0",
+-    "RL_LTI_CLOCK": "advance",
+-    "RL_PVCADOPT": "1",
+-    "RL_MSD_POOL_EXCL": "1",
+-    "RL_DIAL14": "1",
+-    "RL_AGE": "1",
+-    "RL_L5_PICKLESS": "1",
+-    "RL_AVAIL": "1",
+-    "RL_LTI_RETURN": "1",
+-    "RL_PVC2": "1",
+-    "RL_LEGE": "1",
+-    "RL_LEGF": "1",
+-    "RL_FLEX": "1",
+-    "RL_CAPT": "1",
+-    "RL_DAMP": "1",
+-    "RL_EVW": "1",
+-    "RL_ISOFADE": "1",
+-    "RL_SAGE29": "1",
+-    "RL_LSYM": "1",
+-    "RL_EO2": "1",
+-    "RL_ABSENCE": "1",
+-    "RL_UNCOMP": "1",
+-    "RL_UNCONSERVE": "0"
+-  },
+-  "var_notes": {
+-    "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) — inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
+-    "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
+-    "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 §36): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
+-    "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c",
+-    "_v2_9_levers": "RL_PVCADOPT / RL_MSD_POOL_EXCL / RL_DIAL14 / RL_AGE / RL_L5_PICKLESS are the v2.9 refit's five wired kill-switches (engine 7a07e369->2030e5df; REFIT_WIRING_PLAN_OF_RECORD L1/L4/L2/L3/L5). ALL default-ON ('1'); each =0 reverts its layer to base byte-exact (v2_9_refit_cert CERTIFICATION: all-OFF reproduces base). Pinned here at their default-ON value so config_sha256 covers the levers (BOOK-PARITY LAW: the config is part of the formula) and a lever flip moves the hash + is rejected as divergent in bake/gate mode. Manifest values == engine defaults, so pinning them changes NO board/book value (board 3dc19fbb / book d371a27c byte-identical).",
+-    "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
+-    "RL_MSD_POOL_EXCL": "v2.9 L4 MSD training-pool exclusion; default ON (engine _merged_recover.py:15).",
+-    "RL_DIAL14": "v2.9 L2 LENS bal dial 14 (0.14 vs 0.15); default ON (engine rl_model.py:301).",
+-    "RL_AGE": "v2.9 L3 s(age) breakout-persistence slope; default ON (engine _merged_recover.py:224).",
+-    "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
+-    "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) — model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
+-    "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) — model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
+-    "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
+-    "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars — the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
+-  },
+-  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
++ "_doc": "MODEL CONFIG MANIFEST \u2014 the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
++ "version": "1.0",
++ "date": "2026-07-09",
++ "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) \u2014 RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
++ "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
++ "excluded_infrastructure_vars": {
++  "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
++  "RL_REPO": "checkout locator",
++  "CLAUDE_PROJECT_DIR": "checkout locator",
++  "RL_APP_DATA": "board output filename",
++  "RL_FV": "forward_valuation path (default byte-identical)",
++  "RL_NO_OWNER_OVERRIDES": "display-only Brodie override toggle (out of scope; never touches a guarded value)",
++  "RL_ALLOW_PVCFIT_BOARD": "R3 bake-write escape hatch (governed by the existing R3 bake guard + RULING-CONFIG)",
++  "RL_CONFIG_MODE": "this manifest's own mode flag (bake|gate)",
++  "RL_VENV": "pinned-venv path (setup_env.sh / SessionStart hook); not a model input",
++  "PYTHONHASHSEED": "determinism (not RL_/PAR_-prefixed; set by the pinned env)"
++ },
++ "vars": {
++  "RL_GAMMA": "1.0",
++  "RL_PICK1": "3000",
++  "RL_RUCK_TAX": "0.25",
++  "RL_REPL_DROP": "3",
++  "RL_RECENCY_DECAY": "0.72",
++  "RL_PRIOR_TREES": "400",
++  "PAR_RAMPS": "22",
++  "PAR_BW": "0.40",
++  "PAR_MING": "6",
++  "PAR_K": "30",
++  "RL_EXPO_INPROG_Y": "2026",
++  "RL_LEVEL_RAMP": "14",
++  "RL_M3_INPROG_Y": "2026",
++  "RL_FORMDECL": "1",
++  "RL_FWDRECAL": "1",
++  "RL_YOUNG": "1",
++  "RL_OVPX": "1",
++  "RL_KPFFIX": "1",
++  "RL_V7FORM": "1",
++  "RL_V7_FORM_W": "0.6",
++  "RL_W4_CRED": "0.17",
++  "RL_W4_KPFUP": "1.6",
++  "RL_W4_FADE": "0.60",
++  "RL_W4_OVPX": "1.0",
++  "RL_W4_KPFSH": "0.55",
++  "RL_W4_KPFSH_DEM": "0.70",
++  "RL_W4_KPFTOP": "0.4",
++  "RL_W4_KPFM0": "8.0",
++  "RL_W4_KPFMS": "16.0",
++  "RL_YCRED_W": "0.9",
++  "RL_YCRED_KPF": "0.92",
++  "RL_RUC_PRIOR_CAP": "1.4",
++  "RL_W4_RUC": "1",
++  "RL_RUC_CEIL_HEAD": "0.80",
++  "RL_RUC_CEIL_REFPK": "72",
++  "RL_RUC_YRH": "0.35",
++  "RL_PVCFIT": "0",
++  "RL_LTI_CLOCK": "advance",
++  "RL_PVCADOPT": "1",
++  "RL_MSD_POOL_EXCL": "1",
++  "RL_DIAL14": "1",
++  "RL_AGE": "1",
++  "RL_L5_PICKLESS": "1",
++  "RL_AVAIL": "1",
++  "RL_LTI_RETURN": "1",
++  "RL_PVC2": "1",
++  "RL_LEGE": "1",
++  "RL_LEGF": "1",
++  "RL_FLEX": "1",
++  "RL_CAPT": "1",
++  "RL_DAMP": "1",
++  "RL_EVW": "1",
++  "RL_ISOFADE": "1",
++  "RL_SAGE29": "1",
++  "RL_LSYM": "1",
++  "RL_EO2": "1",
++  "RL_ABSENCE": "1",
++  "RL_UNCOMP": "1",
++  "RL_UNCONSERVE": "0"
++ },
++ "var_notes": {
++  "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
++  "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
++  "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 \u00a736): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
++  "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c",
++  "_v2_9_levers": "RL_PVCADOPT / RL_MSD_POOL_EXCL / RL_DIAL14 / RL_AGE / RL_L5_PICKLESS are the v2.9 refit's five wired kill-switches (engine 7a07e369->2030e5df; REFIT_WIRING_PLAN_OF_RECORD L1/L4/L2/L3/L5). ALL default-ON ('1'); each =0 reverts its layer to base byte-exact (v2_9_refit_cert CERTIFICATION: all-OFF reproduces base). Pinned here at their default-ON value so config_sha256 covers the levers (BOOK-PARITY LAW: the config is part of the formula) and a lever flip moves the hash + is rejected as divergent in bake/gate mode. Manifest values == engine defaults, so pinning them changes NO board/book value (board 3dc19fbb / book d371a27c byte-identical).",
++  "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
++  "RL_MSD_POOL_EXCL": "v2.9 L4 MSD training-pool exclusion; default ON (engine _merged_recover.py:15).",
++  "RL_DIAL14": "v2.9 L2 LENS bal dial 14 (0.14 vs 0.15); default ON (engine rl_model.py:301).",
++  "RL_AGE": "v2.9 L3 s(age) breakout-persistence slope; default ON (engine _merged_recover.py:224).",
++  "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
++  "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) \u2014 model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
++  "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) \u2014 model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
++  "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
++  "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars \u2014 the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
++ },
++ "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
+ }
+diff --git a/data/release_contract.json b/data/release_contract.json
+index 7151a09..bec9ffb 100644
+--- a/data/release_contract.json
++++ b/data/release_contract.json
+@@ -1,99 +1,100 @@
+ {
+-  "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
+-  "release_version": "v2.11-final-rc1-PROVISIONAL",
++ "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
++ "release_version": "v2.11-final-rc1-PROVISIONAL",
++ "as_of_round": 20,
++ "switch_posture": {
++  "RL_PVC2": "1",
++  "RL_LEGE": "1",
++  "RL_LEGF": "1"
++ },
++ "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
++ "identities": {
++  "board": "f2df6e0a2902f48e1df36f35493ba8c1",
++  "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
++  "store": "81d2470440a80f72afea4405e94338c5",
++  "engine_head": "3c7b0c3ccebdb52f35d28b1d12a259a2",
++  "rl_model": "feb4ca0e7955e74bf19ed8af486c26ce",
++  "fv": "461c737b0b6d08f35f6207e654a5af0fc77377c80f401278b409022142a60747",
++  "register": "652d83e87780e415a01a2de6d8b3cc57",
++  "band": "34faa8659cc8f19794f5cb9584fa19b2"
++ },
++ "pvc_provenance": {
++  "adopted_pathway": "RL_PVC2",
++  "curve_file": "pvc_curve_v2.json",
++  "curve_payload_md5": "e69a3f38",
++  "numeraire_pin1": 3000,
++  "_note": "#290 L1(b): ruled control fit, pooled numeraire, stop-point working substrate"
++ },
++ "_held_candidates_doc": "#251 part A, owner ruling 2026-07-29. A DECLARED held candidate is a field where the TREE deliberately runs ahead of what is RELEASED. Each entry pins BOTH sides, so only that exact pair is excused; move either side and the gate HALTs again. An UNDECLARED mismatch HALTs exactly as before. These declarations live inside the contract, so contract_sha256 covers them - one cannot be added without re-stamping. AT ADOPTION: re-stamp identities.<field> to the candidate value and DELETE that entry in the same commit. Removal is self-enforcing, not a convention: once the two sides agree, a surviving declaration excuses nothing and is itself a rejection naming the field.",
++ "must_be_unset": [
++  "RL_UNCOMP_S",
++  "RL_LSYM_TAB",
++  "RL_V0SURF_REFIT"
++ ],
++ "present_lens_baseline": {
++  "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
++  "active": 804,
++  "present_value_total": 767198,
++  "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 4939d740; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253)."
++ },
++ "f5_entrant_reconciliation": {
++  "visible_1_64": 65925,
++  "residual_nd_tail": 2631,
++  "residual_mech": 9055,
++  "entrant_layer_pvc": 77611,
++  "seal": "a17aafed",
++  "reconciled": true,
++  "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
++ },
++ "season_metadata": {
++  "season_total_rounds": 24,
+   "as_of_round": 20,
+-  "switch_posture": {
+-    "RL_PVC2": "1",
+-    "RL_LEGE": "1",
+-    "RL_LEGF": "1"
++  "season_prog": 0.83,
++  "season_prog_config_twins": {
++   "RL_M3_FE": "0.58",
++   "RL_EXPO_F": "0.545",
++   "RL_M3_INPROG_Y": "2026",
++   "RL_EXPO_INPROG_Y": "2026"
+   },
+-  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+-  "identities": {
+-    "board": "f2df6e0a2902f48e1df36f35493ba8c1",
+-    "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
+-    "store": "81d2470440a80f72afea4405e94338c5",
+-    "engine_head": "404e811353281843b065b3d75768bec0",
+-    "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
+-    "fv": "d10aa93e977a16a7a1c0543e0041a8876cf2912d90a9bb6f00657c31092d786b",
+-    "register": "652d83e87780e415a01a2de6d8b3cc57",
+-    "band": "34faa8659cc8f19794f5cb9584fa19b2"
+-  },
+-  "pvc_provenance": {
+-    "adopted_pathway": "RL_PVC2",
+-    "curve_file": "pvc_curve_v2.json",
+-    "curve_payload_md5": "08ea9375",
+-    "numeraire_pin1": 3000
+-  },
+-  "_held_candidates_doc": "#251 part A, owner ruling 2026-07-29. A DECLARED held candidate is a field where the TREE deliberately runs ahead of what is RELEASED. Each entry pins BOTH sides, so only that exact pair is excused; move either side and the gate HALTs again. An UNDECLARED mismatch HALTs exactly as before. These declarations live inside the contract, so contract_sha256 covers them - one cannot be added without re-stamping. AT ADOPTION: re-stamp identities.<field> to the candidate value and DELETE that entry in the same commit. Removal is self-enforcing, not a convention: once the two sides agree, a surviving declaration excuses nothing and is itself a rejection naming the field.",
+-  "must_be_unset": [
+-    "RL_UNCOMP_S",
+-    "RL_LSYM_TAB",
+-    "RL_V0SURF_REFIT"
+-  ],
+-  "present_lens_baseline": {
+-    "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
+-    "active": 804,
+-    "present_value_total": 767198,
+-    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 4939d740; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253)."
+-  },
+-  "f5_entrant_reconciliation": {
+-    "visible_1_64": 65925,
+-    "residual_nd_tail": 2631,
+-    "residual_mech": 9055,
+-    "entrant_layer_pvc": 77611,
+-    "seal": "a17aafed",
+-    "reconciled": true,
+-    "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
+-  },
+-  "season_metadata": {
+-    "season_total_rounds": 24,
+-    "as_of_round": 20,
+-    "season_prog": 0.83,
+-    "season_prog_config_twins": {
+-      "RL_M3_FE": "0.58",
+-      "RL_EXPO_F": "0.545",
+-      "RL_M3_INPROG_Y": "2026",
+-      "RL_EXPO_INPROG_Y": "2026"
+-    },
+-    "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
+-    "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
+-    "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
+-    "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
+-    "exposure_pace": 0.773,
+-    "calendar_progress": 0.83,
+-    "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+-    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
+-    "season_year": 2026,
+-    "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
+-    "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
+-    "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
+-  },
+-  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+-  "held_checks": [
+-    {
+-      "check_family": "G-Y0",
+-      "release": "hard bar 2.000% (calibrated pre-split for the per-pick national curve fit)",
+-      "candidate": "live 3.035% on the guard population (n=1,326) / 2.929% on the ruled ND 1-64 fit population (n=1,325)",
+-      "declared_by": "#271 Addendum 12 (owner word 2026-07-29): \"Accept G-Y0 as ruled.\"",
+-      "cleared_at": "#279, post-adoption \u2014 a DATED exception, not a permanent waiver",
+-      "ceiling_pct": 3.5,
+-      "measured_at_declaration": {
+-        "guard_population_pct": 3.035,
+-        "ruled_population_pct": 2.929,
+-        "stage_A_pct": 2.672,
+-        "hard_bar_pct": 2.0,
+-        "n_guard": 1326,
+-        "n_ruled": 1325
+-      },
+-      "diagnostic_map": "session_2026-07-29/item271/GY0_DIAGNOSTIC_MAP.json",
+-      "reason": "The composition-weighted mean V0 (surface-driven) runs ABOVE the re-derived curve. 62% of the disagreement sits in picks 1-20 and it is a POSITIONAL COMPOSITION effect, not a uniform bias: MID +343.1 mean gap against KPF -253.5 and SD -158.9. Accepted as ruled pending #279. The ceiling_pct 3.50 is a DO-NOT-EXCEED: today 3.035%, ~0.47pp of headroom (~15% relative). The stage-A -> stage-B move was +0.36pp, so one further move of that size stays under and two trip it. Breach is a HARD FAIL, and removing this record is a FAIL \u2014 the exception must stay visible."
+-    }
+-  ],
+-  "adopted": {
+-    "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\"",
+-    "issue": "#271",
+-    "baseline_column": "30/7 rederivation",
+-    "column_id": "rederivation-30-7"
+-  },
+-  "contract_sha256": "3ede10d3d705d2f94fa7d86375882bad93db996bd282036f444afaf1b3b22d39"
+-}
+\ No newline at end of file
++  "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
++  "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
++  "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
++  "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
++  "exposure_pace": 0.773,
++  "calendar_progress": 0.83,
++  "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
++  "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
++  "season_year": 2026,
++  "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
++  "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
++  "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
++ },
++ "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
++ "held_checks": [
++  {
++   "check_family": "G-Y0",
++   "release": "hard bar 2.000% (calibrated pre-split for the per-pick national curve fit)",
++   "candidate": "live 3.035% on the guard population (n=1,326) / 2.929% on the ruled ND 1-64 fit population (n=1,325)",
++   "declared_by": "#271 Addendum 12 (owner word 2026-07-29): \"Accept G-Y0 as ruled.\"",
++   "cleared_at": "#279, post-adoption \u2014 a DATED exception, not a permanent waiver",
++   "ceiling_pct": 3.5,
++   "measured_at_declaration": {
++    "guard_population_pct": 3.035,
++    "ruled_population_pct": 2.929,
++    "stage_A_pct": 2.672,
++    "hard_bar_pct": 2.0,
++    "n_guard": 1326,
++    "n_ruled": 1325
++   },
++   "diagnostic_map": "session_2026-07-29/item271/GY0_DIAGNOSTIC_MAP.json",
++   "reason": "The composition-weighted mean V0 (surface-driven) runs ABOVE the re-derived curve. 62% of the disagreement sits in picks 1-20 and it is a POSITIONAL COMPOSITION effect, not a uniform bias: MID +343.1 mean gap against KPF -253.5 and SD -158.9. Accepted as ruled pending #279. The ceiling_pct 3.50 is a DO-NOT-EXCEED: today 3.035%, ~0.47pp of headroom (~15% relative). The stage-A -> stage-B move was +0.36pp, so one further move of that size stays under and two trip it. Breach is a HARD FAIL, and removing this record is a FAIL \u2014 the exception must stay visible."
++  }
++ ],
++ "adopted": {
++  "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\"",
++  "issue": "#271",
++  "baseline_column": "30/7 rederivation",
++  "column_id": "rederivation-30-7"
++ },
++ "contract_sha256": "3ede10d3d705d2f94fa7d86375882bad93db996bd282036f444afaf1b3b22d39"
++}
+diff --git a/data/v0surf.pkl b/data/v0surf.pkl
+index cc4f55d..a02818f 100644
+Binary files a/data/v0surf.pkl and b/data/v0surf.pkl differ
+diff --git a/engine/forward_valuation/build_cohort_book.py b/engine/forward_valuation/build_cohort_book.py
+index 1fc2883..4014b2f 100644
+--- a/engine/forward_valuation/build_cohort_book.py
++++ b/engine/forward_valuation/build_cohort_book.py
+@@ -2,7 +2,7 @@
+ year by year (engine value() as-of each season via BASE_REF), plus a current-dist snapshot and a
+ non-play empirical analysis. Run from rl_after:  PYTHONHASHSEED=0 python3 ../forward_valuation/build_cohort_book.py"""
+ import os,sys,io,contextlib
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ # provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after + the ambient
+ # /home/claude/rl_workspace/forward_valuation/distribution_pricing.py path are REMOVED. rl_model resolves
+ # through the configured environment; distribution_pricing loads from the canonically-resolved forward_valuation
+diff --git a/engine/forward_valuation/build_peak_model_v4.py b/engine/forward_valuation/build_peak_model_v4.py
+index e61ab03..60de975 100644
+--- a/engine/forward_valuation/build_peak_model_v4.py
++++ b/engine/forward_valuation/build_peak_model_v4.py
+@@ -5,7 +5,7 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ['RL_GAMMA']='0.85'; os.environ['RL_PICK1']='3000'
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,json,pickle
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ import numpy as np
+diff --git a/engine/forward_valuation/conditional_prior.py b/engine/forward_valuation/conditional_prior.py
+index f7bef27..b2d3922 100644
+--- a/engine/forward_valuation/conditional_prior.py
++++ b/engine/forward_valuation/conditional_prior.py
+@@ -37,7 +37,7 @@ def _season_val(_key, _fb):
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,numpy as np
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ from sklearn.ensemble import GradientBoostingRegressor
+diff --git a/engine/forward_valuation/dist_redesign.py b/engine/forward_valuation/dist_redesign.py
+index 152b091..72d9783 100644
+--- a/engine/forward_valuation/dist_redesign.py
++++ b/engine/forward_valuation/dist_redesign.py
+@@ -21,7 +21,7 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,numpy as np,copy
+ import importlib.util
+ def _load(name,path):
+diff --git a/engine/forward_valuation/distribution_pricing.py b/engine/forward_valuation/distribution_pricing.py
+index 3b6fc36..28eec67 100644
+--- a/engine/forward_valuation/distribution_pricing.py
++++ b/engine/forward_valuation/distribution_pricing.py
+@@ -25,7 +25,7 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,numpy as np
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ from sklearn.ensemble import GradientBoostingRegressor
+diff --git a/engine/forward_valuation/par_build.py b/engine/forward_valuation/par_build.py
+index 3d0a636..f0791ab 100644
+--- a/engine/forward_valuation/par_build.py
++++ b/engine/forward_valuation/par_build.py
+@@ -18,7 +18,7 @@ import sys, os, io, contextlib, collections
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import math as _math
+ import numpy as np
+ with contextlib.redirect_stdout(io.StringIO()):
+diff --git a/engine/rl_after/_merged_recover.py b/engine/rl_after/_merged_recover.py
+index ce09205..ffe9f6d 100644
+--- a/engine/rl_after/_merged_recover.py
++++ b/engine/rl_after/_merged_recover.py
+@@ -1282,7 +1282,20 @@ _V0SURF_GATES={'RL_RUC_PRIOR_CAP':'1.4','RL_W4_RUC':'1','RL_RUC_CEIL_HEAD':'0.80
+     'RL_FWDRECAL':'1','RL_YOUNG':'1','RL_OVPX':'1','RL_KPFFIX':'1','RL_V7FORM':'1','RL_V7_FORM_W':'0.6',
+     'RL_W4_CRED':'0.17','RL_W4_KPFUP':'1.6','RL_W4_FADE':'0.60','RL_W4_OVPX':'1.0','RL_W4_KPFSH':'0.55',
+     'RL_W4_KPFSH_DEM':'0.70','RL_W4_KPFTOP':'0.4','RL_W4_KPFM0':'8.0','RL_W4_KPFMS':'16.0','RL_AVAIL':'1',
+-    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1'}
++    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1',
++    # E2 (#279 step 4 item 4, extended by seam word F1 2026-07-30): TWO keys join the signature, both of them
++    # MEASURED silent-surface channels, not suspected ones.
++    #   RL_GAMMA — the signature was curve-sensitive but GAMMA-BLIND. Gamma scales value() (rl_model.py:504,
++    #     SCALE/val at :731/:734) without moving the pvc entries, so a SCAR<->VOR flip changed the fitted
++    #     surface while producing an IDENTICAL signature. Measured: 0.85 -> 5ae00319, 1.0 -> 93b4a680.
++    #   RL_PICK1 — added on measurement, AGAINST the reasoning first filed here. The superseded comment claimed
++    #     "RL_PICK1 moves the pvc entries, so the pvc leg already catches it". IT DOES NOT. `_v0surf_sig` reads
++    #     `_PVC0`, which is sourced from the PINNED adopted-curve artifact (pin(1)=3000 by construction), so
++    #     RL_PICK1 never reaches the pvc leg at all. Measured at the step-4 rehearsal: RL_PICK1 3000 -> 3500
++    #     left the signature IDENTICAL (5ae00319 both) while all three fitted surfaces moved (c18
++    #     eddccddb -> 6cb62db4, surfN a6e2fe36 -> 1f45ba1a). That measurement is this key's proven-can-fail.
++    # Defaults are the engine's own (rl_model.py:504 and :866).
++    'RL_GAMMA':'0.85', 'RL_PICK1':'3000'}
+ def _v0surf_sig(real):
+     import hashlib as _hl, json as _js
+     _curve=_PVC0 if '_PVC0' in globals() else MA.PVC          # the pick curve _v0_raw is actually reading right now
+@@ -1570,9 +1583,12 @@ def ev(p,Y=2026):
+ # spec's loclin-at-pick-1), isotonic non-increasing, re-anchored to pick1 = RL_PICK1 (3000).
+ # SCOPE (deliberate, declared): the fitted curve re-prices the PICK side (the board's trade currency) and
+ # display/advisory consumers (A13/A14, book draftval column). PLAYER pricing does NOT read it back:
+-# `draftval` — the RUCK prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
+-# PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
+-# declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
++# `draftval` — the RUCK prior-cap/scaffold basis — CLOSES OVER the `_PVC0` dict, and the L1b and v2 blocks
++# mutate that dict IN PLACE, so draftval TRACKS THE ADOPTED CURVE. (E4, #279 step 4 item 9: this comment used
++# to claim draftval was "FROZEN on the pre-fit v3.4 curve (_PVC0)". The behaviour is correct and unchanged —
++# only the description was wrong. The PR #44 V0-scaffold scope and the fit→board→fit note below still hold
++# for the FITTED candidate curve, which is what is held out.) Generated artifact: pvc_fit_candidate.json
++# (stamped with source + book id).
+ _W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
+ _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
+ def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
+diff --git a/engine/rl_after/one_source_selftest.py b/engine/rl_after/one_source_selftest.py
+index 5e2219b..1ba49c1 100644
+--- a/engine/rl_after/one_source_selftest.py
++++ b/engine/rl_after/one_source_selftest.py
+@@ -487,7 +487,7 @@ if _pvc2_on:
+     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
+     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
+     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
+-    _contract_md5='11adecc85a24040e1a7fab193c3a0884'   # RE-PINNED by the #274 adoption mop-up act (owner word
++    _contract_md5='3276af34e7cdeaef9ae64948a7b8d601'   # RE-PINNED by the #274 adoption mop-up act (owner word
+     # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
+     # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
+     # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
+@@ -495,9 +495,9 @@ if _pvc2_on:
+     # PREVIOUS PIN: 432f0153cbe326d0ac0d0b50ec22aeb6 — RE-PINNED at THE SPLIT (2026-07-28), when the adopted
+     # curve's DOMAIN went 1-99 -> 1-64 + pool. Values over 1-64 are byte-identical; that pin moved because the
+     # contract file records the new domain, the pool index and the supersession. Curve SOURCE store and
+-    # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins must NOT move.
+-    _curve_source_store='265f55d568f35af33a3e27c0a7d7886a'
+-    _per_entrant_md5='2f8b4bd4'
++    # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins MOVE in this commit.
++    _curve_source_store='81d2470440a80f72afea4405e94338c5'
++    _per_entrant_md5='77eba4d3'
+     if not _curve_contract_path or not os.path.exists(_curve_contract_path):
+         check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
+     else:
+diff --git a/engine/rl_after/pvc_curve_v2.json b/engine/rl_after/pvc_curve_v2.json
+index 37d65ff..b6eaa26 100644
+--- a/engine/rl_after/pvc_curve_v2.json
++++ b/engine/rl_after/pvc_curve_v2.json
+@@ -1,83 +1,83 @@
+ {
+  "curve": {
+   "1": 3000,
+-  "2": 2767,
+-  "3": 2693,
+-  "4": 2469,
+-  "5": 2224,
+-  "6": 1971,
+-  "7": 1907,
+-  "8": 1783,
+-  "9": 1676,
+-  "10": 1657,
+-  "11": 1628,
+-  "12": 1551,
+-  "13": 1445,
+-  "14": 1341,
+-  "15": 1263,
+-  "16": 1207,
+-  "17": 1160,
+-  "18": 1117,
+-  "19": 1081,
+-  "20": 1051,
+-  "21": 1022,
+-  "22": 994,
+-  "23": 964,
+-  "24": 935,
+-  "25": 906,
+-  "26": 880,
+-  "27": 858,
+-  "28": 840,
+-  "29": 824,
+-  "30": 811,
+-  "31": 798,
+-  "32": 785,
+-  "33": 771,
+-  "34": 758,
+-  "35": 744,
+-  "36": 730,
+-  "37": 716,
+-  "38": 703,
+-  "39": 691,
+-  "40": 679,
+-  "41": 669,
+-  "42": 660,
+-  "43": 651,
+-  "44": 644,
+-  "45": 637,
+-  "46": 631,
+-  "47": 625,
+-  "48": 619,
+-  "49": 614,
+-  "50": 609,
+-  "51": 604,
+-  "52": 600,
+-  "53": 595,
+-  "54": 591,
+-  "55": 588,
+-  "56": 584,
+-  "57": 582,
+-  "58": 579,
+-  "59": 577,
+-  "60": 576,
+-  "61": 574,
+-  "62": 573,
+-  "63": 572,
+-  "64": 571
++  "2": 2999,
++  "3": 2886,
++  "4": 2453,
++  "5": 1931,
++  "6": 1582,
++  "7": 1581,
++  "8": 1580,
++  "9": 1508,
++  "10": 1478,
++  "11": 1477,
++  "12": 1476,
++  "13": 1349,
++  "14": 1171,
++  "15": 1040,
++  "16": 1012,
++  "17": 1011,
++  "18": 1010,
++  "19": 1009,
++  "20": 995,
++  "21": 948,
++  "22": 896,
++  "23": 848,
++  "24": 810,
++  "25": 780,
++  "26": 756,
++  "27": 736,
++  "28": 718,
++  "29": 699,
++  "30": 677,
++  "31": 653,
++  "32": 629,
++  "33": 607,
++  "34": 588,
++  "35": 573,
++  "36": 562,
++  "37": 554,
++  "38": 548,
++  "39": 541,
++  "40": 533,
++  "41": 522,
++  "42": 508,
++  "43": 491,
++  "44": 471,
++  "45": 451,
++  "46": 431,
++  "47": 412,
++  "48": 395,
++  "49": 381,
++  "50": 368,
++  "51": 360,
++  "52": 349,
++  "53": 340,
++  "54": 330,
++  "55": 321,
++  "56": 311,
++  "57": 301,
++  "58": 289,
++  "59": 277,
++  "60": 265,
++  "61": 253,
++  "62": 241,
++  "63": 230,
++  "64": 221
+  },
+  "pin": 3000,
+  "source": "session_2026-07-29/item271/derive_271.py \u2014 ITEM 271 stage B re-derivation. Carries derive_pvc2.py function for function via #225 stage 2 (pava_ni/build_points/fit_year0/monotone_strict verbatim; tau=0.12, nmin=35, PW_FLOOR=0.11, pin(1)=3000, the x0.6 blend ceiling, min(n_pos/200,1), the isotonic step, windows pool 2004-2024 / priors 2006-2020 all unchanged). Method held constant: every difference is the data or the separation.",
+  "construction": "R1_composed_pathway",
+  "derived_from": "session_2026-07-29/item271/out/per_entrant_271.json (store 265f55d5) \u2014 post-slide membership (Q-B force-majeure: Boyd 2013 / McCartin 2014 excluded, their drafts slid up one pick; Daniel Butler ND 2014 pick 65 -> 64 crosses into the fit) and Addendum-6 per-season bars.",
+- "curve_md5": "08ea9375",
++ "curve_md5": "e69a3f38",
+  "stamp": {
+   "item": "271-stageB",
+-  "store_md5": "265f55d5",
++  "store_md5": "81d24704",
+   "v0surf_sig_at_fit": "85e57195189b6d4081ef7c270c572f06",
+   "nd_curve_rows": 1325,
+   "pool_rows": 1093,
+   "pool_never_established": 624,
+-  "statistic": "SCAR",
++  "statistic": "VOR",
+   "windows": {
+    "pool": [
+     2004,
+@@ -91,7 +91,7 @@
+   "prev_curve_md5": "f14a6622",
+   "prev_pool_value": 528,
+   "ladder_total": 65925,
+-  "per_entrant_md5": "2f8b4bd4",
++  "per_entrant_md5": "77eba4d3",
+   "per_entrant_path": "session_2026-07-29/item271/out/per_entrant_271.json"
+  },
+  "gate": "RL_PVC2 (parallel of RL_PVCADOPT). RL_PVC2=0 => _PVC0 stays L1b => board 9829d01a byte-exact.",
+@@ -105,7 +105,15 @@
+  "pre_split_curve_md5": "89c14729",
+  "pre_split_domain": "1-99 (99 entries)",
+  "domain": "1-64 (national draft curve). Selections past 64 are NOT on the curve.",
+- "pool_value": 299,
++ "pool_value": 234.3,
+  "split": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The national curve covers picks 1-64 only. Everything past 64 - national 65+, the whole rookie draft, the pre-season draft, and every pickless mechanism - enters THE POOL and is valued BY POSITION, with order of selection carrying no value. THERE IS NO PRICE FOR PICK 70. pool_value is the single position-blind ladder level for the whole pool (one index, POOL_PICK=65); the per-position differentiation comes from iso_corr(pos,pk), the position layer that already existed. This is a DOMAIN RESTRICTION of the adopted curve, NOT a re-derivation: every retained value over 1-64 is byte-identical to the pre-split artifact (pre_split_curve_md5 89c14729), and pool_value is the pre-split artifact's own value at index 65 - no number was refitted or invented here. Choosing a MEASURED pool level is ITEM 412 / #207 stage-2 adoption and is the owner's call.",
+- "r104_9_strict_descent_scope": "the national curve domain 1-64 (63 strict steps, no plateaus). The pool index is one value, not an ordering, so no monotonicity applies to it."
+-}
+\ No newline at end of file
++ "r104_9_strict_descent_scope": "the national curve domain 1-64 (63 strict steps, no plateaus). The pool index is one value, not an ordering, so no monotonicity applies to it.",
++ "numeraire": {
++  "pooled_head_pre_scale": 3068.463558926774,
++  "s": 0.977688,
++  "published_pin": 3000.0,
++  "basis": "pooled",
++  "_doc": "#279 ruled pooled numeraire: ONE measured pooled head H; the ladder publishes pin(1)=3000 via s = published_pin / H, and E6 scales BOTH sides by it. #290 L1(b) stop-point working substrate."
++ },
++ "_working_substrate_note": "#290 L1(b): this is the STOP-POINT curve installed as DECLARED WORKING SUBSTRATE. pool_value is the stop-point level and is RE-MEASURED at L6 on the converged fixed point. No figure taken between L1 and L6 is a landing figure."
++}
+diff --git a/engine/rl_after/rl_model.py b/engine/rl_after/rl_model.py
+index 2293a70..bbca5b3 100644
+--- a/engine/rl_after/rl_model.py
++++ b/engine/rl_after/rl_model.py
+@@ -856,15 +856,80 @@ def build_pvc_v34():
+     pvc=[v*SCALE_PVC for v in iso]                              #    used for the anchor only.)
+     for i in range(1,N): pvc[i]=min(pvc[i],pvc[i-1])             # 6. enforce non-increasing (plateaus allowed)
+     return {k:max(210,int(round(pvc[k-1]))) for k in range(1,N+1)}
++def _load_numeraire(p1, _path='pvc_curve_v2.json'):
++    """E6 (#279 step 4): read the ONE measured pooled head the whole economy re-denominates from.
++
++    FAIL-CLOSED BY DESIGN, both directions, because the failure this closes is SILENT one-sided scaling:
++      * ABSENCE PATH — an artifact with no `numeraire` block HALTS. It never falls back to the old
++        _P1/PVC[1] denominator, because that fallback is exactly the one-sided behaviour being removed and a
++        silent restoration of it would look like success. Every PRE-PROPAGATION artifact lacks the block, so
++        the edited engine and the candidate artifact are a PAIRED change that lands together.
++      * COHERENCE — s is recomputed from the block's own head and pin and compared to the block's published s.
++        A disagreeing RL_PICK1, or a doctored block, HALTS NAMING BOTH VALUES rather than scaling one side.
++    """
++    import json as _j, os as _o
++    if not _o.path.exists(_path):
++        raise SystemExit("E6 numeraire HALT: %s not found; the pooled head cannot be read." % _path)
++    _d = _j.load(open(_path))
++    _n = _d.get('numeraire')
++    if not isinstance(_n, dict):
++        raise SystemExit(
++            "E6 numeraire HALT: %s carries NO 'numeraire' block.\n"
++            "  The pooled-numeraire economy re-denominates picks and players from ONE measured head; without\n"
++            "  it the player side would silently fall back to the v3.4 pre-anchor head (the one-sided defect\n"
++            "  #279 step 4 removes). This is not a fallback condition — install the candidate artifact, which\n"
++            "  carries {'pooled_head_pre_scale', 's', 'published_pin'}." % _path)
++    for _k in ('pooled_head_pre_scale', 's', 'published_pin'):
++        if _n.get(_k) is None:
++            raise SystemExit("E6 numeraire HALT: 'numeraire' block in %s is missing '%s' (got %s)."
++                             % (_path, _k, sorted(_n)))
++    _H = float(_n['pooled_head_pre_scale']); _pub = float(_n['published_pin']); _s = float(_n['s'])
++    if _H <= 0:
++        raise SystemExit("E6 numeraire HALT: pooled_head_pre_scale must be > 0, got %r." % _H)
++    _recomputed = _pub / _H
++    if abs(_recomputed - _s) > 1e-9:
++        raise SystemExit(
++            "E6 numeraire COHERENCE HALT: the artifact's published s and its own head disagree.\n"
++            "  published s          = %.12f\n  recomputed %g/%g = %.12f\n  difference           = %.3e\n"
++            "  One of the two was edited without the other. Both sides of the economy scale from this number,\n"
++            "  so a disagreement here is a one-sided repricing waiting to happen."
++            % (_s, _pub, _H, _recomputed, abs(_recomputed - _s)))
++    if abs(_pub - p1) > 1e-9:
++        raise SystemExit(
++            "E6 numeraire COHERENCE HALT: RL_PICK1 disagrees with the artifact's published pin.\n"
++            "  RL_PICK1             = %.6f\n  artifact published_pin = %.6f\n"
++            "  The ladder was published against the artifact's pin; scaling players against a different pin\n"
++            "  would move the player side alone. Set RL_PICK1 to the artifact's pin, or re-derive the curve."
++            % (p1, _pub))
++    return {'H': _H, 's': _s, 'published_pin': _pub}
+ PVC=build_pvc_v34()
+-CURVE_H=1.0                            # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
++CURVE_H=1.0                          # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
+ PVC={k:max(210,int(round(v*CURVE_H))) for k,v in PVC.items()}
+-# ── PICK-1 ANCHOR (Luke, 2026-06-21): pick 1 = a fixed target; the WHOLE board (picks + players) scales to it.
+-#    Replaces the implicit "99th-pct player → 7000" anchor with an explicit, stable "pick 1 → RL_PICK1".
+-#    Everything scales linearly with SCALE, so one global factor preserves all relativities/trades.
++# ── PICK-1 ANCHOR (Luke, 2026-06-21), RE-ANCHORED TWO-SIDED by E6 (#279 step 4, seam word F3 2026-07-30).
++#
++#    WHAT THE OLD COMMENT CLAIMED, and what was actually measured at the step-4 rehearsal. It said "the WHOLE
++#    board (picks + players) scales to it ... one global factor preserves all relativities/trades". That was
++#    true when the v3.4 import fit WAS the shipped curve. It is not true now, and the measurement says so:
++#      * the player side takes _P1/PVC[1] where PVC[1] here is the v3.4 PRE-ANCHOR head — measured 4441, a
++#        curve that NO LONGER SHIPS. BOARD_FACTOR is therefore 3000/4441 = 0.675524, a real and load-bearing
++#        player scaling, not a no-op.
++#      * the pick side is overwritten downstream by the adopted artifact pvc_curve_v2.json (:928-945,
++#        PVC=_PVC2M), head 3000. The rescale on the next line never reaches the shipped curve.
++#    So the two sides are anchored on DIFFERENT CURVES and agree today only because RL_PICK1 and the artifact
++#    pin are both 3000 — a coincidence of the pin's value, not a property of the construction. Measured:
++#    RL_PICK1 3000->3500 moves SCALE 4.719196->5.505729 while the shipped PVC stays 3000/2767/571.
++#
++#    THE TWO-SIDED ACT. Under the pooled numeraire the derivation measures ONE pooled head H and publishes
++#    s = RL_PICK1/H; the installed ladder is already raw x s. The player side must take THE SAME s, applied to
++#    its own natural scale — NOT _P1/H, which would mix two different fits' currencies (H is the structural/VOR
++#    raw head; 4441 is the v3.4 kernel head; they are not commensurate). So:
++#        BOARD_FACTOR = (_P1 / PVC[1]) * s
++#    One measured head, one factor, both sides. s is read from the artifact's own `numeraire` block so H lives
++#    in exactly ONE place and the two sides cannot be re-derived independently.
+ _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
+-BOARD_FACTOR=_P1/PVC[1]; SCALE=SCALE*BOARD_FACTOR            # SCALE reassigned → val() (late-binding) scales players too
+-PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}
++_NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
++BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
++PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
+ # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
+ #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
+ #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.
+diff --git a/run_panel.sh b/run_panel.sh
+index 439d3f0..d85fad9 100755
+--- a/run_panel.sh
++++ b/run_panel.sh
+@@ -23,7 +23,7 @@ cd "$WS"
+ # RL_REPO lets config_manifest find the repo manifest after the `cd "$WS"` above. The pinned exports remain the
+ # panel's official env; they equal the manifest so the gate-mode reject-scan passes.
+ export RL_REPO="$HERE" RL_CONFIG_MODE=gate RL_FV="$HERE/engine/forward_valuation"
+-export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
++export PYTHONHASHSEED=0 RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+ export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+ rm -f /tmp/inspect.py
+ # SUITE HYGIENE 2026-07-13: stderr NO LONGER discarded (a hidden traceback is silence, and silence is a
+diff --git a/session_2026-07-18/legf6/v0surf_refit_log.json b/session_2026-07-18/legf6/v0surf_refit_log.json
+index 9630d64..07312c9 100644
+--- a/session_2026-07-18/legf6/v0surf_refit_log.json
++++ b/session_2026-07-18/legf6/v0surf_refit_log.json
+@@ -53,5 +53,25 @@
+     "new_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+     "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+     "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
++  },
++  {
++    "ts_utc": "2026-07-31T04:26:52Z",
++    "artifact": "data/v0surf.pkl",
++    "signature": "06965f7af2de0807f2fe3683f0b283c5",
++    "old_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
++    "old_pin": "ce08c2d13ae7d9bd403c60cf58ea1660",
++    "new_md5": "ba980c4eadecfbcc922b391d773419ba",
++    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
++    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
++  },
++  {
++    "ts_utc": "2026-07-31T04:34:54Z",
++    "artifact": "data/v0surf.pkl",
++    "signature": "96d671c952c819fa64df0b5d1a402f1e",
++    "old_md5": "ba980c4eadecfbcc922b391d773419ba",
++    "old_pin": "ba980c4eadecfbcc922b391d773419ba",
++    "new_md5": "e92e3885df24060aa90557ba20ba3612",
++    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
++    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+   }
+ ]
+diff --git a/ui/release_pick_curve.json b/ui/release_pick_curve.json
+index 52f0473..35238c8 100644
+--- a/ui/release_pick_curve.json
++++ b/ui/release_pick_curve.json
+@@ -1,12 +1,12 @@
+ {
+- "_doc": "Fixed release pick-curve provenance. The adopted curve remains the ruler across weekly score updates. Current board/store/round identity is read fail-closed from expected_boot and the stamped board bundle. RE-ISSUED at the #271 adoption (owner word 2026-07-30). The curve was DERIVED on store 265f55d5; the adopted store is 6b9d00a7, which differs only by the three Addendum-12 backup-stream clears \u2014 measured value-neutral (0 board movers), so the curve was NOT re-derived for them and curve_source_store_md5 correctly records the derivation store, not the release store.",
++ "_doc": "The curve is the #279 RULED control fit under the pooled numeraire, derived on store 81d24704 (the store of record). #290 L1(b): installed as DECLARED WORKING SUBSTRATE at the stop-point; pool_value is re-measured at L6 on the converged fixed point.",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "adopted_at_round": 20,
+  "adopted_pathway": "RL_PVC2",
+  "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
+- "pick_curve_file_md5": "6506d8b1ff89ea0a8ad15f10827f202b",
+- "pick_curve_curve_md5": "08ea9375",
+- "curve_source_store_md5": "265f55d568f35af33a3e27c0a7d7886a",
++ "pick_curve_file_md5": "65581b833aeb4b4c945a442cdc14ac1b",
++ "pick_curve_curve_md5": "e69a3f38",
++ "curve_source_store_md5": "81d2470440a80f72afea4405e94338c5",
+  "numeraire_pin1": 3000,
+  "supersedes": {
+   "pathway": "RL_PVC2 (#262 landing, pre-#271)",
+@@ -18,8 +18,8 @@
+  },
+  "pick_curve_domain": "1-64 (national draft curve, 64 entries)",
+  "pool_index": 65,
+- "pool_value": 299,
++ "pool_value": 234.3,
+  "_pool_value_adoption_note": "RE-STAMPED 528 -> 299 by the #274 adoption mop-up act (owner word 2026-07-30). The 30/7 rederivation moved the pool price; the release-active artifact engine/rl_after/pvc_curve_v2.json carries pool_value 299 and self-documents the move at stamp.prev_pool_value = 528. This file is a MIRROR of that artifact, and it was left at 528 when the adoption landed - a stale duplicate, not a second decision. The split_note below is preserved verbatim as the history of THE SPLIT, where 528 was correct; it describes the domain re-issue, not this value. Re-stamping this file moves its md5, so the FROZEN-RULER pin in engine/rl_after/one_source_selftest.py is re-pinned in the SAME commit. Curve source store and per_entrant are UNCHANGED - nothing was re-derived here.",
+  "split_note": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The contract is re-issued because the ADOPTED CURVE'S DOMAIN changed, not its values: the national curve now covers picks 1-64 and every selection past 64 enters the pool, valued by position with order of selection carrying no value. There is no price for pick 70. Values over 1-64 are BYTE-IDENTICAL to the superseded artifact; pool_value is that artifact's own value at index 65. No curve was refitted. A re-issue is correct here precisely because the contract exists to stop the curve moving SILENTLY - this move is ruled, declared, and recorded below.",
+- "per_entrant_md5": "2f8b4bd4"
+-}
+\ No newline at end of file
++ "per_entrant_md5": "77eba4d3"
++}

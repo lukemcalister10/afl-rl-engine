@@ -1,0 +1,5 @@
+refit_v0surf: shipped-config signature 96d671c952c8 | 6 age18 pos, surfN 12 ages, surfR 12 ages | new md5 e92e3885df24060aa90557ba20ba3612 | committed pin ba980c4eadecfbcc922b391d773419ba
+  surfaces frozen: 2 (every surface this build fits, so a normal build performs NO fit at all)
+    0589a2620e24e71a348988d27ab06154
+    96d671c952c819fa64df0b5d1a402f1e   <- shipped
+BAKE WRITTEN: data/v0surf.pkl md5 ba980c4eadecfbcc922b391d773419ba -> e92e3885df24060aa90557ba20ba3612 ; re-pinned expected_boot.json 'v0surf' ; provenance -> session_2026-07-18/legf6/v0surf_refit_log.json

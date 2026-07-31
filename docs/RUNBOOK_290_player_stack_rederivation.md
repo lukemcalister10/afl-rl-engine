@@ -1023,3 +1023,106 @@ a script rather than an inline pattern.
 | act | measured |
 |---|---|
 | Addendum D + the assert script, with both non-vacuity directions proven | ~20 min, negligible compute |
+
+---
+
+# ADDENDUM E — L1 RE-REHEARSAL RESULT. Build lane GREEN; selftest 95 PASS / 2 FAIL; L1 does NOT yet exit.
+
+Filed as a block (v461). One coherent tree, full gate set run against that final state, strictly serial,
+preboot assert before every seeding. **Both remaining reds are named and neither is the pair that was
+predicted.**
+
+## E.1 — MEASURED COSTS (the `--bake` line is here, as required)
+
+| act | measured |
+|---|---|
+| `bootstrap.sh` + Guard 5 | **1s** |
+| **`refit_v0surf.py --bake`** (the mandatory line) | **71s** (73s on the earlier, discarded pre-E2 run) |
+| `rl_export.py` board | **131s** |
+| `s4_matrix_M1v7.py` book | **178s** |
+| `one_source_selftest.py` | **99–101s** |
+| **full L1 chain** (bootstrap→refit→re-seed→board→book→selftest) | **480s ≈ 8 min** |
+| `guard_correction_canary.py` (faithful serial baseline) | **595s**, **PASS** |
+| ci-guards-equivalent total | **~17 min** |
+
+The `--bake` refit is **far cheaper than feared — 71s**, and the lane **re-pins `expected_boot.v0surf`
+itself**, so that pin is not manual work.
+
+## E.2 — WHAT IS GREEN
+
+- **Boot:** `bootstrap.sh` exit 0. Guard 5 passes with `fv` re-pinned `d10aa93e → 461c737b`.
+- **Build lane:** board exit 0 (131s), book exit 0 (178s). **No frozen-signature HALT.**
+- **All six FROZEN-RULER checks PASS**, including `curve payload md5=e69a3f38 == contract`,
+  `stamp store=81d24704 == contract`, `per_entrant=77eba4d3`.
+- **Sealed history untouched throughout:** `release_lineage.json` and `finalization_state.json` clean at
+  every step — all ten historical `config` occurrences unmoved.
+- **`RL_PICK1` unmoved** at all seven γ sites and in the manifest.
+- **Independent corroboration:** applying E2/E4/E6 separately produced `engine_head 3c7b0c3c` and
+  `rl_model feb4ca0e` — **byte-identical to the step-4 diff's own `expected_boot` hunk**.
+
+## E.3 — THE TWO REMAINING REDS (and why neither is the predicted pair)
+
+The ruled exit condition allowed "only the two declared expected reds (the FROZEN-RULER
+candidate-vs-shipped pair)". **That prediction was wrong, and in the good direction:** the FROZEN-RULER pair
+was expected to diverge because the pins would *not* move. L1 moves them in-commit, so **all six
+FROZEN-RULER checks go GREEN.** Two different reds remain:
+
+1. **F1 numéraire display parity — 666 mismatches.** `board v == round(engine ev / 1.0524)` fails because
+   `pick_redenomination.json` still carries the **old-basis 1.0524** while SCALE has moved. This is
+   **outstanding L1(c) work**, not a defect. Measured input for the re-base: **SCALE = 4.613902** under the
+   amended substrate (the 1.0524 was `4.68336 / 4.45`). **The denominator of the new ratio is a decision, not
+   a measurement** — whether the "baked" reference stays 4.45 or becomes the pre-flip SCALE — so I have not
+   invented one. L1(c) also owes the three hard-coded fallbacks.
+2. **G-Y0 ceiling: live 19.869% vs the 3.500% do-not-exceed.** See E.4.
+
+## E.4 — G-Y0 UNDER THE SUBSTRATE FLIP: 3.035% → 19.869%
+
+| state | G-Y0 |
+|---|---|
+| baseline (shipped SCAR curve, γ=0.85) | **3.035%** |
+| step-4 propagation, converged curve, no player re-derivation | 11.224% |
+| **amended L1** (stop-point curve · γ=1.0 · v0surf refit) | **19.869%** |
+
+**This is the expected direction and it is not a failure of L1.** L1 flips the *substrate* only; the player
+stack is still SCAR-taught, so moving the pick side to VOR opens the gap further. It is the same phenomenon
+the G-Y0 stop measured, now larger because γ propagated as well. **L2–L5 exist to close it.** The number is
+recorded as the amended-L1 waypoint, **not** as a landing figure (nothing between L1 and L6 is).
+
+## E.5 — FINDINGS THAT AMEND C AND D
+
+1. **C.3's "all THREE signature states" is an OVER-COUNT — it is TWO.** The refit freezes 2 and states they
+   are "every surface this build fits"; the build then completes with **no fit and no HALT**, which is the
+   proof. Corrected by measurement, not by accepting the tool's self-report.
+2. **C.3 under-specified the numeraire block.** E6 requires **three** keys —`pooled_head_pre_scale`, `s`,
+   `published_pin` — bound by `published_pin / pooled_head_pre_scale == s` to **1e-9**, plus
+   `published_pin == RL_PICK1`. C.3 named only `s`. My hand-written block halted, **naming the missing key** —
+   the assertion working exactly as designed.
+3. **OPEN QUESTION, needs a word: which is authoritative, the measured head or the published `s`?**
+   Lane C records `s = 3000/3068.4647`; the artifact publishes `s = 0.977688` (6 dp). Using the measured head
+   with the rounded `s` gives a **~4e-7** disagreement that **exceeds E6's 1e-9 and HALTS**. Back-deriving the
+   head from the rounded `s` (what I did, `H = 3068.4635589268`) satisfies coherence exactly but **misstates
+   the measured head by ~0.0011**. The head is the physically meaningful quantity, so full-precision `s`
+   looks right — **but that is a call about what the artifact means, not a mechanical fix.**
+4. **The curve payload hash recipe is written down NOWHERE.** It is
+   `md5(json.dumps(curve, sort_keys=True))` — *string*-sorted keys, default separators — reverse-engineered
+   by reproducing the shipped `08ea9375`, then confirmed to reproduce `e69a3f38`. **No helper computes it;
+   every consumer only compares stored fields.** I minted a wrong-serialization pin (`0bbbb9ff`) and wrote it
+   into three selftest literals, the contract mirror and `pvc_provenance` before catching it — a true hash of
+   the wrong bytes, hazard class 1. **L5 disposition owed: name the convention in code.**
+5. **An undocumented ASYMMETRIC identity-length convention.** `pvc_curve_v2.stamp.store_md5` is an **8-char
+   prefix**; `release_pick_curve.curve_source_store_md5` is the **full 32**; `one_source_selftest.py:527`
+   compares them with a **one-sided `[:8]`**. Writing the full md5 into the stamp (the natural act) FAILS the
+   check. **L5 disposition owed.**
+6. **The refit must follow E2.** E2 changes the v0surf signature function, so a refit run before it is
+   discarded work (cost me 73s). **Ordering constraint inside L1(b).**
+7. **The int convention is load-bearing on identity:** `int(round(v))` reproduces `e69a3f38`; `float(v)`
+   gives `c2321957`. This strengthens the `:930`/`:931` int-cast question framed for L6 — the cast is not
+   cosmetic.
+
+## E.6 — L1 DOES NOT EXIT YET. What remains
+
+**Outstanding L1(c):** re-base `pick_redenomination.json` (needs the denominator decision) + its three
+hard-coded fallbacks + `rl_model.py:940`'s "SCALE stays frozen" override + `rl_export.py:581`'s
+`105000/_F` disposition. Then re-run board + selftest and confirm F1 returns to green.
+
+**Then** the exit condition is met on one coherent tree, and L2's two window candidates can be measured.
