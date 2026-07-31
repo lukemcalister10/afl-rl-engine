@@ -1,0 +1,25 @@
+{
+  "tag": "nopool",
+  "bundle": {
+    "nKeys": 64,
+    "min": 1,
+    "max": 64,
+    "v64": 571
+  },
+  "queries": {
+    "7": [
+      {
+        "label": "Pick 7 2026 ND",
+        "val": "1,907"
+      }
+    ],
+    "65": [],
+    "70": [],
+    "pool": []
+  },
+  "describe": {
+    "probeAmount": 300,
+    "verdictLineOnOpen": "You come out ahead by 407 — about a pool pick of value in your favour."
+  },
+  "pageErrors": []
+}
