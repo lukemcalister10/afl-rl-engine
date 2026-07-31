@@ -97,6 +97,9 @@ in-seat; a subagent returns the verdict plus the deciding numbers, and the seam 
 **Rotation vigilance.** (C3) The seam raises its own rotation at clean boundaries once its context is
 materially grown (~500k), before the owner notices. The v547 rotation was owner-prompted at 730k; that is
 the recorded anti-pattern.
+**Supersession note (same word):** C1 supersedes the presentation clauses of Norms of Record item 6; the
+DO:/WHY: convention was retired by owner word 2026-07-29 (the register's v541-era presentation norm) and
+stays retired — an incoming seat must not revive it.
 
 ## EFFORT POLICY (added 2026-07-24, the outgoing seat's last filing)
 Effort scales with the turn, not the title. MAXIMUM for: the incoming read-back (orientation
