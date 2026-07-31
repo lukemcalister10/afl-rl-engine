@@ -1,0 +1,50 @@
+L4 — THE BOARD DELTA, MEASURED AGAINST A CONTROL BUILT IN THIS CONTAINER
+=======================================================================
+#290, 2026-07-31. Substrate: store 81d24704 · v0surf 84fb0cde · gamma 1.0 · curve e69a3f38.
+
+THE CONTROL IS NOT INHERITED — IT WAS REBUILT HERE
+  The pre-L4 fitted artifacts (peak_model b763f59e, pvc_snapshot 735d2dec) were restored from
+  git and the full chain re-run. The control board came out at
+
+      92e397bdf8269c2bb346e6650ad8c5bd
+
+  which is BYTE-EXACT to the board md5 the T1 hand-back recorded (#290 issuecomment-5142798385,
+  "1432f5e4... -> 92e397bd..."). So this container reproduces the predecessor's T1 board exactly,
+  and every delta below is L4's own effect rather than a container difference. That check was
+  worth its 276s: without it "the board moved" and "the machine moved" are indistinguishable.
+
+BOARDS
+  control (pre-L4 fitted artifacts) : 92e397bd   [= the recorded T1 board]
+  L4      (retrained peak+snapshot) : 944abbd3
+  key set identical                 : True, 804 active both sides
+
+MOVERS — every count with its denominator
+  moved            : 65 of 804 = 8.1%
+  direction        : 0 up / 65 down        <- one-directional
+  median |relative|: 0.041%
+  p90  |relative|  : 0.158%
+  max  |relative|  : 0.433%
+  total ev         : 755,941 -> 755,874  = -0.009%
+  of the top 100 by control value, 38 moved
+
+  Largest relative movers (all are one-unit integer moves):
+    archie-perkins        231 ->  230   -0.43%
+    connor-budarick       279 ->  278   -0.36%
+    matthew-jefferson     492 ->  491   -0.20%
+    latrelle-pickett      510 ->  509   -0.20%
+    max-kondogiannis      541 ->  540   -0.18%
+    oliver-florent        591 ->  590   -0.17%
+
+READING IT HONESTLY
+  This is a ROUNDING-BOUNDARY RIPPLE, not a revaluation: every mover moves by a single integer
+  unit, and the aggregate is -0.009%. The retrained peak model prices marginally lower right at
+  the rounding boundary for 65 players.
+  The one-directional pattern (65 down, 0 up) is worth NAMING rather than waving through — a
+  symmetric rounding ripple would not be one-sided. It is small enough not to matter to any
+  figure this job steers by, and it is NOT explained here. Recorded for L8's attribution, which
+  is where a mover must have a named cause or the leg HALTs.
+
+WHAT DID NOT MOVE
+  G-Y0: 13.919% -> 13.919%, unchanged. L4 retrains the player stack; G-Y0 measures the
+  year-zero pick-curve residual governed by the frozen surface and the curve. As at T1, a green
+  L4 gate is NOT progress toward the 2.000% bar. That closure remains L6's.

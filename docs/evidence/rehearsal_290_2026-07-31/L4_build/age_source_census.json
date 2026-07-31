@@ -1,0 +1,40 @@
+{
+ "WATCHED_NUMBER_fallback": {
+  "_note": "must fall by EXACTLY the number of rows the DOB courier writes",
+  "of": 6339,
+  "pct": 7.462,
+  "rows": 473
+ },
+ "_doc": "AGE-SOURCE CENSUS (Addendum 4, hard L4 acceptance). Every TRAINING ROW classified by the provenance of its age feature; classes SUM to the training population or the build HALTs. REAL_DATE = store _bd; REAL_YEAR = store _by only (a first-class state, Addendum A.2); FALLBACK = 18.0 + years-since-debut, a guessed age. Busts are COUNTED \u2014 the census counts age provenance, not outcome (BUST RULING consequence 4).",
+ "excluded_from_training": {
+  "_note": "excluded by the debut window (2006-2015) or by an unmapped position; the census denominator is the TRAINING population, not the store",
+  "store_rows_not_trained": 1429
+ },
+ "store_level": {
+  "bd_is_subset_of_by": true,
+  "bd_present": 848,
+  "by_missing": 302,
+  "by_present": 2349,
+  "store_rows": 2651
+ },
+ "substrate": {
+  "gamma": 1.0,
+  "store_md5": "81d2470440a80f72afea4405e94338c5",
+  "v0surf_md5": "84fb0cde29f36c1a91d440e63b753c3c"
+ },
+ "training_players": {
+  "FALLBACK": 102,
+  "REAL_DATE": 134,
+  "REAL_YEAR": 987
+ },
+ "training_players_total": 1222,
+ "training_rows": {
+  "by_class": {
+   "FALLBACK": 473,
+   "REAL_DATE": 1669,
+   "REAL_YEAR": 4197
+  },
+  "sums_to_denominator": true,
+  "total_denominator": 6339
+ }
+}

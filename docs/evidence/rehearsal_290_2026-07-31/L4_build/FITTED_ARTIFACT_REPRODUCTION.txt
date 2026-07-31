@@ -1,0 +1,56 @@
+L4 — THE THREE FITTED MODELS, MEASURED. #290, 2026-07-31.
+=========================================================
+Substrate for every figure below: store 81d24704 · v0surf 84fb0cde · gamma 1.0 · curve payload e69a3f38.
+
+Screened by RE-RUNNING, never by reading. Two of the three claims tested here came from a prior
+seat's docstring; one of them turned out to be wrong.
+
+A · ON-BOX DETERMINISM — two fresh processes, same tree, serial, byte comparison
+-------------------------------------------------------------------------------
+  peak_model_v4.pkl   run1 f305fe5330222f4fa14d3654a0e91ef7
+                      run2 f305fe5330222f4fa14d3654a0e91ef7   BYTE-IDENTICAL   (31s, 31s)
+  pvc_snapshot.json   run1 ade79790efc8ad4585c2c6800a935eaa
+                      run2 ade79790efc8ad4585c2c6800a935eaa   BYTE-IDENTICAL
+  cm_400 (band)       run1 3c568d8669fa93e05de9a092abeef0af
+                      run2 3c568d8669fa93e05de9a092abeef0af   BYTE-IDENTICAL   (61s, 60s)
+                      [md5 of MY protocol=4 dump, so the two runs are comparable to each other]
+
+  => wire_redesign.py's docstring says of the band refit: "not bit-stable even on one box".
+     THAT IS CONTRADICTED HERE. Two fresh-process retrains produced identical bytes on this
+     box and this pinned stack. Recorded as a correction to a claim, not as a clearance:
+     see C.
+
+B · DOES A REFIT REPRODUCE THE SHIPPED ARTIFACT? — like-for-like serializer, both sides
+--------------------------------------------------------------------------------------
+  band  pinned cache re-pickled protocol=4 : 9804bc484555951180b33e294a58ff1a
+        fresh retrain, same serializer     : 3c568d8669fa93e05de9a092abeef0af
+        identical                          : NO
+        (the SHIPPED band on disk is data/cm_400.pkl = 34faa865)
+
+  q97m  refit_q97m.py --verify (the declared lane, writes nothing), exit 3:
+        "refit DIVERGES from the committed pin"
+        new ba86aae84e16728ef46dc9066acba2f4  vs  pin cfdc73216c099e5e8f1fda3968f31c00
+        fit on X=13107 rows, 11 features
+        The lane's own words: a divergence here is EXPECTED on a different CPU/BLAS kernel —
+        which is exactly why q97m is frozen and loaded, not fitted.
+
+  peak  the L4 retrain is a NEW artifact by design (the substrate flipped): f305fe53 vs the
+        pre-L4 pin b763f59e. Not a reproduction failure — a re-derivation, which is the leg.
+
+  => ALL THREE fitted models, refitted on this substrate, differ from their shipped pins.
+
+C · WHAT THIS DOES AND DOES NOT SETTLE
+--------------------------------------
+  SETTLED   : on THIS box, with the pinned stack (py 3.12.3 / numpy 2.4.4 / scipy 1.17.1 /
+              sklearn 1.8.0), the peak build and the band refit are byte-reproducible run to run.
+  NOT SETTLED: the CROSS-MACHINE question. The band is a RandomForest and q97m a GBR, both
+              through numpy's OpenBLAS, which is DYNAMIC_ARCH — the exact mechanism that made
+              v0surf machine-sensitive (N16) and q97m machine-sensitive before its freeze.
+              On-box determinism is not cross-machine determinism; the v0surf episode is the
+              standing proof of that distinction (19.869% vs 13.919% on one artifact's bytes).
+              This container ALSO migrated hosts mid-session once already (v552 provenance).
+
+  So the measurement here narrows the question; it does not answer it, and nothing above is a
+  clearance to refit-and-ship. The remedy already ruled for v0surf — fit once, freeze the bytes,
+  travel them, name the md5 in every figure — is the candidate remedy for all three. That is a
+  seam call and is NOT taken here.
