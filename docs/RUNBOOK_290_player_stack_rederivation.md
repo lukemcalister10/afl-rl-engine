@@ -563,6 +563,8 @@ The standing block — cp312 via `RL_VENV` (now provisioned and proven) · unsha
 
 ## 8 · WORDS OUTSTANDING
 
+**Superseded by ADDENDUM A below — read that table, not this one.**
+
 | word | leg | state |
 |---|---|---|
 | the par teaching-window / 2003-censoring word | **L2 — HALT point** | candidates measured and presented at rehearsal; **narrowed to one limb** by THE BUST RULING |
@@ -570,3 +572,76 @@ The standing block — cp312 via `RL_VENV` (now provisioned and proven) · unsha
 | the EXECUTION word | before any landing bake | follows a seam-verified rehearsal hand-back |
 | adoption word · FHV word (three sites) · five SCAR→VOR relabels | L8 / adoption | owner's separate act |
 | trade-desk pick-split fix timing | UI lane | live defect today, pre-dates this job |
+
+---
+
+# ADDENDUM A — post-audit updates (seam relay, 2026-07-31, issuecomment-5138572658)
+
+The runbook PASSED as filed. Three items post-date it and are carried here rather than by editing the body
+in place (a directive is amended by addendum, never edited — v461).
+
+### A.1 — The L2 HALT is CONFIRMED, with a scope allowance
+
+**L3 never starts before the owner's window word.** Confirmed by the seam. **Allowed during the window:**
+non-training preparation — code, harness, probes. **Not allowed:** anything that teaches, fits, or retrains
+on a treatment the owner has not chosen. So L3's `conditional_prior` edits may be *written and probed*
+against both treatments; nothing is *fitted* until the word lands.
+
+### A.2 — THE COURIER IS FULLY CLEARED, 302 of 302
+
+**Kirkby and Looby are RULED YEAR-ONLY** — the seam's recommendation is now the ruling. So:
+
+| batch | rows | write |
+|---|---|---|
+| sheet 1 (played/scored) + supplement (never scored) + the 2 internationals | **300** | full date — `_by` **and** `_bd` |
+| Ruory Kirkby · Tim Looby | **2** | **`_by` only** (1986 / 1987) — year-only is a first-class store state; `_bd` deliberately absent |
+| **total** | **302 of 302** | zero unlisted, zero pending |
+
+**Provenance is recorded per row.** The two year-only rows carry their dissent in the courier record: the
+day-level conflict (Kirkby `30 Mar 1986` vs `1986-04-02`; Looby `02 Apr 1987` vs `1987-02-04`, a genuine
+upstream transposition) is preserved as provenance, not resolved by silent choice. The years are undisputed
+in every source, and year precision is what the age features consume.
+
+**Consequence for L4's age-source census:** the census token set already distinguishes **REAL-DATE (`_bd`)**
+from **REAL-YEAR (`_by`)**, so the 2 year-only rows land as REAL-YEAR, not FALLBACK. Post-courier the
+expected census on the training population is **FALLBACK → 0** for these 302 (300 REAL-DATE + 2 REAL-YEAR),
+and the leg HALTs if the fallback count does not fall by exactly the number of rows written.
+
+**No change to the courier act's shape:** one atomic exact-byte write, join by `stable_player_id`, all pins
+enumerated, #283-pattern lane.
+
+### A.3 — The trade-desk word is DISCHARGED; #292 is a parallel seat
+
+The trade-desk pick-split defect (picks 66–80 priced at 0, pick 65 as an ordinal — vs `RULEBOOK v2.1` law 4,
+which `ingest_inputs.price_pick` implements correctly) **leaves this runbook's scope**. It is **#292**, fired
+as a parallel UI seat. L8's queue drops it.
+
+**Line pointers re-measured for the incoming seat** — the inventory's cite (lane C C8: `:63, :78, :86`;
+INDEX: `:23,66`) has drifted. Measured at this tip: **`pickVal` at `:21`** (`pvc[String(n)] ?? 0` — the
+`?? 0` is the defect), **the `for (let n = 1; n <= 80 …)` type-ahead loop at `:66`**, and the user-facing
+`1–80` strings at **`:81`** (placeholder) and **`:89`** (no-match), with a third at `:141` in a comment.
+Measured against the shipped bundle, `board_view_working.js` `pvc` has exactly **65 keys**, so 66–80 price
+at 0 and 65 prices at the pool as though it were an ordinal.
+
+**Coordination note, since two seats now touch adjacent surfaces:** #292 works `ui/app/trade.js`; this job
+touches `ui/data/` bundles, `ui/release_pick_curve.json`, `ui/app/config.js` (FHV) and
+`ui/tests/ui_222_items.test.mjs` at adoption. The overlap is the **rendered pick prices** — #292 fixes how
+the desk *reads* the ladder; this job changes *what the ladder is*. They must not land a shared file in the
+same window; if #292 lands first, this job's adoption re-denominates underneath a desk that is by then
+reading the ladder correctly, which is the better order.
+
+### A.4 — WORDS OUTSTANDING (replaces §8's table)
+
+| word | leg | state |
+|---|---|---|
+| **the L2 window word** | **L2 — HALT point** | candidates measured and presented at the halt; narrowed to one limb by THE BUST RULING |
+| **the EXECUTION word** | before any landing bake | follows this rehearsal's seam-verified hand-back |
+| **the adoption set** — adoption word · FHV word (three sites) · the five SCAR→VOR relabels | L8 / adoption | owner's separate act |
+
+Discharged since filing: the two DOB words (A.2) · the trade-desk timing word (A.3).
+
+### A.5 — REHEARSAL POSTURE
+
+Released to rehearse L0–L8: **unbakeable throughout** (no landing bake, no pin moved on this branch's
+product files, no adoption), **every gate fired in anger**, the **L2 candidates measured and presented at
+the halt**, **cost measured per leg**. Hand back for seam verification; the EXECUTION word follows.
