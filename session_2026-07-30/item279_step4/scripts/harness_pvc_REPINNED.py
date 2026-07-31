@@ -5,6 +5,38 @@ RE-PINNED 2026-07-30 by the step-4 propagation, old -> new, both recorded, NEVER
   EXPECT_N       1197           -> 1197            (UNCHANGED — the class-cut teaching population did not move)
 The asserts themselves are untouched and are re-proven able to fire at every re-pin.
 
+RE-PINNED 2026-07-31 by #290 L3, one disclosed act under the seam's ruling. THE FULL CHAIN, because
+the header above documented only two of the three moves this file has actually carried:
+
+  EXPECT_V0SURF  'b781ed253bff' -> '0c75bb6d829d' -> '12d903336f6e' -> '96d671c952c8'
+                  |________________ step-4 container era ________________|    ruled substrate
+
+  The third move to '12d903336f6e' was NEVER DOCUMENTED: this file was BORN carrying it (first
+  committed at f4c096f / 592c7a2, the step-4 STOP run; seam attribution from git, 2026-07-31).
+  Both container-era moves happened inside the step-4 container and NEITHER the matrix NOR the
+  surface ever travelled, so '12d903336f6e' matches nothing reachable from the tree. This is the
+  SECOND INSTANCE of the v0surf-bytes class (the first: L1_amended_state.diff carrying no binary
+  patch section for data/v0surf.pkl).
+
+  EXPECT_STORE   '81d24704'     -> '81d24704'      (UNCHANGED — the ruled substrate's store)
+  EXPECT_N       1197           -> 1197            (RE-MEASURED on the re-emitted matrix, NEVER
+                                                    assumed: teaches_curve 1444 -> pick 1..64 1444
+                                                    -> years 2004..2022 = 1197, and the key set is
+                                                    IDENTICAL to the old matrix's, 0 added 0 dropped)
+
+  THE FREEZE LAW, GENERALISED (seam ruling 2026-07-31): a pinned-input instrument's input is
+  COMMITTED, or its emitter and substrate are both reachable from the tree. This harness's matrix is
+  now committed beside it with its identities:
+      docs/evidence/rehearsal_290_2026-07-31/L3_watched_number/nd_matrix_ruled.json
+      md5 a216e6e647ffbbdb992bfcb9d397fb52 | store 81d24704 | v0surf_sig 96d671c952c819fa64df0b5d1a402f1e
+  Re-emitted through the declared emitter session_2026-07-29/item271/emit_matrix_271.py (179s) on
+  the ruled substrate (store 81d24704, frozen v0surf 84fb0cde). The emitter writes in place to
+  session_2026-07-29/item271/out/per_entrant_271.json, which is PROVENANCE-CITED by
+  engine/rl_after/pvc_curve_v2.json ('derived_from' / 'per_entrant_path') at md5 2f8b4bd4 — so the
+  re-emit ran backup -> emit -> capture -> restore, and the restore is PROVEN by md5, not assumed.
+  (Note: that committed matrix carries store 265f55d5 and v0surf 85e57195189b, so it satisfies
+  NEITHER of this harness's pins either — the harness has never had a committed input until now.)
+
 #279 FOUR-FITTER PVC PANEL — the SHARED, FROZEN harness. Phase 1.
 
 Every fitter imports this and MUST NOT modify it. It fixes, once, for all four fitters:
@@ -27,8 +59,8 @@ import numpy as np
 
 # ---- the committed identity this panel is pinned to ----
 EXPECT_STORE = '81d24704'
-EXPECT_V0SURF = '12d903336f6e'
-EXPECT_N = 1197                     # ND teaching rows after the class cut
+EXPECT_V0SURF = '96d671c952c8'   # re-pinned 2026-07-31 (#290 L3); full chain in the header
+EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-07-31, not assumed
 CLASS_CUT = 2022
 K_FOLDS = 5
 FOLD_SEED = 20260730

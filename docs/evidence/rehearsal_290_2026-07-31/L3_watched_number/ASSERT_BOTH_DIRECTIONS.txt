@@ -1,0 +1,31 @@
+ASSERT NON-VACUITY AT THE RE-PIN — proven BOTH DIRECTIONS, per the harness's own norm
+#290 L3, 2026-07-31. Harness: session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py
+Pins after the re-pin: EXPECT_STORE 81d24704 | EXPECT_V0SURF 96d671c952c8 | EXPECT_N 1197
+
+=== DIRECTION 1 — RULED substrate matrix: the assert must PASS ===
+HARNESS SELF-CHECK
+  store 81d24704  v0surf 96d671c952c8  n=1197
+  provenance: {"counts": {"completed": 301, "concluded_realised": 825, "prior_fallback_thin": 71}, "fallback_rows": 71, "of_population": 1197, "fallback_share_pct": 5.931}
+  folds k=5 seed=20260730 fingerprint=66d46e0103ce
+  fold sizes: {0: 240, 1: 240, 2: 239, 3: 239, 4: 239}
+  establishment: never_established true on 265 of 1197
+  mean structural value: 871.3
+exit=0
+
+=== DIRECTION 2a — WRONG STORE (the committed pre-split matrix 2f8b4bd4): must FIRE ===
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: matrix store 265f55d5 != committed identity 81d24704
+exit=1 (AssertionError)
+
+=== DIRECTION 2b — ruled matrix with v0surf_sig doctored: must FIRE naming v0surf ===
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: matrix v0surf deadbeefdead != expected 96d671c952c8
+exit=1 (AssertionError)
+
+=== DIRECTION 2c — ruled matrix with one teaching row removed: EXPECT_N must FIRE ===
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ND population 1196 != expected 1197
+exit=1 (AssertionError)
+
+All three identity asserts fire independently and name the offending value.
+The passing direction is not vacuous: it is the same code path, on the ruled input.
