@@ -1,0 +1,12 @@
+[23:01:01] PASS 0 — host Intel(R) Xeon(R) Processor @ 2.80GHz stepping 7 uptime up 7 min
+preboot assert PASS — no engine process live; clear to seed the workspace
+  ENV PIN        : numpy 2.4.4 + bundled OpenBLAS 05c9f9eb (byte-exact to the pin; item 392)
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - bootstrap about to read ENGINE _merged_recover.py
+        at /home/claude/rl_workspace/rl_after/_merged_recover.py
+        md5 15525b03  !=  expected 3c7b0c3c (pinned; repo checkout )
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=========================================================================================
+bootstrap FAILED: seeded workspace does not match the pinned store/register (see above)
+[23:01:02] BOOTSTRAP HALT
