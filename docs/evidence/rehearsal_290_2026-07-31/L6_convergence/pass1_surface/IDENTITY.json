@@ -1,0 +1,26 @@
+{
+ "pass": 1,
+ "what": "curve MOVED e69a3f38 -> 1a8db02b (curve 1); the signature key changes and the surface is re-fit through the one declared lane",
+ "md5": "aaf459645678eadce6bd2a9b9789f094",
+ "bytes": 49758,
+ "signature_keys": [
+  "0589a2620e24e71a348988d27ab06154",
+  "6afe678c73dc482e548c287e805ac1fb"
+ ],
+ "n_surfaces": 2,
+ "shipped_signature_key": "6afe678c73dc482e548c287e805ac1fb",
+ "prior_surface_md5": "fb9efdec4d669d389fe3beef2bca3092",
+ "prior_shipped_signature_key": "96d671c952c819fa64df0b5d1a402f1e",
+ "curve_payload": "1a8db02b",
+ "store": "81d24704",
+ "gamma": 1.0,
+ "machine": "Intel(R) Xeon(R) Processor @ 2.80GHz family 6 model 85 (Skylake-SP), AVX512 SKX/CLX; numpy 2.4.4",
+ "double_fit_byte_identical": true,
+ "refit_seconds": [
+  62,
+  68
+ ],
+ "compute_path_assert": "board 92e397bd byte-exact on this box (116s) \u2014 R-H clause 1(a) PASS",
+ "committed_before_engine_load": true,
+ "ruling": "R-H clause 2 \u2014 bytes + md5 + curve-signature key committed to the evidence tree BEFORE the engine loads the surface"
+}
