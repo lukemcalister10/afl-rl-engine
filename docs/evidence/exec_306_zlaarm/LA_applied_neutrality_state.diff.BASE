@@ -1,0 +1,53 @@
+STATE-DIFF BASE ANNOTATION — LA_applied_neutrality_state.diff
+=============================================================
+Filed 2026-08-04 by the #306 execution seat zlaarm under N18. Written AT GENERATION.
+
+THE LIVE CAPTURE AFTER THE ACCEPTANCE-POPULATION ADDENDUM. Supersedes LA_lensfield_state.diff as
+this seat's live substrate and replaces nothing. FOUR captures now stand on the record, none
+overwritten:
+  13b71c26  pass-0 — still the substrate N35's fit-path assert is defined on
+  02e248dc  the VOIDED flat-lens attempt, kept as the record of a wrong turn
+  8650c060  the approved lens field, whose acceptance FAILED limb 1 (29/64 picks out)
+  e8fa27018241be42b56165ef40570662  THIS — the same lens field with neutrality solved on the applied population
+
+THE ARTIFACT
+  file        LA_applied_neutrality_state.diff
+  md5         e8fa27018241be42b56165ef40570662
+  sections    20 `diff --git`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   9442832      ON  claude/exec-seat-306-afl-rl-zlaarm
+  The commit landing this capture adds only docs/evidence/ paths, so no captured path moves in
+  history and the capture continues to apply at the tip. Re-verify, never assume.
+
+WHAT CHANGED FROM 8650c060 — ONE THING, AND ITS SCOPE IS NARROW
+  engine/rl_after/_merged_recover.py: lam(pick) is now solved against the APPLIED population's
+  anchor-weighted composition (all real ND rows, picks 1-64, drafts 2003-2025) instead of the basis
+  population's. The law is enforced where the acceptance measures it.
+
+  THE APPLIED ROWS ENTER AS COMPOSITION WEIGHTS ONLY — (position, draft age, pick): who exists, and
+  nothing whatever about how they turned out. No careers, no v0 beliefs, no outcomes. THE LENS SHAPE
+  REMAINS TAUGHT EXCLUSIVELY BY structural_basis_279.json; this step only rescales it so each
+  neighbourhood nets to the anchor. The barred self-referential lineage stays barred, and that is
+  checkable in the diff: `real`'s values appear nowhere in the fit path.
+
+  Unchanged: tolerance 0.005 · B = 2.00 · the bounds limb · graded locality · hierarchical
+  confidence · the A/B control behind RL_V0_LENS=0 · the basis as a declared input with no fallback.
+
+THE ACCEPTANCE ON THIS CAPTURE (measured, both lanes, fresh process each)
+  BEFORE  worst per-pick deviation 0.4961 · 62/64 picks out · 36 lines out of bound   -> FAIL
+  AFTER   worst per-pick deviation 0.0001 ·  0/64 picks out ·  0 lines out of bound   -> PASS
+
+NOT BAKED. data/v0surf.pkl is UNMOVED at fb9efdec and expected_boot.json still pins the pass-0
+engine. The re-pin is the bake act and it waits on a word this seat does not have. Bootstrap's
+Guard 5 halts on the engine-head mismatch by design while the substrate carries the lens engine.
+
+WHY THESE FILES ARE NOT COMMITTED — they are the REHEARSAL SUBSTRATE. R-C holds.
+
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS-0 (required before every N35 assert):
+  git checkout -- . && git apply --binary <...>/L6_pass0_state.diff ; re-stamp the two .srcmd5.
+  NOTE: `git stash` on a single substrate file reverts it PAST the substrate to HEAD and silently
+  invalidates the assert — caught here once by the round-trip check.
