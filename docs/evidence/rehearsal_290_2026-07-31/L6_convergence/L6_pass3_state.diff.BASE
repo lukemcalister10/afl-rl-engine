@@ -1,0 +1,16 @@
+STATE-DIFF BASE ANNOTATION — L6_pass3_state.diff
+================================================
+Filed 2026-08-04 by the fresh #290 execution seat. Written AT GENERATION.
+
+L6 PASS 3 installed CURVE 3 (b0bda532) and re-fit the surface 864c11b9 -> 2d7dab64 (shipped
+signature 8291668eff41 -> 46034260d643). R-J: the capture refreshes in the SAME evidence commit as
+the acts that moved the product files. Prior captures are sealed, never overwritten.
+
+  file      L6_pass3_state.diff
+  md5       454dedc7c11b42887f27f0d9ed4ccb6b
+  sections  19 `diff --git` · 2 `GIT binary patch`
+  BASE      05c48ea  on claude/exec-seat-290-handoff-d7bnaa
+
+Substrate: store 81d24704 · v0surf 2d7dab64 (sig 46034260d643) · gamma 1.0 · curve b0bda532 ·
+pool_value 233.4. Cannot carry the two untracked tier-2 .srcmd5 (d14f0f12 / aaccad1c), regenerable
+exactly via single_source.stamp_tier2_frozen.
