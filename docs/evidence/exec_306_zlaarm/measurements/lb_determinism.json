@@ -1,0 +1,45 @@
+{
+ "compared_on": "FULL md5 of the fitted surface payload (N22), never the signature key",
+ "failing_direction": "already discharged by the recorded cross-container pair (5939fa35 x5 off-class vs fb9efdec x3 on two fit-class boxes, 2026-08-04); ruled at N35 \u00a73 and deliberately NOT re-run here",
+ "installed_curve": "e69a3f38 (the ruled anchor)",
+ "lane": "RL_V0_LENS=1, declared refit",
+ "results": [
+  {
+   "output_md5": "b540833b2e251631bf76aeec0040cc05",
+   "starting_surface": "ABSENT",
+   "state": "no surface present"
+  },
+  {
+   "output_md5": "b540833b2e251631bf76aeec0040cc05",
+   "starting_surface": "fb9efdec",
+   "state": "fb9efdec \u2014 pass-0, the state after fitting the ruled curve"
+  },
+  {
+   "output_md5": "b540833b2e251631bf76aeec0040cc05",
+   "starting_surface": "84fb0cde",
+   "state": "84fb0cde \u2014 the L3-L5 record surface, pre-catch-up"
+  },
+  {
+   "output_md5": "b540833b2e251631bf76aeec0040cc05",
+   "starting_surface": "31e7f00b",
+   "state": "31e7f00b \u2014 the halt surface, fitted at a DIFFERENT curve (ca662051)"
+  },
+  {
+   "output_md5": "b540833b2e251631bf76aeec0040cc05",
+   "starting_surface": "2d7dab64",
+   "state": "2d7dab64 \u2014 the other cycle limb, as far as the record supplies"
+  }
+ ],
+ "substrate_restored_to": "fb9efdec (verified by round trip against capture 59ef1940)",
+ "verdict": {
+  "BYTE_IDENTICAL_FROM_EVERY_STATE": true,
+  "L_B_PASSING_DIRECTION": "PASS",
+  "distinct_outputs": [
+   "b540833b2e251631bf76aeec0040cc05"
+  ],
+  "note": "the run was executed in two parts because the 5th state exceeded a 10-minute shell limit; each state ran in its own fresh process either way, which is what the acceptance requires",
+  "states_run": 5
+ },
+ "what": "L-B acceptance: same-curve fit from materially different starting states, fresh process each",
+ "why_it_should_pass_stated_before_running": "the anchored lens fit reads the basis artifact, the anchor ladder and the roster COMPOSITION. It never reads the surface it replaces -- the structural difference from the old lane, whose refit inherited state from the surface on disk."
+}
