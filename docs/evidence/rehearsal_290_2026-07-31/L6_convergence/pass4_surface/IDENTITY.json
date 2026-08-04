@@ -1,0 +1,25 @@
+{
+ "pass": 4,
+ "what": "curve b0bda532 -> ca662051 (curve 4 == curve 2's ladder, 64/64 byte-identical); surface re-fit through the one declared lane",
+ "md5": "31e7f00b876081b46ed1f3b4169e667b",
+ "bytes": 49758,
+ "signature_keys": [
+  "0589a2620e24e71a348988d27ab06154",
+  "8291668eff41fd0f006776578a148348"
+ ],
+ "n_surfaces": 2,
+ "shipped_signature_key": "8291668eff41fd0f006776578a148348",
+ "prior_surface_md5": "2d7dab645ff4fab8379aec86af8c7b7a",
+ "prior_shipped_signature_key": "46034260d643a7e1c667dad3b56ddc94",
+ "curve_payload": "ca662051",
+ "store": "81d24704",
+ "gamma": 1.0,
+ "THE_FINDING": "the SHIPPED SIGNATURE KEY returned to pass 2's 8291668eff41 \u2014 as it must, since the curve is byte-identical \u2014 but the surface BYTES did NOT: 864c11b9 (pass 2) vs 31e7f00b (pass 4). Identical curve, identical frozen fitted stack, different surface. The refit therefore carries PATH MEMORY: the fitted surface is not a function of the curve alone. This is N22's layering fact meeting the loop: the signature SELECTS, the md5 GOVERNS, and here the two disagree across passes.",
+ "surface_dicts_share_key_set": true,
+ "machine": "Intel(R) Xeon(R) Processor @ 2.80GHz family 6 model 85 (Skylake-SP), AVX512 SKX/CLX; numpy 2.4.4",
+ "refit_seconds": [
+  72
+ ],
+ "committed_before_engine_load": true,
+ "ruling": "R-H clause 2 \u2014 bytes + md5 + curve-signature key committed BEFORE the engine loads the surface"
+}

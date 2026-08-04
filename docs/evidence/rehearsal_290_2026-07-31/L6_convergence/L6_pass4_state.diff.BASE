@@ -1,0 +1,15 @@
+STATE-DIFF BASE ANNOTATION — L6_pass4_state.diff
+================================================
+Filed 2026-08-04 by the fresh #290 execution seat. Written AT GENERATION.
+
+L6 PASS 4 — the LAST pass under the R-I bound — installed CURVE 4 (ca662051, whose 64-value ladder is
+BYTE-IDENTICAL to curve 2's) and re-fit the surface 2d7dab64 -> 31e7f00b (shipped signature returned
+to 8291668eff41, pass 2's). R-J: the capture refreshes in the SAME evidence commit.
+
+  file      L6_pass4_state.diff
+  md5       bfc143f477804a8ad0f95d6a71f546bd
+  sections  20 `diff --git` · 2 `GIT binary patch`
+  BASE      e5fad72  on claude/exec-seat-290-handoff-d7bnaa
+
+Substrate: store 81d24704 · v0surf 31e7f00b (sig 8291668eff41) · gamma 1.0 · curve ca662051 ·
+pool_value 233.3. Cannot carry the two untracked tier-2 .srcmd5 (d14f0f12 / aaccad1c).
