@@ -1,0 +1,45 @@
+MANIFEST-vs-CODE-DEFAULT CENSUS  (I.2)
+  manifest: data/model_config.json
+  RL_* pinned by the manifest — THE DENOMINATOR : 55
+  of those, with at least one code default      : 55
+  of those, with NO code default (read fails loud or is always supplied): 0
+
+  DEFAULT SITES for pinned names : 98
+     AGREE with the manifest     : 86
+     DISAGREE                    : 12   <- each one is a latent basis fork
+
+  THE DISAGREEMENTS, by name:
+     RL_GAMMA               manifest 1.0        code default 0.85        engine/rl_after/verify_anchors.py:8 (setdefault)
+     RL_GAMMA               manifest 1.0        code default 0.85        session_2026-07-10/bake_v2_7/run_final_suite.sh:15 (shell export)
+     RL_GAMMA               manifest 1.0        code default 0.85        session_2026-07-20/fv_provenance_remediation/fixtures/distribution_pricing.stale_21d530bf.py:18 (setdefault)
+     RL_GAMMA               manifest 1.0        code default <unset>     session_2026-07-30/item279_step4/scripts/sig_probe.py:19 (environ.get)
+     RL_GAMMA               manifest 1.0        code default <unset>     session_2026-07-30/item279_step4/scripts/surf_probe.py:34 (environ.get)
+     RL_LEGE                manifest 1          code default 0           session_2026-07-19/envpin/scripts/build_board_altnumpy.sh:24 (shell export)
+     RL_LEGE                manifest 1          code default 0           session_2026-07-19/envpin/scripts/mechanism_final.sh:18 (shell export)
+     RL_LEGE                manifest 1          code default 0           session_2026-07-19/envpin/scripts/mechanism_proof.sh:26 (shell export)
+     RL_PICK1               manifest 3000       code default <unset>     session_2026-07-30/item279_step4/scripts/scale_probe.py:3 (environ.get)
+     RL_PICK1               manifest 3000       code default <unset>     session_2026-07-30/item279_step4/scripts/sig_probe.py:20 (environ.get)
+     RL_PICK1               manifest 3000       code default <unset>     session_2026-07-30/item279_step4/scripts/surf_probe.py:35 (environ.get)
+     RL_RUCK_TAX            manifest 0.25       code default <unset>     session_2026-07-30/item279_step4/scripts/sig_probe.py:21 (environ.get)
+
+  RL_* with a code default but NOT pinned by the manifest : 13
+     RL_ALLOW_PVCFIT_BOARD    default 0            engine/rl_after/rl_export.py:107
+     RL_APP_DATA              default rl_app_data.json engine/rl_after/s4_matrix_M1v7.py:11  (+2 more)
+     RL_CONFIG_MODE           default gate         release_contract.py:413  (+1 more)
+     RL_D8_RA                 default /home/claude/rl_workspace/rl_after session_2026-07-03/scripts/d8_ask2_verify.py:12
+     RL_DAMP_K                default 5.8          engine/rl_after/_merged_recover.py:186
+     RL_FV                    default $HERE/engine/forward_valuation run_panel.sh:16
+     RL_INTERP_MODE           default coherent     session_2026-07-19/envpin/scripts/run_export_perturbed.py:21
+     RL_INTERP_PERTURB        default 0            session_2026-07-19/envpin/scripts/run_export_perturbed.py:20
+     RL_NO_OWNER_OVERRIDES    default 0            engine/rl_after/owner_overrides.py:79
+     RL_REPO                  default $HERE        run_panel.sh:25  (+11 more)
+     RL_VENDOR                default /home/claude/rl_vendor engine/rl_after/ingestion/staged_apply.py:1426  (+7 more)
+     RL_WS                    default /home/claude/rl_workspace/rl_after refit_q97m.py:57
+     RL_X                     default 1            session_2026-07-21/final_integration/tools/config_inventory.py:8
+
+  READING IT: a DISAGREEMENT is the rl_model.py:504 shape exactly — bake mode takes the
+  manifest, a plain run takes the default, and nothing asserts they agree. A name with no
+  default is the STRONGER remedy I.2 allows (the read fails loud). A name with a default
+  but no manifest pin is outside I.2 but worth seeing: nothing pins it at all.
+
+  REPORTED, NOT FIXED. Writing the assertion or removing the defaults is a LANDING act.

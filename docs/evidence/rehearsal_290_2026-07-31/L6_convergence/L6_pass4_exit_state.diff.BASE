@@ -1,0 +1,31 @@
+STATE-DIFF BASE ANNOTATION — L6_pass4_exit_state.diff
+=====================================================
+Filed 2026-08-04 by the fresh #290 execution seat. Written AT GENERATION.
+
+THE LIVE CAPTURE AT THE R-I HALT. L6 pass 4 was the last pass of the R-I bound; curve 5 was derived
+and equals curve 3 byte-for-byte, so the bound is exhausted without payload equality. This capture
+adds the 20th section — the disclosed re-pin of
+session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py, EXPECT_V0SURF 46034260d643 ->
+8291668eff41 — which curve 5's derivation required. Filed with the derivation it belongs to, per R-J.
+
+  file      L6_pass4_exit_state.diff
+  md5       32ff3f38f73446f464861c1d238c5e7a
+  sections  20 `diff --git` · 2 `GIT binary patch`
+  BASE      dfcdc9e  on claude/exec-seat-290-handoff-d7bnaa
+
+Substrate AT THE HALT: store 81d24704 · v0surf 31e7f00b (sig 8291668eff41) · gamma 1.0 ·
+curve ca662051 · pool_value 233.3 · board 1a2aacea · book 24fee27d · G-Y0 8.842%.
+
+THE CAPTURE CHAIN, none overwritten (R-J: prior captures seal as exit-records of their states):
+  L4_state.diff              2cc5041c   the L4-exit tree
+  L6_pass0_state.diff        13b71c26   pass 0 — round-trip re-proven on this container
+  L6_pass1_state.diff        b5bc9550   pass 1 install + refit
+  L6_pass1_exit_state.diff   6790c706   pass 1 exit
+  L6_pass2_state.diff        37c575dc   pass 2 install + refit
+  L6_pass2_exit_state.diff   d0143b5e   pass 2 exit
+  L6_pass3_state.diff                   pass 3 install + refit
+  L6_pass4_state.diff                   pass 4 install + refit
+  L6_pass4_exit_state.diff              THIS ONE — the live capture at the halt
+
+Cannot carry the two untracked tier-2 .srcmd5 (d14f0f12 / aaccad1c) — regenerable exactly from the
+artifact bytes via single_source.stamp_tier2_frozen, at zero compute and without a refit.

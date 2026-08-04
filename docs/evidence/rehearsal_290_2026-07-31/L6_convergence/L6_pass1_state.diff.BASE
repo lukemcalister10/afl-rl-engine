@@ -1,0 +1,47 @@
+STATE-DIFF BASE ANNOTATION — L6_pass1_state.diff
+================================================
+Filed 2026-08-04 by the fresh #290 execution seat, under the v553 clause: a state diff names its base
+commit beside itself. Written AT GENERATION.
+
+WHY THIS FILE EXISTS AND L6_pass0_state.diff NO LONGER SUFFICES
+  L6 PASS 1 INSTALLED CURVE 1 AND RE-FIT THE SURFACE. Four product files moved in the enumerated
+  install act (pvc_curve_v2.json, ui/release_pick_curve.json, data/release_contract.json,
+  one_source_selftest.py), and the declared refit lane then moved data/v0surf.pkl
+  fb9efdec -> aaf45964 with data/expected_boot.json's 'v0surf' pin re-stamped by the lane itself.
+  Under R-J (capture currency) this capture SUPERSEDES L6_pass0_state.diff as the live capture and
+  is filed in the SAME evidence commit as the acts that moved the files.
+  L6_pass0_state.diff is NOT stale as a record: it remains the exact capture of the pass-0 tree,
+  seam-verified at md5 13b71c26, and this seat re-proved it by ROUND TRIP — reconstructing the
+  substrate from it on a fresh container and regenerating `git diff --binary` reproduced
+  13b71c26934d8a5b62c4f3ac1fa22137 byte-identically. Three captures now, three states, none
+  overwritten (L4_state.diff 2cc5041c · L6_pass0_state.diff 13b71c26 · this one).
+
+THE ARTIFACT
+  file        L6_pass1_state.diff
+  md5         b5bc9550d854e1b6d52f74fdab461ba4
+  size        1454874 bytes
+  sections    19 `diff --git` · 2 `GIT binary patch`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   52094a2   "#290: merge the record carrier forward (8e8c15b) — true merge, seam-approved act (2)"
+  ON            the fresh execution seat's designated branch claude/exec-seat-290-handoff-d7bnaa
+  NOTE          52094a2 is the TRUE MERGE of the record carrier (8e8c15b, untouched) into the seat's
+                branch, whose first parent is main at 98fe397 (the v555 pen). The pass-0 capture's own
+                base f0128d6 is an ancestor through the second parent.
+
+WHAT IT CAPTURES
+  The L1+L2+L3 substrate, L4's build fixes / census / stamps / retrained artifacts, L6 pass 0's
+  surface catch-up, AND L6 PASS 1: curve 1 installed with its full interlock set, plus the pass-1
+  refitted surface aaf45964 with its re-pinned expected_boot.v0surf.
+  Substrate: store 81d24704 · v0surf aaf45964 · gamma 1.0 · curve 1a8db02b · pool_value 233.4.
+
+WHAT IT CANNOT CARRY — unchanged from pass 0, and stated again rather than assumed known
+  `git diff` covers TRACKED files only. The two untracked tier-2 stamps
+  engine/rl_after/peak_model_v4.pkl.srcmd5 and engine/rl_after/pvc_snapshot.json.srcmd5 are NOT in
+  this diff. Their md5s are pinned in the R-A freeze provenance (d14f0f12 / aaccad1c) and they
+  regenerate EXACTLY from the artifact bytes via the engine's own writer,
+  single_source.stamp_tier2_frozen — proven byte-identical to the frozen copies by this seat, at
+  zero compute and without a refit (the sidecar is a pure function of the artifact's own bytes;
+  rebuilding the model itself would be a modelling action, which R-A forbids on a travelling
+  substrate).

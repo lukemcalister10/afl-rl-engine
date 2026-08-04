@@ -1,0 +1,86 @@
+{
+ "different_curve_control": {
+  "a": "pass1_matrix.json",
+  "a_v0surf_sig": "6afe678c73dc482e548c287e805ac1fb",
+  "b": "pass3_matrix.json",
+  "b_v0surf_sig": "46034260d643a7e1c667dad3b56ddc94",
+  "by_band_teaching_rows": {
+   "1-10": {
+    "max_abs": 0.10000000000002274,
+    "moved": 5,
+    "rows": 229
+   },
+   "11-20": {
+    "max_abs": 0.0,
+    "moved": 0,
+    "rows": 228
+   },
+   "21-30": {
+    "max_abs": 0.0,
+    "moved": 0,
+    "rows": 230
+   },
+   "31-45": {
+    "max_abs": 0.10000000000002274,
+    "moved": 11,
+    "rows": 345
+   },
+   "46-64": {
+    "max_abs": 0.10000000000002274,
+    "moved": 14,
+    "rows": 412
+   }
+  },
+  "max_abs_move": 0.10000000000002274,
+  "max_rel_move": 0.0004490345756624281,
+  "mean_signed_move": 0.004837490551776614,
+  "median_abs_move_over_movers": 0.10000000000002274,
+  "moved": 130,
+  "moved_pct": 4.9131,
+  "rows_compared": 2646
+ },
+ "not_a_gated_figure": "nothing here is the G-Y0 gate figure; the gate runs on its own population inside one_source_selftest.py",
+ "population": "every matrix record carrying a v0 value (2,646 emitted records); the per-band block restricts to teaches_curve rows at picks 1-64",
+ "reading": "The same-curve pair is the path memory ALONE: identical installed curve, identical frozen fitted stack, different history. It moves 60 of 2,646 v0 values by at most 0.1 absolute / 1.85e-4 relative. The cycle it was proposed to explain swings the band gaps by ~2 percentage points. The hysteresis is real and must be removed for the lane to be auditable, but it is three orders of magnitude too small to BE the cycle. Determinism is necessary, not sufficient.",
+ "same_curve_pair": {
+  "a": "pass2_matrix.json",
+  "a_v0surf_sig": "8291668eff41fd0f006776578a148348",
+  "b": "pass4_matrix.json",
+  "b_v0surf_sig": "8291668eff41fd0f006776578a148348",
+  "by_band_teaching_rows": {
+   "1-10": {
+    "max_abs": 0.10000000000013642,
+    "moved": 13,
+    "rows": 229
+   },
+   "11-20": {
+    "max_abs": 0.10000000000013642,
+    "moved": 38,
+    "rows": 228
+   },
+   "21-30": {
+    "max_abs": 0.09999999999990905,
+    "moved": 5,
+    "rows": 230
+   },
+   "31-45": {
+    "max_abs": 0.0,
+    "moved": 0,
+    "rows": 345
+   },
+   "46-64": {
+    "max_abs": 0.10000000000002274,
+    "moved": 4,
+    "rows": 412
+   }
+  },
+  "max_abs_move": 0.10000000000013642,
+  "max_rel_move": 0.0001845358922310809,
+  "mean_signed_move": -0.0022675736961452106,
+  "median_abs_move_over_movers": 0.09999999999990905,
+  "moved": 60,
+  "moved_pct": 2.2676,
+  "rows_compared": 2646
+ },
+ "what": "the SIZE of the refit path memory, measured on a same-curve pair, with a different-curve control beside it"
+}

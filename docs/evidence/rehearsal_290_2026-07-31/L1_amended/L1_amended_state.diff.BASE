@@ -1,0 +1,51 @@
+STATE-DIFF BASE ANNOTATION — L1_amended_state.diff
+==================================================
+Filed 2026-07-31 by the incoming #290 execution seat.
+
+SCOPE NOTE — READ THIS FIRST. The seam's ruled act (1) named ONE artifact: L3_T1_state.diff.
+This file extends the same clause to the tree's only OTHER state diff, and is disclosed as an
+extension on-issue rather than performed silently. The reason is hazard class 2 (duplicated
+assertion): a clause satisfied on one copy reads as closed and is not. Reversible by one word —
+nothing depends on this file.
+
+THE ARTIFACT
+  file        L1_amended_state.diff
+  md5         6862ff183bc9c41a126859513cd51880
+  size        69,252 bytes
+  sections    17 `diff --git` · **0 `GIT binary patch`**  <- the recorded defect
+  history     entered at `cb048ed` (Addendum E, 67,928 bytes); REGENERATED at `62cdd00`
+              (Addendum H, adding the `rl_model.py:504` eighth-γ move) to its present bytes
+
+THE BASE — **NOT RECOVERABLE BY MEASUREMENT. UNRESOLVED, and recorded as such.**
+  Probe run captured at `BASE_PROBE_L1_amended.txt`:
+
+      ADMISSIBLE SET: 25 of 862 commits scanned (carrier first-parent), 5dd2674 … abf8f4c
+      on the rehearsal line (`--tip 3cccb9d`): 8 of 8 scanned — every commit admissible
+
+  Every one of the diff's 17 targets is byte-identical across the entire #290 line, because
+  no commit on that line touches a product file. The probe therefore rejects NOTHING here and
+  the base is indeterminate by any measurement available to me.
+
+  INFERRED, NOT PROVEN: the present bytes entered at `62cdd00`, so the generating HEAD was
+  `62cdd00`'s parent `106adf4` — or `62cdd00`'s own pre-commit working tree. **The two are the
+  same tree for all 17 targets, and nothing distinguishes them.** No artifact states which.
+  Recorded as an inference. It is not upgraded to a fact by being written down.
+
+WHY THIS ENTRY IS THE STRONGEST ARGUMENT FOR THE CLAUSE
+  L3_T1_state.diff can at least be narrowed to 6 commits, because one of its targets moved.
+  This one narrows to nothing. A base is cheap to record at generation and impossible to
+  recover afterwards. That asymmetry IS the law.
+
+WHAT THIS DIFF CAN AND CANNOT DO
+  CANNOT reconstruct the L1-exit tree. It carries no binary payload for `data/v0surf.pkl`;
+  `git apply --binary` fails on exactly that file with *"cannot apply binary patch … without
+  full index line"*, at EVERY candidate base — measured, not assumed. Its post-image blob
+  `a02818f` is not present in this repository (`git cat-file -t a02818f` -> not a valid object).
+  This omission is what produced the entire v0surf divergence episode (19.869% vs 13.919%);
+  see `L2_window/V0SURF_DIVERGENCE.md` and standing ruling N16.
+  CAN restore the 16 text files: `git apply --exclude='data/v0surf.pkl'` is clean at every
+  commit tested. That is how the T1 seat recovered from its own `git checkout --` slip.
+
+  SUPERSEDED FOR RECONSTRUCTION by N16's frozen surface bytes
+  (`v0surf_frozen_2026-07-31/v0surf.pkl`, md5 84fb0cde…) plus `L3_T1_state.diff`, which does
+  carry its binary and does round-trip. Kept as the L1-exit record, not as a build input.

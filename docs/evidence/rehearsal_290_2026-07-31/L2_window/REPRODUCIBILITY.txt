@@ -1,0 +1,23 @@
+IN-CONTAINER REPRODUCIBILITY OF THE RECONSTRUCTED L1-EXIT STATE
+#290, L2 seat, 2026-07-31.
+
+Two independent runs of (bootstrap -> rl_export.py -> one_source_selftest.py) on the same
+reconstructed L1-exit tree, strictly serial, preboot assert before each seeding:
+
+  run 1   board 120s   selftest 88s
+  run 2   board 110s   selftest 91s   board rl_app_data md5 = 1432f5e4d6a2316ca1da8efc596b42af
+
+  selftest output, run 1 md5 : 8d769d42b38dc41f475a0eef30b9058e
+  selftest output, run 2 md5 : 8d769d42b38dc41f475a0eef30b9058e
+  -> BYTE-IDENTICAL across all 97 check lines. 96 PASS / 1 FAIL both times.
+     G-Y0 = 13.919% both times.
+
+The single committed copy is selftest_L1_reconstructed.txt; the second run produced the
+same bytes, so it is recorded here rather than duplicated.
+
+CONCLUSION (measured): G-Y0 13.919% is DETERMINISTIC in this container. It is therefore a
+container-specific value, not run-to-run noise. The record's 19.869% was measured in a
+different container. See V0SURF_DIVERGENCE.md.
+
+The v0surf refit lane was likewise byte-deterministic here: two independent --bake runs both
+produced md5 84fb0cde29f36c1a91d440e63b753c3c.

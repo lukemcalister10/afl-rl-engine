@@ -1,0 +1,7 @@
+HARNESS SELF-CHECK
+  store 81d24704  v0surf 96d671c952c8  n=1197
+  provenance: {"counts": {"completed": 301, "concluded_realised": 825, "prior_fallback_thin": 71}, "fallback_rows": 71, "of_population": 1197, "fallback_share_pct": 5.931}
+  folds k=5 seed=20260730 fingerprint=66d46e0103ce
+  fold sizes: {0: 240, 1: 240, 2: 239, 3: 239, 4: 239}
+  establishment: never_established true on 265 of 1197
+  mean structural value: 871.3

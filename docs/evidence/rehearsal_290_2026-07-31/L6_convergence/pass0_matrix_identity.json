@@ -1,0 +1,14 @@
+{
+ "pass": 0,
+ "matrix_md5": "9c4bca53b738452739c353d94fe99928",
+ "matrix_meta": {
+  "store_md5": "81d24704",
+  "v0surf_sig": "96d671c952c819fa64df0b5d1a402f1e",
+  "v0surf_frozen": true,
+  "n_records": 2646
+ },
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "emit_seconds": 183,
+ "routing": "backup -> emit -> capture -> restore; restore PROVEN by md5 2f8b4bd4 -> 2f8b4bd4",
+ "prior_matrix_md5": "a216e6e647ffbbdb992bfcb9d397fb52"
+}

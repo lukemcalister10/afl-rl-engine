@@ -1,0 +1,35 @@
+STATE-DIFF BASE ANNOTATION — L6_pass0_state.diff
+================================================
+Filed 2026-07-31 by the #290 execution seat, under the v553 clause: a state diff names its base
+commit beside itself. Written AT GENERATION.
+
+WHY THIS FILE EXISTS AND L4_state.diff NO LONGER SUFFICES
+  L6 pass 0 REFIT THE SURFACE. data/v0surf.pkl moved 84fb0cde -> fb9efdec and
+  data/expected_boot.json's 'v0surf' pin moved with it (the declared lane re-pins it itself).
+  L4_state.diff was an exact capture of the tree from L4 through L5 and the R-F sweep — verified
+  byte-identical at each of those boundaries — and pass 0 is the first act since L4 to move a
+  product file. It therefore SUPERSEDES L4_state.diff as the live capture.
+  L4_state.diff is NOT stale as a record: it remains the exact capture of the L4-exit tree, and
+  the L4 filing cites it as such. Two captures, two states, neither overwritten.
+
+THE ARTIFACT
+  file        L6_pass0_state.diff
+  md5         13b71c26934d8a5b62c4f3ac1fa22137
+  size        1453345 bytes
+  sections    19 `diff --git` · 2 `GIT binary patch`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   f0128d6   "#290 L6 pass 0: both R-H gates PASS ..."
+  ON            the #290 carrier line, branch claude/exec-seat-290-handoff-j0kwl0
+
+WHAT IT CAPTURES
+  The L1+L2+L3 substrate, L4's build fixes / census / stamps / retrained artifacts, AND L6 pass 0's
+  refitted surface fb9efdec with its re-pinned expected_boot.v0surf.
+  Substrate: store 81d24704 · v0surf fb9efdec · gamma 1.0 · curve e69a3f38 · board 978c0eb3.
+
+WHAT IT CANNOT CARRY — unchanged from L4, and stated again rather than assumed known
+  `git diff` covers TRACKED files only. The two untracked tier-2 stamps
+  engine/rl_after/peak_model_v4.pkl.srcmd5 and engine/rl_after/pvc_snapshot.json.srcmd5 are NOT in
+  this diff. They regenerate from the peak build (31s) and their md5s are recorded in the R-A
+  freeze provenance.

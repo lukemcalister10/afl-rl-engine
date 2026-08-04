@@ -1,0 +1,36 @@
+STATE-DIFF BASE ANNOTATION — L6_pass2_exit_state.diff
+================================================
+Filed 2026-08-04 by the fresh #290 execution seat. Written AT GENERATION.
+
+WHY THIS FILE EXISTS
+  L6 PASS 2 installed CURVE 2 (ca662051) through the same enumerated set and re-fit the surface
+  aaf45964 -> 864c11b9 (shipped signature 6afe678c73dc -> 8291668eff41). Five product files moved,
+  so under R-J the capture refreshes in the SAME evidence commit as the acts that moved them.
+  Prior captures are sealed, never overwritten: L4_state.diff 2cc5041c · L6_pass0_state.diff
+  13b71c26 · L6_pass1_state.diff b5bc9550 · L6_pass1_exit_state.diff 6790c706.
+
+THE ARTIFACT
+  file        L6_pass2_exit_state.diff
+  md5         d0143b5eb31f69b11ed05ce13ef3f330
+  sections    19 `diff --git` · 2 `GIT binary patch`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   b5e019e   "#290 L6 pass 2 under R-H: curve 2 installed — G-Y0 8.084% -> 11.030% ..."
+  ON            claude/exec-seat-290-handoff-d7bnaa
+
+WHAT IT CAPTURES
+  Substrate: store 81d24704 · v0surf 864c11b9 (sig 8291668eff41) · gamma 1.0 · curve ca662051 ·
+  pool_value 233.3. The board/book/G-Y0 for this substrate are measured AFTER this commit and filed
+  with the pass-2 measurement.
+
+WHAT IT CANNOT CARRY
+  The two untracked tier-2 stamps (peak_model_v4.pkl.srcmd5 d14f0f12 · pvc_snapshot.json.srcmd5
+  aaccad1c) — regenerable exactly from the artifact bytes via single_source.stamp_tier2_frozen.
+
+WHAT THIS EXIT CAPTURE ADDS OVER L6_pass2_state.diff
+  The 20th section: the disclosed re-pin of
+  session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py,
+  EXPECT_V0SURF 6afe678c73dc -> 8291668eff41, which curve 3's derivation required. Filed with the
+  derivation it belongs to, per R-J. L6_pass2_state.diff (37c575dc) is sealed as the pass-2
+  install-and-refit record.
