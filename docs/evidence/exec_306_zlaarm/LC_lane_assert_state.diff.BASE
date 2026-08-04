@@ -1,0 +1,45 @@
+STATE-DIFF BASE ANNOTATION — LC_lane_assert_state.diff
+======================================================
+Filed 2026-08-04 by the #306 execution seat zlaarm under N18. Written AT GENERATION, with the
+evidence tree COMMITTED FIRST and docs/ excluded from the capture — the two rules the earlier
+capture defects taught.
+
+FIVE captures now stand, none overwritten:
+  13b71c26  pass-0 — still the substrate N35's fit-path assert is defined on
+  02e248dc  the VOIDED flat-lens attempt
+  8650c060  the lens field whose acceptance FAILED limb 1
+  59ef1940  the lens field with neutrality on the applied population — L-A ACCEPTED
+  e950866017fc47575846e5e3c9a25388  THIS — the same, plus L-C's cross-host byte-assert wired into the lane
+
+THE ARTIFACT
+  file        LC_lane_assert_state.diff
+  md5         e950866017fc47575846e5e3c9a25388
+  sections    19 `diff --git`   (the 19 substrate paths; docs/ excluded by pathspec)
+  generated   `git diff --binary -- . ':(exclude)docs/'`
+
+THE BASE OF RECORD
+  BASE COMMIT   352a51e      ON  claude/exec-seat-306-afl-rl-zlaarm
+
+WHAT CHANGED FROM 59ef1940 — ONE FILE, ONE ADDITION
+  engine/rl_after/_merged_recover.py gains the L-C assert at the end of the lens fit. It computes a
+  digest over the FITTED GRIDS THEMSELVES and compares it to a recorded expectation keyed on the
+  DECLARED INPUTS (basis md5 | anchor payload | roster composition digest).
+    inputs match + bytes match      -> PASS
+    inputs match + bytes differ     -> HALT, naming both digests
+    inputs do NOT match             -> INAPPLICABLE, and it says so
+  The third branch is the one that matters for honesty: a legitimate re-basis must never read as a
+  green cross-host proof. It compares FITTED OUTPUT BYTES — never a library version, never a pin
+  hash, never a CPU string.
+
+NON-VACUITY, PROVEN BOTH DIRECTIONS ON THIS BOX
+  PASS  the recorded expectation reproduces: b760b17ea3ab76acdad81bf87f2b90ad
+  FIRE  the expectation corrupted in one field -> the lane HALTED and named expected vs got
+  The box itself was classified FIT-CLASS by N35 (fb9efdec) before either was trusted.
+
+NOT BAKED. data/v0surf.pkl unmoved at fb9efdec; the re-pin is the bake act and it waits.
+
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS-0 (required before every N35 assert):
+  git checkout -- . && git apply --binary <...>/L6_pass0_state.diff ; re-stamp the two .srcmd5.
+  `git stash` on a single substrate file reverts it PAST the substrate to HEAD — never use it here.
