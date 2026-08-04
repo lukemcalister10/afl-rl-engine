@@ -1,0 +1,53 @@
+STATE-DIFF BASE ANNOTATION — L6_pass1_exit_state.diff
+=====================================================
+Filed 2026-08-04 by the fresh #290 execution seat, under the v553 clause: a state diff names its base
+commit beside itself. Written AT GENERATION.
+
+WHY THIS FILE EXISTS AND L6_pass1_state.diff NO LONGER SUFFICES
+  L6_pass1_state.diff captured the tree at the moment the install and the refit completed, and it was
+  filed in the SAME evidence commit as those acts (627ce53), as R-J requires. The pass then continued:
+  the matrix was re-emitted and CURVE 2 derived, and that derivation required one further tracked-file
+  act — the disclosed re-pin of
+      session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py
+      EXPECT_V0SURF  96d671c952c8 -> 6afe678c73dc   (surface fb9efdec -> aaf45964)
+  because the shipped v0surf signature moved when the curve moved. That is a 20th section this capture
+  carries and the previous one does not.
+  R-J again: an act touching a tracked file refreshes the capture IN THE SAME evidence commit. So this
+  capture is filed with the derivation it belongs to.
+
+  NEITHER PRIOR CAPTURE IS OVERWRITTEN. Four captures now, four states, each sealed as the exact record
+  of its own:
+      L4_state.diff              2cc5041c   the L4-exit tree
+      L6_pass0_state.diff        13b71c26   the pass-0 tree (round-trip re-proven on this container)
+      L6_pass1_state.diff        b5bc9550   the pass-1 install-and-refit tree
+      L6_pass1_exit_state.diff   6790c706   THIS ONE — the pass-1 EXIT tree
+
+THE ARTIFACT
+  file        L6_pass1_exit_state.diff
+  md5         6790c706a94e2ea7720be996f55e67c8
+  size        1458083 bytes
+  sections    20 `diff --git` · 2 `GIT binary patch`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   627ce53   "#290 L6 pass 1 under R-H: curve 1 installed, surface re-fit, both committed
+                           as bytes BEFORE the engine loads them"
+  ON            the fresh execution seat's designated branch claude/exec-seat-290-handoff-d7bnaa
+
+WHAT IT CAPTURES
+  Everything L6_pass1_state.diff captured, PLUS the harness re-pin.
+  Substrate: store 81d24704 · v0surf aaf45964 (sig 6afe678c73dc) · gamma 1.0 · curve 1a8db02b ·
+  pool_value 233.4 · board f69f0c27 · book f8e5d136 · G-Y0 11.030%.
+
+WHAT IT CANNOT CARRY — unchanged, and stated again rather than assumed known
+  `git diff` covers TRACKED files only. The two untracked tier-2 stamps
+  engine/rl_after/peak_model_v4.pkl.srcmd5 and engine/rl_after/pvc_snapshot.json.srcmd5 are NOT in
+  this diff. Their md5s are pinned in the R-A freeze provenance (d14f0f12 / aaccad1c) and they
+  regenerate EXACTLY from the artifact bytes via the engine's own writer,
+  single_source.stamp_tier2_frozen — at zero compute and without a refit.
+
+WHAT IS DELIBERATELY NOT IN IT
+  session_2026-07-29/item271/out/per_entrant_271.json is at 2f8b4bd4, its pre-emit value, RESTORED and
+  PROVEN — so the matrix re-emit leaves no trace in this capture, which is the intended result of the
+  backup -> emit -> capture -> restore routing. The emitted matrix lives committed, as bytes, at
+  pass1_matrix.json (143dcbad).

@@ -37,6 +37,32 @@ the header above documented only two of the three moves this file has actually c
   (Note: that committed matrix carries store 265f55d5 and v0surf 85e57195189b, so it satisfies
   NEITHER of this harness's pins either — the harness has never had a committed input until now.)
 
+RE-PINNED 2026-08-04 by #290 L6 PASS 1, one disclosed act under R-H. Pass 1 INSTALLED CURVE 1
+(e69a3f38 -> 1a8db02b), so the shipped v0surf signature moved and the surface was re-fit through the
+one declared lane:
+
+  EXPECT_V0SURF  '96d671c952c8'  ->  '6afe678c73dc'   (surface fb9efdec -> aaf45964)
+  EXPECT_STORE   '81d24704'      ->  '81d24704'       (UNCHANGED — the store did not move)
+  EXPECT_N       1197            ->  1197             (RE-MEASURED on the pass-1 matrix, never
+                                                       assumed: teaches_curve 1444 -> pick 1..64
+                                                       -> years 2004..2022 = 1197)
+
+  THE ASSERT WAS PROVEN ABLE TO FIRE BEFORE THE PIN MOVED, in both directions:
+    old pin 96d671c9  vs  PASS-1 matrix (sig 6afe678c)  -> AssertionError, names both values
+    old pin 96d671c9  vs  PASS-0 matrix (sig 96d671c9)  -> loads, ND population 1197
+  and again after the pin moved, with the two matrices swapped. A pinned-input instrument whose pin
+  is never re-proven is hazard class 5 wearing a safety costume.
+
+  THE INPUT IS COMMITTED, per the generalised freeze law:
+      docs/evidence/rehearsal_290_2026-07-31/L6_convergence/pass1_matrix.json
+      md5 143dcbad8bef81264a79ca748c9a7823 | store 81d24704 | v0surf_sig 6afe678c73dc482e548c287e805ac1fb
+  Re-emitted through the declared emitter (167s) on the pass-1 substrate; the emitter writes in place
+  to session_2026-07-29/item271/out/per_entrant_271.json, so the re-emit ran
+  backup -> emit -> capture -> restore with the restore PROVEN by md5 (2f8b4bd4 -> 2f8b4bd4), git clean.
+
+  R-J, applied to an instrument rather than a capture: an instrument pinned to a substrate that has
+  moved is as stale as a capture that has. "I checked this before" is not a check.
+
 #279 FOUR-FITTER PVC PANEL — the SHARED, FROZEN harness. Phase 1.
 
 Every fitter imports this and MUST NOT modify it. It fixes, once, for all four fitters:
@@ -59,8 +85,8 @@ import numpy as np
 
 # ---- the committed identity this panel is pinned to ----
 EXPECT_STORE = '81d24704'
-EXPECT_V0SURF = '96d671c952c8'   # re-pinned 2026-07-31 (#290 L3); full chain in the header
-EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-07-31, not assumed
+EXPECT_V0SURF = '6afe678c73dc'   # re-pinned 2026-08-04 (#290 L6 pass 1); full chain in the header
+EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-08-04, not assumed
 CLASS_CUT = 2022
 K_FOLDS = 5
 FOLD_SEED = 20260730

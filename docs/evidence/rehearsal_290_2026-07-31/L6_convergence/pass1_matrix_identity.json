@@ -1,0 +1,17 @@
+{
+ "pass": 1,
+ "matrix_md5": "143dcbad8bef81264a79ca748c9a7823",
+ "matrix_meta": {
+  "store_md5": "81d24704",
+  "v0surf_sig": "6afe678c73dc482e548c287e805ac1fb",
+  "v0surf_frozen": true,
+  "n_records": 2646
+ },
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "emit_seconds": 167,
+ "routing": "backup -> emit -> capture -> restore; restore PROVEN by md5 2f8b4bd4 -> 2f8b4bd4, git clean",
+ "prior_matrix_md5": "9c4bca53b738452739c353d94fe99928",
+ "deriver": "session_2026-07-30/item279/panel/pooled_numeraire.py (byte-identical copy, run so its own dir resolves harness_pvc to the re-pinned harness)",
+ "harness": "session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py, EXPECT_V0SURF re-pinned 96d671c952c8 -> 6afe678c73dc, assert proven able to fire in both directions before and after",
+ "derive_seconds": 1
+}
