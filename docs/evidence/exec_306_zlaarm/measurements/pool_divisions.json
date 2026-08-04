@@ -3,7 +3,7 @@
  "OPTIMISM": "+4.7% to +8.4% (completion method) \u2014 inherited, reported, never corrected",
  "basis": "harness_pvc definitions: concluded realized in full \u00b7 never-established at 0.0 (busts full weight) \u00b7 active completed by concluded look-alikes (min stratum 20) \u00b7 model prior ONLY as a counted fallback",
  "by_division_age": {
-  "IRE \u2014 international rookie": {
+  "IRE \u2014 post-draft Ireland": {
    "18": {
     "mean": 151.5,
     "median": 0.0,
@@ -241,7 +241,7 @@
     "zero_share_pct": 0.0
    }
   },
-  "PDA \u2014 pre-season draft (A)": {
+  "PDA \u2014 post-draft academy": {
    "17": {
     "mean": 446.5,
     "median": 446.5,
@@ -291,7 +291,7 @@
     "zero_share_pct": 100.0
    }
   },
-  "PDN \u2014 pre-season draft (N)": {
+  "PDN \u2014 post-draft next-gen": {
    "17": {
     "mean": 0.0,
     "median": 0.0,
@@ -349,7 +349,7 @@
     "zero_share_pct": 0.0
    }
   },
-  "PDS \u2014 pre-season draft (S)": {
+  "PDS \u2014 post-draft scholarship": {
    "18": {
     "mean": 75.7,
     "median": 0.0,
@@ -571,7 +571,7 @@
     "zero_share_pct": 33.3
    }
   },
-  "UNR \u2014 untagged / unresolved": {
+  "UNR \u2014 post-draft unregistered": {
    "17": {
     "mean": 0.0,
     "median": 0.0,
@@ -745,7 +745,7 @@
   }
  },
  "by_division_position": {
-  "IRE \u2014 international rookie": {
+  "IRE \u2014 post-draft Ireland": {
    "KPD": {
     "mean": 127.8,
     "median": 0.0,
@@ -895,7 +895,7 @@
     "zero_share_pct": 46.7
    }
   },
-  "PDA \u2014 pre-season draft (A)": {
+  "PDA \u2014 post-draft academy": {
    "KPD": {
     "mean": 576.8,
     "median": 576.8,
@@ -945,7 +945,7 @@
     "zero_share_pct": 28.6
    }
   },
-  "PDN \u2014 pre-season draft (N)": {
+  "PDN \u2014 post-draft next-gen": {
    "KPD": {
     "mean": 374.9,
     "median": 471.0,
@@ -995,7 +995,7 @@
     "zero_share_pct": 50.0
    }
   },
-  "PDS \u2014 pre-season draft (S)": {
+  "PDS \u2014 post-draft scholarship": {
    "KPD": {
     "mean": 160.6,
     "median": 91.5,
@@ -1145,7 +1145,7 @@
     "zero_share_pct": 18.8
    }
   },
-  "UNR \u2014 untagged / unresolved": {
+  "UNR \u2014 post-draft unregistered": {
    "KPD": {
     "mean": 115.7,
     "median": 72.3,
@@ -1247,7 +1247,7 @@
   }
  },
  "divisions": {
-  "IRE \u2014 international rookie": {
+  "IRE \u2014 post-draft Ireland": {
    "fallback_share_pct": 19.3,
    "mean": 148.6,
    "median": 0.0,
@@ -1287,7 +1287,7 @@
    },
    "zero_share_pct": 45.8
   },
-  "PDA \u2014 pre-season draft (A)": {
+  "PDA \u2014 post-draft academy": {
    "fallback_share_pct": 29.4,
    "mean": 243.9,
    "median": 163.4,
@@ -1300,7 +1300,7 @@
    },
    "zero_share_pct": 45.1
   },
-  "PDN \u2014 pre-season draft (N)": {
+  "PDN \u2014 post-draft next-gen": {
    "fallback_share_pct": 37.2,
    "mean": 174.4,
    "median": 0.0,
@@ -1313,7 +1313,7 @@
    },
    "zero_share_pct": 53.5
   },
-  "PDS \u2014 pre-season draft (S)": {
+  "PDS \u2014 post-draft scholarship": {
    "fallback_share_pct": 0.0,
    "mean": 80.1,
    "median": 0.0,
@@ -1352,7 +1352,7 @@
    },
    "zero_share_pct": 30.8
   },
-  "UNR \u2014 untagged / unresolved": {
+  "UNR \u2014 post-draft unregistered": {
    "fallback_share_pct": 20.3,
    "mean": 109.3,
    "median": 0.0,

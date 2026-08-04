@@ -17,6 +17,8 @@ METHOD -- the ruled basis, inherited, never reinvented
 
 RULES OBSERVED
   · every count names its denominator · untagged rows are REPORTED, never imputed
+  · every level carries its PROVENANCE SHARE beside it (seam hand-back F2): a blended mean that is
+    part model-prior must say so, or it reads as more measured than it is
   · per-division AND per-division x position x age · thin cells are named, never smoothed into
     confident numbers -- where n is small the reader is told so rather than shown false precision
   · read-only: no engine act, no bake, nothing written outside this directory
@@ -31,9 +33,13 @@ REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(HERE))))
 PANEL = os.path.join(REPO, 'session_2026-07-30/item279/panel')
 MATRIX = os.path.join(REPO, 'session_2026-07-30/item279/out/per_entrant_279_vor.json')
 MATRIX_MD5 = '77eba4d308a27a881b36a5424d3bb389'
+# CORRECTION 2026-08-04 (owner-caught, seam hand-back F1): PD* is POST-DRAFT, not pre-season, and
+# UNR/IRE are real post-draft pathways rather than missing data. The primary record carries this
+# taxonomy owner-corrected once already (docs/archive/HANDOVER_historical.md). LABELS ONLY — every
+# grouping and every number here is keyed on the raw tag and is UNCHANGED by this correction.
 DIV = {'RD': 'rookie draft', 'MSD': 'mid-season draft', 'SSP': 'supplemental selection',
-       'PDA': 'pre-season draft (A)', 'PDN': 'pre-season draft (N)', 'PDS': 'pre-season draft (S)',
-       'ND': 'national selection at 65+', 'IRE': 'international rookie', 'UNR': 'untagged / unresolved'}
+       'PDA': 'post-draft academy', 'PDN': 'post-draft next-gen', 'PDS': 'post-draft scholarship',
+       'ND': 'national selection at 65+', 'IRE': 'post-draft Ireland', 'UNR': 'post-draft unregistered'}
 MIN_SHOW = 20
 
 
@@ -104,15 +110,17 @@ def main():
     print('BASIS  %s' % out['basis'])
     print('OPTIMISM  %s' % out['OPTIMISM'])
     print('NOTHING HERE SETS A LEVEL — the pool stays as-is, NAMED UNRESOLVED, until the owner rules.\n')
-    print('%-44s %6s %9s %9s %8s %9s %9s' % ('division', 'n', 'mean', 'median', 'zero%', 'p25', 'p75'))
+    print('%-40s %6s %9s %9s %7s %8s %9s %9s' % ('division', 'n', 'mean', 'median', 'zero%',
+                                                       'prior%', 'p25', 'p75'))
     for name, rows in groups.items():
         vals, prov = structural(rows)
         d = desc([v for _, v, _ in vals]); d['provenance'] = prov
         d['fallback_share_pct'] = round(100.0 * prov.get('prior_fallback', 0) / len(rows), 1)
         out['divisions'][name] = d
         flag = '' if d['n'] >= MIN_SHOW else '   << THIN (n<%d): read as indicative only' % MIN_SHOW
-        print('%-44s %6d %9.1f %9.1f %7.1f%% %9.1f %9.1f%s'
-              % (name[:44], d['n'], d['mean'], d['median'], d['zero_share_pct'], d['p25'], d['p75'], flag))
+        print('%-40s %6d %9.1f %9.1f %6.1f%% %7.1f%% %9.1f %9.1f%s'
+              % (name[:40], d['n'], d['mean'], d['median'], d['zero_share_pct'],
+                 d['fallback_share_pct'], d['p25'], d['p75'], flag))
 
     for name, rows in groups.items():
         vals, _ = structural(rows)
