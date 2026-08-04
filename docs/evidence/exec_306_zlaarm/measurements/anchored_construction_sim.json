@@ -1,0 +1,192 @@
+{
+ "NOT_AN_ACCEPTANCE_RUN": "the engine fits m from _v0_raw; acceptance is measured on the artifact, never here. Nothing here is a gated G-Y0.",
+ "POPULATION_WARNING": "FIT population (teaches_curve, picks 1-64) \u2014 NOT the gate's set.",
+ "anchor_curve_payload": "e69a3f38",
+ "bust_inversion_under_construction": {
+  "reading": "Within a cell the inversion is structurally impossible under this construction (same anchor, same lens, games played is not an input). What remains is the across-cell residual shown here \u2014 the construction is CHECKED against it and does not DEPEND on it.",
+  "today": {
+   "inverted": true,
+   "n_never": 166,
+   "n_played": 347,
+   "never_played_mean_v0": 387.1,
+   "played_mean_v0": 302.2
+  },
+  "under_construction_lens_only": {
+   "inverted": true,
+   "never_played_mean_m": 1.0076,
+   "played_mean_m": 0.9578,
+   "residual_inversion_ratio": 1.052
+  }
+ },
+ "by_band": [
+  {
+   "after_gap_pct": 0.795,
+   "after_ratio": 1.007952,
+   "band": "1-10",
+   "before_gap_pct": -6.099,
+   "before_ratio": 0.939015,
+   "move_pp": 6.894,
+   "rows": 229
+  },
+  {
+   "after_gap_pct": -0.35,
+   "after_ratio": 0.996498,
+   "band": "11-20",
+   "before_gap_pct": -1.029,
+   "before_ratio": 0.989707,
+   "move_pp": 0.679,
+   "rows": 228
+  },
+  {
+   "after_gap_pct": -0.775,
+   "after_ratio": 0.992247,
+   "band": "21-30",
+   "before_gap_pct": 2.365,
+   "before_ratio": 1.023648,
+   "move_pp": -3.14,
+   "rows": 230
+  },
+  {
+   "after_gap_pct": 0.467,
+   "after_ratio": 1.004667,
+   "band": "31-45",
+   "before_gap_pct": 18.896,
+   "before_ratio": 1.188962,
+   "move_pp": -18.429,
+   "rows": 345
+  },
+  {
+   "after_gap_pct": -1.78,
+   "after_ratio": 0.982201,
+   "band": "46-64",
+   "before_gap_pct": 65.283,
+   "before_ratio": 1.652831,
+   "move_pp": -67.063,
+   "rows": 412
+  }
+ ],
+ "cells": 17,
+ "design_constants": {
+  "aggregate_tolerance": 0.005,
+  "bound_B": 2.0,
+  "m_range": [
+   0.5,
+   2.0
+  ],
+  "min_cell": 25
+ },
+ "lens": {
+  "KPD|18": {
+   "m": 1.3325,
+   "raw": 1.4407,
+   "rows": 121
+  },
+  "KPD|ALL": {
+   "m": 1.2428,
+   "raw": 1.3437,
+   "rows": 32
+  },
+  "KPF|18": {
+   "m": 0.5,
+   "raw": 0.4996,
+   "rows": 131
+  },
+  "KPF|ALL": {
+   "m": 0.7075,
+   "raw": 0.765,
+   "rows": 15
+  },
+  "KPF|na": {
+   "m": 0.5,
+   "raw": 0.5175,
+   "rows": 27
+  },
+  "MID|18": {
+   "m": 1.1609,
+   "raw": 1.2552,
+   "rows": 332
+  },
+  "MID|ALL": {
+   "m": 1.0741,
+   "raw": 1.1613,
+   "rows": 45
+  },
+  "MID|na": {
+   "m": 1.1615,
+   "raw": 1.2558,
+   "rows": 55
+  },
+  "RUCK|18": {
+   "m": 0.9294,
+   "raw": 1.0049,
+   "rows": 47
+  },
+  "RUCK|ALL": {
+   "m": 1.1502,
+   "raw": 1.2436,
+   "rows": 29
+  },
+  "SD|18": {
+   "m": 0.9717,
+   "raw": 1.0507,
+   "rows": 232
+  },
+  "SD|ALL": {
+   "m": 0.9643,
+   "raw": 1.0426,
+   "rows": 42
+  },
+  "SD|na": {
+   "m": 0.9142,
+   "raw": 0.9885,
+   "rows": 32
+  },
+  "SF|18": {
+   "m": 0.93,
+   "raw": 1.0056,
+   "rows": 222
+  },
+  "SF|21+": {
+   "m": 0.631,
+   "raw": 0.6822,
+   "rows": 25
+  },
+  "SF|ALL": {
+   "m": 0.963,
+   "raw": 1.0412,
+   "rows": 28
+  },
+  "SF|na": {
+   "m": 0.9314,
+   "raw": 1.0071,
+   "rows": 29
+  }
+ },
+ "matrix_md5": "9c4bca53b738452739c353d94fe99928",
+ "neutrality": {
+  "achieved_ratio": 1.0,
+  "cells_where_bound_binds": [
+   [
+    "KPF",
+    "18"
+   ],
+   [
+    "KPF",
+    "na"
+   ]
+  ],
+  "within_tolerance": true
+ },
+ "pool_coherence_by_construction": {
+  "curve_64": 221.0,
+  "holds_below_curve64_for_all_m": false,
+  "implied_anchor_65": 212.35,
+  "max_B_that_would_guarantee_it": 1.0407,
+  "n": 1202,
+  "reading": "With the pool anchored at index 65 and the curve strictly decreasing, the pool sits below the last national band FOR EVERY lens value iff B <= curve[64]/anchor(65). That is a provable property of the construction, not a check applied afterwards. The pool LEVEL stays out of scope (ITEM 412 / #207) \u2014 this constrains coherence only.",
+  "today_mean_pool_v0": 435.63,
+  "worst_case_pool_value_at_bound_B": 424.7
+ },
+ "rows": 1444,
+ "what": "DESIGN SIMULATION of v0* = anchor(pick) x m(pos,age) on committed pass-0 rows"
+}

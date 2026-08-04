@@ -1,0 +1,166 @@
+{
+ "POPULATION_WARNING": "FIT population (teaches_curve rows, picks 1-64) \u2014 NOT the G-Y0 gate's ~1,326-row population. Never quote a figure from here as a gated G-Y0.",
+ "aggregate": {
+  "gap_pct": 7.6437,
+  "ratio": 1.076437,
+  "reading": "a lens that redistributes nets to 1.0; this is what it nets to",
+  "sum_anchor": 1247531.0,
+  "sum_v0": 1342889.0
+ },
+ "anchor_curve_payload": "e69a3f38",
+ "bound_required_by_todays_lens": {
+  "overall_m_max": 3.9873,
+  "overall_m_min": 0.2676,
+  "overall_m_p99": 2.8617,
+  "reading": "a symmetric bound B containing every ROW is far wider than one containing every BAND AGGREGATE. N30 bounds the band, not the row \u2014 these are the two candidate readings and the design must state which it adopts.",
+  "worst_band_aggregate_m": 1.6528
+ },
+ "bust_inversion": {
+  "inverted": true,
+  "never_played": {
+   "mean_v0": 387.1,
+   "n": 166
+  },
+  "played": {
+   "mean_v0": 302.2,
+   "n": 347
+  },
+  "reading": "a quantity where busts outscore contributors cannot set an entry level. The construction is CHECKED against this and must not DEPEND on it."
+ },
+ "by_band": {
+  "1-10": {
+   "band_gap_pct": -6.0985,
+   "band_ratio": 0.939015,
+   "m_max": 1.3924,
+   "m_median": 1.0529,
+   "m_min": 0.2676,
+   "m_p10": 0.3616,
+   "m_p90": 1.3068,
+   "rows": 229
+  },
+  "11-20": {
+   "band_gap_pct": -1.0293,
+   "band_ratio": 0.989707,
+   "m_max": 1.4874,
+   "m_median": 0.9972,
+   "m_min": 0.3755,
+   "m_p10": 0.5315,
+   "m_p90": 1.324,
+   "rows": 228
+  },
+  "21-30": {
+   "band_gap_pct": 2.3648,
+   "band_ratio": 1.023648,
+   "m_max": 1.5744,
+   "m_median": 0.9914,
+   "m_min": 0.5626,
+   "m_p10": 0.7103,
+   "m_p90": 1.2604,
+   "rows": 230
+  },
+  "31-45": {
+   "band_gap_pct": 18.8962,
+   "band_ratio": 1.188962,
+   "m_max": 2.1424,
+   "m_median": 1.1882,
+   "m_min": 0.3583,
+   "m_p10": 0.7764,
+   "m_p90": 1.6754,
+   "rows": 345
+  },
+  "46-64": {
+   "band_gap_pct": 65.2831,
+   "band_ratio": 1.652831,
+   "m_max": 3.9873,
+   "m_median": 1.6152,
+   "m_min": 0.4835,
+   "m_p10": 0.988,
+   "m_p90": 2.452,
+   "rows": 412
+  }
+ },
+ "by_draft_age": {
+  "16": {
+   "ratio": 1.2421,
+   "rows": 1
+  },
+  "17": {
+   "ratio": 1.1625,
+   "rows": 56
+  },
+  "18": {
+   "ratio": 1.0816,
+   "rows": 1085
+  },
+  "19": {
+   "ratio": 1.1607,
+   "rows": 47
+  },
+  "20": {
+   "ratio": 1.0262,
+   "rows": 20
+  },
+  "21": {
+   "ratio": 0.815,
+   "rows": 23
+  },
+  "22": {
+   "ratio": 0.7604,
+   "rows": 18
+  },
+  "23": {
+   "ratio": 0.531,
+   "rows": 10
+  },
+  "24": {
+   "ratio": 0.8464,
+   "rows": 5
+  },
+  "25": {
+   "ratio": 0.5483,
+   "rows": 2
+  },
+  "26": {
+   "ratio": 0.5407,
+   "rows": 2
+  }
+ },
+ "by_position": {
+  "KPD": {
+   "ratio": 1.4225,
+   "rows": 153
+  },
+  "KPF": {
+   "ratio": 0.5166,
+   "rows": 173
+  },
+  "MID": {
+   "ratio": 1.2486,
+   "rows": 432
+  },
+  "RUCK": {
+   "ratio": 1.0782,
+   "rows": 76
+  },
+  "SD": {
+   "ratio": 1.0424,
+   "rows": 306
+  },
+  "SF": {
+   "ratio": 0.9927,
+   "rows": 304
+  }
+ },
+ "matrix_md5": "9c4bca53b738452739c353d94fe99928",
+ "pool_coherence": {
+  "curve_64": 221.0,
+  "mean_above_curve64": true,
+  "mean_v0": 435.63,
+  "median_v0": 438.5,
+  "n": 1202,
+  "reading": "one_source_selftest records \"the pool sits BELOW the curve, by construction\" as a structural truth. Measured here against curve[64] on this substrate.",
+  "share_above_curve64": 83.78
+ },
+ "rows": 1444,
+ "what": "the modulation m = v0 / curve[pick] the CURRENT surface applies, before redesign"
+}
