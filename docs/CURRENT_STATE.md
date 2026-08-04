@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v50 · supervisor pen · 2026-08-04, register v558
+# CURRENT STATE — the incoming-seat read · v51 · supervisor pen · 2026-08-04, register v559
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -108,67 +108,58 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v50 · supervisor pen · 2026-08-04, register v558 · replaced wholesale at the #306 FIRE pen — the year-zero
-redesign is FIRED; a fresh cold execution seat opens on the owner's paste)
+(v51 · supervisor pen · 2026-08-04, register v559 · replaced wholesale at the #306-go + SEAM-ROTATION pen —
+this Part B is the seam handover artifact; the sitting seam raised its own rotation at ~430k, charter C3/M3)
 
-## THE ERA: THE CONSISTENCY ERA — **#306 IS FIRED** (owner word, #306 comment 5174594459). Main is the v558
-pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON MAIN** (`ab68430`;
-awaits the owner's close click). **#290:** L6 exited on an exact period-2 cycle (v556); Path A is the owner's
-word; **the year-zero redesign directive #306 is FIRED with its full governing set**: the body + the pre-fire
-audit (5174229825, PASS with three conditions) + the owner's ANCHOR STEER (5174404784: *values anchor to
-measured pick outcomes; position/age modulate within bounds, never inflate*) + Addendum 1 (5174450071, C1–C2
-discharged) + the seam confirmation (5174497326, byte-identical script re-run; ACCEPTANCE 7 adopted —
-aggregate-neutral + band bounds, born failing at +8.4%/+64%; C3′ — first fit from ≥2 starting surfaces,
-byte-agreement or HALT). The record's LIVE carrier is **`claude/exec-seat-290-handoff-d7bnaa`** at
-**`7e9d7f9`** or a descendant (frozen ancestors j0kwl0 `8e8c15b` · fubolo `abf8f4c` · fp78jm `3cccb9d`). The
-halt substrate is HELD as captured (`L6_HALT_state.diff` `137c6d2c`, base `3ffbc1f`, applies at tip —
-re-verify, never assume). The **EXECUTION word remains WITHHELD**; nothing has landed at any point.
+## THE ERA: THE CONSISTENCY ERA — #306 IS FIRED AND ITS COLD SEAT HAS THE GO. Main is the v559 pen or a
+descendant; four gating workflows green at every content state. **#292 DONE AND ON MAIN** (`ab68430`; awaits
+the owner's close click). **#290:** L6 exited on an exact period-2 cycle (v556); Path A; **#306 (the
+year-zero redesign) is FIRED** with governing set: body + audit 5174229825 + the owner's ANCHOR STEER
+5174404784 (N29) + Addendum 1 5174450071 + confirmation 5174497326 (Acceptance 7 = N30 · C3′ = N31) + FIRE
+word 5174594459 + **the read-back audit, v50-correction, re-entry ruling and GO 5174786873**. The #306
+execution seat's read-back PASSED (its branch at `f169204` or a descendant); it CAUGHT a stale-recipe defect
+in v50 (seam-confirmed; corrected below). The record's LIVE carrier is **`claude/exec-seat-290-handoff-
+d7bnaa`** at **`7e9d7f9`** (frozen ancestors j0kwl0 `8e8c15b` · fubolo `abf8f4c` · fp78jm `3cccb9d`); the
+#306 seat's own branch carries its work and merges the carrier forward on the go. The **EXECUTION word
+remains WITHHELD**; nothing has landed at any point.
+
+## THE CAPTURE-TRIO TABLE — the v559 correction; A RECIPE IS CURRENT ONLY TO THE CAPTURE IT NAMES
+| capture | md5 | applying it yields `data/v0surf.pkl` | peak / pvc |
+|---|---|---|---|
+| `L6_pass0_state.diff` — **THE RULED RE-ENTRY STATE** | `13b71c26` | **`fb9efdec`** (installed curve `e69a3f38`) | `f305fe53` / `ade79790` |
+| `L6_HALT_state.diff` — the halt state, held | `137c6d2c` | **`31e7f00b`** (installed curve `ca662051`) | `f305fe53` / `ade79790` |
+| `L4_state.diff` — sealed L4 exit-record | `2cc5041c` | `84fb0cde` | `f305fe53` / `ade79790` |
+(v50's reconstruction line paired the halt capture with `fb9efdec` — WRONG, caught by the #306 seat's
+measurement, seam-confirmed by apply-and-hash of both captures. Verify the PAIR, never the prose.)
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Older standing law as v49 recorded it: N1–N28 stand (N16 superseded in part by N19; R-K = N25 amended by
-N27). This cycle:
-N29. **THE ANCHOR STEER (owner word, L-A's organizing principle):** year-zero values ANCHOR to the measured
-    pick outcomes; position and age MODULATE within bounds — redistribute, never inflate. The pick curve is
-    the skeleton the surface cannot leave; "by construction" bars post-hoc clamping. [#306 comment
-    5174404784 + Addendum 1 §A; v558]
-N30. **ACCEPTANCE 7 (seam word, owner-reversible):** the modulation is AGGREGATE-NEUTRAL against the anchor
-    to a stated tolerance and no band exceeds its stated bound; tolerance/bounds fixed at design time, each
-    limb fail-capable; born failing on today's artifact (+8.4% aggregate, +64% tail) — its own non-vacuity
-    proof. Measurable by the committed `tail_gap_by_band.py`. [#306 comment 5174497326; v558]
-N31. **C3′:** the executing seat's read-back names the INSTALLED CURVE it re-enters from and HOLDS; the
-    first fit under the new lane runs from ≥2 materially different held starting surfaces with
-    BYTE-AGREEMENT REQUIRED — disagreement = L-B failed, HALT. [#306 comment 5174497326; v558]
-N32. **THE KEY-TYPE IDENTITY FACT (L5 docket entry 11):** `sort_keys=True` orders string keys lexically and
-    int keys numerically — the same ladder hashes `b43a4231` (int-keyed) vs `1a8db02b` (string-keyed); the
-    payload-recipe NAMED HELPER remains OWED (E.5 finding 4 has bitten twice). [Addendum 1 §B; v558]
-N33. **THE `.srcmd5` LAWFUL ROUTE:** regenerate via `single_source.stamp_tier2_frozen` — a pure function of
-    the artifact bytes; NO peak rebuild (a model rebuild on a travelling substrate is a modelling act).
-    Expect `d14f0f12` / `aaccad1c`. [Addendum 1 §C; v558]
+Older standing law as v50 recorded it: N1–N33 stand. This cycle:
+N34. **RE-ENTRY = OPTION A, OPERATIONALIZED (seam word, owner-reversible):** L6 re-enters from the PASS-0
+    STATE — apply `13b71c26`; installed curve `e69a3f38` (the ruled curve of record, N6; the only candidate
+    not produced by the defective loop); no install act. C3′ satisfied from committed bytes: the first fit
+    runs from BOTH `fb9efdec` AND `31e7f00b`, byte-agreement required, disagreement = L-B failed → HALT
+    (`84fb0cde` optional third). [#306 comment 5174786873; v559]
 
 ## THE QUEUE
-- **#306 — A FRESH COLD SEAT OPENS on the owner's paste.** Opening order (§10 + Addendum 1 §C/§D + C3′):
-  (1) read `docs/CURRENT_STATE.md` IN FULL → **#306 IN FULL including every comment in order** → the L6
-  halt evidence on the live carrier (`L6_RI_BOUND_EXHAUSTED.md` + `measurements/`); (2) verify live state
-  with its own commands; (3) READ-BACK ON #306 — deciding figures re-run · the C3′ statement (installed
-  curve named; ≥2 starting surfaces for the first fit) · its box's compute-path posture — then **HOLD for
-  the seam's go via the owner's paste**; (4) on the go: merge the live carrier forward (TRUE MERGE,
-  `bf6596b` pattern, merge-base/conflicts/span measured BEFORE the act) → reconstruct (apply `137c6d2c`,
-  verify `fb9efdec`/`f305fe53`/`ade79790`, `.srcmd5` per N33, **compute-path assert `92e397bd` — FAIL →
-  HALT to the seam**) → the redesign job: **L-A** anchored construction per N29 with N30's acceptance ·
-  **L-B** deterministic lane (both-directions non-vacuity: must reproduce today's defect on the old lane) ·
-  **L-C** cross-machine byte-assert on OUTPUT BYTES, else UNMEASURED by name → **L6 re-enters under
-  R-H/R-I/N19 unchanged** (bound 4 · fixed point = payload md5 equality · exhausted → HALT-and-report) →
-  the hand-back states the converged G-Y0 against N16's trigger naming the surface md5 → L7–L8 → the full
-  rehearsal hand-back → **the EXECUTION word** → the landing (ships the CONVERGED surface per N19) →
-  candidate board → adoption (owner's separate act). Landing-critical facts carry from v49 unchanged.
-  Costs: ≈13 min/pass strictly serial · compute-path assert ~2 min · the redesigned fit's cost UNMEASURED,
-  prices at rehearsal.
+- **#306 — the cold seat EXECUTES on the go** (given, comment 5174786873): (1) merge the live carrier
+  forward (TRUE MERGE, `bf6596b` pattern, merge-base/conflicts/span measured before the act) → (2)
+  reconstruct per N34 — apply `13b71c26`, verify `fb9efdec`/`f305fe53`/`ade79790` byte-exact, `.srcmd5`
+  per N33, **COMPUTE-PATH ASSERT `92e397bd` — FAIL → HALT to the seam** → (3) the redesign legs: **L-A**
+  anchored construction per N29 with N30's acceptance (aggregate-neutral + band bounds, born failing at
+  +8.4%/+64%) · **L-B** deterministic lane (both-directions non-vacuity — must reproduce today's defect on
+  the old lane) · **L-C** cross-machine byte-assert on OUTPUT BYTES, else UNMEASURED by name → (4) **L6
+  re-enters under R-H/R-I/N19 unchanged** (bound 4 · fixed point = payload md5 equality · exhausted →
+  HALT-and-report) → the hand-back states the converged G-Y0 against N16's trigger naming the surface md5 →
+  L7–L8 → the full rehearsal hand-back → **the EXECUTION word** → the landing (ships the CONVERGED surface
+  per N19) → candidate board → adoption (owner's separate act). Landing-critical facts carry from v50
+  unchanged. Costs: ≈13 min/pass strictly serial · compute-path assert ~2 min · the redesigned fit's cost
+  UNMEASURED, prices at rehearsal.
 - **#276 clubs tab · #270 referee** (bias-1 refinement N17) — post-adoption · **#139 feeds** · v1.1 read
   outstanding (13 screenshots held).
 
 ## OWNER ACTS OUTSTANDING
-Paste the fresh #306 seat's opener (the seam supplies it in-channel) · the **EXECUTION word** (after the
-full rehearsal hand-back) · the `rl_replacement_derive.py` search (N23; found → tell the seam) · close
+Re-provide the pen token to the INCOMING SEAM (rotation raised this pen) · the **EXECUTION word** (after
+the full rehearsal hand-back) · the `rl_replacement_derive.py` search (N23; found → tell the seam) · close
 clicks **#292 #283 #275** · branch deletes — **HOLD** g4edkc (until `e339b1e9` reaches main) · 4ql38z
 (stop-point artifacts) · fp78jm (`3cccb9d`) · fubolo (`abf8f4c`) · j0kwl0 (`8e8c15b`) · N12 holds until the
 landing reaches main · FREE: as at v550.
@@ -179,39 +170,34 @@ landing reaches main · FREE: as at v550.
 - **The owner's communication word (binding on successors):** every agent return translated in VERY SIMPLE
   terms, short — what they did, whether it worked, what he must decide (options + recommendation, one line
   each). Relays IN HIS CHANNEL, never a pointer to GitHub. Answer him HERE before filing anywhere.
-- The owner's casual questions are load-bearing QC. This era's model moments: his "aren't the bars
-  hand-set?" surfaced true REPL provenance · his "can't we just anchor to what picks delivered?" BECAME
-  L-A's organizing principle (N29) before any construction was designed — and the drafting seat's
-  measurement confirmed it named the defect exactly · the drafting seat corrected the seam's own R-K
-  mechanism clause and the seam re-ran rather than defended (N27). REASONING IS NOT EVIDENCE applies to
-  the seam first.
-- The permanent guards: as v49 · a directive's deciding measurements live in COMMITTED EVIDENCE (the v557
-  catch) · the seam confirms evidence by RE-RUNNING THE COMMITTED SCRIPTS in a clean worktree and requiring
-  byte-identical outputs (the v558 standard).
+- The owner's casual questions are load-bearing QC (standing catches as v50 — his anchor question BECAME
+  N29). The era's verification standards, both proven in anger: **the v558 standard** — confirm committed
+  measurements by re-running the scripts in a clean worktree, byte-identical required; **the v559 lesson**
+  — a recipe is current only to the capture it names; verify the PAIR by apply-and-hash, never the prose.
+  Seats correcting the seam's own documents by measurement is the system working; the seam re-runs, never
+  defends.
+- The permanent guards: as v50, unchanged.
 
-## ENVIRONMENT CARRIES — carried from v49 in full (the live capture `137c6d2c` base `3ffbc1f` at tip
-`7e9d7f9` · per-pass surfaces/curves committed · reconstruction recipe proven on a second container ·
-compute-path assert `92e397bd` · supersedes-twin discipline N26, fired five times in L6 · D.1 erratum ·
-frozen fitted set · `84fb0cde` sealed L3–L5 record · strictly serial behind `tools/preboot_assert.sh` ·
-venv 5-pin proof · the responsive-suite HAZARD · the payload recipe unwritten-in-code, N32), plus this
-cycle's: **`measurements/` is the re-runnable evidence lane** (md5-asserted inputs · HALT-don't-report ·
-different-curve control · FIT-population caveat in three places) · **ten sealed captures on the carrier,
-none overwritten** · the candidate-starts table for C3′ (halt `ca662051`/`31e7f00b`/8.842% · pass-0
-`e69a3f38`/`fb9efdec`/8.084% · L3–L5 record `e69a3f38`/`84fb0cde`/13.919%) · **PEN MECHANICS** unchanged
-(stamp near char 88 `· v55X <date> · PEN:` → X+1, date = pen date, SAME LENGTH · insert immediately BEFORE
-` · SEAM v540 (2026-07-29)` · line count unchanged · growth == entry length · exactly one new `SEAM v55X`
-stamp · docs-only diff · Part B wholesale · commit as `supervisor-seat <supervisor@seam.local>` · branch →
-PR → rebase-merge → re-verify main by CONTENT).
+## ENVIRONMENT CARRIES — carried from v50 in full (measurements/ evidence lane · ten sealed captures ·
+compute-path assert `92e397bd` · supersedes-twin discipline N26 · D.1 erratum · frozen fitted set ·
+`84fb0cde` sealed L3–L5 record · strictly serial behind `tools/preboot_assert.sh` · venv 5-pin proof · the
+responsive-suite HAZARD · payload recipe unwritten-in-code N32 · `.srcmd5` route N33), plus this cycle's:
+**THE CAPTURE-TRIO TABLE above is the reconstruction authority** (v50's single-line recipe is retired) ·
+the C3′ double-start surfaces are committed bytes (`fb9efdec` = pass-0 · `31e7f00b` = halt) · **PEN
+MECHANICS** unchanged (stamp near char 88 `· v55X <date> · PEN:` → X+1, date = pen date, SAME LENGTH ·
+insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line count unchanged · growth == entry length ·
+exactly one new `SEAM v55X` stamp · docs-only diff · Part B wholesale · commit as `supervisor-seat
+<supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by CONTENT).
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip = the v558 pen or a descendant; issues #290 #292 #279
+1. Verify live state with your own commands: main tip = the v559 pen or a descendant; issues #290 #292 #279
    #283 #275 #276 #270 #269 #146 #139 #306 open · #271 #274 closed · no open PRs; four gating workflows
    green (in-flight stated as in-flight); the LIVE carrier `claude/exec-seat-290-handoff-d7bnaa` at
-   `7e9d7f9` or a descendant; the FIVE frozen/HOLD branches intact; the halt capture verifies (`137c6d2c`);
-   the measurement scripts re-run byte-identical (the v558 standard).
-2. The #306 cold seat opens on the owner's paste: audit its read-back — deciding figures re-run · the C3′
-   statement · its compute-path posture — give the go via the owner's paste, and hold the job to N29/N30/
-   N31 and the directive's acceptance set. After the re-entered L6: check the converged G-Y0 against N16's
-   trigger and bring the owner the outcome simply, per his communication word.
+   `7e9d7f9`; the #306 seat's branch at `f169204` or a descendant; the FIVE frozen/HOLD branches intact;
+   **the capture-trio table verifies by apply-and-hash** (at minimum: apply `13b71c26` → `fb9efdec`).
+2. The #306 seat is executing on the go (comment 5174786873): audit each leg's filing by re-running its
+   deciding figures (M2; the v558 standard for committed measurements). The next seam decisions arrive at:
+   the L-A construction design (audit against N29/N30) · the L-B/L-C acceptance runs · the re-entered L6's
+   converged G-Y0 against N16's trigger — bring the owner each outcome simply, per his communication word.
 3. Read-back to the owner in his channel — short and simple per C1/M1 — then hold for confirmation before
    any push.
