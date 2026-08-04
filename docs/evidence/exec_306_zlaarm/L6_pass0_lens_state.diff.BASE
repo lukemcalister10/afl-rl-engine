@@ -1,0 +1,58 @@
+STATE-DIFF BASE ANNOTATION — L6_pass0_lens_state.diff
+=====================================================
+Filed 2026-08-04 by the #306 execution seat zlaarm under N18. Written AT GENERATION, evidence tree
+committed FIRST, docs/ excluded by pathspec.
+
+SEVEN captures now stand, none overwritten:
+  13b71c26  pass-0 (old lane) — still the substrate N35's fit-path assert is defined on
+  02e248dc  the VOIDED flat-lens attempt
+  8650c060  the lens field whose acceptance FAILED limb 1
+  59ef1940  the lens field with neutrality on the applied population — L-A ACCEPTED
+  e9508660  L-C's cross-host byte-assert wired into the lane
+  efaf67d6  LC-1: the assert's anchor component restricted to the fit's own input
+  2b7640be16f216010125e4381473acfb  THIS — L6 PASS 0 on the redesigned lane
+
+THE ARTIFACT
+  file        L6_pass0_lens_state.diff
+  md5         2b7640be16f216010125e4381473acfb
+  sections    19 `diff --git`
+  generated   `git diff --binary -- . ':(exclude)docs/'`
+
+THE BASE OF RECORD
+  BASE COMMIT   c17fbcb      ON  claude/exec-seat-306-afl-rl-zlaarm
+
+WHAT CHANGED FROM efaf67d6 — TWO THINGS, BOTH RULED
+  1. N44 addendum (option 2): engine_head -> 15525b033f390d041a7858f47a30b48e at BOTH sibling sites,
+     data/expected_boot.json and data/release_contract.json identities.engine_head. Surgical string
+     replace at each; no reformat.
+     contract_sha256 IS DELIBERATELY LEFT STALE (3ede10d3), as ruled. It does NOT cover the body it
+     sits on and is not meant to yet: the recorded sequence re-stamps it at the curve-install step,
+     which will cover the engine_head move too. The selftest's FROZEN-RULER contract byte-untouched
+     check PASSED on this state (ca2f2e87) — nothing halted on the stale seal, and that outcome was
+     reported rather than pre-empted.
+  2. L6 PASS 0's own bake: data/v0surf.pkl fb9efdec -> b540833b2e251631bf76aeec0040cc05, with
+     expected_boot 'v0surf' re-pinned by the refit script's own surgical writer and one provenance
+     entry appended to session_2026-07-18/legf6/v0surf_refit_log.json.
+
+STATE AT PASS 0 (redesigned lane)
+  store 81d24704 · curve e69a3f38 · surface b540833b · board 31f7108a · gamma 1.0
+  peak f305fe53 · pvc_snapshot ade79790 · cm_400 34faa865 · q97m cfdc7321
+  G-Y0 national curve 1-64: 0.035% <= 2% HARD — PASS, n=1326 over 64 picks
+  selftest 97 PASS / 0 FAIL (the record's every prior pass was 96/1, the 1 being this gate)
+  POOL leg UNMEASURED: +109.611% vs the carried-over level 234 (n=763, mean 490.5) — reported,
+  not gated, and not a licence to move the level (N37.5 / N43).
+
+WHAT IS NOT ESTABLISHED BY THIS CAPTURE
+  R-I's FIXED POINT. The matrix re-emit and curve derivation have not run, so derived-payload ==
+  installed-payload is UNTESTED and NO convergence claim attaches to these bytes. A passing gate at
+  one pass is not a fixed point — the halted loop's individual passes looked clean too.
+
+WHY THESE FILES ARE NOT COMMITTED — they are the REHEARSAL SUBSTRATE. R-C holds; committing is the
+landing act and it needs the withheld word. NOT THE BAKE in the landing sense: the surface bake here
+is the loop's own recorded act, working tree only.
+
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS-0-OLD-LANE (required before every N35 assert):
+  git checkout -- . && git apply --binary <...>/L6_pass0_state.diff ; re-stamp the two .srcmd5.
+  `git stash` on a single substrate file reverts it PAST the substrate to HEAD — never use it here.
