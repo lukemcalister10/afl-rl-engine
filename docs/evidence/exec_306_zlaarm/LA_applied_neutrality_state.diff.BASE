@@ -8,12 +8,12 @@ overwritten:
   13b71c26  pass-0 — still the substrate N35's fit-path assert is defined on
   02e248dc  the VOIDED flat-lens attempt, kept as the record of a wrong turn
   8650c060  the approved lens field, whose acceptance FAILED limb 1 (29/64 picks out)
-  e8fa27018241be42b56165ef40570662  THIS — the same lens field with neutrality solved on the applied population
+  59ef1940f079ae76a97184fb82d62d68  THIS — the same lens field, neutrality solved on the applied population
 
 THE ARTIFACT
   file        LA_applied_neutrality_state.diff
-  md5         e8fa27018241be42b56165ef40570662
-  sections    20 `diff --git`
+  md5         59ef1940f079ae76a97184fb82d62d68
+  sections    19 `diff --git`
   generated   `git diff --binary`
 
 THE BASE OF RECORD
@@ -51,3 +51,11 @@ RETURNING TO PASS-0 (required before every N35 assert):
   git checkout -- . && git apply --binary <...>/L6_pass0_state.diff ; re-stamp the two .srcmd5.
   NOTE: `git stash` on a single substrate file reverts it PAST the substrate to HEAD and silently
   invalidates the assert — caught here once by the round-trip check.
+
+CORRECTION 2026-08-04, WRITTEN AT RE-GENERATION AND KEPT IN PLACE
+  The first seal of this capture carried 20 sections, not 19: it was generated while
+  docs/evidence/.../la_acceptance_perpick.json was a MODIFIED TRACKED file, so an evidence
+  artifact was captured alongside the substrate. Committing that artifact then made the capture
+  un-appliable at the tip. Re-generated here with the evidence files committed first, so the
+  capture is the 19 substrate paths and nothing else. A capture must be taken with the evidence
+  tree CLEAN, or it stops being a substrate capture.
