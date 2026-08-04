@@ -1,0 +1,103 @@
+{
+ "POPULATION_WARNING": "FIT population (teaches_curve rows, picks 1-64) \u2014 NOT the G-Y0 gate's ~1,326-row population. Never quote a figure from here as a gated G-Y0.",
+ "cycle_amplitude_pp_pass3_minus_pass2": {
+  "1-10": 1.9822,
+  "11-20": 2.0474,
+  "21-30": 2.0924,
+  "31-45": 2.2415,
+  "46-64": 3.0934
+ },
+ "formula": "100 * SUM(v0 - curve[pick]) / SUM(curve[pick]) over the band",
+ "per_pass": {
+  "2": {
+   "by_band": {
+    "1-10": {
+     "gap_pct": -5.0057,
+     "rows": 229
+    },
+    "11-20": {
+     "gap_pct": -0.3051,
+     "rows": 228
+    },
+    "21-30": {
+     "gap_pct": 3.3016,
+     "rows": 230
+    },
+    "31-45": {
+     "gap_pct": 19.1745,
+     "rows": 345
+    },
+    "46-64": {
+     "gap_pct": 64.2534,
+     "rows": 412
+    }
+   },
+   "installed_payload": "ca662051",
+   "overall_gap_pct": 8.3992,
+   "rows": 1444
+  },
+  "3": {
+   "by_band": {
+    "1-10": {
+     "gap_pct": -3.0235,
+     "rows": 229
+    },
+    "11-20": {
+     "gap_pct": 1.7423,
+     "rows": 228
+    },
+    "21-30": {
+     "gap_pct": 5.394,
+     "rows": 230
+    },
+    "31-45": {
+     "gap_pct": 21.416,
+     "rows": 345
+    },
+    "46-64": {
+     "gap_pct": 67.3468,
+     "rows": 412
+    }
+   },
+   "installed_payload": "b0bda532",
+   "overall_gap_pct": 10.577,
+   "rows": 1444
+  },
+  "4": {
+   "by_band": {
+    "1-10": {
+     "gap_pct": -5.0059,
+     "rows": 229
+    },
+    "11-20": {
+     "gap_pct": -0.3065,
+     "rows": 228
+    },
+    "21-30": {
+     "gap_pct": 3.3014,
+     "rows": 230
+    },
+    "31-45": {
+     "gap_pct": 19.1745,
+     "rows": 345
+    },
+    "46-64": {
+     "gap_pct": 64.2531,
+     "rows": 412
+    }
+   },
+   "installed_payload": "ca662051",
+   "overall_gap_pct": 8.3988,
+   "rows": 1444
+  }
+ },
+ "reading": "The gap is a TAIL phenomenon: picks 46-64 sit far above the curve while picks 1-10 sit below it. The cycle moves every band by ~2pp and the tail most. The repeat control (same installed curve, different history) is flat to ~0.001pp, so none of the band structure is path memory.",
+ "repeat_control_pp_pass4_minus_pass2": {
+  "1-10": -0.0002,
+  "11-20": -0.0014,
+  "21-30": -0.0002,
+  "31-45": 0.0,
+  "46-64": -0.0003
+ },
+ "what": "the year-zero gap by pick band on the L6 halt substrate, per pass"
+}

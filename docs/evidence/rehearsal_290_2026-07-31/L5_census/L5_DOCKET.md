@@ -98,3 +98,32 @@ Carried from Addenda H.5 and I.2, plus this seat's:
 ## COSTS
 
 Census + docket: **measurement only, no engine act, no bake.** `l5_census.py` and `manifest_vs_default.py` each run in **under 2s**. Nothing installed, no pin re-stamped, no gate moved.
+
+---
+
+# DOCKET ADDENDUM — 2026-08-04, the #290 L6 seat (#306 pre-fire condition 1)
+
+Appended, never edited in place. Entry 4 above stands as filed and is **sharpened, not corrected**,
+by entry 11: what it says is true, and what it does not say cost a real act.
+
+| # | the finding | state |
+|---|---|---|
+| **11** | **The payload recipe's KEY TYPE is load-bearing on identity, and entry 4 does not say so.** The full recipe is `md5(json.dumps(curve, sort_keys=True))[:8]` over a dict whose **keys are STRINGS** and whose **values are `int(round(v))`**. Entry 4 records the value convention ("int ladder") and the sorting, but not the key type — and `sort_keys=True` sorts **string** keys lexicographically (`"1"`, `"10"`, `"11"`, … `"2"`) while an int-keyed dict sorts numerically (`1, 2, 3 …`). The two orderings produce **completely different hashes of the same ladder.** | **owed at the landing; mint the helper, and let it take the ladder in ONE declared form** |
+
+**How it was found — a real act, not a review.** The L6 pass-1 install built the curve dict with
+integer keys and computed payload **`b43a4231`** where the lane and the record both say
+**`1a8db02b`**. The install's own pre-assert HALTED and **nothing was written** — the act is atomic
+and refuses to proceed on a payload it cannot reproduce. Re-keyed as strings, the same ladder hashed
+`1a8db02b` exactly.
+
+**Why it belongs on the docket rather than in a commit message.** This is the SECOND time E.5's
+finding 4 has bitten this job. The first cost a wrong pin written into three selftest literals, the
+contract mirror and `pvc_provenance` before it was caught (hazard class 1 — a true hash of the wrong
+bytes). The second cost nothing, because by then the act carried an assert that reproduces the
+*installed* payload before it writes the *new* one. **The remedy is unchanged and still owed: mint
+the helper.** Until a single function owns this convention, every seat that touches the curve
+re-derives it, and one of them will re-derive it wrong at a moment when no assert is watching.
+
+**The general shape, for the census:** a serialization convention is an identity convention. It
+belongs in code with a name, not in a docket entry describing it in prose — and a prose description
+that is *almost* complete is the more dangerous of the two, because it reads as sufficient.
