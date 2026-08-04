@@ -1,0 +1,124 @@
+{
+ "POPULATION": "FIT population (engine `real` set, type ND, not pool, picks 1-64). NOT the G-Y0 gate population. Nothing here is a gated or predicted G-Y0.",
+ "constants": {
+  "B": 2.0,
+  "tolerance": 0.005
+ },
+ "lanes": {
+  "after": {
+   "aggregate_gap_pct": 7.276401703393276e-11,
+   "aggregate_ratio": 1.0000000000007276,
+   "by_band": {
+    "1-10": {
+     "gap_pct": 0.02276984346600841,
+     "ratio": 1.00022769843466,
+     "rows": 230
+    },
+    "11-20": {
+     "gap_pct": -0.3446163248153611,
+     "ratio": 0.9965538367518464,
+     "rows": 230
+    },
+    "21-30": {
+     "gap_pct": 0.18333463514752513,
+     "ratio": 1.0018333463514753,
+     "rows": 230
+    },
+    "31-45": {
+     "gap_pct": 1.3697208758073787,
+     "ratio": 1.0136972087580738,
+     "rows": 345
+    },
+    "46-64": {
+     "gap_pct": -1.5815496464966161,
+     "ratio": 0.9841845035350338,
+     "rows": 413
+    }
+   },
+   "la": {
+    "B": 2.0,
+    "bound_binds": [
+     "A18|KPF",
+     "MATN|21+"
+    ],
+    "lens": {
+     "A18|KPD": 1.3236355770067538,
+     "A18|KPF": 0.5,
+     "A18|MID": 1.132665662965029,
+     "A18|RUCK": 1.1127434104248264,
+     "A18|SD": 0.9885277250048753,
+     "A18|SF": 0.9573603216766113,
+     "MATN|19-20": 1.2151211962134378,
+     "MATN|21+": 0.5,
+     "MATR|ALL": 1.2524327470299381
+    },
+    "mincell": 25,
+    "neutrality_solved": 1.0000000000007276,
+    "rows_per_cell": {
+     "A18|KPD": 142,
+     "A18|KPF": 169,
+     "A18|MID": 409,
+     "A18|RUCK": 67,
+     "A18|SD": 274,
+     "A18|SF": 260,
+     "MATN|19-20": 62,
+     "MATN|21+": 56,
+     "MATR|ALL": 9
+    },
+    "tol": 0.005
+   },
+   "lane": "anchored",
+   "rows": 1448,
+   "v0surf_sig": "96d671c952c8"
+  },
+  "before": {
+   "aggregate_gap_pct": 7.6451305774548395,
+   "aggregate_ratio": 1.0764513057745484,
+   "by_band": {
+    "1-10": {
+     "gap_pct": -6.364580899531591,
+     "ratio": 0.9363541910046841,
+     "rows": 230
+    },
+    "11-20": {
+     "gap_pct": -0.633936274782676,
+     "ratio": 0.9936606372521732,
+     "rows": 230
+    },
+    "21-30": {
+     "gap_pct": 2.371576792306729,
+     "ratio": 1.0237157679230673,
+     "rows": 230
+    },
+    "31-45": {
+     "gap_pct": 19.01455293884544,
+     "ratio": 1.1901455293884544,
+     "rows": 345
+    },
+    "46-64": {
+     "gap_pct": 65.60893913119625,
+     "ratio": 1.6560893913119625,
+     "rows": 413
+    }
+   },
+   "lane": "free_fit_pre_306",
+   "rows": 1448,
+   "v0surf_sig": "96d671c952c8"
+  }
+ },
+ "verdict": {
+  "after": {
+   "ACCEPTANCE_7": true,
+   "limb1_aggregate_neutral": true,
+   "limb2_bands_within_bound": true,
+   "worst_band_deviation": 0.01581549646496616
+  },
+  "before": {
+   "ACCEPTANCE_7": false,
+   "limb1_aggregate_neutral": false,
+   "limb2_bands_within_bound": true,
+   "worst_band_deviation": 0.6560893913119625
+  }
+ },
+ "what": "N30 / Acceptance 7 measured ON THE ARTIFACT, both lanes, fresh process each"
+}

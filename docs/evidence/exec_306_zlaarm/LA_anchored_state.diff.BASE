@@ -1,0 +1,45 @@
+STATE-DIFF BASE ANNOTATION — LA_anchored_state.diff
+===================================================
+Filed 2026-08-04 by the #306 execution seat zlaarm, under N18 (a state diff names its base commit
+beside itself) and the seam's act-(1) order. Written AT GENERATION.
+
+THE LIVE CAPTURE AFTER L-A WAS IMPLEMENTED AND BAKED. It SUPERSEDES L6_pass0_state.diff as this
+seat's live substrate and does not replace it as a record: 13b71c26 remains the exact capture of the
+pass-0 tree and is still the substrate the N35 fit-path assert is defined on. Two captures, two
+states, neither overwritten.
+
+THE ARTIFACT
+  file        LA_anchored_state.diff
+  md5         02e248dcf3dd31704c4e4061cda07be8
+  sections    19 `diff --git` · 2 `GIT binary patch`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   6736a6f
+  ON            claude/exec-seat-306-afl-rl-zlaarm
+  The commit that lands this capture adds only files under docs/evidence/, so none of the captured
+  paths moves in history and the capture continues to apply at the tip. Re-verify, never assume.
+
+WHAT IT CAPTURES — the pass-0 substrate PLUS L-A
+  engine/rl_after/_merged_recover.py   the anchored construction in the declared refit path, with the
+                                       pre-#306 free fit retained behind RL_V0_ANCHORED=0 as the A/B
+                                       control, and the design constants _LA_B / _LA_TOL / _LA_MINCELL
+  data/v0surf.pkl                      fb9efdec -> 1a52b78774c6caf90f9d97f6dc6e528e  (anchored)
+  data/expected_boot.json              'v0surf' re-pinned to 1a52b787 by the bake's surgical writer
+  session_2026-07-18/legf6/v0surf_refit_log.json   one appended provenance entry
+
+  Substrate otherwise unmoved: store 81d24704 · curve e69a3f38 · peak f305fe53 · pvc_snapshot ade79790
+  · cm_400 34faa865 · q97m cfdc7321 · gamma 1.0.
+
+WHY THESE FILES ARE NOT COMMITTED, AND MUST NOT BE
+  They are the REHEARSAL SUBSTRATE. R-C holds: nothing lands, no pin on this branch's product files
+  moves in history, and the EXECUTION word is withheld. Committing them is the landing act.
+
+WHAT IT CANNOT CARRY
+  The two untracked tier-2 stamps engine/rl_after/peak_model_v4.pkl.srcmd5 (d14f0f12) and
+  engine/rl_after/pvc_snapshot.json.srcmd5 (aaccad1c). `git diff` covers tracked files only. They
+  regenerate EXACTLY from the artifact bytes via single_source.stamp_tier2_frozen at zero compute (N33).
+
+RETURNING TO THE PASS-0 SUBSTRATE (required before every N35 fit-path assert)
+  git checkout -- . && git apply --binary <...>/L6_pass0_state.diff     -> data/v0surf.pkl fb9efdec
+  then re-stamp the two .srcmd5 per N33. Re-applying THIS capture returns to the anchored state.
