@@ -1,0 +1,1388 @@
+{
+ "NOTHING_HERE_SETS_A_LEVEL": "the pool stays as-is and NAMED UNRESOLVED until the owner rules",
+ "OPTIMISM": "+4.7% to +8.4% (completion method) \u2014 inherited, reported, never corrected",
+ "basis": "harness_pvc definitions: concluded realized in full \u00b7 never-established at 0.0 (busts full weight) \u00b7 active completed by concluded look-alikes (min stratum 20) \u00b7 model prior ONLY as a counted fallback",
+ "by_division_age": {
+  "IRE \u2014 international rookie": {
+   "18": {
+    "mean": 151.5,
+    "median": 0.0,
+    "n": 20,
+    "p25": 0.0,
+    "p75": 214.8,
+    "zero_share_pct": 65.0
+   },
+   "19": {
+    "mean": 308.5,
+    "median": 98.7,
+    "n": 10,
+    "p25": 0.0,
+    "p75": 471.9,
+    "zero_share_pct": 50.0
+   },
+   "20": {
+    "mean": 114.9,
+    "median": 0.0,
+    "n": 14,
+    "p25": 0.0,
+    "p75": 189.9,
+    "zero_share_pct": 57.1
+   },
+   "21": {
+    "mean": 62.1,
+    "median": 0.0,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 66.7
+   },
+   "22": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 3,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "23": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "UNTAGGED": {
+    "mean": 186.0,
+    "median": 186.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 50.0
+   }
+  },
+  "MSD \u2014 mid-season draft": {
+   "19": {
+    "mean": 313.0,
+    "median": 378.5,
+    "n": 27,
+    "p25": 0.0,
+    "p75": 436.5,
+    "zero_share_pct": 29.6
+   },
+   "20": {
+    "mean": 208.4,
+    "median": 0.0,
+    "n": 18,
+    "p25": 0.0,
+    "p75": 471.9,
+    "zero_share_pct": 55.6
+   },
+   "21": {
+    "mean": 357.3,
+    "median": 418.6,
+    "n": 12,
+    "p25": 27.3,
+    "p75": 461.2,
+    "zero_share_pct": 16.7
+   },
+   "22": {
+    "mean": 224.7,
+    "median": 221.0,
+    "n": 15,
+    "p25": 0.0,
+    "p75": 372.4,
+    "zero_share_pct": 26.7
+   },
+   "23": {
+    "mean": 81.7,
+    "median": 39.2,
+    "n": 18,
+    "p25": 38.1,
+    "p75": 64.7,
+    "zero_share_pct": 11.1
+   },
+   "24": {
+    "mean": 32.0,
+    "median": 25.9,
+    "n": 4,
+    "p25": 12.0,
+    "p75": 39.6,
+    "zero_share_pct": 0.0
+   },
+   "25": {
+    "mean": 1.2,
+    "median": 0.0,
+    "n": 3,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 66.7
+   },
+   "26": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 3,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "27": {
+    "mean": 57.8,
+    "median": 31.7,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 49.2,
+    "zero_share_pct": 25.0
+   },
+   "28": {
+    "mean": 3.3,
+    "median": 3.3,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 50.0
+   }
+  },
+  "ND \u2014 national selection at 65+": {
+   "17": {
+    "mean": 178.6,
+    "median": 0.0,
+    "n": 8,
+    "p25": 0.0,
+    "p75": 184.1,
+    "zero_share_pct": 62.5
+   },
+   "18": {
+    "mean": 273.7,
+    "median": 149.4,
+    "n": 77,
+    "p25": 0.0,
+    "p75": 521.3,
+    "zero_share_pct": 48.1
+   },
+   "19": {
+    "mean": 280.8,
+    "median": 235.9,
+    "n": 13,
+    "p25": 0.0,
+    "p75": 418.6,
+    "zero_share_pct": 46.2
+   },
+   "20": {
+    "mean": 962.6,
+    "median": 451.8,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 562.0,
+    "zero_share_pct": 25.0
+   },
+   "21": {
+    "mean": 111.3,
+    "median": 113.0,
+    "n": 3,
+    "p25": 0.0,
+    "p75": 113.0,
+    "zero_share_pct": 33.3
+   },
+   "22": {
+    "mean": 125.1,
+    "median": 33.7,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 73.8,
+    "zero_share_pct": 40.0
+   },
+   "23": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "24": {
+    "mean": 145.7,
+    "median": 145.7,
+    "n": 2,
+    "p25": 137.1,
+    "p75": 137.1,
+    "zero_share_pct": 0.0
+   },
+   "25": {
+    "mean": 144.8,
+    "median": 144.8,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 50.0
+   },
+   "26": {
+    "mean": 221.0,
+    "median": 221.0,
+    "n": 2,
+    "p25": 11.2,
+    "p75": 11.2,
+    "zero_share_pct": 0.0
+   },
+   "29": {
+    "mean": 15.0,
+    "median": 15.0,
+    "n": 1,
+    "p25": 15.0,
+    "p75": 15.0,
+    "zero_share_pct": 0.0
+   },
+   "35": {
+    "mean": 1.0,
+    "median": 1.0,
+    "n": 1,
+    "p25": 1.0,
+    "p75": 1.0,
+    "zero_share_pct": 0.0
+   }
+  },
+  "PDA \u2014 pre-season draft (A)": {
+   "17": {
+    "mean": 446.5,
+    "median": 446.5,
+    "n": 1,
+    "p25": 446.5,
+    "p75": 446.5,
+    "zero_share_pct": 0.0
+   },
+   "18": {
+    "mean": 229.7,
+    "median": 225.5,
+    "n": 32,
+    "p25": 0.0,
+    "p75": 397.2,
+    "zero_share_pct": 40.6
+   },
+   "19": {
+    "mean": 328.7,
+    "median": 81.7,
+    "n": 14,
+    "p25": 0.0,
+    "p75": 475.7,
+    "zero_share_pct": 50.0
+   },
+   "21": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "22": {
+    "mean": 38.1,
+    "median": 38.1,
+    "n": 1,
+    "p25": 38.1,
+    "p75": 38.1,
+    "zero_share_pct": 0.0
+   },
+   "23": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   }
+  },
+  "PDN \u2014 pre-season draft (N)": {
+   "17": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "18": {
+    "mean": 202.2,
+    "median": 111.4,
+    "n": 34,
+    "p25": 0.0,
+    "p75": 378.5,
+    "zero_share_pct": 50.0
+   },
+   "19": {
+    "mean": 40.9,
+    "median": 0.0,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 75.0
+   },
+   "20": {
+    "mean": 461.2,
+    "median": 461.2,
+    "n": 1,
+    "p25": 461.2,
+    "p75": 461.2,
+    "zero_share_pct": 0.0
+   },
+   "21": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "22": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "24": {
+    "mean": 1.3,
+    "median": 1.3,
+    "n": 1,
+    "p25": 1.3,
+    "p75": 1.3,
+    "zero_share_pct": 0.0
+   }
+  },
+  "PDS \u2014 pre-season draft (S)": {
+   "18": {
+    "mean": 75.7,
+    "median": 0.0,
+    "n": 20,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 75.0
+   },
+   "19": {
+    "mean": 167.8,
+    "median": 167.8,
+    "n": 1,
+    "p25": 167.8,
+    "p75": 167.8,
+    "zero_share_pct": 0.0
+   }
+  },
+  "RD \u2014 rookie draft": {
+   "17": {
+    "mean": 100.4,
+    "median": 0.0,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 75.0
+   },
+   "18": {
+    "mean": 236.2,
+    "median": 0.0,
+    "n": 345,
+    "p25": 0.0,
+    "p75": 368.6,
+    "zero_share_pct": 64.6
+   },
+   "19": {
+    "mean": 223.9,
+    "median": 0.0,
+    "n": 58,
+    "p25": 0.0,
+    "p75": 396.1,
+    "zero_share_pct": 56.9
+   },
+   "20": {
+    "mean": 576.1,
+    "median": 351.7,
+    "n": 40,
+    "p25": 0.0,
+    "p75": 854.6,
+    "zero_share_pct": 27.5
+   },
+   "21": {
+    "mean": 482.7,
+    "median": 342.7,
+    "n": 34,
+    "p25": 63.3,
+    "p75": 745.7,
+    "zero_share_pct": 23.5
+   },
+   "22": {
+    "mean": 404.0,
+    "median": 170.3,
+    "n": 29,
+    "p25": 0.0,
+    "p75": 410.8,
+    "zero_share_pct": 34.5
+   },
+   "23": {
+    "mean": 190.5,
+    "median": 21.6,
+    "n": 22,
+    "p25": 0.0,
+    "p75": 66.0,
+    "zero_share_pct": 31.8
+   },
+   "24": {
+    "mean": 58.7,
+    "median": 0.0,
+    "n": 15,
+    "p25": 0.0,
+    "p75": 137.0,
+    "zero_share_pct": 66.7
+   },
+   "25": {
+    "mean": 43.2,
+    "median": 0.2,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 0.5,
+    "zero_share_pct": 50.0
+   },
+   "26": {
+    "mean": 76.7,
+    "median": 29.5,
+    "n": 5,
+    "p25": 19.0,
+    "p75": 74.8,
+    "zero_share_pct": 20.0
+   },
+   "27": {
+    "mean": 24.7,
+    "median": 24.7,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 50.0
+   },
+   "28": {
+    "mean": 488.2,
+    "median": 343.7,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 657.8,
+    "zero_share_pct": 25.0
+   },
+   "29": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "30": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "34": {
+    "mean": 739.0,
+    "median": 739.0,
+    "n": 1,
+    "p25": 739.0,
+    "p75": 739.0,
+    "zero_share_pct": 0.0
+   },
+   "UNTAGGED": {
+    "mean": 225.0,
+    "median": 0.0,
+    "n": 125,
+    "p25": 0.0,
+    "p75": 247.0,
+    "zero_share_pct": 70.4
+   }
+  },
+  "SSP \u2014 supplemental selection": {
+   "18": {
+    "mean": 346.0,
+    "median": 378.3,
+    "n": 9,
+    "p25": 0.0,
+    "p75": 441.0,
+    "zero_share_pct": 44.4
+   },
+   "19": {
+    "mean": 395.9,
+    "median": 445.2,
+    "n": 8,
+    "p25": 0.0,
+    "p75": 475.7,
+    "zero_share_pct": 25.0
+   },
+   "20": {
+    "mean": 378.4,
+    "median": 418.6,
+    "n": 5,
+    "p25": 341.5,
+    "p75": 461.2,
+    "zero_share_pct": 0.0
+   },
+   "21": {
+    "mean": 110.5,
+    "median": 110.5,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 221.0,
+    "zero_share_pct": 50.0
+   },
+   "22": {
+    "mean": 79.8,
+    "median": 64.7,
+    "n": 5,
+    "p25": 64.7,
+    "p75": 116.0,
+    "zero_share_pct": 20.0
+   },
+   "23": {
+    "mean": 70.1,
+    "median": 12.1,
+    "n": 4,
+    "p25": 11.5,
+    "p75": 12.2,
+    "zero_share_pct": 0.0
+   },
+   "24": {
+    "mean": 71.6,
+    "median": 1.9,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 3.7,
+    "zero_share_pct": 50.0
+   },
+   "25": {
+    "mean": 19.8,
+    "median": 7.1,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 7.1,
+    "zero_share_pct": 40.0
+   },
+   "26": {
+    "mean": 8.7,
+    "median": 0.4,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 0.5,
+    "zero_share_pct": 33.3
+   }
+  },
+  "UNR \u2014 untagged / unresolved": {
+   "17": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "18": {
+    "mean": 133.2,
+    "median": 0.0,
+    "n": 10,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 70.0
+   },
+   "19": {
+    "mean": 77.7,
+    "median": 0.0,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 83.6,
+    "zero_share_pct": 60.0
+   },
+   "20": {
+    "mean": 291.8,
+    "median": 341.5,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 344.2,
+    "zero_share_pct": 33.3
+   },
+   "21": {
+    "mean": 118.0,
+    "median": 0.0,
+    "n": 7,
+    "p25": 0.0,
+    "p75": 186.3,
+    "zero_share_pct": 57.1
+   },
+   "22": {
+    "mean": 7.9,
+    "median": 0.0,
+    "n": 8,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 75.0
+   },
+   "23": {
+    "mean": 166.3,
+    "median": 47.5,
+    "n": 10,
+    "p25": 0.0,
+    "p75": 163.2,
+    "zero_share_pct": 40.0
+   },
+   "24": {
+    "mean": 42.5,
+    "median": 0.0,
+    "n": 10,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 70.0
+   },
+   "25": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "26": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   }
+  },
+  "late-ND 46-64 (REFERENCE)": {
+   "17": {
+    "mean": 291.1,
+    "median": 0.0,
+    "n": 22,
+    "p25": 0.0,
+    "p75": 280.6,
+    "zero_share_pct": 54.5
+   },
+   "18": {
+    "mean": 314.0,
+    "median": 212.1,
+    "n": 284,
+    "p25": 0.0,
+    "p75": 545.5,
+    "zero_share_pct": 45.4
+   },
+   "19": {
+    "mean": 504.0,
+    "median": 238.4,
+    "n": 17,
+    "p25": 156.8,
+    "p75": 568.3,
+    "zero_share_pct": 23.5
+   },
+   "20": {
+    "mean": 595.2,
+    "median": 402.1,
+    "n": 9,
+    "p25": 175.8,
+    "p75": 1132.2,
+    "zero_share_pct": 22.2
+   },
+   "21": {
+    "mean": 603.3,
+    "median": 320.8,
+    "n": 11,
+    "p25": 119.9,
+    "p75": 339.2,
+    "zero_share_pct": 9.1
+   },
+   "22": {
+    "mean": 293.1,
+    "median": 91.3,
+    "n": 12,
+    "p25": 55.4,
+    "p75": 244.4,
+    "zero_share_pct": 8.3
+   },
+   "23": {
+    "mean": 153.8,
+    "median": 138.6,
+    "n": 6,
+    "p25": 124.2,
+    "p75": 141.3,
+    "zero_share_pct": 0.0
+   },
+   "24": {
+    "mean": 288.4,
+    "median": 264.0,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 446.1,
+    "zero_share_pct": 25.0
+   },
+   "25": {
+    "mean": 63.0,
+    "median": 63.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 50.0
+   },
+   "26": {
+    "mean": 90.0,
+    "median": 90.0,
+    "n": 1,
+    "p25": 90.0,
+    "p75": 90.0,
+    "zero_share_pct": 0.0
+   },
+   "UNTAGGED": {
+    "mean": 311.6,
+    "median": 0.0,
+    "n": 44,
+    "p25": 0.0,
+    "p75": 468.7,
+    "zero_share_pct": 54.5
+   }
+  }
+ },
+ "by_division_position": {
+  "IRE \u2014 international rookie": {
+   "KPD": {
+    "mean": 127.8,
+    "median": 0.0,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 66.7
+   },
+   "KPF": {
+    "mean": 52.7,
+    "median": 0.0,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 80.0
+   },
+   "MID": {
+    "mean": 87.3,
+    "median": 0.0,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 80.0
+   },
+   "RUCK": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "SD": {
+    "mean": 178.4,
+    "median": 0.0,
+    "n": 35,
+    "p25": 0.0,
+    "p75": 214.8,
+    "zero_share_pct": 57.1
+   },
+   "SF": {
+    "mean": 189.2,
+    "median": 189.2,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 378.5,
+    "zero_share_pct": 50.0
+   }
+  },
+  "MSD \u2014 mid-season draft": {
+   "KPD": {
+    "mean": 210.7,
+    "median": 146.3,
+    "n": 14,
+    "p25": 14.1,
+    "p75": 372.4,
+    "zero_share_pct": 21.4
+   },
+   "KPF": {
+    "mean": 289.3,
+    "median": 64.4,
+    "n": 19,
+    "p25": 0.0,
+    "p75": 594.8,
+    "zero_share_pct": 42.1
+   },
+   "MID": {
+    "mean": 170.1,
+    "median": 38.1,
+    "n": 23,
+    "p25": 0.0,
+    "p75": 436.5,
+    "zero_share_pct": 34.8
+   },
+   "RUCK": {
+    "mean": 244.2,
+    "median": 369.8,
+    "n": 14,
+    "p25": 0.0,
+    "p75": 418.6,
+    "zero_share_pct": 35.7
+   },
+   "SD": {
+    "mean": 189.3,
+    "median": 131.1,
+    "n": 13,
+    "p25": 39.2,
+    "p75": 337.2,
+    "zero_share_pct": 7.7
+   },
+   "SF": {
+    "mean": 150.5,
+    "median": 64.7,
+    "n": 23,
+    "p25": 0.0,
+    "p75": 221.0,
+    "zero_share_pct": 34.8
+   }
+  },
+  "ND \u2014 national selection at 65+": {
+   "KPD": {
+    "mean": 395.3,
+    "median": 423.8,
+    "n": 11,
+    "p25": 0.0,
+    "p75": 734.4,
+    "zero_share_pct": 45.5
+   },
+   "KPF": {
+    "mean": 550.3,
+    "median": 430.8,
+    "n": 17,
+    "p25": 0.0,
+    "p75": 787.6,
+    "zero_share_pct": 41.2
+   },
+   "MID": {
+    "mean": 195.9,
+    "median": 0.0,
+    "n": 28,
+    "p25": 0.0,
+    "p75": 438.1,
+    "zero_share_pct": 53.6
+   },
+   "RUCK": {
+    "mean": 219.9,
+    "median": 289.5,
+    "n": 9,
+    "p25": 0.0,
+    "p75": 418.6,
+    "zero_share_pct": 33.3
+   },
+   "SD": {
+    "mean": 234.9,
+    "median": 33.7,
+    "n": 25,
+    "p25": 0.0,
+    "p75": 562.0,
+    "zero_share_pct": 44.0
+   },
+   "SF": {
+    "mean": 165.5,
+    "median": 120.4,
+    "n": 30,
+    "p25": 0.0,
+    "p75": 301.0,
+    "zero_share_pct": 46.7
+   }
+  },
+  "PDA \u2014 pre-season draft (A)": {
+   "KPD": {
+    "mean": 576.8,
+    "median": 576.8,
+    "n": 2,
+    "p25": 576.8,
+    "p75": 576.8,
+    "zero_share_pct": 0.0
+   },
+   "KPF": {
+    "mean": 236.3,
+    "median": 122.4,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 244.9,
+    "zero_share_pct": 50.0
+   },
+   "MID": {
+    "mean": 240.7,
+    "median": 0.0,
+    "n": 14,
+    "p25": 0.0,
+    "p75": 38.1,
+    "zero_share_pct": 64.3
+   },
+   "RUCK": {
+    "mean": 156.7,
+    "median": 0.0,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 364.9,
+    "zero_share_pct": 60.0
+   },
+   "SD": {
+    "mean": 226.8,
+    "median": 283.9,
+    "n": 10,
+    "p25": 0.0,
+    "p75": 409.3,
+    "zero_share_pct": 40.0
+   },
+   "SF": {
+    "mean": 246.1,
+    "median": 292.3,
+    "n": 14,
+    "p25": 0.0,
+    "p75": 378.5,
+    "zero_share_pct": 28.6
+   }
+  },
+  "PDN \u2014 pre-season draft (N)": {
+   "KPD": {
+    "mean": 374.9,
+    "median": 471.0,
+    "n": 5,
+    "p25": 461.2,
+    "p75": 471.0,
+    "zero_share_pct": 20.0
+   },
+   "KPF": {
+    "mean": 297.4,
+    "median": 297.4,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 50.0
+   },
+   "MID": {
+    "mean": 165.9,
+    "median": 111.4,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 222.7,
+    "zero_share_pct": 50.0
+   },
+   "RUCK": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 2,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "SD": {
+    "mean": 105.4,
+    "median": 0.0,
+    "n": 14,
+    "p25": 0.0,
+    "p75": 1.3,
+    "zero_share_pct": 64.3
+   },
+   "SF": {
+    "mean": 180.8,
+    "median": 121.8,
+    "n": 16,
+    "p25": 0.0,
+    "p75": 378.5,
+    "zero_share_pct": 50.0
+   }
+  },
+  "PDS \u2014 pre-season draft (S)": {
+   "KPD": {
+    "mean": 160.6,
+    "median": 91.5,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 183.0,
+    "zero_share_pct": 50.0
+   },
+   "KPF": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "MID": {
+    "mean": 148.6,
+    "median": 167.8,
+    "n": 7,
+    "p25": 0.0,
+    "p75": 169.6,
+    "zero_share_pct": 42.9
+   },
+   "RUCK": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 1,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "SD": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   },
+   "SF": {
+    "mean": 0.0,
+    "median": 0.0,
+    "n": 3,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 100.0
+   }
+  },
+  "RD \u2014 rookie draft": {
+   "KPD": {
+    "mean": 308.1,
+    "median": 0.0,
+    "n": 73,
+    "p25": 0.0,
+    "p75": 450.0,
+    "zero_share_pct": 54.8
+   },
+   "KPF": {
+    "mean": 211.8,
+    "median": 0.0,
+    "n": 65,
+    "p25": 0.0,
+    "p75": 329.3,
+    "zero_share_pct": 63.1
+   },
+   "MID": {
+    "mean": 297.8,
+    "median": 0.0,
+    "n": 177,
+    "p25": 0.0,
+    "p75": 428.0,
+    "zero_share_pct": 59.9
+   },
+   "RUCK": {
+    "mean": 286.8,
+    "median": 0.0,
+    "n": 71,
+    "p25": 0.0,
+    "p75": 418.6,
+    "zero_share_pct": 62.0
+   },
+   "SD": {
+    "mean": 248.4,
+    "median": 0.0,
+    "n": 158,
+    "p25": 0.0,
+    "p75": 355.2,
+    "zero_share_pct": 54.4
+   },
+   "SF": {
+    "mean": 228.5,
+    "median": 0.0,
+    "n": 149,
+    "p25": 0.0,
+    "p75": 340.7,
+    "zero_share_pct": 57.0
+   }
+  },
+  "SSP \u2014 supplemental selection": {
+   "KPD": {
+    "mean": 189.5,
+    "median": 153.8,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 332.5,
+    "zero_share_pct": 40.0
+   },
+   "KPF": {
+    "mean": 201.9,
+    "median": 66.9,
+    "n": 12,
+    "p25": 0.0,
+    "p75": 116.0,
+    "zero_share_pct": 41.7
+   },
+   "MID": {
+    "mean": 184.0,
+    "median": 12.2,
+    "n": 5,
+    "p25": 0.0,
+    "p75": 441.0,
+    "zero_share_pct": 40.0
+   },
+   "RUCK": {
+    "mean": 192.2,
+    "median": 158.1,
+    "n": 6,
+    "p25": 0.0,
+    "p75": 316.2,
+    "zero_share_pct": 50.0
+   },
+   "SD": {
+    "mean": 304.0,
+    "median": 128.3,
+    "n": 8,
+    "p25": 0.3,
+    "p75": 409.3,
+    "zero_share_pct": 12.5
+   },
+   "SF": {
+    "mean": 125.0,
+    "median": 38.1,
+    "n": 16,
+    "p25": 0.5,
+    "p75": 221.0,
+    "zero_share_pct": 18.8
+   }
+  },
+  "UNR \u2014 untagged / unresolved": {
+   "KPD": {
+    "mean": 115.7,
+    "median": 72.3,
+    "n": 9,
+    "p25": 0.0,
+    "p75": 177.8,
+    "zero_share_pct": 33.3
+   },
+   "KPF": {
+    "mean": 358.2,
+    "median": 304.7,
+    "n": 3,
+    "p25": 163.2,
+    "p75": 304.7,
+    "zero_share_pct": 0.0
+   },
+   "MID": {
+    "mean": 142.2,
+    "median": 0.0,
+    "n": 8,
+    "p25": 0.0,
+    "p75": 4.3,
+    "zero_share_pct": 62.5
+   },
+   "RUCK": {
+    "mean": 64.3,
+    "median": 0.0,
+    "n": 30,
+    "p25": 0.0,
+    "p75": 0.0,
+    "zero_share_pct": 86.7
+   },
+   "SD": {
+    "mean": 170.0,
+    "median": 135.0,
+    "n": 4,
+    "p25": 0.0,
+    "p75": 186.3,
+    "zero_share_pct": 25.0
+   },
+   "SF": {
+    "mean": 116.9,
+    "median": 19.0,
+    "n": 5,
+    "p25": 5.6,
+    "p75": 221.0,
+    "zero_share_pct": 20.0
+   }
+  },
+  "late-ND 46-64 (REFERENCE)": {
+   "KPD": {
+    "mean": 465.0,
+    "median": 339.8,
+    "n": 44,
+    "p25": 0.0,
+    "p75": 639.9,
+    "zero_share_pct": 43.2
+   },
+   "KPF": {
+    "mean": 279.2,
+    "median": 0.0,
+    "n": 43,
+    "p25": 0.0,
+    "p75": 545.5,
+    "zero_share_pct": 58.1
+   },
+   "MID": {
+    "mean": 358.8,
+    "median": 224.6,
+    "n": 86,
+    "p25": 0.0,
+    "p75": 523.2,
+    "zero_share_pct": 45.3
+   },
+   "RUCK": {
+    "mean": 504.4,
+    "median": 599.7,
+    "n": 29,
+    "p25": 0.0,
+    "p75": 797.0,
+    "zero_share_pct": 27.6
+   },
+   "SD": {
+    "mean": 272.6,
+    "median": 189.2,
+    "n": 109,
+    "p25": 0.0,
+    "p75": 345.0,
+    "zero_share_pct": 41.3
+   },
+   "SF": {
+    "mean": 277.1,
+    "median": 171.9,
+    "n": 101,
+    "p25": 0.0,
+    "p75": 407.0,
+    "zero_share_pct": 38.6
+   }
+  }
+ },
+ "divisions": {
+  "IRE \u2014 international rookie": {
+   "fallback_share_pct": 19.3,
+   "mean": 148.6,
+   "median": 0.0,
+   "n": 57,
+   "p25": 0.0,
+   "p75": 214.8,
+   "provenance": {
+    "completed": 3,
+    "concluded_realised": 43,
+    "prior_fallback": 11
+   },
+   "zero_share_pct": 63.2
+  },
+  "MSD \u2014 mid-season draft": {
+   "fallback_share_pct": 59.4,
+   "mean": 204.7,
+   "median": 97.9,
+   "n": 106,
+   "p25": 0.0,
+   "p75": 418.6,
+   "provenance": {
+    "concluded_realised": 43,
+    "prior_fallback": 63
+   },
+   "zero_share_pct": 31.1
+  },
+  "ND \u2014 national selection at 65+": {
+   "fallback_share_pct": 21.7,
+   "mean": 266.7,
+   "median": 93.4,
+   "n": 120,
+   "p25": 0.0,
+   "p75": 471.8,
+   "provenance": {
+    "concluded_realised": 94,
+    "prior_fallback": 26
+   },
+   "zero_share_pct": 45.8
+  },
+  "PDA \u2014 pre-season draft (A)": {
+   "fallback_share_pct": 29.4,
+   "mean": 243.9,
+   "median": 163.4,
+   "n": 51,
+   "p25": 0.0,
+   "p75": 409.3,
+   "provenance": {
+    "concluded_realised": 36,
+    "prior_fallback": 15
+   },
+   "zero_share_pct": 45.1
+  },
+  "PDN \u2014 pre-season draft (N)": {
+   "fallback_share_pct": 37.2,
+   "mean": 174.4,
+   "median": 0.0,
+   "n": 43,
+   "p25": 0.0,
+   "p75": 378.5,
+   "provenance": {
+    "concluded_realised": 27,
+    "prior_fallback": 16
+   },
+   "zero_share_pct": 53.5
+  },
+  "PDS \u2014 pre-season draft (S)": {
+   "fallback_share_pct": 0.0,
+   "mean": 80.1,
+   "median": 0.0,
+   "n": 21,
+   "p25": 0.0,
+   "p75": 167.8,
+   "provenance": {
+    "concluded_realised": 21
+   },
+   "zero_share_pct": 71.4
+  },
+  "RD \u2014 rookie draft": {
+   "fallback_share_pct": 4.8,
+   "mean": 263.5,
+   "median": 0.0,
+   "n": 693,
+   "p25": 0.0,
+   "p75": 393.2,
+   "provenance": {
+    "completed": 33,
+    "concluded_realised": 627,
+    "prior_fallback": 33
+   },
+   "zero_share_pct": 58.0
+  },
+  "SSP \u2014 supplemental selection": {
+   "fallback_share_pct": 53.8,
+   "mean": 189.9,
+   "median": 57.0,
+   "n": 52,
+   "p25": 0.0,
+   "p75": 341.5,
+   "provenance": {
+    "concluded_realised": 24,
+    "prior_fallback": 28
+   },
+   "zero_share_pct": 30.8
+  },
+  "UNR \u2014 untagged / unresolved": {
+   "fallback_share_pct": 20.3,
+   "mean": 109.3,
+   "median": 0.0,
+   "n": 59,
+   "p25": 0.0,
+   "p75": 163.2,
+   "provenance": {
+    "completed": 1,
+    "concluded_realised": 46,
+    "prior_fallback": 12
+   },
+   "zero_share_pct": 61.0
+  },
+  "late-ND 46-64 (REFERENCE)": {
+   "fallback_share_pct": 11.2,
+   "mean": 329.3,
+   "median": 203.4,
+   "n": 412,
+   "p25": 0.0,
+   "p75": 523.2,
+   "provenance": {
+    "completed": 63,
+    "concluded_realised": 303,
+    "prior_fallback": 46
+   },
+   "zero_share_pct": 42.5
+  }
+ },
+ "late_nd_rows": 412,
+ "matrix_md5": "77eba4d308a27a881b36a5424d3bb389",
+ "pool_rows": 1202,
+ "what": "per-division realized-outcome levels under the ruled basis (N37, widened)"
+}
