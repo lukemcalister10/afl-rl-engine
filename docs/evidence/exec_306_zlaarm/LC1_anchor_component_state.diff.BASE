@@ -1,0 +1,51 @@
+STATE-DIFF BASE ANNOTATION — LC1_anchor_component_state.diff
+============================================================
+Filed 2026-08-04 by the #306 execution seat zlaarm under N18. Written AT GENERATION, evidence tree
+committed FIRST, docs/ excluded by pathspec.
+
+SIX captures now stand, none overwritten:
+  13b71c26  pass-0 — still the substrate N35's fit-path assert is defined on
+  02e248dc  the VOIDED flat-lens attempt
+  8650c060  the lens field whose acceptance FAILED limb 1
+  59ef1940  the lens field with neutrality on the applied population — L-A ACCEPTED
+  e9508660  L-C's cross-host byte-assert wired into the lane
+  efaf67d659220746e2ad5cae756307dc  THIS — LC-1: the assert's anchor component restricted to the fit's own input
+
+THE ARTIFACT
+  file        LC1_anchor_component_state.diff
+  md5         efaf67d659220746e2ad5cae756307dc
+  sections    19 `diff --git`
+  generated   `git diff --binary -- . ':(exclude)docs/'`
+
+THE BASE OF RECORD
+  BASE COMMIT   279e9be      ON  claude/exec-seat-306-afl-rl-zlaarm
+
+WHAT CHANGED FROM e9508660 — ONE EXPRESSION
+  The L-C assert's ANCHOR COMPONENT now covers picks 1-64 only. The pool slot (65) is not a fit
+  input: no pool row teaches the lens, and no pool row reads the surface (pool rows are excluded from
+  `real`, never enter _V0CURVE, and take _v0_raw through v0_start's fall-through).
+
+  TWO DEFECTS THIS REMOVES, both the seam's catch:
+   1. A NAME TRAP. The component was a look-alike of the census payload that WAS NOT the census
+      payload — it read 5c1ff693 where the ladder's own identity is e69a3f38. Restricted, the
+      component IS e69a3f38 verbatim, so the key can be read against the census without translation.
+   2. A SPURIOUS INAPPLICABLE AT THE LANDING. N43 moves the pool level. Under the old expression that
+      would have changed the anchor component, changed the key, and made the assert report
+      INAPPLICABLE at exactly the moment it is most needed — while the ladder the lens actually uses
+      had not moved at all. A guard that goes quiet when the system changes around it is the failure
+      mode this leg exists to refuse.
+
+  The lens digest is UNCHANGED (b760b17ea3ab76acdad81bf87f2b90ad): the fit did not move, only the
+  key's anchor component. That is the check that this was a keying fix and not a silent re-fit.
+
+  The superseded key (…|5c1ff693|…) is REMOVED rather than left beside the new one: it is
+  unreachable under the corrected expression, and a dead expectation nobody can reproduce is
+  clutter that reads like evidence.
+
+VERIFIED ON THIS BOX, N35 PASS (fb9efdec) TAKEN FIRST
+  key    25a72f85a96b|e69a3f38|bce3c13d27ff
+  PASS   the recorded expectation reproduces
+  FIRE   the expectation corrupted in one field -> the lane HALTED naming expected and got
+
+NOT BAKED. data/v0surf.pkl unmoved at fb9efdec.
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
