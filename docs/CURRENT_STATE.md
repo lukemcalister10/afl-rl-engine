@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v53 · supervisor pen · 2026-08-04, register v561
+# CURRENT STATE — the incoming-seat read · v54 · supervisor pen · 2026-08-04, register v562
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -47,6 +47,24 @@ that don't help the project."*
 **And write plainly.** Not register-dialect, not code names, not "class-(c) defects" and "non-vacuity
 proven both directions". A human reads this and should not need a translator.
 
+## THE OWNER'S PRODUCT LAWS (2026-08-04, the v562 correction — read these before touching the surface)
+
+> *"The core tenet of this project was to value picks, and recognise that different intersections
+> have different effects."*
+> *"A key defender at pick 6 may be, and probably should be, worth less than pick 6, but at pick 45,
+> maybe it's worth more. It could be by lots, or not by much. It's that simple: we have the data."*
+
+- **LAW (intersections):** the year-zero surface is a TRUE position × age × pick surface — per
+  position/age the data draws a line along the pick axis, below the curve where the data says below,
+  above where it says above, **crossing freely**. A position dial constant across picks is BARRED.
+- **LAW (no hard bands):** no hard banding on any axis, **in the implementation OR in the
+  presentation of results**. Every pick its own value; neighbouring picks near-identical; locality
+  binds (*"I don't care for pick 20s data in considering pick 1"*). Report per-pick or smooth
+  curves, never buckets.
+- These were violated once, by a seam-approved design (v561, voided v562). The audit of any surface
+  design checks these laws FIRST, and the load-bearing property of any design is stated to the owner
+  in one plain sentence before approval is even discussed.
+
 ## The named hazard classes
 
 Found the expensive way. Listed so a seat inherits them in 2KB rather than 300KB. **These are
@@ -69,6 +87,7 @@ diagnostic aids, not a mandate to go hunting.**
 | 13 | **Identity by key, never substring** | a name-fragment match taking `[0]` answers confidently about the wrong object | v505 |
 | 14 | **Anchoring sentinels** | a strip rule's off-by-one hashes are invariant under header content | v507 |
 | 15 | **A label is not a compute path** | identical CPU string + byte-identical pins, divergent fitted bytes; a box is classified only by reproducing output bytes | v560 |
+| 16 | **A correct audit of the wrong question** | every figure re-runs byte-identical, yet the design contradicts the owner's stated intent — mechanics verified, intent unchecked; the owner had to extract the load-bearing property himself | v562 |
 
 ## Standing norms
 
@@ -109,124 +128,111 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v53 · supervisor pen · 2026-08-04, register v561 · replaced wholesale at the L-A-approval pen — the
-construction is approved, the owner's design steer is N36, the pool plan is N37, the seat implements)
+(v54 · supervisor pen · 2026-08-04, register v562 · replaced wholesale at the L-A-voiding pen — the flat-lens
+approval was a seam audit error, caught by the owner; his laws are recorded; the revision is ordered; the
+seam's rotation is RAISED and sits with the owner)
 
-## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; L-A IS DESIGNED, AUDITED AND APPROVED; THE SEAT IMPLEMENTS.
-Main is the v561 pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON
-MAIN** (`ab68430`; awaits the owner's close click). **#306 governing set** as v52 recorded, PLUS the L-A
-design filing 5175425475 and the seam's design audit + N36 + N37 + proceed order **5175872733**. The seat
-`zlaarm` (branch `claude/exec-seat-306-afl-rl-zlaarm` at `6736a6f`): N35 fit-path assert **PASS on its
-restarted (third) host** — `5939fa35` settled as the off-class host's property; L-A designed and measured
-(`LA_DESIGN.md` + two committed stdlib-only measurement scripts), seam-audited **PASS**, now IMPLEMENTING.
+## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; THE L-A APPROVAL IS VOIDED (v562); THE REVISION IS ORDERED.
+Main is the v562 pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON
+MAIN** (`ab68430`; awaits the owner's close click). **#306:** the seat `zlaarm` (branch at `a59db87`)
+implemented the FLAT lens `m(pos, age)` and filed acceptance (5176149209); the seam audited it PASS at
+5175872733 — **that approval is VOIDED at comment 5176541552**: the flat lens erases the position × age ×
+pick intersections that are the project's core tenet (the ruled structure keys the surface
+`(gfut, ageR, pick)`, #271 §6), and the audit never stated the flat-dial property to the owner in plain
+words. **The owner's two product laws now stand in Part A.** The REVISION ORDER (same comment) reaches the
+seat via the owner's paste: build `m(pos, age, pick)` as a smooth bounded field — locality, anchored totals,
+thin stretches shrink to 1.0, no cliffs on any axis, per-pick presentation, DESIGN FIRST and HOLD for audit.
 The record's LIVE carrier is **`claude/exec-seat-290-handoff-d7bnaa`** at **`7e9d7f9`** (frozen ancestors
 j0kwl0 `8e8c15b` · fubolo `abf8f4c` · fp78jm `3cccb9d`). The **EXECUTION word remains WITHHELD**; nothing
 has landed at any point.
 
-## THE APPROVED L-A CONSTRUCTION — the design of record (audited at 5175872733)
-**`v0*(pos, age, pick) = anchor(pick) × m(pos, age)`** — the installed curve is the skeleton; pick enters
-the surface through the anchor and through NOTHING ELSE; the lens m is keyed (position, draft-age-group)
-with pick not an argument; **m ∈ [0.50, 2.00] identically** (bound inside the estimator, never a clip);
-neutrality solved against `Σ anchor·m = Σ anchor` (population-weighted — the owner's 6:1 point is the solve
-itself). Constants fixed at design time: **B=2.00 · tolerance 0.5% · min-cell 25**. Measured on committed
-rows: tail **+65.28% → −1.78%**, head **−6.10% → +0.80%**, neutrality exact, bound binds at KPF|18/KPF|na
-(fail-capable shown), inversion 1.28 → 1.052. **Acceptance is measured ON THE ARTIFACT, never the sim.**
+## WHAT STANDS OF L-A, AND WHAT IS VOIDED
+**STANDS (audited, kept):** the skeleton — curve as anchor with totals preserved (a position above the curve
+in a stretch is paid for by others in that stretch, never by inflating the class) · bounds m ∈ [0.5, 2.0] ·
+the A/B control lane (`RL_V0_ANCHORED`) · the sealed-capture discipline (`LA_anchored_state.diff`
+`02e248dc`, base `6736a6f`, BASE annotation per N18) · acceptance measured on the artifact · N35 asserts ·
+the pool fence (N37.5). **VOIDED:** the flat lens's cell structure and every claim that it satisfied the
+owner's steer. **WITHDRAWN:** the seam's banded ±5% acceptance proposal (violates LAW no-hard-bands); a
+band-free drift check is to be designed and audited. Seam verification figures recorded before the voiding
+and still true OF THE FLAT DESIGN: acceptance JSON byte-identical re-run; the anchored fit `1a52b787`
+reproduced byte-exact on a second host; N35 caught the seam's own container restart mid-audit.
 
 ## THE CROSS-HOST FIT TABLE — the v560 finding; A BOX IS CLASSIFIED BY OUTPUT BYTES, NEVER BY LABEL
 | container | when | the same fit (`refit_v0surf.py --verify`, pass-0 substrate, curve `e69a3f38`) |
 |---|---|---|
 | the record's (L6 pass 0) | 2026-07-31 | **`fb9efdec`** ×2 — the committed bytes |
 | the `zlaarm` seat's SECOND host | 2026-08-04 | `5939fa35` ×5 — off-class; **PINS NOTHING** |
-| the seam's | 2026-08-04 | **`fb9efdec`** ×3 — incl. the record's exact fit shape |
+| the seam's (re-classified after ITS restart) | 2026-08-04 | **`fb9efdec`** ×4 | 
 | the `zlaarm` seat's THIRD host | 2026-08-04 | **`fb9efdec`** — N35 assert PASS, fit-class |
-Identical declared pins throughout; hosts two and three of the divergent pair even shared a CPU string with
-the seam's box. N35's assert is the classifier; it re-runs after any observed migration or restart.
+N35's assert is the classifier; it re-runs after any observed migration or restart — proven necessary twice
+in one day (both the seat's and the seam's containers migrated mid-session).
 
-## THE CAPTURE-TRIO TABLE — carried from v51 UNCHANGED; A RECIPE IS CURRENT ONLY TO THE CAPTURE IT NAMES
-| capture | md5 | applying it yields `data/v0surf.pkl` | peak / pvc |
+## THE CAPTURE TABLE — A RECIPE IS CURRENT ONLY TO THE CAPTURE IT NAMES
+| capture | md5 | applying it yields `data/v0surf.pkl` | base |
 |---|---|---|---|
-| `L6_pass0_state.diff` — **THE RULED RE-ENTRY STATE** | `13b71c26` | **`fb9efdec`** (installed curve `e69a3f38`) | `f305fe53` / `ade79790` |
-| `L6_HALT_state.diff` — the halt state, held | `137c6d2c` | **`31e7f00b`** (installed curve `ca662051`) | `f305fe53` / `ade79790` |
-| `L4_state.diff` — sealed L4 exit-record | `2cc5041c` | `84fb0cde` | `f305fe53` / `ade79790` |
-(An L-A implementation capture with its BASE annotation is EXPECTED next from the seat — verify it the same
-way before trusting any recipe that names it.)
+| `L6_pass0_state.diff` — the N35-assert substrate | `13b71c26` | **`fb9efdec`** (curve `e69a3f38`) | `f0128d6` |
+| `LA_anchored_state.diff` — the FLAT-lens state (voided design; capture stays sealed as record) | `02e248dc` | `1a52b787` | `6736a6f` |
+| `L6_HALT_state.diff` — the halt state, held | `137c6d2c` | `31e7f00b` (curve `ca662051`) | `3ffbc1f` |
+| `L4_state.diff` — sealed L4 exit-record | `2cc5041c` | `84fb0cde` | `f0128d6` era |
+(peak `f305fe53` / pvc `ade79790` across all. A REVISED-lens capture is expected after the next design audit.)
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Older standing law as v52 recorded it: N1–N35 stand. This cycle:
-N36. **THE OWNER'S DESIGN STEER (owner word, verbatim in 5175872733):** year-zero = the true worth of a
-    player at the draft moment; data-driven per-cell boosts AND cuts within the cap; mature-age effects live
-    in the age cell (neither direction presumed); the average still equals the pick curve with
-    POPULATION-WEIGHTED offsetting. Extends N29; changes no line of the approved design. The L-A
-    construction is APPROVED (design audit PASS) and **B=2.00 STANDS** (KPF binds = the constraint firing;
-    widening is one owner word on artifact evidence). [#306 comment 5175872733; v561]
-N37. **THE POOL PLAN (owner word):** combined picks+pool changes have DISJOINT direct movers — the
-    sequencing objection is withdrawn; route A's premise (whole pool below `curve[64]`) is RETIRED as
-    unmeasured; **the pool-division measurement is ORDERED** (per-division realized-outcome levels under the
-    ruled basis, never-established at 0.0, denominators named, read-only, committed re-runnable); the pool
-    LEVEL ruling is the OWNER'S ACT on the measured numbers, per division, confidence-weighted for thin
-    divisions; coherence then applies PER DIVISION — below-`curve[64]` only where measured below; until
-    then the pool stays as-is, NAMED UNRESOLVED. [#306 comment 5175872733; v561]
+Older standing law as v53 recorded it: N1–N37 stand, with N36's mapping clause CORRECTED (see N38). This cycle:
+N38. **THE VOIDING AND THE OWNER'S LAWS (comment 5176541552):** the v561 L-A approval is VOIDED as a seam
+    audit error; N36's "changes no line" clause is corrected — the owner's steer DID demand pick-resolved
+    effects. The two OWNER LAWS (intersections · no-hard-bands, now in Part A) bind every future seat and
+    every design audit checks them FIRST. The revision order: `m(pos, age, pick)` smooth bounded field,
+    locality, anchored totals with stated neutrality weighting, thin-data shrink to 1.0, no cliffs, per-pick
+    presentation, design-first-hold-for-audit. The banded ±5% acceptance proposal is WITHDRAWN. The seam's
+    rotation was raised on this failure and sits with the owner. [v562]
 
 ## THE QUEUE
-- **#306 — the seat IMPLEMENTS** (proceed order 5175872733), in order under N35: (1) **implement L-A** per
-  the approved construction — substrate discipline unchanged (working tree + sealed capture + BASE
-  annotation per N18, nothing committed); acceptance ON THE ARTIFACT against N30 (0.5% tolerance, B=2.00)
-  beside the born-failing before-figures → (2) **L-B** deterministic lane (failing direction DISCHARGED by
-  the recorded cross-container pair; passing direction to earn) → (3) **the pool-division measurement**
-  (N37) → (4) **L-C** per the amended benchmark (span the measured divide, else UNMEASURED by name) → **L6
-  re-enters under R-H/R-I/N19 unchanged** (bound 4 · fixed point = payload md5 equality · exhausted →
-  HALT-and-report) → converged G-Y0 vs N16's trigger naming the surface md5 → L7–L8 → the full rehearsal
-  hand-back → **the EXECUTION word** → the landing → candidate board → adoption (owner's separate act).
-  Next seam decisions: the L-A artifact acceptance audit · the L-B/L-C acceptance runs · the pool-division
-  numbers to the owner for his level ruling · the converged G-Y0 against N16.
+- **#306 — the seat awaits the REVISION ORDER via the owner's paste** (comment 5176541552), then: design
+  `m(pos, age, pick)` per the owner's laws, measured on committed rows, HOLD for seam audit (laws first,
+  mechanics second) → implement on approval → acceptance on the artifact with a band-free drift check →
+  **L-B** deterministic lane (failing direction discharged by the recorded cross-container pair) → **the
+  pool-division measurement** (N37) → **L-C** per the amended benchmark → **L6 re-enters under R-H/R-I/N19
+  unchanged** → converged G-Y0 vs N16 naming the surface md5 → L7–L8 → full rehearsal hand-back → **the
+  EXECUTION word** → the landing → candidate board → adoption (owner's separate act).
 - **#276 clubs tab · #270 referee** (bias-1 refinement N17) — post-adoption · **#139 feeds** · v1.1 read
   outstanding (13 screenshots held).
 
 ## OWNER ACTS OUTSTANDING
-The **EXECUTION word** (after the full rehearsal hand-back) · **the pool LEVEL ruling** (after the N37
-measurement lands — the seam brings the numbers) · close clicks **#292 #283 #275** · the
-`rl_replacement_derive.py` search (N23; found → tell the seam) · branch deletes — **HOLD** g4edkc (until
-`e339b1e9` reaches main) · 4ql38z · fp78jm (`3cccb9d`) · fubolo (`abf8f4c`) · j0kwl0 (`8e8c15b`) · N12
-holds until the landing reaches main · pen-token re-issue at the owner's discretion (the v560/v561 pens ran
-on his direct words).
+**The seam rotation decision** (raised v562; rotation is cheap by construction) · paste the revision order
+to the seat · the **EXECUTION word** (after the full rehearsal hand-back) · **the pool LEVEL ruling** (after
+the N37 measurement) · close clicks **#292 #283 #275** · the `rl_replacement_derive.py` search (N23) ·
+branch deletes — **HOLD** g4edkc · 4ql38z · fp78jm · fubolo · j0kwl0 · N12 holds until the landing reaches
+main · pen-token re-issue at the owner's discretion.
 
 ## RUNNING THIS SEAT WELL — charter C1/C2/C3 AND M1–M3 govern; read them first
-- **M1** one-screen replies, detail in filings · **M2** before every in-seat act: deciding-figure re-run,
-  ruling, or audit? — else delegate · **M3** context posture in one line at every pen.
-- **The owner's communication word (binding on successors):** every agent return translated in VERY SIMPLE
-  terms, short — what they did, whether it worked, what he must decide (options + recommendation, one line
-  each). Relays IN HIS CHANNEL, never a pointer to GitHub. Answer him HERE before filing anywhere.
-- The era's verification standards: **v558** — re-run committed measurements in a clean worktree,
-  byte-identical required · **v559** — verify the capture PAIR by apply-and-hash, never the prose · **v560**
-  — a box is classified by OUTPUT BYTES (N35 is the instrument). Quote the record, never memory. The owner's
-  casual questions are load-bearing QC — two of his questions this cycle BECAME rulings (N36, N37): when he
-  pushes back, re-derive rather than defend; his attribution point at v561 was correct and the seam's
-  objection was withdrawn on it.
+- **M1** one-screen replies, detail in filings · **M2** deciding-figure re-run, ruling, or audit — else
+  delegate · **M3** context posture at every pen.
+- **The owner's communication word (binding):** every agent return in VERY SIMPLE terms — what they did,
+  whether it worked, what he must decide. Relays IN HIS CHANNEL. Answer him HERE before filing anywhere.
+- **The v562 lesson, paid for in the owner's trust:** an audit that re-runs every figure byte-identical can
+  still approve the wrong thing — CHECK THE DESIGN AGAINST THE OWNER'S STATED INTENT FIRST (hazard class
+  16), and state the load-bearing property of any design to the owner in ONE PLAIN SENTENCE before
+  discussing approval. Never band anything shown to him. When he pushes back, measure, concede what is
+  true, and never defend the seam's own work. His casual questions are the project's best QC — four of
+  them this cycle became law.
+- The era's verification standards: **v558** byte-identical re-runs · **v559** verify the capture pair ·
+  **v560** classify boxes by output bytes.
 
-## ENVIRONMENT CARRIES — carried from v52 in full (measurements/ evidence lane · ten sealed captures ·
-compute-path assert `92e397bd` · N26 · D.1 erratum · frozen fitted set · `84fb0cde` sealed L3–L5 record ·
-strictly serial behind `tools/preboot_assert.sh` · venv 5-pin proof · responsive-suite HAZARD · N32 · N33 ·
-the capture-trio table as reconstruction authority · C3′ committed-bytes surfaces · the N35 fit-path-assert
-recipe · the envpin proportion facts · **PEN MECHANICS** unchanged: stamp near char 88 `· v56X <date> ·
-PEN:` → X+1, SAME LENGTH · insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line count unchanged ·
-growth == entry length · exactly one new `SEAM v56X` stamp · docs-only diff · Part B wholesale · commit as
-`supervisor-seat <supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by CONTENT · after
-a rebase-merge, reset the pen branch onto origin/main before the next pen), plus this cycle's: **the
-approved L-A construction is the design of record** (the table above; the durable copy is LA_DESIGN.md at
-`6736a6f` + the audit 5175872733) · the two committed L-A measurement scripts are stdlib-only and re-run
-byte-identical on any box.
+## ENVIRONMENT CARRIES — as v53 in full (measurements/ lane · sealed captures · compute-path assert
+`92e397bd` · N26 · frozen fitted set · strictly serial behind `tools/preboot_assert.sh` · venv 5-pin proof ·
+N32 · N33 · N35 recipe · envpin proportion facts · **PEN MECHANICS** unchanged: stamp near char 88 `· v56X
+<date> · PEN:` → X+1, SAME LENGTH · insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line count
+unchanged · growth == entry length · one new `SEAM v56X` stamp · docs-only diff · Part B wholesale · commit
+as `supervisor-seat <supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by CONTENT ·
+reset the pen branch onto origin/main before each pen).
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip = the v561 pen or a descendant; issues #290 #292 #279
-   #283 #275 #276 #270 #269 #146 #139 #306 open · #271 #274 closed · no open PRs; four gating workflows
-   green (in-flight stated as in-flight); the LIVE carrier `claude/exec-seat-290-handoff-d7bnaa` at
-   `7e9d7f9`; the `zlaarm` branch at `6736a6f` or a descendant (implementation commits expected); the FIVE
-   frozen/HOLD branches intact; **the capture-trio table verifies by apply-and-hash** (at minimum: apply
-   `13b71c26` → `fb9efdec`).
-2. The #306 seat is implementing L-A on the proceed order (5175872733): audit each filing by re-running its
-   deciding figures (M2; the v558 standard) — and CLASSIFY YOUR OWN BOX by N35's fit-path assert before
-   trusting any fit figure you re-run there. The next seam decisions arrive at: the L-A artifact acceptance
-   · L-B/L-C · the pool-division numbers (bring them to the owner for his level ruling, simply) · the
-   converged G-Y0 against N16. Bring the owner each outcome per his communication word.
-3. Read-back to the owner in his channel — short and simple per C1/M1 — then hold for confirmation before
-   any push.
+1. Verify live state with your own commands: main tip = the v562 pen or a descendant; the same eleven issues
+   open, #271 #274 closed; no open PRs; four gating workflows green; the LIVE carrier at `7e9d7f9`; the
+   `zlaarm` branch at `a59db87` or a descendant; the five frozen/HOLD branches intact; the capture table by
+   apply-and-hash (minimum: `13b71c26` → `fb9efdec`).
+2. **Read the owner's laws in Part A and the v562 correction (5176541552) IN FULL before auditing anything.**
+   The next seam act is the audit of the revised `m(pos, age, pick)` design — against the laws first, the
+   mechanics second. Classify your own box by N35 before trusting any fit figure. Bring the owner each
+   outcome in very simple terms; state every design's load-bearing property in one plain sentence.
+3. Read-back to the owner in his channel — short and simple — then hold for confirmation before any push.
