@@ -4,7 +4,7 @@
  "_key": "basis md5 (12) | anchor payload (8) | roster composition digest (12)",
  "_what": "L-C: the lane's expected FITTED OUTPUT BYTES, keyed on its declared inputs",
  "expectations": {
-  "25a72f85a96b|5c1ff693|bce3c13d27ff": {
+  "25a72f85a96b|e69a3f38|bce3c13d27ff": {
    "applied_rows": 1448,
    "basis_md5": "25a72f85a96b865505123fb47597cea6",
    "basis_rows": 1197,
