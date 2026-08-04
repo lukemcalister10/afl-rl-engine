@@ -1,0 +1,34 @@
+L5 DIAL CENSUS — denominator is L0's own count
+  canonical rows : 187
+  dispositioned  : 187
+  WITHOUT A TOKEN: 0   <- the gate
+
+   RULED-EXEMPT            88    47.1%
+   REACHED-BY-L1           26    13.9%
+   REACHED-BY-L8           19    10.2%
+   RE-DERIVED              15     8.0%
+   DOC-CORRECTED            8     4.3%
+   RETIRED-FROM-LIVE        8     4.3%
+   REACHED-BY-L4            6     3.2%
+   REACHED-BY-L6            6     3.2%
+   REACHED-BY-L7            5     2.7%
+   DEFERRED-TO-ADOPTION     2     1.1%
+   REACHED-BY-L2            2     1.1%
+   CARRIED-NOT-REGENERABLE   1     0.5%
+   REACHED-BY-L3            1     0.5%
+
+  RULED-EXEMPT splits — the token is one word for three situations:
+     already-ruled-current   47   (the row already states the ruled basis)
+     sealed history          31   (the standing scope boundary; C.2 forbids re-stamping)
+     exempt, case by case    10   (each carries its own evidence pointer)
+
+  L5-OWNED (the five tokens)   : 122 of 187 = 65.2%
+  owned by another leg         : 65 of 187 = 34.8%
+
+  ESCALATED BY NAME            : 3
+     row 29   MA.REPL replacement bars
+     row 9    bust_prior_table.json
+     row 34   cm_400.pkl (the band)
+  L0 UNCLEAR rows resolved     : 16 of 16
+
+  GATE: zero rows without a token — PASS

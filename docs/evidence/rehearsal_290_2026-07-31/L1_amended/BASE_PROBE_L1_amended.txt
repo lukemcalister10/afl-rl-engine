@@ -1,0 +1,35 @@
+diff        : docs/evidence/rehearsal_290_2026-07-31/L1_amended/L1_amended_state.diff
+targets     : 17
+scanned     : 862 commits, first-parent from abf8f4c
+
+  abf8f4c  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3: T1 APPLIED (owner word) — gates green, watc
+  6128b20  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3 bias-1: both limbs measured, four treatments
+  af12049  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3: the watched number unblocked — matrix re-em
+  79ee8e5  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3: correct my own S-1 framing, and file a bloc
+  27da063  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290: merge main forward (v552/v44 pen — window word
+  57bfea1  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L3 baseline: the before-picture under window wo
+  eaceacc  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290: FREEZE the ruled v0surf surface as bytes + the
+  90d65b3  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290 L2: both window candidates measured at the HALT
+  3d253c6  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #290: merge the seat record forward — true merge of 
+  e73e6bf  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v551 + CURRENT_STATE v43: L1-exit + double-
+  987a508  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  charter amendment 2026-07-31 second block: M1-M3 mec
+  6081f8e  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v550 + CURRENT_STATE v42: consistency-era b
+  ab68430  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #292 trade desk: implement the ruled pricing split —
+  5ed38d3  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v549 + CURRENT_STATE v41 + charter superses
+  6b80e23  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v548 + CURRENT_STATE v40 + charter amendmen
+  6c6b346  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v547 + CURRENT_STATE v39: handover pen — se
+  ca00e3d  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  DOB courier staging + cross-check tables filed as du
+  abf560a  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v546 + CURRENT_STATE v38: runbook pen — #29
+  c49ed30  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v545 + CURRENT_STATE v37: consistency pen —
+  ec1827e  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  consistency inventory 2026-07-31: three-lane sweep f
+  43e3095  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  register v544 + CURRENT_STATE v36: three-landings pe
+  b306400  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #275 b6 partial: archive the 5 uncited historical sc
+  3aa774a  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #275 repo hygiene: archive 66.60MB of zero-reference
+  0852c75  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #283 follow-up: classify RL_OSA_SKIP in the config i
+  5dd2674  17/17 match · 0 mismatch · 0 absent  ADMISSIBLE  #283 ownership single source: the store becomes the 
+
+ADMISSIBLE SET: 25 of 862 scanned
+  newest abf8f4c   oldest 5dd2674
+
+  This is an INTERVAL. The probe narrows; it does not recover.
+  The base of record comes from the generating act, recorded beside the diff.

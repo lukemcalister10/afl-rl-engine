@@ -1,0 +1,22 @@
+{
+ "pass": 0,
+ "what": "surface catch-up: the SAME curve e69a3f38, refitted on the L4 substrate",
+ "md5": "fb9efdec4d669d389fe3beef2bca3092",
+ "git_blob": "331889aedb9e9a38be54ebe44cccf4ce4d5b57f0",
+ "bytes": 49758,
+ "signature_keys": [
+  "0589a2620e24e71a348988d27ab06154",
+  "96d671c952c819fa64df0b5d1a402f1e"
+ ],
+ "n_surfaces": 2,
+ "prior_surface_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+ "curve_payload": "e69a3f38",
+ "store": "81d24704",
+ "gamma": 1.0,
+ "machine": "Xeon @2.80GHz family 6 model 85 (Skylake-SP), AVX512 SKX/CLX; numpy 2.4.4 openblas 0.3.31.188.0",
+ "double_fit_byte_identical": true,
+ "refit_seconds": [
+  72,
+  74
+ ]
+}

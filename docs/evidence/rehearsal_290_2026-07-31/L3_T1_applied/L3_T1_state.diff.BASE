@@ -1,0 +1,70 @@
+STATE-DIFF BASE ANNOTATION — L3_T1_state.diff
+=============================================
+Filed 2026-07-31 by the incoming #290 execution seat, as ruled opening act (1)
+(seam go + audit: #290 issuecomment-5143115766; the clause enters the law at register v553).
+
+THE CLAUSE
+  A state diff names its base commit BESIDE itself. This file is that name.
+  The diff's own bytes are UNCHANGED by this annotation — asserted below.
+
+THE ARTIFACT
+  file        L3_T1_state.diff
+  md5         0455a942403e267e3915a19fc391cf7c
+  size        142,345 bytes
+  sections    18 `diff --git` · exactly 1 `GIT binary patch` (data/v0surf.pkl)
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   79ee8e5   "#290 L3: correct my own S-1 framing, and file a blocker on the
+                           watched number"
+  ON            the #290 carrier line — NOT main. See THE CARRIER-COMMIT CLAUSE below.
+  provenance    the generating seat's own filing names `79ee8e5` as its branch tip at the
+                time (#290 issuecomment-5141949254); `af12049`, `6128b20` and `abf8f4c`
+                are later.
+
+VERIFIED AT THE BASE — re-run by this seat, not inherited
+  git apply --check --binary        -> CLEAN
+  full apply                        -> 18 files
+  data/v0surf.pkl                   -> 84fb0cde29f36c1a91d440e63b753c3c   BYTE-EXACT
+                                       (= the ruled frozen surface, N16)
+  data/expected_boot.json           -> fv 95277b76 · v0surf 84fb0cde
+  T1 present                        -> first_observable_season() at
+                                       engine/forward_valuation/conditional_prior.py:136
+
+AT LATER TIPS — how to apply it after the base has moved
+  At `af12049` and every descendant, EXACTLY ONE of the 18 files fails:
+    session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py
+  It fails because it DUPLICATES a change that `af12049` already committed — the harness
+  re-pin EXPECT_V0SURF '12d903336f6e' -> '96d671c952c8'. It is not a conflict of substance.
+
+  git apply --binary \
+    --exclude='session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py' \
+    L3_T1_state.diff
+  -> 17 files · data/v0surf.pkl = 84fb0cde29f36c1a91d440e63b753c3c · fv 95277b76
+     IDENTICAL RESULT. Re-run at `abf8f4c` by this seat.
+  Or regenerate the diff at the tip; both routes were measured to the same bytes.
+
+THE CARRIER-COMMIT CLAUSE — why the base cannot be named as a main commit
+  17 of the 18 targets are byte-identical at `79ee8e5` and at `origin/main`.
+  The 18th — `harness_pvc_REPINNED.py` — DOES NOT EXIST ON MAIN at all: the step-4
+  evidence pack lives only on the #290 line. So "this diff applies at main" is false for
+  the one file that decides the question, and a base named as a main commit would be a
+  true statement about 17 files and a wrong one about the diff.
+  **A state diff's base names a commit on the line that carries all of its targets.**
+
+THE INSTRUMENT, AND ITS LIMIT — stated so this annotation is not over-read
+  `state_diff_base_probe.py` (beside this tree) tests a candidate base from the diff's own
+  `index <pre>..<post>` lines, without applying anything. Run captured at
+  `BASE_PROBE_L3_T1.txt`. Result:
+
+      ADMISSIBLE SET: 6 commits — 3d253c6 … 79ee8e5, newest 79ee8e5
+
+  The probe returns an INTERVAL, not a point: any commit that did not touch the diff's
+  targets is indistinguishable from any other. `79ee8e5` is the NEWEST admissible commit
+  and the one the generating act names. **Measurement narrows; provenance decides.**
+  That is precisely why the base must be recorded when the diff is cut — and why this
+  file exists rather than a recipe for recovering it later.
+
+NON-VACUITY — the probe rejects, on both available grounds, in the captured run
+  pre-image MISMATCH  abf8f4c · 6128b20 · af12049   (harness blob differs)
+  target ABSENT       e73e6bf · 987a508 · 6081f8e   (harness not on main's line)

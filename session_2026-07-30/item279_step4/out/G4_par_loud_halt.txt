@@ -1,0 +1,22 @@
+################ case: window 2018-2018, gate>=24 ################
+--- EDITED (E3) ---
+SystemExit — LOUD HALT:
+par_build HALT: no on-park observations for position group(s) KPF.
+  cohort DRAFT 2018-2018 | tenure 1-6 | par gate >=24 games | dual rule 'primary'
+  gather() produced 332 raw rows -> 22 gated observations; per-group counts: {'MID': 6, 'SD': 10, 'SF': 4, 'KPD': 1, 'KPF': 0, 'RUCK': 1}
+  A starved group cannot be fitted. Widen the cohort, relax the gate, or revisit the keying —
+  do NOT drop the group silently.
+--- ORIGINAL (negative control) ---
+IndexError — BARE, names nothing: too many indices for array: array is 1-dimensional, but 2 were indexed
+
+################ case: window 1990-1990, gate>=6 ################
+--- EDITED (E3) ---
+SystemExit — LOUD HALT:
+par_build HALT: no on-park observations for position group(s) MID, SD, SF, KPD, KPF, RUCK.
+  cohort DRAFT 1990-1990 | tenure 1-6 | par gate >=6 games | dual rule 'primary'
+  gather() produced 0 raw rows -> 0 gated observations; per-group counts: {'MID': 0, 'SD': 0, 'SF': 0, 'KPD': 0, 'KPF': 0, 'RUCK': 0}
+  A starved group cannot be fitted. Widen the cohort, relax the gate, or revisit the keying —
+  do NOT drop the group silently.
+--- ORIGINAL (negative control) ---
+IndexError — BARE, names nothing: too many indices for array: array is 1-dimensional, but 2 were indexed
+

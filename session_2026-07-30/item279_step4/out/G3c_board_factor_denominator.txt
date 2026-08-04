@@ -1,0 +1,11 @@
+{
+ "MEASURED_AT_THE_ANCHOR_SITE": true,
+ "pre_anchor_PVC_1": 4441,
+ "pre_anchor_PVC_2": 3718,
+ "pre_anchor_PVC_64": 347,
+ "_P1": 3000.0,
+ "BOARD_FACTOR": 0.675524,
+ "SCALE_before": 6.985984,
+ "adopted_artifact_head": 3000,
+ "READING": "the player-side denominator is the v3.4 PRE-ANCHOR pick 1 (4441), a curve that does NOT ship; the pick side ships from pvc_curve_v2.json (head 3000). The two sides are anchored on DIFFERENT curves and agree today only because RL_PICK1 and the artifact pin are both 3000."
+}

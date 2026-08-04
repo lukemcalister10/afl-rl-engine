@@ -1,0 +1,2034 @@
+diff --git a/data/expected_boot.json b/data/expected_boot.json
+index 91f23bb..f9e46d4 100644
+--- a/data/expected_boot.json
++++ b/data/expected_boot.json
+@@ -21,19 +21,19 @@
+  "band": "34faa8659cc8f19794f5cb9584fa19b2",
+  "board": "f2df6e0a2902f48e1df36f35493ba8c1",
+  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+- "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+- "engine_head": "404e811353281843b065b3d75768bec0",
+- "fv": "d10aa93e977a16a7a1c0543e0041a8876cf2912d90a9bb6f00657c31092d786b",
++ "config": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
++ "engine_head": "3c7b0c3ccebdb52f35d28b1d12a259a2",
++ "fv": "95277b7668ed732dea5dc2ed63361475051df5736f131ac0127418dda8a41bbb",
+  "peak_model": "b763f59e6a6b8aa20946211674e37259",
+  "pvc_snapshot": "735d2dec60cee285382a5d7a17c36a6f",
+  "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+- "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
++ "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
+  "store": "81d2470440a80f72afea4405e94338c5",
+  "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+- "v0surf": "ce08c2d13ae7d9bd403c60cf58ea1660",
++ "v0surf": "84fb0cde29f36c1a91d440e63b753c3c",
+  "_panel_removed_note": "PANEL RE-PIN REMOVED 2026-07-28, owner word (ITEM 208). The ten-row panel block that lived here was one of four surfaces that had to be re-typed by hand every time the board moved. It never caught a defect across R15-R20 \u2014 every failure was a legitimately moved board \u2014 and it blocked every landing. run_panel.sh now PRINTS the ten rows derived from the board and asserts nothing about their values; Guard 5 (store / rl_model / fv identity) remains the gate on entry and has fired in anger. Nothing executable read this field: ui/tools/extract_board_view.py copied it into the UI stamp as text and no test or view asserted it. Historical panel values are preserved in git history and in the ITEM 208 hand-back on issue #208.",
+  "_board_note_split": "Board re-derived under THE PRICING SPLIT + ADDENDUM 1, on a FROZEN v0surf surface (sig 76498b5a, pickle 2 surfaces, zero fits at build). National curve 1-64; everything past 64 is POOL at one index, valued by position; no pool row teaches the curve at any fit site. Store e3aaba77 UNCHANGED. THE BOARD MOVE IS NOT MADE HERE: no balanced reference, no UI bundles, and by owner correction 035bf11 NO history column - one column is written per LANDED change, not per rebuild, and this baseline effort gets its single column when the whole of it lands."
+ }
+diff --git a/data/model_config.json b/data/model_config.json
+index d7fd100..39a44a4 100644
+--- a/data/model_config.json
++++ b/data/model_config.json
+@@ -1,97 +1,97 @@
+ {
+-  "_doc": "MODEL CONFIG MANIFEST — the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
+-  "version": "1.0",
+-  "date": "2026-07-09",
+-  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) — RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
+-  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+-  "excluded_infrastructure_vars": {
+-    "_note": "NOT model semantics — path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
+-    "RL_REPO": "checkout locator",
+-    "CLAUDE_PROJECT_DIR": "checkout locator",
+-    "RL_APP_DATA": "board output filename",
+-    "RL_FV": "forward_valuation path (default byte-identical)",
+-    "RL_NO_OWNER_OVERRIDES": "display-only Brodie override toggle (out of scope; never touches a guarded value)",
+-    "RL_ALLOW_PVCFIT_BOARD": "R3 bake-write escape hatch (governed by the existing R3 bake guard + RULING-CONFIG)",
+-    "RL_CONFIG_MODE": "this manifest's own mode flag (bake|gate)",
+-    "RL_VENV": "pinned-venv path (setup_env.sh / SessionStart hook); not a model input",
+-    "PYTHONHASHSEED": "determinism (not RL_/PAR_-prefixed; set by the pinned env)"
+-  },
+-  "vars": {
+-    "RL_GAMMA": "0.85",
+-    "RL_PICK1": "3000",
+-    "RL_RUCK_TAX": "0.25",
+-    "RL_REPL_DROP": "3",
+-    "RL_RECENCY_DECAY": "0.72",
+-    "RL_PRIOR_TREES": "400",
+-    "PAR_RAMPS": "22",
+-    "PAR_BW": "0.40",
+-    "PAR_MING": "6",
+-    "PAR_K": "30",
+-    "RL_EXPO_INPROG_Y": "2026",
+-    "RL_LEVEL_RAMP": "14",
+-    "RL_M3_INPROG_Y": "2026",
+-    "RL_FORMDECL": "1",
+-    "RL_FWDRECAL": "1",
+-    "RL_YOUNG": "1",
+-    "RL_OVPX": "1",
+-    "RL_KPFFIX": "1",
+-    "RL_V7FORM": "1",
+-    "RL_V7_FORM_W": "0.6",
+-    "RL_W4_CRED": "0.17",
+-    "RL_W4_KPFUP": "1.6",
+-    "RL_W4_FADE": "0.60",
+-    "RL_W4_OVPX": "1.0",
+-    "RL_W4_KPFSH": "0.55",
+-    "RL_W4_KPFSH_DEM": "0.70",
+-    "RL_W4_KPFTOP": "0.4",
+-    "RL_W4_KPFM0": "8.0",
+-    "RL_W4_KPFMS": "16.0",
+-    "RL_YCRED_W": "0.9",
+-    "RL_YCRED_KPF": "0.92",
+-    "RL_RUC_PRIOR_CAP": "1.4",
+-    "RL_W4_RUC": "1",
+-    "RL_RUC_CEIL_HEAD": "0.80",
+-    "RL_RUC_CEIL_REFPK": "72",
+-    "RL_RUC_YRH": "0.35",
+-    "RL_PVCFIT": "0",
+-    "RL_LTI_CLOCK": "advance",
+-    "RL_PVCADOPT": "1",
+-    "RL_MSD_POOL_EXCL": "1",
+-    "RL_DIAL14": "1",
+-    "RL_AGE": "1",
+-    "RL_L5_PICKLESS": "1",
+-    "RL_AVAIL": "1",
+-    "RL_LTI_RETURN": "1",
+-    "RL_PVC2": "1",
+-    "RL_LEGE": "1",
+-    "RL_LEGF": "1",
+-    "RL_FLEX": "1",
+-    "RL_CAPT": "1",
+-    "RL_DAMP": "1",
+-    "RL_EVW": "1",
+-    "RL_ISOFADE": "1",
+-    "RL_SAGE29": "1",
+-    "RL_LSYM": "1",
+-    "RL_EO2": "1",
+-    "RL_ABSENCE": "1",
+-    "RL_UNCOMP": "1",
+-    "RL_UNCONSERVE": "0"
+-  },
+-  "var_notes": {
+-    "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) — inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
+-    "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
+-    "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 §36): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
+-    "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c",
+-    "_v2_9_levers": "RL_PVCADOPT / RL_MSD_POOL_EXCL / RL_DIAL14 / RL_AGE / RL_L5_PICKLESS are the v2.9 refit's five wired kill-switches (engine 7a07e369->2030e5df; REFIT_WIRING_PLAN_OF_RECORD L1/L4/L2/L3/L5). ALL default-ON ('1'); each =0 reverts its layer to base byte-exact (v2_9_refit_cert CERTIFICATION: all-OFF reproduces base). Pinned here at their default-ON value so config_sha256 covers the levers (BOOK-PARITY LAW: the config is part of the formula) and a lever flip moves the hash + is rejected as divergent in bake/gate mode. Manifest values == engine defaults, so pinning them changes NO board/book value (board 3dc19fbb / book d371a27c byte-identical).",
+-    "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
+-    "RL_MSD_POOL_EXCL": "v2.9 L4 MSD training-pool exclusion; default ON (engine _merged_recover.py:15).",
+-    "RL_DIAL14": "v2.9 L2 LENS bal dial 14 (0.14 vs 0.15); default ON (engine rl_model.py:301).",
+-    "RL_AGE": "v2.9 L3 s(age) breakout-persistence slope; default ON (engine _merged_recover.py:224).",
+-    "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
+-    "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) — model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
+-    "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) — model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
+-    "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
+-    "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars — the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
+-  },
+-  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
++ "_doc": "MODEL CONFIG MANIFEST \u2014 the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
++ "version": "1.0",
++ "date": "2026-07-09",
++ "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) \u2014 RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
++ "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
++ "excluded_infrastructure_vars": {
++  "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
++  "RL_REPO": "checkout locator",
++  "CLAUDE_PROJECT_DIR": "checkout locator",
++  "RL_APP_DATA": "board output filename",
++  "RL_FV": "forward_valuation path (default byte-identical)",
++  "RL_NO_OWNER_OVERRIDES": "display-only Brodie override toggle (out of scope; never touches a guarded value)",
++  "RL_ALLOW_PVCFIT_BOARD": "R3 bake-write escape hatch (governed by the existing R3 bake guard + RULING-CONFIG)",
++  "RL_CONFIG_MODE": "this manifest's own mode flag (bake|gate)",
++  "RL_VENV": "pinned-venv path (setup_env.sh / SessionStart hook); not a model input",
++  "PYTHONHASHSEED": "determinism (not RL_/PAR_-prefixed; set by the pinned env)"
++ },
++ "vars": {
++  "RL_GAMMA": "1.0",
++  "RL_PICK1": "3000",
++  "RL_RUCK_TAX": "0.25",
++  "RL_REPL_DROP": "3",
++  "RL_RECENCY_DECAY": "0.72",
++  "RL_PRIOR_TREES": "400",
++  "PAR_RAMPS": "22",
++  "PAR_BW": "0.40",
++  "PAR_MING": "6",
++  "PAR_K": "30",
++  "RL_EXPO_INPROG_Y": "2026",
++  "RL_LEVEL_RAMP": "14",
++  "RL_M3_INPROG_Y": "2026",
++  "RL_FORMDECL": "1",
++  "RL_FWDRECAL": "1",
++  "RL_YOUNG": "1",
++  "RL_OVPX": "1",
++  "RL_KPFFIX": "1",
++  "RL_V7FORM": "1",
++  "RL_V7_FORM_W": "0.6",
++  "RL_W4_CRED": "0.17",
++  "RL_W4_KPFUP": "1.6",
++  "RL_W4_FADE": "0.60",
++  "RL_W4_OVPX": "1.0",
++  "RL_W4_KPFSH": "0.55",
++  "RL_W4_KPFSH_DEM": "0.70",
++  "RL_W4_KPFTOP": "0.4",
++  "RL_W4_KPFM0": "8.0",
++  "RL_W4_KPFMS": "16.0",
++  "RL_YCRED_W": "0.9",
++  "RL_YCRED_KPF": "0.92",
++  "RL_RUC_PRIOR_CAP": "1.4",
++  "RL_W4_RUC": "1",
++  "RL_RUC_CEIL_HEAD": "0.80",
++  "RL_RUC_CEIL_REFPK": "72",
++  "RL_RUC_YRH": "0.35",
++  "RL_PVCFIT": "0",
++  "RL_LTI_CLOCK": "advance",
++  "RL_PVCADOPT": "1",
++  "RL_MSD_POOL_EXCL": "1",
++  "RL_DIAL14": "1",
++  "RL_AGE": "1",
++  "RL_L5_PICKLESS": "1",
++  "RL_AVAIL": "1",
++  "RL_LTI_RETURN": "1",
++  "RL_PVC2": "1",
++  "RL_LEGE": "1",
++  "RL_LEGF": "1",
++  "RL_FLEX": "1",
++  "RL_CAPT": "1",
++  "RL_DAMP": "1",
++  "RL_EVW": "1",
++  "RL_ISOFADE": "1",
++  "RL_SAGE29": "1",
++  "RL_LSYM": "1",
++  "RL_EO2": "1",
++  "RL_ABSENCE": "1",
++  "RL_UNCOMP": "1",
++  "RL_UNCONSERVE": "0"
++ },
++ "var_notes": {
++  "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
++  "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
++  "RL_LTI_CLOCK": "advance = owner ruling R-i (2026-07-10, DECISIONS v90 \u00a736): the L1c fade-clock ADVANCES during injury. The code default flips to advance in the same build; this manifest pins it so it rides artifact identity (config_sha256) and a bake/gate run with the clock PAUSED is rejected (divergent-override reject-scan + the ruling_config_check.py R-i assertion). Supersedes the provisional pause the #56 build shipped as default.",
++  "PAR_RAMPS": "22 = official env; code default aligned 14->22 in gate-integrity fix c",
++  "_v2_9_levers": "RL_PVCADOPT / RL_MSD_POOL_EXCL / RL_DIAL14 / RL_AGE / RL_L5_PICKLESS are the v2.9 refit's five wired kill-switches (engine 7a07e369->2030e5df; REFIT_WIRING_PLAN_OF_RECORD L1/L4/L2/L3/L5). ALL default-ON ('1'); each =0 reverts its layer to base byte-exact (v2_9_refit_cert CERTIFICATION: all-OFF reproduces base). Pinned here at their default-ON value so config_sha256 covers the levers (BOOK-PARITY LAW: the config is part of the formula) and a lever flip moves the hash + is rejected as divergent in bake/gate mode. Manifest values == engine defaults, so pinning them changes NO board/book value (board 3dc19fbb / book d371a27c byte-identical).",
++  "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
++  "RL_MSD_POOL_EXCL": "v2.9 L4 MSD training-pool exclusion; default ON (engine _merged_recover.py:15).",
++  "RL_DIAL14": "v2.9 L2 LENS bal dial 14 (0.14 vs 0.15); default ON (engine rl_model.py:301).",
++  "RL_AGE": "v2.9 L3 s(age) breakout-persistence slope; default ON (engine _merged_recover.py:224).",
++  "RL_L5_PICKLESS": "v2.9 L5 SSP re-entry pickless completion; default ON (engine rl_model.py:812).",
++  "RL_AVAIL": "LTI/availability layer (Chapter-3 2026-07-09; register-driven present haircut) \u2014 model-semantics, board-affecting for register names, default ON (engine _merged_recover.py:56). Surfaced by the code audit at the v2.9 manifest completion (was READ but neither pinned nor excluded); pinned at its default so config_sha256 covers it. RL_AVAIL=0 => layer skipped, non-register byte-identical.",
++  "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) \u2014 model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
++  "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
++  "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars \u2014 the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
++ },
++ "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
+ }
+diff --git a/data/release_contract.json b/data/release_contract.json
+index 7151a09..25d3d72 100644
+--- a/data/release_contract.json
++++ b/data/release_contract.json
+@@ -1,99 +1,100 @@
+ {
+-  "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
+-  "release_version": "v2.11-final-rc1-PROVISIONAL",
++ "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
++ "release_version": "v2.11-final-rc1-PROVISIONAL",
++ "as_of_round": 20,
++ "switch_posture": {
++  "RL_PVC2": "1",
++  "RL_LEGE": "1",
++  "RL_LEGF": "1"
++ },
++ "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
++ "identities": {
++  "board": "f2df6e0a2902f48e1df36f35493ba8c1",
++  "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
++  "store": "81d2470440a80f72afea4405e94338c5",
++  "engine_head": "3c7b0c3ccebdb52f35d28b1d12a259a2",
++  "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
++  "fv": "95277b7668ed732dea5dc2ed63361475051df5736f131ac0127418dda8a41bbb",
++  "register": "652d83e87780e415a01a2de6d8b3cc57",
++  "band": "34faa8659cc8f19794f5cb9584fa19b2"
++ },
++ "pvc_provenance": {
++  "adopted_pathway": "RL_PVC2",
++  "curve_file": "pvc_curve_v2.json",
++  "curve_payload_md5": "e69a3f38",
++  "numeraire_pin1": 3000,
++  "_note": "#290 L1(b): ruled control fit, pooled numeraire, stop-point working substrate"
++ },
++ "_held_candidates_doc": "#251 part A, owner ruling 2026-07-29. A DECLARED held candidate is a field where the TREE deliberately runs ahead of what is RELEASED. Each entry pins BOTH sides, so only that exact pair is excused; move either side and the gate HALTs again. An UNDECLARED mismatch HALTs exactly as before. These declarations live inside the contract, so contract_sha256 covers them - one cannot be added without re-stamping. AT ADOPTION: re-stamp identities.<field> to the candidate value and DELETE that entry in the same commit. Removal is self-enforcing, not a convention: once the two sides agree, a surviving declaration excuses nothing and is itself a rejection naming the field.",
++ "must_be_unset": [
++  "RL_UNCOMP_S",
++  "RL_LSYM_TAB",
++  "RL_V0SURF_REFIT"
++ ],
++ "present_lens_baseline": {
++  "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
++  "active": 804,
++  "present_value_total": 767198,
++  "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 4939d740; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253)."
++ },
++ "f5_entrant_reconciliation": {
++  "visible_1_64": 65925,
++  "residual_nd_tail": 2631,
++  "residual_mech": 9055,
++  "entrant_layer_pvc": 77611,
++  "seal": "a17aafed",
++  "reconciled": true,
++  "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
++ },
++ "season_metadata": {
++  "season_total_rounds": 24,
+   "as_of_round": 20,
+-  "switch_posture": {
+-    "RL_PVC2": "1",
+-    "RL_LEGE": "1",
+-    "RL_LEGF": "1"
++  "season_prog": 0.83,
++  "season_prog_config_twins": {
++   "RL_M3_FE": "0.58",
++   "RL_EXPO_F": "0.545",
++   "RL_M3_INPROG_Y": "2026",
++   "RL_EXPO_INPROG_Y": "2026"
+   },
+-  "config_sha256": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+-  "identities": {
+-    "board": "f2df6e0a2902f48e1df36f35493ba8c1",
+-    "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
+-    "store": "81d2470440a80f72afea4405e94338c5",
+-    "engine_head": "404e811353281843b065b3d75768bec0",
+-    "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
+-    "fv": "d10aa93e977a16a7a1c0543e0041a8876cf2912d90a9bb6f00657c31092d786b",
+-    "register": "652d83e87780e415a01a2de6d8b3cc57",
+-    "band": "34faa8659cc8f19794f5cb9584fa19b2"
+-  },
+-  "pvc_provenance": {
+-    "adopted_pathway": "RL_PVC2",
+-    "curve_file": "pvc_curve_v2.json",
+-    "curve_payload_md5": "08ea9375",
+-    "numeraire_pin1": 3000
+-  },
+-  "_held_candidates_doc": "#251 part A, owner ruling 2026-07-29. A DECLARED held candidate is a field where the TREE deliberately runs ahead of what is RELEASED. Each entry pins BOTH sides, so only that exact pair is excused; move either side and the gate HALTs again. An UNDECLARED mismatch HALTs exactly as before. These declarations live inside the contract, so contract_sha256 covers them - one cannot be added without re-stamping. AT ADOPTION: re-stamp identities.<field> to the candidate value and DELETE that entry in the same commit. Removal is self-enforcing, not a convention: once the two sides agree, a surviving declaration excuses nothing and is itself a rejection naming the field.",
+-  "must_be_unset": [
+-    "RL_UNCOMP_S",
+-    "RL_LSYM_TAB",
+-    "RL_V0SURF_REFIT"
+-  ],
+-  "present_lens_baseline": {
+-    "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
+-    "active": 804,
+-    "present_value_total": 767198,
+-    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 4939d740; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253)."
+-  },
+-  "f5_entrant_reconciliation": {
+-    "visible_1_64": 65925,
+-    "residual_nd_tail": 2631,
+-    "residual_mech": 9055,
+-    "entrant_layer_pvc": 77611,
+-    "seal": "a17aafed",
+-    "reconciled": true,
+-    "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)"
+-  },
+-  "season_metadata": {
+-    "season_total_rounds": 24,
+-    "as_of_round": 20,
+-    "season_prog": 0.83,
+-    "season_prog_config_twins": {
+-      "RL_M3_FE": "0.58",
+-      "RL_EXPO_F": "0.545",
+-      "RL_M3_INPROG_Y": "2026",
+-      "RL_EXPO_INPROG_Y": "2026"
+-    },
+-    "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
+-    "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
+-    "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
+-    "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
+-    "exposure_pace": 0.773,
+-    "calendar_progress": 0.83,
+-    "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+-    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
+-    "season_year": 2026,
+-    "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
+-    "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
+-    "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
+-  },
+-  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+-  "held_checks": [
+-    {
+-      "check_family": "G-Y0",
+-      "release": "hard bar 2.000% (calibrated pre-split for the per-pick national curve fit)",
+-      "candidate": "live 3.035% on the guard population (n=1,326) / 2.929% on the ruled ND 1-64 fit population (n=1,325)",
+-      "declared_by": "#271 Addendum 12 (owner word 2026-07-29): \"Accept G-Y0 as ruled.\"",
+-      "cleared_at": "#279, post-adoption \u2014 a DATED exception, not a permanent waiver",
+-      "ceiling_pct": 3.5,
+-      "measured_at_declaration": {
+-        "guard_population_pct": 3.035,
+-        "ruled_population_pct": 2.929,
+-        "stage_A_pct": 2.672,
+-        "hard_bar_pct": 2.0,
+-        "n_guard": 1326,
+-        "n_ruled": 1325
+-      },
+-      "diagnostic_map": "session_2026-07-29/item271/GY0_DIAGNOSTIC_MAP.json",
+-      "reason": "The composition-weighted mean V0 (surface-driven) runs ABOVE the re-derived curve. 62% of the disagreement sits in picks 1-20 and it is a POSITIONAL COMPOSITION effect, not a uniform bias: MID +343.1 mean gap against KPF -253.5 and SD -158.9. Accepted as ruled pending #279. The ceiling_pct 3.50 is a DO-NOT-EXCEED: today 3.035%, ~0.47pp of headroom (~15% relative). The stage-A -> stage-B move was +0.36pp, so one further move of that size stays under and two trip it. Breach is a HARD FAIL, and removing this record is a FAIL \u2014 the exception must stay visible."
+-    }
+-  ],
+-  "adopted": {
+-    "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\"",
+-    "issue": "#271",
+-    "baseline_column": "30/7 rederivation",
+-    "column_id": "rederivation-30-7"
+-  },
+-  "contract_sha256": "3ede10d3d705d2f94fa7d86375882bad93db996bd282036f444afaf1b3b22d39"
+-}
+\ No newline at end of file
++  "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
++  "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
++  "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
++  "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
++  "exposure_pace": 0.773,
++  "calendar_progress": 0.83,
++  "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
++  "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
++  "season_year": 2026,
++  "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
++  "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
++  "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred."
++ },
++ "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
++ "held_checks": [
++  {
++   "check_family": "G-Y0",
++   "release": "hard bar 2.000% (calibrated pre-split for the per-pick national curve fit)",
++   "candidate": "live 3.035% on the guard population (n=1,326) / 2.929% on the ruled ND 1-64 fit population (n=1,325)",
++   "declared_by": "#271 Addendum 12 (owner word 2026-07-29): \"Accept G-Y0 as ruled.\"",
++   "cleared_at": "#279, post-adoption \u2014 a DATED exception, not a permanent waiver",
++   "ceiling_pct": 3.5,
++   "measured_at_declaration": {
++    "guard_population_pct": 3.035,
++    "ruled_population_pct": 2.929,
++    "stage_A_pct": 2.672,
++    "hard_bar_pct": 2.0,
++    "n_guard": 1326,
++    "n_ruled": 1325
++   },
++   "diagnostic_map": "session_2026-07-29/item271/GY0_DIAGNOSTIC_MAP.json",
++   "reason": "The composition-weighted mean V0 (surface-driven) runs ABOVE the re-derived curve. 62% of the disagreement sits in picks 1-20 and it is a POSITIONAL COMPOSITION effect, not a uniform bias: MID +343.1 mean gap against KPF -253.5 and SD -158.9. Accepted as ruled pending #279. The ceiling_pct 3.50 is a DO-NOT-EXCEED: today 3.035%, ~0.47pp of headroom (~15% relative). The stage-A -> stage-B move was +0.36pp, so one further move of that size stays under and two trip it. Breach is a HARD FAIL, and removing this record is a FAIL \u2014 the exception must stay visible."
++  }
++ ],
++ "adopted": {
++  "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\"",
++  "issue": "#271",
++  "baseline_column": "30/7 rederivation",
++  "column_id": "rederivation-30-7"
++ },
++ "contract_sha256": "3ede10d3d705d2f94fa7d86375882bad93db996bd282036f444afaf1b3b22d39"
++}
+diff --git a/data/v0surf.pkl b/data/v0surf.pkl
+index cc4f55d9b3167567efede65406258bf113ecc533..2f4c3859bd34629b3ba9849e2ea32eff2b52c346 100644
+GIT binary patch
+literal 49758
+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
+L|9_c-<4XSpuQ4>F
+
+literal 49758
+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
+
+diff --git a/engine/forward_valuation/build_cohort_book.py b/engine/forward_valuation/build_cohort_book.py
+index 1fc2883..4014b2f 100644
+--- a/engine/forward_valuation/build_cohort_book.py
++++ b/engine/forward_valuation/build_cohort_book.py
+@@ -2,7 +2,7 @@
+ year by year (engine value() as-of each season via BASE_REF), plus a current-dist snapshot and a
+ non-play empirical analysis. Run from rl_after:  PYTHONHASHSEED=0 python3 ../forward_valuation/build_cohort_book.py"""
+ import os,sys,io,contextlib
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ # provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after + the ambient
+ # /home/claude/rl_workspace/forward_valuation/distribution_pricing.py path are REMOVED. rl_model resolves
+ # through the configured environment; distribution_pricing loads from the canonically-resolved forward_valuation
+diff --git a/engine/forward_valuation/build_peak_model_v4.py b/engine/forward_valuation/build_peak_model_v4.py
+index e61ab03..60de975 100644
+--- a/engine/forward_valuation/build_peak_model_v4.py
++++ b/engine/forward_valuation/build_peak_model_v4.py
+@@ -5,7 +5,7 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ['RL_GAMMA']='0.85'; os.environ['RL_PICK1']='3000'
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,json,pickle
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ import numpy as np
+diff --git a/engine/forward_valuation/conditional_prior.py b/engine/forward_valuation/conditional_prior.py
+index f7bef27..d0bcf05 100644
+--- a/engine/forward_valuation/conditional_prior.py
++++ b/engine/forward_valuation/conditional_prior.py
+@@ -37,7 +37,7 @@ def _season_val(_key, _fb):
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,numpy as np
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ from sklearn.ensemble import GradientBoostingRegressor
+@@ -122,6 +122,24 @@ def _feat(p,Y):
+     ep=min(MA.effpk(p),KMAX); ten=max(0,Y-(debutyr(p)-1))
+     return oh+[np.log(ep), _exposure(p,Y), ten, _lvl_eff(p,Y), _age_asof(p,Y)]
+ 
++# ---- T1: the unobservable-season drop (#290 L3, OWNER WORD 2026-07-31) --------------------
++# The store's scoring record begins at FIRST_OBSERVABLE. A class drafted before that emits training
++# rows for seasons the store CANNOT SEE: games=0, exposure=0, level=0 — not because the player did
++# not play, but because the record starts later. Those are FABRICATED ZEROS and they teach.
++# Measured at the word: 64 such rows of 13,221 (0.484%), all the 2003 class's tenure-1 (2004) season.
++# The word is T1: each tenure cell is taught only by classes OBSERVABLE at that tenure — no
++# fabricated zeros, and NO RELABEL (tenure keeps its true elapsed-time meaning; the tenure re-anchor
++# was measured as limb 2 and NOT taken). Residual, recorded as a named referee-era refinement: the
++# cumulative features (_exposure, _lvl_eff) still integrate over the unobservable span.
++# The DRAFT-YEAR row (Y == d0) is a real zero BY DESIGN and is KEPT — it is not a fabricated one.
++_FIRST_OBS = []
++def first_observable_season():
++    """The earliest season the store carries any scoring row for. Derived, never hardcoded."""
++    if not _FIRST_OBS:
++        yrs = [x['year'] for p in MA.data for x in (p.get('scoring') or [])]
++        _FIRST_OBS.append(min(yrs) if yrs else None)
++    return _FIRST_OBS[0]
++
+ def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
+     """Train quantile models on RESOLVED careers (debut<=resolved_cut). One row per (player, as-of-year Y) from draft year
+     (games 0) through their last season; target = resolved forward best-3 from Y."""
+@@ -132,7 +150,9 @@ def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
+         if not (p.get('pick') or p.get('_ft')): continue
+         d0=debutyr(p)-1                                      # draft year (0 games)
+         last=max([x['year'] for x in p['scoring']]+[d0])
++        _fo=first_observable_season()
+         for Y in range(d0, min(last,cap)+1):
++            if _fo is not None and d0 < Y < _fo: continue   # T1: fabricated zero, unobservable season
+             t=fwd_best3_from(p,Y,cap)
+             X.append(_feat(p,Y)); y.append(t)
+     X=np.array(X); y=np.array(y)
+diff --git a/engine/forward_valuation/dist_redesign.py b/engine/forward_valuation/dist_redesign.py
+index 152b091..72d9783 100644
+--- a/engine/forward_valuation/dist_redesign.py
++++ b/engine/forward_valuation/dist_redesign.py
+@@ -21,7 +21,7 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,numpy as np,copy
+ import importlib.util
+ def _load(name,path):
+diff --git a/engine/forward_valuation/distribution_pricing.py b/engine/forward_valuation/distribution_pricing.py
+index 3b6fc36..28eec67 100644
+--- a/engine/forward_valuation/distribution_pricing.py
++++ b/engine/forward_valuation/distribution_pricing.py
+@@ -25,7 +25,7 @@ import sys, os
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import io,contextlib,numpy as np
+ with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
+ from sklearn.ensemble import GradientBoostingRegressor
+diff --git a/engine/forward_valuation/par_build.py b/engine/forward_valuation/par_build.py
+index 3d0a636..6c88428 100644
+--- a/engine/forward_valuation/par_build.py
++++ b/engine/forward_valuation/par_build.py
+@@ -1,4 +1,11 @@
+-"""PAR estimator (U26-REDESIGN, step 1) — STANDALONE DIAGNOSTIC, nothing wired into the engine.
++"""PAR estimator (U26-REDESIGN, step 1) — ON THE ENGINE'S VALUE PATH. Not a diagnostic.
++
++E5 (#279 step 4, seam word Q3 2026-07-30): this docstring used to say "STANDALONE DIAGNOSTIC, nothing wired
++into the engine". That is FALSE and has been for some time. The live chain is
++  _merged_recover.py imports wire_redesign -> W.PR = par_redesign -> par_redesign runs pb.fit() from THIS file
++  -> _par_prior(p,Y) = PR.par_at(...) enters the value blend at _merged_recover.py:580, weighted by _ev_pw
++     with the pinned residual floor _EVW_R = 0.11.
++So a change here MOVES PLAYER VALUES. Treat it with value-path care; the prose, not the behaviour, was wrong.
+ 
+ par(pos, pick, tenure) = level_pos(log-pick)  +  ramp_pos(tenure)     [additive; ramp(yr1)=0]
+   - target = median recency-weighted level (_lvl_wt) among players ON THE PARK at that pos x tenure
+@@ -18,7 +25,7 @@ import sys, os, io, contextlib, collections
+ if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
+     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
+     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
+-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
++os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+ import math as _math
+ import numpy as np
+ with contextlib.redirect_stdout(io.StringIO()):
+@@ -40,6 +47,34 @@ def season_row(p, Y):
+         if x['year'] == Y: return x
+     return None
+ 
++# ---- E3 (#279 step 4 item 6; the par ruling, owner word 2026-07-30 "Yes, per season") ------
++# The par surface used to key every observation by MA.gfut(p) — ONE label for a whole career — so a role
++# migrant's prime seasons refiled under his DESTINATION position and dragged up the young players anchored
++# in those cells (the Joe Berry +351 ripple). Each season now files under the position RECORDED FOR THAT
++# SEASON, which the store carries on every one of its 11,264 scoring rows (landed at #262).
++#
++# 1,874 of those rows (16.6%) record a DUAL position ('SF/MID', 'KPF/RUCK', ...), and GRP maps only the six
++# single positions, so the rule for duals must be STATED. PAR_DUAL_RULE is that statement — an OWNER word
++# (#279, pending at the time of writing), not a dial and not env-readable:
++#   'primary' — the primary component. futblend's own law: "The PRIMARY keys peak/curve/runway/key-premium".
++#   'lower'   — the pair's LOWER replacement bar; the eligibility-collapse law (R105.1 / _collapse_elig).
++#   'exclude' — dual seasons do not teach the par.
++# MEASURED at the step-4 rehearsal: 'primary' and 'lower' disagree on exactly 2 of 1,874 dual rows (the two
++# 'SF/KPD'), and neither reaches this cohort — so they produce a BYTE-IDENTICAL par surface here.
++PAR_DUAL_RULE = 'primary'
++
++def season_pos(r):
++    """The group a single season's observation teaches. None => this season does not teach."""
++    s = r.get('pos')
++    if not s: return None
++    if '/' not in s: return MA.GRP.get(s)
++    if PAR_DUAL_RULE == 'exclude': return None
++    a, b = s.split('/', 1)
++    ga, gb = MA.GRP.get(a), MA.GRP.get(b)
++    if PAR_DUAL_RULE == 'lower' and ga is not None and gb is not None:
++        return gb if MA.REPL.get(gb, float('inf')) < MA.REPL.get(ga, float('inf')) else ga
++    return ga if ga is not None else gb
++
+ # ---- 1. gather on-park observations: (pos, logpick, tenure, lvl, games) -------------------
+ def gather():
+     pool = [p for p in MA.data if MA.GRP.get(p.get('pos'))
+@@ -47,10 +82,12 @@ def gather():
+     # raw rows first (need base_play_rate before applying the gate)
+     raw = []  # (pos, pick, ten, Y, games, p)
+     for p in pool:
+-        pos = MA.gfut(p); pk = min(MA.effpk(p), CP.KMAX); d0 = draftyr(p)
++        pk = min(MA.effpk(p), CP.KMAX); d0 = draftyr(p)
+         for T in range(1, TEN_MAX+1):
+             Y = d0 + T; r = season_row(p, Y); g = r['games'] if r else 0
+             if g > 0:
++                pos = season_pos(r)                  # E3: PER-SEASON, not one career-long gfut label
++                if pos is None: continue             # only reachable under the 'exclude' rule
+                 raw.append((pos, pk, T, Y, g, p))
+     # base play rate = median games among players who PLAYED (g>0) at that pos x tenure
+     base = {}
+@@ -113,6 +150,20 @@ def loclin(x0, xs, ys, h):
+ def fit():
+     obs, base, raw = gather()
+     POS = {g: np.array([(x,T,lv) for (pos,x,T,lv) in obs if pos==g], dtype=float) for g in GROUPS}
++    # E3 LOUD HALT (#279 step 4 item 6). An empty group used to travel silently from here to the ramp step
++    # below, where POS[g] is shape (0,) and POS[g][:,1] raised a BARE IndexError naming nothing — a cohort
++    # or keying change that starved a position looked like an indexing bug. Halt here instead, NAMING the
++    # group, the cohort window, and what the gather actually produced.
++    _empty = [g for g in GROUPS if POS[g].size == 0]
++    if _empty:
++        raise SystemExit(
++            "par_build HALT: no on-park observations for position group(s) %s.\n"
++            "  cohort DRAFT %d-%d | tenure 1-%d | par gate >=%g games | dual rule '%s'\n"
++            "  gather() produced %d raw rows -> %d gated observations; per-group counts: %s\n"
++            "  A starved group cannot be fitted. Widen the cohort, relax the gate, or revisit the keying —\n"
++            "  do NOT drop the group silently."
++            % (', '.join(_empty), DRAFT_LO, DRAFT_HI, TEN_MAX, MIN_GAMES, PAR_DUAL_RULE,
++               len(raw), len(obs), {g: int(POS[g].shape[0]) for g in GROUPS}))
+     ramp = {g: np.zeros(TEN_MAX+1) for g in GROUPS}     # ramp[g][T], index 0 unused
+     # iterate
+     for _ in range(4):
+diff --git a/engine/rl_after/_merged_recover.py b/engine/rl_after/_merged_recover.py
+index ce09205..ffe9f6d 100644
+--- a/engine/rl_after/_merged_recover.py
++++ b/engine/rl_after/_merged_recover.py
+@@ -1282,7 +1282,20 @@ _V0SURF_GATES={'RL_RUC_PRIOR_CAP':'1.4','RL_W4_RUC':'1','RL_RUC_CEIL_HEAD':'0.80
+     'RL_FWDRECAL':'1','RL_YOUNG':'1','RL_OVPX':'1','RL_KPFFIX':'1','RL_V7FORM':'1','RL_V7_FORM_W':'0.6',
+     'RL_W4_CRED':'0.17','RL_W4_KPFUP':'1.6','RL_W4_FADE':'0.60','RL_W4_OVPX':'1.0','RL_W4_KPFSH':'0.55',
+     'RL_W4_KPFSH_DEM':'0.70','RL_W4_KPFTOP':'0.4','RL_W4_KPFM0':'8.0','RL_W4_KPFMS':'16.0','RL_AVAIL':'1',
+-    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1'}
++    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1',
++    # E2 (#279 step 4 item 4, extended by seam word F1 2026-07-30): TWO keys join the signature, both of them
++    # MEASURED silent-surface channels, not suspected ones.
++    #   RL_GAMMA — the signature was curve-sensitive but GAMMA-BLIND. Gamma scales value() (rl_model.py:504,
++    #     SCALE/val at :731/:734) without moving the pvc entries, so a SCAR<->VOR flip changed the fitted
++    #     surface while producing an IDENTICAL signature. Measured: 0.85 -> 5ae00319, 1.0 -> 93b4a680.
++    #   RL_PICK1 — added on measurement, AGAINST the reasoning first filed here. The superseded comment claimed
++    #     "RL_PICK1 moves the pvc entries, so the pvc leg already catches it". IT DOES NOT. `_v0surf_sig` reads
++    #     `_PVC0`, which is sourced from the PINNED adopted-curve artifact (pin(1)=3000 by construction), so
++    #     RL_PICK1 never reaches the pvc leg at all. Measured at the step-4 rehearsal: RL_PICK1 3000 -> 3500
++    #     left the signature IDENTICAL (5ae00319 both) while all three fitted surfaces moved (c18
++    #     eddccddb -> 6cb62db4, surfN a6e2fe36 -> 1f45ba1a). That measurement is this key's proven-can-fail.
++    # Defaults are the engine's own (rl_model.py:504 and :866).
++    'RL_GAMMA':'0.85', 'RL_PICK1':'3000'}
+ def _v0surf_sig(real):
+     import hashlib as _hl, json as _js
+     _curve=_PVC0 if '_PVC0' in globals() else MA.PVC          # the pick curve _v0_raw is actually reading right now
+@@ -1570,9 +1583,12 @@ def ev(p,Y=2026):
+ # spec's loclin-at-pick-1), isotonic non-increasing, re-anchored to pick1 = RL_PICK1 (3000).
+ # SCOPE (deliberate, declared): the fitted curve re-prices the PICK side (the board's trade currency) and
+ # display/advisory consumers (A13/A14, book draftval column). PLAYER pricing does NOT read it back:
+-# `draftval` — the RUCK prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
+-# PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
+-# declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
++# `draftval` — the RUCK prior-cap/scaffold basis — CLOSES OVER the `_PVC0` dict, and the L1b and v2 blocks
++# mutate that dict IN PLACE, so draftval TRACKS THE ADOPTED CURVE. (E4, #279 step 4 item 9: this comment used
++# to claim draftval was "FROZEN on the pre-fit v3.4 curve (_PVC0)". The behaviour is correct and unchanged —
++# only the description was wrong. The PR #44 V0-scaffold scope and the fit→board→fit note below still hold
++# for the FITTED candidate curve, which is what is held out.) Generated artifact: pvc_fit_candidate.json
++# (stamped with source + book id).
+ _W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
+ _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
+ def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve
+diff --git a/engine/rl_after/one_source_selftest.py b/engine/rl_after/one_source_selftest.py
+index 5e2219b..371330d 100644
+--- a/engine/rl_after/one_source_selftest.py
++++ b/engine/rl_after/one_source_selftest.py
+@@ -487,7 +487,7 @@ if _pvc2_on:
+     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
+     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
+     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
+-    _contract_md5='11adecc85a24040e1a7fab193c3a0884'   # RE-PINNED by the #274 adoption mop-up act (owner word
++    _contract_md5='ca2f2e8793e8342fb5bceca34834212a'   # RE-PINNED by the #274 adoption mop-up act (owner word
+     # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
+     # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
+     # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
+@@ -495,9 +495,9 @@ if _pvc2_on:
+     # PREVIOUS PIN: 432f0153cbe326d0ac0d0b50ec22aeb6 — RE-PINNED at THE SPLIT (2026-07-28), when the adopted
+     # curve's DOMAIN went 1-99 -> 1-64 + pool. Values over 1-64 are byte-identical; that pin moved because the
+     # contract file records the new domain, the pool index and the supersession. Curve SOURCE store and
+-    # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins must NOT move.
+-    _curve_source_store='265f55d568f35af33a3e27c0a7d7886a'
+-    _per_entrant_md5='2f8b4bd4'
++    # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins MOVE in this commit.
++    _curve_source_store='81d2470440a80f72afea4405e94338c5'
++    _per_entrant_md5='77eba4d3'
+     if not _curve_contract_path or not os.path.exists(_curve_contract_path):
+         check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
+     else:
+diff --git a/engine/rl_after/pvc_curve_v2.json b/engine/rl_after/pvc_curve_v2.json
+index 37d65ff..f2afd46 100644
+--- a/engine/rl_after/pvc_curve_v2.json
++++ b/engine/rl_after/pvc_curve_v2.json
+@@ -1,83 +1,83 @@
+ {
+  "curve": {
+   "1": 3000,
+-  "2": 2767,
+-  "3": 2693,
+-  "4": 2469,
+-  "5": 2224,
+-  "6": 1971,
+-  "7": 1907,
+-  "8": 1783,
+-  "9": 1676,
+-  "10": 1657,
+-  "11": 1628,
+-  "12": 1551,
+-  "13": 1445,
+-  "14": 1341,
+-  "15": 1263,
+-  "16": 1207,
+-  "17": 1160,
+-  "18": 1117,
+-  "19": 1081,
+-  "20": 1051,
+-  "21": 1022,
+-  "22": 994,
+-  "23": 964,
+-  "24": 935,
+-  "25": 906,
+-  "26": 880,
+-  "27": 858,
+-  "28": 840,
+-  "29": 824,
+-  "30": 811,
+-  "31": 798,
+-  "32": 785,
+-  "33": 771,
+-  "34": 758,
+-  "35": 744,
+-  "36": 730,
+-  "37": 716,
+-  "38": 703,
+-  "39": 691,
+-  "40": 679,
+-  "41": 669,
+-  "42": 660,
+-  "43": 651,
+-  "44": 644,
+-  "45": 637,
+-  "46": 631,
+-  "47": 625,
+-  "48": 619,
+-  "49": 614,
+-  "50": 609,
+-  "51": 604,
+-  "52": 600,
+-  "53": 595,
+-  "54": 591,
+-  "55": 588,
+-  "56": 584,
+-  "57": 582,
+-  "58": 579,
+-  "59": 577,
+-  "60": 576,
+-  "61": 574,
+-  "62": 573,
+-  "63": 572,
+-  "64": 571
++  "2": 2999,
++  "3": 2886,
++  "4": 2453,
++  "5": 1931,
++  "6": 1582,
++  "7": 1581,
++  "8": 1580,
++  "9": 1508,
++  "10": 1478,
++  "11": 1477,
++  "12": 1476,
++  "13": 1349,
++  "14": 1171,
++  "15": 1040,
++  "16": 1012,
++  "17": 1011,
++  "18": 1010,
++  "19": 1009,
++  "20": 995,
++  "21": 948,
++  "22": 896,
++  "23": 848,
++  "24": 810,
++  "25": 780,
++  "26": 756,
++  "27": 736,
++  "28": 718,
++  "29": 699,
++  "30": 677,
++  "31": 653,
++  "32": 629,
++  "33": 607,
++  "34": 588,
++  "35": 573,
++  "36": 562,
++  "37": 554,
++  "38": 548,
++  "39": 541,
++  "40": 533,
++  "41": 522,
++  "42": 508,
++  "43": 491,
++  "44": 471,
++  "45": 451,
++  "46": 431,
++  "47": 412,
++  "48": 395,
++  "49": 381,
++  "50": 368,
++  "51": 360,
++  "52": 349,
++  "53": 340,
++  "54": 330,
++  "55": 321,
++  "56": 311,
++  "57": 301,
++  "58": 289,
++  "59": 277,
++  "60": 265,
++  "61": 253,
++  "62": 241,
++  "63": 230,
++  "64": 221
+  },
+  "pin": 3000,
+  "source": "session_2026-07-29/item271/derive_271.py \u2014 ITEM 271 stage B re-derivation. Carries derive_pvc2.py function for function via #225 stage 2 (pava_ni/build_points/fit_year0/monotone_strict verbatim; tau=0.12, nmin=35, PW_FLOOR=0.11, pin(1)=3000, the x0.6 blend ceiling, min(n_pos/200,1), the isotonic step, windows pool 2004-2024 / priors 2006-2020 all unchanged). Method held constant: every difference is the data or the separation.",
+  "construction": "R1_composed_pathway",
+  "derived_from": "session_2026-07-29/item271/out/per_entrant_271.json (store 265f55d5) \u2014 post-slide membership (Q-B force-majeure: Boyd 2013 / McCartin 2014 excluded, their drafts slid up one pick; Daniel Butler ND 2014 pick 65 -> 64 crosses into the fit) and Addendum-6 per-season bars.",
+- "curve_md5": "08ea9375",
++ "curve_md5": "e69a3f38",
+  "stamp": {
+   "item": "271-stageB",
+-  "store_md5": "265f55d5",
++  "store_md5": "81d24704",
+   "v0surf_sig_at_fit": "85e57195189b6d4081ef7c270c572f06",
+   "nd_curve_rows": 1325,
+   "pool_rows": 1093,
+   "pool_never_established": 624,
+-  "statistic": "SCAR",
++  "statistic": "VOR",
+   "windows": {
+    "pool": [
+     2004,
+@@ -91,7 +91,7 @@
+   "prev_curve_md5": "f14a6622",
+   "prev_pool_value": 528,
+   "ladder_total": 65925,
+-  "per_entrant_md5": "2f8b4bd4",
++  "per_entrant_md5": "77eba4d3",
+   "per_entrant_path": "session_2026-07-29/item271/out/per_entrant_271.json"
+  },
+  "gate": "RL_PVC2 (parallel of RL_PVCADOPT). RL_PVC2=0 => _PVC0 stays L1b => board 9829d01a byte-exact.",
+@@ -105,7 +105,15 @@
+  "pre_split_curve_md5": "89c14729",
+  "pre_split_domain": "1-99 (99 entries)",
+  "domain": "1-64 (national draft curve). Selections past 64 are NOT on the curve.",
+- "pool_value": 299,
++ "pool_value": 234.3,
+  "split": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The national curve covers picks 1-64 only. Everything past 64 - national 65+, the whole rookie draft, the pre-season draft, and every pickless mechanism - enters THE POOL and is valued BY POSITION, with order of selection carrying no value. THERE IS NO PRICE FOR PICK 70. pool_value is the single position-blind ladder level for the whole pool (one index, POOL_PICK=65); the per-position differentiation comes from iso_corr(pos,pk), the position layer that already existed. This is a DOMAIN RESTRICTION of the adopted curve, NOT a re-derivation: every retained value over 1-64 is byte-identical to the pre-split artifact (pre_split_curve_md5 89c14729), and pool_value is the pre-split artifact's own value at index 65 - no number was refitted or invented here. Choosing a MEASURED pool level is ITEM 412 / #207 stage-2 adoption and is the owner's call.",
+- "r104_9_strict_descent_scope": "the national curve domain 1-64 (63 strict steps, no plateaus). The pool index is one value, not an ordering, so no monotonicity applies to it."
+-}
+\ No newline at end of file
++ "r104_9_strict_descent_scope": "the national curve domain 1-64 (63 strict steps, no plateaus). The pool index is one value, not an ordering, so no monotonicity applies to it.",
++ "numeraire": {
++  "pooled_head_pre_scale": 3068.4647,
++  "s": 0.9776876364261254,
++  "published_pin": 3000.0,
++  "basis": "pooled",
++  "_doc": "#279 ruled pooled numeraire. THE MEASURED HEAD IS PRIMITIVE (seam ruling 2026-07-31): pooled_head_pre_scale is the lane-C measured value 3068.4647 exactly, and s is DERIVED from it at full precision. The 6dp 0.977688 seen in the register and in the shaping artifact's own factor_s field is the ROUNDED PRESENTATION of this same s, never the stored primitive. E6 coherence (published_pin / pooled_head_pre_scale == s to 1e-9) holds BY CONSTRUCTION."
++ },
++ "_working_substrate_note": "#290 L1(b): this is the STOP-POINT curve installed as DECLARED WORKING SUBSTRATE. pool_value is the stop-point level and is RE-MEASURED at L6 on the converged fixed point. No figure taken between L1 and L6 is a landing figure."
++}
+diff --git a/engine/rl_after/rl_model.py b/engine/rl_after/rl_model.py
+index 2293a70..f7814a5 100644
+--- a/engine/rl_after/rl_model.py
++++ b/engine/rl_after/rl_model.py
+@@ -501,7 +501,7 @@ def best2(p):
+ REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
+ DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
+ def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
+-KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','0.85'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
++KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','1.0'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
+ S_SH=3.0
+ def comp(v): return v   # no compression (v2.0)
+ def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position value above replacement
+@@ -856,15 +856,80 @@ def build_pvc_v34():
+     pvc=[v*SCALE_PVC for v in iso]                              #    used for the anchor only.)
+     for i in range(1,N): pvc[i]=min(pvc[i],pvc[i-1])             # 6. enforce non-increasing (plateaus allowed)
+     return {k:max(210,int(round(pvc[k-1]))) for k in range(1,N+1)}
++def _load_numeraire(p1, _path='pvc_curve_v2.json'):
++    """E6 (#279 step 4): read the ONE measured pooled head the whole economy re-denominates from.
++
++    FAIL-CLOSED BY DESIGN, both directions, because the failure this closes is SILENT one-sided scaling:
++      * ABSENCE PATH — an artifact with no `numeraire` block HALTS. It never falls back to the old
++        _P1/PVC[1] denominator, because that fallback is exactly the one-sided behaviour being removed and a
++        silent restoration of it would look like success. Every PRE-PROPAGATION artifact lacks the block, so
++        the edited engine and the candidate artifact are a PAIRED change that lands together.
++      * COHERENCE — s is recomputed from the block's own head and pin and compared to the block's published s.
++        A disagreeing RL_PICK1, or a doctored block, HALTS NAMING BOTH VALUES rather than scaling one side.
++    """
++    import json as _j, os as _o
++    if not _o.path.exists(_path):
++        raise SystemExit("E6 numeraire HALT: %s not found; the pooled head cannot be read." % _path)
++    _d = _j.load(open(_path))
++    _n = _d.get('numeraire')
++    if not isinstance(_n, dict):
++        raise SystemExit(
++            "E6 numeraire HALT: %s carries NO 'numeraire' block.\n"
++            "  The pooled-numeraire economy re-denominates picks and players from ONE measured head; without\n"
++            "  it the player side would silently fall back to the v3.4 pre-anchor head (the one-sided defect\n"
++            "  #279 step 4 removes). This is not a fallback condition — install the candidate artifact, which\n"
++            "  carries {'pooled_head_pre_scale', 's', 'published_pin'}." % _path)
++    for _k in ('pooled_head_pre_scale', 's', 'published_pin'):
++        if _n.get(_k) is None:
++            raise SystemExit("E6 numeraire HALT: 'numeraire' block in %s is missing '%s' (got %s)."
++                             % (_path, _k, sorted(_n)))
++    _H = float(_n['pooled_head_pre_scale']); _pub = float(_n['published_pin']); _s = float(_n['s'])
++    if _H <= 0:
++        raise SystemExit("E6 numeraire HALT: pooled_head_pre_scale must be > 0, got %r." % _H)
++    _recomputed = _pub / _H
++    if abs(_recomputed - _s) > 1e-9:
++        raise SystemExit(
++            "E6 numeraire COHERENCE HALT: the artifact's published s and its own head disagree.\n"
++            "  published s          = %.12f\n  recomputed %g/%g = %.12f\n  difference           = %.3e\n"
++            "  One of the two was edited without the other. Both sides of the economy scale from this number,\n"
++            "  so a disagreement here is a one-sided repricing waiting to happen."
++            % (_s, _pub, _H, _recomputed, abs(_recomputed - _s)))
++    if abs(_pub - p1) > 1e-9:
++        raise SystemExit(
++            "E6 numeraire COHERENCE HALT: RL_PICK1 disagrees with the artifact's published pin.\n"
++            "  RL_PICK1             = %.6f\n  artifact published_pin = %.6f\n"
++            "  The ladder was published against the artifact's pin; scaling players against a different pin\n"
++            "  would move the player side alone. Set RL_PICK1 to the artifact's pin, or re-derive the curve."
++            % (p1, _pub))
++    return {'H': _H, 's': _s, 'published_pin': _pub}
+ PVC=build_pvc_v34()
+-CURVE_H=1.0                            # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
++CURVE_H=1.0                          # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
+ PVC={k:max(210,int(round(v*CURVE_H))) for k,v in PVC.items()}
+-# ── PICK-1 ANCHOR (Luke, 2026-06-21): pick 1 = a fixed target; the WHOLE board (picks + players) scales to it.
+-#    Replaces the implicit "99th-pct player → 7000" anchor with an explicit, stable "pick 1 → RL_PICK1".
+-#    Everything scales linearly with SCALE, so one global factor preserves all relativities/trades.
++# ── PICK-1 ANCHOR (Luke, 2026-06-21), RE-ANCHORED TWO-SIDED by E6 (#279 step 4, seam word F3 2026-07-30).
++#
++#    WHAT THE OLD COMMENT CLAIMED, and what was actually measured at the step-4 rehearsal. It said "the WHOLE
++#    board (picks + players) scales to it ... one global factor preserves all relativities/trades". That was
++#    true when the v3.4 import fit WAS the shipped curve. It is not true now, and the measurement says so:
++#      * the player side takes _P1/PVC[1] where PVC[1] here is the v3.4 PRE-ANCHOR head — measured 4441, a
++#        curve that NO LONGER SHIPS. BOARD_FACTOR is therefore 3000/4441 = 0.675524, a real and load-bearing
++#        player scaling, not a no-op.
++#      * the pick side is overwritten downstream by the adopted artifact pvc_curve_v2.json (:928-945,
++#        PVC=_PVC2M), head 3000. The rescale on the next line never reaches the shipped curve.
++#    So the two sides are anchored on DIFFERENT CURVES and agree today only because RL_PICK1 and the artifact
++#    pin are both 3000 — a coincidence of the pin's value, not a property of the construction. Measured:
++#    RL_PICK1 3000->3500 moves SCALE 4.719196->5.505729 while the shipped PVC stays 3000/2767/571.
++#
++#    THE TWO-SIDED ACT. Under the pooled numeraire the derivation measures ONE pooled head H and publishes
++#    s = RL_PICK1/H; the installed ladder is already raw x s. The player side must take THE SAME s, applied to
++#    its own natural scale — NOT _P1/H, which would mix two different fits' currencies (H is the structural/VOR
++#    raw head; 4441 is the v3.4 kernel head; they are not commensurate). So:
++#        BOARD_FACTOR = (_P1 / PVC[1]) * s
++#    One measured head, one factor, both sides. s is read from the artifact's own `numeraire` block so H lives
++#    in exactly ONE place and the two sides cannot be re-derived independently.
+ _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
+-BOARD_FACTOR=_P1/PVC[1]; SCALE=SCALE*BOARD_FACTOR            # SCALE reassigned → val() (late-binding) scales players too
+-PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}
++_NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
++BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
++PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
+ # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
+ #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
+ #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.
+diff --git a/run_panel.sh b/run_panel.sh
+index 439d3f0..d85fad9 100755
+--- a/run_panel.sh
++++ b/run_panel.sh
+@@ -23,7 +23,7 @@ cd "$WS"
+ # RL_REPO lets config_manifest find the repo manifest after the `cd "$WS"` above. The pinned exports remain the
+ # panel's official env; they equal the manifest so the gate-mode reject-scan passes.
+ export RL_REPO="$HERE" RL_CONFIG_MODE=gate RL_FV="$HERE/engine/forward_valuation"
+-export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
++export PYTHONHASHSEED=0 RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+ export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
+ rm -f /tmp/inspect.py
+ # SUITE HYGIENE 2026-07-13: stderr NO LONGER discarded (a hidden traceback is silence, and silence is a
+diff --git a/session_2026-07-18/legf6/v0surf_refit_log.json b/session_2026-07-18/legf6/v0surf_refit_log.json
+index 9630d64..aaab7ec 100644
+--- a/session_2026-07-18/legf6/v0surf_refit_log.json
++++ b/session_2026-07-18/legf6/v0surf_refit_log.json
+@@ -53,5 +53,45 @@
+     "new_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+     "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+     "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
++  },
++  {
++    "ts_utc": "2026-07-31T04:26:52Z",
++    "artifact": "data/v0surf.pkl",
++    "signature": "06965f7af2de0807f2fe3683f0b283c5",
++    "old_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
++    "old_pin": "ce08c2d13ae7d9bd403c60cf58ea1660",
++    "new_md5": "ba980c4eadecfbcc922b391d773419ba",
++    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
++    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
++  },
++  {
++    "ts_utc": "2026-07-31T04:34:54Z",
++    "artifact": "data/v0surf.pkl",
++    "signature": "96d671c952c819fa64df0b5d1a402f1e",
++    "old_md5": "ba980c4eadecfbcc922b391d773419ba",
++    "old_pin": "ba980c4eadecfbcc922b391d773419ba",
++    "new_md5": "e92e3885df24060aa90557ba20ba3612",
++    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
++    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
++  },
++  {
++    "ts_utc": "2026-07-31T07:34:20Z",
++    "artifact": "data/v0surf.pkl",
++    "signature": "96d671c952c819fa64df0b5d1a402f1e",
++    "old_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
++    "old_pin": "ce08c2d13ae7d9bd403c60cf58ea1660",
++    "new_md5": "84fb0cde29f36c1a91d440e63b753c3c",
++    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
++    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
++  },
++  {
++    "ts_utc": "2026-07-31T07:35:49Z",
++    "artifact": "data/v0surf.pkl",
++    "signature": "96d671c952c819fa64df0b5d1a402f1e",
++    "old_md5": "84fb0cde29f36c1a91d440e63b753c3c",
++    "old_pin": "84fb0cde29f36c1a91d440e63b753c3c",
++    "new_md5": "84fb0cde29f36c1a91d440e63b753c3c",
++    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
++    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+   }
+ ]
+diff --git a/session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py b/session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py
+index 5641bf9..a57ccfc 100644
+--- a/session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py
++++ b/session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py
+@@ -5,6 +5,38 @@ RE-PINNED 2026-07-30 by the step-4 propagation, old -> new, both recorded, NEVER
+   EXPECT_N       1197           -> 1197            (UNCHANGED — the class-cut teaching population did not move)
+ The asserts themselves are untouched and are re-proven able to fire at every re-pin.
+ 
++RE-PINNED 2026-07-31 by #290 L3, one disclosed act under the seam's ruling. THE FULL CHAIN, because
++the header above documented only two of the three moves this file has actually carried:
++
++  EXPECT_V0SURF  'b781ed253bff' -> '0c75bb6d829d' -> '12d903336f6e' -> '96d671c952c8'
++                  |________________ step-4 container era ________________|    ruled substrate
++
++  The third move to '12d903336f6e' was NEVER DOCUMENTED: this file was BORN carrying it (first
++  committed at f4c096f / 592c7a2, the step-4 STOP run; seam attribution from git, 2026-07-31).
++  Both container-era moves happened inside the step-4 container and NEITHER the matrix NOR the
++  surface ever travelled, so '12d903336f6e' matches nothing reachable from the tree. This is the
++  SECOND INSTANCE of the v0surf-bytes class (the first: L1_amended_state.diff carrying no binary
++  patch section for data/v0surf.pkl).
++
++  EXPECT_STORE   '81d24704'     -> '81d24704'      (UNCHANGED — the ruled substrate's store)
++  EXPECT_N       1197           -> 1197            (RE-MEASURED on the re-emitted matrix, NEVER
++                                                    assumed: teaches_curve 1444 -> pick 1..64 1444
++                                                    -> years 2004..2022 = 1197, and the key set is
++                                                    IDENTICAL to the old matrix's, 0 added 0 dropped)
++
++  THE FREEZE LAW, GENERALISED (seam ruling 2026-07-31): a pinned-input instrument's input is
++  COMMITTED, or its emitter and substrate are both reachable from the tree. This harness's matrix is
++  now committed beside it with its identities:
++      docs/evidence/rehearsal_290_2026-07-31/L3_watched_number/nd_matrix_ruled.json
++      md5 a216e6e647ffbbdb992bfcb9d397fb52 | store 81d24704 | v0surf_sig 96d671c952c819fa64df0b5d1a402f1e
++  Re-emitted through the declared emitter session_2026-07-29/item271/emit_matrix_271.py (179s) on
++  the ruled substrate (store 81d24704, frozen v0surf 84fb0cde). The emitter writes in place to
++  session_2026-07-29/item271/out/per_entrant_271.json, which is PROVENANCE-CITED by
++  engine/rl_after/pvc_curve_v2.json ('derived_from' / 'per_entrant_path') at md5 2f8b4bd4 — so the
++  re-emit ran backup -> emit -> capture -> restore, and the restore is PROVEN by md5, not assumed.
++  (Note: that committed matrix carries store 265f55d5 and v0surf 85e57195189b, so it satisfies
++  NEITHER of this harness's pins either — the harness has never had a committed input until now.)
++
+ #279 FOUR-FITTER PVC PANEL — the SHARED, FROZEN harness. Phase 1.
+ 
+ Every fitter imports this and MUST NOT modify it. It fixes, once, for all four fitters:
+@@ -27,8 +59,8 @@ import numpy as np
+ 
+ # ---- the committed identity this panel is pinned to ----
+ EXPECT_STORE = '81d24704'
+-EXPECT_V0SURF = '12d903336f6e'
+-EXPECT_N = 1197                     # ND teaching rows after the class cut
++EXPECT_V0SURF = '96d671c952c8'   # re-pinned 2026-07-31 (#290 L3); full chain in the header
++EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-07-31, not assumed
+ CLASS_CUT = 2022
+ K_FOLDS = 5
+ FOLD_SEED = 20260730
+diff --git a/ui/release_pick_curve.json b/ui/release_pick_curve.json
+index 52f0473..3ac4ecf 100644
+--- a/ui/release_pick_curve.json
++++ b/ui/release_pick_curve.json
+@@ -1,12 +1,12 @@
+ {
+- "_doc": "Fixed release pick-curve provenance. The adopted curve remains the ruler across weekly score updates. Current board/store/round identity is read fail-closed from expected_boot and the stamped board bundle. RE-ISSUED at the #271 adoption (owner word 2026-07-30). The curve was DERIVED on store 265f55d5; the adopted store is 6b9d00a7, which differs only by the three Addendum-12 backup-stream clears \u2014 measured value-neutral (0 board movers), so the curve was NOT re-derived for them and curve_source_store_md5 correctly records the derivation store, not the release store.",
++ "_doc": "The curve is the #279 RULED control fit under the pooled numeraire, derived on store 81d24704 (the store of record). #290 L1(b): installed as DECLARED WORKING SUBSTRATE at the stop-point; pool_value is re-measured at L6 on the converged fixed point.",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "adopted_at_round": 20,
+  "adopted_pathway": "RL_PVC2",
+  "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
+- "pick_curve_file_md5": "6506d8b1ff89ea0a8ad15f10827f202b",
+- "pick_curve_curve_md5": "08ea9375",
+- "curve_source_store_md5": "265f55d568f35af33a3e27c0a7d7886a",
++ "pick_curve_file_md5": "cdc50a2f500fc8c99a3b096d4bdd4421",
++ "pick_curve_curve_md5": "e69a3f38",
++ "curve_source_store_md5": "81d2470440a80f72afea4405e94338c5",
+  "numeraire_pin1": 3000,
+  "supersedes": {
+   "pathway": "RL_PVC2 (#262 landing, pre-#271)",
+@@ -18,8 +18,8 @@
+  },
+  "pick_curve_domain": "1-64 (national draft curve, 64 entries)",
+  "pool_index": 65,
+- "pool_value": 299,
++ "pool_value": 234.3,
+  "_pool_value_adoption_note": "RE-STAMPED 528 -> 299 by the #274 adoption mop-up act (owner word 2026-07-30). The 30/7 rederivation moved the pool price; the release-active artifact engine/rl_after/pvc_curve_v2.json carries pool_value 299 and self-documents the move at stamp.prev_pool_value = 528. This file is a MIRROR of that artifact, and it was left at 528 when the adoption landed - a stale duplicate, not a second decision. The split_note below is preserved verbatim as the history of THE SPLIT, where 528 was correct; it describes the domain re-issue, not this value. Re-stamping this file moves its md5, so the FROZEN-RULER pin in engine/rl_after/one_source_selftest.py is re-pinned in the SAME commit. Curve source store and per_entrant are UNCHANGED - nothing was re-derived here.",
+  "split_note": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The contract is re-issued because the ADOPTED CURVE'S DOMAIN changed, not its values: the national curve now covers picks 1-64 and every selection past 64 enters the pool, valued by position with order of selection carrying no value. There is no price for pick 70. Values over 1-64 are BYTE-IDENTICAL to the superseded artifact; pool_value is that artifact's own value at index 65. No curve was refitted. A re-issue is correct here precisely because the contract exists to stop the curve moving SILENTLY - this move is ruled, declared, and recorded below.",
+- "per_entrant_md5": "2f8b4bd4"
+-}
+\ No newline at end of file
++ "per_entrant_md5": "77eba4d3"
++}
