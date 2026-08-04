@@ -1,0 +1,45 @@
+STATE-DIFF BASE ANNOTATION — LA_lensfield_state.diff
+====================================================
+Filed 2026-08-04 by the #306 execution seat zlaarm under N18. Written AT GENERATION.
+
+THE LIVE CAPTURE AFTER THE APPROVED LENS FIELD WAS IMPLEMENTED. It supersedes L6_pass0_state.diff
+as this seat's live substrate and replaces nothing: 13b71c26 remains the exact pass-0 capture and is
+still the substrate N35's fit-path assert is defined on. LA_anchored_state.diff (02e248dc) remains
+the record of the VOIDED flat-lens attempt. Three captures, three states, none overwritten.
+
+THE ARTIFACT
+  file        LA_lensfield_state.diff
+  md5         8650c0600a689f22abc0c76a56bbfb50
+  sections    19 `diff --git`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   346faff      ON  claude/exec-seat-306-afl-rl-zlaarm
+  The commit landing this capture adds only files under docs/evidence/, so no captured path moves in
+  history and the capture continues to apply at the tip. Re-verify, never assume.
+
+WHAT IT CAPTURES — the pass-0 substrate PLUS the approved lens field
+  engine/rl_after/_merged_recover.py
+    · the anchored lens field m(pos,age,pick) in the DECLARED refit path
+    · the basis read as a DECLARED INPUT (approval clause 1): RL_LENS_BASIS, defaulting to
+      docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json. NO FALLBACK — a missing basis
+      HALTs, because fitting the lens from the surface's own prior is the barred lineage.
+    · design constants _LA_HPICK/_LA_HAGE/_LA_KCONF/_LA_B/_LA_TOL as module constants, not env gates
+    · the pre-#306 free fit retained behind RL_V0_LENS=0 as the declared A/B control
+    · star() made SHAPE-AWARE: the lens artifact is keyed 'POS|AGE' (position-resolved at every age,
+      mature included — D14's R1 position-pooling is superseded by the confidence rule); the
+      pre-#306 shape still reads; anything else fails loudly rather than looking up a wrong number
+
+  NOT baked: data/v0surf.pkl and expected_boot.json are UNMOVED at fb9efdec. The acceptance ran
+  through the declared refit path in memory. The bake waits on the seam's ruling on the acceptance
+  FAIL reported with this capture.
+
+WHY THESE FILES ARE NOT COMMITTED — they are the REHEARSAL SUBSTRATE. R-C holds; committing is the
+landing act and it needs the withheld word.
+
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS-0 (required before every N35 assert):
+  git checkout -- . && git apply --binary <...>/L6_pass0_state.diff ; re-stamp the two .srcmd5.
+  NOTE: `git stash` on a single substrate file reverts it PAST the substrate to HEAD and silently
+  invalidates the assert. That happened once here and was caught by the round-trip check.
