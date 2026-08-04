@@ -1,0 +1,16 @@
+{
+ "pass": 4,
+ "matrix_md5": "85d2a04b3fc40fd509796bbc8e75b3fb",
+ "matrix_meta": {
+  "store_md5": "81d24704",
+  "v0surf_sig": "8291668eff41fd0f006776578a148348",
+  "v0surf_frozen": true,
+  "n_records": 2646
+ },
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "emit_seconds": 182,
+ "routing": "backup -> emit -> capture -> restore; restore PROVEN by md5 2f8b4bd4 -> 2f8b4bd4, git clean",
+ "prior_matrix_md5": "760032aa09d339a620250438dc56ba16",
+ "harness": "harness_pvc_REPINNED.py EXPECT_V0SURF re-pinned to this pass's shipped key; assert proven able to fire in both directions before and after",
+ "derive_seconds": 1
+}
