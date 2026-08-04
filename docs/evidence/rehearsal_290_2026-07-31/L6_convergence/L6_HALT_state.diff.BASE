@@ -1,0 +1,46 @@
+STATE-DIFF BASE ANNOTATION — L6_HALT_state.diff
+===============================================
+Filed 2026-08-04 by the fresh #290 execution seat. Written AT GENERATION.
+
+THE LIVE CAPTURE AT THE R-I HALT, BASED AT THE BRANCH TIP.
+
+WHY THIS EXISTS ALONGSIDE L6_pass4_exit_state.diff
+  L6_pass4_exit_state.diff was generated BEFORE the halt filing was committed, so it carries 20
+  sections — the 19 product files PLUS the harness re-pin, which was still uncommitted at that
+  moment. It remains exact and is sealed as the record of that state; it applies at ITS OWN base
+  (dfcdc9e), where the harness re-pin had not yet landed.
+  Committing the halt filing moved the harness re-pin into history, so at the tip the live
+  uncommitted delta is 19 sections, not 20. A successor reconstructing from the TIP needs a capture
+  based AT the tip — otherwise they must first check out an ancestor, which is the kind of quiet
+  step that gets skipped. This file is that capture. Nothing about the tree changed between the two;
+  only the base did.
+
+THE ARTIFACT
+  file        L6_HALT_state.diff
+  md5         137c6d2c95c094b6f81961a991613e71
+  sections    19 `diff --git` · 2 `GIT binary patch`
+  generated   `git diff --binary`
+
+THE BASE OF RECORD
+  BASE COMMIT   3ffbc1f   "#290 L6: THE R-I BOUND IS EXHAUSTED WITHOUT A FIXED POINT. Halt and report."
+  ON            claude/exec-seat-290-handoff-d7bnaa
+  VERIFIED      all 19 pre-image blobs match the tip's blobs — it applies at the tip, 0 mismatches.
+
+WHY THESE 19 FILES ARE NOT COMMITTED, AND MUST NOT BE
+  They are the REHEARSAL SUBSTRATE. R-C holds for the whole of this leg: nothing lands, no pin on
+  this branch's product files moves in history, and the EXECUTION word is withheld. The substrate
+  therefore lives as an uncommitted working tree whose exact bytes travel as a COMMITTED CAPTURE —
+  the pattern L4, L6 pass 0 and every pass of this leg have used, and the one this seat re-proved by
+  round trip on a fresh container (regenerating L6_pass0_state.diff reproduced 13b71c26 byte-exact).
+  Committing them would be the landing act, and the landing act needs a word this seat does not have.
+
+STATE AT THE HALT
+  store 81d24704 · v0surf 31e7f00b (sig 8291668eff41) · gamma 1.0 · curve ca662051 · pool_value 233.3
+  board 1a2aacea · book 24fee27d · G-Y0 8.842% · selftest 96 PASS / 1 FAIL
+
+WHAT IT CANNOT CARRY
+  The two untracked tier-2 stamps engine/rl_after/peak_model_v4.pkl.srcmd5 (d14f0f12) and
+  engine/rl_after/pvc_snapshot.json.srcmd5 (aaccad1c). `git diff` covers tracked files only. They
+  regenerate EXACTLY from the artifact bytes via the engine's own writer
+  single_source.stamp_tier2_frozen — at zero compute, no refit, no modelling action — and this seat
+  proved that byte-identical against the R-A freeze copies at the start of this leg.
