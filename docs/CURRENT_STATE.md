@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v55 · supervisor pen · 2026-08-04, register v563
+# CURRENT STATE — the incoming-seat read · v56 · supervisor pen · 2026-08-04, register v564
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,8 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v55 · supervisor pen · 2026-08-04, register v563 · replaced wholesale at the sibling-order pen — the lens
-basis is ruled: the ruled curve's own structural machinery; the seam raises rotation at this boundary)
+(v56 · supervisor pen · 2026-08-04, register v564 · the primer pen — docs/ENGINE_PRIMER.md v1 authored and
+the charter's onboarding order amended by owner word; rotation holds until the seam reviews the seat's
+sibling-basis return, then rotates)
 
 ## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; THE SIBLING ORDER IS OUT (comment 5178008507). Main is the
 v563 pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON MAIN**
@@ -230,6 +231,8 @@ RETENTION-PROTECTED) · the two-curve census above · the committed sibling-era 
 (`lens_field_sim.py` — mechanics-valid, wrong-basis targets; its successors fit from structural values).
 
 ## THE INCOMING SEAM'S FIRST TASKS
+0. **Read docs/ENGINE_PRIMER.md IN FULL** (the meaning layer — charter amendment 2026-08-04), then this
+   file in full. Every number you present names its quantity in plain words.
 1. Verify live state with your own commands: main tip = the v563 pen or a descendant; issues #290 #292 #279
    #283 #275 #276 #270 #269 #146 #139 #306 open · #271 #274 closed · no open PRs; four gating workflows
    green (in-flight stated as in-flight); the LIVE carrier at `7e9d7f9`; the `zlaarm` branch at `27f8a82` or
