@@ -85,7 +85,7 @@ import numpy as np
 
 # ---- the committed identity this panel is pinned to ----
 EXPECT_STORE = '81d24704'
-EXPECT_V0SURF = '6afe678c73dc'   # re-pinned 2026-08-04 (#290 L6 pass 1); full chain in the header
+EXPECT_V0SURF = '8291668eff41'   # re-pinned 2026-08-04 (#290 L6 pass 2); full chain in the header
 EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-08-04, not assumed
 CLASS_CUT = 2022
 K_FOLDS = 5
