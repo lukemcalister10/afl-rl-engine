@@ -1,0 +1,253 @@
+{
+ "K_values": [
+  15,
+  25,
+  50
+ ],
+ "NOTHING_HERE_SETS_A_LEVEL": "exact levels are UNRULED; the owner signs. Pool NAMED UNRESOLVED.",
+ "OPTIMISM": "+4.7% to +8.4% optimistic (completion method) \u2014 inherited from the ruled curve's own basis, reported with every result, never silently corrected",
+ "divisions": {
+  "IRE \u2014 post-draft Ireland": {
+   "mean": 106.4,
+   "median": 0.0,
+   "n": 57,
+   "prior_share_pct": 3.5,
+   "prior_share_pct_before_pooling": 19.3,
+   "provenance": {
+    "completed": 12,
+    "concluded": 43,
+    "prior_fallback": 2
+   },
+   "shrunk_K15": 133.4,
+   "shrunk_K25": 145.8,
+   "shrunk_K50": 166.9,
+   "zero_share_pct": 70.2
+  },
+  "MSD \u2014 mid-season draft": {
+   "mean": 294.0,
+   "median": 35.2,
+   "n": 106,
+   "prior_share_pct": 17.0,
+   "prior_share_pct_before_pooling": 59.4,
+   "provenance": {
+    "completed": 45,
+    "concluded": 43,
+    "prior_fallback": 18
+   },
+   "shrunk_K15": 286.8,
+   "shrunk_K25": 282.9,
+   "shrunk_K50": 275.3,
+   "zero_share_pct": 40.6
+  },
+  "ND \u2014 national selection at 65+": {
+   "mean": 269.9,
+   "median": 0.5,
+   "n": 120,
+   "prior_share_pct": 13.3,
+   "prior_share_pct_before_pooling": 21.7,
+   "provenance": {
+    "completed": 10,
+    "concluded": 94,
+    "prior_fallback": 16
+   },
+   "shrunk_K15": 266.1,
+   "shrunk_K25": 264.0,
+   "shrunk_K50": 259.9,
+   "zero_share_pct": 50.0
+  },
+  "PDA \u2014 post-draft academy": {
+   "mean": 182.1,
+   "median": 0.0,
+   "n": 51,
+   "prior_share_pct": 3.9,
+   "prior_share_pct_before_pooling": 29.4,
+   "provenance": {
+    "completed": 13,
+    "concluded": 36,
+    "prior_fallback": 2
+   },
+   "shrunk_K15": 194.3,
+   "shrunk_K25": 199.8,
+   "shrunk_K50": 208.7,
+   "zero_share_pct": 56.9
+  },
+  "PDN \u2014 post-draft next-gen": {
+   "mean": 83.6,
+   "median": 0.0,
+   "n": 43,
+   "prior_share_pct": 4.7,
+   "prior_share_pct_before_pooling": 37.2,
+   "provenance": {
+    "completed": 14,
+    "concluded": 27,
+    "prior_fallback": 2
+   },
+   "shrunk_K15": 123.0,
+   "shrunk_K25": 139.5,
+   "shrunk_K50": 165.4,
+   "zero_share_pct": 72.1
+  },
+  "PDS \u2014 post-draft scholarship": {
+   "mean": 80.1,
+   "median": 0.0,
+   "n": 21,
+   "prior_share_pct": 0.0,
+   "prior_share_pct_before_pooling": 0.0,
+   "provenance": {
+    "concluded": 21
+   },
+   "shrunk_K15": 145.0,
+   "shrunk_K25": 164.7,
+   "shrunk_K50": 189.7,
+   "zero_share_pct": 71.4
+  },
+  "RD \u2014 rookie draft": {
+   "mean": 262.2,
+   "median": 0.0,
+   "n": 693,
+   "prior_share_pct": 4.2,
+   "prior_share_pct_before_pooling": 4.8,
+   "provenance": {
+    "completed": 37,
+    "concluded": 627,
+    "prior_fallback": 29
+   },
+   "shrunk_K15": 261.6,
+   "shrunk_K25": 261.3,
+   "shrunk_K50": 260.4,
+   "zero_share_pct": 58.0
+  },
+  "SSP \u2014 supplemental selection": {
+   "mean": 257.7,
+   "median": 7.8,
+   "n": 52,
+   "prior_share_pct": 3.8,
+   "prior_share_pct_before_pooling": 53.8,
+   "provenance": {
+    "completed": 26,
+    "concluded": 24,
+    "prior_fallback": 2
+   },
+   "shrunk_K15": 252.8,
+   "shrunk_K25": 250.6,
+   "shrunk_K50": 246.9,
+   "zero_share_pct": 42.3
+  },
+  "UNR \u2014 post-draft unregistered": {
+   "mean": 70.1,
+   "median": 0.0,
+   "n": 59,
+   "prior_share_pct": 3.4,
+   "prior_share_pct_before_pooling": 20.3,
+   "provenance": {
+    "completed": 11,
+    "concluded": 46,
+    "prior_fallback": 2
+   },
+   "shrunk_K15": 103.7,
+   "shrunk_K25": 119.4,
+   "shrunk_K50": 146.1,
+   "zero_share_pct": 72.9
+  },
+  "late-ND 46-64 (REFERENCE)": {
+   "mean": 329.3,
+   "median": 203.4,
+   "n": 412,
+   "prior_share_pct": 11.2,
+   "prior_share_pct_before_pooling": 11.2,
+   "provenance": {
+    "completed": 63,
+    "concluded": 303,
+    "prior_fallback": 46
+   },
+   "shrunk_K15": 326.0,
+   "shrunk_K25": 323.9,
+   "shrunk_K50": 319.2,
+   "zero_share_pct": 42.5
+  }
+ },
+ "late_nd_note": "the late-ND 46-64 REFERENCE keeps its own strata \u2014 it is not a pool division and its prior share was already 11.2%. Named so the basis is not silently mixed.",
+ "matrix_md5": "77eba4d308a27a881b36a5424d3bb389",
+ "min_stratum": 20,
+ "pool_wide_measured_aggregate": 235.8,
+ "recency_controls": {
+  "MSD own window 2019-2026": {
+   "level": 294.0,
+   "n": 106,
+   "prior_share_pct": 17.0
+  },
+  "PDN own window 2016-2025": {
+   "level": 83.6,
+   "n": 43,
+   "prior_share_pct": 4.7
+  },
+  "RD 2016+": {
+   "level": 214.7,
+   "n": 145,
+   "prior_share_pct": 10.3
+  },
+  "RD 2018+": {
+   "level": 189.8,
+   "n": 91,
+   "prior_share_pct": 5.5
+  },
+  "RD 2019+": {
+   "level": 167.5,
+   "n": 72,
+   "prior_share_pct": 1.4
+  },
+  "SSP own window 2018-2025": {
+   "level": 257.7,
+   "n": 52,
+   "prior_share_pct": 3.8
+  }
+ },
+ "rookie_division_level": 262.2,
+ "rookie_positional": {
+  "KPD": {
+   "n": 73,
+   "raw": 308.1,
+   "shrunk_K15": 300.3,
+   "shrunk_K25": 296.4,
+   "shrunk_K50": 289.4
+  },
+  "KPF": {
+   "n": 65,
+   "raw": 205.4,
+   "shrunk_K15": 216.0,
+   "shrunk_K25": 221.1,
+   "shrunk_K50": 230.1
+  },
+  "MID": {
+   "n": 177,
+   "raw": 297.6,
+   "shrunk_K15": 294.8,
+   "shrunk_K25": 293.2,
+   "shrunk_K50": 289.8
+  },
+  "RUCK": {
+   "n": 71,
+   "raw": 286.8,
+   "shrunk_K15": 282.5,
+   "shrunk_K25": 280.3,
+   "shrunk_K50": 276.6
+  },
+  "SD": {
+   "n": 158,
+   "raw": 245.4,
+   "shrunk_K15": 246.9,
+   "shrunk_K25": 247.7,
+   "shrunk_K50": 249.4
+  },
+  "SF": {
+   "n": 149,
+   "raw": 228.4,
+   "shrunk_K15": 231.5,
+   "shrunk_K25": 233.2,
+   "shrunk_K50": 236.9
+  }
+ },
+ "shrink_target": "the pool-wide MEASURED aggregate above \u2014 never the model prior (435.63)",
+ "the_change": "completion strata built from ALL POOL concluded careers across divisions, not within each division. Basis definitions otherwise untouched.",
+ "what": "pool levels re-run with POOLED completion strata + confidence-weighted presentation"
+}
