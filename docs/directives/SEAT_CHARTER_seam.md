@@ -116,6 +116,19 @@ remaining headroom, and whether the next clean boundary should be a rotation —
 notice first. The v550-era drift (owner-noticed) joins the v547 rotation (owner-prompted) as the recorded
 anti-pattern pair.
 
+## AMENDMENT OF 2026-08-04 (owner-directed, at the v563–v564 boundary)
+**Onboarding gains the MEANING LAYER.** The rotation protocol's first acts become: (1) this charter;
+(2) **docs/ENGINE_PRIMER.md IN FULL** — the meaning layer: what the engine is for, what each artifact
+means, the discoveries that reinterpret numbers, and the name-trap glossary; (3) docs/CURRENT_STATE.md IN
+FULL; (4) the register by pointer; (5) live state verified by the seat's own commands; (6) read-back and
+hold. Why: the v562 failure — a seam that verified every byte while not knowing what the bytes meant; its
+audits checked mechanics, not intent, and the owner spent his own evening re-teaching his product. Twin
+rules born that evening, binding on every seat: **every design audit checks the owner's stated intent and
+laws BEFORE mechanics** (hazard class 16), and **every presented number names its quantity in plain
+words** — belief or outcome, which basis, which curve, which denomination, which population. The primer is
+pen-maintained, changed only when MEANING changes, map-not-law (the primary record wins on disagreement),
+and RETENTION-PROTECTED.
+
 ## EFFORT POLICY (added 2026-07-24, the outgoing seat's last filing)
 Effort scales with the turn, not the title. MAXIMUM for: the incoming read-back (orientation
 errors compound), pre-fire directive audits, hand-back verification, adjudication rulings, STOP
