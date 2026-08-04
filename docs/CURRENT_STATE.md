@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v54 · supervisor pen · 2026-08-04, register v562
+# CURRENT STATE — the incoming-seat read · v55 · supervisor pen · 2026-08-04, register v563
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,111 +128,116 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v54 · supervisor pen · 2026-08-04, register v562 · replaced wholesale at the L-A-voiding pen — the flat-lens
-approval was a seam audit error, caught by the owner; his laws are recorded; the revision is ordered; the
-seam's rotation is RAISED and sits with the owner)
+(v55 · supervisor pen · 2026-08-04, register v563 · replaced wholesale at the sibling-order pen — the lens
+basis is ruled: the ruled curve's own structural machinery; the seam raises rotation at this boundary)
 
-## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; THE L-A APPROVAL IS VOIDED (v562); THE REVISION IS ORDERED.
-Main is the v562 pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON
-MAIN** (`ab68430`; awaits the owner's close click). **#306:** the seat `zlaarm` (branch at `a59db87`)
-implemented the FLAT lens `m(pos, age)` and filed acceptance (5176149209); the seam audited it PASS at
-5175872733 — **that approval is VOIDED at comment 5176541552**: the flat lens erases the position × age ×
-pick intersections that are the project's core tenet (the ruled structure keys the surface
-`(gfut, ageR, pick)`, #271 §6), and the audit never stated the flat-dial property to the owner in plain
-words. **The owner's two product laws now stand in Part A.** The REVISION ORDER (same comment) reaches the
-seat via the owner's paste: build `m(pos, age, pick)` as a smooth bounded field — locality, anchored totals,
-thin stretches shrink to 1.0, no cliffs on any axis, per-pick presentation, DESIGN FIRST and HOLD for audit.
-The record's LIVE carrier is **`claude/exec-seat-290-handoff-d7bnaa`** at **`7e9d7f9`** (frozen ancestors
-j0kwl0 `8e8c15b` · fubolo `abf8f4c` · fp78jm `3cccb9d`). The **EXECUTION word remains WITHHELD**; nothing
-has landed at any point.
+## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; THE SIBLING ORDER IS OUT (comment 5178008507). Main is the
+v563 pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON MAIN**
+(`ab68430`; awaits the owner's close click). **#306:** the flat-lens approval was VOIDED (v562); the revised
+`m(pos, age, pick)` smooth-field design (seat filing 5177163945, branch `27f8a82`) audited clean on MECHANICS
+(byte-identical re-run; locality 0.7728/0.1407; local neutrality worst 1.75e-04 across all 64 picks) — but
+the owner's interrogation exposed its RAW MATERIAL: the lens was being fitted from the year-zero surface's
+SELF-REFERENTIAL SLOT PRIOR (the lineage #279 measured at 0.0248% reality — the owner's "1/4000th",
+literal). **THE SIBLING ORDER** (owner word, verbatim in 5178008507) retires that fit target and rules: the
+lens fits from the **#279 structural career values** — the ruled curve's own machinery, inherited wholesale
+(class window 2004–2022 HARD CUT · concluded careers realized-in-full · never-established at 0.0 · active =
+played-so-far × concluded-look-alike completion, busts' zero-remainders in stratum · prior only as a counted
+fallback · McCartin/Boyd exclusions + slides · VOR, γ=1.0 · reuse `harness_pvc.py structural_values()` from
+`session_2026-07-30/item279`, branch `…-4ql38z`) — "we're looking at pick 4, and seeing what it'd be worth
+if it was a defender, midfielder, key forward etc. based on outcomes." The record's LIVE carrier is
+**`claude/exec-seat-290-handoff-d7bnaa`** at **`7e9d7f9`** (frozen ancestors j0kwl0 `8e8c15b` · fubolo
+`abf8f4c` · fp78jm `3cccb9d`). The **EXECUTION word remains WITHHELD**; nothing has landed at any point.
 
-## WHAT STANDS OF L-A, AND WHAT IS VOIDED
-**STANDS (audited, kept):** the skeleton — curve as anchor with totals preserved (a position above the curve
-in a stretch is paid for by others in that stretch, never by inflating the class) · bounds m ∈ [0.5, 2.0] ·
-the A/B control lane (`RL_V0_ANCHORED`) · the sealed-capture discipline (`LA_anchored_state.diff`
-`02e248dc`, base `6736a6f`, BASE annotation per N18) · acceptance measured on the artifact · N35 asserts ·
-the pool fence (N37.5). **VOIDED:** the flat lens's cell structure and every claim that it satisfied the
-owner's steer. **WITHDRAWN:** the seam's banded ±5% acceptance proposal (violates LAW no-hard-bands); a
-band-free drift check is to be designed and audited. Seam verification figures recorded before the voiding
-and still true OF THE FLAT DESIGN: acceptance JSON byte-identical re-run; the anchored fit `1a52b787`
-reproduced byte-exact on a second host; N35 caught the seam's own container restart mid-audit.
+## THE TWO-CURVE IDENTITY CENSUS — v563; READ FLAGS AS SEMANTICS AT YOUR PERIL
+| curve | payload | what it is | where it lives |
+|---|---|---|---|
+| the SHIPPED curve | `08ea9375` | #271 stage-B ladder, measured by #279 at 0.0248% reality | main's `pvc_curve_v2.json` / `release_pick_curve.json` — replaced at the landing |
+| **the RULED curve — THE ANCHOR** | **`e69a3f38`** | #279 structural ladder: classes 2004–2022, pick64=221, NO pick 65, completion +4.7–8.4% optimistic REPORTED | the rehearsal substrate (pass-0 capture `13b71c26`); ships with the EXECUTION word |
+The matrix's `incurve`/`teaches_curve` flags describe the SURFACE fit population (drafts 2003–2025, 38%
+still-active) — NOT the pick curve's teaching set (1,197 rows, classes 2004–2022). `in_hist` (2003–2021) is
+the engine's separate hist cohort; it fed neither curve. Every rehearsal measurement asserts `e69a3f38`
+before computing — the anchor side has never been contaminated.
 
-## THE CROSS-HOST FIT TABLE — the v560 finding; A BOX IS CLASSIFIED BY OUTPUT BYTES, NEVER BY LABEL
-| container | when | the same fit (`refit_v0surf.py --verify`, pass-0 substrate, curve `e69a3f38`) |
-|---|---|---|
-| the record's (L6 pass 0) | 2026-07-31 | **`fb9efdec`** ×2 — the committed bytes |
-| the `zlaarm` seat's SECOND host | 2026-08-04 | `5939fa35` ×5 — off-class; **PINS NOTHING** |
-| the seam's (re-classified after ITS restart) | 2026-08-04 | **`fb9efdec`** ×4 | 
-| the `zlaarm` seat's THIRD host | 2026-08-04 | **`fb9efdec`** — N35 assert PASS, fit-class |
-N35's assert is the classifier; it re-runs after any observed migration or restart — proven necessary twice
-in one day (both the seat's and the seam's containers migrated mid-session).
+## OUTCOME FACTS THE OWNER'S QUESTIONS ESTABLISHED (realized careers vs same-pick peers; durable copy 5178008507 thread)
+Early KPD careers run BELOW peers (0.60–0.79 at picks 3–20), above only late (1.33 at 60) — the old
+surface's early-KPD-high belief is unsupported · RUCK careers run 1.31–1.84 ABOVE peers at almost every pick
+while their year-one games run 0.24–0.64 — the owner's standing finding, reproduced · mature 19–20 careers
+run 1.16–1.42 above peers mid-late draft (n_eff 28–54); 21+ ~0.90; ZERO drafted 21+ exist in the top 10 —
+never draw a line where no data lives · the surface population carries 553/1,444 still-active careers —
+completion-not-presumption must govern any outcome fit (the structural basis supplies exactly that).
 
 ## THE CAPTURE TABLE — A RECIPE IS CURRENT ONLY TO THE CAPTURE IT NAMES
-| capture | md5 | applying it yields `data/v0surf.pkl` | base |
+| capture | md5 | yields `data/v0surf.pkl` | base |
 |---|---|---|---|
-| `L6_pass0_state.diff` — the N35-assert substrate | `13b71c26` | **`fb9efdec`** (curve `e69a3f38`) | `f0128d6` |
-| `LA_anchored_state.diff` — the FLAT-lens state (voided design; capture stays sealed as record) | `02e248dc` | `1a52b787` | `6736a6f` |
+| `L6_pass0_state.diff` — the LIVE substrate & N35-assert state | `13b71c26` | **`fb9efdec`** (curve `e69a3f38`) | `f0128d6` |
+| `LA_anchored_state.diff` — the voided flat-lens state (sealed record) | `02e248dc` | `1a52b787` | `6736a6f` |
 | `L6_HALT_state.diff` — the halt state, held | `137c6d2c` | `31e7f00b` (curve `ca662051`) | `3ffbc1f` |
 | `L4_state.diff` — sealed L4 exit-record | `2cc5041c` | `84fb0cde` | `f0128d6` era |
-(peak `f305fe53` / pvc `ade79790` across all. A REVISED-lens capture is expected after the next design audit.)
+(peak `f305fe53` / pvc `ade79790` across all. A sibling-basis design + capture is expected next.)
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Older standing law as v53 recorded it: N1–N37 stand, with N36's mapping clause CORRECTED (see N38). This cycle:
-N38. **THE VOIDING AND THE OWNER'S LAWS (comment 5176541552):** the v561 L-A approval is VOIDED as a seam
-    audit error; N36's "changes no line" clause is corrected — the owner's steer DID demand pick-resolved
-    effects. The two OWNER LAWS (intersections · no-hard-bands, now in Part A) bind every future seat and
-    every design audit checks them FIRST. The revision order: `m(pos, age, pick)` smooth bounded field,
-    locality, anchored totals with stated neutrality weighting, thin-data shrink to 1.0, no cliffs, per-pick
-    presentation, design-first-hold-for-audit. The banded ±5% acceptance proposal is WITHDRAWN. The seam's
-    rotation was raised on this failure and sits with the owner. [v562]
+Older standing law as v54 recorded it: N1–N38 stand. This cycle:
+N39. **THE SIBLING ORDER (owner word, 5178008507):** the lens's `_v0_raw`/slot-prior fit target is RETIRED
+    (the #279 surgery completed at the position/age layer); the lens fits from the #279 STRUCTURAL CAREER
+    VALUES with window/completion/exclusions/denomination inherited wholesale; anchor `e69a3f38` unchanged
+    (N6/N34); all v562-era orders stand (smooth field · graded locality · hierarchical confidence · m ∈
+    [0.5, 2.0] · local neutrality per pick · no hard bands anywhere · per-pick presentation, no-data fades);
+    the KPF-floor decision is WITHDRAWN (wrong-basis; re-poses only if the bound binds on the new basis);
+    the completion optimism (+4.7–8.4%, 25.1% of teaching rows) is stated beside every result. [v563]
 
 ## THE QUEUE
-- **#306 — the seat awaits the REVISION ORDER via the owner's paste** (comment 5176541552), then: design
-  `m(pos, age, pick)` per the owner's laws, measured on committed rows, HOLD for seam audit (laws first,
-  mechanics second) → implement on approval → acceptance on the artifact with a band-free drift check →
-  **L-B** deterministic lane (failing direction discharged by the recorded cross-container pair) → **the
+- **#306 — the seat designs the SIBLING-BASIS lens** (orders: 5176541552 laws · 5177058181 confidence/locality
+  spec · 5178008507 basis), measured on committed rows, per-pick, HOLD for seam audit — LAWS FIRST, mechanics
+  second → implement on approval → acceptance on the artifact (per-pick local neutrality + bounds; band-free)
+  → **L-B** deterministic lane (failing direction discharged by the recorded cross-container pair) → **the
   pool-division measurement** (N37) → **L-C** per the amended benchmark → **L6 re-enters under R-H/R-I/N19
   unchanged** → converged G-Y0 vs N16 naming the surface md5 → L7–L8 → full rehearsal hand-back → **the
-  EXECUTION word** → the landing → candidate board → adoption (owner's separate act).
-- **#276 clubs tab · #270 referee** (bias-1 refinement N17) — post-adoption · **#139 feeds** · v1.1 read
-  outstanding (13 screenshots held).
+  EXECUTION word** → the landing (ruled curve + converged surface ship together) → candidate board →
+  adoption (owner's separate act).
+- **#276 clubs tab · #270 referee** (bias-1 N17) — post-adoption · **#139 feeds** · v1.1 read outstanding.
 
 ## OWNER ACTS OUTSTANDING
-**The seam rotation decision** (raised v562; rotation is cheap by construction) · paste the revision order
-to the seat · the **EXECUTION word** (after the full rehearsal hand-back) · **the pool LEVEL ruling** (after
-the N37 measurement) · close clicks **#292 #283 #275** · the `rl_replacement_derive.py` search (N23) ·
-branch deletes — **HOLD** g4edkc · 4ql38z · fp78jm · fubolo · j0kwl0 · N12 holds until the landing reaches
-main · pen-token re-issue at the owner's discretion.
+**The seam rotation** (raised again v563 at ~460k, charter C3 — also standing from v562 on its own grounds) ·
+paste the sibling order's relay to the seat · the **EXECUTION word** (after the full rehearsal hand-back) ·
+**the pool LEVEL ruling** (after the N37 measurement) · close clicks **#292 #283 #275** · the
+`rl_replacement_derive.py` search (N23) · branch deletes — **HOLD** g4edkc · 4ql38z (carries the #279
+machinery the sibling order reuses — DO NOT delete before the landing) · fp78jm · fubolo · j0kwl0 · N12
+holds until the landing reaches main · pen-token re-issue at the owner's discretion.
 
 ## RUNNING THIS SEAT WELL — charter C1/C2/C3 AND M1–M3 govern; read them first
 - **M1** one-screen replies, detail in filings · **M2** deciding-figure re-run, ruling, or audit — else
   delegate · **M3** context posture at every pen.
 - **The owner's communication word (binding):** every agent return in VERY SIMPLE terms — what they did,
   whether it worked, what he must decide. Relays IN HIS CHANNEL. Answer him HERE before filing anywhere.
-- **The v562 lesson, paid for in the owner's trust:** an audit that re-runs every figure byte-identical can
-  still approve the wrong thing — CHECK THE DESIGN AGAINST THE OWNER'S STATED INTENT FIRST (hazard class
-  16), and state the load-bearing property of any design to the owner in ONE PLAIN SENTENCE before
-  discussing approval. Never band anything shown to him. When he pushes back, measure, concede what is
-  true, and never defend the seam's own work. His casual questions are the project's best QC — four of
-  them this cycle became law.
+- **The v562–v563 lessons, paid in trust:** check every design against the owner's stated intent FIRST
+  (hazard 16) and state its load-bearing property in ONE PLAIN SENTENCE · a chart of model beliefs is not a
+  chart of outcomes — say which it is, every time · never draw where no data lives · a flag's name is not
+  its semantics — trace what a flag actually feeds before quoting it · the owner's memory of his own rulings
+  beats derived views; verify against the primary record before contradicting him. His questions became
+  N36–N39: when he pushes, measure — never defend.
 - The era's verification standards: **v558** byte-identical re-runs · **v559** verify the capture pair ·
-  **v560** classify boxes by output bytes.
+  **v560** classify boxes by output bytes (N35).
 
-## ENVIRONMENT CARRIES — as v53 in full (measurements/ lane · sealed captures · compute-path assert
-`92e397bd` · N26 · frozen fitted set · strictly serial behind `tools/preboot_assert.sh` · venv 5-pin proof ·
-N32 · N33 · N35 recipe · envpin proportion facts · **PEN MECHANICS** unchanged: stamp near char 88 `· v56X
-<date> · PEN:` → X+1, SAME LENGTH · insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line count
-unchanged · growth == entry length · one new `SEAM v56X` stamp · docs-only diff · Part B wholesale · commit
-as `supervisor-seat <supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by CONTENT ·
-reset the pen branch onto origin/main before each pen).
+## ENVIRONMENT CARRIES — as v54 in full (measurements/ lane · sealed captures · compute-path assert
+`92e397bd` · strictly serial behind `tools/preboot_assert.sh` · venv 5-pin proof · N32 · N33 · N35 recipe ·
+envpin proportion facts · **PEN MECHANICS** unchanged: stamp near char 88 `· v56X <date> · PEN:` → X+1, SAME
+LENGTH · insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line count unchanged · growth == entry
+length · one new `SEAM v56X` stamp · docs-only diff · Part B wholesale · commit as `supervisor-seat
+<supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by CONTENT · reset the pen branch
+onto origin/main before each pen), plus this cycle's: **the #279 structural machinery is the lens's basis of
+record** (`session_2026-07-30/item279/harness_pvc.py structural_values()`, branch `…-4ql38z`,
+RETENTION-PROTECTED) · the two-curve census above · the committed sibling-era measurement scripts
+(`lens_field_sim.py` — mechanics-valid, wrong-basis targets; its successors fit from structural values).
 
 ## THE INCOMING SEAM'S FIRST TASKS
-1. Verify live state with your own commands: main tip = the v562 pen or a descendant; the same eleven issues
-   open, #271 #274 closed; no open PRs; four gating workflows green; the LIVE carrier at `7e9d7f9`; the
-   `zlaarm` branch at `a59db87` or a descendant; the five frozen/HOLD branches intact; the capture table by
-   apply-and-hash (minimum: `13b71c26` → `fb9efdec`).
-2. **Read the owner's laws in Part A and the v562 correction (5176541552) IN FULL before auditing anything.**
-   The next seam act is the audit of the revised `m(pos, age, pick)` design — against the laws first, the
-   mechanics second. Classify your own box by N35 before trusting any fit figure. Bring the owner each
-   outcome in very simple terms; state every design's load-bearing property in one plain sentence.
+1. Verify live state with your own commands: main tip = the v563 pen or a descendant; issues #290 #292 #279
+   #283 #275 #276 #270 #269 #146 #139 #306 open · #271 #274 closed · no open PRs; four gating workflows
+   green (in-flight stated as in-flight); the LIVE carrier at `7e9d7f9`; the `zlaarm` branch at `27f8a82` or
+   a descendant; the five frozen/HOLD branches intact; the capture table by apply-and-hash (minimum:
+   `13b71c26` → `fb9efdec`, curve payload `e69a3f38`).
+2. **Read the owner's laws (Part A), the v562 correction (5176541552), and the sibling order (5178008507)
+   IN FULL before auditing anything.** The next seam act: audit the sibling-basis design — owner's laws and
+   the BASIS first (does it fit from the structural values, the right window, the right completion?), then
+   mechanics (byte-identical re-runs; N35-classify your own box first). State every design's load-bearing
+   property to the owner in one plain sentence. Bring him each outcome simply.
 3. Read-back to the owner in his channel — short and simple — then hold for confirmation before any push.
