@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v57 · supervisor pen · 2026-08-04, register v565
+# CURRENT STATE — the incoming-seat read · v58 · supervisor pen · 2026-08-04, register v566
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,80 +128,75 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v57 · supervisor pen · 2026-08-04, register v565 · replaced wholesale at the ROTATION PEN — the
-sibling-basis design is approved and implementing; the pool measurement runs beside it, widened; the
-outgoing seam hi1an4 stands down; you, the reader, onboard per the AMENDED charter order: charter →
-docs/ENGINE_PRIMER.md IN FULL → this file IN FULL → register by pointer → live verify → read-back and HOLD)
+(v58 · supervisor pen · 2026-08-04, register v566 · replaced wholesale at the L-A ACCEPTANCE PEN — the
+lens is implemented and ACCEPTED on the artifact under the N41 ruling; the pathway taxonomy is corrected;
+the owner's pool rulings N42 are sealed and the pooled-completion re-run is ordered; L-B is open)
 
-## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; THE SIBLING-BASIS LENS IS APPROVED AND IMPLEMENTING.
-Main is the v565 pen or a descendant; four gating workflows green at every content state. **#292 DONE AND ON
-MAIN** (`ab68430`; awaits the owner's close click). **#306:** the lens design on the SIBLING BASIS (seat
-`zlaarm`, branch `346faff`, filing 5178109524) is **audited PASS and APPROVED** (audit + rulings
-5178476665, owner word "Proceed"): the lens fits from the **#279 structural career values** — the ruled
-curve's own sealed teaching set (N=1,197, classes 2004–2022; provenance 825 concluded / 301 actuarially
-completed / 71 counted fallbacks = 5.931%) — via the UNMODIFIED `harness_pvc.structural_values()`
-(byte-identical to the `…-4ql38z` originals). Bound binds NOWHERE (the KPF-floor question is closed).
-The seat now IMPLEMENTS with the **basis-as-inputs clause** (the owner's live-and-breathe steer: one
-change propagates by re-run + re-pin, never code surgery) and runs the **WIDENED pool measurement**
-alongside. The record's LIVE carrier is **`claude/exec-seat-290-handoff-d7bnaa`** at **`7e9d7f9`**
-(frozen ancestors j0kwl0 `8e8c15b` · fubolo `abf8f4c` · fp78jm `3cccb9d`). The **EXECUTION word remains
-WITHHELD**; nothing has landed at any point.
+## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; L-A ACCEPTED; L-B OPEN; THE POOL RE-RUN ORDERED.
+Main is the v566 pen or a descendant; four gating workflows green at every content state. **L-A:** the
+sibling-basis lens is implemented (basis-as-inputs verified: `RL_LENS_BASIS`, HALT-no-fallback, basis
+artifact `25a72f85` from the unmodified #279 machinery) and **ACCEPTED on the artifact** after the N41
+acceptance-population addendum: worst per-pick deviation 1e-4, 0/64 picks out, 0 position lines out of
+[0.5, 2.0]; the born-failing A/B control unchanged. Audits: 5178998844 (implementation, PASS with
+corrections) · 5179480421 (addendum, PASS). The seat's honest correction episode (a checkout destroyed
+uncommitted fixes; a capture self-captured an evidence file) is recorded; standing rule: **evidence
+committed before any substrate operation.** The **EXECUTION word remains WITHHELD**; the bake is HELD
+(`expected_boot.json` still pins the pass-0 engine `3c7b0c3c` — the re-pin IS the bake act; Guard 5 halts
+on the mismatch by design); nothing has landed at any point. The record's LIVE carrier is
+**`claude/exec-seat-290-handoff-d7bnaa`** at **`7e9d7f9`**; the #306 seat branch is
+**`claude/exec-seat-306-afl-rl-zlaarm`** at **`f3958c3`** or a descendant.
 
-## THE TWO-CURVE IDENTITY CENSUS — READ FLAGS AS SEMANTICS AT YOUR PERIL (full glossary: the PRIMER §5)
+## THE TWO-CURVE IDENTITY CENSUS — unchanged (full glossary: the PRIMER §5, now incl. the pathway tags)
 | curve | payload | what it is | where it lives |
 |---|---|---|---|
 | the SHIPPED curve | `08ea9375` | #271 stage-B ladder (measured 0.0248% reality) | main's product files — replaced at the landing |
-| **the RULED curve — THE ANCHOR** | **`e69a3f38`** | #279 structural ladder: classes 2004–2022, pick64=221, NO pick 65, completion +4.7–8.4% optimistic REPORTED | the rehearsal substrate (pass-0 capture `13b71c26`); ships with the EXECUTION word |
-Matrix `incurve`/`teaches_curve` flags = the SURFACE fit population (drafts 2003–2025, 38% still-active),
-NOT the pick curve's teaching set. Every rehearsal measurement asserts `e69a3f38` before computing.
+| **the RULED curve — THE ANCHOR** | **`e69a3f38`** | #279 structural ladder: classes 2004–2022, pick64=221, NO pick 65, completion +4.7–8.4% optimistic REPORTED | the rehearsal substrate; ships with the EXECUTION word |
+**Pathway tags (owner-corrected v566): PD\* = POST-DRAFT — PDA academy · PDN next-gen · PDS scholarship;
+UNR = post-draft UNREGISTERED (a real pathway, not missing data); IRE = post-draft Ireland.**
 
 ## THE CAPTURE TABLE — A RECIPE IS CURRENT ONLY TO THE CAPTURE IT NAMES
-| capture | md5 | yields `data/v0surf.pkl` | base |
+| capture | md5 | what it is | base |
 |---|---|---|---|
-| `L6_pass0_state.diff` — the LIVE substrate & N35-assert state | `13b71c26` | **`fb9efdec`** (curve `e69a3f38`) | `f0128d6` |
-| `LA_anchored_state.diff` — the voided flat-lens state (sealed record) | `02e248dc` | `1a52b787` | `6736a6f` |
-| `L6_HALT_state.diff` — the halt state, held | `137c6d2c` | `31e7f00b` (curve `ca662051`) | `3ffbc1f` |
-| `L4_state.diff` — sealed L4 exit-record | `2cc5041c` | `84fb0cde` | `f0128d6` era |
-(peak `f305fe53` / pvc `ade79790` across all. An IMPLEMENTATION capture with BASE annotation is expected
-next — verify it by apply-and-hash before trusting any recipe that names it.)
+| `LA_applied_neutrality_state.diff` — **THE LIVE SUBSTRATE** | `59ef1940` | pass-0 + lens + N41 applied-population neutrality; v0surf UNMOVED `fb9efdec`, curve `e69a3f38` | `9442832` |
+| `L6_pass0_state.diff` — **the N35-assert substrate** | `13b71c26` | yields `data/v0surf.pkl` `fb9efdec` (curve `e69a3f38`) — the fit-path assert is defined HERE | `f0128d6` |
+| `LA_lensfield_state.diff` — superseded as live | `8650c060` | the basis-population lens whose acceptance failed limb 1 (sealed record) | `346faff` |
+| `LA_anchored_state.diff` — the voided flat-lens (sealed) | `02e248dc` | — | `6736a6f` |
+| `L6_HALT_state.diff` — held | `137c6d2c` | surface `31e7f00b` (curve `ca662051`) | `3ffbc1f` |
+(peak `f305fe53` / pvc `ade79790` across all. Verify any capture by apply-and-hash before trusting a
+recipe that names it. N35 asserts run on the PURE pass-0 substrate, never on a lens substrate.)
 
 ## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-Older standing law as v56 recorded it: N1–N39 stand. This cycle:
-N40. **THE SIBLING-BASIS DESIGN APPROVED; IMPLEMENTATION CLAUSES (owner word "Proceed", 5178476665):**
-    (a) basis-as-inputs — the engine lens fit consumes the structural-values file and the anchor ladder as
-    DECLARED INPUTS (the live-and-breathe steer, verbatim in the comment): future bar/basis changes
-    propagate by re-run + re-pin, never code surgery; (b) acceptance on the ARTIFACT, per-pick and
-    band-free (local neutrality at every pick + bounds + presentation law), the +4.7–8.4% optimism printed
-    beside every result; (c) the POOL MEASUREMENT WIDENED and runs NOW beside implementation — per-division
-    (late-ND/PSD/SSP/MSD/rookie) realized-outcome levels under the ruled basis PLUS per-division × position
-    × age breakdowns, denominators everywhere, committed re-runnable, untagged rows reported never imputed;
-    the owner then rules pool LEVELS per division AND whether in-pool positional differentiation has data
-    support; pool stays NAMED UNRESOLVED meanwhile (N37.5); (d) the KPF-floor question is CLOSED (bound
-    binds nowhere on the true basis). [v565]
+Older standing law as v57 recorded it: N1–N40 stand. This cycle:
+N41. **THE ACCEPTANCE-POPULATION RULING (owner word, 2026-08-04, comment 5178998844; discharged
+    5179480421):** the lens's local-neutrality solve λ(pick) runs on the APPLIED population's
+    anchor-weighted composition (all real ND rows, picks 1–64, drafts 2003–2025 — the acceptance's own
+    population); applied rows enter as COMPOSITION WEIGHTS ONLY (pos, age, pick — no careers, no v0, no
+    outcomes); the lens shape is taught exclusively by the basis artifact; tolerance/bounds/A-B unchanged;
+    still-failing ⇒ HALT, never iterate. Amends the approved design by addendum on this one clause. [v566]
+N42. **THE POOL RULINGS (owner words, 2026-08-04):** (a) PER-DIVISION LEVELS are the ruling — the single
+    blended level retires at the landing; EXACT NUMBERS UNRULED and the pool stays NAMED UNRESOLVED
+    (N37.5) until the owner signs on the re-run's return; (b) positional differentiation ROOKIE DRAFT
+    ONLY; (c) the SHRINKAGE STEER — final levels confidence-weighted n/(n+K) toward the pool-wide
+    MEASURED aggregate (never the model prior), K sensitivity shown (15/25/50). The re-run order is
+    5179598225 (pooled-completion strata cross-division; prior-share reported before/after; raw + shrunk
+    per division; RD positional raw + shrunk; same-window controls committed). [v566]
 
 ## THE QUEUE
-- **#306 — the seat IMPLEMENTS the sibling-basis lens** (orders: 5176541552 laws · 5177058181
-  confidence/locality · 5178008507 basis · 5178476665 approval + clauses): engine fit consuming basis
-  artifacts as inputs → sealed capture + BASE annotation → **acceptance on the artifact** (per-pick, N35
-  first) → **the widened pool measurement** (runs alongside; its numbers go to the OWNER for his level
-  ruling) → **L-B** deterministic lane (failing direction DISCHARGED by the recorded cross-container pair;
-  the passing direction to earn) → **L-C** per the amended benchmark → **L6 re-enters under R-H/R-I/N19
-  unchanged** (bound 4 · fixed point = payload md5 equality · exhausted → HALT) → converged G-Y0 vs N16
-  naming the surface md5 → L7–L8 → full rehearsal hand-back → **the EXECUTION word** → the landing (ruled
-  curve + converged surface ship together) → candidate board → adoption (owner's separate act). Next seam
-  decisions: the implementation + artifact-acceptance audit · the pool numbers to the owner · L-B/L-C · the
-  converged G-Y0 against N16.
-- **#276 clubs tab · #270 referee** (bias-1 N17; likely revisits replacement bars — the live-and-breathe
-  chain is built for exactly that) — post-adoption · **#139 feeds** · v1.1 read outstanding.
+- **#306 — L-B executing** (deterministic fit lane; the failing direction discharged by the recorded
+  cross-container pair; the passing direction to earn) **+ the pool re-run beside it** (order 5179598225;
+  returns via the seam, byte-identical verification, then the numbers to the OWNER for his exact-level
+  signature) → **L-C** per the amended benchmark → **L6 re-enters under R-H/R-I/N19 unchanged** (bound 4 ·
+  fixed point = payload md5 equality · exhausted → HALT) → converged G-Y0 vs N16 naming the surface md5 →
+  L7–L8 → full rehearsal hand-back → **the EXECUTION word** → the landing (ruled curve + converged surface
+  + the pool levels ship together) → candidate board → adoption (owner's separate act). Next seam
+  decisions: the L-B audit · the pool re-run verification + presentation · L-C · the converged G-Y0.
+- **#276 clubs tab · #270 referee** (post-adoption) · **#139 feeds** · v1.1 read outstanding.
 
 ## OWNER ACTS OUTSTANDING
-Re-provide the pen token to the INCOMING SEAM (this pen is the rotation) · paste the implementation relay
-to the seat (in the outgoing seam's last chat message) · the **EXECUTION word** (after the full rehearsal
-hand-back) · **the pool LEVEL ruling** (when the widened measurement returns) · close clicks **#292 #283
-#275** · the `rl_replacement_derive.py` search (N23) · branch deletes — **HOLD** g4edkc · 4ql38z (carries
-the #279 machinery the lens NOW DEPENDS ON — do not delete before the landing) · fp78jm · fubolo · j0kwl0 ·
-the outgoing seam's carrier `claude/seat-authority-handoff-hi1an4` is merged history, free to delete · N12
-holds until the landing reaches main.
+The **pool exact-level signature** (when the re-run returns through the seam) · the **EXECUTION word**
+(after the full rehearsal hand-back) · close clicks **#292 #283 #275** · the `rl_replacement_derive.py`
+search (N23) · branch deletes — **HOLD** g4edkc · 4ql38z (carries the #279 machinery the lens depends on)
+· fp78jm · fubolo · j0kwl0 · N12 holds until the landing reaches main.
 
 ## RUNNING THIS SEAT WELL — charter C1/C2/C3, M1–M3, AND the 2026-08-04 amendment govern; read them first
 - **M1** one-screen replies, detail in filings · **M2** deciding-figure re-run, ruling, or audit — else
@@ -211,35 +206,41 @@ holds until the landing reaches main.
 - **The owner's communication word (binding):** every agent return in VERY SIMPLE terms — what they did,
   whether it worked, what he must decide (options + recommendation, one line each). Relays IN HIS CHANNEL.
   Answer him HERE before filing anywhere.
-- The era's verification standards: **v558** byte-identical re-runs (and confirm the run actually RAN —
-  a no-op regeneration "passing" is hazard 5, caught live at v565) · **v559** verify the capture pair ·
-  **v560** classify boxes by output bytes (N35) · the v562–v563 lessons as the PRIMER carries them.
+- The era's verification standards: **v558** byte-identical re-runs (confirm the run actually RAN) ·
+  **v559** verify the capture pair · **v560/N35** classify boxes by output bytes — **the assert stales on
+  any observed restart; this seat re-classified mid-cycle when its container restarted, on a host whose
+  CPU label matched the recorded off-class box and whose bytes proved fit-class** · the v562–v563 lessons
+  as the PRIMER carries them.
 
-## ENVIRONMENT CARRIES — as v56 in full (measurements/ lane · sealed captures · compute-path assert
-`92e397bd` · strictly serial behind `tools/preboot_assert.sh` · venv 5-pin proof (measurement scripts that
-import numpy MUST run under `RL_VENV` — system python silently lacks it) · N32 · N33 · N35 recipe · envpin
-proportion facts · **PEN MECHANICS** unchanged: stamp near char 88 `· v56X <date> · PEN:` → X+1, SAME
-LENGTH · insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line count unchanged · growth == entry
-length · one new `SEAM v56X` stamp · docs-only diff · Part B wholesale · commit as `supervisor-seat
-<supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by CONTENT · **reset the pen branch
-onto origin/main BEFORE each pen** — skipping it caused the v564 merge conflict), plus: **the #279
-structural machinery is the lens basis of record** (`session_2026-07-30/item279/` on `…-4ql38z` AND
-byte-identical copies on the seat's branch — RETENTION-PROTECTED) · the two-curve census above ·
-`lens_sibling_basis.py`/`.json` = the approved design's committed measurement.
+## ENVIRONMENT CARRIES — as v57 in full (measurements/ lane · sealed captures · compute-path assert
+`92e397bd` · strictly serial behind the preboot pgrep (bracket-safe — an unbracketed name elsewhere in the
+same compound command self-matches) · venv 5-pin proof (`RL_VENV`; scripts importing numpy MUST run under
+it) · N32 · N33 · N35 recipe (bootstrap from the pass-0 tree → `refit_v0surf.py --verify` from the seeded
+workspace must reproduce `fb9efdec`) · envpin facts · **PEN MECHANICS** unchanged: stamp near char 88
+`· v56X <date> · PEN:` → X+1, SAME LENGTH · insert immediately BEFORE ` · SEAM v540 (2026-07-29)` · line
+count unchanged · growth == entry length · one new `SEAM v56X` stamp · docs-only diff · Part B wholesale ·
+commit as `supervisor-seat <supervisor@seam.local>` · branch → PR → rebase-merge → re-verify main by
+CONTENT · **reset the pen branch onto origin/main BEFORE each pen**), plus: the #279 structural machinery
+remains the basis of record (`…-4ql38z` AND byte-identical copies on the seat branch — RETENTION-PROTECTED)
+· `structural_basis_279.json` `25a72f85` = the lens basis artifact · the acceptance instrument
+`la_acceptance_perpick.py` · the pool instrument `pool_divisions.py` (labels corrected; prior-share beside
+every level) · RD positional measured levels (KPD 308.1 / MID 297.8 / RUCK 286.8 / SD 248.4 / SF 228.5 /
+KPF 211.8; medians 0.0, busts full weight).
 
 ## THE INCOMING SEAM'S FIRST TASKS
 0. **Onboard per the amended charter order:** charter → **docs/ENGINE_PRIMER.md IN FULL** → this file IN
    FULL → register by pointer → live verify → read-back and HOLD. Every number you present names its
    quantity in plain words.
-1. Verify live state with your own commands: main tip = the v565 pen or a descendant; issues #290 #292 #279
-   #283 #275 #276 #270 #269 #146 #139 #306 open · #271 #274 closed · no open PRs; four gating workflows
-   green (in-flight stated as in-flight); the LIVE carrier at `7e9d7f9`; the `zlaarm` branch at `346faff`
-   or a descendant (implementation commits expected); the five frozen/HOLD branches intact; the capture
-   table by apply-and-hash (minimum: `13b71c26` → `fb9efdec`, curve payload `e69a3f38`).
-2. The #306 seat is implementing on the approval (5178476665): audit its filings in the ruled order —
-   BASIS first (structural values, unmodified machinery, right window), LAWS second (no bands, per-pick,
-   starved-data honesty), MECHANICS third (byte-identical re-runs under `RL_VENV`, N35-classify your own
-   box first, and confirm your re-run actually executed). The pool measurement's numbers go to the OWNER
-   for his level ruling — bring them simply, per-division, denominators named, per his communication word.
+1. Verify live state with your own commands: main tip = the v566 pen or a descendant; issues #290 #292
+   #279 #283 #275 #276 #270 #269 #146 #139 #306 open · #271 #274 closed · no open PRs; four gating
+   workflows green (in-flight stated as in-flight); the LIVE carrier at `7e9d7f9`; the seat branch at
+   `f3958c3` or a descendant; the five frozen/HOLD branches intact; the captures by apply-and-hash
+   (minimum: `13b71c26` → `fb9efdec` curve `e69a3f38`, and `59ef1940` applies at the seat tip with
+   v0surf unmoved); **N35-classify your own box before trusting any fit figure — check uptime first,
+   the assert stales on any observed restart.**
+2. The #306 seat is on **L-B** with the **pool re-run** beside it: audit L-B in the ruled order (basis →
+   laws → mechanics); verify the pool re-run byte-identically and present its numbers to the OWNER simply
+   — per-division, denominators and prior-shares named, raw AND shrunk (N42c) — for his exact-level
+   signature.
 3. Read-back to the owner in his channel — short and simple per C1/M1 — then hold for confirmation before
    any push.

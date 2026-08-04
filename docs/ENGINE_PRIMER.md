@@ -1,4 +1,4 @@
-# ENGINE PRIMER — the meaning layer · v1 · authored 2026-08-04 by the outgoing seam (hi1an4), owner-directed
+# ENGINE PRIMER — the meaning layer · v2 · authored 2026-08-04 (hi1an4), §5 pathway tags added at register v566, owner-directed
 
 **WHAT THIS IS.** Every incoming seat reads this IN FULL, immediately after the charter and before
 CURRENT_STATE. It carries what the process documents don't: what the engine is FOR, what each artifact
@@ -109,6 +109,12 @@ fitted at build time — everything is loaded from pins.
   shape, not reality's.
 - **Pick 65** = the pool-index convention in matrices (`pick: 65` rows are pool entrants). No curve prices
   it; pool pricing is its own fenced decision (#207 / N37).
+- **Pathway/division tags** (owner-corrected TWICE — read them as the store means them, never expand
+  from the acronym): `PD*` = **POST-DRAFT**, not pre-season — `PDA` post-draft academy · `PDN`
+  post-draft next-gen · `PDS` post-draft scholarship. `UNR` = post-draft **UNREGISTERED** — a real
+  recruiting pathway, NOT "untagged/unresolved" missing data. `IRE` = post-draft Ireland. `SSP` =
+  supplemental selection period · `MSD` = mid-season draft · `RD` = rookie draft. Bid-matched academy
+  and father-son taken WITH a pick are coded `ND` at that pick — `PD*` rows are the PICKLESS intake.
 - **Positions** are KPD, KPF, MID, RUCK, SD, SF. `MATN`/`MATR` were mature-age tier keys in a voided
   design — not store positions.
 - **A flag's name is not its semantics; a file's md5 is not a payload identity.** Trace what a flag
