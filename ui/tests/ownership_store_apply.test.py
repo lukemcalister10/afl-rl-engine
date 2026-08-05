@@ -115,9 +115,19 @@ reg = lin["release_transition_register"]
 ours = [e for e in reg if OSA.OWNER_RULING_ID in (e.get("owner_ruling_id") or [])]
 check(len(ours) == 1,
       "exactly ONE #283 register entry exists — a re-run appends no second one (%d total entries)" % len(reg))
+# THE ERA-BOUND ASSERT, corrected 2026-08-05 by the #328 re-closure (owner ruling OPTION A).
+# This used to read `ours[0]["destination"]["store"] == live_md5`. That is true only while #283 is the
+# LATEST store transition — it ties a SEALED HISTORICAL entry to a moving head, so the first legitimate
+# store write after #283 turns a correct record into a red. #328 is that write (81d24704 -> f1e8c9fe),
+# and the entry is still exactly right about its own transition. The check now asserts what the entry
+# MEANS: that it records a real move, and that its own three statements of that move agree with each
+# other. It still fails if the sealed entry is falsified in any of them.
+_D283 = "81d2470440a80f72afea4405e94338c5"      # the store #283 produced — a historical constant
 check(ours[0]["source"]["store"] != ours[0]["destination"]["store"]
-      and ours[0]["destination"]["store"] == live_md5,
-      "the entry records the real transition and its destination IS the live store")
+      and ours[0]["destination"]["store"] == _D283
+      and ours[0]["invariants"]["store_moved_by_transition"]["from"] == ours[0]["source"]["store"]
+      and ours[0]["invariants"]["store_moved_by_transition"]["to"] == ours[0]["destination"]["store"],
+      "the entry records the real transition and its own three statements of it agree")
 
 # THE BOUNDARY-HIJACK REGRESSION.  round_movers.model_changes() keys the register by
 # `destination.board` and lets a later entry supersede an earlier one for the same landing board.  A
@@ -127,8 +137,11 @@ check(ours[0]["source"]["store"] != ours[0]["destination"]["store"]
 check("board" not in ours[0]["source"] and "board" not in ours[0]["destination"],
       "the #283 entry declares NO landing board — a store-only move is a pointer note to the boundary "
       "reader, never a board-boundary record")
-check(ours[0]["invariants"]["board_unmoved_by_transition"] == json.load(
-          open(os.path.join(REPO, OSA.BOOT_REL)))["board"],
+# Same era-bound correction: this compared the sealed invariant to the LIVE expected_boot board. The
+# #283 transition ran no engine build, so the board it names (f2df6e0a) is a fact about THAT moment,
+# not a claim about today's head — #328 rebuilt the board (f2df6e0a -> 2b7c1a00) and the entry is
+# unchanged and still true. Pinned to the historical constant, so falsifying the entry still fails.
+check(ours[0]["invariants"]["board_unmoved_by_transition"] == "f2df6e0a2902f48e1df36f35493ba8c1",
       "...and records the board as the INVARIANT it is: unmoved across the transition (no engine build)")
 
 sys.path.insert(0, os.path.join(REPO, "engine", "rl_after", "ingestion"))
