@@ -1,0 +1,1 @@
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)

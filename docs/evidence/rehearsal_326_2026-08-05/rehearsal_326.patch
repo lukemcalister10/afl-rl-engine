@@ -1,0 +1,439 @@
+diff --git a/data/expected_boot.json b/data/expected_boot.json
+index 99b7081..33cc8a3 100644
+--- a/data/expected_boot.json
++++ b/data/expected_boot.json
+@@ -30,7 +30,7 @@
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+- "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
++ "rl_model": "18eba83a4cce80bd7083b050ee938949",
+  "store": "f1e8c9fed35462536d00add604f69a3f",
+  "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+  "v0surf": "d594dc034e86935b370c49b240a18370",
+diff --git a/data/release_contract.json b/data/release_contract.json
+index ac717e1..eebcb6e 100644
+--- a/data/release_contract.json
++++ b/data/release_contract.json
+@@ -21,7 +21,7 @@
+  },
+  "as_of_round": 20,
+  "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
+- "contract_sha256": "9d155e8e1ed2203bea2c39d32a55567c530dd841a381b4b6ee44bab8ff79f9f9",
++ "contract_sha256": "342a2428c5987e96483478fb4411c9bae7892fb1ec90922cacf83447284cf17a",
+  "f5_entrant_reconciliation": {
+   "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)",
+   "entrant_layer_pvc": 77611,
+@@ -39,7 +39,7 @@
+   "engine_head": "15525b033f390d041a7858f47a30b48e",
+   "fv": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a",
+   "register": "652d83e87780e415a01a2de6d8b3cc57",
+-  "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
++  "rl_model": "18eba83a4cce80bd7083b050ee938949",
+   "store": "f1e8c9fed35462536d00add604f69a3f"
+  },
+  "must_be_unset": [
+diff --git a/engine/rl_after/one_source_selftest.py b/engine/rl_after/one_source_selftest.py
+index 27198aa..8ccd97e 100644
+--- a/engine/rl_after/one_source_selftest.py
++++ b/engine/rl_after/one_source_selftest.py
+@@ -487,7 +487,12 @@ if _pvc2_on:
+     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
+     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
+     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
+-    _contract_md5='5b7c108c230b9afc18089a8db0aeb650'   # RE-PINNED by the #274 adoption mop-up act (owner word
++    _contract_md5='4fbfabc0296d976e7627dfbd8055fbaf'   # RE-PINNED by #326 (per-division pool pricing): the
++    # curve artifact gains the N43 signed pool_levels block beside pool_value, so the artifact FILE md5 moves
++    # b7389fe4 -> 6394929e and the contract's pick_curve_file_md5 + its pool_levels mirror move with it. The
++    # curve PAYLOAD identity df766dff is UNCHANGED — the ladder was not touched — which is why
++    # pick_curve_curve_md5 below does not move. Both pins move in this one change, as prior acts did.
++    # PREVIOUS PIN: 5b7c108c230b9afc18089a8db0aeb650 — RE-PINNED by the #274 adoption mop-up act (owner word
+     # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
+     # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
+     # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
+@@ -610,6 +615,161 @@ if _pvc2_on:
+ else:
+     print("  NOTE  RL_PVC2=0 (L1b base path): v2-specific asserts skipped; ENTRY CLOSURE above holds either way.")
+ 
++print("=== (10) #326 PER-DIVISION POOL PRICING — the N43 signed levels ===")
++# THE OWNER'S SIGNED TABLE, ANCHORED HERE. The artifact cannot be its own authority: if this section read the
++# levels only from the artifact, an edited level would agree with itself and pass. So the signed numbers are
++# written out once, copied verbatim from the owner's N43 signature (#306 comment 5179992080), and everything
++# else is checked against them. A wrong level in the artifact and a wrong lookup in the code each go red here.
++_N43_FLAT={'MSD':286.8,'SSP':252.8,'PDA':194.3,'PDS':145.0,'IRE':133.4,'PDN':123.0,'UNR':103.7}
++_N43_RD={'KPD':300.3,'MID':294.8,'RUCK':282.5,'SD':246.9,'SF':231.5,'KPF':216.0}
++_N43_ND65_K15=266.1; _N43_RD_LEVEL=261.6; _N43_RD_TARGET=262.2; _N43_POOL_AGG=235.8; _N43_K=15
++_v2doc=json.load(open(hp('pvc_curve_v2.json')))
++_pl=_v2doc.get('pool_levels')
++check(bool(_pl), "#326: the curve artifact carries a pool_levels block beside pool_value")
++if _pl:
++    check({_k:float(_v) for _k,_v in _pl['signed_flat'].items()}==_N43_FLAT,
++          "#326 signed flat levels verbatim (MSD/SSP/PDA/PDS/IRE/PDN/UNR): %s"%_pl['signed_flat'])
++    check({_k:float(_v) for _k,_v in _pl['signed_rd_positional'].items()}==_N43_RD,
++          "#326 signed RD positional set verbatim (KPD/MID/RUCK/SD/SF/KPF): %s"%_pl['signed_rd_positional'])
++    check(float(_pl['signed_nd65_plus']['measured_k15'])==_N43_ND65_K15
++          and int(_pl['signed_nd65_plus']['cap_against_curve_pick'])==MA.ND_CURVE_LAST,
++          "#326 ND65+ is stored as the LAW: measured %.1f capped against curve pick %d (never a literal price)"
++          %(float(_pl['signed_nd65_plus']['measured_k15']),int(_pl['signed_nd65_plus']['cap_against_curve_pick'])))
++    check(_pl['rd_position_field']=='future_position',
++          "#326 the RD positional key names future_position (got %r)"%_pl['rd_position_field'])
++    check(float(_pl['rd_division_level'])==_N43_RD_LEVEL and float(_pl['rd_positional_shrink_target'])==_N43_RD_TARGET
++          and float(_pl['measured_pool_aggregate'])==_N43_POOL_AGG and int(_pl['k'])==_N43_K,
++          "#326 the reference quantities are each carried where N43 uses them: RD level %.1f · positional target "
++          "%.1f · pool aggregate %.1f · K=%d"%(float(_pl['rd_division_level']),float(_pl['rd_positional_shrink_target']),
++                                               float(_pl['measured_pool_aggregate']),int(_pl['k'])))
++    _cav=str(_pl.get('msd_completion_optimism_caveat',''))
++    check('4.7' in _cav and '8.4' in _cav,
++          "#326 MSD's completion-optimism caveat travels with its level: %r"%_cav)
++    print("       MSD %.1f  [completion optimism %s]"%(_N43_FLAT['MSD'],_cav))
++    # the ui provenance contract mirrors the block, exactly as it mirrors pool_value
++    _ccp=globals().get('_curve_contract_path')
++    if _ccp and os.path.exists(_ccp):
++        check(json.load(open(_ccp)).get('pool_levels')==_pl,
++              "#326 ui/release_pick_curve.json mirrors the artifact's pool_levels verbatim")
++    # ---- the engine's OWN resolved table, and the cap re-evaluated as the law rather than read back --------
++    _want={_k:int(_v) for _k,_v in _N43_FLAT.items()}
++    _want.update({'RD:'+_k:int(_v) for _k,_v in _N43_RD.items()})
++    _want['ND65+']=int(min(_N43_ND65_K15,float(MA._PVC2M[MA.ND_CURVE_LAST])))
++    check(len(_want)==14, "#326 fourteen priced levels: eight flat divisions + six RD positional (got %d)"%len(_want))
++    check(MA._POOL_LEVELS==_want,
++          "#326 the engine's resolved pool levels == the signed table (ND65+ = min(%.1f, curve[%d]=%d) = %d)"
++          %(_N43_ND65_K15,MA.ND_CURVE_LAST,MA._PVC2M[MA.ND_CURVE_LAST],_want['ND65+']))
++    # ---- POOL_VALUE ISOLATION: no player price reads the pool slot ----------------------------------------
++    # Route taken: a structural assert in the price path (rl_model._pick_level), re-proven here over the whole
++    # priced population. The old invariants that bind on pool_value stay exactly as they were and stay true —
++    # they now describe the scaffold copy and the shipped ladder, which is all they ever measured.
++    _slot=int(MA._PVC2M[MA.POOL_PICK])
++    _poolp=[p for p in MA.players if p.get('_pool')]
++    _reads_slot=[p['player'] for p in _poolp if MA._pick_level(p,MA.effpk(p))==_slot]
++    check(not _reads_slot,
++          "#326 pool_value isolation: no priced pool entrant's basis equals the ladder's pool slot %d (%d would)"
++          %(_slot,len(_reads_slot)))
++    check(all(MA._pick_level(p,MA.effpk(p))==MA._POOL_LEVELS[MA.pool_division(p)] for p in _poolp),
++          "#326 every priced pool entrant reads his own division's level, not a shared one")
++    # The same claim measured on the BOARD rather than in the lookup: move the ladder's pool slot and see
++    # whether any board price follows. The two checks are not the same check — the one above proves the
++    # per-division lookup is wired, this one proves nothing else is still reading the single value.
++    _sl_before={}
++    with contextlib.redirect_stdout(io.StringIO()):
++        for p in MA.players: _sl_before[p['key']]=ev(p,2026)
++    _p0=g['_PVC0']; _p0_keep=_p0[MA.POOL_PICK]; _p0[MA.POOL_PICK]=int(_p0_keep)+163; MA._pe_clear()
++    with contextlib.redirect_stdout(io.StringIO()):
++        _sl_movers=[p['player'] for p in MA.players if ev(p,2026)!=_sl_before[p['key']]]
++    _p0[MA.POOL_PICK]=_p0_keep; MA._pe_clear()
++    check(not _sl_movers,
++          "#326 no board price follows the ladder's pool slot — %d row(s) still do: %s"
++          %(len(_sl_movers),', '.join(sorted(_sl_movers)[:8]) or 'none'))
++    # ---- THE WRONG-FIELD DISCRIMINATOR, over the STORE population -----------------------------------------
++    # Addendum 3 item 2: the store is where the differing rows live (171 present-differing, 181 drafted-
++    # differing), so the field proof runs there. On the board only the drafted-vs-future case exists.
++    _rd=[p for p in MA.data if p.get('type')=='RD']
++    _dp=sum(1 for p in _rd if p.get('present_position')!=p.get('future_position'))
++    _dd=sum(1 for p in _rd if p.get('drafted_position')!=p.get('future_position'))
++    check(_dp>0 and _dd>0,
++          "#326 wrong-field discriminator exists over the store: %d of %d RD rows differ present-vs-future, "
++          "%d differ drafted-vs-future"%(_dp,len(_rd),_dd))
++    _mis_p=[p['player'] for p in _rd
++            if MA._POOL_LEVELS['RD:'+(MA.GRP.get(p.get('present_position')) or MA.gfut(p))]
++            != MA._POOL_LEVELS['RD:'+MA.gfut(p)]]
++    _mis_d=[p['player'] for p in _rd
++            if MA._POOL_LEVELS['RD:'+(MA.GRP.get(p.get('drafted_position')) or MA.gfut(p))]
++            != MA._POOL_LEVELS['RD:'+MA.gfut(p)]]
++    check(len(_mis_p)==_dp and len(_mis_d)==_dd,
++          "#326 a present- or drafted-keyed build misprices %d / %d store rows — the wrong field fails "
++          "deterministically, not three builds in four"%(len(_mis_p),len(_mis_d)))
++    check(all(MA._pool_rd_position(p)==MA.gfut(p) for p in _rd),
++          "#326 the engine's RD positional key IS the settled future position on all %d rookie rows"%len(_rd))
++    _board_diff=[p for p in _poolp if p.get('type')=='RD'
++                 and p.get('drafted_position')!=p.get('future_position')]
++    check(len(_board_diff)>0,
++          "#326 on-board drafted-vs-future proof population: %d active rookie entrant(s) — %s"
++          %(len(_board_diff),', '.join(sorted(x['player'] for x in _board_diff))))
++    check(all(MA._POOL_LEVELS['RD:'+(MA.GRP.get(p.get('drafted_position')) or MA.gfut(p))]
++              !=MA._POOL_LEVELS['RD:'+MA.gfut(p)] for p in _board_diff),
++          "#326 each of those active entrants is priced at a DIFFERENT level under the wrong field")
++    print("       present-vs-future has no on-board discriminator today (0 active differing rows) — which is why "
++          "the field proof runs over the store population; the drafted-vs-future case does exist on the board.")
++    # ---- REACH-THE-PRICE, TWO TIERS ASSIGNED AT BUILD TIME ------------------------------------------------
++    # (a) any level with at least one ACTIVE entrant proves on the board: a named real player whose board price
++    #     moves when the level moves. (b) a level with zero active entrants proves by store-population
++    #     evaluation off-board, same assert discipline. The tier is decided from the population here, never
++    #     hardcoded, so a first signing at a dormant pathway flips that level onto the board tier loudly.
++    _byl={}
++    for p in _poolp: _byl.setdefault(MA.pool_division(p),[]).append(p)
++    _store_byl={}
++    for p in MA.data:
++        if p.get('_pool'): _store_byl.setdefault(MA.pool_division(p),[]).append(p)
++    _bd={r['key']:r for r in (json.load(open(board_path))['active'] if os.path.exists(board_path) else [])}
++    def _price(p):
++        with contextlib.redirect_stdout(io.StringIO()):
++            v=ev(p,2026); ev(p,2024); ev(p,2025); ev(p,2027); ev(p,2028)   # the export's as-of sequence, as (2) above
++            return _num(v)
++    def _rawv(p):
++        with contextlib.redirect_stdout(io.StringIO()): return MA.value(p)
++    _tier={}
++    for _k in sorted(_want):
++        _on=_byl.get(_k) or []
++        _kept=MA._POOL_LEVELS[_k]
++        _probe=int(round(_kept*1.5))
++        if _on:
++            _base={id(p):_price(p) for p in _on}
++            _rbase={id(p):_rawv(p) for p in _on}
++            MA._POOL_LEVELS[_k]=_probe; MA._pe_clear()
++            _moved=[p for p in _on if _price(p)!=_base[id(p)]]
++            _rmoved=[p for p in _on if _rawv(p)!=_rbase[id(p)]]
++            MA._POOL_LEVELS[_k]=_kept; MA._pe_clear()
++            _named=sorted(_moved,key=lambda p:-_base[id(p)])[:1]
++            _ok=bool(_named) and all(_bd.get(p['key'],{}).get('v')==_base[id(p)] for p in _named)
++            _tier[_k]=('board',len(_on),len(_moved),len(_rmoved),_named[0]['player'] if _named else None)
++            check(_ok, "#326 level %s reaches a real board price — %s (board v=%s; %d of %d active entrants "
++                       "re-price when the level moves; %d re-price in rl_model.value(), which rl_export "
++                       "OVERWRITES from the gated ev())"
++                  %(_k,(_named[0]['player'] if _named else 'NO ACTIVE ENTRANT RE-PRICES ON THE BOARD'),
++                    (_bd.get(_named[0]['key'],{}).get('v') if _named else '-'),len(_moved),len(_on),len(_rmoved)))
++        else:
++            _rows=_store_byl.get(_k) or []
++            _base={id(p):_rawv(p) for p in _rows}
++            MA._POOL_LEVELS[_k]=_probe; MA._pe_clear()
++            _moved=[p for p in _rows if _rawv(p)!=_base[id(p)]]
++            MA._POOL_LEVELS[_k]=_kept; MA._pe_clear()
++            _tier[_k]=('store',0,0,len(_moved),_moved[0]['player'] if _moved else None)
++            check(bool(_moved),
++                  "#326 level %s has 0 active entrants — proved OFF-BOARD on its store rows: %s (%d of %d real "
++                  "rows re-price when the level moves)"
++                  %(_k,(_moved[0]['player'] if _moved else 'NO STORE ROW RE-PRICES'),len(_moved),len(_rows)))
++    print("       tier assignment (from the population at build time, never hardcoded):")
++    for _k in sorted(_tier):
++        _t,_n,_m,_rm,_nm=_tier[_k]
++        print("         %-9s %-5s  active %3d  board re-price %3d  value() re-price %3d  proof entrant: %s"
++              %(_k,_t,_n,_m,_rm,_nm))
++    print("       pool population by division (engine classification): %s"
++          %(' · '.join('%s %d'%(_k,len(_store_byl.get(_k) or [])) for _k in sorted(_want))))
++
+ print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
+       "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))
+ print("  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)")
+diff --git a/engine/rl_after/pvc_curve_v2.json b/engine/rl_after/pvc_curve_v2.json
+index 270750f..782473f 100644
+--- a/engine/rl_after/pvc_curve_v2.json
++++ b/engine/rl_after/pvc_curve_v2.json
+@@ -85,6 +85,37 @@
+  },
+  "numeraire_pin1_3000": true,
+  "pin": 3000,
++ "pool_levels": {
++  "_doc": "N43 SIGNED PER-DIVISION POOL LEVELS (owner words, filed #306 comment 5179992080; installed by directive #326 as amended by its addenda 1-4). VOR, K=15 toward the measured pool aggregate 235.8. These are owner-signed data: copied verbatim, never recomputed by the engine. The division key is the store's own 'type' field; ND65+ is type ND at pick >= 65. The rookie draft prices positionally on future_position (the field the N42b measurement was keyed on). Any row the engine classifies as pool whose type is outside this set halts and asks. pool_value above keeps its own job -- the pool-wide level on the current basis, still the ladder's pool slot for the scaffold copies, the pick-pricing layer and the display bands -- and no player price reads it.",
++  "k": 15,
++  "measured_pool_aggregate": 235.8,
++  "msd_completion_optimism_caveat": "+4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)",
++  "rd_division_level": 261.6,
++  "rd_position_field": "future_position",
++  "rd_positional_shrink_target": 262.2,
++  "signed_flat": {
++   "IRE": 133.4,
++   "MSD": 286.8,
++   "PDA": 194.3,
++   "PDN": 123.0,
++   "PDS": 145.0,
++   "SSP": 252.8,
++   "UNR": 103.7
++  },
++  "signed_nd65_plus": {
++   "_rule": "THE CAP IS A LAW, NOT A NUMBER: the price is min(measured_k15, the ruled curve's pick cap_against_curve_pick) resolved against the ladder in force AT BUILD TIME. A curve re-derivation moves it with no edit here.",
++   "cap_against_curve_pick": 64,
++   "measured_k15": 266.1
++  },
++  "signed_rd_positional": {
++   "KPD": 300.3,
++   "KPF": 216.0,
++   "MID": 294.8,
++   "RUCK": 282.5,
++   "SD": 246.9,
++   "SF": 231.5
++  }
++ },
+  "pool_value": 237.2,
+  "pre_split_curve_md5": "89c14729",
+  "pre_split_domain": "1-99 (99 entries)",
+diff --git a/engine/rl_after/rl_export.py b/engine/rl_after/rl_export.py
+index 9abd25a..82b0ad9 100644
+--- a/engine/rl_after/rl_export.py
++++ b/engine/rl_after/rl_export.py
+@@ -153,6 +153,16 @@ assert max(_ADOPTED)==POOL_PICK, \
+ PVC={k:_ADOPTED[k] for k in _ADOPTED}                             # shipped PVC IS the adopted ladder: curve 1..64 + the pool index
+ print('L7 ADOPTED-CURVE REPOINT: shipped PVC = %s (pick1=%d, national curve 1-%d strictly decreasing, pool index %d = %d, ÷F=%.4f on players)'
+       %(_pvc_art,PVC[1],ND_CURVE_LAST,POOL_PICK,PVC[POOL_PICK],_F))
++# #326: the shipped ladder still carries ONE pool index — it is the pick side's pool price and the display
++# band, and the LEG F5 entrant layer reads it. Player prices no longer do: each pool entrant is priced at his
++# own signed division level, listed here beside the ladder so the two are never read as the same number. The
++# raw signed level and the displayed (÷F) value are both shown because the board displays the rebased figure.
++_PL_LEVELS=g['_POOL_LEVELS']; _PL_CAVEAT=g['_MSD_CAVEAT']
++print('#326 PER-DIVISION POOL LEVELS (N43 signed, read verbatim from %s; pool_value %s is NOT a player price): %s'
++      %(_pvc_art,_adopted_doc.get('pool_value'),
++        ' · '.join('%s %d (displayed %d)%s'%(_k,_PL_LEVELS[_k],round(_PL_LEVELS[_k]/_F),
++                                             ' [MSD completion optimism %s]'%_PL_CAVEAT if _k=='MSD' else '')
++                   for _k in sorted(_PL_LEVELS))))
+ # ==== (g) NUMÉRAIRE ASSERT — UNCONDITIONAL STANDING LAW (register v30 item 17; L7 baked 2026-07-13) =======
+ # "PICK 1 = 3000 IS THE NUMÉRAIRE." The dormant legacy (×1.0524, factor≠1.0) branch is RETIRED at the bake:
+ # no pre-L7 path remains, so the assert is UNCONDITIONAL — a shipped board with pick-1 ≠ 3000 HALTS, always.
+diff --git a/engine/rl_after/rl_model.py b/engine/rl_after/rl_model.py
+index f7814a5..6296d05 100644
+--- a/engine/rl_after/rl_model.py
++++ b/engine/rl_after/rl_model.py
+@@ -1008,6 +1008,85 @@ else:
+ # the producer transforms. rl_export rebuilds its OWN shipped curve from pvc_curve artifacts keyed by the
+ # _ADOPTED intersection, so g['PVC']'s key-set change (if any) does not reach the board (verified: board-null).
+ PVC=_PVC2M
++# ===== #326 PER-DIVISION POOL PRICING (the N43 signed levels; directive #326 as amended by addenda 1-4).
++# Before this every pool entrant took ONE number — the ladder's pool slot. The signed data prices each intake
++# division at its own level and the rookie draft positionally, so the lookup has to happen per PLAYER, at the
++# site where a pool entrant's price resolves (unpl_eq / pedestal below), not on the ladder.
++#
++#   THE LEVELS ARE OWNER-SIGNED DATA. They are read verbatim from the curve artifact's pool_levels block and
++#   never recomputed here. The engine coerces them to int exactly as it already coerces pool_value into the
++#   ladder (:996, :991), so the pool slot and the per-division levels stay one kind of quantity.
++#   ND65+ IS A LAW, NOT A NUMBER: min(the signed K15 measurement, the ruled curve's pick 64) read off the
++#   LADDER IN FORCE at build time, so a curve re-derivation moves it with no edit to the signed block.
++#   NO SILENT FALLBACK: a row the engine classifies as pool whose division is outside the signed set halts
++#   and asks. That is the guard for a future pathway code (PSD or anything new), which must never take the
++#   single pool value by default.
++#   pool_value keeps its own job — the pool-wide level on the current basis, still the ladder's pool slot for
++#   the scaffold copies, the pick-pricing layer and the display bands — and NO player price reads it: the
++#   assert in _pick_level below makes a price that reaches the pool slot impossible rather than unlikely.
++_PL_DOC=json.load(open('pvc_curve_v2.json')).get('pool_levels')
++assert _PL_DOC, ('#326 HALT: pvc_curve_v2.json carries no pool_levels block — per-division pool pricing has '
++                 'no signed data to read, and pricing every division at one level is the thing this replaces.')
++_POOL_POS_FIELD=_PL_DOC['rd_position_field']
++_ND65=min(float(_PL_DOC['signed_nd65_plus']['measured_k15']),
++          float(_PVC2M[int(_PL_DOC['signed_nd65_plus']['cap_against_curve_pick'])]))
++_POOL_LEVELS={_k:int(float(_v)) for _k,_v in _PL_DOC['signed_flat'].items()}
++_POOL_LEVELS['ND65+']=int(_ND65)
++for _k,_v in _PL_DOC['signed_rd_positional'].items(): _POOL_LEVELS['RD:'+_k]=int(float(_v))
++def _pool_rd_position(p):
++    """The rookie draft's positional key. Named on ONE field so a wrong-field build is a one-word change
++    that the sweep below then catches, rather than a silent misprice of ~85 entrants."""
++    return GRP.get(p.get(_POOL_POS_FIELD)) or gfut(p)
++def pool_division(p):
++    """The signed intake division of a pool-classified entrant. Halts rather than defaulting."""
++    _t=p.get('type')
++    if _t=='RD': return 'RD:'+_pool_rd_position(p)
++    if _t=='ND':
++        _pk=p.get('pick') or 0
++        if _pk>ND_CURVE_LAST: return 'ND65+'
++        raise SystemExit('#326 HALT-AND-ASK: %s is a pool-classified national-draft row carrying pick %r. '
++                         'ND65+ is type ND at pick >= %d; a pickless or in-curve national row resolves to no '
++                         'signed division and must not take a default level.'%(p.get('player'),p.get('pick'),POOL_PICK))
++    if _t in _POOL_LEVELS: return _t
++    raise SystemExit('#326 HALT-AND-ASK: %s is classified pool by the engine but carries division type %r, '
++                     'which is not in the signed set %s. A new pathway code prices at no level until the '
++                     'owner signs one; it never takes the pool-wide value silently.'
++                     %(p.get('player'),_t,sorted(_POOL_LEVELS)))
++def pool_level(p): return _POOL_LEVELS[pool_division(p)]
++# THE WRONG-FIELD DISCRIMINATOR, over the whole store population rather than the priced board. The positional
++# key must be the engine's own settled future position; keyed on present_position it differs on 171 of the
++# rookie rows and on drafted_position on 181, so a wrong-field build fails here deterministically instead of
++# surviving three builds in four. Only 7 of the differing rows are on the board, which is why this sweep runs
++# over the store and not over the priced rows.
++_rd_field_bad=[p.get('player') for p in data if p.get('type')=='RD' and _pool_rd_position(p)!=gfut(p)]
++assert not _rd_field_bad, ('#326 HALT: the rookie-draft positional key reads %r, which disagrees with the '
++                           'engine\'s settled future position on %d row(s) (%s). The N43 positional set was '
++                           'measured on future_position; any other field misprices.'
++                           %(_POOL_POS_FIELD,len(_rd_field_bad),_rd_field_bad[:6]))
++# Every pool row resolves to a signed division AT BUILD TIME, so the halt above fires on the build rather than
++# on whichever price happens to be asked for first.
++_POOL_DIV_COUNT=_Cnt(pool_division(p) for p in data if p.get('_pool'))
++# The pool slot and the pool flag are the same set. This is what lets _pick_level below decide on the flag and
++# still be sure no player price can reach index POOL_PICK.
++_pool_slot_mismatch=[p.get('player') for p in data if (effpk(p)>=POOL_PICK)!=bool(p.get('_pool'))]
++assert not _pool_slot_mismatch, ('#326 HALT: %d row(s) sit at the pool slot without the pool flag or the '
++                                 'reverse (%s) — the per-division lookup and the ladder would disagree about '
++                                 'who is a pool entrant.'%(len(_pool_slot_mismatch),_pool_slot_mismatch[:6]))
++_MSD_CAVEAT=_PL_DOC['msd_completion_optimism_caveat']
++print('#326 POOL LEVELS (N43 signed, read verbatim; ND65+ = min(%.1f, curve[%d]=%d) = %d): %s'
++      %(float(_PL_DOC['signed_nd65_plus']['measured_k15']),ND_CURVE_LAST,_PVC2M[ND_CURVE_LAST],_POOL_LEVELS['ND65+'],
++        ' · '.join('%s %d%s'%(_k,_POOL_LEVELS[_k],' [MSD completion optimism %s]'%_MSD_CAVEAT if _k=='MSD' else '')
++                   for _k in sorted(_POOL_LEVELS))))
++print('#326 POOL POPULATION (engine classification, re-derived at build time): %s'
++      %(' · '.join('%s %d'%(_k,_POOL_DIV_COUNT[_k]) for _k in sorted(_POOL_DIV_COUNT))))
++def _pick_level(p,ep):
++    """The pick basis one player is priced from: his division's signed level if he is a pool entrant, the
++    national ladder otherwise. The assert is the pool_value isolation proof — after #326 no player price
++    reads the ladder's pool slot, and a lookup that tried would halt here instead of quietly pricing."""
++    if p.get('_pool'): return _POOL_LEVELS[pool_division(p)]
++    assert ep<=ND_CURVE_LAST, ('#326 HALT: %s is not a pool entrant yet resolves to pick %d, which reads the '
++                               'ladder\'s pool slot. No player price may read pool_value.'%(p.get('player'),ep))
++    return _PVC2M[min(ep,70)]
+ SEASON_PROG=_season_val('calendar_progress',0.58)   # CALENDAR progress from data/season_state.json (dynamic; R14/24=0.58). Was the frozen literal 0.58.
+ def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
+ def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick
+@@ -1069,7 +1148,7 @@ def brodie_sig(p):                      # Brodie role-reliability cut (ported on
+ def value(p,lens='bal'):
+     _pd={'balanced':'bal'}.get(lens,lens)   # LEG E: the POSTURE production dial. 'balanced'->'bal' (the exact byte-exact path); 'contender'/'rebuilder' price the SAME streams at their own discount d (weight-don't-gate); 'bal'/'now'/'fut' unchanged. Pedigree pedestals (unpl_eq/pedestal) are NOT re-discounted — a posture re-weights production STREAMS, not the pick pedestal.
+     ep=effpk(p); b=bandof(ep); decu=los_decay(p)
+-    unpl_eq=_PVC2M[min(ep,70)]*decu*debut_factor(p)   # JOB 2 (RL_PVC2): pickless unpl_eq reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
++    unpl_eq=_pick_level(p,ep)*decu*debut_factor(p)   # JOB 2 (RL_PVC2): pickless unpl_eq reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact. #326: a pool entrant reads his division's signed level, everyone else the national ladder
+     if p.get('_unplayed') and (debut(p)>AGE_REF or p.get('_pedonly')): return round(unpl_eq)   # LEG E: pedigree-only prospect has no production stream to re-weight => posture-invariant (lens_tilt retired)
+     g=gfut(p)   # settled future position drives pedigree/form-delta/out-tilt (matches peak_est); prod_floor stays present
+     if level_now(p) is None:                                          # 0-game but IN opportunity window (debut season+): P applies continuously (prospect-path RETIRED 2026-06-18); genuine pre-debut prospects hit the _unplayed branch above and keep pure pedigree
+@@ -1084,7 +1163,7 @@ def value(p,lens='bal'):
+         _sc={1:1.0,2:0.8,3:0.5,4:0.2}.get(2026-p['year'],0.0); relative=relative+_sc*(1.0-relative)
+     decay=max(0.0,1-(seasons(p)-1)/4.5)
+     decay_eff = decay if Pz is None else min(decay, Pz)   # v3.4: establishment-P only ever PULLS DOWN (min) on the pedigree track; established players P=1 -> min=decay, untouched
+-    pedestal = _PVC2M[min(ep,70)]*relative*surv*decay_eff   # JOB 3 (RL_PVC2): pedigree pedestal reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact
++    pedestal = _pick_level(p,ep)*relative*surv*decay_eff   # JOB 3 (RL_PVC2): pedigree pedestal reads the migrated curve; RL_PVC2=0 => _PVC2M is PVC => byte-exact. #326: same per-division pool basis as unpl_eq above
+     pf = prod_floor(p,_pd)                                # LEG E: demonstrated-floor at the posture dial (balanced=='bal'=byte-exact)
+     prod_full = max(prod_v, pf)                           # full production estimate: projection OR demonstrated-level floor, whichever is higher
+     if Pz is not None and PROD_GATE!='off':                # v3.4 PRODUCTION-GATING. fully_gated = P*production + (1-P)*floor. floor = pedestal ('full'/'blend') OR a games-weighted demonstrated floor ('fulldemo'/'blenddemo') so survivors who banked games aren't stripped to the bare pick. 'full*'=straight; 'blend*'=Luke's 2/3 toward fully-gated.
+diff --git a/ui/release_pick_curve.json b/ui/release_pick_curve.json
+index f58a5d7..bbde20c 100644
+--- a/ui/release_pick_curve.json
++++ b/ui/release_pick_curve.json
+@@ -1,5 +1,6 @@
+ {
+  "_doc": "#328 re-closure working substrate: pick curve payload df766dff (ladder sum 53536, pick64 185), file md5 f1cf148eefe933d72ca1d01498727d14, pool_value 237.2 from this derivation, per_entrant 999d24c8. curve_source_store_md5 MOVES to f1e8c9fe and stays the FULL 32 chars by the asymmetric stamp convention (E.5 finding 5) \u2014 this ladder is derived on the #323 corrected store, so the field would be false at the old value. Adoption remains the owner's separate click.",
++ "_pool_levels_note": "#326 installs the N43 signed per-division pool levels in the curve artifact beside pool_value. Mirrored here verbatim, exactly as pool_value is, so a drift between the artifact and this provenance contract is visible. pool_value itself is unchanged and keeps its own job; no player price reads it after #326.",
+  "_pool_value_adoption_note": "RE-STAMPED 528 -> 299 by the #274 adoption mop-up act (owner word 2026-07-30). The 30/7 rederivation moved the pool price; the release-active artifact engine/rl_after/pvc_curve_v2.json carries pool_value 299 and self-documents the move at stamp.prev_pool_value = 528. This file is a MIRROR of that artifact, and it was left at 528 when the adoption landed - a stale duplicate, not a second decision. The split_note below is preserved verbatim as the history of THE SPLIT, where 528 was correct; it describes the domain re-issue, not this value. Re-stamping this file moves its md5, so the FROZEN-RULER pin in engine/rl_after/one_source_selftest.py is re-pinned in the SAME commit. Curve source store and per_entrant are UNCHANGED - nothing was re-derived here.",
+  "adopted_at_round": 20,
+  "adopted_pathway": "RL_PVC2",
+@@ -8,9 +9,40 @@
+  "per_entrant_md5": "999d24c8",
+  "pick_curve_curve_md5": "df766dff",
+  "pick_curve_domain": "1-64 (national draft curve, 64 entries)",
+- "pick_curve_file_md5": "b7389fe4c9e160aab5589e7dbee8deb0",
++ "pick_curve_file_md5": "6394929eb22b19188016035ec4956e6a",
+  "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
+  "pool_index": 65,
++ "pool_levels": {
++  "_doc": "N43 SIGNED PER-DIVISION POOL LEVELS (owner words, filed #306 comment 5179992080; installed by directive #326 as amended by its addenda 1-4). VOR, K=15 toward the measured pool aggregate 235.8. These are owner-signed data: copied verbatim, never recomputed by the engine. The division key is the store's own 'type' field; ND65+ is type ND at pick >= 65. The rookie draft prices positionally on future_position (the field the N42b measurement was keyed on). Any row the engine classifies as pool whose type is outside this set halts and asks. pool_value above keeps its own job -- the pool-wide level on the current basis, still the ladder's pool slot for the scaffold copies, the pick-pricing layer and the display bands -- and no player price reads it.",
++  "k": 15,
++  "measured_pool_aggregate": 235.8,
++  "msd_completion_optimism_caveat": "+4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)",
++  "rd_division_level": 261.6,
++  "rd_position_field": "future_position",
++  "rd_positional_shrink_target": 262.2,
++  "signed_flat": {
++   "IRE": 133.4,
++   "MSD": 286.8,
++   "PDA": 194.3,
++   "PDN": 123.0,
++   "PDS": 145.0,
++   "SSP": 252.8,
++   "UNR": 103.7
++  },
++  "signed_nd65_plus": {
++   "_rule": "THE CAP IS A LAW, NOT A NUMBER: the price is min(measured_k15, the ruled curve's pick cap_against_curve_pick) resolved against the ladder in force AT BUILD TIME. A curve re-derivation moves it with no edit here.",
++   "cap_against_curve_pick": 64,
++   "measured_k15": 266.1
++  },
++  "signed_rd_positional": {
++   "KPD": 300.3,
++   "KPF": 216.0,
++   "MID": 294.8,
++   "RUCK": 282.5,
++   "SD": 246.9,
++   "SF": 231.5
++  }
++ },
+  "pool_value": 237.2,
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "split_note": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The contract is re-issued because the ADOPTED CURVE'S DOMAIN changed, not its values: the national curve now covers picks 1-64 and every selection past 64 enters the pool, valued by position with order of selection carrying no value. There is no price for pick 70. Values over 1-64 are BYTE-IDENTICAL to the superseded artifact; pool_value is that artifact's own value at index 65. No curve was refitted. A re-issue is correct here precisely because the contract exists to stop the curve moving SILENTLY - this move is ruled, declared, and recorded below.",

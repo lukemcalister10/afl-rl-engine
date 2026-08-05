@@ -1,0 +1,19 @@
+{
+ "added": [],
+ "base_ids": {
+  "band": "34faa865",
+  "engine": "15525b03",
+  "store": "f1e8c9fe"
+ },
+ "by_channel": {},
+ "cand_ids": {
+  "band": "34faa865",
+  "engine": "15525b03",
+  "store": "f1e8c9fe"
+ },
+ "common": 804,
+ "detail": [],
+ "dropped": [],
+ "held_gate": "PASS",
+ "movers": 0
+}

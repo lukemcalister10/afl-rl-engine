@@ -1,0 +1,14 @@
+L8 COMPLETENESS GATE — held-constant inputs (store, engine, band):
+  store    base f1e8c9fe  cand f1e8c9fe  OK
+  engine   base 15525b03  cand 15525b03  OK
+  band     base 34faa865  cand 34faa865  OK
+  -> only the curve and the year-zero surface differ; the cause set is COMPLETE.
+
+CANDIDATE BESIDE BASELINE  (both engine 15525b03 / store f1e8c9fe)
+  common 804 | added 0 | dropped 0 | MOVERS 0 (0.0%) | unchanged 804
+
+DOMINANT PRICING CHANNEL per mover (curve+surface move as one fitted pair):
+
+  every mover carries a channel; membership added/dropped: 0/0
+
+EVERY MOVER ATTRIBUTED to the landing curve+surface pair; no unnamed axis. PASS.

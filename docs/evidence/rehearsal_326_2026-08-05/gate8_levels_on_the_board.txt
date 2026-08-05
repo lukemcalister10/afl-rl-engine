@@ -1,0 +1,26 @@
+GATE 8 — the priced level per division on the built board (board 5d1e0709)
+signed  = the owner's N43 number, copied verbatim
+ladder  = as the engine carries it, int()-coerced exactly as pool_value is coerced into the ladder slot (:996)
+display = ladder / F  (F = 1.0524, the numeraire rebase the board applies to players)
+
+level       signed  ladder  display
+MSD          286.8     286      272   [MSD completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)]
+ND65+        185.0     185      176
+SSP          252.8     252      239
+PDA          194.3     194      184
+PDS          145.0     145      138
+IRE          133.4     133      126
+PDN          123.0     123      117
+UNR          103.7     103       98
+RD:KPD       300.3     300      285
+RD:MID       294.8     294      279
+RD:RUCK      282.5     282      268
+RD:SD        246.9     246      234
+RD:SF        231.5     231      219
+RD:KPF       216.0     216      205
+
+ND65+ is resolved as the LAW at build time: min(266.1, curve[64]=185) = 185.
+pool_value stays 237.2 in the artifact and in the ladder slot (int -> 237).
+
+NO entrant can be named against a level here: on live bytes no board price carries any of these
+levels (see HALT 1). The raw/display mapping above is therefore stated on the level itself.
