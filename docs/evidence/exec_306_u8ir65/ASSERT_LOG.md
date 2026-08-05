@@ -106,3 +106,17 @@ OpenBLAS **sha256 `05c9f9eb` byte-exact** → `preboot_assert.sh` as its own com
 **Two classifications, two reproductions of `fb9efdec`** — 55s / 76s. Every closure figure post-dates
 entry 2. On this environment `uptime` has now moved under this seat once; the outgoing seat saw it move
 five times in a day. It is not a formality.
+
+## CORRECTION TO THE CAPTURES TABLE ABOVE — appended, not edited in place
+
+The table headed "THE NINE CAPTURES" was true when written (arrival). **Twelve captures now stand,
+none overwritten.** Added since, all on this branch under `docs/evidence/exec_306_u8ir65/`:
+
+| # | md5 | what it is |
+|---|---|---|
+| 10 | `e6bc7e9d` | `L6_pass2_state.diff` — pass 2 (curve `b61c01b0`, surface `69571649`) |
+| 11 | `692b12ff` | `L6_pass3_state.diff` — pass 3, **the BOUND-EXHAUSTED state** the HALT was measured on |
+| 12 | **`96cb79b2`** | `L6_closure_state.diff` — **THE LIVE SUBSTRATE**, the adopted curve `01f27f02` + surface `ebc3d330` |
+
+Each carries a `.BASE` annotation written at generation. The nine-row table above is left standing as
+the arrival record rather than rewritten, per this file's own discipline.
