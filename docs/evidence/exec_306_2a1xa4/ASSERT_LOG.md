@@ -9,6 +9,7 @@ asserted on. A host label classifies nothing — only reproduced output bytes do
 | 1 | 2026-08-04 23:58 | `Xeon @2.80GHz` · stepping 7 · **up 0 min at session start** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (78s) | **FIT-CLASS** |
 | 2 | 2026-08-05 00:26 | `Xeon @2.80GHz` · stepping 7 · **up 4 min (container restarted)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (62s) | **FIT-CLASS, re-classified** |
 | 3 | 2026-08-05 01:46 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, third time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (53s) | **FIT-CLASS, re-classified** |
+| 4 | 2026-08-05 02:31 | `Xeon @2.80GHz` · stepping 7 · **up 1 min (container restarted, fourth time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (74s) | **FIT-CLASS, re-classified** |
 
 ## Entry 1 — the arrival assert
 
@@ -49,3 +50,18 @@ in this seat's filings was produced on a stale classification.
 Additionally, on the LENS substrate (engine `15525b03`, surface `b540833b`), `refit_v0surf.py --verify`
 reproduced the baked pin **`b540833b2e251631bf76aeec0040cc05`** in 98s — L-B's passing direction re-proven
 independently on this box, and a direct validation of the substrate the derivation consumed.
+
+## Entry 4 — before the separating run
+
+A **fourth** restart, between the pass-1 authorisation and the separating emit: `uptime` read **1 min**.
+Re-classified in full before the engine act — substrate round trip to `13b71c26` → pins 5/5 exact,
+OpenBLAS `05c9f9eb` byte-exact → preboot as its own command → bootstrap rc checked → fit-path assert
+**PASS in 74s**.
+
+**Four restarts, four classifications, four reproductions of `fb9efdec`** — 78s / 62s / 53s / 74s.
+
+Recorded for the cross-box picture: the incoming seam seat reported its own box **FAILING** this same
+old-lane assert (`969dba06`, a third distinct old-lane byte-pattern) while reproducing the redesigned
+lane's `b540833b` byte-identically. This box reproduces both. Two boxes, same CPU label, divergent on the
+old lane and in agreement on the new one — the old lane's machine-sensitivity is the defect the redesign
+was built to remove, and it is behaving exactly as the record says it does.

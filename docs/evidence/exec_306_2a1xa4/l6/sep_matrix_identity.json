@@ -1,0 +1,35 @@
+{
+ "FC_full_md5_binding": {
+  "asserted": true,
+  "engine_head": "15525b033f390d041a7858f47a30b48e",
+  "expected_boot_v0surf": "fb9efdec4d669d389fe3beef2bca3092",
+  "installed_v0surf_md5": "fb9efdec4d669d389fe3beef2bca3092",
+  "why": "sig 96d671c952c8 is IDENTICAL to the lens emit's; only the full md5 distinguishes them"
+ },
+ "compare_against": {
+  "lens_emit": "e1c62f8677e5714df1be4e91c960ec7c (surface b540833b, engine 15525b03)",
+  "old_lane_emit": "9c4bca53b738452739c353d94fe99928 (surface fb9efdec, engine 3c7b0c3c)"
+ },
+ "emit_seconds": 187,
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "matrix_md5": "9c4bca53b738452739c353d94fe99928",
+ "matrix_meta": {
+  "force_majeure": [
+   "paddy-mccartin",
+   "thomas-boyd"
+  ],
+  "n_records": 2646,
+  "nd_curve_last": 64,
+  "pool_pick": 65,
+  "slide_years": [
+   2013,
+   2014
+  ],
+  "store_md5": "81d24704",
+  "v0surf_frozen": true,
+  "v0surf_sig": "96d671c952c819fa64df0b5d1a402f1e"
+ },
+ "purpose": "difference against the pass-0 lens emit to isolate the SURFACE effect from the ENGINE effect",
+ "routing": "backup -> swap -> emit -> capture -> restore; PRE 2f8b4bd4",
+ "run": "SEPARATING \u2014 old surface fb9efdec under lens engine 15525b03"
+}

@@ -1,0 +1,32 @@
+=== 1 · THE TRUE MASS -- share of total basis VALUE by provenance ===
+  (the order's 5.931%% is a share of ROW COUNT; this is the share of VALUE)
+  provenance               rows   value (lens)      share      value (old)      share
+  concluded_realised        825       562107.5     54.74%         566723.0     54.63%
+  completed                 301       401347.9     39.08%         402811.6     38.83%
+  prior_fallback_thin        71        63422.6      6.18%          67884.9      6.54%
+  TOTAL                    1197      1026878.0    100.00%        1037419.5    100.00%
+
+  WHOLESALE-BELIEF MASS (value the model supplies outright, no career evidence behind it):
+     lens surface b540833b : 63422.6 of 1026878.0 = **6.18%** of the teaching signal by value
+     old  surface fb9efdec : 67884.9 of 1037419.5 = **6.54%**
+     against a COUNT share of 71/1197 = 5.931%% -- the value share is the quantity that matters
+
+=== 2 · THE LOWER BOUND on prior-shaping inside evidence-backed rows ===
+  how far a class's value moves when ONLY the surface moves. A floor, not the mass.
+  provenance               value (lens)    value (old)        delta    delta %
+  concluded_realised           562107.5       566723.0      -4615.5     -0.81%
+  completed                    401347.9       402811.6      -1463.7     -0.36%
+  prior_fallback_thin           63422.6        67884.9      -4462.3     -6.57%
+  TOTAL                       1026878.0      1037419.5     -10541.4     -1.02%
+
+  Evidence-backed rows only (concluded + completed, 1126 rows):
+     level moved 969534.6 -> 963455.4  = -0.63% on a surface change alone
+     => AT LEAST 0.63% of the evidence-backed level is prior-shaped. This is a FLOOR under one
+        particular surface perturbation, NOT the model-shaped fraction of the level.
+
+=== 3 · WHAT THIS DOES AND DOES NOT SETTLE ===
+  SETTLES  : the wholesale-belief mass by value (section 1) -- a true share, exactly measured.
+  SETTLES  : that the engine contributes nothing -- the separating run proved the matrix
+             byte-identical under both engines at a fixed surface, so section 2 is surface-only.
+  DOES NOT : quantify the prior's share INSIDE concluded/completed values. That needs a no-prior
+             pricing mode the engine does not have. Section 2 is a floor and is labelled one.
