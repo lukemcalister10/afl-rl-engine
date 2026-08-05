@@ -1,0 +1,3 @@
+  PASS G-Y0 NATIONAL CURVE 1-64 |comp-weighted mean V0 - curve| = 0.033% <= 2% HARD (n=1326 over 64 picks)
+  UNMEASURED  G-Y0 POOL leg: comp-weighted mean v0_start sits +113.993% vs the carried-over pool level 233 (n=763, mean 498.6). REPORTED, NOT GATED, and NOT a licence to move the level.
+       (G-Y0 owner-viewing per-pick residual curve: session_2026-07-17/legd_derivation/out/gy0_residual_curve_v2.json — REPORT-ONLY)
