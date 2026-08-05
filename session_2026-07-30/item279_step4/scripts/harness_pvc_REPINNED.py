@@ -1,5 +1,21 @@
 """#279 STEP-4 PROPAGATION re-pin of the four-fitter harness.
 
+RE-PINNED 2026-08-05 by the #328 RE-CLOSURE CONFIRMATION, one disclosed act under the owner's
+re-closure ruling (OPTION A, seam 5192164003). The ruling installed the corrected-store derived
+ladder `df766dff` as the adopted curve and ordered ONE confirmation derivation on the new pair, so
+the shipped v0surf signature moved again — the curve moved and the signature is curve-keyed — and
+the surface was re-fit through the one declared lane:
+
+  EXPECT_V0SURF  'aca37f9f0e24' -> 'af556bdca53d'   (surface e4215093 -> d594dc03)
+  EXPECT_STORE   'f1e8c9fe'     -> 'f1e8c9fe'       (UNCHANGED — the store did not move at this act)
+  EXPECT_N       1197           -> 1197             (RE-MEASURED on the confirmation matrix, never
+                                                     assumed)
+
+  Only the pvc leg of the signature moved at this pass (`28e8449b` -> `35b9b300`) while the roster leg
+  held at `31df8ae9` — the exact mirror of the store act, where the roster moved and the pvc held.
+  The full-md5 binding beside the signature stays regardless. Non-vacuity proven in BOTH directions
+  before the pins moved and again after; the asserts themselves are untouched.
+
 RE-PINNED 2026-08-05 by #328 STEP 3, the post-landing store act, on the seam's fire word
 (#328 comment 5191304112). This is the FIRST REAL MATRIX EMITTED since #306 L6 pass 3, and the
 pins below were a pass-3-era PREDICTION carried across the landing deliberately unmoved (the
@@ -176,7 +192,7 @@ import numpy as np
 
 # ---- the committed identity this panel is pinned to ----
 EXPECT_STORE = 'f1e8c9fe'
-EXPECT_V0SURF = 'aca37f9f0e24'   # re-pinned 2026-08-05 (#328 step 3, the corrected store); full chain in the header
+EXPECT_V0SURF = 'af556bdca53d'   # re-pinned 2026-08-05 (#328 re-closure confirmation); full chain in the header
                                  # NB: does NOT discriminate fb9efdec from b540833b — see the F-C block above
 EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-08-05, not assumed
 CLASS_CUT = 2022

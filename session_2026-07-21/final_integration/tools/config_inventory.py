@@ -182,6 +182,16 @@ CLASSIFICATION = {
   # ---- class C diagnostic/test/bake-tool/retired (off the canonical board-generation path) ------------
   'RL_WS':           ('C','diag', '/home/claude/rl_workspace/rl_after', 'refit_q97m workspace (bake tool only)'),
   'RL_BAKE_REFIT':   ('C','diag',  None,    'refit_q97m trigger (bake tool only; produced pickle md5-pinned)'),
+  # ---- the #306 L-A year-zero LENS LANE (classified 2026-08-05 by the #328 re-closure, on the owner's
+  #      ordered repair). All three reads live inside _build_v0_curve's REFIT branch (_merged_recover.py
+  #      L1390 `else:`), which a canonical build never enters: with the frozen surface present the build
+  #      takes the LOAD branch and performs no fit, so none of these is read on the board path. They are
+  #      bake-lane controls, exactly like RL_WS / RL_BAKE_REFIT above, and are classified with them.
+  #      They arrived on main with the #306 landing (dab9657) and were never classified, which failed
+  #      this gate fail-closed on every run since — the gate was right and the table was incomplete.
+  'RL_V0_LENS':      ('C','diag', '1',      'year-zero anchored-lens kill-switch; read ONLY in the declared refit lane (_merged_recover.py:1393, inside the RL_V0SURF_REFIT branch), never on a canonical board build'),
+  'RL_LENS_BASIS':   ('C','diag',  None,    'path override for the DECLARED lens-basis input (structural_basis_279.json); refit lane only. Default path is committed at docs/evidence/exec_306_zlaarm/basis/, and the artifact is reproducible byte-exact from its own emitter, whose two #279 sources are md5-pinned inside it'),
+  'RL_LANE_EXPECT':  ('C','diag',  None,    'path override for the recorded lane-expectation file; refit lane only. Absent file yields INAPPLICABLE and asserts nothing'),
   # retired: now pinned literals in source; only comment mentions remain (guarded out by the scanner)
   'RL_ABS_LREF':     ('C','diag',  None,    'RETIRED -> pinned _ABS_L_REF=75.0 (comment-only; no live read)'),
   'RL_ABS_CAP':      ('C','diag',  None,    'RETIRED -> pinned _ABS_CAP=0.20 (comment-only; no live read)'),

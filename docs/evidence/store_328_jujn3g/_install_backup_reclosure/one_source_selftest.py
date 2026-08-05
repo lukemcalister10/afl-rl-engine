@@ -487,7 +487,7 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='5b7c108c230b9afc18089a8db0aeb650'   # RE-PINNED by the #274 adoption mop-up act (owner word
+    _contract_md5='0ed45eccaeaca51c502e1584fe831f49'   # RE-PINNED by the #274 adoption mop-up act (owner word
     # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
     # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
     # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
@@ -496,8 +496,8 @@ if _pvc2_on:
     # curve's DOMAIN went 1-99 -> 1-64 + pool. Values over 1-64 are byte-identical; that pin moved because the
     # contract file records the new domain, the pool index and the supersession. Curve SOURCE store and
     # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins MOVE in this commit.
-    _curve_source_store='f1e8c9fed35462536d00add604f69a3f'
-    _per_entrant_md5='999d24c8'
+    _curve_source_store='81d2470440a80f72afea4405e94338c5'
+    _per_entrant_md5='557a53db'
     if not _curve_contract_path or not os.path.exists(_curve_contract_path):
         check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
     else:

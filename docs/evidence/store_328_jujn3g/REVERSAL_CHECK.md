@@ -1,5 +1,11 @@
 # THE REVERSAL-CONDITION CHECK — **HALT AND REPORT.** The closure does NOT hold on the corrected store.
 
+> **RULED SINCE.** The owner took this measurement and answered it with OPTION A on 2026-08-05
+> (seam 5192164003): the derived ladder `df766dff` is ADOPTED as the ruled curve, superseding
+> `01f27f02`, and the reversal condition re-anchors to it unchanged in terms. The re-derivation on the
+> new pair then came back **within ±1 on every pick — the closure HOLDS.** See `RECLOSURE.md`.
+> This file is the measurement that produced the ruling, kept exactly as filed.
+
 **#328 step 4, run under closure ruling [#306 5188042722] term 3. Measured, not predicted. The derived
 ladder was NOT installed, and is not installed by this filing in either outcome — this is a check, not
 a pass.** The decision the check re-opens returns to the owner through the seam.

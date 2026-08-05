@@ -1,12 +1,17 @@
-# #328 — THE POST-LANDING STORE ACT. Steps 1–3 executed. **HALTED AT STEP 4.**
+# #328 — THE POST-LANDING STORE ACT. Steps 1–3 executed. Halted at step 4; **RESUMED on the owner's ruling.**
+
+> **STATUS: the step-4 halt was ruled on and the act is COMPLETE.** The owner's re-closure ruling of
+> 2026-08-05 (OPTION A, seam 5192164003) adopted the corrected-store ladder. See **`RECLOSURE.md`** for
+> the install, the surface re-fit, the confirmation check (which HOLDS), steps 5–7 and the two folded-in
+> repairs. This file is the record of steps 1–3 and the halt, kept as written.
 
 Seat `jujn3g`, 2026-08-05, on the seam's fire word ([#328 comment 5191304112](https://github.com/lukemcalister10/afl-rl-engine/issues/328#issuecomment-5191304112)),
 on landed main `dab9657`, on a box classified FIT-CLASS before any act (`BOX_CLASS.md`).
 
-**Read the halt first: `REVERSAL_CHECK.md`.** The reversal condition does not hold on the corrected
-store — five picks move two board points where the tolerance is one — so the closure re-opens and the
-decision returns to the owner. Steps 5, 6 and 7 were **not executed**. This act is not merge-ready on
-its own acceptance set, and says so rather than presenting a partial run as a finished one.
+**Read the halt first: `REVERSAL_CHECK.md`.** The reversal condition did not hold on the corrected
+store — five picks moved two board points where the tolerance is one — so the closure re-opened and the
+decision returned to the owner. At the time of writing, steps 5, 6 and 7 were **not executed** and this
+act was not merge-ready. **The owner has since ruled (OPTION A) and the act resumed — `RECLOSURE.md`.**
 
 ---
 
@@ -61,7 +66,9 @@ the contract itself uses it.
 
 **Deliberately not moved, each for a stated reason:** `ui/release_pick_curve.json`
 `curve_source_store_md5` and its `one_source_selftest.py` FROZEN-RULER assert stay at `81d24704` — the
-field records the store the ruled curve was **derived on**, which remains true. `data/release_lineage.json`
+field records the store the ruled curve was **derived on**, which remains true *at this step*. (It stops
+being true at the re-closure, where the adopted ladder becomes one derived on the corrected store, and
+the field MOVES there — see `RECLOSURE.md` §1.) `data/release_lineage.json`
 is sealed history. `data/rl_build/*.srcmd5` and the `ui/data` bundles are board-derived and would move
 at a board rebuild, which this act never reached.
 
@@ -191,7 +198,7 @@ time, so nothing depends on either being carried as a constant.
 
 ## STEP 4 — **HALT.** See `REVERSAL_CHECK.md`.
 
-## STEPS 5, 6, 7 — NOT EXECUTED
+## STEPS 5, 6, 7 — NOT EXECUTED AT THE TIME OF THE HALT (executed after the ruling; see `RECLOSURE.md`)
 
 The order is strictly serial and step 4 says halt. No entrant structure was re-sealed, no gate was run
 in anger, no board was rebuilt, no mover was attributed, and no text fossil was touched — including the

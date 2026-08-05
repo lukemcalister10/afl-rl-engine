@@ -21,7 +21,7 @@
  },
  "as_of_round": 20,
  "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
- "contract_sha256": "ea560e55b2bb364c56736ce36d42b2a25f3d59f7f2e940597d9a50262215b18d",
+ "contract_sha256": "588c463cbaa2eea903579f413191c1df1787c9fed64974253206003459e4b983",
  "f5_entrant_reconciliation": {
   "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)",
   "entrant_layer_pvc": 77611,
@@ -54,10 +54,10 @@
   "present_value_total": 767198
  },
  "pvc_provenance": {
-  "_note": "#328 re-closure (owner word 2026-08-05, OPTION A): the corrected-store derived ladder installed as the adopted ruled curve from surface e4215093 on store f1e8c9fe. Adoption remains the owner's separate click.",
+  "_note": "#306 L6 closure: curve 2 installed as working substrate from surface b683e2ec. Bake HELD; EXECUTION word WITHHELD.",
   "adopted_pathway": "RL_PVC2",
   "curve_file": "pvc_curve_v2.json",
-  "curve_payload_md5": "df766dff",
+  "curve_payload_md5": "01f27f02",
   "numeraire_pin1": 3000
  },
  "release_version": "v2.11-final-rc1-PROVISIONAL",

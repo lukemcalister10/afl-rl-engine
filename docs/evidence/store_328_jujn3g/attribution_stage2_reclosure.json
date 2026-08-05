@@ -1,0 +1,6514 @@
+{
+ "added": [],
+ "base_ids": {
+  "band": "34faa865",
+  "engine": "15525b03",
+  "store": "f1e8c9fe"
+ },
+ "by_channel": {
+  "pool_levels": 30,
+  "ruled_curve": 362,
+  "year_zero_lens": 257
+ },
+ "cand_ids": {
+  "band": "34faa865",
+  "engine": "15525b03",
+  "store": "f1e8c9fe"
+ },
+ "common": 804,
+ "detail": [
+  {
+   "channel": "ruled_curve",
+   "delta": 26,
+   "games": 73,
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "pk": 1,
+   "v_base": 1879,
+   "v_cand": 1905
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 18,
+   "games": 185,
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "pk": 9,
+   "v_base": 1296,
+   "v_cand": 1314
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 163,
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "pk": 5,
+   "v_base": 935,
+   "v_cand": 948
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 219,
+   "key": "adam-saad",
+   "name": "Adam Saad",
+   "pk": 19,
+   "v_base": 455,
+   "v_cand": 462
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 0,
+   "key": "adam-sweid",
+   "name": "Adam Sweid",
+   "pk": 25,
+   "v_base": 422,
+   "v_cand": 421
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 263,
+   "key": "adam-treloar",
+   "name": "Adam Treloar",
+   "pk": 14,
+   "v_base": 934,
+   "v_cand": 947
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "aiden-riddle",
+   "name": "Aiden Riddle",
+   "pk": 2,
+   "v_base": 199,
+   "v_cand": 201
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 46,
+   "key": "alex-davies",
+   "name": "Alex Davies",
+   "pk": 17,
+   "v_base": 415,
+   "v_cand": 422
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 219,
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "pk": 40,
+   "v_base": 294,
+   "v_cand": 298
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "alex-van-wyk",
+   "name": "Alex Van Wyk",
+   "pk": 14,
+   "v_base": 258,
+   "v_cand": 263
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 197,
+   "key": "aliir-aliir",
+   "name": "Aliir Aliir",
+   "pk": 44,
+   "v_base": 781,
+   "v_cand": 792
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 23,
+   "games": 18,
+   "key": "alix-tauru",
+   "name": "Alix Tauru",
+   "pk": 10,
+   "v_base": 1644,
+   "v_cand": 1667
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 43,
+   "games": 189,
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "pk": 2,
+   "v_base": 3101,
+   "v_cand": 3144
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 14,
+   "games": 196,
+   "key": "andrew-mcgrath",
+   "name": "Andrew McGrath",
+   "pk": 1,
+   "v_base": 983,
+   "v_cand": 997
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 11,
+   "key": "angus-anderson",
+   "name": "Angus Anderson",
+   "pk": 57,
+   "v_base": 156,
+   "v_cand": 158
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 11,
+   "games": 17,
+   "key": "angus-clarke",
+   "name": "Angus Clarke",
+   "pk": 39,
+   "v_base": 735,
+   "v_cand": 746
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 19,
+   "key": "angus-hastie",
+   "name": "Angus Hastie",
+   "pk": 33,
+   "v_base": 284,
+   "v_cand": 289
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 46,
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "pk": 18,
+   "v_base": 744,
+   "v_cand": 754
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 16,
+   "games": 72,
+   "key": "anthony-caminiti",
+   "name": "Anthony Caminiti",
+   "pk": null,
+   "v_base": 1043,
+   "v_cand": 1059
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 22,
+   "key": "archer-day-wicks",
+   "name": "Archer Day-Wicks",
+   "pk": 1,
+   "v_base": 594,
+   "v_cand": 602
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 20,
+   "key": "archer-reid",
+   "name": "Archer Reid",
+   "pk": 30,
+   "v_base": 695,
+   "v_cand": 704
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "archie-ludowyke",
+   "name": "Archie Ludowyke",
+   "pk": 50,
+   "v_base": 180,
+   "v_cand": 181
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 17,
+   "key": "archie-may",
+   "name": "Archie May",
+   "pk": 6,
+   "v_base": 422,
+   "v_cand": 429
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 114,
+   "key": "archie-perkins",
+   "name": "Archie Perkins",
+   "pk": 9,
+   "v_base": 231,
+   "v_cand": 235
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 70,
+   "games": 44,
+   "key": "archie-roberts",
+   "name": "Archie Roberts",
+   "pk": 54,
+   "v_base": 4895,
+   "v_cand": 4965
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 32,
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "pk": 43,
+   "v_base": 87,
+   "v_cand": 89
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "asher-eastham",
+   "name": "Asher Eastham",
+   "pk": 7,
+   "v_base": 177,
+   "v_cand": 180
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 13,
+   "key": "ashton-moir",
+   "name": "Ashton Moir",
+   "pk": 29,
+   "v_base": 270,
+   "v_cand": 274
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 32,
+   "games": 195,
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "pk": 45,
+   "v_base": 2261,
+   "v_cand": 2293
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 33,
+   "games": 79,
+   "key": "bailey-humphrey",
+   "name": "Bailey Humphrey",
+   "pk": 6,
+   "v_base": 2316,
+   "v_cand": 2349
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 17,
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald",
+   "pk": 51,
+   "v_base": 145,
+   "v_cand": 147
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 94,
+   "games": 144,
+   "key": "bailey-smith",
+   "name": "Bailey Smith",
+   "pk": 7,
+   "v_base": 6597,
+   "v_cand": 6691
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 187,
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "pk": 48,
+   "v_base": 615,
+   "v_cand": 623
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 35,
+   "games": 102,
+   "key": "bailey-williams-wc",
+   "name": "Bailey J. Williams",
+   "pk": 35,
+   "v_base": 2376,
+   "v_cand": 2411
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 2,
+   "key": "balyn-o-brien",
+   "name": "Balyn O'Brien",
+   "pk": null,
+   "v_base": 337,
+   "v_cand": 343
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 188,
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "pk": 31,
+   "v_base": 157,
+   "v_cand": 159
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 20,
+   "games": 6,
+   "key": "beau-addinsall",
+   "name": "Beau Addinsall",
+   "pk": 18,
+   "v_base": 1415,
+   "v_cand": 1435
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 114,
+   "key": "beau-mccreery",
+   "name": "Beau McCreery",
+   "pk": 46,
+   "v_base": 129,
+   "v_cand": 130
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 177,
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "pk": 4,
+   "v_base": 211,
+   "v_cand": 214
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "ben-camporeale",
+   "name": "Ben Camporeale",
+   "pk": 43,
+   "v_base": 261,
+   "v_cand": 262
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 180,
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "pk": 24,
+   "v_base": 315,
+   "v_cand": 319
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 139,
+   "key": "ben-king",
+   "name": "Ben King",
+   "pk": 6,
+   "v_base": 244,
+   "v_cand": 248
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 14,
+   "games": 86,
+   "key": "ben-miller",
+   "name": "Ben Miller",
+   "pk": 62,
+   "v_base": 974,
+   "v_cand": 988
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "ben-murphy",
+   "name": "Ben Murphy",
+   "pk": null,
+   "v_base": 276,
+   "v_cand": 279
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "benny-barrett",
+   "name": "Benny Barrett",
+   "pk": null,
+   "v_base": 140,
+   "v_cand": 143
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 5,
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "pk": 42,
+   "v_base": 263,
+   "v_cand": 264
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 11,
+   "key": "billy-dowling",
+   "name": "Billy Dowling",
+   "pk": 43,
+   "v_base": 141,
+   "v_cand": 143
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 1,
+   "games": 93,
+   "key": "billy-frampton",
+   "name": "Billy Frampton",
+   "pk": 74,
+   "v_base": 59,
+   "v_cand": 60
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 10,
+   "games": 15,
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "pk": 34,
+   "v_base": 801,
+   "v_cand": 811
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 193,
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "pk": 19,
+   "v_base": 157,
+   "v_cand": 159
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 217,
+   "key": "blake-hardwick",
+   "name": "Blake Hardwick",
+   "pk": 44,
+   "v_base": 525,
+   "v_cand": 532
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 47,
+   "key": "blake-howes",
+   "name": "Blake Howes",
+   "pk": 39,
+   "v_base": 261,
+   "v_cand": 265
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 0,
+   "key": "blake-thredgold",
+   "name": "Blake Thredgold",
+   "pk": 26,
+   "v_base": 374,
+   "v_cand": 373
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 16,
+   "games": 22,
+   "key": "bo-allan",
+   "name": "Bo Allan",
+   "pk": 16,
+   "v_base": 1153,
+   "v_cand": 1169
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 56,
+   "games": 68,
+   "key": "bodhi-uwland",
+   "name": "Bodhi Uwland",
+   "pk": null,
+   "v_base": 3961,
+   "v_cand": 4017
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 4,
+   "key": "bodie-ryan",
+   "name": "Bodie Ryan",
+   "pk": 46,
+   "v_base": 264,
+   "v_cand": 268
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 17,
+   "games": 296,
+   "key": "bradley-hill",
+   "name": "Bradley Hill",
+   "pk": 42,
+   "v_base": 1151,
+   "v_cand": 1168
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 94,
+   "key": "brady-hough",
+   "name": "Brady Hough",
+   "pk": 31,
+   "v_base": 286,
+   "v_cand": 290
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 96,
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "pk": 5,
+   "v_base": 310,
+   "v_cand": 315
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 67,
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "pk": 52,
+   "v_base": 65,
+   "v_cand": 66
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 1,
+   "games": 94,
+   "key": "brandon-zerk-thatcher",
+   "name": "Brandon Zerk-Thatcher",
+   "pk": 65,
+   "v_base": 62,
+   "v_cand": 63
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 14,
+   "games": 48,
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "pk": 26,
+   "v_base": 980,
+   "v_cand": 994
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 125,
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini",
+   "pk": 20,
+   "v_base": 182,
+   "v_cand": 184
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 246,
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard",
+   "pk": 30,
+   "v_base": 492,
+   "v_cand": 500
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 150,
+   "key": "brennan-cox",
+   "name": "Brennan Cox",
+   "pk": 41,
+   "v_base": 260,
+   "v_cand": 264
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 121,
+   "key": "brent-daniels",
+   "name": "Brent Daniels",
+   "pk": 27,
+   "v_base": 1212,
+   "v_cand": 1231
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 65,
+   "games": 260,
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy",
+   "pk": 22,
+   "v_base": 4582,
+   "v_cand": 4647
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 68,
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "pk": 17,
+   "v_base": 583,
+   "v_cand": 591
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 2,
+   "games": 60,
+   "key": "buku-khamis",
+   "name": "Buku Khamis",
+   "pk": null,
+   "v_base": 147,
+   "v_cand": 149
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 25,
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "pk": 24,
+   "v_base": 447,
+   "v_cand": 453
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 234,
+   "key": "caleb-daniel",
+   "name": "Caleb Daniel",
+   "pk": 46,
+   "v_base": 1338,
+   "v_cand": 1357
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 2,
+   "key": "caleb-lewis",
+   "name": "Caleb Lewis",
+   "pk": 13,
+   "v_base": 141,
+   "v_cand": 143
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "caleb-may",
+   "name": "Caleb May",
+   "pk": 9,
+   "v_base": 258,
+   "v_cand": 263
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 71,
+   "games": 143,
+   "key": "caleb-serong",
+   "name": "Caleb Serong",
+   "pk": 8,
+   "v_base": 5047,
+   "v_cand": 5118
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 52,
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "pk": 7,
+   "v_base": 1494,
+   "v_cand": 1516
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 192,
+   "key": "callum-mills",
+   "name": "Callum Mills",
+   "pk": 3,
+   "v_base": 2088,
+   "v_cand": 2117
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 50,
+   "games": 174,
+   "key": "callum-wilkie",
+   "name": "Callum Wilkie",
+   "pk": 1,
+   "v_base": 3605,
+   "v_cand": 3655
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 31,
+   "key": "calsher-dear",
+   "name": "Calsher Dear",
+   "pk": 56,
+   "v_base": 958,
+   "v_cand": 971
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 28,
+   "games": 63,
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "pk": 7,
+   "v_base": 1954,
+   "v_cand": 1982
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 3,
+   "key": "cameron-nairn",
+   "name": "Cameron Nairn",
+   "pk": 20,
+   "v_base": 637,
+   "v_cand": 642
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 186,
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "pk": 1,
+   "v_base": 706,
+   "v_cand": 716
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 162,
+   "key": "cameron-zurhaar",
+   "name": "Cameron Zurhaar",
+   "pk": 9,
+   "v_base": 94,
+   "v_cand": 95
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 39,
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser",
+   "pk": 14,
+   "v_base": 289,
+   "v_cand": 294
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 12,
+   "key": "campbell-gray",
+   "name": "Campbell Gray",
+   "pk": 15,
+   "v_base": 180,
+   "v_cand": 182
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 5,
+   "key": "campbell-lake",
+   "name": "Campbell Lake",
+   "pk": 7,
+   "v_base": 153,
+   "v_cand": 156
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 52,
+   "games": 127,
+   "key": "chad-warner",
+   "name": "Chad Warner",
+   "pk": 38,
+   "v_base": 3649,
+   "v_cand": 3701
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 141,
+   "key": "charlie-ballard",
+   "name": "Charlie Ballard",
+   "pk": 42,
+   "v_base": 45,
+   "v_cand": 46
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 3,
+   "key": "charlie-banfield",
+   "name": "Charlie Banfield",
+   "pk": 41,
+   "v_base": 637,
+   "v_cand": 643
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 273,
+   "key": "charlie-cameron",
+   "name": "Charlie Cameron",
+   "pk": 6,
+   "v_base": 188,
+   "v_cand": 191
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 66,
+   "key": "charlie-comben",
+   "name": "Charlie Comben",
+   "pk": 31,
+   "v_base": 834,
+   "v_cand": 847
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 20,
+   "games": 167,
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "pk": 12,
+   "v_base": 1429,
+   "v_cand": 1449
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 2,
+   "key": "charlie-edwards",
+   "name": "Charlie Edwards",
+   "pk": 21,
+   "v_base": 725,
+   "v_cand": 732
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "charlie-nicholls",
+   "name": "Charlie Nicholls",
+   "pk": 34,
+   "v_base": 209,
+   "v_cand": 210
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 5,
+   "key": "charlie-west",
+   "name": "Charlie West",
+   "pk": 50,
+   "v_base": 406,
+   "v_cand": 411
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 7,
+   "key": "chris-scerri",
+   "name": "Chris Scerri",
+   "pk": null,
+   "v_base": 335,
+   "v_cand": 340
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 12,
+   "games": 23,
+   "key": "christian-moraes",
+   "name": "Christian Moraes",
+   "pk": 38,
+   "v_base": 915,
+   "v_cand": 927
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 37,
+   "games": 229,
+   "key": "christian-petracca",
+   "name": "Christian Petracca",
+   "pk": 2,
+   "v_base": 2556,
+   "v_cand": 2593
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 204,
+   "key": "christian-salem",
+   "name": "Christian Salem",
+   "pk": 9,
+   "v_base": 419,
+   "v_cand": 426
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "cillian-bourke",
+   "name": "Cillian Bourke",
+   "pk": null,
+   "v_base": 320,
+   "v_cand": 325
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "cillian-burke",
+   "name": "Cillian Burke",
+   "pk": null,
+   "v_base": 85,
+   "v_cand": 86
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 16,
+   "key": "clay-hall",
+   "name": "Clay Hall",
+   "pk": 38,
+   "v_base": 333,
+   "v_cand": 335
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 34,
+   "games": 224,
+   "key": "clayton-oliver",
+   "name": "Clayton Oliver",
+   "pk": 4,
+   "v_base": 2476,
+   "v_cand": 2510
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 4,
+   "key": "cody-angove",
+   "name": "Cody Angove",
+   "pk": 24,
+   "v_base": 511,
+   "v_cand": 510
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 4,
+   "key": "cody-curtin",
+   "name": "Cody Curtin",
+   "pk": 43,
+   "v_base": 573,
+   "v_cand": 581
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 82,
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "pk": 15,
+   "v_base": 155,
+   "v_cand": 157
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 61,
+   "games": 58,
+   "key": "colby-mckercher",
+   "name": "Colby McKercher",
+   "pk": 2,
+   "v_base": 4297,
+   "v_cand": 4358
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 67,
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "pk": 9,
+   "v_base": 279,
+   "v_cand": 284
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 33,
+   "games": 136,
+   "key": "connor-idun",
+   "name": "Connor Idun",
+   "pk": 61,
+   "v_base": 2364,
+   "v_cand": 2397
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 40,
+   "games": 109,
+   "key": "connor-macdonald",
+   "name": "Connor MacDonald",
+   "pk": 26,
+   "v_base": 2788,
+   "v_cand": 2828
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 41,
+   "games": 45,
+   "key": "connor-o-sullivan",
+   "name": "Connor O'Sullivan",
+   "pk": 11,
+   "v_base": 2941,
+   "v_cand": 2982
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 41,
+   "games": 152,
+   "key": "connor-rozee",
+   "name": "Connor Rozee",
+   "pk": 5,
+   "v_base": 2838,
+   "v_cand": 2879
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 3,
+   "games": 130,
+   "key": "conor-nash",
+   "name": "Conor Nash",
+   "pk": null,
+   "v_base": 237,
+   "v_cand": 240
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 20,
+   "games": 11,
+   "key": "cooper-duff-tytler",
+   "name": "Cooper Duff-Tytler",
+   "pk": 4,
+   "v_base": 1459,
+   "v_cand": 1479
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 17,
+   "key": "cooper-harvey",
+   "name": "Cooper Harvey",
+   "pk": 56,
+   "v_base": 544,
+   "v_cand": 551
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 19,
+   "games": 25,
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "pk": 20,
+   "v_base": 1344,
+   "v_cand": 1363
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 15,
+   "games": 28,
+   "key": "cooper-lord",
+   "name": "Cooper Lord",
+   "pk": 9,
+   "v_base": 1088,
+   "v_cand": 1103
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 88,
+   "key": "cooper-sharman",
+   "name": "Cooper Sharman",
+   "pk": 18,
+   "v_base": 534,
+   "v_cand": 542
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 28,
+   "games": 22,
+   "key": "cooper-trembath",
+   "name": "Cooper Trembath",
+   "pk": 9,
+   "v_base": 2006,
+   "v_cand": 2034
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 83,
+   "key": "corey-durdin",
+   "name": "Corey Durdin",
+   "pk": 39,
+   "v_base": 47,
+   "v_cand": 48
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 17,
+   "games": 208,
+   "key": "dan-houston",
+   "name": "Dan Houston",
+   "pk": 30,
+   "v_base": 1156,
+   "v_cand": 1173
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 1,
+   "key": "daniel-annable",
+   "name": "Daniel Annable",
+   "pk": 6,
+   "v_base": 1415,
+   "v_cand": 1422
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 34,
+   "games": 44,
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "pk": 8,
+   "v_base": 2430,
+   "v_cand": 2464
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 217,
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "pk": 25,
+   "v_base": 147,
+   "v_cand": 149
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 218,
+   "key": "daniel-rioli",
+   "name": "Daniel Rioli",
+   "pk": 15,
+   "v_base": 634,
+   "v_cand": 642
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 23,
+   "games": 52,
+   "key": "daniel-turner",
+   "name": "Daniel Turner",
+   "pk": 20,
+   "v_base": 1586,
+   "v_cand": 1609
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 17,
+   "games": 25,
+   "key": "dante-visentini",
+   "name": "Dante Visentini",
+   "pk": 56,
+   "v_base": 1247,
+   "v_cand": 1264
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 240,
+   "key": "darcy-byrne-jones",
+   "name": "Darcy Byrne-Jones",
+   "pk": 50,
+   "v_base": 651,
+   "v_cand": 660
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 138,
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "pk": 48,
+   "v_base": 1376,
+   "v_cand": 1395
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 138,
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "pk": 12,
+   "v_base": 864,
+   "v_cand": 875
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 37,
+   "key": "darcy-jones",
+   "name": "Darcy Jones",
+   "pk": 21,
+   "v_base": 1342,
+   "v_cand": 1361
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 199,
+   "key": "darcy-moore",
+   "name": "Darcy Moore",
+   "pk": 8,
+   "v_base": 149,
+   "v_cand": 151
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 179,
+   "key": "darcy-parish",
+   "name": "Darcy Parish",
+   "pk": 5,
+   "v_base": 561,
+   "v_cand": 568
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 54,
+   "games": 102,
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "pk": 16,
+   "v_base": 3814,
+   "v_cand": 3868
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 48,
+   "games": 59,
+   "key": "darcy-wilson",
+   "name": "Darcy Wilson",
+   "pk": 18,
+   "v_base": 3408,
+   "v_cand": 3456
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 314,
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "pk": 38,
+   "v_base": 1027,
+   "v_cand": 1042
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 51,
+   "key": "deven-robertson",
+   "name": "Deven Robertson",
+   "pk": 22,
+   "v_base": 179,
+   "v_cand": 181
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 251,
+   "key": "dion-prestia",
+   "name": "Dion Prestia",
+   "pk": 9,
+   "v_base": 353,
+   "v_cand": 357
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 144,
+   "key": "dougal-howard",
+   "name": "Dougal Howard",
+   "pk": 56,
+   "v_base": 47,
+   "v_cand": 48
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 17,
+   "games": 144,
+   "key": "dylan-moore",
+   "name": "Dylan Moore",
+   "pk": 66,
+   "v_base": 1199,
+   "v_cand": 1216
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 21,
+   "games": 4,
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson",
+   "pk": 5,
+   "v_base": 1659,
+   "v_cand": 1680
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 100,
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "pk": 5,
+   "v_base": 406,
+   "v_cand": 411
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 37,
+   "games": 11,
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "pk": 13,
+   "v_base": 2604,
+   "v_cand": 2641
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "eamonn-armstrong",
+   "name": "Eamonn Armstrong",
+   "pk": null,
+   "v_base": 179,
+   "v_cand": 181
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 221,
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "pk": 54,
+   "v_base": 880,
+   "v_cand": 893
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 54,
+   "games": 166,
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "pk": 16,
+   "v_base": 3863,
+   "v_cand": 3917
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 11,
+   "games": 29,
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "pk": 19,
+   "v_base": 790,
+   "v_cand": 801
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 40,
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett",
+   "pk": 14,
+   "v_base": 754,
+   "v_cand": 764
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 47,
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands",
+   "pk": 7,
+   "v_base": 716,
+   "v_cand": 727
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 17,
+   "games": 22,
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas",
+   "pk": 5,
+   "v_base": 1279,
+   "v_cand": 1296
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 50,
+   "key": "elliot-himmelberg",
+   "name": "Elliott Himmelberg",
+   "pk": 51,
+   "v_base": 46,
+   "v_cand": 47
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 229,
+   "key": "elliot-yeo",
+   "name": "Elliot Yeo",
+   "pk": 36,
+   "v_base": 205,
+   "v_cand": 208
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 83,
+   "games": 110,
+   "key": "errol-gulden",
+   "name": "Errol Gulden",
+   "pk": 34,
+   "v_base": 5924,
+   "v_cand": 6007
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 36,
+   "key": "ethan-read",
+   "name": "Ethan Read",
+   "pk": 9,
+   "v_base": 961,
+   "v_cand": 974
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 15,
+   "key": "ewan-mackinlay",
+   "name": "Ewan Mackinlay",
+   "pk": 10,
+   "v_base": 39,
+   "v_cand": 40
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 86,
+   "games": 90,
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan",
+   "pk": 3,
+   "v_base": 6046,
+   "v_cand": 6132
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 51,
+   "games": 37,
+   "key": "finn-o-sullivan",
+   "name": "Finn O'Sullivan",
+   "pk": 2,
+   "v_base": 3600,
+   "v_cand": 3651
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 13,
+   "key": "finnbar-maley",
+   "name": "Finnbar Maley",
+   "pk": 2,
+   "v_base": 260,
+   "v_cand": 265
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 1,
+   "key": "flynn-riley",
+   "name": "Flynn Riley",
+   "pk": 4,
+   "v_base": 290,
+   "v_cand": 295
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 61,
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "pk": 40,
+   "v_base": 353,
+   "v_cand": 358
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "fred-rodriguez",
+   "name": "Fred Rodriguez",
+   "pk": 1,
+   "v_base": 391,
+   "v_cand": 395
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 23,
+   "games": 216,
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "pk": 32,
+   "v_base": 1724,
+   "v_cand": 1747
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 4,
+   "key": "george-stevens",
+   "name": "George Stevens",
+   "pk": 58,
+   "v_base": 329,
+   "v_cand": 333
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 46,
+   "games": 52,
+   "key": "george-wardlaw",
+   "name": "George Wardlaw",
+   "pk": 4,
+   "v_base": 3265,
+   "v_cand": 3311
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 109,
+   "key": "griffin-logue",
+   "name": "Griffin Logue",
+   "pk": 8,
+   "v_base": 73,
+   "v_cand": 74
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 25,
+   "games": 166,
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "pk": 57,
+   "v_base": 1784,
+   "v_cand": 1809
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 13,
+   "games": 26,
+   "key": "hamish-davis",
+   "name": "Hamish Davis",
+   "pk": 65,
+   "v_base": 887,
+   "v_cand": 900
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 0,
+   "key": "harley-barker",
+   "name": "Harley Barker",
+   "pk": 24,
+   "v_base": 678,
+   "v_cand": 677
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 51,
+   "games": 58,
+   "key": "harley-reid",
+   "name": "Harley Reid",
+   "pk": 1,
+   "v_base": 3559,
+   "v_cand": 3610
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 24,
+   "games": 255,
+   "key": "harris-andrews",
+   "name": "Harris Andrews",
+   "pk": 60,
+   "v_base": 1726,
+   "v_cand": 1750
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "harrison-coe",
+   "name": "Harrison Coe",
+   "pk": 8,
+   "v_base": 150,
+   "v_cand": 152
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 220,
+   "key": "harrison-himmelberg",
+   "name": "Harrison Himmelberg",
+   "pk": 16,
+   "v_base": 233,
+   "v_cand": 237
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 63,
+   "key": "harrison-jones",
+   "name": "Harrison Jones",
+   "pk": 30,
+   "v_base": 152,
+   "v_cand": 154
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 5,
+   "key": "harrison-oliver",
+   "name": "Harrison Oliver",
+   "pk": 19,
+   "v_base": 608,
+   "v_cand": 617
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 116,
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "pk": 37,
+   "v_base": 142,
+   "v_cand": 143
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 3,
+   "key": "harrison-ramm",
+   "name": "Harrison Ramm",
+   "pk": 3,
+   "v_base": 395,
+   "v_cand": 401
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 12,
+   "games": 11,
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong",
+   "pk": 23,
+   "v_base": 798,
+   "v_cand": 810
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 2,
+   "key": "harry-barnett",
+   "name": "Harry Barnett",
+   "pk": 23,
+   "v_base": 558,
+   "v_cand": 557
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "harry-charleson",
+   "name": "Harry Charleson",
+   "pk": 3,
+   "v_base": 273,
+   "v_cand": 277
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 37,
+   "games": 15,
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "pk": 3,
+   "v_base": 2604,
+   "v_cand": 2641
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 0,
+   "key": "harry-demattia",
+   "name": "Harry DeMattia",
+   "pk": 25,
+   "v_base": 432,
+   "v_cand": 431
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 57,
+   "key": "harry-edwards",
+   "name": "Harry Edwards",
+   "pk": 12,
+   "v_base": 106,
+   "v_cand": 107
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 17,
+   "games": 5,
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "pk": 14,
+   "v_base": 1203,
+   "v_cand": 1220
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 24,
+   "games": 156,
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "pk": 10,
+   "v_base": 1676,
+   "v_cand": 1700
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 13,
+   "games": 6,
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell",
+   "pk": 40,
+   "v_base": 952,
+   "v_cand": 965
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 169,
+   "key": "harry-perryman",
+   "name": "Harry Perryman",
+   "pk": 14,
+   "v_base": 68,
+   "v_cand": 69
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 25,
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "pk": 16,
+   "v_base": 628,
+   "v_cand": 637
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 169,
+   "games": 86,
+   "key": "harry-sheezel",
+   "name": "Harry Sheezel",
+   "pk": 3,
+   "v_base": 11912,
+   "v_cand": 12081
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 23,
+   "key": "harvey-harrison",
+   "name": "Harvey Harrison",
+   "pk": 52,
+   "v_base": 39,
+   "v_cand": 40
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 13,
+   "key": "harvey-johnston",
+   "name": "Harvey Johnston",
+   "pk": 49,
+   "v_base": 209,
+   "v_cand": 213
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 35,
+   "games": 41,
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "pk": 6,
+   "v_base": 2468,
+   "v_cand": 2503
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 58,
+   "key": "harvey-thomas",
+   "name": "Harvey Thomas",
+   "pk": 59,
+   "v_base": 2105,
+   "v_cand": 2134
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 4,
+   "games": 106,
+   "key": "hayden-mclean",
+   "name": "Hayden McLean",
+   "pk": null,
+   "v_base": 270,
+   "v_cand": 274
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 98,
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "pk": 7,
+   "v_base": 1944,
+   "v_cand": 1973
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 84,
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "pk": 14,
+   "v_base": 391,
+   "v_cand": 396
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 11,
+   "key": "henry-hustwaite",
+   "name": "Henry Hustwaite",
+   "pk": 37,
+   "v_base": 252,
+   "v_cand": 253
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 8,
+   "key": "hudson-o-keeffe",
+   "name": "Hudson O'Keeffe",
+   "pk": null,
+   "v_base": 258,
+   "v_cand": 261
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 19,
+   "key": "hugh-bond",
+   "name": "Hugh Bond",
+   "pk": 50,
+   "v_base": 157,
+   "v_cand": 161
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 14,
+   "games": 17,
+   "key": "hugh-boxshall",
+   "name": "Hugh Boxshall",
+   "pk": 45,
+   "v_base": 909,
+   "v_cand": 923
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 221,
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "pk": 3,
+   "v_base": 1591,
+   "v_cand": 1613
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 43,
+   "games": 45,
+   "key": "hugo-garcia",
+   "name": "Hugo Garcia",
+   "pk": 50,
+   "v_base": 3042,
+   "v_cand": 3085
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 7,
+   "key": "hugo-hall-kahan",
+   "name": "Hugo Hall-Kahan",
+   "pk": 10,
+   "v_base": 151,
+   "v_cand": 153
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 71,
+   "key": "hugo-ralphsmith",
+   "name": "Hugo Ralphsmith",
+   "pk": 45,
+   "v_base": 34,
+   "v_cand": 35
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "hunter-holmes",
+   "name": "Hunter Holmes",
+   "pk": 33,
+   "v_base": 552,
+   "v_cand": 553
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 7,
+   "key": "hussien-el-achkar",
+   "name": "Hussien El Achkar",
+   "pk": 53,
+   "v_base": 410,
+   "v_cand": 415
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "iliro-smit",
+   "name": "Iliro Smit",
+   "pk": 10,
+   "v_base": 184,
+   "v_cand": 187
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "indy-cotton",
+   "name": "Indy Cotton",
+   "pk": null,
+   "v_base": 276,
+   "v_cand": 279
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 50,
+   "games": 241,
+   "key": "isaac-heeney",
+   "name": "Isaac Heeney",
+   "pk": 4,
+   "v_base": 3594,
+   "v_cand": 3644
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 18,
+   "games": 34,
+   "key": "isaac-kako",
+   "name": "Isaac Kako",
+   "pk": 13,
+   "v_base": 1327,
+   "v_cand": 1345
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 13,
+   "key": "isaac-keeler",
+   "name": "Isaac Keeler",
+   "pk": 44,
+   "v_base": 214,
+   "v_cand": 216
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 150,
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "pk": 13,
+   "v_base": 450,
+   "v_cand": 457
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 2,
+   "games": 35,
+   "key": "isaiah-dudley",
+   "name": "Isaiah Dudley",
+   "pk": null,
+   "v_base": 148,
+   "v_cand": 150
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 42,
+   "games": 121,
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "pk": 3,
+   "v_base": 2970,
+   "v_cand": 3012
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 7,
+   "games": 94,
+   "key": "jack-buckley",
+   "name": "Jack Buckley",
+   "pk": null,
+   "v_base": 559,
+   "v_cand": 566
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 20,
+   "key": "jack-buller",
+   "name": "Jack Buller",
+   "pk": 11,
+   "v_base": 59,
+   "v_cand": 60
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 36,
+   "key": "jack-carroll",
+   "name": "Jack Carroll",
+   "pk": 43,
+   "v_base": 79,
+   "v_cand": 80
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 293,
+   "key": "jack-crisp",
+   "name": "Jack Crisp",
+   "pk": 34,
+   "v_base": 436,
+   "v_cand": 443
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 4,
+   "key": "jack-dalton",
+   "name": "Jack Dalton",
+   "pk": 34,
+   "v_base": 522,
+   "v_cand": 529
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 338,
+   "key": "jack-darling",
+   "name": "Jack Darling",
+   "pk": 28,
+   "v_base": 122,
+   "v_cand": 124
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 34,
+   "games": 108,
+   "key": "jack-ginnivan",
+   "name": "Jack Ginnivan",
+   "pk": 8,
+   "v_base": 2385,
+   "v_cand": 2419
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 158,
+   "key": "jack-graham",
+   "name": "Jack Graham",
+   "pk": 53,
+   "v_base": 551,
+   "v_cand": 559
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 296,
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "pk": 29,
+   "v_base": 967,
+   "v_cand": 982
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 178,
+   "key": "jack-henry",
+   "name": "Jack Henry",
+   "pk": 12,
+   "v_base": 200,
+   "v_cand": 203
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 158,
+   "key": "jack-higgins",
+   "name": "Jack Higgins",
+   "pk": 17,
+   "v_base": 75,
+   "v_cand": 76
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 28,
+   "key": "jack-hutchinson",
+   "name": "Jack Hutchinson",
+   "pk": 3,
+   "v_base": 27,
+   "v_cand": 28
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 7,
+   "key": "jack-ison",
+   "name": "Jack Ison",
+   "pk": 47,
+   "v_base": 532,
+   "v_cand": 540
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 131,
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius",
+   "pk": 2,
+   "v_base": 469,
+   "v_cand": 476
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 4,
+   "key": "jack-ough",
+   "name": "Jack Ough",
+   "pk": 36,
+   "v_base": 658,
+   "v_cand": 666
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 81,
+   "key": "jack-payne",
+   "name": "Jack Payne",
+   "pk": 54,
+   "v_base": 105,
+   "v_cand": 106
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 35,
+   "games": 107,
+   "key": "jack-ross",
+   "name": "Jack Ross",
+   "pk": 43,
+   "v_base": 2479,
+   "v_cand": 2514
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 129,
+   "key": "jack-scrimshaw",
+   "name": "Jack Scrimshaw",
+   "pk": 7,
+   "v_base": 95,
+   "v_cand": 96
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 147,
+   "key": "jack-silvagni",
+   "name": "Jack Silvagni",
+   "pk": 53,
+   "v_base": 715,
+   "v_cand": 724
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 46,
+   "games": 224,
+   "key": "jack-sinclair",
+   "name": "Jack Sinclair",
+   "pk": 1,
+   "v_base": 3330,
+   "v_cand": 3376
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 21,
+   "games": 221,
+   "key": "jack-steele",
+   "name": "Jack Steele",
+   "pk": 21,
+   "v_base": 1474,
+   "v_cand": 1495
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 237,
+   "key": "jack-viney",
+   "name": "Jack Viney",
+   "pk": 13,
+   "v_base": 251,
+   "v_cand": 256
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 18,
+   "games": 23,
+   "key": "jack-whitlock",
+   "name": "Jack Whitlock",
+   "pk": 33,
+   "v_base": 1279,
+   "v_cand": 1297
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 49,
+   "key": "jack-williams",
+   "name": "Jack Williams",
+   "pk": 57,
+   "v_base": 459,
+   "v_cand": 465
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 37,
+   "games": 16,
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "pk": 10,
+   "v_base": 2687,
+   "v_cand": 2724
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 33,
+   "key": "jacob-konstanty",
+   "name": "Jacob Konstanty",
+   "pk": 20,
+   "v_base": 158,
+   "v_cand": 159
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "jacob-molier",
+   "name": "Jacob Molier",
+   "pk": 52,
+   "v_base": 293,
+   "v_cand": 294
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "jacob-moss",
+   "name": "Jacob Moss",
+   "pk": null,
+   "v_base": 190,
+   "v_cand": 193
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 5,
+   "key": "jacob-newton",
+   "name": "Jacob Newton",
+   "pk": 8,
+   "v_base": 212,
+   "v_cand": 215
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 26,
+   "games": 76,
+   "key": "jacob-van-rooyen",
+   "name": "Jacob Van Rooyen",
+   "pk": 19,
+   "v_base": 1807,
+   "v_cand": 1833
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 14,
+   "games": 214,
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "pk": 1,
+   "v_base": 1020,
+   "v_cand": 1034
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 70,
+   "games": 18,
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "pk": 3,
+   "v_base": 4863,
+   "v_cand": 4933
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 23,
+   "key": "jai-culley",
+   "name": "Jai Culley",
+   "pk": 1,
+   "v_base": 191,
+   "v_cand": 194
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 18,
+   "games": 7,
+   "key": "jai-murray",
+   "name": "Jai Murray",
+   "pk": 17,
+   "v_base": 1279,
+   "v_cand": 1297
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 63,
+   "games": 121,
+   "key": "jai-newcombe",
+   "name": "Jai Newcombe",
+   "pk": 2,
+   "v_base": 4431,
+   "v_cand": 4494
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "jai-saxena",
+   "name": "Jai Saxena",
+   "pk": null,
+   "v_base": 216,
+   "v_cand": 219
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 13,
+   "games": 28,
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "pk": 53,
+   "v_base": 944,
+   "v_cand": 957
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "jaime-uhr-henry",
+   "name": "Jaime Uhr-Henry",
+   "pk": null,
+   "v_base": 199,
+   "v_cand": 201
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 59,
+   "games": 95,
+   "key": "jake-bowey",
+   "name": "Jake Bowey",
+   "pk": 22,
+   "v_base": 4137,
+   "v_cand": 4196
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 204,
+   "key": "jake-lever",
+   "name": "Jake Lever",
+   "pk": 15,
+   "v_base": 234,
+   "v_cand": 238
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 290,
+   "key": "jake-lloyd",
+   "name": "Jake Lloyd",
+   "pk": 16,
+   "v_base": 113,
+   "v_cand": 115
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 98,
+   "key": "jake-riccardi",
+   "name": "Jake Riccardi",
+   "pk": 50,
+   "v_base": 277,
+   "v_cand": 280
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 23,
+   "key": "jake-rogers",
+   "name": "Jake Rogers",
+   "pk": 14,
+   "v_base": 537,
+   "v_cand": 544
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 30,
+   "games": 102,
+   "key": "jake-soligo",
+   "name": "Jake Soligo",
+   "pk": 36,
+   "v_base": 2022,
+   "v_cand": 2052
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 246,
+   "key": "jake-stringer",
+   "name": "Jake Stringer",
+   "pk": 7,
+   "v_base": 80,
+   "v_cand": 81
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 17,
+   "games": 131,
+   "key": "jake-waterman",
+   "name": "Jake Waterman",
+   "pk": 76,
+   "v_base": 1226,
+   "v_cand": 1243
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 70,
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan",
+   "pk": 1,
+   "v_base": 292,
+   "v_cand": 296
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 30,
+   "key": "james-borlase",
+   "name": "James Borlase",
+   "pk": null,
+   "v_base": 422,
+   "v_cand": 428
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 133,
+   "key": "james-jordon",
+   "name": "James Jordon",
+   "pk": 33,
+   "v_base": 162,
+   "v_cand": 164
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 8,
+   "key": "james-leake",
+   "name": "James Leake",
+   "pk": 17,
+   "v_base": 491,
+   "v_cand": 499
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 8,
+   "games": 63,
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "pk": null,
+   "v_base": 534,
+   "v_cand": 542
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 87,
+   "key": "james-peatling",
+   "name": "James Peatling",
+   "pk": 8,
+   "v_base": 1300,
+   "v_cand": 1319
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 16,
+   "games": 159,
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "pk": 25,
+   "v_base": 1207,
+   "v_cand": 1223
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 23,
+   "games": 197,
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "pk": 52,
+   "v_base": 1705,
+   "v_cand": 1728
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 38,
+   "key": "james-trezise",
+   "name": "James Trezise",
+   "pk": 10,
+   "v_base": 117,
+   "v_cand": 119
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 156,
+   "key": "james-worpel",
+   "name": "James Worpel",
+   "pk": 45,
+   "v_base": 362,
+   "v_cand": 367
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 14,
+   "games": 237,
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "pk": 21,
+   "v_base": 931,
+   "v_cand": 945
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 198,
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "pk": 17,
+   "v_base": 222,
+   "v_cand": 225
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 2,
+   "games": 217,
+   "key": "jarrod-witts",
+   "name": "Jarrod Witts",
+   "pk": 74,
+   "v_base": 140,
+   "v_cand": 142
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 31,
+   "games": 75,
+   "key": "jase-burgoyne",
+   "name": "Jase Burgoyne",
+   "pk": 60,
+   "v_base": 2173,
+   "v_cand": 2204
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 84,
+   "games": 98,
+   "key": "jason-horne-francis",
+   "name": "Jason Horne-Francis",
+   "pk": 1,
+   "v_base": 5975,
+   "v_cand": 6059
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 37,
+   "games": 87,
+   "key": "jaspa-fletcher",
+   "name": "Jaspa Fletcher",
+   "pk": 12,
+   "v_base": 2604,
+   "v_cand": 2641
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 12,
+   "key": "jasper-alger",
+   "name": "Jasper Alger",
+   "pk": 58,
+   "v_base": 434,
+   "v_cand": 441
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 2,
+   "key": "jaxon-artemis",
+   "name": "Jaxon Artemis",
+   "pk": 1,
+   "v_base": 342,
+   "v_cand": 347
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 80,
+   "key": "jaxon-prior",
+   "name": "Jaxon Prior",
+   "pk": 58,
+   "v_base": 295,
+   "v_cand": 298
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 2,
+   "key": "jay-polkinghorne",
+   "name": "Jay Polkinghorne",
+   "pk": 44,
+   "v_base": 402,
+   "v_cand": 407
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 162,
+   "key": "jayden-laverde",
+   "name": "Jayden Laverde",
+   "pk": 20,
+   "v_base": 191,
+   "v_cand": 194
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 10,
+   "key": "jayden-nguyen",
+   "name": "Jayden Nguyen",
+   "pk": null,
+   "v_base": 475,
+   "v_cand": 482
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 16,
+   "games": 207,
+   "key": "jayden-short",
+   "name": "Jayden Short",
+   "pk": 9,
+   "v_base": 1097,
+   "v_cand": 1113
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 17,
+   "games": 44,
+   "key": "jed-walter",
+   "name": "Jed Walter",
+   "pk": 3,
+   "v_base": 1167,
+   "v_cand": 1184
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 12,
+   "games": 14,
+   "key": "jedd-busslinger",
+   "name": "Jedd Busslinger",
+   "pk": 13,
+   "v_base": 886,
+   "v_cand": 898
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 12,
+   "games": 296,
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron",
+   "pk": 12,
+   "v_base": 814,
+   "v_cand": 826
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 286,
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe",
+   "pk": 35,
+   "v_base": 247,
+   "v_cand": 251
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 62,
+   "key": "jeremy-sharp",
+   "name": "Jeremy Sharp",
+   "pk": 27,
+   "v_base": 61,
+   "v_cand": 62
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 3,
+   "key": "jesse-dattoli",
+   "name": "Jesse Dattoli",
+   "pk": 22,
+   "v_base": 335,
+   "v_cand": 336
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 190,
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan",
+   "pk": 5,
+   "v_base": 215,
+   "v_cand": 219
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "jesse-mellor",
+   "name": "Jesse Mellor",
+   "pk": null,
+   "v_base": 276,
+   "v_cand": 279
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 63,
+   "key": "jesse-motlop",
+   "name": "Jesse Motlop",
+   "pk": 27,
+   "v_base": 88,
+   "v_cand": 89
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "jevan-phillipou",
+   "name": "Jevan Phillipou",
+   "pk": 35,
+   "v_base": 292,
+   "v_cand": 293
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 31,
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "pk": 8,
+   "v_base": 770,
+   "v_cand": 780
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 26,
+   "games": 28,
+   "key": "jobe-shanahan",
+   "name": "Jobe Shanahan",
+   "pk": 30,
+   "v_base": 1739,
+   "v_cand": 1765
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 31,
+   "key": "joe-berry",
+   "name": "Joe Berry",
+   "pk": 15,
+   "v_base": 1078,
+   "v_cand": 1093
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "joe-pike",
+   "name": "Joe Pike",
+   "pk": 9,
+   "v_base": 199,
+   "v_cand": 201
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 49,
+   "key": "joe-richards",
+   "name": "Joe Richards",
+   "pk": 48,
+   "v_base": 918,
+   "v_cand": 931
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 76,
+   "key": "joel-amartey",
+   "name": "Joel Amartey",
+   "pk": 17,
+   "v_base": 31,
+   "v_cand": 32
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 6,
+   "key": "joel-fitzgerald",
+   "name": "Joel Fitzgerald",
+   "pk": 16,
+   "v_base": 50,
+   "v_cand": 51
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 41,
+   "games": 55,
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "pk": 45,
+   "v_base": 2855,
+   "v_cand": 2896
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 26,
+   "games": 71,
+   "key": "joel-jeffrey",
+   "name": "Joel Jeffrey",
+   "pk": 30,
+   "v_base": 1898,
+   "v_cand": 1924
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 28,
+   "games": 156,
+   "key": "john-noble",
+   "name": "John Noble",
+   "pk": 8,
+   "v_base": 2015,
+   "v_cand": 2043
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 14,
+   "games": 26,
+   "key": "jonty-faull",
+   "name": "Jonty Faull",
+   "pk": 14,
+   "v_base": 949,
+   "v_cand": 963
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 40,
+   "key": "jordan-boyd",
+   "name": "Jordan Boyd",
+   "pk": 17,
+   "v_base": 2,
+   "v_cand": 3
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 54,
+   "games": 145,
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "pk": 15,
+   "v_base": 3811,
+   "v_cand": 3865
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 13,
+   "games": 16,
+   "key": "jordan-croft",
+   "name": "Jordan Croft",
+   "pk": 15,
+   "v_base": 952,
+   "v_cand": 965
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 48,
+   "games": 172,
+   "key": "jordan-dawson",
+   "name": "Jordan Dawson",
+   "pk": 55,
+   "v_base": 3443,
+   "v_cand": 3491
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 21,
+   "games": 200,
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "pk": 6,
+   "v_base": 1506,
+   "v_cand": 1527
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 110,
+   "key": "jordan-ridley",
+   "name": "Jordan Ridley",
+   "pk": 22,
+   "v_base": 706,
+   "v_cand": 716
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 34,
+   "games": 65,
+   "key": "jordon-sweet",
+   "name": "Jordon Sweet",
+   "pk": 14,
+   "v_base": 2437,
+   "v_cand": 2471
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 8,
+   "key": "josaia-delana",
+   "name": "Josaia Delana",
+   "pk": null,
+   "v_base": 264,
+   "v_cand": 268
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 40,
+   "key": "joseph-fonti",
+   "name": "Joseph Fonti",
+   "pk": 44,
+   "v_base": 693,
+   "v_cand": 702
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 166,
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "pk": 39,
+   "v_base": 2064,
+   "v_cand": 2093
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 170,
+   "key": "josh-daicos",
+   "name": "Josh Daicos",
+   "pk": 57,
+   "v_base": 2101,
+   "v_cand": 2130
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 18,
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "pk": 31,
+   "v_base": 491,
+   "v_cand": 499
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 7,
+   "games": 31,
+   "key": "josh-draper",
+   "name": "Josh Draper",
+   "pk": null,
+   "v_base": 474,
+   "v_cand": 481
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 17,
+   "games": 213,
+   "key": "josh-dunkley",
+   "name": "Josh Dunkley",
+   "pk": 25,
+   "v_base": 1217,
+   "v_cand": 1234
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 22,
+   "key": "josh-gibcus",
+   "name": "Josh Gibcus",
+   "pk": 9,
+   "v_base": 143,
+   "v_cand": 145
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 14,
+   "key": "josh-lai",
+   "name": "Josh Lai",
+   "pk": null,
+   "v_base": 470,
+   "v_cand": 477
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 34,
+   "games": 12,
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "pk": 19,
+   "v_base": 2418,
+   "v_cand": 2452
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 28,
+   "games": 89,
+   "key": "josh-rachele",
+   "name": "Josh Rachele",
+   "pk": 6,
+   "v_base": 2026,
+   "v_cand": 2054
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 30,
+   "key": "josh-sinn",
+   "name": "Josh Sinn",
+   "pk": 12,
+   "v_base": 145,
+   "v_cand": 147
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "josh-smillie",
+   "name": "Josh Smillie",
+   "pk": 7,
+   "v_base": 997,
+   "v_cand": 998
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 94,
+   "games": 99,
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "pk": 4,
+   "v_base": 6681,
+   "v_cand": 6775
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 39,
+   "games": 86,
+   "key": "josh-ward",
+   "name": "Josh Ward",
+   "pk": 7,
+   "v_base": 2743,
+   "v_cand": 2782
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 53,
+   "games": 74,
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "pk": 28,
+   "v_base": 3833,
+   "v_cand": 3886
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 230,
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly",
+   "pk": 2,
+   "v_base": 399,
+   "v_cand": 405
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 75,
+   "key": "joshua-weddle",
+   "name": "Joshua Weddle",
+   "pk": 18,
+   "v_base": 1541,
+   "v_cand": 1563
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 83,
+   "key": "judd-mcvee",
+   "name": "Judd McVee",
+   "pk": 9,
+   "v_base": 302,
+   "v_cand": 306
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 30,
+   "games": 122,
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney",
+   "pk": 44,
+   "v_base": 2136,
+   "v_cand": 2166
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 16,
+   "games": 192,
+   "key": "jy-simpkin",
+   "name": "Jy Simpkin",
+   "pk": 12,
+   "v_base": 1196,
+   "v_cand": 1212
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 90,
+   "key": "jye-amiss",
+   "name": "Jye Amiss",
+   "pk": 8,
+   "v_base": 1578,
+   "v_cand": 1600
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 103,
+   "key": "jye-caldwell",
+   "name": "Jye Caldwell",
+   "pk": 11,
+   "v_base": 981,
+   "v_cand": 994
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 98,
+   "key": "kade-chandler",
+   "name": "Kade Chandler",
+   "pk": 10,
+   "v_base": 945,
+   "v_cand": 960
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 72,
+   "key": "kai-lohmann",
+   "name": "Kai Lohmann",
+   "pk": 20,
+   "v_base": 657,
+   "v_cand": 665
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "kalani-white",
+   "name": "Kalani White",
+   "pk": null,
+   "v_base": 277,
+   "v_cand": 280
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 12,
+   "key": "kaleb-smith",
+   "name": "Kaleb Smith",
+   "pk": 49,
+   "v_base": 66,
+   "v_cand": 67
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 127,
+   "key": "kane-farrell",
+   "name": "Kane Farrell",
+   "pk": 51,
+   "v_base": 1308,
+   "v_cand": 1327
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 19,
+   "games": 23,
+   "key": "kane-mcauliffe",
+   "name": "Kane McAuliffe",
+   "pk": 40,
+   "v_base": 1315,
+   "v_cand": 1334
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 210,
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "pk": 59,
+   "v_base": 411,
+   "v_cand": 417
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 50,
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "pk": 4,
+   "v_base": 919,
+   "v_cand": 932
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 78,
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman",
+   "pk": 36,
+   "v_base": 754,
+   "v_cand": 764
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "keighton-matofai-forbes",
+   "name": "Keighton Matofai-Forbes",
+   "pk": 69,
+   "v_base": 274,
+   "v_cand": 277
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 34,
+   "games": 84,
+   "key": "kieren-briggs",
+   "name": "Kieren Briggs",
+   "pk": 34,
+   "v_base": 2442,
+   "v_cand": 2476
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "kobe-mcdonald",
+   "name": "Kobe McDonald",
+   "pk": null,
+   "v_base": 276,
+   "v_cand": 279
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "koby-coulson",
+   "name": "Koby Coulson",
+   "pk": 46,
+   "v_base": 344,
+   "v_cand": 345
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "koby-evans",
+   "name": "Koby Evans",
+   "pk": 38,
+   "v_base": 273,
+   "v_cand": 274
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 38,
+   "key": "koltyn-tholstrup",
+   "name": "Koltyn Tholstrup",
+   "pk": 13,
+   "v_base": 1574,
+   "v_cand": 1596
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 7,
+   "key": "kye-annand",
+   "name": "Kye Annand",
+   "pk": 2,
+   "v_base": 157,
+   "v_cand": 159
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "kye-fincher",
+   "name": "Kye Fincher",
+   "pk": 52,
+   "v_base": 272,
+   "v_cand": 273
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 177,
+   "key": "kyle-langford",
+   "name": "Kyle Langford",
+   "pk": 18,
+   "v_base": 551,
+   "v_cand": 560
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 56,
+   "games": 145,
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "pk": 12,
+   "v_base": 3997,
+   "v_cand": 4053
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 12,
+   "games": 8,
+   "key": "lachie-jaques",
+   "name": "Lachie Jaques",
+   "pk": 29,
+   "v_base": 798,
+   "v_cand": 810
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 31,
+   "games": 313,
+   "key": "lachie-neale",
+   "name": "Lachie Neale",
+   "pk": 66,
+   "v_base": 2157,
+   "v_cand": 2188
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 273,
+   "key": "lachie-whitfield",
+   "name": "Lachie Whitfield",
+   "pk": 1,
+   "v_base": 2032,
+   "v_cand": 2061
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 86,
+   "games": 144,
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "pk": 4,
+   "v_base": 6153,
+   "v_cand": 6239
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "lachlan-carmichael",
+   "name": "Lachlan Carmichael",
+   "pk": 21,
+   "v_base": 579,
+   "v_cand": 580
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 56,
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "pk": 30,
+   "v_base": 691,
+   "v_cand": 701
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 92,
+   "key": "lachlan-fogarty",
+   "name": "Lachlan Fogarty",
+   "pk": 22,
+   "v_base": 37,
+   "v_cand": 38
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 9,
+   "key": "lachlan-gulbin",
+   "name": "Lachlan Gulbin",
+   "pk": null,
+   "v_base": 388,
+   "v_cand": 393
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 91,
+   "key": "lachlan-jones",
+   "name": "Lachlan Jones",
+   "pk": 16,
+   "v_base": 110,
+   "v_cand": 112
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 17,
+   "games": 21,
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew",
+   "pk": null,
+   "v_base": 1240,
+   "v_cand": 1257
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 142,
+   "key": "lachlan-schultz",
+   "name": "Lachlan Schultz",
+   "pk": 57,
+   "v_base": 669,
+   "v_cand": 678
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 79,
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl",
+   "pk": 64,
+   "v_base": 162,
+   "v_cand": 165
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 2,
+   "key": "lachlan-smith",
+   "name": "Lachlan Smith",
+   "pk": 47,
+   "v_base": 624,
+   "v_cand": 631
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 6,
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston",
+   "pk": 16,
+   "v_base": 626,
+   "v_cand": 635
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 88,
+   "key": "laitham-vandermeer",
+   "name": "Laitham Vandermeer",
+   "pk": 37,
+   "v_base": 19,
+   "v_cand": 20
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 15,
+   "key": "lance-collard",
+   "name": "Lance Collard",
+   "pk": 28,
+   "v_base": 187,
+   "v_cand": 188
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 15,
+   "key": "latrelle-pickett",
+   "name": "Latrelle Pickett",
+   "pk": 12,
+   "v_base": 547,
+   "v_cand": 548
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 26,
+   "games": 54,
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "pk": 63,
+   "v_base": 1840,
+   "v_cand": 1866
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 32,
+   "key": "leek-aleer",
+   "name": "Leek Aleer",
+   "pk": 15,
+   "v_base": 214,
+   "v_cand": 218
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "lennox-hoffman",
+   "name": "Lennox Hoffman",
+   "pk": 66,
+   "v_base": 273,
+   "v_cand": 277
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 23,
+   "games": 23,
+   "key": "leo-lombard",
+   "name": "Leo Lombard",
+   "pk": 9,
+   "v_base": 1614,
+   "v_cand": 1637
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "leon-kickett",
+   "name": "Leon Kickett",
+   "pk": 4,
+   "v_base": 328,
+   "v_cand": 333
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 50,
+   "games": 46,
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "pk": 5,
+   "v_base": 3539,
+   "v_cand": 3589
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 88,
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "pk": 49,
+   "v_base": 147,
+   "v_cand": 149
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 168,
+   "key": "liam-baker",
+   "name": "Liam Baker",
+   "pk": 11,
+   "v_base": 421,
+   "v_cand": 427
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 219,
+   "key": "liam-duggan",
+   "name": "Liam Duggan",
+   "pk": 12,
+   "v_base": 244,
+   "v_cand": 248
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 8,
+   "key": "liam-fawcett",
+   "name": "Liam Fawcett",
+   "pk": 43,
+   "v_base": 500,
+   "v_cand": 507
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "liam-hetherton",
+   "name": "Liam Hetherton",
+   "pk": null,
+   "v_base": 243,
+   "v_cand": 247
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 16,
+   "key": "liam-o-connell",
+   "name": "Liam O'Connell",
+   "pk": null,
+   "v_base": 28,
+   "v_cand": 29
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 4,
+   "key": "liam-puncher",
+   "name": "Liam Puncher",
+   "pk": 15,
+   "v_base": 115,
+   "v_cand": 117
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 7,
+   "key": "liam-reidy",
+   "name": "Liam Reidy",
+   "pk": 4,
+   "v_base": 310,
+   "v_cand": 315
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 19,
+   "games": 96,
+   "key": "lloyd-meek",
+   "name": "Lloyd Meek",
+   "pk": 68,
+   "v_base": 1297,
+   "v_cand": 1316
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 42,
+   "key": "logan-evans",
+   "name": "Logan Evans",
+   "pk": 12,
+   "v_base": 1370,
+   "v_cand": 1389
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 87,
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "pk": 4,
+   "v_base": 606,
+   "v_cand": 615
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 45,
+   "games": 63,
+   "key": "logan-morris",
+   "name": "Logan Morris",
+   "pk": 31,
+   "v_base": 3161,
+   "v_cand": 3206
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "logan-smith",
+   "name": "Logan Smith",
+   "pk": 71,
+   "v_base": 199,
+   "v_cand": 201
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 12,
+   "games": 5,
+   "key": "louis-emmett",
+   "name": "Louis Emmett",
+   "pk": 27,
+   "v_base": 805,
+   "v_cand": 817
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 1,
+   "key": "lucca-grego",
+   "name": "Lucca Grego",
+   "pk": 48,
+   "v_base": 129,
+   "v_cand": 130
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 2,
+   "key": "lukas-cooke",
+   "name": "Lukas Cooke",
+   "pk": 11,
+   "v_base": 121,
+   "v_cand": 123
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 25,
+   "key": "luke-cleary",
+   "name": "Luke Cleary",
+   "pk": 61,
+   "v_base": 39,
+   "v_cand": 40
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 50,
+   "games": 149,
+   "key": "luke-davies-uniacke",
+   "name": "Luke Davies-Uniacke",
+   "pk": 4,
+   "v_base": 3527,
+   "v_cand": 3577
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 143,
+   "games": 138,
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "pk": 3,
+   "v_base": 10099,
+   "v_cand": 10242
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 4,
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "pk": 62,
+   "v_base": 418,
+   "v_cand": 424
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 44,
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis",
+   "pk": 1,
+   "v_base": 364,
+   "v_cand": 370
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 21,
+   "games": 334,
+   "key": "luke-parker",
+   "name": "Luke Parker",
+   "pk": 42,
+   "v_base": 1451,
+   "v_cand": 1472
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 19,
+   "games": 197,
+   "key": "luke-ryan",
+   "name": "Luke Ryan",
+   "pk": 65,
+   "v_base": 1398,
+   "v_cand": 1417
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 22,
+   "games": 29,
+   "key": "luke-trainor",
+   "name": "Luke Trainor",
+   "pk": 21,
+   "v_base": 1576,
+   "v_cand": 1598
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "luke-urquhart",
+   "name": "Luke Urquhart",
+   "pk": 57,
+   "v_base": 148,
+   "v_cand": 149
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 3,
+   "key": "luker-kentfield",
+   "name": "Luker Kentfield",
+   "pk": 11,
+   "v_base": 347,
+   "v_cand": 352
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 122,
+   "key": "mabior-chol",
+   "name": "Mabior Chol",
+   "pk": 25,
+   "v_base": 271,
+   "v_cand": 275
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 58,
+   "games": 84,
+   "key": "mac-andrew",
+   "name": "Mac Andrew",
+   "pk": 5,
+   "v_base": 4086,
+   "v_cand": 4144
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 10,
+   "key": "malakai-champion",
+   "name": "Malakai Champion",
+   "pk": null,
+   "v_base": 388,
+   "v_cand": 393
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 96,
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "pk": 50,
+   "v_base": 419,
+   "v_cand": 425
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 60,
+   "games": 277,
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "pk": 4,
+   "v_base": 4329,
+   "v_cand": 4389
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 6,
+   "key": "marcus-herbert",
+   "name": "Marcus Herbert",
+   "pk": 13,
+   "v_base": 650,
+   "v_cand": 659
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 94,
+   "key": "marcus-windhager",
+   "name": "Marcus Windhager",
+   "pk": 47,
+   "v_base": 2061,
+   "v_cand": 2090
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 23,
+   "games": 61,
+   "key": "mark-keane",
+   "name": "Mark Keane",
+   "pk": null,
+   "v_base": 1632,
+   "v_cand": 1655
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 20,
+   "games": 155,
+   "key": "mason-redman",
+   "name": "Mason Redman",
+   "pk": 30,
+   "v_base": 1433,
+   "v_cand": 1453
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 174,
+   "key": "mason-wood",
+   "name": "Mason Wood",
+   "pk": 44,
+   "v_base": 375,
+   "v_cand": 381
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 85,
+   "key": "massimo-d-ambrosio",
+   "name": "Massimo D'Ambrosio",
+   "pk": 3,
+   "v_base": 1533,
+   "v_cand": 1555
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 14,
+   "games": 27,
+   "key": "matt-carroll",
+   "name": "Matt Carroll",
+   "pk": 7,
+   "v_base": 928,
+   "v_cand": 942
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 2,
+   "games": 82,
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "pk": null,
+   "v_base": 70,
+   "v_cand": 72
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "matt-duffy",
+   "name": "Matt Duffy",
+   "pk": null,
+   "v_base": 152,
+   "v_cand": 155
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 1,
+   "games": 124,
+   "key": "matt-guelfi",
+   "name": "Matt Guelfi",
+   "pk": 75,
+   "v_base": 14,
+   "v_cand": 15
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 2,
+   "key": "matt-hill",
+   "name": "Matt Hill",
+   "pk": null,
+   "v_base": 99,
+   "v_cand": 101
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 73,
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "pk": 21,
+   "v_base": 972,
+   "v_cand": 985
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 58,
+   "games": 124,
+   "key": "matt-rowell",
+   "name": "Matt Rowell",
+   "pk": 1,
+   "v_base": 4107,
+   "v_cand": 4165
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 5,
+   "key": "matt-whitlock",
+   "name": "Matt Whitlock",
+   "pk": 27,
+   "v_base": 452,
+   "v_cand": 456
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 33,
+   "games": 61,
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "pk": 10,
+   "v_base": 2371,
+   "v_cand": 2404
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 59,
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn",
+   "pk": 41,
+   "v_base": 542,
+   "v_cand": 549
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 19,
+   "key": "matthew-jefferson",
+   "name": "Matthew Jefferson",
+   "pk": 15,
+   "v_base": 494,
+   "v_cand": 502
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 160,
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "pk": 13,
+   "v_base": 598,
+   "v_cand": 606
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 27,
+   "games": 63,
+   "key": "matthew-roberts",
+   "name": "Matthew Roberts",
+   "pk": 34,
+   "v_base": 1899,
+   "v_cand": 1926
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "max-beattie",
+   "name": "Max Beattie",
+   "pk": 12,
+   "v_base": 33,
+   "v_cand": 34
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 48,
+   "games": 266,
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "pk": 33,
+   "v_base": 3331,
+   "v_cand": 3379
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 21,
+   "key": "max-gruzewski",
+   "name": "Max Gruzewski",
+   "pk": 22,
+   "v_base": 511,
+   "v_cand": 519
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 35,
+   "games": 42,
+   "key": "max-hall",
+   "name": "Max Hall",
+   "pk": 4,
+   "v_base": 2398,
+   "v_cand": 2433
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 11,
+   "key": "max-heath",
+   "name": "Max Heath",
+   "pk": 7,
+   "v_base": 626,
+   "v_cand": 635
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 118,
+   "games": 120,
+   "key": "max-holmes",
+   "name": "Max Holmes",
+   "pk": 21,
+   "v_base": 8387,
+   "v_cand": 8505
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 83,
+   "key": "max-king-stk",
+   "name": "Max King",
+   "pk": 4,
+   "v_base": 249,
+   "v_cand": 252
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "max-knobel",
+   "name": "Max Knobel",
+   "pk": 42,
+   "v_base": 411,
+   "v_cand": 412
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 7,
+   "key": "max-kondogiannis",
+   "name": "Max Kondogiannis",
+   "pk": 36,
+   "v_base": 542,
+   "v_cand": 549
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "max-mapley",
+   "name": "Max Mapley",
+   "pk": 18,
+   "v_base": 258,
+   "v_cand": 263
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 85,
+   "key": "max-michalanney",
+   "name": "Max Michalanney",
+   "pk": 17,
+   "v_base": 479,
+   "v_cand": 486
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 11,
+   "key": "max-ramsden",
+   "name": "Max Ramsden",
+   "pk": 6,
+   "v_base": 196,
+   "v_cand": 199
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 116,
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "pk": 60,
+   "v_base": 62,
+   "v_cand": 63
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 18,
+   "key": "michael-sellwood",
+   "name": "Michael Sellwood",
+   "pk": 5,
+   "v_base": 136,
+   "v_cand": 138
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 15,
+   "key": "milan-murdock",
+   "name": "Milan Murdock",
+   "pk": null,
+   "v_base": 233,
+   "v_cand": 236
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 114,
+   "key": "miles-bergman",
+   "name": "Miles Bergman",
+   "pk": 14,
+   "v_base": 692,
+   "v_cand": 701
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 109,
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades",
+   "pk": 18,
+   "v_base": 1339,
+   "v_cand": 1358
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 164,
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "pk": 43,
+   "v_base": 43,
+   "v_cand": 44
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 5,
+   "key": "mitch-zadow",
+   "name": "Mitch Zadow",
+   "pk": null,
+   "v_base": 64,
+   "v_cand": 65
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 29,
+   "games": 15,
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "pk": 32,
+   "v_base": 2034,
+   "v_cand": 2063
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 90,
+   "key": "mitchell-hinge",
+   "name": "Mitchell Hinge",
+   "pk": 15,
+   "v_base": 358,
+   "v_cand": 364
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 7,
+   "games": 96,
+   "key": "mitchell-lewis",
+   "name": "Mitchell Lewis",
+   "pk": 75,
+   "v_base": 539,
+   "v_cand": 546
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "mitchell-marsh",
+   "name": "Mitchell Marsh",
+   "pk": 22,
+   "v_base": 533,
+   "v_cand": 534
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 28,
+   "games": 88,
+   "key": "mitchito-owens",
+   "name": "Mitchito Owens",
+   "pk": 33,
+   "v_base": 1925,
+   "v_cand": 1953
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 63,
+   "games": 43,
+   "key": "murphy-reid",
+   "name": "Murphy Reid",
+   "pk": 17,
+   "v_base": 4402,
+   "v_cand": 4465
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 28,
+   "key": "mykelti-lefau",
+   "name": "Mykelti Lefau",
+   "pk": null,
+   "v_base": 17,
+   "v_cand": 18
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 136,
+   "games": 101,
+   "key": "nasiah-wanganeen-milera",
+   "name": "Nasiah Wanganeen-Milera",
+   "pk": 11,
+   "v_base": 9602,
+   "v_cand": 9738
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 25,
+   "games": 44,
+   "key": "nate-caddy",
+   "name": "Nate Caddy",
+   "pk": 10,
+   "v_base": 1746,
+   "v_cand": 1771
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 1,
+   "games": 188,
+   "key": "nathan-broad",
+   "name": "Nathan Broad",
+   "pk": 65,
+   "v_base": 4,
+   "v_cand": 5
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 50,
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "pk": 28,
+   "v_base": 621,
+   "v_cand": 631
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "nathan-wardius",
+   "name": "Nathan Wardius",
+   "pk": null,
+   "v_base": 143,
+   "v_cand": 144
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 54,
+   "key": "ned-long",
+   "name": "Ned Long",
+   "pk": 3,
+   "v_base": 1362,
+   "v_cand": 1381
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 31,
+   "games": 25,
+   "key": "ned-moyle",
+   "name": "Ned Moyle",
+   "pk": 5,
+   "v_base": 2173,
+   "v_cand": 2204
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 4,
+   "games": 57,
+   "key": "ned-reeves",
+   "name": "Ned Reeves",
+   "pk": null,
+   "v_base": 245,
+   "v_cand": 249
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 12,
+   "games": 58,
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "pk": 10,
+   "v_base": 900,
+   "v_cand": 912
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 149,
+   "key": "nic-newman",
+   "name": "Nic Newman",
+   "pk": 24,
+   "v_base": 631,
+   "v_cand": 639
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 51,
+   "games": 83,
+   "key": "nicholas-martin",
+   "name": "Nicholas Martin",
+   "pk": null,
+   "v_base": 3588,
+   "v_cand": 3639
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 59,
+   "games": 170,
+   "key": "nick-blakey",
+   "name": "Nick Blakey",
+   "pk": 10,
+   "v_base": 4181,
+   "v_cand": 4240
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 12,
+   "games": 33,
+   "key": "nick-bryan",
+   "name": "Nick Bryan",
+   "pk": 37,
+   "v_base": 762,
+   "v_cand": 774
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 152,
+   "games": 113,
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "pk": 4,
+   "v_base": 10733,
+   "v_cand": 10885
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "nick-driscoll",
+   "name": "Nick Driscoll",
+   "pk": 6,
+   "v_base": 391,
+   "v_cand": 395
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 249,
+   "key": "nick-haynes",
+   "name": "Nick Haynes",
+   "pk": 10,
+   "v_base": 54,
+   "v_cand": 55
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 7,
+   "games": 153,
+   "key": "nick-larkey",
+   "name": "Nick Larkey",
+   "pk": 72,
+   "v_base": 521,
+   "v_cand": 528
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 27,
+   "games": 8,
+   "key": "nick-madden",
+   "name": "Nick Madden",
+   "pk": null,
+   "v_base": 1833,
+   "v_cand": 1860
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 5,
+   "games": 78,
+   "key": "nick-murray",
+   "name": "Nick Murray",
+   "pk": null,
+   "v_base": 324,
+   "v_cand": 329
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 273,
+   "key": "nick-vlastuin",
+   "name": "Nick Vlastuin",
+   "pk": 12,
+   "v_base": 60,
+   "v_cand": 61
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 55,
+   "games": 59,
+   "key": "nick-watson",
+   "name": "Nick Watson",
+   "pk": 5,
+   "v_base": 3897,
+   "v_cand": 3952
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 61,
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox",
+   "pk": 8,
+   "v_base": 137,
+   "v_cand": 139
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 79,
+   "games": 147,
+   "key": "noah-anderson",
+   "name": "Noah Anderson",
+   "pk": 2,
+   "v_base": 5589,
+   "v_cand": 5668
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 134,
+   "key": "noah-balta",
+   "name": "Noah Balta",
+   "pk": 25,
+   "v_base": 419,
+   "v_cand": 425
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "noah-chamberlain",
+   "name": "Noah Chamberlain",
+   "pk": null,
+   "v_base": 181,
+   "v_cand": 182
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 0,
+   "key": "noah-howes",
+   "name": "Noah Howes",
+   "pk": 14,
+   "v_base": 217,
+   "v_cand": 219
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 36,
+   "key": "noah-long",
+   "name": "Noah Long",
+   "pk": 57,
+   "v_base": 178,
+   "v_cand": 180
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 58,
+   "games": 4,
+   "key": "noah-mraz",
+   "name": "Noah Mraz",
+   "pk": 35,
+   "v_base": 4159,
+   "v_cand": 4217
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 3,
+   "key": "noah-roberts-thomson",
+   "name": "Noah Roberts-Thomson",
+   "pk": 54,
+   "v_base": 345,
+   "v_cand": 349
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 203,
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "pk": 11,
+   "v_base": 592,
+   "v_cand": 601
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 4,
+   "key": "oliver-francou",
+   "name": "Oliver Francou",
+   "pk": 3,
+   "v_base": 476,
+   "v_cand": 483
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "oliver-griffin",
+   "name": "Oliver Griffin",
+   "pk": 6,
+   "v_base": 216,
+   "v_cand": 219
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 5,
+   "key": "oliver-hannaford",
+   "name": "Oliver Hannaford",
+   "pk": 18,
+   "v_base": 374,
+   "v_cand": 380
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 7,
+   "key": "oliver-hayes-brown",
+   "name": "Oliver Hayes-Brown",
+   "pk": null,
+   "v_base": 218,
+   "v_cand": 221
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 25,
+   "games": 76,
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "pk": 11,
+   "v_base": 1698,
+   "v_cand": 1723
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 288,
+   "key": "oliver-wines",
+   "name": "Oliver Wines",
+   "pk": 10,
+   "v_base": 268,
+   "v_cand": 272
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 31,
+   "games": 77,
+   "key": "ollie-dempsey",
+   "name": "Ollie Dempsey",
+   "pk": 7,
+   "v_base": 2112,
+   "v_cand": 2143
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 3,
+   "key": "ollie-greeves",
+   "name": "Ollie Greeves",
+   "pk": 5,
+   "v_base": 618,
+   "v_cand": 626
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 35,
+   "key": "ollie-lord",
+   "name": "Ollie Lord",
+   "pk": 51,
+   "v_base": 121,
+   "v_cand": 122
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 112,
+   "key": "oscar-allen",
+   "name": "Oscar Allen",
+   "pk": 21,
+   "v_base": 101,
+   "v_cand": 103
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "oscar-berry",
+   "name": "Oscar Berry",
+   "pk": null,
+   "v_base": 72,
+   "v_cand": 73
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 0,
+   "key": "oscar-ryan",
+   "name": "Oscar Ryan",
+   "pk": 27,
+   "v_base": 253,
+   "v_cand": 252
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 8,
+   "key": "oscar-steene",
+   "name": "Oscar Steene",
+   "pk": null,
+   "v_base": 488,
+   "v_cand": 496
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 9,
+   "key": "paddy-cross",
+   "name": "Paddy Cross",
+   "pk": null,
+   "v_base": 22,
+   "v_cand": 23
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "patrick-carr",
+   "name": "Patrick Carr",
+   "pk": null,
+   "v_base": 258,
+   "v_cand": 263
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 24,
+   "games": 249,
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "pk": 13,
+   "v_base": 1670,
+   "v_cand": 1694
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 159,
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski",
+   "pk": 28,
+   "v_base": 745,
+   "v_cand": 755
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 18,
+   "games": 14,
+   "key": "patrick-retschko",
+   "name": "Patrick Retschko",
+   "pk": 8,
+   "v_base": 1257,
+   "v_cand": 1275
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 24,
+   "games": 45,
+   "key": "patrick-voss",
+   "name": "Patrick Voss",
+   "pk": 5,
+   "v_base": 1700,
+   "v_cand": 1724
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 94,
+   "key": "paul-curtis",
+   "name": "Paul Curtis",
+   "pk": 35,
+   "v_base": 1369,
+   "v_cand": 1388
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 65,
+   "key": "peter-ladhams",
+   "name": "Peter Ladhams",
+   "pk": 7,
+   "v_base": 543,
+   "v_cand": 550
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 22,
+   "games": 166,
+   "key": "peter-wright",
+   "name": "Peter Wright",
+   "pk": 10,
+   "v_base": 1552,
+   "v_cand": 1574
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 26,
+   "games": 15,
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard",
+   "pk": 12,
+   "v_base": 1797,
+   "v_cand": 1823
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 147,
+   "key": "reilly-o-brien",
+   "name": "Reilly O'Brien",
+   "pk": 8,
+   "v_base": 880,
+   "v_cand": 893
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 33,
+   "games": 76,
+   "key": "reuben-ginbey",
+   "name": "Reuben Ginbey",
+   "pk": 9,
+   "v_base": 2327,
+   "v_cand": 2360
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 38,
+   "key": "rhett-bazzo",
+   "name": "Rhett Bazzo",
+   "pk": 37,
+   "v_base": 475,
+   "v_cand": 482
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 1,
+   "games": 79,
+   "key": "rhyan-mansell",
+   "name": "Rhyan Mansell",
+   "pk": null,
+   "v_base": 53,
+   "v_cand": 54
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 99,
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "pk": 26,
+   "v_base": 140,
+   "v_cand": 142
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "ricky-mentha",
+   "name": "Ricky Mentha",
+   "pk": null,
+   "v_base": 140,
+   "v_cand": 143
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 33,
+   "key": "riley-bice",
+   "name": "Riley Bice",
+   "pk": 41,
+   "v_base": 233,
+   "v_cand": 237
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 39,
+   "key": "riley-garcia",
+   "name": "Riley Garcia",
+   "pk": 61,
+   "v_base": 73,
+   "v_cand": 74
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 4,
+   "key": "riley-hamilton",
+   "name": "Riley Hamilton",
+   "pk": null,
+   "v_base": 285,
+   "v_cand": 289
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 24,
+   "key": "riley-hardeman",
+   "name": "Riley Hardeman",
+   "pk": 23,
+   "v_base": 283,
+   "v_cand": 286
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "riley-onley",
+   "name": "Riley Onley",
+   "pk": 2,
+   "v_base": 387,
+   "v_cand": 391
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 60,
+   "games": 94,
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "pk": 2,
+   "v_base": 4288,
+   "v_cand": 4348
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "river-stevens",
+   "name": "River Stevens",
+   "pk": 67,
+   "v_base": 177,
+   "v_cand": 180
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 20,
+   "key": "roan-steele",
+   "name": "Roan Steele",
+   "pk": 7,
+   "v_base": 13,
+   "v_cand": 14
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "rob-monahan",
+   "name": "Rob Monahan",
+   "pk": null,
+   "v_base": 173,
+   "v_cand": 176
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 20,
+   "key": "robert-hansen",
+   "name": "Robert Hansen",
+   "pk": 2,
+   "v_base": 101,
+   "v_cand": 103
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 284,
+   "key": "rory-laird",
+   "name": "Rory Laird",
+   "pk": 8,
+   "v_base": 755,
+   "v_cand": 766
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 215,
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "pk": 29,
+   "v_base": 297,
+   "v_cand": 301
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 31,
+   "games": 173,
+   "key": "rowan-marshall",
+   "name": "Rowan Marshall",
+   "pk": 8,
+   "v_base": 2113,
+   "v_cand": 2144
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 46,
+   "key": "ryan-angwin",
+   "name": "Ryan Angwin",
+   "pk": 19,
+   "v_base": 418,
+   "v_cand": 424
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 91,
+   "key": "ryan-byrnes",
+   "name": "Ryan Byrnes",
+   "pk": 51,
+   "v_base": 61,
+   "v_cand": 62
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 20,
+   "games": 62,
+   "key": "ryan-maric",
+   "name": "Ryan Maric",
+   "pk": 1,
+   "v_base": 1405,
+   "v_cand": 1425
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "ryda-luke",
+   "name": "Ryda Luke",
+   "pk": null,
+   "v_base": 216,
+   "v_cand": 219
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 53,
+   "games": 52,
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "pk": 6,
+   "v_base": 3793,
+   "v_cand": 3846
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 17,
+   "key": "saad-el-hawli",
+   "name": "Saad El-Hawli",
+   "pk": 13,
+   "v_base": 12,
+   "v_cand": 13
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 57,
+   "key": "sam-banks",
+   "name": "Sam Banks",
+   "pk": 29,
+   "v_base": 1093,
+   "v_cand": 1108
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 53,
+   "games": 95,
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "pk": 29,
+   "v_base": 3784,
+   "v_cand": 3837
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 43,
+   "key": "sam-clohesy",
+   "name": "Sam Clohesy",
+   "pk": 3,
+   "v_base": 207,
+   "v_cand": 211
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 41,
+   "games": 13,
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "pk": 7,
+   "v_base": 2936,
+   "v_cand": 2977
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 74,
+   "games": 51,
+   "key": "sam-darcy",
+   "name": "Sam Darcy",
+   "pk": 2,
+   "v_base": 5304,
+   "v_cand": 5378
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 12,
+   "games": 96,
+   "key": "sam-de-koning",
+   "name": "Sam De Koning",
+   "pk": 19,
+   "v_base": 854,
+   "v_cand": 866
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 17,
+   "games": 96,
+   "key": "sam-draper",
+   "name": "Sam Draper",
+   "pk": 1,
+   "v_base": 1099,
+   "v_cand": 1116
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 38,
+   "games": 109,
+   "key": "sam-durham",
+   "name": "Sam Durham",
+   "pk": 9,
+   "v_base": 2627,
+   "v_cand": 2665
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 101,
+   "key": "sam-flanders",
+   "name": "Sam Flanders",
+   "pk": 11,
+   "v_base": 2060,
+   "v_cand": 2089
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 57,
+   "games": 20,
+   "key": "sam-lalor",
+   "name": "Sam Lalor",
+   "pk": 1,
+   "v_base": 4132,
+   "v_cand": 4189
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 11,
+   "games": 13,
+   "key": "sam-marshall",
+   "name": "Sam Marshall",
+   "pk": 25,
+   "v_base": 803,
+   "v_cand": 814
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 158,
+   "key": "sam-powell-pepper",
+   "name": "Sam Powell-Pepper",
+   "pk": 18,
+   "v_base": 177,
+   "v_cand": 180
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 139,
+   "key": "sam-taylor",
+   "name": "Sam Taylor",
+   "pk": 28,
+   "v_base": 1282,
+   "v_cand": 1301
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 45,
+   "games": 152,
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "pk": 1,
+   "v_base": 3230,
+   "v_cand": 3275
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 27,
+   "key": "samson-ryan",
+   "name": "Samson Ryan",
+   "pk": 42,
+   "v_base": 396,
+   "v_cand": 402
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 168,
+   "key": "samuel-collins",
+   "name": "Samuel Collins",
+   "pk": 54,
+   "v_base": 621,
+   "v_cand": 630
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 26,
+   "games": 17,
+   "key": "samuel-grlj",
+   "name": "Samuel Grlj",
+   "pk": 8,
+   "v_base": 1784,
+   "v_cand": 1810
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 11,
+   "games": 5,
+   "key": "samuel-swadling",
+   "name": "Samuel Swadling",
+   "pk": 37,
+   "v_base": 738,
+   "v_cand": 749
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 19,
+   "key": "sandy-brock",
+   "name": "Sandy Brock",
+   "pk": null,
+   "v_base": 171,
+   "v_cand": 173
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 5,
+   "games": 406,
+   "key": "scott-pendlebury",
+   "name": "Scott Pendlebury",
+   "pk": 5,
+   "v_base": 343,
+   "v_cand": 348
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 10,
+   "games": 134,
+   "key": "sean-darcy",
+   "name": "Sean Darcy",
+   "pk": 38,
+   "v_base": 753,
+   "v_cand": 763
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 62,
+   "key": "seth-campbell",
+   "name": "Seth Campbell",
+   "pk": 3,
+   "v_base": 970,
+   "v_cand": 983
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 11,
+   "key": "shadeau-brain",
+   "name": "Shadeau Brain",
+   "pk": null,
+   "v_base": 88,
+   "v_cand": 90
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 33,
+   "games": 176,
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "pk": 29,
+   "v_base": 2266,
+   "v_cand": 2299
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 32,
+   "games": 64,
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "pk": 35,
+   "v_base": 2228,
+   "v_cand": 2260
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 53,
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "pk": 36,
+   "v_base": 544,
+   "v_cand": 552
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 17,
+   "games": 10,
+   "key": "sid-draper",
+   "name": "Sid Draper",
+   "pk": 4,
+   "v_base": 1150,
+   "v_cand": 1167
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 42,
+   "key": "steely-green",
+   "name": "Steely Green",
+   "pk": 55,
+   "v_base": 148,
+   "v_cand": 150
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 244,
+   "key": "stephen-coniglio",
+   "name": "Stephen Coniglio",
+   "pk": 3,
+   "v_base": 159,
+   "v_cand": 161
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 43,
+   "games": 14,
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "pk": 9,
+   "v_base": 3028,
+   "v_cand": 3071
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 31,
+   "games": 13,
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "pk": 12,
+   "v_base": 2188,
+   "v_cand": 2219
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 12,
+   "games": 13,
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "pk": 45,
+   "v_base": 815,
+   "v_cand": 827
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 30,
+   "games": 82,
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "pk": 12,
+   "v_base": 2109,
+   "v_cand": 2139
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 11,
+   "games": 2,
+   "key": "taylor-goad",
+   "name": "Taylor Goad",
+   "pk": 20,
+   "v_base": 1040,
+   "v_cand": 1051
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 314,
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "pk": 64,
+   "v_base": 135,
+   "v_cand": 137
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 2,
+   "key": "thomas-anastasopoulos",
+   "name": "Tom Anastasopoulos",
+   "pk": 48,
+   "v_base": 269,
+   "v_cand": 272
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 5,
+   "key": "thomas-burton",
+   "name": "Thomas Burton",
+   "pk": null,
+   "v_base": 382,
+   "v_cand": 388
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 19,
+   "games": 265,
+   "key": "thomas-liberatore",
+   "name": "Thomas Liberatore",
+   "pk": 24,
+   "v_base": 1384,
+   "v_cand": 1403
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 14,
+   "games": 11,
+   "key": "thomas-sims",
+   "name": "Thomas Sims",
+   "pk": 28,
+   "v_base": 1028,
+   "v_cand": 1042
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 208,
+   "key": "thomas-stewart",
+   "name": "Thomas Stewart",
+   "pk": 40,
+   "v_base": 1058,
+   "v_cand": 1073
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 16,
+   "games": 181,
+   "key": "tim-kelly",
+   "name": "Tim Kelly",
+   "pk": 24,
+   "v_base": 1178,
+   "v_cand": 1194
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 217,
+   "key": "tim-membrey",
+   "name": "Tim Membrey",
+   "pk": 49,
+   "v_base": 127,
+   "v_cand": 129
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 32,
+   "games": 190,
+   "key": "tim-taranto",
+   "name": "Tim Taranto",
+   "pk": 2,
+   "v_base": 2292,
+   "v_cand": 2324
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 53,
+   "games": 167,
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "pk": 19,
+   "v_base": 3787,
+   "v_cand": 3840
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 16,
+   "key": "tobie-travaglia",
+   "name": "Tobie Travaglia",
+   "pk": 8,
+   "v_base": 690,
+   "v_cand": 699
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 2,
+   "games": 98,
+   "key": "toby-bedford",
+   "name": "Toby Bedford",
+   "pk": 75,
+   "v_base": 175,
+   "v_cand": 177
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": -1,
+   "games": 6,
+   "key": "toby-conway",
+   "name": "Toby Conway",
+   "pk": 24,
+   "v_base": 504,
+   "v_cand": 503
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 13,
+   "games": 278,
+   "key": "toby-greene",
+   "name": "Toby Greene",
+   "pk": 17,
+   "v_base": 836,
+   "v_cand": 849
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 34,
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin",
+   "pk": 34,
+   "v_base": 129,
+   "v_cand": 131
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 11,
+   "key": "toby-murray",
+   "name": "Toby Murray",
+   "pk": 7,
+   "v_base": 217,
+   "v_cand": 219
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 30,
+   "games": 187,
+   "key": "toby-nankervis",
+   "name": "Toby Nankervis",
+   "pk": 35,
+   "v_base": 2000,
+   "v_cand": 2030
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 0,
+   "key": "toby-whan",
+   "name": "Toby Whan",
+   "pk": null,
+   "v_base": 216,
+   "v_cand": 219
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "tobyn-murray",
+   "name": "Tobyn Murray",
+   "pk": 40,
+   "v_base": 252,
+   "v_cand": 253
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 4,
+   "games": 172,
+   "key": "tom-atkins",
+   "name": "Tom Atkins",
+   "pk": 7,
+   "v_base": 292,
+   "v_cand": 296
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 190,
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "pk": 43,
+   "v_base": 64,
+   "v_cand": 65
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 13,
+   "key": "tom-blamires",
+   "name": "Tom Blamires",
+   "pk": null,
+   "v_base": 57,
+   "v_cand": 58
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 7,
+   "games": 56,
+   "key": "tom-brown",
+   "name": "Tom Brown",
+   "pk": 17,
+   "v_base": 476,
+   "v_cand": 483
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 6,
+   "key": "tom-cochrane",
+   "name": "Tom Cochrane",
+   "pk": 5,
+   "v_base": 258,
+   "v_cand": 261
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 144,
+   "key": "tom-cole",
+   "name": "Tom Cole",
+   "pk": 36,
+   "v_base": 53,
+   "v_cand": 54
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 111,
+   "key": "tom-de-koning",
+   "name": "Tom De Koning",
+   "pk": 30,
+   "v_base": 1962,
+   "v_cand": 1991
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 83,
+   "key": "tom-doedee",
+   "name": "Tom Doedee",
+   "pk": 17,
+   "v_base": 240,
+   "v_cand": 243
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 69,
+   "games": 115,
+   "key": "tom-green",
+   "name": "Tom Green",
+   "pk": 10,
+   "v_base": 4887,
+   "v_cand": 4956
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 9,
+   "key": "tom-gross",
+   "name": "Tom Gross",
+   "pk": 46,
+   "v_base": 597,
+   "v_cand": 605
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 2,
+   "games": 12,
+   "key": "tom-hanily",
+   "name": "Tom Hanily",
+   "pk": 14,
+   "v_base": 165,
+   "v_cand": 167
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 19,
+   "games": 28,
+   "key": "tom-mccarthy",
+   "name": "Tom McCarthy",
+   "pk": 1,
+   "v_base": 1422,
+   "v_cand": 1441
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 25,
+   "games": 168,
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "pk": 33,
+   "v_base": 1729,
+   "v_cand": 1754
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 255,
+   "key": "tom-mcdonald",
+   "name": "Tom McDonald",
+   "pk": 54,
+   "v_base": 111,
+   "v_cand": 112
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 6,
+   "games": 210,
+   "key": "tom-papley",
+   "name": "Tom Papley",
+   "pk": 11,
+   "v_base": 379,
+   "v_cand": 385
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 29,
+   "games": 99,
+   "key": "tom-powell",
+   "name": "Tom Powell",
+   "pk": 13,
+   "v_base": 2147,
+   "v_cand": 2176
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 23,
+   "games": 136,
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "pk": 27,
+   "v_base": 1604,
+   "v_cand": 1627
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 30,
+   "games": 233,
+   "key": "touk-miller",
+   "name": "Touk Miller",
+   "pk": 29,
+   "v_base": 2177,
+   "v_cand": 2207
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 23,
+   "games": 135,
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "pk": 32,
+   "v_base": 1603,
+   "v_cand": 1626
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 118,
+   "games": 91,
+   "key": "tristan-xerri",
+   "name": "Tristan Xerri",
+   "pk": 71,
+   "v_base": 8354,
+   "v_cand": 8472
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 19,
+   "games": 23,
+   "key": "ty-gallop",
+   "name": "Ty Gallop",
+   "pk": 42,
+   "v_base": 1355,
+   "v_cand": 1374
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "tyan-prindable",
+   "name": "Tyan Prindable",
+   "pk": 32,
+   "v_base": 579,
+   "v_cand": 580
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "tylah-williams",
+   "name": "Tylah Williams",
+   "pk": 39,
+   "v_base": 268,
+   "v_cand": 269
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 54,
+   "key": "tylar-young",
+   "name": "Tylar Young",
+   "pk": 9,
+   "v_base": 232,
+   "v_cand": 235
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 56,
+   "key": "tyler-brockman",
+   "name": "Tyler Brockman",
+   "pk": 48,
+   "v_base": 54,
+   "v_cand": 55
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 15,
+   "games": 53,
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "pk": 28,
+   "v_base": 1073,
+   "v_cand": 1088
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 0,
+   "key": "tyler-welsh",
+   "name": "Tyler Welsh",
+   "pk": 59,
+   "v_base": 85,
+   "v_cand": 86
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 109,
+   "key": "tyson-stengle",
+   "name": "Tyson Stengle",
+   "pk": 4,
+   "v_base": 162,
+   "v_cand": 164
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 2,
+   "key": "vigo-visentini",
+   "name": "Vigo Visentini",
+   "pk": 5,
+   "v_base": 184,
+   "v_cand": 187
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 9,
+   "key": "wade-derksen",
+   "name": "Wade Derksen",
+   "pk": 5,
+   "v_base": 57,
+   "v_cand": 58
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 26,
+   "games": 140,
+   "key": "wayne-milera",
+   "name": "Wayne Milera",
+   "pk": 11,
+   "v_base": 1803,
+   "v_cand": 1829
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 14,
+   "key": "wil-dawson",
+   "name": "Wil Dawson",
+   "pk": 22,
+   "v_base": 582,
+   "v_cand": 589
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 14,
+   "key": "wil-parker",
+   "name": "Wil Parker",
+   "pk": null,
+   "v_base": 20,
+   "v_cand": 21
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 147,
+   "key": "wil-powell",
+   "name": "Wil Powell",
+   "pk": 19,
+   "v_base": 764,
+   "v_cand": 775
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 99,
+   "games": 77,
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "pk": 2,
+   "v_base": 7051,
+   "v_cand": 7150
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 55,
+   "key": "will-brodie",
+   "name": "Will Brodie",
+   "pk": 9,
+   "v_base": 829,
+   "v_cand": 840
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 40,
+   "games": 83,
+   "key": "will-day",
+   "name": "Will Day",
+   "pk": 13,
+   "v_base": 2909,
+   "v_cand": 2949
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 3,
+   "games": 12,
+   "key": "will-edwards",
+   "name": "Will Edwards",
+   "pk": null,
+   "v_base": 193,
+   "v_cand": 196
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 24,
+   "games": 36,
+   "key": "will-graham",
+   "name": "Will Graham",
+   "pk": 26,
+   "v_base": 1670,
+   "v_cand": 1694
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 6,
+   "games": 8,
+   "key": "will-hayes-b",
+   "name": "Will Hayes",
+   "pk": 56,
+   "v_base": 425,
+   "v_cand": 431
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 202,
+   "key": "will-hayward",
+   "name": "Will Hayward",
+   "pk": 21,
+   "v_base": 137,
+   "v_cand": 139
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 9,
+   "key": "will-lorenz",
+   "name": "Will Lorenz",
+   "pk": 57,
+   "v_base": 374,
+   "v_cand": 379
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 7,
+   "key": "will-mclachlan",
+   "name": "Will McLachlan",
+   "pk": 6,
+   "v_base": 129,
+   "v_cand": 130
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 9,
+   "games": 91,
+   "key": "will-setterfield",
+   "name": "Will Setterfield",
+   "pk": 5,
+   "v_base": 632,
+   "v_cand": 641
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 8,
+   "games": 149,
+   "key": "willem-drew",
+   "name": "Willem Drew",
+   "pk": 33,
+   "v_base": 567,
+   "v_cand": 575
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 67,
+   "games": 17,
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "pk": 1,
+   "v_base": 4721,
+   "v_cand": 4788
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 8,
+   "games": 4,
+   "key": "william-mccabe",
+   "name": "William McCabe",
+   "pk": 19,
+   "v_base": 675,
+   "v_cand": 683
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 7,
+   "key": "xavier-bamert",
+   "name": "Xavier Bamert",
+   "pk": 5,
+   "v_base": 381,
+   "v_cand": 386
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 128,
+   "key": "xavier-duursma",
+   "name": "Xavier Duursma",
+   "pk": 18,
+   "v_base": 144,
+   "v_cand": 145
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 28,
+   "games": 23,
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "pk": 11,
+   "v_base": 2043,
+   "v_cand": 2071
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 1,
+   "games": 101,
+   "key": "xavier-o-halloran",
+   "name": "Xavier O'Halloran",
+   "pk": 22,
+   "v_base": 38,
+   "v_cand": 39
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 9,
+   "games": 2,
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor",
+   "pk": 11,
+   "v_base": 964,
+   "v_cand": 973
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 0,
+   "key": "xavier-walsh",
+   "name": "Xavier Walsh",
+   "pk": 6,
+   "v_base": 341,
+   "v_cand": 346
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 44,
+   "games": 184,
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "pk": 15,
+   "v_base": 3113,
+   "v_cand": 3157
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 1,
+   "games": 8,
+   "key": "zac-banch",
+   "name": "Zac Banch",
+   "pk": 2,
+   "v_base": 33,
+   "v_cand": 34
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 133,
+   "key": "zac-fisher",
+   "name": "Zac Fisher",
+   "pk": 27,
+   "v_base": 109,
+   "v_cand": 111
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 3,
+   "games": 43,
+   "key": "zac-taylor",
+   "name": "Zac Taylor",
+   "pk": 44,
+   "v_base": 197,
+   "v_cand": 200
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 0,
+   "key": "zac-walker",
+   "name": "Zac Walker",
+   "pk": 11,
+   "v_base": 265,
+   "v_cand": 269
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 2,
+   "games": 147,
+   "key": "zach-guthrie",
+   "name": "Zach Guthrie",
+   "pk": 21,
+   "v_base": 218,
+   "v_cand": 220
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 17,
+   "games": 38,
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "pk": 10,
+   "v_base": 1216,
+   "v_cand": 1233
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 37,
+   "games": 270,
+   "key": "zachary-merrett",
+   "name": "Zachary Merrett",
+   "pk": 26,
+   "v_base": 2673,
+   "v_cand": 2710
+  },
+  {
+   "channel": "pool_levels",
+   "delta": 6,
+   "games": 183,
+   "key": "zachary-williams",
+   "name": "Zachary Williams",
+   "pk": null,
+   "v_base": 374,
+   "v_cand": 380
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 100,
+   "games": 156,
+   "key": "zak-butters",
+   "name": "Zak Butters",
+   "pk": 12,
+   "v_base": 7075,
+   "v_cand": 7175
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 7,
+   "games": 14,
+   "key": "zak-johnson",
+   "name": "Zak Johnson",
+   "pk": 70,
+   "v_base": 537,
+   "v_cand": 544
+  },
+  {
+   "channel": "ruled_curve",
+   "delta": 11,
+   "games": 38,
+   "key": "zane-duursma",
+   "name": "Zane Duursma",
+   "pk": 4,
+   "v_base": 754,
+   "v_cand": 765
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 5,
+   "games": 2,
+   "key": "zane-peucker",
+   "name": "Zane Peucker",
+   "pk": 31,
+   "v_base": 497,
+   "v_cand": 502
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 4,
+   "games": 3,
+   "key": "zane-zakostelsky",
+   "name": "Zane Zakostelsky",
+   "pk": 51,
+   "v_base": 406,
+   "v_cand": 410
+  },
+  {
+   "channel": "year_zero_lens",
+   "delta": 38,
+   "games": 16,
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "pk": 2,
+   "v_base": 2665,
+   "v_cand": 2703
+  }
+ ],
+ "dropped": [],
+ "held_gate": "PASS",
+ "movers": 649
+}

@@ -2,12 +2,12 @@
   "class_A_unrepresented": [],
   "class_counts": {
     "?": 0,
-    "A": 61,
+    "A": 59,
     "B": 20,
-    "C": 2
+    "C": 5
   },
-  "n_reads": 162,
-  "n_vars": 83,
+  "n_reads": 166,
+  "n_vars": 84,
   "ok": true,
   "root": "/home/user/afl-rl-engine",
   "surface_file_count": 92,
@@ -22,7 +22,7 @@
         {
           "default": "0.40",
           "file": "engine/forward_valuation/par_build.py",
-          "line": 29
+          "line": 36
         }
       ],
       "var": "PAR_BW"
@@ -36,7 +36,7 @@
         {
           "default": "30",
           "file": "engine/forward_valuation/par_build.py",
-          "line": 31
+          "line": 38
         }
       ],
       "var": "PAR_K"
@@ -50,7 +50,7 @@
         {
           "default": "6",
           "file": "engine/forward_valuation/par_build.py",
-          "line": 30
+          "line": 37
         }
       ],
       "var": "PAR_MING"
@@ -243,20 +243,6 @@
       "var": "RL_FWDRECAL"
     },
     {
-      "canonical": "0.85",
-      "cls": "A",
-      "kind": "switch",
-      "note": "discount",
-      "reads": [
-        {
-          "default": "<required>",
-          "file": "engine/forward_valuation/build_peak_model_v4.py",
-          "line": 8
-        }
-      ],
-      "var": "RL_GAMMA"
-    },
-    {
       "canonical": "1",
       "cls": "A",
       "kind": "switch",
@@ -293,7 +279,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 1164
+          "line": 1229
         }
       ],
       "var": "RL_L5_PICKLESS"
@@ -474,20 +460,6 @@
       "var": "RL_OVPX"
     },
     {
-      "canonical": "3000",
-      "cls": "A",
-      "kind": "switch",
-      "note": "numeraire pick-1",
-      "reads": [
-        {
-          "default": "<required>",
-          "file": "engine/forward_valuation/build_peak_model_v4.py",
-          "line": 8
-        }
-      ],
-      "var": "RL_PICK1"
-    },
-    {
       "canonical": "400",
       "cls": "A",
       "kind": "switch",
@@ -511,7 +483,7 @@
         {
           "default": "400",
           "file": "engine/forward_valuation/conditional_prior.py",
-          "line": 139
+          "line": 159
         },
         {
           "default": "400",
@@ -535,7 +507,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1610
+          "line": 1838
         },
         {
           "default": "1",
@@ -555,7 +527,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 928
+          "line": 993
         }
       ],
       "var": "RL_PVC2"
@@ -569,7 +541,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1583
+          "line": 1811
         }
       ],
       "var": "RL_PVCADOPT"
@@ -583,7 +555,7 @@
         {
           "default": "0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1576
+          "line": 1804
         },
         {
           "default": "<expr:<default>>",
@@ -747,17 +719,17 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1264
+          "line": 1272
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1340
+          "line": 1361
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1387
+          "line": 1601
         }
       ],
       "var": "RL_V0SURF_REFIT"
@@ -1164,7 +1136,17 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1266
+          "line": 1274
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1424
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1550
         },
         {
           "default": null,
@@ -1209,12 +1191,17 @@
         {
           "default": null,
           "file": "engine/forward_valuation/build_peak_model_v4.py",
-          "line": 5
+          "line": 15
         },
         {
           "default": "<required>",
           "file": "engine/forward_valuation/build_peak_model_v4.py",
-          "line": 6
+          "line": 16
+        },
+        {
+          "default": "",
+          "file": "engine/forward_valuation/build_peak_model_v4.py",
+          "line": 128
         },
         {
           "default": null,
@@ -1254,12 +1241,12 @@
         {
           "default": null,
           "file": "engine/forward_valuation/par_build.py",
-          "line": 18
+          "line": 25
         },
         {
           "default": "<required>",
           "file": "engine/forward_valuation/par_build.py",
-          "line": 19
+          "line": 26
         },
         {
           "default": null,
@@ -1508,7 +1495,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1265
+          "line": 1273
         },
         {
           "default": null,
@@ -1555,6 +1542,48 @@
         }
       ],
       "var": "RL_BAKE_REFIT"
+    },
+    {
+      "canonical": null,
+      "cls": "C",
+      "kind": "diag",
+      "note": "path override for the recorded lane-expectation file; refit lane only. Absent file yields INAPPLICABLE and asserts nothing",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1549
+        }
+      ],
+      "var": "RL_LANE_EXPECT"
+    },
+    {
+      "canonical": null,
+      "cls": "C",
+      "kind": "diag",
+      "note": "path override for the DECLARED lens-basis input (structural_basis_279.json); refit lane only. Default path is committed at docs/evidence/exec_306_zlaarm/basis/, and the artifact is reproducible byte-exact from its own emitter, whose two #279 sources are md5-pinned inside it",
+      "reads": [
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1423
+        }
+      ],
+      "var": "RL_LENS_BASIS"
+    },
+    {
+      "canonical": "1",
+      "cls": "C",
+      "kind": "diag",
+      "note": "year-zero anchored-lens kill-switch; read ONLY in the declared refit lane (_merged_recover.py:1393, inside the RL_V0SURF_REFIT branch), never on a canonical board build",
+      "reads": [
+        {
+          "default": "1",
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 1393
+        }
+      ],
+      "var": "RL_V0_LENS"
     },
     {
       "canonical": "/home/claude/rl_workspace/rl_after",
