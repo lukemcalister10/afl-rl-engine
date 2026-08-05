@@ -136,3 +136,18 @@ byte-identically (`ed5b7fcc`) rather than trusted.
 
 Three classifications, three reproductions — 55s / 76s / 79s. Thirteen captures now stand (L7 adds
 `2b5e99eb`).
+
+## Entry 4 — the L8 re-classification
+
+Container restarted again before L8 (`uptime` 0 min, boot **07:33:56 UTC**). Full re-classification
+before any board build: pure pass-0 `13b71c26` restored + round-tripped → pins 5/5, OpenBLAS sha256
+`05c9f9eb` byte-exact → preboot → bootstrap rc=0, Guard 5 PASS → tier-2 `d14f0f12` / `aaccad1c` →
+**fit-path assert PASS `fb9efdec`, 44s** → round trip → L7 substrate `2b5e99eb` restored and proven.
+
+| # | UTC | host (uptime at entry) | substrate | fit-path `fb9efdec` | verdict |
+|---|---|---|---|---|---|
+| 4 | 2026-08-05 ~07:37 | up 0 min (boot 07:33:56 UTC) | pure pass-0, `13b71c26` | **PASS — `fb9efdec…`** (44s) | **FIT-CLASS** |
+
+Four classifications, four reproductions — 55s / 76s / 79s / 44s. L8 built three boards (baseline
+31f7108a, candidate 46ebfb37 x2 determinism) all on this classified box. No new capture: L8 changed no
+product file — the substrate stays L7's `2b5e99eb`.
