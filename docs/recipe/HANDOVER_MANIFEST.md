@@ -12,14 +12,14 @@
 | `engine/rl_after/rl_passmark.json` | 4,701 B | `93239011` | expected-score curves per pick band / band+position, band definitions, bust-rate priors |
 | `engine/rl_after/ycred_table.json` | 176,469 B | `123aa9dc` | young-player expected-improvement credit grid by pick |
 | `engine/rl_after/bust_prior_table.json` | 5,398 B | `5942aa6a` | bust probability priors, position x pick 1-70 |
-| `engine/rl_after/pvc_curve_v2.json` | 5,257 B | `cdc50a2f` | adopted pick-price curve, picks 1-64 + pool value (SUPERSEDED ladder - see note 1) |
+| `engine/rl_after/pvc_curve_v2.json` | 5,257 B | `cdc50a2f` | adopted pick-price curve, picks 1-64 + pool value (the redesign's ruled curve, PRE-CONVERGENCE - see note 1) |
 | `engine/rl_after/pick_redenomination.json` | 2,847 B | `2765f83d` | the 1.0524 board-currency divisor |
 | `LTI_REGISTER.md` | 8,064 B | `652d83e8` | owner-authored injury/availability register |
 | `engine/rl_after/lti_return_table.json` | 1,156 B | `6a4800e8` | age-indexed return-season haircut surface |
 | `data/owner_overrides.json` | 1,367 B | `f5f2967d` | owner display-only override list |
-| `engine/rl_after/national_draft_last_pick.json` | 7,068 B | `35815ab1` | last national pick per draft year (display offset only; stale in 4 of 23 years - see note 2) |
+| `~~national_draft_last_pick.json~~ DROPPED from handover (owner-ruled pointless: display-only, stale; delete-or-derive queued in #323)` | 7,068 B | `35815ab1` | last national pick per draft year (display offset only; stale in 4 of 23 years - see note 2) |
 
-**Note 1:** the pick curve shipped here is the superseded ladder; the redesigned ruled curve replaces it at the Track A landing — hand the rebuild the ruled artifact once it lands (or now, from the loop's evidence, clearly labelled unconverged).
+**Note 1:** this tree's curve values are the redesign's ruled anchor, but the loop deriving the FINAL curve is still running (Track A). Main's shipped board still runs the older superseded ladder. OWNER-SEQUENCED: the handover package is cut ONCE, from landed main, after Track A converges and lands — this manifest's checksums refresh then.
 
 **Note 2:** carried for completeness; its only live role is a display offset and it disagrees with the store in 4 of 23 years (recipe List 1 item 31).
 
