@@ -1,0 +1,2 @@
+{"RL_PICK1": "3000", "SCALE": 4.719196, "PVC_1": 3000, "PVC_64": 571, "BOARD_FACTOR_implied": 1.0}
+{"RL_PICK1": "3500", "SCALE": 5.505729, "PVC_1": 3000, "PVC_64": 571, "BOARD_FACTOR_implied": 1.0}

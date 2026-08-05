@@ -1243,6 +1243,14 @@ _build_v0_guard()
 # delist scrap). The BACKTEST path is untouched (guard, above). By-construction gates in _v0_curve_assert().
 _BOARD_PATH  # (declared above, before _R_surf)
 _V0CURVE={}; _V0CURVE_META={}; _V0_GRIDPK=list(range(1,91)); _V0_LGRID=np.log(_V0_GRIDPK)
+# ==== #306 L-A DESIGN CONSTANTS — fixed at design time, stated in the artifact's own record (N30).
+# Module constants, not env gates: an acceptance whose bound an environment variable can move is not a
+# bound. Changing one is a code change, visible in the engine head md5 and in review.
+_LA_HPICK=0.35     # locality bandwidth in LOG-pick: at pick 7, pick 9 weighs 0.7728 and pick 14 0.1407
+_LA_HAGE=1.5       # locality bandwidth in draft-age YEARS — smooth across age, no age buckets
+_LA_KCONF=25.0     # confidence half-weight: n_eff = 25 gives a level half its own say
+_LA_B=2.00         # m in [0.50, 2.00], held identically by the construction
+_LA_TOL=0.005      # local-neutrality tolerance, checked at EVERY pick
 def _ageR(p): return int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1))))
 # ==== LEG F6 — FREEZE _iso_dec (THE RESIDUAL WEATHER), 2026-07-18 (item 381; the SAME pattern owner-blessed
 #      for q97m 2026-07-14). WAS: _build_v0_curve() re-fit the V0 pick-curve surface (three isotonic surfaces
@@ -1282,7 +1290,20 @@ _V0SURF_GATES={'RL_RUC_PRIOR_CAP':'1.4','RL_W4_RUC':'1','RL_RUC_CEIL_HEAD':'0.80
     'RL_FWDRECAL':'1','RL_YOUNG':'1','RL_OVPX':'1','RL_KPFFIX':'1','RL_V7FORM':'1','RL_V7_FORM_W':'0.6',
     'RL_W4_CRED':'0.17','RL_W4_KPFUP':'1.6','RL_W4_FADE':'0.60','RL_W4_OVPX':'1.0','RL_W4_KPFSH':'0.55',
     'RL_W4_KPFSH_DEM':'0.70','RL_W4_KPFTOP':'0.4','RL_W4_KPFM0':'8.0','RL_W4_KPFMS':'16.0','RL_AVAIL':'1',
-    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1'}
+    'RL_LTI_RETURN':'1','RL_LTI_CLOCK':'advance','RL_YCRED_W':'0.9','RL_YCRED_KPF':'0.92','RL_ISOFADE':'1',
+    # E2 (#279 step 4 item 4, extended by seam word F1 2026-07-30): TWO keys join the signature, both of them
+    # MEASURED silent-surface channels, not suspected ones.
+    #   RL_GAMMA — the signature was curve-sensitive but GAMMA-BLIND. Gamma scales value() (rl_model.py:504,
+    #     SCALE/val at :731/:734) without moving the pvc entries, so a SCAR<->VOR flip changed the fitted
+    #     surface while producing an IDENTICAL signature. Measured: 0.85 -> 5ae00319, 1.0 -> 93b4a680.
+    #   RL_PICK1 — added on measurement, AGAINST the reasoning first filed here. The superseded comment claimed
+    #     "RL_PICK1 moves the pvc entries, so the pvc leg already catches it". IT DOES NOT. `_v0surf_sig` reads
+    #     `_PVC0`, which is sourced from the PINNED adopted-curve artifact (pin(1)=3000 by construction), so
+    #     RL_PICK1 never reaches the pvc leg at all. Measured at the step-4 rehearsal: RL_PICK1 3000 -> 3500
+    #     left the signature IDENTICAL (5ae00319 both) while all three fitted surfaces moved (c18
+    #     eddccddb -> 6cb62db4, surfN a6e2fe36 -> 1f45ba1a). That measurement is this key's proven-can-fail.
+    # Defaults are the engine's own (rl_model.py:504 and :866).
+    'RL_GAMMA':'0.85', 'RL_PICK1':'3000'}
 def _v0surf_sig(real):
     import hashlib as _hl, json as _js
     _curve=_PVC0 if '_PVC0' in globals() else MA.PVC          # the pick curve _v0_raw is actually reading right now
@@ -1369,12 +1390,205 @@ def _build_v0_curve():
     else:
         # ---- THE ONE COMMITTED REFIT PATH, and it must be DECLARED (RL_V0SURF_REFIT=1). refit_v0surf.py drives
         #      it to produce the artifact, so the frozen surface and its regeneration stay a single source.
-        for pos in POS:
-            pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
-            grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
-        matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUCK' and _ageR(p)>=19]
-        matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUCK'      and _ageR(p)>=19]
-        surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
+        if os.environ.get('RL_V0_LENS','1')!='0':
+            # ============ #306 L-A — THE ANCHORED LENS FIELD (N29 · owner laws · seam approval) ============
+            # v0*(pos,age,pick) = anchor(pick) x m(pos,age,pick).
+            #
+            # `pick` reaches the surface through the ANCHOR and through the LENS, and the lens is a smooth
+            # BOUNDED field -- free to sit below the curve at one pick and above it at another, crossing
+            # wherever the data crosses. The pre-#306 path fitted _v0_raw over log(pick) with no reference
+            # to the curve at all, which is why the tail could float 65% above it.
+            #
+            # THE BASIS IS A DECLARED INPUT, NOT CODE (approval clause 1 -- the owner's live-and-breathe
+            # steer). The lens fits from the #279 STRUCTURAL CAREER VALUES emitted to
+            # docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json by that directory's emitter,
+            # which reuses harness_pvc.structural_values() unmodified. The surface's own slot prior is
+            # BARRED as a fit target (the self-referential lineage #279 measured at 0.0248% reality); it
+            # survives only inside #279's own COUNTED fallback. When the replacement bars move, or the
+            # class window moves, the chain is RE-RUN and the artifact RE-PINNED -- no surgery here.
+            #
+            # THE LAWS THIS CODE HOLDS, each structural rather than checked afterwards:
+            #   GRADED LOCALITY  Gaussian kernels in log-pick and draft age. Influence decays smoothly;
+            #                    pick 9 informs pick 7 more than pick 14 does. NO BUCKETS ON ANY AXIS.
+            #   CONFIDENCE       hierarchical shrinkage by effective sample size --
+            #                    (pos,age,pick) -> (pos,pick) -> (pos) -> 1.0, the all-in slot value.
+            #                    Thin data leans to the all-in value and is never trusted with the full
+            #                    effect. The mature dials are under this rule identically.
+            #   LOCAL NEUTRALITY lam(pick) enforces SUM w*anchor*m == SUM w*anchor AT EVERY PICK under the
+            #                    same kernel: a position above the curve in a stretch is paid for by the
+            #                    others IN THAT STRETCH, never by inflating the class. A global scalar
+            #                    would permit exactly the cross-region borrowing this forbids.
+            #   BOUNDED          m in [1/B, B] identically; bound and neutrality iterated to a fixed point.
+            #                    Where the bound binds, the bound wins.
+            _lensf=os.environ.get('RL_LENS_BASIS') or os.path.join(
+                os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '',
+                'docs','evidence','exec_306_zlaarm','basis','structural_basis_279.json')
+            if not os.path.exists(_lensf):
+                raise SystemExit("v0 LENS BASIS MISSING: %s\n"
+                    "  The year-zero lens fits from the #279 structural career values, supplied as a\n"
+                    "  DECLARED INPUT. Regenerate it with\n"
+                    "      python3 docs/evidence/exec_306_zlaarm/basis/emit_structural_basis.py\n"
+                    "  or point RL_LENS_BASIS at the artifact. There is deliberately no fallback: fitting\n"
+                    "  the lens from the surface's own prior is the barred, self-referential lineage."%_lensf)
+            import json as _laj, hashlib as _lah
+            _LB=_laj.load(open(_lensf))
+            _brows=[r for r in _LB['rows'] if r.get('pos') and r.get('pick')]
+            _V0CURVE_META['_lens_basis']={'file':os.path.basename(_lensf),
+                'md5':_lah.md5(open(_lensf,'rb').read()).hexdigest(),
+                'rows':len(_brows),'identity':_LB.get('identity'),'provenance':_LB.get('provenance'),
+                'OPTIMISM':_LB.get('_OPTIMISM')}
+            _curveA=_PVC0 if '_PVC0' in globals() else MA.PVC
+            _A={int(k):float(v) for k,v in _curveA.items()}
+            _amax=max(_A)
+            _asl=(np.log(_A[_amax]/_A[_amax-1])/(np.log(_amax)-np.log(_amax-1))) if (_amax-1) in _A and _A[_amax-1]>0 else 0.0
+            def _anchor(pk):
+                pk=int(min(max(pk,1),90))
+                return float(_A[pk]) if pk in _A else float(_A[_amax]*np.exp(_asl*(np.log(pk)-np.log(_amax))))
+            for _r in _brows:
+                _r['_lp']=np.log(_r['pick']); _r['_an']=_anchor(_r['pick'])
+                _r['_ag']=(float(_r['age_draft']) if _r.get('age_draft') is not None else None)
+            def _kern(d,h): return float(np.exp(-0.5*(d/h)**2))
+            def _est(sub,lp=None,ag=None):
+                sw=sw2=swa=swv=0.0
+                for _r in sub:
+                    w=1.0
+                    if lp is not None: w*=_kern(_r['_lp']-lp,_LA_HPICK)
+                    if ag is not None:
+                        if _r['_ag'] is None: continue      # missing age: informs the position level only
+                        w*=_kern(_r['_ag']-ag,_LA_HAGE)
+                    if w<1e-12: continue
+                    sw+=w; sw2+=w*w; swa+=w*_r['_an']; swv+=w*_r['value']
+                if swa<=0: return 1.0,0.0
+                return swv/swa,(sw*sw/sw2 if sw2>0 else 0.0)
+            def _shrink(v,n,toward):
+                s=n/(n+_LA_KCONF); return s*v+(1.0-s)*toward
+            _bypos={}
+            for _r in _brows: _bypos.setdefault(_r['pos'],[]).append(_r)
+            _AGEG=list(range(16,31)); _PK=list(range(1,91))
+            _pre={}
+            for _p in POS:
+                _sub=_bypos.get(_p) or []
+                _l2v,_l2n=_est(_sub); _l2=_shrink(_l2v,_l2n,1.0)
+                for _pk in _PK:
+                    _lp=float(np.log(_pk)); _v1,_k1=_est(_sub,lp=_lp); _l1=_shrink(_v1,_k1,_l2)
+                    for _ag in _AGEG:
+                        _v0,_k0=_est(_sub,lp=_lp,ag=float(_ag))
+                        _pre[(_p,_ag,_pk)]=_shrink(_v0,_k0,_l1)
+            # ---- LOCAL neutrality, solved on the APPLIED POPULATION'S COMPOSITION.
+            # ADDENDUM (seam ruling 2026-08-04, owner word): the law is enforced where it is MEASURED.
+            # The acceptance reads the artifact over every real ND row the surface actually prices, so
+            # lam(pick) is solved against THAT population's anchor-weighted composition rather than the
+            # basis population's. Enforcing on the teaching mix and measuring on the applied mix left a
+            # residual of up to 1.75% per pick purely from composition drift between 2004-2022 and
+            # 2003-2025 -- not a construction failure, but the acceptance is not met by a law enforced
+            # somewhere else.
+            #
+            # THE APPLIED ROWS ENTER AS COMPOSITION WEIGHTS ONLY -- (position, draft age, pick): WHO
+            # EXISTS, and nothing about how they turned out. No careers, no v0 beliefs, no outcomes.
+            # THE LENS SHAPE REMAINS TAUGHT EXCLUSIVELY BY structural_basis_279.json (fitted above and
+            # untouched here); this step only rescales it so each neighbourhood nets to the anchor.
+            # The barred self-referential lineage stays barred: `real`'s VALUES never enter the fit.
+            _apply=[]
+            for _p2 in real:
+                _pk2=_p2.get('pick')
+                if _pk2 is None: continue
+                _pk2=int(_pk2)
+                if not (1<=_pk2<=64): continue
+                _apply.append((MA.gfut(_p2),int(min(max(_ageR(_p2),16),30)),_pk2,
+                               float(np.log(_pk2)),_anchor(_pk2)))
+            _V0CURVE_META['_la_applied_rows']=len(_apply)
+            _lam={_pk:1.0 for _pk in _PK}; _m={}
+            for _ in range(200):
+                for _k in _pre: _m[_k]=min(_LA_B,max(1.0/_LA_B,_pre[_k]*_lam[_k[2]]))
+                _worst=0.0
+                for _pk in _PK:
+                    _lp=float(np.log(_pk)); _num=_den=0.0
+                    for (_po,_ag,_pkr,_lpr,_anr) in _apply:
+                        w=_kern(_lpr-_lp,_LA_HPICK)
+                        if w<1e-12: continue
+                        _num+=w*_anr; _den+=w*_anr*_m[(_po,_ag,_pkr)]
+                    if _den>0:
+                        _ra=_num/_den; _lam[_pk]*=_ra; _worst=max(_worst,abs(1.0/_ra-1.0))
+                if _worst<=1e-12: break
+            for _k in _pre: _m[_k]=min(_LA_B,max(1.0/_LA_B,_pre[_k]*_lam[_k[2]]))
+            _gA=[_anchor(_pk) for _pk in _PK]
+            c18={}; surfN={}; surfR={}
+            for _p in POS:
+                for _ag in _AGEG:
+                    _g=[_gA[_i]*_m[(_p,_ag,_PK[_i])] for _i in range(len(_PK))]
+                    _key='%s|%d'%(_p,_ag)
+                    if _ag<=18: c18[_key]=_g
+                    elif _p=='RUCK': surfR[_key]=_g
+                    else: surfN[_key]=_g
+            # ---- L-C: THE CROSS-HOST BYTE-ASSERT, WIRED INTO THE LANE ITSELF.
+            # N16's third spec word. The assert compares FITTED OUTPUT BYTES -- never a library
+            # version, never a pin hash. "The pin was never the guard": item 380's OpenBLAS byte-pin
+            # passed on BOTH hosts while the dispatch tier differed, and this job measured the same
+            # thing again on 2026-08-04 (5939fa35 x5 on one box vs fb9efdec x3 on two others, every
+            # pin green on all three, identical CPU strings).
+            #
+            # It is keyed on the DECLARED INPUTS. If the basis, the anchor and the roster composition
+            # all match a recorded run, the fitted bytes MUST match it too -- any difference is the
+            # box, and the box is not allowed to decide quietly. If the inputs DON'T match, the assert
+            # says INAPPLICABLE and reports so: a legitimate re-basis must never read as a green
+            # cross-host proof, which is the vacuity this leg exists to refuse.
+            _lensdig=_lah.md5(_laj.dumps({'c18':{k:c18[k] for k in sorted(c18)},
+                                          'surfN':{k:surfN[k] for k in sorted(surfN)},
+                                          'surfR':{k:surfR[k] for k in sorted(surfR)}},
+                                         sort_keys=True).encode()).hexdigest()
+            _rosterdig=_lah.md5(_laj.dumps(sorted('%s|%d|%d'%(o,g,q) for (o,g,q,_l,_a) in _apply)).encode()).hexdigest()
+            # LC-1 (seam hand-back): the anchor component covers THE FIT'S OWN INPUT — the national
+            # ladder, picks 1-64. The pool slot (65) is NOT a fit input: no pool row teaches the lens
+            # and no pool row reads the surface. Including it made this component a look-alike of the
+            # census payload that was not the census payload (a name trap), and it would have fired a
+            # spurious INAPPLICABLE at the landing when the pool level moves under N43 while the ladder
+            # the lens actually uses had not. Restricted, the component IS the census payload verbatim.
+            _anchdig=_lah.md5(_laj.dumps({str(k):int(round(v)) for k,v in _curveA.items()
+                                          if 1<=int(k)<=64},sort_keys=True).encode()).hexdigest()[:8]
+            _lckey='%s|%s|%s'%(_V0CURVE_META['_lens_basis']['md5'][:12],_anchdig,_rosterdig[:12])
+            _lcf=os.environ.get('RL_LANE_EXPECT') or os.path.join(
+                os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '',
+                'docs','evidence','exec_306_zlaarm','basis','lane_expectation.json')
+            _lcstate='INAPPLICABLE — no recorded expectation for these declared inputs'
+            if os.path.exists(_lcf):
+                _lce=_laj.load(open(_lcf)).get('expectations',{})
+                if _lckey in _lce:
+                    _want=_lce[_lckey]['lens_digest']
+                    if _want!=_lensdig:
+                        raise SystemExit(
+                            "L-C CROSS-HOST BYTE-ASSERT FAILED — THIS BOX DOES NOT REPRODUCE THE LANE.\n"
+                            "  declared inputs match a recorded run, so the fitted bytes must match too.\n"
+                            "    key       %s\n    expected  %s\n    got       %s\n"
+                            "  This is item 380's machine sensitivity, caught in the lane rather than in a\n"
+                            "  figure nobody could compare. Every version pin can be green and this can still\n"
+                            "  fire -- that is the point. HALT: no measurement act on a non-reproducing box.\n"
+                            "  Restart/reopen the container and re-assert (N35), or file the divergence."
+                            %(_lckey,_want,_lensdig))
+                    _lcstate='PASS — fitted bytes reproduce the recorded run for these declared inputs'
+            _V0CURVE_META['_lc']={'lens_digest':_lensdig,'key':_lckey,'state':_lcstate,
+                                  'expectation_file':os.path.basename(_lcf),
+                                  'compares':'FITTED OUTPUT BYTES, never a version pin or a CPU string'}
+            _mages=[a for a in _AGEG if a>=19]
+            _V0CURVE_META['mature_nonRUC']={'ages':_mages,'construction':'anchored_lens_field'}
+            _V0CURVE_META['mature_RUC']={'ages':_mages,'construction':'anchored_lens_field'}
+            for _p in POS: _V0CURVE_META[('age18',_p)]={'construction':'anchored_lens_field'}
+            _V0CURVE_META['_la']={'shape':'POS|AGE','B':_LA_B,'tol':_LA_TOL,'h_pick':_LA_HPICK,
+                'h_age':_LA_HAGE,'k_conf':_LA_KCONF,
+                'neutrality_population':'APPLIED (composition weights only)',
+                'neutrality_worst':max(abs(sum(_kern(_l-float(np.log(_pk)),_LA_HPICK)*_a*_m[(_o,_g,_q)]
+                    for (_o,_g,_q,_l,_a) in _apply)/max(sum(_kern(_l-float(np.log(_pk)),_LA_HPICK)*_a
+                    for (_o,_g,_q,_l,_a) in _apply),1e-12)-1.0) for _pk in range(1,65)),
+                'binds':sum(1 for _k in _m if abs(_m[_k]-_LA_B)<1e-9 or abs(_m[_k]-1.0/_LA_B)<1e-9)}
+        else:
+            # ---- THE PRE-#306 FREE FIT, retained behind RL_V0_LENS=0 as the declared A/B control: the
+            #      lane whose defect L-A removes. Keeping it runnable is what makes the before-figures
+            #      RE-TAKEABLE rather than quoted from a filing.
+            for pos in POS:
+                pts=[(np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)==pos and _ageR(p)<=18]
+                grid,meta=_fit_pick_curve(pts); c18[pos]=grid; _V0CURVE_META[('age18',pos)]=meta
+            matN=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)!='RUCK' and _ageR(p)>=19]
+            matR=[(_ageR(p),np.log(p.get('pick')),_v0_raw(p)) for p in real if MA.gfut(p)=='RUCK'      and _ageR(p)>=19]
+            surfN=_fit_mature(matN,'mature_nonRUC'); surfR=_fit_mature(matR,'mature_RUC')
         # Record THIS signature's surfaces so the bake can freeze EVERY surface a shipped build produces, not
         # just the last one. _build_v0_curve runs three times per build — once at import, then again after each
         # of the RL_PVCADOPT and RL_PVC2 swaps of _PVC0 — and the signature covers _PVC0, so the three calls have
@@ -1385,8 +1599,19 @@ def _build_v0_curve():
                                      if k in ('mature_nonRUC','mature_RUC') or (isinstance(k,tuple) and k and k[0]=='age18')}}
     _V0CURVE_META['_c18']=c18; _V0CURVE_META['_surfN']=surfN; _V0CURVE_META['_surfR']=surfR
     _V0CURVE_META['_v0surf_sig']=_sig; _V0CURVE_META['_v0surf_frozen']=(_frozen is not None and os.environ.get('RL_V0SURF_REFIT')!='1')
+    # SHAPE-AWARE. The #306 lens artifact is keyed 'POS|AGE' -- position-resolved at EVERY age, mature
+    # included: D14's R1 position-pooling is superseded by the confidence rule, which handles thinness
+    # cell by cell instead of pooling a whole tier. The pre-#306 artifact is keyed by position (age<=18)
+    # and by int age (mature). Both are readable; a shape that is neither fails LOUDLY on the lookup
+    # rather than returning a confident wrong number.
+    _lens_shape=any(isinstance(_k,str) and '|' in _k for _k in c18)
     def star(pos,ag,pick):
         lp=np.log(min(max(pick,1),90))
+        if _lens_shape:
+            a=int(min(max(ag,16),30))
+            if a<=18: return float(np.interp(lp,_V0_LGRID,c18['%s|%d'%(pos,a)]))
+            surf=surfR if pos=='RUCK' else surfN
+            return float(np.interp(lp,_V0_LGRID,surf['%s|%d'%(pos,a)]))
         if ag<=18: return float(np.interp(lp,_V0_LGRID,c18[pos]))
         surf=surfR if pos=='RUCK' else surfN; return float(np.interp(lp,_V0_LGRID,surf[min(max(ag,19),30)]))
     _V0CURVE_META['_star']=star
@@ -1570,9 +1795,12 @@ def ev(p,Y=2026):
 # spec's loclin-at-pick-1), isotonic non-increasing, re-anchored to pick1 = RL_PICK1 (3000).
 # SCOPE (deliberate, declared): the fitted curve re-prices the PICK side (the board's trade currency) and
 # display/advisory consumers (A13/A14, book draftval column). PLAYER pricing does NOT read it back:
-# `draftval` — the RUCK prior-cap/scaffold basis — is FROZEN on the pre-fit v3.4 curve (_PVC0), honouring the
-# PR #44 V0-scaffold scope and cutting the fit→board→fit circularity (one-iteration drift on the anchors is
-# declared in the derivation note). Generated artifact: pvc_fit_candidate.json (stamped with source + book id).
+# `draftval` — the RUCK prior-cap/scaffold basis — CLOSES OVER the `_PVC0` dict, and the L1b and v2 blocks
+# mutate that dict IN PLACE, so draftval TRACKS THE ADOPTED CURVE. (E4, #279 step 4 item 9: this comment used
+# to claim draftval was "FROZEN on the pre-fit v3.4 curve (_PVC0)". The behaviour is correct and unchanged —
+# only the description was wrong. The PR #44 V0-scaffold scope and the fit→board→fit note below still hold
+# for the FITTED candidate curve, which is what is held out.) Generated artifact: pvc_fit_candidate.json
+# (stamped with source + book id).
 _W4PVC=os.environ.get('RL_PVCFIT','0')!='0'                  # DEFAULT 0 (owner ruling R3, 2026-07-09): the W4 PVC fit is HELD OUT of the bake — the frozen v3.4 curve (_PVC0) ships as the board's pick currency. RL_PVCFIT=1 loads the fitted candidate curve for EXPERIMENTS ONLY (re-derivation queued 'with a view to fixing it'); rl_export.py refuses to write a bakeable board with the fit on (R3 BAKE GUARD), so a fitted board is unbakeable-wrong. Was '1' pre-2026-07-09 — that default silently baked the held-out fit into board bcd81363; flipped to '0' as the remediation.
 _PVC0=dict(MA.PVC)                                            # frozen v3.4 ruler for the cap/scaffold basis
 def draftval(p): return float(_PVC0[min(MA.effpk(p),cp.KMAX)])   # rebind: runtime cap/scaffold callers read the FROZEN curve

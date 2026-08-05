@@ -37,7 +37,7 @@ def _season_val(_key, _fb):
 if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
 import io,contextlib,numpy as np
 with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 from sklearn.ensemble import GradientBoostingRegressor
@@ -122,6 +122,24 @@ def _feat(p,Y):
     ep=min(MA.effpk(p),KMAX); ten=max(0,Y-(debutyr(p)-1))
     return oh+[np.log(ep), _exposure(p,Y), ten, _lvl_eff(p,Y), _age_asof(p,Y)]
 
+# ---- T1: the unobservable-season drop (#290 L3, OWNER WORD 2026-07-31) --------------------
+# The store's scoring record begins at FIRST_OBSERVABLE. A class drafted before that emits training
+# rows for seasons the store CANNOT SEE: games=0, exposure=0, level=0 — not because the player did
+# not play, but because the record starts later. Those are FABRICATED ZEROS and they teach.
+# Measured at the word: 64 such rows of 13,221 (0.484%), all the 2003 class's tenure-1 (2004) season.
+# The word is T1: each tenure cell is taught only by classes OBSERVABLE at that tenure — no
+# fabricated zeros, and NO RELABEL (tenure keeps its true elapsed-time meaning; the tenure re-anchor
+# was measured as limb 2 and NOT taken). Residual, recorded as a named referee-era refinement: the
+# cumulative features (_exposure, _lvl_eff) still integrate over the unobservable span.
+# The DRAFT-YEAR row (Y == d0) is a real zero BY DESIGN and is KEPT — it is not a fabricated one.
+_FIRST_OBS = []
+def first_observable_season():
+    """The earliest season the store carries any scoring row for. Derived, never hardcoded."""
+    if not _FIRST_OBS:
+        yrs = [x['year'] for p in MA.data for x in (p.get('scoring') or [])]
+        _FIRST_OBS.append(min(yrs) if yrs else None)
+    return _FIRST_OBS[0]
+
 def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
     """Train quantile models on RESOLVED careers (debut<=resolved_cut). One row per (player, as-of-year Y) from draft year
     (games 0) through their last season; target = resolved forward best-3 from Y."""
@@ -132,7 +150,9 @@ def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
         if not (p.get('pick') or p.get('_ft')): continue
         d0=debutyr(p)-1                                      # draft year (0 games)
         last=max([x['year'] for x in p['scoring']]+[d0])
+        _fo=first_observable_season()
         for Y in range(d0, min(last,cap)+1):
+            if _fo is not None and d0 < Y < _fo: continue   # T1: fabricated zero, unobservable season
             t=fwd_best3_from(p,Y,cap)
             X.append(_feat(p,Y)); y.append(t)
     X=np.array(X); y=np.array(y)

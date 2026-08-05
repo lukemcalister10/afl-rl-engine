@@ -1,4 +1,11 @@
-"""PAR estimator (U26-REDESIGN, step 1) — STANDALONE DIAGNOSTIC, nothing wired into the engine.
+"""PAR estimator (U26-REDESIGN, step 1) — ON THE ENGINE'S VALUE PATH. Not a diagnostic.
+
+E5 (#279 step 4, seam word Q3 2026-07-30): this docstring used to say "STANDALONE DIAGNOSTIC, nothing wired
+into the engine". That is FALSE and has been for some time. The live chain is
+  _merged_recover.py imports wire_redesign -> W.PR = par_redesign -> par_redesign runs pb.fit() from THIS file
+  -> _par_prior(p,Y) = PR.par_at(...) enters the value blend at _merged_recover.py:580, weighted by _ev_pw
+     with the pinned residual floor _EVW_R = 0.11.
+So a change here MOVES PLAYER VALUES. Treat it with value-path care; the prose, not the behaviour, was wrong.
 
 par(pos, pick, tenure) = level_pos(log-pick)  +  ramp_pos(tenure)     [additive; ramp(yr1)=0]
   - target = median recency-weighted level (_lvl_wt) among players ON THE PARK at that pos x tenure
@@ -18,7 +25,7 @@ import sys, os, io, contextlib, collections
 if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
 import math as _math
 import numpy as np
 with contextlib.redirect_stdout(io.StringIO()):
@@ -40,6 +47,34 @@ def season_row(p, Y):
         if x['year'] == Y: return x
     return None
 
+# ---- E3 (#279 step 4 item 6; the par ruling, owner word 2026-07-30 "Yes, per season") ------
+# The par surface used to key every observation by MA.gfut(p) — ONE label for a whole career — so a role
+# migrant's prime seasons refiled under his DESTINATION position and dragged up the young players anchored
+# in those cells (the Joe Berry +351 ripple). Each season now files under the position RECORDED FOR THAT
+# SEASON, which the store carries on every one of its 11,264 scoring rows (landed at #262).
+#
+# 1,874 of those rows (16.6%) record a DUAL position ('SF/MID', 'KPF/RUCK', ...), and GRP maps only the six
+# single positions, so the rule for duals must be STATED. PAR_DUAL_RULE is that statement — an OWNER word
+# (#279, pending at the time of writing), not a dial and not env-readable:
+#   'primary' — the primary component. futblend's own law: "The PRIMARY keys peak/curve/runway/key-premium".
+#   'lower'   — the pair's LOWER replacement bar; the eligibility-collapse law (R105.1 / _collapse_elig).
+#   'exclude' — dual seasons do not teach the par.
+# MEASURED at the step-4 rehearsal: 'primary' and 'lower' disagree on exactly 2 of 1,874 dual rows (the two
+# 'SF/KPD'), and neither reaches this cohort — so they produce a BYTE-IDENTICAL par surface here.
+PAR_DUAL_RULE = 'primary'
+
+def season_pos(r):
+    """The group a single season's observation teaches. None => this season does not teach."""
+    s = r.get('pos')
+    if not s: return None
+    if '/' not in s: return MA.GRP.get(s)
+    if PAR_DUAL_RULE == 'exclude': return None
+    a, b = s.split('/', 1)
+    ga, gb = MA.GRP.get(a), MA.GRP.get(b)
+    if PAR_DUAL_RULE == 'lower' and ga is not None and gb is not None:
+        return gb if MA.REPL.get(gb, float('inf')) < MA.REPL.get(ga, float('inf')) else ga
+    return ga if ga is not None else gb
+
 # ---- 1. gather on-park observations: (pos, logpick, tenure, lvl, games) -------------------
 def gather():
     pool = [p for p in MA.data if MA.GRP.get(p.get('pos'))
@@ -47,10 +82,12 @@ def gather():
     # raw rows first (need base_play_rate before applying the gate)
     raw = []  # (pos, pick, ten, Y, games, p)
     for p in pool:
-        pos = MA.gfut(p); pk = min(MA.effpk(p), CP.KMAX); d0 = draftyr(p)
+        pk = min(MA.effpk(p), CP.KMAX); d0 = draftyr(p)
         for T in range(1, TEN_MAX+1):
             Y = d0 + T; r = season_row(p, Y); g = r['games'] if r else 0
             if g > 0:
+                pos = season_pos(r)                  # E3: PER-SEASON, not one career-long gfut label
+                if pos is None: continue             # only reachable under the 'exclude' rule
                 raw.append((pos, pk, T, Y, g, p))
     # base play rate = median games among players who PLAYED (g>0) at that pos x tenure
     base = {}
@@ -113,6 +150,20 @@ def loclin(x0, xs, ys, h):
 def fit():
     obs, base, raw = gather()
     POS = {g: np.array([(x,T,lv) for (pos,x,T,lv) in obs if pos==g], dtype=float) for g in GROUPS}
+    # E3 LOUD HALT (#279 step 4 item 6). An empty group used to travel silently from here to the ramp step
+    # below, where POS[g] is shape (0,) and POS[g][:,1] raised a BARE IndexError naming nothing — a cohort
+    # or keying change that starved a position looked like an indexing bug. Halt here instead, NAMING the
+    # group, the cohort window, and what the gather actually produced.
+    _empty = [g for g in GROUPS if POS[g].size == 0]
+    if _empty:
+        raise SystemExit(
+            "par_build HALT: no on-park observations for position group(s) %s.\n"
+            "  cohort DRAFT %d-%d | tenure 1-%d | par gate >=%g games | dual rule '%s'\n"
+            "  gather() produced %d raw rows -> %d gated observations; per-group counts: %s\n"
+            "  A starved group cannot be fitted. Widen the cohort, relax the gate, or revisit the keying —\n"
+            "  do NOT drop the group silently."
+            % (', '.join(_empty), DRAFT_LO, DRAFT_HI, TEN_MAX, MIN_GAMES, PAR_DUAL_RULE,
+               len(raw), len(obs), {g: int(POS[g].shape[0]) for g in GROUPS}))
     ramp = {g: np.zeros(TEN_MAX+1) for g in GROUPS}     # ramp[g][T], index 0 unused
     # iterate
     for _ in range(4):

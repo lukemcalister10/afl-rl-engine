@@ -1,24 +1,48 @@
-# CANONICAL v4 build (cont.19): forward-realised target (best-3 >=Y, completeness-weighted current year) + draft rows (bust-inclusive) + corrected age + games-weighted recency. Produces peak_model_v4.pkl. Run: python3 build_peak_model_v4.py (needs rl_after engine + dob_corrected.json + bust_prior_table.json).
+# CANONICAL v4 build (cont.19): forward-realised target (best-3 >=Y, completeness-weighted current year) + draft rows (bust-inclusive) + STORE-SOURCED age + games-weighted recency. Produces peak_model_v4.pkl. Run: python3 build_peak_model_v4.py (needs rl_after engine + bust_prior_table.json).
+# L4 (#290, 2026-07-31) — three fixes, each reproduced at source before it was made:
+#   (1) dob_corrected.json is RETIRED AS AN INPUT CLASS (Addendum 1). It was untracked anywhere in the repo, so
+#       bootstrap never copied it and this build could not run at all. Ages now come from the store's _by/_bd.
+#   (2) bust_prior_table.json read from .../rl_after/ — where bootstrap.sh actually copies it — not
+#       .../forward_valuation/. A one-token path fix; the file was never at the old path.
+#   (3) the PVC snapshot loop was range(1,100) against a 65-key live PVC: KeyError at 66, reproduced. It now
+#       derives its domain from MA.PVC and ASSERTS the ruled shape (1..64 + pool index 65) so a domain change
+#       is loud instead of silent.
+# Plus the AGE-SOURCE CENSUS (Addendum 4, a hard L4 acceptance) and the TRAINING-STORE STAMPS on every emitted
+# artifact — see the blocks so headed below.
 import sys, os
 # rl_model provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after insert REMOVED;
 # rl_model resolves through the configured environment only (already-imported, else RL_REPO checkout).
 if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
-os.environ['RL_GAMMA']='0.85'; os.environ['RL_PICK1']='3000'
-import io,contextlib,json,pickle
+os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
+import io,contextlib,json,pickle,collections,hashlib
 with contextlib.redirect_stdout(io.StringIO()): import rl_model as MA
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingRegressor
 MA.P_HOOK=None; MA.PROD_GATE='off'
 allp=[p for p in MA.data if MA.GRP.get(p['pos'])]
 POSI={'MID':0,'SD':1,'SF':2,'KPD':3,'KPF':4,'RUCK':5}
-DOB=json.load(open('/home/claude/rl_workspace/forward_valuation/dob_corrected.json')); PT=json.load(open('/home/claude/rl_workspace/forward_valuation/bust_prior_table.json'))
+_BUST_PATH='/home/claude/rl_workspace/rl_after/bust_prior_table.json'   # L4 fix (2): where bootstrap.sh copies it
+PT=json.load(open(_BUST_PATH))
 SEASON=22  # reference full home-and-away
 def bp(pos,pick): return PT[pos][str(min(max(int(round(pick)),1),70))]
 def best(ss,n): a=sorted([x['avg'] for x in ss if x['games']>=6],reverse=True)[:n]; return float(np.mean(a)) if a else None
-def by_corr(p): k=p['player']+'|'+str(MA.debut(p)); return DOB[k][0] if k in DOB else p.get('_by')
+def by_corr(p): return p.get('_by')   # L4 fix (1): the store is the single source; dob_corrected.json is retired
 def age_at(p,Y): by=by_corr(p); return (Y-by) if by else (Y-(MA.debut(p)-18))
+
+# ---- THE AGE-SOURCE CENSUS (Addendum 4 — a hard L4 acceptance) ----------------------------------
+# Every TRAINING ROW is classified by the PROVENANCE of the age feature it carries, and the classes must
+# SUM TO THE TRAINING POPULATION — a census that does not sum HALTs. This is what makes silent defaulting
+# arithmetically impossible: never-played rows were never *excluded*, they trained with the fallback age
+# 18.0 + years-since-debut, an included-with-a-guessed-age distortion frozen inside the current model.
+# Busts ARE counted (BUST RULING consequence 4): the census counts AGE PROVENANCE, not outcome.
+# _bd is an exact subset of _by in this store (848/848 measured), so REAL_DATE implies _by is present too.
+def age_source(p):
+    if p.get('_bd'): return 'REAL_DATE'    # exact date of birth in the store
+    if p.get('_by'): return 'REAL_YEAR'    # year only — a first-class store state (Addendum A.2)
+    return 'FALLBACK'                      # 18.0 + years-since-debut: a guessed age, now counted
+_CENSUS=collections.Counter(); _CENSUS_PLAYERS=collections.defaultdict(set)
 # *** target now includes year Y (>=Y), with the current/partial year weighted by completeness ***
 def fwd_peak(p,Y):
     fut=[x for x in p['scoring'] if x['year']>=Y and x['games']>=6]
@@ -43,11 +67,15 @@ def build(lo,hi):
     for p in allp:
         d=MA.debut(p)
         if d<lo or d>hi: continue
+        _cls=age_source(p)
         X.append(draft_feat(p)); y.append(best([x for x in p['scoring']],3) or 0.0)
+        _CENSUS[_cls]+=1; _CENSUS_PLAYERS[_cls].add(p['player'])   # the draft row counts too
         for Y in sorted(set(x['year'] for x in p['scoring'] if x['games']>0)):
             if len([x for x in p['scoring'] if x['year']>Y and x['games']>=6])>=1:   # >=1 FUTURE season (so it's forward, not echo)
                 t=fwd_peak(p,Y)
-                if t is not None: X.append(feats(p,Y)); y.append(t)
+                if t is not None:
+                    X.append(feats(p,Y)); y.append(t)
+                    _CENSUS[_cls]+=1; _CENSUS_PLAYERS[_cls].add(p['player'])
     return np.array(X),np.array(y)
 def r2(pr,yy): return 1-np.sum((yy-pr)**2)/np.sum((yy-yy.mean())**2)
 Xtr,ytr=build(2006,2015)
@@ -75,7 +103,15 @@ pickle.dump({'model':m,'fnames':['logPVC','effpk','pos','best2','best1','recent_
 # hand-checked-in file -- the model and its train-time PVC are now co-generated so they can never drift apart
 # (the report's flagged "next hidden-copy risk"). Emitted read-only + provenance-stamped by the build.
 import os as _os, stat as _st, shutil as _sh
-_snap={str(k):float(MA.PVC[k]) for k in range(1,100)}
+# L4 fix (3): the domain is DERIVED from the live PVC, not a literal. It was range(1,100) against a 65-key
+# PVC — KeyError at 66, reproduced at source before this change. The ruled post-split shape is picks 1..64
+# plus the pool at index 65; the assert makes a domain change LOUD rather than silently reshaping a pinned
+# artifact (the I.2 lesson: assert the agreement, or remove the default so the read fails loud).
+_pvc_keys=sorted(int(k) for k in MA.PVC)
+assert _pvc_keys==list(range(1,66)), (
+    'PVC domain moved: expected the ruled 1..64 + pool index 65 (65 keys), measured %d keys %r..%r'
+    % (len(_pvc_keys), _pvc_keys[:3], _pvc_keys[-3:]))
+_snap={str(k):float(MA.PVC[k]) for k in _pvc_keys}
 _snap_path='/home/claude/rl_workspace/rl_after/pvc_snapshot.json'
 _pkl_src='/home/claude/rl_workspace/forward_valuation/peak_model_v4.pkl'
 _pkl_dst='/home/claude/rl_workspace/rl_after/peak_model_v4.pkl'
@@ -84,6 +120,72 @@ except Exception: pass
 json.dump(_snap, open(_snap_path,'w'))
 try: _sh.copyfile(_pkl_src,_pkl_dst)   # place the pkl where rl_model actually reads it (co-located tier-2 caches)
 except Exception: pass
+
+# ---- THE AGE-SOURCE CENSUS, EMITTED AND COUNTED (hard L4 acceptance) ----------------------------
+# Totals must sum to the training population. They are asserted here, not reported and hoped over.
+_STORE_PATH=os.path.join(os.path.dirname(MA.__file__),'rl_model_data.json')
+_store_md5=hashlib.md5(open(_STORE_PATH,'rb').read()).hexdigest()
+try: _V0SURF_MD5=hashlib.md5(open(os.path.join(os.environ.get('RL_REPO',''),'data','v0surf.pkl'),'rb').read()).hexdigest()
+except Exception: _V0SURF_MD5='UNREADABLE'
+try: _CURVE_PAYLOAD=json.load(open(os.path.join(os.path.dirname(MA.__file__),'pvc_curve_v2.json')))['payload_md5']
+except Exception:
+    try: _CURVE_PAYLOAD=hashlib.md5(json.dumps({str(k):int(round(MA.PVC[k])) for k in _pvc_keys[:64]},sort_keys=True).encode()).hexdigest()[:8]
+    except Exception: _CURVE_PAYLOAD='UNREADABLE'
+_train_total=int(len(ytr))
+_cen={k:int(_CENSUS.get(k,0)) for k in ('REAL_DATE','REAL_YEAR','FALLBACK')}
+_cen_sum=sum(_cen.values())
+assert _cen_sum==_train_total, ('AGE-SOURCE CENSUS does not sum: %d classified != %d training rows'
+                                % (_cen_sum, _train_total))
+# store-level counts, for comparison against the Addendum 4 baseline (2,651 / 2,349 / 848 / 302)
+_all_store=[p for p in MA.data]
+_trained_players={n for s in _CENSUS_PLAYERS.values() for n in s}
+_store_cen={'store_rows':len(_all_store),
+            'by_present':sum(1 for p in _all_store if p.get('_by')),
+            'bd_present':sum(1 for p in _all_store if p.get('_bd')),
+            'by_missing':sum(1 for p in _all_store if not p.get('_by'))}
+_store_cen['bd_is_subset_of_by']=all(p.get('_by') for p in _all_store if p.get('_bd'))
+_census_doc={
+ '_doc':('AGE-SOURCE CENSUS (Addendum 4, hard L4 acceptance). Every TRAINING ROW classified by the '
+         'provenance of its age feature; classes SUM to the training population or the build HALTs. '
+         'REAL_DATE = store _bd; REAL_YEAR = store _by only (a first-class state, Addendum A.2); '
+         'FALLBACK = 18.0 + years-since-debut, a guessed age. Busts are COUNTED — the census counts age '
+         'provenance, not outcome (BUST RULING consequence 4).'),
+ 'substrate':{'store_md5':_store_md5,'v0surf_md5':_V0SURF_MD5,'gamma':float(MA.GAMMA)},
+ 'training_rows':{'total_denominator':_train_total,'by_class':_cen,
+                  'sums_to_denominator':bool(_cen_sum==_train_total)},
+ 'training_players':{k:len(_CENSUS_PLAYERS.get(k,()))for k in ('REAL_DATE','REAL_YEAR','FALLBACK')},
+ 'training_players_total':len(_trained_players),
+ 'store_level':_store_cen,
+ 'excluded_from_training':{'store_rows_not_trained':len(_all_store)-len(_trained_players),
+                           '_note':'excluded by the debut window (2006-2015) or by an unmapped position; '
+                                   'the census denominator is the TRAINING population, not the store'},
+ 'WATCHED_NUMBER_fallback':{'rows':_cen['FALLBACK'],'of':_train_total,
+                            'pct':round(100.0*_cen['FALLBACK']/_train_total,3) if _train_total else None,
+                            '_note':'must fall by EXACTLY the number of rows the DOB courier writes'},
+}
+_census_path='/home/claude/rl_workspace/rl_after/age_source_census.json'
+json.dump(_census_doc, open(_census_path,'w'), indent=1, sort_keys=True)
+print('AGE-SOURCE CENSUS: %s = %d of %d training rows (sums OK); fallback %.3f%%'
+      % (_cen, _cen_sum, _train_total, 100.0*_cen['FALLBACK']/max(_train_total,1)))
+
+# ---- TRAINING-STORE STAMPS (L4 act 6) -----------------------------------------------------------
+# Today cm_400, q97m, peak_model_v4, pvc_snapshot and bust_prior_table are pinned by md5 and NONE records
+# the store or curve it was trained on. A stamp beside each closes that for good: an md5 says "this is the
+# artifact I expect", a stamp says "and here is the world it was fitted in".
+_stamp={'_doc':'TRAINING-STORE STAMP (L4 act 6, #290). What this build was fitted ON.',
+        'store_md5':_store_md5,'v0surf_md5':_V0SURF_MD5,'gamma':float(MA.GAMMA),
+        'pvc_domain':[_pvc_keys[0],_pvc_keys[-1]],'pvc_n_keys':len(_pvc_keys),
+        'curve_payload_md5':_CURVE_PAYLOAD,'training_rows':_train_total,
+        'training_window_debut':[2006,2015],'built_by':'build_peak_model_v4.py',
+        'artifacts':{}}
+for _nm,_pth in (('peak_model_v4.pkl',_pkl_dst),('pvc_snapshot.json',_snap_path),
+                 ('bust_prior_table.json',_BUST_PATH),('age_source_census.json',_census_path)):
+    try: _stamp['artifacts'][_nm]=hashlib.md5(open(_pth,'rb').read()).hexdigest()
+    except Exception as _e: _stamp['artifacts'][_nm]='UNREADABLE: %r'%(_e,)
+json.dump(_stamp, open('/home/claude/rl_workspace/rl_after/training_store_stamp.json','w'),
+          indent=1, sort_keys=True)
+print('TRAINING-STORE STAMP: store %s · v0surf %s · gamma %s · %d rows'
+      % (_store_md5[:8], _V0SURF_MD5[:8], MA.GAMMA, _train_total))
 try:
     import single_source as _SS   # /home/claude/rl_after on sys.path (line 2) -> tier-2 frozen stamp + read-only
     _SS.stamp_tier2_frozen('pvc_snapshot.json'); _SS.stamp_tier2_frozen('peak_model_v4.pkl')

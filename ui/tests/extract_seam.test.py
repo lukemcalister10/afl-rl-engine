@@ -5,7 +5,7 @@
 
 Proves the extract_board_view.py seam WITHOUT baking, selecting or promoting any board:
   1. a Leg-F board transfers ALL required phantom fields to the working bundle;
-  2. entrant metadata (PVC 83538 / expected slots ~103.4 / seal a17aafed) survives extraction exactly;
+  2. entrant metadata (PVC 62726 / expected slots ~103.4 / seal ed5b7fcc) survives extraction exactly;
   3. working-bundle release/round metadata comes from the boot manifest (release_version / as_of_round);
   4. MISSING release/round metadata renders neither "v2.10" nor "Round 17";
   5. a mismatched board pin (and a mismatched store pin) STILL fails closed;
@@ -126,12 +126,12 @@ def main():
 
     # (2) entrant metadata survives EXACTLY
     meta = w.get("phantomTotals", {}).get("_meta", {})
-    check(meta.get("entrant_layer_pvc") == 83538,
-          "JOB1 proof: entrant PVC 83538 exact", "got %r" % meta.get("entrant_layer_pvc"))
+    check(meta.get("entrant_layer_pvc") == 62726,
+          "JOB1 proof: entrant PVC 62726 exact", "got %r" % meta.get("entrant_layer_pvc"))
     check(abs((meta.get("expected_slots_per_year") or 0) - 103.43) < 1e-9,
           "JOB1 proof: expected slots ~103.4 exact", "got %r" % meta.get("expected_slots_per_year"))
-    check(meta.get("seal_sha256_8") == "a17aafed",
-          "JOB1 proof: seal a17aafed exact", "got %r" % meta.get("seal_sha256_8"))
+    check(meta.get("seal_sha256_8") == "ed5b7fcc",
+          "JOB1 proof: seal ed5b7fcc exact", "got %r" % meta.get("seal_sha256_8"))
 
     # (3) release/round metadata from the boot manifest
     st = w["stamp"]
@@ -179,7 +179,7 @@ def main():
     leaked_row = [k for k in prohibited_row if k in row0]
     check(not leaked_row, "JOB4#6: public player rows carry no id/owner-rule/mech fields",
           "leaked %r" % leaked_row)
-    check("83538" not in ptxt and "a17aafed" not in ptxt,
+    check("62726" not in ptxt and "ed5b7fcc" not in ptxt,
           "JOB4#6: entrant/seal internals do not leak to the public bundle")
     check("v2.10" not in ptxt and "Round 17" not in ptxt,
           "JOB2: no stale labels in the public bundle")

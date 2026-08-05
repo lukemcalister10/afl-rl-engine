@@ -53,5 +53,125 @@
     "new_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
     "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
     "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T04:26:52Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "06965f7af2de0807f2fe3683f0b283c5",
+    "old_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+    "old_pin": "ce08c2d13ae7d9bd403c60cf58ea1660",
+    "new_md5": "ba980c4eadecfbcc922b391d773419ba",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T04:34:54Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "ba980c4eadecfbcc922b391d773419ba",
+    "old_pin": "ba980c4eadecfbcc922b391d773419ba",
+    "new_md5": "e92e3885df24060aa90557ba20ba3612",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T07:34:20Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+    "old_pin": "ce08c2d13ae7d9bd403c60cf58ea1660",
+    "new_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T07:35:49Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+    "old_pin": "84fb0cde29f36c1a91d440e63b753c3c",
+    "new_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T20:17:39Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+    "old_pin": "84fb0cde29f36c1a91d440e63b753c3c",
+    "new_md5": "fb9efdec4d669d389fe3beef2bca3092",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T20:25:52Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+    "old_pin": "84fb0cde29f36c1a91d440e63b753c3c",
+    "new_md5": "fb9efdec4d669d389fe3beef2bca3092",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-07-31T20:27:06Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "84fb0cde29f36c1a91d440e63b753c3c",
+    "old_pin": "84fb0cde29f36c1a91d440e63b753c3c",
+    "new_md5": "fb9efdec4d669d389fe3beef2bca3092",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-08-04T23:21:33Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "96d671c952c819fa64df0b5d1a402f1e",
+    "old_md5": "fb9efdec4d669d389fe3beef2bca3092",
+    "old_pin": "fb9efdec4d669d389fe3beef2bca3092",
+    "new_md5": "b540833b2e251631bf76aeec0040cc05",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-08-05T02:47:03Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "54ef78e3891a0a4e113d336043487fcd",
+    "old_md5": "b540833b2e251631bf76aeec0040cc05",
+    "old_pin": "b540833b2e251631bf76aeec0040cc05",
+    "new_md5": "6ba4f4c3f3d5a4697b0ecafe2e15b96d",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-08-05T04:47:38Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "f802734d5406d2d3d7183b9d3c295ec6",
+    "old_md5": "6ba4f4c3f3d5a4697b0ecafe2e15b96d",
+    "old_pin": "6ba4f4c3f3d5a4697b0ecafe2e15b96d",
+    "new_md5": "69571649c96dd11053ff602afb67025a",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-08-05T05:16:33Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "1cbbd9b00ff47d35753fc27f9e914874",
+    "old_md5": "69571649c96dd11053ff602afb67025a",
+    "old_pin": "69571649c96dd11053ff602afb67025a",
+    "new_md5": "b683e2ecec3e7f699ee016217ab0f8ed",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-08-05T05:56:11Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "077d4de87aa63610967f90e541cb148d",
+    "old_md5": "b683e2ecec3e7f699ee016217ab0f8ed",
+    "old_pin": "b683e2ecec3e7f699ee016217ab0f8ed",
+    "new_md5": "ebc3d3303a1956a8ec94b4e2c1497bdf",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
   }
 ]

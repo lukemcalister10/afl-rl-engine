@@ -21,7 +21,7 @@ import sys, os
 if 'rl_model' not in sys.modules and os.environ.get('RL_REPO'):
     _rl_ra = os.path.join(os.environ['RL_REPO'], 'engine', 'rl_after')
     if os.path.isdir(_rl_ra): sys.path.insert(0, _rl_ra)
-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
 import io,contextlib,numpy as np,copy
 import importlib.util
 def _load(name,path):

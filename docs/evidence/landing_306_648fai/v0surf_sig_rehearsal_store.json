@@ -1,0 +1,18 @@
+{
+  "engine_halted_on_frozen_signature": false,
+  "frozen_signatures": [
+    "0589a2620e24e71a348988d27ab06154",
+    "077d4de87aa63610967f90e541cb148d"
+  ],
+  "installed_store_md5": "81d2470440a80f72afea4405e94338c5",
+  "label": "rehearsal store 81d24704 (the basis of L1-L8)",
+  "leg_hashes": {
+    "gates": "0a566c971a138fbfb1d064a83b0a3641",
+    "pvc": "28e8449b224090aa5bab43df3b208c73",
+    "roster": "19ec6eaa92844baa8add131947318d77"
+  },
+  "pvc_entries": 65,
+  "roster_rows": 1448,
+  "signature_in_frozen_pickle": true,
+  "v0surf_signature": "077d4de87aa63610967f90e541cb148d"
+}

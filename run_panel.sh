@@ -23,7 +23,7 @@ cd "$WS"
 # RL_REPO lets config_manifest find the repo manifest after the `cd "$WS"` above. The pinned exports remain the
 # panel's official env; they equal the manifest so the gate-mode reject-scan passes.
 export RL_REPO="$HERE" RL_CONFIG_MODE=gate RL_FV="$HERE/engine/forward_valuation"
-export PYTHONHASHSEED=0 RL_GAMMA=0.85 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+export PYTHONHASHSEED=0 RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
 export PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor
 rm -f /tmp/inspect.py
 # SUITE HYGIENE 2026-07-13: stderr NO LONGER discarded (a hidden traceback is silence, and silence is a
