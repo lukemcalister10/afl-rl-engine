@@ -15,6 +15,11 @@ remains WITHHELD**.
 | 0 | `e69a3f38` | `b540833b` | **`9f7848f4`** | no — 62 of 64 picks differ |
 | 1 | `9f7848f4` | `6ba4f4c3` | **`b61c01b0`** | no |
 
+**Gate at each pass** (composition-weighted mean absolute gap, VOR, n=1,326 over all 64 picks, against
+the 2.000% HARD bar): pass 0 **0.035%** on surface `b540833b` · pass 1 **0.033%** on surface `6ba4f4c3`.
+Selftest 97 PASS / 0 FAIL at both. **The gate is comfortably green at both passes and the loop still has
+not closed** — a passing gate is not a fixed point, which is the whole reason R-I exists.
+
 **Pass 2 is PRE-AUTHORISED for you** — install `b61c01b0350cf113deec5b739c5f679f` via the same L1(b)
 enumerated set, **after your read-back passes the seam's audit**. Bound 4; fixed point = full-md5
 equality; exhausted → HALT-and-report. R-H/R-I/N19 unchanged.
@@ -56,7 +61,7 @@ them apart. At **pass 1** the signature *did* move (`54ef78e3891a`) because the 
 redundancy is pass-dependent, so the full-md5 binding stays regardless** — a check that happens to be
 redundant at one pass is not a check you remove.
 
-## 3 · THE CAPTURES — eight stand, none overwritten
+## 3 · THE CAPTURES — nine stand, none overwritten
 
 **The live one is the last.** Each has a `.BASE` annotation naming its base commit and what it carries.
 
@@ -69,7 +74,8 @@ redundant at one pass is not a check you remove.
 | 5 | `e9508660` | `exec_306_zlaarm/LC_lane_assert_state.diff` | L-C's byte-assert in the lane |
 | 6 | `efaf67d6` | `exec_306_zlaarm/LC1_anchor_component_state.diff` | LC-1 |
 | 7 | `2b7640be` | `exec_306_zlaarm/L6_pass0_lens_state.diff` | L6 pass 0 on the redesigned lane |
-| 8 | **`ebaca58e`** | **`exec_306_2a1xa4/L6_pass1_state.diff`** | **THE LIVE SUBSTRATE — L6 pass 1** |
+| 8 | `ebaca58e` | `exec_306_2a1xa4/L6_pass1_state.diff` | L6 pass 1 **as first installed** — carries a defective `_contract_md5`; kept as the record, not stale |
+| 9 | **`bc1001f9`** | **`exec_306_2a1xa4/L6_pass1c_state.diff`** | **THE LIVE SUBSTRATE — pass 1 corrected** |
 
 **State at the live capture:** store `81d24704` · curve **`9f7848f4`** · surface **`6ba4f4c3`** · engine
 `15525b03` · γ 1.0 · `contract_sha256` **`a6b04a3e`** (fresh and self-consistent — the N44-addendum stale
@@ -124,15 +130,33 @@ reconstructed lane against #290's committed pass-0 matrix and required `1a8db02b
 any string replace. `3068.4647` occurs twice in `pvc_curve_v2.json` — as the numeraire field **and inside
 that field's own prose**. A blind replace takes both silently; edit by JSON path.
 
-**6 · Preserve artifacts OUTSIDE the substrate tree before any restore.** A `git checkout -- .` will
+**6 · Two pins in the same file can have different lengths, and one will not tell you.**
+`one_source_selftest.py` holds `_contract_md5` as a **full 32-char md5** (`:490`) and `_per_entrant_md5`
+as an **8-char stamp** (`:500`). My installer treated both as 8-char and replaced only the prefix inside
+the full pin — producing new-prefix + old-tail, a hash that names the right file with the wrong bytes
+(hazard class 1). **Read a pin's actual length out of the source before replacing it**; never infer it
+from a sibling. The same asymmetry is already on the record for the store stamp (E.5 finding 5), which
+should have warned me.
+
+**7 · Preserve artifacts OUTSIDE the substrate tree before any restore.** A `git checkout -- .` will
 take anything sitting inside it — the exact failure that made my predecessor's filing false.
 
-## 6 · WHAT THIS SEAT GOT WRONG
+## 6 · WHAT THIS SEAT GOT WRONG — three, all caught, none reaching a filed figure
 
-**The G-Y0 driver override** (practice 1) — caught by the guard on its first run, cost one halt, no figure
-disturbed. **A throwaway print accessor** on a nested counts dict raised after the real figures had
-printed; the numbers were correct and re-run through the committed instrument. Both were in ad-hoc shell,
-neither in a measurement.
+**1 · The `_contract_md5` pin defect** (practice 6) — a hybrid hash written into the substrate by my own
+installer. **The FROZEN-RULER guard failed on its first run and printed both values.** Live for exactly
+one run; corrected in the substrate and in the instrument, and re-sealed as capture `bc1001f9`. This is
+the one that mattered, and the reason it cost nothing is that the guard was real.
+
+**2 · The G-Y0 driver override** (practice 1) — my hand-rolled driver exported `RL_V0_LENS=1`, which bake
+mode rejects; the committed driver sets it only as a line prefix. Board halted instantly, no figure
+disturbed.
+
+**3 · A wrong timestamp in my own assert log** — entry 5 carried an estimated `03:29` which, taken at face
+value, would have placed the box classification **before** the `03:31:31` boot and left the pass-1 gate
+figure unclassified. I checked it against file mtimes instead of trusting it: bootstrap `03:32:53`, board
+`03:36:54`, selftest `03:42:45` — all after boot, classification valid, figure sound. **Corrected in
+place with the evidence.** A record that is merely plausible is not a record.
 
 Every deciding figure in my filings was produced on a box classified by reproduced bytes, and every
 substrate act round-tripped to its capture before and after.
