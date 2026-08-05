@@ -153,8 +153,8 @@ re-closed on it; the seam rotates at this pen; the road left is: #326 → the re
    landing evidence; store + re-closure stages committed at the store-act evidence; assemble the
    owner-facing view) · the honest backtest book (directive to author; owner's word: busts stay in
    every denominator, biases printed beside results) · the no-arbitrage tables (measured, delivered
-   in-channel; the instrument lives in the outgoing seam's scratch — COMMIT it with the review set
-   so it rebuilds on final bytes) · **the RE-ANCHORING DESIGN MEMO** (the measured 1.57× hump vs the
+   in-channel; the instrument is COMMITTED at `docs/evidence/noarb_2026-08-05/` — re-run it on
+   final bytes per its README) · **the RE-ANCHORING DESIGN MEMO** (the measured 1.57× hump vs the
    owner's no-arbitrage law; his convexity mechanism endorsed; candidate fixes with this same table
    recomputed under each — the design conversation of the review era).
 3. **ADOPTION (owner click) → round-21 ingest + movers page.**
@@ -194,6 +194,10 @@ Charter C1–C3, M1–M3, the two rules (intent before mechanics · every number
 the owner's binding words (plain English, short sentences, direct answers first, ~one screen), the
 pre-fire audit loop for every directive (10 real faults caught in one day — never skip it), and the
 owner's casual questions are load-bearing QC (two of this era's findings came from them).
+**SUBAGENTS ON OPUS ONLY — never Fable, never an inherited default** (owner word; charter amendment
+2026-08-05 third block; a prior session burned ~1.7M Fable tokens learning this). **Context economy:
+the #306 and #328 threads are enormous — read ONLY the comment ids this file names, never a thread
+front to back; the register only by pointer; evidence trees only the files a task touches.**
 
 ## ENVIRONMENT CARRIES
 As v63 (RL_VENV five-pin venv · setup_env.sh · the N32 payload recipe (string keys, int(round),
@@ -204,10 +208,9 @@ length · one new stamp · docs-only · commit `supervisor-seat <supervisor@seam
 block above. The derivation machinery: the #279 panel from `9914c4d` + the CURRENT re-pinned
 harness from main + `pooled_numeraire.py MATRIX PANEL OUTDIR`. The fit recipes: old path reproduces
 `fb9efdec` from the pure pass-0 snapshot `13b71c26` (fit-class test); the live path's current
-surface is `d594dc03` on the merged pair. The no-arbitrage instrument: `noarb_table.py` (+
-extension) in the outgoing seam's scratch — REBUILD it from the register's description or the
-review-set commit if scratch is gone; its method is one paragraph (whole-cohort mean engine value
-at year N, busts at zero, denominators per row).
+surface is `d594dc03` on the merged pair. The no-arbitrage instrument is COMMITTED with outputs
+and re-run recipe at `docs/evidence/noarb_2026-08-05/` — never rebuild it; its README says how
+to re-run on final bytes.
 
 ## THE INCOMING SEAT'S FIRST TASKS
 0. Onboard per the charter order (charter → primer IN FULL → this file IN FULL → register by
