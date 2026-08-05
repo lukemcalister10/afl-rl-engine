@@ -1,0 +1,60 @@
+STATE-DIFF BASE ANNOTATION — L6_pass1_state.diff
+================================================
+Filed 2026-08-05 by the #306 execution seat 2a1xa4 under N18. Written AT GENERATION; generated to
+scratch with `-- . ':(exclude)docs/'`, section count verified, then moved into place (practice 4).
+
+THE ARTIFACT
+  file        L6_pass1_state.diff
+  md5         ebaca58ea509107db2c34797e256f896
+  sections    20 `diff --git`
+  generated   `git diff --binary -- . ':(exclude)docs/'`
+
+THE BASE OF RECORD
+  BASE COMMIT   472c39d      ON  claude/exec-seat-306-afl-rl-zlaarm
+
+WHAT CHANGED FROM 2b7640be — TWO RULED ACTS, BOTH AUTHORISED
+  1. THE DERIVATION-LANE RE-PINS (#306 comments 5186041140 ruling 1, 5186820918 clause 2), in
+     session_2026-07-30/item279_step4/scripts/harness_pvc_REPINNED.py — a SEPARATE FILE from the
+     frozen harness, whose byte-identity at e0130cc2 is preserved and re-proven:
+       EXPECT_V0SURF  8291668eff41 -> 96d671c952c8 (pass 0)  -> 54ef78e3891a (pass 1)
+       EXPECT_STORE   81d24704 UNCHANGED · EXPECT_N 1197 RE-MEASURED at each pass
+     Non-vacuity proven both directions before AND after every move.
+  2. THE L1(b) ENUMERATED SAME-COMMIT INSTALL of curve 1, executed atomically by the committed
+     instrument l6/install_pass1.py (six-file set, three interlocking derived hashes):
+       engine/rl_after/pvc_curve_v2.json   curve + curve_md5 e69a3f38 -> 9f7848f4
+                                           numeraire head 3068.4647 -> 3010.1221 (SEALED TWIN: both
+                                           the field AND its own _doc prose moved BY JSON PATH)
+                                           s -> 0.9966373124864271 (DERIVED, N14/E6)
+                                           pool_value 234.3 -> 233.1 · per_entrant_md5 -> e1c62f86
+       ui/release_pick_curve.json          curve_md5 -> 9f7848f4 · file_md5 -> 8e1b20cb
+                                           curve_source_store_md5 stays FULL 32 (E.5 finding 5)
+       data/release_contract.json          pvc_provenance.curve_payload_md5 -> 9f7848f4
+                                           contract_sha256 3ede10d3 -> a6b04a3e — THE N44-ADDENDUM
+                                           STALE SEAL IS RE-STAMPED HERE, at the curve-install step,
+                                           exactly where the record always re-stamps it, and it
+                                           covers the engine_head move too. N44 addendum clause 2
+                                           DISCHARGED.
+       engine/rl_after/one_source_selftest.py  _contract_md5 ca2f2e87 -> 5f5ffdfd ·
+                                           _per_entrant_md5 -> e1c62f86 · _curve_source_store UNCHANGED
+     THEN C.3 step 3, the same act: v0surf RE-BAKE b540833b -> 6ba4f4c3, expected_boot.v0surf
+     re-pinned by the lane itself. The shipped signature MOVED 96d671c952c8 -> 54ef78e3891a because
+     it is curve-keyed.
+
+STATE AT PASS 1
+  store 81d24704 · curve 9f7848f4 · surface 6ba4f4c3 · engine 15525b03 · gamma 1.0
+  contract_sha256 a6b04a3e (fresh, self-consistent) · sealed history byte-identical (release_lineage
+  6925d4b5 untouched)
+
+WHAT IS NOT ESTABLISHED BY THIS CAPTURE
+  R-I's FIXED POINT. Pass 1 derived b61c01b0 against installed 9f7848f4 — NOT equal. Bound 4; two
+  passes consumed. NOTHING IS DECLARED. The G-Y0 gate figure at this curve/surface pair has NOT been
+  measured (no board/book/selftest run this pass).
+
+WHY THESE FILES ARE NOT COMMITTED — they are the REHEARSAL SUBSTRATE. R-C holds; committing is the
+landing act and it needs the withheld word. Bake HELD; EXECUTION word WITHHELD.
+
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS 0 (the prior sealed state):
+  git checkout -- . && git apply --binary docs/evidence/exec_306_zlaarm/L6_pass0_lens_state.diff
+  (2b7640be), then re-stamp the two .srcmd5. Never `git stash` a substrate file.

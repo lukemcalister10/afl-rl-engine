@@ -1,0 +1,17 @@
+{
+ "bytes": 148626,
+ "curve_payload": "9f7848f4",
+ "curve_payload_full": "9f7848f41d3b041b7397b5fe0d5d909a",
+ "engine_head": "15525b033f390d041a7858f47a30b48e",
+ "expected_boot_v0surf": "6ba4f4c3f3d5a4697b0ecafe2e15b96d",
+ "gamma": 1.0,
+ "md5": "6ba4f4c3f3d5a4697b0ecafe2e15b96d",
+ "note": "committed as bytes + md5 + signature BEFORE the engine loads it (R-H.2). The signature MOVED because it is curve-keyed \u2014 unlike pass 0, where the lens changed the surface bytes without changing the signature.",
+ "pass": 1,
+ "prior_signature": "96d671c952c8",
+ "prior_surface_md5": "b540833b2e251631bf76aeec0040cc05",
+ "refit_seconds": 139,
+ "shipped_signature": "54ef78e3891a",
+ "store": "81d24704",
+ "what": "L6 pass 1: surface refit at the INSTALLED curve 9f7848f4 (C.3 step 3 re-bake)"
+}
