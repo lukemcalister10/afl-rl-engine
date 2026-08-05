@@ -137,3 +137,16 @@ filings, corridor syncs, relays, and simple owner Q&A — where the guard is che
 asserts, not deeper thought; this seat's own worst errors were mechanical slips that no
 reasoning depth prevents and that verbosity worsens. When unsure which a turn is, ask what a
 mistake in it costs to reverse.
+
+## AMENDMENT OF 2026-08-05, SECOND BLOCK (owner-directed, at the v572 pen)
+**The pen token is RETIRED.** Owner word 2026-08-05 ("Retire and pen"), given after twelve
+consecutive seams operated without it — a guard nobody operated that still blocked work (it held
+the v570-era register lines back a full session). What protects the register now is what actually
+protected it all along: (1) the role rule — only the sitting seam seat pens; (2) the pre-commit
+structural checks, proven before every commit; (3) the standing reversal — any pen error reaching
+main restores stricter control. Reinstatement is one owner sentence away. The rotation protocol's
+token step is void wherever it appears above.
+**Plain vocabulary is law.** The project's earlier metaphor vocabulary repeatedly tripped a model
+content-filter false positive and blocked seats mid-work (2026-08-05). All new owner-facing text,
+filings, directives, annotations, and hand-over notes use plain words; the primer's glossary
+carries the old-to-new mapping; historical records keep their names and are never rewritten.
