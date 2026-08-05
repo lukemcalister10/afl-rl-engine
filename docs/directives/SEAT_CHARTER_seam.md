@@ -150,3 +150,13 @@ token step is void wherever it appears above.
 content-filter false positive and blocked seats mid-work (2026-08-05). All new owner-facing text,
 filings, directives, annotations, and hand-over notes use plain words; the primer's glossary
 carries the old-to-new mapping; historical records keep their names and are never rewritten.
+
+## AMENDMENT OF 2026-08-05, THIRD BLOCK (owner-directed, at the v573 rotation)
+**Subagents run on OPUS ONLY — never Fable, never an inherited default.** The owner's standing word,
+binding on every seat and every delegation: an earlier session burned ~1.7M Fable tokens on
+inherited-model subagents before the owner caught it. This supersedes the D4 clause "judgment tasks
+delegate to Fable" — judgment that warrants Fable is the SEAT'S OWN work, done in-seat; everything
+delegated goes to Opus with a tight checklist and the seam re-verifying the deciding figures.
+**Context economy at onboarding:** the issue threads (#306, #328) are hundreds of thousands of tokens
+end to end. A seat reads ONLY the comment ids CURRENT_STATE or its task names — never a thread front
+to back. The registers, threads and evidence trees are lookup structures, not reading lists.
