@@ -1,0 +1,1281 @@
+{
+  "_meta": {
+    "purpose": "Every numeric constant and lookup table that lives in the engine's Python code rather than in the 12 data files. A rebuilder following RECIPE.md needs these verbatim; the recipe states many of them as '≈', a range, 'a fixed table', or a few sample points.",
+    "extracted": "2026-08-05",
+    "source_tree": "scratchpad/wt-lens/ (read-only). Per-value file:line provenance is in CONSTANTS_SOURCES.md.",
+    "rules_applied": [
+      "Values read from code only. Where a comment disagrees with the code, the code value is given and the disagreement is recorded in _comment_conflicts.",
+      "Env-gated values are given at the shipped/default configuration (data/model_config.json, which the bake/gate loader pins and which equals every code default). The gate name is recorded beside each such value.",
+      "The engine was not run. Tables are transcribed, not evaluated."
+    ],
+    "verification_round_1_applied": {
+      "date": "2026-08-05",
+      "report": "verify_constants.md — independent adversarial re-read of scratchpad/wt-lens/ (31 CONFIRMED, 1 WRONG, 4 INCOMPLETE over the 36 groups then present)",
+      "corrections_applied": 11,
+      "breakdown": {
+        "wrong_group_fixed": {
+          "count": 1,
+          "values_changed": 2,
+          "detail": "L2_step2_season_qualification_bars.soft_qualifying_logistic.evaluated — g=9 0.14185106490048777 -> 0.1396521834167601 and g=13 0.8581489350995122 -> 0.8603478165832398. The old pair used an exponent of +/-1.8; the code's exponent is (g-11.0)/1.1 = +/-1.8181818... g=11 = 0.5 was already right."
+        },
+        "incomplete_groups_completed": {
+          "count": 4,
+          "edits": 6,
+          "detail": [
+            "L2_steps11_13_forward_band — band_target replaced by the code's four-branch ladder (>=3 qualifying -> top-3 mean; 1-2 -> mean of what qualifies; 0 but played -> max avg over any played season; never played -> 0), and the v7 form-relax entry gate asc < 1.0 recorded.",
+            "L3_step9_proven_reweighting — fadew's None-age fallback 25.0 added; the deep-pick compress scope corrected from 'a fully proven non-KPF player never carries it' to 'a fully proven player of ANY position never carries it'.",
+            "L3_step11_pole — wage's None-age fallback 21 added (a missing-age player reads as age 21, wage 0.8333333333333334).",
+            "supporting_par_surface — the surface's own fit cohort window DRAFT_LO, DRAFT_HI = 2003, 2018 added."
+          ]
+        },
+        "groups_added": {
+          "count": 3,
+          "detail": [
+            "supporting_level_demo_and_role_decay — the ~20 constants of level_demo + _role_decay_hc, previously flagged in CONSTANTS_SOURCES.md but never folded in. level_now feeds `cur` to every pricing loop, so without these the level input to every price was unreproducible.",
+            "supporting_basepk_pedigree_surface — pkbest, the >=4-per-cell minimum-sample rule, the 75 pool/bandpeak fallback, the cross-band monotone clamp, equal year weighting, and the bandcoord/basepk_c interpolation.",
+            "_omitted_literals_trivial_or_unreachable — the four remaining value-path literals that change no shipped price (build_pvc's 5000.0 NaN sentinel, the 1e9/1e18 loop initialisers, the v7 asc<1.0 entry gate, and the dead KAPPA/SCONV/LOWBASE line)."
+          ]
+        }
+      },
+      "group_count": {"before": 36, "after": 39},
+      "unapplied": "none — every correction in the report was applied.",
+      "note": "the report's remaining observations were prose clarifications on CONFIRMED groups (the AGE_CURVE reachability sentence in L2_step14, the 'parametric below pick 6' vs k<=6 wording in L3_step6, and the floor-half vs projection-half form string in L3_step4). The verifier explicitly ruled each accurate as written, so no group text was changed for them."
+    },
+    "shipped_price_function": "_merged_recover.ev(p, Y). rl_model.value()/proj_value() is a SUPERSEDED parallel path that the board does not render; its private constants (debut_factor, los_decay, out_tilt, track_slip, survival, PRESENT_VAR, CVX_CAP, pedmix, RWE, GRACE/LOS_C/LOS_P, TILT_*/GAIN_*/SLIP_*) are therefore NOT part of this recipe and are excluded. The one exception is the block that still sets the currency SCALE — see L3_step6_currency.",
+    "_comment_conflicts": [
+      {
+        "where": "_merged_recover.py, LEG B v1.1 header and the RL_UNCONSERVE comment",
+        "comment_says": "RL_UNCOMP is INERT by default (UNCOMP_S_DEFAULT=None) / UNCOMP_S_DEFAULT stays None",
+        "code_says": "rl_model.py UNCOMP_S_DEFAULT = 0.10 (owner-set literal). The output-proportionality map is LIVE by default.",
+        "resolution": "code wins: strength 0.10 is in effect."
+      },
+      {
+        "where": "_merged_recover.py _V0SURF_GATES",
+        "comment_says": "Defaults are the engine's own (rl_model.py:504 and :866)",
+        "code_says": "the dict carries 'RL_GAMMA':'0.85' as its fallback, while rl_model.py's own default is '1.0'",
+        "resolution": "no functional effect in the shipped chain: distribution_pricing.py runs os.environ.setdefault('RL_GAMMA','1.0') at import, before the signature is computed, so the gate resolves to '1.0'. Recorded because the literal 0.85 in the gates dict is misleading."
+      },
+      {
+        "where": "rl_model.py PICK-1 ANCHOR block",
+        "comment_says": "the player side takes _P1/PVC[1] ... measured 4441 ... BOARD_FACTOR = 3000/4441 = 0.675524",
+        "code_says": "BOARD_FACTOR = (_P1/PVC[1]) * _NUM['s'] — the comment's own text elsewhere in the block states the two-sided form; the 4441 figure is a measured observation of a computed quantity, not a literal in code",
+        "resolution": "PVC[1] is computed at import by build_pvc_v34; only the formula and its inputs are constants."
+      }
+    ]
+  },
+
+  "L1_step50_replacement_bars": {
+    "_recipe_gap": "Recipe gives 'mids highest ≈80, key forwards lowest ≈66.8' and a '~67–80' range. Full exact table:",
+    "REPL_points_per_game": {
+      "MID": 80.1,
+      "SD": 78.3,
+      "RUCK": 78.5,
+      "KPD": 68.4,
+      "SF": 70.9,
+      "KPF": 66.8
+    },
+    "position_codes": ["MID", "RUCK", "SD", "SF", "KPD", "KPF"],
+    "dual_eligibility_collapse": {
+      "rule": "KPF absorbs SF; KPD absorbs SD; at most 2 codes remain; a surviving pair takes the LOWER REPL",
+      "cross_class_data_error_pairs": [["KPD","SF"], ["KPF","SD"], ["RUCK","SF"], ["RUCK","SD"]],
+      "on_data_error": "row treated single-position (no dual bar), reported by name, build continues"
+    },
+    "live_season_constant": 2026
+  },
+
+  "L2_step2_season_qualification_bars": {
+    "_recipe_gap": "Recipe: 'a smooth ramp from ~0 at 9 games to ~1 at 13 games' and 'hard 6-, 14- and 22-game bars'. Exact:",
+    "soft_qualifying_logistic": {
+      "form": "q(g) = 1 / (1 + exp(-(g - Q0)/QW))",
+      "Q0_centre_games": 11.0,
+      "QW_width_games": 1.1,
+      "evaluated": {"g=9": 0.1396521834167601, "g=11": 0.5, "g=13": 0.8603478165832398},
+      "_evaluated_note": "exponent is (g - 11.0)/1.1 = +/-1.8181818..., NOT +/-1.8; corrected at verification round 1 (2026-08-05)",
+      "env_gate": "RL_EVW (default 1; =0 restores four discrete regimes)"
+    },
+    "hard_bars_games": {
+      "sit_out_and_era_and_staleness_bar": 6,
+      "hard_qualifying_season_bar_nqual": 10,
+      "level_ramp_bar": 14,
+      "full_season_basis": 22
+    },
+    "proration": {
+      "rule": "every 6/10/14/22 games bar is multiplied by the in-progress season's calendar progress fE; completed seasons use fE = 1",
+      "in_progress_year": 2026,
+      "fE_source": "data/season_state.json calendar_progress",
+      "fE_in_effect": 0.83,
+      "fE_code_fallback_unfenced_dev_only": 0.58,
+      "fE_for_register_out_for_season_names": 1.0,
+      "deliberately_NOT_prorated": {
+        "nqual_10_game_count": "board-wide proration measured and rejected; the 10-bar prorates only for the first qualifying season, delivered through the f1 credit",
+        "G_ADQ_adequacy_window_games": 12
+      },
+      "prorated_12_game_bar": "the key-forward sustained-level (LD) reading uses its own 12-game bar that DOES prorate: 12 * fE for the in-progress season"
+    },
+    "playable_games_cap": "SEASON * (max(0, Y - debut_year) + fE), SEASON = 22"
+  },
+
+  "L2_step3_era_adjustment": {
+    "_recipe_gap": "Recipe names the window 2009–2025 but not the qualification bar or the reference definition.",
+    "window_years_inclusive": [2009, 2025],
+    "loop_in_code": "range(2009, 2026)",
+    "season_row_qualification_games": 6,
+    "era_year_mean": "mean of every season row's avg with games >= 6 in that year, over the whole store",
+    "REF_long_run_mean": "arithmetic mean of the per-year era means over 2009..2025",
+    "adjustment": "era_adjusted_avg = avg * REF / era[year]  (era[year] missing -> REF, i.e. factor 1)",
+    "consumers": ["bestlvl", "_kpf_LD (sustained level)", "_staleness_grade", "recent_ratio"],
+    "NOT_era_adjusted": "the recency-weighted current level _lvlcurr"
+  },
+
+  "L2_step5_pick_split": {
+    "ND_CURVE_LAST": 64,
+    "POOL_PICK": 65,
+    "pickless_entry_types": ["SSP", "MSD", "IRE", "UNR", "PDA", "PDN", "PDS"],
+    "effective_pick_rule": "national pick 1..64 -> that pick; national 65+ , RD, PSD and every pickless type -> POOL_PICK = 65",
+    "KMAX_feature_cap": 70,
+    "iso_guard_pick_domain": [1, 70],
+    "curve_teaching_gate": "_teaches_curve(p) = not _pvc_exclude and not is_pool(p)",
+    "curve_fit_sites_registered": ["build_pvc", "build_pvc_v34", "_natcv", "_natcv34", "v0_kernel"],
+    "cohort_hist_window_years": [2003, 2021]
+  },
+
+  "L2_step6_evidence_dials": {
+    "_recipe_gap": "Recipe gives the 0.55 / 3.6 / 1.1 / 0.11+0.89 family in prose. Exact code constants and forms:",
+    "E_q_definition": "sum over seasons after (debut_year - 1) and <= Y with games > 0 of the soft logistic q(games) from L2_step2",
+    "_EVW_GK_trust_gate_half_scale": 0.55,
+    "_EVW_EST_established_centre": 3.6,
+    "_EVW_TAU_pedigree_fade_rate": 1.1,
+    "_EVW_R_pedigree_residual_floor": 0.11,
+    "derived_089": "1 - _EVW_R = 0.89 (not a separate literal in code)",
+    "forms": {
+      "trust_recent_form": "ev_rec(E) = E^2 / (E^2 + 0.55^2)",
+      "treat_as_established": "ev_est(E) = E^3 / (E^3 + 3.6^3)",
+      "pedigree_par_weight": "ev_pw(E) = [E^2/(E^2 + 0.55^2)] * [0.11 + 0.89 * exp(-E/1.1)]"
+    },
+    "PROVEN_N_qualifying_seasons": 4,
+    "nqual_definition": "count of seasons with games >= 10 after (debut_year - 1) and <= Y (hard bar; the soft E_q is separate)",
+    "partial_evidence_convention": "c = nqual / PROVEN_N = n/4",
+    "env_gate": "RL_EVW (default 1)"
+  },
+
+  "L2_step7_recency_and_games_trust": {
+    "_recipe_gap": "Recipe: 'games²/(games+5.8) ... × a per-position-group recency decay per year (≈0.23–0.40)'. Exact:",
+    "small_sample_damping": {
+      "form": "w(g) = g^2 / (g + K)",
+      "_DAMP_K": 5.8,
+      "env_gate": "RL_DAMP (default 1; =0 gives w = g)",
+      "note": "pinned in-code; the RL_DAMP_K env read was removed"
+    },
+    "recency_decay_per_year_by_position_group": {
+      "_group_map": {"KEY": ["KPF", "KPD"], "GEN": ["SF", "SD"], "MR": ["MID", "RUCK"]},
+      "LDECAY_G": {"KEY": 0.40, "GEN": 0.35, "MR": 0.225},
+      "form": "season weight = w(games) * LDECAY^max(0, Y - season_year)"
+    },
+    "games_to_130_trust_clamp": {
+      "used_in": "rl_model._dev_advance — rolling demonstrated form from the form-anchor age to the eval age",
+      "form": "w = clamp(career_games / 130.0, 0.30, 0.85)",
+      "denominator": 130.0,
+      "clamp_lo": 0.30,
+      "clamp_hi": 0.85,
+      "blend": "L1 = L + w*(L*(c1/c0 - 1)) + (1-w)*(cp*(c1-c0)), cp = basepk_c(pos, effpk)",
+      "growth_guard_clamp": ["L*0.5", "L*1.6"]
+    },
+    "other_recency_dials": {
+      "RL_RECENCY_DECAY_for_exposure_and_lvl_wt": 0.72,
+      "RL_LEVEL_RAMP_recency_weighted_games_for_full_trust": 14.0,
+      "EXPO_DEN_on_pace_denominator_games": 11.0,
+      "EXPO_F_exposure_pace_in_effect": 0.773,
+      "EXPO_F_code_fallback_unfenced_dev_only": 0.545,
+      "EXPO_INPROG_Y": 2026
+    }
+  },
+
+  "L2_step8_level_blend": {
+    "_recipe_gap": "Recipe: 'holds wobbles of ≤3 points either way', 'age-persistence fraction (≈0.92 at 20, ≈0.38 at 29, 0 at 30+)', 'age-decline multiplier (≈0.85 at 25 → 0.55 at 37, credited back up for elders)'. Exact tables:",
+    "blend_chain": "L = (1 - pw(E)) * [ (1 - est(E)) * (Lo + rec(E)*(Lc - Lo)) + est(E) * _est(p,Y,Lo,Lc) ] + pw(E) * par_prior",
+    "Lo": "cp._lvl_eff_orig — the par-centred career level (par + (games-weighted level - par) * min(1, exposure/RAMP))",
+    "Lc": "_lvlcurr — the recency-weighted current level of L2_step7",
+    "up_branch": {
+      "hold_band_DOWN_TOL_points": 3.0,
+      "onset_ramp": "sw = clip((gap - 3.0) / 5, 0, 1)",
+      "credit": "L = Lo + sw * s(age) * gap",
+      "env_gate": "RL_LSYM (default 1). RL_LSYM=0 restores the hard bar TOL_M1 = 5.0 plus the _radq games test",
+      "superseded_hard_bar_TOL_M1": 5.0,
+      "superseded_flat_slope_S_M1": 0.46,
+      "superseded_games_test": {"G_ADQ_games": 12, "WIN_years": 2},
+      "unused_upside_hold_tolerances_FLAT_TOL_G": {"KEY": 10.3, "GEN": 12.0, "MR": 14.0, "_note": "read only by the dormant twin _est_core; the live _est uses DOWN_TOL both sides under RL_LSYM=1"}
+    },
+    "age_persistence_fraction_S_AGE": {
+      "_note": "the up-side persistence slope s(age); piecewise-linear np.interp, clipped to [0,1]; None age -> 0.46",
+      "ages": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      "values_in_effect": [0.915376, 0.860795, 0.789170, 0.700837, 0.599107, 0.489589, 0.377802, 0.265858, 0.150620, 0.3793, 0.0, 0.0],
+      "age_29_knot_gate": "RL_SAGE29 (default 1) sets the age-29 knot to 0.3793; RL_SAGE29=0 restores 0.026915",
+      "age_29_base_value_if_gate_off": 0.026915,
+      "clip": [0.0, 1.0]
+    },
+    "down_branch_decliner_shed": {
+      "hold_band_DOWN_TOL_points": 3.0,
+      "onset_ramp": "sw = clip((drop - 3.0) / 5, 0, 1)",
+      "shed": "L = (1 - sw)*Lo + sw * Lc * agemult2(age, Lc - REPL[pos])"
+    },
+    "age_decline_multiplier_AGEMULT": {
+      "ages": [20, 22, 25, 28, 30, 32, 34, 37],
+      "values": [0.92, 0.89, 0.85, 0.79, 0.73, 0.68, 0.62, 0.55],
+      "interp": "np.interp then clip to [0.53, 0.95]",
+      "none_age_fallback": 0.85
+    },
+    "elder_credit_bump_fbump": {
+      "_recipe_gap": "Recipe: 'credited back up for elders still producing far above replacement'. Exact 7x4 surface:",
+      "lcr_definition": "Lc - REPL[future position]; lcr <= 0 hard-zeroes the bump (byte-exact age-only)",
+      "age_knots": [22.0, 25.0, 28.0, 30.0, 32.0, 34.0, 37.0],
+      "lcr_knots": [0.0, 5.0, 15.0, 30.0],
+      "table_rows_by_age": [
+        [0.0, 0.1152, 0.1239, 0.1439],
+        [0.0, 0.1152, 0.1239, 0.1439],
+        [0.0, 0.0968, 0.1192, 0.1439],
+        [0.0, 0.0704, 0.0939, 0.1439],
+        [0.0, 0.0530, 0.0802, 0.1439],
+        [0.0, 0.0414, 0.0802, 0.1369],
+        [0.0, 0.0296, 0.0802, 0.1051]
+      ],
+      "evaluation": "interp over lcr within each age row (lcr clipped to [0, 30]), then interp over age (age clipped to [22, 37])",
+      "combined": "agemult2 = clip(agemult(age) + fbump(age, lcr), 0.53, 0.98)",
+      "combined_clip": [0.53, 0.98],
+      "env_gate": "RL_FORMDECL (default 1; =0 gives age-only agemult)"
+    },
+    "par_prior": {
+      "form": "PR.par_at(future_position, min(effpk, 70), clamp(tenure, 1, 6))",
+      "tenure_clamp": [1, 6],
+      "clock": "evaluated at the form-anchor year under the forward lens (LEG F3, gate RL_LEGF default 1)"
+    }
+  },
+
+  "L2_step9_opportunity_test": {
+    "_recipe_gap": "Recipe: 'a weight equal to years-since-draft × the share of ~14 games/year of opportunity actually taken' and 'a realized-forward-ceiling read off best-season-above-bar and career year'. Exact:",
+    "elapsed_opportunity_weight_eo": {
+      "N": "Y - debut_year + 1",
+      "year_ramp": "yrw = clip((N - 2) / 4.0, 0, 1)   (0 at year <= 2, 1 by year 6)",
+      "exposure_share": "exp = clip(total_games / (14.0 * max(N - 1, 1)), 0, 1)",
+      "games_per_year_reference": 14.0,
+      "eo": "yrw * exp",
+      "mid_season_clock_pin_variant": "under _M3PIN, N is replaced by N-1; the data window stays at Y"
+    },
+    "target": {
+      "form": "T = max(_upS(max_qualifying_avg - bar, N), _lvlcurr(p,Y))",
+      "bar": "REPL[future position] - 3.0",
+      "qualifying_games_for_max_avg": 6,
+      "blend": "L = (1 - eo)*L0 + eo*T",
+      "env_gate": "RL_EO2 (default 1, two-directional). RL_EO2=0 caps T at L0 via min(L0, T) — pull-down only"
+    },
+    "realized_forward_ceiling_surface_upS": {
+      "dL_knots": [-30.0, -20.0, -10.0, 0.0, 10.0],
+      "career_year_knots_N": [3.0, 4.0, 5.0, 6.0],
+      "table_rows_by_N": [
+        [34.0, 45.0, 56.0, 67.0, 76.0],
+        [22.0, 33.0, 46.0, 59.0, 71.0],
+        [12.0, 22.0, 36.0, 51.0, 65.0],
+        [6.0, 14.0, 28.0, 44.0, 59.0]
+      ],
+      "evaluation": "dL clipped to [-30, 10], N clipped to [3, 6]; interp over dL within each N row, then interp over N"
+    }
+  },
+
+  "L2_step10_injury_gap_penalty": {
+    "_recipe_gap": "Recipe: 'a fitted level-point cost by age at the gap, capped at 20% of level ... the charge dissolves with games played since return (weight (g+5.8)/(g²+g+5.8))'. Exact:",
+    "_ABS_L_REF_multiplicative_base_level": 75.0,
+    "_ABS_CAP_fraction_cap": 0.20,
+    "_ABS_FADE_K": 5.8,
+    "age_cost_curve": {
+      "ages": [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+      "level_point_effect": [3.65, 0.28, -2.51, -4.49, -5.55, -5.73, -5.25, -4.46, -3.71, -3.25, -3.25, -3.85, -5.14, -7.10, -9.39, -11.29, -11.88],
+      "fraction": "frac(age) = clip(max(0, -interp(age)) / 75.0, 0, 0.20); age clipped to [18, 34]",
+      "note": "positive entries below age ~20 are a declared data-free kernel extrapolation and are clamped to 0 by max(0, -eff)"
+    },
+    "dissolve_weight": {
+      "form": "pw(g) = (g + 5.8) / (g^2 + g + 5.8)   [= 1/(1 + w(g)) with w(g) = g^2/(g+5.8)]",
+      "g_definition": "games played in seasons >= the most-recent return year, within the debut window and <= Y",
+      "pw_at_0": 1.0
+    },
+    "charge": "pen = max(0, L_base - L_nogap*(1 - frac)); L = L_base - pw(g)*pen, where L_nogap is the same level function on a gap-filled copy (pre-gap seasons shifted forward by the gap length)",
+    "gap_selection": "the MOST RECENT mid-career gap (a games==0 year after >=1 prior played season) whose return year <= Y; one penalty only",
+    "env_gate": "RL_ABSENCE (default 1)",
+    "scope": "real store players only (synths bypass)"
+  },
+
+  "L2_steps11_13_forward_band": {
+    "band_quantiles_Q": [0.10, 0.30, 0.50, 0.70, 0.90],
+    "band_target": {
+      "_note": "four-branch ladder; the window is lo = max(Y, debut_year) .. cap, a season QUALIFIES at games >= 6",
+      "qualifying_games_bar": 6,
+      "window_lo": "max(Y, debut_year)",
+      "branch_3_or_more_qualifying": "mean of the TOP 3 qualifying season averages",
+      "branch_1_or_2_qualifying": "mean of WHAT QUALIFIES (not the best single season)",
+      "branch_0_qualifying_but_played": "max avg over any season in the window with games > 0 (a played sub-6-game career reads low, not zero)",
+      "branch_never_played": 0.0,
+      "_correction": "the earlier one-line summary said 'best single season if <3 qualify, else 0'; the code averages the 1-2 qualifiers and falls back to the max of any played season before ever returning 0. Corrected at verification round 1 (2026-08-05)."
+    },
+    "training_window": {"resolved_debut_cut": 2021, "cap_year": 2026, "MSD_excluded": true, "MSD_exclusion_gate": "RL_MSD_POOL_EXCL (default 1)"},
+    "band_model_hyperparameters": {"n_estimators": 400, "max_depth": 4, "learning_rate": 0.05, "min_samples_leaf": 25, "random_state": 0, "loss": "quantile", "trees_env": "RL_PRIOR_TREES default 400"},
+    "features": ["6 position one-hots (MID, SD, SF, KPD, KPF, RUCK)", "log(min(effpk, 70))", "_exposure(p,Y)", "tenure", "_lvl_eff(p,Y)", "_age_asof(p,Y)"],
+    "train_serve_asymmetry": "training uses the par-centred level feature (PR.lvl_par); live inference uses the refined level (_lvl_eff_abs). Deliberate and permanent.",
+    "ceiling_node": {
+      "model": "q97m, a frozen GradientBoostingRegressor pickle; no fit path at build time",
+      "floor": "max(q97_prediction, band[4]) — floored at the 90th percentile"
+    },
+    "ceiling_age_taper_v7": {
+      "_recipe_gap": "Recipe: 'retain 100% at 20 → 40% at 27+, with a demonstration-earned partial retention'. Exact:",
+      "asc_age_knots": [20, 22, 24, 27],
+      "asc_values": [1.0, 0.76, 0.58, 0.40],
+      "applied": "band[5] = median + asc * (band[5] - median), median = band[2]",
+      "form_relax": {
+        "entry_gate_asc": "asc < 1.0 — the relax block is entered only when the age taper actually bites; at age <= 20 asc == 1.0 and the whole relax is inert regardless of lcr/nqual",
+        "condition": "lcr > 4.0 and nqual >= 1, where lcr = _lvlcurr(p,Y) - REPL[future position]",
+        "phi": "clip((lcr - 4.0)/26.0, 0, 1) * min(nqual, 2)/2 * V7_FORM_W",
+        "V7_FORM_W": 0.6,
+        "asc_prime": "asc + (1 - asc)*phi",
+        "env_gate": "RL_V7FORM (default 1)"
+      },
+      "scope": "real store players only"
+    },
+    "first_evidence_smoothing": {
+      "applies_to": "players whose ALL evidence is season Y",
+      "form": "3-point moving average of the price over games in {g-1, g, g+1} (g-1 floored at 1) at the player's own scoring rate",
+      "weights": "equal (plain mean of 3)"
+    }
+  },
+
+  "L2_step14_L3_step2_age_path": {
+    "_recipe_gap": "Recipe gives three sample points ('1.0 at peak, ~0.58 eight years before, 0.34 fourteen years after'). Full DELTAS table:",
+    "DELTAS_fraction_of_peak_by_years_from_peak_age": {
+      "-8": 0.58, "-7": 0.62, "-6": 0.68, "-5": 0.74, "-4": 0.80, "-3": 0.86, "-2": 0.92, "-1": 0.97,
+      "0": 1.0,
+      "1": 0.99, "2": 0.98, "3": 0.96, "4": 0.94, "5": 0.91, "6": 0.88, "7": 0.84, "8": 0.79,
+      "9": 0.73, "10": 0.66, "11": 0.58, "12": 0.50, "13": 0.42, "14": 0.34
+    },
+    "lookup": "frac(age, peak_age) = DELTAS[ clamp(round(age - peak_age), -8, +14) ] — a single POSITION-BLIND table; the only per-position input is PEAK_AGE",
+    "IMPORTANT_this_is_not_per_position": "DELTAS is one table. Position enters solely through PEAK_AGE[g]. This differs from the per-position AGE_CURVE tables in params.json, which are a DIFFERENT object used only by rl_model._agecurve/_dev_advance (rolling demonstrated form between two ages), never by the pricing path proj_from_peak/prod_floor.",
+    "PEAK_AGE_from_params_json": {"MID": 25, "RUCK": 27, "SD": 26, "KPD": 27, "SF": 25, "KPF": 27},
+    "PEAK_points_per_game_from_params_json": {"MID": 92, "RUCK": 92, "SD": 78, "KPD": 70, "SF": 70, "KPF": 72},
+    "params_json_AGE_CURVE_post_smoothing_rule": "each per-position curve is forced non-increasing past its own peak with at least a 0.010 fall per year: out[a] = min(c[a], out[a-1] - 0.010) for a > peak",
+    "horizon": {
+      "max_future_years_k": 18,
+      "stop_if_age_above": 38,
+      "stop_if_fraction_below": 0.42,
+      "floors": "year-k level floored at the current level for every year with age <= peak_age, and unconditionally at k = 0"
+    }
+  },
+
+  "L3_step3_captaincy_premium": {
+    "_recipe_gap": "Recipe: 'zero at or below a 105 points-per-game bar, then a smooth logistic-integral credit'. Exact:",
+    "active_ruled_curve": {
+      "LCAPT_BAR": 105.0,
+      "LCAPT_M_logistic_midpoint": 109.5,
+      "LCAPT_W_logistic_width": 1.85,
+      "LCAPT_G_gain": 1.00,
+      "form": "credit(L) = G*W*[ softplus((L - M)/W) - softplus((BAR - M)/W) ], clamped >= 0",
+      "softplus": "log1p(exp(x)) for x < 30, else x (overflow-safe)",
+      "env_gate": "RL_CAPT (default 1)"
+    },
+    "retired_saturating_curve_reachable_only_at_RL_CAPT_0": {
+      "CAPT_THRESH": 107.4,
+      "CAPT_GAIN": 0.35,
+      "CAPT_EXP": 1.25,
+      "CAPT_CAP": 18.0,
+      "form": "cb = 0.35 * max(0, L - 107.4)^1.25; credit = cb*18/(18 + cb)"
+    },
+    "unused_logistic_probability_constants": {"CAPT_M": 116.0, "CAPT_W": 5.0, "used_by": "capt_bonus(), not on the price path"},
+    "captain_off_switch": "_CAPT_OFF forces the premium to 0 for the captain-free recompute used by the output-proportionality map; default off"
+  },
+
+  "L3_step4_replacement_netting": {
+    "acquirable_replacement_allowance_points": 3.0,
+    "allowance_env": "RL_REPL_DROP (default '3'), applied uniformly to all six positions as REPL_DROP = {pos: 3.0}",
+    "application": "price6 lowers MA.REPL by REPL_DROP around the v_at_peak call and restores it afterwards",
+    "soft_hinge": {
+      "S_SH_scale_points": 3.0,
+      "form": "posval(x) = 3.0 * log(1 + exp( min(x/3.0, 40.0) ))",
+      "overflow_guard_argument_cap": 40.0
+    },
+    "year_zero_dual_bar_blend": {
+      "form": "SEASON_PROG * posval(base - REPL[present]) + (1 - SEASON_PROG) * posval(base - REPL[lower_of_pair])",
+      "SEASON_PROG_in_effect": 0.83,
+      "rule": "the blend is done OUTSIDE the nonlinearity — two posval evaluations, never a blended bar inside one call",
+      "scope": "now-board only (AGE_REF == BASE_REF); k>=1 and the banked component keyed to the present position",
+      "note": "on the current board the whole year-zero leg takes the LOWER declared bar at source; the proportional blend can only fire on backward as-of years"
+    },
+    "years_1plus_dual_stream": "futblend returns [(primary, 1-q), (lower_REPL_of_pair, q)] where q = p_dual_stream/100; gate RL_FLEX (default 1)"
+  },
+
+  "L3_step5_aggregation_and_discounts": {
+    "games_per_season_multiplier": 21,
+    "discount_dials_LENS": {
+      "_recipe_gap": "Recipe: '14% per year on the balanced board (a win-now lens uses 34%, a future lens 5%, and named postures 18%/10% exist as sketches)'. Exact dict:",
+      "bal": 0.14,
+      "balanced": 0.14,
+      "now": 0.34,
+      "fut": 0.05,
+      "contender": 0.18,
+      "rebuilder": 0.10,
+      "bal_gate": "RL_DIAL14 (default 1); RL_DIAL14=0 gives bal = 0.15",
+      "bal_value_if_gate_off": 0.15,
+      "posture_keys_gate": "RL_LEGE (default 1); =0 removes 'balanced'/'contender'/'rebuilder'",
+      "POSTURES": ["balanced", "contender", "rebuilder"],
+      "discount_form": "term_k / (1 + d)^k"
+    },
+    "key_position_premium": {"multiplier": 1.05, "positions": ["KPF", "KPD"]},
+    "young_elite_runway_bonus": {
+      "_recipe_gap": "Recipe: 'up to +25% extra for a young player near the positional elite ceiling (runway × eliteness product)'. Exact:",
+      "PMAX": 0.25,
+      "runway": "clamp((25 - age) / 6.0, 0, 1)",
+      "runway_age_reference": 25,
+      "runway_span_years": 6.0,
+      "eliteness": "clamp((L / PEAK[position] - 0.97) / 0.30, 0, 1)",
+      "eliteness_threshold_fraction_of_peak": 0.97,
+      "eliteness_span": 0.30,
+      "applied": "prod *= (1 + runway * elite * 0.25)",
+      "forward_lens_note": "under the forward lens the runway uses the form-anchored age ah = age - (AGE_REF - BASE_REF)"
+    }
+  },
+
+  "L3_step6_currency": {
+    "_recipe_gap": "Recipe: 'the scale is anchored so the 99th-percentile player on a frozen reference basis prices at 7000 ... multiplied by one board factor'. Exact:",
+    "anchor_percentile": 99,
+    "anchor_value": 7000,
+    "GAMMA": {
+      "in_effect": 1.0,
+      "form": "value = SCALE * raw^GAMMA",
+      "env": "RL_GAMMA; rl_model default '1.0'; distribution_pricing.py os.environ.setdefault('RL_GAMMA','1.0'); data/model_config.json pins '1.0'",
+      "retired_concave_alternative": 0.85
+    },
+    "SCALE_base": "7000 / (99th percentile of player_raw(p,'bal') over played players, computed with the stable reference basis STBL=True) ^ GAMMA",
+    "stable_reference_basis_RW_S": {"2026": 2.0, "2025": 1.0, "2024": 0.4, "2023": 0.2, "_rule": "level_stable = games-and-RW_S-weighted mean avg over seasons with games >= 2"},
+    "BOARD_FACTOR": {
+      "form": "(RL_PICK1 / PVC[1]) * s",
+      "RL_PICK1": 3000.0,
+      "PVC[1]": "the head of the import-time v3.4 curve fit, computed at import; never ships as the ladder",
+      "s_source": "pvc_curve_v2.json numeraire block",
+      "s": 0.9776876364261254,
+      "pooled_head_pre_scale": 3068.4647,
+      "published_pin": 3000.0,
+      "coherence_halt_tolerance": 1e-09,
+      "applied": "SCALE = SCALE * BOARD_FACTOR"
+    },
+    "display_divisor_F": {
+      "value": 1.0524,
+      "source_file": "pick_redenomination.json 'factor'",
+      "code_fallback_if_file_absent": 1.0524,
+      "applied": "displayed player value = round(engine ev / 1.0524); picks are NOT divided (already in the numeraire)",
+      "order_and_ratio_gates": {"strict_inversion": "halt", "anchor_pair_ratio_tolerance_relative": 0.002}
+    },
+    "numeraire_halt": "shipped PVC[1] != 3000 halts unconditionally",
+    "reference_basis_constants_that_set_the_99th_percentile": {
+      "_note": "player_raw -> peak_est -> the explicit unproven-floor blend. These constants are off the ev() price path but DO set SCALE, hence the currency.",
+      "EXP_PEAK_BASE": {"MID": 60.5, "SD": 56.9, "SF": 49.6, "KPD": 51.1, "KPF": 44.7, "RUCK": 66.6},
+      "EXP_RETAIN_by_tenure_1_to_4": {
+        "RUCK": [1.00, 0.95, 0.91, 0.85],
+        "KPD": [1.00, 0.95, 0.95, 0.93],
+        "MID": [1.00, 0.92, 0.83, 0.65],
+        "SD": [1.00, 0.96, 0.92, 0.88],
+        "SF": [1.00, 0.90, 0.88, 0.83],
+        "KPF": [1.00, 0.95, 0.85, 0.80]
+      },
+      "EXP_PICK_SLOPE": -10.72,
+      "EXP_LOGREF": 4.0073,
+      "EXP_BLEND_GAMES": 45.0,
+      "explicit_peak_clamp": [30.0, 105.0],
+      "V4_SPIKE_RETAIN": {"KPD": 0.69},
+      "v4_spike_guard_conditions": {"prior_baseline_min": 55, "spike_ratio": 1.30, "min_prior_qualifying_seasons": 3, "qualifying_games": 6},
+      "cohort_peak_confidence": {"games_denominator": 45.0, "beta_floor": 0.60},
+      "BETA_POS": {"MID": 1.10, "SD": 0.84, "SF": 0.98, "KPF": 0.92, "KPD": 0.63, "RUCK": 0.95},
+      "ICPT_POS": {"MID": 4.08, "SD": 1.92, "SF": 2.40, "KPF": 1.58, "KPD": 0.06, "RUCK": 2.79},
+      "track_delta_recency": "0.78^(2026 - season_year)",
+      "RWE_career_season_weights": {"1": 1.0, "2": 1.3, "3": 1.6, "4": 1.7, "5": 1.7, "_default": 1.7},
+      "import_time_curve_fit_dials": {
+        "ALPHA_legacy_CE": 0.6,
+        "PVC_ALPHA_LO": 0.6,
+        "PVC_ALPHA_HI": 0.8,
+        "alpha_ramp": "PVC_ALPHA_LO + (HI-LO)*min(k-1,49)/49",
+        "PVC_REPL_BUF": 0,
+        "CURVE_H": 1.0,
+        "window_picks": 4,
+        "min_curve_value": 210,
+        "loclin_bandwidth": "round(3 + 6*min(k-1,60)/60)",
+        "parametric_top_fit_picks": [1, 8],
+        "parametric_blend": "parametric below pick 6, loclin from pick 12, linear blend between",
+        "deplateau_floor_start_pick": 46,
+        "DEF_CURVE_fallback": [56, 62, 67, 71, 74, 77, 79, 80, 80, 79]
+      }
+    }
+  },
+
+  "L3_step7_demonstrated_floor": {
+    "horizon": "H = clamp((40 - age) / 3.0, 1.0, 3.0), integrated in whole years with the last year weighted min(1, H - k)",
+    "horizon_age_reference": 40,
+    "horizon_divisor": 3.0,
+    "horizon_bounds": [1.0, 3.0],
+    "roll_forward": "level_k = current_level * min(1, frac(age+k, peak_age) / max(frac(age, peak_age), 1e-6))  — decline only",
+    "position_axis": "present position (bnow) for the bar and the peak age",
+    "same_arithmetic": "captaincy premium, replacement netting, soft hinge, x21, the same per-year discount d, then val()",
+    "duplicate_loop_warning": "rl_model.prod_floor and _merged_recover._prod_floor_w4 are parallel copies; the proven-player board path uses the latter, which additionally multiplies each year by the W(k) certainty weight"
+  },
+
+  "L3_step8_band_averaging": {
+    "_recipe_gap": "Recipe: '18% weight on each of the five percentiles, 10% on the upside tail'. Exact:",
+    "WQ6": [0.18, 0.18, 0.18, 0.18, 0.18, 0.10],
+    "normalisation": "WQ6 /= WQ6.sum(); the sum is exactly 1.0 so the values are unchanged",
+    "SCALE_DIST_global_distribution_scale": 1.0,
+    "aggregation": "price6 = SCALE_DIST * fsum_dot(WQ6, [v_at_peak(p, L) for L in band])",
+    "determinism": "the dot product uses math.fsum, not np.dot (order-fixed across BLAS kernels)",
+    "per_candidate_floor": "v_at_peak returns max(production_price, prod_floor)"
+  },
+
+  "L3_step9_proven_reweighting": {
+    "_recipe_gap": "Recipe: 'credited up to +17% × ... ; far years faded up to −60% ...; the year weight never falls below 0.05'. Exact:",
+    "gate": "nqual >= PROVEN_N (=4), or a partially-proven key forward (see below)",
+    "W4_CRED_near_year_credit": 0.17,
+    "W4_KPFUP_key_forward_multiplier": 1.6,
+    "W4_FADE_far_year_fade": 0.60,
+    "year_weight_floor": 0.05,
+    "credit_leg": "W += cw * up * gm * dur * sh * interp(k, [0,2,5], [1,1,0])",
+    "fade_leg": "W -= 0.60 * (1 - gm) * fadew * interp(k, [4,10], [0,1])   (only when nqual >= 4)",
+    "c_near_knots": {"k": [0.0, 2.0, 5.0], "w": [1.0, 1.0, 0.0]},
+    "h_far_knots": {"k": [4.0, 10.0], "w": [0.0, 1.0]},
+    "margin_ramp_gm_general": "clip((m - 10.0) / 20.0, 0, 1), m = Lc - REPL[pos]",
+    "gm_start_general": 10.0,
+    "gm_span_general": 20.0,
+    "durability_dur": "clip(games(Y-2..Y) / 28.0, 0, 1)",
+    "dur_denominator_games": 28.0,
+    "not_declining_gate_sh": "1 - clip((Lo - Lc - 3.0) / 5.0, 0, 1)",
+    "fade_age_ramp_fadew": "clip(((age if age is not None else 25.0) - 23.0) / 3.0, 0, 1)   (23 -> 26)",
+    "fadew_none_age_fallback": 25.0,
+    "fadew_none_age_fallback_effect": "a missing-age player reads as age 25.0, i.e. fadew = clip(2.0/3.0) = 0.6666666666666666 — two thirds of the far-year fade, not zero",
+    "key_forward_variant": {
+      "gate": "RL_KPFFIX (default 1) and position == KPF",
+      "dm": "max(m, LD - REPL[KPF]) where LD is the sustained demonstrated level",
+      "_KPF_M0_regime_start": 8.0,
+      "_KPF_MS_regime_span": 16.0,
+      "gm_kpf": "clip((dm - 8.0)/16.0, 0, 1)",
+      "kt_top_tier_coordinate": "clip((dm - 8.0)/16.0, 0, 1)",
+      "note_gm_and_kt_are_numerically_identical_at_defaults": true,
+      "W4_KPFTOP_top_tier_height": 0.4,
+      "up_multiplier": "W4_CRED * (W4_KPFUP + W4_KPFTOP * kt) = 0.17 * (1.6 + 0.4*kt)",
+      "partial_proven_gate": "2 <= nqual < 4 AND dm > 8.0",
+      "partial_credit_weight_cw": "nqual / 4.0",
+      "partial_fade": "none — the fade leg stays gated on nqual >= 4"
+    },
+    "deep_pick_over_optimism_compress": {
+      "_recipe_gap": "Recipe: 'the small measured deep-pick (41+) over-optimism compression in three positions'. Exact:",
+      "W4_OVPX_global_scale": 1.0,
+      "W4_OVPX_D_by_position": {"SF": 0.12, "SD": 0.09, "MID": 0.07},
+      "positions_not_compressed": ["KPF", "KPD", "RUCK"],
+      "_positions_not_compressed_note": "no W4_OVPX_D entry exists for KPF/KPD/RUCK, so ovpx is 0 for them by table absence, not by a separate gate",
+      "pick_ramp": {"effpk_knots": [38.0, 46.0, 99.0], "values": [0.0, 1.0, 1.0]},
+      "applied": "W *= (1 - 1.0 * ovpx), ovpx = D[pos] * interp(effpk, knots)",
+      "scope": "thin-career (sub-proven) players, plus partially-proven key forwards; a FULLY PROVEN player of ANY position never carries it — the compress lives on the sub-proven branch and on the partial-proven KPF branch only",
+      "_scope_correction": "the earlier wording said 'a fully proven non-KPF player never carries it', which wrongly implied a fully proven KPF does. Corrected at verification round 1 (2026-08-05).",
+      "env_gate": "RL_OVPX (default 1)"
+    },
+    "env_gate": "RL_FWDRECAL (default 1) for the credit and fade legs"
+  },
+
+  "L3_step10_young_credit": {
+    "_recipe_gap": "Recipe: 'price × [1 + 0.9 × R × (1 − games/46)²] ... blended between the sat and played sub-classes over his first 6 games; key forwards' cell intensity ×0.92'. Exact:",
+    "_YC_W_fraction_paid_forward": 0.9,
+    "_YC_G0_games": 46.0,
+    "_YC_G0_from_table": 46,
+    "sat_played_blend": "s = min(g / 6.0, 1.0); R = max((1-s)*R_sat + s*R_played, 0.0)",
+    "blend_games": 6.0,
+    "_YC_KPF_cell_intensity": 0.92,
+    "phi": "(1 - g/46.0)^2, zero for g >= 46",
+    "multiplier": "1 + 0.9 * R * phi",
+    "clip_R": ">= 0 (never a cut)",
+    "table": {"file": "ycred_table.json", "keyed_by": "evaluation year", "years_available": [2007, 2026], "grid_picks": "1..90 (90 columns), interpolated over log(pick) with pick clamped to [1, 90]", "row_keys": {"1": "sat sub-class", "0": "played sub-class"}},
+    "years_before_table_earn": 1.0,
+    "scope": "real store players with type in (ND, RD) and not _pickless",
+    "lti_clock": "RL_LTI_CLOCK = 'advance' (default): for a register out-for-season name the games clock is advanced by L * 22 expected lost games; the retired alternative was 'pause'",
+    "env_gate": "RL_YOUNG (default 1). RL_YOUNG=1 with the table absent HALTS."
+  },
+
+  "L3_step11_pole": {
+    "_recipe_gap": "Recipe: 'a fixed per-position re-level (0.93–1.19)', 'recovery ... 0.54 at ≤30% of par rising to 1.0 at ≥82%', 'a tenure fade (1.00 in year 1 down to 0.05 by year 5)'. Exact:",
+    "pole_re_level_SCALE": {"MID": 1.19, "SF": 0.93, "KPF": 0.95, "SD": 1.08, "KPD": 1.05, "RUCK": 1.13},
+    "default_for_unknown_position": 1.0,
+    "pole_definition": "price6 of a synthetic at-par player: 2 seasons of 18 games at par_at(pos, min(pick,70), T), draft year 2023, dob 2005-03-01, type ND",
+    "synth_seasons_default": 2,
+    "synth_games_per_season": 18,
+    "pole_cache_key": "(pos, int(min(pick, 70)), int(clamp(T, 1, 6)))",
+    "recovery_curve": {
+      "x_axis": "weighted recent level / par",
+      "RECX": [0.30, 0.52, 0.67, 0.82, 0.97, 1.30],
+      "RECY": [0.54, 0.64, 0.84, 1.00, 1.00, 1.00],
+      "evaluation": "clip(interp(perf/max(1,par), RECX, RECY), 0, 1)",
+      "perf": "cp._lvl_wt(p,Y) — games x recency weighted level with RECENCY_DECAY 0.72"
+    },
+    "age_fade_wage": {
+      "form": "0.0 if position == RUCK else clip(1 - ((age if age is not None else 21) - 20)/6, 0, 1)",
+      "full_until_age": 20,
+      "zero_from_age": 26,
+      "span_years": 6,
+      "ruck_value": 0.0,
+      "none_age_fallback": 21,
+      "none_age_fallback_effect": "a missing-age player reads as age 21, i.e. wage = 1 - 1/6 = 0.8333333333333334 (not 1.0 and not 0.0)"
+    },
+    "tenure_fade_tfade": {
+      "tenure_knots": [1, 2, 3, 4, 5, 6],
+      "values": [1.00, 0.76, 0.40, 0.16, 0.05, 0.05],
+      "tenure_used": "developmental tenure et = clamp(eff_ten(...), 1, 6); eff_ten = base for proven (nqual>=4) else max(base, age-18)"
+    },
+    "exposure_gate": {
+      "POLE_RAMP_games": 22.0,
+      "ramp": "min(1, exposure(p,Y) / max(1e-9, 22.0 * min(1, playable_games/22)))",
+      "smoothed_form_under_RL_EVW": "gate = ramp + ev_est(E_q)*(1 - ramp)",
+      "base_form_if_RL_EVW_0": "1.0 if nqual >= 4 else ramp"
+    },
+    "combination": "w = wage * tfade * expgate; price := price + w * recovery * max(0, pole - price)",
+    "clock": "wage/tfade/expgate all evaluated at the form anchor under the forward lens (RL_LEGF default 1)"
+  },
+
+  "L3_step12_output_proportionality": {
+    "_recipe_gap": "Recipe: 'strength 0.10 × a saturating evidence weight × an onset ramp over the first 6 margin points'. Exact:",
+    "UNCOMP_S_strength": 0.10,
+    "UNCOMP_S_env_override": "RL_UNCOMP_S (dev-shell grid sweep only; unset in the shipped config)",
+    "UNCOMP_DELTA_onset_ramp_width_points": 6.0,
+    "UNCOMP_TAU_evidence_rate": 1.1,
+    "UNCOMP_DECAY_rho_recency_per_year": 0.25,
+    "kappa": 1,
+    "rho_num": "sum_s u_s*(avg_s - REPL[pos]) / sum_s u_s over EVERY season with games > 0; u_s = games_s * 0.25^(2026 - year_s)",
+    "rho_reference_year": 2026,
+    "no_exclusions": "no games floor, no season exclusion, no career-phase test",
+    "RHO_DEN": "per-position MEDIAN of rho_num over the demonstrated-proven population (in scope, nqual >= 4)",
+    "V_ref_b": "per-position MEDIAN captain-free price6 over the same population",
+    "evidence_weight": "E = 1 - exp(-E_q / 1.1), 0 when E_q == 0",
+    "onset_ramp": "1.0 if rho >= 6.0 else rho/6.0",
+    "weight": "w = 0.10 * E * ramp",
+    "map": "v0p = pr0^(1-w) * (V_ref_b * rho/RHO_DEN)^w, then C[pos]*v0p + (pr - pr0)",
+    "conservation": "C[pos] = sum(pr0) / sum(v0p) over the valuation scope (real, not delisted, not retired), computed once at load with C == 1 during accumulation",
+    "captaincy": "the increment pr - pr0 is added back unchanged (nominal)",
+    "identity_conditions": "rho is None or <= 0, or pr <= 0, or the player is a synth -> w = 0, map is identity",
+    "env_gates": {"RL_UNCOMP": "default 1", "RL_UNCONSERVE": "default 0; =1 forces C == 1 (measurement only)"}
+  },
+
+  "L3_step13_pick_order_guard": {
+    "_recipe_gap": "Recipe: 'faded toward 1 by exp(−effective qualifying seasons ÷ 1.1)'. Exact:",
+    "_ISOFADE_TAU": 1.1,
+    "note": "_ISOFADE_TAU is bound to _EVW_TAU, so the two are the same constant",
+    "fade": "iso_eff = 1 + (iso_corr(pos, effpk) - 1) * exp(-E_q / 1.1)",
+    "table_build": {
+      "picks": "1..70 inclusive",
+      "synthetic_player": "at-par synth at tenure T = 4 for each pick",
+      "raw": "raw_ev(synth)",
+      "iso": "IsotonicRegression(increasing=False) over pick",
+      "correction": "fs = iso / max(raw, 1e-6)",
+      "second_monotonisation": "the MULTIPLIER fs is itself re-fit isotonic non-increasing (gate RL_ISOFADE)",
+      "lookup": "np.interp(min(pick, 70), picks, fs)"
+    },
+    "positions": ["MID", "SF", "KPF", "SD", "KPD", "RUCK"],
+    "synth_convention": "synths are not real -> no fade, they take the raw monotonised table",
+    "env_gate": "RL_ISOFADE (default 1)"
+  },
+
+  "L3_step15_ruck_caps": {
+    "_recipe_gap": "Recipe: '0.80 × the engine's price of a standardized developing ruck at the ruck-median pick ... a smooth young-ruck headroom of up to +35% fading out by pick ~30 and age 25 ... 1.4 × his draft-slot value'. Exact:",
+    "RUC_CEIL_HEAD": 0.80,
+    "RUC_CEIL_REFPK_ruck_median_pick": 72,
+    "RUC_PRIOR_CAP": 1.4,
+    "RUC_PRIOR_CAP_pre_bake_value": 1.73,
+    "RUC_YRH_headroom_amplitude": 0.35,
+    "headroom_function": {
+      "form": "1 + 0.35 * fpk * fage",
+      "fpk_pick_knots": [1.0, 4.0, 18.0, 30.0],
+      "fpk_values": [0.7, 1.0, 1.0, 0.0],
+      "fpk_pick_clamp": "min(pick, 99)",
+      "fage": "clip((25.0 - age)/4.0, 0, 1)",
+      "fage_age_reference": 25.0,
+      "fage_span_years": 4.0,
+      "none_age_fallback": 21.0
+    },
+    "age_axis": {"production_ceiling": "as-of age", "V0/no-production prior cap": "draft-time age"},
+    "production_to_price_grid": {"levels": "np.linspace(15.0, 150.0, 46)", "n_points": 46, "lo": 15.0, "hi": 150.0, "monotonised": "forced non-decreasing"},
+    "ceiling": "0.80 * interp(bestlvl(p,Y), grid) * headroom(as-of age); if bestlvl == 0 -> 1.4 * draftval * headroom(draft age)",
+    "bind_condition": "ceiling < e <= V0_uncapped (hot prior AND no demonstrated growth); otherwise byte-exact",
+    "unconditional_start_value_cap": "V0 := min(V0_uncapped, 1.4 * draftval * headroom(draft age)) for every real ruck, applied BEFORE the V0 curve/guard and before every start-value consumer",
+    "env_gates": {"RL_W4_RUC": "default 1; =0 reverts to a flat 1.4 x draftval cap with no headroom", "RL_RUC_PRIOR_CAP": "1.4", "RL_RUC_CEIL_HEAD": "0.80", "RL_RUC_CEIL_REFPK": "72", "RL_RUC_YRH": "0.35"}
+  },
+
+  "L3_step16_kpf_compress": {
+    "_recipe_gap": "Recipe: 'retained at 70%, the slice beyond all demonstration at 55%' plus the 12-game / top-2 window. Exact:",
+    "gates": {"nqual_min": 4, "age_min": 24.0, "position": "KPF", "env_gate": "RL_KPFFIX (default 1)"},
+    "W4_KPFSH_DEM_demonstrated_backed_retention": 0.70,
+    "W4_KPFSH_loose_residual_retention": 0.55,
+    "eP": "the engine's own price with the band pinned at _lvl_eff (demonstrated level)",
+    "eD": "the engine's own price with the band pinned at LD (sustained level), clamped to [eP, e]; if LD is None or LD <= _lvl_eff then eD = eP",
+    "formula": "e' = eP + 0.70*(min(e, eD) - eP) + 0.55*(e - max(eD, eP))",
+    "sustained_level_LD": {
+      "definition": "mean of the top-2 era-adjusted season averages within the window that clear the games bar",
+      "window": "Y-3 .. Y (4 seasons)",
+      "games_bar": "12, prorated to 12 * fE for the in-progress season",
+      "top_n": 2,
+      "min_qualifying_seasons": 2,
+      "injury_exclusion": "for a register out-for-season name, season 2026 is excluded and the window is extended back year-for-year, capped at +2 years",
+      "extension_cap_years": 2,
+      "fallback": "if fewer than 2 healthy seasons survive the extended window, revert to the original Y-3..Y window counting the injured season, and report the fallback"
+    }
+  },
+
+  "L3_step17_scrap_and_delisting": {
+    "scrap_fraction_of_start_value": 0.02,
+    "rule": "delisted(p) -> round(0.02 * v0_start(p)); evaluated first, before every other layer",
+    "delisted_definition": "_retired flag true, OR _last_listed is present and < 2026",
+    "current_season_constant": 2026,
+    "floor_scope_exclusions": "delisted, retired and pickless players are never floored and never carry the start-value floor schedule",
+    "back_board_recall": "retired or delisted-not-retired players are recalled onto the -1/-2 boards if they were on a list at the end of that year"
+  },
+
+  "L3_step18_sitout_retention": {
+    "_recipe_gap": "Recipe: 'a class (ruck / tall / other) × log-pick × depth surface ... depth = completed seasons + (season-progress)^1.5 ... λ rises isotonically ... to 1 at the prorated 6-game qualification bar'. Full surface:",
+    "classes": {"RUCK": ["RUCK"], "KPP": ["KPF", "KPD"], "nonKPP": ["MID", "SF", "SD"]},
+    "log_pick_knots": [5, 15, 30, 50],
+    "depth_indices": "each vector is depths 1..6 (flat at 6+)",
+    "R_SURF": {
+      "nonKPP": {
+        "5":  [0.547, 0.446, 0.446, 0.446, 0.446, 0.314],
+        "15": [0.707, 0.479, 0.479, 0.479, 0.479, 0.307],
+        "30": [0.649, 0.436, 0.422, 0.414, 0.414, 0.303],
+        "50": [0.549, 0.388, 0.345, 0.239, 0.164, 0.164]
+      },
+      "KPP": {
+        "5":  [0.660, 0.487, 0.387, 0.194, 0.183, 0.183],
+        "15": [0.694, 0.427, 0.273, 0.136, 0.136, 0.136],
+        "30": [0.632, 0.383, 0.286, 0.180, 0.172, 0.172],
+        "50": [0.642, 0.407, 0.351, 0.334, 0.334, 0.329]
+      },
+      "RUCK": {
+        "5":  [1.000, 0.715, 0.670, 0.562, 0.535, 0.467],
+        "15": [0.851, 0.597, 0.597, 0.520, 0.520, 0.468],
+        "30": [0.830, 0.616, 0.616, 0.607, 0.540, 0.469],
+        "50": [0.781, 0.594, 0.594, 0.594, 0.541, 0.470]
+      }
+    },
+    "kpp_floor_rule": "on the board path only, the KPP depth vector is replaced by the pointwise MAX(KPP, nonKPP) at every (log-pick, depth); RUCK is excluded from the comparison",
+    "lookup": "interp over log(clamp(pick, 1, 90)) across the four knots, then interp over tau on [0,1,2,3,4,5,6] against [1.0] + depth_vector",
+    "tau_depth": {
+      "form": "tau = max(0, Y - debut_year) + fE^1.5 (for Y >= debut year)",
+      "depth_exponent": 1.5,
+      "pre_season_value": "tau = 0 -> R = 1 (no penalty before a season starts)"
+    },
+    "LAM_SIT": {
+      "games_at_pace_knots": [0, 1, 2, 3, 4, 5, 6],
+      "values": [0.0, 0.160, 0.493, 0.547, 0.547, 0.816, 1.0],
+      "argument": "min(current_season_games / fE, 6.0) — games AT PACE against the prorated 6-game bar",
+      "endpoints": "lam(0) = 0 and lam(6) = 1 are structural, so the price is continuous at graduation"
+    },
+    "blend": "(1 - lam) * R * v0_start(p) + lam * e_full",
+    "trigger": "nseas_pro(p,Y) == 0 (zero seasons at or above the prorated 6-game bar)",
+    "superseded_depth_only_table_for_the_record": {
+      "nonKPP": [0.429, 0.404, 0.410, 0.432, 0.437, 0.424],
+      "KPP": [0.468, 0.380, 0.325, 0.278, 0.253, 0.266],
+      "RUCK": [0.674, 0.547, 0.503, 0.472, 0.435, 0.435],
+      "_status": "violated the non-increasing-in-depth law; replaced by R_SURF"
+    }
+  },
+
+  "L3_step19_staleness": {
+    "_recipe_gap": "Recipe: 'base 25% ... a LARGER base (45%) ... (×1.6 for talls/rucks)'. Exact:",
+    "tenure_onset": {"key_and_ruck": 4, "other": 3, "key_and_ruck_positions": ["KPF", "KPD", "RUCK"]},
+    "stalled_branch": {
+      "condition": "tenure >= onset AND nseas_pro <= 1",
+      "base_fraction": 0.25,
+      "decline_rate_per_year": 0.10,
+      "decline_floor": 0.4,
+      "tall_ruck_multiplier": 1.6,
+      "formula": "frac = 0.25 * max(0.4, 1 - 0.10*(tenure - onset)) * (1.6 if key/ruck else 1.0)",
+      "cap": "v0_start * frac",
+      "graded_release": "e = min(e, cap + gr * max(0, e - cap))"
+    },
+    "mediocre_branch": {
+      "condition": "tenure >= onset + 2 AND best_era_adjusted_level / par < 0.55",
+      "par_ratio_threshold": 0.55,
+      "base_fraction": 0.45,
+      "decline_rate_per_year": 0.08,
+      "decline_floor": 0.3,
+      "tall_ruck_multiplier": 1.5,
+      "formula": "frac = 0.45 * max(0.3, 1 - 0.08*(tenure - onset)) * (1.5 if key/ruck else 1.0)",
+      "cap": "e = min(e, v0_start * frac)",
+      "graded_release": "none — a hard cap"
+    },
+    "graded_release_surface_D8": {
+      "quality_axis_qv": "(current-season era-adjusted avg) / REPL[pos]",
+      "_D8Q": [0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80],
+      "_D8G1_gap_equals_1": [0.25789, 0.25789, 0.25789, 0.30834, 0.36155, 0.42112, 0.49276, 0.56996, 0.59452],
+      "_D8G2_gap_greater_than_1": [0.0, 0.00275, 0.00275, 0.04319, 0.08776, 0.13367, 0.18032, 0.20098, 0.20408],
+      "gap": "Y - most recent prior season with games >= 6",
+      "shortcuts": {"current season already clears 6*fE games": 1.0, "no live games this season": 0.0, "no prior qualifying season": 0.0}
+    },
+    "tenure_clock": "PR.tenure(p, form-anchor year) = max(1, Y - draft_year); held at the form anchor under the forward lens",
+    "par": "PR.par_at(future position, min(effpk, 70), clamp(tenure, 1, 6))"
+  },
+
+  "L3_step21_midseason_clock_blend": {
+    "_recipe_gap": "Recipe: 'w = 1 − s × (1 − season progress), s = max(0, 1 − current-season games/11)'. Exact:",
+    "M3_DEN_games_denominator": 11.0,
+    "s": "clip(1.0 - current_season_games / 11.0, 0, 1)",
+    "w": "1.0 - s * (1.0 - fE)",
+    "blend": "round(w * ev_full_clock + (1 - w) * ev_clock_pinned_one_year_back)",
+    "M3_INPROG_Y": 2026,
+    "season_progress_source": {
+      "file": "data/season_state.json",
+      "key": "calendar_progress",
+      "value_in_effect": 0.83,
+      "code_fallback_unfenced_dev_only": 0.58,
+      "fenced_modes_that_halt_on_a_bad_read": ["bake", "gate", "canonical"],
+      "env_for_fencing": "RL_CONFIG_MODE",
+      "repo_root_env": "RL_REPO or CLAUDE_PROJECT_DIR"
+    },
+    "kill_switch": "fE >= 1.0 makes the blend inert",
+    "pinned_clocks": ["cp._age_asof -1", "MA.age -1", "PR.tenure -1 (floor 1)", "_eo years-since-draft N-1", "_feat tenure term re-based to Y-1"],
+    "not_pinned": ["evidence windows", "era adjustment", "nseas/nqual", "the M2-prorated exposure clock"],
+    "skip_conditions": ["Y != 2026", "fE >= 1", "delisted", "s <= 0 (on-pace)"]
+  },
+
+  "L3_step22_start_value_floor": {
+    "_recipe_gap": "Recipe: '45% year 1, 35%, 28%, 21%, 13%, 9% year 6, then 5% flat'. Exact:",
+    "FLOOR_YRS": {"1": 0.45, "2": 0.35, "3": 0.28, "4": 0.21, "5": 0.13, "6": 0.09},
+    "FLOOR_TAIL_years_7_plus": 0.05,
+    "basis": "v0_start(p) — the live start value, not the old draft-pick value",
+    "years_since_draft": "Y - draft_year; yis < 1 is out of scope",
+    "scope": "real store players with type == 'ND', not retired, not pickless, not delisted",
+    "application": "v = max(v, round(floor_frac(yis) * v0_start(p)))"
+  },
+
+  "L3_step23_availability_layer": {
+    "_recipe_gap": "Recipe: 'the lost fraction of his season (1 − games played ÷ 22)', 'capped at 15%', 'proven players (4+ qualifying seasons)'. Exact:",
+    "G_FULL_season_games_basis": 22,
+    "assertion": "lti_register.G_FULL must equal conditional_prior.SEASON (22) at wire time or the build halts",
+    "lost_season_fraction_L": "1.0 - min(games_2026 / 22.0, 1.0)",
+    "present_haircut": "_avail_hc = L for out-for-remainder names, applied to the year-zero level as lev *= (1 - L); 0.0 for everyone else",
+    "season_completeness": "for an out-for-remainder register name the in-progress season fraction is 1.0 (no pace gross-up)",
+    "sections": {"A": "return-haircut arm applies", "B": "return arm structurally absent"},
+    "valid_designations": ["2025", "2026_preseason", "2026"],
+    "valid_statuses": ["out_until_2027", "may_return_2026", "returned"],
+    "return_haircut": {
+      "gate_proven_qualifying_seasons": 4,
+      "gate_section": "A only",
+      "gate_path": "published-board path only; the walk-forward book is availability-free",
+      "young_cut_age": 27,
+      "cap": 0.15,
+      "age_surface": {
+        "22": 0.0, "23": 0.0, "24": 0.0, "25": 0.0, "26": 0.0,
+        "27": 0.0355, "28": 0.0427, "29": 0.0586, "30": 0.0771,
+        "31": 0.0778, "32": 0.0872, "33": 0.0909, "34": 0.0909
+      },
+      "age_lookup": "round the return-season age and clamp to [22, 34]",
+      "applied": "at the single future year k = return_year - eval_year, as lev *= (1 - h); decays to zero the next season",
+      "default_return_year_if_absent": 2027,
+      "env_gate": "RL_LTI_RETURN (default 1)"
+    },
+    "env_gate": "RL_AVAIL (default 1); with it off every non-register player is bit-identical",
+    "register_population_at_this_cut": {"section_A": 32, "section_B": 11}
+  },
+
+  "L3_step25_forward_view_damper": {
+    "_recipe_gap": "Recipe: 'a sealed measured population transition rate per age (no damping at ages ≤22 ... rising to full damping at 34 and beyond)'. Full sealed table:",
+    "r_pop_by_draft_year_age": {
+      "18": 1.0016, "20": 1.0007, "22": 0.9777, "24": 0.9073, "26": 0.7886,
+      "28": 0.7886, "30": 0.7886, "32": 0.7886, "34": 0.7886, "36": 0.7886, "38": 0.6591
+    },
+    "s_geometric_blend_coefficient_by_age": {
+      "18": 0.0, "20": 0.0, "22": 0.0, "24": 0.048, "26": 0.5988,
+      "28": 0.6053, "30": 0.5988, "32": 0.426, "34": 1.0, "36": 1.0, "38": 1.0, "40": 1.0
+    },
+    "s_semantics": "s = 1 means UNDAMPED (identity, x_used = x_age); s = 0 means fully held at the form anchor. So 'no damping at <=22' corresponds to s = 0 in this table — the recipe's wording and the code's parameterisation are inverted relative to each other.",
+    "seals": {"r_pop_sha256_8": "c62b5ee8", "s_sha256_8": "efe97ee3"},
+    "age_key": "int(round((BASE_REF - draft_year) + 18.5)); nearest key when an exact key is missing",
+    "blend": "x_used = x_form * clip(x_age/x_form, 1e-9, None)^s ; x_form <= 0 falls back to x_age",
+    "applied_at_two_sites": ["the forward band b6", "the level_now roll consumed by the proven demonstrated floor"],
+    "activation": "forward lens only (MA._LENS_FORM set AND AGE_REF != BASE_REF); k = 0, balanced and backward views are inert",
+    "override_env_for_re_derivation_only": "RL_LSYM_TAB (path to a replacement table)",
+    "env_gate": "RL_LEGF (default 1)",
+    "forward_young_floor": {
+      "form": "vP1, vP2 floored at round((1 - games/46)^2 * v_now)",
+      "G0_games": 46,
+      "scope": "career games < 46",
+      "gates": ["RL_LEGF", "RL_LEGE"]
+    },
+    "forward_form_anchor": "_LENS_FORM = 2026 during the +1/+2 evaluations; the backward -1/-2 boards are true past re-values with no form anchor"
+  },
+
+  "L2_step22_L3_step35_year_zero_lens": {
+    "_recipe_gap": "Recipe: 'Gaussian locality in log-pick (bandwidth 0.35) and draft age (1.5 years), confidence shrinkage n/(n+25) ... within [0.5, 2.0]'. Exact, plus the iteration limits:",
+    "_LA_HPICK_log_pick_bandwidth": 0.35,
+    "_LA_HAGE_draft_age_bandwidth_years": 1.5,
+    "_LA_KCONF_confidence_half_weight": 25.0,
+    "_LA_B_bound": 2.00,
+    "bounds_on_m": [0.5, 2.0],
+    "_LA_TOL_local_neutrality_tolerance": 0.005,
+    "kernel": "exp(-0.5*(d/h)^2)",
+    "weight_floor_for_inclusion": 1e-12,
+    "shrinkage": "s = n_eff/(n_eff + 25); value = s*local + (1-s)*toward",
+    "shrinkage_ladder": ["(pos, age, pick)", "(pos, pick)", "(pos)", "1.0"],
+    "neutrality_iteration": {"max_iterations": 200, "convergence_tolerance": 1e-12, "criterion": "worst |1/ratio - 1| over picks 1..64"},
+    "neutrality_population": "the APPLIED roster (real ND rows, picks 1..64), entering as composition weights only — position, draft age, pick; never their values",
+    "grids": {"picks": "1..90", "draft_ages": "16..30", "age_clamp": [16, 30], "pick_clamp": [1, 90]},
+    "surface_split": {"c18": "draft age <= 18", "surfR": "draft age >= 19 and RUCK", "surfN": "draft age >= 19, all other positions"},
+    "anchor": "the active ladder value at that pick; beyond the ladder's max pick, extrapolated as A[max] * exp(slope*(log(pk) - log(max))) with slope = log(A[max]/A[max-1]) / (log(max) - log(max-1))",
+    "fit_basis": "docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json — a declared input; the surface's own prior is barred as a fit target",
+    "freeze": "the surface is loaded from data/v0surf.pkl keyed by a deterministic config signature; an unknown signature HALTS (no silent refit). RL_V0SURF_REFIT=1 is the one declared refit entry point.",
+    "pre_306_free_fit_control_behind_RL_V0_LENS_0": {
+      "effn_min": 35.0,
+      "h0_log_pick": 0.18,
+      "hmax_log_pick": 2.2,
+      "bandwidth_growth_factor": 1.15,
+      "mature_ha0": 1.2,
+      "mature_hamax": 8.0,
+      "mature_age_growth_factor": 1.2,
+      "mature_ages": "19..30"
+    },
+    "backtest_path_guard": "on the backtest/walk-forward path the D14 curve is bypassed and V0 is capped by the in-cell running minimum over recorded pick within (position, draft-age, draft-year) cells"
+  },
+
+  "L3_steps27_32_pick_curve_derivation": {
+    "_recipe_gap": "Recipe: 'bandwidth grown from 0.10 in 0.02 steps until the effective sample reaches 35 (cap 0.60)', 'more than 1% of the kernel's mass', 'each pick at least 0.001 below the one before'. Exact:",
+    "teaching_population": {
+      "picks": [1, 64],
+      "class_window_years": [2004, 2022],
+      "CLASS_CUT": 2022,
+      "YR_LO": 2004,
+      "expected_row_count": 1197,
+      "gate": "teaches_curve (national, not pool, not pvc-excluded)"
+    },
+    "structural_value_construction": {
+      "QUAL_GAMES_establishment_bar": 6,
+      "never_established_value": 0.0,
+      "PW_FLOOR": 0.11,
+      "season_weight": "e_s = max(0, 1 - (pw_s - 0.11)/(1 - 0.11)) — a season priced wholly on pedigree counts 0",
+      "concluded_career_value": "evidence-weighted mean of the as-of value path",
+      "active_completion": "sofar(T) * (mean full-career value / mean same-point value) over concluded look-alikes in the same (position x depth) stratum",
+      "MIN_STRATUM": 20,
+      "fallback": "the engine's own year-zero prior for that player; counted and stamped"
+    },
+    "kernel": {
+      "NMIN_effective_n": 35.0,
+      "HMIN": 0.10,
+      "HMAX": 0.60,
+      "step": 0.02,
+      "growth_loop": "while h < 0.60: if sum(exp(-0.5*((log_pick - log_p)/h)^2)) >= 35 break; h += 0.02",
+      "aggregator": "plain weighted mean sum(W*v)/sum(W); alpha = 1, no certainty-equivalent",
+      "values_floored_at": 0.0
+    },
+    "boundary_correction": {
+      "MISS_TOL": 0.01,
+      "_Z_TOL": 2.3263478740408408,
+      "z_derivation": "sqrt(2)*erfinv(1 - 2*MISS_TOL)",
+      "miss_fraction": "0.5 * erfc(d / (h*sqrt(2))) where d = min(log(p) - log(1), log(64) - log(p)), floored at 0",
+      "trigger": "miss_fraction > 0.01, i.e. log-distance to the nearer edge < 2.3263*h",
+      "replacement": "degree-1 local-linear WLS on (log(pick) - log(p)) with the same Gaussian weights, take the intercept, floored at 0",
+      "degeneracy_guard": "det > 1e-9 * max(s0*s2, 1e-12), else keep the kernel mean",
+      "resolved_zone_on_the_279_matrix": {"low_edge_picks": [1, 2], "high_edge_picks": [51, 64], "interior_unchanged": [3, 50]}
+    },
+    "loclin_arm_dials_if_that_fitter_is_used": {"RIDGE_REL": 1e-06, "ridge_target": "slope entry only, as RIDGE_REL*S0*h^2", "COND_MAX": 1000000.0, "NEG_CLAMP": 0.0},
+    "pooling_and_descent": {
+      "method": "pool-adjacent-violators, non-increasing, weighted by the local effective n",
+      "pava_tolerance": 1e-12,
+      "strict_descent_EPS": 0.001,
+      "descent_rule": "if fit[i] >= fit[i-1] - 0.001 then fit[i] = fit[i-1] - 0.001",
+      "pick_1_override": "NONE under the ruled method — the head pools"
+    },
+    "denomination_ruled_method": {
+      "PIN1": 3000,
+      "s": "PIN1 / pooled_head_pre_scale",
+      "applied": "the ENTIRE curve is multiplied by s",
+      "shipped_artifact_values": {"pooled_head_pre_scale": 3068.4647, "s": 0.9776876364261254, "published_pin": 3000.0, "basis": "pooled"},
+      "loader_coherence_tolerance": 1e-09
+    },
+    "publication": {
+      "rounding": "int(round(value)), minimum 1",
+      "post_round_strict_descent": "if ic[i] >= ic[i-1] then ic[i] = ic[i-1] - 1",
+      "domain": "exactly picks 1..64 plus one pool index at 65",
+      "asserted": ["curve(1) == 3000", "strictly decreasing over 1..64", "no entry past the pool index"]
+    },
+    "superseded_shipped_method_for_the_record": {
+      "rule": "fit[0] = 3000 as a HARD SET, then strict descent; no global rescale",
+      "note": "the ladder shipping today (pvc_curve_v2.json, head 3000, pick 64 = 221, pool 234.3) came from the superseded method"
+    },
+    "fold_validation_constants": {"K_FOLDS": 5, "FOLD_SEED": 20260730},
+    "board_pick_bands_RANGES": [[1, 10], [11, 20], [21, 30], [31, 45], [46, 64]],
+    "future_pick_posture_discounts": {"balanced": 0.10, "contender": 0.15, "rebuilder": 0.05, "application": "once, on the +1 held-pick posture view; the +1/+2 lens picks themselves carry face value"}
+  },
+
+  "L3_step34_pool_levels": {
+    "rule": "plain mean of the same structural career values over the pool population in the class window, x the same global factor s",
+    "never_established_value": 0.0,
+    "MIN_STRATUM_for_completion": 20,
+    "completion_table": "shared pool-wide across MSD and SSP (a disclosed choice)",
+    "interval": "95% (mean +/- 1.96 * standard error), published with the instruction to read the interval not the mean",
+    "z_for_interval": 1.96,
+    "shipped_declared_stop_point_pool_value": 234.3,
+    "class_window": [2004, 2022]
+  },
+
+  "supporting_level_demo_and_role_decay": {
+    "_note": "ADDED at verification round 1 (2026-08-05). rl_model.level_demo is the demonstrated-form reading at BASE_REF; level_now(p) = _dev_advance(level_demo(p), p) supplies `cur` to proj_from_peak, _proj_w4, prod_floor, _prod_floor_w4 and v_at_peak. It is load-bearing on EVERY price, and none of its constants were previously in this file.",
+    "_recipe_gap": "the recipe never describes this function at all.",
+    "STBL_branch": "if STBL is True level_demo returns level_stable(p) instead (the frozen SCALE-anchor basis of L3_step6). STBL default False; the toggle is flipped only around the SCALE computation.",
+    "qualifying_season_games_bar": 3,
+    "scoring_truncation": "only seasons with year <= BASE_REF are read",
+    "no_qualifying_season": "returns None",
+    "single_qualifying_season": "returns that season's avg (la) directly — no prior, no confidence blend, no role decay input beyond the final multiply",
+    "thin_prior_cameo_merge": {
+      "trigger": "a BASE_REF season with 0 < games < 3 AND the most-recent qualifying season is earlier than BASE_REF",
+      "cameo_games_window": [0, 3],
+      "merge": "la = (la*lg + cameo_avg*cameo_games) / (lg + cameo_games); lg = lg + cameo_games",
+      "note": "the merged games are kept on the OLDER season's row; the merge dissolves by construction once the live season reaches 3 games"
+    },
+    "prior_over_earlier_qualifying_seasons": {
+      "form": "prior = sum(avg * w) / sum(w) over every qualifying season except the most recent",
+      "weight": "w = 0.60^(ly - y) * min(games, 18) * (0.25 if games < 8 else 1.0)",
+      "recency_base": 0.60,
+      "games_cap": 18,
+      "thin_season_factor": 0.25,
+      "thin_season_threshold_games": 8,
+      "fallback_if_total_weight_zero": "prior = la"
+    },
+    "growth_and_confidence_base": {"growth": "la - prior", "base": "lg / 16.0", "base_denominator_games": 16.0},
+    "age_and_proven_flags": {
+      "old": "age_at(BASE_REF) > PEAK_AGE[gfut(p)] + 3",
+      "old_margin_years": 3,
+      "proven": "count of qualifying seasons with games >= 10 is >= 4",
+      "proven_games_bar": 10,
+      "proven_season_count": 4
+    },
+    "robust_baseline": {
+      "gate": "proven AND not old",
+      "window": "the last 4 qualifying (games >= 3) seasons",
+      "window_length": 4,
+      "median": "median of those seasons' avgs (mean of the two middle values on an even count)",
+      "baseline": "0.5 * prior + 0.5 * median",
+      "prior_weight": 0.5,
+      "median_weight": 0.5,
+      "otherwise": "baseline = prior"
+    },
+    "b1_late_breakout_raise": {
+      "population": "the qualifying seasons with games >= 10",
+      "min_population": 3,
+      "run_length_K": 3,
+      "run": "the last 3 such seasons",
+      "pre_run_base": "mean of the same population's avgs from seasons strictly before the run's first year; if there are none, prior",
+      "run_mean": "sum of the 3 run avgs / 3.0",
+      "conditions": "pre_run_base > 0 AND min(run avgs) > pre_run_base AND run_mean / pre_run_base >= 1.4",
+      "ratio_threshold": 1.4,
+      "effect": "baseline = max(baseline, run_mean) — an only-raise guard, never a drag"
+    },
+    "recency_floor_on_confidence": {
+      "prior_mass": "sum of 0.60^(ly - y) * min(games, 18) over the earlier qualifying seasons — NOTE: no 0.25 thin-season factor here, unlike the prior weight",
+      "cfloor": "min(lg, 18) / (min(lg, 18) + prior_mass), and 0.0 when that denominator is <= 0",
+      "recent_games_cap": 18,
+      "applied": "only on the improving branch, as conf = max(conf, cfloor)"
+    },
+    "confidence_branches": {
+      "improving_growth_ge_0": {
+        "conf": "base * (1 + growth/40.0)",
+        "growth_divisor": 40.0,
+        "cap": "SPIKE_CAP.get(gfut(p), 0.83)",
+        "default_cap": 0.83,
+        "SPIKE_CAP": {"KPD": 0.60},
+        "_cap_lift_line": "the code then does cap = max(cap, SPIKE_CAP.get(gfut(p), 0.83)); both reads are on gfut, so at the shipped configuration this is a no-op and a KPD cap stays 0.60",
+        "then": "conf = max(conf, cfloor)"
+      },
+      "older_decline": {
+        "gate": "growth < 0 AND old",
+        "agef": "clamp((age - PEAK_AGE[gfut]) / 6.0, 0, 1)",
+        "age_span_years": 6.0,
+        "conf": "base * (0.60 + 0.60 * agef)",
+        "conf_floor_term": 0.60,
+        "conf_slope_term": 0.60,
+        "cap": 0.92
+      },
+      "prime_dip": {
+        "gate": "growth < 0 AND not old",
+        "conf": "base * 0.30",
+        "multiplier": 0.30,
+        "cap": 0.92
+      },
+      "final_clamp": "conf = clamp(conf, 0.20, cap)",
+      "confidence_floor": 0.20
+    },
+    "output": "lvl = conf * la + (1 - conf) * baseline, then lvl * (1 - role_decay_hc(p, lvl))",
+    "role_decay_hc": {
+      "_note": "a level haircut for a past-peak player dropped on ability (role collapsed, output cratered), not injury",
+      "ROLE_HC_MAX": 0.07,
+      "season_progress_proxy": "_season_games() = max games of any scoring row at BASE_REF across the whole store; 22 when the season has no rows",
+      "season_games_dormancy_bar": 7,
+      "past_peak_gate": "age_at(BASE_REF) >= PEAK_AGE[gfut(p)] + 1",
+      "past_peak_margin_years": 1,
+      "current_season_games_window": [1, 3],
+      "role_share_gate": "current games / max(_season_games(), 1) < 0.35",
+      "role_share_threshold": 0.35,
+      "drop": "clamp((baseline - current_avg) / baseline, 0, 1) — baseline here is the lvl just computed",
+      "drop_threshold": 0.30,
+      "return": "clamp(0.07 * drop, 0, 0.07); every failed gate returns 0.0",
+      "position_axis": "gfut (the played/future axis), at both the peak-age gate and the SPIKE_CAP read"
+    }
+  },
+
+  "supporting_basepk_pedigree_surface": {
+    "_note": "ADDED at verification round 1 (2026-08-05). basepk_c(pos, effpk) is the pedigree-implied peak that _dev_advance uses as its catch-up term (L2_step7's blend names `cp = basepk_c(...)` but nothing here was recorded). On the value path for the +1/+2 forward boards; inert at AGE_REF == BASE_REF, where _dev_advance returns L unchanged at zero age offset.",
+    "per_player_pedigree_reading_pkbest": {
+      "form": "mean of the TOP 2 season averages with games >= 10 and year >= debut_year",
+      "top_n": 2,
+      "games_bar": 10,
+      "window": "debut year onward, no upper cut",
+      "none_when": "no season qualifies -> the player contributes to no cell"
+    },
+    "year_weighting": {"_rw": 1.0, "note": "equal weighting for every draft year; a recency weighting was tried and reverted"},
+    "teaching_population": "the same `hist` cohort as the pick curve: store players with _ft, _grp in (ND, RD), 2003 <= draft year <= 2021, pos in GRP",
+    "band_structure": {
+      "_source": "engine/rl_after/rl_passmark.json (a data file, quoted here because the surface cannot be rebuilt without it)",
+      "BANDS": [[1, 3], [4, 7], [8, 12], [13, 20], [21, 27], [28, 35], [36, 48], [49, 99]],
+      "NB": 8,
+      "bandof": "the index of the first [lo, hi] band containing the pick; picks outside every band fall to the last band",
+      "band_axis": "banded on the CHAINED effective pick effpk(p), not the raw pick",
+      "BAND_ANCHOR": [2, 5.5, 10, 16.5, 24, 31.5, 42, 60]
+    },
+    "cell_fit_BPK": {
+      "cell": "(position on the gfut axis, band)",
+      "value": "weighted average of pkbest over the band's members at that position, weights _rw = 1.0",
+      "min_sample_rule": "len(pw) >= 4 — a cell with fewer than 4 usable players is left EMPTY and filled by the rules below",
+      "min_sample_n": 4
+    },
+    "band_pool_POOL": {
+      "value": "weighted average of pkbest over ALL positions in that band",
+      "empty_band_fallback": 75
+    },
+    "bandpeak_fallback": {"value": 75, "where": "the last-resort peak when no position/band curve and no band curve exist"},
+    "BASEPK_REG_row_build": [
+      "cell present -> take it",
+      "cell absent but the position has at least one populated band -> take the NEAREST populated band b0 by |b - b0| and scale it by the all-position band gradient: row[b] = BPK[(g,b0)] * (POOL[b] / POOL[b0]). Scaling the gradient, not borrowing the all-position LEVEL.",
+      "the position has no populated band at all -> row[b] = POOL[b]",
+      "then the cross-band monotone clamp: for b in 1..NB-1, row[b] = min(row[b], row[b-1]) — a later pick can never out-baseline an earlier one; applied to ALL bands (was 1..5 before v3.4)"
+    ],
+    "lookup_basepk": "BASEPK_REG.get((pos, band)) or POOL.get(band) or bandpeak(pos, band)",
+    "continuous_pick_coordinate_bandcoord": {
+      "form": "0.0 at or below BAND_ANCHOR[0]; NB-1 at or above BAND_ANCHOR[-1]; otherwise i + (pk - A[i])/(A[i+1] - A[i]) for the bracketing anchor pair",
+      "clamp": [0.0, "NB - 1"]
+    },
+    "basepk_c": "fb = bandcoord(pk); lo = int(fb); hi = min(NB-1, lo+1); f = fb - lo; return (1-f)*basepk(g,lo) + f*basepk(g,hi)",
+    "sibling_built_in_the_same_loop": "MIX[b] = the per-band share of each gfut position (count / band size); the table is rebuilt on the played axis, matching how cohort_peak/basepk_c read it",
+    "consumed_at": "_dev_advance: cp = basepk_c(gfut-band position, effpk(p)), then L1 = L + w*(L*(c1/c0 - 1)) + (1-w)*(cp*(c1 - c0)) — see L2_step7_recency_and_games_trust"
+  },
+
+  "supporting_par_surface": {
+    "_note": "the position/pick/tenure par the recipe references throughout (steps 8, 11, 19) is a fitted surface; these are its in-code dials.",
+    "PAR_BW_log_pick_bandwidth": 0.40,
+    "PAR_MING_par_gate_games": 6,
+    "PAR_K_ramp_shrinkage": 30,
+    "TEN_MAX": 6,
+    "PAR_RAMPS_confidence_ramp": 22,
+    "PAR_DUAL_RULE": "primary",
+    "EVAL_PICKS": [1, 3, 5, 8, 12, 20, 30, 45, 60],
+    "fit_cohort_draft_year_window": {
+      "DRAFT_LO": 2003,
+      "DRAFT_HI": 2018,
+      "inclusive": true,
+      "selection": "gather() teaches the surface from store players with a GRP position, a pick or an _ft flag, and DRAFT_LO <= draftyr(p) <= DRAFT_HI; draftyr(p) = debutyr(p) - 1",
+      "tenure_rows_per_player": "T = 1..TEN_MAX (6), each read at Y = draft_year + T",
+      "pick_cap_on_fit": "min(effpk, KMAX = 70)",
+      "why_it_matters": "this window is the teaching population for the whole par surface, which feeds _par_prior (L2 step 8), the pole (L3 step 11) and the staleness par ratio (L3 step 19). DRAFT_HI = 2018 gives every cohort member a full 6 tenure years of resolved seasons.",
+      "_added": "verification round 1 (2026-08-05)"
+    },
+    "par_at": "level_at(position, clamp(pick,1,70)) + ramp_shr[position][clamp(T,1,6)]",
+    "tenure": "max(1, Y - draft_year)",
+    "par_centred_level_feature": "par + (games-and-recency-weighted level - par) * min(1, exposure/22)",
+    "MULT_position_multipliers_mock_only": {"MID": 1.10, "SD": 1.04, "SF": 1.0, "KPD": 1.0, "KPF": 0.86, "RUCK": 1.0},
+    "BETA_POS_floor_mock_only": {"MID": 0.50, "SF": 0.50, "KPF": 0.50, "RUCK": 0.50, "SD": 0.28, "KPD": 0.28},
+    "BETA_MARGIN_mock_only": 0.08,
+    "TILT_CAP_mock_only": 0.60,
+    "WIDEN_K_mock_only": 0.60,
+    "_mock_only_note": "MULT / BETA_POS / BETA_MARGIN / TILT_CAP / WIDEN_K live in par_redesign's standalone __main__ report, not on the price path"
+  },
+
+  "_omitted_literals_trivial_or_unreachable": {
+    "_note": "ADDED at verification round 1 (2026-08-05) for completeness. These are the value-path literals that appear in no other group; none of them changes a shipped price under the default configuration, so they are recorded rather than folded into a step.",
+    "build_pvc_nan_fill_sentinel": {
+      "value": 5000.0,
+      "rule": "scanning the 99-pick raw fit, a NaN entry takes the previous pick's value; at index 0 it takes 5000.0",
+      "reachable_only_if": "pick 1 has no teaching sample inside the +/-4 pick window",
+      "why_it_could_matter": "it sits on the import-time fit chain that sets PVC[1] -> BOARD_FACTOR -> SCALE, so it would move the whole currency if it ever fired"
+    },
+    "running_min_and_search_sentinels": {
+      "_fit_mature_min_effn_init": 1000000000.0,
+      "_fit_mature_age_monotone_run_init": 1e18,
+      "_pick_equiv_best_distance_init": 1e18,
+      "role": "loop initialisers only (pre-#306 free-fit control surface and the pick-equivalent nearest search); never reach an output value"
+    },
+    "v7_entry_gate_asc_lt_1": {
+      "value": 1.0,
+      "rule": "the v7 form-relax block is entered only when asc < 1.0, i.e. it is inert at age <= 20",
+      "also_recorded_at": "L2_steps11_13_forward_band.ceiling_age_taper_v7.form_relax.entry_gate_asc"
+    },
+    "dead_module_level_dials": {
+      "KAPPA": 0.10,
+      "SCONV": 30.0,
+      "LOWBASE": 54.0,
+      "status": "defined on one line and read nowhere in the engine tree — genuinely dead. Recorded so a rebuilder who greps the definition line does not try to place them."
+    }
+  },
+
+  "global_configuration": {
+    "season_state_in_effect": {
+      "season_year": 2026,
+      "season_total_rounds": 24,
+      "as_of_round": 20,
+      "calendar_progress": 0.83,
+      "exposure_pace": 0.773,
+      "source_store_md5_prefix": "81d24704"
+    },
+    "code_fallbacks_used_only_in_an_unfenced_dev_shell": {"calendar_progress": 0.58, "exposure_pace": 0.545},
+    "AGE_REF_and_BASE_REF_default": 2026,
+    "age_clock": {
+      "age": "max(ref - birth_year, 18 + (ref - cycle_year))",
+      "cycle_year": "draft year, minus 1 for MSD",
+      "debut_year": "draft year for MSD, draft year + 1 for every other route",
+      "missing_birth_year_assumption": "18 in the entry year"
+    },
+    "shipped_env_gate_values": {
+      "_source": "data/model_config.json 'vars' — the bake/gate manifest; every value equals the code default",
+      "RL_GAMMA": "1.0", "RL_PICK1": "3000", "RL_RUCK_TAX": "0.25", "RL_REPL_DROP": "3",
+      "RL_RECENCY_DECAY": "0.72", "RL_PRIOR_TREES": "400", "PAR_RAMPS": "22", "PAR_BW": "0.40",
+      "PAR_MING": "6", "PAR_K": "30", "RL_EXPO_INPROG_Y": "2026", "RL_LEVEL_RAMP": "14",
+      "RL_M3_INPROG_Y": "2026", "RL_FORMDECL": "1", "RL_FWDRECAL": "1", "RL_YOUNG": "1",
+      "RL_OVPX": "1", "RL_KPFFIX": "1", "RL_V7FORM": "1", "RL_V7_FORM_W": "0.6",
+      "RL_W4_CRED": "0.17", "RL_W4_KPFUP": "1.6", "RL_W4_FADE": "0.60", "RL_W4_OVPX": "1.0",
+      "RL_W4_KPFSH": "0.55", "RL_W4_KPFSH_DEM": "0.70", "RL_W4_KPFTOP": "0.4",
+      "RL_W4_KPFM0": "8.0", "RL_W4_KPFMS": "16.0", "RL_YCRED_W": "0.9", "RL_YCRED_KPF": "0.92",
+      "RL_RUC_PRIOR_CAP": "1.4", "RL_W4_RUC": "1", "RL_RUC_CEIL_HEAD": "0.80",
+      "RL_RUC_CEIL_REFPK": "72", "RL_RUC_YRH": "0.35", "RL_PVCFIT": "0", "RL_LTI_CLOCK": "advance",
+      "RL_PVCADOPT": "1", "RL_MSD_POOL_EXCL": "1", "RL_DIAL14": "1", "RL_AGE": "1",
+      "RL_L5_PICKLESS": "1", "RL_AVAIL": "1", "RL_LTI_RETURN": "1", "RL_PVC2": "1",
+      "RL_LEGE": "1", "RL_LEGF": "1", "RL_FLEX": "1", "RL_CAPT": "1", "RL_DAMP": "1",
+      "RL_EVW": "1", "RL_ISOFADE": "1", "RL_SAGE29": "1", "RL_LSYM": "1", "RL_EO2": "1",
+      "RL_ABSENCE": "1", "RL_UNCOMP": "1", "RL_UNCONSERVE": "0"
+    },
+    "gates_NOT_in_the_manifest_but_in_code": {
+      "RL_UNCOMP_S": "unset -> UNCOMP_S_DEFAULT = 0.10",
+      "RL_V0_LENS": "default '1' -> the anchored lens field; '0' is the pre-#306 free-fit control",
+      "RL_V0SURF_REFIT": "unset -> load the frozen surface; '1' is the one declared refit path",
+      "RL_LSYM_TAB": "unset -> the embedded sealed damper literal",
+      "RL_CONFIG_MODE": "bake|gate|canonical make the season-state read fail-closed"
+    },
+    "layer_order_inside_ev": [
+      "1. delisted -> 0.02 * v0_start, return",
+      "2. production price e = raw_ev * iso_eff (with first-evidence games-axis smoothing)",
+      "3. ruck production ceiling",
+      "4. key-forward compress",
+      "5. sit-out blend (if zero prorated-qualifying seasons) -> return",
+      "6. staleness stalled cap, else mediocre cap",
+      "7. round",
+      "8. mid-season clock blend",
+      "9. start-value floor",
+      "10. display: divide by 1.0524 and round"
+    ]
+  }
+}

@@ -23,6 +23,10 @@
 
 **Note 2:** carried for completeness; its only live role is a display offset and it disagrees with the store in 4 of 23 years (recipe List 1 item 31).
 
+## 1b · The constants file (ships with the data)
+
+`CONSTANTS.json` — every numeric constant and lookup table that lives inside the engine's code rather than in a data file: 39 groups keyed to recipe steps, each value exact from code, adversarially verified and corrected (round 1 applied 2026-08-05). Marked per group: derivable-from-store (rebuild should regenerate), chosen dial (part of the recipe), or frozen calibration (shipped because underivable — each also a named finding). `CONSTANTS_SOURCES.md` and `verify_constants.md` are appendix-side (never given to the rebuilder).
+
 ## 2 · The frozen fitted models — OWNER DECISION PENDING
 
 | file | size | md5[:8] | what it is |
