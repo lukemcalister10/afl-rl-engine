@@ -453,3 +453,6 @@ counter was re-derived (98 → 96), so he sits in the derive population.
 
 ## Supervisor ruling (post-build, 2026-08-05)
 Open item 2 RULED: `type` set to 'ND' on tendai-mzungu and tim-mohr — verified the engine's route classifier reads `type`, so the re-key is inert without it. File md5 after this fix: 813ed87473ea25dac62a450b5d87a6da. Role of this artifact: ACCEPTANCE FIXTURE for the #323 landing batch (the handover package itself is cut from landed main, owner-sequenced).
+
+## Owner backfill of 2026-08-05 (in-channel sheets)
+Jayden Post 2010 (7g, 36.7) · 2011 (8g, 47.8) · 2012 (8g, 53.6); Declan Keilty 2019 (2g, 37.5); Anton Tohill 2021 (1g, 39.0). All three derived sums now equal their stored counters exactly (30 / 2 / 1) — resolved and removed from the pending-backfill list. Remaining pending: the finals-convention ruling (9 records whose counter-vs-rows gap is exactly their finals games) and the two active feed-lag counters (resolve by derivation at the landing). File md5 after this edit: 0a4027f2f0e918c94035ee4c3c2703f6.
