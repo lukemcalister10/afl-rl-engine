@@ -173,5 +173,15 @@
     "new_md5": "ebc3d3303a1956a8ec94b4e2c1497bdf",
     "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
     "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
+  },
+  {
+    "ts_utc": "2026-08-05T12:03:44Z",
+    "artifact": "data/v0surf.pkl",
+    "signature": "aca37f9f0e24cb266e7236f49d152d5a",
+    "old_md5": "ebc3d3303a1956a8ec94b4e2c1497bdf",
+    "old_pin": "ebc3d3303a1956a8ec94b4e2c1497bdf",
+    "new_md5": "e4215093693d32929820834cbd8ecb27",
+    "precondition_balanced_board_06d8af60": "NOT EVALUATED \u2014 unreachable since the pricing split",
+    "note": "FREEZE _iso_dec (LEG F6, item 381). Regenerated through the declared RL_V0SURF_REFIT lane. The stated clean-instance precondition was not evaluated; the substitute evidence for this bake is recorded in the job that ran it."
   }
 ]

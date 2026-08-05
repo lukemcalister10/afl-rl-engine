@@ -1,4 +1,25 @@
 """#279 STEP-4 PROPAGATION re-pin of the four-fitter harness.
+
+RE-PINNED 2026-08-05 by #328 STEP 3, the post-landing store act, on the seam's fire word
+(#328 comment 5191304112). This is the FIRST REAL MATRIX EMITTED since #306 L6 pass 3, and the
+pins below were a pass-3-era PREDICTION carried across the landing deliberately unmoved (the
+landing's own item 5: "no matrix was emitted at this landing, so nothing re-pinned it and nothing
+should have"). The prediction met the real matrix here and the assert HALTED, exactly as designed:
+
+      HALT (assert fired): matrix store f1e8c9fe != committed identity 81d24704
+
+  EXPECT_STORE   '81d24704'     -> 'f1e8c9fe'      (the #323 corrected store, installed at step 1)
+  EXPECT_V0SURF  '1cbbd9b00ff4' -> 'aca37f9f0e24'  (the surface re-fit on that store at step 2;
+                                                    full pickle md5 e4215093693d32929820834cbd8ecb27)
+  EXPECT_N       1197           -> 1197            (RE-MEASURED on the real emitted matrix, never
+                                                    assumed — the class-cut teaching population did
+                                                    not move, because every entrant the batch adds or
+                                                    removes sits past pick 64)
+
+  Both the signature AND the store discriminate at this pass: the store moved and the surface was
+  re-fit on it. The full-md5 binding beside the signature stays regardless. Non-vacuity was proven
+  in BOTH directions before the pins moved and again after; the asserts themselves are untouched.
+
 RE-PINNED 2026-07-30 by the step-4 propagation, old -> new, both recorded, NEVER relaxed:
   EXPECT_STORE   '6b9d00a7'     -> '81d24704'      (#283 landed the ownership single-source store)
   EXPECT_V0SURF  'b781ed253bff' -> '0c75bb6d829d'  (the declared refit under VOR + the two new gate keys)
@@ -154,8 +175,8 @@ import os, json, math, hashlib, collections
 import numpy as np
 
 # ---- the committed identity this panel is pinned to ----
-EXPECT_STORE = '81d24704'
-EXPECT_V0SURF = '1cbbd9b00ff4'   # re-pinned 2026-08-05 (#306 L6 PASS 3, curve 3f5875b5); full chain in the header
+EXPECT_STORE = 'f1e8c9fe'
+EXPECT_V0SURF = 'aca37f9f0e24'   # re-pinned 2026-08-05 (#328 step 3, the corrected store); full chain in the header
                                  # NB: does NOT discriminate fb9efdec from b540833b — see the F-C block above
 EXPECT_N = 1197                     # ND teaching rows after the class cut — RE-MEASURED 2026-08-05, not assumed
 CLASS_CUT = 2022
