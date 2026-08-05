@@ -1,0 +1,18 @@
+{
+  "engine_halted_on_frozen_signature": false,
+  "frozen_signatures": [
+    "aca37f9f0e24cb266e7236f49d152d5a",
+    "edb15f7ab7c9bded82119c99f4c5ee55"
+  ],
+  "installed_store_md5": "f1e8c9fed35462536d00add604f69a3f",
+  "label": "corrected_store_after_refit",
+  "leg_hashes": {
+    "gates": "0a566c971a138fbfb1d064a83b0a3641",
+    "pvc": "28e8449b224090aa5bab43df3b208c73",
+    "roster": "31df8ae96ca8d7a943cf3f5f8e1f4c0a"
+  },
+  "pvc_entries": 65,
+  "roster_rows": 1448,
+  "signature_in_frozen_pickle": true,
+  "v0surf_signature": "aca37f9f0e24cb266e7236f49d152d5a"
+}

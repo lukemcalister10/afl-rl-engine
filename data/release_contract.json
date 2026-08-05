@@ -21,7 +21,7 @@
  },
  "as_of_round": 20,
  "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
- "contract_sha256": "9c372afa9fbd683b0c0d1ae8afbc49ca8fda21e3d6f41ddae736f9dcf51aca06",
+ "contract_sha256": "588c463cbaa2eea903579f413191c1df1787c9fed64974253206003459e4b983",
  "f5_entrant_reconciliation": {
   "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)",
   "entrant_layer_pvc": 77611,
@@ -40,7 +40,7 @@
   "fv": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a",
   "register": "652d83e87780e415a01a2de6d8b3cc57",
   "rl_model": "3b011802b9dfac6143099a5c64a58a1c",
-  "store": "81d2470440a80f72afea4405e94338c5"
+  "store": "f1e8c9fed35462536d00add604f69a3f"
  },
  "must_be_unset": [
   "RL_UNCOMP_S",
