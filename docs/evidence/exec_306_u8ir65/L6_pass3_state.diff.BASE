@@ -1,0 +1,82 @@
+STATE-DIFF BASE ANNOTATION — L6_pass3_state.diff   (the BOUND-EXHAUSTED state)
+==============================================================================
+Filed 2026-08-05 by #306 execution seat u8ir65 under N18. Generated to scratch with
+`-- . ':(exclude)docs/'`, section count verified, then moved into place.
+
+THE ARTIFACT
+  file        L6_pass3_state.diff
+  md5         692b12ff19250917804f9ec318b8c31d
+  sections    20 `diff --git`
+
+THE BASE OF RECORD
+  BASE COMMIT   472c39d      ON  claude/exec-seat-306-afl-rl-zlaarm
+  (operating tree = 472c39d non-docs + the 2a1xa4/u8ir65 docs trees; seam-ratified at 5187760033)
+
+PRIOR LIVE CAPTURE SUPERSEDED
+  e6bc7e9d360f43b9b98d0fc14a4324ad  (L6_pass2_state.diff, capture 10, pass 2)
+  NOT deleted, not stale — the exact state pass 2 stood at. ELEVEN captures now stand.
+
+WHAT CHANGED FROM e6bc7e9d — THE L1(b) INSTALL SET + THE C.3 REFIT + THE HARNESS RE-PIN
+  engine/rl_after/pvc_curve_v2.json     curve_md5 b61c01b0 -> 3f5875b5 (payload
+                                         3f5875b57be8e59066993af834f98866)
+                                         numeraire head 3064.3712 -> 3014.1435 (SEALED TWIN: field
+                                         AND its own _doc prose, both BY JSON PATH)
+                                         s -> 0.9953083... (DERIVED, N14/E6) · pool_value -> 233.0
+                                         per_entrant_md5 -> b6bacff2
+  ui/release_pick_curve.json            curve_md5 -> 3f5875b5 · file_md5 -> dcbb768c
+                                         curve_source_store_md5 stays FULL 32 (E.5 finding 5)
+  data/release_contract.json            pvc_provenance.curve_payload_md5 -> 3f5875b5
+                                         contract_sha256 c1a84621 -> re-stamped, self-consistent
+  engine/rl_after/one_source_selftest.py  _contract_md5 (FULL 32) e6e2e982... -> f7a6147f... ·
+                                         _per_entrant_md5 (8-char) bab40626 -> b6bacff2 ·
+                                         _curve_source_store UNCHANGED
+  session_2026-07-30/.../harness_pvc_REPINNED.py
+                                         EXPECT_V0SURF f802734d5406 -> 1cbbd9b00ff4; pass-3 ledger
+                                         entry prepended, passes 1-2 retained below. Non-vacuity
+                                         proven BOTH directions before AND after.
+     THEN C.3 step 3, same act: v0surf RE-BAKE 69571649 -> b683e2ec, expected_boot.v0surf re-pinned
+     by the lane itself. Shipped signature MOVED f802734d5406 -> 1cbbd9b00ff4 (curve-keyed).
+
+STATE AT PASS 3
+  store 81d24704 · curve 3f5875b5 · surface b683e2ec · engine 15525b03 · gamma 1.0
+  sealed history byte-identical (release_lineage 6925d4b5 untouched)
+
+THE EMIT AND CHANNEL CHECK
+  pass3_matrix.json md5 557a53db..., 158s, sig 1cbbd9b00ff4 — MET the pin set BEFORE the emit ·
+  F-C full-md5 binding asserted (installed v0surf md5 == expected_boot.v0surf, both b683e2ec...) ·
+  EXPECT_N re-measured 1197 · channel check CONFIRMED 71 / 5.931% (825 + 301 + 71 = 1197) ·
+  per_entrant_271.json restored 2f8b4bd4 -> 2f8b4bd4 before the derivation.
+
+THE BASIS BYTE-IDENTITY
+  structural_basis_279.json re-emitted BYTE-IDENTICAL at 25a72f85 · frozen panel harness_pvc.py
+  untouched at e0130cc2, never on sys.path (derivation ran from a lane dir carrying the re-pinned
+  harness under the bare `harness_pvc` name; PANEL pointed at the frozen panel for its fitters only).
+
+THE DERIVATION AND THE FIXED-POINT COMPARISON — FULL md5 per N22
+  derived   payload  FULL 01f27f0231929b285de83aaa6713048d   [:8] 01f27f02
+  installed payload  FULL 3f5875b57be8e59066993af834f98866   [:8] 3f5875b5
+  EQUAL? False.  NOT a repeat of e69a3f38, 9f7848f4, b61c01b0 or 3f5875b5.
+  ladder 53497 · pick64 185 · pooled head 3060.6210 · s 0.980193
+
+  ***  BOUND 4 IS EXHAUSTED. FOUR PASSES CONSUMED (0,1,2,3). NO FIXED POINT.  ***
+  ***  R-I: HALT-AND-REPORT. NOTHING IS DECLARED. "CONVERGED" IS NOT REDEFINED.  ***
+
+THE AMPLITUDE MAP (seam order 5187760033) — final two DERIVED ladders, 01f27f02 minus 3f5875b5
+  29 of 64 picks moved · MAX |delta| = 1.0 board point (at pick 5) · ladder total -29
+  per band, max|d| / mean|d| / mean|d| as % of band level:
+    1-10   1.0 / 0.30 / 0.015%      11-20  1.0 / 0.70 / 0.061%
+    21-30  1.0 / 0.60 / 0.077%      31-45  1.0 / 0.47 / 0.088%
+    46-64  1.0 / 0.32 / 0.107%
+  Every moved pick moved by exactly one point. STATED AS MEASURED, NOT INTERPRETED: the md5 fixed
+  point is not reached, and the size of the residual disagreement is one board point per pick.
+
+WHAT IS NOT ESTABLISHED BY THIS CAPTURE
+  R-I's FIXED POINT — and it will not be established within this bound. The G-Y0 gate figure and the
+  lane expectation at the 3f5875b5 key are owed and are being measured; the HALT verdict files first.
+
+WHY THESE FILES ARE NOT COMMITTED — REHEARSAL SUBSTRATE, R-C. Bake HELD; EXECUTION word WITHHELD.
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS 2:
+  git checkout -- . && git apply --binary docs/evidence/exec_306_u8ir65/L6_pass2_state.diff
+  (e6bc7e9d), then re-stamp the two .srcmd5. Never `git stash` a substrate file.

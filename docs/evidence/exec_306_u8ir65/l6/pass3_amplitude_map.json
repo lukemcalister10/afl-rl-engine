@@ -1,0 +1,46 @@
+{
+ "bands": {
+  "1-10": {
+   "max_abs_delta": 1,
+   "mean_abs_delta": 0.3,
+   "mean_pct_of_band_level": 0.0145,
+   "picks": 10,
+   "sum_delta": -3
+  },
+  "11-20": {
+   "max_abs_delta": 1,
+   "mean_abs_delta": 0.7,
+   "mean_pct_of_band_level": 0.0611,
+   "picks": 10,
+   "sum_delta": -7
+  },
+  "21-30": {
+   "max_abs_delta": 1,
+   "mean_abs_delta": 0.6,
+   "mean_pct_of_band_level": 0.0775,
+   "picks": 10,
+   "sum_delta": -6
+  },
+  "31-45": {
+   "max_abs_delta": 1,
+   "mean_abs_delta": 0.467,
+   "mean_pct_of_band_level": 0.0878,
+   "picks": 15,
+   "sum_delta": -7
+  },
+  "46-64": {
+   "max_abs_delta": 1,
+   "mean_abs_delta": 0.316,
+   "mean_pct_of_band_level": 0.1073,
+   "picks": 19,
+   "sum_delta": -6
+  }
+ },
+ "compared": "pass-3 derived 01f27f02 MINUS pass-2 derived 3f5875b5",
+ "ladder_total_delta": -29,
+ "max_abs_at_pick": 5,
+ "max_abs_delta": 1,
+ "n_picks": 64,
+ "picks_moved": 29,
+ "unit": "board points (VOR-denominated ladder points)"
+}

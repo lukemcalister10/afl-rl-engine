@@ -1,0 +1,463 @@
+{
+ "CONFIRMATION_CONDITION_head_anchor_noise": {
+  "ACROSS_ALL_FITTERS": {
+   "mean_noise_reduction_pct": -33.34,
+   "mean_pooled_head_sd": 54.05,
+   "mean_raw_pick1_sd": 42.07,
+   "pooled_is_quieter_in_n_of_4": 0
+  },
+  "method": "for each panel fitter and each of the 5 folds, refit on the 4/5 training rows and record (a) raw pick 1 and (b) the PAVA-pooled head. Dispersion across folds is the anchor noise.",
+  "per_fitter": {
+   "control": {
+    "head_pool_size_by_fold": [
+     1,
+     2,
+     2,
+     2,
+     2
+    ],
+    "noise_reduction_pct": -23.28,
+    "pooled_band_vs_raw_pick1_mean_gap": 62.93,
+    "pooled_head_by_fold": [
+     2980.31,
+     3033.19,
+     3050.43,
+     3074.21,
+     3092.43
+    ],
+    "pooled_head_cv_pct": 1.417,
+    "pooled_head_sd": 43.16,
+    "raw_pick1_by_fold": [
+     2980.31,
+     2988.47,
+     3035.53,
+     2938.09,
+     2973.55
+    ],
+    "raw_pick1_cv_pct": 1.174,
+    "raw_pick1_sd": 35.01
+   },
+   "distfirst": {
+    "head_pool_size_by_fold": [
+     1,
+     2,
+     1,
+     2,
+     2
+    ],
+    "noise_reduction_pct": -66.09,
+    "pooled_band_vs_raw_pick1_mean_gap": 20.7,
+    "pooled_head_by_fold": [
+     2919.17,
+     2997.45,
+     2964.63,
+     3018.6,
+     3083.38
+    ],
+    "pooled_head_cv_pct": 2.046,
+    "pooled_head_sd": 61.3,
+    "raw_pick1_by_fold": [
+     2919.17,
+     2982.56,
+     2964.63,
+     2997.63,
+     3015.75
+    ],
+    "raw_pick1_cv_pct": 1.24,
+    "raw_pick1_sd": 36.91
+   },
+   "loclin": {
+    "head_pool_size_by_fold": [
+     1,
+     3,
+     2,
+     3,
+     3
+    ],
+    "noise_reduction_pct": -44.0,
+    "pooled_band_vs_raw_pick1_mean_gap": 69.92,
+    "pooled_head_by_fold": [
+     2980.31,
+     3034.31,
+     3050.43,
+     3105.75,
+     3094.75
+    ],
+    "pooled_head_cv_pct": 1.651,
+    "pooled_head_sd": 50.41,
+    "raw_pick1_by_fold": [
+     2980.31,
+     2988.47,
+     3035.53,
+     2938.09,
+     2973.55
+    ],
+    "raw_pick1_cv_pct": 1.174,
+    "raw_pick1_sd": 35.01
+   },
+   "powerspine": {
+    "head_pool_size_by_fold": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "noise_reduction_pct": 0.0,
+    "pooled_band_vs_raw_pick1_mean_gap": 0.0,
+    "pooled_head_by_fold": [
+     2919.79,
+     2998.2,
+     2965.41,
+     3020.73,
+     3083.78
+    ],
+    "pooled_head_cv_pct": 2.046,
+    "pooled_head_sd": 61.34,
+    "raw_pick1_by_fold": [
+     2919.79,
+     2998.2,
+     2965.41,
+     3020.73,
+     3083.78
+    ],
+    "raw_pick1_cv_pct": 2.046,
+    "raw_pick1_sd": 61.34
+   }
+  },
+  "question": "is the POOLED head a less noisy anchor than RAW PICK 1? This number decides at step 4 whether the pooled numeraire stands or reverts on one word."
+ },
+ "HEAD_POOL": {
+  "RECOVERED_CLIPPED_MASS_pre_scale_units": 122.24,
+  "WHERE_THE_RECOVERY_SHOWS_UP": "NOT as extra board units at the head \u2014 post-scale the head pool lands on the same integers either way. The old policy clipped 122.24 pre-scale units off the pooled head block (PAVA measured 3060.62 there; the hard set wrote 3000 and 2999). The ruled policy honours that measurement and redefines the UNIT instead: dividing by pooled_head/3000 scales every pick BELOW the head down by 1.98%. So the recovery is expressed as the rest of the ladder becoming cheaper RELATIVE to a correctly-measured head, not as the head becoming dearer. The ladder total falls accordingly.",
+  "clipped_per_pick_pre_scale": [
+   60.62,
+   61.62
+  ],
+  "head_pool_picks": [
+   1,
+   2
+  ],
+  "note": "the old policy hard-SET pick 1 to 3000 and forced the rest of the head pool strictly below it, discarding the excess PAVA had pooled there. The ruled policy keeps the pooled level and rescales the whole curve instead, so nothing at the head is truncated.",
+  "old_policy_assigned_at_head_pool": [
+   3000,
+   2999
+  ],
+  "pava_pooled_head_value_pre_scale": 3060.62,
+  "pooled_head_minus_raw_pick1": 76.98,
+  "post_scale_head_assignment_is_unchanged": true,
+  "raw_at_head_pool": [
+   2983.64,
+   3134.66
+  ],
+  "raw_pick1": 2983.64,
+  "ruled_policy_assigned_at_head_pool": [
+   3000,
+   2999
+  ]
+ },
+ "THE_FACTOR_S": {
+  "pooled_head_pre_scale": 3060.621,
+  "published_pick1": 3000,
+  "reading": "pick 1 = 3000 is now a TRUE UNIT: the curve is scaled so that the pooled head measures 3000, rather than pick 1 being overwritten with 3000.",
+  "s": 0.980193
+ },
+ "basis": {
+  "basis": "STRUCTURAL",
+  "class_cut": 2022,
+  "fallback_share_pct": 5.931,
+  "gamma": "1.0 VOR",
+  "store_md5": "81d24704",
+  "v0surf_sig": "1cbbd9b00ff4"
+ },
+ "build_seconds": 0.118,
+ "forced_descent": {
+  "reading": "the pooled policy needs fewer forced picks because it is not fighting an override it just imposed",
+  "ruled": [
+   2,
+   7,
+   8,
+   11,
+   12,
+   17,
+   18,
+   19
+  ],
+  "superseded": [
+   2,
+   7,
+   8,
+   11,
+   12,
+   17,
+   18,
+   19
+  ]
+ },
+ "ladder_totals": {
+  "delta": -960,
+  "pct": -1.7629,
+  "ruled": 53497,
+  "superseded": 54457
+ },
+ "ladders": {
+  "ruled_pooled_numeraire": [
+   3000,
+   2999,
+   2874,
+   2423,
+   1879,
+   1549,
+   1548,
+   1547,
+   1474,
+   1459,
+   1458,
+   1457,
+   1347,
+   1164,
+   1030,
+   1004,
+   1003,
+   1002,
+   1001,
+   990,
+   941,
+   886,
+   837,
+   796,
+   764,
+   740,
+   720,
+   702,
+   684,
+   663,
+   640,
+   617,
+   595,
+   575,
+   559,
+   547,
+   538,
+   530,
+   522,
+   513,
+   501,
+   486,
+   468,
+   449,
+   428,
+   408,
+   389,
+   372,
+   357,
+   345,
+   337,
+   326,
+   317,
+   307,
+   298,
+   287,
+   276,
+   264,
+   251,
+   238,
+   224,
+   210,
+   197,
+   185
+  ],
+  "superseded_hard_set": [
+   3000,
+   2999,
+   2932,
+   2472,
+   1917,
+   1580,
+   1579,
+   1578,
+   1504,
+   1488,
+   1487,
+   1486,
+   1374,
+   1188,
+   1050,
+   1024,
+   1023,
+   1022,
+   1021,
+   1010,
+   960,
+   904,
+   854,
+   812,
+   780,
+   755,
+   735,
+   717,
+   697,
+   676,
+   653,
+   629,
+   607,
+   587,
+   571,
+   558,
+   549,
+   541,
+   533,
+   523,
+   511,
+   496,
+   478,
+   458,
+   437,
+   416,
+   397,
+   380,
+   365,
+   352,
+   344,
+   333,
+   323,
+   314,
+   304,
+   293,
+   282,
+   269,
+   256,
+   242,
+   228,
+   214,
+   201,
+   189
+  ]
+ },
+ "levels_under_the_design": {
+  "DENOMINATOR_WARNING": "MSD and SSP rest on far fewer rows than the store-level stream counts of 106 and 52 (those are all-2651-row counts). Under the ruled class cut they are much smaller and the intervals are correspondingly wide. Read the interval, not the mean.",
+  "MSD": {
+   "LEVEL_under_design_x_s": 293.7,
+   "ci95_under_design": [
+    84.8,
+    502.5
+   ],
+   "fallback_share_pct": 2.27,
+   "level_unscaled": 299.6,
+   "median_unscaled": 3.3,
+   "n": 44,
+   "never_established_pct": 50.0,
+   "provenance": {
+    "completed": 13,
+    "concluded": 30,
+    "fallback": 1
+   },
+   "relative_se_pct": 36.3
+  },
+  "POOL": {
+   "LEVEL_under_design_x_s": 233.3,
+   "ci95_under_design": [
+    205.4,
+    261.1
+   ],
+   "fallback_share_pct": 6.07,
+   "level_unscaled": 238.0,
+   "median_unscaled": 0.0,
+   "n": 1005,
+   "never_established_pct": 56.62,
+   "provenance": {
+    "completed": 56,
+    "concluded": 888,
+    "fallback": 61
+   },
+   "relative_se_pct": 6.1
+  },
+  "SSP": {
+   "LEVEL_under_design_x_s": 321.6,
+   "ci95_under_design": [
+    72.0,
+    571.3
+   ],
+   "fallback_share_pct": 6.45,
+   "level_unscaled": 328.1,
+   "median_unscaled": 0.5,
+   "n": 31,
+   "never_established_pct": 45.16,
+   "provenance": {
+    "completed": 9,
+    "concluded": 20,
+    "fallback": 2
+   },
+   "relative_se_pct": 39.6
+  },
+  "note": "the whole pick-side ladder is scaled by s, so the levels are reported x s to stay in the same currency as the curve. The unscaled figure is shown beside it.",
+  "scale_factor_applied": 0.980193
+ },
+ "payloads": {
+  "ruled": "01f27f02",
+  "superseded": "1644ff43"
+ },
+ "per_pick": {
+  "1": {
+   "ratio": 1.0,
+   "ruled": 3000,
+   "superseded": 3000
+  },
+  "10": {
+   "ratio": 0.9805,
+   "ruled": 1459,
+   "superseded": 1488
+  },
+  "2": {
+   "ratio": 1.0,
+   "ruled": 2999,
+   "superseded": 2999
+  },
+  "24": {
+   "ratio": 0.9803,
+   "ruled": 796,
+   "superseded": 812
+  },
+  "3": {
+   "ratio": 0.9802,
+   "ruled": 2874,
+   "superseded": 2932
+  },
+  "32": {
+   "ratio": 0.9809,
+   "ruled": 617,
+   "superseded": 629
+  },
+  "40": {
+   "ratio": 0.9809,
+   "ruled": 513,
+   "superseded": 523
+  },
+  "5": {
+   "ratio": 0.9802,
+   "ruled": 1879,
+   "superseded": 1917
+  },
+  "50": {
+   "ratio": 0.9801,
+   "ruled": 345,
+   "superseded": 352
+  },
+  "57": {
+   "ratio": 0.9787,
+   "ruled": 276,
+   "superseded": 282
+  },
+  "64": {
+   "ratio": 0.9788,
+   "ruled": 185,
+   "superseded": 189
+  }
+ },
+ "ruling": {
+  "fitter": "control (shipped kernel + local-linear boundary correction)",
+  "pin_policy": "POOLED NUMERAIRE \u2014 plain PAVA at the head, strict descent, one global factor s",
+  "player_side_scaling": "NOT APPLIED \u2014 the player-side x s is step-4 propagation work"
+ },
+ "status": "the RULED design. alpha=1 here; the six-schedule alpha table is rebuilt separately."
+}

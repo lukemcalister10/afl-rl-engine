@@ -1,0 +1,36 @@
+{
+ "FC_full_md5_binding": {
+  "asserted": true,
+  "expected_boot_v0surf": "b683e2ecec3e7f699ee016217ab0f8ed",
+  "installed_v0surf_md5": "b683e2ecec3e7f699ee016217ab0f8ed",
+  "why": "_v0surf_sig does not cover the fitted stack. N22 - the signature selects, the md5 governs."
+ },
+ "emit_seconds": 158,
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "lane": "#306 redesigned lens lane",
+ "matrix_md5": "557a53dbfa0b5036ddb95908dc7812e4",
+ "matrix_meta": {
+  "force_majeure": [
+   "paddy-mccartin",
+   "thomas-boyd"
+  ],
+  "n_records": 2646,
+  "nd_curve_last": 64,
+  "pool_pick": 65,
+  "slide_years": [
+   2013,
+   2014
+  ],
+  "store_md5": "81d24704",
+  "v0surf_frozen": true,
+  "v0surf_sig": "1cbbd9b00ff47d35753fc27f9e914874"
+ },
+ "pass": 3,
+ "pin_was_a_prediction": {
+  "EXPECT_V0SURF_set_before_emit": "1cbbd9b00ff4",
+  "emitted_matrix_sig": "1cbbd9b00ff4",
+  "met": true
+ },
+ "prior_matrix_md5": "b6bacff2e573d4b731f078cf1ce23d58",
+ "routing": "backup -> emit -> capture -> restore; PRE 2f8b4bd4"
+}
