@@ -1,0 +1,4 @@
+GATE 1 — board byte-determinism (two consecutive canonical builds)
+run1: 5d1e0709a878e3cff7d7ca24c877e9b4  rl_app_data.json
+run2: 5d1e0709a878e3cff7d7ca24c877e9b4  rl_app_data.json
+baseline (pre-change, committed): 2b7c1a00ee88c42e46d56ca1ccce44cd
