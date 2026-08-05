@@ -40,13 +40,20 @@ c = {r['key']: r for r in json.load(open(CAND))['active']}
 
 # ---- THE COMPLETENESS GATE: held-constant inputs must be equal, or a cause is unnamed ----
 HELD = ('store', 'engine', 'band')
-unnamed = [k for k in HELD if IDS_B.get(k) != IDS_C.get(k)]
+# #306 seam finding (5189242005): ABSENCE is an unnamed cause, same as DIFFERENCE. A held-constant
+# identity that is missing on either side means the operator has not asserted it equal — so the gate
+# must HALT, never silently pass on `None == None`. No false-PASS path when flags are omitted.
+def _bad(k):
+    av, bv = IDS_B.get(k), IDS_C.get(k)          # NB: not `a,b` — `b`/`c` are the board dicts below
+    return (not av) or (not bv) or (av != bv)
+unnamed = [k for k in HELD if _bad(k)]
 print('L8 COMPLETENESS GATE — held-constant inputs (store, engine, band):')
 for k in HELD:
-    print('  %-8s base %s  cand %s  %s' % (k, IDS_B.get(k), IDS_C.get(k),
-          'OK' if IDS_B.get(k) == IDS_C.get(k) else 'DIFFERS -> UNNAMED CAUSE'))
+    av, bv = IDS_B.get(k), IDS_C.get(k)
+    tag = 'OK' if not _bad(k) else ('MISSING -> UNNAMED CAUSE' if (not av or not bv) else 'DIFFERS -> UNNAMED CAUSE')
+    print('  %-8s base %s  cand %s  %s' % (k, av, bv, tag))
 if unnamed:
-    print('\nHALT — %s moved between baseline and candidate. Those axes are NOT in the named cause set '
+    print('\nHALT — %s missing-or-moved between baseline and candidate. Those axes are NOT in the named cause set '
           '(curve, surface); a mover could be driven by them and wrongly stamped a curve/lens effect. '
           'The candidate must be compared against a baseline that holds them constant.' % unnamed)
     sys.exit(1)
