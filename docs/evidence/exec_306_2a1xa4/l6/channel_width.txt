@@ -1,0 +1,26 @@
+=== THE CHANNEL AS THE ORDER STATES IT -- the counted composition ===
+  concluded_realised 825 + completed 301 + prior_fallback_thin 71 = 1197
+  fallback_rows 71 | share 5.931% | of_population 1197
+  COUNT CONFIRMED: True
+
+=== WHAT ACTUALLY MOVED -- by how the row is valued ===
+  how                    rows   moved   moved%   mean |d|    max |d|
+  concluded_realised      825     475    57.6%      22.53     238.79
+  completed               301     292    97.0%      11.96     152.62
+  prior_fallback_thin      71      70    98.6%     255.77     607.40
+
+=== WHERE THE MOVEMENT SITS -- by career games ===
+  games        rows   moved   mean |d|    max |d|
+  0             141       0       0.00       0.00
+  1-5            90       0       0.00       0.00
+  6-20          143      98      39.62     184.13
+  21-50         189     164      30.70     238.79
+  51-100        214     195      19.18     549.20
+  101+          420     380      51.15     607.40
+
+=== THE DECIDING FIGURE -- share of total movement carried by the 71 rows ===
+  total absolute movement over 1197 rows : 32095.8
+  carried by the 71 counted-fallback   : 17904.1  = 55.78%
+  carried by the other 1126 rows        : 14191.7  = 44.22%
+
+  VERDICT: CHANNEL IS WIDER THAN THE 71 ROWS -- STOP AND FILE (per the rotation order)

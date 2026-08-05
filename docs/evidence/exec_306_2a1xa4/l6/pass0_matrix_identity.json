@@ -1,0 +1,31 @@
+{
+ "FC_full_md5_binding": {
+  "asserted": true,
+  "expected_boot_v0surf": "b540833b2e251631bf76aeec0040cc05",
+  "installed_v0surf_md5": "b540833b2e251631bf76aeec0040cc05",
+  "why": "_v0surf_sig does not cover the fitted stack: fb9efdec and b540833b share sig 96d671c952c8. N22 - the signature selects, the md5 governs."
+ },
+ "emit_seconds": 147,
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "lane": "#306 redesigned lens lane",
+ "matrix_md5": "e1c62f8677e5714df1be4e91c960ec7c",
+ "matrix_meta": {
+  "force_majeure": [
+   "paddy-mccartin",
+   "thomas-boyd"
+  ],
+  "n_records": 2646,
+  "nd_curve_last": 64,
+  "pool_pick": 65,
+  "slide_years": [
+   2013,
+   2014
+  ],
+  "store_md5": "81d24704",
+  "v0surf_frozen": true,
+  "v0surf_sig": "96d671c952c819fa64df0b5d1a402f1e"
+ },
+ "pass": 0,
+ "prior_matrix_md5": "9c4bca53b738452739c353d94fe99928",
+ "routing": "backup -> emit -> capture -> restore; PRE 2f8b4bd4"
+}
