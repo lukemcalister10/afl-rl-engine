@@ -1,0 +1,10 @@
+{
+ "authority": "seam #306 comment 5188042722 \u2014 the closure ruling, owner word 2026-08-05",
+ "engine_head": "15525b033f390d041a7858f47a30b48e",
+ "expected_boot_v0surf": "ebc3d3303a1956a8ec94b4e2c1497bdf",
+ "installed_curve_payload_full": "01f27f0231929b285de83aaa6713048d",
+ "note": "N19 exit reads on this pair: adopted curve + this surface. Bake HELD; EXECUTION word WITHHELD.",
+ "shipped_config_signature": "077d4de87aa6",
+ "v0surf_md5": "ebc3d3303a1956a8ec94b4e2c1497bdf",
+ "what": "#306 L6 CLOSURE: surface refit at the ADOPTED curve 01f27f02 (C.3 step 3 re-bake)"
+}

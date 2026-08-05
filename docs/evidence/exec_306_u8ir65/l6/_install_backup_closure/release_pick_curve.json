@@ -1,0 +1,25 @@
+{
+ "_doc": "#306 L6 pass 3 working substrate: pick curve payload 3f5875b5 (ladder sum 53526, pick64 185), file md5 dcbb768c4492cc1ef48aaedbc16eb904, pool_value 233.0 re-measured this pass, per_entrant b6bacff2. curve_source_store_md5 stays the FULL 32 chars by the asymmetric stamp convention (E.5 finding 5). NOT a landing figure; bake HELD, EXECUTION word WITHHELD.",
+ "_pool_value_adoption_note": "RE-STAMPED 528 -> 299 by the #274 adoption mop-up act (owner word 2026-07-30). The 30/7 rederivation moved the pool price; the release-active artifact engine/rl_after/pvc_curve_v2.json carries pool_value 299 and self-documents the move at stamp.prev_pool_value = 528. This file is a MIRROR of that artifact, and it was left at 528 when the adoption landed - a stale duplicate, not a second decision. The split_note below is preserved verbatim as the history of THE SPLIT, where 528 was correct; it describes the domain re-issue, not this value. Re-stamping this file moves its md5, so the FROZEN-RULER pin in engine/rl_after/one_source_selftest.py is re-pinned in the SAME commit. Curve source store and per_entrant are UNCHANGED - nothing was re-derived here.",
+ "adopted_at_round": 20,
+ "adopted_pathway": "RL_PVC2",
+ "curve_source_store_md5": "81d2470440a80f72afea4405e94338c5",
+ "numeraire_pin1": 3000,
+ "per_entrant_md5": "b6bacff2",
+ "pick_curve_curve_md5": "3f5875b5",
+ "pick_curve_domain": "1-64 (national draft curve, 64 entries)",
+ "pick_curve_file_md5": "dcbb768c4492cc1ef48aaedbc16eb904",
+ "pick_curve_path": "engine/rl_after/pvc_curve_v2.json",
+ "pool_index": 65,
+ "pool_value": 233.0,
+ "release_version": "v2.11-final-rc1-PROVISIONAL",
+ "split_note": "THE PRICING SPLIT (owner ruling; RULEBOOK v2.1 law 4 G-MONO, amended 2026-07-28). The contract is re-issued because the ADOPTED CURVE'S DOMAIN changed, not its values: the national curve now covers picks 1-64 and every selection past 64 enters the pool, valued by position with order of selection carrying no value. There is no price for pick 70. Values over 1-64 are BYTE-IDENTICAL to the superseded artifact; pool_value is that artifact's own value at index 65. No curve was refitted. A re-issue is correct here precisely because the contract exists to stop the curve moving SILENTLY - this move is ruled, declared, and recorded below.",
+ "supersedes": {
+  "curve_source_store_md5": "968de0c7a0183ca3914165536f39607a",
+  "note": "Superseded by the #271 re-derivation, adopted on the owner word of 2026-07-30 (\"30/7 rederivation for the label. Adopt.\"). Prior chain retained in git history.",
+  "pathway": "RL_PVC2 (#262 landing, pre-#271)",
+  "pick_curve_curve_md5": "f14a6622",
+  "pick_curve_file_md5": "1554b98e0a6c1198ebbd15c385e197ab",
+  "pick_curve_path": "engine/rl_after/pvc_curve_v2.json"
+ }
+}

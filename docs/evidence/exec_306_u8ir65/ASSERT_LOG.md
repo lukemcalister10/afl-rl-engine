@@ -84,3 +84,25 @@ base cannot reproduce a capture byte-identically.
 | 7 | `2b7640be` | `472c39d` |
 | 8 | `ebaca58e` | `489587b` (2a1xa4) — pass 1 as first installed, defective pin, retained as record |
 | 9 | **`bc1001f9`** | `489587b` — **THE LIVE SUBSTRATE**, applied and round-trip proven here |
+
+## Entry 2 — the pre-closure re-classification
+
+The container **restarted** between the pass-3 filing and the closure install: `uptime` read **1 min**,
+boot established from `/proc/uptime` as **05:48:26 UTC**. Entry 1's classification (boot 04:18:42) went
+stale at that moment, and the closure act contains a **C.3 refit** — a fit act — so no part of it was
+permitted to proceed on a stale classification.
+
+Re-classified in full, in the ruled order: live substrate round-tripped to `692b12ff` first (proving the
+restart cost nothing) → pure pass-0 capture `13b71c26` restored and round-trip proven → pins **5/5 exact**,
+OpenBLAS **sha256 `05c9f9eb` byte-exact** → `preboot_assert.sh` as its own command → `bootstrap.sh`
+**rc=0**, Guard 5 PASS → tier-2 stamps regenerated to `d14f0f12` / `aaccad1c` → **FIT-PATH ASSERT PASS,
+`fb9efdec4d669d389fe3beef2bca3092`, 76s** → round trip to `13b71c26` again → live substrate restored to
+`692b12ff` and proven before the install.
+
+| # | UTC | host (`model name` · stepping · uptime at entry) | substrate | fit-path `fb9efdec` (N35) | verdict |
+|---|---|---|---|---|---|
+| 2 | 2026-08-05 05:52 | `Intel(R) Xeon(R) Processor @ 2.80GHz` · stepping 7 · **up 1 min (container restarted; boot 05:48:26 UTC)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (76s) | **FIT-CLASS, re-classified** |
+
+**Two classifications, two reproductions of `fb9efdec`** — 55s / 76s. Every closure figure post-dates
+entry 2. On this environment `uptime` has now moved under this seat once; the outgoing seat saw it move
+five times in a day. It is not a formality.

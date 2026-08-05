@@ -1,0 +1,97 @@
+STATE-DIFF BASE ANNOTATION — L6_closure_state.diff   (THE CLOSURE STATE — the adopted ruled curve)
+==================================================================================================
+Filed 2026-08-05 by #306 execution seat u8ir65 under N18, on the CLOSURE RULING (seam comment
+5188042722, owner word 2026-08-05). Generated to scratch with `-- . ':(exclude)docs/'`, section count
+verified, then moved into place.
+
+THE ARTIFACT
+  file        L6_closure_state.diff
+  md5         96cb79b21d3565e489ccceb2b4042659
+  sections    20 `diff --git`
+
+THE BASE OF RECORD
+  BASE COMMIT   472c39d      ON  claude/exec-seat-306-afl-rl-zlaarm
+  (operating tree = 472c39d non-docs + the 2a1xa4/u8ir65 docs trees; seam-ratified at 5187760033)
+
+PRIOR LIVE CAPTURE SUPERSEDED
+  692b12ff19250917804f9ec318b8c31d  (L6_pass3_state.diff, capture 11, the BOUND-EXHAUSTED state)
+  NOT deleted, not stale — it is the exact state the HALT was measured on and the filing cites it.
+  TWELVE captures now stand, none overwritten.
+
+WHAT THIS CAPTURE IS
+  THE CLOSURE. L6 is CLOSED as CONVERGED AT TOLERANCE +/-1 BOARD POINT by owner word (5188042722).
+  The adopted ladder is the LAST DERIVED output of the loop — payload FULL
+  01f27f0231929b285de83aaa6713048d — installed here as the RULED CURVE of the landing.
+  The md5 fixed point was NOT reached within bound 4 and is NOT claimed; no cycle was proven (four
+  distinct payloads); R-I's test was not redefined — the owner closed it, which is a different act.
+
+  REVERSAL CONDITION, STANDING: any future pass on the adopted curve that moves ANY pick by more than
+  1 board point RE-OPENS this closure and returns the question to the owner.
+
+WHAT CHANGED FROM 692b12ff — THE L1(b) INSTALL SET + THE C.3 REFIT
+  engine/rl_after/pvc_curve_v2.json     curve_md5 3f5875b5 -> 01f27f02 (payload
+                                         01f27f0231929b285de83aaa6713048d)
+                                         numeraire head 3014.1435 -> 3060.6210 (SEALED TWIN: field
+                                         AND its own _doc prose, both BY JSON PATH)
+                                         s -> 0.980193... (DERIVED, N14/E6) · pool_value -> 233.0
+                                         per_entrant_md5 -> 557a53db
+  ui/release_pick_curve.json            curve_md5 -> 01f27f02 · file_md5 -> 46525617
+                                         curve_source_store_md5 stays FULL 32 (E.5 finding 5)
+  data/release_contract.json            pvc_provenance.curve_payload_md5 -> 01f27f02
+                                         contract_sha256 re-stamped, self-consistent
+  engine/rl_after/one_source_selftest.py  _contract_md5 (FULL 32) f7a6147f... -> 0ed45ecc... ·
+                                         _per_entrant_md5 (8-char) b6bacff2 -> 557a53db ·
+                                         _curve_source_store UNCHANGED
+     THEN C.3 step 3, same act: v0surf RE-BAKE b683e2ec -> ebc3d330, expected_boot.v0surf re-pinned
+     by the lane itself (159s). Shipped signature MOVED 1cbbd9b00ff4 -> 077d4de87aa6 (curve-keyed).
+
+  NO DERIVATION STEP — the closure ruling forbids it: "a derivation-shaped number produced after this
+  ruling is out of order." None was run.
+
+  THE HARNESS PIN IS DELIBERATELY NOT MOVED. `harness_pvc_REPINNED.py` still carries
+  EXPECT_V0SURF = '1cbbd9b00ff4' (the pass-3 surface). No matrix was emitted or loaded in this act, so
+  there is nothing for a new pin to PREDICT — and that file's own standing discipline is that the pin
+  is a prediction the next emitted matrix must meet, "NOT A STAMP APPLIED TO WHATEVER EMERGED".
+  Re-pinning without an emit to validate against would be exactly the stamping it forbids, and would
+  also be a re-pin whose non-vacuity could not be proven in the passing direction. CONSEQUENCE A
+  SUCCESSOR MUST HOLD: the next matrix emit on this substrate WILL halt the loader on the signature
+  assert. That halt is correct and expected — it forces a deliberate, ledgered re-pin at the moment
+  there is a real matrix to validate it. It is not a defect in this capture.
+
+STATE AT THE CLOSURE
+  store 81d24704 · curve 01f27f02 · surface ebc3d330 · engine 15525b03 · gamma 1.0
+  sealed history byte-identical (release_lineage 6925d4b5 untouched)
+
+THE CONVERGED GATE — N19's exit pair, and N16's trigger reads on THIS surface md5
+  PASS G-Y0 NATIONAL CURVE 1-64 |comp-weighted mean V0 - curve| = 0.033% <= 2% HARD
+                                                                  (n=1326 over 64 picks)
+  surface ebc3d3303a1956a8ec94b4e2c1497bdf · curve 01f27f02 · board c8116a16
+  selftest 97 PASS / 0 FAIL, SELF-TEST PASSED, rc=0
+  POOL leg UNMEASURED: +110.953% vs the carried-over level 233 (n=763, mean 491.5) — REPORTED, NOT
+  GATED, and NOT a licence to move the level (N37.5 / N43).
+
+  AGAINST N16'S TRIGGER: the converged G-Y0 is 0.033% on surface ebc3d330, against the 2.000% hard
+  bar. The trigger's failing branch (">2.000% fires the year-zero redesign as the remedy") is NOT
+  met — the redesign already ran and this is its converged outcome.
+
+THE LANE EXPECTATION AT THE ADOPTED KEY
+  key          25a72f85a96b|01f27f02|bce3c13d27ff
+  lens digest  11bfa887502693e6d9316b2c8e56524c
+  state before recording: INAPPLICABLE — no recorded expectation for these declared inputs
+  basis 25a72f85 · 1197 basis rows · 1448 applied rows
+
+N35 — THE CONTAINER RESTARTED BEFORE THIS ACT AND THE BOX WAS RE-CLASSIFIED
+  Boot 05:48:26 UTC (uptime read 1 min). The 04:18:42 classification went stale at that moment. Full
+  re-classification ran BEFORE the refit: pure pass-0 substrate restored and round-tripped to
+  13b71c26 -> pins 5/5 exact, OpenBLAS sha256 05c9f9eb byte-exact -> preboot as its own command ->
+  bootstrap rc=0, Guard 5 PASS -> tier-2 stamps regenerated to d14f0f12 / aaccad1c ->
+  FIT-PATH ASSERT PASS, fb9efdec4d669d389fe3beef2bca3092, 76s -> round trip to 13b71c26 again ->
+  live substrate restored to 692b12ff and proven. Every figure above post-dates that classification.
+
+WHY THESE FILES ARE NOT COMMITTED — REHEARSAL SUBSTRATE, R-C. The landing is a separate act needing
+the EXECUTION word. Bake HELD; EXECUTION word WITHHELD.
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO THE BOUND-EXHAUSTED STATE:
+  git checkout -- . && git apply --binary docs/evidence/exec_306_u8ir65/L6_pass3_state.diff
+  (692b12ff), then re-stamp the two .srcmd5. Never `git stash` a substrate file.
