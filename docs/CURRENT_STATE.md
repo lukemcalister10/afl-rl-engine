@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v61 · supervisor pen · 2026-08-04, register v569
+# CURRENT STATE — the incoming-seat read · v62 · supervisor pen · 2026-08-05, register v570
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,99 +128,97 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v61 · supervisor pen · 2026-08-04, register v569 · replaced wholesale at the PASS-0/ROTATION PEN — the
-G-Y0 gate passes at 0.035% and is seam-verified; the seat stopped short of the feed-back rather than
-guess the derivation lane; the execution seat rotates; the incoming seat's PLAN gets a mandatory seam
-pre-fire audit before the feed-back runs)
+(v62 · supervisor pen · 2026-08-05, register v570 · replaced wholesale at the ROTATION PEN — the
+channel-width discovery and the measured-outcomes correction are sealed; the owner has ordered the
+RECIPE AUDIT and the TWO-TRACK posture (N45); the seam rotates; you, the reader, onboard per the
+amended charter order: charter → PRIMER (v3) IN FULL → this file IN FULL → register by pointer →
+live verify → read-back and HOLD)
 
-## THE ERA: THE CONSISTENCY ERA — #306 EXECUTING; PASS 0 GREEN AND VERIFIED; THE FEED-BACK IS THE
-## REMAINING TEST; THE EXECUTION SEAT IS ROTATING.
-Main is the v569 pen or a descendant; four gating workflows green at every content state. **L6 pass 0:**
-the declared lane baked the surface `fb9efdec` → **`b540833b`** — the L-B five-start deterministic
-fingerprint itself — board `31f7108a` (parity 804/804 eps=0), book parity green, selftest **97 PASS / 0
-FAIL** (every prior recorded run was 96/1, G-Y0 the perpetual red). **THE GATE: G-Y0 = 0.035% ≤ 2.000%
-HARD (n=1,326 over all 64 picks)** — vs 13.919% at era start and the 8.8/11.0/8.8 oscillation that
-triggered the redesign. **Seam-verified byte-identically** (comment 5185781133). **A pass-0 gate pass is
-NOT convergence:** the fixed point (derived-curve payload md5 == installed `e69a3f38`) is the remaining
-test, and the seat STOPPED SHORT of it rather than guess the derivation routing (right — a wrong-loader
-run yields a plausible-but-uncheckable convergence verdict). **The execution seat zlaarm is ROTATING**
-(owner flag + self-raise at the sealed boundary); its hand-off files on #306. The **EXECUTION word
-remains WITHHELD**; the bake is HELD; nothing has landed. LIVE carrier `d7bnaa` at `7e9d7f9`; seat
-branch `claude/exec-seat-306-afl-rl-zlaarm` at `4b4500e` or a descendant (the hand-off filing expected).
+## THE ERA: TWO TRACKS (N45). READ THE v570 REGISTER ENTRY AND COMMENTS 5186208519 · 5186277660 · 5186108632 VERBATIM BEFORE ACTING.
+**TRACK A (main, the hedge) — #306 continues under existing law:** the L6 derivation verdict (seat
+`2a1xa4` was cleared to run fire-order steps 5–7 on the committed emitted matrix; the verdict may
+already be filed when you read this — AUDIT IT, channel decomposition beside it) → L7–L8 → full
+rehearsal hand-back → EXECUTION word → the landing (ruled curve + converged surface + N43 signed pool
+levels) → the owner's review set (5186108632: per-stage attribution · honest backtest book · year-0–7
+no-arbitrage table) → owner satisfaction → round-21 ingest + movers page. Post-verdict orders standing:
+the separating run (old surface `fb9efdec` under the new engine) + the belief-mass measurement — their
+numbers go to the OWNER (how much of the basis level is model-shaped).
+**TRACK B (side project, the owner's direction) — THE RECIPE AUDIT:** audit the RUNNING CODE into a
+plain-English recipe — three lists: (1) the store + everything feeding it; (2) PREDICTION, one line per
+step, input → rule → output; (3) VALUATION, same shape, through to the board number. **The recipe is
+BRANDLESS** (no code refs, no machinery — a blind builder bakes from it); code citations live in a
+SEPARATE verification appendix the builder never sees; the seam personally verifies every line against
+code. **The failure test, owner verbatim: "If our valuation and projection can't be done as a recipe,
+then we have already failed."** Every unstatable item is a NAMED finding. Then: fresh repo, blind
+build, judged by OUTPUTS ONLY. Extraction delegated to subagents; file the directive as a GitHub issue
+first. KEEP THE TRACKS SEPARATE — track B must not be poisoned by track A's way, and track A must not
+stall for track B.
 
-## THE TWO-CURVE IDENTITY CENSUS (glossary: PRIMER §5 incl. pathway tags)
-| curve | payload | what it is | where it lives |
-|---|---|---|---|
-| the SHIPPED curve | `08ea9375` | #271 stage-B ladder (measured 0.0248% reality) | main's product files — replaced at the landing |
-| **the RULED curve — THE ANCHOR** | **`e69a3f38`** | #279 structural ladder: classes 2004–2022, pick64=221, NO pick 65, completion +4.7–8.4% optimistic REPORTED | the rehearsal substrate; ships with the EXECUTION word |
-`b540833b` = the lens-lane surface, now BAKED in-substrate at pass 0 · `b760b17e` = the lane assert's
-grid digest · lane key = `basis md5 12 | census payload 8 | roster digest 12`.
+## THE TWO CORRECTIONS EVERY NUMBER NOW CARRIES
+1. **Channel width:** the surface+engine reaches the curve's teaching values through MOST of the
+   population, not only the 71 counted-fallback rows (55.78% / 44.22% split of movement; concluded
+   475/825 moved; hard-zero rows immune). Never tell the narrow story.
+2. **Measured outcomes:** career value = pw-weighted aggregate of `ev(p, Y)` as-of values — the
+   ENGINE measuring, not raw scores over bars; thin-record seasons lean on the year-zero estimate.
+   No raw-scores measure has ever existed; building one is the owner's standing requirement (N45 /
+   the recipe's prediction list). PRIMER v3 §4 item 5.5 carries this permanently.
 
-## THE CAPTURE TABLE — A RECIPE IS CURRENT ONLY TO THE CAPTURE IT NAMES
-| capture | md5 | what it is | base |
-|---|---|---|---|
-| `L6_pass0_lens_state.diff` — **THE LIVE SUBSTRATE** | `2b7640be` | pass 0 on the redesigned lane: surface `b540833b` baked · both engine pins `15525b03` · v0surf pin moved by the lane · `contract_sha256` DELIBERATELY STALE (N44 addendum) | `c17fbcb` |
-| `L6_pass0_state.diff` — **the N35-assert substrate** | `13b71c26` | yields `fb9efdec` (curve `e69a3f38`) — the fit-path assert is defined HERE, unchanged | `f0128d6` |
-| superseded/sealed: `efaf67d6` · `e9508660` · `59ef1940` · `8650c060` · `02e248dc` · `137c6d2c` | — | the chain as v60 recorded it | — |
-(Seven captures stand, none overwritten. Verify any by apply-and-hash before trusting its recipe.)
+## LIVE STATE (verify with your own commands, trust nothing)
+Main = the v570 pen or a descendant · four gating workflows green (in-flight stated as in-flight) ·
+eleven issues open, #271 #274 closed, no open PRs · LIVE carrier `d7bnaa` at `7e9d7f9` · outgoing-seat
+branch `claude/exec-seat-306-afl-rl-zlaarm` at `472c39d` (hand-off in `HANDOFF.md`, a repo file not a
+comment) · CURRENT exec seat branch `claude/exec-seat-306-handoff-2a1xa4` at `8e18535` or a descendant
+(the verdict commit expected) · frozen/HOLD branches intact (j0kwl0 `8e8c15b` · fubolo `abf8f4c` ·
+fp78jm `3cccb9d` · 4ql38z `9914c4d` — carries the #279 machinery BOTH tracks read · g4edkc `592c7a2`) ·
+captures: `13b71c26` = the N35-assert substrate (→ `fb9efdec`, curve `e69a3f38`) · `2b7640be` = the
+live L6 substrate (surface `b540833b`, both engine pins `15525b03`, contract seal deliberately stale
+per N44 addendum) — verify both by apply-and-hash. **N35: classify your own box before ANY fit figure;
+check uptime EVERY time; the assert stales on any restart (the outgoing seam re-classified five times
+in one day).** Measurement scripts importing numpy run under `RL_VENV` (recipe in ENVIRONMENT CARRIES).
 
-## STANDING RULINGS DIGEST — the map, NEVER the law (charter O1). Act on a ruling → read its durable copy verbatim.
-N1–N44 stand as v60 recorded them (N41 acceptance population · N42 pool principle · N43 signed levels +
-ND-65+ cap · N44 + addendum: engine pin follows sealed code in-substrate; the stale seal stays as the
-record has it, re-stamped at the curve-install step). This cycle's law is in the rotation order
-(5185851272): **the feed-back channel is the 71 counted-fallback rows (5.931% of 1,197)** — confirm
-against provenance before running; **propagation by deliberate RE-RUN + RE-PIN only** (N40a), never code
-surgery, never routing around an identity check; **the derivation-lane PLAN files and is seam-audited
-BEFORE the feed-back runs.**
-
-## THE QUEUE
-- **#306 — the INCOMING execution seat:** onboard per 5185851272 → derivation-lane PLAN → **seam
-  pre-fire audit** → the feed-back (fixed point = payload md5 equality · bound 4 · exhausted → HALT ·
-  G-Y0 + lane expectation per pass) → converged G-Y0 vs N16 naming the surface md5 → L7–L8 → full
-  rehearsal hand-back → **the EXECUTION word** → the landing (ruled curve + converged surface + the N43
-  signed pool levels ship together) → candidate board → adoption (owner's separate act). Next seam
-  decisions: the outgoing hand-off verification · the incoming read-back · the PLAN audit · the
-  fixed-point outcome audit.
-- **#276 clubs tab · #270 referee** (post-adoption) · **#139 feeds** · v1.1 read outstanding.
+## STANDING RULINGS DIGEST — the map, NEVER the law. Act on a ruling → read its durable copy verbatim.
+N1–N44 stand as v61 recorded them (N41 acceptance population · N42 pool principle · N43 signed levels +
+ND-65+ cap bound to curve[64] · N44 + addendum engine-pin/stale-seal). **N45 (v570, owner words):** the
+recipe audit + two-track order, the brandless-recipe law, the failure test, the owner's standing
+raw-scores-over-bar requirement. The loop's terms unchanged (fixed point = payload md5 equality ·
+bound 4 · exhausted → HALT).
 
 ## OWNER ACTS OUTSTANDING
-Open the INCOMING #306 execution seat (paste its onboarding relay; the seam supplies it) · the
-**EXECUTION word** (after the full rehearsal hand-back) · close clicks **#292 #283 #275** · the
-`rl_replacement_derive.py` search (N23) · branch deletes — **HOLD** g4edkc · 4ql38z (the #279 machinery
-the loop now depends on MORE than ever) · fp78jm · fubolo · j0kwl0 · N12 holds until the landing.
+Re-provide the pen token to the INCOMING seam (this pen is the rotation) · the EXECUTION word (after
+the full hand-back, track A) · the recipe's review when track B delivers it · close clicks #292 #283
+#275 · branch deletes HOLD as v61 · N12 holds until the landing.
 
-## RUNNING THIS SEAT WELL — charter C1/C2/C3, M1–M3, AND the 2026-08-04 amendment govern; read them first
-- **M1** one-screen replies · **M2** deciding-figure re-run, ruling, or audit — else delegate · **M3**
-  posture at every pen · **the twin rules:** intent-and-laws before mechanics; every number names its
-  quantity (belief or outcome · basis · curve · denomination · population).
-- **The owner's communication word (binding):** agent returns in VERY SIMPLE terms — what they did,
-  whether it worked, what he must decide. Relays IN HIS CHANNEL. Answer him HERE before filing.
-- Verification standards: v558 byte-identical re-runs (confirm the run RAN) · v559 capture pairs ·
-  v560/N35 **check uptime before EVERY fit figure — five same-day re-classifications this seat** · the
-  preboot pgrep in its OWN command · ad-hoc shell is where discipline dies; run the committed instrument.
-- **The sitting seam is at ~380k**: the seam's own next rotation raise comes at the fixed-point outcome
-  boundary or on any degradation sign, whichever e first — the owner declined one raise already ("keep
-  going a bit longer"), so the raise repeats rather than assumes.
+## RUNNING THIS SEAT WELL — charter C1/C2/C3, M1–M3, the twin rules, and the OWNER'S COMMUNICATION WORD
+- The owner's words 2026-08-05, BINDING and recorded after a failure of this seat's own register:
+  **plain English, no riddles, no dense waffle** — he called this seam's prose "incredibly confusing,
+  dense and waffly, devoid of substance" and he was right. Short sentences. Substance only. His
+  questions get DIRECT answers before anything else.
+- Every agent return in VERY SIMPLE terms: what they did, whether it worked, what he must decide.
+  Relays in his channel. Answer him HERE before filing anywhere.
+- M1 one screen · M2 deciding-figure/ruling/audit else delegate · M3 posture at every pen · audits
+  check INTENT before mechanics (the measured-outcomes correction is what missing that costs) · every
+  number names its quantity · ad-hoc shell is where discipline dies; run the committed instrument ·
+  the preboot pgrep runs in its OWN command (self-match otherwise).
 
-## ENVIRONMENT CARRIES — as v60 in full (measurements/ lane · sealed captures · compute-path assert
-`92e397bd` · strictly serial · `RL_VENV` 5-pin venv · N32 · N33 · N35 recipe (bootstrap from the PURE
-pass-0 tree → `refit_v0surf.py --verify` reproduces `fb9efdec`) · PEN MECHANICS unchanged (stamp SAME
-LENGTH · insert before ` · SEAM v540 (2026-07-29)` · line count unchanged · growth == entry length · one
-new stamp · docs-only · Part B wholesale · `supervisor-seat` commit · branch → PR → rebase-merge →
-re-verify by CONTENT · reset pen branch first; force-with-lease normal)), plus: `structural_basis_279.json`
-`25a72f85` · `lane_expectation.json` (`…|e69a3f38|…` → `b760b17e`) · the committed instruments (acceptance
-· pool rerun · lb determinism · lane emitter · `l6/run_pass.sh`) · the #279 machinery on `…-4ql38z`
-RETENTION-PROTECTED — the loop's derivation lane runs through it.
+## ENVIRONMENT CARRIES — as v61 in full (RL_VENV 5-pin venv + setup_env.sh · N35 recipe: bootstrap from
+the PURE pass-0 tree then `refit_v0surf.py --verify` must reproduce `fb9efdec` · strictly serial ·
+compute-path assert `92e397bd` · N32 payload recipe (string keys, int(round), sort_keys, [:8]) · N33
+srcmd5 re-stamps · PEN MECHANICS: stamp near char 88 SAME LENGTH · insert before ` · SEAM v540
+(2026-07-29)` · line count unchanged (8,438) · growth == entry length · one new stamp · docs-only ·
+Part B wholesale · commit `supervisor-seat <supervisor@seam.local>` · branch → PR → rebase-merge →
+re-verify main by CONTENT · reset pen branch onto origin/main first · force-with-lease normal when the
+old tip is merged history), plus: `structural_basis_279.json` `25a72f85` · `lane_expectation.json`
+(`…|e69a3f38|…` → `b760b17e`) · the committed instruments (acceptance · pool rerun `pool_levels_rerun`
+= N43's source · lb determinism · lane emitter · `l6/run_pass.sh` · `channel_width.py`) · the #279
+machinery on `…-4ql38z` RETENTION-PROTECTED.
 
 ## THE INCOMING SEAM'S FIRST TASKS
-0. Onboard per the amended charter order: charter → PRIMER IN FULL → this file IN FULL → register by
-   pointer → live verify → read-back and HOLD. Every number names its quantity.
-1. Verify live state with your own commands: main tip = the v569 pen or a descendant; eleven issues open
-   / #271 #274 closed / no open PRs; four gating workflows green (in-flight stated as in-flight); LIVE
-   carrier `7e9d7f9`; seat branch `4b4500e` or a descendant; frozen/HOLD branches intact; captures by
-   apply-and-hash (minimum `13b71c26` → `fb9efdec`; `2b7640be` applies at the seat tip with surface
-   `b540833b`) — **N35-classify your own box first; check uptime; the assert stales on any restart.**
-2. The #306 seats are ROTATING: verify the outgoing hand-off; audit the incoming read-back; then the
-   derivation-lane PLAN gets the MANDATORY pre-fire audit (the feed-back channel is the 71
-   counted-fallback rows — confirm against provenance; propagation by deliberate re-run + re-pin only).
-3. Read-back to the owner — short and simple per C1/M1 — then hold for confirmation before any push.
+0. Onboard per the amended charter order. Read the v570 entry and comments 5186208519, 5186277660,
+   5186108632 verbatim. Every number you present names its quantity IN PLAIN ENGLISH.
+1. Verify live state with your own commands (the LIVE STATE block above); N35-classify your box.
+2. TRACK A: audit the L6 verdict when it files (or immediately if already filed) — channel
+   decomposition beside it, the narrow story never told.
+3. TRACK B: file the RECIPE AUDIT directive as a GitHub issue (the N45 terms: brandless recipe,
+   separate verification appendix, the failure test verbatim, outputs-only acceptance), delegate
+   extraction, verify every line personally before the owner sees it.
+4. Read-back to the owner — plain, short — and hold for his confirmation before any push.
