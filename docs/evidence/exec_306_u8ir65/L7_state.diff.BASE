@@ -1,0 +1,66 @@
+STATE-DIFF BASE ANNOTATION — L7_state.diff   (L7: gates and seals at the new totals)
+====================================================================================
+Filed 2026-08-05 by #306 execution seat u8ir65 under N18, on the L7-L8 authorisation (seam comment
+5188266553). Generated with `-- . ':(exclude)docs/'`.
+
+THE ARTIFACT
+  file      L7_state.diff
+  md5       2b5e99eb07d0b82a1f8cce07d5c4b28a
+  sections  26 diff --git  (the 20 of the closure substrate + 6 new L7 files)
+
+THE BASE OF RECORD
+  BASE COMMIT   472c39d  ON  claude/exec-seat-306-afl-rl-zlaarm
+  operating tree = 472c39d non-docs + the 2a1xa4/u8ir65 docs trees (seam-ratified, 5187760033)
+
+PRIOR LIVE CAPTURE SUPERSEDED
+  96cb79b2 (L6_closure_state.diff, the adopted-curve substrate). NOT deleted. THIRTEEN captures stand.
+  L7 = the closure substrate carried forward + exactly SEVEN edits (verified: closure->L7 round-trips
+  96cb79b2 -> 2b5e99eb clean; the delta is these files and nothing else):
+
+WHAT L7 CHANGED FROM 96cb79b2
+  1. session_2026-07-18/legf5/sealed_entrant_structure.json  — RE-SEALED on the live store 81d24704
+     at the adopted curve 01f27f02. entrant PVC 83538 -> 62726; seal a17aafed -> ed5b7fcc; the
+     provenance stamp now names store 81d24704 / curve 01f27f02 (was 968de0c7 / old curve). Counts
+     (103.4 slots/yr, window 2019-2025) unchanged; only the store they were measured on and the curve
+     they are priced at moved. The seal was reproduced byte-identically before install (not trusted).
+  2. session_2026-07-18/legf5/scripts/seal_structure.py  — the seal STAMP is now MEASURED from the
+     live contract/curve, not a hardcoded literal. A hardcoded stamp is a true hash bound to a frozen
+     provenance regardless of what was actually measured (hazard class 1) — the primary vacuity.
+  3. engine/rl_after/rl_export.py  — (a) seal pin a17aafed -> ed5b7fcc (3 sites); (b) THE
+     RECONCILIATION MADE REAL: a hard assert that the board's repriced entrant layer == the sealed
+     total, HALTing the render on disagreement. Until now board-vs-sealed was only PRINTED as a MATCH
+     boolean the exit code ignored — the vacuous reconciliation the ruling names. It now HALTs: a seal
+     measured on a stale store no longer reprices to its own total.
+  4. session_2026-07-18/legf5/scripts/gate_f5.py  — seal pin -> ed5b7fcc; board_ent == sealed total
+     turned from a printed boolean into a hard assert.
+  5. data/release_contract.json  — the G-Y0 DATED EXCEPTION RETIRED (held_checks G-Y0 removed; a
+     _retired_checks record added with the reason). The gate now measures 0.033% <= the 2.000% HARD
+     bar on the adopted pair and passes on its OWN assertion, so the #271 Addendum-12 dated exception
+     (ceiling 3.5%) is no longer load-bearing. contract_sha256 re-stamped over the new body.
+  6. ui/tests/extract_seam.test.py  — entrant 83538 -> 62726, seal a17aafed -> ed5b7fcc (incl. the
+     do-not-leak check, re-pointed to the new values).
+  7. session_2026-07-18/legf5/tests/test_k0_dormancy_f5.py  — seal pin -> ed5b7fcc; the k0 delta
+     assert reads the sealed total dynamically (already correct); its stale 83538 label corrected.
+
+  OUT OF SCOPE, deliberately untouched: session_2026-07-21/final_integration/* references to 83538 —
+  a different lineage (Board B / R19 provenance) whose layer was already re-expressed 83538 -> 77611
+  by the #274 mop-up. Rewriting that era's narrative is not L7's job.
+
+THE MEASURED RESULT (workspace render on this substrate)
+  board repriced entrant layer 62726 == sealed total 62726 -> reconciliation PASS by construction
+  F5 league gate PASS (both +-5%); F4 roster-matched gate PASS
+  selftest 97 PASS / 0 FAIL, SELF-TEST PASSED, rc=0
+  G-Y0 NATIONAL CURVE 1-64 = 0.033% <= 2.000% HARD (n=1326), GREEN with NO held record
+  surface ebc3d330 · curve 01f27f02 · store 81d24704 · engine 15525b03 · sealed history untouched
+
+NON-VACUITY (nonvacuity_l7.py, both directions on committed bytes)
+  seal-drift: one byte changed -> recomputed seal != pin -> HALT fires
+  reconciliation: had the seal stayed stale (83538 -> board 62639) -> board != sealed -> assert fires
+  G-Y0: the 2.000% predicate is unchanged; it fired RED at 3.035% pre-#279; only the exception retired
+
+N35 — box re-classified after a restart (boot 06:56:39 UTC): pure pass-0 fit-path assert reproduced
+  fb9efdec (79s), FIT-CLASS, before any fit act; ASSERT_LOG entry appended.
+
+WHY UNCOMMITTED — REHEARSAL SUBSTRATE, R-C. Bake HELD; EXECUTION word WITHHELD.
+CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+RETURN TO CLOSURE:  git checkout -- . && git apply --binary docs/evidence/exec_306_u8ir65/L6_closure_state.diff  (96cb79b2)

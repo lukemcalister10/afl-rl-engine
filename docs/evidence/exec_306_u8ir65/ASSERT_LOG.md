@@ -120,3 +120,19 @@ none overwritten.** Added since, all on this branch under `docs/evidence/exec_30
 
 Each carries a `.BASE` annotation written at generation. The nine-row table above is left standing as
 the arrival record rather than rewritten, per this file's own discipline.
+
+## Entry 3 — the L7 re-classification (fresh seat + restart)
+
+A new seat took L7 after the prior seat was lost; the container had also restarted (`uptime` 0 min,
+boot **06:56:39 UTC**). Full re-classification before any fit act: pure pass-0 capture `13b71c26`
+restored and round-trip proven → pins 5/5, OpenBLAS sha256 `05c9f9eb` byte-exact → preboot → bootstrap
+rc=0, Guard 5 PASS → tier-2 stamps `d14f0f12` / `aaccad1c` → **fit-path assert PASS `fb9efdec`, 79s** →
+round trip → closure substrate `96cb79b2` restored and proven. The in-flight F5 re-seal was reproduced
+byte-identically (`ed5b7fcc`) rather than trusted.
+
+| # | UTC | host (uptime at entry) | substrate | fit-path `fb9efdec` | verdict |
+|---|---|---|---|---|---|
+| 3 | 2026-08-05 ~06:59 | up 0 min (boot 06:56:39 UTC) | pure pass-0, `13b71c26` | **PASS — `fb9efdec…`** (79s) | **FIT-CLASS** |
+
+Three classifications, three reproductions — 55s / 76s / 79s. Thirteen captures now stand (L7 adds
+`2b5e99eb`).
