@@ -1,0 +1,36 @@
+{
+ "FC_full_md5_binding": {
+  "asserted": true,
+  "expected_boot_v0surf": "69571649c96dd11053ff602afb67025a",
+  "installed_v0surf_md5": "69571649c96dd11053ff602afb67025a",
+  "why": "_v0surf_sig does not cover the fitted stack: fb9efdec and b540833b share sig 96d671c952c8. N22 - the signature selects, the md5 governs. Kept at every pass regardless of whether it is redundant at that pass."
+ },
+ "emit_seconds": 143,
+ "emitter": "session_2026-07-29/item271/emit_matrix_271.py",
+ "lane": "#306 redesigned lens lane",
+ "matrix_md5": "b6bacff2e573d4b731f078cf1ce23d58",
+ "matrix_meta": {
+  "force_majeure": [
+   "paddy-mccartin",
+   "thomas-boyd"
+  ],
+  "n_records": 2646,
+  "nd_curve_last": 64,
+  "pool_pick": 65,
+  "slide_years": [
+   2013,
+   2014
+  ],
+  "store_md5": "81d24704",
+  "v0surf_frozen": true,
+  "v0surf_sig": "f802734d5406d2d3d7183b9d3c295ec6"
+ },
+ "pass": 2,
+ "pin_was_a_prediction": {
+  "EXPECT_V0SURF_set_before_emit": "f802734d5406",
+  "emitted_matrix_sig": "f802734d5406",
+  "met": true
+ },
+ "prior_matrix_md5": "bab406269c8a19094584ad8b59b94d9a",
+ "routing": "backup -> emit -> capture -> restore; PRE 2f8b4bd4"
+}

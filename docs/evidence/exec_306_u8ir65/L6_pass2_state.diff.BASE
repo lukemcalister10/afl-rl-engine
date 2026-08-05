@@ -1,0 +1,80 @@
+STATE-DIFF BASE ANNOTATION — L6_pass2_state.diff
+=================================================
+Filed 2026-08-05 by #306 execution seat u8ir65 under N18. Generated to scratch with
+`-- . ':(exclude)docs/'`, section count verified, then moved into place.
+
+THE ARTIFACT
+  file        L6_pass2_state.diff
+  md5         e6bc7e9d360f43b9b98d0fc14a4324ad
+  sections    20 `diff --git`
+
+THE BASE OF RECORD
+  BASE COMMIT   472c39d      ON  claude/exec-seat-306-afl-rl-zlaarm
+  (the operating tree is 472c39d's non-docs content + the 2a1xa4/u8ir65 docs trees, as reconstructed
+  and seam-endorsed in the u8ir65 read-back, comment 5187584977 / 5187605206)
+
+PRIOR LIVE CAPTURE SUPERSEDED
+  bc1001f978f1b226b3323fad6bd82132  (L6_pass1c_state.diff, capture 9, pass 1 corrected)
+  NOT deleted, not stale as a record — the exact state pass 1 stood at.
+
+WHAT CHANGED FROM bc1001f9 — THE L1(b) INSTALL SET + THE C.3 REFIT + THE HARNESS RE-PIN
+  engine/rl_after/pvc_curve_v2.json         curve_md5 9f7848f4 -> b61c01b0 (payload
+                                             b61c01b0350cf113deec5b739c5f679f)
+                                             numeraire head 3010.1221 -> 3064.3712 (SEALED TWIN: both
+                                             the field AND its own _doc prose moved BY JSON PATH)
+                                             s -> 0.978993667607893 (DERIVED, N14/E6)
+                                             pool_value 233.1 -> 233.3 · per_entrant_md5 -> bab40626
+  ui/release_pick_curve.json                curve_md5 -> b61c01b0 · file_md5 -> 8e55a505
+                                             curve_source_store_md5 stays FULL 32 (E.5 finding 5)
+  data/release_contract.json                pvc_provenance.curve_payload_md5 -> b61c01b0
+                                             contract_sha256 a6b04a3e -> c1a84621 (re-stamped at the
+                                             curve-install step; seal was ALREADY self-consistent
+                                             going in, unlike the stale seal pass 1 inherited)
+  engine/rl_after/one_source_selftest.py    _contract_md5 (FULL 32) 5f5ffdfd... -> e6e2e982... ·
+                                             _per_entrant_md5 (8-char) e1c62f86 -> bab40626 ·
+                                             _curve_source_store UNCHANGED
+  session_2026-07-30/.../harness_pvc_REPINNED.py
+                                             EXPECT_V0SURF 54ef78e3891a -> f802734d5406, ledger entry
+                                             prepended in-header (pass 2), pass-1 entry retained below
+                                             it. EXPECT_STORE/EXPECT_N unchanged. Non-vacuity proven
+                                             BOTH directions before AND after (nonvacuity_probe.py).
+     THEN C.3 step 3, same act: v0surf RE-BAKE 6ba4f4c3 -> 69571649, expected_boot.v0surf re-pinned
+     by the lane itself. Shipped signature MOVED 54ef78e3891a -> f802734d5406 (curve-keyed, as at
+     pass 1).
+
+STATE AT PASS 2
+  store 81d24704 · curve b61c01b0 · surface 69571649 · engine 15525b03 · gamma 1.0
+  contract_sha256 c1a84621 (fresh, self-consistent) · sealed history byte-identical (release_lineage
+  6925d4b5 untouched)
+
+THE MATRIX EMIT AND CHANNEL CHECK (fire-order step 3)
+  emitted docs/evidence/exec_306_u8ir65/l6/pass2_matrix.json, md5 b6bacff2e573d4b731f078cf1ce23d58,
+  143s, sig f802734d5406 (met the pin set BEFORE the emit) · F-C full-md5 binding asserted: installed
+  v0surf md5 == expected_boot.v0surf, both 69571649... · EXPECT_N re-measured 1197 · channel check
+  CONFIRMED 71 / 5.931% (825 concluded_realised + 301 completed + 71 prior_fallback_thin = 1197) ·
+  per_entrant_271.json restored 2f8b4bd4 -> 2f8b4bd4 before the derivation.
+
+THE BASIS BYTE-IDENTITY (fire-order step 4)
+  structural_basis_279.json re-emitted BYTE-IDENTICAL at 25a72f85 · frozen panel harness_pvc.py
+  untouched at e0130cc2 (never on sys.path during the derivation — the derivation ran from a lane
+  dir carrying the re-pinned harness under the bare `harness_pvc` import name, PANEL argument pointed
+  at the frozen #279 panel for its fitters only).
+
+THE DERIVATION AND THE FIXED-POINT COMPARISON (fire-order step 5) — FULL md5 per N22
+  derived   payload  FULL 3f5875b57be8e59066993af834f98866   [:8] 3f5875b5
+  installed payload  FULL b61c01b0350cf113deec5b739c5f679f   [:8] b61c01b0
+  EQUAL? False.  Not a repeat of e69a3f38, 9f7848f4, or b61c01b0.
+  Bound 4; THREE passes now consumed. NOTHING IS DECLARED.
+  ladder sum 53526 (pass 1 derived: 53511) · pick64 185 · pooled head 3014.1435 · s 0.995308
+
+WHAT IS NOT ESTABLISHED BY THIS CAPTURE
+  R-I's FIXED POINT. The G-Y0 gate figure at this curve/surface pair has NOT been measured this pass
+  (no board/book/selftest run yet). The lane expectation at the new key has NOT been recorded yet.
+  Both are owed and named, not glossed — the verdict is filed first per the seam's priority order.
+
+WHY THESE FILES ARE NOT COMMITTED — REHEARSAL SUBSTRATE, R-C. Bake HELD; EXECUTION word WITHHELD.
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.
+
+RETURNING TO PASS 1c (the prior sealed state):
+  git checkout -- . && git apply --binary docs/evidence/exec_306_2a1xa4/L6_pass1c_state.diff
+  (bc1001f9), then re-stamp the two .srcmd5. Never `git stash` a substrate file.
