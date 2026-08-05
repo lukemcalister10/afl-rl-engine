@@ -1,0 +1,54 @@
+STATE-DIFF BASE ANNOTATION — L6_pass1c_state.diff  ("c" = corrected)
+====================================================================
+Filed 2026-08-05 by the #306 execution seat 2a1xa4 under N18. Generated to scratch with
+`-- . ':(exclude)docs/'`, section count verified, then moved into place (practice 4).
+
+THE ARTIFACT
+  file        L6_pass1c_state.diff
+  md5         bc1001f978f1b226b3323fad6bd82132
+  sections    20 `diff --git`
+
+THE BASE OF RECORD
+  BASE COMMIT   472c39d      ON  claude/exec-seat-306-afl-rl-zlaarm
+
+**THIS SUPERSEDES ebaca58e AS THE LIVE CAPTURE. ebaca58e IS NOT DELETED and is not stale as a record:**
+it is the exact capture of the substrate as pass 1 was first installed, including a DEFECTIVE
+`_contract_md5` pin, and the pass-1 filing cites it as such. Two captures, two states, neither
+overwritten.
+
+WHAT CHANGED FROM ebaca58e — ONE FILE, ONE FIELD, A CORRECTION OF THIS SEAT'S OWN ERROR
+  engine/rl_after/one_source_selftest.py  `_contract_md5`
+      5f5ffdfd93e8342fb5bceca34834212a  ->  5f5ffdfdf2ee67ac99f4076245c89558
+
+  WHY. The two selftest pins have ASYMMETRIC LENGTHS:
+      _contract_md5    (:490)  a FULL 32-char md5
+      _per_entrant_md5 (:500)  an 8-char stamp
+  install_pass1.py treated both as 8-char and replaced only the PREFIX inside the full pin, yielding
+  new-prefix + OLD-tail — a hash that named the right file with the wrong bytes. HAZARD CLASS 1,
+  right-name-wrong-file, produced by this seat.
+
+  IT WAS CAUGHT BY THE GUARD ON ITS FIRST RUN: the selftest's FROZEN-RULER contract byte-untouched
+  check failed and printed both values, selftest rc=1. Non-vacuity working exactly as intended — the
+  defect was live for one run and never reached a filed figure.
+
+  `l6/install_pass1.py` is CORRECTED so pass 2 cannot inherit it: the full pin is now read out of the
+  source by regex and replaced whole, the asymmetry is documented in-file, and the verify assert now
+  requires the literal `_contract_md5='<FULL>'` rather than a substring.
+
+STATE AT THIS CAPTURE
+  store 81d24704 · curve 9f7848f4 · surface 6ba4f4c3 · engine 15525b03 · gamma 1.0
+  ui/release_pick_curve.json 5f5ffdfd… · contract_sha256 a6b04a3e · sealed history byte-identical
+
+THE GATE, MEASURED ON THIS STATE
+  G-Y0 NATIONAL CURVE 1-64 |comp-weighted mean V0 - curve| = 0.033% <= 2% HARD (n=1326 over 64 picks)
+  surface 6ba4f4c3f3d5a4697b0ecafe2e15b96d · curve 9f7848f4 · board a54a8da5
+  selftest 97 PASS / 0 FAIL, SELF-TEST PASSED (rc=0)
+  POOL leg UNMEASURED: +114.265% vs the carried-over level 233 (n=763, mean 499.2) — REPORTED, NOT
+  GATED, and NOT a licence to move the level (N37.5 / N43).
+
+WHAT IS NOT ESTABLISHED BY THIS CAPTURE
+  R-I's FIXED POINT. Pass 1 derived b61c01b0 against installed 9f7848f4 — NOT equal. Bound 4, two
+  passes consumed. NOTHING IS DECLARED.
+
+WHY THESE FILES ARE NOT COMMITTED — REHEARSAL SUBSTRATE, R-C. Bake HELD; EXECUTION word WITHHELD.
+WHAT IT CANNOT CARRY — the two untracked tier-2 stamps (d14f0f12 / aaccad1c), regenerated per N33.

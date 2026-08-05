@@ -183,18 +183,28 @@ print('        covers the engine_head move too — N44 addendum clause 2 dischar
 # ================================================================ STEP 6 · one_source_selftest.py
 ST_F = P('engine/rl_after/one_source_selftest.py')
 st = open(ST_F).read()
-OLD_CONTRACT_MD5 = 'ca2f2e87'
+# THE PIN LENGTHS ARE ASYMMETRIC AND THIS COST A HALT AT PASS 1:
+#   _contract_md5   is a FULL 32-char md5      (:490)
+#   _per_entrant_md5 is an 8-char stamp        (:500)
+# Replacing the 8-char PREFIX inside the full pin yields new-prefix + old-tail — a hash that names the
+# right file with the wrong bytes (hazard class 1). The FROZEN-RULER check caught it on the first run.
+# Read the current full pin out of the source and replace it whole.
+import re
+m = re.search(r"_contract_md5='([0-9a-f]{32})'", st)
+assert m, 'could not read the full 32-char _contract_md5 pin'
+OLD_CONTRACT_MD5 = m.group(1)
 hits_c = st.count(OLD_CONTRACT_MD5)
 hits_p = st.count('77eba4d3')
 print('\nSTEP 6  one_source_selftest.py  occurrences: _contract_md5 seed %d | per_entrant %d' % (hits_c, hits_p))
 assert hits_c >= 1, 'expected the contract md5 pin'
 assert hits_p >= 1, 'expected the per_entrant pin'
-st_new = st.replace(OLD_CONTRACT_MD5, NEW_UI_MD5[:8]).replace('77eba4d3', NEW_PE_MD5)
-assert st_new.count(NEW_UI_MD5[:8]) == hits_c and st_new.count(NEW_PE_MD5) == hits_p, 'replacement count mismatch'
+st_new = st.replace(OLD_CONTRACT_MD5, NEW_UI_MD5).replace('77eba4d3', NEW_PE_MD5)   # FULL md5, not the prefix
+assert st_new.count(NEW_UI_MD5) == hits_c and st_new.count(NEW_PE_MD5) == hits_p, 'replacement count mismatch'
+assert re.search(r"_contract_md5='%s'" % NEW_UI_MD5, st_new), 'the contract pin must carry the FULL new md5'
 assert st_new.count('81d24704') == st.count('81d24704'), '_curve_source_store must not move'
 assert len(st_new.splitlines()) == len(st.splitlines()), 'line count must not change'
-print('        _contract_md5 %s -> %s | _per_entrant_md5 77eba4d3 -> %s | _curve_source_store UNCHANGED'
-      % (OLD_CONTRACT_MD5, NEW_UI_MD5[:8], NEW_PE_MD5))
+print('        _contract_md5 %s -> %s (FULL) | _per_entrant_md5 77eba4d3 -> %s (8-char) | _curve_source_store UNCHANGED'
+      % (OLD_CONTRACT_MD5[:8] + '…', NEW_UI_MD5, NEW_PE_MD5))
 
 # ================================================================ WRITE — all or nothing
 if DRY:
@@ -221,7 +231,7 @@ assert md5f(UI_F) == NEW_UI_MD5, 'ui file md5 must match what step 6 consumed'
 u2 = json.load(open(UI_F))
 assert u2['pick_curve_file_md5'] == md5f(CURVE_F), 'ui must pin the curve file it points at'
 assert OLD_CONTRACT_MD5 not in open(ST_F).read(), 'stale contract pin must be gone'
-assert NEW_UI_MD5[:8] in open(ST_F).read(), 'selftest must pin the ui file'
+assert ("_contract_md5='%s'" % NEW_UI_MD5) in open(ST_F).read(), 'selftest must pin the ui file by FULL md5'
 rc2 = json.load(open(RC_F))
 assert rc2['contract_sha256'] == contract_sha256(rc2), 'contract seal must be self-consistent'
 n2 = c2['numeraire']

@@ -10,7 +10,7 @@ asserted on. A host label classifies nothing — only reproduced output bytes do
 | 2 | 2026-08-05 00:26 | `Xeon @2.80GHz` · stepping 7 · **up 4 min (container restarted)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (62s) | **FIT-CLASS, re-classified** |
 | 3 | 2026-08-05 01:46 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, third time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (53s) | **FIT-CLASS, re-classified** |
 | 4 | 2026-08-05 02:31 | `Xeon @2.80GHz` · stepping 7 · **up 1 min (container restarted, fourth time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (74s) | **FIT-CLASS, re-classified** |
-| 5 | 2026-08-05 03:29 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, fifth time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (55s) | **FIT-CLASS, re-classified** |
+| 5 | 2026-08-05 03:32 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, fifth time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (55s) | **FIT-CLASS, re-classified** |
 
 ## Entry 1 — the arrival assert
 
@@ -70,6 +70,11 @@ was built to remove, and it is behaving exactly as the record says it does.
 ## Entry 5 — before the pass-1 gate measurement
 
 A **fifth** restart, between the pass-1 filing and the owed G-Y0 measurement: `uptime` read **0 min**.
+Boot established precisely afterwards from `/proc/uptime` as **03:31:31 UTC**; this entry's bootstrap ran
+at **03:32:53**, the board at 03:36:54 and the selftest at 03:42:45 — **every act of the gate chain
+post-dates the boot**, so the classification covers the figure. (This row first carried an estimated
+03:29 timestamp, which would have placed the assert BEFORE the boot and made the gate figure
+unclassified. It was checked against file mtimes rather than trusted, and corrected.)
 Re-classified in full before the engine chain — substrate round trip to `13b71c26` → pins 5/5 exact →
 preboot as its own command → bootstrap rc checked → fit-path assert **PASS in 55s**.
 
