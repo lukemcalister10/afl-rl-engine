@@ -1,0 +1,26 @@
+{
+ "store_md5": "6b9d00a75ca88122c42da9189739916b",
+ "v0surf_pkl_md5": "ce08c2d13ae7d9bd403c60cf58ea1660",
+ "v0surf_keys": [
+  "b781ed253bff1a6f5de29fd26c2d7de9",
+  "d071e74348b366b6d2d9a2ed6d30425d"
+ ],
+ "expected_boot_v0surf": "ce08c2d13ae7d9bd403c60cf58ea1660",
+ "expected_boot_q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+ "pvc_curve_v2_curve_md5": "08ea9375",
+ "pvc_curve_v2_pool_value": 299,
+ "pvc_curve_v2_file_md5": "6506d8b1ff89ea0a8ad15f10827f202b",
+ "ui_release_pick_curve_md5": "11adecc85a24040e1a7fab193c3a0884",
+ "ui_pool_value": 299,
+ "FROZEN_RULER_pin": "11adecc85a24040e1a7fab193c3a0884",
+ "frozen_ruler_matches_ui": true,
+ "gy0_baseline_pct": 3.035,
+ "gy0_baseline_n": 1326,
+ "selftest_baseline": "PASSED, 99 checks, 0 fail",
+ "cost_seconds": {
+  "rl_export": 119,
+  "s4_matrix": 171,
+  "one_source_selftest": 95,
+  "total": 385
+ }
+}

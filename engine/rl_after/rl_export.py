@@ -642,7 +642,7 @@ _OV.assert_presence(active)
 # §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
 # draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
 # (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
-# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal a17aafed) — NOT
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal ed5b7fcc (#306 L7: re-measured on the live store 81d24704 at the adopted curve 01f27f02) — NOT
 # tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
 #
 # OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
@@ -660,9 +660,9 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_struct = json.load(open(_lf_seal_path))
     _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
     _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'a17aafed'):
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'ed5b7fcc'):
         raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
-                         '%s vs pinned a17aafed. Re-seal from intake history before rendering.'
+                         '%s vs pinned ed5b7fcc. Re-seal from intake history before rendering.'
                          % (_lf_seal, _lf_struct.get('seal_sha256_8')))
     _PVCMAX = max(PVC)
     def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
@@ -691,6 +691,17 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_draft_pvc = sum(_c * _p for _e, _c, _p in _lf_draft)
     _lf_mech_pvc = sum(_c * _p for _e, _c, _p in _lf_mech)
     _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~77,611 adopted)
+    # #306 L7 — THE RECONCILIATION MADE REAL. The sealed structure carries its OWN total, computed by
+    # seal_structure.py from the same counts and the same v2-curve PVC. The board reprices those counts here;
+    # the two MUST agree, and until now they were only PRINTED as a MATCH boolean the exit code ignored. That
+    # is the vacuous reconciliation. Assert it: a seal measured on a stale store (its counts frozen against a
+    # different intake history) no longer reprices to its own total, and that HALTs the render instead of
+    # emitting a board whose phantom layer silently disagrees with the sealed record it cites.
+    _lf_sealed_total = _lf_struct['entrant_pvc']['total']
+    if round(_lf_ent_pvc) != _lf_sealed_total:
+        raise SystemExit('LEG F5 HALT (#306 L7 reconciliation): board repriced entrant layer %d != sealed '
+                         'total %d. The seal counts and the live curve/store disagree; re-seal from the live '
+                         'intake history before rendering.' % (round(_lf_ent_pvc), _lf_sealed_total))
     # -- per-club allocation (report-only; the §2.x gate is LEAGUE-level so the split is presentational):
     # draft slots round-robin across the 18 clubs in natural draft order; mechanisms split evenly. -----------
     _lf_clubs = sorted({r['club'] for r in active if r.get('club')})

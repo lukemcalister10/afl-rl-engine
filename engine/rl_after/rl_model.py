@@ -501,7 +501,7 @@ def best2(p):
 REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
 DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
 def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
-KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','0.85'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
+KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','1.0'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
 S_SH=3.0
 def comp(v): return v   # no compression (v2.0)
 def posval(x): return S_SH*math.log(1+math.exp(min(x/S_SH,40.0)))   # position value above replacement
@@ -856,15 +856,80 @@ def build_pvc_v34():
     pvc=[v*SCALE_PVC for v in iso]                              #    used for the anchor only.)
     for i in range(1,N): pvc[i]=min(pvc[i],pvc[i-1])             # 6. enforce non-increasing (plateaus allowed)
     return {k:max(210,int(round(pvc[k-1]))) for k in range(1,N+1)}
+def _load_numeraire(p1, _path='pvc_curve_v2.json'):
+    """E6 (#279 step 4): read the ONE measured pooled head the whole economy re-denominates from.
+
+    FAIL-CLOSED BY DESIGN, both directions, because the failure this closes is SILENT one-sided scaling:
+      * ABSENCE PATH — an artifact with no `numeraire` block HALTS. It never falls back to the old
+        _P1/PVC[1] denominator, because that fallback is exactly the one-sided behaviour being removed and a
+        silent restoration of it would look like success. Every PRE-PROPAGATION artifact lacks the block, so
+        the edited engine and the candidate artifact are a PAIRED change that lands together.
+      * COHERENCE — s is recomputed from the block's own head and pin and compared to the block's published s.
+        A disagreeing RL_PICK1, or a doctored block, HALTS NAMING BOTH VALUES rather than scaling one side.
+    """
+    import json as _j, os as _o
+    if not _o.path.exists(_path):
+        raise SystemExit("E6 numeraire HALT: %s not found; the pooled head cannot be read." % _path)
+    _d = _j.load(open(_path))
+    _n = _d.get('numeraire')
+    if not isinstance(_n, dict):
+        raise SystemExit(
+            "E6 numeraire HALT: %s carries NO 'numeraire' block.\n"
+            "  The pooled-numeraire economy re-denominates picks and players from ONE measured head; without\n"
+            "  it the player side would silently fall back to the v3.4 pre-anchor head (the one-sided defect\n"
+            "  #279 step 4 removes). This is not a fallback condition — install the candidate artifact, which\n"
+            "  carries {'pooled_head_pre_scale', 's', 'published_pin'}." % _path)
+    for _k in ('pooled_head_pre_scale', 's', 'published_pin'):
+        if _n.get(_k) is None:
+            raise SystemExit("E6 numeraire HALT: 'numeraire' block in %s is missing '%s' (got %s)."
+                             % (_path, _k, sorted(_n)))
+    _H = float(_n['pooled_head_pre_scale']); _pub = float(_n['published_pin']); _s = float(_n['s'])
+    if _H <= 0:
+        raise SystemExit("E6 numeraire HALT: pooled_head_pre_scale must be > 0, got %r." % _H)
+    _recomputed = _pub / _H
+    if abs(_recomputed - _s) > 1e-9:
+        raise SystemExit(
+            "E6 numeraire COHERENCE HALT: the artifact's published s and its own head disagree.\n"
+            "  published s          = %.12f\n  recomputed %g/%g = %.12f\n  difference           = %.3e\n"
+            "  One of the two was edited without the other. Both sides of the economy scale from this number,\n"
+            "  so a disagreement here is a one-sided repricing waiting to happen."
+            % (_s, _pub, _H, _recomputed, abs(_recomputed - _s)))
+    if abs(_pub - p1) > 1e-9:
+        raise SystemExit(
+            "E6 numeraire COHERENCE HALT: RL_PICK1 disagrees with the artifact's published pin.\n"
+            "  RL_PICK1             = %.6f\n  artifact published_pin = %.6f\n"
+            "  The ladder was published against the artifact's pin; scaling players against a different pin\n"
+            "  would move the player side alone. Set RL_PICK1 to the artifact's pin, or re-derive the curve."
+            % (p1, _pub))
+    return {'H': _H, 's': _s, 'published_pin': _pub}
 PVC=build_pvc_v34()
-CURVE_H=1.0                            # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
+CURVE_H=1.0                          # curve HEIGHT multiplier (slider); 1.0 = natural CE shape (best/pick1~2.96)
 PVC={k:max(210,int(round(v*CURVE_H))) for k,v in PVC.items()}
-# ── PICK-1 ANCHOR (Luke, 2026-06-21): pick 1 = a fixed target; the WHOLE board (picks + players) scales to it.
-#    Replaces the implicit "99th-pct player → 7000" anchor with an explicit, stable "pick 1 → RL_PICK1".
-#    Everything scales linearly with SCALE, so one global factor preserves all relativities/trades.
+# ── PICK-1 ANCHOR (Luke, 2026-06-21), RE-ANCHORED TWO-SIDED by E6 (#279 step 4, seam word F3 2026-07-30).
+#
+#    WHAT THE OLD COMMENT CLAIMED, and what was actually measured at the step-4 rehearsal. It said "the WHOLE
+#    board (picks + players) scales to it ... one global factor preserves all relativities/trades". That was
+#    true when the v3.4 import fit WAS the shipped curve. It is not true now, and the measurement says so:
+#      * the player side takes _P1/PVC[1] where PVC[1] here is the v3.4 PRE-ANCHOR head — measured 4441, a
+#        curve that NO LONGER SHIPS. BOARD_FACTOR is therefore 3000/4441 = 0.675524, a real and load-bearing
+#        player scaling, not a no-op.
+#      * the pick side is overwritten downstream by the adopted artifact pvc_curve_v2.json (:928-945,
+#        PVC=_PVC2M), head 3000. The rescale on the next line never reaches the shipped curve.
+#    So the two sides are anchored on DIFFERENT CURVES and agree today only because RL_PICK1 and the artifact
+#    pin are both 3000 — a coincidence of the pin's value, not a property of the construction. Measured:
+#    RL_PICK1 3000->3500 moves SCALE 4.719196->5.505729 while the shipped PVC stays 3000/2767/571.
+#
+#    THE TWO-SIDED ACT. Under the pooled numeraire the derivation measures ONE pooled head H and publishes
+#    s = RL_PICK1/H; the installed ladder is already raw x s. The player side must take THE SAME s, applied to
+#    its own natural scale — NOT _P1/H, which would mix two different fits' currencies (H is the structural/VOR
+#    raw head; 4441 is the v3.4 kernel head; they are not commensurate). So:
+#        BOARD_FACTOR = (_P1 / PVC[1]) * s
+#    One measured head, one factor, both sides. s is read from the artifact's own `numeraire` block so H lives
+#    in exactly ONE place and the two sides cannot be re-derived independently.
 _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
-BOARD_FACTOR=_P1/PVC[1]; SCALE=SCALE*BOARD_FACTOR            # SCALE reassigned → val() (late-binding) scales players too
-PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}
+_NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
+BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
+PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
 # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
 #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
 #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.

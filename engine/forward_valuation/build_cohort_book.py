@@ -2,7 +2,7 @@
 year by year (engine value() as-of each season via BASE_REF), plus a current-dist snapshot and a
 non-play empirical analysis. Run from rl_after:  PYTHONHASHSEED=0 python3 ../forward_valuation/build_cohort_book.py"""
 import os,sys,io,contextlib
-os.environ.setdefault('RL_GAMMA','0.85'); os.environ.setdefault('RL_PICK1','3000')
+os.environ.setdefault('RL_GAMMA','1.0'); os.environ.setdefault('RL_PICK1','3000')
 # provenance (fv-provenance remediation 2026-07-20): hardcoded /home/claude/rl_after + the ambient
 # /home/claude/rl_workspace/forward_valuation/distribution_pricing.py path are REMOVED. rl_model resolves
 # through the configured environment; distribution_pricing loads from the canonically-resolved forward_valuation

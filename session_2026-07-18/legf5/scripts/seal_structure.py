@@ -72,6 +72,23 @@ for lo, hi in ROUNDS:
     v = sum(cnt * pvc(e) for e, cnt in draft_occ.items() if lo <= e <= hi)
     round_counts['%d-%d' % (lo, hi)] = {'mean_slots': round(n, 3), 'pvc': round(v)}
 
+def _measure_stamp():
+    """#306 L7 — read the live provenance rather than carrying a frozen literal."""
+    import os as _os
+    _repo = _os.environ.get('RL_REPO') or '/home/user/afl-rl-engine'
+    def _m(rel):
+        pth = _os.path.join(_repo, rel)
+        return hashlib.md5(open(pth, 'rb').read()).hexdigest()[:8] if _os.path.exists(pth) else None
+    _cf = _os.path.join(_repo, 'engine/rl_after/pvc_curve_v2.json')
+    _cur = json.load(open(_cf))
+    _pay = {str(k): int(round(_cur['curve'][str(k)])) for k in range(1, 65)}
+    return {'store_md5': json.load(open(_os.path.join(_repo, 'data/release_contract.json')))
+                              ['identities']['store'][:8],
+            'curve_file_md5': _m('engine/rl_after/pvc_curve_v2.json'),
+            'curve_payload_md5': hashlib.md5(json.dumps(_pay, sort_keys=True).encode()).hexdigest()[:8],
+            'board_balanced_md5': json.load(open(_os.path.join(_repo, 'data/release_contract.json')))
+                              ['identities']['balanced_board_md5'][:8]}
+
 structure = {
     'name': 'F5_ENTRANT_SLOT_STRUCTURE',
     'law': 'MEMO_LEGF v1.3 §2.viii (owner item 359)',
@@ -93,8 +110,9 @@ structure = {
                  'rule': ('league expected structure allocated across the 18 clubs in natural draft order '
                           '(round-robin over the sorted effective-pick slot list); mechanisms split evenly. '
                           'Report/view only — the §2.x gate is LEAGUE-level, so the club split is presentational.')},
-    'stamp': {'store_md5': '968de0c7', 'curve_file_md5': '56dd7a7b', 'curve_payload_md5': '89c14729',
-              'board_balanced_md5': '06d8af60'},
+    # #306 L7: the stamp is MEASURED, never hardcoded. A seal that names the wrong provenance is a true
+    # hash of the wrong artifact (hazard class 1) — the exact trap this leg exists to close.
+    'stamp': _measure_stamp(),
 }
 payload = json.dumps(structure, sort_keys=True, separators=(',', ':')).encode()
 structure['seal_sha256_8'] = hashlib.sha256(payload).hexdigest()[:8]

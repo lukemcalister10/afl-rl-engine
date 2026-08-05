@@ -33,18 +33,18 @@ chk("lens '0' withPhantom==withoutPhantom==Σv (k=0 delta 0)",
     "'0'] = {'withPhantom': _v0, 'withoutPhantom': _v0, 'delta': 0" in block)
 
 # (4) seal-gated: the structure is seal-verified and HALTs on drift (seal-first law)
-chk("seal-verify present + pinned a17aafed + HALT on drift",
-    ("_hl.sha256" in block and "'a17aafed'" in block and 'LEG F5 HALT' in block))
+chk("seal-verify present + pinned ed5b7fcc + HALT on drift",
+    ("_hl.sha256" in block and "'ed5b7fcc'" in block and 'LEG F5 HALT' in block))
 struct = json.load(open(os.path.join(REPO, 'session_2026-07-18', 'legf5', 'sealed_entrant_structure.json')))
 chk_dict = {k: v for k, v in struct.items() if k != 'seal_sha256_8'}
 seal = hashlib.sha256(json.dumps(chk_dict, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-chk("sealed structure recomputes to a17aafed", seal == struct['seal_sha256_8'] == 'a17aafed')
+chk("sealed structure recomputes to ed5b7fcc", seal == struct['seal_sha256_8'] == 'ed5b7fcc')
 
 # (5) optional: a built RL_LEGF=1 board carries delta 0 at k=0 and the sealed entrant on the forward lenses
 if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
     pt = json.load(open(sys.argv[1]))['phantomTotals']; lg = pt['league']
     chk("built board: league k=0 delta == 0", lg['0']['delta'] == 0)
-    chk("built board: +1 and +2 entrant delta == sealed total 83538",
+    chk("built board: +1 and +2 entrant delta == sealed total (the sealed layer, currently 62726)",
         lg['1']['delta'] == struct['entrant_pvc']['total'] == lg['2']['delta'])
     chk("built board: k=0 withPhantom == withoutPhantom (byte)", lg['0']['withPhantom'] == lg['0']['withoutPhantom'])
 

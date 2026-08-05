@@ -1,0 +1,19 @@
+ENTRANT LAYER (sealed ed5b7fcc): 62726 PVC (draft 55669 + mech 7057)  | board emitted: 62726  | MATCH True
+REALIZED league totals (F2 bridge): minus2=770987  minus1=771152  now=752427  (~flat)
+
+=== (A) F5 CONSERVATION GATE — LEAGUE-LEVEL, ±5%, BOTH transitions (roster @ r_pop + §2.viii entrant layer) ===
+  -2 -> -1 : roster_proj=687917 + entrant=62726 = pred=750643  vs realized=771152  err -2.7%  IN ±5%
+  -1 -> now : roster_proj=689444 + entrant=62726 = pred=752170  vs realized=752427  err -0.0%  IN ±5%
+  F5 LEAGUE GATE: PASS (both ±5%)
+  [r_pop-direct variant]:
+    -2 -> -1 : pred=745754 vs 771152  err -3.3%  IN
+    -1 -> now : pred=749192 vs 752427  err -0.4%  IN
+
+=== (B) F4 ROSTER-MATCHED GATE (re-run — must stay IN ±5%; realized = SAME players incl exiters) ===
+  -2 -> -1 : pred=687917  realized(incl exiters)=697105  err -1.3%  IN ±5%
+  -1 -> now : pred=689444  realized(incl exiters)=680109  err +1.4%  IN ±5%
+  F4 ROSTER-MATCHED GATE: PASS (both ±5%)
+
+--- (C) DIAGNOSTIC (survivor-only; ageing-quality isolation, NOT a gate) ---
+  -2 -> -1 survivors: pred=662749 realized=697105 err -4.9%
+  -1 -> now survivors: pred=672560 realized=680109 err -1.1%
