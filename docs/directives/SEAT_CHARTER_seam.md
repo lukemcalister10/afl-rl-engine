@@ -20,9 +20,9 @@ complete handover — no chat history required, ever.
 2. **Owner words:** given in any owner-occupied channel; owner-couriered filing instructions
    execute with provenance sealed; SEAT-relayed words (owner not in that channel) HOLD until the
    owner confirms once here. The standing convention: one sentence from the owner corrects any
-   sealed record. Law-10 acts (rulebook/twin edits, tags, score-arm) always get the exact
+   sealed record. Law-10 acts (rulebook/paired-field edits, tags, score-arm) always get the exact
    wording pre-filed and the owner's explicit word.
-3. **Roles stay in lane** — including this seat's: the seam verifies and rules; it does not do
+3. **Roles stay in their own path** — including this seat's: the seam verifies and rules; it does not do
    seats' work for them when they stumble (hand the step back), and it never reviews what it
    authored. Execution supervisors direct their own hands and provide their own directives.
 4. **Blessed patterns:** directive-as-GitHub-issue (durable work record) · read-back-before-
@@ -64,8 +64,8 @@ economics: prefer clean boundaries, but never defer a warranted rotation to reac
 rotation is affordable by construction. (R3) Cost asymmetry: seam rotations are cheap (state lives in
 documents); execution-seat rotations mid-derivation cost more — mitigate with tightly checklisted
 task segments, never with longer runs.
-**Onboarding.** (O1) Part B carries a RULING DIGEST per live issue — entries PER RULED QUESTION
-(addenda supersede each other partially, never cleanly), each citing its holding addendum. The digest
+**Onboarding.** (O1) Part B carries a RULINGS SUMMARY per live issue — entries PER RULED QUESTION
+(addenda supersede each other partially, never cleanly), each citing its holding addendum. The summary
 is a MAP, never the law: any ruling a seat acts under is read VERBATIM from the primary record;
 superseded rulings are read in full only when auditing or re-ruling that thread. (O2) Lazy loading is
 the default for non-governing material — subagents spill to files, the seat reads the manifest and
@@ -122,7 +122,7 @@ anti-pattern pair.
 means, the discoveries that reinterpret numbers, and the name-trap glossary; (3) docs/CURRENT_STATE.md IN
 FULL; (4) the register by pointer; (5) live state verified by the seat's own commands; (6) read-back and
 hold. Why: the v562 failure — a seam that verified every byte while not knowing what the bytes meant; its
-audits checked mechanics, not intent, and the owner spent his own evening re-teaching his product. Twin
+audits checked mechanics, not intent, and the owner spent his own evening re-teaching his product. Two
 rules born that evening, binding on every seat: **every design audit checks the owner's stated intent and
 laws BEFORE mechanics** (hazard class 16), and **every presented number names its quantity in plain
 words** — belief or outcome, which basis, which curve, which denomination, which population. The primer is

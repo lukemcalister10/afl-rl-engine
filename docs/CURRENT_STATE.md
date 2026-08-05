@@ -118,7 +118,7 @@ diagnostic aids, not a mandate to go hunting.**
 ## Housing
 
 Direct push to main is classifier-blocked in cloud housing. Register pens land via the **API carrier
-lane**: branch → PR → rebase-merge. The merge under the owner's platform auth is a **housing fact,
+path**: branch → PR → rebase-merge. The merge under the owner's platform auth is a **housing fact,
 not an approval step**. Docs-only pens land **without a per-entry word** (v483, restored by owner
 word 2026-07-27), guarded by structural asserts proven pre-commit: line count unchanged, growth equal
 to entry length, single stamp, PRIOR chain intact, docs-only diff. **Reversal is self-executing** —
@@ -170,13 +170,13 @@ branch `claude/exec-seat-306-afl-rl-zlaarm` at `472c39d` (hand-off in `HANDOFF.m
 comment) · CURRENT exec seat branch `claude/exec-seat-306-handoff-2a1xa4` at `8e18535` or a descendant
 (the verdict commit expected) · frozen/HOLD branches intact (j0kwl0 `8e8c15b` · fubolo `abf8f4c` ·
 fp78jm `3cccb9d` · 4ql38z `9914c4d` — carries the #279 machinery BOTH tracks read · g4edkc `592c7a2`) ·
-captures: `13b71c26` = the N35-assert substrate (→ `fb9efdec`, curve `e69a3f38`) · `2b7640be` = the
-live L6 substrate (surface `b540833b`, both engine pins `15525b03`, contract seal deliberately stale
+snapshots: `13b71c26` = the N35-assert working state (→ `fb9efdec`, curve `e69a3f38`) · `2b7640be` = the
+live L6 working state (surface `b540833b`, both engine pins `15525b03`, contract seal deliberately stale
 per N44 addendum) — verify both by apply-and-hash. **N35: classify your own box before ANY fit figure;
 check uptime EVERY time; the assert stales on any restart (the outgoing seam re-classified five times
 in one day).** Measurement scripts importing numpy run under `RL_VENV` (recipe in ENVIRONMENT CARRIES).
 
-## STANDING RULINGS DIGEST — the map, NEVER the law. Act on a ruling → read its durable copy verbatim.
+## STANDING RULINGS SUMMARY — the map, NEVER the law. Act on a ruling → read its durable copy verbatim.
 N1–N44 stand as v61 recorded them (N41 acceptance population · N42 pool principle · N43 signed levels +
 ND-65+ cap bound to curve[64] · N44 + addendum engine-pin/stale-seal). **N45 (v570, owner words):** the
 recipe audit + two-track order, the brandless-recipe law, the failure test, the owner's standing
@@ -188,7 +188,7 @@ Re-provide the pen token to the INCOMING seam (this pen is the rotation) · the 
 the full hand-back, track A) · the recipe's review when track B delivers it · close clicks #292 #283
 #275 · branch deletes HOLD as v61 · N12 holds until the landing.
 
-## RUNNING THIS SEAT WELL — charter C1/C2/C3, M1–M3, the twin rules, and the OWNER'S COMMUNICATION WORD
+## RUNNING THIS SEAT WELL — charter C1/C2/C3, M1–M3, the two rules, and the OWNER'S COMMUNICATION WORD
 - The owner's words 2026-08-05, BINDING and recorded after a failure of this seat's own register:
   **plain English, no riddles, no dense waffle** — he called this seam's prose "incredibly confusing,
   dense and waffly, devoid of substance" and he was right. Short sentences. Substance only. His
@@ -209,7 +209,7 @@ Part B wholesale · commit `supervisor-seat <supervisor@seam.local>` · branch �
 re-verify main by CONTENT · reset pen branch onto origin/main first · force-with-lease normal when the
 old tip is merged history), plus: `structural_basis_279.json` `25a72f85` · `lane_expectation.json`
 (`…|e69a3f38|…` → `b760b17e`) · the committed instruments (acceptance · pool rerun `pool_levels_rerun`
-= N43's source · lb determinism · lane emitter · `l6/run_pass.sh` · `channel_width.py`) · the #279
+= N43's source · lb determinism · path emitter · `l6/run_pass.sh` · `channel_width.py`) · the #279
 machinery on `…-4ql38z` RETENTION-PROTECTED.
 
 ## THE INCOMING SEAM'S FIRST TASKS

@@ -36,7 +36,7 @@ That sentence is the moral of this project's hardest-won discovery (§4).
 - **The store** — the single source of player data (careers, seasons, positions, eligibility, ownership).
   Everything derives from it; its md5 is pinned and asserted at build.
 - **The engine** (`engine/rl_after/`, entry `_merged_recover.py` via `rl_export.py`) — turns the store into
-  the board. Runs from a seeded workspace behind guards; CI runs and reports, never commits.
+  the board. Runs from a prepared workspace behind guards; CI runs and reports, never commits.
 - **The pick curve** (`pvc_curve_v2.json` / `ui/release_pick_curve.json`) — what each national draft pick
   slot is worth, **picks 1–64 only; pick 65 does not exist** (RULEBOOK law 4). Identity = the N32
   string-keyed payload md5, never the file md5. **Two curves exist as of 2026-08-04** — see §5's census
@@ -52,7 +52,7 @@ That sentence is the moral of this project's hardest-won discovery (§4).
 - **Currencies:** values are denominated in a replacement-relative unit; γ is the discount knob. The ruled
   curve is **VOR-denominated (γ=1.0)**; a γ=0.85 pricing variant exists in the record. Never compare
   numbers across denominations without saying so.
-- **The walk-forward book** — season-by-season as-of values for every player-history, the evidence substrate
+- **The walk-forward book** — season-by-season as-of values for every player-history, the evidence base
   behind career-value measures. "Concluded" vs "active" careers matter enormously — see §4.
 
 ## 3 · HOW VALUE FLOWS (one paragraph)
@@ -70,7 +70,7 @@ fitted at build time — everything is loaded from pins.
    ~4,000** — the rest was the model's own prior, laundered in a loop: "Curve → surface → v0 → curve."
    Owner's words: *"what the model expected of someone like him is ridiculous to consider when we have the
    evidence of what he actually did."* Consequence: **model beliefs are BARRED as pricing inputs.** The
-   #279 structural curve replaced the method; the #306 sibling order extended the same surgery to the
+   #279 structural curve replaced the method; the #306 sibling order extended the same correction to the
    position/age lens. When you see any fitted number, your first question is: **what taught it — careers,
    or the model's opinion of careers?**
 2. **Completion, not presumption.** 38% of the surface's teaching rows are STILL-ACTIVE careers. An
@@ -87,7 +87,7 @@ fitted at build time — everything is loaded from pins.
 4. **Machines disagree about floating-point fits (item 380 → N35).** Identical code, data, and library
    bytes produced different fitted surfaces on different hosts — with identical CPU labels. Consequence:
    boxes are classified only by REPRODUCING OUTPUT BYTES (the fit-path assert), fits are frozen (§2), and
-   a deterministic fit lane is being built (#306 L-B). Byte-identity is a tripwire, deliberately more
+   a deterministic fit path is being built (#306 L-B). Byte-identity is a tripwire, deliberately more
    sensitive than value-materiality (~1% worst observed per-chip effect).
 5. **The bust exclusion.** Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
    owner ruling; every player in their drafts slides up one pick. If a KPF number looks bust-driven, check
@@ -131,6 +131,9 @@ fitted at build time — everything is loaded from pins.
 - **Which curve am I looking at?** As of writing: shipped-on-main = the superseded #271 ladder; the
   rehearsal anchor = the #279 ruled ladder (classes 2004–2022, pick 64 = 221). Current identities live in
   CURRENT_STATE's census table — check there, then verify by payload md5, never by filename.
+- **Older names in the record.** Anything written before 2026-08-05 uses the earlier words for the same
+  things: `substrate` = working state · `evidence substrate` = evidence base · `lane` = path · `capture` =
+  snapshot · `sealed twin` = paired field · `digest` = summary · `seeded workspace` = prepared workspace.
 
 ## 6 · WHERE THE DEEP ANSWERS LIVE
 
@@ -142,7 +145,7 @@ fitted at build time — everything is loaded from pins.
 - **The year-zero redesign in flight:** issue #306 — body + the governing comment set (CURRENT_STATE names
   the ids). The owner's laws and steers are quoted verbatim there.
 - **The laws of record:** `RULEBOOK.md` (product laws) · `docs/directives/SEAT_CHARTER_seam.md` (this
-  seat's law) · `docs/CURRENT_STATE.md` (live state + rulings digest) · the register (by pointer only).
+  seat's law) · `docs/CURRENT_STATE.md` (live state + rulings summary) · the register (by pointer only).
 
 ## 7 · HOW TO USE THIS DOCUMENT
 
