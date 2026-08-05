@@ -456,3 +456,9 @@ Open item 2 RULED: `type` set to 'ND' on tendai-mzungu and tim-mohr — verified
 
 ## Owner backfill of 2026-08-05 (in-channel sheets)
 Jayden Post 2010 (7g, 36.7) · 2011 (8g, 47.8) · 2012 (8g, 53.6); Declan Keilty 2019 (2g, 37.5); Anton Tohill 2021 (1g, 39.0). All three derived sums now equal their stored counters exactly (30 / 2 / 1) — resolved and removed from the pending-backfill list. Remaining pending: the finals-convention ruling (9 records whose counter-vs-rows gap is exactly their finals games) and the two active feed-lag counters (resolve by derivation at the landing). File md5 after this edit: 0a4027f2f0e918c94035ee4c3c2703f6.
+
+## Owner rulings of 2026-08-05 (second set)
+1. FINALS CONVENTION RULED: career games = HOME-AND-AWAY only (the sum of season rows); finals games excluded — the league scores H&A only. Derive rule applied UNIFORMLY to every record (11 counters moved, including the former pending-backfill set and the two active feed-lag records). Pending-backfill list: CLOSED.
+2. Four confirmed corrections applied: Rockliff 2021 games 1->2; Bell 2021 games 8->11; Tom De Koning debut row moved 2019->2018; birth years Hickey->1991, Post->1989, Tohill->1999.
+3. FLAG kept open: the Rockliff/Bell 2021 season AVERAGES were computed over the old game counts and are unverified over the corrected counts (SuperCoach per-game data unavailable to agents; owner source needed, low stakes).
+File md5: 81c8c58fbbb838d3d3ffe7e2ec24faac
