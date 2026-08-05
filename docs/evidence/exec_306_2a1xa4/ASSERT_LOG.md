@@ -10,6 +10,7 @@ asserted on. A host label classifies nothing — only reproduced output bytes do
 | 2 | 2026-08-05 00:26 | `Xeon @2.80GHz` · stepping 7 · **up 4 min (container restarted)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (62s) | **FIT-CLASS, re-classified** |
 | 3 | 2026-08-05 01:46 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, third time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (53s) | **FIT-CLASS, re-classified** |
 | 4 | 2026-08-05 02:31 | `Xeon @2.80GHz` · stepping 7 · **up 1 min (container restarted, fourth time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (74s) | **FIT-CLASS, re-classified** |
+| 5 | 2026-08-05 03:29 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, fifth time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (55s) | **FIT-CLASS, re-classified** |
 
 ## Entry 1 — the arrival assert
 
@@ -65,3 +66,13 @@ old-lane assert (`969dba06`, a third distinct old-lane byte-pattern) while repro
 lane's `b540833b` byte-identically. This box reproduces both. Two boxes, same CPU label, divergent on the
 old lane and in agreement on the new one — the old lane's machine-sensitivity is the defect the redesign
 was built to remove, and it is behaving exactly as the record says it does.
+
+## Entry 5 — before the pass-1 gate measurement
+
+A **fifth** restart, between the pass-1 filing and the owed G-Y0 measurement: `uptime` read **0 min**.
+Re-classified in full before the engine chain — substrate round trip to `13b71c26` → pins 5/5 exact →
+preboot as its own command → bootstrap rc checked → fit-path assert **PASS in 55s**.
+
+**Five restarts, five classifications, five reproductions of `fb9efdec`** — 78s / 62s / 53s / 74s / 55s.
+On this environment `uptime` is not a formality; it moved under this seat every single time it was checked
+at a boundary.
