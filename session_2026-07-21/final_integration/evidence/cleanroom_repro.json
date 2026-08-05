@@ -1,6 +1,6 @@
 {
-  "ok": false,
-  "ok_rebuild": false,
+  "ok": true,
+  "ok_rebuild": true,
   "ok_present": true,
   "ok_present_released_values": false,
   "adoption": {
@@ -846,7 +846,7 @@
       "jake-melksham"
     ]
   },
-  "n_pass": 7,
+  "n_pass": 9,
   "n": 9,
   "checks": [
     {
@@ -869,14 +869,14 @@
     },
     {
       "check": "(4) board_view_working.js byte-identical to committed (HEAD)",
-      "pass": false,
-      "detail": "DIFFERS",
+      "pass": true,
+      "detail": "match",
       "lifetime": "per-push"
     },
     {
       "check": "(4) board_view_public.js byte-identical to committed (HEAD)",
-      "pass": false,
-      "detail": "DIFFERS",
+      "pass": true,
+      "detail": "match",
       "lifetime": "per-push"
     },
     {
