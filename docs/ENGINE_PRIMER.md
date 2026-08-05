@@ -89,6 +89,9 @@ fitted at build time — everything is loaded from pins.
    boxes are classified only by REPRODUCING OUTPUT BYTES (the fit-path assert), fits are frozen (§2), and
    a deterministic fit lane is being built (#306 L-B). Byte-identity is a tripwire, deliberately more
    sensitive than value-materiality (~1% worst observed per-chip effect).
+5. **The bust exclusion.** Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
+   owner ruling; every player in their drafts slides up one pick. If a KPF number looks bust-driven, check
+   the exclusion applied before theorizing.
 5.5. **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
    teaches the ruled curve and the lens is NOT raw scoring over replacement: the walk-forward path is
    built by calling the ENGINE'S OWN `ev()` as-of each season, and `ev()` leans on the year-zero
@@ -97,9 +100,6 @@ fitted at build time — everything is loaded from pins.
    total movement. §1's "never in the model's beliefs" OVERSTATES the implementation — read it as
    "taught by realized careers, valued through the engine." No raw-scores-over-bar measure has ever
    existed; the owner's standing requirement for one, and the recipe-audit order, are N45.
-5. **The bust exclusion.** Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
-   owner ruling; every player in their drafts slides up one pick. If a KPF number looks bust-driven, check
-   the exclusion applied before theorizing.
 
 ## 5 · THE NAME-TRAP GLOSSARY (each of these has burned someone)
 
