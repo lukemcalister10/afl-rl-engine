@@ -333,6 +333,13 @@ The stored counter was **kept** on each; the row sum is shown for the rebuild to
 | `wayde-skipper` | Wayde Skipper | 15 | 14 | 1 | True |
 | `robin-nahas` | Robin Nahas | 117 | 116 | 1 | True |
 
+> **Build-time snapshot — no longer current.** Every row above was later reconciled: see
+> "Owner backfill of 2026-08-05" (Post / Keilty / Tohill rows backfilled) and "Owner rulings
+> of 2026-08-05 (second set)" item 1, which applied the home-and-away derive rule uniformly
+> and CLOSED this list. The `stored games` column here reflects pre-derive counters and
+> matches no current record. For `james-bell` and `tom-rockliff`, Addendum 4 moved the
+> derived counters again — the current values are 24 and 205 respectively.
+
 ---
 
 ## VERIFICATION
@@ -460,5 +467,10 @@ Jayden Post 2010 (7g, 36.7) · 2011 (8g, 47.8) · 2012 (8g, 53.6); Declan Keilty
 ## Owner rulings of 2026-08-05 (second set)
 1. FINALS CONVENTION RULED: career games = HOME-AND-AWAY only (the sum of season rows); finals games excluded — the league scores H&A only. Derive rule applied UNIFORMLY to every record (11 counters moved, including the former pending-backfill set and the two active feed-lag records). Pending-backfill list: CLOSED.
 2. Four confirmed corrections applied: Rockliff 2021 games 1->2; Bell 2021 games 8->11; Tom De Koning debut row moved 2019->2018; birth years Hickey->1991, Post->1989, Tohill->1999.
+   **SUPERSEDED IN PART by Addendum 4 below (2026-08-05):** the Rockliff and Bell 2021 game-count corrections are REVERSED under the unused-substitute convention — Rockliff 2021 games back to 1, Bell 2021 games back to 8. The De Koning debut-row move and the three birth-year corrections stand.
 3. FLAG kept open: the Rockliff/Bell 2021 season AVERAGES were computed over the old game counts and are unverified over the corrected counts (SuperCoach per-game data unavailable to agents; owner source needed, low stakes).
-File md5: 81c8c58fbbb838d3d3ffe7e2ec24faac
+   **RESOLVED by Addendum 4 below:** the reversal restores the very game counts those averages were computed over (Bell 8, Rockliff 1), so 41.7 and 25.0 again sit on their own basis. Flag closed.
+File md5: f1e8c9fed35462536d00add604f69a3f (was 81c8c58fbbb838d3d3ffe7e2ec24faac at the close of this section; re-stamped by Addendum 4 below)
+
+## Addendum 4 (2026-08-05, #323 comment 5188089989)
+2026-08-05, Addendum 4 (#323 comment 5188089989): unused-substitute convention — an unused-sub appearance is not a game played. Bell 2021 games 11→8 (avg 41.7 stands), Rockliff 2021 games 2→1 (avg 25.0 stands); derived career counters follow — james-bell 27→24, tom-rockliff 206→205 (each equals its scoring-row sum); fixture md5 re-stamped 81c8c58fbbb838d3d3ffe7e2ec24faac → f1e8c9fed35462536d00add604f69a3f. This reverses the two 2021 game-count corrections in "Owner rulings of 2026-08-05 (second set)" item 2 and closes the averages FLAG at item 3; the other corrections in that set stand.
