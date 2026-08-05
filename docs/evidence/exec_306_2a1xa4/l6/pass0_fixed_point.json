@@ -1,0 +1,17 @@
+{
+ "derived_payload_md5_8": "9f7848f4",
+ "derived_payload_md5_full": "9f7848f41d3b041b7397b5fe0d5d909a",
+ "factor_s": 0.996637,
+ "fixed_point": false,
+ "input_matrix_md5": "e1c62f8677e5714df1be4e91c960ec7c",
+ "installed_payload_md5_8": "e69a3f38",
+ "installed_payload_md5_full": "e69a3f3816785f1be9bfc23688332d44",
+ "ladder_total_derived": 53678,
+ "ladder_total_installed": 54722,
+ "lane": "#306 redesigned lens lane",
+ "note": "R-I fixed point = derived payload md5 == installed payload md5, compared on FULL md5 per N22.",
+ "pass": 0,
+ "picks_differing": 62,
+ "pooled_head_pre_scale": 3010.1221,
+ "surface_md5": "b540833b2e251631bf76aeec0040cc05"
+}

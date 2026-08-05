@@ -8,6 +8,7 @@ asserted on. A host label classifies nothing — only reproduced output bytes do
 |---|---|---|---|---|---|
 | 1 | 2026-08-04 23:58 | `Xeon @2.80GHz` · stepping 7 · **up 0 min at session start** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (78s) | **FIT-CLASS** |
 | 2 | 2026-08-05 00:26 | `Xeon @2.80GHz` · stepping 7 · **up 4 min (container restarted)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (62s) | **FIT-CLASS, re-classified** |
+| 3 | 2026-08-05 01:46 | `Xeon @2.80GHz` · stepping 7 · **up 0 min (container restarted, third time)** | pure pass-0, capture `13b71c26` | **PASS — `fb9efdec4d669d389fe3beef2bca3092`** (53s) | **FIT-CLASS, re-classified** |
 
 ## Entry 1 — the arrival assert
 
@@ -34,3 +35,17 @@ checked → fit-path assert **PASS in 62s** → round trip again.
 
 Every engine act of this seat (the matrix emit at 147s) ran **after** entry 2, on a box classified by
 reproduced bytes.
+
+## Entry 3 — the pre-derivation re-classification
+
+The container restarted a **third** time, between the channel ruling and the derivation: `uptime` read
+**0 min**. Entry 2 went stale at that moment, so the assert was re-run in full before the derived-curve
+figure was produced — substrate round trip to `13b71c26` → pins re-read (5/5 exact, OpenBLAS `05c9f9eb`
+byte-exact) → preboot as its own command → bootstrap rc checked → fit-path assert **PASS in 53s**.
+
+**Three restarts, three classifications, three reproductions of `fb9efdec`** — 78s / 62s / 53s. No figure
+in this seat's filings was produced on a stale classification.
+
+Additionally, on the LENS substrate (engine `15525b03`, surface `b540833b`), `refit_v0surf.py --verify`
+reproduced the baked pin **`b540833b2e251631bf76aeec0040cc05`** in 98s — L-B's passing direction re-proven
+independently on this box, and a direct validation of the substrate the derivation consumed.
