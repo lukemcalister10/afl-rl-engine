@@ -39,12 +39,12 @@ That sentence is the moral of this project's hardest-won discovery (§4).
   the board. Runs from a prepared workspace behind guards; CI runs and reports, never commits.
 - **The pick curve** (`pvc_curve_v2.json` / `ui/release_pick_curve.json`) — what each national draft pick
   slot is worth, **picks 1–64 only; pick 65 does not exist** (RULEBOOK law 4). Identity = the N32
-  string-keyed payload md5, never the file md5. **Two curves exist as of 2026-08-04** — see §5's census
-  and CURRENT_STATE for which is shipped vs ruled.
+  string-keyed payload md5, never the file md5. **As of 2026-08-05 the ruled curve IS shipped-on-main**
+  (the re-closure, owner word) — CURRENT_STATE carries the current payload identity.
 - **The year-zero surface** (`data/v0surf.pkl`) — the value of a NEWLY DRAFTED player: the price at entry.
   The owner's definition is binding: *"the true worth of a player the moment they are drafted"* — career
-  included, not year-one output. Under redesign (#306) to `ruled_curve(pick) × m(pos, age, pick)`, the lens
-  `m` fit from measured careers (the sibling order). Its historical form was a model prior — see §4.
+  included, not year-one output. Rebuilt and LANDED (#306, 2026-08-05) as `ruled_curve(pick) × m(pos,
+  age, pick)`, the lens `m` fit from measured careers. Its historical form was a model prior — see §4.
 - **The frozen fitted set** (`peak_model_v4.pkl`, `q97m.pkl`, `cm_400.pkl`, the surface, the curve) —
   models fitted ONCE on a controlled machine and shipped as pinned artifacts, LOADED at build, never refit.
   Why: fits are machine-sensitive (§4, item 380) — the same code and data produce different bytes on
@@ -87,8 +87,9 @@ fitted at build time — everything is loaded from pins.
 4. **Machines disagree about floating-point fits (item 380 → N35).** Identical code, data, and library
    bytes produced different fitted surfaces on different hosts — with identical CPU labels. Consequence:
    boxes are classified only by REPRODUCING OUTPUT BYTES (the fit-path assert), fits are frozen (§2), and
-   a deterministic fit path is being built (#306 L-B). Byte-identity is a tripwire, deliberately more
-   sensitive than value-materiality (~1% worst observed per-chip effect).
+   the deterministic fit path was built and landed (#306): its surfaces reproduced on every fit-class
+   box, and the VALUE path reproduced a board byte-identically on a different CPU architecture.
+   Byte-identity is a tripwire, deliberately more sensitive than value-materiality (~1% worst per-chip).
 5. **The bust exclusion.** Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
    owner ruling; every player in their drafts slides up one pick. If a KPF number looks bust-driven, check
    the exclusion applied before theorizing.
@@ -128,9 +129,9 @@ fitted at build time — everything is loaded from pins.
 - **A flag's name is not its semantics; a file's md5 is not a payload identity.** Trace what a flag
   actually feeds, and identify curves by the N32 string-keyed payload md5 (key TYPE is load-bearing:
   string-keyed and int-keyed dumps of the same ladder hash differently).
-- **Which curve am I looking at?** As of writing: shipped-on-main = the superseded #271 ladder; the
-  rehearsal anchor = the #279 ruled ladder (classes 2004–2022, pick 64 = 221). Current identities live in
-  CURRENT_STATE's census table — check there, then verify by payload md5, never by filename.
+- **Which curve am I looking at?** As of 2026-08-05: shipped-on-main = the RULED curve, re-closed on the
+  corrected store (the #271 and first-adopted ladders are history). Current identities live in
+  CURRENT_STATE's merged-main block — check there, then verify by payload md5, never by filename.
 - **Older names in the record.** Anything written before 2026-08-05 uses the earlier words for the same
   things: `substrate` = working state · `evidence substrate` = evidence base · `lane` = path · `capture` =
   snapshot · `sealed twin` = paired field · `digest` = summary · `seeded workspace` = prepared workspace.
