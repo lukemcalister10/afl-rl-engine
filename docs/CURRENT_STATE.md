@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v70 · supervisor pen · 2026-08-06, register v579
+# CURRENT STATE — the incoming-seat read · v71 · supervisor pen · 2026-08-06, register v580
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v70 · supervisor pen · 2026-08-06, register v579 · replaced wholesale at the TRACK B CUT PEN —
-the starter pack cut and delivered on the owner's word; the road is otherwise unchanged. The
-primer is at v4 — read it first, in full.)
+(v71 · supervisor pen · 2026-08-06, register v580 · replaced wholesale at the TRACK B RE-CUT PEN —
+the pack re-cut simple on the owner's word; road unchanged. The primer is at v4 — read it first,
+in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -168,15 +168,15 @@ primer is at v4 — read it first, in full.)
   instruction (#334 addendum 1) · busts-in-denominators wherever ruled · plain vocabulary · every
   number names its quantity · the pool-table denominator is the SIGNED ENTRY ANCHORS (primer §4.8).
 
-## TRACK B: CUT AND DELIVERED 2026-08-06 (register v579)
-Cut once, on the owner's word, delivered as `AFFL_track_b_pack_2026-08-06.zip` in his channel.
-Contents: the landed store verbatim (`f1e7f20c…`) · the laws (RULEBOOK verbatim + Part A + the
-2026-08-06 laws, quoted verbatim) · the #322 recipe as reference (RECIPE.md + CONSTANTS.json) with
-a dated status addendum superseding the recipe's pre-adoption "today" statements and naming
-#336/#338 machinery as not-to-copy. Withheld: the four frozen models (sealed) · FINDINGS.md
-(owner-side, handed to the owner separately) · appendix-side files · the recipe branch's stale
-store (`f1e8c9fe`). HANDOVER_MANIFEST.md excluded by disclosed seam judgment (rebuild-framed,
-stale checksums). Any re-cut or extension is a NEW owner word; the pack is the record of what left.
+## TRACK B: CUT, RE-CUT SIMPLE ON OWNER WORD, DELIVERED 2026-08-06 (register v579–v580)
+The v579 pack (laws bundle + constants + addendum) was REJECTED by the owner as a dense deposit
+imposing this project's structure — his frame: "This is the store, it has the information. This is
+the recipe we use to calculate value based on this information." Delivered instead:
+`AFFL_track_b_2026-08-06.zip` = TWO files — the landed store verbatim (`f1e7f20c…`) +
+`THE_RECIPE.md` (the #322 recipe surgically updated to the adopted truth, dangling references
+removed, closing "WHAT WE GOT WRONG" advice section — 8 items, advice not law). The v579 zip is
+withdrawn; FINDINGS.md stays owner-side; the filed #322 recipe on its branch is untouched. The
+full pen detail is the v580 register entry. Any extension is a NEW owner word.
 
 ## THE SEAM'S ROAD (in order; unchanged by the cut)
 1. **Round-21 ingest + movers snapshot.** Instrument: `docs/GO_LIVE_round_score_ingestion.md` + the
@@ -218,7 +218,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v579 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v580 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
