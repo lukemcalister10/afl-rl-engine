@@ -1,0 +1,293 @@
+================================================================================================================
+  #336 — THE BUST-INCLUSIVE REFERENCE LAYER, AMENDED TWICE.   CURRENT  vs  AMENDMENT-2 VARIANT
+  draft owner sheet · build seat · 2026-08-06 · issue #336 OWNER CATCH 2 + "amend and rerun"
+================================================================================================================
+
+  reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+  the joint re-derivation is #334 stage B, after the ruling.
+
+  THIS SHEET IS A MEASUREMENT. NO PRICE SHIPS FROM IT. Nothing merged, no pin moved on main, no
+  artifact written. The variant code lives on branch variant/336-bust-inclusive @ f7a16b5.
+  Control: the baseline build byte-reproduces the live board 113b36f8. Store 37ced3ce, unmoved.
+
+----------------------------------------------------------------------------------------------------------------
+  BOTH AMENDMENTS, STATED FIRST
+----------------------------------------------------------------------------------------------------------------
+
+  AMENDMENT 1 (your Robey catch). The first cut discounted every anchor by P(established BY TENURE),
+  which at year one is small for everybody because most first-year listees have not yet played six
+  games. That is a fact about the calendar, not the player. Fixed: the probability is now CAREER-LEVEL
+  P(EVER establishes), tenure entering only as window membership. STILL IN FORCE.
+
+  AMENDMENT 2 (your Trembath/Taylor catch). YOU WERE RIGHT AGAIN, and the definition is the proof.
+  Establishment means one season of >=6 games. On that definition ALL EIGHT of the players you named
+  have ALREADY ESTABLISHED — Trembath 20g@65.5, Taylor 9/17/18g, Moyle 8g and 13g, Lai 15g, Robey 14g,
+  Dean 16g, Madden 6g, Retschko 15g. Amendment 1 was still charging every one of them the chance that
+  they never establish. That risk has RESOLVED, in their favour. Fixed:
+
+      ESTABLISHED player  ->  anchored to E[level | ever establishes].   NO probability discount.
+      UNRESOLVED player   ->  anchored to P(ever establishes) x E[level | ever establishes].
+
+  Busts stay in every establishment-rate denominator — the rate did not change, only WHO it is applied
+  to. And nothing reverts to survivor averaging: the conditional level itself was also de-survivored,
+  so an establisher who faded to three games in a season now teaches at his real number instead of
+  disappearing from the table.
+
+  THE SITES REPAIRED — every place a real player's own value regresses toward a class reference:
+    1 the par-centred level feature (lvl_par)      6 cohort_peak (baseline + own track delta)
+    2 the pedigree par leg (_par_prior)            7 peak_est fallback (the pure class anchor)
+    3 the pedigree pole blend AND recover()        8 peakval (the curve-teaching normaliser)
+    4 the staleness bar (bestlvl / par)            9 the pedigree pedestal in value()
+    5 _dev_advance pedigree catch-up
+  LEFT ALONE ON PURPOSE: everything that prices a PICK or a synthetic. A pick has no resolved state
+  and must carry the full entrant risk. That is what makes picks the fixed yardstick you asked for.
+
+----------------------------------------------------------------------------------------------------------------
+  1. YOUR EIGHT NAMED PLAYERS  (the point of this run)
+----------------------------------------------------------------------------------------------------------------
+
+  draft-day value = the engine's year-zero start value off the FROZEN surface — the same number in
+  every build, so it is a fixed yardstick, not a moving one.
+
+  "pick" is the RAW pick and "eff" the EFFECTIVE (chained) pick — the anchor's band keys on EFF, which
+  is why the rookie/MSD/pool entrants below sit in the 49-99 band and took the heaviest amendment-1 cut.
+
+  player            pos  pick eff  ty  est | draft-day |  CURRENT  1st cut  AMEND-1  AMEND-2 | x draft-day (scale-adj)
+  ---------------------------------------------------------------------------------------------------------------------
+  sullivan-robey    MID    9   9  ND  YES |      2080 |     3070      945     2807     2651 |  1.275x  (1.325x)
+  cooper-trembath   KPF    9  65  MSD YES |       497 |     2053     1144     1211     1868 |  3.759x  (3.908x)
+  ned-moyle         RUCK   5  65  MSD YES |       400 |     2053     1404     1252     1871 |  4.678x  (4.863x)
+  nick-madden       RUCK   -  65  PDA YES |       272 |     2142     1486     1481     1829 |  6.724x  (6.991x)
+  josh-lai          SD     -  65  SSP YES |       248 |      513      149      131      352 |  1.419x  (1.476x)
+  zac-taylor        SF    44  44  ND  YES |       359 |      254       78       70      208 |  0.579x  (0.602x)
+  harry-dean        KPD    3   3  ND  YES |      2331 |     2660     1002     2329     2293 |  0.984x  (1.023x)
+  patrick-retschko  MID    8  65  RD  YES |       357 |     1353      509      542     1097 |  3.073x  (3.195x)
+
+  READ IT STRAIGHT. The class of cut you objected to LARGELY REVERSES: Trembath +54%, Moyle +49%,
+  Madden +24%, Retschko +102%, Lai +169%, Taylor +197% against amendment 1. Every one of them is
+  now above his draft-day value except Taylor, and Taylor was already below it on the CURRENT board
+  (254 vs 359 = 0.708x) — that is a pre-existing pricing, not something this variant created.
+
+  ONE RESIDUAL, NAMED: HARRY DEAN prices at 0.984x his draft-day value raw, 1.023x once the board's
+  uniform rescale is removed. Cause, measured: he is a year-one KPD pick 3 whose margin over draft-day
+  on the current board is only +14%, and the variant board carries a uniform -3.8% rescale against an
+  un-rescaled draft-day surface. That is the mixed basis the HELD-surface decision creates by design.
+
+----------------------------------------------------------------------------------------------------------------
+  2. THE HEADLINE RATIOS  (denominator n=1197 entrants, ND picks 1-64, classes 2004-2022)
+----------------------------------------------------------------------------------------------------------------
+
+     quantity                                   CURRENT   1st cut   AMEND-1   AMEND-2   verdict
+     ---------------------------------------------------------------------------------------------
+     year-0-to-peak appreciation                  1.572     1.463     1.462     1.533   closed -0.039
+     year-1-to-peak (peak/yr1)                    1.400     1.988     1.439     1.525   *** WIDENED
+     year-1-to-peak (yr5/yr1, your convention)    1.394     1.988     1.439     1.525   *** WIDENED
+     year-4 ratio                                 1.572     1.403     1.410     1.533
+     year-1 ratio                                 1.123     0.736     1.016     1.005
+     peak occurs at year                              4         -         5         4
+     top-end ratio (top active / 3000)           4.041x    3.920x    3.921x    3.988x
+     board total against the fixed numeraire      1.0000    0.8751    0.9153    0.9618
+
+     THE FULL HUMP ROW, years 1-9:
+       CURRENT  1.123  1.373  1.506  1.572  1.566  1.519  1.318  1.084  0.840
+       AMEND-1  1.016  1.171  1.294  1.410  1.462  1.452  1.266  1.047  0.813
+       AMEND-2  1.005  1.264  1.437  1.533  1.533  1.496  1.299  1.069  0.828
+       (n per year: 1197 1197 1197 1197 1139 1075 1014 950 886)
+
+     THE HONEST HEADLINE, AND IT IS NOT THE ONE THE AMENDMENT WAS AIMING FOR.
+     Amendment 2 does what you asked — it stops charging resolved players for unresolved risk — and in
+     doing so it GIVES BACK most of the hump compression. Year-0-to-peak is 1.533 against a current
+     1.572: the gap you originally raised is barely closed. And year-1-to-peak is now 1.525 against a
+     current 1.394 — WIDER than the first cut's residual and wider than amendment 1's. The relocation
+     you named in your Robey catch is BIGGER under amendment 2, not smaller.
+
+     WHY, mechanically, and it is not a bug. At year one most players have not yet resolved, so they
+     carry the full bust-inclusive discount. By year four or five most have, so they carry none. The
+     resolved-state rule therefore MANUFACTURES appreciation across the resolution event, by design:
+     establishing IS news, and news moves prices. The hump and the resolved-state fix are pulling in
+     opposite directions, and this measurement is what that trade-off costs.
+
+     BY PICK RANGE:
+       picks 1-20  (n=377): yr1 1.150 -> 1.042 | peak 1.594 -> 1.562 | yr1-to-peak 1.386 -> 1.499
+       picks 21-64 (n=820): yr1 1.083 -> 0.951 | peak 1.555 -> 1.531 | yr1-to-peak 1.436 -> 1.610
+     Against amendment 1 the late picks IMPROVED (1.705 -> 1.610) and the early picks got WORSE
+     (1.352 -> 1.499). The residual is now spread across the board rather than concentrated late.
+
+----------------------------------------------------------------------------------------------------------------
+  3. THE BOARD  (804 active rows — the denominator for every count in this block)
+----------------------------------------------------------------------------------------------------------------
+
+     movers                         565 of 804   (+0 added, -0 removed)
+     signed sum of deltas           -29,031 SCAR    (1st cut -94,888 | amend-1 -64,330)
+     gross sum of deltas             30,097 SCAR over the 565 movers
+     age split (signed)             <=22 -19,847 (191 moved of 294) | 23-26 -6,530 (187 of 245)
+                                    >=27  -2,654 (187 of 265)
+     board total ratio              0.9618  (a uniform -3.82% rescale; amend-1 -8.47%, 1st cut -12.49%)
+     pick-1 numeraire               3000 -> 3000 (the standing law pins it)
+
+     SCALE vs RE-RANKING, SEPARATED (BPK sits on the numeraire chain, so this matters):
+       rows re-weighted at all       804 of 804     -> this IS re-ranking, not only rescaling
+       rows moved >5% of own share   152 of 804     (amend-1: 698 of 804)
+       mean |relative move|          6.02% of a player's own share  (amend-1 12.73%)
+       mean relative move by age     <=22 -5.39% (n=294) | 23-26 -0.17% (n=245) | >=27 +2.92% (n=265)
+
+     TOP 5 CUTS (absolute)                        TOP 5 LIFTS (absolute)
+       Sullivan Robey    3070 -> 2651  -419         Cooper Duff-Tytler 1514 -> 1709  +195
+       Noah Mraz         3847 -> 3445  -402         Jack Williams       398 ->  457   +59
+       Xavier Lindsay    2059 -> 1679  -380         Archer Reid         697 ->  752   +55
+       Harry Dean        2660 -> 2293  -367         Harvey Johnston     296 ->  328   +32
+       Taj Hotton        2263 -> 1899  -364         Oscar Adams          67 ->   92   +25
+
+     TOP 5 RELATIVE CUTS (share lost after removing the rescale)
+       Campbell Lake 153->58 -60.6% (22) | George Stevens 326->134 -57.3% (21)
+       Tom Anastasopoulos 269->114 -55.9% (21) | Jay Polkinghorne 431->204 -50.8% (20)
+       Jack Ison 544->269 -48.6% (19)
+     TOP 5 RELATIVE LIFTS
+       Oscar Adams 67->92 +42.8% (23) | Jack Williams 398->457 +19.4% (23)
+       Cooper Duff-Tytler 1514->1709 +17.4% (19) | Elliott Himmelberg 44->49 +15.8% (28)
+       Harvey Johnston 296->328 +15.2% (21)
+
+     SPLIT BY RESOLVED STATE — the amendment's own axis, and the test of whether it landed:
+       state         n     sum A     sum B   B/A     signed dSum   mean relative move   movers
+       ESTABLISHED  639   709,591   686,425  0.9674     -23,166           -0.33%          513
+       UNRESOLVED   165    50,131    44,266  0.8830      -5,865           -3.90%           52
+     Established players are essentially FLAT once the uniform rescale is removed (-0.33%); the
+     haircut lands on the unresolved (-3.90%), which is exactly the effect your catch predicted.
+
+     BUT SAY IT STRAIGHT: 4 of the 5 biggest ABSOLUTE cuts are established players (Robey, Lindsay,
+     Dean, Hotton; only Mraz is unresolved), and the single biggest RELATIVE cut on the board,
+     Campbell Lake -60.6%, is an established player — a 6-game MSD entrant whose effective pick is
+     65. Establishment resolves the PROBABILITY, not the LEVEL: a marginal establisher off a late
+     effective pick is still anchored to a low establisher class. That is a real result, not a bug,
+     and it is where the remaining young-player pain sits.
+
+----------------------------------------------------------------------------------------------------------------
+  4. MONOTONICITY — your Ablett law, and the new guard
+----------------------------------------------------------------------------------------------------------------
+
+     'A strictly worse career can never produce a better-looking baseline.'
+
+     THE ABLETT CELL (KPF, pick 46, band 36-48), unchanged by amendment 2:
+       19 drafted | 10 survivors | 10 established | 9 never established | 5 never played a game
+       survivors-only mean         61.0   (denominator: the 10 survivors)
+       bust-inclusive expectation  32.1   (denominator: all 19; never-established at 0.0)
+       Ablett's own realized level 57.3 — BELOW the survivor mean, ABOVE the bust-inclusive
+       expectation. The ordering your law requires.
+       AMENDMENT 2 ADDS: an ESTABLISHED player in that cell is now anchored at 61.0-class, not 32.1.
+       Ablett is established, so Ablett gets the establisher anchor. The 32.1 is what an UNRESOLVED
+       pick-46 KPF is worth, which is the honest price of an unresolved late key forward.
+
+     THREE LEAVE-ONE-OUT WORSE-CAREER PAIRS: all three VIOLATE the law under the shipped survivors-only
+     sample and all three HOLD under the bust-inclusive tables. Archer/McDonagh (SD 49-99),
+     Brown/Murley (MID 49-99), Woewodin/Rankin (SF 49-99). Arithmetic in monotonicity.txt.
+
+     UNCLAMPED PICK MONOTONICITY (the v3.4 clamp removed, as the directive requires):
+       survivors + clamp          0 violations of 42   <- the clamp manufactures this pass
+       survivors, unclamped      16 violations of 42   <- the defect with nothing hiding it
+       bust-inclusive, unclamped  5 violations of 42   <- *** RED, reported and NOT patched
+       established-conditional,
+         unclamped               14 violations of 42   <- *** RED, new table, same treatment
+     The bust-inclusive breach is down 66% in gross excess (+22.65 points across 5 steps vs +65.78
+     across 16). The established-conditional table is close to the survivors' own shape, which is
+     expected — conditioning on establishment IS most of what the survivor filter was doing.
+
+     POOL BAND MONOTONICITY (all-position):
+       survivors  94.8 85.3 83.9 77.9 74.8 77.5 71.2 72.8  NON-MONOTONE (rises twice)
+       bust-inc   94.0 84.2 76.1 71.8 60.2 56.0 49.3 34.0  MONOTONE, PASS (0 of 7 band steps)
+       band n's      57   76   95  152  133  152  247 1062
+
+     THE NEW GUARD — established anchor >= unconditional expectation, same cell:
+       47 of 48 cells PASS by construction (P <= 1).
+       *** 1 VIOLATION: KPD band 1-3, est 75.35 < unconditional 75.80 (-0.6%). CAUSE, named: that
+       cell holds ONE player, so it falls below the n>=4 thin-cell guard and is gradient-filled from
+       a neighbouring band — and the two tables use different gradients. The guard is exact in cells
+       with data and can invert in gradient-filled thin cells. Reported, not patched.
+
+----------------------------------------------------------------------------------------------------------------
+  5. THE RESOLVED-BOUNDARY SEAM — the one thing on this sheet you should rule on
+----------------------------------------------------------------------------------------------------------------
+
+     Conditioning on resolved state puts a CLIFF at the sixth game of a season. That is not a slip;
+     it is what a binary condition does. Measured, difference-in-differences against the control build
+     so the pre-existing 5g->6g machinery step is netted out and only the amendment is left:
+
+       AT THE ANCHOR (BASEPK_EST / BASEPK_REG per cell = exactly 1/P):
+         48 cells | min 0.994x | median 1.151x | mean 1.278x | MAX 2.434x (KPF, picks 49-99)
+       IN BOARD POINTS (12 probes: your eight names re-priced at 5 games and at 6 games, plus a
+       four-tenure sweep):
+         min 1.007x | median 1.246x | mean 1.250x | MAX 1.582x
+       Worst probe: a pick-44 SF gains +58% of his value for playing one more game.
+
+     THIS IS A CONFLICT BETWEEN TWO OF YOUR OWN RULES, stated plainly:
+       * prices move on news, and establishing IS the news — which is what you asked for;
+       * L-SMOOTH: no cliffs. The engine already went out of its way to kill the game-6 cliff
+         (the level feature's own note: "Smooth (no >=6g threshold -> kills the game-6 value cliff)").
+     A continuous form exists — blend the two anchors on a smooth resolution weight instead of a hard
+     >=6-game switch — but it is NOT in this variant. The amendment ruled the binary conditioning, and
+     inventing a taper you have not ruled on would put an undeclared dial on the board. Reported with
+     its magnitude, for your ruling.
+
+----------------------------------------------------------------------------------------------------------------
+  6. THE STRATA — every rate and every level names its denominator
+----------------------------------------------------------------------------------------------------------------
+
+     P(EVER ESTABLISHES) — UNCHANGED FROM AMENDMENT 1. Amendment 2 changed who it is applied to.
+       par-surface lever, par cohort n=1758
+         all-pos  1.000 0.984 0.912 0.938 0.857 0.727 0.712 0.484
+         (est/n)  48/48 63/64 73/80 120/128 96/112 93/128 148/208 479/990
+         48 of 48 strata filled | n 1..246, median 19 | n<20: 26  n<10: 13  n<5: 6
+       BPK/POOL lever, hist n=1974
+         all-pos  1.000 0.987 0.926 0.941 0.850 0.750 0.717 0.490
+         (est/n)  57/57 75/76 88/95 143/152 113/133 114/152 177/247 520/1062
+         48 strata | n 1..260, median 20 | n<20: 24  n<10: 11
+       pooling: DECLARED — every cell shrunk toward the all-position band marginal by n/(n+10).
+
+     E[LEVEL | ESTABLISHED] — the new table, with its n's.
+       BPK side: n per cell = n established. 5 of 48 cells fall below the n>=4 guard and are
+         gradient-filled: KPD 1-3 (1/1), RUCK 1-3 (3/3), RUCK 4-7 (2/2), RUCK 8-12 (3/4),
+         RUCK 21-27 (2/3). Full table with every n in strata_report.txt.
+       par side: the conditional-level sample GREW, 4,244 -> 5,286 observations, because the
+         tenure-axis survivorship gate was dropped. Thinnest cell n=32 (RUCK yr1). No pooling needed,
+         nothing dropped.
+
+     THE READING OF "E[level | established]" — chosen on measurement, disclosed, not assumed.
+       ratio to the shipped on-park sample, by tenure:      yr1    yr2    yr3    yr4    yr5    yr6
+         (i)   on-park >=6g   (amendment 1)                1.000  1.000  1.000  1.000  1.000  1.000
+         (ii)  played  >=1g   ** THIS VARIANT **           0.898  0.949  0.959  0.969  0.971  0.978
+         (iii) in-window, zero-filled                      0.570  0.819  0.905  0.947  0.953  0.968
+       (iii) is the literal "all establishers" reading and is BARRED. Two reasons, both recorded
+       rules rather than taste: the primer forbids zero-filling a per-game benchmark (a zero-game
+       season has no per-game level to average in), and at 0.570 in year one it is your Robey
+       catch coming back through a side door — of 1,120 ever-establishers in their listed window at
+       tenure 1, 670 (59.8%) had not yet played six games. That is the calendar, not the player.
+       (ii) removes the survivorship GATE without zero-filling.
+
+----------------------------------------------------------------------------------------------------------------
+  7. WHAT IS RED, IN ONE PLACE
+----------------------------------------------------------------------------------------------------------------
+
+     1. *** YEAR-1-TO-PEAK IS 1.525 AGAINST A CURRENT 1.394 — the widest of the three cuts. The
+        resolved-state fix and the hump compression pull against each other; amendment 2 chose the
+        fix and gave back most of the compression (year-0-to-peak only 1.572 -> 1.533). This is the
+        central trade-off of the whole variant and it is now measured, not argued.
+     2. *** THE RESOLVED-BOUNDARY CLIFF: up to 2.434x at the anchor, up to 1.582x in board points,
+        for one game of football. An L-SMOOTH conflict, reported with its magnitude, NOT smoothed.
+     3. 5 of 42 unclamped pick-monotonicity violations survive in the bust-inclusive baseline (14 of
+        42 in the established-conditional one). Reported, not re-clamped, per the directive.
+     4. The est>=unconditional guard fails in 1 of 48 cells (KPD 1-3, n=1, -0.6%), a gradient-fill
+        artifact in a cell too thin to hold data.
+     5. Harry Dean prices 0.984x his draft-day value raw (1.023x with the rescale removed). Mixed
+        basis from the mandated held surface, as before.
+     6. Zac Taylor prices 0.579x draft-day — but he was ALREADY 0.708x on the current board. Named
+        so it is not read as variant-created.
+     7. The rl_passmark.json / params.json provenance hole remains OUT OF SCOPE and unswept.
+
+     SCOPE NOTE, on the record: amendment 2 required per-player conditioning, which cannot be done
+     inside the original two-file fence — a class table has no player in it. The amendment names the
+     sites itself (lvl_par, the pedigree pole blend, the BPK-anchored consumers), so the fence widened
+     to four files by the amendment's own terms: par_build.py, par_redesign.py, _merged_recover.py,
+     rl_model.py. Still branch-only, still never merged, still nothing on main.
+
+================================================================================================================
+  Nothing here ships. The ruling is yours, on measured numbers.
+================================================================================================================

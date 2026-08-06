@@ -1,0 +1,48 @@
+#336 AMENDMENT 2 — THE RESOLVED-BOUNDARY SEAM REPORT
+  the directive: 'a player one game short of establishing vs one just past it — report the seam
+   between the two states and its size'. Measured DIFFERENCE-IN-DIFFERENCES against the control
+   build so the pre-existing 5g->6g machinery step is netted out and only AMENDMENT 2 is left.
+
+  player(identity)   pos   pick      base 5g    base 6g       var 5g     var 6g    baseJmp   varJmp     SEAM
+  ----------------------------------------------------------------------------------------------------------------------
+  sullivan-robey     MID   9          2613.0     2776.0       1759.0     2113.0     1.062x   1.201x   1.131x
+  cooper-trembath    KPF   65         1664.0     1796.0       1210.0     1315.0     1.079x   1.087x   1.007x
+  ned-moyle          RUCK  65         1662.0     1803.0       1179.0     1401.0     1.085x   1.188x   1.095x
+  nick-madden        RUCK  65         1919.0     2134.0       1531.0     1739.0     1.112x   1.136x   1.021x
+  josh-lai           SD    65          304.0      347.0        169.0      203.0     1.141x   1.201x   1.052x
+  zac-taylor         SF    44          154.0      158.0         61.0       99.0     1.026x   1.623x   1.582x
+  harry-dean         KPD   3          2053.0     2092.0       1627.0     1674.0     1.019x   1.029x   1.010x
+  patrick-retschko   MID   65          796.0      845.0        424.0      561.0     1.062x   1.323x   1.246x
+  sweep tenure 1     MID   9          2287.0     2486.0       1370.0     2180.0     1.087x   1.591x   1.464x
+  sweep tenure 2     MID   9          2287.0     2486.0       1370.0     2180.0     1.087x   1.591x   1.464x
+  sweep tenure 3     MID   9          2287.0     2486.0       1370.0     2180.0     1.087x   1.591x   1.464x
+  sweep tenure 4     MID   9          2287.0     2486.0       1370.0     2180.0     1.087x   1.591x   1.464x
+
+  SEAM SIZE (extra value discontinuity AMENDMENT 2 puts at the sixth game of a season):
+    n=12 probes | min 1.007x | median 1.246x | mean 1.250x | max 1.582x
+    worst named probe: zac-taylor
+
+  THE SAME SEAM AT THE ANCHOR (not the price): BASEPK_EST / BASEPK_REG per cell = 1/P
+    n=48 cells | min 0.994x | median 1.151x | mean 1.278x | max 2.434x
+    the biggest anchor jumps sit in the LATE bands, where P is genuinely near 0.5:
+      KPF|7        2.434x
+      MID|7        2.113x
+      RUCK|7       2.024x
+      SF|7         2.010x
+      SD|7         1.944x
+
+  DESIGN NOTE, per the directive — NOT smoothed here.
+    L-SMOOTH forbids a cliff in the shipped engine. Resolved-state conditioning PUTS ONE THERE by
+    construction: the anchor multiplies by exactly 1/P the instant a player plays his sixth game
+    in a season, and P is as low as 0.41 in the thinnest late-pick cell (KPF 49-99), so the anchor
+    can jump 2.43x on one game. In BOARD POINTS the realised jump is smaller (the anchor is only
+    one leg of the price and the evidence weights damp it) but still reaches 1.582x on the probes
+    above — a +58% price move for one game of football.
+    THIS IS A REAL CONFLICT BETWEEN TWO RULES, not an implementation slip:
+      * the owner's law here: prices move on news, and establishing IS the news;
+      * L-SMOOTH: no cliffs, and the engine already went out of its way to kill the game-6 cliff
+        (conditional_prior._lvl_wt: 'Smooth (no >=6g threshold -> kills the game-6 value cliff)').
+    A continuous form exists (blend the two anchors on a smooth resolution weight rather than a
+    hard >=6g switch) but it is NOT in this variant: the directive rules the binary conditioning,
+    and inventing a taper the owner has not ruled on would put an undeclared dial on the board.
+    Reported with its magnitude, for the ruling.

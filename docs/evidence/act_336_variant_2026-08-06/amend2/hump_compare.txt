@@ -1,0 +1,25 @@
+#336 — THE HUMP ROW, three bases. denominator n=1197 entrants (ND picks 1-64, classes 2004-2022)
+
+  yr |    n_incl  n_zero |  BASELINE   AMEND-1   AMEND-2 |  mean_yrN(A2)  mean_yr0(A2)
+   0 |     1197       0 |     1.000        -     1.000 |        839.2        839.2
+   1 |     1197       0 |     1.123    1.016     1.005 |        843.7        839.2
+   2 |     1197       0 |     1.373    1.171     1.264 |       1060.6        839.2
+   3 |     1197     141 |     1.506    1.294     1.437 |       1206.3        839.2
+   4 |     1197     258 |     1.572    1.410     1.533 |       1286.3        839.2
+   5 |     1139     334 |     1.566    1.462     1.533 |       1280.4        835.2
+   6 |     1075     391 |     1.519    1.452     1.496 |       1247.8        834.3
+   7 |     1014     430 |     1.318    1.266     1.299 |       1084.9        835.2
+   8 |      950     452 |     1.084    1.047     1.069 |        888.6        831.3
+   9 |      886     457 |     0.840    0.813     0.828 |        688.0        830.5
+
+  HEADLINES (denominator n=1197 for years 0-4; n falls to 1139/1075/1014/950/886 for years 5-9)
+    quantity                          BASELINE   AMEND-1   AMEND-2
+    year-4 ratio                          1.572     1.410     1.533
+    peak ratio (year-0-to-peak)           1.572     1.462     1.533
+    peak occurs at year                       4         5         4
+    year-1 ratio                          1.123     1.016     1.005
+    year-1-to-peak (peak/yr1)             1.400     1.439     1.525
+    year-1-to-peak (yr5/yr1, owner's)     1.394     1.439     1.525
+
+  picks 1-20 (n=377): yr1 1.150 -> 1.042 | peak 1.594 -> 1.562 | yr1-to-peak 1.386 -> 1.499
+  picks 21-64 (n=820): yr1 1.083 -> 0.951 | peak 1.555 -> 1.531 | yr1-to-peak 1.436 -> 1.610

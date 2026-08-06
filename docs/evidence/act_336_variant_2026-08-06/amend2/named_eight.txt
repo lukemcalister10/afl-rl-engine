@@ -1,0 +1,34 @@
+=== THE NAMED EIGHT — baseline / first cut / amendment 1 / AMENDMENT 2 / draft-day ===
+  draft-day = v0_start off the HELD frozen year-zero surface (same number in every build)
+
+  player             pos  pick est draftday     BASE   1stcut   AMEND1   AMEND2    A2/base A2/draft
+  -------------------------------------------------------------------------------------------------
+  sullivan-robey     MID  9    YES     2080     3070      945     2807     2651     0.864x   1.275x
+  cooper-trembath    KPF  9    YES      497     2053     1144     1211     1868     0.910x   3.759x
+  ned-moyle          RUCK 5    YES      400     2053     1404     1252     1871     0.911x   4.678x
+  nick-madden        RUCK None YES      272     2142     1486     1481     1829     0.854x   6.724x
+  josh-lai           SD   None YES      248      513      149      131      352     0.686x   1.419x
+  zac-taylor         SF   44   YES      359      254       78       70      208     0.819x   0.579x
+  harry-dean         KPD  3    YES     2331     2660     1002     2329     2293     0.862x   0.984x
+  patrick-retschko   MID  8    YES      357     1353      509      542     1097     0.811x   3.073x
+
+  SCALE-ADJUSTED (the variant board carries a uniform rescale; ratio to draft-day with it removed)
+  board scale B/A = 0.961787
+  sullivan-robey      x draft-day raw  1.275   scale-adjusted  1.325
+  cooper-trembath     x draft-day raw  3.759   scale-adjusted  3.908
+  ned-moyle           x draft-day raw  4.678   scale-adjusted  4.863
+  nick-madden         x draft-day raw  6.724   scale-adjusted  6.991
+  josh-lai            x draft-day raw  1.419   scale-adjusted  1.476
+  zac-taylor          x draft-day raw  0.579   scale-adjusted  0.602
+  harry-dean          x draft-day raw  0.984   scale-adjusted  1.023
+  patrick-retschko    x draft-day raw  3.073   scale-adjusted  3.195
+
+=== resolved-state evidence — the season lines the definition is read off ===
+  sullivan-robey     est=YES  2026:14g@61.7
+  cooper-trembath    est=YES  2025:3g@71.7  2026:20g@65.5
+  ned-moyle          est=YES  2023:2g@49.5  2024:8g@85.8  2025:3g@56.0  2026:13g@81.4
+  nick-madden        est=YES  2025:3g@86.0  2026:6g@83.8
+  josh-lai           est=YES  2026:15g@62.2
+  zac-taylor         est=YES  2024:9g@43.7  2025:17g@47.5  2026:18g@58.6
+  harry-dean         est=YES  2026:16g@59.6
+  patrick-retschko   est=YES  2026:15g@70.7

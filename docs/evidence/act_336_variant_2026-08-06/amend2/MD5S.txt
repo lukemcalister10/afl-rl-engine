@@ -1,0 +1,69 @@
+#336 AMENDMENT 2 — IDENTITIES AND FILE MD5s (act336c)
+
+store                        37ced3ce  (unmoved, all builds)
+v0surf signature             af556bdca53d  frozen=True  (HELD, all builds — no RL_V0SURF_REFIT)
+
+-- engine identities --
+baseline rl_model            33f94073
+baseline engine_head         8f0e3eb1
+AMEND-2  rl_model            3b6d12c7
+AMEND-2  engine_head         3345b3fc
+AMEND-2  expected_boot rl_model  3b6d12c7
+AMEND-2  expected_boot fv        432f45a2
+
+-- boards --
+CONTROL board                113b36f898a32363c49c2a62fb809f4b   <- 113b36f898a32363c49c2a62fb809f4b REQUIRED; CONTROL PASSES
+AMEND-2 board                ecfc824b38d428eae38221eff5073f0e
+first cut board (superseded) bc9f735a301626be75651b5fd5c0d200
+AMEND-1 board   (superseded) e52ee95dd56d8f5b670887d34aabe094
+
+-- no-arb matrices --
+baseline per_entrant         5fb617d09cd8341d9f36b90a1827e2e5   <- reproduces act336b's 5fb617d0 (second control)
+AMEND-2  per_entrant         7307bb26a90c36c7491f6210dd6db4ac
+  harness identity pins re-measured on the amended matrix: store 37ced3ce / v0surf af556bdca53d / n=1197
+  — all three UNCHANGED, so nothing was re-pointed and no assert was patched. The pins still cannot
+  discriminate this basis move; rl_model / fv are the only identities that separate the runs.
+
+-- branch / main --
+branch                       variant/336-bust-inclusive
+commit                       f7a16b5cf6279455eb30d213476eafcd0fe97346
+parent (amendment 1)         a7bff5a343af80a33a94924abab07a9606b472d4
+origin/main BEFORE this act  a8de7372c3cc51310544aef9f79759331d1b1950
+origin/main AFTER  this act  a8de7372c3cc51310544aef9f79759331d1b1950   <- UNMOVED
+-- evidence files --
+  e7c9cbcfae1e4a435574a347c791e6fc  COMPARISON_CURRENT_vs_BUST_INCLUSIVE_AMEND2.txt
+  2304d6554bbbd25a008d68be03716564  MD5S.txt
+  4b199def6307725c134e20d35d80d6cd  board_delta.txt
+  3a8de1b4c3a4ab12b66c01dc8dd93f4f  cond_variants.txt
+  3a09fa4df66a96f303e382ccd15ba6ba  control_build.txt
+  61dfc3e4b1fa297a1c1b9b707b6da823  hump_compare.txt
+  889b7ad56f1db3971fd833ccdff2d3ab  monotonicity.txt
+  1bf865f2d56edc016fa8d643a1549894  named_eight.txt
+  7de8b65cbea59b14a4ab8fb8f321112f  par_report_baseline.txt
+  2120c539a00b6fff5705501fc739dc57  par_report_variant.txt
+  38e4937765ad430b9a3c1531de41bc7f  repin.txt
+  94ee4fd50fd91e0938df54b697e27d10  resolved_split.txt
+  132a53ff59db2b18d7f3e2a1d85f4f9c  seam_report.txt
+  69d73057e0338ba38669b94e560527f4  strata_a2.txt
+  9d6fbe348c8db433f8db8e550451def5  strata_report.txt
+  6a8a9f6199c54d1f5fbab10dee232b54  variant_bootstrap.txt
+  0c69dcd9aab629e06c09c1d0c7a05a4d  variant_build.txt
+  740ce22845a288c5f6ea4db6b9a42252  RUN_RECIPE.md
+  113b36f898a32363c49c2a62fb809f4b  board_baseline.json
+  e13d7cfaa353429680347fad59b03e5b  board_delta.json
+  ecfc824b38d428eae38221eff5073f0e  board_variant.json
+  dc7628ad5c10eb81d6e23537124bceaf  cond_variants.json
+  d85e6c1eefb0be8a879468b5c387eb7b  monotonicity.json
+  7cca32f71fddf8ba901a97b06035783e  named_eight.json
+  a90e336c3658eb4b512350f86e1a32ff  seam_baseline.json
+  f819bdd3634b049bcd5c1a4a50b5da2d  seam_basepk.json
+  51b41f47a45b799299543409a760a738  seam_variant.json
+  a7fed0aebf90aa31b18df43af4aec07d  strata_a2.json
+  941286162c38783007397be9c4ac29b8  board_diff_files.py
+  698379ac1a60aa118d5a65ae42022902  derive_a336c.py
+  21b09e0ebbaa77a55896c5f52ca5c658  derive_cond_variants.py
+  db6ec91339e8f3fead938cfb8d94ebf5  load_engine.py
+  620ae9dbbdacd06978e86a946619fb0b  monotonicity_proofs.py
+  78cdddedc669b4d3dbd71bb261ce9a8f  named_eight.py
+  ee7ba62e388997af2a4e67dc331c13b1  repin_variant.py
+  d304f1de4689f8989a5eb7f92b590cb2  seam_boundary.py
