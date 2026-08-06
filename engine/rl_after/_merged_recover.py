@@ -1899,17 +1899,27 @@ if os.environ.get('RL_PVC2','1')!='0':
     _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
     MA._pe_clear()
 # ===== #326 BUILD-TIME PROOFS — the two things this act must not have done ==================================
-# (1) THE FROZEN SURFACE MUST LOAD, NOT REFIT. The year-zero surface is frozen by signature (data/v0surf.pkl).
-#     #326 adds an entry anchor for pool entrants and must not disturb that surface: the levels resolve in the
-#     anchor lookup and are NEVER written into the ladder or its scaffold copy _PVC0, so the signature — which
-#     covers _PVC0, the national-draft roster and the gate set — cannot move. If it ever did, every national
-#     draftee's V0 would be re-fitted and "non-pool veterans do not move" would quietly stop being true. The
-#     engine already HALTS on an unknown signature; this asserts the other half — that the load actually
-#     happened and no declared refit is riding along. Proven able to fail with RL_V0SURF_REFIT=1.
-assert _V0CURVE_META.get('_v0surf_frozen') is True, (
-    '#326 HALT: the year-zero surface was NOT loaded from the freeze (signature %s, refit declared=%r). The '
-    'per-division pool levels must never reach the ladder or the surface fit — a moved surface re-prices every '
-    'national draftee, and this act is only allowed to move pool entrants.'
+# (1) THE FROZEN SURFACE MUST NOT REFIT SILENTLY. The year-zero surface is frozen by signature
+#     (data/v0surf.pkl). #326 adds an entry anchor for pool entrants and must not disturb that surface: the
+#     levels resolve in the anchor lookup and are NEVER written into the ladder or its scaffold copy _PVC0, so
+#     the signature — which covers _PVC0, the national-draft roster and the gate set — cannot move. If it ever
+#     did, every national draftee's V0 would be re-fitted and "non-pool veterans do not move" would quietly
+#     stop being true.
+#     THE SPLIT (#344): a refit is either SILENT or DECLARED, and only the silent half is this assert's job.
+#     The unknown-signature HALT above catches a config that drifted; this catches the other silent case — a
+#     surface that was not loaded from the freeze while nobody asked for a fit. A DECLARED refit
+#     (RL_V0SURF_REFIT=1) is the engine's ONE committed fit path, deliberately provided at that same site, and
+#     it PASSES here: #334 stage B and the #336 bust-inclusive variant re-derive the surface through it, and a
+#     lane that always halts is a lane that does not exist. It still cannot reach a RELEASE build — the release
+#     contract declares RL_V0SURF_REFIT in must_be_unset and ingestion/forward_lens.py:124 rejects the build if
+#     it is set — so nothing shipped can carry a refit at all.
+#     NOT VACUOUS: with no declaration this assert still fires. Any regression that skips the frozen load
+#     silently arrives here with frozen=False and the env unset, and halts (#344 proof 1 demonstrates it).
+assert (_V0CURVE_META.get('_v0surf_frozen') is True
+        or os.environ.get('RL_V0SURF_REFIT')=='1'), (
+    '#326 HALT: the year-zero surface was NOT loaded from the freeze, and no refit was declared (signature %s, '
+    'refit declared=%r). The per-division pool levels must never reach the ladder or the surface fit — a moved '
+    'surface re-prices every national draftee, and this act is only allowed to move pool entrants.'
     %(_V0CURVE_META.get('_v0surf_sig'),os.environ.get('RL_V0SURF_REFIT')))
 # (2) pool_value RETIRES FROM PRICING (owner ruling, addendum 5 item 3). Every pool entrant's entry anchor and
 #     ruck-cap basis is his own signed division level, in the currency that site speaks — never the ladder's
@@ -1922,9 +1932,16 @@ _iso_bad=[p.get('player') for p in _POOL_ROWS_326
           or abs(entry_anchor(p)-float(MA.pool_level(p))*_PL_F)>1e-6]
 assert not _iso_bad, ('#326 HALT: %d pool entrant(s) (%s) do not price off their own division level — the '
                       'single pool value is back in a player price.'%(len(_iso_bad),_iso_bad[:6]))
+# A build's own report must not misstate its basis (#344): the frozen-load sentence is printed only when the
+# surface was in fact loaded from the freeze. On the declared lane the build says so, in its own words.
 print('#326 ENTRY ANCHOR WIRED: %d pool entrants anchor on their signed division level — ruck cap in ladder '
-      'currency, floor and thin-record blend at x%.4f (board factor). Frozen year-zero surface LOADED (sig '
-      '%s), not refitted.'%(len(_POOL_ROWS_326),_PL_F,str(_V0CURVE_META.get('_v0surf_sig'))[:8]))
+      'currency, floor and thin-record blend at x%.4f (board factor). %s (sig %s).'
+      %(len(_POOL_ROWS_326),_PL_F,
+        ('Frozen year-zero surface LOADED, not refitted'
+         if _V0CURVE_META.get('_v0surf_frozen') is True else
+         'Year-zero surface REFIT DECLARED (RL_V0SURF_REFIT=1) — this build did NOT load the freeze, and is '
+         'barred from any release build'),
+        str(_V0CURVE_META.get('_v0surf_sig'))[:8]))
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
