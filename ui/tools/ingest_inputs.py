@@ -363,10 +363,14 @@ def assert_pvc(pvc, resolved):
     check("PVC numeraire anchor pick1 == 3000", pvc.get(1) == 3000, "pick1 = %s" % pvc.get(1))
     if pvc.get(1) != 3000:
         halt("PVC pick1 != 3000 — numeraire drift; refusing to price picks against a drifted ruler")
-    # monotone non-increasing (the curve is a ruler)
-    ks = sorted(pvc)
+    # monotone non-increasing (the curve is a ruler) — OVER THE CURVE DOMAIN ONLY. RULEBOOK law 4
+    # (v2.1 amendment) defines the national curve as picks 1-64 and rules that selections past 64 are
+    # NOT on the curve and carry no ordering: the pool sits at ONE index (POOL_PICK=65) whose level is
+    # a position-blind ladder value, lawfully ABOVE pick 64. Scoring key 65 as a curve step read the
+    # pool index as a ruler point and failed a lawful board (seam ruling 2026-08-06).
+    ks = sorted(k for k in pvc if int(k) <= 64)
     mono = all(pvc[ks[i]] >= pvc[ks[i + 1]] for i in range(len(ks) - 1))
-    check("PVC monotone non-increasing", mono)
+    check("PVC monotone non-increasing (picks 1-64)", mono)
     if not mono:
         halt("PVC is not monotone non-increasing — not a valid pick ruler")
     return pvc
