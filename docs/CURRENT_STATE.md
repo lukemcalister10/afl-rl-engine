@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v74 · supervisor pen · 2026-08-06, register v583
+# CURRENT STATE — the incoming-seat read · v75 · supervisor pen · 2026-08-06, register v584
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v74 · supervisor pen · 2026-08-06, register v583 · replaced wholesale at the #344-MERGE PEN —
-the declared-refit lane is live; the Kako 2026 anchor retired by owner word; selftest expectation
-now 144/0. The primer is at v4 — read it first, in full.)
+(v75 · supervisor pen · 2026-08-06, register v584 · replaced wholesale at the #338 PEN — the
+minimum-tenure rule is live in the walk-forward book; the book of record is committed; the road
+points at the #336 variant. The primer is at v4 — read it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -156,8 +156,9 @@ now 144/0. The primer is at v4 — read it first, in full.)
   49-site sweep is on the issue; par surface + load-time references INVERTED; curve teaching clean.
   Repair rule: expectation-shaped consumers get P(establish)×level; never zero-fill a per-game bench.
 - **Minimum listing tenure (#338):** ND 1–20 → 4 seasons · 21–40 → 3 · others → 2; own data extends;
-  known facts override; evidence-less years inside tenure are LISTED sitting-out years (the
-  Willits-16 bug; era parity). The book re-emits under it; cohort tables PROVISIONAL until then.
+  known facts override; evidence-less years inside tenure are LISTED sitting-out years. IMPLEMENTED
+  2026-08-06 in the book emitter (board untouched); cohort tables PROVISIONAL until the no-arb
+  lineage re-emits under the rule.
 - **Presentation law (#333):** owner-facing material is current-basis end to end or it does not
   ship; superseded views only as labeled baselines beside the current. **Owner frustration is DATA,
   never a trigger** (the voided Track B cut, #322 comment 5200190050, is the recorded anti-pattern).
@@ -182,8 +183,10 @@ restated at L3 step 33) and the corrected re-delivery. Any extension is a NEW ow
    catchup verb per the v582 register entry; the owner may run it himself — one-pager pending).
 2. ~~#344 merge + engine_head re-pin~~ **DONE 2026-08-06, owner word "Merge 346"** — the
    declared-refit lane (RL_V0SURF_REFIT=1) is OPEN; silent refits stay red; engine_head `8f0e3eb1`.
-3. **#338 implemented** → the walk-forward book re-emits honestly (per docs/evidence/act_334
-   recipes), then COMMIT the book of record.
+3. ~~#338 implemented~~ **DONE 2026-08-06, owner word "Fire 338"** — the honest book of record is
+   committed (engine/rl_after/s4_matrix_M1v7.json, meta: store 37ced3ce · engine 8f0e3eb1 · n 2647);
+   era parity exact (460 pairs); cohort tables STILL PROVISIONAL until the no-arb/per_entrant
+   lineage re-emits under the rule (rides step 4/5).
 4. **#336 bust-inclusive variant** on the honest book → ONE side-by-side to the owner. His single
    queued decision.
 5. **#332 addendum** (#306 comment 5186108632) · the #333 memo absorbs the #336 result · #334
@@ -212,7 +215,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v583 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v584 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
