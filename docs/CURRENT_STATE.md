@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v73 · supervisor pen · 2026-08-06, register v582
+# CURRENT STATE — the incoming-seat read · v74 · supervisor pen · 2026-08-06, register v583
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v73 · supervisor pen · 2026-08-06, register v582 · replaced wholesale at the R21 PEN — round 21
-applied and verified; three rulings recorded; #344 executed and sequenced behind this landing. The
-primer is at v4 — read it first, in full.)
+(v74 · supervisor pen · 2026-08-06, register v583 · replaced wholesale at the #344-MERGE PEN —
+the declared-refit lane is live; the Kako 2026 anchor retired by owner word; selftest expectation
+now 144/0. The primer is at v4 — read it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -140,11 +140,11 @@ primer is at v4 — read it first, in full.)
 - **THE CURRENT IDENTITIES (round 21 applied 2026-08-06; verify with your own commands):**
   store `37ced3ce45914e6feb00d27e26922e9a` = `engine/rl_after/rl_model_data.json` · board
   `113b36f898a32363c49c2a62fb809f4b` = `data/rl_build/rl_app_data.json` · rl_model `33f94073` ·
-  engine_head `9f258a3b` (moves to `8f0e3eb1` when #344 merges with its re-pin) · curve payload
+  engine_head `8f0e3eb1` (#344 merged 2026-08-06, owner word) · curve payload
   `df766dff…` (file `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl` · balanced_board_md5
   `4939d740` (present-lens anchor, unmoved) · season round 21 · adoption-era pair for attribution:
   `827fb1fd` (adopted, round-20 basis, out-of-round column `redesign-adoption-6-8`) → `113b36f8`
-  (round 21). The v582 seat byte-reproduced the ADOPTED board pre-R21 on this box (N35 value-path).
+  (round 21). The v582 seat byte-reproduced the ADOPTED board pre-R21 on this box (N35 value-path). SELFTEST EXPECTATION: 144 PASS / 0 FAIL (the Kako 2026 anchor retired by owner word 2026-08-06; every older \u0022145/0\u0022 note is superseded).
 - **EXPECTED, NOT DRIFT:** `ui/release_pick_curve.json` still stamps `curve_source_store_md5 =
   f1e8c9fe` (pre-completion) — #334 STAGE B deferred by owner word behind the #336 ruling. The
   movers reds are CLEARED (R21 landed; #271 A17 closed; suites 66/66 · 39/39 · 5/5).
@@ -180,9 +180,8 @@ restated at L3 step 33) and the corrected re-delivery. Any extension is a NEW ow
 ## THE SEAM'S ROAD (updated at v582)
 1. ~~Round-21 ingest + movers snapshot~~ **DONE 2026-08-06** (txn 4a7d259; pattern for R22+: the
    catchup verb per the v582 register entry; the owner may run it himself — one-pager pending).
-2. **#344 merge + engine_head re-pin (8f0e3eb1)**: directive EXECUTED (branch
-   claude/issue-344-afl-rl-engine-yrfxw3, five proofs on the issue); Addendum 1 sequences it — rebase
-   on post-R21 main, re-pin rides the merge, seam verification build first, owner merge word last.
+2. ~~#344 merge + engine_head re-pin~~ **DONE 2026-08-06, owner word "Merge 346"** — the
+   declared-refit lane (RL_V0SURF_REFIT=1) is OPEN; silent refits stay red; engine_head `8f0e3eb1`.
 3. **#338 implemented** → the walk-forward book re-emits honestly (per docs/evidence/act_334
    recipes), then COMMIT the book of record.
 4. **#336 bust-inclusive variant** on the honest book → ONE side-by-side to the owner. His single
@@ -213,7 +212,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v582 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v583 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
