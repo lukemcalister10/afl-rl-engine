@@ -1,0 +1,8 @@
+== committed instrument, UNMODIFIED, with TRUTHFUL identities (engine head moves in this act) ==
+L8 COMPLETENESS GATE — held-constant inputs (store, engine, band):
+  store    base f1e8c9fe  cand f1e8c9fe  OK
+  engine   base 15525b03  cand 9f258a3b  DIFFERS -> UNNAMED CAUSE
+  band     base 34faa865  cand 34faa865  OK
+
+HALT — ['engine'] missing-or-moved between baseline and candidate. Those axes are NOT in the named cause set (curve, surface); a mover could be driven by them and wrongly stamped a curve/lens effect. The candidate must be compared against a baseline that holds them constant.
+exit=1

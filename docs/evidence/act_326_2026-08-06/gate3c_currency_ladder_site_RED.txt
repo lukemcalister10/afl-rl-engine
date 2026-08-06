@@ -1,0 +1,20 @@
+=== GUARD 5: BOOT-STORE (this dir's store == the checked-out, pinned store) ===
+  FAIL GUARD 5: boot-store FAILED — - one_source_selftest about to read ENGINE _merged_recover.py at /home/claude/rl_workspace/rl_after/_merged_recover.py md5 7690a560  !=  expected 9f258a3b (pinned; repo checkout ) STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=== GUARD 3: SINGLE SOURCE (lookalike tripwire + engine opens) ===
+  PASS exactly one rl_model_data*.json, no lookalikes, engine opens only classified inputs
+=== GUARD 1 + GUARD 2: derived files read-only + source-md5-stamped + content-intact ===
+  PASS GUARD 1: rl_app_data.json is read-only (mode 444)
+  PASS GUARD 1: rl_app_data.json carries a .srcmd5 stamp
+  PASS GUARD 1: rl_app_data.json content md5 == stamped own_md5 (not hand-edited)
+  PASS GUARD 2: rl_app_data.json stamp == current source md5 f1e8c9fe
+  PASS GUARD 1: s4_matrix.json is read-only (mode 444)
+  PASS GUARD 1: s4_matrix.json carries a .srcmd5 stamp
+  PASS GUARD 1: s4_matrix.json content md5 == stamped own_md5 (not hand-edited)
+  PASS GUARD 2: s4_matrix.json stamp == current source md5 f1e8c9fe
+       source md5 = f1e8c9fed35462536d00add604f69a3f
+=== (1) ENGINE LOADS from the single store; active == 804 ===
+Traceback (most recent call last):
+  File "/home/claude/rl_workspace/rl_after/one_source_selftest.py", line 113, in <module>
+    exec(open(hp('_merged_recover.py')).read().split('print("=== AFTER')[0], g)
+  File "<string>", line 1923, in <module>
+AssertionError: #326 HALT: 1202 pool entrant(s) (['Fred Rodriguez', 'Riley Onley', 'Jack Watkins', 'Leon Kickett', 'Ollie Greeves', 'Nick Driscoll']) do not price off their own division level — the single pool value is back in a player price.

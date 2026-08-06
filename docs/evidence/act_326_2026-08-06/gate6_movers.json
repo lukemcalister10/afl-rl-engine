@@ -1,0 +1,3523 @@
+[
+ {
+  "div": "MSD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 42,
+  "gfut": "SF",
+  "key": "max-hall",
+  "name": "Max Hall",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 2433,
+  "v1": 2433,
+  "yrs": 2
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 8,
+  "gfut": "RUCK",
+  "key": "nick-madden",
+  "name": "Nick Madden",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 1860,
+  "v1": 1860,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 28,
+  "gfut": "SD",
+  "key": "tom-mccarthy",
+  "name": "Tom McCarthy",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 1441,
+  "v1": 1441,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 21,
+  "gfut": "RUCK",
+  "key": "lachlan-mcandrew",
+  "name": "Lachlan McAndrew",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 1257,
+  "v1": 1257,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1"
+  ],
+  "games": 25,
+  "gfut": "RUCK",
+  "key": "ned-moyle",
+  "name": "Ned Moyle",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 2204,
+  "v1": 2204,
+  "yrs": 5
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 22,
+  "gfut": "KPF",
+  "key": "cooper-trembath",
+  "name": "Cooper Trembath",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 2034,
+  "v1": 2034,
+  "yrs": 1
+ },
+ {
+  "div": "RD:SD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 50,
+  "gfut": "SD",
+  "key": "karl-worner",
+  "name": "Karl Worner",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 932,
+  "v1": 932,
+  "yrs": 5
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 6,
+  "gfut": "SD",
+  "key": "marcus-herbert",
+  "name": "Marcus Herbert",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 659,
+  "v1": 659,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 17,
+  "gfut": "KPF",
+  "key": "archie-may",
+  "name": "Archie May",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 429,
+  "v1": 429,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 2,
+  "gfut": "SD",
+  "key": "jaxon-artemis",
+  "name": "Jaxon Artemis",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 347,
+  "v1": 281,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 2,
+  "gfut": "KPD",
+  "key": "lukas-cooke",
+  "name": "Lukas Cooke",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 123,
+  "v1": 162,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 2,
+  "gfut": "KPF",
+  "key": "mitch-podhajski",
+  "name": "Mitch Podhajski",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 8,
+  "v1": 105,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 1,
+  "gfut": "RUCK",
+  "key": "flynn-riley",
+  "name": "Flynn Riley",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 295,
+  "v1": 288,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "oliver-griffin",
+  "name": "Oliver Griffin",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 219,
+  "v1": 188,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "harrison-coe",
+  "name": "Harrison Coe",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 152,
+  "v1": 239,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "caleb-may",
+  "name": "Caleb May",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 263,
+  "v1": 239,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "max-beattie",
+  "name": "Max Beattie",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 34,
+  "v1": 188,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "alex-van-wyk",
+  "name": "Alex Van Wyk",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 263,
+  "v1": 239,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "max-mapley",
+  "name": "Max Mapley",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 263,
+  "v1": 239,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 3,
+  "gfut": "KPD",
+  "key": "harrison-ramm",
+  "name": "Harrison Ramm",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 401,
+  "v1": 316,
+  "yrs": 1
+ },
+ {
+  "div": "RD:KPD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 54,
+  "gfut": "KPD",
+  "key": "tylar-young",
+  "name": "Tylar Young",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 235,
+  "v1": 235,
+  "yrs": 4
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 35,
+  "gfut": "SF",
+  "key": "isaiah-dudley",
+  "name": "Isaiah Dudley",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 150,
+  "v1": 150,
+  "yrs": 2
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 2,
+  "gfut": "SD",
+  "key": "balyn-o-brien",
+  "name": "Balyn O'Brien",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 343,
+  "v1": 288,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 2,
+  "gfut": "KPF",
+  "key": "caleb-lewis",
+  "name": "Caleb Lewis",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 143,
+  "v1": 143,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 15,
+  "gfut": "SF",
+  "key": "milan-murdock",
+  "name": "Milan Murdock",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 236,
+  "v1": 236,
+  "yrs": 1
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "KPF",
+  "key": "kalani-white",
+  "name": "Kalani White",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 280,
+  "v1": 89,
+  "yrs": 1
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "noah-chamberlain",
+  "name": "Noah Chamberlain",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 182,
+  "v1": 106,
+  "yrs": 1
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "KPF",
+  "key": "liam-hetherton",
+  "name": "Liam Hetherton",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 247,
+  "v1": 124,
+  "yrs": 1
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "jai-saxena",
+  "name": "Jai Saxena",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 219,
+  "v1": 81,
+  "yrs": 1
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "ryda-luke",
+  "name": "Ryda Luke",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 219,
+  "v1": 81,
+  "yrs": 1
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "toby-whan",
+  "name": "Toby Whan",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 219,
+  "v1": 81,
+  "yrs": 1
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "MID",
+  "key": "jesse-mellor",
+  "name": "Jesse Mellor",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 279,
+  "v1": 81,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "zac-walker",
+  "name": "Zac Walker",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 269,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "KPF",
+  "key": "noah-howes",
+  "name": "Noah Howes",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 219,
+  "v1": 133,
+  "yrs": 1
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "ben-murphy",
+  "name": "Ben Murphy",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 279,
+  "v1": 87,
+  "yrs": 1
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "kobe-mcdonald",
+  "name": "Kobe McDonald",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 279,
+  "v1": 87,
+  "yrs": 1
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "indy-cotton",
+  "name": "Indy Cotton",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 279,
+  "v1": 67,
+  "yrs": 1
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "KPD",
+  "key": "oscar-berry",
+  "name": "Oscar Berry",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 73,
+  "v1": 75,
+  "yrs": 1
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "patrick-carr",
+  "name": "Patrick Carr",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 263,
+  "v1": 86,
+  "yrs": 1
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "cillian-bourke",
+  "name": "Cillian Bourke",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 325,
+  "v1": 87,
+  "yrs": 1
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "MID",
+  "key": "fred-rodriguez",
+  "name": "Fred Rodriguez",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 395,
+  "v1": 194,
+  "yrs": 1
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "MID",
+  "key": "riley-onley",
+  "name": "Riley Onley",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 391,
+  "v1": 194,
+  "yrs": 1
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "leon-kickett",
+  "name": "Leon Kickett",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 333,
+  "v1": 152,
+  "yrs": 1
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "MID",
+  "key": "nick-driscoll",
+  "name": "Nick Driscoll",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 395,
+  "v1": 194,
+  "yrs": 1
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 2,
+  "gfut": "RUCK",
+  "key": "vigo-visentini",
+  "name": "Vigo Visentini",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 187,
+  "v1": 167,
+  "yrs": 3
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "logan-smith",
+  "name": "Logan Smith",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "ND",
+  "v0": 201,
+  "v1": 119,
+  "yrs": 2
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "KPF",
+  "key": "jacob-moss",
+  "name": "Jacob Moss",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 193,
+  "v1": 48,
+  "yrs": 2
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "jaime-uhr-henry",
+  "name": "Jaime Uhr-Henry",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 201,
+  "v1": 66,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "iliro-smit",
+  "name": "Iliro Smit",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 187,
+  "v1": 170,
+  "yrs": 2
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "aiden-riddle",
+  "name": "Aiden Riddle",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 201,
+  "v1": 181,
+  "yrs": 2
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "joe-pike",
+  "name": "Joe Pike",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 201,
+  "v1": 181,
+  "yrs": 2
+ },
+ {
+  "div": "RD:KPD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "KPD",
+  "key": "xavier-walsh",
+  "name": "Xavier Walsh",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 346,
+  "v1": 109,
+  "yrs": 3
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 14,
+  "gfut": "MID",
+  "key": "patrick-retschko",
+  "name": "Patrick Retschko",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 1275,
+  "v1": 1275,
+  "yrs": 2
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "vM2"
+  ],
+  "games": 26,
+  "gfut": "MID",
+  "key": "hamish-davis",
+  "name": "Hamish Davis",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 900,
+  "v1": 900,
+  "yrs": 2
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 2,
+  "gfut": "SF",
+  "key": "matt-hill",
+  "name": "Matt Hill",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 101,
+  "v1": 61,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 18,
+  "gfut": "SD",
+  "key": "michael-sellwood",
+  "name": "Michael Sellwood",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 138,
+  "v1": 138,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 7,
+  "gfut": "SD",
+  "key": "hugo-hall-kahan",
+  "name": "Hugo Hall-Kahan",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 153,
+  "v1": 153,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 1,
+  "gfut": "MID",
+  "key": "luke-beecken",
+  "name": "Luke Beecken",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 13,
+  "v1": 102,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 28,
+  "gfut": "MID",
+  "key": "cooper-lord",
+  "name": "Cooper Lord",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 1103,
+  "v1": 1103,
+  "yrs": 2
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 14,
+  "gfut": "SD",
+  "key": "josh-lai",
+  "name": "Josh Lai",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 477,
+  "v1": 477,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 4,
+  "gfut": "MID",
+  "key": "oliver-francou",
+  "name": "Oliver Francou",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 483,
+  "v1": 452,
+  "yrs": 0
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "eamonn-armstrong",
+  "name": "Eamonn Armstrong",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 181,
+  "v1": 57,
+  "yrs": 2
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "cillian-burke",
+  "name": "Cillian Burke",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 86,
+  "v1": 57,
+  "yrs": 2
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "matt-duffy",
+  "name": "Matt Duffy",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 155,
+  "v1": 57,
+  "yrs": 2
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "MID",
+  "key": "zak-evans",
+  "name": "Zak Evans",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 2,
+  "v1": 44,
+  "yrs": 2
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "ricky-mentha",
+  "name": "Ricky Mentha",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 143,
+  "v1": 52,
+  "yrs": 2
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "benny-barrett",
+  "name": "Benny Barrett",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 143,
+  "v1": 52,
+  "yrs": 2
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "lennox-hoffman",
+  "name": "Lennox Hoffman",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "ND",
+  "v0": 277,
+  "v1": 79,
+  "yrs": 2
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "river-stevens",
+  "name": "River Stevens",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "ND",
+  "v0": 180,
+  "v1": 79,
+  "yrs": 2
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "keighton-matofai-forbes",
+  "name": "Keighton Matofai-Forbes",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "ND",
+  "v0": 277,
+  "v1": 79,
+  "yrs": 2
+ },
+ {
+  "div": "RD:SD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "harry-charleson",
+  "name": "Harry Charleson",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 277,
+  "v1": 105,
+  "yrs": 2
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "asher-eastham",
+  "name": "Asher Eastham",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 180,
+  "v1": 99,
+  "yrs": 2
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 13,
+  "gfut": "SD",
+  "key": "tom-blamires",
+  "name": "Tom Blamires",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 58,
+  "v1": 113,
+  "yrs": 1
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2"
+  ],
+  "games": 42,
+  "gfut": "MID",
+  "key": "bruce-reville",
+  "name": "Bruce Reville",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 48,
+  "v1": 54,
+  "yrs": 3
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 3,
+  "gfut": "KPF",
+  "key": "luker-kentfield",
+  "name": "Luker Kentfield",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 352,
+  "v1": 335,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2",
+   "vP1"
+  ],
+  "games": 5,
+  "gfut": "SF",
+  "key": "campbell-lake",
+  "name": "Campbell Lake",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 156,
+  "v1": 156,
+  "yrs": 0
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 22,
+  "gfut": "SF",
+  "key": "archer-day-wicks",
+  "name": "Archer Day-Wicks",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 602,
+  "v1": 602,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 28,
+  "gfut": "KPD",
+  "key": "lachlan-blakiston",
+  "name": "Lachlan Blakiston",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 8,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2",
+   "vP1"
+  ],
+  "games": 7,
+  "gfut": "KPD",
+  "key": "kye-annand",
+  "name": "Kye Annand",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 159,
+  "v1": 159,
+  "yrs": 0
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 6,
+  "gfut": "MID",
+  "key": "joel-fitzgerald",
+  "name": "Joel Fitzgerald",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 51,
+  "v1": 51,
+  "yrs": 0
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "vM2"
+  ],
+  "games": 27,
+  "gfut": "MID",
+  "key": "matt-carroll",
+  "name": "Matt Carroll",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 942,
+  "v1": 942,
+  "yrs": 3
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "vM2"
+  ],
+  "games": 14,
+  "gfut": "SD",
+  "key": "zak-johnson",
+  "name": "Zak Johnson",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 544,
+  "v1": 544,
+  "yrs": 2
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 9,
+  "gfut": "SF",
+  "key": "paddy-cross",
+  "name": "Paddy Cross",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 23,
+  "v1": 113,
+  "yrs": 1
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 3,
+  "gfut": "MID",
+  "key": "ollie-greeves",
+  "name": "Ollie Greeves",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 626,
+  "v1": 502,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vP1",
+   "vP2"
+  ],
+  "games": 31,
+  "gfut": "SD",
+  "key": "flynn-perez",
+  "name": "Flynn Perez",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 7,
+  "v1": 113,
+  "yrs": 1
+ },
+ {
+  "div": "RD:MID",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 10,
+  "gfut": "MID",
+  "key": "jack-watkins",
+  "name": "Jack Watkins",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 2,
+  "v1": 132,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 7,
+  "gfut": "SF",
+  "key": "chris-scerri",
+  "name": "Chris Scerri",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 340,
+  "v1": 340,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 11,
+  "gfut": "KPF",
+  "key": "will-lewis",
+  "name": "Will Lewis",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 29,
+  "v1": 113,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 20,
+  "gfut": "MID",
+  "key": "roan-steele",
+  "name": "Roan Steele",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 14,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 28,
+  "gfut": "KPF",
+  "key": "mykelti-lefau",
+  "name": "Mykelti Lefau",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 18,
+  "v1": 70,
+  "yrs": 3
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 15,
+  "gfut": "SF",
+  "key": "ewan-mackinlay",
+  "name": "Ewan Mackinlay",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 40,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 10,
+  "gfut": "SD",
+  "key": "jayden-nguyen",
+  "name": "Jayden Nguyen",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 482,
+  "v1": 482,
+  "yrs": 2
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 4,
+  "gfut": "SF",
+  "key": "riley-hamilton",
+  "name": "Riley Hamilton",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 289,
+  "v1": 255,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 5,
+  "gfut": "SF",
+  "key": "mitch-zadow",
+  "name": "Mitch Zadow",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 65,
+  "v1": 113,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 12,
+  "gfut": "KPD",
+  "key": "campbell-gray",
+  "name": "Campbell Gray",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 182,
+  "v1": 182,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 7,
+  "gfut": "SF",
+  "key": "xavier-bamert",
+  "name": "Xavier Bamert",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 386,
+  "v1": 386,
+  "yrs": 0
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 5,
+  "gfut": "SF",
+  "key": "thomas-burton",
+  "name": "Thomas Burton",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 388,
+  "v1": 388,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 4,
+  "gfut": "KPD",
+  "key": "liam-puncher",
+  "name": "Liam Puncher",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 117,
+  "v1": 135,
+  "yrs": 0
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 9,
+  "gfut": "KPF",
+  "key": "tom-edwards",
+  "name": "Tom Edwards",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 29,
+  "v1": 88,
+  "yrs": 2
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 9,
+  "gfut": "SF",
+  "key": "lachlan-gulbin",
+  "name": "Lachlan Gulbin",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 393,
+  "v1": 393,
+  "yrs": 2
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SD",
+  "key": "rob-monahan",
+  "name": "Rob Monahan",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 176,
+  "v1": 48,
+  "yrs": 3
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "SF",
+  "key": "nathan-wardius",
+  "name": "Nathan Wardius",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 144,
+  "v1": 67,
+  "yrs": 3
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 8,
+  "gfut": "SF",
+  "key": "josaia-delana",
+  "name": "Josaia Delana",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 268,
+  "v1": 268,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 8,
+  "gfut": "SF",
+  "key": "zac-banch",
+  "name": "Zac Banch",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 34,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 25,
+  "gfut": "SF",
+  "key": "lachie-sullivan",
+  "name": "Lachie Sullivan",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 0,
+  "v1": 70,
+  "yrs": 3
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 6,
+  "gfut": "KPF",
+  "key": "aidan-johnson",
+  "name": "Aidan Johnson",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "ND",
+  "v0": 30,
+  "v1": 76,
+  "yrs": 2
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 6,
+  "gfut": "SF",
+  "key": "tom-cochrane",
+  "name": "Tom Cochrane",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 261,
+  "v1": 225,
+  "yrs": 2
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 10,
+  "gfut": "SF",
+  "key": "malakai-champion",
+  "name": "Malakai Champion",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 393,
+  "v1": 393,
+  "yrs": 2
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 5,
+  "gfut": "MID",
+  "key": "ben-jepson",
+  "name": "Ben Jepson",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 6,
+  "v1": 88,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 11,
+  "gfut": "SF",
+  "key": "flynn-young",
+  "name": "Flynn Young",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 9,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 5,
+  "gfut": "SF",
+  "key": "jacob-newton",
+  "name": "Jacob Newton",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 215,
+  "v1": 207,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 38,
+  "gfut": "SD",
+  "key": "james-trezise",
+  "name": "James Trezise",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 119,
+  "v1": 119,
+  "yrs": 3
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 7,
+  "gfut": "RUCK",
+  "key": "oliver-hayes-brown",
+  "name": "Oliver Hayes-Brown",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 221,
+  "v1": 221,
+  "yrs": 3
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 7,
+  "gfut": "RUCK",
+  "key": "liam-reidy",
+  "name": "Liam Reidy",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "RD",
+  "v0": 315,
+  "v1": 352,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 28,
+  "gfut": "MID",
+  "key": "jack-hutchinson",
+  "name": "Jack Hutchinson",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 28,
+  "v1": 100,
+  "yrs": 2
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 273,
+  "gfut": "SF",
+  "key": "charlie-cameron",
+  "name": "Charlie Cameron",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 191,
+  "v1": 191,
+  "yrs": 13
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 5,
+  "gfut": "SF",
+  "key": "jack-henderson",
+  "name": "Jack Henderson",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 3,
+  "v1": 107,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 9,
+  "gfut": "MID",
+  "key": "mani-liddy",
+  "name": "Mani Liddy",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 20,
+  "v1": 128,
+  "yrs": 1
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 12,
+  "gfut": "SF",
+  "key": "tom-hanily",
+  "name": "Tom Hanily",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 167,
+  "v1": 167,
+  "yrs": 2
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 16,
+  "gfut": "SD",
+  "key": "liam-o-connell",
+  "name": "Liam O'Connell",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 29,
+  "v1": 37,
+  "yrs": 3
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 17,
+  "gfut": "SD",
+  "key": "saad-el-hawli",
+  "name": "Saad El-Hawli",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 13,
+  "v1": 100,
+  "yrs": 2
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 14,
+  "gfut": "SD",
+  "key": "wil-parker",
+  "name": "Wil Parker",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 21,
+  "v1": 29,
+  "yrs": 3
+ },
+ {
+  "div": "RD:KPF",
+  "fields": [
+   "vM2"
+  ],
+  "games": 13,
+  "gfut": "KPF",
+  "key": "finnbar-maley",
+  "name": "Finnbar Maley",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 265,
+  "v1": 265,
+  "yrs": 3
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM2"
+  ],
+  "games": 7,
+  "gfut": "SF",
+  "key": "will-mclachlan",
+  "name": "Will McLachlan",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 130,
+  "v1": 130,
+  "yrs": 2
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 11,
+  "gfut": "KPF",
+  "key": "toby-murray",
+  "name": "Toby Murray",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 219,
+  "v1": 219,
+  "yrs": 2
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 12,
+  "gfut": "KPD",
+  "key": "will-edwards",
+  "name": "Will Edwards",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 196,
+  "v1": 196,
+  "yrs": 4
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 8,
+  "gfut": "RUCK",
+  "key": "oscar-steene",
+  "name": "Oscar Steene",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 496,
+  "v1": 496,
+  "yrs": 4
+ },
+ {
+  "div": "SSP",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 8,
+  "gfut": "KPF",
+  "key": "hudson-o-keeffe",
+  "name": "Hudson O'Keeffe",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "SSP",
+  "v0": 261,
+  "v1": 240,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1"
+  ],
+  "games": 20,
+  "gfut": "KPF",
+  "key": "jack-buller",
+  "name": "Jack Buller",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 60,
+  "v1": 80,
+  "yrs": 3
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "vM2"
+  ],
+  "games": 19,
+  "gfut": "KPD",
+  "key": "sandy-brock",
+  "name": "Sandy Brock",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 173,
+  "v1": 173,
+  "yrs": 5
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vP1",
+   "vP2"
+  ],
+  "games": 20,
+  "gfut": "SF",
+  "key": "robert-hansen",
+  "name": "Robert Hansen",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 103,
+  "v1": 103,
+  "yrs": 3
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 62,
+  "gfut": "SD",
+  "key": "oisin-mullin",
+  "name": "Oisin Mullin",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 5,
+  "v1": 17,
+  "yrs": 5
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2"
+  ],
+  "games": 9,
+  "gfut": "KPD",
+  "key": "wade-derksen",
+  "name": "Wade Derksen",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 58,
+  "v1": 60,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 23,
+  "gfut": "MID",
+  "key": "jai-culley",
+  "name": "Jai Culley",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 194,
+  "v1": 194,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 11,
+  "gfut": "KPF",
+  "key": "max-ramsden",
+  "name": "Max Ramsden",
+  "pool": true,
+  "route": "blend",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 199,
+  "v1": 182,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 24,
+  "gfut": "KPD",
+  "key": "james-blanck",
+  "name": "James Blanck",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 21,
+  "v1": 60,
+  "yrs": 4
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "v",
+   "vM1"
+  ],
+  "games": 85,
+  "gfut": "SF",
+  "key": "lachlan-mcneil",
+  "name": "Lachlan McNeil",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 17,
+  "v1": 21,
+  "yrs": 6
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 40,
+  "gfut": "SD",
+  "key": "jordan-boyd",
+  "name": "Jordan Boyd",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 3,
+  "v1": 37,
+  "yrs": 5
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 93,
+  "gfut": "KPD",
+  "key": "billy-frampton",
+  "name": "Billy Frampton",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 60,
+  "v1": 33,
+  "yrs": 12
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "vM1",
+   "vM2"
+  ],
+  "games": 11,
+  "gfut": "RUCK",
+  "key": "max-heath",
+  "name": "Max Heath",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "MSD",
+  "v0": 635,
+  "v1": 635,
+  "yrs": 5
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "vP1",
+   "vP2"
+  ],
+  "games": 75,
+  "gfut": "RUCK",
+  "key": "darcy-fort",
+  "name": "Darcy Fort",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 27,
+  "v1": 27,
+  "yrs": 8
+ },
+ {
+  "div": "RD:KPD",
+  "fields": [
+   "vM1",
+   "vM2",
+   "vP2"
+  ],
+  "games": 110,
+  "gfut": "KPD",
+  "key": "lewis-melican",
+  "name": "Lewis Melican",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 28,
+  "v1": 28,
+  "yrs": 12
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "vP1",
+   "vP2"
+  ],
+  "games": 139,
+  "gfut": "SF",
+  "key": "bradley-close",
+  "name": "Bradley Close",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "RD",
+  "v0": 18,
+  "v1": 18,
+  "yrs": 7
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vP1",
+   "vP2"
+  ],
+  "games": 94,
+  "gfut": "KPD",
+  "key": "brandon-zerk-thatcher",
+  "name": "Brandon Zerk-Thatcher",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 63,
+  "v1": 51,
+  "yrs": 9
+ },
+ {
+  "div": "RD:KPF",
+  "fields": [
+   "avail_nerf",
+   "v"
+  ],
+  "games": 169,
+  "gfut": "KPF",
+  "key": "brody-mihocek",
+  "name": "Brody Mihocek",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 4,
+  "v1": 10,
+  "yrs": 9
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "vP2"
+  ],
+  "games": 87,
+  "gfut": "SD",
+  "key": "changkuoth-jiath",
+  "name": "Changkuoth Jiath",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDN",
+  "v0": 14,
+  "v1": 14,
+  "yrs": 9
+ },
+ {
+  "div": "RD:KPD",
+  "fields": [
+   "v",
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 94,
+  "gfut": "KPD",
+  "key": "jordon-butts",
+  "name": "Jordon Butts",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 7,
+  "v1": 15,
+  "yrs": 8
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 132,
+  "gfut": "MID",
+  "key": "harry-morrison",
+  "name": "Harry Morrison",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 29,
+  "v1": 29,
+  "yrs": 10
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vP1",
+   "vP2"
+  ],
+  "games": 159,
+  "gfut": "SF",
+  "key": "lincoln-mccarthy",
+  "name": "Lincoln McCarthy",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 19,
+  "v1": 10,
+  "yrs": 15
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "vP1",
+   "vP2"
+  ],
+  "games": 163,
+  "gfut": "SD",
+  "key": "mark-o-connor",
+  "name": "Mark O'Connor",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 8,
+  "v1": 8,
+  "yrs": 10
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 102,
+  "gfut": "SD",
+  "key": "sam-wicks",
+  "name": "Sam Wicks",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 12,
+  "v1": 12,
+  "yrs": 8
+ },
+ {
+  "div": "RD:KPD",
+  "fields": [
+   "avail_nerf",
+   "v",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 37,
+  "gfut": "KPD",
+  "key": "toby-pink",
+  "name": "Toby Pink",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 8,
+  "v1": 15,
+  "yrs": 10
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vP1",
+   "vP2"
+  ],
+  "games": 37,
+  "gfut": "KPD",
+  "key": "caleb-graham",
+  "name": "Caleb Graham",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "ND",
+  "v0": 54,
+  "v1": 35,
+  "yrs": 8
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 188,
+  "gfut": "SD",
+  "key": "nathan-broad",
+  "name": "Nathan Broad",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "ND",
+  "v0": 5,
+  "v1": 10,
+  "yrs": 11
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 141,
+  "gfut": "SF",
+  "key": "conor-mckenna",
+  "name": "Conor McKenna",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 3,
+  "v1": 7,
+  "yrs": 12
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vP1",
+   "vP2"
+  ],
+  "games": 310,
+  "gfut": "MID",
+  "key": "mark-blicavs",
+  "name": "Mark Blicavs",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 3,
+  "v1": 5,
+  "yrs": 15
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 91,
+  "gfut": "SF",
+  "key": "matt-owies",
+  "name": "Matt Owies",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 0,
+  "v1": 5,
+  "yrs": 8
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 124,
+  "gfut": "SF",
+  "key": "matt-guelfi",
+  "name": "Matt Guelfi",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "ND",
+  "v0": 15,
+  "v1": 10,
+  "yrs": 9
+ },
+ {
+  "div": "RD:SF",
+  "fields": [
+   "v",
+   "vP1",
+   "vP2"
+  ],
+  "games": 118,
+  "gfut": "SF",
+  "key": "bailey-banfield",
+  "name": "Bailey Banfield",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 7,
+  "v1": 11,
+  "yrs": 9
+ },
+ {
+  "div": "IRE",
+  "fields": [
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 27,
+  "gfut": "KPD",
+  "key": "darragh-joyce",
+  "name": "Darragh Joyce",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "active",
+  "type": "IRE",
+  "v0": 7,
+  "v1": 7,
+  "yrs": 10
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 159,
+  "gfut": "SF",
+  "key": "daniel-butler",
+  "name": "Daniel Butler",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "ND",
+  "v0": 17,
+  "v1": 10,
+  "yrs": 12
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 151,
+  "gfut": "KPF",
+  "key": "mason-cox",
+  "name": "Mason Cox",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "UNR",
+  "v0": 0,
+  "v1": 5,
+  "yrs": 12
+ },
+ {
+  "div": "RD:SD",
+  "fields": [
+   "v",
+   "vM1",
+   "vP1",
+   "vP2"
+  ],
+  "games": 284,
+  "gfut": "SD",
+  "key": "dane-rampe",
+  "name": "Dane Rampe",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "RD",
+  "v0": 1,
+  "v1": 12,
+  "yrs": 14
+ },
+ {
+  "div": "ND65+",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 175,
+  "gfut": "SD",
+  "key": "jed-bews",
+  "name": "Jed Bews",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "ND",
+  "v0": 33,
+  "v1": 10,
+  "yrs": 15
+ },
+ {
+  "div": "PDA",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 230,
+  "gfut": "SD",
+  "key": "harry-cunningham",
+  "name": "Harry Cunningham",
+  "pool": true,
+  "route": "floor",
+  "sec": "active",
+  "type": "PDA",
+  "v0": 0,
+  "v1": 10,
+  "yrs": 15
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "joe-furphy",
+  "name": "Joe Furphy",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "UNR",
+  "v0": 7,
+  "v1": 3,
+  "yrs": 3
+ },
+ {
+  "div": "PDN",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "coen-livingstone",
+  "name": "Coen Livingstone",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "PDN",
+  "v0": 7,
+  "v1": 3,
+  "yrs": 3
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "will-verrall",
+  "name": "Will Verrall",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "RD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 4
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "cameron-owen",
+  "name": "Cameron Owen",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "RD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 4
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "darryl-mcdowell-white",
+  "name": "Darryl McDowell-White",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "UNR",
+  "v0": 6,
+  "v1": 3,
+  "yrs": 4
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 0,
+  "gfut": "RUCK",
+  "key": "clay-tucker",
+  "name": "Clay Tucker",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "MSD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 3
+ },
+ {
+  "div": "MSD",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 21,
+  "gfut": "RUCK",
+  "key": "brynn-teakle",
+  "name": "Brynn Teakle",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "back",
+  "type": "MSD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 4
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 7,
+  "gfut": "RUCK",
+  "key": "kieran-strachan",
+  "name": "Kieran Strachan",
+  "pool": true,
+  "route": "blend",
+  "sec": "back",
+  "type": "RD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 8
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 165,
+  "gfut": "RUCK",
+  "key": "oscar-mcinerney",
+  "name": "Oscar McInerney",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "back",
+  "type": "RD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 10
+ },
+ {
+  "div": "UNR",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 66,
+  "gfut": "RUCK",
+  "key": "ivan-soldo",
+  "name": "Ivan Soldo",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "back",
+  "type": "UNR",
+  "v0": 7,
+  "v1": 3,
+  "yrs": 12
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 33,
+  "gfut": "RUCK",
+  "key": "sam-naismith",
+  "name": "Sam Naismith",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "back",
+  "type": "RD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 14
+ },
+ {
+  "div": "RD:RUCK",
+  "fields": [
+   "v",
+   "vM1",
+   "vM2",
+   "vP1",
+   "vP2"
+  ],
+  "games": 58,
+  "gfut": "RUCK",
+  "key": "tom-campbell",
+  "name": "Tom Campbell",
+  "pool": true,
+  "route": "ruck cap / other",
+  "sec": "back",
+  "type": "RD",
+  "v0": 7,
+  "v1": 8,
+  "yrs": 15
+ }
+]

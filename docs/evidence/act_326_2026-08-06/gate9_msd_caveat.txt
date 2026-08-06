@@ -1,0 +1,18 @@
+MSD COMPLETION-OPTIMISM CAVEAT — printed beside the level wherever the levels are shown (gate 9)
+
+1. the build (rl_export.py, on every board build):
+   #326 PER-DIVISION ENTRY LEVELS (N43 signed, read verbatim from pvc_curve_v2.json; pool_value 237.2 is NOT a player price): IRE 133 · MSD 286 [MSD completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)] · ND65+ 185 · PDA 194 · PDN 123 · PDS 145 · RD:KPD 300 · RD:KPF 216 · RD:MID 294 · RD:RUCK 282 · RD:SD 246 · RD:SF 231 · SSP 252 · UNR 103
+
+2. the engine's own load-time line (_merged_recover.py, on any direct engine run):
+   #326 ENTRY ANCHOR WIRED: 1202 pool entrants anchor on their signed division level — ruck cap in ladder currency, floor and thin-record blend at x1.0524 (board factor). Frozen year-zero surface LOADED (sig af556bdc), not refitted.
+   (rl_model.py also prints the full signed table with the caveat at load; that line is swallowed by
+   the export's import redirect, which is why the export re-prints it at (1) where it is visible.)
+
+3. the selftest (one_source_selftest.py section 10):
+     PASS #326 MSD's completion-optimism caveat travels with its level: '+4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)'
+          MSD 286.8  [completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)]
+          MSD's level carries its completion-optimism caveat wherever it is shown: +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)
+
+4. the artifact and its ui mirror carry it as data:
+   engine/rl_after/pvc_curve_v2.json  +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)
+   ui/release_pick_curve.json         +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)

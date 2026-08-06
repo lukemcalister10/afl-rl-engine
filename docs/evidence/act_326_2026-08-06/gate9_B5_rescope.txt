@@ -1,0 +1,21 @@
+== ship_gates_check.py on this tree: HALTS before any gate (pre-existing, unrelated to #326) ==
+   ship_gates_check.py:64 hard-sets RL_GAMMA=0.85; data/model_config.json pins RL_GAMMA=1.0.
+   Both are at the UNMODIFIED tip:
+64:os.environ.update(PYTHONHASHSEED='0', RL_GAMMA='0.85', RL_PICK1='3000', RL_RUCK_TAX='0.25',
+   manifest RL_GAMMA = 1.0
+
+== the RE-SCOPED B5 block, exercised directly ==
+B5 RE-SCOPED (national draftees + engine-pool entrants on their signed division levels)
+  scope: 561 national-draft rows + 225 pool rows
+  saves (floor bound): 104   of which pool: 42
+  BAR lowered            = 0 (bar 0)  -- the floor is still a pure lower bound
+  BAR moved out of scope = 0 (bar 0)  -- nobody outside the floor scope moves
+  verdict: FEATURE (both bars met)
+
+  floor column basis check (the engine's own entry anchor, not the retired draftval basis):
+    Latrelle Pickett         yrs=1   anchor=  1281.8  floor=   576.8  shipped(engine)=   577.0
+    Billy Cootee             yrs=1   anchor=   618.1  floor=   278.1  shipped(engine)=   278.0
+    Jack Watkins             yrs=1   anchor=   309.4  floor=   139.2  shipped(engine)=   139.0
+    Tom Blamires             yrs=1   anchor=   265.2  floor=   119.3  shipped(engine)=   119.0
+    Paddy Cross              yrs=1   anchor=   265.2  floor=   119.3  shipped(engine)=   119.0
+    Will Lewis               yrs=1   anchor=   265.2  floor=   119.3  shipped(engine)=   119.0

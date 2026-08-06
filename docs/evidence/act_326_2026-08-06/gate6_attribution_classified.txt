@@ -1,0 +1,65 @@
+BOARD ROWS 1002 · movers (any field) 177 · non-pool movers 0
+every mover is engine-pool-classified: True
+
+| division | movers | up | down | v unchanged | median dv | min dv | max dv |
+|---|---|---|---|---|---|---|---|
+| IRE | 12 | 3 | 7 | 2 | -29 | -238 | +12 |
+| MSD | 56 | 20 | 14 | 22 | +0 | -141 | +154 |
+| ND65+ | 17 | 2 | 11 | 4 | -9 | -198 | +46 |
+| PDA | 12 | 2 | 4 | 6 | +0 | -123 | +10 |
+| PDN | 11 | 0 | 8 | 3 | -91 | -198 | +0 |
+| RD:KPD | 5 | 2 | 1 | 2 | +0 | -237 | +8 |
+| RD:KPF | 2 | 1 | 0 | 1 | +6 | +0 | +6 |
+| RD:MID | 7 | 1 | 4 | 2 | -124 | -201 | +130 |
+| RD:RUCK | 10 | 7 | 3 | 0 | +1 | -20 | +37 |
+| RD:SD | 3 | 1 | 1 | 1 | +0 | -172 | +11 |
+| RD:SF | 8 | 2 | 3 | 3 | +0 | -181 | +4 |
+| SSP | 19 | 10 | 2 | 7 | +48 | -55 | +106 |
+| UNR | 15 | 6 | 8 | 1 | -3 | -212 | +42 |
+
+pool population (store rows) vs movers by division:
+   IRE       store rows   57   board movers  12
+   MSD       store rows  106   board movers  56
+   ND65+     store rows  122   board movers  17
+   PDA       store rows   51   board movers  12
+   PDN       store rows   43   board movers  11
+   PDS       store rows   21   board movers   0
+   RD:KPD    store rows   72   board movers   5
+   RD:KPF    store rows   65   board movers   2
+   RD:MID    store rows  176   board movers   7
+   RD:RUCK   store rows   71   board movers  10
+   RD:SD     store rows  158   board movers   3
+   RD:SF     store rows  149   board movers   8
+   SSP       store rows   52   board movers  19
+   UNR       store rows   59   board movers  15
+
+V-MOVERS by route x career depth (senior games in the store):
+   blend              thin(<20g)    72
+   floor              career(>=20g)  26
+   floor              thin(<20g)    16
+   ruck cap / other   career(>=20g)   9
+
+movers WITH a real career (>=20 senior games), biggest first:
+   Lachlan Blakiston        MSD      floor    games=28   yrs=1   v     8 ->   128 (+120)
+   Roan Steele              MSD      floor    games=20   yrs=1   v    14 ->   128 (+114)
+   Flynn Perez              SSP      floor    games=31   yrs=1   v     7 ->   113 (+106)
+   Jack Hutchinson          MSD      floor    games=28   yrs=2   v    28 ->   100 (+72)
+   Lachie Sullivan          SSP      floor    games=25   yrs=3   v     0 ->    70 (+70)
+   Mykelti Lefau            SSP      floor    games=28   yrs=3   v    18 ->    70 (+52)
+   James Blanck             MSD      floor    games=24   yrs=4   v    21 ->    60 (+39)
+   Jordan Boyd              MSD      floor    games=40   yrs=5   v     3 ->    37 (+34)
+   Billy Frampton           ND65+    ruck cap / other games=93   yrs=12  v    60 ->    33 (-27)
+   Jed Bews                 ND65+    floor    games=175  yrs=15  v    33 ->    10 (-23)
+   Jack Buller              MSD      floor    games=20   yrs=3   v    60 ->    80 (+20)
+   Caleb Graham             ND65+    ruck cap / other games=37   yrs=8   v    54 ->    35 (-19)
+   Oisin Mullin             IRE      floor    games=62   yrs=5   v     5 ->    17 (+12)
+   Brandon Zerk-Thatcher    ND65+    ruck cap / other games=94   yrs=9   v    63 ->    51 (-12)
+   Dane Rampe               RD:SD    floor    games=284  yrs=14  v     1 ->    12 (+11)
+   Harry Cunningham         PDA      floor    games=230  yrs=15  v     0 ->    10 (+10)
+   Lincoln McCarthy         ND65+    ruck cap / other games=159  yrs=15  v    19 ->    10 (-9)
+   Jordon Butts             RD:KPD   floor    games=94   yrs=8   v     7 ->    15 (+8)
+   Toby Pink                RD:KPD   floor    games=37   yrs=10  v     8 ->    15 (+7)
+   Daniel Butler            ND65+    floor    games=159  yrs=12  v    17 ->    10 (-7)
+   ... 35 such rows in total
+
+wrote gate6_movers.json

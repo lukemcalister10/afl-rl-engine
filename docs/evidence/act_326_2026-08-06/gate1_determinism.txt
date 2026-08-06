@@ -1,0 +1,10 @@
+#326 second rehearsal — DETERMINISM (gate 1)
+
+run 1 (first build of the act)          : 864b6726a4612b0d8afe57f230421514
+run 2 (after the board re-pin)          : 864b6726a4612b0d8afe57f230421514
+run 3 (after the RED series, restored)  : 864b6726a4612b0d8afe57f230421514
+run 4 (final, on the finished tree)     : 864b6726a4612b0d8afe57f230421514
+
+pre-change baseline, byte-reproduced on this box before any edit: 2b7c1a00ee88c42e46d56ca1ccce44cd
+Movers are EXPECTED under this act (addendum 5: a zero-mover outcome is a RED). 177 rows differ,
+every one of them engine-pool-classified.
