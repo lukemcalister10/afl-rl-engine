@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v77 · supervisor pen · 2026-08-06, register v586
+# CURRENT STATE — the incoming-seat read · v78 · supervisor pen · 2026-08-06, register v587
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,10 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v77 · supervisor pen · 2026-08-06, register v586 · replaced wholesale at the #336-VARIANT PEN —
-the bust-inclusive side-by-side is measured and served; THE OWNER'S RULING IS THE LIVE QUESTION.
-The primer is at v4 — read it first, in full.)
+(v78 · supervisor pen · 2026-08-06, register v587 · replaced wholesale at the AMENDED-#336 PEN —
+the owner's Robey catch amended the variant (career-level P; yr1-to-peak now a mandatory headline);
+honest numbers served; THE OWNER'S RULING IS THE LIVE QUESTION. The primer is at v4 — read it
+first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -187,8 +188,14 @@ restated at L3 step 33) and the corrected re-delivery. Any extension is a NEW ow
    committed (engine/rl_after/s4_matrix_M1v7.json, meta: store 37ced3ce · engine 8f0e3eb1 · n 2647);
    era parity exact (460 pairs); the no-arb/per_entrant lineage REISSUED on the rule same day
    (docs/evidence/noarb_338_2026-08-06/, v585) — tenure-provisionality lifted; #336 remains open.
-4. **#336 bust-inclusive variant** on the honest book → ONE side-by-side to the owner. His single
-   queued decision.
+4. ~~#336 variant~~ **MEASURED, AMENDED ON THE OWNER'S ROBEY CATCH, RE-SERVED 2026-08-06**
+   (v586–v587; #336 Addendum 1: career-level P(ever establishes) at anchors, yr1-to-peak a
+   mandatory headline; branch variant/336-bust-inclusive @ a7bff5a, never merged). Amended
+   headlines: hump yr4 1.410 (peak 1.462 yr5) · yr1-to-peak 1.439× vs baseline 1.394× · top-end
+   3.921× · board −8.47% · Robey 1.35× draft-day · double-charge ≈1.0. Residuals on the sheet:
+   late-pick yr1-to-peak steepening (real population fact) · 5 thin-cell steps · Dean boundary
+   case (held-surface artefact, resolves at stage B). **AWAITING THE OWNER'S RULING** — it
+   triggers stage B.
 5. **#332 addendum** (#306 comment 5186108632) · the #333 memo absorbs the #336 result · #334
    stage B rides the post-ruling re-derivation.
 ## RUNNING THIS SEAT WELL — including the FABLE BUDGET (owner word 2026-08-06)
@@ -215,7 +222,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v586 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v587 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
