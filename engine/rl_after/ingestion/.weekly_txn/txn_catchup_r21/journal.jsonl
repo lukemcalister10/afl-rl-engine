@@ -1,0 +1,36 @@
+{"event": "STAGE_BEGIN", "players": 409, "round": 21, "season": 2026}
+{"event": "STORE_STAGED", "players_merged": 409, "staged_store_md5": "37ced3ce45914e6feb00d27e26922e9a"}
+{"as_of_round": 21, "calendar_progress": 0.88, "eligible_durable": 305, "event": "SEASON_STATE_STAGED", "exposure_pace": 0.773, "median_current_games": 17, "source_store_md5": "37ced3ce45914e6feb00d27e26922e9a"}
+{"config_hash": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739", "event": "BOARD_STAGED", "fv_distribution_pricing_md5": "8341ca11ac50921eabbe4c79a1a3d0b5", "fv_rl_fv": "/tmp/wkupd_ws_fp68d2sa/engine/forward_valuation", "staged_board_md5": "113b36f898a32363c49c2a62fb809f4b"}
+{"as_of_round": 21, "event": "MANIFEST_STAGED"}
+{"as_of_round": 21, "board": "113b36f8", "contract_sha256": "3e08ff818b82", "event": "CONTRACT_STAGED", "store": "37ced3ce"}
+{"active": 804, "balanced_board_md5": "123deccb0838c7370ce614d7f4310b01", "event": "SIBLING_STAGED", "forward_board_md5": "113b36f898a32363c49c2a62fb809f4b", "forward_config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739", "forward_f5_seal": "c9e7491b", "forward_oracle": "test_forward_lens_113b36f8.py", "forward_p1_total": 705570, "forward_p2_total": 652543, "forward_switch_posture": {"RL_LEGE": "1", "RL_LEGF": "1", "RL_PVC2": "1"}, "forward_vector": "forward_vector_113b36f8.json", "forward_vector_sha256": "7221dd764ebcc9d2a5a2626efbb2aee9b3b22a50636d97001d5439375c98a7cd", "reference_vector": "reference_vector_123deccb.json", "sheezel": 12124, "sum_v": 759722}
+{"added": 409, "event": "LEDGER_STAGED", "total": 2677}
+{"event": "HISTORY_STAGED", "players": 804, "pos_rank_history_md5": "af817897978c6b679a537282b17a0bd2", "prev_round": 20, "rank_history_md5": "1bcc0a0a6ad937dfe098a21eb5ca5d4a", "round": 21, "rounds_after": [14, 15, 16, 17, 18, 19, 20, 21], "rounds_before": [14, 15, 16, 17, 18, 19, 20], "season": 2026, "value_history_md5": "0cf68f282a201a4e1ea5ed1763b21a74"}
+{"event": "STATUS", "status": "VALIDATED"}
+{"event": "VALIDATE_OK", "guard5_green": true}
+{"collected": 17, "declared": 17, "event": "STAGED_COLLECTED", "targets": ["board", "ledger", "manifest", "pos_rank_history", "rank_history", "release_contract", "season_state", "sibling_board_view_public", "sibling_board_view_working", "sibling_forward_oracle", "sibling_forward_vector", "sibling_fv_test", "sibling_reference_vector", "sibling_sidecar", "sidecar", "store", "value_history"]}
+{"absent": ["sibling_forward_oracle", "sibling_forward_vector", "sibling_reference_vector"], "backed_up": ["board", "ledger", "manifest", "pos_rank_history", "rank_history", "release_contract", "season_state", "sibling_board_view_public", "sibling_board_view_working", "sibling_fv_test", "sibling_sidecar", "sidecar", "store", "value_history"], "event": "ORIGINALS_BACKED_UP_DETAIL"}
+{"event": "ORIGINALS_BACKED_UP"}
+{"event": "STATUS", "status": "COMMITTING"}
+{"event": "COMMIT_BEGIN", "order": ["store", "board", "sidecar", "manifest", "season_state", "release_contract", "ledger", "value_history", "rank_history", "pos_rank_history", "sibling_reference_vector", "sibling_forward_vector", "sibling_forward_oracle", "sibling_fv_test", "sibling_board_view_working", "sibling_board_view_public", "sibling_sidecar"]}
+{"event": "REPLACED", "final_md5": "37ced3ce4591", "target": "store"}
+{"event": "REPLACED", "final_md5": "113b36f898a3", "target": "board"}
+{"event": "REPLACED", "final_md5": "6d80c58cd747", "target": "sidecar"}
+{"event": "REPLACED", "final_md5": "f6154f5e5f6f", "target": "manifest"}
+{"event": "REPLACED", "final_md5": "57945b890329", "target": "season_state"}
+{"event": "REPLACED", "final_md5": "def46678e50a", "target": "release_contract"}
+{"event": "REPLACED", "final_md5": "59f2f0f22ad5", "target": "ledger"}
+{"event": "REPLACED", "final_md5": "0cf68f282a20", "target": "value_history"}
+{"event": "REPLACED", "final_md5": "1bcc0a0a6ad9", "target": "rank_history"}
+{"event": "REPLACED", "final_md5": "af817897978c", "target": "pos_rank_history"}
+{"event": "REPLACED", "final_md5": "bc290a0b557b", "target": "sibling_reference_vector"}
+{"event": "REPLACED", "final_md5": "666dc8969c5f", "target": "sibling_forward_vector"}
+{"event": "REPLACED", "final_md5": "6db17a8e9f14", "target": "sibling_forward_oracle"}
+{"event": "REPLACED", "final_md5": "8aeeb1b41bea", "target": "sibling_fv_test"}
+{"event": "REPLACED", "final_md5": "e6499ecf1d70", "target": "sibling_board_view_working"}
+{"event": "REPLACED", "final_md5": "79a11f14d020", "target": "sibling_board_view_public"}
+{"event": "REPLACED", "final_md5": "3ba6bdc1c53b", "target": "sibling_sidecar"}
+{"declared": 17, "event": "COMMIT_VERIFIED", "replaced": 17}
+{"event": "STATUS", "status": "COMMITTED"}
+{"event": "COMMIT_OK"}

@@ -44,3 +44,8 @@
 {"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
 {"event": "STATUS", "round": 20, "status": "FINALIZED"}
 {"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R20.json", "round": 20}
+{"board_md5_after": "113b36f898a32363c49c2a62fb809f4b", "event": "CORE_COMMITTED", "reconciled": false, "round": 21, "txn_id": "txn_catchup_r21"}
+{"event": "STATUS", "round": 21, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 21}
+{"event": "STATUS", "round": 21, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R21.json", "round": 21}
