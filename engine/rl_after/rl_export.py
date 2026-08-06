@@ -153,6 +153,16 @@ assert max(_ADOPTED)==POOL_PICK, \
 PVC={k:_ADOPTED[k] for k in _ADOPTED}                             # shipped PVC IS the adopted ladder: curve 1..64 + the pool index
 print('L7 ADOPTED-CURVE REPOINT: shipped PVC = %s (pick1=%d, national curve 1-%d strictly decreasing, pool index %d = %d, ÷F=%.4f on players)'
       %(_pvc_art,PVC[1],ND_CURVE_LAST,POOL_PICK,PVC[POOL_PICK],_F))
+# #326: the shipped ladder still carries ONE pool index — it is the pick side's pool price, the entrant layer
+# and the display band. Player prices no longer read it: each pool entrant ENTERS at his own signed division
+# level (the year-zero floor and the thin-record blend anchor on it; a pool ruck's prior cap uses it as its
+# basis). The levels are board currency, which is the currency this board displays, so the figures below are
+# exactly what a record-free entrant of that division is worth on the board before any career is written.
+_PL_LEVELS=g['_POOL_LEVELS']; _PL_CAVEAT=g['_MSD_CAVEAT']
+print('#326 PER-DIVISION ENTRY LEVELS (N43 signed, read verbatim from %s; pool_value %s is NOT a player price): %s'
+      %(_pvc_art,_adopted_doc.get('pool_value'),
+        ' · '.join('%s %d%s'%(_k,_PL_LEVELS[_k],' [MSD completion optimism %s]'%_PL_CAVEAT if _k=='MSD' else '')
+                   for _k in sorted(_PL_LEVELS))))
 # ==== (g) NUMÉRAIRE ASSERT — UNCONDITIONAL STANDING LAW (register v30 item 17; L7 baked 2026-07-13) =======
 # "PICK 1 = 3000 IS THE NUMÉRAIRE." The dormant legacy (×1.0524, factor≠1.0) branch is RETIRED at the bake:
 # no pre-L7 path remains, so the assert is UNCONDITIONAL — a shipped board with pick-1 ≠ 3000 HALTS, always.

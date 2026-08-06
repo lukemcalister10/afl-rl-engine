@@ -1008,6 +1008,78 @@ else:
 # the producer transforms. rl_export rebuilds its OWN shipped curve from pvc_curve artifacts keyed by the
 # _ADOPTED intersection, so g['PVC']'s key-set change (if any) does not reach the board (verified: board-null).
 PVC=_PVC2M
+# ===== #326 PER-DIVISION POOL LEVELS — the N43 signed table, resolved once per build ========================
+# WHAT THIS IS. Before this, every pool entrant shared ONE number: the ladder's pool slot. The owner's signed
+# data gives each intake pathway its own level and prices the rookie draft by position. This block resolves
+# the fourteen levels and answers ONE question per player — which signed division is he? Nothing here prices
+# anything; the pricing sites live in _merged_recover.py (the entry anchor: the year-zero floor, the
+# thin-record blend, and the ruck prior cap's basis), per the owner's consumption ruling (addendum 5).
+#
+#   THE LEVELS ARE OWNER-SIGNED DATA — read verbatim from the curve artifact's pool_levels block and never
+#   recomputed here. They are LADDER/BOARD currency (addendum 6 item 5); the conversion to engine-value
+#   currency happens at the consuming site, not here, so this table stays the signed table.
+#   ND65+ IS A LAW, NOT A NUMBER: min(the signed K15 measurement, the ruled curve's pick 64) read off the
+#   LADDER IN FORCE at build time, so a curve re-derivation moves it with no edit to the signed block.
+#   NO SILENT FALLBACK: a row the engine classifies as pool whose division is outside the signed set halts
+#   and asks. That is the guard for a future pathway code (PSD or anything new), which must never take the
+#   single pool value by default.
+_PL_DOC=json.load(open('pvc_curve_v2.json')).get('pool_levels')
+assert _PL_DOC, ('#326 HALT: pvc_curve_v2.json carries no pool_levels block — per-division pool pricing has '
+                 'no signed data to read, and pricing every division at one level is the thing this replaces.')
+_POOL_POS_FIELD=_PL_DOC['rd_position_field']
+_ND65=min(float(_PL_DOC['signed_nd65_plus']['measured_k15']),
+          float(_PVC2M[int(_PL_DOC['signed_nd65_plus']['cap_against_curve_pick'])]))
+_POOL_LEVELS={_k:int(float(_v)) for _k,_v in _PL_DOC['signed_flat'].items()}
+_POOL_LEVELS['ND65+']=int(_ND65)
+for _k,_v in _PL_DOC['signed_rd_positional'].items(): _POOL_LEVELS['RD:'+_k]=int(float(_v))
+def _pool_rd_position(p):
+    """The rookie draft's positional key. Named on ONE field so a wrong-field build is a one-word change
+    that the sweep below then catches, rather than a silent misprice of ~85 entrants."""
+    return GRP.get(p.get(_POOL_POS_FIELD)) or gfut(p)
+def pool_division(p):
+    """The signed intake division of a pool-classified entrant. Halts rather than defaulting."""
+    _t=p.get('type')
+    if _t=='RD': return 'RD:'+_pool_rd_position(p)
+    if _t=='ND':
+        _pk=p.get('pick') or 0
+        if _pk>ND_CURVE_LAST: return 'ND65+'
+        raise SystemExit('#326 HALT-AND-ASK: %s is a pool-classified national-draft row carrying pick %r. '
+                         'ND65+ is type ND at pick >= %d; a pickless or in-curve national row resolves to no '
+                         'signed division and must not take a default level.'%(p.get('player'),p.get('pick'),POOL_PICK))
+    if _t in _POOL_LEVELS: return _t
+    raise SystemExit('#326 HALT-AND-ASK: %s is classified pool by the engine but carries division type %r, '
+                     'which is not in the signed set %s. A new pathway code prices at no level until the '
+                     'owner signs one; it never takes the pool-wide value silently.'
+                     %(p.get('player'),_t,sorted(_POOL_LEVELS)))
+def pool_level(p):
+    """The entrant's signed level, in LADDER currency. The consuming site converts (or does not) per the
+    currency law: engine-value sites multiply by the board factor, ladder-currency sites do not."""
+    return _POOL_LEVELS[pool_division(p)]
+# THE WRONG-FIELD DISCRIMINATOR, over the whole store population rather than the priced board. The positional
+# key must be the engine's own settled future position; keyed on present_position it differs on 171 of the
+# rookie rows and on drafted_position on 181, so a wrong-field build fails here deterministically instead of
+# surviving three builds in four. Only 7 of the differing rows are on the board, which is why this sweep runs
+# over the store and not over the priced rows.
+_rd_field_bad=[p.get('player') for p in data if p.get('type')=='RD' and _pool_rd_position(p)!=gfut(p)]
+assert not _rd_field_bad, ('#326 HALT: the rookie-draft positional key reads %r, which disagrees with the '
+                           'engine\'s settled future position on %d row(s) (%s). The N43 positional set was '
+                           'measured on future_position; any other field misprices.'
+                           %(_POOL_POS_FIELD,len(_rd_field_bad),_rd_field_bad[:6]))
+# Every pool row resolves to a signed division AT BUILD TIME, so the halt above fires on the build rather than
+# on whichever price happens to be asked for first. Membership is the ENGINE's own classification (the _pool
+# flag set at :267-281) — never the pick number, which decides only inside type ND.
+_POOL_DIV_COUNT=_Cnt(pool_division(p) for p in data if p.get('_pool'))
+_pool_slot_mismatch=[p.get('player') for p in data if (effpk(p)>=POOL_PICK)!=bool(p.get('_pool'))]
+assert not _pool_slot_mismatch, ('#326 HALT: %d row(s) sit at the pool slot without the pool flag or the '
+                                 'reverse (%s) — the per-division lookup and the ladder would disagree about '
+                                 'who is a pool entrant.'%(len(_pool_slot_mismatch),_pool_slot_mismatch[:6]))
+_MSD_CAVEAT=_PL_DOC['msd_completion_optimism_caveat']
+print('#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = min(%.1f, curve[%d]=%d) = %d): %s'
+      %(float(_PL_DOC['signed_nd65_plus']['measured_k15']),ND_CURVE_LAST,_PVC2M[ND_CURVE_LAST],_POOL_LEVELS['ND65+'],
+        ' · '.join('%s %d%s'%(_k,_POOL_LEVELS[_k],' [MSD completion optimism %s]'%_MSD_CAVEAT if _k=='MSD' else '')
+                   for _k in sorted(_POOL_LEVELS))))
+print('#326 POOL POPULATION (engine classification, re-derived at build time): %s'
+      %(' · '.join('%s %d'%(_k,_POOL_DIV_COUNT[_k]) for _k in sorted(_POOL_DIV_COUNT))))
 SEASON_PROG=_season_val('calendar_progress',0.58)   # CALENDAR progress from data/season_state.json (dynamic; R14/24=0.58). Was the frozen literal 0.58.
 def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
 def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick

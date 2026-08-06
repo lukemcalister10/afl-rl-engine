@@ -580,9 +580,30 @@ except Exception as ex:
 B5_FLOORS = {1: 0.45, 2: 0.35, 3: 0.28, 4: 0.21, 5: 0.13, 6: 0.09}   # yrs 7+ -> tail (VARIANT A, as signed)
 B5_TAIL = 0.05
 B5_TABLE = None
+# #326 RE-SCOPE (same change as the per-division entry anchor; owner ruling addendum 5, audit note made law
+# in addendum 6). Two properties this block relied on are invalidated BY DESIGN and are re-stated here rather
+# than left to fail as if something had gone wrong:
+#   (1) SCOPE. The floor was national-draftees-only. It now also covers engine-pool entrants, anchored on
+#       their signed division level, so "non-ND moved" is no longer a defect — it is the ruling. The scope
+#       test below is the ENGINE'S OWN scope, read off the same two facts the engine reads (the pool flag,
+#       and for a non-pool row the national-draft + has-a-pick test), so the two can never drift apart.
+#       The `_pickless` exclusion deliberately does NOT apply to pool entrants: six of the nine pathways are
+#       pickless by construction, and gating on it would have excluded them from the owner's ruling.
+#   (2) DIRECTION. The floor itself is still a pure lower bound (a max), so `lowered` stays a real bar at 0.
+#       What is NOT a lower bound any more is the ACT as a whole: the thin-record blend now anchors pool
+#       entrants on the signed level, which cuts as often as it lifts (UNR/IRE/PDN mostly down, MSD and the
+#       rookie rucks mostly up). Those moves happen INSIDE ev_prefloor, so they are invisible to this
+#       comparison by construction — which is exactly why `lowered` can stay at 0 without pretending the
+#       board only went up. The saves table below is the floor's own alarm surface and nothing else.
+# The floor column also reads the ENGINE's basis (the entry anchor) instead of `draftval`, which stopped
+# being the floor's basis at D12 and would now print a wrong number for every pool entrant.
+_b5_anchor = G.get('entry_anchor') or G.get('v0_start')
 def _b5_scope(p):
-    return not (p.get('_retired') or p.get('_pickless') or delisted(p) or p.get('type') != 'ND') \
-        and (2026 - int(p.get('year') or 0)) >= 1
+    if p.get('_retired') or delisted(p):
+        return False
+    if not p.get('_pool') and (p.get('type') != 'ND' or p.get('_pickless')):
+        return False
+    return (2026 - int(p.get('year') or 0)) >= 1
 try:
     ev_pre = G.get('ev_prefloor')
     if ev_pre is not None:
@@ -612,9 +633,11 @@ try:
         lowered = [p['player'] for p in MA.data if not p.get('_retired')
                    and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
                    and EV[id(p)] < PRE[id(p)] - 1e-9]
-        nonnd_moved = [p['player'] for p in MA.data if not p.get('_retired') and not _b5_scope(p)
-                       and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
-                       and abs(EV[id(p)] - PRE[id(p)]) > 1e-9]
+        # #326: renamed from `nonnd_moved` — the bar is "nobody OUTSIDE the floor's scope moved", and the
+        # scope is now national draftees AND engine-pool entrants. Still a real bar at 0.
+        out_of_scope_moved = [p['player'] for p in MA.data if not p.get('_retired') and not _b5_scope(p)
+                              and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
+                              and abs(EV[id(p)] - PRE[id(p)]) > 1e-9]
         saves = []
         for p in MA.data:
             if p.get('_retired') or not _b5_scope(p):
@@ -623,7 +646,9 @@ try:
             if v0 is None or v1 is None or v1 <= v0 + 1e-9:
                 continue
             yis = 2026 - int(p.get('year') or 0)
-            fl = B5_FLOORS.get(yis, B5_TAIL) * draftval(p)
+            with contextlib.redirect_stdout(io.StringIO()):
+                _basis = float(_b5_anchor(p)) if _b5_anchor else float(draftval(p))
+            fl = B5_FLOORS.get(yis, B5_TAIL) * _basis   # #326: the ENGINE's basis — the entry anchor (a pool entrant's signed division level, a national draftee's V0 start)
             saves.append((p['player'], p.get('_club') or '—', yis, v0, fl, v1, v1 - v0,
                           _reg.get(p['player'], 'clear')))
         saves.sort(key=lambda r: -r[6])
@@ -634,11 +659,14 @@ try:
         B5_TABLE = '\n'.join(_t)
         NOTES.append(f'B5 FLOOR-SAVES table (n={len(saves)}, aggregate lift={sum(r[6] for r in saves):+.0f} — '
                      'printed every gates-board run, the new alarm surface):\n' + B5_TABLE)
-        ok_bound = not lowered and not nonnd_moved
+        ok_bound = not lowered and not out_of_scope_moved
+        _n_pool = sum(1 for p in MA.data if p.get('_pool') and _b5_scope(p))
         gate('B5', False, 'FEATURE' if ok_bound else 'FAIL',
-             f'floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail): {len(saves)} saves, '
-             f'aggregate lift {sum(r[6] for r in saves):+.0f}; pure lower bound: lowered={len(lowered)} (bar 0), '
-             f'non-ND moved={len(nonnd_moved)} (bar 0); saves table printed below (the new alarm surface)')
+             f'floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail; #326 scope = national '
+             f'draftees + {_n_pool} engine-pool entrants on their signed division levels): {len(saves)} saves, '
+             f'aggregate lift {sum(r[6] for r in saves):+.0f}; the floor is still a pure lower bound: '
+             f'lowered={len(lowered)} (bar 0), moved outside the floor scope={len(out_of_scope_moved)} (bar 0); '
+             f'saves table printed below (the new alarm surface)')
     else:
         off = []
         for p in MA.data:
