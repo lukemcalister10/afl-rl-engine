@@ -36,6 +36,38 @@ print(f"eligible players: {len(players)}",flush=True)
 # valuation source -- so every book cell equals the engine's gated value by construction. A parity check at the
 # end asserts book(current-year) == engine gated ev() for every player, matched by stable key, or the build FAILS.
 print("[F2 FIX] double-fade harness removed; book built from live gated engine ev()",flush=True)
+# ==== #338 MINIMUM LISTING TENURE (owner word "Fire 338", 2026-08-06) ====================================
+# DEFECT: listed-through was `_last_listed` else the last SCORING year — and the last scoring year is 0 for a
+# career the source DB kept no rows for, so 619 evidence-less historical records reconstructed as DELISTED at
+# every as-of year: ev() returned the 2% remnant (_merged_recover delist branch) before any machinery ran, and
+# the yend/yrs window below emitted a single-row career. Delisted on draft day, by absence of evidence.
+# THE RULE (the owner's, #338): a drafted player is on a list for a minimum tenure whether or not the DB kept
+# his numbers. With NO explicit `_last_listed`: assumed-listed-through = debut + N − 1, where debut is the
+# route's own convention (entry year + 1 on every route except MSD — a mid-season draftee debuts in his ENTRY
+# year) and N = 4 for ND picks 1-20, 3 for ND 21-40, 2 for everything else (ND 41+ and every pool route).
+# OWN DATA EXTENDS: listed-through = max(assumed, last scoring year). An explicit `_last_listed` is a KNOWN
+# FACT and stands, even when it is shorter than the minimum. Active players are untouched.
+# A year inside listed tenure with no scoring row is a LISTED SITTING-OUT year — priced by the EXISTING sit-out
+# machinery, no new pricing rule here. That is the point: era parity by construction, a historical no-data year
+# valuing through the same code path as a current player's sit-out year.
+def _min_tenure(p):
+    """#338: minimum listed seasons implied by the entry route/pick band."""
+    if p.get('type')=='ND' and not p.get('_pickless'):
+        pk=MA.effpk(p)
+        if pk<=20: return 4
+        if pk<=40: return 3
+    return 2                                      # ND 41+ and every pool route (RD/MSD/SSP/UNR/IRE/PDA/PDN/PDS)
+def _debut_year(p):
+    """#338: first season ON A LIST. MSD debuts in its entry year; every other route the year after."""
+    C=p.get('year')
+    return None if C is None else (C if p.get('type')=='MSD' else C+1)
+def _listed_through(p,lastscore):
+    """#338: the year the player's listing runs through, or None if he is still listed (active, untouched)."""
+    LL=p.get('_last_listed')
+    if LL is not None: return LL                  # known fact — stands even if shorter than the minimum
+    if not p.get('_retired'): return None         # active: no listed-through, untouched by this rule
+    d=_debut_year(p)
+    return max((d+_min_tenure(p)-1) if d is not None else 0, lastscore)   # own data extends the minimum
 # WALK-FORWARD as-of value matrix (UNCHANGED — values are correct; only the indexing was wrong)
 ASOF={}
 for Y in range(2003,2027):
@@ -44,7 +76,9 @@ for Y in range(2003,2027):
         if (p.get('year') or 9999)>Y: continue
         LL=p.get('_last_listed'); RET=p.get('_retired'); lastscore=max((r['year'] for r in p['scoring']), default=0)
         saved[id(p)]=(p['scoring'],RET,LL); p['scoring']=[r for r in p['scoring'] if r['year']<=Y]
-        eff_last = LL if LL is not None else (lastscore if RET else None)
+        # #338 (2026-08-06): was `LL if LL is not None else (lastscore if RET else None)` — lastscore is 0 for an
+        # evidence-less career, so the player was delisted at every as-of year. Now the minimum listing tenure.
+        eff_last = _listed_through(p,lastscore)
         p['_retired']=False; p['_last_listed']= eff_last if (eff_last is not None and eff_last < Y) else None
     MA.BASE_REF=Y; MA.AGE_REF=Y; MA._pe_clear()
     g['_BOARD_PATH']=(Y==2026)   # F2 parity: the PRESENT-year column uses the BOARD path (V0 curve + KPP floor ON) so `cur` == the board (engine gated); 2003-2025 keep Luke's D14 backtest exemption (board-only laws OFF -> the historical walk-forward book reproduces)
@@ -70,8 +104,13 @@ for p in players:
     last_active=max(played) if played else None
     rn=retired_now(p)
     # CALENDAR-YEAR-SINCE-DRAFT indexing: Yr_k = C+k whether or not played; missed year = real (pole/staleness) value.
-    # ACTIVE players run through 2026 (current value); RETIRED players stop at last played year (blank after, no post-career floor).
-    yend = (last_active if last_active else C+1) if rn else 2026
+    # ACTIVE players run through 2026 (current value); RETIRED players stop at their LISTED-THROUGH year (#338;
+    # was: last played year) — blank after, no post-career floor.
+    # #338 (2026-08-06): a retired player's window runs to his LISTED-THROUGH year, not his last PLAYED year —
+    # the tenure years after his last game are LISTED sitting-out years and must be emitted to be priced at all.
+    # Was `(last_active if last_active else C+1) if rn else 2026`; a played year is never truncated (max), and
+    # a player with neither data nor tenure still falls back to the single [C+1] row on the `yrs` line below.
+    yend = max(last_active or 0, _listed_through(p,max((r['year'] for r in p['scoring']), default=0)) or 0) if rn else 2026
     yend = min(yend,2026)
     yrs=list(range(C+1, yend+1)) if yend>=C+1 else [C+1]
     Vpath=[ASOF.get((id(p),y)) for y in yrs]
