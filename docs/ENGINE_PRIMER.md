@@ -39,7 +39,7 @@ That sentence is the moral of this project's hardest-won discovery (§4).
   the board. Runs from a prepared workspace behind guards; CI runs and reports, never commits.
 - **The pick curve** (`engine/rl_after/pvc_curve_v2.json` is the LADDER; `ui/release_pick_curve.json` is
   the release MANIFEST that stamps it, not a ladder — hashing it matches nothing) — what each national draft pick
-  slot is worth, **picks 1–64 only; pick 65 does not exist** (RULEBOOK law 4). Identity = the N32
+  slot is worth, **picks 1–64 only; selections past 64 are NOT ON THE CURVE** (RULEBOOK law 4 v2.1 — they enter the pool, valued by position; matrices use 65 as the pool INDEX, §5). Identity = the N32
   string-keyed payload md5, never the file md5. **As of 2026-08-05 the ruled curve IS shipped-on-main**
   (the re-closure, owner word) — CURRENT_STATE carries the current payload identity.
 - **The year-zero surface** (`data/v0surf.pkl`) — the value of a NEWLY DRAFTED player: the price at entry.
@@ -54,7 +54,7 @@ That sentence is the moral of this project's hardest-won discovery (§4).
   function — 0.85 = concave SCAR compression, 1.0 = linear VOR — **NOT a future-season discount, and NOT
   the shipped board's denomination in either era** (both eras' exporters price from the engine's own
   `ev()`). The shipped board is ONE currency for players AND picks: pick 1 = 3,000; the best player is
-  ~4.03× pick 1 (an earlier seam double-converted to 4.24×/2,851 and retracted it — #333). Never compare
+  ~4.04× pick 1 (4.041× on the round-21 board) (an earlier seam double-converted to 4.24×/2,851 and retracted it — #333). Never compare
   numbers across bases without saying so.
 - **The walk-forward book** — season-by-season as-of values for every player-history, the evidence base
   behind career-value measures. "Concluded" vs "active" careers matter enormously — see §4.
@@ -120,11 +120,11 @@ fitted at build time — everything is loaded from pins.
    listed ≥4 seasons, 21–40 ≥3, others ≥2; own data extends; known facts override; an evidence-less
    year inside tenure is a LISTED sitting-out year. Implemented in the book emitter (board
    untouched, proven byte-identical); the book of record and the no-arb lineage are re-emitted on
-   it; era parity is EXACT (460 pairs equal to four decimals). Tenure-provisionality is lifted.
+   it; era parity is EXACT — 460 pairs to four decimals in the BOOK lineage (register v584 P5, e.g. Simpson = Keeler = 243.0000); the no-arb sheets show the same pairs at per_entrant-lineage values (216), a different population — never conflate the two. Tenure-provisionality is lifted.
 8. **The pool denominator rule (2026-08-06).** The walk-forward book's `v0` field for POOL rows still
    carries the SUPERSEDED old-surface belief (cleanup queued); pool tables denominate by the SIGNED
    ENTRY ANCHORS (#326 levels, ladder currency ×1.0524 into engine units). On that honest denominator
-   the pool HUMPS like the draft (peak ≈141% vs ND ≈157%) — the old "pool cliff" was superseded
+   the pool HUMPS like the draft (peak ≈141% at years 4–5 — the owner's cohort artifact page and its recompute carry the table; the ND ≈157% side is register v585) — the old "pool cliff" was superseded
    machinery measured against superseded prices.
 9. **The hump is real, and it has exactly two levers (the #336 steering answer + the owner's
    framing, 2026-08-06).** Under FULLY honest pricing — busts counted, resolved players clean, no
@@ -135,7 +135,7 @@ fitted at build time — everything is loaded from pins.
    survivorship door is measured weak) or by making PICKS AND YEAR-0/1 WORTH MORE (re-teaching the
    curve on the corrected history). Both go OPEN to the #333 memo; stage B executes its choice.
    Never present either lever as pre-decided.
-5.5. **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
+5.5. *(numbered 5.5 of record, deliberately out of sequence — it amends §1; cite by source numbering; renderers may renumber.)* **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
    teaches the ruled curve and the lens is NOT raw scoring over replacement: the walk-forward path is
    built by calling the ENGINE'S OWN `ev()` as-of each season, and `ev()` leans on the year-zero
    estimate wherever a record is thin — every career's early seasons. Measured: a surface+engine change
