@@ -1,4 +1,4 @@
-# ENGINE PRIMER — the meaning layer · v4 · authored 2026-08-04 (hi1an4); v4 at register v578 (2026-08-06): the survivorship/tenure/currency discoveries of the adoption era added, owner-directed
+# ENGINE PRIMER — the meaning layer · v5 · authored 2026-08-04 (hi1an4); v5 at register v591 (2026-08-06): the #336 resolution (the band prices establishment risk in full; the adopted reference-layer form), the implemented tenure rule, and the two-lever hump framing added at the rotation
 
 **WHAT THIS IS.** Every incoming seat reads this IN FULL, immediately after the charter and before
 CURRENT_STATE. It carries what the process documents don't: what the engine is FOR, what each artifact
@@ -97,26 +97,44 @@ fitted at build time — everything is loaded from pins.
 5. **The bust exclusion.** Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
    owner ruling; every player in their drafts slides up one pick. If a KPF number looks bust-driven, check
    the exclusion applied before theorizing.
-6. **The survivorship defect and the Ablett inversion (#336, owner-named 2026-08-06).** Parts of the
-   engine sample SURVIVORS ONLY: the load-time reference tables (`pkbest is not None`) and the par
-   surface (60% of tenure cells never teach). Consequence: a mediocre career LOWERS the average while
-   a zero-game bust VANISHES from it — measured history ranks nothing above something (Nathan Ablett's
-   cell: survivor mean 61.0, bust-inclusive truth 32.1). **The owner's MONOTONICITY LAW binds all new
+6. **The survivorship defect, the Ablett inversion, and the RESOLUTION (#336, ruled ADOPTED
+   2026-08-06).** Parts of the engine sampled SURVIVORS ONLY: the load-time reference tables
+   (`pkbest is not None`) and the par surface (60% of tenure cells never taught). Consequence: a
+   mediocre career LOWERED the average while a zero-game bust VANISHED from it (Nathan Ablett's
+   cell: survivor mean 61.0, bust-inclusive truth 32.1). **The owner's MONOTONICITY LAW binds all
    work: a strictly worse career must never produce a better-looking baseline.** The curve's own
-   teaching basis is clean (busts at 0); the defect is in-engine. Repair rule: expectation-shaped
-   consumers get P(establishes)×level — never naively zero-fill a per-game benchmark (it answers a
-   conditional question and is correct as such).
-7. **The minimum-tenure rule and the era asymmetry (#338, owner rule 2026-08-06).** Historical players
-   with no recorded seasons were valued as delisted-on-draft-day (a pick-21 worth 16 points at year 1)
-   while current sitting-out players hold the floor. The rule: assume ND picks 1–20 listed ≥4 seasons,
-   21–40 ≥3, others ≥2; own data extends; known facts override; an evidence-less year inside tenure is
-   a LISTED sitting-out year. Until the walk-forward book re-emits under this rule, historical-vs-
-   current comparisons are biased and every cohort table is PROVISIONAL.
+   teaching basis was always clean (busts at 0). THE ADOPTED FORM (four measured cuts, two owner
+   catches; the earlier "P(establishes)×level at expectation-shaped consumers" phrasing is
+   SUPERSEDED): reference anchors read the bust-inclusive level of ESTABLISHERS (de-survivored,
+   never survivor-at-tenure), with **NO probability discount at any anchor** — measured, the
+   forward band's low quantiles already charge establishment failure IN FULL (d_band 0.7077 vs
+   true class risk 0.7075); resolution is SMOOTH via the engine's own evidence fade (no six-game
+   cliff); the v3.4 clamp is retired. It ships as part of #334 stage B; until then the form lives
+   on branch `variant/336-bust-inclusive`. Two lessons that reinterpret numbers: an anchor-side
+   probability discount is a DOUBLE CHARGE wherever the band prices the same risk; and "established"
+   (any ≥6-game season) is resolved news — pricing a resolved player at his class prior violates
+   the price-is-worth-NOW principle.
+7. **The minimum-tenure rule and the era asymmetry (#338 — IMPLEMENTED 2026-08-06).** Historical
+   players with no recorded seasons were valued as delisted-on-draft-day (a pick-21 worth 16 points
+   at year 1) while current sitting-out players held the floor. The rule: assume ND picks 1–20
+   listed ≥4 seasons, 21–40 ≥3, others ≥2; own data extends; known facts override; an evidence-less
+   year inside tenure is a LISTED sitting-out year. Implemented in the book emitter (board
+   untouched, proven byte-identical); the book of record and the no-arb lineage are re-emitted on
+   it; era parity is EXACT (460 pairs equal to four decimals). Tenure-provisionality is lifted.
 8. **The pool denominator rule (2026-08-06).** The walk-forward book's `v0` field for POOL rows still
    carries the SUPERSEDED old-surface belief (cleanup queued); pool tables denominate by the SIGNED
    ENTRY ANCHORS (#326 levels, ladder currency ×1.0524 into engine units). On that honest denominator
    the pool HUMPS like the draft (peak ≈141% vs ND ≈157%) — the old "pool cliff" was superseded
    machinery measured against superseded prices.
+9. **The hump is real, and it has exactly two levers (the #336 steering answer + the owner's
+   framing, 2026-08-06).** Under FULLY honest pricing — busts counted, resolved players clean, no
+   cliff, risk charged once — the cohort appreciation hump barely moves: 1.572 → 1.535 at year 4.
+   The reference layer was never the lever. The owner's two-sided framing is the record: close the
+   gap by making ESTABLISHED PLAYERS WORTH LESS (the untested doors: the proven-player near-year
+   credits — up to +17%, ×2 for KPF — the demonstrated floors, the discount structure; the
+   survivorship door is measured weak) or by making PICKS AND YEAR-0/1 WORTH MORE (re-teaching the
+   curve on the corrected history). Both go OPEN to the #333 memo; stage B executes its choice.
+   Never present either lever as pre-decided.
 5.5. **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
    teaches the ruled curve and the lens is NOT raw scoring over replacement: the walk-forward path is
    built by calling the ENGINE'S OWN `ev()` as-of each season, and `ev()` leans on the year-zero
