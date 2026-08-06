@@ -384,6 +384,14 @@ from collections import Counter
 # That is the ruled basis for this experiment — it isolates the reference-layer effect. The joint
 # re-derivation is #334 stage B, after the ruling. No RL_V0SURF_REFIT here.
 # ============================================================================================================
+# ------------------------------------------------------------------------------------------------------------
+# ADDENDUM 1 (issue #336, 2026-08-06) — THIS SITE IS ALREADY ON THE AMENDED FORM, AND IS UNCHANGED BY IT.
+# The amendment rules that every level anchor use CAREER-LEVEL P(EVER establishes | position x pick band), with
+# tenure entering only as #338 window MEMBERSHIP and never as a probability discount on the anchor. That is
+# exactly what _established_336 / _pest_336 below already compute (tenure-marginal, one rate per position x
+# band). The site that carried the defect was the PAR SURFACE, whose P was keyed (position x band x TENURE);
+# it is amended in engine/forward_valuation/par_build.py. Recorded here so the branch shows both anchors were
+# checked against the amendment, not only the one that moved.
 QUAL_336 = 6      # establishment bar: a season of >=6 games (build_cohort_book.py:181-185)
 K_336    = 10.0   # pooling strength: shrink each (position, band) rate toward the all-position band marginal
 
