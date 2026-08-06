@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v66 · supervisor pen · 2026-08-06, register v575
+# CURRENT STATE — the incoming-seat read · v67 · supervisor pen · 2026-08-06, register v576
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,82 +128,75 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v66 · supervisor pen · 2026-08-06, register v575 · replaced wholesale at the HANDOVER-READINESS PEN —
-the #334 store-completion act is IN REHEARSAL; the review tooling exists; two new owner laws bind
-presentations; the road: land #334 + its re-derivations → regenerate the review tables → the backtest
-book (#332, addendum owed) → the re-anchoring memo (#333) → ADOPTION)
+(v67 · supervisor pen · 2026-08-06, register v576 · replaced wholesale at the #334 STAGE-A LANDING —
+the store is completed on the owner's census; the SURVIVORSHIP DEFECT re-sequenced the road; the
+curve re-derivation is DEFERRED; the owner's next ruling is the current-vs-bust-inclusive side-by-side)
 
-## THE ERA: DATA COMPLETION INSIDE THE REVIEW ROAD. #326 landed; #334 mid-act; nothing adopted.
-- **MERGED MAIN = `da9aa70` or descendant.** Store `f1e8c9fed35462536d00add604f69a3f` · curve payload
-  `df766dff…` (file md5 `988135ef`) · surface `d594dc03…` · board `864b6726` · engine head `9f258a3b` ·
-  contract sha `8cc7d897` · selftest 145/0. The league-facing app UNCHANGED until adoption.
-- **#334 (store early-season completion + re-derivation) is the live act — owner-ordered, censused
-  from the owner's own corrected sheet, audit-passed, IN REHEARSAL at this pen.** The census (evidence
-  `docs/evidence/store_completion_2004_2005/`, committed): 51 season inserts (2005: 14 · 2006: 37, +287
-  career games over 40 players), 177 zero-confirmations writing NO rows (ruled — explicit zeros would
-  silently add ~138 bust training-cells; the owner's "empty = 0 games" is a world-fact, not a
-  write instruction), 0 conflicts; Drummond year 2003→2004 pick 35→40 between Shaw and Clarke, both
-  rookie groups re-numbered, stream mirrors move too. Binding spec = #334 addendum 1 + owner answers
-  (Iles insert STANDS; Paul Thomas confirmed). Stage A: store fix, ZERO board movement (all touched
-  rows retired; assert keyed on `key` — two distinct Will Hamills exist). Stage B: N35 fit-class
-  classification FIRST (reproduce surface `d594dc03` from current inputs; if the box fails, stage A
-  stands alone), then matrix re-emit under the post-#326 engine, curve+surface re-derivation, the ±1
-  rule vs payload `df766dff` (any pick moving >1 board point RETURNS TO THE OWNER pre-ship).
-- **The #326 story in one line for the incoming seat:** the owner ruled pool entry anchors bite like
-  the pick curve for year-0 players (issue #326 addenda 5–6); landed 2026-08-06; 177 pool movers, zero
-  non-pool; the veteran-floor reach stands as ruled; the ENTRY-PRICE ASYMMETRY it fixed is measured at
-  #333 (pool non-debutants 0.34× vs ND 0.58×; debutants near-parity).
+## THE ERA: THE SURVIVORSHIP RECKONING. Store complete; the design question is open; nothing adopted.
+- **MERGED MAIN = the v576 landing or descendant.** Store **`f1e7f20c4adea9b17d19457a5217c735`**
+  (the owner's census applied: 51 back-filled 2005/06 seasons, +287 career games/40 players,
+  Drummond to 2004 pick 40, both rookie groups re-numbered) · board **`827fb1fd`** (154 indirect
+  movers net −819 vs 864b6726 through the load-time references; zero direct movement; owner-accepted) ·
+  curve payload `df766dff…` UNCHANGED (file `988135ef`; its source-store stamps deliberately still
+  `f1e8c9fe` — the store the ruled curve was derived on; all FROZEN-RULER checks pass) · surface
+  `d594dc03…` (valid against the completed store — signature unmoved) · engine head `9f258a3b` ·
+  contract sha `7033d200…` · selftest 145/0. League-facing app UNCHANGED until adoption.
+- **THE SURVIVORSHIP DEFECT (#336) governs the road.** Owner-named (the ABLETT INVERSION): the
+  engine's load-time reference tables sample `pkbest is not None` — mediocre careers lower the
+  average, zero-game busts VANISH, so measured history ranks nothing above something. The owner's
+  MONOTONICITY LAW is filed: a strictly worse career never produces a better-looking baseline.
+  Standing hypothesis with the memo: survivors-only benchmarks suppress early-career prices and
+  MANUFACTURE the 1.57× hump. Sibling instances named: the walk-forward training window
+  (row-presence keyed) and the per-year calibration (the owner's tenure point).
+- **SEQUENCING (owner word 2026-08-06):** the curve re-derivation under the current method is
+  DEFERRED — never present a table that the pending ruling would supersede (presentation law).
+  The road: (1) matrix re-emit on the completed store under current machinery = the measurement
+  substrate; (2) the #336 SWEEP (every sample-membership filter on the price path, one table,
+  each tested against the monotonicity law) + the BUST-INCLUSIVE VARIANT (references rebuilt
+  counting zero-row players; board re-priced; hump + top-end ratios recomputed); (3) ONE owner
+  ruling on the side-by-side; (4) the ruled overhaul lands as its own audited directive; then the
+  review set completes and ADOPTION.
+- **STAGE B LANE BLOCKED:** #326's no-silent-refit assert (`_merged_recover.py:1909`) bars even the
+  DECLARED refit lane — a small audited guard fix is owed before any surface refit (undeclared
+  refit must stay red). Not urgent while the re-derivation is deferred.
+- **TRACK B:** a package was cut prematurely and VOIDED by owner word within the hour. The
+  READINESS CHECKLIST is sealed on #322 (comment 5200190050): store landed ✓(now) · #336 ruled +
+  recipe amended with the monotonicity law · measurement layer current · recipe re-verified.
+  Cuts once, from landed main, when the list is green. Do not cut early again — recorded seat miss.
 
-## TWO OWNER LAWS OF 2026-08-06 (filed #333, binding on every presentation)
-- **UNIFIED REVIEW BASIS:** cohort tables use cohorts 2004–2025 (2003 never — its year 1 predates the
-  data), 2004/05 records excluded from year-1/2 totals until #334 lands (then the exclusions LIFT),
-  young classes count where reached, MSD to the prior-year cohort.
-- **PRESENTATION LAW:** owner-facing review material is CURRENT-BASIS end to end or it does not ship;
-  a superseded view may appear only as a labeled baseline BESIDE its current counterpart, never alone.
-  A staleness caption is NOT sufficient (the recorded failure: the pre-#326 pool cohort table).
-  The no-arb/cohort pages are FROZEN until #334's chain refreshes the walk-forward record.
+## THE OWNER LAWS OF 2026-08-06 (all filed verbatim, #333/#336)
+Unified review basis (2004–2025, no 2003; 04/05 y1-2 excluded until the census extends there —
+NOTE stage A landed the 2005/06 fills, so those exclusions LIFT when the tables regenerate on the
+re-emitted record) · the presentation law (current-basis or it does not ship; baselines only
+labeled and beside their current counterpart) · the monotonicity law (above) · "empty = 0 games"
+is a world-fact, not a write instruction (no zero rows; the zero-convention ruling, #334 add.1).
 
 ## WHAT FIRES NEXT, IN ORDER
-1. **#334 hand-back → seam verifies deciding figures → land** (branch → PR → rebase-merge, evidence
-   tree, pen). If stage B moved any pick >1 point: owner decision BEFORE ship. Pool-level measures may
-   shift (rookie careers extended) — the signed levels NEVER auto-recompute; re-sign is owner word.
-2. **Regenerate the review tables from the refreshed record** (current-basis law); pre-#326 pool table
-   shown only as labeled baseline. Published pages: board review + no-arb tables (claude.ai artifacts,
-   session-published; rebuild recipes = the committed instrument + the conventions filed on #333).
-3. **#332 backtest book:** audit verdict NOT PASSED — the owner's PRIMARY words (#306 comment
-   5186108632) order a COHORT-DEVELOPMENT book ("prior cohorts and their development over time, on the
-   walk-forward record", governing word "HONEST and sincere", busts in denominators AT EVERY YEAR);
-   the seat owes an addendum re-centering the directive on those words with the cohort tables as the
-   spine; the audit's fault list (stale harness pointer, McCartin/Boyd over-scope, ch4 hard-band
-   import, no bust flag — use never_established()) is on the issue.
-4. **The re-anchoring memo (#333):** all steers filed verbatim (partial pricing-in, never inversion;
-   top-end 4.03× "a little steep"; pedigree-conditioned reactivity — the Mraz case; the tenure-window
-   note). Wants the refreshed pool table first (the residual cliff is what it prices).
-5. **ADOPTION (owner click) → round-21 ingest + movers page.** Release-transition register at adoption.
-- Queued small repairs unchanged from v65 (ship_gates γ conflict · extract_seam stale seal ·
-  RECLOSURE "100 PASS" prose · weekly_updater · first-failure masking · attribution instrument scoped
-  to intra-engine acts).
+1. Matrix re-emit on `f1e7f20c` (current machinery) — measurement substrate. Regenerate the frozen
+   review pages from it (presentation law; the pre-#326 pool table only as labeled baseline).
+2. #336 sweep + bust-inclusive variant → the side-by-side → OWNER RULING.
+3. The ruled overhaul (its own directive + audit) · the #326 guard fix rides it or precedes it.
+4. #332 backtest book addendum (owed: re-centered on the owner's cohort-development words, comment
+   5186108632) — its cohort tables regenerate from the re-emitted record.
+5. The re-anchoring memo (#333) absorbs #336's result (lead candidate) → owner design ruling.
+6. Review set assembled → ADOPTION (owner click) → round-21 ingest + movers page.
+- Queued small repairs as v65/66 list, plus: the book (s4_matrix.json) is id()-keyed and not
+  byte-reproducible by construction (workspace intermediate, unpinned — never claim its bytes).
 
-## RUNNING THIS SEAT WELL (deltas from v65)
-The owner's casual questions remain the best QC in the project — this era's catches (γ, currency,
-store gaps, Drummond, the pool cliff) all came from them. Answer the question asked, verify before
-agreeing OR disagreeing, and file his words verbatim the moment they carry a ruling. Subagents
-OPUS-ONLY. Threads by comment id. The register by pointer. Six audit rounds this era each found real
-faults: never skip the loop, and remember #326's lesson — audits read code, rehearsals measure it.
+## RUNNING THIS SEAT WELL (the v576 lessons, additive to v65/66)
+The owner's frustration signals are DATA about the project, never triggers for appeasement — the
+voided Track B cut is the recorded anti-pattern (delivering under pressure inverted the seat's
+function). Hold readiness lines; convert frustration into filed laws and checklists. His logic
+challenges have been right seven consecutive times — verify, concede precisely, and file his
+words the same hour. Opus-only subagents; threads by comment id; every number names its quantity.
 
 ## ENVIRONMENT CARRIES
-As v65 plus: the #334 rehearsal working copy is a git worktree of this container (scratchpad —
-EPHEMERAL; if the container died mid-act, re-run the hand from the committed census: the act is fully
-specified by #334's body + addendum 1 + owner answers + census.json). Build/verify recipes proven this
-session: five-pin venv + bootstrap from the worktree + the canonical rl_export invocation
-(docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md). The no-arb instrument at
-docs/evidence/noarb_2026-08-05/ (re-run recipe in its README); the cohort-table conventions filed on
-#333 (unified-basis comment). Fit-class recipes unchanged from v63/v64 carries.
+As v66 plus: stage-A act evidence + re-run recipes at `docs/evidence/act_334_2026-08-06/` (the
+apply/parse/gate scripts are re-runnable from the committed census; the rehearsal worktree is
+ephemeral). The board baseline pair for attribution: `864b6726` (pre) → `827fb1fd` (post stage A).
 
 ## THE INCOMING SEAT'S FIRST TASKS
 0. Onboard per the charter order. Plain vocabulary. Opus-only subagents.
-1. Verify MERGED MAIN above with your own commands. Check #334's state: if the act landed, verify its
-   evidence; if mid-flight, the rehearsal is re-runnable from the committed census (nothing depends on
-   dead scratchpad state).
-2. Drive the order above: #334 → tables → #332 addendum → memo → ADOPTION.
-3. Every presentation obeys the two owner laws of 2026-08-06. Every number names its quantity.
+1. Verify MERGED MAIN above by your own commands (store, board, carriers, selftest).
+2. Drive the order above. The owner's open decision is the #336 side-by-side — build it soonest.
+3. Every presentation obeys the owner laws. Track B only by the #322 checklist.
