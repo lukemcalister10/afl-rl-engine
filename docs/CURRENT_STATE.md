@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v81 · supervisor pen · 2026-08-06, register v590
+# CURRENT STATE — the incoming-seat read · v82 · supervisor pen · 2026-08-06, register v591
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,119 +128,120 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v81 · supervisor pen · 2026-08-06, register v590 · replaced wholesale at the #336-RULING PEN —
-#336 ADOPTED (the amendment-3 form, on correctness grounds; ships with stage B; branch 3bbc688
-holds it). The owner's two-lever framing is the record: established worth less OR picks/year-0
-worth more — both go OPEN to the #333 memo, which is the NEXT ACT; stage B executes its chosen
-design. The primer is at v4 — read it first, in full.)
+(v82 · supervisor pen · 2026-08-06, register v591 · replaced wholesale at the ROTATION PEN — the
+outgoing seam's complete handover after the post-adoption working day. The primer is at v5 and
+carries the day's meaning discoveries — read it first, in full.)
 
-## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
-- **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
-  release-transition register carries the boundary (data/release_lineage.json, entry 4, at round 20).
-  One boundary adopted the whole era: #306 landing · #323/#328 corrections + re-closure · #326 pool
-  anchors · #334 stage-A store completion. Adopted with eyes open: #336 and #338 continue in Track A.
-- **THE CURRENT IDENTITIES (round 21 applied 2026-08-06; verify with your own commands):**
+## THE ERA: ADOPTED, and the post-adoption day is DONE. The road points at the #333 memo.
+- **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
+  since, all owner-worded, all on main: **round 21** applied (409 scores, txn catchup pattern) ·
+  **#344** the declared-refit lane (RL_V0SURF_REFIT=1 passes, silent stays red) · **the Kako 2026
+  anchor retired** ("Kako is now correct - 12 at 42.75. Retire the anchor.") · **#338 minimum
+  tenure IMPLEMENTED** (book emitter; board untouched; era parity exact, 460 pairs) · **the no-arb
+  tables and the owner's cohort artifact reissued on the #338 basis** · **#336 RULED: ADOPTED**
+  (the amendment-3 form, correctness grounds, ships with stage B). **Track B**: cut, re-cut simple
+  on owner word (store + one recipe), verified, delivered; any extension is a new owner word.
+- **THE CURRENT IDENTITIES (verify with your own commands; N35-classify before trusting any
+  fitted figure — value-path: byte-reproduce the board):**
   store `37ced3ce45914e6feb00d27e26922e9a` = `engine/rl_after/rl_model_data.json` · board
-  `113b36f898a32363c49c2a62fb809f4b` = `data/rl_build/rl_app_data.json` · rl_model `33f94073` ·
-  engine_head `8f0e3eb1` (#344 merged 2026-08-06, owner word) · curve payload
-  `df766dff…` (file `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl` · balanced_board_md5
-  `4939d740` (present-lens anchor, unmoved) · season round 21 · adoption-era pair for attribution:
-  `827fb1fd` (adopted, round-20 basis, out-of-round column `redesign-adoption-6-8`) → `113b36f8`
-  (round 21). The v582 seat byte-reproduced the ADOPTED board pre-R21 on this box (N35 value-path). SELFTEST EXPECTATION: 144 PASS / 0 FAIL (the Kako 2026 anchor retired by owner word 2026-08-06; every older \u0022145/0\u0022 note is superseded).
+  `113b36f898a32363c49c2a62fb809f4b` = `data/rl_build/rl_app_data.json` · engine_head `8f0e3eb1…`
+  = `engine/rl_after/_merged_recover.py` · rl_model `33f94073…` = `engine/rl_after/rl_model.py` ·
+  curve payload `df766dff…` (N32 recipe over the `curve` object of
+  `engine/rl_after/pvc_curve_v2.json`; file md5 `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl`
+  · balanced_board_md5 `4939d740` (present-lens anchor, deliberately unmoved) · season round 21
+  (progress 0.88) · **SELFTEST EXPECTATION: 144 PASS / 0 FAIL** (the Kako 2026 anchor retired by
+  owner word — every older "145/0" note is superseded). Movers attribution chain: `827fb1fd`
+  (the adopted board, registered as out-of-round column `redesign-adoption-6-8` after round 20) →
+  `113b36f8` (round 21). Suites: movers 66/66 · transition 39/39 · preflight 5/5.
 - **EXPECTED, NOT DRIFT:** `ui/release_pick_curve.json` still stamps `curve_source_store_md5 =
-  f1e8c9fe` (pre-completion) — #334 STAGE B deferred by owner word behind the #336 ruling. The
-  movers reds are CLEARED (R21 landed; #271 A17 closed; suites 66/66 · 39/39 · 5/5).
-- **DEPLOY:** the repo's UI bundles carry the adopted board; `ui/index.html` from a checkout/zip IS
-  the app. If the owner's deploy step is manual, deploying is his act.
+  f1e8c9fe` (pre-completion) — #334 STAGE B re-derives it. `docs/evidence/act_326_2026-08-06/
+  RUN_COMMANDS.md`'s inline expected board `864b6726` is a pre-#334 rehearsal figure — the live
+  pin is `113b36f8` now.
 
 ## THE OWNER LAWS (2026-08-06 unless noted; primary copies on the named issues)
-- **Monotonicity (#336):** a strictly worse career never produces a better-looking baseline. The
-  49-site sweep is on the issue; par surface + load-time references INVERTED; curve teaching clean.
-  Repair rule: expectation-shaped consumers get P(establish)×level; never zero-fill a per-game bench.
-- **Minimum listing tenure (#338):** ND 1–20 → 4 seasons · 21–40 → 3 · others → 2; own data extends;
-  known facts override; evidence-less years inside tenure are LISTED sitting-out years. IMPLEMENTED
-  2026-08-06 in the book emitter (board untouched); cohort tables PROVISIONAL until the no-arb
-  lineage re-emits under the rule.
-- **Presentation law (#333):** owner-facing material is current-basis end to end or it does not
-  ship; superseded views only as labeled baselines beside the current. **Owner frustration is DATA,
-  never a trigger** (the voided Track B cut, #322 comment 5200190050, is the recorded anti-pattern).
-- Unified review basis (#333 comment 5199421546) · "empty = 0 games" is a world-fact, not a write
-  instruction (#334 addendum 1) · busts-in-denominators wherever ruled · plain vocabulary · every
-  number names its quantity · the pool-table denominator is the SIGNED ENTRY ANCHORS (primer §4.8).
+- **Monotonicity + the ADOPTED #336 FORM:** a strictly worse career never produces a better-looking
+  baseline. Adopted form (supersedes "P(establish)×level" phrasing): anchors read bust-inclusive
+  E[level | ESTABLISHED] (de-survivored); **no probability discount at any anchor** — the forward
+  band already charges establishment failure IN FULL (measured 0.7077 vs 0.7075); resolution is
+  smooth (the engine's own evidence fade; no six-game cliff); the v3.4 clamp is retired. Ships with
+  stage B; held on branch `variant/336-bust-inclusive` @ `3bbc688` until then.
+- **The two-lever framing (owner words, verbatim):** *"the way to address the 1.57 was either
+  established players should be worth less, or picks, and year 0/1 players as a byproduct, worth
+  more."* Both levers go OPEN to the #333 memo — the survivorship route to lever one is measured
+  weak (hump 1.572→1.535 fully honest); the proven-player credit machinery and year-0 re-teaching
+  are untested. Never present either lever as pre-decided.
+- **Minimum listing tenure (#338, IMPLEMENTED):** ND 1–20 → 4 · 21–40 → 3 · others → 2; own data
+  extends; known facts override; evidence-less years inside tenure are LISTED sitting-out years.
+- **Presentation (#333):** owner-facing material is current-basis end to end or it does not ship;
+  superseded views only as labeled baselines beside the current. Owner frustration is DATA, never a
+  trigger. Every number names its quantity, basis, denominator. Plain vocabulary.
+- **His casual questions are the project's best QC** — two of today's became binding amendments
+  (the Robey catch; the resolved-establishment catch). Verify before agreeing OR disagreeing; file
+  his words the same hour.
 
-## TRACK B: CUT, RE-CUT SIMPLE ON OWNER WORD, DELIVERED 2026-08-06 (register v579–v580)
-The v579 pack (laws bundle + constants + addendum) was REJECTED by the owner as a dense deposit
-imposing this project's structure — his frame: "This is the store, it has the information. This is
-the recipe we use to calculate value based on this information." Delivered instead:
-`AFFL_track_b_2026-08-06.zip` = TWO files — the landed store verbatim (`f1e7f20c…`) +
-`THE_RECIPE.md` (the #322 recipe surgically updated to the adopted truth, dangling references
-removed, closing "WHAT WE GOT WRONG" advice section — 8 items, advice not law). The v579 zip is
-withdrawn; FINDINGS.md stays owner-side; the filed #322 recipe on its branch is untouched. The
-full pen detail is the v580 register entry; the v581 entry records the owner-asked verification
-(engine diff = redesign landings only; six store-count corrections; the #326 per-stream anchor
-restated at L3 step 33) and the corrected re-delivery. Any extension is a NEW owner word.
+## THE ROAD (in order)
+1. **The #333 RE-ANCHORING MEMO** — the design deliberation. Weigh the two levers openly with the
+   four #336 variant sheets as evidence (`docs/evidence/act_336_variant_2026-08-06/` + `amend2/` +
+   `amend3/`); absorb the #332 addendum (re-center on the owner's cohort-development words, **#306
+   comment 5186108632**). Output: a recommended target shape to the owner — a recommendation, not
+   a landing.
+2. **#334 STAGE B** — executes the memo's chosen design in ONE act through the declared-refit lane:
+   curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
+   layer landed. Ends in a side-by-side to the owner before anything ships. Parked items that
+   resolve inside it: the thin-cell band steps (5/42 + 14/42, smoothed properly per no-hard-bands,
+   never clamped) · the Dean-class held-surface boundary artefact · pool-entry knock-ons · the
+   `ui/release_pick_curve.json` stamp. Board attribution: stage B moves the board OUTSIDE a round —
+   it needs its own out-of-round column BEFORE the next weekly apply, with an id that sorts AFTER
+   `redesign-adoption-6-8` under the registry's (after_round, id) tiebreak.
+3. **Round 22** (weekly): the owner may run it himself — his one-pager is in his channel (queued
+   for docs/) — or courier the file; the catchup pattern is the v582 register entry.
 
-## THE SEAM'S ROAD (updated at v582)
-1. ~~Round-21 ingest + movers snapshot~~ **DONE 2026-08-06** (txn 4a7d259; pattern for R22+: the
-   catchup verb per the v582 register entry; the owner may run it himself — one-pager pending).
-2. ~~#344 merge + engine_head re-pin~~ **DONE 2026-08-06, owner word "Merge 346"** — the
-   declared-refit lane (RL_V0SURF_REFIT=1) is OPEN; silent refits stay red; engine_head `8f0e3eb1`.
-3. ~~#338 implemented~~ **DONE 2026-08-06, owner word "Fire 338"** — the honest book of record is
-   committed (engine/rl_after/s4_matrix_M1v7.json, meta: store 37ced3ce · engine 8f0e3eb1 · n 2647);
-   era parity exact (460 pairs); the no-arb/per_entrant lineage REISSUED on the rule same day
-   (docs/evidence/noarb_338_2026-08-06/, v585) — tenure-provisionality lifted; #336 remains open.
-4. ~~#336 variant~~ **MEASURED, AMENDED ON THE OWNER'S ROBEY CATCH, RE-SERVED 2026-08-06**
-   (v586–v587; #336 Addendum 1: career-level P(ever establishes) at anchors, yr1-to-peak a
-   mandatory headline; branch variant/336-bust-inclusive @ a7bff5a, never merged). Amended
-   headlines: hump yr4 1.410 (peak 1.462 yr5) · yr1-to-peak 1.439× vs baseline 1.394× · top-end
-   3.921× · board −8.47% · Robey 1.35× draft-day · double-charge ≈1.0. Residuals on the sheet:
-   late-pick yr1-to-peak steepening (real population fact) · 5 thin-cell steps · Dean boundary
-   case (held-surface artefact, resolves at stage B). **AWAITING THE OWNER'S RULING** — it
-   triggers stage B.
-5. **#332 addendum** (#306 comment 5186108632) · the #333 memo absorbs the #336 result · #334
-   stage B rides the post-ruling re-derivation.
-## RUNNING THIS SEAT WELL — including the FABLE BUDGET (owner word 2026-08-06)
-**The seam runs on Fable; spend Fable ONLY on judgment** — rulings, verifying the two-or-three
-deciding figures, and talking to the owner. Everything mechanical (searches, extraction, builds,
-table-making, audits' legwork) goes to OPUS subagents with tight checklists — never Fable, never an
-inherited default (charter law; a prior session burned ~1.7M Fable tokens). Keep owner replies to
-~one screen of short plain sentences; his confusion at dense wording is a recorded failure mode.
-His casual questions are the project's best QC (eight catches in two days); verify before agreeing
-OR disagreeing; file his words the same hour. Threads by comment id only; the register by pointer
-(grep for N-numbers); audits read code, rehearsals measure it — never skip the loop.
+## RUNNING THIS SEAT WELL — the FABLE BUDGET (owner word 2026-08-06)
+Spend Fable ONLY on judgment — rulings, verifying the two-or-three deciding figures, talking to
+the owner. Everything mechanical goes to OPUS subagents with tight checklists (charter law; never
+an inherited default). Keep owner replies ~one screen, short plain sentences. The auto-mode
+content classifier false-positives on arming/guard vocabulary — rephrase plainly, never work
+around it; on repeated blocks, stop and ask the owner. Verify hand-backs by re-running deciding
+figures with your own commands BEFORE presenting anything. Present the number that answers the
+owner's actual question (the yr1-to-peak lesson: relocating a gap is not closing it). Threads by
+comment id only; the register by pointer (grep N-numbers); one pen per boundary, batched;
+incremental CURRENT_STATE edits must assert count==1 per match or replace Part B wholesale (the
+v587 silent no-op is the recorded failure).
 
 ## ENVIRONMENT CARRIES (inlined in full — nothing dangles)
 Pinned venv: `bash setup_env.sh` → `/root/rl_venv312` (Python 3.12.3 · numpy 2.4.4 · scipy 1.17.1 ·
-sklearn 1.8.0 · openpyxl 3.1.5). Prepared workspace: `RL_VENDOR=<tree>/vendor bash <tree>/bootstrap.sh`
-(seeds `/home/claude/rl_workspace` from the tree it runs from; Guard 5 asserts the pinned store).
-Canonical build (byte-reproduced the boards all era): cd `/home/claude/rl_workspace/rl_after` &&
-`rm -f rl_app_data.json` && env with single-thread BLAS (`OPENBLAS/OMP/MKL/NUMEXPR_NUM_THREADS=1`),
+sklearn 1.8.0 · openpyxl 3.1.5); then PATH the venv, then `bootstrap_env.sh` (no-op check), then
+`RL_VENDOR=<tree>/vendor bash <tree>/bootstrap.sh` (seeds `/home/claude/rl_workspace`; Guard 5
+asserts the pinned store). Canonical build: cd `/home/claude/rl_workspace/rl_after` && `rm -f
+rl_app_data.json` && single-thread BLAS env (`OPENBLAS/OMP/MKL/NUMEXPR_NUM_THREADS=1`),
 `PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor`, `RL_CONFIG_MODE=gate`,
 `RL_REPO=<tree>`, `RL_FV=<tree>/engine/forward_valuation`, `python3 rl_export.py`; then
-`s4_matrix_M1v7.py`; then `one_source_selftest.py` (expect 145 PASS/0 FAIL). Full recipe:
-`docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md` (its inline expected board md5 `864b6726` is the
-PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named below); #334 recipes:
-`docs/evidence/act_334_2026-08-06/`.
-N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
-sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v590 2026-08-06` → next); insert the entry before the ` · SEAM v540
-(2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
-docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
-re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
-patch-identical; force-with-lease is sanctioned for already-merged history). Board attribution
-baseline pair: `864b6726` (pre-#334) → `827fb1fd` (adopted). The book (`s4_matrix.json`) is
-id()-keyed — never byte-reproducible, never claim its bytes. The owner-facing pages (board review ·
-cohort tables) are claude.ai artifacts on the owner's account; rebuild recipes = the committed
-instruments + the #333-filed conventions. The Track B pack's build tree lives only in the delivered
-zip; its authored files (README_FIRST · PROJECT_LAWS · RECIPE_STATUS) are reconstructible from the
-v579 register entry + the governing documents.
+`s4_matrix_M1v7.py`; then `one_source_selftest.py` (expect 144/0). Weekly rounds: the catchup verb —
+`tools/round_entry/weekly_update.sh catchup --file N=scores/RN.csv` unarmed = preview;
+`INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<any> ... --approve` = apply; ledger blocks
+double-apply; exit 6 → `finalize --round N` then `repair --round N`. N32 payload recipe:
+`{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(..., sort_keys=True)`,
+md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near char 88 SAME LENGTH
+(`v591 2026-08-06` → next); insert the entry before the ` · SEAM v540 (2026-07-29)` marker;
+asserts: line count 8,438 unchanged · growth == entry length · one new stamp · docs-only diff;
+commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge → re-verify main BY
+CONTENT; after every rebase-merge the local branch needs `git rebase origin/main` +
+force-with-lease (twins drop patch-identical; sanctioned for merged history). Product commits:
+`build-seat <build@seam.local>`; both end with the Co-Authored-By + Claude-Session trailers. The
+book (`s4_matrix.json`) is id()-keyed — never byte-reproducible; the committed book of record is
+`engine/rl_after/s4_matrix_M1v7.json` (meta block carries its identity). The owner's cohort
+artifact (claude.ai, updated to the #338 basis this day): pass its URL to the Artifact tool to
+update in place; conventions printed on the page itself. Evidence trees this era:
+`act_326_2026-08-06/` · `act_334_2026-08-06/` · `noarb_338_2026-08-06/` ·
+`act_336_variant_2026-08-06/{,amend2/,amend3/}` — all RETENTION-PROTECTED.
 
-## THE SEAT'S STANDING ORDERS (post-cut)
-0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in place
-   — then primer v4 IN FULL, then this file, then the register by pointer). Plain vocabulary.
-   Opus-only subagents.
-1. Verify THE ADOPTED IDENTITIES above with your own commands; N35-classify your box before
-   trusting any fitted figure (value-path: byte-reproduce the board).
-2. Next act: ASK THE OWNER for the round-21+ scores and drive road step 1. Steps 2–4 follow in
-   order; his single queued decision is the #336 side-by-side at step 4.
-3. Never present on a superseded basis; never deliver under pressure.
+## THE INCOMING SEAT'S FIRST TASKS
+0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in
+   place — then primer v5 IN FULL, then this file, then the register by pointer). Plain
+   vocabulary. Opus-only subagents.
+1. Verify THE CURRENT IDENTITIES above with your own commands; N35-classify your box
+   (byte-reproduce board `113b36f8` via the canonical build) before trusting any fitted figure.
+2. READ-BACK to the owner and HOLD. His likely first words: start the #333 memo, or round-22
+   scores.
+3. Drive the road. Never present on a superseded basis; never deliver under pressure; the owner's
+   casual questions are load-bearing QC.
