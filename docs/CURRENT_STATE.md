@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v69 · supervisor pen · 2026-08-06, register v578
+# CURRENT STATE — the incoming-seat read · v70 · supervisor pen · 2026-08-06, register v579
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v69 · supervisor pen · 2026-08-06, register v578 · replaced wholesale at the HANDOVER-AUDIT PEN — a
-15-finding audit of v68 fixed; this is the incoming seam's complete read. The primer is at v4 and
-carries the era's meaning discoveries — read it first, in full.)
+(v70 · supervisor pen · 2026-08-06, register v579 · replaced wholesale at the TRACK B CUT PEN —
+the starter pack cut and delivered on the owner's word; the road is otherwise unchanged. The
+primer is at v4 — read it first, in full.)
 
-## THE ERA: ADOPTED. Track A refines; Track B commences on the owner's word.
+## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
   release-transition register carries the boundary (data/release_lineage.json, entry 4, at round 20).
   One boundary adopted the whole era: #306 landing · #323/#328 corrections + re-closure · #326 pool
@@ -144,6 +144,8 @@ carries the era's meaning discoveries — read it first, in full.)
   `engine/rl_after/pvc_curve_v2.json`; file md5 `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl`
   · contract sha `7033d200…` (`data/release_contract.json`, its own recipe in `release_contract.py`)
   · balanced_board_md5 `4939d740` (present-lens anchor, deliberately unmoved) · selftest 145/0.
+  The v579 seat re-verified all of these 2026-08-06 and N35-classified its box VALUE-PATH (board
+  byte-reproduced, selftest 145/0) — a NEW seat on a NEW box still classifies its own.
 - **EXPECTED, NOT DRIFT:** `ui/release_pick_curve.json` still stamps `curve_source_store_md5 =
   f1e8c9fe` (the pre-completion store) because **#334 STAGE B — the curve+surface re-derivation on
   the completed store — is DEFERRED BY OWNER WORD** behind the #336 ruling, and its refit lane is
@@ -166,7 +168,17 @@ carries the era's meaning discoveries — read it first, in full.)
   instruction (#334 addendum 1) · busts-in-denominators wherever ruled · plain vocabulary · every
   number names its quantity · the pool-table denominator is the SIGNED ENTRY ANCHORS (primer §4.8).
 
-## THE NEW SEAM'S ROAD (in order)
+## TRACK B: CUT AND DELIVERED 2026-08-06 (register v579)
+Cut once, on the owner's word, delivered as `AFFL_track_b_pack_2026-08-06.zip` in his channel.
+Contents: the landed store verbatim (`f1e7f20c…`) · the laws (RULEBOOK verbatim + Part A + the
+2026-08-06 laws, quoted verbatim) · the #322 recipe as reference (RECIPE.md + CONSTANTS.json) with
+a dated status addendum superseding the recipe's pre-adoption "today" statements and naming
+#336/#338 machinery as not-to-copy. Withheld: the four frozen models (sealed) · FINDINGS.md
+(owner-side, handed to the owner separately) · appendix-side files · the recipe branch's stale
+store (`f1e8c9fe`). HANDOVER_MANIFEST.md excluded by disclosed seam judgment (rebuild-framed,
+stale checksums). Any re-cut or extension is a NEW owner word; the pack is the record of what left.
+
+## THE SEAM'S ROAD (in order; unchanged by the cut)
 1. **Round-21 ingest + movers snapshot.** Instrument: `docs/GO_LIVE_round_score_ingestion.md` + the
    `engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15…r19/` pattern. THE ROUND SCORES COME FROM
    THE OWNER (couriered, as the r15–r19 catchup was) — ask him for the round-21+ data. Also clears
@@ -181,13 +193,6 @@ carries the era's meaning discoveries — read it first, in full.)
 5. **#332 addendum** (re-center on the owner's cohort-development words: **#306 comment
    5186108632**) · the **#333 memo** absorbs the #336 result as lead candidate · #334 stage B rides
    the post-ruling re-derivation.
-- **TRACK B (owner-framed FRESH DESIGN), cut ONCE on his word:** the package =
-  (a) `engine/rl_after/rl_model_data.json` (the landed store, verbatim);
-  (b) THE LAWS: `RULEBOOK.md` + Part A of this file + the 2026-08-06 laws above, quoted verbatim;
-  (c) optionally the #322 recipe (`docs/recipe/` on branch `claude/afl-valuation-coordinator-4k9vy5`)
-  as reference — owner's choice, with FINDINGS.md owner-side.
-  Delivered as a folder/zip in his channel. Frozen models withheld (sealed, #322). Never cut under
-  pressure; the voided premature cut is the anti-pattern.
 
 ## RUNNING THIS SEAT WELL — including the FABLE BUDGET (owner word 2026-08-06)
 **The seam runs on Fable; spend Fable ONLY on judgment** — rulings, verifying the two-or-three
@@ -208,10 +213,12 @@ Canonical build (byte-reproduced the boards all era): cd `/home/claude/rl_worksp
 `PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor`, `RL_CONFIG_MODE=gate`,
 `RL_REPO=<tree>`, `RL_FV=<tree>/engine/forward_valuation`, `python3 rl_export.py`; then
 `s4_matrix_M1v7.py`; then `one_source_selftest.py` (expect 145 PASS/0 FAIL). Full recipe:
-`docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md`; #334 recipes: `docs/evidence/act_334_2026-08-06/`.
+`docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md` (its inline expected board md5 `864b6726` is the
+PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named below); #334 recipes:
+`docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v577 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v579 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
@@ -219,14 +226,16 @@ patch-identical; force-with-lease is sanctioned for already-merged history). Boa
 baseline pair: `864b6726` (pre-#334) → `827fb1fd` (adopted). The book (`s4_matrix.json`) is
 id()-keyed — never byte-reproducible, never claim its bytes. The owner-facing pages (board review ·
 cohort tables) are claude.ai artifacts on the owner's account; rebuild recipes = the committed
-instruments + the #333-filed conventions.
+instruments + the #333-filed conventions. The Track B pack's build tree lives only in the delivered
+zip; its authored files (README_FIRST · PROJECT_LAWS · RECIPE_STATUS) are reconstructible from the
+v579 register entry + the governing documents.
 
-## THE INCOMING SEAT'S FIRST TASKS
-0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in place,
-   e.g. the primer-first order and the retired pen token — then primer v4 IN FULL, then this file,
-   then the register by pointer). Plain vocabulary. Opus-only subagents.
-1. Verify THE ADOPTED IDENTITIES above with your own commands (paths are inline); N35-classify
-   before trusting any fitted figure (value-path: byte-reproduce the board).
-2. READ-BACK to the owner and HOLD. His two likely first words: the Track B package (spec above)
-   and the round-21 data.
-3. Drive the road. Never present on a superseded basis; never deliver under pressure.
+## THE SEAT'S STANDING ORDERS (post-cut)
+0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in place
+   — then primer v4 IN FULL, then this file, then the register by pointer). Plain vocabulary.
+   Opus-only subagents.
+1. Verify THE ADOPTED IDENTITIES above with your own commands; N35-classify your box before
+   trusting any fitted figure (value-path: byte-reproduce the board).
+2. Next act: ASK THE OWNER for the round-21+ scores and drive road step 1. Steps 2–4 follow in
+   order; his single queued decision is the #336 side-by-side at step 4.
+3. Never present on a superseded basis; never deliver under pressure.
