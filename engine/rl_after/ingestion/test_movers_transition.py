@@ -197,7 +197,7 @@ def run_all():
         'the manifest has legitimately advanced past the transition destination (round 20 applied)')
     _ck(dst.get('as_of_round') == 19,
         'transition destination round is 19 — the round the restructure landed after (unchanging history)')
-    _ck(eb.get('as_of_round') == 20, 'manifest as_of_round has advanced to 20')
+    _ck(eb.get('as_of_round') == 21, 'manifest as_of_round has advanced to 21')
 
     # ---- exactly the expected fields move; the rest are unchanged (same model pins) ----
     # OWNER-RULED SEMANTIC RESTATEMENT (owner rulings v467 + v469, 2026-07-26; ITEM 411 directive D1).
@@ -239,36 +239,36 @@ def run_all():
         'a modified report identity changes the content digest (tamper detected)')
 
     # ---- FUTURE APPEND preserves R15-R19 byte-for-byte (accumulate_bundle write path) ----
-    # The future round is 21: round 20 was APPLIED 2026-07-28 and is now real history in the bundle,
-    # so appending a fabricated R20 is correctly refused by the same-round conflict guard (which is
-    # itself asserted below). R21 is the first round that does not yet exist.
+    # The future round is 22: round 21 was APPLIED 2026-08-06 and is now real history in the bundle,
+    # so appending a fabricated R21 is correctly refused by the same-round conflict guard (which is
+    # itself asserted below). R22 is the first round that does not yet exist.
     scr = tempfile.mkdtemp(prefix='movers_append_')
     try:
         bpath = os.path.join(scr, 'movers.js')
         shutil.copyfile(os.path.join(REPO, 'ui', 'data', 'movers.js'), bpath)
         before = {str(r): json.dumps(prod['reports'][str(r)], sort_keys=True) for r in ROUNDS}
-        live20 = prod['reports']['20']
-        r21 = _mk_future_report(21, live20['board_md5_after'], '21b0ard' + '0' * 25,
-                                live20['source_store_md5_after'], '21st0re' + '0' * 25, dst)
-        res = MV.accumulate_bundle(bpath, r21, repo_root=REPO)
+        live21 = prod['reports']['21']
+        r22 = _mk_future_report(22, live21['board_md5_after'], '22b0ard' + '0' * 25,
+                                live21['source_store_md5_after'], '22st0re' + '0' * 25, dst)
+        res = MV.accumulate_bundle(bpath, r22, repo_root=REPO)
         _ck(res.get('overwrite_conflict') is False and res.get('wrote') is True,
-            'appending a future R21 report writes (no overwrite conflict)')
+            'appending a future R22 report writes (no overwrite conflict)')
         after_bundle = MV.load_bundle(bpath)
-        _ck(after_bundle['rounds'] == prod['rounds'] + [21], 'the bundle carries R15-R21 after the append')
+        _ck(after_bundle['rounds'] == prod['rounds'] + [22], 'the bundle carries R15-R22 after the append')
         after = {str(r): json.dumps(after_bundle['reports'][str(r)], sort_keys=True) for r in ROUNDS}
         _ck(all(before[str(r)] == after[str(r)] for r in ROUNDS),
             'every R15-R19 report is byte-for-byte preserved after the future append')
         _ck(MV.canonical_reports_digest(after_bundle, ROUNDS) == ap['historical_reports_digest'],
             'the R15-R19 content digest is UNCHANGED after the future append')
-        _ck(after_bundle['reports']['21']['release_identity']['release_version'] == dst['release_version'],
+        _ck(after_bundle['reports']['22']['release_identity']['release_version'] == dst['release_version'],
             'the appended future report carries the then-current governing identity (destination)')
-        # SAME-ROUND CONFLICT GUARD still fail-closed: a DIFFERENT R20 must be refused, not merged.
-        fake20 = _mk_future_report(20, live20['board_md5_before'], 'fakeb0ard' + '0' * 23,
-                                   live20['source_store_md5_before'], 'fakest0re' + '0' * 23, dst)
+        # SAME-ROUND CONFLICT GUARD still fail-closed: a DIFFERENT R21 must be refused, not merged.
+        fake21 = _mk_future_report(21, live21['board_md5_before'], 'fakeb0ard' + '0' * 23,
+                                   live21['source_store_md5_before'], 'fakest0re' + '0' * 23, dst)
         bytes_before = open(bpath, 'rb').read()
-        res2 = MV.accumulate_bundle(bpath, fake20, repo_root=REPO)
+        res2 = MV.accumulate_bundle(bpath, fake21, repo_root=REPO)
         _ck(res2.get('overwrite_conflict') is True and res2.get('wrote') is False,
-            'a DIFFERENT R20 is refused as an overwrite conflict (never merged)')
+            'a DIFFERENT R21 is refused as an overwrite conflict (never merged)')
         _ck(open(bpath, 'rb').read() == bytes_before,
             'the bundle is left BYTE-UNCHANGED by the refused conflicting write')
     finally:
