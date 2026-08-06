@@ -1,0 +1,89 @@
+#336 AMENDMENT 3 — EVERY IDENTITY AND FILE MD5 QUOTED IN THIS DIRECTORY
+
+== BOARDS ==
+113b36f898a32363c49c2a62fb809f4b  board_baseline.json
+de5110bb57a04d9b24e9c761241e54c7  board_variant.json
+
+== NO-ARB MATRICES ==
+5fb617d09cd8341d9f36b90a1827e2e5  noarb_baseline/per_entrant_338_confirmation.json
+b82e12c139a568868c13a7ddd5d5529e  noarb_variant/per_entrant_338_confirmation.json
+
+== ENGINE SOURCES ON THE BRANCH (commit 3bbc688) ==
+b35c5521b78dcdfb2423d54f5574330b  repo_variant/engine/rl_after/rl_model.py
+e3527be4195732b2e271e9e10ed40ce4  repo_variant/engine/rl_after/_merged_recover.py
+8656c7b32c4713bda940ff1b06981727  repo_variant/engine/forward_valuation/par_build.py
+adcce2df94baeb51c569d5883ff0097a  repo_variant/engine/forward_valuation/par_redesign.py
+
+== BASELINE (control) ENGINE SOURCES ==
+33f940735281a07e3b6ca19f31bf2ea6  repo_main/engine/rl_after/rl_model.py
+8f0e3eb1b29fee6b2defa0a5cfd7ebec  repo_main/engine/rl_after/_merged_recover.py
+aeff31de58b6745e5a334f7712805150  repo_main/engine/forward_valuation/par_build.py
+867185e28b0a0338c0c6fa00d2c613e1  repo_main/engine/forward_valuation/par_redesign.py
+
+== GIT ==
+branch variant/336-bust-inclusive  3bbc6882662e9b774db2e0cca9c8636bfa5ffb8c (pushed)
+parent (amendment 2)               f7a16b5cf6279455eb30d213476eafcd0fe97346
+origin/main before AND after       823e27e25fb9dd9a2f5db9f34e11808a74c89245  (UNMOVED by this act)
+
+== HELD SURFACE ==
+v0surf signature af556bdca53dee20d4f73e0ae25a8127  frozen=True  (all builds; no RL_V0SURF_REFIT)
+store            37ced3ce  (all builds, unmoved)
+
+== PINNED RECONCILIATION CONSTANTS ==
+A3_DBAND 0.707707   A3_TARGET 0.707455   A3_D 0.999644   RES_K 5.8 (= _ABS_FADE_K)
+
+== EVIDENCE FILES ==
+8e42141e8db6764f8db399c88301a6b3  COMPARISON_CURRENT_vs_BUST_INCLUSIVE_AMEND3.txt
+36ee3c06d06c8f18a3bc80729d86de41  MD5S.txt
+468fdf2cdd262f0ab6c765fbe65fdb09  RUN_RECIPE.md
+113b36f898a32363c49c2a62fb809f4b  board_baseline.json
+183a9a3d5d7a0090edd1810c49b59f68  board_delta.json
+716a4d1854b9f19ccb6f15f1ba0ce749  board_delta.txt
+941286162c38783007397be9c4ac29b8  board_diff_files.py
+de5110bb57a04d9b24e9c761241e54c7  board_variant.json
+90392ff38725f3d64c09a9835d851826  control_bootstrap.txt
+90392ff38725f3d64c09a9835d851826  control_bootstrap2.txt
+dbac304965e0a66f2d737c6d6bd8062e  control_build.txt
+642836d2a0ac8b924cd7e9e26f2299cf  control_md5.txt
+7cefd8ce684e02e8988d864853f1a2f7  dband.json
+366d5bdddf7bde764a1e8e15c0a27d7b  decomp_baseline.json
+5a088c6046e935d854429af07e65cdbd  decomp_variant_a3.json
+6aca6f475e87181afe7d870deb54219e  decompose_336b.py
+e2d8566395db224cf23b2bfe463cb878  derive_a3.py
+698379ac1a60aa118d5a65ae42022902  derive_a336c.py
+ab5afedf07edc610ef0194e7502b8858  establisher_probe.txt
+f4171ac5a1b4c875ec4a2fa4da119ad0  games_sweep.py
+fcdcc25f36ef7f1b896d5416f2f1bfec  hump_compare.txt
+db6ec91339e8f3fead938cfb8d94ebf5  load_engine.py
+d85e6c1eefb0be8a879468b5c387eb7b  monotonicity.json
+ffb42344364a779d1ac0066d50e576de  monotonicity.txt
+620ae9dbbdacd06978e86a946619fb0b  monotonicity_proofs.py
+d7a582989f143f8ef4a97217962a430a  named_eight.json
+9eb767c69450dc41a0b40f7f902e46aa  named_eight.py
+2a6cb7379b5b9f5646333fdbf619ffa2  named_eight.txt
+2d7542874672c318c3f960085e56dffd  noarb_done.txt
+7de8b65cbea59b14a4ab8fb8f321112f  par_report_baseline.txt
+2120c539a00b6fff5705501fc739dc57  par_report_variant.txt
+d5f22481e452b96ddad0fb72a0a00d97  probe_D0.50.json
+a6ad61644e8909d830f306b2423e05ba  probe_D0.50_r0.json
+cb54d86b24775398e1f98dee28e3edbb  probe_D0.80_r0.json
+e1bee2d0a5bff7386f6e4ba14e72746f  probe_a3live.json
+06901b753401135dd0a8cc00dac7ef3e  probe_calA1.0_r0.json
+4f2b8d3c777f02718b78d0dbfaf3bca0  probe_calA3.0_r0.json
+4ca62f89d9b632db9728fd7bd2e1b5cd  probe_und.json
+1d41c3e622f700a539827f4172c85042  reconcile.txt
+fc1754697e4f765d8ccc13cd5e9b8160  reconcile_a3.py
+c27dce41bbf76e12a8b9422985eea5b7  reconciliation.txt
+5a334a493e0b63ca3d1709fd9f23e0d4  repin.txt
+ee7ba62e388997af2a4e67dc331c13b1  repin_variant.py
+a90e336c3658eb4b512350f86e1a32ff  seam_baseline.json
+f819bdd3634b049bcd5c1a4a50b5da2d  seam_basepk.json
+d304f1de4689f8989a5eb7f92b590cb2  seam_boundary.py
+146257dbda630cf01ad0657354e7cbc6  seam_report.txt
+692ada60a5b729e7961aa51b79732927  seam_variant.json
+cbf67d3697fa9e419a7faa102771cced  seam_variant_d1.json
+3c0b088af6ec2e2aec5ec1109434e63e  sweep_baseline.json
+9ecfa4fe7119b22e94adb8e70931e295  sweep_variant.json
+1dbe0439cdcb0e77c6e6dcf4b7cbddae  variant_bootstrap.txt
+b7c6a4e9f1ae999a4034d36f7a1119fe  variant_build.txt
+607b45d2c07a673bb787f327d30c2b74  variant_md5.txt

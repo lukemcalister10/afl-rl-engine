@@ -1,0 +1,47 @@
+#336 AMENDMENT 3 — THE ESTABLISHER PROBE, re-run.  (Addendum 1's double-charge check, same cohort.)
+
+COHORT, fixed by the FIRST CUT's evidence before any of these numbers existed: the ten largest
+absolute cuts of the first cut's board delta. Every one is age<=21 and thin-record, and every one of
+them has since ESTABLISHED under the ruled >=6-game bar — which is exactly why they are the right set
+to re-run: they are the population Addendum 1's 1.023 was measured on.
+
+THE ARITHMETIC, unchanged from Addendum 1 so the numbers are comparable:
+   required = P(ever establishes | pos, band)         what the ANCHOR is entitled to charge
+   applied  = par_anchor(build) / par_anchor(baseline)  what the build actually did
+   EXCESS   = applied / required                        1.00 = charged exactly once
+
+  player             band    required    app.A1    EXC.A1    app.A3    EXC.A3
+  ----------------------------------------------------------------------------
+  sullivan-robey     8-12       0.907     0.955     1.053     0.835     0.921
+  dyson-sharp        13-20      0.925     0.969     1.048     0.866     0.936
+  josh-lindsay       13-20      0.985     0.937     0.951     0.927     0.941
+  jacob-farrow       8-12       0.940     0.951     1.012     0.885     0.941
+  harry-dean         1-3        1.000     0.961     0.961     0.928     0.928
+  zeke-uwland        1-3        1.000     0.992     0.992     0.975     0.975
+  taj-hotton         8-12       0.907     0.958     1.057     0.841     0.928
+  dylan-patterson    4-7        0.994     0.992     0.998     0.968     0.973
+  sam-cumming        4-7        0.997     1.015     1.018     0.952     0.955
+  xavier-lindsay     8-12       0.907     0.958     1.057     0.841     0.928
+  MEAN (n=10)                                        1.015               0.943
+
+READ IT CAREFULLY — the test's MEANING changed at amendment 2, and BOTH its columns move for reasons that
+are not "a charge crept back in". Two separate things are inside the 0.943, and they must not be pooled:
+
+  (i) THE PROBABILITY CHARGE AT THE ANCHOR — the thing this test was built to catch. From amendment 2
+      onward an ESTABLISHED player is charged NOTHING there: his anchor factor is D + r x (1-D) with
+      r = 1, which is EXACTLY 1.000000, for every establisher on the board, no cell exceptions, no
+      smoothing. On this leg the establisher probe is not 1.023 or 0.943 — it is a hard 1.000.
+
+  (ii) THE BASIS MOVE — which is the whole point of the variant and is NOT a charge. `applied` divides
+      by the SHIPPED par, and the shipped par is the survivors-at-that-tenure mean. The variant's
+      conditional level is de-survivored on the tenure axis (an establisher who faded to three games
+      still teaches at his realized level instead of vanishing), so it sits BELOW the shipped number by
+      construction: applied runs 0.835-0.975 here, mean 0.919. Divide that by P and you get 0.943 — a
+      ratio of two different bases, not a double charge.
+
+  So the honest reading of this table is: the 0.943 is (ii), and (i) is exactly 1.000. The amendment-1
+  arithmetic can no longer isolate (i) on its own, because its denominator moved. That is a limitation of
+  the OLD test under the NEW basis, stated rather than papered over.
+
+THE TEST THAT IS BINDING NOW is the one on the population Addendum 1 never reached — the unresolved
+subset, in reconciliation.txt section 4, which carries a measured total/target of 1.0000 on n=329.

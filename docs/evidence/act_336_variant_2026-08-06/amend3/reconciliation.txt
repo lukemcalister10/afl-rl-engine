@@ -1,0 +1,90 @@
+#336 AMENDMENT 3 — SINGLE-CHARGE RECONCILIATION on the UNRESOLVED subset.  Required proof.
+
+CAPTION, mandated on every sheet of this act:
+  reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+  the joint re-derivation is #334 stage B, after the ruling.
+
+THE QUESTION (never asked on this population before). Addendum 1 proved establishment risk is charged
+ONCE at the anchor for players who go on to ESTABLISH (probe mean excess 1.023). It never asked what
+the forward band was already charging the players who have NOT established — and amendment 2 stacked
+the full career-level P on top of whatever that was.
+
+====================================================================================================================
+== 1. THE PROBE SET, with its denominators ==
+   unresolved on the active board (no season of >=6 games as of 2026) : 349
+   ... with at least one PLAYED season, so a comparator exists         : 329   <- THE PROBE SET
+   ... excluded (no played season: no per-game average to hold fixed)  : 20
+   by best-season games: 1g:63  2g:81  3g:68  4g:59  5g:58
+
+====================================================================================================================
+== 2. d_band — WHAT THE FORWARD BAND ALREADY CHARGES.  Measured, anchor UNDISCOUNTED on both sides ==
+   d_band = ev(unresolved p) / ev(CE(p)),  CE(p) = the same player with establishment made certain.
+   Value-weighted (sums of prices): the question is about VALUE, and a mean of ratios is dominated by
+   the 60% of this subset whose price the anchor cannot move at all. Both statistics given.
+
+   comparator construction                            sum ev  sum ev_CE    d_band    P (vw)  P/d_band
+   MINIMAL  best season -> 6g  (OPERATIVE, conservative)      31752      44866    0.7077    0.7075    0.9996
+   every season -> >=6g                                31752      45313    0.7007    0.7079    1.0102
+   every season -> >=18g  (full exposure)              31752      50883    0.6240    0.6946    1.1132
+   (per-player MEAN of the operative ratio, for completeness: 0.9815, median 1.0000, sd 0.2785)
+
+   The OPERATIVE reading is the CONSERVATIVE one — it moves the least evidence, so it yields the
+   smallest comparator and the LARGEST d_band, i.e. it is the reading that most resists the finding
+   below. All three readings point the same way.
+
+====================================================================================================================
+== 3. THE RECONCILIATION, and THE FINDING ==
+   d_band (what the band already takes)            = 0.707707
+   target  (the true class risk, career-level P)   = 0.707455
+   D = min(1, target / d_band)                     = 0.999644      <- the anchor-side discount
+
+   THE FINDING, and it is the branch the directive named as a possible outcome:
+   THE FORWARD BAND ALREADY CHARGES ESTABLISHMENT FAILURE IN FULL, AND THEN SOME.
+   0.7077 of charge against a class risk of 0.7075 — the two agree to 0.04%. The anchor owes
+   essentially NOTHING further and the reconciliation lands on its floor: D = 0.9996, never negative,
+   never lifting the anchor above the conditional level to make room for a band that over-charges.
+
+   CONSEQUENCE, stated plainly: amendment 2's anchor-side P on unresolved players was a SECOND
+   charge on top of a band already pricing the whole risk — the same double charge Addendum 1
+   removed for establishers, one population over. Amendment 3 removes it for the other population.
+
+====================================================================================================================
+== 4. THE PROOF — total effective discount / true class risk, on the FINISHED BUILD ==
+   total(p) = ev_A3(p) / ev_A3(CE(p)) ; target(p) = P(ever establishes | his cell) ; both value-weighted.
+   ev(CE) is BUILD-INVARIANT (CE is established, so r=1 and D cancels) — verified, not assumed.
+
+   sum ev_A3(unresolved)            =      31740
+   sum ev_A3(CE)                    =      44866
+   sum P x ev_A3(CE)  (the target)  =      31741
+   TOTAL EFFECTIVE DISCOUNT         = 0.707440
+   TRUE CLASS RISK TARGET           = 0.707455
+   *** RATIO  total / target        = 1.0000     TARGET 1.0  ***
+
+   Addendum 1's probe hit 1.023 on ESTABLISHERS. This one covers the population it never reached.
+
+   The same ratio under the two other comparator readings, so the number is not a construction artifact:
+     every season -> >=6g             ratio 0.9895
+     every season -> >=18g            ratio 0.8980
+
+====================================================================================================================
+== 5. WHY POOLED AND NOT PER-CELL — declared, and MEASURED rather than asserted ==
+   Per-cell d_band is n-driven noise at this sample:
+     band |   n |   d_band |   P (vw) | P/d_band
+        1 |   3 |   1.1051 |   0.9950 |   0.9003
+        2 |   7 |   1.0019 |   0.9332 |   0.9314
+        3 |  12 |   0.9270 |   0.9290 |   1.0021
+        4 |  20 |   0.4697 |   0.8546 |   1.8192
+        5 |  27 |   0.7031 |   0.6792 |   0.9659
+        6 |  49 |   0.7680 |   0.6866 |   0.8940
+        7 | 211 |   0.6856 |   0.4797 |   0.6997
+   Applying a pooled d_band against per-cell P was BUILT AND MEASURED, and it OVER-charges:
+     total/target falls to 0.954 (ALPHA=1) and 0.970 (ALPHA=3) against 1.000 at the pooled floor.
+   The reconciliation is therefore stated and applied at the pooled level, one number, spread disclosed.
+
+== 6. THE PASS-THROUGH — measured, and NOT USED.  Recorded because it is WHY per-cell fails ==
+   Scaling the anchor by D does not scale the price by D. With the ramp held at r=0 to isolate it:
+     D=0.8 : sum ev 31752 -> 27961 (ratio 0.8806)  elasticity 0.570   anchor-INERT players 194 of 329 (59%)
+     D=0.5 : sum ev 31752 -> 26960 (ratio 0.8491)  elasticity 0.236   anchor-INERT players 197 of 329 (60%)
+   Strongly saturating, not a power law, and 6 in 10 of this subset do not move AT ALL — they are
+   priced off the fixed pick curve, which carries its own bust rate already. No exponent is fitted or
+   applied: at D = 0.9996 there is no discount left to pass through.

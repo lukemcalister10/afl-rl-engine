@@ -1,0 +1,92 @@
+#336 AMENDMENT 3 — THE GAME-5-vs-GAME-6 BOUNDARY SEAM.  Required to measure ~0.
+
+CAPTION: reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+         the joint re-derivation is #334 stage B, after the ruling.
+
+THE RAMP THAT REPLACES THE SWITCH.  r(p) = rho(g*)/rho(6) capped at 1, rho(g) = g^2/(g^2+g+K),
+K = 5.8 taken UNCHANGED from the engine's pinned _ABS_FADE_K (R100.11 evidence fade,
+_merged_recover.py:685,711 — 'ONE continuous object ... NO threshold, NO counter, NO branch
+(L-SMOOTH)'). g* = best single-season games, because the ruled establishment definition is itself a
+MAX over seasons. NO NEW WIDTH IS SET. The one construction on top is the normalisation to the bar:
+   g :   0      1      2      3      4      5      6+
+   r : 0.000  0.170  0.450  0.671  0.824  0.927  1.000        residual step across the bar: 0.0728
+
+======================================================================================================================
+== 1. THE 12-PROBE DIFFERENCE-IN-DIFFERENCES, method unchanged from amendment 2 ==
+   A real player, identity and key preserved, re-priced with ONE season of 5 games and of 6 games at
+   his own average, on BOTH builds. The 5->6 step moves exposure, the level ramp and the evidence
+   weights too, so the seam is the ratio of ratios, which nets the pre-existing machinery step out:
+       SEAM = [ev(6g)/ev(5g)]_variant / [ev(6g)/ev(5g)]_baseline        1.000 = no seam
+
+  probe                base5g   base6g   b.jump |    var5g    var6g   v.jump |   SEAM a3   SEAM a2
+  ------------------------------------------------------------------------------------------------
+  sullivan-robey       2613.0   2776.0   1.0624 |   2177.0   2342.0   1.0758 |    1.0126    1.1307
+  cooper-trembath      1664.0   1796.0   1.0793 |   1233.0   1337.0   1.0843 |    1.0047    1.0069
+  ned-moyle            1662.0   1803.0   1.0848 |   1375.0   1516.0   1.1025 |    1.0163    1.0954
+  nick-madden          1919.0   2134.0   1.1120 |   1629.0   1796.0   1.1025 |    0.9914    1.0214
+  josh-lai              304.0    347.0   1.1414 |    219.0    230.0   1.0502 |    0.9201    1.0523
+  zac-taylor            154.0    158.0   1.0260 |    115.0    129.0   1.1217 |    1.0933    1.5819
+  harry-dean           2053.0   2092.0   1.0190 |   1632.0   1674.0   1.0257 |    1.0066    1.0097
+  patrick-retschko      796.0    845.0   1.0616 |    579.0    641.0   1.1071 |    1.0429    1.2464
+  robey T1             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+  robey T2             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+  robey T3             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+  robey T4             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+
+  n = 12 probes.   AMENDMENT 2: mean 1.2500, worst +58.2%.   AMENDMENT 3: mean 1.0099, worst +9.3%.
+
+  The raw DiD is NOT 1.0000. Reporting it as if it were would be the easy lie, so the next two
+  sections ATTRIBUTE the residual instead. Both say the same thing: none of it is a resolution seam.
+
+======================================================================================================================
+== 2. ABLATION CONTROL — remove the conditioning, keep everything else ==
+   The SAME amendment-3 build re-run with D forced to 1.000, which makes the anchor factor
+   D + r(1-D) exactly 1.000 for EVERY r. The resolved state then cannot move any price at all. If the
+   residual above were a resolution seam, these prices would move. They do not.
+
+   probe                  a3 5g    abl 5g |     a3 6g    abl 6g   identical?
+   sullivan-robey        2177.0    2177.0 |    2342.0    2342.0   YES
+   cooper-trembath       1233.0    1233.0 |    1337.0    1337.0   YES
+   ned-moyle             1375.0    1375.0 |    1516.0    1516.0   YES
+   nick-madden           1629.0    1629.0 |    1796.0    1796.0   YES
+   josh-lai               219.0     219.0 |     230.0     230.0   YES
+   zac-taylor             115.0     115.0 |     129.0     129.0   YES
+   harry-dean            1632.0    1627.0 |    1674.0    1674.0   NO  (5g moves 5 of 1632 = 0.31%)
+   patrick-retschko       579.0     579.0 |     641.0     641.0   YES
+   robey T1              1990.0    1990.0 |    2180.0    2180.0   YES
+   robey T2              1990.0    1990.0 |    2180.0    2180.0   YES
+   robey T3              1990.0    1990.0 |    2180.0    2180.0   YES
+   robey T4              1990.0    1990.0 |    2180.0    2180.0   YES
+
+   11 of 12 probe prices BIT-IDENTICAL with the conditioning removed. The single exception moves
+   5 points in 1632 (0.31%), which is the rounding of the 0.036% class discount the reconciliation
+   leaves. The resolved-state conditioning contributes essentially NOTHING to the 5g/6g step.
+
+======================================================================================================================
+== 3. THE GAMES SWEEP — is there a BAR at 6 at all? ==
+   A seam is a STEP: the variant/baseline ratio would sit at one level below 6 games and jump at 6.
+   Swept G = 1..10 on the same 8 probes, here are the per-step ratios r(g+1)/r(g), pooled:
+
+      1 -> 2    mean  0.9087   worst  0.8386
+      2 -> 3    mean  1.0022   worst  1.0593
+      3 -> 4    mean  0.9840   worst  0.9572
+      4 -> 5    mean  0.9919   worst  1.0592
+      5 -> 6    mean  1.0110   worst  1.0933   <== THE ESTABLISHMENT BAR
+      6 -> 7    mean  1.0205   worst  1.1268
+      7 -> 8    mean  1.0071   worst  1.0205
+      8 -> 9    mean  1.0132   worst  1.0361
+      9 -> 10   mean  1.0033   worst  0.9389
+
+   THE 5->6 STEP IS INDISTINGUISHABLE FROM ITS NEIGHBOURS. Its mean (1.0110) is smaller than the
+   6->7 step (1.0205) and far smaller than the 1->2 step (0.9087); its worst case (1.0933) is
+   smaller than 6->7's (1.1268). There is no bar at six. What the DiD picks up is the BASIS move —
+   the bust-inclusive tables and the de-survivored conditional level shift the variant/baseline ratio
+   at EVERY games count, with curvature, and the DiD cannot net out curvature it sits on.
+
+======================================================================================================================
+== VERDICT ==
+   The game-5-vs-game-6 cliff amendment 2 measured at up to +58% is GONE. It is removed twice over:
+   the binary switch became the engine's own continuous evidence curve (a 92.7% reduction on its
+   own), and the reconciliation then drove the class discount that ramp interpolates across to
+   0.036%, which removes the rest. Measured seam attributable to the conditioning: ~0 (23 of 24
+   probe prices bit-identical under ablation; no step at the bar in a 1..10-game sweep).

@@ -1,0 +1,655 @@
+#336 — THE BUST-INCLUSIVE REFERENCE LAYER, AMENDMENT 3 (the continuous experiment)
+COMPARISON: CURRENT (shipped) vs BUST-INCLUSIVE — every number names its quantity, basis and denominator
+2026-08-06 · build seat · EXPERIMENT ONLY, nothing shipped, nothing merged, no price lands from this
+======================================================================================================================
+
+CAPTION, carried on every sheet of this act as mandated:
+    reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+    the joint re-derivation is #334 stage B, after the ruling.
+
+WHAT IS BEING COMPARED. One store (37ced3ce), one frozen year-zero surface (af556bdca53d, frozen=True — no
+RL_V0SURF_REFIT in any build), two engine builds. The CONTROL build byte-reproduced the live board
+113b36f898a32363c49c2a62fb809f4b before the variant was credited, and the control no-arb matrix reproduced
+5fb617d0 — the harness is proven able to fail before any variant number is read.
+
+THE THREE AMENDMENTS, all of them live in this cut, stated in order.
+  ADDENDUM 1 (owner catch: "Robey losing 2/3 of his value seems crazy"). The probability applied at a level
+    anchor is CAREER-LEVEL P(ever establishes | position x pick band) — never established-by-tenure. Tenure
+    enters only as window membership.
+  AMENDMENT 2 (Owner Catch 2: "Have Trembath and Taylor not already established?"). The anchor conditions on
+    what has RESOLVED. An established player (>=1 season of >=6 games, build_cohort_book.py:181-185) anchors
+    to E[level | establishes] with no probability discount at all.
+  AMENDMENT 3 (this cut, owner word "run it"). Two changes to amendment 2's construction:
+    (1) the binary established/unresolved SWITCH becomes a smooth RESOLUTION WEIGHT r(p);
+    (2) unresolved risk is RECONCILED so it is charged once in TOTAL, not once per mechanism.
+  Busts remain in every establishment-rate denominator throughout, at their realized nothing. Picks and
+  synthetics are untouched by all three: a pick has no record to resolve and carries the full entrant risk.
+
+======================================================================================================================
+== (b) THE TWO STEERING NUMBERS — reported first, because they steer stage B ==
+#336 — THE HUMP ROW, FOUR BASES. denominator n=1197 entrants (ND picks 1-64, classes 2004-2022)
+  the BASELINE column is re-measured this run from the control matrix 5fb617d0 and reproduces the
+  figure quoted in the directive to three decimals — the second control of this act.
+
+  yr |   n_incl  n_zero |  BASELINE   AMEND-1   AMEND-2   AMEND-3 |  mean_yrN(A3)  mean_yr0(A3)
+   0 |     1197       0 |    1.000     1.000     1.000     1.000 |        839.2         839.2
+   1 |     1197       0 |    1.123     1.016     1.005     1.021 |        856.9         839.2
+   2 |     1197       0 |    1.373     1.171     1.264     1.279 |       1073.6         839.2
+   3 |     1197     141 |    1.506     1.294     1.437     1.448 |       1215.0         839.2
+   4 |     1197     258 |    1.572     1.410     1.533     1.535 |       1288.3         839.2
+   5 |     1139     334 |    1.566     1.462     1.533     1.534 |       1281.2         835.1
+   6 |     1075     391 |    1.519     1.452     1.496     1.495 |       1247.5         834.2
+   7 |     1014     430 |    1.318     1.266     1.299     1.299 |       1084.7         835.2
+   8 |      950     452 |    1.084     1.047     1.069     1.069 |        888.6         831.3
+   9 |      886     457 |    0.840     0.813     0.828     0.828 |        687.7         830.4
+
+  HEADLINES (denominator n=1197 for years 0-4; n falls to 1139/1075/1014/950/886 for years 5-9)
+    quantity                          BASELINE   AMEND-1   AMEND-2   AMEND-3
+    year-4 ratio                          1.572     1.410     1.533     1.535
+    peak ratio (year-0-to-peak)           1.572     1.462     1.533     1.535
+    peak occurs at year                       4         5         4         4
+    year-1 ratio                          1.123     1.016     1.005     1.021
+    year-1-to-peak (peak/yr1)             1.400     1.439     1.525     1.503
+    year-1-to-peak (yr5/yr1, owner's)     1.394     1.439     1.525     1.502
+
+  THE TWO STEERING NUMBERS, stated plainly:
+    (b1) THE FULLY HONEST HUMP.  year-0-to-peak 1.535 against the shipped 1.572 — the 1.57 does NOT
+         fall under honest pricing. It closes by 6.5% of the way to 1.0, and no further.
+    (b2) IS THE RELOCATION GONE?  year-1-to-peak 1.503 against the shipped 1.400. NO — it is still
+         WIDER than baseline, though narrower than amendment 2's 1.525. The gap moved back a little,
+         it did not close.
+
+  picks 1-20: yr1 1.150 -> 1.052 | peak 1.594 -> 1.562 | yr1-to-peak 1.386 -> 1.485
+  picks 21-64: yr1 1.083 -> 0.975 | peak 1.555 -> 1.530 | yr1-to-peak 1.436 -> 1.569
+
+======================================================================================================================
+== (a) THE BOARD ==
+== #336 board delta — BASELINE vs VARIANT (bust-inclusive reference layer) ==
+   A = board_baseline.json
+   B = board_variant.json
+
+-- 1. ABSOLUTE MOVEMENT (num-SCAR `active[].v`) --
+movers      : 565 of 804 common active rows (+0 added, -0 removed)
+SigmaD SCAR : net -26282   (gross 28090 over the 565 movers)
+age SigmaD  : <=22 -17034 (n=191 moved of 294 in bucket) | 23-26 -6504 (n=187 of 245) | >=27 -2744 (n=187 of 265)
+
+top 5 cuts  :
+   Sullivan Robey               3070 ->     2651        -419   (age 19)
+   Xavier Lindsay               2059 ->     1679        -380   (age 20)
+   Harry Dean                   2660 ->     2293        -367   (age 19)
+   Taj Hotton                   2263 ->     1899        -364   (age 20)
+   Luke Trainor                 1525 ->     1175        -350   (age 20)
+top 5 lifts :
+   Cooper Duff-Tytler           1514 ->     1709        +195   (age 19)
+   Charlie West                  446 ->      616        +170   (age 20)
+   Matt Whitlock                 448 ->      578        +130   (age 20)
+   Jack Williams                 398 ->      457         +59   (age 23)
+   Archer Reid                   697 ->      752         +55   (age 21)
+
+-- 2. GLOBAL SCALE, SEPARATED (the numeraire-chain control) --
+board total (804 active, common rows only, n=804): A 759722  ->  B 733440
+RATIO OF BOARD TOTALS  B/A = 0.965406   (a uniform rescale of -3.459%)
+pick-1 numeraire       : A 3000 -> B 3000   (the standing law pins it at 3000)
+
+-- 3. RELATIVE MOVEMENT, after normalising EACH board to its OWN total --
+   share(k) = v(k)/total ; relative delta = share_B/share_A - 1 = (v_B/v_A)/scale - 1
+rows re-weighted at all      : 804 of 804   (this is RE-RANKING, not rescaling)
+rows moved >1% of own share  : 756 of 804
+rows moved >5% of own share  : 141 of 804
+mean |relative move|         : 0.0535  (5.35% of a player's own share; denominator 804 common rows)
+mean relative move by age    : <=22 -0.0392 (n=294) | 23-26 -0.0041 (n=245) | >=27 +0.0251 (n=265)
+
+top 5 relative CUTS (share lost after removing the global rescale):
+   Campbell Lake                 153 ->       59   share  -60.06%   (age 22)
+   Jack Ison                     544 ->      269   share  -48.78%   (age 19)
+   Liam Puncher                  116 ->       58   share  -48.21%   (age 23)
+   Archer Day-Wicks              636 ->      345   share  -43.81%   (age 20)
+   Chris Scerri                  302 ->      164   share  -43.75%   (age 20)
+top 5 relative LIFTS:
+   Charlie West                  446 ->      616   share  +43.07%   (age 20)
+   Oscar Adams                    67 ->       92   share  +42.23%   (age 23)
+   Matt Whitlock                 448 ->      578   share  +33.64%   (age 20)
+   Archie Ludowyke               215 ->      250   share  +20.45%   (age 19)
+   Jack Williams                 398 ->      457   share  +18.94%   (age 23)
+
+-- 4. TOP-END RATIO (top active value / 3000, the pick-1 numeraire) --
+   BASELINE top active = Harry Sheezel 12124   ratio to 3000 = 4.041x
+   VARIANT  top active = Harry Sheezel 11963   ratio to 3000 = 3.988x
+
+-- 5. PICK LADDER (the draft-pick curve, both boards) --
+   pick :         1       2       3       5      10      20      30      45      64
+   BASELINE     3000    2999    2874    1881    1460     990     663       -       -
+   VARIANT      3000    2999    2874    1881    1460     990     663       -       -
+
+-- 6. BASEPK_REG on each board (the repaired reference table, as exported) --
+   BASELINE: {"KPD|0": 76.027, "KPD|1": 68.364, "KPD|2": 68.364, "KPD|3": 68.364, "KPD|4": 65.465, "KPD|5": 65.465, "KPD|6": 65.465, "KPD|7": 65.465, "KPF|0": 74.596, "KPF|1": 74.596, "KPF|2": 74.596, "KPF|3": 67.354, "KPF|4": 67.354, "KPF|5": 67.354, "KPF|6": 61.01, "KPF|7": 61.01, "MID|0": 101.487, "MID|1": 94.732, "MID|2": 94.732, "MID|3": 82.467, "MID|4": 82.201, "MID|5": 79.978, "MID|6": 76.863, "MID|7": 
+   VARIANT: {"KPD|0": 75.798, "KPD|1": 67.864, "KPD|2": 68.721, "KPD|3": 71.14, "KPD|4": 48.614, "KPD|5": 46.634, "KPD|6": 48.284, "KPD|7": 35.604, "KPF|0": 74.596, "KPF|1": 70.545, "KPF|2": 67.687, "KPF|3": 55.839, "KPF|4": 51.077, "KPF|5": 46.212, "KPF|6": 36.114, "KPF|7": 26.344, "MID|0": 99.662, "MID|1": 94.448, "MID|2": 87.108, "MID|3": 72.836, "MID|4": 66.802, "MID|5": 63.476, "MID|6": 46.306, "MID|7": 
+-- POOL on each board --
+   BASELINE {"0": 94.833, "1": 85.274, "2": 83.868, "3": 77.853, "4": 74.844, "5": 77.46, "6": 71.2, "7": 72.808}
+   VARIANT  {"0": 93.989, "1": 84.152, "2": 76.126, "3": 71.81, "4": 60.166, "5": 56.039, "6": 49.309, "7": 34.035}
+
+======================================================================================================================
+== (a) THE NAMED EIGHT — all four cuts side by side, against a fixed draft-day yardstick ==
+=== THE NAMED EIGHT — baseline / a1 / a2 / AMENDMENT 3 / draft-day (all four cuts side by side) ===
+  draft-day = v0_start off the HELD frozen year-zero surface (same number in every build)
+
+  player             pos  pick r(p) draftday     BASE   1stcut   AMEND1   AMEND2   AMEND3    A3/base A3/draft
+  -----------------------------------------------------------------------------------------------------------
+  sullivan-robey     MID  9    1.00     2080     3070      945     2807     2651     2651     0.864x   1.275x
+  cooper-trembath    KPF  9    1.00      529     2053     1144     1211     1868     1868     0.910x   3.531x
+  ned-moyle          RUCK 5    1.00      396     2053     1404     1252     1871     1871     0.911x   4.725x
+  nick-madden        RUCK None 1.00      272     2142     1486     1481     1829     1829     0.854x   6.724x
+  josh-lai           SD   None 1.00      319      513      149      131      352      352     0.686x   1.103x
+  zac-taylor         SF   44   1.00      359      254       78       70      208      208     0.819x   0.579x
+  harry-dean         KPD  3    1.00     2331     2660     1002     2329     2293     2293     0.862x   0.984x
+  patrick-retschko   MID  8    1.00      337     1353      509      542     1097     1097     0.811x   3.255x
+
+  SCALE-ADJUSTED (the variant board carries a uniform rescale; ratio to draft-day with it removed)
+  board scale B/A = 0.965406
+  sullivan-robey      x draft-day raw  1.275   scale-adjusted  1.320
+  cooper-trembath     x draft-day raw  3.531   scale-adjusted  3.658
+  ned-moyle           x draft-day raw  4.725   scale-adjusted  4.894
+  nick-madden         x draft-day raw  6.724   scale-adjusted  6.965
+  josh-lai            x draft-day raw  1.103   scale-adjusted  1.143
+  zac-taylor          x draft-day raw  0.579   scale-adjusted  0.600
+  harry-dean          x draft-day raw  0.984   scale-adjusted  1.019
+  patrick-retschko    x draft-day raw  3.255   scale-adjusted  3.372
+
+=== resolved-state evidence — the season lines the definition is read off ===
+  sullivan-robey     est=YES bestg=14  r=1.000  2026:14g@61.7
+  cooper-trembath    est=YES bestg=20  r=1.000  2025:3g@71.7  2026:20g@65.5
+  ned-moyle          est=YES bestg=13  r=1.000  2023:2g@49.5  2024:8g@85.8  2025:3g@56.0  2026:13g@81.4
+  nick-madden        est=YES bestg=6   r=1.000  2025:3g@86.0  2026:6g@83.8
+  josh-lai           est=YES bestg=15  r=1.000  2026:15g@62.2
+  zac-taylor         est=YES bestg=18  r=1.000  2024:9g@43.7  2025:17g@47.5  2026:18g@58.6
+  harry-dean         est=YES bestg=16  r=1.000  2026:16g@59.6
+  patrick-retschko   est=YES bestg=15  r=1.000  2026:15g@70.7
+
+  READ. Every one of the named eight is ESTABLISHED (r = 1.00), so amendment 3 prices them EXACTLY as
+  amendment 2 did — identical to the point. That is the correct result, not a null one: amendment 3's two
+  changes act on the ramp between zero evidence and the bar, and on the UNRESOLVED population. The eight
+  are the population Owner Catch 2 was about, and amendment 2's repair of them is carried through intact.
+  The recovery the owner was owed holds: Robey 3070 -> 2651 (1.275x his draft-day 2080, and 1.320x with the
+  board's uniform rescale removed), Trembath 1868, Moyle 1871, Taylor 208.
+
+======================================================================================================================
+== (1) THE SMOOTH RESOLUTION WEIGHT, and the seam it was built to remove ==
+#336 AMENDMENT 3 — THE GAME-5-vs-GAME-6 BOUNDARY SEAM.  Required to measure ~0.
+
+CAPTION: reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+         the joint re-derivation is #334 stage B, after the ruling.
+
+THE RAMP THAT REPLACES THE SWITCH.  r(p) = rho(g*)/rho(6) capped at 1, rho(g) = g^2/(g^2+g+K),
+K = 5.8 taken UNCHANGED from the engine's pinned _ABS_FADE_K (R100.11 evidence fade,
+_merged_recover.py:685,711 — 'ONE continuous object ... NO threshold, NO counter, NO branch
+(L-SMOOTH)'). g* = best single-season games, because the ruled establishment definition is itself a
+MAX over seasons. NO NEW WIDTH IS SET. The one construction on top is the normalisation to the bar:
+   g :   0      1      2      3      4      5      6+
+   r : 0.000  0.170  0.450  0.671  0.824  0.927  1.000        residual step across the bar: 0.0728
+
+======================================================================================================================
+== 1. THE 12-PROBE DIFFERENCE-IN-DIFFERENCES, method unchanged from amendment 2 ==
+   A real player, identity and key preserved, re-priced with ONE season of 5 games and of 6 games at
+   his own average, on BOTH builds. The 5->6 step moves exposure, the level ramp and the evidence
+   weights too, so the seam is the ratio of ratios, which nets the pre-existing machinery step out:
+       SEAM = [ev(6g)/ev(5g)]_variant / [ev(6g)/ev(5g)]_baseline        1.000 = no seam
+
+  probe                base5g   base6g   b.jump |    var5g    var6g   v.jump |   SEAM a3   SEAM a2
+  ------------------------------------------------------------------------------------------------
+  sullivan-robey       2613.0   2776.0   1.0624 |   2177.0   2342.0   1.0758 |    1.0126    1.1307
+  cooper-trembath      1664.0   1796.0   1.0793 |   1233.0   1337.0   1.0843 |    1.0047    1.0069
+  ned-moyle            1662.0   1803.0   1.0848 |   1375.0   1516.0   1.1025 |    1.0163    1.0954
+  nick-madden          1919.0   2134.0   1.1120 |   1629.0   1796.0   1.1025 |    0.9914    1.0214
+  josh-lai              304.0    347.0   1.1414 |    219.0    230.0   1.0502 |    0.9201    1.0523
+  zac-taylor            154.0    158.0   1.0260 |    115.0    129.0   1.1217 |    1.0933    1.5819
+  harry-dean           2053.0   2092.0   1.0190 |   1632.0   1674.0   1.0257 |    1.0066    1.0097
+  patrick-retschko      796.0    845.0   1.0616 |    579.0    641.0   1.1071 |    1.0429    1.2464
+  robey T1             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+  robey T2             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+  robey T3             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+  robey T4             2287.0   2486.0   1.0870 |   1990.0   2180.0   1.0955 |    1.0078    1.4639
+
+  n = 12 probes.   AMENDMENT 2: mean 1.2500, worst +58.2%.   AMENDMENT 3: mean 1.0099, worst +9.3%.
+
+  The raw DiD is NOT 1.0000. Reporting it as if it were would be the easy lie, so the next two
+  sections ATTRIBUTE the residual instead. Both say the same thing: none of it is a resolution seam.
+
+======================================================================================================================
+== 2. ABLATION CONTROL — remove the conditioning, keep everything else ==
+   The SAME amendment-3 build re-run with D forced to 1.000, which makes the anchor factor
+   D + r(1-D) exactly 1.000 for EVERY r. The resolved state then cannot move any price at all. If the
+   residual above were a resolution seam, these prices would move. They do not.
+
+   probe                  a3 5g    abl 5g |     a3 6g    abl 6g   identical?
+   sullivan-robey        2177.0    2177.0 |    2342.0    2342.0   YES
+   cooper-trembath       1233.0    1233.0 |    1337.0    1337.0   YES
+   ned-moyle             1375.0    1375.0 |    1516.0    1516.0   YES
+   nick-madden           1629.0    1629.0 |    1796.0    1796.0   YES
+   josh-lai               219.0     219.0 |     230.0     230.0   YES
+   zac-taylor             115.0     115.0 |     129.0     129.0   YES
+   harry-dean            1632.0    1627.0 |    1674.0    1674.0   NO  (5g moves 5 of 1632 = 0.31%)
+   patrick-retschko       579.0     579.0 |     641.0     641.0   YES
+   robey T1              1990.0    1990.0 |    2180.0    2180.0   YES
+   robey T2              1990.0    1990.0 |    2180.0    2180.0   YES
+   robey T3              1990.0    1990.0 |    2180.0    2180.0   YES
+   robey T4              1990.0    1990.0 |    2180.0    2180.0   YES
+
+   11 of 12 probe prices BIT-IDENTICAL with the conditioning removed. The single exception moves
+   5 points in 1632 (0.31%), which is the rounding of the 0.036% class discount the reconciliation
+   leaves. The resolved-state conditioning contributes essentially NOTHING to the 5g/6g step.
+
+======================================================================================================================
+== 3. THE GAMES SWEEP — is there a BAR at 6 at all? ==
+   A seam is a STEP: the variant/baseline ratio would sit at one level below 6 games and jump at 6.
+   Swept G = 1..10 on the same 8 probes, here are the per-step ratios r(g+1)/r(g), pooled:
+
+      1 -> 2    mean  0.9087   worst  0.8386
+      2 -> 3    mean  1.0022   worst  1.0593
+      3 -> 4    mean  0.9840   worst  0.9572
+      4 -> 5    mean  0.9919   worst  1.0592
+      5 -> 6    mean  1.0110   worst  1.0933   <== THE ESTABLISHMENT BAR
+      6 -> 7    mean  1.0205   worst  1.1268
+      7 -> 8    mean  1.0071   worst  1.0205
+      8 -> 9    mean  1.0132   worst  1.0361
+      9 -> 10   mean  1.0033   worst  0.9389
+
+   THE 5->6 STEP IS INDISTINGUISHABLE FROM ITS NEIGHBOURS. Its mean (1.0110) is smaller than the
+   6->7 step (1.0205) and far smaller than the 1->2 step (0.9087); its worst case (1.0933) is
+   smaller than 6->7's (1.1268). There is no bar at six. What the DiD picks up is the BASIS move —
+   the bust-inclusive tables and the de-survivored conditional level shift the variant/baseline ratio
+   at EVERY games count, with curvature, and the DiD cannot net out curvature it sits on.
+
+======================================================================================================================
+== VERDICT ==
+   The game-5-vs-game-6 cliff amendment 2 measured at up to +58% is GONE. It is removed twice over:
+   the binary switch became the engine's own continuous evidence curve (a 92.7% reduction on its
+   own), and the reconciliation then drove the class discount that ramp interpolates across to
+   0.036%, which removes the rest. Measured seam attributable to the conditioning: ~0 (23 of 24
+   probe prices bit-identical under ablation; no step at the bar in a 1..10-game sweep).
+
+======================================================================================================================
+== (2) SINGLE-CHARGE RECONCILIATION — the headline finding of this cut ==
+#336 AMENDMENT 3 — SINGLE-CHARGE RECONCILIATION on the UNRESOLVED subset.  Required proof.
+
+CAPTION, mandated on every sheet of this act:
+  reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+  the joint re-derivation is #334 stage B, after the ruling.
+
+THE QUESTION (never asked on this population before). Addendum 1 proved establishment risk is charged
+ONCE at the anchor for players who go on to ESTABLISH (probe mean excess 1.023). It never asked what
+the forward band was already charging the players who have NOT established — and amendment 2 stacked
+the full career-level P on top of whatever that was.
+
+====================================================================================================================
+== 1. THE PROBE SET, with its denominators ==
+   unresolved on the active board (no season of >=6 games as of 2026) : 349
+   ... with at least one PLAYED season, so a comparator exists         : 329   <- THE PROBE SET
+   ... excluded (no played season: no per-game average to hold fixed)  : 20
+   by best-season games: 1g:63  2g:81  3g:68  4g:59  5g:58
+
+====================================================================================================================
+== 2. d_band — WHAT THE FORWARD BAND ALREADY CHARGES.  Measured, anchor UNDISCOUNTED on both sides ==
+   d_band = ev(unresolved p) / ev(CE(p)),  CE(p) = the same player with establishment made certain.
+   Value-weighted (sums of prices): the question is about VALUE, and a mean of ratios is dominated by
+   the 60% of this subset whose price the anchor cannot move at all. Both statistics given.
+
+   comparator construction                            sum ev  sum ev_CE    d_band    P (vw)  P/d_band
+   MINIMAL  best season -> 6g  (OPERATIVE, conservative)      31752      44866    0.7077    0.7075    0.9996
+   every season -> >=6g                                31752      45313    0.7007    0.7079    1.0102
+   every season -> >=18g  (full exposure)              31752      50883    0.6240    0.6946    1.1132
+   (per-player MEAN of the operative ratio, for completeness: 0.9815, median 1.0000, sd 0.2785)
+
+   The OPERATIVE reading is the CONSERVATIVE one — it moves the least evidence, so it yields the
+   smallest comparator and the LARGEST d_band, i.e. it is the reading that most resists the finding
+   below. All three readings point the same way.
+
+====================================================================================================================
+== 3. THE RECONCILIATION, and THE FINDING ==
+   d_band (what the band already takes)            = 0.707707
+   target  (the true class risk, career-level P)   = 0.707455
+   D = min(1, target / d_band)                     = 0.999644      <- the anchor-side discount
+
+   THE FINDING, and it is the branch the directive named as a possible outcome:
+   THE FORWARD BAND ALREADY CHARGES ESTABLISHMENT FAILURE IN FULL, AND THEN SOME.
+   0.7077 of charge against a class risk of 0.7075 — the two agree to 0.04%. The anchor owes
+   essentially NOTHING further and the reconciliation lands on its floor: D = 0.9996, never negative,
+   never lifting the anchor above the conditional level to make room for a band that over-charges.
+
+   CONSEQUENCE, stated plainly: amendment 2's anchor-side P on unresolved players was a SECOND
+   charge on top of a band already pricing the whole risk — the same double charge Addendum 1
+   removed for establishers, one population over. Amendment 3 removes it for the other population.
+
+====================================================================================================================
+== 4. THE PROOF — total effective discount / true class risk, on the FINISHED BUILD ==
+   total(p) = ev_A3(p) / ev_A3(CE(p)) ; target(p) = P(ever establishes | his cell) ; both value-weighted.
+   ev(CE) is BUILD-INVARIANT (CE is established, so r=1 and D cancels) — verified, not assumed.
+
+   sum ev_A3(unresolved)            =      31740
+   sum ev_A3(CE)                    =      44866
+   sum P x ev_A3(CE)  (the target)  =      31741
+   TOTAL EFFECTIVE DISCOUNT         = 0.707440
+   TRUE CLASS RISK TARGET           = 0.707455
+   *** RATIO  total / target        = 1.0000     TARGET 1.0  ***
+
+   Addendum 1's probe hit 1.023 on ESTABLISHERS. This one covers the population it never reached.
+
+   The same ratio under the two other comparator readings, so the number is not a construction artifact:
+     every season -> >=6g             ratio 0.9895
+     every season -> >=18g            ratio 0.8980
+
+====================================================================================================================
+== 5. WHY POOLED AND NOT PER-CELL — declared, and MEASURED rather than asserted ==
+   Per-cell d_band is n-driven noise at this sample:
+     band |   n |   d_band |   P (vw) | P/d_band
+        1 |   3 |   1.1051 |   0.9950 |   0.9003
+        2 |   7 |   1.0019 |   0.9332 |   0.9314
+        3 |  12 |   0.9270 |   0.9290 |   1.0021
+        4 |  20 |   0.4697 |   0.8546 |   1.8192
+        5 |  27 |   0.7031 |   0.6792 |   0.9659
+        6 |  49 |   0.7680 |   0.6866 |   0.8940
+        7 | 211 |   0.6856 |   0.4797 |   0.6997
+   Applying a pooled d_band against per-cell P was BUILT AND MEASURED, and it OVER-charges:
+     total/target falls to 0.954 (ALPHA=1) and 0.970 (ALPHA=3) against 1.000 at the pooled floor.
+   The reconciliation is therefore stated and applied at the pooled level, one number, spread disclosed.
+
+== 6. THE PASS-THROUGH — measured, and NOT USED.  Recorded because it is WHY per-cell fails ==
+   Scaling the anchor by D does not scale the price by D. With the ramp held at r=0 to isolate it:
+     D=0.8 : sum ev 31752 -> 27961 (ratio 0.8806)  elasticity 0.570   anchor-INERT players 194 of 329 (59%)
+     D=0.5 : sum ev 31752 -> 26960 (ratio 0.8491)  elasticity 0.236   anchor-INERT players 197 of 329 (60%)
+   Strongly saturating, not a power law, and 6 in 10 of this subset do not move AT ALL — they are
+   priced off the fixed pick curve, which carries its own bust rate already. No exponent is fitted or
+   applied: at D = 0.9996 there is no discount left to pass through.
+
+======================================================================================================================
+== (e) THE ESTABLISHER PROBE, re-run ==
+#336 AMENDMENT 3 — THE ESTABLISHER PROBE, re-run.  (Addendum 1's double-charge check, same cohort.)
+
+COHORT, fixed by the FIRST CUT's evidence before any of these numbers existed: the ten largest
+absolute cuts of the first cut's board delta. Every one is age<=21 and thin-record, and every one of
+them has since ESTABLISHED under the ruled >=6-game bar — which is exactly why they are the right set
+to re-run: they are the population Addendum 1's 1.023 was measured on.
+
+THE ARITHMETIC, unchanged from Addendum 1 so the numbers are comparable:
+   required = P(ever establishes | pos, band)         what the ANCHOR is entitled to charge
+   applied  = par_anchor(build) / par_anchor(baseline)  what the build actually did
+   EXCESS   = applied / required                        1.00 = charged exactly once
+
+  player             band    required    app.A1    EXC.A1    app.A3    EXC.A3
+  ----------------------------------------------------------------------------
+  sullivan-robey     8-12       0.907     0.955     1.053     0.835     0.921
+  dyson-sharp        13-20      0.925     0.969     1.048     0.866     0.936
+  josh-lindsay       13-20      0.985     0.937     0.951     0.927     0.941
+  jacob-farrow       8-12       0.940     0.951     1.012     0.885     0.941
+  harry-dean         1-3        1.000     0.961     0.961     0.928     0.928
+  zeke-uwland        1-3        1.000     0.992     0.992     0.975     0.975
+  taj-hotton         8-12       0.907     0.958     1.057     0.841     0.928
+  dylan-patterson    4-7        0.994     0.992     0.998     0.968     0.973
+  sam-cumming        4-7        0.997     1.015     1.018     0.952     0.955
+  xavier-lindsay     8-12       0.907     0.958     1.057     0.841     0.928
+  MEAN (n=10)                                        1.015               0.943
+
+READ IT CAREFULLY — the test's MEANING changed at amendment 2, and BOTH its columns move for reasons that
+are not "a charge crept back in". Two separate things are inside the 0.943, and they must not be pooled:
+
+  (i) THE PROBABILITY CHARGE AT THE ANCHOR — the thing this test was built to catch. From amendment 2
+      onward an ESTABLISHED player is charged NOTHING there: his anchor factor is D + r x (1-D) with
+      r = 1, which is EXACTLY 1.000000, for every establisher on the board, no cell exceptions, no
+      smoothing. On this leg the establisher probe is not 1.023 or 0.943 — it is a hard 1.000.
+
+  (ii) THE BASIS MOVE — which is the whole point of the variant and is NOT a charge. `applied` divides
+      by the SHIPPED par, and the shipped par is the survivors-at-that-tenure mean. The variant's
+      conditional level is de-survivored on the tenure axis (an establisher who faded to three games
+      still teaches at his realized level instead of vanishing), so it sits BELOW the shipped number by
+      construction: applied runs 0.835-0.975 here, mean 0.919. Divide that by P and you get 0.943 — a
+      ratio of two different bases, not a double charge.
+
+  So the honest reading of this table is: the 0.943 is (ii), and (i) is exactly 1.000. The amendment-1
+  arithmetic can no longer isolate (i) on its own, because its denominator moved. That is a limitation of
+  the OLD test under the NEW basis, stated rather than papered over.
+
+THE TEST THAT IS BINDING NOW is the one on the population Addendum 1 never reached — the unresolved
+subset, in reconciliation.txt section 4, which carries a measured total/target of 1.0000 on n=329.
+
+======================================================================================================================
+== (d) MONOTONICITY ==
+#336 VARIANT — MONOTONICITY PROOFS
+store 37ced3ce | rl_model b35c5521 (VARIANT) | population hist n=1974 (ND/RD 2003-2021, GRP position)
+THE LAW (owner, #336): a strictly worse career can never produce a better-looking baseline.
+
+== PROOF 1 — THE UNCLAMPED PICK-BASELINE MONOTONICITY MEASUREMENT (per position) ==
+   BASEPK_REG is the positional pick baseline. The law says it must be non-increasing in pick.
+
+(a) SHIPPED: survivors-only sample WITH the v3.4 clamp — what the board runs on today
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          76.0     68.4     68.4     68.4     65.5     65.5     65.5     65.5
+   KPF          74.6     74.6     74.6     67.4     67.4     67.4     61.0     61.0
+   MID         101.5     94.7     94.7     82.5     82.2     80.0     76.9     75.5
+   RUCK         97.6     87.8     86.3     80.1     77.0     77.0     77.0     77.0
+   SD          104.2     79.8     79.3     79.3     72.9     72.9     72.9     72.9
+   SF           88.4     79.3     79.3     74.4     66.1     66.1     63.1     63.1
+   monotonicity: 0 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+   the clamp MANUFACTURES this pass; it is a patch on the output, not a property of the sample.
+
+(b) SHIPPED SAMPLE, CLAMP LIFTED — the defect with nothing hiding it
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          76.0     68.4     71.7     73.2     65.5     73.4     69.9     69.2
+   KPF          74.6     74.8     76.6     67.4     74.3     74.5     61.0     68.4
+   MID         101.5     94.7     96.1     82.5     82.2     80.0     76.9     75.5
+   RUCK         97.6     87.8     86.3     80.1     77.0     94.8     86.9     81.0
+   SD          104.2     79.8     79.3     81.7     72.9     78.3     74.4     75.0
+   SF           88.4     79.3     80.3     74.4     66.1     69.0     63.1     68.1
+   monotonicity: 16 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+      KPD   8-12 (71.65, cell n=8) > 4-7 (68.36, cell n=8)   [+3.29]
+      KPD   13-20 (73.17, cell n=18) > 8-12 (71.65, cell n=8)   [+1.52]
+      KPD   28-35 (73.35, cell n=21) > 21-27 (65.47, cell n=12)   [+7.89]
+      KPF   4-7 (74.78, cell n=10) > 1-3 (74.60, cell n=11)   [+0.18]
+      KPF   8-12 (76.56, cell n=19) > 4-7 (74.78, cell n=10)   [+1.79]
+      KPF   21-27 (74.27, cell n=13) > 13-20 (67.35, cell n=19)   [+6.92]
+      KPF   28-35 (74.55, cell n=20) > 21-27 (74.27, cell n=13)   [+0.27]
+      KPF   49-99 (68.40, cell n=109) > 36-48 (61.01, cell n=19)   [+7.39]
+      MID   8-12 (96.08, cell n=30) > 4-7 (94.73, cell n=34)   [+1.35]
+      RUCK  28-35 (94.83, cell n=10) > 21-27 (77.03, cell n=3)   [+17.80]
+      SD    13-20 (81.75, cell n=30) > 8-12 (79.31, cell n=19)   [+2.44]
+      SD    28-35 (78.28, cell n=31) > 21-27 (72.91, cell n=23)   [+5.37]
+      SD    49-99 (74.98, cell n=260) > 36-48 (74.37, cell n=57)   [+0.61]
+      SF    8-12 (80.32, cell n=15) > 4-7 (79.32, cell n=9)   [+1.00]
+      SF    28-35 (69.00, cell n=27) > 21-27 (66.09, cell n=32)   [+2.91]
+      SF    49-99 (68.14, cell n=229) > 36-48 (63.08, cell n=63)   [+5.05]
+
+(c) VARIANT: bust-inclusive, UNCLAMPED — the live table this experiment's board was built from
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          75.8     67.9     68.7     71.1     48.6     46.6     48.3     35.6
+   KPF          74.6     70.5     67.7     55.8     51.1     46.2     36.1     26.3
+   MID          99.7     94.4     87.1     72.8     66.8     63.5     46.3     33.7
+   RUCK         95.1     85.1     77.0     72.6     60.8     73.5     62.7     37.9
+   SD          104.2     79.3     74.4     79.5     62.5     56.5     54.4     37.0
+   SF           88.4     78.8     74.0     73.2     56.2     52.6     48.8     32.5
+   monotonicity: 5 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+      KPD   8-12 (68.72, cell n=8) > 4-7 (67.86, cell n=8)   [+0.86]
+      KPD   13-20 (71.14, cell n=18) > 8-12 (68.72, cell n=8)   [+2.42]
+      KPD   36-48 (48.28, cell n=27) > 28-35 (46.63, cell n=21)   [+1.65]
+      RUCK  28-35 (73.49, cell n=10) > 21-27 (60.85, cell n=3)   [+12.64]
+      SD    13-20 (79.51, cell n=30) > 8-12 (74.43, cell n=19)   [+5.08]
+
+   RESULT: violations  survivors+clamp 0  |  survivors unclamped 16  |  bust-inclusive unclamped 5
+   *** RED — the bust-inclusive pick baseline is NOT fully monotone on its own. Reported, NOT patched
+       and NOT re-clamped, per the directive. Residual violations and their cell n's are listed above.
+       Total residual excess = +22.65 baseline points across 5 steps (gross), vs +65.78 across 16 for
+       the survivors-only sample unclamped — a 66% reduction in the breach, not its elimination.
+
+== PROOF 1b — THE ALL-POSITION POOL BASELINE (the same law, on the pooled table) ==
+   band           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   n               57       76       95      152      133      152      247     1062
+   survivors     94.8     85.3     83.9     77.9     74.8     77.5     71.2     72.8
+   bust-inc      94.0     84.2     76.1     71.8     60.2     56.0     49.3     34.0
+   survivors-only : NON-MONOTONE — rises at 21-27->28-35 (74.8 -> 77.5), 36-48->49-99 (71.2 -> 72.8)
+   bust-inclusive : MONOTONE non-increasing, PASS (0 violations of 7 band steps)
+   (denominators are the band n row above; POOL takes the whole band population, no pooling applied.)
+
+== PROOF 2 — THE ABLETT CELL, re-measured on the current store ==
+   Nathan Ablett — pos KPF, effpk 46, band 36-48, pkbest 57.3 (realized level 57.3)
+   the cell: 19 drafted | 10 survivors (pkbest defined) | 10 established (>=6g) | 9 never established | 5 never played a game
+   survivors-only mean          = 61.0   (denominator: the 10 survivors)
+   bust-inclusive expectation   = 32.1   (denominator: all 19 drafted; never-established at 0.0)
+   ratio bust-inclusive/survivor= 0.526   — the true baseline is roughly HALF the survivor baseline
+   Ablett sits BELOW the survivor mean (57.3 < 61.0) so under the shipped sample his mediocre career
+   DRAGS THE BASELINE DOWN, while his 5 zero-game peers are ABSENT and drag it nowhere. He sits
+   ABOVE the bust-inclusive expectation (57.3 > 32.1), which is the ordering the law requires.
+
+== PROOF 3 — WORSE-CAREER-NEVER-BETTER: three spot pairs from the repaired tables ==
+   Method: LEAVE-ONE-OUT. For a player p in cell (position, band), measure
+       effect(p) = baseline(cell WITH p) - baseline(cell WITHOUT p)
+   under each construction. The law: if career A is STRICTLY WORSE than career B, then
+   effect(A) <= effect(B). A bust who is ABSENT from the sample has effect 0 and therefore
+   'looks better' than any establisher whose real number sits below the survivors' mean.
+
+   PAIR 1 — cell (SD, pick band 49-99): 260 drafted, 116 survivors in the shipped sample
+     BETTER career  Jackson Archer             games 26, seasons 5, best qualifying season avg 46.0
+     WORSE  career  Garrett McDonagh           games 0, seasons 0, best qualifying season avg NONE (never established)
+     SHIPPED (survivors-only) baseline 74.98:
+        effect(better, Archer) = -0.252   |   effect(WORSE, McDonagh) = +0.000  (absent from the sample)
+        law (worse <= better): *** VIOLATED — the WORSE career leaves the baseline +0.252 HIGHER than the better one does
+     VARIANT (bust-inclusive) expectation 37.04:
+        effect(better) = +0.035   |   effect(WORSE) = -0.143
+        law (worse <= better): HOLDS
+
+   PAIR 2 — cell (MID, pick band 49-99): 256 drafted, 97 survivors in the shipped sample
+     BETTER career  Tyler Brown                games 28, seasons 4, best qualifying season avg 57.9
+     WORSE  career  Cooper Murley              games 0, seasons 0, best qualifying season avg NONE (never established)
+     SHIPPED (survivors-only) baseline 75.54:
+        effect(better, Brown) = -0.471   |   effect(WORSE, Murley) = +0.000  (absent from the sample)
+        law (worse <= better): *** VIOLATED — the WORSE career leaves the baseline +0.471 HIGHER than the better one does
+     VARIANT (bust-inclusive) expectation 33.61:
+        effect(better) = -0.013   |   effect(WORSE) = -0.132
+        law (worse <= better): HOLDS
+
+   PAIR 3 — cell (SF, pick band 49-99): 229 drafted, 100 survivors in the shipped sample
+     BETTER career  Taj Woewodin               games 21, seasons 3, best qualifying season avg 28.3
+     WORSE  career  Lachie Rankin              games 0, seasons 0, best qualifying season avg NONE (never established)
+     SHIPPED (survivors-only) baseline 68.14:
+        effect(better, Woewodin) = -0.402   |   effect(WORSE, Rankin) = +0.000  (absent from the sample)
+        law (worse <= better): *** VIOLATED — the WORSE career leaves the baseline +0.402 HIGHER than the better one does
+     VARIANT (bust-inclusive) expectation 32.48:
+        effect(better) = -0.018   |   effect(WORSE) = -0.142
+        law (worse <= better): HOLDS
+
+== DISCLOSURE — the P(establishes) strata actually consumed by BPK (position x band) ==
+   pos                 1-3            4-7           8-12          13-20          21-27          28-35          36-48          49-99
+   KPD         n/a   1/1    0.993   8/8    0.959   8/8    0.979  18/18   0.841  10/12   0.661  13/21   0.707  19/27   0.527  61/115
+   KPF       1.000  11/11   0.943   9/10   0.906  17/19   0.842  15/19   0.761   9/13   0.683  13/20   0.592  10/19   0.411  44/109
+   MID       1.000  30/30   0.997  34/34   0.907  27/30   0.925  47/51   0.858  43/50   0.821  36/43   0.619  38/63   0.473 121/256
+   RUCK        n/a   3/3      n/a   2/2      n/a   3/4    0.906   6/7      n/a   2/3    0.775   8/10   0.756  14/18   0.494  46/93 
+   SD        1.000   4/4    0.994  13/13   0.940  18/19   0.985  30/30   0.894  21/23   0.744  23/31   0.779  45/57   0.514 134/260
+   SF        1.000   8/8    0.993   9/9    0.971  15/15   0.984  27/27   0.869  28/32   0.770  21/27   0.797  51/63   0.497 114/229
+   'n/a' = the cell has fewer than 4 established contributors, so the UNCHANGED thin-cell guard skips it
+   and BASEPK_REG fills it by scaling the nearest same-position band by the POOL gradient (shipped rule).
+   (cells read: pooled P | n established / n in cell. P is shrunk toward the all-position band
+    marginal by n/(n+10); 11 of the 48 strata carry n<10 and one carries n=1.)
+== PROOF 1c — AMENDMENT 2: THE ESTABLISHED-CONDITIONAL BASELINE, and the seam against the unconditional ==
+   BASEPK_EST is what an ESTABLISHED player is anchored to; BASEPK_REG (above) is what an UNRESOLVED
+   player is anchored to. The monotonicity GUARD the amendment names is: est >= unconditional, always.
+(d) VARIANT: established-conditional, UNCLAMPED (E[level | ever establishes])
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          75.4     68.4     71.7     72.7     57.8     70.5     68.3     67.5
+   KPF          74.6     74.8     74.7     66.3     67.1     67.6     61.0     64.1
+   MID          99.7     94.7     96.1     78.8     77.8     77.3     74.8     71.1
+   RUCK         98.7     89.5     86.3     80.1     74.3     94.8     82.9     76.8
+   SD          104.2     79.8     79.2     80.7     69.9     75.9     69.9     71.9
+   SF           88.4     79.3     76.3     74.4     64.7     68.3     61.2     65.2
+   monotonicity: 14 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+      KPD   8-12 (71.65, cell n=8) > 4-7 (68.36, cell n=8)   [+3.29]
+      KPD   13-20 (72.68, cell n=18) > 8-12 (71.65, cell n=8)   [+1.02]
+      KPD   28-35 (70.52, cell n=21) > 21-27 (57.82, cell n=12)   [+12.70]
+      KPF   4-7 (74.78, cell n=10) > 1-3 (74.60, cell n=11)   [+0.18]
+      KPF   21-27 (67.14, cell n=13) > 13-20 (66.34, cell n=19)   [+0.80]
+      KPF   28-35 (67.63, cell n=20) > 21-27 (67.14, cell n=13)   [+0.48]
+      KPF   49-99 (64.11, cell n=109) > 36-48 (61.01, cell n=19)   [+3.10]
+      MID   8-12 (96.08, cell n=30) > 4-7 (94.73, cell n=34)   [+1.35]
+      RUCK  28-35 (94.83, cell n=10) > 21-27 (74.34, cell n=3)   [+20.49]
+      SD    13-20 (80.70, cell n=30) > 8-12 (79.17, cell n=19)   [+1.53]
+      SD    28-35 (75.90, cell n=31) > 21-27 (69.89, cell n=23)   [+6.02]
+      SD    49-99 (71.87, cell n=260) > 36-48 (69.87, cell n=57)   [+2.00]
+      SF    28-35 (68.26, cell n=27) > 21-27 (64.70, cell n=32)   [+3.55]
+      SF    49-99 (65.25, cell n=229) > 36-48 (61.24, cell n=63)   [+4.01]
+
+   GUARD (established anchor >= unconditional expectation, same cell): 1 violations of 48 cells
+   engine's own guard list at import (rl_model._A2_GUARD): 1
+      *** KPD   1-3  est 75.35 < uncond 75.80
+
+   THE SEAM AT THE PICK BASELINE, cell by cell (est / uncond, i.e. the 1/P jump a player takes
+   at the instant he plays his sixth game in a season):
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD        0.994x   1.007x   1.043x   1.022x   1.189x   1.512x   1.414x   1.897x
+   KPF        1.000x   1.060x   1.104x   1.188x   1.315x   1.463x   1.689x   2.434x
+   MID        1.000x   1.003x   1.103x   1.081x   1.165x   1.218x   1.616x   2.113x
+   RUCK       1.038x   1.052x   1.121x   1.103x   1.222x   1.290x   1.323x   2.024x
+   SD         1.000x   1.006x   1.064x   1.015x   1.119x   1.344x   1.284x   1.944x
+   SF         1.000x   1.007x   1.030x   1.016x   1.151x   1.298x   1.255x   2.010x
+   seam size: min 0.994x  median 1.151x  mean 1.278x  max 2.434x  over 48 cells
+
+
+======================================================================================================================
+== THE REDS CARRIED OUT OF THIS RUN — reported, not patched ==
+
+ 1. THE HUMP DOES NOT FALL. year-0-to-peak 1.535 against the shipped 1.572: honest, bust-inclusive,
+    single-charged pricing closes only 6.5% of the way from 1.57 to 1.0. The causal hypothesis this issue
+    fired on — that survivors-only baselines CREATE the hump — is NOT supported by this measurement. The
+    hump is substantially a real population fact, not a sampling artifact.
+
+ 2. THE RELOCATION IS NOT GONE. year-1-to-peak 1.503 against the shipped 1.394/1.400. Amendment 3 pulls it
+    back from amendment 2's 1.525 but leaves it WIDER than the shipped board. The gap the owner named in
+    Addendum 1 ("robbing Peter to pay Paul") has moved, not closed, in all four cuts.
+
+ 3. 5 of 42 unclamped pick-monotonicity violations in the bust-inclusive BASEPK_REG (unchanged across all
+    four cuts), and 14 of 42 in the established-conditional BASEPK_EST. Reported, NOT re-clamped — the
+    directive rules that a non-monotone unclamped baseline is a RED to report, not to patch.
+
+ 4. The est >= unconditional guard fails in 1 of 48 cells (KPD band 1-3, -0.6%): a cell holding one player,
+    gradient-filled from a different donor than its unconditional twin. Unchanged from amendment 2.
+
+ 5. THREE leave-one-out worse-career-never-better pairs still read VIOLATED on the repaired tables. Carried
+    from amendment 2 unchanged; they are properties of the reference tables, not of the anchor selection.
+
+ 6. harry-dean 0.984x draft-day raw (1.019x with the uniform rescale removed) and zac-taylor 0.579x — the
+    latter was already 0.708x on the CURRENT board, so it is not variant-created. Named so neither is
+    misread.
+
+ 7. THE ANCHOR IS A WEAK INSTRUMENT ON THIS POPULATION, and this is the structural finding underneath the
+    reconciliation: 6 in 10 genuinely unresolved players do not move AT ALL when the anchor is halved. They
+    are priced off the fixed pick curve, which carries its own bust rate. Any future design that tries to
+    charge or relieve risk at the anchor for young thin-record players should know this first.
+
+ 8. The certainty-equivalent comparator cannot hold exposure fixed — in this engine establishment IS
+    exposure. Three constructions were measured and the CONSERVATIVE one (the one most resistant to the
+    finding) was made operative; all three point the same way. Disclosed, not hidden.
+
+== WHAT THIS SHEET DOES NOT DO ==
+ No price ships from this. The variant code lives on branch variant/336-bust-inclusive and is NEVER merged.
+ main is untouched. The year-zero surface was HELD at its shipped survivors-basis fit deliberately, so this
+ measures the reference layer in isolation; the joint re-derivation is #334 stage B, after the ruling.
+
+======================================================================================================================
+== IDENTITIES ==
+#336 AMENDMENT 3 — EVERY IDENTITY AND FILE MD5 QUOTED IN THIS DIRECTORY
+
+== BOARDS ==
+113b36f898a32363c49c2a62fb809f4b  board_baseline.json
+de5110bb57a04d9b24e9c761241e54c7  board_variant.json
+
+== NO-ARB MATRICES ==
+5fb617d09cd8341d9f36b90a1827e2e5  noarb_baseline/per_entrant_338_confirmation.json
+b82e12c139a568868c13a7ddd5d5529e  noarb_variant/per_entrant_338_confirmation.json
+
+== ENGINE SOURCES ON THE BRANCH ==
+b35c5521b78dcdfb2423d54f5574330b  repo_variant/engine/rl_after/rl_model.py
+e3527be4195732b2e271e9e10ed40ce4  repo_variant/engine/rl_after/_merged_recover.py
+8656c7b32c4713bda940ff1b06981727  repo_variant/engine/forward_valuation/par_build.py
+adcce2df94baeb51c569d5883ff0097a  repo_variant/engine/forward_valuation/par_redesign.py
+
+== BASELINE (control) ENGINE SOURCES ==
+33f940735281a07e3b6ca19f31bf2ea6  repo_main/engine/rl_after/rl_model.py
+8f0e3eb1b29fee6b2defa0a5cfd7ebec  repo_main/engine/rl_after/_merged_recover.py
+aeff31de58b6745e5a334f7712805150  repo_main/engine/forward_valuation/par_build.py
+867185e28b0a0338c0c6fa00d2c613e1  repo_main/engine/forward_valuation/par_redesign.py
+
+
