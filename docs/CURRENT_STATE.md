@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v76 · supervisor pen · 2026-08-06, register v585
+# CURRENT STATE — the incoming-seat read · v77 · supervisor pen · 2026-08-06, register v586
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,10 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v76 · supervisor pen · 2026-08-06, register v585 · replaced wholesale at the NO-ARB REISSUE PEN —
-the per_entrant lineage and no-arb tables are on the #338 basis; cohort tables NO LONGER
-PROVISIONAL for tenure (the #336 survivorship dimension remains open). The primer is at v4 — read
-it first, in full.)
+(v77 · supervisor pen · 2026-08-06, register v586 · replaced wholesale at the #336-VARIANT PEN —
+the bust-inclusive side-by-side is measured and served; THE OWNER'S RULING IS THE LIVE QUESTION.
+The primer is at v4 — read it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -216,7 +215,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v585 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v586 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
