@@ -1,0 +1,14 @@
+== candidate bytes ==
+derive-rule gate: 2650 records read from /tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/act334_evidence/store_candidate_334.json
+  structural faults (missing counter / rows / row games): 0
+  counter != sum(season row games): 0
+DERIVE-RULE GATE PASS — every counter equals its own season-row sum.
+
+== non-vacuity: 3 counters tampered ==
+derive-rule gate: 2650 records read from /tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/act334_evidence/store_candidate_334.json  [3 counters TAMPERED]
+  structural faults (missing counter / rows / row games): 0
+  counter != sum(season row games): 3
+    willem-duursma               counter 18  rows sum 17
+    zeke-uwland                  counter 17  rows sum 16
+    harry-dean                   counter 16  rows sum 15
+DERIVE-RULE GATE FAILS — the store does not satisfy #323 section 1.

@@ -1,0 +1,47 @@
+{
+ "store_wide_before": 13684,
+ "store_wide_after": 13691,
+ "zero_players": 119,
+ "zero_cells_before": 494,
+ "zero_cells_after": 494,
+ "zero_players_moved": [],
+ "ten_no_row_delta": 8,
+ "per_key_moved": {
+  "adam-iacobucci": [
+   1,
+   2
+  ],
+  "ben-jolley": [
+   1,
+   2
+  ],
+  "ben-schwarze": [
+   1,
+   2
+  ],
+  "elijah-ware": [
+   1,
+   2
+  ],
+  "james-ezard": [
+   1,
+   2
+  ],
+  "josh-drummond": [
+   9,
+   8
+  ],
+  "martin-pask": [
+   1,
+   2
+  ],
+  "ryan-willits": [
+   1,
+   2
+  ],
+  "travis-baird": [
+   1,
+   2
+  ]
+ }
+}

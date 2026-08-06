@@ -1,0 +1,12 @@
+THE BUILD OUTPUT THIS PUBLISHES (from the workspace, stamped by single_source.stamp_derived)
+  artifact md5      827fb1fdfefe60c7c2c9026212d3992d
+  sidecar own_md5   827fb1fdfefe60c7c2c9026212d3992d
+  sidecar source    f1e7f20c4adea9b17d19457a5217c735
+  preconditions OK — the sidecar was written by the build, not by this instrument
+
+2  expected_boot.board          864b6726 -> 827fb1fd
+3  contract identities.board     864b6726 -> 827fb1fd
+   contract_sha256              0c85a56b3dac -> 7033d2006326
+
+1  data/rl_build/rl_app_data.json      864b6726 -> 827fb1fd  (+ sidecar mirrored)
+PUBLISHED and re-read. Board and store identities now agree everywhere they are named.

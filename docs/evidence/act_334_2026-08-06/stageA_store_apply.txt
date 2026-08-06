@@ -1,0 +1,12 @@
+
+5  EXPECTED-DELTA AUDIT
+   records the act declares it touches      55  (40 insert + 16 slid + Drummond, union after the 2 both-slid-and-inserted)
+   records that actually differ            55
+   records differing but NOT declared      0  []
+   declared/actual field-set mismatches    0  []
+   every other record byte-identical       2595 of 2595  ASSERTED
+
+   store md5  f1e8c9fed35462536d00add604f69a3f  ->  f1e7f20c4adea9b17d19457a5217c735   (1969004 -> 1971802 bytes, 2650 records unchanged in count)
+   expected-delta table -> /tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/act334_evidence/expected_delta_table.json
+
+WRITTEN — live store is now f1e7f20c4adea9b17d19457a5217c735 (re-read and asserted).

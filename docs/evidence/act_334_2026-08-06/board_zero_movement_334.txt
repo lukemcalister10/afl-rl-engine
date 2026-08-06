@@ -1,0 +1,42 @@
+#334 STAGE A — BOARD ZERO-MOVEMENT ASSERT, keyed on `key` (never name)
+baseline board 864b6726 (landed main da9aa70, store f1e8c9fe)
+candidate board 827fb1fd (same tree + the completed store f1e7f20c)
+
+active  rows 804 -> 804   membership added 0 dropped 0
+        field v              moved on  154 rows  e.g. ['aidan-johnson', 'alex-davies', 'alix-tauru', 'andrew-brayshaw']
+        field vP1            moved on  147 rows  e.g. ['alex-davies', 'alix-tauru', 'angus-clarke', 'angus-sheldrick']
+        field vP2            moved on  145 rows  e.g. ['alex-davies', 'alix-tauru', 'angus-anderson', 'angus-clarke']
+        field vM1            moved on  132 rows  e.g. ['alix-tauru', 'angus-hastie', 'anthony-caminiti', 'archer-day-wicks']
+        field vM2            moved on  125 rows  e.g. ['aaron-cadman', 'alex-davies', 'archie-perkins', 'archie-roberts']
+        field pn             moved on    9 rows  e.g. ['ben-camporeale', 'george-stevens', 'hunter-holmes', 'koby-coulson']
+        field ps             moved on    9 rows  e.g. ['ben-camporeale', 'george-stevens', 'hunter-holmes', 'koby-coulson']
+        field avail_nerf     moved on    4 rows  e.g. ['archie-may', 'harry-edwards', 'harry-o-farrell', 'josh-sinn']
+        VALUE fields ['v', 'vRaw', 'vP1', 'vP2'] : 446 movers [('sam-marshall', 'v', 814, 816), ('sam-marshall', 'vP2', 537, 536), ('jason-horne-francis', 'vP1', 5971, 5970), ('jason-horne-francis', 'vP2', 5688, 5687), ('josaia-delana', 'v', 268, 278), ('josaia-delana', 'vP1', 183, 190)]
+back    rows 198 -> 198   membership added 0 dropped 0
+        field v              moved on    9 rows  e.g. ['ash-johnson', 'james-harmes', 'jed-mcentee', 'karl-gallagher']
+        field vM1            moved on    9 rows  e.g. ['ash-johnson', 'james-harmes', 'jed-mcentee', 'karl-gallagher']
+        field vM2            moved on    9 rows  e.g. ['ash-johnson', 'james-harmes', 'jed-mcentee', 'karl-gallagher']
+        field vP1            moved on    9 rows  e.g. ['ash-johnson', 'james-harmes', 'jed-mcentee', 'karl-gallagher']
+        field vP2            moved on    9 rows  e.g. ['ash-johnson', 'james-harmes', 'jed-mcentee', 'karl-gallagher']
+        field pn             moved on    1 rows  e.g. ['caleb-mitchell']
+        field ps             moved on    1 rows  e.g. ['caleb-mitchell']
+        VALUE fields ['v', 'vRaw', 'vP1', 'vP2'] : 27 movers [('xavier-ivisic', 'v', 11, 12), ('xavier-ivisic', 'vP1', 11, 12), ('xavier-ivisic', 'vP2', 11, 12), ('ash-johnson', 'v', 2, 1), ('ash-johnson', 'vP1', 2, 1), ('ash-johnson', 'vP2', 2, 1)]
+
+  section cohort         byte-identical: False
+  section picks          byte-identical: True
+  section lensPicks      byte-identical: True
+  section phantomPicks   byte-identical: True
+  section bands          byte-identical: True
+  section CENTERS        byte-identical: True
+  section BAND_ANCHOR    byte-identical: True
+  section MECH           byte-identical: True
+  section RANGES         byte-identical: True
+
+  scalar/stamp fields that moved: {}
+  dict sections that moved: ['BASEPK_REG', 'POOL', 'draftAssetTotals', 'lensConservation', 'phantomLayer', 'phantomTotals']
+    BASEPK_REG -> {"RUCK|2": [86.716, 86.313], "MID|6": [77.026, 76.862]}
+    POOL -> {"2": [84.236, 83.844], "6": [71.248, 71.212], "7": [72.892, 72.803]}
+    draftAssetTotals -> {"+1": [{"f5_draft_pvc": 55753, "f5_entrant_layer_pvc": 62931, "f5_mech_pvc": 7178, "lensYear": 2027, "nVisiblePicks": 64, "players_sum": 701673, "reconciled_to_f5": true, "residual_mech": 7178, "residual_nd_tail": 2217, "residual_total": 9395, "total": 62931, "visible_1_64": 53536}, {"f5_draft_pvc": 55753, "f5_entrant_layer_pvc": 62931, "f5_mech_pvc": 7178, "lensYear": 2027, "nVisiblePicks": 64, "players_sum": 701119, "reconciled_to_f5": true, "residual_mech": 7178, "residual_nd_tail": 2217, "residual_total": 9395, "total": 62931, "visible_1_64": 53536}], "+2": [{"f5_draft_pvc": 55753, "f5_en
+    lensConservation -> {"+1": [{"lensYear": 2027, "nPicks": 64, "nPlayers": 804, "picks": 53536, "players": 701673, "total": 755209}, {"lensYear": 2027, "nPicks": 64, "nPlayers": 804, "picks": 53536, "players": 701119, "total": 754655}], "-1": [{"lensYear": 2025, "nPicks": 0, "nPlayers": 1002, "picks": 0, "players": 829054, "total": 829054}, {"lensYear": 2025, "nPicks": 0, "nPlayers": 1002, "picks": 0, "players": 828346, "total": 828346}], "+2": [{"lensYear": 2028, "nPicks": 64, "nPlayers": 804, "picks": 53536, "players": 648073, "total": 701609}, {"lensYear": 2028, "nPicks": 64, "nPlayers": 804, "picks": 53536, "pl
+    phantomLayer -> {"Adelaide": [{"1": {"delta": 5236.761716666668, "draftSlots": 4.0, "draftValue": 4838, "entrantValue": 5237, "freeSlots": 1.683, "freeValue": 399, "intake": [{"club": "Adelaide", "count": 1.0, "effpk": 1, "kind": "draft", "labelYear": 2027, "lens": 1, "phantom": true, "v": 3000}, {"club": "Adelaide", "count": 1.0, "effpk": 19, "kind": "draft", "labelYear": 2027, "lens": 1, "phantom": true, "v": 1001}, {"club": "Adelaide", "count": 1.0, "effpk": 37, "kind": "draft", "labelYear": 2027, "lens": 1, "phantom": true, "v": 539}, {"club": "Adelaide", "count": 1.0, "effpk": 55, "kind": "draft", "label
+    phantomTotals -> {"clubs": [{"Adelaide": {"0": {"delta": 0, "nPlayers": 45, "withPhantom": 42166, "withoutPhantom": 42166}, "1": {"delta": 5236.761716666668, "nPlayers": 45, "withPhantom": 43773.76171666667, "withoutPhantom": 38537}, "2": {"delta": 5236.761716666668, "nPlayers": 45, "withPhantom": 40392.76171666667, "withoutPhantom": 35156}}, "Brisbane": {"0": {"delta": 0, "nPlayers": 45, "withPhantom": 41978, "withoutPhantom": 41978}, "1": {"delta": 5206.761716666668, "nPlayers": 45, "withPhantom": 44172.76171666667, "withoutPhantom": 38966}, "2": {"delta": 5206.761716666668, "nPlayers": 45, "withPhantom": 41

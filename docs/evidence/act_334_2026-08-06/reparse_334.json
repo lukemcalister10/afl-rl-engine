@@ -1,0 +1,1073 @@
+{
+ "inserts": [
+  {
+   "key": "chris-egan",
+   "year": 2005,
+   "games": 13,
+   "avg": 43.0,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "chris-egan",
+   "year": 2006,
+   "games": 10,
+   "avg": 60.4,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "jesse-smith",
+   "year": 2005,
+   "games": 6,
+   "avg": 40.3,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "jesse-smith",
+   "year": 2006,
+   "games": 2,
+   "avg": 8.0,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "angus-monfries",
+   "year": 2005,
+   "games": 12,
+   "avg": 50.5,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "angus-monfries",
+   "year": 2006,
+   "games": 21,
+   "avg": 66.2,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "lynden-dunn",
+   "year": 2006,
+   "games": 11,
+   "avg": 59.8,
+   "pos_hint": "KPD"
+  },
+  {
+   "key": "andrew-mcqualter",
+   "year": 2005,
+   "games": 6,
+   "avg": 61.8,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "ryan-willits",
+   "year": 2006,
+   "games": 3,
+   "avg": 45.3,
+   "pos_hint": "KPF"
+  },
+  {
+   "key": "brent-prismall",
+   "year": 2006,
+   "games": 8,
+   "avg": 57.7,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "james-ezard",
+   "year": 2006,
+   "games": 4,
+   "avg": 27.2,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "fabian-deluca",
+   "year": 2006,
+   "games": 3,
+   "avg": 33.0,
+   "pos_hint": "RUCK"
+  },
+  {
+   "key": "luke-blackwell",
+   "year": 2006,
+   "games": 12,
+   "avg": 48.5,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "henry-slattery",
+   "year": 2005,
+   "games": 4,
+   "avg": 48.5,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "henry-slattery",
+   "year": 2006,
+   "games": 8,
+   "avg": 45.2,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "nathan-ablett",
+   "year": 2005,
+   "games": 3,
+   "avg": 80.3,
+   "pos_hint": "KPF"
+  },
+  {
+   "key": "nathan-ablett",
+   "year": 2006,
+   "games": 7,
+   "avg": 41.1,
+   "pos_hint": "KPF"
+  },
+  {
+   "key": "jayden-attard",
+   "year": 2005,
+   "games": 2,
+   "avg": 22.0,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "jayden-attard",
+   "year": 2006,
+   "games": 3,
+   "avg": 52.0,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "ben-eckermann",
+   "year": 2005,
+   "games": 4,
+   "avg": 21.7,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "adam-iacobucci",
+   "year": 2005,
+   "games": 3,
+   "avg": 34.6,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "adam-iacobucci",
+   "year": 2006,
+   "games": 1,
+   "avg": 27.0,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "paul-thomas",
+   "year": 2005,
+   "games": 8,
+   "avg": 42.6,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "ben-schwarze",
+   "year": 2006,
+   "games": 11,
+   "avg": 46.6,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "elijah-ware",
+   "year": 2006,
+   "games": 2,
+   "avg": 31.5,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "ben-davies",
+   "year": 2005,
+   "games": 7,
+   "avg": 52.5,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "ben-davies",
+   "year": 2006,
+   "games": 5,
+   "avg": 46.8,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "travis-baird",
+   "year": 2005,
+   "games": 2,
+   "avg": 18.0,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "travis-baird",
+   "year": 2006,
+   "games": 3,
+   "avg": 39.6,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "heritier-lumumba",
+   "year": 2005,
+   "games": 4,
+   "avg": 66.2,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "heritier-lumumba",
+   "year": 2006,
+   "games": 9,
+   "avg": 44.7,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "ben-jolley",
+   "year": 2006,
+   "games": 4,
+   "avg": 45.7,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "luke-vogels",
+   "year": 2005,
+   "games": 10,
+   "avg": 46.1,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "luke-vogels",
+   "year": 2006,
+   "games": 3,
+   "avg": 69.6,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "marcus-allan",
+   "year": 2006,
+   "games": 1,
+   "avg": 34.0,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "martin-pask",
+   "year": 2006,
+   "games": 8,
+   "avg": 34.3,
+   "pos_hint": "KPF"
+  },
+  {
+   "key": "paddy-ryder",
+   "year": 2006,
+   "games": 9,
+   "avg": 26.6,
+   "pos_hint": "RUCK"
+  },
+  {
+   "key": "richard-douglas",
+   "year": 2006,
+   "games": 2,
+   "avg": 63.0,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "courtenay-dempsey",
+   "year": 2006,
+   "games": 5,
+   "avg": 23.0,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "cleve-hughes",
+   "year": 2006,
+   "games": 3,
+   "avg": 29.6,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "wayde-mills",
+   "year": 2006,
+   "games": 4,
+   "avg": 54.0,
+   "pos_hint": "KPD"
+  },
+  {
+   "key": "nick-lower",
+   "year": 2006,
+   "games": 4,
+   "avg": 24.2,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "ryan-gamble",
+   "year": 2006,
+   "games": 1,
+   "avg": 29.0,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "sam-lonergan",
+   "year": 2006,
+   "games": 1,
+   "avg": 36.0,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "ryan-jackson",
+   "year": 2006,
+   "games": 1,
+   "avg": 42.0,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "jason-roe",
+   "year": 2006,
+   "games": 15,
+   "avg": 90.9,
+   "pos_hint": "SD"
+  },
+  {
+   "key": "sam-iles",
+   "year": 2006,
+   "games": 4,
+   "avg": 38.0,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "greg-bentley",
+   "year": 2006,
+   "games": 4,
+   "avg": 62.7,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "cameron-howat",
+   "year": 2006,
+   "games": 5,
+   "avg": 65.2,
+   "pos_hint": "MID"
+  },
+  {
+   "key": "simon-phillips",
+   "year": 2006,
+   "games": 4,
+   "avg": 37.7,
+   "pos_hint": "SF"
+  },
+  {
+   "key": "colm-begley",
+   "year": 2006,
+   "games": 2,
+   "avg": 48.5,
+   "pos_hint": "SD"
+  }
+ ],
+ "zero_confirmations": [
+  [
+   "adam-hartlett",
+   2005
+  ],
+  [
+   "adam-hartlett",
+   2006
+  ],
+  [
+   "adam-prior",
+   2006
+  ],
+  [
+   "adrian-bonaddio",
+   2006
+  ],
+  [
+   "aisake-o-hailpin",
+   2005
+  ],
+  [
+   "aisake-o-hailpin",
+   2006
+  ],
+  [
+   "alan-obst",
+   2006
+  ],
+  [
+   "alan-toovey",
+   2006
+  ],
+  [
+   "andre-gianfagna",
+   2006
+  ],
+  [
+   "andrew-hayes",
+   2005
+  ],
+  [
+   "andrew-hayes",
+   2006
+  ],
+  [
+   "andrew-lee",
+   2005
+  ],
+  [
+   "andrew-lee",
+   2006
+  ],
+  [
+   "angus-graham",
+   2006
+  ],
+  [
+   "anthony-raso",
+   2005
+  ],
+  [
+   "anthony-raso",
+   2006
+  ],
+  [
+   "ashley-thornton",
+   2005
+  ],
+  [
+   "ashley-thornton",
+   2006
+  ],
+  [
+   "austin-lucy",
+   2006
+  ],
+  [
+   "beau-maister",
+   2005
+  ],
+  [
+   "beau-maister",
+   2006
+  ],
+  [
+   "beau-muston",
+   2006
+  ],
+  [
+   "ben-eckermann",
+   2006
+  ],
+  [
+   "ben-jolley",
+   2005
+  ],
+  [
+   "ben-mckinley",
+   2006
+  ],
+  [
+   "ben-schwarze",
+   2005
+  ],
+  [
+   "ben-sharp",
+   2005
+  ],
+  [
+   "ben-sharp",
+   2006
+  ],
+  [
+   "benet-copping",
+   2005
+  ],
+  [
+   "benet-copping",
+   2006
+  ],
+  [
+   "brad-moran",
+   2005
+  ],
+  [
+   "brad-sugars",
+   2006
+  ],
+  [
+   "brendan-quigley",
+   2006
+  ],
+  [
+   "brendan-van-schaik",
+   2005
+  ],
+  [
+   "brendan-van-schaik",
+   2006
+  ],
+  [
+   "brent-prismall",
+   2005
+  ],
+  [
+   "cathal-corr",
+   2006
+  ],
+  [
+   "chad-gibson",
+   2005
+  ],
+  [
+   "chad-gibson",
+   2006
+  ],
+  [
+   "craig-flint",
+   2006
+  ],
+  [
+   "damien-mccormack",
+   2005
+  ],
+  [
+   "damien-mccormack",
+   2006
+  ],
+  [
+   "daniel-batson",
+   2005
+  ],
+  [
+   "daniel-batson",
+   2006
+  ],
+  [
+   "daniel-nicholls",
+   2006
+  ],
+  [
+   "danny-hughes",
+   2006
+  ],
+  [
+   "danny-stanley",
+   2006
+  ],
+  [
+   "darren-pfeiffer",
+   2006
+  ],
+  [
+   "dean-limbach",
+   2005
+  ],
+  [
+   "dean-limbach",
+   2006
+  ],
+  [
+   "dean-polo",
+   2005
+  ],
+  [
+   "djaran-whyman",
+   2006
+  ],
+  [
+   "earl-shaw",
+   2005
+  ],
+  [
+   "earl-shaw",
+   2006
+  ],
+  [
+   "ed-barlow",
+   2006
+  ],
+  [
+   "ed-clarke",
+   2005
+  ],
+  [
+   "ed-clarke",
+   2006
+  ],
+  [
+   "ed-mcdonnell",
+   2005
+  ],
+  [
+   "ed-mcdonnell",
+   2006
+  ],
+  [
+   "elijah-ware",
+   2005
+  ],
+  [
+   "fabian-deluca",
+   2005
+  ],
+  [
+   "garrick-ibbotson",
+   2006
+  ],
+  [
+   "guy-campbell",
+   2005
+  ],
+  [
+   "guy-campbell",
+   2006
+  ],
+  [
+   "heath-grundy",
+   2005
+  ],
+  [
+   "heath-hocking",
+   2006
+  ],
+  [
+   "heath-neville",
+   2006
+  ],
+  [
+   "hugh-minson",
+   2006
+  ],
+  [
+   "ivan-maric",
+   2005
+  ],
+  [
+   "jace-bode",
+   2006
+  ],
+  [
+   "jack-juniper",
+   2005
+  ],
+  [
+   "jack-juniper",
+   2006
+  ],
+  [
+   "jake-edwards",
+   2006
+  ],
+  [
+   "james-ezard",
+   2005
+  ],
+  [
+   "james-gwilt",
+   2005
+  ],
+  [
+   "james-wall",
+   2006
+  ],
+  [
+   "jarrod-garth",
+   2005
+  ],
+  [
+   "jarrod-garth",
+   2006
+  ],
+  [
+   "jay-neagle",
+   2006
+  ],
+  [
+   "jesse-wells",
+   2005
+  ],
+  [
+   "jesse-wells",
+   2006
+  ],
+  [
+   "joe-krieger",
+   2005
+  ],
+  [
+   "joe-krieger",
+   2006
+  ],
+  [
+   "john-anthony",
+   2006
+  ],
+  [
+   "john-hinge",
+   2005
+  ],
+  [
+   "john-hinge",
+   2006
+  ],
+  [
+   "john-meesen",
+   2005
+  ],
+  [
+   "john-meesen",
+   2006
+  ],
+  [
+   "jonathan-giles",
+   2006
+  ],
+  [
+   "jonathan-simpkin",
+   2006
+  ],
+  [
+   "jonathon-griffin",
+   2005
+  ],
+  [
+   "jonathon-griffin",
+   2006
+  ],
+  [
+   "josh-gibson",
+   2005
+  ],
+  [
+   "justin-perkins",
+   2005
+  ],
+  [
+   "justin-perkins",
+   2006
+  ],
+  [
+   "justin-sweeney",
+   2006
+  ],
+  [
+   "kieren-jack",
+   2006
+  ],
+  [
+   "kristan-height",
+   2005
+  ],
+  [
+   "kristan-height",
+   2006
+  ],
+  [
+   "kristin-thornton",
+   2006
+  ],
+  [
+   "lachlan-mckinnon",
+   2006
+  ],
+  [
+   "leonard-clark",
+   2006
+  ],
+  [
+   "lukas-markovic",
+   2006
+  ],
+  [
+   "luke-blackwell",
+   2005
+  ],
+  [
+   "luke-forsyth",
+   2005
+  ],
+  [
+   "luke-forsyth",
+   2006
+  ],
+  [
+   "luke-mcentee",
+   2006
+  ],
+  [
+   "luke-mcguane",
+   2005
+  ],
+  [
+   "lynden-dunn",
+   2005
+  ],
+  [
+   "marcus-allan",
+   2005
+  ],
+  [
+   "martin-pask",
+   2005
+  ],
+  [
+   "matt-riggio",
+   2006
+  ],
+  [
+   "matthew-bate",
+   2005
+  ],
+  [
+   "matthew-firman",
+   2006
+  ],
+  [
+   "matthew-laidlaw",
+   2006
+  ],
+  [
+   "matthew-little",
+   2005
+  ],
+  [
+   "matthew-little",
+   2006
+  ],
+  [
+   "matthew-spangher",
+   2006
+  ],
+  [
+   "matthew-warnock",
+   2005
+  ],
+  [
+   "michael-newton",
+   2005
+  ],
+  [
+   "michael-newton",
+   2006
+  ],
+  [
+   "michael-west",
+   2006
+  ],
+  [
+   "nick-batchelor",
+   2005
+  ],
+  [
+   "nick-batchelor",
+   2006
+  ],
+  [
+   "nick-becker",
+   2005
+  ],
+  [
+   "nick-becker",
+   2006
+  ],
+  [
+   "pat-garner",
+   2005
+  ],
+  [
+   "pat-garner",
+   2006
+  ],
+  [
+   "paul-currie",
+   2006
+  ],
+  [
+   "paul-thomas",
+   2006
+  ],
+  [
+   "phillip-raymond",
+   2006
+  ],
+  [
+   "robert-warnock",
+   2006
+  ],
+  [
+   "rowan-nayna",
+   2005
+  ],
+  [
+   "rowan-nayna",
+   2006
+  ],
+  [
+   "ruory-kirkby",
+   2005
+  ],
+  [
+   "ruory-kirkby",
+   2006
+  ],
+  [
+   "ryan-bain",
+   2005
+  ],
+  [
+   "ryan-bain",
+   2006
+  ],
+  [
+   "ryan-brabazon",
+   2006
+  ],
+  [
+   "ryan-cook",
+   2006
+  ],
+  [
+   "ryan-nye",
+   2005
+  ],
+  [
+   "ryan-nye",
+   2006
+  ],
+  [
+   "ryan-willits",
+   2005
+  ],
+  [
+   "sam-elliott",
+   2006
+  ],
+  [
+   "sam-rowe",
+   2006
+  ],
+  [
+   "scott-harding",
+   2005
+  ],
+  [
+   "scott-mcmahon",
+   2005
+  ],
+  [
+   "scott-mcmahon",
+   2006
+  ],
+  [
+   "shane-neaves",
+   2006
+  ],
+  [
+   "shannon-cox",
+   2006
+  ],
+  [
+   "simon-buckley",
+   2006
+  ],
+  [
+   "stefan-garrubba",
+   2005
+  ],
+  [
+   "stefan-garrubba",
+   2006
+  ],
+  [
+   "stephen-owen",
+   2006
+  ],
+  [
+   "stephen-tiller",
+   2005
+  ],
+  [
+   "stephen-tiller",
+   2006
+  ],
+  [
+   "thomas-willday",
+   2005
+  ],
+  [
+   "thomas-willday",
+   2006
+  ],
+  [
+   "tim-hutchison",
+   2006
+  ],
+  [
+   "tim-looby",
+   2006
+  ],
+  [
+   "tim-o-keefe",
+   2006
+  ],
+  [
+   "tim-sheringham",
+   2005
+  ],
+  [
+   "tim-sheringham",
+   2006
+  ],
+  [
+   "toby-stribling",
+   2005
+  ],
+  [
+   "toby-stribling",
+   2006
+  ],
+  [
+   "todd-grima",
+   2006
+  ],
+  [
+   "tom-redden",
+   2006
+  ],
+  [
+   "tom-rischbieth",
+   2006
+  ],
+  [
+   "tom-williams",
+   2005
+  ],
+  [
+   "tom-williams",
+   2006
+  ],
+  [
+   "travis-casserly",
+   2006
+  ],
+  [
+   "travis-tuck",
+   2006
+  ],
+  [
+   "travis-varcoe",
+   2006
+  ],
+  [
+   "trent-west",
+   2006
+  ],
+  [
+   "will-hamill-2004",
+   2005
+  ],
+  [
+   "will-hamill-2004",
+   2006
+  ],
+  [
+   "xavier-ellis",
+   2006
+  ]
+ ],
+ "conflicts": [],
+ "unmatched": []
+}

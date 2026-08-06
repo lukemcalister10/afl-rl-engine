@@ -1,0 +1,17 @@
+ data/expected_boot.json               | 4 ++--
+ data/release_contract.json            | 6 +++---
+ data/rl_build/rl_app_data.json        | 2 +-
+ data/rl_build/rl_app_data.json.srcmd5 | 2 +-
+ data/season_state.json                | 2 +-
+ engine/rl_after/rl_model_data.json    | 2 +-
+ ui/data/board_view_public.js          | 2 +-
+ ui/data/board_view_working.js         | 2 +-
+ 8 files changed, 11 insertions(+), 11 deletions(-)
+02262ef16c58ea6e5ad49f6f2ecf63b4  data/expected_boot.json
+75190cfc8ac2ecf17b238708f0e06bbb  data/release_contract.json
+827fb1fdfefe60c7c2c9026212d3992d  data/rl_build/rl_app_data.json
+9a8d73d24dbc424dcface1a44b89c793  data/rl_build/rl_app_data.json.srcmd5
+0d3c413e82e6eea014107a4e51da2a7d  data/season_state.json
+f1e7f20c4adea9b17d19457a5217c735  engine/rl_after/rl_model_data.json
+b5af10da87bc156c294f4690979a4ca1  ui/data/board_view_public.js
+444e9f622d81bba3700792aa3ee0cbe4  ui/data/board_view_working.js

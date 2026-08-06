@@ -1,0 +1,23 @@
+=== #334 STAGE B, N35 BOX CLASSIFICATION ATTEMPT — the fit-path assert on the PRE-FIX substrate
+worktree: pristine da9aa70 (landed main), store f1e8c9fe, curve df766dff, surface pin d594dc03
+Thu Aug  6 03:13:36 UTC 2026
+model name	: Intel(R) Xeon(R) Processor @ 2.80GHz
+cores 4
+ 03:13:36 up 46 min,  0 user,  load average: 0.24, 0.64, 0.52
+env pins: 3.12.3 2.4.4 1.17.1 1.8.0 3.1.5
+
+--- command ---
+cd /home/claude/rl_workspace/rl_after && env ... RL_REPO=<pristine> RL_V0SURF_REFIT=1 python3 session_2026-07-18/legf6/scripts/refit_v0surf.py --verify
+
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/boxclass_334/session_2026-07-18/legf6/scripts/refit_v0surf.py", line 139, in <module>
+    sys.exit(main(sys.argv))
+             ^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/boxclass_334/session_2026-07-18/legf6/scripts/refit_v0surf.py", line 77, in main
+    sig, payload = _engine_surfaces()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/boxclass_334/session_2026-07-18/legf6/scripts/refit_v0surf.py", line 50, in _engine_surfaces
+    exec(open(eng).read().split('print("=== AFTER')[0], g)
+  File "<string>", line 1909, in <module>
+AssertionError: #326 HALT: the year-zero surface was NOT loaded from the freeze (signature af556bdca53dee20d4f73e0ae25a8127, refit declared='1'). The per-division pool levels must never reach the ladder or the surface fit — a moved surface re-prices every national draftee, and this act is only allowed to move pool entrants.
+RC=1

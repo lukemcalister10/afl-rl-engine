@@ -1,0 +1,7 @@
+board_md5 (board id) : 827fb1fdfefe60c7c2c9026212d3992d (alias srcmd5 carries the same value)
+store_md5 (verified) : f1e7f20c4adea9b17d19457a5217c735
+board id (boot)     : 827fb1fdfefe60c7c2c9026212d3992d
+ring-fence OK       : md5 head == board id
+active players      : 804 | back-only: 198 | picks: 30
+wrote: ui/data/board_view_working.js
+wrote: ui/data/board_view_public.js
