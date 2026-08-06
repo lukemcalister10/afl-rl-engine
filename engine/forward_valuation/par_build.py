@@ -495,6 +495,171 @@ def resolved_336(p, Y=None):
         if r['games'] >= QUAL_RESOLVE and (Y is None or r['year'] <= Y): return True
     return False
 
+# ============================================================================================================
+# #336 AMENDMENT 3 (issue #336, "AMENDMENT 3 FIRED — the continuous experiment", owner word "run it",
+# 2026-08-06).  TWO changes to amendment 2's construction, and nothing else.
+#
+# ------------------------------------------------------------------------------------------------------------
+# (1) THE SMOOTH RESOLUTION WEIGHT r(p) — the binary established/unresolved switch becomes a ramp.
+#
+# Amendment 2 selected between two anchors on a BOOLEAN. That put a cliff at the establishment bar: the same
+# player one game either side of six games moved by the whole factor 1/P (measured: up to 2.434x at the anchor,
+# +58% in board points on the 12-probe difference-in-differences). A cliff on the price path violates the
+# engine's own no-cliffs law (L-SMOOTH, acceptance_v1_13.json) — the amendment-2 evidence reported it as a
+# design red rather than smoothing it, because a taper was then unruled. It is ruled now.
+#
+# THE FORM, and it is REUSED, NOT INVENTED. The engine already carries a continuous evidence-resolution
+# object: the R100.11 evidence fade at _merged_recover.py:711-735,
+#       w(g) = g^2/(g+K)                 Fix 1's measured evidence-reliability curve
+#       pw(g) = 1/(1+w(g)) = (g+K)/(g^2+g+K)      the PRIOR's weight: 1 at zero evidence -> 0 on evidence
+# described there as "ONE continuous object: smooth, monotone, rational (g^2+g+K>0 for all g>=0). NO threshold,
+# NO counter, NO branch (L-SMOOTH)".  Its complement is exactly the quantity amendment 3 needs — how far a
+# player's own record has RESOLVED him — so that is what is used:
+#       rho(g) = 1 - pw(g) = g^2 / (g^2 + g + K)
+# NO NEW WIDTH IS SET.  K is taken unchanged from the engine's pinned constant (_ABS_FADE_K = 5.8, itself
+# "Fix 1's measured w(g) scale (RL_DAMP_K, :162)"), restated here with its source because par_build cannot
+# import the engine module. The one construction on top of the borrowed object is a NORMALISATION, disclosed:
+# rho is rescaled to reach exactly 1.0 at the ruled establishment bar and capped there, so that
+#       r(0) = 0                         zero evidence -> the full class discount, exactly
+#       r(g>=6) = 1                      the ruled establishment definition -> no class discount, exactly
+#       r monotone and continuous in between
+# which is amendment 3's stated requirement verbatim. The ramp variable is the player's BEST SINGLE-SEASON
+# games as of the valuation, because the establishment definition (build_cohort_book.py:181-185) is itself a
+# MAX over seasons — the ramp must run on the same statistic the bar tests, or the two could disagree.
+#
+#   MEASURED SHAPE (K=5.8, bar=6):  g:  0     1     2     3     4     5     6+
+#                                   r:  0.000 0.170 0.450 0.671 0.824 0.927 1.000
+#   The residual step across the OLD cliff (5g -> 6g) is 0.073 of the class discount, against 1.000 under
+#   amendment 2 — a 92.7% reduction by construction, before the reconciliation below shrinks it further.
+#   It cannot be zero: a monotone map that is 0 at zero evidence and 1 at the bar must climb somewhere, and
+#   pushing the last step to zero means handing the full established anchor to a player who has NOT
+#   established. The residual is MEASURED on the same 12-probe difference-in-differences and reported.
+#
+# ------------------------------------------------------------------------------------------------------------
+# (2) SINGLE-CHARGE RECONCILIATION — the unresolved leg is no longer P.
+#
+# Addendum 1 proved the anchor charges establishment risk ONCE for players who go on to establish (probe mean
+# excess 1.023). It never asked the same question on the players who have NOT: for them the forward band's own
+# low quantiles are also pricing establishment failure, and stacking the full career-level P on top of that is
+# the double charge one population over. Amendment 3 measures the band's own charge and then sets the anchor
+# side to whatever is left, so the TOTAL equals the class risk and no more:
+#
+#       d_band  =  ev(unresolved player, anchor UNDISCOUNTED) / ev(certainty-equivalent established comparator)
+#                  ... what the band already takes off, measured on the unresolved subset (never before probed)
+#       target  =  P(ever establishes | position x pick band)          the true class risk (Addendum 1's P)
+#       required total  =  d_band x pass(D)  =  target
+#   =>  D  =  pass^-1( target / d_band ),   capped at 1.0
+#
+# where pass(.) is the MEASURED pass-through from the anchor to the price (the anchor is one input among many,
+# so scaling it by D does not scale the price by D; pass(D) = D^ALPHA, ALPHA fitted on the unresolved probe
+# set). THE FLOOR IS A REAL CASE, not a formality: if d_band <= target the band ALREADY charges the whole class
+# risk or more, D = 1.0 and the anchor charges NOTHING further. The anchor discount never goes negative — the
+# anchor is never LIFTED above the conditional level to make room for a band that over-charges.
+#
+# Both constants below are PINNED from a measurement pass on this same build (the derivation lever
+# RL_336_DFORCE, declared beside them), and the reconciliation is then PROVEN on the unresolved subset by
+# re-decomposing the finished build: total effective discount / true class risk, target 1.0.
+#
+#   THE ANCHOR, in one line, for a REAL player:
+#       anchor(p) = E[level | establishes] x [ D(p) + r(p) x (1 - D(p)) ]
+#   r=1 (established) -> E[level | establishes], amendment 2's established leg, unchanged.
+#   r=0 (no evidence) -> D x E[level | establishes], the SINGLE-CHARGED unresolved leg.
+#   A PICK or a synthetic still takes the full unconditional expectation P x E[level | establishes]: it has no
+#   record to resolve and must carry the entire entrant risk. That is par_at(), untouched by this amendment.
+# ============================================================================================================
+RES_K = 5.8       # PINNED, NOT SET HERE: = _merged_recover._ABS_FADE_K, "Fix 1's measured w(g) scale
+                  # (RL_DAMP_K, :162)". Restated (not imported) because par_build cannot import the engine.
+def _rho_336(g):
+    """the engine's R100.11 evidence-resolution curve, rho(g) = 1 - pw(g) = g^2/(g^2+g+K)."""
+    g = float(max(0.0, g)); return (g*g)/(g*g + g + RES_K)
+_RHO_BAR = _rho_336(QUAL_RESOLVE)      # rho at the ruled bar; the normaliser, so r(bar) == 1 exactly
+def bestgames_336(p, Y=None):
+    """the establishment statistic itself: best single-season games at or before Y (max over seasons)."""
+    gs = [r['games'] for r in p['scoring'] if (Y is None or r['year'] <= Y)]
+    return max(gs) if gs else 0
+def resolve_w(p, Y=None):
+    """#336 AMENDMENT 3: r(p) in [0,1] — how far this player's establishment has RESOLVED.
+    0 at zero evidence, 1 at (and above) the ruled >=6-game bar, the engine's own R100.11 evidence curve
+    in between, normalised to the bar. Replaces amendment 2's boolean resolved_336() at every real-player
+    anchor; resolved_336 itself is KEPT (it is the ruled definition and r's own endpoint)."""
+    if _RFORCE is not None: return float(_RFORCE)
+    return min(1.0, _rho_336(bestgames_336(p, Y)) / _RHO_BAR)
+
+# ------------------------------------------------------------------------------------------------------------
+# THE RECONCILIATION, MEASURED — and the answer it returned.  (derive_a3.py / reconcile_a3.py, this act.)
+#
+# PROBE SET: every real board player with NO season of >=6 games as of 2026 and at least one played season.
+#            n = 329 of 349 unresolved (20 excluded: no played season, so no per-game average to hold fixed
+#            and therefore no comparator that is not invented). Denominator disclosed on every figure.
+# COMPARATOR: CE(p) — the same player, same key, pick, position, age, tenure and per-season AVERAGE, with his
+#            BEST season raised to the >=6-game bar. The MINIMAL edit that makes his establishment certain.
+#            Chosen deliberately as the CONSERVATIVE reading: it moves the least evidence, so it yields the
+#            smallest comparator and therefore the LARGEST d_band — the reading least favourable to the
+#            conclusion below. Two other readings are reported beside it and both point the same way.
+# BOTH priced with the anchor UNDISCOUNTED (RL_336_DFORCE=1), so the anchor leg is identical for p and CE(p)
+# and the ratio is exactly what the forward band and the price map take off for being unresolved.
+#
+#   MEASURED, value-weighted over the probe set (sum of prices, not a mean of ratios — the question is about
+#   VALUE, and a mean of ratios is dominated by the 60% of the subset whose price the anchor cannot move at
+#   all; both statistics are reported in the evidence):
+#         d_band  =  0.707707        the band's OWN charge: a 29.2% discount, already applied
+#         target  =  0.707455        the true class risk P(ever establishes), value-weighted on this subset
+#         D       =  min(1, target/d_band)  =  0.999644
+#
+#   THE FINDING, and it is the one the directive named as a possible outcome: THE FORWARD BAND ALREADY
+#   CHARGES ESTABLISHMENT FAILURE IN FULL. 0.7077 against a class risk of 0.7075 — the two agree to 0.04%.
+#   The anchor owes essentially NOTHING further, and the reconciliation lands on its floor. Amendment 2's
+#   anchor-side P on unresolved players was therefore a SECOND charge on top of a band that was already
+#   pricing the whole risk — the same double charge Addendum 1 removed for establishers, one population over.
+#   Robustness (all three comparator readings, total/target at this D):
+#         minimal best-season->6g  (OPERATIVE)  d_band 0.7077   ratio 1.0004
+#         every season->6g                      d_band 0.7007   ratio 0.9899
+#         every season->18g (full exposure)     d_band 0.6240   ratio 0.8983   (band over-charges outright)
+#
+#   WHY POOLED AND NOT PER-CELL, declared. Per-cell d_band is n-driven noise at this sample (band 1: n=3,
+#   d_band 1.105; band 4: n=20, d_band 0.443; band 7: n=211, d_band 0.685). Applying a pooled d_band against
+#   per-cell P was MEASURED and it OVER-charges — total/target falls to 0.954. The reconciliation is
+#   therefore stated and applied at the pooled level, one number, with its spread disclosed.
+#
+#   THE PASS-THROUGH, measured and NOT USED, recorded because it is the reason per-cell fails: scaling the
+#   anchor by D does not scale the price by D. With the ramp held at r=0 to isolate it, 60% of the probe set
+#   does not move AT ALL (priced off the fixed pick curve), and in aggregate the elasticity is 0.57 at D=0.8
+#   and 0.24 at D=0.5 — strongly saturating, not a power law. No exponent is fitted or applied here: at
+#   D = 0.9996 there is no discount left to pass through.
+# ------------------------------------------------------------------------------------------------------------
+A3_DBAND  = float(os.environ.get('RL_336_DBAND',  '0.707707'))   # PINNED: the band's own charge, measured
+A3_TARGET = float(os.environ.get('RL_336_TARGET', '0.707455'))   # PINNED: the class risk it must total to
+_RFORCE  = os.environ.get('RL_336_RFORCE')                # DECLARED MEASUREMENT ABLATION LEVER. Forces the
+                                                          # resolution weight r to a constant. Its ONLY use is
+                                                          # the pass-through derivation: with r free, forcing D
+                                                          # moves the anchor by (D + r(1-D)), so a player who
+                                                          # is 93% resolved barely moves and the price rounds
+                                                          # to the same integer — the estimate would be a
+                                                          # measurement of the ramp, not of the pass-through.
+                                                          # RL_336_RFORCE=0 isolates D. Unset when reported.
+_DFORCE  = os.environ.get('RL_336_DFORCE')                # DECLARED MEASUREMENT ABLATION LEVER (precedent:
+                                                          # RL_ABSENCE, _merged_recover.py:684). When set, the
+                                                          # anchor-side discount is FORCED to this constant for
+                                                          # every real player — RL_336_DFORCE=1 is the
+                                                          # UNDISCOUNTED-anchor build d_band is measured on.
+                                                          # Unset on every reported build. Never a dial.
+A3_D = min(1.0, A3_TARGET / A3_DBAND) if A3_DBAND > 0 else 1.0   # = 0.999644. The floor is min(...,1.0):
+                                                                 # the anchor is never LIFTED above the
+                                                                 # conditional level to make room for a band
+                                                                 # that over-charges. Never negative.
+def dpar_of(F, p):
+    """#336 AMENDMENT 3: D — the anchor-side discount that survives the reconciliation.
+        D = min(1, target / d_band)      target = the true class risk; d_band = what the band already takes
+    Measured at 0.999644 (see the block above): the band already charges the whole class risk, so the anchor
+    charges essentially nothing further. Kept as the general expression, not hard-coded to 1.0 — the same
+    arithmetic would produce a real anchor discount on a build where the band under-charged, and that is the
+    mechanism the amendment is asking for, not this particular number.
+    P (pest_of) is NOT applied here any more: that is exactly the second charge this reconciliation removes.
+    It is still applied, in full, to PICKS and synthetics via par_at() — they have no record to resolve and
+    no band of their own, so they carry the entire entrant risk."""
+    if _DFORCE is not None: return float(_DFORCE)
+    return A3_D
+
 # ============================ REPORT ============================
 if __name__ == '__main__':
     F = fit()

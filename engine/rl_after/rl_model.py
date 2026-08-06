@@ -520,12 +520,56 @@ def _resolved_336(p,Y=None):
     for r in p['scoring']:
         if r['games']>=QUAL_336 and r['year']<=Y: return True
     return False
+# ============================================================================================================
+# #336 AMENDMENT 3 — the same two changes, at the BPK anchor. The full statement of both, with their sources
+# and their measured shape, is the amendment-3 header block in engine/forward_valuation/par_build.py; it is
+# not repeated here. The three constants below are RESTATED, not re-derived — the same "named at the consumer
+# so the two cannot drift apart" convention QUAL_336 above already follows.
+# ============================================================================================================
+RES_K_336 = 5.8                                        # = par_build.RES_K = _merged_recover._ABS_FADE_K
+def _rho_336x(g):
+    g=float(max(0.0,g)); return (g*g)/(g*g+g+RES_K_336)
+_RHO_BAR_336=_rho_336x(QUAL_336)
+A3_DBAND =float(os.environ.get('RL_336_DBAND', '0.707707'))  # PINNED: the forward band's OWN charge for
+A3_TARGET=float(os.environ.get('RL_336_TARGET','0.707455'))  # establishment failure on the unresolved subset,
+                                                       # and the class risk it must total to. Both measured on
+                                                       # n=329 unresolved players, value-weighted, against the
+                                                       # conservative certainty-equivalent comparator. The full
+                                                       # derivation, the three comparator readings and the
+                                                       # reason the reconciliation is POOLED rather than
+                                                       # per-cell are stated once, in par_build's amendment-3
+                                                       # block. THE RESULT: D = 0.9996 — the band already
+                                                       # charges the whole class risk, so the anchor charges
+                                                       # nothing further, and amendment 2's anchor-side P on
+                                                       # unresolved players was a SECOND charge.
+A3_D=min(1.0,A3_TARGET/A3_DBAND) if A3_DBAND>0 else 1.0
+_DFORCE_336=os.environ.get('RL_336_DFORCE')            # DECLARED measurement ablation lever; unset when reported
+_RFORCE_336=os.environ.get('RL_336_RFORCE')            # DECLARED measurement ablation lever (pass-through derivation)
+def _resolve_w_336(p,Y=None):
+    """#336 AMENDMENT 3: r(p) in [0,1], the smooth resolution weight. Same curve, same K, same bar and the
+    same AS-OF discipline _resolved_336 carries (Y defaults to BASE_REF so the walk-forward cannot read a
+    resolution the calendar has not reached)."""
+    if _RFORCE_336 is not None: return float(_RFORCE_336)
+    if Y is None: Y=BASE_REF
+    gs=[r['games'] for r in p['scoring'] if r['year']<=Y]
+    return min(1.0,_rho_336x(max(gs) if gs else 0)/_RHO_BAR_336)
+def _dbpk_336(g,b):
+    """#336 AMENDMENT 3: D — the anchor-side discount left after the reconciliation. Pooled, one number.
+    _pest_336 is NOT applied here any more; it is still applied in full to PICKS, via basepk()/BASEPK_REG,
+    which pick_raw / base_prod / pick_value keep reading unmoved."""
+    if _DFORCE_336 is not None: return float(_DFORCE_336)
+    return A3_D
 def basepk_c_p(p,g,pk):
-    """#336 AMENDMENT 2 — THE RESOLVED-STATE SELECTOR for every BPK-anchored REAL-PLAYER consumer.
-    established -> the establisher baseline; unresolved -> the unconditional bust-inclusive baseline."""
+    """#336 AMENDMENT 2/3 — THE RESOLVED-STATE ANCHOR for every BPK-anchored REAL-PLAYER consumer.
+        anchor = E[level | establishes] x [ D + r(p) x (1 - D) ]
+    r=1 (established) reproduces amendment 2's established leg, basepk_est, EXACTLY. r=0 is the
+    single-charged unresolved leg D x basepk_est — which under amendment 2 was P x basepk_est, i.e. the
+    unconditional table basepk(). The band-interpolation in pick space is unchanged."""
     fb=bandcoord(pk); lo=int(fb); hi=min(NB-1,lo+1); f=fb-lo
-    _bp=basepk_est if _resolved_336(p) else basepk
-    return (1-f)*_bp(g,lo)+f*_bp(g,hi)
+    r=_resolve_w_336(p)
+    def _one(b):
+        D=_dbpk_336(g,b); return basepk_est(g,b)*(D+r*(1.0-D))
+    return (1-f)*_one(lo)+f*_one(hi)
 BAND_ANCHOR=PMD['BAND_ANCHOR']
 def bandcoord(pk):
     if pk<=BAND_ANCHOR[0]: return 0.0

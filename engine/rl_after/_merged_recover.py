@@ -394,6 +394,18 @@ def price6(p,bb,Y=2026):
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
 def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
 _POLE={}
+def _pole_u336(p,pos,pk,Y):
+    """#336 AMENDMENT 3: where this real player sits on the segment between the two FROZEN poles.
+    The prewarmed endpoints are the cell's UNCONDITIONAL pole (anchor = P x cond) and its ESTABLISHED
+    pole (anchor = cond). Amendment 3's anchor is cond x [D + r(1-D)], so the fraction along that same
+    segment is u = (D + r(1-D) - P)/(1 - P): u=0 reproduces amendment 1/the pick pole exactly, u=1
+    reproduces amendment 2's established pole exactly, and the amendment-2 boolean is the u in {(D-P)/(1-P), 1}
+    restriction. P == 1 (a band that always establishes) collapses the segment to a point -> u=0, and the
+    two poles are the same number anyway."""
+    F=PR.F; P=PR.pb.pest_of(F,p)
+    if P>=1.0-1e-9: return 0.0
+    r=PR.pb.resolve_w(p,Y); D=PR.pb.dpar_of(F,p)
+    return float(min(1.0,max(0.0,((D+r*(1.0-D))-P)/(1.0-P))))
 def par_pole(pos,pk,T,est=False):
     # #336 AMENDMENT 2 — SITE 3 of the enumerated real-player anchors: THE PEDIGREE POLE BLEND. raw_ev
     # pulls a real player's price toward `po` by recover(perf,par) — both the pole ITSELF (a synthetic
@@ -407,6 +419,26 @@ def par_pole(pos,pk,T,est=False):
     if k not in _POLE: sp=synth(k[1],_par,pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'SF':0.93,'KPF':0.95,'SD':1.08,'KPD':1.05,'RUCK':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),_par
+def par_pole_u(pos,pk,T,u):
+    """#336 AMENDMENT 3: the CONTINUOUS pedigree pole. The pole table is FROZEN at module load (STEP1)
+    and must stay frozen — a pole first computed inside the forward lens walks a synthetic through
+    _dev_advance, which has no 'games' key. So the two frozen endpoints are kept exactly as amendment 2
+    prewarmed them and the player's own position between them is taken by interpolation in u:
+        par(u) = par_unc + u*(par_est - par_unc)     EXACT — par is affine in the anchor by construction,
+                                                     so this reproduces cond x [D + r(1-D)] identically
+        po(u)  = po_unc  + u*(po_est  - po_unc )     DISCLOSED LINEAR APPROXIMATION — price6() of the pole
+                                                     synthetic is not affine in its anchor, so the interior
+                                                     is a chord between two exactly-priced endpoints. It is
+                                                     continuous and monotone (price6 is monotone in the
+                                                     anchor), the endpoints are exact, and it is what keeps
+                                                     the STEP1 freeze. The alternative — pricing a fresh
+                                                     pole per player — breaks the freeze and is not taken.
+    u=0 is the unconditional pick pole: every synthetic and pick-level caller keeps it, unmoved."""
+    po0,pr0=par_pole(pos,pk,T,False)
+    if u<=0.0: return po0,pr0
+    po1,pr1=par_pole(pos,pk,T,True)
+    if u>=1.0: return po1,pr1
+    return po0+u*(po1-po0), pr0+u*(pr1-pr0)
 # ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
 # v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
 # added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
@@ -476,7 +508,10 @@ def raw_ev(p,Y=2026):
         # pole prewarm below both call raw_ev on SYNTHETICS, which carry 2x18-game rows and would
         # therefore read as "established" — but a synthetic stands for a PICK, which has no resolved
         # state and must keep the full unconditional entrant risk. Same rule, stated once.
-        po,par=par_pole(pos,pk,T,_isreal(p) and PR.resolved_336(p,_fa_year(Y))); a=MA.age(p)
+        # #336 AMENDMENT 3: the boolean becomes the continuous position u between the two frozen poles.
+        # _isreal still gates it — a synthetic stands for a PICK, which has no record to resolve and keeps
+        # the full unconditional entrant risk at u=0. Read at the form anchor (k=0 discipline), unchanged.
+        po,par=par_pole_u(pos,pk,T,(_pole_u336(p,pos,pk,_fa_year(Y)) if _isreal(p) else 0.0)); a=MA.age(p)
         wage=0.0 if pos=='RUCK' else float(np.clip(1-((a or 21)-20)/6,0,1))
         tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate

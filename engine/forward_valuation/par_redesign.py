@@ -91,11 +91,21 @@ def par_at_p(p,pos,pick,T,Y):
       not yet             -> P(ever establishes) x E[level | establishes] (full bust-inclusive)
     P is keyed on the player himself (settled position x band of his RAW effective pick), exactly as
     build_pest derived it — NOT on the pos/pick arguments, which the callers have already clamped to
-    the level surface's support. Monotone by construction: P <= 1 so established >= unresolved."""
-    if resolved_336(p,Y): return par_at_est(pos,pick,T)
-    k=(pos,int(round(pick)),int(max(1,min(T,6))))
-    if k not in _PC: _PC[k]=_lvl_safe(pos,pick)+F['ramp_shr'][pos][k[2]]
-    return _PC[k]*pb.pest_of(F,p)
+    the level surface's support. Monotone by construction: P <= 1 so established >= unresolved.
+
+    #336 AMENDMENT 3 — THE SWITCH BECOMES A RAMP, AND THE UNRESOLVED LEG IS RECONCILED.
+        anchor = E[level | establishes] x [ D(p) + r(p) x (1 - D(p)) ]
+    r(p) = pb.resolve_w  : the engine's own R100.11 evidence-resolution curve, 0 at zero evidence, 1 at
+                           the ruled >=6-game bar (par_build header, amendment 3 block (1)).
+    D(p) = pb.dpar_of    : the SINGLE-CHARGED anchor discount — the class risk P net of what the forward
+                           band already charges the unresolved (amendment 3 block (2)).
+    ENDPOINTS ARE EXACT, so amendment 2 is the r in {0,1} restriction of this with D = P:
+      r=1 -> par_at_est (established, no discount)        r=0 -> D x par_at_est (fully unresolved)
+    MONOTONE, unchanged: D <= 1 and r in [0,1], so the anchor is non-decreasing in evidence and never
+    exceeds the established-conditional level."""
+    base=par_at_est(pos,pick,T)
+    r=pb.resolve_w(p,Y); D=pb.dpar_of(F,p)
+    return base*(D + r*(1.0-D))
 def draftyr(p): return cp.debutyr(p)-1
 def tenure(p,Y): return max(1,Y-draftyr(p))
 
