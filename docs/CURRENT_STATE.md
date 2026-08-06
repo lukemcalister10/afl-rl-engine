@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v78 · supervisor pen · 2026-08-06, register v587
+# CURRENT STATE — the incoming-seat read · v79 · supervisor pen · 2026-08-06, register v588
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,10 +128,10 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v78 · supervisor pen · 2026-08-06, register v587 · replaced wholesale at the AMENDED-#336 PEN —
-the owner's Robey catch amended the variant (career-level P; yr1-to-peak now a mandatory headline);
-honest numbers served; THE OWNER'S RULING IS THE LIVE QUESTION. The primer is at v4 — read it
-first, in full.)
+(v79 · supervisor pen · 2026-08-06, register v588 · replaced wholesale at the AMENDMENT-2 PEN —
+three variant cuts measured; the trade-off is fully priced (honesty repairs stable; the cliff and
+unresolved-risk single-charging are continuous-design questions for the memo/stage B); THE OWNER'S
+RULING IS THE LIVE QUESTION. The primer is at v4 — read it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -222,7 +222,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v587 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v588 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
