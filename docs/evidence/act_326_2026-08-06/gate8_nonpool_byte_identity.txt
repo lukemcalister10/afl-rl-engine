@@ -1,0 +1,10 @@
+NON-POOL BYTE-IDENTITY (gate 8) — the rehearsed board beside the pre-change board, field by field.
+
+top-level keys identical: True
+active  rows  804   identical in EVERY field  639   differ 165   membership added/dropped 0/0
+back    rows  198   identical in EVERY field  186   differ  12   membership added/dropped 0/0
+
+every differing row is engine-pool-classified (the engine's own _pool flag, asked of the engine,
+not inferred from the board): see gate6_attribution_classified.txt — non-pool movers = 0.
+
+rows byte-identical in every field: 825 of 1002

@@ -1,0 +1,22 @@
+THE RUCK-CAP-BASIS ROUTE, ENUMERATED (addendum 5: the 12 ruck prices the first rehearsal found
+reading pool_value must be among the attributed movers or proven unchanged).
+
+Build A = the act. Build B = the act with ONE line reverted: the ruck prior cap's basis left on the
+ladder's pool slot. A vs B therefore isolates the ruck-cap route exactly.
+
+active: 2 row(s) priced through the ruck-cap basis
+   Liam Reidy               pre-change v=315    cap-on-pool_value v=312    cap-on-level v=352  
+   Flynn Riley              pre-change v=295    cap-on-pool_value v=277    cap-on-level v=288  
+back: 12 row(s) priced through the ruck-cap basis
+   Joe Furphy               pre-change v=7      cap-on-pool_value v=7      cap-on-level v=3    
+   Coen Livingstone         pre-change v=7      cap-on-pool_value v=7      cap-on-level v=3    
+   Ivan Soldo               pre-change v=7      cap-on-pool_value v=7      cap-on-level v=3    
+   Darryl McDowell-White    pre-change v=6      cap-on-pool_value v=6      cap-on-level v=3    
+   Will Verrall             pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Cameron Owen             pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Clay Tucker              pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Brynn Teakle             pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Kieran Strachan          pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Oscar McInerney          pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Sam Naismith             pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    
+   Tom Campbell             pre-change v=7      cap-on-pool_value v=7      cap-on-level v=8    

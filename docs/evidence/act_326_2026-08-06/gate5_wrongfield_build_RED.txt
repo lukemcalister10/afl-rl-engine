@@ -1,0 +1,11 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+CONFIG ACCEPTED cef06fd6250b  (trusted /tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/rehearsal_326/config_manifest.py)
+PROVENANCE {"RL_FV_env": "/tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/rehearsal_326/engine/forward_valuation", "config_manifest_identity": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739", "config_manifest_path": "/tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/rehearsal_326/data/model_config.json", "distribution_pricing_md5": "8341ca11ac50921eabbe4c79a1a3d0b5", "fv_identity": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a", "fv_identity_expected": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a", "resolved_fv_dir": "/tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/rehearsal_326/engine/forward_valuation", "rl_model_md5": "33f940735281a07e3b6ca19f31bf2ea6", "rl_model_path": "/home/claude/rl_workspace/rl_after/rl_model.py"}
+Traceback (most recent call last):
+  File "/home/claude/rl_workspace/rl_after/rl_export.py", line 68, in <module>
+    exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], _ens)
+  File "<string>", line 49, in <module>
+  File "/home/claude/rl_workspace/rl_after/rl_model.py", line 1064, in <module>
+    assert not _rd_field_bad, ('#326 HALT: the rookie-draft positional key reads %r, which disagrees with the '
+           ^^^^^^^^^^^^^^^^^
+AssertionError: #326 HALT: the rookie-draft positional key reads 'present_position', which disagrees with the engine's settled future position on 171 row(s) (['Robbie McComb', 'Patrick Walker', 'Aiden Fyfe', 'Rhys Nicholls', 'Jack Bell', "Mitch O'Neill"]). The N43 positional set was measured on future_position; any other field misprices.
