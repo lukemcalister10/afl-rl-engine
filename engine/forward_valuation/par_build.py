@@ -47,6 +47,117 @@ def season_row(p, Y):
         if x['year'] == Y: return x
     return None
 
+# ============================================================================================================
+# #336 VARIANT — THE BUST-INCLUSIVE PAR SURFACE.  EXPERIMENT ONLY; branch variant/336-bust-inclusive.
+# NEVER MERGED. No pin moves, no artifact ships. See issue #336 (the VARIANT DIRECTIVE of 2026-08-06).
+#
+# THE DEFECT (the owner's, verbatim): "0 game busts make the history look better than mediocre players."
+# The par surface is the developmental benchmark every projection leans on, and it samples SURVIVORS ONLY:
+# :88-90 never emit a zero-game cell, and the >=MIN_GAMES gate at :99-101 drops the rest. 59.7% of
+# (player, tenure) cells never teach. So the ordering best > mediocre > bust maps to measured contributions
+# of "down > invisible" — order-reversed in the middle of the spectrum. That is the monotonicity breach.
+#
+# THE REPAIR FORM (recorded rule, primer §4.6 — these tables are PER-GAME benchmarks, so naive zero-filling
+# is BARRED; a zero-game season has no per-game level to average in). Each cell becomes a true expectation
+# over the TENURE-WINDOWED population:
+#
+#       E[level]  =  P(establishes)  x  E[level | establishes]
+#
+# with never-established players in the denominator at their REALIZED NOTHING. The identity is realised HERE,
+# in gather(), by scaling every on-park observation by its own stratum's P(establishes) BEFORE the fit sees
+# it. A kernel-weighted mean (and a per-tenure median) of P-scaled targets is P x (the same statistic of the
+# unscaled targets) within a stratum, so the fitted surface IS E[level] and the shipped additive structure
+# (level_pos(log-pick) + ramp_pos(tenure)), the isotonic priors and the ESS weighting all survive untouched.
+#
+# WHY HERE AND NOT AT par_at(): par_redesign.py carries its OWN par_at (its :77), composing pb.level_at with
+# F['ramp_shr'] directly. The scope fence for this variant is TWO FILES (this one and rl_after/rl_model.py),
+# so a multiplicative factor applied at this file's exit point would not reach the engine at all — and no
+# additive pair (level', ramp') can equal P(pick,T) x (level + ramp) when P moves on BOTH axes. Scaling the
+# observations is the only site inside the fence that every consumer sees, and it is also the honest one:
+# the fit is a fit to the bust-inclusive expectation, not a post-hoc multiplier on a survivors' fit.
+#
+# P(establishes) IS DERIVED, NOT ASSUMED — per (position x pick-band x tenure), on this file's own par cohort:
+#   numerator   : players with a season at draftyr+T of >= QUAL_338 (6) games — the establishment definition
+#                 of engine/forward_valuation/build_cohort_book.py:181-185, quoted not re-invented.
+#   denominator : players whose #338 MINIMUM LISTING TENURE window covers draftyr+T. A player outside his
+#                 window at T is not at risk at T and is not in that cell's denominator; a player INSIDE it
+#                 who did not establish is, at zero. The helpers below mirror the live book emitter
+#                 (engine/rl_after/s4_matrix_M1v7.py:53-70, commit 30996f8) with no logic difference.
+#   position    : MA.gfut(p) — the SETTLED career position. It has to be: a player who never took the park
+#                 at tenure T has no season-position for that year, and season_pos() (the E3 ruling) can only
+#                 label a season that happened. DISCLOSED axis mixture: the numerator level is keyed on the
+#                 season position, the probability on the career position.
+#   pooling     : DELIBERATE AND DECLARED. Thin strata are not dropped and not silently trusted — every cell
+#                 is shrunk toward the ALL-POSITION (band, tenure) marginal by n/(n+K_338), the same n/(n+k)
+#                 design the ramp shrinkage already uses. K_338 = 10 pseudo-observations. Cell n's are printed
+#                 by the report block below and recorded in the evidence dir, so every rate names its own
+#                 denominator. (On store 37ced3ce: 288 of 288 strata filled, n from 1 to 246, median 16;
+#                 171 strata carry n<20, 92 carry n<10, 36 carry n<5 — which is why the shrink is not optional.)
+#
+# NOT TOUCHED HERE: the frozen year-zero surface (held at its shipped survivors-basis fit, deliberately and
+# disclosed — the joint re-derivation is #334 stage B, after the ruling), MIN_GAMES, the cohort window, the
+# dual rule, the fit machinery.
+# ============================================================================================================
+QUAL_338 = 6      # establishment bar: a season of >=6 games (build_cohort_book.py:181-185)
+K_338    = 10.0   # pooling strength: shrink each stratum toward the all-position (band, tenure) marginal
+
+def _min_tenure_338(p):
+    """#338: minimum listed seasons implied by the entry route/pick band. Mirrors s4_matrix_M1v7.py:53-59."""
+    if p.get('type') == 'ND' and not p.get('_pickless'):
+        pk = MA.effpk(p)
+        if pk <= 20: return 4
+        if pk <= 40: return 3
+    return 2                     # ND 41+ and every pool route (RD/MSD/SSP/UNR/IRE/PDA/PDN/PDS)
+
+def _debut_year_338(p):
+    """#338: first season ON A LIST. MSD debuts in its entry year; every other route the year after.
+    Mirrors s4_matrix_M1v7.py:61-64 (and equals CP.debutyr, which draftyr() already uses)."""
+    C = p.get('year')
+    return None if C is None else (C if p.get('type') == 'MSD' else C + 1)
+
+def _listed_through_338(p):
+    """#338: the year the player's listing runs through, or None if he is still listed. Mirrors
+    s4_matrix_M1v7.py:66-70 — an explicit _last_listed is a KNOWN FACT and stands even when shorter;
+    own data extends the minimum; active players are untouched."""
+    LL = p.get('_last_listed')
+    if LL is not None: return LL
+    if not p.get('_retired'): return None
+    d = _debut_year_338(p)
+    lastscore = max((r['year'] for r in p['scoring']), default=0)
+    return max((d + _min_tenure_338(p) - 1) if d is not None else 0, lastscore)
+
+def _in_window_338(p, Y):
+    """Is calendar year Y inside this player's #338 LISTED tenure window? (the denominator's membership rule)"""
+    d = _debut_year_338(p)
+    if d is None or Y < d: return False
+    lt = _listed_through_338(p)
+    return True if lt is None else (Y <= lt)      # lt None => still listed => at risk
+
+def build_pest(pool):
+    """P(establishes) per (gfut position x MA pick-band x tenure), over the tenure-windowed par cohort.
+    Returns (P, num, den): P is the POOLED rate actually consumed; num/den are the RAW counts, disclosed."""
+    num = collections.defaultdict(int); den = collections.defaultdict(int)
+    bnum = collections.defaultdict(int); bden = collections.defaultdict(int)   # all-position (band, tenure)
+    for p in pool:
+        g = MA.gfut(p); b = MA.bandof(MA.effpk(p)); d0 = draftyr(p)
+        for T in range(1, TEN_MAX+1):
+            Y = d0 + T
+            if not _in_window_338(p, Y): continue
+            den[(g,b,T)] += 1; bden[(b,T)] += 1
+            r = season_row(p, Y)
+            if r and r['games'] >= QUAL_338:
+                num[(g,b,T)] += 1; bnum[(b,T)] += 1
+    gn = sum(bnum.values()); gd = sum(bden.values())
+    grate = (gn/gd) if gd else 0.0
+    P = {}
+    for b in range(MA.NB):
+        for T in range(1, TEN_MAX+1):
+            pbar = (bnum[(b,T)]/bden[(b,T)]) if bden[(b,T)] else grate
+            for g in GROUPS:
+                n = den[(g,b,T)]
+                P[(g,b,T)] = (num[(g,b,T)] + K_338*pbar)/(n + K_338)
+    return P, num, den
+
 # ---- E3 (#279 step 4 item 6; the par ruling, owner word 2026-07-30 "Yes, per season") ------
 # The par surface used to key every observation by MA.gfut(p) — ONE label for a whole career — so a role
 # migrant's prime seasons refiled under his DESTINATION position and dragged up the young players anchored
@@ -94,12 +205,20 @@ def gather():
     bycell = collections.defaultdict(list)
     for pos, pk, T, Y, g, p in raw: bycell[(pos,T)].append(g)
     for k,v in bycell.items(): base[k] = float(np.median(v))
+    # #336 VARIANT: P(establishes) over the tenure-windowed population, derived from THIS pool.
+    PEST, PNUM, PDEN = build_pest(pool)
     # apply the base-rate-relative gate -> on-park observations, target = _lvl_wt
     obs = []  # (pos, logpick, T, lvl)
     for pos, pk, T, Y, g, p in raw:
         if g >= MIN_GAMES:                       # par gate = flat >=6g at that tenure (Luke)
-            obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y)))
-    return obs, base, raw
+            # #336 VARIANT: the target is the EXPECTATION over the windowed population, not the survivors'
+            # conditional level. E[level] = P(establishes) x E[level | establishes]; the P scaling is applied
+            # per observation so the kernel-weighted mean the fit takes IS the expectation (and the per-tenure
+            # MEDIAN residual is likewise scaled, median(cx)=c*median(x) for c>0). The probability is keyed on
+            # the SETTLED position MA.gfut(p) — a never-established player has no season-position to key on.
+            _pe = PEST[(MA.gfut(p), MA.bandof(MA.effpk(p)), T)]
+            obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y) * _pe))
+    return obs, base, raw, PEST, PNUM, PDEN
 
 # ---- 2. local-linear kernel regression over log-pick --------------------------------------
 def tricube(u):
@@ -148,7 +267,7 @@ def loclin(x0, xs, ys, h):
 
 # ---- 3. additive backfitting: level_pos(logpick) + ramp_pos(T) ----------------------------
 def fit():
-    obs, base, raw = gather()
+    obs, base, raw, PEST, PNUM, PDEN = gather()   # #336 VARIANT: gather() now also returns the P(establishes) strata
     POS = {g: np.array([(x,T,lv) for (pos,x,T,lv) in obs if pos==g], dtype=float) for g in GROUPS}
     # E3 LOUD HALT (#279 step 4 item 6). An empty group used to travel silently from here to the ramp step
     # below, where POS[g] is shape (0,) and POS[g][:,1] raised a BARE IndexError naming nothing — a cohort
@@ -229,7 +348,8 @@ def fit():
         r[1:] = _pava(r[1:TEN_MAX+1], cnt[1:TEN_MAX+1], increasing=True)
         ramp_shr[g] = r - r[1]                              # re-anchor yr1 = 0
     return dict(obs=obs, base=base, POS=POS, levelfn=levelfn, ramp=ramp, gramp=gramp,
-                ramp_shr=ramp_shr, sw=sw, n_by_pos=n_by_pos, level_grid=level_grid)
+                ramp_shr=ramp_shr, sw=sw, n_by_pos=n_by_pos, level_grid=level_grid,
+                pest=PEST, pest_num=PNUM, pest_den=PDEN)   # #336 VARIANT: the strata travel with the fit, for disclosure
 
 def _pava(y, w, increasing=True):
     """weighted pool-adjacent-violators. increasing=True -> non-decreasing; False -> non-increasing."""
@@ -303,3 +423,21 @@ if __name__ == '__main__':
     lv18 = np.mean([level_at(F,'MID',pk)[0] for pk in range(1,9)])
     print(f"  mean level_MID(yr1) over picks 1-8 = {lv18:.1f}   (cont.26 empirical par = 66.0)")
     print(f"  level_MID(yr1) @pk7 = {level_at(F,'MID',7)[0]:.1f}   (Cumming's pick; cont.26 break-even@20g = 66)")
+
+    # ==== #336 VARIANT — G. P(establishes) DISCLOSURE: every rate names its own denominator ====
+    print("\n=== G. #336 VARIANT — P(establishes) per (position x pick-band x tenure) ===")
+    print(f"  establishment bar >= {QUAL_338}g at that tenure (build_cohort_book.py:181-185)")
+    print(f"  denominator = players whose #338 listed-tenure window covers draftyr+T (s4_matrix_M1v7.py:53-70)")
+    print(f"  pooling     = shrink toward the ALL-POSITION (band, tenure) marginal by n/(n+{K_338:.0f})")
+    _den = F['pest_den']; _num = F['pest_num']
+    _ns = sorted(_den.values())
+    print(f"  strata filled {len(_den)} | n min={_ns[0]} median={_ns[len(_ns)//2]} max={_ns[-1]}"
+          f" | n<20: {sum(1 for v in _ns if v<20)}  n<10: {sum(1 for v in _ns if v<10)}  n<5: {sum(1 for v in _ns if v<5)}")
+    for g in GROUPS:
+        print(f"  {g}")
+        print("    band       " + "".join(f"      T{T}" for T in range(1,TEN_MAX+1)))
+        for b in range(MA.NB):
+            lab = "%d-%d" % tuple(MA.BANDS[b])
+            print(f"    {lab:<10s} " + "".join(f"  {F['pest'][(g,b,T)]:6.3f}" for T in range(1,TEN_MAX+1)))
+            print(f"    {'  (n est/n)':<10s} " + "".join(f"  {('%d/%d'%(_num.get((g,b,T),0),_den.get((g,b,T),0))):>6s}"
+                                                        for T in range(1,TEN_MAX+1)))

@@ -334,13 +334,102 @@ def _rw(y):                                  # v2.1: equal weighting (recency sh
     return 1.0
 BPK={}; POOL={}; MIX={}
 from collections import Counter
+# ============================================================================================================
+# #336 VARIANT — THE BUST-INCLUSIVE PICK BASELINE.  EXPERIMENT ONLY; branch variant/336-bust-inclusive.
+# NEVER MERGED. No pin moves, no artifact ships, no board lands. Issue #336, VARIANT DIRECTIVE 2026-08-06.
+#
+# THE DEFECT (owner, verbatim): "You can't say busts are counted as busts and then exclude them from the
+# sample when it's convenient." / "0 game busts make the history look better than mediocre players."
+# The filter below used to read `pkbest(p) is not None`, which excludes 835 of 1,974 hist members (42.3%)
+# — every player who never put together a >=10-game season. He is ABSENT, not zero. So the ordering
+# best > mediocre > bust maps to measured contributions of "down > invisible", and a strictly worse career
+# produces a BETTER-looking baseline. That is the monotonicity breach the law forbids.
+#
+# MEASURED, on store 37ced3ce, the survivors-only POOL baseline is NON-MONOTONE IN PICK:
+#     band  1-3    4-7   8-12  13-20  21-27  28-35  36-48  49-99
+#           94.8   85.3  83.9   77.9   74.8   77.5   71.2   72.8      <- RISES at 21-27 -> 28-35 and 36-48 -> 49-99
+# The v3.4 clamp at the BASEPK_REG loop below was the patch on that broken sample ("kills the late-pick
+# survivorship spike"). It is REMOVED in this variant: keeping it would double-correct, and the repaired
+# baseline is required to stand monotone ON ITS OWN or be reported as a red.
+#
+# THE REPAIR FORM (recorded rule, primer §4.6): each reference cell becomes a true expectation over the
+# TENURE-WINDOWED population,
+#         E[level]  =  P(establishes)  x  E[level | establishes]
+# with never-established players IN THE DENOMINATOR at their realized nothing (0.0).
+#
+#   establishment : a season of >= QUAL_336 (6) games — the definition at
+#                   engine/forward_valuation/build_cohort_book.py:181-185, quoted not re-invented.
+#   denominator   : the #338 tenure-windowed population. Every hist member carries a listed window of at
+#                   least two seasons under the minimum-listing-tenure rule (4 / 3 / 2 by pick band; helpers
+#                   at engine/rl_after/s4_matrix_M1v7.py:53-70, commit 30996f8), so for this CAREER-level
+#                   quantity the tenure axis marginalises out and the denominator is the whole (position x
+#                   band) cell. "P(establishes)" here is therefore P(EVER establishes inside the window).
+#                   The per-tenure strata are derived on the par cohort in forward_valuation/par_build.py.
+#   level         : pkbest(p) wherever the engine defines it — UNCHANGED, the top-2 mean of >=10-game
+#                   seasons. DISCLOSED SUB-DECISION: 148 of the 1,287 established players have a >=6-game
+#                   season but never a >=10-game one, so pkbest is None for them. They are ESTABLISHED, not
+#                   busts; scoring them 0 would re-import the very defect at the establishment bar. They
+#                   contribute their REALIZED level — the same top-2 mean taken at the >=6-game bar. Every
+#                   remaining player (never a >=6-game season) contributes 0.0.
+#   pooling       : DELIBERATE AND DECLARED. P is shrunk toward the ALL-POSITION band marginal by
+#                   n/(n+K_336), K_336 = 10 pseudo-observations — the same n/(n+k) design par_build already
+#                   uses for the ramp. It is not optional: 11 of the 48 (position x band) strata carry n<10
+#                   and one carries n=1. The raw counts are recorded on BPK_N / BPK_NEST below so every rate
+#                   names its denominator. POOL[b] needs no pooling (min band n = 57) and is taken directly.
+#   NOT changed   : the `len(...)>=4` minimum-sample gate on a BPK cell. It is a thin-cell guard, not a
+#                   survivorship filter — it does not systematically drop worse careers.
+#
+# HELD CONSTANT, DELIBERATELY AND DISCLOSED: the frozen year-zero surface. Its signature (_v0surf_sig,
+# _merged_recover.py:1324-1330) is blind to these tables and will load the SHIPPED survivors-basis fit.
+# That is the ruled basis for this experiment — it isolates the reference-layer effect. The joint
+# re-derivation is #334 stage B, after the ruling. No RL_V0SURF_REFIT here.
+# ============================================================================================================
+QUAL_336 = 6      # establishment bar: a season of >=6 games (build_cohort_book.py:181-185)
+K_336    = 10.0   # pooling strength: shrink each (position, band) rate toward the all-position band marginal
+
+def _established_336(p):
+    """Did this player EVER establish inside his listed window? (the ruled definition, >=6 games)"""
+    return any(x['games']>=QUAL_336 for x in p['scoring'])
+
+def _level_336(p):
+    """The player's REALIZED level. pkbest where the engine defines it (top-2 mean of >=10-game seasons);
+    for an established player with no >=10-game season, the same top-2 taken at the ESTABLISHMENT bar so he
+    contributes his real number rather than vanishing; never-established -> 0.0, his realized nothing."""
+    v=pkbest(p)
+    if v is not None: return float(v)
+    d=debut(p)
+    s=sorted([r['avg'] for r in p['scoring'] if r['games']>=QUAL_336 and (d is None or r['year']>=d)],reverse=True)[:2]
+    return float(np.mean(s)) if s else 0.0
+
+BPK_N={}; BPK_NEST={}; BPK_P={}; BPK_COND={}   # disclosure: cell n, n established, pooled P, E[level|est]
+_bnum={}; _bden={}
+for b in range(NB):
+    _g=[p for p in hist if bandof(effpk(p))==b]
+    _bden[b]=len(_g); _bnum[b]=sum(1 for p in _g if _established_336(p))
+def _pest_336(g,b):
+    """P(ever establishes) for (position, band), shrunk toward the all-position band marginal by n/(n+K)."""
+    n=BPK_N.get((g,b),0); k=BPK_NEST.get((g,b),0)
+    pbar=(_bnum[b]/_bden[b]) if _bden.get(b) else 0.0
+    return (k + K_336*pbar)/(n + K_336)
+
 for b in range(NB):
     grp=[p for p in hist if bandof(effpk(p))==b]   # PICK-CORRECTION (a) 2026-07-11: band pools on the CHAINED effective pick (owner convention), was raw p['pick']. Removes rookie-at-raw contamination (Q2: 657 RD rows, 320 at raw<=20) from the one raw-pick channel on the live board; before/after cited in the eyeball list.
     cc=Counter(gfut(p) for p in grp); MIX[b]={g:cc.get(g,0)/len(grp) for g in sorted(set(GRP.values()))} # ITEM 271 item 4 GROUP B: the TABLE is REBUILT on the played axis (gfut), not the lookup renamed -- cohort_peak/basepk_c already READ it with gfut, so renaming the read alone would have left the two-axis mismatch in place and the build reading clean.
     for g in sorted(set(GRP.values())):
-        pw=[(pkbest(p),_rw(p['year'])) for p in grp if gfut(p)==g and pkbest(p) is not None] # ITEM 271 item 4 GROUP B: the TABLE is REBUILT on the played axis (gfut), not the lookup renamed -- cohort_peak/basepk_c already READ it with gfut, so renaming the read alone would have left the two-axis mismatch in place and the build reading clean.
-        if len(pw)>=4: BPK[(g,b)]=float(np.average([x[0] for x in pw],weights=[x[1] for x in pw]))
-    aw=[(pkbest(p),_rw(p['year'])) for p in grp if pkbest(p) is not None]
+        # #336 VARIANT: was `... for p in grp if gfut(p)==g and pkbest(p) is not None` — the survivorship
+        # filter. The cell is now E[level] over the WHOLE (position, band) population: the conditional mean
+        # over ESTABLISHERS (the ruled >=6-game definition) times P(establishes) for that stratum. The
+        # never-established stay in the denominator at their realized nothing, via the P factor.
+        _cell=[p for p in grp if gfut(p)==g]
+        BPK_N[(g,b)]=len(_cell); BPK_NEST[(g,b)]=sum(1 for p in _cell if _established_336(p))
+        pw=[(_level_336(p),_rw(p['year'])) for p in _cell if _established_336(p)]
+        if len(pw)>=4:                                   # UNCHANGED thin-cell guard (not a survivorship gate)
+            _cond=float(np.average([x[0] for x in pw],weights=[x[1] for x in pw]))
+            _p=_pest_336(g,b); BPK_P[(g,b)]=_p; BPK_COND[(g,b)]=_cond
+            BPK[(g,b)]=_p*_cond
+    # #336 VARIANT: POOL is the all-position band expectation, taken DIRECTLY over the full band population
+    # (never-established at 0.0) — no pooling needed, the thinnest band carries n=57.
+    aw=[((_level_336(p) if _established_336(p) else 0.0),_rw(p['year'])) for p in grp]
     POOL[b]=float(np.average([x[0] for x in aw],weights=[x[1] for x in aw])) if aw else 75
 # position-anchored, monotone baseline peak: a later pick can't out-baseline an earlier one (kills small-sample inversions),
 # and thin bands scale a reliable same-position band by the all-position band gradient instead of borrowing the all-position LEVEL.
@@ -353,7 +442,15 @@ for g in sorted(set(GRP.values())):
         elif rel:
             b0=min(rel,key=lambda x:abs(x-b)); row.append(rel[b0]*(POOL[b]/POOL[b0]))
         else: row.append(POOL[b])
-    for b in range(1,NB): row[b]=min(row[b],row[b-1])   # v3.4 basepk de-bias: clamp ALL bands (was 1..5) -> a later pick can never out-baseline an earlier one (kills the late-pick survivorship spike; fixes Xerri-type)
+    # #336 VARIANT — THE v3.4 CLAMP IS REMOVED. It read:
+    #     for b in range(1,NB): row[b]=min(row[b],row[b-1])   # v3.4 basepk de-bias: clamp ALL bands
+    #     (was 1..5) -> a later pick can never out-baseline an earlier one (kills the late-pick
+    #     survivorship spike; fixes Xerri-type)
+    # The "late-pick survivorship spike" it killed is the SYMPTOM of the sample defect repaired above, not
+    # an independent bias — the engine's own history shows the inversion was SEEN and CLAMPED rather than
+    # fixed. Keeping the clamp on a repaired sample would double-correct and would also hide whether the
+    # repair actually works. The bust-inclusive baseline must be monotone non-increasing in pick ON ITS OWN.
+    # That is now a MEASUREMENT, not an assertion; see the evidence dir for the result and any residual red.
     for b in range(NB): BASEPK_REG[(g,b)]=row[b]
 def basepk(g,b): return BASEPK_REG.get((g,b)) or POOL.get(b) or bandpeak(g,b)
 BAND_ANCHOR=PMD['BAND_ANCHOR']
