@@ -1,0 +1,27 @@
+serializer proof   json.dumps(json.loads(store)) == store bytes   OK
+store on disk      f1e8c9fed35462536d00add604f69a3f   2650 records
+
+1  INSERTS  51 rows into 40 players   (2005 14 · 2006 37)
+   pos from drafted_position (the ten no-row players): 10 rows
+   sheet position HINT differs from the ruled pos on 16 of 51 rows — hint discarded
+   avg values byte-verbatim from census: True
+
+2  CAREER-GAMES COUNTERS  40 players, +287 games total (census sum 287)   MATCH: True
+
+4  DRUMMOND  before: 2003 RD n=45 picks 1..45 contiguous=True · 2004 RD n=45 picks 1..45 contiguous=True
+   slid rows: 16 (2004 RD 6 down-one · 2003 RD 10 up-one) + Drummond
+   after: 2003 RD n=44 picks 1..44 contiguous=True (want n=44) · 2004 RD n=46 picks 1..46 contiguous=True (want n=46)
+   stream_pick/stream_year mirrors track pick/year on every row of both groups: True
+   drummond: year 2003->2004  pick 35->40  stream_year->2004  stream_pick->40  between earl-shaw 39 and ed-clarke 41
+
+5  EXPECTED-DELTA AUDIT
+   records the act declares it touches      55  (40 insert + 16 slid + Drummond, union after the 2 both-slid-and-inserted)
+   records that actually differ            55
+   records differing but NOT declared      0  []
+   declared/actual field-set mismatches    0  []
+   every other record byte-identical       2595 of 2595  ASSERTED
+
+   store md5  f1e8c9fed35462536d00add604f69a3f  ->  f1e7f20c4adea9b17d19457a5217c735   (1969004 -> 1971802 bytes, 2650 records unchanged in count)
+   expected-delta table -> /tmp/claude-0/-home-user-afl-rl-engine/52aec7aa-3e34-5a29-a45f-2e2388143230/scratchpad/act334_evidence/expected_delta_table.json
+
+DRY RUN — candidate written to evidence only, the live store is untouched.

@@ -1,0 +1,26 @@
+#334 — THE SIX STORE-IDENTITY CARRIERS + THE BOARD IDENTITY CARRIERS, after the landing
+
+STORE — all six must read f1e7f20c4adea9b17d19457a5217c735
+  1 store file            engine/rl_after/rl_model_data.json f1e7f20c4adea9b17d19457a5217c735  OK
+  2 expected_boot.store   data/expected_boot.json            f1e7f20c4adea9b17d19457a5217c735  OK
+  3 contract identities   data/release_contract.json         f1e7f20c4adea9b17d19457a5217c735  OK
+  4 season_state source   data/season_state.json             f1e7f20c4adea9b17d19457a5217c735  OK
+  5 board sidecar source  data/rl_build/rl_app_data.json.srcmd5 f1e7f20c4adea9b17d19457a5217c735  OK
+  6 ui board_view stamp   ui/data/board_view_working.js      f1e7f20c4adea9b17d19457a5217c735  OK
+  COHERENT: True
+
+BOARD — all must read 827fb1fdfefe60c7c2c9026212d3992d
+  a board artifact        data/rl_build/rl_app_data.json     827fb1fdfefe60c7c2c9026212d3992d  OK
+  b sidecar own_md5       data/rl_build/rl_app_data.json.srcmd5 827fb1fdfefe60c7c2c9026212d3992d  OK
+  c expected_boot.board   data/expected_boot.json            827fb1fdfefe60c7c2c9026212d3992d  OK
+  d contract identities   data/release_contract.json         827fb1fdfefe60c7c2c9026212d3992d  OK
+  e ui board_view stamp   ui/data/board_view_working.js      827fb1fdfefe60c7c2c9026212d3992d  OK
+  COHERENT: True
+
+contract_sha256 7033d200632651de158afd3fb7c61db9fa30b017b9c0f512107c49634b0cbc9b  self-verifies: True
+balanced_board_md5 4939d74082219e84c4f4a33a096c1ec8  (deliberately NOT moved — separate artifact, none built here)
+
+CURVE-SIDE stamps deliberately still at f1e8c9fe (the store the ruled curve was DERIVED on):
+  pvc_curve_v2.json stamp.store_md5      f1e8c9fe
+  ui/release_pick_curve.json curve_source f1e8c9fed35462536d00add604f69a3f
+  one_source_selftest _curve_source_store f1e8c9fe  (all six FROZEN-RULER checks PASS at that value)

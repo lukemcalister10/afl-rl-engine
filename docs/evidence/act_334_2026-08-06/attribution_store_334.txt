@@ -1,0 +1,51 @@
+STORE-STAGE COMPLETENESS GATE — held-constant inputs (engine, band, curve, v0surf):
+  engine   base 9f258a3b  cand 9f258a3b  OK
+  band     base 34faa865  cand 34faa865  OK
+  curve    base df766dff  cand df766dff  OK
+  v0surf   base af556bdc  cand af556bdc  OK
+  -> only ONLY the store differs (the surface signature is PROVEN unmoved at af556bdc); the cause set is COMPLETE.
+
+STORE STAGE  (both engine 9f258a3b / curve df766dff)
+  common 804 | added 0 | dropped 0 | MOVERS 154 (19.2%) | unchanged 650
+
+DOMINANT PRICING CHANNEL per mover (store+surface move as one forced pair):
+  year_zero_lens     106 movers  up  34/down  72  sum      -704  mean    -6.6  max|d|    85
+  ruled_curve         44 movers  up  26/down  18  sum      -121  mean    -2.8  max|d|    44
+  pool_levels          4 movers  up   2/down   2  sum        +6  mean    +1.5  max|d|     7
+
+  every mover carries a channel; membership added/dropped: 0/0
+
+MOVERS BY COHORT AGE (2026 - draft year) — the act expected ZERO live movers:
+  cohort age 0       6 movers  sum      -52  mean    -8.7  max|d|    34
+  cohort age 1      29 movers  sum     -171  mean    -5.9  max|d|    60
+  cohort age 2      53 movers  sum     -453  mean    -8.5  max|d|    85
+  cohort age 3      22 movers  sum     -167  mean    -7.6  max|d|    44
+  cohort age 4      17 movers  sum      +17  mean    +1.0  max|d|     9
+  cohort age 5      10 movers  sum      -18  mean    -1.8  max|d|    12
+  cohort age 6       7 movers  sum      +13  mean    +1.9  max|d|    10
+  cohort age 7       2 movers  sum       +2  mean    +1.0  max|d|     1
+  cohort age 8       3 movers  sum       +7  mean    +2.3  max|d|     7
+  cohort age 9       1 movers  sum       +1  mean    +1.0  max|d|     1
+  cohort age 11      2 movers  sum       +2  mean    +1.0  max|d|     1
+  cohort age 12      1 movers  sum       +1  mean    +1.0  max|d|     1
+  cohort age 14      1 movers  sum       -1  mean    -1.0  max|d|     1
+  by career games:
+    thin <=30g   106 movers  sum     -704  max|d|    85
+    31-80g        36 movers  sum     -108  max|d|    44
+    >80g          12 movers  sum       -7  max|d|    12
+  twelve largest absolute movers:
+    jack-whitlock              pk 33   g 23   yr 2024    1297 ->   1212     -85  [year_zero_lens]
+    hussien-el-achkar          pk 53   g 7    yr 2025     415 ->    355     -60  [year_zero_lens]
+    luke-trainor               pk 21   g 29   yr 2024    1598 ->   1550     -48  [year_zero_lens]
+    jed-walter                 pk 3    g 44   yr 2023    1184 ->   1140     -44  [ruled_curve]
+    alix-tauru                 pk 10   g 18   yr 2024    1667 ->   1624     -43  [year_zero_lens]
+    patrick-retschko           pk 8    g 14   yr 2024    1275 ->   1232     -43  [year_zero_lens]
+    connor-o-sullivan          pk 11   g 45   yr 2023    2982 ->   2941     -41  [ruled_curve]
+    liam-fawcett               pk 43   g 8    yr 2023     507 ->    468     -39  [year_zero_lens]
+    tom-gross                  pk 46   g 9    yr 2024     605 ->    566     -39  [year_zero_lens]
+    chris-scerri               pk None g 7    yr 2025     340 ->    306     -34  [year_zero_lens]
+    thomas-burton              pk None g 5    yr 2025     388 ->    354     -34  [year_zero_lens]
+    xavier-bamert              pk 5    g 7    yr 2026     386 ->    352     -34  [year_zero_lens]
+
+EVERY MOVER ATTRIBUTED to the store; no unnamed axis. Attribution PASS.
+THE ACT'S OWN ZERO-MOVEMENT EXPECTATION: FAILS — 154 live rows moved where 0 were expected.

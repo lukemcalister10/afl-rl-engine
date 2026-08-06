@@ -1,0 +1,21 @@
+WALK-FORWARD TRAINING CELLS (record x horizon-year), horizon rule quoted from the emitter
+  store-wide           13684  ->   13691   delta +7
+  the 177 zero-confirmations span 132 distinct players, 119 of whom carry NO insert
+  THEIR cells            494  ->     494   delta +0   players moved: 0
+  records whose cell count moved at all: 9
+  the ten no-row-today players: 10 cells before -> 18 after (delta +8).
+    ADDENDUM 1 said "+18 training cells for the ten no-row-today players"; the number 18 is the count they CARRY after the act (each held one degenerate C+1 placeholder before). Reproduced exactly: True
+      adam-iacobucci     1 -> 2
+      ben-eckermann      1 -> 1
+      ben-jolley         1 -> 2
+      ben-schwarze       1 -> 2
+      elijah-ware        1 -> 2
+      james-ezard        1 -> 2
+      martin-pask        1 -> 2
+      paul-thomas        1 -> 1
+      ryan-willits       1 -> 2
+      travis-baird       1 -> 2
+  josh-drummond horizon 9 -> 8  (his window shifts with the year move)
+  other records that moved (1): {'other:-1': 1}
+
+ASSERTED, AS A NUMBER: the zero-confirmation players hold 494 training cells before and 494 after. No row was written for them and none was implied.

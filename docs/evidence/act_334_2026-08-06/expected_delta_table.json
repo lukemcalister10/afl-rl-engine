@@ -1,0 +1,1439 @@
+{
+ "act": "#334 STAGE A",
+ "store_md5_before": "f1e8c9fed35462536d00add604f69a3f",
+ "store_md5_after": "f1e7f20c4adea9b17d19457a5217c735",
+ "records": 2650,
+ "inserts": [
+  {
+   "key": "chris-egan",
+   "row": {
+    "year": 2005,
+    "avg": 43.0,
+    "games": 13,
+    "pos": "SF"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": false
+  },
+  {
+   "key": "chris-egan",
+   "row": {
+    "year": 2006,
+    "avg": 60.4,
+    "games": 10,
+    "pos": "SF"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": false
+  },
+  {
+   "key": "jesse-smith",
+   "row": {
+    "year": 2005,
+    "avg": 40.3,
+    "games": 6,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "jesse-smith",
+   "row": {
+    "year": 2006,
+    "avg": 8.0,
+    "games": 2,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "angus-monfries",
+   "row": {
+    "year": 2005,
+    "avg": 50.5,
+    "games": 12,
+    "pos": "SF"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": false
+  },
+  {
+   "key": "angus-monfries",
+   "row": {
+    "year": 2006,
+    "avg": 66.2,
+    "games": 21,
+    "pos": "SF"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": false
+  },
+  {
+   "key": "lynden-dunn",
+   "row": {
+    "year": 2006,
+    "avg": 59.8,
+    "games": 11,
+    "pos": "KPF"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "KPD",
+   "hint_differs": true
+  },
+  {
+   "key": "andrew-mcqualter",
+   "row": {
+    "year": 2005,
+    "avg": 61.8,
+    "games": 6,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2006)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": true
+  },
+  {
+   "key": "ryan-willits",
+   "row": {
+    "year": 2006,
+    "avg": 45.3,
+    "games": 3,
+    "pos": "KPF"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "KPF",
+   "hint_differs": false
+  },
+  {
+   "key": "brent-prismall",
+   "row": {
+    "year": 2006,
+    "avg": 57.7,
+    "games": 8,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "james-ezard",
+   "row": {
+    "year": 2006,
+    "avg": 27.2,
+    "games": 4,
+    "pos": "MID"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "fabian-deluca",
+   "row": {
+    "year": 2006,
+    "avg": 33.0,
+    "games": 3,
+    "pos": "RUCK"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "RUCK",
+   "hint_differs": false
+  },
+  {
+   "key": "luke-blackwell",
+   "row": {
+    "year": 2006,
+    "avg": 48.5,
+    "games": 12,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "henry-slattery",
+   "row": {
+    "year": 2005,
+    "avg": 48.5,
+    "games": 4,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": true
+  },
+  {
+   "key": "henry-slattery",
+   "row": {
+    "year": 2006,
+    "avg": 45.2,
+    "games": 8,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": true
+  },
+  {
+   "key": "nathan-ablett",
+   "row": {
+    "year": 2005,
+    "avg": 80.3,
+    "games": 3,
+    "pos": "KPF"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "KPF",
+   "hint_differs": false
+  },
+  {
+   "key": "nathan-ablett",
+   "row": {
+    "year": 2006,
+    "avg": 41.1,
+    "games": 7,
+    "pos": "KPF"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "KPF",
+   "hint_differs": false
+  },
+  {
+   "key": "jayden-attard",
+   "row": {
+    "year": 2005,
+    "avg": 22.0,
+    "games": 2,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "jayden-attard",
+   "row": {
+    "year": 2006,
+    "avg": 52.0,
+    "games": 3,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "ben-eckermann",
+   "row": {
+    "year": 2005,
+    "avg": 21.7,
+    "games": 4,
+    "pos": "MID"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "adam-iacobucci",
+   "row": {
+    "year": 2005,
+    "avg": 34.6,
+    "games": 3,
+    "pos": "SD"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "adam-iacobucci",
+   "row": {
+    "year": 2006,
+    "avg": 27.0,
+    "games": 1,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "paul-thomas",
+   "row": {
+    "year": 2005,
+    "avg": 42.6,
+    "games": 8,
+    "pos": "MID"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "ben-schwarze",
+   "row": {
+    "year": 2006,
+    "avg": 46.6,
+    "games": 11,
+    "pos": "SD"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "elijah-ware",
+   "row": {
+    "year": 2006,
+    "avg": 31.5,
+    "games": 2,
+    "pos": "SF"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": false
+  },
+  {
+   "key": "ben-davies",
+   "row": {
+    "year": 2005,
+    "avg": 52.5,
+    "games": 7,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2008)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "ben-davies",
+   "row": {
+    "year": 2006,
+    "avg": 46.8,
+    "games": 5,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "travis-baird",
+   "row": {
+    "year": 2005,
+    "avg": 18.0,
+    "games": 2,
+    "pos": "SD"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "travis-baird",
+   "row": {
+    "year": 2006,
+    "avg": 39.6,
+    "games": 3,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "heritier-lumumba",
+   "row": {
+    "year": 2005,
+    "avg": 66.2,
+    "games": 4,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "heritier-lumumba",
+   "row": {
+    "year": 2006,
+    "avg": 44.7,
+    "games": 9,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  },
+  {
+   "key": "ben-jolley",
+   "row": {
+    "year": 2006,
+    "avg": 45.7,
+    "games": 4,
+    "pos": "MID"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "luke-vogels",
+   "row": {
+    "year": 2005,
+    "avg": 46.1,
+    "games": 10,
+    "pos": "KPF/KPD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": true
+  },
+  {
+   "key": "luke-vogels",
+   "row": {
+    "year": 2006,
+    "avg": 69.6,
+    "games": 3,
+    "pos": "KPF/KPD"
+   },
+   "pos_source": "earliest existing row (2005)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": true
+  },
+  {
+   "key": "marcus-allan",
+   "row": {
+    "year": 2006,
+    "avg": 34.0,
+    "games": 1,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "martin-pask",
+   "row": {
+    "year": 2006,
+    "avg": 34.3,
+    "games": 8,
+    "pos": "KPF"
+   },
+   "pos_source": "drafted_position",
+   "pos_hint_in_sheet_IGNORED": "KPF",
+   "hint_differs": false
+  },
+  {
+   "key": "paddy-ryder",
+   "row": {
+    "year": 2006,
+    "avg": 26.6,
+    "games": 9,
+    "pos": "KPD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "RUCK",
+   "hint_differs": true
+  },
+  {
+   "key": "richard-douglas",
+   "row": {
+    "year": 2006,
+    "avg": 63.0,
+    "games": 2,
+    "pos": "SF/MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": true
+  },
+  {
+   "key": "courtenay-dempsey",
+   "row": {
+    "year": 2006,
+    "avg": 23.0,
+    "games": 5,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": true
+  },
+  {
+   "key": "cleve-hughes",
+   "row": {
+    "year": 2006,
+    "avg": 29.6,
+    "games": 3,
+    "pos": "KPF"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": true
+  },
+  {
+   "key": "wayde-mills",
+   "row": {
+    "year": 2006,
+    "avg": 54.0,
+    "games": 4,
+    "pos": "KPF/KPD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "KPD",
+   "hint_differs": true
+  },
+  {
+   "key": "nick-lower",
+   "row": {
+    "year": 2006,
+    "avg": 24.2,
+    "games": 4,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2008)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": true
+  },
+  {
+   "key": "ryan-gamble",
+   "row": {
+    "year": 2006,
+    "avg": 29.0,
+    "games": 1,
+    "pos": "SF"
+   },
+   "pos_source": "earliest existing row (2008)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": false
+  },
+  {
+   "key": "sam-lonergan",
+   "row": {
+    "year": 2006,
+    "avg": 36.0,
+    "games": 1,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2008)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": true
+  },
+  {
+   "key": "ryan-jackson",
+   "row": {
+    "year": 2006,
+    "avg": 42.0,
+    "games": 1,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "jason-roe",
+   "row": {
+    "year": 2006,
+    "avg": 90.9,
+    "games": 15,
+    "pos": "KPD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": true
+  },
+  {
+   "key": "sam-iles",
+   "row": {
+    "year": 2006,
+    "avg": 38.0,
+    "games": 4,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "greg-bentley",
+   "row": {
+    "year": 2006,
+    "avg": 62.7,
+    "games": 4,
+    "pos": "SF/MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": true
+  },
+  {
+   "key": "cameron-howat",
+   "row": {
+    "year": 2006,
+    "avg": 65.2,
+    "games": 5,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "MID",
+   "hint_differs": false
+  },
+  {
+   "key": "simon-phillips",
+   "row": {
+    "year": 2006,
+    "avg": 37.7,
+    "games": 4,
+    "pos": "MID"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SF",
+   "hint_differs": true
+  },
+  {
+   "key": "colm-begley",
+   "row": {
+    "year": 2006,
+    "avg": 48.5,
+    "games": 2,
+    "pos": "SD"
+   },
+   "pos_source": "earliest existing row (2007)",
+   "pos_hint_in_sheet_IGNORED": "SD",
+   "hint_differs": false
+  }
+ ],
+ "games_counters": [
+  {
+   "key": "adam-iacobucci",
+   "games_before": 0,
+   "games_after": 4,
+   "delta": 4
+  },
+  {
+   "key": "andrew-mcqualter",
+   "games_before": 77,
+   "games_after": 83,
+   "delta": 6
+  },
+  {
+   "key": "angus-monfries",
+   "games_before": 171,
+   "games_after": 204,
+   "delta": 33
+  },
+  {
+   "key": "ben-davies",
+   "games_before": 2,
+   "games_after": 14,
+   "delta": 12
+  },
+  {
+   "key": "ben-eckermann",
+   "games_before": 0,
+   "games_after": 4,
+   "delta": 4
+  },
+  {
+   "key": "ben-jolley",
+   "games_before": 0,
+   "games_after": 4,
+   "delta": 4
+  },
+  {
+   "key": "ben-schwarze",
+   "games_before": 0,
+   "games_after": 11,
+   "delta": 11
+  },
+  {
+   "key": "brent-prismall",
+   "games_before": 51,
+   "games_after": 59,
+   "delta": 8
+  },
+  {
+   "key": "cameron-howat",
+   "games_before": 16,
+   "games_after": 21,
+   "delta": 5
+  },
+  {
+   "key": "chris-egan",
+   "games_before": 3,
+   "games_after": 26,
+   "delta": 23
+  },
+  {
+   "key": "cleve-hughes",
+   "games_before": 13,
+   "games_after": 16,
+   "delta": 3
+  },
+  {
+   "key": "colm-begley",
+   "games_before": 28,
+   "games_after": 30,
+   "delta": 2
+  },
+  {
+   "key": "courtenay-dempsey",
+   "games_before": 126,
+   "games_after": 131,
+   "delta": 5
+  },
+  {
+   "key": "elijah-ware",
+   "games_before": 0,
+   "games_after": 2,
+   "delta": 2
+  },
+  {
+   "key": "fabian-deluca",
+   "games_before": 8,
+   "games_after": 11,
+   "delta": 3
+  },
+  {
+   "key": "greg-bentley",
+   "games_before": 22,
+   "games_after": 26,
+   "delta": 4
+  },
+  {
+   "key": "henry-slattery",
+   "games_before": 83,
+   "games_after": 95,
+   "delta": 12
+  },
+  {
+   "key": "heritier-lumumba",
+   "games_before": 191,
+   "games_after": 204,
+   "delta": 13
+  },
+  {
+   "key": "james-ezard",
+   "games_before": 0,
+   "games_after": 4,
+   "delta": 4
+  },
+  {
+   "key": "jason-roe",
+   "games_before": 34,
+   "games_after": 49,
+   "delta": 15
+  },
+  {
+   "key": "jayden-attard",
+   "games_before": 20,
+   "games_after": 25,
+   "delta": 5
+  },
+  {
+   "key": "jesse-smith",
+   "games_before": 18,
+   "games_after": 26,
+   "delta": 8
+  },
+  {
+   "key": "luke-blackwell",
+   "games_before": 11,
+   "games_after": 23,
+   "delta": 12
+  },
+  {
+   "key": "luke-vogels",
+   "games_before": 3,
+   "games_after": 16,
+   "delta": 13
+  },
+  {
+   "key": "lynden-dunn",
+   "games_before": 187,
+   "games_after": 198,
+   "delta": 11
+  },
+  {
+   "key": "marcus-allan",
+   "games_before": 4,
+   "games_after": 5,
+   "delta": 1
+  },
+  {
+   "key": "martin-pask",
+   "games_before": 0,
+   "games_after": 8,
+   "delta": 8
+  },
+  {
+   "key": "nathan-ablett",
+   "games_before": 20,
+   "games_after": 30,
+   "delta": 10
+  },
+  {
+   "key": "nick-lower",
+   "games_before": 51,
+   "games_after": 55,
+   "delta": 4
+  },
+  {
+   "key": "paddy-ryder",
+   "games_before": 268,
+   "games_after": 277,
+   "delta": 9
+  },
+  {
+   "key": "paul-thomas",
+   "games_before": 0,
+   "games_after": 8,
+   "delta": 8
+  },
+  {
+   "key": "richard-douglas",
+   "games_before": 231,
+   "games_after": 233,
+   "delta": 2
+  },
+  {
+   "key": "ryan-gamble",
+   "games_before": 34,
+   "games_after": 35,
+   "delta": 1
+  },
+  {
+   "key": "ryan-jackson",
+   "games_before": 8,
+   "games_after": 9,
+   "delta": 1
+  },
+  {
+   "key": "ryan-willits",
+   "games_before": 0,
+   "games_after": 3,
+   "delta": 3
+  },
+  {
+   "key": "sam-iles",
+   "games_before": 29,
+   "games_after": 33,
+   "delta": 4
+  },
+  {
+   "key": "sam-lonergan",
+   "games_before": 80,
+   "games_after": 81,
+   "delta": 1
+  },
+  {
+   "key": "simon-phillips",
+   "games_before": 10,
+   "games_after": 14,
+   "delta": 4
+  },
+  {
+   "key": "travis-baird",
+   "games_before": 0,
+   "games_after": 5,
+   "delta": 5
+  },
+  {
+   "key": "wayde-mills",
+   "games_before": 12,
+   "games_after": 16,
+   "delta": 4
+  }
+ ],
+ "slid_rows": [
+  {
+   "key": "ed-clarke",
+   "group": "2004 RD",
+   "pick_before": 40,
+   "pick_after": 41
+  },
+  {
+   "key": "marcus-allan",
+   "group": "2004 RD",
+   "pick_before": 41,
+   "pick_after": 42
+  },
+  {
+   "key": "andrew-hayes",
+   "group": "2004 RD",
+   "pick_before": 42,
+   "pick_after": 43
+  },
+  {
+   "key": "will-hamill-2004",
+   "group": "2004 RD",
+   "pick_before": 43,
+   "pick_after": 44
+  },
+  {
+   "key": "martin-pask",
+   "group": "2004 RD",
+   "pick_before": 44,
+   "pick_after": 45
+  },
+  {
+   "key": "scott-harding",
+   "group": "2004 RD",
+   "pick_before": 45,
+   "pick_after": 46
+  },
+  {
+   "key": "sam-pleming",
+   "group": "2003 RD",
+   "pick_before": 36,
+   "pick_after": 35
+  },
+  {
+   "key": "joel-campbell",
+   "group": "2003 RD",
+   "pick_before": 37,
+   "pick_after": 36
+  },
+  {
+   "key": "shaun-bergin",
+   "group": "2003 RD",
+   "pick_before": 38,
+   "pick_after": 37
+  },
+  {
+   "key": "peter-summers",
+   "group": "2003 RD",
+   "pick_before": 39,
+   "pick_after": 38
+  },
+  {
+   "key": "luke-taylor",
+   "group": "2003 RD",
+   "pick_before": 40,
+   "pick_after": 39
+  },
+  {
+   "key": "jake-furfaro",
+   "group": "2003 RD",
+   "pick_before": 41,
+   "pick_after": 40
+  },
+  {
+   "key": "paul-shelton",
+   "group": "2003 RD",
+   "pick_before": 42,
+   "pick_after": 41
+  },
+  {
+   "key": "nick-potter",
+   "group": "2003 RD",
+   "pick_before": 43,
+   "pick_after": 42
+  },
+  {
+   "key": "leigh-ryswyk",
+   "group": "2003 RD",
+   "pick_before": 44,
+   "pick_after": 43
+  },
+  {
+   "key": "jeremy-stiller",
+   "group": "2003 RD",
+   "pick_before": 45,
+   "pick_after": 44
+  }
+ ],
+ "drummond": {
+  "key": "josh-drummond",
+  "year": [
+   2003,
+   2004
+  ],
+  "pick": [
+   35,
+   40
+  ],
+  "stream_year": [
+   2003,
+   2004
+  ],
+  "stream_pick": [
+   35,
+   40
+  ]
+ },
+ "expected_delta_by_key": {
+  "adam-iacobucci": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "andrew-hayes": [
+   "pick",
+   "stream_pick"
+  ],
+  "andrew-mcqualter": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "angus-monfries": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "ben-davies": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "ben-eckermann": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ben-jolley": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ben-schwarze": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "brent-prismall": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "cameron-howat": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "chris-egan": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "cleve-hughes": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "colm-begley": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "courtenay-dempsey": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ed-clarke": [
+   "pick",
+   "stream_pick"
+  ],
+  "elijah-ware": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "fabian-deluca": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "greg-bentley": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "henry-slattery": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "heritier-lumumba": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "jake-furfaro": [
+   "pick",
+   "stream_pick"
+  ],
+  "james-ezard": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "jason-roe": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "jayden-attard": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "jeremy-stiller": [
+   "pick",
+   "stream_pick"
+  ],
+  "jesse-smith": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "joel-campbell": [
+   "pick",
+   "stream_pick"
+  ],
+  "josh-drummond": [
+   "pick",
+   "stream_pick",
+   "stream_year",
+   "year"
+  ],
+  "leigh-ryswyk": [
+   "pick",
+   "stream_pick"
+  ],
+  "luke-blackwell": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "luke-taylor": [
+   "pick",
+   "stream_pick"
+  ],
+  "luke-vogels": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "lynden-dunn": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "marcus-allan": [
+   "games",
+   "pick",
+   "scoring (+1 row)",
+   "stream_pick"
+  ],
+  "martin-pask": [
+   "games",
+   "pick",
+   "scoring (+1 row)",
+   "stream_pick"
+  ],
+  "nathan-ablett": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "nick-lower": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "nick-potter": [
+   "pick",
+   "stream_pick"
+  ],
+  "paddy-ryder": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "paul-shelton": [
+   "pick",
+   "stream_pick"
+  ],
+  "paul-thomas": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "peter-summers": [
+   "pick",
+   "stream_pick"
+  ],
+  "richard-douglas": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ryan-gamble": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ryan-jackson": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ryan-willits": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "sam-iles": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "sam-lonergan": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "sam-pleming": [
+   "pick",
+   "stream_pick"
+  ],
+  "scott-harding": [
+   "pick",
+   "stream_pick"
+  ],
+  "shaun-bergin": [
+   "pick",
+   "stream_pick"
+  ],
+  "simon-phillips": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "travis-baird": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "wayde-mills": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "will-hamill-2004": [
+   "pick",
+   "stream_pick"
+  ]
+ },
+ "actual_delta_by_key": {
+  "adam-iacobucci": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "andrew-hayes": [
+   "pick",
+   "stream_pick"
+  ],
+  "andrew-mcqualter": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "angus-monfries": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "ben-davies": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "ben-eckermann": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ben-jolley": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ben-schwarze": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "brent-prismall": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "cameron-howat": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "chris-egan": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "cleve-hughes": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "colm-begley": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "courtenay-dempsey": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ed-clarke": [
+   "pick",
+   "stream_pick"
+  ],
+  "elijah-ware": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "fabian-deluca": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "greg-bentley": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "henry-slattery": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "heritier-lumumba": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "jake-furfaro": [
+   "pick",
+   "stream_pick"
+  ],
+  "james-ezard": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "jason-roe": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "jayden-attard": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "jeremy-stiller": [
+   "pick",
+   "stream_pick"
+  ],
+  "jesse-smith": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "joel-campbell": [
+   "pick",
+   "stream_pick"
+  ],
+  "josh-drummond": [
+   "pick",
+   "stream_pick",
+   "stream_year",
+   "year"
+  ],
+  "leigh-ryswyk": [
+   "pick",
+   "stream_pick"
+  ],
+  "luke-blackwell": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "luke-taylor": [
+   "pick",
+   "stream_pick"
+  ],
+  "luke-vogels": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "lynden-dunn": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "marcus-allan": [
+   "games",
+   "pick",
+   "scoring (+1 row)",
+   "stream_pick"
+  ],
+  "martin-pask": [
+   "games",
+   "pick",
+   "scoring (+1 row)",
+   "stream_pick"
+  ],
+  "nathan-ablett": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "nick-lower": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "nick-potter": [
+   "pick",
+   "stream_pick"
+  ],
+  "paddy-ryder": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "paul-shelton": [
+   "pick",
+   "stream_pick"
+  ],
+  "paul-thomas": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "peter-summers": [
+   "pick",
+   "stream_pick"
+  ],
+  "richard-douglas": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ryan-gamble": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ryan-jackson": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "ryan-willits": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "sam-iles": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "sam-lonergan": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "sam-pleming": [
+   "pick",
+   "stream_pick"
+  ],
+  "scott-harding": [
+   "pick",
+   "stream_pick"
+  ],
+  "shaun-bergin": [
+   "pick",
+   "stream_pick"
+  ],
+  "simon-phillips": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "travis-baird": [
+   "games",
+   "scoring (+2 rows)"
+  ],
+  "wayde-mills": [
+   "games",
+   "scoring (+1 row)"
+  ],
+  "will-hamill-2004": [
+   "pick",
+   "stream_pick"
+  ]
+ },
+ "records_declared_touched": 55,
+ "records_byte_identical": 2595,
+ "post_2003_RD_n": 44,
+ "post_2004_RD_n": 46
+}
