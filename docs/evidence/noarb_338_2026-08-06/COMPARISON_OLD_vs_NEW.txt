@@ -1,0 +1,143 @@
+================================================================================================
+#338 NO-ARB REISSUE — OLD vs NEW, the seam's hand-to-the-owner sheet          measured 2026-08-06
+================================================================================================
+OLD = docs/evidence/noarb_2026-08-05/noarb_table.json   (shipped 2026-08-05; store 81d24704,
+      v0surf 1cbbd9b00ff4, PRE-#338 construction)
+NEW = docs/evidence/noarb_338_2026-08-06/noarb_table_338.json  (store 37ced3ce, engine 8f0e3eb1,
+      v0surf af556bdca53d, #338 CORRECTED minimum listing tenure)
+
+  Scope is IDENTICAL in both: 1,197 national-draft picks 1-64, classes 2004-2022, 19 distinct
+  classes, busts in the denominator at zero, the two force-majeure exclusions (thomas-boyd 2013,
+  paddy-mccartin 2014) applied with the one-slot slide. Cohort n and the key set do not move.
+
+  READ THIS FIRST — OLD SPANS TWO CHANGES, NOT ONE. The shipped 2026-08-05 table was measured on
+  store 81d24704, an OLDER basis than the current gate store. So OLD -> NEW mixes the basis move
+  with #338. A CONTROL was therefore run: the PRE-#338 construction re-emitted on the CURRENT
+  basis (store 37ced3ce / engine 8f0e3eb1 / v0surf af556bdca53d). CTRL -> NEW is the PURE #338
+  effect. The basis move (OLD -> CTRL) turns out to be small — at most 4.7 mean points at any row,
+  |delta| <= 0.006 on every ratio — so OLD -> NEW is a fair headline read.
+
+------------------------------------------------------------------------------------------------
+1. HEADLINE, ALL PICKS 1-64  (mean engine value, VOR board points; ratio = mean_yrN / mean_yr0)
+------------------------------------------------------------------------------------------------
+  yr |   OLD mean  CTRL mean   NEW mean |  OLD ratio  NEW ratio |  OLD zero  NEW zero
+  ---+------------------------------------------------------------------------------
+   0 |     839.2     839.3      839.3   |    1.0000     1.000   |        0         0
+   1 |     911.3     916.0      942.7   |    1.0859     1.123   |        0         0
+   2 |    1128.0    1128.0     1152.8   |    1.3442     1.373   |      159         0
+   3 |    1249.9    1248.2     1264.5   |    1.4894     1.506   |      213       141
+   4 |    1317.7    1314.6     1319.3   |    1.5702     1.572   |      272       258
+   5 |    1311.0    1308.2     1308.2   |    1.5697     1.566   |      334       334
+   6 |    1268.7    1267.4     1267.4   |    1.5207     1.519   |      391       391
+   7 |    1103.7    1101.1     1101.1   |    1.3215     1.318   |      430       430
+
+  Extended cut (NEW, noarb_ext_338.txt): yr8 901.4 / 1.084, yr9 697.4 / 0.840.
+  THE SHAPE IS UNCHANGED: draft-day 1.00x -> peak ~1.57x at years 4-5 -> 0.84x by year 9. #338
+  did NOT move the hump. It moved the EARLY YEARS and it moved WHO IS COUNTED AS DEAD.
+
+  YEARS 5, 6 AND 7 ARE BYTE-IDENTICAL between CTRL and NEW. That is the rule behaving: the
+  maximum tenure the rule can assume is 4 seasons (ND 1-20), so nothing past year 4 can move
+  except through data the matrix already had.
+
+------------------------------------------------------------------------------------------------
+2. BY PICK BAND  (the two bands the scripts report)
+------------------------------------------------------------------------------------------------
+PICKS 1-20  (n=377)                        PICKS 21-64  (n=820)
+  yr | OLD mean  NEW mean | OLD r  NEW r     yr | OLD mean  NEW mean | OLD r   NEW r
+  ---+--------------------+---------------   ---+--------------------+----------------
+   0 |   1601.7   1601.8  | 1.000  1.000      0 |    488.6    488.8  | 1.0000  1.000
+   1 |   1837.7   1841.5  | 1.147  1.150      1 |    485.4    529.5  | 0.9933  1.083
+   2 |   2178.4   2180.8  | 1.360  1.361      2 |    645.1    680.2  | 1.3202  1.392
+   3 |   2368.2   2369.0  | 1.479  1.479      3 |    735.7    756.6  | 1.5056  1.548
+   4 |   2545.8   2553.9  | 1.589  1.594      4 |    753.1    751.7  | 1.5413  1.538
+   5 |   2518.3   2513.1  | 1.582  1.578      5 |    759.8    758.2  | 1.5522  1.548
+   6 |   2376.2   2374.0  | 1.496  1.495      6 |    762.9    762.0  | 1.5570  1.555
+   7 |   2096.0   2090.7  | 1.313  1.310      7 |    652.4    651.0  | 1.3336  1.330
+
+  Picks 1-20 barely move (+3.8 at year 1, +8.1 at year 4). Picks 21-64 move hard at years 1-3.
+  That asymmetry is the rule's own shape, not a surprise: of the 619 evidence-less store records
+  the rule reaches, 133 are ND 41+ and 41 are ND 21-40 against only 4 in ND 1-20.
+
+------------------------------------------------------------------------------------------------
+3. THE FIVE LARGEST MOVEMENTS, with causes  (ranked on CTRL -> NEW, the isolated #338 effect)
+------------------------------------------------------------------------------------------------
+  #1  PICKS 21-64, YEAR 1 mean +37.1 (492.4 -> 529.5); ratio 1.007 -> 1.083, and against the
+      shipped OLD table 0.9933 -> 1.083, +9.0 ratio points.
+      CAUSE: the 2-season minimum on ND 41+ and the 3-season minimum on ND 21-40. Under the old
+      rule a late pick the source DB kept no rows for reconstructed as DELISTED on draft day and
+      priced at the 2% remnant in his own year 1. He now prices as a LISTED sitting-out player.
+      The single biggest number on this sheet, and the one the owner's complaint points at.
+
+  #2  ALL PICKS, YEAR 2 "ended" ZEROS 154 -> 0 (159 -> 0 against the shipped OLD table).
+      CAUSE: the emitted window. Every one of those rows was a career the table declared OVER at
+      year 2 because the emitter stopped at the last PLAYED year and there were no played years.
+      Under #338 no drafted player's window can close before the end of his listed tenure, so at
+      year 2 the cohort now contains ZERO concluded careers. Not one career was invented: the
+      zeros move LATER (year 3: 212 -> 141; year 4: 271 -> 258), they do not disappear.
+
+  #3  PICKS 21-64, YEAR 2 mean +32.5 (647.7 -> 680.2); ratio 1.325 -> 1.392. Zeros 149 -> 0.
+      CAUSE: same rule, second tenure year. This is where the 2-season ND 41+ minimum lands.
+
+  #4  PICKS 21-64, YEAR 3 mean +20.5 (736.1 -> 756.6); ratio 1.506 -> 1.548. Zeros 207 -> 141.
+      CAUSE: the 3-season ND 21-40 minimum, which reaches exactly one year further than the
+      41+ band's. The 66-row zero drop is the 21-40 evidence-less cohort's third listed season.
+
+  #5  PICKS 1-20, YEAR 4 mean +15.0 (2538.9 -> 2553.9); zeros 13 -> 0.
+      CAUSE: the 4-season ND 1-20 minimum, the rule's longest reach and its smallest population
+      (4 evidence-less records in the band, plus short real careers extended to the minimum).
+      It is the LAST row #338 can touch — years 5+ are identical by construction.
+
+  (Runner-up, for completeness: ALL PICKS YEAR 1 mean +26.7, ratio 1.091 -> 1.123. It is the
+   weighted sum of #1 and the small 1-20 move, so it is not listed as a separate mover.)
+
+------------------------------------------------------------------------------------------------
+4. THE "USELESS" ASYMMETRY — historical vs current valuation. IS IT VISIBLY REDUCED?
+------------------------------------------------------------------------------------------------
+YES, and at the sharpest test it is ELIMINATED, not merely reduced. Three readings, in the
+table's own terms, honest about which one moves and which one does not:
+
+  (a) ERA PARITY AT MATCHED IDENTITY — the decisive one. Two players, same route, same pick,
+      same position, different eras, in THIS per_entrant lineage:
+          scott-simpson  ND pick 44 KPF entry 2007 : year-1 value    7  ->  216
+          isaac-keeler   ND pick 44 KPF entry 2022 : year-1 value  216  ->  216   (unmoved)
+          james-condos   RD pool     MID entry 2003 : year-1 value    9  ->  170
+          zane-trew      RD pool     MID entry 2020 : year-1 value  170  ->  170   (unmoved)
+      The historical record was worth 3% of his current-era twin. He is now worth EXACTLY the
+      same number, to the point. The current-era player did not move at all. This is the
+      asymmetry the owner called useless, and on this test it is gone — the two eras now price
+      through one code path. (Same pair, same result, as the book's own P5 at commit 30996f8.)
+
+  (b) THE EVIDENCE-LESS COHORT INSIDE THE MEASURED 1,197 (133 records, all no-data careers):
+          mean YEAR-1 value        8.1  ->  248.6      (x30.7)
+          mean emitted window     1.00  ->  2.31 years
+      They were being carried in the denominator at effectively zero for reasons of missing
+      data, not of football. 182 of the 1,197 gain a longer window in total (103 in picks 41-64,
+      66 in 21-40, 13 in 1-20; 81 historical classes and 101 current ones).
+
+  (c) THE PICK-BAND GAP AT YEAR 1, the asymmetry as the shipped table itself displayed it:
+          picks 1-20 ratio  1.1473 -> 1.150      gap 1-20 minus 21-64:
+          picks 21-64 ratio 0.9933 -> 1.083          0.154  ->  0.067   (-56%)
+      The old table said a late-round pick was worth LESS one year after being drafted than on
+      draft day (0.993x) while a top-20 pick gained 15%. That specific absurdity is gone: every
+      band now gains in year 1, and the spread between the bands has more than halved.
+
+  WHERE IT DOES *NOT* VISIBLY MOVE, stated plainly so the sheet is not oversold: split by class
+  ERA rather than by pick band, the year-1 ratio gap barely changes —
+          2004-2012 half : 1.079 -> 1.109        2013-2022 half : 1.102 -> 1.136
+          gap (current minus historical) : 0.023 -> 0.027
+  The era halves each contain both data-rich and data-poor records, so the correction lifts both
+  by a similar amount and the AGGREGATE era ratio is not where the defect was visible. The defect
+  was never "historical classes read low on average"; it was "a historical record with no rows
+  reads at the 2% remnant while its current twin reads at full value", which is (a), and (a) is
+  closed. Do not quote the era-half gap as evidence either way.
+
+------------------------------------------------------------------------------------------------
+5. STANDING CAVEAT — carry this with any figure above
+------------------------------------------------------------------------------------------------
+  These outcomes are under the CORRECTED #338 rule. The shipped curve they are compared against
+  was derived on the PRE-CORRECTION basis and re-derives at #334 stage B after the #336 ruling.
+  Until that re-derivation lands, a gap between these outcomes and the shipped curve is not
+  evidence of a curve error.
+
+  The 2026-08-05 tables are SUPERSEDED AS EVIDENCE, NOT REWRITTEN. They remain on disk, on their
+  own basis, with their own README. Nothing in that directory was touched by this act.
