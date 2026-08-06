@@ -1,0 +1,393 @@
+{
+ "meta": {
+  "tag": "variant_amended",
+  "store": "37ced3ce",
+  "engine_head": "8f0e3eb1",
+  "rl_model": "915a4c0c",
+  "v0surf_sig": "af556bdca53dee20d4f73e0ae25a8127",
+  "v0surf_frozen": true,
+  "repo": "/tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/repo_variant"
+ },
+ "rows": [
+  {
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "pos": "MID",
+   "pick_stored": 9,
+   "effpk": 9,
+   "band_idx": 2,
+   "band_label": "8-12",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 14,
+     "avg": 61.73
+    }
+   ],
+   "games_total": 14,
+   "par_at": 58.41912271263068,
+   "par_prior": 58.41912271263068,
+   "basepk": 87.10763084795323,
+   "lvl_par": 60.52604462277479,
+   "lvl_eff": 60.31882583194135,
+   "band_q": [
+    64.91010432809442,
+    80.21442665806848,
+    89.99187066620424,
+    98.43179989578145,
+    110.5440747983608,
+    116.00953412293073
+   ],
+   "ev": 2954.0,
+   "v0_start": 2079.5217680875144,
+   "pvc_pick_value": 1475.0
+  },
+  {
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "pos": "MID",
+   "pick_stored": 13,
+   "effpk": 13,
+   "band_idx": 3,
+   "band_label": "13-20",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 12,
+     "avg": 65.89
+    }
+   ],
+   "games_total": 12,
+   "par_at": 57.96193177637557,
+   "par_prior": 57.96193177637557,
+   "basepk": 72.83593167716117,
+   "lvl_par": 62.28633262562526,
+   "lvl_eff": 62.161025413353755,
+   "band_q": [
+    64.49124859258579,
+    84.07905494617017,
+    93.36732435950525,
+    102.67093637106598,
+    109.50061413997689,
+    116.71855290513881
+   ],
+   "ev": 2943.0,
+   "v0_start": 1828.273306755315,
+   "pvc_pick_value": 1347.0
+  },
+  {
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "pos": "SD",
+   "pick_stored": 19,
+   "effpk": 19,
+   "band_idx": 3,
+   "band_label": "13-20",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 12,
+     "avg": 74.3
+    }
+   ],
+   "games_total": 12,
+   "par_at": 56.652921820369116,
+   "par_prior": 56.652921820369116,
+   "basepk": 79.50526343201753,
+   "lvl_par": 66.2786008274405,
+   "lvl_eff": 66.03146993215593,
+   "band_q": [
+    68.78839251493494,
+    84.07854837048723,
+    91.51788768241833,
+    95.26127892409406,
+    103.05453428639994,
+    111.63809674409346
+   ],
+   "ev": 2307.0,
+   "v0_start": 863.5097922211432,
+   "pvc_pick_value": 1001.0
+  },
+  {
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "pos": "SD",
+   "pick_stored": 10,
+   "effpk": 10,
+   "band_idx": 2,
+   "band_label": "8-12",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 17,
+     "avg": 71.71
+    }
+   ],
+   "games_total": 17,
+   "par_at": 58.60892225061283,
+   "par_prior": 58.60892225061283,
+   "basepk": 74.429204476709,
+   "lvl_par": 68.73248232968473,
+   "lvl_eff": 66.5166488489044,
+   "band_q": [
+    72.9871627104906,
+    88.91997904685573,
+    97.80057344818779,
+    104.21219048651432,
+    106.24068451588649,
+    111.78594732306779
+   ],
+   "ev": 2643.0,
+   "v0_start": 1062.3778510540703,
+   "pvc_pick_value": 1460.0
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "pos": "KPD",
+   "pick_stored": 3,
+   "effpk": 3,
+   "band_idx": 0,
+   "band_label": "1-3",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 16,
+     "avg": 59.62
+    }
+   ],
+   "games_total": 16,
+   "par_at": 55.27874397543155,
+   "par_prior": 55.27874397543155,
+   "basepk": 75.79759291517682,
+   "lvl_par": 58.436021084208605,
+   "lvl_eff": 57.86408304551635,
+   "band_q": [
+    64.02125651461097,
+    78.62935163017922,
+    82.49410780655971,
+    89.41731978501952,
+    101.11849947919883,
+    101.11849947919883
+   ],
+   "ev": 2451.0,
+   "v0_start": 2330.830913903937,
+   "pvc_pick_value": 2874.0
+  },
+  {
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "pos": "SD",
+   "pick_stored": 2,
+   "effpk": 2,
+   "band_idx": 0,
+   "band_label": "1-3",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 16,
+     "avg": 55.12
+    }
+   ],
+   "games_total": 16,
+   "par_at": 68.50845915434348,
+   "par_prior": 68.50845915434348,
+   "basepk": 104.15,
+   "lvl_par": 58.77139795118458,
+   "lvl_eff": 60.521598404308335,
+   "band_q": [
+    67.4413154741863,
+    85.34567962146986,
+    90.43667399926944,
+    100.38291293088939,
+    107.89705544097724,
+    107.89705544097724
+   ],
+   "ev": 2706.0,
+   "v0_start": 2473.3945297483106,
+   "pvc_pick_value": 2999.0
+  },
+  {
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "pos": "MID",
+   "pick_stored": 12,
+   "effpk": 12,
+   "band_idx": 2,
+   "band_label": "8-12",
+   "tenure": 2,
+   "age": 20,
+   "draft_year": 2024,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2025,
+     "games": 7,
+     "avg": 55.0
+    },
+    {
+     "year": 2026,
+     "games": 7,
+     "avg": 60.0
+    }
+   ],
+   "games_total": 14,
+   "par_at": 62.38339867234791,
+   "par_prior": 62.38339867234791,
+   "basepk": 87.10763084795323,
+   "lvl_par": 59.90538637949131,
+   "lvl_eff": 59.918867920006726,
+   "band_q": [
+    57.037232806280976,
+    70.07962906519282,
+    80.74393663596175,
+    88.35423448514753,
+    98.92970791043815,
+    108.41373707119136
+   ],
+   "ev": 1966.0,
+   "v0_start": 1993.9470894317485,
+   "pvc_pick_value": 1458.0
+  },
+  {
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson",
+   "pos": "SD",
+   "pick_stored": 5,
+   "effpk": 5,
+   "band_idx": 1,
+   "band_label": "4-7",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 5,
+     "avg": 35.6
+    }
+   ],
+   "games_total": 5,
+   "par_at": 68.50845915434348,
+   "par_prior": 68.50845915434348,
+   "basepk": 79.31326747051575,
+   "lvl_par": 61.02926389199269,
+   "lvl_eff": 61.02818630126741,
+   "band_q": [
+    55.8576004092184,
+    71.3527434719361,
+    83.63966818454195,
+    92.2742489465206,
+    101.81925952359894,
+    108.99679837004545
+   ],
+   "ev": 1742.0,
+   "v0_start": 1198.0466824433734,
+   "pvc_pick_value": 1881.0
+  },
+  {
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "pos": "MID",
+   "pick_stored": 7,
+   "effpk": 7,
+   "band_idx": 1,
+   "band_label": "4-7",
+   "tenure": 1,
+   "age": 19,
+   "draft_year": 2025,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2026,
+     "games": 14,
+     "avg": 63.29
+    }
+   ],
+   "games_total": 14,
+   "par_at": 63.40855111096625,
+   "par_prior": 63.40855111096625,
+   "basepk": 94.44847593582887,
+   "lvl_par": 63.33310949489682,
+   "lvl_eff": 63.34052928600781,
+   "band_q": [
+    64.07291734813607,
+    86.35803251061617,
+    92.10458905301,
+    99.95300874240006,
+    109.84093407628619,
+    116.58841678222663
+   ],
+   "ev": 2423.0,
+   "v0_start": 2142.0669497682707,
+   "pvc_pick_value": 1549.0
+  },
+  {
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "pos": "MID",
+   "pick_stored": 11,
+   "effpk": 11,
+   "band_idx": 2,
+   "band_label": "8-12",
+   "tenure": 2,
+   "age": 20,
+   "draft_year": 2024,
+   "type": "ND",
+   "seasons": [
+    {
+     "year": 2025,
+     "games": 18,
+     "avg": 50.6
+    },
+    {
+     "year": 2026,
+     "games": 5,
+     "avg": 70.6
+    }
+   ],
+   "games_total": 23,
+   "par_at": 62.38339867234791,
+   "par_prior": 62.38339867234791,
+   "basepk": 87.10763084795323,
+   "lvl_par": 57.15731494862738,
+   "lvl_eff": 60.02483023295424,
+   "band_q": [
+    60.8218359207282,
+    73.07455176527986,
+    82.91949613638789,
+    91.38032140921867,
+    103.37583980270013,
+    108.80401317912558
+   ],
+   "ev": 1726.0,
+   "v0_start": 2012.791953486189,
+   "pvc_pick_value": 1459.0
+  }
+ ]
+}

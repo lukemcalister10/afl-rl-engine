@@ -1,0 +1,213 @@
+#336 ADDENDUM 1 — P(EVER ESTABLISHES) STRATA DERIVATION (the AMENDED anchor probability)
+store 37ced3ce | engine 8f0e3eb1
+
+THE AMENDMENT (issue #336 ADDENDUM 1, 2026-08-06): the probability at every LEVEL-ANCHOR site is
+CAREER-LEVEL P(EVER establishes | position x pick band). Tenure enters ONLY as #338 window
+MEMBERSHIP — who is in the denominator — never as a probability discount on the anchor.
+The conditional level E[level | ever establishes] REMAINS tenure-resolved (it is the establisher's
+own season at that tenure), so the development shape is still learned from seasons that happened.
+
+establishment definition: a season with games >= 6 (build_cohort_book.py:181-185)
+tenure window: #338 minimum listing tenure, helpers mirrored from s4_matrix_M1v7.py:53-70 (commit 30996f8)
+pooling, DECLARED: every (pos, band) rate is shrunk toward the ALL-POSITION band marginal by n/(n+10).
+                   Nothing is dropped for thinness and no thin rate is trusted raw; raw counts below.
+bands: [[1, 3], [4, 7], [8, 12], [13, 20], [21, 27], [28, 35], [36, 48], [49, 99]]
+
+== LEVER A (AMENDED) — par surface. Population: par cohort (GRP pos, pick or _ft, draftyr 2003-2018) n=1758 ==
+   membership  = the #338 listed window covers at least one tenure year T=1..6 of the par range
+   denominator = the whole (position x band) cell of that windowed population; never-established
+                 sit in it at their realized nothing
+   numerator   = of those, players who EVER recorded a >=6-game season inside their window
+
+   filled strata: 48 of 48 possible (6 pos x 8 bands)
+   stratum n range: min=1  p25=9  median=19  p75=37  max=246
+   strata with n<20: 26   n<10: 13   n<5: 6
+
+   RAW counts (est/n):
+   pos            1-3       4-7      8-12     13-20     21-27     28-35     36-48     49-99
+   MID          25/25     30/30     21/24     38/41     35/42     31/37     31/48   115/246
+   SD             4/4     11/11     17/18     24/24     18/19     16/23     39/50   120/233
+   SF             8/8       7/7     11/11     24/24     23/26     17/22     39/51   102/210
+   KPD            1/1       5/5       6/6     16/16      9/11     12/20     18/25    59/108
+   KPF            8/8       8/9     15/17     12/16      9/12      9/16     10/19    38/100
+   RUCK           2/2       2/2       3/4       6/7       2/2      8/10     11/15     45/93
+
+   P(ever establishes), POOLED — the factor the amended par surface actually consumes:
+   pos            1-3       4-7      8-12     13-20     21-27     28-35     36-48     49-99
+   MID          1.000     0.996     0.886     0.929     0.838     0.814     0.657     0.468
+   SD           1.000     0.993     0.933     0.982     0.916     0.705     0.769     0.514
+   SF           1.000     0.991     0.958     0.982     0.877     0.758     0.756     0.486
+   KPD          1.000     0.990     0.945     0.976     0.837     0.642     0.718     0.541
+   KPF          1.000     0.939     0.894     0.822     0.799     0.626     0.590     0.389
+   RUCK         1.000     0.987     0.866     0.904     0.881     0.763     0.725     0.484
+   ALL-POS      48/48     63/64     73/80   120/128    96/112    93/128   148/208   479/990
+   P            1.000     0.984     0.912     0.938     0.857     0.727     0.712     0.484
+
+== LEVER B (UNCHANGED by the addendum — already career-level) — BPK/POOL/BASEPK_REG ==
+   Population: hist (ND/RD, 2003-2021, GRP pos) n=1974
+   denominator = every hist member in (pos, band) — each carries a #338 window of >=2 seasons
+   numerator   = of those, players who EVER recorded a season of >=6 games
+
+   RAW counts (est/n):
+   pos            1-3       4-7      8-12     13-20     21-27     28-35     36-48     49-99
+   MID          30/30     34/34     27/30     47/51     43/50     36/43     38/63   121/256
+   SD             4/4     13/13     18/19     30/30     21/23     23/31     45/57   134/260
+   SF             8/8       9/9     15/15     27/27     28/32     21/27     51/63   114/229
+   KPD            1/1       8/8       8/8     18/18     10/12     13/21     19/27    61/115
+   KPF          11/11      9/10     17/19     15/19      9/13     13/20     10/19    44/109
+   RUCK           3/3       2/2       3/4       6/7       2/3      8/10     14/18     46/93
+
+   P(ever establishes), RAW:
+   pos            1-3       4-7      8-12     13-20     21-27     28-35     36-48     49-99
+   MID          1.000     1.000     0.900     0.922     0.860     0.837     0.603     0.473
+   SD           1.000     1.000     0.947     1.000     0.913     0.742     0.789     0.515
+   SF           1.000     1.000     1.000     1.000     0.875     0.778     0.810     0.498
+   KPD          1.000     1.000     1.000     1.000     0.833     0.619     0.704     0.530
+   KPF          1.000     0.900     0.895     0.789     0.692     0.650     0.526     0.404
+   RUCK         1.000     1.000     0.750     0.857     0.667     0.800     0.778     0.495
+   ALL-POS      57/57     75/76     88/95   143/152   113/133   114/152   177/247  520/1062
+   P            1.000     0.987     0.926     0.941     0.850     0.750     0.717     0.490
+
+   P(ever establishes), POOLED n/(n+10) — the factor BPK actually consumes:
+   pos            1-3       4-7      8-12     13-20     21-27     28-35     36-48     49-99
+   MID          1.000     0.997     0.907     0.925     0.858     0.821     0.619     0.473
+   SD           1.000     0.994     0.940     0.985     0.894     0.744     0.779     0.514
+   SF           1.000     0.993     0.971     0.984     0.869     0.770     0.797     0.497
+   KPD          1.000     0.993     0.959     0.979     0.841     0.661     0.707     0.527
+   KPF          1.000     0.943     0.906     0.842     0.761     0.683     0.592     0.411
+   RUCK         1.000     0.989     0.876     0.906     0.807     0.775     0.756     0.494
+
+   stratum n range: min=1 median=20 max=260 ; strata with n<20: 24, n<10: 11
+
+== SUPERSEDED (first cut) — P(establishes AT tenure T) on the par cohort. KEPT FOR THE DECOMPOSITION ONLY ==
+   This is the factor the FIRST CUT fed the par surface. It is the NAMED DEFECT: at T1 it is small for
+   every band by construction (most first-year listees have not yet played six games — a fact about the
+   calendar, not the player), so it double-charged establishment risk the forward band already carries.
+
+  MID
+    band            T1      T2      T3      T4      T5      T6   |   P(EVER)
+    1-3          0.792   0.988   0.885   0.954   0.844   0.878   |    1.000
+      (n)        20/25   25/25   22/25   24/25   21/25   22/25
+    4-7          0.751   0.759   0.915   0.955   0.872   0.882   |    0.996
+      (n)        23/30   23/30   28/30   29/30   25/29   24/27
+    8-12         0.588   0.772   0.695   0.721   0.814   0.814   |    0.886
+      (n)        14/24   19/24   16/24   17/24   18/22   16/19
+    13-20        0.387   0.786   0.796   0.750   0.775   0.862   |    0.929
+      (n)        16/41   33/41   33/41   31/41   26/34   26/30
+    21-27        0.485   0.627   0.620   0.771   0.827   0.882   |    0.838
+      (n)        21/42   26/42   26/42   26/34   24/29   22/25
+    28-35        0.128   0.441   0.668   0.727   0.751   0.802   |    0.814
+      (n)         4/37   17/37   26/37   23/32   23/31   20/25
+    36-48        0.211   0.469   0.639   0.710   0.865   0.790   |    0.657
+      (n)        10/48   23/48   26/40   22/31   22/25   19/24
+    49-99        0.123   0.240   0.550   0.703   0.640   0.743   |    0.468
+      (n)       30/246  59/246  67/122  75/107   54/86   53/72
+
+  SD
+    band            T1      T2      T3      T4      T5      T6   |   P(EVER)
+    1-3          0.765   0.970   0.926   0.955   0.896   0.837   |    1.000
+      (n)          3/4     4/4     4/4     4/4     4/4     3/4
+    4-7          0.763   0.731   0.838   0.963   0.906   0.793   |    0.993
+      (n)         9/11    8/11    9/11   11/11   10/11    8/11
+    8-12         0.643   0.723   0.844   0.804   0.842   0.704   |    0.933
+      (n)        12/18   13/18   16/18   15/18   13/15   10/15
+    13-20        0.375   0.739   0.841   0.743   0.855   0.862   |    0.982
+      (n)         9/24   18/24   21/24   18/24   21/24   20/23
+    21-27        0.352   0.745   0.664   0.812   0.895   0.911   |    0.916
+      (n)         6/19   15/19   13/19   14/17   15/16   13/14
+    28-35        0.243   0.447   0.557   0.797   0.782   0.786   |    0.705
+      (n)         6/23   11/23   13/23   14/17   11/14   10/13
+    36-48        0.220   0.437   0.697   0.742   0.861   0.765   |    0.769
+      (n)        11/50   22/50   31/43   27/36   27/31   22/29
+    49-99        0.204   0.286   0.659   0.773   0.794   0.855   |    0.514
+      (n)       48/233  67/233  84/126  84/108   76/95   75/87
+
+  SF
+    band            T1      T2      T3      T4      T5      T6   |   P(EVER)
+    1-3          0.650   0.977   0.942   0.910   0.919   0.874   |    1.000
+      (n)          4/8     8/8     8/8     7/8     8/8     7/8
+    4-7          0.825   0.844   0.858   0.895   0.883   0.920   |    0.991
+      (n)          7/7     7/7     6/7     6/7     6/7     7/7
+    8-12         0.714   0.821   0.696   0.643   0.845   0.756   |    0.958
+      (n)         9/11   10/11    7/11    6/11     8/9     6/8
+    13-20        0.493   0.797   0.782   0.743   0.851   0.821   |    0.982
+      (n)        13/24   20/24   19/24   18/24   20/23   17/21
+    21-27        0.394   0.684   0.646   0.864   0.837   0.884   |    0.877
+      (n)        10/26   18/26   17/26   18/20   16/19   15/17
+    28-35        0.376   0.430   0.543   0.866   0.866   0.742   |    0.758
+      (n)        10/22   10/22   12/22   15/16   13/14    9/13
+    36-48        0.348   0.446   0.543   0.752   0.816   0.807   |    0.756
+      (n)        19/51   23/51   25/47   29/38   26/32   22/27
+    49-99        0.207   0.302   0.597   0.755   0.863   0.817   |    0.486
+      (n)       44/210  64/210  63/105   69/91   66/75   55/67
+
+  KPD
+    band            T1      T2      T3      T4      T5      T6   |   P(EVER)
+    1-3          0.792   0.962   0.905   0.943   0.867   0.884   |    1.000
+      (n)          1/1     1/1     1/1     1/1     1/1     1/1
+    4-7          0.535   0.690   0.840   0.881   0.934   0.843   |    0.990
+      (n)          1/5     3/5     4/5     4/5     5/5     4/5
+    8-12         0.562   0.703   0.727   0.781   0.816   0.851   |    0.945
+      (n)          3/6     4/6     4/6     5/6     5/6     6/6
+    13-20        0.413   0.697   0.753   0.779   0.849   0.894   |    0.976
+      (n)         7/16   11/16   12/16   13/16   14/16   13/14
+    21-27        0.343   0.600   0.583   0.760   0.829   0.924   |    0.837
+      (n)         3/11    6/11    6/11     5/7     5/6     5/5
+    28-35        0.234   0.325   0.446   0.701   0.699   0.813   |    0.642
+      (n)         5/20    6/20    8/20   10/15    9/14    9/11
+    36-48        0.177   0.435   0.558   0.694   0.796   0.846   |    0.718
+      (n)         4/25   11/25   13/24   13/19   14/18   15/17
+    49-99        0.140   0.267   0.548   0.685   0.757   0.834   |    0.541
+      (n)       15/108  29/108   36/66   40/59   38/50   38/45
+
+  KPF
+    band            T1      T2      T3      T4      T5      T6   |   P(EVER)
+    1-3          0.817   0.866   0.831   0.910   0.752   0.866   |    1.000
+      (n)          7/8     6/8     6/8     7/8     5/8     6/7
+    4-7          0.528   0.597   0.821   0.854   0.942   0.920   |    0.939
+      (n)          3/9     4/9     7/9     7/9     7/7     7/7
+    8-12         0.556   0.676   0.838   0.833   0.810   0.716   |    0.894
+      (n)         9/17   11/17   15/17   15/17   13/16   11/16
+    13-20        0.260   0.504   0.638   0.587   0.731   0.823   |    0.822
+      (n)         3/16    6/16    9/16    8/16    8/12    8/10
+    21-27        0.463   0.619   0.557   0.710   0.699   0.815   |    0.799
+      (n)         6/12    7/12    6/12    7/11     5/9     5/7
+    28-35        0.117   0.298   0.400   0.712   0.830   0.838   |    0.626
+      (n)         1/16    4/16    5/16     6/9     8/9     7/8
+    36-48        0.111   0.284   0.540   0.642   0.814   0.697   |    0.590
+      (n)         1/19    4/19    7/14    7/12    8/10     4/7
+    49-99        0.087   0.150   0.523   0.738   0.747   0.754   |    0.389
+      (n)        8/100  14/100   20/39   23/31   21/28   17/23
+
+  RUCK
+    band            T1      T2      T3      T4      T5      T6   |   P(EVER)
+    1-3          0.809   0.965   0.913   0.948   0.878   0.894   |    1.000
+      (n)          2/2     2/2     2/2     2/2     2/2     2/2
+    4-7          0.753   0.779   0.799   0.935   0.918   0.804   |    0.987
+      (n)          2/2     2/2     1/2     2/2     2/2     1/2
+    8-12         0.500   0.589   0.759   0.679   0.647   0.739   |    0.866
+      (n)          1/4     1/4     3/4     2/4     1/4     2/3
+    13-20        0.221   0.595   0.622   0.722   0.755   0.779   |    0.904
+      (n)          0/7     3/7     3/7     5/7     4/6     4/6
+    21-27        0.433   0.717   0.688   0.826   0.856   0.905   |    0.881
+      (n)          1/2     2/2     2/2     2/2     2/2     2/2
+    28-35        0.102   0.188   0.520   0.696   0.765   0.893   |    0.763
+      (n)         0/10    0/10    5/10     5/8     6/8     8/8
+    36-48        0.128   0.369   0.520   0.657   0.786   0.766   |    0.725
+      (n)         1/15    5/15    6/13    8/13    9/12    9/12
+    49-99        0.093   0.180   0.344   0.659   0.584   0.664   |    0.484
+      (n)         8/93   16/93   15/50   29/45   23/42   24/38
+
+== THE DEFECT IN ONE ROW — the T1 factor vs the amended career factor, all-position by band ==
+   band             1-3       4-7      8-12     13-20     21-27     28-35     36-48     49-99
+   T1 (old)       0.771     0.703     0.600     0.375     0.420     0.203     0.221     0.155
+   EVER (new)     1.000     0.984     0.912     0.938     0.857     0.727     0.712     0.484
+   ratio          1.297     1.400     1.521     2.500     2.043     3.577     3.217     3.131
+   -> the amended year-1 anchor is this many times the first cut's year-1 anchor, per band.
+
+== CROSS-CHECK: P(ever establishes) derived from per_entrant_338_confirmation.json (lever B) ==
+   per_entrant records with in_hist=True: 1969   (live hist n=1974)
+   strata differing live-vs-json: 14 ; max |dP| = 0.0435
+   (differences trace to the Q-B force-majeure slide the per_entrant lineage applies to the pick and
+    the engine does not; the LIVE derivation is the one the variant consumes, because BPK/POOL band
+    on MA.effpk. Population, not method.)
