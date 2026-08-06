@@ -163,9 +163,9 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
     release: rel,
   };
 
-  // POSITIVE — the populated production bundle carries exactly R15-R19
-  eq(prod.rounds, [15, 16, 17, 18, 19, 20], "production ui/data/movers.js carries R15-R20");
-  ok(prod.reports && Object.keys(prod.reports).length === 6, "production bundle carries six reports (one per round)");
+  // POSITIVE — the populated production bundle carries exactly R15-R21
+  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21], "production ui/data/movers.js carries R15-R21");
+  ok(prod.reports && Object.keys(prod.reports).length === 7, "production bundle carries seven reports (one per round)");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
@@ -198,14 +198,18 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // and is shown under the current one," which is exactly true.
   //
   // MEASURED, so the expectation is set on fact rather than hope (#271 A22 note 4 asked for this):
-  // the state does NOT self-resolve when R21 lands. `lineage()` requires every report's
-  // balanced_board_md5 to equal the bundle's frozen baseline anchor (06d8af60) AND, on the direct
-  // branch, the newest report's to equal the loaded app's (4939d740). Those cannot both hold while
-  // the two anchors disagree, and that disagreement is the three-way balanced_board_md5 item
-  // DOCKETED TO HYGIENE by #271 A17 — deliberately not fixed here. So this assertion is not waiting
-  // on R21; it states the post-adoption truth, and the docketed item stays loud below.
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
-     "bundle displays under the current app, bridged — no transition gate (post-adoption: history predates the live release)");
+  // at its writing the state did NOT self-resolve, because `lineage()` compared the bundle's frozen
+  // LINEAGE anchor (06d8af60) against the loaded app's balanced_board_md5, which fell through to the
+  // current board-ARTIFACT hash (4939d740) — apples to oranges, the three-way balanced_board_md5 item
+  // DOCKETED TO HYGIENE by #271 A17.
+  // RESOLVED 2026-08-06 (seam ruling, R21 apply): the R21 finalization now emits a `release` block in
+  // the board stamp (manifest_source: expected_boot + release_lineage), so curApp.balanced_board_md5
+  // carries the immutable present-lens anchor 06d8af60 — release_lineage.json declares it CONSTANT
+  // across weekly rounds — and lineage() compares like with like. The state is honestly `ok`: same
+  // present-lens lineage end to end. Era boundaries still surface via the owner-approved
+  // model_changes entries below, so nothing provenance-bearing is hidden. #271 A17 closed.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
+     "bundle displays under the current app, ok — same present-lens lineage (anchors compare like with like since the R21 stamp release block)");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -222,15 +226,16 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
                  release: relOwn };
   eq([core.lineage(prod, appOwn, trans).ok, core.lineage(prod, appOwn, trans).state], [true, "ok"],
      "NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state");
-  // THE HYGIENE ITEM, STATED LOUDLY rather than silently absorbed (#271 A17; not this wave's fix):
-  // the bundle's frozen baseline anchor and the loaded app's balanced_board_md5 disagree, which is
-  // WHY the state above is bridged rather than ok. If this ever starts failing, the hygiene item has
-  // been resolved and the assertion above should be revisited.
-  ok(prod.baseline.release_identity.balanced_board_md5 !== curApp.balanced_board_md5,
-     "DOCKETED (hygiene, #271 A17): bundle baseline anchor " +
+  // THE HYGIENE ITEM (#271 A17) — RETIRED 2026-08-06, exactly as its own comment instructed ("if
+  // this ever starts failing, the hygiene item has been resolved and the assertion above should be
+  // revisited"). It started failing at the R21 apply: the stamp's new `release` block carries the
+  // lineage anchor, the anchors now AGREE, and the disagreement this assertion kept loud no longer
+  // exists. The inverted assertion below pins the resolved state so a regression re-opens loudly.
+  ok(prod.baseline.release_identity.balanced_board_md5 === curApp.balanced_board_md5,
+     "RESOLVED (#271 A17, 2026-08-06): bundle baseline anchor " +
      String(prod.baseline.release_identity.balanced_board_md5).slice(0, 8) +
-     " still disagrees with the loaded app's " + String(curApp.balanced_board_md5).slice(0, 8) +
-     " — the reason the state is bridged, not ok");
+     " now agrees with the loaded app's " + String(curApp.balanced_board_md5).slice(0, 8) +
+     " — the reason the state is ok, not bridged");
   ok(core.lineage(prod, curApp, null).ok, "the same bundle WITHOUT a transition also displays (gate removed)");
   // the app has ADVANCED PAST the transition destination — that record now describes a historical
   // boundary (R19 -> the restructure board fa172ac1), not the current release.
@@ -248,13 +253,17 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // out-of-round boundary is anchored to an owner-approved record. That is the property era succession
   // exists to deliver, and it grows correctly with the register instead of pinning a number.
   var mc = prod.model_changes || [];
-  ok(mc.length === 2, "two out-of-round boundaries are declared (the restructure and the 30/7 rederivation)  (got " + mc.length + ")");
+  ok(mc.length === 3, "three out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
   ok(mc[1].between[0] === "20" && mc[1].between[1] === "rederivation-30-7" &&
      mc[1].owner_approved_record === true,
      "model change declared between R20 and the 30/7 rederivation, anchored to the owner-approved record");
+  ok(mc[2].between[0] === "rederivation-30-7" && mc[2].between[1] === "redesign-adoption-6-8" &&
+     mc[2].owner_approved_record === true &&
+     String(mc[2].owner_ruling_id) === "ADOPTION_2026-08-06_review_era",
+     "model change declared between the 30/7 rederivation and the 6/8 adoption, anchored to the owner-approved adoption record");
   // The 30/7 boundary names the ruling that approved it. Until #274 this read `false`/null — the
   // declared plumbing lag of #271 A22 item 3, cleared by reading the whole register.
   eq(mc[1].owner_ruling_id, ["ITEM_271_Addendum_17"],
