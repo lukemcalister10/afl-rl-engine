@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v64 · supervisor pen · 2026-08-05, register v573
+# CURRENT STATE — the incoming-seat read · v65 · supervisor pen · 2026-08-06, register v574
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,94 +128,82 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v64 · supervisor pen · 2026-08-05, register v573 · replaced wholesale at the SECOND-ERA PEN — the
-landing AND the store act are MERGED; the corrected store is the official state; the curve is
-re-closed on it; the seam rotates at this pen; the road left is: #326 → the review set → ADOPTION)
+(v65 · supervisor pen · 2026-08-06, register v574 · replaced wholesale at the #326 LANDING PEN — the
+per-division pool entry anchors are LANDED; the board identity moved; the road left is: the review
+set → ADOPTION)
 
-## THE ERA: THE REVIEW ROAD. Everything is landed; nothing is adopted.
-- **MERGED MAIN = `8915b3a` or a descendant.** The official state: store `f1e8c9fed35462536d00add604f69a3f`
-  (the #323 corrections in full — the old pin `81d24704` is RETIRED) · ruled curve payload
-  **`df766dff94657940e2a892e91da5a6e2`** (the re-closure, owner word "A") with pool companion 237.2 ·
-  surface `d594dc03…` · entrant seal `c9e7491b` at total 62,931 · G-Y0 0.033% (n=1,326, 2.000% HARD,
-  no exception behind it) · selftest 97/0.
-- **The closure HOLDS on the final pair** (confirmation derivation: 15 picks differ, max 1, zero over
-  the ±1 tolerance). REVERSAL CONDITION STANDING, re-anchored to `df766dff…`: any future derivation
-  pass moving any pick by MORE than 1 board point re-opens the closure and returns it to the owner.
-- **THE APP THE LEAGUE SEES IS UNCHANGED.** Adoption is the owner's separate click, after his review
-  set. The release-transition register appends AT ADOPTION ONLY (seam records ruling, #328 thread).
+## THE ERA: THE REVIEW ROAD. Everything is landed — including #326; nothing is adopted.
+- **MERGED MAIN = the v574 landing commit or a descendant.** The official state: store
+  `f1e8c9fed35462536d00add604f69a3f` (unchanged) · ruled curve payload `df766dff94657940e2a892e91da5a6e2`
+  (UNMOVED by #326; the artifact FILE md5 moved to `988135ef` for the pool_levels block) · surface
+  `d594dc03…` (LOADED, never refit — proven) · **board `864b6726`** (was `2b7c1a00`; 177 pool movers,
+  zero non-pool field changes) · engine head `9f258a3b` (was `15525b03`) · contract sha `8cc7d897` ·
+  selftest **145/0** (97 pre-existing + 48 new #326 checks, each proven able to fail both directions).
+- **#326 IS LANDED (2026-08-06, owner words "Keep as ruled. Land it.").** The N43 signed levels price
+  pool entrants AT ENTRY the way the pick curve prices national draftees: the entry anchor feeds the
+  year-zero floor (scope widened from ND-only to engine-pool, NOT gated on _pickless) and the sit-out/
+  thin-record blend; ladder currency at the ruck-cap sites, ×1.0524 at the engine-value sites; the old
+  single-pool-value machinery is superseded on the entry path. Kept deliberately (byte-identical, the
+  one place old machinery still fires, reversal = one owner sentence): staleness cap, mediocre cap,
+  delisted remnant. The veteran-floor reach stands AS RULED (26 remnant-value movers, Rampe 1→12 class).
+  The inherited club_curve_provenance red is structurally resolved. Full trail: issue #326 addenda 5–6 +
+  the fifth audit pass; evidence `docs/evidence/act_326_2026-08-06/` and the halted first rehearsal
+  `docs/evidence/rehearsal_326_2026-08-05/`.
+- **THE APP THE LEAGUE SEES IS UNCHANGED** (adoption = the owner's separate click). NOTE for the next
+  seat: the repo's UI bundles (`ui/data/board_view_*.js`) already carry the landed board — they were
+  regenerated at #328 step 6b and again by #326; whether the deployed app shows them depends on the
+  owner's deploy step, not this repo.
 
 ## WHAT FIRES NEXT, IN ORDER
-1. **#326 — the N43 per-division pool levels** (AUDIT-PASSED after 4 passes; fires on the OWNER'S
-   SLOT WORD — before adoption is the seam recommendation). It also structurally resolves the
-   inherited `club_curve_provenance` red (the single pool level above curve[64]=185 is the exact
-   tension the signed design removes: only ND-65+ is capped).
-2. **The review set to the owner:** the per-stage before/after (curve+surface stage committed at the
-   landing evidence; store + re-closure stages committed at the store-act evidence; assemble the
-   owner-facing view) · the honest backtest book (directive to author; owner's word: busts stay in
-   every denominator, biases printed beside results) · the no-arbitrage tables (measured, delivered
-   in-channel; the instrument is COMMITTED at `docs/evidence/noarb_2026-08-05/` — re-run it on
-   final bytes per its README) · **the RE-ANCHORING DESIGN MEMO** (the measured 1.57× hump vs the
-   owner's no-arbitrage law; his convexity mechanism endorsed; candidate fixes with this same table
-   recomputed under each — the design conversation of the review era).
-3. **ADOPTION (owner click) → round-21 ingest + movers page.**
-- Small queued repairs, either-order: live-scoring `test_weekly_updater` (scratch-fixture drift,
-  proven inherited) · the first-failure masking on Final Integration (main hid a red stack).
+1. **The review set to the owner** (in progress this era): the before/after board review EXISTS as an
+   owner-facing page (published artifact "Board review — before and after"; data + generator in the
+   session scratchpad, rebuildable from committed boards): raw before/after decomposed into
+   engine+store catch-up (−52,528, NOT the redesign) · curve+surface swap (+954, like-for-like on the
+   committed B0 intermediate `31f7108a`) · store corrections (+638) · re-closure (+10,258) · now the
+   #326 pool slice (177 movers). Remaining: the honest backtest book (directive to author; busts stay
+   in every denominator) · the no-arbitrage tables re-run on final bytes (instrument committed at
+   `docs/evidence/noarb_2026-08-05/`) · the re-anchoring design memo (the 1.57× hump).
+2. **ADOPTION (owner click) → round-21 ingest + movers page.** Release-transition register appends at
+   adoption only.
+- Small queued repairs, any convenient act: live-scoring `test_weekly_updater` (inherited) ·
+  first-failure masking on Final Integration · `ship_gates_check.py` gamma env conflict at tip
+  (pre-existing; its re-scoped B5 block is correct and was exercised directly) · `ui/tests/
+  extract_seam.test.py` still asserts the pre-reclosure entrant seal `a17aafed` · RECLOSURE.md says
+  "100 PASS" where the committed evidence shows 97 · the committed attribution instrument is scoped to
+  intra-engine acts (halts honestly when the engine head moves — by design, recorded).
 
-## TRACK B — CUTTABLE NOW
-The corrected store IS main's store, so the blind-build package (recipe · constants · store) cuts
-from real main whenever the owner wants it. FROZEN MODELS WITHHELD (owner word, #322 5188203865).
-Judged by OUTPUTS ONLY against the landed board.
+## TRACK B — CUTTABLE NOW (unchanged from v64; frozen models withheld, judged by outputs only)
 
 ## THE STANDING CAPTIONS EVERY NUMBER CARRIES
-Wide feed-back channel (55.78%/44.22%) · the engine contributes zero to teaching-value movement ·
-wholesale-belief 6.18% of teaching value (the −0.63% move is a floor) · completion optimism
-+4.7–8.4% beside anything it touches · the no-arbitrage hump (year-0 → 1.57× by years 4–5, the 2020
-class excepted) is MEASURED and awaits the owner's design word — no price moves because of it yet.
+As v64 (wide feed-back channel 55.78%/44.22% · completion optimism +4.7–8.4% — now printed beside the
+MSD level everywhere it shows · the no-arbitrage 1.57× hump measured, awaiting the owner's design word)
+PLUS: γ is the SCAR(0.85, concave)-vs-VOR(1.0, linear) compression exponent on an internal function —
+NOT a future-season discount, and NOT the shipped board's denomination in either era (owner-corrected
+2026-08-05; both eras' exporters price from the engine's gated ev()).
 
-## THE ENVIRONMENT HAZARD (live, managed)
-Model content-filter false positives on the project's OLD vocabulary paused three seats this era;
-every recovery worked (model-switch → continue; or a fresh seat from the pushed record). PLAIN
-VOCABULARY IS LAW for all new text (charter amendment 2026-08-05); the primer's glossary maps
-old → new; never echo file contents into seat chat; keep seat replies short.
+## THE ENVIRONMENT HAZARD (unchanged from v64: plain vocabulary is law; never echo file contents into
+seat chat; recovery from the pushed record works)
 
-## N35 — THE BOX DISCIPLINE (unchanged, and it caught everything this era)
-Classify before ANY fit figure by REPRODUCING recorded bytes (the recipes in ENVIRONMENT CARRIES);
-check uptime EVERY time; a restart voids the classification. This era's record: five distinct
-old-path byte patterns across boxes with identical CPU labels; the redesigned fit path reproduced
-its surfaces on every fit-class box AND the value path reproduced the board byte-identically on a
-DIFFERENT ARCHITECTURE. Labels classify nothing; bytes classify.
+## N35 — THE BOX DISCIPLINE (unchanged). This era's box: value-path classified by byte-reproducing the
+board twice (2b7c1a00 pre-act, 864b6726 post-act). No fits were run; fit-class classification not needed.
 
 ## OWNER ACTS OUTSTANDING
-The #326 slot word (before/after adoption) · the review set → ADOPTION click → round-21 · the two
-queued small repairs can ride any convenient act · N12 and branch-delete holds as before.
+The review set → ADOPTION click → round-21 · the queued small repairs can ride any act · N12 and
+branch-delete holds as before.
 
-## RUNNING THIS SEAT WELL
-Charter C1–C3, M1–M3, the two rules (intent before mechanics · every number names its quantity),
-the owner's binding words (plain English, short sentences, direct answers first, ~one screen), the
-pre-fire audit loop for every directive (10 real faults caught in one day — never skip it), and the
-owner's casual questions are load-bearing QC (two of this era's findings came from them).
-**SUBAGENTS ON OPUS ONLY — never Fable, never an inherited default** (owner word; charter amendment
-2026-08-05 third block; a prior session burned ~1.7M Fable tokens learning this). **Context economy:
-the #306 and #328 threads are enormous — read ONLY the comment ids this file names, never a thread
-front to back; the register only by pointer; evidence trees only the files a task touches.**
+## RUNNING THIS SEAT WELL (unchanged from v64 — Opus-only subagents; threads by comment id only;
+the register by pointer; intent before mechanics; every number names its quantity. This era's lesson,
+twice over: a four-pass-audited premise was refuted by the first build that tested it — audits read
+code, rehearsals measure it; and the owner's memory beat the derived caption on γ within minutes.)
 
 ## ENVIRONMENT CARRIES
-As v63 (RL_VENV five-pin venv · setup_env.sh · the N32 payload recipe (string keys, int(round),
-sort_keys, md5) · N33 re-stamps · strictly serial fits · PEN MECHANICS: stamp near char 88 SAME
-LENGTH · insert before the ` · SEAM v540 (2026-07-29)` marker · line count 8,438 · growth == entry
-length · one new stamp · docs-only · commit `supervisor-seat <supervisor@seam.local>` · branch → PR
-→ rebase-merge → re-verify main by CONTENT), with the era's identities REPLACED by the MERGED MAIN
-block above. The derivation machinery: the #279 panel from `9914c4d` + the CURRENT re-pinned
-harness from main + `pooled_numeraire.py MATRIX PANEL OUTDIR`. The fit recipes: old path reproduces
-`fb9efdec` from the pure pass-0 snapshot `13b71c26` (fit-class test); the live path's current
-surface is `d594dc03` on the merged pair. The no-arbitrage instrument is COMMITTED with outputs
-and re-run recipe at `docs/evidence/noarb_2026-08-05/` — never rebuild it; its README says how
-to re-run on final bytes.
+As v64 with these deltas: board `864b6726` · engine head `9f258a3b` · contract sha `8cc7d897` · curve
+FILE md5 `988135ef` (payload `df766dff` unmoved) · selftest count 145/0 · register line count 8,438 ·
+the #326 build/verify recipe in `docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md`.
 
 ## THE INCOMING SEAT'S FIRST TASKS
-0. Onboard per the charter order (charter → primer IN FULL → this file IN FULL → register by
-   pointer → live verify → read-back and HOLD). Plain vocabulary in everything.
-1. Verify the MERGED MAIN block with your own commands; N35-classify your box.
-2. Ask the owner for the #326 slot word; fire #326 (its audit trail is complete on the issue).
-3. Assemble the review set (the four items above), verifying each number from committed bytes.
-4. Present for ADOPTION; the release-transition register appends there, with the owner's word.
+0. Onboard per the charter order. Plain vocabulary in everything.
+1. Verify the MERGED MAIN block above with your own commands (board, payload, selftest count).
+2. Assemble the remaining review set items (backtest book directive → pre-fire audit; no-arbitrage
+   re-run on final bytes; re-anchoring memo) and present for ADOPTION.
+3. At adoption: release-transition register appends, with the owner's word; then round-21 ingest.
