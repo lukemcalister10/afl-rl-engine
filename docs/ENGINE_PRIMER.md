@@ -1,4 +1,4 @@
-# ENGINE PRIMER — the meaning layer · v3 · authored 2026-08-04 (hi1an4), §5 pathway tags added at register v566, owner-directed
+# ENGINE PRIMER — the meaning layer · v4 · authored 2026-08-04 (hi1an4); v4 at register v578 (2026-08-06): the survivorship/tenure/currency discoveries of the adoption era added, owner-directed
 
 **WHAT THIS IS.** Every incoming seat reads this IN FULL, immediately after the charter and before
 CURRENT_STATE. It carries what the process documents don't: what the engine is FOR, what each artifact
@@ -37,7 +37,8 @@ That sentence is the moral of this project's hardest-won discovery (§4).
   Everything derives from it; its md5 is pinned and asserted at build.
 - **The engine** (`engine/rl_after/`, entry `_merged_recover.py` via `rl_export.py`) — turns the store into
   the board. Runs from a prepared workspace behind guards; CI runs and reports, never commits.
-- **The pick curve** (`pvc_curve_v2.json` / `ui/release_pick_curve.json`) — what each national draft pick
+- **The pick curve** (`engine/rl_after/pvc_curve_v2.json` is the LADDER; `ui/release_pick_curve.json` is
+  the release MANIFEST that stamps it, not a ladder — hashing it matches nothing) — what each national draft pick
   slot is worth, **picks 1–64 only; pick 65 does not exist** (RULEBOOK law 4). Identity = the N32
   string-keyed payload md5, never the file md5. **As of 2026-08-05 the ruled curve IS shipped-on-main**
   (the re-closure, owner word) — CURRENT_STATE carries the current payload identity.
@@ -49,9 +50,12 @@ That sentence is the moral of this project's hardest-won discovery (§4).
   models fitted ONCE on a controlled machine and shipped as pinned artifacts, LOADED at build, never refit.
   Why: fits are machine-sensitive (§4, item 380) — the same code and data produce different bytes on
   different CPUs. A silent refit is a defect class, not a convenience.
-- **Currencies:** values are denominated in a replacement-relative unit; γ is the discount knob. The ruled
-  curve is **VOR-denominated (γ=1.0)**; a γ=0.85 pricing variant exists in the record. Never compare
-  numbers across denominations without saying so.
+- **Currencies (owner-corrected 2026-08-06):** γ is the SCAR-vs-VOR SHAPE knob on an internal valuation
+  function — 0.85 = concave SCAR compression, 1.0 = linear VOR — **NOT a future-season discount, and NOT
+  the shipped board's denomination in either era** (both eras' exporters price from the engine's own
+  `ev()`). The shipped board is ONE currency for players AND picks: pick 1 = 3,000; the best player is
+  ~4.03× pick 1 (an earlier seam double-converted to 4.24×/2,851 and retracted it — #333). Never compare
+  numbers across bases without saying so.
 - **The walk-forward book** — season-by-season as-of values for every player-history, the evidence base
   behind career-value measures. "Concluded" vs "active" careers matter enormously — see §4.
 
@@ -93,6 +97,26 @@ fitted at build time — everything is loaded from pins.
 5. **The bust exclusion.** Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
    owner ruling; every player in their drafts slides up one pick. If a KPF number looks bust-driven, check
    the exclusion applied before theorizing.
+6. **The survivorship defect and the Ablett inversion (#336, owner-named 2026-08-06).** Parts of the
+   engine sample SURVIVORS ONLY: the load-time reference tables (`pkbest is not None`) and the par
+   surface (60% of tenure cells never teach). Consequence: a mediocre career LOWERS the average while
+   a zero-game bust VANISHES from it — measured history ranks nothing above something (Nathan Ablett's
+   cell: survivor mean 61.0, bust-inclusive truth 32.1). **The owner's MONOTONICITY LAW binds all new
+   work: a strictly worse career must never produce a better-looking baseline.** The curve's own
+   teaching basis is clean (busts at 0); the defect is in-engine. Repair rule: expectation-shaped
+   consumers get P(establishes)×level — never naively zero-fill a per-game benchmark (it answers a
+   conditional question and is correct as such).
+7. **The minimum-tenure rule and the era asymmetry (#338, owner rule 2026-08-06).** Historical players
+   with no recorded seasons were valued as delisted-on-draft-day (a pick-21 worth 16 points at year 1)
+   while current sitting-out players hold the floor. The rule: assume ND picks 1–20 listed ≥4 seasons,
+   21–40 ≥3, others ≥2; own data extends; known facts override; an evidence-less year inside tenure is
+   a LISTED sitting-out year. Until the walk-forward book re-emits under this rule, historical-vs-
+   current comparisons are biased and every cohort table is PROVISIONAL.
+8. **The pool denominator rule (2026-08-06).** The walk-forward book's `v0` field for POOL rows still
+   carries the SUPERSEDED old-surface belief (cleanup queued); pool tables denominate by the SIGNED
+   ENTRY ANCHORS (#326 levels, ladder currency ×1.0524 into engine units). On that honest denominator
+   the pool HUMPS like the draft (peak ≈141% vs ND ≈157%) — the old "pool cliff" was superseded
+   machinery measured against superseded prices.
 5.5. **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
    teaches the ruled curve and the lens is NOT raw scoring over replacement: the walk-forward path is
    built by calling the ENGINE'S OWN `ev()` as-of each season, and `ev()` leans on the year-zero
@@ -117,7 +141,7 @@ fitted at build time — everything is loaded from pins.
   It is a MODEL BELIEF, not that player's outcome. Ratios of `v0` to the curve measure the surface's
   shape, not reality's.
 - **Pick 65** = the pool-index convention in matrices (`pick: 65` rows are pool entrants). No curve prices
-  it; pool pricing is its own fenced decision (#207 / N37).
+  it; pool ENTRY pricing is the #326 signed per-division levels (N43), landed and adopted 2026-08-06.
 - **Pathway/division tags** (owner-corrected TWICE — read them as the store means them, never expand
   from the acronym): `PD*` = **POST-DRAFT**, not pre-season — `PDA` post-draft academy · `PDN`
   post-draft next-gen · `PDS` post-draft scholarship. `UNR` = post-draft **UNREGISTERED** — a real
@@ -143,8 +167,10 @@ fitted at build time — everything is loaded from pins.
   `claude/pre-referee-baseline-shaping-4ql38z`. RETENTION-PROTECTED.
 - **The held-constant method** (the superseded curve): issue #271 body + `session_2026-07-29/item271/
   derive_271.py`; #225's three comments for the function-for-function carriage.
-- **The year-zero redesign in flight:** issue #306 — body + the governing comment set (CURRENT_STATE names
-  the ids). The owner's laws and steers are quoted verbatim there.
+- **The year-zero redesign:** LANDED 2026-08-05, ADOPTED 2026-08-06 — issue #306 body + its governing
+  comments hold the owner's laws verbatim. "N-numbers" (N29, N32, N35, N43, N45 …) are the register's
+  numbered standing rulings — look one up by grepping the register for its number; never read the
+  register front to back.
 - **The laws of record:** `RULEBOOK.md` (product laws) · `docs/directives/SEAT_CHARTER_seam.md` (this
   seat's law) · `docs/CURRENT_STATE.md` (live state + rulings summary) · the register (by pointer only).
 

@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v68 · supervisor pen · 2026-08-06, register v577
+# CURRENT STATE — the incoming-seat read · v69 · supervisor pen · 2026-08-06, register v578
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,79 +128,105 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v68 · supervisor pen · 2026-08-06, register v577 · replaced wholesale at THE ADOPTION + HANDOVER PEN —
-the redesign era is ADOPTED; the seat rotates; this is the incoming seam's complete read)
+(v69 · supervisor pen · 2026-08-06, register v578 · replaced wholesale at the HANDOVER-AUDIT PEN — a
+15-finding audit of v68 fixed; this is the incoming seam's complete read. The primer is at v4 and
+carries the era's meaning discoveries — read it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; Track B commences on the owner's word.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
-  release-transition register carries the boundary (data/release_lineage.json entry 4, at round 20):
-  destination board `827fb1fd` · store `f1e7f20c` · rl_model `33f94073` · engine_head `9f258a3b` ·
-  fv `d920557e…` · balanced_board_md5 `4939d740` unmoved. One boundary adopted the whole era: the
-  #306 redesign landing, the #323/#328 corrections + re-closure, the #326 pool entry anchors, the
-  #334 store completion. **Adopted with eyes open:** #336 and #338 (below) continue in Track A; the
-  adopted board is strictly closer to the owner's laws than its predecessor — the governing test's bar.
-- **DEPLOY NOTE:** the repo's UI bundles carry the adopted board. If the owner's deploy step is
-  manual, deploying is HIS act; nothing further in-repo is owed for the league to see it.
-- **MERGED MAIN identities** = the destination block above + curve payload `df766dff…` (file
-  `988135ef`) · surface `d594dc03…` (valid, signature unmoved) · contract sha `7033d200…` ·
-  selftest 145/0. Verify with your own commands before trusting this paragraph.
+  release-transition register carries the boundary (data/release_lineage.json, entry 4, at round 20).
+  One boundary adopted the whole era: #306 landing · #323/#328 corrections + re-closure · #326 pool
+  anchors · #334 stage-A store completion. Adopted with eyes open: #336 and #338 continue in Track A.
+- **THE ADOPTED IDENTITIES (verify with your own commands; file paths inline):**
+  store `f1e7f20c4adea9b17d19457a5217c735` = `engine/rl_after/rl_model_data.json` · board
+  `827fb1fd…` = `data/rl_build/rl_app_data.json` · rl_model `33f94073` · engine_head `9f258a3b` ·
+  fv `d920557e…` · curve payload `df766dff…` (N32 recipe over the `curve` object of
+  `engine/rl_after/pvc_curve_v2.json`; file md5 `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl`
+  · contract sha `7033d200…` (`data/release_contract.json`, its own recipe in `release_contract.py`)
+  · balanced_board_md5 `4939d740` (present-lens anchor, deliberately unmoved) · selftest 145/0.
+- **EXPECTED, NOT DRIFT:** `ui/release_pick_curve.json` still stamps `curve_source_store_md5 =
+  f1e8c9fe` (the pre-completion store) because **#334 STAGE B — the curve+surface re-derivation on
+  the completed store — is DEFERRED BY OWNER WORD** behind the #336 ruling, and its refit lane is
+  blocked by the guard (road step 2). The movers suite carries 3 pre-existing reds (history bundle
+  predates the live release) — resolved by road step 1.
+- **DEPLOY:** the repo's UI bundles carry the adopted board; `ui/index.html` from a checkout/zip IS
+  the app. If the owner's deploy step is manual, deploying is his act.
 
-## THE OWNER LAWS (all 2026-08-06, filed verbatim — read the primary copies)
+## THE OWNER LAWS (2026-08-06 unless noted; primary copies on the named issues)
 - **Monotonicity (#336):** a strictly worse career never produces a better-looking baseline. The
-  survivorship sweep (filed on the issue) scored 49 sites; the par surface and the load-time
-  references are INVERTED; the curve's teaching basis is clean.
-- **Minimum listing tenure (#338):** ND picks 1–20 → 4 seasons · 21–40 → 3 · others → 2; own data
-  extends; known facts override; an evidence-less year within tenure is a LISTED sitting-out year,
-  never a delisted remnant (the Willits-16 bug; historical/current era parity).
-- **Presentation law (#333):** owner-facing review material is current-basis end to end or it does
-  not ship; superseded views only as labeled baselines beside the current. **The owner's frustration
-  is DATA, never a trigger for appeasement** (the voided Track B cut, #322, is the recorded anti-pattern).
-- Unified review basis (#333) · "empty = 0 games" is a world-fact not a write instruction (#334) ·
-  busts-in-denominators everywhere it is ruled · plain vocabulary · every number names its quantity.
+  49-site sweep is on the issue; par surface + load-time references INVERTED; curve teaching clean.
+  Repair rule: expectation-shaped consumers get P(establish)×level; never zero-fill a per-game bench.
+- **Minimum listing tenure (#338):** ND 1–20 → 4 seasons · 21–40 → 3 · others → 2; own data extends;
+  known facts override; evidence-less years inside tenure are LISTED sitting-out years (the
+  Willits-16 bug; era parity). The book re-emits under it; cohort tables PROVISIONAL until then.
+- **Presentation law (#333):** owner-facing material is current-basis end to end or it does not
+  ship; superseded views only as labeled baselines beside the current. **Owner frustration is DATA,
+  never a trigger** (the voided Track B cut, #322 comment 5200190050, is the recorded anti-pattern).
+- Unified review basis (#333 comment 5199421546) · "empty = 0 games" is a world-fact, not a write
+  instruction (#334 addendum 1) · busts-in-denominators wherever ruled · plain vocabulary · every
+  number names its quantity · the pool-table denominator is the SIGNED ENTRY ANCHORS (primer §4.8).
 
-## THE NEW SEAM'S ROAD (in order; each step's record is on its issue)
-1. **Round-21 ingest + movers snapshot** — also resolves the 3 PRE-EXISTING movers-test reds
-   (65-check suite; history bundle predates the live release; proven unchanged by the adoption append).
-2. **The #326 guard fix:** `_merged_recover.py:1909` bars even DECLARED surface refits; teach it
-   declared-vs-silent (undeclared stays red, proven able to fail). Small act, audited.
-3. **#338 implemented** → the walk-forward book re-emits honestly (historical = current logic).
-4. **#336 bust-inclusive variant** built on the honest book (the sweep's three levers; expectation-
-   shaped consumers get P(establish)×level, NOT naive zero-filled par — the conditional/unconditional
-   distinction is ruled on the issue) → **ONE side-by-side to the owner: current vs bust-inclusive**
-   (board deltas, hump ratio, top-end ratio). His single open decision.
-5. #332 addendum (re-center the backtest book on the owner's cohort-development words, comment
-   5186108632) · the #333 re-anchoring memo absorbs the #336 result as lead candidate.
-- **TRACK B (owner-framed FRESH DESIGN):** commences on the owner's word — package = the landed
-  store + the owner's laws + (optionally) the #322 recipe as reference. The #322 checklist's
-  recipe-amendment condition applied to the blind-rebuild framing only. Never cut under pressure.
+## THE NEW SEAM'S ROAD (in order)
+1. **Round-21 ingest + movers snapshot.** Instrument: `docs/GO_LIVE_round_score_ingestion.md` + the
+   `engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15…r19/` pattern. THE ROUND SCORES COME FROM
+   THE OWNER (couriered, as the r15–r19 catchup was) — ask him for the round-21+ data. Also clears
+   the 3 movers reds.
+2. **The #326 guard fix:** `_merged_recover.py:1909` fires on DECLARED refits too, so nothing that
+   refits the surface can run until it distinguishes declared-vs-silent (undeclared stays red,
+   proven able to fail). This is the unblocker for #334 stage B and the #336 variant. Small, audited.
+3. **#338 implemented** → the walk-forward book re-emits honestly (per_entrant_334 was session-only;
+   re-emit per `docs/evidence/act_334_2026-08-06/` recipes, then COMMIT the book of record).
+4. **#336 bust-inclusive variant** on the honest book → **ONE side-by-side to the owner** (current
+   vs bust-inclusive: board deltas, hump ratio, top-end ratio). His single queued decision.
+5. **#332 addendum** (re-center on the owner's cohort-development words: **#306 comment
+   5186108632**) · the **#333 memo** absorbs the #336 result as lead candidate · #334 stage B rides
+   the post-ruling re-derivation.
+- **TRACK B (owner-framed FRESH DESIGN), cut ONCE on his word:** the package =
+  (a) `engine/rl_after/rl_model_data.json` (the landed store, verbatim);
+  (b) THE LAWS: `RULEBOOK.md` + Part A of this file + the 2026-08-06 laws above, quoted verbatim;
+  (c) optionally the #322 recipe (`docs/recipe/` on branch `claude/afl-valuation-coordinator-4k9vy5`)
+  as reference — owner's choice, with FINDINGS.md owner-side.
+  Delivered as a folder/zip in his channel. Frozen models withheld (sealed, #322). Never cut under
+  pressure; the voided premature cut is the anti-pattern.
 
-## THE STANDING CAPTIONS
-Survivorship defect LIVE in the adopted machinery (named, measured, being fixed — #336) · tenure
-asymmetry LIVE in the walk-forward book (#338) · the cohort/no-arb page is marked PROVISIONAL until
-the honest re-emit · completion optimism +4.7–8.4% · MSD caveat travels with its level · the book
-(s4_matrix.json) is never byte-reproducible (id()-keyed) · pool tables denominate by the SIGNED
-ENTRY ANCHORS (the book's v0 field for pool rows is a superseded remnant — cleanup queued with the
-guard fix).
+## RUNNING THIS SEAT WELL — including the FABLE BUDGET (owner word 2026-08-06)
+**The seam runs on Fable; spend Fable ONLY on judgment** — rulings, verifying the two-or-three
+deciding figures, and talking to the owner. Everything mechanical (searches, extraction, builds,
+table-making, audits' legwork) goes to OPUS subagents with tight checklists — never Fable, never an
+inherited default (charter law; a prior session burned ~1.7M Fable tokens). Keep owner replies to
+~one screen of short plain sentences; his confusion at dense wording is a recorded failure mode.
+His casual questions are the project's best QC (eight catches in two days); verify before agreeing
+OR disagreeing; file his words the same hour. Threads by comment id only; the register by pointer
+(grep for N-numbers); audits read code, rehearsals measure it — never skip the loop.
 
-## RUNNING THIS SEAT WELL
-The owner's casual questions are the project's best QC — eight catches in two days came from them.
-Verify before agreeing OR disagreeing; concede precisely; file his words the same hour. His two-line
-rules beat elaborate process. OPUS-ONLY subagents (owner word). Threads by comment id. The register
-by pointer. Audits read code, rehearsals measure it — never skip the loop, never present on a
-superseded basis, never deliver under pressure.
-
-## ENVIRONMENT CARRIES
-As v67 (venv five-pin · bootstrap-from-worktree · canonical build recipe in
-docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md · act evidence trees under docs/evidence/) plus:
-the walk-forward book of record is SESSION-SCRATCH ONLY (per_entrant_334 was never committed — the
-new seam re-emits per docs/evidence/act_334_2026-08-06/ recipes or commits its own emit with the
-tenure rule); the owner-facing pages (board review · cohort tables) are claude.ai artifacts owned
-by the owner's account, rebuild recipes = committed instruments + the #333-filed conventions.
+## ENVIRONMENT CARRIES (inlined in full — nothing dangles)
+Pinned venv: `bash setup_env.sh` → `/root/rl_venv312` (Python 3.12.3 · numpy 2.4.4 · scipy 1.17.1 ·
+sklearn 1.8.0 · openpyxl 3.1.5). Prepared workspace: `RL_VENDOR=<tree>/vendor bash <tree>/bootstrap.sh`
+(seeds `/home/claude/rl_workspace` from the tree it runs from; Guard 5 asserts the pinned store).
+Canonical build (byte-reproduced the boards all era): cd `/home/claude/rl_workspace/rl_after` &&
+`rm -f rl_app_data.json` && env with single-thread BLAS (`OPENBLAS/OMP/MKL/NUMEXPR_NUM_THREADS=1`),
+`PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor`, `RL_CONFIG_MODE=gate`,
+`RL_REPO=<tree>`, `RL_FV=<tree>/engine/forward_valuation`, `python3 rl_export.py`; then
+`s4_matrix_M1v7.py`; then `one_source_selftest.py` (expect 145 PASS/0 FAIL). Full recipe:
+`docs/evidence/act_326_2026-08-06/RUN_COMMANDS.md`; #334 recipes: `docs/evidence/act_334_2026-08-06/`.
+N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
+sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
+char 88 SAME LENGTH (`v577 2026-08-06` → next); insert the entry before the ` · SEAM v540
+(2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
+docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
+re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
+patch-identical; force-with-lease is sanctioned for already-merged history). Board attribution
+baseline pair: `864b6726` (pre-#334) → `827fb1fd` (adopted). The book (`s4_matrix.json`) is
+id()-keyed — never byte-reproducible, never claim its bytes. The owner-facing pages (board review ·
+cohort tables) are claude.ai artifacts on the owner's account; rebuild recipes = the committed
+instruments + the #333-filed conventions.
 
 ## THE INCOMING SEAT'S FIRST TASKS
-0. Onboard per the charter order (charter → primer → this file → register by pointer → live verify
-   → read-back and HOLD). Plain vocabulary. Opus-only subagents.
-1. Verify the adopted identities above with your own commands; N35-classify before any fit figure.
-2. Give the owner the Track B starter package on his word (store + laws; his framing).
-3. Drive the road above. His single queued decision is the #336/#338 side-by-side — reach it soon,
-   with everything measured and nothing presented on a superseded basis.
+0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in place,
+   e.g. the primer-first order and the retired pen token — then primer v4 IN FULL, then this file,
+   then the register by pointer). Plain vocabulary. Opus-only subagents.
+1. Verify THE ADOPTED IDENTITIES above with your own commands (paths are inline); N35-classify
+   before trusting any fitted figure (value-path: byte-reproduce the board).
+2. READ-BACK to the owner and HOLD. His two likely first words: the Track B package (spec above)
+   and the round-21 data.
+3. Drive the road. Never present on a superseded basis; never deliver under pressure.
