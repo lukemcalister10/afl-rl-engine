@@ -690,10 +690,20 @@ if _pl:
     # The levels resolve in the entry-anchor lookup and are never written into the ladder or its scaffold copy,
     # so the year-zero surface signature cannot move and the frozen surface must LOAD. If it ever refitted,
     # every national draftee's V0 would move and "non-pool veterans do not move" would silently stop being true.
-    _meta=g['_V0CURVE_META']
-    check(_meta.get('_v0surf_frozen') is True,
-          "#326 frozen year-zero surface LOADED, not refitted (sig %s; RL_V0SURF_REFIT=%r)"
-          %(str(_meta.get('_v0surf_sig'))[:8],os.environ.get('RL_V0SURF_REFIT')))
+    # THE SPLIT (#344): this is the SILENT half, and it is the second site of the same requirement — the build
+    # asserts it too (_merged_recover.py, #326 proof (1)). A DECLARED refit (RL_V0SURF_REFIT=1) is the engine's
+    # one committed fit path and passes here; release builds cannot carry one (release contract must_be_unset).
+    # The message names WHICH lane passed, because "LOADED, not refitted" on a refitted build is a false report.
+    # THREE states, each named truthfully — a message that guesses its lane is the same false-report fault
+    # the build-side print was fixed for: loaded (green), declared (green), neither (RED — the silent refit).
+    _meta=g['_V0CURVE_META']; _refit_dec=os.environ.get('RL_V0SURF_REFIT')=='1'
+    _frz=_meta.get('_v0surf_frozen') is True
+    check(_frz or _refit_dec,
+          "#326 no SILENT refit of the year-zero surface — %s (sig %s; RL_V0SURF_REFIT=%r)"
+          %("frozen surface LOADED, not refitted" if _frz else
+            "refit DECLARED, so this build is a fit lane and is barred from release" if _refit_dec else
+            "SILENT REFIT: the surface was NOT loaded from the freeze and NO refit was declared",
+            str(_meta.get('_v0surf_sig'))[:8],os.environ.get('RL_V0SURF_REFIT')))
     check(int(g['_PVC0'][MA.POOL_PICK])==int(_v2doc['pool_value']),
           "#326 the levels were never written into the ladder's scaffold copy — _PVC0[%d] is still pool_value "
           "%s (the surface signature reads this dict, so writing a level here would refit the surface)"
