@@ -137,7 +137,7 @@ carries the day's meaning discoveries — read it first, in full.)
   since, all owner-worded, all on main: **round 21** applied (409 scores, txn catchup pattern) ·
   **#344** the declared-refit lane (RL_V0SURF_REFIT=1 passes, silent stays red) · **the Kako 2026
   anchor retired** ("Kako is now correct - 12 at 42.75. Retire the anchor.") · **#338 minimum
-  tenure IMPLEMENTED** (book emitter; board untouched; era parity exact, 460 pairs) · **the no-arb
+  tenure IMPLEMENTED** (book emitter; board untouched; era parity exact — 460 pairs, BOOK lineage, register v584 P5; the no-arb sheets' pair values are the per_entrant lineage, a different population) · **the no-arb
   tables and the owner's cohort artifact reissued on the #338 basis** · **#336 RULED: ADOPTED**
   (the amendment-3 form, correctness grounds, ships with stage B). **Track B**: cut, re-cut simple
   on owner word (store + one recipe), verified, delivered; any extension is a new owner word.
@@ -181,8 +181,8 @@ carries the day's meaning discoveries — read it first, in full.)
 
 ## THE ROAD (in order)
 1. **The #333 RE-ANCHORING MEMO** — the design deliberation. Weigh the two levers openly with the
-   four #336 variant sheets as evidence (`docs/evidence/act_336_variant_2026-08-06/` + `amend2/` +
-   `amend3/`); absorb the #332 addendum (re-center on the owner's cohort-development words, **#306
+   four #336 variant sheets as evidence (`docs/evidence/act_336_variant_2026-08-06/` — cut 1 at the
+   root, cut 2 in `amended/`, cuts 3–4 in `amend2/` and `amend3/`); absorb the #332 addendum (re-center on the owner's cohort-development words, **#306
    comment 5186108632**). Output: a recommended target shape to the owner — a recommendation, not
    a landing.
 2. **#334 STAGE B** — executes the memo's chosen design in ONE act through the declared-refit lane:
@@ -206,7 +206,7 @@ figures with your own commands BEFORE presenting anything. Present the number th
 owner's actual question (the yr1-to-peak lesson: relocating a gap is not closing it). Threads by
 comment id only; the register by pointer (grep N-numbers); one pen per boundary, batched;
 incremental CURRENT_STATE edits must assert count==1 per match or replace Part B wholesale (the
-v587 silent no-op is the recorded failure).
+silent no-op caught at the v587 pen, repaired at commit 1e1a1cc, is the recorded failure).
 
 ## ENVIRONMENT CARRIES (inlined in full — nothing dangles)
 Pinned venv: `bash setup_env.sh` → `/root/rl_venv312` (Python 3.12.3 · numpy 2.4.4 · scipy 1.17.1 ·
@@ -221,7 +221,7 @@ rl_app_data.json` && single-thread BLAS env (`OPENBLAS/OMP/MKL/NUMEXPR_NUM_THREA
 `INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<any> ... --approve` = apply; ledger blocks
 double-apply; exit 6 → `finalize --round N` then `repair --round N`. N32 payload recipe:
 `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(..., sort_keys=True)`,
-md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near char 88 SAME LENGTH
+md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near char 86 SAME LENGTH
 (`v591 2026-08-06` → next); insert the entry before the ` · SEAM v540 (2026-07-29)` marker;
 asserts: line count 8,438 unchanged · growth == entry length · one new stamp · docs-only diff;
 commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge → re-verify main BY
@@ -233,7 +233,7 @@ book (`s4_matrix.json`) is id()-keyed — never byte-reproducible; the committed
 artifact (claude.ai, updated to the #338 basis this day): pass its URL to the Artifact tool to
 update in place; conventions printed on the page itself. Evidence trees this era:
 `act_326_2026-08-06/` · `act_334_2026-08-06/` · `noarb_338_2026-08-06/` ·
-`act_336_variant_2026-08-06/{,amend2/,amend3/}` — all RETENTION-PROTECTED.
+`act_336_variant_2026-08-06/{,amended/,amend2/,amend3/}` — all RETENTION-PROTECTED.
 
 ## THE INCOMING SEAT'S FIRST TASKS
 0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in
