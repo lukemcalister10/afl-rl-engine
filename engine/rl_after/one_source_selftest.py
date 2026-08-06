@@ -170,10 +170,11 @@ KAKO_ANCHORS = [
     # year, (games, avg), last round the figure covers (None == completed season, cannot move), provenance
     (2025, (23, 55.2), None,
      "completed season — no round scope; it is final and cannot go stale"),
-    (2026, (11, 44.18), 20,
-     "owner re-anchor 2026-07-28 (R20). R15-20 entered: R16=11, R17=9, R18=47, R19=57, R20=32, "
-     "R15 DNP; prior 6@55.0=330 +156 = 486/11. Supersedes the R19 anchor 10@45.4 (454/10), which "
-     "this scope mechanism reported STALE rather than letting it rot into a cryptic mismatch"),
+    # The 2026 current-season anchor is RETIRED by owner word 2026-08-06, given at R21: "Kako is now
+    # correct - 12 at 42.75. Retire the anchor." The R20 anchor (11, 44.18, thru=20) lapsed loudly at
+    # the R21 apply exactly as designed; the owner confirmed the store's R21 reading (12 games @ 42.75)
+    # as correct and retired the anchor rather than re-winding a clock that breaks every round. The
+    # scope mechanism stays for any future anchor. Recorded once so no reviewer re-flags the absence.
 ]
 
 def _as_of_round():
