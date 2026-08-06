@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v75 · supervisor pen · 2026-08-06, register v584
+# CURRENT STATE — the incoming-seat read · v76 · supervisor pen · 2026-08-06, register v585
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,10 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v75 · supervisor pen · 2026-08-06, register v584 · replaced wholesale at the #338 PEN — the
-minimum-tenure rule is live in the walk-forward book; the book of record is committed; the road
-points at the #336 variant. The primer is at v4 — read it first, in full.)
+(v76 · supervisor pen · 2026-08-06, register v585 · replaced wholesale at the NO-ARB REISSUE PEN —
+the per_entrant lineage and no-arb tables are on the #338 basis; cohort tables NO LONGER
+PROVISIONAL for tenure (the #336 survivorship dimension remains open). The primer is at v4 — read
+it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
@@ -185,8 +186,8 @@ restated at L3 step 33) and the corrected re-delivery. Any extension is a NEW ow
    declared-refit lane (RL_V0SURF_REFIT=1) is OPEN; silent refits stay red; engine_head `8f0e3eb1`.
 3. ~~#338 implemented~~ **DONE 2026-08-06, owner word "Fire 338"** — the honest book of record is
    committed (engine/rl_after/s4_matrix_M1v7.json, meta: store 37ced3ce · engine 8f0e3eb1 · n 2647);
-   era parity exact (460 pairs); cohort tables STILL PROVISIONAL until the no-arb/per_entrant
-   lineage re-emits under the rule (rides step 4/5).
+   era parity exact (460 pairs); the no-arb/per_entrant lineage REISSUED on the rule same day
+   (docs/evidence/noarb_338_2026-08-06/, v585) — tenure-provisionality lifted; #336 remains open.
 4. **#336 bust-inclusive variant** on the honest book → ONE side-by-side to the owner. His single
    queued decision.
 5. **#332 addendum** (#306 comment 5186108632) · the #333 memo absorbs the #336 result · #334
@@ -215,7 +216,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v584 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v585 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
