@@ -1,0 +1,63 @@
+== #336 board delta — BASELINE vs VARIANT (bust-inclusive reference layer) ==
+   A = board_baseline.json
+   B = board_variant.json
+
+-- 1. ABSOLUTE MOVEMENT (num-SCAR `active[].v`) --
+movers      : 576 of 804 common active rows (+0 added, -0 removed)
+SigmaD SCAR : net -94888   (gross 94954 over the 576 movers)
+age SigmaD  : <=22 -70280 (n=193 moved of 294 in bucket) | 23-26 -18222 (n=189 of 245) | >=27 -6386 (n=194 of 265)
+
+top 5 cuts  :
+   Sullivan Robey               3070 ->      945       -2125   (age 19)
+   Dyson Sharp                  2794 ->      941       -1853   (age 19)
+   Josh Lindsay                 2452 ->      745       -1707   (age 19)
+   Jacob Farrow                 2651 ->      980       -1671   (age 19)
+   Harry Dean                   2660 ->     1002       -1658   (age 19)
+top 5 lifts :
+   Archie Ludowyke               215 ->      226         +11   (age 19)
+   Brandon Zerk-Thatcher          48 ->       57          +9   (age 28)
+   Aidan Schubert                521 ->      529          +8   (age 19)
+   Mitch Podhajski               103 ->      106          +3   (age 27)
+   Joel Amartey                   32 ->       34          +2   (age 27)
+
+-- 2. GLOBAL SCALE, SEPARATED (the numeraire-chain control) --
+board total (804 active, common rows only, n=804): A 759722  ->  B 664834
+RATIO OF BOARD TOTALS  B/A = 0.875102   (a uniform rescale of -12.490%)
+pick-1 numeraire       : A 3000 -> B 3000   (the standing law pins it at 3000)
+
+-- 3. RELATIVE MOVEMENT, after normalising EACH board to its OWN total --
+   share(k) = v(k)/total ; relative delta = share_B/share_A - 1 = (v_B/v_A)/scale - 1
+rows re-weighted at all      : 804 of 804   (this is RE-RANKING, not rescaling)
+rows moved >1% of own share  : 796 of 804
+rows moved >5% of own share  : 739 of 804
+mean |relative move|         : 0.1644  (16.44% of a player's own share; denominator 804 common rows)
+mean relative move by age    : <=22 -0.1176 (n=294) | 23-26 +0.0146 (n=245) | >=27 +0.1110 (n=265)
+
+top 5 relative CUTS (share lost after removing the global rescale):
+   Will Edwards                  208 ->       54   share  -70.33%   (age 23)
+   Talor Byrne                   923 ->      248   share  -69.30%   (age 19)
+   Joe Berry                    1102 ->      302   share  -68.68%   (age 20)
+   Josh Lai                      513 ->      149   share  -66.81%   (age 21)
+   Noah Long                     163 ->       48   share  -66.35%   (age 22)
+top 5 relative LIFTS:
+   Brandon Zerk-Thatcher          48 ->       57   share  +35.70%   (age 28)
+   Joel Amartey                   32 ->       34   share  +21.41%   (age 27)
+   Archie Ludowyke               215 ->      226   share  +20.12%   (age 19)
+   Mitch Podhajski               103 ->      106   share  +17.60%   (age 27)
+   Aidan Schubert                521 ->      529   share  +16.03%   (age 19)
+
+-- 4. TOP-END RATIO (top active value / 3000, the pick-1 numeraire) --
+   BASELINE top active = Harry Sheezel 12124   ratio to 3000 = 4.041x
+   VARIANT  top active = Harry Sheezel 11760   ratio to 3000 = 3.920x
+
+-- 5. PICK LADDER (the draft-pick curve, both boards) --
+   pick :         1       2       3       5      10      20      30      45      64
+   BASELINE     3000    2999    2874    1881    1460     990     663       -       -
+   VARIANT      3000    2999    2874    1881    1460     990     663       -       -
+
+-- 6. BASEPK_REG on each board (the repaired reference table, as exported) --
+   BASELINE: {"KPD|0": 76.027, "KPD|1": 68.364, "KPD|2": 68.364, "KPD|3": 68.364, "KPD|4": 65.465, "KPD|5": 65.465, "KPD|6": 65.465, "KPD|7": 65.465, "KPF|0": 74.596, "KPF|1": 74.596, "KPF|2": 74.596, "KPF|3": 67.354, "KPF|4": 67.354, "KPF|5": 67.354, "KPF|6": 61.01, "KPF|7": 61.01, "MID|0": 101.487, "MID|1": 94.732, "MID|2": 94.732, "MID|3": 82.467, "MID|4": 82.201, "MID|5": 79.978, "MID|6": 76.863, "MID|7": 
+   VARIANT: {"KPD|0": 75.798, "KPD|1": 67.864, "KPD|2": 68.721, "KPD|3": 71.14, "KPD|4": 48.614, "KPD|5": 46.634, "KPD|6": 48.284, "KPD|7": 35.604, "KPF|0": 74.596, "KPF|1": 70.545, "KPF|2": 67.687, "KPF|3": 55.839, "KPF|4": 51.077, "KPF|5": 46.212, "KPF|6": 36.114, "KPF|7": 26.344, "MID|0": 99.662, "MID|1": 94.448, "MID|2": 87.108, "MID|3": 72.836, "MID|4": 66.802, "MID|5": 63.476, "MID|6": 46.306, "MID|7": 
+-- POOL on each board --
+   BASELINE {"0": 94.833, "1": 85.274, "2": 83.868, "3": 77.853, "4": 74.844, "5": 77.46, "6": 71.2, "7": 72.808}
+   VARIANT  {"0": 93.989, "1": 84.152, "2": 76.126, "3": 71.81, "4": 60.166, "5": 56.039, "6": 49.309, "7": 34.035}

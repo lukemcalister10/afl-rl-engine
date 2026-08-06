@@ -1,0 +1,17 @@
+# #336 variant — identities and file md5s (measured 2026-08-06T12:02:41Z)
+
+## boards
+113b36f898a32363c49c2a62fb809f4b  board_baseline.json
+bc9f735a301626be75651b5fd5c0d200  board_variant.json
+
+## matrices
+5fb617d09cd8341d9f36b90a1827e2e5  noarb_baseline/per_entrant_338_confirmation.json
+f4b3986a97d5cb89ed228a826ac2b798  noarb_variant/per_entrant_338_confirmation.json
+
+## engine sources
+baseline rl_model.py    33f940735281a07e3b6ca19f31bf2ea6
+variant  rl_model.py    1b0cc66d26ec168a22240bef6759148e
+baseline par_build.py   aeff31de58b6745e5a334f7712805150
+variant  par_build.py   81f16152afaaae3850623d792709c0f0
+_merged_recover.py (BOTH, untouched) 8f0e3eb1b29fee6b2defa0a5cfd7ebec
+store rl_model_data.json (BOTH)      37ced3ce45914e6feb00d27e26922e9a

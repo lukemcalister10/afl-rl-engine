@@ -1,0 +1,70 @@
+PAR estimator — cohort DRAFT 2003-2018 | additive (par=level+ramp, ramp[yr1]=0)
+dials: bandwidth(log-pick)=0.4  par gate>=6g  ramps UN-POOLED (thin-cell protection in level kernel-ESS)
+
+=== A. base play rate (median games among players who played) — pos x tenure ===
+  pos          yr1  yr2  yr3  yr4  yr5  yr6
+  MID            7    11    13    16    18    19
+  SD             8     8    13    15    15    17
+  SF             8    11    12    15    16    16
+  KPD            6     9    10    14    16    17
+  KPF            5     7    12    13    15    16
+  RUCK           5     6     9    12    11    16
+
+=== B. on-park sample (resolution map) — #players per pos x tenure ===
+  pos          yr1  yr2  yr3  yr4  yr5  yr6   TOTAL
+  MID          163   219   224   234   207   175    1222
+  SD            80   114   157   158   148   140     797
+  SF           109   196   197   197   185   173    1057
+  KPD           35    66    81    93    91    89     455
+  KPF           48    75    97   102    97    89     508
+  RUCK          15    31    32    44    40    43     205
+
+=== C. level_pos(log-pick) curve + kernel ESS at each eval point ===
+  pos          pk1   pk3   pk5   pk8   pk12  pk20  pk30  pk45  pk60
+  MID         73.6  64.3  63.4  62.1  59.8  58.3  53.8  53.5  53.5
+   (ESS)      45.0  59.9 100.1 106.8 120.2 199.3 224.6 260.8 396.3
+  SD          76.8  69.0  69.0  61.6  61.6  59.7  59.0  59.0  59.0
+   (ESS)       5.0  12.4  24.7  63.6  87.2 116.7 136.9 188.0 373.2
+  SF          69.8  65.2  63.3  60.2  58.3  55.7  55.3  55.3  55.3
+   (ESS)      10.0  34.8  50.8  58.5 107.2 194.1 230.5 267.9 419.5
+  KPD         65.2  57.5  57.5  57.5  57.5  57.5  57.5  57.5  57.5
+   (ESS)       6.0   5.0  13.9  28.5  46.7  75.6  85.3 138.1 209.9
+  KPF         51.2  50.2  50.2  49.9  49.9  49.9  49.9  49.0  49.0
+   (ESS)      12.0  15.9  42.5  51.4  79.3  57.1  90.2  93.3 168.2
+  RUCK        68.3  61.1  56.0  56.0  53.8  53.8  53.8  53.6  53.6
+   (ESS)       7.0   0.5   4.3  13.5  10.8  29.0  44.5  55.3  92.2
+
+=== D. tenure ramp per position — RAW vs GLOBAL vs SHRUNK (n/(n+30)) ===
+  global ramp:          yr1: +0.0  yr2: +2.8  yr3: +6.7  yr4:+10.4  yr5:+12.6  yr6:+15.5
+  MID       n=1222 w=1.00
+     raw     +0.0  +5.3 +11.1 +15.7 +20.8 +24.4
+     shrunk  +0.0  +5.3 +11.1 +15.7 +20.8 +24.4   (yr1->yr5 delta = +20.8)
+  SD        n= 797 w=1.00
+     raw     +0.0  +0.2  +3.1  +6.6  +8.4 +10.7
+     shrunk  +0.0  +0.2  +3.1  +6.6  +8.4 +10.7   (yr1->yr5 delta = +8.4)
+  SF        n=1057 w=1.00
+     raw     +0.0  +2.5  +6.6  +8.8 +11.9 +12.8
+     shrunk  +0.0  +2.5  +6.6  +8.8 +11.9 +12.8   (yr1->yr5 delta = +11.9)
+  KPD       n= 455 w=1.00
+     raw     +0.0  +4.0  +1.8  +6.1  +5.1  +7.0
+     shrunk  +0.0  +2.8  +2.8  +5.6  +5.6  +7.0   (yr1->yr5 delta = +5.6)
+  KPF       n= 508 w=1.00
+     raw     +0.0  +4.9  +9.9 +13.6 +14.2 +17.8
+     shrunk  +0.0  +4.9  +9.9 +13.6 +14.2 +17.8   (yr1->yr5 delta = +14.2)
+  RUCK      n= 205 w=1.00
+     raw     +0.0  -4.7  +0.3 +10.1 +18.2 +21.0
+     shrunk  +0.0  +0.0  +3.5 +13.3 +21.3 +24.2   (yr1->yr5 delta = +21.3)
+
+=== E. assembled par(pos,pick,tenure) — sample cells ===
+  pos        pk |  yr1   yr2   yr3   yr4   yr5
+  MID        7 |  62.5  67.8  73.6  78.1  83.2
+  MID        1 |  73.6  78.9  84.7  89.3  94.4
+  SD        14 |  61.6  61.8  64.7  68.2  70.0
+  KPD        8 |  57.5  60.4  60.4  63.2  63.2
+  KPF        4 |  50.2  55.1  60.1  63.8  64.4
+  RUCK      20 |  53.8  53.8  57.3  67.1  75.1
+  SF        12 |  58.3  60.8  64.9  67.1  70.3
+
+=== F. ANCHOR RECONCILIATION — MID yr1, picks 1-8 should ~= 66 (cont.26 §2) ===
+  mean level_MID(yr1) over picks 1-8 = 65.2   (cont.26 empirical par = 66.0)
+  level_MID(yr1) @pk7 = 62.5   (Cumming's pick; cont.26 break-even@20g = 66)

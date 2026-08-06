@@ -1,0 +1,371 @@
+================================================================================================
+#336 VARIANT — CURRENT vs BUST-INCLUSIVE, the seam's hand-to-the-owner sheet   measured 2026-08-06
+                                    D R A F T  —  awaiting the non-authoring audit
+================================================================================================
+
+CAPTION (carried on every figure below, mandated by the directive):
+  REFERENCE LAYER BUST-INCLUSIVE; YEAR-ZERO SURFACE HELD AT THE SHIPPED SURVIVORS-BASIS FIT;
+  THE JOINT RE-DERIVATION IS #334 STAGE B, AFTER THE RULING.
+
+NOTHING HERE SHIPS. This is the candidate-design measurement the owner ordered at #336 item 2. The
+variant code lives on branch `variant/336-bust-inclusive` (commit de507ef) and is never merged; no
+pin moved on main; no board landed; the frozen set is untouched.
+
+CURRENT = board 113b36f8, store 37ced3ce, engine head 8f0e3eb1, rl_model 33f94073, fv d920557e
+VARIANT = board bc9f735a, store 37ced3ce, engine head 8f0e3eb1, rl_model 1b0cc66d, fv c9d9b541
+          the ONLY difference is two engine files: par_build.py and rl_model.py.
+
+CONTROL FIRST — the harness can fail, and it was proven able to pass. A clean workspace seeded off
+main byte-reproduced board 113b36f898a32363c49c2a62fb809f4b before the variant was built or credited.
+
+------------------------------------------------------------------------------------------------
+0. WHAT WAS CHANGED, IN ONE PARAGRAPH
+------------------------------------------------------------------------------------------------
+Two reference tables that the sweep classified INVERTED were rebuilt as true expectations over the
+#338 tenure-windowed population:
+
+      E[level]  =  P(establishes)  x  E[level | establishes]
+
+with never-established players IN THE DENOMINATOR at their realized nothing. The sites are the par
+surface (par_build.py — 59.7% of (player, tenure) cells never taught) and BPK / POOL / BASEPK_REG
+(rl_model.py — the `pkbest(p) is not None` filter, 835 of 1,974 hist members excluded, 42.3%). The
+v3.4 clamp was REMOVED, because it was the patch on the broken sample and keeping it would
+double-correct. Nothing else was touched.
+
+P(establishes) is DERIVED, never assumed: per (position x pick-band x tenure), numerator = a season
+of >=6 games (the establishment definition at build_cohort_book.py:181-185), denominator = players
+whose #338 minimum-listing-tenure window covers that year (helpers mirrored from
+s4_matrix_M1v7.py:53-70, commit 30996f8). Every stratum's n is disclosed; thin strata are POOLED
+deliberately by an n/(n+10) shrink toward the all-position marginal, stated in §6 below.
+
+------------------------------------------------------------------------------------------------
+1. HEADLINE — THE THREE DECIDING FIGURES
+------------------------------------------------------------------------------------------------
+  quantity                                    basis / denominator            CURRENT    VARIANT
+  ------------------------------------------------------------------------------------------
+  Hump ratio, year 4                          mean ev(p,C+4) / mean v0,        1.572      1.403
+    "predictable appreciation"                same 1,197 included entrants
+  Hump PEAK across years 0-9                  the same 1,197                1.572 (yr4) 1.463 (yr5)
+  Top-end ratio                               top active board value / 3000    4.041x     3.920x
+    (Harry Sheezel, the round-21 board)        (pick-1 numeraire = 3000)     (12,124)   (11,760)
+  Board total, 804 active rows                sum of `active[].v`            759,722    664,834
+    ratio VARIANT/CURRENT                                                          0.8751 (-12.49%)
+
+  The owner's recorded steer on 4.041x was "a little steep". The variant moves it to 3.920x — a
+  -3.0% move on that ratio. It does NOT bring the top end down to anything like flat.
+
+------------------------------------------------------------------------------------------------
+2. THE NO-ARBITRAGE YEAR TABLE  (mean engine value ev(p,Y), VOR board points; ratio = mean_yrN/mean_yr0
+   over the SAME included set at that row)
+------------------------------------------------------------------------------------------------
+ALL PICKS 1-64 — cohort n=1,197 national-draft entrants, classes 2004-2022, busts in the denominator
+at zero. Both sides: store 37ced3ce, v0surf af556bdca53d (HELD), matrix 2,645 records.
+
+  yr | n_incl n_zero |  CURRENT mean   VARIANT mean   delta |  CURR ratio  VAR ratio    delta
+  ---+---------------+---------------------------------------+-------------------------------
+   0 |  1197      0 |         839.4          839.2    -0.1 |      1.000      1.000    0.000
+   1 |  1197      0 |         942.7          617.4  -325.3 |      1.123      0.736   -0.387
+   2 |  1197      0 |        1152.8          761.0  -391.9 |      1.373      0.907   -0.467
+   3 |  1197    141 |        1264.5          989.9  -274.5 |      1.506      1.180   -0.327
+   4 |  1197    258 |        1319.3         1177.3  -142.0 |      1.572      1.403   -0.169
+   5 |  1139    334 |        1308.2         1221.9   -86.3 |      1.566      1.463   -0.103
+   6 |  1075    391 |        1267.4         1213.4   -54.0 |      1.519      1.454   -0.065
+   7 |  1014    430 |        1101.1         1059.2   -41.9 |      1.318      1.268   -0.050
+   8 |   950    452 |         901.4          870.8   -30.6 |      1.084      1.047   -0.037
+   9 |   886    457 |         697.4          675.0   -22.4 |      0.840      0.813   -0.027
+
+  READ THIS CAREFULLY — THE SHAPE CHANGED, NOT JUST THE HEIGHT.
+  * Year 0 is UNMOVED (-0.1 points, -0.01%). That is the frozen surface being held, and it is the
+    control that says the movement below is the reference layer and not a re-anchored entry price.
+    Inside this 1,197 population exactly ONE record's year-zero value moved (daniel-butler, the
+    Q-B boundary crosser). See §7 for the pool records, which DO move.
+  * The hump does not merely shrink — it FLATTENS AND SLIDES LATE. The peak moves from year 4
+    (1.572) to year 5 (1.463), and years 1-2 go BELOW 1.00 (0.736 and 0.907): under the repaired
+    reference layer a drafted player is worth LESS one year after the draft than on draft day.
+  * That sub-1.00 dip is a DIRECT CONSEQUENCE OF THE HELD BASIS and must be read as such. The entry
+    price is still the survivors-basis year-zero surface; the developmental benchmark he is now
+    measured against is bust-inclusive and much lower. The two sides of the trade are on different
+    bases ON PURPOSE, to isolate the reference-layer effect. Whether the entry price should come
+    down with it is exactly the #334 stage-B question, and it is not answered here.
+
+BY PICK BAND (same construction, same denominators):
+
+  PICKS 1-20  (n=377)                              PICKS 21-64  (n=820)
+  yr | CURR mean  VAR mean | CURR r  VAR r          yr | CURR mean  VAR mean | CURR r  VAR r
+  ---+---------------------+----------------        ---+---------------------+----------------
+   0 |    1601.8    1601.8 |  1.000  1.000           0 |     488.8     488.6 |  1.000  1.000
+   1 |    1841.5    1138.1 |  1.150  0.711           1 |     529.5     377.9 |  1.083  0.773
+   2 |    2180.8    1528.9 |  1.361  0.955           2 |     680.2     407.9 |  1.392  0.835
+   3 |    2369.0    1989.5 |  1.479  1.242           3 |     756.6     530.4 |  1.548  1.085
+   4 |    2553.9    2373.5 |  1.594  1.482           4 |     751.7     627.4 |  1.538  1.284
+   5 |    2513.1    2395.8 |  1.578  1.504           5 |     758.2     686.0 |  1.548  1.401
+   6 |    2374.0    2289.6 |  1.495  1.442           6 |     762.0     721.9 |  1.555  1.473
+   7 |    2090.7    2021.3 |  1.310  1.266           7 |     651.0     621.6 |  1.330  1.270
+
+  The correction is LARGER at picks 21-64 than at 1-20 at every year 2-5 (year 2: -0.557 vs -0.407;
+  year 3: -0.463 vs -0.237). That is the defect's own shape: P(establishes) falls from 1.000 at band
+  1-3 to 0.490 at band 49-99, so the survivors-only benchmark was most wrong exactly where the
+  busts are — the late picks.
+
+------------------------------------------------------------------------------------------------
+3. THE BOARD DELTA  (num-SCAR `active[].v`; denominator 804 active rows, both boards, no adds/removes)
+------------------------------------------------------------------------------------------------
+  movers                    : 576 of 804 active rows (+0 added, -0 removed)
+  SigmaDelta, signed        : -94,888 board points
+  SigmaDelta, gross         :  94,954 board points over the 576 movers
+                              (signed ~= gross: the move is one-directional — 571 of the 576 movers FALL;
+                               the 5 that rise sum to +33 points in total)
+  age-bucket SigmaDelta     : <=22  -70,280  (193 of 294 in bucket moved)
+                              23-26 -18,222  (189 of 245 moved)
+                              >=27   -6,386  (194 of 265 moved)
+
+  TOP 5 CUTS (absolute)                            TOP 5 LIFTS (absolute)
+    Sullivan Robey   3,070 ->   945  -2,125 (19)     Archie Ludowyke      215 ->  226  +11 (19)
+    Dyson Sharp      2,794 ->   941  -1,853 (19)     Brandon Zerk-Thatcher 48 ->   57   +9 (28)
+    Josh Lindsay     2,452 ->   745  -1,707 (19)     Aidan Schubert       521 ->  529   +8 (19)
+    Jacob Farrow     2,651 ->   980  -1,671 (19)     Mitch Podhajski      103 ->  106   +3 (27)
+    Harry Dean       2,660 -> 1,002  -1,658 (19)     Joel Amartey          32 ->   34   +2 (27)
+  Every one of the five largest cuts is a 19-year-old with a thin record — the exact population the
+  survivors-only benchmark was over-crediting.
+
+------------------------------------------------------------------------------------------------
+3b. GLOBAL SCALE vs RELATIVE MOVEMENT — SEPARATED, because BPK sits on the numeraire chain
+------------------------------------------------------------------------------------------------
+  A uniform rescale must not be allowed to read as re-ranking. So:
+
+  (i) THE SCALE.       board total (804 common rows)  759,722 -> 664,834
+                       RATIO OF BOARD TOTALS  = 0.875102   (a uniform -12.490%)
+                       pick-1 numeraire       = 3,000 on BOTH boards (the standing law holds)
+                       the pick ladder (picks 1,2,3,5,10,20,30,45) is BYTE-IDENTICAL on both boards
+                       — the draft-pick curve is the shipped frozen PVC and did not move. So the
+                       -12.49% is a REAL fall in aggregate player value measured against a FIXED
+                       numeraire, not a change of units.
+
+  (ii) THE RE-RANKING. After normalising each board to its OWN total (share = v/total):
+                       rows whose share moved at all        : 804 of 804
+                       rows whose share moved by >1%         : 796 of 804
+                       rows whose share moved by >5%         : 739 of 804
+                       mean |relative move|                  : 16.44% of a player's own share
+                                                               (denominator: 804 common rows)
+                       THE EFFECT IS NOT A RESCALE. Nine rows in ten are genuinely re-ranked.
+
+  (iii) WHO GAINS SHARE. mean relative move by age bucket, after removing the global rescale:
+                       <=22   -11.76%   (n=294)
+                       23-26   +1.46%   (n=245)
+                       >=27   +11.10%   (n=265)
+                       Share moves from young thin-record players to proven older ones. That is the
+                       owner's own hypothesis, measured: the survivors-only benchmark was pricing
+                       unproven players against the players who became good, and correcting it moves
+                       value the other way.
+
+  TOP 5 RELATIVE CUTS (share)                      TOP 5 RELATIVE LIFTS (share)
+    Will Edwards   208 ->  54   -70.33% (23)         Brandon Zerk-Thatcher 48 -> 57  +35.70% (28)
+    Talor Byrne    923 -> 248   -69.30% (19)         Joel Amartey          32 -> 34  +21.41% (27)
+    Joe Berry    1,102 -> 302   -68.68% (20)         Archie Ludowyke      215 -> 226 +20.12% (19)
+    Josh Lai       513 -> 149   -66.81% (21)         Mitch Podhajski      103 -> 106 +17.60% (27)
+    Noah Long      163 ->  48   -66.35% (22)         Aidan Schubert       521 -> 529 +16.03% (19)
+
+------------------------------------------------------------------------------------------------
+4. THE MONOTONICITY LAW — DOES THE REPAIR ACTUALLY SATISFY IT?
+------------------------------------------------------------------------------------------------
+THE LAW (owner, #336): a strictly worse career can never produce a better-looking baseline.
+
+4a. THE ALL-POSITION PICK BASELINE (POOL[b]) — PASS.
+    band          1-3    4-7   8-12  13-20  21-27  28-35  36-48  49-99
+    n (denom)      57     76     95    152    133    152    247   1062
+    CURRENT      94.8   85.3   83.9   77.9   74.8   77.5   71.2   72.8   <- NON-MONOTONE
+    VARIANT      94.0   84.2   76.1   71.8   60.2   56.0   49.3   34.0   <- MONOTONE, PASS
+    P(establishes) 1.000 0.987 0.926  0.941  0.850  0.750  0.717  0.490
+    The current table RISES twice (21-27 -> 28-35, 74.8 -> 77.5; and 36-48 -> 49-99, 71.2 -> 72.8):
+    later picks out-baselining earlier ones, the survivorship spike. Bust-inclusive and UNCLAMPED it
+    is strictly decreasing across all 7 band steps, with nothing holding it down.
+
+4b. THE PER-POSITION TABLE (BASEPK_REG) — ***RED, PARTIAL PASS ONLY.***
+    violations of the 42 band steps (6 positions x 7 steps):
+        survivors-only WITH the shipped v3.4 clamp .....  0   (the clamp MANUFACTURES this)
+        survivors-only with the clamp lifted ............ 16   (the defect, bare; gross excess +65.78)
+        BUST-INCLUSIVE, UNCLAMPED ......................  5   (gross excess +22.65)
+    A 66% reduction in the breach — NOT its elimination. Per the directive this is REPORTED, not
+    patched and not re-clamped. The five residual violations, with their cell denominators:
+        KPD   8-12 (68.72, n=8)  > 4-7  (67.86, n=8)    [+0.86]
+        KPD  13-20 (71.14, n=18) > 8-12 (68.72, n=8)    [+2.42]
+        KPD  36-48 (48.28, n=27) > 28-35 (46.63, n=21)  [+1.65]
+        RUCK 28-35 (73.49, n=10) > 21-27 (60.85, n=3)   [+12.64]
+        SD   13-20 (79.51, n=30) > 8-12 (74.43, n=19)   [+5.08]
+    ALL FIVE sit on thin cells. The single largest, RUCK, compares a 10-player cell against a
+    THREE-player cell. The honest reading: the bust-inclusive expectation removes the SYSTEMATIC
+    inversion (the pooled table is clean, and 11 of the 16 are gone, including every one at MID, KPF and SF),
+    but
+    small-sample noise in the per-position cells still produces local inversions, and no amount of
+    zero-counting fixes an n=3 cell. If the owner wants a monotone per-position table it has to come
+    from a stated shrinkage or a stated isotonic prior on the POSITION axis — a design decision, made
+    in the open, not a min() on the output.
+
+4c. THE ABLETT CELL, re-measured on the current store 37ced3ce.
+    Nathan Ablett — KPF, effective pick 46, band 36-48, pkbest 57.3.
+    The cell: 19 drafted | 10 survivors (pkbest defined) | 10 established (>=6 games)
+              | 9 never established | 5 who never played a single game.
+      survivors-only mean         = 61.0    (denominator: the 10 survivors)
+      bust-inclusive expectation  = 32.1    (denominator: all 19 drafted, busts at 0.0)
+      ratio                       = 0.526   — the true baseline is roughly HALF the survivor baseline
+    This reproduces the recorded pair (61.0 vs 32.1) on the CURRENT store. Under the shipped sample
+    Ablett's 57.3 sits BELOW the survivor mean and so DRAGS THE BASELINE DOWN, while his 5 zero-game
+    peers are absent and drag it nowhere at all. Bust-inclusive he sits ABOVE the expectation
+    (57.3 > 32.1), which is the ordering the owner said the data must show.
+
+4d. THREE WORSE-CAREER-NEVER-BETTER SPOT PAIRS, by leave-one-out.
+    effect(p) = baseline(cell WITH p) - baseline(cell WITHOUT p). The law: worse career => smaller
+    (more negative) effect.
+
+    PAIR 1 — SD, band 49-99 (260 drafted, 116 survivors in the shipped sample)
+      better  Jackson Archer     26 games, 5 seasons, best qualifying season avg 46.0
+      worse   Garrett McDonagh    0 games, never established
+        CURRENT baseline 74.98: effect(better) = -0.252 | effect(WORSE) = +0.000 (absent)
+                                *** VIOLATED — the worse career leaves the baseline +0.252 HIGHER
+        VARIANT  expectation 37.04: effect(better) = +0.035 | effect(WORSE) = -0.143   HOLDS
+
+    PAIR 2 — MID, band 49-99 (256 drafted, 97 survivors)
+      better  Tyler Brown        28 games, 4 seasons, best qualifying season avg 57.9
+      worse   Cooper Murley       0 games, never established
+        CURRENT baseline 75.54: effect(better) = -0.471 | effect(WORSE) = +0.000
+                                *** VIOLATED — +0.471 HIGHER
+        VARIANT  expectation 33.61: effect(better) = -0.013 | effect(WORSE) = -0.132   HOLDS
+
+    PAIR 3 — SF, band 49-99 (229 drafted, 100 survivors)
+      better  Taj Woewodin       21 games, 3 seasons, best qualifying season avg 28.3
+      worse   Lachie Rankin       0 games, never established
+        CURRENT baseline 68.14: effect(better) = -0.402 | effect(WORSE) = +0.000
+                                *** VIOLATED — +0.402 HIGHER
+        VARIANT  expectation 32.48: effect(better) = -0.018 | effect(WORSE) = -0.142   HOLDS
+
+    This is the owner's sentence in numbers: under the shipped sample the man who never played a
+    game leaves the history looking BETTER than the man who played 21 games badly.
+
+------------------------------------------------------------------------------------------------
+5. THE PAR SURFACE, BEFORE AND AFTER  (par(pos, pick, tenure), sample cells)
+------------------------------------------------------------------------------------------------
+                CURRENT (survivors)              VARIANT (bust-inclusive expectation)
+  pos    pk |  yr1   yr2   yr3   yr4   yr5   |  yr1   yr2   yr3   yr4   yr5
+  MID     7 | 62.5  67.8  73.6  78.1  83.2   | 38.1  49.2  63.2  73.3  75.6
+  MID     1 | 73.6  78.9  84.7  89.3  94.4   | 51.6  62.6  76.7  86.7  89.1
+  SD     14 | 61.6  61.8  64.7  68.2  70.0   | 24.2  33.5  49.8  57.9  61.7
+  KPD     8 | 57.5  60.4  60.4  63.2  63.2   | 22.3  31.3  44.2  54.4  57.2
+  KPF     4 | 50.2  55.1  60.1  63.8  64.4   | 26.3  34.8  47.2  58.4  60.4
+  RUCK   20 | 53.8  53.8  57.3  67.1  75.1   | 18.6  23.3  33.7  50.3  53.7
+  SF     12 | 58.3  60.8  64.9  67.1  70.3   | 28.1  38.3  49.4  59.2  63.5
+
+  The benchmark falls hardest EARLY (year 1) and converges late — which is exactly what the
+  identity predicts, because P(establishes at tenure 1) is low everywhere (e.g. MID band 49-99:
+  0.122 at year 1 rising to 0.736 by year 6) and rises with tenure as the busts leave the window.
+
+  DISCLOSED CONSEQUENCE: par_build's own anchor reconciliation ("MID yr1, picks 1-8 should ~= 66",
+  cont.26 §2) reads 65.2 on the current surface and 42.1 on the variant. That anchor of 66.0 is
+  ITSELF a survivors-basis empirical figure, so the variant is not expected to hit it. It is flagged
+  here rather than quietly re-baselined; re-deriving that anchor is stage-B work, not this act's.
+
+------------------------------------------------------------------------------------------------
+6. P(establishes) — THE STRATA, AND THE POOLING, DECLARED
+------------------------------------------------------------------------------------------------
+DEFINITIONS. establishment = a season of >=6 games (build_cohort_book.py:181-185, quoted not
+re-invented). denominator = players whose #338 minimum-listing-tenure window covers that year
+(4/3/2 listed seasons by band, own data extends, an explicit _last_listed is a known fact;
+helpers mirrored from s4_matrix_M1v7.py:53-70, commit 30996f8).
+
+STRATA COUNTS.
+  BPK / POOL lever (career-level, position x band):  48 strata over hist n=1,974
+      n range 1 to 260, median 20; 24 strata carry n<20, 11 carry n<10, the thinnest is n=1 (KPD 1-3).
+  par lever (position x band x tenure):             288 strata over the par cohort n=1,758
+      288 of 288 filled; n range 1 to 246, median 16; 171 carry n<20, 92 carry n<10, 36 carry n<5.
+
+P(EVER establishes), raw counts, by position x band (the BPK lever):
+  pos       1-3     4-7    8-12   13-20   21-27   28-35   36-48   49-99
+  MID     30/30   34/34   27/30   47/51   43/50   36/43   38/63  121/256
+  SD       4/4    13/13   18/19   30/30   21/23   23/31   45/57  134/260
+  SF       8/8     9/9    15/15   27/27   28/32   21/27   51/63  114/229
+  KPD      1/1     8/8     8/8    18/18   10/12   13/21   19/27   61/115
+  KPF     11/11    9/10   17/19   15/19    9/13   13/20   10/19   44/109
+  RUCK     3/3     2/2     3/4     6/7     2/3     8/10   14/18   46/93
+  ALL     57/57   75/76   88/95  143/152 113/133 114/152 177/247 520/1062
+  P(all)  1.000   0.987   0.926   0.941   0.850   0.750   0.717   0.490
+
+THE POOLING, STATED. Thin strata are neither dropped nor silently trusted. Every rate is shrunk
+toward the ALL-POSITION marginal for its band (and, on the par lever, its band x tenure) by
+
+      P = (n_established + 10 * P_marginal) / (n + 10)
+
+i.e. the n/(n+k) design par_build already uses for its ramp shrinkage, with k = 10 pseudo-
+observations. At n=246 this moves the rate by under a point; at n=3 it is most of the answer, which
+is the intent. Every cell's n travels with the number wherever it is printed.
+
+ONE SUB-DECISION, DISCLOSED. 148 of the 1,287 established players have a >=6-game season but never a
+>=10-game one, so the engine's `pkbest` is undefined for them. They ARE established; scoring them 0
+would re-import the very defect one bar higher. They contribute their REALIZED level — the same
+top-2 mean taken at the >=6-game bar. This is why the variant's POOL row reads 94.0 -> 34.0 where
+the sweep's naive pkbest-or-zero construction read 93.2 -> 29.8 (both reproduced on this store).
+
+ONE READING OF THE DIRECTIVE, DISCLOSED. The directive names
+`docs/evidence/noarb_338_2026-08-06/per_entrant_338_confirmation.json` as the source of
+P(establishes). That file is an EVIDENCE artifact, not on the engine's load path, and the variant's
+scope fence is two engine files — so the variant DERIVES P LIVE AT IMPORT from the store, mirroring
+the #338 helpers, and the JSON-derived table was computed separately as the audit cross-check.
+The two agree closely but NOT exactly: 14 of the 48 (position x band) strata differ, max |dP| =
+0.0435. The cause is population, not method — the per_entrant lineage carries 1,969 in_hist records
+against the engine's 1,974 (it drops the two force-majeure rows and the _pvc_exclude rows and
+de-duplicates), and it bands on the Q-B slid pick where the engine bands on MA.effpk. The LIVE
+derivation is the one the variant consumes, because BPK / POOL band on MA.effpk. Both tables are in
+the evidence dir (`pest_strata.txt` carries the cross-check row by row).
+
+ONE AXIS MIXTURE, DISCLOSED. On the par lever the LEVEL is keyed by the season position (the E3
+ruling) but the PROBABILITY by the settled career position gfut(p). It has to be: a player who never
+took the park at tenure T has no season-position for that year.
+
+------------------------------------------------------------------------------------------------
+7. THE HELD BASIS — WHAT IT DOES AND DOES NOT PROTECT
+------------------------------------------------------------------------------------------------
+The frozen year-zero surface was HELD, deliberately: v0surf signature af556bdca53d, frozen=True, on
+BOTH sides. No RL_V0SURF_REFIT. The surface's signature is blind to the par and BPK tables, so a
+refit here would have silently conflated #336 with #334 stage B.
+
+What this protects: national-draft entry prices. Inside the measured population of 1,197 ND picks
+1-64, exactly ONE record's year-zero value moved (daniel-butler, the Q-B boundary crosser).
+
+WHAT IT DOES NOT PROTECT, AND THIS MUST BE READ: 1,072 of the 1,201 POOL records DO move at year
+zero (max -692 points). The pool entry level is derived from the position layers, which read the
+repaired reference tables — it is not on the frozen national curve. So the variant's board carries a
+mixed basis by construction: national entry prices held, pool entry prices moved. That is stated,
+not hidden, and it is one of the things stage B has to resolve.
+
+A SECOND DISCLOSURE ON THE MEASUREMENT HARNESS. The directive expected the no-arb harness identity
+pins to halt on the moved basis. THEY DID NOT. All three were re-measured on the variant matrix and
+all three came back unchanged (store 37ced3ce, v0surf af556bdca53d, n=1197), while the matrices
+themselves differ (5fb617d0 vs f4b3986a). No assert was patched; each was proven able to fire.
+The finding stands on its own: the harness's identity pins CANNOT DISCRIMINATE a reference-layer
+basis move — the same blindness _v0surf_sig has, one layer out. Only rl_model / fv separate the two
+runs, and they are recorded in MD5S.txt.
+
+------------------------------------------------------------------------------------------------
+8. WHAT THIS MEASUREMENT DOES AND DOES NOT SETTLE
+------------------------------------------------------------------------------------------------
+SETTLED, on the data:
+  * The owner's inversion is real, reproduced on the current store, and quantified: the Ablett cell
+    at 61.0 vs 32.1, and three spot pairs where a never-played career leaves the baseline strictly
+    higher than a played-badly one.
+  * The survivors-only pick baseline is NON-MONOTONE IN PICK on its own; the v3.4 clamp was hiding
+    it. Bust-inclusive and unclamped, the pooled table is monotone with nothing holding it down.
+  * The hump falls from 1.572 to 1.403 at year 4 and the peak flattens and slides to year 5, with
+    the correction concentrated at picks 21-64 where the busts are.
+  * The effect is genuine re-ranking, not a rescale: after normalising both boards to their own
+    totals, 739 of 804 rows move more than 5% of their own share, and share flows from <=22
+    (-11.76% mean) to >=27 (+11.10% mean).
+
+NOT SETTLED, and not claimable from this sheet:
+  * Whether the entry price should follow the benchmark down. Years 1-2 going below 1.00 is an
+    ARTEFACT OF THE HELD BASIS, by design. #334 stage B.
+  * Whether the -12.49% fall in the board total is right. It is measured against a fixed numeraire,
+    but the numeraire itself (pick-1 = 3000, and the whole shipped PVC) was derived on the
+    survivors basis and did not move here.
+  * The per-position monotonicity RED at §4b. Five residual violations, all on thin cells.
+  * The rl_passmark.json / params.json provenance hole — unswept, out of scope, still open.
+
+No price ships from this. The ruling is the owner's, on these measured numbers.
+================================================================================================

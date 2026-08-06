@@ -1,0 +1,78 @@
+#336 PROTOTYPE — bust-inclusive BPK / POOL / BASEPK_REG (UNCLAMPED)
+denominator: hist, n=1974 (ND/RD 2003-2021, GRP position) — every member has a #338 listed window >=2 seasons
+establishment: a season with games>=6 ; never-established contribute their realized nothing (0.0)
+established with no >=10-game season (level read at the >=6 bar instead of excluded): 148 of 1287 established
+
+== A. SHIPPED construction, survivors-only, WITHOUT the v3.4 clamp (the defect, re-measured) ==
+
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          76.0     68.4     71.7     73.2     65.5     73.4     69.9     69.2
+   KPF          74.6     74.8     76.6     67.4     74.3     74.5     61.0     68.4
+   MID         101.5     94.7     96.1     82.5     82.2     80.0     76.9     75.5
+   RUCK         97.6     87.8     86.3     80.1     77.0     94.8     86.9     81.0
+   SD          104.2     79.8     79.3     81.7     72.9     78.3     74.4     75.0
+   SF           88.4     79.3     80.3     74.4     66.1     69.0     63.1     68.1
+   NON-MONOTONE (band b beats band b-1): 16 violations
+      KPD   band 8-12 (71.65) > band 4-7 (68.36)  [+3.29]
+      KPD   band 13-20 (73.17) > band 8-12 (71.65)  [+1.52]
+      KPD   band 28-35 (73.35) > band 21-27 (65.47)  [+7.89]
+      KPF   band 4-7 (74.78) > band 1-3 (74.60)  [+0.18]
+      KPF   band 8-12 (76.56) > band 4-7 (74.78)  [+1.79]
+      KPF   band 21-27 (74.27) > band 13-20 (67.35)  [+6.92]
+      KPF   band 28-35 (74.55) > band 21-27 (74.27)  [+0.27]
+      KPF   band 49-99 (68.40) > band 36-48 (61.01)  [+7.39]
+      MID   band 8-12 (96.08) > band 4-7 (94.73)  [+1.35]
+      RUCK  band 28-35 (94.83) > band 21-27 (77.03)  [+17.80]
+      SD    band 13-20 (81.75) > band 8-12 (79.31)  [+2.44]
+      SD    band 28-35 (78.28) > band 21-27 (72.91)  [+5.37]
+      SD    band 49-99 (74.98) > band 36-48 (74.37)  [+0.61]
+      SF    band 8-12 (80.32) > band 4-7 (79.32)  [+1.00]
+      SF    band 28-35 (69.00) > band 21-27 (66.09)  [+2.91]
+      SF    band 49-99 (68.14) > band 36-48 (63.08)  [+5.05]
+
+== B. SHIPPED construction, survivors-only, WITH the v3.4 clamp (what ships today) ==
+
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          76.0     68.4     68.4     68.4     65.5     65.5     65.5     65.5
+   KPF          74.6     74.6     74.6     67.4     67.4     67.4     61.0     61.0
+   MID         101.5     94.7     94.7     82.5     82.2     80.0     76.9     75.5
+   RUCK         97.6     87.8     86.3     80.1     77.0     77.0     77.0     77.0
+   SD          104.2     79.8     79.3     79.3     72.9     72.9     72.9     72.9
+   SF           88.4     79.3     79.3     74.4     66.1     66.1     63.1     63.1
+   MONOTONE non-increasing in pick: PASS (0 violations across 6 pos x 7 band steps)
+
+== C. VARIANT: bust-inclusive, UNCLAMPED (the monotonicity test that must pass on its own) ==
+
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          75.8     67.9     68.7     71.1     48.6     46.6     48.3     35.6
+   KPF          74.6     70.5     67.7     55.8     51.1     46.2     36.1     26.3
+   MID          99.7     94.4     87.1     72.8     66.8     63.5     46.3     33.7
+   RUCK         95.1     85.1     77.0     72.6     60.8     73.5     62.7     37.9
+   SD          104.2     79.3     74.4     79.5     62.5     56.5     54.4     37.0
+   SF           88.4     78.8     74.0     73.2     56.2     52.6     48.8     32.5
+   NON-MONOTONE (band b beats band b-1): 5 violations
+      KPD   band 8-12 (68.72) > band 4-7 (67.86)  [+0.86]
+      KPD   band 13-20 (71.14) > band 8-12 (68.72)  [+2.42]
+      KPD   band 36-48 (48.28) > band 28-35 (46.63)  [+1.65]
+      RUCK  band 28-35 (73.49) > band 21-27 (60.85)  [+12.64]
+      SD    band 13-20 (79.51) > band 8-12 (74.43)  [+5.08]
+
+== POOL[b] — the all-position band baseline ==
+   basis          1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   n               57       76       95      152      133      152      247     1062
+   survivors     94.8     85.3     83.9     77.9     74.8     77.5     71.2     72.8
+   bust-inc      94.0     84.2     76.1     71.8     60.2     56.0     49.3     34.0
+   P(est)       1.000    0.987    0.926    0.941    0.850    0.750    0.717    0.490
+   POOL monotone non-increasing (bust-inclusive, unclamped): PASS
+   POOL monotone non-increasing (survivors-only): FAIL — rises at bands 4->5 (74.8 -> 77.5), 6->7 (71.2 -> 72.8)
+
+== THE ABLETT CELL, re-measured on store 37ced3ce ==
+   Nathan Ablett: pos=KPF effpk=46 band=36-48 pkbest=57.3 level_est=57.3
+   cell (KPF, band 36-48): drafted n=19 | survivors (pkbest not None) n=10 | established (>=6g) n=10 | never-established n=9
+   survivors-only mean pkbest          = 61.0   (denominator 10 survivors)
+   bust-inclusive expectation E[level] = 32.1   (denominator 19 drafted, never-established at 0.0)
+   ratio bust-inclusive / survivors    = 0.526
+   Ablett's own contribution: he LOWERS the survivor mean (57.3 < 61.0) and he is ABOVE the
+   bust-inclusive expectation (57.3 > 32.1) — a worse career (his 9 zero-game peers) now reads
+   lower than his, which is the monotonicity law.
+
