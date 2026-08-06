@@ -196,6 +196,61 @@
     "fields_written": "affl_team only",
     "engine_build": "none \u2014 affl_team is not read by ev() and is absent from the board of record"
    }
+  },
+  {
+   "_doc": "OWNER-APPROVED RELEASE ADOPTION - the redesign era goes live (2026-08-06). Appended, not substituted: every prior entry preserved verbatim. This transition adopts, in one boundary at round 20: the #306 year-zero redesign landing, the #323/#328 store corrections and curve re-closure, the #326 per-division pool entry anchors, and the #334 store completion (the owner's own 2005/2006 back-fill census + the Drummond correction). Per this register's law an APPENDED entry LABELS the boundary for the movers view and never blocks a comparison. Known open design work continues in Track A post-adoption (the survivorship defect #336, the minimum-tenure rule #338, the re-anchoring memo #333) - adopted with eyes open under the owner's governing test; the adopted board is strictly closer to the owner's laws than its predecessor on every measured axis.",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "ADOPTION_2026-08-06_review_era"
+   ],
+   "owner_ruling": "2026-08-06, owner: \"Adopt. Then cut the handover and start a new seam.\" Given in the owner's channel after the current-basis review; recorded verbatim by the seam seat.",
+   "authority": "Luke McAlister (owner) - sole merge authority; recorded by the seam on #328",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "20",
+     "adoption-2026-08-06-redesign-era"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "f2df6e0a2902f48e1df36f35493ba8c1",
+    "store": "6b9d00a75ca88122c42da9189739916b",
+    "rl_model": "7349a1e49ea485de3d77ca91238e35ee",
+    "engine_head": "404e811353281843b065b3d75768bec0",
+    "fv": "d10aa93e977a16a7a1c0543e0041a8876cf2912d90a9bb6f00657c31092d786b",
+    "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
+    "as_of_round": 20
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "827fb1fdfefe60c7c2c9026212d3992d",
+    "store": "f1e7f20c4adea9b17d19457a5217c735",
+    "rl_model": "33f940735281a07e3b6ca19f31bf2ea6",
+    "engine_head": "9f258a3bf5d508e0a5ff6e4a9b3c0c13",
+    "fv": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a",
+    "config": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "4939d74082219e84c4f4a33a096c1ec8",
+    "as_of_round": 20
+   },
+   "moved_by_transition": [
+    "board",
+    "engine_head",
+    "fv",
+    "rl_model",
+    "store"
+   ],
+   "unchanged_across_transition": [
+    "balanced_board_md5",
+    "config",
+    "register"
+   ],
+   "_measured_note": "moved/unchanged are MEASURED against the prior adoption's destination (the release the app's historical reports were generated under). config and register are byte-unchanged across the era; every model and data identity moved. balanced_board_md5 4939d740 was carried by the era's acts as the deliberately-unmoved present-lens anchor of the boot manifest and matches the current expected_boot value."
   }
  ]
 }
