@@ -305,7 +305,13 @@ def _lvlcurr(p,Y):                                            # steeper-recency 
     return float(sum(_wg(gm)*ld**max(0,Y-yr)*a for yr,gm,a in rows)/tw) if tw>0 else 0.0
 def _par_prior(p,Y):
     with _form_anchor_clock(): _T=min(max(PR.tenure(p,_fa_year(Y)),1),6)   # LEG F3 §2.vi: the PEDIGREE PAR (the pedigree-fade "decay", pw·par in _coreM1) holds at the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick's draft pedigree does not fade just because the forward lens advanced his tenure a year. k=0 identity by construction.
-    return PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),_T)
+    # #336 AMENDMENT 2 — SITE 2 of the enumerated real-player anchors: THE PEDIGREE PAR LEG. This is the
+    # class reference _coreM1/iso_eff blend toward at weight _ev_pw(Eq) (:335 and :580). It conditions on
+    # the player's own resolved state, evaluated AT THE FORM ANCHOR YEAR so the lens cannot manufacture or
+    # erase a resolution the calendar has not reached (the same k=0 discipline the tenure clock already
+    # carries above). Was PR.par_at(...) — the unconditional expectation for everyone, Addendum 1.
+    with _form_anchor_clock(): _RY=_fa_year(Y)
+    return PR.par_at_p(p,MA.gfut(p),min(MA.effpk(p),cp.KMAX),_T,_RY)
 def eff_ten(p,Y,base):                                        # developmental tenure off a CONTEXT base; proven keeps base exactly
     if _nqual(p,Y)>=PROVEN_N: return base                     # proven: original tenure (each call site passes its own base)
     return max(base, cp._age_asof(p,Y)-18)                    # thin career: max(base, age-18); 18-19yo debut -> ==base (Delta=0)
@@ -388,11 +394,19 @@ def price6(p,bb,Y=2026):
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
 def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
 _POLE={}
-def par_pole(pos,pk,T):
-    k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)))
-    if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
+def par_pole(pos,pk,T,est=False):
+    # #336 AMENDMENT 2 — SITE 3 of the enumerated real-player anchors: THE PEDIGREE POLE BLEND. raw_ev
+    # pulls a real player's price toward `po` by recover(perf,par) — both the pole ITSELF (a synthetic
+    # priced AT par) and the recovery denominator `par` are class references he regresses toward, so
+    # both take the resolved-state anchor. `est` is the player's OWN resolved state, passed by raw_ev;
+    # it is part of the cache key because the two states are two different poles for the same cell.
+    # est=False (the default) keeps the UNCONDITIONAL expectation, which is correct for every synthetic
+    # and pick-level caller — a pick has no resolved state and must carry the full entrant risk.
+    k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)),bool(est))
+    _par=(PR.par_at_est(*k[:3]) if est else PR.par_at(*k[:3]))
+    if k not in _POLE: sp=synth(k[1],_par,pos); _POLE[k]=price6(sp,b6(sp))
     _SCALE={'MID':1.19,'SF':0.93,'KPF':0.95,'SD':1.08,'KPD':1.05,'RUCK':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
-    return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
+    return _POLE[k]*_SCALE.get(pos,1.0),_par
 # ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
 # v' = pr0^(1-w) * (V_ref_b[pos]*rho)^w ; pr0 = the CAPTAIN-FREE price6 (via MA._CAPT_OFF); delta = pr - pr0
 # added back UNCHANGED; C[pos] = production-side conservation renorm (captain/pedigree/iso NOMINAL). rho =
@@ -457,7 +471,12 @@ def raw_ev(p,Y=2026):
     with _form_anchor_clock():                                                        # LEG F3 §2.vi: the pedigree-pole fade keys on PROJECTED EVIDENCE (BASE_REF), not the advancing age/tenure clock (k=0 identity)
         T=min(max(PR.tenure(p,_fa_year(Y)),1),6)
         et=min(max(eff_ten(p,_fa_year(Y), PR.tenure(p,_fa_year(Y))),1),6)             # STEP1: developmental tenure off original PR.tenure base
-        po,par=par_pole(pos,pk,T); a=MA.age(p)
+        # #336 AMENDMENT 2: the pole and the recovery denominator condition on the player's OWN resolved
+        # state, read at the form anchor (k=0 discipline). _isreal gates it: the ISO pick-guard and the
+        # pole prewarm below both call raw_ev on SYNTHETICS, which carry 2x18-game rows and would
+        # therefore read as "established" — but a synthetic stands for a PICK, which has no resolved
+        # state and must keep the full unconditional entrant risk. Same rule, stated once.
+        po,par=par_pole(pos,pk,T,_isreal(p) and PR.resolved_336(p,_fa_year(Y))); a=MA.age(p)
         wage=0.0 if pos=='RUCK' else float(np.clip(1-((a or 21)-20)/6,0,1))
         tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
@@ -497,7 +516,12 @@ def iso_eff(p,Y=2026):                                        # LEG A (b): per-R
     return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)
 for _pp in ['MID','SF','KPF','SD','KPD','RUCK']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
-        for _T in range(1,7): par_pole(_pp,_pk,_T)
+        # #336 AMENDMENT 2: BOTH resolved states are prewarmed. The pole table is deliberately FROZEN at
+        # module load (STEP1) and the cache key now carries the est flag; leaving the established half
+        # lazy would let a pole be first computed INSIDE the forward lens, where price6 walks a synthetic
+        # through _dev_advance and the synth carries no 'games' key. Same freeze, two states.
+        for _T in range(1,7):
+            par_pole(_pp,_pk,_T,False); par_pole(_pp,_pk,_T,True)
 # ==== M1 + v7-asc (BAKE CANDIDATE v2, D7 02/07/2026 — Luke-ruled config; NOT baked until Luke's bake word) ====
 # M1 transplanted VERBATIM from the verified matrix-builder prototype (s4_matrix_M1v7.py; read-pass pack
 # session_2026-07-02/readpass_pack_M1v7_8aed420a.md). M1 refines ONLY the up-branch of the level core:
@@ -1766,7 +1790,12 @@ def ev(p,Y=2026):
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
     with _form_anchor_clock(): el=PR.tenure(p,_fa_year(Y))          # LEG F3 §2.vi: the staleness/tenure clock keys on the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick is NOT relabeled "stalled prospect" purely by the forward lens advancing the clock (item-352 155-mislabeled-exits defect). k=0 identity by construction.
-    pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
+    # #336 AMENDMENT 2 — SITE 4 of the enumerated real-player anchors: THE STALENESS BAR. `par` is the
+    # class reference this real player's best level is measured AGAINST (pr = bestlvl/par gates the
+    # stalled / mediocre-for-years releases). It is a comparison rather than a blend, but it is the same
+    # question — which class is he being held to — so it takes the same resolved-state conditioning:
+    # an established player is judged against establishers, not against the entrant expectation.
+    pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at_p(p,pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6),_fa_year(Y)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         return round(sitout_ev(p,Y,e))
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)

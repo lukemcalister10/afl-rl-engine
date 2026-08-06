@@ -410,6 +410,7 @@ def _level_336(p):
     return float(np.mean(s)) if s else 0.0
 
 BPK_N={}; BPK_NEST={}; BPK_P={}; BPK_COND={}   # disclosure: cell n, n established, pooled P, E[level|est]
+POOL_COND336={}                                # #336 AMENDMENT 2: the all-position band E[level|est]
 _bnum={}; _bden={}
 for b in range(NB):
     _g=[p for p in hist if bandof(effpk(p))==b]
@@ -439,6 +440,12 @@ for b in range(NB):
     # (never-established at 0.0) — no pooling needed, the thinnest band carries n=57.
     aw=[((_level_336(p) if _established_336(p) else 0.0),_rw(p['year'])) for p in grp]
     POOL[b]=float(np.average([x[0] for x in aw],weights=[x[1] for x in aw])) if aw else 75
+    # #336 AMENDMENT 2: the same band marginal taken over ESTABLISHERS ONLY — E[level | establishes].
+    # It is the gradient donor for the established-conditional BASEPK_EST assembled after BASEPK_REG,
+    # exactly as POOL is for BASEPK_REG. Never-establishers are NOT dropped from the world here; they
+    # are in P's denominator at their realized nothing, which is the other leg of the identity.
+    ew=[(_level_336(p),_rw(p['year'])) for p in grp if _established_336(p)]
+    POOL_COND336[b]=float(np.average([x[0] for x in ew],weights=[x[1] for x in ew])) if ew else POOL[b]
 # position-anchored, monotone baseline peak: a later pick can't out-baseline an earlier one (kills small-sample inversions),
 # and thin bands scale a reliable same-position band by the all-position band gradient instead of borrowing the all-position LEVEL.
 BASEPK_REG={}
@@ -461,6 +468,64 @@ for g in sorted(set(GRP.values())):
     # That is now a MEASUREMENT, not an assertion; see the evidence dir for the result and any residual red.
     for b in range(NB): BASEPK_REG[(g,b)]=row[b]
 def basepk(g,b): return BASEPK_REG.get((g,b)) or POOL.get(b) or bandpeak(g,b)
+# ============================================================================================================
+# #336 AMENDMENT 2 (issue #336, OWNER CATCH 2 + "amend and rerun", 2026-08-06) — RESOLVED-STATE CONDITIONING
+# AT THE PICK BASELINE.  The tables above are UNCHANGED and remain the UNCONDITIONAL, bust-inclusive
+# expectation: they are what a PICK is worth, and a pick has no resolved state — the chance the entrant never
+# establishes is exactly the risk it should carry. Everything that prices a pick (pick_raw, base_prod,
+# pick_value) keeps reading them, unmoved.
+#
+# What amendment 2 adds is the OTHER leg, for REAL players whose establishment has already resolved. The
+# owner's catch: "Have Trembath and Taylor, for example, not already established?" — they have, and under
+# Addendum 1 they were still anchored to P(ever establishes) x E[level | establishes]. An established player
+# is anchored to E[level | establishes] with NO probability discount.
+#
+#   BPK_COND / POOL_COND are already computed above: the conditional mean over ESTABLISHERS (the ruled
+#   >=6-game definition, realized level, faded establishers INCLUDED — this is never a survivors-at-tenure
+#   average). BASEPK_EST is assembled from them by the SAME thin-cell/gradient construction BASEPK_REG uses,
+#   and the v3.4 clamp is removed there too, so the two tables differ ONLY by the P factor and are directly
+#   comparable. MONOTONE BY CONSTRUCTION ACROSS THE SEAM: P <= 1 in every cell, so
+#         basepk_est(g,b)  >=  basepk(g,b)      for every (g,b)
+#   which is the amendment's monotonicity guard — an established player's anchor can never sit below the
+#   unconditional expectation for his own cell. Asserted below, not assumed.
+# ============================================================================================================
+BASEPK_EST={}
+for g in sorted(set(GRP.values())):
+    rel={b:BPK_COND[(g,b)] for b in range(NB) if (g,b) in BPK_COND}
+    row=[]
+    for b in range(NB):
+        if b in rel: row.append(rel[b])
+        elif rel:
+            b0=min(rel,key=lambda x:abs(x-b)); row.append(rel[b0]*(POOL_COND336[b]/POOL_COND336[b0]))
+        else: row.append(POOL_COND336[b])
+    for b in range(NB): BASEPK_EST[(g,b)]=row[b]
+_A2_GUARD=[(g,b) for g in sorted(set(GRP.values())) for b in range(NB)
+           if BASEPK_EST[(g,b)] < BASEPK_REG[(g,b)]-1e-9]
+def basepk_est(g,b): return BASEPK_EST.get((g,b)) or POOL_COND336.get(b) or bandpeak(g,b)
+def _resolved_336(p,Y=None):
+    """#336 AMENDMENT 2: has this player's establishment already RESOLVED? The ruled definition —
+    at least one season of >= QUAL_336 (6) games (build_cohort_book.py:181-185), read on his own store
+    record AS OF the valuation.
+
+    Y defaults to BASE_REF, the module's own FORM-ANCHOR clock. That matters for one reason and it is a
+    measurement-integrity reason, not a style one: the walk-forward emitter re-prices every entrant at
+    every as-of year by setting MA.BASE_REF = MA.AGE_REF = Y, and the store carries seasons AFTER that
+    year. A career-basis test would hand a year-1 valuation the knowledge that the player establishes in
+    year 4 — future information, inflating exactly the early-tenure rows the hump measurement reads.
+    Keying on BASE_REF makes the test as-of, and it uses the FORM anchor (not AGE_REF) so the forward
+    lens cannot manufacture a resolution the calendar has not reached: k=0 identity by construction.
+    On the LIVE board BASE_REF is 2026 and every store row is <= 2026, so the board is untouched by this
+    choice — verified by md5, not asserted."""
+    if Y is None: Y=BASE_REF
+    for r in p['scoring']:
+        if r['games']>=QUAL_336 and r['year']<=Y: return True
+    return False
+def basepk_c_p(p,g,pk):
+    """#336 AMENDMENT 2 — THE RESOLVED-STATE SELECTOR for every BPK-anchored REAL-PLAYER consumer.
+    established -> the establisher baseline; unresolved -> the unconditional bust-inclusive baseline."""
+    fb=bandcoord(pk); lo=int(fb); hi=min(NB-1,lo+1); f=fb-lo
+    _bp=basepk_est if _resolved_336(p) else basepk
+    return (1-f)*_bp(g,lo)+f*_bp(g,hi)
 BAND_ANCHOR=PMD['BAND_ANCHOR']
 def bandcoord(pk):
     if pk<=BAND_ANCHOR[0]: return 0.0
@@ -594,7 +659,7 @@ def _dev_advance(L,p):                  # roll demonstrated form from BASE_REF a
     if a1==a0: return L                                         # identity at offset 0 -> vP0==v, present board untouched
     g=bnow(p); c0=_agecurve(g,a0); c1=_agecurve(g,a1)
     if c0<1e-6: return L
-    cp=basepk_c(g,effpk(p))                                     # pedigree-implied peak (independent of L -> no recursion)
+    cp=basepk_c_p(p,g,effpk(p))                                 # pedigree-implied peak (independent of L -> no recursion). #336 AMENDMENT 2 — enumerated BPK consumer 1: the class peak a real player's demonstrated level catches up toward at weight (1-w). Established -> establisher baseline; unresolved -> unconditional.
     w=clamp(p['games']/130.0,0.30,0.85)                        # own-form trust by sample size; back-test will tune
     L1=L + w*(L*(c1/c0-1.0)) + (1-w)*(cp*(c1-c0))              # blend the CHANGE (own arc vs pedigree catch-up); zero at offset 0
     return clamp(L1, L*0.5, L*1.6)                              # growth/decline guard
@@ -672,11 +737,16 @@ def track_delta(g,pk,sr):
         rec=1.0 if STBL else 0.78**(2026-yr)     # calendar recency: recent seasons govern the estimate
         w=RWE.get(s,1.7)*min(gm,22)*rec; num+=(a-expected_c(g,pk,s))*w; den+=w; tg+=gm
     return (num/den,tg) if den else (None,0)
-def cohort_peak(g,pk,sr):
+def cohort_peak(g,pk,sr,p=None):
+    # #336 AMENDMENT 2 — enumerated BPK consumer 2: the cohort peak IS a regression toward the class
+    # baseline (baseline + bb*own-delta). `p` is threaded from peak_est so the baseline can condition on
+    # the player's resolved state; p=None keeps the unconditional table, which is what a pick-level or
+    # synthetic caller must get.
     delta,tg=track_delta(g,pk,sr)
     if delta is None: return None,0
     conf=clamp(tg/45.0,0,1); bb=0.60+(BETA_POS.get(g,0.95)-0.60)*conf
-    return basepk_c(g,pk)+bb*delta+ICPT_POS.get(g,2.79)*conf, tg
+    _base=basepk_c(g,pk) if p is None else basepk_c_p(p,g,pk)
+    return _base+bb*delta+ICPT_POS.get(g,2.79)*conf, tg
 def survival(b,delta,games):
     # Bust is already priced once in the pedigree curve (PVC carries 1-BUST_BAND); the band-average
     # washout must NOT be re-charged here. So the survival haircut applies ONLY to a player who is
@@ -792,8 +862,8 @@ def peak_est(p):                       # cont.20: learned v4 forward-projection 
     _k=(id(p),BASE_REF)
     if _k in _PE_CACHE: return _PE_CACHE[_k]
     g=gfut(p); ln=level_now(p); pk=effpk(p)
-    cp,tg=cohort_peak(g,pk,srel(p))
-    if cp is None: cp=basepk_c(g,pk)
+    cp,tg=cohort_peak(g,pk,srel(p),p)                           # #336 AMENDMENT 2: thread the player so the cohort baseline conditions on his resolved state
+    if cp is None: cp=basepk_c_p(p,g,pk)                        # #336 AMENDMENT 2 — enumerated BPK consumer 3: no track at all -> the PURE class anchor, so the resolved-state selection matters most here
     if ln is None: _PE_CACHE[_k]=cp; return cp   # no demonstrated level -> cohort prior (in-window 0-game players hit unpl_eq in value() before here)
     _v4_init(); Y=BASE_REF
     v4pe=float(_V4MODEL.predict([_v4_feats(p,Y)])[0]) if (Y-debut(p)+1)>=1 else float(_V4MODEL.predict([_v4_draft_feat(p)])[0])
@@ -848,7 +918,13 @@ def pick_raw(k,lens='bal'):
 def peakval(p):
     g=GRP[p['pos']]; pk=pkbest(p); ep=effpk(p)
     if pk is None: return val(pick_raw(ep))*0.25
-    return val(proj_from_peak(g,pk,PEAK_AGE[g],pk,'bal'))*clamp((pk/max(basepk_c(g,ep),40.0))**2.2,0.40,3.0)
+    # #336 AMENDMENT 2 — enumerated BPK consumer 4: the CURVE-TEACHING normaliser. Reaching this line
+    # requires pkbest(p) is not None, i.e. a >=10-game season, i.e. this historical player IS established
+    # by the ruled >=6-game bar. He must therefore be normalised against the establisher baseline, not
+    # against the entrant expectation — otherwise every established teacher looks artificially far above
+    # his class and the pick curve inflates. (This is a curve-fit site on the numeraire chain: its effect
+    # shows up as SCALE, which the board delta reports separately from re-ranking.)
+    return val(proj_from_peak(g,pk,PEAK_AGE[g],pk,'bal'))*clamp((pk/max(basepk_c_p(p,g,ep),40.0))**2.2,0.40,3.0)
 def _sgn(x): return (x>0)-(x<0)
 def _edge(h0,h1,d0,d1):
     m=((2*h0+h1)*d0-h0*d1)/(h0+h1)
@@ -1255,7 +1331,7 @@ def value(p,lens='bal'):
     surv=1.0   # cont.20: survival() REMOVED from value path (v4 subsumes the bust-tracking haircut; verified 11.8pt separation vs survival's <=9%)
     Pz = None if P_HOOK is None else P_HOOK(p)                # v3.4: establishment-P, computed ONCE; gates BOTH the production term (below) and the pedigree pedestal (decay_eff), each carrying P exactly once
     prod_v=val(player_raw(p,_pd))*surv                        # LEG E: production priced at the posture dial (was hard-'bal'); balanced=='bal'=byte-exact
-    relative=clamp((peak_est(p)/max(basepk_c(g,ep),40.0))**2.2, 0.40, 3.0)
+    relative=clamp((peak_est(p)/max(basepk_c_p(p,g,ep),40.0))**2.2, 0.40, 3.0)   # #336 AMENDMENT 2 — enumerated BPK consumer 5: the PEDIGREE PEDESTAL multiplier. His own peak against his class baseline; an established player is measured against establishers.
     # out_tilt CUT (cont.21): audited redundant with v4 — corr(out_tilt_sig, realised-v4)=-0.05, marginal R2=+0.001, coef after v4=-0.04. Same form double-count as the removed survival(). relative stays at the v4 pedigree multiplier.
     if g in('RUCK','KPF','KPD') and age(p)<=22 and relative<1.0:   # v3.4 relative-floor: young key-pos debut can't drag the pedestal below the clean pick baseline; YEAR-SCALED (more chances seen -> less lift)
         _sc={1:1.0,2:0.8,3:0.5,4:0.2}.get(2026-p['year'],0.0); relative=relative+_sc*(1.0-relative)

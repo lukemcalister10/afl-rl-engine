@@ -124,6 +124,41 @@ def season_row(p, Y):
 # NOT TOUCHED HERE: the frozen year-zero surface (held at its shipped survivors-basis fit, deliberately and
 # disclosed — the joint re-derivation is #334 stage B, after the ruling), MIN_GAMES, the cohort window, the
 # dual rule, the fit machinery.
+#
+# ------------------------------------------------------------------------------------------------------------
+# AMENDMENT 2 (issue #336, OWNER CATCH 2 + "amend and rerun", 2026-08-06) — RESOLVED-STATE CONDITIONING.
+#
+# THE OWNER'S CATCH, verbatim: "How is establishment defined though? Have Trembath and Taylor, for example,
+# not already established?"
+#
+# THE DEFINITION, quoted not re-invented (engine/forward_valuation/build_cohort_book.py:181-185): a player has
+# ESTABLISHED when he has at least one season of >= 6 games. Under Addendum 1 EVERY real player — established
+# or not — was anchored to P(ever establishes) x E[level | establishes]. Trembath (20 games @ 65.5), Taylor
+# (9/17/18-game seasons), Moyle (8 and 13) and Lai (15) have ALL already established, and were still charged
+# the class's chance of never establishing. That is establishment risk that HAS ALREADY RESOLVED IN THEIR
+# FAVOUR, charged anyway. Addendum 1 fixed the wrong RATE; this fixes the wrong CONDITIONING.
+#
+# THE AMENDED FORM, binding at every site where a REAL player's own value regresses toward a class reference:
+#
+#   ESTABLISHED player (>=1 season of >=6 games on his own store record as of the valuation):
+#         anchor = E[level | ever establishes]  for his (position x pick-band x tenure).  NO P discount.
+#   UNRESOLVED player (no such season yet):
+#         anchor = P(ever establishes | position x pick band) x E[level | ever establishes].
+#
+# Busts stay in EVERY establishment-rate denominator — P is unchanged from Addendum 1, career-level, with the
+# never-established counted at their realized nothing. Nothing reverts to survivor averaging: the conditional
+# level is taken over establishers, and (see gather() below) the tenure-axis survivorship gate is dropped so
+# an establisher who FADED still teaches at his realized level instead of vanishing.
+#
+# STRUCTURAL CONSEQUENCE, and why this file's exit points change shape: under Addendum 1 the P factor was
+# folded into the observations, so ONE fitted surface served every consumer. Amendment 2 needs the two legs
+# separately, because which leg applies is a property OF THE PLAYER, not of the cell. So:
+#     the FIT is now the CONDITIONAL level              (par_at / level_at, unchanged signatures)
+#     P is applied AT THE CONSUMER, once, per player    (pest_at() below; par_redesign.par_at_p())
+# MONOTONICITY, by construction: P <= 1, so the established anchor is ALWAYS >= the unconditional expectation
+# for the same cell. The resolved/unresolved seam is therefore exactly the factor P — measured and reported
+# in the evidence dir, NOT smoothed here (a cliff is a finding, and L-SMOOTH is a law about the shipped
+# engine, not a licence for the build hand to invent a taper the owner has not ruled on).
 # ============================================================================================================
 QUAL_338 = 6      # establishment bar: a season of >=6 games (build_cohort_book.py:181-185)
 K_338    = 10.0   # pooling strength: shrink each stratum toward the all-position BAND marginal
@@ -243,20 +278,42 @@ def gather():
     # #336 VARIANT (ADDENDUM 1): CAREER-LEVEL P(ever establishes) over the #338 tenure-windowed
     # population, derived from THIS pool. No tenure index — see the amended header block.
     PEST, PNUM, PDEN = build_pest(pool)
-    # apply the base-rate-relative gate -> on-park observations, target = _lvl_wt
-    obs = []  # (pos, logpick, T, lvl)
+    # #336 AMENDMENT 2 — THE SAMPLE IS NOW THE ESTABLISHER'S, AND THE FIT IS THE CONDITIONAL LEVEL.
+    # Two changes against Addendum 1, both required by the resolved-state repair shape:
+    #
+    #  (1) NO P SCALING HERE. Under Addendum 1 every observation was multiplied by the career-level
+    #      P(ever establishes) so the fitted surface was the UNCONDITIONAL expectation. Amendment 2
+    #      needs BOTH legs of the identity separately, because which leg a player gets depends on HIS
+    #      OWN resolved state. So the fit is now the CONDITIONAL level E[level | ever establishes],
+    #      and P is applied AT THE CONSUMER, exactly once, only to players who have not yet resolved
+    #      (par_redesign.par_at / par_at_p). This is also strictly more honest than the first form:
+    #      P is now an exact per-player factor rather than a factor smeared through a kernel
+    #      regression over log-pick.
+    #
+    #  (2) THE TENURE-AXIS SURVIVORSHIP GATE IS DROPPED. The shipped sample at tenure T is
+    #      `games_at_T >= MIN_GAMES` — and since MIN_GAMES == QUAL_338 == 6, that gate is exactly
+    #      "is he ON THE PARK at T", i.e. survivors-at-that-tenure. An establisher who faded to three
+    #      games at T vanished from the table, so a worse career again became invisible rather than
+    #      low — the same breach one axis over. The sample is now EVERY EVER-ESTABLISHER'S SEASON IN
+    #      WHICH HE TOOK THE PARK AT ALL, at his realized recency-weighted level. Never-establishers
+    #      still do not teach the conditional level (they are the OTHER leg — they sit in P's
+    #      denominator at their realized nothing).
+    #
+    # WHAT IS *NOT* DONE, AND WHY — the third reading, measured and rejected on a recorded rule.
+    # "All establishers in the window at T" could also be read as ZERO-FILLING the establisher's
+    # zero-game seasons. primer 4.6 BARS that: these are PER-GAME benchmarks and a zero-game season
+    # has no per-game level to average in. It is also the Addendum-1 defect returning by another
+    # door: measured on this cohort the zero-filled reading multiplies the YEAR-ONE conditional level
+    # by 0.570 (see act336c/cond_variants.txt), which is a CALENDAR discount on a player who has
+    # already established — precisely what Addendum 1 removed. Measured sizes of all three readings:
+    #      yr1 / yr2 / yr3 / yr4 / yr5 / yr6, as a ratio to the shipped on-park sample
+    #   (i)   on-park >=6g   (Addendum 1)      1.000 1.000 1.000 1.000 1.000 1.000
+    #   (ii)  played  >=1g   (THIS VARIANT)    0.898 0.949 0.959 0.969 0.971 0.978
+    #   (iii) in-window, zero-filled (BARRED)  0.570 0.819 0.905 0.947 0.953 0.968
+    obs = []  # (pos, logpick, T, lvl)  — E[level | ever establishes], tenure-resolved
     for pos, pk, T, Y, g, p in raw:
-        if g >= MIN_GAMES:                       # par gate = flat >=6g at that tenure (Luke)
-            # #336 VARIANT (ADDENDUM 1): the target is the EXPECTATION over the windowed population, not the
-            # survivors' conditional level:  E[level] = P(EVER establishes) x E[level | ever establishes].
-            # The P scaling is applied per observation so the kernel-weighted mean the fit takes IS the
-            # expectation (and the per-tenure MEDIAN residual is likewise scaled, median(cx)=c*median(x) for
-            # c>0). The factor carries NO tenure index — establishment risk is charged once, at the career
-            # level; the conditional level stays tenure-resolved because the observation itself is the
-            # establisher's season at tenure T. The probability is keyed on the SETTLED position MA.gfut(p)
-            # — a never-established player has no season-position to key on.
-            _pe = PEST[(MA.gfut(p), MA.bandof(MA.effpk(p)))]
-            obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y) * _pe))
+        if g >= 1 and _ever_established_338(p):
+            obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y)))
     return obs, base, raw, PEST, PNUM, PDEN
 
 # ---- 2. local-linear kernel regression over log-pick --------------------------------------
@@ -412,7 +469,31 @@ def level_at(F, g, pick):
     return loclin(np.log(pick), lf[0], lf[1], H_LOGPICK)
 
 def par_at(F, g, pick, T):
+    """#336 AMENDMENT 2: this is now the ESTABLISHED-CONDITIONAL anchor, E[level | ever establishes].
+    Consumers that price a REAL player must select on his resolved state (par_redesign.par_at_p);
+    consumers that price a PICK or a synthetic take the unconditional expectation = pest_at() x this."""
     lv,_ = level_at(F, g, pick); return lv + F['ramp_shr'][g][T]
+
+def pest_of(F, p):
+    """#336 AMENDMENT 2: the career-level P(ever establishes) for the cell a REAL player sits in.
+    Keyed EXACTLY as build_pest() derived it — settled career position MA.gfut(p), band of the RAW
+    effective pick MA.effpk(p) (not the KMAX-clamped pick the level surface uses; clamping there is a
+    property of the kernel's support, not of the probability's stratum). Unknown cell -> 1.0, which
+    makes the unresolved anchor fall back to the conditional level rather than to a silent zero."""
+    P = F.get('pest')
+    if not P: return 1.0
+    v = P.get((MA.gfut(p), MA.bandof(MA.effpk(p))))
+    return 1.0 if v is None else float(v)
+
+QUAL_RESOLVE = QUAL_338      # the SAME bar, named at the consumer so the two cannot drift apart
+def resolved_336(p, Y=None):
+    """#336 AMENDMENT 2: has this player's establishment already RESOLVED, on his own store record as
+    of the valuation? True iff he has at least one season of >= 6 games at or before Y (the definition
+    at build_cohort_book.py:181-185). Y=None means the whole record — used only where the surrounding
+    engine code is itself career-basis (rl_model's pkbest/srel), never on the year-indexed value path."""
+    for r in p['scoring']:
+        if r['games'] >= QUAL_RESOLVE and (Y is None or r['year'] <= Y): return True
+    return False
 
 # ============================ REPORT ============================
 if __name__ == '__main__':
@@ -463,8 +544,19 @@ if __name__ == '__main__':
     print(f"  mean level_MID(yr1) over picks 1-8 = {lv18:.1f}   (cont.26 empirical par = 66.0)")
     print(f"  level_MID(yr1) @pk7 = {level_at(F,'MID',7)[0]:.1f}   (Cumming's pick; cont.26 break-even@20g = 66)")
 
+    print("\n=== E2. #336 AMENDMENT 2 — THE TWO ANCHORS SIDE BY SIDE (established vs unresolved) ===")
+    print("  the SAME cell, priced for a player who HAS established and for one who has NOT.")
+    print("  the ratio between them IS P(ever establishes) — the resolved/unresolved seam, disclosed.")
+    print("  pos    pk band     |  yr1 est/unres    yr2 est/unres    yr4 est/unres      P")
+    for g,pk in [('MID',7),('MID',1),('MID',60),('SD',14),('KPD',8),('KPF',4),('KPF',46),('RUCK',20),('SF',12)]:
+        _b = MA.bandof(pk); _p = F['pest'][(g,_b)]
+        cells = "".join("   %5.1f/%-5.1f " % (par_at(F,g,pk,T), _p*par_at(F,g,pk,T)) for T in (1,2,4))
+        print(f"  {g:6s} {pk:2d} {('%d-%d'%tuple(MA.BANDS[_b])):7s} |" + cells + f"  {_p:6.3f}")
+
     # ==== #336 VARIANT (ADDENDUM 1) — G. P(ever establishes) DISCLOSURE: every rate names its denominator ====
     print("\n=== G. #336 VARIANT (ADDENDUM 1) — CAREER-LEVEL P(ever establishes) per (position x pick-band) ===")
+    print("  AMENDMENT 2: this P is applied ONLY to UNRESOLVED players now — it is no longer folded into")
+    print("               the surface. An established player takes the conditional level with no discount.")
     print(f"  establishment bar >= {QUAL_338}g in ANY season inside the #338 listed window (build_cohort_book.py:181-185)")
     print(f"  denominator = the #338 tenure-windowed cell population (s4_matrix_M1v7.py:53-70); tenure enters")
     print(f"                ONLY as window MEMBERSHIP — it is NOT a probability index (Addendum 1, 2026-08-06)")
